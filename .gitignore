@@ -43,3 +43,9 @@ next-env.d.ts
 # Environnement local, jamais commité
 .env.local
 .env*.local
+
+# Dossiers de travail que les agents créent le temps d'une vérification.
+# Un fichier .verif-tmp/ s'est retrouvé dans un commit : la règle vient de là.
+.verif-tmp/
+*.tmp
+_sheet_tmp.*

@@ -2,6 +2,7 @@ import "server-only";
 
 import { cache } from "react";
 
+import { cheminArticle } from "@/lib/seo/url";
 import { lectureContenu } from "@/lib/supabase";
 import type { LigneArticle, LignePage, LigneSeo } from "@/types/lignes";
 
@@ -198,6 +199,89 @@ export async function articlesDuPilier(pageId: string): Promise<LigneArticle[]> 
 
   if (error) throw new Error(`Articles du pilier ${pageId} : ${error.message}`);
   return data ?? [];
+}
+
+/**
+ * L'article publié servi à ce chemin, s'il y en a un.
+ *
+ * L'URL d'un article SUIT SON PILIER, règle posée par `cheminArticle()` dans
+ * `lib/seo/url.ts` : un article rattaché à « /offres/depannage-industriel/ »
+ * est servi à « /offres/depannage-industriel/mon-article/ ». Le silo du cocon
+ * se lit donc dans l'URL, ce qu'un préfixe plat « /blog/ » perdrait.
+ *
+ * DEUX GARDES, et elles comptent :
+ *   · la route essaie `pages` AVANT d'appeler cette fonction. Une page gagne
+ *     donc toujours contre un article de même chemin, et aucun article ne peut
+ *     masquer une rubrique ;
+ *   · le pilier lu en base doit correspondre au chemin demandé. Sans cette
+ *     vérification, un article de slug « astreinte » répondrait sous n'importe
+ *     quel parent, et le même contenu serait servi à plusieurs URL.
+ */
+export const articleParChemin = cache(
+  async (
+    path: string,
+  ): Promise<{ article: LigneArticle; seo: LigneSeo | null } | null> => {
+    const segments = path.split("/").filter(Boolean);
+    // Un article a toujours un pilier : au moins un segment avant son slug.
+    if (segments.length < 2) return null;
+
+    const slug = segments[segments.length - 1];
+    const cheminPilier = `/${segments.slice(0, -1).join("/")}/`;
+
+    const { data, error } = await lectureContenu()
+      .from("articles")
+      .select("*, seo(*), pilier:pages!articles_page_pilier_id_fkey(path)")
+      .eq("slug", slug)
+      .maybeSingle();
+
+    if (error) throw new Error(`Lecture de l'article ${slug} : ${error.message}`);
+    if (!data) return null;
+
+    const { seo, pilier, ...article } = data as LigneArticle & {
+      seo: LigneSeo | LigneSeo[] | null;
+      pilier: { path: string } | { path: string }[] | null;
+    };
+    const chemin = Array.isArray(pilier) ? pilier[0]?.path : pilier?.path;
+    if (chemin !== cheminPilier) return null;
+
+    return { article, seo: Array.isArray(seo) ? (seo[0] ?? null) : seo };
+  },
+);
+
+/**
+ * Les chemins des articles publiés, pour le rendu statique et le plan du site.
+ *
+ * Un article sans pilier publié est OMIS : son URL n'est pas déductible, et
+ * l'annoncer au plan du site livrerait une URL morte à Google.
+ */
+export async function cheminsArticles(): Promise<
+  { path: string; updated_at: string; noindex: boolean }[]
+> {
+  const { data, error } = await lectureContenu()
+    .from("articles")
+    .select("slug, updated_at, seo(noindex), pilier:pages!articles_page_pilier_id_fkey(path)")
+    .order("slug");
+
+  if (error) throw new Error(`Liste des articles : ${error.message}`);
+
+  return (data ?? []).flatMap((a) => {
+    const brut = a as unknown as {
+      slug: string;
+      updated_at: string;
+      seo: { noindex: boolean } | { noindex: boolean }[] | null;
+      pilier: { path: string } | { path: string }[] | null;
+    };
+    const pilier = Array.isArray(brut.pilier) ? brut.pilier[0] : brut.pilier;
+    if (!pilier?.path) return [];
+    const seo = Array.isArray(brut.seo) ? brut.seo[0] : brut.seo;
+    return [
+      {
+        path: cheminArticle(brut.slug, pilier.path),
+        updated_at: brut.updated_at,
+        noindex: seo?.noindex ?? false,
+      },
+    ];
+  });
 }
 
 /** « depannage-industriel » devient « Depannage industriel ». Repli de libellé. */

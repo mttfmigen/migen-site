@@ -57,11 +57,6 @@
        "valeur": "10 %",
        "libelle": "des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC E01 : bande de chiffres, 4 items -->"
-      }
      ]
     },
     {
@@ -133,9 +128,6 @@
       }
      ],
      "prose": [
-      {
-       "texte": "<!-- BLOC C02 : bloc d'offre, prestations et bénéfices côte à côte -->"
-      },
       {
        "texte": "Le dossier ne vaut que s'il est tenu par des gens qui travaillent sur l'installation."
       }
@@ -291,11 +283,6 @@
        "valeur": "10 %",
        "libelle": "des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC E01 : bande de chiffres, 4 items -->"
-      }
      ]
     },
     {
@@ -367,9 +354,6 @@
       }
      ],
      "prose": [
-      {
-       "texte": "<!-- BLOC C02 : bloc d'offre, prestations et bénéfices côte à côte -->"
-      },
       {
        "texte": "Nos techniciens interviennent sur l'électronique de commande des machines en exploitation, indépendamment de toute étude."
       }
@@ -525,11 +509,6 @@
        "valeur": "4",
        "libelle": "agences · Lyon (siège), Montréal, Dubaï, Madrid, et 10 hubs de techniciens en France."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC E01 : bande de chiffres, 4 items -->"
-      }
      ]
     },
     {
@@ -601,9 +580,6 @@
       }
      ],
      "prose": [
-      {
-       "texte": "<!-- BLOC C02 : bloc d'offre, prestations et bénéfices côte à côte -->"
-      },
       {
        "texte": "Notre équipe d'études couvre **la mécanique, l'électronique et le pneumatique**. C'est son périmètre réel, et nous préférons l'écrire plutôt que de le laisser deviner. Un bureau d'études industriel qui annonce dix compétences en tient rarement trois."
       }
@@ -762,11 +738,6 @@
        "valeur": "10 %",
        "libelle": "des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC E01 : bande de chiffres, 4 items -->"
-      }
      ]
     },
     {
@@ -853,11 +824,6 @@
         "texte": "**Dossier de fin de chantier**"
        },
        "benefice": "Plans à jour, repérages, photos, bordereaux. Vous rendez les clés avec une pièce, pas une promesse."
-      }
-     ],
-     "prose": [
-      {
-       "texte": "<!-- BLOC C02 : tableau, les opérations une par une -->"
       }
      ]
     },
@@ -1270,11 +1236,6 @@
        "valeur": "10 %",
        "libelle": "des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC E01 : bande de chiffres, 4 items -->"
-      }
      ]
     },
     {
@@ -1355,11 +1316,6 @@
         "texte": "**Coordination avec un partenaire de levage**"
        },
        "benefice": "Quand l'opération exige des moyens spécialisés, nous les mobilisons et nous les pilotons. Vous gardez un seul interlocuteur."
-      }
-     ],
-     "prose": [
-      {
-       "texte": "<!-- BLOC C02 : tableau prestations / bénéfices -->"
       }
      ]
     },
@@ -1521,11 +1477,6 @@
        "valeur": "10 hubs de techniciens",
        "libelle": "Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon, Nantes, une équipe locale pour un parc à auditer machine par machine."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC D02 : bande de chiffres, 4 colonnes -->"
-      }
      ]
     },
     {
@@ -1601,11 +1552,6 @@
         "texte": "de l'organisme accrédité, levée des réserves"
        },
        "benefice": "Vous arrivez à la vérification avec un dossier propre, pas avec des questions ouvertes"
-      }
-     ],
-     "prose": [
-      {
-       "texte": "<!-- BLOC C02 : bloc d'offre, prestations et bénéfices côte à côte -->"
       }
      ]
     },
@@ -1763,11 +1709,6 @@
        "valeur": "10 %",
        "libelle": "des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC E01 : bande de chiffres, 4 items -->"
-      }
      ]
     },
     {
@@ -1848,11 +1789,6 @@
         "texte": "**Montage pour compte de fabricants**"
        },
        "benefice": "Vous vendez partout, nous installons partout. Équipes mobiles, standards constructeur, un seul interlocuteur."
-      }
-     ],
-     "prose": [
-      {
-       "texte": "<!-- BLOC C02 : tableau prestations / bénéfices -->"
       }
      ]
     },
@@ -2024,11 +1960,6 @@
        "valeur": "10 %",
        "libelle": "des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC E01 : bande de chiffres, 4 items -->"
-      }
      ]
     },
     {
@@ -2106,9 +2037,6 @@
       }
      ],
      "prose": [
-      {
-       "texte": "<!-- BLOC C02 : tableau prestations / bénéfices -->"
-      },
       {
        "texte": "Les deux termes désignent la même opération : sortir un outil de production d'un site et le remettre en marche ailleurs."
       },
@@ -2313,11 +2241,6 @@
        "valeur": "10 %",
        "libelle": "des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC E01 : bande de chiffres, 4 items -->"
-      }
      ]
     },
     {
@@ -2364,11 +2287,6 @@
         "texte": "**[Levage et manutention lourde](/travaux-industriels/levage-manutention/)**"
        },
        "benefice": "Une charge déplacée selon un mode opératoire écrit, points d'élingage relevés avant la dépose."
-      }
-     ],
-     "prose": [
-      {
-       "texte": "<!-- BLOC C02 : quatre cartes, une par page fille -->"
       }
      ]
     },
@@ -20894,11 +20812,6 @@
        "valeur": "+ 120",
        "libelle": "Clients industriels, dont plus de 80 réguliers."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC D02 : bande de chiffres en bento, sous le héros -->"
-      }
      ]
     },
     {
@@ -20959,11 +20872,6 @@
         "texte": "**Plages ajustables**"
        },
        "benefice": "Astreinte complète, astreinte saisonnière sur vos seuls pics, ou renfort des périodes que votre équipe ne peut pas tenir."
-      }
-     ],
-     "prose": [
-      {
-       "texte": "<!-- BLOC C02 : prestations et bénéfices côte à côte -->"
       }
      ]
     },
@@ -21123,11 +21031,6 @@
        "valeur": "10",
        "libelle": "hubs de techniciens, Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon, Nantes"
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC D02 : bande de chiffres, 4 colonnes -->"
-      }
      ]
     },
     {
@@ -21199,11 +21102,6 @@
         "texte": ", si vous le souhaitez : plan de préventif, structuration de la GMAO, renégociation des prestations, montée en compétence"
        },
        "benefice": "Le même référent du cadrage à l'exécution. Les résultats se mesurent sur vos propres indicateurs"
-      }
-     ],
-     "prose": [
-      {
-       "texte": "<!-- BLOC C02 : bloc d'offre, prestations et bénéfices côte à côte -->"
       }
      ]
     },
@@ -21372,11 +21270,6 @@
        "valeur": "10",
        "libelle": "hubs de techniciens, Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon, Nantes."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC D02 : bande de chiffres en bento, sous le héros -->"
-      }
      ]
     },
     {
@@ -21441,11 +21334,6 @@
         "texte": "par nos propres équipes techniques"
        },
        "benefice": "Le même groupe porte le projet du plan à la machine qui tourne. Plus de renvoi de responsabilité entre celui qui conçoit, celui qui fabrique et celui qui pose"
-      }
-     ],
-     "prose": [
-      {
-       "texte": "<!-- BLOC C02 : bloc d'offre, prestations et bénéfices côte à côte -->"
       }
      ]
     },
@@ -21608,11 +21496,6 @@
        "valeur": "10 %",
        "libelle": "Part des candidats retenus chez nous, après entretien technique et comportemental."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC D02 : bande de chiffres en bento, sous le héros -->"
-      }
      ]
     },
     {
@@ -21730,9 +21613,6 @@
       }
      ],
      "prose": [
-      {
-       "texte": "<!-- BLOC C02 : la trame, section par section -->"
-      },
       {
        "texte": "> La norme NF EN 13306, publiée par AFNOR, fixe le vocabulaire de la maintenance et la définition des niveaux. L'utiliser évite les malentendus de terminologie entre client et prestataire."
       }
@@ -21914,11 +21794,6 @@
        "valeur": "10 %",
        "libelle": "des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC E01 : bande de chiffres, 4 items -->"
-      }
      ]
     },
     {
@@ -21971,11 +21846,6 @@
         "texte": "**Travaux de maintenance à l'occasion de la dépose**"
        },
        "benefice": "La machine part révisée plutôt qu'usée. Vous gagnez une remise à niveau sans second arrêt."
-      }
-     ],
-     "prose": [
-      {
-       "texte": "<!-- BLOC C02 : tableau prestations / bénéfices -->"
       }
      ]
     },
@@ -22147,11 +22017,6 @@
        "valeur": "10",
        "libelle": "hubs de techniciens, Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon, Nantes."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC D02 : bande de chiffres, 4 colonnes -->"
-      }
      ]
     },
     {
@@ -22230,11 +22095,6 @@
         "texte": "démontage, déplacement de machines, intégration dans une ligne existante, transfert entre deux sites"
        },
        "benefice": "Un seul prestataire du démontage à la remise en route"
-      }
-     ],
-     "prose": [
-      {
-       "texte": "<!-- BLOC C02 : bloc d'offre, prestations et bénéfices côte à côte -->"
       }
      ]
     },
@@ -22398,11 +22258,6 @@
        "valeur": "4",
        "libelle": "agences · Lyon (siège), Montréal, Dubaï, Madrid."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC E01 : bande de chiffres, 4 items -->"
-      }
      ]
     },
     {
@@ -22461,11 +22316,6 @@
         "texte": "**Stockage temporaire, démantèlement, adaptation des réseaux**"
        },
        "benefice": "Sur devis, quand le site d'arrivée n'est pas prêt ou quand une partie du parc ne repart pas."
-      }
-     ],
-     "prose": [
-      {
-       "texte": "<!-- BLOC C02 : tableau prestations / bénéfices -->"
       }
      ]
     },
@@ -23138,11 +22988,6 @@
        "valeur": "4",
        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC D02 : bande de chiffres, 4 items -->"
-      }
      ]
     },
     {
@@ -23207,11 +23052,6 @@
         "texte": "de l'organisme accrédité, levée des réserves"
        },
        "benefice": "Vous arrivez à la vérification avec un dossier propre, pas avec des questions ouvertes"
-      }
-     ],
-     "prose": [
-      {
-       "texte": "<!-- BLOC C02 : bloc d'offre, prestations et bénéfices côte à côte -->"
       }
      ]
     },
@@ -23615,20 +23455,12 @@
        "libelle": "Lyon (siège), Montréal, Dubaï, Madrid",
        "detail": "Intervention partout en France."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC D02 : bande de chiffres en bento, sous le héros -->"
-      }
      ]
     },
     {
      "type": "probleme",
      "punchline": "La ligne est à l'arrêt, et tout le monde attend une date",
      "puces": [
-      {
-       "texte": "<!-- BLOC L06 : encart d'alerte, ton urgence -->"
-      },
       {
        "texte": "> **Règle numéro un : ne forcez pas le redémarrage.** Relancer un équipement défaillant sans comprendre la cause transforme une petite défaillance en casse majeure. Dix minutes d'analyse coûtent toujours moins cher qu'un réducteur détruit."
       },
@@ -23669,11 +23501,6 @@
         "texte": "**Astreinte 24/24 et 7/7 en option**"
        },
        "benefice": "La panne de 3 heures du matin trouve un interlocuteur, pas un répondeur."
-      }
-     ],
-     "prose": [
-      {
-       "texte": "<!-- BLOC C02 : prestations et bénéfices côte à côte -->"
       }
      ]
     },
@@ -23837,11 +23664,6 @@
        "valeur": "4 agences",
        "libelle": "Lyon (siège), Montréal, Dubaï, Madrid."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC D02 : bande de chiffres en bento, sous le héros -->"
-      }
      ]
     },
     {
@@ -23921,9 +23743,6 @@
       }
      ],
      "prose": [
-      {
-       "texte": "<!-- BLOC C02 : prestations et bénéfices côte à côte, offre Résidence -->"
-      },
       {
        "texte": "La prestation qui tranche le débat en pratique : vous avez le technicien sur site, nous portons la fonction employeur."
       }
@@ -24105,11 +23924,6 @@
        "valeur": "8",
        "libelle": "domaines couverts · mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie, robotique."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC E01 : bande de chiffres, 4 items -->"
-      }
      ]
     },
     {
@@ -24178,11 +23992,6 @@
         "texte": "**Peinture, transport en atelier, modernisation**"
        },
        "benefice": "En supplément sur devis, quand la rénovation doit aller jusqu'au bout."
-      }
-     ],
-     "prose": [
-      {
-       "texte": "<!-- BLOC C02 : tableau prestations / bénéfices -->"
       }
      ]
     },
@@ -24595,11 +24404,6 @@
        "valeur": "4",
        "libelle": "agences · Lyon (siège), Montréal, Dubaï, Madrid."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC E01 : bande de chiffres, 4 items -->"
-      }
      ]
     },
     {
@@ -24652,11 +24456,6 @@
         "texte": "**[Remise en état machine industrielle](/offres/retrofit/remise-en-etat/)**"
        },
        "benefice": "Quand la dégradation dépasse les organes de commande : démontage, expertise, réparation, peinture, remontage, essais."
-      }
-     ],
-     "prose": [
-      {
-       "texte": "<!-- BLOC C02 : tableau prestations / bénéfices -->"
       }
      ]
     },
@@ -24818,11 +24617,6 @@
        "valeur": "10 %",
        "libelle": "des candidats retenus · entretien technique et entretien comportemental."
       }
-     ],
-     "reponse": [
-      {
-       "texte": "<!-- BLOC E01 : bande de chiffres, 4 items -->"
-      }
      ]
     },
     {
@@ -24881,11 +24675,6 @@
         "texte": "**Montée en cadence accompagnée**"
        },
        "benefice": "Essais, réglages, contrôle qualité sur les premières séries, vos opérateurs épaulés dans un environnement neuf."
-      }
-     ],
-     "prose": [
-      {
-       "texte": "<!-- BLOC C02 : tableau prestations / bénéfices -->"
       }
      ]
     },

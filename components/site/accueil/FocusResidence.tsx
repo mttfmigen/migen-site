@@ -64,7 +64,11 @@ const PASTILLE: React.CSSProperties = {
 };
 
 export default function FocusResidence({
-  href = "#",
+  // La maquette écrit « # » : sa navigation était interne à l'éditeur. La
+  // valeur par défaut est désormais la vraie page de l'offre, prise dans
+  // l'inventaire. Un défaut à « # » rendait le bouton inerte dès que
+  // l'appelant oubliait la prop, ce qui est précisément ce qui s'est produit.
+  href = "/offres/residence/",
   image = "/assets/web/sv-convoyeur.jpg",
   imageAlt = "Technicien migen sur une ligne intralogistique",
 }: ProprietesFocusResidence) {

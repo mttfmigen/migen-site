@@ -1,4 +1,5 @@
 import type { SectionDeroule } from "@/types/contenu";
+import styles from "./Blocs.module.css";
 import {
   CHAPEAU,
   colonnes,
@@ -10,6 +11,7 @@ import {
   TITRE2,
   VERRE,
 } from "./habillage";
+import TexteRiche from "./TexteRiche";
 
 /**
  * Section 5 du gabarit : ce qui se passe après le clic, étape par étape.
@@ -21,14 +23,18 @@ export default function Deroule({ section }: { section: SectionDeroule }) {
   if (section.etapes.length === 0) return null;
 
   return (
-    <section style={SECTION}>
+    <section className={styles.corpus} style={SECTION}>
       <div style={LARGEUR}>
         <div className="mg-r2" style={ENTETE}>
           <div>
             <div style={SURTITRE}>Le déroulé</div>
             {section.titre ? <h2 style={TITRE2}>{section.titre}</h2> : null}
           </div>
-          {section.intro ? <p style={CHAPEAU}>{section.intro}</p> : null}
+          {section.intro ? (
+            <p style={CHAPEAU}>
+              <TexteRiche texte={section.intro} />
+            </p>
+          ) : null}
         </div>
 
         <div
@@ -55,8 +61,15 @@ export default function Deroule({ section }: { section: SectionDeroule }) {
                   color: "var(--ink1)",
                 }}
               >
-                <strong style={PROSE_FORT}>{etape.titre}</strong>
-                {etape.texte ? ` ${etape.texte}` : null}
+                <strong style={PROSE_FORT}>
+                  <TexteRiche texte={etape.titre} />
+                </strong>
+                {etape.texte ? (
+                  <>
+                    {" "}
+                    <TexteRiche texte={etape.texte} />
+                  </>
+                ) : null}
               </div>
             </div>
           ))}

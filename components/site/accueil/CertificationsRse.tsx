@@ -159,15 +159,11 @@ export default function CertificationsRse() {
                   </div>
                 ))}
               </div>
-              <div
-                style={{
-                  font: "400 11.5px var(--fb)",
-                  color: "rgba(255,255,255,.32)",
-                  marginTop: "22px",
-                }}
-              >
-                Chiffres 2025 · à confirmer avant publication
-              </div>
+              {/* La maquette portait ici une note de travail, rendue en texte
+                  visible : « Chiffres 2025 · à confirmer avant publication… ». Elle ne
+                  part pas en production, un visiteur n'a pas à lire les réserves
+                  internes sur les chiffres qu'on lui montre. La réserve elle-même
+                  reste ouverte et suivie dans docs/RESERVES-CONTENU.md. */}
             </div>
           </div>
         </div>

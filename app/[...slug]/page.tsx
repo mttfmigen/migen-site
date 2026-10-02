@@ -3,10 +3,21 @@ import { notFound } from "next/navigation";
 
 import FilAriane from "@/components/cocon/FilAriane";
 import Maillage from "@/components/cocon/Maillage";
+import FormulaireBasDePage from "@/components/site/accueil/FormulaireBasDePage";
+import Article from "@/components/site/article/Article";
 import Bloc from "@/components/site/blocs/Bloc";
-import { cheminCanonique, cheminsPublies, pageParChemin } from "@/lib/contenu";
+import PageEditoriale from "@/components/site/editorial/PageEditoriale";
+import {
+  articleParChemin,
+  cheminCanonique,
+  cheminsArticles,
+  cheminsPublies,
+  pageParChemin,
+} from "@/lib/contenu";
 import { metadonneesSeo } from "@/lib/seo/metadonnees";
+import type { ContenuArticle } from "@/types/article";
 import type { ContenuPage, Section } from "@/types/contenu";
+import { estEditorial } from "@/types/editorial";
 
 /**
  * Route attrape-tout du cocon : toute URL hiérarchique passe par ici.
@@ -68,8 +79,11 @@ function sectionsValides(contenu: unknown): Section[] {
  * lieu de renvoyer une 404.
  */
 export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
-  const chemins = await cheminsPublies();
-  return chemins
+  const [pages, articles] = await Promise.all([
+    cheminsPublies(),
+    cheminsArticles(),
+  ]);
+  return [...pages, ...articles]
     .map((chemin) => ({ slug: chemin.path.split("/").filter(Boolean) }))
     .filter(({ slug }) => slug.length > 0);
 }
@@ -82,16 +96,26 @@ export async function generateMetadata({
   const { slug } = await params;
   const chemin = cheminCanonique(slug);
   const complete = await pageParChemin(chemin);
+  if (complete) {
+    return metadonneesSeo({
+      seo: complete.seo,
+      chemin,
+      titreRepli: complete.page.titre_h1,
+    });
+  }
 
-  // Pas de page : `notFound()` est appelé par le rendu juste après. On évite
-  // seulement de servir le titre du gabarit à une URL qui n'existe pas.
-  if (!complete) return { title: "Page introuvable" };
+  const article = await articleParChemin(chemin);
+  if (article) {
+    return metadonneesSeo({
+      seo: article.seo,
+      chemin,
+      titreRepli: article.article.titre,
+    });
+  }
 
-  return metadonneesSeo({
-    seo: complete.seo,
-    chemin,
-    titreRepli: complete.page.titre_h1,
-  });
+  // Ni page ni article : `notFound()` est appelé par le rendu juste après. On
+  // évite seulement de servir le titre du gabarit à une URL qui n'existe pas.
+  return { title: "Page introuvable" };
 }
 
 export default async function PageDuCocon({
@@ -102,9 +126,47 @@ export default async function PageDuCocon({
   const { slug } = await params;
   const chemin = cheminCanonique(slug);
   const complete = await pageParChemin(chemin);
-  if (!complete) notFound();
+
+  // Une URL du blog ne correspond à aucune ligne de `pages` : elle est servie
+  // par la table `articles`, sous le seul préfixe /ressources/articles/.
+  if (!complete) {
+    const trouve = await articleParChemin(chemin);
+    if (!trouve) notFound();
+    const { article } = trouve;
+    return (
+      <Article
+        titre={article.titre}
+        contenu={article.contenu as unknown as ContenuArticle}
+        publieLe={article.published_at}
+        auteur={article.auteur}
+      />
+    );
+  }
 
   const { page } = complete;
+
+  // Deux gabarits cohabitent dans `pages.contenu` : celui de vente, en dix
+  // sections, et l'éditorial, en blocs suivis. On tranche sur ce que le jsonb
+  // porte réellement, pas sur ce qu'un type déclare : il sort de la base en
+  // `unknown`.
+  if (estEditorial(page.contenu)) {
+    return (
+      <PageEditoriale
+        titre={page.titre_h1}
+        contenu={page.contenu}
+        filAriane={<FilAriane path={page.path} />}
+        maillage={
+          <>
+            <FormulaireBasDePage
+              formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+            />
+            <Maillage page={page} />
+          </>
+        }
+      />
+    );
+  }
+
   const sections = sectionsValides(page.contenu);
 
   return (
@@ -142,6 +204,19 @@ export default async function PageDuCocon({
             </h1>
           </section>
         )}
+
+        {/*
+          Le formulaire de bas de page, sur TOUTES les pages du cocon.
+
+          Il n'est pas décoratif : la constante `ANCRE_FORMULAIRE` de
+          `components/site/blocs/habillage.ts` vaut `#formulaire`, et c'est la
+          cible du bouton principal des dix sections du gabarit de vente. Sans
+          cette section, les 126 pages portaient un appel à l'action qui ne
+          menait nulle part, et `/contact/` affichait son titre sans un champ à
+          remplir. C'est aussi ce que fait la maquette, qui termine chaque page
+          par ce bloc.
+        */}
+        <FormulaireBasDePage formulaire={`cocon${page.path.replace(/\//g, "-")}`} />
 
         <div
           style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}

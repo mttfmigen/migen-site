@@ -22,8 +22,13 @@ export interface Besoin {
   /** Destination du bouton principal. */
   href: string;
   cadre: string;
-  /** Jamais de délai chiffré d'intervention : voir le contrat de portage. */
-  delai: string;
+  /**
+   * Jamais de délai chiffré d'intervention : voir le contrat de portage. Le
+   * champ est donc facultatif, et la ligne « Délai » disparaît quand la
+   * maquette n'offre aucune valeur portable. Mieux vaut pas de ligne qu'une
+   * ligne inventée.
+   */
+  delai?: string;
   duree: string;
   /** Styles portés par les données, recopiés tels quels. */
   wrapCss: CSSProperties;
@@ -113,7 +118,7 @@ export default function BentoBesoins({
         </div>
 
         <div
-          className="mg-bento"
+          className={`mg-bento ${styles.grille}`}
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3,minmax(0,1fr))",
@@ -166,7 +171,11 @@ export default function BentoBesoins({
                       >
                         {n.num}
                       </span>
-                      <span aria-hidden="true" style={n.signCss}>
+                      <span
+                        aria-hidden="true"
+                        className={styles.signe}
+                        style={n.signCss}
+                      >
                         +
                       </span>
                     </div>
@@ -245,7 +254,11 @@ export default function BentoBesoins({
                         </div>
                       </div>
                       <span style={n.tagCss}>{n.offer}</span>
-                      <span aria-hidden="true" style={n.signCss}>
+                      <span
+                        aria-hidden="true"
+                        className={styles.signe}
+                        style={n.signCss}
+                      >
                         +
                       </span>
                     </button>
@@ -371,10 +384,12 @@ export default function BentoBesoins({
                             <span style={CLE}>Cadre</span>
                             <span style={VALEUR}>{n.cadre}</span>
                           </div>
-                          <div style={CELLULE}>
-                            <span style={CLE}>Délai</span>
-                            <span style={VALEUR}>{n.delai}</span>
-                          </div>
+                          {n.delai && (
+                            <div style={CELLULE}>
+                              <span style={CLE}>Délai</span>
+                              <span style={VALEUR}>{n.delai}</span>
+                            </div>
+                          )}
                           <div style={CELLULE}>
                             <span style={CLE}>Durée</span>
                             <span style={VALEUR}>{n.duree}</span>

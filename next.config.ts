@@ -55,6 +55,22 @@ const nextConfig: NextConfig = {
    */
   skipTrailingSlashRedirect: true,
 
+  /**
+   * Le slash final fait partie de la forme canonique des URL du site.
+   *
+   * Sans ce réglage, `next/link` NORMALISE les href vers la forme sans slash :
+   * un lien écrit « /offres/zero-arret/ » part en « /offres/zero-arret », le
+   * proxy le redirige en 308 vers la forme avec slash, et chaque lien interne
+   * du site coûte un aller-retour de plus, au visiteur comme au robot. Le
+   * corpus en porte près de six cents.
+   *
+   * Il n'y a pas de conflit avec `skipTrailingSlashRedirect` au-dessus : ce
+   * dernier débranche la redirection AUTOMATIQUE de Next, celui-ci fixe la
+   * FORME que Next écrit. Le proxy reste seul juge des redirections, et il
+   * n'a plus rien à rattraper sur les liens internes.
+   */
+  trailingSlash: true,
+
   async headers() {
     // `/:chemin*` couvre la racine comme tous les sous-chemins.
     return [{ source: "/:chemin*", headers: ENTETES_SECURITE }];

@@ -190,16 +190,11 @@ export default function TemoignagesClients({
           ))}
         </div>
 
-        <div
-          style={{
-            font: "400 11.5px var(--fb)",
-            color: "var(--ink4)",
-            marginTop: 18,
-          }}
-        >
-          Verbatims reformulés à partir de retours clients · à valider avec les
-          intéressés avant publication
-        </div>
+        {/* La maquette portait ici une note de travail, rendue en texte
+            visible : « Verbatims reformulés à partir de retours clients · à valider avec les… ». Elle ne
+            part pas en production, un visiteur n'a pas à lire les réserves
+            internes sur les chiffres qu'on lui montre. La réserve elle-même
+            reste ouverte et suivie dans docs/RESERVES-CONTENU.md. */}
       </div>
     </section>
   );

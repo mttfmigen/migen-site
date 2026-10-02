@@ -2,6 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 import type { Preuve, SectionPreuves } from "@/types/contenu";
 import styles from "./Blocs.module.css";
 import { colonnes, LARGEUR, SECTION, SURTITRE, TITRE2 } from "./habillage";
+import TexteRiche from "./TexteRiche";
 
 const CARTE: CSSProperties = {
   display: "block",
@@ -12,10 +13,17 @@ const CARTE: CSSProperties = {
   boxShadow: "0 1px 1px rgba(0,0,0,.04)",
 };
 
-/** Le contenu d'une carte, identique qu'elle soit cliquable ou non. */
+/** Le contenu d'une carte, cliquable ou non. */
 function Contenu({ preuve }: { preuve: Preuve }): ReactNode {
+  // Toute la carte est un lien quand l'étude de cas existe. Un lien du corpus
+  // rendu là-dedans produirait un `<a>` à l'intérieur d'un `<a>`, que le
+  // navigateur referme à sa façon : la carte se casse. Le corpus actuel ne met
+  // jamais les deux ensemble (60 liens dans `titre`, aucun sur une carte
+  // cliquable), ce garde-fou empêche qu'une relecture future le fasse.
+  const riche = !preuve.lienHref;
+
   return (
-    <div style={{ padding: "24px 26px 28px" }}>
+    <div className={styles.corpus} style={{ padding: "24px 26px 28px" }}>
       <div
         style={{
           font: "600 19px/1.3 var(--ft)",
@@ -23,7 +31,7 @@ function Contenu({ preuve }: { preuve: Preuve }): ReactNode {
           color: "var(--ink)",
         }}
       >
-        {preuve.titre}
+        {riche ? <TexteRiche texte={preuve.titre} /> : preuve.titre}
       </div>
       {preuve.texte ? (
         <div
@@ -33,7 +41,7 @@ function Contenu({ preuve }: { preuve: Preuve }): ReactNode {
             marginTop: 12,
           }}
         >
-          {preuve.texte}
+          {riche ? <TexteRiche texte={preuve.texte} /> : preuve.texte}
         </div>
       ) : null}
       {preuve.lienLibelle ? (

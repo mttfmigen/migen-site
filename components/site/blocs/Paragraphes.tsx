@@ -1,5 +1,6 @@
 import type { Paragraphe } from "@/types/contenu";
 import { PROSE, PROSE_FORT } from "./habillage";
+import TexteRiche from "./TexteRiche";
 
 /**
  * Les paragraphes longs du corpus, avec leur gras d'attaque.
@@ -22,9 +23,11 @@ export default function Paragraphes({
       {paragraphes.map((paragraphe) => (
         <p key={paragraphe.texte} style={PROSE}>
           {paragraphe.accroche ? (
-            <strong style={PROSE_FORT}>{paragraphe.accroche} </strong>
+            <strong style={PROSE_FORT}>
+              <TexteRiche texte={paragraphe.accroche} />{" "}
+            </strong>
           ) : null}
-          {paragraphe.texte}
+          <TexteRiche texte={paragraphe.texte} />
         </p>
       ))}
     </div>

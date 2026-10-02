@@ -149,9 +149,16 @@ export function colonnes(nombre: number): CSSProperties {
 
 /**
  * Ancre du formulaire de la page, visée par tous les appels à l'action.
- * La maquette l'écrit `#form-page` sur la section du formulaire de bas de page.
+ *
+ * `#formulaire`, et pas `#form-page` comme l'écrit la maquette : l'id rendu
+ * par `components/site/accueil/FormulaireBasDePage.tsx` est `formulaire`,
+ * c'est lui qui porte son `scroll-margin-top`, et c'est déjà la cible de
+ * `components/cocon/AppelAction.tsx`. Reprendre le nom de la maquette aurait
+ * donné un second nom d'ancre au projet, et surtout un bouton qui ne mène
+ * nulle part sur les 126 pages du cocon : la maquette le rendait vivant par sa
+ * propre logique de navigation, qui n'est pas portée.
  */
-export const ANCRE_FORMULAIRE = "#form-page";
+export const ANCRE_FORMULAIRE = "#formulaire";
 
 /** Un numéro de téléphone français devient un `tel:` sans espaces. */
 export function lienTelephone(telephone: string): string {

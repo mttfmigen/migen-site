@@ -20,6 +20,9 @@ import ProblematiqueClient from "@/components/site/accueil/ProblematiqueClient";
 import ProcessSelection from "@/components/site/accueil/ProcessSelection";
 import SecteursAccueil from "@/components/site/accueil/SecteursAccueil";
 import TemoignagesClients from "@/components/site/accueil/TemoignagesClients";
+import { VUE_AVANT, VUE_AVEC } from "@/components/site/accueil/avant-apres-donnees";
+import { BESOINS } from "@/components/site/accueil/bento-besoins-donnees";
+import { ETAPES_METHODE } from "@/components/site/accueil/methode-etapes-donnees";
 import { pageParChemin } from "@/lib/contenu";
 import { metadonneesSeo } from "@/lib/seo/metadonnees";
 
@@ -80,9 +83,9 @@ export default function Accueil() {
         <TemoignagesClients />
         <FriseHistoire />
         <PourquoiExternaliser />
-        <BentoBesoins />
-        <AvantApresBascule />
-        <MethodeQuatreEtapes />
+        <BentoBesoins besoins={BESOINS} />
+        <AvantApresBascule avant={VUE_AVANT} avec={VUE_AVEC} />
+        <MethodeQuatreEtapes etapes={ETAPES_METHODE} />
         <SecteursAccueil />
         <HubsAccueil />
         <FormulaireBasDePage />

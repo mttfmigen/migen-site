@@ -1,5 +1,7 @@
 import type { SectionChiffres } from "@/types/contenu";
+import styles from "./Blocs.module.css";
 import Paragraphes from "./Paragraphes";
+import TexteRiche from "./TexteRiche";
 import {
   CHAPEAU,
   colonnes,
@@ -25,7 +27,7 @@ export default function ChiffresCles({ section }: { section: SectionChiffres }) 
   if (section.chiffres.length === 0 && !section.reponse?.length) return null;
 
   return (
-    <section style={SECTION}>
+    <section className={styles.corpus} style={SECTION}>
       <div style={LARGEUR}>
         <div className="mg-r2" style={ENTETE}>
           <div>
@@ -62,7 +64,7 @@ export default function ChiffresCles({ section }: { section: SectionChiffres }) 
                     marginTop: 12,
                   }}
                 >
-                  {chiffre.libelle}
+                  <TexteRiche texte={chiffre.libelle} />
                 </div>
                 {chiffre.detail ? (
                   <div
@@ -72,7 +74,7 @@ export default function ChiffresCles({ section }: { section: SectionChiffres }) 
                       marginTop: 5,
                     }}
                   >
-                    {chiffre.detail}
+                    <TexteRiche texte={chiffre.detail} />
                   </div>
                 ) : null}
               </div>

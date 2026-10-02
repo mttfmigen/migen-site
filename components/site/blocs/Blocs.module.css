@@ -63,3 +63,48 @@
   background: var(--acc-w);
   color: var(--acc-ink);
 }
+
+/* Liens internes que `TexteRiche` pose dans le corpus : 597 dans les 126 pages
+   importées. `globals.css` déclare `a { color: var(--ink); text-decoration:
+   none }`, donc SANS règle ici un lien du corpus se rend en #1c1b19 sans
+   soulignement, c'est-à-dire indistinguable du texte autour sur fond clair, et
+   #1c1b19 sur #1c1b19 sur le panneau anthracite, soit un contraste de 1:1.
+
+   La classe se pose sur le conteneur du texte du corpus, jamais sur un
+   conteneur qui porte aussi un lien d'habillage : les boutons d'action et la
+   carte de réalisation ont leur propre traitement et ne doivent pas être
+   soulignés. */
+.corpus a {
+  /* Même traitement que `.corps a` d'`Article.module.css` : un lien du corpus
+     doit se lire pareil dans un article et dans une page de vente.
+     `var(--acc-ink)` vaut 8,9:1 sur blanc, `var(--acc)` n'y tiendrait que
+     2,6:1. */
+  color: var(--acc-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-thickness var(--tr);
+}
+.corpus a:hover,
+.corpus a:focus-visible {
+  /* La couleur ne change pas : le survol épaissit le trait. L'orange de survol
+     global, `var(--acc)`, ne tient que 2,6:1 sur blanc, sous le plancher de
+     4,5:1. */
+  color: var(--acc-ink);
+  text-decoration-thickness: 2px;
+}
+
+/* Le même corpus sur le panneau anthracite (`var(--panel)`, #1c1b19) : les
+   sections « problème » et l'appel à l'action final. `var(--acc-ink)` n'y vaut
+   que 1,9:1. Le blanc y vaut 17:1, l'orange de marque 6,7:1. */
+.corpusClair a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--tr);
+}
+.corpusClair a:hover,
+.corpusClair a:focus-visible {
+  color: var(--acc);
+}

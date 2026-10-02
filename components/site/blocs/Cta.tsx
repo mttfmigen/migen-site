@@ -10,6 +10,7 @@ import {
   SURTITRE,
   VERRE,
 } from "./habillage";
+import TexteRiche from "./TexteRiche";
 
 /**
  * Sections 7 et 10 du gabarit : l'appel à l'action, introduit par une question
@@ -47,7 +48,10 @@ export default function Cta({
         >
           {final ? <div style={LUEUR} /> : null}
 
-          <div style={{ flex: 1, minWidth: 280, position: "relative" }}>
+          <div
+            className={final ? styles.corpusClair : styles.corpus}
+            style={{ flex: 1, minWidth: 280, position: "relative" }}
+          >
             <div style={{ ...SURTITRE, marginBottom: 10 }}>Prochaine étape</div>
             <h2
               style={{
@@ -59,7 +63,7 @@ export default function Cta({
                 textWrap: "balance",
               }}
             >
-              {section.question}
+              <TexteRiche texte={section.question} />
             </h2>
             {section.rappel ? (
               <p
@@ -70,7 +74,7 @@ export default function Cta({
                   maxWidth: "56ch",
                 }}
               >
-                {section.rappel}
+                <TexteRiche texte={section.rappel} />
               </p>
             ) : null}
           </div>

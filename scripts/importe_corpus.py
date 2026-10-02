@@ -35,6 +35,13 @@ TYPE_PAR_NUMERO = {
 
 ENTETE_SECTION = re.compile(r"^##\s+SECTION\s+(\d+)\s*[.·]\s*(.*)$", re.M)
 
+# Les commentaires HTML du corpus (« <!-- BLOC E01 : bande de chiffres --> »)
+# sont des notes de mise en page à l'intention du maquettiste. Ils ne sont pas
+# du contenu. Sans ce retrait, ils ressortaient DANS les paragraphes extraits,
+# et React les rendait échappés, donc lisibles à l'écran : quarante-cinq notes
+# de travail affichées au visiteur sur vingt-deux pages.
+COMMENTAIRE_HTML = re.compile(r"<!--.*?-->", re.S)
+
 
 def sans_accent(s: str) -> str:
     return "".join(c for c in unicodedata.normalize("NFD", s) if unicodedata.category(c) != "Mn")
@@ -431,6 +438,7 @@ def construis(numero: int, bloc: str, fm: dict, alertes: list[str]) -> dict | No
 
 def analyse(chemin: pathlib.Path) -> dict:
     fm, corps = frontmatter(chemin.read_text(errors="replace"))
+    corps = COMMENTAIRE_HTML.sub("", corps)
     sections_brutes = decoupe_sections(corps)
     alertes: list[str] = []
     sections = []

@@ -10,11 +10,28 @@ type CleOffre =
   | "bureauEtudes"
   | "travauxIndustriels";
 
-export interface ProprietesGrilleOffres {
-  /** Destination de chaque carte. La maquette porte « # » (sa navigation était
-      interne à l'éditeur) : l'appelant fournit les vrais chemins. */
-  liens?: Partial<Record<CleOffre, string>>;
-}
+/**
+ * La destination de chaque carte.
+ *
+ * La maquette porte « # » partout : sa navigation était interne à l'éditeur.
+ * Les vrais chemins sont ceux de l'inventaire, `docs/urls-site-actuel.json`.
+ *
+ * `Record` COMPLET et non `Partial` : c'est le garde-fou. Ajouter une clé à
+ * `CleOffre` sans son chemin ne compile plus, au lieu de retomber en silence
+ * sur un lien mort. Et une constante plutôt qu'une prop : il n'y a qu'une
+ * grille d'offres, sur une seule page, et une prop non passée est exactement
+ * ce qui a rendu ces cinq cartes inertes.
+ *
+ * `travauxIndustriels` vit HORS de `/offres/`, contrairement aux quatre
+ * autres : c'est l'URL de l'inventaire, elle ne se canonicalise pas ici.
+ */
+const LIENS: Record<CleOffre, string> = {
+  residence: "/offres/residence/",
+  zeroArret: "/offres/zero-arret/",
+  arretTechnique: "/offres/arret-technique/",
+  bureauEtudes: "/offres/bureau-etudes/",
+  travauxIndustriels: "/travaux-industriels/",
+};
 
 /** Cartes 03 à 05 : même gabarit, seul le contenu change. */
 const CARTES_SOBRES: readonly {
@@ -84,8 +101,7 @@ const BOUTON = {
   whiteSpace: "nowrap",
 } as const;
 
-export default function GrilleOffres({ liens = {} }: ProprietesGrilleOffres) {
-  const vers = (cle: CleOffre) => liens[cle] ?? "#";
+export default function GrilleOffres() {
 
   return (
     <section style={{ maxWidth: 1200, margin: "0 auto", padding: "44px 40px 0" }}>
@@ -248,7 +264,7 @@ export default function GrilleOffres({ liens = {} }: ProprietesGrilleOffres) {
               intervenant, et la ligne ne s&apos;arrête plus.
             </p>
             <a
-              href={vers("residence")}
+              href={LIENS.residence}
               className={styles.lienAccent}
               style={{
                 ...BOUTON,
@@ -315,7 +331,7 @@ export default function GrilleOffres({ liens = {} }: ProprietesGrilleOffres) {
               formules, sur devis.
             </p>
             <a
-              href={vers("zeroArret")}
+              href={LIENS.zeroArret}
               className={styles.lienAccent}
               style={{
                 ...BOUTON,
@@ -356,7 +372,7 @@ export default function GrilleOffres({ liens = {} }: ProprietesGrilleOffres) {
               {carte.texte}
             </p>
             <a
-              href={vers(carte.cle)}
+              href={LIENS[carte.cle]}
               className={styles.lienNeutre}
               style={{
                 ...BOUTON,

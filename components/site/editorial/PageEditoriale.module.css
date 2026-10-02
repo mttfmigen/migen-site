@@ -1,0 +1,75 @@
+/* Habillage des pages éditoriales. Tout ce qui ne peut pas tenir en style en
+   ligne : les survols, et le style des éléments que le composant ne touche pas
+   un par un (les liens du corps, les cellules du tableau). */
+
+.lienSommaire {
+  color: var(--ink1);
+  transition: color var(--tr);
+}
+.lienSommaire:hover,
+.lienSommaire:focus-visible {
+  color: var(--acc);
+}
+
+/* Les liens internes posés par le corpus dans le corps du texte.
+   Soulignés, et pas seulement colorés : l'information ne doit pas passer par la
+   couleur seule, c'est le critère WCAG 1.4.1. Dans un texte long, c'est aussi
+   la seule façon de les repérer en lecture rapide. */
+.corps a {
+  color: var(--acc-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--tr);
+}
+.corps a:hover,
+.corps a:focus-visible {
+  color: var(--acc-d);
+}
+
+/* Le tableau garde ses colonnes et défile, au lieu de s'empiler : une donnée
+   comparée perd son sens si ses colonnes se retrouvent l'une sous l'autre. */
+.cadreTableau {
+  overflow-x: auto;
+  margin: 0 0 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--rad-s);
+  background: var(--card);
+  /* Le cadre est atteignable au clavier pour être défilable sans souris : il
+     lui faut donc un focus visible, comme à n'importe quel élément focusable. */
+  scrollbar-width: thin;
+}
+.cadreTableau:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 2px;
+}
+
+.tableau {
+  width: 100%;
+  border-collapse: collapse;
+  font: 400 14.5px/1.55 var(--fb);
+  color: var(--ink1);
+}
+.tableau th {
+  text-align: left;
+  font: 600 10.5px var(--fb);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+.tableau td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.tableau tr:last-child td {
+  border-bottom: none;
+}
+/* La première colonne porte l'entrée de lecture : elle est appuyée. */
+.tableau td:first-child {
+  color: var(--ink);
+  font-weight: 500;
+}

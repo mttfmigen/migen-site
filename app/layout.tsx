@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Caveat, Poppins } from "next/font/google";
 
 import Bandeau from "@/components/consentement/Bandeau";
+import BarreActionMobile from "@/components/site/BarreActionMobile";
 import Entete from "@/components/site/Entete";
 import PiedDePage from "@/components/site/PiedDePage";
 import ConsentMode from "@/components/consentement/ConsentMode";
@@ -105,6 +106,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             position fixe : elle vit hors du flux, d'où sa place avant le
             contenu plutôt que dans chaque page. */}
         <Entete />
+        {/* Barre d'action basse du motif tactile de la maquette Mobile. Sa règle
+            CSS la masque au-delà de 880px, le même seuil où la navigation cède
+            au bouton menu. Sans elle, on ne peut pas appeler Migen depuis un
+            téléphone sans ouvrir le tiroir. */}
+        <BarreActionMobile />
 
         {children}
 

@@ -127,15 +127,11 @@ export default function FriseHistoire({
               ))}
             </ol>
           </div>
-          <div
-            style={{
-              font: "400 11.5px var(--fb)",
-              color: "var(--ink4)",
-              marginTop: 26,
-            }}
-          >
-            Jalons à confirmer · dates et chiffres à valider
-          </div>
+          {/* La maquette portait ici une note de travail, rendue en texte
+              visible : « Jalons à confirmer · dates et chiffres à valider… ». Elle ne
+              part pas en production, un visiteur n'a pas à lire les réserves
+              internes sur les chiffres qu'on lui montre. La réserve elle-même
+              reste ouverte et suivie dans docs/RESERVES-CONTENU.md. */}
         </div>
 
         <div

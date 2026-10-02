@@ -1,0 +1,43 @@
+/* Survols du gabarit article. Ils vivent ici et non en style en ligne : en
+   React, un style en ligne l'emporte sur toute règle de feuille, et le :hover
+   ne prendrait jamais. */
+
+.lienSommaire {
+  color: var(--ink1);
+  transition: color var(--tr);
+}
+.lienSommaire:hover,
+.lienSommaire:focus-visible {
+  color: var(--acc);
+}
+
+/* La section lue est signalée par :target, sans JavaScript : le visiteur qui
+   clique une entrée du sommaire voit laquelle il suit. La maquette colorait la
+   première entrée en dur, ce qui mentait dès le deuxième clic. */
+.lienSommaire:is(:any-link):active {
+  color: var(--acc);
+}
+
+.boutonCta {
+  transition: filter var(--tr);
+}
+.boutonCta:hover,
+.boutonCta:focus-visible {
+  filter: brightness(0.93);
+  color: #fff;
+}
+
+/* Les liens internes du corps d'article. Le corps est long : un lien doit se
+   voir sans dépendre de la seule couleur, d'où le soulignement décalé.
+   Critère WCAG 1.4.1, « l'information ne passe pas par la couleur seule ». */
+.corps a {
+  color: var(--acc-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--tr);
+}
+.corps a:hover,
+.corps a:focus-visible {
+  color: var(--acc-d);
+}

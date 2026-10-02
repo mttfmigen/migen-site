@@ -71,3 +71,28 @@ for (const interdit of [
 }
 
 console.log("Ouverture de l'accueil : toutes les assertions passent.");
+
+// ------------------------------------------------------------ liens inertes
+// La maquette écrit « # » partout, sa navigation était interne à l'éditeur.
+// Cinq cartes d'offre sont parties en production ainsi, cliquables et sans
+// destination. Cette assertion vaut mieux que la discipline.
+assert.ok(
+  !html.includes('href="#"'),
+  "un lien de la page d'accueil est rendu inerte (href=\"#\")",
+);
+
+// L'ancre du bouton principal des pages de vente doit exister dans le rendu du
+// formulaire : la constante et l'id ont divergé une fois, sur 126 pages.
+{
+  const { default: FormulaireBasDePage } = await import(
+    "@/components/site/accueil/FormulaireBasDePage"
+  );
+  const { ANCRE_FORMULAIRE } = await import("@/components/site/blocs/habillage");
+  const formulaire = renderToStaticMarkup(<FormulaireBasDePage />);
+  assert.ok(
+    formulaire.includes(`id="${ANCRE_FORMULAIRE.replace("#", "")}"`),
+    `ANCRE_FORMULAIRE vaut ${ANCRE_FORMULAIRE}, aucun id de ce nom dans le formulaire`,
+  );
+}
+
+console.log("Ouverture : aucun lien inerte, ancre du formulaire résolue.");

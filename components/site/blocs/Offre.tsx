@@ -1,6 +1,8 @@
 import type { CSSProperties } from "react";
 import type { SectionOffre, Tableau } from "@/types/contenu";
+import styles from "./Blocs.module.css";
 import Paragraphes from "./Paragraphes";
+import TexteRiche from "./TexteRiche";
 import {
   CHAPEAU,
   ENTETE,
@@ -88,7 +90,7 @@ function TableauComparatif({ tableau }: { tableau: Tableau }) {
                   color: "var(--ink)",
                 }}
               >
-                {cellule}
+                <TexteRiche texte={cellule} />
               </span>
             ) : (
               <span
@@ -98,7 +100,7 @@ function TableauComparatif({ tableau }: { tableau: Tableau }) {
                   color: "var(--ink2)",
                 }}
               >
-                {cellule}
+                <TexteRiche texte={cellule} />
               </span>
             ),
           )}
@@ -122,7 +124,7 @@ export default function Offre({ section }: { section: SectionOffre }) {
   }
 
   return (
-    <section style={SECTION}>
+    <section className={styles.corpus} style={SECTION}>
       <div style={LARGEUR}>
         {section.titre || section.intro ? (
           <div className="mg-r2" style={ENTETE}>
@@ -130,7 +132,11 @@ export default function Offre({ section }: { section: SectionOffre }) {
               <div style={SURTITRE}>Ce qui est inclus</div>
               {section.titre ? <h2 style={TITRE2}>{section.titre}</h2> : null}
             </div>
-            {section.intro ? <p style={CHAPEAU}>{section.intro}</p> : null}
+            {section.intro ? (
+              <p style={CHAPEAU}>
+                <TexteRiche texte={section.intro} />
+              </p>
+            ) : null}
           </div>
         ) : null}
 
@@ -175,10 +181,10 @@ export default function Offre({ section }: { section: SectionOffre }) {
                 >
                   {ligne.prestation.accroche ? (
                     <strong style={PROSE_FORT}>
-                      {ligne.prestation.accroche}{" "}
+                      <TexteRiche texte={ligne.prestation.accroche} />{" "}
                     </strong>
                   ) : null}
-                  {ligne.prestation.texte}
+                  <TexteRiche texte={ligne.prestation.texte} />
                 </span>
                 <span
                   style={{
@@ -186,7 +192,7 @@ export default function Offre({ section }: { section: SectionOffre }) {
                     color: "var(--ink2)",
                   }}
                 >
-                  {ligne.benefice}
+                  <TexteRiche texte={ligne.benefice} />
                 </span>
               </div>
             ))}

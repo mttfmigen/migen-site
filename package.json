@@ -8,9 +8,11 @@
     "start": "next start",
     "lint": "eslint",
     "types:base": "bunx supabase gen types typescript --project-id \"$SUPABASE_PROJECT_ID\" --schema public > types/base.ts",
-    "verifie": "bunx tsc --noEmit && bun run verifie:contenu && bun run verifie:entete && bunx eslint . && next build",
+    "verifie": "bunx tsc --noEmit && bun run verifie:contenu && bun run verifie:texte && bun run verifie:gabarits && bun run verifie:entete && bunx eslint . && next build",
     "verifie:contenu": "bun scripts/verifie-contenu.ts",
-    "verifie:entete": "bun components/site/verification-entete.tsx"
+    "verifie:entete": "bun components/site/verification-entete.tsx",
+    "verifie:gabarits": "bun components/site/verification-gabarits.tsx",
+    "verifie:texte": "bun components/site/blocs/verification-texte-riche.tsx"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

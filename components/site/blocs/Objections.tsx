@@ -1,6 +1,7 @@
 import type { SectionObjections } from "@/types/contenu";
 import styles from "./Blocs.module.css";
 import { LARGEUR, SECTION, SURTITRE, TITRE2, VERRE } from "./habillage";
+import TexteRiche from "./TexteRiche";
 
 /**
  * Section 9 du gabarit : les objections, en dépliants.
@@ -15,7 +16,7 @@ export default function Objections({ section }: { section: SectionObjections }) 
   if (section.questions.length === 0) return null;
 
   return (
-    <section style={SECTION}>
+    <section className={styles.corpus} style={SECTION}>
       <div style={LARGEUR}>
         <div
           className="mg-r2"
@@ -48,7 +49,7 @@ export default function Objections({ section }: { section: SectionObjections }) 
                       color: "var(--ink)",
                     }}
                   >
-                    {question.question}
+                    <TexteRiche texte={question.question} />
                   </span>
                   <span aria-hidden="true" className={`cx-plus ${styles.plusFaq}`}>
                     +
@@ -62,7 +63,7 @@ export default function Objections({ section }: { section: SectionObjections }) 
                     maxWidth: "68ch",
                   }}
                 >
-                  {question.reponse}
+                  <TexteRiche texte={question.reponse} />
                 </div>
               </details>
             ))}

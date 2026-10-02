@@ -7,6 +7,7 @@ import {
   BOUTON_SECONDAIRE,
   lienTelephone,
 } from "./habillage";
+import TexteRiche from "./TexteRiche";
 
 /**
  * Section 1 du gabarit : la promesse, le mécanisme, l'action.
@@ -42,6 +43,7 @@ export default function Heros({
       </h1>
 
       <p
+        className={styles.corpus}
         style={{
           font: "400 17.5px/1.65 var(--fb)",
           color: "var(--ink2)",
@@ -49,7 +51,7 @@ export default function Heros({
           maxWidth: "48ch",
         }}
       >
-        {section.mecanisme}
+        <TexteRiche texte={section.mecanisme} />
       </p>
 
       <div
@@ -84,6 +86,7 @@ export default function Heros({
         }}
       >
         <p
+          className={styles.corpus}
           style={{
             font: "400 15px/1.6 var(--fb)",
             color: "var(--ink2)",
@@ -91,7 +94,7 @@ export default function Heros({
             maxWidth: "52ch",
           }}
         >
-          {section.phraseDelai}
+          <TexteRiche texte={section.phraseDelai} />
         </p>
       </div>
     </div>

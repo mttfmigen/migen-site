@@ -1,5 +1,7 @@
 import type { SectionGaranties } from "@/types/contenu";
+import styles from "./Blocs.module.css";
 import { LARGEUR, PROSE_FORT, SECTION, SURTITRE, TITRE2, VERRE } from "./habillage";
+import TexteRiche from "./TexteRiche";
 
 /**
  * Section 6 du gabarit : trois puces d'engagement.
@@ -12,7 +14,7 @@ export default function Garanties({ section }: { section: SectionGaranties }) {
   if (section.puces.length === 0) return null;
 
   return (
-    <section style={SECTION}>
+    <section className={styles.corpus} style={SECTION}>
       <div style={LARGEUR}>
         <div style={{ marginBottom: 26 }}>
           <div style={SURTITRE}>Nos engagements</div>
@@ -52,9 +54,11 @@ export default function Garanties({ section }: { section: SectionGaranties }) {
               </span>
               <span>
                 {puce.accroche ? (
-                  <strong style={PROSE_FORT}>{puce.accroche} </strong>
+                  <strong style={PROSE_FORT}>
+                    <TexteRiche texte={puce.accroche} />{" "}
+                  </strong>
                 ) : null}
-                {puce.texte}
+                <TexteRiche texte={puce.texte} />
               </span>
             </div>
           ))}
