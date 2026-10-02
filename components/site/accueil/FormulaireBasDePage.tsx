@@ -2,7 +2,6 @@ import type { CSSProperties } from "react";
 
 import { FormulaireContact } from "@/components/formulaire/FormulaireContact";
 
-import animations from "./apparition.module.css";
 
 interface Proprietes {
   /** Identifiant d'analyse de la soumission, repris par HubSpot. */
@@ -30,7 +29,7 @@ export default function FormulaireBasDePage({
       style={{ padding: "var(--sec) 0 var(--sec)", scrollMarginTop: 110 }}
     >
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
-        <div className={animations.apparition} style={VERRE}>
+        <div data-reveal="" style={VERRE}>
           <div
             className="mg-r2"
             style={{

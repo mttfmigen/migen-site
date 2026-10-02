@@ -1,4 +1,3 @@
-import apparition from "./apparition.module.css";
 
 /* Certifications et chiffres sécurité / RSE, portés de « Migen - Site final »
    (lignes 610 à 636). Composant serveur. */
@@ -41,7 +40,7 @@ export default function CertificationsRse() {
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div
-          className={`mg-r2 ${apparition.apparition}`}
+          className="mg-r2" data-reveal=""
           style={{
             display: "grid",
             gridTemplateColumns: ".9fr 1.1fr",

@@ -1,5 +1,4 @@
 import styles from "./ProcessSelection.module.css";
-import animations from "./apparition.module.css";
 
 /**
  * « Notre sélection » : les six étapes du process, avec le taux de passage.
@@ -101,7 +100,7 @@ export default function ProcessSelection() {
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px" }}>
         <div
-          className={`mg-r2 ${animations.apparition}`}
+          className="mg-r2" data-reveal=""
           style={{
             display: "grid",
             gridTemplateColumns: "1.15fr .85fr",
@@ -197,7 +196,7 @@ export default function ProcessSelection() {
         </div>
 
         <div
-          className={`mg-rmulti ${animations.apparition}`}
+          className="mg-rmulti" data-reveal=""
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3,minmax(0,1fr))",
@@ -278,7 +277,7 @@ export default function ProcessSelection() {
         </div>
 
         <div
-          className={animations.apparition}
+          data-reveal=""
           style={{
             marginTop: "16px",
             borderRadius: "var(--rad)",

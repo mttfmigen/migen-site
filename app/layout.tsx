@@ -4,6 +4,7 @@ import { Caveat, Poppins } from "next/font/google";
 import Bandeau from "@/components/consentement/Bandeau";
 import BarreActionMobile from "@/components/site/BarreActionMobile";
 import Entete from "@/components/site/Entete";
+import Moteurs from "@/components/site/Moteurs";
 import PiedDePage from "@/components/site/PiedDePage";
 import ConsentMode from "@/components/consentement/ConsentMode";
 import LienReglages from "@/components/consentement/LienReglages";
@@ -105,6 +106,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* La barre de navigation flottante, portée de la maquette. Elle est en
             position fixe : elle vit hors du flux, d'où sa place avant le
             contenu plutôt que dans chaque page. */}
+        {/* Les moteurs d'animation de la maquette : rails qui défilent,
+            révélation au défilement, capsule qui rentre. Ils travaillent par
+            sélecteur d'attribut sur le document entier, d'où un seul montage
+            ici plutôt qu'un par section. Ils ne rendent rien. */}
+        <Moteurs />
         <Entete />
         {/* Barre d'action basse du motif tactile de la maquette Mobile. Sa règle
             CSS la masque au-delà de 880px, le même seuil où la navigation cède

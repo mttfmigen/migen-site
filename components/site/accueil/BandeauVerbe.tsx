@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 
 import Image from "next/image";
-import animations from "./apparition.module.css";
 
 /**
  * Bandeau « On … ? », où le verbe tourne.
@@ -61,7 +60,7 @@ export default function BandeauVerbe({
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px" }}>
         <div
-          className={animations.apparition}
+          data-reveal=""
           style={{
             display: "flex",
             alignItems: "center",

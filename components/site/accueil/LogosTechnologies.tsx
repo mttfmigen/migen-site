@@ -1,5 +1,4 @@
 import styles from "./LogosTechnologies.module.css";
-import animations from "./apparition.module.css";
 
 /**
  * Les marques maîtrisées par les techniciens, en grille de six tuiles.
@@ -57,7 +56,7 @@ export default function LogosTechnologies({
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px" }}>
         <div
-          className={animations.apparition}
+          data-reveal=""
           style={{
             borderRadius: "36px",
             background: "rgba(255,255,255,var(--gl-a))",

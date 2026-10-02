@@ -1,4 +1,3 @@
-import apparition from "./apparition.module.css";
 import styles from "./ProblematiqueClient.module.css";
 
 /* « Votre problématique », portée de « Migen - Site final » (lignes 638 à 660).
@@ -37,7 +36,7 @@ export default function ProblematiqueClient() {
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div
-          className={`mg-r2 ${apparition.apparition}`}
+          className="mg-r2" data-reveal=""
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",

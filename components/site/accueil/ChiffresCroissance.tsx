@@ -1,4 +1,3 @@
-import animations from "./apparition.module.css";
 
 /**
  * Bento des chiffres de croissance : un grand panneau sombre, trois cartes de
@@ -88,7 +87,7 @@ export default function ChiffresCroissance({
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px" }}>
         <div
-          className={`mg-r2 ${animations.apparition}`}
+          className="mg-r2" data-reveal=""
           style={{
             display: "grid",
             gridTemplateColumns: "1.6fr 1fr 1fr",

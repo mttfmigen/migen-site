@@ -2,7 +2,6 @@
 
 import { useState, type CSSProperties } from "react";
 
-import animations from "./apparition.module.css";
 import styles from "./AvantApresBascule.module.css";
 
 /**
@@ -103,7 +102,7 @@ export default function AvantApresBascule({
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div
-          className={animations.apparition}
+          data-reveal=""
           style={{ ...CADRE_CANEVAS, ...vue.styleCadre }}
         >
           <div style={vue.styleHalo} />

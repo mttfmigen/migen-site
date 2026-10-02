@@ -1,5 +1,4 @@
 import styles from "./FocusResidence.module.css";
-import animations from "./apparition.module.css";
 
 /**
  * Focus sur l'offre migen© Résidence : photo légendée à gauche, trois points
@@ -76,7 +75,7 @@ export default function FocusResidence({
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px" }}>
         <div
-          className={`mg-r2 ${animations.apparition}`}
+          className="mg-r2" data-reveal=""
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
