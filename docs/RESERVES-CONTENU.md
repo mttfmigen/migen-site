@@ -79,3 +79,55 @@ Corrigé au portage, pour mémoire et pour que personne ne le remette :
 - **Quatre logos fournisseurs défectueux à la source**, dans le projet Claude
   Design : `comau.svg` contient le logo AUTOMHA, `ats-automation.svg` est vide,
   `gardner-denver.svg` et `hermle.svg` ont un `viewBox` faux.
+
+## 4. Formulaire de contact, quatre arbitrages à ta main
+
+Relevés pendant le portage de l'habillage à la maquette. Aucun n'a été tranché
+à ta place.
+
+1. **Blanc sur orange : 2,56:1, sous le plancher WCAG AA (4,5:1).** Le libellé
+   du bouton de marque, en 15 px gras, n'est pas du « grand texte ». C'est le
+   bouton de toute la maquette : assombrir l'orange ou foncer le texte est une
+   décision de charte, pas de code.
+2. **Le sélecteur d'indicatif téléphonique n'est pas repris.** La maquette le
+   propose (FR, BE, CH, ES, CA, AE). La charge utile est construite depuis
+   l'état du formulaire, pas depuis le DOM : un indicatif choisi serait jeté en
+   silence, et un visiteur qui choisit +32 puis saisit un numéro local
+   enverrait un numéro faux. Il faut un champ au contrat serveur et une règle
+   de concaténation avant de l'afficher.
+3. **Le message est obligatoire dans la maquette, facultatif pour le serveur**
+   (`validation.ts`). Gardé facultatif et étiqueté ainsi : un astérisque
+   pendant que le serveur accepte le vide mentirait au visiteur. Une ligne à
+   changer si le besoin métier est l'inverse.
+4. **Champs cachés de la maquette non repris** : `country`, `siren`, `siret`,
+   `address`, `zip`. Vides dans la maquette, inconnus du serveur.
+
+Un point de contraste à connaître : l'étiquette de champ en `--ink3` sur blanc
+donne 4,74:1 (AA), mais sur le verre dépoli du héros elle tombe à ≈4,5:1, pile
+sur le plancher. Si la charte évolue, c'est la première valeur à surveiller.
+
+### Formulaire : trois arbitrages tranchés par le fichier du client (02/10)
+
+Mehdi a fourni la maquette en page autonome le 02/10. Elle est désormais lue en
+local (`maquette/accueil-rendu.html`), et `scripts/verifie-formulaire.tsx`
+compare le composant à ce fichier, champ par champ. Trois points en attente
+d'arbitrage sont donc tranchés, par la maquette :
+
+1. **Le message est obligatoire.** Il était facultatif ici, par une décision
+   prise sans la maquette sous les yeux. Elle le marque `required`, comme les
+   cinq autres : six champs obligatoires. Si Mehdi préfère le laisser facultatif
+   pour ne pas freiner un industriel en panne, c'est une ligne à changer
+   (`OPTIONNELS` dans `components/formulaire/validation.ts`), et le contrôle
+   signalera l'écart avec la maquette.
+2. **L'indicatif téléphonique existe.** Une liste fermée de six pays dans le
+   cadre du numéro (FR, BE, CH, ES, CA, AE), celle de la maquette. Elle était
+   absente du portage. Le numéro part vers HubSpot sous la forme « +33 04 72 … ».
+3. **Les cinq champs cachés de la maquette ne sont pas repris** : `country`,
+   `siren`, `siret`, `address`, `zip`. Ils sont vides et sans mécanisme de
+   remplissage dans la maquette. Les reprendre enverrait cinq chaînes vides à
+   HubSpot. À reprendre le jour où un enrichissement les remplit vraiment.
+
+Reste un écart assumé, dans l'autre sens : la **mention RGPD** sous le bouton
+n'est pas dans la maquette. Elle est exigée au point de collecte (RGPD, articles
+13 et 14) et explique 33 px de hauteur en plus que la maquette sur chaque
+formulaire. Elle reste.

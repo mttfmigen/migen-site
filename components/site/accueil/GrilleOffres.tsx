@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./GrilleOffres.module.css";
 
 /* Grille des offres de la page d'accueil, portée de « Migen - Site final »
@@ -124,15 +125,16 @@ export default function GrilleOffres() {
             boxShadow: "0 30px 70px -40px rgba(0,0,0,.5)",
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          {/* `fill` et `sizes` : le fichier source fait 1279x1600 pour une carte
+              affichée à ~363x340. Servi brut, il coûtait le décodage de deux
+              mégapixels au premier défilement, l'unique image lente mesurée.
+              Avec next/image le navigateur reçoit une version à sa taille. */}
+          <Image
             src="/assets/web/team-grind-sparks.jpg"
             alt="Technicien de maintenance migen en intervention"
+            fill
+            sizes="(max-width: 1000px) 50vw, 380px"
             style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
               objectFit: "cover",
               filter: "saturate(var(--sat)) contrast(1.06)",
               opacity: "var(--ph-op)",

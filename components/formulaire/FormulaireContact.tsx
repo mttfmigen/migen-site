@@ -1,13 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import { useId, useState, type ChangeEvent, type FormEvent } from "react";
+import {
+  useId,
+  useState,
+  type ChangeEvent,
+  type CSSProperties,
+  type FormEvent,
+} from "react";
 
 import { attributionCourante } from "@/lib/utm";
 import { signaleConversion } from "./conversion";
+import styles from "./FormulaireContact.module.css";
 import {
   CHAMP_PIEGE,
   CONTACT_VIDE,
+  INDICATIFS,
+  OPTIONNELS,
   aDesErreurs,
   valideContact,
   type ChampContact,
@@ -21,8 +30,6 @@ interface Proprietes {
   /** Identifiant du formulaire, en slug : il sert de clé d'analyse des conversions. */
   formulaire: string;
   titre?: string;
-  /** Promesse tenue à l'envoi, affichée sous le bouton. */
-  engagement?: string;
 }
 
 interface Champ {
@@ -31,22 +38,155 @@ interface Champ {
   type: "text" | "email" | "tel" | "zone";
   /** Valeur de `autocomplete`, pour que le navigateur remplisse sans se tromper. */
   remplissage: string;
-  obligatoire: boolean;
+  /** Vrai si le champ occupe les deux colonnes de la grille. */
+  pleineLargeur: boolean;
 }
 
+/* Ordre, libellés et largeurs relevés dans la maquette (« Migen - Site
+   final.dc.html », formulaire du héros lignes 483 à 533, formulaire de bas de
+   page lignes 1171 à 1200 : les deux sont identiques). Nom et prénom sont les
+   seuls champs sur une colonne, tout le reste tient les deux. */
 const CHAMPS: readonly Champ[] = [
-  { nom: "entreprise", libelle: "Entreprise", type: "text", remplissage: "organization", obligatoire: true },
-  { nom: "prenom", libelle: "Prénom", type: "text", remplissage: "given-name", obligatoire: true },
-  { nom: "nom", libelle: "Nom", type: "text", remplissage: "family-name", obligatoire: true },
-  { nom: "email", libelle: "Adresse e-mail", type: "email", remplissage: "email", obligatoire: true },
-  { nom: "telephone", libelle: "Téléphone", type: "tel", remplissage: "tel", obligatoire: true },
-  { nom: "message", libelle: "Votre besoin", type: "zone", remplissage: "off", obligatoire: false },
+  { nom: "entreprise", libelle: "Nom de l’entreprise", type: "text", remplissage: "organization", pleineLargeur: true },
+  { nom: "nom", libelle: "Nom", type: "text", remplissage: "family-name", pleineLargeur: false },
+  { nom: "prenom", libelle: "Prénom", type: "text", remplissage: "given-name", pleineLargeur: false },
+  { nom: "email", libelle: "Courriel", type: "email", remplissage: "email", pleineLargeur: true },
+  { nom: "telephone", libelle: "Téléphone", type: "tel", remplissage: "tel", pleineLargeur: true },
+  { nom: "message", libelle: "Message", type: "zone", remplissage: "off", pleineLargeur: true },
 ];
 
 const ECHEC_RESEAU =
   "L'envoi n'a pas abouti. Vérifiez votre connexion et réessayez.";
 
-export function FormulaireContact({ formulaire, titre, engagement }: Proprietes) {
+/* Valeurs de la maquette, recopiées telles quelles. Déclarées au niveau du
+   module : un objet de style reconstruit à chaque rendu casse la mémoïsation
+   et alloue pour rien. */
+
+const TITRE: CSSProperties = {
+  font: "600 20px/1.2 var(--ft)",
+  letterSpacing: "-.03em",
+  gridColumn: "span 2",
+  margin: 0,
+};
+
+/* Posée en ligne comme dans la maquette ; le repli mobile est dans le module. */
+const GRILLE: CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "1fr 1fr",
+  gap: 12,
+};
+
+const ETIQUETTE: CSSProperties = {
+  display: "block",
+  font: "600 10.5px var(--fb)",
+  letterSpacing: ".1em",
+  textTransform: "uppercase",
+  color: "var(--ink3)",
+  marginBottom: 6,
+};
+
+const SAISIE: CSSProperties = {
+  width: "100%",
+  padding: "12px 14px",
+  borderRadius: 12,
+  border: "1px solid var(--line)",
+  background: "var(--card)",
+  font: "400 14.5px var(--fb)",
+  color: "var(--ink)",
+};
+
+const ZONE: CSSProperties = { ...SAISIE, lineHeight: 1.5, resize: "vertical" };
+
+/* Téléphone : la maquette met l'indicatif et le numéro dans UN SEUL cadre, la
+   bordure portée par l'enveloppe et retirée des deux champs. Le focus visible
+   est donc posé sur l'enveloppe par le module CSS (`:focus-within`), sinon le
+   visiteur au clavier ne verrait plus où il est. */
+const ENVELOPPE_TEL: CSSProperties = {
+  display: "flex",
+  borderRadius: 12,
+  border: "1px solid var(--line)",
+  background: "var(--card)",
+  overflow: "hidden",
+};
+
+const INDICATIF_CHOIX: CSSProperties = {
+  flex: "none",
+  width: 84,
+  border: "none",
+  borderRight: "1px solid var(--line)",
+  background: "var(--bg)",
+  padding: "0 4px 0 10px",
+  font: "500 12.5px var(--fb)",
+  color: "var(--ink)",
+};
+
+const SAISIE_TEL: CSSProperties = {
+  flex: 1,
+  minWidth: 0,
+  border: "none",
+  padding: 12,
+  background: "transparent",
+  font: "400 14.5px var(--fb)",
+  color: "var(--ink)",
+};
+
+/* La maquette met cette rangée en `var(--ink4)` (#a8a49d), mais elle ne
+   contenait aucun texte : 2,4:1 sur blanc, sous le plancher WCAG. La mention
+   RGPD est du texte à lire, donc `var(--ink2)` (5,4:1), l'encre des
+   paragraphes de la maquette. */
+const RANGEE_ENVOI: CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  gap: 12,
+  flexWrap: "wrap",
+  marginTop: 4,
+  gridColumn: "span 2",
+  font: "400 11.5px/1.5 var(--fb)",
+  color: "var(--ink2)",
+  textAlign: "center",
+};
+
+const BOUTON: CSSProperties = {
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "14px 24px",
+  borderRadius: 999,
+  border: "none",
+  background: "var(--acc)",
+  color: "#fff",
+  font: "600 15px var(--fb)",
+  cursor: "pointer",
+  whiteSpace: "nowrap",
+  boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",
+};
+
+const MENTION: CSSProperties = {
+  gridColumn: "span 2",
+  // 11 px : la taille des mentions de la maquette (notes de carte, légendes).
+  // Sur deux lignes, 33 px : c'est le seul ajout au gabarit de la maquette, et
+  // il est là parce que la loi l'exige au point de collecte, pas par goût.
+  font: "400 11px/1.5 var(--fb)",
+  color: "var(--ink2)",
+  margin: 0,
+};
+
+/** Même gabarit que la mention, sans couleur : l'état la fournit. */
+const ANNONCE: CSSProperties = {
+  gridColumn: "span 2",
+  font: "400 11.5px/1.5 var(--fb)",
+  margin: 0,
+};
+
+const ERREUR: CSSProperties = {
+  font: "400 11.5px/1.5 var(--fb)",
+  margin: "6px 0 0",
+};
+
+const ASTERISQUE: CSSProperties = { color: "var(--acc)" };
+
+export function FormulaireContact({ formulaire, titre }: Proprietes) {
   const [contact, setContact] = useState<Contact>(CONTACT_VIDE);
   const [erreurs, setErreurs] = useState<Erreurs>({});
   const [etat, setEtat] = useState<Etat>("repos");
@@ -125,8 +265,8 @@ export function FormulaireContact({ formulaire, titre, engagement }: Proprietes)
   const enCours = etat === "envoi";
 
   return (
-    <form onSubmit={envoie} noValidate className="flex flex-col gap-5">
-      {titre ? <h2 className="text-xl font-semibold">{titre}</h2> : null}
+    <form onSubmit={envoie} noValidate className={styles.grille} style={GRILLE}>
+      {titre ? <h2 style={TITRE}>{titre}</h2> : null}
 
       {/* Le type de formulaire est aussi dans le document, pour que la balise
           HubSpot qui lit le DOM retrouve l'origine de la demande. Le serveur,
@@ -137,8 +277,9 @@ export function FormulaireContact({ formulaire, titre, engagement }: Proprietes)
           plus simples sautent l'un et l'autre. Il est sorti du cadre visible,
           retiré du parcours clavier, masqué aux technologies d'assistance et
           exclu du remplissage automatique du navigateur, donc invisible pour
-          une personne et bien présent pour un automate. Le serveur jette la
-          demande s'il revient rempli. */}
+          une personne et bien présent pour un automate. Étant positionné en
+          absolu, il ne consomme aucune cellule de la grille. Le serveur jette
+          la demande s'il revient rempli. */}
       <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
         <label htmlFor={`${prefixe}-${CHAMP_PIEGE}`}>Site web</label>
         <input
@@ -155,40 +296,78 @@ export function FormulaireContact({ formulaire, titre, engagement }: Proprietes)
         const identifiant = `${prefixe}-${champ.nom}`;
         const identifiantErreur = `${identifiant}-erreur`;
         const erreur = erreurs[champ.nom];
+        // Déduit de la validation, jamais redit ici : c'est elle qui décide
+        // quels champs sont exigés, et `required` doit dire la même chose.
+        const obligatoire = !OPTIONNELS.has(champ.nom);
         const commun = {
           id: identifiant,
           name: champ.nom,
           value: contact[champ.nom],
-          required: champ.obligatoire,
+          required: obligatoire,
+          // L'astérisque est décoratif : le caractère obligatoire est porté par
+          // `required` et `aria-required`, donc annoncé sans dépendre d'un signe.
+          "aria-required": obligatoire ? true : undefined,
           autoComplete: champ.remplissage,
           "aria-invalid": erreur ? true : undefined,
           "aria-describedby": erreur ? identifiantErreur : undefined,
           disabled: enCours,
-          className:
-            "rounded-md border border-current/20 bg-transparent px-3 py-2 " +
-            "outline-none focus:border-current/60 disabled:opacity-60",
+          className: styles.champ,
           onChange: (
             evenement: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
           ) => saisit(champ.nom, evenement.target.value),
         };
 
         return (
-          <div key={champ.nom} className="flex flex-col gap-1.5">
-            <label htmlFor={identifiant} className="text-sm font-medium">
+          <div
+            key={champ.nom}
+            style={{
+              gridColumn: champ.pleineLargeur ? "span 2" : undefined,
+              minWidth: 0,
+            }}
+          >
+            <label htmlFor={identifiant} style={ETIQUETTE}>
               {champ.libelle}
-              {champ.obligatoire ? null : (
-                <span className="font-normal opacity-60"> (facultatif)</span>
+              {obligatoire ? (
+                <span aria-hidden="true" style={ASTERISQUE}>
+                  &nbsp;*
+                </span>
+              ) : (
+                <span> (facultatif)</span>
               )}
             </label>
 
             {champ.type === "zone" ? (
-              <textarea {...commun} rows={5} />
+              <textarea {...commun} rows={3} style={ZONE} />
+            ) : champ.type === "tel" ? (
+              <span style={ENVELOPPE_TEL} className={styles.enveloppeTel}>
+                <select
+                  name="indicatif"
+                  value={contact.indicatif}
+                  onChange={(evenement) =>
+                    saisit("indicatif", evenement.target.value)
+                  }
+                  disabled={enCours}
+                  autoComplete="tel-country-code"
+                  /* Le libellé « Téléphone » appartient au champ du numéro :
+                     sans nom propre, un lecteur d'écran annoncerait cette liste
+                     comme « liste déroulante », sans dire de quoi. */
+                  aria-label="Indicatif téléphonique du pays"
+                  style={INDICATIF_CHOIX}
+                >
+                  {INDICATIFS.map((indicatif) => (
+                    <option key={indicatif.code} value={indicatif.code}>
+                      {indicatif.libelle}
+                    </option>
+                  ))}
+                </select>
+                <input {...commun} type="tel" style={SAISIE_TEL} />
+              </span>
             ) : (
-              <input {...commun} type={champ.type} />
+              <input {...commun} type={champ.type} style={SAISIE} />
             )}
 
             {erreur ? (
-              <p id={identifiantErreur} className="text-sm text-red-700">
+              <p id={identifiantErreur} className="text-red-700" style={ERREUR}>
                 {erreur}
               </p>
             ) : null}
@@ -196,29 +375,32 @@ export function FormulaireContact({ formulaire, titre, engagement }: Proprietes)
         );
       })}
 
-      <button
-        type="submit"
-        disabled={enCours}
-        className="rounded-md bg-foreground px-4 py-2.5 font-medium text-background disabled:opacity-60"
-      >
-        {enCours ? "Envoi en cours..." : "Envoyer ma demande"}
-      </button>
+      <div style={RANGEE_ENVOI}>
+        <button
+          type="submit"
+          disabled={enCours}
+          className={styles.boutonEnvoi}
+          style={BOUTON}
+        >
+          {enCours ? "Envoi en cours…" : "On me rappelle dans l’heure"}
+        </button>
+      </div>
 
-      {engagement ? <p className="text-sm opacity-70">{engagement}</p> : null}
 
       {/* Information au point de collecte, exigée par le RGPD (articles 13 et
           14) : qui traite, pour quoi, qui reçoit, où lire le reste. Elle est
           fixe et non paramétrable, car une page qui pose ce formulaire ne doit
           pas pouvoir l'oublier en omettant une propriété. */}
-      <p className="text-xs leading-relaxed opacity-70">
-        Les informations saisies sont traitées par Migen, responsable du
-        traitement, dans le seul but de répondre à votre demande. Elles sont
-        enregistrées dans HubSpot, notre outil de gestion de la relation client.
-        Vos droits et les durées de conservation sont détaillés dans notre{" "}
-        <Link href="/politique-de-confidentialite/" className="underline">
+      <p style={MENTION}>
+        Données traitées par Migen pour répondre à votre demande, enregistrées
+        dans HubSpot. Droits et durées de conservation :{" "}
+        {/* `/confidentialite/`, l'URL de l'inventaire. L'ancienne,
+            `/politique-de-confidentialite/`, est une 301 depuis le site
+            WordPress : y lier depuis chaque formulaire du site aurait coûté
+            une redirection à chaque clic, et à chaque passage de robot. */}
+        <Link href="/confidentialite/" className="underline">
           politique de confidentialité
         </Link>
-        .
       </p>
 
       {/* Une seule zone d'annonce, toujours présente dans le document : un
@@ -227,9 +409,8 @@ export function FormulaireContact({ formulaire, titre, engagement }: Proprietes)
       <p
         role="status"
         aria-live="polite"
-        className={
-          etat === "erreur" ? "text-sm text-red-700" : "text-sm text-green-800"
-        }
+        style={ANNONCE}
+        className={`${styles.annonce} ${etat === "erreur" ? "text-red-700" : "text-green-800"}`}
       >
         {annonce}
       </p>

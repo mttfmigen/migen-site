@@ -1,0 +1,38 @@
+/* Survols des gabarits métier et domaine, relevés sur les `style-hover` de la
+   maquette (lignes 5452 à 5600). Ils vivent dans un module CSS parce qu'un
+   style en ligne ne porte pas d'état, et hors de `app/globals.css` parce que
+   plusieurs agents y écrivent en parallèle. */
+
+.boutonAction:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+.boutonSecondaire:hover {
+  background: var(--card);
+}
+
+/* Pastille vers un autre métier ou un autre domaine. */
+.pastilleLien:hover,
+.pastilleLien:focus-visible {
+  background: var(--card);
+  color: var(--acc);
+}
+
+/* Liens internes que `TexteRiche` pose dans le texte du corpus. Sans cette
+   règle, `globals.css` les rend en var(--ink) sans soulignement, donc
+   indistinguables du texte autour. Mêmes valeurs que `Blocs.module.css` :
+   var(--acc-ink) vaut 8,9:1 sur blanc, var(--acc) n'y tiendrait que 2,6:1. */
+.corpus a {
+  color: var(--acc-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-thickness var(--tr);
+}
+.corpus a:hover,
+.corpus a:focus-visible {
+  color: var(--acc-ink);
+  text-decoration-thickness: 2px;
+}

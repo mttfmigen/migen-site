@@ -76,11 +76,31 @@ export default function BentoBesoins({
   besoins = [],
   hrefChiffrer = "/contact/",
 }: Proprietes) {
-  const [ouvert, setOuvert] = useState<string | null>(null);
+  /*
+   * La PREMIÈRE TUILE EST OUVERTE À L'ARRIVÉE, comme dans la maquette.
+   *
+   * Ce n'est pas un détail : le pavage tire tout son relief de ce grand panneau
+   * déplié au milieu de six tuiles fermées. Arrivé plat, avec sept cartes
+   * identiques, il perd sa raison d'être. C'est très exactement ce que le
+   * client a appelé « trop grossier ».
+   */
+  const [ouvert, setOuvert] = useState<string | null>(besoins[0]?.id ?? null);
+
+  /*
+   * `data-fill` est POSITIONNEL, pas lié à l'ouverture.
+   *
+   * Dans la maquette, il marque la dernière tuile FERMÉE, que la règle
+   * `.mg-bento > [data-fill="1"] { grid-column: 1 / -1 }` étale alors sur toute
+   * la largeur pour fermer proprement la dernière rangée. Le lier à l'ouverture
+   * laissait la grille se terminer sur deux trous au repos, et faisait se
+   * disputer deux règles sur la même tuile quand une s'ouvrait.
+   */
+  const idRemplissage =
+    [...besoins].reverse().find((b) => b.id !== ouvert)?.id ?? null;
 
   return (
     <section style={{ maxWidth: 1200, margin: "0 auto", padding: "56px 40px 0" }}>
-      <div>
+      <div data-reveal="">
         <div
           style={{
             display: "flex",
@@ -137,7 +157,7 @@ export default function BentoBesoins({
                 /* data-open et data-fill portent la mise en page du bento,
                    les règles .mg-bento de globals.css les ciblent. */
                 data-open={estOuvert ? "1" : "0"}
-                data-fill={estOuvert ? "1" : "0"}
+                data-fill={n.id === idRemplissage ? "1" : "0"}
                 style={n.wrapCss}
               >
                 {!estOuvert && (

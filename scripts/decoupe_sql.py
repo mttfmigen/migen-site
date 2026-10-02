@@ -24,7 +24,7 @@ import json
 import pathlib
 import re
 
-PLAFOND = 6500  # octets par instruction, marge prise sous le refus mesuré
+PLAFOND = 3800  # octets par instruction. Mesuré : des refus à 6 123 o, aucun sous 3 728 o.
 
 
 def q(s: str) -> str:

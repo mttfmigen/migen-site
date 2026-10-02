@@ -1,0 +1,82 @@
+/* Survols et états désactivés du formulaire de contact.
+   Ils vivent ici et pas dans `app/globals.css` : contrat de portage, règle 3. */
+
+/* Maquette : `style-hover="filter:brightness(.93)"` sur le bouton d'envoi. */
+.boutonEnvoi:hover:not(:disabled) {
+  filter: brightness(0.93);
+}
+
+.boutonEnvoi:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.champ:disabled {
+  opacity: 0.6;
+}
+
+/* La maquette pose `outline:none` sur ses champs. Non repris : le focus visible
+   global de `globals.css` est la seule marque du champ actif au clavier. Seule
+   la bordure est renforcée au survol et au focus, pour désigner la cible. */
+.champ:hover:not(:disabled),
+.champ:focus {
+  border-color: rgba(28, 27, 25, 0.22);
+}
+
+/* Repli de la grille sous 900 px, même point de bascule que la maquette.
+
+   `!important` parce que la grille est posée en style en ligne sur le `<form>`,
+   comme dans la maquette : c'est déjà ainsi que `globals.css` reprend la main
+   sur les blocs `mg-r2` de la maquette.
+
+   La classe globale `mg-r2` n'est pas réutilisée telle quelle bien que la
+   maquette la pose sur ce bloc : sous 900 px elle impose `gap:36px !important`,
+   écart pensé pour les grandes colonnes de page, pas pour des champs. Mesuré
+   sur mobile, il ajoutait 144 px au formulaire. */
+@media (max-width: 900px) {
+  .grille {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  /* « On me rappelle dans l'heure » mesure 263 px : dans un formulaire de
+     241 px, `white-space:nowrap` sortait une barre de défilement horizontale.
+     Le libellé se replie plutôt que de déborder. */
+  .boutonEnvoi {
+    white-space: normal !important;
+    max-width: 100%;
+  }
+}
+
+/* La zone d'annonce (role="status") doit rester DANS le document en permanence :
+   un lecteur d'écran n'annonce pas un élément qui vient d'apparaître. Mais vide,
+   elle occupait une ligne de 16 px plus l'écart de grille, soit 28 px de blanc
+   sous la mention RGPD, sur chaque formulaire du site. Vide, elle se replie à
+   zéro et annule l'écart ; pleine, elle reprend sa place. `display: none` aurait
+   été plus court et aurait cassé l'annonce. */
+.annonce:empty {
+  /* Hors du flux de la grille, et non simplement à hauteur zéro : une cellule
+     de grille vide coûte quand même son écart de 12 px, et une marge négative
+     sur un élément de grille n'annule pas cet écart. Positionnée en absolu,
+     la zone ne prend plus de cellule, reste dans le document et dans l'arbre
+     d'accessibilité, et revient dans le flux dès qu'elle a du texte. C'est le
+     motif « visuellement masqué » des lecteurs d'écran, appliqué au vide. */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  margin: 0;
+}
+
+/* Téléphone : la bordure est sur l'enveloppe, pas sur les deux champs. Le focus
+   visible doit donc se voir sur l'enveloppe, sinon un visiteur au clavier perd
+   la trace de sa position dès qu'il entre dans le numéro. */
+.enveloppeTel:hover,
+.enveloppeTel:focus-within {
+  border-color: rgba(28, 27, 25, 0.22);
+}
+
+.enveloppeTel:focus-within {
+  outline: 2px solid var(--acc);
+  outline-offset: 2px;
+}

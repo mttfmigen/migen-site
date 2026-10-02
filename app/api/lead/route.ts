@@ -6,6 +6,7 @@ import {
   valideCharge,
   type Contact,
   type Erreurs,
+  numeroComplet,
 } from "@/components/formulaire/validation";
 import { empreinteIp, tropDeDepots } from "@/components/formulaire/debit";
 import { enregistreCopieLead } from "@/lib/leads";
@@ -180,7 +181,7 @@ async function deposeChezHubspot(depot: Depot): Promise<Resultat> {
     firstname: depot.contact.prenom,
     lastname: depot.contact.nom,
     email: depot.contact.email,
-    phone: depot.contact.telephone,
+    phone: numeroComplet(depot.contact),
     message: depot.contact.message,
     formulaire_migen: depot.formulaire,
 

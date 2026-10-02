@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 import styles from "./AvantApresBascule.module.css";
 
@@ -86,6 +86,23 @@ const CADRE_TUILE: CSSProperties = {
 };
 const CALQUE_PLEIN: CSSProperties = { position: "absolute", inset: 0 };
 
+/* Fondu en deux temps de `switchBA` (maquette, l. 8674-8681) : les tuiles se
+   retirent, les données sont échangées à mi-parcours, puis elles reviennent en
+   cascade. Sans ce temps mort la bascule saute d'une mosaïque à l'autre. */
+const DUREE_RETRAIT_MS = 190;
+/** Retard par rang : serré au retrait, ample au retour (`baTiles`, l. 8723). */
+const RETARD_RETRAIT_MS = 22;
+const RETARD_RETOUR_MS = 40;
+
+/** Position d'une tuile selon la phase du fondu (`baTiles`, l. 8720-8722). */
+function phaseTuile(retire: boolean, rang: number): CSSProperties {
+  return {
+    opacity: retire ? 0 : 1,
+    transform: retire ? "translateY(14px) scale(.985)" : "translateY(0) scale(1)",
+    transitionDelay: `${rang * (retire ? RETARD_RETRAIT_MS : RETARD_RETOUR_MS)}ms`,
+  };
+}
+
 /** «&nbsp;texte&nbsp;» : l'espace insécable de la maquette, conservé. */
 function entreGuillemets(texte: string): string {
   return `« ${texte} »`;
@@ -96,7 +113,21 @@ export default function AvantApresBascule({
   avec = VUE_VIDE,
 }: Proprietes) {
   const [mode, setMode] = useState<"avant" | "avec">("avant");
+  const [retire, setRetire] = useState(false);
+  const minuterie = useRef<ReturnType<typeof setTimeout>>(undefined);
   const vue = mode === "avant" ? avant : avec;
+
+  useEffect(() => () => clearTimeout(minuterie.current), []);
+
+  function basculer(cible: "avant" | "avec") {
+    if (cible === mode) return;
+    clearTimeout(minuterie.current);
+    setRetire(true);
+    minuterie.current = setTimeout(() => {
+      setMode(cible);
+      setRetire(false);
+    }, DUREE_RETRAIT_MS);
+  }
 
   return (
     <section style={{ padding: "var(--sec) 0 0" }}>
@@ -126,6 +157,7 @@ export default function AvantApresBascule({
 
             <div
               className={styles.onglets}
+              data-vue={mode}
               role="group"
               aria-label="Comparer avant et avec migen"
             >
@@ -133,7 +165,7 @@ export default function AvantApresBascule({
                 type="button"
                 className={styles.onglet}
                 aria-pressed={mode === "avant"}
-                onClick={() => setMode("avant")}
+                onClick={() => basculer("avant")}
               >
                 Avant migen&copy;
               </button>
@@ -141,7 +173,7 @@ export default function AvantApresBascule({
                 type="button"
                 className={styles.onglet}
                 aria-pressed={mode === "avec"}
-                onClick={() => setMode("avec")}
+                onClick={() => basculer("avec")}
               >
                 Avec migen&copy;
               </button>
@@ -156,8 +188,16 @@ export default function AvantApresBascule({
                 gap: 14,
               }}
             >
-              {vue.tuiles.map((tuile) => (
-                <div key={tuile.cle} style={{ ...CADRE_TUILE, ...tuile.styleCadre }}>
+              {/* La clé est le RANG, pas `tuile.cle` : la maquette réutilise
+                  les six emplacements de sa grille, et c'est cette réutilisation
+                  qui laisse la transition repartir de l'état retiré. Une clé par
+                  contenu remplacerait les noeuds et la cascade ne jouerait pas. */}
+              {vue.tuiles.map((tuile, rang) => (
+                <div
+                  key={rang}
+                  className={styles.carte}
+                  style={{ ...CADRE_TUILE, ...tuile.styleCadre, ...phaseTuile(retire, rang) }}
+                >
                   {tuile.forme === "chiffre" && (
                     <div
                       style={{

@@ -8,11 +8,15 @@
     "start": "next start",
     "lint": "eslint",
     "types:base": "bunx supabase gen types typescript --project-id \"$SUPABASE_PROJECT_ID\" --schema public > types/base.ts",
-    "verifie": "bunx tsc --noEmit && bun run verifie:contenu && bun run verifie:texte && bun run verifie:gabarits && bun run verifie:entete && bunx eslint . && next build",
+    "verifie": "bunx tsc --noEmit && bun run verifie:contenu && bun run verifie:texte && bun run verifie:interdits && bun run verifie:formulaire && bun run verifie:gabarits && bun run verifie:entete && bun run verifie:hubs && bun run verifie:pied && bunx eslint . && next build",
     "verifie:contenu": "bun scripts/verifie-contenu.ts",
     "verifie:entete": "bun components/site/verification-entete.tsx",
+    "verifie:hubs": "bun components/site/accueil/verification-hubs.tsx",
+    "verifie:pied": "bun components/site/verification-pied-de-page.tsx",
     "verifie:gabarits": "bun components/site/verification-gabarits.tsx",
-    "verifie:texte": "bun components/site/blocs/verification-texte-riche.tsx"
+    "verifie:texte": "bun components/site/blocs/verification-texte-riche.tsx",
+    "verifie:interdits": "node scripts/verifie-interdits.mjs",
+    "verifie:formulaire": "bun scripts/verifie-formulaire.tsx"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
@@ -29,6 +33,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.8",
+    "playwright": "^1.63.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   },

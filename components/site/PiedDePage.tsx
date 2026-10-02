@@ -21,7 +21,7 @@ import styles from "./PiedDePage.module.css";
  *
  * POURQUOI `prefetch={false}` sur chaque lien interne : en production, `Link`
  * précharge toute destination qui entre dans le viewport. Un pied de page de
- * quarante-huit liens déclencherait autant de requêtes sur chaque page du site,
+ * une cinquantaine de liens déclencherait autant de requêtes sur chaque page du site,
  * contre le principe numéro un du projet. La navigation côté client, elle, est
  * conservée.
  */
@@ -76,6 +76,9 @@ const COLONNES: readonly Colonne[] = [
       { libelle: "Réalisations", href: "/realisations/" },
       { libelle: "Ressources", href: "/ressources/" },
       { libelle: "Carrière", href: "/carriere/" },
+      /* Deuxième entrée vers /carriere/, comme dans la maquette (même verbe
+         `goCarriere`) : deux intentions de recherche, une seule page. */
+      { libelle: "Offres d’emploi", href: "/carriere/" },
       {
         libelle: "LinkedIn",
         href: "https://www.linkedin.com/company/migen-service/",
@@ -85,16 +88,32 @@ const COLONNES: readonly Colonne[] = [
 ];
 
 /*
- * Maillage SEO. La maquette le posait en texte mort, séparé par des points
- * médians : un mot clé non cliquable dans un pied de page ne sert personne. Les
- * entrées conservées sont celles dont la page existe, les autres sont tombées.
- * La colonne « Habilitations » de la maquette n'apparaît pas : aucune de ses six
- * entrées n'a de page. Elle revient d'elle-même le jour où ces pages existent.
+ * Une entrée du maillage. `href` est optionnelle : la maquette écrit ce bloc en
+ * texte mort, le site le rend cliquable quand la page existe, et garde le mot
+ * en simple texte quand elle n'existe pas. Un mot clé non cliquable sert moins
+ * qu'un lien, mais un lien mort posé sur les 225 pages du site coûte plus.
  */
-const MAILLAGE: readonly Colonne[] = [
+interface Entree {
+  readonly libelle: string;
+  readonly href?: string;
+}
+
+interface GroupeMaillage {
+  readonly titre: string;
+  readonly entrees: readonly Entree[];
+}
+
+/*
+ * Maillage SEO, quatre colonnes comme la maquette (`maquette/accueil-rendu.html`
+ * lignes 7936 à 7953). « Habilitations » n'a aucune page dans
+ * `docs/urls-site-actuel.json` : elle est reprise en texte, mot pour mot, et non
+ * supprimée. Son absence écrasait la quatrième colonne de la grille et retirait
+ * 111 px au pied de page.
+ */
+const MAILLAGE: readonly GroupeMaillage[] = [
   {
     titre: "Villes",
-    liens: [
+    entrees: [
       { libelle: "Paris", href: "/implantations/paris/" },
       { libelle: "Lyon", href: "/implantations/lyon/" },
       { libelle: "Nantes", href: "/implantations/nantes/" },
@@ -109,7 +128,7 @@ const MAILLAGE: readonly Colonne[] = [
   },
   {
     titre: "Départements",
-    liens: [
+    entrees: [
       { libelle: "Rhône", href: "/implantations/lyon/rhone/" },
       { libelle: "Haute-Garonne", href: "/implantations/toulouse/haute-garonne/" },
       { libelle: "Loire-Atlantique", href: "/implantations/nantes/loire-atlantique/" },
@@ -121,7 +140,7 @@ const MAILLAGE: readonly Colonne[] = [
   },
   {
     titre: "Secteurs",
-    liens: [
+    entrees: [
       { libelle: "Centre logistique", href: "/secteurs/logistique/" },
       { libelle: "Industrie lourde", href: "/secteurs/industrie-lourde/" },
       { libelle: "Métallique", href: "/secteurs/industrie-metallique/" },
@@ -130,6 +149,17 @@ const MAILLAGE: readonly Colonne[] = [
       { libelle: "Pharmaceutique", href: "/secteurs/pharmaceutique/" },
       { libelle: "Chimie", href: "/secteurs/chimie/" },
       { libelle: "Agroalimentaire", href: "/secteurs/agroalimentaire/" },
+    ],
+  },
+  {
+    titre: "Habilitations",
+    entrees: [
+      { libelle: "CACES 486" },
+      { libelle: "CACES 489" },
+      { libelle: "Habilitations électriques" },
+      { libelle: "Travail en hauteur" },
+      { libelle: "Risques chimiques" },
+      { libelle: "Accès Z.A.C" },
     ],
   },
 ];
@@ -347,21 +377,36 @@ export default function PiedDePage({
             gap: 36,
           }}
         >
-          {MAILLAGE.map((groupe) => (
-            <nav key={groupe.titre} aria-label={groupe.titre}>
-              <div style={styleTitreMaillage}>{groupe.titre}</div>
-              <div style={{ font: "400 13px/1.9 var(--fb)", color: "rgba(255,255,255,.44)" }}>
-                {groupe.liens.map((lien, index) => (
-                  <span key={lien.href}>
-                    {index > 0 ? " · " : null}
-                    <LienSite href={lien.href} className={styles.lienMaillage}>
-                      {lien.libelle}
-                    </LienSite>
-                  </span>
-                ))}
-              </div>
-            </nav>
-          ))}
+          {MAILLAGE.map((groupe) => {
+            const contenu = (
+              <>
+                <div style={styleTitreMaillage}>{groupe.titre}</div>
+                <div style={{ font: "400 13px/1.9 var(--fb)", color: "rgba(255,255,255,.44)" }}>
+                  {groupe.entrees.map((entree, index) => (
+                    <span key={entree.libelle}>
+                      {index > 0 ? " · " : null}
+                      {entree.href ? (
+                        <LienSite href={entree.href} className={styles.lienMaillage}>
+                          {entree.libelle}
+                        </LienSite>
+                      ) : (
+                        entree.libelle
+                      )}
+                    </span>
+                  ))}
+                </div>
+              </>
+            );
+            /* `nav` annonce un ensemble de liens : une colonne qui n'en porte
+               aucun reste un bloc de texte, comme dans la maquette. */
+            return groupe.entrees.some((entree) => entree.href) ? (
+              <nav key={groupe.titre} aria-label={groupe.titre}>
+                {contenu}
+              </nav>
+            ) : (
+              <div key={groupe.titre}>{contenu}</div>
+            );
+          })}
         </div>
 
         <div style={styleBarreBasse}>

@@ -210,8 +210,12 @@ export const CAS: CasClient[] = [
   },
 ];
 
+/* « +200 clients » dans la maquette. Le compte tenu par Migen est « plus de 120
+   clients, dont plus de 80 réguliers » : c'est la formulation mandatée, et un
+   chiffre public faux est un risque, pas un détail de copie. Corrigé partout où
+   il était rendu (en-tête, héros, bande de logos, frise, bande de chiffres). */
 export const CHIFFRES: Chiffre[] = [
-  { valeur: "+200", libelle: "clients" },
+  { valeur: "+120", libelle: "clients" },
   { valeur: "28", libelle: "études de cas", accent: true },
   { valeur: "4,6/5", libelle: "avis Google" },
   { valeur: "10 %", libelle: "des candidats retenus" },

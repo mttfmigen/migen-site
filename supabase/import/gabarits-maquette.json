@@ -1,0 +1,205 @@
+[
+  {
+    "url": "/expertises/",
+    "source": "Migen - Site final.dc.html, lignes 6211 à 6644",
+    "contenu": {
+      "gabarit": "expertises",
+      "surtitre": "Expertises",
+      "chapeau": "Six natures d’intervention, neuf domaines techniques, neuf secteurs. Un site ne tombe jamais en panne sur une seule technologie : nous couvrons la mécanique, l’électricité, les fluides et l’automatisme avec les mêmes équipes.",
+      "actions": [
+        { "libelle": "Décrire mon besoin", "href": "#formulaire", "principale": true },
+        { "libelle": "Types de maintenance", "href": "#types" }
+      ],
+      "cumul": {
+        "titre": "Le cumul rare",
+        "lignes": [
+          { "valeur": "6", "texte": "natures d’intervention : préventif, curatif, conditionnel, amélioratif, réglementaire, travaux neufs." },
+          { "valeur": "9", "texte": "domaines techniques couverts en interne, sans sous-traitance en cascade." },
+          { "valeur": "4", "texte": "spécialisations constructeur certifiées : SIEMENS, Schneider, FANUC, ABB." },
+          { "valeur": "100 %", "texte": "des habilitations à jour, vérifiées avant chaque intervention." }
+        ]
+      },
+      "types": {
+        "entete": {
+          "surtitre": "Types de maintenance",
+          "titre": "Six natures d’intervention, pas une seule",
+          "note": "Un contrat sain répartit les heures entre ces natures. Un contrat subi n’en contient qu’une : le curatif."
+        },
+        "cartes": [
+          {
+            "titre": "Préventive systématique",
+            "etiquette": "Planifiée",
+            "texte": "Gammes exécutées à échéance fixe : heures de marche, cycles, calendrier. Graissage, remplacement d’usure, resserrage, contrôles de sécurité.",
+            "puces": [
+              "Gammes rédigées et tenues à jour",
+              "Relevé de compteurs et échéancier",
+              "Historique consigné dans votre GMAO"
+            ],
+            "pied": "Le socle : 60 à 70 % de nos heures en résidence."
+          },
+          {
+            "titre": "Curative",
+            "etiquette": "Urgence",
+            "texte": "Remise en marche après défaillance. Diagnostic, réparation ou dépannage provisoire, sécurisation, puis correction durable planifiée.",
+            "puces": [
+              "Mobilisation en urgence, rappel dans l’heure",
+              "Diagnostic et compte rendu le jour même",
+              "Solution provisoire assumée si la pièce manque"
+            ],
+            "pied": "Ce que vous appelez « la panne ». Objectif : en avoir de moins en moins.",
+            "accent": true
+          },
+          {
+            "titre": "Conditionnelle & prédictive",
+            "etiquette": "Mesure",
+            "texte": "Intervention déclenchée par un relevé, pas par une date. Analyse vibratoire, thermographie, contrôle d’huile, suivi de consommation.",
+            "puces": [
+              "Relevés vibratoires et thermographiques",
+              "Seuils d’alerte définis avec vous",
+              "Remplacement avant la casse, en fenêtre choisie"
+            ],
+            "pied": "Le meilleur rapport coût/arrêt évité sur les machines critiques."
+          },
+          {
+            "titre": "Améliorative",
+            "etiquette": "Fiabilisation",
+            "texte": "On ne répare pas la même panne trois fois. Modification de conception, changement de composant, reprise d’automatisme, suppression de la cause.",
+            "puces": [
+              "Analyse des pannes récurrentes",
+              "Modification chiffrée avant exécution",
+              "Mise à jour des plans et des gammes"
+            ],
+            "pied": "Se prolonge en migen© Retrofit pour les machines vieillissantes."
+          },
+          {
+            "titre": "Réglementaire",
+            "etiquette": "Conformité",
+            "texte": "Vérifications périodiques obligatoires et levée de réserves : appareils de levage, équipements sous pression, installations électriques, sécurité machine.",
+            "puces": [
+              "Planning des vérifications périodiques",
+              "Levée des réserves de l’organisme de contrôle",
+              "Registres et attestations archivés"
+            ],
+            "pied": "Coordonné avec votre organisme agréé, pas à sa place."
+          },
+          {
+            "titre": "Travaux neufs",
+            "etiquette": "Projet",
+            "texte": "Tout ce qui n’est pas de l’entretien : ajout de poste, modification de ligne, déplacement de machine, installation complète.",
+            "puces": [
+              "Chiffrage au forfait, périmètre fermé",
+              "Réalisé par migen© Chantier ou Construction",
+              "Intégration aux gammes de maintenance ensuite"
+            ],
+            "pied": "Bascule sur les offres Chantier, Bureau d’études ou Construction."
+          }
+        ]
+      },
+      "dosage": {
+        "entete": {
+          "surtitre": "Le bon dosage",
+          "titre": "Sortir du tout-curatif est une question de mois, pas de discours."
+        },
+        "paragraphes": [
+          "La plupart des sites que nous reprenons passent plus de 70 % de leurs heures en curatif. C’est le régime le plus coûteux : heures en urgence, pièces en express, production perdue, équipes épuisées.",
+          "Notre travail des six premiers mois consiste à inverser cette répartition. Les gammes sont écrites, les échéances tenues, les pannes récurrentes traitées à la cause. Le curatif ne disparaît jamais, il redevient l’exception."
+        ],
+        "repartition": {
+          "titre": "Répartition des heures",
+          "periode": "À l’arrivée → après 12 mois",
+          "jeux": [
+            {
+              "legende": "Site repris, mois 1",
+              "barres": [
+                { "libelle": "Curative", "valeur": 72 },
+                { "libelle": "Préventive", "valeur": 21 },
+                { "libelle": "Conditionnelle", "valeur": 4 },
+                { "libelle": "Améliorative", "valeur": 3 }
+              ]
+            },
+            {
+              "legende": "Même site, mois 12",
+              "accent": true,
+              "barres": [
+                { "libelle": "Curative", "valeur": 28 },
+                { "libelle": "Préventive", "valeur": 44 },
+                { "libelle": "Conditionnelle", "valeur": 16 },
+                { "libelle": "Améliorative", "valeur": 12 }
+              ]
+            }
+          ],
+          "note": "Répartition observée sur nos contrats de résidence, variable selon l’état du parc à la reprise."
+        }
+      },
+      "domaines": {
+        "entete": {
+          "surtitre": "Domaines d’activité",
+          "titre": "Ce que nos techniciens savent faire",
+          "note": "Chaque domaine a sa page dédiée et ses habilitations propres"
+        },
+        "lienLibelle": "Ce qu’on y répare",
+        "cartes": [
+          { "titre": "Mécanique", "etiquette": "Alignement · Vibratoire", "texte": "Roulements, réducteurs, transmissions, alignement laser, reprise de jeux.", "href": "/expertises/mecanique/" },
+          { "titre": "Électromécanique", "etiquette": "Moteurs · Freins", "texte": "Moteurs, freins, motoréducteurs, rebobinage, remplacement en ligne.", "href": "/expertises/electromecanique/" },
+          { "titre": "Électrique", "etiquette": "B2V · BR · BC", "texte": "Armoires, câblage, consignation, mise en conformité, plans à jour.", "href": "/expertises/electrique/" },
+          { "titre": "Automatisme", "etiquette": "SIEMENS · Schneider", "texte": "Diagnostic d’automate, reprise de programme, défauts intermittents, migration.", "href": "/expertises/automatisme/" },
+          { "titre": "Robotique", "etiquette": "FANUC · ABB", "texte": "Trajectoires, préhenseurs, cellules, remise en service après collision.", "href": "/expertises/robotique/" },
+          { "titre": "Hydraulique", "etiquette": "Haute pression", "texte": "Centrales, vérins, distributeurs, flexibles, recherche de fuite.", "href": "/expertises/hydraulique/" },
+          { "titre": "Pneumatique", "etiquette": "Réseaux · Îlots", "texte": "Réseaux, vérins, îlots de distribution, traitement d’air.", "href": "/expertises/pneumatique/" },
+          { "titre": "Soudure", "etiquette": "TIG · MIG · Arc", "texte": "TIG, MIG, arc, inox et acier, reprise de structure, chaudronnerie.", "href": "/expertises/soudure/" },
+          { "titre": "Tuyauterie", "etiquette": "Inox · Acier noir", "texte": "Préfabrication, piquages, supportage, épreuve, calorifuge.", "href": "/expertises/tuyauterie/" }
+        ]
+      },
+      "constructeurs": {
+        "entete": {
+          "surtitre": "Spécialisations constructeur",
+          "titre": "Certifiés sur les plateformes que vous avez déjà."
+        },
+        "texte": "Un automaticien généraliste met trois jours à comprendre votre programme. Un automaticien certifié sur votre plateforme ouvre le projet et lit. C’est toute la différence sur un arrêt.",
+        "lignes": [
+          { "nom": "SIEMENS", "outils": "TIA Portal, Step 7, S7-300 à S7-1500, WinCC" },
+          { "nom": "SCHNEIDER", "outils": "Unity Pro, EcoStruxure, M340, Altivar" },
+          { "nom": "FANUC", "outils": "Série R-30i, Roboguide, cellules de soudure" },
+          { "nom": "ABB", "outils": "IRC5, RobotStudio, manipulation et palettisation" }
+        ],
+        "image": { "src": "/assets/web/sv-convoyeur.jpg", "alt": "Cellule robotisée" }
+      },
+      "secteurs": {
+        "entete": {
+          "surtitre": "Secteurs d’activité",
+          "titre": "Les contraintes changent d’une industrie à l’autre"
+        },
+        "cartes": [
+          { "titre": "Agroalimentaire", "texte": "Lignes de conditionnement, nettoyabilité, arrêts courts et fréquents.", "href": "/secteurs/agroalimentaire/" },
+          { "titre": "Automobile", "texte": "Cadence, robotique de soudure, presses, convoyage, takt time.", "href": "/secteurs/automobile/" },
+          { "titre": "Centre logistique", "texte": "Convoyeurs, trieurs, palettiseurs, disponibilité en saison haute.", "href": "/secteurs/logistique/" },
+          { "titre": "Industrie lourde", "texte": "Charges, environnements poussiéreux, maintenance de gros équipements.", "href": "/secteurs/industrie-lourde/" },
+          { "titre": "Industrie métallique", "texte": "Presses, cisailles, plieuses, outillage, reprise de structure.", "href": "/secteurs/industrie-metallique/" },
+          { "titre": "Pharmaceutique", "texte": "Traçabilité, zones à atmosphère contrôlée, documentation exigeante.", "href": "/secteurs/pharmaceutique/" },
+          { "titre": "Chimie", "texte": "Habilitations risques chimiques, ATEX, consignation stricte.", "href": "/secteurs/chimie/" },
+          { "titre": "Aéronautique", "texte": "Tolérances serrées, contrôle dimensionnel, procédures qualité.", "href": "/secteurs/aeronautique/" },
+          { "titre": "Menuiserie industrielle", "texte": "Machines à bois, aspiration, affûtage, sécurité machine.", "href": "/secteurs/menuiserie-industrielle/" }
+        ]
+      },
+      "habilitations": {
+        "entete": {
+          "surtitre": "Habilitations",
+          "titre": "Vérifiées avant, pas pendant."
+        },
+        "texte": "Chaque technicien arrive avec ses titres à jour et ses attestations transmises avec le plan de prévention. Aucune intervention sans contrôle de validité.",
+        "cartes": [
+          { "titre": "CACES 486 & 489", "texte": "Nacelles et chariots élévateurs" },
+          { "titre": "Habilitations électriques", "texte": "B1V, B2V, BR, BC, consignation" },
+          { "titre": "Travail en hauteur", "texte": "Port du harnais, ancrages, échafaudage" },
+          { "titre": "Risques chimiques", "texte": "Niveaux 1 et 2, ATEX selon sites" },
+          { "titre": "Accès Z.A.C", "texte": "Zones à atmosphère contrôlée" },
+          { "titre": "MASE & EcoVadis", "texte": "Démarche sécurité et évaluation RSE", "accent": true }
+        ]
+      },
+      "formulaire": {
+        "titre": "Votre panne est à cheval sur deux métiers ?",
+        "intro": "C’est le cas le plus fréquent. Décrivez le symptôme, nous composons l’équipe."
+      }
+    }
+  }
+]

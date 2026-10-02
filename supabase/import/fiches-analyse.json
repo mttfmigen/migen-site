@@ -1,0 +1,1967 @@
+[
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/aktid-centre-logistique.md",
+  "url": "/preuves/aktid-centre-logistique/",
+  "h1": "Étude de cas AKTID : montage d'un centre logistique",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "En août 2023, AKTID a confié à Migen le montage de son nouveau centre logistique, à Clermont-Ferrand. Six semaines de chantier en pleine période estivale, avec une date de livraison qui ne bougeait pas.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "AKTID"
+    },
+    {
+     "libelle": "Site",
+     "valeur": "Nouveau centre logistique, Clermont-Ferrand"
+    },
+    {
+     "libelle": "Période",
+     "valeur": "Chantier démarré en août 2023"
+    },
+    {
+     "libelle": "Moyens humains",
+     "valeur": "12 monteurs mécaniciens"
+    },
+    {
+     "libelle": "Moyens matériels",
+     "valeur": "8 engins de levage"
+    },
+    {
+     "libelle": "Durée",
+     "valeur": "6 semaines de travaux"
+    },
+    {
+     "libelle": "Nature des travaux",
+     "valeur": "Montage d'installations logistiques"
+    }
+   ],
+   "contexte": "**Un montage qui glisse, c'est une mise en service qui glisse, et toute l'exploitation derrière.** La date de livraison, elle, ne se renégocie pas.\nLe projet a présenté d'importants défis pour les équipes engagées :\n**La période estivale** : Le moment le plus difficile de l'année pour réunir des monteurs disponibles.\n**Des délais impartis** : La livraison du centre logistique était bornée dans le calendrier.\n**Un montage lourd** : Les installations demandaient des moyens de levage en nombre.\n**Des obstacles en cours de route** : Plusieurs difficultés ont dû être franchies pendant le chantier.",
+   "intervention": "**Une équipe de montage complète** : 12 monteurs mécaniciens mobilisés sur le chantier, soit plus d'une dizaine d'intervenants en simultané.\n**Les moyens de levage sur place** : 8 engins de levage engagés pour le montage des installations.\n**Une équipe intégrée au client** : Les équipes Migen ont travaillé en lien direct avec celles d'AKTID, sur le même planning.\n**Un chantier calé sur la saison** : Le montage a été conduit pendant l'été, avec les contraintes de disponibilité que cela impose.\n**Un objectif unique** : Livrer le centre logistique dans les délais impartis, sans arbitrage sur la qualité du montage.",
+   "resultats": [
+    {
+     "valeur": "Le site livré dans les temps",
+     "libelle": "Après environ six semaines de chantier, le centre logistique a été remis à la date prévue."
+    },
+    {
+     "valeur": "Une réussite conjointe",
+     "libelle": "Le résultat tient à la collaboration étroite entre les équipes Migen et les équipes AKTID, malgré les défis rencontrés."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE CLIENT ET LE SITE": [
+    "- **Site** : Nouveau centre logistique, Clermont-Ferrand.\n- **Nature** : Montage d'installations logistiques.\n- **Saison** : Chantier mené pendant l'été 2023.",
+    "> Ce cas figure dans nos [études de cas maintenance industrielle](/preuves/)."
+   ],
+   "LE RÉSULTAT": [
+    "Un chantier d'été tenu au jour près, avec des monteurs trouvés au moment où personne n'en trouve. C'est le fait que le client retient."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Prise en charge du montage** : AKTID fait appel à Migen pour le nouveau centre logistique de Clermont-Ferrand.\n2. **Mobilisation des moyens** : 12 monteurs mécaniciens et 8 engins de levage sont engagés sur site.\n3. **Montage en collaboration** : Les équipes Migen et AKTID avancent ensemble, poste par poste.\n4. **Passage des obstacles** : Les difficultés rencontrées sont traitées sans décaler la date de livraison.\n5. **Livraison du site** : Après environ six semaines de travaux, le centre logistique est remis dans les temps prévus."
+   ],
+   "CTA": [
+    "**Un montage à tenir sur une date qui ne bouge pas ?** Donnez-nous la date de livraison, nous partons de là pour dimensionner l'équipe.\n\nUn monteur qualifié disponible en plein mois d'août reste l'objet le plus rare du marché. Nous partons du calendrier, pas de ce qui traîne sur le banc.\n\n- **Rappel dans l'heure** : Du lundi au vendredi, de 8h00 à 18h30.\n- **Astreinte 24/24 et 7/7** : Disponible en option une fois le site en exploitation, au 04 78 33 72 05.\n- **10 % des candidats retenus** : Mécanique, soudure et chaudronnerie comprises, après entretien technique et comportemental.\n- **Quatre agences** : Lyon (siège), Montréal, Dubaï et Madrid, pour mobiliser un chantier partout en France.\n\n> [Faire chiffrer mon chantier](/contact/) · 04 78 33 72 05\n\n> Secteur concerné : [maintenance équipements logistiques](/secteurs/logistique/)\n\n> À lire aussi : [Étude de cas GLS : maintenance curative](/preuves/gls-maintenance-curative/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/alstef-group.md",
+  "url": "/preuves/alstef-group/",
+  "h1": "Étude de cas ALSTEF Group : contrôle de chantier",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "ALSTEF Group, spécialiste mondial des solutions d'automatisation logistique, a choisi Migen pour renforcer ses équipes de terrain. Plusieurs intervenants ont été déployés sur le contrôle de chantier de projets stratégiques.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "ALSTEF Group, automatisation logistique"
+    },
+    {
+     "libelle": "Période",
+     "valeur": "2025 à 2026"
+    },
+    {
+     "libelle": "Nature des travaux",
+     "valeur": "Contrôle et suivi de chantier"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Suivi des prestataires, vérification des installations, respect des procédures"
+    },
+    {
+     "libelle": "Environnements",
+     "valeur": "Aéroports, logistique, industrie"
+    },
+    {
+     "libelle": "Durée de mission",
+     "valeur": "De quelques semaines à plusieurs mois"
+    },
+    {
+     "libelle": "Cadre",
+     "valeur": "Sans avenant, tarif horaire maîtrisé"
+    }
+   ],
+   "contexte": "**Un pic d'activité chantier arrive toujours au mauvais moment.** Soit vous recrutez dans l'urgence, soit vous videz vos équipes internes. Les deux coûtent cher.\nALSTEF Group gère des chantiers complexes, avec des systèmes automatisés, dans des environnements exigeants :\n**Le contrôle de chantier est une phase clé** pour la conformité, la sécurité et la qualité des installations livrées.\n**Des techniciens capables de s'intégrer vite** étaient nécessaires sur les projets stratégiques.\n**Un renfort fiable manquait** pour le suivi des prestataires et la vérification des installations.\n**La souplesse comptait autant que la compétence** : le besoin suit les pics d'activité chantier.",
+   "intervention": "**Des techniciens dans l'équipe projet** : Un ou plusieurs intervenants assurent le suivi opérationnel de chantier au sein des équipes ALSTEF Group.\n**Des profils autonomes** : Intervenants expérimentés, qui comprennent les environnements industriels automatisés sans période de découverte.\n**Une prestation encadrée** : Les équipes Migen coordonnent la mission pendant toute sa durée.\n**Une durée ajustable** : La mission va de quelques semaines à plusieurs mois, selon la charge chantier.\n**Un cadre contractuel simple** : Sans avenant, sans rupture de charge, avec un tarif horaire maîtrisé.",
+   "resultats": [
+    {
+     "valeur": "Les phases critiques sécurisées",
+     "libelle": "Le contrôle de chantier a été tenu sur les projets stratégiques."
+    },
+    {
+     "valeur": "Le niveau de qualité maintenu",
+     "libelle": "La qualité et la conformité des installations livrées sont restées au niveau attendu."
+    },
+    {
+     "valeur": "Aucun recrutement d'urgence",
+     "libelle": "ALSTEF Group a absorbé la charge projet sans recruter dans la précipitation et sans déplacer ses ressources internes d'un site à l'autre."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE CLIENT ET LE SITE": [
+    "- **Activité** : Automatisation logistique.\n- **Environnements** : Aéroports, logistique, industrie.\n- **Période** : 2025 à 2026.",
+    "> Ce cas figure dans nos [études de cas maintenance industrielle](/preuves/)."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Expression du besoin** : ALSTEF Group cherche du renfort qualifié pour encadrer ses chantiers.\n2. **Sélection des profils** : Migen retient des techniciens au niveau de technicité requis par les projets.\n3. **Déploiement sur les projets stratégiques** : Plusieurs intervenants prennent en charge le contrôle de chantier.\n4. **Suivi opérationnel** : Suivi des prestataires, vérification des installations, respect des procédures.\n5. **Coordination Migen** : La prestation reste pilotée par nos équipes jusqu'à la fin de la mission."
+   ],
+   "CTA": [
+    "**Une charge chantier qui dépasse vos équipes projet ?** Dites-nous le niveau de technicité attendu, nous vous proposons le profil qui correspond.\n\nDéplacer un chef de projet d'un site à l'autre pour boucher un trou, c'est créer le trou suivant. Un renfort activé au bon moment coûte moins cher qu'un recrutement décidé sous pression.\n\n- **Rappel dans l'heure** : Après votre demande, du lundi au vendredi de 8h00 à 18h30.\n- **Astreinte 24/24 et 7/7** : Disponible en option sur les installations en exploitation, au 04 78 33 72 05.\n- **10 % des candidats retenus** : Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, évalués en entretien technique et comportemental.\n- **Plus de 120 clients** : Dont plus de 80 réguliers, sur des chantiers et des sites en exploitation.\n\n> [Demander un renfort chantier](/contact/) · 04 78 33 72 05\n\n> Secteur concerné : [maintenance équipements logistiques](/secteurs/logistique/)\n\n> À lire aussi : [Étude de cas DANONE : lignes de production](/preuves/danone-lignes-de-production/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/amazon-centre-logistique.md",
+  "url": "/preuves/amazon-centre-logistique/",
+  "h1": "Étude de cas AMAZON : maintien d'un centre logistique",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "AMAZON exploite le centre logistique ORY4 en continu, 24 heures sur 24. Depuis septembre 2022, Migen y assure les interventions préventives une semaine sur deux, sous contrat annuel.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "AMAZON"
+    },
+    {
+     "libelle": "Site",
+     "valeur": "Centre logistique ORY4"
+    },
+    {
+     "libelle": "Période",
+     "valeur": "Depuis septembre 2022, mission en cours"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "10 à 20 techniciens polyvalents"
+    },
+    {
+     "libelle": "Durée d'intervention",
+     "valeur": "8 heures"
+    },
+    {
+     "libelle": "Fréquence",
+     "valeur": "1 semaine sur 2"
+    },
+    {
+     "libelle": "Nature des travaux",
+     "valeur": "Maintenance préventive, contrôle, tests en série"
+    },
+    {
+     "libelle": "Cadre",
+     "valeur": "Contrat annuel"
+    }
+   ],
+   "contexte": "**Un site qui ne ferme jamais n'a pas de fenêtre de maintenance.** Chaque minute d'immobilisation se paie sur les flux sortants.\nLa contrainte posée par AMAZON tenait en quatre points :\n**Aucune plage longue** : Les opérations doivent tenir dans quelques heures.\n**Un volume d'équipements élevé** : Beaucoup de machines à couvrir sur le même créneau.\n**Un rythme imposé** : Une semaine sur deux, sans décalage possible.\n**Un risque qui remonte vite** : Le préventif en retard se transforme en défaillance.",
+   "intervention": "**Effectif massé sur le créneau** : 10 à 20 techniciens polyvalents mobilisés en même temps, pour traiter un grand nombre d'interventions préventives en parallèle.\n**Format calé sur 8 heures** : Les opérations sont découpées pour entrer dans des plages de quelques heures, sans débordement sur l'exploitation.\n**Préparation partagée** : Les équipes AMAZON organisent les opérations en amont et rendent les pièces de rechange disponibles avant l'arrivée des techniciens.\n**Exécution et contrôle** : Migen prend en charge l'exécution, le contrôle et les tests en série de chaque opération.\n**Rythme tenu dans la durée** : Le dispositif tourne une semaine sur deux depuis 2022, sans rupture.",
+   "resultats": [
+    {
+     "valeur": "Une opération maîtrisée",
+     "libelle": "Délicate au départ, elle l'est devenue grâce à l'organisation et à l'entraînement des équipes, côté prestataire comme côté client."
+    },
+    {
+     "valeur": "Un risque de défaillance réduit",
+     "libelle": "Le préventif passe dans la fenêtre prévue, ce qui sécurise la continuité opérationnelle du site."
+    },
+    {
+     "valeur": "Un périmètre qui s'élargit",
+     "libelle": "Migen réalise toujours ces interventions, avec des responsabilités de plus en plus importantes."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE CLIENT ET LE SITE": [
+    "- **Site** : Centre logistique ORY4.\n- **Régime** : Fonctionnement ininterrompu, sans fenêtre d'arrêt longue.\n- **Engagement** : Contrat annuel, toujours en cours.",
+    "> Ce cas figure dans nos [études de cas maintenance industrielle](/preuves/)."
+   ],
+   "LE RÉSULTAT": [
+    "Le contrat est reconduit chaque année. Un site logistique de cette taille ne reconduit pas un prestataire qui le ralentit."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Préparation du créneau** : Les équipes AMAZON préparent et organisent les opérations à venir.\n2. **Approvisionnement** : Les pièces de rechange nécessaires sont disponibles avant l'intervention.\n3. **Exécution en parallèle** : Les techniciens Migen se répartissent les équipements et traitent les opérations simultanément.\n4. **Contrôle et tests en série** : Chaque opération est vérifiée, puis testée avant restitution du matériel.\n5. **Reconduction** : Le créneau suivant repart une semaine plus tard, sous le même contrat annuel."
+   ],
+   "CTA": [
+    "**Un préventif qui ne rentre plus dans vos fenêtres d'arrêt ?** Dites-nous votre rythme d'exploitation, nous dimensionnons l'équipe pour le créneau.\n\nLe préventif qui glisse ne disparaît pas. Il revient sous forme de correctif, au pire moment, et au prix fort.\n\n- **Rappel dans l'heure** : Après votre demande, du lundi au vendredi de 8h00 à 18h30.\n- **Plus de 100 collaborateurs** : De quoi masser un effectif important sur une plage courte.\n- **Astreinte 24/24 et 7/7** : Proposée en option pour les sites qui ne s'arrêtent pas, au 04 78 33 72 05.\n- **10 % des candidats retenus** : Entretien technique et entretien comportemental, avant toute affectation sur site.\n\n> [Faire chiffrer mon besoin](/contact/) · 04 78 33 72 05\n\n> Secteur concerné : [maintenance équipements logistiques](/secteurs/logistique/)\n\n> À lire aussi : [Étude de cas AMAZON : démarrage d'un nouveau site](/preuves/amazon-nouveau-site/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/amazon-nouveau-site.md",
+  "url": "/preuves/amazon-nouveau-site/",
+  "h1": "Étude de cas AMAZON : démarrage d'un nouveau site",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "Depuis mai 2024, Migen assure le maintien d'un deuxième centre logistique AMAZON : le site ETZ 2, à Metz. Le dispositif éprouvé sur ORY 4, à Paris, y a été transposé.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "AMAZON"
+    },
+    {
+     "libelle": "Site",
+     "valeur": "Centre logistique ETZ 2, Metz"
+    },
+    {
+     "libelle": "Période",
+     "valeur": "Depuis mai 2024, mission en cours"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "10 techniciens polyvalents"
+    },
+    {
+     "libelle": "Durée d'intervention",
+     "valeur": "8 heures"
+    },
+    {
+     "libelle": "Fréquence",
+     "valeur": "1 semaine par mois"
+    },
+    {
+     "libelle": "Nature des travaux",
+     "valeur": "Maintenance préventive, contrôle, tests en série"
+    },
+    {
+     "libelle": "Site de référence",
+     "valeur": "ORY 4, Paris, couvert depuis 2022"
+    }
+   ],
+   "contexte": "**Ouvrir un deuxième site avec un prestataire qui découvre le métier, c'est repartir de zéro.** Le temps d'apprentissage se paie en arrêts.\nCe que le nouveau site imposait :\n**La même exigence de continuité** : Le centre fonctionne sans interruption, comme celui de Paris.\n**Des créneaux courts** : Les opérations doivent tenir dans quelques heures.\n**Une coordination à reconstruire** : Les équipes locales ne sont pas celles d'ORY 4.\n**Aucune marge d'apprentissage** : Le préventif démarre au rythme du site, pas au rythme du prestataire.",
+   "intervention": "**Un mode opératoire transposé** : La méthode appliquée sur ORY 4 depuis 2022 est reprise sur ETZ 2 dès mai 2024, plutôt que réinventée.\n**Une équipe dédiée au site** : 10 techniciens polyvalents mobilisés ensemble, pour traiter simultanément un grand nombre d'interventions préventives.\n**Un rythme mensuel** : Une semaine d'intervention par mois sur le site de Metz.\n**Une préparation côté client** : Les équipes AMAZON organisent les opérations en amont et assurent la disponibilité des pièces de rechange.\n**Une exécution complète** : Migen prend en charge l'exécution, le contrôle et les tests en série des opérations.",
+   "resultats": [
+    {
+     "valeur": "Un deuxième site confié",
+     "libelle": "ETZ 2 rejoint ORY 4. AMAZON travaille désormais avec Migen sur deux centres logistiques."
+    },
+    {
+     "valeur": "Une opération maîtrisée",
+     "libelle": "L'organisation et l'entraînement des équipes, prestataires comme clientes, ont rendu maîtrisée une opération délicate."
+    },
+    {
+     "valeur": "Un risque de défaillance réduit",
+     "libelle": "La continuité opérationnelle du site est tenue, créneau après créneau."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE CLIENT ET LE SITE": [
+    "- **Site** : Centre logistique ETZ 2, Metz.\n- **Régime** : Fonctionnement ininterrompu, 24 heures sur 24.\n- **Référence** : Le site ORY 4 de Paris, couvert depuis 2022.",
+    "> Ce cas figure dans nos [études de cas maintenance industrielle](/preuves/)."
+   ],
+   "LE RÉSULTAT": [
+    "Un client ne duplique pas un dispositif sur un second site tant que le premier n'a pas fait ses preuves."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Reprise du modèle ORY 4** : Le mode opératoire éprouvé à Paris sert de base au démarrage messin.\n2. **Préparation partagée** : Les équipes AMAZON sur place préparent et organisent les opérations du créneau.\n3. **Approvisionnement** : Les pièces de rechange sont disponibles avant l'arrivée de l'équipe.\n4. **Exécution en parallèle** : Les 10 techniciens se répartissent les équipements sur une plage de 8 heures.\n5. **Contrôle et tests en série** : Chaque opération est vérifiée, puis testée avant restitution."
+   ],
+   "CTA": [
+    "**Vous ouvrez un site et vous voulez y porter ce qui marche déjà ?** Parlons du site existant d'abord, du nouveau ensuite.\n\nUn démarrage se joue sur les premières semaines. Reprendre un mode opératoire déjà éprouvé évite de les passer à apprendre.\n\n- **Rappel dans l'heure** : Votre demande est reprise sans attendre, de 8h00 à 18h30 en semaine.\n- **Partout en France** : Quatre agences, à Lyon (siège), Montréal, Dubaï et Madrid.\n- **Astreinte 24/24 et 7/7** : En option pour les exploitations continues, au 04 78 33 72 05.\n- **10 % des candidats retenus** : Chaque technicien passe un entretien technique et un entretien comportemental.\n\n> [Faire chiffrer mon besoin](/contact/) · 04 78 33 72 05\n\n> Secteur concerné : [maintenance équipements logistiques](/secteurs/logistique/)\n\n> À lire aussi : [Étude de cas AKTID : montage d'un centre logistique](/preuves/aktid-centre-logistique/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/autoliv.md",
+  "url": "/preuves/autoliv/",
+  "h1": "Étude de cas AUTOLIV : maintien d'un site",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "En 2025, AUTOLIV a sollicité Migen pour renforcer son équipe technique. Un technicien de maintenance polyvalent a été affecté au site, pour contribuer au maintien du parc machines.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "AUTOLIV"
+    },
+    {
+     "libelle": "Secteur",
+     "valeur": "Industrie automobile"
+    },
+    {
+     "libelle": "Année",
+     "valeur": "2025"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "1 technicien de maintenance polyvalent"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Maintien opérationnel du parc machines"
+    },
+    {
+     "libelle": "Organisation",
+     "valeur": "Technicien intégré aux équipes internes, présence continue"
+    },
+    {
+     "libelle": "Pilotage",
+     "valeur": "Suivi de mission assuré par Migen"
+    }
+   ],
+   "contexte": "**Un poste de maintenance vacant ne se voit pas tout de suite.** Il se voit le jour où le parc machines commence à décrocher.\nRecruter un technicien prend des mois. Pendant ce temps, l'équipe en place absorbe la charge, le préventif saute et le correctif s'accumule. Le besoin posé par le site :\n**Maintenir le parc machines** sans créer un poste dans l'urgence.\n**Soutenir l'équipe existante** sans désorganiser son fonctionnement.\n**Disposer d'un profil opérationnel tout de suite**, pas d'un renfort à former.",
+   "intervention": "**Un technicien dédié, pas un dépanneur de passage** : Un profil polyvalent est affecté au site et intégré aux équipes internes d'AUTOLIV.\n**Une présence continue** : Le technicien travaille sur les horaires et les priorités du site, aux côtés des équipes en place.\n**Un renfort sans réorganisation** : L'équipe maintenance garde son fonctionnement. Le renfort s'ajoute, il ne remplace rien.\n**Un pilotage assuré par Migen** : Le suivi de la prestation reste de notre côté. Le client garde son temps pour la production.\nCe que couvre le technicien sur site : la participation aux actions de maintenance, la continuité de fonctionnement des équipements et l'appui technique aux équipes, sur le terrain.",
+   "resultats": [
+    {
+     "valeur": "Une approche directe, sur le terrain",
+     "libelle": "Pas de surcouche de gestion entre le besoin et le technicien."
+    },
+    {
+     "valeur": "Le bon profil au bon moment",
+     "libelle": "Les équipements industriels restent opérationnels."
+    },
+    {
+     "valeur": "Une continuité de fonctionnement",
+     "libelle": "Le parc machines est tenu, sans création de poste."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE CLIENT ET LE SITE": [
+    "- **Secteur** : Industrie automobile.\n- **Effectif Migen** : 1 technicien de maintenance polyvalent.\n- **Organisation** : Présence continue, en coordination avec les équipes AUTOLIV.",
+    "> Ce cas figure dans nos [études de cas maintenance industrielle](/preuves/)."
+   ],
+   "LE RÉSULTAT": [
+    "Le renfort soutient l'équipe maintenance existante sans désorganisation, avec un profil opérationnel dès la prise de poste.",
+    "Ce que la mission illustre :"
+   ],
+   "LE DÉROULÉ": [
+    "1. **Sollicitation d'AUTOLIV** : Le site exprime un besoin de renfort sur son équipe technique.\n2. **Sélection du profil** : Migen identifie un technicien de maintenance polyvalent, opérationnel dès l'arrivée.\n3. **Affectation au site** : Le technicien rejoint les équipes internes d'AUTOLIV.\n4. **Prise en charge du parc machines** : Actions de maintenance, continuité de fonctionnement, appui technique.\n5. **Suivi de mission** : Migen assure le pilotage de la prestation dans la durée."
+   ],
+   "CTA": [
+    "**Un poste de maintenance vacant que le recrutement ne comble pas ?** Décrivez le parc et les horaires, nous cherchons le technicien correspondant.\n\nChaque mois de vacance se paie en préventif reporté. Le correctif qui suit coûte plus cher que le poste que vous n'avez pas pourvu.\n\n- **Rappel dans l'heure** : Du lundi au vendredi, de 8h00 à 18h30.\n- **Astreinte 24/24 et 7/7** : Disponible en option, au 04 78 33 72 05.\n- **10 % des candidats retenus** : Entretien technique et entretien comportemental avant toute affectation.\n- **Remplacement assuré** : En cas d'absence du technicien affecté, la continuité du poste reste de notre côté.\n\n> [Demander un technicien sur site](/contact/) · 04 78 33 72 05\n\n> Offre et secteur concernés : [sous-traitance maintenance](/offres/residence/) et [maintenance industrie automobile](/secteurs/automobile/)\n\n> À lire aussi : [Étude de cas VALEO : plusieurs usines](/preuves/valeo-usines/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/danone-lignes-de-production.md",
+  "url": "/preuves/danone-lignes-de-production/",
+  "h1": "Étude de cas DANONE : lignes de production",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "DANONE, à travers sa filiale Blédina, a confié à Migen le renfort continu de sa maintenance sur le site de Steenvoorde. Deux techniciens y sont intégrés en 3x8.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "DANONE, filiale Blédina"
+    },
+    {
+     "libelle": "Site",
+     "valeur": "Steenvoorde"
+    },
+    {
+     "libelle": "Secteur",
+     "valeur": "Production agroalimentaire infantile"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Lignes liquides et conditionnement poudre"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "2 techniciens de maintenance"
+    },
+    {
+     "libelle": "Organisation",
+     "valeur": "Horaires postés 3x8, présence continue"
+    },
+    {
+     "libelle": "Nature des travaux",
+     "valeur": "Maintenance préventive et curative, dépannage"
+    },
+    {
+     "libelle": "Environnement technique",
+     "valeur": "Lignes automatisées, automates Schneider"
+    }
+   ],
+   "contexte": "**Sur une ligne de nutrition infantile, la cadence perdue ne se rattrape pas.** Une équipe en production continue absorbe le correctif, les postes de nuit et les aléas avec le même effectif.\nLe site de Steenvoorde produit sur des lignes à haute cadence, où la fiabilité des équipements conditionne directement le volume sorti. Les enjeux posés étaient précis :\n**Disponibilité des lignes** : Tenir le taux de marche sur les liquides et sur le conditionnement poudre.\n**Réaction sur panne** : Raccourcir le temps entre l'arrêt et la remise en service.\n**Qualité et sécurité alimentaire** : Maintenir le niveau d'exigence imposé par la nutrition infantile.\n**Appui aux équipes internes** : Soutenir les équipes en place dans un rythme de production continue.",
+   "intervention": "**Renfort intégré, pas de structure en plus** : Deux techniciens de maintenance travaillent au sein des équipes Blédina. La continuité est assurée sans alourdir l'organisation du site.\n**Présence postée continue** : Les techniciens suivent le rythme 3x8. La maintenance est là quand la ligne tourne, pas seulement aux heures ouvrées.\n**Coordination avec les équipes du site** : Les interventions se décident avec les équipes internes, sur leurs priorités de production.\n**Des profils autonomes** : Polyvalence et autonomie sont les deux critères qui permettent de laisser un technicien en poste de nuit.\n**Un interlocuteur unique** : La mission est pilotée par les équipes Migen. Le client garde un contact, pas une liste qui change.\nLe périmètre technique sur site tient en quatre points :\nDiagnostic rapide des pannes sur lignes de production.\nDépannage en environnement automatisé, automates Schneider compris.\nMaintenance préventive et curative des équipements.\nSupport technique aux équipes de production.",
+   "resultats": [
+    {
+     "valeur": "Des techniciens qualifiés et autonomes",
+     "libelle": "Opérationnels sans encadrement permanent."
+    },
+    {
+     "valeur": "Une flexibilité d'organisation",
+     "libelle": "Le dispositif suit le rythme réel de la production."
+    },
+    {
+     "valeur": "Une compétence alignée",
+     "libelle": "Le niveau technique correspond aux équipements en service."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE CLIENT ET LE SITE": [
+    "- **Site** : Steenvoorde, production agroalimentaire infantile.\n- **Périmètre** : Lignes liquides et conditionnement poudre.\n- **Organisation** : Horaires postés 3x8, présence continue.",
+    "> Ce cas figure dans nos [études de cas maintenance industrielle](/preuves/)."
+   ],
+   "LE RÉSULTAT": [
+    "La continuité de service est assurée sur les deux familles de lignes, sans création de poste ni alourdissement de la structure interne du client.",
+    "Ce que Blédina retire de la collaboration, tel que le site le formule :"
+   ],
+   "LE DÉROULÉ": [
+    "1. **Cadrage du besoin** : Blédina exprime un besoin de renfort sur les lignes liquides et le conditionnement poudre.\n2. **Intégration des techniciens** : Deux techniciens Migen rejoignent les équipes maintenance du site.\n3. **Passage en horaires postés** : Le dispositif bascule sur le rythme 3x8 de la production.\n4. **Préventif et curatif au quotidien** : Diagnostic, dépannage et entretien, en appui des équipes internes.\n5. **Suivi de mission** : Les équipes Migen assurent le pilotage opérationnel dans la durée."
+   ],
+   "CTA": [
+    "**Votre maintenance tient la nuit avec l'effectif du jour ?** Dites-nous votre rythme de postes, nous cadrons le renfort autour.\n\n- **Rappel dans l'heure** : Du lundi au vendredi, de 8h00 à 18h30.\n- **Astreinte 24/24 et 7/7** : Proposée en option sur les productions continues, au 04 78 33 72 05.\n- **10 % des candidats retenus** : Entretien technique et entretien comportemental, résultats partagés avec le client.\n\n> [Demander un renfort de maintenance](/contact/) · 04 78 33 72 05\n\n> Offre et secteur concernés : [sous-traitance maintenance](/offres/residence/) et [maintenance agroalimentaire](/secteurs/agroalimentaire/)\n\n> À lire aussi : [Étude de cas McCAIN : Belgique](/preuves/mccain-belgique/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/eaton-mise-en-production.md",
+  "url": "/preuves/eaton-mise-en-production/",
+  "h1": "Étude de cas EATON : mise en production",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "EATON a sollicité Migen en janvier 2023, au moment de l'installation d'un nouveau parc machine sur son site automobile. La demande portait sur un soutien technique à l'intégration, puis à la mise en production de ces outils.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "EATON, site automobile"
+    },
+    {
+     "libelle": "Période",
+     "valeur": "Depuis janvier 2023, mission en cours"
+    },
+    {
+     "libelle": "Déclencheur",
+     "valeur": "Installation d'un nouveau parc machine"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Intégration, mise en production, maintenance préventive et curative"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "6 techniciens multidisciplinaires"
+    },
+    {
+     "libelle": "Rôle de Migen",
+     "valeur": "Soutien technique à l'intégration, puis continuité opérationnelle"
+    }
+   ],
+   "contexte": "**Un parc machine neuf ne produit pas le jour où il arrive sur le quai.** Il produit le jour où quelqu'un sait le régler, le dépanner et le tenir.\nUne mise en production concentre tous les risques industriels au même moment :\n**Des machines neuves à intégrer**, livrées et installées dans un calendrier contraint.\n**Aucun historique de panne** sur lequel s'appuyer pour anticiper les défaillances.\n**Des compétences variées attendues au même instant** : mécanique, électricité, automatisme.\n**Un préventif à construire** pendant que le curatif tourne déjà.",
+   "intervention": "**Une équipe constituée pour le projet** : 6 techniciens multidisciplinaires réunis pour couvrir l'ensemble du périmètre du nouveau parc.\n**L'accompagnement des livraisons** : Les techniciens Migen ont suivi l'arrivée et le montage des différentes machines.\n**La maintenance préventive du parc neuf** : Le plan d'entretien tourne dès la mise en service, sans attendre les premières casses.\n**La maintenance curative** : Les défaillances des premières semaines sont traitées sur place, par des techniciens qui connaissent déjà les machines.\n**Une équipe qui reste après le démarrage** : La connaissance machine acquise pendant l'installation ne repart pas avec le chantier.",
+   "resultats": [
+    {
+     "valeur": "Un démarrage tenu",
+     "libelle": "Sans recruter six personnes dans l'urgence."
+    },
+    {
+     "valeur": "Une connaissance machine conservée",
+     "libelle": "L'équipe reste après la mise en service."
+    },
+    {
+     "valeur": "Un seul interlocuteur",
+     "libelle": "Pour le préventif, le curatif et l'accompagnement des installations."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE CLIENT ET LE SITE": [
+    "- **Site** : Site automobile d'EATON.\n- **Déclencheur** : Installation d'un nouveau parc machine.\n- **Effectif Migen** : 6 techniciens multidisciplinaires.",
+    "> Ce cas figure dans nos [études de cas maintenance industrielle](/preuves/)."
+   ],
+   "LE RÉSULTAT": [
+    "La mission n'est pas un épisode fermé : elle dure. Migen continue d'assurer la continuité opérationnelle du site d'EATON.",
+    "> Les objectifs de production sont en constante progression, ce qui témoigne du succès de la collaboration sur ce projet.",
+    "Ce que cela change pour le site :"
+   ],
+   "LE DÉROULÉ": [
+    "1. **Sollicitation** : EATON fait appel à Migen en janvier 2023, à l'installation du nouveau parc machine.\n2. **Constitution de l'équipe** : Six techniciens aux compétences variées sont réunis pour couvrir tout le périmètre.\n3. **Livraison et installation** : L'équipe accompagne l'arrivée et le montage des machines sur le site.\n4. **Mise en production** : Préventif et curatif sont assurés en parallèle de la mise en service des outils.\n5. **Continuité** : La mission se poursuit aujourd'hui sur le même site."
+   ],
+   "CTA": [
+    "**Un parc machine qui arrive et personne pour le prendre en main ?** Donnez-nous la date de livraison, nous constituons l'équipe autour.\n\nUne machine neuve n'a pas d'historique de panne. La seule chose qui compense, c'est une équipe présente dès le déballage.\n\n- **Rappel dans l'heure** : Après votre demande, en semaine de 8h00 à 18h30.\n- **Plus de 100 collaborateurs** : De quoi constituer une équipe multidisciplinaire pour un projet.\n- **Astreinte 24/24 et 7/7** : Disponible en option une fois la ligne en production, au 04 78 33 72 05.\n- **10 % des candidats retenus** : Mécanique, électricité et automatisme réunis dans la même équipe, après entretien technique et comportemental.\n\n> [Faire chiffrer mon démarrage](/contact/) · 04 78 33 72 05\n\n> Secteur concerné : [maintenance industrie automobile](/secteurs/automobile/)\n\n> À lire aussi : [Étude de cas VOIT : site du Grand Est](/preuves/voit-grand-est/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/eiffage.md",
+  "url": "/preuves/eiffage/",
+  "h1": "EIFFAGE : trois techniciens sur un chantier photovoltaïque",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "Eiffage conduit fin 2024 un projet de grande envergure dans le photovoltaïque. L'installation solaire concernée demande une maintenance préventive rigoureuse.\nMigen a été sélectionné pour rejoindre Eiffage sur ce chantier, de septembre à novembre 2024. Trois techniciens spécialisés sont venus en renfort des équipes déjà présentes sur le site.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "Eiffage, chantier photovoltaïque"
+    },
+    {
+     "libelle": "Site",
+     "valeur": "Installation solaire de grande envergure"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Panneaux solaires, onduleurs, dispositifs de suivi"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "3 techniciens spécialisés"
+    },
+    {
+     "libelle": "Nature des interventions",
+     "valeur": "Maintenance préventive"
+    },
+    {
+     "libelle": "Depuis quand",
+     "valeur": "Septembre à novembre 2024, durée de 6 semaines"
+    }
+   ],
+   "contexte": "**Sur une centrale solaire, un onduleur qui fatigue ne fait pas de bruit.** Il fait baisser la production, sans prévenir, et la perte se lit sur la facture avant de se lire sur le terrain.\nLe chantier posait deux exigences.\n**Anticiper les pannes** avant qu'elles n'entraînent des interruptions de service.\n**Maintenir une production d'énergie solaire continue** pendant toute la durée du projet.\nLes équipes Eiffage étaient déjà mobilisées sur le chantier. Le préventif de masse sur un parc étendu demande des bras supplémentaires, et une compétence qui arrive prête.\nUne installation solaire ne s'arrête pas franchement. Elle se dégrade par points, sur des milliers de composants identiques, et la dérive passe inaperçue tant que personne ne la mesure.\nUn renfort mal choisi coûte alors deux fois. Il faut l'encadrer, puis reprendre derrière lui ce qui a été contrôlé trop vite.",
+   "intervention": "**Vous renforcez les équipes en place, sans les remplacer.** Trois techniciens spécialisés Migen viennent en appui sur le site.\n**Vous couvrez les composants essentiels du système.** Panneaux solaires, onduleurs et dispositifs de suivi entrent dans le périmètre de contrôle.\n**Vous détectez l'usure avant la panne.** Les signes de dysfonctionnement sont relevés avant qu'ils ne coupent la production.\n**Vous maximisez la durée de vie des installations.** Un préventif tenu repousse les remplacements d'équipements.\n**Vous partagez les bonnes pratiques.** La collaboration entre les deux équipes fait circuler les méthodes de maintenance.",
+   "resultats": [
+    {
+     "valeur": "La maintenance préventive a été renforcée",
+     "libelle": "sur toute la durée de la mission."
+    },
+    {
+     "valeur": "La continuité des opérations",
+     "libelle": "a été tenue pendant le projet."
+    },
+    {
+     "valeur": "Les bonnes pratiques ont circulé",
+     "libelle": "entre les équipes Migen et Eiffage."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "SECTION 2 . CHIFFRES CLES": [
+    "- **3 techniciens** : l'équipe spécialisée affectée en renfort, en appui des équipes Eiffage déjà sur site\n- **6 semaines** : la durée du renfort, de septembre à novembre 2024\n- **3 familles de composants** : panneaux solaires, onduleurs et dispositifs de suivi dans le périmètre de contrôle\n- **10 %** : des candidats retenus, après entretien technique ET comportemental"
+   ],
+   "LE RÉSULTAT": [
+    "Ce que le renfort a apporté au chantier, tel que le dossier le documente.",
+    "Le dossier retient une capacité à intervenir sur des projets à haute technicité, aux côtés d'un acteur majeur des énergies renouvelables.",
+    "Le renfort est reparti à l'échéance prévue, la mission terminée. Sur un chantier, c'est aussi une forme de résultat."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Sélection.** Migen est retenu pour rejoindre Eiffage sur le projet photovoltaïque.\n2. **Cadrage du renfort.** Trois techniciens spécialisés sont affectés au chantier.\n3. **Déploiement sur site.** L'équipe Migen s'intègre aux équipes Eiffage déjà présentes.\n4. **Contrôle des composants.** Panneaux, onduleurs et dispositifs de suivi sont passés en revue.\n5. **Maintenance préventive.** Les signes d'usure et de dysfonctionnement sont traités avant interruption de service.\n6. **Fin de mission.** Le renfort se retire à l'échéance, en novembre 2024."
+   ],
+   "CTA": [
+    "**Un chantier qui demande plus de bras que votre équipe n'en a ?** Donnez-nous le périmètre technique et la fenêtre, nous mobilisons le nombre de techniciens qu'il faut.\n\n> [Renforcer mes équipes de chantier](/contact/)\n\nLe **04 78 33 72 05** vous répond du lundi au vendredi, 8h00 à 18h30, avec un rappel dans l'heure. L'astreinte 24/24 et 7/7 reste disponible en option pendant les phases critiques.\n\nSur un chantier, un technicien mal choisi se voit tout de suite. Nos intervenants passent une évaluation technique et une évaluation comportementale, pour un taux de sélection de 10 %.\n\nLes résultats sont partagés avec le client. Vous savez qui rejoint vos équipes avant qu'il n'arrive sur site.\n\n> À lire aussi : [Étude de cas SOPREMA : montage et transfert de machines](/preuves/soprema/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/eriks.md",
+  "url": "/preuves/eriks/",
+  "h1": "ERIKS : un responsable maintenance pendant la transition",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "ERIKS est un acteur industriel. Au troisième trimestre 2025, le site traverse deux mouvements simultanés : une intensification de la production et une transition interne dans ses équipes de maintenance.\nMigen intègre sur site un responsable maintenance expérimenté, en présence continue, sous supervision Migen.",
+   "fiche": [
+    {
+     "libelle": "Site",
+     "valeur": "ERIKS, acteur industriel"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Ensemble des opérations de maintenance du site"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "1 responsable maintenance, présence continue"
+    },
+    {
+     "libelle": "Nature des interventions",
+     "valeur": "Planification et ordonnancement du préventif et du curatif"
+    },
+    {
+     "libelle": "Encadrement",
+     "valeur": "Supervision Migen, reporting à la direction industrielle"
+    },
+    {
+     "libelle": "Depuis quand",
+     "valeur": "Troisième trimestre 2025"
+    }
+   ],
+   "contexte": "**Quand le responsable maintenance manque, le préventif glisse et le curatif s'empile.** Personne ne voit venir l'arrêt, et il arrive au pire moment de l'année.\nERIKS posait trois exigences.\n**Superviser** l'ensemble des opérations de maintenance industrielle du site.\n**Manager** les équipes déjà en place, sans casser leurs habitudes de travail.\n**Tenir les process** sans perte de qualité ni arrêt de production.\nLe besoin n'était pas une paire de bras de plus. Il fallait quelqu'un capable de tenir le service pendant que l'organisation bougeait.\nLes deux mouvements s'aggravent l'un l'autre. La cadence monte au moment précis où l'encadrement technique est le plus fragile.\nPromouvoir un technicien en interne aurait retiré un intervenant du terrain pour en faire un manager sans appui. Le site aurait perdu deux fois.",
+   "intervention": "**Vous avez un responsable nommé, pas une ressource anonyme.** Il prend l'exploitation, l'organisation des interventions et le reporting.\n**Vous démarrez sans rupture d'activité.** Les ressources sont engagées dès la validation du besoin, la production ne s'arrête pas pour accueillir le renfort.\n**Vous gardez votre organisation.** Le responsable travaille dans les équipes ERIKS, l'encadrement technique reste porté par Migen.\n**Vous avez un seul interlocuteur maintenance.** Production, achats et services HSE parlent à la même personne.\n**Vous recevez un reporting technique et stratégique.** Il remonte à la direction industrielle pendant toute la prestation.",
+   "resultats": [
+    {
+     "valeur": "Zéro interruption critique",
+     "libelle": "sur toute la durée de la prestation."
+    },
+    {
+     "valeur": "Montée en compétence des équipes internes",
+     "libelle": "qui ont travaillé aux côtés du responsable Migen."
+    },
+    {
+     "valeur": "Organisation optimisée",
+     "libelle": "sur une période chargée de l'année."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE RÉSULTAT": [
+    "Le dossier ERIKS retient trois effets, tels quels.",
+    "La continuité d'exploitation a été tenue pendant toute la phase de transition, sans arrêt de production.",
+    "Le troisième point mérite d'être relevé. Les équipes internes ne sont pas sorties de la mission dans l'état où elles y sont entrées : elles ont travaillé aux côtés du responsable Migen, et gardé ce qu'elles en ont appris."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Cadrage du besoin.** ERIKS pose son problème, montée de cadence et transition d'équipe. Le profil attendu est arrêté avec lui.\n2. **Engagement des ressources.** Validation du besoin, puis mobilisation du responsable maintenance.\n3. **Prise de poste sur site.** Intégration dans les équipes en place, reprise de la planification et de l'ordonnancement.\n4. **Conduite de la mission.** Préventif et curatif ordonnancés, techniciens ERIKS et Migen managés au quotidien.\n5. **Coordination transverse.** Production, achats et HSE travaillent avec un interlocuteur maintenance identifié.\n6. **Reporting.** Point technique et stratégique remonté à la direction industrielle."
+   ],
+   "CTA": [
+    "**Votre responsable maintenance part au moment où la cadence monte ?** Expliquez-nous le calendrier, nous regardons qui peut tenir le service en attendant.\n\n> [Faire piloter mon service maintenance](/contact/)\n\nComposez le **04 78 33 72 05**, du lundi au vendredi de 8h00 à 18h30, et vous êtes rappelé dans l'heure. L'astreinte 24/24 et 7/7 s'ajoute en option pour les périodes tendues.\n\nConfier le pilotage d'un service suppose un intervenant de niveau. Entretien technique, entretien comportemental, 10 % de candidats retenus, résultats d'évaluation partagés avant la prise de poste.\n\n> À lire aussi : [Étude de cas OGF : la maintenance pendant l'arrêt estival](/preuves/ogf-arret-estival/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/fdj.md",
+  "url": "/preuves/fdj/",
+  "h1": "FDJ : un technicien de maintenance en continu sur les lignes",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "La Française des Jeux exploite un site industriel proche de Paris. Les lignes de production y tournent sous forte activité.\nPour garantir la fiabilité de ses équipements, la FDJ a renforcé ses équipes de maintenance avec un technicien Migen affecté en continu. La mission couvre 2025 et 2026.",
+   "fiche": [
+    {
+     "libelle": "Site",
+     "valeur": "Française des Jeux, site industriel proche de Paris"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Lignes de production, préventif et curatif"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "1 technicien de maintenance expérimenté"
+    },
+    {
+     "libelle": "Présence",
+     "valeur": "Continue, intégré aux équipes FDJ"
+    },
+    {
+     "libelle": "Suivi",
+     "valeur": "Référent technique Migen"
+    },
+    {
+     "libelle": "Depuis quand",
+     "valeur": "2025 et 2026"
+    }
+   ],
+   "contexte": "**Une équipe de maintenance en forte activité ne tombe pas d'un coup.** Elle recule poste après poste, jusqu'à ce que le préventif disparaisse du planning.\nLa FDJ a posé trois objectifs, sans ambiguïté.\n**Renforcer l'équipe de maintenance interne**, sans la remplacer.\n**Assurer la disponibilité des équipements industriels**, en continu.\n**Réduire les temps d'arrêt** et les délais d'intervention.\nLe point commun des trois : ils demandent une présence permanente, pas un dépannage appelé quand la ligne est déjà à l'arrêt.\nUn prestataire qui envoie une personne différente à chaque visite ne réduit aucun délai. Le temps gagné sur le déplacement se reperd sur le diagnostic.\nC'est la raison du choix d'un intervenant unique, affecté au site dans la durée, qui finit par connaître les installations mieux que la documentation.",
+   "intervention": "**Vous récupérez le préventif, pas seulement les urgences.** Le technicien Migen tient la maintenance préventive et curative des lignes de production.\n**Vous gagnez du temps sur le diagnostic.** Les pannes sont identifiées sur place, par quelqu'un qui connaît déjà les installations.\n**Vos équipes sont appuyées, pas remplacées.** L'intervenant vient en soutien dans un contexte de forte activité.\n**Vous démarrez sans formation initiale longue.** Le technicien retenu a l'expérience des environnements industriels exigeants.\n**Vous avez un interlocuteur côté Migen.** Un référent technique assure le suivi et la coordination pendant toute la mission.",
+   "resultats": [
+    {
+     "valeur": "L'intégration dans la structure existante",
+     "libelle": "s'est faite efficacement."
+    },
+    {
+     "valeur": "L'expertise a été immédiate",
+     "libelle": "pour les équipes en place."
+    },
+    {
+     "valeur": "La continuité de service",
+     "libelle": "a été tenue, sans rupture dans les interventions."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "SECTION 2 . CHIFFRES CLES": [
+    "- **1 technicien** : un seul intervenant de maintenance expérimenté, affecté en continu au site, pas une personne différente à chaque visite\n- **2025 et 2026** : la mission court sur deux exercices, sur le même périmètre\n- **2 volets** : préventif et curatif tenus par le même technicien sur les lignes de production\n- **10 %** : des candidats retenus, après entretien technique ET comportemental"
+   ],
+   "LE RÉSULTAT": [
+    "Ce que la mission a produit, tel que le dossier le documente.",
+    "> La collaboration avec la Française des Jeux illustre la capacité de Migen à intervenir dans des contextes industriels sensibles.",
+    "La mission se poursuit sur 2026, sur le même périmètre. Une présence reconduite sur deux exercices est le seul indicateur de satisfaction qui compte vraiment."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Montée en charge.** La FDJ fait face à un besoin de renfort sur la maintenance de ses équipements de production.\n2. **Choix du dispositif.** L'intégration d'un technicien expérimenté directement sur site est retenue.\n3. **Prise de poste.** L'intervenant démarre sans phase d'apprentissage longue, grâce à son expérience industrielle.\n4. **Régime continu.** Préventif, curatif et diagnostic tournent sans rupture dans les interventions.\n5. **Suivi dans la durée.** Un référent technique Migen coordonne la prestation sur 2025 et 2026."
+   ],
+   "CTA": [
+    "**Votre équipe maintenance encaisse tout et n'a plus de marge ?** Dites-nous ce que vous n'arrivez plus à tenir, nous regardons quel profil comble le trou.\n\n> [Demander un technicien en renfort](/contact/)\n\nLe **04 78 33 72 05** est ouvert du lundi au vendredi de 8h00 à 18h30, avec un rappel dans l'heure. Pour les nuits et les week-ends, l'astreinte 24/24 et 7/7 est disponible en option.\n\nUn technicien qui arrive sur une ligne en production doit être bon tout de suite. C'est pour cela que nous n'en retenons que 10 %, après un entretien technique et un entretien comportemental.\n\n> À lire aussi : [Étude de cas MERSEN : démarrage d'une ligne neuve](/preuves/mersen/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/gls-maintenance-curative.md",
+  "url": "/preuves/gls-maintenance-curative/",
+  "h1": "Étude de cas GLS : maintenance curative",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "GLS, acteur reconnu de la logistique et du transport, a confié à Migen le maintien opérationnel de ses équipements. Deux techniciens expérimentés sont aujourd'hui en poste sur le site.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "GLS, logistique et transport"
+    },
+    {
+     "libelle": "Année",
+     "valeur": "2025"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "2 techniciens expérimentés sur site"
+    },
+    {
+     "libelle": "Nature des travaux",
+     "valeur": "Maintenance curative, surveillance continue"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Convoyeurs, trieurs, systèmes de packaging automatisés"
+    },
+    {
+     "libelle": "Couverture",
+     "valeur": "Semaine, horaires décalés, week-end"
+    },
+    {
+     "libelle": "Pilotage",
+     "valeur": "Suivi de prestation assuré par Migen"
+    }
+   ],
+   "contexte": "**Un trieur à l'arrêt, ce sont des colis qui partent en retard et un client final qui le voit.** La panne ne reste jamais dans l'atelier.\nChez GLS, la disponibilité des équipements est un enjeu quotidien :\n**Les flux du site entier sont touchés** dès qu'un arrêt non planifié survient.\n**L'acheminement des colis prend du retard** au moment où la ligne s'immobilise.\n**La satisfaction client encaisse** directement ces retards.\n**Les équipements critiques sont nombreux** : convoyeurs, trieurs, packaging automatisé.",
+   "intervention": "**Deux techniciens dédiés** : Affectés à la maintenance curative et à la surveillance continue des équipements critiques du site.\n**Une présence permanente** : Les équipes Migen sont sur place en continu, pour tenir la disponibilité des installations logistiques.\n**Une réaction sans déplacement** : Le dysfonctionnement est traité au moment où il se produit, par quelqu'un qui est déjà là.\n**Une intégration aux équipes GLS** : Les techniciens travaillent au sein de l'organisation existante, sans la complexifier.\n**Des horaires calés sur l'exploitation** : La couverture porte sur la semaine, les horaires décalés et le week-end.",
+   "resultats": [
+    {
+     "valeur": "Des temps d'arrêt réduits",
+     "libelle": "La présence continue des techniciens permet à GLS de raccourcir ses arrêts."
+    },
+    {
+     "valeur": "Des installations plus performantes",
+     "libelle": "La performance des installations logistiques augmente."
+    },
+    {
+     "valeur": "Un flux plus fluide",
+     "libelle": "Le flux opérationnel du site est maintenu, jour après jour."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE CLIENT ET LE SITE": [
+    "- **Activité** : Logistique et transport de colis.\n- **Équipements couverts** : Convoyeurs, trieurs, systèmes de packaging automatisés.\n- **Année** : 2025.",
+    "> Ce cas figure dans nos [études de cas maintenance industrielle](/preuves/)."
+   ],
+   "LE RÉSULTAT": [
+    "Ces trois effets sont ceux que GLS constate sur le terrain, après l'arrivée des deux techniciens en poste."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Définition de la mission** : Maintenir le parc machine et réduire les temps d'arrêt.\n2. **Affectation des profils** : Deux techniciens expérimentés sont retenus pour le curatif et la surveillance.\n3. **Intégration sur site** : Les techniciens rejoignent directement les équipes GLS.\n4. **Surveillance continue** : Convoyeurs, trieurs et systèmes de packaging automatisés sont suivis en permanence.\n5. **Intervention au fil de l'eau** : Chaque dysfonctionnement est traité immédiatement, sans passer par une demande externe."
+   ],
+   "CTA": [
+    "**Vos arrêts machine se voient jusque chez votre client final ?** Décrivez le parc et vos horaires, nous vous disons quel profil le tient.\n\nUn trieur immobilisé ne se rattrape pas le lendemain. La seule variable qui compte, c'est le temps qui sépare la panne de la personne capable de la traiter.\n\n- **Rappel dans l'heure** : Votre demande revient vers vous sans attendre, en semaine de 8h00 à 18h30.\n- **Astreinte 24/24 et 7/7** : Disponible en option pour les sites en horaires décalés, au 04 78 33 72 05.\n- **10 % des candidats retenus** : Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, robotique.\n- **Quatre agences** : Lyon (siège), Montréal, Dubaï et Madrid, et plus de 100 collaborateurs.\n\n> [Demander un renfort sur site](/contact/) · 04 78 33 72 05\n\n> Secteur concerné : [maintenance équipements logistiques](/secteurs/logistique/)\n\n> À lire aussi : [Étude de cas VEEPEE : sites de Lyon](/preuves/veepee-sites-lyon/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/groupe-atlantic.md",
+  "url": "/preuves/groupe-atlantic/",
+  "h1": "GROUPE ATLANTIC : un renfort permanent sur les sites de production",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "Le Groupe Atlantic est un acteur du confort thermique. La mission porte sur ses sites de production, pas sur un atelier isolé.\nMigen y renforce les équipes de maintenance depuis octobre 2024. La collaboration est toujours en cours, en présence permanente.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "Groupe Atlantic, confort thermique"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Sites de production, installations industrielles"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "1 à 3 techniciens"
+    },
+    {
+     "libelle": "Nature des interventions",
+     "valeur": "Maintenance préventive et corrective"
+    },
+    {
+     "libelle": "Fréquence",
+     "valeur": "Permanente, engagement de moyen terme"
+    },
+    {
+     "libelle": "Depuis quand",
+     "valeur": "Octobre 2024, mission en cours"
+    }
+   ],
+   "contexte": "**Un service maintenance en sous-effectif sur plusieurs sites, c'est la disponibilité machine qui se rejoue chaque semaine.** Le Groupe Atlantic visait quatre choses en s'adressant à Migen.\n**Renforcer les équipes de maintenance** sur les sites de production.\n**Améliorer la disponibilité des installations** et la continuité de production.\n**Réduire les temps d'arrêt** sur les équipements.\n**Anticiper les besoins de maintenance** préventive et corrective.\nCes objectifs supposent une présence stable. Un dépannage appelé au coup par coup ne construit rien, et le préventif reste toujours le premier sacrifié.\nSur plusieurs sites, le problème change de nature. Ce n'est plus une équipe qui sature, c'est une compétence qui manque à plusieurs endroits en même temps.\nChaque site tente alors de se débrouiller seul. Les bonnes pratiques ne circulent plus, et la même panne se traite trois fois différemment.\nUn renfort permanent, dimensionné site par site, casse cette logique. L'effectif s'ajuste à la charge sans qu'aucun site n'ait à ouvrir un poste dans l'urgence.",
+   "intervention": "**Vous ajustez l'effectif au besoin réel.** Un à trois techniciens sont déployés selon la charge des sites.\n**Vous installez une présence permanente**, pas une intervention ponctuelle. C'est ce qui rend le préventif tenable.\n**Vous visez le moyen terme.** La mission est cadrée dans la durée, ce qui permet aux intervenants de connaître les installations.\n**Vous gagnez en réactivité sur les équipements de production**, avec un suivi rigoureux des interventions.\n**Vous n'ouvrez pas de postes.** Migen recrute, encadre et suit les techniciens affectés.",
+   "resultats": [
+    {
+     "valeur": "Une collaboration reconduite depuis octobre 2024",
+     "libelle": "la mission est toujours en cours sur les sites de production, en présence permanente."
+    },
+    {
+     "valeur": "Un effectif tenu au niveau du besoin",
+     "libelle": "un à trois techniciens selon la charge de chaque site, sans que le Groupe Atlantic ait eu à ouvrir de poste."
+    },
+    {
+     "valeur": "Le préventif et le correctif menés ensemble",
+     "libelle": "les interventions sur les équipements de production sont suivies avec les équipes internes, dans la durée."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "SECTION 2 . CHIFFRES CLES": [
+    "- **1 à 3 techniciens** : l'effectif suit la charge de chaque site, il ne s'impose pas au même niveau partout\n- **Octobre 2024** : la collaboration est reconduite depuis cette date, et la mission est toujours en cours\n- **Présence permanente** : un engagement de moyen terme, pas un dépannage appelé au coup par coup\n- **10 %** : des candidats retenus, après entretien technique ET comportemental"
+   ],
+   "LE RÉSULTAT": [
+    "La mission se poursuit sur le même périmètre. Le dossier ne publie aucun indicateur de disponibilité machine, et nous n'en fabriquons pas pour la circonstance."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Décision.** Le Groupe Atlantic choisit de renforcer ses équipes de maintenance plutôt que d'étirer l'existant.\n2. **Démarrage.** La collaboration s'engage en octobre 2024 sur les sites de production.\n3. **Déploiement.** Un à trois techniciens sont affectés selon les besoins des sites.\n4. **Régime permanent.** La présence s'installe dans la durée, sur un horizon de moyen terme.\n5. **Suivi des interventions.** Les opérations préventives et correctives sont tenues avec les équipes internes."
+   ],
+   "CTA": [
+    "**Plusieurs sites, un service maintenance qui ne suit plus ?** Dites-nous combien de sites et quelles familles d'équipements, nous dimensionnons le renfort.\n\n> [Renforcer mes équipes de maintenance](/contact/)\n\nLe numéro est le **04 78 33 72 05**, du lundi au vendredi de 8h00 à 18h30, rappel dans l'heure. L'astreinte 24/24 et 7/7 se souscrit en option quand les sites tournent hors horaires.\n\nUn renfort permanent se juge sur qui arrive. Entretien technique, entretien comportemental, 10 % des candidats retenus : c'est notre filtre avant toute affectation.\n\n> À lire aussi : [Étude de cas JOINT LYONNAIS : parc machines défaillant](/preuves/joint-lyonnais/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/joint-lyonnais.md",
+  "url": "/preuves/joint-lyonnais/",
+  "h1": "JOINT LYONNAIS : des machines réparées, pas remplacées",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "Joint Lyonnais est une PME lyonnaise spécialisée dans la production de joints aux caractéristiques spécifiques.\nDes défaillances techniques entravaient sa production. Migen intervient sur son parc machines depuis février 2024, et la collaboration se poursuit.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "Joint Lyonnais, production de joints spécifiques"
+    },
+    {
+     "libelle": "Site",
+     "valeur": "Parc machines à Lyon"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Défaillances techniques entravant la production"
+    },
+    {
+     "libelle": "Nature des interventions",
+     "valeur": "Diagnostic sur site, propositions techniques, réparation"
+    },
+    {
+     "libelle": "Contrainte cadrante",
+     "valeur": "Budget de PME, sans rachat de matériel neuf"
+    },
+    {
+     "libelle": "Depuis quand",
+     "valeur": "Février 2024, collaboration en cours"
+    }
+   ],
+   "contexte": "**Une PME avec des machines qui lâchent et un budget qui ne suit pas.** Ce n'est pas un problème de matériel, c'est un problème de diagnostic.\nDeux contraintes tenaient le dossier.\n**La situation était critique.** Les défaillances entravaient directement la production, il fallait une intervention rapide.\n**Les compétences techniques manquaient sur place.** Le diagnostic demandait un niveau que la PME n'avait pas en interne.\nÀ ce stade, le réflexe classique consiste à remplacer la machine. C'est la décision la plus chère, et souvent la moins justifiée : elle se prend faute d'avoir compris la panne.\nDans une PME, l'arbitrage est brutal. Un investissement machine non prévu se retire du reste, de l'outillage à l'embauche.\nSur des joints aux caractéristiques spécifiques, l'équipement n'est pas interchangeable. Un remplacement impose aussi de retrouver les réglages, et la production redémarre plus lentement qu'on ne l'imagine.\nLa bonne question n'est donc pas quoi racheter, mais ce que la machine a réellement. Ce diagnostic demande un niveau technique que peu de PME gardent en interne.",
+   "intervention": "**Vous obtenez un diagnostic rapide sur place.** Les techniciens se déplacent, étudient minutieusement les aspects techniques du parc.\n**Vous recevez plusieurs propositions, pas une seule.** Chacune est adaptée aux contraintes budgétaires de l'entreprise.\n**Vous économisez sur l'acquisition de matériel neuf.** Les solutions conçues permettent de conserver les équipements en place.\n**Vous optimisez les ressources dont vous disposez déjà**, au lieu d'en acheter d'autres.\n**Vous préservez votre efficacité opérationnelle** pendant le traitement des défaillances.",
+   "resultats": [
+    {
+     "valeur": "Les difficultés rencontrées ont été palliées",
+     "libelle": "sur le parc existant."
+    },
+    {
+     "valeur": "L'entreprise a économisé",
+     "libelle": "sur l'acquisition de nouveaux produits."
+    },
+    {
+     "valeur": "Les ressources disponibles ont été optimisées",
+     "libelle": "sans investissement supplémentaire."
+    },
+    {
+     "valeur": "L'efficacité opérationnelle a été préservée",
+     "libelle": "pendant toute l'intervention."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "SECTION 2 . CHIFFRES CLES": [
+    "- **1 parc machines** : l'ensemble des équipements lyonnais diagnostiqué sur place, pas une machine isolée\n- **Février 2024** : date de la première intervention, la collaboration se poursuit depuis\n- **0 machine remplacée** : les solutions retenues conservent les équipements en place, sans rachat de matériel neuf\n- **10 %** : des candidats retenus, après entretien technique ET comportemental"
+   ],
+   "LE RÉSULTAT": [
+    "Ce que l'intervention a produit, tel que le dossier le documente.",
+    "L'approche personnalisée est ce que le dossier retient : des solutions conçues pour ce parc, pas un devis de remplacement."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Appel du client.** Joint Lyonnais sollicite Migen face à des défaillances qui entravent la production.\n2. **Déplacement des techniciens.** Une équipe est dépêchée sur place, sur le parc machines lyonnais.\n3. **Étude technique.** Les aspects techniques des équipements sont examinés en détail.\n4. **Propositions chiffrées.** Plusieurs options sont présentées, calées sur le budget de la PME.\n5. **Traitement des défaillances.** Les solutions retenues sont mises en œuvre sur le parc existant.\n6. **Suite de la collaboration.** La relation se poursuit depuis février 2024."
+   ],
+   "CTA": [
+    "**Un devis de remplacement vous attend sur le bureau ?** Faites regarder la machine avant de signer. Un diagnostic coûte toujours moins cher qu'un achat évitable.\n\n> [Faire diagnostiquer mes machines](/contact/)\n\n**04 78 33 72 05**, ouvert du lundi au vendredi de 8h00 à 18h30, rappel dans l'heure. Quand la production ne peut pas attendre, l'astreinte 24/24 et 7/7 prend le relais.\n\nUn diagnostic ne vaut que par celui qui le pose. Nos techniciens sont évalués en entretien technique et comportemental, et nous en retenons 10 %.\n\n> À lire aussi : [Étude de cas EIFFAGE : maintenance préventive photovoltaïque](/preuves/eiffage/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/jtekt.md",
+  "url": "/preuves/jtekt/",
+  "h1": "Étude de cas JTEKT : maintenance des installations",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "JTEKT conçoit et fabrique des composants techniques : systèmes de direction, roulements pour l'industrie et pour l'automobile. En 2025, le groupe a fait appel à Migen pour sécuriser la maintenance de ses installations industrielles.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "JTEKT"
+    },
+    {
+     "libelle": "Activité",
+     "valeur": "Systèmes de direction, roulements industrie et automobile"
+    },
+    {
+     "libelle": "Secteur",
+     "valeur": "Industrie automobile"
+    },
+    {
+     "libelle": "Année",
+     "valeur": "2025"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Équipements critiques des sites de production"
+    },
+    {
+     "libelle": "Équipements",
+     "valeur": "Systèmes automatisés, lignes de production, convoyeurs"
+    },
+    {
+     "libelle": "Nature des travaux",
+     "valeur": "Surveillance, maintenance curative, gestion des interventions"
+    },
+    {
+     "libelle": "Organisation",
+     "valeur": "Techniciens intégrés aux équipes de maintenance"
+    }
+   ],
+   "contexte": "**Un équipement critique qui tombe sans prévenir immobilise une chaîne entière.** Dans une branche en réorganisation, ces arrêts se paient deux fois : en production perdue et en compétitivité du site.\nLes objectifs posés par JTEKT :\n**Disponibilité maximale des équipements critiques** sur les sites de production.\n**Réduction des temps d'arrêt**, planifiés comme subis.\n**Optimisation de la performance des installations**, au-delà du simple dépannage.\n**Renforcement des équipes internes**, sans réorganiser le service maintenance.",
+   "intervention": "**Des techniciens dans l'équipe, pas à côté** : Les techniciens Migen sont intégrés aux équipes de maintenance de JTEKT et présents chaque jour.\n**Surveillance proactive des équipements** : Le dispositif ne se déclenche pas à la panne. Les machines sont suivies pour repérer la dérive avant l'arrêt.\n**Réaction immédiate sur incident** : La présence sur site évite d'attendre la disponibilité d'un intervenant extérieur.\n**Appui aux équipes internes** : Les techniciens accompagnent les équipes JTEKT dans la gestion courante des opérations.\nLe périmètre technique couvre les systèmes automatisés, les lignes de production, les convoyeurs et les autres équipements complexes du parc. Les interventions portent sur la surveillance, la maintenance curative et la gestion des interventions.",
+   "resultats": [
+    {
+     "valeur": "La fiabilité du parc machine progresse",
+     "libelle": "Des techniciens spécialisés et une surveillance continue y contribuent directement."
+    },
+    {
+     "valeur": "Les équipes internes gagnent en efficacité",
+     "libelle": "Elles sont appuyées au quotidien plutôt que dépassées."
+    },
+    {
+     "valeur": "Les risques d'arrêt reculent",
+     "libelle": "Dans un contexte industriel où chaque heure de production compte."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE CLIENT ET LE SITE": [
+    "- **Activité** : Systèmes de direction, roulements industrie et automobile.\n- **Périmètre** : Équipements critiques des sites de production.\n- **Organisation** : Techniciens intégrés aux équipes de maintenance, présents au quotidien.",
+    "> Ce cas figure dans nos [études de cas maintenance industrielle](/preuves/)."
+   ],
+   "LE RÉSULTAT": [
+    "L'intégration sur site permet d'éviter les interruptions non planifiées et de tenir la continuité des opérations de production.",
+    "Ce que JTEKT retire de la collaboration :"
+   ],
+   "LE DÉROULÉ": [
+    "1. **Expression du besoin** : JTEKT cherche à sécuriser et renforcer sa maintenance industrielle.\n2. **Affectation de compétences qualifiées** : Migen mobilise des techniciens capables d'intervenir sur systèmes automatisés et lignes de production.\n3. **Intégration aux équipes** : Les techniciens prennent leur place dans l'organisation existante du site.\n4. **Surveillance et curatif au quotidien** : Suivi proactif des équipements, intervention rapide sur incident.\n5. **Accompagnement des équipes internes** : Appui à la gestion courante des opérations de maintenance."
+   ],
+   "CTA": [
+    "**Vos équipements critiques tombent avant que quiconque ait vu la dérive ?** Dites-nous lesquels, nous construisons la surveillance autour.\n\nUne panne qui revient signale que personne n'a cherché la cause racine. Un technicien présent chaque jour finit par la trouver.\n\n- **Rappel dans l'heure** : Après votre demande, en semaine de 8h00 à 18h30.\n- **Astreinte 24/24 et 7/7** : Proposée en option sur les parcs sensibles, au 04 78 33 72 05.\n- **10 % des candidats retenus** : Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, évalués avant affectation.\n\n> [Demander un renfort de maintenance](/contact/) · 04 78 33 72 05\n\n> Offre et secteur concernés : [sous-traitance maintenance](/offres/residence/) et [maintenance industrie automobile](/secteurs/automobile/)\n\n> À lire aussi : [Étude de cas AUTOLIV : maintien d'un site](/preuves/autoliv/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/mccain-belgique.md",
+  "url": "/preuves/mccain-belgique/",
+  "h1": "Étude de cas McCAIN : Belgique",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "McCAIN, leader mondial des produits alimentaires à base de pommes de terre, a ouvert à Migen son premier contrat hors de France. Le contrat a démarré en octobre 2024, en Belgique, et il est toujours actif.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "McCAIN"
+    },
+    {
+     "libelle": "Pays",
+     "valeur": "Belgique"
+    },
+    {
+     "libelle": "Secteur",
+     "valeur": "Agroalimentaire, produits à base de pommes de terre"
+    },
+    {
+     "libelle": "Démarrage",
+     "valeur": "Octobre 2024, mission en cours"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "1 à 3 techniciens"
+    },
+    {
+     "libelle": "Durée",
+     "valeur": "Moyen terme"
+    },
+    {
+     "libelle": "Fréquence",
+     "valeur": "Permanente"
+    },
+    {
+     "libelle": "Nature des travaux",
+     "valeur": "Maintenance corrective et préventive"
+    }
+   ],
+   "contexte": "**Un équipement critique à l'arrêt ne coûte pas une heure de technicien.** Il coûte des palettes non produites et une qualité produit qui décroche.\nLe besoin exprimé par le site tenait en trois points :\n**Un suivi technique rigoureux** : Une production à grande échelle demande un niveau de maintenance constant, pas une présence de dépannage.\n**La continuité des opérations** : Tenir la production sans interruption non planifiée.\n**La qualité des produits** : Garantir le fonctionnement nominal des machines qui conditionnent la conformité produit.",
+   "intervention": "**Renfort des équipes en place** : Plusieurs techniciens Migen ont rejoint les équipes existantes. L'organisation interne reste celle du client.\n**Curatif et préventif dans le même périmètre** : Les techniciens couvrent la maintenance corrective et la maintenance préventive, sans séparer le dépannage de la prévention.\n**Priorité aux équipements critiques** : Les interventions ciblent les machines dont l'arrêt stoppe la chaîne.\n**Prévention ciblée** : Les actions préventives visent les défaillances probables, pour éviter que le correctif n'absorbe le budget.\n**Un régime permanent** : La prestation tourne en continu, sur un engagement à moyen terme.\nLe périmètre technique couvre quatre volets :\nMaintenance des chaînes de production.\nIntervention rapide en cas de dysfonctionnement.\nActions préventives sur les équipements critiques.\nSuivi du fonctionnement nominal des machines.",
+   "resultats": [
+    {
+     "valeur": "Une sortie du territoire français réussie",
+     "libelle": "Le même mode opératoire s'applique, sans structure locale improvisée."
+    },
+    {
+     "valeur": "Une adaptation aux exigences d'un grand groupe",
+     "libelle": "Le dispositif tient sur un site de production à grande échelle."
+    },
+    {
+     "valeur": "Une mobilisation rapide d'équipes qualifiées",
+     "libelle": "Les profils sont réunis pour un environnement industriel exigeant."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE CLIENT ET LE SITE": [
+    "- **Pays** : Belgique, premier contrat de Migen sur ce marché.\n- **Site** : Production agroalimentaire à grande échelle, en flux permanent.\n- **Effectif** : 1 à 3 techniciens Migen selon la charge.",
+    "> Ce cas figure dans nos [études de cas maintenance industrielle](/preuves/)."
+   ],
+   "LE RÉSULTAT": [
+    "Le contrat McCAIN est le premier signé par Migen en Belgique. Il est toujours actif et fonctionne en régime permanent.",
+    "Ce que la mission démontre :"
+   ],
+   "LE DÉROULÉ": [
+    "1. **Ouverture du contrat** : Octobre 2024, premier engagement de Migen sur le marché belge.\n2. **Mobilisation des techniciens** : Une à trois personnes sont déployées en renfort des équipes du site.\n3. **Prise en charge du curatif** : Les dysfonctionnements sont traités pour limiter les arrêts de chaîne.\n4. **Mise en route du préventif** : Les actions ciblent les équipements critiques identifiés.\n5. **Prestation permanente** : Le dispositif se poursuit en régime continu."
+   ],
+   "CTA": [
+    "**Un site à l'étranger ou une production en flux que rien ne doit couper ?** Décrivez l'outil industriel, nous revenons vers vous avec un dispositif chiffré.\n\n- **Rappel dans l'heure** : Votre demande est reprise en semaine, de 8h00 à 18h30.\n- **Astreinte 24/24 et 7/7** : Disponible en option sur les productions permanentes, au 04 78 33 72 05.\n- **10 % des candidats retenus** : La même sélection s'applique sur chaque mission, en France comme hors de France.\n\n> [Faire chiffrer mon besoin](/contact/) · 04 78 33 72 05\n\n> Offre et secteur concernés : [sous-traitance maintenance](/offres/residence/) et [maintenance agroalimentaire](/secteurs/agroalimentaire/)\n\n> À lire aussi : [Étude de cas STELLANTIS : sites du Grand Est](/preuves/stellantis-grand-est/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/mersen.md",
+  "url": "/preuves/mersen/",
+  "h1": "MERSEN : sécuriser le démarrage d'une ligne neuve",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "MERSEN engage en 2025 le démarrage d'une nouvelle ligne de production, dans un contexte de montée en charge industrielle.\nMigen affecte sur site un automaticien spécialisé SIEMENS, dédié à temps plein. La mission couvre le deuxième et le troisième trimestre 2025.",
+   "fiche": [
+    {
+     "libelle": "Site",
+     "valeur": "MERSEN, site de production"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Ligne de production neuve, de la mise en route à l'exploitation"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "1 automaticien dédié, à temps plein"
+    },
+    {
+     "libelle": "Domaines",
+     "valeur": "Automatisme, systèmes SIEMENS"
+    },
+    {
+     "libelle": "Nature des interventions",
+     "valeur": "Fiabilisation, amélioration, maintenance"
+    },
+    {
+     "libelle": "Depuis quand",
+     "valeur": "Deuxième et troisième trimestre 2025"
+    }
+   ],
+   "contexte": "**Une ligne neuve ne se révèle jamais dans les plans.** Elle se révèle dans les premières semaines de mise en route, quand l'automate dit non.\nMERSEN avait un objectif double.\n**Fiabiliser les installations neuves**, avant que les défauts de jeunesse ne s'installent.\n**Optimiser les performances** dès les premières semaines de mise en route.\nLes deux réclament la même chose : une compétence automatisme précise, disponible sur place, tout de suite. Ce profil ne se trouve pas au pied levé, et l'équipe interne d'un site en montée en charge est déjà prise.\nUn démarrage de ligne concentre les défauts sur quelques semaines. Chaque arrêt non compris à ce moment-là se réinstalle ensuite dans l'exploitation courante.\nFaire venir l'intégrateur à chaque incident coûte cher et laisse le site sans compétence propre. Un automaticien présent en continu traite le défaut et laisse la connaissance derrière lui.",
+   "intervention": "**Vous obtenez la compétence exacte, pas un renfort généraliste.** L'automaticien travaille sur les systèmes SIEMENS de l'installation.\n**Vous traitez les défauts au fil de l'eau.** L'accompagnement en fiabilisation se fait sur place, pendant la mise en route.\n**Vous couvrez aussi l'exploitation courante.** La mission porte sur la fiabilisation, l'amélioration et la maintenance de la ligne.\n**Vous gardez le même intervenant du début à la fin.** La présence est continue sur plusieurs semaines, sans rupture de suivi.\n**Vous n'avez rien à former.** La compétence est immédiatement exploitable sur le terrain.",
+   "resultats": [
+    {
+     "valeur": "La prise en main de l'automatisme SIEMENS",
+     "libelle": "s'est faite rapidement."
+    },
+    {
+     "valeur": "La réactivité a augmenté",
+     "libelle": "en cas de besoin technique sur l'installation."
+    },
+    {
+     "valeur": "Les équipes MERSEN ont été soutenues directement",
+     "libelle": "pendant la phase sensible du démarrage."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "SECTION 2 . CHIFFRES CLES": [
+    "- **1 automaticien dédié** : Un spécialiste SIEMENS à temps plein sur le site, le même du début à la fin.\n- **T2 et T3 2025** : Durée de la présence sur site, du démarrage de la ligne jusqu'à sa stabilisation.\n- **10 %** : Part des candidats retenus, après entretien technique et comportemental.\n- **24/24 et 7/7** : Astreinte mobilisable pendant la mise en route, en complément de la présence sur site."
+   ],
+   "LE RÉSULTAT": [
+    "Ce que l'intervention a permis, tel que le dossier le documente.",
+    "Le dossier retient un besoin métier précis, servi par une compétence immédiatement exploitable sur le terrain."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Montée en charge.** MERSEN engage le démarrage d'une nouvelle ligne de production.\n2. **Besoin exprimé.** Le site cherche un automaticien qualifié, capable d'intervenir sur les systèmes SIEMENS.\n3. **Affectation.** Migen affecte un automaticien dédié à temps plein, intégré sur site.\n4. **Mise en route.** L'intervenant fiabilise les installations neuves et accompagne la prise en main.\n5. **Suivi de la phase sensible.** La présence reste continue sur plusieurs semaines, jusqu'à stabilisation de la ligne."
+   ],
+   "CTA": [
+    "**Une ligne neuve à démarrer et personne en interne sur l'automatisme ?** Donnez-nous la marque de l'automate et le calendrier de mise en route.\n\n> [Sécuriser le démarrage de ma ligne](/contact/)\n\nAppelez le **04 78 33 72 05** du lundi au vendredi, 8h00 à 18h30 : le rappel se fait dans l'heure. Pendant une mise en route, l'astreinte 24/24 et 7/7 peut être ajoutée au contrat.\n\nNos automaticiens SIEMENS et Schneider sont évalués avant d'être proposés, en entretien technique et comportemental. Le taux de sélection est de 10 %, et les résultats vous sont transmis.\n\nSur une ligne neuve, vous savez donc qui arrive et ce qui a été vérifié, avant la première journée de mise en route.\n\n> À lire aussi : [Étude de cas ERIKS : pilotage du service maintenance](/preuves/eriks/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/ogf-arret-estival.md",
+  "url": "/preuves/ogf-arret-estival/",
+  "h1": "OGF : passer l'été sans trou dans la maintenance",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "OGF exploite un site industriel dont les machines stratégiques doivent rester opérationnelles pendant les congés d'été.\nMigen y a intégré un technicien de maintenance pour l'été 2025, en renfort de l'équipe interne, sur toute la période.",
+   "fiche": [
+    {
+     "libelle": "Site",
+     "valeur": "OGF, site industriel"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Machines stratégiques, préventif et curatif"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "1 technicien de maintenance"
+    },
+    {
+     "libelle": "Domaines",
+     "valeur": "Mécanique, électrotechnique, pneumatique"
+    },
+    {
+     "libelle": "Suivi",
+     "valeur": "Coordinateurs Migen"
+    },
+    {
+     "libelle": "Depuis quand",
+     "valeur": "Été 2025, juillet et août"
+    }
+   ],
+   "contexte": "**En juillet, l'atelier tourne encore mais l'équipe maintenance est à moitié vide.** Trois contraintes se cumulent chaque été chez les industriels.\n**Les effectifs techniques baissent** temporairement, pendant plusieurs semaines d'affilée.\n**Les contraintes de production sont maintenues**, ou réduites seulement en partie.\n**Le préventif et le curatif restent à faire** sur les machines stratégiques.\nLe calcul est vite fait. Recruter pour deux mois coûte du sourcing et de la formation. Laisser filer coûte une rentrée entière passée à rattraper ce qui n'a pas été fait.\nLa troisième voie, demander aux présents de couvrir les absents, épuise l'équipe avant septembre. Les départs qui suivent coûtent bien plus que le renfort évité.\nReste à poser le besoin assez tôt. Un profil se choisit sur le parc réel du site, ce qui demande un temps de cadrage en amont.",
+   "intervention": "**Vous couvrez toute la période, pas les semaines les plus dures.** Un technicien de maintenance assure la continuité des opérations pendant l'absence des équipes internes.\n**Vous accueillez quelqu'un qui prend vos méthodes.** L'intégration se fait dans l'équipe restante, sans changer les habitudes du site.\n**Vous couvrez l'essentiel du parc avec un seul profil.** Mécanique, électrotechnique et pneumatique sur le même intervenant.\n**Vous ne managez pas le renfort.** Le suivi de mission est assuré par les coordinateurs Migen.\n**Vous ne gérez ni recrutement ni formation d'un remplaçant** pour une absence qui dure deux mois.",
+   "resultats": [
+    {
+     "valeur": "La disponibilité des équipements critiques",
+     "libelle": "a été préservée pendant les congés."
+    },
+    {
+     "valeur": "Aucun retard de remise en route",
+     "libelle": "n'a été constaté à la rentrée."
+    },
+    {
+     "valeur": "Les équipes internes ont été soulagées",
+     "libelle": "avec les standards de qualité tenus."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "SECTION 2 . CHIFFRES CLES": [
+    "- **1 technicien** : un seul intervenant couvre les machines stratégiques pendant les congés, sans poste fixe à créer\n- **Été 2025, juillet et août** : la mission couvre toute la période d'absence, pas seulement les semaines les plus dures\n- **3 domaines** : mécanique, électrotechnique et pneumatique tenus par le même intervenant, du préventif au curatif\n- **10 %** : des candidats retenus, après entretien technique ET comportemental"
+   ],
+   "LE RÉSULTAT": [
+    "Ce que la mission a permis chez OGF, tel que le dossier le documente.",
+    "OGF a gardé son niveau de réactivité sur site malgré les absences estivales. La prestation se règle à la semaine ou au mois, selon la durée réelle de l'absence à couvrir.",
+    "Le point de bascule est là. Un été couvert se termine par une rentrée normale, et non par un mois de rattrapage sur un préventif en retard."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Anticipation.** Le besoin est posé avant le départ des équipes, pas pendant.\n2. **Choix du profil.** Un technicien polyvalent est retenu sur les compétences utiles au parc d'OGF.\n3. **Arrivée sur site.** Intégration dans l'équipe maintenance restante, prise des consignes.\n4. **Conduite de l'été.** Interventions préventives et curatives, selon les priorités de production.\n5. **Suivi de mission.** Les coordinateurs Migen tiennent le point pendant toute la période.\n6. **Sortie propre.** Les équipes internes reviennent sans phase de rattrapage."
+   ],
+   "CTA": [
+    "**Vous savez déjà que juillet sera tendu ?** Le bon moment pour poser le renfort, c'est avant le départ des équipes, pas après.\n\n> [Préparer mon renfort d'été](/contact/)\n\nUn mot au **04 78 33 72 05**, du lundi au vendredi de 8h00 à 18h30, et nous vous rappelons dans l'heure. Si le site tourne la nuit et le week-end, l'astreinte 24/24 et 7/7 existe en option.\n\nUn renfort d'été doit être autonome dès le premier jour. Nos techniciens passent un entretien technique et un entretien comportemental, et seuls 10 % des candidats sont retenus.\n\n> À lire aussi : [Étude de cas VPK : renfort sur un parc en forte cadence](/preuves/vpk/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/orthus-ecocem.md",
+  "url": "/preuves/orthus-ecocem/",
+  "h1": "ORTHUS x ECOCEM : construire un site de R&D industriel",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "Ecocem est une entreprise irlandaise spécialisée dans les matériaux bas carbone, pionnière européenne des ciments à faible émission de CO₂.\nElle a confié à Orthus, filiale du groupe Migen, la construction complète de son nouveau site industriel de recherche et développement, en région parisienne. Le chantier s'étend sur plusieurs mois en 2025.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "Ecocem, matériaux bas carbone, entreprise irlandaise"
+    },
+    {
+     "libelle": "Site",
+     "valeur": "Nouveau site industriel de R&D, région parisienne"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Conception et réalisation complète du site"
+    },
+    {
+     "libelle": "Intervenant",
+     "valeur": "Orthus, filiale du groupe Migen, équipe dédiée"
+    },
+    {
+     "libelle": "Domaines",
+     "valeur": "Fondations, structures, équipements, raccordements industriels"
+    },
+    {
+     "libelle": "Depuis quand",
+     "valeur": "2025, plusieurs mois de travaux, livraison prévue fin 2025"
+    }
+   ],
+   "contexte": "**Un site de R&D n'est pas un bâtiment industriel classique.** Il doit accueillir des essais, une production pilote et des plateformes de tests, avec des contraintes qui n'apparaissent qu'à l'usage.\nEcocem investit dans cette infrastructure pour trois raisons.\n**Développer de nouveaux procédés** de fabrication bas carbone.\n**Tester des solutions innovantes** en conditions industrielles réelles.\n**Renforcer sa présence technologique** en France et en Europe.\nUn tel projet mobilise plusieurs corps de métier sur un planning long. Chaque jalon manqué décale la mise en service, et le risque logistique pèse autant que le risque technique.\nUn industriel qui pilote lui-même ce type de chantier y passe ses meilleures ressources. Elles quittent la production pendant des mois, au profit d'un métier qui n'est pas le leur.\nLa seconde difficulté est la coordination. Sans interlocuteur unique, chaque corps de métier optimise son planning, et les interfaces se découvrent trop tard.",
+   "intervention": "**Vous avez un pilote unique du chantier.** Orthus assure la gestion du projet de bout en bout, de la conception à la réalisation.\n**Vous n'arbitrez pas entre les corps de métier.** La coordination des intervenants est portée par Orthus.\n**Vous tenez un planning long.** Les jalons critiques sont suivis jusqu'à la livraison prévue fin 2025.\n**Vous limitez les risques techniques et logistiques** grâce à une organisation pensée pour ça dès le départ.\n**Vous avez une équipe dédiée**, qui suit fondations, structures, équipements, raccordements industriels et sécurisation des installations.",
+   "resultats": [
+    {
+     "valeur": "Un chantier planifié sur plusieurs mois",
+     "libelle": "avec des jalons critiques suivis jusqu'à la livraison prévue d'ici fin 2025."
+    },
+    {
+     "valeur": "Un pilotage complet assuré par Orthus",
+     "libelle": "de la conception à la réalisation, avec une équipe dédiée sur chaque étape."
+    },
+    {
+     "valeur": "Un site destiné à la recherche appliquée",
+     "libelle": "sur les matériaux de construction durables, monté sous exigences qualité, sécurité et performance."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE RÉSULTAT": [
+    "Ce que le dossier documente à ce stade.",
+    "Le chantier est en cours, la livraison est attendue d'ici fin 2025."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Choix du partenaire.** Ecocem confie à Orthus la conception et la réalisation complète du site industriel.\n2. **Cadrage du projet.** Le périmètre, les corps de métier et les jalons critiques sont arrêtés.\n3. **Constitution de l'équipe.** Une équipe Orthus dédiée est affectée au suivi de chaque étape.\n4. **Travaux structurels.** Fondations, structures et bâtiments industriels sont réalisés.\n5. **Équipements et raccordements.** Réseaux, plateformes de tests et raccordements industriels sont intégrés.\n6. **Sécurisation et livraison.** Les installations sont sécurisées, la livraison est prévue d'ici fin 2025."
+   ],
+   "CTA": [
+    "**Un projet industriel à construire et aucune ressource pour le piloter ?** Exposez le programme et l'échéance, nous vous disons ce que le pilotage demande.\n\n> [Faire piloter mon projet industriel](/contact/)\n\nLe **04 78 33 72 05** est joignable du lundi au vendredi, 8h00 à 18h30, et nous rappelons dans l'heure. Une fois le site en exploitation, l'astreinte 24/24 et 7/7 peut prendre le relais.\n\nUn chantier industriel ne pardonne pas les approximations. Les techniciens du groupe passent un entretien technique et un entretien comportemental, pour un taux de sélection de 10 %.\n\n> À lire aussi : [Étude de cas ORTHUS x WASHTEC : montage de portiques](/preuves/orthus-washtec/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/orthus-washtec.md",
+  "url": "/preuves/orthus-washtec/",
+  "h1": "ORTHUS x WASHTEC : monter des portiques partout en France",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "WashTec est un acteur mondial des systèmes de lavage automobile. Ses portiques s'installent chez ses propres clients, sur des sites dispersés.\nOrthus, filiale du groupe Migen, assure le montage complet de ces portiques sur l'ensemble du territoire français, du transport à l'assemblage final.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "WashTec, systèmes de lavage automobile"
+    },
+    {
+     "libelle": "Sites",
+     "valeur": "Stations-service, concessions, centres de lavage, sites industriels ou privés"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Montage complet des portiques, du transport à l'assemblage final"
+    },
+    {
+     "libelle": "Intervenant",
+     "valeur": "Orthus, filiale du groupe Migen, équipes mobiles"
+    },
+    {
+     "libelle": "Domaines",
+     "valeur": "Mécanique, électricité, automatisme, levage"
+    },
+    {
+     "libelle": "Couverture",
+     "valeur": "Nationale, coordination centralisée"
+    }
+   ],
+   "contexte": "**Un fabricant d'équipements ne peut pas avoir une équipe de montage dans chaque département.** C'est pourtant là que se joue la satisfaction de son client final.\nWashTec avait besoin de trois choses en même temps.\n**Un montage complet** de ses portiques de lavage haute technologie.\n**Une gestion de projet d'installation sur site client**, en station-service, en concession ou en centre auto.\n**Une couverture nationale**, avec des équipes capables d'intervenir partout en France.\nL'enjeu tient en une phrase : chaque installation doit être prête à fonctionner, conforme, sans reprise après coup.\nUne installation qui traîne immobilise deux parties à la fois. Le fabricant ne facture pas la mise en service, et le client ne lave aucune voiture.\nConfier chaque chantier à un poseur local semble plus simple. La qualité devient alors variable d'un site à l'autre, et c'est la marque de l'équipement qui porte les reprises.\nUn montage sur site client mélange aussi plusieurs métiers. Levage, raccordement mécanique, raccordement électrique : un seul manque et la mise en service est repoussée.",
+   "intervention": "**Vous avez un interlocuteur unique pour l'installation complète.** Réception, assemblage, levage et raccordements mécaniques et électriques sont pris en charge.\n**Vous travaillez avec des techniciens formés à vos équipements.** Les intervenants sont formés aux matériels spécifiques WashTec.\n**Vous montez selon les standards constructeur.** Chaque portique est validé pour une mise en service immédiate.\n**Vous couvrez tout le territoire.** Un réseau d'équipes mobiles intervient partout, avec une coordination centralisée.\n**Vous gardez la maîtrise de la chaîne.** L'engagement est porté sur le terrain, sans sous-traitance en cascade.",
+   "resultats": [
+    {
+     "valeur": "Les portiques sont montés partout en France",
+     "libelle": "avec des équipes itinérantes."
+    },
+    {
+     "valeur": "Les normes de sécurité, de qualité et de délais",
+     "libelle": "sont suivies sur chaque chantier."
+    },
+    {
+     "valeur": "La réactivité territoriale",
+     "libelle": "permet de tenir les délais d'installation à grande échelle."
+    },
+    {
+     "valeur": "L'expérience porte sur des centaines de sites",
+     "libelle": "installés en France."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "SECTION 2 . CHIFFRES CLES": [
+    "- **Des centaines de sites** : installations réalisées en France sur ce partenariat, stations-service, concessions, centres de lavage et sites industriels\n- **4 domaines** : mécanique, électricité, automatisme et levage tenus par la même équipe de montage\n- **10 hubs de techniciens** : Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes, d'où partent les équipes mobiles\n- **10 %** : des candidats retenus, après entretien technique ET comportemental"
+   ],
+   "LE RÉSULTAT": [
+    "Ce que le partenariat produit, tel que le dossier le documente.",
+    "Le modèle repose sur la proximité terrain, la technicité et un interlocuteur unique côté client."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Planification de l'installation.** Le chantier est cadré avec WashTec, sur un site client identifié.\n2. **Logistique.** Les livraisons et les interventions techniques sont coordonnées en amont.\n3. **Réception du matériel.** L'équipe Orthus réceptionne le portique sur site.\n4. **Assemblage et levage.** Le montage est réalisé selon les standards constructeur.\n5. **Raccordements.** Les raccordements mécaniques et électriques sont exécutés et contrôlés.\n6. **Validation.** L'installation est validée pour une mise en service immédiate."
+   ],
+   "CTA": [
+    "**Vous fabriquez des équipements et vos installations traînent ?** Parlons volumes, zones géographiques et standards de montage.\n\n> [Confier l'installation de mes équipements](/contact/)\n\nLe **04 78 33 72 05** vous répond du lundi au vendredi, 8h00 à 18h30, et le rappel se fait dans l'heure. Pour les mises en service hors horaires, l'astreinte 24/24 et 7/7 existe en option.\n\nUne installation ratée se répare sur votre réputation, pas seulement sur le matériel. Nos techniciens sont évalués en entretien technique et comportemental, et 10 % sont retenus.\n\n> À lire aussi : [Étude de cas AMAZON ORY4 : le préventif de masse](/preuves/amazon-centre-logistique/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/soprema.md",
+  "url": "/preuves/soprema/",
+  "h1": "SOPREMA : montage, transfert de machines et renfort de chantier",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "SOPREMA est un acteur mondial de l'étanchéité et de l'isolation. Son développement industriel génère des chantiers ponctuels qui ne rentrent pas dans le plan de charge des équipes internes.\nMigen y est intervenu en 2025 sur plusieurs missions ciblées, avec des techniciens qualifiés mobilisés à la mission.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "SOPREMA, étanchéité et isolation"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Montage de lignes et sous-ensembles, transfert de machines, renfort de chantier"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "Équipes mobilisées à la mission"
+    },
+    {
+     "libelle": "Domaines",
+     "valeur": "Mécanique, électromécanique, électricité, montage"
+    },
+    {
+     "libelle": "Modalité",
+     "valeur": "Facturation à la journée ou au forfait"
+    },
+    {
+     "libelle": "Depuis quand",
+     "valeur": "2025"
+    }
+   ],
+   "contexte": "**Un transfert de machine mal préparé coûte plus cher que la machine elle-même.** Trois types de situations revenaient chez SOPREMA.\n**Montage mécanique ou électromécanique** de lignes ou de sous-ensembles.\n**Déplacement ou reconfiguration** de machines industrielles.\n**Interventions urgentes** sur chantiers complexes ou en surcharge d'activité.\nAucune de ces trois ne justifie un recrutement. Toutes exigent pourtant une compétence de montage réelle, disponible au moment où le chantier démarre, pas trois mois après.\nCes chantiers ont un point commun : ils tombent en plus du plan de charge. L'équipe maintenance les absorbe, et le préventif du site en paie le prix.\nUn transfert de machine mobilise aussi des compétences que la maintenance courante n'entretient pas. Levage, calage, réalignement, remise en service : ce sont des gestes de montage, pas de dépannage.",
+   "intervention": "**Vous mobilisez des techniciens qualifiés selon le besoin**, sans réorganiser vos équipes internes.\n**Vous définissez le périmètre technique à l'avance.** Montage, démontage, transfert de machines, assistance à la production : ce qui est couvert est écrit.\n**Vous gardez l'encadrement chez nous.** Migen assure l'encadrement opérationnel des interventions, pour l'efficacité comme pour la sécurité.\n**Vous savez ce que vous payez.** La facturation se fait à la journée ou au forfait, avec une logistique allégée.\n**Vous mobilisez partout en France**, sur des sites différents, avec la même approche.",
+   "resultats": [
+    {
+     "valeur": "Les délais de chantier ont été respectés",
+     "libelle": "sans pénalité."
+    },
+    {
+     "valeur": "Les transferts de machines ont été sécurisés.",
+     "libelle": ""
+    },
+    {
+     "valeur": "Le soutien technique a été apporté",
+     "libelle": "sans surcharge pour les équipes RH."
+    },
+    {
+     "valeur": "Les charges temporaires ont été absorbées",
+     "libelle": "sans recrutement ni réorganisation interne."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE RÉSULTAT": [
+    "Les interventions réalisées pour SOPREMA ont produit quatre effets, tels que le dossier les documente.",
+    "La mobilisation de techniciens dans toute la France est ce qui rend ce modèle utilisable sur plusieurs sites à la fois."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Expression du besoin.** SOPREMA identifie un chantier de montage, un transfert ou une surcharge à absorber.\n2. **Cadrage du périmètre.** Le contenu technique de la mission est arrêté avant le déplacement.\n3. **Mobilisation des profils.** Monteurs, électriciens ou techniciens de maintenance sont engagés selon le chantier.\n4. **Intervention sur site.** L'équipe réalise le montage, le déplacement ou le renfort convenu.\n5. **Encadrement opérationnel.** Migen pilote l'exécution et les conditions de sécurité pendant la mission.\n6. **Clôture.** La mission se termine à la livraison du chantier, sans prolongation par défaut."
+   ],
+   "CTA": [
+    "**Une ligne à monter, une machine à déplacer, et personne de disponible ?** Décrivez le chantier et la fenêtre de travail, nous chiffrons à la journée ou au forfait.\n\n> [Chiffrer mon chantier de montage](/contact/)\n\nJoignez le **04 78 33 72 05** du lundi au vendredi, 8h00 à 18h30 : nous rappelons dans l'heure. Pour les chantiers de nuit ou de week-end, l'astreinte 24/24 et 7/7 est proposée en option.\n\nUn monteur qui ne maîtrise pas son geste met en danger le chantier et les équipes. Nous ne retenons que 10 % des candidats, après entretien technique et comportemental.\n\n> À lire aussi : [Étude de cas TIMESCOPE : maintenance sous contrat](/preuves/timescope/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/stellantis-fonderie-sept-fons.md",
+  "url": "/preuves/stellantis-fonderie-sept-fons/",
+  "h1": "STELLANTIS, fonderie de Sept-Fons : un parc repris en 8 semaines",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "Stellantis exploite à Dompierre-sur-Besbre un site qui réunit deux ateliers lourds, la fonderie et l'usinage. Les parcs machines y sont de taille conséquente.\nMigen assure la maintenance préventive et curative de ce site depuis octobre 2023. La mission est toujours en cours.",
+   "fiche": [
+    {
+     "libelle": "Site",
+     "valeur": "Dompierre-sur-Besbre, Stellantis"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Fonderie et usinage, parcs machines de taille conséquente"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "6 techniciens de maintenance"
+    },
+    {
+     "libelle": "Nature des interventions",
+     "valeur": "Préventif et curatif, gestion complète"
+    },
+    {
+     "libelle": "Rythme",
+     "valeur": "7 jours sur 7, sans interruption"
+    },
+    {
+     "libelle": "Depuis quand",
+     "valeur": "Octobre 2023, mission en cours"
+    }
+   ],
+   "contexte": "**Le parc machine était en défaillance constante.** Le site nomme lui-même les deux causes.\n**L'activité de fonderie sollicite les équipements en continu.** La cadence ne redescend jamais, l'usure non plus.\n**Le personnel qualifié manquait.** Sans effectif, le rythme des défaillances dépasse la capacité à les traiter.\nQuand ces deux facteurs se cumulent, le préventif saute le premier. Le curatif devient le seul mode de fonctionnement, et la panne s'installe comme état normal du parc.\nUn directeur d'usine connaît la suite. Chaque arrêt se paie en tonnage perdu, et personne n'a le temps de chercher la cause racine.\nS'ajoute la dépendance aux deux ou trois techniciens qui connaissent encore les machines. Le jour où ils manquent, l'atelier devient aveugle.\nRecruter aurait été la réponse normale. Sur un bassin où le personnel qualifié se raréfie, elle ne tenait pas le calendrier du site.",
+   "intervention": "**Vous confiez la maintenance du site, pas une portion de périmètre.** Migen prend le préventif et le curatif, sur la fonderie comme sur l'usinage.\n**Vous disposez d'une équipe dimensionnée pour le parc réel.** Six techniciens de maintenance sont affectés au site.\n**Vous gardez le site en marche sept jours sur sept.** Les interventions se déploient sans interruption, y compris le week-end.\n**Vous travaillez avec vos équipes, pas à côté d'elles.** La prestation se mène en partenariat avec les équipes techniques de Stellantis.\n**Vous n'avez pas de recrutement à porter.** Migen recrute, encadre et fait tourner l'équipe qui tient le parc.",
+   "resultats": [
+    {
+     "valeur": "La bascule a tenu en 8 semaines",
+     "libelle": "passer d'un parc en défaillance constante à la prise en charge complète du site a demandé quelques semaines, pas une année."
+    },
+    {
+     "valeur": "Six techniciens tiennent le parc",
+     "libelle": "l'effectif qui manquait au site est monté et encadré par Migen, sur la fonderie comme sur l'usinage."
+    },
+    {
+     "valeur": "La continuité est protégée 7 jours sur 7",
+     "libelle": "préventif et curatif se déploient sans interruption, en partenariat avec les équipes techniques de Stellantis."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "SECTION 2 . CHIFFRES CLES": [
+    "- **8 semaines** : la bascule d'un parc en défaillance vers la prise en charge complète du site\n- **6 techniciens** : l'équipe Migen affectée en propre à la fonderie et à l'usinage\n- **7 jours sur 7** : le rythme des interventions préventives et curatives, week-end compris\n- **Octobre 2023** : le début de la mission, toujours en cours sur le même périmètre"
+   ],
+   "LE RÉSULTAT": [
+    "Ce que la reprise a produit, tel que le dossier le documente.",
+    "> La transition vers la prise en charge complète du site a été réalisée dans un laps de temps remarquablement court, en seulement quelques semaines.",
+    "La mission se poursuit aujourd'hui sur le même périmètre et au même rythme d'intervention, depuis octobre 2023."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Constat partagé.** Le parc est en défaillance constante, sous l'effet de l'activité de fonderie et du manque de personnel qualifié.\n2. **Engagement.** En octobre 2023, Migen s'engage sur la gestion complète de la maintenance du site.\n3. **Reprise en 8 semaines.** La transition vers la prise en charge complète tient en quelques semaines, pas en une année.\n4. **Extension aux deux ateliers.** Fonderie et usinage entrent dans le même périmètre d'intervention.\n5. **Régime continu.** Préventif et curatif tournent sept jours sur sept, avec les équipes Stellantis."
+   ],
+   "CTA": [
+    "**Votre parc machine part en défaillance et vous n'avez pas les bras pour suivre ?** Décrivez la situation, nous vous disons ce que la reprise demande.\n\n> [Faire chiffrer la reprise de ma maintenance](/contact/)\n\n**04 78 33 72 05**, du lundi au vendredi de 8h00 à 18h30. Nous vous rappelons dans l'heure. Astreinte 24/24 et 7/7 en option sur le même numéro.\n\nLes six techniciens de Sept-Fons sont passés par notre sélection. Entretien technique, entretien comportemental, 10 % des candidats retenus. Les résultats d'évaluation sont partagés avec le client avant la prise de poste.\n\n> À lire aussi : [Étude de cas SUEZ : remise en état d'un site](/preuves/suez-remise-en-etat/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/stellantis-grand-est.md",
+  "url": "/preuves/stellantis-grand-est/",
+  "h1": "Étude de cas STELLANTIS : sites du Grand Est",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "STELLANTIS, anciennement PSA, a retenu Migen comme partenaire pour plusieurs de ses sites du Grand Est, depuis juin 2023. La décision s'inscrit dans la transition de ses usines vers la production de véhicules électriques.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "STELLANTIS, anciennement PSA"
+    },
+    {
+     "libelle": "Territoire",
+     "valeur": "Plusieurs sites du Grand Est"
+    },
+    {
+     "libelle": "Secteur",
+     "valeur": "Industrie automobile"
+    },
+    {
+     "libelle": "Démarrage",
+     "valeur": "Juin 2023, mission en cours"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "18 à 25 techniciens"
+    },
+    {
+     "libelle": "Problématique",
+     "valeur": "Manque de compétence sur les parcs machines en transition technologique"
+    },
+    {
+     "libelle": "Réponse",
+     "valeur": "Plusieurs dizaines de collaborateurs aux compétences variées"
+    },
+    {
+     "libelle": "Nature des travaux",
+     "valeur": "Maintenance préventive et curative"
+    }
+   ],
+   "contexte": "**Faire basculer des usines vers l'électrique demande des compétences que les équipes en place n'ont pas toutes.** Le problème n'est pas d'ajouter des heures, il est d'ajouter des compétences absentes en interne.\nLa problématique posée : un manque de compétence pour prendre en charge les parcs machines de plusieurs sites, dans un contexte de transition technologique.\n**Plusieurs sites en même temps** : Le besoin ne portait pas sur une usine isolée.\n**Des compétences variées à réunir** : Du préventif au curatif, sur des équipements différents.\n**Un outil industriel mouvant** : Les parcs machines changent pendant que les usines produisent.",
+   "intervention": "**Des dizaines d'intervenants en simultané** : Plusieurs dizaines de collaborateurs aux compétences variées, mobilisés en même temps sur les sites concernés.\n**Préventif et curatif portés ensemble** : Le même dispositif couvre les deux, sans découpage artificiel entre la prévention et la réparation.\n**Une montée en charge progressive** : Le partenariat a commencé sur un périmètre réduit, puis s'est étendu après résolution des premières difficultés techniques.\n**Un engagement long** : Le contrat porte sur le développement et l'amélioration des performances, pas sur une intervention ponctuelle.\nCe qui a déclenché l'extension du périmètre : la confiance mutuelle et la capacité de Migen à traiter efficacement les premières difficultés techniques. Le besoin est passé d'un point technique à couvrir à plusieurs sites servis en parallèle.",
+   "resultats": [
+    {
+     "valeur": "Les parcs machines de plusieurs sites sont pris en charge",
+     "libelle": "Le manque de compétence initial est couvert."
+    },
+    {
+     "valeur": "Le préventif et le curatif tiennent ensemble",
+     "libelle": "Un seul dispositif porte les deux."
+    },
+    {
+     "valeur": "La collaboration s'est élargie dans la durée",
+     "libelle": "Site après site, sur un engagement continu."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE CLIENT ET LE SITE": [
+    "- **Territoire** : Plusieurs sites industriels du Grand Est.\n- **Contexte** : Transition des usines vers le véhicule électrique.\n- **Effectif** : 18 à 25 techniciens Migen mobilisés.",
+    "> Ce cas figure dans nos [études de cas maintenance industrielle](/preuves/)."
+   ],
+   "LE RÉSULTAT": [
+    "Le contrat a été reconduit sur le long terme. C'est le seul indicateur que le client rend public, et c'est celui qui pèse : une usine ne reconduit pas un prestataire qui la ralentit."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Sélection du partenaire** : Juin 2023, STELLANTIS retient Migen pour renforcer ses besoins techniques dans le Grand Est.\n2. **Premières difficultés techniques** : Les équipes Migen traitent les problèmes remontés sur les parcs machines.\n3. **Approfondissement du partenariat** : Le périmètre s'étend à plusieurs sites.\n4. **Montée en effectif** : Plusieurs dizaines d'intervenants opèrent en simultané, entre 18 et 25 techniciens.\n5. **Reconduction longue durée** : Le contrat est prolongé, avec un engagement continu sur les performances."
+   ],
+   "CTA": [
+    "**Une transition technologique qui dépasse les compétences de vos équipes ?** Dites-nous ce que vos parcs machines deviennent, nous mobilisons les compétences qui manquent.\n\n- **Rappel dans l'heure** : Du lundi au vendredi, de 8h00 à 18h30.\n- **Astreinte 24/24 et 7/7** : Disponible en option sur les sites à forte cadence, au 04 78 33 72 05.\n- **10 % des candidats retenus** : Entretien technique et entretien comportemental, résultats d'évaluation partagés avec le client.\n\n> [Parler à un chargé d'affaires](/contact/) · 04 78 33 72 05\n\n> Offre et secteur concernés : [sous-traitance maintenance](/offres/residence/) et [maintenance industrie automobile](/secteurs/automobile/)\n\n> À lire aussi : [Étude de cas JTEKT : maintenance des installations](/preuves/jtekt/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/suez-remise-en-etat.md",
+  "url": "/preuves/suez-remise-en-etat/",
+  "h1": "SUEZ IWT : un électromécanicien habilité pour une remise en état",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "SUEZ IWT est spécialiste du traitement des eaux industrielles. Le site concerné demande des travaux de remise en état sur des installations critiques.\nL'environnement est à risque chimique. Cette contrainte commande tout le reste du dossier.",
+   "fiche": [
+    {
+     "libelle": "Site",
+     "valeur": "SUEZ IWT, traitement des eaux industrielles"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Remise en état d'installations critiques"
+    },
+    {
+     "libelle": "Environnement",
+     "valeur": "Risque chimique"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "1 technicien de maintenance industrielle"
+    },
+    {
+     "libelle": "Domaines",
+     "valeur": "Électromécanique, mécanique, électricité, notions d'automatisme"
+    },
+    {
+     "libelle": "Habilitation",
+     "valeur": "RC1, risque chimique niveau 1"
+    },
+    {
+     "libelle": "Depuis quand",
+     "valeur": "Février 2026, mission de 6 mois"
+    }
+   ],
+   "contexte": "**Un surcroît d'activité tombe sur un site où l'on ne fait pas entrer n'importe qui.** Quatre contraintes se cumulaient.\n**Remettre en état les équipements** pour garantir leur fiabilité.\n**Absorber le surcroît d'activité** sans désorganiser les équipes en place.\n**Tenir la sécurité des opérations** en environnement chimique.\n**Travailler conformément** aux normes et habilitations en vigueur.\nLe réflexe habituel, lancer un recrutement, ne répond à aucune des quatre. Un poste ouvert pour une charge qui a une fin annoncée se pourvoit mal, et l'habilitation reste à obtenir de toute façon.\nL'autre option, étaler la charge sur les équipes internes, se paie en heures supplémentaires puis en retard sur le reste du site. Sur des installations critiques, cette dette technique se rattrape mal.\nLa contrainte d'habilitation tranche la question. Sans RC1, l'intervenant n'entre pas sur site, quel que soit son niveau technique.",
+   "intervention": "**Vous obtenez un profil qui couvre tout le parc.** Le technicien combine compétences mécaniques, électriques et notions d'automatisme, ce qui évite d'empiler les intervenants.\n**Vous accueillez quelqu'un déjà habilité.** Le technicien a été formé et habilité RC1, habilitation risque chimique niveau 1, avant la première journée sur site.\n**Vous calez la durée sur la charge réelle.** La mission est définie pour 6 mois, pas pour un horizon indéterminé.\n**Vous démarrez conforme.** L'intervention est cadrée sur les standards de sécurité du client dès la mise en opération.\n**Vous n'ouvrez pas de poste.** Migen recrute, forme et encadre l'intervenant pendant toute la mission.",
+   "resultats": [
+    {
+     "valeur": "Le pic d'activité est absorbé",
+     "libelle": "sans désorganiser les équipes internes."
+    },
+    {
+     "valeur": "Les travaux de remise en état avancent",
+     "libelle": "au rythme prévu."
+    },
+    {
+     "valeur": "Le renfort est opérationnel",
+     "libelle": "sans contrainte de recrutement à porter."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE RÉSULTAT": [
+    "Ce que la mission apporte à SUEZ IWT, tel que le dossier le documente.",
+    "La capacité à former et habiliter le technicien pour le contexte du site est l'élément central de ce cas. C'est ce qui a rendu l'entrée sur site possible."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Qualification du besoin.** SUEZ IWT exprime un besoin de renfort pour des travaux de remise en état, sur fond de surcroît d'activité.\n2. **Définition du profil.** Le contexte chimique et la diversité des équipements orientent vers un profil polyvalent.\n3. **Formation et habilitation.** Le technicien suit la formation habilitation risque chimique niveau 1.\n4. **Démarrage sur site.** La mission commence en février 2026, pour une durée de 6 mois.\n5. **Travaux de remise en état.** Le technicien avance sur les équipements tout en absorbant la charge supplémentaire."
+   ],
+   "CTA": [
+    "**Une charge qui monte sur un site à contraintes réglementaires ?** Dites-nous l'environnement et les habilitations attendues, nous regardons qui peut y entrer.\n\n> [Poser mon besoin de renfort technique](/contact/)\n\nUn appel au **04 78 33 72 05** suffit pour démarrer, du lundi au vendredi de 8h00 à 18h30, avec un rappel dans l'heure. L'astreinte 24/24 et 7/7 se souscrit en option.\n\nSur un site classé, le niveau de l'intervenant n'est pas négociable. Nos techniciens passent un entretien technique et un entretien comportemental, et 10 % des candidats sont retenus.\n\n> À lire aussi : [Étude de cas FDJ : renfort de maintenance en continu](/preuves/fdj/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/timescope.md",
+  "url": "/preuves/timescope/",
+  "h1": "TIMESCOPE : tenir un parc de casques déployé en France",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "Timescope propose des solutions de casques de réalité virtuelle installées à travers la France. Le parc est réparti, pas concentré sur un site.\nMigen assure la maintenance de ces équipements sous contrat depuis février 2024. La collaboration est toujours en cours.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "Timescope, casques de réalité virtuelle"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Parc de casques déployé à travers la France"
+    },
+    {
+     "libelle": "Cadre",
+     "valeur": "Contrat de maintenance, cahiers des charges établis"
+    },
+    {
+     "libelle": "Points techniques",
+     "valeur": "Étanchéité, réglages des équipements"
+    },
+    {
+     "libelle": "Objectif",
+     "valeur": "Fiabilité et performances des casques"
+    },
+    {
+     "libelle": "Depuis quand",
+     "valeur": "Février 2024, collaboration en cours"
+    }
+   ],
+   "contexte": "**Un parc réparti tombe en panne là où personne ne regarde.** Un casque hors service sur une borne isolée ne se signale pas tout seul, et chaque jour d'indisponibilité est un jour d'exploitation perdu.\nTimescope avait deux besoins.\n**Un suivi de maintenance approfondi** sur l'ensemble du parc de casques.\n**Un partenaire capable de suivre l'évolution technologique** rapide de ce secteur émergent.\nLe second point est le plus exigeant. Sur un marché où les technologies changent vite, un prestataire figé sur une génération d'équipement devient inutile en quelques mois.\nLes casques de réalité virtuelle subissent un usage public intensif. Manipulation répétée, poussière, humidité : les pannes viennent de l'environnement autant que de l'électronique.\nTraiter cela au coup par coup revient à réparer la même chose indéfiniment. Un contrat de maintenance oblige à regarder la cause, pas seulement le symptôme.",
+   "intervention": "**Vous cadrez la prestation par un contrat de maintenance.** Les techniciens Migen s'engagent à respecter les cahiers des charges établis.\n**Vous traitez l'étanchéité**, qui est le point faible connu de ce type d'équipement en usage public.\n**Vous tenez les réglages**, pour que la performance du casque reste conforme à ce qui est vendu à l'utilisateur.\n**Vous recevez des propositions techniques**, pas seulement des réparations. Les solutions visent la fiabilité et les performances des casques.\n**Vous avancez avec un partenaire qui suit le marché**, sur un secteur où les technologies évoluent en continu.",
+   "resultats": [
+    {
+     "valeur": "Un suivi de maintenance approfondi sur tout le parc",
+     "libelle": "le besoin exprimé au départ par Timescope est couvert par le contrat, sur l'ensemble des casques déployés à travers la France."
+    },
+    {
+     "valeur": "Les deux familles de défaillance traitées",
+     "libelle": "l'étanchéité et les réglages des équipements font l'objet de solutions proposées pour la fiabilité et les performances des casques."
+    },
+    {
+     "valeur": "Un partenaire technique tenu dans la durée",
+     "libelle": "les cahiers des charges établis par Timescope sont respectés sur un marché où les technologies se succèdent vite."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "SECTION 2 . CHIFFRES CLES": [
+    "- **Février 2024** : démarrage du contrat de maintenance, la collaboration court toujours\n- **1 contrat** : un cadre unique pour tout le parc, sur les cahiers des charges établis par Timescope\n- **2 points techniques** : étanchéité et réglages, les deux familles de défaillance traitées sur les casques\n- **10 %** : des candidats retenus, après entretien technique ET comportemental"
+   ],
+   "LE RÉSULTAT": [
+    "La collaboration, démarrée en février 2024, est toujours en cours."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Expression du besoin.** Timescope cherche un suivi de maintenance approfondi et un partenaire technique dans la durée.\n2. **Mise en place du contrat.** La prestation est cadrée par un contrat de maintenance, avec des cahiers des charges établis.\n3. **Prise du parc.** Les techniciens Migen interviennent sur les casques déployés.\n4. **Traitement des points sensibles.** L'étanchéité et les réglages des équipements concentrent l'effort technique.\n5. **Propositions d'amélioration.** Des solutions sont formulées pour la fiabilité et les performances.\n6. **Reconduction.** Le contrat court toujours, plus d'un an après son démarrage en février 2024."
+   ],
+   "CTA": [
+    "**Un parc d'équipements dispersé, sans personne pour le suivre ?** Dites-nous ce que vous avez déployé et où, nous cadrons un contrat de maintenance.\n\n> [Mettre mon parc sous contrat de maintenance](/contact/)\n\nAppelez le **04 78 33 72 05**, du lundi au vendredi de 8h00 à 18h30, le rappel arrive dans l'heure. L'astreinte 24/24 et 7/7 s'ajoute en option si votre exploitation tourne le week-end.\n\nTravailler sur une technologie récente demande des techniciens capables d'apprendre vite. Notre sélection retient 10 % des candidats, après entretien technique et comportemental.\n\n> À lire aussi : [Étude de cas ORTHUS x ECOCEM : construction d'un site R&D](/preuves/orthus-ecocem/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/valeo-usines.md",
+  "url": "/preuves/valeo-usines/",
+  "h1": "Étude de cas VALEO : plusieurs usines",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "VALEO, leader mondial des technologies de pointe pour l'automobile, a choisi Migen en septembre 2024. L'objectif : accompagner la montée en cadence de plusieurs de ses usines en France.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "VALEO"
+    },
+    {
+     "libelle": "Territoire",
+     "valeur": "Plusieurs usines en France"
+    },
+    {
+     "libelle": "Secteur",
+     "valeur": "Industrie automobile, véhicules électriques et connectés"
+    },
+    {
+     "libelle": "Démarrage",
+     "valeur": "Septembre 2024, mission en cours"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "3 à 5 techniciens de maintenance"
+    },
+    {
+     "libelle": "Durée",
+     "valeur": "Moyen terme"
+    },
+    {
+     "libelle": "Fréquence",
+     "valeur": "Permanente"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Lignes de production, ateliers de fabrication, maintenance préventive"
+    }
+   ],
+   "contexte": "**Monter en cadence sans renforcer la maintenance revient à accélérer avec des freins usés.** L'équipe encaisse la hausse avec le même effectif, jusqu'au jour où elle ne l'encaisse plus.\nPlusieurs usines françaises devaient passer à des niveaux de production plus élevés. Les enjeux du dossier :\n**Une transition fluide vers des cadences supérieures**, sans décrochage de la production.\n**Un standard de performance et de sécurité maintenu** pendant l'accélération.\n**Des interruptions non planifiées réduites** sur les équipements industriels.\n**Une disponibilité optimisée** dans plusieurs usines à la fois.",
+   "intervention": "**Des techniciens là où la charge monte** : Trois à cinq techniciens hautement qualifiés déployés au sein de différents services des usines concernées.\n**Une couverture sur trois fronts** : Lignes de production, ateliers de fabrication et services de maintenance préventive, dans le même dispositif.\n**Anticipation des défaillances** : Le suivi technique vise à repérer la dérive avant l'arrêt, pas à réparer après coup.\n**Intervention rapide sur panne** : La présence sur site limite les temps d'arrêt quand l'incident survient.\nLa mission principale : assurer un suivi technique rigoureux, anticiper les défaillances et intervenir vite pour limiter les temps d'arrêt.",
+   "resultats": [
+    {
+     "valeur": "Une qualité de production constante",
+     "libelle": "Le niveau est maintenu pendant l'accélération des cadences."
+    },
+    {
+     "valeur": "Un accompagnement flexible et réactif",
+     "libelle": "Il s'ajuste aux besoins de chaque service."
+    },
+    {
+     "valeur": "Des capacités industrielles renforcées",
+     "libelle": "Sans recrutement interne mené dans l'urgence."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE CLIENT ET LE SITE": [
+    "- **Territoire** : Plusieurs usines françaises du groupe.\n- **Effectif Migen** : 3 à 5 techniciens de maintenance.\n- **Régime** : Prestation permanente, engagement à moyen terme.",
+    "> Ce cas figure dans nos [études de cas maintenance industrielle](/preuves/)."
+   ],
+   "LE RÉSULTAT": [
+    "La montée en cadence est accompagnée par un renfort déployé au bon endroit. VALEO n'a pas eu à détourner ses équipes de ses objectifs de production.",
+    "Ce que le dispositif apporte au client :"
+   ],
+   "LE DÉROULÉ": [
+    "1. **Décision de VALEO** : Septembre 2024, le groupe retient Migen pour accompagner la montée en cadence de plusieurs usines françaises.\n2. **Déploiement des techniciens** : Trois à cinq techniciens de maintenance qualifiés rejoignent différents services.\n3. **Répartition sur le périmètre** : Lignes de production, ateliers de fabrication, maintenance préventive.\n4. **Suivi technique et anticipation** : Surveillance des équipements, actions préventives ciblées.\n5. **Prestation permanente** : Le dispositif tourne en continu, sur un engagement à moyen terme."
+   ],
+   "CTA": [
+    "**Vos cadences montent plus vite que votre effectif de maintenance ?** Dites-nous les usines concernées, nous répartissons le renfort service par service.\n\nLes heures supplémentaires tiennent quelques mois. Ensuite viennent l'épuisement des équipes, les départs, et un recrutement devenu impossible.\n\n- **Rappel dans l'heure** : Du lundi au vendredi, de 8h00 à 18h30.\n- **Astreinte 24/24 et 7/7** : Proposée en option sur les sites en forte charge, au 04 78 33 72 05.\n- **10 % des candidats retenus** : Entretien technique et entretien comportemental avant toute affectation.\n- **Quatre agences** : Lyon (siège), Montréal, Dubaï et Madrid, pour déployer sur plusieurs usines à la fois.\n\n> [Parler à un chargé d'affaires](/contact/) · 04 78 33 72 05\n\n> Offre et secteur concernés : [sous-traitance maintenance](/offres/residence/) et [maintenance industrie automobile](/secteurs/automobile/)\n\n> À lire aussi : [Étude de cas EATON : mise en production](/preuves/eaton-mise-en-production/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/veepee-sites-lyon.md",
+  "url": "/preuves/veepee-sites-lyon/",
+  "h1": "Étude de cas VEEPEE : sites de Lyon",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "Depuis septembre 2023, Migen gère le contrat de maintenance préventive annuelle des sites de Lyon pour VEEPEE, anciennement Vente Privée. Six techniciens polyvalents y sont en permanence.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "VEEPEE, anciennement Vente Privée"
+    },
+    {
+     "libelle": "Sites",
+     "valeur": "Sites de Lyon"
+    },
+    {
+     "libelle": "Période",
+     "valeur": "Depuis septembre 2023, mission en cours"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "6 techniciens polyvalents, en permanence sur site"
+    },
+    {
+     "libelle": "Reprise du périmètre",
+     "valeur": "1 mois"
+    },
+    {
+     "libelle": "Nature des travaux",
+     "valeur": "Maintenance préventive annuelle sous contrat"
+    },
+    {
+     "libelle": "Problématique d'origine",
+     "valeur": "Maintien du parc machine d'un centre logistique volumineux"
+    }
+   ],
+   "contexte": "**Plus un centre logistique grossit, plus le parc machine échappe au suivi.** Les pannes arrivent par une usure que personne n'a vu venir.\nLa problématique d'origine tenait en une phrase : des difficultés à assurer le maintien du parc machine sur un centre logistique volumineux.\n**Un parc étendu** : Plusieurs sites lyonnais à couvrir avec la même exigence.\n**Une usure non anticipée** : Les problèmes techniques dégénèrent en dysfonctionnements faute de préventif.\n**Des arrêts d'installation** : Au bout de la chaîne, ce sont des pertes de production.\n**Une bascule à réussir** : Changer de prestataire sans trou de couverture pendant la transition.",
+   "intervention": "**Une équipe résidente** : 6 techniciens polyvalents déployés en permanence sur site, capables de répondre à l'ensemble des besoins du centre logistique.\n**Un contrat annuel de préventif** : Migen assure la gestion du contrat de maintenance préventive annuelle des sites de Lyon.\n**Des opérations d'anticipation** : Le plan couvre les interventions qui préviennent les problèmes techniques et l'usure.\n**Une bascule bouclée en un mois** : La prise en charge de l'ensemble des sites a été réalisée en un mois.\n**Une continuité protégée** : La transition a été menée en limitant les pertes de production.",
+   "resultats": [
+    {
+     "valeur": "Une reprise bouclée en un mois",
+     "libelle": "Le passage de l'ensemble des sites sous contrat Migen a tenu dans un mois."
+    },
+    {
+     "valeur": "Une continuité protégée",
+     "libelle": "La bascule a limité les pertes de production."
+    },
+    {
+     "valeur": "Un parc couvert en entier",
+     "libelle": "Les 6 techniciens polyvalents répondent à l'ensemble des besoins du centre logistique."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE CLIENT ET LE SITE": [
+    "- **Client** : VEEPEE, anciennement Vente Privée.\n- **Périmètre** : Les sites lyonnais du groupe.\n- **Cadre** : Contrat de maintenance préventive annuelle.",
+    "> Ce cas figure dans nos [études de cas maintenance industrielle](/preuves/)."
+   ],
+   "LE RÉSULTAT": [
+    "Le contrat court depuis septembre 2023 et reste en place."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Reprise du contrat** : Migen prend la gestion de la maintenance préventive annuelle des sites lyonnais.\n2. **Transition en un mois** : L'ensemble des sites passe sous couverture Migen en un mois seulement.\n3. **Déploiement de l'équipe** : 6 techniciens polyvalents s'installent en permanence sur place.\n4. **Exécution du plan préventif** : Les opérations anticipent l'usure pour éviter les arrêts d'installation.\n5. **Poursuite depuis septembre 2023** : Le dispositif est toujours en place aujourd'hui."
+   ],
+   "CTA": [
+    "**Un contrat de préventif à reprendre sans trou de couverture ?** Envoyez-nous le périmètre actuel, nous cadrons la bascule avec vous.\n\nChanger de prestataire fait peur pour une seule raison : la période de flottement. C'est précisément la partie que nous préparons en premier.\n\n- **Rappel dans l'heure** : Du lundi au vendredi, de 8h00 à 18h30.\n- **Astreinte 24/24 et 7/7** : Proposée en option sur les parcs sensibles, au 04 78 33 72 05.\n- **10 % des candidats retenus** : Sélection par entretien technique et entretien comportemental, siège en région lyonnaise.\n- **Plus de 80 clients réguliers** : Sur plus de 120 clients au total, la fidélité se mesure aux contrats reconduits.\n\n> [Faire reprendre mon contrat](/contact/) · 04 78 33 72 05\n\n> Secteur concerné : [maintenance équipements logistiques](/secteurs/logistique/)\n\n> À lire aussi : [Étude de cas ALSTEF Group : contrôle de chantier](/preuves/alstef-group/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/voit-grand-est.md",
+  "url": "/preuves/voit-grand-est/",
+  "h1": "Étude de cas VOIT : site du Grand Est",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "VOIT, spécialiste de la fabrication de pièces mécaniques de précision, a intégré un technicien Migen à temps plein sur son site en 2025. L'objectif posé : tenir la disponibilité de ses équipements critiques.",
+   "fiche": [
+    {
+     "libelle": "Client",
+     "valeur": "VOIT, pièces mécaniques de précision"
+    },
+    {
+     "libelle": "Période",
+     "valeur": "2025"
+    },
+    {
+     "libelle": "Besoin",
+     "valeur": "Renforcer les équipes de maintenance, tenir la disponibilité des équipements"
+    },
+    {
+     "libelle": "Périmètre machines",
+     "valeur": "Centres d'usinage grande vitesse, presses automatisées, machines CN"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "1 technicien de maintenance expérimenté, à temps plein"
+    },
+    {
+     "libelle": "Suivi",
+     "valeur": "Supervision par les coordinateurs Migen"
+    }
+   ],
+   "contexte": "**Un centre d'usinage à grande vitesse arrêté, c'est une pièce de précision qui ne sort pas.** Et un client qui attend.\nDans l'environnement industriel de VOIT, la disponibilité des équipements est un enjeu quotidien. La maintenance devait tenir trois exigences en même temps :\n**Réactive** : Pour limiter les arrêts non planifiés.\n**Préventive** : Pour anticiper l'usure avant la casse.\n**Adaptée** : À des machines complexes, souvent multimarques.",
+   "intervention": "**Préventif et réglages sur les centres d'usinage** : Le technicien tient le plan d'entretien et les réglages sur les centres à grande vitesse.\n**Dépannage des presses** : Les presses hydrauliques comme mécaniques sont prises en charge sur place.\n**Diagnostic sur commandes numériques** : Les erreurs CN sont identifiées et corrigées sans attendre un intervenant extérieur.\n**Travail direct avec la production** : Le technicien collabore avec les équipes de production pour raccourcir les temps d'arrêt.\n**Supervision Migen** : Les coordinateurs Migen suivent la prestation tout au long de la mission.",
+   "resultats": [
+    {
+     "valeur": "Disponibilité accrue",
+     "libelle": "Les lignes de production tournent davantage."
+    },
+    {
+     "valeur": "Moins d'incidents récurrents",
+     "libelle": "Les pannes qui revenaient faute de traitement de fond ont reculé."
+    },
+    {
+     "valeur": "Montée en compétence des équipes internes",
+     "libelle": "Elle vient de la collaboration quotidienne avec le technicien Migen."
+    },
+    {
+     "valeur": "Plan de maintenance amélioré en continu",
+     "libelle": "Il reste aligné sur les standards VOIT."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "LE CLIENT ET LE SITE": [
+    "- **Activité** : Pièces mécaniques de précision.\n- **Familles de machines** : Centres d'usinage grande vitesse, presses automatisées, machines à commande numérique.\n- **Effectif Migen** : 1 technicien expérimenté, à temps plein sur site.",
+    "> Ce cas figure dans nos [études de cas maintenance industrielle](/preuves/)."
+   ],
+   "LE RÉSULTAT": [
+    "Les premiers effets sont visibles dès les premières semaines de la mission."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Expression du besoin** : VOIT fait appel à Migen pour renforcer ses équipes de maintenance.\n2. **Définition du profil** : Le périmètre couvre usinage, presses et commande numérique, sur un parc multimarques.\n3. **Intégration sur site** : Un technicien expérimenté est affecté à temps plein dans les équipes VOIT.\n4. **Suivi de prestation** : Les coordinateurs Migen assurent le pilotage dans la durée.\n5. **Amélioration du plan** : Le plan de maintenance évolue en continu, en lien avec les standards VOIT."
+   ],
+   "CTA": [
+    "**Des machines multimarques que personne ne couvre en entier ?** Décrivez le parc, nous cherchons le profil qui tient les trois familles.\n\nAppeler un intervenant différent par marque de machine, c'est payer trois déplacements pour un seul atelier. Un technicien qui couvre le parc entier change l'équation.\n\n- **Rappel dans l'heure** : Du lundi au vendredi, de 8h00 à 18h30.\n- **Astreinte 24/24 et 7/7** : Proposée en option sur les parcs critiques, au 04 78 33 72 05.\n- **10 % des candidats retenus** : Usinage, commande numérique, presses et automatisme, après entretien technique et comportemental.\n\n> [Demander un technicien sur site](/contact/) · 04 78 33 72 05\n\n> Secteur concerné : [maintenance industrie automobile](/secteurs/automobile/)\n\n> À lire aussi : [Étude de cas STELLANTIS : fonderie de Sept-Fons](/preuves/stellantis-fonderie-sept-fons/)"
+   ]
+  },
+  "alertes": []
+ },
+ {
+  "fichier": "../migen-refonte/seo/CONVERSION/Preuves/vpk.md",
+  "url": "/preuves/vpk/",
+  "h1": "VPK : un technicien polyvalent sur un parc en forte cadence",
+  "contenu": {
+   "gabarit": "fiche",
+   "chapeau": "VPK est spécialiste du papier et de l'emballage. Son parc machines présente des contraintes techniques variées, dans un environnement à forte cadence.\nLa maintenance y conditionne directement la productivité. Migen y a intégré un technicien de maintenance polyvalent sur 2025 et 2026.",
+   "fiche": [
+    {
+     "libelle": "Site",
+     "valeur": "VPK, papier et emballage"
+    },
+    {
+     "libelle": "Périmètre",
+     "valeur": "Parc machines complet, lignes de production"
+    },
+    {
+     "libelle": "Effectif Migen",
+     "valeur": "1 technicien de maintenance polyvalent"
+    },
+    {
+     "libelle": "Domaines",
+     "valeur": "Mécanique, électrotechnique"
+    },
+    {
+     "libelle": "Nature des interventions",
+     "valeur": "Préventif, curatif, diagnostic, entretien de premier niveau"
+    },
+    {
+     "libelle": "Depuis quand",
+     "valeur": "2025 et 2026"
+    }
+   ],
+   "contexte": "**Quand la charge monte, l'équipe fixe absorbe tout, puis sature.** L'anticipation des pannes disparaît la première, et le site se met à courir derrière ses machines.\nFace à une hausse d'activité, VPK cherchait un intervenant capable de trois choses.\n**Réaliser la maintenance préventive et curative**, sans arbitrer en permanence entre les deux.\n**S'adapter à différents équipements du site**, pas à un seul îlot.\n**Travailler en complémentarité** avec les équipes internes.\nUn parc hétérogène ne se traite pas avec un spécialiste d'une seule machine. Il demande quelqu'un qui passe d'un équipement à l'autre sans temps mort.\nDans le papier et l'emballage, l'arrêt se voit immédiatement en aval. Une ligne à l'arrêt laisse les commandes en attente, et le rattrapage se fait en heures supplémentaires.\nAjouter un poste fixe aurait pris des mois et engagé le site au-delà du pic. Le renfort intégré répond à la charge présente, sans figer l'organisation.",
+   "intervention": "**Vous intégrez le renfort sur les lignes existantes.** Le technicien prend le parc tel qu'il est, sans phase de réorganisation.\n**Vous traitez les urgences sans sacrifier le reste.** Diagnostic des pannes et réparations urgentes entrent dans le quotidien de l'intervenant.\n**Vous tenez l'entretien de premier niveau** sur le parc machines, en mécanique comme en électrotechnique.\n**Vous replanifiez selon la production.** Les interventions s'ajustent aux priorités réelles de la semaine.\n**Vous n'ajoutez pas de charge d'encadrement.** Les coordinateurs Migen assurent le suivi régulier de la mission.",
+   "resultats": [
+    {
+     "valeur": "Meilleure répartition de la charge",
+     "libelle": "entre équipes internes et renfort."
+    },
+    {
+     "valeur": "Temps d'arrêt réduits",
+     "libelle": "sur le parc machines."
+    },
+    {
+     "valeur": "Meilleure anticipation des pannes",
+     "libelle": "le préventif n'étant plus sacrifié aux urgences."
+    }
+   ]
+  },
+  "hors_gabarit": {
+   "SECTION 2 . CHIFFRES CLES": [
+    "- **1 technicien** : un seul intervenant polyvalent pour l'ensemble du parc machines, pas un spécialiste par îlot\n- **2025 et 2026** : la mission court sur deux exercices, avec un suivi régulier des coordinateurs Migen\n- **2 domaines** : mécanique et électrotechnique tenues par le même intervenant, du préventif au curatif\n- **10 %** : des candidats retenus, après entretien technique ET comportemental"
+   ],
+   "LE RÉSULTAT": [
+    "Le dossier VPK retient trois effets, tels quels.",
+    "La continuité des interventions a été tenue sans surcharger les équipes fixes.",
+    "Le troisième effet est celui qui dure. Quand le préventif cesse d'être sacrifié aux urgences, la courbe des pannes finit par redescendre d'elle-même.",
+    "La mission court sur deux exercices, 2025 et 2026, avec un suivi régulier assuré par les coordinateurs Migen."
+   ],
+   "LE DÉROULÉ": [
+    "1. **Qualification du besoin.** Hausse d'activité, parc varié, cadence élevée : le profil se choisit sur cette base.\n2. **Arrivée sur site.** Le technicien polyvalent est intégré aux lignes existantes.\n3. **Prise du parc.** Entretien de premier niveau en mécanique et électrotechnique sur l'ensemble des équipements.\n4. **Traitement des urgences.** Diagnostic et réparations, au rythme des priorités de production.\n5. **Ajustement continu.** Les interventions sont replanifiées selon ce que la production impose.\n6. **Suivi régulier.** Point de mission tenu par les coordinateurs Migen."
+   ],
+   "CTA": [
+    "**Votre équipe court après les pannes au lieu de les anticiper ?** Décrivez votre parc, nous vous disons quel profil le tient réellement.\n\n> [Demander un renfort sur mon parc machines](/contact/)\n\nLe **04 78 33 72 05** répond du lundi au vendredi, 8h00 à 18h30, et le rappel arrive dans l'heure. Pour un site en cadence continue, l'astreinte 24/24 et 7/7 se souscrit en option.\n\nSur un parc hétérogène, la polyvalence se vérifie avant d'être promise. Chaque candidat passe un entretien technique et un entretien comportemental, et nous en retenons 10 %.\n\n> À lire aussi : [Étude de cas GROUPE ATLANTIC : renfort sur plusieurs sites](/preuves/groupe-atlantic/)"
+   ]
+  },
+  "alertes": []
+ }
+]

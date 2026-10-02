@@ -1,3 +1,4 @@
+import Image from "next/image";
 /* Bandeau de logos clients, porté de « Migen - Site final » (lignes 600 à 608).
    Composant serveur : le défilement et la pause au survol sont entièrement en
    CSS (`@keyframes mgMarquee`, `.mg-marquee:hover .mg-track` dans
@@ -110,7 +111,11 @@ export default function MarqueeClients({
             flex: "none",
           }}
         >
-          Plus de 200 clients accompagnés
+          {/* « Plus de 200 clients accompagnés » dans la maquette. Le compte
+              tenu par Migen est « plus de 120 clients, dont plus de 80
+              réguliers » : c'est la formulation mandatée, et un chiffre public
+              faux est un risque, pas un détail de copie. */}
+          Plus de 120 clients, dont plus de 80 réguliers
         </span>
       </div>
 
@@ -147,11 +152,17 @@ export default function MarqueeClients({
                 className="mg-logo"
                 style={PASTILLE}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                {/* `width` et `height` sont la BOÎTE du logo (120x34), pas le
+                    fichier : next/image s'en sert pour choisir la taille servie.
+                    Les PNG clients font jusqu'à 1655 px de large pour 120 px
+                    affichés ; servis bruts, ils pesaient sur le premier
+                    défilement. Les SVG passent tels quels, un vecteur n'a pas
+                    de taille à réduire. */}
+                <Image
                   src={logo.src}
                   alt={passe === 0 ? logo.alt : ""}
-                  loading="lazy"
+                  width={120}
+                  height={34}
                   style={IMAGE}
                 />
               </span>

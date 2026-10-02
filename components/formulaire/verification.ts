@@ -23,28 +23,63 @@ import {
   empreinteIp,
   tropDeDepots,
 } from "./debit";
-import { CHAMP_PIEGE, CONTACT_VIDE, valideCharge, valideContact } from "./validation";
+import {
+  CHAMP_PIEGE,
+  CONTACT_VIDE,
+  INDICATIFS,
+  numeroComplet,
+  valideCharge,
+  valideContact,
+} from "./validation";
 
 const correct = {
   entreprise: "Fonderie de démonstration",
   prenom: "Camille",
   nom: "Rivière",
   email: "camille.riviere@exemple.fr",
+  indicatif: "+33",
   telephone: "04 72 00 00 00",
-  message: "",
+  message: "Arrêt de ligne de conditionnement, besoin d'un électromécanicien.",
 };
 
-// Un contact complet passe, message vide compris : le message est facultatif.
+// Un contact complet passe.
 assert.deepEqual(valideContact(correct), {});
 
-// Chaque champ obligatoire vide produit une erreur, et une seule.
-for (const champ of ["entreprise", "prenom", "nom", "email", "telephone"] as const) {
+// Chaque champ obligatoire vide produit une erreur, et une seule. Le message en
+// fait partie depuis le portage de la maquette, qui le marque `required`.
+for (const champ of [
+  "entreprise",
+  "prenom",
+  "nom",
+  "email",
+  "telephone",
+  "message",
+] as const) {
   const erreurs = valideContact({ ...correct, [champ]: "   " });
   assert.deepEqual(Object.keys(erreurs), [champ], `champ obligatoire : ${champ}`);
 }
 
-// Le formulaire vide signale tous les champs obligatoires, pas le premier.
-assert.equal(Object.keys(valideContact(CONTACT_VIDE)).length, 5);
+// Le formulaire vide signale les six champs à remplir, pas le premier. L'indicatif
+// n'en fait pas partie : il arrive prérempli sur « +33 », comme dans la maquette.
+assert.equal(Object.keys(valideContact(CONTACT_VIDE)).length, 6);
+assert.ok(!valideContact(CONTACT_VIDE).indicatif, "l'indicatif par défaut est valide");
+
+// L'indicatif est une liste fermée : hors liste, il est refusé, et il n'est
+// surtout pas concaténé au numéro pour partir dans HubSpot.
+for (const faux of ["+99", "+3", "33", "", "+33;rm", "33+"]) {
+  assert.ok(
+    valideContact({ ...correct, indicatif: faux }).indicatif,
+    `indicatif refusé : ${JSON.stringify(faux)}`,
+  );
+}
+for (const { code } of INDICATIFS) {
+  assert.ok(!valideContact({ ...correct, indicatif: code }).indicatif, `indicatif accepté : ${code}`);
+}
+// Un espace parasite autour d'un code connu est toléré, pas refusé : c'est le
+// numéro COMPOSÉ qui doit être propre, et `numeroComplet` s'en charge.
+assert.ok(!valideContact({ ...correct, indicatif: " +33 " }).indicatif);
+assert.equal(numeroComplet({ ...correct, indicatif: " +33 ", telephone: " 04 72 00 00 00 " }), "+33 04 72 00 00 00");
+assert.equal(numeroComplet({ ...correct, indicatif: "+971", telephone: "50 123 4567" }), "+971 50 123 4567");
 
 // Formats refusés.
 assert.ok(valideContact({ ...correct, email: "camille.riviere" }).email);
@@ -65,6 +100,7 @@ const charge = valideCharge({ ...correct, formulaire: "contact", admin: "oui" })
 assert.deepEqual(Object.keys(charge.contact).sort(), [
   "email",
   "entreprise",
+  "indicatif",
   "message",
   "nom",
   "prenom",

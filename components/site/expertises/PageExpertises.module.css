@@ -1,0 +1,24 @@
+/* Les quatre `style-hover` de la page expertises de la maquette
+   (« Migen - Site final.dc.html », lignes 6211 à 6646), recopiés tels quels.
+
+   Ici et pas dans `app/globals.css` : plusieurs gabarits s'écrivent en
+   parallèle, un fichier partagé produirait des conflits. */
+
+/* Bouton principal du héros. */
+.boutonAction:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+}
+
+/* Bouton secondaire, en verre. */
+.boutonSecondaire:hover {
+  background: var(--card);
+}
+
+/* Carte de domaine et carte de secteur : même soulèvement. */
+.carteLevee:hover {
+  transform: translateY(-3px);
+}
+
+/* Le lien de bas de carte hérite de la règle globale `a:hover`, qui le passe en
+   orange. La maquette n'en déclare pas d'autre : rien à ajouter. */

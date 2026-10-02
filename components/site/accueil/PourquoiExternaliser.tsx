@@ -36,7 +36,7 @@ export default function PourquoiExternaliser({
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div
-          className="mg-r2"
+          data-reveal="" className="mg-r2"
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
@@ -88,6 +88,13 @@ export default function PourquoiExternaliser({
           </div>
 
           <div>
+            {/* La maquette finit cette phrase par « pour des prestations sur
+                mesure ». « Sur mesure » est une formulation interdite par le
+                contrat, et la phrase se tient sans elle : elle est coupée après
+                « validés par vos soins ». C'est la seule cause des 28 px de
+                moins que la maquette sur cette section, soit exactement une
+                ligne à 16,5/1,7. Ne pas « réparer » en recopiant la maquette :
+                `scripts/verifie-interdits.mjs` refuserait le build. */}
             <p
               style={{
                 font: "400 16.5px/1.7 var(--fb)",

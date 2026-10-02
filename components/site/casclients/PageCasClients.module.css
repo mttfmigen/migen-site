@@ -1,0 +1,67 @@
+/*
+  Habillage du gabarit « Cas clients ». Tout ce qu'un style en ligne ne peut pas
+  porter : les survols relevés sur `style-hover` dans la maquette, et les
+  étendues de grille, qui doivent pouvoir retomber sous un point de rupture.
+
+  Les classes portent le nom de leur rôle, pas celui de leur déclaration.
+*/
+
+/* ----------------------------------------------------------------- boutons */
+
+.boutonAction:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+.boutonSecondaire:hover {
+  background: var(--card);
+}
+
+.lienListe {
+  transition: color var(--tr);
+}
+.lienListe:hover,
+.lienListe:focus-visible {
+  color: var(--acc);
+}
+
+/* ------------------------------------------------------- bento des chiffres */
+
+/* POURQUOI LES ÉTENDUES SONT ICI et non en style en ligne : un style en ligne
+   l'emporte sur toute feuille, et il faudrait un `!important` pour les annuler
+   sur une colonne unique. En classe, la règle de repli se lit et s'applique.
+   `.mg-rmulti` de `globals.css` tient les colonnes, ces règles tiennent les
+   cellules qui en couvrent plusieurs. */
+.bentoHaut {
+  grid-row: span 2;
+}
+
+.bentoLarge {
+  grid-column: span 2;
+}
+
+@media (max-width: 620px) {
+  .bentoHaut,
+  .bentoLarge {
+    grid-row: auto;
+    grid-column: auto;
+  }
+}
+
+/* ------------------------------------------------------- carte de chantier */
+
+/* L'ombre de survol est ici parce qu'elle remplace celle du verre, posée en
+   ligne : déclarée en ligne elle aussi, elle ne pourrait pas être remplacée. */
+.carteChantier {
+  transition:
+    transform var(--tr),
+    box-shadow var(--tr);
+}
+.carteChantier:hover,
+.carteChantier:focus-visible {
+  transform: translateY(-4px);
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.04),
+    0 34px 70px -34px rgba(0, 0, 0, 0.42);
+}

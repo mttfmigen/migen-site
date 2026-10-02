@@ -24,7 +24,7 @@ const JALONS_MAQUETTE: Jalon[] = [
   { annee: "2023", texte: "Premiers hubs de techniciens hors de Lyon." },
   {
     annee: "2024",
-    texte: "Hubs dans les grandes villes de France, +200 clients.",
+    texte: "Hubs dans les grandes villes de France, plus de 120 clients.",
   },
   {
     annee: "2025",
@@ -45,7 +45,7 @@ export default function FriseHistoire({
   return (
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
-        <div>
+        <div data-reveal="">
           <div
             style={{
               font: "600 11.5px var(--fb)",
@@ -134,7 +134,7 @@ export default function FriseHistoire({
               reste ouverte et suivie dans docs/RESERVES-CONTENU.md. */}
         </div>
 
-        <div
+        <div data-reveal=""
           style={{
             marginTop: 16,
             padding: "30px 34px",

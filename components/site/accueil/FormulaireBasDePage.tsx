@@ -6,7 +6,21 @@ import { FormulaireContact } from "@/components/formulaire/FormulaireContact";
 interface Proprietes {
   /** Identifiant d'analyse de la soumission, repris par HubSpot. */
   formulaire?: string;
+  /**
+   * Titre et introduction du bloc.
+   *
+   * Par défaut, la copie de la page d'accueil. Un gabarit dont la maquette
+   * écrit autre chose les fournit : la page expertises demande « Votre panne
+   * est à cheval sur deux métiers ? ». Les valeurs par défaut gardent les
+   * appelants existants inchangés.
+   */
+  titre?: string;
+  intro?: string;
 }
+
+const TITRE_ACCUEIL = "Décrivez la situation, on vous dit quelle offre tient.";
+const INTRO_ACCUEIL =
+  "Cinq lignes suffisent. Si aucune des cinq offres ne convient, nous le disons aussi.";
 
 const VERRE: CSSProperties = {
   borderRadius: 36,
@@ -20,6 +34,8 @@ const VERRE: CSSProperties = {
 
 export default function FormulaireBasDePage({
   formulaire = "accueil-bas-de-page",
+  titre = TITRE_ACCUEIL,
+  intro = INTRO_ACCUEIL,
 }: Proprietes) {
   return (
     // L'ancre sert les appels à l'action des sections du dessus. La marge de
@@ -60,7 +76,7 @@ export default function FormulaireBasDePage({
                   textWrap: "balance",
                 }}
               >
-                Décrivez la situation, on vous dit quelle offre tient.
+                {titre}
               </h2>
               <p
                 style={{
@@ -70,14 +86,12 @@ export default function FormulaireBasDePage({
                   maxWidth: "38ch",
                 }}
               >
-                Cinq lignes suffisent. Si aucune des cinq offres ne convient, nous
-                le disons aussi.
+                {intro}
               </p>
             </div>
             <div style={{ minWidth: 0 }}>
               <FormulaireContact
                 formulaire={formulaire}
-                engagement="Un chargé d’affaires vous rappelle dans l’heure."
               />
             </div>
           </div>

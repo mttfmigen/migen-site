@@ -134,7 +134,7 @@ export default function Hero() {
             </div>
             <div style={TRAIT} />
             <div>
-              <div style={VALEUR}>+200</div>
+              <div style={VALEUR}>+120</div>
               <div style={LIBELLE}>clients</div>
             </div>
           </div>
@@ -193,7 +193,6 @@ export default function Hero() {
                 sont ici dans le composant. */}
             <FormulaireContact
               formulaire="accueil-hero"
-              engagement="Un chargé d'affaires vous rappelle dans l’heure avec les premiers profils."
             />
           </div>
         </div>

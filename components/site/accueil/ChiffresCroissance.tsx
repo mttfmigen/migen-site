@@ -52,7 +52,7 @@ const TERTIAIRE: Chiffre = { valeur: "+120", libelle: "collaborateurs" };
 
 const BAS: readonly [Chiffre, Chiffre] = [
   { valeur: "+120", libelle: "collaborateurs" },
-  { valeur: "+200", libelle: "clients industriels" },
+  { valeur: "+120", libelle: "clients industriels" },
 ];
 
 /** Carte de verre, identique sur les trois. */

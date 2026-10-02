@@ -1,0 +1,30 @@
+/* Survols du gabarit des implantations. Un style en ligne ne peut pas porter
+   d'état : tout ce qui réagit au pointeur ou au clavier vit ici.
+   Les valeurs sont celles des attributs `style-hover` de la maquette. */
+
+/* `style-hover="filter:brightness(.93);transform:translateY(-1px)"` */
+.boutonAction:hover,
+.boutonAction:focus-visible {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  /* Le bouton est orange, le texte blanc : la règle globale `a:hover` le
+     passerait en orange sur orange. */
+  color: #fff;
+}
+
+/* `style-hover="background:var(--card)"` */
+.boutonSecondaire:hover,
+.boutonSecondaire:focus-visible {
+  background: var(--card);
+  color: var(--ink);
+}
+
+/* `style-hover="color:var(--acc)"` sur les liens de villes et de départements */
+.lienCouverture {
+  color: var(--ink1);
+  transition: color var(--tr);
+}
+.lienCouverture:hover,
+.lienCouverture:focus-visible {
+  color: var(--acc);
+}

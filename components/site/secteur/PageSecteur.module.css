@@ -1,0 +1,28 @@
+/* Survols du gabarit secteur. Rien d'autre : un style en ligne ne peut pas
+   porter d'état, et c'est la seule raison d'être de ce fichier.
+   Valeurs reprises des attributs `style-hover` de la maquette, lignes 5602 à
+   5757 de « Migen - Site final.dc.html ».
+
+   Le focus est traité avec le survol partout : un visiteur au clavier doit voir
+   la même chose qu'un visiteur à la souris (WCAG 2.4.7). La maquette ne le
+   prévoit pas, le site l'exige. */
+
+/* style-hover="filter:brightness(.93);transform:translateY(-1px)" */
+.boutonPrincipal:hover,
+.boutonPrincipal:focus-visible {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+}
+
+/* style-hover="background:var(--card)" */
+.boutonSecondaire:hover,
+.boutonSecondaire:focus-visible {
+  background: var(--card);
+}
+
+/* style-hover="background:var(--card);color:var(--acc)" */
+.puceLien:hover,
+.puceLien:focus-visible {
+  background: var(--card);
+  color: var(--acc);
+}

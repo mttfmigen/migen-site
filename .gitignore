@@ -49,3 +49,6 @@ next-env.d.ts
 .verif-tmp/
 *.tmp
 _sheet_tmp.*
+
+# La page autonome de la maquette : 24 Mo d'images en base64, hors dépôt.
+/maquette/accueil-autonome.html

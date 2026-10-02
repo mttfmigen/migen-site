@@ -24,8 +24,11 @@
   --fb: var(--font-poppins), var(--ft);
   --fs: var(--font-caveat), var(--fb);
 
-  --gl-a: 0.62;
-  --gl-b: 22px;
+  /* Opacité et flou du verre dépoli. Valeurs RENDUES par la maquette, relevées
+     au getComputedStyle sur onze surfaces, et non celles de son bloc :root, qui
+     sont arrondies. L'écart se voit sur les grandes cartes. */
+  --gl-a: 0.582;
+  --gl-b: 22.5px;
 
   /* Orange de marque et ses dérivés */
   --acc: #ff7c3c;

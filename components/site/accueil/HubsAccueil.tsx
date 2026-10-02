@@ -125,10 +125,12 @@ export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
         </Link>
       </div>
 
-      {/* Rail à défilement horizontal. La maquette duplique la liste pour un
-          défilement automatique piloté en JS : sans ce moteur, la duplication
-          ne produirait que des liens en double. Le rail reste parcourable à la
-          souris, au doigt et au clavier (le focus y fait défiler). */}
+      {/* Rail à défilement horizontal. La liste est écrite DEUX FOIS, comme la
+          maquette (3834 px de défilement pour 1280 px visibles) : le moteur de
+          `components/site/Moteurs.tsx` revient à zéro quand il atteint la fin,
+          et sans ce second exemplaire la coupure se voit. Le doublon est
+          décoratif, d'où `aria-hidden` et `tabIndex={-1}` : même traitement que
+          `MarqueeClients`, rien n'est annoncé ni atteint deux fois. */}
       <div
         className="mg-autorail"
         style={{
@@ -139,77 +141,81 @@ export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
           padding: "0 40px",
         }}
       >
-        {hubs.map((hub) => (
-          <Link
-            key={hub.chemin}
-            href={hub.chemin}
-            className={styles.carte}
-            style={{
-              position: "relative",
-              flex: "none",
-              width: 300,
-              height: 400,
-              borderRadius: "var(--rad)",
-              overflow: "hidden",
-              background: "#1c1b19",
-              transition: "transform var(--tr)",
-            }}
-          >
-            <Image
-              src={hub.image}
-              alt=""
-              fill
-              sizes="(max-width: 760px) 86vw, 320px"
+        {[0, 1].flatMap((passe) =>
+          hubs.map((hub) => (
+            <Link
+              key={`${hub.chemin}-${passe}`}
+              href={hub.chemin}
+              className={styles.carte}
+              aria-hidden={passe === 1 || undefined}
+              tabIndex={passe === 1 ? -1 : undefined}
               style={{
-                objectFit: "cover",
-                display: "block",
-                filter: "saturate(var(--sat)) contrast(1.04)",
+                position: "relative",
+                flex: "none",
+                width: 300,
+                height: 400,
+                borderRadius: "var(--rad)",
+                overflow: "hidden",
+                background: "#1c1b19",
+                transition: "transform var(--tr)",
               }}
-            />
-            <div style={PANCARTE}>
-              <span
+            >
+              <Image
+                src={hub.image}
+                alt=""
+                fill
+                sizes="(max-width: 760px) 86vw, 320px"
                 style={{
-                  display: "inline-flex",
-                  padding: "5px 11px",
-                  borderRadius: 999,
-                  background: "#fff",
-                  color: "#ff7c3c",
-                  font: "600 12px var(--fb)",
-                  marginBottom: 10,
+                  objectFit: "cover",
+                  display: "block",
+                  filter: "saturate(var(--sat)) contrast(1.04)",
                 }}
-              >
-                {hub.ville}
-              </span>
-              <div
-                style={{
-                  font: "600 19px/1.25 var(--ft)",
-                  letterSpacing: "-.02em",
-                  color: "#fff",
-                }}
-              >
-                {hub.titre}
+              />
+              <div style={PANCARTE}>
+                <span
+                  style={{
+                    display: "inline-flex",
+                    padding: "5px 11px",
+                    borderRadius: 999,
+                    background: "#fff",
+                    color: "#ff7c3c",
+                    font: "600 12px var(--fb)",
+                    marginBottom: 10,
+                  }}
+                >
+                  {hub.ville}
+                </span>
+                <div
+                  style={{
+                    font: "600 19px/1.25 var(--ft)",
+                    letterSpacing: "-.02em",
+                    color: "#fff",
+                  }}
+                >
+                  {hub.titre}
+                </div>
+                <div
+                  style={{
+                    font: "400 13px/1.45 var(--fb)",
+                    color: "rgba(255,255,255,.78)",
+                    marginTop: 4,
+                  }}
+                >
+                  {hub.couverture}
+                </div>
+                <div
+                  style={{
+                    font: "600 13px var(--fb)",
+                    color: "#ff7c3c",
+                    marginTop: 10,
+                  }}
+                >
+                  Voir le hub &rarr;
+                </div>
               </div>
-              <div
-                style={{
-                  font: "400 13px/1.45 var(--fb)",
-                  color: "rgba(255,255,255,.78)",
-                  marginTop: 4,
-                }}
-              >
-                {hub.couverture}
-              </div>
-              <div
-                style={{
-                  font: "600 13px var(--fb)",
-                  color: "#ff7c3c",
-                  marginTop: 10,
-                }}
-              >
-                Voir le hub &rarr;
-              </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          )),
+        )}
       </div>
     </section>
   );

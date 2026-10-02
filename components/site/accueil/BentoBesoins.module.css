@@ -23,10 +23,14 @@
     /* En tête : une tuile dépliée au milieu d'une grille pousse ses voisines
        hors de l'écran, et le lecteur perd ce qu'il venait d'ouvrir. */
     order: -1;
-    background: var(--card);
+    /* `!important` : la tuile porte son fond de repos en style en ligne, venu
+       des données de la maquette, et un style en ligne bat toute règle de
+       feuille. Même raison que pour la pastille plus bas. */
+    background: var(--card) !important;
+    border-color: var(--gbd) !important;
     box-shadow:
       0 1px 1px rgba(0, 0, 0, 0.04),
-      0 26px 60px -34px rgba(0, 0, 0, 0.34);
+      0 26px 60px -36px rgba(0, 0, 0, 0.34);
   }
 }
 
@@ -43,8 +47,10 @@
    porte son apparence de repos en style EN LIGNE, venu des données de la
    maquette, et un style en ligne bat toute règle de feuille. Sans la marque,
    la croix ne tournerait jamais. */
+/* SEULE LA ROTATION change. La maquette garde la pastille dans ses couleurs de
+   repos quand la tuile est ouverte : la passer en orange plein était une
+   extrapolation, faite par analogie avec la FAQ, où la maquette le fait
+   vraiment. Ici elle ne le fait pas. */
 [data-open="1"] .signe {
   transform: rotate(45deg) !important;
-  background: var(--acc) !important;
-  color: #fff !important;
 }

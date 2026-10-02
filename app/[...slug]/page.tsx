@@ -6,7 +6,13 @@ import Maillage from "@/components/cocon/Maillage";
 import FormulaireBasDePage from "@/components/site/accueil/FormulaireBasDePage";
 import Article from "@/components/site/article/Article";
 import Bloc from "@/components/site/blocs/Bloc";
+import PageCasClients from "@/components/site/casclients/PageCasClients";
 import PageEditoriale from "@/components/site/editorial/PageEditoriale";
+import PageImplantations from "@/components/site/implantations/PageImplantations";
+import PageExpertises from "@/components/site/expertises/PageExpertises";
+import PageFiche from "@/components/site/fiche/PageFiche";
+import PageMetier from "@/components/site/metier/PageMetier";
+import PageSecteur from "@/components/site/secteur/PageSecteur";
 import {
   articleParChemin,
   cheminCanonique,
@@ -16,8 +22,14 @@ import {
 } from "@/lib/contenu";
 import { metadonneesSeo } from "@/lib/seo/metadonnees";
 import type { ContenuArticle } from "@/types/article";
+import { estCasClients } from "@/types/casclients";
 import type { ContenuPage, Section } from "@/types/contenu";
 import { estEditorial } from "@/types/editorial";
+import { estImplantations } from "@/types/implantations";
+import { estExpertises } from "@/types/expertises";
+import { estFiche } from "@/types/fiche";
+import { estMetierOuDomaine } from "@/types/metier";
+import { estSecteur } from "@/types/secteur";
 
 /**
  * Route attrape-tout du cocon : toute URL hiérarchique passe par ici.
@@ -145,10 +157,10 @@ export default async function PageDuCocon({
 
   const { page } = complete;
 
-  // Deux gabarits cohabitent dans `pages.contenu` : celui de vente, en dix
-  // sections, et l'éditorial, en blocs suivis. On tranche sur ce que le jsonb
-  // porte réellement, pas sur ce qu'un type déclare : il sort de la base en
-  // `unknown`.
+  // Trois gabarits cohabitent dans `pages.contenu` : celui de vente, en dix
+  // sections, l'éditorial, en blocs suivis, et celui de secteur, juste en
+  // dessous. On tranche sur ce que le jsonb porte réellement, pas sur ce qu'un
+  // type déclare : il sort de la base en `unknown`.
   if (estEditorial(page.contenu)) {
     return (
       <PageEditoriale
@@ -163,6 +175,136 @@ export default async function PageDuCocon({
             <Maillage page={page} />
           </>
         }
+      />
+    );
+  }
+
+  // Le gabarit secteur, pour `/secteurs/<secteur>/` et
+  // `/implantations/<ville>/<departement>/` : hero avec ses repères, enjeux du
+  // terrain, territoire couvert, pages sœurs, appel. Ces pages ancrent, elles
+  // ne vendent pas une offre : le gabarit de vente y annonçait une prestation
+  // là où le visiteur cherche un secteur ou un département.
+  if (estSecteur(page.contenu)) {
+    return (
+      <PageSecteur
+        titre={page.titre_h1}
+        contenu={page.contenu}
+        filAriane={<FilAriane path={page.path} />}
+        maillage={
+          <>
+            <FormulaireBasDePage
+              formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+            />
+            <div
+              style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}
+            >
+              <Maillage page={page} />
+            </div>
+          </>
+        }
+      />
+    );
+  }
+
+  // Les gabarits MÉTIER et DOMAINE, pour `/carriere/<metier>/` et
+  // `/expertises/<domaine>/`. Une fiche métier n'a ni punchline, ni duo
+  // prestation-bénéfice, ni garanties : pliée au gabarit de vente, elle
+  // annonçait une offre là où le visiteur cherche un poste ou une compétence.
+  if (estMetierOuDomaine(page.contenu)) {
+    return (
+      <PageMetier
+        titre={page.titre_h1}
+        contenu={page.contenu}
+        filAriane={<FilAriane path={page.path} />}
+        maillage={
+          <>
+            <FormulaireBasDePage
+              formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+            />
+            <div
+              style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}
+            >
+              <Maillage page={page} />
+            </div>
+          </>
+        }
+      />
+    );
+  }
+
+  // Troisième gabarit : la fiche de cas client, les 28 pages /preuves/<client>/.
+  // Elle porte son champ discriminant `gabarit: "fiche"`, contrairement au
+  // gabarit de vente qui n'en a pas : c'est donc à elle de se reconnaître,
+  // avant que le repli ne s'applique.
+  if (estFiche(page.contenu)) {
+    return (
+      <PageFiche
+        titre={page.titre_h1}
+        contenu={page.contenu}
+        filAriane={<FilAriane path={page.path} />}
+        maillage={
+          <>
+            <FormulaireBasDePage
+              formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+            />
+            <div
+              style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}
+            >
+              <Maillage page={page} />
+            </div>
+          </>
+        }
+      />
+    );
+  }
+
+  // Gabarit EXPERTISES, pour le hub `/expertises/` : héros à deux colonnes,
+  // six natures d'intervention, répartition des heures en barres, neuf
+  // domaines, spécialisations constructeur, secteurs, habilitations. Le gabarit
+  // de vente ne sait rendre aucune de ces sections. On tranche sur le champ
+  // `gabarit` du jsonb, jamais sur le chemin : une page se déclare par son
+  // contenu, et une page fille de la branche peut très bien être une fiche de
+  // domaine rendue par `PageMetier` juste au-dessus.
+  if (estExpertises(page.contenu)) {
+    return (
+      <PageExpertises
+        titre={page.titre_h1}
+        contenu={page.contenu}
+        formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+        filAriane={<FilAriane path={page.path} />}
+        maillage={<Maillage page={page} />}
+      />
+    );
+  }
+
+  // Le gabarit IMPLANTATIONS, pour `/implantations/` et celles de ses 42 pages
+  // filles dont le corpus écrit ce discriminant : hero avec sa carte, cartes
+  // d'agences, panneau international, maillage de villes et de départements.
+  // Ces pages répondent à « depuis où intervenez-vous », elles ne vendent pas
+  // une offre : le gabarit de vente leur imposait punchline et garanties.
+  if (estImplantations(page.contenu)) {
+    return (
+      <PageImplantations
+        titre={page.titre_h1}
+        contenu={page.contenu}
+        formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+        filAriane={<FilAriane path={page.path} />}
+        maillage={<Maillage page={page} />}
+      />
+    );
+  }
+
+  // Troisième gabarit : la page de preuve. Elle porte ses chantiers, ses
+  // chiffres et ses avis, et son propre formulaire en bas, si bien que la route
+  // ne lui ajoute ni appel à l'action ni section de contact.
+  if (estCasClients(page.contenu)) {
+    return (
+      <PageCasClients
+        titre={page.titre_h1}
+        contenu={page.contenu}
+        formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+        filAriane={<FilAriane path={page.path} />}
+        maillage={<Maillage page={page} />}
       />
     );
   }

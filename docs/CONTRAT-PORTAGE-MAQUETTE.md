@@ -1,5 +1,12 @@
 # Contrat de portage de la maquette Claude Design vers Next.js
 
+> **02/10, la maquette est en local.** Mehdi a fourni la page autonome ; le HTML
+> rendu, styles en ligne compris, est versionné dans `maquette/accueil-rendu.html`
+> (voir `maquette/LISEZ-MOI.md`). On ne lit plus la maquette à travers le MCP,
+> 50 lignes à la fois : on la lit avec `grep` et `sed`, et les contrôles la
+> comparent au rendu des composants. Toute valeur attendue dans un contrôle doit
+> venir de ce fichier, pas d'une note de lecture.
+
 Lu par chaque agent avant d'écrire une ligne. Ce qui est écrit ici prime sur
 toute habitude de framework.
 

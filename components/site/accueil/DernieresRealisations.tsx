@@ -52,7 +52,7 @@ export default function DernieresRealisations({
   return (
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
-        <div
+        <div data-reveal=""
           style={{
             display: "flex",
             alignItems: "flex-end",
@@ -100,7 +100,7 @@ export default function DernieresRealisations({
         </div>
 
         <div
-          className="mg-rmulti"
+          data-reveal="" className="mg-rmulti"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3,1fr)",

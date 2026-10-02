@@ -1,42 +1,54 @@
 /* La bascule « Avant / Avec ». Son état vit dans le composant : son habillage
-   ne peut donc pas venir des données comme le reste de la section. Le motif
-   repris est celui du groupe de pilules de la navigation de la maquette
-   (fond de verre, pilule active en blanc posée dessus). */
+   ne peut donc pas venir des données comme le reste de la section.
+
+   Valeurs relevées dans `maquette/accueil-rendu.html` : `baToggleCss`
+   (l. 8701-8703) pour l'enveloppe, `baTab(active)` (l. 8664-8668) pour les
+   deux segments. La maquette ne pose ni bordure, ni `gap`, ni `align-items` :
+   les segments s'étirent, et c'est leur hauteur qui donne les 67px de
+   l'enveloppe. Pas de règle de survol non plus, le `cursor` fait l'affordance.
+
+   Le fond de l'enveloppe suit le canevas : lavis anthracite derrière la vue
+   « avant », blanc derrière la vue « avec ». Littéraux, comme dans la
+   maquette, parce qu'un canevas impose sa peau au lieu de suivre le thème. */
 .onglets {
   display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  padding: 5px;
-  margin-bottom: 20px;
+  padding: 6px;
+  margin-bottom: 26px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, var(--gl-a));
-  backdrop-filter: blur(var(--gl-b)) saturate(150%);
-  -webkit-backdrop-filter: blur(var(--gl-b)) saturate(150%);
-  border: 1px solid var(--gbd);
+  background-color: #f4f3f1;
+  box-shadow: 0 12px 30px -14px rgba(0, 0, 0, 0.5);
+}
+
+.onglets[data-vue="avec"] {
+  background-color: #fff;
 }
 
 .onglet {
   appearance: none;
-  border: 0;
+  border: none;
   margin: 0;
-  padding: 10px 18px;
+  padding: 15px 30px;
   border-radius: 999px;
-  background: none;
-  color: var(--ink1);
-  font: 500 14.5px var(--fb);
+  background-color: transparent;
+  color: #1c1b19;
+  font: 600 calc(16.5px * var(--ts)) var(--fb);
+  letter-spacing: -0.01em;
   white-space: nowrap;
   cursor: pointer;
-  transition:
-    background var(--tr),
-    color var(--tr);
-}
-
-.onglet:hover {
-  color: var(--ink);
 }
 
 .onglet[aria-pressed="true"] {
-  background: #fff;
-  color: var(--ink);
-  box-shadow: 0 2px 8px rgba(28, 27, 25, 0.1);
+  background-color: #ff7c3c;
+  color: #fff;
+  box-shadow: 0 8px 22px -10px rgba(255, 124, 60, 0.9);
+}
+
+/* Cascade de la mosaïque (`baTiles`, l. 8720-8723). Le retard par tuile est
+   posé en ligne : il dépend du rang. Les durées, elles, sont les mêmes pour
+   les six, et le `prefers-reduced-motion` global d'`app/globals.css` les
+   ramène à zéro. */
+.carte {
+  transition:
+    opacity 260ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }

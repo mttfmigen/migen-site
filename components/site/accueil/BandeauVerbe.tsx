@@ -19,8 +19,8 @@ import Image from "next/image";
  */
 export const VERBES = ["installe", "maintient", "répare", "dépanne"] as const;
 
-/** Cadence de la maquette, reprise de son défilement : un verbe toutes les 2,6 s. */
-const CADENCE_MS = 2600;
+/** Cadence de la maquette : `setInterval(..., 2200)` dans son montage. */
+const CADENCE_MS = 2200;
 
 /**
  * Le verbe à afficher maintenant.

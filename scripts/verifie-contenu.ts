@@ -1,5 +1,7 @@
 /**
- * Contrôle du contenu extrait contre le contrat de `types/contenu.ts`.
+ * Contrôle du contenu extrait contre le contrat des types, gabarit par gabarit :
+ * `types/contenu.ts` pour les pages de vente, `types/fiche.ts` pour les fiches
+ * de cas client.
  *
  *   bun scripts/verifie-contenu.ts
  *
@@ -17,13 +19,21 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 
 import type { Section } from "@/types/contenu";
+import { estFiche, type ContenuFiche } from "@/types/fiche";
 
 const CHEMIN = "supabase/import/corpus-analyse.json";
+const CHEMIN_FICHES = "supabase/import/fiches-analyse.json";
 
 interface Analyse {
   url: string;
   fichier: string;
   contenu: { sections: Section[] };
+}
+
+interface AnalyseFiche {
+  url: string;
+  fichier: string;
+  contenu: ContenuFiche;
 }
 
 type Verificateur = (s: Record<string, unknown>, ou: string) => void;
@@ -108,6 +118,60 @@ const VERIFICATEURS: Record<Section["type"], Verificateur> = {
   ctaFinal: (s, ou) => VERIFICATEURS.cta(s, ou),
 };
 
+/**
+ * Le gabarit FICHE, section par section de `types/fiche.ts`.
+ *
+ * Deux familles de champs, et la distinction compte : `chapeau`, `contexte`,
+ * `intervention` et `surtitre` passent par `TexteRiche`, qui rend le gras et
+ * les liens internes ; `fiche[]` et `resultats[]` sont rendus en texte BRUT par
+ * `PageFiche.tsx`. Un `**` ou un `](` qui s'y glisserait s'afficherait tel quel
+ * au visiteur, sans erreur ni avertissement. C'est ce que ce contrôle attrape.
+ */
+const MARQUEUR_MARKDOWN = /\*\*|\]\(/;
+
+function brut(v: unknown, ou: string): void {
+  assert.ok(typeof v === "string", `${ou} : chaîne attendue`);
+  assert.doesNotMatch(v as string, MARQUEUR_MARKDOWN, `${ou} : marqueur Markdown dans un champ rendu brut`);
+}
+
+function fiche(contenu: unknown, ou: string): void {
+  assert.ok(estFiche(contenu), `${ou} : discriminant gabarit: "fiche" attendu`);
+  // Le garde a réduit `contenu` au type déclaré ; on repasse par `unknown` pour
+  // lire chaque champ tel qu'il est, pas tel que le type le promet.
+  const c = contenu as unknown as Record<string, unknown>;
+  for (const champ of ["surtitre", "chapeau", "contexte", "intervention"]) {
+    if (c[champ] !== undefined) {
+      assert.ok(estChaine(c[champ]), `${ou}.${champ} : chaîne non vide attendue si présent`);
+    }
+  }
+  if (c.fiche !== undefined) {
+    liste(c.fiche, `${ou}.fiche`, (l, o) => {
+      const ligne = l as Record<string, unknown>;
+      brut(ligne.libelle, `${o}.libelle`);
+      brut(ligne.valeur, `${o}.valeur`);
+      assert.ok(estChaine(ligne.libelle) && estChaine(ligne.valeur), `${o} : libellé et valeur non vides attendus`);
+    });
+  }
+  if (c.images !== undefined) {
+    liste(c.images, `${ou}.images`, (im, o) => {
+      const image = im as Record<string, unknown>;
+      assert.ok(
+        typeof image.src === "string" && image.src.startsWith("/"),
+        `${o}.src : chemin public attendu, reçu ${String(image.src)}`,
+      );
+      if (image.alt !== undefined) assert.ok(typeof image.alt === "string", `${o}.alt : chaîne attendue`);
+    });
+  }
+  if (c.resultats !== undefined) {
+    liste(c.resultats, `${ou}.resultats`, (r, o) => {
+      const chiffre = r as Record<string, unknown>;
+      brut(chiffre.valeur, `${o}.valeur`);
+      brut(chiffre.libelle, `${o}.libelle`);
+      assert.ok(estChaine(chiffre.valeur), `${o}.valeur : chaîne non vide attendue`);
+    });
+  }
+}
+
 const analyses = JSON.parse(readFileSync(CHEMIN, "utf8")) as Analyse[];
 const echecs: string[] = [];
 let nbSections = 0;
@@ -129,7 +193,16 @@ for (const a of analyses) {
   }
 }
 
-console.log(`${analyses.length} pages, ${nbSections} sections contrôlées`);
+const fiches = JSON.parse(readFileSync(CHEMIN_FICHES, "utf8")) as AnalyseFiche[];
+for (const f of fiches) {
+  try {
+    fiche(f.contenu, `${f.url || f.fichier} (fiche)`);
+  } catch (erreur) {
+    echecs.push(erreur instanceof Error ? erreur.message : String(erreur));
+  }
+}
+
+console.log(`${analyses.length} pages, ${nbSections} sections contrôlées · ${fiches.length} fiches contrôlées`);
 if (echecs.length > 0) {
   console.error(`\n${echecs.length} ÉCARTS AU CONTRAT :\n`);
   // Un échec par motif suffit à corriger : on regroupe pour ne pas noyer.

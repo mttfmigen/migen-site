@@ -19,6 +19,7 @@ export const CHAMPS_CONTACT = [
   "prenom",
   "nom",
   "email",
+  "indicatif",
   "telephone",
   "message",
 ] as const;
@@ -29,11 +30,34 @@ export type Contact = Record<ChampContact, string>;
 
 export type Erreurs = Partial<Record<ChampContact | "formulaire", string>>;
 
+/**
+ * Indicatifs proposés, dans l'ordre de la maquette.
+ *
+ * C'est une liste FERMÉE, et c'est ce qui la rend utile : le champ arrive du
+ * navigateur comme tous les autres, donc la route le revalide contre cette même
+ * liste. Un indicatif inventé est refusé plutôt que concaténé au numéro et
+ * poussé dans HubSpot. Les six pays sont ceux que la maquette propose, qui
+ * couvrent les quatre agences et leurs voisins francophones.
+ */
+export const INDICATIFS = [
+  { code: "+33", libelle: "FR +33" },
+  { code: "+32", libelle: "BE +32" },
+  { code: "+41", libelle: "CH +41" },
+  { code: "+34", libelle: "ES +34" },
+  { code: "+1", libelle: "CA +1" },
+  { code: "+971", libelle: "AE +971" },
+] as const;
+
+const CODES_CONNUS: ReadonlySet<string> = new Set(
+  INDICATIFS.map((i) => i.code),
+);
+
 export const CONTACT_VIDE: Contact = {
   entreprise: "",
   prenom: "",
   nom: "",
   email: "",
+  indicatif: INDICATIFS[0].code,
   telephone: "",
   message: "",
 };
@@ -44,12 +68,22 @@ const LONGUEURS: Record<ChampContact, number> = {
   prenom: 60,
   nom: 60,
   email: 180,
+  indicatif: 5,
   telephone: 30,
   message: 2000,
 };
 
-/** Le message reste optionnel : un industriel en panne appelle, il ne rédige pas. */
-const OPTIONNELS: ReadonlySet<ChampContact> = new Set<ChampContact>(["message"]);
+/* Aucun champ optionnel, et c'est l'UNIQUE endroit où cela se décide : le
+   formulaire lit cet ensemble pour poser `required`, et la validation le lit
+   pour exiger une valeur. Le formulaire portait sa propre liste, les deux ont
+   divergé, et un champ s'est retrouvé obligatoire à la validation sans l'être à
+   la saisie.
+
+   Aucun champ optionnel : la maquette validée marque les six visibles
+   `required`, message compris. Le message était optionnel ici, par une décision
+   prise sans la maquette sous les yeux (« un industriel en panne appelle, il ne
+   rédige pas ») ; la maquette tranche, et c'est elle qui fait foi. */
+export const OPTIONNELS: ReadonlySet<ChampContact> = new Set<ChampContact>();
 
 /** Validation suffisante côté formulaire : seul l'envoi réel prouve qu'une adresse existe. */
 const FORME_EMAIL = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
@@ -65,6 +99,7 @@ const LIBELLES: Record<ChampContact, string> = {
   prenom: "Prénom",
   nom: "Nom",
   email: "Adresse e-mail",
+  indicatif: "Indicatif",
   telephone: "Téléphone",
   message: "Message",
 };
@@ -92,12 +127,26 @@ export function valideContact(contact: Contact): Erreurs {
     erreurs.email = "Adresse e-mail : le format attendu est nom@domaine.fr.";
   }
 
+  if (!erreurs.indicatif && !CODES_CONNUS.has(contact.indicatif.trim())) {
+    erreurs.indicatif = "Indicatif : choisissez un pays dans la liste.";
+  }
+
   const telephone = contact.telephone.trim();
   if (telephone && !erreurs.telephone && !FORME_TELEPHONE.test(telephone)) {
     erreurs.telephone = "Téléphone : au moins neuf chiffres, indicatif accepté.";
   }
 
   return erreurs;
+}
+
+/**
+ * Le numéro tel qu'il part vers HubSpot : indicatif, espace, numéro.
+ *
+ * Une seule fonction, appelée par la route, pour que la forme du numéro ne
+ * dépende pas de la façon dont le visiteur a tapé autour.
+ */
+export function numeroComplet(contact: Contact): string {
+  return `${contact.indicatif.trim()} ${contact.telephone.trim()}`.trim();
 }
 
 export function aDesErreurs(erreurs: Erreurs): boolean {
