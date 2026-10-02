@@ -1,0 +1,27 @@
+/*
+ * Survol et focus des cartes du maillage interne.
+ *
+ * Ils vivent ici et non dans `app/globals.css` : plusieurs agents écrivent en
+ * parallèle, un fichier partagé produirait des conflits. La valeur est celle de
+ * l'attribut `style-hover` de la maquette, `maquette/accueil-rendu.html`
+ * ligne 2683, recopiée.
+ */
+
+.carte:hover {
+  transform: translateY(-3px);
+}
+
+/*
+ * Le même soulèvement au clavier, que la maquette n'avait pas à prévoir : sa
+ * navigation se faisait à la souris. L'anneau de focus global
+ * (`:focus-visible { outline: 2px solid var(--acc) }`) reste la marque visible,
+ * celle-ci lui donne le même relief qu'au survol, pour que l'on voie où on est
+ * dans une grille de six cartes identiques.
+ *
+ * Le rayon de la carte survit à l'anneau : la règle globale pose aussi
+ * `border-radius: 4px` sur l'élément focalisé, et `border-radius: var(--rad-s)`
+ * est en style en ligne sur la carte, donc il gagne. Rien à forcer ici.
+ */
+.carte:focus-visible {
+  transform: translateY(-3px);
+}

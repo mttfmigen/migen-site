@@ -1,4 +1,14 @@
+import type { CSSProperties } from "react";
+
+import {
+  ANCRE_FORMULAIRE,
+  BOUTON_ACTION,
+  LUEUR,
+  PANNEAU,
+} from "@/components/site/blocs/habillage";
 import type { TypeCta } from "@/types/lignes";
+
+import styles from "./AppelAction.module.css";
 
 /**
  * Appel à l'action de fin de page.
@@ -7,6 +17,15 @@ import type { TypeCta } from "@/types/lignes";
  * même chose qu'une page de recrutement. Aucun délai chiffré ni aucune
  * promesse commerciale n'est écrit ici, ce sont des interdits de rédaction du
  * projet.
+ *
+ * Habillage : le panneau anthracite à lueur orange qui ferme les sections dans
+ * la maquette. Chaque valeur est relevée dans `maquette/accueil-rendu.html` :
+ * le panneau et son remplissage ligne 5333, la rangée flexible et l'échelle du
+ * titre ligne 2676, la marge d'un encart posé dans le flux ligne 2801, la lueur
+ * ligne 4851. Les constantes partagées de `blocs/habillage.ts` portent déjà ces
+ * déclarations, elles ne sont pas redéclarées ici.
+ *
+ * Composant SERVEUR : rien n'y est interactif, le survol est en CSS.
  */
 const APPELS: Record<TypeCta, { titre: string; bouton: string }> = {
   devis: { titre: "Chiffrer votre besoin", bouton: "Demander un devis" },
@@ -28,17 +47,50 @@ const APPELS: Record<TypeCta, { titre: string; bouton: string }> = {
   },
 };
 
+/**
+ * Le remplissage reste écrit `40px 44px` et le rayon reste `var(--rad)` :
+ * `app/globals.css` rattrape l'un et l'autre sous 760px par des sélecteurs
+ * d'attribut (`[style*="padding:40px 44px"]`). Une autre valeur, même proche,
+ * laisserait 88px de gouttière sur un téléphone de 320px.
+ */
+const ENCART: CSSProperties = {
+  ...PANNEAU,
+  padding: "40px 44px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  gap: 36,
+  flexWrap: "wrap",
+  margin: "36px 0",
+};
+
+const TITRE: CSSProperties = {
+  font: "600 calc(clamp(24px,2.8vw,38px) * var(--ts))/1.12 var(--ft)",
+  letterSpacing: "-.04em",
+  color: "#fff",
+  margin: 0,
+  maxWidth: "22ch",
+  textWrap: "balance",
+};
+
 export default function AppelAction({ cta }: { cta: TypeCta }) {
   const appel = APPELS[cta];
 
   return (
-    <aside className="mt-12 rounded-xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900">
-      <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+    <aside style={ENCART}>
+      {/* La lueur est décorative et ne doit jamais capter le pointeur :
+          `LUEUR` porte `pointer-events: none`, sans quoi elle recouvrirait le
+          coin bas droit du bouton. */}
+      <div aria-hidden="true" style={LUEUR} />
+
+      <h2 style={{ ...TITRE, position: "relative", flex: 1, minWidth: 280 }}>
         {appel.titre}
       </h2>
+
       <a
-        href="#formulaire"
-        className="mt-4 inline-flex h-11 items-center rounded-full bg-zinc-900 px-5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+        href={ANCRE_FORMULAIRE}
+        className={styles.boutonAction}
+        style={{ ...BOUTON_ACTION, position: "relative", flex: "none" }}
       >
         {appel.bouton}
       </a>

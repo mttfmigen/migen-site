@@ -1,0 +1,85 @@
+/*
+ * États du fil d'Ariane. Ils vivent ici et non dans `app/globals.css` : cinq
+ * agents écrivent en parallèle, un fichier partagé produirait des conflits.
+ *
+ * Les valeurs viennent de `maquette/accueil-rendu.html`, lignes 2460, 2717 et
+ * 2880, à deux exceptions documentées dans `FilAriane.tsx` : la couleur des
+ * niveaux et celle du survol, qui ne tenaient pas les 4,5:1 de la WCAG 1.4.3
+ * sur le fond réel du site.
+ *
+ * La couleur accompagne ici son survol au lieu de rester en style en ligne : un
+ * style en ligne React gagne contre toute règle CSS, le `:hover` n'aurait jamais
+ * pris. Aucun `!important` n'est donc nécessaire, la convention du projet ne
+ * sert que lorsqu'il reste un style en ligne à battre.
+ */
+
+/* ------------------------------------------------------- niveaux parcourus */
+
+/*
+ * --ink2 (#6a6764) au lieu du --ink4 (#a8a49d) de la maquette : sur --bg
+ * (#f1f2f4), --ink4 donne 2,21:1 et --ink2 5,02:1. Le séparateur « / », lui,
+ * hérite du --ink4 posé sur la rangée : il est décoratif et `aria-hidden`, donc
+ * hors du critère, et la maquette y est reproduite à l'identique.
+ *
+ * Même classe pour un lien et pour un niveau sans page publiée : ils se lisent
+ * pareil. Seul le survol est qualifié par `a`, pour qu'un niveau inerte ne
+ * fasse jamais mine d'être cliquable.
+ */
+.niveau {
+  color: var(--ink2);
+}
+
+/*
+ * --acc-ink (#7d3309, 7,98:1) au lieu du --acc (#ff7c3c, 2,29:1) du
+ * `style-hover` de la maquette. C'est l'orange que la maquette emploie
+ * elle-même pour un lien sur fond clair, ligne 1081.
+ *
+ * Le soulignement double le signal : l'état de survol ne repose pas sur la
+ * seule couleur, et il reste lisible pour qui ne distingue pas ces deux oranges.
+ */
+a.niveau:hover {
+  color: var(--acc-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---------------------------------------------------------- page courante */
+
+/*
+ * La maquette ne pose que `color:var(--ink1)` (8,13:1). Le poids 500 s'y ajoute
+ * parce que l'écart de couleur avec les autres niveaux s'est resserré en passant
+ * de --ink4 à --ink2 : la page courante doit rester reconnaissable sans
+ * dépendre d'une nuance. Le couple « 500 + --ink1 » est un motif que la maquette
+ * porte déjà, ligne 1074.
+ */
+.courant {
+  font-weight: 500;
+  color: var(--ink1);
+}
+
+/* ------------------------------------------------------ cibles tactiles */
+
+/*
+ * Sur téléphone, les niveaux cliquables atteignent 24 px de haut.
+ *
+ * POURQUOI : à 13 px, la boîte de ligne de Poppins mesure 20 px, et les niveaux
+ * sont collés à leur séparateur. Le critère 2.5.8 de la WCAG 2.2, niveau AA,
+ * demande 24 px. Le fil d'Ariane est rendu sur CHAQUE page de contenu, en haut
+ * d'écran : c'est par lui qu'un visiteur remonte d'un niveau, au pouce.
+ *
+ * Le remplissage plutôt que la hauteur, comme dans
+ * `components/site/PiedDePage.module.css` : il agrandit la zone de contact sans
+ * déplacer le texte ni changer l'interligne, donc sans toucher au dessin de la
+ * maquette sur grand écran, où la règle ne s'applique pas.
+ *
+ * 20 + 2 x 3 = 26 px. Mesuré sur `/expertises/` dans Chrome, et non déduit :
+ * 19 px au repos à 1440 px de large, 26 px à 375 px, `inline-block`,
+ * remplissage 3px/3px. Les 2 px de marge au-dessus du seuil sont voulus, pour
+ * que la règle tienne si les métriques de la police varient.
+ */
+@media (max-width: 880px) {
+  a.niveau {
+    display: inline-block;
+    padding: 3px 0;
+  }
+}

@@ -1,0 +1,32 @@
+/*
+ * Survols du détail par finalité.
+ *
+ * Ils vivent ici et non dans `app/globals.css` : plusieurs agents écrivent en
+ * parallèle, un fichier partagé produirait des conflits (contrat, règle 3).
+ * Les valeurs sont celles de la maquette, `maquette/accueil-rendu.html`.
+ */
+
+/* Rangée cliquable, survol neutre de la maquette (ligne 953 :
+   `style-hover="background:var(--chip)"`).
+
+   Le `--chip` ne teinte QUE la bande de l'intitulé, qui ne porte que du
+   `var(--ink)` : mesuré, 15,44:1 sur `--chip` au-dessus de `--card`. La
+   description et les destinataires, en `var(--ink2)`, restent en dehors de la
+   bande et gardent leur 5,62:1 sur `--card`. Teinter toute la rangée aurait
+   ramené la mention à 5,04:1, encore conforme, mais sans aucun gain : c'est
+   l'élément cliquable qu'il faut désigner, pas le paragraphe. */
+.bascule:hover {
+  background: var(--chip);
+}
+
+/* Lien de la politique de confidentialité, style de la maquette ligne 2468.
+
+   POURQUOI CETTE RÈGLE EXISTE : `app/globals.css` applique `a:hover { color:
+   var(--acc) }` à tous les liens du site. L'orange de marque mesure 2,56:1 sur
+   `var(--card)`, très loin des 4,5:1 : au survol, le lien deviendrait illisible.
+   On garde donc `--acc-ink` (8,94:1) et le survol se voit sur le soulignement,
+   qui passe de l'orange de marque à l'orange sombre. */
+.lien:hover {
+  color: var(--acc-ink);
+  text-decoration-color: var(--acc-ink);
+}

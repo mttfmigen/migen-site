@@ -1,0 +1,42 @@
+/*
+ * Survols et cible tactile de la page 404.
+ *
+ * Module du composant et non `app/globals.css` : plusieurs agents écrivent le
+ * fichier global en parallèle, et un survol n'est pas exprimable dans un style
+ * en ligne. Les valeurs de survol sont celles des attributs `style-hover` de
+ * `maquette/accueil-rendu.html`, recopiées.
+ */
+
+/* Carte de lien vers une grande porte du site. Survol de la maquette, ligne
+   2583 : `style-hover="transform:translateY(-3px)"`. La transition reste en
+   style en ligne, avec les autres valeurs de la carte. */
+.carteLien:hover {
+  transform: translateY(-3px);
+}
+
+/* Bouton de verre. Survol de la maquette, ligne 2965, le seul bouton du héros
+   de la page contact : `background:var(--card);transform:translateY(-1px)`. */
+.boutonVerre:hover {
+  background: var(--card);
+  transform: translateY(-1px);
+}
+
+/*
+ * Sur téléphone, le bouton garde 24 px de haut au moins.
+ *
+ * POURQUOI : critère 2.5.8 de la WCAG 2.2, niveau AA. Le remplissage de la
+ * maquette (15 px en haut et en bas) le porte aujourd'hui à une cinquantaine de
+ * pixels, donc la règle ne déplace rien : c'est un plancher, qui tient le jour
+ * où ce remplissage est resserré. Même motif que
+ * `components/site/PiedDePage.module.css`, qui lui a dû rattraper 72 liens.
+ *
+ * Les cartes de lien ne sont PAS visées : elles portent `min-height:160px` en
+ * style en ligne, valeur de la maquette, et un style en ligne bat toute règle de
+ * classe. Leur plancher est donc déjà vrai, et c'est le contrôle
+ * `app/verification-introuvable.tsx` qui le vérifie là où il est écrit.
+ */
+@media (max-width: 880px) {
+  .boutonVerre {
+    min-height: 24px;
+  }
+}

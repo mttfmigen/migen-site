@@ -1,0 +1,70 @@
+/*
+ * La pilule de la maquette, et une seule règle de base.
+ *
+ * UNE SEULE RÈGLE, C'EST LA CONFORMITÉ. « Tout accepter », « Tout refuser »,
+ * « Personnaliser » et « Enregistrer mes choix » passent tous par `.action` :
+ * il n'existe aucun second jeu de déclarations dans lequel glisser un biais.
+ * Ajouter ici une classe `.principal` suffirait à invalider le consentement
+ * (CNIL, délibération du 17/09/2020 : refuser doit être aussi simple
+ * qu'accepter). Le contrôle `verification-action.tsx` refuse le fichier si un
+ * autre sélecteur de base apparaît.
+ *
+ * MOTIFS REPRIS DE LA MAQUETTE (maquette/accueil-rendu.html)
+ *   · ligne 1202 : la pilule, `padding:14px 24px;border-radius:999px;
+ *     font:600 15px var(--fb)`.
+ *   · ligne 2883 : la pilule secondaire, fond blanc, bordure 1px, texte
+ *     `var(--ink)`. C'est elle que l'on suit : l'orange de la pilule
+ *     principale porte le sens « action attendue », donc il n'a pas sa place
+ *     sur un choix qui doit être neutre.
+ *   · ligne 845 et suivantes : `background:var(--chip)` au survol, le survol
+ *     neutre de la maquette.
+ *
+ * LES DEUX ÉCARTS, ET POURQUOI (contrat, règle 5 : l'accessibilité s'ajoute à
+ * la maquette)
+ *   · fond `var(--card)` opaque au lieu du `rgba(255,255,255,.8)` de la ligne
+ *     2883. Le bandeau flotte au-dessus de la page : à 0,8 d'opacité, le
+ *     contraste du texte dépendrait de ce qui défile derrière. Opaque, il vaut
+ *     17,21:1 quoi qu'il arrive.
+ *   · bordure `var(--ink)` au lieu de `var(--line)`. `--line` mesure 1,20:1
+ *     sur `--card`, très loin des 3:1 exigés pour la limite d'un bouton
+ *     (WCAG 1.4.11). `--ink` donne 17,21:1 contre le remplissage du bouton et
+ *     6,56:1 contre la surface de verre la plus sombre possible, celle d'un
+ *     bandeau posé devant un bloc `--panel`.
+ */
+
+.action {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* WCAG 2.2, 2.5.8 : 24px au minimum sur téléphone. Les 14px de remplissage
+     donnent déjà 52px ; ce plancher survit à un changement d'interligne. */
+  min-height: 48px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: 1px solid var(--ink);
+  background-color: var(--card);
+  color: var(--ink);
+  font: 600 15px var(--fb);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--tr);
+}
+
+/* Survol : 15,44:1 pour le texte sur `--card`, 6,00:1 au pire si le bandeau
+   est en verre devant un bloc sombre. Au-dessus des 4,5:1 dans les deux cas. */
+.action:hover {
+  background-color: var(--chip);
+}
+
+/* Le focus global d'`app/globals.css` est un trait `var(--acc)` de 2px avec un
+   `border-radius:4px`. Deux problèmes ici : l'orange mesure 2,56:1 sur
+   `--card`, sous les 3:1 d'un indicateur de focus, et le rayon de 4px
+   carrerait la pilule au moment où elle prend le focus. `--ink` tient 17,21:1
+   vers l'intérieur et 6,56:1 au pire contre le bandeau ; `--acc-d`, l'autre
+   orange de la charte, tombe à 1,20:1 dans ce même cas. */
+.action:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 0;
+  border-radius: 999px;
+}

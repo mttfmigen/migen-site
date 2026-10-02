@@ -1,0 +1,151 @@
+/* Habillage du bandeau de consentement.
+
+   La maquette validée (`maquette/accueil-rendu.html`) n'a PAS de bandeau de
+   consentement : rien à porter ligne pour ligne. Chaque valeur ci-dessous est
+   donc empruntée à un motif qu'elle porte ailleurs, avec son numéro de ligne.
+
+   Les seules couleurs littérales du fichier sont les deux ombres, recopiées
+   telles quelles de la maquette (ligne 1289) : la charte n'a pas de jeton
+   d'ombre, et tous les modules du projet font déjà ainsi
+   (ProblematiqueClient.module.css, BentoBesoins.module.css). Tout le reste
+   passe par les jetons de `app/globals.css`. */
+
+/* ------------------------------------------------------------- la carte
+
+   SURFACE OPAQUE, et c'est une décision de contraste, pas de goût.
+
+   Le motif de carte de la maquette est du verre dépoli :
+   `background:rgba(255,255,255,var(--gl-a))` avec `backdrop-filter`
+   (ligne 1289). Sur la page, ce verre repose toujours sur le fond crème
+   `--bg`, donc sur presque du blanc. Ce bandeau, lui, est en position fixe au
+   bas de la fenêtre : il peut se retrouver au-dessus de N'IMPORTE QUOI, dont
+   les panneaux anthracite `--panel` et le pied de page `--foot`.
+
+   Mesure du pire cas, 58,2 % de blanc sur `--foot` (#141312) : le fond
+   effectif tombe à #9d9c9c, où `--ink2` ne donne plus que 2,05:1, très
+   au-dessous du plancher de 4,5:1. Le jeton `--sheet` (90 % de blanc) ne
+   suffit pas non plus : 4,38:1. Seule une surface opaque rend le contraste
+   déterministe, donc `--card`.
+
+   Ce qui est gardé du motif de verre : le rayon `--rad`, le filet
+   `1px solid var(--line)` (lignes 1711 et 1961) et les deux ombres
+   superposées, qui détachent la carte sans l'aide d'aucun voile. */
+.bandeau {
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  /* Posé au bord bas de la fenêtre sur téléphone : seuls les coins hauts sont
+     arrondis, les deux autres n'ont pas de vide à habiller. */
+  border-radius: var(--rad) var(--rad) 0 0;
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.04),
+    0 22px 50px -32px rgba(0, 0, 0, 0.3);
+  /* 20px de côté : la marge mobile du site, posée par `app/globals.css` sous
+     760px. En bas, la réserve de l'encoche, comme la barre d'action mobile. */
+  padding: 22px 20px calc(24px + env(safe-area-inset-bottom));
+}
+
+/* 640px : le seuil où la maquette passe en une colonne (lignes 748 et 752), et
+   celui du préfixe `sm:` de Tailwind utilisé dans le composant. Les deux
+   doivent basculer au même pixel, sinon la carte flotte avec des coins bas
+   carrés pendant un pixel de largeur. */
+@media (min-width: 640px) {
+  .bandeau {
+    border-radius: var(--rad);
+    /* Retrait de carte de la maquette, ligne 1182. */
+    padding: 30px 30px 32px;
+  }
+}
+
+/* ------------------------------------------------------------- le texte */
+
+/* Titre de carte de la maquette, ligne 1191 : `font:600 20px/1.2 var(--ft)`
+   avec `letter-spacing:-.03em`. `--ft` et non `--fb` parce que la charte
+   réserve la pile système aux titres de carte. */
+.titre {
+  margin: 0;
+  font: 600 20px/1.2 var(--ft);
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+/* Texte courant de la maquette, ligne 1186. L'écart de 10px sous un titre de
+   carte vient de la ligne 1185. */
+.texte {
+  margin: 10px 0 0;
+  font: 400 15px/1.6 var(--fb);
+  color: var(--ink2);
+}
+
+/* Le site fait virer ses liens à l'orange au survol (`a:hover` dans
+   `app/globals.css`). `--acc` ne donne que 2,56:1 sur `--card` : sous le
+   plancher de 4,5:1. `--acc-ink`, la déclinaison encrée du MÊME orange, donne
+   8,94:1. Le soulignement porte l'information de lien, jamais la couleur
+   seule. */
+.lien {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--tr);
+}
+.lien:hover {
+  color: var(--acc-ink);
+}
+
+/* ------------------------------------------------------- bouton de fermeture
+
+   Volontairement PAS une pilule comme les trois actions. Fermer ne décide
+   rien : lui donner la même enveloppe qu'« accepter », « refuser » et
+   « personnaliser » ferait croire à une quatrième réponse de même valeur, et
+   brouillerait l'égalité des trois seules qui en sont.
+
+   Un bouton de texte souligné, donc : il s'identifie par son libellé et son
+   soulignement, pas par un filet. Le filet `--line` ne mesure que 1,20:1 sur
+   `--card`, il ne pourrait pas porter seul l'identification d'une commande. */
+.fermer {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  /* 2.5.8 de la WCAG 2.2 : 24px de haut au minimum sur écran tactile. 13px de
+     texte et 2 × 4px de retrait n'en font que 23,6 ; la borne est explicite. */
+  min-height: 28px;
+  padding: 4px 2px;
+  background: none;
+  border: 0;
+  font: 500 13px var(--fb);
+  color: var(--ink2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color var(--tr);
+}
+.fermer:hover {
+  color: var(--acc-ink);
+  text-decoration: none;
+}
+
+/* ------------------------------------------------------- focus clavier
+
+   `app/globals.css` pose déjà un anneau global, mais en `--acc` : 2,56:1 sur
+   `--card`, au-dessous des 3:1 attendus d'un indicateur d'état. Les deux
+   éléments focusables de ce bandeau reprennent la même géométrie avec
+   `--acc-ink`, 8,94:1. Rien n'est désactivé, l'anneau est renforcé. */
+.lien:focus-visible,
+.fermer:focus-visible {
+  outline: 2px solid var(--acc-ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ------------------------------------------------------- rangée des actions
+
+   L'écart de 20px sous l'en-tête d'une carte vient de la maquette, ligne 1190.
+   La largeur égale des trois boutons est tenue ICI, par trois colonnes `1fr`,
+   et non par un `flex: 1` posé dans le composant de bouton : l'égalité de
+   surface est une exigence CNIL, elle ne doit pas dépendre d'un fichier
+   voisin. En dessous de 640px les trois s'empilent, pleine largeur, donc
+   égales aussi. */
+.actions {
+  margin-top: 20px;
+}

@@ -1,6 +1,6 @@
-import Link from "next/link";
-
 import { lectureContenu } from "@/lib/supabase";
+
+import ListeRubriques from "./ListeRubriques";
 
 /**
  * Les rubriques de premier niveau, composant serveur.
@@ -15,6 +15,9 @@ import { lectureContenu } from "@/lib/supabase";
  * L'erreur est absorbée volontairement : la 404 doit rester servie même si la
  * base est injoignable, sinon une page introuvable devient une erreur 500.
  * Elle est journalisée côté serveur, jamais tue.
+ *
+ * L'habillage est dans `ListeRubriques.tsx`, qui ne lit rien : voir le
+ * commentaire de ce fichier pour la raison de la coupure.
  */
 export default async function RubriquesNiveau1() {
   const { data, error } = await lectureContenu()
@@ -28,23 +31,5 @@ export default async function RubriquesNiveau1() {
     return null;
   }
 
-  const rubriques = data ?? [];
-  if (rubriques.length === 0) return null;
-
-  return (
-    <nav aria-label="Rubriques du site">
-      <ul className="space-y-2">
-        {rubriques.map((rubrique) => (
-          <li key={rubrique.path}>
-            <Link
-              href={rubrique.path}
-              className="text-base text-zinc-900 underline underline-offset-4 hover:no-underline dark:text-zinc-100"
-            >
-              {rubrique.titre_h1}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
+  return <ListeRubriques rubriques={data ?? []} libelle="Rubriques du site" />;
 }

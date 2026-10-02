@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { LIEN_CONFIDENTIALITE, choixUniforme } from "@/lib/consentement";
 
 import Action from "./Action";
+import s from "./Bandeau.module.css";
 import Panneau from "./Panneau";
 import { enregistre, ferme, ouvrePanneau, useConsentement } from "./etat";
 
@@ -15,24 +16,32 @@ import { enregistre, ferme, ouvrePanneau, useConsentement } from "./etat";
  *
  *   · les trois actions ont le MÊME POIDS VISUEL. « Tout accepter », « Tout
  *     refuser » et « Personnaliser » passent par le même composant Action,
- *     donc le même style : même taille, même contraste, même bordure, et une
- *     largeur égale (`flex-1`). Aucun bouton grisé, aucun bouton minuscule,
- *     aucun « tout accepter » coloré face à un « refuser » en gris. Refuser
- *     coûte exactement un clic, comme accepter. Exigence CNIL, pas une
- *     préférence esthétique.
+ *     donc le même style : même taille, même contraste, même bordure. La
+ *     largeur égale est tenue ici, par trois colonnes `1fr` (`.actions` du
+ *     module CSS), et non par un `flex: 1` posé dans Action : l'égalité de
+ *     surface ne doit pas dépendre d'un fichier voisin. Aucun bouton grisé,
+ *     aucun bouton minuscule, aucun « tout accepter » coloré face à un
+ *     « refuser » en gris. Refuser coûte exactement un clic, comme accepter.
+ *     Exigence CNIL, pas une préférence esthétique.
  *
  *   · PAS DE MUR DE CONSENTEMENT. La boîte est ouverte par `show()`, pas par
  *     `showModal()` : la page reste lisible, défilable et cliquable derrière.
  *     `showModal()` rendait tout le reste du site inerte jusqu'au choix, ce qui
- *     est précisément le « cookie wall » que la CNIL interdit. Contrepartie
- *     assumée : un dialogue non modal ne piège pas le focus et n'intercepte pas
- *     la touche d'échappement, le navigateur ne le fait que pour `showModal()`.
- *     D'où l'écouteur d'échappement et le bouton « Fermer » explicites
- *     ci-dessous : la boîte reste refermable au clavier comme à la souris, sans
- *     emprisonner la navigation du visiteur.
+ *     est précisément le « cookie wall » que la CNIL interdit. Aucun voile non
+ *     plus : le module CSS ne déclare pas de `::backdrop`, et la carte est une
+ *     bande basse, pas une surface pleine page. Contrepartie assumée : un
+ *     dialogue non modal ne piège pas le focus et n'intercepte pas la touche
+ *     d'échappement, le navigateur ne le fait que pour `showModal()`. D'où
+ *     l'écouteur d'échappement et le bouton « Fermer » explicites ci-dessous :
+ *     la boîte reste refermable au clavier comme à la souris, sans emprisonner
+ *     la navigation du visiteur.
  *
  *   · fermer n'est pas consentir. Échappement et « Fermer » referment la boîte
  *     sans rien accorder, et le bandeau revient au chargement suivant.
+ *
+ * L'habillage vient de `Bandeau.module.css`, qui justifie chaque valeur par un
+ * motif de la maquette validée. Les classes Tailwind qui restent ne portent que
+ * de la mise en page : aucune couleur, aucun thème.
  */
 export default function Bandeau() {
   const { choix, panneau, masque, pret } = useConsentement();
@@ -67,32 +76,25 @@ export default function Bandeau() {
       ref={boite}
       aria-labelledby="consentement-titre"
       onClose={ferme}
-      className="fixed inset-x-0 bottom-0 top-auto z-50 m-0 w-full max-w-3xl rounded-t-xl border border-neutral-200 bg-white p-6 text-neutral-900 shadow-2xl sm:inset-x-4 sm:bottom-4 sm:mx-auto sm:rounded-xl dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100"
+      className={`${s.bandeau} fixed inset-x-0 bottom-0 top-auto z-50 m-0 w-full max-w-3xl sm:inset-x-4 sm:bottom-4 sm:mx-auto`}
     >
       <div className="flex items-start gap-4">
-        <h2 id="consentement-titre" className="flex-1 text-lg font-semibold">
+        <h2 id="consentement-titre" className={`${s.titre} flex-1`}>
           Vos traceurs, votre choix
         </h2>
         {/* Sortie explicite, puisque le navigateur n'en fournit pas hors
             `showModal()`. Elle ne décide rien : voir `ferme` dans etat.ts. */}
-        <button
-          type="button"
-          onClick={ferme}
-          className="rounded-md px-2 py-1 text-sm underline underline-offset-4 hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2"
-        >
+        <button type="button" onClick={ferme} className={s.fermer}>
           Fermer
         </button>
       </div>
 
-      <p className="mt-2 text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">
+      <p className={s.texte}>
         Nous déposons des traceurs pour mesurer l&apos;audience du site, savoir
         quelles annonces vous ont amené ici et rattacher votre visite à votre
         fiche si vous nous écrivez. Rien n&apos;est déposé avant votre accord, et vous
         pouvez revenir sur ce choix à tout moment depuis le pied de page.{" "}
-        <a
-          href={LIEN_CONFIDENTIALITE}
-          className="underline underline-offset-4 hover:no-underline"
-        >
+        <a href={LIEN_CONFIDENTIALITE} className={s.lien}>
           Politique de confidentialité
         </a>
         .
@@ -101,7 +103,9 @@ export default function Bandeau() {
       {panneau ? (
         <Panneau />
       ) : (
-        <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+        /* `gap-3` vaut les 12px d'écart des grilles de la maquette (ligne 1194).
+           Trois colonnes égales au-delà de 640px, empilées en dessous. */
+        <div className={`${s.actions} grid gap-3 sm:grid-cols-3`}>
           <Action
             libelle="Tout accepter"
             onClick={() => enregistre(choixUniforme(true))}

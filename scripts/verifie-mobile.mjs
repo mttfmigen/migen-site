@@ -210,9 +210,12 @@ try {
       const page = await contexte.newPage();
       await page.goto(SITE, { waitUntil: "load" });
       await page.waitForTimeout(700);
-      const bouton = page
-        .locator('header button[aria-expanded], header [aria-label*="enu" i]')
-        .first();
+      /* Le bouton VISIBLE, et c'est nécessaire : les boutons des mega-menus
+         portent eux aussi `aria-expanded`, et ils sont cachés à cette largeur
+         (`.mg-nav` passe en `display:none`). Les prendre faisait attendre
+         Playwright trente secondes sur un élément qui n'apparaîtra jamais, et
+         le contrôle échouait pour une raison qui n'était pas celle annoncée. */
+      const bouton = page.locator('header button[aria-controls]:visible').first();
       if ((await bouton.count()) === 0) {
         problemes.push(`à ${largeur} px : aucun bouton de menu dans l'en-tête`);
       } else {

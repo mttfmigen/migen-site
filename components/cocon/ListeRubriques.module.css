@@ -1,0 +1,61 @@
+/*
+ * Survol et états de la carte-lien des rubriques de niveau 1, portés depuis la
+ * maquette locale `maquette/accueil-rendu.html`, carte-lien des réalisations,
+ * ligne 1537 : son `style` et son `style-hover`.
+ *
+ * Ils vivent ici et non dans `app/globals.css` : plusieurs agents écrivent en
+ * parallèle, un fichier partagé produirait des conflits.
+ */
+
+/*
+ * L'OMBRE DE REPOS EST ICI, ET NON EN STYLE EN LIGNE, alors que c'est une
+ * valeur de la maquette. Même raison que `PiedDePage.module.css` pour sa
+ * couleur de base : un style en ligne React gagne contre toute règle de
+ * feuille, donc une `box-shadow` posée en ligne sur la carte aurait battu le
+ * `:hover` ci-dessous, et le soulèvement n'aurait jamais eu lieu. La valeur de
+ * repos accompagne son survol pour que les deux restent lisibles ensemble, et
+ * cela évite un `!important`. `transform` suit la même logique, en creux :
+ * aucune transformation n'est posée en ligne, c'est ce qui laisse passer celle
+ * du survol.
+ *
+ * La couleur est posée ici aussi, et ce n'est pas décoratif : `app/globals.css`
+ * déclare `a:hover { color: var(--acc) }`. Sur le blanc de la carte, l'orange
+ * de marque donne 2,6:1, sous le minimum de 4,5:1. La maquette ne change pas
+ * la couleur du titre au survol, elle soulève la carte : on la suit, et le
+ * contraste est tenu dans les deux états.
+ */
+.carte {
+  color: var(--ink);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+
+  /*
+   * Plancher de cible tactile, critère 2.5.8 de la WCAG 2.2, niveau AA, le
+   * seuil que `scripts/verifie-mobile.mjs` mesure.
+   *
+   * POURQUOI un plancher et non une correction, contrairement à
+   * `PiedDePage.module.css` : les liens du pied de page mesuraient 19 px et il
+   * fallait les grandir. La carte en fait plus de 70, par son remplissage de
+   * 24 et 28 px venu de la maquette. Un `min-height` ne peut qu'ajouter : il
+   * ne touche pas au dessin d'aujourd'hui et retient le plancher si un
+   * ajustement de charte resserre un jour ce remplissage. Du remplissage
+   * imposé ici, lui, RETIRERAIT de la hauteur à la carte.
+   */
+  min-height: 24px;
+}
+
+.carte:hover {
+  color: var(--ink);
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.42);
+}
+
+/*
+ * Mouvement réduit : le soulèvement s'arrête, l'ombre reste. `app/globals.css`
+ * prend la même précaution pour le bandeau de logos (WCAG 2.3.3). Les cartes
+ * d'offre de l'accueil ne l'ont pas encore, c'est signalé au lot.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .carte:hover {
+    transform: none;
+  }
+}
