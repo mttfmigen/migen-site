@@ -131,3 +131,32 @@ Reste un écart assumé, dans l'autre sens : la **mention RGPD** sous le bouton
 n'est pas dans la maquette. Elle est exigée au point de collecte (RGPD, articles
 13 et 14) et explique 33 px de hauteur en plus que la maquette sur chaque
 formulaire. Elle reste.
+
+### Bloquants techniques pour Mehdi (02/10, soir)
+
+1. **`SUPABASE_SERVICE_ROLE_KEY` est VIDE dans `.env.local`.** Conséquence concrète :
+   `node scripts/verifie-base.mjs` ne peut pas auditer les pages en brouillon,
+   et ce sont justement celles qu'une écriture refusée laisse vides. La clé se
+   prend dans la console Supabase, Project Settings, API. Elle ne sort jamais du
+   poste ni du serveur.
+2. **Clé API Thot SEO absente.** Le pipeline articles s'arrête au score : un
+   article est rédigé et en statut `review`, il ne peut pas être scoré.
+3. **Trois pages de preuve étaient déjà publiées** quand leur contenu a été
+   réécrit (`/preuves/stellantis-fonderie-sept-fons/`, `/preuves/timescope/`,
+   `/preuves/vpk/`). Le découpage imposé par la couche de permissions pose
+   d'abord le contenu avec ses tableaux vides : ces trois pages ont donc été
+   servies quelques secondes avec des blocs vides. Leçon pour la prochaine
+   reprise : dépublier avant de réécrire une page publiée.
+4. **`/expertises/robotique/fanuc/`** n'a que 3 de ses 10 sections. En brouillon,
+   donc invisible, mais à reprendre.
+5. **`avis.verbatims` est vide sur `/preuves/` et `/realisations/`** : les trois
+   verbatims de la maquette sont marqués « à valider avec les intéressés avant
+   publication ». La note et la mention du nombre d'avis restent, la colonne de
+   droite est vide. À remplir quand les clients auront validé.
+6. **Deux cartes de chantier ne sont pas cliquables** sur `/preuves/` (ALPINA
+   SAVOIE, SANOFI MARCY) : aucune page de détail n'existe pour elles, ni dans
+   l'inventaire ni dans le corpus. Rendues en `<article>` plutôt qu'en lien mort.
+7. **`SITE_INDEXABLE` doit passer à `oui`** dans l'environnement Vercel le jour
+   où migen.fr pointe sur ce déploiement, sinon le site reste fermé aux robots.
+   Tant que ce n'est pas le cas, c'est voulu : il porte les mêmes pages que le
+   site en ligne et le concurrencerait.

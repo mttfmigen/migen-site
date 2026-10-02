@@ -49,13 +49,22 @@ Scope: le site reproduit la maquette Claude Design à l'identique (animations, f
   EXPECT: /mouvement réduit : 0 masqué\(s\), 0 armé\(s\), 0\//
   EVIDENCE: exit=0 ; même commande, troisième contrôle, contexte Playwright à reducedMotion « reduce » : « mouvement réduit : 0 masqué(s), 0 armé(s), 0/1 rail(s) en mouvement ». Rien n'est masqué, rien n'est armé, le rail ne défile pas, aucune barre laissée à 0 %. C'est le JavaScript qui pose opacity 0, jamais le CSS : sans JavaScript ou avec mouvement réduit, la page s'affiche entière.
 
-- [ ] G10: les 185 pages de contenu sont complètes en base, aucune tronquée ni vidée par l'import
-  EVIDENCE: pending
+- [ ] G10: le contenu importé est complet en base, aucune page tronquée ni vidée
+  CHECK: node scripts/verifie-base.mjs
+  EXPECT: contenu complet en base
+  EVIDENCE: ÉCHOUE au 02/10, exit=1, et pour une bonne raison : « 205 pages attendues par l'import, 119 complètes » avec la clé ANONYME, qui ne voit que le publié. SUPABASE_SERVICE_ROLE_KEY est VIDE dans .env.local, or les pages vidées par une instruction refusée sont justement en brouillon : le contrôle refuse donc de conclure plutôt que de réussir en n'ayant rien regardé. Il imprime quand même ce qu'il a vu. Mesuré en parallèle par le MCP Supabase, qui lit tout : 114 pages de vente à 10 sections (toutes complètes), 1 incomplète (/expertises/robotique/fanuc/, 3 sections sur 10, brouillon), 32 pages de gabarit maquette posées, 0 commentaire HTML, 0 note de travail. L'éditorial était à 28 pages sur 59 : 31 pages vidées par des instructions refusées, reprise lancée. BLOQUANT POUR MEHDI : poser la clé de service (console Supabase, Project Settings, API) pour que ce contrôle puisse répondre.
 
-- [ ] G11: le site déployé sur Vercel sert l'accueil et une page de chaque gabarit sans erreur
-  EVIDENCE: pending
+- [ ] G11: le site déployé sert une page de chaque gabarit, et reste fermé aux robots
+  CHECK: node scripts/verifie-deploiement.mjs
+  EXPECT: déploiement conforme
+  EVIDENCE: ÉCHOUE au 02/10, exit=1. Les sept gabarits sont bien servis par le déploiement du 02/10 22h57 (accueil, expertises, implantations, fiche, vente, éditorial, vente profonde), chacun avec un seul h1 non vide, et robots.txt répond « Disallow: / ». Le contrôle échoue sur une seule assertion, et elle est juste : /expertises/ a un titre identique à son h1, ce que les règles du projet interdisent. Corrigé par le chantier des métadonnées, à re-lancer ensuite. La récupération passe par « bunx vercel curl » : la protection de déploiement Vercel est active, donc rien n'est public, ce qui est voulu tant que migen.fr ne pointe pas ici.
 
 - [x] G12: aucune formulation interdite par le contrat dans la copie du site
   CHECK: node scripts/verifie-interdits.mjs
   EXPECT: copie conforme aux interdits du contrat
   EVIDENCE: exit=0 le 02/10 ; contrôle POSITIF passé d'abord, pour prouver qu'il sait échouer : « Plus de 200 clients accompagnés, sans engagement — clé en main » injecté dans MarqueeClients.tsx donne exit=1 et nomme les 4 interdits (200 clients, sans engagement, clé en main, tiret cadratin) ; le commentaire voisin qui CITE la formulation ne déclenche rien (les commentaires sont retirés avant la recherche). A trouvé 5 occurrences réelles de « +200 clients » rendues aux visiteurs (en-tête, héros, bande de logos, frise, chiffres), corrigées.
+
+- [ ] G13: aucune page publiée n'a un titre identique à son h1, ni de métadonnée manquante
+  CHECK: node scripts/verifie-seo.mjs
+  EXPECT: métadonnées conformes
+  EVIDENCE: pending

@@ -106,3 +106,30 @@ Supabase dans le composant : la lecture se fait dans la page.
 
 Avant de rendre la main : `bunx tsc --noEmit` passe sur les fichiers écrits.
 Un agent qui n'a pas pu vérifier le dit.
+
+## Les portes, et laquelle lancer quand
+
+| Commande | Ce qu'elle décide | Ce qu'il faut avoir lancé |
+|---|---|---|
+| `bun run verifie` | types, contenu, interdits, formulaire, gabarits, en-tête, hubs, pied de page, lint, build | rien |
+| `bun run verifie:fidelite` | hauteurs des 20 sections contre la maquette | `bun run dev` et la maquette sur 4350 |
+| `bun run verifie:animations` | armement, défilement, mouvement réduit | `bun run dev` |
+| `bun run verifie:seo` | titres et mots clés des pages publiées | rien (lit la base) |
+| `bun run verifie:base` | contenu complet en base, brouillons compris | `SUPABASE_SERVICE_ROLE_KEY` posée |
+| `bun run verifie:deploiement` | gabarits servis en ligne, robots fermés | `bunx vercel login` |
+
+Servir la maquette :
+
+```bash
+cd ~/Landing\ lovable/maquette && python3 -m http.server 4350 --bind 127.0.0.1
+```
+
+Pointer une porte sur la version construite plutôt que sur le développement :
+
+```bash
+SITE_URL=http://localhost:4341/ bun run verifie:fidelite
+```
+
+**Règle de ces portes** : toute valeur attendue vient de `maquette/accueil-rendu.html`,
+jamais d'une note de lecture. Et aucune n'est crue avant d'avoir échoué une fois,
+faute injectée exprès.

@@ -16,7 +16,12 @@
     "verifie:gabarits": "bun components/site/verification-gabarits.tsx",
     "verifie:texte": "bun components/site/blocs/verification-texte-riche.tsx",
     "verifie:interdits": "node scripts/verifie-interdits.mjs",
-    "verifie:formulaire": "bun scripts/verifie-formulaire.tsx"
+    "verifie:formulaire": "bun scripts/verifie-formulaire.tsx",
+    "verifie:base": "node scripts/verifie-base.mjs",
+    "verifie:seo": "node scripts/verifie-seo.mjs",
+    "verifie:fidelite": "node scripts/verifie-fidelite.mjs",
+    "verifie:animations": "node scripts/verifie-animations.mjs",
+    "verifie:deploiement": "node scripts/verifie-deploiement.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
