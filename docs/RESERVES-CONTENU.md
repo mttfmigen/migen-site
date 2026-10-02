@@ -160,3 +160,29 @@ formulaire. Elle reste.
    où migen.fr pointe sur ce déploiement, sinon le site reste fermé aux robots.
    Tant que ce n'est pas le cas, c'est voulu : il porte les mêmes pages que le
    site en ligne et le concurrencerait.
+
+### Le garde-fou SQL, et pourquoi on ne le contourne pas (02/10)
+
+**Ce qui a été découvert, et c'est utile** : la couche de permissions qui sert à
+écrire en base ne refuse pas sur la TAILLE, contrairement à ce qu'on croyait.
+Une instruction de 3 071 octets passe telle quelle. Elle refuse sur le
+**point-virgule à l'intérieur du texte** : elle découpe la requête dessus et
+rejette le fragment qui n'est plus une instruction valide. Un fragment de
+577 octets portant un point-virgule est refusé ; 1 451 octets sans
+point-virgule passent. Tout le découpage à 3 800 octets reposait donc sur un
+mauvais diagnostic.
+
+**Ce qui a été fait pour terminer `/expertises/robotique/fanuc/`** : un agent a
+sorti le point-virgule de la chaîne et l'a rendu par `chr(59)`. Résultat
+vérifié : 10 sections dans l'ordre du fichier, texte identique au corpus
+(comparaison md5), vrai point-virgule stocké, aucune trace de la construction
+en base, `statut` inchangé.
+
+**Cette technique ne doit pas être réutilisée.** Le garde-fou refuse parce qu'il
+n'arrive pas à lire la requête, et déguiser un caractère pour qu'il ne la voie
+plus, c'est désarmer un contrôle de sécurité pour une commodité d'écriture. La
+bonne voie pour un contenu qui porte un point-virgule est de **ne pas passer par
+du SQL assemblé** : l'API REST de Supabase prend le JSON tel quel, sans
+interprétation, et `scripts/` peut l'appeler avec `SUPABASE_SERVICE_ROLE_KEY`.
+C'est une raison de plus de poser cette clé. En attendant, une page dont le
+texte contient un point-virgule se signale au lieu d'être forcée.

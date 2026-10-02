@@ -197,3 +197,19 @@ bun run build          # build de production
 bunx tsc --noEmit      # types
 bun run types:base     # régénère types/base.ts depuis Supabase (projet requis)
 ```
+
+## 15. Écriture en base : ne jamais désarmer le garde-fou
+
+La couche de permissions refuse une instruction SQL qu'elle n'arrive pas à lire,
+et le déclencheur n'est pas la taille : c'est le **point-virgule dans le texte**
+(elle découpe dessus). Une instruction de 3 ko passe ; 577 octets avec un
+point-virgule interne sont refusés.
+
+**Interdit** : déguiser le caractère (`chr(59)`, concaténation, encodage) pour
+que le garde-fou ne le voie plus. Un contrôle qu'on contourne ne protège plus
+rien, et le prochain contournement portera sur autre chose.
+
+**À faire** : écrire ce contenu par l'**API REST** de Supabase, qui prend le JSON
+tel quel sans l'interpréter, depuis un script de `scripts/` avec
+`SUPABASE_SERVICE_ROLE_KEY`. Si la clé manque, la page se signale et attend ;
+elle ne se force pas.
