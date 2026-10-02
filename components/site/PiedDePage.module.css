@@ -93,3 +93,35 @@
 .reglages > a:hover {
   color: rgba(255, 255, 255, 0.7);
 }
+
+/*
+ * Sur téléphone, les liens du pied de page atteignent 24 px de haut.
+ *
+ * POURQUOI : mesurés à 320 px, les liens de navigation et ceux du maillage font
+ * 19 px, collés les uns aux autres (leurs conteneurs n'ont pas d'écart
+ * vertical). Le critère 2.5.8 de la WCAG 2.2, niveau AA, demande 24 px, ou un
+ * espacement équivalent. Soixante-douze liens étaient en dessous, tous dans le
+ * pied de page : c'est là que se trouve le maillage SEO, donc là qu'un visiteur
+ * cherche une ville ou un département, au pouce, sur un quai d'usine.
+ *
+ * Le remplissage plutôt que la hauteur : il agrandit la zone de contact sans
+ * déplacer le texte ni changer l'interligne, donc sans toucher au dessin de la
+ * maquette sur grand écran, où la règle ne s'applique pas.
+ */
+@media (max-width: 880px) {
+  .lienNav,
+  .lienMaillage {
+    display: inline-block;
+    padding: 3px 0;
+  }
+
+  /* Le lien de réglage des traceurs est soumis à la même règle, et il compte
+     double : c'est par lui qu'un visiteur revient sur son consentement, et la
+     CNIL exige qu'il soit accessible en permanence. Inatteignable au pouce, il
+     ne l'est pas vraiment. */
+  .reglages > button,
+  .reglages > a {
+    display: inline-block;
+    padding: 3px 0;
+  }
+}

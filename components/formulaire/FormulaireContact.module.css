@@ -80,3 +80,22 @@
   outline: 2px solid var(--acc);
   outline-offset: 2px;
 }
+
+/*
+ * Champs à 16px sous 880px, et c'est une contrainte d'iOS, pas un goût.
+ *
+ * Safari zoome automatiquement la page au premier appui dans un champ dont le
+ * texte fait moins de 16px. Le visiteur se retrouve avec une page agrandie
+ * qu'il doit repincer pour voir le reste du formulaire, en plein milieu de sa
+ * demande. La maquette pose 14,5px, qui reste la valeur sur grand écran : seule
+ * la largeur où le zoom se déclenche est corrigée.
+ */
+@media (max-width: 880px) {
+  /* `!important` : la taille vient d'un `font:` en style en ligne, repris de la
+     maquette, qui l'emporterait sur ce module. */
+  .champ,
+  .enveloppeTel select,
+  .enveloppeTel input {
+    font-size: 16px !important;
+  }
+}

@@ -22,3 +22,18 @@
 
 /* Le lien de bas de carte hérite de la règle globale `a:hover`, qui le passe en
    orange. La maquette n'en déclare pas d'autre : rien à ajouter. */
+
+/*
+ * Le lien de bas de carte atteint 24 px de haut sur téléphone.
+ *
+ * Mesuré à 320 px : « Ce qu'on y répare → » fait 20 px, sous le seuil du
+ * critère 2.5.8 de la WCAG 2.2. Le remplissage agrandit la zone de contact sans
+ * déplacer le texte, donc sans changer la carte sur grand écran.
+ */
+@media (max-width: 880px) {
+  .carteLevee a,
+  a.carteLevee {
+    display: inline-block;
+    padding: 2px 0;
+  }
+}

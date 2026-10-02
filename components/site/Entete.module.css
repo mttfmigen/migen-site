@@ -151,3 +151,27 @@
     display: none;
   }
 }
+
+/*
+ * Sous 881px, l'îlot ne garde que le logo et le bouton de menu.
+ *
+ * POURQUOI : à cette largeur, la barre basse (`.barreAction`, juste au-dessus)
+ * porte DÉJÀ « Appeler » et « Décrire mon besoin ». Les garder aussi dans
+ * l'îlot les affichait deux fois, et surtout les faisait déborder : à 320px,
+ * numéro + appel à l'action + bouton de menu réclament 343px dans un îlot qui
+ * en mesure 292. Le texte était coupé, donc l'appel à l'action principal du
+ * site était illisible sur le plus petit écran encore en service.
+ *
+ * Le seuil est celui de la barre basse, et c'est volontaire : l'un apparaît
+ * exactement où l'autre disparaît, sans largeur où les deux manquent.
+ */
+@media (max-width: 880px) {
+  /* `!important` parce que les deux éléments portent leur mise en forme en
+     STYLE EN LIGNE, comme dans la maquette : sans cela la règle est perdue
+     d'avance. C'est déjà la façon dont `globals.css` reprend la main sur les
+     styles en ligne du portage. */
+  .tel,
+  .cta {
+    display: none !important;
+  }
+}
