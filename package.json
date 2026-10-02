@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "types:base": "bunx supabase gen types typescript --project-id \"$SUPABASE_PROJECT_ID\" --schema public > types/base.ts",
-    "verifie": "bunx tsc --noEmit && bun run verifie:contenu && bun run verifie:texte && bun run verifie:interdits && bun run verifie:formulaire && bun run verifie:gabarits && bun run verifie:entete && bun run verifie:hubs && bun run verifie:pied && bunx eslint . && next build",
+    "verifie": "bunx tsc --noEmit && bun run verifie:contenu && bun run verifie:texte && bun run verifie:interdits && bun run verifie:echafaudage && bun run verifie:formulaire && bun run verifie:gabarits && bun run verifie:entete && bun run verifie:hubs && bun run verifie:pied && bunx eslint . && next build",
     "verifie:contenu": "bun scripts/verifie-contenu.ts",
     "verifie:entete": "bun components/site/verification-entete.tsx",
     "verifie:hubs": "bun components/site/accueil/verification-hubs.tsx",
@@ -22,7 +22,8 @@
     "verifie:fidelite": "node scripts/verifie-fidelite.mjs",
     "verifie:animations": "node scripts/verifie-animations.mjs",
     "verifie:deploiement": "node scripts/verifie-deploiement.mjs",
-    "verifie:mobile": "node scripts/verifie-mobile.mjs"
+    "verifie:mobile": "node scripts/verifie-mobile.mjs",
+    "verifie:echafaudage": "node scripts/verifie-echafaudage.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

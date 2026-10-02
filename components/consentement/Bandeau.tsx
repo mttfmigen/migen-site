@@ -71,12 +71,18 @@ export default function Bandeau() {
   // du cache. Voir le commentaire de `pret` dans etat.ts.
   if (!pret) return null;
 
+  /* `sm:w-auto` n'est pas un détail : à partir de 640px le bandeau passe en
+     `sm:inset-x-4`, donc calé à 16px des deux bords. Mais `w-full` fixe la
+     largeur à 100% de la fenêtre, ce qui écrase la contrainte de droite :
+     mesuré à 768px, le bandeau allait de 16px à 784px, soit 16px hors de
+     l'écran. Les deux déclarations se contredisaient, et c'est la largeur qui
+     gagnait. `w-auto` au même seuil laisse les deux bords décider. */
   return (
     <dialog
       ref={boite}
       aria-labelledby="consentement-titre"
       onClose={ferme}
-      className={`${s.bandeau} fixed inset-x-0 bottom-0 top-auto z-50 m-0 w-full max-w-3xl sm:inset-x-4 sm:bottom-4 sm:mx-auto`}
+      className={`${s.bandeau} fixed inset-x-0 bottom-0 top-auto z-50 m-0 w-full max-w-3xl sm:inset-x-4 sm:bottom-4 sm:mx-auto sm:w-auto`}
     >
       <div className="flex items-start gap-4">
         <h2 id="consentement-titre" className={`${s.titre} flex-1`}>
