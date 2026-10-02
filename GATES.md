@@ -12,7 +12,7 @@ Scope: le site reproduit la maquette Claude Design à l'identique (animations, f
 - [x] G2: le formulaire de contact a la grille, les libellés et le bouton de la maquette
   CHECK: bun scripts/verifie-formulaire.tsx
   EXPECT: formulaire conforme à la maquette
-  EVIDENCE: exit=0; shell=/bin/sh; cwd=/Users/mehdi/Landing lovable/migen-site; path=68101d418901/27 entries; output=formulaire conforme à la maquette
+  EVIDENCE: exit=0; shell=/bin/sh; cwd=/Users/mehdi/Landing lovable/migen-site; path=68101d418901/27 entries; output=comparé au fichier du client : 6 champs obligatoires, 6 indicatifs | formulaire conforme à la maquette
 
 - [x] G3: la page d'accueil construite porte les 20 blocs à révélation de la maquette
   CHECK: node scripts/verifie-reveal.mjs
@@ -27,12 +27,12 @@ Scope: le site reproduit la maquette Claude Design à l'identique (animations, f
 - [x] G5: chaque famille d'URL est servie par son gabarit propre, et chaque gabarit rend un seul h1
   CHECK: node scripts/verifie-gabarits.mjs
   EXPECT: gabarits conformes
-  EVIDENCE: exit=0; shell=/bin/sh; cwd=/Users/mehdi/Landing lovable/migen-site; path=68101d418901/27 entries; output=8 contrôles, 0 en échec | gabarits conformes
+  EVIDENCE: exit=0; shell=/bin/sh; cwd=/Users/mehdi/Landing lovable/migen-site; path=68101d418901/27 entries; output=11 contrôles, 0 en échec | gabarits conformes
 
 - [x] G6: le JavaScript de premier chargement de la page d'accueil tient sous 220 Ko compressés
   CHECK: node scripts/verifie-poids.mjs
   EXPECT: poids JS conforme
-  EVIDENCE: exit=0; shell=/bin/sh; cwd=/Users/mehdi/Landing lovable/migen-site; path=68101d418901/27 entries; output=accueil : 10 scripts, 646 Ko bruts, 198 Ko gzip (budget 220 Ko) | poids JS conforme
+  EVIDENCE: exit=0; shell=/bin/sh; cwd=/Users/mehdi/Landing lovable/migen-site; path=68101d418901/27 entries; output=accueil : 10 scripts, 648 Ko bruts, 199 Ko gzip (budget 220 Ko) | poids JS conforme
 
 - [x] G7: chaque section de l'accueil a la hauteur de la maquette, à 40 px près, hors écarts déclarés
   CHECK: node scripts/verifie-fidelite.mjs

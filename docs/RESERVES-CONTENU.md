@@ -186,3 +186,18 @@ du SQL assemblé** : l'API REST de Supabase prend le JSON tel quel, sans
 interprétation, et `scripts/` peut l'appeler avec `SUPABASE_SERVICE_ROLE_KEY`.
 C'est une raison de plus de poser cette clé. En attendant, une page dont le
 texte contient un point-virgule se signale au lieu d'être forcée.
+
+### Cinq titres encore identiques à leur h1 (02/10, soir)
+
+Toutes en brouillon, donc invisibles, et toutes pour la même raison : leur
+contenu n'est pas encore en base, donc un titre écrit maintenant serait deviné
+depuis le seul h1. L'agent a refusé de les inventer, et c'est le bon choix.
+
+- `/ressources/articles/gmao/`
+- `/ressources/articles/optimiser-la-maintenance/`
+- `/ressources/articles/organiser-service-maintenance/`
+- `/ressources/articles/plan-de-maintenance/`
+- `/ressources/process/preparer-un-arret-technique/`
+
+Elles se règlent d'elles-mêmes après `node scripts/importe_rest.mjs`, qui pose
+leur contenu : il suffira alors de relire `node scripts/verifie-seo.mjs`.
