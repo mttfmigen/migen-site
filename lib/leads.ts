@@ -1,7 +1,7 @@
 import "server-only";
 
 import { ecritureServeur } from "@/lib/supabase";
-import type { LigneLead } from "@/types/base";
+import type { LigneLead } from "@/types/lignes";
 import type { Attribution } from "@/lib/utm";
 
 /**
@@ -59,21 +59,7 @@ export async function enregistreCopieLead(copie: CopieLead): Promise<void> {
     utm_content: copie.utm_content ?? null,
   };
 
-  // CONTOURNEMENT, cause réelle hors de ce fichier : `types/base.ts` déclare ses
-  // lignes avec `interface`, et une interface n'a pas de signature d'index
-  // implicite. `BaseDeDonnees["public"]` ne satisfait donc pas la contrainte
-  // `GenericSchema` de supabase-js, qui réduit alors le `Schema` du client à
-  // `never` : chaque `Insert` devient `never`, d'où l'échec de compilation sur
-  // toute écriture. Remplacer `export interface LigneX {` par
-  // `export type LigneX = {` dans types/base.ts supprime la cause et permet de
-  // retirer l'assertion ci-dessous. La génération officielle
-  // (`bun run types:base`) produit déjà des `type`, donc le problème disparaît
-  // aussi le jour où le projet Supabase existe.
-  // L'objet `ligne` reste vérifié colonne par colonne : l'assertion ne porte
-  // que sur le générique effondré, pas sur le contenu écrit.
-  const { error } = await ecritureServeur()
-    .from("leads")
-    .insert(ligne as never);
+  const { error } = await ecritureServeur().from("leads").insert(ligne);
 
   if (error) {
     throw new Error(`Écriture du lead (${copie.formulaire}) : ${error.message}`);

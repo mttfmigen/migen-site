@@ -1,4 +1,4 @@
-import type { LigneArticle, LignePage, LigneSeo } from "@/types/base";
+import type { LigneArticle, LignePage, LigneSeo } from "@/types/lignes";
 
 import { urlAbsolue, urlImage } from "@/lib/seo/url";
 

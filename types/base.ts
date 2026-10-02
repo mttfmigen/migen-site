@@ -1,209 +1,694 @@
-/**
- * Types du schéma Supabase.
- *
- * Écrits à la main tant que le projet Supabase n'existe pas. Dès qu'il est
- * créé et les migrations appliquées, ce fichier se régénère :
- *
- *   bun run types:base
- *
- * Les noms de colonnes suivent la base, donc le français du brief. Les types
- * dérivés exposés au reste de l'application vivent dans `types/contenu.ts`.
- */
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[]
 
-export type StatutPublication = "draft" | "review" | "published";
-export type TypeCta = "devis" | "intervention" | "rappel" | "diagnostic" | "candidature";
-export type TypeSchema =
-  | "WebPage"
-  | "Service"
-  | "Article"
-  | "FAQPage"
-  | "CollectionPage"
-  | "Organization";
-export type PlateformeAds = "google" | "linkedin" | "openai";
-export type SourceIngestion =
-  | "gsc"
-  | "ga4"
-  | "google_ads"
-  | "linkedin_ads"
-  | "openai_ads"
-  | "hubspot";
-export type StatutIngestion = "en_cours" | "succes" | "echec";
-
-export interface LignePage {
-  id: string;
-  parent_id: string | null;
-  niveau: number;
-  slug: string;
-  path: string;
-  titre_h1: string;
-  contenu: unknown;
-  mot_cle_principal: string | null;
-  mots_cles_secondaires: string[];
-  persona_cible: string[];
-  cta_type: TypeCta;
-  statut: StatutPublication;
-  published_at: string | null;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface LigneArticle {
-  id: string;
-  slug: string;
-  titre: string;
-  contenu: unknown;
-  page_pilier_id: string | null;
-  mot_cle_principal: string | null;
-  score_thot: number | null;
-  thot_analysis_id: string | null;
-  auteur: string | null;
-  statut: StatutPublication;
-  published_at: string | null;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface LigneSeo {
-  id: string;
-  page_id: string | null;
-  article_id: string | null;
-  meta_title: string;
-  meta_description: string;
-  canonical: string | null;
-  og_image: string | null;
-  noindex: boolean;
-  schema_type: TypeSchema;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface LigneCasClient {
-  id: string;
-  slug: string;
-  client: string;
-  secteur: string | null;
-  logo: string | null;
-  probleme: string | null;
-  intervention: string | null;
-  resultats: string | null;
-  chiffres_cles: unknown;
-  statut: StatutPublication;
-  published_at: string | null;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface LigneRedirection {
-  id: string;
-  source: string;
-  destination: string;
-  code: number;
-  actif: boolean;
-  created_at: string;
-}
-
-export interface LigneConsentement {
-  id: string;
-  visitor_id: string;
-  choix: Record<string, boolean>;
-  version_bandeau: string;
-  user_agent: string | null;
-  created_at: string;
-}
-
-export interface LigneLead {
-  id: string;
-  id_hubspot: string | null;
-  date: string;
-  page_entree: string | null;
-  page_conversion: string | null;
-  utm_source: string | null;
-  utm_medium: string | null;
-  utm_campaign: string | null;
-  utm_term: string | null;
-  utm_content: string | null;
-  formulaire: string;
-  statut_deal: string | null;
-  montant_deal_centimes: number | null;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface LigneIngestion {
-  id: string;
-  source: SourceIngestion;
-  started_at: string;
-  ended_at: string | null;
-  statut: StatutIngestion;
-  lignes_ecrites: number | null;
-  erreur: string | null;
-}
-
-/** Table en lecture seule pour le client : insertion et mise à jour côté serveur. */
-type Table<Ligne, Insert = Partial<Ligne>> = {
-  Row: Ligne;
-  Insert: Insert;
-  Update: Partial<Insert>;
-  Relationships: [];
-};
-
-export interface BaseDeDonnees {
+export type Database = {
+  // Allows to automatically instantiate createClient with right options
+  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
+  __InternalSupabase: {
+    PostgrestVersion: "14.18"
+  }
   public: {
     Tables: {
-      pages: Table<LignePage>;
-      articles: Table<LigneArticle>;
-      seo: Table<LigneSeo>;
-      business_cases: Table<LigneCasClient>;
-      redirects: Table<LigneRedirection>;
-      consent_logs: Table<
-        LigneConsentement,
-        Omit<LigneConsentement, "id" | "created_at">
-      >;
-      leads: Table<LigneLead>;
-      ingestion_runs: Table<LigneIngestion>;
-      metrics_gsc_daily: Table<{
-        date: string;
-        page_path: string;
-        query: string;
-        clicks: number;
-        impressions: number;
-        ctr: number;
-        position: number;
-        ingested_at: string;
-      }>;
-      metrics_ga4_daily: Table<{
-        date: string;
-        page_path: string;
-        source: string;
-        medium: string;
-        campaign: string;
-        sessions: number;
-        engaged_sessions: number;
-        conversions: number;
-        ingested_at: string;
-      }>;
-      metrics_ads_daily: Table<{
-        date: string;
-        plateforme: PlateformeAds;
-        campagne: string;
-        impressions: number;
-        clics: number;
-        cout_centimes: number;
-        conversions: number;
-        ingested_at: string;
-      }>;
-      membres_console: Table<{ user_id: string; email: string; cree_le: string }>;
-    };
-    Views: Record<string, never>;
-    Functions: Record<string, never>;
+      articles: {
+        Row: {
+          auteur: string | null
+          contenu: Json
+          created_at: string
+          id: string
+          mot_cle_principal: string | null
+          page_pilier_id: string | null
+          published_at: string | null
+          score_thot: number | null
+          slug: string
+          statut: Database["public"]["Enums"]["statut_publication"]
+          thot_analysis_id: string | null
+          titre: string
+          updated_at: string
+        }
+        Insert: {
+          auteur?: string | null
+          contenu?: Json
+          created_at?: string
+          id?: string
+          mot_cle_principal?: string | null
+          page_pilier_id?: string | null
+          published_at?: string | null
+          score_thot?: number | null
+          slug: string
+          statut?: Database["public"]["Enums"]["statut_publication"]
+          thot_analysis_id?: string | null
+          titre: string
+          updated_at?: string
+        }
+        Update: {
+          auteur?: string | null
+          contenu?: Json
+          created_at?: string
+          id?: string
+          mot_cle_principal?: string | null
+          page_pilier_id?: string | null
+          published_at?: string | null
+          score_thot?: number | null
+          slug?: string
+          statut?: Database["public"]["Enums"]["statut_publication"]
+          thot_analysis_id?: string | null
+          titre?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "articles_page_pilier_id_fkey"
+            columns: ["page_pilier_id"]
+            isOneToOne: false
+            referencedRelation: "pages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      business_cases: {
+        Row: {
+          chiffres_cles: Json
+          client: string
+          created_at: string
+          id: string
+          intervention: string | null
+          logo: string | null
+          probleme: string | null
+          published_at: string | null
+          resultats: string | null
+          secteur: string | null
+          slug: string
+          statut: Database["public"]["Enums"]["statut_publication"]
+          updated_at: string
+        }
+        Insert: {
+          chiffres_cles?: Json
+          client: string
+          created_at?: string
+          id?: string
+          intervention?: string | null
+          logo?: string | null
+          probleme?: string | null
+          published_at?: string | null
+          resultats?: string | null
+          secteur?: string | null
+          slug: string
+          statut?: Database["public"]["Enums"]["statut_publication"]
+          updated_at?: string
+        }
+        Update: {
+          chiffres_cles?: Json
+          client?: string
+          created_at?: string
+          id?: string
+          intervention?: string | null
+          logo?: string | null
+          probleme?: string | null
+          published_at?: string | null
+          resultats?: string | null
+          secteur?: string | null
+          slug?: string
+          statut?: Database["public"]["Enums"]["statut_publication"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      consent_logs: {
+        Row: {
+          choix: Json
+          created_at: string
+          id: string
+          user_agent: string | null
+          version_bandeau: string
+          visitor_id: string
+        }
+        Insert: {
+          choix: Json
+          created_at?: string
+          id?: string
+          user_agent?: string | null
+          version_bandeau: string
+          visitor_id: string
+        }
+        Update: {
+          choix?: Json
+          created_at?: string
+          id?: string
+          user_agent?: string | null
+          version_bandeau?: string
+          visitor_id?: string
+        }
+        Relationships: []
+      }
+      ingestion_runs: {
+        Row: {
+          ended_at: string | null
+          erreur: string | null
+          id: string
+          lignes_ecrites: number | null
+          source: Database["public"]["Enums"]["source_ingestion"]
+          started_at: string
+          statut: Database["public"]["Enums"]["statut_ingestion"]
+        }
+        Insert: {
+          ended_at?: string | null
+          erreur?: string | null
+          id?: string
+          lignes_ecrites?: number | null
+          source: Database["public"]["Enums"]["source_ingestion"]
+          started_at?: string
+          statut?: Database["public"]["Enums"]["statut_ingestion"]
+        }
+        Update: {
+          ended_at?: string | null
+          erreur?: string | null
+          id?: string
+          lignes_ecrites?: number | null
+          source?: Database["public"]["Enums"]["source_ingestion"]
+          started_at?: string
+          statut?: Database["public"]["Enums"]["statut_ingestion"]
+        }
+        Relationships: []
+      }
+      leads: {
+        Row: {
+          created_at: string
+          date: string
+          formulaire: string
+          id: string
+          id_hubspot: string | null
+          montant_deal_centimes: number | null
+          page_conversion: string | null
+          page_entree: string | null
+          statut_deal: string | null
+          updated_at: string
+          utm_campaign: string | null
+          utm_content: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          utm_term: string | null
+        }
+        Insert: {
+          created_at?: string
+          date?: string
+          formulaire: string
+          id?: string
+          id_hubspot?: string | null
+          montant_deal_centimes?: number | null
+          page_conversion?: string | null
+          page_entree?: string | null
+          statut_deal?: string | null
+          updated_at?: string
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          formulaire?: string
+          id?: string
+          id_hubspot?: string | null
+          montant_deal_centimes?: number | null
+          page_conversion?: string | null
+          page_entree?: string | null
+          statut_deal?: string | null
+          updated_at?: string
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+        }
+        Relationships: []
+      }
+      membres_console: {
+        Row: {
+          cree_le: string
+          email: string
+          user_id: string
+        }
+        Insert: {
+          cree_le?: string
+          email: string
+          user_id: string
+        }
+        Update: {
+          cree_le?: string
+          email?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      metrics_ads_daily: {
+        Row: {
+          campagne: string
+          clics: number
+          conversions: number
+          cout_centimes: number
+          date: string
+          impressions: number
+          ingested_at: string
+          plateforme: Database["public"]["Enums"]["plateforme_ads"]
+        }
+        Insert: {
+          campagne: string
+          clics?: number
+          conversions?: number
+          cout_centimes?: number
+          date: string
+          impressions?: number
+          ingested_at?: string
+          plateforme: Database["public"]["Enums"]["plateforme_ads"]
+        }
+        Update: {
+          campagne?: string
+          clics?: number
+          conversions?: number
+          cout_centimes?: number
+          date?: string
+          impressions?: number
+          ingested_at?: string
+          plateforme?: Database["public"]["Enums"]["plateforme_ads"]
+        }
+        Relationships: []
+      }
+      metrics_ga4_daily: {
+        Row: {
+          campaign: string
+          conversions: number
+          date: string
+          engaged_sessions: number
+          ingested_at: string
+          medium: string
+          page_path: string
+          sessions: number
+          source: string
+        }
+        Insert: {
+          campaign?: string
+          conversions?: number
+          date: string
+          engaged_sessions?: number
+          ingested_at?: string
+          medium?: string
+          page_path: string
+          sessions?: number
+          source?: string
+        }
+        Update: {
+          campaign?: string
+          conversions?: number
+          date?: string
+          engaged_sessions?: number
+          ingested_at?: string
+          medium?: string
+          page_path?: string
+          sessions?: number
+          source?: string
+        }
+        Relationships: []
+      }
+      metrics_gsc_daily: {
+        Row: {
+          clicks: number
+          ctr: number
+          date: string
+          impressions: number
+          ingested_at: string
+          page_path: string
+          position: number
+          query: string
+        }
+        Insert: {
+          clicks?: number
+          ctr?: number
+          date: string
+          impressions?: number
+          ingested_at?: string
+          page_path: string
+          position?: number
+          query: string
+        }
+        Update: {
+          clicks?: number
+          ctr?: number
+          date?: string
+          impressions?: number
+          ingested_at?: string
+          page_path?: string
+          position?: number
+          query?: string
+        }
+        Relationships: []
+      }
+      pages: {
+        Row: {
+          contenu: Json
+          created_at: string
+          cta_type: Database["public"]["Enums"]["type_cta"]
+          id: string
+          mot_cle_principal: string | null
+          mots_cles_secondaires: string[]
+          niveau: number
+          parent_id: string | null
+          path: string
+          persona_cible: string[]
+          published_at: string | null
+          slug: string
+          statut: Database["public"]["Enums"]["statut_publication"]
+          titre_h1: string
+          updated_at: string
+        }
+        Insert: {
+          contenu?: Json
+          created_at?: string
+          cta_type?: Database["public"]["Enums"]["type_cta"]
+          id?: string
+          mot_cle_principal?: string | null
+          mots_cles_secondaires?: string[]
+          niveau: number
+          parent_id?: string | null
+          path: string
+          persona_cible?: string[]
+          published_at?: string | null
+          slug: string
+          statut?: Database["public"]["Enums"]["statut_publication"]
+          titre_h1: string
+          updated_at?: string
+        }
+        Update: {
+          contenu?: Json
+          created_at?: string
+          cta_type?: Database["public"]["Enums"]["type_cta"]
+          id?: string
+          mot_cle_principal?: string | null
+          mots_cles_secondaires?: string[]
+          niveau?: number
+          parent_id?: string | null
+          path?: string
+          persona_cible?: string[]
+          published_at?: string | null
+          slug?: string
+          statut?: Database["public"]["Enums"]["statut_publication"]
+          titre_h1?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pages_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "pages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      redirects: {
+        Row: {
+          actif: boolean
+          code: number
+          created_at: string
+          destination: string
+          id: string
+          source: string
+        }
+        Insert: {
+          actif?: boolean
+          code?: number
+          created_at?: string
+          destination: string
+          id?: string
+          source: string
+        }
+        Update: {
+          actif?: boolean
+          code?: number
+          created_at?: string
+          destination?: string
+          id?: string
+          source?: string
+        }
+        Relationships: []
+      }
+      seo: {
+        Row: {
+          article_id: string | null
+          canonical: string | null
+          created_at: string
+          id: string
+          meta_description: string
+          meta_title: string
+          noindex: boolean
+          og_image: string | null
+          page_id: string | null
+          schema_type: Database["public"]["Enums"]["type_schema"]
+          updated_at: string
+        }
+        Insert: {
+          article_id?: string | null
+          canonical?: string | null
+          created_at?: string
+          id?: string
+          meta_description: string
+          meta_title: string
+          noindex?: boolean
+          og_image?: string | null
+          page_id?: string | null
+          schema_type?: Database["public"]["Enums"]["type_schema"]
+          updated_at?: string
+        }
+        Update: {
+          article_id?: string | null
+          canonical?: string | null
+          created_at?: string
+          id?: string
+          meta_description?: string
+          meta_title?: string
+          noindex?: boolean
+          og_image?: string | null
+          page_id?: string | null
+          schema_type?: Database["public"]["Enums"]["type_schema"]
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "seo_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: true
+            referencedRelation: "articles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "seo_page_id_fkey"
+            columns: ["page_id"]
+            isOneToOne: true
+            referencedRelation: "pages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      choix_sont_booleens: { Args: { choix: Json }; Returns: boolean }
+      est_membre_console: { Args: never; Returns: boolean }
+    }
     Enums: {
-      statut_publication: StatutPublication;
-      type_cta: TypeCta;
-      type_schema: TypeSchema;
-      plateforme_ads: PlateformeAds;
-      source_ingestion: SourceIngestion;
-      statut_ingestion: StatutIngestion;
-    };
-    CompositeTypes: Record<string, never>;
-  };
+      finalite_consentement:
+        | "mesure_audience"
+        | "publicite"
+        | "personnalisation"
+      plateforme_ads: "google" | "linkedin" | "openai"
+      source_ingestion:
+        | "gsc"
+        | "ga4"
+        | "google_ads"
+        | "linkedin_ads"
+        | "openai_ads"
+        | "hubspot"
+      statut_ingestion: "en_cours" | "succes" | "echec"
+      statut_publication: "draft" | "review" | "published"
+      type_cta:
+        | "devis"
+        | "intervention"
+        | "rappel"
+        | "diagnostic"
+        | "candidature"
+      type_schema:
+        | "WebPage"
+        | "Service"
+        | "Article"
+        | "FAQPage"
+        | "CollectionPage"
+        | "Organization"
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
 }
+
+type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">
+
+type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">]
+
+export type Tables<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+        DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
+    : never) = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+      DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+      Row: infer R
+    }
+    ? R
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])
+    ? (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends {
+        Row: infer R
+      }
+      ? R
+      : never
+    : never
+
+export type TablesInsert<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never) = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Insert: infer I
+    }
+    ? I
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+        Insert: infer I
+      }
+      ? I
+      : never
+    : never
+
+export type TablesUpdate<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never) = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Update: infer U
+    }
+    ? U
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+        Update: infer U
+      }
+      ? U
+      : never
+    : never
+
+export type Enums<
+  DefaultSchemaEnumNameOrOptions extends
+    | keyof DefaultSchema["Enums"]
+    | { schema: keyof DatabaseWithoutInternals },
+  EnumName extends (DefaultSchemaEnumNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
+    : never) = never,
+> = DefaultSchemaEnumNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
+    ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
+    : never
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof DefaultSchema["CompositeTypes"]
+    | { schema: keyof DatabaseWithoutInternals },
+  CompositeTypeName extends (PublicCompositeTypeNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never) = never,
+> = PublicCompositeTypeNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
+    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
+    : never
+
+export const Constants = {
+  public: {
+    Enums: {
+      finalite_consentement: [
+        "mesure_audience",
+        "publicite",
+        "personnalisation",
+      ],
+      plateforme_ads: ["google", "linkedin", "openai"],
+      source_ingestion: [
+        "gsc",
+        "ga4",
+        "google_ads",
+        "linkedin_ads",
+        "openai_ads",
+        "hubspot",
+      ],
+      statut_ingestion: ["en_cours", "succes", "echec"],
+      statut_publication: ["draft", "review", "published"],
+      type_cta: [
+        "devis",
+        "intervention",
+        "rappel",
+        "diagnostic",
+        "candidature",
+      ],
+      type_schema: [
+        "WebPage",
+        "Service",
+        "Article",
+        "FAQPage",
+        "CollectionPage",
+        "Organization",
+      ],
+    },
+  },
+} as const

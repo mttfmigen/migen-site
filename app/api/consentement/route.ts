@@ -4,7 +4,7 @@ import {
   etiquetteUserAgent,
 } from "@/lib/consentement";
 import { ecritureServeur } from "@/lib/supabase";
-import type { BaseDeDonnees } from "@/types/base";
+import type { BaseDeDonnees } from "@/types/lignes";
 
 /**
  * Preuve de consentement.

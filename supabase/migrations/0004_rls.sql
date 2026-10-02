@@ -106,7 +106,13 @@ create policy "chacun voit son appartenance"
 -- ------------------------------------------------------ privilèges de schéma
 -- La RLS filtre les lignes ; les privilèges décident des tables atteignables.
 -- Ceinture et bretelles : une policy oubliée ne suffit pas à ouvrir une table.
-revoke all on all tables in schema public from anon, authenticated;
+-- Révocation NOMMÉE et non « on all tables in schema public ». Même dans une
+-- base dédiée : un ordre global emporterait toute table ajoutée plus tard par
+-- un autre outil, et ce fichier ne doit décider que du sort des siennes.
+revoke all on pages, articles, seo, business_cases, redirects, consent_logs,
+               metrics_gsc_daily, metrics_ga4_daily, metrics_ads_daily, leads,
+               ingestion_runs, membres_console
+  from anon, authenticated;
 
 grant select on pages, articles, seo, business_cases, redirects to anon, authenticated;
 -- Aucun `grant insert on consent_logs` : voir la section consentement ci-dessus,
@@ -114,4 +120,3 @@ grant select on pages, articles, seo, business_cases, redirects to anon, authent
 grant select on consent_logs, metrics_gsc_daily, metrics_ga4_daily, metrics_ads_daily,
                 leads, ingestion_runs, membres_console to authenticated;
 
-alter default privileges in schema public revoke all on tables from anon, authenticated;

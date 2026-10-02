@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import type { LignePage, LigneSeo } from "@/types/base";
+import type { LignePage, LigneSeo } from "@/types/lignes";
 
 import { urlAbsolue } from "@/lib/seo/url";
 import { lectureContenu } from "@/lib/supabase";
@@ -36,10 +36,10 @@ export const revalidate = 3600;
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const client = lectureContenu();
 
-  // Deux requêtes plates plutôt qu'une jointure : les types générés ne décrivent
-  // pas les relations, et une jointure imbriquée obligerait à un transtypage
-  // ici. L'`id` des pages est nécessaire pour écarter celles que `seo` marque
-  // `noindex`, ce que `cheminsPublies()` ne remonte pas.
+  // Deux requêtes plates plutôt qu'une jointure : l'`id` des pages est
+  // nécessaire pour écarter celles que `seo` marque `noindex`, ce que
+  // `cheminsPublies()` ne remonte pas, et deux lectures indexées coûtent moins
+  // qu'une jointure dont on ne garde qu'une colonne.
   const [pages, exclusions] = await Promise.all([
     client.from("pages").select("id, path, updated_at").order("path"),
     client.from("seo").select("page_id").eq("noindex", true),
@@ -48,15 +48,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const erreur = pages.error ?? exclusions.error;
   if (erreur) throw new Error(`Plan du site : ${erreur.message}`);
 
-  // Transtypages à retirer dès que `types/base.ts` déclarera ses lignes en `type`
-  // et non en `interface` : une interface n'a pas de signature d'index implicite,
-  // elle ne satisfait donc pas `Row extends Record<string, unknown>` chez
-  // supabase-js, et tout `select()` se résout alors en `never`. Détail en réserves.
-  const listePages = (pages.data ?? []) as Pick<
-    LignePage,
-    "id" | "path" | "updated_at"
-  >[];
-  const listeExclusions = (exclusions.data ?? []) as Pick<LigneSeo, "page_id">[];
+  const listePages = pages.data ?? [];
+  const listeExclusions = exclusions.data ?? [];
 
   const exclus = new Set(
     listeExclusions

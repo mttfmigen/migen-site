@@ -1,4 +1,4 @@
-import type { TypeCta } from "@/types/base";
+import type { TypeCta } from "@/types/lignes";
 
 /**
  * Appel à l'action de fin de page.

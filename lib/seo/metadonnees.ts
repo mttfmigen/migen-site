@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import type { LigneSeo } from "@/types/base";
+import type { LigneSeo } from "@/types/lignes";
 
 import { urlAbsolue, urlImage } from "@/lib/seo/url";
 

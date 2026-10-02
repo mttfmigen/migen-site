@@ -6,6 +6,20 @@
 
 create type finalite_consentement as enum ('mesure_audience', 'publicite', 'personnalisation');
 
+-- Postgres interdit une sous-requête dans une contrainte CHECK : la règle
+-- « toutes les valeurs sont des booléens » passe donc par une fonction
+-- immuable, seule forme acceptée. Défaut découvert à la première application
+-- réelle, pas à la relecture : une contrainte invalide ne se voit qu'au
+-- moment où la base la refuse.
+create or replace function choix_sont_booleens(choix jsonb) returns boolean
+language sql
+immutable
+set search_path = public
+as $$
+  select coalesce(bool_and(jsonb_typeof(valeur) = 'boolean'), false)
+    from jsonb_each(choix) as paire(cle, valeur);
+$$;
+
 create table consent_logs (
   id uuid primary key default gen_random_uuid(),
   -- Aléa généré par le navigateur, sans lien avec une personne identifiée.
@@ -13,7 +27,7 @@ create table consent_logs (
   -- Un objet { finalite: booléen } plutôt qu'une colonne par finalité :
   -- ajouter une finalité ne demandera pas de migration.
   choix jsonb not null,
-  version_bandeau text not null,
+  version_bandeau text not null check (char_length(version_bandeau) <= 64),
   -- Tronqué à 120 caractères à l'écriture : assez pour distinguer un robot,
   -- trop peu pour contribuer à une empreinte.
   user_agent text check (char_length(user_agent) <= 120),
@@ -23,10 +37,7 @@ create table consent_logs (
   constraint consent_choix_valide check (
     jsonb_typeof(choix) = 'object'
     and choix <> '{}'::jsonb
-    and not exists (
-      select 1 from jsonb_each(choix) as e(cle, valeur)
-      where jsonb_typeof(e.valeur) <> 'boolean'
-    )
+    and choix_sont_booleens(choix)
   )
 );
 

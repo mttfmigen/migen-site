@@ -2,7 +2,7 @@ import "server-only";
 
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-import type { BaseDeDonnees } from "@/types/base";
+import type { BaseDeDonnees } from "@/types/lignes";
 
 /**
  * Accès à Supabase, côté serveur exclusivement.

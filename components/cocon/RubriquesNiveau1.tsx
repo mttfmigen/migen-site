@@ -21,11 +21,7 @@ export default async function RubriquesNiveau1() {
     .from("pages")
     .select("path, titre_h1")
     .eq("niveau", 1)
-    .order("path")
-    // `.returns` est nécessaire tant que `types/base.ts` est écrit à la main :
-    // sans les métadonnées attendues par supabase-js, un `select` résout les
-    // lignes en `never`. Même contournement que dans `lib/contenu.ts`.
-    .returns<{ path: string; titre_h1: string }[]>();
+    .order("path");
 
   if (error) {
     console.error("Rubriques de niveau 1 indisponibles :", error.message);

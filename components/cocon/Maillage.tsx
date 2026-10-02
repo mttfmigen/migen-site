@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { maillage, type Lien } from "@/lib/contenu";
-import type { LignePage } from "@/types/base";
+import type { LignePage } from "@/types/lignes";
 
 /**
  * Maillage interne, composant serveur.

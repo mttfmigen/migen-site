@@ -3,7 +3,7 @@ import "server-only";
 import { cache } from "react";
 
 import { lectureContenu } from "@/lib/supabase";
-import type { LigneArticle, LignePage, LigneSeo } from "@/types/base";
+import type { LigneArticle, LignePage, LigneSeo } from "@/types/lignes";
 
 /**
  * Lecture du cocon : une page, son SEO, son fil d'Ariane et son maillage.
@@ -77,8 +77,7 @@ export async function cheminsPublies(): Promise<
   const { data, error } = await lectureContenu()
     .from("pages")
     .select("path, updated_at")
-    .order("path")
-    .returns<{ path: string; updated_at: string }[]>();
+    .order("path");
 
   if (error) throw new Error(`Liste des chemins : ${error.message}`);
   return data ?? [];
@@ -102,8 +101,7 @@ export async function filAriane(
   const { data, error } = await lectureContenu()
     .from("pages")
     .select("path, titre_h1")
-    .in("path", chemins)
-    .returns<{ path: string; titre_h1: string }[]>();
+    .in("path", chemins);
 
   if (error) throw new Error(`Fil d'Ariane de ${path} : ${error.message}`);
 
@@ -139,8 +137,7 @@ export async function maillage(page: LignePage, maxSoeurs = 4): Promise<Maillage
       .from("pages")
       .select("path, titre_h1")
       .eq("id", page.parent_id)
-      .maybeSingle()
-      .returns<Noeud | null>();
+      .maybeSingle();
     if (error) throw new Error(`Parent de ${page.path} : ${error.message}`);
     return data;
   };
@@ -150,8 +147,7 @@ export async function maillage(page: LignePage, maxSoeurs = 4): Promise<Maillage
       .from("pages")
       .select("path, titre_h1")
       .eq("parent_id", page.id)
-      .order("path")
-      .returns<Noeud[]>();
+      .order("path");
     if (error) throw new Error(`Enfants de ${page.path} : ${error.message}`);
     return data ?? [];
   };
@@ -162,8 +158,7 @@ export async function maillage(page: LignePage, maxSoeurs = 4): Promise<Maillage
       .from("pages")
       .select("id, path, titre_h1")
       .eq("parent_id", page.parent_id)
-      .order("path")
-      .returns<NoeudIdentifie[]>();
+      .order("path");
     if (error) throw new Error(`Fratrie de ${page.path} : ${error.message}`);
     return data ?? [];
   };

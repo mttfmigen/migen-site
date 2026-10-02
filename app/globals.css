@@ -1,26 +1,564 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   Charte Migen, portée depuis la maquette Claude Design.
+   Source : « Migen - Site final.dc.html » et le système de design
+   « migen-design-system-9ce37c32 / colors_and_type.css ».
+
+   POURQUOI ces variables et pas des classes Tailwind : la maquette pilote
+   tout par variables CSS et styles en ligne. Les reproduire telles quelles est
+   le seul moyen d'obtenir le rendu à l'identique, et de pouvoir rejouer une
+   évolution de maquette sans retraduire chaque valeur. Tailwind reste
+   disponible pour la mise en page neuve.
+
+   Les blocs `@container` de la maquette ne sont PAS portés : ils n'existaient
+   que pour l'aperçu en iframe de Claude Design, où la fenêtre ne reflète pas
+   la largeur réelle. Sur le site, `@media` fait foi.
+   ========================================================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* --ft : pile système, pour les mots où le dessin de la lettre compte plus
+     que la marque (le logotype « migen »). --fb : Poppins, tout le reste. */
+  --ft: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", sans-serif;
+  --fb: var(--font-poppins), var(--ft);
+  --fs: var(--font-caveat), var(--fb);
+
+  --gl-a: 0.62;
+  --gl-b: 22px;
+
+  /* Orange de marque et ses dérivés */
+  --acc: #ff7c3c;
+  --acc-d: #f4641f;
+  --acc-w: rgba(255, 124, 60, 0.11);
+  --acc-ink: #7d3309;
+
+  --rad: 28px;
+  --rad-s: 18px;
+  --sec: 120px;
+  --sat: 0.55;
+  --ph-op: 1;
+  --ts: 1;
+  --tr: 200ms;
+
+  /* Fonds : blanc crème dominant, anthracite réservé aux panneaux et au pied */
+  --bg: #f1f2f4;
+  --card: #fff;
+  --panel: #1c1b19;
+  --foot: #141312;
+
+  /* Encres, du plus appuyé au plus effacé */
+  --ink: #1c1b19;
+  --ink1: #4a4845;
+  --ink2: #6a6764;
+  --ink3: #737373;
+  --ink4: #a8a49d;
+
+  --line: rgba(28, 27, 25, 0.09);
+  --chip: rgba(28, 27, 25, 0.055);
+
+  /* Verre : bordure et fond de l'îlot de navigation */
+  --gbd: rgba(255, 255, 255, 0.82);
+  --gsol: rgba(255, 255, 255, 0.8);
+
+  --ph: #dedfe1;
+  --sheet: rgba(250, 250, 251, 0.9);
+
+  --logo-f: grayscale(1);
+  --map-a: rgba(255, 255, 255, 0.95);
+  --map-b: rgba(255, 255, 255, 0.55);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  /* L'ancrage automatique du défilement déplace la page quand un bloc se
+     déplie au-dessus du point de lecture. La maquette le neutralise. */
+  overflow-anchor: none;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--fb);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--acc);
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: var(--fb);
+}
+
+::selection {
+  background: var(--acc);
+  color: #fff;
+}
+
+/* Accessibilité : le focus clavier doit rester visible partout. La maquette
+   ne le déclare pas, le site l'exige (RGAA 7.1, WCAG 2.4.7). */
+:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------- animations */
+@keyframes mgFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes mgMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mouvement réduit : le bandeau de logos et les flottements s'arrêtent.
+   Exigence WCAG 2.3.3, absente de la maquette. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------- dépliants et FAQ */
+summary::-webkit-details-marker {
+  display: none;
+}
+.cx-faq summary::-webkit-details-marker {
+  display: none;
+}
+.cx-faq[open] .cx-plus,
+details[open] .g3-plus {
+  transform: rotate(45deg);
+  background: var(--acc) !important;
+  color: #fff !important;
+}
+.cx-more > summary::-webkit-details-marker {
+  display: none;
+}
+.cx-more .cx-l2 {
+  display: none;
+}
+.cx-more[open] .cx-l1 {
+  display: none;
+}
+.cx-more[open] .cx-l2 {
+  display: inline;
+}
+
+/* ------------------------------------------------------------- curseur de plage */
+.mg-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--line);
+  outline: none;
+  margin: 0;
+}
+.mg-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #ff7c3c;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(28, 27, 25, 0.28);
+  cursor: grab;
+}
+.mg-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: #ff7c3c;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(28, 27, 25, 0.28);
+  cursor: grab;
+  border-color: #fff;
+}
+.mg-range:active::-webkit-slider-thumb {
+  cursor: grabbing;
+}
+
+/* --------------------------------------------------- bandeau de logos défilant */
+.mg-marquee:hover .mg-track {
+  animation-play-state: paused;
+}
+.mg-logo {
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.35s ease;
+}
+.mg-marquee:hover .mg-logo {
+  opacity: 0.4;
+}
+.mg-logo:hover {
+  opacity: 1 !important;
+  transform: translateY(-6px) scale(1.08);
+}
+
+/* ------------------------------------------------------------- rails sans barre */
+.mg-autorail {
+  scrollbar-width: none !important;
+}
+.mg-autorail::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Adaptations par largeur, reprises de la maquette dans son ordre.
+   ========================================================================== */
+
+/* Navigation : l'îlot se resserre, puis cède la place au bouton menu */
+.mg-nav > * {
+  white-space: nowrap;
+  flex: none;
+}
+.mg-burger {
+  display: none;
+}
+
+@media (max-width: 1180px) {
+  .mg-nav > * {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .mg-tel {
+    display: none !important;
+  }
+  .mg-implant {
+    display: none !important;
+  }
+}
+@media (max-width: 1080px) {
+  .mg-nav > * {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    font-size: 13.5px !important;
+  }
+}
+@media (max-width: 1000px) {
+  .mg-nav > * {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 880px) {
+  .mg-nav {
+    display: none !important;
+  }
+  .mg-burger {
+    display: inline-flex !important;
+  }
+}
+@media (max-width: 860px) {
+  .mg-nav > * {
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+    font-size: 12.5px !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-topwrap {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+}
+
+/* Grilles de valeurs */
+@media (max-width: 1000px) {
+  .mg-valg {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-valg > .mg-val {
+    grid-column: span 1 !important;
+  }
+  .mg-valg > .mg-val:first-child {
+    grid-column: 1 / -1 !important;
+  }
+  .mg-valg > .mg-val:last-child:nth-child(even) {
+    grid-column: 1 / -1 !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-valg {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-valg > .mg-val {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* Bento, avant-après, mosaïque, rails multiples */
+@media (min-width: 1001px) {
+  .mg-bento > [data-fill="1"] {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 1000px) {
+  .mg-rmulti {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-bento > *[data-open="1"] {
+    grid-column: span 2 !important;
+    grid-row: auto !important;
+  }
+  .mg-ba {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-rq3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-rail {
+    display: none;
+  }
+  .mg-tl > * {
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .mg-tl > * > *:first-child {
+    margin-bottom: 14px !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-bento {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-rows: auto !important;
+  }
+  .mg-bento > *[data-open="1"] {
+    grid-column: span 1 !important;
+  }
+  .mg-ba {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-rows: minmax(240px, auto) !important;
+  }
+}
+@media (max-width: 620px) {
+  .mg-rmulti {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* Lignes de tableau : des colonnes tombent avant que la ligne ne se casse */
+@media (max-width: 980px) {
+  .cx-lay {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .cx-toc {
+    display: none !important;
+  }
+  .mg-reslay {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 26px !important;
+  }
+  .mg-resrail {
+    position: static !important;
+  }
+  .mg-fmts,
+  .mg-sits {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 7px !important;
+    margin-bottom: 18px !important;
+  }
+  .mg-fmts > * {
+    width: auto !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 999px !important;
+    padding: 8px 14px !important;
+    gap: 7px !important;
+    white-space: nowrap;
+  }
+  .mg-sits > * {
+    border: 1px solid var(--line) !important;
+    border-radius: 999px !important;
+    padding: 7px 13px !important;
+    font-size: 12.5px !important;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 940px) {
+  .mg-mrow {
+    grid-template-columns: 1.5fr 0.9fr 104px !important;
+  }
+  .mg-mrow > *:nth-child(2),
+  .mg-mrow > *:nth-child(4) {
+    display: none;
+  }
+  .mg-prow {
+    grid-template-columns: auto minmax(0, 1fr) 84px !important;
+  }
+  .mg-prow > *:nth-child(3) {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .mg-r2 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 36px !important;
+  }
+}
+@media (min-width: 901px) {
+  .mg-flip > *:last-child {
+    order: -1;
+  }
+}
+@media (max-width: 760px) {
+  .cx-row {
+    grid-template-columns: 32px minmax(0, 1fr) !important;
+    gap: 8px 16px !important;
+  }
+  .cx-row > *:nth-child(3) {
+    grid-column: 2;
+  }
+  .mg-cmp {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .mg-cmp > *:first-child {
+    grid-column: 1/-1;
+  }
+  .mg-doclist > div {
+    grid-template-columns: 36px minmax(0, 1fr) !important;
+  }
+  .mg-doclist > div > span:last-child {
+    grid-column: 2;
+  }
+  .mg-mosaic {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-mosaic > *:first-child {
+    min-height: 340px !important;
+  }
+  .mg-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    row-gap: 20px !important;
+  }
+  .mg-steps > div:first-child {
+    display: none !important;
+  }
+  .mg-r3,
+  .mg-bento2,
+  .mg-rq3 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-bento2 > * {
+    grid-column: auto !important;
+  }
+  .mg-rq2 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+@media (max-width: 620px) {
+  .mg-mrow {
+    grid-template-columns: 1fr 104px !important;
+    gap: 12px !important;
+  }
+  .mg-mrow > *:nth-child(3) {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .mg-prow {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    gap: 14px !important;
+  }
+  .mg-prow > *:nth-child(4) {
+    text-align: left !important;
+    grid-column: 2 !important;
+  }
+}
+
+/* Mobile : marges, échelle des titres, arrondis, colonnes fusionnées */
+@media (max-width: 760px) {
+  .mg-pad,
+  .mg-site section > div[style*="max-width:1200px"],
+  .mg-site main > div[style*="max-width:1200px"],
+  .mg-site footer > div[style*="max-width:1200px"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .mg-site section[style*="max-width:1200px"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .mg-site {
+    --sec: 64px;
+  }
+  .mg-site h1 {
+    font-size: clamp(32px, 9vw, 42px) !important;
+    letter-spacing: -0.035em !important;
+  }
+  .mg-site h2 {
+    font-size: clamp(26px, 7.4vw, 34px) !important;
+  }
+  .mg-site [style*="position:sticky"][style*="top:110px"],
+  .mg-site [style*="position:sticky"][style*="top:100px"] {
+    position: static !important;
+  }
+  .mg-site [style*="border-radius:36px"] {
+    border-radius: 24px !important;
+  }
+  .mg-site [style*="padding:30px 34px"],
+  .mg-site [style*="padding:36px 40px"],
+  .mg-site [style*="padding:40px 44px"],
+  .mg-site [style*="padding:44px 48px"] {
+    padding: 24px 20px !important;
+  }
+  .mg-site table {
+    font-size: 13px;
+  }
+  .mg-site [style*="grid-column:span 2"],
+  .mg-site [style*="grid-column:span 3"] {
+    grid-column: auto !important;
+  }
+  .mg-site img[style*="aspect-ratio"] {
+    max-height: 70vw;
+  }
+}
+@media (max-width: 480px) {
+  .mg-site h1 {
+    font-size: clamp(28px, 8.6vw, 36px) !important;
+  }
+  .mg-site [style*='font:600 calc(clamp(56px'] {
+    font-size: 48px !important;
+  }
 }

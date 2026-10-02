@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Caveat, Poppins } from "next/font/google";
 
 import Bandeau from "@/components/consentement/Bandeau";
 import ConsentMode from "@/components/consentement/ConsentMode";
@@ -11,14 +11,35 @@ import { siteUrl } from "@/lib/seo/url";
 
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+/*
+ * Les deux familles de la charte Migen.
+ *
+ * Poppins porte tout le texte, Caveat les accents manuscrits. Caveat est le
+ * SUBSTITUT de Bryndan, police commerciale non fournie : à remplacer par les
+ * vrais .woff2 dès réception (noté dans le système de design de la maquette).
+ *
+ * `next/font` auto-héberge les fichiers et pose un `font-display: swap` :
+ * aucune requête vers fonts.googleapis.com au chargement, donc rien à
+ * conditionner au consentement, et pas de texte invisible pendant le
+ * téléchargement. La maquette les appelait par @import, ce qui aurait coûté
+ * une connexion tierce et un blocage du rendu.
+ *
+ * Les graisses sont déclarées explicitement : sans liste, next/font tire la
+ * variable complète et alourdit le premier rendu. Celles-ci sont exactement
+ * celles que la maquette utilise.
+ */
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const caveat = Caveat({
+  variable: "--font-caveat",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
 });
 
 /**
@@ -52,7 +73,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       // Le site est francophone : la langue déclarée conditionne la
       // prononciation des lecteurs d'écran et la césure du texte. Critère RGAA.
       lang="fr"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${poppins.variable} ${caveat.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">
         {/*
