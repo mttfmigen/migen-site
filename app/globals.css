@@ -36,6 +36,24 @@
   --acc-w: rgba(255, 124, 60, 0.11);
   --acc-ink: #7d3309;
 
+  /* États du formulaire. La maquette n'en a pas : elle ne montre jamais une
+     erreur de saisie ni une confirmation. Deux jetons sont donc posés ici, et
+     ils sont CHOISIS, pas empruntés à une palette de framework (le formulaire
+     portait `text-red-700` et `text-green-800`, deux couleurs de Tailwind qui
+     ne viennent pas de la charte).
+
+     Contraste mesuré, pas supposé : #b3261e donne 6,54:1 sur --card et 6,2:1
+     sur --bg, #1b5e20 donne 7,87:1 et 7,47:1. Les deux passent largement le
+     plancher de 4,5:1. Le rouge est volontairement sombre et peu saturé : à
+     côté de l'orange de marque (--acc, #ff7c3c), un rouge vif se lirait comme
+     une seconde couleur d'accent et non comme une alerte.
+
+     Le teinte-fond sert aux bandeaux de message, à 11 % comme --acc-w. */
+  --err: #b3261e;
+  --err-w: rgba(179, 38, 30, 0.09);
+  --ok: #1b5e20;
+  --ok-w: rgba(27, 94, 32, 0.09);
+
   --rad: 28px;
   --rad-s: 18px;
   --sec: 120px;

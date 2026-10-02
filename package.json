@@ -21,7 +21,8 @@
     "verifie:seo": "node scripts/verifie-seo.mjs",
     "verifie:fidelite": "node scripts/verifie-fidelite.mjs",
     "verifie:animations": "node scripts/verifie-animations.mjs",
-    "verifie:deploiement": "node scripts/verifie-deploiement.mjs"
+    "verifie:deploiement": "node scripts/verifie-deploiement.mjs",
+    "verifie:mobile": "node scripts/verifie-mobile.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

@@ -182,6 +182,10 @@ const ANNONCE: CSSProperties = {
 const ERREUR: CSSProperties = {
   font: "400 11.5px/1.5 var(--fb)",
   margin: "6px 0 0",
+  // `--err`, posé dans la charte, et non `text-red-700` de Tailwind : la couleur
+  // d'une alerte appartient à la charte du site, pas à la palette d'un outil.
+  // Mesuré à 6,54:1 sur le fond de la carte.
+  color: "var(--err)",
 };
 
 const ASTERISQUE: CSSProperties = { color: "var(--acc)" };
@@ -367,7 +371,7 @@ export function FormulaireContact({ formulaire, titre }: Proprietes) {
             )}
 
             {erreur ? (
-              <p id={identifiantErreur} className="text-red-700" style={ERREUR}>
+              <p id={identifiantErreur} style={ERREUR}>
                 {erreur}
               </p>
             ) : null}
@@ -409,8 +413,15 @@ export function FormulaireContact({ formulaire, titre }: Proprietes) {
       <p
         role="status"
         aria-live="polite"
-        style={ANNONCE}
-        className={`${styles.annonce} ${etat === "erreur" ? "text-red-700" : "text-green-800"}`}
+        style={{
+          ...ANNONCE,
+          // L'annonce ne dit pas son sens par la couleur SEULE : elle porte un
+          // texte explicite, et le lecteur d'écran l'entend par `role="status"`.
+          // La couleur n'est qu'un renfort, d'où des jetons de la charte et non
+          // une palette de framework.
+          color: etat === "erreur" ? "var(--err)" : "var(--ok)",
+        }}
+        className={styles.annonce}
       >
         {annonce}
       </p>

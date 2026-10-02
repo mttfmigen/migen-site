@@ -68,3 +68,13 @@ Scope: le site reproduit la maquette Claude Design à l'identique (animations, f
   CHECK: node scripts/verifie-seo.mjs
   EXPECT: métadonnées conformes
   EVIDENCE: exit=0, « 120 pages publiées contrôlées, 0 problème(s) ». CONTRÔLE POSITIF fourni par les données elles-mêmes, avant correction : le même script sortait en 1 avec 28 problèmes, puis 19 après exemption raisonnée des gabarits fiche, casclients, expertises et implantations (une étude de cas ou un hub ne vise pas de mot clé, et l'exemption porte sur le gabarit, pas sur une liste de chemins qui dériverait). Il nommait 8 pages publiées dont le titre répétait le h1, dont les plus commerciales du site, et 11 pages de vente sans mot clé. 53 pages corrigées en tout, chaque titre écrit après lecture du contenu de la page. LIMITE CONNUE ET ANNONCÉE PAR LA SORTIE : ce contrôle ne juge que le PUBLIÉ, la clé anonyme ne voyant pas les brouillons (et la sécurité au niveau des lignes empêchant même de les compter). Un agent correcteur l'a signalé de lui-même : ses 39 brouillons passaient « trivialement, le contrôle ne les lit pas ». Vérifié à la place par le MCP, qui lit tout : sur les 225 pages, 0 doublon de titre et 5 titres encore identiques au h1, tous en brouillon, dont 3 sur des pages encore sans contenu, où un titre serait deviné. Le contrôle juge les brouillons dès que SUPABASE_SERVICE_ROLE_KEY est posée, en avertissement (un brouillon n'est pas servi).
+
+- [ ] G14: le site tient sur téléphone : aucun débordement, cibles tactiles à 24 px, champs à 16 px
+  CHECK: node scripts/verifie-mobile.mjs
+  EXPECT: mise en page mobile conforme
+  EVIDENCE: pending
+
+- [ ] G15: aucun composant ne reste en Tailwind d'échafaudage (classes zinc, variantes dark:)
+  CHECK: node scripts/verifie-echafaudage.mjs
+  EXPECT: aucun échafaudage
+  EVIDENCE: pending
