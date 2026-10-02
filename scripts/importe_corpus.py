@@ -152,6 +152,22 @@ def paragraphes_prose(bloc: str) -> list[dict]:
     return out
 
 
+def en_paragraphe(texte: str) -> dict:
+    """
+    « **Gras d'attaque** : la suite » devient {accroche, texte}.
+
+    Le corpus écrit toutes ses prestations ainsi : un bénéfice en gras, puis la
+    méthode. Les blocs rendent les deux séparément, le gras appuyé. Rendre la
+    chaîne entière perdrait cette distinction, et la laisser en chaîne brute
+    casse le contrat de `types/contenu.ts`.
+    """
+    s = texte.strip()
+    m = re.match(r"^\*\*(.+?)\*\*\s*:?\s*(.*)$", s, re.S)
+    if m and m.group(2).strip():
+        return {"accroche": m.group(1).strip(), "texte": m.group(2).strip()}
+    return {"texte": s}
+
+
 def tableau(bloc: str) -> dict | None:
     lignes = [l.strip() for l in bloc.splitlines() if l.strip().startswith("|")]
     if len(lignes) < 2:
@@ -351,7 +367,10 @@ def construis(numero: int, bloc: str, fm: dict, alertes: list[str]) -> dict | No
         tab = tableau(bloc)
         lignes = []
         if tab and len(tab["entetes"]) >= 2:
-            lignes = [{"prestation": l[0], "benefice": l[1]} for l in tab["lignes"] if len(l) >= 2 and l[0]]
+            lignes = [
+                {"prestation": en_paragraphe(l[0]), "benefice": l[1]}
+                for l in tab["lignes"] if len(l) >= 2 and l[0].strip()
+            ]
         s = {"type": t, "lignes": lignes}
         if (ti := titre_de_section(bloc)): s["titre"] = ti
         if (pr := paragraphes_prose(bloc)): s["prose"] = pr
