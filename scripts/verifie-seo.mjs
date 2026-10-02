@@ -4,8 +4,16 @@
  *   node scripts/verifie-seo.mjs
  *
  * Lu DANS LA BASE, avec la clé anonyme, donc exactement ce que les visiteurs et
- * les robots reçoivent : une page en brouillon n'est pas jugée, et une page
- * publiée ne peut pas échapper au contrôle.
+ * les robots reçoivent : une page publiée ne peut pas échapper au contrôle.
+ *
+ * SA LIMITE, ET ELLE EST IMPORTANTE : une page en BROUILLON n'est pas jugée,
+ * parce que la clé anonyme ne la voit pas. Or un brouillon finit publié. Trente-
+ * neuf pages en brouillon avaient le même défaut que les huit pages publiées, et
+ * ce contrôle ne pouvait pas le dire : un agent qui les a corrigées l'a signalé
+ * lui-même, « la consigne est tenue, mais trivialement : le contrôle ne les lit
+ * pas ». La sortie annonce donc combien de pages échappent au jugement. Pour les
+ * couvrir, il faut `SUPABASE_SERVICE_ROLE_KEY`, aujourd'hui vide dans
+ * `.env.local` (voir docs/RESERVES-CONTENU.md).
  *
  * LES RÈGLES, et pourquoi chacune est là :
  *   · le titre n'est JAMAIS identique au h1. Règle explicite du projet. Deux
@@ -47,9 +55,24 @@ if (!URL_BASE || !CLE) {
   process.exit(1);
 }
 
+const entete = { apikey: CLE, Authorization: `Bearer ${CLE}` };
+
+/* Avec la clé de SERVICE, les brouillons sont lus eux aussi et jugés, mais en
+   AVERTISSEMENT : un brouillon n'est pas servi, il ne fait donc pas échouer le
+   contrôle. Sans cette clé, ils sont invisibles, et la sécurité au niveau des
+   lignes empêche même de les compter : la limite est alors annoncée telle quelle,
+   sans chiffre inventé. */
+const CLE_SERVICE = env.SUPABASE_SERVICE_ROLE_KEY;
+const brouillons = CLE_SERVICE
+  ? await fetch(
+      `${URL_BASE}/rest/v1/pages?select=path,titre_h1,contenu,seo(meta_title)&statut=neq.published&order=path`,
+      { headers: { apikey: CLE_SERVICE, Authorization: `Bearer ${CLE_SERVICE}` } },
+    ).then((r) => (r.ok ? r.json() : []))
+  : null;
+
 const reponse = await fetch(
   `${URL_BASE}/rest/v1/pages?select=path,titre_h1,mot_cle_principal,statut,contenu,seo(meta_title,meta_description,noindex)&statut=eq.published&order=path`,
-  { headers: { apikey: CLE, Authorization: `Bearer ${CLE}` } },
+  { headers: entete },
 );
 if (!reponse.ok) {
   console.error(`  la base répond ${reponse.status} : ${(await reponse.text()).slice(0, 200)}`);
@@ -114,6 +137,27 @@ for (const page of pages) {
 }
 
 console.log(`${pages.length} pages publiées contrôlées, ${problemes.length} problème(s).`);
+
+if (brouillons === null) {
+  console.log(
+    "  Les pages en BROUILLON ne sont pas jugées : la clé anonyme ne les voit pas, et la sécurité " +
+      "au niveau des lignes empêche même de les compter. Elles porteront les mêmes défauts le jour " +
+      "de leur publication. Pour les couvrir : SUPABASE_SERVICE_ROLE_KEY dans .env.local.",
+  );
+} else {
+  const fautifs = brouillons.filter((page) => {
+    const seo = Array.isArray(page.seo) ? page.seo[0] : page.seo;
+    return seo && nu(seo.meta_title) === nu(page.titre_h1);
+  });
+  console.log(
+    `  ${brouillons.length} brouillon(s) lus en plus : ${fautifs.length} dont le titre répète le h1. ` +
+      "Avertissement seulement, un brouillon n'est pas servi, mais à régler avant publication.",
+  );
+  for (const page of fautifs.slice(0, 20)) {
+    const vide = Object.keys(page.contenu ?? {}).length === 0;
+    console.log(`    ${page.path}${vide ? " (contenu vide : écrire le contenu avant le titre)" : ""}`);
+  }
+}
 if (problemes.length > 0) {
   for (const p of problemes.slice(0, 60)) console.error(`  ${p}`);
   if (problemes.length > 60) console.error(`  ... et ${problemes.length - 60} autre(s)`);
