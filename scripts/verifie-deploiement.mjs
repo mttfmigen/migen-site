@@ -24,7 +24,7 @@ import { promisify } from "node:util";
 
 const execute = promisify(execFile);
 
-const URL_PAR_DEFAUT = "https://migen-site-hdowctuqj-migenservice.vercel.app";
+const URL_PAR_DEFAUT = "https://migen-site-2vo0nipdl-migenservice.vercel.app";
 const BASE = process.argv[2] ?? process.env.DEPLOIEMENT_URL ?? URL_PAR_DEFAUT;
 
 /** Une page par gabarit, et le marqueur qui prouve que c'est bien lui qui rend. */
