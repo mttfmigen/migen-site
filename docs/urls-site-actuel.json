@@ -1,0 +1,1563 @@
+[
+ {
+  "url": "/a-propos/equipe/",
+  "niveau": 2,
+  "title": "L'équipe Migen, de la direction au terrain | Migen",
+  "h1": "Vos interlocuteurs",
+  "description": "Qui pilote vos interventions chez Migen : direction, chargés d'affaires, référents techniques et plus de 100 collaborateurs, de Lyon à Toulouse."
+ },
+ {
+  "url": "/bureau-etudes/bureau-etude-electrique/",
+  "niveau": 2,
+  "title": "Bureau d'étude électrique industriel | Migen",
+  "h1": "Bureau d'étude électrique : du schéma à l'armoire qui tourne",
+  "description": "Bureau d'étude électrique : relevé de l'existant, schémas, armoire, dossier technique, raccordement et mise en service par nos électriciens. 04 78 33 72 05."
+ },
+ {
+  "url": "/bureau-etudes/bureau-etude-electronique/",
+  "niveau": 2,
+  "title": "Bureau d'étude électronique industrielle | Migen",
+  "h1": "Bureau d'étude électronique : une carte pensée pour être réparée",
+  "description": "Bureau d'étude électronique : conception électronique, carte, obsolescence, intégration machine, par des équipes qui dépannent toute l'année. 04 78 33 72 05."
+ },
+ {
+  "url": "/bureau-etudes/",
+  "niveau": 1,
+  "title": "Bureau d'étude mécanique et ingénierie | Migen",
+  "h1": "Bureau d'étude mécanique : un plan qui tient au montage",
+  "description": "Bureau d'étude mécanique, électronique et pneumatique : conception, calculs, dossier de fabrication, montage. Rappel dans l'heure au 04 78 33 72 05."
+ },
+ {
+  "url": "/bureau-etudes/mise-en-conformite-machine/",
+  "niveau": 2,
+  "title": "Mise en conformité machine : audit et travaux | Migen",
+  "h1": "Mise en conformité machine : fixez le calendrier avant l'inspection",
+  "description": "Mise en conformité machine : ce que la réglementation exige, comment se déroule l'audit, et qui réalise les travaux. Techniciens évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/carriere/agent-de-maintenance/",
+  "niveau": 2,
+  "title": "Agent de maintenance industrielle | Migen",
+  "h1": "Agent de maintenance industrielle",
+  "description": "Agent de maintenance industrielle : missions, habilitations, formation et salaire du métier. Migen recrute des agents de maintenance partout en France."
+ },
+ {
+  "url": "/carriere/alternance/",
+  "niveau": 2,
+  "title": "Alternance maintenance industrielle | Migen",
+  "h1": "Alternance maintenance industrielle",
+  "description": "Alternance maintenance industrielle : rémunération, habilitations financées, missions proches de chez vous. Migen forme ses alternants techniciens. Postulez."
+ },
+ {
+  "url": "/carriere/automaticien/",
+  "niveau": 2,
+  "title": "Automaticien | Migen",
+  "h1": "Automaticien",
+  "description": "Automaticien : missions, automates, habilitations et salaire du métier. Migen recrute des automaticiens Siemens et Schneider partout en France."
+ },
+ {
+  "url": "/carriere/automaticien/salaire/",
+  "niveau": 3,
+  "title": "Salaire automaticien : fourchettes et évolution | Migen",
+  "h1": "Salaire automaticien",
+  "description": "Salaire automaticien : fourchettes réelles par expérience, secteur et région, et ce qui fait monter la rémunération. Par Migen, employeur d'automaticiens."
+ },
+ {
+  "url": "/carriere/electromecanicien/competences/",
+  "niveau": 3,
+  "title": "Compétences électromécanicien | Migen",
+  "h1": "Compétences électromécanicien",
+  "description": "Compétences électromécanicien : savoir-faire techniques, diagnostic, sécurité et qualités attendues. Migen recrute des électromécaniciens en France."
+ },
+ {
+  "url": "/carriere/electromecanicien/",
+  "niveau": 2,
+  "title": "Électromécanicien | Migen",
+  "h1": "Électromécanicien",
+  "description": "Électromécanicien : missions, habilitations, formation et salaire du métier. Migen recrute des électromécaniciens de maintenance industrielle partout en France."
+ },
+ {
+  "url": "/carriere/electromecanicien/salaire/",
+  "niveau": 3,
+  "title": "Salaire électromécanicien | Migen",
+  "h1": "Salaire électromécanicien",
+  "description": "Salaire électromécanicien : ce qui fait varier la rémunération, du débutant au confirmé, par secteur et région. Migen recrute partout en France."
+ },
+ {
+  "url": "/carriere/",
+  "niveau": 1,
+  "title": "Carrière, migen",
+  "h1": "Le terrain, avec les moyens de bien le faire.",
+  "description": "Rejoignez migen : habilitations prises en charge, formation continue, missions chez des industriels de premier rang. Postes ouverts et candidature en quatre écrans."
+ },
+ {
+  "url": "/carriere/responsable-maintenance/",
+  "niveau": 2,
+  "title": "Responsable maintenance | Migen",
+  "h1": "Responsable maintenance",
+  "description": "Responsable maintenance : missions, compétences, formation et salaire du métier. Migen recrute et forme les responsables maintenance de l'industrie en France."
+ },
+ {
+  "url": "/carriere/roboticien/",
+  "niveau": 2,
+  "title": "Roboticien | Migen",
+  "h1": "Roboticien",
+  "description": "Roboticien : missions, robots, formation et salaire du métier. Migen recrute des roboticiens ABB et Fanuc pour la maintenance robotique industrielle en France."
+ },
+ {
+  "url": "/carriere/technicien-de-maintenance/formation/",
+  "niveau": 3,
+  "title": "Formation technicien de maintenance | Migen",
+  "h1": "Formation technicien de maintenance",
+  "description": "Formation technicien de maintenance : diplômes, alternance, titre professionnel, reconversion adulte et débouchés. Migen recrute partout en France."
+ },
+ {
+  "url": "/carriere/technicien-de-maintenance/",
+  "niveau": 2,
+  "title": "Technicien de maintenance | Migen",
+  "h1": "Technicien de maintenance",
+  "description": "Technicien de maintenance : missions, compétences, formation, salaire et emploi du métier. Migen recrute des techniciens de maintenance en France."
+ },
+ {
+  "url": "/carriere/technicien-de-maintenance/salaire/",
+  "niveau": 3,
+  "title": "Salaire technicien de maintenance : fourchettes | Migen",
+  "h1": "Salaire technicien de maintenance",
+  "description": "Salaire technicien de maintenance : fourchettes réelles par expérience, secteur et région, et ce qui fait monter la rémunération. Par Migen, employeur."
+ },
+ {
+  "url": "/carriere/technicien-itinerant/",
+  "niveau": 2,
+  "title": "Technicien de maintenance itinérant | Migen",
+  "h1": "Technicien de maintenance itinérant",
+  "description": "Technicien de maintenance itinérant : missions, déplacements, salaire et CDI. Migen recrute des techniciens itinérants pour intervenir chez ses clients en France."
+ },
+ {
+  "url": "/confidentialite/",
+  "niveau": 1,
+  "title": "Politique de confidentialité, migen",
+  "h1": "Politique de confidentialité",
+  "description": "Traitement des données personnelles, cookies et exercice de vos droits sur le site migen."
+ },
+ {
+  "url": "/contact/",
+  "niveau": 1,
+  "title": "Contact & devis, migen",
+  "h1": "Dites-nous ce qu'il faut tenir.",
+  "description": "Décrivez votre besoin : un chargé d'affaires sélectionne les profils adaptés et vous rappelle dans l'heure aux horaires ouvrés. Astreinte 7 j/7."
+ },
+ {
+  "url": "/entreprise-maintenance-industrielle/",
+  "niveau": 1,
+  "title": "Prestataire maintenance industrielle en France | Migen",
+  "h1": "Entreprise de maintenance industrielle",
+  "description": "Entreprise maintenance industrielle partout en France : techniciens évalués, 10 % des candidats retenus, rappel dans l'heure, astreinte 24/24 et 7/7."
+ },
+ {
+  "url": "/equipe/",
+  "niveau": 1,
+  "title": "Équipe & direction, migen",
+  "h1": "Vos interlocuteurs, avec un nom et un numéro.",
+  "description": "Les femmes et les hommes de migen : direction, chargés d'affaires et équipes qui pilotent vos projets industriels."
+ },
+ {
+  "url": "/expertises/automatisme/",
+  "niveau": 2,
+  "title": "Automaticien SIEMENS et Schneider sur site | Migen",
+  "h1": "Automatisme industriel",
+  "description": "Automatisme industriel : diagnostic d'automate, reprise de programme, sauvegardes, migration d'obsolescence. Automaticiens évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/automatisme/programmation-automate/",
+  "niveau": 3,
+  "title": "Automaticien pour reprendre votre code | Migen",
+  "h1": "Programmation automate",
+  "description": "Programmation automate : reprise de code orphelin, dépannage par le programme, migration Siemens et Schneider. Automaticiens évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/automatisme/schneider/",
+  "niveau": 3,
+  "title": "Dépannage automate Modicon Schneider | Migen",
+  "h1": "Automate schneider",
+  "description": "Automate Schneider : diagnostic, dépannage et reprise de programme sur toute la gamme Modicon. Automaticiens évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/automatisme/siemens/",
+  "niveau": 3,
+  "title": "Automaticien Siemens SIMATIC et TIA Portal | Migen",
+  "h1": "Automaticien Siemens",
+  "description": "Automaticien Siemens : diagnostic, dépannage et reprise de programme sur parc SIMATIC, TIA Portal et STEP 7. Techniciens évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/electrique/",
+  "niveau": 2,
+  "title": "Électricien de maintenance industrielle | Migen",
+  "h1": "Maintenance électrique industrielle",
+  "description": "Maintenance électrique industrielle : armoires, moteurs, variateurs, thermographie. Techniciens habilités partout en France, rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/electromecanique/",
+  "niveau": 2,
+  "title": "Électromécanicien de maintenance sur site | Migen",
+  "h1": "Électromécanique industrielle",
+  "description": "Électromécanique industrielle : moteurs, variateurs, transmissions, capteurs diagnostiqués par un seul intervenant. Rappel dans l'heure, partout en France."
+ },
+ {
+  "url": "/expertises/hydraulique/",
+  "niveau": 2,
+  "title": "Dépannage de circuits hydrauliques | Migen",
+  "h1": "Maintenance hydraulique",
+  "description": "Maintenance hydraulique industrielle : pression, fuites, vérins, centrales, analyse de fluide. Techniciens évalués partout en France, rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/hydraulique/verin-hydraulique/",
+  "niveau": 3,
+  "title": "Réparer un vérin hydraulique plutôt que le remplacer",
+  "h1": "Réparation vérin hydraulique",
+  "description": "Réparation vérin hydraulique : diagnostic sur site, démontage, joints neufs, essais en pression et remise en service. Toutes marques. Rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/",
+  "niveau": 1,
+  "title": "Maintenance des équipements industriels | Migen",
+  "h1": "Maintenance des équipements industriels",
+  "description": "Maintenance des équipements industriels : dix domaines techniques, des techniciens de maintenance évalués, seuls 10 % des candidats retenus."
+ },
+ {
+  "url": "/expertises/mecanique/",
+  "niveau": 2,
+  "title": "Mécanicien de maintenance sur site | Migen",
+  "h1": "Maintenance mécanique",
+  "description": "Maintenance mécanique industrielle : roulements, transmissions, convoyeurs, presses. Mécaniciens évalués, partout en France. Rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/mecanique/lubrification/",
+  "niveau": 3,
+  "title": "Plan de graissage et analyse d'huile | Migen",
+  "h1": "Lubrification industrielle",
+  "description": "Lubrification industrielle : plan de graissage écrit, analyse d'huile et rondes tenues par des techniciens évalués. Rappel dans l'heure, partout en France."
+ },
+ {
+  "url": "/expertises/mecanique/machine-outil/",
+  "niveau": 3,
+  "title": "Maintenance de tours et centres d'usinage | Migen",
+  "h1": "Maintenance machine outil",
+  "description": "Maintenance machine outil : diagnostic, géométrie, axes et commande numérique sur tour, fraiseuse et centre d'usinage. Rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/pneumatique/",
+  "niveau": 2,
+  "title": "Air comprimé industriel : chasse aux fuites | Migen",
+  "h1": "Maintenance pneumatique",
+  "description": "Maintenance pneumatique industrielle : fuites d'air comprimé, vérins, distributeurs, sécheurs et filtres. Techniciens évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/robotique/abb/",
+  "niveau": 3,
+  "title": "Roboticien ABB indépendant | Migen",
+  "h1": "Maintenance de robots ABB",
+  "description": "ABB robotique : dépannage, préventif et remise en précision de vos robots ABB par des roboticiens évalués. Rappel dans l'heure, partout en France."
+ },
+ {
+  "url": "/expertises/robotique/fanuc/",
+  "niveau": 3,
+  "title": "Maintenance de robots Fanuc sur site | Migen",
+  "h1": "Fanuc robotique",
+  "description": "Fanuc robotique : dépannage, préventif et remise en service de vos robots et machines Fanuc. Techniciens évalués, sauvegardes datées, rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/robotique/",
+  "niveau": 2,
+  "title": "Roboticien ABB et Fanuc pour votre cellule | Migen",
+  "h1": "Maintenance robotique",
+  "description": "Maintenance robotique : préventif, dépannage et remise en service de vos robots industriels. Roboticiens ABB et Fanuc évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/robotique/integrateur-robotique/",
+  "niveau": 3,
+  "title": "Reprendre une cellule après l'intégrateur | Migen",
+  "h1": "Intégrateur robotique",
+  "description": "Intégrateur robotique : nous reprenons la cellule après l'installation, mise en service, réglage, dépannage. Roboticiens évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/soudure/",
+  "niveau": 2,
+  "title": "Soudeur de maintenance sur votre site | Migen",
+  "h1": "Soudure industrielle",
+  "description": "Soudure industrielle de réparation : châssis fissurés, rechargement, tôlerie de maintenance. Procédés MIG, MAG, TIG, arc. Rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/specialisations-constructeur/",
+  "niveau": 2,
+  "title": "Automaticien Siemens, Schneider, Allen Bradley | Migen",
+  "h1": "Automaticien industriel multimarques",
+  "description": "Automaticien industriel multimarques : Siemens, Schneider, Rockwell, machines spéciales. Techniciens évalués, rappel dans l'heure, partout en France."
+ },
+ {
+  "url": "/expertises/tuyauterie/",
+  "niveau": 2,
+  "title": "Tuyauteur industriel : fuites et tronçons | Migen",
+  "h1": "Maintenance tuyauterie industrielle",
+  "description": "Maintenance tuyauterie industrielle : fuites, mesure d'épaisseur, remplacement de tronçons, essais en pression. Techniciens évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/tuyauterie/nettoyage/",
+  "niveau": 3,
+  "title": "Nettoyage de tuyauterie industrielle | Migen",
+  "h1": "Nettoyage tuyauterie industrielle",
+  "description": "Nettoyage tuyauterie industrielle : diagnostic du dépôt, décapage chimique ou mécanique, rinçage et réception écrite. Rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/types-de-maintenance/",
+  "niveau": 2,
+  "title": "Quel type de maintenance choisir | Migen",
+  "h1": "Types de maintenance",
+  "description": "Types de maintenance : corrective, curative, préventive, conditionnelle, prévisionnelle, prédictive. Ce que chacune déclenche, et comment les doser."
+ },
+ {
+  "url": "/expertises/types-de-maintenance/maintenance-ameliorative/",
+  "niveau": 3,
+  "title": "Supprimer la panne qui revient | Migen",
+  "h1": "Maintenance améliorative",
+  "description": "Maintenance améliorative : supprimer la cause des pannes qui reviennent au lieu de réparer deux fois. Techniciens évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/types-de-maintenance/maintenance-conditionnelle/",
+  "niveau": 3,
+  "title": "Intervenir sur l'état réel, pas sur le calendrier | Migen",
+  "h1": "Maintenance conditionnelle",
+  "description": "Maintenance conditionnelle : définition NF EN 13306, technologies de surveillance, seuils et mise en place. Puis qui relève et qui interprète chez vous."
+ },
+ {
+  "url": "/expertises/types-de-maintenance/maintenance-corrective/",
+  "niveau": 3,
+  "title": "Réparer après la panne, et arrêter de payer | Migen",
+  "h1": "Maintenance corrective",
+  "description": "Maintenance corrective : définition, immédiate ou différée, avantages, limites et coût réel. Puis comment ramener le correctif à une part minoritaire."
+ },
+ {
+  "url": "/expertises/types-de-maintenance/maintenance-curative/",
+  "niveau": 3,
+  "title": "Réparer pour de bon, cause racine traitée | Migen",
+  "h1": "Maintenance curative",
+  "description": "Maintenance curative : définition, différence avec la corrective, déroulé d'une intervention, coût complet et indicateurs. Puis qui répare vraiment."
+ },
+ {
+  "url": "/expertises/types-de-maintenance/maintenance-palliative/",
+  "niveau": 3,
+  "title": "Maintenance palliative : dépannage provisoire | Migen",
+  "h1": "Maintenance palliative",
+  "description": "Maintenance palliative : remise en marche provisoire de votre équipement, réparation définitive tracée. Techniciens évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/expertises/types-de-maintenance/maintenance-predictive/",
+  "niveau": 3,
+  "title": "Voir la panne venir, et la planifier | Migen",
+  "h1": "Maintenance prédictive",
+  "description": "Maintenance prédictive : définition, capteurs, données, modèles et retour sur investissement. Puis qui exécute les travaux que le modèle annonce."
+ },
+ {
+  "url": "/expertises/types-de-maintenance/maintenance-preventive/",
+  "niveau": 3,
+  "title": "Plan de maintenance préventive tenu | Migen",
+  "h1": "Maintenance préventive",
+  "description": "Maintenance préventive : définition, les 3 types, le plan en 5 étapes et les indicateurs. Puis qui exécute les campagnes quand vos équipes sont prises."
+ },
+ {
+  "url": "/expertises/types-de-maintenance/maintenance-previsionnelle/",
+  "niveau": 3,
+  "title": "Suivre la tendance, programmer avant la casse | Migen",
+  "h1": "Maintenance prévisionnelle",
+  "description": "Maintenance prévisionnelle : définition, signaux de dégradation, chaîne de la donnée et mise en place en 6 étapes. Puis qui exécute ce que la pente annonce."
+ },
+ {
+  "url": "/expertises/types-de-maintenance/preventive-systematique/",
+  "niveau": 3,
+  "title": "Programme de préventif systématique tenu | Migen",
+  "h1": "Maintenance préventive systématique",
+  "description": "Maintenance préventive systématique : gammes écrites, périodicité juste, échéancier tenu par des techniciens évalués. Rappel dans l'heure."
+ },
+ {
+  "url": "/guides/choisir-une-entreprise-de-maintenance/",
+  "niveau": 2,
+  "title": "Choisir son prestataire de maintenance | Migen",
+  "h1": "Comment choisir une entreprise de maintenance industrielle",
+  "description": "Entreprise maintenance industrielle : les critères qui comptent, les questions à poser en rendez-vous, les signaux d'alerte et comment comparer deux devis."
+ },
+ {
+  "url": "/guides/reussir-un-transfert-industriel/",
+  "niveau": 2,
+  "title": "Transfert industriel : le guide complet | Migen",
+  "h1": "Réussir un transfert industriel : la méthode de bout en bout",
+  "description": "Transfert industriel : la méthode de bout en bout, de l'inventaire des machines au redémarrage. Ordre de démontage, repérage, remontage, essais, checklist."
+ },
+ {
+  "url": "/implantations/",
+  "niveau": 1,
+  "title": "Maintenance industrielle partout en France | Migen",
+  "h1": "Un siège à Lyon, dix hubs de techniciens, des interventions partout en France.",
+  "description": "Maintenance industrielle France : quatre agences dont Lyon, notre siège, des hubs de techniciens, des interventions partout ailleurs. Rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/lille/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Lille : Hauts-de-France | Migen",
+  "h1": "La maintenance industrielle à Lille et dans les Hauts-de-France",
+  "description": "Maintenance industrielle Lille : agroalimentaire, textile technique, ferroviaire du Valenciennois, sidérurgie de Dunkerque. Rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/lyon/grenoble/",
+  "niveau": 3,
+  "title": "Maintenance industrielle Grenoble : Isère | Migen",
+  "h1": "La maintenance industrielle à Grenoble et dans l'Isère",
+  "description": "Maintenance industrielle Grenoble : microélectronique de Crolles, chimie du Pont-de-Claix, papeteries du Grésivaudan. Rappel dans l'heure, astreinte 24/7."
+ },
+ {
+  "url": "/implantations/lyon/haute-savoie/",
+  "niveau": 3,
+  "title": "Maintenance industrielle Haute Savoie : Arve | Migen",
+  "h1": "La maintenance industrielle en Haute-Savoie, de l'Arve au Genevois",
+  "description": "Maintenance industrielle Haute Savoie : décolletage de la vallée de l'Arve, mécatronique d'Annecy, agroalimentaire du Chablais. Rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/lyon/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Lyon : siège et hub | Migen",
+  "h1": "La maintenance industrielle à Lyon, depuis notre siège",
+  "description": "Maintenance industrielle Lyon : siège Migen à Limonest, dépannage et préventif de la vallée de la chimie à l'est lyonnais. Rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/lyon/rhone/",
+  "niveau": 3,
+  "title": "Maintenance industrielle Rhône : le département | Migen",
+  "h1": "La maintenance industrielle dans le Rhône, du Beaujolais à Feyzin",
+  "description": "Maintenance industrielle Rhône : vallée de la chimie, est lyonnais, val de Saône et Beaujolais. Techniciens évalués, rappel dans l'heure, astreinte 24/7."
+ },
+ {
+  "url": "/implantations/lyon/saint-etienne/",
+  "niveau": 3,
+  "title": "Maintenance industrielle Saint-Étienne, Loire | Migen",
+  "h1": "Maintenance industrielle à Saint-Étienne et dans la Loire",
+  "description": "Maintenance industrielle Saint-Étienne : machines-outils, presses et lignes, de la vallée du Gier au Forez. Rappel dans l'heure, astreinte 24/24 en option."
+ },
+ {
+  "url": "/implantations/lyon/valence/",
+  "niveau": 3,
+  "title": "Maintenance industrielle Valence : Drôme | Migen",
+  "h1": "La maintenance industrielle à Valence et dans la Drôme",
+  "description": "Maintenance industrielle Valence : embouteillage et fruits de la plaine, Rovaltain, logistique de l'axe rhodanien. Rappel dans l'heure, astreinte 24/7."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-avignon/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Avignon et Vaucluse | Migen",
+  "h1": "Maintenance industrielle à Avignon et dans le Vaucluse",
+  "description": "Maintenance industrielle Avignon : dépannage, préventif et astreinte 24/24 et 7/7, de Courtine à Cavaillon et Sorgues. Rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-besancon/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Besançon et le Doubs | Migen",
+  "h1": "Maintenance industrielle à Besançon et dans le Doubs",
+  "description": "Maintenance industrielle Besançon : dépannage, préventif et astreinte 24/24 et 7/7, de Temis à École-Valentin. Rappel dans l'heure, techniciens évalués."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-caen/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Caen : astreinte 24/24 | Migen",
+  "h1": "Maintenance industrielle à Caen et dans le Calvados",
+  "description": "Maintenance industrielle Caen : dépannage, préventif et astreinte 24/24 et 7/7, de Mondeville à Colombelles. Rappel dans l'heure, techniciens évalués."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-clermont-ferrand/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Clermont-Ferrand | Migen",
+  "h1": "Maintenance industrielle à Clermont-Ferrand et dans le Puy-de-Dôme",
+  "description": "Maintenance industrielle Clermont-Ferrand : caoutchouc, agroalimentaire de Limagne, aéronautique d'Issoire. Techniciens évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-dijon/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Dijon : dépannage 24/24 | Migen",
+  "h1": "Maintenance industrielle à Dijon et en Côte-d'Or",
+  "description": "Maintenance industrielle Dijon : agroalimentaire, pharmacie et usinage en Côte-d'Or, de Longvic au Val de Saône. Techniciens évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-dunkerque/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Dunkerque et le port | Migen",
+  "h1": "Maintenance industrielle à Dunkerque et sur le littoral",
+  "description": "Maintenance industrielle Dunkerque : dépannage, préventif et astreinte 24/24 et 7/7, de Grande-Synthe à Gravelines. Rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-le-havre/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Le Havre : dépannage | Migen",
+  "h1": "Maintenance industrielle au Havre et dans l'estuaire de la Seine",
+  "description": "Maintenance industrielle Le Havre : machines tournantes, procédés continus et manutention portuaire, par des techniciens évalués. Rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-le-mans/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Le Mans : dépannage | Migen",
+  "h1": "Maintenance industrielle au Mans et dans la Sarthe",
+  "description": "Maintenance industrielle Le Mans : équipementiers automobiles, agroalimentaire sarthois et plasturgie. Techniciens évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-limoges/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Limoges et Brive | Migen",
+  "h1": "Maintenance industrielle à Limoges et en Haute-Vienne",
+  "description": "Maintenance industrielle Limoges : dépannage, préventif et astreinte 24/24 et 7/7, de Saint-Junien à Brive-la-Gaillarde. Rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-marseille/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Marseille : dépannage | Migen",
+  "h1": "Maintenance industrielle à Marseille et dans les Bouches-du-Rhône",
+  "description": "Maintenance industrielle Marseille : techniciens habilités pour Fos, l'étang de Berre et les ateliers de Rousset. Rappel dans l'heure, astreinte 24/24."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-metz/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Metz : dépannage 24/24 | Migen",
+  "h1": "Maintenance industrielle à Metz et en Moselle",
+  "description": "Maintenance industrielle Metz : métallurgie, automobile et logistique du sillon mosellan. Dispositif documenté sur un site messin, rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-montpellier/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Montpellier, Hérault | Migen",
+  "h1": "Maintenance industrielle à Montpellier et dans l'Hérault",
+  "description": "Maintenance industrielle Montpellier : dépannage, préventif et astreinte 24/24 et 7/7, de Lattes à Béziers et Sète. Rappel dans l'heure, techniciens évalués."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-nice/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Nice et Alpes-Maritimes | Migen",
+  "h1": "Maintenance industrielle à Nice et dans les Alpes-Maritimes",
+  "description": "Maintenance industrielle Nice : dépannage, préventif et astreinte 24/24 et 7/7, de Carros à Grasse et Cannes. Rappel dans l'heure, techniciens évalués."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-orleans/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Orléans : dépannage | Migen",
+  "h1": "Maintenance industrielle à Orléans et dans le Loiret",
+  "description": "Maintenance industrielle Orléans : plateformes logistiques de l'A10, cosmétique et pharmacie du Loiret. Techniciens évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-pau/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Pau, Béarn et Lacq | Migen",
+  "h1": "Maintenance industrielle à Pau et dans le Béarn",
+  "description": "Maintenance industrielle Pau : dépannage, préventif et astreinte 24/24 et 7/7, du bassin de Lacq à Serres-Castet. Rappel dans l'heure, techniciens évalués."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-poitiers/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Poitiers : dépannage | Migen",
+  "h1": "Maintenance industrielle à Poitiers et dans la Vienne",
+  "description": "Maintenance industrielle Poitiers : mécanique de précision de Châtellerault, logistique du Futuroscope, carrières et levage. Rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-reims/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Reims : dépannage 24/24 | Migen",
+  "h1": "Maintenance industrielle à Reims et dans la Marne",
+  "description": "Maintenance industrielle Reims : embouteillage, campagne betteravière et emballage dans la Marne. Techniciens évalués, rappel dans l'heure, astreinte."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-tours/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Tours : dépannage 24/24 | Migen",
+  "h1": "Maintenance industrielle à Tours et en Touraine",
+  "description": "Maintenance industrielle Tours : façonnage, froid industriel et usinage en Touraine, de Saint-Pierre-des-Corps à Joué-lès-Tours. Rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-troyes/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Troyes et Aube | Migen",
+  "h1": "Maintenance industrielle à Troyes et dans l'Aube",
+  "description": "Maintenance industrielle Troyes : dépannage, préventif et astreinte 24/24 et 7/7, de Sainte-Savine à Nogent-sur-Seine. Rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/maintenance-industrielle-valenciennes/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Valenciennes, Nord | Migen",
+  "h1": "Maintenance industrielle à Valenciennes et dans le Nord",
+  "description": "Maintenance industrielle Valenciennes : dépannage, préventif et astreinte 24/24 et 7/7, d'Onnaing à Denain et Douai. Rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/nantes/brest/",
+  "niveau": 3,
+  "title": "Maintenance industrielle Brest et Finistère | Migen",
+  "h1": "Maintenance industrielle à Brest et dans le Finistère",
+  "description": "Maintenance industrielle Brest : naval, agroalimentaire et levage portuaire, de Guipavas à Quimper. Techniciens évalués, rappel dans l'heure, astreinte."
+ },
+ {
+  "url": "/implantations/nantes/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Nantes : hub technicien | Migen",
+  "h1": "La maintenance industrielle à Nantes et dans l'estuaire",
+  "description": "Maintenance industrielle Nantes : aéronautique, naval et agroalimentaire du Grand Ouest. Techniciens évalués, rappel dans l'heure, astreinte 24/7."
+ },
+ {
+  "url": "/implantations/nantes/loire-atlantique/",
+  "niveau": 3,
+  "title": "Maintenance industrielle Loire-Atlantique (44) | Migen",
+  "h1": "Maintenance industrielle en Loire-Atlantique",
+  "description": "Maintenance industrielle Loire-Atlantique : naval de Saint-Nazaire, agroalimentaire, machinisme d'Ancenis. Hub de techniciens à Nantes, rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/nantes/rennes/",
+  "niveau": 3,
+  "title": "Maintenance industrielle Rennes et Ille-et-Vilaine | Migen",
+  "h1": "Maintenance industrielle à Rennes et en Ille-et-Vilaine",
+  "description": "Maintenance industrielle Rennes : agroalimentaire, équipementiers auto de Chartres-de-Bretagne, électronique. Techniciens évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/paris/essonne/",
+  "niveau": 3,
+  "title": "Maintenance industrielle Essonne (91) | Migen",
+  "h1": "Maintenance industrielle en Essonne",
+  "description": "Maintenance industrielle Essonne : logistique de Massy, mécanique de Corbeil, pilotes de Saclay. Techniciens évalués, rappel dans l'heure, astreinte 24/24."
+ },
+ {
+  "url": "/implantations/paris/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Paris : nos techniciens | Migen",
+  "h1": "Maintenir vos machines dans le tissu le plus dense de France",
+  "description": "Maintenance industrielle Paris : nos techniciens Migen basés à Paris, ateliers en fond de cour, entrepôts de couronne, axe Seine. Rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/paris/rouen/",
+  "niveau": 3,
+  "title": "Maintenance industrielle Rouen, axe Seine | Migen",
+  "h1": "Maintenance industrielle à Rouen et dans la vallée de Seine",
+  "description": "Maintenance industrielle Rouen : procédés continus, papier-carton, logistique portuaire de la vallée de Seine. Rappel dans l'heure, astreinte 24/24 en option."
+ },
+ {
+  "url": "/implantations/strasbourg/alsace/",
+  "niveau": 3,
+  "title": "Maintenance industrielle Alsace, Bas-Rhin et Haut-Rhin | Migen",
+  "h1": "Maintenance industrielle en Alsace, du Bas-Rhin au Haut-Rhin",
+  "description": "Maintenance industrielle Alsace : brasserie, chimie, logistique rhénane, équipementiers auto. Hub de techniciens à Strasbourg, rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/strasbourg/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Strasbourg : nos techniciens | Migen",
+  "h1": "La maintenance industrielle à Strasbourg et dans le Bas-Rhin",
+  "description": "Maintenance industrielle Strasbourg : port rhénan, brasseries, pharma d'Illkirch, automobile du Grand Est. Rappel dans l'heure, astreinte 24/7."
+ },
+ {
+  "url": "/implantations/strasbourg/mulhouse/",
+  "niveau": 3,
+  "title": "Maintenance industrielle Mulhouse, Haut-Rhin | Migen",
+  "h1": "Maintenance industrielle à Mulhouse et dans le Haut-Rhin",
+  "description": "Maintenance industrielle Mulhouse : automobile, mécanique et chimie du Sud-Alsace, de Thann à Saint-Louis. Techniciens évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/toulouse/bordeaux/",
+  "niveau": 3,
+  "title": "Maintenance industrielle Bordeaux, Mérignac | Migen",
+  "h1": "Maintenance industrielle à Bordeaux et dans la métropole",
+  "description": "Maintenance industrielle Bordeaux : chais et embouteillage, aéronautique de Mérignac, logistique de rocade. Techniciens évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/toulouse/charente/",
+  "niveau": 3,
+  "title": "Maintenance industrielle Charente, Angoulême | Migen",
+  "h1": "Maintenance industrielle en Charente",
+  "description": "Maintenance industrielle charente : chais de Cognac, papier-carton d'Angoulême, carrières. Techniciens itinérants, rappel dans l'heure, astreinte cadrée."
+ },
+ {
+  "url": "/implantations/toulouse/gironde/",
+  "niveau": 3,
+  "title": "Maintenance industrielle Gironde (33) | Migen",
+  "h1": "Maintenance industrielle en Gironde",
+  "description": "Maintenance industrielle Gironde : rive droite industrielle, chais du Libournais, scieries du massif landais. Rappel dans l'heure, astreinte en option."
+ },
+ {
+  "url": "/implantations/toulouse/haute-garonne/",
+  "niveau": 3,
+  "title": "Maintenance industrielle Haute-Garonne (31) | Migen",
+  "h1": "Maintenance industrielle en Haute-Garonne",
+  "description": "Maintenance industrielle Haute-Garonne : sous-traitance aéronautique, métallurgie, agroalimentaire. Hub de techniciens à Toulouse, rappel dans l'heure."
+ },
+ {
+  "url": "/implantations/toulouse/",
+  "niveau": 2,
+  "title": "Maintenance industrielle Toulouse : nos techniciens | Migen",
+  "h1": "La maintenance industrielle à Toulouse et dans le Sud-Ouest",
+  "description": "Maintenance industrielle Toulouse : aéronautique de Blagnac, logistique d'Eurocentre, agroalimentaire d'Occitanie. Rappel dans l'heure, astreinte 24/7."
+ },
+ {
+  "url": "/",
+  "niveau": 0,
+  "title": "migen · Maintenance industrielle, sans rupture de production",
+  "h1": "La maintenance industrielle, sans rupture de production.",
+  "description": "Techniciens de maintenance industrielle évalués et qualifiés, en résidence ou en intervention ciblée. Nos techniciens interviennent partout en France."
+ },
+ {
+  "url": "/lp/",
+  "niveau": 1,
+  "title": "Devis maintenance industrielle, migen",
+  "h1": "Votre service de maintenance industrielle : des techniciens qualifiés en renfort sur votre site.",
+  "description": "Techniciens de maintenance qualifiés en renfort sur votre site, ponctuel ou dans la durée. Un expert vous rappelle sous 2 h ouvrées."
+ },
+ {
+  "url": "/mentions-legales/",
+  "niveau": 1,
+  "title": "Mentions légales, migen",
+  "h1": "Mentions légales",
+  "description": "Informations légales, éditeur, hébergeur et propriété intellectuelle du site migen."
+ },
+ {
+  "url": "/modeles/article/",
+  "niveau": 2,
+  "title": "Modèle article, migen",
+  "h1": "Pourquoi faire appel à une entreprise de maintenance externalisée ?",
+  "description": "Gabarit d'article éditorial du centre de ressources migen."
+ },
+ {
+  "url": "/modeles/departement/",
+  "niveau": 2,
+  "title": "Modèle département, migen",
+  "h1": "Maintenance industrielle dans le Rhône",
+  "description": "Gabarit de page département : présence et interventions de migen sur un département."
+ },
+ {
+  "url": "/modeles/domaine/",
+  "niveau": 2,
+  "title": "Modèle domaine, migen",
+  "h1": "Maintenance en automatisme industriel",
+  "description": "Gabarit de page domaine : présentation d'un domaine d'expertise technique."
+ },
+ {
+  "url": "/modeles/metier/",
+  "niveau": 2,
+  "title": "Modèle métier, migen",
+  "h1": "Technicien de maintenance industrielle",
+  "description": "Gabarit de page métier : présentation d'un métier de la maintenance industrielle."
+ },
+ {
+  "url": "/modeles/realisation/",
+  "niveau": 2,
+  "title": "Modèle réalisation, migen",
+  "h1": "Remise en état complète d'un site industriel",
+  "description": "Gabarit de fiche réalisation : présentation d'un chantier ou projet mené par migen."
+ },
+ {
+  "url": "/modeles/ressource/",
+  "niveau": 2,
+  "title": "Modèle ressource, migen",
+  "h1": "Pourquoi faire appel à une entreprise de maintenance externalisée ?",
+  "description": "Gabarit de fiche ressource (métier, technique ou pratique) du centre de ressources migen."
+ },
+ {
+  "url": "/modeles/secteur/",
+  "niveau": 2,
+  "title": "Modèle secteur, migen",
+  "h1": "Maintenance en agroalimentaire",
+  "description": "Gabarit de page secteur : présentation d'un secteur industriel accompagné par migen."
+ },
+ {
+  "url": "/modeles/service-ville/",
+  "niveau": 2,
+  "title": "Modèle service + ville, migen",
+  "h1": "Maintenance industrielle à Lyon, sans rupture de production",
+  "description": "Gabarit de page programmatique croisant un service de maintenance et une ville d'intervention."
+ },
+ {
+  "url": "/nous-connaitre/",
+  "niveau": 1,
+  "title": "Nous connaître, migen",
+  "h1": "Un seul métier : technicien de maintenance.",
+  "description": "Un seul métier : technicien de maintenance. Découvrez qui nous sommes, notre histoire et notre façon de travailler."
+ },
+ {
+  "url": "/offres/arret-technique/",
+  "niveau": 2,
+  "title": "Arrêt technique maintenance | Migen",
+  "h1": "Arrêt technique maintenance",
+  "description": "Arrêt technique maintenance : préparation, coordination et travaux réalisés par des équipes complètes, partout en France. Rappel dans l'heure."
+ },
+ {
+  "url": "/offres/audit-conseil-maintenance/",
+  "niveau": 2,
+  "title": "Audit et conseil en maintenance | Migen",
+  "h1": "Conseil en maintenance industrielle : sachez où part le budget",
+  "description": "Conseil en maintenance industrielle : audit de site, plan d'actions chiffré et priorisé. Diagnostic gratuit, rappel dans l'heure au 04 78 33 72 05."
+ },
+ {
+  "url": "/offres/bureau-etudes/",
+  "niveau": 2,
+  "title": "Bureau d'études mécanique | Migen",
+  "h1": "Bureau d'études mécanique",
+  "description": "Bureau d'études mécanique : conception, calculs, simulation et suivi de réalisation par une équipe d'ingénierie intégrée. Rappel dans l'heure."
+ },
+ {
+  "url": "/offres/chantier/demenagement-machines/",
+  "niveau": 3,
+  "title": "Déménager vos machines de production | Migen",
+  "h1": "Déménagement de machines industrielles",
+  "description": "Déménagement de machines industrielles : démontage, emballage, transport, remontage et remise en service. Rappel dans l'heure au 04 78 33 72 05."
+ },
+ {
+  "url": "/offres/chantier/",
+  "niveau": 2,
+  "title": "Transfert industriel | Migen",
+  "h1": "Transfert industriel",
+  "description": "Transfert industriel : audit, démontage, transport, remontage et remise en service partout en France. Décrivez votre projet, nous rappelons dans l'heure."
+ },
+ {
+  "url": "/offres/chantier/transfert-de-production/",
+  "niveau": 3,
+  "title": "Déplacer une ligne ou une usine | Migen",
+  "h1": "Transfert de production",
+  "description": "Transfert de production : audit, phasage, démontage, remontage et redémarrage de vos lignes sur le nouveau site. Rappel dans l'heure au 04 78 33 72 05."
+ },
+ {
+  "url": "/offres/construction/",
+  "niveau": 2,
+  "title": "Montage industriel | Migen",
+  "h1": "Montage industriel",
+  "description": "Montage industriel : installation de machines et de lignes complètes, de l'ingénierie à la mise en service, partout en France. Rappel dans l'heure."
+ },
+ {
+  "url": "/offres/depannage-industriel/astreinte/",
+  "niveau": 3,
+  "title": "Astreinte industrielle 24h/24 | Migen",
+  "h1": "Astreinte de maintenance, 24 heures sur 24",
+  "description": "Astreinte maintenance : Astreinte de maintenance 24/24 et 7/7 partout en France. Un numéro, un technicien évalué, un compte rendu à chaque déclenchement."
+ },
+ {
+  "url": "/offres/depannage-industriel/",
+  "niveau": 2,
+  "title": "Dépannage industriel en urgence sur machine | Migen",
+  "h1": "Dépannage industriel",
+  "description": "Dépannage industriel partout en France : astreinte 24/24 et 7/7, techniciens évalués. Décrivez la panne, nous rappelons dans l'heure."
+ },
+ {
+  "url": "/offres/depannage-industriel/panne-machine/",
+  "niveau": 3,
+  "title": "Machine à l'arrêt : qui appeler | Migen",
+  "h1": "Panne machine industrielle : agir dans la première heure",
+  "description": "Panne machine industrielle : ne forcez pas le redémarrage. Technicien évalué mobilisé partout en France, astreinte 24/24 et 7/7. Rappel dans l'heure."
+ },
+ {
+  "url": "/offres/",
+  "niveau": 1,
+  "title": "Entreprise maintenance industrielle | Migen",
+  "h1": "Entreprise maintenance industrielle",
+  "description": "Entreprise maintenance industrielle : cinq façons de nous confier votre maintenance, avec des techniciens évalués, 10 % des candidats retenus."
+ },
+ {
+  "url": "/offres/maintenance-externalisee/",
+  "niveau": 2,
+  "title": "Externaliser sa maintenance industrielle de A à Z | Migen",
+  "h1": "Un seul partenaire pour entretenir, réparer et remettre en production",
+  "description": "Maintenance industrielle externalisée de A à Z : préventif, dépannage, pièces posées, GMAO tenue. Techniciens salariés évalués, rappel dans l'heure."
+ },
+ {
+  "url": "/offres/residence/cahier-des-charges/",
+  "niveau": 3,
+  "title": "Trame de consultation maintenance | Migen",
+  "h1": "Cahier des charges de maintenance : la trame à reprendre",
+  "description": "Cahier des charges maintenance : la trame en 8 sections, la méthode de rédaction, la grille d'évaluation des offres."
+ },
+ {
+  "url": "/offres/residence/",
+  "niveau": 2,
+  "title": "Sous-traitance maintenance | Migen",
+  "h1": "Sous-traitance maintenance",
+  "description": "Sous-traitance maintenance : des techniciens qualifiés intégrés sur votre site, sans charge de recrutement. Sélection exigeante, rappel dans l'heure."
+ },
+ {
+  "url": "/offres/residence/prestataire-ou-salarie/",
+  "niveau": 3,
+  "title": "Embaucher ou sous-traiter sa maintenance | Migen",
+  "h1": "Prestataire ou salarié : le comparatif honnête",
+  "description": "Prestataire ou salarié : le comparatif honnête, coût complet, souplesse, risque de requalification. Et les cas où embaucher reste le bon choix."
+ },
+ {
+  "url": "/offres/residence/recruter-un-technicien/",
+  "niveau": 3,
+  "title": "Recruter un technicien de maintenance | Migen",
+  "h1": "Recruter un technicien de maintenance",
+  "description": "Recruter un technicien de maintenance : besoin, annonce, canaux, évaluation, fidélisation. La méthode complète, et l'alternative du technicien intégré."
+ },
+ {
+  "url": "/offres/retrofit/",
+  "niveau": 2,
+  "title": "Moderniser une machine plutôt que la remplacer | Migen",
+  "h1": "Retrofit machine industrielle",
+  "description": "Retrofit machine industrielle : diagnostic, rénovation mécanique, électrique et automatisme, essais et remise en service. Rappel dans l'heure, 04 78 33 72 05."
+ },
+ {
+  "url": "/offres/retrofit/mise-en-conformite-machine/",
+  "niveau": 3,
+  "title": "Mise en conformité des machines | Migen",
+  "h1": "Mise en conformité des machines : fixez le calendrier avant l'inspection",
+  "description": "Mise en conformité machine : audit du parc, analyse de risques, travaux et dossier technique. Rappel dans l'heure, astreinte 24/24 au 04 78 33 72 05."
+ },
+ {
+  "url": "/offres/retrofit/remise-en-etat/",
+  "niveau": 3,
+  "title": "Redonner sa performance à une machine usée | Migen",
+  "h1": "Remise en état machine industrielle",
+  "description": "Remise en état machine industrielle : expertise écrite, démontage, réparation, protections, essais et rapport. Rappel dans l'heure au 04 78 33 72 05."
+ },
+ {
+  "url": "/offres/zero-arret/",
+  "niveau": 2,
+  "title": "Contrat de maintenance | Migen",
+  "h1": "Contrat de maintenance",
+  "description": "Contrat de maintenance : Un abonnement à prix fixe plutôt que des dépannages subis. Comparez le coût réel sur 12 mois."
+ },
+ {
+  "url": "/partenaires/",
+  "niveau": 1,
+  "title": "Partenaires, migen",
+  "h1": "Nos offres en partenariat, 100 % Made in France.",
+  "description": "Nos offres en partenariat, 100 % Made in France : GMAO, intralogistique et prestations connexes."
+ },
+ {
+  "url": "/preuves/aktid-centre-logistique/",
+  "niveau": 2,
+  "title": "Cas AKTID : montage livré en 6 semaines | Migen",
+  "h1": "Étude de cas AKTID : montage d'un centre logistique",
+  "description": "Montage du centre logistique AKTID à Clermont-Ferrand : 12 monteurs mécaniciens, 8 engins de levage, six semaines de chantier et une livraison dans les temps."
+ },
+ {
+  "url": "/preuves/alstef-group/",
+  "niveau": 2,
+  "title": "Cas ALSTEF Group : contrôle de chantier | Migen",
+  "h1": "Étude de cas ALSTEF Group : contrôle de chantier",
+  "description": "ALSTEF Group renforce son contrôle de chantier avec Migen : techniciens autonomes intégrés aux équipes projet pour sécuriser les phases critiques."
+ },
+ {
+  "url": "/preuves/amazon-centre-logistique/",
+  "niveau": 2,
+  "title": "Cas AMAZON ORY4 : le préventif tenu | Migen",
+  "h1": "Étude de cas AMAZON : maintien d'un centre logistique",
+  "description": "AMAZON ORY4, centre logistique en service sans interruption : 10 à 20 techniciens Migen une semaine sur deux, par créneaux de 8 heures, depuis 2022."
+ },
+ {
+  "url": "/preuves/amazon-nouveau-site/",
+  "niveau": 2,
+  "title": "Cas AMAZON ETZ 2 Metz : deuxième site | Migen",
+  "h1": "Étude de cas AMAZON : démarrage d'un nouveau site",
+  "description": "AMAZON confie un deuxième centre logistique à Migen : ETZ 2 à Metz, 10 techniciens polyvalents une semaine par mois, par créneaux de 8 heures."
+ },
+ {
+  "url": "/preuves/autoliv/",
+  "niveau": 2,
+  "title": "Cas AUTOLIV : un technicien sur le parc | Migen",
+  "h1": "Étude de cas AUTOLIV : maintien d'un site",
+  "description": "AUTOLIV renforce son équipe technique avec Migen : un technicien de maintenance polyvalent dédié au maintien opérationnel du parc machines, en 2025."
+ },
+ {
+  "url": "/preuves/danone-lignes-de-production/",
+  "niveau": 2,
+  "title": "Cas DANONE Blédina : deux techniciens en 3x8 | Migen",
+  "h1": "Étude de cas DANONE : lignes de production",
+  "description": "DANONE Blédina, site de Steenvoorde : deux techniciens Migen intégrés en 3x8 sur les lignes liquides et le conditionnement poudre. Contexte et dispositif."
+ },
+ {
+  "url": "/preuves/eaton-mise-en-production/",
+  "niveau": 2,
+  "title": "Cas EATON : 6 techniciens sur un démarrage | Migen",
+  "h1": "Étude de cas EATON : mise en production",
+  "description": "EATON confie à Migen l'accompagnement d'un nouveau parc machine sur son site automobile : 6 techniciens multidisciplinaires, de la livraison à la production."
+ },
+ {
+  "url": "/preuves/eiffage/",
+  "niveau": 2,
+  "title": "EIFFAGE : préventif sur une centrale solaire | Migen",
+  "h1": "EIFFAGE : trois techniciens sur un chantier photovoltaïque",
+  "description": "Eiffage sélectionne Migen pour renforcer ses équipes sur un chantier photovoltaïque de grande envergure : trois techniciens en maintenance préventive, 2024."
+ },
+ {
+  "url": "/preuves/eriks/",
+  "niveau": 2,
+  "title": "ERIKS : zéro interruption critique | Migen",
+  "h1": "ERIKS : un responsable maintenance pendant la transition",
+  "description": "ERIKS confie à Migen le pilotage de son service maintenance pendant une montée de cadence et une transition d'équipe. Zéro interruption critique, T3 2025."
+ },
+ {
+  "url": "/preuves/fdj/",
+  "niveau": 2,
+  "title": "FDJ : un technicien en continu sur site | Migen",
+  "h1": "FDJ : un technicien de maintenance en continu sur les lignes",
+  "description": "La Française des Jeux renforce sa maintenance avec un technicien Migen affecté en continu : préventif, curatif et diagnostic sur les lignes de production."
+ },
+ {
+  "url": "/preuves/gls-maintenance-curative/",
+  "niveau": 2,
+  "title": "Cas GLS : deux techniciens en poste | Migen",
+  "h1": "Étude de cas GLS : maintenance curative",
+  "description": "GLS confie à Migen le maintien opérationnel de ses équipements : deux techniciens sur site, dédiés au curatif des convoyeurs, trieurs et packaging automatisé."
+ },
+ {
+  "url": "/preuves/groupe-atlantic/",
+  "niveau": 2,
+  "title": "GROUPE ATLANTIC : renfort permanent | Migen",
+  "h1": "GROUPE ATLANTIC : un renfort permanent sur les sites de production",
+  "description": "Le Groupe Atlantic renforce ses équipes de maintenance avec 1 à 3 techniciens Migen sur ses sites de production, en présence permanente depuis octobre 2024."
+ },
+ {
+  "url": "/preuves/",
+  "niveau": 1,
+  "title": "Nos preuves, migen",
+  "h1": "Ce que nous avons livré, chez qui, et en combien de temps.",
+  "description": "Ce que nous avons livré, chez qui, et en combien de temps : des chantiers datés, dans tous les secteurs."
+ },
+ {
+  "url": "/preuves/joint-lyonnais/",
+  "niveau": 2,
+  "title": "JOINT LYONNAIS : réparer plutôt que racheter | Migen",
+  "h1": "JOINT LYONNAIS : des machines réparées, pas remplacées",
+  "description": "Joint Lyonnais fait appel à Migen pour des défaillances qui bloquaient sa production à Lyon : diagnostic sur site et solutions calées sur son budget."
+ },
+ {
+  "url": "/preuves/jtekt/",
+  "niveau": 2,
+  "title": "Cas JTEKT : équipements critiques tenus | Migen",
+  "h1": "Étude de cas JTEKT : maintenance des installations",
+  "description": "JTEKT, équipementier automobile : des techniciens Migen intégrés en 2025 pour la surveillance et le curatif des équipements critiques de ses sites."
+ },
+ {
+  "url": "/preuves/mccain-belgique/",
+  "niveau": 2,
+  "title": "Cas McCAIN : premier contrat en Belgique | Migen",
+  "h1": "Étude de cas McCAIN : Belgique",
+  "description": "McCAIN en Belgique : premier contrat Migen hors de France depuis octobre 2024, un à trois techniciens en renfort sur un site agroalimentaire à grande échelle."
+ },
+ {
+  "url": "/preuves/mersen/",
+  "niveau": 2,
+  "title": "MERSEN : un automaticien SIEMENS dédié | Migen",
+  "h1": "MERSEN : sécuriser le démarrage d'une ligne neuve",
+  "description": "MERSEN confie à Migen l'affectation d'un automaticien SIEMENS à temps plein pour sécuriser le démarrage d'une nouvelle ligne de production, en 2025."
+ },
+ {
+  "url": "/preuves/ogf-arret-estival/",
+  "niveau": 2,
+  "title": "OGF : la maintenance tenue tout l'été | Migen",
+  "h1": "OGF : passer l'été sans trou dans la maintenance",
+  "description": "OGF renforce son équipe maintenance avec un technicien Migen pendant l'arrêt estival 2025 : équipements critiques disponibles, remise en route sans retard."
+ },
+ {
+  "url": "/preuves/orthus-ecocem/",
+  "niveau": 2,
+  "title": "ORTHUS x ECOCEM : un site R&D construit | Migen",
+  "h1": "ORTHUS x ECOCEM : construire un site de R&D industriel",
+  "description": "Ecocem confie à Orthus, filiale du groupe Migen, la construction complète de son nouveau site industriel de R&#38;D près de Paris, livraison prévue fin 2025."
+ },
+ {
+  "url": "/preuves/orthus-washtec/",
+  "niveau": 2,
+  "title": "ORTHUS x WASHTEC : montage national | Migen",
+  "h1": "ORTHUS x WASHTEC : monter des portiques partout en France",
+  "description": "WashTec confie à Orthus, filiale du groupe Migen, le montage complet de ses portiques de lavage partout en France : réception, assemblage, raccordements."
+ },
+ {
+  "url": "/preuves/soprema/",
+  "niveau": 2,
+  "title": "SOPREMA : montages et transferts tenus | Migen",
+  "h1": "SOPREMA : montage, transfert de machines et renfort de chantier",
+  "description": "SOPREMA confie à Migen des chantiers de montage, des déplacements de machines et du renfort technique ponctuel : délais de chantier tenus, sans pénalité."
+ },
+ {
+  "url": "/preuves/stellantis-fonderie-sept-fons/",
+  "niveau": 2,
+  "title": "Fonderie de Sept-Fons tenue 7j/7 | Migen",
+  "h1": "STELLANTIS, fonderie de Sept-Fons : un parc repris en 8 semaines",
+  "description": "STELLANTIS confie à Migen la maintenance préventive et curative de sa fonderie et de son usinage à Dompierre-sur-Besbre. Reprise en 8 semaines, 6 techniciens."
+ },
+ {
+  "url": "/preuves/stellantis-grand-est/",
+  "niveau": 2,
+  "title": "Cas STELLANTIS Grand Est : 18 à 25 techniciens | Migen",
+  "h1": "Étude de cas STELLANTIS : sites du Grand Est",
+  "description": "STELLANTIS Grand Est : 18 à 25 techniciens Migen sur plusieurs sites depuis juin 2023, pendant la transition des usines vers le véhicule électrique."
+ },
+ {
+  "url": "/preuves/suez-remise-en-etat/",
+  "niveau": 2,
+  "title": "SUEZ IWT : un renfort habilité RC1 | Migen",
+  "h1": "SUEZ IWT : un électromécanicien habilité pour une remise en état",
+  "description": "SUEZ IWT confie à Migen le renfort d'un site de traitement des eaux industrielles : un électromécanicien habilité risque chimique, mission de 6 mois."
+ },
+ {
+  "url": "/preuves/timescope/",
+  "niveau": 2,
+  "title": "TIMESCOPE : maintenance de casques VR | Migen",
+  "h1": "TIMESCOPE : tenir un parc de casques déployé en France",
+  "description": "Timescope confie à Migen la maintenance sous contrat de ses casques de réalité virtuelle déployés en France : étanchéité, réglages et fiabilité."
+ },
+ {
+  "url": "/preuves/valeo-usines/",
+  "niveau": 2,
+  "title": "Cas VALEO : la montée en cadence tenue | Migen",
+  "h1": "Étude de cas VALEO : plusieurs usines",
+  "description": "VALEO : 3 à 5 techniciens Migen déployés depuis septembre 2024 pour accompagner la montée en cadence de plusieurs usines françaises. Contexte et dispositif."
+ },
+ {
+  "url": "/preuves/veepee-sites-lyon/",
+  "niveau": 2,
+  "title": "Cas VEEPEE : contrat repris en un mois | Migen",
+  "h1": "Étude de cas VEEPEE : sites de Lyon",
+  "description": "VEEPEE confie à Migen la maintenance préventive annuelle de ses sites lyonnais : 6 techniciens en permanence, reprise de l'ensemble des sites en un mois."
+ },
+ {
+  "url": "/preuves/voit-grand-est/",
+  "niveau": 2,
+  "title": "Cas VOIT : usinage, presses et CN tenus | Migen",
+  "h1": "Étude de cas VOIT : site du Grand Est",
+  "description": "VOIT intègre un technicien Migen à temps plein sur son site : maintenance des centres d'usinage, dépannage des presses et diagnostic sur commandes numériques."
+ },
+ {
+  "url": "/preuves/vpk/",
+  "niveau": 2,
+  "title": "VPK : temps d'arrêt réduits sur le parc | Migen",
+  "h1": "VPK : un technicien polyvalent sur un parc en forte cadence",
+  "description": "VPK, papier et emballage, intègre un technicien polyvalent Migen sur son parc machines en forte cadence. Charge mieux répartie, temps d'arrêt réduits."
+ },
+ {
+  "url": "/realisations/",
+  "niveau": 1,
+  "title": "Nos réalisations, migen",
+  "h1": "Ce que nous avons tenu, site par site.",
+  "description": "Nos références clients : SUEZ, DANONE, JTEKT, GLS et d'autres projets industriels menés à terme."
+ },
+ {
+  "url": "/ressources/articles/cout-arret-de-production/",
+  "niveau": 3,
+  "title": "Coût d'un arrêt de production | Migen",
+  "h1": "Coût d'un arrêt de production",
+  "description": "Coût d'un arrêt de production : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/articles/digitalisation-maintenance/",
+  "niveau": 3,
+  "title": "Digitalisation maintenance : le guide complet | Migen",
+  "h1": "Digitalisation maintenance",
+  "description": "Digitalisation maintenance : définition, méthode pas à pas, exemple concret et erreurs à éviter, par des techniciens qui interviennent chaque jour."
+ },
+ {
+  "url": "/ressources/articles/gestion-des-dechets/",
+  "niveau": 3,
+  "title": "Gestion des déchets industriels | Migen",
+  "h1": "Gestion des déchets industriels",
+  "description": "Gestion des déchets industriels : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/articles/gmao/",
+  "niveau": 3,
+  "title": "Gestion de maintenance assistée par ordinateur | Migen",
+  "h1": "Gestion de maintenance assistée par ordinateur",
+  "description": "Gestion de maintenance assistée par ordinateur : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/articles/ia-maintenance/",
+  "niveau": 3,
+  "title": "IA maintenance : usages réels en usine | Migen",
+  "h1": "IA maintenance : ce qui change vraiment",
+  "description": "IA maintenance : définition, cas d'usage vérifiés, limites et méthode pour démarrer, par une équipe qui intervient chaque jour en usine."
+ },
+ {
+  "url": "/ressources/articles/",
+  "niveau": 2,
+  "title": "Articles de maintenance industrielle | Migen",
+  "h1": "Ressources : Articles",
+  "description": "Nos articles de maintenance industrielle : stratégie, organisation, GMAO, coûts. Des guides écrits par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/articles/maintenance-4-0/",
+  "niveau": 3,
+  "title": "Maintenance 4.0 | Migen",
+  "h1": "Maintenance 4.0",
+  "description": "Maintenance 4.0 : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/articles/optimiser-la-maintenance/",
+  "niveau": 3,
+  "title": "Optimisation de la maintenance | Migen",
+  "h1": "Optimisation de la maintenance",
+  "description": "Optimisation de la maintenance : définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/articles/organiser-service-maintenance/",
+  "niveau": 3,
+  "title": "Comment organiser un service de maintenance | Migen",
+  "h1": "Comment organiser un service de maintenance",
+  "description": "Comment organiser un service de maintenance : définition, méthode en six étapes et exemple concret, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/articles/plan-de-maintenance/",
+  "niveau": 3,
+  "title": "Plan de maintenance | Migen",
+  "h1": "Plan de maintenance",
+  "description": "Plan de maintenance : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/articles/planification-maintenance/",
+  "niveau": 3,
+  "title": "Planning de maintenance | Migen",
+  "h1": "Planning de maintenance",
+  "description": "Planning de maintenance : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/articles/predictive-ou-corrective/",
+  "niveau": 3,
+  "title": "Maintenance prédictive ou corrective | Migen",
+  "h1": "Maintenance prédictive ou corrective",
+  "description": "Maintenance prédictive ou corrective : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/articles/preventive-ou-corrective/",
+  "niveau": 3,
+  "title": "Maintenance préventive et corrective | Migen",
+  "h1": "Maintenance préventive et corrective",
+  "description": "Maintenance préventive et corrective : définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/articles/robot-spot/",
+  "niveau": 3,
+  "title": "Robot Spot en inspection industrielle | Migen",
+  "h1": "Robot spot",
+  "description": "Robot spot : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/articles/suivi-de-la-maintenance/",
+  "niveau": 3,
+  "title": "Suivi de la maintenance : méthode et outils | Migen",
+  "h1": "Suivi de la maintenance",
+  "description": "Suivi de la maintenance : définition, méthode, indicateurs et exemples concrets, par des techniciens qui interviennent tous les jours en usine."
+ },
+ {
+  "url": "/ressources/articles/tpm/",
+  "niveau": 3,
+  "title": "TPM maintenance productive totale : la méthode | Migen",
+  "h1": "TPM, la maintenance productive totale",
+  "description": "TPM maintenance productive totale : définition, 8 piliers, mise en œuvre et exemple terrain, expliqués par des techniciens de maintenance industrielle."
+ },
+ {
+  "url": "/ressources/fiches-pratiques/5s/",
+  "niveau": 3,
+  "title": "5S industrie | Migen",
+  "h1": "5S industrie",
+  "description": "5s industrie : définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/fiches-pratiques/consignation-electrique/",
+  "niveau": 3,
+  "title": "Consignation électrique | Migen",
+  "h1": "Consignation électrique",
+  "description": "Consignation électrique : définition, étapes de la norme NF C 18-510, habilitations et erreurs à éviter, par des techniciens qui la pratiquent chaque jour."
+ },
+ {
+  "url": "/ressources/fiches-pratiques/",
+  "niveau": 2,
+  "title": "Fiches pratiques de maintenance industrielle | Migen",
+  "h1": "Ressources : Fiches pratiques",
+  "description": "Fiches pratiques de maintenance : consignation électrique, plan de prévention, permis de feu, sécurité, 5S. Des procédures écrites par nos techniciens."
+ },
+ {
+  "url": "/ressources/fiches-pratiques/permis-de-feu/",
+  "niveau": 3,
+  "title": "Permis de feu | Migen",
+  "h1": "Permis de feu",
+  "description": "Permis de feu : définition, cas obligatoires, rédaction en trois temps, contenu type et pièges à éviter avant vos travaux par points chauds."
+ },
+ {
+  "url": "/ressources/fiches-pratiques/plan-de-prevention/",
+  "niveau": 3,
+  "title": "Plan de prévention : obligations et contenu | Migen",
+  "h1": "Plan de prévention",
+  "description": "Plan de prévention : quand il est obligatoire, ce qu'il contient, qui le signe. La fiche pratique d'une entreprise extérieure qui en signe chaque semaine."
+ },
+ {
+  "url": "/ressources/fiches-pratiques/securite-maintenance/",
+  "niveau": 3,
+  "title": "Sécurité maintenance industrielle | Migen",
+  "h1": "La sécurité en maintenance industrielle",
+  "description": "Sécurité maintenance industrielle : définition, méthode, exemple et erreurs à éviter, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/fiches-techniques/amdec/",
+  "niveau": 3,
+  "title": "Amdec | Migen",
+  "h1": "Amdec",
+  "description": "Amdec : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/fiches-techniques/analyse-vibratoire/",
+  "niveau": 3,
+  "title": "Analyse vibratoire | Migen",
+  "h1": "Analyse vibratoire",
+  "description": "Analyse vibratoire : définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/fiches-techniques/automates-siemens/",
+  "niveau": 3,
+  "title": "Automate Siemens | Migen",
+  "h1": "Automate Siemens",
+  "description": "Automate Siemens : définition, gammes SIMATIC, TIA Portal, diagnostic et obsolescence, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/fiches-techniques/cahier-des-charges-gmao/",
+  "niveau": 3,
+  "title": "Cahier des charges gmao | Migen",
+  "h1": "Cahier des charges gmao",
+  "description": "Cahier des charges gmao : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/fiches-techniques/",
+  "niveau": 2,
+  "title": "Fiches techniques de maintenance industrielle | Migen",
+  "h1": "Ressources : Fiches techniques",
+  "description": "Fiches techniques de maintenance : TRS, MTBF, AMDEC, analyse vibratoire, GMAO. Les chiffres et les seuils, expliqués par des techniciens."
+ },
+ {
+  "url": "/ressources/fiches-techniques/indicateurs-maintenance/",
+  "niveau": 3,
+  "title": "Indicateur maintenance | Migen",
+  "h1": "Indicateur maintenance",
+  "description": "Indicateur maintenance : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/fiches-techniques/mtbf-mttr/",
+  "niveau": 3,
+  "title": "Mtbf | Migen",
+  "h1": "Mtbf",
+  "description": "Mtbf : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/fiches-techniques/niveaux-de-maintenance/",
+  "niveau": 3,
+  "title": "Niveaux de maintenance | Migen",
+  "h1": "Niveaux de maintenance",
+  "description": "Niveaux de maintenance : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/fiches-techniques/outils-de-diagnostic/",
+  "niveau": 3,
+  "title": "Outils de diagnostic maintenance | Migen",
+  "h1": "Outils de diagnostic maintenance",
+  "description": "Outils de diagnostic maintenance : définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/fiches-techniques/trs/",
+  "niveau": 3,
+  "title": "TRS : calculer et améliorer votre rendement | Migen",
+  "h1": "TRS : le taux de rendement synthétique",
+  "description": "TRS : définition, formule de calcul, exemple chiffré et erreurs à éviter. La fiche technique écrite avec des techniciens qui voient des lignes tous les jours."
+ },
+ {
+  "url": "/ressources/",
+  "niveau": 1,
+  "title": "Guide maintenance industrielle | Migen",
+  "h1": "Guide maintenance industrielle",
+  "description": "Guide maintenance industrielle : nos guides et fiches pratiques de maintenance industrielle, écrits par nos techniciens."
+ },
+ {
+  "url": "/ressources/livres-blancs/externaliser-sa-maintenance/",
+  "niveau": 3,
+  "title": "Externaliser sa maintenance | Migen",
+  "h1": "Livre blanc : externaliser sa maintenance sans perdre la main",
+  "description": "Externaliser sa maintenance sans perdre la main : la méthode, les garde-fous et les pièges, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/livres-blancs/",
+  "niveau": 2,
+  "title": "Livres blancs maintenance industrielle | Migen",
+  "h1": "Ressources : Livres blancs",
+  "description": "Nos livres blancs de maintenance industrielle : des dossiers de décision à emporter, écrits par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/livres-blancs/retrofit-ou-remplacement/",
+  "niveau": 3,
+  "title": "Retrofit ou remplacement | Migen",
+  "h1": "Retrofit ou remplacement",
+  "description": "Retrofit ou remplacement : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/process/gestion-maintenance-preventive/",
+  "niveau": 3,
+  "title": "Gestion de la maintenance préventive | Migen",
+  "h1": "Gestion de la maintenance préventive",
+  "description": "Gestion de la maintenance préventive : définition, méthode pas à pas, exemple concret et erreurs à éviter, par des techniciens de terrain."
+ },
+ {
+  "url": "/ressources/process/",
+  "niveau": 2,
+  "title": "Process de maintenance industrielle | Migen",
+  "h1": "Ressources : Process",
+  "description": "Nos process de maintenance industrielle : préventif, sélection des techniciens, arrêt technique, sécurité. Les méthodes de terrain, expliquées."
+ },
+ {
+  "url": "/ressources/process/preparer-un-arret-technique/",
+  "niveau": 3,
+  "title": "Préparation arrêt technique | Migen",
+  "h1": "Préparation arrêt technique",
+  "description": "Préparation arrêt technique : définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/process/protocole-de-securite/",
+  "niveau": 3,
+  "title": "Protocole de sécurité | Migen",
+  "h1": "Protocole de sécurité",
+  "description": "Protocole de sécurité : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+ },
+ {
+  "url": "/ressources/process/selection-des-techniciens/",
+  "niveau": 3,
+  "title": "Sélection technicien de maintenance | Migen",
+  "h1": "Sélection technicien de maintenance",
+  "description": "Sélection technicien de maintenance : la méthode Migen, entretien technique et comportemental, 10 % des candidats retenus, résultats partagés."
+ },
+ {
+  "url": "/rse/",
+  "niveau": 1,
+  "title": "Engagements RSE, migen",
+  "h1": "En maintenance, la RSE se mesure en machines qu’on ne jette pas.",
+  "description": "Nos engagements sociaux et environnementaux : emploi durable, sobriété et ancrage territorial."
+ },
+ {
+  "url": "/secteurs/aeronautique/",
+  "niveau": 2,
+  "title": "Maintenance des moyens de production aéro | Migen",
+  "h1": "Maintenance dans l'industrie aéronautique",
+  "description": "Maintenance industrie aéronautique : machines 5 axes, moyens de mesure, montée en cadence. Traçabilité prête pour l'audit client. 4 agences en France."
+ },
+ {
+  "url": "/secteurs/agroalimentaire/",
+  "niveau": 2,
+  "title": "Maintenance industrielle en agroalimentaire | Migen",
+  "h1": "Maintenance agroalimentaire",
+  "description": "Maintenance agroalimentaire : lavage quotidien, ateliers à 4 °C, traçabilité auditée. Des techniciens formés à vos contraintes. DANONE, McCAIN."
+ },
+ {
+  "url": "/secteurs/automobile/",
+  "niveau": 2,
+  "title": "Maintenance de lignes automobiles | Migen",
+  "h1": "Maintenance dans l'industrie automobile",
+  "description": "Maintenance industrie automobile : takt time, cellules robotisées, changement de série, électrification. STELLANTIS, VALEO, JTEKT, AUTOLIV, EATON."
+ },
+ {
+  "url": "/secteurs/chimie/",
+  "niveau": 2,
+  "title": "Maintenance de site chimique classé | Migen",
+  "h1": "Maintenance dans l'industrie chimique",
+  "description": "Maintenance industrie chimique : permis de travail, consignations, zones ATEX, procédés continus. Techniciens formés avant l'accès. SUEZ, MERSEN."
+ },
+ {
+  "url": "/secteurs/",
+  "niveau": 1,
+  "title": "Maintenance industrielle par secteur | Migen",
+  "h1": "La maintenance usine, secteur par secteur",
+  "description": "Maintenance usine : des techniciens affectés selon l'expérience de votre secteur, pas au hasard. 10 % des candidats retenus, 4 agences en France."
+ },
+ {
+  "url": "/secteurs/industrie-lourde/",
+  "niveau": 2,
+  "title": "Maintenance de fours, presses et broyeurs | Migen",
+  "h1": "Maintenance dans l'industrie lourde",
+  "description": "Maintenance industrie lourde : fours, presses de forge, broyeurs, ponts roulants. Préparation type chantier, techniciens confirmés. STELLANTIS, MERSEN."
+ },
+ {
+  "url": "/secteurs/industrie-metallique/",
+  "niveau": 2,
+  "title": "Maintenance d'atelier usinage et tôlerie | Migen",
+  "h1": "Maintenance dans l'industrie métallique",
+  "description": "Maintenance industrie métallique : broches, glissières, presses, robots de soudure, poussière métallique. Contrôles géométriques tracés. VOIT, MERSEN."
+ },
+ {
+  "url": "/secteurs/logistique/",
+  "niveau": 2,
+  "title": "Maintenance entrepôt et convoyage | Migen",
+  "h1": "Maintenance des équipements logistiques",
+  "description": "Maintenance équipements logistiques : convoyeurs, tri, quais, transstockeurs. Disponibilité mesurée, astreinte réelle. AMAZON, GLS, VEEPEE."
+ },
+ {
+  "url": "/secteurs/logistique/maintenance-convoyeur/",
+  "niveau": 3,
+  "title": "Entretien et dépannage de convoyeurs | Migen",
+  "h1": "Maintenance convoyeur",
+  "description": "Maintenance convoyeur : bandes, rouleaux, chaînes, trieurs. Préventif mesuré, dépannage outillé, astreinte 24/24 et 7/7. AMAZON, GLS, VEEPEE."
+ },
+ {
+  "url": "/secteurs/logistique/peak-season/",
+  "niveau": 3,
+  "title": "Préparer vos équipements avant le pic | Migen",
+  "h1": "Peak season : préparer la logistique au pic",
+  "description": "Peak season logistique : revue technique à J-90, pièces à J-60, renforts briefés à J-30. Astreinte réelle pendant la vague. AMAZON, VEEPEE, GLS."
+ },
+ {
+  "url": "/secteurs/menuiserie-industrielle/",
+  "niveau": 2,
+  "title": "Maintenance de machines à bois | Migen",
+  "h1": "Maintenance en menuiserie industrielle",
+  "description": "Maintenance menuiserie industrielle : scies à panneaux, centres d'usinage bois, plaqueuses, aspiration. Le suivi que vos machines n'ont jamais eu."
+ },
+ {
+  "url": "/secteurs/nucleaire/",
+  "niveau": 2,
+  "title": "Maintenance conventionnelle en site nucléaire | Migen",
+  "h1": "Maintenance nucléaire",
+  "description": "Maintenance nucléaire : utilités, machines tournantes et équipements conventionnels des sites de la filière. Préparation écrite, traçabilité totale."
+ },
+ {
+  "url": "/secteurs/pharmaceutique/",
+  "niveau": 2,
+  "title": "Maintenance de site pharmaceutique BPF | Migen",
+  "h1": "Maintenance pharmaceutique",
+  "description": "Maintenance pharmaceutique : techniciens formés aux BPF et au comportement en ZAC, circuit de requalification défini avec votre assurance qualité."
+ },
+ {
+  "url": "/travaux-industriels/demantelement-industriel/",
+  "niveau": 2,
+  "title": "Démantèlement industriel de site et d'équipements | Migen",
+  "h1": "Démantèlement industriel",
+  "description": "Démantèlement industriel : dépose d'équipements, démontage pour valorisation ou transfert, traçabilité des déchets. Rappel dans l'heure au 04 78 33 72 05."
+ },
+ {
+  "url": "/travaux-industriels/",
+  "niveau": 1,
+  "title": "Travaux industriels en France | Migen",
+  "h1": "Travaux industriels",
+  "description": "Travaux industriels : transfert, démantèlement, montage, levage et manutention lourde partout en France. Rappel dans l'heure au 04 78 33 72 05."
+ },
+ {
+  "url": "/travaux-industriels/levage-manutention/",
+  "niveau": 2,
+  "title": "Levage industriel et manutention de charges | Migen",
+  "h1": "Levage industriel et manutention lourde",
+  "description": "Manutention lourde et levage industriel : élingage, mise en position et déplacement de machines en atelier. Rappel dans l'heure au 04 78 33 72 05."
+ },
+ {
+  "url": "/travaux-industriels/montage-industriel/",
+  "niveau": 2,
+  "title": "Montage industriel et implantation de lignes | Migen",
+  "h1": "Montage industriel : machines, lignes et équipements de production",
+  "description": "Montage industriel : assemblage, calage, raccordements et essais de vos lignes de production partout en France. Rappel dans l'heure au 04 78 33 72 05."
+ },
+ {
+  "url": "/travaux-industriels/transfert-industriel/",
+  "niveau": 2,
+  "title": "Transfert industriel et déménagement d'usine | Migen",
+  "h1": "Transfert industriel et déménagement de machines industrielles",
+  "description": "Transfert industriel : déménagement d'usine, de machines industrielles et de lignes de production partout en France. Rappel dans l'heure au 04 78 33 72 05."
+ },
+ {
+  "url": "/valeurs/",
+  "niveau": 1,
+  "title": "Nos valeurs, migen",
+  "h1": "Cinq règles, et la preuve qui va avec.",
+  "description": "Les valeurs qui guident notre métier de technicien de maintenance au quotidien."
+ }
+]

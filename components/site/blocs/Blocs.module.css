@@ -1,0 +1,65 @@
+/*
+  Survols des blocs du gabarit de conversion, relevés sur `style-hover` dans la
+  maquette. Ils vivent dans un module CSS et non dans `app/globals.css` : le
+  fichier global est écrit par plusieurs agents en parallèle, et un survol n'est
+  pas exprimable dans un style en ligne.
+
+  Les classes portent le nom de leur rôle, pas celui de leur déclaration.
+*/
+
+.boutonAction:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+.boutonSecondaire:hover {
+  background: var(--card);
+  transform: translateY(-1px);
+}
+
+/* Carte de réalisation : la maquette la soulève et creuse son ombre. */
+.cartePreuve {
+  transition:
+    transform var(--tr),
+    box-shadow var(--tr);
+}
+.cartePreuve:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.42);
+}
+
+/* Dépliant de FAQ : `globals.css` tient déjà l'état ouvert de `.cx-plus`
+   (rotation et passage à l'orange). Ici, l'état fermé et son survol. */
+.plusFaq {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex: none;
+  border-radius: 999px;
+  background: var(--chip);
+  color: var(--ink2);
+  font: 400 17px var(--fb);
+  transition:
+    transform var(--tr),
+    background var(--tr),
+    color var(--tr);
+}
+
+.questionFaq {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+  padding: 20px 24px;
+  cursor: pointer;
+  text-align: left;
+  list-style: none;
+}
+.questionFaq:hover .plusFaq {
+  background: var(--acc-w);
+  color: var(--acc-ink);
+}

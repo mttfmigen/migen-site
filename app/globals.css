@@ -73,6 +73,23 @@
   box-sizing: border-box;
 }
 
+/* Conteneur racine du site, repris de la maquette.
+   `<div class="mg-site" style="min-height:100vh;background:var(--bg);overflow:hidden">`
+
+   Une seule valeur change : `overflow: hidden` devient `overflow-x: clip`.
+   POURQUOI, et ce n'est pas une préférence : `overflow: hidden` fait de
+   l'élément un CONTENEUR DE DÉFILEMENT, même quand il ne défile jamais. Les
+   sections qui apparaissent au défilement calculent leur `animation-timeline:
+   view()` contre le conteneur le plus proche : ce conteneur-là ne bouge pas,
+   leur progression reste bloquée, et elles restent à `opacity: 0`. Du contenu
+   que Google voit et que le visiteur ne voit pas. `clip` coupe exactement
+   pareil sans créer de conteneur de défilement. */
+.mg-site {
+  min-height: 100vh;
+  background: var(--bg);
+  overflow-x: clip;
+}
+
 html,
 body {
   /* L'ancrage automatique du défilement déplace la page quand un bloc se
@@ -211,7 +228,15 @@ details[open] .g3-plus {
 }
 
 /* --------------------------------------------------- bandeau de logos défilant */
-.mg-marquee:hover .mg-track {
+/* La piste lit `var(--mq-play, running)`. La valeur par défaut existe côté
+   `var()`, mais la déclarer ici rend la pause pilotable depuis un composant
+   (un bouton de pause, un test) sans toucher à la règle de survol. */
+.mg-marquee {
+  --mq-play: running;
+}
+.mg-marquee:hover .mg-track,
+.mg-marquee:focus-within .mg-track {
+  --mq-play: paused;
   animation-play-state: paused;
 }
 .mg-logo {

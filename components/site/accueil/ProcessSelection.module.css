@@ -1,0 +1,10 @@
+/* Survol du bouton d'appel à l'action, repris de `style-hover` de la maquette. */
+.boutonAccent {
+  transition:
+    filter var(--tr),
+    transform var(--tr);
+}
+.boutonAccent:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+}

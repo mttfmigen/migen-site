@@ -1,0 +1,10 @@
+/* Survol du lien « Voir toutes les marques », repris de `style-hover`. */
+.lienMarques {
+  transition:
+    border-color var(--tr),
+    color var(--tr);
+}
+.lienMarques:hover {
+  border-color: var(--acc);
+  color: var(--acc);
+}

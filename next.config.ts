@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 /**
  * En-têtes de sécurité, posés sur toutes les réponses.
  *
- * Pourquoi ici et non dans le middleware : le middleware ne s'exécute pas sur
+ * Pourquoi ici et non dans le proxy : le proxy ne s'exécute pas sur
  * les actifs statiques (son `matcher` les écarte, à raison), alors que ces
  * en-têtes doivent couvrir chaque réponse, y compris une image ou une feuille
  * de style servie depuis `public/`.
@@ -40,15 +40,15 @@ const ENTETES_SECURITE = [
 
 const nextConfig: NextConfig = {
   /**
-   * Le slash final est géré par le middleware, et par lui seul.
+   * Le slash final est géré par le proxy (ex-middleware), et par lui seul.
    *
-   * Sans ce réglage, les deux se battent : le middleware redirige en 308 vers
+   * Sans ce réglage, les deux se battent : le proxy redirige en 308 vers
    * la forme avec slash, et Next, dont `trailingSlash` vaut `false` par défaut,
    * redirige aussitôt vers la forme sans slash. Toute URL du site part alors en
    * boucle de redirection infinie.
    *
    * `skipTrailingSlashRedirect` plutôt que `trailingSlash: true` parce que le
-   * middleware doit de toute façon rester maître de la décision : il consulte
+   * proxy doit de toute façon rester maître de la décision : il consulte
    * la table `redirects` avant de normaliser, et une ancienne URL stockée sans
    * slash doit partir sur sa destination éditoriale, pas sur une normalisation
    * décidée par le framework en amont.

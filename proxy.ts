@@ -3,14 +3,17 @@ import { NextResponse, type NextRequest } from "next/server";
 /**
  * Redirections éditoriales et slash final.
  *
- * Deux raisons de passer par `fetch` sur l'API REST de Supabase plutôt que par
- * le client `@supabase/supabase-js` :
- *   · le middleware est le code le plus chaud du site, il s'exécute avant chaque
- *     rendu ; une requête HTTP nue suffit à lire trois colonnes, embarquer un
- *     client complet (realtime, auth, storage) y serait du poids mort ;
- *   · ce fichier est bundlé à part et peut être déployé au plus près du
- *     visiteur ; `fetch` est la seule primitive garantie dans tous les cas, quel
- *     que soit le runtime qui l'exécute.
+ * Ce fichier s'appelait `middleware.ts` : Next 16 a renommé la convention en
+ * `proxy`, et l'export `middleware` en `proxy`. Le nom dit mieux ce que fait ce
+ * code, qui décide d'une route avant le rendu et rien d'autre. Son exécution a
+ * lieu sur le runtime Node, qui n'est pas configurable : contrairement à
+ * l'ancien middleware, il ne part PAS en périphérie.
+ *
+ * Pourquoi `fetch` sur l'API REST de Supabase plutôt que le client
+ * `@supabase/supabase-js` : c'est le code le plus chaud du site, il s'exécute
+ * avant chaque rendu. Une requête HTTP nue suffit à lire trois colonnes,
+ * embarquer un client complet (temps réel, auth, stockage) y serait du poids
+ * mort.
  *
  * Aucun secret ici : la clé anonyme suffit, la policy RLS « redirections
  * actives, lecture publique » ne laisse remonter que les lignes `actif`.
@@ -61,7 +64,7 @@ async function chargeRedirections(): Promise<Table> {
     {
       headers: { apikey: cle, Authorization: `Bearer ${cle}` },
       // Le cache est géré ici, pas par la couche de données de Next : le
-      // middleware n'a pas accès au cache de rendu.
+      // proxy n'a pas accès au cache de rendu.
       cache: "no-store",
     },
   );
@@ -159,7 +162,7 @@ function cibleInterne(destination: string, request: NextRequest): URL | null {
   return cible;
 }
 
-export async function middleware(request: NextRequest): Promise<NextResponse> {
+export async function proxy(request: NextRequest): Promise<NextResponse> {
   const chemin = request.nextUrl.pathname;
   const canonique = cheminNormalise(chemin);
 
@@ -169,7 +172,7 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
   } catch (erreur) {
     // Une base injoignable ne doit pas rendre le site inaccessible : on laisse
     // passer la requête, en gardant la trace du problème côté serveur.
-    console.error("Middleware, redirections indisponibles :", erreur);
+    console.error("Proxy, redirections indisponibles :", erreur);
   }
 
   if (table) {
@@ -184,7 +187,7 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
       // Une destination externe est une erreur de donnée, pas une redirection à
       // honorer : on la journalise et on laisse la requête suivre son cours.
       console.error(
-        `Middleware, destination non interne ignorée pour « ${regle.source} ».`,
+        `Proxy, destination non interne ignorée pour « ${regle.source} ».`,
       );
     }
   }

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Caveat, Poppins } from "next/font/google";
 
 import Bandeau from "@/components/consentement/Bandeau";
+import Entete from "@/components/site/Entete";
+import PiedDePage from "@/components/site/PiedDePage";
 import ConsentMode from "@/components/consentement/ConsentMode";
 import LienReglages from "@/components/consentement/LienReglages";
 import Tags from "@/components/consentement/Tags";
@@ -73,9 +75,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       // Le site est francophone : la langue déclarée conditionne la
       // prononciation des lecteurs d'écran et la césure du texte. Critère RGAA.
       lang="fr"
-      className={`${poppins.variable} ${caveat.variable} h-full`}
+      // PAS de `h-full` ici, et ce n'est pas un oubli : la classe vient du
+      // gabarit de create-next-app, où elle sert à coller un pied de page en
+      // bas d'une page courte. Elle fige `html` à la hauteur de la fenêtre,
+      // ce qui contraint le bloc conteneur initial et fausse le calcul des
+      // `animation-timeline: view()` des sections qui apparaissent au
+      // défilement. La mise en page vient maintenant de la maquette, dont le
+      // conteneur `.mg-site` porte son propre `min-height: 100vh`.
+      className={`${poppins.variable} ${caveat.variable}`}
     >
-      <body className="min-h-full flex flex-col">
+      <body>
         {/*
           ConsentMode EN PREMIER, et ce n'est pas cosmétique : son script est en
           `beforeInteractive`, Next ne l'injecte dans le HTML initial que s'il
@@ -92,13 +101,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Tags />
         <Bandeau />
 
+        {/* La barre de navigation flottante, portée de la maquette. Elle est en
+            position fixe : elle vit hors du flux, d'où sa place avant le
+            contenu plutôt que dans chaque page. */}
+        <Entete />
+
         {children}
 
-        <footer className="mt-auto border-t border-zinc-200 px-6 py-8 dark:border-zinc-800">
-          {/* Exigence CNIL : revenir sur son choix doit rester accessible depuis
-              n'importe quelle page, donc depuis le pied de page commun. */}
-          <LienReglages />
-        </footer>
+        {/* Un seul pied de page pour tout le site. Le lien CNIL de réglage du
+            consentement lui est PASSÉ au lieu d'être réécrit dedans : une seule
+            implémentation du bouton, et le pied de page reste un composant
+            serveur alors que le lien est un composant client. */}
+        <PiedDePage reglagesConsentement={<LienReglages />} />
 
         {/*
           Organisation posée une seule fois pour tout le site, ici et nulle part

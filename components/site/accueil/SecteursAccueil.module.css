@@ -1,0 +1,6 @@
+/* `style-hover="color:#ff7c3c;padding-left:12px"` de la maquette. La classe
+   bat la règle globale `a:hover` (0,2,0 contre 0,1,1). */
+.ligne:hover {
+  color: #ff7c3c;
+  padding-left: 12px;
+}

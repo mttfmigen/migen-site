@@ -7,7 +7,15 @@ habitude de framework.
 
 Migen, maintenance industrielle B2B : déploiement de techniciens
 électromécaniciens, automaticiens et roboticiens sur sites clients. Siège à
-Écully et Lyon.
+Limonest, près de Lyon.
+
+> Cette ligne disait « Écully et Lyon ». Corrigée le 02/10 après vérification,
+> parce que trois sources plus récentes et concordantes disent Limonest : la
+> maquette validée (« 1 rue des Vergers, 69760 Limonest »), le corpus rédigé
+> (« le siège du groupe est à Limonest, près de Lyon ») et le site en ligne.
+> L'adresse d'Écully (129 chemin du Moulin Carron, 69130) figure encore sur
+> certaines pages du site actuel : c'est l'ancienne, à purger à la recette.
+> **À confirmer par Mehdi** avant la mise en ligne, c'est une mention légale.
 
 Un site existe déjà, en Astro, dans `../migen-refonte` (223 pages construites,
 corpus rédigé, portes de vérification). Il reste en ligne pendant toute la
@@ -93,7 +101,7 @@ pas à ouvrir une table.
   hors `noindex`.
 - JSON-LD : Organization (global), BreadcrumbList (toutes pages), Service
   (offres), Article (blog).
-- Redirections lues dans `redirects` et appliquées par le middleware.
+- Redirections lues dans `redirects` et appliquées par le proxy (fichier proxy.ts, ex-middleware).
 - Images par le composant optimisé de Next, formats modernes, dimensions
   explicites.
 - Core Web Vitals au vert sur mobile. Lighthouse avant chaque mise en production.

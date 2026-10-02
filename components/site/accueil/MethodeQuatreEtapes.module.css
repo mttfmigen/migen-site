@@ -1,0 +1,68 @@
+/* Les quatre boutons d'étape. Leur apparence dépend de l'étape choisie, qui
+   est un état local : elle ne peut donc pas venir des données comme le texte.
+   Les valeurs reprennent des motifs relevés ailleurs dans la maquette : la
+   pastille cerclée de la couleur du fond (listes numérotées des gabarits) et
+   la numérotation en chasse fixe orange (sommaires). */
+.etape {
+  appearance: none;
+  border: 0;
+  margin: 0;
+  padding: 0 18px 0 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.pastille {
+  /* Centre à 11px du haut, soit exactement sur le fil qui relie les étapes. */
+  width: 10px;
+  height: 10px;
+  margin: 6px 0 0;
+  border-radius: 999px;
+  background: var(--ink4);
+  box-shadow: 0 0 0 6px var(--bg);
+  flex: none;
+  transition: background var(--tr);
+}
+
+.numero {
+  font: 600 11px ui-monospace, Menlo, monospace;
+  color: var(--ink4);
+  transition: color var(--tr);
+}
+
+.titre {
+  font: 600 17px/1.3 var(--ft);
+  letter-spacing: -0.02em;
+  color: var(--ink2);
+  transition: color var(--tr);
+}
+
+.quand {
+  font: 400 12.5px/1.4 var(--fb);
+  color: var(--ink4);
+}
+
+.etape:hover .titre {
+  color: var(--ink);
+}
+
+.etape[aria-pressed="true"] .pastille {
+  background: var(--acc);
+}
+.etape[aria-pressed="true"] .numero {
+  color: var(--acc);
+}
+.etape[aria-pressed="true"] .titre {
+  color: var(--ink);
+}
+
+/* Sur le panneau anthracite, le lien passe au blanc au survol. La règle
+   globale `a:hover` est battue par la classe (0,2,0 contre 0,1,1). */
+.lienQualification:hover {
+  color: #fff;
+}

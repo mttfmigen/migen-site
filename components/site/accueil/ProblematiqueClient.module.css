@@ -1,0 +1,19 @@
+/* Survol des trois cartes de preuve. Valeurs reprises de l'attribut
+   `style-hover` de la maquette.
+
+   L'ombre de repos est déclarée ici et non en style en ligne : un style en
+   ligne l'emporterait sur la règle de survol, et l'ombre ne changerait jamais.
+   La valeur est celle de la maquette, au caractère près. */
+.cartePreuve {
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.04),
+    0 22px 50px -30px rgba(0, 0, 0, 0.3);
+  transition:
+    transform var(--tr),
+    box-shadow var(--tr);
+}
+
+.cartePreuve:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 26px 60px -28px rgba(0, 0, 0, 0.4);
+}

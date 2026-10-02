@@ -1,0 +1,153 @@
+/*
+ * Survols de l'en-tête, traduits des 93 attributs `style-hover` de la maquette.
+ *
+ * Pourquoi la couleur de base est ici et non en style en ligne : un style en
+ * ligne gagne contre toute feuille, donc un `color` posé en ligne rendrait le
+ * survol inopérant. Les propriétés que le survol modifie vivent donc dans la
+ * classe, avec leur valeur de repos recopiée de la maquette. Le reste de la
+ * mise en forme (dimensions, rayons, graisses) reste en ligne, à l'identique.
+ */
+
+/* ---------------------------------------------------------------- la pilule */
+
+.logo {
+  transition: background var(--tr);
+}
+.logo:hover {
+  background: var(--chip);
+}
+
+.itemNav {
+  background: transparent;
+  color: var(--ink1);
+  box-shadow: none;
+  transition:
+    background var(--tr),
+    color var(--tr),
+    box-shadow var(--tr);
+}
+.itemNav:hover {
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tel {
+  background: transparent;
+  color: var(--ink3);
+  transition:
+    background var(--tr),
+    color var(--tr);
+}
+.tel:hover {
+  background: var(--card);
+  color: var(--ink);
+}
+
+.cta {
+  background: var(--acc);
+  color: #fff;
+  transition:
+    filter var(--tr),
+    transform var(--tr);
+}
+.cta:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+/* ------------------------------------------------------------- mega-menus */
+
+/* Rangée à vignette (Offres) et rangée décrite (Ressources, À propos). */
+.rangee {
+  transition: background var(--tr);
+}
+.rangee:hover {
+  background: var(--chip);
+}
+
+/* Lien de liste simple : encre atténuée au repos, orange au survol. */
+.lienListe {
+  color: var(--ink1);
+}
+.lienListe:hover {
+  color: var(--acc);
+}
+
+/* Même survol, encre pleine au repos (« Toutes nos expertises → »). */
+.lienFort {
+  color: var(--ink);
+}
+.lienFort:hover {
+  color: var(--acc);
+}
+
+/* Même survol, encre orange sombre au repos (« Les 23 ressources → »). */
+.lienAccent {
+  color: var(--acc-ink);
+}
+.lienAccent:hover {
+  color: var(--acc);
+}
+
+/* Même survol, encre la plus effacée au repos (« Modèle de LP »). */
+.lienDiscret {
+  color: var(--ink4);
+}
+.lienDiscret:hover {
+  color: var(--acc);
+}
+
+/* Vignette d'étude de cas : le texte reste blanc, la carte se soulève. */
+.carteCas {
+  color: #fff;
+}
+.carteCas:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Bouton orange posé sur le panneau anthracite. */
+.ctaPanneau {
+  background: var(--acc);
+  color: #fff;
+}
+.ctaPanneau:hover {
+  filter: brightness(0.93);
+  color: #fff;
+}
+
+/* ---------------------------------------------------------- tiroir tactile */
+
+.sectionTiroir {
+  transition: background 0.2s;
+}
+
+.chevronTiroir {
+  transition: transform 0.2s;
+}
+
+.lienTiroir {
+  color: var(--ink1);
+}
+.lienTiroir:hover {
+  background: #fff;
+  color: var(--ink);
+}
+
+/* ------------------------------------------------- barre d'action basse */
+
+/*
+ * La barre basse est la référence tactile : au-delà de la largeur où l'îlot
+ * retrouve sa navigation complète (880px, seuil déjà posé dans globals.css
+ * pour le bouton menu), elle n'a plus de raison d'être.
+ */
+.barreAction {
+  display: flex;
+}
+@media (min-width: 881px) {
+  .barreAction {
+    display: none;
+  }
+}

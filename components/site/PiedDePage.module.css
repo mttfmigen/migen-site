@@ -1,0 +1,95 @@
+/*
+ * Survols du pied de page, portés depuis les attributs `style-hover` de
+ * « Migen - Site final.dc.html » (7181-7289).
+ *
+ * La couleur de base accompagne ici son survol, et n'est pas restée en style en
+ * ligne : un style en ligne React gagne contre toute règle CSS, le `:hover`
+ * n'aurait jamais pris. Les valeurs sont celles de la maquette.
+ *
+ * `a:hover { color: var(--acc) }` est déclaré globalement : les règles qui
+ * posent une autre couleur au survol sont indispensables, pas décoratives.
+ */
+
+/* ------------------------------------------------- appels à l'action orange */
+
+.appelSite,
+.appelLanding {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: var(--acc);
+  color: #fff;
+}
+
+.appelSite {
+  gap: 9px;
+  padding: 13px 22px;
+  font: 600 14.5px var(--fb);
+  transition: filter var(--tr);
+}
+
+.appelSite:hover {
+  filter: brightness(0.93);
+  color: #fff;
+}
+
+.appelLanding {
+  padding: 13px 22px;
+  font: 600 14.5px var(--fb);
+  white-space: nowrap;
+}
+
+/* Le bouton est déjà blanc sur orange : cette règle n'ajoute rien de visible,
+   elle empêche le survol global de le repeindre en orange sur orange. */
+.appelLanding:hover {
+  color: #fff;
+}
+
+/* ------------------------------------------------------- liens de navigation */
+
+.lienNav {
+  font: 400 14.5px var(--fb);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.lienNav:hover {
+  color: var(--acc);
+}
+
+/* ------------------------------------------------------------ maillage SEO */
+
+.lienMaillage {
+  color: rgba(255, 255, 255, 0.44);
+}
+
+.lienMaillage:hover {
+  color: var(--acc);
+}
+
+/* ------------------------------------------------------------- barre basse */
+
+.lienBas {
+  font: 400 12.5px var(--fb);
+  color: rgba(255, 255, 255, 0.34);
+}
+
+.lienBas:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/*
+ * Le lien CNIL arrive en prop, donc sans possibilité de lui passer une classe :
+ * il est habillé depuis son conteneur pour qu'il s'aligne sur les autres liens
+ * de la barre basse. Le sélecteur descendant bat les classes utilitaires que le
+ * composant porte lui-même.
+ */
+.reglages > button,
+.reglages > a {
+  font: 400 12.5px var(--fb);
+  color: rgba(255, 255, 255, 0.34);
+}
+
+.reglages > button:hover,
+.reglages > a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}

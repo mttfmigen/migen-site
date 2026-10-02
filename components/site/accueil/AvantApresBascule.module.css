@@ -1,0 +1,42 @@
+/* La bascule « Avant / Avec ». Son état vit dans le composant : son habillage
+   ne peut donc pas venir des données comme le reste de la section. Le motif
+   repris est celui du groupe de pilules de la navigation de la maquette
+   (fond de verre, pilule active en blanc posée dessus). */
+.onglets {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 5px;
+  margin-bottom: 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, var(--gl-a));
+  backdrop-filter: blur(var(--gl-b)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--gl-b)) saturate(150%);
+  border: 1px solid var(--gbd);
+}
+
+.onglet {
+  appearance: none;
+  border: 0;
+  margin: 0;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: none;
+  color: var(--ink1);
+  font: 500 14.5px var(--fb);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background var(--tr),
+    color var(--tr);
+}
+
+.onglet:hover {
+  color: var(--ink);
+}
+
+.onglet[aria-pressed="true"] {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 2px 8px rgba(28, 27, 25, 0.1);
+}

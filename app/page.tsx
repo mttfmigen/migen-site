@@ -1,28 +1,56 @@
 import type { Metadata } from "next";
 
-import Corps from "@/components/cocon/Corps";
-import RubriquesNiveau1 from "@/components/cocon/RubriquesNiveau1";
+import AvantApresBascule from "@/components/site/accueil/AvantApresBascule";
+import BandeauVerbe from "@/components/site/accueil/BandeauVerbe";
+import BentoBesoins from "@/components/site/accueil/BentoBesoins";
+import CertificationsRse from "@/components/site/accueil/CertificationsRse";
+import ChiffresCroissance from "@/components/site/accueil/ChiffresCroissance";
+import DernieresRealisations from "@/components/site/accueil/DernieresRealisations";
+import FocusResidence from "@/components/site/accueil/FocusResidence";
+import FormulaireBasDePage from "@/components/site/accueil/FormulaireBasDePage";
+import FriseHistoire from "@/components/site/accueil/FriseHistoire";
+import GrilleOffres from "@/components/site/accueil/GrilleOffres";
+import Hero from "@/components/site/accueil/Hero";
+import HubsAccueil from "@/components/site/accueil/HubsAccueil";
+import LogosTechnologies from "@/components/site/accueil/LogosTechnologies";
+import MarqueeClients from "@/components/site/accueil/MarqueeClients";
+import MethodeQuatreEtapes from "@/components/site/accueil/MethodeQuatreEtapes";
+import PourquoiExternaliser from "@/components/site/accueil/PourquoiExternaliser";
+import ProblematiqueClient from "@/components/site/accueil/ProblematiqueClient";
+import ProcessSelection from "@/components/site/accueil/ProcessSelection";
+import SecteursAccueil from "@/components/site/accueil/SecteursAccueil";
+import TemoignagesClients from "@/components/site/accueil/TemoignagesClients";
 import { pageParChemin } from "@/lib/contenu";
 import { metadonneesSeo } from "@/lib/seo/metadonnees";
 
 /**
- * ACCUEIL PROVISOIRE.
+ * Page d'accueil.
  *
- * Remplace la page de démonstration de create-next-app par le strict minimum :
- * le titre de la page `/` et les rubriques de premier niveau. Elle sera
- * remplacée par la maquette. Rien ne doit être écrit ici qui mérite d'être
- * gardé : pas de mise en page travaillée, pas de texte commercial, aucune
- * donnée Migen écrite en dur.
+ * L'ORDRE DES SECTIONS EST CELUI DE LA MAQUETTE, lignes 480 à 1200 de
+ * « Migen - Site final.dc.html ». Il n'est pas esthétique, il est commercial :
+ * la promesse, puis les offres, puis la preuve sociale, puis la méthode, puis
+ * l'action. Ne pas réordonner sans en passer par la maquette.
+ *
+ * POURQUOI L'ACCUEIL N'EST PAS SERVIE PAR `app/[...slug]` comme les 225 autres
+ * pages : son contenu n'est pas du gabarit de vente en dix sections, c'est une
+ * composition propre. Elle lit tout de même sa ligne `pages` pour son SEO,
+ * quand elle existe, afin que le meta title et la description restent pilotés
+ * par la base comme partout ailleurs.
+ *
+ * Les sections portent leur contenu éditorial en valeur par défaut, reprise mot
+ * pour mot de la maquette. Ce n'est pas un contournement de la règle « le
+ * contenu vit dans Supabase » : c'est de l'habillage de page d'accueil, pas du
+ * corpus éditorial indexé. Le jour où une section devient pilotable, elle prend
+ * ses données en props, la signature est déjà là.
  */
 
 export const revalidate = 3600;
 
-const TITRE_PAR_DEFAUT = "Migen";
+const TITRE_PAR_DEFAUT =
+  "Migen, maintenance industrielle et techniciens sur site";
 
 export async function generateMetadata(): Promise<Metadata> {
   const complete = await pageParChemin("/");
-  // Même sans ligne en base, la racine reste servie : le titre retombe sur le
-  // nom de l'entreprise, et `metadonneesSeo` pose tout de même le canonique.
   return metadonneesSeo({
     seo: complete?.seo ?? null,
     chemin: "/",
@@ -30,28 +58,35 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default async function Accueil() {
-  // L'accueil reste servie même sans ligne en base : le titre retombe sur le
-  // nom de l'entreprise plutôt que de renvoyer une 404 sur la racine.
-  const complete = await pageParChemin("/");
-
+export default function Accueil() {
   return (
-    <main className="mx-auto w-full max-w-3xl px-6 py-12">
-      <p className="rounded-md border border-dashed border-zinc-300 px-3 py-2 text-xs uppercase tracking-wide text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
-        Accueil provisoire, en attente de la maquette
-      </p>
-      <h1 className="mt-8 text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
-        {complete?.page.titre_h1 ?? TITRE_PAR_DEFAUT}
-      </h1>
-      <Corps contenu={complete?.page.contenu} />
-      <div className="mt-10">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
-          Les rubriques du site
-        </h2>
-        <div className="mt-3">
-          <RubriquesNiveau1 />
-        </div>
-      </div>
-    </main>
+    // `mg-site` n'est pas décoratif : les règles de `app/globals.css` qui
+    // rattrapent les marges, l'échelle des titres et les arrondis sous 760px
+    // sont toutes préfixées par cette classe. Sans elle, le mobile reste au
+    // gabarit desktop.
+    <div className="mg-site">
+      <main style={{ paddingTop: "96px" }}>
+        <Hero />
+        <GrilleOffres />
+        <MarqueeClients />
+        <CertificationsRse />
+        <ProblematiqueClient />
+        <ProcessSelection />
+        <BandeauVerbe />
+        <FocusResidence />
+        <LogosTechnologies />
+        <ChiffresCroissance />
+        <DernieresRealisations />
+        <TemoignagesClients />
+        <FriseHistoire />
+        <PourquoiExternaliser />
+        <BentoBesoins />
+        <AvantApresBascule />
+        <MethodeQuatreEtapes />
+        <SecteursAccueil />
+        <HubsAccueil />
+        <FormulaireBasDePage />
+      </main>
+    </div>
   );
 }

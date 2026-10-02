@@ -1,0 +1,13 @@
+/* L'ombre est ici et non en ligne : un style en ligne l'emporte sur toute
+   règle de feuille, le survol ne pourrait pas la remplacer. */
+.carte {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  transition:
+    transform var(--tr),
+    box-shadow var(--tr);
+}
+
+.carte:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.42);
+}

@@ -1,0 +1,4 @@
+/* `style-hover="transform:translateY(-4px)"` de la maquette. */
+.carte:hover {
+  transform: translateY(-4px);
+}

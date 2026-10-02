@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
 
-import type { LignePage, LigneSeo } from "@/types/lignes";
 
 import { urlAbsolue } from "@/lib/seo/url";
 import { lectureContenu } from "@/lib/supabase";
