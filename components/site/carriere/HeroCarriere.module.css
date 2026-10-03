@@ -1,0 +1,19 @@
+/* Survols repris des attributs `style-hover` de la maquette, lignes 3198 et
+   3199 : la pilule orange s'assombrit et se soulève, la pilule de verre
+   passe au blanc plein. */
+.boutonAccent {
+  transition:
+    filter var(--tr),
+    transform var(--tr);
+}
+.boutonAccent:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+}
+
+.boutonVerre {
+  transition: background var(--tr);
+}
+.boutonVerre:hover {
+  background: var(--card);
+}

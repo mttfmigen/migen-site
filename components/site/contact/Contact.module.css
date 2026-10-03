@@ -1,0 +1,16 @@
+/* Survols de la page contact, repris des `style-hover` de la maquette
+   (lignes 2950 à 3024). Ils vivent ici et non dans `app/globals.css` :
+   plusieurs agents portent des écrans en parallèle, un fichier partagé
+   produirait des conflits. */
+
+/* « Les cinq offres » et le bouton d'astreinte : même capsule de verre,
+   même survol. */
+.capsuleVerre {
+  transition:
+    background var(--tr),
+    transform var(--tr);
+}
+.capsuleVerre:hover {
+  background: var(--card);
+  transform: translateY(-1px);
+}

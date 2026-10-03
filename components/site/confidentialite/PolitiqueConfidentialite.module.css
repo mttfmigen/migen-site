@@ -1,0 +1,15 @@
+/* Entrées du sommaire. La maquette colore la première en dur (`color:var(--acc)`
+   sur « Responsable du traitement »), ce qui mentirait dès le deuxième clic :
+   même traitement que le sommaire de l'article, l'entrée suivie se signale au
+   survol et au focus. */
+.lienSommaire {
+  color: var(--ink1);
+  transition: color var(--tr);
+}
+.lienSommaire:hover,
+.lienSommaire:focus-visible {
+  color: var(--acc);
+}
+.lienSommaire:is(:any-link):active {
+  color: var(--acc);
+}

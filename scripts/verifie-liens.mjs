@@ -68,8 +68,33 @@ while (aVisiter.length > 0 && vues.size < PAGES_MAX) {
   }
 }
 
+/* Le plan de site se contrôle avec les mêmes moyens, et il le mérite : une URL
+   qu'il déclare et qui répond 404 dit à Google que le site est cassé, et c'est
+   le seul fichier que le robot lit en entier. */
+const duPlan = [];
+try {
+  const plan = await fetch(`${SITE}/sitemap.xml`);
+  if (plan.ok) {
+    for (const trouve of (await plan.text()).matchAll(/<loc>([^<]+)<\/loc>/g)) {
+      duPlan.push(trouve[1].replace(/^https?:\/\/[^/]+/, ""));
+    }
+  }
+} catch {
+  // Absent en développement selon la configuration : ce n'est pas une faute ici.
+}
+
 const morts = [];
 const sansSlash = [];
+const planMort = [];
+
+for (const chemin of duPlan) {
+  try {
+    const statut = (await fetch(SITE + chemin, { redirect: "manual" })).status;
+    if (statut !== 200) planMort.push({ chemin, statut });
+  } catch {
+    planMort.push({ chemin, statut: "injoignable" });
+  }
+}
 
 for (const [cible, depuis] of liens) {
   let statut;
@@ -91,8 +116,13 @@ for (const [cible, depuis] of liens) {
 
 console.log(
   `${vues.size} pages parcourues, ${liens.size} cibles internes distinctes, ` +
-    `${morts.length} morte(s), ${sansSlash.length} redirigée(s).`,
+    `${morts.length} morte(s), ${sansSlash.length} redirigée(s). ` +
+    `Plan de site : ${duPlan.length} URL, ${planMort.length} morte(s).`,
 );
+
+for (const { chemin, statut } of planMort) {
+  console.error(`  le plan de site déclare ${chemin}, qui répond ${statut}`);
+}
 
 for (const { cible, statut, depuis } of morts) {
   const citations = [...depuis];
@@ -106,5 +136,5 @@ for (const { cible, statut, depuis } of sansSlash) {
   console.error(`  ${cible} répond ${statut} (redirection) depuis ${[...depuis][0]}`);
 }
 
-if (morts.length > 0 || sansSlash.length > 0) process.exit(1);
+if (morts.length > 0 || sansSlash.length > 0 || planMort.length > 0) process.exit(1);
 console.log("tous les liens internes mènent quelque part");

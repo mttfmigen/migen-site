@@ -1,0 +1,13 @@
+/* Survols de l'écran « Nos valeurs », reprises des `style-hover` de la
+   maquette (lignes 5541 et 5664). Un seul module pour les trois sections de
+   l'écran : le bouton d'accent y est répété à l'identique. */
+.boutonAccent {
+  transition:
+    filter var(--tr),
+    transform var(--tr);
+}
+.boutonAccent:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
