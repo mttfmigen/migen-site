@@ -24,7 +24,7 @@ import { promisify } from "node:util";
 
 const execute = promisify(execFile);
 
-const URL_PAR_DEFAUT = "https://migen-site-2vo0nipdl-migenservice.vercel.app";
+const URL_PAR_DEFAUT = "https://migen-site-aeaprqbtc-migenservice.vercel.app";
 const BASE = process.argv[2] ?? process.env.DEPLOIEMENT_URL ?? URL_PAR_DEFAUT;
 
 /** Une page par gabarit, et le marqueur qui prouve que c'est bien lui qui rend. */
@@ -36,6 +36,13 @@ const PAGES = [
   { chemin: "/offres/residence/", gabarit: "vente", marqueur: /id="formulaire"/ },
   { chemin: "/ressources/fiches-pratiques/", gabarit: "editorial", marqueur: /Sur cette page|<h2/ },
   { chemin: "/implantations/lyon/", gabarit: "vente", marqueur: /id="formulaire"/ },
+  // Les écrans uniques, portés en routes : ils ne passent pas par la base, donc
+  // une erreur de route ne se verrait nulle part ailleurs.
+  { chemin: "/contact/", gabarit: "route", marqueur: /name="entreprise"/ },
+  { chemin: "/mentions-legales/", gabarit: "route", marqueur: /ublication|égales/ },
+  { chemin: "/confidentialite/", gabarit: "route", marqueur: /CNIL|onfidentialité/ },
+  { chemin: "/nous-connaitre/", gabarit: "route", marqueur: /Limonest|migen/ },
+  { chemin: "/plan-du-site/", gabarit: "route", marqueur: /href="\/offres\//, },
 ];
 
 async function recupere(chemin) {
