@@ -1,0 +1,28 @@
+/* `style-hover="transform:translateY(-3px);box-shadow:0 26px 56px -30px rgba(0,0,0,.4)"`
+   des cartes de personnes, maquette ligne 5861. */
+.cartePersonne:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 26px 56px -30px rgba(0, 0, 0, 0.4);
+}
+
+/* `style-hover="filter:brightness(.93);transform:translateY(-1px)"`, ligne 5969. */
+.boutonAction:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+}
+
+/* `style-hover="filter:brightness(.93);color:#fff"`, ligne 5987 : le bouton de
+   la section « Qui vous répond » ne se soulève pas, il garde juste son blanc. */
+.boutonRelais:hover {
+  filter: brightness(0.93);
+  color: #fff;
+}
+
+/* La maquette pose `list-style:none` sur le `summary`, ce qui ne suffit pas sur
+   Firefox : le marqueur natif se retire par `::marker`. */
+.questionEquipe::marker,
+.questionEquipe::-webkit-details-marker {
+  display: none;
+  content: "";
+}

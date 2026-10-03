@@ -1,0 +1,34 @@
+/*
+ * Survols de l'écran « Marques maintenues ».
+ *
+ * La maquette ne pose qu'un seul `style-hover` sur cet écran, sur ses deux
+ * boutons « Décrire mon besoin » (lignes 2883 et 2921) :
+ * `filter:brightness(.93);color:#fff`. Les tuiles de logo, le bouton
+ * téléphone et les intitulés de famille n'en ont pas, et n'en reçoivent pas.
+ */
+.boutonAction {
+  transition: filter var(--tr);
+}
+.boutonAction:hover {
+  filter: brightness(0.93);
+  color: #fff;
+}
+
+/*
+ * Point de bascule de la grille de logos.
+ *
+ * La maquette est dessinée pour un écran large : `minmax(150px,1fr)` dans une
+ * carte à 32px de retrait intérieur ne laisse qu'UNE colonne sous 760px, soit
+ * soixante-sept tuiles empilées et près de 5 500px de défilement. Le minimum
+ * descend donc à 110px sur téléphone, ce qui en pose deux par ligne sans
+ * toucher ni la hauteur de tuile ni l'écart de la maquette.
+ *
+ * `!important` est nécessaire, et c'est la règle du projet : un style en ligne
+ * React bat toute feuille, et c'est en ligne que la maquette déclare la grille.
+ * `app/globals.css` rattrape les mêmes cas de la même façon.
+ */
+@media (max-width: 760px) {
+  .grilleLogos {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)) !important;
+  }
+}

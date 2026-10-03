@@ -36,9 +36,20 @@ const LARGEURS = [320, 375, 768];
 const CIBLE_MINIMALE = 24;
 const SAISIE_MINIMALE = 16;
 
-/* Les pages à éprouver : l'accueil, une page de vente, un gabarit maquette et
-   une page éditoriale. Les quatre mises en page du site. */
-const PAGES = ["/", "/offres/residence/", "/expertises/", "/ressources/fiches-pratiques/"];
+/* Les pages à éprouver : une par mise en page du site. Les quatre premières
+   couvrent les familles servies depuis la base, les trois suivantes les écrans
+   uniques portés en routes, qui ont leur propre mise en page et que personne
+   n'avait regardés sur téléphone : le contact porte un formulaire, les mentions
+   légales un sommaire collant, l'équipe une grille de portraits. */
+const PAGES = [
+  "/",
+  "/offres/residence/",
+  "/expertises/",
+  "/ressources/fiches-pratiques/",
+  "/contact/",
+  "/mentions-legales/",
+  "/equipe/",
+];
 
 const MESURE = ({ cible, saisie }) => {
   const document_ = document.documentElement;

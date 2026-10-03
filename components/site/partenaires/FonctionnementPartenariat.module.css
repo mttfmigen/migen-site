@@ -1,0 +1,8 @@
+/* Survol du bouton d'appel à l'action de la section. Valeur recopiée de
+   l'attribut `style-hover` de la maquette (accueil-rendu.html, ligne 6068) :
+   `filter:brightness(.93);color:#fff`. Le `color` tient tête à la règle
+   globale `a:hover { color: var(--acc) }`, qui décolorerait le texte blanc. */
+.lienAccent:hover {
+  filter: brightness(0.93);
+  color: #fff;
+}

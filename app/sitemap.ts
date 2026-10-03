@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 
 
 import { cheminsArticles } from "@/lib/contenu";
+import { ROUTES_STATIQUES } from "@/lib/routes-statiques";
 import { urlAbsolue } from "@/lib/seo/url";
 import { lectureContenu } from "@/lib/supabase";
 
@@ -20,9 +21,17 @@ import { lectureContenu } from "@/lib/supabase";
  * demandé. Un article sans pilier publié est omis par `cheminsArticles()`, son
  * URL n'étant pas déductible, et les `noindex` sont écartés ici comme pour les
  * pages.
+ *
+ * LES ROUTES STATIQUES Y SONT AUSSI, et il a fallu les ajouter à la main : la
+ * page d'accueil et les onze écrans uniques (mentions légales, confidentialité,
+ * contact, nous connaître, valeurs, RSE, équipe, partenaires, carrière,
+ * marques, plan du site) ne vivent pas dans la table `pages`, parce qu'ils ne
+ * partagent aucun gabarit. Un plan du site qui lit seulement la base les oublie
+ * donc tous, y compris l'accueil, et c'est exactement ce qui se passait.
  */
 
 export const revalidate = 3600;
+
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const client = lectureContenu();
@@ -49,7 +58,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .filter((id): id is string => id !== null),
   );
 
+  // Date du jour pour les routes statiques : leur contenu vit dans le code, donc
+  // sa dernière modification est celle du déploiement, pas d'une ligne en base.
+  const deploiement = new Date();
+
   return [
+    ...ROUTES_STATIQUES.map((chemin) => ({
+      url: urlAbsolue(chemin),
+      lastModified: deploiement,
+    })),
     ...listePages
       .filter((page) => !exclus.has(page.id))
       .map((page) => ({

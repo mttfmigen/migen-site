@@ -1,0 +1,4 @@
+/* `style-hover="color:var(--acc)"` de la maquette, ligne 5465. */
+.lienCarte:hover {
+  color: var(--acc);
+}

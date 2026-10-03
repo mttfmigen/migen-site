@@ -14,3 +14,11 @@
   background: var(--card);
   transform: translateY(-1px);
 }
+
+/* Carte de candidature, `style-hover="transform:translateY(-2px)"`. */
+.carteLien {
+  transition: transform var(--tr);
+}
+.carteLien:hover {
+  transform: translateY(-2px);
+}

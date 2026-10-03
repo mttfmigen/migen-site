@@ -1,0 +1,10 @@
+/* Point de bascule, pas un style de la maquette : à 900px `mg-r2` passe sur une
+   colonne, et une colonne de gauche restée collée garderait le titre épinglé
+   au-dessus du formulaire pendant toute la saisie. `app/globals.css` neutralise
+   déjà les `top:110px` et `top:100px` du reste du site ; la maquette écrit
+   112px ici, d'où cette règle locale. */
+@media (max-width: 900px) {
+  .colonneFixe {
+    position: static !important;
+  }
+}

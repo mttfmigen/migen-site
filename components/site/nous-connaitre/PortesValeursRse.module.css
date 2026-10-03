@@ -1,0 +1,7 @@
+/* `style-hover="transform:translateY(-3px)"` de la maquette, lignes 5487 et 5494.
+   Le titre et le pied sont peints en ligne : la règle globale `a:hover` ne les
+   atteint pas, le soulèvement est donc le seul retour de survol, comme dans la
+   maquette. */
+.carteLien:hover {
+  transform: translateY(-3px);
+}

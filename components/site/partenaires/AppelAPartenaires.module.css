@@ -1,0 +1,19 @@
+/* Survol du bouton. Valeurs de l'attribut `style-hover` de la maquette
+   (accueil-rendu.html, ligne 6090) : `filter:brightness(.93);transform:translateY(-1px)`.
+   Le `color` s'y ajoute pour tenir tête à la règle globale
+   `a:hover { color: var(--acc) }`, qui décolorerait le texte blanc. */
+.lienAccent:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+/* Point de bascule du panneau. `app/globals.css` rattrape les rembourrages de
+   36px à 48px sous 760px, mais pas le 56px de ce panneau-ci : 56px de chaque
+   côté dans une fenêtre de 375px ne laisse pas de place au texte. La règle
+   vit ici et non dans le fichier partagé, où plusieurs agents écrivent. */
+@media (max-width: 760px) {
+  .panneau {
+    padding: 24px 20px !important;
+  }
+}

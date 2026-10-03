@@ -1,0 +1,12 @@
+/* `style-hover` de la maquette, lignes 5211 et 5212. */
+.boutonPrincipal:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  /* La maquette le répète : sans lui, la règle globale `a:hover` repeindrait
+     le libellé en orange sur un fond déjà orange. */
+  color: #fff;
+}
+
+.boutonSecond:hover {
+  background: var(--card);
+}

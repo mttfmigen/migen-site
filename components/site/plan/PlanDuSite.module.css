@@ -1,0 +1,37 @@
+/*
+ * Survol des rangées du plan du site, porté depuis la maquette locale
+ * `maquette/accueil-rendu.html`, ligne 2944 : son `style-hover` écrit
+ * « background:var(--acc-w);color:var(--acc-ink) ».
+ *
+ * Il vit ici et non dans `app/globals.css` : plusieurs agents écrivent en
+ * parallèle, un fichier partagé produirait des conflits.
+ */
+
+/*
+ * LA COULEUR DE REPOS EST ICI, ET NON EN STYLE EN LIGNE, alors que c'est une
+ * valeur de la maquette. Même raison que `ListeRubriques.module.css` pour son
+ * ombre : un style en ligne React gagne contre toute règle de feuille, donc une
+ * couleur posée en ligne sur la rangée aurait battu le `:hover` ci-dessous. Et
+ * il faut la poser : `app/globals.css` déclare `a:hover { color: var(--acc) }`,
+ * qui donne 2,6:1 sur le fond de la carte. Le `--acc-ink` de la maquette, lui,
+ * en donne 8:1. Les deux états sont donc écrits ensemble pour rester lisibles
+ * ensemble, et cela évite un `!important`.
+ */
+.rangee {
+  color: var(--ink);
+
+  /*
+   * Plancher de cible tactile, critère 2.5.8 de la WCAG 2.2, niveau AA, le
+   * seuil que `scripts/verifie-mobile.mjs` mesure. La rangée en fait déjà 38
+   * avec les 9 px de remplissage de la maquette : ce plancher n'ajoute rien
+   * aujourd'hui, il retient la mesure si un ajustement de charte resserre un
+   * jour ce remplissage.
+   */
+  min-height: 24px;
+}
+
+.rangee:hover,
+.rangee:focus-visible {
+  background: var(--acc-w);
+  color: var(--acc-ink);
+}
