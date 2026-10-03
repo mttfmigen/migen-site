@@ -78,3 +78,8 @@ Scope: le site reproduit la maquette Claude Design à l'identique (animations, f
   CHECK: node scripts/verifie-echafaudage.mjs
   EXPECT: aucun échafaudage
   EVIDENCE: exit=0, « aucun échafaudage ». CONTRÔLE POSITIF ET NÉGATIF passés avant d'être cru : un composant jetable portant « mt-12 flex flex-wrap items-center gap-3 sm:grid-cols-2 » n'est PAS signalé (les utilitaires de mise en page ne portent aucune couleur et ne contredisent rien) ; le même avec « text-zinc-500 dark:text-zinc-300 » sort en 1 et nomme les trois motifs. Il a trouvé 93 classes dans 9 fichiers, toutes retirées : les cinq composants du cocon rendus sur CHAQUE page de contenu (dont le maillage interne, qui ferme toutes les pages), les trois du consentement (la première chose que voit un visiteur) et les couleurs d'état du formulaire, remplacées par les jetons --err et --ok dont le contraste est mesuré (6,54:1 et 7,87:1 sur la carte).
+
+- [ ] G16: tout lien interne du site mène à une page servie, aucune 404
+  CHECK: node scripts/verifie-liens.mjs
+  EXPECT: tous les liens internes mènent quelque part
+  EVIDENCE: pending

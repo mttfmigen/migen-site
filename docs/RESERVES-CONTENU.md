@@ -201,3 +201,60 @@ depuis le seul h1. L'agent a refusé de les inventer, et c'est le bon choix.
 
 Elles se règlent d'elles-mêmes après `node scripts/importe_rest.mjs`, qui pose
 leur contenu : il suffira alors de relire `node scripts/verifie-seo.mjs`.
+
+### 43 pages tronquées en base, et 44 liens morts (02/10, mesuré)
+
+**Mesuré, pas estimé.** `node scripts/verifie-liens.mjs` parcourt le site servi
+et suit chaque lien : **44 cibles internes répondent 404**, dont onze citées par
+le pied de page, donc par les 225 pages du site. Et en comparant la base aux
+fichiers produits par les parseurs, **43 pages sur 61 sont tronquées** : le
+contenu est là en partie, coupé à l'endroit où une instruction portait un
+point-virgule.
+
+Les pires : `/offres/residence/recruter-un-technicien/` 1 bloc sur 71,
+`/carriere/electromecanicien/salaire/` 0 sur 55,
+`/ressources/process/gestion-maintenance-preventive/` 8 sur 62,
+`/carriere/technicien-de-maintenance/` 9 sur 54,
+`/ressources/fiches-techniques/mtbf-mttr/` 9 sur 34.
+
+**Ces pages ne sont pas publiées, et elles ne doivent pas l'être en l'état** :
+publier une page à 9 blocs sur 54, c'est publier une page qui s'arrête au milieu
+d'une phrase. Elles restent en brouillon, donc en 404, ce qui est désagréable
+mais honnête.
+
+**Un seul geste règle les 43**, une fois `SUPABASE_SERVICE_ROLE_KEY` posée dans
+`.env.local` :
+
+```bash
+cd ~/Landing\ lovable/migen-site && node scripts/importe_rest.mjs
+```
+
+L'importateur réécrit chaque page ENTIÈRE en un appel atomique. Ensuite
+seulement, `node scripts/verifie-base.mjs` peut conclure, et la publication se
+décide page par page.
+
+**18 pages sont complètes** et n'attendent qu'une décision de publication :
+- `/a-propos/equipe/`
+- `/expertises/robotique/fanuc/`
+- `/guides/choisir-une-entreprise-de-maintenance/`
+- `/guides/reussir-un-transfert-industriel/`
+- `/offres/depannage-industriel/`
+- `/offres/retrofit/`
+- `/ressources/articles/`
+- `/ressources/articles/gestion-des-dechets/`
+- `/ressources/articles/maintenance-4-0/`
+- `/ressources/articles/predictive-ou-corrective/`
+- `/ressources/fiches-pratiques/plan-de-prevention/`
+- `/ressources/fiches-techniques/`
+- `/ressources/fiches-techniques/outils-de-diagnostic/`
+- `/ressources/livres-blancs/`
+- `/ressources/process/`
+- `/secteurs/agroalimentaire/`
+- `/secteurs/logistique/`
+- `/travaux-industriels/montage-industriel/`
+
+**Les 9 pages qui n'avaient AUCUN contenu** (mentions légales, confidentialité,
+contact, nous connaître, valeurs, RSE, équipe, partenaires, carrière) sont
+portées depuis la maquette comme des ROUTES, pas comme du contenu en base :
+elles sont uniques, comme la page d'accueil, et n'ont rien à faire dans une
+table qui sert des gabarits répétés.

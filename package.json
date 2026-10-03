@@ -23,7 +23,8 @@
     "verifie:animations": "node scripts/verifie-animations.mjs",
     "verifie:deploiement": "node scripts/verifie-deploiement.mjs",
     "verifie:mobile": "node scripts/verifie-mobile.mjs",
-    "verifie:echafaudage": "node scripts/verifie-echafaudage.mjs"
+    "verifie:echafaudage": "node scripts/verifie-echafaudage.mjs",
+    "verifie:liens": "node scripts/verifie-liens.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
