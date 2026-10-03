@@ -213,3 +213,25 @@ rien, et le prochain contournement portera sur autre chose.
 tel quel sans l'interpréter, depuis un script de `scripts/` avec
 `SUPABASE_SERVICE_ROLE_KEY`. Si la clé manque, la page se signale et attend ;
 elle ne se force pas.
+
+## 16. Les gabarits de page : le piège à connaître
+
+La maquette dessine **sept gabarits de page** en plus de l'accueil. Le site les
+sert depuis `app/[...slug]/page.tsx`, qui choisit d'après la **forme** de
+`pages.contenu` : `contenu.gabarit === "offre"` part dans `PageOffre`,
+`"secteur"` dans `PageSecteur`, `"editorial"` dans `PageEditoriale`, et un
+contenu qui porte `sections` retombe sur le gabarit de vente.
+
+**Le piège, et il a coûté plusieurs semaines** : un gabarit porté en composant
+ne change RIEN tant que `pages.contenu` ne porte pas son discriminant. Quatre
+gabarits ont été écrits, relus, testés, et 126 pages ont continué d'être servies
+par le gabarit de vente sans que rien ne le signale. Le client l'a vu avant nous.
+
+Avant de dire qu'un gabarit est porté, ouvrir une vraie page et vérifier ce
+qu'elle sert, pas ce que le composant sait faire. `docs/GABARITS.md` tient la
+carte, `scripts/verifie-liens.mjs` parcourt le site servi.
+
+**La règle de contenu** : le dessin vient de la maquette, le texte vient du
+corpus, rien ne s'invente. Ce que la maquette ne montre pas et que le corpus
+porte n'est jamais supprimé : c'est du texte rédigé et payé, rendu sous les
+sections de la maquette avec ses motifs à elle.
