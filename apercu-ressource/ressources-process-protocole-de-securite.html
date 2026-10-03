@@ -1,0 +1,795 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Protocole de sécurité</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"><style>:root{--font-poppins:'Poppins'}</style><style>
+
+/* ==========================================================================
+   Charte Migen, portée depuis la maquette Claude Design.
+   Source : « Migen - Site final.dc.html » et le système de design
+   « migen-design-system-9ce37c32 / colors_and_type.css ».
+
+   POURQUOI ces variables et pas des classes Tailwind : la maquette pilote
+   tout par variables CSS et styles en ligne. Les reproduire telles quelles est
+   le seul moyen d'obtenir le rendu à l'identique, et de pouvoir rejouer une
+   évolution de maquette sans retraduire chaque valeur. Tailwind reste
+   disponible pour la mise en page neuve.
+
+   Les blocs `@container` de la maquette ne sont PAS portés : ils n'existaient
+   que pour l'aperçu en iframe de Claude Design, où la fenêtre ne reflète pas
+   la largeur réelle. Sur le site, `@media` fait foi.
+   ========================================================================== */
+
+:root {
+  /* --ft : pile système, pour les mots où le dessin de la lettre compte plus
+     que la marque (le logotype « migen »). --fb : Poppins, tout le reste. */
+  --ft: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", sans-serif;
+  --fb: var(--font-poppins), var(--ft);
+  --fs: var(--font-caveat), var(--fb);
+
+  /* Opacité et flou du verre dépoli. Valeurs RENDUES par la maquette, relevées
+     au getComputedStyle sur onze surfaces, et non celles de son bloc :root, qui
+     sont arrondies. L'écart se voit sur les grandes cartes. */
+  --gl-a: 0.582;
+  --gl-b: 22.5px;
+
+  /* Orange de marque et ses dérivés */
+  --acc: #ff7c3c;
+  --acc-d: #f4641f;
+  --acc-w: rgba(255, 124, 60, 0.11);
+  --acc-ink: #7d3309;
+
+  /* États du formulaire. La maquette n'en a pas : elle ne montre jamais une
+     erreur de saisie ni une confirmation. Deux jetons sont donc posés ici, et
+     ils sont CHOISIS, pas empruntés à une palette de framework (le formulaire
+     portait `text-red-700` et `text-green-800`, deux couleurs de Tailwind qui
+     ne viennent pas de la charte).
+
+     Contraste mesuré, pas supposé : #b3261e donne 6,54:1 sur --card et 6,2:1
+     sur --bg, #1b5e20 donne 7,87:1 et 7,47:1. Les deux passent largement le
+     plancher de 4,5:1. Le rouge est volontairement sombre et peu saturé : à
+     côté de l'orange de marque (--acc, #ff7c3c), un rouge vif se lirait comme
+     une seconde couleur d'accent et non comme une alerte.
+
+     Le teinte-fond sert aux bandeaux de message, à 11 % comme --acc-w. */
+  --err: #b3261e;
+  --err-w: rgba(179, 38, 30, 0.09);
+  --ok: #1b5e20;
+  --ok-w: rgba(27, 94, 32, 0.09);
+
+  --rad: 28px;
+  --rad-s: 18px;
+  --sec: 120px;
+  --sat: 0.55;
+  --ph-op: 1;
+  --ts: 1;
+  --tr: 200ms;
+
+  /* Fonds : blanc crème dominant, anthracite réservé aux panneaux et au pied */
+  --bg: #f1f2f4;
+  --card: #fff;
+  --panel: #1c1b19;
+  --foot: #141312;
+
+  /* Encres, du plus appuyé au plus effacé */
+  --ink: #1c1b19;
+  --ink1: #4a4845;
+  --ink2: #6a6764;
+  --ink3: #737373;
+  --ink4: #a8a49d;
+
+  --line: rgba(28, 27, 25, 0.09);
+  --chip: rgba(28, 27, 25, 0.055);
+
+  /* Verre : bordure et fond de l'îlot de navigation */
+  --gbd: rgba(255, 255, 255, 0.82);
+  --gsol: rgba(255, 255, 255, 0.8);
+
+  --ph: #dedfe1;
+  --sheet: rgba(250, 250, 251, 0.9);
+
+  --logo-f: grayscale(1);
+  --map-a: rgba(255, 255, 255, 0.95);
+  --map-b: rgba(255, 255, 255, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Conteneur racine du site, repris de la maquette.
+   `<div class="mg-site" style="min-height:100vh;background:var(--bg);overflow:hidden">`
+
+   Une seule valeur change : `overflow: hidden` devient `overflow-x: clip`.
+   POURQUOI, et ce n'est pas une préférence : `overflow: hidden` fait de
+   l'élément un CONTENEUR DE DÉFILEMENT, même quand il ne défile jamais. Les
+   sections qui apparaissent au défilement calculent leur `animation-timeline:
+   view()` contre le conteneur le plus proche : ce conteneur-là ne bouge pas,
+   leur progression reste bloquée, et elles restent à `opacity: 0`. Du contenu
+   que Google voit et que le visiteur ne voit pas. `clip` coupe exactement
+   pareil sans créer de conteneur de défilement. */
+.mg-site {
+  min-height: 100vh;
+  background: var(--bg);
+  overflow-x: clip;
+}
+
+html,
+body {
+  /* L'ancrage automatique du défilement déplace la page quand un bloc se
+     déplie au-dessus du point de lecture. La maquette le neutralise. */
+  overflow-anchor: none;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--fb);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--acc);
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: var(--fb);
+}
+
+::selection {
+  background: var(--acc);
+  color: #fff;
+}
+
+/* Accessibilité : le focus clavier doit rester visible partout. La maquette
+   ne le déclare pas, le site l'exige (RGAA 7.1, WCAG 2.4.7). */
+:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------- animations */
+@keyframes mgFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes mgMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mouvement réduit : le bandeau de logos et les flottements s'arrêtent.
+   Exigence WCAG 2.3.3, absente de la maquette. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------- dépliants et FAQ */
+summary::-webkit-details-marker {
+  display: none;
+}
+.cx-faq summary::-webkit-details-marker {
+  display: none;
+}
+.cx-faq[open] .cx-plus,
+details[open] .g3-plus {
+  transform: rotate(45deg);
+  background: var(--acc) !important;
+  color: #fff !important;
+}
+.cx-more > summary::-webkit-details-marker {
+  display: none;
+}
+.cx-more .cx-l2 {
+  display: none;
+}
+.cx-more[open] .cx-l1 {
+  display: none;
+}
+.cx-more[open] .cx-l2 {
+  display: inline;
+}
+
+/* ------------------------------------------------------------- curseur de plage */
+.mg-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--line);
+  outline: none;
+  margin: 0;
+}
+.mg-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #ff7c3c;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(28, 27, 25, 0.28);
+  cursor: grab;
+}
+.mg-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: #ff7c3c;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(28, 27, 25, 0.28);
+  cursor: grab;
+  border-color: #fff;
+}
+.mg-range:active::-webkit-slider-thumb {
+  cursor: grabbing;
+}
+
+/* --------------------------------------------------- bandeau de logos défilant */
+/* La piste lit `var(--mq-play, running)`. La valeur par défaut existe côté
+   `var()`, mais la déclarer ici rend la pause pilotable depuis un composant
+   (un bouton de pause, un test) sans toucher à la règle de survol. */
+.mg-marquee {
+  --mq-play: running;
+}
+.mg-marquee:hover .mg-track,
+.mg-marquee:focus-within .mg-track {
+  --mq-play: paused;
+  animation-play-state: paused;
+}
+.mg-logo {
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.35s ease;
+}
+.mg-marquee:hover .mg-logo {
+  opacity: 0.4;
+}
+.mg-logo:hover {
+  opacity: 1 !important;
+  transform: translateY(-6px) scale(1.08);
+}
+
+/* ------------------------------------------------------------- rails sans barre */
+.mg-autorail {
+  scrollbar-width: none !important;
+}
+.mg-autorail::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Adaptations par largeur, reprises de la maquette dans son ordre.
+   ========================================================================== */
+
+/* Navigation : l'îlot se resserre, puis cède la place au bouton menu */
+.mg-nav > * {
+  white-space: nowrap;
+  flex: none;
+}
+.mg-burger {
+  display: none;
+}
+
+@media (max-width: 1180px) {
+  .mg-nav > * {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .mg-tel {
+    display: none !important;
+  }
+  .mg-implant {
+    display: none !important;
+  }
+}
+@media (max-width: 1080px) {
+  .mg-nav > * {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    font-size: 13.5px !important;
+  }
+}
+@media (max-width: 1000px) {
+  .mg-nav > * {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 880px) {
+  .mg-nav {
+    display: none !important;
+  }
+  .mg-burger {
+    display: inline-flex !important;
+  }
+}
+@media (max-width: 860px) {
+  .mg-nav > * {
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+    font-size: 12.5px !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-topwrap {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+}
+
+/* Grilles de valeurs */
+@media (max-width: 1000px) {
+  .mg-valg {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-valg > .mg-val {
+    grid-column: span 1 !important;
+  }
+  .mg-valg > .mg-val:first-child {
+    grid-column: 1 / -1 !important;
+  }
+  .mg-valg > .mg-val:last-child:nth-child(even) {
+    grid-column: 1 / -1 !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-valg {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-valg > .mg-val {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* Bento, avant-après, mosaïque, rails multiples */
+@media (min-width: 1001px) {
+  .mg-bento > [data-fill="1"] {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 1000px) {
+  .mg-rmulti {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-bento > *[data-open="1"] {
+    grid-column: span 2 !important;
+    grid-row: auto !important;
+  }
+  .mg-ba {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-rq3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-rail {
+    display: none;
+  }
+  .mg-tl > * {
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .mg-tl > * > *:first-child {
+    margin-bottom: 14px !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-bento {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-rows: auto !important;
+  }
+  .mg-bento > *[data-open="1"] {
+    grid-column: span 1 !important;
+  }
+  .mg-ba {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-rows: minmax(240px, auto) !important;
+  }
+}
+@media (max-width: 620px) {
+  .mg-rmulti {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* Lignes de tableau : des colonnes tombent avant que la ligne ne se casse */
+@media (max-width: 980px) {
+  .cx-lay {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .cx-toc {
+    display: none !important;
+  }
+  .mg-reslay {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 26px !important;
+  }
+  .mg-resrail {
+    position: static !important;
+  }
+  .mg-fmts,
+  .mg-sits {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 7px !important;
+    margin-bottom: 18px !important;
+  }
+  .mg-fmts > * {
+    width: auto !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 999px !important;
+    padding: 8px 14px !important;
+    gap: 7px !important;
+    white-space: nowrap;
+  }
+  .mg-sits > * {
+    border: 1px solid var(--line) !important;
+    border-radius: 999px !important;
+    padding: 7px 13px !important;
+    font-size: 12.5px !important;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 940px) {
+  .mg-mrow {
+    grid-template-columns: 1.5fr 0.9fr 104px !important;
+  }
+  .mg-mrow > *:nth-child(2),
+  .mg-mrow > *:nth-child(4) {
+    display: none;
+  }
+  .mg-prow {
+    grid-template-columns: auto minmax(0, 1fr) 84px !important;
+  }
+  .mg-prow > *:nth-child(3) {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .mg-r2 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 36px !important;
+  }
+}
+@media (min-width: 901px) {
+  .mg-flip > *:last-child {
+    order: -1;
+  }
+}
+@media (max-width: 760px) {
+  .cx-row {
+    grid-template-columns: 32px minmax(0, 1fr) !important;
+    gap: 8px 16px !important;
+  }
+  .cx-row > *:nth-child(3) {
+    grid-column: 2;
+  }
+  .mg-cmp {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .mg-cmp > *:first-child {
+    grid-column: 1/-1;
+  }
+  .mg-doclist > div {
+    grid-template-columns: 36px minmax(0, 1fr) !important;
+  }
+  .mg-doclist > div > span:last-child {
+    grid-column: 2;
+  }
+  .mg-mosaic {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-mosaic > *:first-child {
+    min-height: 340px !important;
+  }
+  .mg-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    row-gap: 20px !important;
+  }
+  .mg-steps > div:first-child {
+    display: none !important;
+  }
+  .mg-r3,
+  .mg-bento2,
+  .mg-rq3 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-bento2 > * {
+    grid-column: auto !important;
+  }
+  .mg-rq2 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+@media (max-width: 620px) {
+  .mg-mrow {
+    grid-template-columns: 1fr 104px !important;
+    gap: 12px !important;
+  }
+  .mg-mrow > *:nth-child(3) {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .mg-prow {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    gap: 14px !important;
+  }
+  .mg-prow > *:nth-child(4) {
+    text-align: left !important;
+    grid-column: 2 !important;
+  }
+}
+
+/* Mobile : marges, échelle des titres, arrondis, colonnes fusionnées */
+@media (max-width: 760px) {
+  .mg-pad,
+  .mg-site section > div[style*="max-width:1200px"],
+  .mg-site main > div[style*="max-width:1200px"],
+  .mg-site footer > div[style*="max-width:1200px"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .mg-site section[style*="max-width:1200px"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .mg-site {
+    --sec: 64px;
+  }
+  .mg-site h1 {
+    font-size: clamp(32px, 9vw, 42px) !important;
+    letter-spacing: -0.035em !important;
+  }
+  .mg-site h2 {
+    font-size: clamp(26px, 7.4vw, 34px) !important;
+  }
+  .mg-site [style*="position:sticky"][style*="top:110px"],
+  .mg-site [style*="position:sticky"][style*="top:100px"] {
+    position: static !important;
+  }
+  .mg-site [style*="border-radius:36px"] {
+    border-radius: 24px !important;
+  }
+  .mg-site [style*="padding:30px 34px"],
+  .mg-site [style*="padding:36px 40px"],
+  .mg-site [style*="padding:40px 44px"],
+  .mg-site [style*="padding:44px 48px"] {
+    padding: 24px 20px !important;
+  }
+  .mg-site table {
+    font-size: 13px;
+  }
+  .mg-site [style*="grid-column:span 2"],
+  .mg-site [style*="grid-column:span 3"] {
+    grid-column: auto !important;
+  }
+  .mg-site img[style*="aspect-ratio"] {
+    max-height: 70vw;
+  }
+}
+@media (max-width: 480px) {
+  .mg-site h1 {
+    font-size: clamp(28px, 8.6vw, 36px) !important;
+  }
+  .mg-site [style*='font:600 calc(clamp(56px'] {
+    font-size: 48px !important;
+  }
+}
+
+/* Habillage du gabarit ressource. Tout ce qu'un style en ligne ne peut pas
+   porter : les survols, et le style des éléments que le composant ne touche pas
+   un par un (les liens du corps, les cellules du barème). */
+
+a[href='#formulaire']:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+/* Ligne 6788 de la maquette : le bouton secondaire passe son filet à l'orange. */
+a[href='/ressources/']:hover {
+  border-color: var(--acc);
+}
+
+/* Ligne 6546 : la carte « Aller plus loin » fait de même. */
+aside a {
+  display: block;
+  transition: border-color var(--tr);
+}
+aside a:hover,
+aside a:focus-visible {
+  border-color: var(--acc);
+}
+
+/* Les liens internes que le corpus pose dans le corps du texte.
+   Soulignés, et pas seulement colorés : l'information ne doit pas passer par la
+   couleur seule, c'est le critère WCAG 1.4.1. */
+article a {
+  color: var(--acc-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--tr);
+}
+article a:hover,
+article a:focus-visible {
+  color: var(--acc-d);
+}
+
+/* LE BARÈME EST UN VRAI TABLEAU, dessiné en grille.
+
+   La maquette l'écrit en `div` imbriquées (lignes 6733 à 6748), ce qui donne le
+   bon dessin mais prive un lecteur d'écran de l'en-tête de colonne : la
+   troisième cellule d'une ligne ne se rattache plus à « Conduite à tenir ».
+   `table` rétablit la sémantique, et ces règles rendent au tableau le
+   comportement de grille que la maquette attend. Les colonnes elles-mêmes sont
+   posées en style en ligne sur chaque `tr`, parce que leur nombre vient des
+   données.
+
+   ATTENTION si ce bloc est touché : redéfinir `display` sur un tableau lui
+   retire son rôle implicite dans Chrome comme dans Safari. C'est pourquoi
+   `CorpsRessource.tsx` écrit `role="table"`, `rowgroup`, `row`, `columnheader`
+   et `cell` à la main. Retirer l'un sans l'autre casse l'accessibilité en
+   silence. */
+table {
+  display: block;
+  width: 100%;
+  border-collapse: collapse;
+}
+table thead,
+table tbody {
+  display: block;
+}
+table th,
+table td {
+  text-align: left;
+  padding: 0;
+  min-width: 0;
+  vertical-align: middle;
+}
+
+/*
+  Survols des blocs du gabarit de conversion, relevés sur `style-hover` dans la
+  maquette. Ils vivent dans un module CSS et non dans `app/globals.css` : le
+  fichier global est écrit par plusieurs agents en parallèle, et un survol n'est
+  pas exprimable dans un style en ligne.
+
+  Les classes portent le nom de leur rôle, pas celui de leur déclaration.
+*/
+
+a[href='#formulaire']:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+a[href='/ressources/']:hover {
+  background: var(--card);
+  transform: translateY(-1px);
+}
+
+/* Carte de réalisation : la maquette la soulève et creuse son ombre. */
+.cartePreuve {
+  transition:
+    transform var(--tr),
+    box-shadow var(--tr);
+}
+.cartePreuve:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.42);
+}
+
+/* Dépliant de FAQ : `globals.css` tient déjà l'état ouvert de `.cx-plus`
+   (rotation et passage à l'orange). Ici, l'état fermé et son survol. */
+.cx-plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex: none;
+  border-radius: 999px;
+  background: var(--chip);
+  color: var(--ink2);
+  font: 400 17px var(--fb);
+  transition:
+    transform var(--tr),
+    background var(--tr),
+    color var(--tr);
+}
+
+summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+  padding: 20px 24px;
+  cursor: pointer;
+  text-align: left;
+  list-style: none;
+}
+summary:hover .cx-plus {
+  background: var(--acc-w);
+  color: var(--acc-ink);
+}
+
+/* Liens internes que `TexteRiche` pose dans le corpus : 597 dans les 126 pages
+   importées. `globals.css` déclare `a { color: var(--ink); text-decoration:
+   none }`, donc SANS règle ici un lien du corpus se rend en #1c1b19 sans
+   soulignement, c'est-à-dire indistinguable du texte autour sur fond clair, et
+   #1c1b19 sur #1c1b19 sur le panneau anthracite, soit un contraste de 1:1.
+
+   La classe se pose sur le conteneur du texte du corpus, jamais sur un
+   conteneur qui porte aussi un lien d'habillage : les boutons d'action et la
+   carte de réalisation ont leur propre traitement et ne doivent pas être
+   soulignés. */
+.corpus a {
+  /* Même traitement que `article a` d'`Article.module.css` : un lien du corpus
+     doit se lire pareil dans un article et dans une page de vente.
+     `var(--acc-ink)` vaut 8,9:1 sur blanc, `var(--acc)` n'y tiendrait que
+     2,6:1. */
+  color: var(--acc-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-thickness var(--tr);
+}
+.corpus a:hover,
+.corpus a:focus-visible {
+  /* La couleur ne change pas : le survol épaissit le trait. L'orange de survol
+     global, `var(--acc)`, ne tient que 2,6:1 sur blanc, sous le plancher de
+     4,5:1. */
+  color: var(--acc-ink);
+  text-decoration-thickness: 2px;
+}
+
+/* Le même corpus sur le panneau anthracite (`var(--panel)`, #1c1b19) : les
+   sections « problème » et l'appel à l'action final. `var(--acc-ink)` n'y vaut
+   que 1,9:1. Le blanc y vaut 17:1, l'orange de marque 6,7:1. */
+.corpusClair a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--tr);
+}
+.corpusClair a:hover,
+.corpusClair a:focus-visible {
+  color: var(--acc);
+}
+
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fb)}a{text-decoration:none;color:inherit}</style></head><body><div class="mg-site"><main style="padding-top:96px"><section style="max-width:1200px;margin:0 auto;padding:70px 40px 0"><div style="max-width:760px"><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap"><span style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--acc);padding:5px 12px;border-radius:999px;white-space:nowrap">Process</span></div><h1 style="font:600 calc(clamp(30px,3.6vw,52px) * var(--ts))/1.06 var(--ft);letter-spacing:-.042em;margin:0;text-wrap:balance">Protocole de sécurité</h1><p style="font:400 18px/1.65 var(--fb);color:var(--ink2);margin:20px 0 0">Un camion entre sur votre site, un chariot circule, un opérateur guide la manœuvre. Les risques de deux entreprises se croisent, et c&#x27;est là que l&#x27;accident arrive.</p></div></section><section style="max-width:1200px;margin:0 auto;padding:40px 40px 0"><div style="border-radius:var(--rad);background:var(--acc-w);border:1.5px solid rgba(255,124,60,.3);display:flex;align-items:center;gap:16px;padding:18px 24px;flex-wrap:wrap;max-width:760px"><span style="font:400 14.5px/1.6 var(--fb);color:var(--ink1);flex:1;min-width:240px">Un chargé d&#x27;affaires vous rappelle dans l&#x27;heure, du lundi au vendredi de 8h00 à 18h30, au 04 78 33 72 05.</span></div></section><section style="max-width:1200px;margin:0 auto;padding:40px 40px 0"><div class="mg-r2" style="display:grid;grid-template-columns:minmax(0,760px) minmax(0,1fr);gap:52px;align-items:start"><article><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Le protocole de sécurité existe pour ça. Ce document écrit encadre les opérations de chargement et de déchargement entre l&#x27;entreprise d&#x27;accueil et l&#x27;entreprise de transport. Cette fiche de nos <a href="/ressources/process">Ressources : Process</a> donne la définition, la méthode et un exemple concret, par des techniciens qui interviennent en entreprise tous les jours.</p><h2 id="le-protocole-de-securite-definition-sans-jargon" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Le protocole de sécurité, définition sans jargon</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Le protocole de sécurité est un document écrit obligatoire, prévu par le Code du travail, pour les opérations de chargement et de déchargement de marchandises. Il remplace le plan de prévention pour ces opérations précises.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Sa raison d&#x27;être </strong>Le protocole de sécurité organise la prévention des risques quand une entreprise de transport intervient sur le site d&#x27;une entreprise utilisatrice. Il vise l&#x27;interférence entre les deux activités, cause principale des sinistres.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Ce qu&#x27;il encadre </strong>Toute opération de chargement ou de déchargement de marchandises, quelle que soit sa durée. Le protocole précise ce qui relève de l&#x27;entreprise utilisatrice et ce qui relève du transport.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Son cadre légal </strong>Les articles R4515-4 à R4515-11 du Code du travail définissent ce document. Le protocole de sécurité est une obligation réglementaire, pas une simple bonne pratique.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Ce qu&#x27;il contient </strong>Les informations utiles à l&#x27;évaluation des risques de l&#x27;opération, et les mesures de prévention et de sécurité mises en place pour les maîtriser.</span></li></ul><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Le protocole de sécurité n&#x27;est pas un formulaire à ranger. C&#x27;est un écrit qui engage les deux entreprises, l&#x27;entreprise d&#x27;accueil dite entreprise utilisatrice et l&#x27;entreprise de transport, sur des consignes communes et des responsabilités claires.</p><h2 id="protocole-de-securite-ou-plan-de-prevention-la-d" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Protocole de sécurité ou plan de prévention : la différence</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">On confond souvent les deux textes. Ils relèvent de la même logique de prévention, mais s&#x27;appliquent à des situations différentes.</p><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);overflow:hidden;margin:0 0 26px"><table role="table"><thead role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;padding:14px 30px;border-bottom:1px solid var(--line);background:var(--chip)"><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Document</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Quand il s&#x27;applique</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Ce qu&#x27;il couvre</th></tr></thead><tbody role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Plan de prévention</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Travaux d&#x27;une entreprise extérieure sur le site</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Interférence des activités et des installations</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Protocole de sécurité</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Opérations de chargement et de déchargement</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Manœuvre du véhicule, marchandise, circulation</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Document unique (DUERP)</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Toute l&#x27;entreprise, en continu</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Évaluation générale des risques professionnels</td></tr></tbody></table></div><blockquote style="border-left:3px solid var(--acc);padding:4px 0 4px 24px;margin:32px 0"><p style="font:500 calc(20px * var(--ts))/1.5 var(--ft);letter-spacing:-.02em;color:var(--ink);margin:0">Le protocole de sécurité est un plan de prévention adapté au transport. Dès qu&#x27;un véhicule vient charger ou décharger une marchandise, c&#x27;est lui qui s&#x27;applique, pas le plan de prévention classique.</p></blockquote><h2 id="que-doit-contenir-un-protocole-de-securite" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Que doit contenir un protocole de sécurité</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Un protocole de sécurité vide de substance ne protège personne. Le Code du travail fixe les informations que le protocole doit réunir, pour l&#x27;entreprise utilisatrice comme pour le transport.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">L&#x27;accueil et l&#x27;accès au site </strong>Les consignes d&#x27;entrée, le lieu de livraison ou de prise en charge, les zones de roulage et de stationnement du camion. Le conducteur doit savoir où aller et comment.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">La nature de la marchandise </strong>Le conditionnement, la nature du produit, son caractère dangereux éventuel. Ces informations conditionnent les mesures de sécurité à prendre.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Les dispositifs et le matériel </strong>Les engins utilisés pour le chargement et le déchargement, les équipements de manutention, les dispositifs de secours disponibles sur place.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Les consignes de sécurité </strong>Les mesures de prévention propres à chaque opération, les équipements de protection, la conduite à tenir en cas d&#x27;accident ou d&#x27;incident.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Les responsables </strong>L&#x27;identité du responsable côté entreprise utilisatrice et côté transport, seuls habilités à établir et signer le protocole.</span></li></ul><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Le protocole de sécurité comprend les informations utiles à l&#x27;évaluation des risques générés par l&#x27;opération. Rien de superflu, mais rien d&#x27;oublié : c&#x27;est ce qui distingue un protocole opérationnel d&#x27;une formalité.</p><h2 id="comment-etablir-un-protocole-de-securite-etape-p" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Comment établir un protocole de sécurité, étape par étape</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Établir un protocole de sécurité suit une démarche simple, à condition de la mener avant la première opération, pas après le premier incident.</p><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:30px 34px 32px;margin:0 0 26px"><ol role="list" style="display:grid;gap:2px;margin:0;padding:0;list-style:none"><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">1</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Échanger les informations</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Avant toute chose, l&#x27;entreprise d&#x27;accueil et l&#x27;entreprise de transport partagent les informations utiles, nature de la marchandise, moyens, contraintes du lieu.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">2</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Analyser les risques de l&#x27;opération</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Repérer les risques liés à l&#x27;interférence des activités : circulation, manutention, coactivité, chute, produit dangereux. C&#x27;est le cœur de la prévention.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">3</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Définir les mesures de prévention</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Fixer les consignes, les zones, les protections, les dispositifs de secours. Chaque risque identifié doit trouver une mesure en face.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">4</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Rédiger le document</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Consigner par écrit l&#x27;ensemble, accueil, accès, nature de la marchandise, mesures. Le protocole de sécurité se rédige, jamais un accord verbal.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">5</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Faire signer les responsables</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Les responsables des deux entreprises valident et signent. Le document engage l&#x27;entreprise d&#x27;accueil et l&#x27;entreprise de transport sur les mêmes règles.</p></div></li><li style="display:flex;gap:18px;padding:20px 0"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">6</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Réviser quand la situation change</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Un protocole permanent couvre les opérations récurrentes dans les mêmes conditions. Dès que la nature du produit, du camion ou du lieu change, il faut le mettre à jour.</p></div></li></ol></div><h2 id="un-exemple-concret-de-protocole" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Un exemple concret de protocole</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Prenons la livraison régulière de matériel sur un site industriel. Le protocole de sécurité entre l&#x27;entreprise d&#x27;accueil et le transporteur tient sur une page, résumée ci-dessous.</p><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);overflow:hidden;margin:0 0 26px"><table role="table"><thead role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr;gap:16px;padding:14px 30px;border-bottom:1px solid var(--line);background:var(--chip)"><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Rubrique</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Détail de l&#x27;exemple</th></tr></thead><tbody role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Lieu de livraison</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Quai n°2, accès par le portail est, vitesse limitée sur site</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Nature de la marchandise</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Pièces métalliques palettisées, non dangereuses</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Moyens de déchargement</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Chariot élévateur de l&#x27;entreprise utilisatrice, cariste habilité</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Consignes de sécurité</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Port du casque et des chaussures, zone piétonne balisée</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr;gap:16px;align-items:center;padding:16px 30px"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Conduite en cas d&#x27;incident</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Alerte du responsable d&#x27;établissement, numéros d&#x27;urgence affichés</td></tr></tbody></table></div><blockquote style="border-left:3px solid var(--acc);padding:4px 0 4px 24px;margin:32px 0"><p style="font:500 calc(20px * var(--ts))/1.5 var(--ft);letter-spacing:-.02em;color:var(--ink);margin:0">Cet exemple porte sur une marchandise simple. Dès qu&#x27;un produit dangereux, un engin lourd ou une manœuvre complexe entre en jeu, le protocole de sécurité s&#x27;étoffe, car le risque de l&#x27;opération grandit avec la nature de ce qui est chargé ou déchargé.</p></blockquote><h2 id="les-erreurs-et-obligations-a-ne-pas-negliger" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Les erreurs et obligations à ne pas négliger</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Un protocole de sécurité mal traité expose les deux entreprises à un accident et à une mise en cause. Les mêmes manques reviennent d&#x27;un établissement à l&#x27;autre.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Croire que l&#x27;oral suffit </strong>Le protocole de sécurité est un document écrit obligatoire. Un accord verbal, même clair, ne remplace pas l&#x27;écrit prévu par la réglementation.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Oublier de le réviser </strong>Un protocole permanent vaut pour des opérations identiques. Changer de véhicule, de produit ou de lieu sans mettre à jour le document rouvre le risque.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Négliger les flux sur site </strong>Beaucoup d&#x27;accidents de chargement et de déchargement naissent d&#x27;un schéma de flux flou. Les zones de manœuvre et de manutention doivent être définies et balisées.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Confondre protocole et plan de prévention </strong>Appliquer un plan de prévention générique à une opération de transport passe à côté des risques propres au camion et à la marchandise.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Laisser le conducteur seul </strong>L&#x27;accueil du transporteur ne s&#x27;improvise pas. Sans consigne claire, un conducteur inconnu du site prend des décisions à l&#x27;aveugle, et l&#x27;accident guette.</span></li></ul><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Chaque opération répétitive mérite un regard neuf. Prévenir, c&#x27;est vérifier que la solution reste applicable au produit transporté, particulièrement quand il est dangereux. Un prestataire sérieux apporte une réponse spécifique à chaque client, jamais une règle générale : il faut voir chacune des situations particulières, l&#x27;objet transporté, l&#x27;élément à risque, la contrainte professionnelle. C&#x27;est là, dans ce souci du détail, que se gagne la prévention.</p><h2 id="le-cadre-reglementaire-du-protocole-de-securite" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Le cadre réglementaire du protocole de sécurité</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Le protocole de sécurité n&#x27;est pas une option. Le Code du travail l&#x27;impose et en fixe le contenu, article par article.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Un écrit établi à l&#x27;avance </strong>Le protocole est établi préalablement à l&#x27;opération, entre les employeurs concernés. Il prévient les risques spécifiques du chargement et du déchargement, différents de ceux d&#x27;un chantier classique.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Un contenu réglementaire </strong>La réglementation fixe les informations à réunir de chaque côté : accès, matériel, nature de la marchandise, mesures. Chaque partie apporte sa réponse, l&#x27;entreprise utilisatrice comme le transporteur.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Une portée adaptée </strong>Un protocole permanent couvre les opérations récurrentes, avec révision dès que les conditions diffèrent. Le caractère répétitif ne dispense jamais de tenir le document à jour.</span></li></ul><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Les articles R4515-4 à R4515-11 encadrent le dispositif. Dans le détail : art. R4515-4 pour le champ, art. R4515-5 pour l&#x27;échange, art. R4515-6 pour le contenu côté accueil, art. R4515-7 pour le transport, art. R4515-8 pour le protocole permanent, art. R4515-9 pour la mise à jour, art. R4515-10 pour la conservation, art. R4515-11 pour l&#x27;affichage. Cette solution écrite et opposable prévient le risque et répond à la mission de chaque employeur. La recherche des risques est le vrai travail : prévenir vaut mieux que réparer. Une bonne organisation santé-sécurité passe par la communication entre le chef d&#x27;établissement et le transporteur, la formation des équipes, et la recherche d&#x27;une solution spécifique à chaque client. La recherche de la cause d&#x27;un accident vient toujours trop tard ; mieux vaut agir en amont. La réalisation d&#x27;un protocole clair, communiqué préalablement, reste la première mission de prévention. Cet outil nécessaire met en ligne, noir sur blanc, la réponse technique de chaque métier, en tenant compte du caractère de la marchandise et de la vie de l&#x27;établissement. Le protocole relève de la santé et sécurité au travail des salariés. Une inspection commune du site, une recommandation claire, un mode opératoire consigné : ce sont les dispositions qui protègent vraiment. En matière de conformité, chaque secteur professionnel a ses règles, et le service prévention aide à les tenir. Cette vigilance reste une démarche continue, jamais figée.</p><h2 id="ce-que-cela-implique-pour-une-entreprise-exterie" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Ce que cela implique pour une entreprise extérieure</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Migen intervient comme entreprise extérieure sur des sites industriels. Le protocole de sécurité et le plan de prévention font partie de notre quotidien, pas de la théorie.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Préparer avant d&#x27;intervenir </strong>Nos chargés d&#x27;affaires participent à l&#x27;échange d&#x27;informations et à l&#x27;évaluation des risques avant chaque opération sensible. La prévention se joue avant, jamais pendant.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Apporter nos consignes </strong>Habilitations, procédures, équipements de protection de nos techniciens : nous apportons ce qui nous concerne au document, pour que l&#x27;entreprise d&#x27;accueil garde la maîtrise de son site.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Tenir les documents à jour </strong>Sur les prestations récurrentes, nous faisons vivre le protocole et le plan de prévention avec vos équipes, au rythme des évolutions du matériel et des opérations.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Sécuriser la coactivité </strong>Un technicien extérieur bien accueilli, informé des risques et des consignes, travaille en sécurité. C&#x27;est la condition d&#x27;une intervention réussie, pour vous comme pour nous.</span></li></ul><blockquote style="border-left:3px solid var(--acc);padding:4px 0 4px 24px;margin:32px 0"><p style="font:500 calc(20px * var(--ts))/1.5 var(--ft);letter-spacing:-.02em;color:var(--ink);margin:0">Pour un besoin de maintenance sur site, un chargé d&#x27;affaires vous rappelle dans l&#x27;heure aux horaires ouvrés et prépare l&#x27;intervention dans les règles. Demandez un devis par le formulaire en bas de page.</p></blockquote><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Le risque routier fait aussi partie du protocole : l&#x27;engin de transport routier, sa manœuvre, son stationnement. La nature et le conditionnement de la marchandise déterminent les mesures à prendre. En cas de doute, l&#x27;inspection du travail peut contrôler la mise en œuvre du protocole et vérifier les moyens de secours. Ce contrôle, parfois répétitif, rappelle une règle simple : prévenir un incident coûte moins que le subir, et la recherche de sécurité ne s&#x27;arrête jamais.</p><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Quand la situation évolue, on modifie le protocole : une version modifiée remplace l&#x27;ancienne, et un simple avenant modifie ce qui doit l&#x27;être sans tout refaire. L&#x27;entreprise d&#x27;accueil propose le cadre de l&#x27;établissement, le transporteur propose ses contraintes, chacun propose sa part. Chaque partie intéressée en est informée, et toute personne intéressée peut consulter le protocole, prévu par l&#x27;article R 4515-9. Cette mise à jour, prévue par l&#x27;article R 4515-8, relève d&#x27;un suivi répétitif que la recherche de sécurité impose sur cette page comme sur le terrain. Le protocole doit rester dans sa version en vigueur : on l&#x27;imprime, on l&#x27;affiche dans l&#x27;espace d&#x27;accueil, on le met à jour dès l&#x27;apparition de nouveaux risques. La réglementation relative au chargement, issue du droit du travail, impose cette création et son suivi, étape suivante après l&#x27;évaluation, pour une réponse rapide en cas de besoin.</p><blockquote style="border-left:3px solid var(--acc);padding:4px 0 4px 24px;margin:32px 0"><p style="font:500 calc(20px * var(--ts))/1.5 var(--ft);letter-spacing:-.02em;color:var(--ink);margin:0"><a href="/contact">Demander un devis</a></p></blockquote></article><aside style="display:grid;gap:16px;position:sticky;top:120px"><a style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:26px 28px" href="/ressources/process/gestion-maintenance-preventive"><div style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:10px">Aller plus loin</div><div style="font:600 15.5px/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:8px">Gestion de la maintenance préventive</div><span style="display:block;margin-top:8px;font:600 13px var(--fb);color:var(--acc)">La page complète →</span></a></aside></div></section><section style="padding:var(--sec) 0 0"><div style="max-width:1200px;margin:0 auto;padding:0 40px"><div class="mg-r2" style="display:grid;grid-template-columns:.8fr 1.2fr;gap:52px;align-items:start"><div style="position:sticky;top:112px"><div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px">Questions fréquentes</div><h2 style="font:600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft);letter-spacing:-.04em;margin:0;max-width:14ch;text-wrap:balance;margin-bottom:22px">Ce qu&#x27;on nous demande avant de signer.</h2></div><div style="display:grid;gap:10px"><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Quand un protocole de sécurité est-il obligatoire ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Dès qu&#x27;une entreprise de transport réalise une opération de chargement ou de déchargement sur le site d&#x27;une entreprise d&#x27;accueil, quelle que soit la durée. C&#x27;est une obligation prévue par les articles R4515-4 et suivants du Code du travail.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Quelle différence entre protocole de sécurité et plan de prévention ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Le plan de prévention couvre les travaux d&#x27;une entreprise extérieure sur le site. Le protocole de sécurité est sa version adaptée aux opérations de chargement et de déchargement de marchandises, avec les risques propres au véhicule et à la circulation.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Qui doit établir le protocole de sécurité ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">L&#x27;entreprise d&#x27;accueil, dite entreprise utilisatrice, et l&#x27;entreprise de transport. Les deux responsables échangent les informations, évaluent les risques et signent le document écrit avant l&#x27;opération.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Un protocole de sécurité peut-il être permanent ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Oui, pour les opérations répétitives réalisées dans les mêmes conditions : même nature de marchandise, même type de véhicule, même mode de manutention. Dès qu&#x27;une de ces conditions change, un nouveau protocole s&#x27;impose.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Que doit contenir un protocole de sécurité ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Les consignes d&#x27;accueil et d&#x27;accès au site, le lieu de livraison, la nature de la marchandise, les moyens de chargement et de déchargement, les mesures de prévention et la conduite à tenir en cas d&#x27;accident. Tout ce qui sert à évaluer et maîtriser le risque de l&#x27;opération.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Que risque une entreprise sans protocole de sécurité ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Une mise en cause des deux employeurs en cas d&#x27;accident, des sanctions prévues par la réglementation, et surtout des risques réels non traités. Les accidents de chargement et de déchargement surviennent presque toujours là où l&#x27;évaluation préalable a manqué.</div></details></div></div></div></section><section style="padding:var(--sec) 0 var(--sec)"><div style="max-width:1200px;margin:0 auto;padding:0 40px"><div data-reveal="" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:36px;padding:44px 48px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap"><div><div style="font:600 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:12px">Une question sur ce contenu</div><h2 style="font:600 calc(clamp(22px,2.2vw,32px) * var(--ts))/1.14 var(--ft);letter-spacing:-.035em;margin:0 0 10px;max-width:26ch;text-wrap:balance">Nos équipes répondent aux questions techniques.</h2><p style="font:400 15.5px/1.6 var(--fb);color:var(--ink2);margin:0;max-width:48ch">Un point de méthode à creuser, un cas particulier sur votre installation : le chargé d&#x27;affaires de votre secteur vous rappelle.</p></div><div style="display:flex;gap:10px;flex:none;flex-wrap:wrap"><a href="#formulaire" style="display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--acc);color:#fff;font:600 15px var(--fb);white-space:nowrap;box-shadow:0 12px 30px -12px rgba(255,124,60,.9);transition:filter var(--tr),transform var(--tr)">Poser ma question</a><a style="display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--chip);border:1px solid var(--line);color:var(--ink);font:600 15px var(--fb);white-space:nowrap;transition:border-color var(--tr)" href="/ressources">Toutes les ressources</a></div></div></div></section></main></div></body></html>

@@ -1,0 +1,420 @@
+{
+ "url": "/carriere/automaticien/",
+ "h1": "Automaticien",
+ "mot_cle": "automaticien",
+ "contenu": {
+  "gabarit": "metier",
+  "chapeau": "Cette fiche détaille les missions, les compétences et la rémunération du métier. Elle complète le hub [Métiers de la maintenance](/carriere/), qui présente les sept métiers de la filière.",
+  "boutons": [
+   {
+    "libelle": "Recruter ce profil"
+   },
+   {
+    "libelle": "Candidater chez Migen",
+    "href": "/contact/"
+   }
+  ],
+  "missions": [
+   "Diagnostiquer une panne d'automatisme",
+   "Programmer et modifier le code",
+   "Mettre en service une installation",
+   "Assurer la maintenance préventive",
+   "Faire évoluer la supervision",
+   "Former les opérateurs en accueil de poste"
+  ],
+  "competences": [
+   "Lecture de schémas et conception d'armoires",
+   "Double compétence informatique et électrique",
+   "Méthode de diagnostic",
+   "Rigueur et sens du contrôle",
+   "Communication avec la production",
+   "Veille technologique"
+  ],
+  "habilitations": [
+   "Habilitation électrique BR ou B2V",
+   "Consignation et déconsignation",
+   "Sécurité machine et équipements de protection"
+  ],
+  "autres": [
+   {
+    "libelle": "Technicien de maintenance",
+    "href": "/carriere/technicien-de-maintenance/"
+   },
+   {
+    "libelle": "Électromécanicien",
+    "href": "/carriere/electromecanicien/"
+   },
+   {
+    "libelle": "Roboticien",
+    "href": "/carriere/roboticien/"
+   },
+   {
+    "libelle": "Responsable maintenance",
+    "href": "/carriere/responsable-maintenance/"
+   },
+   {
+    "libelle": "Agent de maintenance industrielle",
+    "href": "/carriere/agent-de-maintenance/"
+   },
+   {
+    "libelle": "Technicien de maintenance itinérant",
+    "href": "/carriere/technicien-itinerant/"
+   },
+   {
+    "libelle": "Alternance maintenance industrielle",
+    "href": "/carriere/alternance/"
+   }
+  ],
+  "cta": {
+   "question": "Ce métier vous manque sur votre site ?",
+   "rappel": "Décrivez le poste et les habilitations attendues. Nous vous présentons des techniciens à valider.",
+   "bouton": {
+    "libelle": "Je veux ce profil"
+   }
+  },
+  "corps": [
+   {
+    "type": "paragraphe",
+    "texte": "Migen emploie des automaticiens SIEMENS et Schneider dans toute la France, sur des lignes automatisées et des processus industriels complexes. Le regard posé ici est celui d'un employeur qui recrute chaque semaine, pas d'une fiche métier générique."
+   },
+   {
+    "type": "citation",
+    "texte": "Un poste vous intéresse ? Un échange au 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30, suffit pour situer votre profil."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Ce que fait un automaticien au quotidien",
+    "id": "ce-que-fait-un-automaticien-au-quotidien"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Programme en défaut, ligne de production à l'arrêt, redémarrage qui traîne : ce professionnel règle ce que personne d'autre ne sait diagnostiquer. Ses missions couvrent tout le cycle de vie d'un système automatisé, de celui qu'on conçoit à celui qu'on dépanne."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Diagnostiquer une panne d'automatisme",
+      "texte": "lire un programme, tester une entrée ou une sortie à l'appareil de mesure, rechercher et isoler le défaut sur l'automate programmable industriel avant qu'il n'arrête la ligne de production."
+     },
+     {
+      "accroche": "Programmer et modifier le code",
+      "texte": "créer, corriger ou adapter un programme sur TIA Portal ou un logiciel équivalent, pour une nouvelle référence ou une contrainte de process."
+     },
+     {
+      "accroche": "Mettre en service une installation",
+      "texte": "suivre la réalisation du câblage, mener les essais de chaque automatisme, valider réglages et fonctionnement conformément au cahier des charges, avant la mise en place définitive sur le site."
+     },
+     {
+      "accroche": "Assurer la maintenance préventive",
+      "texte": "contrôler également armoires, variateurs et capteurs, avant que le défaut mineur ne devienne un arrêt de production ; l'objectif est de maintenir l'outil disponible."
+     },
+     {
+      "accroche": "Faire évoluer la supervision",
+      "texte": "améliorer l'interface homme-machine, ajouter un indicateur, simplifier le travail du pilote de ligne et des opérateurs sur le terrain."
+     },
+     {
+      "accroche": "Former les opérateurs en accueil de poste",
+      "texte": "expliquer un nouveau mode de marche aux gens de production, en accueil comme en cours d'intervention."
+     }
+    ]
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Les automates et technologies maîtrisés",
+    "id": "les-automates-et-technologies-maitrises"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "L'automatisme industriel s'exerce sur des marques et des architectures précises. Un bon automaticien programmeur connaît plusieurs environnements, pas un seul."
+   },
+   {
+    "type": "tableau",
+    "entetes": [
+     "Domaine",
+     "Ce qui est couvert"
+    ],
+    "lignes": [
+     [
+      "Automates programmables",
+      "SIEMENS, Schneider, architectures multi-marques"
+     ],
+     [
+      "Supervision",
+      "Interfaces homme-machine, remontée d'alarmes"
+     ],
+     [
+      "Réseaux industriels",
+      "Profinet, Ethernet/IP : connecter machines et réseaux au système d'information"
+     ],
+     [
+      "Électrique et mécanique",
+      "Armoires, variateurs, capteurs, actionneurs, appareils de mesure et instrumentation"
+     ],
+     [
+      "Robotique",
+      "Cellules automatisées, dispositifs robotisés, maintenance des cellules, interfaces entre contrôle-commande et robot"
+     ]
+    ]
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Habilitations et sécurité",
+    "id": "habilitations-et-securite"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Un automate reste raccordé au réseau de puissance : la sécurité n'est jamais optionnelle dans ce métier. Trois habilitations reviennent dans la quasi-totalité des interventions."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Habilitation électrique BR ou B2V",
+      "texte": "nécessaire pour intervenir sur une armoire sous tension, selon le niveau de responsabilité confié."
+     },
+     {
+      "accroche": "Consignation et déconsignation",
+      "texte": "maîtriser la procédure avant toute intervention sur une machine pilotée ou un système de commande."
+     },
+     {
+      "accroche": "Sécurité machine et équipements de protection",
+      "texte": "connaître les normes et procédures propres à chaque environnement industriel, et porter également les protections individuelles dans chaque espace de travail."
+     }
+    ]
+   },
+   {
+    "type": "citation",
+    "texte": "Chez Migen, les habilitations sont vérifiées et mises à jour avant chaque intervention : une obligation légale et un point de contrôle systématique dès l'entretien de recrutement."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Devenir automaticien : formation et parcours",
+    "id": "devenir-automaticien-formation-et-parcours"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Le métier se construit par étapes, du bac professionnel jusqu'à l'expertise ou au titre d'ingénieur. Voici le chemin type suivi par nos propres spécialistes d'automatisme."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Le bac",
+      "texte": "Niveau bac pro électrotechnique ou bac technologique STI2D, première marche vers l'automatisme et l'électrotechnique industrielle."
+     },
+     {
+      "accroche": "Le BTS ou le BUT",
+      "texte": "CRSA, CIRA (contrôle industriel et régulation automatique) ou BUT génie électrique et informatique industrielle, le socle technique attendu par la majorité des entreprises."
+     },
+     {
+      "accroche": "La licence professionnelle",
+      "texte": "Une spécialisation, mention automatisme ou informatique industrielle, pour aborder des systèmes de production plus complexes."
+     },
+     {
+      "accroche": "Le premier emploi",
+      "texte": "Après un stage ou une alternance, agent de maintenance, technicien en automatisme, technicien de maintenance ou automaticien de maintenance : la maîtrise réelle se construit sur le terrain."
+     }
+    ],
+    "ordonnee": true
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Le métier voisin d'électricien ou d'électromécanicien offre une passerelle réelle vers l'automatisme : la conception d'installations mène souvent à ce métier, et l'inverse est vrai. Avec un master, l'évolution se poursuit vers ingénieur en automatisme, chef de projet ou responsable d'exploitation."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Les compétences qui font la différence",
+    "id": "les-competences-qui-font-la-difference"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Un recruteur cherche trois choses sur un CV d'automaticien : la maîtrise de l'automatisme, la polyvalence technique, la capacité à expliquer un problème."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Lecture de schémas et conception d'armoires",
+      "texte": "comprendre un plan avant d'intervenir, savoir concevoir une évolution sans casser l'existant : le préalable à toute modification du code."
+     },
+     {
+      "accroche": "Double compétence informatique et électrique",
+      "texte": "savoir connecter le monde électronique au système d'information, un pont de plus en plus recherché, le favori des recruteurs."
+     },
+     {
+      "accroche": "Méthode de diagnostic",
+      "texte": "rechercher la cause d'un dysfonctionnement sur un processus complexe, électronique, hydraulique ou pneumatique, sans multiplier les opérations inutiles, jusqu'à la solution durable."
+     },
+     {
+      "accroche": "Rigueur et sens du contrôle",
+      "texte": "vérifier chaque paramètre avant remise en service, sur contrôleur comme sur robot."
+     },
+     {
+      "accroche": "Communication avec la production",
+      "texte": "expliquer une panne d'automatisme à des collègues qui n'ont pas le même métier, puis en rendre compte par un retour clair."
+     },
+     {
+      "accroche": "Veille technologique",
+      "texte": "suivre l'actualité des technologies d'automatisme, l'arrivée de l'intelligence artificielle et du numérique dans l'automatisation et le pilotage des processus de fabrication, jusqu'aux lignes qui tournent presque sans intervention humaine."
+     }
+    ]
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Salaire d'un automaticien",
+    "id": "salaire-d-un-automaticien"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "La rémunération du métier dépend de plusieurs facteurs, bien avant la négociation en entretien. Six d'entre eux expliquent l'essentiel des écarts constatés sur le marché."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "L'expérience",
+      "texte": "le premier emploi paie la promesse, les suivants paient les preuves en atelier."
+     },
+     {
+      "accroche": "Le secteur d'activité",
+      "texte": "nucléaire, automobile et pharmaceutique paient au-dessus de la moyenne du marché."
+     },
+     {
+      "accroche": "La région",
+      "texte": "la région parisienne et les bassins industriels tendus tirent les propositions vers le haut."
+     },
+     {
+      "accroche": "La taille de l'entreprise",
+      "texte": "un grand groupe offre des primes, une PME offre l'autonomie et la polyvalence."
+     },
+     {
+      "accroche": "Les marques maîtrisées",
+      "texte": "SIEMENS, Schneider, la double compétence informatique et courants forts élargissent le marché."
+     },
+     {
+      "accroche": "Le type d'emploi",
+      "texte": "Bureau d'études, terrain ou itinérance : des quotidiens différents, pas la même grille de rémunération."
+     }
+    ]
+   },
+   {
+    "type": "citation",
+    "texte": "Le détail complet, avec les fourchettes par profil et par secteur, est sur la page [salaire automaticien](/carriere/automaticien/salaire/)."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Automaticien chez Migen : le cadre et les moyens",
+    "id": "automaticien-chez-migen-le-cadre-et-les-moyens"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "L'industrie française et la maintenance industrielle manquent d'automaticiens et d'automaticiennes comme d'ingénieurs ; les offres d'emploi à temps plein, publiées par centaines, le montrent, du job-board au cabinet de recrutement spécialisé. Voici ce que nous proposons comme employeur."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "De la variété, pas de routine",
+      "texte": "dépannage, programmation, mise en service, rétrofit d'automatisation industrielle, chez des clients de tous secteurs, de l'automobile à l'agroalimentaire."
+     },
+     {
+      "accroche": "Un collectif complet",
+      "texte": "plus de 100 collaborateurs, 4 agences (Lyon, Montréal, Dubaï, Madrid), une équipe où l'entraide entre gens d'automatisme et électriciens fonctionne."
+     },
+     {
+      "accroche": "Une politique de sélection assumée",
+      "texte": "Entretien technique et comportemental, 10 % des candidats retenus."
+     },
+     {
+      "accroche": "Un accueil structuré",
+      "texte": "Un référent Migen accompagne chaque arrivée, habilitations vérifiées et outillage fourni dès le premier jour, formation continue ensuite."
+     },
+     {
+      "accroche": "Une couverture nationale",
+      "texte": "Des interventions d'un bout à l'autre du pays, en résidence ou en itinérance, selon l'endroit où vous voulez travailler."
+     }
+    ]
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Comment rejoindre nos équipes",
+    "id": "comment-rejoindre-nos-equipes"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Nous contacter est simple et le processus direct, sans dossier interminable. Voici les étapes, du premier contact à la prise de poste."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Un échange avec un chargé d'affaires",
+      "texte": "vous décrivez votre parcours, vos environnements maîtrisés, vos disponibilités, en toute confidentialité."
+     },
+     {
+      "accroche": "Un entretien technique et comportemental",
+      "texte": "mené par un professionnel du métier, tests à l'appui, pour vérifier la maîtrise réelle, pas seulement le CV."
+     },
+     {
+      "accroche": "Une proposition d'embauche",
+      "texte": "résidence ou itinérance, un cadre écrit, selon votre parcours et les besoins de nos clients."
+     },
+     {
+      "accroche": "L'intégration",
+      "texte": "un référent Migen vous accompagne au démarrage : accès au site préparé, habilitations vérifiées, outillage fourni."
+     }
+    ],
+    "ordonnee": true
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Questions fréquentes",
+    "id": "questions-frequentes"
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "Quelle est la différence entre un automaticien et un électricien ?",
+    "texte": "L'électricien installe et répare les circuits électriques ; l'automaticien programme et fait évoluer le contrôle-commande qui les pilote. Sur le terrain, les deux compétences se recoupent souvent chez le technicien ou la technicienne, surtout sur les petits sites industriels. Au-dessus, l'ingénieur automatisme arbitre les choix d'architecture."
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "Quel diplôme faut-il pour devenir automaticien ?",
+    "texte": "Un bac pro électrotechnique suivi d'un BTS ou d'un BUT en génie électrique et informatique industrielle constitue le socle le plus courant. Une licence professionnelle en automatisme complète utilement ce parcours pour viser des systèmes plus complexes. Les études peuvent se poursuivre à l'université ou en école d'ingénieur, jusqu'au master."
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "Quelles entreprises recrutent des automaticiens ?",
+    "texte": "Toute l'industrie de production : automobile, agroalimentaire, pharmaceutique, énergie, logistique, métallurgie également. Les usines les plus robotisées recrutent en continu, faute de candidats en nombre suffisant sur le marché de l'emploi automaticien."
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "Quelle est la différence entre automaticien et roboticien ?",
+    "texte": "Le premier pilote la partie commande et les lignes de production ; le [roboticien](/carriere/roboticien/) se spécialise sur les robots industriels et leurs trajectoires. Les deux métiers se croisent également sur une même cellule automatisée."
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "Combien gagne un automaticien ?",
+    "texte": "Les fourchettes varient fortement selon l'expérience et le secteur d'activité : rien à rechercher ailleurs, le détail est sur la [page dédiée](/carriere/automaticien/salaire/), avec les repères de marché par niveau."
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "Comment Migen évalue-t-elle un automaticien avant de le proposer à un client ?",
+    "texte": "Un entretien technique mené par un professionnel du métier, puis un entretien comportemental. Seuls 10 % des candidats sont retenus, et nous tenons à partager les résultats avec le client avant toute décision, dans le respect de la confidentialité due aux candidats."
+   },
+   {
+    "type": "citation",
+    "texte": "À lire aussi : [roboticien](/carriere/roboticien/)"
+   }
+  ]
+ }
+}

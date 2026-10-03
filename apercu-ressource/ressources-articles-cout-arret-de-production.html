@@ -1,0 +1,795 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Coût d'un arrêt de production</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"><style>:root{--font-poppins:'Poppins'}</style><style>
+
+/* ==========================================================================
+   Charte Migen, portée depuis la maquette Claude Design.
+   Source : « Migen - Site final.dc.html » et le système de design
+   « migen-design-system-9ce37c32 / colors_and_type.css ».
+
+   POURQUOI ces variables et pas des classes Tailwind : la maquette pilote
+   tout par variables CSS et styles en ligne. Les reproduire telles quelles est
+   le seul moyen d'obtenir le rendu à l'identique, et de pouvoir rejouer une
+   évolution de maquette sans retraduire chaque valeur. Tailwind reste
+   disponible pour la mise en page neuve.
+
+   Les blocs `@container` de la maquette ne sont PAS portés : ils n'existaient
+   que pour l'aperçu en iframe de Claude Design, où la fenêtre ne reflète pas
+   la largeur réelle. Sur le site, `@media` fait foi.
+   ========================================================================== */
+
+:root {
+  /* --ft : pile système, pour les mots où le dessin de la lettre compte plus
+     que la marque (le logotype « migen »). --fb : Poppins, tout le reste. */
+  --ft: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", sans-serif;
+  --fb: var(--font-poppins), var(--ft);
+  --fs: var(--font-caveat), var(--fb);
+
+  /* Opacité et flou du verre dépoli. Valeurs RENDUES par la maquette, relevées
+     au getComputedStyle sur onze surfaces, et non celles de son bloc :root, qui
+     sont arrondies. L'écart se voit sur les grandes cartes. */
+  --gl-a: 0.582;
+  --gl-b: 22.5px;
+
+  /* Orange de marque et ses dérivés */
+  --acc: #ff7c3c;
+  --acc-d: #f4641f;
+  --acc-w: rgba(255, 124, 60, 0.11);
+  --acc-ink: #7d3309;
+
+  /* États du formulaire. La maquette n'en a pas : elle ne montre jamais une
+     erreur de saisie ni une confirmation. Deux jetons sont donc posés ici, et
+     ils sont CHOISIS, pas empruntés à une palette de framework (le formulaire
+     portait `text-red-700` et `text-green-800`, deux couleurs de Tailwind qui
+     ne viennent pas de la charte).
+
+     Contraste mesuré, pas supposé : #b3261e donne 6,54:1 sur --card et 6,2:1
+     sur --bg, #1b5e20 donne 7,87:1 et 7,47:1. Les deux passent largement le
+     plancher de 4,5:1. Le rouge est volontairement sombre et peu saturé : à
+     côté de l'orange de marque (--acc, #ff7c3c), un rouge vif se lirait comme
+     une seconde couleur d'accent et non comme une alerte.
+
+     Le teinte-fond sert aux bandeaux de message, à 11 % comme --acc-w. */
+  --err: #b3261e;
+  --err-w: rgba(179, 38, 30, 0.09);
+  --ok: #1b5e20;
+  --ok-w: rgba(27, 94, 32, 0.09);
+
+  --rad: 28px;
+  --rad-s: 18px;
+  --sec: 120px;
+  --sat: 0.55;
+  --ph-op: 1;
+  --ts: 1;
+  --tr: 200ms;
+
+  /* Fonds : blanc crème dominant, anthracite réservé aux panneaux et au pied */
+  --bg: #f1f2f4;
+  --card: #fff;
+  --panel: #1c1b19;
+  --foot: #141312;
+
+  /* Encres, du plus appuyé au plus effacé */
+  --ink: #1c1b19;
+  --ink1: #4a4845;
+  --ink2: #6a6764;
+  --ink3: #737373;
+  --ink4: #a8a49d;
+
+  --line: rgba(28, 27, 25, 0.09);
+  --chip: rgba(28, 27, 25, 0.055);
+
+  /* Verre : bordure et fond de l'îlot de navigation */
+  --gbd: rgba(255, 255, 255, 0.82);
+  --gsol: rgba(255, 255, 255, 0.8);
+
+  --ph: #dedfe1;
+  --sheet: rgba(250, 250, 251, 0.9);
+
+  --logo-f: grayscale(1);
+  --map-a: rgba(255, 255, 255, 0.95);
+  --map-b: rgba(255, 255, 255, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Conteneur racine du site, repris de la maquette.
+   `<div class="mg-site" style="min-height:100vh;background:var(--bg);overflow:hidden">`
+
+   Une seule valeur change : `overflow: hidden` devient `overflow-x: clip`.
+   POURQUOI, et ce n'est pas une préférence : `overflow: hidden` fait de
+   l'élément un CONTENEUR DE DÉFILEMENT, même quand il ne défile jamais. Les
+   sections qui apparaissent au défilement calculent leur `animation-timeline:
+   view()` contre le conteneur le plus proche : ce conteneur-là ne bouge pas,
+   leur progression reste bloquée, et elles restent à `opacity: 0`. Du contenu
+   que Google voit et que le visiteur ne voit pas. `clip` coupe exactement
+   pareil sans créer de conteneur de défilement. */
+.mg-site {
+  min-height: 100vh;
+  background: var(--bg);
+  overflow-x: clip;
+}
+
+html,
+body {
+  /* L'ancrage automatique du défilement déplace la page quand un bloc se
+     déplie au-dessus du point de lecture. La maquette le neutralise. */
+  overflow-anchor: none;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--fb);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--acc);
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: var(--fb);
+}
+
+::selection {
+  background: var(--acc);
+  color: #fff;
+}
+
+/* Accessibilité : le focus clavier doit rester visible partout. La maquette
+   ne le déclare pas, le site l'exige (RGAA 7.1, WCAG 2.4.7). */
+:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------- animations */
+@keyframes mgFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes mgMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mouvement réduit : le bandeau de logos et les flottements s'arrêtent.
+   Exigence WCAG 2.3.3, absente de la maquette. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------- dépliants et FAQ */
+summary::-webkit-details-marker {
+  display: none;
+}
+.cx-faq summary::-webkit-details-marker {
+  display: none;
+}
+.cx-faq[open] .cx-plus,
+details[open] .g3-plus {
+  transform: rotate(45deg);
+  background: var(--acc) !important;
+  color: #fff !important;
+}
+.cx-more > summary::-webkit-details-marker {
+  display: none;
+}
+.cx-more .cx-l2 {
+  display: none;
+}
+.cx-more[open] .cx-l1 {
+  display: none;
+}
+.cx-more[open] .cx-l2 {
+  display: inline;
+}
+
+/* ------------------------------------------------------------- curseur de plage */
+.mg-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--line);
+  outline: none;
+  margin: 0;
+}
+.mg-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #ff7c3c;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(28, 27, 25, 0.28);
+  cursor: grab;
+}
+.mg-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: #ff7c3c;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(28, 27, 25, 0.28);
+  cursor: grab;
+  border-color: #fff;
+}
+.mg-range:active::-webkit-slider-thumb {
+  cursor: grabbing;
+}
+
+/* --------------------------------------------------- bandeau de logos défilant */
+/* La piste lit `var(--mq-play, running)`. La valeur par défaut existe côté
+   `var()`, mais la déclarer ici rend la pause pilotable depuis un composant
+   (un bouton de pause, un test) sans toucher à la règle de survol. */
+.mg-marquee {
+  --mq-play: running;
+}
+.mg-marquee:hover .mg-track,
+.mg-marquee:focus-within .mg-track {
+  --mq-play: paused;
+  animation-play-state: paused;
+}
+.mg-logo {
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.35s ease;
+}
+.mg-marquee:hover .mg-logo {
+  opacity: 0.4;
+}
+.mg-logo:hover {
+  opacity: 1 !important;
+  transform: translateY(-6px) scale(1.08);
+}
+
+/* ------------------------------------------------------------- rails sans barre */
+.mg-autorail {
+  scrollbar-width: none !important;
+}
+.mg-autorail::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Adaptations par largeur, reprises de la maquette dans son ordre.
+   ========================================================================== */
+
+/* Navigation : l'îlot se resserre, puis cède la place au bouton menu */
+.mg-nav > * {
+  white-space: nowrap;
+  flex: none;
+}
+.mg-burger {
+  display: none;
+}
+
+@media (max-width: 1180px) {
+  .mg-nav > * {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .mg-tel {
+    display: none !important;
+  }
+  .mg-implant {
+    display: none !important;
+  }
+}
+@media (max-width: 1080px) {
+  .mg-nav > * {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    font-size: 13.5px !important;
+  }
+}
+@media (max-width: 1000px) {
+  .mg-nav > * {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 880px) {
+  .mg-nav {
+    display: none !important;
+  }
+  .mg-burger {
+    display: inline-flex !important;
+  }
+}
+@media (max-width: 860px) {
+  .mg-nav > * {
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+    font-size: 12.5px !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-topwrap {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+}
+
+/* Grilles de valeurs */
+@media (max-width: 1000px) {
+  .mg-valg {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-valg > .mg-val {
+    grid-column: span 1 !important;
+  }
+  .mg-valg > .mg-val:first-child {
+    grid-column: 1 / -1 !important;
+  }
+  .mg-valg > .mg-val:last-child:nth-child(even) {
+    grid-column: 1 / -1 !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-valg {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-valg > .mg-val {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* Bento, avant-après, mosaïque, rails multiples */
+@media (min-width: 1001px) {
+  .mg-bento > [data-fill="1"] {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 1000px) {
+  .mg-rmulti {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-bento > *[data-open="1"] {
+    grid-column: span 2 !important;
+    grid-row: auto !important;
+  }
+  .mg-ba {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-rq3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-rail {
+    display: none;
+  }
+  .mg-tl > * {
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .mg-tl > * > *:first-child {
+    margin-bottom: 14px !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-bento {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-rows: auto !important;
+  }
+  .mg-bento > *[data-open="1"] {
+    grid-column: span 1 !important;
+  }
+  .mg-ba {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-rows: minmax(240px, auto) !important;
+  }
+}
+@media (max-width: 620px) {
+  .mg-rmulti {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* Lignes de tableau : des colonnes tombent avant que la ligne ne se casse */
+@media (max-width: 980px) {
+  .cx-lay {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .cx-toc {
+    display: none !important;
+  }
+  .mg-reslay {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 26px !important;
+  }
+  .mg-resrail {
+    position: static !important;
+  }
+  .mg-fmts,
+  .mg-sits {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 7px !important;
+    margin-bottom: 18px !important;
+  }
+  .mg-fmts > * {
+    width: auto !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 999px !important;
+    padding: 8px 14px !important;
+    gap: 7px !important;
+    white-space: nowrap;
+  }
+  .mg-sits > * {
+    border: 1px solid var(--line) !important;
+    border-radius: 999px !important;
+    padding: 7px 13px !important;
+    font-size: 12.5px !important;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 940px) {
+  .mg-mrow {
+    grid-template-columns: 1.5fr 0.9fr 104px !important;
+  }
+  .mg-mrow > *:nth-child(2),
+  .mg-mrow > *:nth-child(4) {
+    display: none;
+  }
+  .mg-prow {
+    grid-template-columns: auto minmax(0, 1fr) 84px !important;
+  }
+  .mg-prow > *:nth-child(3) {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .mg-r2 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 36px !important;
+  }
+}
+@media (min-width: 901px) {
+  .mg-flip > *:last-child {
+    order: -1;
+  }
+}
+@media (max-width: 760px) {
+  .cx-row {
+    grid-template-columns: 32px minmax(0, 1fr) !important;
+    gap: 8px 16px !important;
+  }
+  .cx-row > *:nth-child(3) {
+    grid-column: 2;
+  }
+  .mg-cmp {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .mg-cmp > *:first-child {
+    grid-column: 1/-1;
+  }
+  .mg-doclist > div {
+    grid-template-columns: 36px minmax(0, 1fr) !important;
+  }
+  .mg-doclist > div > span:last-child {
+    grid-column: 2;
+  }
+  .mg-mosaic {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-mosaic > *:first-child {
+    min-height: 340px !important;
+  }
+  .mg-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    row-gap: 20px !important;
+  }
+  .mg-steps > div:first-child {
+    display: none !important;
+  }
+  .mg-r3,
+  .mg-bento2,
+  .mg-rq3 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-bento2 > * {
+    grid-column: auto !important;
+  }
+  .mg-rq2 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+@media (max-width: 620px) {
+  .mg-mrow {
+    grid-template-columns: 1fr 104px !important;
+    gap: 12px !important;
+  }
+  .mg-mrow > *:nth-child(3) {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .mg-prow {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    gap: 14px !important;
+  }
+  .mg-prow > *:nth-child(4) {
+    text-align: left !important;
+    grid-column: 2 !important;
+  }
+}
+
+/* Mobile : marges, échelle des titres, arrondis, colonnes fusionnées */
+@media (max-width: 760px) {
+  .mg-pad,
+  .mg-site section > div[style*="max-width:1200px"],
+  .mg-site main > div[style*="max-width:1200px"],
+  .mg-site footer > div[style*="max-width:1200px"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .mg-site section[style*="max-width:1200px"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .mg-site {
+    --sec: 64px;
+  }
+  .mg-site h1 {
+    font-size: clamp(32px, 9vw, 42px) !important;
+    letter-spacing: -0.035em !important;
+  }
+  .mg-site h2 {
+    font-size: clamp(26px, 7.4vw, 34px) !important;
+  }
+  .mg-site [style*="position:sticky"][style*="top:110px"],
+  .mg-site [style*="position:sticky"][style*="top:100px"] {
+    position: static !important;
+  }
+  .mg-site [style*="border-radius:36px"] {
+    border-radius: 24px !important;
+  }
+  .mg-site [style*="padding:30px 34px"],
+  .mg-site [style*="padding:36px 40px"],
+  .mg-site [style*="padding:40px 44px"],
+  .mg-site [style*="padding:44px 48px"] {
+    padding: 24px 20px !important;
+  }
+  .mg-site table {
+    font-size: 13px;
+  }
+  .mg-site [style*="grid-column:span 2"],
+  .mg-site [style*="grid-column:span 3"] {
+    grid-column: auto !important;
+  }
+  .mg-site img[style*="aspect-ratio"] {
+    max-height: 70vw;
+  }
+}
+@media (max-width: 480px) {
+  .mg-site h1 {
+    font-size: clamp(28px, 8.6vw, 36px) !important;
+  }
+  .mg-site [style*='font:600 calc(clamp(56px'] {
+    font-size: 48px !important;
+  }
+}
+
+/* Habillage du gabarit ressource. Tout ce qu'un style en ligne ne peut pas
+   porter : les survols, et le style des éléments que le composant ne touche pas
+   un par un (les liens du corps, les cellules du barème). */
+
+a[href='#formulaire']:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+/* Ligne 6788 de la maquette : le bouton secondaire passe son filet à l'orange. */
+a[href='/ressources/']:hover {
+  border-color: var(--acc);
+}
+
+/* Ligne 6546 : la carte « Aller plus loin » fait de même. */
+aside a {
+  display: block;
+  transition: border-color var(--tr);
+}
+aside a:hover,
+aside a:focus-visible {
+  border-color: var(--acc);
+}
+
+/* Les liens internes que le corpus pose dans le corps du texte.
+   Soulignés, et pas seulement colorés : l'information ne doit pas passer par la
+   couleur seule, c'est le critère WCAG 1.4.1. */
+article a {
+  color: var(--acc-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--tr);
+}
+article a:hover,
+article a:focus-visible {
+  color: var(--acc-d);
+}
+
+/* LE BARÈME EST UN VRAI TABLEAU, dessiné en grille.
+
+   La maquette l'écrit en `div` imbriquées (lignes 6733 à 6748), ce qui donne le
+   bon dessin mais prive un lecteur d'écran de l'en-tête de colonne : la
+   troisième cellule d'une ligne ne se rattache plus à « Conduite à tenir ».
+   `table` rétablit la sémantique, et ces règles rendent au tableau le
+   comportement de grille que la maquette attend. Les colonnes elles-mêmes sont
+   posées en style en ligne sur chaque `tr`, parce que leur nombre vient des
+   données.
+
+   ATTENTION si ce bloc est touché : redéfinir `display` sur un tableau lui
+   retire son rôle implicite dans Chrome comme dans Safari. C'est pourquoi
+   `CorpsRessource.tsx` écrit `role="table"`, `rowgroup`, `row`, `columnheader`
+   et `cell` à la main. Retirer l'un sans l'autre casse l'accessibilité en
+   silence. */
+table {
+  display: block;
+  width: 100%;
+  border-collapse: collapse;
+}
+table thead,
+table tbody {
+  display: block;
+}
+table th,
+table td {
+  text-align: left;
+  padding: 0;
+  min-width: 0;
+  vertical-align: middle;
+}
+
+/*
+  Survols des blocs du gabarit de conversion, relevés sur `style-hover` dans la
+  maquette. Ils vivent dans un module CSS et non dans `app/globals.css` : le
+  fichier global est écrit par plusieurs agents en parallèle, et un survol n'est
+  pas exprimable dans un style en ligne.
+
+  Les classes portent le nom de leur rôle, pas celui de leur déclaration.
+*/
+
+a[href='#formulaire']:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+a[href='/ressources/']:hover {
+  background: var(--card);
+  transform: translateY(-1px);
+}
+
+/* Carte de réalisation : la maquette la soulève et creuse son ombre. */
+.cartePreuve {
+  transition:
+    transform var(--tr),
+    box-shadow var(--tr);
+}
+.cartePreuve:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.42);
+}
+
+/* Dépliant de FAQ : `globals.css` tient déjà l'état ouvert de `.cx-plus`
+   (rotation et passage à l'orange). Ici, l'état fermé et son survol. */
+.cx-plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex: none;
+  border-radius: 999px;
+  background: var(--chip);
+  color: var(--ink2);
+  font: 400 17px var(--fb);
+  transition:
+    transform var(--tr),
+    background var(--tr),
+    color var(--tr);
+}
+
+summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+  padding: 20px 24px;
+  cursor: pointer;
+  text-align: left;
+  list-style: none;
+}
+summary:hover .cx-plus {
+  background: var(--acc-w);
+  color: var(--acc-ink);
+}
+
+/* Liens internes que `TexteRiche` pose dans le corpus : 597 dans les 126 pages
+   importées. `globals.css` déclare `a { color: var(--ink); text-decoration:
+   none }`, donc SANS règle ici un lien du corpus se rend en #1c1b19 sans
+   soulignement, c'est-à-dire indistinguable du texte autour sur fond clair, et
+   #1c1b19 sur #1c1b19 sur le panneau anthracite, soit un contraste de 1:1.
+
+   La classe se pose sur le conteneur du texte du corpus, jamais sur un
+   conteneur qui porte aussi un lien d'habillage : les boutons d'action et la
+   carte de réalisation ont leur propre traitement et ne doivent pas être
+   soulignés. */
+.corpus a {
+  /* Même traitement que `article a` d'`Article.module.css` : un lien du corpus
+     doit se lire pareil dans un article et dans une page de vente.
+     `var(--acc-ink)` vaut 8,9:1 sur blanc, `var(--acc)` n'y tiendrait que
+     2,6:1. */
+  color: var(--acc-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-thickness var(--tr);
+}
+.corpus a:hover,
+.corpus a:focus-visible {
+  /* La couleur ne change pas : le survol épaissit le trait. L'orange de survol
+     global, `var(--acc)`, ne tient que 2,6:1 sur blanc, sous le plancher de
+     4,5:1. */
+  color: var(--acc-ink);
+  text-decoration-thickness: 2px;
+}
+
+/* Le même corpus sur le panneau anthracite (`var(--panel)`, #1c1b19) : les
+   sections « problème » et l'appel à l'action final. `var(--acc-ink)` n'y vaut
+   que 1,9:1. Le blanc y vaut 17:1, l'orange de marque 6,7:1. */
+.corpusClair a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--tr);
+}
+.corpusClair a:hover,
+.corpusClair a:focus-visible {
+  color: var(--acc);
+}
+
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fb)}a{text-decoration:none;color:inherit}</style></head><body><div class="mg-site"><main style="padding-top:96px"><section style="max-width:1200px;margin:0 auto;padding:70px 40px 0"><div style="max-width:760px"><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap"><span style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--acc);padding:5px 12px;border-radius:999px;white-space:nowrap">Article</span></div><h1 style="font:600 calc(clamp(30px,3.6vw,52px) * var(--ts))/1.06 var(--ft);letter-spacing:-.042em;margin:0;text-wrap:balance">Coût d&#x27;un arrêt de production</h1><p style="font:400 18px/1.65 var(--fb);color:var(--ink2);margin:20px 0 0">Une ligne à l&#x27;arrêt ne coûte pas le prix de la réparation. Elle emporte la fabrication perdue, chaque heure, pendant que les équipes attendent et que les commandes prennent du délai.</p></div></section><section style="max-width:1200px;margin:0 auto;padding:40px 40px 0"><div style="border-radius:var(--rad);background:var(--acc-w);border:1.5px solid rgba(255,124,60,.3);display:flex;align-items:center;gap:16px;padding:18px 24px;flex-wrap:wrap;max-width:760px"><span style="font:400 14.5px/1.6 var(--fb);color:var(--ink1);flex:1;min-width:240px">Un chargé d&#x27;affaires vous rappelle dans l&#x27;heure, du lundi au vendredi de 8h00 à 18h30, pour un diagnostic maintenance : 04 78 33 72 05.</span></div></section><section style="max-width:1200px;margin:0 auto;padding:40px 40px 0"><div class="mg-r2" style="display:grid;grid-template-columns:minmax(0,760px) minmax(0,1fr);gap:52px;align-items:start"><article><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Le coût d&#x27;un arrêt de production dépasse toujours la note du dépannage. Cette page de nos <a href="/ressources/articles">Ressources : Articles</a> explique ce qu&#x27;il recouvre, comment le calculer, et pourquoi l&#x27;arrêt subi revient bien plus cher qu&#x27;une intervention planifiée, par des techniciens qui interviennent en usine chaque jour.</p><h2 id="le-cout-d-un-arret-de-production-ce-qu-il-recouv" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Le coût d&#x27;un arrêt de production, ce qu&#x27;il recouvre</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Le coût d&#x27;un arrêt de production, c&#x27;est tout ce que l&#x27;entreprise perd pendant qu&#x27;une machine reste immobilisée. La réparation n&#x27;en est que la partie visible.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">La perte de production </strong>Chaque heure d&#x27;immobilisation, ce sont des unités non fabriquées, un bénéfice perdu, un chiffre d&#x27;affaires qui ne rentre pas. C&#x27;est le coût direct le plus évident.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Les charges fixes qui continuent </strong>Le loyer, l&#x27;énergie, la main-d&#x27;œuvre des opérateurs immobilisés tournent même machine stoppée. Ces charges fixes sont absorbées sans rien produire.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Les frais de remise en service </strong>L&#x27;intervention d&#x27;urgence, les composants, parfois le rattrapage en heures supplémentaires ou en week-end. La réparation d&#x27;une panne subie revient à plus qu&#x27;une opération planifiée.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Les coûts cachés </strong>Les pénalités de retard client, la désorganisation logistique, le stress des équipes, la réputation entamée. Ce poste caché est réel, même s&#x27;il ne figure sur aucune facture.</span></li></ul><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">L&#x27;erreur classique consiste à ne compter que la réparation. Le montant réel d&#x27;un arrêt de production additionne le direct et le caché, et ce total dépasse souvent plusieurs fois le seul dépannage.</p><h2 id="frais-directs-et-couts-caches-l-iceberg-de-l-imm" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Frais directs et coûts cachés : l&#x27;iceberg de l&#x27;immobilisation</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Le montant d&#x27;une immobilisation machine ressemble à un iceberg : la partie émergée, la réparation, cache une masse de dépenses plus lourde. Le tableau ci-dessous sépare les deux.</p><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);overflow:hidden;margin:0 0 26px"><table role="table"><thead role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;padding:14px 30px;border-bottom:1px solid var(--line);background:var(--chip)"><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Poste de dépense</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Nature</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Exemple</th></tr></thead><tbody role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Production perdue</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Direct</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Unités non fabriquées, valeur perdue sur la période</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Charges fixes absorbées</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Direct</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Énergie, loyer, salaires pendant l&#x27;immobilisation</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Réparation et pièces</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Direct</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Intervention d&#x27;urgence, rechange, main-d&#x27;œuvre</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Pénalités de retard</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Indirect</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Sanction contractuelle sur une commande client livrée en retard</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Désorganisation</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Indirect</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Replanification, logistique perturbée, stock déréglé</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Coût humain</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Indirect</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Stress, heures supplémentaires, usure des équipes</td></tr></tbody></table></div><blockquote style="border-left:3px solid var(--acc);padding:4px 0 4px 24px;margin:32px 0"><p style="font:500 calc(20px * var(--ts))/1.5 var(--ft);letter-spacing:-.02em;color:var(--ink);margin:0">Des retours de terrain le montrent souvent : le montant total d&#x27;une immobilisation subie représente plusieurs fois le seul prix de réparation. C&#x27;est cette part cachée qui transforme une petite panne en gros problème financier. Les études ne manquent pas sur le sujet : certaines, américaines, évaluent l&#x27;arrêt en dollars par heure, et l&#x27;addition annuelle atteint plusieurs millions dans les très grandes usines. Un calculateur en ligne donne un ordre de grandeur, mais rien ne remplace un calcul sur vos propres données. En moyenne, l&#x27;érosion du profit reste le poste le plus sous-estimé, et ce qui était vrai hier l&#x27;est encore aujourd&#x27;hui.</p></blockquote><h2 id="comment-calculer-le-cout-d-un-arret-de-productio" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Comment calculer le coût d&#x27;un arrêt de production, étape par étape</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Estimer le coût d&#x27;un arrêt de production n&#x27;a rien de sorcier. Une formule simple, appliquée avec des données réelles, suffit à sortir un montant à l&#x27;heure défendable en direction.</p><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:30px 34px 32px;margin:0 0 26px"><ol role="list" style="display:grid;gap:2px;margin:0;padding:0;list-style:none"><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">1</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Mesurer la durée d&#x27;indisponibilité</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Compter le temps réel entre l&#x27;apparition de la panne et la remise en route, pas seulement la durée de réparation. Le délai d&#x27;attente d&#x27;un technicien compte aussi.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">2</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Chiffrer la perte de production</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Multiplier le temps par le bénéfice horaire manqué de la chaîne. C&#x27;est le nombre d&#x27;unités qui auraient dû sortir, valorisées à leur bénéfice.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">3</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Ajouter les charges fixes absorbées</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Salaires des opérateurs immobilisés, énergie, amortissement de l&#x27;équipement. Ces charges fixes courent pendant toute l&#x27;immobilisation.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">4</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Ajouter les frais de remise en service</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Intervention, composants, éventuel rattrapage en heures supplémentaires. C&#x27;est la partie que tout le monde évalue déjà.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">5</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Évaluer les postes cachés</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Pénalités de retard, impact logistique, désorganisation cachée. Difficiles à estimer au centime, mais réels et à ne pas oublier.</p></div></li><li style="display:flex;gap:18px;padding:20px 0"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">6</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Additionner et ramener à l&#x27;heure</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Faire la somme, diviser par la durée. Ce montant horaire d&#x27;arrêt devient l&#x27;indicateur clé pour arbitrer un investissement de maintenance.</p></div></li></ol></div><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">La formule tient en une ligne : coût d&#x27;arrêt = perte de production + charges fixes + remise en service + postes indirects. Le reste n&#x27;est qu&#x27;une affaire de données propres, souvent tirées de la GMAO.</p><h2 id="un-exemple-concret-heure-par-heure" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Un exemple concret, heure par heure</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Prenons une ligne de conditionnement à l&#x27;arrêt huit heures après une panne de moteur électrique. Les montants ci-dessous sont une illustration, à adapter à votre site.</p><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);overflow:hidden;margin:0 0 26px"><table role="table"><thead role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;padding:14px 30px;border-bottom:1px solid var(--line);background:var(--chip)"><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Poste</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Calcul</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Montant</th></tr></thead><tbody role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Perte de marge</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">8 heures × 1 800 € de marge horaire</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">14 400 €</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Main-d&#x27;œuvre immobilisée</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">8 heures × 12 opérateurs × 35 €</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">3 360 €</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Intervention et pièces</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Dépannage d&#x27;urgence + moteur</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">4 000 €</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Pénalité de retard client</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Commande livrée hors délai</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">2 500 €</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Coût total de l&#x27;immobilisation</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Somme des postes</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">24 260 €</td></tr></tbody></table></div><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Le montant horaire ressort ici à plus de 3 000 € l&#x27;heure, contre 4 000 € pour la seule réparation sur la totalité de l&#x27;immobilisation. La réparation ne pèse donc qu&#x27;un sixième du montant réel. Ramené à l&#x27;année, sur une usine qui subit ce type d&#x27;immobilisation chaque mois, l&#x27;addition atteint vite plusieurs centaines de milliers d&#x27;euros.</p><blockquote style="border-left:3px solid var(--acc);padding:4px 0 4px 24px;margin:32px 0"><p style="font:500 calc(20px * var(--ts))/1.5 var(--ft);letter-spacing:-.02em;color:var(--ink);margin:0">Cet exemple parle d&#x27;un moteur, mais le raisonnement vaut pour une pompe, un automate ou un roulement. Ce qui compte n&#x27;est pas le composant, c&#x27;est la chaîne à l&#x27;arrêt et la valeur qui s&#x27;évapore heure après heure.</p></blockquote><h2 id="le-cout-de-l-arret-varie-selon-le-secteur-indust" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Le coût de l&#x27;arrêt varie selon le secteur industriel</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Toutes les usines ne perdent pas la même chose à l&#x27;heure. Le montant d&#x27;une immobilisation dépend du secteur industriel, de la valeur du produit et de la place de la machine dans la chaîne.</p><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);overflow:hidden;margin:0 0 26px"><table role="table"><thead role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;padding:14px 30px;border-bottom:1px solid var(--line);background:var(--chip)"><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Secteur industriel</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Ce qui pèse le plus</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Facteur dominant</th></tr></thead><tbody role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Agroalimentaire</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Produits périssables, cadence élevée</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Perte de matière et de production</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Automobile</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Chaîne synchronisée, pénalités clients</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Retard et sanction en cascade</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Pharmaceutique</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Lots à forte valeur, conformité</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Rebut et risque réglementaire</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Plasturgie</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Redémarrage long, matière figée</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Délai de relance et matière figée</td></tr></tbody></table></div><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Un point commun à tous ces secteurs : plus la machine est critique dans la chaîne, plus son immobilisation propage une perte au reste du réseau de production. Un maillon bloqué immobilise toute la chaîne, et la facture dépasse largement la valeur de la seule machine. En moyenne, le facteur le plus lourd n&#x27;est jamais le composant, c&#x27;est la fabrication que la chaîne entière ne fait plus.</p><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Un indicateur de maintenance comme le taux de disponibilité aide à évaluer ce risque et à bâtir un rapport clair pour la direction. Cette information transforme un actif industriel en donnée pilotable, et sort le débat du ressenti. Remontée en continu, elle guide la décision : quel actif protéger, quelle solution industrielle déployer en premier. C&#x27;est le point de départ d&#x27;une solution de maintenance dimensionnée sur des faits. Le facteur logistique pèse dans presque toute l&#x27;industrie : une interruption décale les livraisons, sature les stocks, propage le délai sur tout le réseau. La bonne réponse n&#x27;est pas de subir, c&#x27;est d&#x27;anticiper. Produire quand le voisin est immobilisé, c&#x27;est un avantage concurrentiel. Sur le cycle de vie d&#x27;un équipement de production, la maintenance d&#x27;urgence revient toujours plus cher que la prévention, en moyenne comme dans le pire des cas. L&#x27;usure d&#x27;un équipement industriel suit une courbe connue, et la logistique ne pardonne pas une interruption ; anticiper doit être la règle. Notre livre blanc sur l&#x27;externalisation détaille ce calcul.</p><h2 id="pourquoi-l-arret-subi-coute-plus-cher-que-le-pla" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Pourquoi l&#x27;arrêt subi coûte plus cher que le planifié</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Un arrêt planifié se prépare, s&#x27;estime, se maîtrise. Un incident subi tombe au pire moment, et chaque poste de dépense gonfle d&#x27;un coup.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">L&#x27;urgence pèse lourd </strong>Un dépannage en urgence mobilise un technicien en catastrophe, parfois de nuit ou en week-end. La même réparation planifiée aurait pesé moins, sans surcoût d&#x27;urgence.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Le diagnostic prend du temps </strong>Sans préparation, on cherche la cause avant de réparer. Un diagnostic raté immobilise la ligne un jour de plus, et le coût d&#x27;indisponibilité explose.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">La pièce n&#x27;est pas là </strong>Une panne imprévue trouve rarement le composant en stock. Il faut la commander en urgence, et la ligne attend pendant que les coûts fixes courent.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Le rattrapage se paie </strong>Reprendre le retard exige des heures supplémentaires, parfois de la sous-traitance. Ce rattrapage ne serait jamais apparu sur un arrêt planifié.</span></li></ul><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">La leçon est simple : une stratégie de maintenance préventive et prédictive transforme des pannes subies, chères et imprévues, en opérations planifiées, chiffrées et courtes. C&#x27;est là que se gagne l&#x27;argent, pas au moment de la panne. La maintenance corrective, appliquée seule, laisse filer la marge perdue à chaque interruption de service. En moyenne, une bonne part de ces pertes se rattrape par la prévention, et le retour se mesure sur le processus de production complet, pas sur une seule machine.</p><h2 id="les-erreurs-les-plus-frequentes" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Les erreurs les plus fréquentes</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Sous-estimer le coût d&#x27;un arrêt de production conduit à sous-investir dans la maintenance, puis à payer la note en pannes. Les mêmes erreurs de calcul reviennent.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Ne compter que la réparation </strong>Regarder la facture du dépannage et ignorer la production perdue fausse tout. La réparation est souvent la plus petite part du coût réel.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Oublier les coûts fixes </strong>Penser qu&#x27;à l&#x27;arrêt, l&#x27;usine ne dépense rien. Les salaires, l&#x27;énergie et l&#x27;amortissement continuent de courir, machine arrêtée.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Ignorer le temps d&#x27;attente </strong>Chiffrer la durée de réparation sans compter le délai avant l&#x27;arrivée du technicien sous-estime la vraie indisponibilité, et donc le coût.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Négliger le caché </strong>Ne pas sous-estimer les pénalités, la logistique et la désorganisation minimise la note. Ce sont pourtant ces effets qui font le plus mal sur la durée.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Raisonner à la panne, pas à l&#x27;année </strong>Un arrêt isolé paraît supportable. Multiplié par sa fréquence sur l&#x27;année, le total change la façon de voir l&#x27;investissement de maintenance.</span></li></ul><h2 id="ce-que-cela-implique-reduire-l-arret-a-la-source" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Ce que cela implique : réduire l&#x27;arrêt à la source</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Une fois le coût d&#x27;un arrêt de production chiffré, une évidence apparaît : mieux vaut payer un peu de prévention que beaucoup d&#x27;indisponibilité. Le calcul renverse la logique.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Investir dans le préventif </strong>Le coût horaire d&#x27;arrêt justifie un plan de maintenance préventive, une surveillance des équipements critiques, une analyse vibratoire sur les machines tournantes. L&#x27;analyse vibratoire repère l&#x27;usure d&#x27;un roulement, d&#x27;une pompe ou d&#x27;un moteur électrique avant qu&#x27;il ne lâche, sur le réseau des machines critiques. La prévention devient ainsi un investissement, pas une dépense.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Surveiller les organes sensibles </strong>Une pompe, un moteur électrique, un roulement usé envoient des signaux avant la panne. La maintenance prédictive et l&#x27;analyse vibratoire captent ces signaux, identifient la défaillance potentielle et évitent l&#x27;interruption brutale du système. Un problème repéré tôt se règle en minutes, pas en heures.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Passer à un modèle économique prévisible </strong>Un contrat de maintenance transforme des dépenses d&#x27;immobilisation aléatoires en budget maîtrisé. L&#x27;engagement d&#x27;un partenaire sur la disponibilité vaut souvent mieux, à l&#x27;échelle industrielle, que le pari de la panne qui n&#x27;arrivera pas.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Faire parler les mesures </strong>Sur le terrain, un technicien mesure les vibrations d&#x27;une pompe, relève la température d&#x27;un moteur électrique, écoute un roulement. Ce travail de surveillance opérationnelle nourrit un rapport qui identifie le facteur de risque et le potentiel de panne évitée sur le système.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Sécuriser les pièces critiques </strong>Un stock de pièces de rechange sur les composants sensibles évite l&#x27;attente en urgence. Le coût du stock se compare au coût d&#x27;une heure d&#x27;arrêt, et l&#x27;arbitrage devient clair.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Réduire le temps de diagnostic </strong>Plus vite la cause est trouvée, plus vite l&#x27;atelier repart. Un bon outil de diagnostic réduit la durée d&#x27;indisponibilité, donc le coût de l&#x27;arrêt.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Choisir un partenaire qui répond vite </strong>Un technicien ultra qualifié, disponible et évalué, raccourcit chaque arrêt. La qualité de l&#x27;intervention pèse directement sur la facture d&#x27;indisponibilité.</span></li></ul><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Ce guide complet ne remplace pas une mesure sur votre site. La mise en œuvre d&#x27;une maintenance industrielle sérieuse commence par un état des lieux : quels équipements pèsent le plus, quelle usure guette, quel impact financier aurait leur panne. L&#x27;analyse vibratoire et un simple relevé d&#x27;information suffisent à démarrer, sans grand chantier.</p><blockquote style="border-left:3px solid var(--acc);padding:4px 0 4px 24px;margin:32px 0"><p style="font:500 calc(20px * var(--ts))/1.5 var(--ft);letter-spacing:-.02em;color:var(--ink);margin:0">Nos techniciens réduisent la durée des arrêts par la qualité du diagnostic et de l&#x27;intervention.</p></blockquote><blockquote style="border-left:3px solid var(--acc);padding:4px 0 4px 24px;margin:32px 0"><p style="font:500 calc(20px * var(--ts))/1.5 var(--ft);letter-spacing:-.02em;color:var(--ink);margin:0"><a href="/offres/zero-arret">Ce que coûte une heure d&#x27;arrêt, ce que coûte l&#x27;abonnement</a></p></blockquote><blockquote style="border-left:3px solid var(--acc);padding:4px 0 4px 24px;margin:32px 0"><p style="font:500 calc(20px * var(--ts))/1.5 var(--ft);letter-spacing:-.02em;color:var(--ink);margin:0"><a href="/contact">Demander un diagnostic maintenance</a></p></blockquote></article><aside style="display:grid;gap:16px;position:sticky;top:120px"><a style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:26px 28px" href="/ressources/articles/gmao"><div style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:10px">Aller plus loin</div><div style="font:600 15.5px/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:8px">Gestion de maintenance assistée par ordinateur</div><span style="display:block;margin-top:8px;font:600 13px var(--fb);color:var(--acc)">La page complète →</span></a></aside></div></section><section style="padding:var(--sec) 0 0"><div style="max-width:1200px;margin:0 auto;padding:0 40px"><div class="mg-r2" style="display:grid;grid-template-columns:.8fr 1.2fr;gap:52px;align-items:start"><div style="position:sticky;top:112px"><div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px">Questions fréquentes</div><h2 style="font:600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft);letter-spacing:-.04em;margin:0;max-width:14ch;text-wrap:balance;margin-bottom:22px">Ce qu&#x27;on nous demande avant de signer.</h2></div><div style="display:grid;gap:10px"><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Comment calculer le coût d&#x27;un arrêt de production ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Additionnez la perte de production, les coûts fixes absorbés, la remise en service et les coûts indirects, puis ramenez le total à l&#x27;heure. La formule est simple, la difficulté tient à la qualité des données, souvent tirées de la GMAO et des indicateurs de la ligne.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Combien coûte une heure d&#x27;arrêt de production ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Cela dépend du secteur, de la marge de la ligne et de la criticité de la machine. Il n&#x27;existe pas de chiffre universel : une ligne à forte marge en agroalimentaire ou en automobile perd beaucoup plus par heure qu&#x27;un poste isolé. Le bon repère est votre propre coût horaire, calculé sur vos données.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Pourquoi un arrêt subi coûte-t-il plus cher qu&#x27;un arrêt planifié ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Parce que l&#x27;urgence gonfle chaque poste : intervention en catastrophe, diagnostic plus long, pièce absente du stock, rattrapage en heures supplémentaires. Un arrêt planifié maîtrise ces coûts ; un arrêt imprévu les subit tous en même temps.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Que comprennent les coûts cachés d&#x27;un arrêt ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Les pénalités de retard, la désorganisation logistique, le stress et l&#x27;usure des équipes, l&#x27;impact sur la réputation. Ce coût indirect ne figure sur aucune facture, mais il représente souvent la plus grosse part du coût total d&#x27;un arrêt de production.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">La maintenance préventive réduit-elle vraiment le coût des arrêts ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Oui, quand elle est ciblée. Une stratégie préventive et prédictive transforme des pannes subies et chères en opérations planifiées et courtes. Le retour sur investissement se démontre en comparant le coût de la prévention au coût horaire d&#x27;indisponibilité.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Comment réduire le coût d&#x27;un arrêt de production ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">En agissant sur ses deux moteurs : la fréquence des pannes et la durée d&#x27;indisponibilité. Un plan de maintenance préventive réduit la première, un diagnostic rapide et un partenaire réactif réduisent la seconde. Les deux ensemble font baisser la facture.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Quel indicateur suivre pour piloter le coût des arrêts ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Le taux de disponibilité et le nombre d&#x27;heures d&#x27;interruption par mois sont deux repères simples. Suivis dans le temps, ils montrent en moyenne où se concentre le risque, machine par machine, et guident l&#x27;audit de fiabilité. C&#x27;est un guide utile pour prioriser les actifs industriels à protéger en premier.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">L&#x27;analyse vibratoire réduit-elle le coût des arrêts ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Oui, sur les machines tournantes. La mesure vibratoire détecte l&#x27;usure d&#x27;une pompe ou d&#x27;un moteur avant la casse. En moyenne, cette surveillance transforme une panne subie en intervention planifiée. Son utilisation régulière fait baisser la note d&#x27;indisponibilité sur toute l&#x27;activité industrielle, et c&#x27;est un moyen simple d&#x27;anticiper.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Comment justifier un investissement de maintenance auprès de la direction ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Par le ROI. Comparez le coût moyen d&#x27;un arrêt au coût de la prévention : le retour sur investissement, ou ROI, saute aux yeux. Le manque à gagner d&#x27;un atelier stoppé, en moyenne sur l&#x27;année, dépasse presque toujours le budget de maintenance. Un diagnostic gratuit évalue ce ROI pour votre industrie ; ce premier état des lieux reste gratuit.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Un arrêt peut-il déclencher une crise plus large ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Oui. Une ligne de production bloquée en pleine cadence peut créer une crise logistique : commandes en retard, clients qui cherchent ailleurs. En moyenne, plus la panne dure, plus elle sort du périmètre technique pour devenir un problème commercial, puis une crise de confiance.</div></details></div></div></div></section><section style="padding:var(--sec) 0 var(--sec)"><div style="max-width:1200px;margin:0 auto;padding:0 40px"><div data-reveal="" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:36px;padding:44px 48px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap"><div><div style="font:600 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:12px">Une question sur ce contenu</div><h2 style="font:600 calc(clamp(22px,2.2vw,32px) * var(--ts))/1.14 var(--ft);letter-spacing:-.035em;margin:0 0 10px;max-width:26ch;text-wrap:balance">Nos équipes répondent aux questions techniques.</h2><p style="font:400 15.5px/1.6 var(--fb);color:var(--ink2);margin:0;max-width:48ch">Un point de méthode à creuser, un cas particulier sur votre installation : le chargé d&#x27;affaires de votre secteur vous rappelle.</p></div><div style="display:flex;gap:10px;flex:none;flex-wrap:wrap"><a href="#formulaire" style="display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--acc);color:#fff;font:600 15px var(--fb);white-space:nowrap;box-shadow:0 12px 30px -12px rgba(255,124,60,.9);transition:filter var(--tr),transform var(--tr)">Poser ma question</a><a style="display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--chip);border:1px solid var(--line);color:var(--ink);font:600 15px var(--fb);white-space:nowrap;transition:border-color var(--tr)" href="/ressources">Toutes les ressources</a></div></div></div></section></main></div></body></html>

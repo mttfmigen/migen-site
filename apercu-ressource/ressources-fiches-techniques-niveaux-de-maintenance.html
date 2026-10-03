@@ -1,0 +1,795 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Niveaux de maintenance</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"><style>:root{--font-poppins:'Poppins'}</style><style>
+
+/* ==========================================================================
+   Charte Migen, portée depuis la maquette Claude Design.
+   Source : « Migen - Site final.dc.html » et le système de design
+   « migen-design-system-9ce37c32 / colors_and_type.css ».
+
+   POURQUOI ces variables et pas des classes Tailwind : la maquette pilote
+   tout par variables CSS et styles en ligne. Les reproduire telles quelles est
+   le seul moyen d'obtenir le rendu à l'identique, et de pouvoir rejouer une
+   évolution de maquette sans retraduire chaque valeur. Tailwind reste
+   disponible pour la mise en page neuve.
+
+   Les blocs `@container` de la maquette ne sont PAS portés : ils n'existaient
+   que pour l'aperçu en iframe de Claude Design, où la fenêtre ne reflète pas
+   la largeur réelle. Sur le site, `@media` fait foi.
+   ========================================================================== */
+
+:root {
+  /* --ft : pile système, pour les mots où le dessin de la lettre compte plus
+     que la marque (le logotype « migen »). --fb : Poppins, tout le reste. */
+  --ft: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", sans-serif;
+  --fb: var(--font-poppins), var(--ft);
+  --fs: var(--font-caveat), var(--fb);
+
+  /* Opacité et flou du verre dépoli. Valeurs RENDUES par la maquette, relevées
+     au getComputedStyle sur onze surfaces, et non celles de son bloc :root, qui
+     sont arrondies. L'écart se voit sur les grandes cartes. */
+  --gl-a: 0.582;
+  --gl-b: 22.5px;
+
+  /* Orange de marque et ses dérivés */
+  --acc: #ff7c3c;
+  --acc-d: #f4641f;
+  --acc-w: rgba(255, 124, 60, 0.11);
+  --acc-ink: #7d3309;
+
+  /* États du formulaire. La maquette n'en a pas : elle ne montre jamais une
+     erreur de saisie ni une confirmation. Deux jetons sont donc posés ici, et
+     ils sont CHOISIS, pas empruntés à une palette de framework (le formulaire
+     portait `text-red-700` et `text-green-800`, deux couleurs de Tailwind qui
+     ne viennent pas de la charte).
+
+     Contraste mesuré, pas supposé : #b3261e donne 6,54:1 sur --card et 6,2:1
+     sur --bg, #1b5e20 donne 7,87:1 et 7,47:1. Les deux passent largement le
+     plancher de 4,5:1. Le rouge est volontairement sombre et peu saturé : à
+     côté de l'orange de marque (--acc, #ff7c3c), un rouge vif se lirait comme
+     une seconde couleur d'accent et non comme une alerte.
+
+     Le teinte-fond sert aux bandeaux de message, à 11 % comme --acc-w. */
+  --err: #b3261e;
+  --err-w: rgba(179, 38, 30, 0.09);
+  --ok: #1b5e20;
+  --ok-w: rgba(27, 94, 32, 0.09);
+
+  --rad: 28px;
+  --rad-s: 18px;
+  --sec: 120px;
+  --sat: 0.55;
+  --ph-op: 1;
+  --ts: 1;
+  --tr: 200ms;
+
+  /* Fonds : blanc crème dominant, anthracite réservé aux panneaux et au pied */
+  --bg: #f1f2f4;
+  --card: #fff;
+  --panel: #1c1b19;
+  --foot: #141312;
+
+  /* Encres, du plus appuyé au plus effacé */
+  --ink: #1c1b19;
+  --ink1: #4a4845;
+  --ink2: #6a6764;
+  --ink3: #737373;
+  --ink4: #a8a49d;
+
+  --line: rgba(28, 27, 25, 0.09);
+  --chip: rgba(28, 27, 25, 0.055);
+
+  /* Verre : bordure et fond de l'îlot de navigation */
+  --gbd: rgba(255, 255, 255, 0.82);
+  --gsol: rgba(255, 255, 255, 0.8);
+
+  --ph: #dedfe1;
+  --sheet: rgba(250, 250, 251, 0.9);
+
+  --logo-f: grayscale(1);
+  --map-a: rgba(255, 255, 255, 0.95);
+  --map-b: rgba(255, 255, 255, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Conteneur racine du site, repris de la maquette.
+   `<div class="mg-site" style="min-height:100vh;background:var(--bg);overflow:hidden">`
+
+   Une seule valeur change : `overflow: hidden` devient `overflow-x: clip`.
+   POURQUOI, et ce n'est pas une préférence : `overflow: hidden` fait de
+   l'élément un CONTENEUR DE DÉFILEMENT, même quand il ne défile jamais. Les
+   sections qui apparaissent au défilement calculent leur `animation-timeline:
+   view()` contre le conteneur le plus proche : ce conteneur-là ne bouge pas,
+   leur progression reste bloquée, et elles restent à `opacity: 0`. Du contenu
+   que Google voit et que le visiteur ne voit pas. `clip` coupe exactement
+   pareil sans créer de conteneur de défilement. */
+.mg-site {
+  min-height: 100vh;
+  background: var(--bg);
+  overflow-x: clip;
+}
+
+html,
+body {
+  /* L'ancrage automatique du défilement déplace la page quand un bloc se
+     déplie au-dessus du point de lecture. La maquette le neutralise. */
+  overflow-anchor: none;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--fb);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--acc);
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: var(--fb);
+}
+
+::selection {
+  background: var(--acc);
+  color: #fff;
+}
+
+/* Accessibilité : le focus clavier doit rester visible partout. La maquette
+   ne le déclare pas, le site l'exige (RGAA 7.1, WCAG 2.4.7). */
+:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------- animations */
+@keyframes mgFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes mgMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mouvement réduit : le bandeau de logos et les flottements s'arrêtent.
+   Exigence WCAG 2.3.3, absente de la maquette. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------- dépliants et FAQ */
+summary::-webkit-details-marker {
+  display: none;
+}
+.cx-faq summary::-webkit-details-marker {
+  display: none;
+}
+.cx-faq[open] .cx-plus,
+details[open] .g3-plus {
+  transform: rotate(45deg);
+  background: var(--acc) !important;
+  color: #fff !important;
+}
+.cx-more > summary::-webkit-details-marker {
+  display: none;
+}
+.cx-more .cx-l2 {
+  display: none;
+}
+.cx-more[open] .cx-l1 {
+  display: none;
+}
+.cx-more[open] .cx-l2 {
+  display: inline;
+}
+
+/* ------------------------------------------------------------- curseur de plage */
+.mg-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--line);
+  outline: none;
+  margin: 0;
+}
+.mg-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #ff7c3c;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(28, 27, 25, 0.28);
+  cursor: grab;
+}
+.mg-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: #ff7c3c;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(28, 27, 25, 0.28);
+  cursor: grab;
+  border-color: #fff;
+}
+.mg-range:active::-webkit-slider-thumb {
+  cursor: grabbing;
+}
+
+/* --------------------------------------------------- bandeau de logos défilant */
+/* La piste lit `var(--mq-play, running)`. La valeur par défaut existe côté
+   `var()`, mais la déclarer ici rend la pause pilotable depuis un composant
+   (un bouton de pause, un test) sans toucher à la règle de survol. */
+.mg-marquee {
+  --mq-play: running;
+}
+.mg-marquee:hover .mg-track,
+.mg-marquee:focus-within .mg-track {
+  --mq-play: paused;
+  animation-play-state: paused;
+}
+.mg-logo {
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.35s ease;
+}
+.mg-marquee:hover .mg-logo {
+  opacity: 0.4;
+}
+.mg-logo:hover {
+  opacity: 1 !important;
+  transform: translateY(-6px) scale(1.08);
+}
+
+/* ------------------------------------------------------------- rails sans barre */
+.mg-autorail {
+  scrollbar-width: none !important;
+}
+.mg-autorail::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Adaptations par largeur, reprises de la maquette dans son ordre.
+   ========================================================================== */
+
+/* Navigation : l'îlot se resserre, puis cède la place au bouton menu */
+.mg-nav > * {
+  white-space: nowrap;
+  flex: none;
+}
+.mg-burger {
+  display: none;
+}
+
+@media (max-width: 1180px) {
+  .mg-nav > * {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .mg-tel {
+    display: none !important;
+  }
+  .mg-implant {
+    display: none !important;
+  }
+}
+@media (max-width: 1080px) {
+  .mg-nav > * {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    font-size: 13.5px !important;
+  }
+}
+@media (max-width: 1000px) {
+  .mg-nav > * {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 880px) {
+  .mg-nav {
+    display: none !important;
+  }
+  .mg-burger {
+    display: inline-flex !important;
+  }
+}
+@media (max-width: 860px) {
+  .mg-nav > * {
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+    font-size: 12.5px !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-topwrap {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+}
+
+/* Grilles de valeurs */
+@media (max-width: 1000px) {
+  .mg-valg {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-valg > .mg-val {
+    grid-column: span 1 !important;
+  }
+  .mg-valg > .mg-val:first-child {
+    grid-column: 1 / -1 !important;
+  }
+  .mg-valg > .mg-val:last-child:nth-child(even) {
+    grid-column: 1 / -1 !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-valg {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-valg > .mg-val {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* Bento, avant-après, mosaïque, rails multiples */
+@media (min-width: 1001px) {
+  .mg-bento > [data-fill="1"] {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 1000px) {
+  .mg-rmulti {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-bento > *[data-open="1"] {
+    grid-column: span 2 !important;
+    grid-row: auto !important;
+  }
+  .mg-ba {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-rq3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-rail {
+    display: none;
+  }
+  .mg-tl > * {
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .mg-tl > * > *:first-child {
+    margin-bottom: 14px !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-bento {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-rows: auto !important;
+  }
+  .mg-bento > *[data-open="1"] {
+    grid-column: span 1 !important;
+  }
+  .mg-ba {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-rows: minmax(240px, auto) !important;
+  }
+}
+@media (max-width: 620px) {
+  .mg-rmulti {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* Lignes de tableau : des colonnes tombent avant que la ligne ne se casse */
+@media (max-width: 980px) {
+  .cx-lay {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .cx-toc {
+    display: none !important;
+  }
+  .mg-reslay {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 26px !important;
+  }
+  .mg-resrail {
+    position: static !important;
+  }
+  .mg-fmts,
+  .mg-sits {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 7px !important;
+    margin-bottom: 18px !important;
+  }
+  .mg-fmts > * {
+    width: auto !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 999px !important;
+    padding: 8px 14px !important;
+    gap: 7px !important;
+    white-space: nowrap;
+  }
+  .mg-sits > * {
+    border: 1px solid var(--line) !important;
+    border-radius: 999px !important;
+    padding: 7px 13px !important;
+    font-size: 12.5px !important;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 940px) {
+  .mg-mrow {
+    grid-template-columns: 1.5fr 0.9fr 104px !important;
+  }
+  .mg-mrow > *:nth-child(2),
+  .mg-mrow > *:nth-child(4) {
+    display: none;
+  }
+  .mg-prow {
+    grid-template-columns: auto minmax(0, 1fr) 84px !important;
+  }
+  .mg-prow > *:nth-child(3) {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .mg-r2 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 36px !important;
+  }
+}
+@media (min-width: 901px) {
+  .mg-flip > *:last-child {
+    order: -1;
+  }
+}
+@media (max-width: 760px) {
+  .cx-row {
+    grid-template-columns: 32px minmax(0, 1fr) !important;
+    gap: 8px 16px !important;
+  }
+  .cx-row > *:nth-child(3) {
+    grid-column: 2;
+  }
+  .mg-cmp {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .mg-cmp > *:first-child {
+    grid-column: 1/-1;
+  }
+  .mg-doclist > div {
+    grid-template-columns: 36px minmax(0, 1fr) !important;
+  }
+  .mg-doclist > div > span:last-child {
+    grid-column: 2;
+  }
+  .mg-mosaic {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-mosaic > *:first-child {
+    min-height: 340px !important;
+  }
+  .mg-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    row-gap: 20px !important;
+  }
+  .mg-steps > div:first-child {
+    display: none !important;
+  }
+  .mg-r3,
+  .mg-bento2,
+  .mg-rq3 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-bento2 > * {
+    grid-column: auto !important;
+  }
+  .mg-rq2 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+@media (max-width: 620px) {
+  .mg-mrow {
+    grid-template-columns: 1fr 104px !important;
+    gap: 12px !important;
+  }
+  .mg-mrow > *:nth-child(3) {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .mg-prow {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    gap: 14px !important;
+  }
+  .mg-prow > *:nth-child(4) {
+    text-align: left !important;
+    grid-column: 2 !important;
+  }
+}
+
+/* Mobile : marges, échelle des titres, arrondis, colonnes fusionnées */
+@media (max-width: 760px) {
+  .mg-pad,
+  .mg-site section > div[style*="max-width:1200px"],
+  .mg-site main > div[style*="max-width:1200px"],
+  .mg-site footer > div[style*="max-width:1200px"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .mg-site section[style*="max-width:1200px"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .mg-site {
+    --sec: 64px;
+  }
+  .mg-site h1 {
+    font-size: clamp(32px, 9vw, 42px) !important;
+    letter-spacing: -0.035em !important;
+  }
+  .mg-site h2 {
+    font-size: clamp(26px, 7.4vw, 34px) !important;
+  }
+  .mg-site [style*="position:sticky"][style*="top:110px"],
+  .mg-site [style*="position:sticky"][style*="top:100px"] {
+    position: static !important;
+  }
+  .mg-site [style*="border-radius:36px"] {
+    border-radius: 24px !important;
+  }
+  .mg-site [style*="padding:30px 34px"],
+  .mg-site [style*="padding:36px 40px"],
+  .mg-site [style*="padding:40px 44px"],
+  .mg-site [style*="padding:44px 48px"] {
+    padding: 24px 20px !important;
+  }
+  .mg-site table {
+    font-size: 13px;
+  }
+  .mg-site [style*="grid-column:span 2"],
+  .mg-site [style*="grid-column:span 3"] {
+    grid-column: auto !important;
+  }
+  .mg-site img[style*="aspect-ratio"] {
+    max-height: 70vw;
+  }
+}
+@media (max-width: 480px) {
+  .mg-site h1 {
+    font-size: clamp(28px, 8.6vw, 36px) !important;
+  }
+  .mg-site [style*='font:600 calc(clamp(56px'] {
+    font-size: 48px !important;
+  }
+}
+
+/* Habillage du gabarit ressource. Tout ce qu'un style en ligne ne peut pas
+   porter : les survols, et le style des éléments que le composant ne touche pas
+   un par un (les liens du corps, les cellules du barème). */
+
+a[href='#formulaire']:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+/* Ligne 6788 de la maquette : le bouton secondaire passe son filet à l'orange. */
+a[href='/ressources/']:hover {
+  border-color: var(--acc);
+}
+
+/* Ligne 6546 : la carte « Aller plus loin » fait de même. */
+aside a {
+  display: block;
+  transition: border-color var(--tr);
+}
+aside a:hover,
+aside a:focus-visible {
+  border-color: var(--acc);
+}
+
+/* Les liens internes que le corpus pose dans le corps du texte.
+   Soulignés, et pas seulement colorés : l'information ne doit pas passer par la
+   couleur seule, c'est le critère WCAG 1.4.1. */
+article a {
+  color: var(--acc-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--tr);
+}
+article a:hover,
+article a:focus-visible {
+  color: var(--acc-d);
+}
+
+/* LE BARÈME EST UN VRAI TABLEAU, dessiné en grille.
+
+   La maquette l'écrit en `div` imbriquées (lignes 6733 à 6748), ce qui donne le
+   bon dessin mais prive un lecteur d'écran de l'en-tête de colonne : la
+   troisième cellule d'une ligne ne se rattache plus à « Conduite à tenir ».
+   `table` rétablit la sémantique, et ces règles rendent au tableau le
+   comportement de grille que la maquette attend. Les colonnes elles-mêmes sont
+   posées en style en ligne sur chaque `tr`, parce que leur nombre vient des
+   données.
+
+   ATTENTION si ce bloc est touché : redéfinir `display` sur un tableau lui
+   retire son rôle implicite dans Chrome comme dans Safari. C'est pourquoi
+   `CorpsRessource.tsx` écrit `role="table"`, `rowgroup`, `row`, `columnheader`
+   et `cell` à la main. Retirer l'un sans l'autre casse l'accessibilité en
+   silence. */
+table {
+  display: block;
+  width: 100%;
+  border-collapse: collapse;
+}
+table thead,
+table tbody {
+  display: block;
+}
+table th,
+table td {
+  text-align: left;
+  padding: 0;
+  min-width: 0;
+  vertical-align: middle;
+}
+
+/*
+  Survols des blocs du gabarit de conversion, relevés sur `style-hover` dans la
+  maquette. Ils vivent dans un module CSS et non dans `app/globals.css` : le
+  fichier global est écrit par plusieurs agents en parallèle, et un survol n'est
+  pas exprimable dans un style en ligne.
+
+  Les classes portent le nom de leur rôle, pas celui de leur déclaration.
+*/
+
+a[href='#formulaire']:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+a[href='/ressources/']:hover {
+  background: var(--card);
+  transform: translateY(-1px);
+}
+
+/* Carte de réalisation : la maquette la soulève et creuse son ombre. */
+.cartePreuve {
+  transition:
+    transform var(--tr),
+    box-shadow var(--tr);
+}
+.cartePreuve:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.42);
+}
+
+/* Dépliant de FAQ : `globals.css` tient déjà l'état ouvert de `.cx-plus`
+   (rotation et passage à l'orange). Ici, l'état fermé et son survol. */
+.cx-plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex: none;
+  border-radius: 999px;
+  background: var(--chip);
+  color: var(--ink2);
+  font: 400 17px var(--fb);
+  transition:
+    transform var(--tr),
+    background var(--tr),
+    color var(--tr);
+}
+
+summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+  padding: 20px 24px;
+  cursor: pointer;
+  text-align: left;
+  list-style: none;
+}
+summary:hover .cx-plus {
+  background: var(--acc-w);
+  color: var(--acc-ink);
+}
+
+/* Liens internes que `TexteRiche` pose dans le corpus : 597 dans les 126 pages
+   importées. `globals.css` déclare `a { color: var(--ink); text-decoration:
+   none }`, donc SANS règle ici un lien du corpus se rend en #1c1b19 sans
+   soulignement, c'est-à-dire indistinguable du texte autour sur fond clair, et
+   #1c1b19 sur #1c1b19 sur le panneau anthracite, soit un contraste de 1:1.
+
+   La classe se pose sur le conteneur du texte du corpus, jamais sur un
+   conteneur qui porte aussi un lien d'habillage : les boutons d'action et la
+   carte de réalisation ont leur propre traitement et ne doivent pas être
+   soulignés. */
+.corpus a {
+  /* Même traitement que `article a` d'`Article.module.css` : un lien du corpus
+     doit se lire pareil dans un article et dans une page de vente.
+     `var(--acc-ink)` vaut 8,9:1 sur blanc, `var(--acc)` n'y tiendrait que
+     2,6:1. */
+  color: var(--acc-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-thickness var(--tr);
+}
+.corpus a:hover,
+.corpus a:focus-visible {
+  /* La couleur ne change pas : le survol épaissit le trait. L'orange de survol
+     global, `var(--acc)`, ne tient que 2,6:1 sur blanc, sous le plancher de
+     4,5:1. */
+  color: var(--acc-ink);
+  text-decoration-thickness: 2px;
+}
+
+/* Le même corpus sur le panneau anthracite (`var(--panel)`, #1c1b19) : les
+   sections « problème » et l'appel à l'action final. `var(--acc-ink)` n'y vaut
+   que 1,9:1. Le blanc y vaut 17:1, l'orange de marque 6,7:1. */
+.corpusClair a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--tr);
+}
+.corpusClair a:hover,
+.corpusClair a:focus-visible {
+  color: var(--acc);
+}
+
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fb)}a{text-decoration:none;color:inherit}</style></head><body><div class="mg-site"><main style="padding-top:96px"><section style="max-width:1200px;margin:0 auto;padding:70px 40px 0"><div style="max-width:760px"><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap"><span style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--acc);padding:5px 12px;border-radius:999px;white-space:nowrap">Fiche technique</span></div><h1 style="font:600 calc(clamp(30px,3.6vw,52px) * var(--ts))/1.06 var(--ft);letter-spacing:-.042em;margin:0;text-wrap:balance">Niveaux de maintenance</h1><p style="font:400 18px/1.65 var(--fb);color:var(--ink2);margin:20px 0 0">*8 min de lecture*</p></div></section><section style="max-width:1200px;margin:0 auto;padding:40px 40px 0"><div style="border-radius:var(--rad);background:var(--acc-w);border:1.5px solid rgba(255,124,60,.3);display:flex;align-items:center;gap:16px;padding:18px 24px;flex-wrap:wrap;max-width:760px"><span style="font:400 14.5px/1.6 var(--fb);color:var(--ink1);flex:1;min-width:240px">Envie d&#x27;en parler de vive voix ? Appelez le 04 78 33 72 05 : un expert vous rappelle dans l&#x27;heure, du lundi au vendredi de 8h00 à 18h30.</span></div></section><section style="max-width:1200px;margin:0 auto;padding:40px 40px 0"><div class="mg-r2" style="display:grid;grid-template-columns:minmax(0,760px) minmax(0,1fr);gap:52px;align-items:start"><article><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Une intervention confiée à la mauvaise personne, c&#x27;est une machine immobilisée deux jours de plus, parfois un accident. Les niveaux de maintenance servent à éviter ça : classer chaque opération selon sa complexité, puis définir qui la réalise, avec quel outillage, quelle formation et quelles pièces.</p><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Ce guide complet de nos <a href="/ressources/fiches-techniques">Ressources : Fiches techniques</a> donne la définition des cinq niveaux, des exemples par équipement et une méthode pour répartir les interventions entre votre personnel et un prestataire externe.</p><h2 id="niveaux-de-maintenance-ce-que-dit-la-norme-afnor" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Niveaux de maintenance : ce que dit la norme AFNOR</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">La notion vient de la norme française AFNOR X 60-010, prolongée par la NF EN 13306 qui fixe le vocabulaire de la maintenance industrielle. Les niveaux de maintenance industrielle classent les actions de maintenance en cinq degrés de complexité croissante. La finalité : confier chaque geste au bon profil.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Une échelle de complexité </strong>Chaque niveau correspond à un degré de difficulté, du réglage simple à la reprise complète d&#x27;un équipement en fin de course.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Trois critères par échelon </strong>Pour définir le classement d&#x27;une opération : qui intervient (utilisateur, technicien, spécialiste, constructeur), avec quel outillage, selon quelle procédure ou instruction de maintenance.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Un langage commun </strong>La classification donne un vocabulaire partagé entre le service maintenance, la production et les entreprises extérieures. Contrats, GMAO, plans de prévention : chaque acteur désigne la même chose.</span></li></ul><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">À ne pas confondre avec les types de maintenance : la <a href="/expertises/types-de-maintenance/maintenance-preventive">maintenance préventive</a> ou la <a href="/expertises/types-de-maintenance/maintenance-corrective">maintenance corrective</a> décrivent la finalité de l&#x27;action, le niveau décrit sa complexité et les moyens nécessaires, pour des types différents d&#x27;interventions. La maintenance informatique utilise une échelle voisine ; cette fiche traite des équipements industriels.</p><h2 id="les-cinq-niveaux-du-voyant-a-la-reconstruction" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Les cinq niveaux, du voyant à la reconstruction</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">La norme définit cinq échelons, du geste simple au chantier complexe. Chaque niveau regroupe des opérations de même complexité, pour garantir le bon fonctionnement des équipements. Le tableau résume ce qu&#x27;ils impliquent en pratique pour votre organisation.</p><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);overflow:hidden;margin:0 0 26px"><table role="table"><thead role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:16px;padding:14px 30px;border-bottom:1px solid var(--line);background:var(--chip)"><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Niveau</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Qui intervient</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Exemples d&#x27;opérations</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Avec quoi</th></tr></thead><tbody role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">1</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">L&#x27;utilisateur de l&#x27;équipement, à son poste</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Relevé de compteur, test d&#x27;un voyant, remplacement d&#x27;un fusible ou d&#x27;une ampoule</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Sans outillage particulier, instructions d&#x27;utilisation</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">2</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Personnel habilité</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Changement d&#x27;un filtre, graissage, contrôle de niveaux, échange d&#x27;un consommable</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Outils courants, procédures simples, pièces à proximité</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">3</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Technicien de maintenance qualifié</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Diagnostic de panne, remplacement d&#x27;un composant, réparation mécanique mineure</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Outillage prévu par les instructions, appareils de mesure</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">4</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Spécialistes, encadrement technique</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Révision d&#x27;un réducteur, reprise d&#x27;un programme automate, travaux importants de maintenance corrective ou préventive</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Matériel lourd, dossier constructeur</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">5</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Constructeur ou société spécialisée</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Rénovation, reconstruction, rétrofit complet</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Logistique proche de la fabrication</td></tr></tbody></table></div><h3 id="la-maintenance-de-premier-niveau-niveaux-1-et-2" style="font:600 calc(19px * var(--ts))/1.3 var(--ft);letter-spacing:-.025em;margin:28px 0 12px;scroll-margin-top:100px">La maintenance de premier niveau : niveaux 1 et 2</h3><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Des actions simples, nécessaires au bon fonctionnement et à l&#x27;exploitation, réalisées sur des éléments facilement accessibles, en toute sécurité. Au premier échelon, pas de démontage : l&#x27;utilisateur contrôle, relève, réarme, remplace un fusible.</p><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Le niveau 2 regroupe les opérations basiques effectuées par un personnel habilité, avec des procédures détaillées : consommables, filtre, réglage simple. La formation du personnel de fabrication à ces gestes est le socle de la maintenance productive totale, la TPM : une approche productive qui rend vos opérateurs acteurs de la fiabilité.</p><h3 id="les-niveaux-3-et-4-le-metier-du-service-maintena" style="font:600 calc(19px * var(--ts))/1.3 var(--ft);letter-spacing:-.025em;margin:28px 0 12px;scroll-margin-top:100px">Les niveaux 3 et 4 : le métier du service maintenance</h3><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Au troisième niveau, la maintenance passe au diagnostic des pannes et aux réparations par échange de composants ou d&#x27;éléments fonctionnels. Ces interventions de maintenance nécessitent un technicien qualifié, une connaissance fine du matériel et des appareils de mesure, sur place ou en atelier.</p><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Dans les niveaux de maintenance AFNOR, le niveau 4 concerne les travaux de maintenance corrective de niveau supérieur et les révisions importantes : des opérations complexes nécessitant une expertise technique particulière, un encadrement défini, et qui doivent être suivies de vérifications et d&#x27;essais spécifiques avant remise en service.</p><h3 id="le-niveau-5-renovation-ou-reconstruction" style="font:600 calc(19px * var(--ts))/1.3 var(--ft);letter-spacing:-.025em;margin:28px 0 12px;scroll-margin-top:100px">Le niveau 5 : rénovation ou reconstruction</h3><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Remise à neuf générale, mise à niveau complète : des travaux confiés au constructeur ou à une entreprise spécialisée, avec une logistique de soutien proche de la fabrication. C&#x27;est le terrain du <a href="/offres/retrofit">retrofit</a>, qui inclut souvent une <a href="/offres/retrofit/mise-en-conformite-machine">mise en conformité machine</a> : moderniser l&#x27;existant plutôt que remplacer.</p><h2 id="repartir-les-niveaux-etape-par-etape" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Répartir les niveaux, étape par étape</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Sur le papier, la classification est claire. Sur le terrain, tout se joue dans la répartition : définir qui fait quoi, avec quelle formation, quelle traçabilité. La mise en œuvre tient en six étapes.</p><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:30px 34px 32px;margin:0 0 26px"><ol role="list" style="display:grid;gap:2px;margin:0;padding:0;list-style:none"><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">1</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">L&#x27;inventaire du parc</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Listez vos équipements, leur criticité pour la production, l&#x27;historique de pannes. Un appareil critique ne se gère pas comme un matériel de confort.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">2</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Le classement des opérations</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Classez chaque tâche par degré, en suivant la norme et la documentation du constructeur, disponible sur le site web de la marque quand la notice a disparu.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">3</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">L&#x27;affectation des ressources</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">La fabrication sur les niveaux 1 et 2 quand la sécurité le permet, les techniciens au troisième échelon, spécialistes ou prestataire au-delà.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">4</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Les habilitations</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Une habilitation électrique ne s&#x27;improvise pas. Vérifiez les qualifications et les compétences, formez, tracez : la sécurité des personnes passe avant le délai.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">5</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Les instructions et le stockage</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Chaque opération a son mode opératoire : outillage, points de contrôle, consignation préalable si nécessaire. Le stockage des pièces suit la même logique, consommables au poste, magasin outillé pour le reste.</p></div></li><li style="display:flex;gap:18px;padding:20px 0"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">6</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Le suivi dans la GMAO</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Chaque intervention réalisée est enregistrée avec son niveau. La gestion de la maintenance s&#x27;appuie sur ces données pour optimiser le plan de maintenance, les coûts et les stocks.</p></div></li></ol></div><h2 id="un-exemple-concret-cinq-pannes-cinq-reponses" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Un exemple concret : cinq pannes, cinq réponses</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Le même convoyeur d&#x27;embouteillage traverse toute l&#x27;échelle, selon la panne du jour. C&#x27;est la meilleure façon de comprendre la notion.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Un voyant s&#x27;allume </strong>L&#x27;opérateur contrôle et réarme à son poste : niveau 1, cinq minutes, sans arrêter la production.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Le filtre hydraulique s&#x27;encrasse </strong>Changement planifié, confié à un opérateur formé, pièce en stock : niveau 2.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">La bande dérive, le moteur chauffe </strong>Mesure d&#x27;intensité, remplacement du roulement, essai : niveau 3, technicien outillé.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Le réducteur montre une usure importante </strong>Démontage complet en atelier, expertise, remontage : niveau 4, équipe spécialisée, machine consignée.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">La ligne a vingt ans </strong>Rénovation ou remplacement : niveau 5, chiffré avec le <a href="/offres/bureau-etudes">bureau d&#x27;études</a> et le fabricant.</span></li></ul><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Le <a href="/ressources/fiches-techniques/mtbf-mttr">MTBF et le MTTR</a> mesurent l&#x27;effet de cette répartition : le MTBF, mean time between failures, espace les pannes ; le mean time to repair suit le temps moyen de retour en service. Dans la maintenance industrielle, les deux progressent quand chaque échelon est tenu par la bonne personne.</p><h2 id="les-erreurs-les-plus-frequentes" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Les erreurs les plus fréquentes</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">D&#x27;un site à l&#x27;autre, le même problème revient sous d&#x27;autres formes. Voici les pièges, pour vous les épargner.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Tout envoyer au service maintenance </strong>Les gestes de niveau 1 saturent vos techniciens. Le préventif saute, les vraies pannes attendent, la charge devient importante pour rien.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Laisser démonter sans habilitation </strong>Les opérations de démontage nécessitent habilitation et consignation. Sans elles, risque d&#x27;accident et garantie constructeur perdue.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Zéro instruction écrite </strong>Sans procédure, l&#x27;intervention dépend de la mémoire d&#x27;un homme. Le jour où il part, le savoir part avec lui.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Une répartition jamais revue </strong>Changements d&#x27;utilisation, technologies nouvelles, compétences qui partent : le classement se revoit chaque année, atelier par atelier, en fonction de l&#x27;état du parc.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Un stock sans surveillance </strong>Des pièces nécessitant une vérification d&#x27;état dorment sans contrôle, et le niveau 2 s&#x27;arrête faute de filtre le jour J. Des conditions de stockage négligées coûtent cher.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Une GMAO muette sur les niveaux </strong>Si l&#x27;outil ne trace pas l&#x27;échelon de chaque intervention, impossible de mesurer la charge par catégorie, d&#x27;ajuster la planification ni d&#x27;optimiser les coûts.</span></li></ul><h2 id="quels-niveaux-confier-a-un-prestataire" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Quels niveaux confier à un prestataire</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Votre équipe ne peut pas tout tenir, et elle n&#x27;a pas à le faire. La bonne approche : choisir quoi externaliser, échelon par échelon, une approche définie en fonction de votre effectif et de vos enjeux.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Niveaux 1 et 2 : gardez-les </strong>Ces gestes appartiennent à la production. Nous formons vos équipes plutôt que de vendre des visites : votre autonomie d&#x27;abord, c&#x27;est aussi un avantage économique direct.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Niveau 3 : selon votre effectif </strong>Le <a href="/offres/depannage-industriel">dépannage industriel</a> exige des techniciens qualifiés, disponibles aussi la nuit. Le technicien Migen <a href="/offres/residence">intégré sur site</a> vient en soutien de votre équipe, jamais à sa place.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Niveaux 4 et 5 : l&#x27;accès aux spécialistes </strong>Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, soudeurs : des profils que peu d&#x27;usines gardent en interne. Un contrat <a href="/offres/zero-arret">Zéro arrêt</a> vous donne un accès prioritaire à ces compétences, avec l&#x27;astreinte 24/24 et 7/7 prévue en option au contrat.</span></li></ul><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Trois garanties, quel que soit le périmètre : des techniciens évalués en entretien technique et comportemental, seuls 10 % des candidats sont retenus, une exigence encore rare dans l&#x27;industrie ; la confidentialité de vos procédés, cadrée dès le plan de prévention, avec un accueil sécurité préparé ; un compte rendu après chaque passage, mention de l&#x27;échelon tenu comprise, versé également dans votre GMAO.</p><blockquote style="border-left:3px solid var(--acc);padding:4px 0 4px 24px;margin:32px 0"><p style="font:500 calc(20px * var(--ts))/1.5 var(--ft);letter-spacing:-.02em;color:var(--ink);margin:0"><a href="/contact">Demander un diagnostic maintenance</a></p></blockquote></article><aside style="display:grid;gap:16px;position:sticky;top:120px"><a style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:26px 28px" href="/ressources/fiches-techniques/indicateurs-maintenance"><div style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:10px">Aller plus loin</div><div style="font:600 15.5px/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:8px">Indicateur maintenance</div><span style="display:block;margin-top:8px;font:600 13px var(--fb);color:var(--acc)">La page complète →</span></a></aside></div></section><section style="padding:var(--sec) 0 0"><div style="max-width:1200px;margin:0 auto;padding:0 40px"><div class="mg-r2" style="display:grid;grid-template-columns:.8fr 1.2fr;gap:52px;align-items:start"><div style="position:sticky;top:112px"><div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px">Questions fréquentes</div><h2 style="font:600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft);letter-spacing:-.04em;margin:0;max-width:14ch;text-wrap:balance;margin-bottom:22px">Ce qu&#x27;on nous demande avant de signer.</h2></div><div style="display:grid;gap:10px"><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Quels sont les 5 niveaux de maintenance ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Niveau 1 : les actions simples nécessaires à l&#x27;exploitation, sans outillage, assurées par la production. Niveau 2 : les opérations mineures menées avec des procédures simples par un personnel formé. Niveau 3 : les interventions qui demandent un technicien et l&#x27;outillage prévu par les instructions. Niveau 4 : les travaux importants encadrés par des spécialistes. Niveau 5 : la remise à neuf complète, généralement confiée au constructeur.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Niveaux et types de maintenance, quelle différence ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Le type de maintenance décrit la finalité : préventive avant la panne, corrective après. Le niveau décrit la complexité et les ressources engagées. Une même visite peut être un mélange : une partie des tâches relève du niveau 1, une autre du niveau 3. Les deux notions se combinent dans le plan de maintenance et la planification des interventions.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Qui peut réaliser la maintenance de niveau 3 ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Un technicien de maintenance qualifié, formé au type d&#x27;équipement concerné, avec les appareils prévus. En interne si votre effectif le permet, ou en faisant appel à un prestataire : l&#x27;objectif est d&#x27;assurer un redémarrage rapide et conforme aux règles de sécurité, par des professionnels de la maintenance industrielle qui interviennent tous les jours.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Faut-il une habilitation pour la maintenance de premier niveau ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Pas en général : le niveau 1 se limite à des éléments accessibles en toute sécurité, sans démontage ni risque particulier. Dès qu&#x27;une énergie entre en jeu, électricité, hydraulique, air comprimé, l&#x27;opération change d&#x27;échelon et demande une habilitation, également obligatoire pour intervenir sous tension. Le doute se tranche du côté de la sécurité.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Comment la GMAO aide-t-elle à la gestion des niveaux ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Elle rattache chaque intervention à son échelon, son temps passé, ses pièces. Vous voyez la charge par catégorie, l&#x27;état du stockage, des dérives importantes de coûts, et vous ajustez : ce qui reste en interne, ce qui part en externe. Les solutions GMAO les plus simples suffisent, à condition de les alimenter à chaque passage, en comptant également les gestes de premier niveau.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Peut-on confier les niveaux 4 et 5 à un prestataire plutôt qu&#x27;au constructeur ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Oui, si l&#x27;entreprise mandatée dispose de l&#x27;expertise, de l&#x27;outillage, des pièces d&#x27;origine et d&#x27;une conformité documentée. Nos spécialistes réalisent des révisions de niveau 4 et accompagnent les remises à neuf avec les fabricants, avec un avantage : un seul responsable pour les travaux complexes, du premier contrôle à la remise en production, et une lecture transparente des coûts.</div></details></div></div></div></section><section style="padding:var(--sec) 0 var(--sec)"><div style="max-width:1200px;margin:0 auto;padding:0 40px"><div data-reveal="" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:36px;padding:44px 48px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap"><div><div style="font:600 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:12px">Une question sur ce contenu</div><h2 style="font:600 calc(clamp(22px,2.2vw,32px) * var(--ts))/1.14 var(--ft);letter-spacing:-.035em;margin:0 0 10px;max-width:26ch;text-wrap:balance">Nos équipes répondent aux questions techniques.</h2><p style="font:400 15.5px/1.6 var(--fb);color:var(--ink2);margin:0;max-width:48ch">Un point de méthode à creuser, un cas particulier sur votre installation : le chargé d&#x27;affaires de votre secteur vous rappelle.</p></div><div style="display:flex;gap:10px;flex:none;flex-wrap:wrap"><a href="#formulaire" style="display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--acc);color:#fff;font:600 15px var(--fb);white-space:nowrap;box-shadow:0 12px 30px -12px rgba(255,124,60,.9);transition:filter var(--tr),transform var(--tr)">Poser ma question</a><a style="display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--chip);border:1px solid var(--line);color:var(--ink);font:600 15px var(--fb);white-space:nowrap;transition:border-color var(--tr)" href="/ressources">Toutes les ressources</a></div></div></div></section></main></div></body></html>

@@ -1,0 +1,275 @@
+{
+  "url": "/implantations/maintenance-industrielle-le-mans/",
+  "contenu": {
+    "gabarit": "ville",
+    "chapeau": "La Sarthe vit de deux cadences opposées. Celle des équipementiers automobiles se mesure au poste. Celle de l'agroalimentaire se lave à grande eau chaque fin de journée. La première use les entraînements, la seconde attaque les moteurs et les roulements. Nous suivons les deux, avec le réseau national en appui.",
+    "actions": [
+      {
+        "libelle": "Demander une intervention au Mans",
+        "href": "#formulaire"
+      }
+    ],
+    "reperes": [
+      {
+        "valeur": "+ 120",
+        "libelle": "clients en France, dont plus de 80 réguliers, grands groupes comme PME"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus, évaluation technique et comportementale partagée avant l'arrivée"
+      },
+      {
+        "valeur": "2 à 3 semaines",
+        "libelle": "pour une prise de poste en résidence sur un poste vacant"
+      }
+    ],
+    "contact": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. En option, l'astreinte 24/24 et 7/7 prend le relais quand l'atelier ferme.",
+    "constatTexte": "Un moteur de convoyeur rend l'âme trois mois après un changement, sur une ligne lavée deux fois par jour. Le problème n'est pas la pièce, c'est l'étanchéité que personne n'a vérifiée.",
+    "constatPuces": [
+      {
+        "texte": "Joints, presse-étoupes, paliers, armoires : l'eau entre là où le plan ne l'avait pas prévue.",
+        "accroche": "Le nettoyage intensif use ce que l'on ne regarde pas."
+      },
+      {
+        "texte": "Un robot à l'arrêt bloque la cellule, puis la ligne, puis le poste suivant.",
+        "accroche": "La cadence automobile enchaîne les postes."
+      },
+      {
+        "texte": "Hydraulique, régulation, périphériques : la dérive se lit sur la pièce avant de se lire sur la machine.",
+        "accroche": "Les presses à injecter demandent un suivi fin."
+      },
+      {
+        "texte": "Audits et référentiels demandent un historique, pas un souvenir.",
+        "accroche": "Vos donneurs d'ordre exigent des preuves."
+      },
+      {
+        "texte": "Le préventif glisse, la GMAO se remplit de reports.",
+        "accroche": "Un départ dans l'équipe vide la mémoire technique."
+      }
+    ],
+    "reponseTexte": "Les lignes de fabrication et de conditionnement alimentaires relèvent de la [maintenance en agroalimentaire](/secteurs/agroalimentaire/). Pour les plateformes aux portes du Mans, voir la [maintenance des équipements logistiques](/secteurs/logistique/).",
+    "reponsePuces": [
+      {
+        "texte": "si le besoin sort de notre périmètre, nous le disons avant de vous faire perdre une journée.",
+        "accroche": "Une réponse honnête au premier appel"
+      },
+      {
+        "texte": "10 % des candidats retenus après entretien technique et comportemental, résultats d'évaluation partagés.",
+        "accroche": "Le profil présenté avant l'arrivée"
+      },
+      {
+        "texte": "périmètre, conditions, indicateurs suivis, modalités de sortie. Le document vaut mieux qu'un accord verbal.",
+        "accroche": "Un cadre écrit avant la première intervention"
+      }
+    ],
+    "faq": [
+      {
+        "reponse": "Oui. Nos techniciens se déplacent partout en France et se relaient selon la charge. Nos 4 agences sont Lyon (siège), Montréal, Dubaï et Madrid. Votre demande est rappelée dans l'heure aux horaires ouvrés. Nous n'inventons pas d'adresse mancelle, nous envoyons un technicien briefé avec le bon outillage.",
+        "question": "Intervenez-vous vraiment au Mans, alors que votre siège est à Lyon ?"
+      },
+      {
+        "reponse": "Le Mans et sa couronne, La Chapelle-Saint-Aubin, Allonnes, Champagné, puis Sablé-sur-Sarthe, La Ferté-Bernard et La Flèche. Les bordures se traitent avec les départements voisins, vers Alençon, Laval et Tours.",
+        "question": "Quelles communes couvrez-vous en Sarthe ?"
+      },
+      {
+        "reponse": "Oui : presses, robots, bancs d'essai, convoyeurs, périphériques et automates. Les passages se calent sur vos horaires d'atelier, et les gros travaux profitent de vos arrêts programmés.",
+        "question": "Intervenez-vous chez les sous-traitants automobiles ?"
+      },
+      {
+        "reponse": "Oui, régulièrement. Nos intervenants respectent les référentiels sanitaires de votre site, acceptent les horaires décalés et documentent chaque geste. Votre politique qualité s'impose à eux comme à vos salariés.",
+        "question": "Travaillez-vous en environnement agroalimentaire ?"
+      },
+      {
+        "reponse": "Oui, le cas revient souvent après un départ. Nous reconstruisons l'inventaire, la criticité et l'historique de pannes, puis nous remettons un plan d'entretien réaliste dans votre GMAO.",
+        "question": "Pouvez-vous reprendre un parc sans documentation ?"
+      },
+      {
+        "reponse": "L'abonnement [Zéro arrêt](/offres/zero-arret/) est chiffré sur devis, engagement type 6 mois renouvelable. Préventif planifié, priorité en cas de panne, astreinte en option. Le diagnostic de départ est gratuit.",
+        "question": "Quel est le coût d'un contrat annuel ?"
+      }
+    ],
+    "autres": [
+      {
+        "libelle": "Lille",
+        "href": "/implantations/lille/"
+      },
+      {
+        "libelle": "Lyon",
+        "href": "/implantations/lyon/"
+      },
+      {
+        "libelle": "Grenoble",
+        "href": "/implantations/lyon/grenoble/"
+      },
+      {
+        "libelle": "saint etienne",
+        "href": "/implantations/lyon/saint-etienne/"
+      },
+      {
+        "libelle": "Valence",
+        "href": "/implantations/lyon/valence/"
+      },
+      {
+        "libelle": "Nantes",
+        "href": "/implantations/nantes/"
+      },
+      {
+        "libelle": "Brest",
+        "href": "/implantations/nantes/brest/"
+      },
+      {
+        "libelle": "Rennes",
+        "href": "/implantations/nantes/rennes/"
+      },
+      {
+        "libelle": "paris",
+        "href": "/implantations/paris/"
+      },
+      {
+        "libelle": "Rouen",
+        "href": "/implantations/paris/rouen/"
+      },
+      {
+        "libelle": "Strasbourg",
+        "href": "/implantations/strasbourg/"
+      },
+      {
+        "libelle": "Mulhouse",
+        "href": "/implantations/strasbourg/mulhouse/"
+      },
+      {
+        "libelle": "Toulouse",
+        "href": "/implantations/toulouse/"
+      },
+      {
+        "libelle": "Bordeaux",
+        "href": "/implantations/toulouse/bordeaux/"
+      }
+    ],
+    "reste": [
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "benefice": "Vous arrêtez de remplacer deux fois le même composant pour la même raison.",
+            "prestation": {
+              "texte": "sur les lignes lavées : joints, presse-étoupes, armoires, moteurs.",
+              "accroche": "Contrôle de l'étanchéité et de la protection des organes"
+            }
+          },
+          {
+            "benefice": "L'arrêt reste circonscrit à la cellule au lieu de gagner la ligne.",
+            "prestation": {
+              "texte": "robots ABB et Fanuc, automates SIEMENS et Schneider, périphériques.",
+              "accroche": "Cellules robotisées et lignes automatisées suivies"
+            }
+          },
+          {
+            "benefice": "La qualité pièce se pilote sur des relevés, pas sur des réglages de dernière minute.",
+            "prestation": {
+              "texte": "hydraulique, régulation, broyeurs, alimentation matière.",
+              "accroche": "Presses à injecter et périphériques"
+            }
+          },
+          {
+            "benefice": "Vous répondez à un donneur d'ordre avec des faits, sans reconstituer le passé.",
+            "prestation": {
+              "texte": "opérations tracées, pièces référencées, historique par machine.",
+              "accroche": "Documentation exploitable en audit"
+            }
+          },
+          {
+            "benefice": "Une panne qui mélange les métiers ne réclame pas trois prestataires.",
+            "prestation": {
+              "texte": "[mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [automatisme](/expertises/automatisme/), [robotique](/expertises/robotique/), [hydraulique](/expertises/hydraulique/), [soudure](/expertises/soudure/).",
+              "accroche": "Couverture multi-technique"
+            }
+          },
+          {
+            "benefice": "Votre équipe reprend le préventif au lieu de courir après les pannes.",
+            "prestation": {
+              "texte": ", prise de poste en 2 à 3 semaines, remplacement assuré.",
+              "accroche": "Technicien intégré sur site quand le poste reste vacant"
+            }
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "texte": "machine, symptôme, criticité réelle, contraintes d'accès et horaires d'atelier.",
+            "titre": "Vous décrivez la situation"
+          },
+          {
+            "texte": "un chargé d'affaires dit franchement si la compétence est disponible, et laquelle.",
+            "titre": "Nous vous rappelons dans l'heure"
+          },
+          {
+            "texte": "périmètre, sécurité, pièces à prévoir, chiffrage écrit.",
+            "titre": "Le devis précède le déplacement"
+          },
+          {
+            "texte": "accueil sécurité, plan de prévention, habilitations vérifiées, essais avec vos équipes.",
+            "titre": "L'intervention suit votre protocole"
+          },
+          {
+            "texte": "historique, mesures, conditions d'exploitation.",
+            "titre": "La cause racine passe après la remise en route"
+          },
+          {
+            "texte": "cause, actions, pièces, préconisations pour le passage suivant.",
+            "titre": "Le compte rendu part dans votre GMAO"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "bouton": "Demander une intervention au Mans",
+        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
+        "question": "Besoin de tenir un poste de maintenance que vous n'arrivez pas à pourvoir ?"
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "texte": "réorganisation industrielle en cours",
+            "titre": "Techniciens intégrés en 2025 pour sécuriser la maintenance des installations d'un équipementier automobile",
+            "lienHref": "/preuves/jtekt/",
+            "lienLibelle": "Étude de cas JTEKT : maintenance des installations"
+          },
+          {
+            "texte": "maintenance renforcée en même temps que la production",
+            "titre": "3 à 5 techniciens déployés depuis septembre 2024 pour accompagner la montée en cadence de plusieurs usines",
+            "lienHref": "/preuves/valeo-usines/",
+            "lienLibelle": "Étude de cas VALEO : plusieurs usines"
+          },
+          {
+            "texte": "poste vacant comblé sans attendre un recrutement",
+            "titre": "Un technicien de maintenance dédié au maintien d'un parc machines en 2025",
+            "lienHref": "/preuves/autoliv/",
+            "lienLibelle": "Étude de cas AUTOLIV : maintien d'un site"
+          },
+          {
+            "texte": "site automobile, à partir de janvier 2023",
+            "titre": "Six techniciens sur l'installation et la mise en production d'un nouveau parc machine",
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "lienLibelle": "Étude de cas EATON : mise en production"
+          },
+          {
+            "texte": "lavage intensif, froid, traçabilité",
+            "titre": "Deux techniciens intégrés en 3x8 sur des lignes liquides et poudre",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "lienLibelle": "Étude de cas DANONE : lignes de production"
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "bouton": "Demander une intervention au Mans",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
+        "question": "Besoin d'un renfort avant que le préventif ne décroche pour de bon ?"
+      }
+    ]
+  }
+}

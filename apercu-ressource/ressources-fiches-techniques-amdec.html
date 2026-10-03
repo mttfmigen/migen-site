@@ -1,0 +1,795 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Amdec</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"><style>:root{--font-poppins:'Poppins'}</style><style>
+
+/* ==========================================================================
+   Charte Migen, portée depuis la maquette Claude Design.
+   Source : « Migen - Site final.dc.html » et le système de design
+   « migen-design-system-9ce37c32 / colors_and_type.css ».
+
+   POURQUOI ces variables et pas des classes Tailwind : la maquette pilote
+   tout par variables CSS et styles en ligne. Les reproduire telles quelles est
+   le seul moyen d'obtenir le rendu à l'identique, et de pouvoir rejouer une
+   évolution de maquette sans retraduire chaque valeur. Tailwind reste
+   disponible pour la mise en page neuve.
+
+   Les blocs `@container` de la maquette ne sont PAS portés : ils n'existaient
+   que pour l'aperçu en iframe de Claude Design, où la fenêtre ne reflète pas
+   la largeur réelle. Sur le site, `@media` fait foi.
+   ========================================================================== */
+
+:root {
+  /* --ft : pile système, pour les mots où le dessin de la lettre compte plus
+     que la marque (le logotype « migen »). --fb : Poppins, tout le reste. */
+  --ft: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", sans-serif;
+  --fb: var(--font-poppins), var(--ft);
+  --fs: var(--font-caveat), var(--fb);
+
+  /* Opacité et flou du verre dépoli. Valeurs RENDUES par la maquette, relevées
+     au getComputedStyle sur onze surfaces, et non celles de son bloc :root, qui
+     sont arrondies. L'écart se voit sur les grandes cartes. */
+  --gl-a: 0.582;
+  --gl-b: 22.5px;
+
+  /* Orange de marque et ses dérivés */
+  --acc: #ff7c3c;
+  --acc-d: #f4641f;
+  --acc-w: rgba(255, 124, 60, 0.11);
+  --acc-ink: #7d3309;
+
+  /* États du formulaire. La maquette n'en a pas : elle ne montre jamais une
+     erreur de saisie ni une confirmation. Deux jetons sont donc posés ici, et
+     ils sont CHOISIS, pas empruntés à une palette de framework (le formulaire
+     portait `text-red-700` et `text-green-800`, deux couleurs de Tailwind qui
+     ne viennent pas de la charte).
+
+     Contraste mesuré, pas supposé : #b3261e donne 6,54:1 sur --card et 6,2:1
+     sur --bg, #1b5e20 donne 7,87:1 et 7,47:1. Les deux passent largement le
+     plancher de 4,5:1. Le rouge est volontairement sombre et peu saturé : à
+     côté de l'orange de marque (--acc, #ff7c3c), un rouge vif se lirait comme
+     une seconde couleur d'accent et non comme une alerte.
+
+     Le teinte-fond sert aux bandeaux de message, à 11 % comme --acc-w. */
+  --err: #b3261e;
+  --err-w: rgba(179, 38, 30, 0.09);
+  --ok: #1b5e20;
+  --ok-w: rgba(27, 94, 32, 0.09);
+
+  --rad: 28px;
+  --rad-s: 18px;
+  --sec: 120px;
+  --sat: 0.55;
+  --ph-op: 1;
+  --ts: 1;
+  --tr: 200ms;
+
+  /* Fonds : blanc crème dominant, anthracite réservé aux panneaux et au pied */
+  --bg: #f1f2f4;
+  --card: #fff;
+  --panel: #1c1b19;
+  --foot: #141312;
+
+  /* Encres, du plus appuyé au plus effacé */
+  --ink: #1c1b19;
+  --ink1: #4a4845;
+  --ink2: #6a6764;
+  --ink3: #737373;
+  --ink4: #a8a49d;
+
+  --line: rgba(28, 27, 25, 0.09);
+  --chip: rgba(28, 27, 25, 0.055);
+
+  /* Verre : bordure et fond de l'îlot de navigation */
+  --gbd: rgba(255, 255, 255, 0.82);
+  --gsol: rgba(255, 255, 255, 0.8);
+
+  --ph: #dedfe1;
+  --sheet: rgba(250, 250, 251, 0.9);
+
+  --logo-f: grayscale(1);
+  --map-a: rgba(255, 255, 255, 0.95);
+  --map-b: rgba(255, 255, 255, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Conteneur racine du site, repris de la maquette.
+   `<div class="mg-site" style="min-height:100vh;background:var(--bg);overflow:hidden">`
+
+   Une seule valeur change : `overflow: hidden` devient `overflow-x: clip`.
+   POURQUOI, et ce n'est pas une préférence : `overflow: hidden` fait de
+   l'élément un CONTENEUR DE DÉFILEMENT, même quand il ne défile jamais. Les
+   sections qui apparaissent au défilement calculent leur `animation-timeline:
+   view()` contre le conteneur le plus proche : ce conteneur-là ne bouge pas,
+   leur progression reste bloquée, et elles restent à `opacity: 0`. Du contenu
+   que Google voit et que le visiteur ne voit pas. `clip` coupe exactement
+   pareil sans créer de conteneur de défilement. */
+.mg-site {
+  min-height: 100vh;
+  background: var(--bg);
+  overflow-x: clip;
+}
+
+html,
+body {
+  /* L'ancrage automatique du défilement déplace la page quand un bloc se
+     déplie au-dessus du point de lecture. La maquette le neutralise. */
+  overflow-anchor: none;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--fb);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--acc);
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: var(--fb);
+}
+
+::selection {
+  background: var(--acc);
+  color: #fff;
+}
+
+/* Accessibilité : le focus clavier doit rester visible partout. La maquette
+   ne le déclare pas, le site l'exige (RGAA 7.1, WCAG 2.4.7). */
+:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------- animations */
+@keyframes mgFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes mgMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mouvement réduit : le bandeau de logos et les flottements s'arrêtent.
+   Exigence WCAG 2.3.3, absente de la maquette. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------- dépliants et FAQ */
+summary::-webkit-details-marker {
+  display: none;
+}
+.cx-faq summary::-webkit-details-marker {
+  display: none;
+}
+.cx-faq[open] .cx-plus,
+details[open] .g3-plus {
+  transform: rotate(45deg);
+  background: var(--acc) !important;
+  color: #fff !important;
+}
+.cx-more > summary::-webkit-details-marker {
+  display: none;
+}
+.cx-more .cx-l2 {
+  display: none;
+}
+.cx-more[open] .cx-l1 {
+  display: none;
+}
+.cx-more[open] .cx-l2 {
+  display: inline;
+}
+
+/* ------------------------------------------------------------- curseur de plage */
+.mg-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--line);
+  outline: none;
+  margin: 0;
+}
+.mg-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #ff7c3c;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(28, 27, 25, 0.28);
+  cursor: grab;
+}
+.mg-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: #ff7c3c;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(28, 27, 25, 0.28);
+  cursor: grab;
+  border-color: #fff;
+}
+.mg-range:active::-webkit-slider-thumb {
+  cursor: grabbing;
+}
+
+/* --------------------------------------------------- bandeau de logos défilant */
+/* La piste lit `var(--mq-play, running)`. La valeur par défaut existe côté
+   `var()`, mais la déclarer ici rend la pause pilotable depuis un composant
+   (un bouton de pause, un test) sans toucher à la règle de survol. */
+.mg-marquee {
+  --mq-play: running;
+}
+.mg-marquee:hover .mg-track,
+.mg-marquee:focus-within .mg-track {
+  --mq-play: paused;
+  animation-play-state: paused;
+}
+.mg-logo {
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.35s ease;
+}
+.mg-marquee:hover .mg-logo {
+  opacity: 0.4;
+}
+.mg-logo:hover {
+  opacity: 1 !important;
+  transform: translateY(-6px) scale(1.08);
+}
+
+/* ------------------------------------------------------------- rails sans barre */
+.mg-autorail {
+  scrollbar-width: none !important;
+}
+.mg-autorail::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Adaptations par largeur, reprises de la maquette dans son ordre.
+   ========================================================================== */
+
+/* Navigation : l'îlot se resserre, puis cède la place au bouton menu */
+.mg-nav > * {
+  white-space: nowrap;
+  flex: none;
+}
+.mg-burger {
+  display: none;
+}
+
+@media (max-width: 1180px) {
+  .mg-nav > * {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .mg-tel {
+    display: none !important;
+  }
+  .mg-implant {
+    display: none !important;
+  }
+}
+@media (max-width: 1080px) {
+  .mg-nav > * {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    font-size: 13.5px !important;
+  }
+}
+@media (max-width: 1000px) {
+  .mg-nav > * {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 880px) {
+  .mg-nav {
+    display: none !important;
+  }
+  .mg-burger {
+    display: inline-flex !important;
+  }
+}
+@media (max-width: 860px) {
+  .mg-nav > * {
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+    font-size: 12.5px !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-topwrap {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+}
+
+/* Grilles de valeurs */
+@media (max-width: 1000px) {
+  .mg-valg {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-valg > .mg-val {
+    grid-column: span 1 !important;
+  }
+  .mg-valg > .mg-val:first-child {
+    grid-column: 1 / -1 !important;
+  }
+  .mg-valg > .mg-val:last-child:nth-child(even) {
+    grid-column: 1 / -1 !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-valg {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-valg > .mg-val {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* Bento, avant-après, mosaïque, rails multiples */
+@media (min-width: 1001px) {
+  .mg-bento > [data-fill="1"] {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 1000px) {
+  .mg-rmulti {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-bento > *[data-open="1"] {
+    grid-column: span 2 !important;
+    grid-row: auto !important;
+  }
+  .mg-ba {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-rq3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-rail {
+    display: none;
+  }
+  .mg-tl > * {
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .mg-tl > * > *:first-child {
+    margin-bottom: 14px !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-bento {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-rows: auto !important;
+  }
+  .mg-bento > *[data-open="1"] {
+    grid-column: span 1 !important;
+  }
+  .mg-ba {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-rows: minmax(240px, auto) !important;
+  }
+}
+@media (max-width: 620px) {
+  .mg-rmulti {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* Lignes de tableau : des colonnes tombent avant que la ligne ne se casse */
+@media (max-width: 980px) {
+  .cx-lay {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .cx-toc {
+    display: none !important;
+  }
+  .mg-reslay {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 26px !important;
+  }
+  .mg-resrail {
+    position: static !important;
+  }
+  .mg-fmts,
+  .mg-sits {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 7px !important;
+    margin-bottom: 18px !important;
+  }
+  .mg-fmts > * {
+    width: auto !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 999px !important;
+    padding: 8px 14px !important;
+    gap: 7px !important;
+    white-space: nowrap;
+  }
+  .mg-sits > * {
+    border: 1px solid var(--line) !important;
+    border-radius: 999px !important;
+    padding: 7px 13px !important;
+    font-size: 12.5px !important;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 940px) {
+  .mg-mrow {
+    grid-template-columns: 1.5fr 0.9fr 104px !important;
+  }
+  .mg-mrow > *:nth-child(2),
+  .mg-mrow > *:nth-child(4) {
+    display: none;
+  }
+  .mg-prow {
+    grid-template-columns: auto minmax(0, 1fr) 84px !important;
+  }
+  .mg-prow > *:nth-child(3) {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .mg-r2 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 36px !important;
+  }
+}
+@media (min-width: 901px) {
+  .mg-flip > *:last-child {
+    order: -1;
+  }
+}
+@media (max-width: 760px) {
+  .cx-row {
+    grid-template-columns: 32px minmax(0, 1fr) !important;
+    gap: 8px 16px !important;
+  }
+  .cx-row > *:nth-child(3) {
+    grid-column: 2;
+  }
+  .mg-cmp {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .mg-cmp > *:first-child {
+    grid-column: 1/-1;
+  }
+  .mg-doclist > div {
+    grid-template-columns: 36px minmax(0, 1fr) !important;
+  }
+  .mg-doclist > div > span:last-child {
+    grid-column: 2;
+  }
+  .mg-mosaic {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-mosaic > *:first-child {
+    min-height: 340px !important;
+  }
+  .mg-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    row-gap: 20px !important;
+  }
+  .mg-steps > div:first-child {
+    display: none !important;
+  }
+  .mg-r3,
+  .mg-bento2,
+  .mg-rq3 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-bento2 > * {
+    grid-column: auto !important;
+  }
+  .mg-rq2 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+@media (max-width: 620px) {
+  .mg-mrow {
+    grid-template-columns: 1fr 104px !important;
+    gap: 12px !important;
+  }
+  .mg-mrow > *:nth-child(3) {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .mg-prow {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    gap: 14px !important;
+  }
+  .mg-prow > *:nth-child(4) {
+    text-align: left !important;
+    grid-column: 2 !important;
+  }
+}
+
+/* Mobile : marges, échelle des titres, arrondis, colonnes fusionnées */
+@media (max-width: 760px) {
+  .mg-pad,
+  .mg-site section > div[style*="max-width:1200px"],
+  .mg-site main > div[style*="max-width:1200px"],
+  .mg-site footer > div[style*="max-width:1200px"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .mg-site section[style*="max-width:1200px"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .mg-site {
+    --sec: 64px;
+  }
+  .mg-site h1 {
+    font-size: clamp(32px, 9vw, 42px) !important;
+    letter-spacing: -0.035em !important;
+  }
+  .mg-site h2 {
+    font-size: clamp(26px, 7.4vw, 34px) !important;
+  }
+  .mg-site [style*="position:sticky"][style*="top:110px"],
+  .mg-site [style*="position:sticky"][style*="top:100px"] {
+    position: static !important;
+  }
+  .mg-site [style*="border-radius:36px"] {
+    border-radius: 24px !important;
+  }
+  .mg-site [style*="padding:30px 34px"],
+  .mg-site [style*="padding:36px 40px"],
+  .mg-site [style*="padding:40px 44px"],
+  .mg-site [style*="padding:44px 48px"] {
+    padding: 24px 20px !important;
+  }
+  .mg-site table {
+    font-size: 13px;
+  }
+  .mg-site [style*="grid-column:span 2"],
+  .mg-site [style*="grid-column:span 3"] {
+    grid-column: auto !important;
+  }
+  .mg-site img[style*="aspect-ratio"] {
+    max-height: 70vw;
+  }
+}
+@media (max-width: 480px) {
+  .mg-site h1 {
+    font-size: clamp(28px, 8.6vw, 36px) !important;
+  }
+  .mg-site [style*='font:600 calc(clamp(56px'] {
+    font-size: 48px !important;
+  }
+}
+
+/* Habillage du gabarit ressource. Tout ce qu'un style en ligne ne peut pas
+   porter : les survols, et le style des éléments que le composant ne touche pas
+   un par un (les liens du corps, les cellules du barème). */
+
+a[href='#formulaire']:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+/* Ligne 6788 de la maquette : le bouton secondaire passe son filet à l'orange. */
+a[href='/ressources/']:hover {
+  border-color: var(--acc);
+}
+
+/* Ligne 6546 : la carte « Aller plus loin » fait de même. */
+aside a {
+  display: block;
+  transition: border-color var(--tr);
+}
+aside a:hover,
+aside a:focus-visible {
+  border-color: var(--acc);
+}
+
+/* Les liens internes que le corpus pose dans le corps du texte.
+   Soulignés, et pas seulement colorés : l'information ne doit pas passer par la
+   couleur seule, c'est le critère WCAG 1.4.1. */
+article a {
+  color: var(--acc-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--tr);
+}
+article a:hover,
+article a:focus-visible {
+  color: var(--acc-d);
+}
+
+/* LE BARÈME EST UN VRAI TABLEAU, dessiné en grille.
+
+   La maquette l'écrit en `div` imbriquées (lignes 6733 à 6748), ce qui donne le
+   bon dessin mais prive un lecteur d'écran de l'en-tête de colonne : la
+   troisième cellule d'une ligne ne se rattache plus à « Conduite à tenir ».
+   `table` rétablit la sémantique, et ces règles rendent au tableau le
+   comportement de grille que la maquette attend. Les colonnes elles-mêmes sont
+   posées en style en ligne sur chaque `tr`, parce que leur nombre vient des
+   données.
+
+   ATTENTION si ce bloc est touché : redéfinir `display` sur un tableau lui
+   retire son rôle implicite dans Chrome comme dans Safari. C'est pourquoi
+   `CorpsRessource.tsx` écrit `role="table"`, `rowgroup`, `row`, `columnheader`
+   et `cell` à la main. Retirer l'un sans l'autre casse l'accessibilité en
+   silence. */
+table {
+  display: block;
+  width: 100%;
+  border-collapse: collapse;
+}
+table thead,
+table tbody {
+  display: block;
+}
+table th,
+table td {
+  text-align: left;
+  padding: 0;
+  min-width: 0;
+  vertical-align: middle;
+}
+
+/*
+  Survols des blocs du gabarit de conversion, relevés sur `style-hover` dans la
+  maquette. Ils vivent dans un module CSS et non dans `app/globals.css` : le
+  fichier global est écrit par plusieurs agents en parallèle, et un survol n'est
+  pas exprimable dans un style en ligne.
+
+  Les classes portent le nom de leur rôle, pas celui de leur déclaration.
+*/
+
+a[href='#formulaire']:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+a[href='/ressources/']:hover {
+  background: var(--card);
+  transform: translateY(-1px);
+}
+
+/* Carte de réalisation : la maquette la soulève et creuse son ombre. */
+.cartePreuve {
+  transition:
+    transform var(--tr),
+    box-shadow var(--tr);
+}
+.cartePreuve:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.42);
+}
+
+/* Dépliant de FAQ : `globals.css` tient déjà l'état ouvert de `.cx-plus`
+   (rotation et passage à l'orange). Ici, l'état fermé et son survol. */
+.cx-plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex: none;
+  border-radius: 999px;
+  background: var(--chip);
+  color: var(--ink2);
+  font: 400 17px var(--fb);
+  transition:
+    transform var(--tr),
+    background var(--tr),
+    color var(--tr);
+}
+
+summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+  padding: 20px 24px;
+  cursor: pointer;
+  text-align: left;
+  list-style: none;
+}
+summary:hover .cx-plus {
+  background: var(--acc-w);
+  color: var(--acc-ink);
+}
+
+/* Liens internes que `TexteRiche` pose dans le corpus : 597 dans les 126 pages
+   importées. `globals.css` déclare `a { color: var(--ink); text-decoration:
+   none }`, donc SANS règle ici un lien du corpus se rend en #1c1b19 sans
+   soulignement, c'est-à-dire indistinguable du texte autour sur fond clair, et
+   #1c1b19 sur #1c1b19 sur le panneau anthracite, soit un contraste de 1:1.
+
+   La classe se pose sur le conteneur du texte du corpus, jamais sur un
+   conteneur qui porte aussi un lien d'habillage : les boutons d'action et la
+   carte de réalisation ont leur propre traitement et ne doivent pas être
+   soulignés. */
+.corpus a {
+  /* Même traitement que `article a` d'`Article.module.css` : un lien du corpus
+     doit se lire pareil dans un article et dans une page de vente.
+     `var(--acc-ink)` vaut 8,9:1 sur blanc, `var(--acc)` n'y tiendrait que
+     2,6:1. */
+  color: var(--acc-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-thickness var(--tr);
+}
+.corpus a:hover,
+.corpus a:focus-visible {
+  /* La couleur ne change pas : le survol épaissit le trait. L'orange de survol
+     global, `var(--acc)`, ne tient que 2,6:1 sur blanc, sous le plancher de
+     4,5:1. */
+  color: var(--acc-ink);
+  text-decoration-thickness: 2px;
+}
+
+/* Le même corpus sur le panneau anthracite (`var(--panel)`, #1c1b19) : les
+   sections « problème » et l'appel à l'action final. `var(--acc-ink)` n'y vaut
+   que 1,9:1. Le blanc y vaut 17:1, l'orange de marque 6,7:1. */
+.corpusClair a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--tr);
+}
+.corpusClair a:hover,
+.corpusClair a:focus-visible {
+  color: var(--acc);
+}
+
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fb)}a{text-decoration:none;color:inherit}</style></head><body><div class="mg-site"><main style="padding-top:96px"><section style="max-width:1200px;margin:0 auto;padding:70px 40px 0"><div style="max-width:760px"><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap"><span style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--acc);padding:5px 12px;border-radius:999px;white-space:nowrap">Fiche technique</span></div><h1 style="font:600 calc(clamp(30px,3.6vw,52px) * var(--ts))/1.06 var(--ft);letter-spacing:-.042em;margin:0;text-wrap:balance">Amdec</h1><p style="font:400 18px/1.65 var(--fb);color:var(--ink2);margin:20px 0 0">La panne qui arrête votre ligne un vendredi soir, personne ne l&#x27;a vue venir. Pourtant, neuf fois sur dix, le mode de défaillance était connu, la cause aussi.</p></div></section><section style="max-width:1200px;margin:0 auto;padding:40px 40px 0"><div style="border-radius:var(--rad);background:var(--acc-w);border:1.5px solid rgba(255,124,60,.3);display:flex;align-items:center;gap:16px;padding:18px 24px;flex-wrap:wrap;max-width:760px"><span style="font:400 14.5px/1.6 var(--fb);color:var(--ink1);flex:1;min-width:240px">Un chargé d&#x27;affaires vous rappelle dans l&#x27;heure, du lundi au vendredi de 8h00 à 18h30, pour un diagnostic maintenance : 04 78 33 72 05.</span></div></section><section style="max-width:1200px;margin:0 auto;padding:40px 40px 0"><div class="mg-r2" style="display:grid;grid-template-columns:minmax(0,760px) minmax(0,1fr);gap:52px;align-items:start"><article><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">L&#x27;AMDEC sert exactement à ça : voir venir. Cette analyse des modes de défaillance, de leurs effets et de leur criticité liste les défaillances possibles d&#x27;un produit, d&#x27;un processus ou d&#x27;une machine, avant qu&#x27;elles ne coûtent cher. Cette fiche de nos <a href="/ressources/fiches-techniques">Ressources : Fiches techniques</a> donne la définition, la méthode et un exemple concret, par des techniciens qui interviennent tous les jours.</p><h2 id="l-amdec-definition-sans-jargon" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">L&#x27;AMDEC, définition sans jargon</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">L&#x27;AMDEC est un outil d&#x27;analyse préventive des risques. Le sigle signifie analyse des modes de défaillance, de leurs effets et de leur criticité. En anglais, on parle de FMEA, failure mode and effects analysis.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Ce que l&#x27;AMDEC identifie </strong>Chaque mode de défaillance d&#x27;un système, la cause qui le provoque, l&#x27;effet qu&#x27;il produit sur le client ou la ligne, et la gravité de cet effet. La méthode transforme une inquiétude vague en liste ordonnée d&#x27;actions.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">La criticité au centre </strong>L&#x27;AMDEC ne se contente pas de lister les défaillances potentielles. Elle les note et les classe par criticité, pour concentrer l&#x27;action là où le risque est le plus fort et atténuer d&#x27;abord ce qui pèse le plus.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Une méthode d&#x27;équipe </strong>L&#x27;AMDEC se construit en groupe de travail, avec la maintenance, la production, la qualité et le bureau d&#x27;études. Aucune personne seule ne connaît tous les modes de défaillance d&#x27;un système complexe.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Une origine industrielle </strong>Née dans l&#x27;aéronautique et l&#x27;automobile pour garantir la fiabilité, l&#x27;AMDEC s&#x27;est répandue dans toute l&#x27;industrie, du produit à la conception, du processus à la machine de production.</span></li></ul><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">L&#x27;AMDEC n&#x27;est pas un document qu&#x27;on range dans un classeur. C&#x27;est une démarche vivante d&#x27;amélioration continue : on analyse, on agit, on vérifie que le risque a baissé, puis on recommence.</p><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Le mot revient souvent dans le vocabulaire qualité, à côté de l&#x27;analyse fonctionnelle, du plan de surveillance et de la gestion des risques. Retenez l&#x27;essentiel : l&#x27;AMDEC met un chiffre sur un risque, ce chiffre s&#x27;appelle la criticité, et ce chiffre décide de l&#x27;action à mener. L&#x27;AMDEC reste une analyse qualitative, utilisée aussi bien en gestion de projet qu&#x27;en atelier, qui vise la satisfaction client en fiabilisant le processus de production. Elle ne garantit pas tout, mais elle teste chaque limite avant qu&#x27;elle ne cède.</p><h2 id="pourquoi-faire-une-amdec-objectifs-et-benefices" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Pourquoi faire une AMDEC : objectifs et bénéfices</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Une défaillance coûte toujours plus qu&#x27;un contrôle. L&#x27;objectif principal de l&#x27;AMDEC est de dépenser un peu d&#x27;effort d&#x27;analyse pour éviter beaucoup d&#x27;argent d&#x27;immobilisation.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Prévenir plutôt que subir </strong>L&#x27;AMDEC identifie la défaillance potentielle avant qu&#x27;elle ne survienne. Le service maintenance passe d&#x27;une logique corrective, où l&#x27;on répare après coup, à une logique de prévention chiffrée.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Fiabiliser le produit et le procédé </strong>En analysant les modes de défaillance à la conception, l&#x27;entreprise sécurise le produit avant sa mise sur le marché et réduit les retours client, souvent bien plus coûteux qu&#x27;un contrôle interne.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Cibler l&#x27;effort de contrôle </strong>La criticité désigne où placer les points de contrôle et la surveillance. L&#x27;AMDEC évite de contrôler partout au hasard et concentre le taux d&#x27;inspection sur ce qui compte.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Répondre aux exigences qualité </strong>L&#x27;AMDEC s&#x27;inscrit dans le management de la qualité et des risques, souvent en réponse aux normes, dont l&#x27;ISO 9001. C&#x27;est un outil reconnu d&#x27;évaluation et de maîtrise des défaillances.</span></li></ul><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Réduire les conséquences en cascade </strong>Une défaillance non anticipée déclenche souvent une réaction en chaîne, retards logistiques, rebuts, insatisfaction du client. L&#x27;AMDEC coupe cette conséquence à la source en traitant le facteur déclencheur, pas seulement son symptôme.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Capitaliser l&#x27;expérience </strong>Chaque analyse devient une base de connaissance réutilisée d&#x27;un projet à l&#x27;autre. Ce retour d&#x27;expérience nourrit les versions suivantes du produit et de la ligne, et l&#x27;approche gagne en efficacité à mesure qu&#x27;on l&#x27;utilise.</span></li></ul><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Limiter le risque à la source </strong>L&#x27;AMDEC recherche la cause racine plutôt que le symptôme. C&#x27;est la clé d&#x27;une atténuation durable : on traite le facteur, pas la conséquence, et l&#x27;activité reprend sur une base plus sûre.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Servir de référence pour l&#x27;audit </strong>L&#x27;AMDEC constitue un rapport d&#x27;analyse de risque utile en audit qualité. Elle prouve, au niveau opérationnel, que les défaillances principales sont bien évaluées et traitées de manière méthodique.</span></li></ul><blockquote style="border-left:3px solid var(--acc);padding:4px 0 4px 24px;margin:32px 0"><p style="font:500 calc(20px * var(--ts))/1.5 var(--ft);letter-spacing:-.02em;color:var(--ink);margin:0">L&#x27;AMDEC ne garantit pas zéro panne. Elle garantit que les défaillances les plus graves et les plus fréquentes sont vues, notées et traitées en premier, avec un critère de décision partagé par toute l&#x27;équipe.</p></blockquote><h2 id="gravite-frequence-detection-les-trois-notes-de-l" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Gravité, fréquence, détection : les trois notes de la criticité</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">La criticité d&#x27;une défaillance ne se devine pas, elle se calcule. L&#x27;AMDEC repose sur trois indices, notés chacun sur une échelle, le plus souvent de 1 à 10.</p><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);overflow:hidden;margin:0 0 26px"><table role="table"><thead role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;padding:14px 30px;border-bottom:1px solid var(--line);background:var(--chip)"><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Indice</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Ce qu&#x27;il évalue</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Une note élevée signifie</th></tr></thead><tbody role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Gravité (G)</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">La sévérité de l&#x27;effet sur le client, la sécurité ou la production</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">L&#x27;effet est grave, parfois un accident</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Fréquence (F) ou occurrence</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">La probabilité que la cause survienne</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">La défaillance apparaît souvent</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Détection (D)</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">La capacité à repérer le défaut avant qu&#x27;il n&#x27;atteigne le client</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Le défaut passe inaperçu, mauvaise détectabilité</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Criticité (C)</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Le produit des trois : G × F × D</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Le risque est prioritaire, action obligatoire</td></tr></tbody></table></div><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">La criticité, aussi appelée indice de priorité du risque, IPR ou NPR, hiérarchise les défaillances. On fixe un seuil : au-dessus, une action corrective est décidée pour atténuer le risque ; en dessous, on surveille. C&#x27;est ce calcul qui rend l&#x27;AMDEC utile plutôt que théorique.</p><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">La grille de cotation est le cœur de la méthode. Chaque échelle, de la gravité à la détectabilité, doit être définie noir sur blanc avant la réunion. Sans grille écrite, deux personnes noteront une défaillance de façon différente, et la criticité perdra tout sens.</p><blockquote style="border-left:3px solid var(--acc);padding:4px 0 4px 24px;margin:32px 0"><p style="font:500 calc(20px * var(--ts))/1.5 var(--ft);letter-spacing:-.02em;color:var(--ink);margin:0">Une gravité élevée seule suffit parfois à déclencher une action, y compris si la fréquence est faible. Un effet qui touche la sécurité des personnes ne se négocie pas contre une probabilité d&#x27;apparition.</p></blockquote><h2 id="amdec-produit-processus-moyen-trois-familles" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">AMDEC produit, processus, moyen : trois familles</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Le mot AMDEC recouvre plusieurs analyses selon l&#x27;objet étudié. Confondre les trois fait perdre des heures et brouille les résultats.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">L&#x27;AMDEC produit </strong>Elle analyse les défaillances d&#x27;un produit liées à sa conception, sa fabrication ou son utilisation. Objectif : sécuriser le produit avant sa mise sur le marché et réduire les retours client. C&#x27;est l&#x27;affaire du bureau d&#x27;études.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">L&#x27;AMDEC processus </strong>Elle étudie les défaillances d&#x27;un processus de fabrication. Chaque étape du flux est passée en revue pour déterminer ce qui peut mal tourner et son impact sur la qualité et la conformité du produit.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">L&#x27;AMDEC moyen de production </strong>Elle porte sur les machines et équipements, aussi appelée AMDEC machine. C&#x27;est celle qui parle le plus à un service de maintenance, car elle relie chaque composant à son mode de défaillance et à son taux de panne.</span></li></ul><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Ces trois familles partagent une méthode identique et la même grille de cotation. Ces types d&#x27;AMDEC répondent à des besoins distincts, mais l&#x27;application de l&#x27;AMDEC suit toujours la même grille de cotation AMDEC. Seul le périmètre change : le produit, le procédé, ou la machine. Une organisation mûre les combine, du bureau d&#x27;études à l&#x27;atelier, pour couvrir tout le cycle de vie.</p><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Un dernier repère utile : l&#x27;AMDEC fonctionnelle part de l&#x27;analyse fonctionnelle du système pour déterminer les modes de défaillance de chaque fonction. Elle sert de base à l&#x27;AMDEC produit comme à l&#x27;AMDEC moyen, et garantit qu&#x27;aucune fonction essentielle n&#x27;est oubliée dans l&#x27;analyse.</p><h2 id="comment-realiser-une-amdec-etape-par-etape" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Comment réaliser une AMDEC, étape par étape</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Une AMDEC bâclée produit une jolie grille que personne n&#x27;applique. La méthode qui suit, proche d&#x27;un guide pratique, garde l&#x27;analyse reliée à l&#x27;action, étape par étape. Le but de ce guide est simple : rendre la méthodologie AMDEC utilisable dès demain, sans outil coûteux.</p><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:30px 34px 32px;margin:0 0 26px"><ol role="list" style="display:grid;gap:2px;margin:0;padding:0;list-style:none"><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">1</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Définir le périmètre et le groupe de travail</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Choisir le système, le produit ou le moyen à analyser, et réunir l&#x27;équipe qui le connaît, maintenance, production, qualité, méthodes. Le périmètre doit être précis, sinon l&#x27;analyse s&#x27;éparpille.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">2</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Faire l&#x27;analyse fonctionnelle</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Décrire ce que le système doit faire, fonction par fonction, et son fonctionnement normal. On ne peut pas lister les défaillances d&#x27;une fonction qu&#x27;on n&#x27;a pas nommée.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">3</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Identifier les modes de défaillance</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Pour chaque fonction, lister les façons dont elle peut échouer. Un roulement grippe, un capteur dérive, une soudure lâche, un joint fuit. C&#x27;est le cœur de l&#x27;analyse.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">4</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Rechercher les causes et les effets</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Remonter à la cause racine de chaque mode de défaillance, et décrire l&#x27;effet potentiel sur la production, le client ou la sécurité. Une même cause peut produire plusieurs effets.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">5</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Noter la gravité, la fréquence et la détection</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Attribuer les trois indices à l&#x27;aide de la grille de cotation, en équipe, pour éviter la note d&#x27;une seule personne. Chaque niveau de l&#x27;échelle doit correspondre à une définition claire.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">6</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Calculer la criticité et prioriser</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Multiplier les trois notes, classer les défaillances par criticité, fixer le seuil au-dessus duquel une action devient obligatoire. Le tableau AMDEC prend ici tout son sens.</p></div></li><li style="display:flex;gap:18px;padding:20px 0"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">7</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Définir et suivre les actions</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Décider des mesures de prévention ou de contrôle pour atténuer le risque, désigner un responsable et une échéance, puis vérifier que la criticité a baissé. C&#x27;est l&#x27;étape qui transforme l&#x27;analyse en résultat.</p></div></li></ol></div><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">La dernière étape est celle qu&#x27;on oublie le plus. Une AMDEC sans plan d&#x27;action et sans revue est une analyse morte. La valeur naît de la boucle : évaluer, agir, réévaluer, jusqu&#x27;à ce que le risque résiduel soit acceptable.</p><h2 id="un-exemple-concret-d-amdec-machine" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Un exemple concret d&#x27;AMDEC machine</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Prenons un convoyeur d&#x27;une ligne de production. L&#x27;équipe de maintenance réalise une AMDEC moyen sur son motoréducteur, un composant critique dont la panne arrête toute la ligne.</p><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);overflow:hidden;margin:0 0 26px"><table role="table"><thead role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr 1fr 1fr 1fr;gap:16px;padding:14px 30px;border-bottom:1px solid var(--line);background:var(--chip)"><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Mode de défaillance</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Cause</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Effet</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">G</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">F</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">D</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Criticité</th></tr></thead><tbody role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr 1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Roulement grippé</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Défaut de lubrification</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Arrêt de la ligne</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">8</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">4</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">6</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">192</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr 1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Courroie rompue</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Usure non détectée</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Arrêt de la ligne</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">7</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">5</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">3</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">105</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr 1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Capteur de position en dérive</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Vieillissement</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Produits non conformes</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">6</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">3</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">7</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">126</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr 1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Surchauffe moteur</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Ventilation encrassée</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Détérioration progressive</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">5</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">4</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">4</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">80</td></tr></tbody></table></div><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Avec un seuil fixé à 100, trois défaillances passent au-dessus et déclenchent une action. Le roulement, criticité 192, arrive en tête : sa sévérité et sa mauvaise détection pèsent lourd dans le calcul.</p><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">La réponse tient en deux mesures concrètes. Un contrôle de lubrification passe en maintenance préventive, ce qui fait baisser la fréquence. Une mesure vibratoire est ajoutée pour détecter le grippage avant l&#x27;immobilisation, ce qui améliore la détectabilité. Recalculée, la criticité du roulement retombe sous le seuil.</p><blockquote style="border-left:3px solid var(--acc);padding:4px 0 4px 24px;margin:32px 0"><p style="font:500 calc(20px * var(--ts))/1.5 var(--ft);letter-spacing:-.02em;color:var(--ink);margin:0">L&#x27;exemple montre l&#x27;intérêt de l&#x27;indice de détection. Le capteur en dérive n&#x27;a qu&#x27;une gravité moyenne, mais il passe inaperçu, ce qui le rend presque aussi critique que le roulement. Sans l&#x27;AMDEC, on l&#x27;aurait ignoré jusqu&#x27;au premier lot non conforme.</p></blockquote><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Ce modèle de tableau AMDEC tient sur une page. Il n&#x27;a rien d&#x27;un exercice académique : chaque ligne désigne une action de maintenance, un responsable, une échéance. C&#x27;est là que l&#x27;analyse rejoint le terrain.</p><h2 id="les-erreurs-les-plus-frequentes" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Les erreurs les plus fréquentes</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Une AMDEC ratée coûte le temps de l&#x27;équipe réunie autour de la table, pour un résultat que personne n&#x27;utilise. Les mêmes pièges reviennent d&#x27;un site à l&#x27;autre.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Faire l&#x27;AMDEC seul </strong>Une seule personne ne connaît pas tous les modes de défaillance d&#x27;un système. L&#x27;analyse perd sa valeur dès qu&#x27;elle n&#x27;est plus le fruit d&#x27;un groupe de travail pluridisciplinaire.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Noter à l&#x27;instinct </strong>Sans grille de cotation partagée, la gravité et la fréquence deviennent des avis. Une défaillance identique reçoit alors deux notes selon qui tient le stylo, et la criticité ne veut plus rien dire.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Viser l&#x27;exhaustivité </strong>Vouloir lister chaque défaillance potentielle d&#x27;un système complexe épuise l&#x27;équipe. Mieux vaut traiter à fond les fonctions critiques que tout survoler en surface.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Oublier la détection </strong>Se concentrer sur la gravité et la fréquence, ignorer la capacité à repérer le défaut, sous-estime les défaillances silencieuses, souvent les plus coûteuses à long terme.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Confondre AMDEC et simple liste </strong>Sans les indices de gravité, de fréquence et de détection, on obtient une liste de défaillances, pas une AMDEC. C&#x27;est la cotation qui distingue la méthode d&#x27;un simple inventaire, et qui permet d&#x27;identifier les priorités.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Ranger la grille et l&#x27;oublier </strong>Une AMDEC sans plan d&#x27;action ni revue périodique ne prévient rien. Le tableau AMDEC doit vivre au rythme des évolutions du produit et du processus, sinon il vieillit mal.</span></li></ul><h2 id="ce-que-l-amdec-implique-pour-votre-organisation" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Ce que l&#x27;AMDEC implique pour votre organisation</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Adopter l&#x27;AMDEC, c&#x27;est décider de traiter le risque avant la panne, pas après l&#x27;accident. Le changement dépasse le service qualité et touche toute l&#x27;organisation industrielle.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Prioriser la maintenance préventive </strong>La criticité désigne les composants à surveiller en premier. La maintenance préventive et le plan de contrôle se recentrent sur ce que l&#x27;analyse a chiffré, pas sur une routine générale appliquée à tout.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Alimenter la fiabilité </strong>Chaque AMDEC nourrit la connaissance des équipements. Les modes de défaillance repérés deviennent des points de contrôle, et la fiabilité progresse à mesure que le retour d&#x27;expérience s&#x27;accumule dans l&#x27;entreprise.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Objectiver les décisions </strong>Réparer, renforcer, remplacer : la criticité arme l&#x27;arbitrage avec un chiffre, pas une intuition. La direction suit un indice de risque, un critère mesurable, pas une impression de terrain.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Améliorer en continu </strong>L&#x27;AMDEC s&#x27;inscrit dans une démarche qualité, souvent reliée au management des risques et aux normes ISO. L&#x27;analyse se révise à chaque évolution du produit, du procédé ou du moyen de production.</span></li></ul><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Structurer la mise en œuvre </strong>L&#x27;AMDEC donne un cadre à la mise en place d&#x27;un plan de fiabilité industrielle. Chaque utilisateur, du technicien au responsable, sait quel élément surveiller et pourquoi, avec une information partagée.</span></li></ul><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Guider la formation </strong>Le tableau AMDEC sert de support de formation pour les nouveaux techniciens. Il montre, machine par machine, quels problèmes surveiller, un vrai conseil de terrain, plus efficace qu&#x27;un cours théorique.</span></li></ul><blockquote style="border-left:3px solid var(--acc);padding:4px 0 4px 24px;margin:32px 0"><p style="font:500 calc(20px * var(--ts))/1.5 var(--ft);letter-spacing:-.02em;color:var(--ink);margin:0">Nos techniciens s&#x27;appuient sur cette logique d&#x27;analyse des modes de défaillance pour hiérarchiser les interventions et remonter à la cause racine des pannes récurrentes.</p></blockquote><blockquote style="border-left:3px solid var(--acc);padding:4px 0 4px 24px;margin:32px 0"><p style="font:500 calc(20px * var(--ts))/1.5 var(--ft);letter-spacing:-.02em;color:var(--ink);margin:0"><a href="/contact">Demander un diagnostic maintenance</a></p></blockquote></article><aside style="display:grid;gap:16px;position:sticky;top:120px"><a style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:26px 28px" href="/ressources/fiches-techniques/outils-de-diagnostic"><div style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:10px">Aller plus loin</div><div style="font:600 15.5px/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:8px">Outils de diagnostic maintenance</div><span style="display:block;margin-top:8px;font:600 13px var(--fb);color:var(--acc)">La page complète →</span></a></aside></div></section><section style="padding:var(--sec) 0 0"><div style="max-width:1200px;margin:0 auto;padding:0 40px"><div class="mg-r2" style="display:grid;grid-template-columns:.8fr 1.2fr;gap:52px;align-items:start"><div style="position:sticky;top:112px"><div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px">Questions fréquentes</div><h2 style="font:600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft);letter-spacing:-.04em;margin:0;max-width:14ch;text-wrap:balance;margin-bottom:22px">Ce qu&#x27;on nous demande avant de signer.</h2></div><div style="display:grid;gap:10px"><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Que signifie AMDEC ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">AMDEC signifie analyse des modes de défaillance, de leurs effets et de leur criticité. C&#x27;est une méthode d&#x27;analyse préventive des risques qui identifie les défaillances potentielles d&#x27;un produit, d&#x27;un processus ou d&#x27;un moyen de production, puis les classe par criticité pour prioriser l&#x27;action.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Quelle différence entre AMDEC et AMDE ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">L&#x27;AMDE, analyse des modes de défaillance et de leurs effets, s&#x27;arrête à l&#x27;identification des modes de défaillance et de leurs effets. L&#x27;AMDEC ajoute la criticité : elle note la gravité, la fréquence et la détection, puis hiérarchise les risques. La criticité est le C final du sigle.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Comment se calcule la criticité en AMDEC ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">La criticité est le produit de trois indices : gravité, fréquence d&#x27;occurrence et détection, notés chacun sur une échelle de 1 à 10. La criticité, aussi appelée IPR ou NPR, se compare à un seuil au-dessus duquel une action corrective devient obligatoire pour atténuer le risque.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Qui doit participer à une AMDEC ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Un groupe de travail pluridisciplinaire : maintenance, production, qualité, bureau d&#x27;études, méthodes. L&#x27;AMDEC perd sa valeur dès qu&#x27;une seule personne la remplit, car aucun métier ne connaît à lui seul tous les modes de défaillance d&#x27;un système.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Quelle est la différence entre AMDEC produit, processus et moyen ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">L&#x27;AMDEC produit sécurise un produit avant sa mise sur le marché. L&#x27;AMDEC processus analyse les défaillances d&#x27;un processus de fabrication. L&#x27;AMDEC moyen, ou AMDEC machine, porte sur les équipements de production. Les trois partagent la même méthode et la même grille de cotation.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">L&#x27;AMDEC est-elle réservée aux grandes entreprises ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Non. Une AMDEC simple, sur une machine critique, tient sur un tableau et une réunion d&#x27;équipe. La méthode s&#x27;adapte à l&#x27;échelle : un atelier peut analyser sa machine la plus sensible sans logiciel ni grande organisation, à condition de suivre la méthode.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Quel est le lien entre AMDEC et maintenance ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">L&#x27;AMDEC moyen de production alimente directement le plan de maintenance préventive. Chaque mode de défaillance critique devient un point à surveiller, une opération planifiée ou un contrôle. C&#x27;est un des outils de fiabilité les plus utiles au service maintenance, et l&#x27;un des piliers de la maintenance industrielle.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Existe-t-il un modèle ou un guide AMDEC à suivre ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Oui. De nombreux modèles de tableau AMDEC et guides pratiques existent, souvent au format PDF ou tableur. Le plus important n&#x27;est pas le modèle utilisé, mais la grille de cotation adaptée à votre secteur et l&#x27;implication de l&#x27;équipe. Un guide sert de point de départ, jamais de résultat.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Combien de temps prend une AMDEC ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Cela dépend du périmètre. Une AMDEC machine sur un équipement critique tient en quelques réunions ; une AMDEC produit complète, en phase de conception, s&#x27;étale au fil des semaines. L&#x27;essentiel est le suivi des actions au cours de la démarche, pas la vitesse de la première analyse.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">En quoi l&#x27;AMDEC sert-elle l&#x27;amélioration continue ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">L&#x27;AMDEC est un des principaux outils d&#x27;amélioration continue en industrie. Associée au plan de contrôle et au retour d&#x27;expérience, elle relie chaque défaillance identifiée à une action mesurable. La démarche se répète, et la fiabilité progresse d&#x27;une version à l&#x27;autre.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">L&#x27;AMDEC peut-elle être menée sans logiciel ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Oui, un tableur suffit pour être opérationnel sur une machine. Un logiciel devient utile quand l&#x27;analyse doit être partagée, mise à jour et reliée à l&#x27;historique de maintenance. La grille utilisée et la méthodologie comptent plus que l&#x27;outil, qui ne remplace jamais le jugement de l&#x27;équipe.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">L&#x27;AMDEC garantit-elle la disparition des risques ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Non. Elle ne fait pas disparaître le risque, elle l&#x27;organise et permet de l&#x27;atténuer. Cette atténuation doit être vérifiée : on recalcule la criticité après action pour être sûr que le niveau de risque a bien baissé. Aucune méthode ne peut garantir zéro défaillance.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Quels sont les principaux avantages de l&#x27;AMDEC ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Le principal avantage est de construire une décision sur un critère mesurable, pas sur une intuition. L&#x27;AMDEC réduit les défaillances internes, améliore la sûreté de fonctionnement et donne une meilleure visibilité sur les risques industriels. Une grille standard, souvent utilisée avec un diagramme simple, suffit pour l&#x27;utiliser et la construire.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">L&#x27;AMDEC est-elle liée au Lean et au Six Sigma ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Oui. En matière de qualité, l&#x27;analyse AMDEC est souvent utilisée dans une démarche Lean ou Six Sigma, et pendant le développement d&#x27;un produit. Un ingénieur qualité s&#x27;en sert pour créer un plan de contrôle qui consiste à cibler les défaillances critiques. Cet article présente une solution de bon sens : tester la méthode sur une machine, vérifier l&#x27;exigence de fiabilité, puis élargir.</div></details></div></div></div></section><section style="padding:var(--sec) 0 var(--sec)"><div style="max-width:1200px;margin:0 auto;padding:0 40px"><div data-reveal="" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:36px;padding:44px 48px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap"><div><div style="font:600 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:12px">Une question sur ce contenu</div><h2 style="font:600 calc(clamp(22px,2.2vw,32px) * var(--ts))/1.14 var(--ft);letter-spacing:-.035em;margin:0 0 10px;max-width:26ch;text-wrap:balance">Nos équipes répondent aux questions techniques.</h2><p style="font:400 15.5px/1.6 var(--fb);color:var(--ink2);margin:0;max-width:48ch">Un point de méthode à creuser, un cas particulier sur votre installation : le chargé d&#x27;affaires de votre secteur vous rappelle.</p></div><div style="display:flex;gap:10px;flex:none;flex-wrap:wrap"><a href="#formulaire" style="display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--acc);color:#fff;font:600 15px var(--fb);white-space:nowrap;box-shadow:0 12px 30px -12px rgba(255,124,60,.9);transition:filter var(--tr),transform var(--tr)">Poser ma question</a><a style="display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--chip);border:1px solid var(--line);color:var(--ink);font:600 15px var(--fb);white-space:nowrap;transition:border-color var(--tr)" href="/ressources">Toutes les ressources</a></div></div></div></section></main></div></body></html>

@@ -9,6 +9,8 @@ import {
   TITRE2,
   colonnes,
 } from "@/components/site/blocs/habillage";
+import Bloc from "@/components/site/blocs/Bloc";
+import { BLOCS } from "@/components/site/blocs";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import type { ContenuSecteur } from "@/types/secteur";
 
@@ -75,6 +77,20 @@ export default function PageSecteur({
 
   const appel = contenu.appelTitre || contenu.appelTexte;
   const boutonAppel = contenu.appelBouton;
+
+  /*
+    Le texte du corpus que la maquette ne dessine pas. Lu sur un `jsonb` : une
+    section sans bloc est ECARTEE, pas rendue, sinon la page entiere tombe a la
+    recherche d'un composant qui n'existe pas. Une page amputee vaut mieux
+    qu'une 500 sur une URL referencee, et c'est deja la regle de la route.
+  */
+  const complement = (contenu.complement ?? []).filter(
+    (section) =>
+      !!section &&
+      typeof section === "object" &&
+      typeof section.type === "string" &&
+      section.type in BLOCS,
+  );
 
   return (
     <div className="mg-site">
@@ -230,6 +246,28 @@ export default function PageSecteur({
             </div>
           </section>
         ) : null}
+
+        {/*
+          SOUS LES SECTIONS DE LA MAQUETTE, le texte rédigé que la maquette ne
+          dessine pas : ce que nous traitons, le déroulé, nos engagements,
+          l'appel de milieu de page, les dernières réalisations, les questions
+          fréquentes. Voir `types/secteur.ts`, champ `complement`.
+
+          Rendu par les blocs du gabarit de vente, qui sont les MOTIFS DE
+          SECTION DE LA MAQUETTE déjà portés, surtitres compris : la page reste
+          celle de la maquette et garde tout son texte. Ils sont importés, pas
+          réécrits.
+
+          Placé ici, et non après l'appel final : l'ouverture et la fermeture de
+          la page restent celles de la maquette, le corps s'insère entre les
+          deux. Du texte après l'appel à l'action se lirait comme une page qui
+          reprend après avoir fini.
+        */}
+        {complement.map((section, i) => (
+          // L'index suffit comme clé : l'ordre du tableau EST celui du corpus,
+          // il ne se réarrange pas.
+          <Bloc key={`${section.type}-${i}`} section={section} />
+        ))}
 
         {/*
           Le territoire et les pages sœurs, dans UN SEUL bloc révélé : c'est ce

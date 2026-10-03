@@ -1,0 +1,277 @@
+{
+  "url": "/expertises/electromecanique/",
+  "contenu": {
+    "gabarit": "domaine",
+    "chapeau": "Un seul professionnel qui maîtrise l'entraînement et sa commande, du contacteur jusqu'à l'accouplement. Un déplacement, un diagnostic, une cause écrite.",
+    "boutons": [
+      {
+        "libelle": "Demander une intervention"
+      }
+    ],
+    "traitements": [
+      "Des motorisations qui tiennent la charge",
+      "Une commande maîtrisée",
+      "Des transmissions fiables",
+      "Une instrumentation juste",
+      "Un préventif réel",
+      "Le rebobinage suivi de bout en bout",
+      "Trois indicateurs relevés avec vous"
+    ],
+    "autres": [
+      {
+        "libelle": "Automatisme industriel",
+        "href": "/expertises/automatisme/"
+      },
+      {
+        "libelle": "Maintenance électrique industrielle",
+        "href": "/expertises/electrique/"
+      },
+      {
+        "libelle": "Maintenance hydraulique",
+        "href": "/expertises/hydraulique/"
+      },
+      {
+        "libelle": "Maintenance mécanique",
+        "href": "/expertises/mecanique/"
+      },
+      {
+        "libelle": "Maintenance pneumatique",
+        "href": "/expertises/pneumatique/"
+      },
+      {
+        "libelle": "Maintenance robotique",
+        "href": "/expertises/robotique/"
+      },
+      {
+        "libelle": "Soudure industrielle",
+        "href": "/expertises/soudure/"
+      },
+      {
+        "libelle": "Maintenance tuyauterie industrielle",
+        "href": "/expertises/tuyauterie/"
+      }
+    ],
+    "cta": {
+      "question": "Besoin d'arrêter le ping-pong entre l'électricien et le mécanicien ?",
+      "bouton": {
+        "libelle": "Demander une intervention"
+      }
+    },
+    "reste": [
+      {
+        "type": "chiffres",
+        "chiffres": [
+          {
+            "valeur": "10 %",
+            "libelle": "des candidats retenus, après entretien technique ET comportemental"
+          },
+          {
+            "valeur": "+ 100",
+            "libelle": "collaborateurs, depuis 4 agences, Lyon (siège), Montréal, Dubaï et Madrid"
+          },
+          {
+            "valeur": "24/24 et 7/7",
+            "libelle": "astreinte, pour les sites couverts"
+          }
+        ]
+      },
+      {
+        "type": "probleme",
+        "punchline": "Le moteur chauffe, le variateur déclenche, et deux intervenants se renvoient la balle. L'électricien dit que c'est mécanique. Le mécanicien dit que c'est électrique.",
+        "puces": [
+          {
+            "accroche": "Vous payez deux déplacements pour une seule panne.",
+            "texte": "Et vous attendez deux fois, avec la ligne à l'arrêt entre les deux."
+          },
+          {
+            "accroche": "Une recherche partielle remet la mauvaise pièce.",
+            "texte": "La panne revient, la facture double, la confiance de l'équipe production s'use."
+          },
+          {
+            "accroche": "Le capteur ment, la commande est saine.",
+            "texte": "Codeur déréglé, détecteur encrassé, blindage coupé : sans double compétence, on remplace du matériel en bon état."
+          },
+          {
+            "accroche": "Le contacteur collé est un risque immédiat.",
+            "texte": "La machine démarre seule ou refuse de démarrer, et l'opérateur est devant."
+          }
+        ]
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "Des motorisations qui tiennent la charge",
+              "texte": "moteur asynchrone, motoréducteur, servomoteur. Expertise, dépose, alignement, remise en service."
+            },
+            "benefice": "L'échauffement est attribué à sa vraie cause, ventilation, surcharge ou déséquilibre de phases."
+          },
+          {
+            "prestation": {
+              "accroche": "Une commande maîtrisée",
+              "texte": "variateurs, démarreurs, contacteurs, protections. Paramétrage, remplacement, contrôle des réglages."
+            },
+            "benefice": "Le code défaut devient un point de départ, pas une conclusion."
+          },
+          {
+            "prestation": {
+              "accroche": "Des transmissions fiables",
+              "texte": "réducteurs, accouplements, courroies, roulements, mesure de jeu."
+            },
+            "benefice": "Le couple arrive à l'organe de travail, et la vibration cesse de détruire les paliers voisins."
+          },
+          {
+            "prestation": {
+              "accroche": "Une instrumentation juste",
+              "texte": "capteurs, codeurs, détecteurs, sondes, blindages."
+            },
+            "benefice": "La machine reçoit la bonne information, donc elle exécute le bon cycle."
+          },
+          {
+            "prestation": {
+              "accroche": "Un préventif réel",
+              "texte": "thermographie d'armoire, mesure de courant, contrôle de serrage, suivi des échauffements des machines tournantes."
+            },
+            "benefice": "Les arrêts subis reculent et le budget se lisse sur l'année."
+          },
+          {
+            "prestation": {
+              "accroche": "Le rebobinage suivi de bout en bout",
+              "texte": "nous assurons l'expertise, la dépose, la repose et la remise en service, l'atelier spécialisé fait le bobinage sous notre suivi."
+            },
+            "benefice": "Un seul interlocuteur jusqu'au redémarrage, même quand le moteur part en atelier."
+          },
+          {
+            "prestation": {
+              "accroche": "Trois indicateurs relevés avec vous",
+              "texte": "taux de disponibilité, taux de panne par équipement, consommation énergétique."
+            },
+            "benefice": "Vous savez quelles machines plombent l'activité, au lieu de le deviner."
+          }
+        ],
+        "prose": [
+          {
+            "texte": "Un moteur en panne maintenant se traite par le [dépannage industriel](/offres/depannage-industriel/). Un renfort durable passe par la [sous-traitance maintenance](/offres/residence/), un électromécanicien intégré à votre équipe pour une durée définie avec vous."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Vous décrivez la situation",
+            "texte": "équipement, symptôme, code défaut, plaque signalétique, contexte. Deux minutes ici font gagner une heure sur site."
+          },
+          {
+            "titre": "Un technicien vous rappelle dans l'heure",
+            "texte": "bon profil, bonne date, bonnes habilitations, décidé au téléphone et pas trois jours plus tard."
+          },
+          {
+            "titre": "L'électromécanicien intervient en autonomie",
+            "texte": "consignation, mesures, recherche de panne, réparation, essais en charge, application de vos consignes."
+          },
+          {
+            "titre": "Il mesure avant de remplacer.",
+            "texte": "Intensité, température, jeu, isolement : la décision se prend sur une valeur, jamais sur une impression."
+          },
+          {
+            "titre": "Les deux hypothèses sont tranchées en une visite.",
+            "texte": "Là où deux corps de métier doivent se succéder, un seul intervenant conclut."
+          },
+          {
+            "titre": "Vous recevez un écrit exploitable",
+            "texte": "cause identifiée, travaux réalisés, pièces changées, préconisations d'entretien pour la suite."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
+            "texte": "L'astreinte 24/24 et 7/7 couvre la nuit et le week-end sur les sites concernés."
+          },
+          {
+            "accroche": "Un électromécanicien évalué par un homme de terrain.",
+            "texte": "Mise en situation technique, lecture de schéma, méthode de recherche, puis évaluation comportementale sur la rigueur, la sécurité et la qualité du compte rendu. Seuls 10 % des candidats sont retenus."
+          },
+          {
+            "accroche": "Le plan de prévention signé et l'analyse des risques faite avant d'ouvrir l'armoire.",
+            "texte": "Consignation, balisage, équipements de protection. Vos procédures qualité, vos créneaux d'accès et vos règles de confidentialité priment sur nos habitudes."
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "question": "Besoin d'un seul intervenant pour une panne qui touche le moteur et sa commande ?",
+        "bouton": "Demander une intervention",
+        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Remise en état d'un site de traitement des eaux industrielles, risque chimique",
+            "texte": "un technicien électromécanicien habilité RC1 mobilisé 6 mois, mécanique, électricité et notions d'automatisme réunies sur le même intervenant",
+            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
+            "lienHref": "/preuves/suez-remise-en-etat/"
+          },
+          {
+            "titre": "Montages et déplacements de machines, étanchéité et isolation",
+            "texte": "assemblage mécanique et électromécanique de lignes et de sous-ensembles, missions ciblées sur 2025",
+            "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
+            "lienHref": "/preuves/soprema/"
+          },
+          {
+            "titre": "Contrat de maintenance préventive annuelle, logistique",
+            "texte": "six techniciens polyvalents en permanence, mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique et robotique couvertes, depuis septembre 2023",
+            "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
+            "lienHref": "/preuves/veepee-sites-lyon/"
+          },
+          {
+            "titre": "Maintien opérationnel de convoyeurs, trieurs et packaging automatisés, logistique et transport",
+            "texte": "deux techniciens en poste, domaines couverts en propre",
+            "lienLibelle": "Étude de cas GLS : maintenance curative",
+            "lienHref": "/preuves/gls-maintenance-curative/"
+          },
+          {
+            "titre": "Maintenance du parc machines d'un équipementier automobile",
+            "texte": "un technicien de maintenance dédié, intégré aux équipes du site, en 2025",
+            "lienLibelle": "Étude de cas AUTOLIV : maintien d'un site",
+            "lienHref": "/preuves/autoliv/"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Combien coûte une intervention électromécanique ?",
+            "reponse": "Le chiffrage dépend de l'équipement, du défaut et de l'urgence, et se fait sur devis. Le calcul à poser est simple : comparez ce montant à deux déplacements successifs, un électricien puis un mécanicien, avec la ligne à l'arrêt entre les deux."
+          },
+          {
+            "question": "Nous avons déjà un prestataire par métier. Pourquoi changer ?",
+            "reponse": "Parce que la moitié des pannes mixtes se résolvent sans second déplacement quand un seul intervenant voit les deux mondes. Sur les équipements récents, où l'électronique et la mécanique sont indissociables, cette double compétence devient nécessaire."
+          },
+          {
+            "question": "Qui répond de la sécurité pendant l'intervention ?",
+            "reponse": "Plan de prévention signé, analyse des risques faite avant l'ouverture de l'armoire, habilitations électriques et autorisations de travail en hauteur ou en espace confiné vérifiées avant le déplacement. Le risque électrique ne se négocie pas."
+          },
+          {
+            "question": "Qui intervient sur nos machines ?",
+            "reponse": "Des électromécaniciens salariés de Migen, évalués en mise en situation technique et en entretien comportemental. 10 % des candidats sont retenus, et un bon résultat mal transmis ne compte pas dans l'évaluation."
+          },
+          {
+            "question": "Assurez-vous le rebobinage des moteurs ?",
+            "reponse": "Nous réalisons l'expertise, la dépose, la repose et la remise en service. Le bobinage lui-même est confié à un atelier spécialisé, sous notre suivi, jusqu'au redémarrage constaté."
+          },
+          {
+            "question": "Couvrez-vous notre région, et les petites structures ?",
+            "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France partout en France. Un atelier de dix personnes avec deux machines critiques a autant besoin de fiabilité qu'une grande usine."
+          }
+        ]
+      }
+    ]
+  }
+}

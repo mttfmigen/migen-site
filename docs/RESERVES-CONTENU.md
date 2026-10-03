@@ -395,3 +395,48 @@ Ils sont rendus en texte plutôt qu'en lien mort :
 - /carriere/automaticien/ 404, libelle « Automaticien »
 - /carriere/electrotechnicien/ 404, libelle « Electrotechnicien »
 - … et 11 autres
+
+## Gabarits VILLE et DEPARTEMENT de /implantations/ (42 pages)
+
+- ECULLY DANS LE CORPUS DE /implantations/lyon/, et c'est un arbitrage Mehdi, pas
+  une faute de portage. Le chapeau du hero est le texte du client, mot pour mot :
+  « Migen est nee ici en 2021, siege a Limonest et bureaux a Ecully, et nos
+  techniciens, bases a Lyon, connaissent les deux. » Il ne se contredit pas avec
+  CLAUDE.md, qui fixe le siege a Limonest : il ajoute des bureaux a Ecully.
+  CLAUDE.md marque pourtant Ecully comme l'ANCIENNE adresse, « a purger a la
+  recette », et « a confirmer par Mehdi, c'est une mention legale ».
+  LAISSE TEL QUEL : reecrire la phrase du client sur un point d'adresse que le
+  contrat dit de faire confirmer serait inventer une donnee d'entreprise. C'est
+  la seule page des 42 concernee.
+  AVANT : « siege a Limonest et bureaux a Ecully »
+  APRES : inchange, en attente de l'arbitrage.
+
+- BANDEAU PHOTO DU GABARIT VILLE NON RENDU, section 2 sur 5 de isVille
+  (maquette 3993 a 4005 : bandeau 400px, rayon 36, degrade vers le bas,
+  pastilles en verre blanc a 18 %). Il demande une PHOTOGRAPHIE et une LISTE DE
+  COMMUNES, et le corpus n'en fournit ni l'une ni l'autre sur aucune des 42
+  pages. Une photo de remplissage ou des communes extraites d'un paragraphe
+  seraient de la donnee inventee. A porter le jour ou une source les donne.
+
+- COMMUNES COUVERTES DU GABARIT DEPARTEMENT NON RENDUES, premiere moitie de la
+  section 2 sur 3 de isDept (maquette 6392 : « Communes couvertes », h2, puis
+  dix pastilles non cliquables). Le corpus ne fournit la liste des communes sur
+  aucune des 8 pages de departement. Les objections en citent en prose, les en
+  extraire serait fabriquer une donnee structuree a partir d'un paragraphe.
+
+- SURTITRE, ADRESSE ET TITRES DE COLONNE NON ALIMENTES. La maquette ecrit un
+  surtitre de hero (« Rhone, Grand Lyon »), un surtitre de panneau (« Agence de
+  Lyon »), une adresse postale, et trois titres courts (constat, reponse,
+  questions frequentes). Le corpus n'en fournit aucun. Les sections se rendent
+  sans eux ; aucun n'est devine depuis le chemin de la page. Pour l'adresse, une
+  seule des 42 pages pourrait en porter une vraie, celle du siege.
+
+- LIEN « Voir la version LP non referencee » NON PORTE (maquette 4064). Sa cible
+  est un href="#" que la maquette animait par sa propre logique de navigation,
+  et aucune page du corpus ne fournit d'adresse de remplacement. L'en-tete de la
+  section reste en flex, pret a le recevoir.
+
+- CARTE D'AGENCES DU HERO DEPARTEMENT NON PORTEE (maquette 6378,
+  x-import component="MigenAgences"). Ce n'est pas du HTML et ne se porte pas.
+  La place est tenue par les reperes chiffres du corpus, dans le panneau en
+  verre que PageSecteur rend deja aux memes valeurs.

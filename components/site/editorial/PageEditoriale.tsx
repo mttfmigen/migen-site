@@ -25,7 +25,16 @@ const PARAGRAPHE = {
   margin: "0 0 18px",
 } as const;
 
-function Bloc({ bloc }: { bloc: BlocEditorial }) {
+/**
+ * Rendu d'UN bloc du corpus.
+ *
+ * EXPORTÉ, et c'est la seule raison pour laquelle ce fichier a été touché : le
+ * gabarit métier (`components/site/metier/Corps.tsx`) rend le même corpus sous
+ * les quatre sections que la maquette lui dessine, et il doit le rendre
+ * exactement comme ici. Recopier ces cent cinquante lignes aurait donné deux
+ * rendus du même texte, qui divergent au premier ajustement de charte.
+ */
+export function Bloc({ bloc }: { bloc: BlocEditorial }) {
   switch (bloc.type) {
     case "titre":
       return bloc.niveau === 2 ? (

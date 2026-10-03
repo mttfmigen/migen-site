@@ -1,0 +1,250 @@
+{
+  "url": "/offres/retrofit/remise-en-etat/",
+  "contenu": {
+    "gabarit": "offre",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30",
+    "chapeau": "**Une machine fatiguée n'est pas une machine finie.** Elle produit de nouveau à la cote, pour une fraction du prix du neuf.",
+    "actions": [
+      {
+        "libelle": "Les cinq offres",
+        "href": "/offres/"
+      }
+    ],
+    "formulaireHeroTitre": "Décrire mon besoin",
+    "formulaireHeroMention": "Rappel dans l'heure",
+    "brefSurtitre": "En bref",
+    "chiffres": [
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+      },
+      {
+        "valeur": "+ 80",
+        "libelle": "clients réguliers · sur plus de 120 clients industriels."
+      },
+      {
+        "valeur": "8",
+        "libelle": "domaines couverts · mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie, robotique."
+      }
+    ],
+    "brefBande": "Besoin de savoir si votre machine peut retrouver sa cote ?",
+    "brefBouton": {
+      "libelle": "Faire expertiser ma machine",
+      "href": "/contact/"
+    },
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "Le dépannage revient tous les mois, et personne n'a jamais cherché la cause racine.",
+        "puces": [
+          {
+            "accroche": "La précision qui dérive",
+            "texte": "sur une machine-outil qui a vingt ans de service."
+          },
+          {
+            "accroche": "La machine d'occasion achetée à bon prix",
+            "texte": ", dont l'état réel réserve des surprises."
+          },
+          {
+            "accroche": "La ligne arrêtée plusieurs années",
+            "texte": "qu'il faut redémarrer sans tout casser."
+          },
+          {
+            "accroche": "Le parc déplacé lors d'un transfert",
+            "texte": ", à remettre en ordre avant la reprise."
+          }
+        ]
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "texte": "**Expertise écrite avec photos et mesures**"
+            },
+            "benefice": "Vous voyez l'état réel de la machine avant de décider, jeux, alignements, usure, lubrification, conformité des protections."
+          },
+          {
+            "prestation": {
+              "texte": "**Devis détaillé avec variantes**"
+            },
+            "benefice": "Réparation ou remplacement, travail sur site ou passage en atelier : vous arbitrez sur des chiffres, pas sur une intuition."
+          },
+          {
+            "prestation": {
+              "texte": "**Démontage et réparation**"
+            },
+            "benefice": "Composants défaillants réparés ou remplacés, jeux repris, circuits restaurés. La cause traitée, pas le symptôme."
+          },
+          {
+            "prestation": {
+              "texte": "**Protections et sécurité**"
+            },
+            "benefice": "Soufflets, carters, arrêts d'urgence, dispositifs de protection remis au standard applicable pendant le même arrêt."
+          },
+          {
+            "prestation": {
+              "texte": "**Remontage, réglages, essais en charge**"
+            },
+            "benefice": "Géométrie contrôlée, essais à vide puis sur votre production réelle. La machine n'est rendue qu'une fois opérationnelle."
+          },
+          {
+            "prestation": {
+              "texte": "**Rapport et analyse d'usure**"
+            },
+            "benefice": "Liste des pièces remplacées, causes d'usure, pistes d'amélioration. De quoi alimenter votre plan de maintenance."
+          },
+          {
+            "prestation": {
+              "texte": "**Peinture, transport en atelier, modernisation**"
+            },
+            "benefice": "En supplément sur devis, quand la rénovation doit aller jusqu'au bout."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "L'expertise.",
+            "texte": "Un technicien expérimenté examine la machine : état mécanique, électrique, hydraulique, pneumatique, jeux, alignements, usure des organes, lubrification, protections. État des lieux écrit, avec photos et mesures."
+          },
+          {
+            "titre": "Le devis détaillé.",
+            "texte": "Chiffrage poste par poste : pièces, main-d'œuvre, essais, avec les variantes utiles. Vous décidez en connaissance de cause."
+          },
+          {
+            "titre": "Le démontage et la réparation.",
+            "texte": "Dépose des ensembles concernés, réparation ou remplacement des composants défaillants, reprise des jeux, restauration des circuits."
+          },
+          {
+            "titre": "Les protections et la sécurité.",
+            "texte": "Remise en conformité des protections avec les normes applicables. Si l'écart réglementaire est important, une remise à plat plus large vous est proposée."
+          },
+          {
+            "titre": "Le remontage et les essais.",
+            "texte": "Montage dans les règles, géométrie contrôlée, réglages optimisés, essais à vide puis en charge sur votre processus, opérateurs accompagnés au redémarrage."
+          },
+          {
+            "titre": "La documentation.",
+            "texte": "Rapport complet, pièces remplacées, analyse des causes d'usure, recommandations pour la suite."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Un diagnostic honnête, qui dit aussi quand la remise en état n'est pas rentable.",
+            "texte": "Si le cumul des réparations approche la valeur d'un équipement équivalent, vous le savez avant d'engager le moindre euro."
+          },
+          {
+            "accroche": "Le devis détaillé avant toute intervention.",
+            "texte": "Chaque poste chiffré séparément, comparé aux alternatives : poursuivre en correctif, moderniser plus profondément, ou remplacer."
+          },
+          {
+            "accroche": "Le travail sur votre site chaque fois que c'est possible",
+            "texte": ", avec un calendrier convenu avec vos équipes, week-ends et périodes de fermeture compris, pour limiter l'immobilisation."
+          },
+          {
+            "accroche": "La sécurité de l'intervention tracée avant l'ouverture de la machine.",
+            "texte": "Démarche MASE et évaluation EcoVadis : les attestations sont transmises avec chaque plan de prévention."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Parc machines défaillant remis en service, Lyon, depuis février 2024.",
+            "texte": "Diagnostic sur site, plusieurs options chiffrées dans le budget d'une PME, parc existant conservé plutôt que racheté",
+            "lienLibelle": "Étude de cas JOINT LYONNAIS",
+            "lienHref": "/preuves/joint-lyonnais/"
+          },
+          {
+            "titre": "Montage, déplacement et renfort technique, étanchéité et isolation, 2025.",
+            "texte": "Machines existantes reconfigurées sans casse, délais tenus sans pénalité",
+            "lienLibelle": "Étude de cas SOPREMA",
+            "lienHref": "/preuves/soprema/"
+          },
+          {
+            "titre": "Maintenance préventive d'une centrale photovoltaïque, fin 2024.",
+            "texte": "Trois techniciens en renfort, suivi rigoureux des équipements sur toute la durée du chantier",
+            "lienLibelle": "Étude de cas EIFFAGE",
+            "lienHref": "/preuves/eiffage/"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Combien coûte une remise en état de machine ?",
+            "reponse": "Chaque cas est chiffré sur devis : l'état constaté, les pièces à remplacer et le degré de finition attendu font le prix. L'état des lieux préalable donne la rentabilité avant l'engagement, et la comparaison avec la valeur actuelle du matériel fait partie de la réponse."
+          },
+          {
+            "question": "Quelle différence entre remise en état et dépannage ?",
+            "reponse": "Le dépannage répare la panne du moment. La remise en état traite l'équipement dans son ensemble, et c'est le seul moyen d'arrêter la répétition. Quand une même machine est dépannée plusieurs fois dans l'année, l'opération de fond devient la plus économique."
+          },
+          {
+            "question": "Intervenez-vous sur une machine qui n'est pas sous votre contrat d'entretien ?",
+            "reponse": "Oui. Aucune antériorité n'est exigée, et nous reprenons volontiers un équipement suivi jusqu'ici par un autre prestataire. L'expertise part de l'état réel, pas de l'historique commercial."
+          },
+          {
+            "question": "Remettez-vous en état les machines d'occasion ?",
+            "reponse": "Oui, et c'est un cas fréquent. Nous pouvons examiner l'équipement avant votre achat, puis le remettre à niveau avant sa mise en service. Sur ce marché, l'information technique fiable manque souvent."
+          },
+          {
+            "question": "Qui réalise le travail ?",
+            "reponse": "Des techniciens salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des candidats sont retenus. Une équipe est affectée selon la machine : mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie."
+          },
+          {
+            "question": "Le travail a-t-il lieu sur site ou en atelier, et partout en France ?",
+            "reponse": "Sur votre site chaque fois que c'est utile, pour limiter l'immobilisation. Le passage en atelier se justifie pour les reconstructions lourdes ou les reprises d'usinage. Nos 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et nos hubs techniques couvrent le territoire."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin d'un avis écrit avant d'arbitrer entre réparer et remplacer ?",
+        "bouton": "Demander un état des lieux",
+        "href": "/contact/",
+        "rappel": "04 78 33 72 05, astreinte 24/24 et 7/7."
+      }
+    ],
+    "autresSurtitre": "Un autre besoin ?",
+    "autresTitre": "Chaque situation a son offre.",
+    "autres": [
+      {
+        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
+        "libelle": "Résidence",
+        "href": "/offres/residence/"
+      },
+      {
+        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
+        "libelle": "Périmètre complet",
+        "href": "/offres/maintenance-externalisee/"
+      },
+      {
+        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      },
+      {
+        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/"
+      },
+      {
+        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
+        "libelle": "Bureau d'études",
+        "href": "/offres/bureau-etudes/"
+      },
+      {
+        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
+      }
+    ]
+  }
+}

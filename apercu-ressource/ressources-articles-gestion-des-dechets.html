@@ -1,0 +1,795 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gestion des déchets industriels</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"><style>:root{--font-poppins:'Poppins'}</style><style>
+
+/* ==========================================================================
+   Charte Migen, portée depuis la maquette Claude Design.
+   Source : « Migen - Site final.dc.html » et le système de design
+   « migen-design-system-9ce37c32 / colors_and_type.css ».
+
+   POURQUOI ces variables et pas des classes Tailwind : la maquette pilote
+   tout par variables CSS et styles en ligne. Les reproduire telles quelles est
+   le seul moyen d'obtenir le rendu à l'identique, et de pouvoir rejouer une
+   évolution de maquette sans retraduire chaque valeur. Tailwind reste
+   disponible pour la mise en page neuve.
+
+   Les blocs `@container` de la maquette ne sont PAS portés : ils n'existaient
+   que pour l'aperçu en iframe de Claude Design, où la fenêtre ne reflète pas
+   la largeur réelle. Sur le site, `@media` fait foi.
+   ========================================================================== */
+
+:root {
+  /* --ft : pile système, pour les mots où le dessin de la lettre compte plus
+     que la marque (le logotype « migen »). --fb : Poppins, tout le reste. */
+  --ft: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", sans-serif;
+  --fb: var(--font-poppins), var(--ft);
+  --fs: var(--font-caveat), var(--fb);
+
+  /* Opacité et flou du verre dépoli. Valeurs RENDUES par la maquette, relevées
+     au getComputedStyle sur onze surfaces, et non celles de son bloc :root, qui
+     sont arrondies. L'écart se voit sur les grandes cartes. */
+  --gl-a: 0.582;
+  --gl-b: 22.5px;
+
+  /* Orange de marque et ses dérivés */
+  --acc: #ff7c3c;
+  --acc-d: #f4641f;
+  --acc-w: rgba(255, 124, 60, 0.11);
+  --acc-ink: #7d3309;
+
+  /* États du formulaire. La maquette n'en a pas : elle ne montre jamais une
+     erreur de saisie ni une confirmation. Deux jetons sont donc posés ici, et
+     ils sont CHOISIS, pas empruntés à une palette de framework (le formulaire
+     portait `text-red-700` et `text-green-800`, deux couleurs de Tailwind qui
+     ne viennent pas de la charte).
+
+     Contraste mesuré, pas supposé : #b3261e donne 6,54:1 sur --card et 6,2:1
+     sur --bg, #1b5e20 donne 7,87:1 et 7,47:1. Les deux passent largement le
+     plancher de 4,5:1. Le rouge est volontairement sombre et peu saturé : à
+     côté de l'orange de marque (--acc, #ff7c3c), un rouge vif se lirait comme
+     une seconde couleur d'accent et non comme une alerte.
+
+     Le teinte-fond sert aux bandeaux de message, à 11 % comme --acc-w. */
+  --err: #b3261e;
+  --err-w: rgba(179, 38, 30, 0.09);
+  --ok: #1b5e20;
+  --ok-w: rgba(27, 94, 32, 0.09);
+
+  --rad: 28px;
+  --rad-s: 18px;
+  --sec: 120px;
+  --sat: 0.55;
+  --ph-op: 1;
+  --ts: 1;
+  --tr: 200ms;
+
+  /* Fonds : blanc crème dominant, anthracite réservé aux panneaux et au pied */
+  --bg: #f1f2f4;
+  --card: #fff;
+  --panel: #1c1b19;
+  --foot: #141312;
+
+  /* Encres, du plus appuyé au plus effacé */
+  --ink: #1c1b19;
+  --ink1: #4a4845;
+  --ink2: #6a6764;
+  --ink3: #737373;
+  --ink4: #a8a49d;
+
+  --line: rgba(28, 27, 25, 0.09);
+  --chip: rgba(28, 27, 25, 0.055);
+
+  /* Verre : bordure et fond de l'îlot de navigation */
+  --gbd: rgba(255, 255, 255, 0.82);
+  --gsol: rgba(255, 255, 255, 0.8);
+
+  --ph: #dedfe1;
+  --sheet: rgba(250, 250, 251, 0.9);
+
+  --logo-f: grayscale(1);
+  --map-a: rgba(255, 255, 255, 0.95);
+  --map-b: rgba(255, 255, 255, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Conteneur racine du site, repris de la maquette.
+   `<div class="mg-site" style="min-height:100vh;background:var(--bg);overflow:hidden">`
+
+   Une seule valeur change : `overflow: hidden` devient `overflow-x: clip`.
+   POURQUOI, et ce n'est pas une préférence : `overflow: hidden` fait de
+   l'élément un CONTENEUR DE DÉFILEMENT, même quand il ne défile jamais. Les
+   sections qui apparaissent au défilement calculent leur `animation-timeline:
+   view()` contre le conteneur le plus proche : ce conteneur-là ne bouge pas,
+   leur progression reste bloquée, et elles restent à `opacity: 0`. Du contenu
+   que Google voit et que le visiteur ne voit pas. `clip` coupe exactement
+   pareil sans créer de conteneur de défilement. */
+.mg-site {
+  min-height: 100vh;
+  background: var(--bg);
+  overflow-x: clip;
+}
+
+html,
+body {
+  /* L'ancrage automatique du défilement déplace la page quand un bloc se
+     déplie au-dessus du point de lecture. La maquette le neutralise. */
+  overflow-anchor: none;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--fb);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--acc);
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: var(--fb);
+}
+
+::selection {
+  background: var(--acc);
+  color: #fff;
+}
+
+/* Accessibilité : le focus clavier doit rester visible partout. La maquette
+   ne le déclare pas, le site l'exige (RGAA 7.1, WCAG 2.4.7). */
+:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------- animations */
+@keyframes mgFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes mgMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mouvement réduit : le bandeau de logos et les flottements s'arrêtent.
+   Exigence WCAG 2.3.3, absente de la maquette. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------- dépliants et FAQ */
+summary::-webkit-details-marker {
+  display: none;
+}
+.cx-faq summary::-webkit-details-marker {
+  display: none;
+}
+.cx-faq[open] .cx-plus,
+details[open] .g3-plus {
+  transform: rotate(45deg);
+  background: var(--acc) !important;
+  color: #fff !important;
+}
+.cx-more > summary::-webkit-details-marker {
+  display: none;
+}
+.cx-more .cx-l2 {
+  display: none;
+}
+.cx-more[open] .cx-l1 {
+  display: none;
+}
+.cx-more[open] .cx-l2 {
+  display: inline;
+}
+
+/* ------------------------------------------------------------- curseur de plage */
+.mg-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--line);
+  outline: none;
+  margin: 0;
+}
+.mg-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #ff7c3c;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(28, 27, 25, 0.28);
+  cursor: grab;
+}
+.mg-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: #ff7c3c;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(28, 27, 25, 0.28);
+  cursor: grab;
+  border-color: #fff;
+}
+.mg-range:active::-webkit-slider-thumb {
+  cursor: grabbing;
+}
+
+/* --------------------------------------------------- bandeau de logos défilant */
+/* La piste lit `var(--mq-play, running)`. La valeur par défaut existe côté
+   `var()`, mais la déclarer ici rend la pause pilotable depuis un composant
+   (un bouton de pause, un test) sans toucher à la règle de survol. */
+.mg-marquee {
+  --mq-play: running;
+}
+.mg-marquee:hover .mg-track,
+.mg-marquee:focus-within .mg-track {
+  --mq-play: paused;
+  animation-play-state: paused;
+}
+.mg-logo {
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 0.35s ease;
+}
+.mg-marquee:hover .mg-logo {
+  opacity: 0.4;
+}
+.mg-logo:hover {
+  opacity: 1 !important;
+  transform: translateY(-6px) scale(1.08);
+}
+
+/* ------------------------------------------------------------- rails sans barre */
+.mg-autorail {
+  scrollbar-width: none !important;
+}
+.mg-autorail::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Adaptations par largeur, reprises de la maquette dans son ordre.
+   ========================================================================== */
+
+/* Navigation : l'îlot se resserre, puis cède la place au bouton menu */
+.mg-nav > * {
+  white-space: nowrap;
+  flex: none;
+}
+.mg-burger {
+  display: none;
+}
+
+@media (max-width: 1180px) {
+  .mg-nav > * {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 1100px) {
+  .mg-tel {
+    display: none !important;
+  }
+  .mg-implant {
+    display: none !important;
+  }
+}
+@media (max-width: 1080px) {
+  .mg-nav > * {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    font-size: 13.5px !important;
+  }
+}
+@media (max-width: 1000px) {
+  .mg-nav > * {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 880px) {
+  .mg-nav {
+    display: none !important;
+  }
+  .mg-burger {
+    display: inline-flex !important;
+  }
+}
+@media (max-width: 860px) {
+  .mg-nav > * {
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+    font-size: 12.5px !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-topwrap {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+}
+
+/* Grilles de valeurs */
+@media (max-width: 1000px) {
+  .mg-valg {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-valg > .mg-val {
+    grid-column: span 1 !important;
+  }
+  .mg-valg > .mg-val:first-child {
+    grid-column: 1 / -1 !important;
+  }
+  .mg-valg > .mg-val:last-child:nth-child(even) {
+    grid-column: 1 / -1 !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-valg {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-valg > .mg-val {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* Bento, avant-après, mosaïque, rails multiples */
+@media (min-width: 1001px) {
+  .mg-bento > [data-fill="1"] {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 1000px) {
+  .mg-rmulti {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-bento > *[data-open="1"] {
+    grid-column: span 2 !important;
+    grid-row: auto !important;
+  }
+  .mg-ba {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-rq3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .mg-rail {
+    display: none;
+  }
+  .mg-tl > * {
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .mg-tl > * > *:first-child {
+    margin-bottom: 14px !important;
+  }
+}
+@media (max-width: 640px) {
+  .mg-bento {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-rows: auto !important;
+  }
+  .mg-bento > *[data-open="1"] {
+    grid-column: span 1 !important;
+  }
+  .mg-ba {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-rows: minmax(240px, auto) !important;
+  }
+}
+@media (max-width: 620px) {
+  .mg-rmulti {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* Lignes de tableau : des colonnes tombent avant que la ligne ne se casse */
+@media (max-width: 980px) {
+  .cx-lay {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .cx-toc {
+    display: none !important;
+  }
+  .mg-reslay {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 26px !important;
+  }
+  .mg-resrail {
+    position: static !important;
+  }
+  .mg-fmts,
+  .mg-sits {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 7px !important;
+    margin-bottom: 18px !important;
+  }
+  .mg-fmts > * {
+    width: auto !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 999px !important;
+    padding: 8px 14px !important;
+    gap: 7px !important;
+    white-space: nowrap;
+  }
+  .mg-sits > * {
+    border: 1px solid var(--line) !important;
+    border-radius: 999px !important;
+    padding: 7px 13px !important;
+    font-size: 12.5px !important;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 940px) {
+  .mg-mrow {
+    grid-template-columns: 1.5fr 0.9fr 104px !important;
+  }
+  .mg-mrow > *:nth-child(2),
+  .mg-mrow > *:nth-child(4) {
+    display: none;
+  }
+  .mg-prow {
+    grid-template-columns: auto minmax(0, 1fr) 84px !important;
+  }
+  .mg-prow > *:nth-child(3) {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .mg-r2 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 36px !important;
+  }
+}
+@media (min-width: 901px) {
+  .mg-flip > *:last-child {
+    order: -1;
+  }
+}
+@media (max-width: 760px) {
+  .cx-row {
+    grid-template-columns: 32px minmax(0, 1fr) !important;
+    gap: 8px 16px !important;
+  }
+  .cx-row > *:nth-child(3) {
+    grid-column: 2;
+  }
+  .mg-cmp {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .mg-cmp > *:first-child {
+    grid-column: 1/-1;
+  }
+  .mg-doclist > div {
+    grid-template-columns: 36px minmax(0, 1fr) !important;
+  }
+  .mg-doclist > div > span:last-child {
+    grid-column: 2;
+  }
+  .mg-mosaic {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-mosaic > *:first-child {
+    min-height: 340px !important;
+  }
+  .mg-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    row-gap: 20px !important;
+  }
+  .mg-steps > div:first-child {
+    display: none !important;
+  }
+  .mg-r3,
+  .mg-bento2,
+  .mg-rq3 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .mg-bento2 > * {
+    grid-column: auto !important;
+  }
+  .mg-rq2 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+@media (max-width: 620px) {
+  .mg-mrow {
+    grid-template-columns: 1fr 104px !important;
+    gap: 12px !important;
+  }
+  .mg-mrow > *:nth-child(3) {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .mg-prow {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    gap: 14px !important;
+  }
+  .mg-prow > *:nth-child(4) {
+    text-align: left !important;
+    grid-column: 2 !important;
+  }
+}
+
+/* Mobile : marges, échelle des titres, arrondis, colonnes fusionnées */
+@media (max-width: 760px) {
+  .mg-pad,
+  .mg-site section > div[style*="max-width:1200px"],
+  .mg-site main > div[style*="max-width:1200px"],
+  .mg-site footer > div[style*="max-width:1200px"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .mg-site section[style*="max-width:1200px"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .mg-site {
+    --sec: 64px;
+  }
+  .mg-site h1 {
+    font-size: clamp(32px, 9vw, 42px) !important;
+    letter-spacing: -0.035em !important;
+  }
+  .mg-site h2 {
+    font-size: clamp(26px, 7.4vw, 34px) !important;
+  }
+  .mg-site [style*="position:sticky"][style*="top:110px"],
+  .mg-site [style*="position:sticky"][style*="top:100px"] {
+    position: static !important;
+  }
+  .mg-site [style*="border-radius:36px"] {
+    border-radius: 24px !important;
+  }
+  .mg-site [style*="padding:30px 34px"],
+  .mg-site [style*="padding:36px 40px"],
+  .mg-site [style*="padding:40px 44px"],
+  .mg-site [style*="padding:44px 48px"] {
+    padding: 24px 20px !important;
+  }
+  .mg-site table {
+    font-size: 13px;
+  }
+  .mg-site [style*="grid-column:span 2"],
+  .mg-site [style*="grid-column:span 3"] {
+    grid-column: auto !important;
+  }
+  .mg-site img[style*="aspect-ratio"] {
+    max-height: 70vw;
+  }
+}
+@media (max-width: 480px) {
+  .mg-site h1 {
+    font-size: clamp(28px, 8.6vw, 36px) !important;
+  }
+  .mg-site [style*='font:600 calc(clamp(56px'] {
+    font-size: 48px !important;
+  }
+}
+
+/* Habillage du gabarit ressource. Tout ce qu'un style en ligne ne peut pas
+   porter : les survols, et le style des éléments que le composant ne touche pas
+   un par un (les liens du corps, les cellules du barème). */
+
+a[href='#formulaire']:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+/* Ligne 6788 de la maquette : le bouton secondaire passe son filet à l'orange. */
+a[href='/ressources/']:hover {
+  border-color: var(--acc);
+}
+
+/* Ligne 6546 : la carte « Aller plus loin » fait de même. */
+aside a {
+  display: block;
+  transition: border-color var(--tr);
+}
+aside a:hover,
+aside a:focus-visible {
+  border-color: var(--acc);
+}
+
+/* Les liens internes que le corpus pose dans le corps du texte.
+   Soulignés, et pas seulement colorés : l'information ne doit pas passer par la
+   couleur seule, c'est le critère WCAG 1.4.1. */
+article a {
+  color: var(--acc-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--tr);
+}
+article a:hover,
+article a:focus-visible {
+  color: var(--acc-d);
+}
+
+/* LE BARÈME EST UN VRAI TABLEAU, dessiné en grille.
+
+   La maquette l'écrit en `div` imbriquées (lignes 6733 à 6748), ce qui donne le
+   bon dessin mais prive un lecteur d'écran de l'en-tête de colonne : la
+   troisième cellule d'une ligne ne se rattache plus à « Conduite à tenir ».
+   `table` rétablit la sémantique, et ces règles rendent au tableau le
+   comportement de grille que la maquette attend. Les colonnes elles-mêmes sont
+   posées en style en ligne sur chaque `tr`, parce que leur nombre vient des
+   données.
+
+   ATTENTION si ce bloc est touché : redéfinir `display` sur un tableau lui
+   retire son rôle implicite dans Chrome comme dans Safari. C'est pourquoi
+   `CorpsRessource.tsx` écrit `role="table"`, `rowgroup`, `row`, `columnheader`
+   et `cell` à la main. Retirer l'un sans l'autre casse l'accessibilité en
+   silence. */
+table {
+  display: block;
+  width: 100%;
+  border-collapse: collapse;
+}
+table thead,
+table tbody {
+  display: block;
+}
+table th,
+table td {
+  text-align: left;
+  padding: 0;
+  min-width: 0;
+  vertical-align: middle;
+}
+
+/*
+  Survols des blocs du gabarit de conversion, relevés sur `style-hover` dans la
+  maquette. Ils vivent dans un module CSS et non dans `app/globals.css` : le
+  fichier global est écrit par plusieurs agents en parallèle, et un survol n'est
+  pas exprimable dans un style en ligne.
+
+  Les classes portent le nom de leur rôle, pas celui de leur déclaration.
+*/
+
+a[href='#formulaire']:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+a[href='/ressources/']:hover {
+  background: var(--card);
+  transform: translateY(-1px);
+}
+
+/* Carte de réalisation : la maquette la soulève et creuse son ombre. */
+.cartePreuve {
+  transition:
+    transform var(--tr),
+    box-shadow var(--tr);
+}
+.cartePreuve:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.42);
+}
+
+/* Dépliant de FAQ : `globals.css` tient déjà l'état ouvert de `.cx-plus`
+   (rotation et passage à l'orange). Ici, l'état fermé et son survol. */
+.cx-plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex: none;
+  border-radius: 999px;
+  background: var(--chip);
+  color: var(--ink2);
+  font: 400 17px var(--fb);
+  transition:
+    transform var(--tr),
+    background var(--tr),
+    color var(--tr);
+}
+
+summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+  padding: 20px 24px;
+  cursor: pointer;
+  text-align: left;
+  list-style: none;
+}
+summary:hover .cx-plus {
+  background: var(--acc-w);
+  color: var(--acc-ink);
+}
+
+/* Liens internes que `TexteRiche` pose dans le corpus : 597 dans les 126 pages
+   importées. `globals.css` déclare `a { color: var(--ink); text-decoration:
+   none }`, donc SANS règle ici un lien du corpus se rend en #1c1b19 sans
+   soulignement, c'est-à-dire indistinguable du texte autour sur fond clair, et
+   #1c1b19 sur #1c1b19 sur le panneau anthracite, soit un contraste de 1:1.
+
+   La classe se pose sur le conteneur du texte du corpus, jamais sur un
+   conteneur qui porte aussi un lien d'habillage : les boutons d'action et la
+   carte de réalisation ont leur propre traitement et ne doivent pas être
+   soulignés. */
+.corpus a {
+  /* Même traitement que `article a` d'`Article.module.css` : un lien du corpus
+     doit se lire pareil dans un article et dans une page de vente.
+     `var(--acc-ink)` vaut 8,9:1 sur blanc, `var(--acc)` n'y tiendrait que
+     2,6:1. */
+  color: var(--acc-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-thickness var(--tr);
+}
+.corpus a:hover,
+.corpus a:focus-visible {
+  /* La couleur ne change pas : le survol épaissit le trait. L'orange de survol
+     global, `var(--acc)`, ne tient que 2,6:1 sur blanc, sous le plancher de
+     4,5:1. */
+  color: var(--acc-ink);
+  text-decoration-thickness: 2px;
+}
+
+/* Le même corpus sur le panneau anthracite (`var(--panel)`, #1c1b19) : les
+   sections « problème » et l'appel à l'action final. `var(--acc-ink)` n'y vaut
+   que 1,9:1. Le blanc y vaut 17:1, l'orange de marque 6,7:1. */
+.corpusClair a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--tr);
+}
+.corpusClair a:hover,
+.corpusClair a:focus-visible {
+  color: var(--acc);
+}
+
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fb)}a{text-decoration:none;color:inherit}</style></head><body><div class="mg-site"><main style="padding-top:96px"><section style="max-width:1200px;margin:0 auto;padding:70px 40px 0"><div style="max-width:760px"><div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap"><span style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--acc);padding:5px 12px;border-radius:999px;white-space:nowrap">Article</span></div><h1 style="font:600 calc(clamp(30px,3.6vw,52px) * var(--ts))/1.06 var(--ft);letter-spacing:-.042em;margin:0;text-wrap:balance">Gestion des déchets industriels</h1><p style="font:400 18px/1.65 var(--fb);color:var(--ink2);margin:20px 0 0">*7 min de lecture*</p></div></section><section style="max-width:1200px;margin:0 auto;padding:40px 40px 0"><div style="border-radius:var(--rad);background:var(--acc-w);border:1.5px solid rgba(255,124,60,.3);display:flex;align-items:center;gap:16px;padding:18px 24px;flex-wrap:wrap;max-width:760px"><span style="font:400 14.5px/1.6 var(--fb);color:var(--ink1);flex:1;min-width:240px">Une question sur vos déchets d&#x27;atelier ? Appelez le 04 78 33 72 05 : un expert vous rappelle dans l&#x27;heure, du lundi au vendredi de 8h00 à 18h30.</span></div></section><section style="max-width:1200px;margin:0 auto;padding:40px 40px 0"><div class="mg-r2" style="display:grid;grid-template-columns:minmax(0,760px) minmax(0,1fr);gap:52px;align-items:start"><article><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Huiles usagées au fond de l&#x27;atelier, bidons sans étiquette, benne unique pour tout : la gestion des déchets industriels finit trop souvent en angle mort, jusqu&#x27;au contrôle qui coûte cher.</p><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Cet article de nos <a href="/ressources/articles">Ressources : Articles</a> pose la définition, la réglementation et une méthode applicable dès demain, écrite par des techniciens qui produisent et gèrent ces déchets à chaque intervention de maintenance.</p><h2 id="gestion-des-dechets-industriels-la-definition" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Gestion des déchets industriels : la définition</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">La gestion des déchets industriels regroupe identification, tri, stockage, collecte, transport et traitement, pour toute activité industrielle. Le code de l&#x27;environnement (article L541-2) pose le principe : le producteur reste responsable jusqu&#x27;à l&#x27;élimination ou la valorisation finale.</p><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Trois familles de déchets, avec des obligations différentes :</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Déchets non dangereux, les DAE </strong>Les déchets d&#x27;activités économiques assimilés aux ordures ménagères : cartons, plastiques, bois, films, emballages. Ils partent en filières de recyclage ou de valorisation classiques.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Déchets dangereux </strong>Huiles, solvants, aérosols, chiffons souillés, batteries : toute matière dangereuse ou souillée qui présente un risque pour les personnes ou l&#x27;environnement. Identification obligatoire, contenants dédiés, traçabilité renforcée.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Déchets inertes </strong>Gravats, verre, matériaux de démolition : ils ne se décomposent pas et ne brûlent pas. Ils rejoignent des exutoires dédiés ou le réemploi.</span></li></ul><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Cette classification vise d&#x27;abord la sécurité : un déchet dangereux mal identifié contamine toute la benne, le contenu part au tarif du dangereux, et la facture triple.</p><h2 id="ce-que-la-reglementation-impose" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Ce que la réglementation impose</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">La réglementation ne distingue pas la grande usine du petit atelier : produire des déchets crée des obligations, quelle que soit la quantité. Le tableau résume l&#x27;essentiel.</p><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);overflow:hidden;margin:0 0 26px"><table role="table"><thead role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;padding:14px 30px;border-bottom:1px solid var(--line);background:var(--chip)"><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Obligation</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Ce que dit la règle</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Le risque si absent</th></tr></thead><tbody role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Tri à la source</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Papier, métaux, plastique, verre, bois, fraction minérale, plâtre : les flux se séparent au plus près du poste</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Refus de collecte, surcoût de traitement</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Registre des déchets</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Chaque sortie de déchets est consignée : nature, quantité, transporteur, destination, mode de traitement</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Amende administrative, dossier fragilisé</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Bordereaux de suivi</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Les déchets dangereux voyagent avec un bordereau dématérialisé, de la benne au centre de traitement</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Responsabilité engagée après enlèvement</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Responsabilité élargie</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Pour les emballages, les huiles, les équipements électriques : la responsabilité élargie du producteur (REP) finance des filières dédiées</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Contributions non versées, redressement</td></tr></tbody></table></div><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">La sanction dépasse l&#x27;amende : le code de l&#x27;environnement prévoit la remise en état aux frais du producteur, et les sites classés pour la protection de l&#x27;environnement, ICPE, jouent leur autorisation d&#x27;exploiter.</p><h2 id="comment-ca-marche-pas-a-pas" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Comment ça marche, pas à pas</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Une benne unique au fond de la cour n&#x27;est pas une organisation. La méthode tient en six étapes, du poste de travail au certificat final.</p><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:30px 34px 32px;margin:0 0 26px"><ol role="list" style="display:grid;gap:2px;margin:0;padding:0;list-style:none"><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">1</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">L&#x27;identification des flux</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Lister chaque déchet produit par l&#x27;activité : sa nature, son code déchet, sa dangerosité, les volumes par mois. Cette identification conditionne tout le reste.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">2</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Le tri à la source</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Un contenant par flux, mis en place au plus près du poste : fûts pour les huiles, bacs pour les métaux, caisses pour les DEEE. Le bon geste doit être plus simple que le mauvais réflexe.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">3</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">L&#x27;entreposage sur site</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Rétention sous les liquides, zones couvertes, contenants conformes et étiquetés, durées limitées. De bonnes conditions d&#x27;entreposage servent à éviter les mélanges qui coûtent cher.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">4</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">La collecte et le transport</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Un service de collecte autorisé, une fréquence ajustée aux volumes, un bordereau pour chaque enlèvement de déchets dangereux. Le transport par route suit les règles des marchandises dangereuses.</p></div></li><li style="display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">5</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">Le traitement et la valorisation</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Réutilisation, recyclage matière, valorisation énergétique, élimination en dernier recours : la hiérarchie des modes de traitement s&#x27;impose à tous.</p></div></li><li style="display:flex;gap:18px;padding:20px 0"><span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;background:var(--acc);color:#fff;font:600 13px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">6</span><div><div style="font:600 calc(16.5px * var(--ts))/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:6px">La preuve et l&#x27;amélioration</div><p style="font:400 14.5px/1.6 var(--fb);color:var(--ink2);margin:0">Attestations de valorisation, registre à jour, bilan annuel : le processus s&#x27;entretient comme une machine, pour réduire les volumes à la source et renégocier les contrats.</p></div></li></ol></div><h2 id="les-dechets-de-la-maintenance-industrielle" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Les déchets de la maintenance industrielle</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Chaque intervention de maintenance laisse derrière elle des déchets issus du chantier : un sujet que nos équipes gèrent chaque semaine, atelier par atelier.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Huiles et lubrifiants usagés </strong>Vidanges de centrales hydrauliques et de réducteurs. Collecte en fûts dédiés, jamais de mélange avec les solvants : l&#x27;huile usagée se régénère.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Chiffons, absorbants et filtres souillés </strong>Imprégnés d&#x27;huile ou de solvant, ils deviennent des déchets dangereux. Contenants fermés, circuit dédié.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Pièces métalliques et câbles </strong>Moteurs déposés, roulements, chutes de tuyauterie : des métaux valorisables qui se revendent au poids, une réduction directe de la facture.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Composants électriques et électroniques </strong>Variateurs, automates, éclairage : les DEEE suivent une filière REP spécifique, avec reprise par le distributeur.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Emballages et calages </strong>Cartons, films, palettes des pièces de rechange. Des DAE banals, faciles à valoriser.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Aérosols et bombes de dégraissant </strong>Même vides, ils restent des déchets dangereux : perçage interdit, bac dédié, quantités notées au registre.</span></li></ul><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Le bon réflexe contractuel : écrire qui gère quoi. Quand Migen intervient chez un client, le plan de prévention précise la prise en charge des déchets de chantier : ce que nous évacuons, ce qui reste à votre organisation.</p><h2 id="un-exemple-concret-la-vidange-d-une-centrale-hyd" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Un exemple concret : la vidange d&#x27;une centrale hydraulique</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Une opération de maintenance banale produit à elle seule quatre flux de déchets. Voici le circuit complet, en pratique.</p><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);overflow:hidden;margin:0 0 26px"><table role="table"><thead role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:16px;padding:14px 30px;border-bottom:1px solid var(--line);background:var(--chip)"><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Flux</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Contenant sur site</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Destination</th><th role="columnheader" scope="col" style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Preuve</th></tr></thead><tbody role="rowgroup"><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Huile usagée</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Fût sur rétention, étiqueté</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Régénération en raffinerie</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Bordereau dématérialisé</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Filtres imprégnés</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Bac fermé déchets dangereux</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Traitement agréé</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Bordereau dématérialisé</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px;border-bottom:1px solid var(--line)"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Chiffons souillés</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Sac dédié</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Valorisation énergétique</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Attestation du prestataire</td></tr><tr role="row" class="mg-rq3" style="display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:16px;align-items:center;padding:16px 30px"><td role="cell" style="font:500 14px var(--fb);color:var(--ink1)">Bidons vides</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Caisse palette</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Recyclage matière</td><td role="cell" style="font:400 13.5px/1.5 var(--fb);color:var(--ink1)">Attestation de reprise</td></tr></tbody></table></div><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Résultat : zéro mélange, une traçabilité complète, et une part valorisée qui dépasse largement la part éliminée. Le taux de valorisation devient un indicateur de pilotage, au même titre que vos coûts de maintenance.</p><h2 id="les-erreurs-les-plus-frequentes" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Les erreurs les plus fréquentes</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">D&#x27;un site à l&#x27;autre, les mêmes pièges reviennent. Les repérer, c&#x27;est déjà les éviter.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Une benne unique pour tout </strong>Le déchet dangereux contamine le reste, le lot entier part en traitement spécial. L&#x27;économie apparente devient un surcoût.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Des bidons sans étiquette </strong>Sans identification, le collecteur refuse l&#x27;enlèvement ou reclasse tout le contenu en dangereux. Étiqueter prend une minute.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Le registre oublié </strong>Sans registre à jour ni bordereaux archivés, impossible de prouver la conformité le jour du contrôle. La charge de la preuve pèse sur le producteur.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Les biodéchets ignorés </strong>Restaurant d&#x27;entreprise, espaces verts : le tri des biodéchets à la source concerne tout le monde. Un bac de plus à organiser.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Un contrat jamais remis en question </strong>Les prix de reprise des métaux bougent, des solutions nouvelles apparaissent chaque année. Reconsulter le marché apporte souvent une réduction immédiate.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">La formation oubliée </strong>Le meilleur plan échoue si personne ne sait quel bac utiliser. Une formation courte des équipes, répétée à chaque arrivée, tient un tri durable.</span></li></ul><h2 id="ce-que-cela-implique-pour-votre-organisation" style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.03em;margin:38px 0 16px;scroll-margin-top:100px">Ce que cela implique pour votre organisation</h2><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">La mise en place vise deux objectifs : maîtriser le risque et réduire la dépense. La gestion des déchets industriels n&#x27;est pas un affichage écologique, c&#x27;est une ligne de coûts, un enjeu juridique et un critère regardé par vos clients.</p><ul role="list" style="display:grid;gap:10px;margin:0 0 22px;padding:0;list-style:none"><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Un enjeu économique </strong>Le déchet bien séparé se valorise, le mélange se paie. Peser, mesurer, comparer les offres : la maîtrise des volumes commence par la mesure.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Un enjeu réglementaire </strong>Registre, bordereaux, REP : la conformité se construit au fil de l&#x27;eau, pas la veille du contrôle. Une personne nommée pilote le sujet, avec du temps et des compétences dédiés, appuyée par une veille réglementaire efficace.</span></li><li style="display:flex;gap:10px;font:400 16px/1.65 var(--fb);color:var(--ink1)"><span aria-hidden="true" style="color:var(--acc);flex:none">·</span><span><strong style="color:var(--ink)">Un enjeu environnemental </strong>Chaque tonne détournée de l&#x27;élimination redevient une ressource et réduit l&#x27;empreinte environnementale du site, à améliorer année après année. L&#x27;économie circulaire commence à la benne.</span></li></ul><p style="font:400 17px/1.75 var(--fb);color:var(--ink1);margin:0 0 20px">Et la maintenance dans tout ça ? Externaliser, c&#x27;est aussi choisir un professionnel qui gère proprement ses déchets de chantier. Nos techniciens appliquent ces pratiques à vos côtés : contenants dédiés, tri systématique, circuits choisis par vous, information claire à chaque passage.</p><blockquote style="border-left:3px solid var(--acc);padding:4px 0 4px 24px;margin:32px 0"><p style="font:500 calc(20px * var(--ts))/1.5 var(--ft);letter-spacing:-.02em;color:var(--ink);margin:0">Besoin d&#x27;un point de départ ? En France, chaque secteur a ses déchets types : nos équipes partagent ce qui fonctionne, mise en œuvre comprise, lors d&#x27;un premier échange en agence ou sur votre site. Un <a href="/offres/zero-arret">contrat de maintenance</a> chez Migen inclut cette rigueur : plan de prévention écrit, déchets d&#x27;intervention gérés, comptes rendus versés à votre GMAO. Plus de 120 clients nous font confiance, dont plus de 80 en contrat régulier.</p></blockquote><blockquote style="border-left:3px solid var(--acc);padding:4px 0 4px 24px;margin:32px 0"><p style="font:500 calc(20px * var(--ts))/1.5 var(--ft);letter-spacing:-.02em;color:var(--ink);margin:0"><a href="/contact">Demander un devis</a></p></blockquote></article><aside style="display:grid;gap:16px;position:sticky;top:120px"><a style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:26px 28px" href="/ressources/articles/robot-spot"><div style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:10px">Aller plus loin</div><div style="font:600 15.5px/1.35 var(--ft);letter-spacing:-.022em;margin-bottom:8px">Robot spot</div><span style="display:block;margin-top:8px;font:600 13px var(--fb);color:var(--acc)">La page complète →</span></a></aside></div></section><section style="padding:var(--sec) 0 0"><div style="max-width:1200px;margin:0 auto;padding:0 40px"><div class="mg-r2" style="display:grid;grid-template-columns:.8fr 1.2fr;gap:52px;align-items:start"><div style="position:sticky;top:112px"><div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px">Questions fréquentes</div><h2 style="font:600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft);letter-spacing:-.04em;margin:0;max-width:14ch;text-wrap:balance;margin-bottom:22px">Ce qu&#x27;on nous demande avant de signer.</h2></div><div style="display:grid;gap:10px"><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Qui est responsable des déchets d&#x27;une entreprise ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Le producteur ou le détenteur, jusqu&#x27;au traitement final : c&#x27;est le cadre posé par le code de l&#x27;environnement. Confier ses déchets à un tiers ne transfère pas cette responsabilité : d&#x27;où l&#x27;intérêt de choisir des professionnels autorisés et de conserver chaque preuve. La règle est applicable à toute personne morale, publique ou privée.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Quelle différence entre DAE et déchets dangereux ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Les DAE sont les déchets d&#x27;activités économiques non dangereux : cartons, bois, films. Les déchets dangereux contiennent des substances à risque : solvants, huiles, produits chimiques. La catégorie se vérifie sur la fiche de données de sécurité et détermine tout le reste : les deux familles suivent des circuits différents, du contenant au centre de traitement.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Le tri à la source concerne-t-il toutes les entreprises ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Oui, quelle que soit la taille. Le tri des biodéchets a été ajouté à la liste, et les collectivités, acteurs du service public de gestion des déchets, appliquent une logique voisine pour les volumes assimilés aux ordures ménagères.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Comment tracer les déchets dangereux ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Chaque enlèvement part avec un bordereau de suivi dématérialisé, signé du producteur, du transporteur et de l&#x27;installation de traitement. La règle vaut également pour les huiles et les DEEE. Ces documents constituent votre preuve du respect des textes, avec le registre.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Combien coûte la gestion des déchets industriels ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Tout dépend des volumes, des distances et de la part valorisable : le sujet se chiffre sur devis, poste par poste. Un moyen simple de comparer : le prix à la tonne, en coût complet, contenants, enlèvements, traitement, recettes de la ferraille et économies de matière comprises. Un processus bien mené contribue à limiter la facture globale, pas à l&#x27;alourdir.</div></details><details class="cx-faq" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><summary><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">Migen prend-elle en charge les déchets de ses interventions ?</span><span aria-hidden="true" class="cx-plus undefined">+</span></summary><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">Oui, dans le cadre défini au plan de prévention : les déchets générés par notre passage repartent vers les circuits convenus, huiles, pièces déposées, emballages. Pour les opérations plus larges, vidange complète, dépose d&#x27;installations, le périmètre est écrit au devis. Votre interlocuteur reste unique, appuyé par le groupe et, si nécessaire, par les moyens du groupe Migen en France.</div></details></div></div></div></section><section style="padding:var(--sec) 0 var(--sec)"><div style="max-width:1200px;margin:0 auto;padding:0 40px"><div data-reveal="" style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:36px;padding:44px 48px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap"><div><div style="font:600 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:12px">Une question sur ce contenu</div><h2 style="font:600 calc(clamp(22px,2.2vw,32px) * var(--ts))/1.14 var(--ft);letter-spacing:-.035em;margin:0 0 10px;max-width:26ch;text-wrap:balance">Nos équipes répondent aux questions techniques.</h2><p style="font:400 15.5px/1.6 var(--fb);color:var(--ink2);margin:0;max-width:48ch">Un point de méthode à creuser, un cas particulier sur votre installation : le chargé d&#x27;affaires de votre secteur vous rappelle.</p></div><div style="display:flex;gap:10px;flex:none;flex-wrap:wrap"><a href="#formulaire" style="display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--acc);color:#fff;font:600 15px var(--fb);white-space:nowrap;box-shadow:0 12px 30px -12px rgba(255,124,60,.9);transition:filter var(--tr),transform var(--tr)">Poser ma question</a><a style="display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--chip);border:1px solid var(--line);color:var(--ink);font:600 15px var(--fb);white-space:nowrap;transition:border-color var(--tr)" href="/ressources">Toutes les ressources</a></div></div></div></section></main></div></body></html>

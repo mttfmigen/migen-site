@@ -1,0 +1,490 @@
+{
+ "url": "/carriere/alternance/",
+ "h1": "Alternance maintenance industrielle",
+ "mot_cle": "alternance maintenance industrielle",
+ "contenu": {
+  "gabarit": "metier",
+  "chapeau": "Cette page fait partie de l'espace [migen recrutement](/carriere/), qui rassemble nos offres et nos parcours. L'alternance en maintenance industrielle y tient une place à part : c'est notre meilleure voie pour former les techniciens de demain.",
+  "boutons": [
+   {
+    "libelle": "Recruter ce profil"
+   },
+   {
+    "libelle": "Postuler chez Migen",
+    "href": "/contact/"
+   }
+  ],
+  "missions": [
+   "Observer et assister",
+   "Réaliser la maintenance préventive",
+   "Diagnostiquer une panne",
+   "Intervenir en autonomie"
+  ],
+  "competences": [
+   "Compétence technique",
+   "Méthode de diagnostic",
+   "Contrôle et rigueur",
+   "Autonomie de terrain",
+   "Sens du service",
+   "Lecture de plans"
+  ],
+  "habilitations": [
+   "Habilitation électrique",
+   "Consignation et protection",
+   "Certification et qualification"
+  ],
+  "autres": [
+   {
+    "libelle": "Technicien de maintenance",
+    "href": "/carriere/technicien-de-maintenance/"
+   },
+   {
+    "libelle": "Électromécanicien",
+    "href": "/carriere/electromecanicien/"
+   },
+   {
+    "libelle": "Automaticien",
+    "href": "/carriere/automaticien/"
+   },
+   {
+    "libelle": "Roboticien",
+    "href": "/carriere/roboticien/"
+   },
+   {
+    "libelle": "Responsable maintenance",
+    "href": "/carriere/responsable-maintenance/"
+   },
+   {
+    "libelle": "Agent de maintenance industrielle",
+    "href": "/carriere/agent-de-maintenance/"
+   },
+   {
+    "libelle": "Technicien de maintenance itinérant",
+    "href": "/carriere/technicien-itinerant/"
+   }
+  ],
+  "cta": {
+   "question": "Ce métier vous manque sur votre site ?",
+   "rappel": "Décrivez le poste et les habilitations attendues. Nous vous présentons des techniciens à valider.",
+   "bouton": {
+    "libelle": "Je veux ce profil"
+   }
+  },
+  "corps": [
+   {
+    "type": "paragraphe",
+    "texte": "L'alternance, c'est un cadre signé, une école et une entreprise. Chez Migen, l'apprenti apprend le métier auprès d'un technicien confirmé, sur des équipements réels, chez de vrais clients."
+   },
+   {
+    "type": "citation",
+    "texte": "Une question sur l'alternance ? Un échange au 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30, suffit pour situer votre projet."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "L'alternance en maintenance industrielle, en clair",
+    "id": "l-alternance-en-maintenance-industrielle-en-clai"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Panne à diagnostiquer, machine à remettre en route : l'alternant en maintenance industrielle apprend en faisant, pas en regardant. La formule mêle temps en centre de formation et temps en entreprise."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Un cadre clair",
+      "texte": "contrat d'apprentissage ou de professionnalisation, sur une durée de 12 à 24 mois selon le diplôme."
+     },
+     {
+      "accroche": "Un rythme alterné",
+      "texte": "plusieurs jours en entreprise, plusieurs jours en formation, sur toute la durée de l'alternance."
+     },
+     {
+      "accroche": "Un vrai poste",
+      "texte": "l'alternant n'est pas un stagiaire de couloir, il tient une mission réelle en maintenance industrielle."
+     },
+     {
+      "accroche": "Un accompagnement",
+      "texte": "un tuteur technicien vient accompagner l'apprenti au quotidien, du premier jour à la fin de l'alternance."
+     },
+     {
+      "accroche": "Un suivi professionnel",
+      "texte": "le tuteur et le centre de formation se coordonnent pour accompagner la montée en compétence."
+     }
+    ]
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Quelle formation ? Du bac pro au BTS",
+    "id": "quelle-formation-du-bac-pro-au-bts"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "L'alternance se prépare sur plusieurs titres de la filière maintenance. Voici les formations professionnelles les plus courantes, du niveau lycée à bac +3."
+   },
+   {
+    "type": "tableau",
+    "entetes": [
+     "Diplôme",
+     "Niveau",
+     "Ce qu'il prépare"
+    ],
+    "lignes": [
+     [
+      "Bac pro MSPC",
+      "Niveau bac",
+      "Maintenance des systèmes de production connectés"
+     ],
+     [
+      "Bac pro MELEC",
+      "Niveau bac",
+      "Électrotechnique et installations électriques"
+     ],
+     [
+      "BTS Maintenance des systèmes",
+      "Bac +2",
+      "Maintenance industrielle, mécanique et automatismes"
+     ],
+     [
+      "BTS Électrotechnique",
+      "Bac +2",
+      "Systèmes électriques et énergie"
+     ],
+     [
+      "BUT GIM",
+      "Bac +3",
+      "Génie industriel et maintenance"
+     ]
+    ]
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Le MSPC et le BTS Maintenance des systèmes restent les deux voies reines. Une formation en électrotechnique ou en énergie mène aussi au métier de technicien de maintenance industrielle. Un titre professionnel de mécanicien ou de technicien de maintenance ouvre la même porte, dans le domaine industriel."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Ce que fait un alternant au quotidien",
+    "id": "ce-que-fait-un-alternant-au-quotidien"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "L'alternant ne fait pas le café. Dès les premières semaines, il touche l'équipement, sous l'œil de son tuteur. Ses missions montent en autonomie au fil des mois."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Observer et assister",
+      "texte": "au départ, l'apprenti assiste le technicien, apprend le geste, note chaque contrôle sur l'équipement."
+     },
+     {
+      "accroche": "Réaliser la maintenance préventive",
+      "texte": "contrôler, nettoyer et régler les éléments mécaniques et électriques d'une installation."
+     },
+     {
+      "accroche": "Diagnostiquer une panne",
+      "texte": "chercher l'élément défectueux, tester un circuit électrique, isoler la cause avec méthode."
+     },
+     {
+      "accroche": "Intervenir en autonomie",
+      "texte": "en fin d'alternance, l'alternant mène une intervention seul, du diagnostic au contrôle final."
+     }
+    ],
+    "ordonnee": true
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Chaque geste est encadré. Un assistant technicien de maintenance en alternance progresse vite, car il voit passer plus de pannes en un mois qu'un élève en une année de cours. Le rôle d'assistant du début laisse place, mois après mois, à celui de technicien."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Du stage à l'alternance : les voies d'accès",
+    "id": "du-stage-a-l-alternance-les-voies-d-acces"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Beaucoup d'alternants découvrent le métier par un stage avant de signer. Le stage, l'apprentissage et l'alternance sont trois portes vers l'industrie, et Migen les ouvre toutes."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Le stage de découverte",
+      "texte": "un stage court en entreprise donne le goût du terrain et confirme le projet professionnel."
+     },
+     {
+      "accroche": "Le stage de fin d'année",
+      "texte": "un stage plus long prépare l'alternance et rassure l'alternant comme l'assistant sur son choix."
+     },
+     {
+      "accroche": "L'apprentissage",
+      "texte": "le contrat d'apprentissage reste la voie la plus solide, avec un vrai suivi professionnel."
+     },
+     {
+      "accroche": "La reconversion",
+      "texte": "l'accessibilité du métier vaut aussi pour qui veut changer de voie, avec une formation professionnelle adaptée."
+     }
+    ]
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Nos missions couvrent toute la France, alternance comprise, de Lyon à Paris ou Bordeaux. Un grand site industriel ou une PME, chaque environnement enseigne différemment, et l'évolution suit le profil de chacun."
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Une alternance technicien de maintenance mêle alternance et formation, sur le terrain et en cours. Un emploi en alternance vaut mieux qu'un stage passif : l'alternant technicien de maintenance apprend un métier, pas une théorie. La maintenance industrielle en alternance, avec un BTS Maintenance des systèmes option A, fait un vrai technicien en maintenance industrielle. Compte tenu de la tension du secteur, un stage alternance bien choisi débouche vite, en un mot, sur un poste stable, y compris à Paris."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Les compétences que vous développez",
+    "id": "les-competences-que-vous-developpez"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "L'alternance forge des compétences que l'école seule ne donne pas. Voici les compétences clés qu'un alternant acquiert chez Migen, une compétence après l'autre."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Compétence technique",
+      "texte": "mécanique, électricité, automatisme, la base du métier sur des équipements variés."
+     },
+     {
+      "accroche": "Méthode de diagnostic",
+      "texte": "la compétence la plus recherchée, isoler une panne sur un système complexe."
+     },
+     {
+      "accroche": "Contrôle et rigueur",
+      "texte": "contrôler chaque élément, chaque paramètre, avant de remettre une machine en production."
+     },
+     {
+      "accroche": "Autonomie de terrain",
+      "texte": "une compétence humaine autant que technique, décider seul face à un équipement."
+     },
+     {
+      "accroche": "Sens du service",
+      "texte": "la compétence relationnelle qui fait la différence chez le client, sur chaque site."
+     },
+     {
+      "accroche": "Lecture de plans",
+      "texte": "une compétence de base souvent oubliée, pour comprendre une installation avant d'intervenir."
+     }
+    ]
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "La rémunération de l'alternance",
+    "id": "la-remuneration-de-l-alternance"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "L'alternance est payée : c'est un contrat de travail. La rémunération dépend de l'âge, du niveau d'études et de la durée de la formation."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Un salaire mensuel",
+      "texte": "versé chaque mois, calculé selon la grille légale, en pourcentage du SMIC selon l'âge et l'année d'alternance."
+     },
+     {
+      "accroche": "Une progression",
+      "texte": "la rémunération augmente en deuxième année et avec le niveau de formation professionnelle."
+     },
+     {
+      "accroche": "Zéro frais de scolarité",
+      "texte": "une chance souvent oubliée, en alternance, la formation est financée, l'alternant ne paie pas son école."
+     },
+     {
+      "accroche": "Des missions proches",
+      "texte": "nous cherchons à placer chaque alternant sur des missions proches de chez lui autant que possible, à Bordeaux, Nantes ou Strasbourg."
+     }
+    ]
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Les habilitations que nous finançons",
+    "id": "les-habilitations-que-nous-financons"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Sur le terrain, pas d'intervention sans habilitation. Migen finance les habilitations et la qualification nécessaires, dès l'entrée en alternance."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Habilitation électrique",
+      "texte": "financée et préparée, indispensable pour intervenir sur une installation sous tension."
+     },
+     {
+      "accroche": "Consignation et protection",
+      "texte": "la procédure de sécurité et les équipements de protection, appris et fournis."
+     },
+     {
+      "accroche": "Certification et qualification",
+      "texte": "chaque certification utile au métier est prise en charge, un guide clair, point par point, accompagne l'alternant."
+     }
+    ]
+   },
+   {
+    "type": "citation",
+    "texte": "Chez Migen, l'habilitation n'est pas un frein à l'embauche : nous la finançons et nous préparons. La sécurité passe avant tout, dès le premier jour d'alternance."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Le process de recrutement en 4 étapes",
+    "id": "le-process-de-recrutement-en-4-etapes"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Postuler à une alternance chez Migen est simple et rapide. Voici les quatre étapes, du premier contact à la signature du contrat."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "La candidature",
+      "texte": "vous déposez votre candidature en ligne, avec votre CV et votre formation visée ; vos données restent traitées avec confidentialité. En un mot, dites-nous qui vous êtes."
+     },
+     {
+      "accroche": "L'échange",
+      "texte": "un chargé de recrutement vous rappelle, on parle de votre projet, de votre école et du rythme choisi."
+     },
+     {
+      "accroche": "L'entretien",
+      "texte": "un entretien technique et comportemental, mené par un professionnel du métier, pour vérifier votre motivation."
+     },
+     {
+      "accroche": "La signature",
+      "texte": "nous montons le contrat d'alternance avec votre centre de formation, et l'aventure commence."
+     }
+    ],
+    "ordonnee": true
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Un conseil au candidat : pour optimiser vos chances, soignez votre profil et posez vos conditions dès l'échange. Le recruteur regarde la motivation avant les notes, et le cadre administratif se cale sur votre formation. La gestion administrative, nous la prenons en charge : centre de formation, dates, durée. Vous vous concentrez sur le métier, dans un secteur qui recrute et où la qualité du geste fait la différence. Si vous avez déjà un projet précis, le conseil du recruteur affine le reste."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Pourquoi faire son alternance chez Migen",
+    "id": "pourquoi-faire-son-alternance-chez-migen"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Migen n'est pas un grand groupe anonyme, ni un grand groupe où l'alternant est un numéro. C'est une entreprise à taille humaine ; sa politique : miser sur ses alternants pour recruter ses futurs techniciens, en France et en Europe."
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Une formation en alternance bien menée insère durablement. Le geste professionnel, l'insertion professionnelle et le titre en poche, un assistant devient technicien(ne) de maintenance, parfois agent de maintenance sur une ligne de fabrication. Le secteur maintenance manque de bras : un bon élément a le choix. Un guide d'utilisation, une information claire, un accompagnement, et l'on peut être opérationnel vite."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "On forme pour garder",
+      "texte": "l'alternance débouche souvent sur un poste. Nous voulons recruter et former, pas remplir un quota."
+     },
+     {
+      "accroche": "Un collectif technique",
+      "texte": "plus de 100 collaborateurs, 4 agences (Lyon, Montréal, Dubaï, Madrid), un groupe où l'entraide est réelle."
+     },
+     {
+      "accroche": "Un tuteur qui accompagne",
+      "texte": "nous savons accompagner un jeune technicien, avec un suivi personnel, pas le laisser seul devant une machine."
+     },
+     {
+      "accroche": "Des missions variées",
+      "texte": "maintenance préventive, dépannage, mise en service, dans l'industrie de production comme dans l'énergie."
+     },
+     {
+      "accroche": "Un vrai suivi",
+      "texte": "le référent sait accompagner chaque étape, du premier contrôle en préventive à la première intervention en autonomie."
+     }
+    ]
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Nos offres d'alternance du moment",
+    "id": "nos-offres-d-alternance-du-moment"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Nos offres évoluent chaque semaine. Consultez l'offre d'emploi qui vous parle, du généraliste au spécialiste, et postulez en ligne."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Apprenti(e) technicien de maintenance",
+      "texte": "un emploi technicien de maintenance en alternance, sur tout type d'équipement industriel."
+     },
+     {
+      "accroche": "Alternance apprentissage en électrotechnique",
+      "texte": "pour l'apprenti qui vise la distribution et les armoires de puissance."
+     },
+     {
+      "accroche": "Technicien de maintenance CVC en alternance",
+      "texte": "chauffage, ventilation, climatisation, le terrain du technicien frigoriste : un domaine qui recrute fort, à Bordeaux comme ailleurs."
+     },
+     {
+      "accroche": "Alternant en maintenance générale",
+      "texte": "de la maintenance générale d'un site à la spécialisation, une voie ouverte à tout profil."
+     }
+    ]
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Questions fréquentes",
+    "id": "questions-frequentes"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Cette FAQ regroupe les questions posées chaque semaine par les candidats."
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "Migen prend-il des alternants en maintenance industrielle ?",
+    "texte": "Oui. En maintenance industrielle, alternance rime avec recrutement : c'est l'une de nos voies principales. Nous accompagnons chaque alternant technicien / technicienne de maintenance, du bac au BTS, et beaucoup rejoignent nos équipes en fin de parcours."
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "Quel diplôme préparer en alternance chez Migen ?",
+    "texte": "Le MSPC, le BTS Maintenance des systèmes ou un BUT GIM sont les plus adaptés pour optimiser l'insertion. Une formation orientée courants forts ou énergie convient aussi au métier."
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "L'alternance est-elle payée ?",
+    "texte": "Oui, c'est un contrat de travail. Vous touchez un salaire chaque mois, calculé selon votre âge, votre niveau et l'année d'alternance, sans frais de scolarité."
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "Qui accompagne l'alternant sur le terrain ?",
+    "texte": "Un tuteur confirmé accompagne l'apprenti technicien de maintenance au quotidien. Vous n'êtes jamais seul face à un équipement : chaque intervention est encadrée."
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "L'alternance débouche-t-elle sur un emploi ?",
+    "texte": "Souvent. Nous préparons nos alternants pour les recruter. Une alternance réussie mène régulièrement à une offre de poste en fin de parcours."
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "Comment postuler à une alternance en maintenance industrielle ?",
+    "texte": "Rechercher une alternance prend du temps : déposez votre candidature en ligne depuis l'espace candidat [migen recrutement](/carriere/). Un chargé de recrutement vous recontacte pour préciser votre projet et votre durée de formation."
+   }
+  ]
+ }
+}

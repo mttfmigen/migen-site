@@ -29,6 +29,8 @@
  * vide. Les textes attendus sont listés dans `docs/` par l'import du corpus.
  */
 
+import type { Section } from "./contenu";
+
 /** Une pastille cliquable : page sœur du même niveau. */
 export interface LienSecteur {
   libelle: string;
@@ -85,6 +87,32 @@ export interface ContenuSecteur {
   appelTexte?: string;
   /** Sans bouton fourni, l'appel vise l'ancre du formulaire de la page. */
   appelBouton?: LienSecteur;
+
+  /**
+   * CE QUE LE CORPUS PORTE ET QUE LA MAQUETTE NE DESSINE PAS.
+   *
+   * La maquette donne quatre sections à une page de secteur : le héros et ses
+   * repères, les enjeux, les pages sœurs, l'appel. Le corpus rédigé en porte
+   * dix. Les six qui restent (`offre`, `deroule`, `garanties`, `cta`,
+   * `preuves`, `objections`) sont du texte écrit, payé, et c'est la substance
+   * du référencement de ces pages : elles ne se suppriment pas parce que la
+   * maquette ne les dessine pas.
+   *
+   * Elles sont donc rendues SOUS les sections de la maquette, par les blocs de
+   * `components/site/blocs/`, eux-mêmes portés de la maquette et qui en
+   * gardent les surtitres. La page reste celle de la maquette et garde tout son
+   * texte.
+   *
+   * POURQUOI UN CHAMP À PART, ET PAS LE `sections` DU GABARIT DE VENTE : une
+   * page qui porterait les deux clés serait ambiguë pour qui la lit, et le
+   * repli de `app/[...slug]/page.tsx` ne doit jamais pouvoir la servir comme
+   * une page de vente. Le nom dit ce que c'est : un complément, sous le
+   * gabarit, pas le gabarit.
+   *
+   * Lu sur un `jsonb` : le gabarit écarte au rendu une section dont le type
+   * n'a pas de bloc, plutôt que de faire tomber la page entière.
+   */
+  complement?: Section[];
 }
 
 /**

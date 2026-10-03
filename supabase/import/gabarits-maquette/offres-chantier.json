@@ -1,0 +1,251 @@
+{
+  "url": "/offres/chantier/",
+  "contenu": {
+    "gabarit": "offre",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30",
+    "chapeau": "**Votre outil de production redémarre à la date prévue.** Pas des semaines après, pas en mode dégradé.",
+    "actions": [
+      {
+        "libelle": "Les cinq offres",
+        "href": "/offres/"
+      }
+    ],
+    "formulaireHeroTitre": "Décrire mon besoin",
+    "formulaireHeroMention": "Rappel dans l'heure",
+    "brefSurtitre": "En bref",
+    "brefTitre": "Le cadre, en quatre chiffres.",
+    "chiffres": [
+      {
+        "valeur": "+ 100",
+        "libelle": "collaborateurs · techniciens, monteurs et chefs de projet."
+      },
+      {
+        "valeur": "+ 120",
+        "libelle": "clients industriels · dont plus de 80 clients réguliers."
+      },
+      {
+        "valeur": "4",
+        "libelle": "agences · Lyon (siège), Montréal, Dubaï, Madrid, et des hubs techniques en France."
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+      }
+    ],
+    "brefBande": "Besoin de savoir ce que coûterait le transfert de votre site ?",
+    "brefBouton": {
+      "libelle": "Faire chiffrer mon transfert",
+      "href": "/contact/"
+    },
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "Un transfert improvisé, ce sont des semaines d'arrêt que personne n'avait budgétées.",
+        "puces": [
+          {
+            "accroche": "Équipement endommagé",
+            "texte": "au levage, parce que les points d'élingage n'ont pas été relevés avant la dépose."
+          },
+          {
+            "accroche": "Câblage et tuyauterie raccordés à la hâte",
+            "texte": ", sans repérage : la panne apparaît après le redémarrage."
+          },
+          {
+            "accroche": "Chaîne qui repart en retard",
+            "texte": "vos clients, eux, ne décalent pas leurs commandes."
+          }
+        ]
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "texte": "**Audit de faisabilité et plan d'implantation**"
+            },
+            "benefice": "Vous savez avant de signer ce qui passe, ce qui ne passe pas, et où chaque machine se pose sur le site d'arrivée."
+          },
+          {
+            "prestation": {
+              "texte": "**Pilotage complet du projet**"
+            },
+            "benefice": "Un chef de projet, un numéro, un compte rendu. Vous décidez, au lieu d'arbitrer entre trois prestataires."
+          },
+          {
+            "prestation": {
+              "texte": "**[Déménagement de machines industrielles](/offres/chantier/demenagement-machines/)**"
+            },
+            "benefice": "Une machine ou un parc entier déplacés par des techniciens qui savent ce qu'ils démontent, et pourquoi."
+          },
+          {
+            "prestation": {
+              "texte": "**[Transfert de production](/offres/chantier/transfert-de-production/)**"
+            },
+            "benefice": "Des lignes complètes phasées pour que vos livraisons ne s'arrêtent pas pendant le chantier."
+          },
+          {
+            "prestation": {
+              "texte": "**Travaux de maintenance à l'occasion de la dépose**"
+            },
+            "benefice": "La machine part révisée plutôt qu'usée. Vous gagnez une remise à niveau sans second arrêt."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Audit et faisabilité.",
+            "texte": "Visite du site de départ et du site d'arrivée, inventaire des équipements, contraintes d'accès, contraintes de sécurité. La faisabilité est validée avec votre responsable de production."
+          },
+          {
+            "titre": "Plan d'implantation et planning.",
+            "texte": "Place de chaque machine, circulation des matières, réseaux et énergies. Le phasage est calé sur vos dates de livraison, pas sur les nôtres."
+          },
+          {
+            "titre": "Démontage et conditionnement.",
+            "texte": "Consignation, repérage du câblage, dépose, calage, conditionnement adapté à la fragilité de chaque équipement. Chaque repère servira au remontage."
+          },
+          {
+            "titre": "Transport et logistique.",
+            "texte": "Moyens de levage dimensionnés, transporteurs spécialisés quand le gabarit l'exige."
+          },
+          {
+            "titre": "Remontage et raccordements.",
+            "texte": "Mise à niveau, calage, raccordement mécanique, électrique, automatisme, hydraulique, pneumatique, tuyauterie."
+          },
+          {
+            "titre": "Essais et remise en service.",
+            "texte": "Essais à vide, essais sous production, réglages, contrôle qualité. Le chantier se termine quand la ligne produit, pas quand le camion repart."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Le planning validé ensemble est l'outil de pilotage.",
+            "texte": "Chaque écart est signalé, expliqué et traité avec vous. Pas de découverte en réunion de fin de chantier."
+          },
+          {
+            "accroche": "La sécurité passe avant le calendrier.",
+            "texte": "Analyse de risque, plan de prévention, modes opératoires écrits pour chaque phase de levage, pour vos équipes comme pour les nôtres. Notre démarche MASE et notre évaluation EcoVadis sont documentées : les attestations sont transmises avec chaque plan de prévention, avant l'ouverture du chantier."
+          },
+          {
+            "accroche": "Vous savez qui entre sur votre site.",
+            "texte": "Les intervenants sont retenus après un entretien technique et un entretien comportemental : seuls 10 % des candidats passent cette sélection."
+          },
+          {
+            "accroche": "Tout ce qui peut se préparer sans arrêter la production l'est.",
+            "texte": "Le site d'arrivée est prêt avant que la première machine bouge. C'est ce qui raccourcit l'arrêt réel."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Montage d'un centre logistique, Clermont-Ferrand, 2023.",
+            "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés en pleine période estivale, site livré à la date prévue",
+            "lienLibelle": "Étude de cas AKTID",
+            "lienHref": "/preuves/aktid-centre-logistique/"
+          },
+          {
+            "titre": "Construction d'un site de R&D bas carbone, région parisienne.",
+            "texte": "Chantier piloté de bout en bout par Orthus, filiale du groupe, avec des jalons critiques suivis",
+            "lienLibelle": "Étude de cas ORTHUS x ECOCEM",
+            "lienHref": "/preuves/orthus-ecocem/"
+          },
+          {
+            "titre": "Montage de portiques de lavage, partout en France.",
+            "texte": "Réception, assemblage, levage, raccordements, validation à l'issue du montage",
+            "lienLibelle": "Étude de cas ORTHUS x WASHTEC",
+            "lienHref": "/preuves/orthus-washtec/"
+          },
+          {
+            "titre": "Montage et déplacement de machines, étanchéité et isolation, 2025.",
+            "texte": "Délais de chantier tenus sans pénalité, transferts de machines sécurisés",
+            "lienLibelle": "Étude de cas SOPREMA",
+            "lienHref": "/preuves/soprema/"
+          },
+          {
+            "titre": "Contrôle de chantier sur des projets stratégiques.",
+            "texte": "Phases critiques sécurisées, aucun recrutement d'urgence côté client",
+            "lienLibelle": "Étude de cas ALSTEF Group",
+            "lienHref": "/preuves/alstef-group/"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Combien coûte un transfert industriel ?",
+            "reponse": "Le montant dépend du nombre d'équipements, des contraintes d'accès, de la distance et du niveau de prestation retenu. Le chiffrage est établi après un audit gratuit, et il détaille chaque poste. Un prix annoncé sans visite est un prix qui bougera."
+          },
+          {
+            "question": "Peut-on transférer une usine sans arrêter la production ?",
+            "reponse": "Rarement en totalité, mais l'arrêt se réduit fortement par le phasage : transfert par tronçons, stocks anticipés, site d'arrivée préparé à l'avance, équipements critiques basculés en dernier. C'est l'objet du plan de transfert."
+          },
+          {
+            "question": "Nous avons déjà un prestataire de maintenance. Prenez-vous sa place ?",
+            "reponse": "Non. Nous intervenons sur le chantier et nous rendons le site à vos équipes et à votre prestataire habituel, avec un compte rendu exploitable. Si vous préférez nous confier l'entretien ensuite, c'est une décision séparée."
+          },
+          {
+            "question": "Qui est responsable en cas de casse pendant le transfert ?",
+            "reponse": "Le sujet est traité avant le chantier. Le devis et le cahier des charges précisent les responsabilités de chaque partie, les garanties et l'assurance mobilisée. Vous savez qui répond de quoi avant le premier câble débranché."
+          },
+          {
+            "question": "Qui sont les techniciens qui interviennent ?",
+            "reponse": "Des intervenants Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des candidats sont retenus, et les résultats d'évaluation sont partagés avec vous."
+          },
+          {
+            "question": "Intervenez-vous partout en France ?",
+            "reponse": "Oui, depuis 4 agences : Lyon (siège), Montréal, Dubaï, Madrid, avec des hubs de techniciens dans les grandes villes de France : Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon, Nantes. Le site de départ et le site d'arrivée sont suivis dans un même dossier, avec un seul interlocuteur."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin d'un premier avis sur votre projet, même s'il n'est encore qu'à l'état d'intention ?",
+        "bouton": "Parler à un chargé d'affaires",
+        "href": "/contact/",
+        "rappel": "04 78 33 72 05, astreinte 24/24 et 7/7."
+      }
+    ],
+    "autresSurtitre": "Un autre besoin ?",
+    "autresTitre": "Chaque situation a son offre.",
+    "autres": [
+      {
+        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
+        "libelle": "Résidence",
+        "href": "/offres/residence/"
+      },
+      {
+        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
+        "libelle": "Périmètre complet",
+        "href": "/offres/maintenance-externalisee/"
+      },
+      {
+        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      },
+      {
+        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/"
+      },
+      {
+        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
+        "libelle": "Bureau d'études",
+        "href": "/offres/bureau-etudes/"
+      },
+      {
+        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
+      }
+    ]
+  }
+}

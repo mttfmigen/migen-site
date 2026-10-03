@@ -1,0 +1,329 @@
+{
+  "url": "/ressources/fiches-pratiques/plan-de-prevention/",
+  "h1": "Plan de prévention",
+  "contenu": {
+    "gabarit": "ressource",
+    "categorie": "Fiche pratique",
+    "chapeau": "Un technicien extérieur entre dans votre usine : vos risques s'additionnent aux siens. Le plan de prévention, ou PDP, existe pour ça. Cette fiche de nos [Ressources : Fiches pratiques](/ressources/fiches-pratiques/) va à l'essentiel : quand il est obligatoire, ce qu'il contient, comment le construire sans en faire une formalité administrative.",
+    "rappel": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30, au 04 78 33 72 05.",
+    "cartes": [
+      {
+        "surtitre": "Aller plus loin",
+        "titre": "Consignation électrique",
+        "lienHref": "/ressources/fiches-pratiques/consignation-electrique/",
+        "lienLibelle": "La page complète →"
+      }
+    ],
+    "corps": [
+      {
+        "type": "paragraphe",
+        "texte": "Migen fait appel chaque semaine à cet exercice comme entreprise extérieure sur des sites industriels. Nos équipes préparent, signent et font vivre des plans de prévention en continu : cette page vient du terrain, pas d'un guide théorique."
+      },
+      {
+        "type": "titre",
+        "niveau": 2,
+        "texte": "La définition, sans jargon juridique",
+        "id": "la-definition-sans-jargon-juridique"
+      },
+      {
+        "type": "paragraphe",
+        "texte": "Le plan de prévention est un écrit d'évaluation des risques, établi quand une entreprise extérieure vient réaliser des travaux chez une entreprise utilisatrice. Son objet : prévenir les risques liés à l'interférence entre les activités, les installations et le matériel des deux parties."
+      },
+      {
+        "type": "liste",
+        "items": [
+          {
+            "accroche": "Le déclencheur",
+            "texte": "Des travaux ou une prestation de services confiés à une ou plusieurs entreprises extérieures, sous-traitants compris. La coactivité crée des dangers que chaque employeur, seul, ne voit pas."
+          },
+          {
+            "accroche": "Le cadre légal",
+            "texte": "Les articles R. 4512-6 à R. 4512-12 du code du travail, depuis leur création par le décret du 20 février 1992, précisés par la circulaire DRT n° 93-14. La version en vigueur de ces dispositions se consulte sur Légifrance."
+          },
+          {
+            "accroche": "La logique",
+            "texte": "Chaque chef d'établissement reste responsable de la santé de ses salariés. Le PDP organise ce qui se joue entre les deux : qui fait quoi, où, quand, avec quelles mesures de prévention."
+          }
+        ]
+      },
+      {
+        "type": "titre",
+        "niveau": 2,
+        "texte": "Écrit obligatoire : les deux seuils à connaître",
+        "id": "ecrit-obligatoire-les-deux-seuils-a-connaitre"
+      },
+      {
+        "type": "paragraphe",
+        "texte": "Le droit du travail impose un plan de prévention écrit dans deux situations, et une seule suffit pour toute l'opération. Sous ces seuils, l'analyse commune reste due : seule la forme écrite devient facultative."
+      },
+      {
+        "type": "liste",
+        "items": [
+          {
+            "accroche": "400 heures sur douze mois",
+            "texte": "Dès que le volume de travail prévu par les entreprises extérieures et leurs sous-traitants atteint 400 heures sur une période de douze mois, l'écrit s'impose, article R4512-7 du code du travail."
+          },
+          {
+            "accroche": "Travaux dangereux, quelle que soit la durée",
+            "texte": "L'arrêté du 19 mars 1993 fixe la liste des travaux dangereux : travaux exposant à des rayonnements ionisants ou à des substances toxiques, maintenance sur équipements soumis à vérifications périodiques, recours aux ponts roulants, points chauds, espaces confinés. Une seule journée de ces travaux suffit."
+          },
+          {
+            "accroche": "Le réflexe sain",
+            "texte": "Beaucoup d'entreprises utilisatrices passent à l'écrit systématiquement, au-delà de ce que la réglementation exige. Un PDP signé protège les travailleurs, et il protège aussi les deux directions le jour où l'inspection du travail se présente."
+          }
+        ]
+      },
+      {
+        "type": "titre",
+        "niveau": 2,
+        "texte": "Ce que contient un plan de prévention",
+        "id": "ce-que-contient-un-plan-de-prevention"
+      },
+      {
+        "type": "paragraphe",
+        "texte": "L'article R. 4512-8 du code du travail fixe le contenu minimal. Un bon plan tient en quelques pages denses, pas dans un classeur que personne n'ouvre."
+      },
+      {
+        "type": "tableau",
+        "entetes": [
+          "Rubrique",
+          "Ce qu'on y écrit"
+        ],
+        "lignes": [
+          [
+            "Phases dangereuses",
+            "L'identification des phases d'activité dangereuses et les moyens de prévention spécifiques correspondants"
+          ],
+          [
+            "Matériel et installations",
+            "L'adaptation des équipements et dispositifs à la nature des travaux, et leurs conditions d'entretien"
+          ],
+          [
+            "Instructions",
+            "Les consignes et informations à donner au personnel des entreprises extérieures : accès, circulation, énergies, produits"
+          ],
+          [
+            "Organisation des secours",
+            "L'organisation mise en place pour assurer les premiers secours en cas d'urgence"
+          ],
+          [
+            "Coordination",
+            "Les conditions de participation du personnel d'une entreprise aux travaux d'une autre, pour assurer la coordination nécessaire au maintien de la sécurité"
+          ],
+          [
+            "Annexes utiles",
+            "Liste des intervenants, habilitations et formations, locaux réservés exclusivement aux intervenants, plans des lieux de travail concernés"
+          ]
+        ]
+      },
+      {
+        "type": "citation",
+        "texte": "Aucune durée de validité légale : le plan vit aussi longtemps que l'opération. Il s'actualise à chaque changement : nouveau risque, nouvel équipement, nouvelle entreprise intervenante. Chaque élément du dispositif suit le réel, jamais l'inverse."
+      },
+      {
+        "type": "titre",
+        "niveau": 2,
+        "texte": "La méthode, étape par étape",
+        "id": "la-methode-etape-par-etape"
+      },
+      {
+        "type": "paragraphe",
+        "texte": "Quatre étapes, toujours dans le même ordre. La qualité du dispositif se joue à la première."
+      },
+      {
+        "type": "liste",
+        "items": [
+          {
+            "accroche": "L'inspection commune préalable",
+            "texte": "Avant le commencement des travaux, l'entreprise utilisatrice organise une inspection commune des lieux de travail, des installations et du matériel. Tous les intervenants y participent : les risques d'interférence se repèrent sur place, pas en salle de réunion."
+          },
+          {
+            "accroche": "L'analyse des risques en commun",
+            "texte": "Les employeurs croisent les risques que présentent leurs activités, à l'aide du document unique de chaque partie, pour identifier les dangers liés à la coactivité. Chaque danger voit son action de prévention s'inscrire au plan, avec un responsable chargé de la coordonner."
+          },
+          {
+            "accroche": "La rédaction et la signature du plan",
+            "texte": "Élaboré conjointement, le PDP se signe avant le début des travaux par le chef de l'entreprise utilisatrice et celui de chaque entreprise extérieure. La signature du plan engage : elle vaut vérification, pas tampon."
+          },
+          {
+            "accroche": "Le suivi pendant l'opération",
+            "texte": "Accueil sécurité des nouveaux arrivants, inspections et réunions périodiques de coordination, actualisation à chaque évolution. Un plan resté figé six mois : un plan mort."
+          }
+        ],
+        "ordonnee": true
+      },
+      {
+        "type": "titre",
+        "niveau": 2,
+        "texte": "Un exemple concret en maintenance industrielle",
+        "id": "un-exemple-concret-en-maintenance-industrielle"
+      },
+      {
+        "type": "paragraphe",
+        "texte": "Une situation que nos techniciens vivent chaque semaine : remplacer un motoréducteur sur une ligne de convoyage, pendant que la production continue sur les lignes voisines."
+      },
+      {
+        "type": "liste",
+        "items": [
+          {
+            "accroche": "Risques repérés en commun",
+            "texte": "Circulation de chariots au bord de la zone, énergie résiduelle sur l'équipement, coactivité avec les opérateurs du poste voisin, levage au-dessus d'une allée."
+          },
+          {
+            "accroche": "Mesures inscrites au plan",
+            "texte": "Balisage, consignation électrique et mécanique avec vérification d'absence d'énergie, créneau décalé du passage des caristes, circulation réservée aux allées balisées, permis de feu si point chaud, au sens de la liste des travaux dangereux."
+          },
+          {
+            "accroche": "Ce que ça change",
+            "texte": "L'opérateur est informé : il sait qui intervient, et pourquoi. Le technicien sait où il peut aller, et à qui signaler toute situation dangereuse. Personne ne découvre un danger en cours d'intervention."
+          }
+        ]
+      },
+      {
+        "type": "titre",
+        "niveau": 2,
+        "texte": "Les erreurs les plus fréquentes",
+        "id": "les-erreurs-les-plus-frequentes"
+      },
+      {
+        "type": "paragraphe",
+        "texte": "Les mêmes faiblesses reviennent d'audit en audit. Six pièges concentrent l'essentiel des accidents évitables."
+      },
+      {
+        "type": "liste",
+        "items": [
+          {
+            "accroche": "Le copier-coller",
+            "texte": "Un modèle à télécharger, recopié d'une intervention à l'autre. L'inspection commune préalable disparaît, plus une ligne ne décrit le réel, et l'actualité des textes lui échappe."
+          },
+          {
+            "accroche": "Le plan sans les exécutants",
+            "texte": "Rédigé entre bureaux, jamais présenté aux équipes intéressées. Un plan que les intervenants n'ont pas lu ne protège personne."
+          },
+          {
+            "accroche": "La confusion des dispositifs",
+            "texte": "Le plan de prévention n'est ni le DUERP, ni le protocole de sécurité, ni le PPSPS de chantier. Chaque situation différente a son outil."
+          },
+          {
+            "accroche": "L'oubli des sous-traitants",
+            "texte": "Leur temps de présence compte dans le calcul du seuil, et chacun doit participer à l'inspection commune préalable."
+          },
+          {
+            "accroche": "Le plan figé",
+            "texte": "Nouvelle phase, nouvel outillage, nouveau risque : sans actualisation, le plan cesse de refléter la réalité et la responsabilité des deux chefs d'entreprise reste entière."
+          },
+          {
+            "accroche": "La prévention à sens unique",
+            "texte": "L'entreprise utilisatrice impose sans écouter. La démarche se construit avec la compétence de l'entreprise extérieure : celui qui fait le geste connaît ses dangers mieux que quiconque."
+          }
+        ]
+      },
+      {
+        "type": "titre",
+        "niveau": 2,
+        "texte": "Plan de prévention, DUERP, protocole : qui fait quoi",
+        "id": "plan-de-prevention-duerp-protocole-qui-fait-quoi"
+      },
+      {
+        "type": "paragraphe",
+        "texte": "Quatre dispositifs se partagent la prévention des risques professionnels. Les confondre coûte cher en cas de contrôle ou d'accident."
+      },
+      {
+        "type": "tableau",
+        "entetes": [
+          "Dispositif",
+          "Quand",
+          "Qui le rédige"
+        ],
+        "lignes": [
+          [
+            "Plan de prévention",
+            "Travaux d'une entreprise extérieure avec risques d'interférence",
+            "Entreprise utilisatrice, conjointement avec les entreprises extérieures"
+          ],
+          [
+            "Document unique d'évaluation des risques",
+            "En permanence, pour les risques propres à chaque activité",
+            "Chaque employeur, pour ses équipes"
+          ],
+          [
+            "Protocole de sécurité",
+            "Chargements et déchargements, encadrés eux aussi par le code du travail",
+            "Entreprise d'accueil et transporteur"
+          ],
+          [
+            "PGC et PPSPS",
+            "Chantiers de bâtiment et travaux publics réunissant plusieurs entreprises",
+            "Coordonnateur SPS et entreprises du chantier"
+          ]
+        ]
+      },
+      {
+        "type": "paragraphe",
+        "texte": "Le document unique nourrit le PDP : l'évaluation des risques propres de chaque partie sert de base à l'analyse des risques de coactivité. Deux dispositifs, une même gestion des risques, une même politique de santé au travail."
+      },
+      {
+        "type": "titre",
+        "niveau": 2,
+        "texte": "Ce que cela implique pour votre organisation",
+        "id": "ce-que-cela-implique-pour-votre-organisation"
+      },
+      {
+        "type": "paragraphe",
+        "texte": "Un plan de prévention sérieux se prépare avant l'intervention, pas le matin même sur un coin de bureau."
+      },
+      {
+        "type": "liste",
+        "items": [
+          {
+            "accroche": "Du temps en amont",
+            "texte": "Inspection commune, analyse, rédaction : ce temps doit apparaître dans le planning des travaux. Il se récupère au centuple en incidents évités."
+          },
+          {
+            "accroche": "Un prestataire rompu à l'exercice",
+            "texte": "Une entreprise de maintenance qui arrive avec habilitations à jour, modes opératoires et analyse de ses propres risques apporte une aide directe à vos équipes HSE. Le site web de l'INRS, l'institut national de recherche et de sécurité, propose un modèle à télécharger et une documentation de référence pour cadrer l'élaboration, tenue à jour au fil de l'actualité réglementaire."
+          },
+          {
+            "accroche": "Une traçabilité qui protège",
+            "texte": "Le PDP peut être demandé par l'inspection du travail à tout moment, et reste tenu à la disposition du médecin du travail et du CSE. Un plan signé, daté, à jour, prouve que la mise en œuvre de la prévention est organisée, pas subie."
+          }
+        ]
+      },
+      {
+        "type": "citation",
+        "texte": "Chez Migen, chaque intervention démarre par ce cadrage : nos techniciens y sont formés, et seuls 10 % des candidats passent notre sélection, entretien technique et comportemental compris. La sécurité fait partie de l'évaluation, au même titre que la compétence."
+      },
+      {
+        "type": "citation",
+        "texte": "[Demander un devis](/contact/)"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Qui doit rédiger le plan de prévention ?",
+        "reponse": "L'entreprise utilisatrice en a l'initiative et en porte la responsabilité. Le PDP s'élabore conjointement avec chaque entreprise extérieure, puis se signe par les chefs des entreprises concernées ou leurs représentants. Une rédaction à sens unique ne vaut rien : l'analyse doit croiser les connaissances des deux côtés."
+      },
+      {
+        "question": "Le plan de prévention est-il obligatoire pour toutes les interventions ?",
+        "reponse": "L'évaluation commune des risques doit se réaliser dès qu'une entreprise extérieure intervient dans vos locaux, et cette obligation d'analyse ne connaît pas de seuil. La forme écrite devient obligatoire à partir de 400 heures de travail sur douze mois, ou dès la première journée pour les travaux dangereux listés par l'arrêté du 19 mars 1993, pris en application du décret."
+      },
+      {
+        "question": "Combien de temps un plan de prévention reste-t-il valable ?",
+        "reponse": "Aussi longtemps que dure l'opération : la réglementation ne prévoit pas de limite. En contrepartie, il doit être actualisé chaque fois que les conditions changent. Pour un contrat de maintenance annuel, une révision périodique avec nouvelle inspection commune reste la bonne pratique, recommandée par les repères de l'INRS, et chaque révision porte la mention de sa date."
+      },
+      {
+        "question": "Quelle différence entre plan de prévention et document unique ?",
+        "reponse": "Le document unique d'évaluation des risques couvre les risques propres de chaque employeur pour ses salariés. Le plan de prévention traite ce qui se croise entre les activités de plusieurs entreprises sur un même site : le même code du travail prévoit les deux. Le premier existe en permanence, le second naît avec les travaux et disparaît avec eux."
+      },
+      {
+        "question": "Que risque une entreprise sans plan de prévention ?",
+        "reponse": "Une mise en cause pénale des deux employeurs en cas d'accident, des sanctions prévues par la législation en vigueur, et surtout des dangers réels qui auraient pu être traités. Les accidents graves de la coactivité surviennent presque toujours là où l'analyse préalable a manqué, et la recherche des causes le confirme : l'information n'avait pas circulé jusqu'aux équipes."
+      },
+      {
+        "question": "Comment Migen s'intègre-t-il dans cette démarche ?",
+        "reponse": "Nos chargés d'affaires préparent l'inspection commune, apportent l'analyse de risques des travaux que nous venons réaliser, les habilitations et les formations de nos techniciens. Sur les prestations récurrentes, nous gardons l'outil à jour avec vos équipes. Pour un besoin de maintenance, prenez contact par le formulaire en bas de page : rappel dans l'heure aux horaires ouvrés."
+      }
+    ]
+  },
+  "blocs_corpus": 38
+}

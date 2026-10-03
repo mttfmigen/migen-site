@@ -31,7 +31,7 @@
  * titre, toute écriture anonyme. Elle reste sur le poste : ce fichier vit dans
  * `scripts/`, hors du paquet construit, et rien du site ne l'importe.
  */
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -97,6 +97,27 @@ function contenusAttendus() {
       par.set(url, { forme, contenu: entree.contenu, mot_cle: entree.mot_cle ?? null });
     }
   }
+
+  /* Les gabarits portés de la maquette, UN FICHIER PAR PAGE.
+     Ils sont lus en DERNIER, et ils gagnent : une page écrite au gabarit de sa
+     maquette remplace la même page au gabarit de vente, qui est ce que le
+     client a vu et nommé « ce n'est pas comme sur la maquette ». Le contenu
+     part entier dans le même appel REST atomique que les autres : aucun SQL
+     n'est assemblé, donc aucun point-virgule du corpus n'est interprété. */
+  const dossier = join(IMPORT, "gabarits-maquette");
+  if (existsSync(dossier)) {
+    for (const nom of readdirSync(dossier).sort()) {
+      if (!nom.endsWith(".json")) continue;
+      const entree = JSON.parse(readFileSync(join(dossier, nom), "utf8"));
+      if (!entree.url || !entree.contenu) continue;
+      const url = entree.url.endsWith("/") ? entree.url : `${entree.url}/`;
+      par.set(url, {
+        forme: entree.contenu.gabarit ?? "gabarit",
+        contenu: entree.contenu,
+        mot_cle: entree.mot_cle ?? null,
+      });
+    }
+  }
   return par;
 }
 
@@ -119,7 +140,10 @@ let ecrites = 0;
 const echecs = [];
 
 for (const [chemin, cible] of aFaire) {
-  const elements = cible.forme === "fiche" ? null : (cible.contenu[cible.forme] ?? []).length;
+  const elements =
+    cible.forme === "sections" || cible.forme === "blocs"
+      ? (cible.contenu[cible.forme] ?? []).length
+      : null;
   const octets = Buffer.byteLength(JSON.stringify(cible.contenu));
   const pointVirgule = JSON.stringify(cible.contenu).includes(";");
 

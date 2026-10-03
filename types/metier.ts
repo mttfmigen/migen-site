@@ -21,6 +21,10 @@
  * fournit pas se rend vide, jamais rempli au hasard.
  */
 
+import type { Section } from "./contenu";
+
+import type { BlocEditorial } from "@/types/editorial";
+
 /** Une pastille cliquable vers une autre entrée du même rayon. */
 export interface LienMetier {
   libelle: string;
@@ -71,11 +75,55 @@ export type ContenuMetier =
       competences?: string[];
       /** Habilitations utiles, en pastilles orange. */
       habilitations?: string[];
+      /**
+       * LE RESTE DU CORPUS, rendu sous les sections de la maquette.
+       *
+       * POURQUOI CE CHAMP EXISTE. La maquette ne dessine que quatre sections
+       * pour une fiche métier, 155 mots en tout. Le corpus de ces pages en
+       * porte entre 30 et 76 blocs : diplômes, financement, conditions de
+       * travail, marché de l'emploi, questions fréquentes. C'est du texte
+       * rédigé, relu et payé, et c'est la substance du référencement de la
+       * page. Le réduire aux quatre sections de la maquette supprimerait les
+       * neuf dixièmes de ce qui fait venir le visiteur.
+       *
+       * Il est donc rendu SOUS les sections de la maquette, dans la colonne de
+       * lecture du gabarit article de la maquette (lignes 5759 à 5824), celle
+       * que `components/site/editorial/PageEditoriale.tsx` emploie déjà. La
+       * page reste celle de la maquette et garde tout son texte.
+       *
+       * ET SURTOUT PAS `blocs` : `estEditorial()` ne regarde que la présence de
+       * ce nom, et `app/[...slug]/page.tsx` l'interroge AVANT
+       * `estMetierOuDomaine()`. Un contenu qui porterait `blocs` repartirait
+       * dans le gabarit éditorial, et ces pages ressembleraient encore à ce que
+       * le client a refusé.
+       */
+      corps?: BlocEditorial[];
     })
   | (BaseMetier & {
       gabarit: "domaine";
       /** « Ce que nous traitons », en liste cochée dans la carte de verre. */
       traitements?: string[];
+      /**
+       * CE QUE LE CORPUS PORTE ET QUE LA MAQUETTE NE DESSINE PAS.
+       *
+       * Le gabarit domaine de la maquette tient en trois sections : le héros,
+       * la mosaïque « Ce que nous traitons », puis « Les autres domaines » et sa
+       * carte de fin. Le corpus rédigé, lui, porte huit sections de plus par
+       * page : les chiffres, le problème, le duo prestation-bénéfice, le
+       * déroulé, les garanties, l'appel de milieu de page, les réalisations et
+       * les questions fréquentes. C'est du texte payé, et c'est la substance du
+       * référencement de la page : il ne se supprime pas parce que la maquette
+       * ne lui a pas dessiné de case.
+       *
+       * Il se rend donc ici, par les MÊMES blocs que le gabarit de vente
+       * (`components/site/blocs/`), qui sont eux aussi portés de la maquette :
+       * même surtitre orange en capitales, mêmes H2, mêmes cartes. La page reste
+       * celle de la maquette et garde tout son texte.
+       *
+       * `heros` et `ctaFinal` n'y figurent PAS : le héros de la maquette et sa
+       * carte de fin les rendent déjà, et deux `heros` donneraient deux H1.
+       */
+      reste?: Section[];
     });
 
 /**

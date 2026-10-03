@@ -1,0 +1,511 @@
+{
+ "url": "/carriere/technicien-itinerant/",
+ "h1": "Technicien de maintenance itinérant",
+ "mot_cle": "technicien de maintenance itinérant",
+ "contenu": {
+  "gabarit": "metier",
+  "chapeau": "Cette fiche métier détaille les missions, le salaire et les conditions du technicien de maintenance itinérant. Elle complète le hub [Métiers de la maintenance](/carriere/), qui présente les sept métiers de la filière.",
+  "boutons": [
+   {
+    "libelle": "Recruter ce profil"
+   },
+   {
+    "libelle": "Candidater chez Migen",
+    "href": "/contact/"
+   }
+  ],
+  "missions": [
+   "Assurer la maintenance préventive",
+   "Réaliser la maintenance curative",
+   "Assurer le SAV",
+   "Installer et mettre en service",
+   "Optimiser et conseiller",
+   "Réaliser des travaux",
+   "Tracer l'intervention"
+  ],
+  "competences": [
+   "Décision en solo",
+   "Polyvalence technique",
+   "Sens du service client",
+   "Méthode de diagnostic",
+   "Gestion et organisation",
+   "Communication"
+  ],
+  "habilitations": [
+   "Habilitation électrique",
+   "Consignation et déconsignation",
+   "Protection et matériel"
+  ],
+  "autres": [
+   {
+    "libelle": "Technicien de maintenance",
+    "href": "/carriere/technicien-de-maintenance/"
+   },
+   {
+    "libelle": "Électromécanicien",
+    "href": "/carriere/electromecanicien/"
+   },
+   {
+    "libelle": "Automaticien",
+    "href": "/carriere/automaticien/"
+   },
+   {
+    "libelle": "Roboticien",
+    "href": "/carriere/roboticien/"
+   },
+   {
+    "libelle": "Responsable maintenance",
+    "href": "/carriere/responsable-maintenance/"
+   },
+   {
+    "libelle": "Agent de maintenance industrielle",
+    "href": "/carriere/agent-de-maintenance/"
+   },
+   {
+    "libelle": "Alternance maintenance industrielle",
+    "href": "/carriere/alternance/"
+   }
+  ],
+  "cta": {
+   "question": "Ce métier vous manque sur votre site ?",
+   "rappel": "Décrivez le poste et les habilitations attendues. Nous vous présentons des techniciens à valider.",
+   "bouton": {
+    "libelle": "Je veux ce profil"
+   }
+  },
+  "corps": [
+   {
+    "type": "paragraphe",
+    "texte": "Migen emploie des techniciens itinérants en maintenance industrielle, qui interviennent chez ses clients partout en France. Le regard posé ici est celui d'un employeur qui recrute chaque semaine, pas d'une fiche générique."
+   },
+   {
+    "type": "citation",
+    "texte": "Un poste vous intéresse ? Un échange au 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30, suffit pour situer votre profil de candidat."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Ce que fait un technicien de maintenance itinérant au quotidien",
+    "id": "ce-que-fait-un-technicien-de-maintenance-itinera"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Panne chez un client, matériel en défaut, SAV à assurer : le technicien de maintenance itinérant se déplace et répare sur place. Ses missions couvrent la maintenance préventive et curative, sur le site du client."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Assurer la maintenance préventive",
+      "texte": "contrôler et régler, outils en main, le matériel installé sur chaque site, éviter la panne avant qu'elle n'arrive."
+     },
+     {
+      "accroche": "Réaliser la maintenance curative",
+      "texte": "diagnostiquer, mener la réparation, remplacer la pièce défectueuse, remettre l'équipement en service le jour même si possible."
+     },
+     {
+      "accroche": "Assurer le SAV",
+      "texte": "traiter la demande d'un client, du technicien SAV itinérant au technicien monteur, sur du matériel neuf ou en ligne de production."
+     },
+     {
+      "accroche": "Installer et mettre en service",
+      "texte": "monter un équipement, tester chaque fonction, valider l'installation sur place."
+     },
+     {
+      "accroche": "Optimiser et conseiller",
+      "texte": "donner un conseil d'utilisation, optimiser un réglage, expliquer l'outil à l'équipe sur place."
+     },
+     {
+      "accroche": "Réaliser des travaux",
+      "texte": "petits travaux d'installation, mise en ligne d'un produit, réglage d'un outil de production."
+     },
+     {
+      "accroche": "Tracer l'intervention",
+      "texte": "rédiger le compte rendu heure par heure, remonter l'information et le suivi au service et au client."
+     }
+    ]
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Déplacements et grand déplacement : le cadre du poste",
+    "id": "deplacements-et-grand-deplacement-le-cadre-du-po"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Le cœur du métier, c'est la route. Le technicien itinérant organise seul son travail, d'un site à l'autre, parfois en grand déplacement plusieurs jours d'affilée."
+   },
+   {
+    "type": "tableau",
+    "entetes": [
+     "Point clé",
+     "Ce que cela veut dire"
+    ],
+    "lignes": [
+     [
+      "Zone d'intervention",
+      "Une région à parcourir, plusieurs départements, parfois la France entière"
+     ],
+     [
+      "Grand déplacement",
+      "Nuitées, prime panier, prime d'itinérance selon le contrat"
+     ],
+     [
+      "Véhicule",
+      "Un véhicule de service équipé du matériel et de l'outil de diagnostic"
+     ],
+     [
+      "Organisation",
+      "Le technicien planifie seul sa tournée et gère ses priorités"
+     ],
+     [
+      "Rythme",
+      "Des heures variables, un espace de travail qui change chaque jour"
+     ]
+    ]
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Ce cadre attire les candidats qui aiment bouger. Il demande de l'indépendance, le sens du contact et le goût du terrain."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Habilitations, sécurité et matériel",
+    "id": "habilitations-securite-et-materiel"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Le technicien de maintenance itinérant intervient seul, chez le client, sur des installations sous tension, souvent au milieu du personnel de production : la sécurité passe avant tout. Habilitations et règles se contrôlent avant chaque intervention."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Habilitation électrique",
+      "texte": "une obligation légale avant d'intervenir sur une armoire ou un circuit électrique, l'électricité étant présente sur presque chaque site."
+     },
+     {
+      "accroche": "Consignation et déconsignation",
+      "texte": "maîtriser la procédure et la règle de sécurité avant toute intervention sur une machine."
+     },
+     {
+      "accroche": "Protection et matériel",
+      "texte": "porter les protections individuelles, garder une utilisation stricte du bon outil et du bon matériel de contrôle sur le terrain."
+     }
+    ]
+   },
+   {
+    "type": "citation",
+    "texte": "Chez Migen, les habilitations sont vérifiées avant chaque intervention : un point de contrôle systématique dès l'entretien de recrutement."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Devenir technicien de maintenance itinérant : formation et parcours",
+    "id": "devenir-technicien-de-maintenance-itinerant-form"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Le métier se construit par étapes, du bac professionnel à l'expérience de terrain. Voici le parcours type d'un candidat et le programme de formation pour devenir technicien de maintenance itinérant."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Le bac pro",
+      "texte": "un bac pro maintenance des équipements industriels ou électrotechnique, première marche du métier."
+     },
+     {
+      "accroche": "Le BTS ou le BUT",
+      "texte": "maintenance des systèmes ou électrotechnique, le socle technique attendu par les recruteurs."
+     },
+     {
+      "accroche": "La formation en alternance",
+      "texte": "l'alternance en entreprise reste la meilleure voie pour un candidat, avec un vrai programme de formation sur le terrain, souvent en partenariat avec un centre local."
+     },
+     {
+      "accroche": "Le premier poste",
+      "texte": "technicien de maintenance, puis passage en itinérance dès que les compétences techniques sont acquises : une trajectoire professionnelle rapide."
+     }
+    ],
+    "ordonnee": true
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Le technicien de maintenance itinérant vient souvent d'un poste sédentaire. La connaissance des machines et le sens du service font la différence, plus que le diplôme seul."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Les compétences qui font la différence",
+    "id": "les-competences-qui-font-la-difference"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Un recruteur cherche trois choses chez un candidat technicien de maintenance itinérant : l'autonomie, la polyvalence technique, le sens du service client."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Décision en solo",
+      "texte": "le technicien itinérant tranche seul sur place, sans atelier ni collègue à côté."
+     },
+     {
+      "accroche": "Polyvalence technique",
+      "texte": "mécanique, électricité, électronique, hydraulique, un large domaine sur le même déplacement."
+     },
+     {
+      "accroche": "Sens du service client",
+      "texte": "représenter son employeur sur site, avec le sourire et le mot juste."
+     },
+     {
+      "accroche": "Méthode de diagnostic",
+      "texte": "rechercher et isoler la cause d'une panne vite, outils de mesure en main, car le client attend et la production aussi."
+     },
+     {
+      "accroche": "Gestion et organisation",
+      "texte": "gérer et optimiser sa tournée, son matériel, ses outils, son suivi, comme un professionnel du terrain."
+     },
+     {
+      "accroche": "Communication",
+      "texte": "expliquer la panne et la réparation, donner un conseil d'utilisation clair à l'équipe sur place."
+     }
+    ]
+   },
+   {
+    "type": "citation",
+    "texte": "Le métier voisin sédentaire a sa fiche sur la page [technicien de maintenance](/carriere/technicien-de-maintenance/), utile pour comparer les deux profils."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Évolution de carrière du technicien itinérant",
+    "id": "evolution-de-carriere-du-technicien-itinerant"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Le métier ouvre plusieurs voies d'évolution. Un candidat qui aime la route peut aussi, plus tard, rechercher un cadre sédentaire et changer de voie vers l'encadrement."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Rester sur le terrain",
+      "texte": "devenir référent technique, l'expert que le service appelle sur les pannes dures."
+     },
+     {
+      "accroche": "Changer de voie",
+      "texte": "passer chef d'équipe ou [responsable maintenance](/carriere/responsable-maintenance/), pour piloter au lieu de rouler : une évolution classique."
+     },
+     {
+      "accroche": "Se spécialiser",
+      "texte": "SAV d'un produit précis, vente et conseil technique, technicien support, ou formation des nouveaux candidats."
+     }
+    ]
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Beaucoup de candidats voient déjà l'itinérance comme une école. Chaque intervention forme le candidat plus vite qu'un poste fixe, et l'évolution suit cette voie."
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Un conseil au candidat qui hésite : posez la bonne question sur le point qui compte, la zone et les primes. Un centre de formation ou un partenariat avec un CFA aide à changer de voie. La connaissance des données, des outils de GMAO et de l'informatique embarquée ouvre l'évolution vers un rôle plus général. Le bon candidat sait optimiser sa route ; les employeurs se battent pour le recruter."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Salaire et avantages du technicien itinérant",
+    "id": "salaire-et-avantages-du-technicien-itinerant"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "La rémunération d'un technicien de maintenance itinérant dépend de plusieurs facteurs. Le salaire brut se complète souvent de primes liées au déplacement."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Le salaire de base",
+      "texte": "un salaire brut fixe, versé chaque mois, selon l'expérience et le domaine."
+     },
+     {
+      "accroche": "Les primes de déplacement",
+      "texte": "prime panier, prime d'itinérance, prise en charge des nuitées en grand déplacement."
+     },
+     {
+      "accroche": "Le contrat",
+      "texte": "le plus souvent un CDI proposé au candidat, gage de stabilité : la règle générale du secteur."
+     },
+     {
+      "accroche": "L'expérience",
+      "texte": "le salaire moyen progresse vite avec l'ancienneté professionnelle et la polyvalence : l'évolution salariale suit la compétence."
+     },
+     {
+      "accroche": "Le secteur",
+      "texte": "énergie, agroalimentaire, agricole ou SAV industriel n'affichent pas la même grille : de quoi changer d'employeur sans changer de cap."
+     }
+    ]
+   },
+   {
+    "type": "citation",
+    "texte": "Le salaire réel se discute selon le parcours et la zone. Posez vos questions, décrivez votre profil : nous situons la proposition, primes de déplacement comprises."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Technicien itinérant chez Migen : le cadre et les moyens",
+    "id": "technicien-itinerant-chez-migen-le-cadre-et-les-"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Voici ce que Migen propose comme employeur, au-delà de l'offre d'emploi classique."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "De la variété, pas de routine",
+      "texte": "dépannage, SAV, mise en service, travaux chez des clients de tous secteurs, un métier où chaque jour change."
+     },
+     {
+      "accroche": "Un collectif technique complet",
+      "texte": "plus de 100 collaborateurs, 4 agences (Lyon, Montréal, Dubaï, Madrid), une équipe où l'entraide fonctionne."
+     },
+     {
+      "accroche": "Une sélection exigeante et assumée",
+      "texte": "entretien technique et comportemental, 10 % des candidats retenus."
+     },
+     {
+      "accroche": "Un accueil structuré",
+      "texte": "un référent pour accompagner chaque candidat recruté dès la prise de poste, matériel et outil fournis dès le premier jour."
+     },
+     {
+      "accroche": "Une couverture nationale",
+      "texte": "des missions à parcourir partout en France, d'est en ouest ; un poste itinérant, région par région ou pays entier, défini à l'embauche avec le candidat."
+     }
+    ]
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Emploi et recrutement : qui recrute un technicien itinérant",
+    "id": "emploi-et-recrutement-qui-recrute-un-technicien-"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "L'industrie manque de techniciens itinérants. Cherchez « emploi technicien de maintenance itinérant » sur un site d'annonces : le plus souvent en CDI, où chaque recruteur peine à trouver un candidat autonome. Une recherche d'emploi tourne vite à l'avantage du candidat."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Les fabricants de matériel",
+      "texte": "SAV et installation du produit, pour l'industrie comme pour le grand public, une offre après l'autre, faute de candidats."
+     },
+     {
+      "accroche": "Les sociétés de maintenance",
+      "texte": "elles cherchent des techniciens capables d'assurer l'itinérance sur plusieurs sites."
+     },
+     {
+      "accroche": "Le secteur agricole et TP",
+      "texte": "le technicien monteur itinérant y est très recherché, souvent en grand déplacement."
+     },
+     {
+      "accroche": "Les cabinets et recruteurs",
+      "texte": "le recruteur spécialisé chasse ce profil rare de technicien SAV itinérant, à l'aise en avant-vente comme en dépannage."
+     }
+    ]
+   },
+   {
+    "type": "citation",
+    "texte": "Un candidat indépendant, à l'aise sur la route, trouve un emploi durable. Nous cherchons à recruter ce profil ; chaque candidat passe la même sélection, faite en amont : une politique constante, avec un vrai retour au client."
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Sur les job-boards, la question revient : comment recruter vite un bon candidat ? Les mêmes offres restent en ligne des mois : le point commun, c'est l'urgence. Un candidat qui sait optimiser une tournée et rassurer le client a le choix. Le recrutement d'un technicien itinérant reste un marché de candidats."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Comment rejoindre nos équipes",
+    "id": "comment-rejoindre-nos-equipes"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "La candidature est directe, sans dossier interminable. Quatre étapes, point par point, du premier contact à l'arrivée sur site."
+   },
+   {
+    "type": "liste",
+    "items": [
+     {
+      "accroche": "Un échange avec un chargé d'affaires",
+      "texte": "le candidat décrit son parcours, sa zone de déplacement souhaitée, ses disponibilités, en agence ou par téléphone ; ses données restent confidentielles."
+     },
+     {
+      "accroche": "Un entretien technique et comportemental",
+      "texte": "mené par un professionnel du métier, pour vérifier la compétence réelle et le sens du service du candidat."
+     },
+     {
+      "accroche": "Une proposition de poste",
+      "texte": "un CDI, une zone et un secteur selon le profil du candidat et les besoins de nos comptes."
+     },
+     {
+      "accroche": "L'intégration",
+      "texte": "un référent accompagne le candidat, matériel, outil et véhicule prêts dès le premier jour."
+     }
+    ],
+    "ordonnee": true
+   },
+   {
+    "type": "paragraphe",
+    "texte": "Une question sur le poste ? Un point à clarifier sur la zone ou les primes ? Aucun candidat n'est oublié : chaque question a une réponse avant de signer, sans laisser le candidat dans le flou."
+   },
+   {
+    "type": "titre",
+    "niveau": 2,
+    "texte": "Questions fréquentes",
+    "id": "questions-frequentes"
+   },
+   {
+    "type": "paragraphe",
+    "texte": "La FAQ ci-dessous rassemble les questions que chaque candidat pose avant de signer, offre en main."
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "Quelle est la différence entre un technicien de maintenance et un technicien itinérant ?",
+    "texte": "Le technicien de maintenance travaille surtout sur un site fixe ; le technicien de maintenance itinérant se déplace chez les clients pour dépanner et mener de petits travaux. Le second exige plus d'indépendance et une vraie qualité de contact."
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "Qu'est-ce que le grand déplacement pour un technicien itinérant ?",
+    "texte": "Pour le candidat, c'est une intervention loin du domicile, sur plusieurs jours, avec nuitées à l'hôtel. Le grand déplacement s'accompagne de primes : prime panier, prime d'itinérance et prise en charge des frais, chaque point écrit au contrat."
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "Le poste de technicien itinérant est-il en CDI ?",
+    "texte": "Le plus souvent oui, et le CDI rassure le candidat comme l'employeur. C'est la norme pour un emploi en tension, car les entreprises cherchent à fidéliser un technicien autonome et polyvalent, avec une évolution à la clé."
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "Quel salaire pour un technicien de maintenance itinérant ?",
+    "texte": "Le salaire brut dépend de l'expérience et du secteur, complété par les primes de déplacement. Posez votre question, décrivez votre profil : nous situons une proposition réaliste, sans grille figée."
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "Quelles entreprises recrutent des techniciens itinérants ?",
+    "texte": "Les fabricants de matériel, le SAV industriel, le secteur agricole et les entreprises de maintenance, sous des intitulés voisins : technicien installation et maintenance, technicienne itinérante, technicien monteur. Toutes veulent recruter en continu, faute de candidats autonomes et mobiles."
+   },
+   {
+    "type": "paragraphe",
+    "accroche": "Comment Migen évalue-t-elle un technicien itinérant avant de le proposer à un client ?",
+    "texte": "Un entretien technique mené par un professionnel du métier, puis un entretien comportemental sur l'autonomie et le service. Seuls 10 % des candidats sont retenus, résultats transmis au client avant décision, comme détaillé plus haut sur cette page."
+   },
+   {
+    "type": "citation",
+    "texte": "À lire aussi : [technicien de maintenance](/carriere/technicien-de-maintenance/)"
+   }
+  ]
+ }
+}

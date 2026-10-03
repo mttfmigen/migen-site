@@ -1,11 +1,13 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 
+import Bloc from "@/components/site/blocs/Bloc";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import { LARGEUR, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import type { ContenuMetier } from "@/types/metier";
 
 import styles from "./PageMetier.module.css";
+import Corps from "./Corps";
 import { Boutons, CarteAction, Pastilles, Puces, Visuel } from "./pieces";
 
 /**
@@ -173,6 +175,18 @@ export default function PageMetier({
           </section>
         ) : null}
 
+        {/* ------------------------- le corpus que la maquette ne dessine pas
+            Rendu par les blocs du gabarit de vente, portés de la maquette eux
+            aussi : la page garde l'ouverture et la fermeture de la maquette, et
+            le texte rédigé tient entre les deux. Voir `reste` dans
+            `types/metier.ts`. */}
+        {!metier && contenu.reste?.length
+          ? contenu.reste.map((section, i) => (
+              // L'index suffit comme clé : l'ordre du tableau EST le gabarit.
+              <Bloc key={`${section.type}-${i}`} section={section} />
+            ))
+          : null}
+
         {/* ------------------------------------- missions et compétences (métier) */}
         {metier && listes > 0 ? (
           <section style={{ padding: "var(--sec) 0 0" }}>
@@ -242,6 +256,15 @@ export default function PageMetier({
               </div>
             </div>
           </section>
+        ) : null}
+
+        {/* ------------------------ le corpus que la maquette ne dessine pas
+            Les quatre sections de la maquette tiennent en 155 mots et ne
+            consomment que trois listes du corpus. Le reste, de 30 à 76 blocs
+            de texte rédigé par page, se rend ici, dans la colonne de lecture du
+            gabarit article de la maquette. Voir `corps` dans `types/metier.ts`. */}
+        {metier && contenu.corps?.length ? (
+          <Corps blocs={contenu.corps} />
         ) : null}
 
         {/* --------------------------------- autres entrées, puis appel à l'action

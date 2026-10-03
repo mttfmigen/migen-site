@@ -1,0 +1,275 @@
+{
+  "url": "/expertises/electrique/",
+  "contenu": {
+    "gabarit": "domaine",
+    "chapeau": "Des techniciens habilités au niveau exigé par vos travaux. Ils mesurent avant de remplacer, remontent à la cause du défaut et vous laissent les schémas à jour.",
+    "boutons": [
+      {
+        "libelle": "Demander une intervention"
+      }
+    ],
+    "traitements": [
+      "La distribution tenue",
+      "Les armoires de commande reprises",
+      "Les motorisations diagnostiquées à la mesure",
+      "La thermographie infrarouge sur armoires et moteurs",
+      "La chaîne de sécurité vérifiée",
+      "Le rétrofit et la mise en conformité"
+    ],
+    "autres": [
+      {
+        "libelle": "Automatisme industriel",
+        "href": "/expertises/automatisme/"
+      },
+      {
+        "libelle": "Électromécanique industrielle",
+        "href": "/expertises/electromecanique/"
+      },
+      {
+        "libelle": "Maintenance hydraulique",
+        "href": "/expertises/hydraulique/"
+      },
+      {
+        "libelle": "Maintenance mécanique",
+        "href": "/expertises/mecanique/"
+      },
+      {
+        "libelle": "Maintenance pneumatique",
+        "href": "/expertises/pneumatique/"
+      },
+      {
+        "libelle": "Maintenance robotique",
+        "href": "/expertises/robotique/"
+      },
+      {
+        "libelle": "Soudure industrielle",
+        "href": "/expertises/soudure/"
+      },
+      {
+        "libelle": "Maintenance tuyauterie industrielle",
+        "href": "/expertises/tuyauterie/"
+      }
+    ],
+    "cta": {
+      "question": "Besoin d'un électricien de maintenance qui laisse les schémas à jour derrière lui ?",
+      "bouton": {
+        "libelle": "Demander une intervention"
+      }
+    },
+    "reste": [
+      {
+        "type": "chiffres",
+        "chiffres": [
+          {
+            "valeur": "10 %",
+            "libelle": "des candidats retenus, après entretien technique ET comportemental"
+          },
+          {
+            "valeur": "+ 120",
+            "libelle": "clients, dont plus de 80 réguliers"
+          },
+          {
+            "valeur": "24/24 et 7/7",
+            "libelle": "astreinte, pour les sites couverts"
+          }
+        ]
+      },
+      {
+        "type": "probleme",
+        "punchline": "Une armoire qui disjoncte un vendredi soir, et c'est tout le week-end de production qui saute.",
+        "puces": [
+          {
+            "accroche": "On réenclenche et on attend la prochaine fois.",
+            "texte": "Le défaut revient, un peu plus cher à chaque tour, jusqu'à la casse du moteur."
+          },
+          {
+            "accroche": "La connexion desserrée est la première cause d'échauffement en armoire.",
+            "texte": "Elle se voit en thermographie des mois avant l'incendie. Encore faut-il regarder."
+          },
+          {
+            "accroche": "Le défaut intermittent ne se reproduit jamais devant le technicien.",
+            "texte": "Il se résout par de la méthode et de l'enregistrement, pas par des pièces changées au hasard."
+          },
+          {
+            "accroche": "Les schémas ont disparu.",
+            "texte": "Câblage improvisé, repérage absent, et chaque intervention recommence l'archéologie de l'armoire."
+          }
+        ]
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "La distribution tenue",
+              "texte": "TGBT, tableaux divisionnaires, protections, réseaux de câbles, continuité des masses."
+            },
+            "benefice": "Chaque atelier reste alimenté, et la coupure se pré-diagnostique en minutes."
+          },
+          {
+            "prestation": {
+              "accroche": "Les armoires de commande reprises",
+              "texte": "contacteurs, relais, borniers, câblage, repérage, schémas mis à jour."
+            },
+            "benefice": "La prochaine intervention ne repart pas de zéro, chez nous comme chez vous."
+          },
+          {
+            "prestation": {
+              "accroche": "Les motorisations diagnostiquées à la mesure",
+              "texte": "moteur asynchrone, variateur, démarreur, freinage, intensités et déséquilibres."
+            },
+            "benefice": "Le bon coupable est identifié : bobinage, roulements ou paramétrage. Rien n'est remplacé au jugé."
+          },
+          {
+            "prestation": {
+              "accroche": "La thermographie infrarouge sur armoires et moteurs",
+              "texte": ", sans arrêter la ligne."
+            },
+            "benefice": "Le point chaud devient un travail planifié au lieu d'un sinistre."
+          },
+          {
+            "prestation": {
+              "accroche": "La chaîne de sécurité vérifiée",
+              "texte": "arrêts d'urgence, barrières immatérielles, capteurs de position, asservissements."
+            },
+            "benefice": "L'installation protège vos opérateurs, et le prouve par écrit."
+          },
+          {
+            "prestation": {
+              "accroche": "Le rétrofit et la mise en conformité",
+              "texte": "composants obsolètes remplacés, passage en variation de vitesse, reprise d'armoire vieillissante."
+            },
+            "benefice": "La durée de vie du matériel repart, et la consommation baisse avec elle."
+          },
+          {
+            "prestation": {
+              "texte": "**Un plan d'action chiffré, classé par urgence.**"
+            },
+            "benefice": "Vous arbitrez avec les coûts sous les yeux, nous réalisons ce que vous décidez."
+          }
+        ],
+        "prose": [
+          {
+            "texte": "Un défaut électrique qui bloque la ligne maintenant se traite par le [dépannage industriel](/offres/depannage-industriel/). Un besoin durable se couvre par la [sous-traitance maintenance](/offres/residence/), un technicien intégré à votre équipe."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Vous décrivez la situation",
+            "texte": "équipement, code défaut affiché, repère de l'armoire, contexte d'apparition. Quatre champs, ou un appel au 04 78 33 72 05."
+          },
+          {
+            "titre": "Un technicien vous rappelle dans l'heure",
+            "texte": "la panne est qualifiée à distance et le niveau d'habilitation requis est arrêté avant le déplacement."
+          },
+          {
+            "titre": "Le diagnostic se fait sur site dans cet ordre",
+            "texte": "mesures, lecture des schémas, analyse des alarmes automate. L'intuition passe après."
+          },
+          {
+            "titre": "L'intervention respecte le risque électrique",
+            "texte": "consignation par un chargé de consignation quand elle s'impose, plan de prévention, équipements de protection, balisage."
+          },
+          {
+            "titre": "Réparation et remise en service",
+            "texte": "remplacement du composant, recâblage, réglage, essais et contrôle du bon fonctionnement en charge."
+          },
+          {
+            "titre": "Vous recevez un compte rendu et vos livrables",
+            "texte": "ce qui a lâché, pourquoi, ce qui a été fait, ce qu'il reste à surveiller, schémas mis à jour à l'appui."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
+            "texte": "L'astreinte 24/24 et 7/7 couvre la nuit et le week-end sur les sites concernés."
+          },
+          {
+            "accroche": "Le bon niveau d'habilitation pour le bon travail.",
+            "texte": "Titres délivrés après formation selon la norme NF C 18-510, dossier fourni et archivé. Personne ne travaille sous tension par facilité."
+          },
+          {
+            "accroche": "Aucune vente de matériel, aucun lien commercial avec un fabricant.",
+            "texte": "La solution proposée est la plus économique à qualité égale, et la référence utilisée figure dans le rapport."
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "question": "Besoin de savoir pourquoi ce disjoncteur déclenche, une bonne fois pour toutes ?",
+        "bouton": "Demander une intervention",
+        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Maintenance préventive d'une centrale photovoltaïque, énergie",
+            "texte": "trois techniciens spécialisés en renfort des équipes Eiffage, de septembre à novembre 2024",
+            "lienLibelle": "Étude de cas EIFFAGE : photovoltaïque",
+            "lienHref": "/preuves/eiffage/"
+          },
+          {
+            "titre": "Remise en état d'un site de traitement des eaux industrielles, risque chimique",
+            "texte": "un technicien électromécanicien habilité RC1 mobilisé 6 mois, mécanique, électricité et notions d'automatisme sur le même intervenant",
+            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
+            "lienHref": "/preuves/suez-remise-en-etat/"
+          },
+          {
+            "titre": "Installation et mise en production d'un parc machine neuf, automobile",
+            "texte": "6 techniciens mobilisés, mécanique, électricité et automatisme demandés au même instant, depuis janvier 2023",
+            "lienLibelle": "Étude de cas EATON : mise en production",
+            "lienHref": "/preuves/eaton-mise-en-production/"
+          },
+          {
+            "titre": "Renfort continu sur des lignes de production, agroalimentaire",
+            "texte": "deux techniciens intégrés en 3x8 sur des lignes automatisées pilotées par automates Schneider",
+            "lienLibelle": "Étude de cas DANONE : lignes de production",
+            "lienHref": "/preuves/danone-lignes-de-production/"
+          },
+          {
+            "titre": "Montage de portiques de lavage partout en France",
+            "texte": "mécanique, électricité et automatisme réunis, levage et raccordements compris",
+            "lienLibelle": "Étude de cas ORTHUS x WASHTEC : installation de stations",
+            "lienHref": "/preuves/orthus-washtec/"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Combien coûte une intervention électrique ?",
+            "reponse": "Le chiffrage dépend du défaut, du niveau d'habilitation requis et de l'urgence. Tout est établi sur devis, déplacement annoncé à l'avance. Le diagnostic à distance qui précède le déplacement ne se facture pas."
+          },
+          {
+            "question": "Nous avons un contrat ailleurs. Comment on reprend nos armoires ?",
+            "reponse": "Par un état des lieux : inventaire des armoires critiques, thermographie, repérage de ce qui n'est plus documenté. Vous récupérez un plan d'action chiffré et classé par urgence, avant même de changer de prestataire."
+          },
+          {
+            "question": "Quelle habilitation faut-il pour intervenir sur nos installations ?",
+            "reponse": "Cela dépend de l'opération. Un dépannage basse tension demande un titre BR, une consignation relève d'un chargé de consignation BC, des travaux encadrés relèvent du B2 ou B2V. Nos techniciens arrivent avec le titre exigé par la nature des travaux."
+          },
+          {
+            "question": "Qui intervient vraiment chez nous ?",
+            "reponse": "Des électriciens de maintenance salariés de Migen, évalués sur cas réels et en entretien comportemental. 10 % des candidats sont retenus. La méthode avant les outils : lire un schéma, isoler une hypothèse, mesurer avant de remplacer."
+          },
+          {
+            "question": "Faites-vous la vérification réglementaire annuelle ?",
+            "reponse": "Non, elle relève d'un organisme agréé et indépendant : c'est un autre métier et une autre responsabilité. Nous réalisons les travaux issus de son rapport. L'électricité tertiaire et le second œuvre ne sont pas non plus notre terrain."
+          },
+          {
+            "question": "Couvrez-vous notre région, et les petits ateliers ?",
+            "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France partout en France, avec la même politique de sécurité électrique sur chaque site."
+          }
+        ]
+      }
+    ]
+  }
+}

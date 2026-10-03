@@ -1,0 +1,279 @@
+{
+  "url": "/secteurs/logistique/maintenance-convoyeur/",
+  "source": "dessin : maquette/accueil-rendu.html, gabarit isSecteur, lignes 6278 à 6364. texte : supabase/import/corpus-analyse.json, produit par scripts/produit-secteurs.mjs.",
+  "contenu": {
+    "gabarit": "secteur",
+    "surtitre": "Secteur d'activité",
+    "chapeau": "Tension de bande relevée, pas estimée. Rouleaux contrôlés un par un sur les zones chargées. Chaque mesure est notée et comparée d'une visite à l'autre, pour voir la dérive avant l'arrêt de ligne.",
+    "actions": [
+      {
+        "libelle": "Demander une intervention sur mes convoyeurs",
+        "href": "#formulaire"
+      }
+    ],
+    "reperesSurtitre": "Nos repères dans le secteur",
+    "reperes": [
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+      },
+      {
+        "valeur": "+ 80",
+        "libelle": "clients réguliers, dont des logisticiens et des industriels à forte cadence"
+      },
+      {
+        "valeur": "4",
+        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, astreinte 24/24 et 7/7"
+      }
+    ],
+    "enjeuxSurtitre": "Les enjeux du secteur",
+    "enjeuxTitre": "Un rouleau à quarante euros bloque un jeudi matin. Il abîme la bande, fait dériver les colis, et arrête la ligne qui relie toutes les autres.",
+    "enjeux": [
+      {
+        "titre": "Quand le convoyage s'arrête, tout s'arrête.",
+        "texte": "Préparation, tri, expédition. Aucun équipement ne mérite plus d'attention que celui qui relie les autres."
+      },
+      {
+        "titre": "La tension de bande bouge avec la température et la charge.",
+        "texte": "Trop tendue, elle use paliers et motoréducteur. Trop détendue, elle patine et dérive. Réglée au jugé, elle coûte les deux."
+      },
+      {
+        "titre": "Un racleur usé laisse la matière s'accumuler.",
+        "texte": "L'accumulation encrasse les rouleaux, use la bande, et un rouleau encrassé chauffe."
+      },
+      {
+        "titre": "Une structure déréglée fait dériver la bande",
+        "texte": ", quels que soient les réglages effectués en aval."
+      },
+      {
+        "titre": "Personne ne relève, donc personne ne voit venir.",
+        "texte": "La dérive est mesurable des semaines avant la casse, à condition que quelqu'un mesure."
+      }
+    ],
+    "autresSurtitre": "Les autres secteurs",
+    "autres": [
+      {
+        "libelle": "Agroalimentaire",
+        "href": "/secteurs/agroalimentaire/"
+      },
+      {
+        "libelle": "Équipements logistiques",
+        "href": "/secteurs/logistique/"
+      },
+      {
+        "libelle": "Automobile",
+        "href": "/secteurs/automobile/"
+      },
+      {
+        "libelle": "Pharmaceutique",
+        "href": "/secteurs/pharmaceutique/"
+      },
+      {
+        "libelle": "Aéronautique",
+        "href": "/secteurs/aeronautique/"
+      },
+      {
+        "libelle": "Chimie",
+        "href": "/secteurs/chimie/"
+      },
+      {
+        "libelle": "Nucléaire",
+        "href": "/secteurs/nucleaire/"
+      },
+      {
+        "libelle": "Industrie lourde",
+        "href": "/secteurs/industrie-lourde/"
+      },
+      {
+        "libelle": "Industrie métallique",
+        "href": "/secteurs/industrie-metallique/"
+      },
+      {
+        "libelle": "Menuiserie industrielle",
+        "href": "/secteurs/menuiserie-industrielle/"
+      }
+    ],
+    "appelTitre": "Besoin de savoir ce que vos lignes vont vous coûter dans six mois ?",
+    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
+    "appelBouton": {
+      "libelle": "Faire inspecter mes convoyeurs",
+      "href": "#formulaire"
+    },
+    "complement": [
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "Inspection en marche",
+              "texte": "contrôle visuel et auditif, repérage des échauffements, frottements et débuts d'usure."
+            },
+            "benefice": "La ligne continue de tourner pendant que le défaut se détecte."
+          },
+          {
+            "prestation": {
+              "accroche": "Relevés mesurés et comparés",
+              "texte": "tension, alignement, état des rouleaux et des paliers, jeu des roulements, intensité moteur."
+            },
+            "benefice": "La dérive apparaît dans les chiffres avant d'apparaître dans la production."
+          },
+          {
+            "prestation": {
+              "accroche": "Remplacement des pièces d'usure au seuil défini",
+              "texte": ", avant la casse."
+            },
+            "benefice": "Un composant à quelques dizaines d'euros remplacé à temps évite un arrêt à plusieurs milliers."
+          },
+          {
+            "prestation": {
+              "texte": "**Reprise d'alignement, agrafage ou vulcanisation de jonction, remplacement de bande.**"
+            },
+            "benefice": "La casse de bande se traite en une opération préparée, pas en improvisation de nuit."
+          },
+          {
+            "prestation": {
+              "texte": "**Diagnostic électrique sur moteurs, variateurs, capteurs et chaîne de sécurité.**"
+            },
+            "benefice": "Les défauts intermittents cessent d'être traités par un redémarrage et un espoir."
+          },
+          {
+            "prestation": {
+              "accroche": "Automaticiens en appui",
+              "texte": "reprise de programme, test des entrées et sorties, sécurisation du redémarrage sur trieurs et AGV."
+            },
+            "benefice": "La partie automatisée du convoyage ne reste plus le point aveugle de l'équipe interne."
+          },
+          {
+            "prestation": {
+              "accroche": "Traçabilité GMAO",
+              "texte": "chaque opération alimente l'historique par équipement."
+            },
+            "benefice": "Les fréquences s'optimisent sur vos données réelles, et l'arbitrage entretenir ou remplacer devient chiffré."
+          },
+          {
+            "prestation": {
+              "texte": "**Formation courte de vos opérateurs aux vérifications de premier niveau.**"
+            },
+            "benefice": "Ce que l'opérateur voit, entend et signale fait reculer les avaries évitables."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "État des lieux",
+            "texte": "relevé du parc par type, bande, rouleaux, chaîne, modulaire, transstockeurs, trieurs. Chaque type a ses points faibles et ses pièces critiques."
+          },
+          {
+            "titre": "Construction du plan",
+            "texte": "fréquences calées sur vos heures de fonctionnement réelles, points de contrôle par équipement, stock minimal de pièces défini avec vous."
+          },
+          {
+            "titre": "Première campagne",
+            "texte": "inspection complète, relevés de référence, traitement des urgences identifiées. C'est la photo de départ dont tout le reste découle."
+          },
+          {
+            "titre": "Cycle préventif",
+            "texte": "inspections en marche, visites outillées sur créneaux creux, remplacements programmés au seuil."
+          },
+          {
+            "titre": "Curatif prioritaire",
+            "texte": "appel, diagnostic, intervention, contrôle de la chaîne de sécurité avant remise en service."
+          },
+          {
+            "titre": "Revue",
+            "texte": "temps moyen entre pannes par convoyeur, disponibilité du convoyage, coût par mètre de ligne. On entretient plus là où ça casse, moins là où tout va bien."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Des relevés, pas des impressions",
+            "texte": "tension, alignement, jeux, intensités. Chaque valeur est notée, comparée à la visite précédente, et le compte rendu vous est remis."
+          },
+          {
+            "accroche": "La recherche de la cause, pas seulement de la pièce",
+            "texte": "un rouleau bloqué a une raison, charge, encrassement ou défaut d'axe. Nous contrôlons les rouleaux voisins et traitons la cause."
+          },
+          {
+            "accroche": "Une remise en service contrôlée",
+            "texte": "la chaîne de sécurité est vérifiée avant tout redémarrage. Aucune sécurité shuntée pour gagner dix minutes, y compris en pleine urgence."
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "question": "Besoin d'un diagnostic sur une ligne qui dérive ou qui s'arrête trop souvent ?",
+        "bouton": "Demander une intervention sur mes convoyeurs",
+        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Maintenance curative dédiée aux convoyeurs, trieurs et packaging, transport et logistique",
+            "texte": "deux techniciens expérimentés en poste sur site",
+            "lienLibelle": "Étude de cas GLS : maintenance curative",
+            "lienHref": "/preuves/gls-maintenance-curative/"
+          },
+          {
+            "titre": "Préventif tenu par créneaux de 8 heures sur un site logistique en continu",
+            "texte": "10 à 20 techniciens une semaine sur deux depuis septembre 2022",
+            "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique",
+            "lienHref": "/preuves/amazon-centre-logistique/"
+          },
+          {
+            "titre": "Préventif annuel de sites logistiques volumineux, e-commerce",
+            "texte": "six techniciens en permanence, depuis septembre 2023",
+            "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
+            "lienHref": "/preuves/veepee-sites-lyon/"
+          },
+          {
+            "titre": "Montage complet d'un centre logistique, convoyage compris",
+            "texte": "12 monteurs mécaniciens, 8 engins de levage, six semaines",
+            "lienLibelle": "Étude de cas AKTID : montage d'un centre logistique",
+            "lienHref": "/preuves/aktid-centre-logistique/"
+          },
+          {
+            "titre": "Convoyage agroalimentaire sous contrainte d'hygiène et de cadence 3x8",
+            "texte": "deux techniciens sur lignes liquides et poudre",
+            "lienLibelle": "Étude de cas DANONE : lignes de production",
+            "lienHref": "/preuves/danone-lignes-de-production/"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "À quelle fréquence faut-il entretenir un convoyeur ?",
+            "reponse": "Selon son rythme d'utilisation. Une inspection hebdomadaire en marche et une visite préventive mensuelle forment une base saine pour deux postes. Un convoyeur peu sollicité s'entretient au trimestre, un trieur en pointe se vérifie chaque semaine. Vos heures de fonctionnement décident, pas un calendrier standard."
+          },
+          {
+            "question": "Comment savoir si la tension de ma bande est correcte ?",
+            "reponse": "Le réglage se fait au relevé, jamais au jugé, et il se vérifie à chaque visite parce qu'il bouge avec la température et la charge. Une bande trop tendue use les paliers et le motoréducteur. Trop détendue, elle patine et dérive. C'est le geste le plus rentable de tout l'entretien."
+          },
+          {
+            "question": "Pouvez-vous intervenir sans arrêter la production ?",
+            "reponse": "En partie, oui : inspections, contrôles et une part des réglages se réalisent en marche, en sécurité. Les remplacements de composants se planifient sur vos créneaux creux, pauses, nuits ou week-ends. S'il faut consigner une centrale hydraulique, la consignation est faite dans les règles."
+          },
+          {
+            "question": "Fournissez-vous les pièces détachées, rouleaux et bandes ?",
+            "reponse": "Nous consultons le marché pour vous au prix réel : rouleaux, roulements, bandes, motoréducteurs, composants électriques, en respectant les pièces encore sous garantie constructeur. Notre conseil porte aussi sur le choix des matériaux de bande selon la matière transportée."
+          },
+          {
+            "question": "Que se passe-t-il en cas de panne un dimanche ?",
+            "reponse": "L'astreinte 24/24 et 7/7 prend votre appel et mobilise un technicien depuis l'hub de techniciens le plus proche. L'objectif de travail reste de rendre la ligne avant l'ouverture."
+          },
+          {
+            "question": "Formez-vous notre personnel aux bons gestes ?",
+            "reponse": "Oui, sur vos installations. Nos techniciens partagent une formation courte aux vérifications de premier niveau : ce que l'opérateur peut voir, entendre et signaler, avec des supports remis à votre équipe. Cette pratique fait reculer les avaries évitables."
+          }
+        ]
+      }
+    ]
+  }
+}

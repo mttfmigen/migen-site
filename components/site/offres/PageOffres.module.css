@@ -1,0 +1,32 @@
+/*
+  Survols du hub `/offres/`, relevés sur `style-hover` dans
+  `maquette/accueil-rendu.html`, bloc `isOffres`, lignes 1886 à 2064.
+
+  Ils vivent dans un module CSS et non dans `app/globals.css` : le fichier
+  global est écrit par plusieurs agents en parallèle, et un survol n'est pas
+  exprimable dans un style en ligne.
+
+  Les boutons d'action et le bouton secondaire ne sont pas ici : ils réemploient
+  `.boutonAction` et `.boutonSecondaire` de `blocs/Blocs.module.css`, qui
+  portent déjà les mêmes déclarations.
+*/
+
+/* « Voir l'offre » : la maquette écrit `transform:translateY(-1px)`, et la
+   transition est dans le style en ligne de la carte. */
+.boutonCarte:hover,
+.boutonCarte:focus-visible {
+  transform: translateY(-1px);
+}
+
+/* Carte de besoin. La maquette la rend cliquable et la fait réagir au survol ;
+   elle n'est pas cliquable ici, faute de dépliant à ouvrir, donc le survol se
+   limite à ce qu'une carte non cliquable peut promettre : rien de plus que
+   l'ombre qui se creuse légèrement, jamais un déplacement qui suggère un clic. */
+.carteBesoin {
+  transition: box-shadow var(--tr);
+}
+.carteBesoin:hover {
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.04),
+    0 26px 60px -36px rgba(0, 0, 0, 0.34);
+}

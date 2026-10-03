@@ -1,0 +1,252 @@
+{
+  "url": "/offres/depannage-industriel/astreinte/",
+  "contenu": {
+    "gabarit": "offre",
+    "mention": "Hors astreinte, du lundi au vendredi de 8h00 à 18h30, nous vous rappelons dans l'heure",
+    "chapeau": "Nous tenons l'astreinte technique de votre site 24/24 et 7/7, partout en France, avec des techniciens de maintenance évalués. En renfort de votre permanence interne, ou à sa place.",
+    "actions": [
+      {
+        "libelle": "Les cinq offres",
+        "href": "/offres/"
+      }
+    ],
+    "formulaireHeroTitre": "Décrire mon besoin",
+    "formulaireHeroMention": "Rappel dans l'heure",
+    "brefSurtitre": "En bref",
+    "brefTitre": "Le cadre, en quatre chiffres.",
+    "chiffres": [
+      {
+        "valeur": "24/24 et 7/7",
+        "libelle": "Couverture de l'astreinte, nuits, fins de semaine, jours fériés."
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "Part des candidats retenus, après entretien technique et comportemental."
+      },
+      {
+        "valeur": "+ 100",
+        "libelle": "Collaborateurs, et 4 agences dans le monde, Lyon (siège), Montréal, Dubaï et Madrid."
+      },
+      {
+        "valeur": "+ 120",
+        "libelle": "Clients industriels, dont plus de 80 réguliers."
+      }
+    ],
+    "brefBande": "Besoin de couvrir vos nuits et vos fins de semaine ?",
+    "brefBouton": {
+      "libelle": "Demander une astreinte",
+      "href": "/contact/"
+    },
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "Votre astreinte repose sur deux personnes, et elles sont fatiguées",
+        "puces": [
+          {
+            "accroche": "L'effectif ne suit pas.",
+            "texte": "Un service de deux ou trois techniciens ne tient pas un roulement sur douze mois. Congés, arrêts, formation, départs : le trou arrive toujours."
+          },
+          {
+            "accroche": "Le profil est rare.",
+            "texte": "Intervenir seul, de nuit, sur la mécanique comme sur l'automatisme demande une polyvalence que peu de techniciens ont."
+          },
+          {
+            "accroche": "Le coût réel dépasse la prime.",
+            "texte": "Indemnité chaque semaine, heures majorées, repos compensateurs qui désorganisent le planning de journée, temps de gestion en paie."
+          },
+          {
+            "accroche": "Le cadre juridique ne pardonne rien.",
+            "texte": "Délai de prévenance, repos quotidien, compensation : chaque manquement se paie, parfois des années plus tard."
+          },
+          {
+            "accroche": "La charge mentale use les meilleurs.",
+            "texte": "Une semaine d'astreinte sur trois, et vos éléments les plus solides finissent par partir."
+          }
+        ]
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "texte": "**Numéro dédié, joignable 24/24 et 7/7**"
+            },
+            "benefice": "Votre équipe de nuit n'a plus à chercher qui appeler. Un numéro affiché en atelier, une procédure d'une page."
+          },
+          {
+            "prestation": {
+              "texte": "**Qualification de l'urgence par un technicien**"
+            },
+            "benefice": "Le dépannage par téléphone évite un déplacement inutile quand c'est possible. Sinon, le départ est décidé tout de suite."
+          },
+          {
+            "prestation": {
+              "texte": "**Intervention sur site, tous domaines**"
+            },
+            "benefice": "Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie, robotique : le même périmètre que nos interventions de jour."
+          },
+          {
+            "prestation": {
+              "texte": "**Compte rendu à chaque déclenchement**"
+            },
+            "benefice": "Heure d'appel, temps d'intervention, cause racine, pièces, recommandations. De quoi alimenter votre GMAO et votre budget."
+          },
+          {
+            "prestation": {
+              "texte": "**Plages ajustables**"
+            },
+            "benefice": "Astreinte complète, astreinte saisonnière sur vos seuls pics, ou renfort des périodes que votre équipe ne peut pas tenir."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Cadrage du dispositif.",
+            "texte": "Nous définissons les plages à couvrir, la liste des équipements, les consignes de sécurité du site et le circuit d'appel : qui déclenche, qui décide, qui est informé."
+          },
+          {
+            "titre": "Mise en place.",
+            "texte": "Vos équipes reçoivent un numéro dédié, une procédure affichée en atelier et le planning de couverture à jour."
+          },
+          {
+            "titre": "Reconnaissance du site en heures ouvrées.",
+            "texte": "Le technicien d'astreinte vient un jour de production ordinaire. La première intervention de nuit se fait en terrain connu."
+          },
+          {
+            "titre": "Déclenchement.",
+            "texte": "Votre équipe appelle. Un technicien qualifie l'urgence, décide avec vous du dépannage à distance ou du départ immédiat."
+          },
+          {
+            "titre": "Intervention et redémarrage.",
+            "texte": "Sécurisation, diagnostic, réparation, contrôle du fonctionnement. Le temps d'intervention est horodaté de bout en bout."
+          },
+          {
+            "titre": "Compte rendu et suivi.",
+            "texte": "Un rapport par déclenchement, un récapitulatif périodique : nombre d'appels, causes récurrentes, équipements à traiter en priorité."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Un technicien évalué, jamais un numéro de plus.",
+            "texte": "Entretien technique et entretien comportemental, résultats partagés avec vous. Seuls 10 % des candidats sont retenus. C'est ce qui permet d'envoyer quelqu'un seul, de nuit, sur un équipement critique."
+          },
+          {
+            "accroche": "Un dispositif écrit, pas une intention.",
+            "texte": "Plages couvertes, conditions de déplacement, circuit d'escalade, données de suivi : tout est au contrat. Pas de zone grise à 3 heures du matin."
+          },
+          {
+            "accroche": "Un compte rendu par déclenchement, sans exception.",
+            "texte": "Cause racine documentée, pièces, recommandations. Les données d'intervention restent votre propriété."
+          },
+          {
+            "accroche": "La sécurité tenue la nuit comme le jour.",
+            "texte": "Nos interventions s'inscrivent dans une démarche MASE, et notre performance RSE est évaluée par EcoVadis. Les attestations sont transmises avec chaque plan de prévention, et les habilitations du technicien d'astreinte sont à jour et vérifiables avant la première plage couverte."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "[Fonderie tenue 7 jours sur 7](/preuves/stellantis-fonderie-sept-fons/)",
+            "texte": "depuis octobre 2023, 6 techniciens en préventif et curatif sur la fonderie et l'usinage de Dompierre-sur-Besbre, sans interruption"
+          },
+          {
+            "titre": "[Maintenance en 3x8 sur lignes alimentaires, agroalimentaire](/preuves/danone-lignes-de-production/)",
+            "texte": "2 techniciens intégrés en horaires postés sur les lignes liquides et le conditionnement poudre du site de Steenvoorde"
+          },
+          {
+            "titre": "[Curatif continu sur convoyeurs et trieurs, logistique](/preuves/gls-maintenance-curative/)",
+            "texte": "2 techniciens dédiés aux équipements critiques, là où un trieur arrêté décale tous les colis du site"
+          },
+          {
+            "titre": "[Maintenance tenue pendant les congés](/preuves/ogf-arret-estival/)",
+            "texte": "été 2025, un technicien mobilisé pour couvrir l'arrêt estival de l'équipe interne"
+          },
+          {
+            "titre": "[Site ouvert 24 heures sur 24, logistique](/preuves/amazon-centre-logistique/)",
+            "texte": "une équipe de techniciens polyvalents mobilisée simultanément, une semaine sur deux, sur un centre qui ne ferme jamais"
+          },
+          {
+            "titre": "[Renfort en environnement à risque chimique, traitement des eaux](/preuves/suez-remise-en-etat/)",
+            "texte": "un électromécanicien habilité RC1, mobilisé 6 mois sur une remise en état"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Combien coûte une astreinte externalisée ?",
+            "reponse": "Le prix dépend des plages couvertes, du nombre d'équipements et de la criticité. Chaque dispositif est chiffré sur devis, après un échange technique. Le bon comparatif n'est pas la ligne d'indemnité sur vos bulletins de paie, mais le coût complet de votre astreinte interne : primes, heures majorées, repos compensateurs, temps de gestion et risque juridique."
+          },
+          {
+            "question": "Nous avons déjà une astreinte interne. Faut-il tout basculer ?",
+            "reponse": "Non. Le renfort est le point d'entrée le plus fréquent : votre équipe garde ce qu'elle sait couvrir, nous prenons le reste, congés et absences compris. Beaucoup de nos clients commencent ainsi avant de confier la permanence complète."
+          },
+          {
+            "question": "Nous avons déjà un prestataire d'astreinte. Comment se passe la reprise ?",
+            "reponse": "Nous reprenons le dossier technique existant, les consignes de sécurité et l'historique des déclenchements. La reconnaissance du site se fait en heures ouvrées, avant la première nuit couverte. Aucune plage n'est laissée découverte pendant la bascule."
+          },
+          {
+            "question": "Qui intervient la nuit sur notre site, et comment le savons-nous ?",
+            "reponse": "Un technicien Migen, salarié de Migen, évalué en entretien technique et comportemental. Les règles d'accès, les habilitations exigées et le plan de prévention sont convenus avant la première plage couverte. Vous savez qui entre chez vous."
+          },
+          {
+            "question": "Quels domaines techniques sont couverts en urgence ?",
+            "reponse": "Mécanique, électricité industrielle, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie, robotique. Nos automaticiens travaillent sur SIEMENS et Schneider, nos roboticiens sur ABB et Fanuc."
+          },
+          {
+            "question": "Couvrez-vous notre région ?",
+            "reponse": "Nous intervenons partout en France depuis Lyon, notre siège social, et nos hubs de techniciens dans les grandes villes. La couverture d'astreinte est cadrée site par site, selon la distance entre le technicien mobilisé et votre établissement."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Votre astreinte sonne trop souvent ?",
+        "bouton": "Ne plus dépendre d'une astreinte : l'abonnement Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      }
+    ],
+    "autresSurtitre": "Un autre besoin ?",
+    "autresTitre": "Chaque situation a son offre.",
+    "autres": [
+      {
+        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
+        "libelle": "Résidence",
+        "href": "/offres/residence/"
+      },
+      {
+        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
+        "libelle": "Périmètre complet",
+        "href": "/offres/maintenance-externalisee/"
+      },
+      {
+        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      },
+      {
+        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/"
+      },
+      {
+        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
+        "libelle": "Bureau d'études",
+        "href": "/offres/bureau-etudes/"
+      },
+      {
+        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
+      }
+    ]
+  }
+}

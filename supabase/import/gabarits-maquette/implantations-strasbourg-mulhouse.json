@@ -1,0 +1,265 @@
+{
+  "url": "/implantations/strasbourg/mulhouse/",
+  "contenu": {
+    "gabarit": "ville",
+    "chapeau": "Berceau du textile devenu terre d'automobile, le Sud-Alsace aligne ateliers de mécanique et sous-traitants. Leur parc vieillit plus vite que les effectifs ne se renouvellent. Nous intervenons dans l'agglomération et dans tout le département, avec des techniciens qui se déplacent partout en France.",
+    "actions": [
+      {
+        "libelle": "Faire chiffrer ma maintenance à Mulhouse",
+        "href": "#formulaire"
+      }
+    ],
+    "reperes": [
+      {
+        "valeur": "+ 120",
+        "libelle": "clients industriels en France, dont plus de 80 réguliers"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés avec vous"
+      },
+      {
+        "valeur": "2 à 3 semaines",
+        "libelle": "délai de prise de poste d'un technicien intégré à votre équipe"
+      }
+    ],
+    "contact": "Décrivez la panne au 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Un chargé d'affaires vous rappelle dans l'heure. Astreinte 24/24 et 7/7 en option.",
+    "constatTexte": "Entre Bâle et l'Allemagne, un bon technicien de maintenance a trois offres sur son téléphone. Vous, vous avez une presse en défaut et une annonce ouverte depuis huit mois.",
+    "constatPuces": [
+      {
+        "texte": "La proximité frontalière siphonne les profils qualifiés, et les offres d'emploi restent sans réponse sérieuse.",
+        "accroche": "Le recrutement est plus dur ici qu'ailleurs."
+      },
+      {
+        "texte": "Presses anciennes, automates récents, variateurs de trois marques : aucun prestataire mono-métier ne couvre l'ensemble.",
+        "accroche": "Votre parc a plusieurs générations."
+      },
+      {
+        "texte": "Faute de bras, les visites planifiées sautent, et le budget correctif prend leur place.",
+        "accroche": "Le curatif a mangé le préventif."
+      },
+      {
+        "texte": "Un arrêt de sous-traitant remonte au donneur d'ordre avant la fin de la journée.",
+        "accroche": "Les cadences automobiles ne pardonnent rien."
+      },
+      {
+        "texte": "Consignations, permis de feu, travail en hauteur : un prestataire pressé abîme plus qu'il ne répare.",
+        "accroche": "La sécurité se joue à chaque intervention."
+      }
+    ],
+    "reponseTexte": "Nos domaines : mécanique, électricité industrielle, automatisme SIEMENS et Schneider, hydraulique et pneumatique, soudure et chaudronnerie, robotique ABB et Fanuc. Une même panne mobilise souvent deux d'entre eux, avec un seul interlocuteur en face.",
+    "reponsePuces": [
+      {
+        "texte": "entretien technique et comportemental, 10 % des candidats retenus, résultats partagés. La compétence se prouve avant d'arriver dans votre atelier.",
+        "accroche": "Le même filtre de sélection qu'à Lyon ou à Paris"
+      },
+      {
+        "texte": "plan de prévention, accueil sécurité, consignations. La qualité d'un dépannage se juge aussi à ce qu'il n'abîme pas.",
+        "accroche": "La sécurité comme base, pas comme option"
+      },
+      {
+        "texte": "nous n'avons ni agence ni hub de techniciens dans le Haut-Rhin. Nous y intervenons, nos techniciens se déplacent sur vos installations. Ce qui compte, c'est le professionnel qui arrive et son outillage.",
+        "accroche": "Aucune adresse vitrine inventée"
+      }
+    ],
+    "faq": [
+      {
+        "reponse": "Dans l'agglomération, Illzach, Kingersheim, Riedisheim, Rixheim, puis dans tout le Haut-Rhin : Thann, Altkirch, Saint-Louis et le secteur frontalier, jusqu'à Colmar. Les sites plus au nord relèvent de la même organisation.",
+        "question": "Où intervenez-vous exactement autour de Mulhouse ?"
+      },
+      {
+        "reponse": "Non, et nous ne publierons pas d'adresse pour faire nombre. Migen n'a ni agence ni hub de techniciens à Mulhouse ni dans le Haut-Rhin : nous y intervenons, nos techniciens se déplacent sur vos installations, ici comme partout en France. Ce qui compte pour votre atelier : le métier de l'intervenant, son niveau, son outillage et un engagement tenu dans la durée.",
+        "question": "Avez-vous une agence dans la ville de Mulhouse ?"
+      },
+      {
+        "reponse": "L'astreinte 24/24 et 7/7, souscrite en option de contrat, prend l'appel et mobilise un technicien. Elle couvre nuits, week-ends et jours fériés. Sans astreinte, les demandes sont prises du lundi au vendredi de 8h00 à 18h30, avec rappel dans l'heure.",
+        "question": "Qui répond quand la panne tombe à 23 heures ?"
+      },
+      {
+        "reponse": "Les usines avant tout : automobile et sous-traitance, chimie, agroalimentaire, mécanique, logistique, électricité industrielle. Les contraintes changent, la méthode reste : sécurité, diagnostic, réparation, traçabilité.",
+        "question": "Quels secteurs servez-vous dans le bassin ?"
+      },
+      {
+        "reponse": "Par un état des lieux mené avec votre responsable maintenance : fragilités du parc, historique de défaillances, habilitations nécessaires. Nous en tirons un plan chiffré, opérations, fréquences, pièces, indicateurs. Une fois accepté, il démarre à la visite suivante.",
+        "question": "Comment démarre un plan de maintenance préventive ?"
+      },
+      {
+        "reponse": "Oui, c'est le rôle de l'offre Résidence : prise de poste en 2 à 3 semaines. Le professionnel arrive évalué, briefé sur vos équipements, accompagné par un référent. En cas d'absence, un profil équivalent reprend le poste.",
+        "question": "Pouvez-vous remplacer notre technicien absent ou parti ?"
+      }
+    ],
+    "autres": [
+      {
+        "libelle": "Lille",
+        "href": "/implantations/lille/"
+      },
+      {
+        "libelle": "Lyon",
+        "href": "/implantations/lyon/"
+      },
+      {
+        "libelle": "Grenoble",
+        "href": "/implantations/lyon/grenoble/"
+      },
+      {
+        "libelle": "saint etienne",
+        "href": "/implantations/lyon/saint-etienne/"
+      },
+      {
+        "libelle": "Valence",
+        "href": "/implantations/lyon/valence/"
+      },
+      {
+        "libelle": "Nantes",
+        "href": "/implantations/nantes/"
+      },
+      {
+        "libelle": "Brest",
+        "href": "/implantations/nantes/brest/"
+      },
+      {
+        "libelle": "Rennes",
+        "href": "/implantations/nantes/rennes/"
+      },
+      {
+        "libelle": "paris",
+        "href": "/implantations/paris/"
+      },
+      {
+        "libelle": "Rouen",
+        "href": "/implantations/paris/rouen/"
+      },
+      {
+        "libelle": "Strasbourg",
+        "href": "/implantations/strasbourg/"
+      },
+      {
+        "libelle": "Toulouse",
+        "href": "/implantations/toulouse/"
+      },
+      {
+        "libelle": "Bordeaux",
+        "href": "/implantations/toulouse/bordeaux/"
+      }
+    ],
+    "reste": [
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "benefice": "Diagnostic, réparation, essais en charge, en [dépannage industriel](/offres/depannage-industriel/)",
+            "prestation": {
+              "texte": "Une panne qui bloque la production"
+            }
+          },
+          {
+            "benefice": "Recherche de cause racine, fiabilisation, suivi dans le temps",
+            "prestation": {
+              "texte": "Des arrêts qui reviennent sur la même machine"
+            }
+          },
+          {
+            "benefice": "Visites planifiées, contrôles, traçabilité, via le [contrat Zéro arrêt](/offres/zero-arret/)",
+            "prestation": {
+              "texte": "Un préventif qui saute depuis des mois"
+            }
+          },
+          {
+            "benefice": "Technicien intégré sur site, encadré par un référent Migen",
+            "prestation": {
+              "texte": "Une équipe sous l'eau ou un poste vacant"
+            }
+          },
+          {
+            "benefice": "Renfort planifié de J-90 à J-30, équipe dimensionnée",
+            "prestation": {
+              "texte": "Un arrêt technique à préparer"
+            }
+          },
+          {
+            "benefice": "[Mise en conformité machine](/offres/retrofit/mise-en-conformite-machine/), dossier et travaux",
+            "prestation": {
+              "texte": "Une machine ancienne à remettre aux normes"
+            }
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "texte": "vous décrivez la situation, l'équipement et l'urgence. Rappel dans l'heure aux horaires ouvrés, avec un avis technique franc.",
+            "titre": "L'appel"
+          },
+          {
+            "texte": "périmètre, sécurité, pièces nécessaires, conditions d'accès. Vous savez qui vient, pour quoi faire, à quel tarif.",
+            "titre": "Le cadrage"
+          },
+          {
+            "texte": "rien ne part avant. Ce qui sort du périmètre est chiffré avant, jamais ajouté après coup.",
+            "titre": "Le devis accepté"
+          },
+          {
+            "texte": "consignation, diagnostic, réparation, essais avec votre production.",
+            "titre": "L'intervention"
+          },
+          {
+            "texte": "cause, travaux réalisés, préconisations, exploitables dans votre GMAO, transmis après chaque passage.",
+            "titre": "Le compte rendu"
+          },
+          {
+            "texte": "les préconisations donnent la tendance du parc. À vous de décider ce qui entre au plan préventif.",
+            "titre": "La suite"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "bouton": "Faire chiffrer ma maintenance à Mulhouse",
+        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
+        "question": "Besoin de remettre un préventif sur pied avant que le correctif ne mange tout ?"
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "texte": "centres d'usinage, presses et commandes numériques, parc multimarques, en 2025",
+            "titre": "Un technicien à temps plein sur trois familles de machines",
+            "lienHref": "/preuves/voit-grand-est/",
+            "lienLibelle": "Étude de cas VOIT : site du Grand Est"
+          },
+          {
+            "texte": ", depuis juin 2023, pendant la bascule vers le véhicule électrique",
+            "titre": "18 à 25 techniciens sur plusieurs sites industriels du Grand Est",
+            "lienHref": "/preuves/stellantis-grand-est/",
+            "lienLibelle": "Étude de cas STELLANTIS : sites du Grand Est"
+          },
+          {
+            "texte": "sur un site automobile, mission toujours en cours",
+            "titre": "6 techniciens pour installer puis mettre en production un nouveau parc machines",
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "lienLibelle": "Étude de cas EATON : mise en production"
+          },
+          {
+            "texte": "d'un fabricant de systèmes de direction et de roulements, sur les équipements critiques",
+            "titre": "Des techniciens intégrés au quotidien des équipes de maintenance",
+            "lienHref": "/preuves/jtekt/",
+            "lienLibelle": "Étude de cas JTEKT : maintenance des installations"
+          },
+          {
+            "texte": "6 techniciens",
+            "titre": "Préventif et curatif 7 jours sur 7 sur une fonderie et son usinage",
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons"
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "bouton": "Faire chiffrer ma maintenance à Mulhouse",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
+        "question": "Besoin de tenir un poste technique sans dépendre du marché de l'emploi frontalier ?"
+      }
+    ]
+  }
+}

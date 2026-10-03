@@ -1,0 +1,277 @@
+{
+  "url": "/expertises/robotique/integrateur-robotique/",
+  "contenu": {
+    "gabarit": "domaine",
+    "chapeau": "Nous ne concevons pas la cellule, nous la faisons tourner. Un roboticien vient sur votre site reprendre la mise en service, les réglages et le programme, du bras jusqu'à l'automate de ligne.",
+    "boutons": [
+      {
+        "libelle": "Décrire mon projet robotique"
+      }
+    ],
+    "traitements": [
+      "La mise en service accompagnée",
+      "La reprise d'un projet robotique mal terminé",
+      "La recherche de cause racine",
+      "L'optimisation du temps de cycle",
+      "Le préventif écrit, planifié et tracé",
+      "Le système entier, pas le bras seul",
+      "Un compte rendu exploitable à chaque passage"
+    ],
+    "autres": [
+      {
+        "libelle": "Automatisme industriel",
+        "href": "/expertises/automatisme/"
+      },
+      {
+        "libelle": "Maintenance électrique industrielle",
+        "href": "/expertises/electrique/"
+      },
+      {
+        "libelle": "Électromécanique industrielle",
+        "href": "/expertises/electromecanique/"
+      },
+      {
+        "libelle": "Maintenance hydraulique",
+        "href": "/expertises/hydraulique/"
+      },
+      {
+        "libelle": "Maintenance mécanique",
+        "href": "/expertises/mecanique/"
+      },
+      {
+        "libelle": "Maintenance pneumatique",
+        "href": "/expertises/pneumatique/"
+      },
+      {
+        "libelle": "Soudure industrielle",
+        "href": "/expertises/soudure/"
+      },
+      {
+        "libelle": "Maintenance tuyauterie industrielle",
+        "href": "/expertises/tuyauterie/"
+      }
+    ],
+    "cta": {
+      "question": "Besoin que votre cellule tienne enfin la cadence prévue au cahier des charges ?",
+      "bouton": {
+        "libelle": "Décrire mon projet robotique"
+      }
+    },
+    "reste": [
+      {
+        "type": "chiffres",
+        "chiffres": [
+          {
+            "valeur": "10 %",
+            "libelle": "des candidats retenus, après entretien technique ET comportemental"
+          },
+          {
+            "valeur": "+ 120",
+            "libelle": "clients industriels, dont plus de 80 réguliers"
+          },
+          {
+            "valeur": "24/24 et 7/7",
+            "libelle": "astreinte, en plus du rappel dans l'heure en journée"
+          }
+        ]
+      },
+      {
+        "type": "probleme",
+        "punchline": "La cellule est installée, l'intégrateur est reparti, et la chaîne ne tient toujours pas sa cadence.",
+        "puces": [
+          {
+            "accroche": "Le projet a été livré, pas terminé.",
+            "texte": "Il reste des points de reprise, des réglages fins, des opérateurs qui n'osent pas toucher au pupitre."
+          },
+          {
+            "accroche": "Personne ne sait plus lire le programme.",
+            "texte": "Le seul qui savait est parti. L'installation est devenue une boîte noire dans votre atelier."
+          },
+          {
+            "accroche": "Le défaut revient après acquittement.",
+            "texte": "Le message disparaît, la cause reste. Sans lecture du programme, personne ne la trouvera."
+          },
+          {
+            "accroche": "Le cycle s'est dégradé sans raison apparente.",
+            "texte": "Usure, dérive d'un capteur, espace de travail encombré. Cela se mesure, donc cela se corrige."
+          }
+        ]
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "La mise en service accompagnée",
+              "texte": "points de reprise, réglages fins, formation de vos opérateurs aux menus du pupitre."
+            },
+            "benefice": "La cellule neuve entre en production avec des équipes qui savent la conduire."
+          },
+          {
+            "prestation": {
+              "accroche": "La reprise d'un projet robotique mal terminé",
+              "texte": "audit de l'état réel, liste des points bloquants, plan d'action chiffré sur devis."
+            },
+            "benefice": "Vous sortez du bras de fer avec le prestataire précédent et vous avancez."
+          },
+          {
+            "prestation": {
+              "accroche": "La recherche de cause racine",
+              "texte": "du programme jusqu'à l'outil en bout de bras, préhenseur, capteurs, présentation de la pièce."
+            },
+            "benefice": "Vous arrêtez d'échanger des organes sains pendant que la ligne attend."
+          },
+          {
+            "prestation": {
+              "accroche": "L'optimisation du temps de cycle",
+              "texte": "trajectoires retravaillées, points morts supprimés, synchronisation revue avec le convoyage."
+            },
+            "benefice": "Optimiser un mouvement coûte moins cher que d'automatiser davantage."
+          },
+          {
+            "prestation": {
+              "accroche": "Le préventif écrit, planifié et tracé",
+              "texte": "réducteurs, graissage, batteries de sauvegarde, accessibilité des organes."
+            },
+            "benefice": "La batterie qui meurt en silence n'emporte plus vos positions et vos programmes."
+          },
+          {
+            "prestation": {
+              "accroche": "Le système entier, pas le bras seul",
+              "texte": "automates, variateurs, réseaux industriels qui pilotent la cellule."
+            },
+            "benefice": "La vraie cause est trouvée même quand elle se cache en dehors de la baie."
+          },
+          {
+            "prestation": {
+              "accroche": "Un compte rendu exploitable à chaque passage",
+              "texte": "constat, actions, pièces, conseils d'utilisation pour vos équipes."
+            },
+            "benefice": "Vous gardez la main sur l'historique de votre installation, pas votre prestataire."
+          }
+        ],
+        "prose": [
+          {
+            "texte": "Un bras immobilisé maintenant relève du [dépannage industriel](/offres/depannage-industriel/). Un parc à remettre sous suivi relève de la [maintenance robotique](/expertises/robotique/). Quand la cause se trouve dans l'automate de ligne, nos [automaticiens](/expertises/automatisme/) prennent le relais sur la même cellule."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Vous décrivez la situation",
+            "texte": "machine, marque, symptômes, moment du cycle. Cinq minutes au téléphone cadrent le besoin."
+          },
+          {
+            "titre": "Un technicien vous rappelle dans l'heure.",
+            "texte": "Vous savez rapidement si nous avons le roboticien, et lequel."
+          },
+          {
+            "titre": "Nous vous présentons le profil.",
+            "texte": "Vous voyez l'expérience du roboticien avant sa venue, et vous validez."
+          },
+          {
+            "titre": "Le technicien travaille chez vous",
+            "texte": ", intégré à votre équipe, dans le cadre d'une prestation de services."
+          },
+          {
+            "titre": "Nous cherchons la cause avant de démonter",
+            "texte": "alarmes du contrôleur, essais axe par axe, contrôle du réseau et des sécurités de cellule."
+          },
+          {
+            "titre": "Vous recevez le compte rendu",
+            "texte": "et gardez un référent Migen joignable après l'intervention."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
+            "texte": "L'astreinte 24/24 et 7/7 couvre la nuit et le week-end sur les sites concernés."
+          },
+          {
+            "accroche": "Le technicien est évalué avant d'être proposé.",
+            "texte": "Entretien technique et entretien comportemental, 10 % des candidats retenus. C'est la seule façon honnête de tenir une promesse de compétence."
+          },
+          {
+            "accroche": "Les habilitations sont à jour et le cadre est respecté.",
+            "texte": "Électriques et sécurité machine, démarche MASE et évaluation EcoVadis, attestations transmises avec chaque plan de prévention."
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "question": "Besoin d'un roboticien pour finir ce que l'intégrateur a laissé en plan ?",
+        "bouton": "Décrire mon projet robotique",
+        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Contrôle de chantier sur des projets d'automatisation logistique, aéroports et industrie",
+            "texte": "plusieurs intervenants intégrés aux équipes projet, roboticiens ABB et Fanuc parmi les spécialités engagées, 2025 à 2026",
+            "lienLibelle": "Étude de cas ALSTEF Group : collaboration",
+            "lienHref": "/preuves/alstef-group/"
+          },
+          {
+            "titre": "Installation et mise en production d'un parc machine neuf, site automobile",
+            "texte": "six techniciens multidisciplinaires du déballage jusqu'au régime de production, depuis janvier 2023, mission toujours en cours",
+            "lienLibelle": "Étude de cas EATON : mise en production",
+            "lienHref": "/preuves/eaton-mise-en-production/"
+          },
+          {
+            "titre": "Maintenance des équipements critiques d'un équipementier automobile",
+            "texte": "techniciens intégrés au quotidien sur systèmes automatisés, lignes et convoyeurs, roboticiens ABB et Fanuc parmi les spécialités mobilisables, depuis 2025",
+            "lienLibelle": "Étude de cas JTEKT : maintenance des installations",
+            "lienHref": "/preuves/jtekt/"
+          },
+          {
+            "titre": "Montage d'un centre logistique à Clermont-Ferrand",
+            "texte": "12 monteurs mécaniciens et 8 engins de levage, six semaines de chantier en période estivale, livraison tenue, depuis juillet 2023",
+            "lienLibelle": "Étude de cas AKTID : montage d'un centre logistique",
+            "lienHref": "/preuves/aktid-centre-logistique/"
+          },
+          {
+            "titre": "Maintien opérationnel de convoyeurs, trieurs et packaging automatisés, logistique et transport",
+            "texte": "deux techniciens en poste, robotique parmi les domaines couverts en propre, 2025",
+            "lienLibelle": "Étude de cas GLS : maintenance curative",
+            "lienHref": "/preuves/gls-maintenance-curative/"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Migen est-il un intégrateur robotique ?",
+            "reponse": "Non, et nous préférons l'écrire. Nous n'étudions pas, ne chiffrons pas et ne fabriquons pas la cellule. Nous intervenons sur l'installation existante : mise en service, réglage, dépannage, préventif, optimisation du temps de cycle. Si votre recherche porte sur la conception d'un îlot neuf, un bureau d'études vous servira mieux que nous. Si elle porte sur ce qui se passe après, c'est notre métier."
+          },
+          {
+            "question": "Pouvez-vous reprendre un projet laissé en plan par un autre prestataire ?",
+            "reponse": "Oui, c'est une demande fréquente. Nous auditons l'état réel de l'installation, du programme jusqu'à l'outil en bout de bras. Nous listons les points bloquants et nous vous remettons un plan d'action chiffré sur devis. Vous décidez ensuite de ce que vous faites reprendre, et dans quel ordre."
+          },
+          {
+            "question": "Quelles marques de robots vos techniciens connaissent-ils ?",
+            "reponse": "Les grandes familles du marché, ABB, KUKA, Fanuc, Yaskawa, ainsi que les cobots installés depuis quelques années. Un parc qui mélange trois marques et deux générations de baies est le cas le plus courant, pas l'exception. Nous vous précisons à l'avance le niveau de maîtrise du technicien proposé sur votre matériel."
+          },
+          {
+            "question": "Le robot s'arrête, mais est-ce vraiment lui le problème ?",
+            "reponse": "Rarement. La cause se trouve le plus souvent autour : préhenseur, capteurs, sécurités, convoyeur, automate de ligne, réseau, pièce mal présentée. C'est pourquoi nos roboticiens travaillent aussi sur les automates, les variateurs et les réseaux industriels. Un robot isolé n'existe pas dans une chaîne de production."
+          },
+          {
+            "question": "Intervenez-vous en urgence sur un robot arrêté ?",
+            "reponse": "Oui, en dépannage comme en astreinte 24/24 et 7/7. Appelez le 04 78 33 72 05 : nous vous rappelons dans l'heure pour qualifier la panne et engager la recherche. Le premier échange sert à savoir si le roboticien suffit ou s'il faut mobiliser un automaticien en parallèle."
+          },
+          {
+            "question": "Combien coûte l'intervention d'un roboticien ?",
+            "reponse": "Cela dépend de la durée, du site et des compétences nécessaires. Tout est chiffré sur devis, sans coefficient caché, après un point précis sur votre besoin. Le contrat Zéro arrêt fonctionne par abonnement, avec trois niveaux de couverture, également sur devis. Comparez toujours ce montant à celui d'une seule journée de ligne figée."
+          }
+        ]
+      }
+    ]
+  }
+}

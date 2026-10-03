@@ -1,0 +1,271 @@
+{
+  "url": "/implantations/paris/rouen/",
+  "contenu": {
+    "gabarit": "ville",
+    "chapeau": "Entre le fleuve et la ville, la vallée aligne des procédés qui ne s'arrêtent pas : raffinage, papier-carton, agroalimentaire, logistique de quai. Nous y intervenons avec des techniciens habitués aux consignations strictes et aux fenêtres d'arrêt courtes, qui se déplacent sur vos sites : nous n'avons ni agence ni hub de techniciens à Rouen.",
+    "actions": [
+      {
+        "libelle": "Faire chiffrer ma maintenance à Rouen",
+        "href": "#formulaire"
+      }
+    ],
+    "reperes": [
+      {
+        "valeur": "+ 120",
+        "libelle": "clients industriels et logisticiens en France, dont plus de 80 réguliers"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus, après entretien technique et comportemental"
+      },
+      {
+        "valeur": "4",
+        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, et des techniciens qui se déplacent partout en France"
+      }
+    ],
+    "contact": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 reste en alerte les nuits, les week-ends et les jours fériés.",
+    "constatTexte": "Sur un procédé continu, l'arrêt ne se rattrape pas en heures supplémentaires. Il se paie en tonnes qui ne sortent pas, et en redémarrage qui prend la journée.",
+    "constatPuces": [
+      {
+        "texte": "Rater une intervention planifiée, c'est attendre le prochain créneau, des semaines plus tard.",
+        "accroche": "Vos fenêtres d'arrêt sont rares et courtes."
+      },
+      {
+        "texte": "Consignations, permis de feu, zones réglementées : un prestataire qui découvre ces règles sur place vous coûte plus qu'il ne vous rapporte.",
+        "accroche": "L'environnement ne pardonne pas l'approximation."
+      },
+      {
+        "texte": "Papier, carton, recyclage, carrières : la marche continue mange les organes de transmission.",
+        "accroche": "L'abrasion et l'humidité usent vite."
+      },
+      {
+        "texte": "L'historique s'est arrêté, et personne ne sait plus quand telle pompe a été révisée.",
+        "accroche": "Le préventif a été abandonné faute de bras."
+      },
+      {
+        "texte": "Convoyage et tri immobilisés, ce sont des rotations qui glissent et des pénalités au bout.",
+        "accroche": "Le quai ne tolère pas la panne."
+      }
+    ],
+    "reponseTexte": "Un [arrêt technique](/offres/arret-technique/) se prépare de J-90 à J-30, avec restitution à la demi-journée. Pour l'urgence isolée, notre offre de [dépannage industriel](/offres/depannage-industriel/) reste le format le plus simple pour nous mettre à l'épreuve.",
+    "reponsePuces": [
+      {
+        "texte": "nos preuves sont nationales, écrites et vérifiables. Nous préférons vous mettre en relation avec un industriel comparable plutôt qu'aligner des logos.",
+        "accroche": "Aucune référence locale inventée"
+      },
+      {
+        "texte": "périmètre écrit, taux horaire homogène partout en France, pièces au prix réel. L'exceptionnel se chiffre en amont, jamais en fin de facture.",
+        "accroche": "Un chiffrage ferme avant intervention"
+      },
+      {
+        "texte": "nous récupérons l'historique existant et remettons le plan à plat. Le calendrier se tient ensuite en équipe avec vos propres techniciens.",
+        "accroche": "La reprise d'un préventif abandonné, sans jugement"
+      }
+    ],
+    "faq": [
+      {
+        "reponse": "Non, et pas davantage de hub de techniciens sur place : nous ne publierons pas d'adresse vitrine pour faire bonne figure. Nos techniciens se déplacent en Normandie, et chaque mission est préparée avant l'arrivée. Ce qui compte pour votre production : un interlocuteur qui connaît vos sites, et une organisation qui tient ses dates.",
+        "question": "Avez-vous une agence à Rouen même ?"
+      },
+      {
+        "reponse": "Rouen, Sotteville-lès-Rouen, Grand-Quevilly, Saint-Étienne-du-Rouvray, Mont-Saint-Aignan, Le Mesnil-Esnard, et plus largement la vallée de Seine du Havre jusqu'au plateau de Caen selon la mission. Dites-nous où sont vos installations, nous répondons précisément.",
+        "question": "Jusqu'où s'étend la zone couverte ?"
+      },
+      {
+        "reponse": "Oui, quand l'astreinte 24/24 et 7/7 figure au contrat. Elle prend l'appel, qualifie la panne et mobilise le bon profil. L'objectif reste le même qu'en semaine : remettre l'unité en production, puis expliquer la cause.",
+        "question": "Intervenez-vous en urgence un week-end ?"
+      },
+      {
+        "reponse": "Oui : consignations haute et basse tension, permis de feu, travail en espace confiné, habilitations vérifiées avant chaque mission. Les résultats d'évaluation de chaque intervenant vous sont partagés, entretien technique et comportemental compris.",
+        "question": "Vos techniciens connaissent-ils les procédés réglementés ?"
+      },
+      {
+        "reponse": "C'est un cas fréquent, et le recrutement local l'explique en grande partie. Nous reprenons le plan de maintenance, remettons l'historique à jour et commençons par les équipements les plus critiques. L'élargissement suit le budget.",
+        "question": "Pouvez-vous reprendre un préventif laissé de côté ?"
+      },
+      {
+        "reponse": "Chaque prestation est chiffrée avant intervention : périmètre écrit, taux horaire homogène en France, pièces au prix réel du marché. Une demande ponctuelle ne demande aucune durée minimale : c'est le bon format pour juger sur pièces.",
+        "question": "Comment sont chiffrées vos prestations ?"
+      }
+    ],
+    "autres": [
+      {
+        "libelle": "Lille",
+        "href": "/implantations/lille/"
+      },
+      {
+        "libelle": "Lyon",
+        "href": "/implantations/lyon/"
+      },
+      {
+        "libelle": "Grenoble",
+        "href": "/implantations/lyon/grenoble/"
+      },
+      {
+        "libelle": "saint etienne",
+        "href": "/implantations/lyon/saint-etienne/"
+      },
+      {
+        "libelle": "Valence",
+        "href": "/implantations/lyon/valence/"
+      },
+      {
+        "libelle": "Nantes",
+        "href": "/implantations/nantes/"
+      },
+      {
+        "libelle": "Brest",
+        "href": "/implantations/nantes/brest/"
+      },
+      {
+        "libelle": "Rennes",
+        "href": "/implantations/nantes/rennes/"
+      },
+      {
+        "libelle": "paris",
+        "href": "/implantations/paris/"
+      },
+      {
+        "libelle": "Strasbourg",
+        "href": "/implantations/strasbourg/"
+      },
+      {
+        "libelle": "Mulhouse",
+        "href": "/implantations/strasbourg/mulhouse/"
+      },
+      {
+        "libelle": "Toulouse",
+        "href": "/implantations/toulouse/"
+      },
+      {
+        "libelle": "Bordeaux",
+        "href": "/implantations/toulouse/bordeaux/"
+      }
+    ],
+    "reste": [
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "benefice": "Votre fenêtre d'arrêt est utilisée entièrement, et rendue à l'heure prévue.",
+            "prestation": {
+              "texte": "tuyauterie, contrôles, reprises de lignes, dans le respect des consignations.",
+              "accroche": "Travaux planifiés sur procédés continus"
+            }
+          },
+          {
+            "benefice": "L'organe usé ne revient pas trois mois plus tard : la cause d'usure est traitée, pas seulement la pièce.",
+            "prestation": {
+              "texte": "pour le papier, le carton et le recyclage, en [maintenance mécanique](/expertises/mecanique/).",
+              "accroche": "Mécanique lourde et réparations durables"
+            }
+          },
+          {
+            "benefice": "Le contrôle se fait sans contaminer la zone, et la ligne redémarre propre.",
+            "prestation": {
+              "texte": "lavage intensif, cadences, exigences d'hygiène.",
+              "accroche": "Préventif cadré en agroalimentaire"
+            }
+          },
+          {
+            "benefice": "La cadence revient sans attendre un intégrateur extérieur.",
+            "prestation": {
+              "texte": "pour l'automobile et les équipementiers : variateurs, cellules ABB et Fanuc, reprise de trajectoires.",
+              "accroche": "Électromécanique, automatisme et robotique"
+            }
+          },
+          {
+            "benefice": "Le flux reprend avant la rotation suivante, pas après.",
+            "prestation": {
+              "texte": "portuaires, y compris en pic d'activité.",
+              "accroche": "Entretien et dépannage des lignes de convoyage et de tri"
+            }
+          },
+          {
+            "benefice": "Les révisions tombent quand vous le décidez, pas quand la machine casse.",
+            "prestation": {
+              "texte": "broyage, criblage, poussière, révisions générales programmées.",
+              "accroche": "Usure suivie sur carrières et matériaux"
+            }
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "texte": "vous décrivez la panne ou les travaux aux horaires ouvrés. Nous disons ce qui est faisable, avec quel profil, et une date ferme est posée.",
+            "titre": "Le rappel dans l'heure"
+          },
+          {
+            "texte": "photos, historique, références matériel, contraintes d'accès et de sécurité. La préparation supprime le second déplacement.",
+            "titre": "La qualification technique"
+          },
+          {
+            "texte": "plan de prévention, permis de travaux, consignations, coordination avec vos agents de maîtrise. Écrit avant, jamais improvisé sur place.",
+            "titre": "Le dossier de prévention"
+          },
+          {
+            "texte": "diagnostic, travaux réalisés, pièces consultées au prix réel du marché.",
+            "titre": "L'intervention"
+          },
+          {
+            "texte": "contrôles en charge, validation avec votre exploitation, avant de rendre l'installation.",
+            "titre": "Les essais et la remise en service"
+          },
+          {
+            "texte": "travail réalisé, résultats, pistes d'amélioration, exploitables par votre encadrement. Rien d'ajouté à la facture.",
+            "titre": "Le compte rendu"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "bouton": "Faire chiffrer ma maintenance à Rouen",
+        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
+        "question": "Besoin de tenir une fenêtre d'arrêt sans mobiliser toute votre équipe interne ?"
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "texte": "sur un site de traitement des eaux industrielles à remettre en état",
+            "titre": "Un technicien électromécanicien habilité risque chimique niveau 1, mobilisé 6 mois",
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
+          },
+          {
+            "texte": ", préventif et curatif, de 2025 à 2026",
+            "titre": "Un technicien intégré sur un parc papier-carton où la maintenance conditionne la productivité",
+            "lienHref": "/preuves/vpk/",
+            "lienLibelle": "Étude de cas VPK : maintenance de site"
+          },
+          {
+            "texte": ", site agroalimentaire de Steenvoorde",
+            "titre": "Deux techniciens en 3x8 sur des lignes liquides et du conditionnement poudre",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "lienLibelle": "Étude de cas DANONE : lignes de production"
+          },
+          {
+            "texte": "sur plusieurs sites de production, depuis octobre 2024",
+            "titre": "1 à 3 techniciens en renfort permanent des équipes maintenance",
+            "lienHref": "/preuves/groupe-atlantic/",
+            "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes"
+          },
+          {
+            "texte": ", en pleine montée de cadence",
+            "titre": "Un responsable maintenance intégré pour piloter un service pendant une transition interne",
+            "lienHref": "/preuves/eriks/",
+            "lienLibelle": "Étude de cas ERIKS"
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "bouton": "Faire chiffrer ma maintenance à Rouen",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
+        "question": "Besoin d'un partenaire qui tienne le préventif quand votre équipe ne peut plus ?"
+      }
+    ]
+  }
+}

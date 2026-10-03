@@ -8,10 +8,15 @@ import Article from "@/components/site/article/Article";
 import Bloc from "@/components/site/blocs/Bloc";
 import PageCasClients from "@/components/site/casclients/PageCasClients";
 import PageEditoriale from "@/components/site/editorial/PageEditoriale";
+import PageDepartement from "@/components/site/implantation/PageDepartement";
+import PageVille from "@/components/site/implantation/PageVille";
 import PageImplantations from "@/components/site/implantations/PageImplantations";
 import PageExpertises from "@/components/site/expertises/PageExpertises";
 import PageFiche from "@/components/site/fiche/PageFiche";
 import PageMetier from "@/components/site/metier/PageMetier";
+import PageOffres from "@/components/site/offres/PageOffres";
+import PageOffre from "@/components/site/offre/PageOffre";
+import PageRessource from "@/components/site/ressource/PageRessource";
 import PageSecteur from "@/components/site/secteur/PageSecteur";
 import {
   articleParChemin,
@@ -25,10 +30,14 @@ import type { ContenuArticle } from "@/types/article";
 import { estCasClients } from "@/types/casclients";
 import type { ContenuPage, Section } from "@/types/contenu";
 import { estEditorial } from "@/types/editorial";
+import { estDepartement, estVille } from "@/types/implantation";
 import { estImplantations } from "@/types/implantations";
 import { estExpertises } from "@/types/expertises";
 import { estFiche } from "@/types/fiche";
 import { estMetierOuDomaine } from "@/types/metier";
+import { estOffres } from "@/types/offres";
+import { estOffre } from "@/types/offre";
+import { estRessource } from "@/types/ressource";
 import { estSecteur } from "@/types/secteur";
 
 /**
@@ -161,6 +170,36 @@ export default async function PageDuCocon({
   // sections, l'éditorial, en blocs suivis, et celui de secteur, juste en
   // dessous. On tranche sur ce que le jsonb porte réellement, pas sur ce qu'un
   // type déclare : il sort de la base en `unknown`.
+
+  // Le gabarit RESSOURCE, pour les 35 pages feuilles de `/ressources/` :
+  // en-tête de document avec sa pastille de format, carte de procédure
+  // numérotée, barème en tableau, cartes collantes, appel de fin. Il passe
+  // AVANT l'éditorial, qui servait ces pages jusqu'ici en colonne de lecture
+  // avec un sommaire : la maquette n'en dessine aucun, et c'est ce que le
+  // client a vu. Les six rayons de `/ressources/` restent éditoriaux, ce sont
+  // des pages de liste.
+  if (estRessource(page.contenu)) {
+    return (
+      <PageRessource
+        titre={page.titre_h1}
+        contenu={page.contenu}
+        filAriane={<FilAriane path={page.path} />}
+        maillage={
+          <>
+            <FormulaireBasDePage
+              formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+            />
+            <div
+              style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}
+            >
+              <Maillage page={page} />
+            </div>
+          </>
+        }
+      />
+    );
+  }
+
   if (estEditorial(page.contenu)) {
     return (
       <PageEditoriale
@@ -189,6 +228,38 @@ export default async function PageDuCocon({
       <PageSecteur
         titre={page.titre_h1}
         contenu={page.contenu}
+        filAriane={<FilAriane path={page.path} />}
+        maillage={
+          <>
+            <FormulaireBasDePage
+              formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+            />
+            <div
+              style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}
+            >
+              <Maillage page={page} />
+            </div>
+          </>
+        }
+      />
+    );
+  }
+
+  // Les gabarits VILLE et DÉPARTEMENT, pour les 42 pages filles de
+  // `/implantations/`. La maquette leur donne DEUX dessins distincts, cinq
+  // sections pour une ville, trois pour un département : une ville vend une
+  // intervention sur un bassin industriel, un département couvre un territoire
+  // et distribue vers ses voisins. Le gabarit de vente leur imposait ses dix
+  // sections à toutes les deux. `PageDepartement` est une enveloppe au-dessus
+  // de `PageSecteur`, qui porte déjà ces trois sections au pixel.
+  if (estVille(page.contenu) || estDepartement(page.contenu)) {
+    const Gabarit = estVille(page.contenu) ? PageVille : PageDepartement;
+    return (
+      <Gabarit
+        titre={page.titre_h1}
+        // Le garde a tranché juste au-dessus ; TypeScript ne relie pas le
+        // composant choisi à la branche qui l'a choisi.
+        contenu={page.contenu as never}
         filAriane={<FilAriane path={page.path} />}
         maillage={
           <>
@@ -277,6 +348,26 @@ export default async function PageDuCocon({
     );
   }
 
+  // Gabarit OFFRES, pour le hub `/offres/` : bandeau d'ouverture dont le visuel
+  // porte les repères en incrustation, entrée par besoin en mosaïque, offres en
+  // cartes numérotées dont une en panneau sombre, bloc de fin. Le gabarit de
+  // vente empilait ici ses dix sections là où la maquette en dessine quatre, et
+  // c'est ce que le client a vu : « les pages offres ne sont pas comme sur la
+  // maquette ». Les sections du corpus que ce dessin ne prévoit pas (déroulé,
+  // engagements, réalisations, questions fréquentes) ne sont pas perdues : le
+  // gabarit les rend sous les siennes, par les mêmes blocs qu'avant.
+  if (estOffres(page.contenu)) {
+    return (
+      <PageOffres
+        titre={page.titre_h1}
+        contenu={page.contenu}
+        formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+        filAriane={<FilAriane path={page.path} />}
+        maillage={<Maillage page={page} />}
+      />
+    );
+  }
+
   // Le gabarit IMPLANTATIONS, pour `/implantations/` et celles de ses 42 pages
   // filles dont le corpus écrit ce discriminant : hero avec sa carte, cartes
   // d'agences, panneau international, maillage de villes et de départements.
@@ -300,6 +391,28 @@ export default async function PageDuCocon({
   if (estCasClients(page.contenu)) {
     return (
       <PageCasClients
+        titre={page.titre_h1}
+        contenu={page.contenu}
+        formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+        filAriane={<FilAriane path={page.path} />}
+        maillage={<Maillage page={page} />}
+      />
+    );
+  }
+
+  // Le gabarit OFFRE, pour les 18 pages de la branche `/offres/` : héros à
+  // deux colonnes avec son propre formulaire, bande de quatre chiffres,
+  // bascule avant / après, prestation, méthode, sélection, réalisations,
+  // questions, autres offres. La maquette en dessine quatorze sections
+  // (`sc-if value="{{ isOfferPage }}"`, l. 4706 à 5198) là où le gabarit de
+  // vente n'en connaît que dix, dans un autre ordre : c'est ce que le client a
+  // vu quand il a dit « les pages offres ne sont pas comme sur la maquette ».
+  // On tranche sur le champ `gabarit` du jsonb, jamais sur le chemin : le hub
+  // `/offres/` porte son propre gabarit, et une page fille peut être
+  // éditoriale.
+  if (estOffre(page.contenu)) {
+    return (
+      <PageOffre
         titre={page.titre_h1}
         contenu={page.contenu}
         formulaire={`cocon${page.path.replace(/\//g, "-")}`}

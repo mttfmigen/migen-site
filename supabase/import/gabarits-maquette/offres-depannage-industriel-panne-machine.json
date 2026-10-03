@@ -1,0 +1,234 @@
+{
+  "url": "/offres/depannage-industriel/panne-machine/",
+  "contenu": {
+    "gabarit": "offre",
+    "mention": "Du lundi au vendredi de 8h00 à 18h30, nous vous rappelons dans l'heure pour poser un premier diagnostic",
+    "chapeau": "Nous mobilisons un technicien de maintenance évalué, partout en France, en heures ouvrées comme en astreinte.",
+    "actions": [
+      {
+        "libelle": "Les cinq offres",
+        "href": "/offres/"
+      }
+    ],
+    "formulaireHeroTitre": "Décrire mon besoin",
+    "formulaireHeroMention": "Rappel dans l'heure",
+    "brefSurtitre": "En bref",
+    "chiffres": [
+      {
+        "valeur": "10 %",
+        "libelle": "Part des candidats retenus, après entretien technique et comportemental."
+      },
+      {
+        "valeur": "24/24 et 7/7",
+        "libelle": "Astreinte disponible, nuits, fins de semaine, jours fériés."
+      },
+      {
+        "valeur": "4 agences",
+        "libelle": "Lyon (siège), Montréal, Dubaï, Madrid",
+        "detail": "Intervention partout en France."
+      }
+    ],
+    "brefBande": "Votre machine est arrêtée en ce moment ?",
+    "brefBouton": {
+      "libelle": "Demander une intervention",
+      "href": "/contact/"
+    },
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "La ligne est à l'arrêt, et tout le monde attend une date",
+        "puces": [
+          {
+            "texte": "> **Règle numéro un : ne forcez pas le redémarrage.** Relancer un équipement défaillant sans comprendre la cause transforme une petite défaillance en casse majeure. Dix minutes d'analyse coûtent toujours moins cher qu'un réducteur détruit."
+          },
+          {
+            "texte": "Les 6 réflexes à tenir avant d'appeler qui que ce soit :"
+          }
+        ]
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "texte": "**Qualification de l'urgence au téléphone**"
+            },
+            "benefice": "Un technicien, pas un standard. Le premier échange écarte les causes simples et cadre la suite, parfois sans déplacement."
+          },
+          {
+            "prestation": {
+              "texte": "**Diagnostic méthodique sur site**"
+            },
+            "benefice": "Symptôme, hypothèses, mesures, conclusion. Multimètre, thermographie, analyse vibratoire, contrôle des fluides, console de programmation."
+          },
+          {
+            "prestation": {
+              "texte": "**Réparation et contrôle du fonctionnement**"
+            },
+            "benefice": "Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure, robotique. Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc."
+          },
+          {
+            "prestation": {
+              "texte": "**Rapport de cause racine**"
+            },
+            "benefice": "Pas seulement quelle pièce a lâché : pourquoi. Travaux réalisés, pièces remplacées, recommandations. Exploitable dans votre GMAO."
+          },
+          {
+            "prestation": {
+              "texte": "**Astreinte 24/24 et 7/7 en option**"
+            },
+            "benefice": "La panne de 3 heures du matin trouve un interlocuteur, pas un répondeur."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Vous appelez ou remplissez 4 champs.",
+            "texte": "Site, équipement, symptôme, téléphone. Rien de plus."
+          },
+          {
+            "titre": "Un technicien qualifie l'urgence.",
+            "texte": "Criticité, sécurité, hypothèses probables. Le dépannage à distance est tenté quand il a une chance d'aboutir."
+          },
+          {
+            "titre": "Nous mobilisons le bon profil.",
+            "texte": "Pas le premier disponible : celui dont la spécialité correspond à votre équipement."
+          },
+          {
+            "titre": "Le diagnostic",
+            "texte": "Le but n'est pas de changer une pièce, c'est de savoir laquelle et pourquoi."
+          },
+          {
+            "titre": "Réparation et redémarrage contrôlé.",
+            "texte": "Remise en service, vérification en conditions de production, consignes transmises aux opérateurs."
+          },
+          {
+            "titre": "Rapport et suite.",
+            "texte": "Cause racine, travaux, pièces, recommandations. Si la panne est récurrente, nous vous disons ce qu'il faut traiter en amont, même si ce n'est pas nous qui le vendons."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
+            "texte": "Et un interlocuteur technique joignable 24/24 et 7/7 pour les clients sous astreinte. Pas de formulaire qui tombe dans le vide."
+          },
+          {
+            "accroche": "Un technicien évalué, pas un intervenant de passage.",
+            "texte": "Entretien technique et entretien comportemental, résultats partagés avec vous. Seuls 10 % des candidats sont retenus."
+          },
+          {
+            "accroche": "Un rapport de cause racine à chaque intervention.",
+            "texte": "Remplacer la pièce cassée sans chercher pourquoi elle a cassé garantit la même panne dans quelques semaines. Nous documentons la cause, vous décidez de la suite."
+          },
+          {
+            "accroche": "Une intervention d'urgence qui reste dans votre cadre sécurité.",
+            "texte": "Démarche MASE pour la sécurité des interventions, évaluation EcoVadis pour la performance RSE, habilitations du technicien à jour et vérifiables avant l'accès au site. Les attestations vous sont transmises avec chaque plan de prévention, y compris quand l'appel arrive la nuit."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "[Diagnostic d'un parc machines défaillant, PME industrielle](/preuves/joint-lyonnais/)",
+            "texte": "depuis février 2024 à Lyon, plusieurs solutions chiffrées adaptées au budget d'une PME, au lieu du rachat de matériel neuf"
+          },
+          {
+            "titre": "[Curatif sur convoyeurs, trieurs et packaging, logistique](/preuves/gls-maintenance-curative/)",
+            "texte": "2 techniciens dédiés à la maintenance curative et à la surveillance continue des équipements critiques"
+          },
+          {
+            "titre": "[Préventif et curatif 7 jours sur 7, fonderie automobile](/preuves/stellantis-fonderie-sept-fons/)",
+            "texte": "depuis octobre 2023, 6 techniciens sur la fonderie et l'usinage de Dompierre-sur-Besbre, parc repris en 8 semaines"
+          },
+          {
+            "titre": "[Démarrage d'une ligne neuve, automate SIEMENS](/preuves/mersen/)",
+            "texte": "un automaticien spécialisé affecté à la mise en route, près de Lyon, quand l'automate dit non"
+          },
+          {
+            "titre": "[Parc hétérogène en forte cadence, papier et emballage](/preuves/vpk/)",
+            "texte": "un technicien polyvalent intégré, pour arrêter de courir après les pannes"
+          },
+          {
+            "titre": "[Lignes alimentaires en 3x8, agroalimentaire](/preuves/danone-lignes-de-production/)",
+            "texte": "2 techniciens sur les lignes liquides et le conditionnement poudre du site de Steenvoorde"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Combien coûte une intervention de dépannage ?",
+            "reponse": "Le tarif dépend du domaine technique, de la durée et de la plage horaire. Il est chiffré sur devis, jamais découvert sur la facture. Le chiffre à regarder en face reste le vôtre : main-d'œuvre immobilisée, production perdue, pénalités de retard."
+          },
+          {
+            "question": "Intervenez-vous sur une machine que vous ne connaissez pas ?",
+            "reponse": "Oui. C'est le quotidien de nos techniciens : un parc différent sur chaque site. Ce que nous demandons en revanche : les alarmes relevées, l'historique et la documentation disponible."
+          },
+          {
+            "question": "Qui vient, et quelles habilitations a-t-il ?",
+            "reponse": "Un technicien salarié de Migen, évalué en entretien technique et comportemental. Seuls 10 % des candidats sont retenus. Les habilitations exigées par votre site, électriques ou spécifiques, sont vérifiées avant l'intervention. Sur un site SUEZ à risque chimique, nous avons fait passer l'habilitation RC1 au technicien affecté."
+          },
+          {
+            "question": "Et si la panne revient ?",
+            "reponse": "Le rapport de cause racine existe pour ça. Si l'équipement repart en défaut, nous reprenons le dossier, pas la feuille blanche. Quand les déclenchements s'enchaînent, le sujet n'est plus le dépannage : c'est le plan de maintenance."
+          },
+          {
+            "question": "Nos consignes de sécurité sont strictes. Comment ça se passe ?",
+            "reponse": "Plan de prévention, accueil sécurité, consignation des énergies, règles d'accès : tout est convenu avant l'intervention. Aucune réparation ne démarre hors de ce cadre, même en urgence. Un site à l'arrêt coûte cher, un accident coûte davantage."
+          },
+          {
+            "question": "Couvrez-vous notre région ?",
+            "reponse": "Nos équipes interviennent partout en France depuis Lyon, notre siège social, et nos hubs de techniciens dans les grandes villes, en urgence comme en opération planifiée."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Combien de fois cette machine s'est-elle arrêtée cette année ?",
+        "bouton": "Éviter la prochaine panne : l'abonnement Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      }
+    ],
+    "autresSurtitre": "Un autre besoin ?",
+    "autresTitre": "Chaque situation a son offre.",
+    "autres": [
+      {
+        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
+        "libelle": "Résidence",
+        "href": "/offres/residence/"
+      },
+      {
+        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
+        "libelle": "Périmètre complet",
+        "href": "/offres/maintenance-externalisee/"
+      },
+      {
+        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      },
+      {
+        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/"
+      },
+      {
+        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
+        "libelle": "Bureau d'études",
+        "href": "/offres/bureau-etudes/"
+      },
+      {
+        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
+      }
+    ]
+  }
+}

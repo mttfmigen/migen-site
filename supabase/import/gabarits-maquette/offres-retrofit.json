@@ -1,0 +1,236 @@
+{
+  "url": "/offres/retrofit/",
+  "contenu": {
+    "gabarit": "offre",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30",
+    "chapeau": "**Votre machine peut produire plusieurs années de plus, pour un coût total très inférieur à celui du neuf.** Le bâti est sain, c'est la commande qui est morte.",
+    "actions": [
+      {
+        "libelle": "Les cinq offres",
+        "href": "/offres/"
+      }
+    ],
+    "formulaireHeroTitre": "Décrire mon besoin",
+    "formulaireHeroMention": "Rappel dans l'heure",
+    "brefSurtitre": "En bref",
+    "chiffres": [
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus · entretien technique et entretien comportemental."
+      },
+      {
+        "valeur": "+ 120",
+        "libelle": "clients industriels · de la PME au grand groupe, dans tous les secteurs."
+      },
+      {
+        "valeur": "4",
+        "libelle": "agences · Lyon (siège), Montréal, Dubaï, Madrid."
+      }
+    ],
+    "brefBande": "Besoin de savoir si votre machine mérite un retrofit ou un remplacement ?",
+    "brefBouton": {
+      "libelle": "Faire diagnostiquer ma machine",
+      "href": "/contact/"
+    },
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "Arrêtez de payer des dépannages sur une machine que personne ne remet vraiment à niveau.",
+        "puces": [
+          {
+            "accroche": "Le correctif qui explose le budget",
+            "texte": ", parce que chaque arrêt est traité comme un événement isolé."
+          },
+          {
+            "accroche": "La dépendance à un technicien",
+            "texte": "qui est le seul à savoir redémarrer ce vieil automate."
+          },
+          {
+            "accroche": "Le préventif qui saute",
+            "texte": ", faute de temps, pendant que la machine se dégrade un peu plus."
+          }
+        ]
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "texte": "**Retrofit mécanique**"
+            },
+            "benefice": "Roulements, transmissions, motorisations, guidages, broches remplacés et géométrie reprise. La précision d'origine revient, parfois dépassée."
+          },
+          {
+            "prestation": {
+              "texte": "**Retrofit électrique et automatisme**"
+            },
+            "benefice": "Armoires rénovées, variateurs échangés, recâblage aux normes, automate obsolète remplacé, programmes repris, nouvelle interface homme-machine."
+          },
+          {
+            "prestation": {
+              "texte": "**Capteurs et supervision**"
+            },
+            "benefice": "Une presse des années 90 alimente les mêmes outils de suivi qu'une ligne récente. Sans capteurs modernes, rien ne remonte de la machine."
+          },
+          {
+            "prestation": {
+              "texte": "**[Mise en conformité des machines](/offres/retrofit/mise-en-conformite-machine/)**"
+            },
+            "benefice": "Protecteurs, arrêts d'urgence, dispositifs de sécurité et dossier technique traités pendant l'arrêt, pas après."
+          },
+          {
+            "prestation": {
+              "texte": "**[Remise en état machine industrielle](/offres/retrofit/remise-en-etat/)**"
+            },
+            "benefice": "Quand la dégradation dépasse les organes de commande : démontage, expertise, réparation, peinture, remontage, essais."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Le diagnostic.",
+            "texte": "Un expert examine la machine dans votre atelier : état mécanique, électrique, automatismes, historique de pannes, obsolescence des composants, exigences de sécurité. Vous savez ce qui doit partir, ce qui reste, et pourquoi."
+          },
+          {
+            "titre": "L'étude et le chiffrage.",
+            "texte": "Plans, schémas, choix des composants, planning. Le devis est détaillé poste par poste, avec des variantes assumées pour s'ajuster à votre budget."
+          },
+          {
+            "titre": "La préparation hors site.",
+            "texte": "Approvisionnement des pièces, préfabrication des armoires, programmes écrits et testés à l'avance. Tout ce qui peut se faire sans arrêter la ligne se fait sans arrêter la ligne."
+          },
+          {
+            "titre": "La réalisation sur site.",
+            "texte": "Nos techniciens interviennent en coordination avec vos équipes de maintenance et de fabrication, sur les créneaux les moins pénalisants."
+          },
+          {
+            "titre": "La mise en service.",
+            "texte": "Réglages, essais à vide puis en charge, formation des opérateurs, documentation mise à jour, accompagnement jusqu'à la cadence nominale."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Un diagnostic qui dit aussi quand le retrofit ne vaut pas le coup.",
+            "texte": "Migen ne vit pas de la vente de machines : le conseil n'est orienté par aucun catalogue."
+          },
+          {
+            "accroche": "Le planning d'immobilisation est convenu avec votre production avant le premier coup de clé.",
+            "texte": "Pas de date imposée, pas de dérive silencieuse."
+          },
+          {
+            "accroche": "Les travaux sont menés par des techniciens salariés Migen",
+            "texte": ", en mécanique, électricité et automatisme, évalués en entretien technique et comportemental."
+          },
+          {
+            "accroche": "La sécurité du chantier est documentée avant la première intervention.",
+            "texte": "Démarche MASE et évaluation EcoVadis : les attestations sont transmises avec chaque plan de prévention."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Parc machines défaillant remis en service, Lyon, depuis février 2024.",
+            "texte": "Diagnostic sur site, plusieurs options chiffrées, parc existant conservé au lieu d'être racheté. Relation toujours active",
+            "lienLibelle": "Étude de cas JOINT LYONNAIS",
+            "lienHref": "/preuves/joint-lyonnais/"
+          },
+          {
+            "titre": "Déplacement et reconfiguration d'équipements en service, 2025.",
+            "texte": "Machines existantes remises en configuration sans casse, délais de chantier tenus",
+            "lienLibelle": "Étude de cas SOPREMA",
+            "lienHref": "/preuves/soprema/"
+          },
+          {
+            "titre": "Remise en état d'installations critiques en environnement à risque chimique, depuis février 2026.",
+            "texte": "Technicien électromécanicien habilité RC1 avant la première intervention",
+            "lienLibelle": "Étude de cas SUEZ",
+            "lienHref": "/preuves/suez-remise-en-etat/"
+          },
+          {
+            "titre": "Maintenance préventive d'une centrale photovoltaïque, fin 2024.",
+            "texte": "Trois techniciens en renfort, équipements suivis sur toute la durée du chantier",
+            "lienLibelle": "Étude de cas EIFFAGE",
+            "lienHref": "/preuves/eiffage/"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Combien coûte un retrofit de machine ?",
+            "reponse": "Chaque projet est chiffré sur devis après diagnostic : tout dépend du type de machine et de l'étendue de la remise à niveau. Le constat reste le même d'un projet à l'autre : moderniser revient nettement moins cher qu'acheter neuf, à performances comparables."
+          },
+          {
+            "question": "Quand faut-il envisager un retrofit plutôt qu'un remplacement ?",
+            "reponse": "Quand le bâti et la mécanique de base restent sains mais que la commande, l'électricité ou les automatismes sont dépassés, ou qu'une pièce de rechange critique a disparu du marché. Si la structure elle-même est en fin de vie, le remplacement redevient justifié."
+          },
+          {
+            "question": "Combien de temps la machine est-elle immobilisée ?",
+            "reponse": "La durée dépend du périmètre et se fixe au devis. Notre méthode la réduit : préparation maximale hors site, armoires préfabriquées, programmes testés à l'avance, intervention planifiée sur vos créneaux les moins pénalisants."
+          },
+          {
+            "question": "Le retrofit remet-il la machine en conformité ?",
+            "reponse": "Une modification substantielle d'un équipement de travail impose une remise à niveau de la sécurité. Nous l'intégrons dès l'étude et réalisons les adaptations. La vérification finale relève d'un organisme agréé indépendant, dont nous préparons la visite avec vous."
+          },
+          {
+            "question": "Intervenez-vous sur toutes les marques, y compris les machines spéciales ?",
+            "reponse": "Oui. Notre indépendance nous permet d'intervenir quel que soit le fabricant d'origine, robotique et machines spéciales comprises, dans l'automobile, l'agroalimentaire, la métallurgie, la chimie, la plasturgie et l'énergie."
+          },
+          {
+            "question": "Et après le redémarrage, vous disparaissez ?",
+            "reponse": "Non. Le retrofit peut déboucher sur un programme d'entretien préventif ou sur l'abonnement Zéro arrêt, pour protéger l'investissement dans la durée."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin d'un chiffrage comparant retrofit et machine neuve, sur votre cas ?",
+        "bouton": "Demander un diagnostic",
+        "href": "/contact/",
+        "rappel": "04 78 33 72 05, astreinte 24/24 et 7/7."
+      }
+    ],
+    "autresSurtitre": "Un autre besoin ?",
+    "autresTitre": "Chaque situation a son offre.",
+    "autres": [
+      {
+        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
+        "libelle": "Résidence",
+        "href": "/offres/residence/"
+      },
+      {
+        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
+        "libelle": "Périmètre complet",
+        "href": "/offres/maintenance-externalisee/"
+      },
+      {
+        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      },
+      {
+        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/"
+      },
+      {
+        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
+        "libelle": "Bureau d'études",
+        "href": "/offres/bureau-etudes/"
+      },
+      {
+        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
+      }
+    ]
+  }
+}

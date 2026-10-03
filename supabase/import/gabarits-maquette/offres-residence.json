@@ -1,0 +1,281 @@
+{
+  "url": "/offres/residence/",
+  "contenu": {
+    "gabarit": "offre",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
+    "chapeau": "Un technicien Migen travaille chaque jour dans vos murs, intégré à votre équipe de production. Nous portons le recrutement, l'encadrement et le remplacement. Vous gardez la décision et la connaissance de vos machines.",
+    "actions": [
+      {
+        "libelle": "Les cinq offres",
+        "href": "/offres/"
+      }
+    ],
+    "formulaireHeroTitre": "Décrire mon besoin",
+    "formulaireHeroMention": "Rappel dans l'heure",
+    "brefSurtitre": "En bref",
+    "brefTitre": "Le cadre, en quatre chiffres.",
+    "chiffres": [
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+      },
+      {
+        "valeur": "+ 100",
+        "libelle": "collaborateurs, dont des automaticiens SIEMENS et Schneider, des roboticiens ABB et Fanuc"
+      },
+      {
+        "valeur": "+ 80",
+        "libelle": "clients réguliers, la seule mesure qui compte pour une prestation renouvelée"
+      },
+      {
+        "valeur": "4",
+        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, taux horaire homogène partout"
+      }
+    ],
+    "brefBande": "Besoin d'un technicien qualifié sur votre site sans relancer un recrutement ?",
+    "brefBouton": {
+      "libelle": "Parler à un chargé d'affaires",
+      "href": "#formulaire"
+    },
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "Le poste de technicien de maintenance reste vacant pendant des mois. Pendant ce temps, l'usine tourne à l'aveugle.",
+        "puces": [
+          {
+            "accroche": "Votre responsable maintenance absorbe les urgences au lieu de piloter.",
+            "texte": "Le plan préventif devient une intention."
+          },
+          {
+            "accroche": "Les compétences critiques sont introuvables localement.",
+            "texte": "Automatisme, robotique, variation de vitesse : les candidats ne sont pas sur le marché de votre bassin."
+          },
+          {
+            "accroche": "La spirale coûte plus cher que le poste.",
+            "texte": "Heures supplémentaires, épuisement, départs, et un recrutement à relancer de zéro."
+          },
+          {
+            "accroche": "Quand vous trouvez enfin quelqu'un, il part.",
+            "texte": "Et vous repayez le cabinet, la période d'essai et la montée en compétence."
+          }
+        ]
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "Un technicien évalué, présent au rythme convenu",
+              "texte": ", temps plein ou partagé."
+            },
+            "benefice": "Le poste est tenu dès le démarrage, sans annonce, sans cabinet, sans période d'essai à porter."
+          },
+          {
+            "prestation": {
+              "texte": "**Recrutement, contrat, rémunération et obligations d'employeur portés par Migen.**"
+            },
+            "benefice": "Votre masse salariale ne bouge pas et votre service RH ne gère pas un dossier de plus."
+          },
+          {
+            "prestation": {
+              "texte": "**Remplacement à niveau équivalent en cas d'absence ou de départ.**"
+            },
+            "benefice": "La continuité est contractuelle. Vous ne relancez jamais une recherche."
+          },
+          {
+            "prestation": {
+              "texte": "**Un référent technique Migen qui suit le travail et contrôle la qualité.**"
+            },
+            "benefice": "Le technicien n'est pas seul face à une panne qu'il ne connaît pas. Il a un métier derrière lui."
+          },
+          {
+            "prestation": {
+              "accroche": "Accès aux spécialistes du groupe",
+              "texte": "automatisme SIEMENS et Schneider, robotique ABB et Fanuc, électrotechnique, mécanique."
+            },
+            "benefice": "Une compétence rare arrive en renfort au lieu de manquer toute l'année."
+          },
+          {
+            "prestation": {
+              "accroche": "Comptes rendus au format de votre GMAO",
+              "texte": ", et sensibilisation de vos opérateurs aux bons gestes."
+            },
+            "benefice": "Votre historique machine s'enrichit chaque semaine, et les pannes d'origine humaine reculent."
+          },
+          {
+            "prestation": {
+              "texte": "**Renfort ponctuel pour un arrêt technique ou un pic de charge.**"
+            },
+            "benefice": "Le dispositif suit l'activité réelle, à la hausse comme à la baisse, sans nouvelle procédure."
+          }
+        ],
+        "prose": [
+          {
+            "texte": "Pour trancher sans précipitation, notre comparatif [prestataire ou salarié](/offres/residence/prestataire-ou-salarie/) met les deux options côte à côte, coûts et cadre juridique compris. Si votre décision est d'embaucher, notre guide [recruter un technicien de maintenance](/offres/residence/recruter-un-technicien/) donne la méthode que nous pratiquons chaque semaine pour nos propres équipes."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Cadrage du besoin",
+            "texte": "un chargé d'affaires analyse le périmètre avec vous, équipements, plan de maintenance existant, horaires, habilitations, règles de sécurité. Si vous préparez une consultation, notre guide du [cahier des charges de maintenance](/offres/residence/cahier-des-charges/) structure le document."
+          },
+          {
+            "titre": "Sélection du profil",
+            "texte": "nous proposons un technicien dont l'expérience correspond à vos machines et à votre secteur. Les résultats de son évaluation technique et comportementale vous sont présentés avant votre décision."
+          },
+          {
+            "titre": "Validation par vous",
+            "texte": "vous rencontrez le profil. Tant que vous ne validez pas, personne ne démarre."
+          },
+          {
+            "titre": "Intégration",
+            "texte": "plan de prévention, accueil sécurité, prise en main des équipements, connexion à votre GMAO. Le démarrage est organisé avec votre encadrement."
+          },
+          {
+            "titre": "Pilotage",
+            "texte": "un référent Migen assure le suivi, comptes rendus d'activité, mesure de la disponibilité machine, points réguliers avec votre responsable de production."
+          },
+          {
+            "titre": "Progression",
+            "texte": "formation continue, appui des spécialistes du groupe, ajustement du dispositif à l'activité réelle du site."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "La continuité du poste",
+            "texte": "absence ou départ, nous organisons le remplacement à niveau équivalent, briefé sur vos installations. C'est un engagement contractuel, pas une intention."
+          },
+          {
+            "accroche": "Le niveau annoncé du technicien",
+            "texte": "10 % des candidats retenus, évaluation technique et comportementale en entretien, résultats consultables avant que vous décidiez."
+          },
+          {
+            "accroche": "La transparence du périmètre",
+            "texte": "ce qui est inclus et ce qui ne l'est pas est écrit ligne par ligne. Pièces majeures, travaux exceptionnels, transport et levage sont chiffrés à part, jamais découverts en cours de mission."
+          },
+          {
+            "accroche": "La sécurité tracée dès le plan de prévention",
+            "texte": "notre démarche MASE encadre la conduite des interventions, notre évaluation EcoVadis mesure la performance RSE. Les attestations sont transmises avec chaque plan de prévention, et les habilitations du technicien affecté à votre site sont portées par Migen et documentées avec la mission."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Renfort habilité risque chimique pour une remise en état de site, traitement des eaux",
+            "texte": "depuis février 2026",
+            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
+            "lienHref": "/preuves/suez-remise-en-etat/"
+          },
+          {
+            "titre": "Technicien affecté en continu à la fiabilité des équipements de production",
+            "texte": "site proche de Paris",
+            "lienLibelle": "Étude de cas FDJ : site proche de Paris",
+            "lienHref": "/preuves/fdj/"
+          },
+          {
+            "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve",
+            "texte": "près de Lyon",
+            "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
+            "lienHref": "/preuves/mersen/"
+          },
+          {
+            "titre": "Responsable maintenance intégré pour piloter un service en transition, industrie",
+            "texte": "troisième trimestre 2025",
+            "lienLibelle": "Étude de cas ERIKS",
+            "lienHref": "/preuves/eriks/"
+          },
+          {
+            "titre": "Renfort de l'équipe maintenance pendant les congés d'été",
+            "texte": "un technicien sur site, été 2025",
+            "lienLibelle": "Étude de cas OGF : arrêt estival",
+            "lienHref": "/preuves/ogf-arret-estival/"
+          },
+          {
+            "titre": "Technicien polyvalent sur un parc hétérogène à forte cadence, papier et emballage",
+            "texte": "2025 à 2026",
+            "lienLibelle": "Étude de cas VPK : maintenance de site",
+            "lienHref": "/preuves/vpk/"
+          },
+          {
+            "titre": "Renfort des équipes de maintenance sur plusieurs sites de production, confort thermique",
+            "texte": "1 à 3 techniciens, depuis octobre 2024",
+            "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes",
+            "lienHref": "/preuves/groupe-atlantic/"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Combien coûte la sous-traitance de la maintenance ?",
+            "reponse": "La mission est chiffrée sur devis, sous forme de taux horaire homogène dans toute la France. Trois éléments font le montant : le profil requis et ses spécialités, le rythme de présence (temps plein ou partagé) et les contraintes de vos installations. Tout est présenté ligne par ligne, pour une comparaison honnête avec un poste interne."
+          },
+          {
+            "question": "Sur quelle durée doit-on s'engager ?",
+            "reponse": "La durée se cale sur votre besoin réel, pas sur un minimum commercial. Les conditions d'évolution et de sortie figurent au contrat, en clair, avec les modalités de préavis. Nous préférons être renouvelés plutôt que verrouillés : plus de 80 clients travaillent avec nous de façon régulière."
+          },
+          {
+            "question": "Nous avons déjà un prestataire sur ce poste. Comment se passe la reprise ?",
+            "reponse": "Nous reprenons le périmètre tel qu'il est écrit, avec une phase de recouvrement pendant laquelle le technicien prend en main les équipements et récupère l'historique. Votre contrat en cours court pendant cette préparation. Aucune interruption de présence sur le site."
+          },
+          {
+            "question": "Qui répond de la sécurité du technicien sur notre site ?",
+            "reponse": "Migen est l'employeur : nous portons les habilitations, la formation, les équipements de protection et le suivi médical. Vous portez l'accueil sécurité, le plan de prévention et les consignes propres à votre installation. La répartition est écrite au contrat, avec les attestations de vigilance qui protègent votre structure."
+          },
+          {
+            "question": "Le technicien est-il vraiment salarié de Migen ?",
+            "reponse": "Oui. Nous le recrutons, l'employons, l'encadrons, le formons et répondons de la qualité de son travail. Le cadre est un contrat de prestation de services, qui relève du contrat d'entreprise. C'est ce qui distingue une vraie prestation d'un simple prêt de bras, et c'est le premier point qu'un service achats doit vérifier."
+          },
+          {
+            "question": "Couvrez-vous notre région ?",
+            "reponse": "Oui, partout en France, depuis 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France. Le taux horaire est le même quel que soit le département, ce qui rend les partenariats multi-sites lisibles."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de tenir le poste dès ce trimestre plutôt que de relancer une annonce ?",
+        "bouton": "Demander un profil pour mon site",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
+      }
+    ],
+    "autresSurtitre": "Un autre besoin ?",
+    "autresTitre": "Chaque situation a son offre.",
+    "autres": [
+      {
+        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
+        "libelle": "Périmètre complet",
+        "href": "/offres/maintenance-externalisee/"
+      },
+      {
+        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      },
+      {
+        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/"
+      },
+      {
+        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
+        "libelle": "Bureau d'études",
+        "href": "/offres/bureau-etudes/"
+      },
+      {
+        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
+      }
+    ]
+  }
+}
