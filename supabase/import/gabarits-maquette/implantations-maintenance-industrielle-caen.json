@@ -3,12 +3,12 @@
   "contenu": {
     "gabarit": "ville",
     "chapeau": "La plaine de Mondeville et de Colombelles a remplacé les hauts fourneaux normands par des lignes d'équipementiers automobile, des ateliers d'électronique et des sites agroalimentaires. Trois rythmes de production, trois manières de tomber en panne. Nos techniciens itinérants couvrent le Calvados, appuyés par le réseau national.",
-    "actions": [
-      {
-        "libelle": "Demander une intervention à Caen",
-        "href": "#formulaire"
-      }
-    ],
+    "action": {
+      "libelle": "Demander une intervention à Caen",
+      "href": "#formulaire"
+    },
+    "telephone": "04 78 33 72 05",
+    "delai": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte couvre les nuits, les week-ends et les jours fériés.",
     "reperes": [
       {
         "valeur": "+ 120",
@@ -23,9 +23,15 @@
         "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, et des techniciens mobiles partout en France"
       }
     ],
-    "contact": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 couvre les nuits, les week-ends et les jours fériés.",
-    "constatTexte": "Une ligne de conditionnement décroche un vendredi soir à Ifs. Le technicien qui sait la relancer est en congés, et le suivant est à deux départements.",
-    "constatPuces": [
+    "logos": [
+      "AUTOLIV",
+      "VALEO",
+      "DANONE",
+      "GROUPE ATLANTIC"
+    ],
+    "problemeTitre": "Une ligne de conditionnement décroche un vendredi soir à Ifs.",
+    "problemeTexte": "Le technicien qui sait la relancer est en congés, et le suivant est à deux départements.",
+    "problemes": [
       {
         "texte": "Les offres de technicien de maintenance restent ouvertes des semaines sur le Calvados. Vos arrêts, eux, n'attendent pas le recrutement.",
         "accroche": "Le bassin manque de bras avant de manquer de machines."
@@ -47,8 +53,87 @@
         "accroche": "La panne revient parce que personne n'a cherché la cause."
       }
     ],
-    "reponseTexte": "Pour un montage de ligne, un transfert ou une extension de site, notre offre [chantier](/offres/chantier/) prend le relais avec un chef de projet unique.",
-    "reponsePuces": [
+    "offre": [
+      {
+        "benefice": "Votre ligne repart, et le compte rendu dit pourquoi elle s'était arrêtée.",
+        "prestation": {
+          "texte": ", recherche de défaut, remise en route, du moteur à l'armoire électrique.",
+          "accroche": "Dépannage sur site"
+        }
+      },
+      {
+        "benefice": "Vous entretenez au rythme de votre production, pas d'un calendrier constructeur.",
+        "prestation": {
+          "texte": "sur vos heures de fonctionnement réelles, resserré avant les pics agroalimentaires.",
+          "accroche": "Préventif planifié"
+        }
+      },
+      {
+        "benefice": "Vos équipements anciens retrouvent un pilotage fiable, sans les remplacer.",
+        "prestation": {
+          "texte": "automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, supervision remise à niveau.",
+          "accroche": "Automatisme et rétrofit"
+        }
+      },
+      {
+        "benefice": "Un seul interlocuteur pour un défaut qui mobilise trois spécialités.",
+        "prestation": {
+          "texte": "[mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure](/expertises/soudure/).",
+          "accroche": "Couverture multi-domaine"
+        }
+      },
+      {
+        "benefice": "Une panne du dimanche soir ne devient pas un lundi matin sacrifié.",
+        "prestation": {
+          "texte": ", mobilisation de techniciens mobiles partout en France.",
+          "accroche": "Astreinte en option"
+        }
+      },
+      {
+        "benefice": "Le poste vacant cesse d'être une fragilité, remplacement assuré en cas d'absence.",
+        "prestation": {
+          "texte": "avec l'offre [Résidence](/offres/residence/), prise de poste en 2 à 3 semaines.",
+          "accroche": "Technicien intégré à votre équipe"
+        }
+      },
+      {
+        "benefice": "Le préventif entre au planning au lieu de sauter chaque mois.",
+        "prestation": {
+          "texte": "avec l'offre [Zéro arrêt](/offres/zero-arret/), visites planifiées et priorité en cas de panne.",
+          "accroche": "Contrat de maintenance"
+        }
+      }
+    ],
+    "offreNotes": [
+      "Pour un montage de ligne, un transfert ou une extension de site, notre offre [chantier](/offres/chantier/) prend le relais avec un chef de projet unique."
+    ],
+    "etapes": [
+      {
+        "texte": "vous décrivez la panne ou le besoin. Un chargé d'affaires rappelle dans l'heure aux horaires ouvrés et qualifie machines, accès au site et habilitations.",
+        "titre": "Premier contact"
+      },
+      {
+        "texte": "périmètre, matériel, conditions d'intervention, créneaux. L'exceptionnel se chiffre avant, jamais en bas de facture.",
+        "titre": "Devis écrit"
+      },
+      {
+        "texte": "accueil sécurité, plan de prévention, consignation. Les règles de coactivité sont posées avant le premier outil.",
+        "titre": "Arrivée sur site"
+      },
+      {
+        "texte": "Le technicien répare, sécurise le redémarrage, puis cherche la cause racine.",
+        "titre": "La réparation"
+      },
+      {
+        "texte": "opérations, temps passé, pièces, préconisations, versés dans votre GMAO. Vos données restent chez vous.",
+        "titre": "Compte rendu"
+      },
+      {
+        "texte": "sur contrat, revue périodique de la récurrence par équipement et du respect du plan préventif.",
+        "titre": "Suivi"
+      }
+    ],
+    "garanties": [
       {
         "texte": "Entretien technique et comportemental, 10 % des candidats retenus, résultats d'évaluation partagés. Vous savez qui entre dans votre atelier.",
         "accroche": "Le profil vous est présenté avant l'intervention."
@@ -62,7 +147,38 @@
         "accroche": "Chaque intervention laisse une trace exploitable."
       }
     ],
-    "faq": [
+    "appel": {
+      "question": "Besoin d'un technicien sur votre site dans le Calvados ?",
+      "bouton": "Demander une intervention à Caen",
+      "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+    },
+    "preuves": [
+      {
+        "texte": ", en présence continue depuis 2025",
+        "titre": "Un technicien de maintenance dédié au parc machines d'un équipementier automobile",
+        "lienHref": "/preuves/autoliv/",
+        "lienLibelle": "Étude de cas AUTOLIV : maintien d'un site"
+      },
+      {
+        "texte": ", depuis septembre 2024",
+        "titre": "3 à 5 techniciens déployés pour accompagner la montée en cadence de plusieurs usines françaises",
+        "lienHref": "/preuves/valeo-usines/",
+        "lienLibelle": "Étude de cas VALEO : plusieurs usines"
+      },
+      {
+        "texte": ", liquides et conditionnement poudre",
+        "titre": "2 techniciens intégrés en 3x8 sur des lignes de nutrition infantile",
+        "lienHref": "/preuves/danone-lignes-de-production/",
+        "lienLibelle": "Étude de cas DANONE : lignes de production"
+      },
+      {
+        "texte": ", depuis octobre 2024",
+        "titre": "1 à 3 techniciens en renfort permanent sur plusieurs sites de production",
+        "lienHref": "/preuves/groupe-atlantic/",
+        "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes"
+      }
+    ],
+    "questions": [
       {
         "reponse": "Oui. Nous n'avons pas d'agence à Caen et nous ne prétendons pas le contraire : nos techniciens se déplacent partout en France et interviennent sur site dans le Calvados. Votre demande est rappelée dans l'heure aux horaires ouvrés, et le chargé d'affaires vous dit dès le premier appel si nous pouvons tenir votre besoin, ou non.",
         "question": "Intervenez-vous vraiment à Caen, alors que votre siège est à Lyon ?"
@@ -88,189 +204,47 @@
         "question": "Travaillez-vous avec les PME du territoire ?"
       }
     ],
-    "autres": [
+    "liens": [
       {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
+        "libelle": "Chantier",
+        "href": "/offres/chantier/",
+        "contexte": "Pour un montage de ligne, un transfert ou une extension de site, notre offre chantier prend le relais avec un chef de projet unique."
       },
       {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
+        "libelle": "Mécanique",
+        "href": "/expertises/mecanique/"
       },
       {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
+        "libelle": "Électrique",
+        "href": "/expertises/electrique/"
       },
       {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
+        "libelle": "Hydraulique",
+        "href": "/expertises/hydraulique/"
       },
       {
-        "libelle": "Valence",
-        "href": "/implantations/lyon/valence/"
+        "libelle": "Pneumatique",
+        "href": "/expertises/pneumatique/"
       },
       {
-        "libelle": "Nantes",
-        "href": "/implantations/nantes/"
+        "libelle": "Soudure",
+        "href": "/expertises/soudure/"
       },
       {
-        "libelle": "Brest",
-        "href": "/implantations/nantes/brest/"
+        "libelle": "Résidence",
+        "href": "/offres/residence/",
+        "contexte": "avec l'offre Résidence, prise de poste en 2 à 3 semaines."
       },
       {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
-      },
-      {
-        "libelle": "paris",
-        "href": "/implantations/paris/"
-      },
-      {
-        "libelle": "Rouen",
-        "href": "/implantations/paris/rouen/"
-      },
-      {
-        "libelle": "Strasbourg",
-        "href": "/implantations/strasbourg/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
-      },
-      {
-        "libelle": "Toulouse",
-        "href": "/implantations/toulouse/"
-      },
-      {
-        "libelle": "Bordeaux",
-        "href": "/implantations/toulouse/bordeaux/"
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/",
+        "contexte": "avec l'offre Zéro arrêt, visites planifiées et priorité en cas de panne."
       }
     ],
-    "reste": [
-      {
-        "type": "offre",
-        "lignes": [
-          {
-            "benefice": "Votre ligne repart, et le compte rendu dit pourquoi elle s'était arrêtée.",
-            "prestation": {
-              "texte": ", recherche de défaut, remise en route, du moteur à l'armoire électrique.",
-              "accroche": "Dépannage sur site"
-            }
-          },
-          {
-            "benefice": "Vous entretenez au rythme de votre production, pas d'un calendrier constructeur.",
-            "prestation": {
-              "texte": "sur vos heures de fonctionnement réelles, resserré avant les pics agroalimentaires.",
-              "accroche": "Préventif planifié"
-            }
-          },
-          {
-            "benefice": "Vos équipements anciens retrouvent un pilotage fiable, sans les remplacer.",
-            "prestation": {
-              "texte": "automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, supervision remise à niveau.",
-              "accroche": "Automatisme et rétrofit"
-            }
-          },
-          {
-            "benefice": "Un seul interlocuteur pour un défaut qui mobilise trois spécialités.",
-            "prestation": {
-              "texte": "[mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure](/expertises/soudure/).",
-              "accroche": "Couverture multi-domaine"
-            }
-          },
-          {
-            "benefice": "Une panne du dimanche soir ne devient pas un lundi matin sacrifié.",
-            "prestation": {
-              "texte": ", mobilisation de techniciens mobiles partout en France.",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
-          },
-          {
-            "benefice": "Le poste vacant cesse d'être une fragilité, remplacement assuré en cas d'absence.",
-            "prestation": {
-              "texte": "avec l'offre [Résidence](/offres/residence/), prise de poste en 2 à 3 semaines.",
-              "accroche": "Technicien intégré à votre équipe"
-            }
-          },
-          {
-            "benefice": "Le préventif entre au planning au lieu de sauter chaque mois.",
-            "prestation": {
-              "texte": "avec l'offre [Zéro arrêt](/offres/zero-arret/), visites planifiées et priorité en cas de panne.",
-              "accroche": "Contrat de maintenance"
-            }
-          }
-        ]
-      },
-      {
-        "type": "deroule",
-        "etapes": [
-          {
-            "texte": "vous décrivez la panne ou le besoin. Un chargé d'affaires rappelle dans l'heure aux horaires ouvrés et qualifie machines, accès au site et habilitations.",
-            "titre": "Premier contact"
-          },
-          {
-            "texte": "périmètre, matériel, conditions d'intervention, créneaux. L'exceptionnel se chiffre avant, jamais en bas de facture.",
-            "titre": "Devis écrit"
-          },
-          {
-            "texte": "accueil sécurité, plan de prévention, consignation. Les règles de coactivité sont posées avant le premier outil.",
-            "titre": "Arrivée sur site"
-          },
-          {
-            "texte": "Le technicien répare, sécurise le redémarrage, puis cherche la cause racine.",
-            "titre": "La réparation"
-          },
-          {
-            "texte": "opérations, temps passé, pièces, préconisations, versés dans votre GMAO. Vos données restent chez vous.",
-            "titre": "Compte rendu"
-          },
-          {
-            "texte": "sur contrat, revue périodique de la récurrence par équipement et du respect du plan préventif.",
-            "titre": "Suivi"
-          }
-        ]
-      },
-      {
-        "type": "cta",
-        "bouton": "Demander une intervention à Caen",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin d'un technicien sur votre site dans le Calvados ?"
-      },
-      {
-        "type": "preuves",
-        "preuves": [
-          {
-            "texte": ", en présence continue depuis 2025",
-            "titre": "Un technicien de maintenance dédié au parc machines d'un équipementier automobile",
-            "lienHref": "/preuves/autoliv/",
-            "lienLibelle": "Étude de cas AUTOLIV : maintien d'un site"
-          },
-          {
-            "texte": ", depuis septembre 2024",
-            "titre": "3 à 5 techniciens déployés pour accompagner la montée en cadence de plusieurs usines françaises",
-            "lienHref": "/preuves/valeo-usines/",
-            "lienLibelle": "Étude de cas VALEO : plusieurs usines"
-          },
-          {
-            "texte": ", liquides et conditionnement poudre",
-            "titre": "2 techniciens intégrés en 3x8 sur des lignes de nutrition infantile",
-            "lienHref": "/preuves/danone-lignes-de-production/",
-            "lienLibelle": "Étude de cas DANONE : lignes de production"
-          },
-          {
-            "texte": ", depuis octobre 2024",
-            "titre": "1 à 3 techniciens en renfort permanent sur plusieurs sites de production",
-            "lienHref": "/preuves/groupe-atlantic/",
-            "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes"
-          }
-        ]
-      },
-      {
-        "type": "ctaFinal",
-        "bouton": "Demander une intervention à Caen",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-        "question": "Besoin de sécuriser votre parc avant la prochaine montée en cadence ?"
-      }
-    ]
+    "appelFinal": {
+      "question": "Besoin de sécuriser votre parc avant la prochaine montée en cadence ?",
+      "bouton": "Demander une intervention à Caen",
+      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
+    }
   }
 }

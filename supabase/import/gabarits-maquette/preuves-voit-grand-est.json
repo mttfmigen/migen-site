@@ -1,0 +1,111 @@
+{
+  "url": "/preuves/voit-grand-est/",
+  "h1": "Étude de cas VOIT : site du Grand Est",
+  "contenu": {
+    "gabarit": "fiche",
+    "sections": [
+      {
+        "id": "le-client-et-le-site",
+        "titre": "Le client et le site",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "VOIT, spécialiste de la fabrication de pièces mécaniques de précision, a intégré un technicien Migen à temps plein sur son site en 2025. L'objectif posé : tenir la disponibilité de ses équipements critiques."
+          }
+        ]
+      },
+      {
+        "id": "la-situation",
+        "titre": "La situation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Un centre d'usinage à grande vitesse arrêté, c'est une pièce de précision qui ne sort pas.** Et un client qui attend."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Dans l'environnement industriel de VOIT, la disponibilité des équipements est un enjeu quotidien. La maintenance devait tenir trois exigences en même temps :"
+          },
+          {
+            "type": "liste",
+            "items": [
+              "**Réactive** : Pour limiter les arrêts non planifiés.",
+              "**Préventive** : Pour anticiper l'usure avant la casse.",
+              "**Adaptée** : À des machines complexes, souvent multimarques."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-que-nous-avons-mis-en-place",
+        "titre": "Ce que nous avons mis en place",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Préventif et réglages sur les centres d'usinage** : Le technicien tient le plan d'entretien et les réglages sur les centres à grande vitesse.",
+              "**Dépannage des presses** : Les presses hydrauliques comme mécaniques sont prises en charge sur place.",
+              "**Diagnostic sur commandes numériques** : Les erreurs CN sont identifiées et corrigées sans attendre un intervenant extérieur.",
+              "**Travail direct avec la production** : Le technicien collabore avec les équipes de production pour raccourcir les temps d'arrêt.",
+              "**Supervision Migen** : Les coordinateurs Migen suivent la prestation tout au long de la mission."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-dispositif",
+        "titre": "Le dispositif",
+        "blocs": [
+          {
+            "type": "tableau",
+            "entetes": [
+              "Élément",
+              "Détail"
+            ],
+            "lignes": [
+              [
+                "Client",
+                "VOIT, pièces mécaniques de précision"
+              ],
+              [
+                "Période",
+                "2025"
+              ],
+              [
+                "Besoin",
+                "Renforcer les équipes de maintenance, tenir la disponibilité des équipements"
+              ],
+              [
+                "Périmètre machines",
+                "Centres d'usinage grande vitesse, presses automatisées, machines CN"
+              ],
+              [
+                "Effectif Migen",
+                "1 technicien de maintenance expérimenté, à temps plein"
+              ],
+              [
+                "Suivi",
+                "Supervision par les coordinateurs Migen"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-resultat",
+        "titre": "Le résultat",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Disponibilité accrue** : Les lignes de production tournent davantage.",
+              "**Moins d'incidents récurrents** : Les pannes qui revenaient faute de traitement de fond ont reculé.",
+              "**Montée en compétence des équipes internes** : Elle vient de la collaboration quotidienne avec le technicien Migen.",
+              "**Plan de maintenance amélioré en continu** : Il reste aligné sur les standards VOIT."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

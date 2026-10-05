@@ -22,7 +22,8 @@ sections de la maquette, avec ses motifs à elle.
 | `/offres/` | hub offres | 1 | `components/site/offres/` |
 | `/offres/<offre>/` | offre | 18 | `components/site/offre/` |
 | `/expertises/` | expertises | 1 | `components/site/expertises/` |
-| `/expertises/<domaine>/` | domaine | 19 | `components/site/metier/` |
+| `/expertises/<domaine>/` | domaine (gabarit 09) | 9 | `components/site/domaine/` |
+| `/expertises/<domaine>/<page>/` | specialite (gabarit 05) | 10 | `components/site/domaine/` |
 | `/secteurs/<secteur>/` | secteur | 13 | `components/site/secteur/` |
 | `/implantations/` | implantations | 1 | `components/site/implantations/` |
 | `/implantations/<ville>/` | ville | 42 | `components/site/implantation/` |
@@ -76,6 +77,7 @@ bun components/site/secteur/verification-secteur.tsx
 bun components/site/implantation/verification-implantation.tsx
 bun scripts/verifie-offres.tsx
 bun scripts/verifie-metier-maquette.tsx
+bun components/site/domaine/verification-domaine.tsx
 bun scripts/verifie-ressource.tsx
 ```
 

@@ -1,0 +1,84 @@
+/* Survols et replis du GABARIT 07 MÉTIER, relevés sur les `style-hover` et les
+   requêtes de média de `maquette/gabarit-07-metier.html`.
+
+   Ils vivent dans un module CSS parce qu'un style en ligne ne porte pas d'état,
+   et hors de `app/globals.css` parce que plusieurs agents y écrivent en
+   parallèle. */
+
+/* `style-hover="filter:brightness(.93);color:#fff"` */
+.boutonAccent:hover,
+.boutonAccent:focus-visible {
+  filter: brightness(0.93);
+  color: #fff;
+}
+
+/* Le bouton de téléphone sur fond sombre : la maquette ne lui donne pas de
+   survol, on se contente d'éclaircir le voile blanc. */
+.boutonSombre:hover,
+.boutonSombre:focus-visible {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* Le bouton de téléphone du héros, sur fond clair. */
+.boutonVerre:hover,
+.boutonVerre:focus-visible {
+  background: var(--card);
+}
+
+/* `style-hover="color:var(--acc)"` sur chaque entrée du sommaire. */
+.lienSommaire:hover,
+.lienSommaire:focus-visible {
+  color: var(--acc);
+}
+
+/* `style-hover="transform:translateY(-3px)"` sur les cartes du maillage. */
+.carteLien:hover,
+.carteLien:focus-visible {
+  transform: translateY(-3px);
+}
+
+/* Liens internes que `TexteRiche` pose dans le texte du corpus. Sans cette
+   règle, `globals.css` les rend en var(--ink) sans soulignement, donc
+   indistinguables du texte autour. var(--acc-ink) vaut 8,9:1 sur blanc, là où
+   var(--acc) n'y tiendrait que 2,6:1 : la maquette souligne en var(--acc) à
+   60 %, on garde le soulignement et on remonte le contraste du texte. */
+.corpus a {
+  color: var(--acc-ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 124, 60, 0.6);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-thickness var(--tr);
+}
+.corpus a:hover,
+.corpus a:focus-visible {
+  color: var(--acc-ink);
+  text-decoration-thickness: 2px;
+}
+
+/* Dans le panneau sombre, le texte est déjà blanc : c'est le soulignement qui
+   porte le lien, et var(--acc-ink) y serait illisible. */
+.appelTexte a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 124, 60, 0.6);
+  text-underline-offset: 3px;
+}
+.appelTexte a:hover,
+.appelTexte a:focus-visible {
+  color: var(--acc);
+}
+
+/* La maquette décolle le sommaire et la colonne des questions sous 900px
+   (`.g3-sticky{position:static}`) et MASQUE le sommaire (`.g3-toc{display:none}`).
+
+   On ne le masque pas : un sommaire caché, c'est un plan de lecture perdu sur
+   l'écran où il sert le plus. Il passe au-dessus du texte, en carte pleine
+   largeur, par le repli de `.mg-r2` qu'applique déjà toute la charte. */
+@media (max-width: 900px) {
+  .collant {
+    position: static !important;
+  }
+}

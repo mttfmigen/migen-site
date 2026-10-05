@@ -1,0 +1,140 @@
+{
+  "url": "/preuves/vpk/",
+  "h1": "VPK : un technicien polyvalent sur un parc en forte cadence",
+  "contenu": {
+    "gabarit": "fiche",
+    "sections": [
+      {
+        "id": "le-client-et-le-site",
+        "titre": "Le client et le site",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "VPK est spécialiste du papier et de l'emballage. Son parc machines présente des contraintes techniques variées, dans un environnement à forte cadence."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "La maintenance y conditionne directement la productivité. Migen y a intégré un technicien de maintenance polyvalent sur 2025 et 2026."
+          }
+        ]
+      },
+      {
+        "id": "la-situation",
+        "titre": "La situation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Quand la charge monte, l'équipe fixe absorbe tout, puis sature.** L'anticipation des pannes disparaît la première, et le site se met à courir derrière ses machines."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Face à une hausse d'activité, VPK cherchait un intervenant capable de trois choses."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Réaliser la maintenance préventive et curative**, sans arbitrer en permanence entre les deux."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**S'adapter à différents équipements du site**, pas à un seul îlot."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Travailler en complémentarité** avec les équipes internes."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Un parc hétérogène ne se traite pas avec un spécialiste d'une seule machine. Il demande quelqu'un qui passe d'un équipement à l'autre sans temps mort."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Dans le papier et l'emballage, l'arrêt se voit immédiatement en aval. Une ligne à l'arrêt laisse les commandes en attente, et le rattrapage se fait en heures supplémentaires."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Ajouter un poste fixe aurait pris des mois et engagé le site au-delà du pic. Le renfort intégré répond à la charge présente, sans figer l'organisation."
+          }
+        ]
+      },
+      {
+        "id": "ce-que-nous-avons-mis-en-place",
+        "titre": "Ce que nous avons mis en place",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Vous intégrez le renfort sur les lignes existantes.** Le technicien prend le parc tel qu'il est, sans phase de réorganisation."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous traitez les urgences sans sacrifier le reste.** Diagnostic des pannes et réparations urgentes entrent dans le quotidien de l'intervenant."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous tenez l'entretien de premier niveau** sur le parc machines, en mécanique comme en électrotechnique."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous replanifiez selon la production.** Les interventions s'ajustent aux priorités réelles de la semaine."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous n'ajoutez pas de charge d'encadrement.** Les coordinateurs Migen assurent le suivi régulier de la mission."
+          }
+        ]
+      },
+      {
+        "id": "le-dispositif",
+        "titre": "Le dispositif",
+        "blocs": [
+          {
+            "type": "tableau",
+            "entetes": [
+              "Élément",
+              "Détail"
+            ],
+            "lignes": [
+              [
+                "Site",
+                "VPK, papier et emballage"
+              ],
+              [
+                "Périmètre",
+                "Parc machines complet, lignes de production"
+              ],
+              [
+                "Effectif Migen",
+                "1 technicien de maintenance polyvalent"
+              ],
+              [
+                "Domaines",
+                "Mécanique, électrotechnique"
+              ],
+              [
+                "Nature des interventions",
+                "Préventif, curatif, diagnostic, entretien de premier niveau"
+              ],
+              [
+                "Depuis quand",
+                "2025 et 2026"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-resultat",
+        "titre": "Le résultat",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Meilleure répartition de la charge** : entre équipes internes et renfort.",
+              "**Temps d'arrêt réduits** : sur le parc machines.",
+              "**Meilleure anticipation des pannes** : le préventif n'étant plus sacrifié aux urgences."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

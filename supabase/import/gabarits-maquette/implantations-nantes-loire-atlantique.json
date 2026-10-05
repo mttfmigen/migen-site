@@ -3,12 +3,12 @@
   "contenu": {
     "gabarit": "departement",
     "chapeau": "Le département fait cohabiter la mécanique lourde de l'estuaire, les cadences de l'agroalimentaire et le machinisme de l'arrière-pays. Notre hub de techniciens de Nantes est implanté ici, et ses techniciens passent d'une filière à l'autre sans changer de méthode.",
-    "actions": [
-      {
-        "libelle": "Faire chiffrer ma maintenance en Loire-Atlantique",
-        "href": "#formulaire"
-      }
-    ],
+    "action": {
+      "libelle": "Faire chiffrer ma maintenance en Loire-Atlantique",
+      "href": "#formulaire"
+    },
+    "telephone": "04 78 33 72 05",
+    "delai": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte, en option, couvre nuits, week-ends et jours fériés.",
     "reperes": [
       {
         "valeur": "4",
@@ -23,245 +23,225 @@
         "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
       }
     ],
-    "autresSurtitre": "Les autres départements",
-    "autres": [
+    "logos": [
+      "EATON",
+      "SOPREMA",
+      "ALSTEF Group",
+      "VALEO",
+      "EIFFAGE"
+    ],
+    "problemeTitre": "Une laiterie qui s'arrête un jeudi soir perd la matière première avant de perdre la cadence.",
+    "problemeTexte": "Le temps de trouver un technicien disponible, la cuve est déjà déclassée.",
+    "problemes": [
       {
-        "libelle": "Haute-Savoie",
-        "href": "/implantations/lyon/haute-savoie/"
+        "texte": "La soudure de l'estuaire, la traçabilité aéronautique et l'hygiène agroalimentaire ne se traitent pas avec le même réflexe.",
+        "accroche": "Vos filières n'ont pas les mêmes contraintes."
       },
       {
-        "libelle": "Rhône",
-        "href": "/implantations/lyon/rhone/"
+        "texte": "D'Ancenis à Châteaubriant, les machines s'usent plus vite que le plan d'entretien ne le prévoit.",
+        "accroche": "Les parcs de l'arrière-pays tournent en deux et trois postes."
       },
       {
-        "libelle": "Essonne",
-        "href": "/implantations/paris/essonne/"
+        "texte": "Lignes d'application, fours, bains : la corrosion attaque autant les équipements que les hommes.",
+        "accroche": "Les environnements de traitement de surface sont durs."
       },
       {
-        "libelle": "Alsace",
-        "href": "/implantations/strasbourg/alsace/"
+        "texte": "Un trieur immobilisé arrête des chaînes entières, automatismes compris.",
+        "accroche": "Le convoyage bloque tout le reste."
       },
       {
-        "libelle": "Charente",
-        "href": "/implantations/toulouse/charente/"
-      },
-      {
-        "libelle": "Gironde",
-        "href": "/implantations/toulouse/gironde/"
-      },
-      {
-        "libelle": "Haute-Garonne",
-        "href": "/implantations/toulouse/haute-garonne/"
+        "texte": "Le Grand Ouest recrute plus qu'il ne forme, et le poste vacant se paie en arrêts non planifiés.",
+        "accroche": "Le technicien disponible est rare."
       }
     ],
-    "appelTitre": "Besoin de sécuriser vos équipements avant la prochaine montée en charge ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
-      "libelle": "Faire chiffrer ma maintenance en Loire-Atlantique",
-      "href": "#formulaire"
-    },
-    "reste": [
+    "offre": [
       {
-        "type": "probleme",
-        "puces": [
-          {
-            "texte": "La soudure de l'estuaire, la traçabilité aéronautique et l'hygiène agroalimentaire ne se traitent pas avec le même réflexe.",
-            "accroche": "Vos filières n'ont pas les mêmes contraintes."
-          },
-          {
-            "texte": "D'Ancenis à Châteaubriant, les machines s'usent plus vite que le plan d'entretien ne le prévoit.",
-            "accroche": "Les parcs de l'arrière-pays tournent en deux et trois postes."
-          },
-          {
-            "texte": "Lignes d'application, fours, bains : la corrosion attaque autant les équipements que les hommes.",
-            "accroche": "Les environnements de traitement de surface sont durs."
-          },
-          {
-            "texte": "Un trieur immobilisé arrête des chaînes entières, automatismes compris.",
-            "accroche": "Le convoyage bloque tout le reste."
-          },
-          {
-            "texte": "Le Grand Ouest recrute plus qu'il ne forme, et le poste vacant se paie en arrêts non planifiés.",
-            "accroche": "Le technicien disponible est rare."
-          }
-        ],
-        "punchline": "Une laiterie qui s'arrête un jeudi soir perd la matière première avant de perdre la cadence. Le temps de trouver un technicien disponible, la cuve est déjà déclassée."
+        "benefice": "Les reprises se font sur site, sans démonter un ensemble pour l'expédier ailleurs.",
+        "prestation": {
+          "texte": "pour la sous-traitance de l'estuaire, jusqu'à la [soudure industrielle](/expertises/soudure/) certifiée.",
+          "accroche": "Soudure, tuyauterie et mécanique lourde"
+        }
       },
       {
-        "type": "offre",
-        "prose": [
-          {
-            "texte": "Pour un montage, une extension de site ou une ligne à déplacer, l'offre [chantier](/offres/chantier/) prend le relais. Un chef de projet unique, de l'étude à la mise en route."
-          }
-        ],
-        "lignes": [
-          {
-            "benefice": "Les reprises se font sur site, sans démonter un ensemble pour l'expédier ailleurs.",
-            "prestation": {
-              "texte": "pour la sous-traitance de l'estuaire, jusqu'à la [soudure industrielle](/expertises/soudure/) certifiée.",
-              "accroche": "Soudure, tuyauterie et mécanique lourde"
-            }
-          },
-          {
-            "benefice": "Vos dossiers de traçabilité tiennent la revue client, ligne par ligne.",
-            "prestation": {
-              "texte": "en aéronautique et composites.",
-              "accroche": "Contrôles fins et documentation irréprochable"
-            }
-          },
-          {
-            "benefice": "La cadence repart sans compromis sanitaire, et la matière première est préservée.",
-            "prestation": {
-              "texte": "lavages intensifs, arrêts courts, hygiène tenue.",
-              "accroche": "Préventif cadré en agroalimentaire"
-            }
-          },
-          {
-            "benefice": "Les parcs en deux et trois postes vieillissent sans décrocher.",
-            "prestation": {
-              "texte": "de l'arrière-pays : réducteurs, pompes, alignements, [maintenance hydraulique](/expertises/hydraulique/).",
-              "accroche": "Machinisme et mécanique de précision"
-            }
-          },
-          {
-            "benefice": "Le flux redémarre sans attendre le constructeur de l'installation.",
-            "prestation": {
-              "texte": "automates SIEMENS et Schneider, trieurs, lignes de conditionnement.",
-              "accroche": "Automatisme et convoyage"
-            }
-          },
-          {
-            "benefice": "Le poste est tenu, encadré par un référent Migen, remplacé en cas d'absence.",
-            "prestation": {
-              "texte": "via la [sous-traitance maintenance](/offres/residence/), prise de poste en 2 à 3 semaines.",
-              "accroche": "Technicien intégré à votre équipe"
-            }
-          },
-          {
-            "benefice": "Le correctif recule, et votre budget maintenance redevient un budget, pas une surprise.",
-            "prestation": {
-              "texte": "préventif planifié, priorité en cas de panne, astreinte en option, sur devis.",
-              "accroche": "Contrat [Zéro arrêt](/offres/zero-arret/)"
-            }
-          }
-        ]
+        "benefice": "Vos dossiers de traçabilité tiennent la revue client, ligne par ligne.",
+        "prestation": {
+          "texte": "en aéronautique et composites.",
+          "accroche": "Contrôles fins et documentation irréprochable"
+        }
       },
       {
-        "type": "deroule",
-        "etapes": [
-          {
-            "texte": "aux horaires ouvrés, un chargé d'affaires qualifie la situation. Équipement, symptôme, urgence réelle : les informations utiles sont posées au premier échange.",
-            "titre": "Le rappel dans l'heure"
-          },
-          {
-            "texte": "nous vous disons vite si nous avons le technicien, et lequel. Un avis franc vaut mieux qu'une venue à l'aveugle.",
-            "titre": "La qualification honnête"
-          },
-          {
-            "texte": "périmètre, moyens, temps d'arrêt prévu, conditions d'accès. Écrit avant le départ.",
-            "titre": "Le chiffrage"
-          },
-          {
-            "texte": "habilitations à jour, accueil sécurité respecté, diagnostic.",
-            "titre": "L'intervention outillée"
-          },
-          {
-            "texte": "contrôles en charge et remise en service avec votre production, pas à côté.",
-            "titre": "Les essais"
-          },
-          {
-            "texte": "chaque passage laisse une mention datée dans votre GMAO. Qui est venu, ce qui a été fait, ce qui reste à surveiller.",
-            "titre": "La traçabilité"
-          }
-        ]
+        "benefice": "La cadence repart sans compromis sanitaire, et la matière première est préservée.",
+        "prestation": {
+          "texte": "lavages intensifs, arrêts courts, hygiène tenue.",
+          "accroche": "Préventif cadré en agroalimentaire"
+        }
       },
       {
-        "type": "garanties",
-        "puces": [
-          {
-            "texte": "Vos interlocuteurs vivent et travaillent ici, au contact des usines de Loire-Atlantique.",
-            "accroche": "Des équipes réellement implantées dans le département"
-          },
-          {
-            "texte": "en cas d'absence ou de départ d'un technicien en résidence, un profil équivalent reprend la mission, briefé sur vos machines. Migen reste l'employeur, vous gardez le poste tenu.",
-            "accroche": "La continuité avant tout"
-          },
-          {
-            "texte": "ce qui est inclus, ce qui ne l'est pas, les indicateurs suivis. Le cadre protège les deux parties.",
-            "accroche": "Un périmètre écrit et des conditions de sortie claires"
-          }
-        ]
+        "benefice": "Les parcs en deux et trois postes vieillissent sans décrocher.",
+        "prestation": {
+          "texte": "de l'arrière-pays : réducteurs, pompes, alignements, [maintenance hydraulique](/expertises/hydraulique/).",
+          "accroche": "Machinisme et mécanique de précision"
+        }
       },
       {
-        "type": "cta",
-        "bouton": "Faire chiffrer ma maintenance en Loire-Atlantique",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin d'un technicien qui connaisse la route de votre site avant la première panne ?"
+        "benefice": "Le flux redémarre sans attendre le constructeur de l'installation.",
+        "prestation": {
+          "texte": "automates SIEMENS et Schneider, trieurs, lignes de conditionnement.",
+          "accroche": "Automatisme et convoyage"
+        }
       },
       {
-        "type": "preuves",
-        "preuves": [
-          {
-            "texte": "sur un site automobile, depuis janvier 2023, mission toujours en cours",
-            "titre": "6 techniciens multidisciplinaires pour l'installation et la mise en production d'un nouveau parc machines",
-            "lienHref": "/preuves/eaton-mise-en-production/",
-            "lienLibelle": "Étude de cas EATON : mise en production"
-          },
-          {
-            "texte": ", pour un industriel de l'étanchéité et de l'isolation, sur l'année 2025",
-            "titre": "Montages, déplacements de machines et renfort technique sur chantiers",
-            "lienHref": "/preuves/soprema/",
-            "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels"
-          },
-          {
-            "texte": "d'un spécialiste mondial de l'automatisation logistique, sur des projets d'aéroports et d'industrie",
-            "titre": "Des intervenants intégrés aux équipes de contrôle de chantier",
-            "lienHref": "/preuves/alstef-group/",
-            "lienLibelle": "Étude de cas ALSTEF Group : collaboration"
-          },
-          {
-            "texte": ", partenariat démarré en septembre 2024 et toujours en cours",
-            "titre": "Des techniciens déployés sur plusieurs usines françaises pour tenir une montée en cadence",
-            "lienHref": "/preuves/valeo-usines/",
-            "lienLibelle": "Étude de cas VALEO : plusieurs usines"
-          },
-          {
-            "texte": ", sur plus de six semaines",
-            "titre": "Trois techniciens en renfort sur la maintenance préventive d'une installation photovoltaïque de grande envergure",
-            "lienHref": "/preuves/eiffage/",
-            "lienLibelle": "Étude de cas EIFFAGE : partenariat"
-          }
-        ]
+        "benefice": "Le poste est tenu, encadré par un référent Migen, remplacé en cas d'absence.",
+        "prestation": {
+          "texte": "via la [sous-traitance maintenance](/offres/residence/), prise de poste en 2 à 3 semaines.",
+          "accroche": "Technicien intégré à votre équipe"
+        }
       },
       {
-        "type": "objections",
-        "questions": [
-          {
-            "reponse": "Oui : la métropole et les zones de Carquefou, Saint-Herblain et Sainte-Luce-sur-Loire. Puis l'estuaire et Saint-Nazaire, le Sud-Loire et le pays de Grand Lieu, Ancenis et la vallée, Châteaubriant et le nord. Au-delà, la Vendée, l'Anjou et la Bretagne voisine s'appuient sur la même équipe.",
-            "question": "Couvrez-vous tout le département ?"
-          },
-          {
-            "reponse": "Oui : soudure, tuyauterie, levage, mécanique lourde font partie du quotidien de la sous-traitance de l'estuaire. Les habilitations et les permis de travaux sont vérifiés avant chaque mission, et les plans de prévention appliqués sans exception.",
-            "question": "Travaillez-vous en environnement naval et sur des pièces lourdes ?"
-          },
-          {
-            "reponse": "Les deux, et le préventif reste notre conviction : anticiper coûte moins cher que subir. Plans d'entretien, mesures, seuils d'alerte, remplacements avant casse. Chaque geste se planifie sur vos créneaux creux, pas sur un calendrier standard.",
-            "question": "Faites-vous le préventif ou seulement le dépannage ?"
-          },
-          {
-            "reponse": "Oui, c'est l'offre Résidence. Vous validez le profil sur la description de poste. La prise de poste intervient en 2 à 3 semaines, plan de prévention et accueil sécurité préparés. L'encadrement et le remplacement restent à notre charge.",
-            "question": "Pouvez-vous détacher un technicien à temps complet sur notre site ?"
-          },
-          {
-            "reponse": "Machines de production, lignes complètes, convoyeurs, presses, pompes, compresseurs, robots, quelle que soit leur génération. Une même semaine peut mêler un moteur à rebobiner, une cellule robotisée à reprendre et une ligne de conditionnement à fiabiliser.",
-            "question": "Quels types d'équipements prenez-vous en charge ?"
-          },
-          {
-            "reponse": "Décrivez le parc concerné, l'historique de pannes et vos attentes, par formulaire ou au 04 78 33 72 05. Rappel dans l'heure aux horaires ouvrés, puis un état des lieux sur site permet un chiffrage poste par poste. Le diagnostic de départ est gratuit.",
-            "question": "Comment obtenir un devis pour un contrat dans le 44 ?"
-          }
-        ]
+        "benefice": "Le correctif recule, et votre budget maintenance redevient un budget, pas une surprise.",
+        "prestation": {
+          "texte": "préventif planifié, priorité en cas de panne, astreinte en option, sur devis.",
+          "accroche": "Contrat [Zéro arrêt](/offres/zero-arret/)"
+        }
       }
-    ]
+    ],
+    "offreNotes": [
+      "Pour un montage, une extension de site ou une ligne à déplacer, l'offre [chantier](/offres/chantier/) prend le relais. Un chef de projet unique, de l'étude à la mise en route."
+    ],
+    "etapes": [
+      {
+        "texte": "aux horaires ouvrés, un chargé d'affaires qualifie la situation. Équipement, symptôme, urgence réelle : les informations utiles sont posées au premier échange.",
+        "titre": "Le rappel dans l'heure"
+      },
+      {
+        "texte": "nous vous disons vite si nous avons le technicien, et lequel. Un avis franc vaut mieux qu'une venue à l'aveugle.",
+        "titre": "La qualification honnête"
+      },
+      {
+        "texte": "périmètre, moyens, temps d'arrêt prévu, conditions d'accès. Écrit avant le départ.",
+        "titre": "Le chiffrage"
+      },
+      {
+        "texte": "habilitations à jour, accueil sécurité respecté, diagnostic.",
+        "titre": "L'intervention outillée"
+      },
+      {
+        "texte": "contrôles en charge et remise en service avec votre production, pas à côté.",
+        "titre": "Les essais"
+      },
+      {
+        "texte": "chaque passage laisse une mention datée dans votre GMAO. Qui est venu, ce qui a été fait, ce qui reste à surveiller.",
+        "titre": "La traçabilité"
+      }
+    ],
+    "garanties": [
+      {
+        "texte": "Vos interlocuteurs vivent et travaillent ici, au contact des usines de Loire-Atlantique.",
+        "accroche": "Des équipes réellement implantées dans le département"
+      },
+      {
+        "texte": "en cas d'absence ou de départ d'un technicien en résidence, un profil équivalent reprend la mission, briefé sur vos machines. Migen reste l'employeur, vous gardez le poste tenu.",
+        "accroche": "La continuité avant tout"
+      },
+      {
+        "texte": "ce qui est inclus, ce qui ne l'est pas, les indicateurs suivis. Le cadre protège les deux parties.",
+        "accroche": "Un périmètre écrit et des conditions de sortie claires"
+      }
+    ],
+    "appel": {
+      "question": "Besoin d'un technicien qui connaisse la route de votre site avant la première panne ?",
+      "bouton": "Faire chiffrer ma maintenance en Loire-Atlantique",
+      "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+    },
+    "preuves": [
+      {
+        "texte": "sur un site automobile, depuis janvier 2023, mission toujours en cours",
+        "titre": "6 techniciens multidisciplinaires pour l'installation et la mise en production d'un nouveau parc machines",
+        "lienHref": "/preuves/eaton-mise-en-production/",
+        "lienLibelle": "Étude de cas EATON : mise en production"
+      },
+      {
+        "texte": ", pour un industriel de l'étanchéité et de l'isolation, sur l'année 2025",
+        "titre": "Montages, déplacements de machines et renfort technique sur chantiers",
+        "lienHref": "/preuves/soprema/",
+        "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels"
+      },
+      {
+        "texte": "d'un spécialiste mondial de l'automatisation logistique, sur des projets d'aéroports et d'industrie",
+        "titre": "Des intervenants intégrés aux équipes de contrôle de chantier",
+        "lienHref": "/preuves/alstef-group/",
+        "lienLibelle": "Étude de cas ALSTEF Group : collaboration"
+      },
+      {
+        "texte": ", partenariat démarré en septembre 2024 et toujours en cours",
+        "titre": "Des techniciens déployés sur plusieurs usines françaises pour tenir une montée en cadence",
+        "lienHref": "/preuves/valeo-usines/",
+        "lienLibelle": "Étude de cas VALEO : plusieurs usines"
+      },
+      {
+        "texte": ", sur plus de six semaines",
+        "titre": "Trois techniciens en renfort sur la maintenance préventive d'une installation photovoltaïque de grande envergure",
+        "lienHref": "/preuves/eiffage/",
+        "lienLibelle": "Étude de cas EIFFAGE : partenariat"
+      }
+    ],
+    "questions": [
+      {
+        "reponse": "Oui : la métropole et les zones de Carquefou, Saint-Herblain et Sainte-Luce-sur-Loire. Puis l'estuaire et Saint-Nazaire, le Sud-Loire et le pays de Grand Lieu, Ancenis et la vallée, Châteaubriant et le nord. Au-delà, la Vendée, l'Anjou et la Bretagne voisine s'appuient sur la même équipe.",
+        "question": "Couvrez-vous tout le département ?"
+      },
+      {
+        "reponse": "Oui : soudure, tuyauterie, levage, mécanique lourde font partie du quotidien de la sous-traitance de l'estuaire. Les habilitations et les permis de travaux sont vérifiés avant chaque mission, et les plans de prévention appliqués sans exception.",
+        "question": "Travaillez-vous en environnement naval et sur des pièces lourdes ?"
+      },
+      {
+        "reponse": "Les deux, et le préventif reste notre conviction : anticiper coûte moins cher que subir. Plans d'entretien, mesures, seuils d'alerte, remplacements avant casse. Chaque geste se planifie sur vos créneaux creux, pas sur un calendrier standard.",
+        "question": "Faites-vous le préventif ou seulement le dépannage ?"
+      },
+      {
+        "reponse": "Oui, c'est l'offre Résidence. Vous validez le profil sur la description de poste. La prise de poste intervient en 2 à 3 semaines, plan de prévention et accueil sécurité préparés. L'encadrement et le remplacement restent à notre charge.",
+        "question": "Pouvez-vous détacher un technicien à temps complet sur notre site ?"
+      },
+      {
+        "reponse": "Machines de production, lignes complètes, convoyeurs, presses, pompes, compresseurs, robots, quelle que soit leur génération. Une même semaine peut mêler un moteur à rebobiner, une cellule robotisée à reprendre et une ligne de conditionnement à fiabiliser.",
+        "question": "Quels types d'équipements prenez-vous en charge ?"
+      },
+      {
+        "reponse": "Décrivez le parc concerné, l'historique de pannes et vos attentes, par formulaire ou au 04 78 33 72 05. Rappel dans l'heure aux horaires ouvrés, puis un état des lieux sur site permet un chiffrage poste par poste. Le diagnostic de départ est gratuit.",
+        "question": "Comment obtenir un devis pour un contrat dans le 44 ?"
+      }
+    ],
+    "liens": [
+      {
+        "libelle": "Chantier",
+        "href": "/offres/chantier/",
+        "contexte": "Pour un montage, une extension de site ou une ligne à déplacer, l'offre chantier prend le relais."
+      },
+      {
+        "libelle": "Soudure industrielle",
+        "href": "/expertises/soudure/",
+        "contexte": "pour la sous-traitance de l'estuaire, jusqu'à la soudure industrielle certifiée."
+      },
+      {
+        "libelle": "Maintenance hydraulique",
+        "href": "/expertises/hydraulique/",
+        "contexte": "de l'arrière-pays : réducteurs, pompes, alignements, maintenance hydraulique."
+      },
+      {
+        "libelle": "Sous-traitance maintenance",
+        "href": "/offres/residence/",
+        "contexte": "via la sous-traitance maintenance, prise de poste en 2 à 3 semaines."
+      },
+      {
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/",
+        "contexte": "Contrat Zéro arrêt"
+      }
+    ],
+    "appelFinal": {
+      "question": "Besoin de sécuriser vos équipements avant la prochaine montée en charge ?",
+      "bouton": "Faire chiffrer ma maintenance en Loire-Atlantique",
+      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
+    }
   }
 }

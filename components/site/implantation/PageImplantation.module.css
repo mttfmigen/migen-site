@@ -1,0 +1,87 @@
+/* Survols et bascules de largeur du gabarit IMPLANTATION.
+
+   Rien d'autre : un style en ligne ne peut porter ni état ni requête de média,
+   et c'est la seule raison d'être de ce fichier. Les valeurs sont celles de
+   « Migen - Gabarit 04 Ville.dc.html », identique à
+   « Migen - Gabarit 06 Departement.dc.html » : ses attributs `style-hover`
+   (l. 62, 200, 239) et son bloc `<style>` (l. 25 à 29).
+
+   Ces règles vivent ici et non dans `app/globals.css` : plusieurs agents
+   écrivent en parallèle, un fichier partagé produirait des conflits.
+
+   Le focus est traité avec le survol : un visiteur au clavier doit voir ce que
+   voit un visiteur à la souris (WCAG 2.4.7). La maquette ne le prévoit pas, le
+   site l'exige. */
+
+/* l. 62, style-hover="filter:brightness(.93)" */
+.boutonOrange:hover,
+.boutonOrange:focus-visible {
+  filter: brightness(0.93);
+  color: #fff;
+}
+
+/* l. 63 et 189, style-hover="background:#fff" */
+.boutonClair:hover,
+.boutonClair:focus-visible {
+  background: var(--card);
+}
+
+/* l. 260, style-hover="background:rgba(255,255,255,.18)" */
+.boutonSombre:hover,
+.boutonSombre:focus-visible {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* l. 200, style-hover="transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(0,0,0,.4)" */
+.cartePreuve:hover,
+.cartePreuve:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.4);
+}
+
+/* l. 239, style-hover="transform:translateY(-3px)" */
+.carteLien:hover,
+.carteLien:focus-visible {
+  transform: translateY(-3px);
+}
+
+/* Les mêmes largeurs de bascule que le bloc <style> de la maquette. */
+
+/* l. 27 : `.g3-2{grid-template-columns:minmax(0,1fr);gap:32px}` et
+   `.g3-row{grid-template-columns:minmax(0,1fr);gap:10px}`, plus
+   `.g3-head{display:none}` et `.g3-sticky{position:static}`. */
+@media (max-width: 900px) {
+  .deuxColonnes {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 32px !important;
+  }
+  .rangeeTableau {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 10px !important;
+  }
+  .enteteTableau {
+    display: none !important;
+  }
+  .colonneFixe {
+    position: static !important;
+  }
+}
+
+/* l. 28 : `.g3-3{grid-template-columns:minmax(0,1fr)}` et
+   `.g3-pad{padding:40px 24px}`. */
+@media (max-width: 620px) {
+  .troisColonnes {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .panneauLarge {
+    padding: 40px 24px !important;
+  }
+}
+
+/* l. 29 : la bande de logos ne défile pas pour qui demande moins d'animation. */
+@media (prefers-reduced-motion: reduce) {
+  .piste {
+    animation: none !important;
+  }
+}

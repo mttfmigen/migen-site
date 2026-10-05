@@ -1,0 +1,121 @@
+{
+  "url": "/preuves/autoliv/",
+  "h1": "Étude de cas AUTOLIV : maintien d'un site",
+  "contenu": {
+    "gabarit": "fiche",
+    "sections": [
+      {
+        "id": "le-client-et-le-site",
+        "titre": "Le client et le site",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "En 2025, AUTOLIV a sollicité Migen pour renforcer son équipe technique. Un technicien de maintenance polyvalent a été affecté au site, pour contribuer au maintien du parc machines."
+          }
+        ]
+      },
+      {
+        "id": "la-situation",
+        "titre": "La situation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Un poste de maintenance vacant ne se voit pas tout de suite.** Il se voit le jour où le parc machines commence à décrocher."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Recruter un technicien prend des mois. Pendant ce temps, l'équipe en place absorbe la charge, le préventif saute et le correctif s'accumule. Le besoin posé par le site :"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Maintenir le parc machines** sans créer un poste dans l'urgence."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Soutenir l'équipe existante** sans désorganiser son fonctionnement."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Disposer d'un profil opérationnel tout de suite**, pas d'un renfort à former."
+          }
+        ]
+      },
+      {
+        "id": "ce-que-nous-avons-mis-en-place",
+        "titre": "Ce que nous avons mis en place",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Un technicien dédié, pas un dépanneur de passage** : Un profil polyvalent est affecté au site et intégré aux équipes internes d'AUTOLIV.",
+              "**Une présence continue** : Le technicien travaille sur les horaires et les priorités du site, aux côtés des équipes en place.",
+              "**Un renfort sans réorganisation** : L'équipe maintenance garde son fonctionnement. Le renfort s'ajoute, il ne remplace rien.",
+              "**Un pilotage assuré par Migen** : Le suivi de la prestation reste de notre côté. Le client garde son temps pour la production."
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Ce que couvre le technicien sur site : la participation aux actions de maintenance, la continuité de fonctionnement des équipements et l'appui technique aux équipes, sur le terrain."
+          }
+        ]
+      },
+      {
+        "id": "le-dispositif",
+        "titre": "Le dispositif",
+        "blocs": [
+          {
+            "type": "tableau",
+            "entetes": [
+              "Élément",
+              "Détail"
+            ],
+            "lignes": [
+              [
+                "Client",
+                "AUTOLIV"
+              ],
+              [
+                "Secteur",
+                "Industrie automobile"
+              ],
+              [
+                "Année",
+                "2025"
+              ],
+              [
+                "Effectif Migen",
+                "1 technicien de maintenance polyvalent"
+              ],
+              [
+                "Périmètre",
+                "Maintien opérationnel du parc machines"
+              ],
+              [
+                "Organisation",
+                "Technicien intégré aux équipes internes, présence continue"
+              ],
+              [
+                "Pilotage",
+                "Suivi de mission assuré par Migen"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-resultat",
+        "titre": "Le résultat",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Une approche directe, sur le terrain** : Pas de surcouche de gestion entre le besoin et le technicien.",
+              "**Le bon profil au bon moment** : Les équipements industriels restent opérationnels.",
+              "**Une continuité de fonctionnement** : Le parc machines est tenu, sans création de poste."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

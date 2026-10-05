@@ -3,12 +3,12 @@
   "contenu": {
     "gabarit": "departement",
     "chapeau": "Un département qui empile trois industries sans rapport entre elles. Les plateformes e-commerce du nord, la mécanique de précision de la vallée de la Seine, les pilotes et les laboratoires du plateau de Saclay. Nos techniciens couvrent les trois et se déplacent sur vos sites : nous n'avons ni agence ni hub de techniciens en Essonne.",
-    "actions": [
-      {
-        "libelle": "Faire chiffrer ma maintenance en Essonne",
-        "href": "#formulaire"
-      }
-    ],
+    "action": {
+      "libelle": "Faire chiffrer ma maintenance en Essonne",
+      "href": "#formulaire"
+    },
+    "telephone": "04 78 33 72 05",
+    "delai": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte en option pour les nuits, les week-ends et les jours fériés.",
     "reperes": [
       {
         "valeur": "+ 100",
@@ -23,245 +23,228 @@
         "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, et des techniciens qui se déplacent partout en France"
       }
     ],
-    "autresSurtitre": "Les autres départements",
-    "autres": [
+    "logos": [
+      "FDJ",
+      "SUEZ",
+      "ORTHUS x ECOCEM",
+      "AMAZON",
+      "GLS"
+    ],
+    "problemeTitre": "Un trieur qui lâche à Chilly-Mazarin en fin d'après-midi, ce sont des commandes qui basculent au lendemain.",
+    "problemeTexte": "Pendant ce temps, votre responsable maintenance cherche un prestataire disponible.",
+    "problemes": [
       {
-        "libelle": "Haute-Savoie",
-        "href": "/implantations/lyon/haute-savoie/"
+        "texte": "Convoyeurs au nord, traitement thermique à Corbeil, banc d'essai aux Ulis : un prestataire mono-métier vous laisse nu sur le reste.",
+        "accroche": "Vos équipements n'ont rien en commun d'un site à l'autre."
       },
       {
-        "libelle": "Rhône",
-        "href": "/implantations/lyon/rhone/"
+        "texte": "Un poste vacant dans l'équipe, et le correctif absorbe tout le budget.",
+        "accroche": "Le préventif glisse depuis des mois."
       },
       {
-        "libelle": "Loire-Atlantique",
-        "href": "/implantations/nantes/loire-atlantique/"
+        "texte": "Les annonces de technicien de maintenance restent ouvertes, les contre-offres s'enchaînent, la production attend.",
+        "accroche": "Le recrutement francilien ne suit pas."
       },
       {
-        "libelle": "Alsace",
-        "href": "/implantations/strasbourg/alsace/"
+        "texte": "D'Étampes à la Ferté-Alais, les parcs vieillissent sans équipe dédiée.",
+        "accroche": "Les sites du sud du département sont loin de tout."
       },
       {
-        "libelle": "Charente",
-        "href": "/implantations/toulouse/charente/"
-      },
-      {
-        "libelle": "Gironde",
-        "href": "/implantations/toulouse/gironde/"
-      },
-      {
-        "libelle": "Haute-Garonne",
-        "href": "/implantations/toulouse/haute-garonne/"
+        "texte": "Sans astreinte écrite, l'urgence se règle par une chaîne d'appels sans garantie.",
+        "accroche": "La panne du soir n'a personne en face."
       }
     ],
-    "appelTitre": "Besoin d'un plan préventif qui tienne malgré les effectifs du moment ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
-      "libelle": "Faire chiffrer ma maintenance en Essonne",
-      "href": "#formulaire"
-    },
-    "reste": [
+    "offre": [
       {
-        "type": "probleme",
-        "puces": [
-          {
-            "texte": "Convoyeurs au nord, traitement thermique à Corbeil, banc d'essai aux Ulis : un prestataire mono-métier vous laisse nu sur le reste.",
-            "accroche": "Vos équipements n'ont rien en commun d'un site à l'autre."
-          },
-          {
-            "texte": "Un poste vacant dans l'équipe, et le correctif absorbe tout le budget.",
-            "accroche": "Le préventif glisse depuis des mois."
-          },
-          {
-            "texte": "Les annonces de technicien de maintenance restent ouvertes, les contre-offres s'enchaînent, la production attend.",
-            "accroche": "Le recrutement francilien ne suit pas."
-          },
-          {
-            "texte": "D'Étampes à la Ferté-Alais, les parcs vieillissent sans équipe dédiée.",
-            "accroche": "Les sites du sud du département sont loin de tout."
-          },
-          {
-            "texte": "Sans astreinte écrite, l'urgence se règle par une chaîne d'appels sans garantie.",
-            "accroche": "La panne du soir n'a personne en face."
-          }
-        ],
-        "punchline": "Un trieur qui lâche à Chilly-Mazarin en fin d'après-midi, ce sont des commandes qui basculent au lendemain. Pendant ce temps, votre responsable maintenance cherche un prestataire disponible."
+        "benefice": "La vague de préparation repart, et la vente en ligne ne se décale pas d'une journée.",
+        "prestation": {
+          "texte": "convoyeurs, trieurs, quais, systèmes automatisés de manutention. Voir la [maintenance des sites logistiques](/secteurs/logistique/).",
+          "accroche": "Équipements logistiques du nord du département"
+        }
       },
       {
-        "type": "offre",
-        "prose": [
-          {
-            "texte": "Un déménagement de ligne ou un transfert entre deux sites du département se prépare à J-90. Notre offre [déménagement de machines](/offres/chantier/demenagement-machines/) couvre le démontage, le levage, le remontage et la requalification."
-          }
-        ],
-        "lignes": [
-          {
-            "benefice": "La vague de préparation repart, et la vente en ligne ne se décale pas d'une journée.",
-            "prestation": {
-              "texte": "convoyeurs, trieurs, quais, systèmes automatisés de manutention. Voir la [maintenance des sites logistiques](/secteurs/logistique/).",
-              "accroche": "Équipements logistiques du nord du département"
-            }
-          },
-          {
-            "benefice": "La cote est tenue, et vos rebuts arrêtent de grimper après chaque intervention.",
-            "prestation": {
-              "texte": "de la vallée de la Seine : roulements, réducteurs, alignements, équilibrage.",
-              "accroche": "Mécanique de précision et traitement thermique"
-            }
-          },
-          {
-            "benefice": "Vos essais restent recevables, parce que chaque geste est écrit.",
-            "prestation": {
-              "texte": "du plateau de Saclay et des Ulis : documentation stricte, traçabilité complète.",
-              "accroche": "Pilotes, bancs et équipements de laboratoire"
-            }
-          },
-          {
-            "benefice": "Un seul interlocuteur du moteur au programme, sans renvoi de responsabilité.",
-            "prestation": {
-              "texte": "armoires, variateurs, automates SIEMENS et Schneider, en [maintenance électrique](/expertises/electrique/) comme en [automatisme](/expertises/automatisme/).",
-              "accroche": "Électricité industrielle et automatisme"
-            }
-          },
-          {
-            "benefice": "Le correctif recule, le budget redevient prévisible poste par poste.",
-            "prestation": {
-              "texte": "de chaque équipement, pas sur un calendrier hérité.",
-              "accroche": "Préventif reconstruit sur l'usage réel"
-            }
-          },
-          {
-            "benefice": "Le poste vacant est tenu pendant que votre recrutement continue, remplacement assuré en cas d'absence.",
-            "prestation": {
-              "texte": "en [sous-traitance maintenance](/offres/residence/), prise de poste en 2 à 3 semaines.",
-              "accroche": "Technicien intégré sur site"
-            }
-          },
-          {
-            "benefice": "La panne de 22 heures a un numéro et un technicien en face, pas un répondeur.",
-            "prestation": {
-              "texte": ", cadre d'appel écrit au contrat.",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
-          }
-        ]
+        "benefice": "La cote est tenue, et vos rebuts arrêtent de grimper après chaque intervention.",
+        "prestation": {
+          "texte": "de la vallée de la Seine : roulements, réducteurs, alignements, équilibrage.",
+          "accroche": "Mécanique de précision et traitement thermique"
+        }
       },
       {
-        "type": "deroule",
-        "etapes": [
-          {
-            "texte": "par téléphone au 04 78 33 72 05 ou par le formulaire. Rappel dans l'heure aux horaires ouvrés, c'est le seul délai que nous signons.",
-            "titre": "Votre demande"
-          },
-          {
-            "texte": "équipement, symptômes, niveau d'urgence, habilitations requises, pièces probables. Cette étape évite le mauvais profil et le second déplacement.",
-            "titre": "La qualification à distance"
-          },
-          {
-            "texte": "périmètre, moyens, conditions d'accès, temps d'arrêt prévu. Tout s'écrit avant le départ du technicien.",
-            "titre": "Le chiffrage"
-          },
-          {
-            "texte": "consignation, diagnostic, réparation, essais, remise en service avec votre équipe.",
-            "titre": "L'intervention"
-          },
-          {
-            "texte": "causes, actions, mesures, préconisations, versés dans votre GMAO. Vos données restent chez vous.",
-            "titre": "Le compte rendu"
-          },
-          {
-            "texte": "réparation durable, remplacement, ou entrée dans un plan préventif. Vous choisissez sur des faits écrits.",
-            "titre": "La décision suivante"
-          }
-        ]
+        "benefice": "Vos essais restent recevables, parce que chaque geste est écrit.",
+        "prestation": {
+          "texte": "du plateau de Saclay et des Ulis : documentation stricte, traçabilité complète.",
+          "accroche": "Pilotes, bancs et équipements de laboratoire"
+        }
       },
       {
-        "type": "garanties",
-        "puces": [
-          {
-            "texte": "il connaît vos accès, vos consignes d'accueil sécurité et vos contraintes de coactivité. Vous n'expliquez pas votre usine à chaque appel.",
-            "accroche": "Un seul chargé d'affaires pour tous vos sites du 91"
-          },
-          {
-            "texte": "électriques, travail en hauteur, environnements spécifiques. Le plan de prévention est signé avant le premier jour, jamais pendant.",
-            "accroche": "Des habilitations vérifiées avant l'arrivée"
-          },
-          {
-            "texte": "congés, absence, départ, un profil équivalent reprend la mission, briefé sur vos machines. La continuité est écrite au contrat.",
-            "accroche": "Une couverture qui ne dépend pas d'une seule personne"
-          }
-        ]
+        "benefice": "Un seul interlocuteur du moteur au programme, sans renvoi de responsabilité.",
+        "prestation": {
+          "texte": "armoires, variateurs, automates SIEMENS et Schneider, en [maintenance électrique](/expertises/electrique/) comme en [automatisme](/expertises/automatisme/).",
+          "accroche": "Électricité industrielle et automatisme"
+        }
       },
       {
-        "type": "cta",
-        "bouton": "Faire chiffrer ma maintenance en Essonne",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin de couvrir un poste maintenance vacant pendant que votre recrutement avance ?"
+        "benefice": "Le correctif recule, le budget redevient prévisible poste par poste.",
+        "prestation": {
+          "texte": "de chaque équipement, pas sur un calendrier hérité.",
+          "accroche": "Préventif reconstruit sur l'usage réel"
+        }
       },
       {
-        "type": "preuves",
-        "preuves": [
-          {
-            "texte": ", en renfort d'une équipe de maintenance sous forte activité, sur les lignes de production",
-            "titre": "Un technicien affecté en continu sur un site proche de Paris",
-            "lienHref": "/preuves/fdj/",
-            "lienLibelle": "Étude de cas FDJ : site proche de Paris"
-          },
-          {
-            "texte": "pour la remise en état d'un site de traitement des eaux industrielles",
-            "titre": "Un électromécanicien habilité risque chimique niveau 1, mobilisé 6 mois",
-            "lienHref": "/preuves/suez-remise-en-etat/",
-            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
-          },
-          {
-            "texte": "pilotage de chantier, coordination des métiers, jalons tenus",
-            "titre": "La construction complète d'un site industriel de recherche et développement près de Paris",
-            "lienHref": "/preuves/orthus-ecocem/",
-            "lienLibelle": "Étude de cas ORTHUS x ECOCEM : nouveau site"
-          },
-          {
-            "texte": ", par créneaux de 8 heures, une semaine sur deux, depuis septembre 2022",
-            "titre": "Préventif tenu sur un centre logistique exploité en continu",
-            "lienHref": "/preuves/amazon-centre-logistique/",
-            "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique"
-          },
-          {
-            "texte": "présence permanente sur site",
-            "titre": "Deux techniciens dédiés au curatif des convoyeurs, trieurs et systèmes de packaging",
-            "lienHref": "/preuves/gls-maintenance-curative/",
-            "lienLibelle": "Étude de cas GLS : maintenance curative"
-          }
-        ]
+        "benefice": "Le poste vacant est tenu pendant que votre recrutement continue, remplacement assuré en cas d'absence.",
+        "prestation": {
+          "texte": "en [sous-traitance maintenance](/offres/residence/), prise de poste en 2 à 3 semaines.",
+          "accroche": "Technicien intégré sur site"
+        }
       },
       {
-        "type": "objections",
-        "questions": [
-          {
-            "reponse": "Oui : de Massy et Chilly-Mazarin au nord, jusqu'à Étampes et la Ferté-Alais au sud, en passant par Corbeil-Essonnes, Évry-Courcouronnes, Les Ulis, Fleury-Mérogis et Viry-Châtillon. Disons-le franchement : nous n'avons ni agence ni hub de techniciens en Essonne. Un chargé d'affaires qualifie la demande, la mission est préparée avant l'arrivée, et l'exécution se fait sur votre site.",
-            "question": "Intervenez-vous dans tout le département ?"
-          },
-          {
-            "reponse": "Non. Le confort thermique, le froid de bâtiment et la sécurité incendie relèvent d'autres corps de métier. Notre terrain, c'est l'outil de production : machines, lignes, utilités industrielles. Cette spécialisation est ce qui rend nos techniciens réellement utiles sur vos équipements.",
-            "question": "Faites-vous le CVC, le SSI ou la maintenance de bâtiments ?"
-          },
-          {
-            "reponse": "Par un dépannage isolé ou un périmètre d'essai limité à quelques équipements. Vous jugez sur le compte rendu, la tenue des dates et le comportement sur site. La bascule complète se décide après, sur des faits.",
-            "question": "Nous avons déjà un prestataire, comment tester Migen sans tout casser ?"
-          },
-          {
-            "reponse": "Oui. Nos comptes rendus s'y saisissent directement : historique par machine, temps passé, pièces, préconisations. Rien à ressaisir ailleurs.",
-            "question": "Pouvez-vous travailler dans notre GMAO ?"
-          },
-          {
-            "reponse": "Aucun délai chiffré n'est promis : chaque déplacement dépend du défaut, des habilitations et des pièces. Deux engagements tenus à la place. Le rappel dans l'heure aux horaires ouvrés, et l'astreinte 24/24 et 7/7 en option pour les sites qui ne peuvent pas attendre le matin.",
-            "question": "Quels délais d'intervention constatez-vous en Essonne ?"
-          },
-          {
-            "reponse": "Notre [contrat Zéro arrêt](/offres/zero-arret/) est chiffré sur devis, engagement type 6 mois renouvelable, avec trois niveaux de couverture. Le périmètre s'écrit machine par machine après un état des lieux, et le diagnostic de départ est gratuit.",
-            "question": "Combien coûte un contrat de maintenance préventive ?"
-          }
-        ]
+        "benefice": "La panne de 22 heures a un numéro et un technicien en face, pas un répondeur.",
+        "prestation": {
+          "texte": ", cadre d'appel écrit au contrat.",
+          "accroche": "Astreinte en option"
+        }
       }
-    ]
+    ],
+    "offreNotes": [
+      "Un déménagement de ligne ou un transfert entre deux sites du département se prépare à J-90. Notre offre [déménagement de machines](/offres/chantier/demenagement-machines/) couvre le démontage, le levage, le remontage et la requalification."
+    ],
+    "etapes": [
+      {
+        "texte": "par téléphone au 04 78 33 72 05 ou par le formulaire. Rappel dans l'heure aux horaires ouvrés, c'est le seul délai que nous signons.",
+        "titre": "Votre demande"
+      },
+      {
+        "texte": "équipement, symptômes, niveau d'urgence, habilitations requises, pièces probables. Cette étape évite le mauvais profil et le second déplacement.",
+        "titre": "La qualification à distance"
+      },
+      {
+        "texte": "périmètre, moyens, conditions d'accès, temps d'arrêt prévu. Tout s'écrit avant le départ du technicien.",
+        "titre": "Le chiffrage"
+      },
+      {
+        "texte": "consignation, diagnostic, réparation, essais, remise en service avec votre équipe.",
+        "titre": "L'intervention"
+      },
+      {
+        "texte": "causes, actions, mesures, préconisations, versés dans votre GMAO. Vos données restent chez vous.",
+        "titre": "Le compte rendu"
+      },
+      {
+        "texte": "réparation durable, remplacement, ou entrée dans un plan préventif. Vous choisissez sur des faits écrits.",
+        "titre": "La décision suivante"
+      }
+    ],
+    "garanties": [
+      {
+        "texte": "il connaît vos accès, vos consignes d'accueil sécurité et vos contraintes de coactivité. Vous n'expliquez pas votre usine à chaque appel.",
+        "accroche": "Un seul chargé d'affaires pour tous vos sites du 91"
+      },
+      {
+        "texte": "électriques, travail en hauteur, environnements spécifiques. Le plan de prévention est signé avant le premier jour, jamais pendant.",
+        "accroche": "Des habilitations vérifiées avant l'arrivée"
+      },
+      {
+        "texte": "congés, absence, départ, un profil équivalent reprend la mission, briefé sur vos machines. La continuité est écrite au contrat.",
+        "accroche": "Une couverture qui ne dépend pas d'une seule personne"
+      }
+    ],
+    "appel": {
+      "question": "Besoin de couvrir un poste maintenance vacant pendant que votre recrutement avance ?",
+      "bouton": "Faire chiffrer ma maintenance en Essonne",
+      "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+    },
+    "preuves": [
+      {
+        "texte": ", en renfort d'une équipe de maintenance sous forte activité, sur les lignes de production",
+        "titre": "Un technicien affecté en continu sur un site proche de Paris",
+        "lienHref": "/preuves/fdj/",
+        "lienLibelle": "Étude de cas FDJ : site proche de Paris"
+      },
+      {
+        "texte": "pour la remise en état d'un site de traitement des eaux industrielles",
+        "titre": "Un électromécanicien habilité risque chimique niveau 1, mobilisé 6 mois",
+        "lienHref": "/preuves/suez-remise-en-etat/",
+        "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
+      },
+      {
+        "texte": "pilotage de chantier, coordination des métiers, jalons tenus",
+        "titre": "La construction complète d'un site industriel de recherche et développement près de Paris",
+        "lienHref": "/preuves/orthus-ecocem/",
+        "lienLibelle": "Étude de cas ORTHUS x ECOCEM : nouveau site"
+      },
+      {
+        "texte": ", par créneaux de 8 heures, une semaine sur deux, depuis septembre 2022",
+        "titre": "Préventif tenu sur un centre logistique exploité en continu",
+        "lienHref": "/preuves/amazon-centre-logistique/",
+        "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique"
+      },
+      {
+        "texte": "présence permanente sur site",
+        "titre": "Deux techniciens dédiés au curatif des convoyeurs, trieurs et systèmes de packaging",
+        "lienHref": "/preuves/gls-maintenance-curative/",
+        "lienLibelle": "Étude de cas GLS : maintenance curative"
+      }
+    ],
+    "questions": [
+      {
+        "reponse": "Oui : de Massy et Chilly-Mazarin au nord, jusqu'à Étampes et la Ferté-Alais au sud, en passant par Corbeil-Essonnes, Évry-Courcouronnes, Les Ulis, Fleury-Mérogis et Viry-Châtillon. Disons-le franchement : nous n'avons ni agence ni hub de techniciens en Essonne. Un chargé d'affaires qualifie la demande, la mission est préparée avant l'arrivée, et l'exécution se fait sur votre site.",
+        "question": "Intervenez-vous dans tout le département ?"
+      },
+      {
+        "reponse": "Non. Le confort thermique, le froid de bâtiment et la sécurité incendie relèvent d'autres corps de métier. Notre terrain, c'est l'outil de production : machines, lignes, utilités industrielles. Cette spécialisation est ce qui rend nos techniciens réellement utiles sur vos équipements.",
+        "question": "Faites-vous le CVC, le SSI ou la maintenance de bâtiments ?"
+      },
+      {
+        "reponse": "Par un dépannage isolé ou un périmètre d'essai limité à quelques équipements. Vous jugez sur le compte rendu, la tenue des dates et le comportement sur site. La bascule complète se décide après, sur des faits.",
+        "question": "Nous avons déjà un prestataire, comment tester Migen sans tout casser ?"
+      },
+      {
+        "reponse": "Oui. Nos comptes rendus s'y saisissent directement : historique par machine, temps passé, pièces, préconisations. Rien à ressaisir ailleurs.",
+        "question": "Pouvez-vous travailler dans notre GMAO ?"
+      },
+      {
+        "reponse": "Aucun délai chiffré n'est promis : chaque déplacement dépend du défaut, des habilitations et des pièces. Deux engagements tenus à la place. Le rappel dans l'heure aux horaires ouvrés, et l'astreinte en option pour les sites qui ne peuvent pas attendre le matin.",
+        "question": "Quels délais d'intervention constatez-vous en Essonne ?"
+      },
+      {
+        "reponse": "Notre [contrat Zéro arrêt](/offres/zero-arret/) est chiffré sur devis, engagement type 6 mois renouvelable, avec trois niveaux de couverture. Le périmètre s'écrit machine par machine après un état des lieux, et le diagnostic de départ est gratuit.",
+        "question": "Combien coûte un contrat de maintenance préventive ?"
+      }
+    ],
+    "liens": [
+      {
+        "libelle": "Déménagement de machines",
+        "href": "/offres/chantier/demenagement-machines/",
+        "contexte": "Notre offre déménagement de machines couvre le démontage, le levage, le remontage et la requalification."
+      },
+      {
+        "libelle": "Maintenance des sites logistiques",
+        "href": "/secteurs/logistique/",
+        "contexte": "Voir la maintenance des sites logistiques."
+      },
+      {
+        "libelle": "Maintenance électrique",
+        "href": "/expertises/electrique/"
+      },
+      {
+        "libelle": "Automatisme",
+        "href": "/expertises/automatisme/"
+      },
+      {
+        "libelle": "Sous-traitance maintenance",
+        "href": "/offres/residence/",
+        "contexte": "en sous-traitance maintenance, prise de poste en 2 à 3 semaines."
+      },
+      {
+        "libelle": "Contrat Zéro arrêt",
+        "href": "/offres/zero-arret/",
+        "contexte": "Notre contrat Zéro arrêt est chiffré sur devis, engagement type 6 mois renouvelable, avec trois niveaux de couverture."
+      }
+    ],
+    "appelFinal": {
+      "question": "Besoin d'un plan préventif qui tienne malgré les effectifs du moment ?",
+      "bouton": "Faire chiffrer ma maintenance en Essonne",
+      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
+    }
   }
 }

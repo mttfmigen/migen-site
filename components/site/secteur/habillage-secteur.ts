@@ -3,7 +3,25 @@ import type { CSSProperties } from "react";
 import { BOUTON_ACTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 
 /**
- * Valeurs d'habillage du gabarit secteur, relevées dans la maquette Claude
+ * CE FICHIER PORTE LES VALEURS DU GABARIT D'ANCRAGE, pas celles du gabarit 08.
+ *
+ * Elles viennent de « Migen - Site final.dc.html », lignes 5602 à 5757, et elles
+ * servent `/implantations/` : `PageVille.tsx` importe HERO, TITRE1,
+ * CHAPEAU_HERO, SURTITRE_HERO, BOUTON_HERO et BOUTON_HERO_2, `PageAncrage.tsx`
+ * les lit toutes.
+ *
+ * LES VALEURS DES 13 PAGES `/secteurs/<secteur>/` SONT DANS
+ * `habillage-gabarit08.ts`, relevées dans `maquette/gabarit-08-secteur.html`,
+ * qui fait foi pour elles et fait foi CONTRE « Site final ».
+ *
+ * CELLES-CI NE SONT PAS CORRIGÉES SUR CELLES-LÀ, et c'est délibéré : les pages
+ * de ville et de département ont leurs propres fichiers de maquette qui font foi
+ * (« Gabarit 04 Ville », « Gabarit 06 Departement »), donc leurs propres
+ * valeurs. Les changer au nom du gabarit 08 déplacerait le dessin d'un gabarit
+ * voisin sans avoir lu son fichier, ce qui est exactement la faute qu'on répare.
+ *
+ *
+ * Valeurs d'habillage du gabarit d'ancrage, relevées dans la maquette Claude
  * Design (« Migen - Site final.dc.html », gabarits SECTEUR et DÉPARTEMENT,
  * lignes 5602 à 5757).
  *
@@ -102,4 +120,3 @@ export const PANNEAU_APPEL: CSSProperties = {
   gap: 44,
   flexWrap: "wrap",
 };
-

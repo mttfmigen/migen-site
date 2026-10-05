@@ -3,12 +3,12 @@
   "contenu": {
     "gabarit": "ville",
     "chapeau": "Dans la Marne, la production se joue sur des fenêtres courtes. Quelques semaines de vendanges, une campagne betteravière qui tourne sans coupure, des séries d'embouteillage calées au jour près. Nous préparons les équipements avant la fenêtre et nous tenons l'astreinte pendant. Nos techniciens se déplacent partout en France.",
-    "actions": [
-      {
-        "libelle": "Demander une intervention à Reims",
-        "href": "#formulaire"
-      }
-    ],
+    "action": {
+      "libelle": "Demander une intervention à Reims",
+      "href": "#formulaire"
+    },
+    "telephone": "04 78 33 72 05",
+    "delai": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte en option, tenue pendant les campagnes comme le reste de l'année.",
     "reperes": [
       {
         "valeur": "+ 120",
@@ -19,13 +19,20 @@
         "libelle": "des candidats retenus, entretien technique et comportemental, évaluation transmise avant l'arrivée"
       },
       {
-        "valeur": "24/24 et 7/7",
+        "valeur": "",
         "libelle": "astreinte en option, la seule réponse tenable pendant une campagne"
       }
     ],
-    "contact": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 en option, tenue pendant les campagnes comme le reste de l'année.",
-    "constatTexte": "Une campagne betteravière ne s'interrompt pas pour une maintenance. Elle tourne jusqu'au bout, et tout ce qui n'a pas été fait avant se paie pendant.",
-    "constatPuces": [
+    "logos": [
+      "VPK",
+      "DANONE",
+      "STELLANTIS",
+      "GROUPE ATLANTIC",
+      "OGF"
+    ],
+    "problemeTitre": "Une campagne betteravière ne s'interrompt pas pour une maintenance.",
+    "problemeTexte": "Elle tourne jusqu'au bout, et tout ce qui n'a pas été fait avant se paie pendant.",
+    "problemes": [
       {
         "texte": "Pressoirs et réception de vendange servent quelques semaines par an, et l'année entière en dépend.",
         "accroche": "La fenêtre de vendange ne se rattrape jamais."
@@ -47,8 +54,80 @@
         "accroche": "Le technicien expérimenté manque partout dans la Marne."
       }
     ],
-    "reponseTexte": "Pour les lignes alimentaires, voir la [maintenance en agroalimentaire](/secteurs/agroalimentaire/). Pour les entrepôts de l'axe autoroutier, voir la [maintenance des équipements logistiques](/secteurs/logistique/).",
-    "reponsePuces": [
+    "offre": [
+      {
+        "benefice": "Le matériel démarre la campagne prêt, au lieu d'être réparé en pleine saison.",
+        "prestation": {
+          "texte": "pressoirs, réception, convoyage, pompage.",
+          "accroche": "Remise en état des équipements saisonniers avant la fenêtre"
+        }
+      },
+      {
+        "benefice": "Un appel de nuit trouve un technicien mobilisé, pas un répondeur.",
+        "prestation": {
+          "texte": ", circuit et priorités écrits à l'avance.",
+          "accroche": "Astreinte pendant les campagnes"
+        }
+      },
+      {
+        "benefice": "Les changements de format cessent d'être le moment où tout se dérègle.",
+        "prestation": {
+          "texte": "remplisseuse, bouchage, étiquetage, convoyage, froid.",
+          "accroche": "Lignes d'embouteillage et de conditionnement suivies dans le détail"
+        }
+      },
+      {
+        "benefice": "La cadence se tient sans dégrader la qualité de façonnage.",
+        "prestation": {
+          "texte": "entraînements, transmissions, réglages, reprise d'usure.",
+          "accroche": "Machines rapides d'emballage et d'impression"
+        }
+      },
+      {
+        "benefice": "Une panne qui mélange les métiers reste un seul contrat et un seul interlocuteur.",
+        "prestation": {
+          "texte": "[mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure et tuyauterie](/expertises/soudure/).",
+          "accroche": "Couverture multi-technique"
+        }
+      },
+      {
+        "benefice": "Le redémarrage tombe à la date prévue, pas deux jours après.",
+        "prestation": {
+          "texte": ", restitution à la demi-journée.",
+          "accroche": "Arrêt technique préparé de J-90 à J-30"
+        }
+      }
+    ],
+    "offreNotes": [
+      "Pour les lignes alimentaires, voir la [maintenance en agroalimentaire](/secteurs/agroalimentaire/). Pour les entrepôts de l'axe autoroutier, voir la [maintenance des équipements logistiques](/secteurs/logistique/)."
+    ],
+    "etapes": [
+      {
+        "texte": "équipement, symptôme, criticité, fenêtre de production, accès au site.",
+        "titre": "Vous décrivez la situation"
+      },
+      {
+        "texte": "qualification du besoin, du profil disponible et des pièces à prévoir.",
+        "titre": "Nous vous rappelons dans l'heure"
+      },
+      {
+        "texte": "périmètre, conditions, chiffrage écrit, options d'astreinte comprises.",
+        "titre": "Le devis précède le déplacement"
+      },
+      {
+        "texte": "accueil sécurité, plan de prévention, consignation, diagnostic.",
+        "titre": "L'intervention suit votre protocole"
+      },
+      {
+        "texte": "mesures, historique, conditions réelles d'exploitation.",
+        "titre": "La cause racine est traitée après la remise en route"
+      },
+      {
+        "texte": "constat, actions, pièces, organes à reprendre avant la prochaine campagne.",
+        "titre": "Le compte rendu part dans votre GMAO"
+      }
+    ],
+    "garanties": [
       {
         "texte": "les opérations lourdes tombent hors fenêtre de production, et le programme s'écrit avec votre responsable maintenance.",
         "accroche": "Le préventif se cale sur votre calendrier, pas sur le nôtre"
@@ -58,11 +137,48 @@
         "accroche": "Vous savez qui entre sur le site"
       },
       {
-        "texte": "rappel dans l'heure aux horaires ouvrés, astreinte 24/24 et 7/7 en option. Le reste se dit avant d'engager.",
+        "texte": "rappel dans l'heure aux horaires ouvrés, astreinte en option. Le reste se dit avant d'engager.",
         "accroche": "Aucun délai de route inventé"
       }
     ],
-    "faq": [
+    "appel": {
+      "question": "Besoin de préparer vos équipements avant la prochaine campagne ?",
+      "bouton": "Demander une intervention à Reims",
+      "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+    },
+    "preuves": [
+      {
+        "texte": "papier et emballage, 2025 à 2026",
+        "titre": "Un technicien polyvalent intégré pour tenir un parc machines en forte cadence",
+        "lienHref": "/preuves/vpk/",
+        "lienLibelle": "Étude de cas VPK : maintenance de site"
+      },
+      {
+        "texte": "cadence continue, nutrition infantile",
+        "titre": "Deux techniciens intégrés en 3x8 sur des lignes liquides et poudre",
+        "lienHref": "/preuves/danone-lignes-de-production/",
+        "lienLibelle": "Étude de cas DANONE : lignes de production"
+      },
+      {
+        "texte": "compétences apportées pour une transition industrielle",
+        "titre": "18 à 25 techniciens sur plusieurs sites du Grand Est depuis juin 2023",
+        "lienHref": "/preuves/stellantis-grand-est/",
+        "lienLibelle": "Étude de cas STELLANTIS : sites du Grand Est"
+      },
+      {
+        "texte": "disponibilité machine tenue semaine après semaine",
+        "titre": "1 à 3 techniciens en renfort des équipes maintenance sur plusieurs sites de production, depuis octobre 2024",
+        "lienHref": "/preuves/groupe-atlantic/",
+        "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes"
+      },
+      {
+        "texte": "été 2025, équipe partiellement en congés",
+        "titre": "Un technicien intégré pendant l'arrêt estival pour tenir les équipements critiques",
+        "lienHref": "/preuves/ogf-arret-estival/",
+        "lienLibelle": "Étude de cas OGF : arrêt estival"
+      }
+    ],
+    "questions": [
       {
         "reponse": "Oui. Nos techniciens se déplacent partout en France et interviennent sur site. Nos 4 agences sont Lyon (siège), Montréal, Dubaï et Madrid, et nous ne publions pas d'adresse rémoise que personne n'occupe. Votre demande est rappelée dans l'heure aux horaires ouvrés. Pendant une campagne, ce qui compte est l'astreinte contractuelle et le technicien qui décroche, pas la distance affichée sur une page.",
         "question": "Intervenez-vous vraiment à Reims, alors que votre siège est à Lyon ?"
@@ -72,7 +188,7 @@
         "question": "Quelles communes couvrez-vous dans la Marne ?"
       },
       {
-        "reponse": "Oui, c'est l'usage de l'option astreinte 24/24 et 7/7. Le circuit d'appel, les priorités et les équipements couverts s'écrivent avant le démarrage de la campagne, et le dimensionnement se décide avec vous.",
+        "reponse": "Oui, c'est l'usage de l'option astreinte. Le circuit d'appel, les priorités et les équipements couverts s'écrivent avant le démarrage de la campagne, et le dimensionnement se décide avec vous.",
         "question": "Pouvez-vous tenir une astreinte pendant toute une campagne ?"
       },
       {
@@ -88,188 +204,51 @@
         "question": "Combien coûte un contrat de préventif ?"
       }
     ],
-    "autres": [
+    "liens": [
       {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
+        "libelle": "Maintenance en agroalimentaire",
+        "href": "/secteurs/agroalimentaire/",
+        "contexte": "Pour les lignes alimentaires, voir la maintenance en agroalimentaire."
       },
       {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
+        "libelle": "Maintenance des équipements logistiques",
+        "href": "/secteurs/logistique/",
+        "contexte": "Pour les entrepôts de l'axe autoroutier, voir la maintenance des équipements logistiques."
       },
       {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
+        "libelle": "Mécanique",
+        "href": "/expertises/mecanique/"
       },
       {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
+        "libelle": "Électrique",
+        "href": "/expertises/electrique/"
       },
       {
-        "libelle": "Valence",
-        "href": "/implantations/lyon/valence/"
+        "libelle": "Automatisme",
+        "href": "/expertises/automatisme/"
       },
       {
-        "libelle": "Nantes",
-        "href": "/implantations/nantes/"
+        "libelle": "Hydraulique",
+        "href": "/expertises/hydraulique/"
       },
       {
-        "libelle": "Brest",
-        "href": "/implantations/nantes/brest/"
+        "libelle": "Pneumatique",
+        "href": "/expertises/pneumatique/"
       },
       {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
+        "libelle": "Soudure et tuyauterie",
+        "href": "/expertises/soudure/"
       },
       {
-        "libelle": "paris",
-        "href": "/implantations/paris/"
-      },
-      {
-        "libelle": "Rouen",
-        "href": "/implantations/paris/rouen/"
-      },
-      {
-        "libelle": "Strasbourg",
-        "href": "/implantations/strasbourg/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
-      },
-      {
-        "libelle": "Toulouse",
-        "href": "/implantations/toulouse/"
-      },
-      {
-        "libelle": "Bordeaux",
-        "href": "/implantations/toulouse/bordeaux/"
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/",
+        "contexte": "L'abonnement Zéro arrêt est chiffré sur devis, engagement type 6 mois renouvelable."
       }
     ],
-    "reste": [
-      {
-        "type": "offre",
-        "lignes": [
-          {
-            "benefice": "Le matériel démarre la campagne prêt, au lieu d'être réparé en pleine saison.",
-            "prestation": {
-              "texte": "pressoirs, réception, convoyage, pompage.",
-              "accroche": "Remise en état des équipements saisonniers avant la fenêtre"
-            }
-          },
-          {
-            "benefice": "Un appel de nuit trouve un technicien mobilisé, pas un répondeur.",
-            "prestation": {
-              "texte": ", circuit et priorités écrits à l'avance.",
-              "accroche": "Astreinte 24/24 et 7/7 pendant les campagnes"
-            }
-          },
-          {
-            "benefice": "Les changements de format cessent d'être le moment où tout se dérègle.",
-            "prestation": {
-              "texte": "remplisseuse, bouchage, étiquetage, convoyage, froid.",
-              "accroche": "Lignes d'embouteillage et de conditionnement suivies dans le détail"
-            }
-          },
-          {
-            "benefice": "La cadence se tient sans dégrader la qualité de façonnage.",
-            "prestation": {
-              "texte": "entraînements, transmissions, réglages, reprise d'usure.",
-              "accroche": "Machines rapides d'emballage et d'impression"
-            }
-          },
-          {
-            "benefice": "Une panne qui mélange les métiers reste un seul contrat et un seul interlocuteur.",
-            "prestation": {
-              "texte": "[mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure et tuyauterie](/expertises/soudure/).",
-              "accroche": "Couverture multi-technique"
-            }
-          },
-          {
-            "benefice": "Le redémarrage tombe à la date prévue, pas deux jours après.",
-            "prestation": {
-              "texte": ", restitution à la demi-journée.",
-              "accroche": "Arrêt technique préparé de J-90 à J-30"
-            }
-          }
-        ]
-      },
-      {
-        "type": "deroule",
-        "etapes": [
-          {
-            "texte": "équipement, symptôme, criticité, fenêtre de production, accès au site.",
-            "titre": "Vous décrivez la situation"
-          },
-          {
-            "texte": "qualification du besoin, du profil disponible et des pièces à prévoir.",
-            "titre": "Nous vous rappelons dans l'heure"
-          },
-          {
-            "texte": "périmètre, conditions, chiffrage écrit, options d'astreinte comprises.",
-            "titre": "Le devis précède le déplacement"
-          },
-          {
-            "texte": "accueil sécurité, plan de prévention, consignation, diagnostic.",
-            "titre": "L'intervention suit votre protocole"
-          },
-          {
-            "texte": "mesures, historique, conditions réelles d'exploitation.",
-            "titre": "La cause racine est traitée après la remise en route"
-          },
-          {
-            "texte": "constat, actions, pièces, organes à reprendre avant la prochaine campagne.",
-            "titre": "Le compte rendu part dans votre GMAO"
-          }
-        ]
-      },
-      {
-        "type": "cta",
-        "bouton": "Demander une intervention à Reims",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin de préparer vos équipements avant la prochaine campagne ?"
-      },
-      {
-        "type": "preuves",
-        "preuves": [
-          {
-            "texte": "papier et emballage, 2025 à 2026",
-            "titre": "Un technicien polyvalent intégré pour tenir un parc machines en forte cadence",
-            "lienHref": "/preuves/vpk/",
-            "lienLibelle": "Étude de cas VPK : maintenance de site"
-          },
-          {
-            "texte": "cadence continue, nutrition infantile",
-            "titre": "Deux techniciens intégrés en 3x8 sur des lignes liquides et poudre",
-            "lienHref": "/preuves/danone-lignes-de-production/",
-            "lienLibelle": "Étude de cas DANONE : lignes de production"
-          },
-          {
-            "texte": "compétences apportées pour une transition industrielle",
-            "titre": "18 à 25 techniciens sur plusieurs sites du Grand Est depuis juin 2023",
-            "lienHref": "/preuves/stellantis-grand-est/",
-            "lienLibelle": "Étude de cas STELLANTIS : sites du Grand Est"
-          },
-          {
-            "texte": "disponibilité machine tenue semaine après semaine",
-            "titre": "1 à 3 techniciens en renfort des équipes maintenance sur plusieurs sites de production, depuis octobre 2024",
-            "lienHref": "/preuves/groupe-atlantic/",
-            "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes"
-          },
-          {
-            "texte": "été 2025, équipe partiellement en congés",
-            "titre": "Un technicien intégré pendant l'arrêt estival pour tenir les équipements critiques",
-            "lienHref": "/preuves/ogf-arret-estival/",
-            "lienLibelle": "Étude de cas OGF : arrêt estival"
-          }
-        ]
-      },
-      {
-        "type": "ctaFinal",
-        "bouton": "Demander une intervention à Reims",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-        "question": "Besoin d'une astreinte qui décroche vraiment pendant votre saison ?"
-      }
-    ]
+    "appelFinal": {
+      "question": "Besoin d'une astreinte qui décroche vraiment pendant votre saison ?",
+      "bouton": "Demander une intervention à Reims",
+      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
+    }
   }
 }

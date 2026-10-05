@@ -1,20 +1,13 @@
 {
   "url": "/offres/residence/cahier-des-charges/",
+  "source": "dessin : maquette/gabarit-10-hub-de-rubrique.html. texte : ../migen-refonte/seo/CONVERSION/Offres/cahier-des-charges.md, via scripts/produit_hub.mjs.",
   "contenu": {
-    "gabarit": "offre",
-    "mention": ", du lundi au vendredi de 8h00 à 18h30. Nous relisons votre document même si vous ne nous consultez pas ensuite",
+    "gabarit": "hub",
     "chapeau": "Voici la trame en 8 sections, la méthode de rédaction en 6 étapes et la grille d'évaluation des réponses. À reprendre telle quelle.",
-    "actions": [
-      {
-        "libelle": "Les cinq offres",
-        "href": "/offres/"
-      }
-    ],
-    "formulaireHeroTitre": "Décrire mon besoin",
-    "formulaireHeroMention": "Rappel dans l'heure",
-    "brefSurtitre": "En bref",
-    "brefTitre": "Le cadre, en quatre chiffres.",
-    "chiffres": [
+    "cta": "Faire relire mon cahier des charges",
+    "telephone": "04 78 33 72 05",
+    "phraseDelai": ", du lundi au vendredi de 8h00 à 18h30. Nous relisons votre document même si vous ne nous consultez pas ensuite",
+    "enBref": [
       {
         "valeur": "8 sections",
         "libelle": "L'ossature d'un cahier des charges de maintenance exploitable."
@@ -33,296 +26,235 @@
         "libelle": "Part des candidats retenus chez nous, après entretien technique et comportemental."
       }
     ],
-    "brefBande": "Votre consultation part la semaine prochaine ?",
-    "brefBouton": {
-      "libelle": "Faire relire mon cahier des charges",
-      "href": "/contact/"
-    },
-    "sections": [
+    "punchTitre": "Ce qui n'est pas écrit sera facturé en avenant",
+    "punchTexte": "",
+    "problemes": [
       {
-        "type": "probleme",
-        "punchline": "Ce qui n'est pas écrit sera facturé en avenant",
-        "puces": [
-          {
-            "accroche": "Des offres incomparables.",
-            "texte": "Périmètres différents, hypothèses différentes, prix qui ne parlent pas de la même chose."
-          },
-          {
-            "accroche": "Des marges de précaution invisibles.",
-            "texte": "Un document flou oblige le prestataire à chiffrer l'inconnu. C'est vous qui payez cette incertitude."
-          },
-          {
-            "accroche": "Des litiges sur l'inclus.",
-            "texte": "« Toutes prestations de maintenance du site », sans inventaire ni exclusions, garantit le conflit."
-          },
-          {
-            "accroche": "Des prestations jugées décevantes",
-            "texte": "alors qu'elles n'ont jamais été définies."
-          },
-          {
-            "accroche": "Aucune sortie prévue.",
-            "texte": "Pas de réversibilité, donc pas de restitution des données GMAO le jour où vous changez."
-          }
-        ]
+        "accroche": "Des offres incomparables.",
+        "texte": "Périmètres différents, hypothèses différentes, prix qui ne parlent pas de la même chose."
       },
       {
-        "type": "offre",
-        "lignes": [
-          {
-            "prestation": {
-              "texte": "**1. Contexte et objectifs**"
-            },
-            "benefice": "Votre site, votre organisation actuelle, et ce que vous voulez obtenir : moins de pannes, renforcer une équipe, préparer une montée en charge. Évite les offres hors sujet."
-          },
-          {
-            "prestation": {
-              "texte": "**2. Périmètre et inventaire**"
-            },
-            "benefice": "La liste des équipements, machine par machine, avec criticité, âge, historique. Et surtout ce qui est exclu. Évite le litige sur l'inclus."
-          },
-          {
-            "prestation": {
-              "texte": "**3. Nature des prestations**"
-            },
-            "benefice": "Préventif, correctif, améliorations, travaux, présence permanente, astreinte. Évite qu'un candidat chiffre du dépannage quand vous attendez une présence."
-          },
-          {
-            "prestation": {
-              "texte": "**4. Niveaux de service**"
-            },
-            "benefice": "Délais de prise en compte, disponibilité attendue, indicateurs : temps moyen de réparation, temps entre défaillances, taux de disponibilité. Évite les objectifs qui ne sont que des intentions."
-          },
-          {
-            "prestation": {
-              "texte": "**5. Contraintes du site**"
-            },
-            "benefice": "Sécurité, plan de prévention, habilitations exigées, horaires de production, coactivité, exigences qualité. Chaque contrainte omise ici revient en surcoût."
-          },
-          {
-            "prestation": {
-              "texte": "**6. Données et outils**"
-            },
-            "benefice": "Votre GMAO ou son absence, qui saisit, qui accède, qui possède les données, ce qui est restitué à la fin. Évite de perdre votre historique en changeant de prestataire."
-          },
-          {
-            "prestation": {
-              "texte": "**7. Pièces et stock**"
-            },
-            "benefice": "Qui fournit quoi : consommables, pièces de rechange, gestion du stock, relation fournisseurs. Évite la machine arrêtée faute de savoir qui commande."
-          },
-          {
-            "prestation": {
-              "texte": "**8. Cadre de la consultation**"
-            },
-            "benefice": "Calendrier, format de réponse, contact, critères d'évaluation et leur pondération, conditions de visite. Évite les réponses hors format, impossibles à comparer."
-          },
-          {
-            "prestation": {
-              "texte": "Prestation"
-            },
-            "benefice": "Ce que ça change pour vous"
-          },
-          {
-            "prestation": {
-              "texte": "**Relecture critique de votre document**"
-            },
-            "benefice": "Nous pointons les zones d'ombre qui feront monter les prix, avant l'envoi. Même si vous ne nous consultez pas ensuite."
-          },
-          {
-            "prestation": {
-              "texte": "**Aide au cadrage du besoin**"
-            },
-            "benefice": "Périmètre, criticité des équipements, arbitrage entre embauche et prestation. Vous gardez la main sur les choix."
-          },
-          {
-            "prestation": {
-              "texte": "**Trame allégée pour un technicien intégré**"
-            },
-            "benefice": "Quelques pages : périmètre, équipements, tâches, horaires, sécurité, critères de réussite. Suffisant pour démarrer sur des bases saines."
-          },
-          {
-            "prestation": {
-              "texte": "**Avis d'utilisateur sur votre projet GMAO**"
-            },
-            "benefice": "Migen ne vend aucun logiciel de GMAO. Nos techniciens travaillent chaque jour dans celles de nos clients, toutes marques confondues. Ce sont eux qui savent si une saisie prend trente secondes ou dix minutes."
-          },
-          {
-            "prestation": {
-              "texte": "**Grille d'évaluation des offres**"
-            },
-            "benefice": "Compréhension du besoin, moyens humains, méthode, planification, prix, références. Le devis le moins cher n'est pas toujours la meilleure offre."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "> La norme NF EN 13306, publiée par AFNOR, fixe le vocabulaire de la maintenance et la définition des niveaux. L'utiliser évite les malentendus de terminologie entre client et prestataire."
-          }
-        ]
+        "accroche": "Des marges de précaution invisibles.",
+        "texte": "Un document flou oblige le prestataire à chiffrer l'inconnu. C'est vous qui payez cette incertitude."
       },
       {
-        "type": "deroule",
-        "etapes": [
-          {
-            "titre": "Cadrer le projet.",
-            "texte": "Nommez un chef de projet, associez la production, la maintenance, les achats et la direction. Un document rédigé par un seul service se reconnaît immédiatement, et se paie en angles morts."
-          },
-          {
-            "titre": "Collecter les données.",
-            "texte": "Inventaire, historiques de pannes, dépenses des derniers exercices, contraintes de production. La qualité de cette collecte fait la qualité du document, et révèle souvent des surprises utiles."
-          },
-          {
-            "titre": "Rédiger section par section.",
-            "texte": "Restez factuel. Décrire l'existant honnêtement, pannes récurrentes comprises, vaut mieux que le maquiller : le prestataire découvrira la réalité de toute façon."
-          },
-          {
-            "titre": "Consulter.",
-            "texte": "Dossier envoyé aux candidats présélectionnés, visites de site organisées, questions traitées par écrit aux mêmes dates pour tous. Leurs questions sont un cadeau : elles révèlent vos zones d'ombre."
-          },
-          {
-            "titre": "Évaluer sur la grille annoncée.",
-            "texte": "Coût complet, capacité à tenir les niveaux de service, qualité des équipes, méthode de pilotage."
-          },
-          {
-            "titre": "Argumenter, puis contractualiser.",
-            "texte": "Sélection justifiée par écrit, élément par élément. Le cahier des charges et l'offre retenue deviennent des annexes du contrat, avec une phase de démarrage planifiée."
-          }
-        ]
+        "accroche": "Des litiges sur l'inclus.",
+        "texte": "« Toutes prestations de maintenance du site », sans inventaire ni exclusions, garantit le conflit."
       },
       {
-        "type": "garanties",
-        "puces": [
-          {
-            "accroche": "Une relecture sans contrepartie.",
-            "texte": "Nous aidons à structurer un cahier des charges sans conditionner cette aide à la consultation qui suit. Les choix restent les vôtres, et la consultation doit rester équitable entre candidats."
-          },
-          {
-            "accroche": "Aucun chiffrage à l'aveugle.",
-            "texte": "Visite de site systématique, questions écrites quand un point reste ambigu, puis une proposition qui reprend vos exigences point par point. Un document flou nous oblige à chiffrer l'inconnu, et nous préférons l'éviter."
-          },
-          {
-            "accroche": "Le profil des techniciens, écrit dans la réponse.",
-            "texte": "Tous sont évalués en entretien technique et comportemental, et seuls 10 % des candidats sont retenus. Vous savez qui viendra avant de signer."
-          },
-          {
-            "accroche": "La sécurité documentée avant la première intervention.",
-            "texte": "Migen est engagé dans une démarche MASE pour la sécurité des interventions et évalué EcoVadis sur sa performance RSE. Les attestations sont transmises avec chaque plan de prévention, et les habilitations de chaque technicien sont à jour et vérifiables. Votre section « contraintes du site » trouve sa réponse pièce par pièce."
-          }
-        ]
+        "accroche": "Des prestations jugées décevantes",
+        "texte": "alors qu'elles n'ont jamais été définies."
       },
       {
-        "type": "preuves",
-        "preuves": [
-          {
-            "titre": "[Contrat de préventif annuel multi-sites](/preuves/veepee-sites-lyon/)",
-            "texte": "6 techniciens polyvalents chez VEEPEE sur les sites lyonnais, dans le cadre d'un contrat de préventif annuel"
-          },
-          {
-            "titre": "[Reprise d'un parc en 8 semaines, fonderie automobile](/preuves/stellantis-fonderie-sept-fons/)",
-            "texte": "depuis octobre 2023 chez STELLANTIS, prise en charge complète du site de Dompierre-sur-Besbre, 6 techniciens, 7 jours sur 7"
-          },
-          {
-            "titre": "[Dispositif reproduit sur un second site, logistique](/preuves/amazon-nouveau-site/)",
-            "texte": "le même dispositif que le premier centre, porté sur ETZ 2 à Metz. Un cadrage écrit se réplique"
-          },
-          {
-            "titre": "[Renfort d'équipes sur plusieurs sites, confort thermique](/preuves/groupe-atlantic/)",
-            "texte": "depuis octobre 2024 chez GROUPE ATLANTIC, 1 à 3 techniciens en présence permanente, mission toujours en cours"
-          },
-          {
-            "titre": "[Premier contrat hors de France, agroalimentaire](/preuves/mccain-belgique/)",
-            "texte": "depuis octobre 2024 chez McCAIN en Belgique, 1 à 3 techniciens en corrective et préventive"
-          },
-          {
-            "titre": "[Maintenance en 3x8 sur lignes alimentaires, agroalimentaire](/preuves/danone-lignes-de-production/)",
-            "texte": "2 techniciens intégrés aux équipes Blédina sur le site de Steenvoorde"
-          }
-        ]
-      },
-      {
-        "type": "objections",
-        "questions": [
-          {
-            "question": "Quelle longueur pour un cahier des charges de maintenance ?",
-            "reponse": "Celle qui décrit votre réalité sans littérature. Souvent une dizaine de pages pour un site industriel moyen, davantage avec les annexes : inventaire, plans, historique. Un document court et précis, où chaque exigence est mesurable, vaut mieux qu'un pavé recopié."
-          },
-          {
-            "question": "Faut-il communiquer son budget dans le document ?",
-            "reponse": "Ce n'est pas obligatoire et les pratiques divergent. Notre conseil : donnez au moins une enveloppe indicative ou l'historique de dépenses. Un candidat qui connaît l'ordre de grandeur dimensionne sa proposition au lieu de deviner. La transparence attire les réponses sérieuses."
-          },
-          {
-            "question": "Qui doit rédiger : la maintenance ou les achats ?",
-            "reponse": "Les deux, avec la production. La maintenance apporte la connaissance des équipements, les achats la rigueur de la consultation, la production ses contraintes d'exploitation. Un document rédigé par un seul service se paie en angles morts."
-          },
-          {
-            "question": "Peut-on demander à un prestataire de l'aide pour la rédaction ?",
-            "reponse": "Oui, à condition de garder la main sur les choix et de maintenir l'équité entre candidats. C'est un service que nous rendons régulièrement, sans le conditionner à la consultation qui suit."
-          },
-          {
-            "question": "Je cherche en fait un cahier des charges GMAO. Est-ce le même document ?",
-            "reponse": "Non. Le cahier des charges GMAO décrit un besoin logiciel, celui de maintenance décrit une prestation de service. Les deux se croisent : toute consultation sérieuse pose la question de qui fournit la GMAO, qui la renseigne, qui possède les données. Méfiez-vous des trames diffusées par les éditeurs de logiciels."
-          },
-          {
-            "question": "Faut-il une GMAO avant d'externaliser sa maintenance ?",
-            "reponse": "Non, mais il faut le dire dans le document. Un prestataire sérieux peut travailler dans votre GMAO existante, en proposer une, ou tenir la traçabilité autrement au démarrage. L'essentiel est de trancher qui saisit quoi, dans quel outil, et qui reste propriétaire des données, réversibilité comprise."
-          },
-          {
-            "question": "Comment se construit le prix d'une réponse à ce type de consultation ?",
-            "reponse": "Sur ce que votre document décrit, et sur rien d'autre. Le périmètre d'équipements, le nombre de techniciens, les horaires de présence, l'astreinte attendue, les habilitations exigées et le niveau de service demandé font le chiffrage. Chaque zone d'ombre devient une marge de précaution : c'est la raison pour laquelle nous relisons les cahiers des charges avant qu'ils partent. Toute proposition passe par une visite de site et reste sur devis."
-          },
-          {
-            "question": "Faut-il prévoir une durée d'engagement dans le document ?",
-            "reponse": "Oui, et elle se traite comme le reste : durée initiale, reconduction, points de revue des indicateurs, conditions de sortie et restitution des données. Une durée annoncée permet au candidat de dimensionner son équipe et sa montée en compétence sur vos machines. Une durée passée sous silence, et vous recevez des offres calibrées pour du court terme."
-          },
-          {
-            "question": "Nous avons déjà un prestataire. Comment écrire la reprise de contrat ?",
-            "reponse": "Décrivez l'existant tel qu'il est : ce que le titulaire actuel réalise, ce qui fonctionne, ce qui coince, et l'état de l'historique dans la GMAO. Puis exigez des candidats une phase de démarrage écrite : transfert des consignes, formation aux machines, récupération des documents techniques, passation avec l'équipe sortante. Nous avons repris des parcs complets sur ce mode, avec les réalisations correspondantes en preuve sur cette page."
-          },
-          {
-            "question": "Intervenez-vous partout en France ?",
-            "reponse": "Oui. Migen compte 10 hubs de techniciens, à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Nos techniciens sont mobiles, y compris sur les sites éloignés d'un hub. Le siège est à Lyon, sur Limonest et Écully, et le groupe dispose de trois implantations hors de France, à Montréal, Dubaï et Madrid. Précisez l'adresse exacte et les contraintes d'accès du site dans votre section « contraintes du site » : c'est ce qui permet une réponse honnête sur les moyens affectés."
-          }
-        ]
-      },
-      {
-        "type": "ctaFinal",
-        "question": "Votre besoin est encore en amont ?",
-        "bouton": "Faire relire mon cahier des charges",
-        "href": "/contact/"
+        "accroche": "Aucune sortie prévue.",
+        "texte": "Pas de réversibilité, donc pas de restitution des données GMAO le jour où vous changez."
       }
     ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
+    "offre": [
       {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
+        "prestation": {
+          "texte": "**1. Contexte et objectifs**"
+        },
+        "benefice": "Votre site, votre organisation actuelle, et ce que vous voulez obtenir : moins de pannes, renforcer une équipe, préparer une montée en charge. Évite les offres hors sujet."
       },
       {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
+        "prestation": {
+          "texte": "**2. Périmètre et inventaire**"
+        },
+        "benefice": "La liste des équipements, machine par machine, avec criticité, âge, historique. Et surtout ce qui est exclu. Évite le litige sur l'inclus."
       },
       {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
+        "prestation": {
+          "texte": "**3. Nature des prestations**"
+        },
+        "benefice": "Préventif, correctif, améliorations, travaux, présence permanente, astreinte. Évite qu'un candidat chiffre du dépannage quand vous attendez une présence."
       },
       {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
+        "prestation": {
+          "texte": "**4. Niveaux de service**"
+        },
+        "benefice": "Délais de prise en compte, disponibilité attendue, indicateurs : temps moyen de réparation, temps entre défaillances, taux de disponibilité. Évite les objectifs qui ne sont que des intentions."
       },
       {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
+        "prestation": {
+          "texte": "**5. Contraintes du site**"
+        },
+        "benefice": "Sécurité, plan de prévention, habilitations exigées, horaires de production, coactivité, exigences qualité. Chaque contrainte omise ici revient en surcoût."
       },
       {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
+        "prestation": {
+          "texte": "**6. Données et outils**"
+        },
+        "benefice": "Votre GMAO ou son absence, qui saisit, qui accède, qui possède les données, ce qui est restitué à la fin. Évite de perdre votre historique en changeant de prestataire."
+      },
+      {
+        "prestation": {
+          "texte": "**7. Pièces et stock**"
+        },
+        "benefice": "Qui fournit quoi : consommables, pièces de rechange, gestion du stock, relation fournisseurs. Évite la machine arrêtée faute de savoir qui commande."
+      },
+      {
+        "prestation": {
+          "texte": "**8. Cadre de la consultation**"
+        },
+        "benefice": "Calendrier, format de réponse, contact, critères d'évaluation et leur pondération, conditions de visite. Évite les réponses hors format, impossibles à comparer."
+      },
+      {
+        "prestation": {
+          "texte": "Prestation"
+        },
+        "benefice": "Ce que ça change pour vous"
+      },
+      {
+        "prestation": {
+          "texte": "**Relecture critique de votre document**"
+        },
+        "benefice": "Nous pointons les zones d'ombre qui feront monter les prix, avant l'envoi. Même si vous ne nous consultez pas ensuite."
+      },
+      {
+        "prestation": {
+          "texte": "**Aide au cadrage du besoin**"
+        },
+        "benefice": "Périmètre, criticité des équipements, arbitrage entre embauche et prestation. Vous gardez la main sur les choix."
+      },
+      {
+        "prestation": {
+          "texte": "**Trame allégée pour un technicien intégré**"
+        },
+        "benefice": "Quelques pages : périmètre, équipements, tâches, horaires, sécurité, critères de réussite. Suffisant pour démarrer sur des bases saines."
+      },
+      {
+        "prestation": {
+          "texte": "**Avis d'utilisateur sur votre projet GMAO**"
+        },
+        "benefice": "Migen ne vend aucun logiciel de GMAO. Nos techniciens travaillent chaque jour dans celles de nos clients, toutes marques confondues. Ce sont eux qui savent si une saisie prend trente secondes ou dix minutes."
+      },
+      {
+        "prestation": {
+          "texte": "**Grille d'évaluation des offres**"
+        },
+        "benefice": "Compréhension du besoin, moyens humains, méthode, planification, prix, références. Le devis le moins cher n'est pas toujours la meilleure offre."
       }
-    ]
+    ],
+    "etapes": [
+      {
+        "titre": "Cadrer le projet.",
+        "texte": "Nommez un chef de projet, associez la production, la maintenance, les achats et la direction. Un document rédigé par un seul service se reconnaît immédiatement, et se paie en angles morts."
+      },
+      {
+        "titre": "Collecter les données.",
+        "texte": "Inventaire, historiques de pannes, dépenses des derniers exercices, contraintes de production. La qualité de cette collecte fait la qualité du document, et révèle souvent des surprises utiles."
+      },
+      {
+        "titre": "Rédiger section par section.",
+        "texte": "Restez factuel. Décrire l'existant honnêtement, pannes récurrentes comprises, vaut mieux que le maquiller : le prestataire découvrira la réalité de toute façon."
+      },
+      {
+        "titre": "Consulter.",
+        "texte": "Dossier envoyé aux candidats présélectionnés, visites de site organisées, questions traitées par écrit aux mêmes dates pour tous. Leurs questions sont un cadeau : elles révèlent vos zones d'ombre."
+      },
+      {
+        "titre": "Évaluer sur la grille annoncée.",
+        "texte": "Coût complet, capacité à tenir les niveaux de service, qualité des équipes, méthode de pilotage."
+      },
+      {
+        "titre": "Argumenter, puis contractualiser.",
+        "texte": "Sélection justifiée par écrit, élément par élément. Le cahier des charges et l'offre retenue deviennent des annexes du contrat, avec une phase de démarrage planifiée."
+      }
+    ],
+    "garanties": [
+      {
+        "accroche": "Une relecture sans contrepartie.",
+        "texte": "Nous aidons à structurer un cahier des charges sans conditionner cette aide à la consultation qui suit. Les choix restent les vôtres, et la consultation doit rester équitable entre candidats."
+      },
+      {
+        "accroche": "Aucun chiffrage à l'aveugle.",
+        "texte": "Visite de site systématique, questions écrites quand un point reste ambigu, puis une proposition qui reprend vos exigences point par point. Un document flou nous oblige à chiffrer l'inconnu, et nous préférons l'éviter."
+      },
+      {
+        "accroche": "Le profil des techniciens, écrit dans la réponse.",
+        "texte": "Tous sont évalués en entretien technique et comportemental, et seuls 10 % des candidats sont retenus. Vous savez qui viendra avant de signer."
+      },
+      {
+        "accroche": "La sécurité documentée avant la première intervention.",
+        "texte": "Migen est engagé dans une démarche MASE pour la sécurité des interventions et évalué EcoVadis sur sa performance RSE. Les attestations sont transmises avec chaque plan de prévention, et les habilitations de chaque technicien sont à jour et vérifiables. Votre section « contraintes du site » trouve sa réponse pièce par pièce."
+      }
+    ],
+    "appel": {
+      "question": "Votre consultation part la semaine prochaine ?",
+      "bouton": "Faire relire mon cahier des charges"
+    },
+    "preuves": [
+      {
+        "titre": "[Contrat de préventif annuel multi-sites](/preuves/veepee-sites-lyon/)",
+        "texte": "6 techniciens polyvalents chez VEEPEE sur les sites lyonnais, dans le cadre d'un contrat de préventif annuel"
+      },
+      {
+        "titre": "[Reprise d'un parc en 8 semaines, fonderie automobile](/preuves/stellantis-fonderie-sept-fons/)",
+        "texte": "depuis octobre 2023 chez STELLANTIS, prise en charge complète du site de Dompierre-sur-Besbre, 6 techniciens,"
+      },
+      {
+        "titre": "[Dispositif reproduit sur un second site, logistique](/preuves/amazon-nouveau-site/)",
+        "texte": "le même dispositif que le premier centre, porté sur ETZ 2 à Metz. Un cadrage écrit se réplique"
+      },
+      {
+        "titre": "[Renfort d'équipes sur plusieurs sites, confort thermique](/preuves/groupe-atlantic/)",
+        "texte": "depuis octobre 2024 chez GROUPE ATLANTIC, 1 à 3 techniciens en présence permanente, mission toujours en cours"
+      },
+      {
+        "titre": "[Premier contrat hors de France, agroalimentaire](/preuves/mccain-belgique/)",
+        "texte": "depuis octobre 2024 chez McCAIN en Belgique, 1 à 3 techniciens en corrective et préventive"
+      },
+      {
+        "titre": "[Maintenance en 3x8 sur lignes alimentaires, agroalimentaire](/preuves/danone-lignes-de-production/)",
+        "texte": "2 techniciens intégrés aux équipes Blédina sur le site de Steenvoorde"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Quelle longueur pour un cahier des charges de maintenance ?",
+        "reponse": "Celle qui décrit votre réalité sans littérature. Souvent une dizaine de pages pour un site industriel moyen, davantage avec les annexes : inventaire, plans, historique. Un document court et précis, où chaque exigence est mesurable, vaut mieux qu'un pavé recopié."
+      },
+      {
+        "question": "Faut-il communiquer son budget dans le document ?",
+        "reponse": "Ce n'est pas obligatoire et les pratiques divergent. Notre conseil : donnez au moins une enveloppe indicative ou l'historique de dépenses. Un candidat qui connaît l'ordre de grandeur dimensionne sa proposition au lieu de deviner. La transparence attire les réponses sérieuses."
+      },
+      {
+        "question": "Qui doit rédiger : la maintenance ou les achats ?",
+        "reponse": "Les deux, avec la production. La maintenance apporte la connaissance des équipements, les achats la rigueur de la consultation, la production ses contraintes d'exploitation. Un document rédigé par un seul service se paie en angles morts."
+      },
+      {
+        "question": "Peut-on demander à un prestataire de l'aide pour la rédaction ?",
+        "reponse": "Oui, à condition de garder la main sur les choix et de maintenir l'équité entre candidats. C'est un service que nous rendons régulièrement, sans le conditionner à la consultation qui suit."
+      },
+      {
+        "question": "Je cherche en fait un cahier des charges GMAO. Est-ce le même document ?",
+        "reponse": "Non. Le cahier des charges GMAO décrit un besoin logiciel, celui de maintenance décrit une prestation de service. Les deux se croisent : toute consultation sérieuse pose la question de qui fournit la GMAO, qui la renseigne, qui possède les données. Méfiez-vous des trames diffusées par les éditeurs de logiciels."
+      },
+      {
+        "question": "Faut-il une GMAO avant d'externaliser sa maintenance ?",
+        "reponse": "Non, mais il faut le dire dans le document. Un prestataire sérieux peut travailler dans votre GMAO existante, en proposer une, ou tenir la traçabilité autrement au démarrage. L'essentiel est de trancher qui saisit quoi, dans quel outil, et qui reste propriétaire des données, réversibilité comprise."
+      },
+      {
+        "question": "Comment se construit le prix d'une réponse à ce type de consultation ?",
+        "reponse": "Sur ce que votre document décrit, et sur rien d'autre. Le périmètre d'équipements, le nombre de techniciens, les horaires de présence, l'astreinte attendue, les habilitations exigées et le niveau de service demandé font le chiffrage. Chaque zone d'ombre devient une marge de précaution : c'est la raison pour laquelle nous relisons les cahiers des charges avant qu'ils partent. Toute proposition passe par une visite de site et reste sur devis."
+      },
+      {
+        "question": "Faut-il prévoir une durée d'engagement dans le document ?",
+        "reponse": "Oui, et elle se traite comme le reste : durée initiale, reconduction, points de revue des indicateurs, conditions de sortie et restitution des données. Une durée annoncée permet au candidat de dimensionner son équipe et sa montée en compétence sur vos machines. Une durée passée sous silence, et vous recevez des offres calibrées pour du court terme."
+      },
+      {
+        "question": "Nous avons déjà un prestataire. Comment écrire la reprise de contrat ?",
+        "reponse": "Décrivez l'existant tel qu'il est : ce que le titulaire actuel réalise, ce qui fonctionne, ce qui coince, et l'état de l'historique dans la GMAO. Puis exigez des candidats une phase de démarrage écrite : transfert des consignes, formation aux machines, récupération des documents techniques, passation avec l'équipe sortante. Nous avons repris des parcs complets sur ce mode, avec les réalisations correspondantes en preuve sur cette page."
+      },
+      {
+        "question": "Intervenez-vous partout en France ?",
+        "reponse": "Oui. Migen compte 10 hubs de techniciens, à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Nos techniciens sont mobiles, y compris sur les sites éloignés d'un hub. Le siège est à Lyon, sur Limonest et Écully, et le groupe dispose de trois implantations hors de France, à Montréal, Dubaï et Madrid. Précisez l'adresse exacte et les contraintes d'accès du site dans votre section « contraintes du site » : c'est ce qui permet une réponse honnête sur les moyens affectés."
+      }
+    ],
+    "final": {
+      "question": "Votre besoin est encore en amont ?",
+      "bouton": "Faire relire mon cahier des charges"
+    }
   }
 }

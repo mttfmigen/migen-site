@@ -13,6 +13,15 @@ export interface Logo {
 }
 
 export interface ProprietesMarqueeClients {
+  /**
+   * Le surtitre orange du bandeau. Par défaut celui de l'accueil.
+   *
+   * POURQUOI LE RENDRE RÉGLABLE : le gabarit 03 des pages d'offre dessine le
+   * MÊME bandeau (même marquee, même masque, mêmes logos) sous une autre
+   * étiquette, « Ils nous font confiance ». Deux composants pour un bandeau
+   * auraient dérivé au premier ajustement de charte.
+   */
+  surtitre?: string;
   /** Logos affichés, dans l'ordre. Par défaut, la liste de la maquette.
       Dix-sept de ces fichiers ne sont pas encore dans `public/assets/clients/`
       (tous les PNG et le WebP) : passer une liste réduite tant que le
@@ -86,8 +95,16 @@ const IMAGE = {
   mixBlendMode: "multiply",
 } as const;
 
+const SURTITRE_ACCUEIL =
+  /* « Plus de 200 clients accompagnés » dans la maquette. Le compte tenu par
+     Migen est « plus de 120 clients, dont plus de 80 réguliers » : c'est la
+     formulation mandatée, et un chiffre public faux est un risque, pas un
+     détail de copie. */
+  "Plus de 120 clients, dont plus de 80 réguliers";
+
 export default function MarqueeClients({
   logos = LOGOS_MAQUETTE,
+  surtitre = SURTITRE_ACCUEIL,
 }: ProprietesMarqueeClients) {
   return (
     <section style={{ padding: "64px 0 0" }}>
@@ -111,11 +128,7 @@ export default function MarqueeClients({
             flex: "none",
           }}
         >
-          {/* « Plus de 200 clients accompagnés » dans la maquette. Le compte
-              tenu par Migen est « plus de 120 clients, dont plus de 80
-              réguliers » : c'est la formulation mandatée, et un chiffre public
-              faux est un risque, pas un détail de copie. */}
-          Plus de 120 clients, dont plus de 80 réguliers
+          {surtitre}
         </span>
       </div>
 

@@ -1,0 +1,116 @@
+/*
+  Survols et animation des gabarits de rubrique, relevés sur `style-hover` et
+  sur l'image-clé `mgMarquee` dans `maquette/gabarit-10-hub-de-rubrique.html` et
+  `maquette/gabarit-11-sous-rubrique.html`.
+
+  Ils vivent dans un module CSS et non dans `app/globals.css` : le fichier
+  global est écrit par plusieurs agents en parallèle, et ni un survol ni une
+  image-clé ne s'expriment dans un style en ligne.
+
+  Les boutons d'action réemploient `.boutonAction` et `.boutonSecondaire` de
+  `blocs/Blocs.module.css`, qui portent déjà les mêmes déclarations.
+*/
+
+/*
+  LES REPLIS MOBILES SONT ICI, ET PAS DANS `app/globals.css`, pour une raison de
+  fidélité : les classes globales `mg-r2` et `mg-r3` replient à 900px et 760px
+  avec une gouttière de 36px, alors que ces deux maquettes replient tout à 900px
+  avec 32px, et leur ligne d'offre à 10px. Reprendre les classes globales aurait
+  donné un repli proche mais faux, et l'aurait donné silencieusement.
+
+  Relevé dans les deux fichiers de maquette : `.g3-2`, `.g3-row`, `.g3-head`,
+  `.g3-sticky`, `.g3-3`, `.g3-pad`.
+*/
+
+/* `.g3-2` : deux colonnes qui se replient en une. */
+@media (max-width: 900px) {
+  .duo {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 32px !important;
+  }
+  .ligneOffre {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 10px !important;
+  }
+  /* L'en-tête de colonnes n'a plus de colonnes à nommer. */
+  .enteteOffre {
+    display: none !important;
+  }
+  /* Une colonne repliée pleine largeur ne peut plus coller. */
+  .collante {
+    position: static !important;
+  }
+}
+
+/* `.g3-3` et `.g3-pad` : la grille de références, et le rembourrage du panneau. */
+@media (max-width: 620px) {
+  .trio {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .panneau {
+    padding: 40px 24px !important;
+  }
+}
+
+/* Carte de maillage, maquette : `transform:translateY(-3px)`. La transition
+   est dans le style en ligne de la carte. */
+.carteLien:hover,
+.carteLien:focus-visible {
+  transform: translateY(-3px);
+}
+
+/* Carte de référence : la maquette y ajoute l'ombre portée. */
+.carteReference:hover,
+.carteReference:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.4);
+}
+
+/*
+  Le bandeau de logos, `@keyframes mgMarquee{from{translateX(0)}to{translateX(-50%)}}`,
+  `animation:mgMarquee 40s linear infinite`, en pause au survol.
+
+  Le ruban est rendu DEUX FOIS, la seconde `aria-hidden` : c'est ce qui rend le
+  défilement de -50% continu. Sans la copie, le ruban se vide à mi-course.
+*/
+.bandeau:hover .ruban {
+  animation-play-state: paused;
+}
+
+.ruban {
+  display: flex;
+  align-items: center;
+  gap: 72px;
+  width: max-content;
+  animation: mgMarquee 40s linear infinite;
+}
+
+@keyframes mgMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* La maquette coupe l'animation quand le système le demande. */
+@media (prefers-reduced-motion: reduce) {
+  .ruban {
+    animation: none;
+  }
+}
+
+/* Le lien souligné du corps d'une sous-rubrique, maquette : le soulignement est
+   orange à 60 %, la couleur passe à l'accent au survol. */
+.corpsSuivi a {
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 124, 60, 0.6);
+  text-underline-offset: 3px;
+}
+.corpsSuivi a:hover,
+.corpsSuivi a:focus-visible {
+  color: var(--acc);
+}

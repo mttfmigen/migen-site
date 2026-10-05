@@ -1,63 +1,16 @@
 {
   "url": "/expertises/robotique/fanuc/",
   "contenu": {
-    "gabarit": "domaine",
-    "chapeau": "Un technicien qui lit les alarmes du contrôleur, teste axe par axe et reprend le programme lui-même. Robots Fanuc et machines Robodrill, Roboshot, Robocut traités par les mêmes équipes, avec vos sauvegardes datées avant de quitter le site.",
-    "boutons": [
+    "gabarit": "specialite",
+    "sections": [
       {
-        "libelle": "Demander une intervention"
-      }
-    ],
-    "traitements": [
-      "La recherche de cause racine, pas l'échange de pièce",
-      "Le remastering et la reprise de points",
-      "Vos programmes sauvegardés et datés",
-      "Les organes d'usure suivis dans l'ordre",
-      "Toute la gamme, pas seulement le bras",
-      "Les machines à commande numérique Fanuc",
-      "Le rétrofit chiffré face au remplacement"
-    ],
-    "autres": [
-      {
-        "libelle": "Automatisme industriel",
-        "href": "/expertises/automatisme/"
+        "type": "heros",
+        "h1": "Fanuc robotique",
+        "mecanisme": "Un technicien qui lit les alarmes du contrôleur, teste axe par axe et reprend le programme lui-même. Robots Fanuc et machines Robodrill, Roboshot, Robocut traités par les mêmes équipes, avec vos sauvegardes datées avant de quitter le site.",
+        "cta": "Demander une intervention",
+        "telephone": "04 78 33 72 05",
+        "phraseDelai": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7."
       },
-      {
-        "libelle": "Maintenance électrique industrielle",
-        "href": "/expertises/electrique/"
-      },
-      {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
-      },
-      {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance mécanique",
-        "href": "/expertises/mecanique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
-      }
-    ],
-    "cta": {
-      "question": "Besoin que votre parc Fanuc tienne sa cadence toute l'année au lieu de décrocher par paliers ?",
-      "bouton": {
-        "libelle": "Demander une intervention"
-      }
-    },
-    "reste": [
       {
         "type": "chiffres",
         "chiffres": [
@@ -271,6 +224,11 @@
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et 10 hubs de techniciens à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Nos techniciens sont mobiles et interviennent au-delà de ces villes. Une visite préventive annuelle et une priorité en cas de panne n'exigent pas un dispositif plus lourd que nécessaire."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que votre parc Fanuc tienne sa cadence toute l'année au lieu de décrocher par paliers ?",
+        "bouton": "Demander une intervention"
       }
     ]
   }

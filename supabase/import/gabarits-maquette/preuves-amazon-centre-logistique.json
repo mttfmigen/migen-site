@@ -1,0 +1,119 @@
+{
+  "url": "/preuves/amazon-centre-logistique/",
+  "h1": "Étude de cas AMAZON : maintien d'un centre logistique",
+  "contenu": {
+    "gabarit": "fiche",
+    "sections": [
+      {
+        "id": "le-client-et-le-site",
+        "titre": "Le client et le site",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "AMAZON exploite le centre logistique ORY4 en continu, 24 heures sur 24. Depuis septembre 2022, Migen y assure les interventions préventives une semaine sur deux, sous contrat annuel."
+          }
+        ]
+      },
+      {
+        "id": "la-situation",
+        "titre": "La situation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Un site qui ne ferme jamais n'a pas de fenêtre de maintenance.** Chaque minute d'immobilisation se paie sur les flux sortants."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "La contrainte posée par AMAZON tenait en quatre points :"
+          },
+          {
+            "type": "liste",
+            "items": [
+              "**Aucune plage longue** : Les opérations doivent tenir dans quelques heures.",
+              "**Un volume d'équipements élevé** : Beaucoup de machines à couvrir sur le même créneau.",
+              "**Un rythme imposé** : Une semaine sur deux, sans décalage possible.",
+              "**Un risque qui remonte vite** : Le préventif en retard se transforme en défaillance."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-que-nous-avons-mis-en-place",
+        "titre": "Ce que nous avons mis en place",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Effectif massé sur le créneau** : 10 à 20 techniciens polyvalents mobilisés en même temps, pour traiter un grand nombre d'interventions préventives en parallèle.",
+              "**Format calé sur 8 heures** : Les opérations sont découpées pour entrer dans des plages de quelques heures, sans débordement sur l'exploitation.",
+              "**Préparation partagée** : Les équipes AMAZON organisent les opérations en amont et rendent les pièces de rechange disponibles avant l'arrivée des techniciens.",
+              "**Exécution et contrôle** : Migen prend en charge l'exécution, le contrôle et les tests en série de chaque opération.",
+              "**Rythme tenu dans la durée** : Le dispositif tourne une semaine sur deux depuis 2022, sans rupture."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-dispositif",
+        "titre": "Le dispositif",
+        "blocs": [
+          {
+            "type": "tableau",
+            "entetes": [
+              "Élément",
+              "Détail"
+            ],
+            "lignes": [
+              [
+                "Client",
+                "AMAZON"
+              ],
+              [
+                "Site",
+                "Centre logistique ORY4"
+              ],
+              [
+                "Période",
+                "Depuis septembre 2022, mission en cours"
+              ],
+              [
+                "Effectif Migen",
+                "10 à 20 techniciens polyvalents"
+              ],
+              [
+                "Durée d'intervention",
+                "8 heures"
+              ],
+              [
+                "Fréquence",
+                "1 semaine sur 2"
+              ],
+              [
+                "Nature des travaux",
+                "Maintenance préventive, contrôle, tests en série"
+              ],
+              [
+                "Cadre",
+                "Contrat annuel"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-resultat",
+        "titre": "Le résultat",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Une opération maîtrisée** : Délicate au départ, elle l'est devenue grâce à l'organisation et à l'entraînement des équipes, côté prestataire comme côté client.",
+              "**Un risque de défaillance réduit** : Le préventif passe dans la fenêtre prévue, ce qui sécurise la continuité opérationnelle du site.",
+              "**Un périmètre qui s'élargit** : Migen réalise toujours ces interventions, avec des responsabilités de plus en plus importantes."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

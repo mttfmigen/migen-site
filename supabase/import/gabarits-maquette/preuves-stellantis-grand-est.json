@@ -1,0 +1,121 @@
+{
+  "url": "/preuves/stellantis-grand-est/",
+  "h1": "Étude de cas STELLANTIS : sites du Grand Est",
+  "contenu": {
+    "gabarit": "fiche",
+    "sections": [
+      {
+        "id": "le-client-et-le-site",
+        "titre": "Le client et le site",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "STELLANTIS, anciennement PSA, a retenu Migen comme partenaire pour plusieurs de ses sites du Grand Est, depuis juin 2023. La décision s'inscrit dans la transition de ses usines vers la production de véhicules électriques."
+          }
+        ]
+      },
+      {
+        "id": "la-situation",
+        "titre": "La situation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Faire basculer des usines vers l'électrique demande des compétences que les équipes en place n'ont pas toutes.** Le problème n'est pas d'ajouter des heures, il est d'ajouter des compétences absentes en interne."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "La problématique posée : un manque de compétence pour prendre en charge les parcs machines de plusieurs sites, dans un contexte de transition technologique."
+          },
+          {
+            "type": "liste",
+            "items": [
+              "**Plusieurs sites en même temps** : Le besoin ne portait pas sur une usine isolée.",
+              "**Des compétences variées à réunir** : Du préventif au curatif, sur des équipements différents.",
+              "**Un outil industriel mouvant** : Les parcs machines changent pendant que les usines produisent."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-que-nous-avons-mis-en-place",
+        "titre": "Ce que nous avons mis en place",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Des dizaines d'intervenants en simultané** : Plusieurs dizaines de collaborateurs aux compétences variées, mobilisés en même temps sur les sites concernés.",
+              "**Préventif et curatif portés ensemble** : Le même dispositif couvre les deux, sans découpage artificiel entre la prévention et la réparation.",
+              "**Une montée en charge progressive** : Le partenariat a commencé sur un périmètre réduit, puis s'est étendu après résolution des premières difficultés techniques.",
+              "**Un engagement long** : Le contrat porte sur le développement et l'amélioration des performances, pas sur une intervention ponctuelle."
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Ce qui a déclenché l'extension du périmètre : la confiance mutuelle et la capacité de Migen à traiter efficacement les premières difficultés techniques. Le besoin est passé d'un point technique à couvrir à plusieurs sites servis en parallèle."
+          }
+        ]
+      },
+      {
+        "id": "le-dispositif",
+        "titre": "Le dispositif",
+        "blocs": [
+          {
+            "type": "tableau",
+            "entetes": [
+              "Élément",
+              "Détail"
+            ],
+            "lignes": [
+              [
+                "Client",
+                "STELLANTIS, anciennement PSA"
+              ],
+              [
+                "Territoire",
+                "Plusieurs sites du Grand Est"
+              ],
+              [
+                "Secteur",
+                "Industrie automobile"
+              ],
+              [
+                "Démarrage",
+                "Juin 2023, mission en cours"
+              ],
+              [
+                "Effectif Migen",
+                "18 à 25 techniciens"
+              ],
+              [
+                "Problématique",
+                "Manque de compétence sur les parcs machines en transition technologique"
+              ],
+              [
+                "Réponse",
+                "Plusieurs dizaines de collaborateurs aux compétences variées"
+              ],
+              [
+                "Nature des travaux",
+                "Maintenance préventive et curative"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-resultat",
+        "titre": "Le résultat",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Les parcs machines de plusieurs sites sont pris en charge** : Le manque de compétence initial est couvert.",
+              "**Le préventif et le curatif tiennent ensemble** : Un seul dispositif porte les deux.",
+              "**La collaboration s'est élargie dans la durée** : Site après site, sur un engagement continu."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

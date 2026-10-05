@@ -3,12 +3,12 @@
   "contenu": {
     "gabarit": "ville",
     "chapeau": "Dans la Drôme, l'industrie vit au rythme des campagnes : les fruits arrivent, les lignes d'embouteillage et de conditionnement de la plaine tournent à plein, et tout se joue sur quelques semaines. Autour, l'axe rhodanien aligne les plateformes logistiques, Rovaltain la mécanique de précision, Romans le cuir, le sud du département l'énergie. Nous préparons vos équipements avant le pic, pas pendant.",
-    "actions": [
-      {
-        "libelle": "Faire chiffrer ma maintenance à Valence",
-        "href": "#formulaire"
-      }
-    ],
+    "action": {
+      "libelle": "Faire chiffrer ma maintenance à Valence",
+      "href": "#formulaire"
+    },
+    "telephone": "04 78 33 72 05",
+    "delai": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte en option, nuits, week-ends et jours fériés.",
     "reperes": [
       {
         "valeur": "+ 120",
@@ -24,9 +24,16 @@
         "detail": "Aucune dans la Drôme, des techniciens qui s'y déplacent"
       }
     ],
-    "contact": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 en option, nuits, week-ends et jours fériés.",
-    "constatTexte": "Une ligne d'embouteillage à l'arrêt en pleine campagne, et le seul technicien qui connaît la machine est en congé. La saison ne se décale pas, elle se perd.",
-    "constatPuces": [
+    "logos": [
+      "DANONE",
+      "McCAIN",
+      "VPK",
+      "SUEZ",
+      "VEEPEE"
+    ],
+    "problemeTitre": "Une ligne d'embouteillage à l'arrêt en pleine campagne, et le seul technicien qui connaît la machine est en congé.",
+    "problemeTexte": "La saison ne se décale pas, elle se perd.",
+    "problemes": [
       {
         "texte": "Fruits, jus, conditionnement : ce qui n'est pas produit pendant le pic ne se rattrape pas au trimestre suivant.",
         "accroche": "La saison concentre l'année sur quelques semaines."
@@ -48,7 +55,77 @@
         "accroche": "Le sud du département n'a aucune marge."
       }
     ],
-    "reponsePuces": [
+    "offre": [
+      {
+        "benefice": "Vous entrez en saison avec un parc prêt, pas avec une liste de réparations en attente.",
+        "prestation": {
+          "texte": "préventif resserré, pièces d'usure remplacées, points critiques repris avant le démarrage.",
+          "accroche": "Un compte à rebours avant la campagne"
+        }
+      },
+      {
+        "benefice": "La cadence tient sans épuiser l'équipe interne ni empiler les heures supplémentaires.",
+        "prestation": {
+          "texte": ", en appui de vos équipes, sans embauche précipitée.",
+          "accroche": "Un renfort pendant le pic"
+        }
+      },
+      {
+        "benefice": "Vos lignes agroalimentaires cessent de subir les mêmes réparations chaque année.",
+        "prestation": {
+          "texte": "étanchéité, protection des moteurs, éléments d'usure suivis.",
+          "accroche": "Des gammes adaptées au lavage et au froid"
+        }
+      },
+      {
+        "benefice": "Les opérations lourdes ne mangent jamais une rotation de quai sur l'axe rhodanien.",
+        "prestation": {
+          "texte": ", tôt le matin, entre deux équipes, de nuit.",
+          "accroche": "Des interventions en heures creuses"
+        }
+      },
+      {
+        "benefice": "Un seul contrat pour un parc qui mélange embouteillage, extrusion et convoyage.",
+        "prestation": {
+          "texte": "[mécanique](/expertises/mecanique/), [électricité](/expertises/electrique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure](/expertises/soudure/).",
+          "accroche": "Le champ technique complet"
+        }
+      },
+      {
+        "benefice": "Une panne de nuit en pleine campagne ne coûte plus une journée de production.",
+        "prestation": {
+          "texte": ", tenue par nos techniciens mobiles, comme partout en France ([voir nos implantations](/implantations/lyon/)).",
+          "accroche": "Astreinte en option"
+        }
+      }
+    ],
+    "etapes": [
+      {
+        "texte": "Vous exposez la situation au 04 78 33 72 05. Rappel dans l'heure aux horaires ouvrés : équipement concerné, accès, habilitations, urgence réelle.",
+        "titre": "L'appel qualifié"
+      },
+      {
+        "texte": "Périmètre, moyens, conditions et taux, écrits avant le départ. Tout écart de périmètre passe par un accord préalable.",
+        "titre": "Le devis"
+      },
+      {
+        "texte": "Inventaire des points critiques, pièces d'usure, retard de préventif à résorber avant le démarrage de la campagne.",
+        "titre": "L'état des lieux avant saison"
+      },
+      {
+        "texte": "Accueil sécurité, consignation, diagnostic, réparation, essais, montée en cadence avec vos opérateurs.",
+        "titre": "L'intervention"
+      },
+      {
+        "texte": "L'analyse cherche l'origine de la défaillance pour qu'elle ne revienne pas au même point la saison suivante.",
+        "titre": "La cause racine"
+      },
+      {
+        "texte": "Actions, pièces, résultats, préconisations, versés dans votre GMAO. Les données restent chez vous.",
+        "titre": "Le compte rendu"
+      }
+    ],
+    "garanties": [
       {
         "texte": "congé, départ ou surcroît d'activité, le réseau fournit un profil équivalent briefé sur vos installations. Votre saison ne repose plus sur une seule personne.",
         "accroche": "La continuité, même en cas d'absence"
@@ -62,7 +139,43 @@
         "accroche": "Tout écrit avant la première visite"
       }
     ],
-    "faq": [
+    "appel": {
+      "question": "Besoin de préparer vos lignes avant la prochaine campagne plutôt que pendant ?",
+      "bouton": "Faire chiffrer ma maintenance à Valence",
+      "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+    },
+    "preuves": [
+      {
+        "texte": ", site agroalimentaire",
+        "titre": "Deux techniciens Migen postés en 3x8 sur des lignes liquides et poudre",
+        "lienHref": "/preuves/danone-lignes-de-production/",
+        "lienLibelle": "Étude de cas DANONE : lignes de production"
+      },
+      {
+        "titre": "Techniciens en renfort sur un site agroalimentaire, premier contrat hors de France depuis octobre 2024",
+        "lienHref": "/preuves/mccain-belgique/",
+        "lienLibelle": "Étude de cas McCAIN : Belgique"
+      },
+      {
+        "texte": "2025 à 2026",
+        "titre": "Un technicien capable de passer d'un équipement à l'autre sur un site papier et emballage",
+        "lienHref": "/preuves/vpk/",
+        "lienLibelle": "Étude de cas VPK : maintenance de site"
+      },
+      {
+        "texte": "remise en état d'un site de traitement des eaux industrielles",
+        "titre": "Un électromécanicien habilité risque chimique mobilisé 6 mois",
+        "lienHref": "/preuves/suez-remise-en-etat/",
+        "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
+      },
+      {
+        "texte": "prise en charge complète réalisée en un mois",
+        "titre": "Six techniciens en permanence sur un contrat de préventif annuel multi-sites",
+        "lienHref": "/preuves/veepee-sites-lyon/",
+        "lienLibelle": "Étude de cas VEEPEE : sites de Lyon"
+      }
+    ],
+    "questions": [
       {
         "reponse": "Oui. Le renfort se dimensionne sur la durée du pic et les technologies en cause, en appui de vos équipes. Beaucoup de sites drômois combinent un préventif resserré avant la saison et une présence pendant, puis reviennent à un rythme normal. Le format et les dates s'écrivent au devis.",
         "question": "Pouvez-vous nous renforcer uniquement pendant la campagne ?"
@@ -76,7 +189,7 @@
         "question": "Couvrez-vous toute la Drôme ?"
       },
       {
-        "reponse": "Aucun chiffre d'affichage sur cette page. Nous tenons deux choses : le rappel dans l'heure aux horaires ouvrés et une qualification qui évite un aller-retour inutile. L'astreinte 24/24 et 7/7 couvre en option la nuit, le week-end et les jours fériés.",
+        "reponse": "Aucun chiffre d'affichage sur cette page. Nous tenons deux choses : le rappel dans l'heure aux horaires ouvrés et une qualification qui évite un aller-retour inutile. L'astreinte couvre en option la nuit, le week-end et les jours fériés.",
         "question": "Quel délai pour une intervention à Valence ?"
       },
       {
@@ -92,183 +205,46 @@
         "question": "Faites-vous la maintenance CVC ou multitechnique de bâtiments ?"
       }
     ],
-    "autres": [
+    "liens": [
       {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
+        "libelle": "Mécanique",
+        "href": "/expertises/mecanique/"
       },
       {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
+        "libelle": "Électricité",
+        "href": "/expertises/electrique/"
       },
       {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
+        "libelle": "Automatisme",
+        "href": "/expertises/automatisme/"
       },
       {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
+        "libelle": "Hydraulique",
+        "href": "/expertises/hydraulique/"
       },
       {
-        "libelle": "Nantes",
-        "href": "/implantations/nantes/"
+        "libelle": "Pneumatique",
+        "href": "/expertises/pneumatique/"
       },
       {
-        "libelle": "Brest",
-        "href": "/implantations/nantes/brest/"
+        "libelle": "Soudure",
+        "href": "/expertises/soudure/"
       },
       {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
+        "libelle": "Voir nos implantations",
+        "href": "/implantations/lyon/",
+        "contexte": ", tenue par nos techniciens mobiles, comme partout en France (voir nos implantations)."
       },
       {
-        "libelle": "paris",
-        "href": "/implantations/paris/"
-      },
-      {
-        "libelle": "Rouen",
-        "href": "/implantations/paris/rouen/"
-      },
-      {
-        "libelle": "Strasbourg",
-        "href": "/implantations/strasbourg/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
-      },
-      {
-        "libelle": "Toulouse",
-        "href": "/implantations/toulouse/"
-      },
-      {
-        "libelle": "Bordeaux",
-        "href": "/implantations/toulouse/bordeaux/"
+        "libelle": "Résidence",
+        "href": "/offres/residence/",
+        "contexte": "Oui, avec l'offre résidence : un salarié Migen intégré à votre équipe et encadré par un référent, en poste sous 2 à 3 semaines."
       }
     ],
-    "reste": [
-      {
-        "type": "offre",
-        "lignes": [
-          {
-            "benefice": "Vous entrez en saison avec un parc prêt, pas avec une liste de réparations en attente.",
-            "prestation": {
-              "texte": "préventif resserré, pièces d'usure remplacées, points critiques repris avant le démarrage.",
-              "accroche": "Un compte à rebours avant la campagne"
-            }
-          },
-          {
-            "benefice": "La cadence tient sans épuiser l'équipe interne ni empiler les heures supplémentaires.",
-            "prestation": {
-              "texte": ", en appui de vos équipes, sans embauche précipitée.",
-              "accroche": "Un renfort pendant le pic"
-            }
-          },
-          {
-            "benefice": "Vos lignes agroalimentaires cessent de subir les mêmes réparations chaque année.",
-            "prestation": {
-              "texte": "étanchéité, protection des moteurs, éléments d'usure suivis.",
-              "accroche": "Des gammes adaptées au lavage et au froid"
-            }
-          },
-          {
-            "benefice": "Les opérations lourdes ne mangent jamais une rotation de quai sur l'axe rhodanien.",
-            "prestation": {
-              "texte": ", tôt le matin, entre deux équipes, de nuit.",
-              "accroche": "Des interventions en heures creuses"
-            }
-          },
-          {
-            "benefice": "Un seul contrat pour un parc qui mélange embouteillage, extrusion et convoyage.",
-            "prestation": {
-              "texte": "[mécanique](/expertises/mecanique/), [électricité](/expertises/electrique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure](/expertises/soudure/).",
-              "accroche": "Le champ technique complet"
-            }
-          },
-          {
-            "benefice": "Une panne de nuit en pleine campagne ne coûte plus une journée de production.",
-            "prestation": {
-              "texte": ", tenue par nos techniciens mobiles, comme partout en France ([voir nos implantations](/implantations/lyon/)).",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
-          }
-        ]
-      },
-      {
-        "type": "deroule",
-        "etapes": [
-          {
-            "texte": "Vous exposez la situation au 04 78 33 72 05. Rappel dans l'heure aux horaires ouvrés : équipement concerné, accès, habilitations, urgence réelle.",
-            "titre": "L'appel qualifié"
-          },
-          {
-            "texte": "Périmètre, moyens, conditions et taux, écrits avant le départ. Tout écart de périmètre passe par un accord préalable.",
-            "titre": "Le devis"
-          },
-          {
-            "texte": "Inventaire des points critiques, pièces d'usure, retard de préventif à résorber avant le démarrage de la campagne.",
-            "titre": "L'état des lieux avant saison"
-          },
-          {
-            "texte": "Accueil sécurité, consignation, diagnostic, réparation, essais, montée en cadence avec vos opérateurs.",
-            "titre": "L'intervention"
-          },
-          {
-            "texte": "L'analyse cherche l'origine de la défaillance pour qu'elle ne revienne pas au même point la saison suivante.",
-            "titre": "La cause racine"
-          },
-          {
-            "texte": "Actions, pièces, résultats, préconisations, versés dans votre GMAO. Les données restent chez vous.",
-            "titre": "Le compte rendu"
-          }
-        ]
-      },
-      {
-        "type": "cta",
-        "bouton": "Faire chiffrer ma maintenance à Valence",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin de préparer vos lignes avant la prochaine campagne plutôt que pendant ?"
-      },
-      {
-        "type": "preuves",
-        "preuves": [
-          {
-            "texte": ", site agroalimentaire",
-            "titre": "Deux techniciens Migen postés en 3x8 sur des lignes liquides et poudre",
-            "lienHref": "/preuves/danone-lignes-de-production/",
-            "lienLibelle": "Étude de cas DANONE : lignes de production"
-          },
-          {
-            "titre": "Techniciens en renfort sur un site agroalimentaire, premier contrat hors de France depuis octobre 2024",
-            "lienHref": "/preuves/mccain-belgique/",
-            "lienLibelle": "Étude de cas McCAIN : Belgique"
-          },
-          {
-            "texte": "2025 à 2026",
-            "titre": "Un technicien capable de passer d'un équipement à l'autre sur un site papier et emballage",
-            "lienHref": "/preuves/vpk/",
-            "lienLibelle": "Étude de cas VPK : maintenance de site"
-          },
-          {
-            "texte": "remise en état d'un site de traitement des eaux industrielles",
-            "titre": "Un électromécanicien habilité risque chimique mobilisé 6 mois",
-            "lienHref": "/preuves/suez-remise-en-etat/",
-            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
-          },
-          {
-            "texte": "prise en charge complète réalisée en un mois",
-            "titre": "Six techniciens en permanence sur un contrat de préventif annuel multi-sites",
-            "lienHref": "/preuves/veepee-sites-lyon/",
-            "lienLibelle": "Étude de cas VEEPEE : sites de Lyon"
-          }
-        ]
-      },
-      {
-        "type": "ctaFinal",
-        "bouton": "Faire chiffrer ma maintenance à Valence",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-        "question": "Besoin de passer la campagne sans dépendre d'une seule personne ?"
-      }
-    ]
+    "appelFinal": {
+      "question": "Besoin de passer la campagne sans dépendre d'une seule personne ?",
+      "bouton": "Faire chiffrer ma maintenance à Valence",
+      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
+    }
   }
 }

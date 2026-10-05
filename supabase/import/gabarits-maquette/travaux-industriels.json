@@ -1,0 +1,208 @@
+{
+  "url": "/travaux-industriels/",
+  "source": "dessin : maquette/gabarit-10-hub-de-rubrique.html. texte : ../migen-refonte/seo/CONVERSION/Acquisition/travaux-industriels.md, via scripts/produit_hub.mjs.",
+  "contenu": {
+    "gabarit": "hub",
+    "chapeau": "**Vos machines bougent, montent ou disparaissent sans que la production paie l'addition.** Une équipe, un planning, un interlocuteur.",
+    "cta": "Faire chiffrer mes travaux",
+    "telephone": "04 78 33 72 05",
+    "phraseDelai": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30",
+    "enBref": [
+      {
+        "valeur": "+ 100",
+        "libelle": "collaborateurs · techniciens salariés Migen, pas de chaîne d'intermédiaires."
+      },
+      {
+        "valeur": "+ 120",
+        "libelle": "clients industriels · dont plus de 80 qui reviennent chaque année."
+      },
+      {
+        "valeur": "4",
+        "libelle": "agences · Lyon (siège), Montréal, Dubaï, Madrid, et des hubs techniques en France."
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+      }
+    ],
+    "clients": [
+      "AKTID",
+      "ORTHUS x ECOCEM",
+      "ORTHUS x WASHTEC",
+      "SOPREMA",
+      "ALSTEF Group"
+    ],
+    "punchTitre": "Un chantier industriel se joue rarement sur la technique.",
+    "punchTexte": "Il se joue sur qui tient le planning.",
+    "problemes": [
+      {
+        "accroche": "Trois prestataires, zéro responsable.",
+        "texte": "Le transporteur, le levageur et l'électricien se renvoient la faute pendant que la ligne est à l'arrêt."
+      },
+      {
+        "accroche": "Le démontage fait sans repérage.",
+        "texte": "La panne n'apparaît pas au remontage, elle apparaît trois jours après le redémarrage."
+      },
+      {
+        "accroche": "La production devient la variable d'ajustement.",
+        "texte": "Le chantier glisse, et c'est votre carnet de commandes qui encaisse."
+      }
+    ],
+    "offre": [
+      {
+        "prestation": {
+          "texte": "**[Transfert industriel](/travaux-industriels/transfert-industriel/)**"
+        },
+        "benefice": "Votre outil de production redémarre à la date prévue, sur le nouveau site. Audit, démontage, transport, remontage, essais."
+      },
+      {
+        "prestation": {
+          "texte": "**[Démantèlement industriel](/travaux-industriels/demantelement-industriel/)**"
+        },
+        "benefice": "Une zone rendue propre et documentée, avec la traçabilité des déchets et la valorisation de ce qui peut l'être."
+      },
+      {
+        "prestation": {
+          "texte": "**[Montage industriel](/travaux-industriels/montage-industriel/)**"
+        },
+        "benefice": "Un équipement neuf assemblé, calé, raccordé et essayé par des techniciens de maintenance."
+      },
+      {
+        "prestation": {
+          "texte": "**[Levage et manutention lourde](/travaux-industriels/levage-manutention/)**"
+        },
+        "benefice": "Une charge déplacée selon un mode opératoire écrit, points d'élingage relevés avant la dépose."
+      }
+    ],
+    "liens": [
+      {
+        "titre": "Transfert industriel",
+        "url": "/travaux-industriels/transfert-industriel/",
+        "extrait": "Transfert industriel",
+        "nature": "Page"
+      },
+      {
+        "titre": "Démantèlement industriel",
+        "url": "/travaux-industriels/demantelement-industriel/",
+        "extrait": "Démantèlement industriel",
+        "nature": "Page"
+      },
+      {
+        "titre": "Montage industriel",
+        "url": "/travaux-industriels/montage-industriel/",
+        "extrait": "Montage industriel",
+        "nature": "Page"
+      },
+      {
+        "titre": "Levage et manutention lourde",
+        "url": "/travaux-industriels/levage-manutention/",
+        "extrait": "Levage et manutention lourde",
+        "nature": "Page"
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Visite et audit.",
+        "texte": "Inventaire des équipements, accès, énergies, contraintes de sécurité. La faisabilité est validée avec votre responsable de production."
+      },
+      {
+        "titre": "Chiffrage poste par poste.",
+        "texte": "Un devis qui dit ce qui est inclus et ce qui ne l'est pas. Pas de ligne « divers »."
+      },
+      {
+        "titre": "Phasage avec votre production.",
+        "texte": "Tout ce qui peut se préparer sans arrêter la ligne est préparé avant."
+      },
+      {
+        "titre": "Exécution encadrée.",
+        "texte": "Un chef de projet, un numéro, un compte rendu. Vous arbitrez sur votre production, plus entre prestataires."
+      },
+      {
+        "titre": "Restitution.",
+        "texte": "Essais, réglages, dossier de fin de chantier. Le chantier se termine quand la ligne produit, pas quand le camion repart."
+      }
+    ],
+    "garanties": [
+      {
+        "accroche": "Le planning validé ensemble est l'outil de pilotage.",
+        "texte": "Chaque écart est signalé sans attendre, expliqué et traité. Pas de découverte en réunion de fin de chantier."
+      },
+      {
+        "accroche": "La sécurité passe avant le calendrier.",
+        "texte": "Analyse de risque, plan de prévention, modes opératoires écrits pour chaque phase de levage."
+      },
+      {
+        "accroche": "Celui qui intervient est un salarié Migen",
+        "texte": ", sur un métier que nous pratiquons toute l'année : mécanique, électricité, automatisme, hydraulique, pneumatique, soudure et chaudronnerie, robotique."
+      }
+    ],
+    "appel": {
+      "question": "Besoin de savoir ce que coûteraient vos travaux industriels ?",
+      "bouton": "Faire chiffrer mes travaux",
+      "rappel": "04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30, astreinte."
+    },
+    "preuves": [
+      {
+        "titre": "Montage d'un centre logistique, Clermont-Ferrand, 2023.",
+        "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés en pleine période estivale, site livré à la date prévue",
+        "lienLibelle": "Étude de cas AKTID",
+        "lienHref": "/preuves/aktid-centre-logistique/"
+      },
+      {
+        "titre": "Construction d'un site de R&D bas carbone, région parisienne.",
+        "texte": "Chantier piloté de bout en bout par Orthus, filiale du groupe, jalons critiques suivis",
+        "lienLibelle": "Étude de cas ORTHUS x ECOCEM",
+        "lienHref": "/preuves/orthus-ecocem/"
+      },
+      {
+        "titre": "Montage de portiques de lavage, partout en France.",
+        "texte": "Réception, assemblage, levage, raccordements, validation à l'issue du montage",
+        "lienLibelle": "Étude de cas ORTHUS x WASHTEC",
+        "lienHref": "/preuves/orthus-washtec/"
+      },
+      {
+        "titre": "Montage et déplacement de machines, étanchéité et isolation, 2025.",
+        "texte": "Délais de chantier tenus sans pénalité, transferts de machines sécurisés",
+        "lienLibelle": "Étude de cas SOPREMA",
+        "lienHref": "/preuves/soprema/"
+      },
+      {
+        "titre": "Contrôle de chantier, projets stratégiques, 2025 à 2026.",
+        "texte": "Phases critiques sécurisées, aucun recrutement d'urgence côté client",
+        "lienLibelle": "Étude de cas ALSTEF Group",
+        "lienHref": "/preuves/alstef-group/"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Que recouvre exactement « travaux industriels » chez Migen ?",
+        "reponse": "Quatre familles : le [transfert industriel](/travaux-industriels/transfert-industriel/), le [démantèlement industriel](/travaux-industriels/demantelement-industriel/), le [montage industriel](/travaux-industriels/montage-industriel/) et le [levage et la manutention lourde](/travaux-industriels/levage-manutention/). Un même chantier en combine souvent deux ou trois."
+      },
+      {
+        "question": "Combien coûtent des travaux industriels ?",
+        "reponse": "Le montant dépend du nombre d'équipements, des contraintes d'accès, de la distance et du niveau de prestation. Le chiffrage est établi sur devis après audit, gratuitement, poste par poste. Un prix annoncé sans visite est un prix qui bougera."
+      },
+      {
+        "question": "Nous avons déjà un prestataire de maintenance. Vous vous y substituez ?",
+        "reponse": "Non. Nous intervenons sur le chantier et nous rendons le site à vos équipes et à votre prestataire habituel, avec un compte rendu exploitable."
+      },
+      {
+        "question": "Qui sont les techniciens qui interviennent ?",
+        "reponse": "Des salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des candidats sont retenus, et les résultats sont partagés avec vous."
+      },
+      {
+        "question": "Qui est responsable en cas de casse ?",
+        "reponse": "Le sujet est traité avant le chantier. Le devis et le cahier des charges précisent les responsabilités, les garanties et l'assurance mobilisée. Vous savez qui répond de quoi avant le premier câble débranché."
+      },
+      {
+        "question": "Intervenez-vous partout en France ?",
+        "reponse": "Oui, depuis 4 agences : Lyon (siège), Montréal, Dubaï, Madrid, avec des hubs techniques sur le territoire. Quand un chantier concerne deux sites éloignés, les deux équipes travaillent sur le même dossier."
+      }
+    ],
+    "final": {
+      "question": "Besoin d'un premier avis sur votre projet, même s'il n'est prévu que dans six mois ?",
+      "bouton": "Parler à un chargé d'affaires",
+      "rappel": "04 78 33 72 05, astreinte."
+    }
+  }
+}

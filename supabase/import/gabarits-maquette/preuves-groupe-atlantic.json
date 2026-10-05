@@ -1,0 +1,144 @@
+{
+  "url": "/preuves/groupe-atlantic/",
+  "h1": "GROUPE ATLANTIC : un renfort permanent sur les sites de production",
+  "contenu": {
+    "gabarit": "fiche",
+    "sections": [
+      {
+        "id": "le-client-et-le-site",
+        "titre": "Le client et le site",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Le Groupe Atlantic est un acteur du confort thermique. La mission porte sur ses sites de production, pas sur un atelier isolé."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Migen y renforce les équipes de maintenance depuis octobre 2024. La collaboration est toujours en cours, en présence permanente."
+          }
+        ]
+      },
+      {
+        "id": "la-situation",
+        "titre": "La situation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Un service maintenance en sous-effectif sur plusieurs sites, c'est la disponibilité machine qui se rejoue chaque semaine.** Le Groupe Atlantic visait quatre choses en s'adressant à Migen."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Renforcer les équipes de maintenance** sur les sites de production."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Améliorer la disponibilité des installations** et la continuité de production."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Réduire les temps d'arrêt** sur les équipements."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Anticiper les besoins de maintenance** préventive et corrective."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Ces objectifs supposent une présence stable. Un dépannage appelé au coup par coup ne construit rien, et le préventif reste toujours le premier sacrifié."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Sur plusieurs sites, le problème change de nature. Ce n'est plus une équipe qui sature, c'est une compétence qui manque à plusieurs endroits en même temps."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Chaque site tente alors de se débrouiller seul. Les bonnes pratiques ne circulent plus, et la même panne se traite trois fois différemment."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Un renfort permanent, dimensionné site par site, casse cette logique. L'effectif s'ajuste à la charge sans qu'aucun site n'ait à ouvrir un poste dans l'urgence."
+          }
+        ]
+      },
+      {
+        "id": "ce-que-nous-avons-mis-en-place",
+        "titre": "Ce que nous avons mis en place",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Vous ajustez l'effectif au besoin réel.** Un à trois techniciens sont déployés selon la charge des sites."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous installez une présence permanente**, pas une intervention ponctuelle. C'est ce qui rend le préventif tenable."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous visez le moyen terme.** La mission est cadrée dans la durée, ce qui permet aux intervenants de connaître les installations."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous gagnez en réactivité sur les équipements de production**, avec un suivi rigoureux des interventions."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous n'ouvrez pas de postes.** Migen recrute, encadre et suit les techniciens affectés."
+          }
+        ]
+      },
+      {
+        "id": "le-dispositif",
+        "titre": "Le dispositif",
+        "blocs": [
+          {
+            "type": "tableau",
+            "entetes": [
+              "Élément",
+              "Détail"
+            ],
+            "lignes": [
+              [
+                "Client",
+                "Groupe Atlantic, confort thermique"
+              ],
+              [
+                "Périmètre",
+                "Sites de production, installations industrielles"
+              ],
+              [
+                "Effectif Migen",
+                "1 à 3 techniciens"
+              ],
+              [
+                "Nature des interventions",
+                "Maintenance préventive et corrective"
+              ],
+              [
+                "Fréquence",
+                "Permanente, engagement de moyen terme"
+              ],
+              [
+                "Depuis quand",
+                "Octobre 2024, mission en cours"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-resultat",
+        "titre": "Le résultat",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Une collaboration reconduite depuis octobre 2024** : la mission est toujours en cours sur les sites de production, en présence permanente.",
+              "**Un effectif tenu au niveau du besoin** : un à trois techniciens selon la charge de chaque site, sans que le Groupe Atlantic ait eu à ouvrir de poste.",
+              "**Le préventif et le correctif menés ensemble** : les interventions sur les équipements de production sont suivies avec les équipes internes, dans la durée."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

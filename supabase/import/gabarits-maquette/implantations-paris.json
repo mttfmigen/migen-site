@@ -3,12 +3,12 @@
   "contenu": {
     "gabarit": "ville",
     "chapeau": "En Île-de-France, la contrainte n'est pas la machine, c'est ce qui l'entoure : un atelier en fond de cour sans aire de déchargement, un entrepôt de couronne qui ne peut pas s'arrêter avant 22h, des riverains à trois mètres du portail. Nos techniciens basés à Paris préparent l'accès avant de partir sur site.",
-    "actions": [
-      {
-        "libelle": "Faire chiffrer ma maintenance en Île-de-France",
-        "href": "#formulaire"
-      }
-    ],
+    "action": {
+      "libelle": "Faire chiffrer ma maintenance en Île-de-France",
+      "href": "#formulaire"
+    },
+    "telephone": "04 78 33 72 05",
+    "delai": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte en option, nuits, week-ends et jours fériés.",
     "reperes": [
       {
         "valeur": "+ 120",
@@ -23,9 +23,16 @@
         "libelle": "hubs de techniciens en France, dont un à Paris, plus notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid"
       }
     ],
-    "contact": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 en option, nuits, week-ends et jours fériés.",
-    "constatTexte": "Le technicien est disponible, la pièce est en stock, et il met la matinée à se garer. En Île-de-France, la moitié du coût d'une intervention se joue avant qu'elle commence.",
-    "constatPuces": [
+    "logos": [
+      "FDJ",
+      "ORTHUS x ECOCEM",
+      "OGF",
+      "SUEZ",
+      "AMAZON"
+    ],
+    "problemeTitre": "Le technicien est disponible, la pièce est en stock, et il met la matinée à se garer.",
+    "problemeTexte": "En Île-de-France, la moitié du coût d'une intervention se joue avant qu'elle commence.",
+    "problemes": [
       {
         "texte": "Zone à circulation restreinte, cour étroite, monte-charge saturé : sans préparation, le déplacement est perdu.",
         "accroche": "L'accès se négocie rue par rue."
@@ -47,7 +54,84 @@
         "accroche": "Le prestataire de passage ne revient jamais deux fois."
       }
     ],
-    "reponsePuces": [
+    "offre": [
+      {
+        "benefice": "Le technicien entre et travaille, au lieu de chercher son chemin pendant une demi-journée.",
+        "prestation": {
+          "texte": "créneaux, aire de déchargement, monte-charge, badges, plan de prévention.",
+          "accroche": "La préparation d'accès avant le départ"
+        }
+      },
+      {
+        "benefice": "Une opération lourde ne mange jamais une vague de préparation ni une rotation de quai.",
+        "prestation": {
+          "texte": ", tôt le matin, entre deux équipes, de nuit.",
+          "accroche": "Des interventions calées sur vos fenêtres réelles"
+        }
+      },
+      {
+        "benefice": "Un parc francilien mélange toujours plusieurs technologies : un seul contrat les couvre.",
+        "prestation": {
+          "texte": "[mécanique](/expertises/mecanique/), [électricité](/expertises/electrique/), [électromécanique](/expertises/electromecanique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [robotique](/expertises/robotique/).",
+          "accroche": "Le champ technique complet"
+        }
+      },
+      {
+        "benefice": "Pharmacie, cosmétique et agroalimentaire gardent une documentation conforme à chaque passage.",
+        "prestation": {
+          "texte": "salles propres, traçabilité, qualification des équipements.",
+          "accroche": "Le respect des process réglementés"
+        }
+      },
+      {
+        "benefice": "Une panne d'eau de process ou d'air comprimé un dimanche trouve un technicien.",
+        "prestation": {
+          "texte": "pour les sites en continu et les utilités critiques.",
+          "accroche": "Astreinte en option"
+        }
+      },
+      {
+        "benefice": "Les techniciens qui interviennent chez vous sont basés dans le bassin, pas dépêchés depuis l'autre bout du pays.",
+        "prestation": {
+          "texte": ", l'un de nos 10 hubs en France, adossé au siège lyonnais.",
+          "accroche": "Un hub de techniciens à Paris"
+        }
+      },
+      {
+        "benefice": "Un groupe réparti entre petite couronne et vallée de la Seine garde un seul interlocuteur.",
+        "prestation": {
+          "texte": "[Essonne](/implantations/paris/essonne/) au sud, [Rouen](/implantations/paris/rouen/) sur l'axe Seine aval.",
+          "accroche": "Relais du bassin"
+        }
+      }
+    ],
+    "etapes": [
+      {
+        "texte": "Vous exposez la panne au 04 78 33 72 05, et nous rappelons dans l'heure aux horaires ouvrés. Symptômes, historique, criticité : le diagnostic commence au téléphone.",
+        "titre": "L'appel qualifié"
+      },
+      {
+        "texte": "Adresse exacte, horaires du site, contraintes de circulation, moyens de levage disponibles, habilitations attendues. Ce point évite le déplacement inutile.",
+        "titre": "La logistique d'accès"
+      },
+      {
+        "texte": "Profil choisi selon la technologie, pièces pressenties, outillage embarqué. Un atelier sans pont roulant change la méthode.",
+        "titre": "La préparation technique"
+      },
+      {
+        "texte": "Accueil sécurité, consignation, diagnostic, réparation, essais.",
+        "titre": "L'intervention"
+      },
+      {
+        "texte": "Essais réalisés, mise en service, seuils d'alerte relevés avec vos opérateurs.",
+        "titre": "Le redémarrage tracé"
+      },
+      {
+        "texte": "Causes, actions, pièces, préconisations, versés dans votre GMAO. Vos données restent chez vous.",
+        "titre": "Le compte rendu"
+      }
+    ],
+    "garanties": [
       {
         "texte": "un chargé d'affaires nommé qui connaît votre site, ses accès et son historique, et le même technicien aussi longtemps que possible.",
         "accroche": "Un interlocuteur stable, pas un numéro"
@@ -61,7 +145,44 @@
         "accroche": "La confidentialité des données de procédé"
       }
     ],
-    "faq": [
+    "appel": {
+      "question": "Besoin d'un mainteneur qui règle la question de l'accès avant celle de la panne ?",
+      "bouton": "Faire chiffrer ma maintenance en Île-de-France",
+      "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+    },
+    "preuves": [
+      {
+        "texte": "lignes de production en forte activité, 2025 et 2026",
+        "titre": "Un technicien de maintenance expérimenté affecté en continu sur un site proche de Paris",
+        "lienHref": "/preuves/fdj/",
+        "lienLibelle": "Étude de cas FDJ : site proche de Paris"
+      },
+      {
+        "texte": "pilotage de chantier, coordination et jalons, par Orthus, filiale Migen",
+        "titre": "Construction d'un site industriel de R&D près de Paris",
+        "lienHref": "/preuves/orthus-ecocem/",
+        "lienLibelle": "Étude de cas ORTHUS x ECOCEM : nouveau site"
+      },
+      {
+        "texte": "réseau national piloté depuis Paris, été 2025",
+        "titre": "Un technicien intégré pendant l'arrêt estival pour tenir les équipements critiques",
+        "lienHref": "/preuves/ogf-arret-estival/",
+        "lienLibelle": "Étude de cas OGF : arrêt estival"
+      },
+      {
+        "texte": "remise en état d'un site de traitement des eaux industrielles",
+        "titre": "Un électromécanicien habilité risque chimique mobilisé 6 mois",
+        "lienHref": "/preuves/suez-remise-en-etat/",
+        "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
+      },
+      {
+        "texte": "centre logistique ORY4, depuis septembre 2022, contrat annuel",
+        "titre": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures",
+        "lienHref": "/preuves/amazon-centre-logistique/",
+        "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique"
+      }
+    ],
+    "questions": [
       {
         "reponse": "Oui, à condition de le savoir avant. La qualification téléphonique couvre l'accès, les moyens de levage disponibles et les créneaux de circulation. Le technicien part avec l'outillage adapté et, si besoin, les moyens de manutention. C'est le quotidien francilien, pas une exception.",
         "question": "Notre atelier est en fond de cour, sans quai ni pont roulant. Vous intervenez quand même ?"
@@ -71,7 +192,7 @@
         "question": "Intervenez-vous vraiment sur place, à Paris ?"
       },
       {
-        "reponse": "Nous ne vendons pas un chiffre. L'engagement tenu est le rappel dans l'heure aux horaires ouvrés, une qualification qui évite les allers-retours, et l'astreinte 24/24 et 7/7 en option pour les nuits et les week-ends. Sur une panne critique, le bon technicien du premier coup rend plus de temps qu'une promesse.",
+        "reponse": "Nous ne vendons pas un chiffre. L'engagement tenu est le rappel dans l'heure aux horaires ouvrés, une qualification qui évite les allers-retours, et l'astreinte en option pour les nuits et les week-ends. Sur une panne critique, le bon technicien du premier coup rend plus de temps qu'une promesse.",
         "question": "Quels sont vos délais d'intervention à Paris ?"
       },
       {
@@ -91,191 +212,53 @@
         "question": "Suivez-vous les process réglementés, salles propres et traçabilité ?"
       }
     ],
-    "autres": [
+    "liens": [
       {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
+        "libelle": "Mécanique",
+        "href": "/expertises/mecanique/"
       },
       {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
+        "libelle": "Électricité",
+        "href": "/expertises/electrique/"
       },
       {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
+        "libelle": "Électromécanique",
+        "href": "/expertises/electromecanique/"
       },
       {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
+        "libelle": "Automatisme",
+        "href": "/expertises/automatisme/"
       },
       {
-        "libelle": "Valence",
-        "href": "/implantations/lyon/valence/"
+        "libelle": "Hydraulique",
+        "href": "/expertises/hydraulique/"
       },
       {
-        "libelle": "Nantes",
-        "href": "/implantations/nantes/"
+        "libelle": "Pneumatique",
+        "href": "/expertises/pneumatique/"
       },
       {
-        "libelle": "Brest",
-        "href": "/implantations/nantes/brest/"
+        "libelle": "Robotique",
+        "href": "/expertises/robotique/"
       },
       {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
+        "libelle": "Essonne",
+        "href": "/implantations/paris/essonne/"
       },
       {
         "libelle": "Rouen",
         "href": "/implantations/paris/rouen/"
       },
       {
-        "libelle": "Strasbourg",
-        "href": "/implantations/strasbourg/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
-      },
-      {
-        "libelle": "Toulouse",
-        "href": "/implantations/toulouse/"
-      },
-      {
-        "libelle": "Bordeaux",
-        "href": "/implantations/toulouse/bordeaux/"
+        "libelle": "Technicien en résidence",
+        "href": "/offres/residence/",
+        "contexte": "Les formats vont de l'intervention unique au technicien en résidence, avec une prise de poste en 2 à 3 semaines et le remplacement assuré."
       }
     ],
-    "reste": [
-      {
-        "type": "offre",
-        "lignes": [
-          {
-            "benefice": "Le technicien entre et travaille, au lieu de chercher son chemin pendant une demi-journée.",
-            "prestation": {
-              "texte": "créneaux, aire de déchargement, monte-charge, badges, plan de prévention.",
-              "accroche": "La préparation d'accès avant le départ"
-            }
-          },
-          {
-            "benefice": "Une opération lourde ne mange jamais une vague de préparation ni une rotation de quai.",
-            "prestation": {
-              "texte": ", tôt le matin, entre deux équipes, de nuit.",
-              "accroche": "Des interventions calées sur vos fenêtres réelles"
-            }
-          },
-          {
-            "benefice": "Un parc francilien mélange toujours plusieurs technologies : un seul contrat les couvre.",
-            "prestation": {
-              "texte": "[mécanique](/expertises/mecanique/), [électricité](/expertises/electrique/), [électromécanique](/expertises/electromecanique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [robotique](/expertises/robotique/).",
-              "accroche": "Le champ technique complet"
-            }
-          },
-          {
-            "benefice": "Pharmacie, cosmétique et agroalimentaire gardent une documentation conforme à chaque passage.",
-            "prestation": {
-              "texte": "salles propres, traçabilité, qualification des équipements.",
-              "accroche": "Le respect des process réglementés"
-            }
-          },
-          {
-            "benefice": "Une panne d'eau de process ou d'air comprimé un dimanche trouve un technicien.",
-            "prestation": {
-              "texte": "pour les sites en continu et les utilités critiques.",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
-          },
-          {
-            "benefice": "Les techniciens qui interviennent chez vous sont basés dans le bassin, pas dépêchés depuis l'autre bout du pays.",
-            "prestation": {
-              "texte": ", l'un de nos 10 hubs en France, adossé au siège lyonnais.",
-              "accroche": "Un hub de techniciens à Paris"
-            }
-          },
-          {
-            "benefice": "Un groupe réparti entre petite couronne et vallée de la Seine garde un seul interlocuteur.",
-            "prestation": {
-              "texte": "[Essonne](/implantations/paris/essonne/) au sud, [Rouen](/implantations/paris/rouen/) sur l'axe Seine aval.",
-              "accroche": "Relais du bassin"
-            }
-          }
-        ]
-      },
-      {
-        "type": "deroule",
-        "etapes": [
-          {
-            "texte": "Vous exposez la panne au 04 78 33 72 05, et nous rappelons dans l'heure aux horaires ouvrés. Symptômes, historique, criticité : le diagnostic commence au téléphone.",
-            "titre": "L'appel qualifié"
-          },
-          {
-            "texte": "Adresse exacte, horaires du site, contraintes de circulation, moyens de levage disponibles, habilitations attendues. Ce point évite le déplacement inutile.",
-            "titre": "La logistique d'accès"
-          },
-          {
-            "texte": "Profil choisi selon la technologie, pièces pressenties, outillage embarqué. Un atelier sans pont roulant change la méthode.",
-            "titre": "La préparation technique"
-          },
-          {
-            "texte": "Accueil sécurité, consignation, diagnostic, réparation, essais.",
-            "titre": "L'intervention"
-          },
-          {
-            "texte": "Essais réalisés, mise en service, seuils d'alerte relevés avec vos opérateurs.",
-            "titre": "Le redémarrage tracé"
-          },
-          {
-            "texte": "Causes, actions, pièces, préconisations, versés dans votre GMAO. Vos données restent chez vous.",
-            "titre": "Le compte rendu"
-          }
-        ]
-      },
-      {
-        "type": "cta",
-        "bouton": "Faire chiffrer ma maintenance en Île-de-France",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin d'un mainteneur qui règle la question de l'accès avant celle de la panne ?"
-      },
-      {
-        "type": "preuves",
-        "preuves": [
-          {
-            "texte": "lignes de production en forte activité, 2025 et 2026",
-            "titre": "Un technicien de maintenance expérimenté affecté en continu sur un site proche de Paris",
-            "lienHref": "/preuves/fdj/",
-            "lienLibelle": "Étude de cas FDJ : site proche de Paris"
-          },
-          {
-            "texte": "pilotage de chantier, coordination et jalons, par Orthus, filiale Migen",
-            "titre": "Construction d'un site industriel de R&D près de Paris",
-            "lienHref": "/preuves/orthus-ecocem/",
-            "lienLibelle": "Étude de cas ORTHUS x ECOCEM : nouveau site"
-          },
-          {
-            "texte": "réseau national piloté depuis Paris, été 2025",
-            "titre": "Un technicien intégré pendant l'arrêt estival pour tenir les équipements critiques",
-            "lienHref": "/preuves/ogf-arret-estival/",
-            "lienLibelle": "Étude de cas OGF : arrêt estival"
-          },
-          {
-            "texte": "remise en état d'un site de traitement des eaux industrielles",
-            "titre": "Un électromécanicien habilité risque chimique mobilisé 6 mois",
-            "lienHref": "/preuves/suez-remise-en-etat/",
-            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
-          },
-          {
-            "texte": "centre logistique ORY4, depuis septembre 2022, contrat annuel",
-            "titre": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures",
-            "lienHref": "/preuves/amazon-centre-logistique/",
-            "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique"
-          }
-        ]
-      },
-      {
-        "type": "ctaFinal",
-        "bouton": "Faire chiffrer ma maintenance en Île-de-France",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-        "question": "Besoin de fiabiliser un parc francilien sans bloquer l'exploitation ?"
-      }
-    ]
+    "appelFinal": {
+      "question": "Besoin de fiabiliser un parc francilien sans bloquer l'exploitation ?",
+      "bouton": "Faire chiffrer ma maintenance en Île-de-France",
+      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
+    }
   }
 }

@@ -1,0 +1,129 @@
+{
+  "url": "/preuves/valeo-usines/",
+  "h1": "Étude de cas VALEO : plusieurs usines",
+  "contenu": {
+    "gabarit": "fiche",
+    "sections": [
+      {
+        "id": "le-client-et-le-site",
+        "titre": "Le client et le site",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "VALEO, leader mondial des technologies de pointe pour l'automobile, a choisi Migen en septembre 2024. L'objectif : accompagner la montée en cadence de plusieurs de ses usines en France."
+          }
+        ]
+      },
+      {
+        "id": "la-situation",
+        "titre": "La situation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Monter en cadence sans renforcer la maintenance revient à accélérer avec des freins usés.** L'équipe encaisse la hausse avec le même effectif, jusqu'au jour où elle ne l'encaisse plus."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Plusieurs usines françaises devaient passer à des niveaux de production plus élevés. Les enjeux du dossier :"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Une transition fluide vers des cadences supérieures**, sans décrochage de la production."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Un standard de performance et de sécurité maintenu** pendant l'accélération."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Des interruptions non planifiées réduites** sur les équipements industriels."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Une disponibilité optimisée** dans plusieurs usines à la fois."
+          }
+        ]
+      },
+      {
+        "id": "ce-que-nous-avons-mis-en-place",
+        "titre": "Ce que nous avons mis en place",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Des techniciens là où la charge monte** : Trois à cinq techniciens hautement qualifiés déployés au sein de différents services des usines concernées.",
+              "**Une couverture sur trois fronts** : Lignes de production, ateliers de fabrication et services de maintenance préventive, dans le même dispositif.",
+              "**Anticipation des défaillances** : Le suivi technique vise à repérer la dérive avant l'arrêt, pas à réparer après coup.",
+              "**Intervention rapide sur panne** : La présence sur site limite les temps d'arrêt quand l'incident survient."
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "texte": "La mission principale : assurer un suivi technique rigoureux, anticiper les défaillances et intervenir vite pour limiter les temps d'arrêt."
+          }
+        ]
+      },
+      {
+        "id": "le-dispositif",
+        "titre": "Le dispositif",
+        "blocs": [
+          {
+            "type": "tableau",
+            "entetes": [
+              "Élément",
+              "Détail"
+            ],
+            "lignes": [
+              [
+                "Client",
+                "VALEO"
+              ],
+              [
+                "Territoire",
+                "Plusieurs usines en France"
+              ],
+              [
+                "Secteur",
+                "Industrie automobile, véhicules électriques et connectés"
+              ],
+              [
+                "Démarrage",
+                "Septembre 2024, mission en cours"
+              ],
+              [
+                "Effectif Migen",
+                "3 à 5 techniciens de maintenance"
+              ],
+              [
+                "Durée",
+                "Moyen terme"
+              ],
+              [
+                "Fréquence",
+                "Permanente"
+              ],
+              [
+                "Périmètre",
+                "Lignes de production, ateliers de fabrication, maintenance préventive"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-resultat",
+        "titre": "Le résultat",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Une qualité de production constante** : Le niveau est maintenu pendant l'accélération des cadences.",
+              "**Un accompagnement flexible et réactif** : Il s'ajuste aux besoins de chaque service.",
+              "**Des capacités industrielles renforcées** : Sans recrutement interne mené dans l'urgence."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

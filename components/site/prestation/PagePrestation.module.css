@@ -1,0 +1,119 @@
+/*
+ * Les états du gabarit PRESTATION : survols, focus, et les deux replis que la
+ * maquette porte dans sa propre feuille de style.
+ *
+ * POURQUOI ICI et pas dans `app/globals.css` : plusieurs gabarits sont portés
+ * en parallèle, un fichier partagé produirait des conflits. Les classes sont
+ * nommées d'après leur rôle, pas d'après leur déclaration.
+ *
+ * Les valeurs viennent des attributs `style-hover` de
+ * « Migen - Gabarit Prestation.dc.html », recopiées telles quelles.
+ */
+
+/* Le tableau « Ce que nous faisons / Ce que ça change pour vous ».
+   La maquette : `.gp-row` passe en une colonne sous 900px, `.gp-head`
+   disparaît. Un en-tête de colonne n'a plus de sens quand les colonnes sont
+   empilées, et il se lirait comme une ligne de contenu.
+
+   TOUTE LA GRILLE EST ICI, remplissage compris, et aucune de ces valeurs n'est
+   posée en ligne : un style en ligne gagne contre une feuille de style, donc
+   un `display:grid` en ligne aurait empêché le `display:none` mobile de
+   l'en-tête, et un `gap:32px` en ligne aurait empêché le resserrement à 8px.
+   C'est le piège exact de ce gabarit, qui mélange styles en ligne et media
+   queries. Valeurs relevées dans la maquette. */
+.entete {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 32px;
+  padding: 18px 30px;
+  border-bottom: 1px solid var(--line);
+}
+
+.rangee {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 32px;
+  padding: 20px 30px;
+  align-items: start;
+}
+
+/* Filet haut des rangées, sauf la première : l'en-tête porte déjà le sien. */
+.rangeeFilet {
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 900px) {
+  .rangee {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .entete {
+    display: none;
+  }
+}
+
+/* Cartes de réalisation : -3px et une ombre portée au survol. */
+.carteReference {
+  transition: transform var(--tr), box-shadow var(--tr);
+}
+
+.carteReference:hover,
+.carteReference:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 28px 60px -34px rgba(0, 0, 0, 0.4);
+}
+
+/* Cartes de maillage : seulement le déplacement, pas d'ombre. */
+.carteMaillage {
+  transition: transform var(--tr);
+}
+
+.carteMaillage:hover,
+.carteMaillage:focus-visible {
+  transform: translateY(-3px);
+}
+
+.boutonAction:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+.boutonSecondaire:hover {
+  background: #fff;
+}
+
+/* Pendant sombre du bouton secondaire, dans l'appel final. */
+.boutonSombre:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* Lien souligné dans un paragraphe : seule la couleur change au survol, le
+   soulignement reste, sans quoi le lien disparaîtrait pour qui ne distingue
+   pas l'orange. */
+.lienTexte:hover {
+  color: var(--acc);
+}
+
+/*
+ * R222 du référentiel client : tout s'arrête si l'utilisateur a demandé moins
+ * de mouvement. Les déplacements au survol sont neutralisés, les changements
+ * de couleur et d'ombre restent : ils portent l'information d'état.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .carteReference,
+  .carteMaillage,
+  .boutonAction {
+    transition: box-shadow var(--tr), filter var(--tr);
+  }
+
+  .carteReference:hover,
+  .carteReference:focus-visible,
+  .carteMaillage:hover,
+  .carteMaillage:focus-visible,
+  .boutonAction:hover {
+    transform: none;
+  }
+}

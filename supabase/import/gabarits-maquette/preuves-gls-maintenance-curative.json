@@ -1,0 +1,124 @@
+{
+  "url": "/preuves/gls-maintenance-curative/",
+  "h1": "Étude de cas GLS : maintenance curative",
+  "contenu": {
+    "gabarit": "fiche",
+    "sections": [
+      {
+        "id": "le-client-et-le-site",
+        "titre": "Le client et le site",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "GLS, acteur reconnu de la logistique et du transport, a confié à Migen le maintien opérationnel de ses équipements. Deux techniciens expérimentés sont aujourd'hui en poste sur le site."
+          }
+        ]
+      },
+      {
+        "id": "la-situation",
+        "titre": "La situation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Un trieur à l'arrêt, ce sont des colis qui partent en retard et un client final qui le voit.** La panne ne reste jamais dans l'atelier."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Chez GLS, la disponibilité des équipements est un enjeu quotidien :"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Les flux du site entier sont touchés** dès qu'un arrêt non planifié survient."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**L'acheminement des colis prend du retard** au moment où la ligne s'immobilise."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**La satisfaction client encaisse** directement ces retards."
+          },
+          {
+            "type": "liste",
+            "items": [
+              "**Les équipements critiques sont nombreux** : convoyeurs, trieurs, packaging automatisé."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-que-nous-avons-mis-en-place",
+        "titre": "Ce que nous avons mis en place",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Deux techniciens dédiés** : Affectés à la maintenance curative et à la surveillance continue des équipements critiques du site.",
+              "**Une présence permanente** : Les équipes Migen sont sur place en continu, pour tenir la disponibilité des installations logistiques.",
+              "**Une réaction sans déplacement** : Le dysfonctionnement est traité au moment où il se produit, par quelqu'un qui est déjà là.",
+              "**Une intégration aux équipes GLS** : Les techniciens travaillent au sein de l'organisation existante, sans la complexifier.",
+              "**Des horaires calés sur l'exploitation** : La couverture porte sur la semaine, les horaires décalés et le week-end."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-dispositif",
+        "titre": "Le dispositif",
+        "blocs": [
+          {
+            "type": "tableau",
+            "entetes": [
+              "Élément",
+              "Détail"
+            ],
+            "lignes": [
+              [
+                "Client",
+                "GLS, logistique et transport"
+              ],
+              [
+                "Année",
+                "2025"
+              ],
+              [
+                "Effectif Migen",
+                "2 techniciens expérimentés sur site"
+              ],
+              [
+                "Nature des travaux",
+                "Maintenance curative, surveillance continue"
+              ],
+              [
+                "Périmètre",
+                "Convoyeurs, trieurs, systèmes de packaging automatisés"
+              ],
+              [
+                "Couverture",
+                "Semaine, horaires décalés, week-end"
+              ],
+              [
+                "Pilotage",
+                "Suivi de prestation assuré par Migen"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-resultat",
+        "titre": "Le résultat",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Des temps d'arrêt réduits** : La présence continue des techniciens permet à GLS de raccourcir ses arrêts.",
+              "**Des installations plus performantes** : La performance des installations logistiques augmente.",
+              "**Un flux plus fluide** : Le flux opérationnel du site est maintenu, jour après jour."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

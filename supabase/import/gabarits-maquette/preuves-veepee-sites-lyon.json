@@ -1,0 +1,115 @@
+{
+  "url": "/preuves/veepee-sites-lyon/",
+  "h1": "Étude de cas VEEPEE : sites de Lyon",
+  "contenu": {
+    "gabarit": "fiche",
+    "sections": [
+      {
+        "id": "le-client-et-le-site",
+        "titre": "Le client et le site",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Depuis septembre 2023, Migen gère le contrat de maintenance préventive annuelle des sites de Lyon pour VEEPEE, anciennement Vente Privée. Six techniciens polyvalents y sont en permanence."
+          }
+        ]
+      },
+      {
+        "id": "la-situation",
+        "titre": "La situation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Plus un centre logistique grossit, plus le parc machine échappe au suivi.** Les pannes arrivent par une usure que personne n'a vu venir."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "La problématique d'origine tenait en une phrase : des difficultés à assurer le maintien du parc machine sur un centre logistique volumineux."
+          },
+          {
+            "type": "liste",
+            "items": [
+              "**Un parc étendu** : Plusieurs sites lyonnais à couvrir avec la même exigence.",
+              "**Une usure non anticipée** : Les problèmes techniques dégénèrent en dysfonctionnements faute de préventif.",
+              "**Des arrêts d'installation** : Au bout de la chaîne, ce sont des pertes de production.",
+              "**Une bascule à réussir** : Changer de prestataire sans trou de couverture pendant la transition."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-que-nous-avons-mis-en-place",
+        "titre": "Ce que nous avons mis en place",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Une équipe résidente** : 6 techniciens polyvalents déployés en permanence sur site, capables de répondre à l'ensemble des besoins du centre logistique.",
+              "**Un contrat annuel de préventif** : Migen assure la gestion du contrat de maintenance préventive annuelle des sites de Lyon.",
+              "**Des opérations d'anticipation** : Le plan couvre les interventions qui préviennent les problèmes techniques et l'usure.",
+              "**Une bascule bouclée en un mois** : La prise en charge de l'ensemble des sites a été réalisée en un mois.",
+              "**Une continuité protégée** : La transition a été menée en limitant les pertes de production."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-dispositif",
+        "titre": "Le dispositif",
+        "blocs": [
+          {
+            "type": "tableau",
+            "entetes": [
+              "Élément",
+              "Détail"
+            ],
+            "lignes": [
+              [
+                "Client",
+                "VEEPEE, anciennement Vente Privée"
+              ],
+              [
+                "Sites",
+                "Sites de Lyon"
+              ],
+              [
+                "Période",
+                "Depuis septembre 2023, mission en cours"
+              ],
+              [
+                "Effectif Migen",
+                "6 techniciens polyvalents, en permanence sur site"
+              ],
+              [
+                "Reprise du périmètre",
+                "1 mois"
+              ],
+              [
+                "Nature des travaux",
+                "Maintenance préventive annuelle sous contrat"
+              ],
+              [
+                "Problématique d'origine",
+                "Maintien du parc machine d'un centre logistique volumineux"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-resultat",
+        "titre": "Le résultat",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Une reprise bouclée en un mois** : Le passage de l'ensemble des sites sous contrat Migen a tenu dans un mois.",
+              "**Une continuité protégée** : La bascule a limité les pertes de production.",
+              "**Un parc couvert en entier** : Les 6 techniciens polyvalents répondent à l'ensemble des besoins du centre logistique."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

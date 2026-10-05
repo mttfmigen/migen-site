@@ -3,12 +3,12 @@
   "contenu": {
     "gabarit": "ville",
     "chapeau": "Le caoutchouc chauffe, la Limagne travaille en saison, Issoire usine des pièces qui ne tolèrent aucun écart. Trois logiques de production différentes, trois façons d'entretenir un parc. Nous adaptons les gammes et les horaires à chacune, avec des techniciens itinérants qui se déplacent partout en France.",
-    "actions": [
-      {
-        "libelle": "Demander une intervention à Clermont-Ferrand",
-        "href": "#formulaire"
-      }
-    ],
+    "action": {
+      "libelle": "Demander une intervention à Clermont-Ferrand",
+      "href": "#formulaire"
+    },
+    "telephone": "04 78 33 72 05",
+    "delai": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. En option, l'astreinte couvre les nuits, les week-ends et les jours fériés.",
     "reperes": [
       {
         "valeur": "+ 120",
@@ -23,9 +23,16 @@
         "libelle": "de chantier tenues à Clermont-Ferrand pour le montage d'un centre logistique, en 2023"
       }
     ],
-    "contact": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. En option, l'astreinte 24/24 et 7/7 couvre les nuits, les week-ends et les jours fériés.",
-    "constatTexte": "Une régulation dérive sur une ligne d'extrusion. Personne ne s'en aperçoit avant la deuxième benne de rebut, et la matière perdue ne se recycle pas toujours.",
-    "constatPuces": [
+    "logos": [
+      "AKTID",
+      "STELLANTIS",
+      "DANONE",
+      "AUTOLIV",
+      "VPK"
+    ],
+    "problemeTitre": "Une régulation dérive sur une ligne d'extrusion.",
+    "problemeTexte": "Personne ne s'en aperçoit avant la deuxième benne de rebut, et la matière perdue ne se recycle pas toujours.",
+    "problemes": [
       {
         "texte": "Presses, mélangeurs, extrudeuses : une consigne qui glisse se paie en qualité avant de se voir en panne.",
         "accroche": "Le caoutchouc pardonne mal l'à-peu-près thermique."
@@ -47,14 +54,86 @@
         "accroche": "Le technicien qui part emporte l'historique."
       }
     ],
-    "reponseTexte": "Pour les lignes de fabrication et de conditionnement alimentaires, voir la [maintenance en agroalimentaire](/secteurs/agroalimentaire/). Pour les plateformes et les convoyeurs, voir la [maintenance des équipements logistiques](/secteurs/logistique/).",
-    "reponsePuces": [
+    "offre": [
+      {
+        "benefice": "La dérive se corrige avant que le rebut ne parte au broyeur.",
+        "prestation": {
+          "texte": "sondes, résistances, échangeurs, contrôle par caméra thermique.",
+          "accroche": "Suivi des organes thermiques et de régulation"
+        }
+      },
+      {
+        "benefice": "Vos équipements sont prêts avant le pic, pas réparés pendant.",
+        "prestation": {
+          "texte": ", allégé pendant les creux d'activité.",
+          "accroche": "Préventif resserré avant la saison"
+        }
+      },
+      {
+        "benefice": "Un premier chantier suffit à juger la méthode avant tout contrat.",
+        "prestation": {
+          "texte": "diagnostic, remise en service, compte rendu écrit.",
+          "accroche": "Dépannage cadré dès le premier appel"
+        }
+      },
+      {
+        "benefice": "Une panne qui croise plusieurs métiers ne réclame pas trois prestataires.",
+        "prestation": {
+          "texte": "[mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure](/expertises/soudure/).",
+          "accroche": "Couverture multi-technique"
+        }
+      },
+      {
+        "benefice": "Votre qualité retrouve la preuve sans la reconstituer après coup.",
+        "prestation": {
+          "texte": "opérations documentées, pièces référencées.",
+          "accroche": "Traçabilité conforme aux exigences aéronautiques et pharmaceutiques"
+        }
+      },
+      {
+        "benefice": "Un défaut en fin de semaine ne coûte pas le lundi suivant.",
+        "prestation": {
+          "texte": ", mobilisation de techniciens mobiles partout en France.",
+          "accroche": "Astreinte en option"
+        }
+      }
+    ],
+    "offreNotes": [
+      "Pour les lignes de fabrication et de conditionnement alimentaires, voir la [maintenance en agroalimentaire](/secteurs/agroalimentaire/). Pour les plateformes et les convoyeurs, voir la [maintenance des équipements logistiques](/secteurs/logistique/)."
+    ],
+    "etapes": [
+      {
+        "texte": "machine, symptôme, criticité, accès au site et habilitations exigées.",
+        "titre": "Vous décrivez le besoin"
+      },
+      {
+        "texte": "un chargé d'affaires vérifie la compétence disponible et le matériel à prévoir.",
+        "titre": "Nous vous rappelons dans l'heure"
+      },
+      {
+        "texte": "périmètre, conditions de chantier, chiffrage écrit.",
+        "titre": "Le devis part avant le déplacement"
+      },
+      {
+        "texte": "accueil sécurité, plan de prévention, consignation, puis diagnostic.",
+        "titre": "L'intervention suit votre protocole"
+      },
+      {
+        "texte": "historique machine, mesures, conditions réelles d'exploitation.",
+        "titre": "La cause racine passe après la remise en route"
+      },
+      {
+        "texte": "constat, actions, pièces, points de vigilance pour le passage suivant.",
+        "titre": "Le compte rendu alimente votre GMAO"
+      }
+    ],
+    "garanties": [
       {
         "texte": "entretien technique et comportemental, 10 % de candidats retenus, résultats d'évaluation présentés avant l'arrivée sur votre site.",
         "accroche": "Le technicien est évalué, pas seulement recruté"
       },
       {
-        "texte": "rappel dans l'heure aux horaires ouvrés et astreinte 24/24 et 7/7 en option. Le reste dépend de votre localisation exacte et se dit avant d'engager.",
+        "texte": "rappel dans l'heure aux horaires ouvrés et astreinte en option. Le reste dépend de votre localisation exacte et se dit avant d'engager.",
         "accroche": "Aucun délai de route inventé"
       },
       {
@@ -62,7 +141,44 @@
         "accroche": "Un cadre écrit du premier au dernier jour"
       }
     ],
-    "faq": [
+    "appel": {
+      "question": "Besoin de remettre à plat un parc qui multiplie les arrêts courts ?",
+      "bouton": "Demander une intervention à Clermont-Ferrand",
+      "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+    },
+    "preuves": [
+      {
+        "texte": "six semaines de chantier en août 2023, date de livraison tenue",
+        "titre": "12 monteurs mécaniciens et 8 engins de levage pour le montage d'un centre logistique à Clermont-Ferrand",
+        "lienHref": "/preuves/aktid-centre-logistique/",
+        "lienLibelle": "Étude de cas AKTID : montage d'un centre logistique"
+      },
+      {
+        "texte": "site de Dompierre-sur-Besbre",
+        "titre": "Maintenance préventive et curative d'une fonderie et de son usinage,, depuis octobre 2023",
+        "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+        "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons"
+      },
+      {
+        "texte": "nutrition infantile, cadence continue",
+        "titre": "Deux techniciens intégrés en 3x8 sur des lignes liquides et poudre",
+        "lienHref": "/preuves/danone-lignes-de-production/",
+        "lienLibelle": "Étude de cas DANONE : lignes de production"
+      },
+      {
+        "texte": "poste vacant comblé sans attendre un recrutement",
+        "titre": "Un technicien de maintenance dédié au maintien d'un parc machines en 2025",
+        "lienHref": "/preuves/autoliv/",
+        "lienLibelle": "Étude de cas AUTOLIV : maintien d'un site"
+      },
+      {
+        "texte": "papier et emballage, 2025 à 2026",
+        "titre": "Un technicien polyvalent sur un parc hétérogène en forte cadence",
+        "lienHref": "/preuves/vpk/",
+        "lienLibelle": "Étude de cas VPK : maintenance de site"
+      }
+    ],
+    "questions": [
       {
         "reponse": "Oui, et nous avons un chantier documenté sur place : le montage du centre logistique AKTID, six semaines en 2023, livré dans les temps. Nos 4 agences sont Lyon (siège), Montréal, Dubaï et Madrid, et nos techniciens se déplacent partout en France. Votre demande est rappelée dans l'heure aux horaires ouvrés. Nous préférons le dire plutôt que d'afficher une adresse locale que personne n'occupe.",
         "question": "Intervenez-vous vraiment à Clermont-Ferrand, alors que votre siège est à Lyon ?"
@@ -88,188 +204,56 @@
         "question": "Que contient le contrat Zéro arrêt ?"
       }
     ],
-    "autres": [
+    "liens": [
       {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
+        "libelle": "Maintenance en agroalimentaire",
+        "href": "/secteurs/agroalimentaire/",
+        "contexte": "Pour les lignes de fabrication et de conditionnement alimentaires, voir la maintenance en agroalimentaire."
       },
       {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
+        "libelle": "Maintenance des équipements logistiques",
+        "href": "/secteurs/logistique/",
+        "contexte": "Pour les plateformes et les convoyeurs, voir la maintenance des équipements logistiques."
       },
       {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
+        "libelle": "Mécanique",
+        "href": "/expertises/mecanique/"
       },
       {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
+        "libelle": "Électrique",
+        "href": "/expertises/electrique/"
       },
       {
-        "libelle": "Valence",
-        "href": "/implantations/lyon/valence/"
+        "libelle": "Automatisme",
+        "href": "/expertises/automatisme/"
       },
       {
-        "libelle": "Nantes",
-        "href": "/implantations/nantes/"
+        "libelle": "Hydraulique",
+        "href": "/expertises/hydraulique/"
       },
       {
-        "libelle": "Brest",
-        "href": "/implantations/nantes/brest/"
+        "libelle": "Pneumatique",
+        "href": "/expertises/pneumatique/"
       },
       {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
+        "libelle": "Soudure",
+        "href": "/expertises/soudure/"
       },
       {
-        "libelle": "paris",
-        "href": "/implantations/paris/"
+        "libelle": "Technicien en résidence",
+        "href": "/offres/residence/",
+        "contexte": "Oui, avec le technicien en résidence."
       },
       {
-        "libelle": "Rouen",
-        "href": "/implantations/paris/rouen/"
-      },
-      {
-        "libelle": "Strasbourg",
-        "href": "/implantations/strasbourg/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
-      },
-      {
-        "libelle": "Toulouse",
-        "href": "/implantations/toulouse/"
-      },
-      {
-        "libelle": "Bordeaux",
-        "href": "/implantations/toulouse/bordeaux/"
+        "libelle": "Contrat de maintenance",
+        "href": "/offres/zero-arret/",
+        "contexte": "Le périmètre du contrat de maintenance s'écrit équipement par équipement, après un diagnostic gratuit."
       }
     ],
-    "reste": [
-      {
-        "type": "offre",
-        "lignes": [
-          {
-            "benefice": "La dérive se corrige avant que le rebut ne parte au broyeur.",
-            "prestation": {
-              "texte": "sondes, résistances, échangeurs, contrôle par caméra thermique.",
-              "accroche": "Suivi des organes thermiques et de régulation"
-            }
-          },
-          {
-            "benefice": "Vos équipements sont prêts avant le pic, pas réparés pendant.",
-            "prestation": {
-              "texte": ", allégé pendant les creux d'activité.",
-              "accroche": "Préventif resserré avant la saison"
-            }
-          },
-          {
-            "benefice": "Un premier chantier suffit à juger la méthode avant tout contrat.",
-            "prestation": {
-              "texte": "diagnostic, remise en service, compte rendu écrit.",
-              "accroche": "Dépannage cadré dès le premier appel"
-            }
-          },
-          {
-            "benefice": "Une panne qui croise plusieurs métiers ne réclame pas trois prestataires.",
-            "prestation": {
-              "texte": "[mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure](/expertises/soudure/).",
-              "accroche": "Couverture multi-technique"
-            }
-          },
-          {
-            "benefice": "Votre qualité retrouve la preuve sans la reconstituer après coup.",
-            "prestation": {
-              "texte": "opérations documentées, pièces référencées.",
-              "accroche": "Traçabilité conforme aux exigences aéronautiques et pharmaceutiques"
-            }
-          },
-          {
-            "benefice": "Un défaut en fin de semaine ne coûte pas le lundi suivant.",
-            "prestation": {
-              "texte": ", mobilisation de techniciens mobiles partout en France.",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
-          }
-        ]
-      },
-      {
-        "type": "deroule",
-        "etapes": [
-          {
-            "texte": "machine, symptôme, criticité, accès au site et habilitations exigées.",
-            "titre": "Vous décrivez le besoin"
-          },
-          {
-            "texte": "un chargé d'affaires vérifie la compétence disponible et le matériel à prévoir.",
-            "titre": "Nous vous rappelons dans l'heure"
-          },
-          {
-            "texte": "périmètre, conditions de chantier, chiffrage écrit.",
-            "titre": "Le devis part avant le déplacement"
-          },
-          {
-            "texte": "accueil sécurité, plan de prévention, consignation, puis diagnostic.",
-            "titre": "L'intervention suit votre protocole"
-          },
-          {
-            "texte": "historique machine, mesures, conditions réelles d'exploitation.",
-            "titre": "La cause racine passe après la remise en route"
-          },
-          {
-            "texte": "constat, actions, pièces, points de vigilance pour le passage suivant.",
-            "titre": "Le compte rendu alimente votre GMAO"
-          }
-        ]
-      },
-      {
-        "type": "cta",
-        "bouton": "Demander une intervention à Clermont-Ferrand",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin de remettre à plat un parc qui multiplie les arrêts courts ?"
-      },
-      {
-        "type": "preuves",
-        "preuves": [
-          {
-            "texte": "six semaines de chantier en août 2023, date de livraison tenue",
-            "titre": "12 monteurs mécaniciens et 8 engins de levage pour le montage d'un centre logistique à Clermont-Ferrand",
-            "lienHref": "/preuves/aktid-centre-logistique/",
-            "lienLibelle": "Étude de cas AKTID : montage d'un centre logistique"
-          },
-          {
-            "texte": "site de Dompierre-sur-Besbre",
-            "titre": "Maintenance préventive et curative d'une fonderie et de son usinage, 7 jours sur 7, depuis octobre 2023",
-            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons"
-          },
-          {
-            "texte": "nutrition infantile, cadence continue",
-            "titre": "Deux techniciens intégrés en 3x8 sur des lignes liquides et poudre",
-            "lienHref": "/preuves/danone-lignes-de-production/",
-            "lienLibelle": "Étude de cas DANONE : lignes de production"
-          },
-          {
-            "texte": "poste vacant comblé sans attendre un recrutement",
-            "titre": "Un technicien de maintenance dédié au maintien d'un parc machines en 2025",
-            "lienHref": "/preuves/autoliv/",
-            "lienLibelle": "Étude de cas AUTOLIV : maintien d'un site"
-          },
-          {
-            "texte": "papier et emballage, 2025 à 2026",
-            "titre": "Un technicien polyvalent sur un parc hétérogène en forte cadence",
-            "lienHref": "/preuves/vpk/",
-            "lienLibelle": "Étude de cas VPK : maintenance de site"
-          }
-        ]
-      },
-      {
-        "type": "ctaFinal",
-        "bouton": "Demander une intervention à Clermont-Ferrand",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-        "question": "Besoin de préparer vos équipements avant la prochaine saison ?"
-      }
-    ]
+    "appelFinal": {
+      "question": "Besoin de préparer vos équipements avant la prochaine saison ?",
+      "bouton": "Demander une intervention à Clermont-Ferrand",
+      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
+    }
   }
 }

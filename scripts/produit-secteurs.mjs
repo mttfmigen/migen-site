@@ -1,57 +1,56 @@
 /**
- * Traduit le corpus rédigé des 13 pages de /secteurs/ vers le gabarit SECTEUR
- * de la maquette.
+ * Traduit le corpus rédigé des 13 pages de /secteurs/ vers le gabarit 08 SECTEUR.
  *
  *   node scripts/produit-secteurs.mjs
  *
- * CE QUE CE SCRIPT EST, ET CE QU'IL N'EST PAS. Il ne rédige rien. Il prend le
- * texte DÉJÀ ÉCRIT par le client, sous la forme « vente » en dix sections
- * (`types/contenu.ts`), et le range dans les quatre sections que la maquette
- * dessine pour une page de secteur (`types/secteur.ts`). Aucune phrase n'est
- * composée, raccourcie ni reformulée : chaque chaîne écrite ici sort du corpus
- * telle quelle. Les seules chaînes qui ne viennent pas du corpus sont les
- * quatre SURTITRES, qui sont le chrome du gabarit, relevés dans la maquette et
- * revérifiés à chaque exécution par `components/site/secteur/verification-secteur.tsx`.
+ * LE FICHIER DE MAQUETTE QUI FAIT FOI : `maquette/gabarit-08-secteur.html`,
+ * transcrit de « Migen - Gabarit 08 Secteur.dc.html ». IL FAIT FOI CONTRE
+ * « Migen - Site final.dc.html ».
  *
- * POURQUOI UN SCRIPT PLUTÔT QUE 13 FICHIERS ÉCRITS À LA MAIN. La correspondance
- * section par section EST le travail. Écrite ici une fois, elle se relit, se
- * discute et se rejoue ; recopiée treize fois, elle dérive au premier
- * ajustement et personne ne peut vérifier qu'une page n'a pas été traitée
- * autrement que ses voisines.
+ * CE QUE CE SCRIPT FAISAIT DE FAUX, et c'est la correction du 03/10. Il lisait
+ * « Site final », qui ne dessine QUATRE sections pour une page de secteur, et il
+ * repliait donc le corpus dans quatre champs à plat (`chapeau`, `reperes`,
+ * `enjeux`, `autres`, `appel*`) en renvoyant les SIX sections restantes dans
+ * `complement`, où les blocs du gabarit de VENTE les rendaient avec leurs
+ * surtitres à eux. Le gabarit 08 dessine DOUZE sections, et il dessine les DIX
+ * du corpus, une par une.
  *
- * LA CORRESPONDANCE, relevée dans la maquette lignes 6278 à 6364 :
+ * CE SCRIPT NE RÉDIGE RIEN, et il traduit maintenant beaucoup moins qu'avant :
+ * le corpus est déjà analysé en dix sections par `scripts/importe_corpus.py`, et
+ * la maquette en dessine dix. La correspondance est l'identité. Le script
+ * recopie donc les sections telles quelles, et ne calcule que DEUX choses que
+ * le composant ne peut pas déduire sans reparser du Markdown à chaque rendu :
  *
- *   maquette                                corpus
- *   ───────────────────────────────────────────────────────────────────────────
- *   surtitre du héros                        « Secteur d'activité » (maquette)
- *   H1                                       `pages.titre_h1`, soit `heros.h1`
- *   chapeau du héros                         `heros.mecanisme`
- *   bouton orange du héros                   `heros.cta`, vers #formulaire
- *   bouton en verre du héros                 RIEN : le corpus n'écrit qu'un CTA
- *   surtitre du panneau                      « Nos repères dans le secteur »
- *   les quatre repères chiffrés              `chiffres.chiffres`, 3 fournis
- *   surtitre des enjeux                      « Les enjeux du secteur »
- *   H2 des enjeux                            `probleme.punchline`
- *   les quatre cartes d'enjeux               `probleme.puces` (accroche, texte)
- *   « Les autres secteurs »                  les 10 pages secteur, libellés et
- *                                            cibles pris dans la prose du hub
- *   H2 de l'appel final                      `ctaFinal.question`
- *   paragraphe de l'appel final              `ctaFinal.rappel`
- *   bouton de l'appel final                  `ctaFinal.bouton`, vers #formulaire
+ *   · `pourAllerPlusLoin` : les cartes de la section « Maillage », une par lien
+ *     interne trouvé dans le texte du corpus, avec LA PHRASE QUI LE PORTAIT en
+ *     légende. C'est ce que fait le parseur de la maquette.
+ *   · rien d'autre.
  *
- * CE QUE LA MAQUETTE NE DESSINE PAS ET QUE LE CORPUS PORTE : `offre`,
- * `deroule`, `garanties`, `cta`, `preuves`, `objections`. Six sections de texte
- * rédigé, payé, et qui porte le référencement de ces pages. Elles ne sont pas
- * supprimées : elles partent dans `contenu.complement` et sont rendues SOUS les
- * sections de la maquette par les blocs de `components/site/blocs/`, qui sont
- * eux-mêmes portés de la maquette et en gardent les surtitres (« Ce qui est
- * inclus », « Le déroulé », « Nos engagements », « Prochaine étape »,
- * « Nos dernières réalisations », « Questions fréquentes »).
+ * LA CORRESPONDANCE, section par section :
  *
- * RESTENT DEHORS, et c'est dit dans le rapport : `heros.telephone` et
- * `heros.phraseDelai`. Le héros de la maquette n'a pas de ligne pour eux. Le
- * numéro et le rappel dans l'heure restent lisibles sur la page, portés par
- * `cta.rappel` et par le paragraphe de l'appel final.
+ *   maquette                 corpus
+ *   ─────────────────────────────────────────────────────────────────────────
+ *   01 Héros                 `heros` (h1, mecanisme, cta, telephone, delai)
+ *   01 Héros, « En bref »    `chiffres`
+ *   02 Photo et logos        la punchline de `probleme`, les clients de `preuves`
+ *   03 Problème              `probleme`
+ *   04 Offre                 `offre`
+ *   05 Déroulé               `deroule`
+ *   06 Garanties             `garanties`
+ *   Réassurance              RIEN : chrome du gabarit, écrit dans la maquette
+ *   07 Appel                 `cta`
+ *   08 Références            `preuves`
+ *   09 Questions             `objections`
+ *   Maillage                 les liens internes du texte, dédoublonnés
+ *   10 Appel final           `ctaFinal`, et le formulaire du site
+ *
+ * AUCUNE SECTION N'EST PERDUE, et `complement` n'a plus d'emploi : c'était le
+ * symptôme du mauvais fichier de maquette, pas une décision.
+ *
+ * LES PAGES SŒURS passent désormais par le maillage interne de la route, en
+ * cartes cliquables comme l'exige `CLAUDE.md` section 4. Le gabarit 08 ne
+ * dessine pas de rangée de pastilles de secteurs : il dessine « Pour aller plus
+ * loin », alimenté par les liens que le client a lui-même écrits dans son texte.
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -62,39 +61,36 @@ const SORTIE = join(RACINE, "supabase", "import", "gabarits-maquette");
 const SOURCE_CORPUS = join(RACINE, "supabase", "import", "corpus-analyse.json");
 
 /**
- * L'ancre du formulaire de bas de page, posée sur toutes les pages du cocon.
+ * Les visuels que la maquette distribue en cycle aux cartes de maillage.
  *
- * Même valeur que `ANCRE_FORMULAIRE` de `components/site/blocs/habillage.ts`.
- * `verification-secteur.tsx` vérifie qu'elles ne divergent pas : une ancre
- * fautive passerait tous les contrôles de sûreté des liens, et donnerait un
- * bouton qui ne mène nulle part sur les treize pages.
+ * Même liste et même décalage que `const PHOTOS` de son script, et que
+ * `components/site/secteur/contenu-maquette.ts` : la carte `i` reçoit
+ * `PHOTOS[(i + 3) % PHOTOS.length]`. Le corpus ne porte aucune image, ces
+ * chemins sont du DESSIN.
  */
-const ANCRE = "#formulaire";
+const PHOTOS = [
+  "team-grind-front",
+  "team-duo",
+  "ph-tuyaux",
+  "ph-robots-solaire",
+  "team-grind-close",
+  "team-grind-impact",
+  "ph-hero-raffinerie",
+];
 
-/**
- * Les surtitres du gabarit, relevés dans la maquette.
- *
- * Ils ne viennent pas du corpus parce qu'ils ne sont pas de la copie : ce sont
- * les étiquettes du gabarit, au même titre que « Questions fréquentes » dans
- * les blocs déjà portés. `verification-secteur.tsx` les relit dans
- * `maquette/accueil-rendu.html` à chaque exécution et refuse une dérive.
- */
-const SURTITRES = {
-  page: "Secteur d'activité",
-  reperes: "Nos repères dans le secteur",
-  enjeux: "Les enjeux du secteur",
-  autres: "Les autres secteurs",
-};
-
-/** Les six sections que la maquette ne dessine pas, dans l'ordre du corpus. */
-const COMPLEMENT = new Set([
+/** Les dix sections du corpus, dans l'ordre où le gabarit les attend. */
+const ORDRE = [
+  "heros",
+  "chiffres",
+  "probleme",
   "offre",
   "deroule",
   "garanties",
   "cta",
   "preuves",
   "objections",
-]);
+  "ctaFinal",
+];
 
 const corpus = JSON.parse(readFileSync(SOURCE_CORPUS, "utf8"));
 
@@ -102,90 +98,92 @@ const corpus = JSON.parse(readFileSync(SOURCE_CORPUS, "utf8"));
 const pages = corpus.filter((entree) => entree.url.includes("/secteurs/"));
 
 /**
- * Les 10 secteurs, NOMMÉS PAR LE CLIENT.
+ * Tout le texte d'une section, à plat, dans l'ordre où il est écrit.
  *
- * Le libellé d'une pastille doit être court, et `pages.titre_h1` ne l'est pas
- * (« Maintenance dans l'industrie métallique »). La liste est donc lue dans la
- * prose du hub, où le client écrit lui-même le nom de chaque secteur avec son
- * lien : aucune étiquette n'est dérivée d'un slug ni raccourcie à la main.
+ * Marche sur la forme analysée du corpus sans connaître ses champs : une
+ * section nouvelle ou un champ renommé ne fait pas rater des liens en silence.
  */
-function secteurs() {
-  const hub = pages.find((entree) => entree.url === "/secteurs/");
-  if (!hub) throw new Error("le hub /secteurs/ est absent du corpus");
-  const prose = (hub.contenu.sections.find((s) => s.type === "offre")?.prose ?? [])
-    .map((p) => p.texte)
-    .join(" ");
-  const liens = [...prose.matchAll(/\[([^\]]+)\]\((\/secteurs\/[^)]+)\)/g)].map(
-    ([, libelle, href]) => ({
-      // Seule retouche : la capitale d'attaque, parce que le mot est tiré d'une
-      // phrase et devient une étiquette. Le mot lui-même n'est pas touché.
-      libelle: libelle.charAt(0).toLocaleUpperCase("fr") + libelle.slice(1),
-      href,
-    }),
-  );
-  if (liens.length < 10) {
-    throw new Error(`la prose du hub ne nomme que ${liens.length} secteurs`);
+function textesDe(valeur, sortie = []) {
+  if (typeof valeur === "string") sortie.push(valeur);
+  else if (Array.isArray(valeur)) valeur.forEach((v) => textesDe(v, sortie));
+  else if (valeur && typeof valeur === "object") {
+    Object.values(valeur).forEach((v) => textesDe(v, sortie));
   }
-  return liens;
+  return sortie;
 }
 
-const TOUS_LES_SECTEURS = secteurs();
+/** Une phrase sans son balisage Markdown, pour servir de légende. */
+function sansMarkdown(texte) {
+  return texte
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1")
+    .replace(/\*\*/g, "")
+    .trim();
+}
 
-/** Le contenu secteur d'une page, à partir de ses sections de vente. */
+/**
+ * Les cartes de « Pour aller plus loin », une par lien interne du texte.
+ *
+ * COMME LE PARSEUR DE LA MAQUETTE, et pour les mêmes raisons :
+ *
+ *   · la LÉGENDE est la phrase qui portait le lien, sans son balisage. Ce n'est
+ *     pas un résumé écrit pour l'occasion : c'est le texte du client.
+ *   · le TITRE est le libellé du lien, capitale d'attaque mise, parce qu'il est
+ *     tiré d'une phrase et devient un titre de carte.
+ *   · les liens vers `/preuves/` sont ÉCARTÉS : ils ont déjà leur section,
+ *     « 08 Références », et la même étude de cas deux fois sur une page n'ajoute
+ *     rien.
+ *   · dédoublonné par cible, premier gagnant.
+ */
+function cartesDeMaillage(sections) {
+  const vues = new Set();
+  const cartes = [];
+
+  for (const section of sections) {
+    for (const texte of textesDe(section)) {
+      /* Les phrases sont découpées AVANT la recherche des liens : c'est ce qui
+         donne à chaque lien la phrase qui le portait, et pas tout le paragraphe. */
+      for (const phrase of texte.split(/(?<=[.?!])\s+/)) {
+        for (const [, libelle, href] of phrase.matchAll(
+          /\[([^\]]+)\]\(([^)]+)\)/g,
+        )) {
+          if (!href.startsWith("/") || href.startsWith("/preuves/")) continue;
+          if (vues.has(href)) continue;
+          vues.add(href);
+          const legende = sansMarkdown(phrase);
+          cartes.push({
+            titre: libelle.charAt(0).toLocaleUpperCase("fr") + libelle.slice(1),
+            href,
+            ...(legende ? { texte: legende } : {}),
+            image: `/assets/web/${PHOTOS[(cartes.length + 3) % PHOTOS.length]}.jpg`,
+          });
+        }
+      }
+    }
+  }
+
+  return cartes;
+}
+
+/** Le contenu secteur d'une page : ses dix sections, et ses cartes de maillage. */
 function contenuSecteur(entree) {
-  const par = new Map(entree.contenu.sections.map((s) => [s.type, s]));
-  const heros = par.get("heros");
-  const chiffres = par.get("chiffres");
-  const probleme = par.get("probleme");
-  const final = par.get("ctaFinal");
+  /* L'ORDRE DU TABLEAU EST LE GABARIT, et il est imposé ici plutôt que supposé :
+     le corpus écrit ses sections dans cet ordre, mais une page dont une section
+     manque ou arrive de travers ne doit pas décaler le gabarit. Les sections
+     que `ORDRE` ne nomme pas sont conservées à la fin, pour qu'un type nouveau
+     se voie au lieu de disparaître. */
+  const connues = entree.contenu.sections.filter((s) => ORDRE.includes(s.type));
+  const inconnues = entree.contenu.sections.filter(
+    (s) => !ORDRE.includes(s.type),
+  );
+  const sections = [
+    ...ORDRE.map((type) => connues.find((s) => s.type === type)).filter(Boolean),
+    ...inconnues,
+  ];
 
-  const contenu = { gabarit: "secteur", surtitre: SURTITRES.page };
+  const contenu = { gabarit: "secteur", sections };
 
-  /* LE HÉROS. Le H1 n'est pas ici : il vient de `pages.titre_h1`, et le gabarit
-     le reçoit en propriété. Le chapeau est le mécanisme du corpus, c'est-à-dire
-     le paragraphe que le corpus place déjà sous le H1. */
-  if (heros?.mecanisme) contenu.chapeau = heros.mecanisme;
-  if (heros?.cta) contenu.actions = [{ libelle: heros.cta, href: ANCRE }];
-
-  /* LES REPÈRES. La maquette en dessine quatre, le corpus en fournit trois : on
-     en pose trois. La quatrième case reste vide, elle ne se comble pas. */
-  const reperes = (chiffres?.chiffres ?? [])
-    .filter((c) => c.valeur && c.libelle)
-    .map((c) => ({ valeur: c.valeur, libelle: c.libelle }));
-  if (reperes.length > 0) {
-    contenu.reperesSurtitre = SURTITRES.reperes;
-    contenu.reperes = reperes;
-  }
-
-  /* LES ENJEUX. La punchline du corpus EST le titre de sa section « problème » :
-     elle prend la place du H2. Les puces deviennent les cartes en verre,
-     l'accroche en titre, le texte en corps. */
-  const enjeux = (probleme?.puces ?? [])
-    .filter((p) => p.accroche && p.texte)
-    .map((p) => ({ titre: p.accroche, texte: p.texte }));
-  if (enjeux.length > 0) {
-    contenu.enjeuxSurtitre = SURTITRES.enjeux;
-    if (probleme?.punchline) contenu.enjeuxTitre = probleme.punchline;
-    contenu.enjeux = enjeux;
-  }
-
-  /* LES PAGES SŒURS. Tous les secteurs sauf celui de la page. Une page fille,
-     qui n'est pas elle-même un secteur, les garde tous. */
-  const autres = TOUS_LES_SECTEURS.filter((lien) => lien.href !== entree.url);
-  if (autres.length > 0) {
-    contenu.autresSurtitre = SURTITRES.autres;
-    contenu.autres = autres;
-  }
-
-  /* L'APPEL FINAL. Les trois éléments du panneau de la maquette, les trois
-     champs de `ctaFinal` : la question, le rappel, le bouton. */
-  if (final?.question) contenu.appelTitre = final.question;
-  if (final?.rappel) contenu.appelTexte = final.rappel;
-  if (final?.bouton) contenu.appelBouton = { libelle: final.bouton, href: ANCRE };
-
-  /* LE TEXTE QUE LA MAQUETTE NE MONTRE PAS, dans l'ordre où le corpus l'écrit. */
-  const complement = entree.contenu.sections.filter((s) => COMPLEMENT.has(s.type));
-  if (complement.length > 0) contenu.complement = complement;
+  const cartes = cartesDeMaillage(sections);
+  if (cartes.length > 0) contenu.pourAllerPlusLoin = cartes;
 
   return contenu;
 }
@@ -207,7 +205,8 @@ for (const entree of pages) {
       {
         url: entree.url,
         source:
-          "dessin : maquette/accueil-rendu.html, gabarit isSecteur, lignes 6278 à 6364. " +
+          "dessin : maquette/gabarit-08-secteur.html, transcrit de " +
+          "« Migen - Gabarit 08 Secteur.dc.html », qui fait foi contre « Site final ». " +
           "texte : supabase/import/corpus-analyse.json, produit par scripts/produit-secteurs.mjs.",
         contenu,
       },
@@ -217,11 +216,13 @@ for (const entree of pages) {
     "utf8",
   );
   ecrits += 1;
+
+  const types = contenu.sections.map((s) => s.type);
+  const manquantes = ORDRE.filter((t) => !types.includes(t));
   console.log(
-    `${entree.url.padEnd(44)} ${String(contenu.reperes?.length ?? 0)} repères, ` +
-      `${String(contenu.enjeux?.length ?? 0)} enjeux, ` +
-      `${String(contenu.autres?.length ?? 0)} pages sœurs, ` +
-      `${String(contenu.complement?.length ?? 0)} sections sous la maquette`,
+    `${entree.url.padEnd(44)} ${String(types.length).padStart(2)}/10 sections, ` +
+      `${String(contenu.pourAllerPlusLoin?.length ?? 0)} carte(s) de maillage` +
+      (manquantes.length > 0 ? `, VIDE : ${manquantes.join(", ")}` : ""),
   );
 }
 

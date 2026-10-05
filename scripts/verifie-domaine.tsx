@@ -174,7 +174,7 @@ const fichiers = readdirSync(DOSSIER)
   .sort();
 assert.ok(fichiers.length > 0, `aucun fichier dans ${DOSSIER}`);
 
-const pages: { url: string; contenu: ContenuMetier }[] = [];
+const pages: { url: string; contenu: Domaine }[] = [];
 for (const nom of fichiers) {
   const brut = JSON.parse(readFileSync(`${DOSSIER}/${nom}`, "utf8")) as {
     url: unknown;
@@ -224,7 +224,7 @@ for (const nom of fichiers) {
       assert.ok(!motif.test(s), `${ou} : ${motif} interdit (${remede}) dans « ${s.slice(0, 120)} »`);
   }
 
-  pages.push({ url: brut.url as string, contenu: brut.contenu as ContenuMetier });
+  pages.push({ url: brut.url as string, contenu: brut.contenu as Domaine });
 }
 
 /* ------------------------------------------------------------------ le rendu */
@@ -236,19 +236,19 @@ if (FAUTE === "valeur-maquette") {
   // La faute la plus sournoise : le chapeau rendu dans une autre taille que
   // celle de la maquette. Le contrôle doit la voir sans qu'aucun pixel ne soit
   // écrit ici, puisque la taille attendue sort du fichier de maquette.
-  contenu = { ...contenu, chapeau: undefined } as ContenuMetier;
+  contenu = { ...contenu, chapeau: undefined } as Domaine;
 }
 if (FAUTE === "interdit") {
   contenu = {
     ...contenu,
     cta: { ...contenu.cta!, rappel: "Nous vous répondons en deux heures." },
-  } as ContenuMetier;
+  } as Domaine;
 }
 if (FAUTE === "href-vide") {
   contenu = {
     ...contenu,
     cta: { ...contenu.cta!, bouton: { ...contenu.cta!.bouton, href: "#" } },
-  } as ContenuMetier;
+  } as Domaine;
 }
 
 let rendu = renderToStaticMarkup(<PageMetier titre="Automatisme industriel" contenu={contenu} />);

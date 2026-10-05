@@ -3,12 +3,12 @@
   "contenu": {
     "gabarit": "ville",
     "chapeau": "Le Béarn tient son industrie de deux histoires. Le gaz de Lacq, devenu plateforme chimique et thermoplastiques autour de Mourenx. Puis la filière turbines et aéronautique, entre Bordes et Serres-Castet. Procédés continus d'un côté, traçabilité au dixième de l'autre. Nos techniciens itinérants couvrent le bassin et se déplacent partout en France.",
-    "actions": [
-      {
-        "libelle": "Demander une intervention à Pau",
-        "href": "#formulaire"
-      }
-    ],
+    "action": {
+      "libelle": "Demander une intervention à Pau",
+      "href": "#formulaire"
+    },
+    "telephone": "04 78 33 72 05",
+    "delai": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte couvre les nuits, les week-ends et les jours fériés.",
     "reperes": [
       {
         "valeur": "+ 100",
@@ -23,9 +23,15 @@
         "libelle": "clients accompagnés, dont plus de 80 réguliers"
       }
     ],
-    "contact": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 couvre les nuits, les week-ends et les jours fériés.",
-    "constatTexte": "Une unité s'arrête un samedi sur le bassin de Lacq. Chaque heure se compte en production perdue, et le technicien habilité pour y entrer n'est pas disponible en local.",
-    "constatPuces": [
+    "logos": [
+      "SUEZ",
+      "MERSEN",
+      "EATON",
+      "GROUPE ATLANTIC"
+    ],
+    "problemeTitre": "Une unité s'arrête un samedi sur le bassin de Lacq.",
+    "problemeTexte": "Chaque heure se compte en production perdue, et le technicien habilité pour y entrer n'est pas disponible en local.",
+    "problemes": [
       {
         "texte": "Une plateforme chimique redémarre lentement, et le redémarrage coûte parfois plus que la panne.",
         "accroche": "Les procédés continus ne se mettent pas en pause."
@@ -47,7 +53,91 @@
         "accroche": "Recruter un technicien de maintenance prend des mois."
       }
     ],
-    "reponsePuces": [
+    "offre": [
+      {
+        "benefice": "Vos sites sensibles accueillent une équipe qui connaît les règles avant d'arriver.",
+        "prestation": {
+          "texte": "avec le cadre écrit : plan de prévention, consignation, permis de feu.",
+          "accroche": "Intervention en zone réglementée"
+        }
+      },
+      {
+        "benefice": "La ligne repart, et le compte rendu dit d'où venait le défaut.",
+        "prestation": {
+          "texte": "sur site, machines tournantes, pompes, réseaux, armoires.",
+          "accroche": "Dépannage et remise en état"
+        }
+      },
+      {
+        "benefice": "Le préventif se fait pendant les fenêtres prévues, pas jamais.",
+        "prestation": {
+          "texte": "sur vos heures réelles, calé sur vos arrêts programmés.",
+          "accroche": "Préventif planifié"
+        }
+      },
+      {
+        "benefice": "Vos audits qualité trouvent une trace écrite pour chaque passage.",
+        "prestation": {
+          "texte": "pour les filières à traçabilité, habilitations à jour et matériel contrôlé.",
+          "accroche": "Interventions documentées"
+        }
+      },
+      {
+        "benefice": "Un seul interlocuteur pour un défaut qui mobilise plusieurs spécialités.",
+        "prestation": {
+          "texte": "[mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [soudure](/expertises/soudure/).",
+          "accroche": "Domaines combinés"
+        }
+      },
+      {
+        "benefice": "Un arrêt du samedi ne devient pas un lundi de redémarrage perdu.",
+        "prestation": {
+          "texte": ", pour les installations en service continu.",
+          "accroche": "Astreinte en option"
+        }
+      },
+      {
+        "benefice": "Le poste que le bassin ne vous permet pas de pourvoir est tenu.",
+        "prestation": {
+          "texte": "intégré à votre équipe, prise de poste en 2 à 3 semaines.",
+          "accroche": "Technicien en [Résidence](/offres/residence/)"
+        }
+      },
+      {
+        "benefice": "Votre grand arrêt se prépare longtemps avant, et se rend à l'heure dite.",
+        "prestation": {
+          "texte": "cadré de J-90 à J-30, restitution à la demi-journée : voir l'offre [arrêt technique](/offres/arret-technique/).",
+          "accroche": "Arrêt technique"
+        }
+      }
+    ],
+    "etapes": [
+      {
+        "texte": "vous décrivez la panne ou le projet. Un chargé d'affaires rappelle dans l'heure aux horaires ouvrés.",
+        "titre": "Premier contact"
+      },
+      {
+        "texte": "machines, accès, zones réglementées, habilitations exigées. Un profil sans l'habilitation requise ne vient pas.",
+        "titre": "Qualification"
+      },
+      {
+        "texte": "périmètre, créneaux, conditions d'intervention, matériel. Aucun surcoût découvert en fin de mission.",
+        "titre": "Devis écrit"
+      },
+      {
+        "texte": "accueil sécurité, plan de prévention, consignation, diagnostic, réparation, redémarrage sécurisé.",
+        "titre": "Intervention"
+      },
+      {
+        "texte": "opérations, temps passé, pièces, préconisations, versés dans votre GMAO.",
+        "titre": "Compte rendu"
+      },
+      {
+        "texte": "sur contrat, revue de la récurrence par équipement et du respect du plan préventif.",
+        "titre": "Suivi"
+      }
+    ],
+    "garanties": [
       {
         "texte": "Entretien technique et comportemental, 10 % des candidats retenus, résultats d'évaluation partagés, habilitations vérifiées.",
         "accroche": "Le profil vous est présenté avant l'intervention."
@@ -61,7 +151,38 @@
         "accroche": "Un périmètre et une sortie écrits."
       }
     ],
-    "faq": [
+    "appel": {
+      "question": "Besoin d'un technicien habilité pour vos installations du Béarn ?",
+      "bouton": "Demander une intervention à Pau",
+      "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+    },
+    "preuves": [
+      {
+        "texte": ", mission de 6 mois depuis février 2026",
+        "titre": "Renfort habilité risque chimique sur un site de traitement des eaux industrielles",
+        "lienHref": "/preuves/suez-remise-en-etat/",
+        "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
+      },
+      {
+        "texte": ", en contexte de montée en charge",
+        "titre": "Un automaticien SIEMENS affecté au démarrage d'une nouvelle ligne de production",
+        "lienHref": "/preuves/mersen/",
+        "lienLibelle": "Étude de cas MERSEN : nouvelles lignes"
+      },
+      {
+        "texte": ", depuis janvier 2023",
+        "titre": "6 techniciens sur l'installation d'un nouveau parc machine",
+        "lienHref": "/preuves/eaton-mise-en-production/",
+        "lienLibelle": "Étude de cas EATON : mise en production"
+      },
+      {
+        "texte": ", depuis octobre 2024",
+        "titre": "1 à 3 techniciens en renfort permanent sur plusieurs sites de production",
+        "lienHref": "/preuves/groupe-atlantic/",
+        "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes"
+      }
+    ],
+    "questions": [
       {
         "reponse": "Oui. Nous n'avons pas d'agence dans les Pyrénées-Atlantiques et nous ne prétendons pas le contraire : nos techniciens se déplacent partout en France et interviennent sur site. Votre demande est rappelée dans l'heure aux horaires ouvrés, et le chargé d'affaires vous dit si le besoin est tenable.",
         "question": "Intervenez-vous vraiment à Pau, alors que votre siège est à Lyon ?"
@@ -87,196 +208,47 @@
         "question": "Combien coûte un contrat de maintenance ?"
       }
     ],
-    "autres": [
+    "liens": [
       {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
+        "libelle": "Mécanique",
+        "href": "/expertises/mecanique/"
       },
       {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
+        "libelle": "Électrique",
+        "href": "/expertises/electrique/"
       },
       {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
+        "libelle": "Automatisme",
+        "href": "/expertises/automatisme/"
       },
       {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
+        "libelle": "Hydraulique",
+        "href": "/expertises/hydraulique/"
       },
       {
-        "libelle": "Valence",
-        "href": "/implantations/lyon/valence/"
+        "libelle": "Soudure",
+        "href": "/expertises/soudure/"
       },
       {
-        "libelle": "Nantes",
-        "href": "/implantations/nantes/"
+        "libelle": "Résidence",
+        "href": "/offres/residence/",
+        "contexte": "Technicien en Résidence"
       },
       {
-        "libelle": "Brest",
-        "href": "/implantations/nantes/brest/"
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/",
+        "contexte": "cadré de J-90 à J-30, restitution à la demi-journée : voir l'offre arrêt technique."
       },
       {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
-      },
-      {
-        "libelle": "paris",
-        "href": "/implantations/paris/"
-      },
-      {
-        "libelle": "Rouen",
-        "href": "/implantations/paris/rouen/"
-      },
-      {
-        "libelle": "Strasbourg",
-        "href": "/implantations/strasbourg/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
-      },
-      {
-        "libelle": "Toulouse",
-        "href": "/implantations/toulouse/"
-      },
-      {
-        "libelle": "Bordeaux",
-        "href": "/implantations/toulouse/bordeaux/"
+        "libelle": "Chantier",
+        "href": "/offres/chantier/",
+        "contexte": "Pour un montage ou un transfert de ligne, l'offre chantier s'en charge."
       }
     ],
-    "reste": [
-      {
-        "type": "offre",
-        "lignes": [
-          {
-            "benefice": "Vos sites sensibles accueillent une équipe qui connaît les règles avant d'arriver.",
-            "prestation": {
-              "texte": "avec le cadre écrit : plan de prévention, consignation, permis de feu.",
-              "accroche": "Intervention en zone réglementée"
-            }
-          },
-          {
-            "benefice": "La ligne repart, et le compte rendu dit d'où venait le défaut.",
-            "prestation": {
-              "texte": "sur site, machines tournantes, pompes, réseaux, armoires.",
-              "accroche": "Dépannage et remise en état"
-            }
-          },
-          {
-            "benefice": "Le préventif se fait pendant les fenêtres prévues, pas jamais.",
-            "prestation": {
-              "texte": "sur vos heures réelles, calé sur vos arrêts programmés.",
-              "accroche": "Préventif planifié"
-            }
-          },
-          {
-            "benefice": "Vos audits qualité trouvent une trace écrite pour chaque passage.",
-            "prestation": {
-              "texte": "pour les filières à traçabilité, habilitations à jour et matériel contrôlé.",
-              "accroche": "Interventions documentées"
-            }
-          },
-          {
-            "benefice": "Un seul interlocuteur pour un défaut qui mobilise plusieurs spécialités.",
-            "prestation": {
-              "texte": "[mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [soudure](/expertises/soudure/).",
-              "accroche": "Domaines combinés"
-            }
-          },
-          {
-            "benefice": "Un arrêt du samedi ne devient pas un lundi de redémarrage perdu.",
-            "prestation": {
-              "texte": ", pour les installations en service continu.",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
-          },
-          {
-            "benefice": "Le poste que le bassin ne vous permet pas de pourvoir est tenu.",
-            "prestation": {
-              "texte": "intégré à votre équipe, prise de poste en 2 à 3 semaines.",
-              "accroche": "Technicien en [Résidence](/offres/residence/)"
-            }
-          },
-          {
-            "benefice": "Votre grand arrêt se prépare longtemps avant, et se rend à l'heure dite.",
-            "prestation": {
-              "texte": "cadré de J-90 à J-30, restitution à la demi-journée : voir l'offre [arrêt technique](/offres/arret-technique/).",
-              "accroche": "Arrêt technique"
-            }
-          }
-        ]
-      },
-      {
-        "type": "deroule",
-        "etapes": [
-          {
-            "texte": "vous décrivez la panne ou le projet. Un chargé d'affaires rappelle dans l'heure aux horaires ouvrés.",
-            "titre": "Premier contact"
-          },
-          {
-            "texte": "machines, accès, zones réglementées, habilitations exigées. Un profil sans l'habilitation requise ne vient pas.",
-            "titre": "Qualification"
-          },
-          {
-            "texte": "périmètre, créneaux, conditions d'intervention, matériel. Aucun surcoût découvert en fin de mission.",
-            "titre": "Devis écrit"
-          },
-          {
-            "texte": "accueil sécurité, plan de prévention, consignation, diagnostic, réparation, redémarrage sécurisé.",
-            "titre": "Intervention"
-          },
-          {
-            "texte": "opérations, temps passé, pièces, préconisations, versés dans votre GMAO.",
-            "titre": "Compte rendu"
-          },
-          {
-            "texte": "sur contrat, revue de la récurrence par équipement et du respect du plan préventif.",
-            "titre": "Suivi"
-          }
-        ]
-      },
-      {
-        "type": "cta",
-        "bouton": "Demander une intervention à Pau",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin d'un technicien habilité pour vos installations du Béarn ?"
-      },
-      {
-        "type": "preuves",
-        "preuves": [
-          {
-            "texte": ", mission de 6 mois depuis février 2026",
-            "titre": "Renfort habilité risque chimique sur un site de traitement des eaux industrielles",
-            "lienHref": "/preuves/suez-remise-en-etat/",
-            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
-          },
-          {
-            "texte": ", en contexte de montée en charge",
-            "titre": "Un automaticien SIEMENS affecté au démarrage d'une nouvelle ligne de production",
-            "lienHref": "/preuves/mersen/",
-            "lienLibelle": "Étude de cas MERSEN : nouvelles lignes"
-          },
-          {
-            "texte": ", depuis janvier 2023",
-            "titre": "6 techniciens sur l'installation d'un nouveau parc machine",
-            "lienHref": "/preuves/eaton-mise-en-production/",
-            "lienLibelle": "Étude de cas EATON : mise en production"
-          },
-          {
-            "texte": ", depuis octobre 2024",
-            "titre": "1 à 3 techniciens en renfort permanent sur plusieurs sites de production",
-            "lienHref": "/preuves/groupe-atlantic/",
-            "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes"
-          }
-        ]
-      },
-      {
-        "type": "ctaFinal",
-        "bouton": "Demander une intervention à Pau",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-        "question": "Besoin de sécuriser vos installations avant le prochain arrêt ?"
-      }
-    ]
+    "appelFinal": {
+      "question": "Besoin de sécuriser vos installations avant le prochain arrêt ?",
+      "bouton": "Demander une intervention à Pau",
+      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
+    }
   }
 }

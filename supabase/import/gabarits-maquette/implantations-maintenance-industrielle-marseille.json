@@ -3,12 +3,12 @@
   "contenu": {
     "gabarit": "ville",
     "chapeau": "Entre Fos, l'étang de Berre et les ateliers de Rousset, une même semaine mêle zone classée, four sidérurgique et salle de fabrication propre. Nos techniciens basés à Marseille arrivent avec les habilitations du site concerné, pas avec un profil passe-partout. Le hub de techniciens de Marseille couvre le bassin, l'astreinte couvre les nuits et les week-ends.",
-    "actions": [
-      {
-        "libelle": "Demander une intervention à Marseille",
-        "href": "#formulaire"
-      }
-    ],
+    "action": {
+      "libelle": "Demander une intervention à Marseille",
+      "href": "#formulaire"
+    },
+    "telephone": "04 78 33 72 05",
+    "delai": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte se souscrit en option, pour les nuits comme pour les jours fériés.",
     "reperes": [
       {
         "valeur": "+ 120",
@@ -23,9 +23,16 @@
         "libelle": "hubs de techniciens en France, dont un à Marseille, plus notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid"
       }
     ],
-    "contact": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 se souscrit en option, pour les nuits comme pour les jours fériés.",
-    "constatTexte": "Un compresseur d'air lâche à Fos un samedi. L'unité tourne en continu, elle ne redémarre pas le lundi matin comme un atelier qui ferme le vendredi soir.",
-    "constatPuces": [
+    "logos": [
+      "SUEZ",
+      "STELLANTIS",
+      "MERSEN",
+      "AMAZON",
+      "EIFFAGE"
+    ],
+    "problemeTitre": "Un compresseur d'air lâche à Fos un samedi.",
+    "problemeTexte": "L'unité tourne en continu, elle ne redémarre pas le lundi matin comme un atelier qui ferme le vendredi soir.",
+    "problemes": [
       {
         "texte": "Raffinage, sidérurgie, traitement de l'eau : l'arrêt se paie à l'heure, jour férié compris.",
         "accroche": "Le procédé continu ne connaît pas le week-end."
@@ -47,14 +54,86 @@
         "accroche": "Le technicien confirmé local est déjà pris."
       }
     ],
-    "reponseTexte": "Les sites portuaires et les plateformes de l'axe rhodanien relèvent de la [maintenance des équipements logistiques](/secteurs/logistique/) : convoyeurs, tri, quais. Les lignes de conditionnement alimentaires relèvent de la [maintenance en agroalimentaire](/secteurs/agroalimentaire/).",
-    "reponsePuces": [
+    "offre": [
+      {
+        "benefice": "Votre service HSE valide l'intervenant au lieu de la refuser à l'entrée.",
+        "prestation": {
+          "texte": ", consignation, permis de feu, plan de prévention posés avant le premier geste.",
+          "accroche": "Techniciens habilités pour les sites à procédés continus"
+        }
+      },
+      {
+        "benefice": "Vous jugez sur une intervention réelle avant de parler contrat.",
+        "prestation": {
+          "texte": ", diagnostic, remise en service, compte rendu écrit.",
+          "accroche": "Dépannage cadré du premier appel"
+        }
+      },
+      {
+        "benefice": "Le budget va aux équipements qui arrêtent la production, pas à un calendrier constructeur.",
+        "prestation": {
+          "texte": ", resserré sur les organes qui ont déjà lâché.",
+          "accroche": "Préventif calé sur vos heures de marche"
+        }
+      },
+      {
+        "benefice": "Une panne qui mélange trois métiers mobilise une seule équipe et un seul interlocuteur.",
+        "prestation": {
+          "texte": "[mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure](/expertises/soudure/).",
+          "accroche": "Couverture multi-technique"
+        }
+      },
+      {
+        "benefice": "Un défaut du dimanche soir ne devient pas un lundi de production perdu.",
+        "prestation": {
+          "texte": ", mobilisée depuis notre hub de techniciens de Marseille.",
+          "accroche": "Astreinte en option"
+        }
+      },
+      {
+        "benefice": "Vos historiques restent chez vous et servent aux arbitrages de l'année suivante.",
+        "prestation": {
+          "texte": ", machine par machine.",
+          "accroche": "Comptes rendus versés dans votre GMAO"
+        }
+      }
+    ],
+    "offreNotes": [
+      "Les sites portuaires et les plateformes de l'axe rhodanien relèvent de la [maintenance des équipements logistiques](/secteurs/logistique/) : convoyeurs, tri, quais. Les lignes de conditionnement alimentaires relèvent de la [maintenance en agroalimentaire](/secteurs/agroalimentaire/)."
+    ],
+    "etapes": [
+      {
+        "texte": "machine, symptôme, criticité, conditions d'accès au site. Dix minutes suffisent à qualifier le besoin.",
+        "titre": "Vous décrivez la situation"
+      },
+      {
+        "texte": "un chargé d'affaires vérifie la compétence, les habilitations exigées par votre site et les pièces à prévoir.",
+        "titre": "Nous vous rappelons dans l'heure"
+      },
+      {
+        "texte": "périmètre, conditions d'intervention, chiffrage. Rien d'exceptionnel n'apparaît en fin de facture.",
+        "titre": "Le cadre est écrit avant de rouler"
+      },
+      {
+        "texte": "accueil sécurité, plan de prévention, consignation, puis diagnostic.",
+        "titre": "L'intervention se déroule sous votre protocole"
+      },
+      {
+        "texte": "réparer d'abord, comprendre ensuite, pour que le défaut ne revienne pas le mois suivant.",
+        "titre": "La cause racine est cherchée après la remise en route"
+      },
+      {
+        "texte": "constat, actions, pièces posées, organes à surveiller.",
+        "titre": "Le compte rendu part dans votre GMAO"
+      }
+    ],
+    "garanties": [
       {
         "texte": "seuls 10 % des candidats passent notre entretien technique et comportemental, et vous recevez les résultats d'évaluation. Vous savez qui entre sur votre site.",
         "accroche": "Le profil vous est présenté avant l'arrivée"
       },
       {
-        "texte": "les deux engagements écrits sont le rappel dans l'heure aux horaires ouvrés et l'astreinte 24/24 et 7/7 en option. Le reste dépend de votre implantation exacte, annoncé avant d'engager.",
+        "texte": "les deux engagements écrits sont le rappel dans l'heure aux horaires ouvrés et l'astreinte en option. Le reste dépend de votre implantation exacte, annoncé avant d'engager.",
         "accroche": "Aucun délai de route inventé"
       },
       {
@@ -62,7 +141,44 @@
         "accroche": "Un périmètre écrit, pièces comprises"
       }
     ],
-    "faq": [
+    "appel": {
+      "question": "Besoin d'un technicien habilité sur un site du bassin cette semaine ?",
+      "bouton": "Demander une intervention à Marseille",
+      "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+    },
+    "preuves": [
+      {
+        "texte": "contexte à risque, accès réglementé",
+        "titre": "Un électromécanicien habilité risque chimique RC1, mobilisé six mois sur la remise en état d'un site de traitement des eaux industrielles",
+        "lienHref": "/preuves/suez-remise-en-etat/",
+        "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
+      },
+      {
+        "texte": "le métal à chaud use les machines plus vite qu'ailleurs",
+        "titre": "Maintenance préventive et curative d'une fonderie et de son usinage,, depuis octobre 2023",
+        "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+        "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons"
+      },
+      {
+        "texte": "les premières semaines de mise en route, quand l'automate dit non",
+        "titre": "Un automaticien SIEMENS intégré au démarrage d'une nouvelle ligne de production",
+        "lienHref": "/preuves/mersen/",
+        "lienLibelle": "Étude de cas MERSEN : nouvelles lignes"
+      },
+      {
+        "texte": "sous contrat annuel depuis septembre 2022",
+        "titre": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures, sur un centre logistique en continu",
+        "lienHref": "/preuves/amazon-centre-logistique/",
+        "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique"
+      },
+      {
+        "texte": "de septembre à novembre 2024",
+        "titre": "Trois techniciens spécialisés en renfort sur la maintenance préventive d'une centrale photovoltaïque",
+        "lienHref": "/preuves/eiffage/",
+        "lienLibelle": "Étude de cas EIFFAGE : partenariat"
+      }
+    ],
+    "questions": [
       {
         "reponse": "Oui. Marseille est l'un de nos 10 hubs de techniciens en France, auxquels s'ajoutent notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid. Le bassin des Bouches-du-Rhône est couvert par ces techniciens, avec l'appui multi-technique du groupe. Ce qui compte sur votre site, c'est le niveau du technicien qui arrive, son outillage et ses habilitations, pas une plaque sur une porte.",
         "question": "Intervenez-vous vraiment sur place, à Marseille ?"
@@ -76,7 +192,7 @@
         "question": "Vos intervenants sont-ils habilités pour nos zones classées ?"
       },
       {
-        "reponse": "L'astreinte 24/24 et 7/7 prend l'appel et mobilise un technicien. Elle se souscrit en option du contrat, avec un circuit et des priorités écrits à l'avance. Sans astreinte, les demandes sont traitées aux horaires ouvrés, avec rappel dans l'heure.",
+        "reponse": "L'astreinte prend l'appel et mobilise un technicien. Elle se souscrit en option du contrat, avec un circuit et des priorités écrits à l'avance. Sans astreinte, les demandes sont traitées aux horaires ouvrés, avec rappel dans l'heure.",
         "question": "Que se passe-t-il si la panne tombe la nuit ou un jour férié ?"
       },
       {
@@ -88,188 +204,56 @@
         "question": "Combien coûte un contrat de préventif ?"
       }
     ],
-    "autres": [
+    "liens": [
       {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
+        "libelle": "Maintenance des équipements logistiques",
+        "href": "/secteurs/logistique/",
+        "contexte": "Les sites portuaires et les plateformes de l'axe rhodanien relèvent de la maintenance des équipements logistiques : convoyeurs, tri, quais."
       },
       {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
+        "libelle": "Maintenance en agroalimentaire",
+        "href": "/secteurs/agroalimentaire/",
+        "contexte": "Les lignes de conditionnement alimentaires relèvent de la maintenance en agroalimentaire."
       },
       {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
+        "libelle": "Mécanique",
+        "href": "/expertises/mecanique/"
       },
       {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
+        "libelle": "Électrique",
+        "href": "/expertises/electrique/"
       },
       {
-        "libelle": "Valence",
-        "href": "/implantations/lyon/valence/"
+        "libelle": "Automatisme",
+        "href": "/expertises/automatisme/"
       },
       {
-        "libelle": "Nantes",
-        "href": "/implantations/nantes/"
+        "libelle": "Hydraulique",
+        "href": "/expertises/hydraulique/"
       },
       {
-        "libelle": "Brest",
-        "href": "/implantations/nantes/brest/"
+        "libelle": "Pneumatique",
+        "href": "/expertises/pneumatique/"
       },
       {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
+        "libelle": "Soudure",
+        "href": "/expertises/soudure/"
       },
       {
-        "libelle": "paris",
-        "href": "/implantations/paris/"
+        "libelle": "Technicien en résidence",
+        "href": "/offres/residence/",
+        "contexte": "Oui, avec l'offre technicien en résidence."
       },
       {
-        "libelle": "Rouen",
-        "href": "/implantations/paris/rouen/"
-      },
-      {
-        "libelle": "Strasbourg",
-        "href": "/implantations/strasbourg/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
-      },
-      {
-        "libelle": "Toulouse",
-        "href": "/implantations/toulouse/"
-      },
-      {
-        "libelle": "Bordeaux",
-        "href": "/implantations/toulouse/bordeaux/"
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/",
+        "contexte": "L'abonnement Zéro arrêt est chiffré sur devis, engagement type 6 mois renouvelable."
       }
     ],
-    "reste": [
-      {
-        "type": "offre",
-        "lignes": [
-          {
-            "benefice": "Votre service HSE valide l'intervenant au lieu de la refuser à l'entrée.",
-            "prestation": {
-              "texte": ", consignation, permis de feu, plan de prévention posés avant le premier geste.",
-              "accroche": "Techniciens habilités pour les sites à procédés continus"
-            }
-          },
-          {
-            "benefice": "Vous jugez sur une intervention réelle avant de parler contrat.",
-            "prestation": {
-              "texte": ", diagnostic, remise en service, compte rendu écrit.",
-              "accroche": "Dépannage cadré du premier appel"
-            }
-          },
-          {
-            "benefice": "Le budget va aux équipements qui arrêtent la production, pas à un calendrier constructeur.",
-            "prestation": {
-              "texte": ", resserré sur les organes qui ont déjà lâché.",
-              "accroche": "Préventif calé sur vos heures de marche"
-            }
-          },
-          {
-            "benefice": "Une panne qui mélange trois métiers mobilise une seule équipe et un seul interlocuteur.",
-            "prestation": {
-              "texte": "[mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure](/expertises/soudure/).",
-              "accroche": "Couverture multi-technique"
-            }
-          },
-          {
-            "benefice": "Un défaut du dimanche soir ne devient pas un lundi de production perdu.",
-            "prestation": {
-              "texte": ", mobilisée depuis notre hub de techniciens de Marseille.",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
-          },
-          {
-            "benefice": "Vos historiques restent chez vous et servent aux arbitrages de l'année suivante.",
-            "prestation": {
-              "texte": ", machine par machine.",
-              "accroche": "Comptes rendus versés dans votre GMAO"
-            }
-          }
-        ]
-      },
-      {
-        "type": "deroule",
-        "etapes": [
-          {
-            "texte": "machine, symptôme, criticité, conditions d'accès au site. Dix minutes suffisent à qualifier le besoin.",
-            "titre": "Vous décrivez la situation"
-          },
-          {
-            "texte": "un chargé d'affaires vérifie la compétence, les habilitations exigées par votre site et les pièces à prévoir.",
-            "titre": "Nous vous rappelons dans l'heure"
-          },
-          {
-            "texte": "périmètre, conditions d'intervention, chiffrage. Rien d'exceptionnel n'apparaît en fin de facture.",
-            "titre": "Le cadre est écrit avant de rouler"
-          },
-          {
-            "texte": "accueil sécurité, plan de prévention, consignation, puis diagnostic.",
-            "titre": "L'intervention se déroule sous votre protocole"
-          },
-          {
-            "texte": "réparer d'abord, comprendre ensuite, pour que le défaut ne revienne pas le mois suivant.",
-            "titre": "La cause racine est cherchée après la remise en route"
-          },
-          {
-            "texte": "constat, actions, pièces posées, organes à surveiller.",
-            "titre": "Le compte rendu part dans votre GMAO"
-          }
-        ]
-      },
-      {
-        "type": "cta",
-        "bouton": "Demander une intervention à Marseille",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin d'un technicien habilité sur un site du bassin cette semaine ?"
-      },
-      {
-        "type": "preuves",
-        "preuves": [
-          {
-            "texte": "contexte à risque, accès réglementé",
-            "titre": "Un électromécanicien habilité risque chimique RC1, mobilisé six mois sur la remise en état d'un site de traitement des eaux industrielles",
-            "lienHref": "/preuves/suez-remise-en-etat/",
-            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
-          },
-          {
-            "texte": "le métal à chaud use les machines plus vite qu'ailleurs",
-            "titre": "Maintenance préventive et curative d'une fonderie et de son usinage, 7 jours sur 7, depuis octobre 2023",
-            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons"
-          },
-          {
-            "texte": "les premières semaines de mise en route, quand l'automate dit non",
-            "titre": "Un automaticien SIEMENS intégré au démarrage d'une nouvelle ligne de production",
-            "lienHref": "/preuves/mersen/",
-            "lienLibelle": "Étude de cas MERSEN : nouvelles lignes"
-          },
-          {
-            "texte": "sous contrat annuel depuis septembre 2022",
-            "titre": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures, sur un centre logistique en continu",
-            "lienHref": "/preuves/amazon-centre-logistique/",
-            "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique"
-          },
-          {
-            "texte": "de septembre à novembre 2024",
-            "titre": "Trois techniciens spécialisés en renfort sur la maintenance préventive d'une centrale photovoltaïque",
-            "lienHref": "/preuves/eiffage/",
-            "lienLibelle": "Étude de cas EIFFAGE : partenariat"
-          }
-        ]
-      },
-      {
-        "type": "ctaFinal",
-        "bouton": "Demander une intervention à Marseille",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-        "question": "Besoin de savoir où votre site perd vraiment de la disponibilité ?"
-      }
-    ]
+    "appelFinal": {
+      "question": "Besoin de savoir où votre site perd vraiment de la disponibilité ?",
+      "bouton": "Demander une intervention à Marseille",
+      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
+    }
   }
 }

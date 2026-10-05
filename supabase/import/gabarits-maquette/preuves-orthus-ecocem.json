@@ -1,0 +1,140 @@
+{
+  "url": "/preuves/orthus-ecocem/",
+  "h1": "ORTHUS x ECOCEM : construire un site de R&D industriel",
+  "contenu": {
+    "gabarit": "fiche",
+    "sections": [
+      {
+        "id": "le-client-et-le-site",
+        "titre": "Le client et le site",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Ecocem est une entreprise irlandaise spécialisée dans les matériaux bas carbone, pionnière européenne des ciments à faible émission de CO₂."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Elle a confié à Orthus, filiale du groupe Migen, la construction complète de son nouveau site industriel de recherche et développement, en région parisienne. Le chantier s'étend sur plusieurs mois en 2025."
+          }
+        ]
+      },
+      {
+        "id": "la-situation",
+        "titre": "La situation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Un site de R&D n'est pas un bâtiment industriel classique.** Il doit accueillir des essais, une production pilote et des plateformes de tests, avec des contraintes qui n'apparaissent qu'à l'usage."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Ecocem investit dans cette infrastructure pour trois raisons."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Développer de nouveaux procédés** de fabrication bas carbone."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Tester des solutions innovantes** en conditions industrielles réelles."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Renforcer sa présence technologique** en France et en Europe."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Un tel projet mobilise plusieurs corps de métier sur un planning long. Chaque jalon manqué décale la mise en service, et le risque logistique pèse autant que le risque technique."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Un industriel qui pilote lui-même ce type de chantier y passe ses meilleures ressources. Elles quittent la production pendant des mois, au profit d'un métier qui n'est pas le leur."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "La seconde difficulté est la coordination. Sans interlocuteur unique, chaque corps de métier optimise son planning, et les interfaces se découvrent trop tard."
+          }
+        ]
+      },
+      {
+        "id": "ce-que-nous-avons-mis-en-place",
+        "titre": "Ce que nous avons mis en place",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Vous avez un pilote unique du chantier.** Orthus assure la gestion du projet de bout en bout, de la conception à la réalisation."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous n'arbitrez pas entre les corps de métier.** La coordination des intervenants est portée par Orthus."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous tenez un planning long.** Les jalons critiques sont suivis jusqu'à la livraison prévue fin 2025."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous limitez les risques techniques et logistiques** grâce à une organisation pensée pour ça dès le départ."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous avez une équipe dédiée**, qui suit fondations, structures, équipements, raccordements industriels et sécurisation des installations."
+          }
+        ]
+      },
+      {
+        "id": "le-dispositif",
+        "titre": "Le dispositif",
+        "blocs": [
+          {
+            "type": "tableau",
+            "entetes": [
+              "Élément",
+              "Détail"
+            ],
+            "lignes": [
+              [
+                "Client",
+                "Ecocem, matériaux bas carbone, entreprise irlandaise"
+              ],
+              [
+                "Site",
+                "Nouveau site industriel de R&D, région parisienne"
+              ],
+              [
+                "Périmètre",
+                "Conception et réalisation complète du site"
+              ],
+              [
+                "Intervenant",
+                "Orthus, filiale du groupe Migen, équipe dédiée"
+              ],
+              [
+                "Domaines",
+                "Fondations, structures, équipements, raccordements industriels"
+              ],
+              [
+                "Depuis quand",
+                "2025, plusieurs mois de travaux, livraison prévue fin 2025"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-resultat",
+        "titre": "Le résultat",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Un chantier planifié sur plusieurs mois** : avec des jalons critiques suivis jusqu'à la livraison prévue d'ici fin 2025.",
+              "**Un pilotage complet assuré par Orthus** : de la conception à la réalisation, avec une équipe dédiée sur chaque étape.",
+              "**Un site destiné à la recherche appliquée** : sur les matériaux de construction durables, monté sous exigences qualité, sécurité et performance."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

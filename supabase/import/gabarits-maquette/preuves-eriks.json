@@ -1,0 +1,140 @@
+{
+  "url": "/preuves/eriks/",
+  "h1": "ERIKS : un responsable maintenance pendant la transition",
+  "contenu": {
+    "gabarit": "fiche",
+    "sections": [
+      {
+        "id": "le-client-et-le-site",
+        "titre": "Le client et le site",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "ERIKS est un acteur industriel. Au troisième trimestre 2025, le site traverse deux mouvements simultanés : une intensification de la production et une transition interne dans ses équipes de maintenance."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Migen intègre sur site un responsable maintenance expérimenté, en présence continue, sous supervision Migen."
+          }
+        ]
+      },
+      {
+        "id": "la-situation",
+        "titre": "La situation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Quand le responsable maintenance manque, le préventif glisse et le curatif s'empile.** Personne ne voit venir l'arrêt, et il arrive au pire moment de l'année."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "ERIKS posait trois exigences."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Superviser** l'ensemble des opérations de maintenance industrielle du site."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Manager** les équipes déjà en place, sans casser leurs habitudes de travail."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Tenir les process** sans perte de qualité ni arrêt de production."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Le besoin n'était pas une paire de bras de plus. Il fallait quelqu'un capable de tenir le service pendant que l'organisation bougeait."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Les deux mouvements s'aggravent l'un l'autre. La cadence monte au moment précis où l'encadrement technique est le plus fragile."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Promouvoir un technicien en interne aurait retiré un intervenant du terrain pour en faire un manager sans appui. Le site aurait perdu deux fois."
+          }
+        ]
+      },
+      {
+        "id": "ce-que-nous-avons-mis-en-place",
+        "titre": "Ce que nous avons mis en place",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Vous avez un responsable nommé, pas une ressource anonyme.** Il prend l'exploitation, l'organisation des interventions et le reporting."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous démarrez sans rupture d'activité.** Les ressources sont engagées dès la validation du besoin, la production ne s'arrête pas pour accueillir le renfort."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous gardez votre organisation.** Le responsable travaille dans les équipes ERIKS, l'encadrement technique reste porté par Migen."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous avez un seul interlocuteur maintenance.** Production, achats et services HSE parlent à la même personne."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous recevez un reporting technique et stratégique.** Il remonte à la direction industrielle pendant toute la prestation."
+          }
+        ]
+      },
+      {
+        "id": "le-dispositif",
+        "titre": "Le dispositif",
+        "blocs": [
+          {
+            "type": "tableau",
+            "entetes": [
+              "Élément",
+              "Détail"
+            ],
+            "lignes": [
+              [
+                "Site",
+                "ERIKS, acteur industriel"
+              ],
+              [
+                "Périmètre",
+                "Ensemble des opérations de maintenance du site"
+              ],
+              [
+                "Effectif Migen",
+                "1 responsable maintenance, présence continue"
+              ],
+              [
+                "Nature des interventions",
+                "Planification et ordonnancement du préventif et du curatif"
+              ],
+              [
+                "Encadrement",
+                "Supervision Migen, reporting à la direction industrielle"
+              ],
+              [
+                "Depuis quand",
+                "Troisième trimestre 2025"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-resultat",
+        "titre": "Le résultat",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Zéro interruption critique** : sur toute la durée de la prestation.",
+              "**Montée en compétence des équipes internes** : qui ont travaillé aux côtés du responsable Migen.",
+              "**Organisation optimisée** : sur une période chargée de l'année."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

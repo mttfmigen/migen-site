@@ -1,0 +1,139 @@
+{
+  "url": "/preuves/danone-lignes-de-production/",
+  "h1": "Étude de cas DANONE : lignes de production",
+  "contenu": {
+    "gabarit": "fiche",
+    "sections": [
+      {
+        "id": "le-client-et-le-site",
+        "titre": "Le client et le site",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "DANONE, à travers sa filiale Blédina, a confié à Migen le renfort continu de sa maintenance sur le site de Steenvoorde. Deux techniciens y sont intégrés en 3x8."
+          }
+        ]
+      },
+      {
+        "id": "la-situation",
+        "titre": "La situation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Sur une ligne de nutrition infantile, la cadence perdue ne se rattrape pas.** Une équipe en production continue absorbe le correctif, les postes de nuit et les aléas avec le même effectif."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Le site de Steenvoorde produit sur des lignes à haute cadence, où la fiabilité des équipements conditionne directement le volume sorti. Les enjeux posés étaient précis :"
+          },
+          {
+            "type": "liste",
+            "items": [
+              "**Disponibilité des lignes** : Tenir le taux de marche sur les liquides et sur le conditionnement poudre.",
+              "**Réaction sur panne** : Raccourcir le temps entre l'arrêt et la remise en service.",
+              "**Qualité et sécurité alimentaire** : Maintenir le niveau d'exigence imposé par la nutrition infantile.",
+              "**Appui aux équipes internes** : Soutenir les équipes en place dans un rythme de production continue."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-que-nous-avons-mis-en-place",
+        "titre": "Ce que nous avons mis en place",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Renfort intégré, pas de structure en plus** : Deux techniciens de maintenance travaillent au sein des équipes Blédina. La continuité est assurée sans alourdir l'organisation du site.",
+              "**Présence postée continue** : Les techniciens suivent le rythme 3x8. La maintenance est là quand la ligne tourne, pas seulement aux heures ouvrées.",
+              "**Coordination avec les équipes du site** : Les interventions se décident avec les équipes internes, sur leurs priorités de production.",
+              "**Des profils autonomes** : Polyvalence et autonomie sont les deux critères qui permettent de laisser un technicien en poste de nuit.",
+              "**Un interlocuteur unique** : La mission est pilotée par les équipes Migen. Le client garde un contact, pas une liste qui change."
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Le périmètre technique sur site tient en quatre points :"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Diagnostic rapide des pannes sur lignes de production."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Dépannage en environnement automatisé, automates Schneider compris."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Maintenance préventive et curative des équipements."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Support technique aux équipes de production."
+          }
+        ]
+      },
+      {
+        "id": "le-dispositif",
+        "titre": "Le dispositif",
+        "blocs": [
+          {
+            "type": "tableau",
+            "entetes": [
+              "Élément",
+              "Détail"
+            ],
+            "lignes": [
+              [
+                "Client",
+                "DANONE, filiale Blédina"
+              ],
+              [
+                "Site",
+                "Steenvoorde"
+              ],
+              [
+                "Secteur",
+                "Production agroalimentaire infantile"
+              ],
+              [
+                "Périmètre",
+                "Lignes liquides et conditionnement poudre"
+              ],
+              [
+                "Effectif Migen",
+                "2 techniciens de maintenance"
+              ],
+              [
+                "Organisation",
+                "Horaires postés 3x8, présence continue"
+              ],
+              [
+                "Nature des travaux",
+                "Maintenance préventive et curative, dépannage"
+              ],
+              [
+                "Environnement technique",
+                "Lignes automatisées, automates Schneider"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-resultat",
+        "titre": "Le résultat",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Des techniciens qualifiés et autonomes** : Opérationnels sans encadrement permanent.",
+              "**Une flexibilité d'organisation** : Le dispositif suit le rythme réel de la production.",
+              "**Une compétence alignée** : Le niveau technique correspond aux équipements en service."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "url": "/preuves/suez-remise-en-etat/",
+  "h1": "SUEZ IWT : un électromécanicien habilité pour une remise en état",
+  "contenu": {
+    "gabarit": "fiche",
+    "sections": [
+      {
+        "id": "le-client-et-le-site",
+        "titre": "Le client et le site",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "SUEZ IWT est spécialiste du traitement des eaux industrielles. Le site concerné demande des travaux de remise en état sur des installations critiques."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "L'environnement est à risque chimique. Cette contrainte commande tout le reste du dossier."
+          }
+        ]
+      },
+      {
+        "id": "la-situation",
+        "titre": "La situation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Un surcroît d'activité tombe sur un site où l'on ne fait pas entrer n'importe qui.** Quatre contraintes se cumulaient."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Remettre en état les équipements** pour garantir leur fiabilité."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Absorber le surcroît d'activité** sans désorganiser les équipes en place."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Tenir la sécurité des opérations** en environnement chimique."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Travailler conformément** aux normes et habilitations en vigueur."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Le réflexe habituel, lancer un recrutement, ne répond à aucune des quatre. Un poste ouvert pour une charge qui a une fin annoncée se pourvoit mal, et l'habilitation reste à obtenir de toute façon."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "L'autre option, étaler la charge sur les équipes internes, se paie en heures supplémentaires puis en retard sur le reste du site. Sur des installations critiques, cette dette technique se rattrape mal."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "La contrainte d'habilitation tranche la question. Sans RC1, l'intervenant n'entre pas sur site, quel que soit son niveau technique."
+          }
+        ]
+      },
+      {
+        "id": "ce-que-nous-avons-mis-en-place",
+        "titre": "Ce que nous avons mis en place",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Vous obtenez un profil qui couvre tout le parc.** Le technicien combine compétences mécaniques, électriques et notions d'automatisme, ce qui évite d'empiler les intervenants."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous accueillez quelqu'un déjà habilité.** Le technicien a été formé et habilité RC1, habilitation risque chimique niveau 1, avant la première journée sur site."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous calez la durée sur la charge réelle.** La mission est définie pour 6 mois, pas pour un horizon indéterminé."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous démarrez conforme.** L'intervention est cadrée sur les standards de sécurité du client dès la mise en opération."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous n'ouvrez pas de poste.** Migen recrute, forme et encadre l'intervenant pendant toute la mission."
+          }
+        ]
+      },
+      {
+        "id": "le-dispositif",
+        "titre": "Le dispositif",
+        "blocs": [
+          {
+            "type": "tableau",
+            "entetes": [
+              "Élément",
+              "Détail"
+            ],
+            "lignes": [
+              [
+                "Site",
+                "SUEZ IWT, traitement des eaux industrielles"
+              ],
+              [
+                "Périmètre",
+                "Remise en état d'installations critiques"
+              ],
+              [
+                "Environnement",
+                "Risque chimique"
+              ],
+              [
+                "Effectif Migen",
+                "1 technicien de maintenance industrielle"
+              ],
+              [
+                "Domaines",
+                "Électromécanique, mécanique, électricité, notions d'automatisme"
+              ],
+              [
+                "Habilitation",
+                "RC1, risque chimique niveau 1"
+              ],
+              [
+                "Depuis quand",
+                "Février 2026, mission de 6 mois"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-resultat",
+        "titre": "Le résultat",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Le pic d'activité est absorbé** : sans désorganiser les équipes internes.",
+              "**Les travaux de remise en état avancent** : au rythme prévu.",
+              "**Le renfort est opérationnel** : sans contrainte de recrutement à porter."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -2,61 +2,15 @@
   "url": "/expertises/electrique/",
   "contenu": {
     "gabarit": "domaine",
-    "chapeau": "Des techniciens habilités au niveau exigé par vos travaux. Ils mesurent avant de remplacer, remontent à la cause du défaut et vous laissent les schémas à jour.",
-    "boutons": [
+    "sections": [
       {
-        "libelle": "Demander une intervention"
-      }
-    ],
-    "traitements": [
-      "La distribution tenue",
-      "Les armoires de commande reprises",
-      "Les motorisations diagnostiquées à la mesure",
-      "La thermographie infrarouge sur armoires et moteurs",
-      "La chaîne de sécurité vérifiée",
-      "Le rétrofit et la mise en conformité"
-    ],
-    "autres": [
-      {
-        "libelle": "Automatisme industriel",
-        "href": "/expertises/automatisme/"
+        "type": "heros",
+        "h1": "Maintenance électrique industrielle",
+        "mecanisme": "Des techniciens habilités au niveau exigé par vos travaux. Ils mesurent avant de remplacer, remontent à la cause du défaut et vous laissent les schémas à jour.",
+        "cta": "Demander une intervention",
+        "telephone": "04 78 33 72 05",
+        "phraseDelai": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 prend le relais la nuit et le week-end."
       },
-      {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
-      },
-      {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance mécanique",
-        "href": "/expertises/mecanique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Maintenance robotique",
-        "href": "/expertises/robotique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
-      }
-    ],
-    "cta": {
-      "question": "Besoin d'un électricien de maintenance qui laisse les schémas à jour derrière lui ?",
-      "bouton": {
-        "libelle": "Demander une intervention"
-      }
-    },
-    "reste": [
       {
         "type": "chiffres",
         "chiffres": [
@@ -269,6 +223,11 @@
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France partout en France, avec la même politique de sécurité électrique sur chaque site."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin d'un électricien de maintenance qui laisse les schémas à jour derrière lui ?",
+        "bouton": "Demander une intervention"
       }
     ]
   }

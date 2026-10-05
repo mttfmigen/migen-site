@@ -1,18 +1,13 @@
 {
   "url": "/offres/",
+  "source": "dessin : maquette/gabarit-10-hub-de-rubrique.html. texte : ../migen-refonte/seo/CONVERSION/Offres/offres.md, via scripts/produit_hub.mjs.",
   "contenu": {
-    "gabarit": "offres",
-    "surtitre": "Nos offres",
+    "gabarit": "hub",
     "chapeau": "Plusieurs façons de nous confier vos machines, du dépannage d'urgence au technicien présent chaque jour dans vos murs. Les mêmes techniciens évalués dans tous les cas, et le même rapport après chaque passage.",
-    "actions": [
-      {
-        "libelle": "Faire chiffrer mon besoin",
-        "href": "#formulaire"
-      }
-    ],
+    "cta": "Faire chiffrer mon besoin",
     "telephone": "04 78 33 72 05",
-    "phraseDelai": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 en dehors.",
-    "reperes": [
+    "phraseDelai": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte en dehors.",
+    "enBref": [
       {
         "valeur": "+ 120",
         "libelle": "clients industriels, dont plus de 80 réguliers"
@@ -26,221 +21,271 @@
         "libelle": "collaborateurs, 4 agences dans le monde, interventions partout en France"
       }
     ],
-    "besoins": {
-      "entete": {
-        "surtitre": "Par besoin",
-        "titre": "Vous ne cherchez pas un prestataire de maintenance industrielle. Vous cherchez à arrêter de choisir dans l'urgence."
-      },
-      "cartes": [
-        {
-          "besoin": "Au troisième dépannage de l'année sur les mêmes machines, le cumul des factures d'urgence et des pertes de production dépasse ce qu'aurait coûté un contrat annuel.",
-          "reponse": "Le tarif se négocie machine à l'arrêt, avec la production qui attend derrière."
-        },
-        {
-          "besoin": "Le préventif recule d'un cran à chaque panne.",
-          "reponse": "Le retard s'accumule dans la GMAO, et la panne suivante arrive plus tôt que prévu."
-        },
-        {
-          "besoin": "Un ou deux techniciens portent tout le site.",
-          "reponse": "Le jour où ils sont absents, personne ne sait où chercher."
-        },
-        {
-          "besoin": "Personne ne cherche la cause racine.",
-          "reponse": "On remplace la pièce, on redémarre, et la même panne revient."
-        }
-      ]
-    },
-    "offres": {
-      "entete": {
-        "surtitre": "Les offres",
-        "titre": "Chacune a sa page."
-      },
-      "lienLibelle": "Voir l'offre",
-      "cartes": [
-        {
-          "titre": "Résidence",
-          "texte": "un technicien Migen travaille chaque jour dans vos murs, intégré à votre équipe. Voir la [sous-traitance de maintenance](/offres/residence/).",
-          "benefice": "Le poste est tenu sans recrutement, et remplacé s'il s'arrête. Vous gardez la production, nous portons la ressource.",
-          "href": "/offres/residence/"
-        },
-        {
-          "titre": "Zéro arrêt",
-          "texte": "visites préventives planifiées, suivi de l'état du parc, priorité d'intervention. Voir le [contrat de maintenance](/offres/zero-arret/).",
-          "benefice": "Le budget de maintenance devient une ligne connue d'avance au lieu d'une série de factures subies.",
-          "href": "/offres/zero-arret/",
-          "accent": true
-        },
-        {
-          "titre": "Dépannage",
-          "texte": "un technicien évalué mobilisé sur la panne, partout en France. Voir le [dépannage industriel](/offres/depannage-industriel/).",
-          "benefice": "Une panne, une intervention, une facture. Pas d'abonnement imposé pour être dépanné.",
-          "href": "/offres/depannage-industriel/"
-        },
-        {
-          "titre": "Arrêt technique",
-          "texte": "préparation, coordination et exécution de vos arrêts planifiés. Voir l'[arrêt technique de maintenance](/offres/arret-technique/).",
-          "benefice": "La date de redémarrage tient, parce que le programme a été arbitré avant la première consignation.",
-          "href": "/offres/arret-technique/"
-        },
-        {
-          "titre": "Chantier et retrofit",
-          "texte": "[transfert industriel](/offres/chantier/), [retrofit machine industrielle](/offres/retrofit/), [montage industriel](/offres/construction/).",
-          "benefice": "Vos machines bougent ou remontent en niveau sans que vous pilotiez cinq sous-traitants en parallèle.",
-          "href": "/offres/chantier/"
-        },
-        {
-          "titre": "Bureau d'études",
-          "texte": "études, plans et dossiers techniques en amont des projets. Voir le [bureau d'études mécanique](/offres/bureau-etudes/).",
-          "benefice": "L'amélioration est dimensionnée avant d'être achetée, pas découverte pendant le montage.",
-          "href": "/offres/bureau-etudes/"
-        },
-        {
-          "titre": "Audit",
-          "texte": "regard extérieur sur votre organisation et vos coûts. Voir le [conseil en maintenance industrielle](/offres/audit-conseil-maintenance/).",
-          "benefice": "Vous arbitrez internalisation ou prestation avec des chiffres, et le rapport reste votre propriété.",
-          "href": "/offres/audit-conseil-maintenance/"
-        },
-        {
-          "titre": "Périmètre complet",
-          "texte": "préventif, dépannage, pièces et GMAO tenus de bout en bout. Voir la [maintenance industrielle externalisée](/offres/maintenance-externalisee/).",
-          "benefice": "Un seul interlocuteur pour tout l'entretien, au lieu d'un prestataire par technologie.",
-          "href": "/offres/maintenance-externalisee/"
-        }
-      ]
-    },
-    "fin": {
-      "surtitre": "Aucune ne colle ?",
-      "question": "Besoin d'un interlocuteur qui vous dise honnêtement de quoi votre site a besoin ?",
-      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-      "bouton": "Parler à un chargé d'affaires"
-    },
-    "complement": [
+    "clients": [
+      "VEEPEE",
+      "STELLANTIS",
+      "DANONE",
+      "MERSEN",
+      "SOPREMA",
+      "SUEZ"
+    ],
+    "punchTitre": "Vous ne cherchez pas un prestataire de maintenance industrielle.",
+    "punchTexte": "Vous cherchez à arrêter de choisir dans l'urgence.",
+    "problemes": [
       {
-        "type": "deroule",
-        "etapes": [
-          {
-            "titre": "Vous décrivez la situation",
-            "texte": "le formulaire prend 4 champs et un choix d'intention. Vous n'avez pas besoin de savoir quelle offre vous convient."
-          },
-          {
-            "titre": "Rappel dans l'heure",
-            "texte": "un chargé d'affaires qualifie le besoin au téléphone, équipement par équipement, et annonce ce qui est faisable."
-          },
-          {
-            "titre": "Orientation vers la formule la plus économique",
-            "texte": "si un dépannage suffit, nous ne vendons pas un abonnement. Si l'abonnement coûte moins cher, nous le chiffrons en face."
-          },
-          {
-            "titre": "Devis détaillé poste par poste",
-            "texte": "périmètre, contenu, montant. Un document qui se lit sans avocat."
-          },
-          {
-            "titre": "Intervention par un technicien évalué",
-            "texte": "le profil est choisi sur vos machines et votre secteur, pas sur la disponibilité du moment."
-          },
-          {
-            "titre": "Compte rendu après chaque passage",
-            "texte": "cause, travaux, pièces, recommandations, au format de votre GMAO. Le dossier machine reste chez vous."
-          }
-        ]
+        "accroche": "Au troisième dépannage de l'année sur les mêmes machines, le cumul des factures d'urgence et des pertes de production dépasse ce qu'aurait coûté un contrat annuel.",
+        "texte": "Le tarif se négocie machine à l'arrêt, avec la production qui attend derrière."
       },
       {
-        "type": "garanties",
-        "puces": [
-          {
-            "accroche": "Le niveau réel des techniciens",
-            "texte": "évaluation technique et comportementale en entretien, 10 % des candidats retenus, résultats consultables avant votre décision."
-          },
-          {
-            "accroche": "La sécurité se prouve avant l'intervention",
-            "texte": "démarche MASE sur la sécurité des interventions, évaluation EcoVadis sur la performance RSE. Les attestations sont transmises avec chaque plan de prévention, sans que vous ayez à les réclamer, et les habilitations de chaque intervenant sont à jour et vérifiables."
-          },
-          {
-            "accroche": "Aucun revenu sur les pièces",
-            "texte": "nous ne sommes ni fabricant ni distributeur. Nous consultons le marché au prix réel, donc la recommandation de remplacement ne nous rapporte rien."
-          },
-          {
-            "accroche": "Votre connaissance reste chez vous",
-            "texte": "chaque rapport est édité et archivé dans le dossier de la machine, plans compris, même si vous changez de prestataire un jour."
-          }
-        ]
+        "accroche": "Le préventif recule d'un cran à chaque panne.",
+        "texte": "Le retard s'accumule dans la GMAO, et la panne suivante arrive plus tôt que prévu."
       },
       {
-        "type": "cta",
-        "question": "Besoin de savoir quelle formule coûte le moins cher pour votre site ?",
-        "bouton": "Faire chiffrer mon besoin",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+        "accroche": "Un ou deux techniciens portent tout le site.",
+        "texte": "Le jour où ils sont absents, personne ne sait où chercher."
       },
       {
-        "type": "preuves",
-        "preuves": [
-          {
-            "titre": "Maintenance préventive annuelle sur plusieurs sites logistiques",
-            "texte": "six techniciens polyvalents en permanence, depuis septembre 2023",
-            "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
-            "lienHref": "/preuves/veepee-sites-lyon/"
-          },
-          {
-            "titre": "Maintenance préventive et curative d'une fonderie",
-            "texte": "en poste depuis octobre 2023, aux côtés des équipes internes",
-            "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
-            "lienHref": "/preuves/stellantis-fonderie-sept-fons/"
-          },
-          {
-            "titre": "Renfort continu de maintenance sur lignes de nutrition infantile, agroalimentaire",
-            "texte": "deux techniciens intégrés aux équipes",
-            "lienLibelle": "Étude de cas DANONE : lignes de production",
-            "lienHref": "/preuves/danone-lignes-de-production/"
-          },
-          {
-            "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve",
-            "texte": "près de Lyon",
-            "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
-            "lienHref": "/preuves/mersen/"
-          },
-          {
-            "titre": "Montage et déplacement de machines, étanchéité et isolation",
-            "texte": "plusieurs missions ciblées sur l'année 2025",
-            "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
-            "lienHref": "/preuves/soprema/"
-          },
-          {
-            "titre": "Remise en état d'un site à risque chimique, traitement des eaux",
-            "texte": "renfort habilité, depuis février 2026",
-            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
-            "lienHref": "/preuves/suez-remise-en-etat/"
-          }
-        ]
-      },
-      {
-        "type": "objections",
-        "questions": [
-          {
-            "question": "Combien ça coûte ?",
-            "reponse": "Le chiffrage se fait après qualification du besoin, avec une visite quand le périmètre le justifie. Le taux horaire est homogène dans toute la France. Le devis détaille chaque poste, et nous cherchons la prestation la plus économique pour votre situation, pas la plus grosse."
-          },
-          {
-            "question": "Faut-il s'engager pour travailler avec vous ?",
-            "reponse": "Non pour le dépannage : une panne, une intervention, une facture. L'abonnement Zéro arrêt est le seul format qui vous lie : l'engagement type est de 6 mois renouvelable, écrit en clair. Assez long pour produire des résultats mesurables, assez court pour que nous ayons à les prouver."
-          },
-          {
-            "question": "Nous avons déjà un prestataire sous contrat. Comment on change ?",
-            "reponse": "Nous reprenons le périmètre existant sans casser la continuité : inventaire du parc, récupération des historiques, reprise du plan de visites, puis ajustement. La bascule se prépare pendant le préavis de votre contrat en cours. Nous ne demandons jamais de résilier avant d'avoir un programme écrit."
-          },
-          {
-            "question": "Et la sécurité sur nos installations ?",
-            "reponse": "Plan de prévention, accueil sécurité du site, habilitations à jour, équipements de protection, respect des consignations : c'est un préalable, pas une case à cocher. Nos comptes rendus sont conçus pour tenir dans un système qualité, y compris chez les industriels certifiés ISO 9001."
-          },
-          {
-            "question": "Qui vient vraiment sur notre site ?",
-            "reponse": "Des techniciens salariés de Migen, évalués en entretien sur la technique et sur le comportement. Seuls 10 % des candidats sont retenus, et les résultats de ces évaluations vous sont présentés. Les profils vont du bac pro maintenance au diplôme d'ingénieur, avec des spécialistes automatisme SIEMENS et Schneider, robotique ABB et Fanuc."
-          },
-          {
-            "question": "Couvrez-vous notre région ?",
-            "reponse": "Oui, partout en France. La couverture repose sur nos 10 hubs de techniciens : Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon, Nantes. Le siège est à Lyon. La grande majorité des interventions est réalisée par des techniciens du bassin concerné. Cela joue sur les temps de trajet, et sur la connaissance du tissu industriel local."
-          }
-        ]
+        "accroche": "Personne ne cherche la cause racine.",
+        "texte": "On remplace la pièce, on redémarre, et la même panne revient."
       }
-    ]
+    ],
+    "offre": [
+      {
+        "prestation": {
+          "accroche": "Résidence",
+          "texte": "un technicien Migen travaille chaque jour dans vos murs, intégré à votre équipe. Voir la [sous-traitance de maintenance](/offres/residence/)."
+        },
+        "benefice": "Le poste est tenu sans recrutement, et remplacé s'il s'arrête. Vous gardez la production, nous portons la ressource."
+      },
+      {
+        "prestation": {
+          "accroche": "Zéro arrêt",
+          "texte": "visites préventives planifiées, suivi de l'état du parc, priorité d'intervention. Voir le [contrat de maintenance](/offres/zero-arret/)."
+        },
+        "benefice": "Le budget de maintenance devient une ligne connue d'avance au lieu d'une série de factures subies."
+      },
+      {
+        "prestation": {
+          "accroche": "Dépannage",
+          "texte": "un technicien évalué mobilisé sur la panne, partout en France. Voir le [dépannage industriel](/offres/depannage-industriel/)."
+        },
+        "benefice": "Une panne, une intervention, une facture. Pas d'abonnement imposé pour être dépanné."
+      },
+      {
+        "prestation": {
+          "accroche": "Arrêt technique",
+          "texte": "préparation, coordination et exécution de vos arrêts planifiés. Voir l'[arrêt technique de maintenance](/offres/arret-technique/)."
+        },
+        "benefice": "La date de redémarrage tient, parce que le programme a été arbitré avant la première consignation."
+      },
+      {
+        "prestation": {
+          "accroche": "Chantier et retrofit",
+          "texte": "[transfert industriel](/offres/chantier/), [retrofit machine industrielle](/offres/retrofit/), [montage industriel](/offres/construction/)."
+        },
+        "benefice": "Vos machines bougent ou remontent en niveau sans que vous pilotiez cinq sous-traitants en parallèle."
+      },
+      {
+        "prestation": {
+          "accroche": "Bureau d'études",
+          "texte": "études, plans et dossiers techniques en amont des projets. Voir le [bureau d'études mécanique](/offres/bureau-etudes/)."
+        },
+        "benefice": "L'amélioration est dimensionnée avant d'être achetée, pas découverte pendant le montage."
+      },
+      {
+        "prestation": {
+          "accroche": "Audit",
+          "texte": "regard extérieur sur votre organisation et vos coûts. Voir le [conseil en maintenance industrielle](/offres/audit-conseil-maintenance/)."
+        },
+        "benefice": "Vous arbitrez internalisation ou prestation avec des chiffres, et le rapport reste votre propriété."
+      },
+      {
+        "prestation": {
+          "accroche": "Périmètre complet",
+          "texte": "préventif, dépannage, pièces et GMAO tenus de bout en bout. Voir la [maintenance industrielle externalisée](/offres/maintenance-externalisee/)."
+        },
+        "benefice": "Un seul interlocuteur pour tout l'entretien, au lieu d'un prestataire par technologie."
+      }
+    ],
+    "liens": [
+      {
+        "titre": "Sous-traitance de maintenance",
+        "url": "/offres/residence/",
+        "extrait": "Résidence : un technicien Migen travaille chaque jour dans vos murs, intégré à votre équipe. Voir la sous-traitance de maintenance.",
+        "nature": "Offre"
+      },
+      {
+        "titre": "Contrat de maintenance",
+        "url": "/offres/zero-arret/",
+        "extrait": "Zéro arrêt : visites préventives planifiées, suivi de l'état du parc, priorité d'intervention. Voir le contrat de maintenance.",
+        "nature": "Offre"
+      },
+      {
+        "titre": "Dépannage industriel",
+        "url": "/offres/depannage-industriel/",
+        "extrait": "Dépannage : un technicien évalué mobilisé sur la panne, partout en France. Voir le dépannage industriel.",
+        "nature": "Offre"
+      },
+      {
+        "titre": "Arrêt technique de maintenance",
+        "url": "/offres/arret-technique/",
+        "extrait": "Arrêt technique : préparation, coordination et exécution de vos arrêts planifiés. Voir l'arrêt technique de maintenance.",
+        "nature": "Offre"
+      },
+      {
+        "titre": "Transfert industriel",
+        "url": "/offres/chantier/",
+        "extrait": "Chantier et retrofit : transfert industriel, retrofit machine industrielle, montage industriel.",
+        "nature": "Offre"
+      },
+      {
+        "titre": "Retrofit machine industrielle",
+        "url": "/offres/retrofit/",
+        "extrait": "Chantier et retrofit : transfert industriel, retrofit machine industrielle, montage industriel.",
+        "nature": "Offre"
+      },
+      {
+        "titre": "Montage industriel",
+        "url": "/offres/construction/",
+        "extrait": "Chantier et retrofit : transfert industriel, retrofit machine industrielle, montage industriel.",
+        "nature": "Offre"
+      },
+      {
+        "titre": "Bureau d'études mécanique",
+        "url": "/offres/bureau-etudes/",
+        "extrait": "Bureau d'études : études, plans et dossiers techniques en amont des projets. Voir le bureau d'études mécanique.",
+        "nature": "Offre"
+      },
+      {
+        "titre": "Conseil en maintenance industrielle",
+        "url": "/offres/audit-conseil-maintenance/",
+        "extrait": "Audit : regard extérieur sur votre organisation et vos coûts. Voir le conseil en maintenance industrielle.",
+        "nature": "Offre"
+      },
+      {
+        "titre": "Maintenance industrielle externalisée",
+        "url": "/offres/maintenance-externalisee/",
+        "extrait": "Périmètre complet : préventif, dépannage, pièces et GMAO tenus de bout en bout. Voir la maintenance industrielle externalisée.",
+        "nature": "Offre"
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Vous décrivez la situation",
+        "texte": "le formulaire prend 4 champs et un choix d'intention. Vous n'avez pas besoin de savoir quelle offre vous convient."
+      },
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "un chargé d'affaires qualifie le besoin au téléphone, équipement par équipement, et annonce ce qui est faisable."
+      },
+      {
+        "titre": "Orientation vers la formule la plus économique",
+        "texte": "si un dépannage suffit, nous ne vendons pas un abonnement. Si l'abonnement coûte moins cher, nous le chiffrons en face."
+      },
+      {
+        "titre": "Devis détaillé poste par poste",
+        "texte": "périmètre, contenu, montant. Un document qui se lit sans avocat."
+      },
+      {
+        "titre": "Intervention par un technicien évalué",
+        "texte": "le profil est choisi sur vos machines et votre secteur, pas sur la disponibilité du moment."
+      },
+      {
+        "titre": "Compte rendu après chaque passage",
+        "texte": "cause, travaux, pièces, recommandations, au format de votre GMAO. Le dossier machine reste chez vous."
+      }
+    ],
+    "garanties": [
+      {
+        "accroche": "Le niveau réel des techniciens",
+        "texte": "évaluation technique et comportementale en entretien, 10 % des candidats retenus, résultats consultables avant votre décision."
+      },
+      {
+        "accroche": "La sécurité se prouve avant l'intervention",
+        "texte": "démarche MASE sur la sécurité des interventions, évaluation EcoVadis sur la performance RSE. Les attestations sont transmises avec chaque plan de prévention, sans que vous ayez à les réclamer, et les habilitations de chaque intervenant sont à jour et vérifiables."
+      },
+      {
+        "accroche": "Aucun revenu sur les pièces",
+        "texte": "nous ne sommes ni fabricant ni distributeur. Nous consultons le marché au prix réel, donc la recommandation de remplacement ne nous rapporte rien."
+      },
+      {
+        "accroche": "Votre connaissance reste chez vous",
+        "texte": "chaque rapport est édité et archivé dans le dossier de la machine, plans compris, même si vous changez de prestataire un jour."
+      }
+    ],
+    "appel": {
+      "question": "Besoin de savoir quelle formule coûte le moins cher pour votre site ?",
+      "bouton": "Faire chiffrer mon besoin",
+      "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+    },
+    "preuves": [
+      {
+        "titre": "Maintenance préventive annuelle sur plusieurs sites logistiques",
+        "texte": "six techniciens polyvalents en permanence, depuis septembre 2023",
+        "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
+        "lienHref": "/preuves/veepee-sites-lyon/"
+      },
+      {
+        "titre": "Maintenance préventive et curative d'une fonderie",
+        "texte": "en poste depuis octobre 2023, aux côtés des équipes internes",
+        "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
+        "lienHref": "/preuves/stellantis-fonderie-sept-fons/"
+      },
+      {
+        "titre": "Renfort continu de maintenance sur lignes de nutrition infantile, agroalimentaire",
+        "texte": "deux techniciens intégrés aux équipes",
+        "lienLibelle": "Étude de cas DANONE : lignes de production",
+        "lienHref": "/preuves/danone-lignes-de-production/"
+      },
+      {
+        "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve",
+        "texte": "près de Lyon",
+        "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
+        "lienHref": "/preuves/mersen/"
+      },
+      {
+        "titre": "Montage et déplacement de machines, étanchéité et isolation",
+        "texte": "plusieurs missions ciblées sur l'année 2025",
+        "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
+        "lienHref": "/preuves/soprema/"
+      },
+      {
+        "titre": "Remise en état d'un site à risque chimique, traitement des eaux",
+        "texte": "renfort habilité, depuis février 2026",
+        "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
+        "lienHref": "/preuves/suez-remise-en-etat/"
+      }
+    ],
+    "questions": [
+      {
+        "question": "Combien ça coûte ?",
+        "reponse": "Le chiffrage se fait après qualification du besoin, avec une visite quand le périmètre le justifie. Le taux horaire est homogène dans toute la France. Le devis détaille chaque poste, et nous cherchons la prestation la plus économique pour votre situation, pas la plus grosse."
+      },
+      {
+        "question": "Faut-il s'engager pour travailler avec vous ?",
+        "reponse": "Non pour le dépannage : une panne, une intervention, une facture. L'abonnement Zéro arrêt est le seul format qui vous lie : l'engagement type est de 6 mois renouvelable, écrit en clair. Assez long pour produire des résultats mesurables, assez court pour que nous ayons à les prouver."
+      },
+      {
+        "question": "Nous avons déjà un prestataire sous contrat. Comment on change ?",
+        "reponse": "Nous reprenons le périmètre existant sans casser la continuité : inventaire du parc, récupération des historiques, reprise du plan de visites, puis ajustement. La bascule se prépare pendant le préavis de votre contrat en cours. Nous ne demandons jamais de résilier avant d'avoir un programme écrit."
+      },
+      {
+        "question": "Et la sécurité sur nos installations ?",
+        "reponse": "Plan de prévention, accueil sécurité du site, habilitations à jour, équipements de protection, respect des consignations : c'est un préalable, pas une case à cocher. Nos comptes rendus sont conçus pour tenir dans un système qualité, y compris chez les industriels certifiés ISO 9001."
+      },
+      {
+        "question": "Qui vient vraiment sur notre site ?",
+        "reponse": "Des techniciens salariés de Migen, évalués en entretien sur la technique et sur le comportement. Seuls 10 % des candidats sont retenus, et les résultats de ces évaluations vous sont présentés. Les profils vont du bac pro maintenance au diplôme d'ingénieur, avec des spécialistes automatisme SIEMENS et Schneider, robotique ABB et Fanuc."
+      },
+      {
+        "question": "Couvrez-vous notre région ?",
+        "reponse": "Oui, partout en France. La couverture repose sur nos 10 hubs de techniciens : Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon, Nantes. Le siège est à Lyon. La grande majorité des interventions est réalisée par des techniciens du bassin concerné. Cela joue sur les temps de trajet, et sur la connaissance du tissu industriel local."
+      }
+    ],
+    "final": {
+      "question": "Besoin d'un interlocuteur qui vous dise honnêtement de quoi votre site a besoin ?",
+      "bouton": "Parler à un chargé d'affaires",
+      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
+    }
   }
 }

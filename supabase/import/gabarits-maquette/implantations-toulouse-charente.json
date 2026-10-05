@@ -3,12 +3,12 @@
   "contenu": {
     "gabarit": "departement",
     "chapeau": "Ici, l'industrie ne se voit pas depuis la route. Chais et conditionnement autour de Cognac, papier-carton et presses du côté d'Angoulême, broyeurs et cribles dans les carrières. Nos techniciens itinérants y interviennent, comme partout en France.",
-    "actions": [
-      {
-        "libelle": "Faire chiffrer ma maintenance en Charente",
-        "href": "#formulaire"
-      }
-    ],
+    "action": {
+      "libelle": "Faire chiffrer ma maintenance en Charente",
+      "href": "#formulaire"
+    },
+    "telephone": "04 78 33 72 05",
+    "delai": "Dites la situation au 04 78 33 72 05. Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30, et suit le dossier jusqu'à la clôture.",
     "reperes": [
       {
         "valeur": "+ 120",
@@ -23,235 +23,204 @@
         "libelle": "délai de prise de poste d'un technicien intégré à votre équipe"
       }
     ],
-    "autresSurtitre": "Les autres départements",
-    "autres": [
+    "logos": [
+      "VPK",
+      "OGF",
+      "STELLANTIS",
+      "McCAIN",
+      "JOINT LYONNAIS"
+    ],
+    "problemeTitre": "Une ligne de conditionnement arrêtée à Cognac, une presse en défaut à Angoulême : ici, le prestataire le plus proche est souvent à deux départements de là.",
+    "problemes": [
       {
-        "libelle": "Haute-Savoie",
-        "href": "/implantations/lyon/haute-savoie/"
+        "texte": "On étire la durée de vie des machines faute de budget de renouvellement, et l'arrêt finit par arriver.",
+        "accroche": "Vos équipes sont réduites et votre parc vieillit."
       },
       {
-        "libelle": "Rhône",
-        "href": "/implantations/lyon/rhone/"
+        "texte": "Quand l'équipe se réduit, les visites planifiées sautent avant tout le reste. Le correctif prend la facture.",
+        "accroche": "Le préventif a été sacrifié le premier."
       },
       {
-        "libelle": "Loire-Atlantique",
-        "href": "/implantations/nantes/loire-atlantique/"
+        "texte": "Beaucoup d'usines et d'ateliers tournent en zone, loin des centres, et personne ne passe les voir.",
+        "accroche": "L'industrie locale est dispersée."
       },
       {
-        "libelle": "Essonne",
-        "href": "/implantations/paris/essonne/"
+        "texte": "Bobinage, bancs d'essai, variateurs : l'électromécanique demande des gestes que peu maîtrisent encore.",
+        "accroche": "Le bassin des moteurs a perdu ses spécialistes."
       },
       {
-        "libelle": "Alsace",
-        "href": "/implantations/strasbourg/alsace/"
-      },
-      {
-        "libelle": "Gironde",
-        "href": "/implantations/toulouse/gironde/"
-      },
-      {
-        "libelle": "Haute-Garonne",
-        "href": "/implantations/toulouse/haute-garonne/"
+        "texte": "Sans tournée organisée, vous payez des kilomètres au lieu d'heures outillées.",
+        "accroche": "Le prestataire à la journée coûte cher en route."
       }
     ],
-    "appelTitre": "Besoin de savoir quels équipements vous lâcheront en premier cette année ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
-      "libelle": "Faire chiffrer ma maintenance en Charente",
-      "href": "#formulaire"
-    },
-    "reste": [
+    "offre": [
       {
-        "type": "probleme",
-        "puces": [
-          {
-            "texte": "On étire la durée de vie des machines faute de budget de renouvellement, et l'arrêt finit par arriver.",
-            "accroche": "Vos équipes sont réduites et votre parc vieillit."
-          },
-          {
-            "texte": "Quand l'équipe se réduit, les visites planifiées sautent avant tout le reste. Le correctif prend la facture.",
-            "accroche": "Le préventif a été sacrifié le premier."
-          },
-          {
-            "texte": "Beaucoup d'usines et d'ateliers tournent en zone, loin des centres, et personne ne passe les voir.",
-            "accroche": "L'industrie locale est dispersée."
-          },
-          {
-            "texte": "Bobinage, bancs d'essai, variateurs : l'électromécanique demande des gestes que peu maîtrisent encore.",
-            "accroche": "Le bassin des moteurs a perdu ses spécialistes."
-          },
-          {
-            "texte": "Sans tournée organisée, vous payez des kilomètres au lieu d'heures outillées.",
-            "accroche": "Le prestataire à la journée coûte cher en route."
-          }
-        ],
-        "punchline": "Une ligne de conditionnement arrêtée à Cognac, une presse en défaut à Angoulême : ici, le prestataire le plus proche est souvent à deux départements de là."
+        "benefice": "Lignes de conditionnement, convoyage, pompes",
+        "prestation": {
+          "texte": "**Cognac et son vignoble**"
+        }
       },
       {
-        "type": "offre",
-        "prose": [
-          {
-            "texte": "Trois formats se combinent selon votre situation. Le [dépannage industriel](/offres/depannage-industriel/) pour une panne isolée. Le [contrat Zéro arrêt](/offres/zero-arret/) pour un préventif pilotable, sur devis. La [sous-traitance maintenance](/offres/residence/) quand un poste doit être tenu."
-          }
-        ],
-        "lignes": [
-          {
-            "benefice": "Lignes de conditionnement, convoyage, pompes",
-            "prestation": {
-              "texte": "**Cognac et son vignoble**"
-            }
-          },
-          {
-            "benefice": "Presses, centres d'usinage, machines de production",
-            "prestation": {
-              "texte": "**Angoulême et le Gond-Pontouvre**"
-            }
-          },
-          {
-            "benefice": "Bobinage, bancs d'essai, variateurs",
-            "prestation": {
-              "texte": "**Bassin historique des moteurs**"
-            }
-          },
-          {
-            "benefice": "Froid process, doseuses, systèmes automatisés",
-            "prestation": {
-              "texte": "**Zones agroalimentaires**"
-            }
-          },
-          {
-            "benefice": "Broyeurs, cribles, filtres, convoyeurs",
-            "prestation": {
-              "texte": "**Matériaux et carrières**"
-            }
-          },
-          {
-            "benefice": "Utilités, réseaux d'air, armoires électriques",
-            "prestation": {
-              "texte": "**Sites isolés du département**"
-            }
-          }
-        ]
+        "benefice": "Presses, centres d'usinage, machines de production",
+        "prestation": {
+          "texte": "**Angoulême et le Gond-Pontouvre**"
+        }
       },
       {
-        "type": "deroule",
-        "etapes": [
-          {
-            "texte": "symptômes, criticité, conditions d'accès. Rappel dans l'heure aux horaires ouvrés, tout est posé avant de rouler.",
-            "titre": "Le premier échange"
-          },
-          {
-            "texte": "profil choisi selon la technologie, habilitations à jour, accueil sécurité anticipé. Le plan de prévention est une obligation, pas une option.",
-            "titre": "La préparation"
-          },
-          {
-            "texte": "Elle est cherchée, pour que la panne ne revienne pas.",
-            "titre": "La cause racine"
-          },
-          {
-            "texte": "essais, mise en service, actions tracées.",
-            "titre": "La remise en route"
-          },
-          {
-            "texte": "données versées dans votre GMAO, préconisations écrites qui donnent la tendance du parc.",
-            "titre": "Le compte rendu"
-          },
-          {
-            "texte": "visite après visite, l'historique s'accumule. Chaque nouvel intervenant repart des données existantes, jamais de zéro.",
-            "titre": "Le suivi"
-          }
-        ]
+        "benefice": "Bobinage, bancs d'essai, variateurs",
+        "prestation": {
+          "texte": "**Bassin historique des moteurs**"
+        }
       },
       {
-        "type": "garanties",
-        "puces": [
-          {
-            "texte": "le préventif se planifie par tournées sur un territoire étendu. Moins de route à vide, plus de temps outillé chez vous.",
-            "accroche": "Des visites groupées et préparées"
-          },
-          {
-            "texte": "quelles références tenir sur place, lesquelles consulter au marché au prix réel. La bonne pièce déjà là raccourcit chaque dépannage.",
-            "accroche": "Un stock de pièces réfléchi avec vous"
-          },
-          {
-            "texte": "congés, absence ou départ, un profil équivalent du même métier reprend la mission, briefé sur vos machines.",
-            "accroche": "Une continuité qui ne repose pas sur une personne"
-          }
-        ]
+        "benefice": "Froid process, doseuses, systèmes automatisés",
+        "prestation": {
+          "texte": "**Zones agroalimentaires**"
+        }
       },
       {
-        "type": "cta",
-        "bouton": "Faire chiffrer ma maintenance en Charente",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin de remettre un préventif sur pied sur un site éloigné des grands centres ?"
+        "benefice": "Broyeurs, cribles, filtres, convoyeurs",
+        "prestation": {
+          "texte": "**Matériaux et carrières**"
+        }
       },
       {
-        "type": "preuves",
-        "preuves": [
-          {
-            "texte": ", en préventif comme en curatif, de 2025 à 2026",
-            "titre": "Un technicien polyvalent intégré sur un parc papier et emballage à forte cadence",
-            "lienHref": "/preuves/vpk/",
-            "lienLibelle": "Étude de cas VPK : maintenance de site"
-          },
-          {
-            "texte": ", pendant les congés des équipes internes",
-            "titre": "Un technicien mobilisé pendant l'arrêt estival pour tenir les équipements critiques",
-            "lienHref": "/preuves/ogf-arret-estival/",
-            "lienLibelle": "Étude de cas OGF : arrêt estival"
-          },
-          {
-            "texte": "site pris en charge complètement en 8 semaines",
-            "titre": "6 techniciens en préventif et curatif 7 jours sur 7 sur une fonderie et son usinage",
-            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons"
-          },
-          {
-            "titre": "1 à 3 techniciens en corrective et préventive sur un site agroalimentaire en flux permanent",
-            "lienHref": "/preuves/mccain-belgique/",
-            "lienLibelle": "Étude de cas McCAIN : Belgique"
-          },
-          {
-            "texte": ", avec plusieurs solutions chiffrées selon le budget",
-            "titre": "Un parc machines de PME diagnostiqué et réparé sans rachat de matériel neuf",
-            "lienHref": "/preuves/joint-lyonnais/",
-            "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines"
-          }
-        ]
-      },
-      {
-        "type": "objections",
-        "questions": [
-          {
-            "reponse": "Non, ni agence ni hub de techniciens dans le département, et nous ne publierons pas d'adresse vitrine pour faire nombre. Nous y intervenons : nos techniciens sont mobiles partout en France, et un chargé d'affaires nommé suit votre dossier du premier appel à la clôture.",
-            "question": "Avez-vous une agence en Charente ?"
-          },
-          {
-            "reponse": "Dans tout le département : Angoulême et sa couronne, Cognac et le vignoble, Saint-Yrieix, La Couronne et les zones rurales. La Charente-Maritime voisine est desservie par la même organisation, à l'échelle de la région.",
-            "question": "Où intervenez-vous exactement en Charente ?"
-          },
-          {
-            "reponse": "Nous ne vendons pas un chiffre. Le rappel arrive dans l'heure aux horaires ouvrés. La qualification par téléphone évite les déplacements inutiles, et l'astreinte 24/24 et 7/7 couvre les urgences des sites sous contrat.",
-            "question": "Quels sont vos délais d'intervention ?"
-          },
-          {
-            "reponse": "Le SAV d'un fabricant intervient sur sa marque, avec ses conditions et ses tarifs. Nous intervenons sur tout le parc, toutes marques, et nous documentons chaque geste. Les deux approches se complètent, mais au quotidien un seul numéro suffit.",
-            "question": "Technicien du SAV constructeur ou prestataire : qui appeler ?"
-          },
-          {
-            "reponse": "C'est un cas fréquent : équipe réduite, préventif sacrifié, correctif qui explose. Nous remettons la politique d'entretien sur pied en commençant par les équipements les plus critiques, puis l'élargissement suit votre budget.",
-            "question": "Pouvez-vous reprendre un préventif abandonné ?"
-          },
-          {
-            "reponse": "Nous consultons le marché au prix réel : réducteurs, pompes, composants électriques, filtres. Le choix final vous appartient, l'information et la traçabilité aussi. Pour les équipements récents, la garantie constructeur est respectée.",
-            "question": "Comment gérez-vous les pièces détachées ?"
-          },
-          {
-            "reponse": "Oui, avec le même niveau d'exigence. La différence est dans l'organisation : tournées groupées, pièces anticipées, visites préparées. Le service rendu, lui, ne change pas.",
-            "question": "Un site isolé est-il traité comme un site de banlieue lyonnaise ?"
-          }
-        ]
+        "benefice": "Utilités, réseaux d'air, armoires électriques",
+        "prestation": {
+          "texte": "**Sites isolés du département**"
+        }
       }
-    ]
+    ],
+    "offreNotes": [
+      "Trois formats se combinent selon votre situation. Le [dépannage industriel](/offres/depannage-industriel/) pour une panne isolée. Le [contrat Zéro arrêt](/offres/zero-arret/) pour un préventif pilotable, sur devis. La [sous-traitance maintenance](/offres/residence/) quand un poste doit être tenu."
+    ],
+    "etapes": [
+      {
+        "texte": "symptômes, criticité, conditions d'accès. Rappel dans l'heure aux horaires ouvrés, tout est posé avant de rouler.",
+        "titre": "Le premier échange"
+      },
+      {
+        "texte": "profil choisi selon la technologie, habilitations à jour, accueil sécurité anticipé. Le plan de prévention est une obligation, pas une option.",
+        "titre": "La préparation"
+      },
+      {
+        "texte": "Elle est cherchée, pour que la panne ne revienne pas.",
+        "titre": "La cause racine"
+      },
+      {
+        "texte": "essais, mise en service, actions tracées.",
+        "titre": "La remise en route"
+      },
+      {
+        "texte": "données versées dans votre GMAO, préconisations écrites qui donnent la tendance du parc.",
+        "titre": "Le compte rendu"
+      },
+      {
+        "texte": "visite après visite, l'historique s'accumule. Chaque nouvel intervenant repart des données existantes, jamais de zéro.",
+        "titre": "Le suivi"
+      }
+    ],
+    "garanties": [
+      {
+        "texte": "le préventif se planifie par tournées sur un territoire étendu. Moins de route à vide, plus de temps outillé chez vous.",
+        "accroche": "Des visites groupées et préparées"
+      },
+      {
+        "texte": "quelles références tenir sur place, lesquelles consulter au marché au prix réel. La bonne pièce déjà là raccourcit chaque dépannage.",
+        "accroche": "Un stock de pièces réfléchi avec vous"
+      },
+      {
+        "texte": "congés, absence ou départ, un profil équivalent du même métier reprend la mission, briefé sur vos machines.",
+        "accroche": "Une continuité qui ne repose pas sur une personne"
+      }
+    ],
+    "appel": {
+      "question": "Besoin de remettre un préventif sur pied sur un site éloigné des grands centres ?",
+      "bouton": "Faire chiffrer ma maintenance en Charente",
+      "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+    },
+    "preuves": [
+      {
+        "texte": ", en préventif comme en curatif, de 2025 à 2026",
+        "titre": "Un technicien polyvalent intégré sur un parc papier et emballage à forte cadence",
+        "lienHref": "/preuves/vpk/",
+        "lienLibelle": "Étude de cas VPK : maintenance de site"
+      },
+      {
+        "texte": ", pendant les congés des équipes internes",
+        "titre": "Un technicien mobilisé pendant l'arrêt estival pour tenir les équipements critiques",
+        "lienHref": "/preuves/ogf-arret-estival/",
+        "lienLibelle": "Étude de cas OGF : arrêt estival"
+      },
+      {
+        "texte": "site pris en charge complètement en 8 semaines",
+        "titre": "6 techniciens en préventif et curatif sur une fonderie et son usinage",
+        "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+        "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons"
+      },
+      {
+        "titre": "1 à 3 techniciens en corrective et préventive sur un site agroalimentaire en flux permanent",
+        "lienHref": "/preuves/mccain-belgique/",
+        "lienLibelle": "Étude de cas McCAIN : Belgique"
+      },
+      {
+        "texte": ", avec plusieurs solutions chiffrées selon le budget",
+        "titre": "Un parc machines de PME diagnostiqué et réparé sans rachat de matériel neuf",
+        "lienHref": "/preuves/joint-lyonnais/",
+        "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines"
+      }
+    ],
+    "questions": [
+      {
+        "reponse": "Non, ni agence ni hub de techniciens dans le département, et nous ne publierons pas d'adresse vitrine pour faire nombre. Nous y intervenons : nos techniciens sont mobiles partout en France, et un chargé d'affaires nommé suit votre dossier du premier appel à la clôture.",
+        "question": "Avez-vous une agence en Charente ?"
+      },
+      {
+        "reponse": "Dans tout le département : Angoulême et sa couronne, Cognac et le vignoble, Saint-Yrieix, La Couronne et les zones rurales. La Charente-Maritime voisine est desservie par la même organisation, à l'échelle de la région.",
+        "question": "Où intervenez-vous exactement en Charente ?"
+      },
+      {
+        "reponse": "Nous ne vendons pas un chiffre. Le rappel arrive dans l'heure aux horaires ouvrés. La qualification par téléphone évite les déplacements inutiles, et l'astreinte couvre les urgences des sites sous contrat.",
+        "question": "Quels sont vos délais d'intervention ?"
+      },
+      {
+        "reponse": "Le SAV d'un fabricant intervient sur sa marque, avec ses conditions et ses tarifs. Nous intervenons sur tout le parc, toutes marques, et nous documentons chaque geste. Les deux approches se complètent, mais au quotidien un seul numéro suffit.",
+        "question": "Technicien du SAV constructeur ou prestataire : qui appeler ?"
+      },
+      {
+        "reponse": "C'est un cas fréquent : équipe réduite, préventif sacrifié, correctif qui explose. Nous remettons la politique d'entretien sur pied en commençant par les équipements les plus critiques, puis l'élargissement suit votre budget.",
+        "question": "Pouvez-vous reprendre un préventif abandonné ?"
+      },
+      {
+        "reponse": "Nous consultons le marché au prix réel : réducteurs, pompes, composants électriques, filtres. Le choix final vous appartient, l'information et la traçabilité aussi. Pour les équipements récents, la garantie constructeur est respectée.",
+        "question": "Comment gérez-vous les pièces détachées ?"
+      },
+      {
+        "reponse": "Oui, avec le même niveau d'exigence. La différence est dans l'organisation : tournées groupées, pièces anticipées, visites préparées. Le service rendu, lui, ne change pas.",
+        "question": "Un site isolé est-il traité comme un site de banlieue lyonnaise ?"
+      }
+    ],
+    "liens": [
+      {
+        "libelle": "Dépannage industriel",
+        "href": "/offres/depannage-industriel/",
+        "contexte": "Le dépannage industriel pour une panne isolée."
+      },
+      {
+        "libelle": "Contrat Zéro arrêt",
+        "href": "/offres/zero-arret/",
+        "contexte": "Le contrat Zéro arrêt pour un préventif pilotable, sur devis."
+      },
+      {
+        "libelle": "Sous-traitance maintenance",
+        "href": "/offres/residence/",
+        "contexte": "La sous-traitance maintenance quand un poste doit être tenu."
+      }
+    ],
+    "appelFinal": {
+      "question": "Besoin de savoir quels équipements vous lâcheront en premier cette année ?",
+      "bouton": "Faire chiffrer ma maintenance en Charente",
+      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
+    }
   }
 }

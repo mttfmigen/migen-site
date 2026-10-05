@@ -1,64 +1,16 @@
 {
   "url": "/expertises/mecanique/machine-outil/",
   "contenu": {
-    "gabarit": "domaine",
-    "chapeau": "Un technicien qui traite la mécanique, les axes et la commande numérique du même bâti, avec des mesures chiffrées plutôt qu'une impression d'opérateur. Broche, vis à billes, glissières, armoire et programme, sur tour, fraiseuse, rectifieuse et centre d'usinage.",
-    "boutons": [
+    "gabarit": "specialite",
+    "sections": [
       {
-        "libelle": "Demander une intervention"
-      }
-    ],
-    "traitements": [
-      "Un diagnostic qui va à la cause",
-      "Le contrôle géométrique chiffré",
-      "La mécanique fine reprise dans l'ordre",
-      "Les axes et leurs entraînements",
-      "La commande numérique traitée en entier",
-      "Les périphériques suivis",
-      "Le préventif planifié",
-      "L'électrique et l'automatisme du même système"
-    ],
-    "autres": [
-      {
-        "libelle": "Automatisme industriel",
-        "href": "/expertises/automatisme/"
+        "type": "heros",
+        "h1": "Maintenance machine outil",
+        "mecanisme": "Un technicien qui traite la mécanique, les axes et la commande numérique du même bâti, avec des mesures chiffrées plutôt qu'une impression d'opérateur. Broche, vis à billes, glissières, armoire et programme, sur tour, fraiseuse, rectifieuse et centre d'usinage.",
+        "cta": "Demander une intervention",
+        "telephone": "04 78 33 72 05",
+        "phraseDelai": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7."
       },
-      {
-        "libelle": "Maintenance électrique industrielle",
-        "href": "/expertises/electrique/"
-      },
-      {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
-      },
-      {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Maintenance robotique",
-        "href": "/expertises/robotique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
-      }
-    ],
-    "cta": {
-      "question": "Besoin que vos arrêts machine cessent de revenir tous les deux mois ?",
-      "bouton": {
-        "libelle": "Demander une intervention"
-      }
-    },
-    "reste": [
       {
         "type": "chiffres",
         "chiffres": [
@@ -279,6 +231,12 @@
             "reponse": "Oui aux deux, en journée comme en astreinte 24/24 et 7/7. Nos hubs de techniciens couvrent Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes, et nos équipes se déplacent au-delà. Appelez le 04 78 33 72 05."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que vos arrêts machine cessent de revenir tous les deux mois ?",
+        "bouton": "Demander une intervention",
+        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
       }
     ]
   }

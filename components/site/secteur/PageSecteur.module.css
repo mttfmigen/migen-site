@@ -1,28 +1,117 @@
-/* Survols du gabarit secteur. Rien d'autre : un style en ligne ne peut pas
-   porter d'état, et c'est la seule raison d'être de ce fichier.
-   Valeurs reprises des attributs `style-hover` de la maquette, lignes 5602 à
-   5757 de « Migen - Site final.dc.html ».
+/* Ce qu'un style en ligne ne peut pas porter, pour le gabarit 08 SECTEUR :
+   les états (survol, focus) et les requêtes de média.
+
+   TOUTES LES VALEURS SORTENT DE `maquette/gabarit-08-secteur.html` : les
+   attributs `style-hover` pour les états, et le bloc `<style>` de son `<helmet>`
+   pour les ruptures. Ce fichier sert aussi le gabarit d'ancrage
+   (`PageAncrage.tsx`, classes `bouton*` et `puceLien`), dont les survols
+   viennent de « Site final » et sont identiques.
 
    Le focus est traité avec le survol partout : un visiteur au clavier doit voir
    la même chose qu'un visiteur à la souris (WCAG 2.4.7). La maquette ne le
    prévoit pas, le site l'exige. */
 
-/* style-hover="filter:brightness(.93);transform:translateY(-1px)" */
+/* ------------------------------------------------------------------ états */
+
+/* style-hover="filter:brightness(.93);color:#fff" */
 .boutonPrincipal:hover,
 .boutonPrincipal:focus-visible {
   filter: brightness(0.93);
-  transform: translateY(-1px);
+  color: #fff;
 }
 
-/* style-hover="background:var(--card)" */
+/* style-hover="background:#fff" */
 .boutonSecondaire:hover,
 .boutonSecondaire:focus-visible {
-  background: var(--card);
+  background: #fff;
 }
 
-/* style-hover="background:var(--card);color:var(--acc)" */
+/* style-hover="background:rgba(255,255,255,.18);color:#fff" : le bouton de
+   téléphone sur le panneau sombre de « 10 Appel final ». */
+.boutonSombre:hover,
+.boutonSombre:focus-visible {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* style-hover="transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(0,0,0,.4)"
+   pour « 08 Références », et translateY(-3px) sans ombre pour « Maillage ». La
+   valeur retenue est celle des références : c'est la carte qui porte une ombre,
+   donc celle dont le survol doit rester lisible. L'écart d'un pixel entre les
+   deux sections de la maquette n'est pas une intention, et le distinguer aurait
+   demandé deux classes pour un pixel. */
+.carteLevee:hover,
+.carteLevee:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.4);
+}
+
+/* style-hover="background:var(--card);color:var(--acc)" (gabarit d'ancrage) */
 .puceLien:hover,
 .puceLien:focus-visible {
   background: var(--card);
   color: var(--acc);
+}
+
+/* ------------------------------------------------------- bande de logos */
+
+/* `.g3-track{animation:mgMarquee 40s linear infinite}`. Les keyframes
+   `mgMarquee` et la pause au survol vivent déjà dans `app/globals.css`
+   (`.mg-marquee:hover .mg-track`), partagées avec la bande de l'accueil : le
+   ruban porte les deux classes, `mg-track` pour la pause et celle-ci pour la
+   durée. */
+.ruban {
+  animation: mgMarquee 40s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ruban {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------- ruptures de la maquette */
+
+/* `@media (max-width:900px)` : `.g3-2`, `.g3-row`, `.g3-head`, `.g3-sticky`.
+   900px et non 760px comme le reste du site : c'est la valeur de CE fichier de
+   maquette, et les grilles de ce gabarit (1.1fr .9fr, .75fr 1.25fr) se serrent
+   plus tôt que celles de l'accueil. */
+@media (max-width: 900px) {
+  .deuxColonnes {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 32px !important;
+  }
+
+  .rangeeOffre {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  /* L'en-tête de colonnes de « 04 Offre » ne surmonte plus rien une fois la
+     grille sur une colonne : la maquette le retire. */
+  .enteteOffre {
+    display: none !important;
+  }
+
+  .collant {
+    position: static !important;
+  }
+
+  /* L'exergue de « 02 Photo et logos » sort de la photo et passe dessous :
+     par-dessus une image en pleine largeur de téléphone, il devient illisible. */
+  .tuiles {
+    position: static !important;
+    padding: 14px !important;
+  }
+}
+
+/* `@media (max-width:620px)` : `.g3-3`, `.g3-pad`. */
+@media (max-width: 620px) {
+  .troisColonnes {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .panneauRembourre {
+    padding: 40px 24px !important;
+  }
 }

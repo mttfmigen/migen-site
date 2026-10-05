@@ -1,0 +1,140 @@
+{
+  "url": "/preuves/fdj/",
+  "h1": "FDJ : un technicien de maintenance en continu sur les lignes",
+  "contenu": {
+    "gabarit": "fiche",
+    "sections": [
+      {
+        "id": "le-client-et-le-site",
+        "titre": "Le client et le site",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "La Française des Jeux exploite un site industriel proche de Paris. Les lignes de production y tournent sous forte activité."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Pour garantir la fiabilité de ses équipements, la FDJ a renforcé ses équipes de maintenance avec un technicien Migen affecté en continu. La mission couvre 2025 et 2026."
+          }
+        ]
+      },
+      {
+        "id": "la-situation",
+        "titre": "La situation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Une équipe de maintenance en forte activité ne tombe pas d'un coup.** Elle recule poste après poste, jusqu'à ce que le préventif disparaisse du planning."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "La FDJ a posé trois objectifs, sans ambiguïté."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Renforcer l'équipe de maintenance interne**, sans la remplacer."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Assurer la disponibilité des équipements industriels**, en continu."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Réduire les temps d'arrêt** et les délais d'intervention."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Le point commun des trois : ils demandent une présence permanente, pas un dépannage appelé quand la ligne est déjà à l'arrêt."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Un prestataire qui envoie une personne différente à chaque visite ne réduit aucun délai. Le temps gagné sur le déplacement se reperd sur le diagnostic."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "C'est la raison du choix d'un intervenant unique, affecté au site dans la durée, qui finit par connaître les installations mieux que la documentation."
+          }
+        ]
+      },
+      {
+        "id": "ce-que-nous-avons-mis-en-place",
+        "titre": "Ce que nous avons mis en place",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Vous récupérez le préventif, pas seulement les urgences.** Le technicien Migen tient la maintenance préventive et curative des lignes de production."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous gagnez du temps sur le diagnostic.** Les pannes sont identifiées sur place, par quelqu'un qui connaît déjà les installations."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vos équipes sont appuyées, pas remplacées.** L'intervenant vient en soutien dans un contexte de forte activité."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous démarrez sans formation initiale longue.** Le technicien retenu a l'expérience des environnements industriels exigeants."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Vous avez un interlocuteur côté Migen.** Un référent technique assure le suivi et la coordination pendant toute la mission."
+          }
+        ]
+      },
+      {
+        "id": "le-dispositif",
+        "titre": "Le dispositif",
+        "blocs": [
+          {
+            "type": "tableau",
+            "entetes": [
+              "Élément",
+              "Détail"
+            ],
+            "lignes": [
+              [
+                "Site",
+                "Française des Jeux, site industriel proche de Paris"
+              ],
+              [
+                "Périmètre",
+                "Lignes de production, préventif et curatif"
+              ],
+              [
+                "Effectif Migen",
+                "1 technicien de maintenance expérimenté"
+              ],
+              [
+                "Présence",
+                "Continue, intégré aux équipes FDJ"
+              ],
+              [
+                "Suivi",
+                "Référent technique Migen"
+              ],
+              [
+                "Depuis quand",
+                "2025 et 2026"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-resultat",
+        "titre": "Le résultat",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**L'intégration dans la structure existante** : s'est faite efficacement.",
+              "**L'expertise a été immédiate** : pour les équipes en place.",
+              "**La continuité de service** : a été tenue, sans rupture dans les interventions."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

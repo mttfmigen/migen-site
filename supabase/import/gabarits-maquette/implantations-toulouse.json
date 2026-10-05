@@ -3,12 +3,12 @@
   "contenu": {
     "gabarit": "ville",
     "chapeau": "Le bassin toulousain vit un paradoxe : une concentration d'ingénierie aéronautique et spatiale unique en Europe, et des techniciens de maintenance introuvables, parce que les bureaux d'études recrutent les mêmes profils que les ateliers. Notre hub de techniciens de Toulouse emploie, évalue et encadre ces profils, de la sous-traitance aérostructure aux plateformes logistiques de la couronne nord.",
-    "actions": [
-      {
-        "libelle": "Faire chiffrer ma maintenance à Toulouse",
-        "href": "#formulaire"
-      }
-    ],
+    "action": {
+      "libelle": "Faire chiffrer ma maintenance à Toulouse",
+      "href": "#formulaire"
+    },
+    "telephone": "04 78 33 72 05",
+    "delai": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte en option, nuits, week-ends et jours fériés.",
     "reperes": [
       {
         "valeur": "+ 120",
@@ -23,9 +23,16 @@
         "libelle": "hubs de techniciens en France, dont un à Toulouse, plus notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid"
       }
     ],
-    "contact": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 en option, nuits, week-ends et jours fériés.",
-    "constatTexte": "Votre centre d'usinage s'arrête, la cadence du programme ne bouge pas, et le donneur d'ordre attend sa pièce la semaine prochaine. Chez un sous-traitant aérostructure, un arrêt machine remonte toute la chaîne.",
-    "constatPuces": [
+    "logos": [
+      "VALEO",
+      "EATON",
+      "VOIT",
+      "ALSTEF Group",
+      "ORTHUS x WASHTEC"
+    ],
+    "problemeTitre": "Votre centre d'usinage s'arrête, la cadence du programme ne bouge pas, et le donneur d'ordre attend sa pièce la semaine prochaine.",
+    "problemeTexte": "Chez un sous-traitant aérostructure, un arrêt machine remonte toute la chaîne.",
+    "problemes": [
       {
         "texte": "Les programmes aéronautiques fixent le rythme, et un atelier de rang 2 n'a aucune marge pour absorber une panne.",
         "accroche": "La cadence vient d'ailleurs."
@@ -47,8 +54,80 @@
         "accroche": "De Toulouse à Bordeaux, le parc s'étale."
       }
     ],
-    "reponseTexte": "Pour aller au-delà de l'entretien, notre [bureau d'études](/offres/bureau-etudes/) chiffre les projets de rétrofit et d'amélioration qui repoussent l'achat de matériel neuf.",
-    "reponsePuces": [
+    "offre": [
+      {
+        "benefice": "Vous ne dépendez plus d'un marché de l'emploi qui joue contre les ateliers.",
+        "prestation": {
+          "texte": ", pas des profils trouvés dans l'urgence.",
+          "accroche": "Des techniciens salariés, évalués et encadrés"
+        }
+      },
+      {
+        "benefice": "Le dossier de maintenance ne bloque plus une pièce conforme.",
+        "prestation": {
+          "texte": "traçabilité, historique par équipement, pièces référencées.",
+          "accroche": "Une qualité documentaire au niveau des donneurs d'ordre"
+        }
+      },
+      {
+        "benefice": "Vous entretenez au rythme de la charge, pas au rythme d'un calendrier constructeur.",
+        "prestation": {
+          "texte": ", resserré avant les pics.",
+          "accroche": "Le préventif calé sur vos heures de fonctionnement réelles"
+        }
+      },
+      {
+        "benefice": "Les opérations lourdes ne mangent jamais une vague d'expédition.",
+        "prestation": {
+          "texte": ", tôt le matin, entre deux équipes, de nuit.",
+          "accroche": "Des interventions en heures creuses"
+        }
+      },
+      {
+        "benefice": "Un seul contrat pour machines-outils, lignes d'assemblage, convoyeurs et utilités.",
+        "prestation": {
+          "texte": "[mécanique](/expertises/mecanique/), [électricité](/expertises/electrique/), [électromécanique](/expertises/electromecanique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [robotique](/expertises/robotique/).",
+          "accroche": "Le champ technique complet"
+        }
+      },
+      {
+        "benefice": "Un industriel multi-sites du Sud-Ouest garde un seul interlocuteur et un taux horaire homogène.",
+        "prestation": {
+          "texte": "[Haute-Garonne](/implantations/toulouse/haute-garonne/), [Bordeaux](/implantations/toulouse/bordeaux/), [Gironde](/implantations/toulouse/gironde/), [Charente](/implantations/toulouse/charente/).",
+          "accroche": "Un contrat unique de Toulouse à Bordeaux"
+        }
+      }
+    ],
+    "offreNotes": [
+      "Pour aller au-delà de l'entretien, notre [bureau d'études](/offres/bureau-etudes/) chiffre les projets de rétrofit et d'amélioration qui repoussent l'achat de matériel neuf."
+    ],
+    "etapes": [
+      {
+        "texte": "Vous décrivez la panne ou le besoin au 04 78 33 72 05, en précisant la machine, la marque et les horaires du site.",
+        "titre": "Le contact"
+      },
+      {
+        "texte": "Rappel dans l'heure aux horaires ouvrés. Le chargé d'affaires confirme le périmètre, le technicien pressenti et les moyens à prévoir.",
+        "titre": "La qualification"
+      },
+      {
+        "texte": "Périmètre, moyens et conditions posés noir sur blanc. Un imprévu se chiffre et s'accepte avant les travaux, jamais après.",
+        "titre": "Le devis"
+      },
+      {
+        "texte": "Accueil sécurité, consignation, diagnostic, réparation, essais, remise en production.",
+        "titre": "L'intervention"
+      },
+      {
+        "texte": "Causes, travaux réalisés, pièces remplacées, préconisations, versés dans votre GMAO.",
+        "titre": "Le compte rendu"
+      },
+      {
+        "texte": "Disponibilité, récurrence par équipement, retard de préventif. Les fréquences s'ajustent sur les chiffres, pas sur une habitude.",
+        "titre": "Le bilan périodique"
+      }
+    ],
+    "garanties": [
       {
         "texte": "un interlocuteur qui connaît vos machines, votre site et vos contraintes d'accès, avec sa ligne directe. Pas de standard anonyme.",
         "accroche": "Un chargé d'affaires nommé"
@@ -62,7 +141,44 @@
         "accroche": "Des pièces consultées au prix du marché"
       }
     ],
-    "faq": [
+    "appel": {
+      "question": "Besoin de tenir votre cadence sans attendre un recrutement qui n'aboutit pas ?",
+      "bouton": "Faire chiffrer ma maintenance à Toulouse",
+      "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+    },
+    "preuves": [
+      {
+        "texte": "accompagnement d'une montée en cadence",
+        "titre": "3 à 5 techniciens déployés dans plusieurs usines françaises, depuis septembre 2024",
+        "lienHref": "/preuves/valeo-usines/",
+        "lienLibelle": "Étude de cas VALEO : plusieurs usines"
+      },
+      {
+        "texte": ", site automobile, depuis janvier 2023",
+        "titre": "Six techniciens sur l'installation et la mise en production d'un parc machines neuf",
+        "lienHref": "/preuves/eaton-mise-en-production/",
+        "lienLibelle": "Étude de cas EATON : mise en production"
+      },
+      {
+        "texte": "centres d'usinage, presses et commandes numériques",
+        "titre": "Un technicien à temps plein sur un parc multimarques d'usinage, en 2025",
+        "lienHref": "/preuves/voit-grand-est/",
+        "lienLibelle": "Étude de cas VOIT : site du Grand Est"
+      },
+      {
+        "texte": "intervenants intégrés aux équipes sur des projets stratégiques",
+        "titre": "Renfort de contrôle de chantier chez un spécialiste de l'automatisation logistique",
+        "lienHref": "/preuves/alstef-group/",
+        "lienLibelle": "Étude de cas ALSTEF Group : collaboration"
+      },
+      {
+        "texte": "réception, assemblage, levage et raccordements, par Orthus, filiale Migen",
+        "titre": "Montage de portiques de lavage partout en France",
+        "lienHref": "/preuves/orthus-washtec/",
+        "lienLibelle": "Étude de cas ORTHUS x WASHTEC : installation de stations"
+      }
+    ],
+    "questions": [
       {
         "reponse": "Oui. Toulouse est l'un de nos 10 hubs de techniciens en France, épaulé par notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid. Notre hub de techniciens de Toulouse porte tout le Sud-Ouest : la couronne toulousaine, la Haute-Garonne jusqu'à Saint-Gaudens, la métropole bordelaise et le Libournais, le bassin d'Arcachon, Angoulême et Cognac. Les tournées sont organisées pour mutualiser les trajets, et une visite préventive se groupe avec un déplacement lointain.",
         "question": "Avez-vous vraiment des techniciens à Toulouse, et couvrez-vous Bordeaux, la Gironde et la Charente depuis là ?"
@@ -72,7 +188,7 @@
         "question": "Quels types de machines prenez-vous en charge ?"
       },
       {
-        "reponse": "Oui, avec l'astreinte 24/24 et 7/7 en option. Votre appel mobilise le technicien disponible le plus proche, avec l'appui du réseau si la spécialité l'exige. Hors astreinte, la demande reçoit un rappel dans l'heure aux horaires ouvrés, et la priorité va aux clients sous contrat.",
+        "reponse": "Oui, avec l'astreinte en option. Votre appel mobilise le technicien disponible le plus proche, avec l'appui du réseau si la spécialité l'exige. Hors astreinte, la demande reçoit un rappel dans l'heure aux horaires ouvrés, et la priorité va aux clients sous contrat.",
         "question": "Intervenez-vous en urgence le week-end ?"
       },
       {
@@ -88,184 +204,61 @@
         "question": "Vos techniciens transmettent-ils à nos équipes ?"
       }
     ],
-    "autres": [
+    "liens": [
       {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
+        "libelle": "Bureau d'études",
+        "href": "/offres/bureau-etudes/",
+        "contexte": "Pour aller au-delà de l'entretien, notre bureau d'études chiffre les projets de rétrofit et d'amélioration qui repoussent l'achat de matériel neuf."
       },
       {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
+        "libelle": "Mécanique",
+        "href": "/expertises/mecanique/"
       },
       {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
+        "libelle": "Électricité",
+        "href": "/expertises/electrique/"
       },
       {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
+        "libelle": "Électromécanique",
+        "href": "/expertises/electromecanique/"
       },
       {
-        "libelle": "Valence",
-        "href": "/implantations/lyon/valence/"
+        "libelle": "Automatisme",
+        "href": "/expertises/automatisme/"
       },
       {
-        "libelle": "Nantes",
-        "href": "/implantations/nantes/"
+        "libelle": "Hydraulique",
+        "href": "/expertises/hydraulique/"
       },
       {
-        "libelle": "Brest",
-        "href": "/implantations/nantes/brest/"
+        "libelle": "Pneumatique",
+        "href": "/expertises/pneumatique/"
       },
       {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
+        "libelle": "Robotique",
+        "href": "/expertises/robotique/"
       },
       {
-        "libelle": "paris",
-        "href": "/implantations/paris/"
-      },
-      {
-        "libelle": "Rouen",
-        "href": "/implantations/paris/rouen/"
-      },
-      {
-        "libelle": "Strasbourg",
-        "href": "/implantations/strasbourg/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
+        "libelle": "Haute-Garonne",
+        "href": "/implantations/toulouse/haute-garonne/"
       },
       {
         "libelle": "Bordeaux",
         "href": "/implantations/toulouse/bordeaux/"
+      },
+      {
+        "libelle": "Gironde",
+        "href": "/implantations/toulouse/gironde/"
+      },
+      {
+        "libelle": "Charente",
+        "href": "/implantations/toulouse/charente/"
       }
     ],
-    "reste": [
-      {
-        "type": "offre",
-        "lignes": [
-          {
-            "benefice": "Vous ne dépendez plus d'un marché de l'emploi qui joue contre les ateliers.",
-            "prestation": {
-              "texte": ", pas des profils trouvés dans l'urgence.",
-              "accroche": "Des techniciens salariés, évalués et encadrés"
-            }
-          },
-          {
-            "benefice": "Le dossier de maintenance ne bloque plus une pièce conforme.",
-            "prestation": {
-              "texte": "traçabilité, historique par équipement, pièces référencées.",
-              "accroche": "Une qualité documentaire au niveau des donneurs d'ordre"
-            }
-          },
-          {
-            "benefice": "Vous entretenez au rythme de la charge, pas au rythme d'un calendrier constructeur.",
-            "prestation": {
-              "texte": ", resserré avant les pics.",
-              "accroche": "Le préventif calé sur vos heures de fonctionnement réelles"
-            }
-          },
-          {
-            "benefice": "Les opérations lourdes ne mangent jamais une vague d'expédition.",
-            "prestation": {
-              "texte": ", tôt le matin, entre deux équipes, de nuit.",
-              "accroche": "Des interventions en heures creuses"
-            }
-          },
-          {
-            "benefice": "Un seul contrat pour machines-outils, lignes d'assemblage, convoyeurs et utilités.",
-            "prestation": {
-              "texte": "[mécanique](/expertises/mecanique/), [électricité](/expertises/electrique/), [électromécanique](/expertises/electromecanique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [robotique](/expertises/robotique/).",
-              "accroche": "Le champ technique complet"
-            }
-          },
-          {
-            "benefice": "Un industriel multi-sites du Sud-Ouest garde un seul interlocuteur et un taux horaire homogène.",
-            "prestation": {
-              "texte": "[Haute-Garonne](/implantations/toulouse/haute-garonne/), [Bordeaux](/implantations/toulouse/bordeaux/), [Gironde](/implantations/toulouse/gironde/), [Charente](/implantations/toulouse/charente/).",
-              "accroche": "Un contrat unique de Toulouse à Bordeaux"
-            }
-          }
-        ]
-      },
-      {
-        "type": "deroule",
-        "etapes": [
-          {
-            "texte": "Vous décrivez la panne ou le besoin au 04 78 33 72 05, en précisant la machine, la marque et les horaires du site.",
-            "titre": "Le contact"
-          },
-          {
-            "texte": "Rappel dans l'heure aux horaires ouvrés. Le chargé d'affaires confirme le périmètre, le technicien pressenti et les moyens à prévoir.",
-            "titre": "La qualification"
-          },
-          {
-            "texte": "Périmètre, moyens et conditions posés noir sur blanc. Un imprévu se chiffre et s'accepte avant les travaux, jamais après.",
-            "titre": "Le devis"
-          },
-          {
-            "texte": "Accueil sécurité, consignation, diagnostic, réparation, essais, remise en production.",
-            "titre": "L'intervention"
-          },
-          {
-            "texte": "Causes, travaux réalisés, pièces remplacées, préconisations, versés dans votre GMAO.",
-            "titre": "Le compte rendu"
-          },
-          {
-            "texte": "Disponibilité, récurrence par équipement, retard de préventif. Les fréquences s'ajustent sur les chiffres, pas sur une habitude.",
-            "titre": "Le bilan périodique"
-          }
-        ]
-      },
-      {
-        "type": "cta",
-        "bouton": "Faire chiffrer ma maintenance à Toulouse",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin de tenir votre cadence sans attendre un recrutement qui n'aboutit pas ?"
-      },
-      {
-        "type": "preuves",
-        "preuves": [
-          {
-            "texte": "accompagnement d'une montée en cadence",
-            "titre": "3 à 5 techniciens déployés dans plusieurs usines françaises, depuis septembre 2024",
-            "lienHref": "/preuves/valeo-usines/",
-            "lienLibelle": "Étude de cas VALEO : plusieurs usines"
-          },
-          {
-            "texte": ", site automobile, depuis janvier 2023",
-            "titre": "Six techniciens sur l'installation et la mise en production d'un parc machines neuf",
-            "lienHref": "/preuves/eaton-mise-en-production/",
-            "lienLibelle": "Étude de cas EATON : mise en production"
-          },
-          {
-            "texte": "centres d'usinage, presses et commandes numériques",
-            "titre": "Un technicien à temps plein sur un parc multimarques d'usinage, en 2025",
-            "lienHref": "/preuves/voit-grand-est/",
-            "lienLibelle": "Étude de cas VOIT : site du Grand Est"
-          },
-          {
-            "texte": "intervenants intégrés aux équipes sur des projets stratégiques",
-            "titre": "Renfort de contrôle de chantier chez un spécialiste de l'automatisation logistique",
-            "lienHref": "/preuves/alstef-group/",
-            "lienLibelle": "Étude de cas ALSTEF Group : collaboration"
-          },
-          {
-            "texte": "réception, assemblage, levage et raccordements, par Orthus, filiale Migen",
-            "titre": "Montage de portiques de lavage partout en France",
-            "lienHref": "/preuves/orthus-washtec/",
-            "lienLibelle": "Étude de cas ORTHUS x WASHTEC : installation de stations"
-          }
-        ]
-      },
-      {
-        "type": "ctaFinal",
-        "bouton": "Faire chiffrer ma maintenance à Toulouse",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-        "question": "Besoin d'un mainteneur présent de la Haute-Garonne à la Gironde, sous un seul contrat ?"
-      }
-    ]
+    "appelFinal": {
+      "question": "Besoin d'un mainteneur présent de la Haute-Garonne à la Gironde, sous un seul contrat ?",
+      "bouton": "Faire chiffrer ma maintenance à Toulouse",
+      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
+    }
   }
 }

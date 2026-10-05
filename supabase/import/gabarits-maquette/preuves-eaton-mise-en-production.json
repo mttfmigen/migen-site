@@ -1,0 +1,120 @@
+{
+  "url": "/preuves/eaton-mise-en-production/",
+  "h1": "Étude de cas EATON : mise en production",
+  "contenu": {
+    "gabarit": "fiche",
+    "sections": [
+      {
+        "id": "le-client-et-le-site",
+        "titre": "Le client et le site",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "EATON a sollicité Migen en janvier 2023, au moment de l'installation d'un nouveau parc machine sur son site automobile. La demande portait sur un soutien technique à l'intégration, puis à la mise en production de ces outils."
+          }
+        ]
+      },
+      {
+        "id": "la-situation",
+        "titre": "La situation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Un parc machine neuf ne produit pas le jour où il arrive sur le quai.** Il produit le jour où quelqu'un sait le régler, le dépanner et le tenir."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Une mise en production concentre tous les risques industriels au même moment :"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Des machines neuves à intégrer**, livrées et installées dans un calendrier contraint."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Aucun historique de panne** sur lequel s'appuyer pour anticiper les défaillances."
+          },
+          {
+            "type": "liste",
+            "items": [
+              "**Des compétences variées attendues au même instant** : mécanique, électricité, automatisme."
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "texte": "**Un préventif à construire** pendant que le curatif tourne déjà."
+          }
+        ]
+      },
+      {
+        "id": "ce-que-nous-avons-mis-en-place",
+        "titre": "Ce que nous avons mis en place",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Une équipe constituée pour le projet** : 6 techniciens multidisciplinaires réunis pour couvrir l'ensemble du périmètre du nouveau parc.",
+              "**L'accompagnement des livraisons** : Les techniciens Migen ont suivi l'arrivée et le montage des différentes machines.",
+              "**La maintenance préventive du parc neuf** : Le plan d'entretien tourne dès la mise en service, sans attendre les premières casses.",
+              "**La maintenance curative** : Les défaillances des premières semaines sont traitées sur place, par des techniciens qui connaissent déjà les machines.",
+              "**Une équipe qui reste après le démarrage** : La connaissance machine acquise pendant l'installation ne repart pas avec le chantier."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-dispositif",
+        "titre": "Le dispositif",
+        "blocs": [
+          {
+            "type": "tableau",
+            "entetes": [
+              "Élément",
+              "Détail"
+            ],
+            "lignes": [
+              [
+                "Client",
+                "EATON, site automobile"
+              ],
+              [
+                "Période",
+                "Depuis janvier 2023, mission en cours"
+              ],
+              [
+                "Déclencheur",
+                "Installation d'un nouveau parc machine"
+              ],
+              [
+                "Périmètre",
+                "Intégration, mise en production, maintenance préventive et curative"
+              ],
+              [
+                "Effectif Migen",
+                "6 techniciens multidisciplinaires"
+              ],
+              [
+                "Rôle de Migen",
+                "Soutien technique à l'intégration, puis continuité opérationnelle"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-resultat",
+        "titre": "Le résultat",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Un démarrage tenu** : Sans recruter six personnes dans l'urgence.",
+              "**Une connaissance machine conservée** : L'équipe reste après la mise en service.",
+              "**Un seul interlocuteur** : Pour le préventif, le curatif et l'accompagnement des installations."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

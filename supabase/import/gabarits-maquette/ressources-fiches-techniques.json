@@ -1,0 +1,190 @@
+{
+  "url": "/ressources/fiches-techniques/",
+  "source": "dessin : maquette/gabarit-11-sous-rubrique.html. texte : ../migen-refonte/seo/contenus/05-ressources/fiches-techniques.md, via scripts/produit_hub.mjs.",
+  "contenu": {
+    "gabarit": "sousRubrique",
+    "pastille": "Ressources",
+    "chapeau": [
+      {
+        "texte": "Les décisions de maintenance se prennent sur des chiffres : un taux, un seuil, un indicateur. Ces fiches techniques complètent notre [guide maintenance industrielle](/ressources/) avec le format le plus court possible : la définition, la formule, les seuils utiles, et ce qu'en fait un technicien sur le terrain."
+      }
+    ],
+    "corps": [
+      {
+        "id": "intro",
+        "numero": "01",
+        "titre": "",
+        "blocs": [
+          {
+            "type": "citation",
+            "texte": "Chaque fiche est écrite par des équipes qui interviennent tous les jours en usine. Pas de théorie hors sol : des repères qui servent en réunion comme en atelier."
+          }
+        ]
+      },
+      {
+        "id": "mesurer-la-performance",
+        "numero": "02",
+        "titre": "Mesurer la performance",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Trois fiches pour objectiver l'état de votre maintenance, avant d'en discuter le budget."
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "Le rendement machine",
+                "texte": "Le [trs](/ressources/fiches-techniques/trs/), taux de rendement synthétique, mesure ce que vos équipements produisent réellement face à ce qu'ils pourraient produire."
+              },
+              {
+                "accroche": "La fiabilité et la réparation",
+                "texte": "Le [mtbf](/ressources/fiches-techniques/mtbf-mttr/) et le MTTR chiffrent le temps entre deux pannes et la durée de remise en état : les deux courbes qui résument un parc."
+              },
+              {
+                "accroche": "Le tableau de bord complet",
+                "texte": "Notre fiche [indicateur maintenance](/ressources/fiches-techniques/indicateurs-maintenance/) rassemble les mesures qui comptent, avec les pièges de calcul à éviter."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "structurer-la-methode",
+        "numero": "03",
+        "titre": "Structurer la méthode",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Des outils éprouvés pour passer du dépannage subi à la maintenance organisée."
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "Prioriser les risques",
+                "texte": "L'[amdec](/ressources/fiches-techniques/amdec/) classe les défaillances par gravité, fréquence et détectabilité, pour concentrer l'effort là où la panne coûte."
+              },
+              {
+                "accroche": "Choisir le bon niveau",
+                "texte": "Les 5 [niveaux de maintenance](/ressources/fiches-techniques/niveaux-de-maintenance/) de la norme délimitent ce que fait l'opérateur, le technicien, le constructeur."
+              },
+              {
+                "accroche": "Cadrer votre logiciel",
+                "texte": "Le [cahier des charges gmao](/ressources/fiches-techniques/cahier-des-charges-gmao/) liste les fonctions réellement utiles avant de signer, hors arguments commerciaux."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "diagnostiquer-et-surveiller",
+        "numero": "04",
+        "titre": "Diagnostiquer et surveiller",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Détecter la dérive avant la casse : les techniques qui font la maintenance conditionnelle."
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "Écouter les machines",
+                "texte": "L'[analyse vibratoire](/ressources/fiches-techniques/analyse-vibratoire/) repère balourds, défauts de roulements et désalignements pendant que la ligne tourne."
+              },
+              {
+                "accroche": "Outiller le terrain",
+                "texte": "Notre fiche [outils de diagnostic maintenance](/ressources/fiches-techniques/outils-de-diagnostic/) passe en revue caméra thermique, multimètre, ultrasons, et ce que chacun révèle."
+              },
+              {
+                "accroche": "Maîtriser vos automates",
+                "texte": "La fiche [automate siemens](/ressources/fiches-techniques/automates-siemens/) donne les repères des gammes S7, du diagnostic de défaut à la sauvegarde des programmes."
+              }
+            ]
+          },
+          {
+            "type": "citation",
+            "texte": "Un doute sur vos chiffres, un indicateur qui dérive ? Nos techniciens font le diagnostic sur site : appelez le 04 78 33 72 05, un chargé d'affaires vous rappelle dans l'heure."
+          },
+          {
+            "type": "citation",
+            "texte": "À lire aussi : [Ressources : Process](/ressources/process/)"
+          },
+          {
+            "type": "citation",
+            "texte": "[Demander un diagnostic maintenance](/contact/)"
+          }
+        ]
+      }
+    ],
+    "liens": [
+      {
+        "titre": "Guide maintenance industrielle",
+        "url": "/ressources/",
+        "extrait": "Les décisions de maintenance se prennent sur des chiffres : un taux, un seuil, un indicateur. Ces fiches techniques complètent notre guide maintenance industrielle avec le format le plus court possible : la définition, la formule, les seuils utiles, et ce qu'en fait un technicien sur le terrain.",
+        "nature": "Ressource"
+      },
+      {
+        "titre": "Trs",
+        "url": "/ressources/fiches-techniques/trs/",
+        "extrait": "Le rendement machine Le trs, taux de rendement synthétique, mesure ce que vos équipements produisent réellement face à ce qu'ils pourraient produire.",
+        "nature": "Fiche technique"
+      },
+      {
+        "titre": "Mtbf",
+        "url": "/ressources/fiches-techniques/mtbf-mttr/",
+        "extrait": "La fiabilité et la réparation Le mtbf et le MTTR chiffrent le temps entre deux pannes et la durée de remise en état : les deux courbes qui résument un parc.",
+        "nature": "Fiche technique"
+      },
+      {
+        "titre": "Indicateur maintenance",
+        "url": "/ressources/fiches-techniques/indicateurs-maintenance/",
+        "extrait": "Le tableau de bord complet Notre fiche indicateur maintenance rassemble les mesures qui comptent, avec les pièges de calcul à éviter.",
+        "nature": "Fiche technique"
+      },
+      {
+        "titre": "Amdec",
+        "url": "/ressources/fiches-techniques/amdec/",
+        "extrait": "Prioriser les risques L'amdec classe les défaillances par gravité, fréquence et détectabilité, pour concentrer l'effort là où la panne coûte.",
+        "nature": "Fiche technique"
+      },
+      {
+        "titre": "Niveaux de maintenance",
+        "url": "/ressources/fiches-techniques/niveaux-de-maintenance/",
+        "extrait": "Choisir le bon niveau Les 5 niveaux de maintenance de la norme délimitent ce que fait l'opérateur, le technicien, le constructeur.",
+        "nature": "Fiche technique"
+      },
+      {
+        "titre": "Cahier des charges gmao",
+        "url": "/ressources/fiches-techniques/cahier-des-charges-gmao/",
+        "extrait": "Cadrer votre logiciel Le cahier des charges gmao liste les fonctions réellement utiles avant de signer, hors arguments commerciaux.",
+        "nature": "Fiche technique"
+      },
+      {
+        "titre": "Analyse vibratoire",
+        "url": "/ressources/fiches-techniques/analyse-vibratoire/",
+        "extrait": "Écouter les machines L'analyse vibratoire repère balourds, défauts de roulements et désalignements pendant que la ligne tourne.",
+        "nature": "Fiche technique"
+      },
+      {
+        "titre": "Outils de diagnostic maintenance",
+        "url": "/ressources/fiches-techniques/outils-de-diagnostic/",
+        "extrait": "Outiller le terrain Notre fiche outils de diagnostic maintenance passe en revue caméra thermique, multimètre, ultrasons, et ce que chacun révèle.",
+        "nature": "Fiche technique"
+      },
+      {
+        "titre": "Automate siemens",
+        "url": "/ressources/fiches-techniques/automates-siemens/",
+        "extrait": "Maîtriser vos automates La fiche automate siemens donne les repères des gammes S7, du diagnostic de défaut à la sauvegarde des programmes.",
+        "nature": "Fiche technique"
+      },
+      {
+        "titre": "Ressources : Process",
+        "url": "/ressources/process/",
+        "extrait": "À lire aussi : Ressources : Process",
+        "nature": "Ressource"
+      }
+    ]
+  }
+}

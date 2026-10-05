@@ -1,686 +1,681 @@
 {
- "url": "/carriere/technicien-de-maintenance/formation/",
- "h1": "Formation technicien de maintenance",
- "mot_cle": "formation technicien de maintenance",
- "contenu": {
-  "gabarit": "metier",
-  "chapeau": "Cette page détaille les diplômes, du bac professionnel au BTS, les parcours en alternance, le titre professionnel et la reconversion adulte. Elle complète la fiche [technicien de maintenance](/carriere/technicien-de-maintenance/), qui décrit le métier au quotidien.",
-  "boutons": [
-   {
-    "libelle": "Recruter ce profil"
-   },
-   {
-    "libelle": "Candidater chez Migen",
-    "href": "/contact/"
-   }
-  ],
-  "missions": [
-   "Diagnostiquer une panne",
-   "Réparer et remettre en service",
-   "Assurer la maintenance préventive",
-   "Réaliser la maintenance corrective",
-   "Renseigner la GMAO"
-  ],
-  "habilitations": [
-   "Habilitation électrique BR ou B2V",
-   "Consignation et déconsignation",
-   "Sécurité machine et protections"
-  ],
-  "autres": [
-   {
-    "libelle": "Technicien de maintenance",
-    "href": "/carriere/technicien-de-maintenance/"
-   },
-   {
-    "libelle": "Électromécanicien",
-    "href": "/carriere/electromecanicien/"
-   },
-   {
-    "libelle": "Automaticien",
-    "href": "/carriere/automaticien/"
-   },
-   {
-    "libelle": "Roboticien",
-    "href": "/carriere/roboticien/"
-   },
-   {
-    "libelle": "Responsable maintenance",
-    "href": "/carriere/responsable-maintenance/"
-   },
-   {
-    "libelle": "Agent de maintenance industrielle",
-    "href": "/carriere/agent-de-maintenance/"
-   },
-   {
-    "libelle": "Technicien de maintenance itinérant",
-    "href": "/carriere/technicien-itinerant/"
-   },
-   {
-    "libelle": "Alternance maintenance industrielle",
-    "href": "/carriere/alternance/"
-   }
-  ],
-  "cta": {
-   "question": "Ce métier vous manque sur votre site ?",
-   "rappel": "Décrivez le poste et les habilitations attendues. Nous vous présentons des techniciens à valider.",
-   "bouton": {
-    "libelle": "Je veux ce profil"
-   }
-  },
-  "corps": [
-   {
-    "type": "paragraphe",
-    "texte": "Envie de découvrir le métier avant de vous lancer ? L'orientation se joue tôt, et un diplôme équivalent obtenu à l'étranger se fait souvent reconnaître par l'État. Le lien entre l'école et l'entreprise reste le meilleur signe d'une formation qui mène à l'emploi."
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Migen recrute chaque semaine des techniciens de maintenance dans toute la France. Le regard posé ici est celui d'un employeur du secteur industriel, pas d'un catalogue d'organisme de formation."
-   },
-   {
-    "type": "citation",
-    "texte": "Un projet de formation ou une candidature ? Un échange au 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30, suffit pour situer votre parcours. Nous vous rappelons dans l'heure."
-   },
-   {
-    "type": "titre",
-    "niveau": 2,
-    "texte": "Le métier auquel prépare la formation",
-    "id": "le-metier-auquel-prepare-la-formation"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Panne qui bloque une ligne de production, préventif en retard, équipement industriel à remettre en service : le technicien de maintenance règle ce que personne d'autre ne sait diagnostiquer sur le site."
-   },
-   {
-    "type": "paragraphe",
-    "texte": "La formation vise une fonction précise, pas un intitulé vague. Voici ce que réalise ce spécialiste au travail, chaque jour."
-   },
-   {
-    "type": "liste",
-    "items": [
-     {
-      "accroche": "Diagnostiquer une panne",
-      "texte": "lire un défaut, tester un circuit, isoler la cause avant l'arrêt de la ligne, sur une machine mécanique, électrique ou automatisée."
-     },
-     {
-      "accroche": "Réparer et remettre en service",
-      "texte": "changer une pièce, réparer un organe, valider le fonctionnement de l'équipement avant le redémarrage de la production."
-     },
-     {
-      "accroche": "Assurer la maintenance préventive",
-      "texte": "contrôler les installations, anticiper la défaillance, réaliser les visites planifiées avant que le défaut mineur ne devienne un arrêt."
-     },
-     {
-      "accroche": "Réaliser la maintenance corrective",
-      "texte": "intervenir vite après une panne, en atelier comme sur site industriel, pour rétablir l'activité."
-     },
-     {
-      "accroche": "Renseigner la GMAO",
-      "texte": "tracer chaque intervention dans l'outil de gestion de la maintenance, une compétence attendue dès le premier emploi."
-     }
-    ]
-   },
-   {
-    "type": "titre",
-    "niveau": 2,
-    "texte": "Les diplômes et leur niveau",
-    "id": "les-diplomes-et-leur-niveau"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Le métier se construit par étapes, du bac jusqu'à la licence. Voici les cursus reconnus par l'industrie, du plus accessible au plus poussé."
-   },
-   {
-    "type": "tableau",
-    "entetes": [
-     "Diplôme",
-     "Niveau",
-     "Ce qu'il prépare"
+  "url": "/carriere/technicien-de-maintenance/formation/",
+  "h1": "Formation technicien de maintenance",
+  "mot_cle": "formation technicien de maintenance",
+  "contenu": {
+    "gabarit": "metier",
+    "chapo": [
+      "Une ligne s'arrête, personne dans l'atelier ne sait relancer la machine, et la production attend. Voilà pourquoi l'industrie cherche des profils formés : la bonne formation technicien de maintenance vaut un emploi presque garanti.",
+      "Cette page détaille les diplômes, du bac professionnel au BTS, les parcours en alternance, le titre professionnel et la reconversion adulte. Elle complète la fiche [technicien de maintenance](/carriere/technicien-de-maintenance/), qui décrit le métier au quotidien.",
+      "Envie de découvrir le métier avant de vous lancer ? L'orientation se joue tôt, et un diplôme équivalent obtenu à l'étranger se fait souvent reconnaître par l'État. Le lien entre l'école et l'entreprise reste le meilleur signe d'une formation qui mène à l'emploi.",
+      "Migen recrute chaque semaine des techniciens de maintenance dans toute la France. Le regard posé ici est celui d'un employeur du secteur industriel, pas d'un catalogue d'organisme de formation."
     ],
-    "lignes": [
-     [
-      "Bac pro MSPC",
-      "Bac",
-      "Maintenance des systèmes de production connectés, première marche du métier"
-     ],
-     [
-      "Bac techno STI2D",
-      "Bac",
-      "Base électrique et mécanique avant une poursuite d'études"
-     ],
-     [
-      "BTS maintenance des systèmes",
-      "Bac +2",
-      "Le socle technique attendu par la majorité des entreprises"
-     ],
-     [
-      "BUT génie industriel",
-      "Bac +3",
-      "Polyvalence maintenance, production et méthodes"
-     ],
-     [
-      "Licence pro maintenance",
-      "Bac +3",
-      "Spécialisation vers un poste à responsabilité"
-     ]
-    ]
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Le bac pro maintenance reste la porte d'entrée la plus courante. Le BTS maintenance des systèmes ouvre, lui, le plus de portes sur le marché de l'emploi."
-   },
-   {
-    "type": "titre",
-    "niveau": 3,
-    "texte": "Du bac pro à la licence pro",
-    "id": "du-bac-pro-a-la-licence-pro"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Un parcours type enchaîne bac pro, puis BTS, puis une licence professionnelle pour viser un poste de responsable maintenance. Chaque marche ajoute de l'autonomie sur le terrain et une meilleure rémunération."
-   },
-   {
-    "type": "titre",
-    "niveau": 2,
-    "texte": "Se former en alternance",
-    "id": "se-former-en-alternance"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "L'alternance apprend le métier là où il se pratique : dans l'atelier, en production, pas seulement dans un centre. C'est la voie que préfèrent la plupart des recruteurs de l'industrie."
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Deux contrats mènent au même diplôme. Le choix dépend de votre situation."
-   },
-   {
-    "type": "liste",
-    "items": [
-     {
-      "accroche": "Le contrat d'apprentissage",
-      "texte": "pour les moins de 30 ans, du bac pro à la licence, avec un rythme partagé entre l'entreprise et le lycée ou le centre de formation."
-     },
-     {
-      "accroche": "Le contrat de professionnalisation",
-      "texte": "ouvert aux adultes en reconversion et aux demandeurs d'emploi, une formation en alternance financée et rémunérée."
-     },
-     {
-      "accroche": "Le rythme",
-      "texte": "souvent une semaine en centre, deux semaines en entreprise, sur un à deux ans selon la certification préparée."
-     },
-     {
-      "accroche": "L'objectif",
-      "texte": "un diplôme reconnu par l'État et une première expérience réelle, le duo que cherche l'industrie."
-     }
+    "corps": [
+      {
+        "id": "s1",
+        "numero": "01",
+        "blocs": [
+          {
+            "type": "citation",
+            "texte": "Un projet de formation ou une candidature ? Un échange au 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30, suffit pour situer votre parcours. Nous vous rappelons dans l'heure."
+          }
+        ]
+      },
+      {
+        "titre": "Le métier auquel prépare la formation",
+        "id": "s2",
+        "numero": "02",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Panne qui bloque une ligne de production, préventif en retard, équipement industriel à remettre en service : le technicien de maintenance règle ce que personne d'autre ne sait diagnostiquer sur le site."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "La formation vise une fonction précise, pas un intitulé vague. Voici ce que réalise ce spécialiste au travail, chaque jour."
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "Diagnostiquer une panne",
+                "texte": "lire un défaut, tester un circuit, isoler la cause avant l'arrêt de la ligne, sur une machine mécanique, électrique ou automatisée."
+              },
+              {
+                "accroche": "Réparer et remettre en service",
+                "texte": "changer une pièce, réparer un organe, valider le fonctionnement de l'équipement avant le redémarrage de la production."
+              },
+              {
+                "accroche": "Assurer la maintenance préventive",
+                "texte": "contrôler les installations, anticiper la défaillance, réaliser les visites planifiées avant que le défaut mineur ne devienne un arrêt."
+              },
+              {
+                "accroche": "Réaliser la maintenance corrective",
+                "texte": "intervenir vite après une panne, en atelier comme sur site industriel, pour rétablir l'activité."
+              },
+              {
+                "accroche": "Renseigner la GMAO",
+                "texte": "tracer chaque intervention dans l'outil de gestion de la maintenance, une compétence attendue dès le premier emploi."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titre": "Les diplômes et leur niveau",
+        "id": "s3",
+        "numero": "03",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Le métier se construit par étapes, du bac jusqu'à la licence. Voici les cursus reconnus par l'industrie, du plus accessible au plus poussé."
+          },
+          {
+            "type": "tableau",
+            "entetes": [
+              "Diplôme",
+              "Niveau",
+              "Ce qu'il prépare"
+            ],
+            "lignes": [
+              [
+                "Bac pro MSPC",
+                "Bac",
+                "Maintenance des systèmes de production connectés, première marche du métier"
+              ],
+              [
+                "Bac techno STI2D",
+                "Bac",
+                "Base électrique et mécanique avant une poursuite d'études"
+              ],
+              [
+                "BTS maintenance des systèmes",
+                "Bac +2",
+                "Le socle technique attendu par la majorité des entreprises"
+              ],
+              [
+                "BUT génie industriel",
+                "Bac +3",
+                "Polyvalence maintenance, production et méthodes"
+              ],
+              [
+                "Licence pro maintenance",
+                "Bac +3",
+                "Spécialisation vers un poste à responsabilité"
+              ]
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Le bac pro maintenance reste la porte d'entrée la plus courante. Le BTS maintenance des systèmes ouvre, lui, le plus de portes sur le marché de l'emploi."
+          },
+          {
+            "type": "titre",
+            "niveau": 3,
+            "texte": "Du bac pro à la licence pro",
+            "id": "du-bac-pro-a-la-licence-pro"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Un parcours type enchaîne bac pro, puis BTS, puis une licence professionnelle pour viser un poste de responsable maintenance. Chaque marche ajoute de l'autonomie sur le terrain et une meilleure rémunération."
+          }
+        ]
+      },
+      {
+        "titre": "Se former en alternance",
+        "id": "s4",
+        "numero": "04",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "L'alternance apprend le métier là où il se pratique : dans l'atelier, en production, pas seulement dans un centre. C'est la voie que préfèrent la plupart des recruteurs de l'industrie."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Deux contrats mènent au même diplôme. Le choix dépend de votre situation."
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "Le contrat d'apprentissage",
+                "texte": "pour les moins de 30 ans, du bac pro à la licence, avec un rythme partagé entre l'entreprise et le lycée ou le centre de formation."
+              },
+              {
+                "accroche": "Le contrat de professionnalisation",
+                "texte": "ouvert aux adultes en reconversion et aux demandeurs d'emploi, une formation en alternance financée et rémunérée."
+              },
+              {
+                "accroche": "Le rythme",
+                "texte": "souvent une semaine en centre, deux semaines en entreprise, sur un à deux ans selon la certification préparée."
+              },
+              {
+                "accroche": "L'objectif",
+                "texte": "un diplôme reconnu par l'État et une première expérience réelle, le duo que cherche l'industrie."
+              }
+            ],
+            "ordonnee": true
+          },
+          {
+            "type": "citation",
+            "texte": "L'[alternance en maintenance industrielle](/carriere/alternance/) est détaillée sur une page dédiée : conditions, rythme et candidature."
+          }
+        ]
+      },
+      {
+        "titre": "La formation continue et la reconversion adulte",
+        "id": "s5",
+        "numero": "05",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Vous visez le métier après une première vie professionnelle ? La formation technicien de maintenance adulte existe, elle se finance, et l'industrie recrute sans regarder l'âge."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Plusieurs organismes portent ces parcours, du réseau public aux centres de branche. L'AFPA et les centres UIMM de la branche industrie forment chaque année des milliers d'adultes ; l'UIMM et l'AFPA restent les repères d'un secteur qui recrute."
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "Le titre professionnel technicien de maintenance industrielle",
+                "texte": "un titre pro reconnu par l'État, accessible en formation continue, très demandé en reconversion."
+              },
+              {
+                "accroche": "L'AFPA et les organismes de branche",
+                "texte": "des formations certifiantes, souvent en présentiel puis en entreprise, avec une visite de suivi."
+              },
+              {
+                "accroche": "Le financement",
+                "texte": "compte personnel de formation, projet de transition professionnelle, dispositif France Travail ou OPCO selon votre statut."
+              },
+              {
+                "accroche": "Le public visé",
+                "texte": "demandeur d'emploi, salarié en transition, personne en reconversion, dans le cadre d'un projet vers un secteur industriel qui embauche."
+              },
+              {
+                "accroche": "Le bon signal",
+                "texte": "un taux d'abandon faible et un faible taux de rupture de contrat trahissent un accompagnement sérieux de l'apprenant adulte."
+              }
+            ]
+          },
+          {
+            "type": "titre",
+            "niveau": 3,
+            "texte": "Le titre professionnel, voie rapide",
+            "id": "le-titre-professionnel-voie-rapide"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Le titre pro se compose de blocs de compétences (CCP) validés un à un. Cette modularité accélère la mise en emploi d'un profil déjà autonome techniquement. Le titre TMI, pour technicien de maintenance industrielle, reste la référence de la branche."
+          }
+        ]
+      },
+      {
+        "titre": "Où se former : lycées, centres et organismes",
+        "id": "s6",
+        "numero": "06",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Le nom sur la porte compte moins que la qualité de la formation. Voici les acteurs qui forment au métier, du lycée public au centre de branche."
+          },
+          {
+            "type": "tableau",
+            "entetes": [
+              "Organisme",
+              "Ce qu'il propose"
+            ],
+            "lignes": [
+              [
+                "Lycée professionnel",
+                "Bac pro et BTS maintenance, en initial ou en apprentissage"
+              ],
+              [
+                "AFPA",
+                "Titre professionnel et actions de formation pour adultes"
+              ],
+              [
+                "Centre UIMM de branche",
+                "Parcours industrie, souvent en alternance"
+              ],
+              [
+                "Organisme à distance",
+                "Modules théoriques, à compléter par des travaux pratiques"
+              ]
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Chaque catalogue affiche ses dates, ses périodes d'inscription et son taux de retour à l'emploi. Consultez ces éléments avant de choisir : ce sont eux qui distinguent un bon parcours d'un simple catalogue commercial."
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "Vérifier le taux d'insertion",
+                "texte": "un bon taux de réussite et un taux d'emploi élevé disent l'essentiel sur la qualité d'un établissement."
+              },
+              {
+                "accroche": "Compter les blocs de compétences",
+                "texte": "un titre bien construit s'organise en blocs clairs, chaque bloc validant un élément concret du métier."
+              },
+              {
+                "accroche": "Situer l'apprenant",
+                "texte": "un test de positionnement mesure le niveau réel et adapte le parcours de l'apprenant à son profil."
+              },
+              {
+                "accroche": "Penser accès et handicap",
+                "texte": "un référent handicap et un accès adapté font partie des critères d'une formation sérieuse."
+              }
+            ]
+          },
+          {
+            "type": "citation",
+            "texte": "France Travail, l'ancien Pôle emploi, oriente et cofinance de nombreux parcours. Un conseiller d'orientation aide à voir le métier et à monter le dossier. Le lien avec l'entreprise se prépare tôt."
+          },
+          {
+            "type": "titre",
+            "niveau": 3,
+            "texte": "L'apprentissage par blocs",
+            "id": "l-apprentissage-par-blocs"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Chaque bloc de compétences correspond à une activité réelle : diagnostic, réparation, remise en service. On valide un bloc, puis le suivant, jusqu'au titre complet."
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "Un bloc technique",
+                "texte": "diagnostiquer et réparer une machine, l'élément le plus attendu par un recruteur."
+              },
+              {
+                "accroche": "Un bloc méthode",
+                "texte": "préparer une intervention, rechercher l'origine d'une panne, tracer une action dans la GMAO, consulter un historique."
+              },
+              {
+                "accroche": "Un bloc management",
+                "texte": "pour les profils avancés, coordonner une équipe et voir plus loin que le seul dépannage, avec un vrai rôle de management."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titre": "Formation technicien de maintenance : le programme",
+        "id": "s7",
+        "numero": "07",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Une formation ne se choisit pas au hasard : le programme, le rythme et le lieu changent tout pour un adulte qui reprend les études. Voici les points à vérifier avant de vous inscrire."
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "Le contenu technique",
+                "texte": "électricité et électrotechnique, mécanique, automatisme, hydraulique, pneumatique, lecture de schéma et diagnostic de panne forment le socle de chaque module."
+              },
+              {
+                "accroche": "Les modalités",
+                "texte": "formation en centre, en entreprise ou à distance, à temps plein ou en alternance, un organisme peut proposer plusieurs formats."
+              },
+              {
+                "accroche": "La durée et les dates",
+                "texte": "de six mois pour un titre pro à trois ans pour un bac, avec des dates d'inscription fixées par l'établissement ou le lycée."
+              },
+              {
+                "accroche": "La reconnaissance",
+                "texte": "un titre enregistré par l'État, gage d'un débouché réel dans l'industrie et non d'un simple certificat."
+              }
+            ]
+          },
+          {
+            "type": "citation",
+            "texte": "Un programme complet mène du diagnostic à la remise en service : apprendre à réparer une machine, à programmer un automate simple, à réaliser un diagnostic complet et à travailler en sécurité sur un environnement industriel."
+          },
+          {
+            "type": "titre",
+            "niveau": 3,
+            "texte": "Les travaux pratiques comptent double",
+            "id": "les-travaux-pratiques-comptent-double"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "La théorie ne suffit pas : c'est en atelier qu'on apprend à diagnostiquer une défaillance sur un vrai réseau électrique et à valider une démarche qualité. Cherchez une formation riche en travaux pratiques."
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "Diagnostiquer sur banc",
+                "texte": "reproduire une panne, l'analyser, la corriger, geste après geste."
+              },
+              {
+                "accroche": "Travailler sur les réseaux industriels",
+                "texte": "lire une architecture, tester une communication, comprendre l'amélioration continue d'un atelier."
+              },
+              {
+                "accroche": "Valider par la certification",
+                "texte": "chaque bloc se conclut par un test, gage d'une compétence reconnue."
+              }
+            ]
+          },
+          {
+            "type": "titre",
+            "niveau": 3,
+            "texte": "Vérifier avant de s'inscrire",
+            "id": "verifier-avant-de-s-inscrire"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Un bon organisme affiche son taux de retour à l'emploi, ses moyens matériels et l'accompagnement des personnes en situation de handicap. Ces éléments valent plus qu'une plaquette."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "L'orientation se joue tôt : un conseil personnalisé, une place confirmée, un rythme adapté à votre région évitent l'abandon en cours de route. Un conseiller France Travail ou un référent de l'organisme aide à voir clair sur le métier et ses perspectives."
+          }
+        ]
+      },
+      {
+        "titre": "Financer sa formation",
+        "id": "s8",
+        "numero": "08",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Le frein n'est presque jamais le diplôme : c'est le financement. Or il existe une réponse pour chaque statut, du salarié au demandeur d'emploi."
+          },
+          {
+            "type": "tableau",
+            "entetes": [
+              "Situation",
+              "Dispositif possible"
+            ],
+            "lignes": [
+              [
+                "Salarié en poste",
+                "Compte personnel de formation, plan de développement de l'entreprise"
+              ],
+              [
+                "Salarié en reconversion",
+                "Projet de transition professionnelle"
+              ],
+              [
+                "Demandeur d'emploi",
+                "Financement France Travail, aide du conseil régional"
+              ],
+              [
+                "Alternant",
+                "Prise en charge par l'OPCO de branche"
+              ]
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "texte": "L'orientation se prépare avec un conseil personnalisé : un rendez-vous d'information, un test de positionnement, un devis clair. Contacter directement l'établissement reste le moyen le plus sûr de valider votre projet."
+          }
+        ]
+      },
+      {
+        "titre": "Habilitations et certifications",
+        "id": "s9",
+        "numero": "09",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Un technicien intervient sur des installations sous tension et des machines en mouvement : la sécurité n'est jamais optionnelle. Trois habilitations reviennent dès l'entrée dans le métier."
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "Habilitation électrique BR ou B2V",
+                "texte": "nécessaire pour intervenir sur une armoire électrique, selon la responsabilité confiée sur le site."
+              },
+              {
+                "accroche": "Consignation et déconsignation",
+                "texte": "la procédure à maîtriser avant toute intervention sur un équipement industriel."
+              },
+              {
+                "accroche": "Sécurité machine et protections",
+                "texte": "connaître les règles propres à chaque site et porter les protections individuelles en atelier."
+              }
+            ]
+          },
+          {
+            "type": "citation",
+            "texte": "Chez Migen, les habilitations sont vérifiées et mises à jour avant chaque intervention. Un point de contrôle systématique dès l'entretien de recrutement."
+          }
+        ]
+      },
+      {
+        "titre": "Après la formation : emploi et évolution",
+        "id": "s10",
+        "numero": "10",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Le diplôme obtenu, le vrai sujet devient l'emploi. Bonne nouvelle : le technicien de maintenance industrielle manque partout, du nord au sud de la France."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Le métier offre un débouché rapide et une évolution lisible."
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "Un premier poste accessible",
+                "texte": "dès le bac pro ou le BTS, la demande dépasse le nombre de candidats formés sur le marché."
+              },
+              {
+                "accroche": "Des secteurs variés",
+                "texte": "automobile, agroalimentaire, énergie, pharmaceutique, logistique, chaque industrie de production cherche ces profils."
+              },
+              {
+                "accroche": "Une évolution réelle",
+                "texte": "de technicien vers chef d'équipe, puis responsable maintenance, avec l'expérience et une licence professionnelle."
+              },
+              {
+                "accroche": "La spécialisation",
+                "texte": "automatisme, électrotechnique, hydraulique ou pneumatique, chaque domaine ouvre un marché à part."
+              }
+            ]
+          },
+          {
+            "type": "citation",
+            "texte": "Le détail des rémunérations est sur la page [salaire technicien de maintenance](/carriere/technicien-de-maintenance/salaire/), avec les repères de marché par profil."
+          },
+          {
+            "type": "titre",
+            "niveau": 3,
+            "texte": "Du terrain vers l'ingénieur",
+            "id": "du-terrain-vers-l-ingenieur"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Rien n'oblige à s'arrêter au terrain. Beaucoup partent d'un poste d'opérateur ou d'agent de maintenance, deviennent techniciens, puis visent l'ingénieur maintenance en reprenant des études supérieures en cours de carrière."
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "Monter en technologie",
+                "texte": "maîtriser les réseaux industriels et l'informatique industrielle devient une compétence clé pour piloter un parc de machines."
+              },
+              {
+                "accroche": "Prendre une mission de management",
+                "texte": "encadrer une équipe, organiser le préventif, réduire les défaillances par l'amélioration continue."
+              },
+              {
+                "accroche": "Bifurquer vers le génie industriel",
+                "texte": "un BUT ou une école ouvre le génie électrique, le génie mécanique et les fonctions méthodes."
+              },
+              {
+                "accroche": "Se rendre indispensable",
+                "texte": "être le professionnel qui sait réparer, analyser un circuit et former les nouveaux, année après année."
+              }
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Un opérateur devient technicien, un technicien devient ingénieur maintenance : chaque étape se joue en formation continue. C'est ce parcours d'opérateur vers l'ingénieur qui rend le métier attractif."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Ces passerelles expliquent pourquoi le recrutement d'un technicien de maintenance est un investissement. Une entreprise qui forme garde ses talents plus longtemps, et un bon recrutement se prépare comme une formation."
+          }
+        ]
+      },
+      {
+        "titre": "Se former, puis nous rejoindre",
+        "id": "s11",
+        "numero": "11",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "L'industrie forme des techniciens ; Migen les fait grandir. Voici ce que nous proposons comme employeur à un profil qui sort de formation ou qui se réoriente."
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "De la variété, pas de routine",
+                "texte": "dépannage, préventif, mise en service, chez des clients de tous secteurs, partout en France."
+              },
+              {
+                "accroche": "Un collectif technique complet",
+                "texte": "plus de 100 collaborateurs, 4 agences (Lyon, Montréal, Dubaï, Madrid), une équipe où l'entraide fonctionne."
+              },
+              {
+                "accroche": "Un accueil structuré",
+                "texte": "un référent accompagne chaque prise de poste, habilitations vérifiées et outillage fourni dès le premier jour."
+              },
+              {
+                "accroche": "Une sélection exigeante et assumée",
+                "texte": "entretien technique et comportemental, 10 % des candidats retenus, résultats partagés."
+              }
+            ]
+          },
+          {
+            "type": "titre",
+            "niveau": 3,
+            "texte": "Comment nous rejoindre",
+            "id": "comment-nous-rejoindre"
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "Un échange",
+                "texte": "vous décrivez votre formation, vos habilitations, vos disponibilités."
+              },
+              {
+                "accroche": "Un entretien technique et comportemental",
+                "texte": "mené par un professionnel du métier, pour vérifier la maîtrise réelle."
+              },
+              {
+                "accroche": "Une proposition de poste",
+                "texte": "en résidence ou en itinérance, selon votre profil et les besoins de nos clients."
+              },
+              {
+                "accroche": "L'intégration",
+                "texte": "un référent vous accompagne à la prise de poste, sur le site comme en atelier."
+              }
+            ],
+            "ordonnee": true
+          }
+        ]
+      }
     ],
-    "ordonnee": true
-   },
-   {
-    "type": "citation",
-    "texte": "L'[alternance en maintenance industrielle](/carriere/alternance/) est détaillée sur une page dédiée : conditions, rythme et candidature."
-   },
-   {
-    "type": "titre",
-    "niveau": 2,
-    "texte": "La formation continue et la reconversion adulte",
-    "id": "la-formation-continue-et-la-reconversion-adulte"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Vous visez le métier après une première vie professionnelle ? La formation technicien de maintenance adulte existe, elle se finance, et l'industrie recrute sans regarder l'âge."
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Plusieurs organismes portent ces parcours, du réseau public aux centres de branche. L'AFPA et les centres UIMM de la branche industrie forment chaque année des milliers d'adultes ; l'UIMM et l'AFPA restent les repères d'un secteur qui recrute."
-   },
-   {
-    "type": "liste",
-    "items": [
-     {
-      "accroche": "Le titre professionnel technicien de maintenance industrielle",
-      "texte": "un titre pro reconnu par l'État, accessible en formation continue, très demandé en reconversion."
-     },
-     {
-      "accroche": "L'AFPA et les organismes de branche",
-      "texte": "des formations certifiantes, souvent en présentiel puis en entreprise, avec une visite de suivi."
-     },
-     {
-      "accroche": "Le financement",
-      "texte": "compte personnel de formation, projet de transition professionnelle, dispositif France Travail ou OPCO selon votre statut."
-     },
-     {
-      "accroche": "Le public visé",
-      "texte": "demandeur d'emploi, salarié en transition, personne en reconversion, dans le cadre d'un projet vers un secteur industriel qui embauche."
-     },
-     {
-      "accroche": "Le bon signal",
-      "texte": "un taux d'abandon faible et un faible taux de rupture de contrat trahissent un accompagnement sérieux de l'apprenant adulte."
-     }
+    "faq": {
+      "titre": "Questions fréquentes",
+      "questions": [
+        {
+          "question": "Quelle formation pour devenir technicien de maintenance ?",
+          "reponse": [
+            {
+              "type": "paragraphe",
+              "texte": "Le bac pro MSPC ouvre le métier, le BTS maintenance des systèmes reste la voie la plus reconnue par l'industrie. Une licence pro ou un BUT complète le parcours pour viser un poste à responsabilité."
+            }
+          ]
+        },
+        {
+          "question": "Peut-on se former en reconversion adulte ?",
+          "reponse": [
+            {
+              "type": "paragraphe",
+              "texte": "Oui. Le titre professionnel technicien de maintenance industrielle est accessible en formation continue, finançable par le compte personnel de formation, un projet de transition professionnelle ou France Travail selon votre situation."
+            }
+          ]
+        },
+        {
+          "question": "Combien de temps dure la formation ?",
+          "reponse": [
+            {
+              "type": "paragraphe",
+              "texte": "Un bac pro se prépare en trois ans, un BTS en deux ans, un titre pro en six à douze mois. En alternance, la durée dépend du contrat d'apprentissage ou de professionnalisation signé avec l'entreprise."
+            }
+          ]
+        },
+        {
+          "question": "L'alternance est-elle la meilleure voie ?",
+          "reponse": [
+            {
+              "type": "paragraphe",
+              "texte": "Pour l'emploi, souvent oui. L'alternance ajoute une expérience réelle au diplôme, le duo que recherchent les recruteurs de l'industrie. Contrat d'apprentissage pour les plus jeunes, contrat de professionnalisation pour les adultes."
+            }
+          ]
+        },
+        {
+          "question": "Quel niveau bac faut-il au départ ?",
+          "reponse": [
+            {
+              "type": "paragraphe",
+              "texte": "Un niveau bac, professionnel ou technologique, suffit pour entrer en BTS. Le titre professionnel s'ouvre parfois sans diplôme, sur validation d'un projet et d'un test de positionnement par le centre de formation."
+            }
+          ]
+        },
+        {
+          "question": "Migen recrute-t-elle des profils qui sortent de formation ?",
+          "reponse": [
+            {
+              "type": "paragraphe",
+              "texte": "Oui, chaque semaine. Nous évaluons chaque candidat en entretien technique et comportemental ; seuls 10 % sont retenus, et un référent accompagne la prise de poste partout en France."
+            },
+            {
+              "type": "citation",
+              "texte": "À lire aussi : [salaire technicien de maintenance](/carriere/technicien-de-maintenance/salaire/)"
+            },
+            {
+              "type": "citation",
+              "texte": "[Candidater chez Migen](/contact/)"
+            }
+          ]
+        }
+      ]
+    },
+    "liens": [
+      {
+        "libelle": "Technicien de maintenance",
+        "url": "/carriere/technicien-de-maintenance/",
+        "nature": "Carrière"
+      },
+      {
+        "libelle": "Alternance en maintenance industrielle",
+        "url": "/carriere/alternance/",
+        "nature": "Carrière"
+      },
+      {
+        "libelle": "Salaire technicien de maintenance",
+        "url": "/carriere/technicien-de-maintenance/salaire/",
+        "nature": "Carrière"
+      }
     ]
-   },
-   {
-    "type": "titre",
-    "niveau": 3,
-    "texte": "Le titre professionnel, voie rapide",
-    "id": "le-titre-professionnel-voie-rapide"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Le titre pro se compose de blocs de compétences (CCP) validés un à un. Cette modularité accélère la mise en emploi d'un profil déjà autonome techniquement. Le titre TMI, pour technicien de maintenance industrielle, reste la référence de la branche."
-   },
-   {
-    "type": "titre",
-    "niveau": 2,
-    "texte": "Où se former : lycées, centres et organismes",
-    "id": "ou-se-former-lycees-centres-et-organismes"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Le nom sur la porte compte moins que la qualité de la formation. Voici les acteurs qui forment au métier, du lycée public au centre de branche."
-   },
-   {
-    "type": "tableau",
-    "entetes": [
-     "Organisme",
-     "Ce qu'il propose"
-    ],
-    "lignes": [
-     [
-      "Lycée professionnel",
-      "Bac pro et BTS maintenance, en initial ou en apprentissage"
-     ],
-     [
-      "AFPA",
-      "Titre professionnel et actions de formation pour adultes"
-     ],
-     [
-      "Centre UIMM de branche",
-      "Parcours industrie, souvent en alternance"
-     ],
-     [
-      "Organisme à distance",
-      "Modules théoriques, à compléter par des travaux pratiques"
-     ]
-    ]
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Chaque catalogue affiche ses dates, ses périodes d'inscription et son taux de retour à l'emploi. Consultez ces éléments avant de choisir : ce sont eux qui distinguent un bon parcours d'un simple catalogue commercial."
-   },
-   {
-    "type": "liste",
-    "items": [
-     {
-      "accroche": "Vérifier le taux d'insertion",
-      "texte": "un bon taux de réussite et un taux d'emploi élevé disent l'essentiel sur la qualité d'un établissement."
-     },
-     {
-      "accroche": "Compter les blocs de compétences",
-      "texte": "un titre bien construit s'organise en blocs clairs, chaque bloc validant un élément concret du métier."
-     },
-     {
-      "accroche": "Situer l'apprenant",
-      "texte": "un test de positionnement mesure le niveau réel et adapte le parcours de l'apprenant à son profil."
-     },
-     {
-      "accroche": "Penser accès et handicap",
-      "texte": "un référent handicap et un accès adapté font partie des critères d'une formation sérieuse."
-     }
-    ]
-   },
-   {
-    "type": "citation",
-    "texte": "France Travail, l'ancien Pôle emploi, oriente et cofinance de nombreux parcours. Un conseiller d'orientation aide à voir le métier et à monter le dossier. Le lien avec l'entreprise se prépare tôt."
-   },
-   {
-    "type": "titre",
-    "niveau": 3,
-    "texte": "L'apprentissage par blocs",
-    "id": "l-apprentissage-par-blocs"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Chaque bloc de compétences correspond à une activité réelle : diagnostic, réparation, remise en service. On valide un bloc, puis le suivant, jusqu'au titre complet."
-   },
-   {
-    "type": "liste",
-    "items": [
-     {
-      "accroche": "Un bloc technique",
-      "texte": "diagnostiquer et réparer une machine, l'élément le plus attendu par un recruteur."
-     },
-     {
-      "accroche": "Un bloc méthode",
-      "texte": "préparer une intervention, rechercher l'origine d'une panne, tracer une action dans la GMAO, consulter un historique."
-     },
-     {
-      "accroche": "Un bloc management",
-      "texte": "pour les profils avancés, coordonner une équipe et voir plus loin que le seul dépannage, avec un vrai rôle de management."
-     }
-    ]
-   },
-   {
-    "type": "titre",
-    "niveau": 2,
-    "texte": "Formation technicien de maintenance : le programme",
-    "id": "formation-technicien-de-maintenance-le-programme"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Une formation ne se choisit pas au hasard : le programme, le rythme et le lieu changent tout pour un adulte qui reprend les études. Voici les points à vérifier avant de vous inscrire."
-   },
-   {
-    "type": "liste",
-    "items": [
-     {
-      "accroche": "Le contenu technique",
-      "texte": "électricité et électrotechnique, mécanique, automatisme, hydraulique, pneumatique, lecture de schéma et diagnostic de panne forment le socle de chaque module."
-     },
-     {
-      "accroche": "Les modalités",
-      "texte": "formation en centre, en entreprise ou à distance, à temps plein ou en alternance, un organisme peut proposer plusieurs formats."
-     },
-     {
-      "accroche": "La durée et les dates",
-      "texte": "de six mois pour un titre pro à trois ans pour un bac, avec des dates d'inscription fixées par l'établissement ou le lycée."
-     },
-     {
-      "accroche": "La reconnaissance",
-      "texte": "un titre enregistré par l'État, gage d'un débouché réel dans l'industrie et non d'un simple certificat."
-     }
-    ]
-   },
-   {
-    "type": "citation",
-    "texte": "Un programme complet mène du diagnostic à la remise en service : apprendre à réparer une machine, à programmer un automate simple, à réaliser un diagnostic complet et à travailler en sécurité sur un environnement industriel."
-   },
-   {
-    "type": "titre",
-    "niveau": 3,
-    "texte": "Les travaux pratiques comptent double",
-    "id": "les-travaux-pratiques-comptent-double"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "La théorie ne suffit pas : c'est en atelier qu'on apprend à diagnostiquer une défaillance sur un vrai réseau électrique et à valider une démarche qualité. Cherchez une formation riche en travaux pratiques."
-   },
-   {
-    "type": "liste",
-    "items": [
-     {
-      "accroche": "Diagnostiquer sur banc",
-      "texte": "reproduire une panne, l'analyser, la corriger, geste après geste."
-     },
-     {
-      "accroche": "Travailler sur les réseaux industriels",
-      "texte": "lire une architecture, tester une communication, comprendre l'amélioration continue d'un atelier."
-     },
-     {
-      "accroche": "Valider par la certification",
-      "texte": "chaque bloc se conclut par un test, gage d'une compétence reconnue."
-     }
-    ]
-   },
-   {
-    "type": "titre",
-    "niveau": 3,
-    "texte": "Vérifier avant de s'inscrire",
-    "id": "verifier-avant-de-s-inscrire"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Un bon organisme affiche son taux de retour à l'emploi, ses moyens matériels et l'accompagnement des personnes en situation de handicap. Ces éléments valent plus qu'une plaquette."
-   },
-   {
-    "type": "paragraphe",
-    "texte": "L'orientation se joue tôt : un conseil personnalisé, une place confirmée, un rythme adapté à votre région évitent l'abandon en cours de route. Un conseiller France Travail ou un référent de l'organisme aide à voir clair sur le métier et ses perspectives."
-   },
-   {
-    "type": "titre",
-    "niveau": 2,
-    "texte": "Financer sa formation",
-    "id": "financer-sa-formation"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Le frein n'est presque jamais le diplôme : c'est le financement. Or il existe une réponse pour chaque statut, du salarié au demandeur d'emploi."
-   },
-   {
-    "type": "tableau",
-    "entetes": [
-     "Situation",
-     "Dispositif possible"
-    ],
-    "lignes": [
-     [
-      "Salarié en poste",
-      "Compte personnel de formation, plan de développement de l'entreprise"
-     ],
-     [
-      "Salarié en reconversion",
-      "Projet de transition professionnelle"
-     ],
-     [
-      "Demandeur d'emploi",
-      "Financement France Travail, aide du conseil régional"
-     ],
-     [
-      "Alternant",
-      "Prise en charge par l'OPCO de branche"
-     ]
-    ]
-   },
-   {
-    "type": "paragraphe",
-    "texte": "L'orientation se prépare avec un conseil personnalisé : un rendez-vous d'information, un test de positionnement, un devis clair. Contacter directement l'établissement reste le moyen le plus sûr de valider votre projet."
-   },
-   {
-    "type": "titre",
-    "niveau": 2,
-    "texte": "Habilitations et certifications",
-    "id": "habilitations-et-certifications"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Un technicien intervient sur des installations sous tension et des machines en mouvement : la sécurité n'est jamais optionnelle. Trois habilitations reviennent dès l'entrée dans le métier."
-   },
-   {
-    "type": "liste",
-    "items": [
-     {
-      "accroche": "Habilitation électrique BR ou B2V",
-      "texte": "nécessaire pour intervenir sur une armoire électrique, selon la responsabilité confiée sur le site."
-     },
-     {
-      "accroche": "Consignation et déconsignation",
-      "texte": "la procédure à maîtriser avant toute intervention sur un équipement industriel."
-     },
-     {
-      "accroche": "Sécurité machine et protections",
-      "texte": "connaître les règles propres à chaque site et porter les protections individuelles en atelier."
-     }
-    ]
-   },
-   {
-    "type": "citation",
-    "texte": "Chez Migen, les habilitations sont vérifiées et mises à jour avant chaque intervention. Un point de contrôle systématique dès l'entretien de recrutement."
-   },
-   {
-    "type": "titre",
-    "niveau": 2,
-    "texte": "Après la formation : emploi et évolution",
-    "id": "apres-la-formation-emploi-et-evolution"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Le diplôme obtenu, le vrai sujet devient l'emploi. Bonne nouvelle : le technicien de maintenance industrielle manque partout, du nord au sud de la France."
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Le métier offre un débouché rapide et une évolution lisible."
-   },
-   {
-    "type": "liste",
-    "items": [
-     {
-      "accroche": "Un premier poste accessible",
-      "texte": "dès le bac pro ou le BTS, la demande dépasse le nombre de candidats formés sur le marché."
-     },
-     {
-      "accroche": "Des secteurs variés",
-      "texte": "automobile, agroalimentaire, énergie, pharmaceutique, logistique, chaque industrie de production cherche ces profils."
-     },
-     {
-      "accroche": "Une évolution réelle",
-      "texte": "de technicien vers chef d'équipe, puis responsable maintenance, avec l'expérience et une licence professionnelle."
-     },
-     {
-      "accroche": "La spécialisation",
-      "texte": "automatisme, électrotechnique, hydraulique ou pneumatique, chaque domaine ouvre un marché à part."
-     }
-    ]
-   },
-   {
-    "type": "citation",
-    "texte": "Le détail des rémunérations est sur la page [salaire technicien de maintenance](/carriere/technicien-de-maintenance/salaire/), avec les repères de marché par profil."
-   },
-   {
-    "type": "titre",
-    "niveau": 3,
-    "texte": "Du terrain vers l'ingénieur",
-    "id": "du-terrain-vers-l-ingenieur"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Rien n'oblige à s'arrêter au terrain. Beaucoup partent d'un poste d'opérateur ou d'agent de maintenance, deviennent techniciens, puis visent l'ingénieur maintenance en reprenant des études supérieures en cours de carrière."
-   },
-   {
-    "type": "liste",
-    "items": [
-     {
-      "accroche": "Monter en technologie",
-      "texte": "maîtriser les réseaux industriels et l'informatique industrielle devient une compétence clé pour piloter un parc de machines."
-     },
-     {
-      "accroche": "Prendre une mission de management",
-      "texte": "encadrer une équipe, organiser le préventif, réduire les défaillances par l'amélioration continue."
-     },
-     {
-      "accroche": "Bifurquer vers le génie industriel",
-      "texte": "un BUT ou une école ouvre le génie électrique, le génie mécanique et les fonctions méthodes."
-     },
-     {
-      "accroche": "Se rendre indispensable",
-      "texte": "être le professionnel qui sait réparer, analyser un circuit et former les nouveaux, année après année."
-     }
-    ]
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Un opérateur devient technicien, un technicien devient ingénieur maintenance : chaque étape se joue en formation continue. C'est ce parcours d'opérateur vers l'ingénieur qui rend le métier attractif."
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Ces passerelles expliquent pourquoi le recrutement d'un technicien de maintenance est un investissement. Une entreprise qui forme garde ses talents plus longtemps, et un bon recrutement se prépare comme une formation."
-   },
-   {
-    "type": "titre",
-    "niveau": 2,
-    "texte": "Se former, puis nous rejoindre",
-    "id": "se-former-puis-nous-rejoindre"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "L'industrie forme des techniciens ; Migen les fait grandir. Voici ce que nous proposons comme employeur à un profil qui sort de formation ou qui se réoriente."
-   },
-   {
-    "type": "liste",
-    "items": [
-     {
-      "accroche": "De la variété, pas de routine",
-      "texte": "dépannage, préventif, mise en service, chez des clients de tous secteurs, partout en France."
-     },
-     {
-      "accroche": "Un collectif technique complet",
-      "texte": "plus de 100 collaborateurs, 4 agences (Lyon, Montréal, Dubaï, Madrid), une équipe où l'entraide fonctionne."
-     },
-     {
-      "accroche": "Un accueil structuré",
-      "texte": "un référent accompagne chaque prise de poste, habilitations vérifiées et outillage fourni dès le premier jour."
-     },
-     {
-      "accroche": "Une sélection exigeante et assumée",
-      "texte": "entretien technique et comportemental, 10 % des candidats retenus, résultats partagés."
-     }
-    ]
-   },
-   {
-    "type": "titre",
-    "niveau": 3,
-    "texte": "Comment nous rejoindre",
-    "id": "comment-nous-rejoindre"
-   },
-   {
-    "type": "liste",
-    "items": [
-     {
-      "accroche": "Un échange",
-      "texte": "vous décrivez votre formation, vos habilitations, vos disponibilités."
-     },
-     {
-      "accroche": "Un entretien technique et comportemental",
-      "texte": "mené par un professionnel du métier, pour vérifier la maîtrise réelle."
-     },
-     {
-      "accroche": "Une proposition de poste",
-      "texte": "en résidence ou en itinérance, selon votre profil et les besoins de nos clients."
-     },
-     {
-      "accroche": "L'intégration",
-      "texte": "un référent vous accompagne à la prise de poste, sur le site comme en atelier."
-     }
-    ],
-    "ordonnee": true
-   },
-   {
-    "type": "titre",
-    "niveau": 2,
-    "texte": "Questions fréquentes",
-    "id": "questions-frequentes"
-   },
-   {
-    "type": "paragraphe",
-    "accroche": "Quelle formation pour devenir technicien de maintenance ?",
-    "texte": "Le bac pro MSPC ouvre le métier, le BTS maintenance des systèmes reste la voie la plus reconnue par l'industrie. Une licence pro ou un BUT complète le parcours pour viser un poste à responsabilité."
-   },
-   {
-    "type": "paragraphe",
-    "accroche": "Peut-on se former en reconversion adulte ?",
-    "texte": "Oui. Le titre professionnel technicien de maintenance industrielle est accessible en formation continue, finançable par le compte personnel de formation, un projet de transition professionnelle ou France Travail selon votre situation."
-   },
-   {
-    "type": "paragraphe",
-    "accroche": "Combien de temps dure la formation ?",
-    "texte": "Un bac pro se prépare en trois ans, un BTS en deux ans, un titre pro en six à douze mois. En alternance, la durée dépend du contrat d'apprentissage ou de professionnalisation signé avec l'entreprise."
-   },
-   {
-    "type": "paragraphe",
-    "accroche": "L'alternance est-elle la meilleure voie ?",
-    "texte": "Pour l'emploi, souvent oui. L'alternance ajoute une expérience réelle au diplôme, le duo que recherchent les recruteurs de l'industrie. Contrat d'apprentissage pour les plus jeunes, contrat de professionnalisation pour les adultes."
-   },
-   {
-    "type": "paragraphe",
-    "accroche": "Quel niveau bac faut-il au départ ?",
-    "texte": "Un niveau bac, professionnel ou technologique, suffit pour entrer en BTS. Le titre professionnel s'ouvre parfois sans diplôme, sur validation d'un projet et d'un test de positionnement par le centre de formation."
-   },
-   {
-    "type": "paragraphe",
-    "accroche": "Migen recrute-t-elle des profils qui sortent de formation ?",
-    "texte": "Oui, chaque semaine. Nous évaluons chaque candidat en entretien technique et comportemental ; seuls 10 % sont retenus, et un référent accompagne la prise de poste partout en France."
-   },
-   {
-    "type": "citation",
-    "texte": "À lire aussi : [salaire technicien de maintenance](/carriere/technicien-de-maintenance/salaire/)"
-   }
-  ]
- }
+  }
 }

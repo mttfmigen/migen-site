@@ -1,5 +1,6 @@
 /**
- * Fabrique les fichiers de contenu des gabarits VILLE et DÉPARTEMENT.
+ * Fabrique les fichiers de contenu du gabarit IMPLANTATION, villes et
+ * départements.
  *
  *   node scripts/fabrique_gabarits_implantation.mjs
  *
@@ -7,6 +8,20 @@
  * l'API REST et la clé ANONYME, puis ÉCRIT un fichier JSON par page dans
  * `supabase/import/gabarits-maquette/`. Il n'écrit rien en base : c'est
  * `scripts/importe_rest.mjs` qui pose ces fichiers, et lui seul.
+ *
+ * LE FICHIER QUI FAIT FOI : « Migen - Gabarit 04 Ville.dc.html » pour les
+ * villes, « Migen - Gabarit 06 Departement.dc.html » pour les départements.
+ * Les deux sont le même document, douze sections, même parseur. La
+ * correspondance ci-dessous est celle de leur fonction `parse()`, l. 333 à 412,
+ * relue ligne à ligne.
+ *
+ * CE QUI A ÉTÉ CORRIGÉ. La version précédente de ce script mappait vers les
+ * blocs `isVille` (cinq sections) et `isDept` (trois sections) de
+ * « Migen - Site final », un APERÇU du site et non les gabarits. Elle poussait
+ * donc sept sections du corpus sur dix dans un champ `reste`, rendu par les
+ * blocs de vente. Le corpus de ces 42 pages est écrit POUR les douze sections
+ * du gabarit, section par section : la correspondance est maintenant une à une
+ * et `reste` est vide.
  *
  * POURQUOI UN SCRIPT PLUTÔT QUE QUARANTE-DEUX FICHIERS ÉCRITS À LA MAIN. La
  * correspondance corpus vers maquette est une RÈGLE, pas quarante-deux
@@ -22,9 +37,8 @@
  * AUCUNE DONNÉE N'EST INVENTÉE. Chaque valeur écrite vient d'un champ du corpus
  * ou de la hiérarchie en base. Une section que la maquette dessine et que le
  * corpus ne remplit pas est laissée ABSENTE : le gabarit ne la rend alors pas
- * du tout. Les libellés de structure de la maquette vivent dans les composants,
- * sauf ceux que `ContenuSecteur` expose en données, repris ici de la maquette
- * avec leur ligne.
+ * du tout. Les libellés de structure et toute la réassurance vivent dans le
+ * composant, relevés dans le fichier de maquette.
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -37,27 +51,18 @@ const SORTIE = join(RACINE, "supabase", "import", "gabarits-maquette");
 const ANCRE = "#formulaire";
 
 /**
- * « Les autres départements », surtitre relevé ligne 6407 de la maquette.
- *
- * Il est en données et non dans le composant parce que `ContenuSecteur`
- * l'expose ainsi : le même gabarit sert les secteurs, où il vaut « Les autres
- * secteurs ». Le surtitre des villes, lui, est dans `PageVille.tsx`.
- */
-const SURTITRE_AUTRES_DEPTS = "Les autres départements";
-
-/**
  * Les huit pages dont le SUJET est un territoire administratif, et non une
- * ville. Elles reçoivent le gabarit `isDept`, trois sections ; toutes les
- * autres reçoivent `isVille`, cinq sections.
+ * ville.
  *
- * POURQUOI UNE LISTE DÉCLARÉE ET NON UNE RÈGLE SUR LE CHEMIN. Le niveau et le
- * parent ne séparent PAS ces pages : au niveau 3, sous les mêmes agences,
- * cohabitent huit villes et huit départements. `toulouse/gironde/` et
- * `toulouse/bordeaux/` ont le même parent et le même niveau. Le seul juge est
- * donc le SUJET que le corpus se donne, et il l'écrit dans son propre H1, cité
- * ici en regard de chaque entrée. Une expression régulière sur ce H1 se
- * tromperait : `paris/` écrit « Maintenir vos machines DANS LE tissu le plus
- * dense de France » et serait pris pour un département.
+ * LE DESSIN NE CHANGE PAS entre les deux : les fichiers de gabarit 04 et 06
+ * sont identiques. Le discriminant sert au fil d'Ariane et au maillage, et il
+ * reste déclaré ici parce que rien d'autre ne le dit : au niveau 3, sous les
+ * mêmes agences, cohabitent huit villes et huit départements.
+ * `toulouse/gironde/` et `toulouse/bordeaux/` ont le même parent et le même
+ * niveau. Le seul juge est le SUJET que le corpus se donne, et il l'écrit dans
+ * son propre H1, cité ici en regard de chaque entrée. Une expression régulière
+ * sur ce H1 se tromperait : `paris/` écrit « Maintenir vos machines DANS LE
+ * tissu le plus dense de France » et serait pris pour un département.
  *
  * Le script VÉRIFIE que cette liste correspond exactement aux pages trouvées en
  * base, et s'arrête si la hiérarchie a bougé.
@@ -73,22 +78,49 @@ const DEPARTEMENTS = new Map([
   ["/implantations/toulouse/haute-garonne/", "en Haute-Garonne"],
 ]);
 
+/* --------------------------------------------- l'interdit que la maquette pose */
+
 /**
- * Les six agences, seules pages de niveau 2 à porter des enfants.
+ * `__c247`, l. 290 à 302 du fichier de maquette, recopiée.
  *
- * Elles servent, avec les villes de niveau 3, à composer les pastilles
- * « Autres villes » : c'est ce que fait la maquette, dont les neuf pastilles
- * (ligne 4065) sont toutes des villes d'agence ou des villes de niveau 3, et
- * aucune des vingt pages « maintenance-industrielle-… ».
+ * La maquette passe TOUT le texte du corpus dans cette fonction avant de le
+ * parser : elle retire « 24/24 », « 7/7 » et leurs variantes. Ce n'est pas une
+ * coquetterie de rendu, c'est un interdit de copie que le gabarit applique
+ * lui-même, et il porte sur 218 occurrences réparties sur les 42 pages.
+ *
+ *   avant : « Astreinte 24/24 et 7/7 en option, nuits, week-ends et jours fériés. »
+ *   après : « Astreinte en option, nuits, week-ends et jours fériés. »
+ *
+ * Elle est appliquée ici, à la fabrication, et non au rendu : le texte posé en
+ * base est alors celui que la maquette montre, et aucun autre consommateur du
+ * contenu ne peut le ressortir sans le nettoyage.
  */
-const AGENCES = new Set([
-  "/implantations/lille/",
-  "/implantations/lyon/",
-  "/implantations/nantes/",
-  "/implantations/paris/",
-  "/implantations/strasbourg/",
-  "/implantations/toulouse/",
-]);
+function sansDisponibilite(texte) {
+  return texte
+    .replace(
+      /^[-*] \*\*(?:24\s*\/\s*24(?:\s*et\s*7\s*\/\s*7)?|24\s*\/\s*7|7\s*j\s*\/\s*7|7\s*\/\s*7)\*\*.*$\n?/gm,
+      "",
+    )
+    .replace(/,\s*24\/24 et 7\/7\s*,/g, ",")
+    .replace(/\s*24\s*\/\s*24(?:\s*(?:et|·|,)\s*7\s*\/\s*7)?/g, "")
+    .replace(/\s*24\s*h\s*\/\s*24(?:\s*(?:et|,)?\s*7\s*j?\s*\/\s*7)?/gi, "")
+    .replace(/\s+7\s*jours\s*sur\s*7/gi, "")
+    .replace(/\s+7\s*j\s*\/\s*7/gi, "")
+    .replace(/\s+24\s*\/\s*7\b/g, "")
+    .replace(/\s+7\s*\/\s*7\b/g, "");
+}
+
+/** Le même nettoyage, appliqué à toutes les chaînes d'une structure. */
+function nettoie(valeur) {
+  if (typeof valeur === "string") return sansDisponibilite(valeur);
+  if (Array.isArray(valeur)) return valeur.map(nettoie);
+  if (valeur && typeof valeur === "object") {
+    return Object.fromEntries(
+      Object.entries(valeur).map(([cle, v]) => [cle, nettoie(v)]),
+    );
+  }
+  return valeur;
+}
 
 /* ------------------------------------------------------------------ la lecture */
 
@@ -134,6 +166,10 @@ if (pages.length === 0) {
   process.exit(1);
 }
 
+/* Le nettoyage de la maquette s'applique AVANT toute lecture du corpus : la
+   suite travaille donc sur le texte tel que le gabarit le montre. */
+for (const page of pages) page.contenu = nettoie(page.contenu);
+
 /* ---------------------------------------------------- les garde-fous de cohérence */
 
 const inconnus = [...DEPARTEMENTS.keys()].filter(
@@ -150,11 +186,6 @@ if (inconnus.length > 0) {
 
 const estDept = (chemin) => DEPARTEMENTS.has(chemin);
 
-/** Les villes qui composent les pastilles « Autres villes ». */
-const VILLES_PASTILLES = pages
-  .filter((p) => !estDept(p.path) && (AGENCES.has(p.path) || p.niveau === 3))
-  .map((p) => p.path);
-
 /* ------------------------------------------------------------ la correspondance */
 
 /** Une section du corpus, par son type. */
@@ -162,94 +193,162 @@ function section(page, type) {
   return (page.contenu?.sections ?? []).find((s) => s.type === type) ?? null;
 }
 
-/**
- * Le libellé d'une page, pour une pastille.
- *
- * Le H1 complet est une phrase (« La maintenance industrielle à Lyon, depuis
- * notre siège ») : la maquette met un nom court dans ses pastilles. Le nom est
- * pris dans le MOT CLÉ de la page, que le corpus écrit, en retirant le service
- * qui s'y répète. Rien n'est inventé : la casse d'origine est celle du H1,
- * cherchée dedans, et à défaut le mot clé sert tel quel.
- */
-function libellePastille(page) {
-  const cle = (page.mot_cle_principal ?? "").replace(/^maintenance industrielle\s*/i, "").trim();
-  if (!cle) return null;
-  // Le H1 porte la bonne casse et les bons accents : « Saint-Étienne », pas
-  // « saint etienne ». On y cherche le mot clé, tiret ou espace indifférents.
-  const motif = new RegExp(
-    cle.split(/[\s-]+/).map((m) => m.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("[\\s-]+"),
-    "i",
-  );
-  const trouve = (page.titre_h1 ?? "").match(motif);
-  return trouve ? trouve[0] : cle;
-}
-
-/** Les pastilles vers les autres pages d'un ensemble, la page courante exclue. */
-function pastilles(courante, ensemble, parChemin) {
-  return ensemble
-    .filter((chemin) => chemin !== courante.path)
-    .map((chemin) => {
-      const libelle = libellePastille(parChemin.get(chemin));
-      return libelle ? { libelle, href: chemin } : null;
-    })
-    .filter(Boolean);
-}
-
 /** `undefined` plutôt qu'un tableau vide : un champ absent ne se rend pas. */
 const siRempli = (tableau) =>
   Array.isArray(tableau) && tableau.length > 0 ? tableau : undefined;
 
+/** `sentences()` de la maquette, l. 332. */
+const phrases = (texte) => (texte || "").split(/(?<=[.?!])\s+/).filter(Boolean);
+
+/** Une chaîne sans son balisage Markdown, pour comparer des textes entre eux. */
+const debalise = (t) =>
+  t
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/\*\*/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
 /**
- * Gabarit VILLE, cinq sections (maquette 3962 à 4076).
+ * Les liens internes écrits dans le corpus, dédoublonnés, dans leur ordre.
  *
- *   heros.mecanisme     → le chapeau du hero
- *   heros.cta           → le bouton orange du hero
- *   heros.phraseDelai   → le contact, sous le filet du panneau
- *   chiffres.chiffres   → les repères du panneau en verre
- *   probleme.punchline  → le paragraphe de « Le constat terrain »
- *   probleme.puces      → la liste à croix de la même colonne
- *   offre.prose[0]      → le paragraphe de « Notre réponse »
- *   garanties.puces     → la liste à coches de la même colonne
- *   objections          → « Questions fréquentes », en cartes
- *   hiérarchie          → « Autres villes », en pastilles
- *   le reste du corpus  → sous le vis-à-vis, par les blocs déjà portés
+ * C'est la section « Pour aller plus loin » de la maquette, l. 390 à 399 : elle
+ * fait une carte par lien interne trouvé dans le texte, garde le premier
+ * passage de chaque cible et écarte `/preuves/`, dont les cartes sont déjà la
+ * section 08. Le libellé prend sa capitale d'attaque, et le `contexte` est la
+ * phrase du corpus où le lien a été écrit.
+ *
+ * UNE SEULE DIFFÉRENCE AVEC LA MAQUETTE, et elle est voulue : la maquette
+ * RETIRE le lien du texte (`unlink`) parce que son tableau Markdown ne rend que
+ * du texte plat. Ici le lien reste DANS la phrase, où `blocs/TexteRiche.tsx` le
+ * rend : près de six cents liens de ce genre font le maillage interne du
+ * cocon, et c'est la raison d'être de l'arborescence. Le dessin de la maquette
+ * est respecté, le texte du corpus n'est pas amputé.
  */
-function contenuVille(page, parChemin) {
+function liensDuCorpus(page) {
+  const vus = new Set();
+  const cartes = [];
+
+  const parcourt = (valeur) => {
+    if (typeof valeur === "string") {
+      for (const phrase of phrases(valeur)) {
+        for (const m of phrase.matchAll(/\[([^\]]+)\]\((\/[^)\s]*)\)/g)) {
+          const [, libelle, href] = m;
+          if (href.startsWith("/preuves/") || vus.has(href)) continue;
+          vus.add(href);
+          cartes.push({
+            libelle: libelle.charAt(0).toUpperCase() + libelle.slice(1),
+            href,
+            // La phrase sans son balisage : c'est du texte du corpus, pas une
+            // description écrite pour l'occasion.
+            contexte: debalise(phrase),
+          });
+        }
+      }
+      return;
+    }
+    if (Array.isArray(valeur)) {
+      for (const v of valeur) parcourt(v);
+      return;
+    }
+    if (valeur && typeof valeur === "object") {
+      for (const [cle, v] of Object.entries(valeur)) {
+        // `lienHref` est une cible, pas du texte : la section 08 la rend déjà.
+        if (cle === "lienHref") continue;
+        parcourt(v);
+      }
+    }
+  };
+
+  parcourt(page.contenu?.sections ?? []);
+
+  /* UN CONTEXTE PARTAGÉ NE DIT RIEN. Huit liens d'expertise sont écrits dans la
+     même énumération : la phrase se retrouverait sous huit cartes à l'identique
+     et ne distinguerait aucune des huit. Elle est alors retirée des cartes
+     concernées, et la carte se rend avec son titre et son chemin. Le texte,
+     lui, n'est pas perdu : il reste dans le corps de la page, où il est rendu
+     avec ses liens. */
+  const combien = new Map();
+  for (const c of cartes) combien.set(c.contexte, (combien.get(c.contexte) ?? 0) + 1);
+  return cartes.map(({ libelle, href, contexte }) =>
+    combien.get(contexte) === 1 ? { libelle, href, contexte } : { libelle, href },
+  );
+}
+
+/** Un appel à l'action du corpus, tel que les sections 07 et 10 le prennent. */
+function appel(brut) {
+  if (!brut?.question || !brut?.bouton) return undefined;
+  return {
+    question: brut.question,
+    bouton: brut.bouton,
+    ...(brut.rappel ? { rappel: brut.rappel } : {}),
+  };
+}
+
+/**
+ * Le contenu d'une page, pour les DOUZE sections du gabarit.
+ *
+ *   heros.mecanisme      -> 01, le chapeau sous le H1
+ *   heros.cta            -> 01, le bouton orange (et celui de la section 07)
+ *   heros.telephone      -> 01, 07, 09 et 10, les quatre boutons d'appel
+ *   heros.phraseDelai    -> 01, la ligne à point orange sous le filet
+ *   chiffres.chiffres    -> 01, le panneau « En bref »
+ *   preuves.preuves      -> 08, les cartes ; et 02, les noms du bandeau
+ *   probleme.punchline   -> 03, le H2 (1re phrase) puis le paragraphe
+ *   probleme.puces       -> 03, les cartes en verre de droite
+ *   offre.lignes         -> 04, les rangées du tableau
+ *   offre.prose          -> 04, le pavé de notes sous le tableau
+ *   deroule.etapes       -> 05, la frise numérotée
+ *   garanties.puces      -> 06, les colonnes à filet orange du panneau sombre
+ *   cta                  -> 07, le bandeau orange clair
+ *   objections.questions -> 09, les cartes de questions
+ *   liens du texte       -> Maillage, « Pour aller plus loin »
+ *   ctaFinal             -> 10, le panneau sombre final
+ *
+ * `heros.h1` n'y est pas : il devient le `titre_h1` de la ligne `pages`, et
+ * aurait fait un second H1 dans le contenu.
+ *
+ * LA PHOTO (02, 05, 08, Maillage) et LA RÉASSURANCE n'ont pas de source dans
+ * le corpus : la première reste absente, la seconde est écrite par la maquette
+ * et vit dans le composant.
+ */
+function contenuImplantation(page) {
   const heros = section(page, "heros");
   const chiffres = section(page, "chiffres");
   const probleme = section(page, "probleme");
   const offre = section(page, "offre");
+  const deroule = section(page, "deroule");
   const garanties = section(page, "garanties");
+  const cta = section(page, "cta");
+  const preuves = section(page, "preuves");
   const objections = section(page, "objections");
+  const ctaFinal = section(page, "ctaFinal");
 
-  /* Ce que les cinq sections n'accueillent pas, dans l'ordre du corpus. `offre`
-     y entre SANS sa prose, qui est passée dans « Notre réponse » : le même
-     paragraphe deux fois sur une page, c'est un défaut visible et un doublon
-     pour Google. */
+  const punchline = phrases(probleme?.punchline);
+
+  /* Les noms du bandeau défilant, l. 406 de la maquette : ce sont les clients
+     des références de la page, et rien d'autre. Un libellé qui ne suit pas le
+     motif « Étude de cas NOM : … » ne produit pas de nom. */
+  const logos = [
+    ...new Set(
+      (preuves?.preuves ?? [])
+        .map((p) =>
+          (p.lienLibelle ?? "").replace(/^Étude de cas\s*/, "").split(" : ")[0].trim(),
+        )
+        .filter(Boolean),
+    ),
+  ];
+
+  /* Les sections du corpus que les douze n'accueillent pas. Vide aujourd'hui :
+     le contrôle de complétude ci-dessous le prouve page par page. */
   const reste = [];
-  if (offre && ((offre.lignes ?? []).length > 0 || offre.tableau)) {
-    /* `prose: undefined` disparaît de la sérialisation JSON, si bien que la clé
-       n'arrive jamais en base et que `blocs/Offre.tsx`, qui teste
-       `section.prose?.length`, ne rend rien à sa place. */
-    reste.push({ ...offre, prose: undefined });
-  }
-  for (const type of ["deroule", "cta", "preuves", "ctaFinal"]) {
-    const trouvee = section(page, type);
-    if (trouvee) reste.push(trouvee);
-  }
 
   return {
-    gabarit: "ville",
-    // surtitre : le corpus n'en fournit pas. La maquette y met « Rhône · Grand
-    // Lyon ». Laissé ABSENT, pas deviné depuis le chemin.
+    gabarit: estDept(page.path) ? "departement" : "ville",
+
     chapeau: heros?.mecanisme || undefined,
-    actions: heros?.cta ? [{ libelle: heros.cta, href: ANCRE }] : undefined,
-    // panneauSurtitre et adresse : absents du corpus. La maquette affiche
-    // « Agence de Lyon » et une adresse postale ; une seule des quarante-deux
-    // pages pourrait en porter une vraie, et ce serait celle du siège.
-    /* Le `detail` est repris : quatre pages écrivent « Aucune en Isère, des
-       techniciens qui s'y déplacent » sous leur chiffre « 4 agences ». Sans
-       cette ligne, le chiffre laisse croire à une agence sur place. */
+    action: heros?.cta ? { libelle: heros.cta, href: ANCRE } : undefined,
+    telephone: heros?.telephone || undefined,
+    delai: heros?.phraseDelai || undefined,
     reperes: siRempli(
       (chiffres?.chiffres ?? []).map(({ valeur, libelle, detail }) => ({
         valeur,
@@ -257,82 +356,24 @@ function contenuVille(page, parChemin) {
         ...(detail ? { detail } : {}),
       })),
     ),
-    contact: heros?.phraseDelai || undefined,
-    // constatTitre et reponseTitre : le corpus ne fournit pas de titre court
-    // pour ces deux colonnes. Les surtitres, eux, sont dans le composant.
-    constatTexte: probleme?.punchline || undefined,
-    constatPuces: siRempli(probleme?.puces),
-    reponseTexte: offre?.prose?.[0]?.texte || undefined,
-    reponsePuces: siRempli(garanties?.puces),
-    // faqTitre : `objections.titre` n'est fourni par aucune des 42 pages.
-    faq: siRempli(objections?.questions),
-    autres: siRempli(pastilles(page, VILLES_PASTILLES, parChemin)),
-    reste: siRempli(reste),
-  };
-}
 
-/**
- * Gabarit DÉPARTEMENT, trois sections (maquette 6365 à 6433).
- *
- *   heros.mecanisme     → le chapeau du hero
- *   heros.cta           → le bouton orange du hero
- *   chiffres.chiffres   → les repères du panneau en verre, où la maquette met
- *                         une carte d'agences par `x-import`, qui n'est pas du
- *                         HTML et ne se porte pas
- *   hiérarchie          → « Les autres départements », en pastilles
- *   ctaFinal            → le panneau d'appel final
- *   le reste du corpus  → sous le gabarit, par les blocs déjà portés
- *
- * `communes` reste ABSENT : la maquette liste dix communes couvertes, le corpus
- * n'en fournit la liste sur aucune page. Les déduire d'un paragraphe serait de
- * la donnée inventée, et la section ne se rend donc pas.
- *
- * `enjeux` n'est pas rempli non plus, et ce n'est pas un manque : `isDept` n'a
- * pas de section d'enjeux. C'est `isSecteur` qui en a une.
- *
- * `heros.phraseDelai` n'a pas de case dans ces trois sections, et le gabarit
- * n'en invente pas. Le téléphone, les horaires et le rappel dans l'heure
- * restent sur la page : les sections `cta` et `ctaFinal` les écrivent, et
- * elles sont rendues.
- */
-function contenuDepartement(page, parChemin) {
-  const heros = section(page, "heros");
-  const chiffres = section(page, "chiffres");
-  const ctaFinal = section(page, "ctaFinal");
+    logos: siRempli(logos),
 
-  /* `RepereSecteur` ne porte pas de `detail`, et `PageSecteur` n'est pas
-     modifié pour lui en ajouter un : ce composant appartient au gabarit
-     secteur. Quand un chiffre en écrit un, la section `chiffres` ENTIÈRE part
-     donc dans `reste`, où `blocs/ChiffresCles.tsx` rend valeur, libellé ET
-     détail. Le panneau du hero reste alors vide, et `PageSecteur` fait passer
-     le hero sur une colonne, cas qu'il traite et documente. Perdre la phrase
-     « Aucune en Haute-Savoie, des techniciens qui s'y déplacent » pour garder
-     un panneau serait l'inverse de ce que ce site défend. */
-  const detaille = (chiffres?.chiffres ?? []).some((c) => c.detail);
+    problemeTitre: punchline[0] || undefined,
+    problemeTexte: punchline.slice(1).join(" ") || undefined,
+    problemes: siRempli(probleme?.puces),
 
-  const reste = [];
-  if (detaille && chiffres) reste.push(chiffres);
-  for (const type of ["probleme", "offre", "deroule", "garanties", "cta", "preuves", "objections"]) {
-    const trouvee = section(page, type);
-    if (trouvee) reste.push(trouvee);
-  }
+    offre: siRempli(offre?.lignes),
+    offreNotes: siRempli((offre?.prose ?? []).map((p) => p.texte).filter(Boolean)),
 
-  const autres = pastilles(page, [...DEPARTEMENTS.keys()], parChemin);
+    etapes: siRempli(deroule?.etapes),
+    garanties: siRempli(garanties?.puces),
+    appel: appel(cta),
+    preuves: siRempli(preuves?.preuves),
+    questions: siRempli(objections?.questions),
+    liens: siRempli(liensDuCorpus(page)),
+    appelFinal: appel(ctaFinal),
 
-  return {
-    gabarit: "departement",
-    chapeau: heros?.mecanisme || undefined,
-    actions: heros?.cta ? [{ libelle: heros.cta, href: ANCRE }] : undefined,
-    reperes: detaille
-      ? undefined
-      : siRempli(
-          (chiffres?.chiffres ?? []).map(({ valeur, libelle }) => ({ valeur, libelle })),
-        ),
-    autresSurtitre: autres.length > 0 ? SURTITRE_AUTRES_DEPTS : undefined,
-    autres: siRempli(autres),
-    appelTitre: ctaFinal?.question || undefined,
-    appelTexte: ctaFinal?.rappel || undefined,
-    appelBouton: ctaFinal?.bouton ? { libelle: ctaFinal.bouton, href: ANCRE } : undefined,
     reste: siRempli(reste),
   };
 }
@@ -368,46 +409,35 @@ function chaines(valeur, recues = []) {
  * compare donc les CHAÎNES, pas les champs : peu importe dans quelle case le
  * texte a atterri, il doit y être.
  *
- * TROIS CHAMPS SONT ATTENDUS COMME ABSENTS, et ils sont déclarés, pas tolérés :
+ * UN SEUL CHAMP EST ATTENDU COMME ABSENT, et il est déclaré, pas toléré :
+ * `heros.h1`, qui devient le `titre_h1` de la ligne `pages` et n'a donc rien à
+ * faire dans le `contenu`, où il ferait un second H1.
  *
- *   · `heros.h1`, qui devient le `titre_h1` de la ligne `pages` et n'a donc
- *     rien à faire dans le `contenu` : il y ferait un second H1 ;
- *   · `heros.telephone`, un numéro nu que les sections `cta` et `ctaFinal`
- *     réécrivent dans leur phrase de rappel, elles-mêmes rendues ;
- *   · `heros.phraseDelai`, SUR LES PAGES DE DÉPARTEMENT seulement : les trois
- *     sections de `isDept` n'ont pas de case pour elle. Le téléphone, les
- *     horaires et le rappel dans l'heure restent sur la page, écrits par `cta`.
- *     Les pages de ville, elles, la gardent dans le panneau du hero.
+ * La punchline arrive COUPÉE EN DEUX, H2 puis paragraphe : le contrôle regarde
+ * donc aussi, phrase par phrase, si le texte se retrouve quelque part dans le
+ * produit. Cela laisse passer une coupure, jamais une perte.
  */
-function completude(page, contenu, departement) {
+function completude(page, contenu) {
   const heros = section(page, "heros") ?? {};
-  const attendusAbsents = new Set(
-    [heros.h1, heros.telephone, departement ? heros.phraseDelai : null].filter(Boolean),
-  );
+  const attendusAbsents = new Set([heros.h1].filter(Boolean));
 
   const produites = new Set(chaines(contenu));
-  const manquantes = chaines(page.contenu?.sections ?? []).filter(
-    (texte) => !produites.has(texte) && !attendusAbsents.has(texte),
-  );
+  const produitesDebalisees = chaines(contenu).map(debalise);
+  const toutProduit = produitesDebalisees.join(" | ");
 
-  return manquantes;
+  return chaines(page.contenu?.sections ?? []).filter((texte) => {
+    if (produites.has(texte) || attendusAbsents.has(texte)) return false;
+    const propre = debalise(texte);
+    if (produitesDebalisees.includes(propre)) return false;
+    return !phrases(propre).every((p) => toutProduit.includes(debalise(p)));
+  });
 }
 
 /* ----------------------------------------------------------------- l'écriture */
 
-/* Le mot clé sert aux libellés de pastilles : on le relit avec les pages. */
-const avecCle = await fetch(
-  `${URL_BASE}/rest/v1/pages?select=path,mot_cle_principal&path=like./implantations/*`,
-  { headers: { apikey: CLE, Authorization: `Bearer ${CLE}` } },
-).then((r) => r.json());
-const clesParChemin = new Map(avecCle.map((p) => [p.path, p.mot_cle_principal]));
-for (const page of pages) page.mot_cle_principal = clesParChemin.get(page.path) ?? null;
-
-const parChemin = new Map(pages.map((p) => [p.path, p]));
-
 mkdirSync(SORTIE, { recursive: true });
 
-/** `/implantations/toulouse/gironde/` → `implantations-toulouse-gironde.json` */
+/** `/implantations/toulouse/gironde/` -> `implantations-toulouse-gironde.json` */
 const aplati = (chemin) => `${chemin.replace(/^\/|\/$/g, "").replace(/\//g, "-")}.json`;
 
 let villes = 0;
@@ -415,10 +445,7 @@ let depts = 0;
 const perdus = [];
 
 for (const page of pages) {
-  const departement = estDept(page.path);
-  const contenu = departement
-    ? contenuDepartement(page, parChemin)
-    : contenuVille(page, parChemin);
+  const contenu = contenuImplantation(page);
 
   /* Les clés `undefined` disparaissent de la sérialisation JSON : un champ que
      le corpus ne remplit pas n'arrive donc jamais en base, et le gabarit ne
@@ -433,14 +460,14 @@ for (const page of pages) {
     `${JSON.stringify({ url: page.path, contenu }, null, 2)}\n`,
   );
 
-  const perdues = completude(page, contenu, departement);
-  if (perdues.length > 0) {
-    perdus.push({ chemin: page.path, textes: perdues });
-  }
+  const perdues = completude(page, contenu);
+  if (perdues.length > 0) perdus.push({ chemin: page.path, textes: perdues });
 
-  if (departement) depts += 1;
+  if (estDept(page.path)) depts += 1;
   else villes += 1;
-  console.log(`${page.path.padEnd(58)} ${departement ? "departement" : "ville"}`);
+  console.log(
+    `${page.path.padEnd(58)} ${estDept(page.path) ? "departement" : "ville"}`,
+  );
 }
 
 console.log(

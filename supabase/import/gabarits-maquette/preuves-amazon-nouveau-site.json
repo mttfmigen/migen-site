@@ -1,0 +1,119 @@
+{
+  "url": "/preuves/amazon-nouveau-site/",
+  "h1": "Étude de cas AMAZON : démarrage d'un nouveau site",
+  "contenu": {
+    "gabarit": "fiche",
+    "sections": [
+      {
+        "id": "le-client-et-le-site",
+        "titre": "Le client et le site",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Depuis mai 2024, Migen assure le maintien d'un deuxième centre logistique AMAZON : le site ETZ 2, à Metz. Le dispositif éprouvé sur ORY 4, à Paris, y a été transposé."
+          }
+        ]
+      },
+      {
+        "id": "la-situation",
+        "titre": "La situation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "**Ouvrir un deuxième site avec un prestataire qui découvre le métier, c'est repartir de zéro.** Le temps d'apprentissage se paie en arrêts."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Ce que le nouveau site imposait :"
+          },
+          {
+            "type": "liste",
+            "items": [
+              "**La même exigence de continuité** : Le centre fonctionne sans interruption, comme celui de Paris.",
+              "**Des créneaux courts** : Les opérations doivent tenir dans quelques heures.",
+              "**Une coordination à reconstruire** : Les équipes locales ne sont pas celles d'ORY 4.",
+              "**Aucune marge d'apprentissage** : Le préventif démarre au rythme du site, pas au rythme du prestataire."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-que-nous-avons-mis-en-place",
+        "titre": "Ce que nous avons mis en place",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Un mode opératoire transposé** : La méthode appliquée sur ORY 4 depuis 2022 est reprise sur ETZ 2 dès mai 2024, plutôt que réinventée.",
+              "**Une équipe dédiée au site** : 10 techniciens polyvalents mobilisés ensemble, pour traiter simultanément un grand nombre d'interventions préventives.",
+              "**Un rythme mensuel** : Une semaine d'intervention par mois sur le site de Metz.",
+              "**Une préparation côté client** : Les équipes AMAZON organisent les opérations en amont et assurent la disponibilité des pièces de rechange.",
+              "**Une exécution complète** : Migen prend en charge l'exécution, le contrôle et les tests en série des opérations."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-dispositif",
+        "titre": "Le dispositif",
+        "blocs": [
+          {
+            "type": "tableau",
+            "entetes": [
+              "Élément",
+              "Détail"
+            ],
+            "lignes": [
+              [
+                "Client",
+                "AMAZON"
+              ],
+              [
+                "Site",
+                "Centre logistique ETZ 2, Metz"
+              ],
+              [
+                "Période",
+                "Depuis mai 2024, mission en cours"
+              ],
+              [
+                "Effectif Migen",
+                "10 techniciens polyvalents"
+              ],
+              [
+                "Durée d'intervention",
+                "8 heures"
+              ],
+              [
+                "Fréquence",
+                "1 semaine par mois"
+              ],
+              [
+                "Nature des travaux",
+                "Maintenance préventive, contrôle, tests en série"
+              ],
+              [
+                "Site de référence",
+                "ORY 4, Paris, couvert depuis 2022"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "le-resultat",
+        "titre": "Le résultat",
+        "blocs": [
+          {
+            "type": "liste",
+            "items": [
+              "**Un deuxième site confié** : ETZ 2 rejoint ORY 4. AMAZON travaille désormais avec Migen sur deux centres logistiques.",
+              "**Une opération maîtrisée** : L'organisation et l'entraînement des équipes, prestataires comme clientes, ont rendu maîtrisée une opération délicate.",
+              "**Un risque de défaillance réduit** : La continuité opérationnelle du site est tenue, créneau après créneau."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

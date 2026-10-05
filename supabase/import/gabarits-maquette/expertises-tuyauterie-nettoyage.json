@@ -1,63 +1,16 @@
 {
   "url": "/expertises/tuyauterie/nettoyage/",
   "contenu": {
-    "gabarit": "domaine",
-    "chapeau": "On identifie le dépôt avant de choisir la méthode, puis on rend le réseau à son diamètre utile. Débit mesuré avant, débit mesuré après, procès-verbal remis avant la remise en route.",
-    "boutons": [
+    "gabarit": "specialite",
+    "sections": [
       {
-        "libelle": "Demander un diagnostic d'encrassement"
-      }
-    ],
-    "traitements": [
-      "Un diagnostic d'encrassement avant tout geste",
-      "Un nettoyage chimique quand il est justifié",
-      "Un curage mécanique quand le dépôt est dur",
-      "Un curage haute pression sur les réseaux chargés",
-      "Un nettoyage en place, NEP, sur les process en inox",
-      "Un rinçage, une neutralisation et une passe à blanc",
-      "Une réception écrite avant la remise en route"
-    ],
-    "autres": [
-      {
-        "libelle": "Automatisme industriel",
-        "href": "/expertises/automatisme/"
+        "type": "heros",
+        "h1": "Nettoyage tuyauterie industrielle",
+        "mecanisme": "On identifie le dépôt avant de choisir la méthode, puis on rend le réseau à son diamètre utile. Débit mesuré avant, débit mesuré après, procès-verbal remis avant la remise en route.",
+        "cta": "Demander un diagnostic d'encrassement",
+        "telephone": "04 78 33 72 05",
+        "phraseDelai": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7."
       },
-      {
-        "libelle": "Maintenance électrique industrielle",
-        "href": "/expertises/electrique/"
-      },
-      {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
-      },
-      {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance mécanique",
-        "href": "/expertises/mecanique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Maintenance robotique",
-        "href": "/expertises/robotique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      }
-    ],
-    "cta": {
-      "question": "Besoin que vos lignes retrouvent leur débit avant le prochain arrêt de production ?",
-      "bouton": {
-        "libelle": "Demander un diagnostic d'encrassement"
-      }
-    },
-    "reste": [
       {
         "type": "chiffres",
         "chiffres": [
@@ -265,6 +218,11 @@
             "reponse": "Un nettoyage chimique mal mené est un risque chimique, sur des installations sous pression que vos équipes doivent redémarrer derrière nous. Nos techniciens sont salariés, sélectionnés à 10 % après entretien technique et comportemental, et tenus aux habilitations, à la consignation et au plan de prévention de votre site. La démarche MASE et l'évaluation EcoVadis encadrent nos interventions, attestations transmises avec chaque plan de prévention. C'est un acte de maintenance industrielle, pas une prestation de propreté."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que vos lignes retrouvent leur débit avant le prochain arrêt de production ?",
+        "bouton": "Demander un diagnostic d'encrassement"
       }
     ]
   }

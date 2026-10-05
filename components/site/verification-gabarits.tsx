@@ -96,10 +96,15 @@ const art = renderToStaticMarkup(
 );
 
 assert.equal((art.match(/<h1[\s>]/g) ?? []).length, 1, "l'article doit porter un seul h1");
-// Les sections sont numérotées dans le sommaire ET dans le corps : les deux
-// numérotations doivent concorder, sinon le lecteur perd le fil.
-assert.match(art, /1\. Un/, "la première section doit être numérotée");
-assert.match(art, /3\. Trois/, "la dernière section doit être numérotée");
+/* Les sections sont numérotées dans le sommaire ET dans le corps : les deux
+   numérotations doivent concorder, sinon le lecteur perd le fil.
+
+   SUR DEUX CHIFFRES, « 01 » et non « 1. » : c'est ce qu'écrit le fichier de
+   gabarit du client, « Migen - Gabarit 01 Article.dc.html », rapatrié dans
+   maquette/gabarit-01-article.html. Cette assertion attendait « 1. », héritée
+   d'un portage fait depuis le mauvais fichier de maquette. */
+assert.match(art, /\b01\b/, "la première section doit être numérotée 01");
+assert.match(art, /\b03\b/, "la dernière section doit être numérotée 03");
 assert.match(art, /31 mars 2026/, "la date de publication doit être formatée en français");
 assert.match(art, /8 min de lecture/);
 // Un article sans contexte ne doit pas rendre une ligne de séparateurs vides.

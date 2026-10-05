@@ -1,0 +1,148 @@
+{
+  "url": "/ressources/process/",
+  "source": "dessin : maquette/gabarit-11-sous-rubrique.html. texte : ../migen-refonte/seo/contenus/05-ressources/process.md, via scripts/produit_hub.mjs.",
+  "contenu": {
+    "gabarit": "sousRubrique",
+    "pastille": "Ressources",
+    "chapeau": [
+      {
+        "texte": "Un bon résultat en maintenance vient rarement de la chance : il vient d'une méthode répétable. Ces process ouvrent notre façon de travailler et prolongent le [guide maintenance industrielle](/ressources/) avec le mode d'emploi de nos interventions, étape par étape."
+      }
+    ],
+    "corps": [
+      {
+        "id": "intro",
+        "numero": "01",
+        "titre": "",
+        "blocs": [
+          {
+            "type": "citation",
+            "texte": "Ce sont nos méthodes réelles, celles que suivent nos équipes chez plus de 120 clients. Vous pouvez les reprendre chez vous, ou nous confier leur mise en œuvre."
+          }
+        ]
+      },
+      {
+        "id": "organiser-la-maintenance-au-quotidien",
+        "numero": "02",
+        "titre": "Organiser la maintenance au quotidien",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Le préventif qui tient et l'équipe qui va avec : les deux fondations d'un service fiable."
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "Poser le préventif",
+                "texte": "Le process [gestion de la maintenance préventive](/ressources/process/gestion-maintenance-preventive/) montre comment planifier, exécuter et suivre l'entretien sans qu'il ne saute au premier coup de feu."
+              },
+              {
+                "accroche": "Choisir les bons techniciens",
+                "texte": "Le process [sélection technicien de maintenance](/ressources/process/selection-des-techniciens/) détaille notre filtre, technique et comportemental, qui ne retient que 10 % des candidats."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "securiser-les-moments-critiques",
+        "numero": "03",
+        "titre": "Sécuriser les moments critiques",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Un arrêt de ligne et un chantier à risque se préparent, ils ne s'improvisent pas. Deux process pour les tenir."
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "Préparer un arrêt",
+                "texte": "Le process [préparation arrêt technique](/ressources/process/preparer-un-arret-technique/) cadre le périmètre, le planning et le redémarrage, du J-90 au retour d'expérience."
+              },
+              {
+                "accroche": "Encadrer la coactivité",
+                "texte": "Le process [protocole de sécurité](/ressources/process/protocole-de-securite/) pose le plan de prévention et l'accueil des entreprises extérieures, avant d'ouvrir le chantier."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "reprendre-ou-deleguer",
+        "numero": "04",
+        "titre": "Reprendre ou déléguer",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Ces méthodes ne sont pas des secrets maison. Vous choisissez de les appliquer vous-même ou de nous en confier l'exécution."
+          },
+          {
+            "type": "liste",
+            "items": [
+              {
+                "accroche": "Comme guide interne",
+                "texte": "Chaque process se lit comme un mode opératoire. Votre équipe s'en sert pour cadrer ses propres interventions."
+              },
+              {
+                "accroche": "Comme prestation",
+                "texte": "Nos techniciens appliquent ces mêmes méthodes chez vous, du préventif à l'arrêt technique, avec les comptes rendus qui vont avec."
+              }
+            ]
+          },
+          {
+            "type": "citation",
+            "texte": "Une méthode à mettre en place, un arrêt à préparer ? Nos techniciens interviennent sur site : appelez le 04 78 33 72 05, un chargé d'affaires vous rappelle dans l'heure."
+          },
+          {
+            "type": "citation",
+            "texte": "À lire aussi : [Ressources : Livres blancs](/ressources/livres-blancs/)"
+          },
+          {
+            "type": "citation",
+            "texte": "[Demander un diagnostic maintenance](/contact/)"
+          }
+        ]
+      }
+    ],
+    "liens": [
+      {
+        "titre": "Guide maintenance industrielle",
+        "url": "/ressources/",
+        "extrait": "Un bon résultat en maintenance vient rarement de la chance : il vient d'une méthode répétable. Ces process ouvrent notre façon de travailler et prolongent le guide maintenance industrielle avec le mode d'emploi de nos interventions, étape par étape.",
+        "nature": "Ressource"
+      },
+      {
+        "titre": "Gestion de la maintenance préventive",
+        "url": "/ressources/process/gestion-maintenance-preventive/",
+        "extrait": "Poser le préventif Le process gestion de la maintenance préventive montre comment planifier, exécuter et suivre l'entretien sans qu'il ne saute au premier coup de feu.",
+        "nature": "Ressource"
+      },
+      {
+        "titre": "Sélection technicien de maintenance",
+        "url": "/ressources/process/selection-des-techniciens/",
+        "extrait": "Choisir les bons techniciens Le process sélection technicien de maintenance détaille notre filtre, technique et comportemental, qui ne retient que 10 % des candidats.",
+        "nature": "Ressource"
+      },
+      {
+        "titre": "Préparation arrêt technique",
+        "url": "/ressources/process/preparer-un-arret-technique/",
+        "extrait": "Préparer un arrêt Le process préparation arrêt technique cadre le périmètre, le planning et le redémarrage, du J-90 au retour d'expérience.",
+        "nature": "Ressource"
+      },
+      {
+        "titre": "Protocole de sécurité",
+        "url": "/ressources/process/protocole-de-securite/",
+        "extrait": "Encadrer la coactivité Le process protocole de sécurité pose le plan de prévention et l'accueil des entreprises extérieures, avant d'ouvrir le chantier.",
+        "nature": "Ressource"
+      },
+      {
+        "titre": "Ressources : Livres blancs",
+        "url": "/ressources/livres-blancs/",
+        "extrait": "À lire aussi : Ressources : Livres blancs",
+        "nature": "Ressource"
+      }
+    ]
+  }
+}

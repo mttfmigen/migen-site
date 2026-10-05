@@ -2,61 +2,15 @@
   "url": "/expertises/robotique/",
   "contenu": {
     "gabarit": "domaine",
-    "chapeau": "Un technicien qui traite la mécanique, l'électrique et le programme du même bras, sans attendre le passage du constructeur. Roboticiens ABB et Fanuc, avec les sauvegardes qui restent chez vous.",
-    "boutons": [
+    "sections": [
       {
-        "libelle": "Demander une intervention"
-      }
-    ],
-    "traitements": [
-      "Une recherche de cause racine, pas un échange de pièce",
-      "La révision selon la préconisation constructeur",
-      "Vos robots sauvegardés et datés",
-      "Les organes d'usure suivis dans l'ordre",
-      "Le rétrofit chiffré face au remplacement",
-      "La cellule traitée en entier"
-    ],
-    "autres": [
-      {
-        "libelle": "Automatisme industriel",
-        "href": "/expertises/automatisme/"
+        "type": "heros",
+        "h1": "Maintenance robotique",
+        "mecanisme": "Un technicien qui traite la mécanique, l'électrique et le programme du même bras, sans attendre le passage du constructeur. Roboticiens ABB et Fanuc, avec les sauvegardes qui restent chez vous.",
+        "cta": "Demander une intervention",
+        "telephone": "04 78 33 72 05",
+        "phraseDelai": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 prend le relais la nuit et le week-end."
       },
-      {
-        "libelle": "Maintenance électrique industrielle",
-        "href": "/expertises/electrique/"
-      },
-      {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
-      },
-      {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance mécanique",
-        "href": "/expertises/mecanique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
-      }
-    ],
-    "cta": {
-      "question": "Besoin que vos arrêts de cellule diminuent au lieu d'augmenter cette année ?",
-      "bouton": {
-        "libelle": "Demander une intervention"
-      }
-    },
-    "reste": [
       {
         "type": "chiffres",
         "chiffres": [
@@ -269,6 +223,11 @@
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France partout en France. Une visite annuelle et une priorité en cas de panne n'exigent pas un dispositif plus lourd que nécessaire."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que vos arrêts de cellule diminuent au lieu d'augmenter cette année ?",
+        "bouton": "Demander une intervention"
       }
     ]
   }

@@ -2,62 +2,15 @@
   "url": "/expertises/automatisme/",
   "contenu": {
     "gabarit": "domaine",
-    "chapeau": "Un automaticien branche son ordinateur, lit les registres de l'automate et teste chaque hypothèse au lieu de la deviner. SIEMENS, Schneider, et la reprise du code écrit par quelqu'un d'autre.",
-    "boutons": [
+    "sections": [
       {
-        "libelle": "Demander une intervention"
-      }
-    ],
-    "traitements": [
-      "Un diagnostic qui va à la cause",
-      "Vos automatismes sauvegardés et datés",
-      "La reprise d'un code écrit par un autre prestataire",
-      "L'obsolescence traitée",
-      "L'automatisation industrielle de l'existant améliorée",
-      "Les armoires contrôlées en préventif",
-      "Une expertise alignée sur votre parc"
-    ],
-    "autres": [
-      {
-        "libelle": "Maintenance électrique industrielle",
-        "href": "/expertises/electrique/"
+        "type": "heros",
+        "h1": "Automatisme industriel",
+        "mecanisme": "Un automaticien branche son ordinateur, lit les registres de l'automate et teste chaque hypothèse au lieu de la deviner. SIEMENS, Schneider, et la reprise du code écrit par quelqu'un d'autre.",
+        "cta": "Demander une intervention",
+        "telephone": "04 78 33 72 05",
+        "phraseDelai": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 prend le relais la nuit et le week-end."
       },
-      {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
-      },
-      {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance mécanique",
-        "href": "/expertises/mecanique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Maintenance robotique",
-        "href": "/expertises/robotique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
-      }
-    ],
-    "cta": {
-      "question": "Besoin que quelqu'un sache enfin où se trouve la dernière version de votre programme ?",
-      "bouton": {
-        "libelle": "Demander une intervention"
-      }
-    },
-    "reste": [
       {
         "type": "chiffres",
         "chiffres": [
@@ -271,6 +224,11 @@
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France. Nous maintenons l'existant tant que c'est raisonnable, et nous chiffrons la migration en parallèle."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que quelqu'un sache enfin où se trouve la dernière version de votre programme ?",
+        "bouton": "Demander une intervention"
       }
     ]
   }

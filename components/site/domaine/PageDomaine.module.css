@@ -1,0 +1,133 @@
+/* Survols et replis des gabarits 09 Domaine et 05 Spécialité.
+
+   Rien d'autre n'est ici : un style en ligne ne peut porter ni état ni requête
+   de média, et c'est la seule raison d'être de ce fichier. Les valeurs sont
+   celles du bloc <style> de `maquette/gabarit-09-domaine.html`, classe par
+   classe, et `verification-domaine.tsx` les y relit.
+
+   Le focus est traité avec le survol partout : un visiteur au clavier doit voir
+   la même chose qu'un visiteur à la souris (WCAG 2.4.7). La maquette ne le
+   prévoit pas, le site l'exige. */
+
+/* style-hover="filter:brightness(.93);color:#fff" */
+.boutonPrincipal:hover,
+.boutonPrincipal:focus-visible {
+  filter: brightness(0.93);
+  color: #fff;
+}
+
+/* style-hover="background:#fff" */
+.boutonSecondaire:hover,
+.boutonSecondaire:focus-visible {
+  background: #fff;
+}
+
+/* style-hover="background:rgba(255,255,255,.18);color:#fff" */
+.boutonSombre:hover,
+.boutonSombre:focus-visible {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* style-hover="transform:translateY(-3px)", cartes de maillage */
+.carteLien {
+  transition: transform var(--tr);
+}
+.carteLien:hover,
+.carteLien:focus-visible {
+  transform: translateY(-3px);
+}
+
+/* style-hover="transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(0,0,0,.4)" */
+.carteReference {
+  transition:
+    transform var(--tr),
+    box-shadow var(--tr);
+}
+.carteReference:hover,
+.carteReference:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.4);
+}
+
+/* .g3-marq:hover .g3-track{animation-play-state:paused} : la frise de logos
+   s'arrête au survol, et ne tourne pas du tout si le visiteur a demandé moins
+   d'animation. */
+.frise {
+  overflow: hidden;
+  padding: 18px 0 4px;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+.friseRuban {
+  display: flex;
+  align-items: center;
+  gap: 72px;
+  width: max-content;
+  animation: domaineFrise 40s linear infinite;
+}
+
+.frise:hover .friseRuban {
+  animation-play-state: paused;
+}
+
+@keyframes domaineFrise {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .friseRuban {
+    animation: none;
+  }
+}
+
+/* @media (max-width:900px) de la maquette : .g3-2, .g3-row, .g3-head,
+   .g3-sticky, .g3-tiles */
+@media (max-width: 900px) {
+  .deuxColonnes {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 32px !important;
+  }
+  .ligneOffre {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 10px !important;
+  }
+  .enteteOffre {
+    display: none !important;
+  }
+  .collant {
+    position: static !important;
+  }
+  .tuilePhoto {
+    position: static !important;
+    padding: 14px !important;
+  }
+}
+
+/* @media (max-width:620px) : .g3-3 et .g3-pad */
+@media (max-width: 620px) {
+  .troisColonnes {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .panneauPad {
+    padding: 40px 24px !important;
+  }
+}
