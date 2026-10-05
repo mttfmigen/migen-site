@@ -2,15 +2,62 @@
   "url": "/expertises/electromecanique/",
   "contenu": {
     "gabarit": "domaine",
-    "sections": [
+    "chapeau": "Un seul professionnel qui maîtrise l'entraînement et sa commande, du contacteur jusqu'à l'accouplement. Un déplacement, un diagnostic, une cause écrite.",
+    "boutons": [
       {
-        "type": "heros",
-        "h1": "Électromécanique industrielle",
-        "mecanisme": "Un seul professionnel qui maîtrise l'entraînement et sa commande, du contacteur jusqu'à l'accouplement. Un déplacement, un diagnostic, une cause écrite.",
-        "cta": "Demander une intervention",
-        "telephone": "04 78 33 72 05",
-        "phraseDelai": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 prend le relais la nuit et le week-end."
+        "libelle": "Demander une intervention"
+      }
+    ],
+    "traitements": [
+      "Des motorisations qui tiennent la charge",
+      "Une commande maîtrisée",
+      "Des transmissions fiables",
+      "Une instrumentation juste",
+      "Un préventif réel",
+      "Le rebobinage suivi de bout en bout",
+      "Trois indicateurs relevés avec vous"
+    ],
+    "autres": [
+      {
+        "libelle": "Automatisme industriel",
+        "href": "/expertises/automatisme/"
       },
+      {
+        "libelle": "Maintenance électrique industrielle",
+        "href": "/expertises/electrique/"
+      },
+      {
+        "libelle": "Maintenance hydraulique",
+        "href": "/expertises/hydraulique/"
+      },
+      {
+        "libelle": "Maintenance mécanique",
+        "href": "/expertises/mecanique/"
+      },
+      {
+        "libelle": "Maintenance pneumatique",
+        "href": "/expertises/pneumatique/"
+      },
+      {
+        "libelle": "Maintenance robotique",
+        "href": "/expertises/robotique/"
+      },
+      {
+        "libelle": "Soudure industrielle",
+        "href": "/expertises/soudure/"
+      },
+      {
+        "libelle": "Maintenance tuyauterie industrielle",
+        "href": "/expertises/tuyauterie/"
+      }
+    ],
+    "cta": {
+      "question": "Besoin d'arrêter le ping-pong entre l'électricien et le mécanicien ?",
+      "bouton": {
+        "libelle": "Demander une intervention"
+      }
+    },
+    "reste": [
       {
         "type": "chiffres",
         "chiffres": [
@@ -224,11 +271,6 @@
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France partout en France. Un atelier de dix personnes avec deux machines critiques a autant besoin de fiabilité qu'une grande usine."
           }
         ]
-      },
-      {
-        "type": "ctaFinal",
-        "question": "Besoin d'arrêter le ping-pong entre l'électricien et le mécanicien ?",
-        "bouton": "Demander une intervention"
       }
     ]
   }

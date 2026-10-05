@@ -1,31 +1,24 @@
 /**
- * Forme du contenu des pages MÉTIER et DOMAINE.
+ * Forme du contenu des pages MÉTIER et DOMAINE, troisième gabarit de
+ * `pages.contenu`.
  *
- * DEUX GABARITS, DEUX FICHIERS DE MAQUETTE, ET C'EST LE POINT IMPORTANT.
+ * Porté de la maquette « Migen - Site final.dc.html », lignes 5452 à 5541
+ * (gabarit métier) et 5543 à 5600 (gabarit domaine).
  *
- *   · `gabarit: "metier"` sert `/carriere/<metier>/`, 13 pages, et son dessin
- *     vient de « Migen - Gabarit 07 Metier.dc.html », copié dans
- *     `maquette/gabarit-07-metier.html`.
- *   · `gabarit: "domaine"` sert `/expertises/<domaine>/`, 19 pages, et son
- *     dessin vient d'un AUTRE fichier.
+ * POURQUOI UNE SEULE UNION POUR DEUX GABARITS : les deux pages ont la même
+ * charpente (surtitre, H1, chapeau, deux boutons, un visuel, une ou deux listes,
+ * les autres entrées en pastilles, un appel à l'action en carte de verre) et ne
+ * divergent que sur deux points : la mise en page du héros et du visuel, et la
+ * nature des listes. Deux types jumeaux auraient dérivé l'un de l'autre au
+ * premier ajustement, comme l'ont fait les deux sections d'appel à l'action
+ * avant d'être réunies dans `blocs/Cta.tsx`.
  *
- * LES DEUX ARMES NE PARTAGENT DÉLIBÉRÉMENT PLUS AUCUN CHAMP. Elles en ont
- * longtemps partagé six, sous un `BaseMetier` commun, parce qu'on les croyait
- * jumelles : même surtitre, même H1, même chapeau, deux boutons, un visuel, des
- * pastilles, une carte de fin. C'était faux, et c'est ce qui a fait servir les
- * fiches métier par un dessin qui n'est pas le leur pendant des semaines : le
- * gabarit 07 n'a NI pastilles de compétences, NI carte de fin « ce métier vous
- * manque sur votre site ? » — ce dernier message s'adresse d'ailleurs à un
- * employeur, sur une page que lit un candidat. Il a un sommaire collant, des
- * sections numérotées, une section de questions à part, un maillage en cartes et
- * un panneau « Rejoindre Migen ». Un champ partagé entre deux dessins
- * différents, c'est une invitation à rendre l'un avec l'autre.
+ * Le champ `gabarit` discrimine, exactement comme `ContenuEditorial` porte
+ * `gabarit: "editorial"`. La route `app/[...slug]/page.tsx` tranche dessus.
  *
- * Le champ `gabarit` discrimine. La route `app/[...slug]/page.tsx` tranche
- * dessus, et `PageMetier` aiguille vers l'un ou l'autre rendu.
- *
- * AUCUN CHAMP SPÉCULATIF, et tous optionnels sauf le discriminant : une section
- * que le corpus n'alimente pas ne se rend pas du tout.
+ * AUCUN CHAMP SPÉCULATIF, et tous optionnels sauf le discriminant : le corpus
+ * du site actuel n'écrit pas encore ces pages sous cette forme. Ce qu'il ne
+ * fournit pas se rend vide, jamais rempli au hasard.
  */
 
 import type { Section } from "./contenu";
@@ -45,7 +38,7 @@ export interface BoutonMetier {
   /**
    * Chemin interne ou ancre. Absent, le bouton vise le formulaire de bas de
    * page. Une cible externe est REFUSÉE et le bouton n'est pas rendu : voir
-   * `cible()` dans `components/site/metier/pieces.tsx`.
+   * `cible()` dans `components/site/metier/PageMetier.tsx`.
    */
   href?: string;
 }
@@ -57,82 +50,57 @@ export interface PhotoMetier {
   alt?: string;
 }
 
-/** La carte de verre qui ferme la page de DOMAINE : une question, un rappel. */
+/** La carte de verre qui ferme la page : une question, un rappel, un bouton. */
 export interface CtaMetier {
   question: string;
   rappel?: string;
   bouton: BoutonMetier;
 }
 
-/* ------------------------------------------------------- gabarit 07, métier */
-
-/**
- * Une section numérotée du corps, bornée par un titre de niveau 2 du corpus.
- *
- * `titre` est ABSENT sur la section d'ouverture, celle qui porte ce que le
- * corpus écrit avant son premier `##` et que le chapeau n'a pas pris. La
- * maquette la numérote quand même — elle est « 01 » — mais ne la met pas au
- * sommaire, faute de libellé. Son H2 n'est alors pas rendu du tout : la maquette
- * y laisse un `<h2>` vide, et un titre vide est une faute que les lecteurs
- * d'écran annoncent.
- */
-export interface SectionMetier {
-  titre?: string;
-  /** L'ancre, « s1 » à « sN ». Posée par le script de production. */
-  id: string;
-  /** Le numéro affiché, « 01 » à « NN ». Deux chiffres, comme la maquette. */
-  numero: string;
-  blocs: BlocEditorial[];
-}
-
-/** Une question du corpus et sa réponse. */
-export interface QuestionMetier {
-  question: string;
-  reponse: BlocEditorial[];
-}
-
-/**
- * La section « Questions fréquentes ».
- *
- * `titre` vient du corpus, pas de la maquette : c'est le H2 de la colonne
- * gauche, tandis que le surtitre orange au-dessus est, lui, écrit par la
- * maquette.
- */
-export interface FaqMetier {
-  titre: string;
-  /** Ce que le corpus écrit sous le titre avant la première question. */
-  intro?: BlocEditorial[];
-  questions: QuestionMetier[];
-}
-
-/** Une carte du maillage de bas de page. */
-export interface LienRubrique {
-  libelle: string;
-  /** Chemin interne, tel que le corpus l'écrit. */
-  url: string;
-  /** « Carrière », « Article », « Offre »… déduit du chemin par la maquette. */
-  nature: string;
+interface BaseMetier {
+  chapeau?: string;
+  boutons?: BoutonMetier[];
+  photo?: PhotoMetier;
+  /** « Autres métiers » ou « Les autres domaines », selon le gabarit. */
+  autres?: LienMetier[];
+  cta?: CtaMetier;
 }
 
 export type ContenuMetier =
-  | {
+  | (BaseMetier & {
       gabarit: "metier";
-      /** Les paragraphes du chapeau du héros, dans l'ordre du corpus. */
-      chapo?: string[];
-      /** Les sections numérotées, hors questions fréquentes. */
-      corps?: SectionMetier[];
-      faq?: FaqMetier;
-      /** Le maillage en cartes, « Pour aller plus loin ». */
-      liens?: LienRubrique[];
-    }
-  | {
+      /** Les missions, en liste cochée. */
+      missions?: string[];
+      /** Compétences attendues, en pastilles neutres. */
+      competences?: string[];
+      /** Habilitations utiles, en pastilles orange. */
+      habilitations?: string[];
+      /**
+       * LE RESTE DU CORPUS, rendu sous les sections de la maquette.
+       *
+       * POURQUOI CE CHAMP EXISTE. La maquette ne dessine que quatre sections
+       * pour une fiche métier, 155 mots en tout. Le corpus de ces pages en
+       * porte entre 30 et 76 blocs : diplômes, financement, conditions de
+       * travail, marché de l'emploi, questions fréquentes. C'est du texte
+       * rédigé, relu et payé, et c'est la substance du référencement de la
+       * page. Le réduire aux quatre sections de la maquette supprimerait les
+       * neuf dixièmes de ce qui fait venir le visiteur.
+       *
+       * Il est donc rendu SOUS les sections de la maquette, dans la colonne de
+       * lecture du gabarit article de la maquette (lignes 5759 à 5824), celle
+       * que `components/site/editorial/PageEditoriale.tsx` emploie déjà. La
+       * page reste celle de la maquette et garde tout son texte.
+       *
+       * ET SURTOUT PAS `blocs` : `estEditorial()` ne regarde que la présence de
+       * ce nom, et `app/[...slug]/page.tsx` l'interroge AVANT
+       * `estMetierOuDomaine()`. Un contenu qui porterait `blocs` repartirait
+       * dans le gabarit éditorial, et ces pages ressembleraient encore à ce que
+       * le client a refusé.
+       */
+      corps?: BlocEditorial[];
+    })
+  | (BaseMetier & {
       gabarit: "domaine";
-      chapeau?: string;
-      boutons?: BoutonMetier[];
-      photo?: PhotoMetier;
-      /** « Les autres domaines », en pastilles. */
-      autres?: LienMetier[];
-      cta?: CtaMetier;
       /** « Ce que nous traitons », en liste cochée dans la carte de verre. */
       traitements?: string[];
       /**
@@ -156,7 +124,7 @@ export type ContenuMetier =
        * carte de fin les rendent déjà, et deux `heros` donneraient deux H1.
        */
       reste?: Section[];
-    };
+    });
 
 /**
  * Le contenu est-il une page métier ou domaine ?

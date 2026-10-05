@@ -1,16 +1,63 @@
 {
   "url": "/expertises/robotique/integrateur-robotique/",
   "contenu": {
-    "gabarit": "specialite",
-    "sections": [
+    "gabarit": "domaine",
+    "chapeau": "Nous ne concevons pas la cellule, nous la faisons tourner. Un roboticien vient sur votre site reprendre la mise en service, les réglages et le programme, du bras jusqu'à l'automate de ligne.",
+    "boutons": [
       {
-        "type": "heros",
-        "h1": "Intégrateur robotique",
-        "mecanisme": "Nous ne concevons pas la cellule, nous la faisons tourner. Un roboticien vient sur votre site reprendre la mise en service, les réglages et le programme, du bras jusqu'à l'automate de ligne.",
-        "cta": "Décrire mon projet robotique",
-        "telephone": "04 78 33 72 05",
-        "phraseDelai": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7."
+        "libelle": "Décrire mon projet robotique"
+      }
+    ],
+    "traitements": [
+      "La mise en service accompagnée",
+      "La reprise d'un projet robotique mal terminé",
+      "La recherche de cause racine",
+      "L'optimisation du temps de cycle",
+      "Le préventif écrit, planifié et tracé",
+      "Le système entier, pas le bras seul",
+      "Un compte rendu exploitable à chaque passage"
+    ],
+    "autres": [
+      {
+        "libelle": "Automatisme industriel",
+        "href": "/expertises/automatisme/"
       },
+      {
+        "libelle": "Maintenance électrique industrielle",
+        "href": "/expertises/electrique/"
+      },
+      {
+        "libelle": "Électromécanique industrielle",
+        "href": "/expertises/electromecanique/"
+      },
+      {
+        "libelle": "Maintenance hydraulique",
+        "href": "/expertises/hydraulique/"
+      },
+      {
+        "libelle": "Maintenance mécanique",
+        "href": "/expertises/mecanique/"
+      },
+      {
+        "libelle": "Maintenance pneumatique",
+        "href": "/expertises/pneumatique/"
+      },
+      {
+        "libelle": "Soudure industrielle",
+        "href": "/expertises/soudure/"
+      },
+      {
+        "libelle": "Maintenance tuyauterie industrielle",
+        "href": "/expertises/tuyauterie/"
+      }
+    ],
+    "cta": {
+      "question": "Besoin que votre cellule tienne enfin la cadence prévue au cahier des charges ?",
+      "bouton": {
+        "libelle": "Décrire mon projet robotique"
+      }
+    },
+    "reste": [
       {
         "type": "chiffres",
         "chiffres": [
@@ -224,11 +271,6 @@
             "reponse": "Cela dépend de la durée, du site et des compétences nécessaires. Tout est chiffré sur devis, sans coefficient caché, après un point précis sur votre besoin. Le contrat Zéro arrêt fonctionne par abonnement, avec trois niveaux de couverture, également sur devis. Comparez toujours ce montant à celui d'une seule journée de ligne figée."
           }
         ]
-      },
-      {
-        "type": "ctaFinal",
-        "question": "Besoin que votre cellule tienne enfin la cadence prévue au cahier des charges ?",
-        "bouton": "Décrire mon projet robotique"
       }
     ]
   }

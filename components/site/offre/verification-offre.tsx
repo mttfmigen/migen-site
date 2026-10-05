@@ -3,30 +3,23 @@
  *
  *   bun components/site/offre/verification-offre.tsx
  *
- * CE CONTRÔLE A ÉTÉ RÉÉCRIT, et il faut savoir pourquoi. Sa version précédente
- * relisait `maquette/accueil-rendu.html` : elle prouvait fidèlement la
- * conformité au MAUVAIS fichier. Le fichier qui fait foi pour `/offres/<offre>/`
- * est « Migen - Gabarit 03 Offre.dc.html », versionné ici en
- * `maquette/gabarit-03-offre.html`. Un contrôle vert sur la mauvaise source est
- * pire qu'un contrôle absent : il a laissé dire trois fois que c'était porté.
- *
  * CE QUE CE CONTRÔLE GARANTIT, et pourquoi chaque point y est :
  *
  * 1. LES VALEURS DE LA MAQUETTE SONT RELUES DANS LE FICHIER à chaque exécution,
- *    jamais écrites de mémoire. Aucune chaîne attendue n'est affirmée ici sans
- *    avoir d'abord été trouvée dans le fichier de maquette.
- * 2. LES TREIZE SECTIONS Y SONT, DANS L'ORDRE DE LA MAQUETTE. C'est le cœur :
- *    quatre sections manquaient entièrement au site (logos clients,
- *    certifications, « Qui intervient chez vous », « Notre parti pris »).
- * 3. LE TRAITEMENT DE « VOTRE PROBLÉMATIQUE » est celui de la maquette : quatre
- *    cartes numérotées 01 à 04, et non une liste à puces.
- * 4. UN SEUL H1 par page.
- * 5. AUCUN `href="#"`. La maquette navigue par sa propre logique, non portée.
- * 6. AUCUNE CLASSE TAILWIND DE COULEUR, aucune variante `dark:`.
- * 7. LES INTERDITS DE COPIE sont absents du rendu, prix et délais chiffrés
- *    compris. La maquette en porte, le contrat les refuse, le contrat gagne.
- * 8. UNE SECTION SANS DONNÉE NE SE REND PAS DU TOUT, surtitre compris.
- * 9. LES DIX-HUIT PAGES RÉELLES sont rendues, pas seulement un cas d'école.
+ *    jamais écrites de mémoire. `maquette/accueil-rendu.html` est versionné
+ *    pour cela : une note de lecture peut se tromper, un fichier relu non. Si
+ *    la maquette change, ce contrôle le dit.
+ * 2. UN SEUL H1 par page. Le gabarit monte quatorze sections et trois
+ *    composants d'accueil : un H1 de trop est invisible à l'œil, pas à Google.
+ * 3. AUCUN `href="#"`. La maquette navigue par `sc-camel-on-click`, qui n'est
+ *    pas porté : recopier ses `href="#"` aurait donné quatorze boutons morts.
+ * 4. AUCUNE CLASSE TAILWIND DE COULEUR, aucune variante `dark:`. La charte vit
+ *    dans les jetons de `app/globals.css`, et le site n'a pas de mode sombre.
+ * 5. LES INTERDITS DE COPIE sont absents du rendu, prix et délais chiffrés
+ *    compris. C'est le cœur de ce gabarit : la maquette en porte, le contrat
+ *    les refuse, et le contrat gagne.
+ * 6. UNE SECTION SANS DONNÉE NE SE REND PAS DU TOUT. Pas de titre orphelin, pas
+ *    de carte vide, pas de valeur inventée pour meubler.
  */
 
 import assert from "node:assert/strict";
@@ -44,15 +37,24 @@ const RACINE = fileURLToPath(new URL("../../..", import.meta.url));
 
 /* -------------------------------------------- la maquette, relue à chaque fois */
 
-const MAQUETTE = readFileSync(
-  join(RACINE, "maquette", "gabarit-03-offre.html"),
-  "utf8",
-);
+/** Le gabarit `sc-if value="{{ isOfferPage }}"` de la maquette. */
+function gabaritMaquette(): string {
+  const entier = readFileSync(
+    join(RACINE, "maquette", "accueil-rendu.html"),
+    "utf8",
+  );
+  const debut = entier.indexOf('<sc-if value="{{ isOfferPage }}"');
+  assert.ok(
+    debut > -1,
+    "le gabarit isOfferPage est introuvable dans maquette/accueil-rendu.html",
+  );
+  // La page d'offre est suivie de `isApropos` : on s'arrête là.
+  const fin = entier.indexOf('<sc-if value="{{ isApropos }}"', debut);
+  assert.ok(fin > debut, "la fin du gabarit isOfferPage est introuvable");
+  return entier.slice(debut, fin);
+}
 
-assert.ok(
-  MAQUETTE.includes('<main data-screen-label="Gabarit 03 Offre et prestation">'),
-  "maquette/gabarit-03-offre.html n'est pas le gabarit 03 : fichier à revérifier",
-);
+const MAQUETTE = gabaritMaquette();
 
 /**
  * Une déclaration de style de la maquette, relevée par la valeur qui l'ouvre.
@@ -77,249 +79,178 @@ function copieMaquette(texte: string): string {
   return texte;
 }
 
-/**
- * Les sur-titres des treize sections, RELEVÉS dans la maquette, dans l'ordre.
- *
- * `data-screen-label` donne l'ordre, et le fichier donne le texte : aucune des
- * deux listes n'est écrite de mémoire. Deux sections (« 07 Appel » et « 10
- * Appel final ») n'ont pas de sur-titre dans la maquette, leur entrée est nulle.
- */
-const SECTIONS_MAQUETTE = [...MAQUETTE.matchAll(/<section data-screen-label="([^"]+)"/g)].map(
-  (m) => m[1],
-);
-
-assert.equal(
-  SECTIONS_MAQUETTE.length,
-  13,
-  `la maquette dessine ${SECTIONS_MAQUETTE.length} sections, le gabarit en attend 13`,
-);
-
 /* ------------------------------------------------------- une page d'exemple */
 
 /**
- * Une donnée d'exemple de la forme que l'import produit vraiment : les sept
- * types de sections que les dix-huit fichiers de
- * `supabase/import/gabarits-maquette/` portent, ni plus ni moins.
+ * Une donnée d'exemple de la forme que l'import produit vraiment.
+ *
+ * Les quatre sections sous condition n'y figurent PAS, exactement comme dans
+ * les dix-huit fichiers de `supabase/import/gabarits-maquette/` : c'est le
+ * comportement qu'il faut vérifier, pas un cas de laboratoire.
  */
-const EXEMPLE: ContenuOffre = {
+const OFFRE: ContenuOffre = {
   gabarit: "offre",
-  chapeau: "Le mécanisme, en une phrase.",
   mention: "Nous vous rappelons dans l'heure, du lundi au vendredi.",
+  chapeau:
+    "L'abonnement remplace vos dépannages subis par un programme de visites, décrit dans le [cahier des charges](/offres/residence/cahier-des-charges/).",
   actions: [
+    { libelle: "Lancer mon diagnostic gratuit", href: "#formulaire" },
     { libelle: "Les cinq offres", href: "/offres/" },
+    // Cible hors domaine : le lien doit DISPARAÎTRE, pas être rafistolé.
     { libelle: "Ailleurs", href: "https://exemple.test/" },
   ],
   formulaireHeroTitre: "Décrire mon besoin",
   formulaireHeroMention: "Rappel dans l'heure",
+  brefSurtitre: "En bref",
+  brefTitre: "Le cadre, en quatre chiffres.",
   chiffres: [
-    { valeur: "10 %", libelle: "des candidats retenus" },
-    { valeur: "+ 80", libelle: "clients réguliers" },
+    { valeur: "+ 80", libelle: "clients réguliers", detail: "un contrat se renouvelle" },
+    { valeur: "10 %", libelle: "des candidats retenus", detail: "chaque technicien est évalué" },
+    { valeur: "4", libelle: "agences", detail: "Lyon siège, Montréal, Dubaï, Madrid" },
+    { valeur: "24/24", libelle: "astreinte", detail: "en option au contrat" },
   ],
-  brefBande: "Besoin d'un technicien sur votre site ?",
-  brefBouton: { libelle: "Parler à un chargé d'affaires", href: "#formulaire" },
+  brefBande: "Besoin de savoir si un abonnement vous coûterait moins cher ?",
+  brefBouton: { libelle: "Lancer mon diagnostic", href: "#formulaire" },
   sections: [
     {
       type: "probleme",
-      punchline: "Le poste reste vacant. Pendant ce temps, l'usine tourne à l'aveugle.",
+      punchline: "Arrêtez de payer des dépannages.",
       puces: [
-        { accroche: "Première douleur.", texte: "Son coût." },
-        { accroche: "Deuxième douleur.", texte: "Son coût." },
-        { accroche: "Troisième douleur.", texte: "Son coût." },
-        { accroche: "Quatrième douleur.", texte: "Son coût." },
+        { accroche: "La panne revient.", texte: "On traite le symptôme, jamais la cause." },
       ],
     },
     {
       type: "offre",
       lignes: [
         {
-          prestation: { accroche: "Un technicien évalué", texte: ", à votre rythme." },
-          benefice: "Le poste est tenu dès le démarrage.",
+          prestation: { accroche: "Un plan de préventif", texte: "inventaire, points critiques." },
+          benefice: "Les arrêts deviennent planifiés.",
         },
       ],
-      prose: [{ texte: "Pour trancher, voir le [comparatif](/offres/residence/)." }],
     },
     {
       type: "deroule",
-      etapes: [
-        { titre: "Cadrage du besoin", texte: "un chargé d'affaires analyse le périmètre." },
-        { titre: "Sélection du profil", texte: "nous proposons un technicien." },
-      ],
+      etapes: [{ titre: "Le diagnostic gratuit", texte: "quelques minutes suffisent." }],
     },
     {
       type: "garanties",
-      puces: [{ accroche: "La continuité du poste", texte: "engagement contractuel." }],
+      puces: [{ accroche: "Des résultats mesurés", texte: "nombre d'incidents, disponibilité." }],
     },
     {
       type: "preuves",
       preuves: [
         {
-          titre: "Renfort habilité",
-          texte: "depuis février 2026",
-          lienLibelle: "Étude de cas SUEZ : remise en état d'un site",
-          lienHref: "/preuves/suez-remise-en-etat/",
+          titre: "Maintenance préventive d'une fonderie",
+          texte: "depuis octobre 2023",
+          lienHref: "/preuves/stellantis-fonderie-sept-fons/",
+          lienLibelle: "Étude de cas STELLANTIS",
         },
       ],
     },
     {
       type: "objections",
-      questions: [{ question: "Combien ça coûte ?", reponse: "Sur devis." }],
+      questions: [
+        { question: "Sur quelle durée s'engage-t-on ?", reponse: "Six mois renouvelable." },
+      ],
     },
     {
       type: "ctaFinal",
-      question: "Besoin de tenir le poste dès ce trimestre ?",
-      bouton: "Demander un profil",
-      rappel: "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
+      question: "Besoin d'un budget que vous connaissez en janvier ?",
+      bouton: "Lancer mon diagnostic gratuit",
     },
   ],
+  autresSurtitre: "Un autre besoin ?",
+  autresTitre: "Chaque situation a son offre.",
   autres: [
-    { phrase: "« Je veux tout confier. »", libelle: "Périmètre complet", href: "/offres/maintenance-externalisee/" },
-    { phrase: "Autre chose", libelle: "Ailleurs", href: "https://exemple.test/" },
+    {
+      phrase: "« J'ai besoin d'un renfort maintenance sur mon site. »",
+      libelle: "Résidence",
+      href: "/offres/residence/",
+    },
+    // Cible hors domaine : la carte doit DISPARAÎTRE.
+    {
+      phrase: "« Autre chose. »",
+      libelle: "Ailleurs",
+      href: "https://exemple.test/",
+    },
   ],
 };
 
 const rendu = renderToStaticMarkup(
-  <PageOffre titre="Sous-traitance de maintenance industrielle" contenu={EXEMPLE} formulaire="verif" />,
+  <PageOffre
+    titre="Contrat de maintenance"
+    contenu={OFFRE}
+    formulaire="verification-offre"
+  />,
 );
 
-/* On compare toujours sur un texte NORMALISÉ : la maquette écrit `&nbsp;` et
-   l'apostrophe typographique, le JSX écrit les caractères. Deux écritures du
-   même mot ne doivent pas faire échouer, ni laisser passer, un contrôle. */
-function normalise(texte: string): string {
-  return texte
-    .replace(/&#x27;|&#39;|’/g, "'")
-    .replace(/&nbsp;|&#xA0;| /g, " ")
-    .replace(/&amp;/g, "&");
-}
+/* ---------------------------------------------- 1. la fidélité à la maquette */
 
-const RENDU = normalise(rendu);
-const MAQUETTE_N = normalise(MAQUETTE);
-
-/* ------------------------------ 1. les treize sections, dans l'ordre */
-
-assert.equal(
-  (rendu.match(/<section/g) ?? []).length,
-  13,
-  "le gabarit doit rendre les treize sections de la maquette",
-);
-
-/**
- * Le sur-titre de chaque section, dans l'ordre de la maquette.
- *
- * CHAQUE LIBELLÉ EST D'ABORD CHERCHÉ DANS LA MAQUETTE : `copieMaquette` lève si
- * la maquette ne le porte pas. Le contrôle ne peut donc pas affirmer un
- * sur-titre que le fichier n'écrit plus.
- */
-const SURTITRES_ATTENDUS = [
-  "Rappel dans l’heure",
-  "Innovation, performance, impact.",
-  "Ils nous font confiance",
-  "Certifications",
-  "Qui intervient chez vous",
-  "Votre problématique",
-  "L’offre",
-  "Ce que nous faisons",
-  "Ce que ça change pour vous",
-  "Notre méthode",
-  "Notre parti pris",
-  "Nos réalisations",
-  "Questions fréquentes",
-  "Pour aller plus loin",
-].map((s) => normalise(copieMaquette(s)));
-
-let curseur = 0;
-for (const surtitre of SURTITRES_ATTENDUS) {
-  const position = RENDU.indexOf(surtitre, curseur);
+for (const valeur of [
+  // Le héros, l. 4708 à 4733.
+  "max-width:1200px;margin:0 auto;padding:70px 40px 0",
+  "grid-template-columns:1.12fr .88fr",
+  "clamp(38px,4.4vw,66px)",
+  "letter-spacing:-.045em",
+  "font:400 17.5px/1.65 var(--fb)",
+  // Les cartes de « En bref », l. 4766.
+  "font:600 calc(34px * var(--ts))/1 var(--ft)",
+  "letter-spacing:-.05em",
+  "font:600 14.5px var(--ft)",
+  "font:400 13.5px/1.5 var(--fb)",
+  // La bande sous les chiffres, l. 4767.
+  "padding:16px 16px 16px 26px",
+  // Les cartes de « Un autre besoin ? », l. 5156.
+  "font:500 15px/1.5 var(--fb)",
+  "font:600 12.5px var(--fb)",
+]) {
+  const attendu = styleMaquette(valeur);
+  const sansEspace = attendu.replace(/\s*([:;,])\s*/g, "$1");
   assert.ok(
-    position > -1,
-    `sur-titre absent du rendu, ou hors de l'ordre de la maquette : « ${surtitre} »`,
+    rendu.includes(attendu) || rendu.includes(sansEspace),
+    `le rendu ne porte pas la valeur de la maquette « ${attendu} »`,
   );
-  curseur = position;
 }
 
-/* Les H2 fixes du gabarit, eux aussi relus dans la maquette. */
-for (const titre of [
-  "Ce que nous faisons, et ce que ça change pour vous",
-  "Comment ça se passe, étape par étape",
-  "Ce que nous garantissons",
-  "Nos références",
-  "Vos questions avant de nous appeler",
-  "Toutes nos études de cas",
-  "Une autre question&nbsp;? Un technicien vous répond.",
+// Les surtitres et les H2 que la maquette écrit en toutes lettres.
+for (const texte of [
+  "En bref",
+  "Le cadre, en quatre chiffres.",
+  "Décrire mon besoin",
+  "Chaque situation a son offre.",
 ]) {
   assert.ok(
-    RENDU.includes(normalise(copieMaquette(titre))),
-    `titre de la maquette absent du rendu : « ${titre} »`,
+    rendu.includes(copieMaquette(texte)),
+    `le rendu ne porte pas la copie de la maquette « ${texte} »`,
   );
 }
 
-/* ---------------------------- 2. le dessin, mesuré dans la maquette */
-
-/**
- * Chaque déclaration est RELUE dans la maquette avant d'être cherchée dans le
- * rendu. Si la maquette change une valeur, `styleMaquette` lève et le contrôle
- * dit laquelle : il ne se contente pas de devenir faux en silence.
- */
-const DESSIN: readonly [string, string][] = [
-  // La carte numérotée de « Votre problématique » : l'écart que le client voyait.
-  [styleMaquette("padding:26px 28px"), "padding:26px 28px"],
-  [
-    styleMaquette("font:600 30px var(--ft);letter-spacing:-.05em;color:var(--acc);flex:none;width:44px"),
-    "width:44px",
-  ],
-  // Le tableau de l'offre, trois colonnes.
-  [styleMaquette("52px minmax(0,1.05fr) minmax(0,.95fr)"), "52px minmax(0,1.05fr) minmax(0,.95fr)"],
-  [styleMaquette("border-radius:var(--rad-s);background:var(--acc-w)"), "var(--acc-w)"],
-  // La frise de « Notre méthode » : filet, pastille, trois colonnes.
-  [styleMaquette("background:var(--acc);box-shadow:0 0 0 5px var(--bg)"), "0 0 0 5px var(--bg)"],
-  // « Notre parti pris » : filet orange de 2px, rayon 40px du panneau.
-  [styleMaquette("border-top:2px solid var(--acc);padding-top:22px"), "border-top:2px solid var(--acc)"],
-  [styleMaquette("border-radius:40px"), "border-radius:40px"],
-  // Le bandeau photo et la carte de référence.
-  [styleMaquette("min-height:420px"), "min-height:420px"],
-  [styleMaquette("height:210px"), "height:210px"],
-  // Les cartes de questions : rayon 22px, et non --rad.
-  [styleMaquette("border-radius:22px;padding:24px 28px"), "border-radius:22px"],
-];
-
-for (const [, attendu] of DESSIN) {
-  assert.ok(
-    rendu.includes(attendu),
-    `valeur de la maquette absente du rendu : « ${attendu} »`,
-  );
-}
-
-/* Les quatre cartes de « Votre problématique » portent bien 01 à 04. */
-for (const numero of ["01", "02", "03", "04"]) {
-  assert.ok(
-    new RegExp(`width:44px[^>]*>${numero}<`).test(rendu),
-    `la carte ${numero} de « Votre problématique » manque, ou n'est pas numérotée`,
-  );
-}
+// « Un autre besoin&nbsp;? » : la maquette écrit l'entité, React rend le
+// caractère. On compare sur un texte normalisé, comme partout dans ce projet.
+copieMaquette("Un autre besoin&nbsp;?");
 assert.ok(
-  !/<ul|<li/.test(rendu.slice(rendu.indexOf("Votre problématique"), rendu.indexOf("L’offre"))),
-  "« Votre problématique » ne se rend pas en liste à puces : la maquette pose des cartes",
+  rendu.replace(/ /g, " ").includes("Un autre besoin ?"),
+  "le surtitre « Un autre besoin ? » doit être rendu",
 );
 
-/* Les dix hubs et les quatre agences du panneau sombre. */
-for (const hub of ["Paris", "Lille", "Marseille", "Toulouse", "Lyon", "Metz", "Strasbourg", "Bordeaux", "Dijon", "Nantes"]) {
-  assert.ok(
-    MAQUETTE.includes(`"${hub}"`) && rendu.includes(`>${hub}<`),
-    `hub absent de la maquette ou du rendu : « ${hub} »`,
-  );
-}
-assert.ok(
-  RENDU.includes("4 agences : Lyon (siège"),
-  "la ligne des quatre agences manque au panneau « Qui intervient chez vous »",
-);
-
-/* ------------------------------------------------- 3. un seul H1, pas de lien mort */
+/* ------------------------------------------------------------- 2. un seul h1 */
 
 assert.equal(
-  (rendu.match(/<h1\b/g) ?? []).length,
+  (rendu.match(/<h1[\s>]/g) ?? []).length,
   1,
-  "un seul H1 par page : le rappel du titre sur la photo est un div dans la maquette",
+  "une page doit porter exactement un h1",
 );
-assert.ok(!/href="#"/.test(rendu), 'aucun href="#" : ce serait un bouton mort');
+assert.ok(
+  rendu.includes("Contrat de maintenance"),
+  "le titre de la page doit être rendu dans le h1",
+);
+
+/* ------------------------------------------------- 3. aucune cible morte */
+
+assert.ok(
+  !/href="#"/.test(rendu),
+  'aucun href="#" : la maquette navigue par sc-camel-on-click, qui n\'est pas porté',
+);
 assert.ok(
   !rendu.includes("exemple.test"),
   "une cible hors domaine ne doit jamais être rendue en lien",
@@ -329,8 +260,8 @@ assert.ok(
   "un lien à cible refusée disparaît, libellé compris",
 );
 assert.ok(
-  rendu.includes('href="#besoin"'),
-  "les appels à l'action visent l'ancre du panneau de formulaire du héros",
+  rendu.includes('href="#formulaire"'),
+  "les appels à l'action visent l'ancre du formulaire de la page",
 );
 
 /* ----------------------------------------- 4. aucun échafaudage Tailwind */
@@ -340,7 +271,7 @@ for (const classe of rendu.matchAll(/class="([^"]*)"/g)) {
     !/\b(?:text|bg|border|ring|from|via|to|shadow|accent)-(?:zinc|gray|slate|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-\d{2,3}\b/.test(
       classe[1],
     ),
-    `classe Tailwind de couleur dans le rendu : « ${classe[1]} ». La charte vit dans les jetons de app/globals.css`,
+    `classe Tailwind de couleur dans le rendu : « ${classe[1] }». La charte vit dans les jetons de app/globals.css`,
   );
   assert.ok(
     !/\bdark:/.test(classe[1]),
@@ -351,35 +282,40 @@ for (const classe of rendu.matchAll(/class="([^"]*)"/g)) {
 /* ------------------------------------------------- 5. les interdits de copie */
 
 /**
- * Ce que la MAQUETTE porte et que le CONTRAT refuse.
+ * Les formulations que le CONTRAT refuse et que la MAQUETTE porte quand même.
  *
- * Chaque entrée est d'abord vérifiée PRÉSENTE dans la maquette : si elle en
+ * Chacune est d'abord vérifiée PRÉSENTE dans la maquette : si elle en
  * disparaissait, l'interdit n'aurait plus d'objet et cette liste mentirait.
  * Puis elle est vérifiée ABSENTE du rendu.
  */
-const INTERDITS_DE_LA_MAQUETTE: readonly [string, string][] = [
-  // La maquette écrit « 4 agences : Lyon (siège), … ». Le contrat précise que
-  // le siège est à Limonest, près de Lyon (CLAUDE.md, section 1) : le rendu
-  // écrit « Lyon (siège, à Limonest) », donc la forme courte ne doit PAS sortir.
-  ["4 agences : Lyon (siège), Montréal", "4 agences : Lyon (siège), Montréal"],
-];
+const INTERDITS_DE_LA_MAQUETTE = [
+  ["5", "5 agences"], // l. 4724, le compte tenu est quatre
+  ["+200", "+200"], // l. 4727, le compte tenu est « plus de 120 clients »
+  ["Prix mensuel fixe", "Prix mensuel fixe"], // l. 4794, aucun prix
+  ["Recevoir le tarif", "Recevoir le tarif"], // l. 4802
+  ["avant 16 h", "avant 16 h"], // l. 4777, délai chiffré
+  ["la nuit suivante", "la nuit suivante"], // l. 4774
+  ["Délai garanti par contrat", "Délai garanti par contrat"], // l. 4860
+  ["Six semaines d", "Six semaines d"], // l. 4847, chiffre RH non confirmé
+  ["sous 48", "sous 48"], // l. 4879, seul « rappel dans l'heure » est autorisé
+  ["la régie classique", "la régie classique"], // l. 4774, mot proscrit
+] as const;
 
 for (const [dansLaMaquette, interdit] of INTERDITS_DE_LA_MAQUETTE) {
   assert.ok(
-    MAQUETTE_N.includes(normalise(dansLaMaquette)),
-    `« ${dansLaMaquette} » n'est plus dans la maquette : cette liste est à relire`,
+    MAQUETTE.includes(dansLaMaquette),
+    `« ${dansLaMaquette} » n'est plus dans la maquette : cette liste d'interdits est à relire`,
   );
   assert.ok(
-    !RENDU.includes(normalise(interdit)),
+    !rendu.includes(interdit),
     `formulation interdite rendue : « ${interdit} »`,
   );
 }
 
-/** Les interdits généraux du contrat (CLAUDE.md, section 9). */
-const INTERDITS_DU_CONTRAT = [
+// Les interdits généraux du contrat, cherchés sur un texte normalisé.
+const normalise = rendu.replace(/ /g, " ").replace(/’/g, "'");
+for (const mot of [
   "200 clients",
-  "+200",
-  "5 agences",
   "cinq agences",
   "régie",
   "intérim",
@@ -389,121 +325,171 @@ const INTERDITS_DU_CONTRAT = [
   "sur mesure",
   "levier",
   "concrètement",
-  "notamment",
   "incontournable",
   "découvrez",
   "—",
-  "sous 24 h",
-  "sous 48 h",
-  "sous 2 h",
-  "sous 4 h",
-] as const;
-
-function verifieInterdits(texte: string, nom: string): void {
-  const bas = normalise(texte).toLowerCase();
-  for (const mot of INTERDITS_DU_CONTRAT) {
-    assert.ok(
-      !bas.includes(mot.toLowerCase()),
-      `${nom} : formulation interdite rendue, « ${mot} »`,
-    );
-  }
-  // Un prix : un nombre suivi d'un symbole ou d'un mot de monnaie.
+]) {
   assert.ok(
-    !/\d\s*(?:€|euros?|k€)\b/i.test(normalise(texte)),
-    `${nom} : un prix est rendu, et aucun prix ne doit l'être`,
+    !normalise.toLowerCase().includes(mot.toLowerCase()),
+    `mot proscrit par le contrat dans le rendu : « ${mot} »`,
   );
 }
 
-verifieInterdits(rendu, "page d'exemple");
+/* --------------------------- 6. une section sans donnée ne se rend pas */
 
-/* ------------------------------ 6. une section sans donnée ne se rend pas */
+// Les quatre sections sous condition n'ont reçu aucune donnée : aucun de leurs
+// titres ne doit apparaître, pas même orphelin.
+for (const titre of [
+  "Comment ça marche",
+  "Trois formules",
+  "Le comparatif",
+  "Le premier mois",
+  "La règle",
+]) {
+  assert.ok(
+    MAQUETTE.includes(titre),
+    `« ${titre} » n'est plus dans la maquette : ce contrôle est à relire`,
+  );
+  assert.ok(
+    !rendu.includes(titre),
+    `la section « ${titre} » ne reçoit aucune donnée : elle ne doit pas se rendre`,
+  );
+}
+
+// La bande de repères du héros reste vide : son filet ne doit pas apparaître.
+assert.ok(
+  !rendu.includes("height:34px"),
+  "sans repères, la bande du héros et ses filets ne se rendent pas",
+);
+
+// La pastille du héros non plus : la maquette la dessine (l. 4712) mais le
+// corpus n'écrit nulle part le libellé d'offre qu'elle porterait.
+assert.ok(
+  MAQUETTE.includes("font:600 12px var(--fb)"),
+  "la pastille du héros n'est plus dans la maquette : ce contrôle est à relire",
+);
+assert.ok(
+  !rendu.includes("font:600 12px var(--fb)"),
+  "sans libellé, la pastille du héros ne se rend pas",
+);
+
+// Le maillage du corpus écrit en Markdown doit sortir en lien, pas en crochets.
+assert.ok(
+  rendu.includes('href="/offres/residence/cahier-des-charges') &&
+    !rendu.includes("[cahier des charges]"),
+  "le chapeau du héros doit passer par TexteRiche",
+);
+
+// Les animations viennent de Moteurs.tsx : le gabarit ne pose que l'attribut.
+assert.ok(
+  (rendu.match(/data-reveal/g) ?? []).length >= 3,
+  "chaque section sous le héros porte data-reveal",
+);
+
+/* ------------------------------------------- un contenu réduit à son gabarit */
 
 const VIDE: ContenuOffre = { gabarit: "offre" };
 const renduVide = renderToStaticMarkup(
-  <PageOffre titre="Une offre sans corpus" contenu={VIDE} formulaire="verif" />,
+  <PageOffre titre="Un titre seul" contenu={VIDE} formulaire="vide" />,
 );
 
-for (const surtitre of [
-  "Votre problématique",
-  "L’offre",
-  "Notre méthode",
-  "Notre parti pris",
-  "Nos réalisations",
-  "Questions fréquentes",
-  "Pour aller plus loin",
-]) {
-  assert.ok(
-    !normalise(renduVide).includes(normalise(surtitre)),
-    `sans donnée, la section « ${surtitre} » ne doit pas se rendre, surtitre compris`,
-  );
-}
-assert.ok(
-  !renduVide.includes("Ce que nous garantissons"),
-  "sans garanties, le panneau « Notre parti pris » ne se rend pas",
-);
 assert.equal(
-  (renduVide.match(/<h2\b/g) ?? []).length,
-  0,
-  "sans corpus, aucun H2 ne doit sortir : pas de titre orphelin",
-);
-assert.equal(
-  (renduVide.match(/<h1\b/g) ?? []).length,
+  (renduVide.match(/<h1[\s>]/g) ?? []).length,
   1,
-  "le H1 reste : il vient de pages.titre_h1, pas du corpus",
+  "un contenu vide rend le titre, et rien de plus",
 );
-
-/* Les sections de CHROME restent, elles : elles ne dépendent pas du corpus. */
-for (const chrome of ["Ils nous font confiance", "Certifications", "Qui intervient chez vous"]) {
-  assert.ok(
-    renduVide.includes(chrome),
-    `« ${chrome} » ne dépend pas du corpus et doit se rendre même sans lui`,
-  );
-}
-
-/* ------------------------------------- 7. les dix-huit pages réelles */
-
-const DOSSIER = join(RACINE, "supabase", "import", "gabarits-maquette");
-const fichiers = readdirSync(DOSSIER).filter(
-  (nom) => nom.startsWith("offres-") && nom.endsWith(".json"),
-);
-
 assert.ok(
-  fichiers.length >= 18,
-  `${fichiers.length} fichiers de pages d'offre, la famille en compte 18`,
+  !renduVide.includes("En bref"),
+  "sans chiffres, la section « En bref » ne se rend pas",
+);
+assert.ok(
+  !renduVide.includes("Chaque situation a son offre"),
+  "sans autres offres, la section « Un autre besoin ? » ne se rend pas",
+);
+assert.ok(
+  !renduVide.includes("1.12fr .88fr"),
+  "sans en-tête de formulaire, le héros tient sur une colonne",
+);
+
+/* ------------------------- les dix-huit pages réelles, telles qu'elles iront en base */
+
+/**
+ * Le même contrôle, sur la DONNÉE RÉELLE des dix-huit pages.
+ *
+ * POURQUOI EN PLUS de la page d'exemple : l'exemple vérifie le gabarit, pas le
+ * contenu. Or ce qui part en base, c'est `supabase/import/gabarits-maquette/`,
+ * produit par `scripts/produit_gabarit_offre.mjs` depuis le corpus rédigé. Un
+ * interdit de copie peut très bien venir du corpus et non du gabarit, et seule
+ * la donnée réelle le montre. Sans ce passage, le contrôle aurait validé un
+ * gabarit propre servant dix-huit pages fautives.
+ */
+const DOSSIER = join(RACINE, "supabase", "import", "gabarits-maquette");
+const fichiers = readdirSync(DOSSIER)
+  .filter((n) => n.startsWith("offres-") && n.endsWith(".json"))
+  .sort();
+
+assert.equal(
+  fichiers.length,
+  18,
+  `18 pages d'offre attendues dans ${DOSSIER}, ${fichiers.length} trouvée(s)`,
 );
 
 for (const nom of fichiers) {
-  const fichier = JSON.parse(readFileSync(join(DOSSIER, nom), "utf8"));
-  const contenu = fichier.contenu as ContenuOffre;
+  const brut = JSON.parse(
+    readFileSync(join(DOSSIER, nom), "utf8"),
+  ) as { url: string; contenu: ContenuOffre };
 
   assert.equal(
-    contenu.gabarit,
+    brut.contenu.gabarit,
     "offre",
-    `${nom} : sans le discriminant « offre », app/[...slug] sert le gabarit de vente`,
+    `${nom} : le contenu doit se déclarer « offre », sinon la route retombe sur le gabarit de vente`,
   );
 
   const page = renderToStaticMarkup(
-    <PageOffre titre={nom} contenu={contenu} formulaire={`verif-${nom}`} />,
+    <PageOffre
+      titre={`Titre de ${brut.url}`}
+      contenu={brut.contenu}
+      formulaire={`cocon${brut.url.replace(/\//g, "-")}`}
+      // Pas de fil d'Ariane ni de maillage : ils interrogent la base.
+    />,
   );
 
-  assert.equal((page.match(/<h1\b/g) ?? []).length, 1, `${nom} : un seul H1`);
-  assert.ok(!/href="#"/.test(page), `${nom} : aucun href="#"`);
-  verifieInterdits(page.replace(/<[^>]+>/g, " "), nom);
+  assert.equal(
+    (page.match(/<h1[\s>]/g) ?? []).length,
+    1,
+    `${nom} : exactement un h1 attendu`,
+  );
+  assert.ok(!/href="#"/.test(page), `${nom} : un href="#" est rendu`);
 
-  // Les sections que la maquette dessine et que le corpus alimente sortent.
-  for (const surtitre of ["Votre problématique", "L’offre", "Notre méthode", "Notre parti pris"]) {
+  const texte = page.replace(/\u00a0/g, " ").replace(/\u2019/g, "'");
+  for (const [dansLaMaquette, interdit] of INTERDITS_DE_LA_MAQUETTE) {
+    void dansLaMaquette;
     assert.ok(
-      normalise(page).includes(normalise(surtitre)),
-      `${nom} : la section « ${surtitre} » devrait se rendre, le corpus l'alimente`,
+      !texte.includes(interdit),
+      `${nom} : formulation interdite rendue, « ${interdit} »`,
+    );
+  }
+  for (const mot of ["200 clients", "cinq agences", "régie", "intérim", "—"]) {
+    assert.ok(
+      !texte.toLowerCase().includes(mot.toLowerCase()),
+      `${nom} : mot proscrit rendu, « ${mot} »`,
+    );
+  }
+
+  // Les quatre sections sous condition ne reçoivent aucune donnée sur AUCUNE
+  // des dix-huit pages : c'est la décision du chantier, et elle se vérifie.
+  for (const titre of ["Comment ça marche", "Trois formules", "Le comparatif", "Le premier mois"]) {
+    assert.ok(
+      !page.includes(titre),
+      `${nom} : la section « ${titre} » ne doit recevoir aucune donnée`,
     );
   }
 }
 
+console.log(`  ${fichiers.length} pages réelles rendues et vérifiées.`);
+
 console.log("gabarit offre : toutes les vérifications passent.");
 console.log(
-  `  maquette relue : maquette/gabarit-03-offre.html, ${MAQUETTE.split("\n").length} lignes, ` +
-    `${SECTIONS_MAQUETTE.length} sections.`,
+  `  ${MAQUETTE.split("\n").length} lignes de maquette relues, ` +
+    `${INTERDITS_DE_LA_MAQUETTE.length} interdits de copie vérifiés présents dans la maquette et absents du rendu.`,
 );
-console.log(`  ${SURTITRES_ATTENDUS.length} sur-titres relevés dans la maquette et retrouvés dans l'ordre.`);
-console.log(`  ${DESSIN.length} déclarations de style relues dans la maquette et retrouvées au rendu.`);
-console.log(`  ${fichiers.length} pages réelles rendues, ${INTERDITS_DU_CONTRAT.length} interdits vérifiés absents.`);

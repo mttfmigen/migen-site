@@ -1,24 +1,52 @@
-import Image from "next/image";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 
 import { FormulaireContact } from "@/components/formulaire/FormulaireContact";
-import CertificationsRse from "@/components/site/accueil/CertificationsRse";
-import MarqueeClients from "@/components/site/accueil/MarqueeClients";
+import AvantApresBascule from "@/components/site/accueil/AvantApresBascule";
+import {
+  VUE_AVANT,
+  VUE_AVEC,
+} from "@/components/site/accueil/avant-apres-donnees";
+import FormulaireBasDePage from "@/components/site/accueil/FormulaireBasDePage";
+import MethodeQuatreEtapes from "@/components/site/accueil/MethodeQuatreEtapes";
+import { ETAPES_METHODE } from "@/components/site/accueil/methode-etapes-donnees";
+import ProcessSelection from "@/components/site/accueil/ProcessSelection";
+import Bloc from "@/components/site/blocs/Bloc";
+import {
+  CHAPEAU,
+  colonnes,
+  ENTETE,
+  LARGEUR,
+  SECTION,
+  TITRE2,
+} from "@/components/site/blocs/habillage";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
-import { TELEPHONE_SITE } from "@/components/site/entete-donnees";
 import type { Section, TypeSection } from "@/types/contenu";
 import type { ContenuOffre } from "@/types/offre";
 
 import {
+  CommentCaMarche,
+  Comparatif,
+  Formules,
+  PremierMois,
+} from "./BlocsZeroArret";
+import { cibleSure, liensSurs } from "./LiensOffre";
+import {
+  BANDE,
+  BANDE_BOUTON,
+  BANDE_TEXTE,
+  BOUTON_HERO,
+  CARTE_AUTRE,
+  CARTE_AUTRE_LIBELLE,
+  CARTE_AUTRE_PHRASE,
+  CARTE_CHIFFRE,
   CHAPEAU_HERO,
-  CHIFFRE_HERO_FILET,
-  CHIFFRE_HERO_LIBELLE,
-  CHIFFRE_HERO_VALEUR,
-  COPIE,
-  FIL_ARIANE,
-  grilleChiffresHero,
+  CHIFFRE_DETAIL,
+  CHIFFRE_LIBELLE,
+  CHIFFRE_VALEUR,
   HERO,
+  HERO_BANDE_REPERES,
+  HERO_FILET,
   HERO_FORMULAIRE_ENTETE,
   HERO_FORMULAIRE_MENTION,
   HERO_FORMULAIRE_TITRE,
@@ -26,100 +54,59 @@ import {
   HERO_PANNEAU_FORMULAIRE,
   HERO_RANGEE_BOUTONS,
   HERO_RANGEE_PASTILLE,
-  LIEN_TELEPHONE_HERO,
+  HERO_REPERE_LIBELLE,
+  HERO_REPERE_VALEUR,
+  MENTION,
   PASTILLE,
   PASTILLE_PUCE,
-  PHOTO_BANDEAU,
-  PHOTO_BASELINE,
-  PHOTO_CADRE,
-  PHOTO_IMAGE,
-  PHOTO_PIED,
-  PHOTO_SECTION,
-  PHOTO_SIGNATURE,
-  PHOTO_TITRE,
-  PHOTO_VOILE,
-  PHRASE_DELAI,
-  REASSURANCE_GRILLE,
+  SURTITRE_OFFRE,
   TITRE1,
 } from "./habillage-offre";
-import { cibleSure, liensSurs } from "./LiensOffre";
+
 import styles from "./PageOffre.module.css";
-import PanneauQuiIntervient from "./PanneauQuiIntervient";
-import {
-  SectionGarantiesGabarit,
-  SectionMethodeGabarit,
-  SectionOffreGabarit,
-  SectionProblemeGabarit,
-} from "./SectionsOffre";
-import {
-  SectionAppelGabarit,
-  SectionFinaleGabarit,
-  SectionMaillageGabarit,
-  SectionQuestionsGabarit,
-  SectionReferencesGabarit,
-} from "./SectionsPreuve";
 
 /**
- * Gabarit OFFRE, porté de « Migen - Gabarit 03 Offre.dc.html », dont la copie
- * versionnée est `maquette/gabarit-03-offre.html`.
+ * Gabarit OFFRE, porté de la maquette `maquette/accueil-rendu.html`,
+ * lignes 4706 à 5198 (`sc-if value="{{ isOfferPage }}"`).
  *
- * CE FICHIER A ÉTÉ RÉÉCRIT, ET IL FAUT SAVOIR POURQUOI. Sa première version
- * était portée de « Migen - Site final.dc.html », que le client avait envoyé par
- * message. Personne n'a listé les fichiers du projet Claude Design : il contient
- * ONZE GABARITS DÉDIÉS, bien plus riches, et c'est le gabarit 03 qui fait foi
- * pour `/offres/<offre>/`. Le client a dit trois fois « les pages offres ne
- * ressemblent toujours pas ». Il avait raison, et la cause n'était pas le
- * portage : c'était le fichier lu.
+ * LES QUATORZE SECTIONS DE LA MAQUETTE, ET CE QUI LES ALIMENTE. La maquette
+ * dessine, le corpus rédigé écrit. Rien ne s'invente : une section dont le
+ * corpus ne fournit pas la matière n'est pas rendue.
  *
- * CE QUI MANQUAIT, et que ce fichier ajoute :
- *   · le bandeau photo pleine largeur sous le héros ;
- *   · le bandeau de logos clients, « Ils nous font confiance » ;
- *   · la section de réassurance, certifications et « Qui intervient chez vous » ;
- *   · le panneau « Notre parti pris ».
- * CE QUI ÉTAIT FAUX : « Votre problématique » sortait en liste à puces sur
- * panneau sombre, quand la maquette pose quatre cartes en verre numérotées.
+ *  1. Le héros à deux colonnes          ← `heros` du corpus, aplati dans les
+ *                                          champs du gabarit par l'import
+ *  2. « En bref », quatre chiffres      ← `chiffres`
+ *  3. « Comment ça marche »             ← VIDE, voir `BlocsZeroArret.tsx`
+ *  4. « Les formules »                  ← VIDE, voir `BlocsZeroArret.tsx`
+ *  5. « Le comparatif »                 ← VIDE, voir `BlocsZeroArret.tsx`
+ *  6. « Le premier mois »               ← VIDE, voir `BlocsZeroArret.tsx`
+ *  7. « Le jour et la nuit »            ← `AvantApresBascule` et ses données,
+ *                                          déjà portées, communes au site
+ *  8. « Ce qui est inclus »             ← `offre`, rendu par le bloc `Offre`
+ *  9. « Notre méthode »                 ← `MethodeQuatreEtapes`, déjà porté
+ * 10. « Notre sélection »               ← `ProcessSelection`, déjà porté
+ * 11. « Nos dernières réalisations »    ← `preuves`, rendu par le bloc `Preuves`
+ * 12. « Questions fréquentes »          ← `objections`, bloc `Objections`
+ * 13. « Un autre besoin ? »             ← `autres`, puis le maillage du cocon
+ * 14. Le formulaire de bas de page      ← `ctaFinal`
  *
- * LES TREIZE SECTIONS DE LA MAQUETTE, ET CE QUI LES ALIMENTE. Le dessin vient de
- * la maquette, le texte vient du corpus, rien ne s'invente. Une section dont le
- * corpus ne fournit pas la matière n'est pas rendue du tout, surtitre compris.
+ * LE TEXTE DU CORPUS QUE LA MAQUETTE NE MONTRE PAS N'EST PAS SUPPRIMÉ. Quatre
+ * sections du corpus (`probleme`, `deroule`, `garanties`, `cta`) sont du texte
+ * payé, et la substance du référencement de ces pages. Elles se rendent SOUS la
+ * section de la maquette à laquelle elles se rattachent, dans les motifs de
+ * section de la maquette elle-même (mêmes surtitres en capitales, mêmes H2,
+ * mêmes cartes en verre), par les blocs de `components/site/blocs/` :
  *
- *   1. « 01 Héros »        ← `chapeau`, `chiffres`, `mention`, `actions`,
- *                             `formulaireHeroTitre`, et le H1 de la page
- *   2. « 02 Photo »        ← visuel de site, `/assets/web/team-grind-sparks.jpg`
- *   3. « 02 Logos »        ← `accueil/MarqueeClients`, importé
- *   4. « Réassurance »     ← `accueil/CertificationsRse` à gauche,
- *                             `PanneauQuiIntervient` à droite
- *   5. « 03 Problème »     ← section `probleme` du corpus
- *   6. « 04 Offre »        ← section `offre`
- *   7. « 05 Déroulé »      ← section `deroule`
- *   8. « 06 Garanties »    ← section `garanties`
- *   9. « 07 Appel »        ← `brefBande` et `brefBouton`, l'appel de milieu
- *                             de page du corpus
- *  10. « 08 Références »   ← section `preuves`
- *  11. « 09 Questions »    ← section `objections`
- *  12. « Maillage »        ← `autres`, la grille curée du cocon
- *  13. « 10 Appel final »  ← section `ctaFinal`
+ *   · `probleme` juste sous « Le jour et la nuit » : la bascule montre l'avant,
+ *     le panneau anthracite du problème le nomme.
+ *   · `deroule`, `garanties` et `cta` juste sous « Ce qui est inclus » : le
+ *     visiteur vient de lire la prestation, il lit ensuite comment elle se
+ *     déroule, ce qui est garanti, et il trouve l'appel.
  *
- * AUCUNE SECTION DU CORPUS N'EST PERDUE. Les sept types que les dix-huit pages
- * portent (`probleme`, `offre`, `deroule`, `garanties`, `preuves`, `objections`,
- * `ctaFinal`) trouvent tous leur place dans le dessin du gabarit 03. C'est un
- * changement par rapport à la version précédente, qui devait en reléguer quatre
- * sous les sections de la maquette faute d'emplacement : le gabarit dédié en a
- * un pour chacune.
- *
- * CE QUE LE GABARIT 03 NE DESSINE PAS, et qui n'est donc pas rendu : les
- * ÉTIQUETTES de sections que ce gabarit ne porte pas. `brefSurtitre` (« En
- * bref »), `brefTitre` (« Le cadre, en quatre chiffres. »), `brefChapeau`,
- * `autresSurtitre` (« Un autre besoin ? ») et `autresTitre` (« Chaque situation
- * a son offre. ») nommaient des sections d'un AUTRE dessin. Les chiffres qu'ils
- * annonçaient sont dans la bande du héros, sans titre, et les cartes qu'ils
- * annonçaient sont « Pour aller plus loin ». Ce sont des étiquettes de dessin,
- * pas du corps de texte : le gabarit en pose les siennes. Réserve suivie dans
- * `docs/RESERVES-CONTENU.md`.
- *
- * Composant SERVEUR. Les révélations au défilement sont posées en `data-reveal`
- * et animées par `components/site/Moteurs.tsx`, monté une fois dans la mise en
- * page racine.
+ * Composant SERVEUR. Les trois blocs d'accueil qu'il monte sont des composants
+ * client (bascule, étapes, sélection) : ils portent leur propre `"use client"`.
+ * Les révélations au défilement sont posées en `data-reveal` et animées par
+ * `components/site/Moteurs.tsx`, monté une fois dans la mise en page racine.
  */
 
 export interface ProprietesPageOffre {
@@ -134,15 +121,18 @@ export interface ProprietesPageOffre {
    * POURQUOI EN PROPS : ce sont des composants serveur ASYNCHRONES qui
    * interrogent la base. Les appeler ici rendrait ce gabarit asynchrone à son
    * tour pour deux éléments de chrome, et il ne serait plus montable hors base.
-   *
-   * Le fil remplace celui de la maquette (« Accueil / Nos offres / le H1 »),
-   * qui est posé en repli quand la page n'en fournit pas.
    */
   filAriane?: ReactNode;
   maillage?: ReactNode;
 }
 
-/** La section du corpus de ce type, s'il y en a une. */
+/**
+ * La section du corpus de ce type, s'il y en a une.
+ *
+ * Le gabarit place les sections par TYPE et non dans l'ordre du tableau : la
+ * maquette donne un emplacement précis à chacune, et cet ordre n'est pas celui
+ * du corpus. Une section absente rend `undefined`, et rien ne s'affiche.
+ */
 function sectionDeType<T extends TypeSection>(
   sections: readonly Section[],
   type: T,
@@ -160,6 +150,7 @@ export default function PageOffre({
   maillage,
 }: ProprietesPageOffre) {
   const actions = liensSurs(contenu.actions ?? []);
+  const reperes = contenu.reperes ?? [];
   const chiffres = contenu.chiffres ?? [];
   const sections = contenu.sections ?? [];
   const autres = (contenu.autres ?? []).filter(
@@ -170,6 +161,7 @@ export default function PageOffre({
   const offre = sectionDeType(sections, "offre");
   const deroule = sectionDeType(sections, "deroule");
   const garanties = sectionDeType(sections, "garanties");
+  const cta = sectionDeType(sections, "cta");
   const preuves = sectionDeType(sections, "preuves");
   const objections = sectionDeType(sections, "objections");
   const ctaFinal = sectionDeType(sections, "ctaFinal");
@@ -179,34 +171,23 @@ export default function PageOffre({
   // en verre là, et un panneau vide vaudrait aveu.
   const heroFormulaire = !!contenu.formulaireHeroTitre;
 
+  const bandeBref = contenu.brefBande;
+  const boutonBref = contenu.brefBouton;
+
   return (
     <div className="mg-site">
-      {/* `paddingTop` : l'en-tête du site est en `position:sticky`, comme dans
-          la maquette, et le héros ouvre juste dessous. */}
       <main style={{ paddingTop: 96 }}>
-        {/* --------------------------------------------- 1. « 01 Héros » */}
+        {filAriane ? (
+          <section
+            style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 40px 0" }}
+          >
+            {filAriane}
+          </section>
+        ) : null}
+
+        {/* ----------------------------------------- 1. le héros (l. 4708) */}
 
         <section style={HERO}>
-          <div style={FIL_ARIANE}>
-            {filAriane ?? (
-              <>
-                <Link href="/" prefetch={false} style={{ color: "var(--ink4)" }}>
-                  {COPIE.filAccueil}
-                </Link>
-                <span aria-hidden="true">/</span>
-                <Link
-                  href="/offres/"
-                  prefetch={false}
-                  style={{ color: "var(--ink4)" }}
-                >
-                  {COPIE.filOffres}
-                </Link>
-                <span aria-hidden="true">/</span>
-                <span style={{ color: "var(--ink1)" }}>{titre}</span>
-              </>
-            )}
-          </div>
-
           <div
             className="mg-r2"
             style={{
@@ -219,12 +200,19 @@ export default function PageOffre({
             }}
           >
             <div>
-              <div style={HERO_RANGEE_PASTILLE}>
-                <span style={PASTILLE}>
-                  <span aria-hidden="true" style={PASTILLE_PUCE} />
-                  {COPIE.pastilleHero}
-                </span>
-              </div>
+              {contenu.pastille || contenu.mention ? (
+                <div style={HERO_RANGEE_PASTILLE}>
+                  {contenu.pastille ? (
+                    <span style={PASTILLE}>
+                      <span aria-hidden="true" style={PASTILLE_PUCE} />
+                      {contenu.pastille}
+                    </span>
+                  ) : null}
+                  {contenu.mention ? (
+                    <span style={MENTION}>{contenu.mention}</span>
+                  ) : null}
+                </div>
+              ) : null}
 
               <h1 style={TITRE1}>{titre}</h1>
 
@@ -234,81 +222,43 @@ export default function PageOffre({
                 </p>
               ) : null}
 
-              <div style={HERO_RANGEE_BOUTONS}>
-                {/*
-                  Le bouton orange de la maquette vise son panneau de
-                  formulaire. Les boutons du corpus (« Les cinq offres ») le
-                  suivent, en lien de texte : deux boutons pleins côte à côte
-                  mettent le visiteur devant deux actions de même poids.
-                */}
-                {heroFormulaire ? (
-                  <a
-                    href="#besoin"
-                    className={styles.boutonPrincipal}
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 9,
-                      padding: "15px 26px",
-                      borderRadius: 999,
-                      background: "var(--acc)",
-                      color: "#fff",
-                      font: "600 15px var(--fb)",
-                      boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",
-                      transition: "filter var(--tr),transform var(--tr)",
-                    }}
-                  >
-                    {contenu.formulaireHeroTitre}
-                  </a>
-                ) : null}
-                <a
-                  href={TELEPHONE_SITE.href}
-                  className={styles.lienTelephone}
-                  style={LIEN_TELEPHONE_HERO}
-                >
-                  {TELEPHONE_SITE.affichage}
-                </a>
-                {actions.map((action) => (
-                  <Link
-                    key={action.href}
-                    href={action.href}
-                    prefetch={false}
-                    className={styles.lienTelephone}
-                    style={LIEN_TELEPHONE_HERO}
-                  >
-                    {action.libelle}
-                  </Link>
-                ))}
-              </div>
-
-              {/*
-                LA BANDE DE CHIFFRES DU HÉROS, et non une section « En bref »
-                plus bas. Le gabarit 03 met les chiffres du corpus ici, séparés
-                par des filets verticaux, sous les boutons. La version
-                précédente en faisait une section de cartes : c'est le dessin
-                d'un autre fichier de maquette.
-              */}
-              {chiffres.length > 0 ? (
-                <div
-                  className="g3-hs"
-                  style={grilleChiffresHero(chiffres.length)}
-                >
-                  {chiffres.map((chiffre, rang) => (
-                    <div
-                      key={`${chiffre.valeur}-${chiffre.libelle}`}
-                      style={rang > 0 ? CHIFFRE_HERO_FILET : undefined}
+              {actions.length > 0 ? (
+                <div style={HERO_RANGEE_BOUTONS}>
+                  {actions.map((action) => (
+                    <Link
+                      key={action.href}
+                      href={action.href}
+                      prefetch={false}
+                      className={styles.boutonSecondaire}
+                      style={BOUTON_HERO}
                     >
-                      <div style={CHIFFRE_HERO_VALEUR}>{chiffre.valeur}</div>
-                      <div style={CHIFFRE_HERO_LIBELLE}>{chiffre.libelle}</div>
-                    </div>
+                      {action.libelle}
+                    </Link>
                   ))}
                 </div>
               ) : null}
 
-              {contenu.mention ? (
-                <p style={PHRASE_DELAI}>
-                  <TexteRiche texte={contenu.mention} />
-                </p>
+              {/*
+                La bande de repères de la maquette (l. 4723). Elle reste vide :
+                la maquette y écrit « 5 agences en France » et « +200 clients
+                industriels », deux chiffres que le contrat interdit. Les
+                chiffres justes du corpus sont la bande « En bref » juste
+                dessous. Voir `types/offre.ts`, champ `reperes`.
+              */}
+              {reperes.length > 0 ? (
+                <div style={HERO_BANDE_REPERES}>
+                  {reperes.map((repere, rang) => (
+                    <Fragment key={`${repere.valeur}-${repere.libelle}`}>
+                      {rang > 0 ? (
+                        <span aria-hidden="true" style={HERO_FILET} />
+                      ) : null}
+                      <div>
+                        <div style={HERO_REPERE_VALEUR}>{repere.valeur}</div>
+                        <div style={HERO_REPERE_LIBELLE}>{repere.libelle}</div>
+                      </div>
+                    </Fragment>
+                  ))}
+                </div>
               ) : null}
             </div>
 
@@ -318,16 +268,11 @@ export default function PageOffre({
                   <div style={HERO_FORMULAIRE_TITRE}>
                     {contenu.formulaireHeroTitre}
                   </div>
-                  {/*
-                    « Rappel dans l'heure », le SEUL délai que le contrat
-                    autorise. La maquette l'écrit en dur ; le corpus l'écrit
-                    aussi dans `formulaireHeroMention`. On prend le corpus quand
-                    il est là, et la maquette sinon : les deux disent la même
-                    chose, et une page sans mention n'a pas à perdre l'étiquette.
-                  */}
-                  <div style={HERO_FORMULAIRE_MENTION}>
-                    {contenu.formulaireHeroMention ?? COPIE.mentionRappel}
-                  </div>
+                  {contenu.formulaireHeroMention ? (
+                    <div style={HERO_FORMULAIRE_MENTION}>
+                      {contenu.formulaireHeroMention}
+                    </div>
+                  ) : null}
                 </div>
                 {/*
                   Le même formulaire qu'en bas de page, avec un identifiant
@@ -341,124 +286,217 @@ export default function PageOffre({
           </div>
         </section>
 
-        {/* --------------------------------------------- 2. « 02 Photo » */}
+        {/* ----------------------------------- 2. « En bref » (l. 4762) */}
 
-        {/*
-          Le bandeau photo pleine largeur. Il manquait entièrement.
+        {chiffres.length > 0 ? (
+          <section style={SECTION}>
+            <div style={LARGEUR}>
+              <div data-reveal="">
+                {contenu.brefSurtitre || contenu.brefTitre ? (
+                  <div className="mg-r2" style={ENTETE}>
+                    <div>
+                      {contenu.brefSurtitre ? (
+                        <div style={SURTITRE_OFFRE}>{contenu.brefSurtitre}</div>
+                      ) : null}
+                      {contenu.brefTitre ? (
+                        <h2 style={TITRE2}>{contenu.brefTitre}</h2>
+                      ) : null}
+                    </div>
+                    {contenu.brefChapeau ? (
+                      <p style={CHAPEAU}>
+                        <TexteRiche texte={contenu.brefChapeau} />
+                      </p>
+                    ) : null}
+                  </div>
+                ) : null}
 
-          L'IMAGE EST UN VISUEL DE SITE, pas du corpus : la maquette la nomme
-          elle-même (`assets/web/team-grind-sparks.jpg`) et le fichier est déjà
-          dans `public/`. Le corpus ne porte aucune image et n'en porte pas la
-          charge.
+                <div
+                  className="mg-rmulti"
+                  // La maquette en pose quatre. Au-delà la grille boucle, en
+                  // deçà elle se resserre : pas de colonne vide en bout.
+                  style={colonnes(Math.min(chiffres.length, 4))}
+                >
+                  {chiffres.map((chiffre) => (
+                    <div
+                      key={`${chiffre.valeur}-${chiffre.libelle}`}
+                      style={CARTE_CHIFFRE}
+                    >
+                      <div style={CHIFFRE_VALEUR}>{chiffre.valeur}</div>
+                      <div style={CHIFFRE_LIBELLE}>{chiffre.libelle}</div>
+                      {chiffre.detail ? (
+                        <div style={CHIFFRE_DETAIL}>
+                          <TexteRiche texte={chiffre.detail} />
+                        </div>
+                      ) : null}
+                    </div>
+                  ))}
+                </div>
 
-          `priority` : c'est la plus grande image au-dessus de la ligne de
-          flottaison sur un écran court, donc le LCP probable.
-        */}
-        <section style={PHOTO_SECTION}>
-          <div style={PHOTO_CADRE}>
-            <Image
-              src={PHOTO_BANDEAU}
-              alt={COPIE.photoAlt}
-              width={1200}
-              height={420}
-              priority
-              sizes="(max-width: 1240px) 100vw, 1120px"
-              style={PHOTO_IMAGE}
-            />
-            <div aria-hidden="true" style={PHOTO_VOILE} />
-            <div style={PHOTO_SIGNATURE}>
-              <Image
-                src="/assets/logo-migen-white.png"
-                alt=""
-                width={88}
-                height={20}
-                style={{ height: 20, width: "auto", opacity: 0.95 }}
-              />
-              <span style={PHOTO_BASELINE}>{COPIE.photoBaseline}</span>
-            </div>
-            <div style={PHOTO_PIED}>
-              <div
-                style={{
-                  font: "600 11.5px var(--fb)",
-                  letterSpacing: ".14em",
-                  textTransform: "uppercase",
-                  color: "var(--acc)",
-                  marginBottom: 12,
-                }}
-              >
-                {COPIE.photoSurtitre}
+                {bandeBref ? (
+                  <div style={BANDE}>
+                    <span style={BANDE_TEXTE}>
+                      <TexteRiche texte={bandeBref} />
+                    </span>
+                    {boutonBref?.libelle &&
+                    boutonBref.href &&
+                    cibleSure(boutonBref.href) ? (
+                      <a
+                        href={boutonBref.href}
+                        className={styles.boutonPrincipal}
+                        style={BANDE_BOUTON}
+                      >
+                        {boutonBref.libelle}
+                      </a>
+                    ) : null}
+                  </div>
+                ) : null}
               </div>
-              {/* `div` et non `h2` : la maquette l'écrit en `div`, et redire le
-                  H1 en titre de niveau 2 ajouterait un doublon au plan. */}
-              <div style={PHOTO_TITRE}>{titre}</div>
             </div>
-          </div>
-        </section>
+          </section>
+        ) : null}
 
-        {/* --------------------------------------------- 3. « 02 Logos » */}
+        {/* ------------------- 3 à 6. les quatre sections sous condition */}
 
-        {/*
-          Le bandeau de logos clients, importé d'`accueil/MarqueeClients` : même
-          marquee, mêmes logos, même masque. Seul le surtitre change, le gabarit
-          03 écrivant « Ils nous font confiance » là où l'accueil écrit le
-          compte de clients. La maquette, elle, n'avait pas les fichiers de logos
-          et posait des noms en texte : des logos valent mieux, et c'est le même
-          dessin de bandeau.
-        */}
-        <MarqueeClients surtitre={COPIE.logosSurtitre} />
+        <CommentCaMarche contenu={contenu} />
+        <Formules contenu={contenu} />
+        <Comparatif contenu={contenu} />
+        <PremierMois contenu={contenu} />
 
-        {/* ------------------------------------------ 4. « Réassurance » */}
+        {/* ------------------------- 7. « Le jour et la nuit » (l. 4888) */}
 
-        {/*
-          Certifications à gauche (MASE, EcoVadis : la carte en verre est au
-          pixel celle de ce gabarit), « Qui intervient chez vous » à droite. Le
-          panneau de droite de l'accueil est « Sécurité & RSE », qui n'est pas ce
-          que ce gabarit dessine : il est remplacé, pas recopié.
-        */}
-        <CertificationsRse
-          grille={REASSURANCE_GRILLE}
-          panneauDroit={<PanneauQuiIntervient />}
-        />
+        <AvantApresBascule avant={VUE_AVANT} avec={VUE_AVEC} />
 
-        {/* --------------------------- 5 à 8. le corps, venu du corpus */}
+        {/* Sous la bascule : le problème nommé, texte du corpus. */}
+        {probleme ? <Bloc section={probleme} /> : null}
 
-        {probleme ? <SectionProblemeGabarit section={probleme} /> : null}
-        {offre ? <SectionOffreGabarit section={offre} /> : null}
-        {deroule ? <SectionMethodeGabarit section={deroule} /> : null}
-        {garanties ? <SectionGarantiesGabarit section={garanties} /> : null}
-
-        {/* ----------------------------------- 9 à 13. preuve et appels */}
-
-        <SectionAppelGabarit
-          question={contenu.brefBande}
-          bouton={contenu.brefBouton?.libelle}
-          href={contenu.brefBouton?.href}
-        />
-        {preuves ? <SectionReferencesGabarit section={preuves} /> : null}
-        {objections ? <SectionQuestionsGabarit section={objections} /> : null}
-        <SectionMaillageGabarit cartes={autres} />
-        <SectionFinaleGabarit
-          question={ctaFinal?.question}
-          bouton={ctaFinal?.bouton}
-          rappel={ctaFinal?.rappel}
-          href={ctaFinal?.href}
-        />
+        {/* --------------------------- 8. « Ce qui est inclus » (l. 4953) */}
 
         {/*
-          Le maillage du cocon fourni par la page (parent, enfants, sœurs). Il
-          vient SOUS les cartes « Pour aller plus loin » du corpus : la maquette
-          n'a qu'une section de maillage, et les deux sources sont distinctes.
+          LE SURTITRE DE LA SECTION, et pourquoi il est ici plutôt que dans le
+          bloc. `blocs/Offre.tsx` ne rend son en-tête que si le corpus fournit
+          un titre ou une intro à la section. Aucune des dix-huit pages n'en
+          a : la section la plus commerciale de la maquette sortait donc sans
+          son étiquette, un tableau nu posé après le panneau du problème.
+
+          On ne corrige pas `blocs/Offre.tsx` : il sert aussi la centaine de
+          pages du gabarit de vente, et le changer de l'extérieur de ce
+          chantier serait un effet de bord. Le surtitre est donc posé ici, et
+          SEULEMENT quand le bloc ne va pas le poser lui-même : jamais deux
+          en-têtes. Le H2 de la maquette (`{{ of.incT }}`) reste absent, le
+          corpus ne l'écrivant nulle part.
+
+          LA MARGE NÉGATIVE N'EST PAS UNE COQUETTERIE : le bloc qui suit ouvre
+          sur son propre `var(--sec)`, et sans elle l'étiquette flotterait 120px
+          au-dessus du tableau qu'elle nomme. On la ramène aux 34px que la
+          maquette met entre un en-tête de section et son contenu
+          (`ENTETE.marginBottom`). À retirer le jour où `blocs/Offre.tsx` rendra
+          son surtitre sans condition.
         */}
-        {maillage ? (
-          <div
-            style={{
-              maxWidth: 1200,
-              margin: "0 auto",
-              padding: "var(--sec) 40px 80px",
-            }}
+        {offre && !offre.titre && !offre.intro ? (
+          <section
+            style={{ ...SECTION, marginBottom: "calc(34px - var(--sec))" }}
           >
-            {maillage}
-          </div>
+            <div style={LARGEUR}>
+              <div style={{ ...SURTITRE_OFFRE, marginBottom: 0 }}>
+                Ce qui est inclus
+              </div>
+            </div>
+          </section>
+        ) : null}
+        {offre ? <Bloc section={offre} /> : null}
+
+        {/* Sous la prestation : le déroulé, les engagements, l'appel. */}
+        {deroule ? <Bloc section={deroule} /> : null}
+        {garanties ? <Bloc section={garanties} /> : null}
+        {cta ? <Bloc section={cta} /> : null}
+
+        {/* ------------------------------ 9. « Notre méthode » (l. 4963) */}
+
+        <MethodeQuatreEtapes etapes={ETAPES_METHODE} />
+
+        {/* --------------------------- 10. « Notre sélection » (l. 5015) */}
+
+        <ProcessSelection />
+
+        {/* ------------------ 11. « Nos dernières réalisations » (l. 5105) */}
+
+        {preuves ? <Bloc section={preuves} /> : null}
+
+        {/* --------------------- 12. « Questions fréquentes » (l. 5143) */}
+
+        {objections ? <Bloc section={objections} /> : null}
+
+        {/* ---------------------- 13. « Un autre besoin ? » (l. 5152) */}
+
+        {autres.length > 0 ? (
+          <section style={SECTION}>
+            <div style={LARGEUR}>
+              <div data-reveal="">
+                {contenu.autresSurtitre || contenu.autresTitre ? (
+                  <div className="mg-r2" style={ENTETE}>
+                    <div>
+                      {contenu.autresSurtitre ? (
+                        <div style={SURTITRE_OFFRE}>
+                          {contenu.autresSurtitre}
+                        </div>
+                      ) : null}
+                      {contenu.autresTitre ? (
+                        <h2 style={TITRE2}>{contenu.autresTitre}</h2>
+                      ) : null}
+                    </div>
+                    {contenu.autresChapeau ? (
+                      <p style={CHAPEAU}>
+                        <TexteRiche texte={contenu.autresChapeau} />
+                      </p>
+                    ) : null}
+                  </div>
+                ) : null}
+
+                <div
+                  className="mg-r2"
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: 10,
+                  }}
+                >
+                  {autres.map((carte) => (
+                    <Link
+                      key={carte.href}
+                      href={carte.href}
+                      prefetch={false}
+                      className={styles.carteAutre}
+                      style={CARTE_AUTRE}
+                    >
+                      <span style={CARTE_AUTRE_PHRASE}>{carte.phrase}</span>
+                      <span style={CARTE_AUTRE_LIBELLE}>
+                        {carte.libelle} →
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        ) : null}
+
+        {/* ------------------- 14. le formulaire de bas de page (l. 5161) */}
+
+        {/*
+          Le titre vient du corpus : `formulaireTitre` s'il est posé, sinon la
+          question de la section `ctaFinal`, qui est exactement ce que la
+          maquette lie à `{{ of.form }}`. Sans ni l'un ni l'autre, les valeurs
+          par défaut de `FormulaireBasDePage` jouent, elles aussi relevées dans
+          la maquette : la copie n'est pas recopiée ici.
+        */}
+        <FormulaireBasDePage
+          formulaire={formulaire}
+          titre={contenu.formulaireTitre ?? ctaFinal?.question}
+          intro={contenu.formulaireIntro}
+        />
+
+        {maillage ? (
+          <div style={{ ...LARGEUR, paddingBottom: 80 }}>{maillage}</div>
         ) : null}
       </main>
     </div>

@@ -26,12 +26,7 @@ export function cibleSure(href: string): boolean {
   return estCheminInterne(href) || href.startsWith("#");
 }
 
-/* Générique, et pas simplement `LienSecteur[]` : les gabarits enrichissent ce
-   lien (le maillage des implantations y ajoute `contexte`, la phrase du corpus
-   où le lien a été écrit). Une signature non générique rabotait ce champ au
-   passage, et le composant ne pouvait plus le lire. Le filtre ne retire aucune
-   propriété : le type ne doit pas en retirer non plus. */
-export function liensSurs<T extends LienSecteur>(liens: readonly T[]): T[] {
+export function liensSurs(liens: readonly LienSecteur[]): LienSecteur[] {
   return liens.filter((l) => !!l.libelle && !!l.href && cibleSure(l.href));
 }
 

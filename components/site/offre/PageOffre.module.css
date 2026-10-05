@@ -1,12 +1,9 @@
-/* Survols du gabarit OFFRE. Rien d'autre : un style en ligne ne peut pas
+/* Survols du gabarit offre. Rien d'autre : un style en ligne ne peut pas
    porter d'état, et c'est la seule raison d'être de ce fichier.
+   Valeurs reprises des attributs `style-hover` de la maquette, lignes 4706 à
+   5198 de `maquette/accueil-rendu.html`.
 
-   Valeurs reprises des attributs `style-hover` de la maquette
-   `maquette/gabarit-03-offre.html`, copie versionnée de
-   « Migen - Gabarit 03 Offre.dc.html ». Les valeurs précédentes venaient d'un
-   autre fichier de maquette, ce qui est la cause du chantier.
-
-   LE FOCUS EST TRAITÉ AVEC LE SURVOL PARTOUT : un visiteur au clavier doit voir
+   Le focus est traité avec le survol partout : un visiteur au clavier doit voir
    la même chose qu'un visiteur à la souris (WCAG 2.4.7). La maquette ne le
    prévoit pas, le site l'exige. */
 
@@ -18,48 +15,15 @@
   color: #fff;
 }
 
-/* style-hover="color:var(--acc)" : le lien téléphone du héros, et les liens du
-   corpus posés à côté de lui. Pas de fond, pas de cadre. */
-.lienTelephone:hover,
-.lienTelephone:focus-visible {
-  color: var(--acc);
+/* style-hover="background:var(--card);transform:translateY(-1px)" (l. 4720) */
+.boutonSecondaire:hover,
+.boutonSecondaire:focus-visible {
+  background: var(--card);
+  transform: translateY(-1px);
 }
 
-/* style-hover="transform:translateY(-3px);box-shadow:0 26px 60px -28px rgba(0,0,0,.4)"
-   sur les cartes numérotées de « Votre problématique ». */
-.carteProbleme:hover,
-.carteProbleme:focus-visible {
-  transform: translateY(-3px);
-  box-shadow: 0 26px 60px -28px rgba(0, 0, 0, 0.4);
-}
-
-/* style-hover="transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(0,0,0,.42)"
-   sur les cartes de « Nos réalisations ». Le soulèvement est plus marqué : ces
-   cartes sont plus hautes, et portent une photo. */
-.carteReference:hover,
-.carteReference:focus-visible {
-  transform: translateY(-4px);
-  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.42);
-}
-
-/* style-hover="transform:translateY(-3px)" sur les cartes de « Pour aller plus
-   loin ». L'ombre ne change pas : la maquette ne la change pas. */
-.carteMaillage:hover,
-.carteMaillage:focus-visible {
-  transform: translateY(-3px);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  /* Un soulèvement au survol est du mouvement. Les ombres restent, elles
-     signalent l'état sans bouger. */
-  .boutonPrincipal:hover,
-  .boutonPrincipal:focus-visible,
-  .carteProbleme:hover,
-  .carteProbleme:focus-visible,
-  .carteReference:hover,
-  .carteReference:focus-visible,
-  .carteMaillage:hover,
-  .carteMaillage:focus-visible {
-    transform: none;
-  }
+/* style-hover="transform:translateY(-2px)" (l. 5156, cartes des autres offres) */
+.carteAutre:hover,
+.carteAutre:focus-visible {
+  transform: translateY(-2px);
 }

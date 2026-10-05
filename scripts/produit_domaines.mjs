@@ -1,52 +1,33 @@
 /**
- * Produit la donnée des 19 pages de la branche `/expertises/` servies par les
- * gabarits 09 DOMAINE et 05 SPÉCIALITÉ.
+ * Produit la donnée des 19 pages de DOMAINE technique, au gabarit de la maquette.
  *
  *   node scripts/produit_domaines.mjs
- *   node scripts/produit_domaines.mjs --simulation   # n'écrit rien
  *
- * CE QUE CE SCRIPT A CESSÉ DE FAIRE, et c'est la réparation.
+ * CE QUE CE SCRIPT FAIT, ET CE QU'IL NE FAIT PAS.
  *
- * Sa version précédente lisait « Migen - Site final.dc.html » (versionné en
- * `maquette/accueil-rendu.html`) et produisait une forme à plat en six champs :
- * `chapeau`, `boutons`, `traitements`, `autres`, `cta`, `reste`. C'était le
- * gabarit domaine de CE fichier-là : trois sections, un héros, une mosaïque
- * « Ce que nous traitons », une carte de fin, 155 mots. Les huit autres sections
- * du corpus partaient dans `reste`, rendues par les blocs du gabarit de vente.
+ * Il ne rédige RIEN. Il relit `supabase/import/corpus-analyse.json`, c'est-à-dire
+ * le corpus écrit par le client, et il le replace dans les cases que la maquette
+ * dessine pour le gabarit domaine (`maquette/accueil-rendu.html`, bloc
+ * `sc-if value="{{ isDomaine }}"`, lignes 6219 à 6276). Chaque chaîne posée ici
+ * sort du corpus telle quelle, sans réécriture, sans troncature, sans résumé.
  *
- * Or le client a conçu ONZE GABARITS DÉDIÉS dans le même projet Claude Design,
- * et personne ne les avait listés. Les deux qui font foi pour cette branche sont
- * versionnés à côté :
+ * LA CORRESPONDANCE, case de la maquette par case :
  *
- *   `maquette/gabarit-09-domaine.html`     les 9 racines de domaine
- *   `maquette/gabarit-05-specialite.html`  les 10 sous-pages de ces domaines
+ *   surtitre « Domaine d'activité »  le gabarit, pas la donnée
+ *   h1                              `pages.titre_h1`, rendu par la route
+ *   chapeau                         heros.mecanisme
+ *   bouton principal                heros.cta
+ *   bouton secondaire               VIDE : le corpus n'en porte pas de second
+ *   visuel de la mosaïque           VIDE : le corpus ne porte aucune image
+ *   « Ce que nous traitons »        offre.lignes[].prestation.accroche
+ *   « Les autres domaines »         les 8 autres domaines, déduits du corpus
+ *   carte de fin, titre et bouton   ctaFinal.question et ctaFinal.bouton
+ *   carte de fin, phrase            VIDE : ctaFinal n'en porte pas
+ *   tout le reste du corpus         `reste`, voir `types/metier.ts`
  *
- * Ils dessinent DOUZE sections chacun, et ces douze cases se remplissent TOUTES
- * depuis les dix sections nommées que le corpus porte déjà. Rien ne manquait au
- * corpus : c'est le placement qui était faux. Ce script ne produit donc plus
- * aucune forme intermédiaire. Il écrit `{ gabarit, sections }`, et `sections`
- * est le tableau du corpus RECOPIÉ TEL QUEL, sans réécriture, sans troncature,
- * sans résumé, sans réordonnancement.
- *
- * LE DÉCOUPAGE DES 30 PAGES DE LA BRANCHE, et ce que ce script NE touche pas :
- *
- *   9 racines `/expertises/<domaine>/`              gabarit 09, ici
- *   10 sous-pages `/expertises/<domaine>/<page>/`   gabarit 05, ici
- *   `/expertises/types-de-maintenance/`             gabarit 10 Hub de rubrique
- *   ses 9 sous-pages                                gabarit 11 Sous-rubrique
- *   `/expertises/specialisations-constructeur/`     gabarit 10 Hub de rubrique
- *   `/expertises/`                                  gabarit de la page Expertises
- *
- * Les onze dernières ne sont PAS des domaines techniques : « types de
- * maintenance » est une taxonomie, « spécialisations constructeur » une page de
- * marques. Les gabarits 10 et 11 existent pour elles, et elles ne sont pas
- * touchées ici. Les lister serait les faire entrer de force dans un dessin qui
- * ne les décrit pas, exactement l'erreur que ce chantier répare.
- *
- * ÉCRITURE EN BASE : ce script n'écrit QUE des fichiers. C'est
- * `scripts/importe_rest.mjs` qui les pose, par l'API REST, parce que la couche
- * de permissions refuse toute instruction SQL portant un point-virgule dans le
- * texte et que le corpus en est plein. Voir `CLAUDE.md` section 15.
+ * UNE CASE SANS DONNÉE RESTE VIDE. Le composant ne rend pas une section vide :
+ * pas de visuel inventé, pas de second bouton deviné, pas de phrase comblée au
+ * jugé. Les cases vides sont listées en fin d'exécution.
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -54,12 +35,13 @@ import { fileURLToPath } from "node:url";
 
 const RACINE = fileURLToPath(new URL("..", import.meta.url));
 const SORTIE = join(RACINE, "supabase", "import", "gabarits-maquette");
-const SIMULATION = process.argv.includes("--simulation");
 
 /**
  * Les 9 domaines techniques, dans l'ordre du cocon. La liste est FERMÉE : elle
- * dit quelles branches de `/expertises/` sont des domaines, et donc lesquelles
- * reçoivent les gabarits 09 et 05.
+ * dit quelles branches de /expertises/ sont des domaines, et donc lesquelles
+ * passent à ce gabarit. `/expertises/` est le hub, `types-de-maintenance` une
+ * taxonomie, `specialisations-constructeur` une page de marques : aucune n'est
+ * un domaine, aucune n'est touchée ici.
  */
 const DOMAINES = [
   "automatisme",
@@ -73,24 +55,11 @@ const DOMAINES = [
   "tuyauterie",
 ];
 
-/** Les dix types de section que le corpus écrit, et que les gabarits placent. */
-const TYPES = new Set([
-  "heros",
-  "chiffres",
-  "probleme",
-  "offre",
-  "deroule",
-  "garanties",
-  "cta",
-  "preuves",
-  "objections",
-  "ctaFinal",
-]);
-
 const corpus = JSON.parse(
   readFileSync(join(RACINE, "supabase", "import", "corpus-analyse.json"), "utf8"),
 );
 
+/** Les entrées du corpus qui tombent dans une branche de domaine. */
 const entrees = corpus
   .map((e) => ({ ...e, url: e.url.endsWith("/") ? e.url : `${e.url}/` }))
   .filter((e) => {
@@ -98,91 +67,89 @@ const entrees = corpus
     return (
       segments[0] === "expertises" &&
       segments.length >= 2 &&
-      segments.length <= 3 &&
       DOMAINES.includes(segments[1]) &&
       e.contenu?.sections?.length
     );
   })
   .sort((a, b) => a.url.localeCompare(b.url));
 
-if (entrees.length === 0) {
-  console.error("  aucune page de domaine dans le corpus : rien à produire");
-  process.exit(1);
-}
+const branche = (url) => url.split("/").filter(Boolean)[1];
+const section = (e, type) => e.contenu.sections.find((s) => s.type === type);
 
+/** Le titre de la page racine de chaque domaine, lu dans son propre héros. */
+const titreDomaine = new Map(
+  entrees
+    .filter((e) => e.url.split("/").filter(Boolean).length === 2)
+    .map((e) => [branche(e.url), section(e, "heros")?.h1]),
+);
+
+const vides = [];
 mkdirSync(SORTIE, { recursive: true });
 
-const lignes = [];
-const manques = [];
-let ecrits = 0;
+for (const e of entrees) {
+  const heros = section(e, "heros");
+  const offre = section(e, "offre");
+  const ctaFinal = section(e, "ctaFinal");
+  const mienne = branche(e.url);
 
-for (const entree of entrees) {
-  const segments = entree.url.split("/").filter(Boolean);
-  // La racine d'un domaine a deux segments, une spécialité en a trois. C'est la
-  // SEULE règle qui distingue les deux gabarits, et elle est structurelle : une
-  // liste de slugs à tenir à la main aurait dérivé au premier ajout de page.
-  const gabarit = segments.length === 2 ? "domaine" : "specialite";
+  const contenu = { gabarit: "domaine" };
 
-  const inconnues = entree.contenu.sections
-    .map((s) => s.type)
-    .filter((t) => !TYPES.has(t));
-  if (inconnues.length > 0) {
-    manques.push(`${entree.url} porte des sections inconnues : ${inconnues.join(", ")}`);
-    continue;
+  if (heros?.mecanisme) contenu.chapeau = heros.mecanisme;
+  else vides.push(`${e.url} chapeau : heros.mecanisme absent du corpus`);
+
+  // Le bouton principal seul. La maquette en dessine deux ; le second y renvoie
+  // vers le bureau d'études, et le corpus de la page ne dit pas vers quoi il
+  // renverrait ici. Choisir pour lui serait inventer un lien.
+  if (heros?.cta) contenu.boutons = [{ libelle: heros.cta }];
+  else vides.push(`${e.url} boutons : heros.cta absent du corpus`);
+  vides.push(`${e.url} second bouton du héros : aucune source dans le corpus`);
+
+  // La maquette pose une photo en deux tiers de la mosaïque. Le corpus n'en
+  // porte aucune, et aucun fichier n'est rattaché à un domaine : la mosaïque se
+  // rend sur une seule colonne, avec la carte de verre seule.
+  vides.push(`${e.url} visuel de la mosaïque : aucune image dans le corpus`);
+
+  const traitements = (offre?.lignes ?? [])
+    .map((l) => l.prestation?.accroche)
+    .filter((a) => typeof a === "string" && a.length > 0);
+  if (traitements.length > 0) contenu.traitements = traitements;
+  else vides.push(`${e.url} « Ce que nous traitons » : aucun offre.lignes[].prestation.accroche`);
+
+  const autres = DOMAINES.filter((d) => d !== mienne)
+    .map((d) => ({ libelle: titreDomaine.get(d), href: `/expertises/${d}/` }))
+    .filter((l) => typeof l.libelle === "string" && l.libelle.length > 0);
+  if (autres.length > 0) contenu.autres = autres;
+
+  if (ctaFinal?.question && ctaFinal?.bouton) {
+    contenu.cta = {
+      question: ctaFinal.question,
+      bouton: { libelle: ctaFinal.bouton, ...(ctaFinal.href ? { href: ctaFinal.href } : {}) },
+    };
+    // La maquette met une phrase sous le titre de la carte. Le corpus n'en
+    // donne pas pour `ctaFinal`, et celle de la maquette annonce un délai
+    // chiffré, que le contrat interdit de recopier.
+    vides.push(`${e.url} phrase de la carte de fin : ctaFinal ne porte pas de rappel`);
+  } else {
+    vides.push(`${e.url} carte de fin : ctaFinal incomplet dans le corpus`);
   }
 
-  // Ce que les gabarits dessinent et que le corpus de CETTE page n'alimente
-  // pas. La section reste vide, donc ne se rend pas du tout.
-  const presentes = new Set(entree.contenu.sections.map((s) => s.type));
-  for (const [type, ou] of [
-    ["chiffres", "la carte « En bref » du héros"],
-    ["probleme", "« Votre problématique », et la punchline sur la photo"],
-    ["offre", "le tableau « L’offre »"],
-    ["deroule", "« Le déroulé »"],
-    ["garanties", "« Ce que nous garantissons »"],
-    ["cta", "la bande orange de milieu de page"],
-    ["preuves", "« Nos références », et la frise de logos"],
-    ["objections", "« Questions fréquentes »"],
-    ["ctaFinal", "le titre de l’appel final"],
-  ]) {
-    if (!presentes.has(type)) manques.push(`${entree.url} : ${ou} reste vide`);
-  }
+  // Tout le texte rédigé que la maquette ne dessine pas. `heros` et `ctaFinal`
+  // sont déjà rendus par le héros et la carte de fin de la maquette.
+  const reste = e.contenu.sections.filter((s) => s.type !== "heros" && s.type !== "ctaFinal");
+  if (reste.length > 0) contenu.reste = reste;
 
-  const contenu = { gabarit, sections: entree.contenu.sections };
-  const nom = `${entree.url.replace(/^\/|\/$/g, "").replace(/\//g, "-")}.json`;
-
-  if (!SIMULATION) {
-    writeFileSync(
-      join(SORTIE, nom),
-      `${JSON.stringify({ url: entree.url, contenu }, null, 2)}\n`,
-    );
-  }
-  ecrits += 1;
-  lignes.push(
-    `${entree.url.padEnd(48)} ${gabarit.padEnd(10)} ` +
-      `${String(entree.contenu.sections.length).padStart(2)} sections  ${nom}`,
+  const fichier = `${e.url.split("/").filter(Boolean).join("-")}.json`;
+  writeFileSync(
+    join(SORTIE, fichier),
+    `${JSON.stringify({ url: e.url, contenu }, null, 2)}\n`,
+    "utf8",
   );
-}
-
-for (const ligne of lignes) console.log(ligne);
-
-const domaines = lignes.filter((l) => l.includes(" domaine ")).length;
-console.log(
-  `\n${ecrits} page(s) ${SIMULATION ? "à écrire" : "écrites"} dans supabase/import/gabarits-maquette/ : ` +
-    `${domaines} au gabarit 09 Domaine, ${ecrits - domaines} au gabarit 05 Spécialité.`,
-);
-console.log(
-  "dessin : maquette/gabarit-09-domaine.html et maquette/gabarit-05-specialite.html. " +
-    "texte : supabase/import/corpus-analyse.json, recopié tel quel.",
-);
-
-if (manques.length > 0) {
-  console.log(`\nCases de la maquette que le corpus n'alimente pas (${manques.length}) :`);
-  for (const manque of manques) console.log(`  ${manque}`);
-}
-
-if (!SIMULATION) {
   console.log(
-    "\nPose en base : node scripts/importe_rest.mjs --simulation, puis sans l'option.",
+    `${e.url.padEnd(48)} ${String(traitements.length).padStart(2)} traitements, ` +
+      `${String(autres.length).padStart(2)} autres domaines, ${reste.length} sections de corpus`,
   );
 }
+
+console.log(`\n${entrees.length} fichiers écrits dans supabase/import/gabarits-maquette/`);
+console.log(`\n${vides.length} cases de la maquette laissées VIDES, faute de donnée :`);
+for (const v of vides) console.log(`  ${v}`);

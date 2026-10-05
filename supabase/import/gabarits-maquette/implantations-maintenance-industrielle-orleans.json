@@ -3,12 +3,12 @@
   "contenu": {
     "gabarit": "ville",
     "chapeau": "Le Loiret fait cohabiter deux mondes exigeants. D'un côté des plateformes logistiques branchées sur l'A10 et l'A71. De l'autre des ateliers de cosmétique et de pharmacie où chaque équipement doit rester qualifié. Le premier ne supporte pas l'arrêt, le second ne supporte pas l'intervention non documentée. Nous traitons les deux, avec des techniciens qui se déplacent partout en France.",
-    "action": {
-      "libelle": "Demander une intervention à Orléans",
-      "href": "#formulaire"
-    },
-    "telephone": "04 78 33 72 05",
-    "delai": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte en option pour les nuits, les week-ends et les pics d'activité.",
+    "actions": [
+      {
+        "libelle": "Demander une intervention à Orléans",
+        "href": "#formulaire"
+      }
+    ],
     "reperes": [
       {
         "valeur": "+ 120",
@@ -23,16 +23,9 @@
         "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, et des techniciens mobiles partout en France"
       }
     ],
-    "logos": [
-      "AMAZON",
-      "GLS",
-      "VEEPEE",
-      "ERIKS",
-      "DANONE"
-    ],
-    "problemeTitre": "Un trieur lâche en fin d'après-midi sur une plateforme du Loiret.",
-    "problemeTexte": "Les commandes basculent au lendemain, et le client final ignore tout de votre panne mécanique.",
-    "problemes": [
+    "contact": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 en option pour les nuits, les week-ends et les pics d'activité.",
+    "constatTexte": "Un trieur lâche en fin d'après-midi sur une plateforme du Loiret. Les commandes basculent au lendemain, et le client final ignore tout de votre panne mécanique.",
+    "constatPuces": [
       {
         "texte": "Une heure perdue se paie en promesses rompues, pas en heures de main d'œuvre.",
         "accroche": "L'expédition du jour ne se rattrape pas."
@@ -54,80 +47,8 @@
         "accroche": "Le poste de maintenance vacant se voit sur la disponibilité machine."
       }
     ],
-    "offre": [
-      {
-        "benefice": "Vous entretenez au rythme du flux, pas au rythme d'un calendrier constructeur.",
-        "prestation": {
-          "texte": ", resserré avant les pics d'activité.",
-          "accroche": "Préventif calé sur vos heures de fonctionnement réelles"
-        }
-      },
-      {
-        "benefice": "Les opérations lourdes ne mangent jamais une vague de préparation.",
-        "prestation": {
-          "texte": "tôt le matin, entre deux équipes, de nuit selon le contrat.",
-          "accroche": "Interventions en heures creuses"
-        }
-      },
-      {
-        "benefice": "Votre qualité conserve la preuve sans la reconstruire après coup.",
-        "prestation": {
-          "texte": "opérations documentées, pièces référencées, comptes rendus versés dans votre GMAO.",
-          "accroche": "Traçabilité adaptée aux sites qualifiés"
-        }
-      },
-      {
-        "benefice": "Un seul contrat du quai de réception au quai d'expédition.",
-        "prestation": {
-          "texte": "moto-réducteurs, rouleaux, bandes, capteurs, quais.",
-          "accroche": "Convoyage, tri et manutention pris dans leur ensemble"
-        }
-      },
-      {
-        "benefice": "Une panne qui croise plusieurs métiers mobilise une seule équipe.",
-        "prestation": {
-          "texte": "[mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [automatisme](/expertises/automatisme/), [électromécanique](/expertises/electromecanique/), [hydraulique](/expertises/hydraulique/), [soudure](/expertises/soudure/).",
-          "accroche": "Couverture multi-technique"
-        }
-      },
-      {
-        "benefice": "Une panne du dimanche soir ne sacrifie pas le lundi matin.",
-        "prestation": {
-          "texte": ", mobilisation de techniciens mobiles partout en France.",
-          "accroche": "Astreinte en option"
-        }
-      }
-    ],
-    "offreNotes": [
-      "Pour les entrepôts et plateformes, voir notre pratique de la [maintenance des équipements logistiques](/secteurs/logistique/). Les lignes alimentaires relèvent de la [maintenance en agroalimentaire](/secteurs/agroalimentaire/)."
-    ],
-    "etapes": [
-      {
-        "texte": "équipement, symptôme, criticité, contraintes d'accès et régime du site.",
-        "titre": "Vous décrivez le cas"
-      },
-      {
-        "texte": "besoin qualifié, profil nommé, pièces à commander repérées.",
-        "titre": "Nous vous rappelons dans l'heure"
-      },
-      {
-        "texte": "périmètre, conditions de chantier, montant écrit.",
-        "titre": "Le chiffrage part avant le déplacement"
-      },
-      {
-        "texte": "accueil sécurité, balisage, plan de prévention, consignation, puis diagnostic.",
-        "titre": "L'intervention se cale sur vos règles de site"
-      },
-      {
-        "texte": "mesures, historique, récurrence par équipement.",
-        "titre": "La cause racine est traitée après la remise en route"
-      },
-      {
-        "texte": "constat, actions, pièces posées, récurrence relevée.",
-        "titre": "Le compte rendu revient dans votre GMAO"
-      }
-    ],
-    "garanties": [
+    "reponseTexte": "Pour les entrepôts et plateformes, voir notre pratique de la [maintenance des équipements logistiques](/secteurs/logistique/). Les lignes alimentaires relèvent de la [maintenance en agroalimentaire](/secteurs/agroalimentaire/).",
+    "reponsePuces": [
       {
         "texte": "disponibilité par zone, récurrence par équipement, respect du plan préventif. Vous jugez sur vos propres indicateurs.",
         "accroche": "La mesure avant l'affirmation"
@@ -137,48 +58,11 @@
         "accroche": "Le profil présenté avant l'arrivée"
       },
       {
-        "texte": "rappel dans l'heure aux horaires ouvrés, astreinte en option. Le reste tient à l'adresse du site, et il se dit avant d'engager.",
+        "texte": "rappel dans l'heure aux horaires ouvrés, astreinte 24/24 et 7/7 en option. Le reste tient à l'adresse du site, et il se dit avant d'engager.",
         "accroche": "Aucun délai de route inventé"
       }
     ],
-    "appel": {
-      "question": "Besoin de savoir où votre site perd réellement de la capacité ?",
-      "bouton": "Demander une intervention à Orléans",
-      "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
-    },
-    "preuves": [
-      {
-        "texte": "contrat annuel depuis septembre 2022",
-        "titre": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures, sur un centre logistique en continu",
-        "lienHref": "/preuves/amazon-centre-logistique/",
-        "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique"
-      },
-      {
-        "texte": "logistique et transport",
-        "titre": "Deux techniciens en poste sur site, dédiés à la maintenance curative des convoyeurs, trieurs et packaging",
-        "lienHref": "/preuves/gls-maintenance-curative/",
-        "lienLibelle": "Étude de cas GLS : maintenance curative"
-      },
-      {
-        "texte": "sites e-commerce, depuis septembre 2023",
-        "titre": "Six techniciens en permanence sur un contrat de préventif annuel, prise en charge complète réalisée en un mois",
-        "lienHref": "/preuves/veepee-sites-lyon/",
-        "lienLibelle": "Étude de cas VEEPEE : sites de Lyon"
-      },
-      {
-        "texte": "pilotage repris sans rupture, troisième trimestre 2025",
-        "titre": "Un responsable maintenance intégré sur site pendant une montée de cadence",
-        "lienHref": "/preuves/eriks/",
-        "lienLibelle": "Étude de cas ERIKS"
-      },
-      {
-        "texte": "cadence continue, exigences d'hygiène strictes",
-        "titre": "Deux techniciens intégrés en 3x8 sur des lignes liquides et poudre",
-        "lienHref": "/preuves/danone-lignes-de-production/",
-        "lienLibelle": "Étude de cas DANONE : lignes de production"
-      }
-    ],
-    "questions": [
+    "faq": [
       {
         "reponse": "Oui. Nos techniciens se déplacent partout en France et interviennent sur site. Nos 4 agences sont Lyon (siège), Montréal, Dubaï et Madrid, et nous préférons l'annoncer plutôt que d'afficher une adresse orléanaise vide. Votre demande est rappelée dans l'heure aux horaires ouvrés. Sur votre site, la différence se fait sur le technicien qui arrive préparé, pas sur une plaque.",
         "question": "Intervenez-vous vraiment à Orléans, alors que votre siège est à Lyon ?"
@@ -204,51 +88,188 @@
         "question": "Combien coûte un contrat de préventif ?"
       }
     ],
-    "liens": [
+    "autres": [
       {
-        "libelle": "Maintenance des équipements logistiques",
-        "href": "/secteurs/logistique/",
-        "contexte": "Pour les entrepôts et plateformes, voir notre pratique de la maintenance des équipements logistiques."
+        "libelle": "Lille",
+        "href": "/implantations/lille/"
       },
       {
-        "libelle": "Maintenance en agroalimentaire",
-        "href": "/secteurs/agroalimentaire/",
-        "contexte": "Les lignes alimentaires relèvent de la maintenance en agroalimentaire."
+        "libelle": "Lyon",
+        "href": "/implantations/lyon/"
       },
       {
-        "libelle": "Mécanique",
-        "href": "/expertises/mecanique/"
+        "libelle": "Grenoble",
+        "href": "/implantations/lyon/grenoble/"
       },
       {
-        "libelle": "Électrique",
-        "href": "/expertises/electrique/"
+        "libelle": "saint etienne",
+        "href": "/implantations/lyon/saint-etienne/"
       },
       {
-        "libelle": "Automatisme",
-        "href": "/expertises/automatisme/"
+        "libelle": "Valence",
+        "href": "/implantations/lyon/valence/"
       },
       {
-        "libelle": "Électromécanique",
-        "href": "/expertises/electromecanique/"
+        "libelle": "Nantes",
+        "href": "/implantations/nantes/"
       },
       {
-        "libelle": "Hydraulique",
-        "href": "/expertises/hydraulique/"
+        "libelle": "Brest",
+        "href": "/implantations/nantes/brest/"
       },
       {
-        "libelle": "Soudure",
-        "href": "/expertises/soudure/"
+        "libelle": "Rennes",
+        "href": "/implantations/nantes/rennes/"
       },
       {
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/",
-        "contexte": "L'abonnement Zéro arrêt est chiffré sur devis, engagement type 6 mois renouvelable."
+        "libelle": "paris",
+        "href": "/implantations/paris/"
+      },
+      {
+        "libelle": "Rouen",
+        "href": "/implantations/paris/rouen/"
+      },
+      {
+        "libelle": "Strasbourg",
+        "href": "/implantations/strasbourg/"
+      },
+      {
+        "libelle": "Mulhouse",
+        "href": "/implantations/strasbourg/mulhouse/"
+      },
+      {
+        "libelle": "Toulouse",
+        "href": "/implantations/toulouse/"
+      },
+      {
+        "libelle": "Bordeaux",
+        "href": "/implantations/toulouse/bordeaux/"
       }
     ],
-    "appelFinal": {
-      "question": "Besoin de fiabiliser vos flux avant la prochaine montée en charge ?",
-      "bouton": "Demander une intervention à Orléans",
-      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
-    }
+    "reste": [
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "benefice": "Vous entretenez au rythme du flux, pas au rythme d'un calendrier constructeur.",
+            "prestation": {
+              "texte": ", resserré avant les pics d'activité.",
+              "accroche": "Préventif calé sur vos heures de fonctionnement réelles"
+            }
+          },
+          {
+            "benefice": "Les opérations lourdes ne mangent jamais une vague de préparation.",
+            "prestation": {
+              "texte": "tôt le matin, entre deux équipes, de nuit selon le contrat.",
+              "accroche": "Interventions en heures creuses"
+            }
+          },
+          {
+            "benefice": "Votre qualité conserve la preuve sans la reconstruire après coup.",
+            "prestation": {
+              "texte": "opérations documentées, pièces référencées, comptes rendus versés dans votre GMAO.",
+              "accroche": "Traçabilité adaptée aux sites qualifiés"
+            }
+          },
+          {
+            "benefice": "Un seul contrat du quai de réception au quai d'expédition.",
+            "prestation": {
+              "texte": "moto-réducteurs, rouleaux, bandes, capteurs, quais.",
+              "accroche": "Convoyage, tri et manutention pris dans leur ensemble"
+            }
+          },
+          {
+            "benefice": "Une panne qui croise plusieurs métiers mobilise une seule équipe.",
+            "prestation": {
+              "texte": "[mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [automatisme](/expertises/automatisme/), [électromécanique](/expertises/electromecanique/), [hydraulique](/expertises/hydraulique/), [soudure](/expertises/soudure/).",
+              "accroche": "Couverture multi-technique"
+            }
+          },
+          {
+            "benefice": "Une panne du dimanche soir ne sacrifie pas le lundi matin.",
+            "prestation": {
+              "texte": ", mobilisation de techniciens mobiles partout en France.",
+              "accroche": "Astreinte 24/24 et 7/7 en option"
+            }
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "texte": "équipement, symptôme, criticité, contraintes d'accès et régime du site.",
+            "titre": "Vous décrivez le cas"
+          },
+          {
+            "texte": "besoin qualifié, profil nommé, pièces à commander repérées.",
+            "titre": "Nous vous rappelons dans l'heure"
+          },
+          {
+            "texte": "périmètre, conditions de chantier, montant écrit.",
+            "titre": "Le chiffrage part avant le déplacement"
+          },
+          {
+            "texte": "accueil sécurité, balisage, plan de prévention, consignation, puis diagnostic.",
+            "titre": "L'intervention se cale sur vos règles de site"
+          },
+          {
+            "texte": "mesures, historique, récurrence par équipement.",
+            "titre": "La cause racine est traitée après la remise en route"
+          },
+          {
+            "texte": "constat, actions, pièces posées, récurrence relevée.",
+            "titre": "Le compte rendu revient dans votre GMAO"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "bouton": "Demander une intervention à Orléans",
+        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
+        "question": "Besoin de savoir où votre site perd réellement de la capacité ?"
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "texte": "contrat annuel depuis septembre 2022",
+            "titre": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures, sur un centre logistique en continu",
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique"
+          },
+          {
+            "texte": "logistique et transport",
+            "titre": "Deux techniciens en poste sur site, dédiés à la maintenance curative des convoyeurs, trieurs et packaging",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "lienLibelle": "Étude de cas GLS : maintenance curative"
+          },
+          {
+            "texte": "sites e-commerce, depuis septembre 2023",
+            "titre": "Six techniciens en permanence sur un contrat de préventif annuel, prise en charge complète réalisée en un mois",
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "lienLibelle": "Étude de cas VEEPEE : sites de Lyon"
+          },
+          {
+            "texte": "pilotage repris sans rupture, troisième trimestre 2025",
+            "titre": "Un responsable maintenance intégré sur site pendant une montée de cadence",
+            "lienHref": "/preuves/eriks/",
+            "lienLibelle": "Étude de cas ERIKS"
+          },
+          {
+            "texte": "cadence continue, exigences d'hygiène strictes",
+            "titre": "Deux techniciens intégrés en 3x8 sur des lignes liquides et poudre",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "lienLibelle": "Étude de cas DANONE : lignes de production"
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "bouton": "Demander une intervention à Orléans",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
+        "question": "Besoin de fiabiliser vos flux avant la prochaine montée en charge ?"
+      }
+    ]
   }
 }

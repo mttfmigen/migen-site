@@ -1,103 +1,52 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 
-import type {
-  Section,
-  SectionChiffres,
-  SectionCta,
-  SectionCtaFinal,
-  SectionDeroule,
-  SectionGaranties,
-  SectionHeros,
-  SectionObjections,
-  SectionOffre,
-  SectionPreuves,
-} from "@/types/contenu";
+import {
+  ANCRE_FORMULAIRE,
+  BOUTON_ACTION,
+  LARGEUR,
+  SURTITRE,
+  TITRE2,
+  colonnes,
+} from "@/components/site/blocs/habillage";
+import Bloc from "@/components/site/blocs/Bloc";
+import { BLOCS } from "@/components/site/blocs";
+import TexteRiche from "@/components/site/blocs/TexteRiche";
 import type { ContenuSecteur } from "@/types/secteur";
 
-import PageAncrage from "./PageAncrage";
+import PucesLiens, { cibleSure, liensSurs } from "./PucesLiens";
 import {
-  Deroule,
-  Garanties,
-  Heros,
-  Offre,
-  PhotoEtLogos,
-  Probleme,
-} from "./BlocsSecteur";
-import {
-  Appel,
-  AppelFinal,
-  Maillage,
-  Questions,
-  Reassurance,
-  References,
-} from "./BlocsPreuveEtAppel";
-import {
-  CHROME,
-  clientDePreuve,
-  coupePunchline,
-  sansDisponibiliteChiffree,
-} from "./contenu-maquette";
-import { cibleSure } from "./PucesLiens";
-import { HERO } from "./habillage-gabarit08";
+  BOUTON_HERO,
+  BOUTON_HERO_2,
+  CARTE_ENJEU,
+  CHAPEAU_HERO,
+  HERO,
+  PANNEAU_APPEL,
+  PANNEAU_HERO,
+  PUCE,
+  RANGEE_PUCES,
+  SURTITRE_HERO,
+  TITRE1,
+} from "./habillage-secteur";
+
+import styles from "./PageSecteur.module.css";
 
 /**
- * Gabarit 08 SECTEUR. Les 13 pages `/secteurs/<secteur>/`.
+ * Gabarit SECTEUR, porté de la maquette lignes 5602 à 5757.
  *
- * SON FICHIER DE MAQUETTE, QUI FAIT FOI : `maquette/gabarit-08-secteur.html`,
- * transcrit de « Migen - Gabarit 08 Secteur.dc.html » du projet Claude Design.
- * IL FAIT FOI CONTRE « Migen - Site final.dc.html ».
- *
- * CE QUI A COÛTÉ DES SEMAINES, et que ce fichier répare. Le client avait envoyé
- * deux fichiers par message, « Site final » et « Mobile », et tout le portage
- * s'est fait depuis ceux-là. Personne n'a listé les fichiers du projet Claude
- * Design, qui contient ONZE GABARITS DÉDIÉS, bien plus riches. « Site final »
- * dessine QUATRE sections pour une page de secteur ; le gabarit 08 en dessine
- * DOUZE. Le portage précédent a donc rendu quatre sections de la maquette et
- * renvoyé les six sections de corpus restantes dans `complement`, où les blocs
- * du gabarit de VENTE les rendaient avec leurs surtitres à eux : « Le
- * problème » au lieu de « Vos contraintes », « Nos engagements » au lieu de
- * « Notre parti pris », « Prochaine étape » au lieu de rien. D'où « les pages
- * ne ressemblent toujours pas » : le dessin lu n'était pas le bon dessin.
- *
- * LES DOUZE SECTIONS, DANS L'ORDRE DE LA MAQUETTE, et ce qui les alimente :
- *
- *   01 Héros          heros, et ses chiffres dans le panneau « En bref »
- *   02 Photo et logos la punchline en exergue, les clients des études de cas
- *   03 Problème       probleme
- *   04 Offre          offre
- *   05 Déroulé        deroule
- *   06 Garanties      garanties
- *   Réassurance       RIEN : chrome du gabarit, voir `BlocsSecteur.tsx`
- *   07 Appel          cta
- *   08 Références     preuves
- *   09 Questions      objections
- *   Maillage          pourAllerPlusLoin
- *   10 Appel final    ctaFinal, et le formulaire du site
- *
- * `complement` N'A PLUS D'EMPLOI ICI, et c'est le vrai gain : la maquette
- * dessine les DIX sections du corpus, une par une. Rien ne déborde sous le
- * gabarit, rien n'est rendu avec les surtitres d'un autre gabarit, et rien
- * n'est perdu.
- *
- * UNE SECTION QUE LE CORPUS N'ALIMENTE PAS NE SE REND PAS DU TOUT, titre
- * compris. C'est pour cela que ce fichier ne contient que du tri : chaque
- * section est cherchée par son type dans `contenu.sections`, et absente, elle
- * n'apparaît pas. Aucune valeur de remplissage, aucun titre orphelin.
+ * Il sert les deux gabarits voisins de la maquette, SECTEUR et DÉPARTEMENT :
+ * hero avec ses repères, enjeux du terrain, communes couvertes, pages sœurs,
+ * appel final. Chaque section se rend si le corpus la fournit, et disparaît
+ * sinon. Voir `types/secteur.ts` pour le pourquoi d'un seul composant.
  *
  * Composant SERVEUR : aucun état, aucun écouteur. Les révélations au défilement
- * sont posées en `data-reveal` par `BlocsSecteur.tsx` et animées par
- * `components/site/Moteurs.tsx`, monté une fois dans la mise en page racine.
+ * sont posées en `data-reveal` et animées par `components/site/Moteurs.tsx`,
+ * monté une fois dans la mise en page racine. Ne pas réécrire ces animations
+ * ici : la maquette ne révèle que ce qui était sous la ligne de flottaison à
+ * l'arrivée, ce qu'aucune règle CSS ne sait faire.
  */
 
-/** Cherche une section par son type, dans le tableau du corpus. */
-function sectionDe<T extends Section["type"]>(
-  sections: readonly Section[],
-  type: T,
-): Extract<Section, { type: T }> | undefined {
-  return sections.find((s) => s?.type === type) as
-    | Extract<Section, { type: T }>
-    | undefined;
-}
+/* ------------------------------------------------------------------- le gabarit */
 
 export interface ProprietesPageSecteur {
   /** Le H1, et le seul de la page. Vient de `pages.titre_h1`. */
@@ -112,8 +61,6 @@ export interface ProprietesPageSecteur {
    */
   filAriane?: ReactNode;
   maillage?: ReactNode;
-  /** Identifiant d'analyse du formulaire, repris par HubSpot. */
-  formulaire?: string;
 }
 
 export default function PageSecteur({
@@ -121,159 +68,338 @@ export default function PageSecteur({
   contenu,
   filAriane,
   maillage,
-  formulaire = "secteur",
 }: ProprietesPageSecteur) {
+  const reperes = contenu.reperes ?? [];
+  const enjeux = contenu.enjeux ?? [];
+  const communes = contenu.communes ?? [];
+  const actions = liensSurs(contenu.actions ?? []);
+  const autres = liensSurs(contenu.autres ?? []);
+
+  const appel = contenu.appelTitre || contenu.appelTexte;
+  const boutonAppel = contenu.appelBouton;
+
   /*
-    LE REPLI VERS LE GABARIT D'ANCRAGE, et pourquoi il existe encore.
-
-    `components/site/implantation/PageDepartement.tsx` appelle ce composant avec
-    un contenu qui porte `communes`, `reperes` et `enjeux`, jamais `sections` :
-    c'est le portage « Site final », qui sert aujourd'hui les 42 pages de
-    `/implantations/`. Ces pages ont leurs propres fichiers de maquette qui font
-    foi (« Gabarit 04 Ville », « Gabarit 06 Departement ») et leur propre portage
-    à refaire ; les casser maintenant au nom du gabarit 08 ne corrigerait rien et
-    abîmerait un gabarit voisin.
-
-    Le tri se fait sur la DONNÉE, pas sur un drapeau : un contenu qui porte les
-    dix sections du corpus est une page de secteur, un contenu qui porte des
-    communes est une page de territoire. C'est l'argument déjà écrit dans
-    `types/secteur.ts`, « le contenu dit déjà ce qu'il est ».
-
-    CE REPLI EST À SUPPRIMER par le portage des gabarits 04 et 06, avec
-    `PageAncrage.tsx`.
+    Le texte du corpus que la maquette ne dessine pas. Lu sur un `jsonb` : une
+    section sans bloc est ECARTEE, pas rendue, sinon la page entiere tombe a la
+    recherche d'un composant qui n'existe pas. Une page amputee vaut mieux
+    qu'une 500 sur une URL referencee, et c'est deja la regle de la route.
   */
-  const sections = contenu.sections ?? [];
-  if (sections.length === 0) {
-    return (
-      <PageAncrage
-        titre={titre}
-        contenu={contenu}
-        filAriane={filAriane}
-        maillage={maillage}
-      />
-    );
-  }
-
-  const heros: SectionHeros | undefined = sectionDe(sections, "heros");
-  const chiffres: SectionChiffres | undefined = sectionDe(sections, "chiffres");
-  const probleme = sectionDe(sections, "probleme");
-  const offre: SectionOffre | undefined = sectionDe(sections, "offre");
-  const deroule: SectionDeroule | undefined = sectionDe(sections, "deroule");
-  const garanties: SectionGaranties | undefined = sectionDe(
-    sections,
-    "garanties",
+  const complement = (contenu.complement ?? []).filter(
+    (section) =>
+      !!section &&
+      typeof section === "object" &&
+      typeof section.type === "string" &&
+      section.type in BLOCS,
   );
-  const cta: SectionCta | undefined = sectionDe(sections, "cta");
-  const preuves: SectionPreuves | undefined = sectionDe(sections, "preuves");
-  const objections: SectionObjections | undefined = sectionDe(
-    sections,
-    "objections",
-  );
-  const ctaFinal: SectionCtaFinal | undefined = sectionDe(
-    sections,
-    "ctaFinal",
-  );
-
-  /* Le numéro de téléphone est écrit UNE FOIS dans le corpus, dans le héros, et
-     la maquette le rend à cinq endroits. Sans héros, pas de numéro : aucun
-     n'est rappelé de mémoire. */
-  const telephone = heros?.telephone ?? "";
-
-  /* La punchline sert DEUX sections : l'exergue sur la photo et le titre du
-     problème. La maquette lit `p.punchTitle` aux deux endroits. */
-  const punch = probleme?.punchline
-    ? coupePunchline(probleme.punchline)
-    : { titre: "", texte: "" };
-
-  /* Les noms de la bande de logos sortent des études de cas du corpus. Ni plus,
-     ni moins : aucun logo de client n'est ajouté pour garnir la bande. */
-  const clients = (preuves?.preuves ?? [])
-    .map((preuve) => clientDePreuve(preuve.lienLibelle))
-    .filter((nom, i, tous) => !!nom && tous.indexOf(nom) === i);
-
-  /* Les cartes de maillage, filtrées comme les pastilles : une cible hors
-     domaine fait disparaître la carte, elle n'est pas rafistolée. */
-  const cartes = (contenu.pourAllerPlusLoin ?? []).filter(
-    (carte) => !!carte.titre && !!carte.href && cibleSure(carte.href),
-  );
-
-  const delaiFinal = heros?.phraseDelai
-    ? sansDisponibiliteChiffree(heros.phraseDelai)
-    : "";
 
   return (
     <div className="mg-site">
-      <main>
+      <main style={{ paddingTop: 96 }}>
+        {filAriane ? (
+          <section
+            style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 40px 0" }}
+          >
+            {filAriane}
+          </section>
+        ) : null}
+
         <section style={HERO}>
-          {/* La maquette dessine son fil d'Ariane ici, au-dessus du titre, avec
-              30px sous lui. Celui du site est déduit de la hiérarchie des pages
-              et arrive par la route : c'est le même emplacement, le vrai
-              contenu. */}
-          {filAriane ? <div style={{ marginBottom: 30 }}>{filAriane}</div> : null}
-          {heros ? (
-            <Heros titre={titre} heros={heros} chiffres={chiffres} />
-          ) : (
-            /* Sans section de héros, le H1 se rend seul : une page référencée
-               doit porter son titre même si son corpus est incomplet. */
-            <h1>{titre}</h1>
-          )}
+          <div
+            className="mg-r2"
+            style={{
+              display: "grid",
+              // Sans repères, le hero tient sur une colonne : la maquette met
+              // un panneau en verre à droite, et un panneau vide vaudrait aveu.
+              gridTemplateColumns:
+                reperes.length > 0 ? "1.1fr .9fr" : "minmax(0,1fr)",
+              gap: 52,
+              alignItems: "start",
+            }}
+          >
+            <div>
+              {contenu.surtitre ? (
+                <div style={SURTITRE_HERO}>{contenu.surtitre}</div>
+              ) : null}
+              <h1 style={TITRE1}>{titre}</h1>
+              {contenu.chapeau ? (
+                <p style={CHAPEAU_HERO}>
+                  <TexteRiche texte={contenu.chapeau} />
+                </p>
+              ) : null}
+              {actions.length > 0 ? (
+                <div
+                  style={{
+                    display: "flex",
+                    gap: 12,
+                    marginTop: 28,
+                    flexWrap: "wrap",
+                  }}
+                >
+                  {actions.map((action, i) => (
+                    <Link
+                      key={action.href}
+                      href={action.href}
+                      prefetch={false}
+                      className={
+                        i === 0 ? styles.boutonPrincipal : styles.boutonSecondaire
+                      }
+                      style={i === 0 ? BOUTON_HERO : BOUTON_HERO_2}
+                    >
+                      {action.libelle}
+                    </Link>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
+            {reperes.length > 0 ? (
+              <div style={PANNEAU_HERO}>
+                {contenu.reperesSurtitre ? (
+                  <div style={SURTITRE_HERO}>{contenu.reperesSurtitre}</div>
+                ) : null}
+                <div
+                  className="mg-rq2"
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: 22,
+                  }}
+                >
+                  {reperes.map((repere) => (
+                    <div key={`${repere.valeur}-${repere.libelle}`}>
+                      <div
+                        style={{
+                          font: "600 26px var(--ft)",
+                          letterSpacing: "-.045em",
+                        }}
+                      >
+                        {repere.valeur}
+                      </div>
+                      <div
+                        style={{
+                          font: "400 12.5px/1.45 var(--fb)",
+                          color: "var(--ink4)",
+                          marginTop: 4,
+                        }}
+                      >
+                        {repere.libelle}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </div>
         </section>
 
-        {punch.titre || clients.length > 0 ? (
-          <PhotoEtLogos punchTitre={punch.titre} clients={clients} />
+        {enjeux.length > 0 ? (
+          <section style={{ padding: "var(--sec) 0 0" }}>
+            <div style={LARGEUR}>
+              <div data-reveal="">
+                {contenu.enjeuxSurtitre ? (
+                  <div style={SURTITRE}>{contenu.enjeuxSurtitre}</div>
+                ) : null}
+                {contenu.enjeuxTitre ? (
+                  <h2
+                    style={{
+                      ...TITRE2,
+                      margin: "0 0 38px",
+                      maxWidth: "24ch",
+                    }}
+                  >
+                    {contenu.enjeuxTitre}
+                  </h2>
+                ) : null}
+                <div
+                  className="mg-rmulti"
+                  style={{
+                    // La maquette en pose quatre. Au-delà la grille boucle, en
+                    // deçà elle se resserre : pas de colonne vide en bout.
+                    ...colonnes(Math.min(enjeux.length, 4)),
+                    gap: 16,
+                  }}
+                >
+                  {enjeux.map((enjeu) => (
+                    <div key={enjeu.titre} style={CARTE_ENJEU}>
+                      <div
+                        style={{
+                          font: "600 17px var(--ft)",
+                          letterSpacing: "-.025em",
+                          marginBottom: 8,
+                        }}
+                      >
+                        {enjeu.titre}
+                      </div>
+                      <p
+                        style={{
+                          font: "400 14.5px/1.6 var(--fb)",
+                          color: "var(--ink2)",
+                          margin: 0,
+                        }}
+                      >
+                        <TexteRiche texte={enjeu.texte} />
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
         ) : null}
-
-        {probleme && probleme.puces.length > 0 ? (
-          <Probleme
-            punchTitre={punch.titre}
-            punchTexte={punch.texte}
-            puces={probleme.puces}
-          />
-        ) : null}
-
-        {offre && offre.lignes.length > 0 ? <Offre offre={offre} /> : null}
-
-        {deroule && deroule.etapes.length > 0 ? (
-          <Deroule deroule={deroule} />
-        ) : null}
-
-        {garanties && garanties.puces.length > 0 ? (
-          <Garanties garanties={garanties} />
-        ) : null}
-
-        <Reassurance />
-
-        {cta?.question ? <Appel cta={cta} telephone={telephone} /> : null}
-
-        {preuves && preuves.preuves.length > 0 ? (
-          <References preuves={preuves} />
-        ) : null}
-
-        {objections && objections.questions.length > 0 ? (
-          <Questions objections={objections} telephone={telephone} />
-        ) : null}
-
-        {cartes.length > 0 ? <Maillage cartes={cartes} /> : null}
-
-        {/* Le maillage interne de la route, en cartes cliquables : parent,
-            enfants, pages voisines. Il vient AVANT l'appel final, pour que la
-            page se ferme sur le formulaire comme dans la maquette. */}
-        {maillage}
 
         {/*
-          L'APPEL FINAL SE REND MÊME SANS `ctaFinal`, et c'est la seule section
-          dans ce cas. Il porte l'ancre `#formulaire` que visent le bouton du
-          héros et celui de « 07 Appel » : la retirer ferait de ces deux boutons
-          des liens vers une ancre absente, ce qui est pire qu'un panneau sans
-          son titre. Les textes manquants, eux, ne se rendent pas.
+          SOUS LES SECTIONS DE LA MAQUETTE, le texte rédigé que la maquette ne
+          dessine pas : ce que nous traitons, le déroulé, nos engagements,
+          l'appel de milieu de page, les dernières réalisations, les questions
+          fréquentes. Voir `types/secteur.ts`, champ `complement`.
+
+          Rendu par les blocs du gabarit de vente, qui sont les MOTIFS DE
+          SECTION DE LA MAQUETTE déjà portés, surtitres compris : la page reste
+          celle de la maquette et garde tout son texte. Ils sont importés, pas
+          réécrits.
+
+          Placé ici, et non après l'appel final : l'ouverture et la fermeture de
+          la page restent celles de la maquette, le corps s'insère entre les
+          deux. Du texte après l'appel à l'action se lirait comme une page qui
+          reprend après avoir fini.
         */}
-        <AppelFinal
-          ctaFinal={ctaFinal ?? { type: "ctaFinal", question: "", bouton: "" }}
-          intitule={ctaFinal?.bouton || heros?.cta || CHROME.finalSurtitre}
-          delai={delaiFinal}
-          telephone={telephone}
-          formulaire={formulaire}
-        />
+        {complement.map((section, i) => (
+          // L'index suffit comme clé : l'ordre du tableau EST celui du corpus,
+          // il ne se réarrange pas.
+          <Bloc key={`${section.type}-${i}`} section={section} />
+        ))}
+
+        {/*
+          Le territoire et les pages sœurs, dans UN SEUL bloc révélé : c'est ce
+          que fait le gabarit département, les communes puis les autres
+          départements sans rupture de section entre les deux. Le gabarit
+          secteur, qui n'a pas de communes, sort ses pages sœurs plus bas, dans
+          sa propre section.
+        */}
+        {communes.length > 0 ? (
+          <>
+            <section style={{ padding: "var(--sec) 0 0" }}>
+              <div style={LARGEUR}>
+                <div data-reveal="">
+                  {contenu.communesSurtitre ? (
+                    <div style={SURTITRE}>{contenu.communesSurtitre}</div>
+                  ) : null}
+                  {contenu.communesTitre ? (
+                    <h2
+                      style={{
+                        ...TITRE2,
+                        margin: "0 0 32px",
+                        maxWidth: "24ch",
+                      }}
+                    >
+                      {contenu.communesTitre}
+                    </h2>
+                  ) : null}
+                  <div
+                    style={{
+                      ...RANGEE_PUCES,
+                      marginBottom: autres.length > 0 ? 44 : 0,
+                    }}
+                  >
+                    {communes.map((commune) => (
+                      <span key={commune} style={PUCE}>
+                        {commune}
+                      </span>
+                    ))}
+                  </div>
+                  {autres.length > 0 ? (
+                    <>
+                      {contenu.autresSurtitre ? (
+                        <div style={SURTITRE}>{contenu.autresSurtitre}</div>
+                      ) : null}
+                      <PucesLiens liens={autres} />
+                    </>
+                  ) : null}
+                </div>
+              </div>
+            </section>
+            <div style={{ height: "var(--sec)" }} />
+          </>
+        ) : null}
+
+        {communes.length === 0 && autres.length > 0 ? (
+          <section style={{ padding: "var(--sec) 0 var(--sec)" }}>
+            <div style={LARGEUR}>
+              <div data-reveal="">
+                {contenu.autresSurtitre ? (
+                  <div style={SURTITRE}>{contenu.autresSurtitre}</div>
+                ) : null}
+                <PucesLiens liens={autres} />
+              </div>
+            </div>
+          </section>
+        ) : null}
+
+        {appel ? (
+          <section style={{ padding: "var(--sec) 0 var(--sec)" }}>
+            <div style={LARGEUR}>
+              <div data-reveal="" style={PANNEAU_APPEL}>
+                <div>
+                  {contenu.appelTitre ? (
+                    <h2
+                      style={{
+                        font: "600 calc(clamp(24px,2.5vw,36px) * var(--ts))/1.1 var(--ft)",
+                        letterSpacing: "-.04em",
+                        margin: "0 0 12px",
+                        maxWidth: "26ch",
+                        textWrap: "balance",
+                      }}
+                    >
+                      {contenu.appelTitre}
+                    </h2>
+                  ) : null}
+                  {contenu.appelTexte ? (
+                    <p
+                      style={{
+                        font: "400 16.5px/1.6 var(--fb)",
+                        color: "var(--ink2)",
+                        margin: 0,
+                        maxWidth: "52ch",
+                      }}
+                    >
+                      <TexteRiche texte={contenu.appelTexte} />
+                    </p>
+                  ) : null}
+                </div>
+                {boutonAppel?.libelle ? (
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: 10,
+                      flex: "none",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <a
+                      // Sans cible fournie, le bouton vise le formulaire de la
+                      // page : c'est la convention du projet, pas une invention.
+                      href={
+                        boutonAppel.href && cibleSure(boutonAppel.href)
+                          ? boutonAppel.href
+                          : ANCRE_FORMULAIRE
+                      }
+                      className={styles.boutonPrincipal}
+                      style={{
+                        ...BOUTON_ACTION,
+                        padding: "16px 28px",
+                        font: "600 15.5px var(--fb)",
+                      }}
+                    >
+                      {boutonAppel.libelle}
+                    </a>
+                  </div>
+                ) : null}
+              </div>
+            </div>
+          </section>
+        ) : null}
+
+        {maillage}
       </main>
     </div>
   );

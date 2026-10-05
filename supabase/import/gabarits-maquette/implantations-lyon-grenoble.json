@@ -3,12 +3,12 @@
   "contenu": {
     "gabarit": "ville",
     "chapeau": "Peu de bassins français empilent autant de contraintes différentes sur trente kilomètres : la microélectronique du Grésivaudan, exigeante en propreté et en traçabilité, la chimie de procédé du sud grenoblois, les papeteries en service continu, et l'héritage de la houille blanche dans le matériel électrique. Nos techniciens travaillent les utilités et les équipements de production de ces quatre mondes.",
-    "action": {
-      "libelle": "Faire chiffrer ma maintenance à Grenoble",
-      "href": "#formulaire"
-    },
-    "telephone": "04 78 33 72 05",
-    "delai": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte en option, nuits, week-ends et jours fériés.",
+    "actions": [
+      {
+        "libelle": "Faire chiffrer ma maintenance à Grenoble",
+        "href": "#formulaire"
+      }
+    ],
     "reperes": [
       {
         "valeur": "+ 120",
@@ -24,16 +24,9 @@
         "detail": "Aucune en Isère, des techniciens qui s'y déplacent"
       }
     ],
-    "logos": [
-      "ERIKS",
-      "JTEKT",
-      "MERSEN",
-      "SUEZ",
-      "VALEO"
-    ],
-    "problemeTitre": "Dans le Grésivaudan, ce n'est presque jamais la machine de production qui arrête la ligne.",
-    "problemeTexte": "C'est un compresseur, une pompe à vide ou un groupe froid que personne ne regardait.",
-    "problemes": [
+    "contact": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 en option, nuits, week-ends et jours fériés.",
+    "constatTexte": "Dans le Grésivaudan, ce n'est presque jamais la machine de production qui arrête la ligne. C'est un compresseur, une pompe à vide ou un groupe froid que personne ne regardait.",
+    "constatPuces": [
       {
         "texte": "Air comprimé, vide, fluides, groupes froids : en microélectronique, une dérive d'utilité se voit sur le produit avant de se voir sur l'équipement.",
         "accroche": "Les utilités font tomber les procédés sensibles."
@@ -55,76 +48,7 @@
         "accroche": "La vallée est étroite, la compétence rare."
       }
     ],
-    "offre": [
-      {
-        "benefice": "Vous fermez la cause première de la plupart des arrêts de ligne sur un site sensible.",
-        "prestation": {
-          "texte": "air comprimé, vide, fluides, groupes froids, distribution électrique.",
-          "accroche": "Les utilités traitées comme des équipements critiques"
-        }
-      },
-      {
-        "benefice": "Un intervenant extérieur cesse d'être un risque de contamination ou de non-conformité.",
-        "prestation": {
-          "texte": ", procédure d'entrée comprise.",
-          "accroche": "Le respect des règles de propreté et des habilitations du site"
-        }
-      },
-      {
-        "benefice": "L'arrêt subi recule, et la charge de vos électriciens et mécaniciens internes s'allège.",
-        "prestation": {
-          "texte": "**Un préventif écrit, gammes et périodicités calées sur vos heures de fonctionnement.**"
-        }
-      },
-      {
-        "benefice": "Un seul contrat pour la mécanique de précision comme pour la chaudronnerie de procédé.",
-        "prestation": {
-          "texte": "[mécanique](/expertises/mecanique/), [électricité](/expertises/electrique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure](/expertises/soudure/).",
-          "accroche": "Le champ technique complet"
-        }
-      },
-      {
-        "benefice": "Les procédés continus sont couverts la nuit, le week-end et les jours fériés.",
-        "prestation": {
-          "texte": ", tenue par nos techniciens mobiles, comme partout en France ([voir nos implantations](/implantations/lyon/)).",
-          "accroche": "Astreinte en option"
-        }
-      },
-      {
-        "benefice": "Calages de précision, jalons datés, chiffrage écrit : le redémarrage se prépare, il ne s'espère pas.",
-        "prestation": {
-          "texte": "[transfert de production](/offres/chantier/transfert-de-production/), [remise en état](/offres/retrofit/remise-en-etat/), [arrêt planifié](/offres/arret-technique/).",
-          "accroche": "Les grands projets pris en charge"
-        }
-      }
-    ],
-    "etapes": [
-      {
-        "texte": "Vous décrivez la panne ou le besoin au 04 78 33 72 05. Rappel dans l'heure aux horaires ouvrés pour qualifier l'équipement, l'accès et les habilitations.",
-        "titre": "Le premier contact"
-      },
-      {
-        "texte": "Périmètre, moyens, taux, conditions d'intervention, accepté avant le départ du technicien.",
-        "titre": "Le devis écrit"
-      },
-      {
-        "texte": "Règles de propreté du site, tenue, outillage dédié, plan de prévention. Cette étape se règle avant, pas devant le sas.",
-        "titre": "La préparation d'accès"
-      },
-      {
-        "texte": "Accueil sécurité, consignation, diagnostic, réparation, essais.",
-        "titre": "L'intervention"
-      },
-      {
-        "texte": "L'analyse cherche l'origine réelle de la défaillance, utilités comprises, pour éviter la récidive.",
-        "titre": "La cause racine"
-      },
-      {
-        "texte": "Résultats, préconisations, seuils à surveiller, versés dans votre GMAO en toute confidentialité.",
-        "titre": "Le compte rendu"
-      }
-    ],
-    "garanties": [
+    "reponsePuces": [
       {
         "texte": "nous intervenons sur les utilités et les équipements périphériques de production. Pour les procédés les plus sensibles, nous travaillons dans vos règles et avec vos habilitations, et nous le disons quand un matériel sort de notre champ.",
         "accroche": "Le périmètre dit avec franchise"
@@ -138,44 +62,7 @@
         "accroche": "Vous gardez la main"
       }
     ],
-    "appel": {
-      "question": "Besoin de savoir laquelle de vos utilités arrêtera votre ligne la prochaine fois ?",
-      "bouton": "Faire chiffrer ma maintenance à Grenoble",
-      "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
-    },
-    "preuves": [
-      {
-        "texte": "troisième trimestre 2025, reporting à la direction industrielle",
-        "titre": "Un responsable maintenance intégré sur site pendant une montée de cadence",
-        "lienHref": "/preuves/eriks/",
-        "lienLibelle": "Étude de cas ERIKS"
-      },
-      {
-        "texte": "d'un équipementier automobile, en 2025",
-        "titre": "Techniciens intégrés aux équipes pour sécuriser la maintenance des installations",
-        "lienHref": "/preuves/jtekt/",
-        "lienLibelle": "Étude de cas JTEKT : maintenance des installations"
-      },
-      {
-        "texte": "deuxième et troisième trimestres 2025",
-        "titre": "Un automaticien SIEMENS à temps plein pour le démarrage d'une ligne neuve",
-        "lienHref": "/preuves/mersen/",
-        "lienLibelle": "Étude de cas MERSEN : nouvelles lignes"
-      },
-      {
-        "texte": "remise en état d'un site de traitement des eaux industrielles",
-        "titre": "Un électromécanicien habilité risque chimique mobilisé 6 mois",
-        "lienHref": "/preuves/suez-remise-en-etat/",
-        "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
-      },
-      {
-        "texte": "accompagnement d'une montée en cadence",
-        "titre": "3 à 5 techniciens déployés dans plusieurs usines françaises, depuis septembre 2024",
-        "lienHref": "/preuves/valeo-usines/",
-        "lienLibelle": "Étude de cas VALEO : plusieurs usines"
-      }
-    ],
-    "questions": [
+    "faq": [
       {
         "reponse": "Nous intervenons sur les utilités et les équipements périphériques de production : fluides, air comprimé, vide, mécanique, chaudronnerie, électricité, automatisme. Pour les procédés les plus sensibles, nous travaillons en milieu contrôlé, avec vos règles de propreté, vos habilitations et votre assistance au redémarrage.",
         "question": "Intervenez-vous en salle blanche et en microélectronique ?"
@@ -189,7 +76,7 @@
         "question": "Couvrez-vous toute l'Isère ?"
       },
       {
-        "reponse": "Aucun délai de façade ne figure sur cette page. Ce que nous tenons : un rappel dans l'heure aux horaires ouvrés, une qualification assez précise pour éviter un second déplacement, et l'astreinte en option la nuit, le week-end et les jours fériés. Le circuit et les priorités s'écrivent au devis.",
+        "reponse": "Aucun délai de façade ne figure sur cette page. Ce que nous tenons : un rappel dans l'heure aux horaires ouvrés, une qualification assez précise pour éviter un second déplacement, et l'astreinte 24/24 et 7/7 en option la nuit, le week-end et les jours fériés. Le circuit et les priorités s'écrivent au devis.",
         "question": "Quel délai pour une intervention à Grenoble ?"
       },
       {
@@ -205,63 +92,183 @@
         "question": "Externaliser, est-ce céder le pilotage de notre parc ?"
       }
     ],
-    "liens": [
+    "autres": [
       {
-        "libelle": "Mécanique",
-        "href": "/expertises/mecanique/"
+        "libelle": "Lille",
+        "href": "/implantations/lille/"
       },
       {
-        "libelle": "Électricité",
-        "href": "/expertises/electrique/"
+        "libelle": "Lyon",
+        "href": "/implantations/lyon/"
       },
       {
-        "libelle": "Automatisme",
-        "href": "/expertises/automatisme/"
+        "libelle": "saint etienne",
+        "href": "/implantations/lyon/saint-etienne/"
       },
       {
-        "libelle": "Hydraulique",
-        "href": "/expertises/hydraulique/"
+        "libelle": "Valence",
+        "href": "/implantations/lyon/valence/"
       },
       {
-        "libelle": "Pneumatique",
-        "href": "/expertises/pneumatique/"
+        "libelle": "Nantes",
+        "href": "/implantations/nantes/"
       },
       {
-        "libelle": "Soudure",
-        "href": "/expertises/soudure/"
+        "libelle": "Brest",
+        "href": "/implantations/nantes/brest/"
       },
       {
-        "libelle": "Voir nos implantations",
-        "href": "/implantations/lyon/",
-        "contexte": ", tenue par nos techniciens mobiles, comme partout en France (voir nos implantations)."
+        "libelle": "Rennes",
+        "href": "/implantations/nantes/rennes/"
       },
       {
-        "libelle": "Transfert de production",
-        "href": "/offres/chantier/transfert-de-production/"
+        "libelle": "paris",
+        "href": "/implantations/paris/"
       },
       {
-        "libelle": "Remise en état",
-        "href": "/offres/retrofit/remise-en-etat/"
+        "libelle": "Rouen",
+        "href": "/implantations/paris/rouen/"
       },
       {
-        "libelle": "Arrêt planifié",
-        "href": "/offres/arret-technique/"
+        "libelle": "Strasbourg",
+        "href": "/implantations/strasbourg/"
       },
       {
-        "libelle": "Résidence",
-        "href": "/offres/residence/",
-        "contexte": "Oui, avec l'offre résidence : un salarié Migen qui rejoint votre équipe, suivi par un référent, en poste sous 2 à 3 semaines."
+        "libelle": "Mulhouse",
+        "href": "/implantations/strasbourg/mulhouse/"
       },
       {
-        "libelle": "Externaliser sa maintenance",
-        "href": "/ressources/livres-blancs/externaliser-sa-maintenance/",
-        "contexte": "Notre ressource externaliser sa maintenance détaille les points à verrouiller avant de signer."
+        "libelle": "Toulouse",
+        "href": "/implantations/toulouse/"
+      },
+      {
+        "libelle": "Bordeaux",
+        "href": "/implantations/toulouse/bordeaux/"
       }
     ],
-    "appelFinal": {
-      "question": "Besoin de fiabiliser un site où chaque heure d'arrêt se paie très cher ?",
-      "bouton": "Faire chiffrer ma maintenance à Grenoble",
-      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
-    }
+    "reste": [
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "benefice": "Vous fermez la cause première de la plupart des arrêts de ligne sur un site sensible.",
+            "prestation": {
+              "texte": "air comprimé, vide, fluides, groupes froids, distribution électrique.",
+              "accroche": "Les utilités traitées comme des équipements critiques"
+            }
+          },
+          {
+            "benefice": "Un intervenant extérieur cesse d'être un risque de contamination ou de non-conformité.",
+            "prestation": {
+              "texte": ", procédure d'entrée comprise.",
+              "accroche": "Le respect des règles de propreté et des habilitations du site"
+            }
+          },
+          {
+            "benefice": "L'arrêt subi recule, et la charge de vos électriciens et mécaniciens internes s'allège.",
+            "prestation": {
+              "texte": "**Un préventif écrit, gammes et périodicités calées sur vos heures de fonctionnement.**"
+            }
+          },
+          {
+            "benefice": "Un seul contrat pour la mécanique de précision comme pour la chaudronnerie de procédé.",
+            "prestation": {
+              "texte": "[mécanique](/expertises/mecanique/), [électricité](/expertises/electrique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure](/expertises/soudure/).",
+              "accroche": "Le champ technique complet"
+            }
+          },
+          {
+            "benefice": "Les procédés continus sont couverts la nuit, le week-end et les jours fériés.",
+            "prestation": {
+              "texte": ", tenue par nos techniciens mobiles, comme partout en France ([voir nos implantations](/implantations/lyon/)).",
+              "accroche": "Astreinte 24/24 et 7/7 en option"
+            }
+          },
+          {
+            "benefice": "Calages de précision, jalons datés, chiffrage écrit : le redémarrage se prépare, il ne s'espère pas.",
+            "prestation": {
+              "texte": "[transfert de production](/offres/chantier/transfert-de-production/), [remise en état](/offres/retrofit/remise-en-etat/), [arrêt planifié](/offres/arret-technique/).",
+              "accroche": "Les grands projets pris en charge"
+            }
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "texte": "Vous décrivez la panne ou le besoin au 04 78 33 72 05. Rappel dans l'heure aux horaires ouvrés pour qualifier l'équipement, l'accès et les habilitations.",
+            "titre": "Le premier contact"
+          },
+          {
+            "texte": "Périmètre, moyens, taux, conditions d'intervention, accepté avant le départ du technicien.",
+            "titre": "Le devis écrit"
+          },
+          {
+            "texte": "Règles de propreté du site, tenue, outillage dédié, plan de prévention. Cette étape se règle avant, pas devant le sas.",
+            "titre": "La préparation d'accès"
+          },
+          {
+            "texte": "Accueil sécurité, consignation, diagnostic, réparation, essais.",
+            "titre": "L'intervention"
+          },
+          {
+            "texte": "L'analyse cherche l'origine réelle de la défaillance, utilités comprises, pour éviter la récidive.",
+            "titre": "La cause racine"
+          },
+          {
+            "texte": "Résultats, préconisations, seuils à surveiller, versés dans votre GMAO en toute confidentialité.",
+            "titre": "Le compte rendu"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "bouton": "Faire chiffrer ma maintenance à Grenoble",
+        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
+        "question": "Besoin de savoir laquelle de vos utilités arrêtera votre ligne la prochaine fois ?"
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "texte": "troisième trimestre 2025, reporting à la direction industrielle",
+            "titre": "Un responsable maintenance intégré sur site pendant une montée de cadence",
+            "lienHref": "/preuves/eriks/",
+            "lienLibelle": "Étude de cas ERIKS"
+          },
+          {
+            "texte": "d'un équipementier automobile, en 2025",
+            "titre": "Techniciens intégrés aux équipes pour sécuriser la maintenance des installations",
+            "lienHref": "/preuves/jtekt/",
+            "lienLibelle": "Étude de cas JTEKT : maintenance des installations"
+          },
+          {
+            "texte": "deuxième et troisième trimestres 2025",
+            "titre": "Un automaticien SIEMENS à temps plein pour le démarrage d'une ligne neuve",
+            "lienHref": "/preuves/mersen/",
+            "lienLibelle": "Étude de cas MERSEN : nouvelles lignes"
+          },
+          {
+            "texte": "remise en état d'un site de traitement des eaux industrielles",
+            "titre": "Un électromécanicien habilité risque chimique mobilisé 6 mois",
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
+          },
+          {
+            "texte": "accompagnement d'une montée en cadence",
+            "titre": "3 à 5 techniciens déployés dans plusieurs usines françaises, depuis septembre 2024",
+            "lienHref": "/preuves/valeo-usines/",
+            "lienLibelle": "Étude de cas VALEO : plusieurs usines"
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "bouton": "Faire chiffrer ma maintenance à Grenoble",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
+        "question": "Besoin de fiabiliser un site où chaque heure d'arrêt se paie très cher ?"
+      }
+    ]
   }
 }

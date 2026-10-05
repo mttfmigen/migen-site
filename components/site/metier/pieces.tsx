@@ -8,7 +8,7 @@ import {
   BOUTON_SECONDAIRE,
   VERRE,
 } from "@/components/site/blocs/habillage";
-import type { BoutonMetier, CtaMetier, PhotoMetier } from "@/types/metier";
+import type { BoutonMetier, ContenuMetier, PhotoMetier } from "@/types/metier";
 
 import styles from "./PageMetier.module.css";
 
@@ -18,9 +18,21 @@ import styles from "./PageMetier.module.css";
  *
  * EXTRAITES DE `PageMetier.tsx` pour tenir le plafond de 400 lignes par fichier
  * du contrat de portage. La découpe suit ce que la maquette répète : une liste
- * cochée, un visuel en cadre, les boutons, et la carte
+ * cochée, une rangée de pastilles, un visuel en cadre, les boutons, et la carte
  * de verre qui ferme la page. Tous sont des composants SERVEUR.
  */
+
+/** Une pastille, neutre ou orange (habilitations). */
+export function pastille(orange: boolean): CSSProperties {
+  return {
+    font: "500 13px var(--fb)",
+    padding: "8px 15px",
+    borderRadius: 999,
+    background: orange ? "var(--acc-w)" : "var(--gsol)",
+    border: orange ? "1px solid rgba(255,124,60,.28)" : "1px solid var(--line)",
+    color: "var(--ink1)",
+  };
+}
 
 /**
  * Cible retenue pour un bouton, ou `null` si elle est refusée.
@@ -108,6 +120,39 @@ export function Puces({
   );
 }
 
+/** Une rangée de pastilles de texte. */
+export function Pastilles({
+  items,
+  id,
+  orange,
+  marge,
+}: {
+  items: string[];
+  id: string;
+  orange: boolean;
+  marge: number;
+}) {
+  return (
+    <ul
+      aria-labelledby={id}
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: 8,
+        margin: `0 0 ${marge}px`,
+        padding: 0,
+        listStyle: "none",
+      }}
+    >
+      {items.map((item, i) => (
+        <li key={`${i}-${item.slice(0, 24)}`} style={pastille(orange)}>
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 /**
  * Le visuel. `img` et non `next/image` : les fichiers de la maquette ne sont pas
  * encore rapatriés, leurs dimensions intrinsèques sont inconnues, et c'est déjà
@@ -147,7 +192,7 @@ export function CarteAction({
   contenu,
   rembourrage,
 }: {
-  contenu: CtaMetier;
+  contenu: NonNullable<ContenuMetier["cta"]>;
   rembourrage: number;
 }) {
   const href = cible(contenu.bouton.href);

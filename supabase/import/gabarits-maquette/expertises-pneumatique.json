@@ -2,15 +2,61 @@
   "url": "/expertises/pneumatique/",
   "contenu": {
     "gabarit": "domaine",
-    "sections": [
+    "chapeau": "Nous mesurons le débit produit face au débit utile, puis nous localisons chaque fuite à l'ultrason. Nous les classons par débit perdu, et nous réparons ce qui compte en premier.",
+    "boutons": [
       {
-        "type": "heros",
-        "h1": "Maintenance pneumatique",
-        "mecanisme": "Nous mesurons le débit produit face au débit utile, puis nous localisons chaque fuite à l'ultrason. Nous les classons par débit perdu, et nous réparons ce qui compte en premier.",
-        "cta": "Demander une intervention",
-        "telephone": "04 78 33 72 05",
-        "phraseDelai": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 prend le relais la nuit et le week-end."
+        "libelle": "Demander une intervention"
+      }
+    ],
+    "traitements": [
+      "La chasse aux fuites",
+      "Une production d'air maîtrisée",
+      "Un traitement de l'air propre",
+      "Des actionneurs fiables",
+      "Une commande précise",
+      "La panne mixte traitée en une visite"
+    ],
+    "autres": [
+      {
+        "libelle": "Automatisme industriel",
+        "href": "/expertises/automatisme/"
       },
+      {
+        "libelle": "Maintenance électrique industrielle",
+        "href": "/expertises/electrique/"
+      },
+      {
+        "libelle": "Électromécanique industrielle",
+        "href": "/expertises/electromecanique/"
+      },
+      {
+        "libelle": "Maintenance hydraulique",
+        "href": "/expertises/hydraulique/"
+      },
+      {
+        "libelle": "Maintenance mécanique",
+        "href": "/expertises/mecanique/"
+      },
+      {
+        "libelle": "Maintenance robotique",
+        "href": "/expertises/robotique/"
+      },
+      {
+        "libelle": "Soudure industrielle",
+        "href": "/expertises/soudure/"
+      },
+      {
+        "libelle": "Maintenance tuyauterie industrielle",
+        "href": "/expertises/tuyauterie/"
+      }
+    ],
+    "cta": {
+      "question": "Besoin que votre compresseur arrête de tourner pour rien ?",
+      "bouton": {
+        "libelle": "Demander une intervention"
+      }
+    },
+    "reste": [
       {
         "type": "chiffres",
         "chiffres": [
@@ -223,11 +269,6 @@
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France partout en France. Un réseau d'atelier se contrôle aussi utilement qu'un réseau d'usine."
           }
         ]
-      },
-      {
-        "type": "ctaFinal",
-        "question": "Besoin que votre compresseur arrête de tourner pour rien ?",
-        "bouton": "Demander une intervention"
       }
     ]
   }

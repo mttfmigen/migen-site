@@ -35,38 +35,19 @@ const IMAGE_LOGO = {
   display: "block",
 } as const;
 
-export interface ProprietesCertificationsRse {
-  /**
-   * Le panneau de DROITE. Par défaut « Sécurité & RSE », les quatre chiffres de
-   * l'accueil.
-   *
-   * POURQUOI LE RENDRE RÉGLABLE : le gabarit 03 des pages d'offre dessine la
-   * MÊME section à deux colonnes, avec la même carte en verre « Certifications »
-   * au pixel, mais « Qui intervient chez vous » à droite. Recopier la carte en
-   * verre aurait donné deux versions de la même carte, qui dériveraient au
-   * premier ajustement de charte. Le panneau gauche est donc partagé, et seul le
-   * droit se remplace.
-   */
-  panneauDroit?: React.ReactNode;
-  /** La grille des deux colonnes. Par défaut celle de l'accueil, `.9fr 1.1fr`. */
-  grille?: React.CSSProperties;
-}
-
-const GRILLE_ACCUEIL: React.CSSProperties = {
-  display: "grid",
-  gridTemplateColumns: ".9fr 1.1fr",
-  gap: "20px",
-  alignItems: "stretch",
-};
-
-export default function CertificationsRse({
-  panneauDroit,
-  grille = GRILLE_ACCUEIL,
-}: ProprietesCertificationsRse = {}) {
+export default function CertificationsRse() {
   return (
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
-        <div className="mg-r2" data-reveal="" style={grille}>
+        <div
+          className="mg-r2" data-reveal=""
+          style={{
+            display: "grid",
+            gridTemplateColumns: ".9fr 1.1fr",
+            gap: "20px",
+            alignItems: "stretch",
+          }}
+        >
           <div
             style={{
               background: "rgba(255,255,255,var(--gl-a))",
@@ -121,7 +102,6 @@ export default function CertificationsRse({
             </p>
           </div>
 
-          {panneauDroit ?? (
           <div
             style={{
               background: "var(--panel)",
@@ -185,7 +165,6 @@ export default function CertificationsRse({
                   reste ouverte et suivie dans docs/RESERVES-CONTENU.md. */}
             </div>
           </div>
-          )}
         </div>
       </div>
     </section>

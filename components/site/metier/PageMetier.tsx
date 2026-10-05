@@ -7,27 +7,27 @@ import { LARGEUR, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import type { ContenuMetier } from "@/types/metier";
 
 import styles from "./PageMetier.module.css";
-import Gabarit07 from "./Gabarit07";
-import { Boutons, CarteAction, Puces, Visuel } from "./pieces";
+import Corps from "./Corps";
+import { Boutons, CarteAction, Pastilles, Puces, Visuel } from "./pieces";
 
 /**
- * Aiguillage des gabarits MÉTIER et DOMAINE.
+ * Gabarits MÉTIER et DOMAINE, portés de « Migen - Site final.dc.html »,
+ * lignes 5452 à 5541 et 5543 à 5600.
  *
- * DEUX GABARITS, DEUX FICHIERS DE MAQUETTE. Ce fichier a longtemps rendu les
- * deux avec le même dessin, celui de « Migen - Site final.dc.html », parce qu'on
- * les croyait jumeaux. Ils ne le sont pas :
- *
- *   · `gabarit: "metier"`, soit `/carriere/<metier>/`, 13 pages, est dessiné par
- *     « Migen - Gabarit 07 Metier.dc.html » et rendu par `Gabarit07.tsx`. Voir
- *     l'en-tête de ce fichier pour ce que ce dessin change.
- *   · `gabarit: "domaine"`, soit `/expertises/<domaine>/`, 19 pages, garde le
- *     dessin porté de « Site final » : héros, mosaïque « Ce que nous traitons »,
- *     pastilles des autres domaines, carte de fin.
+ * Ils servent `/carriere/<metier>/` et `/expertises/<domaine>/`, soit 45 URL de
+ * l'inventaire, qui passaient toutes par le gabarit de VENTE : dix sections
+ * commerciales sur une fiche métier, c'est ce que le client a vu et nommé
+ * « les pages expertise ne sont pas les mêmes ».
  *
  * Composant SERVEUR. Aucun état, aucun écouteur : les survols sont dans le
  * module CSS, et les révélations au défilement sont posées en `data-reveal`,
  * animées par `components/site/Moteurs.tsx`, déjà monté dans la mise en page
- * racine.
+ * racine. Rien à animer ici.
+ *
+ * UN SEUL GABARIT POUR LES DEUX PAGES : voir la raison dans `types/metier.ts`.
+ * Ce qui diffère réellement est isolé par le discriminant `gabarit`, quatre fois
+ * en tout : la grille du héros, l'échelle du H1, le bloc de listes, et les
+ * libellés des pastilles.
  */
 
 /** Rythme des sections intermédiaires de la maquette, haut ET bas. */
@@ -53,18 +53,49 @@ export default function PageMetier({
   filAriane,
   maillage,
 }: ProprietesPageMetier) {
-  if (contenu.gabarit === "metier") {
-    return (
-      <Gabarit07
-        titre={titre}
-        contenu={contenu}
-        filAriane={filAriane}
-        maillage={maillage}
-      />
-    );
-  }
-
+  const metier = contenu.gabarit === "metier";
   const photo = contenu.photo;
+
+  // Le bloc de listes du héros secondaire. Il ne s'affiche que s'il a de la
+  // matière : une section vide vaut moins qu'une section absente.
+  const listes = metier
+    ? (contenu.missions?.length ?? 0) +
+      (contenu.competences?.length ?? 0) +
+      (contenu.habilitations?.length ?? 0)
+    : (contenu.traitements?.length ?? 0);
+
+  const enTeteHero = (
+    <div>
+      <div style={{ ...SURTITRE, marginBottom: 20 }}>
+        {metier ? "Métier" : "Domaine d'activité"}
+      </div>
+      <h1
+        style={{
+          font: `600 calc(clamp(36px,${metier ? "4.2vw,62px" : "4.4vw,66px"}) * var(--ts))/1.03 var(--ft)`,
+          letterSpacing: "-.045em",
+          margin: 0,
+          maxWidth: "18ch",
+          textWrap: "balance",
+        }}
+      >
+        {titre}
+      </h1>
+      {contenu.chapeau ? (
+        <p
+          className={styles.corpus}
+          style={{
+            font: `400 ${metier ? "17.5px/1.65" : "18.5px/1.6"} var(--fb)`,
+            color: "var(--ink2)",
+            margin: "24px 0 0",
+            maxWidth: metier ? "48ch" : "56ch",
+          }}
+        >
+          <TexteRiche texte={contenu.chapeau} />
+        </p>
+      ) : null}
+      {contenu.boutons?.length ? <Boutons boutons={contenu.boutons} /> : null}
+    </div>
+  );
 
   return (
     <div className="mg-site">
@@ -75,43 +106,27 @@ export default function PageMetier({
 
         {/* ------------------------------------------------------------ héros */}
         <section style={{ ...LARGEUR, padding: "70px 40px 0" }}>
-          <div>
-            <div style={{ ...SURTITRE, marginBottom: 20 }}>
-              Domaine d&apos;activité
-            </div>
-            <h1
+          {metier && photo ? (
+            <div
+              className="mg-r2"
               style={{
-                font: "600 calc(clamp(36px,4.4vw,66px) * var(--ts))/1.03 var(--ft)",
-                letterSpacing: "-.045em",
-                margin: 0,
-                maxWidth: "18ch",
-                textWrap: "balance",
+                display: "grid",
+                gridTemplateColumns: "1.1fr .9fr",
+                gap: 52,
+                alignItems: "start",
               }}
             >
-              {titre}
-            </h1>
-            {contenu.chapeau ? (
-              <p
-                className={styles.corpus}
-                style={{
-                  font: "400 18.5px/1.6 var(--fb)",
-                  color: "var(--ink2)",
-                  margin: "24px 0 0",
-                  maxWidth: "56ch",
-                }}
-              >
-                <TexteRiche texte={contenu.chapeau} />
-              </p>
-            ) : null}
-            {contenu.boutons?.length ? (
-              <Boutons boutons={contenu.boutons} />
-            ) : null}
-          </div>
+              {enTeteHero}
+              <Visuel photo={photo} cadre={{ height: 380 }} />
+            </div>
+          ) : (
+            enTeteHero
+          )}
         </section>
 
         {/* Le domaine porte son visuel dans une mosaïque, avec la liste de ce
             qu'il traite en carte de verre à côté. */}
-        {photo || contenu.traitements?.length ? (
+        {!metier && (photo || contenu.traitements?.length) ? (
           <section style={{ ...LARGEUR, padding: "44px 40px 0" }}>
             <div
               data-reveal=""
@@ -131,7 +146,13 @@ export default function PageMetier({
                 />
               ) : null}
               {contenu.traitements?.length ? (
-                <div style={{ ...VERRE, boxShadow: "none", padding: "32px 34px" }}>
+                <div
+                  style={{
+                    ...VERRE,
+                    boxShadow: "none",
+                    padding: "32px 34px",
+                  }}
+                >
                   <div
                     id="mg-traitements"
                     style={{
@@ -159,14 +180,96 @@ export default function PageMetier({
             aussi : la page garde l'ouverture et la fermeture de la maquette, et
             le texte rédigé tient entre les deux. Voir `reste` dans
             `types/metier.ts`. */}
-        {contenu.reste?.length
+        {!metier && contenu.reste?.length
           ? contenu.reste.map((section, i) => (
               // L'index suffit comme clé : l'ordre du tableau EST le gabarit.
               <Bloc key={`${section.type}-${i}`} section={section} />
             ))
           : null}
 
-        {/* ---------------------- autres domaines, puis appel à l'action */}
+        {/* ------------------------------------- missions et compétences (métier) */}
+        {metier && listes > 0 ? (
+          <section style={{ padding: "var(--sec) 0 0" }}>
+            <div style={LARGEUR}>
+              <div
+                data-reveal=""
+                className="mg-r2"
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: 70,
+                  alignItems: "start",
+                }}
+              >
+                <div>
+                  {contenu.missions?.length ? (
+                    <>
+                      <div
+                        id="mg-missions"
+                        style={{ ...SURTITRE, marginBottom: 18 }}
+                      >
+                        Missions
+                      </div>
+                      <Puces
+                        items={contenu.missions}
+                        id="mg-missions"
+                        police="15.5px/1.55"
+                        gap={10}
+                      />
+                    </>
+                  ) : null}
+                </div>
+                <div>
+                  {contenu.competences?.length ? (
+                    <>
+                      <div
+                        id="mg-competences"
+                        style={{ ...SURTITRE, marginBottom: 18 }}
+                      >
+                        Compétences attendues
+                      </div>
+                      <Pastilles
+                        items={contenu.competences}
+                        id="mg-competences"
+                        orange={false}
+                        marge={26}
+                      />
+                    </>
+                  ) : null}
+                  {contenu.habilitations?.length ? (
+                    <>
+                      <div
+                        id="mg-habilitations"
+                        style={{ ...SURTITRE, marginBottom: 18 }}
+                      >
+                        Habilitations utiles
+                      </div>
+                      <Pastilles
+                        items={contenu.habilitations}
+                        id="mg-habilitations"
+                        orange
+                        marge={0}
+                      />
+                    </>
+                  ) : null}
+                </div>
+              </div>
+            </div>
+          </section>
+        ) : null}
+
+        {/* ------------------------ le corpus que la maquette ne dessine pas
+            Les quatre sections de la maquette tiennent en 155 mots et ne
+            consomment que trois listes du corpus. Le reste, de 30 à 76 blocs
+            de texte rédigé par page, se rend ici, dans la colonne de lecture du
+            gabarit article de la maquette. Voir `corps` dans `types/metier.ts`. */}
+        {metier && contenu.corps?.length ? (
+          <Corps blocs={contenu.corps} />
+        ) : null}
+
+        {/* --------------------------------- autres entrées, puis appel à l'action
+            Le gabarit métier les sépare en deux sections, le domaine les tient
+            dans une seule révélation. C'est la maquette, recopiée telle quelle. */}
         {contenu.autres?.length || contenu.cta ? (
           <section style={SECTION_PLEINE}>
             <div style={LARGEUR}>
@@ -177,7 +280,7 @@ export default function PageMetier({
                       id="mg-autres"
                       style={{ ...SURTITRE, marginBottom: 16 }}
                     >
-                      Les autres domaines
+                      {metier ? "Autres métiers" : "Les autres domaines"}
                     </div>
                     <ul
                       aria-labelledby="mg-autres"
@@ -185,7 +288,9 @@ export default function PageMetier({
                         display: "flex",
                         gap: 8,
                         flexWrap: "wrap",
-                        margin: "0 0 44px",
+                        // Le métier referme sa section ici, le domaine enchaîne
+                        // sur la carte d'appel à l'action, 44px plus bas.
+                        margin: metier ? 0 : "0 0 44px",
                         padding: 0,
                         listStyle: "none",
                       }}
@@ -215,9 +320,21 @@ export default function PageMetier({
                   </>
                 ) : null}
 
-                {contenu.cta ? (
+                {/* Le métier ouvre une seconde section pour sa carte : elle est
+                    donc rendue hors de cette révélation, plus bas. */}
+                {!metier && contenu.cta ? (
                   <CarteAction contenu={contenu.cta} rembourrage={56} />
                 ) : null}
+              </div>
+            </div>
+          </section>
+        ) : null}
+
+        {metier && contenu.cta ? (
+          <section style={SECTION_PLEINE}>
+            <div style={LARGEUR}>
+              <div data-reveal="">
+                <CarteAction contenu={contenu.cta} rembourrage={52} />
               </div>
             </div>
           </section>
@@ -228,3 +345,4 @@ export default function PageMetier({
     </div>
   );
 }
+

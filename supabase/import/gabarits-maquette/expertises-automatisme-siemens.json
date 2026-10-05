@@ -1,16 +1,63 @@
 {
   "url": "/expertises/automatisme/siemens/",
   "contenu": {
-    "gabarit": "specialite",
-    "sections": [
+    "gabarit": "domaine",
+    "chapeau": "Un technicien qui branche son ordinateur sur votre automate, lit les blocs, trouve pourquoi la machine dit non et vous laisse le programme sauvegardé et daté. SIMATIC S7, TIA Portal, STEP 7, WinCC, Profinet et Profibus.",
+    "boutons": [
       {
-        "type": "heros",
-        "h1": "Automaticien Siemens",
-        "mecanisme": "Un technicien qui branche son ordinateur sur votre automate, lit les blocs, trouve pourquoi la machine dit non et vous laisse le programme sauvegardé et daté. SIMATIC S7, TIA Portal, STEP 7, WinCC, Profinet et Profibus.",
-        "cta": "Demander une intervention",
-        "telephone": "04 78 33 72 05",
-        "phraseDelai": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7."
+        "libelle": "Demander une intervention"
+      }
+    ],
+    "traitements": [
+      "Un diagnostic qui va à la cause",
+      "La reprise d'un programme écrit par un autre",
+      "Vos programmes sauvegardés et datés",
+      "Les défauts réseau traités pour ce qu'ils sont",
+      "Les variateurs et la partie puissance repris avec l'automate",
+      "L'obsolescence chiffrée avant l'urgence",
+      "La machine traitée en entier"
+    ],
+    "autres": [
+      {
+        "libelle": "Maintenance électrique industrielle",
+        "href": "/expertises/electrique/"
       },
+      {
+        "libelle": "Électromécanique industrielle",
+        "href": "/expertises/electromecanique/"
+      },
+      {
+        "libelle": "Maintenance hydraulique",
+        "href": "/expertises/hydraulique/"
+      },
+      {
+        "libelle": "Maintenance mécanique",
+        "href": "/expertises/mecanique/"
+      },
+      {
+        "libelle": "Maintenance pneumatique",
+        "href": "/expertises/pneumatique/"
+      },
+      {
+        "libelle": "Maintenance robotique",
+        "href": "/expertises/robotique/"
+      },
+      {
+        "libelle": "Soudure industrielle",
+        "href": "/expertises/soudure/"
+      },
+      {
+        "libelle": "Maintenance tuyauterie industrielle",
+        "href": "/expertises/tuyauterie/"
+      }
+    ],
+    "cta": {
+      "question": "Besoin que vos programmes soient sauvegardés avant la prochaine carte qui lâche ?",
+      "bouton": {
+        "libelle": "Demander une intervention"
+      }
+    },
+    "reste": [
       {
         "type": "chiffres",
         "chiffres": [
@@ -224,11 +271,6 @@
             "reponse": "Oui aux deux. 4 agences, Lyon en siège, Montréal, Dubaï et Madrid, et dix hubs de techniciens à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Nos techniciens sont mobiles et interviennent partout en France. Une sauvegarde de parc et une priorité en cas de panne n'exigent pas un dispositif plus lourd que nécessaire."
           }
         ]
-      },
-      {
-        "type": "ctaFinal",
-        "question": "Besoin que vos programmes soient sauvegardés avant la prochaine carte qui lâche ?",
-        "bouton": "Demander une intervention"
       }
     ]
   }

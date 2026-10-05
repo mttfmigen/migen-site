@@ -1,33 +1,25 @@
 /**
- * Contrôle du gabarit IMPLANTATION, sans navigateur.
+ * Contrôle des gabarits VILLE et DÉPARTEMENT, sans navigateur.
  *
  *   bun components/site/implantation/verification-implantation.tsx
  *
  * CE QU'IL VÉRIFIE, et pourquoi chacun :
  *
  *   1. LES VALEURS VIENNENT DE LA MAQUETTE. Elles sont RELUES dans
- *      `maquette/gabarit-04-ville.html` à chaque exécution, jamais écrites de
- *      mémoire ici : chaque attente est extraite du fichier, puis cherchée dans
- *      le HTML rendu. Une note de lecture peut se tromper et personne ne peut
- *      la rejouer ; ce fichier-ci se rejoue.
- *   2. LES DOUZE SECTIONS, dans l'ordre de la maquette. C'est le défaut qui a
- *      tenu des semaines : le gabarit en rendait cinq, et personne ne le voyait
- *      parce qu'aucun contrôle ne comptait.
- *   3. UN SEUL H1 par page.
- *   4. AUCUN `href="#"`. La maquette en est pleine, sa navigation étant pilotée
+ *      `maquette/accueil-rendu.html` à chaque exécution, jamais écrites de
+ *      mémoire ici. Chaque valeur est cherchée des DEUX côtés : dans le bloc de
+ *      la maquette, et dans le HTML rendu. Une note de lecture peut se tromper
+ *      et personne ne peut la rejouer ; ce fichier-ci se rejoue.
+ *   2. UN SEUL H1 par page.
+ *   3. AUCUN `href="#"`. La maquette en est pleine, sa navigation étant pilotée
  *      par sa propre logique, qui n'est pas portée. Un lien vers nulle part sur
  *      quarante-deux pages référencées est un défaut, pas un détail.
- *   5. AUCUNE classe de couleur Tailwind, AUCUNE variante `dark:`. La charte
+ *   4. AUCUNE classe de couleur Tailwind, AUCUNE variante `dark:`. La charte
  *      vit dans des jetons, et le site n'a pas de mode sombre.
- *   6. LES INTERDITS DE COPIE DU CONTRAT sont absents du rendu. Ils gagnent
- *      CONTRE la maquette, qui écrit « Lyon (siège) » là où le siège est à
- *      Limonest.
- *   7. UNE SECTION SANS DONNÉE NE SE REND PAS DU TOUT. Pas de cadre vide, pas
- *      de sur-titre orphelin, pas de texte de remplissage.
- *
- * LE GABARIT 06 DÉPARTEMENT N'A PAS SON CONTRÔLE À PART : son fichier de
- * maquette est celui de la ville, mêmes douze sections, même markup. Le
- * contrôle rend les deux et vérifie qu'ils produisent le même dessin.
+ *   5. LES INTERDITS DE COPIE DU CONTRAT sont absents du rendu. Ils gagnent
+ *      CONTRE la maquette, qui en écrit plusieurs dans ces deux gabarits.
+ *   6. UNE SECTION SANS DONNÉE NE SE REND PAS DU TOUT. Pas de cadre vide, pas
+ *      de titre orphelin, pas de texte de remplissage.
  */
 
 import assert from "node:assert/strict";
@@ -43,434 +35,458 @@ import PageVille from "./PageVille";
 
 const RACINE = fileURLToPath(new URL("../../..", import.meta.url));
 
-/* ------------------------------------------------------------ la maquette, relue */
+/* ------------------------------------------------------------- la maquette, relue */
 
 const MAQUETTE = readFileSync(
-  join(RACINE, "maquette", "gabarit-04-ville.html"),
+  join(RACINE, "maquette", "accueil-rendu.html"),
   "utf8",
-);
+).split("\n");
 
 /**
  * Le texte, normalisé avant toute comparaison.
  *
- * SANS CELA, LE CONTRÔLE NE VOIT RIEN. La maquette écrit « 10&nbsp;% » et
- * « Une autre question&nbsp;? » avec une entité ; React, lui, rend l'espace
- * insécable comme le CARACTÈRE U+00A0. Chercher « 10 % » avec une espace
- * ordinaire ne trouve ni l'un ni l'autre.
+ * SANS CELA, LE CONTRÔLE NE VOIT RIEN. La maquette écrit « sous 24&nbsp;h » et
+ * « 48&nbsp;h » avec une entité ; React, lui, rend l'espace insécable comme le
+ * CARACTÈRE U+00A0. Chercher « sous 24 h » avec une espace ordinaire ne trouve
+ * ni l'un ni l'autre, et un interdit de copie passerait en silence sur
+ * quarante-deux pages. Même chose pour l'apostrophe typographique, que le
+ * corpus et la maquette mélangent avec l'apostrophe droite.
  *
  * ET L'APOSTROPHE EST ÉCHAPPÉE PAR REACT. `renderToStaticMarkup` rend
- * « l'heure » en « l&#x27;heure ». Chercher « rappel dans l'heure » dans le
- * HTML ne le trouve donc jamais, et c'est la SEULE formulation de délai que le
+ * « l'heure » en « l&#x27;heure ». Chercher « rappel dans l'heure » dans le HTML
+ * ne le trouve donc jamais, et c'est la SEULE formulation de délai que le
  * contrat autorise : un contrôle aveugle à elle ne sait pas distinguer la seule
- * phrase permise de celles qui sont interdites. Seules les apostrophes et les
- * espaces sont décodées, pas `&lt;` ni `&gt;` : les décoder fabriquerait de
- * fausses balises et fausserait le comptage des H1.
+ * phrase permise de celles qui sont interdites. Seules les apostrophes sont
+ * décodées, pas `&lt;` ni `&gt;` : les décoder fabriquerait de fausses balises
+ * et fausserait le comptage des H1.
  */
 function normalise(texte: string): string {
   return texte
-    .replace(/&nbsp;|&#160;| /g, " ")
+    .replace(/&nbsp;|&#160;|\u00A0/g, " ")
     .replace(/&#x27;|&#39;|&apos;/g, "'")
-    .replace(/[’‘]/g, "'")
-    .replace(/&amp;/g, "&");
+    .replace(/[\u2019\u2018]/g, "'");
 }
 
-/** L'ordre des sections du fichier de maquette, par leur étiquette d'écran. */
-function sectionsDeLaMaquette(): string[] {
-  return [...MAQUETTE.matchAll(/<section data-screen-label="([^"]+)"/g)].map(
-    (m) => m[1],
+/**
+ * Le bloc d'un gabarit, découpé sur ses marqueurs `sc-if` plutôt que sur des
+ * numéros de ligne : le fichier peut être réextrait, les numéros bougeraient et
+ * le contrôle vérifierait alors le mauvais bloc en silence.
+ */
+function blocMaquette(drapeau: string): string {
+  const debut = MAQUETTE.findIndex(
+    (ligne) => ligne.startsWith(`<sc-if value="{{ ${drapeau} }}"`),
   );
-}
-
-/** Le bloc d'une section de la maquette, de son ouverture à la suivante. */
-function bloc(etiquette: string): string {
-  const debut = MAQUETTE.indexOf(`<section data-screen-label="${etiquette}"`);
-  assert.ok(debut > -1, `section « ${etiquette} » absente de la maquette`);
-  const suite = MAQUETTE.indexOf("<section data-screen-label=", debut + 1);
-  return MAQUETTE.slice(debut, suite > -1 ? suite : MAQUETTE.length);
-}
-
-/**
- * Les textes LITTÉRAUX d'un bloc : ceux que la maquette écrit elle-même, par
- * opposition aux `{{ p.quelquechose }}` que le corpus remplit. Ce sont les
- * sur-titres, les titres fixes et la copie de la réassurance.
- */
-function litteraux(source: string): string[] {
-  return [...source.matchAll(/>([^<>{}]+)</g)]
-    .map((m) => normalise(m[1]).trim())
-    .filter((t) => t.length > 1 && /[A-Za-zÀ-ÿ]/.test(t));
-}
-
-/** Le sur-titre d'un bloc : le premier littéral posé en capitales par le CSS. */
-function surTitre(etiquette: string): string | null {
-  const source = bloc(etiquette);
-  const m = source.match(/text-transform:uppercase[^>]*>([^<>{}]+)</);
-  return m ? normalise(m[1]).trim() : null;
-}
-
-/** Toutes les valeurs déclarées pour une propriété CSS, dans l'ordre du bloc. */
-function declarations(etiquette: string, propriete: string): string[] {
-  const motif = new RegExp(`(?:^|[;"])${propriete}:([^;"]+)`, "g");
-  return [...bloc(etiquette).matchAll(motif)].map((m) => m[1].trim());
-}
-
-/** La n-ième déclaration d'une propriété, telle que React la réécrirait. */
-function declaration(etiquette: string, propriete: string, n = 0): string {
-  const trouvees = declarations(etiquette, propriete);
-  assert.ok(
-    trouvees.length > n,
-    `« ${propriete} » n° ${n} introuvable dans « ${etiquette} »`,
+  assert.ok(debut > -1, `le bloc « ${drapeau} » est introuvable dans la maquette`);
+  const fin = MAQUETTE.findIndex(
+    (ligne, i) => i > debut && ligne.startsWith("</sc-if>"),
   );
-  return `${propriete}:${trouvees[n]}`;
+  assert.ok(fin > debut, `le bloc « ${drapeau} » n'est pas refermé`);
+  return normalise(MAQUETTE.slice(debut, fin + 1).join("\n"));
 }
 
-/* ----------------------------------------------------------------- le contenu */
+const BLOC_VILLE = blocMaquette("isVille");
+const BLOC_DEPT = blocMaquette("isDept");
+
+/* Le bloc trouvé est-il le bon ? Son étiquette d'écran le dit, et c'est ce qui
+   empêche de valider un gabarit voisin par accident. */
+assert.ok(
+  BLOC_VILLE.includes('data-screen-label="SEO service + ville"'),
+  "le bloc isVille doit être celui du gabarit service + ville",
+);
+assert.ok(
+  BLOC_DEPT.includes('data-screen-label="Gabarit département"'),
+  "le bloc isDept doit être celui du gabarit département",
+);
+
+/* ------------------------------------------------------------------ les données */
 
 /**
- * Le contenu d'une page réelle, relu dans le fichier que le producteur écrit.
- *
- * PAS DE JEU D'ESSAI ÉCRIT À LA MAIN : un contrôle qui invente ses données
- * vérifie le gabarit sur un cas qui n'existe pas. `/implantations/lyon/` est
- * une page témoin : trente-quatre villes lui ressemblent.
+ * Une page de ville complète. Les textes sont courts et inventés POUR LE
+ * CONTRÔLE : ce fichier teste le gabarit, pas le corpus. La complétude du
+ * corpus est contrôlée ailleurs, par `scripts/fabrique_gabarits_implantation.mjs`,
+ * qui compare chaîne par chaîne ce qu'il a lu et ce qu'il a écrit.
  */
-function contenuDeFichier(nom: string): ContenuVille | ContenuDepartement {
-  return JSON.parse(
-    readFileSync(
-      join(RACINE, "supabase", "import", "gabarits-maquette", nom),
-      "utf8",
-    ),
-  ).contenu;
-}
-
-const VILLE = contenuDeFichier("implantations-lyon.json") as ContenuVille;
-const DEPT = contenuDeFichier("implantations-lyon-rhone.json") as ContenuDepartement;
-
-const TITRE_VILLE = "La maintenance industrielle à Lyon, depuis notre siège";
-const TITRE_DEPT = "La maintenance industrielle dans le Rhône, du Beaujolais à Feyzin";
-
-const rendu = normalise(
-  renderToStaticMarkup(<PageVille titre={TITRE_VILLE} contenu={VILLE} />),
-);
-const renduDept = normalise(
-  renderToStaticMarkup(<PageDepartement titre={TITRE_DEPT} contenu={DEPT} />),
-);
-
-/* `gabarit` mis à part, un contenu entièrement vide : aucune section de la
-   maquette n'a de quoi se remplir. */
-const renduVide = normalise(
-  renderToStaticMarkup(
-    <PageVille titre={TITRE_VILLE} contenu={{ gabarit: "ville" }} />,
-  ),
-);
-
-let controles = 0;
-
-function verifie(quoi: string, condition: boolean, detail = "") {
-  assert.ok(condition, `${quoi}${detail ? `\n    ${detail}` : ""}`);
-  controles += 1;
-}
-
-/* ============================ 1. les douze sections, dans l'ordre de la maquette */
-
-const ETIQUETTES = sectionsDeLaMaquette().filter((e) => !e.startsWith("Gabarit"));
-
-verifie(
-  `la maquette dessine douze sections (relevé : ${ETIQUETTES.length})`,
-  ETIQUETTES.length === 12,
-  ETIQUETTES.join(" | "),
-);
-
-/**
- * Les sections sans source dans le corpus, et la raison. Déclarées ici, pas
- * tolérées en silence : le contrôle vérifie qu'elles sont les SEULES absentes.
- */
-const SANS_SOURCE = new Map([
-  [
-    "02 Photo et logos",
-    "la photo n'a aucune source ; le bandeau de noms, lui, est rendu",
+const VILLE: ContenuVille = {
+  gabarit: "ville",
+  surtitre: "Rhône, Grand Lyon",
+  chapeau: "Des techniciens mobilisés, et un [contrat](/offres/zero-arret/) qui tient.",
+  actions: [{ libelle: "Chiffrer mon besoin", href: "#formulaire" }],
+  panneauSurtitre: "Notre présence",
+  adresse: ["1 rue des Vergers", "69760 Limonest"],
+  reperes: [
+    { valeur: "10 %", libelle: "des candidats retenus" },
+    { valeur: "4", libelle: "agences", detail: "Aucune sur place, des techniciens qui s'y déplacent" },
   ],
-]);
+  contact: "Rappel dans l'heure, du lundi au vendredi.",
+  constatTexte: "Une ligne à l'arrêt un vendredi soir.",
+  constatPuces: [{ accroche: "Pas d'équipe à demeure.", texte: "L'arrêt se paie comptant." }],
+  reponseTexte: "Une équipe déjà sur place.",
+  reponsePuces: [{ accroche: "Des propos vérifiables", texte: "Du travail contrôlable." }],
+  faq: [{ question: "Intervenez-vous partout ?", reponse: "Oui, sur tout le bassin." }],
+  autres: [
+    { libelle: "Nantes", href: "/implantations/nantes/" },
+    // Cible hors domaine : le lien doit DISPARAÎTRE, pas être rafistolé.
+    { libelle: "Ailleurs", href: "https://exemple.test/" },
+  ],
+  reste: [
+    {
+      type: "deroule",
+      etapes: [{ titre: "Le contact", texte: "Rappel dans l'heure aux horaires ouvrés." }],
+    },
+  ],
+};
 
-/* Chaque sur-titre de la maquette doit se retrouver dans le rendu, dans
-   l'ordre. L'ordre est ce qui tombe en premier quand on porte à l'envers. */
-let curseur = -1;
-for (const etiquette of ETIQUETTES) {
-  const titre = surTitre(etiquette);
-  if (!titre) continue; // « 01 Héros » et « 07 Appel » n'en ont pas.
-  if (SANS_SOURCE.has(etiquette) && !rendu.includes(titre)) continue;
+const DEPARTEMENT: ContenuDepartement = {
+  gabarit: "departement",
+  chapeau: "Notre département historique.",
+  actions: [{ libelle: "Chiffrer mon besoin", href: "#formulaire" }],
+  reperes: [{ valeur: "+ 120", libelle: "clients industriels" }],
+  autresSurtitre: "Les autres départements",
+  autres: [{ libelle: "Gironde", href: "/implantations/toulouse/gironde/" }],
+  appelTitre: "Un site dans ce département ?",
+  appelTexte: "Donnez-nous l'adresse et le besoin.",
+  appelBouton: { libelle: "Faire venir un technicien", href: "#formulaire" },
+  reste: [
+    {
+      type: "garanties",
+      puces: [{ accroche: "Des propos vérifiables", texte: "Rien d'autre." }],
+    },
+  ],
+};
 
-  const position = rendu.indexOf(titre);
-  verifie(
-    `le sur-titre « ${titre} » (${etiquette}) est rendu`,
-    position > -1,
-  );
-  verifie(
-    `« ${titre} » vient après la section précédente`,
-    position > curseur,
-    `position ${position}, précédente ${curseur}`,
-  );
-  curseur = position;
-}
-
-/* ================================ 2. les titres fixes, relus dans la maquette */
-
-/** Les H2 que la maquette écrit elle-même, sans `{{ }}`. */
-const TITRES_FIXES = [...MAQUETTE.matchAll(/<h2[^>]*>([^<>{}]+)<\/h2>/g)].map(
-  (m) => normalise(m[1]).trim(),
-);
-
-verifie(
-  `la maquette écrit ${TITRES_FIXES.length} H2 fixes`,
-  TITRES_FIXES.length === 5,
-  TITRES_FIXES.join(" | "),
-);
-
-for (const titre of TITRES_FIXES) {
-  verifie(`le H2 fixe « ${titre} » est rendu`, rendu.includes(titre));
-}
-
-/* ========================== 3. la copie de la réassurance, écrite par la maquette */
-
-/* Elle ne vient pas du corpus : si le composant la perd, aucune donnée ne le
-   signalera. Chaque littéral du bloc est donc cherché dans le rendu, à
-   l'exception de la seule ligne que les interdits du contrat corrigent. */
-const CORRIGE_PAR_LE_CONTRAT = "Lyon (siège), Montréal, Dubaï, Madrid";
-
-for (const texte of litteraux(bloc("Réassurance"))) {
-  if (texte === CORRIGE_PAR_LE_CONTRAT) continue;
-  verifie(
-    `la réassurance rend « ${texte.slice(0, 48)} »`,
-    rendu.includes(texte),
-  );
-}
-
-verifie(
-  "le siège est dit à Limonest, contre la maquette",
-  rendu.includes("Lyon (siège, à Limonest), Montréal, Dubaï, Madrid") &&
-    !rendu.includes(CORRIGE_PAR_LE_CONTRAT),
-  "le contrat impose « quatre agences : Lyon siège à Limonest, Montréal, Dubaï, Madrid »",
-);
-
-/* ================= 4. la géométrie, chaque valeur relue dans la maquette */
+const renduVille = normalise(renderToStaticMarkup(
+  <PageVille titre="Maintenance industrielle à Lyon" contenu={VILLE} />,
+));
+const renduDept = normalise(renderToStaticMarkup(
+  <PageDepartement titre="Maintenance industrielle dans le Rhône" contenu={DEPARTEMENT} />,
+));
 
 /**
- * Chaque entrée dit : dans quelle section, quelle propriété, à quel rang de la
- * section, et ce que la valeur dessine. Rien n'est écrit en clair : la valeur
- * attendue est extraite du fichier à l'exécution.
+ * La MÊME page, avec les trois titres de section que la maquette dessine.
+ *
+ * POURQUOI UNE SECONDE VARIANTE. Aucune des quarante-deux pages du corpus ne
+ * fournit `constatTitre`, `reponseTitre` ni `faqTitre` : le corpus n'écrit pas
+ * de titre court pour ces colonnes. Ces trois H2 sont donc absents du site
+ * aujourd'hui, et les valeurs que la maquette leur donne ne seraient vérifiées
+ * par rien. Les contrôler ici garde la mesure juste pour le jour où une source
+ * les fournit, au lieu de laisser trois échelles non relues dans l'habillage.
  */
-const GEOMETRIE: [string, string, number, string][] = [
-  ["01 Héros", "padding", 0, "la section haute respire 44 en tête"],
-  ["01 Héros", "grid-template-columns", 0, "le héros, texte plus large que panneau"],
-  ["01 Héros", "gap", 1, "la gouttière du héros"],
-  ["01 Héros", "max-width", 1, "le H1 ne dépasse pas quinze caractères"],
-  ["01 Héros", "min-width", 0, "la colonne des valeurs du panneau « En bref »"],
-  ["03 Problème", "grid-template-columns", 0, "le vis-à-vis du problème, deux colonnes égales"],
-  ["03 Problème", "gap", 1, "la gouttière du vis-à-vis"],
-  ["03 Problème", "top", 0, "la colonne de gauche suit le défilement"],
-  ["04 Offre", "grid-template-columns", 0, "les trois colonnes du tableau"],
-  ["04 Offre", "border-radius", 1, "le rayon de la pastille de bénéfice"],
-  ["05 Déroulé", "grid-template-columns", 0, "le déroulé, frise plus large que texte"],
-  ["05 Déroulé", "width", 1, "la pastille numérotée de l'étape"],
-  ["06 Garanties", "padding", 1, "le panneau sombre des garanties"],
-  ["06 Garanties", "border-radius", 0, "le rayon du panneau sombre"],
-  ["06 Garanties", "grid-template-columns", 0, "les garanties, deux colonnes"],
-  ["Réassurance", "grid-template-columns", 0, "la réassurance, certifications plus étroites"],
-  ["07 Appel", "border-radius", 0, "le rayon du bandeau d'appel"],
-  ["08 Références", "grid-template-columns", 0, "les références, trois colonnes"],
-  ["09 Questions", "grid-template-columns", 0, "les questions, colonne fixe plus étroite"],
-  ["Maillage", "grid-template-columns", 0, "le maillage se réarrange tout seul"],
-  ["10 Appel final", "padding", 0, "la dernière section ferme aussi en bas"],
-];
+const renduVilleTitree = normalise(renderToStaticMarkup(
+  <PageVille
+    titre="Maintenance industrielle à Lyon"
+    contenu={{
+      ...VILLE,
+      constatTitre: "Les profils qualifiés partent vite",
+      reponseTitre: "Une équipe déjà sur place",
+      faqTitre: "Maintenance industrielle à Lyon",
+    }}
+  />,
+));
 
-for (const [etiquette, propriete, rang, dessine] of GEOMETRIE) {
-  const attendue = declaration(etiquette, propriete, rang);
-  verifie(
-    `${etiquette} : ${attendue} (${dessine})`,
-    rendu.includes(attendue),
-  );
-}
-
-/* La couleur des sur-titres, et leur graisse, relues dans la maquette. */
-const POLICE_SURTITRE = declaration("03 Problème", "font", 0);
-const CHASSE_SURTITRE = declaration("03 Problème", "letter-spacing", 0);
-verifie(`le sur-titre est en ${POLICE_SURTITRE}`, rendu.includes(POLICE_SURTITRE));
-verifie(`le sur-titre est chassé à ${CHASSE_SURTITRE}`, rendu.includes(CHASSE_SURTITRE));
-
-/* ======================================= 5. le texte vient du corpus, en entier */
-
-const CORPUS: [string, string][] = [
-  ["le chapeau du héros", VILLE.chapeau!],
-  ["la ligne de délai", VILLE.delai!],
-  ["le H2 du problème", VILLE.problemeTitre!],
-  ["le paragraphe du problème", VILLE.problemeTexte!],
-  ["la première prestation", VILLE.offre![0].prestation.accroche!],
-  ["le premier bénéfice", VILLE.offre![0].benefice],
-  ["la première étape", VILLE.etapes![0].titre],
-  ["la première garantie", VILLE.garanties![0].accroche!],
-  ["la question d'appel", VILLE.appel!.question],
-  ["la première référence", VILLE.preuves![0].titre],
-  ["la première question fréquente", VILLE.questions![0].question],
-  ["la question finale", VILLE.appelFinal!.question],
-];
-
-for (const [quoi, texte] of CORPUS) {
-  verifie(`${quoi} est rendu`, rendu.includes(normalise(texte)), texte.slice(0, 70));
-}
-
-/* Les noms du bandeau défilant sont ceux des références de la page, doublés
-   pour la boucle : c'est le calcul de la maquette, l. 406. */
-for (const nom of VILLE.logos!) {
-  verifie(
-    `le client « ${nom} » défile deux fois`,
-    rendu.split(nom).length - 1 >= 2,
-  );
-}
-
-/* Chaque lien du maillage pointe vers un chemin interne du corpus. */
-for (const lien of VILLE.liens!) {
-  verifie(
-    `le maillage pointe vers ${lien.href}`,
-    rendu.includes(`href="${lien.href}"`),
-  );
-}
-
-/* ====================== 6. le gabarit 06 rend le même dessin que le gabarit 04 */
-
-for (const etiquette of ETIQUETTES) {
-  const titre = surTitre(etiquette);
-  if (!titre || (SANS_SOURCE.has(etiquette) && !rendu.includes(titre))) continue;
-  verifie(
-    `le département rend aussi « ${titre} »`,
-    renduDept.includes(titre),
-    "les gabarits 04 et 06 sont le même fichier : même dessin",
-  );
-}
-
-/* ================================================= 7. un seul H1, et pas de piège */
-
-for (const [quoi, html] of [
-  ["ville", rendu],
-  ["département", renduDept],
-  ["contenu vide", renduVide],
-] as const) {
-  const h1 = (html.match(/<h1[\s>]/g) ?? []).length;
-  verifie(`${quoi} : un seul H1 (compté ${h1})`, h1 === 1);
-}
-
-/* ============================================ 8. aucun lien vers nulle part */
-
-for (const [quoi, html] of [
-  ["ville", rendu],
-  ["département", renduDept],
-] as const) {
-  verifie(`${quoi} : aucun href="#"`, !/href="#"/.test(html));
-  verifie(
-    `${quoi} : aucune cible externe sous l'autorité du domaine`,
-    !/href="(?:https?:)?\/\//.test(html),
-  );
-}
-
-/* ================================= 9. aucune classe de couleur Tailwind */
-
-const TAILWIND =
-  /class(?:Name)?="[^"]*\b(?:bg|text|border|from|to|via|ring|fill|stroke)-(?:slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose|white|black)\b/;
-
-for (const [quoi, html] of [
-  ["ville", rendu],
-  ["département", renduDept],
-] as const) {
-  verifie(`${quoi} : aucune classe de couleur Tailwind`, !TAILWIND.test(html));
-  verifie(`${quoi} : aucune variante dark:`, !/\bdark:/.test(html));
-}
-
-/* ==================================== 10. les interdits de copie du contrat */
+/* ------------------------------------------- 1. les valeurs viennent de la maquette */
 
 /**
- * Chaque interdit, avec ce qu'il faut écrire à la place. Ils GAGNENT contre la
- * maquette : elle écrit « Lyon (siège) » là où le siège est à Limonest, et son
- * propre parseur retire déjà « 24/24 et 7/7 » du corpus.
+ * Chaque entrée : ce qu'on vérifie, la déclaration telle que la MAQUETTE
+ * l'écrit, et telle que React la REND. Les deux formes diffèrent parfois, React
+ * suffixant les nombres en `px` et normalisant la casse des propriétés : les
+ * noter séparément évite de maquiller la comparaison pour la faire passer.
  */
-const INTERDITS: [RegExp, string][] = [
-  [/\+\s?200|200 clients/, "« plus de 120 clients, dont plus de 80 réguliers »"],
-  [/(?:5|[Cc]inq) agences/, "quatre agences : Lyon siège à Limonest, Montréal, Dubaï, Madrid"],
-  [/sous (?:2|4|24|48|72) ?h/i, "« rappel dans l'heure », aucun autre délai chiffré"],
-  [/\d+\s?h de route|heures de route/, "aucun délai ni distance chiffrés"],
-  [/24\s?\/\s?24|7\s?\/\s?7|7\s?j\s?\/\s?7|24\s?h\s?\/\s?24/, "l'astreinte se dit sans chiffre : « nuit, week-end et jours fériés »"],
-  [/\brégie\b/i, "« résidence » ou « technicien sur site »"],
-  [/\bintérim/i, "nommer la prestation, jamais le statut"],
-  [/mise à disposition/i, "« intervention » ou « mission »"],
-  [/sans engagement/i, "dire la durée réelle, ou ne rien dire"],
-  [/clé en main/i, "dire ce qui est fait"],
-  [/sur mesure/i, "dire ce qui s'adapte, et à quoi"],
-  [/\bleviers?\b/i, "dire l'effet obtenu"],
-  [/concrètement/i, "à supprimer, le paragraphe suivant le dit déjà"],
-  [/notamment/i, "à supprimer, ou « dont »"],
-  [/incontournable/i, "à supprimer"],
-  [/découvrez/i, "un verbe qui dit ce que la page fait"],
-  [/—/, "virgule, parenthèses ou deux-points, jamais de tiret cadratin"],
-  [/\d+\s?(?:€|euros)/i, "aucun prix sur ces pages"],
+type Valeur = readonly [string, string, string];
+
+const VALEURS_VILLE: readonly Valeur[] = [
+  // Le panneau du hero.
+  ["le panneau respire 30/32/32", "padding:30px 32px 32px", "padding:30px 32px 32px"],
+  ["la rue est en 16px de titre", "font:600 16px var(--ft)", "font:600 16px var(--ft)"],
+  ["le petit texte du panneau", "font:400 14.5px/1.55 var(--fb)", "font:400 14.5px/1.55 var(--fb)"],
+  ["le filet est un trait de 1px", "background:var(--line)", "background:var(--line)"],
+  ["les repères tiennent sur 18", "gap:18px", "gap:18px"],
+  ["la valeur d'un repère est en 22px", "font:600 22px var(--ft)", "font:600 22px var(--ft)"],
+  ["le libellé d'un repère", "font:400 12.5px var(--fb)", "font:400 12.5px var(--fb)"],
+  ["le hero est à deux colonnes", "grid-template-columns:1.1fr .9fr", "grid-template-columns:1.1fr .9fr"],
+  // Le vis-à-vis.
+  ["le vis-à-vis respire 70", "gap:70px", "gap:70px"],
+  ["son paragraphe est en 16.5px", "font:400 16.5px/1.7 var(--fb)", "font:400 16.5px/1.7 var(--fb)"],
+  ["la liste respire 9", "gap:9px", "gap:9px"],
+  ["une ligne de liste respire 11", "gap:11px", "gap:11px"],
+  ["une ligne de liste est en 15px", "font:400 15px/1.5 var(--fb)", "font:400 15px/1.5 var(--fb)"],
+  ["la marque de liste ne se comprime pas", "flex:none", "flex:none"],
+  // Les questions fréquentes.
+  ["les cartes respirent 12", "gap:12px", "gap:12px"],
+  ["une carte a le petit rayon", "border-radius:var(--rad-s)", "border-radius:var(--rad-s)"],
+  ["une carte respire 24/28", "padding:24px 28px", "padding:24px 28px"],
+  ["la question est en 16.5px", "font:600 16.5px var(--ft)", "font:600 16.5px var(--ft)"],
+  ["la réponse est en 15px", "font:400 15px/1.65 var(--fb)", "font:400 15px/1.65 var(--fb)"],
+  ["la réponse ne dépasse pas 80ch", "max-width:80ch", "max-width:80ch"],
+  // Les autres villes.
+  ["l'en-tête aligne sur la ligne de base", "align-items:baseline", "align-items:baseline"],
+  ["l'en-tête écarte ses deux bouts", "justify-content:space-between", "justify-content:space-between"],
+  ["une pastille est une pilule", "border-radius:999px", "border-radius:999px"],
 ];
 
-for (const [quoi, html] of [
-  ["ville", rendu],
-  ["département", renduDept],
-] as const) {
-  for (const [motif, remede] of INTERDITS) {
-    const trouve = html.match(motif);
-    verifie(
-      `${quoi} : interdit ${motif} absent`,
-      trouve === null,
-      trouve ? `trouvé « ${trouve[0]} » — à la place : ${remede}` : "",
+/**
+ * Les valeurs des trois titres de section, vérifiées sur la variante titrée.
+ * Le corpus ne les remplit pas : voir `renduVilleTitree`.
+ */
+const VALEURS_TITRES: readonly Valeur[] = [
+  ["le titre d'une colonne monte à 42px", "clamp(28px,3vw,42px)", "clamp(28px,3vw,42px)"],
+  ["il se resserre à 22ch", "max-width:22ch", "max-width:22ch"],
+  ["le titre des questions monte à 48px", "clamp(30px,3.3vw,48px)", "clamp(30px,3.3vw,48px)"],
+  ["il se resserre à 24ch", "max-width:24ch", "max-width:24ch"],
+];
+
+const VALEURS_DEPT: readonly Valeur[] = [
+  ["le hero est à deux colonnes", "grid-template-columns:1.1fr .9fr", "grid-template-columns:1.1fr .9fr"],
+  ["le panneau d'appel a le grand rayon", "border-radius:36px", "border-radius:36px"],
+  ["le panneau d'appel respire 52", "padding:52px", "padding:52px"],
+  ["son titre monte à 36px", "clamp(24px,2.5vw,36px)", "clamp(24px,2.5vw,36px)"],
+  ["son paragraphe est en 16.5px", "font:400 16.5px/1.6 var(--fb)", "font:400 16.5px/1.6 var(--fb)"],
+  ["une pastille est une pilule", "border-radius:999px", "border-radius:999px"],
+];
+
+for (const [quoi, dansLaMaquette, dansLeRendu, bloc, rendu, nom] of [
+  ...VALEURS_VILLE.map((v) => [...v, BLOC_VILLE, renduVille, "ville"] as const),
+  ...VALEURS_TITRES.map((v) => [...v, BLOC_VILLE, renduVilleTitree, "ville titrée"] as const),
+  ...VALEURS_DEPT.map((v) => [...v, BLOC_DEPT, renduDept, "département"] as const),
+]) {
+  assert.ok(
+    bloc.includes(dansLaMaquette),
+    `${nom} : « ${dansLaMaquette} » n'est PLUS dans la maquette (${quoi}). ` +
+      `Le contrôle est périmé : relisez le bloc avant de le corriger.`,
+  );
+  assert.ok(
+    rendu.includes(dansLeRendu),
+    `${nom} : ${quoi}. La maquette écrit « ${dansLaMaquette} », le rendu ne porte pas « ${dansLeRendu} ».`,
+  );
+}
+
+/* Les surtitres de structure, pris dans la maquette eux aussi. */
+for (const libelle of ["Le constat terrain", "Notre réponse", "Questions fréquentes", "Autres villes"]) {
+  assert.ok(BLOC_VILLE.includes(`>${libelle}<`), `« ${libelle} » n'est plus dans la maquette`);
+  assert.ok(renduVille.includes(libelle), `« ${libelle} » manque au rendu du gabarit ville`);
+}
+
+/* ------------------------------------------------------------------- 2. un seul h1 */
+
+for (const [nom, rendu] of [["ville", renduVille], ["département", renduDept]] as const) {
+  assert.equal(
+    (rendu.match(/<h1[\s>]/g) ?? []).length,
+    1,
+    `le gabarit ${nom} doit porter exactement un h1`,
+  );
+}
+
+assert.ok(
+  renduVille.includes("Maintenance industrielle à Lyon"),
+  "le titre de la page doit être rendu dans le h1",
+);
+
+/* Les questions fréquentes ne sont PAS des titres de niveau : six questions par
+   page gonfleraient le plan de titres de la page. */
+assert.equal(
+  (renduVille.match(/<h2[\s>]/g) ?? []).length,
+  0,
+  "aucun h2 n'est rendu quand le corpus ne fournit pas de titre de section",
+);
+
+/* La variante titrée porte les trois H2 de la maquette, et toujours un seul H1. */
+assert.equal(
+  (renduVilleTitree.match(/<h1[\s>]/g) ?? []).length,
+  1,
+  "la variante titrée porte elle aussi un seul h1",
+);
+assert.equal(
+  (renduVilleTitree.match(/<h2[\s>]/g) ?? []).length,
+  3,
+  "la variante titrée porte les trois h2 que la maquette dessine",
+);
+
+/* ---------------------------------------------------------- 3. aucun lien mort */
+
+for (const [nom, rendu] of [["ville", renduVille], ["département", renduDept]] as const) {
+  assert.ok(
+    !rendu.includes('href="#"'),
+    `le gabarit ${nom} ne doit porter aucun href="#" : la maquette en est pleine, pas le site`,
+  );
+  assert.ok(
+    !/href="(?:javascript:|\/\/|https?:)/.test(rendu),
+    `le gabarit ${nom} ne doit rendre aucune cible hors du domaine`,
+  );
+}
+
+/* La maquette, elle, en porte : c'est bien ce dont on se garde. */
+assert.ok(
+  BLOC_VILLE.includes('href="#"'),
+  "la maquette porte des href=\"#\" : si ce n'est plus vrai, ce garde-fou n'a plus d'objet",
+);
+
+assert.ok(!renduVille.includes("exemple.test"), "une cible hors domaine n'est jamais rendue");
+assert.ok(!renduVille.includes(">Ailleurs<"), "un lien à cible refusée disparaît, libellé compris");
+
+/* Le maillage du corpus écrit en Markdown sort en lien, pas en crochets. */
+assert.ok(
+  renduVille.includes('href="/offres/zero-arret') && !renduVille.includes("[contrat]"),
+  "le chapeau doit passer par TexteRiche",
+);
+
+/* ------------------------------------------- 4. aucune couleur Tailwind d'échafaudage */
+
+const MES_FICHIERS = [
+  "components/site/implantation/PageVille.tsx",
+  "components/site/implantation/PageDepartement.tsx",
+  "components/site/implantation/habillage-implantation.ts",
+  "components/site/implantation/PageVille.module.css",
+  "types/implantation.ts",
+];
+
+const COULEUR_TAILWIND =
+  /\b(?:text|bg|border|ring|divide|from|via|to|placeholder|decoration|outline|shadow|accent|caret)-(?:zinc|gray|slate|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-\d{2,3}\b/;
+
+for (const fichier of MES_FICHIERS) {
+  const source = readFileSync(join(RACINE, fichier), "utf8");
+  for (const classe of source.matchAll(/className=(?:"([^"]*)"|\{`([^`]*)`\})/g)) {
+    const valeur = classe[1] ?? classe[2] ?? "";
+    assert.ok(
+      !COULEUR_TAILWIND.test(valeur),
+      `${fichier} : « ${valeur} » porte une couleur Tailwind. La charte vit dans les jetons.`,
+    );
+    assert.ok(
+      !/\bdark:/.test(valeur),
+      `${fichier} : « ${valeur} » porte une variante dark:. Le site n'a pas de mode sombre.`,
+    );
+  }
+  assert.ok(
+    !/\bdark:[a-z-]+/.test(source),
+    `${fichier} porte une variante dark: : le site n'a pas de mode sombre`,
+  );
+}
+
+/* --------------------------------------------- 5. les interdits de copie du contrat */
+
+/**
+ * Ils GAGNENT contre la maquette. Chacun est écrit dans l'un des deux blocs,
+ * et c'est bien pour cela qu'il est listé : porter la maquette à la lettre
+ * aurait reproduit « intervention sous 24 h », « 5 agences en France », « régie
+ * ou forfait, sans engagement de volume » et l'adresse d'Écully.
+ */
+const INTERDITS: readonly string[] = [
+  "sous 24",
+  "sous 48",
+  "48 h",
+  "24 h",
+  "5 agences",
+  // La maquette écrit « 5 » et « agences en France » dans deux div séparés,
+  // ligne 3985 : le contrat en compte QUATRE, et aucune autre en France.
+  "agences en France",
+  "+200",
+  "200 clients",
+  "régie",
+  "Régie",
+  "intérim",
+  "mise à disposition",
+  "sans engagement",
+  "clé en main",
+  "sur mesure",
+  "levier",
+  "concrètement",
+  "notamment",
+  "incontournable",
+  "découvrez",
+  "Découvrez",
+  "Écully",
+  "—",
+];
+
+for (const [nom, rendu] of [["ville", renduVille], ["département", renduDept]] as const) {
+  for (const interdit of INTERDITS) {
+    assert.ok(
+      !rendu.includes(interdit),
+      `le gabarit ${nom} rend « ${interdit} », interdit par le contrat`,
     );
   }
 }
 
-/* La SEULE formulation de délai autorisée doit, elle, être présente. */
-verifie(
-  "« rappel dans l'heure » est la seule promesse de délai, et elle est tenue",
-  /rappel(?:ons)? dans l'heure/i.test(rendu),
-);
-
-/* ======================= 11. une section sans donnée ne se rend pas du tout */
-
-/* Aucun sur-titre de section alimentée par le corpus ne doit survivre à un
-   contenu vide. La réassurance, elle, est écrite par la maquette : elle reste,
-   et c'est voulu. */
-const ECRITES_PAR_LA_MAQUETTE = new Set(["Réassurance"]);
-
-for (const etiquette of ETIQUETTES) {
-  const titre = surTitre(etiquette);
-  if (!titre || ECRITES_PAR_LA_MAQUETTE.has(etiquette)) continue;
-  verifie(
-    `sans donnée, « ${titre} » ne se rend pas`,
-    !renduVide.includes(titre),
-    "un sur-titre orphelin est pire qu'une section absente",
+/* Ce que la maquette, elle, écrit : la preuve que ces interdits ne sont pas
+   théoriques et que le portage a bien dû s'en écarter. */
+for (const [interdit, bloc, nom] of [
+  ["sous 24", BLOC_VILLE, "isVille"],
+  ["48 h", BLOC_VILLE, "isVille"],
+  ["agences en France", BLOC_VILLE, "isVille"],
+  ["Écully", BLOC_VILLE, "isVille"],
+  ["égie ou forfait", BLOC_VILLE, "isVille"],
+  ["sans engagement", BLOC_VILLE, "isVille"],
+  ["sous 24", BLOC_DEPT, "isDept"],
+  ["Écully", BLOC_DEPT, "isDept"],
+] as const) {
+  assert.ok(
+    bloc.includes(interdit),
+    `« ${interdit} » n'est plus dans ${nom} : ce garde-fou n'a plus d'objet, retirez-le`,
   );
 }
 
-for (const titre of TITRES_FIXES) {
-  verifie(`sans donnée, le H2 « ${titre} » ne se rend pas`, !renduVide.includes(titre));
-}
+/* --------------------------------- 6. une section sans donnée ne se rend pas du tout */
 
-verifie(
-  "sans donnée, aucune carte ni aucun cadre vide",
-  !renduVide.includes("border-radius:var(--rad);padding:24px 28px") &&
-    !/<h2/.test(renduVide),
+const VIDE: ContenuVille = { gabarit: "ville" };
+const renduVide = normalise(renderToStaticMarkup(
+  <PageVille titre="Un titre seul" contenu={VIDE} />,
+));
+
+assert.equal(
+  (renduVide.match(/<h1[\s>]/g) ?? []).length,
+  1,
+  "un contenu vide rend le titre, et rien de plus",
+);
+assert.ok(!renduVide.includes("<a "), "un contenu vide n'invente aucun lien");
+assert.ok(!renduVide.includes("<h2"), "un contenu vide n'invente aucune section");
+assert.ok(
+  !renduVide.includes("Le constat terrain") &&
+    !renduVide.includes("Questions fréquentes") &&
+    !renduVide.includes("Autres villes"),
+  "un surtitre de section ne se rend pas sans sa section",
+);
+assert.ok(
+  !renduVide.includes("padding:30px 32px 32px"),
+  "sans repères ni adresse ni contact, le panneau du hero ne se rend pas",
+);
+assert.ok(
+  renduVide.includes("grid-template-columns:minmax(0,1fr)") &&
+    !renduVide.includes("grid-template-columns:1.1fr .9fr"),
+  "sans panneau, le hero tient sur une colonne au lieu de laisser une carte creuse",
+);
+assert.ok(
+  !renduVide.includes("data-reveal"),
+  "un contenu vide ne pose aucune section à révéler",
 );
 
-/* ============ 12. le formulaire de la maquette n'est PAS doublé par ce gabarit */
-
-/* La maquette dessine un formulaire dans sa section 10. La route monte déjà
-   `FormulaireBasDePage` sous ce gabarit : le rendre ici en aurait mis deux sur
-   la page. Le contrôle fige la décision pour qu'elle ne se reprenne pas par
-   distraction. */
-verifie(
-  "le gabarit ne dessine pas de second formulaire",
-  !/<form[\s>]/.test(rendu) && !/<input[\s>]/.test(rendu),
-  "le formulaire de la page est celui que la route monte",
+/* La section 2 de la maquette, le bandeau photo, n'est PAS rendue : le corpus
+   ne fournit ni photographie ni liste de communes sur aucune des 42 pages. Elle
+   est dessinée dans la maquette, et laissée vide ici en connaissance de cause. */
+assert.ok(
+  BLOC_VILLE.includes("height:400px") && BLOC_VILLE.includes("object-fit:cover"),
+  "le bandeau photo est bien dessiné par la maquette, lignes 3993 à 4005",
+);
+assert.ok(
+  !renduVille.includes("<img"),
+  "le bandeau photo reste vide faute de source : aucune image de remplissage",
 );
 
-console.log(`${controles} contrôles passés.`);
+/* Le `reste` est rendu : le texte du corpus que la maquette ne montre pas ne se
+   perd pas parce qu'il n'a pas de case. */
+assert.ok(
+  renduVille.includes("Le contact") && renduVille.includes("Rappel dans l'heure"),
+  "les sections du corpus hors maquette sont rendues sous le gabarit ville",
+);
+assert.ok(
+  renduDept.includes("Des propos vérifiables"),
+  "les sections du corpus hors maquette sont rendues sous le gabarit département",
+);
+
+/* Le détail d'un repère, qui dit l'absence d'agence sur place, est rendu. */
+assert.ok(
+  renduVille.includes("Aucune sur place, des techniciens qui s'y déplacent"),
+  "la précision d'un repère est rendue : sans elle, « 4 agences » laisse croire à une agence proche",
+);
+
 console.log(
-  `  ${ETIQUETTES.length} sections relevées dans maquette/gabarit-04-ville.html,` +
-    ` ${ETIQUETTES.length - [...SANS_SOURCE.keys()].length} portées en entier.`,
+  `gabarits ville et département : toutes les vérifications passent ` +
+    `(${VALEURS_VILLE.length + VALEURS_TITRES.length + VALEURS_DEPT.length} valeurs relues dans la maquette).`,
 );

@@ -1,3 +1,5 @@
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 import "server-only";
 
 import { cache } from "react";
@@ -49,6 +51,69 @@ export function cheminCanonique(segments: string[] | string): string {
  * à chaque revalidation. Le cache est propre à un rendu, il n'introduit donc
  * aucune donnée périmée entre deux requêtes.
  */
+
+/**
+ * Le contenu des gabarits de la maquette, lu sur le DISQUE.
+ *
+ * POURQUOI CE DÉTOUR. Le contenu des pages vit en base. Mais les 178 pages
+ * portées sur les gabarits de la maquette (offre, secteur, ville, domaine,
+ * métier, ressource, fiche, hub, sous-rubrique, spécialité, département) ont
+ * leur contenu produit sous forme de fichiers JSON, dans
+ * `supabase/import/gabarits-maquette/`, et ces fichiers N'ONT PAS PU ÊTRE
+ * ÉCRITS EN BASE : la clé de service est vide dans `.env.local`, et la voie
+ * SQL est fermée parce que la couche de permissions refuse toute instruction
+ * portant un point-virgule dans le texte, dont le corpus est plein.
+ *
+ * Conséquence, sans ce détour : les pages retombent sur le gabarit de vente et
+ * le portage reste invisible. Le client l'a dit, trois fois.
+ *
+ * CE QUE FAIT CE MODULE : au build, il lit ces fichiers et, pour une page dont
+ * le contenu en base NE PORTE PAS de gabarit, il substitue celui du fichier.
+ * La base garde la priorité dès qu'elle porte un gabarit : le jour où
+ * `node scripts/importe_rest.mjs` a tourné, ce détour ne sert plus à rien et
+ * ne change plus rien. Il disparaîtra alors sans que rien ne bouge.
+ *
+ * Lu UNE fois par processus : c'est du build, pas une requête.
+ */
+const CONTENUS_SUR_DISQUE: ReadonlyMap<string, LignePage["contenu"]> = (() => {
+  const dossier = join(process.cwd(), "supabase", "import", "gabarits-maquette");
+  const par = new Map<string, LignePage["contenu"]>();
+  let fichiers: string[];
+  try {
+    fichiers = readdirSync(dossier);
+  } catch {
+    // Le dossier peut ne pas exister : ce n'est pas une erreur, c'est l'état
+    // normal une fois l'import fait et les fichiers archivés.
+    return par;
+  }
+  for (const nom of fichiers) {
+    if (!nom.endsWith(".json")) continue;
+    try {
+      const lu = JSON.parse(readFileSync(join(dossier, nom), "utf8")) as {
+        url?: string;
+        contenu?: LignePage["contenu"];
+      };
+      if (lu.url && lu.contenu) par.set(lu.url, lu.contenu);
+    } catch (erreur) {
+      // Un fichier illisible se signale au build plutôt que de disparaître en
+      // silence : une page muette est plus difficile à diagnostiquer.
+      throw new Error(
+        `Contenu de gabarit illisible, ${nom} : ${(erreur as Error).message}`,
+      );
+    }
+  }
+  return par;
+})();
+
+/** La page porte-t-elle déjà un gabarit de la maquette ? */
+function porteUnGabarit(contenu: unknown): boolean {
+  return (
+    typeof contenu === "object" &&
+    contenu !== null &&
+    typeof (contenu as { gabarit?: unknown }).gabarit === "string"
+  );
+}
+
 export const pageParChemin = cache(
   async (path: string): Promise<PageComplete | null> => {
     const { data, error } = await lectureContenu()
@@ -64,8 +129,15 @@ export const pageParChemin = cache(
     const { seo, ...page } = data as LignePage & {
       seo: LigneSeo | LigneSeo[] | null;
     };
+    /* Le fichier ne gagne que si la base n'a pas encore son gabarit : la base
+       reste la source, le disque n'est qu'un relais tant qu'elle ne peut pas
+       être écrite. */
+    const surDisque = CONTENUS_SUR_DISQUE.get(path);
+    const contenu =
+      surDisque && !porteUnGabarit(page.contenu) ? surDisque : page.contenu;
+
     return {
-      page,
+      page: contenu === page.contenu ? page : { ...page, contenu },
       seo: Array.isArray(seo) ? (seo[0] ?? null) : seo,
     };
   },

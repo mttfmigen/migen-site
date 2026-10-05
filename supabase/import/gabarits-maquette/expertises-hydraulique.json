@@ -2,15 +2,61 @@
   "url": "/expertises/hydraulique/",
   "contenu": {
     "gabarit": "domaine",
-    "sections": [
+    "chapeau": "Nous remettons de la mesure là où il n'y en a plus : température, pression, état du fluide, temps de cycle. Puis nous traitons la cause de la fuite au lieu de l'essuyer.",
+    "boutons": [
       {
-        "type": "heros",
-        "h1": "Maintenance hydraulique",
-        "mecanisme": "Nous remettons de la mesure là où il n'y en a plus : température, pression, état du fluide, temps de cycle. Puis nous traitons la cause de la fuite au lieu de l'essuyer.",
-        "cta": "Demander une intervention",
-        "telephone": "04 78 33 72 05",
-        "phraseDelai": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 prend le relais la nuit et le week-end."
+        "libelle": "Demander une intervention"
+      }
+    ],
+    "traitements": [
+      "Une pression stable du premier au dernier cycle",
+      "Les fuites arrêtées à la source",
+      "Le fluide sous surveillance",
+      "Les vérins remis en course",
+      "Les centrales et groupes repris",
+      "La panne mixte traitée en une visite"
+    ],
+    "autres": [
+      {
+        "libelle": "Automatisme industriel",
+        "href": "/expertises/automatisme/"
       },
+      {
+        "libelle": "Maintenance électrique industrielle",
+        "href": "/expertises/electrique/"
+      },
+      {
+        "libelle": "Électromécanique industrielle",
+        "href": "/expertises/electromecanique/"
+      },
+      {
+        "libelle": "Maintenance mécanique",
+        "href": "/expertises/mecanique/"
+      },
+      {
+        "libelle": "Maintenance pneumatique",
+        "href": "/expertises/pneumatique/"
+      },
+      {
+        "libelle": "Maintenance robotique",
+        "href": "/expertises/robotique/"
+      },
+      {
+        "libelle": "Soudure industrielle",
+        "href": "/expertises/soudure/"
+      },
+      {
+        "libelle": "Maintenance tuyauterie industrielle",
+        "href": "/expertises/tuyauterie/"
+      }
+    ],
+    "cta": {
+      "question": "Besoin d'arrêter de payer deux fois le même vérin ?",
+      "bouton": {
+        "libelle": "Demander une intervention"
+      }
+    },
+    "reste": [
       {
         "type": "chiffres",
         "chiffres": [
@@ -223,11 +269,6 @@
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France partout en France. Une seule centrale critique justifie un suivi réel, dimensionné sur votre réalité."
           }
         ]
-      },
-      {
-        "type": "ctaFinal",
-        "question": "Besoin d'arrêter de payer deux fois le même vérin ?",
-        "bouton": "Demander une intervention"
       }
     ]
   }

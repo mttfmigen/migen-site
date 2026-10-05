@@ -1,16 +1,63 @@
 {
   "url": "/expertises/automatisme/programmation-automate/",
   "contenu": {
-    "gabarit": "specialite",
-    "sections": [
+    "gabarit": "domaine",
+    "chapeau": "Un automaticien qui ouvre le programme avant d'ouvrir la caisse à outils. Il lit le code en ligne, trouve l'étape bloquée, corrige, puis vous rend des sources commentées et des sauvegardes datées qui restent chez vous.",
+    "boutons": [
       {
-        "type": "heros",
-        "h1": "Programmation automate",
-        "mecanisme": "Un automaticien qui ouvre le programme avant d'ouvrir la caisse à outils. Il lit le code en ligne, trouve l'étape bloquée, corrige, puis vous rend des sources commentées et des sauvegardes datées qui restent chez vous.",
-        "cta": "Demander un automaticien",
-        "telephone": "04 78 33 72 05",
-        "phraseDelai": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7."
+        "libelle": "Demander un automaticien"
+      }
+    ],
+    "traitements": [
+      "La recherche de panne par le programme",
+      "La reprise d'un programme orphelin",
+      "Vos sources commentées en français",
+      "La modification de séquence en production",
+      "Les cinq langages de la norme CEI 61131-3",
+      "La migration d'un automate obsolète",
+      "L'intégration d'un nouvel équipement"
+    ],
+    "autres": [
+      {
+        "libelle": "Maintenance électrique industrielle",
+        "href": "/expertises/electrique/"
       },
+      {
+        "libelle": "Électromécanique industrielle",
+        "href": "/expertises/electromecanique/"
+      },
+      {
+        "libelle": "Maintenance hydraulique",
+        "href": "/expertises/hydraulique/"
+      },
+      {
+        "libelle": "Maintenance mécanique",
+        "href": "/expertises/mecanique/"
+      },
+      {
+        "libelle": "Maintenance pneumatique",
+        "href": "/expertises/pneumatique/"
+      },
+      {
+        "libelle": "Maintenance robotique",
+        "href": "/expertises/robotique/"
+      },
+      {
+        "libelle": "Soudure industrielle",
+        "href": "/expertises/soudure/"
+      },
+      {
+        "libelle": "Maintenance tuyauterie industrielle",
+        "href": "/expertises/tuyauterie/"
+      }
+    ],
+    "cta": {
+      "question": "Besoin de récupérer la main sur le code qui pilote vos machines ?",
+      "bouton": {
+        "libelle": "Demander un automaticien"
+      }
+    },
+    "reste": [
       {
         "type": "chiffres",
         "chiffres": [
@@ -218,11 +265,6 @@
             "reponse": "L'automate exécute la logique en temps réel au pied de la machine. La supervision affiche et enregistre le fonctionnement à l'échelle de l'atelier. Les deux se programment et doivent rester cohérents. Nous intervenons sur la chaîne complète, écrans IHM compris, dans la même suite logicielle que l'automate."
           }
         ]
-      },
-      {
-        "type": "ctaFinal",
-        "question": "Besoin de récupérer la main sur le code qui pilote vos machines ?",
-        "bouton": "Demander un automaticien"
       }
     ]
   }

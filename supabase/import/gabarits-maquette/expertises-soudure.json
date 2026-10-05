@@ -2,15 +2,63 @@
   "url": "/expertises/soudure/",
   "contenu": {
     "gabarit": "domaine",
-    "sections": [
+    "chapeau": "Un soudeur évalué arrive sur votre site avec son outillage, reprend la casse et traite ce qui l'a provoquée. Travaux chiffrés à l'avance, sans embauche et sans investissement en matériel.",
+    "boutons": [
       {
-        "type": "heros",
-        "h1": "Soudure industrielle",
-        "mecanisme": "Un soudeur évalué arrive sur votre site avec son outillage, reprend la casse et traite ce qui l'a provoquée. Travaux chiffrés à l'avance, sans embauche et sans investissement en matériel.",
-        "cta": "Demander une intervention",
-        "telephone": "04 78 33 72 05",
-        "phraseDelai": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 prend le relais la nuit et le week-end."
+        "libelle": "Demander une intervention"
+      }
+    ],
+    "traitements": [
+      "Les fissures traitées avant la rupture",
+      "Les supports et bâtis renforcés",
+      "Le rechargement de pièce usée",
+      "La mécano-soudure de reprise",
+      "La tôlerie de maintenance",
+      "Le bon procédé pour le cas",
+      "Les matériaux courants de l'industrie",
+      "Un examen visuel systématique et un compte rendu"
+    ],
+    "autres": [
+      {
+        "libelle": "Automatisme industriel",
+        "href": "/expertises/automatisme/"
       },
+      {
+        "libelle": "Maintenance électrique industrielle",
+        "href": "/expertises/electrique/"
+      },
+      {
+        "libelle": "Électromécanique industrielle",
+        "href": "/expertises/electromecanique/"
+      },
+      {
+        "libelle": "Maintenance hydraulique",
+        "href": "/expertises/hydraulique/"
+      },
+      {
+        "libelle": "Maintenance mécanique",
+        "href": "/expertises/mecanique/"
+      },
+      {
+        "libelle": "Maintenance pneumatique",
+        "href": "/expertises/pneumatique/"
+      },
+      {
+        "libelle": "Maintenance robotique",
+        "href": "/expertises/robotique/"
+      },
+      {
+        "libelle": "Maintenance tuyauterie industrielle",
+        "href": "/expertises/tuyauterie/"
+      }
+    ],
+    "cta": {
+      "question": "Besoin que la même structure arrête de casser au même endroit ?",
+      "bouton": {
+        "libelle": "Demander une intervention"
+      }
+    },
+    "reste": [
       {
         "type": "chiffres",
         "chiffres": [
@@ -235,11 +283,6 @@
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France partout en France. Un bâti à reprendre vaut le déplacement autant qu'une charpente de ligne."
           }
         ]
-      },
-      {
-        "type": "ctaFinal",
-        "question": "Besoin que la même structure arrête de casser au même endroit ?",
-        "bouton": "Demander une intervention"
       }
     ]
   }

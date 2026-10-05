@@ -3,12 +3,12 @@
   "contenu": {
     "gabarit": "ville",
     "chapeau": "Dans l'Hérault, une salle propre de dispositifs médicaux et une cave d'embouteillage partagent le même département et aucune contrainte commune. D'un côté la traçabilité et la propreté, de l'autre une année de récolte qui se joue en trois semaines de vendanges. Nos techniciens itinérants couvrent le bassin et se déplacent partout en France.",
-    "action": {
-      "libelle": "Demander une intervention à Montpellier",
-      "href": "#formulaire"
-    },
-    "telephone": "04 78 33 72 05",
-    "delai": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte couvre les nuits, les week-ends et les jours fériés.",
+    "actions": [
+      {
+        "libelle": "Demander une intervention à Montpellier",
+        "href": "#formulaire"
+      }
+    ],
     "reperes": [
       {
         "valeur": "+ 120",
@@ -23,15 +23,9 @@
         "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, et des techniciens mobiles partout en France"
       }
     ],
-    "logos": [
-      "SUEZ",
-      "DANONE",
-      "VEEPEE",
-      "GROUPE ATLANTIC"
-    ],
-    "problemeTitre": "La remplisseuse lâche au troisième jour de vendanges.",
-    "problemeTexte": "La vendange, elle, continue d'arriver au quai.",
-    "problemes": [
+    "contact": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 couvre les nuits, les week-ends et les jours fériés.",
+    "constatTexte": "La remplisseuse lâche au troisième jour de vendanges. La vendange, elle, continue d'arriver au quai.",
+    "constatPuces": [
       {
         "texte": "Une panne en pleine récolte ne se rattrape pas au trimestre suivant.",
         "accroche": "Votre saison ne dure que quelques semaines."
@@ -53,87 +47,8 @@
         "accroche": "Le traitement de l'eau ne connaît pas l'arrêt."
       }
     ],
-    "offre": [
-      {
-        "benefice": "Les révisions tombent avant la charge, pas pendant.",
-        "prestation": {
-          "texte": ", resserré avant les vendanges et les pics de conditionnement.",
-          "accroche": "Préventif calé sur votre saison"
-        }
-      },
-      {
-        "benefice": "Vos audits qualité trouvent une trace écrite pour chaque passage.",
-        "prestation": {
-          "texte": "en environnement sensible : propreté, traçabilité, habilitations à jour.",
-          "accroche": "Interventions documentées"
-        }
-      },
-      {
-        "benefice": "La ligne repart, et le défaut ne revient pas sous un autre nom.",
-        "prestation": {
-          "texte": "avec recherche de cause racine, du moteur à l'armoire électrique.",
-          "accroche": "Dépannage sur site"
-        }
-      },
-      {
-        "benefice": "Les équipements anciens retrouvent un pilotage fiable sans remplacement.",
-        "prestation": {
-          "texte": "automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc.",
-          "accroche": "Automatisme et supervision"
-        }
-      },
-      {
-        "benefice": "Un seul contrat du quai de réception au quai d'expédition.",
-        "prestation": {
-          "texte": "des plateformes logistiques : voir notre pratique en [maintenance équipements logistiques](/secteurs/logistique/).",
-          "accroche": "Convoyeurs, tri et quais"
-        }
-      },
-      {
-        "benefice": "Une panne de nuit trouve un interlocuteur, pas un répondeur.",
-        "prestation": {
-          "texte": ", mobilisation de techniciens mobiles partout en France.",
-          "accroche": "Astreinte en option"
-        }
-      },
-      {
-        "benefice": "Un poste ouvert depuis des mois est enfin tenu, remplacement assuré.",
-        "prestation": {
-          "texte": "intégré à votre équipe, prise de poste en 2 à 3 semaines.",
-          "accroche": "Technicien en [Résidence](/offres/residence/)"
-        }
-      }
-    ],
-    "offreNotes": [
-      "Pour un arrêt programmé ou un transfert de ligne, l'offre [arrêt technique](/offres/arret-technique/) se cadre de J-90 à J-30, avec restitution à la demi-journée."
-    ],
-    "etapes": [
-      {
-        "texte": "vous décrivez la panne ou le projet. Un chargé d'affaires rappelle dans l'heure aux horaires ouvrés.",
-        "titre": "Premier contact"
-      },
-      {
-        "texte": "machines, accès, habilitations, contraintes d'hygiène ou de propreté. Tout se note avant le chiffrage.",
-        "titre": "Qualification"
-      },
-      {
-        "texte": "périmètre, créneaux, conditions horaires, matériel. Aucun surcoût découvert en fin de mission.",
-        "titre": "Devis écrit"
-      },
-      {
-        "texte": "accueil sécurité, plan de prévention, consignation, puis diagnostic.",
-        "titre": "Intervention"
-      },
-      {
-        "texte": "opérations, pièces, temps passé, préconisations, versés dans votre GMAO.",
-        "titre": "Compte rendu"
-      },
-      {
-        "texte": "sur contrat, suivi de la disponibilité par équipement et de la récurrence des défauts.",
-        "titre": "Revue"
-      }
-    ],
-    "garanties": [
+    "reponseTexte": "Pour un arrêt programmé ou un transfert de ligne, l'offre [arrêt technique](/offres/arret-technique/) se cadre de J-90 à J-30, avec restitution à la demi-journée.",
+    "reponsePuces": [
       {
         "texte": "Entretien technique et comportemental, 10 % des candidats retenus, résultats d'évaluation partagés. Vous savez qui entre en salle propre.",
         "accroche": "Le profil est présenté avant l'intervention."
@@ -147,38 +62,7 @@
         "accroche": "Chaque passage laisse une trace exploitable."
       }
     ],
-    "appel": {
-      "question": "Besoin de passer la prochaine saison sans arrêt subi ?",
-      "bouton": "Demander une intervention à Montpellier",
-      "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
-    },
-    "preuves": [
-      {
-        "texte": ", avec habilitation dédiée",
-        "titre": "Renfort de 6 mois sur un site de traitement des eaux industrielles à risque chimique",
-        "lienHref": "/preuves/suez-remise-en-etat/",
-        "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
-      },
-      {
-        "texte": ", liquides et conditionnement poudre",
-        "titre": "2 techniciens en 3x8 sur des lignes de nutrition infantile",
-        "lienHref": "/preuves/danone-lignes-de-production/",
-        "lienLibelle": "Étude de cas DANONE : lignes de production"
-      },
-      {
-        "texte": ", prise en charge complète en un mois",
-        "titre": "6 techniciens polyvalents en permanence sur un contrat de préventif annuel",
-        "lienHref": "/preuves/veepee-sites-lyon/",
-        "lienLibelle": "Étude de cas VEEPEE : sites de Lyon"
-      },
-      {
-        "texte": ", depuis octobre 2024",
-        "titre": "1 à 3 techniciens en renfort permanent sur plusieurs sites de production",
-        "lienHref": "/preuves/groupe-atlantic/",
-        "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes"
-      }
-    ],
-    "questions": [
+    "faq": [
       {
         "reponse": "Oui. Nous n'avons pas d'agence à Montpellier et nous ne l'inventons pas : nos techniciens se déplacent partout en France et interviennent sur site. Votre demande est rappelée dans l'heure aux horaires ouvrés, et le chargé d'affaires vous dit franchement si le besoin est tenable.",
         "question": "Intervenez-vous vraiment dans l'Hérault, alors que votre siège est à Lyon ?"
@@ -204,27 +88,189 @@
         "question": "Travaillez-vous dans notre GMAO ?"
       }
     ],
-    "liens": [
+    "autres": [
       {
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/",
-        "contexte": "Pour un arrêt programmé ou un transfert de ligne, l'offre arrêt technique se cadre de J-90 à J-30, avec restitution à la demi-journée."
+        "libelle": "Lille",
+        "href": "/implantations/lille/"
       },
       {
-        "libelle": "Maintenance équipements logistiques",
-        "href": "/secteurs/logistique/",
-        "contexte": "des plateformes logistiques : voir notre pratique en maintenance équipements logistiques."
+        "libelle": "Lyon",
+        "href": "/implantations/lyon/"
       },
       {
-        "libelle": "Résidence",
-        "href": "/offres/residence/",
-        "contexte": "Technicien en Résidence"
+        "libelle": "Grenoble",
+        "href": "/implantations/lyon/grenoble/"
+      },
+      {
+        "libelle": "saint etienne",
+        "href": "/implantations/lyon/saint-etienne/"
+      },
+      {
+        "libelle": "Valence",
+        "href": "/implantations/lyon/valence/"
+      },
+      {
+        "libelle": "Nantes",
+        "href": "/implantations/nantes/"
+      },
+      {
+        "libelle": "Brest",
+        "href": "/implantations/nantes/brest/"
+      },
+      {
+        "libelle": "Rennes",
+        "href": "/implantations/nantes/rennes/"
+      },
+      {
+        "libelle": "paris",
+        "href": "/implantations/paris/"
+      },
+      {
+        "libelle": "Rouen",
+        "href": "/implantations/paris/rouen/"
+      },
+      {
+        "libelle": "Strasbourg",
+        "href": "/implantations/strasbourg/"
+      },
+      {
+        "libelle": "Mulhouse",
+        "href": "/implantations/strasbourg/mulhouse/"
+      },
+      {
+        "libelle": "Toulouse",
+        "href": "/implantations/toulouse/"
+      },
+      {
+        "libelle": "Bordeaux",
+        "href": "/implantations/toulouse/bordeaux/"
       }
     ],
-    "appelFinal": {
-      "question": "Besoin de savoir où votre site perd réellement de la disponibilité ?",
-      "bouton": "Demander une intervention à Montpellier",
-      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
-    }
+    "reste": [
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "benefice": "Les révisions tombent avant la charge, pas pendant.",
+            "prestation": {
+              "texte": ", resserré avant les vendanges et les pics de conditionnement.",
+              "accroche": "Préventif calé sur votre saison"
+            }
+          },
+          {
+            "benefice": "Vos audits qualité trouvent une trace écrite pour chaque passage.",
+            "prestation": {
+              "texte": "en environnement sensible : propreté, traçabilité, habilitations à jour.",
+              "accroche": "Interventions documentées"
+            }
+          },
+          {
+            "benefice": "La ligne repart, et le défaut ne revient pas sous un autre nom.",
+            "prestation": {
+              "texte": "avec recherche de cause racine, du moteur à l'armoire électrique.",
+              "accroche": "Dépannage sur site"
+            }
+          },
+          {
+            "benefice": "Les équipements anciens retrouvent un pilotage fiable sans remplacement.",
+            "prestation": {
+              "texte": "automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc.",
+              "accroche": "Automatisme et supervision"
+            }
+          },
+          {
+            "benefice": "Un seul contrat du quai de réception au quai d'expédition.",
+            "prestation": {
+              "texte": "des plateformes logistiques : voir notre pratique en [maintenance équipements logistiques](/secteurs/logistique/).",
+              "accroche": "Convoyeurs, tri et quais"
+            }
+          },
+          {
+            "benefice": "Une panne de nuit trouve un interlocuteur, pas un répondeur.",
+            "prestation": {
+              "texte": ", mobilisation de techniciens mobiles partout en France.",
+              "accroche": "Astreinte 24/24 et 7/7 en option"
+            }
+          },
+          {
+            "benefice": "Un poste ouvert depuis des mois est enfin tenu, remplacement assuré.",
+            "prestation": {
+              "texte": "intégré à votre équipe, prise de poste en 2 à 3 semaines.",
+              "accroche": "Technicien en [Résidence](/offres/residence/)"
+            }
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "texte": "vous décrivez la panne ou le projet. Un chargé d'affaires rappelle dans l'heure aux horaires ouvrés.",
+            "titre": "Premier contact"
+          },
+          {
+            "texte": "machines, accès, habilitations, contraintes d'hygiène ou de propreté. Tout se note avant le chiffrage.",
+            "titre": "Qualification"
+          },
+          {
+            "texte": "périmètre, créneaux, conditions horaires, matériel. Aucun surcoût découvert en fin de mission.",
+            "titre": "Devis écrit"
+          },
+          {
+            "texte": "accueil sécurité, plan de prévention, consignation, puis diagnostic.",
+            "titre": "Intervention"
+          },
+          {
+            "texte": "opérations, pièces, temps passé, préconisations, versés dans votre GMAO.",
+            "titre": "Compte rendu"
+          },
+          {
+            "texte": "sur contrat, suivi de la disponibilité par équipement et de la récurrence des défauts.",
+            "titre": "Revue"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "bouton": "Demander une intervention à Montpellier",
+        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
+        "question": "Besoin de passer la prochaine saison sans arrêt subi ?"
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "texte": ", avec habilitation dédiée",
+            "titre": "Renfort de 6 mois sur un site de traitement des eaux industrielles à risque chimique",
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
+          },
+          {
+            "texte": ", liquides et conditionnement poudre",
+            "titre": "2 techniciens en 3x8 sur des lignes de nutrition infantile",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "lienLibelle": "Étude de cas DANONE : lignes de production"
+          },
+          {
+            "texte": ", prise en charge complète en un mois",
+            "titre": "6 techniciens polyvalents en permanence sur un contrat de préventif annuel",
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "lienLibelle": "Étude de cas VEEPEE : sites de Lyon"
+          },
+          {
+            "texte": ", depuis octobre 2024",
+            "titre": "1 à 3 techniciens en renfort permanent sur plusieurs sites de production",
+            "lienHref": "/preuves/groupe-atlantic/",
+            "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes"
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "bouton": "Demander une intervention à Montpellier",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
+        "question": "Besoin de savoir où votre site perd réellement de la disponibilité ?"
+      }
+    ]
   }
 }

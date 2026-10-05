@@ -1,16 +1,63 @@
 {
   "url": "/expertises/hydraulique/verin-hydraulique/",
   "contenu": {
-    "gabarit": "specialite",
-    "sections": [
+    "gabarit": "domaine",
+    "chapeau": "Nous venons voir le vérin en charge, sur votre site, avant de décider quoi que ce soit. Inspection complète, kit de joints, guidage repris, essais en pression avant de vous rendre la machine. La réparation remplace presque toujours la commande d'un vérin neuf.",
+    "boutons": [
       {
-        "type": "heros",
-        "h1": "Réparation vérin hydraulique",
-        "mecanisme": "Nous venons voir le vérin en charge, sur votre site, avant de décider quoi que ce soit. Inspection complète, kit de joints, guidage repris, essais en pression avant de vous rendre la machine. La réparation remplace presque toujours la commande d'un vérin neuf.",
-        "cta": "Demander une intervention",
-        "telephone": "04 78 33 72 05",
-        "phraseDelai": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7."
+        "libelle": "Demander une intervention"
+      }
+    ],
+    "traitements": [
+      "Un diagnostic fait sur votre site",
+      "Un démontage propre",
+      "Une inspection sérieuse avant toute commande",
+      "Un arbitrage honnête entre réparation, usinage et fabrication",
+      "Un remontage au couple, en atelier propre",
+      "Des essais avant de vous rendre la machine",
+      "Un compte rendu écrit"
+    ],
+    "autres": [
+      {
+        "libelle": "Automatisme industriel",
+        "href": "/expertises/automatisme/"
       },
+      {
+        "libelle": "Maintenance électrique industrielle",
+        "href": "/expertises/electrique/"
+      },
+      {
+        "libelle": "Électromécanique industrielle",
+        "href": "/expertises/electromecanique/"
+      },
+      {
+        "libelle": "Maintenance mécanique",
+        "href": "/expertises/mecanique/"
+      },
+      {
+        "libelle": "Maintenance pneumatique",
+        "href": "/expertises/pneumatique/"
+      },
+      {
+        "libelle": "Maintenance robotique",
+        "href": "/expertises/robotique/"
+      },
+      {
+        "libelle": "Soudure industrielle",
+        "href": "/expertises/soudure/"
+      },
+      {
+        "libelle": "Maintenance tuyauterie industrielle",
+        "href": "/expertises/tuyauterie/"
+      }
+    ],
+    "cta": {
+      "question": "Besoin qu'un technicien voie votre vérin en charge avant que la décision soit prise à votre place ?",
+      "bouton": {
+        "libelle": "Demander une intervention"
+      }
+    },
+    "reste": [
       {
         "type": "chiffres",
         "chiffres": [
@@ -224,11 +271,6 @@
             "reponse": "Oui. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et 10 hubs de techniciens à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Nos techniciens sont mobiles, y compris hors de ces villes. Notre accueil téléphonique oriente votre besoin vers l'expert le plus proche, et vous rappelle dans l'heure."
           }
         ]
-      },
-      {
-        "type": "ctaFinal",
-        "question": "Besoin qu'un technicien voie votre vérin en charge avant que la décision soit prise à votre place ?",
-        "bouton": "Demander une intervention"
       }
     ]
   }

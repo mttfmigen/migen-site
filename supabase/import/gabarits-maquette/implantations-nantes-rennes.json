@@ -3,12 +3,12 @@
   "contenu": {
     "gabarit": "ville",
     "chapeau": "Le bassin rennais est plus industriel qu'il n'en a l'air. L'agroalimentaire breton, les équipementiers automobiles de Chartres-de-Bretagne, les sites de production électronique portés par le numérique. Nos équipes y interviennent avec des techniciens qui se déplacent sur vos sites : nous n'avons ni agence ni hub de techniciens à Rennes.",
-    "action": {
-      "libelle": "Faire chiffrer ma maintenance à Rennes",
-      "href": "#formulaire"
-    },
-    "telephone": "04 78 33 72 05",
-    "delai": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte existe en option de contrat.",
+    "actions": [
+      {
+        "libelle": "Faire chiffrer ma maintenance à Rennes",
+        "href": "#formulaire"
+      }
+    ],
     "reperes": [
       {
         "valeur": "+ 80",
@@ -23,16 +23,9 @@
         "libelle": "délai de prise de poste d'un technicien intégré à votre équipe"
       }
     ],
-    "logos": [
-      "JTEKT",
-      "AUTOLIV",
-      "DANONE",
-      "ERIKS",
-      "GLS"
-    ],
-    "problemeTitre": "Tapez « technicien de maintenance Rennes » : vous tomberez sur des centaines d'annonces ouvertes, pas sur un candidat.",
-    "problemeTexte": "Le vrai sujet du bassin n'est pas la panne, c'est l'absence de bras pour la traiter.",
-    "problemes": [
+    "contact": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 existe en option de contrat.",
+    "constatTexte": "Tapez « technicien de maintenance Rennes » : vous tomberez sur des centaines d'annonces ouvertes, pas sur un candidat. Le vrai sujet du bassin n'est pas la panne, c'est l'absence de bras pour la traiter.",
+    "constatPuces": [
       {
         "texte": "Entre l'annonce, les entretiens, les contre-offres et le préavis, votre préventif glisse et le correctif explose.",
         "accroche": "Recruter prend des trimestres."
@@ -54,87 +47,8 @@
         "accroche": "Les sites d'énergie et d'utilités sont dispersés."
       }
     ],
-    "offre": [
-      {
-        "benefice": "Le poste vacant est tenu, sans embauche à porter ni recrutement à mener.",
-        "prestation": {
-          "texte": "en [sous-traitance maintenance](/offres/residence/), encadré par un référent Migen.",
-          "accroche": "Technicien intégré à votre équipe"
-        }
-      },
-      {
-        "benefice": "La cadence tient, et l'hygiène ne se négocie pas contre du temps gagné.",
-        "prestation": {
-          "texte": "lignes de conditionnement, froid industriel, zones lavées.",
-          "accroche": "Préventif et curatif en agroalimentaire"
-        }
-      },
-      {
-        "benefice": "Un diagnostic, un responsable, une réparation. Pas trois prestataires qui se regardent.",
-        "prestation": {
-          "texte": "le couple mécanique et électrique, sans renvoi de responsabilité.",
-          "accroche": "Électromécanique traitée par un seul intervenant"
-        }
-      },
-      {
-        "benefice": "Une installation muette redevient pilotable par vos propres équipes.",
-        "prestation": {
-          "texte": "automates SIEMENS et Schneider, variation de vitesse, reprise de programmes sans documentation.",
-          "accroche": "Automatisme et supervision"
-        }
-      },
-      {
-        "benefice": "Le flux repart avant la vague suivante, pas le lendemain matin.",
-        "prestation": {
-          "texte": "du nord de l'agglomération et de Saint-Jacques-de-la-Lande.",
-          "accroche": "Convoyage et tri logistiques"
-        }
-      },
-      {
-        "benefice": "La cellule reprend sans attendre le passage de l'intégrateur.",
-        "prestation": {
-          "texte": "reprise de trajectoires, changements d'outillage, remise en cycle après incident.",
-          "accroche": "Robotique ABB et Fanuc"
-        }
-      },
-      {
-        "benefice": "La nuit du dimanche ne décide plus de votre lundi.",
-        "prestation": {
-          "texte": "une alerte, un humain, une intervention organisée.",
-          "accroche": "Astreinte en option"
-        }
-      }
-    ],
-    "offreNotes": [
-      "Chaque passage alimente votre GMAO : historique, pièces, préconisations. Pour une panne isolée, le [dépannage industriel](/offres/depannage-industriel/) reste le format le plus simple pour nous juger sur pièces."
-    ],
-    "etapes": [
-      {
-        "texte": "machine, symptôme, contexte de production. Cinq minutes suffisent pour poser le premier diagnostic.",
-        "titre": "Votre appel"
-      },
-      {
-        "texte": "aux horaires ouvrés. C'est le seul engagement de délai que nous signons, parce que c'est le seul que nous tenons à chaque fois.",
-        "titre": "Le rappel dans l'heure"
-      },
-      {
-        "texte": "compétences requises, habilitations, expérience sur votre type d'équipement. Aucun envoi à l'aveugle.",
-        "titre": "La qualification"
-      },
-      {
-        "texte": "technicien briefé et outillé, diagnostic, réparation jusqu'à la remise en service.",
-        "titre": "L'intervention"
-      },
-      {
-        "texte": "cause, actions, mesures, points à surveiller, versés dans votre GMAO.",
-        "titre": "Le compte rendu"
-      },
-      {
-        "texte": "si les arrêts reviennent, nous remontons à la cause racine et proposons le plan qui l'élimine.",
-        "titre": "Le bilan"
-      }
-    ],
-    "garanties": [
+    "reponseTexte": "Chaque passage alimente votre GMAO : historique, pièces, préconisations. Pour une panne isolée, le [dépannage industriel](/offres/depannage-industriel/) reste le format le plus simple pour nous juger sur pièces.",
+    "reponsePuces": [
       {
         "texte": "un automaticien pour votre ligne, un électromécanicien pour votre moteur. La proximité utile est celle de la compétence.",
         "accroche": "Le bon métier, pas le premier disponible"
@@ -148,44 +62,7 @@
         "accroche": "La confidentialité tenue"
       }
     ],
-    "appel": {
-      "question": "Besoin de tenir un poste maintenance sans lancer un recrutement de plus ?",
-      "bouton": "Faire chiffrer ma maintenance à Rennes",
-      "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
-    },
-    "preuves": [
-      {
-        "texte": ", sur les installations critiques, depuis 2025",
-        "titre": "Des techniciens intégrés au quotidien des équipes de maintenance d'un équipementier automobile",
-        "lienHref": "/preuves/jtekt/",
-        "lienLibelle": "Étude de cas JTEKT : maintenance des installations"
-      },
-      {
-        "texte": ", en présence continue et en coordination avec les équipes du site",
-        "titre": "Un technicien de maintenance dédié au maintien d'un parc machines",
-        "lienHref": "/preuves/autoliv/",
-        "lienLibelle": "Étude de cas AUTOLIV : maintien d'un site"
-      },
-      {
-        "texte": "d'un site de nutrition infantile",
-        "titre": "Deux techniciens en 3x8 sur les lignes liquides et le conditionnement poudre",
-        "lienHref": "/preuves/danone-lignes-de-production/",
-        "lienLibelle": "Étude de cas DANONE : lignes de production"
-      },
-      {
-        "texte": "pendant une intensification de production et une transition d'équipe",
-        "titre": "Un responsable maintenance intégré sur site pour piloter le service",
-        "lienHref": "/preuves/eriks/",
-        "lienLibelle": "Étude de cas ERIKS"
-      },
-      {
-        "texte": "d'un transporteur, en maintenance curative",
-        "titre": "Deux techniciens en poste permanent sur les convoyeurs, trieurs et lignes de packaging",
-        "lienHref": "/preuves/gls-maintenance-curative/",
-        "lienLibelle": "Étude de cas GLS : maintenance curative"
-      }
-    ],
-    "questions": [
+    "faq": [
       {
         "reponse": "Soyons clairs : nous n'avons ni agence ni hub de techniciens à Rennes. Le technicien est choisi selon la spécialité, automatisme, électromécanique, hydraulique, robotique, et il se déplace sur votre site. Le critère est la réponse adaptée à votre équipement, pas la seule distance. Chaque mission est préparée avant l'arrivée.",
         "question": "D'où viennent les techniciens qui interviennent à Rennes ?"
@@ -195,7 +72,7 @@
         "question": "Couvrez-vous Saint-Malo, Vitré, Fougères ou Redon ?"
       },
       {
-        "reponse": "Oui, dès lors que l'astreinte figure à votre contrat. Aux horaires ouvrés, chaque demande obtient son rappel dans l'heure. Aucun délai chiffré n'est promis : nous organisons la remise en route, nous ne vendons pas une promesse commerciale.",
+        "reponse": "Oui, dès lors que l'astreinte 24/24 et 7/7 figure à votre contrat. Aux horaires ouvrés, chaque demande obtient son rappel dans l'heure. Aucun délai chiffré n'est promis : nous organisons la remise en route, nous ne vendons pas une promesse commerciale.",
         "question": "Intervenez-vous en urgence la nuit ou le week-end ?"
       },
       {
@@ -211,27 +88,191 @@
         "question": "Que faites-vous que notre prestataire actuel ne fait pas ?"
       }
     ],
-    "liens": [
+    "autres": [
       {
-        "libelle": "Dépannage industriel",
-        "href": "/offres/depannage-industriel/",
-        "contexte": "Pour une panne isolée, le dépannage industriel reste le format le plus simple pour nous juger sur pièces."
+        "libelle": "Lille",
+        "href": "/implantations/lille/"
       },
       {
-        "libelle": "Sous-traitance maintenance",
-        "href": "/offres/residence/",
-        "contexte": "en sous-traitance maintenance, encadré par un référent Migen."
+        "libelle": "Lyon",
+        "href": "/implantations/lyon/"
       },
       {
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/",
-        "contexte": "Oui, avec le contrat Zéro arrêt et ses trois niveaux de couverture."
+        "libelle": "Grenoble",
+        "href": "/implantations/lyon/grenoble/"
+      },
+      {
+        "libelle": "saint etienne",
+        "href": "/implantations/lyon/saint-etienne/"
+      },
+      {
+        "libelle": "Valence",
+        "href": "/implantations/lyon/valence/"
+      },
+      {
+        "libelle": "Nantes",
+        "href": "/implantations/nantes/"
+      },
+      {
+        "libelle": "Brest",
+        "href": "/implantations/nantes/brest/"
+      },
+      {
+        "libelle": "paris",
+        "href": "/implantations/paris/"
+      },
+      {
+        "libelle": "Rouen",
+        "href": "/implantations/paris/rouen/"
+      },
+      {
+        "libelle": "Strasbourg",
+        "href": "/implantations/strasbourg/"
+      },
+      {
+        "libelle": "Mulhouse",
+        "href": "/implantations/strasbourg/mulhouse/"
+      },
+      {
+        "libelle": "Toulouse",
+        "href": "/implantations/toulouse/"
+      },
+      {
+        "libelle": "Bordeaux",
+        "href": "/implantations/toulouse/bordeaux/"
       }
     ],
-    "appelFinal": {
-      "question": "Besoin d'arrêter de dépendre d'un seul technicien sur votre site ?",
-      "bouton": "Faire chiffrer ma maintenance à Rennes",
-      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
-    }
+    "reste": [
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "benefice": "Le poste vacant est tenu, sans embauche à porter ni recrutement à mener.",
+            "prestation": {
+              "texte": "en [sous-traitance maintenance](/offres/residence/), encadré par un référent Migen.",
+              "accroche": "Technicien intégré à votre équipe"
+            }
+          },
+          {
+            "benefice": "La cadence tient, et l'hygiène ne se négocie pas contre du temps gagné.",
+            "prestation": {
+              "texte": "lignes de conditionnement, froid industriel, zones lavées.",
+              "accroche": "Préventif et curatif en agroalimentaire"
+            }
+          },
+          {
+            "benefice": "Un diagnostic, un responsable, une réparation. Pas trois prestataires qui se regardent.",
+            "prestation": {
+              "texte": "le couple mécanique et électrique, sans renvoi de responsabilité.",
+              "accroche": "Électromécanique traitée par un seul intervenant"
+            }
+          },
+          {
+            "benefice": "Une installation muette redevient pilotable par vos propres équipes.",
+            "prestation": {
+              "texte": "automates SIEMENS et Schneider, variation de vitesse, reprise de programmes sans documentation.",
+              "accroche": "Automatisme et supervision"
+            }
+          },
+          {
+            "benefice": "Le flux repart avant la vague suivante, pas le lendemain matin.",
+            "prestation": {
+              "texte": "du nord de l'agglomération et de Saint-Jacques-de-la-Lande.",
+              "accroche": "Convoyage et tri logistiques"
+            }
+          },
+          {
+            "benefice": "La cellule reprend sans attendre le passage de l'intégrateur.",
+            "prestation": {
+              "texte": "reprise de trajectoires, changements d'outillage, remise en cycle après incident.",
+              "accroche": "Robotique ABB et Fanuc"
+            }
+          },
+          {
+            "benefice": "La nuit du dimanche ne décide plus de votre lundi.",
+            "prestation": {
+              "texte": "une alerte, un humain, une intervention organisée.",
+              "accroche": "Astreinte 24/24 et 7/7 en option"
+            }
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "texte": "machine, symptôme, contexte de production. Cinq minutes suffisent pour poser le premier diagnostic.",
+            "titre": "Votre appel"
+          },
+          {
+            "texte": "aux horaires ouvrés. C'est le seul engagement de délai que nous signons, parce que c'est le seul que nous tenons à chaque fois.",
+            "titre": "Le rappel dans l'heure"
+          },
+          {
+            "texte": "compétences requises, habilitations, expérience sur votre type d'équipement. Aucun envoi à l'aveugle.",
+            "titre": "La qualification"
+          },
+          {
+            "texte": "technicien briefé et outillé, diagnostic, réparation jusqu'à la remise en service.",
+            "titre": "L'intervention"
+          },
+          {
+            "texte": "cause, actions, mesures, points à surveiller, versés dans votre GMAO.",
+            "titre": "Le compte rendu"
+          },
+          {
+            "texte": "si les arrêts reviennent, nous remontons à la cause racine et proposons le plan qui l'élimine.",
+            "titre": "Le bilan"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "bouton": "Faire chiffrer ma maintenance à Rennes",
+        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
+        "question": "Besoin de tenir un poste maintenance sans lancer un recrutement de plus ?"
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "texte": ", sur les installations critiques, depuis 2025",
+            "titre": "Des techniciens intégrés au quotidien des équipes de maintenance d'un équipementier automobile",
+            "lienHref": "/preuves/jtekt/",
+            "lienLibelle": "Étude de cas JTEKT : maintenance des installations"
+          },
+          {
+            "texte": ", en présence continue et en coordination avec les équipes du site",
+            "titre": "Un technicien de maintenance dédié au maintien d'un parc machines",
+            "lienHref": "/preuves/autoliv/",
+            "lienLibelle": "Étude de cas AUTOLIV : maintien d'un site"
+          },
+          {
+            "texte": "d'un site de nutrition infantile",
+            "titre": "Deux techniciens en 3x8 sur les lignes liquides et le conditionnement poudre",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "lienLibelle": "Étude de cas DANONE : lignes de production"
+          },
+          {
+            "texte": "pendant une intensification de production et une transition d'équipe",
+            "titre": "Un responsable maintenance intégré sur site pour piloter le service",
+            "lienHref": "/preuves/eriks/",
+            "lienLibelle": "Étude de cas ERIKS"
+          },
+          {
+            "texte": "d'un transporteur, en maintenance curative",
+            "titre": "Deux techniciens en poste permanent sur les convoyeurs, trieurs et lignes de packaging",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "lienLibelle": "Étude de cas GLS : maintenance curative"
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "bouton": "Faire chiffrer ma maintenance à Rennes",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
+        "question": "Besoin d'arrêter de dépendre d'un seul technicien sur votre site ?"
+      }
+    ]
   }
 }

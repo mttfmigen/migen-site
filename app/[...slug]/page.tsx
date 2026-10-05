@@ -8,14 +8,11 @@ import Article from "@/components/site/article/Article";
 import Bloc from "@/components/site/blocs/Bloc";
 import PageCasClients from "@/components/site/casclients/PageCasClients";
 import PageEditoriale from "@/components/site/editorial/PageEditoriale";
-import PageDomaine from "@/components/site/domaine/PageDomaine";
 import PageDepartement from "@/components/site/implantation/PageDepartement";
 import PageVille from "@/components/site/implantation/PageVille";
 import PageImplantations from "@/components/site/implantations/PageImplantations";
 import PageExpertises from "@/components/site/expertises/PageExpertises";
 import PageFiche from "@/components/site/fiche/PageFiche";
-import PageHub from "@/components/site/hub/PageHub";
-import PageSousRubrique from "@/components/site/hub/PageSousRubrique";
 import PageMetier from "@/components/site/metier/PageMetier";
 import PageOffres from "@/components/site/offres/PageOffres";
 import PageOffre from "@/components/site/offre/PageOffre";
@@ -32,13 +29,11 @@ import { metadonneesSeo } from "@/lib/seo/metadonnees";
 import type { ContenuArticle } from "@/types/article";
 import { estCasClients } from "@/types/casclients";
 import type { ContenuPage, Section } from "@/types/contenu";
-import { estDomaineOuSpecialite } from "@/types/domaine";
 import { estEditorial } from "@/types/editorial";
 import { estDepartement, estVille } from "@/types/implantation";
 import { estImplantations } from "@/types/implantations";
 import { estExpertises } from "@/types/expertises";
 import { estFiche } from "@/types/fiche";
-import { estHub, estSousRubrique } from "@/types/hub";
 import { estMetierOuDomaine } from "@/types/metier";
 import { estOffres } from "@/types/offres";
 import { estOffre } from "@/types/offre";
@@ -176,38 +171,6 @@ export default async function PageDuCocon({
   // dessous. On tranche sur ce que le jsonb porte réellement, pas sur ce qu'un
   // type déclare : il sort de la base en `unknown`.
 
-  // Les gabarits de RUBRIQUE, pour `/offres/`, `/secteurs/`,
-  // `/travaux-industriels/`, `/bureau-etudes/`, `/ressources/` et ses cinq
-  // rayons, `/carriere/`, et les sous-pages de `/offres/residence/`. Deux
-  // dessins, deux fichiers de maquette dédiés (gabarit 10 et gabarit 11), et
-  // c'est la forme du corpus qui tranche : dix sections nommées d'un côté, un
-  // corps suivi de l'autre. Ils passent AVANT l'éditorial, qui ne regarde que la
-  // présence d'un tableau `blocs` et servirait une sous-rubrique en colonne de
-  // lecture avec un sommaire que la maquette ne dessine pas.
-  if (estHub(page.contenu)) {
-    return (
-      <PageHub
-        titre={page.titre_h1}
-        contenu={page.contenu}
-        formulaire={`cocon${page.path.replace(/\//g, "-")}`}
-        filAriane={<FilAriane path={page.path} />}
-        maillage={<Maillage page={page} />}
-      />
-    );
-  }
-
-  if (estSousRubrique(page.contenu)) {
-    return (
-      <PageSousRubrique
-        titre={page.titre_h1}
-        contenu={page.contenu}
-        formulaire={`cocon${page.path.replace(/\//g, "-")}`}
-        filAriane={<FilAriane path={page.path} />}
-        maillage={<Maillage page={page} />}
-      />
-    );
-  }
-
   // Le gabarit RESSOURCE, pour les 35 pages feuilles de `/ressources/` :
   // en-tête de document avec sa pastille de format, carte de procédure
   // numérotée, barème en tableau, cartes collantes, appel de fin. Il passe
@@ -314,40 +277,10 @@ export default async function PageDuCocon({
     );
   }
 
-  // Les gabarits 09 DOMAINE et 05 SPÉCIALITÉ, pour les 19 pages de
-  // `/expertises/<domaine>/` et de ses sous-pages. Ils viennent de leurs
-  // PROPRES fichiers Claude Design, « Migen - Gabarit 09 Domaine.dc.html » et
-  // « Migen - Gabarit 05 Specialite.dc.html », versionnés en `maquette/`. Ces
-  // pages passaient par le gabarit de vente parce que le portage précédent
-  // n'avait lu que « Migen - Site final.dc.html », où le domaine ne tient qu'en
-  // trois sections. Voir `types/domaine.ts`.
-  //
-  // CE GABARIT PORTE SON PROPRE FORMULAIRE, dans le panneau sombre de sa
-  // dernière section, comme la maquette le dessine. La route ne doit donc PAS
-  // lui ajouter `FormulaireBasDePage` : il y aurait deux `id="formulaire"` sur
-  // la page, et l'ancre de ses six appels à l'action viserait le premier venu.
-  if (estDomaineOuSpecialite(page.contenu)) {
-    return (
-      <PageDomaine
-        titre={page.titre_h1}
-        contenu={page.contenu}
-        formulaire={`cocon${page.path.replace(/\//g, "-")}`}
-        filAriane={<FilAriane path={page.path} />}
-        maillageCocon={
-          <div
-            style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}
-          >
-            <Maillage page={page} />
-          </div>
-        }
-      />
-    );
-  }
-
-  // Le gabarit MÉTIER, pour `/carriere/<metier>/`. Une fiche métier n'a ni
-  // punchline, ni duo prestation-bénéfice, ni garanties : pliée au gabarit de
-  // vente, elle annonçait une offre là où le visiteur cherche un poste ou une
-  // compétence.
+  // Les gabarits MÉTIER et DOMAINE, pour `/carriere/<metier>/` et
+  // `/expertises/<domaine>/`. Une fiche métier n'a ni punchline, ni duo
+  // prestation-bénéfice, ni garanties : pliée au gabarit de vente, elle
+  // annonçait une offre là où le visiteur cherche un poste ou une compétence.
   if (estMetierOuDomaine(page.contenu)) {
     return (
       <PageMetier

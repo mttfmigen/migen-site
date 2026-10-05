@@ -7,33 +7,23 @@
  *   · ÉDITORIAL (`types/editorial.ts`), blocs suivis, porte `gabarit: "editorial"`.
  *   · SECTEUR (ici), porte `gabarit: "secteur"`.
  *
- * QUEL FICHIER DE MAQUETTE FAIT FOI, et c'est la correction du 03/10.
+ * POURQUOI UN TROISIÈME. Les pages de secteur et d'implantation ne vendent pas
+ * une offre et n'expliquent pas un métier : elles ancrent. Hero avec ses
+ * repères, les contraintes du terrain, le territoire couvert, les pages sœurs,
+ * puis l'appel. La maquette leur donne deux gabarits voisins, lignes 5602 à
+ * 5757 de « Migen - Site final.dc.html » : SECTEUR et DÉPARTEMENT. Les plier au
+ * gabarit de vente, ce qui est l'état actuel du site, produit une page qui
+ * annonce une prestation là où le visiteur cherche un territoire.
  *
- * Le portage précédent a lu « Migen - Site final.dc.html », lignes 5602 à 5757,
- * parce que c'est le fichier que le client avait envoyé en message. Le projet
- * Claude Design contient ONZE FICHIERS DE GABARITS DÉDIÉS, bien plus riches, et
- * personne ne les avait listés. Pour les pages de secteur, celui qui fait foi
- * est « Migen - Gabarit 08 Secteur.dc.html », versionné en local dans
- * `maquette/gabarit-08-secteur.html`. Il dessine DOUZE sections là où « Site
- * final » en dessine quatre, et il fait foi CONTRE lui.
+ * UN SEUL TYPE POUR LES DEUX GABARITS DE LA MAQUETTE, et un seul composant : ils
+ * partagent le hero, les pastilles de pages sœurs et l'appel final. Ce qui les
+ * distingue, ce sont les DONNÉES, pas une variante à déclarer : le secteur porte
+ * des cartes d'enjeux, le département une liste de communes. Chaque section se
+ * rend si et seulement si le corpus la fournit, et disparaît sinon. Un drapeau
+ * `variante` aurait fait porter au contenu une décision que son contenu dit
+ * déjà.
  *
- * C'est la cause du « les pages offres ne ressemblent toujours pas » : le
- * dessin lu n'était pas le bon dessin.
- *
- * DEUX JEUX DE CHAMPS COHABITENT DONC ICI, et c'est transitoire :
- *
- *   · `sections` et `pourAllerPlusLoin` : le gabarit 08, pour les 13 pages
- *     `/secteurs/<secteur>/`. C'est le jeu à utiliser.
- *   · tout le reste (`surtitre`, `reperes`, `enjeux`, `communes`, `autres`,
- *     `appel*`, `complement`) : le portage « Site final », encore en service
- *     pour les 42 pages de `/implantations/`, qui passent par
- *     `types/implantation.ts` et `components/site/implantation/`. Ces pages ont
- *     leurs propres fichiers qui font foi (« Gabarit 04 Ville »,
- *     « Gabarit 06 Departement ») et leur propre portage à refaire. CES CHAMPS
- *     NE SONT PAS SUPPRIMÉS AUJOURD'HUI : les retirer casserait un gabarit
- *     voisin en cours de correction, pour un gain nul sur celui-ci.
- *
- * URL servies par `sections` : `/secteurs/<secteur>/`, 13 pages.
+ * URL servies : `/secteurs/<secteur>/` et `/implantations/<ville>/<departement>/`.
  *
  * AUCUNE VALEUR PAR DÉFAUT N'EST INVENTÉE. Tout est optionnel, tout se rend
  * vide. Les textes attendus sont listés dans `docs/` par l'import du corpus.
@@ -46,23 +36,6 @@ export interface LienSecteur {
   libelle: string;
   /** Chemin INTERNE, slash final. Une cible externe est refusée au rendu. */
   href: string;
-}
-
-/**
- * Une carte de « Pour aller plus loin », section Maillage du gabarit 08.
- *
- * Le `texte` est la PHRASE DU CORPUS qui portait le lien, pas un résumé écrit
- * pour l'occasion : c'est ce que fait le parseur de la maquette, qui garde le
- * contexte de chaque `[libellé](cible)` qu'il déplie. Rien ne s'invente, donc
- * une carte sans contexte sort sans texte.
- */
-export interface CarteLien {
-  titre: string;
-  /** Chemin INTERNE, slash final. Une cible externe est refusée au rendu. */
-  href: string;
-  texte?: string;
-  /** Chemin public d'un visuel, « /assets/web/… ». Posé par la maquette. */
-  image?: string;
 }
 
 /** Un repère chiffré du hero : « 14 » / « sites agroalimentaires suivis ». */
@@ -79,45 +52,6 @@ export interface EnjeuSecteur {
 
 export interface ContenuSecteur {
   gabarit: "secteur";
-
-  /**
-   * LES DIX SECTIONS DU CORPUS, DANS L'ORDRE DU CORPUS. Le gabarit 08.
-   *
-   * CE CHAMP EST CELUI DES PAGES `/secteurs/<secteur>/`, et il remplace tout ce
-   * qui suit pour elles. Les champs d'en dessous (`surtitre`, `reperes`,
-   * `enjeux`, `communes`, `autres`, `appel*`, `complement`) sont ceux du
-   * portage précédent, resté en service pour `/implantations/` : voir le long
-   * commentaire de `PageSecteur.tsx`.
-   *
-   * POURQUOI LES DIX SECTIONS TELLES QUELLES, et non un champ par morceau de
-   * dessin. « Migen - Gabarit 08 Secteur.dc.html » dessine DOUZE sections, et
-   * son propre script dit d'où chacune tire son texte : les dix `## SECTION n`
-   * du fichier Markdown de la page, une par une, sans en replier ni en couper
-   * aucune. La correspondance est donc l'identité. Un jeu de champs à plat
-   * l'aurait recopiée une troisième fois, après le corpus et après le parseur
-   * de la maquette, et c'est exactement par là que le portage précédent s'est
-   * perdu : il avait inventé quatre champs pour un gabarit qui en dessine
-   * douze, et les six sections restantes partaient en `complement`.
-   *
-   * Le type vient de `types/contenu.ts` et n'est pas redéclaré : c'est la MÊME
-   * substance que lit le gabarit de vente, lue par un autre dessin.
-   *
-   * L'ORDRE N'EST PAS PORTÉ PAR LES DONNÉES, il est donné par l'ordre du
-   * tableau, et le gabarit interdit de le réarranger. Une section que le corpus
-   * ne fournit pas est absente du tableau, et ne se rend pas du tout.
-   */
-  sections?: Section[];
-
-  /**
-   * Les cartes de « Pour aller plus loin ». Section Maillage de la maquette.
-   *
-   * EN DONNÉES ET NON DÉDUITES AU RENDU : la maquette les fabrique en dépliant
-   * chaque `[libellé](cible)` du Markdown de la page et en gardant la phrase
-   * qui le portait. Ce travail est celui de l'import, qui lit le Markdown ;
-   * le refaire à chaque rendu reviendrait à parser du Markdown par page servie
-   * pour un résultat déjà connu au moment de l'écriture.
-   */
-  pourAllerPlusLoin?: CarteLien[];
 
   /** Surtitre orange du hero : « Secteur d'activité », « Département 69 ». */
   surtitre?: string;

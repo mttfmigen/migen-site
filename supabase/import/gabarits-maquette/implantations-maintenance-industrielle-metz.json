@@ -3,12 +3,12 @@
   "contenu": {
     "gabarit": "ville",
     "chapeau": "À Metz, nous ne parlons pas au conditionnel. Depuis mai 2024, 10 techniciens polyvalents tiennent le site logistique ETZ 2 une semaine par mois, par créneaux de 8 heures. Le même dispositif s'applique aux laminoirs, aux presses et aux parcs d'usinage du sillon mosellan. Il repose sur notre hub de techniciens de Metz.",
-    "action": {
-      "libelle": "Demander une intervention à Metz",
-      "href": "#formulaire"
-    },
-    "telephone": "04 78 33 72 05",
-    "delai": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte, en option, prend le relais la nuit, le week-end et les jours fériés.",
+    "actions": [
+      {
+        "libelle": "Demander une intervention à Metz",
+        "href": "#formulaire"
+      }
+    ],
     "reperes": [
       {
         "valeur": "10",
@@ -27,16 +27,9 @@
         "libelle": "hubs de techniciens en France, dont un à Metz, plus notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid"
       }
     ],
-    "logos": [
-      "AMAZON",
-      "STELLANTIS",
-      "VOIT",
-      "EATON",
-      "JTEKT"
-    ],
-    "problemeTitre": "Un entraînement de laminoir claque en fin de poste.",
-    "problemeTexte": "Le métal en cours refroidit dans la cage, et la reprise coûte plus cher que la panne elle-même.",
-    "problemes": [
+    "contact": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7, en option, prend le relais la nuit, le week-end et les jours fériés.",
+    "constatTexte": "Un entraînement de laminoir claque en fin de poste. Le métal en cours refroidit dans la cage, et la reprise coûte plus cher que la panne elle-même.",
+    "constatPuces": [
       {
         "texte": "Roulements, transmissions, hydraulique de presse : l'usure va plus vite que le calendrier d'entretien standard.",
         "accroche": "Le métal à chaud consomme les organes."
@@ -58,80 +51,8 @@
         "accroche": "Le sillon mosellan s'étire sur des dizaines de kilomètres."
       }
     ],
-    "offre": [
-      {
-        "benefice": "Les organes sensibles sont suivis au rythme réel de l'usure, pas à celui du catalogue.",
-        "prestation": {
-          "texte": "laminoirs, fours, presses, traitement thermique, entraînements.",
-          "accroche": "Maintenance des équipements de transformation du métal"
-        }
-      },
-      {
-        "benefice": "Vous absorbez une montée de cadence ou une transition industrielle sans recruter dans l'urgence.",
-        "prestation": {
-          "texte": ", du technicien unique à la dizaine d'intervenants sur plusieurs sites.",
-          "accroche": "Renfort d'équipes sur site"
-        }
-      },
-      {
-        "benefice": "L'accueil sécurité valide l'intervenant au lieu de le renvoyer.",
-        "prestation": {
-          "texte": ", consignation et permis de feu systématiques.",
-          "accroche": "Techniciens habilités pour les sites à procédés continus"
-        }
-      },
-      {
-        "benefice": "Une panne qui croise trois métiers mobilise une équipe, pas trois contrats.",
-        "prestation": {
-          "texte": "[mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [automatisme](/expertises/automatisme/), [électromécanique](/expertises/electromecanique/), [hydraulique](/expertises/hydraulique/), [soudure et chaudronnerie](/expertises/soudure/).",
-          "accroche": "Couverture multi-technique"
-        }
-      },
-      {
-        "benefice": "La compétence rare arrive quand la panne l'exige, sans attendre un prestataire spécialisé.",
-        "prestation": {
-          "texte": "en appui du terrain.",
-          "accroche": "Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc"
-        }
-      },
-      {
-        "benefice": "Un défaut de nuit ne se transforme pas en journée d'arrêt.",
-        "prestation": {
-          "texte": ", mobilisée depuis notre hub de techniciens de Metz.",
-          "accroche": "Astreinte en option"
-        }
-      }
-    ],
-    "offreNotes": [
-      "Pour les plateformes et entrepôts du sillon, voir notre pratique de la [maintenance des équipements logistiques](/secteurs/logistique/)."
-    ],
-    "etapes": [
-      {
-        "texte": "équipement, symptôme, criticité, accès au site, habilitations exigées.",
-        "titre": "Vous décrivez la situation"
-      },
-      {
-        "texte": "qualification du besoin, du profil et des pièces à anticiper.",
-        "titre": "Nous vous rappelons dans l'heure"
-      },
-      {
-        "texte": "périmètre, conditions de chantier, chiffrage. Pas de poste surprise en fin de facture.",
-        "titre": "Le cadre est écrit avant le départ"
-      },
-      {
-        "texte": "accueil sécurité, plan de prévention, consignation, pré-visite quand l'accès l'impose.",
-        "titre": "L'intervention suit votre protocole"
-      },
-      {
-        "texte": "mesures, historique machine, conditions d'exploitation.",
-        "titre": "La cause racine est cherchée après la remise en route"
-      },
-      {
-        "texte": "constat, actions, pièces, organes à reprendre.",
-        "titre": "Le compte rendu est versé dans votre GMAO"
-      }
-    ],
-    "garanties": [
+    "reponseTexte": "Pour les plateformes et entrepôts du sillon, voir notre pratique de la [maintenance des équipements logistiques](/secteurs/logistique/).",
+    "reponsePuces": [
       {
         "texte": "le mode opératoire éprouvé sur un centre en continu à Metz s'applique à d'autres parcs, avec la même organisation par créneaux.",
         "accroche": "Un dispositif transposable, pas une promesse"
@@ -141,48 +62,11 @@
         "accroche": "Le profil présenté avant l'arrivée"
       },
       {
-        "texte": "rappel dans l'heure aux horaires ouvrés, astreinte en option. Le reste dépend de votre implantation exacte et se dit avant d'engager.",
+        "texte": "rappel dans l'heure aux horaires ouvrés, astreinte 24/24 et 7/7 en option. Le reste dépend de votre implantation exacte et se dit avant d'engager.",
         "accroche": "Aucun délai de route inventé"
       }
     ],
-    "appel": {
-      "question": "Besoin d'un renfort technique sur un site mosellan avant la prochaine montée de cadence ?",
-      "bouton": "Demander une intervention à Metz",
-      "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
-    },
-    "preuves": [
-      {
-        "texte": "dispositif transposé d'un premier centre logistique en continu",
-        "titre": "10 techniciens polyvalents une semaine par mois sur le site ETZ 2, à Metz, depuis mai 2024",
-        "lienHref": "/preuves/amazon-nouveau-site/",
-        "lienLibelle": "Étude de cas AMAZON : démarrage d'un nouveau site"
-      },
-      {
-        "texte": "compétences apportées pour la transition vers le véhicule électrique",
-        "titre": "18 à 25 techniciens sur plusieurs sites du Grand Est depuis juin 2023",
-        "lienHref": "/preuves/stellantis-grand-est/",
-        "lienLibelle": "Étude de cas STELLANTIS : sites du Grand Est"
-      },
-      {
-        "texte": "fabrication de pièces de précision, 2025",
-        "titre": "Un technicien intégré à temps plein sur un parc de centres d'usinage, de presses et de machines à commande numérique",
-        "lienHref": "/preuves/voit-grand-est/",
-        "lienLibelle": "Étude de cas VOIT : site du Grand Est"
-      },
-      {
-        "texte": "site automobile, à partir de janvier 2023",
-        "titre": "Six techniciens sur l'installation et la mise en production d'un nouveau parc machine",
-        "lienHref": "/preuves/eaton-mise-en-production/",
-        "lienLibelle": "Étude de cas EATON : mise en production"
-      },
-      {
-        "texte": "réorganisation industrielle en cours",
-        "titre": "Techniciens intégrés en 2025 pour sécuriser la maintenance des installations d'un équipementier automobile",
-        "lienHref": "/preuves/jtekt/",
-        "lienLibelle": "Étude de cas JTEKT : maintenance des installations"
-      }
-    ],
-    "questions": [
+    "faq": [
       {
         "reponse": "Oui, et c'est vérifiable : Metz est l'un de nos dix hubs de techniciens en France, et depuis mai 2024, 10 de nos techniciens tiennent le site ETZ 2 à Metz une semaine par mois, par créneaux de 8 heures. Derrière ce hub, notre siège à Lyon et nos agences de Montréal, Dubaï et Madrid. La question utile porte ensuite sur le technicien qui franchit votre portail. Son niveau, ses habilitations, son outillage, et la trace qu'il laisse dans votre GMAO.",
         "question": "Intervenez-vous vraiment sur place, à Metz ?"
@@ -200,7 +84,7 @@
         "question": "Pouvez-vous absorber un pic sans que nous recrutions ?"
       },
       {
-        "reponse": "L'astreinte prend l'appel et mobilise un technicien. Elle se souscrit en option du contrat, avec un circuit de priorités défini à l'avance. Sans astreinte, les demandes sont traitées aux horaires ouvrés, avec rappel dans l'heure.",
+        "reponse": "L'astreinte 24/24 et 7/7 prend l'appel et mobilise un technicien. Elle se souscrit en option du contrat, avec un circuit de priorités défini à l'avance. Sans astreinte, les demandes sont traitées aux horaires ouvrés, avec rappel dans l'heure.",
         "question": "Que se passe-t-il si la panne tombe la nuit ?"
       },
       {
@@ -208,46 +92,188 @@
         "question": "Comment tenez-vous un poste que nous n'arrivons pas à pourvoir ?"
       }
     ],
-    "liens": [
+    "autres": [
       {
-        "libelle": "Maintenance des équipements logistiques",
-        "href": "/secteurs/logistique/",
-        "contexte": "Pour les plateformes et entrepôts du sillon, voir notre pratique de la maintenance des équipements logistiques."
+        "libelle": "Lille",
+        "href": "/implantations/lille/"
       },
       {
-        "libelle": "Mécanique",
-        "href": "/expertises/mecanique/"
+        "libelle": "Lyon",
+        "href": "/implantations/lyon/"
       },
       {
-        "libelle": "Électrique",
-        "href": "/expertises/electrique/"
+        "libelle": "Grenoble",
+        "href": "/implantations/lyon/grenoble/"
       },
       {
-        "libelle": "Automatisme",
-        "href": "/expertises/automatisme/"
+        "libelle": "saint etienne",
+        "href": "/implantations/lyon/saint-etienne/"
       },
       {
-        "libelle": "Électromécanique",
-        "href": "/expertises/electromecanique/"
+        "libelle": "Valence",
+        "href": "/implantations/lyon/valence/"
       },
       {
-        "libelle": "Hydraulique",
-        "href": "/expertises/hydraulique/"
+        "libelle": "Nantes",
+        "href": "/implantations/nantes/"
       },
       {
-        "libelle": "Soudure et chaudronnerie",
-        "href": "/expertises/soudure/"
+        "libelle": "Brest",
+        "href": "/implantations/nantes/brest/"
       },
       {
-        "libelle": "Technicien en résidence",
-        "href": "/offres/residence/",
-        "contexte": "Avec le technicien en résidence."
+        "libelle": "Rennes",
+        "href": "/implantations/nantes/rennes/"
+      },
+      {
+        "libelle": "paris",
+        "href": "/implantations/paris/"
+      },
+      {
+        "libelle": "Rouen",
+        "href": "/implantations/paris/rouen/"
+      },
+      {
+        "libelle": "Strasbourg",
+        "href": "/implantations/strasbourg/"
+      },
+      {
+        "libelle": "Mulhouse",
+        "href": "/implantations/strasbourg/mulhouse/"
+      },
+      {
+        "libelle": "Toulouse",
+        "href": "/implantations/toulouse/"
+      },
+      {
+        "libelle": "Bordeaux",
+        "href": "/implantations/toulouse/bordeaux/"
       }
     ],
-    "appelFinal": {
-      "question": "Besoin de sécuriser une compétence que le bassin ne vous fournit plus ?",
-      "bouton": "Demander une intervention à Metz",
-      "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
-    }
+    "reste": [
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "benefice": "Les organes sensibles sont suivis au rythme réel de l'usure, pas à celui du catalogue.",
+            "prestation": {
+              "texte": "laminoirs, fours, presses, traitement thermique, entraînements.",
+              "accroche": "Maintenance des équipements de transformation du métal"
+            }
+          },
+          {
+            "benefice": "Vous absorbez une montée de cadence ou une transition industrielle sans recruter dans l'urgence.",
+            "prestation": {
+              "texte": ", du technicien unique à la dizaine d'intervenants sur plusieurs sites.",
+              "accroche": "Renfort d'équipes sur site"
+            }
+          },
+          {
+            "benefice": "L'accueil sécurité valide l'intervenant au lieu de le renvoyer.",
+            "prestation": {
+              "texte": ", consignation et permis de feu systématiques.",
+              "accroche": "Techniciens habilités pour les sites à procédés continus"
+            }
+          },
+          {
+            "benefice": "Une panne qui croise trois métiers mobilise une équipe, pas trois contrats.",
+            "prestation": {
+              "texte": "[mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [automatisme](/expertises/automatisme/), [électromécanique](/expertises/electromecanique/), [hydraulique](/expertises/hydraulique/), [soudure et chaudronnerie](/expertises/soudure/).",
+              "accroche": "Couverture multi-technique"
+            }
+          },
+          {
+            "benefice": "La compétence rare arrive quand la panne l'exige, sans attendre un prestataire spécialisé.",
+            "prestation": {
+              "texte": "en appui du terrain.",
+              "accroche": "Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc"
+            }
+          },
+          {
+            "benefice": "Un défaut de nuit ne se transforme pas en journée d'arrêt.",
+            "prestation": {
+              "texte": ", mobilisée depuis notre hub de techniciens de Metz.",
+              "accroche": "Astreinte 24/24 et 7/7 en option"
+            }
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "texte": "équipement, symptôme, criticité, accès au site, habilitations exigées.",
+            "titre": "Vous décrivez la situation"
+          },
+          {
+            "texte": "qualification du besoin, du profil et des pièces à anticiper.",
+            "titre": "Nous vous rappelons dans l'heure"
+          },
+          {
+            "texte": "périmètre, conditions de chantier, chiffrage. Pas de poste surprise en fin de facture.",
+            "titre": "Le cadre est écrit avant le départ"
+          },
+          {
+            "texte": "accueil sécurité, plan de prévention, consignation, pré-visite quand l'accès l'impose.",
+            "titre": "L'intervention suit votre protocole"
+          },
+          {
+            "texte": "mesures, historique machine, conditions d'exploitation.",
+            "titre": "La cause racine est cherchée après la remise en route"
+          },
+          {
+            "texte": "constat, actions, pièces, organes à reprendre.",
+            "titre": "Le compte rendu est versé dans votre GMAO"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "bouton": "Demander une intervention à Metz",
+        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
+        "question": "Besoin d'un renfort technique sur un site mosellan avant la prochaine montée de cadence ?"
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "texte": "dispositif transposé d'un premier centre logistique en continu",
+            "titre": "10 techniciens polyvalents une semaine par mois sur le site ETZ 2, à Metz, depuis mai 2024",
+            "lienHref": "/preuves/amazon-nouveau-site/",
+            "lienLibelle": "Étude de cas AMAZON : démarrage d'un nouveau site"
+          },
+          {
+            "texte": "compétences apportées pour la transition vers le véhicule électrique",
+            "titre": "18 à 25 techniciens sur plusieurs sites du Grand Est depuis juin 2023",
+            "lienHref": "/preuves/stellantis-grand-est/",
+            "lienLibelle": "Étude de cas STELLANTIS : sites du Grand Est"
+          },
+          {
+            "texte": "fabrication de pièces de précision, 2025",
+            "titre": "Un technicien intégré à temps plein sur un parc de centres d'usinage, de presses et de machines à commande numérique",
+            "lienHref": "/preuves/voit-grand-est/",
+            "lienLibelle": "Étude de cas VOIT : site du Grand Est"
+          },
+          {
+            "texte": "site automobile, à partir de janvier 2023",
+            "titre": "Six techniciens sur l'installation et la mise en production d'un nouveau parc machine",
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "lienLibelle": "Étude de cas EATON : mise en production"
+          },
+          {
+            "texte": "réorganisation industrielle en cours",
+            "titre": "Techniciens intégrés en 2025 pour sécuriser la maintenance des installations d'un équipementier automobile",
+            "lienHref": "/preuves/jtekt/",
+            "lienLibelle": "Étude de cas JTEKT : maintenance des installations"
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "bouton": "Demander une intervention à Metz",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
+        "question": "Besoin de sécuriser une compétence que le bassin ne vous fournit plus ?"
+      }
+    ]
   }
 }

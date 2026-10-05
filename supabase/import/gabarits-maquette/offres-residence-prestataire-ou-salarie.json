@@ -1,13 +1,20 @@
 {
   "url": "/offres/residence/prestataire-ou-salarie/",
-  "source": "dessin : maquette/gabarit-10-hub-de-rubrique.html. texte : ../migen-refonte/seo/CONVERSION/Offres/prestataire-ou-salarie.md, via scripts/produit_hub.mjs.",
   "contenu": {
-    "gabarit": "hub",
+    "gabarit": "offre",
+    "mention": ", du lundi au vendredi de 8h00 à 18h30",
     "chapeau": "Migen emploie plus de 100 collaborateurs et pratique la [sous-traitance de maintenance](/offres/residence/) avec son offre de technicien intégré sur site. Nous vivons les deux mondes tous les jours, et nous disons quand l'embauche est le meilleur choix.",
-    "cta": "Faire chiffrer mon besoin",
-    "telephone": "04 78 33 72 05",
-    "phraseDelai": ", du lundi au vendredi de 8h00 à 18h30",
-    "enBref": [
+    "actions": [
+      {
+        "libelle": "Les cinq offres",
+        "href": "/offres/"
+      }
+    ],
+    "formulaireHeroTitre": "Décrire mon besoin",
+    "formulaireHeroMention": "Rappel dans l'heure",
+    "brefSurtitre": "En bref",
+    "brefTitre": "Le cadre, en quatre chiffres.",
+    "chiffres": [
       {
         "valeur": "10 %",
         "libelle": "Part des candidats retenus, après entretien technique et comportemental."
@@ -25,201 +32,262 @@
         "libelle": "Lyon (siège), Montréal, Dubaï, Madrid."
       }
     ],
-    "punchTitre": "Vous comparez un salaire à une facture, et le calcul est faux",
-    "punchTexte": "",
-    "problemes": [
-      {
-        "accroche": "La mission est permanente, stable, au centre de votre savoir-faire.",
-        "texte": "Un site qui fait tourner une équipe complète a besoin d'un noyau salarié porteur de la mémoire technique."
-      },
-      {
-        "accroche": "La compétence est courante sur votre bassin.",
-        "texte": "Si vous recrutez sans difficulté un technicien de maintenance généraliste, l'emploi direct coûte moins cher à l'heure travaillée."
-      },
-      {
-        "accroche": "Vous avez la capacité d'encadrer et de fidéliser.",
-        "texte": "Parcours, rémunération, perspectives : sans cette politique, vous formerez des techniciens pour vos voisins."
-      },
-      {
-        "accroche": "La compétence est rare ou pointue.",
-        "texte": "Automatisme SIEMENS ou Schneider, robotique ABB ou Fanuc, habilitations spécifiques : ces profils ne se trouvent pas au pied levé."
-      },
-      {
-        "accroche": "L'activité varie.",
-        "texte": "Montée en charge, projet, arrêt technique, remplacement, congés d'été."
-      },
-      {
-        "accroche": "Le rôle d'employeur est devenu le problème.",
-        "texte": "Recrutements qui échouent, turnover, absences en cascade, encadrement débordé."
-      }
-    ],
-    "offre": [
-      {
-        "prestation": {
-          "texte": "**Un technicien présent sur votre site, à vos horaires**"
-        },
-        "benefice": "La présence quotidienne d'un salarié, la sécurité juridique d'une prestation de services. Il connaît vos machines, pas seulement votre bon de commande."
-      },
-      {
-        "prestation": {
-          "texte": "**Sélection à 10 % des candidats retenus**"
-        },
-        "benefice": "Entretien technique et entretien comportemental, résultats partagés avec vous avant la présentation. Le profil vous est présenté avant la prise de poste, pas le matin même."
-      },
-      {
-        "prestation": {
-          "texte": "**Une prise de poste rapide**"
-        },
-        "benefice": "Le temps d'un plan de prévention et d'un accueil sécurité, pas celui d'une campagne de recrutement."
-      },
-      {
-        "prestation": {
-          "texte": "**Remplacement assuré**"
-        },
-        "benefice": "Absence, maladie, départ : la continuité est notre obligation contractuelle. Aucun poste vacant à subir de votre côté."
-      },
-      {
-        "prestation": {
-          "texte": "**Encadrement par un référent Migen**"
-        },
-        "benefice": "Un référent technique dirige, contrôle et évalue le travail. C'est cet encadrement qui protège la relation d'une requalification."
-      },
-      {
-        "prestation": {
-          "texte": "**Spécialistes mobilisables en appui**"
-        },
-        "benefice": "Automaticien, roboticien, électromécanicien : la compétence ponctuelle arrive sans nouveau contrat."
-      },
-      {
-        "prestation": {
-          "texte": "**Ajustement par avenant**"
-        },
-        "benefice": "Renfort, spécialité supplémentaire ou réduction : le dispositif suit votre activité."
-      }
-    ],
-    "etapes": [
-      {
-        "titre": "Cadrage.",
-        "texte": "Périmètre, équipements, tâches attendues, horaires, règles de sécurité, critères de réussite. Écrits, pas sous-entendus."
-      },
-      {
-        "titre": "Chiffrage comparé.",
-        "texte": "Notre chargé d'affaires détaille le tarif ligne à ligne, pour que vous puissiez le poser en face du coût complet d'une embauche. Le verdict n'est pas toujours en notre faveur."
-      },
-      {
-        "titre": "Sélection du technicien.",
-        "texte": "Profils évalués en entretien technique et comportemental, résultats partagés avec vous. Vous validez."
-      },
-      {
-        "titre": "Intégration.",
-        "texte": "Plan de prévention, accueil sécurité, démarrage organisé avec votre encadrement. La prise de poste ne demande pas de campagne de recrutement."
-      },
-      {
-        "titre": "Pilotage.",
-        "texte": "Un référent Migen encadre, mesure, rend compte mois après mois. La fonction employeur reste chez nous."
-      },
-      {
-        "titre": "Ajustement.",
-        "texte": "Renfort, réduction ou spécialité supplémentaire, par simple avenant. Certains clients internalisent le poste ensuite : le contrat prévoit les conditions."
-      }
-    ],
-    "garanties": [
-      {
-        "accroche": "Un chiffrage détaillé, même quand il vous conduit à embaucher.",
-        "texte": "Une mission stable, à temps plein, sur une compétence courante peut justifier une création de poste. Nous le disons avant la signature, pas après."
-      },
-      {
-        "accroche": "La continuité de la prestation, écrite au contrat.",
-        "texte": "Le technicien ne convient pas, tombe malade ou part : recadrage, accompagnement ou remplacement par un autre profil évalué. Aucune procédure disciplinaire à mener de votre côté."
-      },
-      {
-        "accroche": "Un encadrement réel, qui protège les deux parties.",
-        "texte": "Missions définies, référent technique Migen, comptes rendus, plannings et congés administrés par nous. C'est la situation réelle que le juge apprécie, jamais la rédaction des clauses."
-      },
-      {
-        "accroche": "Un intervenant habilité, avec les justificatifs qui vont avec.",
-        "texte": "Habilitations à jour et vérifiables, attestations de notre démarche MASE et de notre évaluation EcoVadis transmises avec chaque plan de prévention. Vous recevez les pièces avant la prise de poste, sans avoir à les réclamer."
-      }
-    ],
-    "appel": {
-      "question": "Besoin de comparer sur vos propres chiffres ?",
-      "bouton": "Faire chiffrer mon besoin"
+    "brefBande": "Besoin de comparer sur vos propres chiffres ?",
+    "brefBouton": {
+      "libelle": "Faire chiffrer mon besoin",
+      "href": "/contact/"
     },
-    "preuves": [
+    "sections": [
       {
-        "titre": "[Renfort d'équipes sur plusieurs sites, confort thermique](/preuves/groupe-atlantic/)",
-        "texte": "depuis octobre 2024, 1 à 3 techniciens en présence permanente chez GROUPE ATLANTIC, mission toujours en cours"
+        "type": "probleme",
+        "punchline": "Vous comparez un salaire à une facture, et le calcul est faux",
+        "puces": [
+          {
+            "accroche": "La mission est permanente, stable, au centre de votre savoir-faire.",
+            "texte": "Un site qui fait tourner une équipe complète a besoin d'un noyau salarié porteur de la mémoire technique."
+          },
+          {
+            "accroche": "La compétence est courante sur votre bassin.",
+            "texte": "Si vous recrutez sans difficulté un technicien de maintenance généraliste, l'emploi direct coûte moins cher à l'heure travaillée."
+          },
+          {
+            "accroche": "Vous avez la capacité d'encadrer et de fidéliser.",
+            "texte": "Parcours, rémunération, perspectives : sans cette politique, vous formerez des techniciens pour vos voisins."
+          },
+          {
+            "accroche": "La compétence est rare ou pointue.",
+            "texte": "Automatisme SIEMENS ou Schneider, robotique ABB ou Fanuc, habilitations spécifiques : ces profils ne se trouvent pas au pied levé."
+          },
+          {
+            "accroche": "L'activité varie.",
+            "texte": "Montée en charge, projet, arrêt technique, remplacement, congés d'été."
+          },
+          {
+            "accroche": "Le rôle d'employeur est devenu le problème.",
+            "texte": "Recrutements qui échouent, turnover, absences en cascade, encadrement débordé."
+          }
+        ]
       },
       {
-        "titre": "[Pilotage du service pendant une transition, industrie](/preuves/eriks/)",
-        "texte": "troisième trimestre 2025, un responsable maintenance intégré chez ERIKS pour tenir le service pendant que l'organisation bougeait"
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "texte": "**Un technicien présent sur votre site, à vos horaires**"
+            },
+            "benefice": "La présence quotidienne d'un salarié, la sécurité juridique d'une prestation de services. Il connaît vos machines, pas seulement votre bon de commande."
+          },
+          {
+            "prestation": {
+              "texte": "**Sélection à 10 % des candidats retenus**"
+            },
+            "benefice": "Entretien technique et entretien comportemental, résultats partagés avec vous avant la présentation. Le profil vous est présenté avant la prise de poste, pas le matin même."
+          },
+          {
+            "prestation": {
+              "texte": "**Une prise de poste rapide**"
+            },
+            "benefice": "Le temps d'un plan de prévention et d'un accueil sécurité, pas celui d'une campagne de recrutement."
+          },
+          {
+            "prestation": {
+              "texte": "**Remplacement assuré**"
+            },
+            "benefice": "Absence, maladie, départ : la continuité est notre obligation contractuelle. Aucun poste vacant à subir de votre côté."
+          },
+          {
+            "prestation": {
+              "texte": "**Encadrement par un référent Migen**"
+            },
+            "benefice": "Un référent technique dirige, contrôle et évalue le travail. C'est cet encadrement qui protège la relation d'une requalification."
+          },
+          {
+            "prestation": {
+              "texte": "**Spécialistes mobilisables en appui**"
+            },
+            "benefice": "Automaticien, roboticien, électromécanicien : la compétence ponctuelle arrive sans nouveau contrat."
+          },
+          {
+            "prestation": {
+              "texte": "**Ajustement par avenant**"
+            },
+            "benefice": "Renfort, spécialité supplémentaire ou réduction : le dispositif suit votre activité."
+          }
+        ],
+        "prose": [
+          {
+            "texte": "La prestation qui tranche le débat en pratique : vous avez le technicien sur site, nous portons la fonction employeur."
+          }
+        ]
       },
       {
-        "titre": "[Renfort continu d'une équipe interne, site proche de Paris](/preuves/fdj/)",
-        "texte": "un technicien expérimenté affecté en continu chez FDJ, en renfort et non en remplacement de l'équipe"
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Cadrage.",
+            "texte": "Périmètre, équipements, tâches attendues, horaires, règles de sécurité, critères de réussite. Écrits, pas sous-entendus."
+          },
+          {
+            "titre": "Chiffrage comparé.",
+            "texte": "Notre chargé d'affaires détaille le tarif ligne à ligne, pour que vous puissiez le poser en face du coût complet d'une embauche. Le verdict n'est pas toujours en notre faveur."
+          },
+          {
+            "titre": "Sélection du technicien.",
+            "texte": "Profils évalués en entretien technique et comportemental, résultats partagés avec vous. Vous validez."
+          },
+          {
+            "titre": "Intégration.",
+            "texte": "Plan de prévention, accueil sécurité, démarrage organisé avec votre encadrement. La prise de poste ne demande pas de campagne de recrutement."
+          },
+          {
+            "titre": "Pilotage.",
+            "texte": "Un référent Migen encadre, mesure, rend compte mois après mois. La fonction employeur reste chez nous."
+          },
+          {
+            "titre": "Ajustement.",
+            "texte": "Renfort, réduction ou spécialité supplémentaire, par simple avenant. Certains clients internalisent le poste ensuite : le contrat prévoit les conditions."
+          }
+        ]
       },
       {
-        "titre": "[Technicien polyvalent sur parc hétérogène, papier et emballage](/preuves/vpk/)",
-        "texte": "chez VPK, quelqu'un capable de passer d'un équipement à l'autre, plutôt qu'un spécialiste d'une seule machine"
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Un chiffrage détaillé, même quand il vous conduit à embaucher.",
+            "texte": "Une mission stable, à temps plein, sur une compétence courante peut justifier une création de poste. Nous le disons avant la signature, pas après."
+          },
+          {
+            "accroche": "La continuité de la prestation, écrite au contrat.",
+            "texte": "Le technicien ne convient pas, tombe malade ou part : recadrage, accompagnement ou remplacement par un autre profil évalué. Aucune procédure disciplinaire à mener de votre côté."
+          },
+          {
+            "accroche": "Un encadrement réel, qui protège les deux parties.",
+            "texte": "Missions définies, référent technique Migen, comptes rendus, plannings et congés administrés par nous. C'est la situation réelle que le juge apprécie, jamais la rédaction des clauses."
+          },
+          {
+            "accroche": "Un intervenant habilité, avec les justificatifs qui vont avec.",
+            "texte": "Habilitations à jour et vérifiables, attestations de notre démarche MASE et de notre évaluation EcoVadis transmises avec chaque plan de prévention. Vous recevez les pièces avant la prise de poste, sans avoir à les réclamer."
+          }
+        ]
       },
       {
-        "titre": "[Renfort sur site agroalimentaire, Belgique](/preuves/mccain-belgique/)",
-        "texte": "depuis octobre 2024, 1 à 3 techniciens chez McCAIN, premier contrat Migen en Belgique"
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "[Renfort d'équipes sur plusieurs sites, confort thermique](/preuves/groupe-atlantic/)",
+            "texte": "depuis octobre 2024, 1 à 3 techniciens en présence permanente chez GROUPE ATLANTIC, mission toujours en cours"
+          },
+          {
+            "titre": "[Pilotage du service pendant une transition, industrie](/preuves/eriks/)",
+            "texte": "troisième trimestre 2025, un responsable maintenance intégré chez ERIKS pour tenir le service pendant que l'organisation bougeait"
+          },
+          {
+            "titre": "[Renfort continu d'une équipe interne, site proche de Paris](/preuves/fdj/)",
+            "texte": "un technicien expérimenté affecté en continu chez FDJ, en renfort et non en remplacement de l'équipe"
+          },
+          {
+            "titre": "[Technicien polyvalent sur parc hétérogène, papier et emballage](/preuves/vpk/)",
+            "texte": "chez VPK, quelqu'un capable de passer d'un équipement à l'autre, plutôt qu'un spécialiste d'une seule machine"
+          },
+          {
+            "titre": "[Renfort sur site agroalimentaire, Belgique](/preuves/mccain-belgique/)",
+            "texte": "depuis octobre 2024, 1 à 3 techniciens chez McCAIN, premier contrat Migen en Belgique"
+          },
+          {
+            "titre": "[Maintenance tenue pendant les congés d'été](/preuves/ogf-arret-estival/)",
+            "texte": "été 2025, un technicien intégré chez OGF quand les congés réduisaient l'effectif technique interne"
+          }
+        ]
       },
       {
-        "titre": "[Maintenance tenue pendant les congés d'été](/preuves/ogf-arret-estival/)",
-        "texte": "été 2025, un technicien intégré chez OGF quand les congés réduisaient l'effectif technique interne"
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Un prestataire coûte-t-il plus cher qu'un salarié ?",
+            "reponse": "À l'heure facturée, souvent oui. À périmètre complet (recrutement, formation, remplacements, administration, risque de rupture), l'écart se resserre, et il s'inverse fréquemment sur les compétences rares ou les activités variables. La seule réponse sérieuse est un calcul mené sur votre situation. Notre devis détaillé le permet ligne à ligne."
+          },
+          {
+            "question": "Le technicien suit-il nos consignes ?",
+            "reponse": "Il respecte vos règles de sécurité, vos horaires d'accès et vos priorités de production, que nous relayons dans le pilotage de la prestation. Sa hiérarchie reste Migen. Cet encadrement vous libère de la fonction employeur et protège la relation d'une requalification."
+          },
+          {
+            "question": "Quel est le risque de requalification en contrat de travail ?",
+            "reponse": "Il existe quand le client se comporte en employeur de fait : ordres directs, horaires imposés, aucun pilotage par le prestataire. La protection n'est pas une clause, c'est une prestation bien organisée : objet défini, référent Migen qui dirige et évalue, comptes rendus, congés et plannings administrés par nous. Le juge apprécie les faits."
+          },
+          {
+            "question": "Que se passe-t-il si la personne ne convient pas ?",
+            "reponse": "Vous le dites, nous agissons : recadrage, accompagnement ou remplacement par un autre profil évalué. Aucun entretien préalable à mener, aucun poste vacant à subir. La continuité est écrite au contrat."
+          },
+          {
+            "question": "Peut-on démarrer par une prestation, puis embaucher ?",
+            "reponse": "Oui, et c'est fréquent. Des clients internalisent un poste après avoir stabilisé leur organisation, d'autres font le chemin inverse. Nous en parlons dès le départ et le contrat prévoit les conditions d'évolution, pour que ce mouvement se fasse sans conflit."
+          },
+          {
+            "question": "La prestation convient-elle à une petite structure ?",
+            "reponse": "Oui, et c'est souvent là que le gain est le plus net. Mener une embauche demande des heures et des ressources qu'un petit atelier n'a pas. Il obtient ici un technicien présent, un contrat écrit et l'accès à des spécialistes qu'il ne pourrait pas salarier seul."
+          },
+          {
+            "question": "Comment se construit le prix, et sur quoi porte l'engagement ?",
+            "reponse": "Le chiffrage se fait sur devis, à partir du périmètre écrit au cadrage : équipements suivis, tâches attendues, horaires, spécialités mobilisées, astreinte ou non. Notre chargé d'affaires vous détaille le tarif ligne à ligne, pour que vous puissiez le poser en face du coût complet d'une embauche. La durée de la mission est fixée au contrat, avec ses conditions d'évolution et d'arrêt écrites dès le départ. Le dispositif s'ajuste ensuite par avenant, à la hausse comme à la baisse."
+          },
+          {
+            "question": "Qui intervient réellement sur notre site ?",
+            "reponse": "Un technicien identifié, salarié de Migen, que vous validez avant la prise de poste. Pas un profil différent chaque semaine. Nous ne retenons que 10 % des candidats, après un entretien technique et un entretien comportemental, et les résultats vous sont partagés avant la présentation. Autour de lui, un référent technique Migen qui encadre et des spécialistes mobilisables en appui : automatisme, robotique, électromécanique, hydraulique, pneumatique, soudure et chaudronnerie."
+          },
+          {
+            "question": "Qui répond de la sécurité de l'intervenant sur notre site ?",
+            "reponse": "Le technicien est salarié de Migen : formation, suivi et habilitations relèvent de nous, et ces habilitations sont à jour et vérifiables. Les attestations de notre démarche MASE, qui encadre la sécurité des interventions, et de notre évaluation EcoVadis vous sont transmises avec chaque plan de prévention. Sur place, vos règles de sécurité, votre accueil et vos consignes d'accès s'appliquent à lui comme à vos équipes."
+          },
+          {
+            "question": "Nous avons déjà un prestataire en place. Peut-on basculer ?",
+            "reponse": "Oui. Nous partons de votre contrat actuel : périmètre réellement couvert, tâches tenues, points qui coincent. Le cadrage reprend ce qui fonctionne et écrit ce qui manquait. La bascule se prépare avec votre encadrement, plan de prévention et accueil sécurité compris, pour que l'atelier ne subisse pas de trou de couverture entre les deux."
+          },
+          {
+            "question": "Intervenez-vous près de chez nous ?",
+            "reponse": "Nos techniciens sont rattachés à dix hubs : Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Si votre site n'est pas dans une de ces villes, nous intervenons quand même : les techniciens sont mobiles et le rattachement ne limite pas la zone couverte. Le siège est à Lyon, et nos trois autres agences sont à Montréal, Dubaï et Madrid."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Vous voulez trancher sur des chiffres, pas sur une intuition ?",
+        "bouton": "Faire chiffrer mon besoin",
+        "href": "/contact/"
       }
     ],
-    "questions": [
+    "autresSurtitre": "Un autre besoin ?",
+    "autresTitre": "Chaque situation a son offre.",
+    "autres": [
       {
-        "question": "Un prestataire coûte-t-il plus cher qu'un salarié ?",
-        "reponse": "À l'heure facturée, souvent oui. À périmètre complet (recrutement, formation, remplacements, administration, risque de rupture), l'écart se resserre, et il s'inverse fréquemment sur les compétences rares ou les activités variables. La seule réponse sérieuse est un calcul mené sur votre situation. Notre devis détaillé le permet ligne à ligne."
+        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
+        "libelle": "Résidence",
+        "href": "/offres/residence/"
       },
       {
-        "question": "Le technicien suit-il nos consignes ?",
-        "reponse": "Il respecte vos règles de sécurité, vos horaires d'accès et vos priorités de production, que nous relayons dans le pilotage de la prestation. Sa hiérarchie reste Migen. Cet encadrement vous libère de la fonction employeur et protège la relation d'une requalification."
+        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
+        "libelle": "Périmètre complet",
+        "href": "/offres/maintenance-externalisee/"
       },
       {
-        "question": "Quel est le risque de requalification en contrat de travail ?",
-        "reponse": "Il existe quand le client se comporte en employeur de fait : ordres directs, horaires imposés, aucun pilotage par le prestataire. La protection n'est pas une clause, c'est une prestation bien organisée : objet défini, référent Migen qui dirige et évalue, comptes rendus, congés et plannings administrés par nous. Le juge apprécie les faits."
+        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/"
       },
       {
-        "question": "Que se passe-t-il si la personne ne convient pas ?",
-        "reponse": "Vous le dites, nous agissons : recadrage, accompagnement ou remplacement par un autre profil évalué. Aucun entretien préalable à mener, aucun poste vacant à subir. La continuité est écrite au contrat."
+        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/"
       },
       {
-        "question": "Peut-on démarrer par une prestation, puis embaucher ?",
-        "reponse": "Oui, et c'est fréquent. Des clients internalisent un poste après avoir stabilisé leur organisation, d'autres font le chemin inverse. Nous en parlons dès le départ et le contrat prévoit les conditions d'évolution, pour que ce mouvement se fasse sans conflit."
+        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
+        "libelle": "Bureau d'études",
+        "href": "/offres/bureau-etudes/"
       },
       {
-        "question": "La prestation convient-elle à une petite structure ?",
-        "reponse": "Oui, et c'est souvent là que le gain est le plus net. Mener une embauche demande des heures et des ressources qu'un petit atelier n'a pas. Il obtient ici un technicien présent, un contrat écrit et l'accès à des spécialistes qu'il ne pourrait pas salarier seul."
-      },
-      {
-        "question": "Comment se construit le prix, et sur quoi porte l'engagement ?",
-        "reponse": "Le chiffrage se fait sur devis, à partir du périmètre écrit au cadrage : équipements suivis, tâches attendues, horaires, spécialités mobilisées, astreinte ou non. Notre chargé d'affaires vous détaille le tarif ligne à ligne, pour que vous puissiez le poser en face du coût complet d'une embauche. La durée de la mission est fixée au contrat, avec ses conditions d'évolution et d'arrêt écrites dès le départ. Le dispositif s'ajuste ensuite par avenant, à la hausse comme à la baisse."
-      },
-      {
-        "question": "Qui intervient réellement sur notre site ?",
-        "reponse": "Un technicien identifié, salarié de Migen, que vous validez avant la prise de poste. Pas un profil différent chaque semaine. Nous ne retenons que 10 % des candidats, après un entretien technique et un entretien comportemental, et les résultats vous sont partagés avant la présentation. Autour de lui, un référent technique Migen qui encadre et des spécialistes mobilisables en appui : automatisme, robotique, électromécanique, hydraulique, pneumatique, soudure et chaudronnerie."
-      },
-      {
-        "question": "Qui répond de la sécurité de l'intervenant sur notre site ?",
-        "reponse": "Le technicien est salarié de Migen : formation, suivi et habilitations relèvent de nous, et ces habilitations sont à jour et vérifiables. Les attestations de notre démarche MASE, qui encadre la sécurité des interventions, et de notre évaluation EcoVadis vous sont transmises avec chaque plan de prévention. Sur place, vos règles de sécurité, votre accueil et vos consignes d'accès s'appliquent à lui comme à vos équipes."
-      },
-      {
-        "question": "Nous avons déjà un prestataire en place. Peut-on basculer ?",
-        "reponse": "Oui. Nous partons de votre contrat actuel : périmètre réellement couvert, tâches tenues, points qui coincent. Le cadrage reprend ce qui fonctionne et écrit ce qui manquait. La bascule se prépare avec votre encadrement, plan de prévention et accueil sécurité compris, pour que l'atelier ne subisse pas de trou de couverture entre les deux."
-      },
-      {
-        "question": "Intervenez-vous près de chez nous ?",
-        "reponse": "Nos techniciens sont rattachés à dix hubs : Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Si votre site n'est pas dans une de ces villes, nous intervenons quand même : les techniciens sont mobiles et le rattachement ne limite pas la zone couverte. Le siège est à Lyon, et nos trois autres agences sont à Montréal, Dubaï et Madrid."
+        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
       }
-    ],
-    "final": {
-      "question": "Vous voulez trancher sur des chiffres, pas sur une intuition ?",
-      "bouton": "Faire chiffrer mon besoin"
-    }
+    ]
   }
 }
