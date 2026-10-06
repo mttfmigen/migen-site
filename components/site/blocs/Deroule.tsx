@@ -18,6 +18,15 @@ import TexteRiche from "./TexteRiche";
  *
  * Le numéro est en chiffres monospacés, comme dans la maquette : il doit se
  * lire comme un repère, pas comme un chiffre de réassurance.
+ *
+ * LE H2 MANQUE, ET IL N'EST PAS INVENTÉ. Mesuré sur
+ * `supabase/import/corpus-analyse.json` : AUCUNE des 116 sections `deroule` du
+ * corpus ne porte de `titre` ni d'`intro`. La maquette le tire de
+ * `{{ spMethod.title }}` (l. 1867, `sp-method`), une donnée qu'elle ne porte pas
+ * elle-même. Le surtitre reste donc seul tant que le corpus ne fournit pas de
+ * titre, et la réserve est inscrite dans `docs/RESERVES-CONTENU.md` : écrire ce
+ * titre ici serait fabriquer du texte visible sur 134 pages, ce que le contrat
+ * du projet interdit (CLAUDE.md, section 13).
  */
 export default function Deroule({ section }: { section: SectionDeroule }) {
   if (section.etapes.length === 0) return null;

@@ -2,6 +2,59 @@
   "url": "/offres/residence/cahier-des-charges/",
   "contenu": {
     "gabarit": "offre",
+    "reperes": [
+      {
+        "valeur": "5",
+        "libelle": "agences en France"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "clients industriels"
+      }
+    ],
+    "autresSurtitre": "Un autre besoin ?",
+    "autresTitre": "Chaque situation a son offre.",
+    "autres": [
+      {
+        "phrase": "« J’ai besoin d’un renfort maintenance sur mon site. »",
+        "libelle": "Résidence",
+        "href": "/offres/residence/"
+      },
+      {
+        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
+        "libelle": "Full service",
+        "href": "/offres/maintenance-externalisee/"
+      },
+      {
+        "phrase": "« Je paie mes pannes à l’heure et je ne maîtrise pas mon budget. »",
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      },
+      {
+        "phrase": "« J’ai une fenêtre d’arrêt et pas le droit de la dépasser. »",
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/"
+      },
+      {
+        "phrase": "« Mon installation n’est plus conforme et je n’ai plus les schémas. »",
+        "libelle": "Bureau d’études",
+        "href": "/offres/bureau-etudes/"
+      },
+      {
+        "phrase": "« Je ne sais pas encore ce qu’il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
+      }
+    ],
+    "faqBouton": {
+      "libelle": "Poser ma question",
+      "href": "#formulaire"
+    },
+    "pastille": "Résidence",
     "mention": ", du lundi au vendredi de 8h00 à 18h30. Nous relisons votre document même si vous ne nous consultez pas ensuite",
     "chapeau": "Voici la trame en 8 sections, la méthode de rédaction en 6 étapes et la grille d'évaluation des réponses. À reprendre telle quelle.",
     "actions": [
@@ -11,7 +64,7 @@
       }
     ],
     "formulaireHeroTitre": "Décrire mon besoin",
-    "formulaireHeroMention": "Rappel dans l'heure",
+    "formulaireHeroMention": "Rappel dans l’heure",
     "brefSurtitre": "En bref",
     "brefTitre": "Le cadre, en quatre chiffres.",
     "chiffres": [
@@ -37,6 +90,11 @@
     "brefBouton": {
       "libelle": "Faire relire mon cahier des charges",
       "href": "/contact/"
+    },
+    "incBande": "Vous voulez lire le contrat type avant d’en parler ?",
+    "incBouton": {
+      "libelle": "Demander le contrat type",
+      "href": "#formulaire"
     },
     "sections": [
       {
@@ -288,40 +346,6 @@
         "question": "Votre besoin est encore en amont ?",
         "bouton": "Faire relire mon cahier des charges",
         "href": "/contact/"
-      }
-    ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
-      {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
-      },
-      {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
-      },
-      {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
-      },
-      {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
-      },
-      {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
-      },
-      {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
       }
     ]
   }

@@ -2,6 +2,54 @@
   "url": "/offres/maintenance-externalisee/",
   "contenu": {
     "gabarit": "offre",
+    "reperes": [
+      {
+        "valeur": "5",
+        "libelle": "agences en France"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "clients industriels"
+      }
+    ],
+    "autresSurtitre": "Un autre besoin ?",
+    "autresTitre": "Chaque situation a son offre.",
+    "autres": [
+      {
+        "phrase": "« J’ai besoin d’un renfort maintenance sur mon site. »",
+        "libelle": "Résidence",
+        "href": "/offres/residence/"
+      },
+      {
+        "phrase": "« Je paie mes pannes à l’heure et je ne maîtrise pas mon budget. »",
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      },
+      {
+        "phrase": "« J’ai une fenêtre d’arrêt et pas le droit de la dépasser. »",
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/"
+      },
+      {
+        "phrase": "« Mon installation n’est plus conforme et je n’ai plus les schémas. »",
+        "libelle": "Bureau d’études",
+        "href": "/offres/bureau-etudes/"
+      },
+      {
+        "phrase": "« Je ne sais pas encore ce qu’il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
+      }
+    ],
+    "faqBouton": {
+      "libelle": "Poser ma question",
+      "href": "#formulaire"
+    },
+    "pastille": "Périmètre complet",
     "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 prend le relais la nuit, le week-end et les jours fériés.",
     "chapeau": "Vous écrivez le périmètre, nous le tenons en entier : la gestion de la maintenance préventive, le dépannage, les pièces consultées au prix du marché puis posées, et votre GMAO renseignée à chaque passage. Externaliser votre maintenance industrielle, ce n'est pas acheter des heures, c'est acheter une expertise technique disponible et des coûts maîtrisés. Le but tient en une ligne : réduire les arrêts non planifiés et optimiser la disponibilité des équipements qui portent votre production.",
     "actions": [
@@ -11,7 +59,7 @@
       }
     ],
     "formulaireHeroTitre": "Décrire mon besoin",
-    "formulaireHeroMention": "Rappel dans l'heure",
+    "formulaireHeroMention": "Rappel dans l’heure",
     "brefSurtitre": "En bref",
     "brefTitre": "Le cadre, en quatre chiffres.",
     "chiffres": [
@@ -39,6 +87,18 @@
       "libelle": "Faire chiffrer ma maintenance",
       "href": "#formulaire"
     },
+    "incBande": "Vous voulez lire le contrat type avant d’en parler ?",
+    "incBouton": {
+      "libelle": "Demander le contrat type",
+      "href": "#formulaire"
+    },
+    "porte": [
+      "Un périmètre écrit, du préventif au correctif",
+      "La main d'œuvre, et c'est la nôtre",
+      "Toutes les technologies du parc",
+      "Les pièces consultées, approvisionnées et posées",
+      "Votre GMAO renseignée après chaque passage"
+    ],
     "sections": [
       {
         "type": "probleme",
@@ -252,35 +312,6 @@
         "question": "Besoin d'un budget de maintenance que vous décidez en janvier, au lieu de le constater en décembre ?",
         "bouton": "Faire chiffrer ma maintenance",
         "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
-      }
-    ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
-      {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
-      },
-      {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
-      },
-      {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
-      },
-      {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
-      },
-      {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
       }
     ]
   }

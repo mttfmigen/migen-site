@@ -417,6 +417,18 @@ export const COMPARATIF_COLONNE_PHARE: CSSProperties = {
   padding: "34px 34px 36px",
 };
 
+/*
+ * LA LUEUR DE LA COLONNE SOMBRE DU COMPARATIF EST `LUEUR`, celle de
+ * `blocs/habillage.ts`, et rien de plus.
+ *
+ * Il y avait ici un `COMPARATIF_LUEUR` de dix-sept lignes, importé nulle part,
+ * identique propriété par propriété à `LUEUR` (340 px, right -140, bottom -170,
+ * opacité .3). Son commentaire affirmait une différence d'opacité « .3 contre
+ * .32 » qui n'existait pas : le .32 est celui de `FORMULE_LUEUR`, juste
+ * au-dessus. `BlocsZeroArret.tsx` utilisait déjà `LUEUR` : le rendu est
+ * inchangé.
+ */
+
 /** l. 4844 */
 export const COMPARATIF_TITRE: CSSProperties = {
   font: "600 calc(24px * var(--ts))/1.2 var(--ft)",
@@ -490,6 +502,84 @@ export const PREMIER_MOIS_APPEL_BOUTON: CSSProperties = {
   ...BOUTON_ACTION,
   padding: "16px 28px",
   flex: "none",
+};
+
+/* ------------------------------------------------------- « Ce qui est inclus » */
+
+/**
+ * l. 4281 de `site-final.html`, la grille des deux panneaux.
+ *
+ * `1.1fr .9fr` comme l'en-tête de la section juste au-dessus, mais
+ * `align-items:stretch` : les deux panneaux font la même hauteur, quelle que
+ * soit la longueur de leurs listes.
+ */
+export const INC_GRILLE: CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "1.1fr .9fr",
+  gap: 14,
+  alignItems: "stretch",
+};
+
+/** l. 4281, le panneau de gauche, en verre, sous la marque. */
+export const INC_PANNEAU_PORTE: CSSProperties = {
+  ...VERRE,
+  padding: "30px 32px 18px",
+};
+
+/** l. 4281, le panneau de droite, plat et bordé. */
+export const INC_PANNEAU_VOUS: CSSProperties = {
+  borderRadius: "var(--rad)",
+  padding: "30px 32px 18px",
+  background: "var(--chip)",
+  border: "1px solid var(--line)",
+};
+
+/** l. 4281, la rangée marque plus titre du panneau de gauche. */
+export const INC_RANGEE_MARQUE: CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  gap: 10,
+  marginBottom: 14,
+};
+
+/** l. 4281, le titre de chaque panneau. */
+export const INC_TITRE_PANNEAU: CSSProperties = {
+  font: "600 calc(18px * var(--ts)) var(--ft)",
+  letterSpacing: "-.028em",
+  color: "var(--ink)",
+};
+
+/** l. 4281, une ligne de liste : filet haut, pastille, texte. */
+export const INC_LIGNE: CSSProperties = {
+  display: "flex",
+  gap: 12,
+  padding: "14px 0",
+  borderTop: "1px solid var(--line)",
+  font: "400 15px/1.55 var(--fb)",
+  color: "var(--ink1)",
+};
+
+/** l. 4281, la pastille orange pleine à coche blanche. */
+export const INC_PUCE_PORTE: CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  width: 22,
+  height: 22,
+  borderRadius: 999,
+  flex: "none",
+  marginTop: 1,
+  font: "600 11px var(--fb)",
+  background: "var(--acc)",
+  color: "#fff",
+};
+
+/** l. 4281, la pastille claire bordée à flèche grise. */
+export const INC_PUCE_VOUS: CSSProperties = {
+  ...INC_PUCE_PORTE,
+  background: "var(--card)",
+  border: "1px solid var(--line)",
+  color: "var(--ink3)",
 };
 
 /* ------------------------------------------------------- « Un autre besoin ? » */

@@ -7,7 +7,26 @@ import styles from "./ProcessSelection.module.css";
  * référentiel sont du texte de la maquette, pas du contenu éditorialisé en
  * base. Le `data-reveal` de la maquette n'est pas porté, le bloc est visible
  * sans JavaScript.
+ *
+ * LE LIEN D'EN-TÊTE EST LA SEULE PROPRIÉTÉ, et il y en a une parce que la
+ * maquette le lie à `{{ of.cta }}` sur les pages d'offre : son libellé CHANGE
+ * avec l'offre. Il était écrit en dur « Constituer mon équipe → », ce qui ne
+ * tombait juste que sur Résidence ; `/offres/zero-arret/` l'affichait là où la
+ * maquette écrit « Demander l'étude de couverture ». La valeur par défaut reste
+ * celle de l'accueil, que ce bloc sert aussi (l. 4387 de la maquette).
  */
+
+/** Le lien d'en-tête, à gauche sous le chapeau. */
+export interface AppelSelection {
+  libelle: string;
+  href: string;
+}
+
+/** Ce que la maquette écrit sur l'ACCUEIL, et le repli partout ailleurs. */
+const APPEL_ACCUEIL: AppelSelection = {
+  libelle: "Constituer mon équipe",
+  href: "#form-bas",
+};
 
 type Etape = {
   readonly rang: string;
@@ -49,10 +68,12 @@ const ETAPES: readonly Etape[] = [
     taux: "25 %",
     jauge: "25%",
     titre: "Tests techniques",
-    // Les tirets cadratins de la maquette sont remplacés par une parenthèse :
-    // interdit de copie du projet.
+    /* LES DEUX TIRETS CADRATINS DE LA MAQUETTE (l. 4404) sont remplacés par la
+       ponctuation française équivalente, SANS QU'UN MOT SOIT TOUCHÉ : deux-points
+       pour ouvrir l'énumération, virgule pour la refermer. C'était une
+       PARENTHÈSE, qui n'est pas la déviation convenue le 05/10. */
     texte:
-      "Épreuves écrites et pratiques par domaine (mécanique, électrotechnique, automatisme, hydraulique), notées sur notre référentiel.",
+      "Épreuves écrites et pratiques par domaine : mécanique, électrotechnique, automatisme, hydraulique, notées sur notre référentiel.",
   },
   {
     rang: "Étape 5",
@@ -95,7 +116,11 @@ const CARTE: React.CSSProperties = {
   flexDirection: "column",
 };
 
-export default function ProcessSelection() {
+export default function ProcessSelection({
+  cta = APPEL_ACCUEIL,
+}: {
+  cta?: AppelSelection;
+} = {}) {
   return (
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px" }}>
@@ -145,7 +170,7 @@ export default function ProcessSelection() {
               }
             </p>
             <a
-              href="#form-bas"
+              href={cta.href}
               className={styles.boutonAccent}
               style={{
                 display: "inline-flex",
@@ -160,7 +185,7 @@ export default function ProcessSelection() {
                 boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",
               }}
             >
-              Constituer mon équipe →
+              {cta.libelle} →
             </a>
           </div>
           <div

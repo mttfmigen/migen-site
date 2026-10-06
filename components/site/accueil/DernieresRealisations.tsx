@@ -1,54 +1,133 @@
 import Image from "next/image";
+import type { CSSProperties, ReactNode } from "react";
+
+import type { LienOffre, RealisationOffre } from "@/types/offre";
+
 import styles from "./DernieresRealisations.module.css";
 
-export interface Realisation {
-  /** Lien vers la fiche de la réalisation. */
-  href: string;
-  /** Visuel de couverture : chemin public (« /assets/web/… ») ou URL. */
-  image: string;
-  /** Décoratif sur la maquette, donc vide par défaut. */
-  alt?: string;
-  /** Client et offre, en une ligne : « SUEZ IWT · migen© Résidence ». */
-  client: string;
-  titre: string;
-  /** Mois et année, déjà formatés : « Février 2026 ». */
-  date: string;
-}
-
+/**
+ * « Nos dernières réalisations », bloc de la maquette (`site-final.html`,
+ * l. 4429 à 4465) : un en-tête à deux pôles (surtitre, H2, lien à droite) puis
+ * trois cartes à photo de 210 px.
+ *
+ * ────────────────────────────────────────────────────────────────────────────
+ * UN SEUL COMPOSANT POUR L'ACCUEIL ET POUR LES PAGES D'OFFRE.
+ * ────────────────────────────────────────────────────────────────────────────
+ *
+ * Il y avait un second composant, `components/site/offre/Realisations.tsx`, qui
+ * réécrivait ce bloc de bout en bout : même section de maquette, mêmes chaînes de
+ * style au caractère, même H2, même lien d'en-tête, mêmes trois clients. Et il
+ * était le plus faible des deux : carte en `<div>` portant un `display:block`
+ * inopérant, survol de la maquette (translation et ombre portée) abandonné.
+ * Il est supprimé. Les pages d'offre montent celui-ci, avec leur propre jeu de
+ * cartes.
+ *
+ * L'ITEM EST `RealisationOffre` (`types/offre.ts`), le contrat du `jsonb` : une
+ * seule forme pour la donnée de la maquette et pour celle de la base. `image` et
+ * `href` y sont FACULTATIFS, et ce n'est pas un confort :
+ *
+ *   · `image` manque quand le fichier n'est pas au dépôt. `x-faisceaux.jpg`, que
+ *     la maquette met sur la première carte, n'y est pas. La carte rend alors son
+ *     texte SANS le cadre de 210 px : un aplat gris entre deux cartes
+ *     photographiées se lit comme une image cassée, pas comme un parti pris.
+ *   · `href` manque sur les pages d'offre : la maquette y navigue par
+ *     `onClick="{{ goFiche }}"` et ne nomme AUCUNE URL d'étude de cas pour ces
+ *     trois clients. Un `href="#"` serait un bouton mort, et pointer sur l'étude
+ *     d'un autre client serait une association fausse. La carte devient alors un
+ *     `<article>`, et le survol ne s'applique pas : il n'a de sens que sur un
+ *     élément cliquable. La navigation passe par le lien d'en-tête, qui a bien
+ *     une cible.
+ *
+ * LES CIBLES NE SONT PAS FILTRÉES ICI. Sur l'accueil elles sont écrites dans ce
+ * fichier ; sur une page d'offre elles viennent du `jsonb`, et `PageOffre` les
+ * passe par `lienSur` / `cibleSure` avant de les confier à ce composant, comme
+ * pour tous ses autres liens.
+ */
 interface Proprietes {
-  realisations?: Realisation[];
-  hrefToutes?: string;
+  realisations?: readonly RealisationOffre[];
+  /** Surtitre orange en capitales. Par défaut celui de la maquette. */
+  surtitre?: string;
+  titre?: string;
+  /** Le lien d'en-tête, à droite du H2. Absent : rien n'est rendu à sa place. */
+  lien?: LienOffre | null;
 }
 
 /** Les trois fiches de la maquette, reprises mot pour mot. */
-const REALISATIONS_MAQUETTE: Realisation[] = [
+const REALISATIONS_MAQUETTE: readonly RealisationOffre[] = [
   {
     href: "/realisations/",
     image: "/assets/web/ph-tuyaux.jpg",
-    client: "SUEZ IWT · migen© Résidence",
+    surtitre: "SUEZ IWT · migen© Résidence",
     titre: "Remise en état complète d'un site industriel",
     date: "Février 2026",
   },
   {
     href: "/realisations/",
     image: "/assets/web/sv-armoire.jpg",
-    client: "DANONE · migen© Résidence",
+    surtitre: "DANONE · migen© Résidence",
     titre: "Maintenance en continu des lignes de production",
     date: "Février 2026",
   },
   {
     href: "/realisations/",
     image: "/assets/web/x-cimenterie.jpg",
-    client: "JTEKT · migen© Résidence",
+    surtitre: "JTEKT · migen© Résidence",
     titre: "Sécuriser la maintenance de ses installations",
     date: "Janvier 2026",
   },
 ];
 
+/** l. 4436, le lien d'en-tête. */
+const LIEN_ENTETE = {
+  libelle: "Voir toutes nos réalisations →",
+  href: "/realisations/",
+};
+
+/** l. 4439, la carte : fond plein et bordé, pas en verre. */
+const CARTE: CSSProperties = {
+  display: "block",
+  background: "var(--card)",
+  border: "1px solid var(--line)",
+  borderRadius: "var(--rad)",
+  overflow: "hidden",
+};
+
+/**
+ * La carte, cliquable ou non selon qu'elle a une cible.
+ *
+ * L'ombre de repos est la même des deux côtés, mais elle vient de la feuille de
+ * style et non d'un style en ligne : un style en ligne l'emporterait sur la
+ * règle de survol, qui ne pourrait plus la remplacer.
+ */
+function Carte({
+  href,
+  children,
+}: {
+  href?: string;
+  children: ReactNode;
+}) {
+  if (!href) {
+    return (
+      <article className={styles.carteFixe} style={CARTE}>
+        {children}
+      </article>
+    );
+  }
+  return (
+    <a href={href} className={styles.carte} style={CARTE}>
+      {children}
+    </a>
+  );
+}
+
 export default function DernieresRealisations({
   realisations = REALISATIONS_MAQUETTE,
-  hrefToutes = "/realisations/",
+  surtitre = "Nos dernières réalisations",
+  titre = "Ce que nous avons fait, chez qui, et comment",
+  lien = LIEN_ENTETE,
 }: Proprietes) {
+  if (realisations.length === 0) return null;
+
   return (
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
@@ -72,7 +151,7 @@ export default function DernieresRealisations({
                 marginBottom: 16,
               }}
             >
-              Nos dernières réalisations
+              {surtitre}
             </div>
             <h2
               style={{
@@ -83,20 +162,22 @@ export default function DernieresRealisations({
                 textWrap: "balance",
               }}
             >
-              Ce que nous avons fait, chez qui, et comment
+              {titre}
             </h2>
           </div>
-          <a
-            href={hrefToutes}
-            style={{
-              font: "600 15px var(--fb)",
-              color: "var(--acc)",
-              flex: "none",
-              paddingBottom: 6,
-            }}
-          >
-            Voir toutes nos réalisations →
-          </a>
+          {lien ? (
+            <a
+              href={lien.href}
+              style={{
+                font: "600 15px var(--fb)",
+                color: "var(--acc)",
+                flex: "none",
+                paddingBottom: 6,
+              }}
+            >
+              {lien.libelle}
+            </a>
+          ) : null}
         </div>
 
         <div
@@ -108,43 +189,38 @@ export default function DernieresRealisations({
           }}
         >
           {realisations.map((r) => (
-            <a
-              key={r.href + r.titre}
-              href={r.href}
-              className={styles.carte}
-              style={{
-                display: "block",
-                background: "var(--card)",
-                border: "1px solid var(--line)",
-                borderRadius: "var(--rad)",
-                overflow: "hidden",
-              }}
-            >
-              <div
-                style={{
-                  position: "relative",
-                  height: 210,
-                  background: "var(--ph)",
-                  overflow: "hidden",
-                }}
-              >
-                {/* `fill` plutôt que des dimensions : la vignette occupe toute
-                    la carte, sa taille rendue dépend de la colonne. `sizes`
-                    évite de servir une image pleine largeur dans une carte de
-                    380px. Le parent porte `position: relative`, sans quoi
-                    l'image se placerait par rapport à la page. */}
-                <Image
-                  src={r.image}
-                  alt={r.alt ?? ""}
-                  fill
-                  sizes="(max-width: 760px) 100vw, (max-width: 1000px) 50vw, 380px"
+            <Carte key={`${r.surtitre}-${r.titre}`} href={r.href}>
+              {/* Le cadre de la photo n'existe que s'il y a une photo : voir
+                  l'en-tête de ce fichier. */}
+              {r.image ? (
+                <div
                   style={{
-                    objectFit: "cover",
-                    filter: "saturate(var(--sat)) contrast(1.05)",
-                    opacity: "var(--ph-op)",
+                    position: "relative",
+                    height: 210,
+                    background: "var(--ph)",
+                    overflow: "hidden",
                   }}
-                />
-              </div>
+                >
+                  {/* `fill` plutôt que des dimensions : la vignette occupe toute
+                      la carte, sa taille rendue dépend de la colonne. `sizes`
+                      évite de servir une image pleine largeur dans une carte de
+                      380px. Le parent porte `position: relative`, sans quoi
+                      l'image se placerait par rapport à la page.
+                      `alt=""` parce que la photo est décorative : le texte juste
+                      dessous nomme déjà le client et la réalisation. */}
+                  <Image
+                    src={r.image}
+                    alt=""
+                    fill
+                    sizes="(max-width: 760px) 100vw, (max-width: 1000px) 50vw, 380px"
+                    style={{
+                      objectFit: "cover",
+                      filter: "saturate(var(--sat)) contrast(1.05)",
+                      opacity: "var(--ph-op)",
+                    }}
+                  />
+                </div>
+              ) : null}
               <div style={{ padding: "24px 26px 28px" }}>
                 <div
                   style={{
@@ -154,7 +230,7 @@ export default function DernieresRealisations({
                     color: "var(--acc)",
                   }}
                 >
-                  {r.client}
+                  {r.surtitre}
                 </div>
                 <div
                   style={{
@@ -175,7 +251,7 @@ export default function DernieresRealisations({
                   {r.date}
                 </div>
               </div>
-            </a>
+            </Carte>
           ))}
         </div>
       </div>

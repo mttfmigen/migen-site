@@ -2,6 +2,59 @@
   "url": "/offres/chantier/transfert-de-production/",
   "contenu": {
     "gabarit": "offre",
+    "reperes": [
+      {
+        "valeur": "5",
+        "libelle": "agences en France"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "clients industriels"
+      }
+    ],
+    "autresSurtitre": "Un autre besoin ?",
+    "autresTitre": "Chaque situation a son offre.",
+    "autres": [
+      {
+        "phrase": "« J’ai besoin d’un renfort maintenance sur mon site. »",
+        "libelle": "Résidence",
+        "href": "/offres/residence/"
+      },
+      {
+        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
+        "libelle": "Full service",
+        "href": "/offres/maintenance-externalisee/"
+      },
+      {
+        "phrase": "« Je paie mes pannes à l’heure et je ne maîtrise pas mon budget. »",
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      },
+      {
+        "phrase": "« J’ai une fenêtre d’arrêt et pas le droit de la dépasser. »",
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/"
+      },
+      {
+        "phrase": "« Mon installation n’est plus conforme et je n’ai plus les schémas. »",
+        "libelle": "Bureau d’études",
+        "href": "/offres/bureau-etudes/"
+      },
+      {
+        "phrase": "« Je ne sais pas encore ce qu’il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
+      }
+    ],
+    "faqBouton": {
+      "libelle": "Poser ma question",
+      "href": "#formulaire"
+    },
+    "pastille": "Chantier et retrofit",
     "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30",
     "chapeau": "**Vos clients ne doivent rien voir.** Une ligne, un atelier ou une usine entière qui change d'adresse, sans rupture de livraison.",
     "actions": [
@@ -11,7 +64,7 @@
       }
     ],
     "formulaireHeroTitre": "Décrire mon besoin",
-    "formulaireHeroMention": "Rappel dans l'heure",
+    "formulaireHeroMention": "Rappel dans l’heure",
     "brefSurtitre": "En bref",
     "brefTitre": "Le cadre, en quatre chiffres.",
     "chiffres": [
@@ -36,6 +89,11 @@
     "brefBouton": {
       "libelle": "Faire chiffrer mon transfert de production",
       "href": "/contact/"
+    },
+    "incBande": "Vous voulez lire le contrat type avant d’en parler ?",
+    "incBouton": {
+      "libelle": "Demander le contrat type",
+      "href": "#formulaire"
     },
     "sections": [
       {
@@ -217,40 +275,6 @@
         "bouton": "Parler à un chargé d'affaires",
         "href": "/contact/",
         "rappel": "04 78 33 72 05, astreinte 24/24 et 7/7."
-      }
-    ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
-      {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
-      },
-      {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
-      },
-      {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
-      },
-      {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
-      },
-      {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
-      },
-      {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
       }
     ]
   }

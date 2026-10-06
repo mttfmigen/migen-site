@@ -2,8 +2,58 @@
   "url": "/offres/arret-technique/",
   "contenu": {
     "gabarit": "offre",
-    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 pendant toute la durée de l'arrêt.",
-    "chapeau": "Nous cadrons votre programme de travaux bien avant la première consignation, nous constituons des équipes complètes par métier, et un interlocuteur unique porte le chemin critique jusqu'à la date de redémarrage.",
+    "reperes": [
+      {
+        "valeur": "5",
+        "libelle": "agences en France"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "clients industriels"
+      }
+    ],
+    "autresSurtitre": "Un autre besoin ?",
+    "autresTitre": "Chaque situation a son offre.",
+    "autres": [
+      {
+        "phrase": "« J’ai besoin d’un renfort maintenance sur mon site. »",
+        "libelle": "Résidence",
+        "href": "/offres/residence/"
+      },
+      {
+        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
+        "libelle": "Full service",
+        "href": "/offres/maintenance-externalisee/"
+      },
+      {
+        "phrase": "« Je paie mes pannes à l’heure et je ne maîtrise pas mon budget. »",
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      },
+      {
+        "phrase": "« Mon installation n’est plus conforme et je n’ai plus les schémas. »",
+        "libelle": "Bureau d’études",
+        "href": "/offres/bureau-etudes/"
+      },
+      {
+        "phrase": "« Je ne sais pas encore ce qu’il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
+      }
+    ],
+    "faqBouton": {
+      "libelle": "Poser ma question",
+      "href": "#formulaire"
+    },
+    "pastille": "Vos arrêts planifiés, tenus",
+    "mention": "Chiffrage en amont",
+    "titreA": "migen© Arrêt technique,",
+    "titreB": "la fenêtre tenue.",
+    "chapeau": "Arrêt annuel, grand carénage, révision programmée : nous chiffrons le périmètre en amont, mobilisons les corps de métier et rendons la ligne à la date annoncée.",
     "actions": [
       {
         "libelle": "Les cinq offres",
@@ -11,28 +61,87 @@
       }
     ],
     "formulaireHeroTitre": "Décrire mon besoin",
-    "formulaireHeroMention": "Rappel dans l'heure",
+    "formulaireHeroMention": "Rappel dans l’heure",
     "brefSurtitre": "En bref",
+    "brefTitre": "Le cadre, en quatre chiffres.",
+    "brefChapeau": "Un arrêt se gagne avant de commencer : tout est chiffré, approvisionné et planifié avant la première consignation.",
     "chiffres": [
       {
-        "valeur": "+ 100",
-        "libelle": "collaborateurs, 4 agences, de quoi mobiliser une équipe complète par métier"
+        "valeur": "1 planning",
+        "libelle": "Chiffrage du périmètre",
+        "detail": "Visite, relevés et planning jalonné avant l’arrêt."
       },
       {
-        "valeur": "10 %",
-        "libelle": "des candidats retenus",
-        "detail": "Sur un arrêt, chaque heure de technicien compte double"
+        "valeur": "30",
+        "libelle": "Techniciens mobilisables",
+        "detail": "Sur un même arrêt, tous corps de métier."
       },
       {
-        "valeur": "24/24 et 7/7",
-        "libelle": "astreinte pendant l'arrêt, horaires étendus, 2x8 et 3x8, week-end compris"
+        "valeur": "2 à 3",
+        "libelle": "Équipes postées",
+        "detail": "Deux ou trois équipes pour tenir la fenêtre."
+      },
+      {
+        "valeur": "0,5 j",
+        "libelle": "Précision de la remise",
+        "detail": "La ligne est rendue à la demi-journée annoncée."
       }
     ],
-    "brefBande": "Besoin de sécuriser la date de redémarrage de votre prochain arrêt ?",
+    "brefBande": "Un arrêt à préparer ? Chiffrage sous 48 h.",
     "brefBouton": {
-      "libelle": "Faire chiffrer mon arrêt",
+      "libelle": "Préparer mon arrêt",
       "href": "#formulaire"
     },
+    "incTitre": "Vous fixez la fenêtre. Nous la tenons.",
+    "incChapeau": "Un seul interlocuteur du chiffrage au redémarrage ; les décisions de production restent chez vous.",
+    "porte": [
+      "Le chiffrage et le planning jalonné en amont",
+      "La mobilisation de tous les corps de métier",
+      "Les approvisionnements verrouillés avant l’arrêt",
+      "La coordination sécurité et la coactivité",
+      "Le rapport de fin d’arrêt et la levée des réserves"
+    ],
+    "resteChezVous": [
+      "La fenêtre d’arrêt et la date de redémarrage",
+      "La liste des travaux prioritaires",
+      "Le plan de prévention et les consignes du site",
+      "La réception de fin d’arrêt"
+    ],
+    "incBande": "Vous voulez lire le contrat type avant d’en parler ?",
+    "incBouton": {
+      "libelle": "Demander le contrat type",
+      "href": "#formulaire"
+    },
+    "selectionCta": "Préparer mon arrêt",
+    "realisations": {
+      "surtitre": "Nos dernières réalisations",
+      "titre": "Ce que nous avons fait, chez qui, et comment",
+      "lien": {
+        "libelle": "Voir toutes nos réalisations →",
+        "href": "/realisations/"
+      },
+      "cartes": [
+        {
+          "surtitre": "SUEZ IWT · migen© Résidence",
+          "titre": "Remise en état complète d'un site industriel",
+          "date": "Février 2026"
+        },
+        {
+          "surtitre": "DANONE · migen© Résidence",
+          "titre": "Maintenance en continu des lignes de production",
+          "date": "Février 2026",
+          "image": "/assets/web/team-electric.jpg"
+        },
+        {
+          "surtitre": "JTEKT · migen© Résidence",
+          "titre": "Sécuriser la maintenance de ses installations",
+          "date": "Janvier 2026",
+          "image": "/assets/web/team-grind-close.jpg"
+        }
+      ]
+    },
+    "autresChapeau": "Si Arrêt technique n’est pas la bonne réponse, l’une de celles-ci l’est probablement.",
+    "formulaireTitre": "Donnez-nous votre fenêtre d’arrêt. On revient avec un planning.",
     "sections": [
       {
         "type": "probleme",
@@ -161,6 +270,12 @@
         ]
       },
       {
+        "type": "cta",
+        "question": "Besoin de sécuriser la date de redémarrage de votre prochain arrêt ?",
+        "bouton": "Faire chiffrer mon arrêt",
+        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+      },
+      {
         "type": "preuves",
         "preuves": [
           {
@@ -199,65 +314,29 @@
         "type": "objections",
         "questions": [
           {
-            "question": "Combien coûte la prise en charge d'un arrêt technique ?",
-            "reponse": "Le chiffrage sort du programme de travaux réel, pas d'un forfait au jugé : nombre de techniciens par métier, durée, encadrement, moyens. Quand plusieurs organisations sont possibles, nous proposons la plus économique. Les travaux découverts en cours d'arrêt font l'objet d'un chiffrage et d'un arbitrage avec vous, jamais d'une facture surprise."
+            "question": "Combien de temps à l’avance faut-il nous consulter ?",
+            "reponse": "Le plus tôt possible : c’est ce qui permet un chiffrage précis et des approvisionnements verrouillés avant l’arrêt. En urgence, nous tenons des arrêts préparés en trois semaines."
           },
           {
-            "question": "Faut-il s'engager au-delà de l'arrêt ?",
-            "reponse": "Non. L'arrêt technique se contracte pour lui-même. Beaucoup de sites nous connaissent déjà en dépannage ou avec un technicien en résidence, et l'arrêt en est le prolongement. Si vous voulez sécuriser l'année entière et raccourcir le prochain arrêt, le [contrat de maintenance](/offres/zero-arret/) prend le relais, mais c'est une décision séparée."
+            "question": "Travaillez-vous avec nos sous-traitants habituels ?",
+            "reponse": "Oui. Nous pouvons prendre la coordination de l’ensemble des intervenants, ou n’intervenir que sur nos lots en respectant votre planning directeur."
           },
           {
-            "question": "Nous avons déjà un coordinateur ou un titulaire en place. Comment vous insérez-vous ?",
-            "reponse": "Les deux sont possibles. Nous pouvons piloter la coordination de l'ensemble des travaux, ou mettre nos équipes au service d'une organisation existante, aux côtés de votre équipe interne et des autres entreprises, sous la coordination générale de votre choix. Dans les deux cas, plan de prévention et règles de coactivité s'appliquent à la lettre."
+            "question": "Que se passe-t-il si l’arrêt révèle des travaux imprévus ?",
+            "reponse": "Nous les chiffrons sur place et vous décidez : les intégrer à l’arrêt, ou les reporter. Aucun travail hors périmètre n’est engagé sans votre accord écrit."
           },
           {
-            "question": "Comment gérez-vous la sécurité sur un chantier en coactivité dense ?",
-            "reponse": "Avant l'arrêt : analyse des risques tâche par tâche, vérification des habilitations, documents transmis à votre service QHSE. Pendant : accueil sécurité de chaque intervenant, consignations respectées, zones protégées, communication permanente avec votre coordinateur. Après : nettoyage, levée des réserves, contribution à votre bilan QHSE annuel."
-          },
-          {
-            "question": "Qui compose les équipes ?",
-            "reponse": "Des techniciens salariés de Migen, évalués en entretien technique et comportemental, 10 % des candidats retenus. Nous fournissons l'encadrement de chantier avec eux. Sur un arrêt, où chaque heure compte, la différence entre un technicien moyen et un excellent technicien se lit directement sur le planning."
-          },
-          {
-            "question": "Pouvez-vous mobiliser partout en France ?",
-            "reponse": "Oui. Nos 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, nos hubs techniques et nos plus de 100 collaborateurs permettent de dimensionner un arrêt partiel sur une seule ligne comme un grand arrêt annuel de site. Nous intervenons aussi hors de France, pour les clients qui y exploitent des usines."
+            "question": "Qui porte la coordination sécurité ?",
+            "reponse": "Nous rédigeons avec vous le plan de prévention et gérons la coactivité de nos équipes. Le plan reste validé par votre service HSE."
           }
-        ]
+        ],
+        "titre": "Ce qu’on nous demande avant de signer."
       },
       {
         "type": "ctaFinal",
         "question": "Besoin de commencer la préparation avant qu'il soit trop tard pour arbitrer ?",
         "bouton": "Faire chiffrer mon arrêt",
         "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
-      }
-    ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
-      {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
-      },
-      {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
-      },
-      {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
-      },
-      {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
-      },
-      {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
       }
     ]
   }

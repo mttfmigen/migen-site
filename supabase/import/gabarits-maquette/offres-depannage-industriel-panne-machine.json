@@ -2,6 +2,59 @@
   "url": "/offres/depannage-industriel/panne-machine/",
   "contenu": {
     "gabarit": "offre",
+    "reperes": [
+      {
+        "valeur": "5",
+        "libelle": "agences en France"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "clients industriels"
+      }
+    ],
+    "autresSurtitre": "Un autre besoin ?",
+    "autresTitre": "Chaque situation a son offre.",
+    "autres": [
+      {
+        "phrase": "« J’ai besoin d’un renfort maintenance sur mon site. »",
+        "libelle": "Résidence",
+        "href": "/offres/residence/"
+      },
+      {
+        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
+        "libelle": "Full service",
+        "href": "/offres/maintenance-externalisee/"
+      },
+      {
+        "phrase": "« Je paie mes pannes à l’heure et je ne maîtrise pas mon budget. »",
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      },
+      {
+        "phrase": "« J’ai une fenêtre d’arrêt et pas le droit de la dépasser. »",
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/"
+      },
+      {
+        "phrase": "« Mon installation n’est plus conforme et je n’ai plus les schémas. »",
+        "libelle": "Bureau d’études",
+        "href": "/offres/bureau-etudes/"
+      },
+      {
+        "phrase": "« Je ne sais pas encore ce qu’il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
+      }
+    ],
+    "faqBouton": {
+      "libelle": "Poser ma question",
+      "href": "#formulaire"
+    },
+    "pastille": "Dépannage",
     "mention": "Du lundi au vendredi de 8h00 à 18h30, nous vous rappelons dans l'heure pour poser un premier diagnostic",
     "chapeau": "Nous mobilisons un technicien de maintenance évalué, partout en France, en heures ouvrées comme en astreinte.",
     "actions": [
@@ -11,7 +64,7 @@
       }
     ],
     "formulaireHeroTitre": "Décrire mon besoin",
-    "formulaireHeroMention": "Rappel dans l'heure",
+    "formulaireHeroMention": "Rappel dans l’heure",
     "brefSurtitre": "En bref",
     "chiffres": [
       {
@@ -32,6 +85,11 @@
     "brefBouton": {
       "libelle": "Demander une intervention",
       "href": "/contact/"
+    },
+    "incBande": "Vous voulez lire le contrat type avant d’en parler ?",
+    "incBouton": {
+      "libelle": "Demander le contrat type",
+      "href": "#formulaire"
     },
     "sections": [
       {
@@ -194,40 +252,6 @@
         "question": "Combien de fois cette machine s'est-elle arrêtée cette année ?",
         "bouton": "Éviter la prochaine panne : l'abonnement Zéro arrêt",
         "href": "/offres/zero-arret/"
-      }
-    ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
-      {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
-      },
-      {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
-      },
-      {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
-      },
-      {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
-      },
-      {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
-      },
-      {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
       }
     ]
   }

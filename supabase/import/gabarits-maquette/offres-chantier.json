@@ -2,8 +2,63 @@
   "url": "/offres/chantier/",
   "contenu": {
     "gabarit": "offre",
-    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30",
-    "chapeau": "**Votre outil de production redémarre à la date prévue.** Pas des semaines après, pas en mode dégradé.",
+    "reperes": [
+      {
+        "valeur": "5",
+        "libelle": "agences en France"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "clients industriels"
+      }
+    ],
+    "autresSurtitre": "Un autre besoin ?",
+    "autresTitre": "Chaque situation a son offre.",
+    "autres": [
+      {
+        "phrase": "« J’ai besoin d’un renfort maintenance sur mon site. »",
+        "libelle": "Résidence",
+        "href": "/offres/residence/"
+      },
+      {
+        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
+        "libelle": "Full service",
+        "href": "/offres/maintenance-externalisee/"
+      },
+      {
+        "phrase": "« Je paie mes pannes à l’heure et je ne maîtrise pas mon budget. »",
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      },
+      {
+        "phrase": "« J’ai une fenêtre d’arrêt et pas le droit de la dépasser. »",
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/"
+      },
+      {
+        "phrase": "« Mon installation n’est plus conforme et je n’ai plus les schémas. »",
+        "libelle": "Bureau d’études",
+        "href": "/offres/bureau-etudes/"
+      },
+      {
+        "phrase": "« Je ne sais pas encore ce qu’il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
+      }
+    ],
+    "faqBouton": {
+      "libelle": "Poser ma question",
+      "href": "#formulaire"
+    },
+    "pastille": "Déplacer ou agrandir une ligne",
+    "mention": "Du démontage au redémarrage",
+    "titreA": "migen© Chantier,",
+    "titreB": "votre ligne déplacée, pas arrêtée.",
+    "chapeau": "Transfert industriel, déménagement de machines, extension de ligne, travaux neufs : un interlocuteur unique du démontage au redémarrage.",
     "actions": [
       {
         "libelle": "Les cinq offres",
@@ -11,32 +66,87 @@
       }
     ],
     "formulaireHeroTitre": "Décrire mon besoin",
-    "formulaireHeroMention": "Rappel dans l'heure",
+    "formulaireHeroMention": "Rappel dans l’heure",
     "brefSurtitre": "En bref",
     "brefTitre": "Le cadre, en quatre chiffres.",
+    "brefChapeau": "Un transfert réussi, c’est une ligne qui redémarre le lendemain du remontage, sans surprise sur les raccordements.",
     "chiffres": [
       {
-        "valeur": "+ 100",
-        "libelle": "collaborateurs · techniciens, monteurs et chefs de projet."
+        "valeur": "1",
+        "libelle": "Interlocuteur unique",
+        "detail": "Du relevé d’existant au redémarrage."
       },
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels · dont plus de 80 clients réguliers."
+        "valeur": "48 h",
+        "libelle": "Chiffrage",
+        "detail": "Après visite des sites de départ et d’arrivée."
       },
       {
-        "valeur": "4",
-        "libelle": "agences · Lyon (siège), Montréal, Dubaï, Madrid, et des hubs techniques en France."
+        "valeur": "100 %",
+        "libelle": "Raccordements repérés",
+        "detail": "Chaque câble et flexible repéré avant démontage."
       },
       {
-        "valeur": "10 %",
-        "libelle": "des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+        "valeur": "J+1",
+        "libelle": "Redémarrage",
+        "detail": "Essais à vide puis en charge après remontage."
       }
     ],
-    "brefBande": "Besoin de savoir ce que coûterait le transfert de votre site ?",
+    "brefBande": "Un transfert à préparer ? Visite sous une semaine.",
     "brefBouton": {
-      "libelle": "Faire chiffrer mon transfert",
-      "href": "/contact/"
+      "libelle": "Préparer mon chantier",
+      "href": "#formulaire"
     },
+    "incTitre": "Vous décidez de l’implantation. Nous déplaçons.",
+    "incChapeau": "Démontage, transport et remontage sont chez nous ; l’implantation cible et la réception restent chez vous.",
+    "porte": [
+      "Le relevé d’existant et le repérage de chaque raccordement",
+      "Le démontage, la manutention et le transport",
+      "Le remontage, l’alignement et les raccordements",
+      "Les essais à vide puis en charge",
+      "Le dossier de fin de chantier"
+    ],
+    "resteChezVous": [
+      "L’implantation cible et le planning global",
+      "Les autorisations et les accès aux deux sites",
+      "Le plan de prévention et les consignes du site",
+      "La réception et la remise en production"
+    ],
+    "incBande": "Vous voulez lire le contrat type avant d’en parler ?",
+    "incBouton": {
+      "libelle": "Demander le contrat type",
+      "href": "#formulaire"
+    },
+    "selectionCta": "Préparer mon chantier",
+    "realisations": {
+      "surtitre": "Nos dernières réalisations",
+      "titre": "Ce que nous avons fait, chez qui, et comment",
+      "lien": {
+        "libelle": "Voir toutes nos réalisations →",
+        "href": "/realisations/"
+      },
+      "cartes": [
+        {
+          "surtitre": "SUEZ IWT · migen© Résidence",
+          "titre": "Remise en état complète d'un site industriel",
+          "date": "Février 2026"
+        },
+        {
+          "surtitre": "DANONE · migen© Résidence",
+          "titre": "Maintenance en continu des lignes de production",
+          "date": "Février 2026",
+          "image": "/assets/web/team-electric.jpg"
+        },
+        {
+          "surtitre": "JTEKT · migen© Résidence",
+          "titre": "Sécuriser la maintenance de ses installations",
+          "date": "Janvier 2026",
+          "image": "/assets/web/team-grind-close.jpg"
+        }
+      ]
+    },
+    "autresChapeau": "Si Chantier n’est pas la bonne réponse, l’une de celles-ci l’est probablement.",
+    "formulaireTitre": "Décrivez la ligne à déplacer. On revient avec un planning.",
     "sections": [
       {
         "type": "probleme",
@@ -142,6 +252,13 @@
         ]
       },
       {
+        "type": "cta",
+        "question": "Besoin de savoir ce que coûterait le transfert de votre site ?",
+        "bouton": "Faire chiffrer mon transfert",
+        "href": "/contact/",
+        "rappel": "04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30, astreinte 24/24 et 7/7."
+      },
+      {
         "type": "preuves",
         "preuves": [
           {
@@ -180,30 +297,23 @@
         "type": "objections",
         "questions": [
           {
-            "question": "Combien coûte un transfert industriel ?",
-            "reponse": "Le montant dépend du nombre d'équipements, des contraintes d'accès, de la distance et du niveau de prestation retenu. Le chiffrage est établi après un audit gratuit, et il détaille chaque poste. Un prix annoncé sans visite est un prix qui bougera."
+            "question": "Prenez-vous en charge le transport des machines ?",
+            "reponse": "Oui, avec des transporteurs spécialisés que nous coordonnons. Le démontage, la manutention, le transport et le remontage restent sous un seul contrat."
           },
           {
-            "question": "Peut-on transférer une usine sans arrêter la production ?",
-            "reponse": "Rarement en totalité, mais l'arrêt se réduit fortement par le phasage : transfert par tronçons, stocks anticipés, site d'arrivée préparé à l'avance, équipements critiques basculés en dernier. C'est l'objet du plan de transfert."
+            "question": "Qui prépare le site d’arrivée ?",
+            "reponse": "Nous relevons le site d’arrivée avant tout démontage et vous remettons la liste des prérequis : massifs, alimentations, fluides. Les travaux de génie civil peuvent être inclus ou coordonnés."
           },
           {
-            "question": "Nous avons déjà un prestataire de maintenance. Prenez-vous sa place ?",
-            "reponse": "Non. Nous intervenons sur le chantier et nous rendons le site à vos équipes et à votre prestataire habituel, avec un compte rendu exploitable. Si vous préférez nous confier l'entretien ensuite, c'est une décision séparée."
+            "question": "Combien de temps dure un transfert de ligne ?",
+            "reponse": "De quelques jours pour une machine isolée à plusieurs semaines pour une ligne complète. Le planning jalonné vous est remis avec le chiffrage."
           },
           {
-            "question": "Qui est responsable en cas de casse pendant le transfert ?",
-            "reponse": "Le sujet est traité avant le chantier. Le devis et le cahier des charges précisent les responsabilités de chaque partie, les garanties et l'assurance mobilisée. Vous savez qui répond de quoi avant le premier câble débranché."
-          },
-          {
-            "question": "Qui sont les techniciens qui interviennent ?",
-            "reponse": "Des intervenants Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des candidats sont retenus, et les résultats d'évaluation sont partagés avec vous."
-          },
-          {
-            "question": "Intervenez-vous partout en France ?",
-            "reponse": "Oui, depuis 4 agences : Lyon (siège), Montréal, Dubaï, Madrid, avec des hubs de techniciens dans les grandes villes de France : Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon, Nantes. Le site de départ et le site d'arrivée sont suivis dans un même dossier, avec un seul interlocuteur."
+            "question": "La ligne est-elle garantie au redémarrage ?",
+            "reponse": "Nous réalisons les essais à vide puis en charge et signons la réception avec vous. Les réserves éventuelles sont levées dans un délai contractuel."
           }
-        ]
+        ],
+        "titre": "Ce qu’on nous demande avant de signer."
       },
       {
         "type": "ctaFinal",
@@ -211,40 +321,6 @@
         "bouton": "Parler à un chargé d'affaires",
         "href": "/contact/",
         "rappel": "04 78 33 72 05, astreinte 24/24 et 7/7."
-      }
-    ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
-      {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
-      },
-      {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
-      },
-      {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
-      },
-      {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
-      },
-      {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
-      },
-      {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
       }
     ]
   }

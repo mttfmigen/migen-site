@@ -440,3 +440,291 @@ Ils sont rendus en texte plutôt qu'en lien mort :
   x-import component="MigenAgences"). Ce n'est pas du HTML et ne se porte pas.
   La place est tenue par les reperes chiffres du corpus, dans le panneau en
   verre que PageSecteur rend deja aux memes valeurs.
+
+## 5. Page d'offre portée au mot pour mot sur la maquette (05/10)
+
+Décision de Mehdi du 05/10 : « tu respectes AU MOT POUR MOT la maquette ». La
+maquette `maquette/site-final.html` porte sa propre donnée à sa ligne 7748, un
+objet `OFFERS` de six offres et trente-trois champs chacune, soit cent
+quatre-vingt-dix-huit phrases écrites par le client. Elles sont désormais la
+source du texte des pages d'offre ; le corpus rédigé ne sert plus qu'au reste.
+
+Rien de ce qui suit n'est exposé : robots fermés, déploiement derrière le SSO
+Vercel. Mais rien ne doit basculer sur migen.fr sans avoir été tranché.
+
+### 5.1 Les six offres portées, et les douze pages laissées au corpus
+
+| Clé `OFFERS` | URL servie | Justification |
+|---|---|---|
+| `sursite` | `/offres/residence/` | `name` « Résidence », `lead` « en résidence sur votre site ». La clé est historique (« sur site »). |
+| `zero` | `/offres/zero-arret/` | `name` « Zéro arrêt ». |
+| `arret` | `/offres/arret-technique/` | `name` « Arrêt technique ». |
+| `chantier` | `/offres/chantier/` | `name` « Chantier ». |
+| `etude` | `/offres/bureau-etudes/` | `name` « Bureau d'études ». |
+| `construction` | `/offres/construction/` | `name` « Construction ». |
+
+**Douze pages de `/offres/` n'ont PAS de clé dans `OFFERS`** et restent servies
+par le corpus rédigé. Quatre sont des offres que la maquette ne dessine pas :
+`/offres/maintenance-externalisee/`, `/offres/depannage-industriel/`,
+`/offres/retrofit/`, `/offres/audit-conseil-maintenance/`. Huit sont des pages
+profondes, filles d'une offre mais avec leur propre mot clé :
+`/offres/residence/cahier-des-charges/`,
+`/offres/residence/prestataire-ou-salarie/`,
+`/offres/chantier/transfert-de-production/`,
+`/offres/chantier/demenagement-machines/`,
+`/offres/retrofit/remise-en-etat/`,
+`/offres/retrofit/mise-en-conformite-machine/`,
+`/offres/depannage-industriel/astreinte/`,
+`/offres/depannage-industriel/panne-machine/`.
+
+**À trancher :** leur faire hériter du texte de l'offre parente donnerait à deux
+pages le même H1, le même chapeau et les mêmes quatre chiffres, pour des
+requêtes différentes. Elles ont donc été laissées au corpus. Si tu veux qu'elles
+portent aussi le dessin de la maquette avec leur propre texte, il faut écrire
+trente-trois champs par page.
+
+### 5.2 L'arbitrage SEO du H1, et c'est le plus lourd
+
+La maquette écrit le H1 en deux parties : `of.h1a` puis `of.h1b` en gris.
+Exemple sur `/offres/residence/` : « migen© Résidence, un renfort maintenance
+chez vous. ». Le H1 qui était servi venait de `pages.titre_h1` :
+« Sous-traitance maintenance ».
+
+**Ce que ça coûte :** le H1 de la base portait le MOT CLÉ de la page, celui de
+la maquette ne le porte pas. C'est la maquette qui gagne sur ta décision du
+05/10, mais l'arbitrage est réel : six pages commerciales perdent leur mot clé
+en H1. Le `<title>` de la page, lui, n'a pas changé.
+
+| URL | H1 avant | H1 maintenant |
+|---|---|---|
+| `/offres/residence/` | Sous-traitance maintenance | migen© Résidence, un renfort maintenance chez vous. |
+| `/offres/zero-arret/` | Contrat de maintenance | migen© Zéro Arrêt, la maintenance qui ne touche jamais à votre production. |
+| `/offres/arret-technique/` | Arrêt technique maintenance | migen© Arrêt technique, la fenêtre tenue. |
+| `/offres/chantier/` | (titre de la base) | migen© Chantier, votre ligne déplacée, pas arrêtée. |
+| `/offres/bureau-etudes/` | (titre de la base) | migen© Bureau d'études, ce qu'on dessine, on sait le maintenir. |
+| `/offres/construction/` | (titre de la base) | migen© Construction, votre usine montée, puis maintenue. |
+
+### 5.3 Les formulations que le contrat du projet refusait, et qui sont portées
+
+CLAUDE.md section 9 interdit les délais chiffrés d'intervention, les prix, et
+les mots « régie », « mise à disposition », « sans engagement », « sur mesure ».
+La maquette en écrit, et la décision du 05/10 les fait porter. Toutes viennent
+d'`OFFERS` ou du gabarit, mot pour mot.
+
+- **Délais chiffrés.** « Premier échange sous 24 h » (Résidence), « Réponse
+  écrite sous 48 h » (Zéro arrêt), « Chiffrage sous 48 h » (Arrêt technique),
+  « Visite sous une semaine » (Chantier), « Premier cadrage sous 48 h » (Bureau
+  d'études), « Premier rendez-vous sous une semaine » (Construction). Plus
+  « 3 sem. » de délai de mise en poste, « 48 h » de chiffrage, « une réponse
+  écrite sous 48 h ».
+- **Prix et tarifs.** « Prix mensuel fixe », « Recevoir le tarif », « Mise en
+  service offerte » contre « Facturée », « au prix réel avec un coefficient écrit
+  au contrat », « engagement 12 mois », les trois formules de Zéro Arrêt et leur
+  tableau comparatif.
+- **Délais d'intervention.** « Panne signalée avant 16 h, technicien sur site le
+  soir même », « 14 h 30 / 16 h 00 / 22 h 00 », « Intervention la nuit
+  suivante », « Délai garanti par contrat ».
+- **Mots proscrits.** « régie » (`OFFERS.sursite.incP` « En régie comme au
+  forfait », `OFFERS.zero.you3` « qui relève de la régie classique », la question
+  « Régie ou forfait : quelle différence ? »), « mise à disposition »
+  (`OFFERS.sursite.us2`, la question « Quelle est la durée minimale d'une mise à
+  disposition ? »), « sans engagement » (tableau des formules, « Nuit suivante,
+  sans engagement »), « Sur mesure » (`OFFERS.sursite.s00`).
+- **Chiffres non confirmés.** « 20 % de turnover contre 60 % dans le secteur »,
+  « Six semaines d'absence par an », « 30 techniciens mobilisables ».
+- **La bande de repères du héros**, déjà signalée en section 2 : « 5 agences en
+  France » et « +200 clients industriels » contredisent le corpus (quatre
+  agences, « plus de 120 clients dont plus de 80 réguliers »).
+
+`scripts/verifie-interdits.mjs` n'est PAS désarmé : il lit la source des
+composants, et ces formulations vivent dans les fichiers de contenu JSON, pas
+dans le code. Aucune exception n'a eu à y être déclarée.
+
+### 5.4 Les quatre phrases à tiret cadratin, et ce qu'elles sont devenues
+
+Le tiret cadratin reste interdit : c'est ta règle permanente, antérieure et
+indépendante de la maquette. **Aucun mot n'a été touché**, seule la ponctuation
+change. Les quatre phrases, pour que tu puisses trancher autrement d'un mot :
+
+| Où | La maquette écrit | Le site rend |
+|---|---|---|
+| Bande « La règle », section 4 | …la disponibilité et le délai **—** jamais les fournitures | …la disponibilité et le délai**,** jamais les fournitures |
+| `OFFERS.zero.incP`, section 8 | …la disponibilité et le délai **—** jamais les fournitures | …la disponibilité et le délai**,** jamais les fournitures |
+| `OFFERS.zero.bref`, section 2 | …sans service maintenance structuré **—** ou dont l'équipe… | …sans service maintenance structuré**,** ou dont l'équipe… |
+| « Notre sélection », étape 4 | …par domaine **—** mécanique, électrotechnique, automatisme, hydraulique **—** notées… | …par domaine **:** mécanique, électrotechnique, automatisme, hydraulique**,** notées… |
+| `RES_FAQ[2]`, Résidence | …les absences prévues **—** congés, formation **—** le remplaçant… | …les absences prévues **(**congés, formation**)** le remplaçant… |
+
+Les deux premières lignes portent la même formule dans deux sections
+différentes : cinq substitutions, six caractères. La cinquième est le cadratin
+que la consigne du 05/10 ne nommait pas. L'incise de la cinquième CONTIENT une
+virgule : deux virgules de plus rendaient la phrase illisible, d'où les
+parenthèses, que `scripts/verifie-interdits.mjs` nomme lui-même comme équivalent
+français.
+
+### 5.5 Ce qui a été retiré des six pages, et qu'il faut peut-être remettre
+
+- **Les six questions fréquentes du corpus**, remplacées par celles de la
+  maquette (`RES_FAQ` pour Résidence, `FAQ_BY` pour les cinq autres). Exemple sur
+  `/offres/residence/` : « Combien coûte la sous-traitance de la maintenance ? »
+  et « Sur quelle durée doit-on s'engager ? » ne sont plus servies. Le texte
+  reste dans le corpus (`supabase/import/corpus-analyse.json`).
+- **Les sept liens d'étude de cas de la section `preuves` du corpus** (SUEZ, FDJ,
+  MERSEN, ERIKS, OGF, VPK, GROUPE ATLANTIC). La maquette dessine sa propre
+  section « Nos dernières réalisations », trois cartes à photo, et les deux
+  portent le MÊME H2 (« Ce que nous avons fait, chez qui, et comment ») : les
+  rendre toutes les deux faisait lire deux fois le même titre. La section du
+  corpus n'est donc plus rendue sur les six pages à clé `OFFERS`, et elle l'est
+  toujours sur les douze autres.
+  **À trancher :** la maquette ne nomme AUCUNE URL pour ses trois cartes (elle
+  navigue par `onClick="{{ goFiche }}"`). Rattacher `/preuves/suez-remise-en-etat/`
+  à la carte « SUEZ IWT » demande ta confirmation : c'est une correspondance
+  devinée, pas une donnée.
+
+### 5.6 La photo manquante
+
+`public/assets/web/x-faisceaux.jpg` **n'est pas au dépôt** (17 fichiers dans
+`public/assets/web/`, pas celui-là). C'est la photo de la première carte de
+réalisation, celle de SUEZ IWT. Aucune autre photo n'a été substituée : associer
+un visuel arbitraire au nom d'un client n'est pas une décision de portage.
+
+**Corrigé le 05/10, second passage :** la carte gardait le cadre de 210 px au
+fond `var(--ph)`, ce qui donnait un **aplat gris de 210 px entre deux cartes
+photographiées**. Ça se lit comme une image cassée, pas comme un parti pris. La
+carte rend maintenant son texte sans le cadre, et la photo revient avec son cadre
+le jour où le fichier arrive. **Il suffit de poser le fichier** pour retrouver la
+maquette exactement.
+
+### 5.7 Les deux ajouts assumés de la carte de demande
+
+La maquette n'écrit ni l'un ni l'autre, ils restent :
+
+- **La mention RGPD** sous le formulaire (« Données traitées par Migen… politique
+  de confidentialité »). Obligation d'information au point de collecte, articles
+  13 et 14 du RGPD. Une page qui collecte des données ne peut pas s'en passer.
+- **Le champ piège « Site web »**, hors du cadre visible et masqué aux
+  technologies d'assistance. Protection anti-robot.
+
+L'état « envoyé » de la carte, lui, est désormais celui de la maquette :
+« Demande envoyée. » et « Un chargé d'affaires vous rappelle dans l'heure avec
+les premiers profils. » remplacent tout le contenu de la carte.
+
+### 5.8 « Notre méthode » : deux libellés qui ne sont pas ceux de la maquette
+
+`components/site/accueil/methode-etapes-donnees.ts` a été porté AVANT ce
+chantier, sous un contrat qui refusait les délais chiffrés. Deux libellés y
+remplacent ceux de la maquette :
+
+| Étape | La maquette écrit | Le site rend |
+|---|---|---|
+| 01 Qualification | 2 à 5 jours | Au premier contact |
+| 02 Sélection | 1 à 2 semaines | Avant l'arrivée sur site |
+
+Un troisième écart est dans le corps de l'étape 02 : la maquette écrit « avant
+toute mise à disposition », le site « avant toute arrivée sur votre site ».
+
+**Non corrigé, et volontairement :** ce fichier sert AUSSI la page d'accueil et
+ses propres portes (G7 compare les hauteurs de section au pixel), et « mise à
+disposition » fait échouer `scripts/verifie-interdits.mjs`, qu'il faudrait doter
+d'une exception. La décision du 05/10 les remet en question : à toi de dire si on
+y va. `scripts/verifie-mots-offre.mjs` les déclare nommément et VÉRIFIE que la
+phrase de la maquette qu'ils remplacent y est toujours : la déclaration ne peut
+pas pourrir en silence.
+
+### 5.9 CONTRASTE : blanc sur l'orange de marque, 2,56:1, et je n'ai pas repeint la maquette
+
+**Mesuré, et c'est un vrai défaut d'accessibilité :**
+
+| Où | Couleurs | Rapport | Plancher WCAG AA |
+|---|---|---|---|
+| Tous les boutons pleins (`BOUTON_ACTION`, `.boutonPrincipal`, `BANDE_BOUTON`, `FORMULE_BOUTON_PHARE`, les deux soumissions de formulaire) | `#fff` sur `--acc` `#ff7c3c` | **2,56:1** | 4,5:1 (15 px gras n'est pas du grand texte) |
+| Tous les surtitres de section (`SURTITRE`), « En bref », « Étape 1 », « SUEZ IWT · migen© Résidence », « Voir toutes nos réalisations → » | `--acc` sur `--bg` `#f1f2f4` | **2,29:1** | 4,5:1 |
+
+**Pourquoi je ne l'ai pas corrigé.** C'est la charte de la maquette, écrite à sa
+ligne 25 : `--acc:#ff7c3c` ET `--acc-ink:#7d3309`. La maquette utilise les deux,
+délibérément et à des endroits différents : `--acc-ink` pour les liens de corpus
+et les libellés de carte (l. 307, 409, 469, 1151, 1792, 1907, 5156), `--acc` pour
+les boutons pleins, les surtitres, les puces et les filets. Le site reproduit
+exactement ce partage. Le « la même page respecte la règle d'un côté et la viole
+de l'autre » est donc **le fait de la maquette**, pas une incohérence introduite
+au portage.
+
+Ta décision du 05/10 est « tu respectes AU MOT POUR MOT la maquette, on la
+reproduit, on ne la corrige pas ». Repeindre les boutons de tout le site en
+`#7d3309` est une **décision de charte**, visible sur chaque page, et elle
+t'appartient. C'était déjà la réserve 4.1 de ce fichier pour le formulaire : elle
+vaut en réalité pour tous les boutons pleins et tous les surtitres du site.
+
+**Les deux voies, si tu veux la conformité :**
+
+1. Assombrir le jeton : `--acc` à `#7d3309` (8,9:1 avec blanc). La marque change
+   de teinte partout, c'est le choix le plus simple à mettre en œuvre.
+2. Garder `#ff7c3c` pour les puces, filets et aplats décoratifs, et router le
+   TEXTE (fond de bouton, surtitre, lien d'en-tête) sur `--acc-ink`. Deux
+   constantes à changer dans `components/site/blocs/habillage.ts`
+   (`BOUTON_ACTION.background`, `SURTITRE.color`) et une dans
+   `components/site/accueil/DernieresRealisations.tsx` (le lien d'en-tête). Le
+   reste du site suit, tout passe par ces jetons.
+
+**Dis-moi lequel, je l'applique en une passe.** Tant que ce n'est pas tranché, le
+site rend la maquette, et le site n'est pas public.
+
+### 5.10 Deux sections du corpus arrivent sans H2, et je ne l'ai pas inventé
+
+**Mesuré sur `supabase/import/corpus-analyse.json` :** sur les 116 pages du
+corpus, **aucune** des 116 sections `offre` (le tableau « Ce que nous faisons /
+Ce que ça change pour vous ») et **aucune** des 116 sections `deroule` (les
+étapes numérotées) ne porte de `titre` ni d'`intro`. Soit 232 sections sur 232.
+
+Conséquence avant correction : le tableau arrivait **sans un seul mot** pour le
+nommer (son en-tête était sous condition de `titre || intro`, tous deux absents),
+et « Le déroulé » n'avait que son surtitre orange. Une dalle muette et un
+surtitre seul dans le plan de la page, sur 116 pages du gabarit de vente **et**
+sur les 18 pages d'offre.
+
+**Ce qui est corrigé :** les deux sections rendent maintenant **toujours** leur
+surtitre, donc plus de dalle anonyme. Et le surtitre du tableau n'est plus « Ce
+qui est inclus » (qui est le surtitre de la section 8 de la page d'offre, rendue
+plus haut sur la même page) mais **« Le périmètre »**, le mot que la maquette
+écrit elle-même au-dessus de cette section (`site-final.html` l. 1881,
+`sp-include`).
+
+**Ce qui reste à toi :** le H2. La maquette le tire de `{{ spInclude.title }}` et
+`{{ spMethod.title }}`, deux données qu'elle ne porte pas, et le corpus ne les
+écrit nulle part. **Je n'ai pas écrit de titre de repli** : ce serait fabriquer du
+texte visible sur 134 pages, ce que le contrat interdit (CLAUDE.md, section 13).
+Dès que le corpus fournit un `titre` sur ces deux sections, il s'affiche sans
+toucher au code.
+
+### 5.11 La maquette ne propose SIX tuiles de sortie, et ni Chantier ni Construction n'en fait partie
+
+`/offres/chantier/` et `/offres/construction/` sont deux pages au dessin complet
+de la maquette, et **aucune tuile de « Chaque situation a son offre » n'y mène**.
+Ce n'est pas un oubli du portage : `maquette/blocs-offre-maquette.json`, extrait
+de la maquette, liste exactement six tuiles, avec leur phrase :
+
+| Phrase du visiteur | Vers |
+|---|---|
+| « J'ai besoin d'un renfort maintenance sur mon site. » | Résidence |
+| « Je veux confier toute ma maintenance à un seul partenaire. » | Full service |
+| « Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. » | Zéro arrêt |
+| « J'ai une fenêtre d'arrêt et pas le droit de la dépasser. » | Arrêt technique |
+| « Mon installation n'est plus conforme et je n'ai plus les schémas. » | Bureau d'études |
+| « Je ne sais pas encore ce qu'il me faut. » | Toutes les offres |
+
+Ajouter une tuile Chantier et une tuile Construction demande d'**écrire deux
+phrases à la première personne** que personne n'a écrites : ni la maquette, ni le
+corpus. Je ne les ai pas inventées.
+
+**Deux choses à trancher, et elles vont ensemble :**
+
+1. **Cinq offres ou six ?** Le bouton du héros dit « Les cinq offres »
+   (`maquette/blocs-offre-maquette.json`, `heros.bouton.libelle`, mot pour mot) ;
+   `/offres/` en sert six au dessin de la maquette ; la grille de l'accueil
+   (`components/site/accueil/GrilleOffres.tsx`) nomme une cinquième offre
+   « migen© Travaux industriels » qui n'existe nulle part ailleurs.
+2. Si c'est six : donne-moi les deux phrases, et les tuiles arrivent.
+
+**Ce qui est corrigé en attendant :** le gabarit retire la tuile de la page
+courante, il en restait cinq, et la grille en deux colonnes laissait **une case
+vide en bas à droite sur les six pages**. La dernière tuile prend maintenant les
+deux colonnes quand le compte est impair.

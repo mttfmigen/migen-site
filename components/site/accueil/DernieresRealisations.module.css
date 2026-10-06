@@ -1,5 +1,12 @@
 /* L'ombre est ici et non en ligne : un style en ligne l'emporte sur toute
    règle de feuille, le survol ne pourrait pas la remplacer. */
+
+/* Une carte SANS cible : l'ombre de repos de la maquette, et rien de plus. Pas
+   de survol, puisqu'elle n'est pas cliquable. */
+.carteFixe {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
 .carte {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
   transition:

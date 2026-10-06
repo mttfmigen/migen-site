@@ -10,7 +10,7 @@ import {
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import type { ContenuOffre } from "@/types/offre";
 
-import { cibleSure } from "./LiensOffre";
+import { lienSur } from "./LiensOffre";
 import {
   BANDE_REGLE,
   BANDE_REGLE_SURTITRE,
@@ -19,17 +19,6 @@ import {
   COMPARATIF_COLONNE_PHARE,
   COMPARATIF_PUCE,
   COMPARATIF_TITRE,
-  FORMULE_BOUTON,
-  FORMULE_BOUTON_PHARE,
-  FORMULE_CARTE,
-  FORMULE_CARTE_PHARE,
-  FORMULE_LISTE,
-  FORMULE_LUEUR,
-  FORMULE_NOM,
-  FORMULE_PASTILLE,
-  FORMULE_PUCE,
-  FORMULE_RANG,
-  FORMULE_RESUME,
   JALON_CARTE,
   JALON_REPERE,
   JALON_TEXTE,
@@ -43,20 +32,21 @@ import {
   SURTITRE_OFFRE,
 } from "./habillage-offre";
 
+import CarteFormule from "./CarteFormule";
+import TableauFormules from "./TableauFormules";
+
 import styles from "./PageOffre.module.css";
 
 /**
  * Les QUATRE sections que la maquette réserve à l'offre Zéro Arrêt
- * (`sc-if value="{{ of.isZero }}"`, lignes 4772 à 4886).
+ * (`sc-if value="{{ of.isZero }}"`, l. 4096 à 4210 de `site-final.html`).
  *
  * ──────────────────────────────────────────────────────────────────────────────
- * CES QUATRE SECTIONS NE REÇOIVENT AUCUNE DONNÉE, ET C'EST LE POINT CENTRAL.
+ * ELLES SONT PORTÉES, TEXTE COMPRIS, DEPUIS LA DÉCISION DE MEHDI DU 05/10.
  * ──────────────────────────────────────────────────────────────────────────────
  *
- * La mise en page est portée ici aux valeurs exactes de la maquette, parce
- * qu'elle fait partie du dessin validé. Mais la maquette y écrit ce que le
- * contrat du projet (CLAUDE.md, section 9) interdit, et le contrat gagne
- * CONTRE la maquette :
+ * Elles avaient été laissées sans donnée, donc non rendues, parce que la
+ * maquette y écrit ce que le contrat du projet (CLAUDE.md, section 9) refuse :
  *
  *   · « Comment ça marche » (l. 4773) : « Une panne signalée avant 16 h »,
  *     « Intervention la nuit suivante », « 14 h 30 », « 16 h 00 », « 22 h 00 »,
@@ -72,13 +62,15 @@ import styles from "./PageOffre.module.css";
  *   · « Le premier mois » (l. 4867) : « une réponse écrite sous 48 h ». Seul
  *     « rappel dans l'heure » est autorisé.
  *
- * Sans donnée, chaque composant renvoie `null` : la section n'est pas rendue du
- * tout. Le jour où le client fournit une matière qui ne heurte aucune règle,
- * il suffit de la poser dans le fichier JSON de la page, et la section apparaît
- * dans la mise en page de la maquette, sans une ligne de code à écrire.
+ * LA RÈGLE DU 05/10 FAIT PRIMER LA MAQUETTE : « tu respectes AU MOT POUR MOT la
+ * maquette ». Ces formulations sont donc portées telles quelles, et inscrites
+ * dans `docs/RESERVES-CONTENU.md` pour arbitrage avant que migen.fr pointe sur
+ * le déploiement. Le site n'est pas public : robots fermés, déploiement derrière
+ * le SSO Vercel.
  *
- * Ce n'est donc ni un oubli ni un contournement : c'est la règle
- * « zéro donnée inventée, vide plutôt que faux », appliquée au dessin.
+ * Chaque composant renvoie toujours `null` sans donnée : la maquette ne dessine
+ * ces quatre sections QUE sur `/offres/zero-arret/`, et `produit_gabarit_offre`
+ * n'écrit leur texte que là. Leur absence ailleurs est le dessin, pas un trou.
  */
 
 /* ------------------------------------------------- 1. « Comment ça marche » */
@@ -144,6 +136,8 @@ export function Formules({ contenu }: { contenu: ContenuOffre }) {
   const regle = contenu.formulesRegle;
   if (formules.length === 0 && !regle) return null;
 
+  const rangRecommandee = formules.findIndex((f) => f.recommandee === true);
+
   return (
     <section style={SECTION}>
       <div style={LARGEUR}>
@@ -175,117 +169,28 @@ export function Formules({ contenu }: { contenu: ContenuOffre }) {
                 alignItems: "stretch",
               }}
             >
-              {formules.map((formule) => {
-                const phare = formule.recommandee === true;
-                const bouton = formule.bouton;
-                const cible =
-                  bouton?.href && cibleSure(bouton.href) ? bouton.href : null;
-
-                return (
-                  <div
-                    key={formule.nom}
-                    style={phare ? FORMULE_CARTE_PHARE : FORMULE_CARTE}
-                  >
-                    {phare ? <div style={FORMULE_LUEUR} /> : null}
-                    <div
-                      style={{
-                        position: "relative",
-                        display: "flex",
-                        flexDirection: "column",
-                        height: "100%",
-                      }}
-                    >
-                      {phare ? (
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                            gap: 10,
-                            marginBottom: 14,
-                          }}
-                        >
-                          <span style={{ ...FORMULE_RANG, marginBottom: 0 }}>
-                            {formule.rang}
-                          </span>
-                          <span style={FORMULE_PASTILLE}>Recommandé</span>
-                        </div>
-                      ) : (
-                        <div style={FORMULE_RANG}>{formule.rang}</div>
-                      )}
-
-                      <div
-                        style={{
-                          ...FORMULE_NOM,
-                          color: phare ? "#fff" : "var(--ink)",
-                        }}
-                      >
-                        {formule.nom}
-                      </div>
-                      <p
-                        style={{
-                          ...FORMULE_RESUME,
-                          color: phare
-                            ? "rgba(255,255,255,.6)"
-                            : "var(--ink2)",
-                        }}
-                      >
-                        <TexteRiche texte={formule.resume} />
-                      </p>
-
-                      {formule.inclus.length > 0 ? (
-                        <div
-                          style={{
-                            ...FORMULE_LISTE,
-                            borderTop: phare
-                              ? "1px solid rgba(255,255,255,.12)"
-                              : "1px solid var(--line)",
-                          }}
-                        >
-                          {formule.inclus.map((ligne) => (
-                            <div
-                              key={ligne}
-                              style={{
-                                ...FORMULE_PUCE,
-                                color: phare
-                                  ? "rgba(255,255,255,.78)"
-                                  : "var(--ink1)",
-                              }}
-                            >
-                              <span
-                                aria-hidden="true"
-                                style={{ color: "var(--acc)", flex: "none" }}
-                              >
-                                +
-                              </span>
-                              <span>
-                                <TexteRiche texte={ligne} />
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      ) : null}
-
-                      {bouton?.libelle && cible ? (
-                        <a
-                          href={cible}
-                          className={
-                            phare
-                              ? styles.boutonPrincipal
-                              : styles.boutonSecondaire
-                          }
-                          style={
-                            phare ? FORMULE_BOUTON_PHARE : FORMULE_BOUTON
-                          }
-                        >
-                          {bouton.libelle}
-                        </a>
-                      ) : null}
-                    </div>
-                  </div>
-                );
-              })}
+              {formules.map((formule) => (
+                <CarteFormule key={formule.nom} formule={formule} />
+              ))}
             </div>
+          ) : null}
+
+          {/*
+            Le tableau ligne par ligne de la maquette (l. 4147). Il était la
+            SEULE donnée de la page à n'avoir aucun lecteur : `formulesTableau`
+            était écrit dans le JSON, déclaré dans `types/offre.ts`, et le mot
+            n'apparaissait nulle part ailleurs dans le dépôt.
+          */}
+          {contenu.formulesTableau ? (
+            <TableauFormules
+              tableau={contenu.formulesTableau}
+              // La colonne mise en avant est celle de la formule recommandée.
+              // `+ 1` parce que la première colonne du tableau porte les
+              // libellés de ligne, pas une formule.
+              colonnePhare={
+                rangRecommandee >= 0 ? rangRecommandee + 1 : undefined
+              }
+            />
           ) : null}
 
           {regle ? (
@@ -382,8 +287,7 @@ export function PremierMois({ contenu }: { contenu: ContenuOffre }) {
   const appel = contenu.premierMoisAppelTitre || contenu.premierMoisAppelTexte;
   if (etapes.length === 0 && !appel) return null;
 
-  const bouton = contenu.premierMoisAppelBouton;
-  const cible = bouton?.href && cibleSure(bouton.href) ? bouton.href : null;
+  const bouton = lienSur(contenu.premierMoisAppelBouton);
 
   return (
     <section style={SECTION}>
@@ -438,9 +342,9 @@ export function PremierMois({ contenu }: { contenu: ContenuOffre }) {
                   </p>
                 ) : null}
               </div>
-              {bouton?.libelle && cible ? (
+              {bouton ? (
                 <a
-                  href={cible}
+                  href={bouton.href}
                   className={styles.boutonPrincipal}
                   style={PREMIER_MOIS_APPEL_BOUTON}
                 >

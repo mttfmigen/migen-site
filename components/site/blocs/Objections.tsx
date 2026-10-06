@@ -1,6 +1,6 @@
 import type { SectionObjections } from "@/types/contenu";
 import styles from "./Blocs.module.css";
-import { LARGEUR, SECTION, SURTITRE, TITRE2, VERRE } from "./habillage";
+import { BOUTON_ACTION, LARGEUR, SECTION, SURTITRE, TITRE2, VERRE } from "./habillage";
 import TexteRiche from "./TexteRiche";
 
 /**
@@ -11,8 +11,21 @@ import TexteRiche from "./TexteRiche";
  * et la réponse est dans le HTML envoyé à Google, ouverte ou fermée. Les classes
  * `cx-faq` et `cx-plus` sont celles que `app/globals.css` attend déjà : il y
  * tient l'état ouvert, rotation de la croix et passage à l'orange.
+ *
+ * LE BOUTON `cta` EST SOUS CONDITION, et c'est voulu. La maquette met un bouton
+ * orange « Poser ma question » dans la colonne gauche collante de la PAGE
+ * D'OFFRE (l. 4469 de `site-final.html`), et n'en met pas sur le gabarit de
+ * vente, que ce même bloc sert sur une centaine de pages. Le rendre sans
+ * condition l'aurait fait apparaître partout.
  */
-export default function Objections({ section }: { section: SectionObjections }) {
+export default function Objections({
+  section,
+  cta,
+}: {
+  section: SectionObjections;
+  /** Le bouton de la colonne gauche. Cible déjà vérifiée par l'appelant. */
+  cta?: { libelle: string; href: string };
+}) {
   if (section.questions.length === 0) return null;
 
   return (
@@ -32,6 +45,11 @@ export default function Objections({ section }: { section: SectionObjections }) 
             <h2 style={{ ...TITRE2, maxWidth: "14ch", marginBottom: 22 }}>
               {section.titre ?? "Ce qu'on nous demande avant de signer."}
             </h2>
+            {cta ? (
+              <a href={cta.href} className={styles.boutonAction} style={BOUTON_ACTION}>
+                {cta.libelle}
+              </a>
+            ) : null}
           </div>
 
           <div style={{ display: "grid", gap: 10 }}>

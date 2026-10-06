@@ -15,11 +15,17 @@
  *    pas porté : recopier ses `href="#"` aurait donné quatorze boutons morts.
  * 4. AUCUNE CLASSE TAILWIND DE COULEUR, aucune variante `dark:`. La charte vit
  *    dans les jetons de `app/globals.css`, et le site n'a pas de mode sombre.
- * 5. LES INTERDITS DE COPIE sont absents du rendu, prix et délais chiffrés
- *    compris. C'est le cœur de ce gabarit : la maquette en porte, le contrat
- *    les refuse, et le contrat gagne.
+ * 5. LE SEUL INTERDIT PERMANENT EST LE TIRET CADRATIN. Les prix et les délais
+ *    chiffrés de la maquette sont PORTÉS depuis la décision de Mehdi du 05/10
+ *    (« tu respectes AU MOT POUR MOT la maquette ») et inscrits dans
+ *    `docs/RESERVES-CONTENU.md` pour arbitrage avant la mise en ligne. Ce
+ *    contrôle disait l'inverse jusqu'au 05/10, et c'est lui qui validait un
+ *    gabarit « propre » servant un texte que le client n'avait pas écrit.
  * 6. UNE SECTION SANS DONNÉE NE SE REND PAS DU TOUT. Pas de titre orphelin, pas
  *    de carte vide, pas de valeur inventée pour meubler.
+ * 7. LA COPIE EST CONTRÔLÉE AILLEURS, et mieux : `scripts/verifie-mots-offre.mjs`
+ *    résout les 198 chaînes d'`OFFERS` et compare au rendu réel des six pages,
+ *    dans les deux sens. Ce contrôle-ci garde le DESSIN et la structure.
  */
 
 import assert from "node:assert/strict";
@@ -279,61 +285,29 @@ for (const classe of rendu.matchAll(/class="([^"]*)"/g)) {
   );
 }
 
-/* ------------------------------------------------- 5. les interdits de copie */
+/* ------------------------- 5. le seul interdit permanent : le cadratin */
 
 /**
- * Les formulations que le CONTRAT refuse et que la MAQUETTE porte quand même.
+ * LE TIRET CADRATIN, et lui seul.
  *
- * Chacune est d'abord vérifiée PRÉSENTE dans la maquette : si elle en
- * disparaissait, l'interdit n'aurait plus d'objet et cette liste mentirait.
- * Puis elle est vérifiée ABSENTE du rendu.
+ * CE BLOC DISAIT L'INVERSE JUSQU'AU 05/10. Il vérifiait que « Recevoir le
+ * tarif », « Prix mensuel fixe », « avant 16 h », « la régie classique » et six
+ * autres formulations de la maquette étaient ABSENTES du rendu, au nom du
+ * contrat du projet. La décision de Mehdi du 05/10 fait primer la maquette :
+ * elles sont portées, et inscrites dans `docs/RESERVES-CONTENU.md` pour
+ * arbitrage avant que migen.fr pointe sur le déploiement.
+ *
+ * Reste l'interdit PERMANENT, antérieur et indépendant de la maquette : aucun
+ * tiret cadratin dans la copie visible. La maquette en porte dans quatre
+ * phrases, chacune substituée par la ponctuation française équivalente sans
+ * qu'un mot soit touché, et chacune déclarée dans
+ * `scripts/produit_gabarit_offre.mjs` et `scripts/verifie-mots-offre.mjs`.
  */
-const INTERDITS_DE_LA_MAQUETTE = [
-  ["5", "5 agences"], // l. 4724, le compte tenu est quatre
-  ["+200", "+200"], // l. 4727, le compte tenu est « plus de 120 clients »
-  ["Prix mensuel fixe", "Prix mensuel fixe"], // l. 4794, aucun prix
-  ["Recevoir le tarif", "Recevoir le tarif"], // l. 4802
-  ["avant 16 h", "avant 16 h"], // l. 4777, délai chiffré
-  ["la nuit suivante", "la nuit suivante"], // l. 4774
-  ["Délai garanti par contrat", "Délai garanti par contrat"], // l. 4860
-  ["Six semaines d", "Six semaines d"], // l. 4847, chiffre RH non confirmé
-  ["sous 48", "sous 48"], // l. 4879, seul « rappel dans l'heure » est autorisé
-  ["la régie classique", "la régie classique"], // l. 4774, mot proscrit
-] as const;
-
-for (const [dansLaMaquette, interdit] of INTERDITS_DE_LA_MAQUETTE) {
-  assert.ok(
-    MAQUETTE.includes(dansLaMaquette),
-    `« ${dansLaMaquette} » n'est plus dans la maquette : cette liste d'interdits est à relire`,
-  );
-  assert.ok(
-    !rendu.includes(interdit),
-    `formulation interdite rendue : « ${interdit} »`,
-  );
-}
-
-// Les interdits généraux du contrat, cherchés sur un texte normalisé.
-const normalise = rendu.replace(/ /g, " ").replace(/’/g, "'");
-for (const mot of [
-  "200 clients",
-  "cinq agences",
-  "régie",
-  "intérim",
-  "mise à disposition",
-  "sans engagement",
-  "clé en main",
-  "sur mesure",
-  "levier",
-  "concrètement",
-  "incontournable",
-  "découvrez",
-  "—",
-]) {
-  assert.ok(
-    !normalise.toLowerCase().includes(mot.toLowerCase()),
-    `mot proscrit par le contrat dans le rendu : « ${mot} »`,
-  );
-}
+const normalise = rendu.replace(/\u00a0/g, " ").replace(/\u2019/g, "'");
+assert.ok(
+  !normalise.includes("—"),
+  "tiret cadratin dans le rendu : virgule, parenthèses ou deux-points",
+);
 
 /* --------------------------- 6. une section sans donnée ne se rend pas */
 
@@ -356,21 +330,30 @@ for (const titre of [
   );
 }
 
-// La bande de repères du héros reste vide : son filet ne doit pas apparaître.
+/* LA BANDE DE REPÈRES ET LA PASTILLE : LE CHEMIN DE L'ABSENCE, ET LUI SEUL.
+
+   CE QUE CES DEUX ASSERTIONS DISAIENT JUSQU'ICI, et c'était faux : « sans
+   repères la bande ne se rend pas » était commenté « le corpus n'écrit nulle
+   part » ces valeurs. Les dix-huit gabarits en écrivent TROIS chacun, et
+   `/offres/residence/` sert bien la bande, son filet `height:34px` et la
+   pastille. Les deux contrôles ne portaient que sur le gabarit d'exemple
+   ci-dessus, qui ne déclare ni l'un ni l'autre : ils ne pouvaient donc plus
+   échouer sur la donnée de production, qui rend l'inverse.
+
+   ILS RESTENT, mais pour ce qu'ils prouvent vraiment : qu'une donnée ABSENTE ne
+   laisse pas de filet ni de pastille orphelins. Le chemin de la PRÉSENCE est
+   contrôlé plus bas, sur les dix-huit pages réelles. */
 assert.ok(
   !rendu.includes("height:34px"),
-  "sans repères, la bande du héros et ses filets ne se rendent pas",
+  "le gabarit d'exemple ne déclare pas de repères : la bande et ses filets ne doivent pas se rendre",
 );
-
-// La pastille du héros non plus : la maquette la dessine (l. 4712) mais le
-// corpus n'écrit nulle part le libellé d'offre qu'elle porterait.
 assert.ok(
   MAQUETTE.includes("font:600 12px var(--fb)"),
   "la pastille du héros n'est plus dans la maquette : ce contrôle est à relire",
 );
 assert.ok(
   !rendu.includes("font:600 12px var(--fb)"),
-  "sans libellé, la pastille du héros ne se rend pas",
+  "le gabarit d'exemple ne déclare pas de pastille : elle ne doit pas se rendre",
 );
 
 // Le maillage du corpus écrit en Markdown doit sortir en lien, pas en crochets.
@@ -378,6 +361,36 @@ assert.ok(
   rendu.includes('href="/offres/residence/cahier-des-charges') &&
     !rendu.includes("[cahier des charges]"),
   "le chapeau du héros doit passer par TexteRiche",
+);
+
+/* L'ORDRE DES BLOCS, et c'est un défaut qui ne se voit qu'à la lecture de la
+   page entière. « Un autre besoin ? / Chaque situation a son offre. » est la
+   SORTIE vers les autres offres : la maquette en fait son avant-dernier bloc,
+   juste avant le formulaire. Le portage la rendait AVANT les six sections de
+   corpus, donc avant « Ce que nous garantissons. » et avant le formulaire : le
+   lecteur était invité à partir au milieu de la page.
+
+   Et la section `preuves` du corpus prend la place 11 de la maquette quand la
+   page n'a pas ses trois cartes à photo, au lieu de tomber en fin de page : les
+   douze pages de `/offres/` sans clé `OFFERS` avaient sinon une architecture de
+   page différente des six autres. */
+const ordre = (texte: string) => {
+  const rang = rendu.indexOf(texte);
+  assert.ok(rang > -1, `« ${texte} » n'est pas rendu : ordre invérifiable`);
+  return rang;
+};
+assert.ok(
+  ordre("Ce que nous avons fait, chez qui, et comment") <
+    ordre("Questions fréquentes"),
+  "sans cartes à photo, la section « preuves » du corpus prend la place 11, avant la FAQ",
+);
+assert.ok(
+  ordre("Questions fréquentes") < ordre("Ce que nous garantissons."),
+  "le texte du corpus se rend APRÈS la FAQ, emplacement que la maquette lui donne",
+);
+assert.ok(
+  ordre("Ce que nous garantissons.") < ordre("Chaque situation a son offre."),
+  "« Chaque situation a son offre. » est le dernier bloc avant le formulaire, comme dans la maquette",
 );
 
 // Les animations viennent de Moteurs.tsx : le gabarit ne pose que l'attribut.
@@ -434,6 +447,17 @@ assert.equal(
   `18 pages d'offre attendues dans ${DOSSIER}, ${fichiers.length} trouvée(s)`,
 );
 
+/** Les six pages dont le texte vient d'`OFFERS`, mot pour mot. */
+const PAGES_OFFERS = new Set([
+  "offres-residence.json",
+  "offres-zero-arret.json",
+  "offres-arret-technique.json",
+  "offres-chantier.json",
+  "offres-bureau-etudes.json",
+  "offres-construction.json",
+]);
+
+let avecOffers = 0;
 for (const nom of fichiers) {
   const brut = JSON.parse(
     readFileSync(join(DOSSIER, nom), "utf8"),
@@ -461,35 +485,116 @@ for (const nom of fichiers) {
   );
   assert.ok(!/href="#"/.test(page), `${nom} : un href="#" est rendu`);
 
-  const texte = page.replace(/\u00a0/g, " ").replace(/\u2019/g, "'");
-  for (const [dansLaMaquette, interdit] of INTERDITS_DE_LA_MAQUETTE) {
-    void dansLaMaquette;
+  /* LA BANDE DE REPÈRES ET LA PASTILLE DU HÉROS SE RENDENT, SUR LES DIX-HUIT.
+     C'est le chemin de la PRÉSENCE, celui que la donnée de production emprunte
+     et que le contrôle ne jouait pas : les deux assertions du gabarit d'exemple
+     ne parlent que de l'absence. Les deux chiffres portés ici (« 5 agences en
+     France », « +200 clients industriels ») viennent de la maquette et
+     contredisent les faits autorisés : voir la réserve 5.3 de
+     `docs/RESERVES-CONTENU.md`. Tant que Mehdi n'a pas tranché, ils sont rendus
+     mot pour mot, et ce contrôle le PROUVE au lieu de laisser croire le
+     contraire. */
+  assert.ok(
+    (brut.contenu.reperes ?? []).length >= 2,
+    `${nom} : la bande de repères du héros doit porter au moins deux repères`,
+  );
+  assert.ok(
+    page.includes("height:34px"),
+    `${nom} : la bande de repères porte des repères, son filet doit se rendre`,
+  );
+  assert.ok(brut.contenu.pastille, `${nom} : la pastille du héros manque`);
+  assert.ok(
+    page.includes("font:600 12px var(--fb)"),
+    `${nom} : la pastille du héros est déclarée, elle doit se rendre`,
+  );
+
+  /* L'ORDRE DE LA MAQUETTE, sur la donnée réelle : la sortie vers les autres
+     offres est le dernier bloc avant le formulaire. */
+  if (brut.contenu.autresTitre) {
+    const sortie = page.indexOf(brut.contenu.autresTitre);
+    const formulaire = page.indexOf('id="formulaire"');
     assert.ok(
-      !texte.includes(interdit),
-      `${nom} : formulation interdite rendue, « ${interdit} »`,
-    );
-  }
-  for (const mot of ["200 clients", "cinq agences", "régie", "intérim", "—"]) {
-    assert.ok(
-      !texte.toLowerCase().includes(mot.toLowerCase()),
-      `${nom} : mot proscrit rendu, « ${mot} »`,
+      sortie > -1 && formulaire > sortie,
+      `${nom} : « ${brut.contenu.autresTitre} » doit être le dernier bloc avant le formulaire`,
     );
   }
 
-  // Les quatre sections sous condition ne reçoivent aucune donnée sur AUCUNE
-  // des dix-huit pages : c'est la décision du chantier, et elle se vérifie.
-  for (const titre of ["Comment ça marche", "Trois formules", "Le comparatif", "Le premier mois"]) {
+  const texte = page.replace(/\u00a0/g, " ").replace(/\u2019/g, "'");
+  assert.ok(
+    !texte.includes("—"),
+    `${nom} : tiret cadratin rendu, interdit dans toute copie visible`,
+  );
+
+  /* LES QUATRE SECTIONS SOUS CONDITION NE SE RENDENT QUE SUR ZÉRO ARRÊT, et
+     elles s'y rendent VRAIMENT : c'est le `sc-if value="{{ of.isZero }}"` de la
+     maquette, et le contraire des deux côtés serait un défaut. Le tableau
+     comparatif en fait partie : il était écrit dans le JSON et lu par personne. */
+  const sousCondition = ["Comment ça marche", "Trois formules", "Le comparatif", "Le premier mois"];
+  if (brut.url === "/offres/zero-arret/") {
+    for (const titre of sousCondition) {
+      assert.ok(
+        page.includes(titre),
+        `${nom} : la section « ${titre} » doit se rendre sur Zéro Arrêt`,
+      );
+    }
     assert.ok(
-      !page.includes(titre),
-      `${nom} : la section « ${titre} » ne doit recevoir aucune donnée`,
+      page.includes("Ligne par ligne") && page.includes("Préventif samedi"),
+      `${nom} : le tableau comparatif des formules doit se rendre`,
     );
+  } else {
+    for (const titre of sousCondition) {
+      assert.ok(
+        !page.includes(titre),
+        `${nom} : la maquette ne dessine « ${titre} » que sur Zéro Arrêt`,
+      );
+    }
+  }
+
+  if (!PAGES_OFFERS.has(nom)) continue;
+  avecOffers += 1;
+
+  /* ---- CE QUE LES SIX PAGES À CLÉ `OFFERS` DOIVENT PORTER ---------------
+     Le détail du texte est contrôlé par `scripts/verifie-mots-offre.mjs`, qui
+     résout les 198 chaînes. Ici on vérifie la STRUCTURE : aucun des quatre
+     champs ne doit pouvoir redevenir vide sans que ça se voie. */
+  const contenu = brut.contenu;
+  assert.ok(contenu.titreA && contenu.titreB, `${nom} : le H1 en deux encres manque`);
+  assert.equal(contenu.chiffres?.length, 4, `${nom} : « En bref » doit porter quatre chiffres`);
+  for (const chiffre of contenu.chiffres ?? []) {
+    assert.ok(chiffre.detail, `${nom} : la légende du chiffre « ${chiffre.valeur} » manque`);
+  }
+  assert.ok(contenu.incTitre && contenu.incChapeau, `${nom} : l'en-tête de « Ce qui est inclus » manque`);
+  assert.equal(contenu.porte?.length, 5, `${nom} : « Ce que migen© porte » doit porter cinq lignes`);
+  assert.equal(contenu.resteChezVous?.length, 4, `${nom} : « Ce qui reste chez vous » doit porter quatre lignes`);
+  assert.equal(contenu.realisations?.cartes.length, 3, `${nom} : trois cartes de réalisation attendues`);
+  assert.ok(contenu.selectionCta, `${nom} : le lien d'en-tête de « Notre sélection » manque`);
+  assert.ok(contenu.autresChapeau, `${nom} : le chapeau de « Un autre besoin ? » manque`);
+  assert.ok(contenu.faqBouton, `${nom} : le bouton « Poser ma question » manque`);
+
+  // Le H1 en deux encres, et la seconde partie en var(--ink4) comme la maquette.
+  assert.ok(
+    page.includes(contenu.titreA ?? "") &&
+      page.includes('style="color:var(--ink4)"'),
+    `${nom} : le H1 doit se rendre en deux encres`,
+  );
+  // Les deux panneaux face à face, et la barrette dessous.
+  for (const attendu of [
+    contenu.incTitre ?? "",
+    "Ce que migen© porte",
+    "Ce qui reste chez vous",
+    contenu.incBande ?? "",
+  ]) {
+    assert.ok(page.includes(attendu), `${nom} : « ${attendu} » n'est pas rendu`);
   }
 }
+
+assert.equal(avecOffers, PAGES_OFFERS.size, "les six pages à clé OFFERS doivent toutes être contrôlées");
 
 console.log(`  ${fichiers.length} pages réelles rendues et vérifiées.`);
 
 console.log("gabarit offre : toutes les vérifications passent.");
 console.log(
   `  ${MAQUETTE.split("\n").length} lignes de maquette relues, ` +
-    `${INTERDITS_DE_LA_MAQUETTE.length} interdits de copie vérifiés présents dans la maquette et absents du rendu.`,
+    "aucun tiret cadratin rendu. Le TEXTE des six offres est contrôlé par " +
+    "scripts/verifie-mots-offre.mjs, qui résout les 198 chaînes d'OFFERS.",
 );

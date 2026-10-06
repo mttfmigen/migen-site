@@ -2,8 +2,58 @@
   "url": "/offres/bureau-etudes/",
   "contenu": {
     "gabarit": "offre",
-    "mention": ", du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 pour les urgences en cours de réalisation",
-    "chapeau": "Nos ingénieurs conçoivent aux côtés de techniciens qui réparent des machines toute l'année. Cadrage, CAO, calculs, dossier de fabrication, puis montage et mise en service par les mêmes équipes.",
+    "reperes": [
+      {
+        "valeur": "5",
+        "libelle": "agences en France"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "clients industriels"
+      }
+    ],
+    "autresSurtitre": "Un autre besoin ?",
+    "autresTitre": "Chaque situation a son offre.",
+    "autres": [
+      {
+        "phrase": "« J’ai besoin d’un renfort maintenance sur mon site. »",
+        "libelle": "Résidence",
+        "href": "/offres/residence/"
+      },
+      {
+        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
+        "libelle": "Full service",
+        "href": "/offres/maintenance-externalisee/"
+      },
+      {
+        "phrase": "« Je paie mes pannes à l’heure et je ne maîtrise pas mon budget. »",
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      },
+      {
+        "phrase": "« J’ai une fenêtre d’arrêt et pas le droit de la dépasser. »",
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/"
+      },
+      {
+        "phrase": "« Je ne sais pas encore ce qu’il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
+      }
+    ],
+    "faqBouton": {
+      "libelle": "Poser ma question",
+      "href": "#formulaire"
+    },
+    "pastille": "Schémas, études, mise en conformité",
+    "mention": "On dessine ce qu’on saura maintenir",
+    "titreA": "migen© Bureau d’études,",
+    "titreB": "ce qu’on dessine, on sait le maintenir.",
+    "chapeau": "Reprise de schémas, études de modification, mise en conformité machine, dossiers techniques : conçus par des ingénieurs qui travaillent avec nos équipes de maintenance.",
     "actions": [
       {
         "libelle": "Les cinq offres",
@@ -11,27 +61,87 @@
       }
     ],
     "formulaireHeroTitre": "Décrire mon besoin",
-    "formulaireHeroMention": "Rappel dans l'heure",
+    "formulaireHeroMention": "Rappel dans l’heure",
     "brefSurtitre": "En bref",
+    "brefTitre": "Le cadre, en quatre chiffres.",
+    "brefChapeau": "Une étude utile est une étude que le technicien peut lire devant la machine, trois ans plus tard.",
     "chiffres": [
       {
-        "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, ingénieurs et projeteurs compris."
+        "valeur": "3 sem.",
+        "libelle": "Délai d’étude type",
+        "detail": "Pour une modification ou une mise en conformité."
       },
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels, dont plus de 80 réguliers."
+        "valeur": "100 %",
+        "libelle": "Schémas à jour",
+        "detail": "Livrés au format de votre GMAO et en PDF."
       },
       {
-        "valeur": "10",
-        "libelle": "hubs de techniciens, Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon, Nantes."
+        "valeur": "CE",
+        "libelle": "Conformité machine",
+        "detail": "Analyse de risques et dossier technique."
+      },
+      {
+        "valeur": "1",
+        "libelle": "Même équipe",
+        "detail": "Bureau d’études et maintenance travaillent ensemble."
       }
     ],
-    "brefBande": "Besoin de savoir ce que coûterait votre étude avant d'aller plus loin ?",
+    "brefBande": "Une étude à lancer ? Premier cadrage sous 48 h.",
     "brefBouton": {
-      "libelle": "Faire chiffrer mon étude",
-      "href": "/contact/"
+      "libelle": "Confier une étude",
+      "href": "#formulaire"
     },
+    "incTitre": "Vous posez le besoin. Nous livrons le dossier.",
+    "incChapeau": "L’étude, les plans et le dossier de conformité sont chez nous ; la validation et les arbitrages restent chez vous.",
+    "porte": [
+      "Le relevé d’existant et la reprise des schémas",
+      "L’étude de modification et le chiffrage des travaux",
+      "L’analyse de risques et le dossier de conformité",
+      "Les plans, nomenclatures et notices",
+      "Le passage de relais aux équipes de maintenance"
+    ],
+    "resteChezVous": [
+      "L’expression du besoin et le cahier des charges",
+      "Les arbitrages techniques et budgétaires",
+      "La validation des plans avant réalisation",
+      "La réception du dossier"
+    ],
+    "incBande": "Vous voulez lire le contrat type avant d’en parler ?",
+    "incBouton": {
+      "libelle": "Demander le contrat type",
+      "href": "#formulaire"
+    },
+    "selectionCta": "Confier une étude",
+    "realisations": {
+      "surtitre": "Nos dernières réalisations",
+      "titre": "Ce que nous avons fait, chez qui, et comment",
+      "lien": {
+        "libelle": "Voir toutes nos réalisations →",
+        "href": "/realisations/"
+      },
+      "cartes": [
+        {
+          "surtitre": "SUEZ IWT · migen© Résidence",
+          "titre": "Remise en état complète d'un site industriel",
+          "date": "Février 2026"
+        },
+        {
+          "surtitre": "DANONE · migen© Résidence",
+          "titre": "Maintenance en continu des lignes de production",
+          "date": "Février 2026",
+          "image": "/assets/web/team-electric.jpg"
+        },
+        {
+          "surtitre": "JTEKT · migen© Résidence",
+          "titre": "Sécuriser la maintenance de ses installations",
+          "date": "Janvier 2026",
+          "image": "/assets/web/team-grind-close.jpg"
+        }
+      ]
+    },
+    "autresChapeau": "Si Bureau d’études n’est pas la bonne réponse, l’une de celles-ci l’est probablement.",
+    "formulaireTitre": "Décrivez votre projet. On revient avec un cadrage.",
     "sections": [
       {
         "type": "probleme",
@@ -153,6 +263,13 @@
         ]
       },
       {
+        "type": "cta",
+        "question": "Besoin de savoir ce que coûterait votre étude avant d'aller plus loin ?",
+        "bouton": "Faire chiffrer mon étude",
+        "href": "/contact/",
+        "rappel": "04 78 33 72 05, rappel dans l'heure"
+      },
+      {
         "type": "preuves",
         "preuves": [
           {
@@ -173,34 +290,23 @@
         "type": "objections",
         "questions": [
           {
-            "question": "Combien coûte une étude ?",
-            "reponse": "Chaque mission est chiffrée sur devis, sur la base d'un périmètre écrit. Pas d'heures de dessin vendues au kilomètre. Un petit projet bien cadré reste un petit budget."
+            "question": "Pouvez-vous reprendre des schémas très anciens ?",
+            "reponse": "Oui. Nous relevons l’installation réelle, pas les plans d’origine, puis nous livrons des schémas à jour au format de votre GMAO et en PDF."
           },
           {
-            "question": "Pouvez-vous reprendre une étude commencée ailleurs ?",
-            "reponse": "Oui. Nous repartons de vos fichiers et de vos documents, nous vérifions les hypothèses de dimensionnement, et nous chiffrons la suite. Vos plans restent vos plans."
+            "question": "Réalisez-vous les travaux après l’étude ?",
+            "reponse": "Si vous le souhaitez : nos équipes de maintenance et de chantier peuvent exécuter ce que le bureau d’études a conçu. Vous pouvez aussi confier la réalisation à un autre prestataire."
           },
           {
-            "question": "Travaillez-vous avec notre logiciel de CAO interne ?",
-            "reponse": "Oui. Nous utilisons les standards du marché, Solid Edge, CATIA, Ansys, AutoCAD, et nous livrons des formats exploitables par vos équipes sous SolidWorks, Inventor ou Creo, avec vos règles de codification."
+            "question": "Faites-vous les mises en conformité machine ?",
+            "reponse": "Oui : analyse de risques, mesures correctives, dossier technique. La déclaration finale reste signée par l’exploitant."
           },
           {
-            "question": "Qui conçoit réellement mon projet ?",
-            "reponse": "Des ingénieurs et projeteurs salariés, évalués en entretien technique et comportemental : 10 % des candidats retenus, expérience de l'industrie exigée. Nos études ne sortent pas de bureaux où l'on n'a jamais serré un boulon."
-          },
-          {
-            "question": "Pouvez-vous rédiger seulement le cahier des charges ?",
-            "reponse": "Oui, c'est une mission à part entière : définition du besoin, rédaction, consultation des fournisseurs, analyse des offres. Vous restez libre de confier la suite à qui vous voulez, y compris à un concurrent."
-          },
-          {
-            "question": "Vos intervenants peuvent-ils travailler en sécurité sur notre site ?",
-            "reponse": "Oui. Le montage et la mise en service passent par un plan de prévention établi avec vos équipes. Nous y joignons les attestations de notre démarche MASE et de notre évaluation EcoVadis. Vous savez qui entre chez vous."
-          },
-          {
-            "question": "Intervenez-vous partout en France ?",
-            "reponse": "Oui. Quatre agences, Lyon (siège, à Limonest et Écully), Montréal, Dubaï et Madrid, et dix hubs de techniciens à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Ailleurs, nos équipes se déplacent : le montage et la mise en service se font sur votre site, où qu'il soit. Nous accompagnons aussi hors de France les clients qui y exploitent des sites."
+            "question": "Quels logiciels utilisez-vous ?",
+            "reponse": "Nous livrons dans le format de votre choix : AutoCAD, SEE Electrical, EPLAN, ou PDF annoté pour les installations sans outil."
           }
-        ]
+        ],
+        "titre": "Ce qu’on nous demande avant de signer."
       },
       {
         "type": "ctaFinal",
@@ -208,35 +314,6 @@
         "bouton": "Faire chiffrer mon étude",
         "href": "/contact/",
         "rappel": "04 78 33 72 05"
-      }
-    ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
-      {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
-      },
-      {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
-      },
-      {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
-      },
-      {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
-      },
-      {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
       }
     ]
   }

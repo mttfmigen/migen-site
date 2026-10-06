@@ -2,8 +2,63 @@
   "url": "/offres/construction/",
   "contenu": {
     "gabarit": "offre",
-    "mention": ", du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 pour les urgences en cours de chantier",
-    "chapeau": "Une ingénierie de montage qui prépare, des équipes complètes de techniciens salariés qui exécutent, un ingénieur chargé de projet responsable du planning et du résultat.",
+    "reperes": [
+      {
+        "valeur": "5",
+        "libelle": "agences en France"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "clients industriels"
+      }
+    ],
+    "autresSurtitre": "Un autre besoin ?",
+    "autresTitre": "Chaque situation a son offre.",
+    "autres": [
+      {
+        "phrase": "« J’ai besoin d’un renfort maintenance sur mon site. »",
+        "libelle": "Résidence",
+        "href": "/offres/residence/"
+      },
+      {
+        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
+        "libelle": "Full service",
+        "href": "/offres/maintenance-externalisee/"
+      },
+      {
+        "phrase": "« Je paie mes pannes à l’heure et je ne maîtrise pas mon budget. »",
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      },
+      {
+        "phrase": "« J’ai une fenêtre d’arrêt et pas le droit de la dépasser. »",
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/"
+      },
+      {
+        "phrase": "« Mon installation n’est plus conforme et je n’ai plus les schémas. »",
+        "libelle": "Bureau d’études",
+        "href": "/offres/bureau-etudes/"
+      },
+      {
+        "phrase": "« Je ne sais pas encore ce qu’il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
+      }
+    ],
+    "faqBouton": {
+      "libelle": "Poser ma question",
+      "href": "#formulaire"
+    },
+    "pastille": "Monter une usine ou un atelier",
+    "mention": "Du sol à la mise en service",
+    "titreA": "migen© Construction,",
+    "titreB": "votre usine montée, puis maintenue.",
+    "chapeau": "Implantation, levage, assemblage, raccordements, essais et mise en service : nous montons l’usine ou l’atelier, puis nous pouvons le maintenir.",
     "actions": [
       {
         "libelle": "Les cinq offres",
@@ -11,32 +66,87 @@
       }
     ],
     "formulaireHeroTitre": "Décrire mon besoin",
-    "formulaireHeroMention": "Rappel dans l'heure",
+    "formulaireHeroMention": "Rappel dans l’heure",
     "brefSurtitre": "En bref",
     "brefTitre": "Le cadre, en quatre chiffres.",
+    "brefChapeau": "Un seul prestataire pour les lots de montage, au lieu de dix à coordonner.",
     "chiffres": [
       {
-        "valeur": "+ 100",
-        "libelle": "collaborateurs, monteurs, mécaniciens, électriciens, chaudronniers."
+        "valeur": "1",
+        "libelle": "Interlocuteur unique",
+        "detail": "Du lot mécanique à la mise en service."
       },
       {
-        "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental."
+        "valeur": "6",
+        "libelle": "Corps de métier",
+        "detail": "Mécanique, électricité, tuyauterie, soudure, automatisme, levage."
       },
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels, dont plus de 80 réguliers."
+        "valeur": "J−0",
+        "libelle": "Mise en service",
+        "detail": "Essais et réception à la date du planning."
       },
       {
-        "valeur": "10",
-        "libelle": "hubs de techniciens, Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon, Nantes."
+        "valeur": "12 mois",
+        "libelle": "Suivi possible",
+        "detail": "Maintenance de la première année par la même équipe."
       }
     ],
-    "brefBande": "Besoin d'un planning de montage construit avant de vous engager ?",
+    "brefBande": "Un projet d’usine ? Premier rendez-vous sous une semaine.",
     "brefBouton": {
-      "libelle": "Faire chiffrer mon montage",
-      "href": "/contact/"
+      "libelle": "Monter mon usine",
+      "href": "#formulaire"
     },
+    "incTitre": "Vous portez le projet. Nous le montons.",
+    "incChapeau": "Les lots de montage et de mise en service sont chez nous ; la maîtrise d’ouvrage et la réception restent chez vous.",
+    "porte": [
+      "L’implantation et le traçage au sol",
+      "Le levage, l’assemblage et l’alignement des équipements",
+      "Les raccordements électriques, fluides et automatismes",
+      "Les essais, la mise en service et la formation",
+      "Le dossier des ouvrages exécutés"
+    ],
+    "resteChezVous": [
+      "La maîtrise d’ouvrage et le planning directeur",
+      "Le choix des équipements et des fournisseurs",
+      "Le plan de prévention et la coordination SPS",
+      "La réception et la mise en production"
+    ],
+    "incBande": "Vous voulez lire le contrat type avant d’en parler ?",
+    "incBouton": {
+      "libelle": "Demander le contrat type",
+      "href": "#formulaire"
+    },
+    "selectionCta": "Monter mon usine",
+    "realisations": {
+      "surtitre": "Nos dernières réalisations",
+      "titre": "Ce que nous avons fait, chez qui, et comment",
+      "lien": {
+        "libelle": "Voir toutes nos réalisations →",
+        "href": "/realisations/"
+      },
+      "cartes": [
+        {
+          "surtitre": "SUEZ IWT · migen© Résidence",
+          "titre": "Remise en état complète d'un site industriel",
+          "date": "Février 2026"
+        },
+        {
+          "surtitre": "DANONE · migen© Résidence",
+          "titre": "Maintenance en continu des lignes de production",
+          "date": "Février 2026",
+          "image": "/assets/web/team-electric.jpg"
+        },
+        {
+          "surtitre": "JTEKT · migen© Résidence",
+          "titre": "Sécuriser la maintenance de ses installations",
+          "date": "Janvier 2026",
+          "image": "/assets/web/team-grind-close.jpg"
+        }
+      ]
+    },
+    "autresChapeau": "Si Construction n’est pas la bonne réponse, l’une de celles-ci l’est probablement.",
+    "formulaireTitre": "Décrivez votre projet d’usine. On revient avec un planning.",
     "sections": [
       {
         "type": "probleme",
@@ -172,6 +282,13 @@
         ]
       },
       {
+        "type": "cta",
+        "question": "Besoin d'un planning de montage construit avant de vous engager ?",
+        "bouton": "Faire chiffrer mon montage",
+        "href": "/contact/",
+        "rappel": "04 78 33 72 05, rappel dans l'heure"
+      },
+      {
         "type": "preuves",
         "preuves": [
           {
@@ -198,30 +315,23 @@
         "type": "objections",
         "questions": [
           {
-            "question": "Combien coûte un montage industriel ?",
-            "reponse": "Le devis est établi après analyse de vos documents et, si nécessaire, une visite de site. Périmètre, méthode, planning et conditions y figurent, poste par poste. La qualité d'un devis de montage annonce la qualité du montage."
+            "question": "Quels lots prenez-vous en charge ?",
+            "reponse": "Implantation, levage, assemblage mécanique, tuyauterie, raccordements électriques et automatismes, essais et mise en service. Le génie civil et le bâtiment restent coordonnés, pas réalisés."
           },
           {
-            "question": "Pouvez-vous reprendre un chantier commencé par un autre prestataire ?",
-            "reponse": "Oui. Nous établissons un état des lieux de ce qui est monté, raccordé et contrôlé, puis nous chiffrons le reste à faire. Le dossier de fin d'opération couvre alors l'ensemble."
+            "question": "Travaillez-vous avec les fournisseurs d’équipements ?",
+            "reponse": "Oui. Nous montons les équipements selon leurs notices et coordonnons leurs techniciens pour la mise en service."
           },
           {
-            "question": "Montez-vous des machines de toutes marques ?",
-            "reponse": "Oui, machines de série comme machines spéciales, en lien avec les notices du fabricant et, si besoin, son assistance. Nous ne vendons aucun équipement : aucune préférence de marque ni de fournisseur."
+            "question": "Pouvez-vous assurer la maintenance ensuite ?",
+            "reponse": "C’est l’intérêt : l’équipe qui a monté l’atelier le connaît. Un contrat Résidence ou Zéro arrêt peut prendre le relais dès la réception."
           },
           {
-            "question": "Qui intervient sur mon site ?",
-            "reponse": "Des équipes complètes de techniciens salariés Migen, pas des renforts isolés à encadrer par vos soins. Chacun est évalué à l'entrée en entretien technique et comportemental, 10 % des candidats retenus, puis passé par votre accueil sécurité."
-          },
-          {
-            "question": "Intervenez-vous pendant un arrêt de production ?",
-            "reponse": "Oui, c'est fréquent. Beaucoup de montages et d'intégrations se réalisent pendant un arrêt technique planifié, nuits et week-ends compris. L'accès aux zones et la coactivité sont alors gérés avec une rigueur renforcée."
-          },
-          {
-            "question": "Intervenez-vous partout en France ?",
-            "reponse": "Oui. Nous avons quatre agences, Lyon (siège, Limonest et Écully), Montréal, Dubaï et Madrid, et dix hubs de techniciens, à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Hors de ces villes, nos techniciens sont mobiles et se déplacent sur votre site. Les projets de construction et d'installation d'usines sont portés par Orthus, marque sœur créée en 2024 par le groupe, qui partage notre siège de Limonest."
+            "question": "Qui porte la coordination SPS ?",
+            "reponse": "Le coordonnateur SPS reste désigné par le maître d’ouvrage. Nous intégrons ses consignes et gérons la coactivité de nos équipes."
           }
-        ]
+        ],
+        "titre": "Ce qu’on nous demande avant de signer."
       },
       {
         "type": "ctaFinal",
@@ -229,40 +339,6 @@
         "bouton": "Faire chiffrer mon montage",
         "href": "/contact/",
         "rappel": "04 78 33 72 05"
-      }
-    ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
-      {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
-      },
-      {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
-      },
-      {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
-      },
-      {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
-      },
-      {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
-      },
-      {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
       }
     ]
   }

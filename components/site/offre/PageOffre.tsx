@@ -7,12 +7,15 @@ import {
   VUE_AVANT,
   VUE_AVEC,
 } from "@/components/site/accueil/avant-apres-donnees";
+import DernieresRealisations from "@/components/site/accueil/DernieresRealisations";
 import FormulaireBasDePage from "@/components/site/accueil/FormulaireBasDePage";
 import MethodeQuatreEtapes from "@/components/site/accueil/MethodeQuatreEtapes";
 import { ETAPES_METHODE } from "@/components/site/accueil/methode-etapes-donnees";
 import ProcessSelection from "@/components/site/accueil/ProcessSelection";
 import Bloc from "@/components/site/blocs/Bloc";
+import Objections from "@/components/site/blocs/Objections";
 import {
+  ANCRE_FORMULAIRE,
   CHAPEAU,
   colonnes,
   ENTETE,
@@ -30,11 +33,10 @@ import {
   Formules,
   PremierMois,
 } from "./BlocsZeroArret";
-import { cibleSure, liensSurs } from "./LiensOffre";
+import BandeAppel from "./BandeAppel";
+import CeQuiEstInclus from "./CeQuiEstInclus";
+import { cibleSure, liensSurs, lienSur } from "./LiensOffre";
 import {
-  BANDE,
-  BANDE_BOUTON,
-  BANDE_TEXTE,
   BOUTON_HERO,
   CARTE_AUTRE,
   CARTE_AUTRE_LIBELLE,
@@ -66,42 +68,68 @@ import {
 import styles from "./PageOffre.module.css";
 
 /**
- * Gabarit OFFRE, porté de la maquette `maquette/accueil-rendu.html`,
- * lignes 4706 à 5198 (`sc-if value="{{ isOfferPage }}"`).
+ * Gabarit OFFRE, porté de la maquette `maquette/site-final.html`,
+ * lignes 4030 à 4524 (`sc-if value="{{ isOfferPage }}"`).
  *
- * LES QUATORZE SECTIONS DE LA MAQUETTE, ET CE QUI LES ALIMENTE. La maquette
- * dessine, le corpus rédigé écrit. Rien ne s'invente : une section dont le
- * corpus ne fournit pas la matière n'est pas rendue.
+ * ────────────────────────────────────────────────────────────────────────────
+ * LES TREIZE SECTIONS DE LA MAQUETTE, DANS SON ORDRE, AVEC SON TEXTE.
+ * ────────────────────────────────────────────────────────────────────────────
  *
- *  1. Le héros à deux colonnes          ← `heros` du corpus, aplati dans les
- *                                          champs du gabarit par l'import
- *  2. « En bref », quatre chiffres      ← `chiffres`
- *  3. « Comment ça marche »             ← VIDE, voir `BlocsZeroArret.tsx`
- *  4. « Les formules »                  ← VIDE, voir `BlocsZeroArret.tsx`
- *  5. « Le comparatif »                 ← VIDE, voir `BlocsZeroArret.tsx`
- *  6. « Le premier mois »               ← VIDE, voir `BlocsZeroArret.tsx`
- *  7. « Le jour et la nuit »            ← `AvantApresBascule` et ses données,
- *                                          déjà portées, communes au site
- *  8. « Ce qui est inclus »             ← `offre`, rendu par le bloc `Offre`
+ * Décision de Mehdi du 05/10 : « tu respectes AU MOT POUR MOT la maquette ». Le
+ * texte vient d'`OFFERS` (l. 7748 de la maquette, 198 chaînes extraites dans
+ * `maquette/offres-maquette.json`) et du gabarit lui-même
+ * (`maquette/blocs-offre-maquette.json`, `maquette/faq-maquette.json`). Le
+ * corpus rédigé ne sert plus qu'à ce que la maquette ne définit pas.
+ *
+ *  1. Le héros à deux colonnes          ← `of.pill`, `of.small`, `of.h1a` et
+ *                                          `of.h1b`, `of.lead`
+ *  2. « En bref », quatre chiffres      ← `of.bref`, `of.s00` à `of.s32`,
+ *                                          `of.strip`, `of.cta`
+ *  3. « Comment ça marche »             ← Zéro Arrêt seulement, `BlocsZeroArret`
+ *  4. « Les formules » et le tableau    ← Zéro Arrêt seulement, `BlocsZeroArret`
+ *  5. « Le comparatif »                 ← Zéro Arrêt seulement, `BlocsZeroArret`
+ *  6. « Le premier mois »               ← Zéro Arrêt seulement, `BlocsZeroArret`
+ *  7. « Le jour et la nuit »            ← `AvantApresBascule`, commun au site
+ *  8. « Ce qui est inclus »             ← `of.incT`, `of.incP`, `of.us0` à
+ *                                          `of.us4`, `of.you0` à `of.you3`,
+ *                                          rendu par `CeQuiEstInclus`
  *  9. « Notre méthode »                 ← `MethodeQuatreEtapes`, déjà porté
- * 10. « Notre sélection »               ← `ProcessSelection`, déjà porté
- * 11. « Nos dernières réalisations »    ← `preuves`, rendu par le bloc `Preuves`
- * 12. « Questions fréquentes »          ← `objections`, bloc `Objections`
- * 13. « Un autre besoin ? »             ← `autres`, puis le maillage du cocon
- * 14. Le formulaire de bas de page      ← `ctaFinal`
+ * 10. « Notre sélection »               ← `ProcessSelection`, son lien d'en-tête
+ *                                          lié à `of.cta`
+ * 11. « Nos dernières réalisations »    ← `DernieresRealisations`, le bloc de
+ *                                          l'accueil, trois cartes à photo. À
+ *                                          DÉFAUT, la section `preuves` du
+ *                                          corpus prend cette place : les deux
+ *                                          portent le même H2, jamais les deux
+ * 12. « Questions fréquentes »          ← `RES_FAQ` / `FAQ_BY` de la maquette,
+ *                                          bloc `Objections`
+ *     Le texte rédigé du corpus         ← `probleme`, `offre`, `deroule`,
+ *                                          `garanties`, `cta`, en bloc
+ * 13. « Un autre besoin ? »             ← les six tuiles de la maquette
+ *     Le formulaire de bas de page      ← `of.form`
  *
- * LE TEXTE DU CORPUS QUE LA MAQUETTE NE MONTRE PAS N'EST PAS SUPPRIMÉ. Quatre
- * sections du corpus (`probleme`, `deroule`, `garanties`, `cta`) sont du texte
- * payé, et la substance du référencement de ces pages. Elles se rendent SOUS la
- * section de la maquette à laquelle elles se rattachent, dans les motifs de
- * section de la maquette elle-même (mêmes surtitres en capitales, mêmes H2,
- * mêmes cartes en verre), par les blocs de `components/site/blocs/` :
+ * ────────────────────────────────────────────────────────────────────────────
+ * LE TEXTE DU CORPUS QUE LA MAQUETTE NE MONTRE PAS SE REND ENTRE LA 12 ET LA 13.
+ * ────────────────────────────────────────────────────────────────────────────
  *
- *   · `probleme` juste sous « Le jour et la nuit » : la bascule montre l'avant,
- *     le panneau anthracite du problème le nomme.
- *   · `deroule`, `garanties` et `cta` juste sous « Ce qui est inclus » : le
- *     visiteur vient de lire la prestation, il lit ensuite comment elle se
- *     déroule, ce qui est garanti, et il trouve l'appel.
+ * CE QUI A CHANGÉ LE 05/10, ET POURQUOI. Le portage précédent INTERCALAIT quatre
+ * sections du corpus (`probleme`, `deroule`, `garanties`, `cta`) entre les
+ * sections de la maquette. Résultat mesuré sur `/offres/residence/` : le H2 « Ce
+ * que nous garantissons. » se lisait à l'emplacement où la maquette écrit « Vous
+ * gardez la main. Nous portons le reste. », et c'est précisément ce que Mehdi
+ * cite comme la preuve que le site ne ressemblait pas à sa maquette.
+ *
+ * Les treize sections se suivent donc maintenant dans l'ordre exact de la
+ * maquette, et les sections rédigées du corpus se rendent EN BLOC entre la 12 et
+ * la 13. Rien n'est supprimé : c'est du texte payé, et la substance du
+ * référencement de ces pages. Seule `objections` reste à sa place, la maquette
+ * lui donnant un emplacement.
+ *
+ * POURQUOI PAS APRÈS LA 13, comme au premier passage du 05/10 : « Un autre
+ * besoin ? / Chaque situation a son offre. » est la SORTIE vers les autres
+ * offres. Rendue avant six sections de corpus puis le formulaire, elle invitait
+ * le lecteur à partir avant d'avoir lu « Ce que nous garantissons. » et avant
+ * d'avoir atteint le formulaire. La maquette en fait son avant-dernier bloc.
  *
  * Composant SERVEUR. Les trois blocs d'accueil qu'il monte sont des composants
  * client (bascule, étapes, sélection) : ils portent leur propre `"use client"`.
@@ -171,18 +199,16 @@ export default function PageOffre({
   // en verre là, et un panneau vide vaudrait aveu.
   const heroFormulaire = !!contenu.formulaireHeroTitre;
 
-  const bandeBref = contenu.brefBande;
-  const boutonBref = contenu.brefBouton;
-
   return (
     <div className="mg-site">
       <main style={{ paddingTop: 96 }}>
+        {/*
+          La gouttière de la maquette, et pas trois valeurs réécrites à la main :
+          `LARGEUR` les porte déjà, et c'est elle que `.mg-pad` resserre à 20 px
+          sur mobile. La version recopiée ici perdait ce repli.
+        */}
         {filAriane ? (
-          <section
-            style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 40px 0" }}
-          >
-            {filAriane}
-          </section>
+          <section style={{ ...LARGEUR, paddingTop: 24 }}>{filAriane}</section>
         ) : null}
 
         {/* ----------------------------------------- 1. le héros (l. 4708) */}
@@ -214,7 +240,30 @@ export default function PageOffre({
                 </div>
               ) : null}
 
-              <h1 style={TITRE1}>{titre}</h1>
+              {/*
+                LE H1 EN DEUX ENCRES, comme la maquette le dessine (l. 4042) :
+                `of.h1a` en `var(--ink)`, puis `of.h1b` dans un `<span>` en
+                `var(--ink4)`. Le site rendait `pages.titre_h1` d'une seule
+                pièce, et ce n'était pas le texte de la maquette : « Contrat de
+                maintenance » là où elle écrit « migen© Zéro Arrêt, la
+                maintenance qui ne touche jamais à votre production. ».
+
+                `titre` reste le REPLI des douze pages de `/offres/` sans clé
+                dans `OFFERS`. L'arbitrage SEO qui s'y joue (le H1 de la base
+                porte le mot clé de la page, celui de la maquette non) est
+                inscrit dans `docs/RESERVES-CONTENU.md`.
+              */}
+              <h1 style={TITRE1}>
+                {contenu.titreA ?? titre}
+                {contenu.titreB ? (
+                  <>
+                    {" "}
+                    <span style={{ color: "var(--ink4)" }}>
+                      {contenu.titreB}
+                    </span>
+                  </>
+                ) : null}
+              </h1>
 
               {contenu.chapeau ? (
                 <p style={CHAPEAU_HERO}>
@@ -239,11 +288,23 @@ export default function PageOffre({
               ) : null}
 
               {/*
-                La bande de repères de la maquette (l. 4723). Elle reste vide :
-                la maquette y écrit « 5 agences en France » et « +200 clients
-                industriels », deux chiffres que le contrat interdit. Les
-                chiffres justes du corpus sont la bande « En bref » juste
-                dessous. Voir `types/offre.ts`, champ `reperes`.
+                LA BANDE DE REPÈRES DE LA MAQUETTE (l. 4723), ET ELLE EST RENDUE.
+
+                Le commentaire qui était ici affirmait l'inverse : « elle reste
+                vide », « deux chiffres que le contrat interdit ». C'était faux, et
+                mesurable comme tel : les dix-huit gabarits de
+                `supabase/import/gabarits-maquette/` écrivent TROIS repères, et
+                `/offres/residence/` sert « 5 · agences en France », « 10 % · des
+                candidats retenus » et « +200 · clients industriels », filet
+                `height:34px` compris. Un commentaire qui dit qu'un garde-fou a
+                tenu alors qu'il n'a pas tenu est pire que pas de commentaire.
+
+                Ces deux chiffres SONT ceux de la maquette, portés mot pour mot
+                sur la décision de Mehdi du 05/10, et ils contredisent les faits
+                autorisés (quatre agences, dont aucune autre en France, plus de
+                120 clients) : voir `docs/MAQUETTE-CONTRE-CONTRAT.md` et la
+                réserve 5.3 de `docs/RESERVES-CONTENU.md`, à trancher avant que
+                migen.fr pointe sur ce déploiement.
               */}
               {reperes.length > 0 ? (
                 <div style={HERO_BANDE_REPERES}>
@@ -332,23 +393,11 @@ export default function PageOffre({
                   ))}
                 </div>
 
-                {bandeBref ? (
-                  <div style={BANDE}>
-                    <span style={BANDE_TEXTE}>
-                      <TexteRiche texte={bandeBref} />
-                    </span>
-                    {boutonBref?.libelle &&
-                    boutonBref.href &&
-                    cibleSure(boutonBref.href) ? (
-                      <a
-                        href={boutonBref.href}
-                        className={styles.boutonPrincipal}
-                        style={BANDE_BOUTON}
-                      >
-                        {boutonBref.libelle}
-                      </a>
-                    ) : null}
-                  </div>
+                {contenu.brefBande ? (
+                  <BandeAppel
+                    texte={contenu.brefBande}
+                    bouton={contenu.brefBouton}
+                  />
                 ) : null}
               </div>
             </div>
@@ -366,65 +415,125 @@ export default function PageOffre({
 
         <AvantApresBascule avant={VUE_AVANT} avec={VUE_AVEC} />
 
-        {/* Sous la bascule : le problème nommé, texte du corpus. */}
-        {probleme ? <Bloc section={probleme} /> : null}
-
-        {/* --------------------------- 8. « Ce qui est inclus » (l. 4953) */}
+        {/* --------------------------- 8. « Ce qui est inclus » (l. 4277) */}
 
         {/*
-          LE SURTITRE DE LA SECTION, et pourquoi il est ici plutôt que dans le
-          bloc. `blocs/Offre.tsx` ne rend son en-tête que si le corpus fournit
-          un titre ou une intro à la section. Aucune des dix-huit pages n'en
-          a : la section la plus commerciale de la maquette sortait donc sans
-          son étiquette, un tableau nu posé après le panneau du problème.
+          LA SECTION QUE LE SITE NE RENDAIT PAS DU TOUT. `CeQuiEstInclus`
+          existait, et n'était importé nulle part : le gabarit montait à sa place
+          le tableau prestation / bénéfice de `blocs/Offre.tsx`, qui est un autre
+          dessin et un autre texte. Les neuf lignes `of.us0` à `of.you3`, le H2
+          `of.incT` (« Vous gardez la main. Nous portons le reste. »), le chapeau
+          `of.incP` et la barrette « Vous voulez lire le contrat type avant d'en
+          parler ? » n'étaient servis sur aucune page.
 
-          On ne corrige pas `blocs/Offre.tsx` : il sert aussi la centaine de
-          pages du gabarit de vente, et le changer de l'extérieur de ce
-          chantier serait un effet de bord. Le surtitre est donc posé ici, et
-          SEULEMENT quand le bloc ne va pas le poser lui-même : jamais deux
-          en-têtes. Le H2 de la maquette (`{{ of.incT }}`) reste absent, le
-          corpus ne l'écrivant nulle part.
-
-          LA MARGE NÉGATIVE N'EST PAS UNE COQUETTERIE : le bloc qui suit ouvre
-          sur son propre `var(--sec)`, et sans elle l'étiquette flotterait 120px
-          au-dessus du tableau qu'elle nomme. On la ramène aux 34px que la
-          maquette met entre un en-tête de section et son contenu
-          (`ENTETE.marginBottom`). À retirer le jour où `blocs/Offre.tsx` rendra
-          son surtitre sans condition.
+          Le tableau du corpus n'est pas perdu : il se rend entre la 12 et la 13,
+          avec les autres sections rédigées, sous le surtitre « Le périmètre » que
+          la maquette lui donne (l. 1881).
         */}
-        {offre && !offre.titre && !offre.intro ? (
-          <section
-            style={{ ...SECTION, marginBottom: "calc(34px - var(--sec))" }}
-          >
-            <div style={LARGEUR}>
-              <div style={{ ...SURTITRE_OFFRE, marginBottom: 0 }}>
-                Ce qui est inclus
-              </div>
-            </div>
-          </section>
-        ) : null}
-        {offre ? <Bloc section={offre} /> : null}
-
-        {/* Sous la prestation : le déroulé, les engagements, l'appel. */}
-        {deroule ? <Bloc section={deroule} /> : null}
-        {garanties ? <Bloc section={garanties} /> : null}
-        {cta ? <Bloc section={cta} /> : null}
+        <CeQuiEstInclus contenu={contenu} />
 
         {/* ------------------------------ 9. « Notre méthode » (l. 4963) */}
 
         <MethodeQuatreEtapes etapes={ETAPES_METHODE} />
 
-        {/* --------------------------- 10. « Notre sélection » (l. 5015) */}
+        {/* --------------------------- 10. « Notre sélection » (l. 4379) */}
 
-        <ProcessSelection />
+        {/*
+          LE LIEN D'EN-TÊTE EST LIÉ À `{{ of.cta }}` DANS LA MAQUETTE : il change
+          avec l'offre. Il était écrit en dur « Constituer mon équipe → » dans
+          `ProcessSelection.tsx`, ce qui ne tombait juste que sur Résidence ;
+          `/offres/zero-arret/` l'affichait là où la maquette écrit « Demander
+          l'étude de couverture ». La propriété est optionnelle, `ProcessSelection`
+          servant aussi la page d'accueil.
+        */}
+        <ProcessSelection
+          cta={
+            contenu.selectionCta
+              ? { libelle: contenu.selectionCta, href: ANCRE_FORMULAIRE }
+              : undefined
+          }
+        />
 
-        {/* ------------------ 11. « Nos dernières réalisations » (l. 5105) */}
+        {/* ------------------ 11. « Nos dernières réalisations » (l. 4429) */}
 
-        {preuves ? <Bloc section={preuves} /> : null}
+        {/*
+          Trois cartes à PHOTO, pas sept cartes de texte. Le bloc est celui de
+          l'accueil, `DernieresRealisations` : la maquette dessine la MÊME section
+          aux deux endroits, et le gabarit offre en avait une seconde copie,
+          `offre/Realisations.tsx`, supprimée depuis.
 
-        {/* --------------------- 12. « Questions fréquentes » (l. 5143) */}
+          SI LA MAQUETTE N'A PAS SA SECTION, LA SECTION `preuves` DU CORPUS PREND
+          SA PLACE, ICI, à l'emplacement 11. Elle tombait jusqu'ici en fin de page,
+          après « Ce que nous garantissons. » : les douze pages de `/offres/` sans
+          clé dans `OFFERS` avaient donc une architecture de page différente des
+          six autres, et la tuile « Full service » envoyait de l'une vers l'autre.
+          Les deux portent le même H2, « Ce que nous avons fait, chez qui, et
+          comment » : c'est la même section vue par deux gabarits, jamais les deux
+          à la fois.
 
-        {objections ? <Bloc section={objections} /> : null}
+          CE QUE ÇA COÛTE SUR LES SIX PAGES À CLÉ `OFFERS`, et qui est inscrit
+          dans `docs/RESERVES-CONTENU.md` : les sept liens d'étude de cas du
+          corpus (SUEZ, FDJ, MERSEN, ERIKS, OGF, VPK, GROUPE ATLANTIC) ne sont
+          plus sur ces pages. La maquette, elle, ne nomme AUCUNE URL pour ses
+          trois cartes (elle navigue par `onClick="{{ goFiche }}"`). Rattacher les
+          liens du corpus aux cartes de la maquette demanderait de deviner la
+          correspondance entre « SUEZ IWT » et `/preuves/suez-remise-en-etat/` :
+          c'est à Mehdi de la confirmer, pas à ce portage de la supposer.
+        */}
+        {contenu.realisations ? (
+          <DernieresRealisations
+            realisations={contenu.realisations.cartes}
+            surtitre={contenu.realisations.surtitre}
+            titre={contenu.realisations.titre}
+            lien={lienSur(contenu.realisations.lien)}
+          />
+        ) : preuves ? (
+          <Bloc section={preuves} />
+        ) : null}
+
+        {/* --------------------- 12. « Questions fréquentes » (l. 4467) */}
+
+        {/*
+          Monté directement, et non par `Bloc`, pour le bouton « Poser ma
+          question » de la colonne gauche collante (maquette l. 4469). Il est
+          sous condition : la centaine de pages du gabarit de vente n'en a pas.
+          Les QUESTIONS, sur les six pages à clé `OFFERS`, sont celles de la
+          maquette (`RES_FAQ` pour Résidence, `FAQ_BY` pour les cinq autres).
+        */}
+        {objections ? (
+          <Objections section={objections} cta={liensSurs(contenu.faqBouton ? [contenu.faqBouton] : [])[0]} />
+        ) : null}
+
+        {/* ---- LE TEXTE RÉDIGÉ QUE LA MAQUETTE NE MONTRE PAS, ENTRE LA 12 ET LA 13 */}
+
+        {/*
+          LES CINQ SECTIONS DU CORPUS, EN BLOC, ENTRE LA FAQ ET « UN AUTRE BESOIN ? ».
+          Elles étaient INTERCALÉES entre les sections de la maquette jusqu'au
+          05/10 : « Le problème » entre la bascule et « Ce qui est inclus », puis
+          « Le déroulé », « Nos engagements » (le H2 « Ce que nous garantissons. »,
+          exactement là où la maquette écrit « Vous gardez la main. Nous portons
+          le reste. ») et un appel. La décision du 05/10 annule cette
+          intercalation : la maquette tient sa colonne vertébrale, et le texte
+          payé devient la suite de la page. Rien n'est supprimé.
+
+          POURQUOI AVANT LA 13 ET NON APRÈS. « Un autre besoin ? / Chaque
+          situation a son offre. » est la SORTIE de la page : elle invite le
+          lecteur à aller voir une autre offre. Placée après la FAQ mais avant ce
+          bloc, elle le faisait partir avant d'avoir lu « Ce que nous
+          garantissons. » et avant d'atteindre le formulaire. La maquette en fait
+          son avant-dernier bloc, juste avant le formulaire : c'est la place
+          qu'elle reprend.
+
+          `cta` n'est rendue ici que sur les six pages à clé `OFFERS` : sur les
+          douze autres, elle EST la bande de « En bref », et la rendre deux fois
+          répéterait le même bouton (`scripts/produit_gabarit_offre.mjs` la retire
+          alors de `sections`).
+        */}
+        {probleme ? <Bloc section={probleme} /> : null}
+        {offre ? <Bloc section={offre} /> : null}
+        {deroule ? <Bloc section={deroule} /> : null}
+        {garanties ? <Bloc section={garanties} /> : null}
+        {cta ? <Bloc section={cta} /> : null}
 
         {/* ---------------------- 13. « Un autre besoin ? » (l. 5152) */}
 
@@ -452,6 +561,14 @@ export default function PageOffre({
                   </div>
                 ) : null}
 
+                {/*
+                  LA MAQUETTE EN POSE SIX, EN DEUX COLONNES : trois rangées
+                  pleines. Le gabarit retire la tuile de la page courante, il en
+                  reste cinq, et la troisième rangée avait une case vide à droite
+                  sur les six pages. La dernière tuile prend donc les deux colonnes
+                  quand le compte est impair. La maquette ne dessine pas ce cas :
+                  elle n'a jamais cinq tuiles.
+                */}
                 <div
                   className="mg-r2"
                   style={{
@@ -460,13 +577,17 @@ export default function PageOffre({
                     gap: 10,
                   }}
                 >
-                  {autres.map((carte) => (
+                  {autres.map((carte, rang) => (
                     <Link
                       key={carte.href}
                       href={carte.href}
                       prefetch={false}
                       className={styles.carteAutre}
-                      style={CARTE_AUTRE}
+                      style={
+                        autres.length % 2 === 1 && rang === autres.length - 1
+                          ? { ...CARTE_AUTRE, gridColumn: "1 / -1" }
+                          : CARTE_AUTRE
+                      }
                     >
                       <span style={CARTE_AUTRE_PHRASE}>{carte.phrase}</span>
                       <span style={CARTE_AUTRE_LIBELLE}>
@@ -480,14 +601,13 @@ export default function PageOffre({
           </section>
         ) : null}
 
-        {/* ------------------- 14. le formulaire de bas de page (l. 5161) */}
+        {/* ------------------- le formulaire de bas de page (l. 4499) */}
 
         {/*
-          Le titre vient du corpus : `formulaireTitre` s'il est posé, sinon la
-          question de la section `ctaFinal`, qui est exactement ce que la
-          maquette lie à `{{ of.form }}`. Sans ni l'un ni l'autre, les valeurs
-          par défaut de `FormulaireBasDePage` jouent, elles aussi relevées dans
-          la maquette : la copie n'est pas recopiée ici.
+          Le H2 est `{{ of.form }}` sur les six pages à clé `OFFERS`, la question
+          de la section `ctaFinal` du corpus sur les douze autres. Sans ni l'un ni
+          l'autre, les valeurs par défaut de `FormulaireBasDePage` jouent, elles
+          aussi relevées dans la maquette : la copie n'est pas recopiée ici.
         */}
         <FormulaireBasDePage
           formulaire={formulaire}

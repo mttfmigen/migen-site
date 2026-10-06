@@ -73,9 +73,17 @@ export function cheminCanonique(segments: string[] | string): string {
  * `node scripts/importe_rest.mjs` a tourné, ce détour ne sert plus à rien et
  * ne change plus rien. Il disparaîtra alors sans que rien ne bouge.
  *
- * Lu UNE fois par processus : c'est du build, pas une requête.
+ * LU UNE FOIS PAR PROCESSUS EN PRODUCTION, À CHAQUE APPEL EN DÉVELOPPEMENT.
+ *
+ * Au build, un seul passage suffit et le cache évite de relire 178 fichiers par
+ * page. En développement, ce cache était un PIÈGE qui a déjà fait conclure à
+ * tort : le serveur du port 4340 tournait depuis deux jours et servait une
+ * version antérieure aux fichiers JSON réécrits entre-temps, ce qui a fait
+ * mesurer « quatre sections absentes » sur une page qui les rendait très bien.
+ * Un fichier réécrit doit se voir au rechargement de la page, pas au
+ * redémarrage du serveur : en développement, on relit.
  */
-const CONTENUS_SUR_DISQUE: ReadonlyMap<string, LignePage["contenu"]> = (() => {
+function contenusSurDisque(): ReadonlyMap<string, LignePage["contenu"]> {
   const dossier = join(process.cwd(), "supabase", "import", "gabarits-maquette");
   const par = new Map<string, LignePage["contenu"]>();
   let fichiers: string[];
@@ -103,7 +111,17 @@ const CONTENUS_SUR_DISQUE: ReadonlyMap<string, LignePage["contenu"]> = (() => {
     }
   }
   return par;
-})();
+}
+
+/** Le cache de production. `null` en développement : on relit à chaque appel. */
+let cacheContenus: ReadonlyMap<string, LignePage["contenu"]> | null = null;
+
+/** Les contenus de gabarit, relus en développement, mis en cache au build. */
+function contenus(): ReadonlyMap<string, LignePage["contenu"]> {
+  if (process.env.NODE_ENV !== "production") return contenusSurDisque();
+  cacheContenus ??= contenusSurDisque();
+  return cacheContenus;
+}
 
 /** La page porte-t-elle déjà un gabarit de la maquette ? */
 function porteUnGabarit(contenu: unknown): boolean {
@@ -132,7 +150,7 @@ export const pageParChemin = cache(
     /* Le fichier ne gagne que si la base n'a pas encore son gabarit : la base
        reste la source, le disque n'est qu'un relais tant qu'elle ne peut pas
        être écrite. */
-    const surDisque = CONTENUS_SUR_DISQUE.get(path);
+    const surDisque = contenus().get(path);
     const contenu =
       surDisque && !porteUnGabarit(page.contenu) ? surDisque : page.contenu;
 

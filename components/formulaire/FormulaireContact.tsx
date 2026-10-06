@@ -190,6 +190,36 @@ const ERREUR: CSSProperties = {
 
 const ASTERISQUE: CSSProperties = { color: "var(--acc)" };
 
+/* ------------------------------------------------------------- l'état « envoyé »
+
+   LA MAQUETTE DONNE DEUX ÉTATS À CETTE CARTE, et le site n'en avait qu'un. Le
+   gabarit porte `<sc-if value="{{ sent }}">` (l. 4062 de
+   `maquette/site-final.html`) : une fois la demande partie, tout le contenu de la
+   carte est REMPLACÉ par un titre et un paragraphe. Le site gardait le
+   formulaire à l'écran et annonçait le succès dans une ligne de 11,5 px, ce qui
+   n'est ni le dessin ni la copie de la maquette.
+
+   Les valeurs et les deux phrases sont celles de la maquette, mot pour mot. */
+
+const PANNEAU_ENVOYE: CSSProperties = {
+  gridColumn: "span 2",
+  padding: "70px 0",
+  textAlign: "center",
+};
+
+const ENVOYE_TITRE: CSSProperties = {
+  font: "600 23px var(--ft)",
+  letterSpacing: "-.03em",
+  marginBottom: 10,
+};
+
+const ENVOYE_TEXTE: CSSProperties = {
+  font: "400 15px/1.6 var(--fb)",
+  color: "var(--ink2)",
+  margin: "0 auto",
+  maxWidth: "32ch",
+};
+
 export function FormulaireContact({ formulaire, titre }: Proprietes) {
   const [contact, setContact] = useState<Contact>(CONTACT_VIDE);
   const [erreurs, setErreurs] = useState<Erreurs>({});
@@ -267,145 +297,166 @@ export function FormulaireContact({ formulaire, titre }: Proprietes) {
   }
 
   const enCours = etat === "envoi";
+  const envoye = etat === "succes";
 
   return (
     <form onSubmit={envoie} noValidate className={styles.grille} style={GRILLE}>
-      {titre ? <h2 style={TITRE}>{titre}</h2> : null}
+      {titre && !envoye ? <h2 style={TITRE}>{titre}</h2> : null}
+
+      {/* L'état « envoyé » de la maquette. La zone d'annonce `role="status"`
+          reste rendue plus bas : c'est elle qui parle au lecteur d'écran, le
+          titre qui apparaît ici n'étant pas annoncé de lui-même. */}
+      {envoye ? (
+        <div style={PANNEAU_ENVOYE}>
+          <div style={ENVOYE_TITRE}>Demande envoyée.</div>
+          <p style={ENVOYE_TEXTE}>
+            Un chargé d&rsquo;affaires vous rappelle dans l&rsquo;heure avec les
+            premiers profils.
+          </p>
+        </div>
+      ) : null}
 
       {/* Le type de formulaire est aussi dans le document, pour que la balise
           HubSpot qui lit le DOM retrouve l'origine de la demande. Le serveur,
           lui, revalide ce qu'il reçoit : ce champ n'est pas une autorité. */}
       <input type="hidden" name="formulaire" value={formulaire} readOnly />
 
-      {/* Champ piège. Pas `type="hidden"` ni `display:none` : les robots les
-          plus simples sautent l'un et l'autre. Il est sorti du cadre visible,
-          retiré du parcours clavier, masqué aux technologies d'assistance et
-          exclu du remplissage automatique du navigateur, donc invisible pour
-          une personne et bien présent pour un automate. Étant positionné en
-          absolu, il ne consomme aucune cellule de la grille. Le serveur jette
-          la demande s'il revient rempli. */}
-      <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
-        <label htmlFor={`${prefixe}-${CHAMP_PIEGE}`}>Site web</label>
-        <input
-          id={`${prefixe}-${CHAMP_PIEGE}`}
-          name={CHAMP_PIEGE}
-          type="text"
-          defaultValue=""
-          tabIndex={-1}
-          autoComplete="off"
-        />
-      </div>
+      {/* Tout le corps du formulaire disparaît une fois la demande partie :
+          c'est l'état `sent` de la maquette. La zone d'annonce juste dessous
+          reste rendue, elle, pour que le lecteur d'écran l'entende. */}
+      {!envoye ? (
+        <>
+        {/* Champ piège. Pas `type="hidden"` ni `display:none` : les robots les
+            plus simples sautent l'un et l'autre. Il est sorti du cadre visible,
+            retiré du parcours clavier, masqué aux technologies d'assistance et
+            exclu du remplissage automatique du navigateur, donc invisible pour
+            une personne et bien présent pour un automate. Étant positionné en
+            absolu, il ne consomme aucune cellule de la grille. Le serveur jette
+            la demande s'il revient rempli. */}
+        <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+          <label htmlFor={`${prefixe}-${CHAMP_PIEGE}`}>Site web</label>
+          <input
+            id={`${prefixe}-${CHAMP_PIEGE}`}
+            name={CHAMP_PIEGE}
+            type="text"
+            defaultValue=""
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
 
-      {CHAMPS.map((champ) => {
-        const identifiant = `${prefixe}-${champ.nom}`;
-        const identifiantErreur = `${identifiant}-erreur`;
-        const erreur = erreurs[champ.nom];
-        // Déduit de la validation, jamais redit ici : c'est elle qui décide
-        // quels champs sont exigés, et `required` doit dire la même chose.
-        const obligatoire = !OPTIONNELS.has(champ.nom);
-        const commun = {
-          id: identifiant,
-          name: champ.nom,
-          value: contact[champ.nom],
-          required: obligatoire,
-          // L'astérisque est décoratif : le caractère obligatoire est porté par
-          // `required` et `aria-required`, donc annoncé sans dépendre d'un signe.
-          "aria-required": obligatoire ? true : undefined,
-          autoComplete: champ.remplissage,
-          "aria-invalid": erreur ? true : undefined,
-          "aria-describedby": erreur ? identifiantErreur : undefined,
-          disabled: enCours,
-          className: styles.champ,
-          onChange: (
-            evenement: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-          ) => saisit(champ.nom, evenement.target.value),
-        };
+        {CHAMPS.map((champ) => {
+          const identifiant = `${prefixe}-${champ.nom}`;
+          const identifiantErreur = `${identifiant}-erreur`;
+          const erreur = erreurs[champ.nom];
+          // Déduit de la validation, jamais redit ici : c'est elle qui décide
+          // quels champs sont exigés, et `required` doit dire la même chose.
+          const obligatoire = !OPTIONNELS.has(champ.nom);
+          const commun = {
+            id: identifiant,
+            name: champ.nom,
+            value: contact[champ.nom],
+            required: obligatoire,
+            // L'astérisque est décoratif : le caractère obligatoire est porté par
+            // `required` et `aria-required`, donc annoncé sans dépendre d'un signe.
+            "aria-required": obligatoire ? true : undefined,
+            autoComplete: champ.remplissage,
+            "aria-invalid": erreur ? true : undefined,
+            "aria-describedby": erreur ? identifiantErreur : undefined,
+            disabled: enCours,
+            className: styles.champ,
+            onChange: (
+              evenement: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+            ) => saisit(champ.nom, evenement.target.value),
+          };
 
-        return (
-          <div
-            key={champ.nom}
-            style={{
-              gridColumn: champ.pleineLargeur ? "span 2" : undefined,
-              minWidth: 0,
-            }}
-          >
-            <label htmlFor={identifiant} style={ETIQUETTE}>
-              {champ.libelle}
-              {obligatoire ? (
-                <span aria-hidden="true" style={ASTERISQUE}>
-                  &nbsp;*
+          return (
+            <div
+              key={champ.nom}
+              style={{
+                gridColumn: champ.pleineLargeur ? "span 2" : undefined,
+                minWidth: 0,
+              }}
+            >
+              <label htmlFor={identifiant} style={ETIQUETTE}>
+                {champ.libelle}
+                {obligatoire ? (
+                  <span aria-hidden="true" style={ASTERISQUE}>
+                    &nbsp;*
+                  </span>
+                ) : (
+                  <span> (facultatif)</span>
+                )}
+              </label>
+
+              {champ.type === "zone" ? (
+                <textarea {...commun} rows={3} style={ZONE} />
+              ) : champ.type === "tel" ? (
+                <span style={ENVELOPPE_TEL} className={styles.enveloppeTel}>
+                  <select
+                    name="indicatif"
+                    value={contact.indicatif}
+                    onChange={(evenement) =>
+                      saisit("indicatif", evenement.target.value)
+                    }
+                    disabled={enCours}
+                    autoComplete="tel-country-code"
+                    /* Le libellé « Téléphone » appartient au champ du numéro :
+                       sans nom propre, un lecteur d'écran annoncerait cette liste
+                       comme « liste déroulante », sans dire de quoi. */
+                    aria-label="Indicatif téléphonique du pays"
+                    style={INDICATIF_CHOIX}
+                  >
+                    {INDICATIFS.map((indicatif) => (
+                      <option key={indicatif.code} value={indicatif.code}>
+                        {indicatif.libelle}
+                      </option>
+                    ))}
+                  </select>
+                  <input {...commun} type="tel" style={SAISIE_TEL} />
                 </span>
               ) : (
-                <span> (facultatif)</span>
+                <input {...commun} type={champ.type} style={SAISIE} />
               )}
-            </label>
 
-            {champ.type === "zone" ? (
-              <textarea {...commun} rows={3} style={ZONE} />
-            ) : champ.type === "tel" ? (
-              <span style={ENVELOPPE_TEL} className={styles.enveloppeTel}>
-                <select
-                  name="indicatif"
-                  value={contact.indicatif}
-                  onChange={(evenement) =>
-                    saisit("indicatif", evenement.target.value)
-                  }
-                  disabled={enCours}
-                  autoComplete="tel-country-code"
-                  /* Le libellé « Téléphone » appartient au champ du numéro :
-                     sans nom propre, un lecteur d'écran annoncerait cette liste
-                     comme « liste déroulante », sans dire de quoi. */
-                  aria-label="Indicatif téléphonique du pays"
-                  style={INDICATIF_CHOIX}
-                >
-                  {INDICATIFS.map((indicatif) => (
-                    <option key={indicatif.code} value={indicatif.code}>
-                      {indicatif.libelle}
-                    </option>
-                  ))}
-                </select>
-                <input {...commun} type="tel" style={SAISIE_TEL} />
-              </span>
-            ) : (
-              <input {...commun} type={champ.type} style={SAISIE} />
-            )}
+              {erreur ? (
+                <p id={identifiantErreur} style={ERREUR}>
+                  {erreur}
+                </p>
+              ) : null}
+            </div>
+          );
+        })}
 
-            {erreur ? (
-              <p id={identifiantErreur} style={ERREUR}>
-                {erreur}
-              </p>
-            ) : null}
-          </div>
-        );
-      })}
-
-      <div style={RANGEE_ENVOI}>
-        <button
-          type="submit"
-          disabled={enCours}
-          className={styles.boutonEnvoi}
-          style={BOUTON}
-        >
-          {enCours ? "Envoi en cours…" : "On me rappelle dans l’heure"}
-        </button>
-      </div>
+        <div style={RANGEE_ENVOI}>
+          <button
+            type="submit"
+            disabled={enCours}
+            className={styles.boutonEnvoi}
+            style={BOUTON}
+          >
+            {enCours ? "Envoi en cours…" : "On me rappelle dans l’heure"}
+          </button>
+        </div>
 
 
-      {/* Information au point de collecte, exigée par le RGPD (articles 13 et
-          14) : qui traite, pour quoi, qui reçoit, où lire le reste. Elle est
-          fixe et non paramétrable, car une page qui pose ce formulaire ne doit
-          pas pouvoir l'oublier en omettant une propriété. */}
-      <p style={MENTION}>
-        Données traitées par Migen pour répondre à votre demande, enregistrées
-        dans HubSpot. Droits et durées de conservation :{" "}
-        {/* `/confidentialite/`, l'URL de l'inventaire. L'ancienne,
-            `/politique-de-confidentialite/`, est une 301 depuis le site
-            WordPress : y lier depuis chaque formulaire du site aurait coûté
-            une redirection à chaque clic, et à chaque passage de robot. */}
-        <Link href="/confidentialite/" className="underline">
-          politique de confidentialité
-        </Link>
-      </p>
+        {/* Information au point de collecte, exigée par le RGPD (articles 13 et
+            14) : qui traite, pour quoi, qui reçoit, où lire le reste. Elle est
+            fixe et non paramétrable, car une page qui pose ce formulaire ne doit
+            pas pouvoir l'oublier en omettant une propriété. */}
+        <p style={MENTION}>
+          Données traitées par Migen pour répondre à votre demande, enregistrées
+          dans HubSpot. Droits et durées de conservation :{" "}
+          {/* `/confidentialite/`, l'URL de l'inventaire. L'ancienne,
+              `/politique-de-confidentialite/`, est une 301 depuis le site
+              WordPress : y lier depuis chaque formulaire du site aurait coûté
+              une redirection à chaque clic, et à chaque passage de robot. */}
+          <Link href="/confidentialite/" className="underline">
+            politique de confidentialité
+          </Link>
+        </p>
+        </>
+      ) : null}
 
       {/* Une seule zone d'annonce, toujours présente dans le document : un
           lecteur d'écran n'annonce pas le contenu d'un élément qui vient

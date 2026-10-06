@@ -66,6 +66,15 @@ export interface Preuve {
   texte?: string;
   lienLibelle?: string;
   lienHref?: string;
+  /**
+   * La photo en bandeau que la maquette met en haut de la carte (l. 4440).
+   *
+   * Chemin SOUS `public/`, posé par `scripts/produit_gabarit_offre.mjs`. Les
+   * photos de la maquette sont décoratives et génériques, jamais des photos de
+   * client. Le bloc `blocs/Preuves.tsx` l'ignore : seul le gabarit offre la
+   * rend, dans `components/site/offre/Realisations.tsx`.
+   */
+  image?: string;
 }
 
 export interface Question {

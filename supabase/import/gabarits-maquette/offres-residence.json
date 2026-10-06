@@ -2,8 +2,58 @@
   "url": "/offres/residence/",
   "contenu": {
     "gabarit": "offre",
-    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-    "chapeau": "Un technicien Migen travaille chaque jour dans vos murs, intégré à votre équipe de production. Nous portons le recrutement, l'encadrement et le remplacement. Vous gardez la décision et la connaissance de vos machines.",
+    "reperes": [
+      {
+        "valeur": "5",
+        "libelle": "agences en France"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "clients industriels"
+      }
+    ],
+    "autresSurtitre": "Un autre besoin ?",
+    "autresTitre": "Chaque situation a son offre.",
+    "autres": [
+      {
+        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
+        "libelle": "Full service",
+        "href": "/offres/maintenance-externalisee/"
+      },
+      {
+        "phrase": "« Je paie mes pannes à l’heure et je ne maîtrise pas mon budget. »",
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      },
+      {
+        "phrase": "« J’ai une fenêtre d’arrêt et pas le droit de la dépasser. »",
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/"
+      },
+      {
+        "phrase": "« Mon installation n’est plus conforme et je n’ai plus les schémas. »",
+        "libelle": "Bureau d’études",
+        "href": "/offres/bureau-etudes/"
+      },
+      {
+        "phrase": "« Je ne sais pas encore ce qu’il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
+      }
+    ],
+    "faqBouton": {
+      "libelle": "Poser ma question",
+      "href": "#formulaire"
+    },
+    "pastille": "Un renfort maintenance sur votre site",
+    "mention": "Durée adaptée à votre besoin",
+    "titreA": "migen© Résidence,",
+    "titreB": "un renfort maintenance chez vous.",
+    "chapeau": "Des techniciens de maintenance en résidence sur votre site, pour la durée dont vous avez besoin. Vous constituez l’équipe et validez chaque intervenant ; nous portons le recrutement, les habilitations, la paie et le remplacement.",
     "actions": [
       {
         "libelle": "Les cinq offres",
@@ -11,32 +61,87 @@
       }
     ],
     "formulaireHeroTitre": "Décrire mon besoin",
-    "formulaireHeroMention": "Rappel dans l'heure",
+    "formulaireHeroMention": "Rappel dans l’heure",
     "brefSurtitre": "En bref",
     "brefTitre": "Le cadre, en quatre chiffres.",
+    "brefChapeau": "Une mise à disposition longue, pensée pour que le technicien connaisse votre installation aussi bien que vos équipes.",
     "chiffres": [
       {
-        "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "valeur": "Sur mesure",
+        "libelle": "Durée",
+        "detail": "Renouvelable, jusqu’à plusieurs années sur le même site."
       },
       {
-        "valeur": "+ 100",
-        "libelle": "collaborateurs, dont des automaticiens SIEMENS et Schneider, des roboticiens ABB et Fanuc"
+        "valeur": "3 sem.",
+        "libelle": "Délai de mise en poste",
+        "detail": "Au plus, du premier échange à l’arrivée du technicien validé."
       },
       {
-        "valeur": "+ 80",
-        "libelle": "clients réguliers, la seule mesure qui compte pour une prestation renouvelée"
+        "valeur": "Option",
+        "libelle": "Astreinte possible",
+        "detail": "En complément de la présence en journée."
       },
       {
-        "valeur": "4",
-        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, taux horaire homogène partout"
+        "valeur": "20 %",
+        "libelle": "De turnover",
+        "detail": "Contre 60 % dans le secteur : le technicien reste."
       }
     ],
-    "brefBande": "Besoin d'un technicien qualifié sur votre site sans relancer un recrutement ?",
+    "brefBande": "Un renfort à prévoir ? Premier échange sous 24 h.",
     "brefBouton": {
-      "libelle": "Parler à un chargé d'affaires",
+      "libelle": "Constituer mon équipe",
       "href": "#formulaire"
     },
+    "incTitre": "Vous gardez la main. Nous portons le reste.",
+    "incChapeau": "En régie comme au forfait, le partage est le même : ce qui relève de l’employeur est chez nous, ce qui relève du site reste chez vous.",
+    "porte": [
+      "Le recrutement et la sélection, dont un entretien technique mené par un technicien",
+      "Le contrat de travail, la paie et les charges",
+      "Les habilitations et les formations, vérifiées avant chaque mise à disposition",
+      "Le remplacement en cas d’absence, de congés ou de départ",
+      "Un point mensuel avec votre responsable maintenance"
+    ],
+    "resteChezVous": [
+      "Le choix final de chaque technicien",
+      "L’organisation du travail et les priorités sur site",
+      "Le plan de prévention et les consignes du site",
+      "La fin de mission, avec un préavis contractuel"
+    ],
+    "incBande": "Vous voulez lire le contrat type avant d’en parler ?",
+    "incBouton": {
+      "libelle": "Demander le contrat type",
+      "href": "#formulaire"
+    },
+    "selectionCta": "Constituer mon équipe",
+    "realisations": {
+      "surtitre": "Nos dernières réalisations",
+      "titre": "Ce que nous avons fait, chez qui, et comment",
+      "lien": {
+        "libelle": "Voir toutes nos réalisations →",
+        "href": "/realisations/"
+      },
+      "cartes": [
+        {
+          "surtitre": "SUEZ IWT · migen© Résidence",
+          "titre": "Remise en état complète d'un site industriel",
+          "date": "Février 2026"
+        },
+        {
+          "surtitre": "DANONE · migen© Résidence",
+          "titre": "Maintenance en continu des lignes de production",
+          "date": "Février 2026",
+          "image": "/assets/web/team-electric.jpg"
+        },
+        {
+          "surtitre": "JTEKT · migen© Résidence",
+          "titre": "Sécuriser la maintenance de ses installations",
+          "date": "Janvier 2026",
+          "image": "/assets/web/team-grind-close.jpg"
+        }
+      ]
+    },
+    "autresChapeau": "Si Résidence n’est pas la bonne réponse, l’une de celles-ci l’est probablement.",
+    "formulaireTitre": "Décrivez le renfort qu’il vous faut. On revient avec des profils.",
     "sections": [
       {
         "type": "probleme",
@@ -166,6 +271,12 @@
         ]
       },
       {
+        "type": "cta",
+        "question": "Besoin d'un technicien qualifié sur votre site sans relancer un recrutement ?",
+        "bouton": "Parler à un chargé d'affaires",
+        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+      },
+      {
         "type": "preuves",
         "preuves": [
           {
@@ -216,65 +327,33 @@
         "type": "objections",
         "questions": [
           {
-            "question": "Combien coûte la sous-traitance de la maintenance ?",
-            "reponse": "La mission est chiffrée sur devis, sous forme de taux horaire homogène dans toute la France. Trois éléments font le montant : le profil requis et ses spécialités, le rythme de présence (temps plein ou partagé) et les contraintes de vos installations. Tout est présenté ligne par ligne, pour une comparaison honnête avec un poste interne."
+            "question": "Quelle est la durée minimale d’une mise à disposition ?",
+            "reponse": "Six mois, renouvelables. En dessous, Arrêt technique ou Zéro arrêt sont mieux adaptés : nous vous le dirons dès le premier échange."
           },
           {
-            "question": "Sur quelle durée doit-on s'engager ?",
-            "reponse": "La durée se cale sur votre besoin réel, pas sur un minimum commercial. Les conditions d'évolution et de sortie figurent au contrat, en clair, avec les modalités de préavis. Nous préférons être renouvelés plutôt que verrouillés : plus de 80 clients travaillent avec nous de façon régulière."
+            "question": "Puis-je choisir les techniciens affectés à mon site ?",
+            "reponse": "Oui. Nous vous présentons les profils retenus à l’issue de notre process ; vous rencontrez chaque candidat et validez son arrivée. Vous pouvez en écarter un sans justification."
           },
           {
-            "question": "Nous avons déjà un prestataire sur ce poste. Comment se passe la reprise ?",
-            "reponse": "Nous reprenons le périmètre tel qu'il est écrit, avec une phase de recouvrement pendant laquelle le technicien prend en main les équipements et récupère l'historique. Votre contrat en cours court pendant cette préparation. Aucune interruption de présence sur le site."
+            "question": "Que se passe-t-il en cas d’absence ou de départ ?",
+            "reponse": "Nous assurons le remplacement. Pour les absences prévues (congés, formation) le remplaçant est présenté et formé sur vos lignes avant le départ du titulaire."
           },
           {
-            "question": "Qui répond de la sécurité du technicien sur notre site ?",
-            "reponse": "Migen est l'employeur : nous portons les habilitations, la formation, les équipements de protection et le suivi médical. Vous portez l'accueil sécurité, le plan de prévention et les consignes propres à votre installation. La répartition est écrite au contrat, avec les attestations de vigilance qui protègent votre structure."
+            "question": "Régie ou forfait : quelle différence ?",
+            "reponse": "En régie, vous payez les jours travaillés et pilotez l’équipe au quotidien. Au forfait, le périmètre et le résultat sont fixés au contrat. Le choix se fait après la visite de votre site."
           },
           {
-            "question": "Le technicien est-il vraiment salarié de Migen ?",
-            "reponse": "Oui. Nous le recrutons, l'employons, l'encadrons, le formons et répondons de la qualité de son travail. Le cadre est un contrat de prestation de services, qui relève du contrat d'entreprise. C'est ce qui distingue une vraie prestation d'un simple prêt de bras, et c'est le premier point qu'un service achats doit vérifier."
-          },
-          {
-            "question": "Couvrez-vous notre région ?",
-            "reponse": "Oui, partout en France, depuis 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France. Le taux horaire est le même quel que soit le département, ce qui rend les partenariats multi-sites lisibles."
+            "question": "Qui gère les habilitations et la sécurité ?",
+            "reponse": "Nous. Habilitations électriques, CACES, travail en hauteur : elles sont vérifiées et tenues à jour avant chaque mise à disposition. Le plan de prévention reste établi avec vous."
           }
-        ]
+        ],
+        "titre": "Ce qu’on nous demande avant de signer."
       },
       {
         "type": "ctaFinal",
         "question": "Besoin de tenir le poste dès ce trimestre plutôt que de relancer une annonce ?",
         "bouton": "Demander un profil pour mon site",
         "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
-      }
-    ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
-      {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
-      },
-      {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
-      },
-      {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
-      },
-      {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
-      },
-      {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
       }
     ]
   }

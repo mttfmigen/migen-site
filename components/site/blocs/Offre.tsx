@@ -22,6 +22,19 @@ import {
 const ENTETE_PRESTATION = "Ce que nous faisons";
 const ENTETE_BENEFICE = "Ce que ça change pour vous";
 
+/**
+ * Le surtitre de la section, relevé dans la maquette : « Le périmètre »,
+ * `site-final.html` l. 1881, l'en-tête de `sp-include`, qui EST cette section vue
+ * par le gabarit de vente.
+ *
+ * IL DISAIT « Ce qui est inclus » JUSQU'ICI, et c'était un défaut à deux titres :
+ * cette chaîne est le surtitre de la section 8 de la PAGE D'OFFRE (maquette
+ * l. 4280), rendue plus haut sur la même page par
+ * `components/site/offre/CeQuiEstInclus.tsx` ; et la maquette ne l'écrit pas
+ * au-dessus de ce tableau. Un mot de la maquette remplace un mot deviné.
+ */
+const SURTITRE_SECTION = "Le périmètre";
+
 const CELLULE_ENTETE: CSSProperties = {
   font: "600 10.5px var(--fb)",
   letterSpacing: ".12em",
@@ -126,19 +139,34 @@ export default function Offre({ section }: { section: SectionOffre }) {
   return (
     <section className={styles.corpus} style={SECTION}>
       <div style={LARGEUR}>
-        {section.titre || section.intro ? (
-          <div className="mg-r2" style={ENTETE}>
-            <div>
-              <div style={SURTITRE}>Ce qui est inclus</div>
-              {section.titre ? <h2 style={TITRE2}>{section.titre}</h2> : null}
-            </div>
-            {section.intro ? (
-              <p style={CHAPEAU}>
-                <TexteRiche texte={section.intro} />
-              </p>
-            ) : null}
+        {/*
+          LE SURTITRE EST TOUJOURS RENDU, et l'en-tête ne dépend plus de
+          `titre || intro`.
+
+          CE QUI ÉTAIT MESURÉ : sur les 116 pages de corpus, AUCUNE section
+          `offre` ne porte ni `titre` ni `intro` (vérifié sur
+          `supabase/import/corpus-analyse.json` : 116 sur 116). L'en-tête ne se
+          rendait donc JAMAIS, et ce tableau arrivait sans un mot pour le
+          nommer : une dalle muette dans le plan de la page, sur toutes les
+          pages du gabarit de vente et sur les dix-huit pages d'offre.
+
+          LE H2 RESTE SOUS CONDITION, ET IL N'Y A PAS DE REPLI. La maquette le
+          tire de `{{ spInclude.title }}`, une donnée qu'elle ne porte pas, et le
+          corpus ne l'écrit nulle part : écrire un titre ici serait fabriquer du
+          texte visible sur 134 pages. La réserve est inscrite dans
+          `docs/RESERVES-CONTENU.md` : c'est au corpus de fournir ce titre.
+        */}
+        <div className="mg-r2" style={ENTETE}>
+          <div>
+            <div style={SURTITRE}>{SURTITRE_SECTION}</div>
+            {section.titre ? <h2 style={TITRE2}>{section.titre}</h2> : null}
           </div>
-        ) : null}
+          {section.intro ? (
+            <p style={CHAPEAU}>
+              <TexteRiche texte={section.intro} />
+            </p>
+          ) : null}
+        </div>
 
         {section.lignes.length > 0 ? (
           <div style={{ ...VERRE, overflow: "hidden" }}>

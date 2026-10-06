@@ -2,8 +2,58 @@
   "url": "/offres/zero-arret/",
   "contenu": {
     "gabarit": "offre",
-    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 en option.",
-    "chapeau": "L'abonnement Zéro arrêt remplace vos dépannages subis par un programme de visites préventives, un suivi de l'état du parc et une priorité d'intervention. Le prix est fixe et connu d'avance.",
+    "reperes": [
+      {
+        "valeur": "5",
+        "libelle": "agences en France"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "clients industriels"
+      }
+    ],
+    "autresSurtitre": "Un autre besoin ?",
+    "autresTitre": "Chaque situation a son offre.",
+    "autres": [
+      {
+        "phrase": "« J’ai besoin d’un renfort maintenance sur mon site. »",
+        "libelle": "Résidence",
+        "href": "/offres/residence/"
+      },
+      {
+        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
+        "libelle": "Full service",
+        "href": "/offres/maintenance-externalisee/"
+      },
+      {
+        "phrase": "« J’ai une fenêtre d’arrêt et pas le droit de la dépasser. »",
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/"
+      },
+      {
+        "phrase": "« Mon installation n’est plus conforme et je n’ai plus les schémas. »",
+        "libelle": "Bureau d’études",
+        "href": "/offres/bureau-etudes/"
+      },
+      {
+        "phrase": "« Je ne sais pas encore ce qu’il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
+      }
+    ],
+    "faqBouton": {
+      "libelle": "Poser ma question",
+      "href": "#formulaire"
+    },
+    "pastille": "Entretien le samedi. Dépannage la nuit.",
+    "mention": "Engagement 12 mois · 3 formules",
+    "titreA": "migen© Zéro Arrêt,",
+    "titreB": "la maintenance qui ne touche jamais à votre production.",
+    "chapeau": "Tout le marché veut intervenir en journée, pendant que vos machines produisent. Nous avons pris le contre-pied : l’entretien préventif le samedi, le dépannage la nuit. Vous réservez une capacité de maintenance, pas des heures.",
     "actions": [
       {
         "libelle": "Les cinq offres",
@@ -11,22 +61,223 @@
       }
     ],
     "formulaireHeroTitre": "Décrire mon besoin",
-    "formulaireHeroMention": "Rappel dans l'heure",
+    "formulaireHeroMention": "Rappel dans l’heure",
     "brefSurtitre": "En bref",
+    "brefTitre": "Le cadre, en quatre chiffres.",
+    "brefChapeau": "Pour les PME industrielles sans service maintenance structuré, ou dont l’équipe est trop limitée pour absorber pannes et entretien.",
     "chiffres": [
       {
-        "valeur": "+ 80",
-        "libelle": "clients réguliers, la preuve qu'un contrat se renouvelle"
+        "valeur": "Samedi",
+        "libelle": "Entretien préventif",
+        "detail": "Une maintenance de 8 h chaque mois, machines à l’arrêt."
       },
       {
-        "valeur": "10 %",
-        "libelle": "des candidats retenus, chaque technicien qui passe chez vous est évalué"
+        "valeur": "La nuit",
+        "libelle": "Dépannage garanti",
+        "detail": "Panne signalée avant 16 h, technicien sur site le soir même."
+      },
+      {
+        "valeur": "Incluse",
+        "libelle": "Astreinte téléphonique",
+        "detail": "Sur les formules Zéro Arrêt et Max."
+      },
+      {
+        "valeur": "0",
+        "libelle": "Majoration",
+        "detail": "Ni de nuit, ni d’urgence, ni de week-end. Seules les pièces s’ajoutent."
       }
     ],
-    "brefBande": "Besoin de savoir si un abonnement vous coûterait moins cher que vos pannes de l'an dernier ?",
+    "brefBande": "On commence par vérifier que votre site est couvert. Réponse écrite sous 48 h.",
     "brefBouton": {
-      "libelle": "Lancer mon diagnostic gratuit",
+      "libelle": "Demander l’étude de couverture",
       "href": "#formulaire"
+    },
+    "incTitre": "Un abonnement mensuel. Tout est dedans.",
+    "incChapeau": "Ce qui différencie les formules, c’est la disponibilité et le délai, jamais les fournitures. Seules les pièces s’ajoutent, au prix réel avec un coefficient écrit au contrat.",
+    "porte": [
+      "Une maintenance préventive de 8 h chaque mois, le samedi",
+      "Un ticket de dépannage de nuit garanti chaque mois",
+      "L’astreinte téléphonique",
+      "Un technicien référent qui connaît votre site avant la première panne",
+      "La visite de démarrage et le référencement des équipements critiques"
+    ],
+    "resteChezVous": [
+      "Le signalement de la panne à l’astreinte, avant 16 h",
+      "Les accès de nuit et du samedi : clés, badge, alarme",
+      "Le plan de prévention, signé au premier mois",
+      "Le dépannage en journée, qui relève de la régie classique"
+    ],
+    "incBande": "Vous voulez lire le contrat type avant d’en parler ?",
+    "incBouton": {
+      "libelle": "Demander le contrat type",
+      "href": "#formulaire"
+    },
+    "selectionCta": "Demander l’étude de couverture",
+    "realisations": {
+      "surtitre": "Nos dernières réalisations",
+      "titre": "Ce que nous avons fait, chez qui, et comment",
+      "lien": {
+        "libelle": "Voir toutes nos réalisations →",
+        "href": "/realisations/"
+      },
+      "cartes": [
+        {
+          "surtitre": "SUEZ IWT · migen© Résidence",
+          "titre": "Remise en état complète d'un site industriel",
+          "date": "Février 2026"
+        },
+        {
+          "surtitre": "DANONE · migen© Résidence",
+          "titre": "Maintenance en continu des lignes de production",
+          "date": "Février 2026",
+          "image": "/assets/web/team-electric.jpg"
+        },
+        {
+          "surtitre": "JTEKT · migen© Résidence",
+          "titre": "Sécuriser la maintenance de ses installations",
+          "date": "Janvier 2026",
+          "image": "/assets/web/team-grind-close.jpg"
+        }
+      ]
+    },
+    "autresChapeau": "Si Zéro arrêt n’est pas la bonne réponse, l’une de celles-ci l’est probablement.",
+    "formulaireTitre": "Votre code postal suffit. On vous dit si votre site est couvert.",
+    "commentCaMarcheSurtitre": "Comment ça marche",
+    "commentCaMarcheTitre": "Une panne signalée avant 16 h, une intervention garantie.",
+    "commentCaMarcheChapeau": "Signalée après 16 h ? Intervention la nuit suivante. Le dépannage en journée n’est pas dans le périmètre : il relève de la régie classique.",
+    "commentCaMarcheJalons": [
+      {
+        "repere": "14 h 30",
+        "texte": "Vous signalez la panne à l’astreinte."
+      },
+      {
+        "repere": "16 h 00",
+        "texte": "L’intervention est confirmée pour cette nuit."
+      },
+      {
+        "repere": "22 h 00",
+        "texte": "Le technicien intervient sur votre site, machines à l’arrêt."
+      }
+    ],
+    "formulesSurtitre": "Les formules · engagement 12 mois",
+    "formulesTitre": "Trois formules. Une recommandation.",
+    "formulesChapeau": "Prix mensuel fixe, sans embauche. Ni majoration de nuit, ni d’urgence, ni de week-end. Le tarif vous est présenté en rendez-vous, avec l’étude de couverture de votre site.",
+    "formules": [
+      {
+        "rang": "Formule 01",
+        "nom": "Prévention",
+        "resume": "La porte d’entrée, pour une PME prudente.",
+        "inclus": [
+          "1 préventif le samedi par mois",
+          "Astreinte en horaires ouvrés",
+          "Dépannage à la demande"
+        ],
+        "bouton": {
+          "libelle": "Recevoir le tarif",
+          "href": "#besoin"
+        }
+      },
+      {
+        "rang": "Formule 02",
+        "nom": "Zéro Arrêt",
+        "resume": "Pour la PME sans maintenance interne.",
+        "inclus": [
+          "1 préventif le samedi par mois",
+          "1 ticket de dépannage de nuit garanti",
+          "Astreinte",
+          "Mise en service offerte"
+        ],
+        "recommandee": true,
+        "bouton": {
+          "libelle": "Recevoir le tarif",
+          "href": "#besoin"
+        }
+      },
+      {
+        "rang": "Formule 03",
+        "nom": "Zéro Arrêt Max",
+        "resume": "Multi-machines, production sensible.",
+        "inclus": [
+          "2 préventifs par mois",
+          "2 tickets de nuit garantis",
+          "Interventions prioritaires",
+          "Mise en service offerte"
+        ],
+        "bouton": {
+          "libelle": "Recevoir le tarif",
+          "href": "#besoin"
+        }
+      }
+    ],
+    "formulesTableau": {
+      "entetes": [
+        "Ligne par ligne",
+        "Prévention",
+        "Zéro Arrêt",
+        "Max"
+      ],
+      "lignes": [
+        [
+          "Préventif samedi (8 h)",
+          "1 / mois",
+          "1 / mois",
+          "2 / mois"
+        ],
+        [
+          "Ticket de dépannage de nuit (4 h max)",
+          "À la demande",
+          "1 / mois",
+          "2 / mois"
+        ],
+        [
+          "Délai d’intervention curative",
+          "Nuit suivante, sans engagement",
+          "La nuit même si appel avant 16 h",
+          "La nuit même, en priorité"
+        ],
+        [
+          "Mise en service",
+          "Facturée",
+          "Offerte",
+          "Offerte"
+        ]
+      ]
+    },
+    "formulesRegleSurtitre": "La règle",
+    "formulesRegle": "Ce qui fait monter d’une formule à l’autre, c’est la disponibilité et le délai, jamais les fournitures. En plus de l’abonnement, seules les pièces s’ajoutent, au prix réel avec un coefficient écrit au contrat.",
+    "comparatif": [
+      {
+        "surtitre": "Le comparatif",
+        "titre": "Disponible quand un salarié ne l’est pas.",
+        "points": [
+          "Un technicien salarié est indisponible la nuit et le samedi",
+          "Six semaines d’absence par an",
+          "À recruter, équiper, manager"
+        ]
+      },
+      {
+        "surtitre": "Zéro Arrêt",
+        "titre": "Couvert la nuit et le samedi, garanti par contrat.",
+        "points": [
+          "Couvert la nuit et le samedi",
+          "Délai garanti par contrat",
+          "Opérationnel dès le premier mois"
+        ]
+      }
+    ],
+    "premierMoisSurtitre": "Le premier mois",
+    "premierMoisTitre": "La première visite prépare toutes les nuits suivantes.",
+    "premierMoisEtapes": [
+      "Visite de votre site et référencement des équipements critiques.",
+      "Organisation des accès de nuit et du samedi : clés, badge, alarme.",
+      "Plan de prévention signé, test de l’astreinte."
+    ],
+    "premierMoisAppelSurtitre": "Prochaine étape",
+    "premierMoisAppelTitre": "L’étude de couverture est gratuite.",
+    "premierMoisAppelTexte": "Votre code postal, une réponse écrite sous 48 h : couvert, en zone étendue, ou refusé. On préfère refuser un contrat que signer une promesse qu’on ne tiendra pas.",
+    "premierMoisAppelBouton": {
+      "libelle": "Vérifier ma couverture →",
+      "href": "#besoin"
     },
     "sections": [
       {
@@ -157,6 +408,12 @@
         ]
       },
       {
+        "type": "cta",
+        "question": "Besoin de savoir si un abonnement vous coûterait moins cher que vos pannes de l'an dernier ?",
+        "bouton": "Lancer mon diagnostic gratuit",
+        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
+      },
+      {
         "type": "preuves",
         "preuves": [
           {
@@ -195,64 +452,28 @@
         "type": "objections",
         "questions": [
           {
-            "question": "Combien coûte l'abonnement ?",
-            "reponse": "Le montant est établi sur devis, après le diagnostic de vos installations. Il dépend du nombre d'équipements couverts, de la fréquence des visites, des niveaux de service retenus et du volume d'heures inclus. Le diagnostic qui produit ce chiffrage est gratuit, et il vous reste même si vous ne signez pas."
+            "question": "Que couvre exactement le forfait ?",
+            "reponse": "Le préventif planifié, l’astreinte avec un délai contractuel et un volume d’heures curatives chaque mois. Les pièces sont facturées au coût, sans marge cachée."
           },
           {
-            "question": "Sur quelle durée s'engage-t-on ?",
-            "reponse": "L'engagement type est de 6 mois renouvelable. Les conditions de reconduction et de résiliation sont écrites en clair : pas de reconduction piégée, pas de préavis caché. Six mois, c'est assez long pour que la baisse du nombre d'incidents soit mesurable et assez court pour que nous ayons à la démontrer."
+            "question": "Que se passe-t-il si je dépasse les heures curatives incluses ?",
+            "reponse": "Les heures supplémentaires sont facturées au tarif du contrat, affichées dans le reporting mensuel. Si le dépassement se répète, nous vous proposons de changer de formule plutôt que de payer au fil de l’eau."
           },
           {
-            "question": "Nous avons déjà un contrat ailleurs. Comment on bascule ?",
-            "reponse": "Nous préparons la reprise pendant le préavis de votre contrat en cours : inventaire du parc, récupération des historiques et des gammes, reprise du calendrier de visites."
+            "question": "Le forfait peut-il baisser ?",
+            "reponse": "Oui. À chaque échéance annuelle, nous révisons le forfait sur les arrêts réels. Si le préventif a fait son travail, le prix baisse."
           },
           {
-            "question": "Qui répond de la sécurité pendant les visites ?",
-            "reponse": "Plan de prévention, accueil sécurité, habilitations à jour, respect des consignations et des règles d'accès de votre site. Le contrat précise les obligations de chaque signataire en matière de sécurité et un article dédié à la confidentialité des données techniques."
-          },
-          {
-            "question": "Qui intervient sur nos machines ?",
-            "reponse": "Des techniciens Migen, évalués en entretien technique et comportemental, 10 % des candidats retenus. Sous contrat, c'est le même technicien qui revient : il connaît vos équipements, vos accès et vos contraintes. Toutes les expertises sont mobilisables, mécanique, électricité, automatisme, hydraulique, pneumatique."
-          },
-          {
-            "question": "Couvrez-vous notre région, et les petits sites ?",
-            "reponse": "Oui aux deux. Nous travaillons depuis 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France. Un atelier avec cinq machines critiques justifie un contrat léger mais réel : le programme est dimensionné sur votre réalité, pas sur un catalogue."
+            "question": "Peut-on résilier avant douze mois ?",
+            "reponse": "Le contrat prévoit une sortie anticipée avec préavis de trois mois, sans pénalité si nos engagements de délai n’ont pas été tenus."
           }
-        ]
+        ],
+        "titre": "Ce qu’on nous demande avant de signer."
       },
       {
         "type": "ctaFinal",
         "question": "Besoin d'un budget de maintenance que vous connaissez en janvier plutôt qu'en décembre ?",
         "bouton": "Lancer mon diagnostic gratuit"
-      }
-    ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
-      {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
-      },
-      {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
-      },
-      {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
-      },
-      {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
-      },
-      {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
       }
     ]
   }
