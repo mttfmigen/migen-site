@@ -13,5 +13,8 @@ mkdir -p "$dossier"
 ln -sfn "$ici/maquette/site-final-autonome.html" "$dossier/autonome.html"
 ln -sfn "$ici/maquette/contenu" "$dossier/contenu"
 ln -sfn "$ici/public/assets" "$dossier/assets"
+# Le harnais de mesure visuelle, versionné : il avait disparu avec un
+# dossier temporaire et faisait tomber diff-visuel-offre.mjs en timeout.
+ln -sfn "$ici/maquette/outils/voir.html" "$dossier/voir.html"
 echo "maquette : http://localhost:4352/autonome.html"
 exec python3 -m http.server 4352 -d "$dossier"

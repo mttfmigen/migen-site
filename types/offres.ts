@@ -163,9 +163,19 @@ export function estOffres(contenu: unknown): contenu is ContenuOffres {
 export interface QuestionsPhotoOffres {
   surtitre: string;
   titre: string;
-  chapeau: string;
+  /** Le hub en a un, les pages d'offres n'en ont pas : elles ont le bouton. */
+  chapeau?: string;
   lienTexte: string;
   lienHref: string;
+  /**
+   * Pastille orange pleine plutôt que lien fléché.
+   *
+   * MESURÉ LE 07/10 sur les captures : la maquette met cette carte sombre sur
+   * 22 des 23 pages du gabarit 03 (classe `mg-faqph`), avec le bouton
+   * « Poser ma question » vers l'ancre du formulaire. Le hub `/offres/`, lui,
+   * garde le chapeau et le lien fléché. Même bloc, deux habillages.
+   */
+  bouton?: boolean;
   photo: string;
   questions: { question: string; reponse: string }[];
 }

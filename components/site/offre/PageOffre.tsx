@@ -25,6 +25,7 @@ import PanneauFormulaire from "./PanneauFormulaire";
 import PointsOffre from "./PointsOffre";
 import PrestationsRegroupees from "./PrestationsRegroupees";
 import ProblemeOffre from "./ProblemeOffre";
+import QuestionsPhoto from "@/components/site/offres/QuestionsPhoto";
 import QuestionsOffre from "./QuestionsOffre";
 import RealisationsLiees from "./RealisationsLiees";
 import Reassurance from "./Reassurance";
@@ -442,7 +443,41 @@ export default function PageOffre({
 
         {/* ---------------------------------------- 14. « 09 Questions » */}
 
-        {objections ? <QuestionsOffre section={objections} /> : null}
+        {/* 14 · 09 Questions.
+            DEUX HABILLAGES, et c'est la maquette qui tranche, pas nous : sur
+            22 des 23 pages du gabarit 03 elle sert la CARTE SOMBRE À PHOTO
+            (classe `mg-faqph`, mesuré le 07/10), titre et bouton à gauche,
+            questions en une colonne à droite. UNE SEULE page, /bureau-etudes/,
+            garde la liste claire à deux colonnes, et c'est elle qui porte un
+            chapeau au lieu du bouton. La donnée décide donc : un chapeau veut
+            dire la version plate, son absence veut dire la carte à photo.
+
+            La divergence visuelle mesurée avant ce changement était de 64 % sur
+            cette section, la pire de la page, et de loin. */}
+        {objections ? (
+          objections.chapeau ? (
+            <QuestionsOffre section={objections} />
+          ) : (
+            <QuestionsPhoto
+              donnees={{
+                surtitre: "Questions fréquentes",
+                titre: objections.titre ?? "Vos questions avant de nous appeler",
+                lienTexte: "Poser ma question",
+                lienHref: "#mgx-form",
+                bouton: true,
+                // La photo du paquet du client, celle du hub : la capture du
+                // `<main>` ne porte pas l'image du bloc, elle vit dans la
+                // feuille de style de la maquette. Même photo d'atelier, et
+                // aucune image inventée. À confirmer par Mehdi.
+                photo: "/assets/web/faq-offres.jpg",
+                questions: objections.questions.map((q) => ({
+                  question: q.question,
+                  reponse: q.reponse ?? "",
+                })),
+              }}
+            />
+          )
+        ) : null}
 
         {/* --------------------------------------- 15. Maillage · offres */}
 

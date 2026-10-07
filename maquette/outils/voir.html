@@ -1,0 +1,93 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Voir une page de la maquette</title>
+<!--
+  Ouvre UNE page de la maquette du client dans un cadre, et dit quand elle y est.
+
+  POURQUOI CE FICHIER EXISTE. `scripts/diff-visuel-offre.mjs` photographie la
+  maquette section par section et attend que « #etat » annonce « page ouverte ».
+  Ce harnais vivait dans un dossier temporaire de session : il a disparu, et le
+  script est tombé en timeout sans dire pourquoi. Il est maintenant VERSIONNÉ et
+  posé par `scripts/sers-maquette.sh`, donc il ne peut plus manquer.
+
+  COMMENT ON NAVIGUE. L'application n'a pas d'URL par page : on ouvre son plan
+  du site (« Toutes nos pages ») et on clique le lien qui porte le h1 de la page
+  voulue, à défaut son titre de navigation. C'est exactement la méthode de
+  `scripts/capture-maquette.mjs`, et c'est la seule qui marche : toute autre
+  tentative ramenait l'accueil en annonçant un succès.
+-->
+<style>
+  html, body { margin: 0; height: 100%; }
+  #etat { position: fixed; z-index: 9; left: 8px; top: 8px; padding: 4px 10px;
+          font: 12px/1.4 system-ui; background: #111; color: #fff; border-radius: 6px; }
+  iframe { border: 0; width: 100%; height: 100%; display: block; }
+</style>
+<div id="etat">chargement…</div>
+<iframe id="cadre" src="autonome.html"></iframe>
+<script>
+const params = new URLSearchParams(location.search);
+const cible = params.get("url") || "/";
+const etat = document.getElementById("etat");
+const cadre = document.getElementById("cadre");
+
+const propre = (s) => (s || "").replace(/\s+/g, " ").trim();
+const dort = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** Le h1 et le titre de la page visée, lus dans l'index du client. */
+async function fiche() {
+  const pages = await fetch("contenu/site/index.json").then((r) => r.json());
+  return pages.find((p) => p.url === cible) || null;
+}
+
+async function attends(doc, test, limite = 25000) {
+  const fin = Date.now() + limite;
+  while (Date.now() < fin) {
+    try { if (test(doc)) return true; } catch {}
+    await dort(120);
+  }
+  return false;
+}
+
+cadre.addEventListener("load", async () => {
+  try {
+    const f = await fiche();
+    if (!f) { etat.textContent = "page inconnue de l'index : " + cible; return; }
+    const doc = cadre.contentDocument;
+    await dort(1500);
+
+    etat.textContent = "ouverture du plan du site…";
+    const plan = [...doc.querySelectorAll("a,button")]
+      .find((x) => propre(x.innerText) === "Toutes nos pages");
+    if (!plan) { etat.textContent = "plan du site introuvable"; return; }
+    plan.click();
+    await attends(doc, (d) => /Toutes nos pages, au même endroit/.test(d.body.innerText));
+
+    etat.textContent = "ouverture de la page…";
+    const liens = [...doc.querySelectorAll("a")];
+    const lien = liens.find((a) => propre(a.innerText) === f.h1)
+      || (f.title && liens.find((a) => propre(a.innerText) === f.title));
+    if (!lien) { etat.textContent = "aucun lien « " + f.h1 + " » dans le plan"; return; }
+    lien.click();
+
+    await attends(doc, (d) => {
+      if (d.body.innerText.includes("Chargement de la page")) return false;
+      const h1 = d.querySelector("h1");
+      if (!h1) return false;
+      const t = propre(h1.innerText);
+      return t === propre(f.h1)
+        || (t !== "Toutes nos pages, au même endroit." && d.body.innerText.length > 3000);
+    });
+
+    // On parcourt la page pour déclencher images et révélations au défilement,
+    // sinon la moitié se photographie en blanc.
+    const w = cadre.contentWindow;
+    for (let y = 0; y < doc.body.scrollHeight; y += 700) { w.scrollTo(0, y); await dort(60); }
+    w.scrollTo(0, 0);
+    await dort(500);
+
+    etat.textContent = "page ouverte : " + cible;
+  } catch (e) {
+    etat.textContent = "erreur : " + (e && e.message ? e.message : e);
+  }
+});
+</script>

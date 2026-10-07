@@ -36,6 +36,21 @@ const VOILE: CSSProperties = {
     "linear-gradient(90deg, rgba(18,17,16,.88) 0%, rgba(18,17,16,.62) 45%, rgba(18,17,16,.32) 100%)",
 };
 
+/** La pastille orange pleine des pages d'offres, relevée sur leur capture. */
+const PASTILLE: CSSProperties = {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: 9,
+  padding: "14px 24px",
+  borderRadius: 999,
+  background: "var(--acc)",
+  color: "#fff",
+  font: "600 15px var(--fb)",
+  whiteSpace: "nowrap",
+  boxShadow: "rgba(255, 124, 60, .9) 0 12px 30px -12px",
+  textDecoration: "none",
+};
+
 const GRILLE: CSSProperties = {
   position: "relative",
   display: "grid",
@@ -123,14 +138,33 @@ export default function QuestionsPhoto({
             <div>
               <div style={SURTITRE_BLOC}>{donnees.surtitre}</div>
               <h2 style={TITRE_BLOC}>{donnees.titre}</h2>
-              <p style={CHAPEAU_BLOC}>{donnees.chapeau}</p>
-              <a href={donnees.lienHref} style={LIEN}>
-                {donnees.lienTexte} →
-              </a>
+              {donnees.chapeau ? (
+                <p style={CHAPEAU_BLOC}>{donnees.chapeau}</p>
+              ) : null}
+              {donnees.bouton ? (
+                <a href={donnees.lienHref} style={PASTILLE}>
+                  {donnees.lienTexte}
+                </a>
+              ) : (
+                <a href={donnees.lienHref} style={LIEN}>
+                  {donnees.lienTexte} →
+                </a>
+              )}
             </div>
             <div style={{ display: "grid", gap: 10, alignContent: "start" }}>
-              {donnees.questions.map((q) => (
-                <details key={q.question} className="cx-faq" style={PLI}>
+              {donnees.questions.map((q, i) => (
+                <details
+                  key={q.question}
+                  className="cx-faq"
+                  style={PLI}
+                  // La maquette ouvre la PREMIÈRE question, sa réponse est
+                  // visible d'emblée. On ne l'ouvre que si elle a une réponse :
+                  // sur plusieurs pages d'offres la première réponse est vide,
+                  // parce que le contrat interdit de copier son prix. Ouvrir un
+                  // pli vide donnerait une carte cassée là où la maquette
+                  // montre un paragraphe.
+                  open={i === 0 && Boolean(q.reponse.trim())}
+                >
                   <summary style={QUESTION}>
                     {q.question}
                     <span className="cx-plus" style={PLUS}>
