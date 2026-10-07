@@ -2,7 +2,7 @@
   "url": "/offres/residence/cahier-des-charges/",
   "contenu": {
     "gabarit": "offre",
-    "mention": ", du lundi au vendredi de 8h00 à 18h30. Nous relisons votre document même si vous ne nous consultez pas ensuite",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
     "chapeau": "Voici la trame en 8 sections, la méthode de rédaction en 6 étapes et la grille d'évaluation des réponses. À reprendre telle quelle.",
     "actions": [
       {
@@ -21,8 +21,7 @@
       },
       {
         "valeur": "3 à 5",
-        "libelle": "Nombre de candidats sérieux à consulter",
-        "detail": "En dessous, pas de comparaison. Au-delà, évaluation superficielle."
+        "libelle": "Nombre de candidats sérieux à consulter. En dessous, pas de comparaison. Au-delà, évaluation superficielle."
       },
       {
         "valeur": "+ 120",
@@ -152,11 +151,6 @@
             },
             "benefice": "Compréhension du besoin, moyens humains, méthode, planification, prix, références. Le devis le moins cher n'est pas toujours la meilleure offre."
           }
-        ],
-        "prose": [
-          {
-            "texte": "> La norme NF EN 13306, publiée par AFNOR, fixe le vocabulaire de la maintenance et la définition des niveaux. L'utiliser évite les malentendus de terminologie entre client et prestataire."
-          }
         ]
       },
       {
@@ -213,28 +207,40 @@
         "type": "preuves",
         "preuves": [
           {
-            "titre": "[Contrat de préventif annuel multi-sites](/preuves/veepee-sites-lyon/)",
-            "texte": "6 techniciens polyvalents chez VEEPEE sur les sites lyonnais, dans le cadre d'un contrat de préventif annuel"
+            "titre": "Contrat de préventif annuel multi-sites",
+            "texte": "6 techniciens polyvalents chez VEEPEE sur les sites lyonnais, dans le cadre d'un contrat de préventif annuel",
+            "lienLibelle": "Contrat de préventif annuel multi-sites",
+            "lienHref": "/preuves/veepee-sites-lyon/"
           },
           {
-            "titre": "[Reprise d'un parc en 8 semaines, fonderie automobile](/preuves/stellantis-fonderie-sept-fons/)",
-            "texte": "depuis octobre 2023 chez STELLANTIS, prise en charge complète du site de Dompierre-sur-Besbre, 6 techniciens, 7 jours sur 7"
+            "titre": "Reprise d'un parc en 8 semaines, fonderie automobile",
+            "texte": "depuis octobre 2023 chez STELLANTIS, prise en charge complète du site de Dompierre-sur-Besbre, 6 techniciens,",
+            "lienLibelle": "Reprise d'un parc en 8 semaines, fonderie automobile",
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/"
           },
           {
-            "titre": "[Dispositif reproduit sur un second site, logistique](/preuves/amazon-nouveau-site/)",
-            "texte": "le même dispositif que le premier centre, porté sur ETZ 2 à Metz. Un cadrage écrit se réplique"
+            "titre": "Dispositif reproduit sur un second site, logistique",
+            "texte": "le même dispositif que le premier centre, porté sur ETZ 2 à Metz. Un cadrage écrit se réplique",
+            "lienLibelle": "Dispositif reproduit sur un second site, logistique",
+            "lienHref": "/preuves/amazon-nouveau-site/"
           },
           {
-            "titre": "[Renfort d'équipes sur plusieurs sites, confort thermique](/preuves/groupe-atlantic/)",
-            "texte": "depuis octobre 2024 chez GROUPE ATLANTIC, 1 à 3 techniciens en présence permanente, mission toujours en cours"
+            "titre": "Renfort d'équipes sur plusieurs sites, confort thermique",
+            "texte": "depuis octobre 2024 chez GROUPE ATLANTIC, 1 à 3 techniciens en présence permanente, mission toujours en cours",
+            "lienLibelle": "Renfort d'équipes sur plusieurs sites, confort thermique",
+            "lienHref": "/preuves/groupe-atlantic/"
           },
           {
-            "titre": "[Premier contrat hors de France, agroalimentaire](/preuves/mccain-belgique/)",
-            "texte": "depuis octobre 2024 chez McCAIN en Belgique, 1 à 3 techniciens en corrective et préventive"
+            "titre": "Premier contrat hors de France, agroalimentaire",
+            "texte": "depuis octobre 2024 chez McCAIN en Belgique, 1 à 3 techniciens en corrective et préventive",
+            "lienLibelle": "Premier contrat hors de France, agroalimentaire",
+            "lienHref": "/preuves/mccain-belgique/"
           },
           {
-            "titre": "[Maintenance en 3x8 sur lignes alimentaires, agroalimentaire](/preuves/danone-lignes-de-production/)",
-            "texte": "2 techniciens intégrés aux équipes Blédina sur le site de Steenvoorde"
+            "titre": "Maintenance en 3x8 sur lignes alimentaires, agroalimentaire",
+            "texte": "2 techniciens intégrés aux équipes Blédina sur le site de Steenvoorde",
+            "lienLibelle": "Maintenance en 3x8 sur lignes alimentaires, agroalimentaire",
+            "lienHref": "/preuves/danone-lignes-de-production/"
           }
         ]
       },
@@ -290,38 +296,101 @@
         "href": "/contact/"
       }
     ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
+    "pastille": "Nos offres",
+    "complementOffre": [
       {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
+        "titre": "La trame, 8 sections, et ce que chacune vous évite",
+        "texte": "Un sommaire, une page par sujet, une description factuelle. Une section vide vaut mieux qu'une section recopiée."
       },
       {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
+        "texte": "La norme NF EN 13306, publiée par AFNOR, fixe le vocabulaire de la maintenance et la définition des niveaux. L'utiliser évite les malentendus de terminologie entre client et prestataire."
+      }
+    ],
+    "complementDeroule": [
+      {
+        "titre": "Les 4 erreurs qui coûtent cher",
+        "puces": [
+          {
+            "accroche": "Le modèle générique repris tel quel.",
+            "texte": "Il décrit l'usine de quelqu'un d'autre. Le prestataire doit lire votre site, pas des généralités interchangeables."
+          },
+          {
+            "accroche": "La sur-spécification.",
+            "texte": "Imposer la méthode dans le détail revient à payer un expert pour lui interdire d'exercer. Décrivez le résultat attendu et les points de contrôle."
+          },
+          {
+            "accroche": "L'oubli de la réversibilité.",
+            "texte": "Restitution des données GMAO, des historiques, des documents techniques, passation avec le successeur. Ce point se négocie quand tout va bien."
+          },
+          {
+            "accroche": "L'absence de gouvernance après signature.",
+            "texte": "Indicateurs examinés à échéances fixes, écarts traités, plan d'amélioration tenu. Prévoyez ce rythme dans le document lui-même."
+          }
+        ]
+      }
+    ],
+    "pagesLiees": [
+      {
+        "titre": "Technicien en résidence",
+        "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
+        "href": "/offres/residence/",
+        "photo": "/assets/web/team-duo.jpg"
       },
       {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
+        "titre": "Zéro arrêt",
+        "phrase": "La maintenance en abonnement, au forfait mensuel.",
+        "href": "/offres/zero-arret/",
+        "photo": "/assets/web/ph-technicien.jpg"
       },
       {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
+        "titre": "Arrêt technique",
+        "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
+        "href": "/offres/arret-technique/",
+        "photo": "/assets/web/ph-hero-raffinerie.jpg"
       },
       {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
+        "titre": "Full service",
+        "phrase": "Toute votre maintenance, un seul partenaire.",
+        "href": "/offres/full-service/",
+        "photo": "/assets/web/team-grind-front.jpg"
       },
       {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
+        "titre": "Travaux industriels",
+        "phrase": "Transfert, démantèlement, démontage et montage.",
+        "href": "/travaux-industriels/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
+      },
+      {
+        "titre": "Bureau d'études",
+        "phrase": "Conception, retrofit et mise en conformité.",
+        "href": "/offres/bureau-etudes/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      }
+    ],
+    "casLies": [
+      {
+        "url": "/preuves/autoliv/",
+        "client": "Autoliv",
+        "titre": "Un technicien dédié pour que le parc ne décroche pas",
+        "photo": "/assets/web/team-electric.jpg"
+      },
+      {
+        "url": "/preuves/bamesa/",
+        "client": "Bamesa",
+        "titre": "La maintenance tient pendant que l'équipe recrute",
+        "photo": "/assets/web/ph-hero-raffinerie.jpg"
+      },
+      {
+        "url": "/preuves/danone-lignes-de-production/",
+        "client": "Danone (Blédina)",
+        "titre": "Pas un poste sans maintenance, week-end compris",
+        "photo": "/assets/web/ph-technicien.jpg"
+      },
+      {
+        "url": "/preuves/jacquet-brossard/",
+        "client": "Jacquet Brossard",
+        "titre": "Une ligne de pain de mie suivie à chaque poste",
+        "photo": "/assets/web/ph-technicien.jpg"
       }
     ]
   }

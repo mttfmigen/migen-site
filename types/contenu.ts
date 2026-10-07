@@ -28,6 +28,24 @@ export interface Paragraphe {
   /** Le gras d'attaque. Absent, le texte se rend seul. */
   accroche?: string;
   texte: string;
+  /**
+   * Le texte CONTINUE l'accroche dans la même phrase : il garde sa minuscule.
+   *
+   * MESURÉ, PAS UN STYLE, et c'est une règle de la maquette. Quand le corpus
+   * sépare l'accroche du texte par « : » (« **La continuité du poste** :
+   * absence ou départ… »), la maquette met une majuscule au texte ; la capture
+   * de la page pilote `/offres/residence/` rend bien « Absence ou départ… ».
+   * Quand la phrase continue l'accroche sans deux-points (« **Un seul
+   * interlocuteur** de l'accueil de votre demande… »), elle le laisse TEL
+   * QUEL : la capture de `/bureau-etudes/mise-en-conformite-machine/` rend
+   * « de l'accueil de votre demande… », minuscule comprise.
+   *
+   * La donnée ne porte pas le séparateur du corpus, donc elle porte ce
+   * drapeau. ABSENT, le rendu est celui d'avant (majuscule initiale) : les
+   * pages déjà portées ne bougent pas. Lu par `GarantiesOffre`, le seul bloc
+   * qui applique cette majuscule.
+   */
+  suitAccroche?: boolean;
 }
 
 /** Un chiffre vérifiable de la bande de réassurance. */
@@ -66,6 +84,15 @@ export interface Preuve {
   texte?: string;
   lienLibelle?: string;
   lienHref?: string;
+  /**
+   * La photo de la carte, dans `public/assets/web/`. Ajouté le 07/10 pour
+   * `/travaux-industriels/` : le rail de `ReferencesOffre` tirait sa photo
+   * d'une liste fixe indexée par rang, relevée sur la capture de
+   * `/offres/residence/`. Associer la photo d'un chantier SUEZ à l'étude de cas
+   * AKTID est une donnée inventée (CLAUDE.md §13). Absent, la liste fixe sert
+   * encore : les pages déjà portées ne changent pas.
+   */
+  photo?: string;
 }
 
 export interface Question {

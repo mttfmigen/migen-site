@@ -1,0 +1,340 @@
+{
+  "_source": "maquette/rendu/travaux-industriels--demantelement-industriel.html, 18 sections. Texte copié mot pour mot de cette capture. Les photos des deux sections d'études de cas ont été identifiées sur la maquette vivante (octets des blobs extraits par XHR, puis empreinte 8x8 contre la photothèque du site, aspect et contenu vérifiés à l'œil) : ce sont des prises DÉJÀ présentes dans public/assets/web, à un recadrage près. Aucune phrase interdite par le contrat dans cette capture, donc aucun trou déclaré.",
+  "url": "/travaux-industriels/demantelement-industriel/",
+  "titre_h1": "Démantèlement industriel",
+  "contenu": {
+    "gabarit": "offre",
+    "pastille": "Travaux industriels",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
+    "formulaireHeroTitre": "",
+    "formulaireHeroMention": "Rappel dans l'heure",
+    "chiffres": [
+      {
+        "valeur": "+ 120",
+        "libelle": "Collaborateurs · techniciens salariés Migen, pas de chaîne d'intermédiaires."
+      },
+      {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      },
+      {
+        "valeur": "4",
+        "libelle": "Agences · Lyon (siège), Montréal, Dubaï, Madrid, et des hubs techniques en France."
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "Des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+      }
+    ],
+    "brefBande": "Besoin de libérer une zone, un atelier ou un site entier ?",
+    "brefBouton": {
+      "libelle": "Demander un devis",
+      "href": "#besoin"
+    },
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "",
+        "puces": [
+          {
+            "accroche": "Des énergies coupées au mauvais endroit.",
+            "texte": "Une ligne voisine encore en production s'arrête avec celle qu'on démonte."
+          },
+          {
+            "accroche": "Un équipement destiné au transfert démonté comme de la ferraille.",
+            "texte": "Il part en morceaux, il arrive inutilisable."
+          },
+          {
+            "accroche": "Aucune traçabilité des déchets.",
+            "texte": "Le jour du contrôle, il manque la moitié des bordereaux."
+          },
+          {
+            "accroche": "La valorisation oubliée.",
+            "texte": "Moteurs, variateurs et pièces inox partent au prix de la benne mixte."
+          }
+        ]
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "Préparation et sécurisation des zones",
+              "texte": ""
+            },
+            "benefice": "Balisage, consignation des énergies, isolement des lignes voisines, plan de prévention. La production qui continue n'est pas touchée."
+          },
+          {
+            "prestation": {
+              "accroche": "Vidanges et purges avant dépose",
+              "texte": ""
+            },
+            "benefice": "Huiles, fluides hydrauliques, fluides caloporteurs, circuits pneumatiques et hydrauliques mis à zéro. Rien ne s'écoule pendant le levage."
+          },
+          {
+            "prestation": {
+              "accroche": "Repérage préalable des installations",
+              "texte": ""
+            },
+            "benefice": "Câblage, tuyauterie, points d'ancrage et points d'élingage relevés avant de toucher quoi que ce soit. C'est ce repérage qui rend un remontage possible."
+          },
+          {
+            "prestation": {
+              "accroche": "Démontage avec repérage pour transfert",
+              "texte": ""
+            },
+            "benefice": "L'équipement est démonté pour repartir, pas pour disparaître. Il rejoint un transfert industriel ou un stockage."
+          },
+          {
+            "prestation": {
+              "accroche": "Démontage pour valorisation",
+              "texte": ""
+            },
+            "benefice": "Sous-ensembles, moteurs, armoires, inox et métaux triés à la dépose plutôt qu'au sol. Ce qui a de la valeur est mis de côté avant de la perdre."
+          },
+          {
+            "prestation": {
+              "accroche": "Dépose de réseaux et d'utilités",
+              "texte": ""
+            },
+            "benefice": "Alimentations électriques, air comprimé, vapeur, eau, aéraulique. Les arrivées sont proprement obturées et repérées sur plan."
+          },
+          {
+            "prestation": {
+              "accroche": "Découpe et évacuation",
+              "texte": ""
+            },
+            "benefice": "Découpe des charpentes et des structures support, sortie par les accès réels du bâtiment, évacuation coordonnée."
+          },
+          {
+            "prestation": {
+              "accroche": "Tri et traçabilité des déchets",
+              "texte": ""
+            },
+            "benefice": "Tri par filière, bordereaux de suivi, pesées. Vous recevez le dossier qui prouve où chaque tonne est allée."
+          },
+          {
+            "prestation": {
+              "accroche": "Remise en état de la zone",
+              "texte": ""
+            },
+            "benefice": "Scellements arasés, sols nettoyés, points d'ancrage traités. La surface est rendue exploitable pour la suite."
+          },
+          {
+            "prestation": {
+              "accroche": "Dossier de fin de chantier",
+              "texte": ""
+            },
+            "benefice": "Plans à jour, repérages, photos, bordereaux. Vous rendez les clés avec une pièce, pas une promesse."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Visite et inventaire.",
+            "texte": "Équipement par équipement, ce qui part pour être réutilisé, ce qui part pour être valorisé, ce qui part en déchet. La décision est prise avec vous, avant le devis."
+          },
+          {
+            "titre": "Analyse de risque et plan de prévention.",
+            "texte": "Coactivité avec votre production, accès, levage, découpe, points chauds. Écrit, signé, affiché."
+          },
+          {
+            "titre": "Consignation et mise en sécurité.",
+            "texte": "Énergies coupées, condamnées, vérifiées. Fluides vidangés et évacués par les filières adaptées."
+          },
+          {
+            "titre": "Dépose selon la destination.",
+            "texte": "Repérage complet pour ce qui sera remonté, démontage direct pour ce qui sera valorisé. Les deux gestes ne se ressemblent pas."
+          },
+          {
+            "titre": "Évacuation et traçabilité.",
+            "texte": "Sortie des charges, chargement, bordereaux de suivi, pesées par filière."
+          },
+          {
+            "titre": "Remise en état et restitution.",
+            "texte": "Nettoyage, reprise des points d'ancrage, dossier de fin de chantier remis à votre exploitant."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "La production voisine ne s'arrête pas à cause du démantèlement.",
+            "texte": "La coactivité est traitée avant le premier balisage, pas découverte le premier matin."
+          },
+          {
+            "accroche": "Ce qui doit repartir repart démontable.",
+            "texte": "Un équipement destiné au transfert est déposé avec repérage complet, sauvegarde des programmes et conditionnement."
+          },
+          {
+            "accroche": "Chaque déchet a un bordereau.",
+            "texte": "Tri par filière, pesées, traçabilité remise en fin de chantier. Vous êtes en mesure de répondre à un contrôle."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Montage et déplacement de machines, étanchéité et isolation, 2025.",
+            "texte": "Transferts de machines sécurisés, sans casse ni improvisation, délais de chantier tenus.",
+            "lienLibelle": "SOPREMA",
+            "lienHref": "/preuves/soprema/",
+            "photo": "/assets/web/x-logistique-entrepot.jpg"
+          },
+          {
+            "titre": "Montage d'un centre logistique, Clermont-Ferrand, 2023.",
+            "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés, site livré à la date prévue.",
+            "lienLibelle": "AKTID",
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/team-grind-front.jpg"
+          },
+          {
+            "titre": "Construction d'un site de R&D bas carbone, région parisienne.",
+            "texte": "Pilotage de chantier de bout en bout par Orthus, filiale du groupe, coordination multi-métiers.",
+            "lienLibelle": "ORTHUS x ECOCEM",
+            "lienHref": "/preuves/orthus-ecocem/",
+            "photo": "/assets/web/x-cimenterie.jpg"
+          },
+          {
+            "titre": "Contrôle de chantier, projets stratégiques, 2025 à 2026.",
+            "texte": "Suivi des prestataires, vérification des installations, respect des procédures.",
+            "lienLibelle": "ALSTEF Group",
+            "lienHref": "/preuves/alstef-group/",
+            "photo": "/assets/web/team-duo.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Combien coûte un démantèlement industriel ?",
+            "reponse": "Le montant dépend du volume d'équipements, des contraintes d'accès, de la part de valorisation et du niveau de remise en état attendu. Chiffrage sur devis après visite, poste par poste. La valeur des matières récupérables apparaît sur une ligne du devis, elle n'y est pas noyée."
+          },
+          {
+            "question": "Intervenez-vous pendant que le site produit encore ?",
+            "reponse": "Oui, c'est le cas le plus fréquent. La zone démantelée est isolée du reste, les énergies communes sont identifiées avant toute coupure, et le plan de prévention encadre la coactivité."
+          },
+          {
+            "question": "Faites-vous du démantèlement nucléaire ?",
+            "reponse": "Non. Notre périmètre est le démantèlement industriel d'équipements et d'installations de production. Le nucléaire, le naval et la déconstruction de bâtiment relèvent d'autres métiers et d'autres agréments."
+          },
+          {
+            "question": "Que devient un équipement encore en bon état ?",
+            "reponse": "Trois issues possibles, décidées avec vous à l'inventaire : remonté ailleurs dans le cadre d'un transfert, stocké en pièces de rechange, ou cédé pour valorisation. Le mode de démontage change selon l'issue retenue."
+          },
+          {
+            "question": "Qui gère les déchets et les bordereaux ?",
+            "reponse": "Nous, avec les filières adaptées à chaque flux. Vous recevez le dossier de traçabilité en fin de chantier : tri par filière, pesées, bordereaux de suivi."
+          },
+          {
+            "question": "Qui sont les techniciens qui interviennent ?",
+            "reponse": "Des salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des candidats sont retenus. Mécanique, électricité, hydraulique, pneumatique, soudure et chaudronnerie."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin d'un inventaire avant de décider ce qui part et ce qui reste ?",
+        "bouton": ""
+      }
+    ],
+    "pagesLiees": [
+      {
+        "titre": "Technicien en résidence",
+        "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
+        "href": "/offres/residence/",
+        "photo": "/assets/web/team-duo.jpg"
+      },
+      {
+        "titre": "Zéro arrêt",
+        "phrase": "La maintenance en abonnement, au forfait mensuel.",
+        "href": "/offres/zero-arret/",
+        "photo": "/assets/web/ph-technicien.jpg"
+      },
+      {
+        "titre": "Arrêt technique",
+        "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
+        "href": "/offres/arret-technique/",
+        "photo": "/assets/web/ph-hero-raffinerie.jpg"
+      },
+      {
+        "titre": "Full service",
+        "phrase": "Toute votre maintenance, un seul partenaire.",
+        "href": "/offres/full-service/",
+        "photo": "/assets/web/team-grind-front.jpg"
+      },
+      {
+        "titre": "Travaux industriels",
+        "phrase": "Transfert, démantèlement, démontage et montage.",
+        "href": "/travaux-industriels/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
+      },
+      {
+        "titre": "Bureau d'études",
+        "phrase": "Conception, retrofit et mise en conformité.",
+        "href": "/offres/bureau-etudes/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      }
+    ],
+    "casLies": [
+      {
+        "url": "/preuves/savoye-migration-automates-norvege/",
+        "client": "Savoye",
+        "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
+        "aLaUne": "À la une · Savoye, Norvège",
+        "resume": "Étude, préparation et migration d'automates sur un site intralogistique en exploitation : deux week-ends, zéro jour de production perdu.",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      },
+      {
+        "url": "/preuves/aktid-centre-logistique/",
+        "client": "Aktid",
+        "titre": "Un centre logistique monté en six semaines",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      },
+      {
+        "url": "/preuves/alstef-group/",
+        "client": "Alstef Group",
+        "titre": "Des chantiers automatisés contrôlés point par point",
+        "photo": "/assets/web/ph-hero-raffinerie.jpg"
+      },
+      {
+        "url": "/preuves/amazon-nouveau-site/",
+        "client": "Amazon",
+        "titre": "Un dispositif rodé, transposé sur un nouveau site",
+        "photo": "/assets/web/team-grind-front.jpg"
+      },
+      {
+        "url": "/preuves/atena-port-la-rochelle/",
+        "client": "Atena",
+        "titre": "En finir avec les pannes qui reviennent sur un terminal d'engrais",
+        "photo": "/assets/web/ph-hero-raffinerie.jpg"
+      }
+    ],
+    "appelBouton": "",
+    "complementOffre": [
+      {
+        "texte": "Ce que nous ne faisons pas. Pas de démantèlement nucléaire, pas de déconstruction de bâtiment, pas de démolition de gros œuvre, pas de désamiantage. Nous démantelons l'outil industriel, ce qui l'alimente et ce qui le supporte."
+      }
+    ],
+    "brefMention": "Faire chiffrer mon démantèlement Un chargé d'affaires vous rappelle dans l'heure, avec les bonnes questions et une date de visite.",
+    "reperesReassurance": [
+      {
+        "valeur": "Chefs de chantier",
+        "libelle": "planning, coordination des corps de métier, sécurité du chantier"
+      },
+      {
+        "valeur": "Monteurs et levageurs",
+        "libelle": "démontage, levage, manutention lourde, remontage"
+      },
+      {
+        "valeur": "Un interlocuteur",
+        "libelle": "du relevé à la remise en production"
+      }
+    ]
+  }
+}

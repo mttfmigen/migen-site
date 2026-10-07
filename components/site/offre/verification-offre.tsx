@@ -25,7 +25,9 @@
  *    tiret cadratin compris.
  * 6. UNE SECTION SANS DONNÉE NE SE REND PAS : pas de titre orphelin, pas de
  *    valeur inventée pour meubler.
- * 7. LES DIX-HUIT PAGES D'OFFRE réelles passent les mêmes contrôles.
+ * 7. TOUTES LES PAGES DU GABARIT 03 déclarées par l'index de la maquette
+ *    passent les mêmes contrôles, la liste étant déduite de l'index et non
+ *    écrite à la main.
  */
 
 import assert from "node:assert/strict";
@@ -365,16 +367,61 @@ for (const absent of [
   );
 }
 
-/* -------------------- 8. les dix-huit pages réelles, telles qu'elles iront en base */
+/* -------------------- 8. toutes les pages réelles, telles qu'elles iront en base
 
-const fichiers = readdirSync(DOSSIER)
-  .filter((n) => n.startsWith("offres-") && n.endsWith(".json"))
+   LA LISTE SE DÉDUIT DE L'INDEX DE LA MAQUETTE, elle ne s'écrit pas à la main.
+   Deux raisons, chacune payée une fois :
+
+   · un NOMBRE FIGÉ ne sait pas qu'une page est arrivée. Cette porte a tenu
+     « 18 » pendant que le gabarit 03 passait de six à vingt-huit pages, et
+     c'est le nombre qui a cassé, pas le portage.
+   · un FILTRE SUR LE PRÉFIXE `offres-` ne voit pas `/bureau-etudes/`,
+     `/travaux-industriels/` ni `/entreprise-maintenance-industrielle/`, qui
+     sont pourtant du même gabarit. Dix pages auraient échappé aux contrôles
+     ci-dessous sans que rien ne le dise.
+
+   Le nom du fichier se déduit de l'URL, et la convention est vérifiée : une
+   page présente sous un autre nom compte comme absente, pas comme conforme. */
+
+/** `/offres/residence/cahier-des-charges/` → `offres-residence-cahier-des-charges.json` */
+function fichierDe(url: string): string {
+  return `${url.replace(/^\/|\/$/g, "").replace(/\//g, "-") || "index"}.json`;
+}
+
+// L'index est un TABLEAU de pages, pas un objet qui en porte un.
+const INDEX_MAQUETTE = JSON.parse(
+  readFileSync(join(RACINE, "maquette", "contenu", "site", "index.json"), "utf8"),
+) as { url: string; gabarit?: string }[];
+
+const URLS_GABARIT_03 = INDEX_MAQUETTE
+  .filter((p) => (p.gabarit ?? "").startsWith("03"))
+  .map((p) => p.url)
   .sort();
 
-assert.equal(
-  fichiers.length,
-  18,
-  `18 pages d'offre attendues dans ${DOSSIER}, ${fichiers.length} trouvée(s)`,
+/**
+ * Les pages servies que la maquette ne connaît pas.
+ *
+ * Arbitrage n° 5 de `docs/PASSATION.md`, ouvert, à trancher par Mehdi : on les
+ * contrôle comme les autres, et on les déclare ici pour qu'une page oubliée ne
+ * se cache pas derrière un fichier en trop.
+ */
+const ORPHELINES = ["/offres/maintenance-externalisee/"];
+
+const fichiers = [...URLS_GABARIT_03, ...ORPHELINES].map(fichierDe);
+
+assert.ok(
+  URLS_GABARIT_03.length > 0,
+  "l'index de la maquette ne déclare aucune page au gabarit 03 : index illisible ou champ renommé",
+);
+
+const surDisque = new Set(
+  readdirSync(DOSSIER).filter((n) => n.endsWith(".json")),
+);
+const manquantes = fichiers.filter((n) => !surDisque.has(n));
+assert.deepEqual(
+  manquantes,
+  [],
+  `pages du gabarit 03 sans fichier de données dans ${DOSSIER} : ${manquantes.join(", ")}`,
 );
 
 for (const nom of fichiers) {

@@ -1,8 +1,10 @@
 {
   "url": "/offres/chantier/transfert-de-production/",
+  "titre_h1": "Transfert de production",
   "contenu": {
     "gabarit": "offre",
-    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30",
+    "pastille": "Nos offres",
+    "mention": "Nous vous rappelons dans l’heure, du lundi au vendredi de 8h00 à 18h30.",
     "chapeau": "**Vos clients ne doivent rien voir.** Une ligne, un atelier ou une usine entière qui change d'adresse, sans rupture de livraison.",
     "actions": [
       {
@@ -11,31 +13,21 @@
       }
     ],
     "formulaireHeroTitre": "Décrire mon besoin",
-    "formulaireHeroMention": "Rappel dans l'heure",
-    "brefSurtitre": "En bref",
-    "brefTitre": "Le cadre, en quatre chiffres.",
+    "formulaireHeroMention": "Rappel dans l’heure",
     "chiffres": [
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels · du grand groupe à la PME."
-      },
-      {
-        "valeur": "+ 80",
-        "libelle": "clients réguliers · la preuve que la méthode tient dans la durée."
-      },
-      {
         "valeur": "4",
-        "libelle": "agences · Lyon (siège), Montréal, Dubaï, Madrid, et des hubs techniques en France."
+        "libelle": "Agences · Lyon (siège), Montréal, Dubaï, Madrid, et des hubs techniques en France."
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus · entretien technique et entretien comportemental."
+        "libelle": "Des candidats retenus · entretien technique et entretien comportemental."
       }
     ],
     "brefBande": "Besoin de savoir combien de jours d'arrêt votre transfert représente vraiment ?",
     "brefBouton": {
-      "libelle": "Faire chiffrer mon transfert de production",
-      "href": "/contact/"
+      "libelle": "Demander un devis",
+      "href": "#besoin"
     },
     "sections": [
       {
@@ -216,42 +208,80 @@
         "question": "Besoin d'un regard extérieur avant d'arrêter la date de bascule ?",
         "bouton": "Parler à un chargé d'affaires",
         "href": "/contact/",
-        "rappel": "04 78 33 72 05, astreinte 24/24 et 7/7."
+        "rappel": "04 78 33 72 05, astreinte."
       }
     ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
+    "complementOffre": [
       {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
+        "texte": "Ce qui reste de votre côté. Le volet social, l'immobilier et la fiscalité relèvent de vos conseils. Notre rôle est de rendre la partie industrielle irréprochable, et c'est la plus lourde en pratique."
+      }
+    ],
+    "pagesLiees": [
+      {
+        "titre": "Déménagement de machines industrielles",
+        "phrase": "Déménagement de machines industrielles",
+        "href": "/offres/chantier/demenagement-machines/"
+      },
+      {
+        "titre": "Technicien en résidence",
+        "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
         "href": "/offres/residence/"
       },
       {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
-      },
-      {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
+        "titre": "Zéro arrêt",
+        "phrase": "La maintenance en abonnement, au forfait mensuel.",
         "href": "/offres/zero-arret/"
       },
       {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
+        "titre": "Arrêt technique",
+        "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
         "href": "/offres/arret-technique/"
       },
       {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
+        "titre": "Full service",
+        "phrase": "Toute votre maintenance, un seul partenaire.",
+        "href": "/offres/full-service/"
       },
       {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
+        "titre": "Travaux industriels",
+        "phrase": "Transfert, démantèlement, démontage et montage.",
+        "href": "/travaux-industriels/"
       }
-    ]
+    ],
+    "casLies": [
+      {
+        "url": "/preuves/savoye-migration-automates-norvege/",
+        "client": "Savoye",
+        "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
+        "resume": "Étude, préparation et migration d’automates sur un site intralogistique en exploitation : deux week-ends, zéro jour de production perdu.",
+        "aLaUne": "À la une · Savoye, Norvège",
+        "photo": "/assets/web/mq-15bdb671c93a.jpg"
+      },
+      {
+        "url": "/preuves/la-panetiere/",
+        "client": "La Panetière",
+        "titre": "Un renfort pour que le pain sorte chaque matin",
+        "photo": "/assets/web/x-armoire-electrique.jpg"
+      },
+      {
+        "url": "/preuves/amazon-centre-logistique/",
+        "client": "Amazon",
+        "titre": "Maintenir un centre logistique qui ne ferme jamais",
+        "photo": "/assets/web/mq-15bdb671c93a.jpg"
+      },
+      {
+        "url": "/preuves/salaison-du-maconnais/",
+        "client": "Salaison du Mâconnais",
+        "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
+        "photo": "/assets/web/mq-12eb6f1b9e2b.jpg"
+      },
+      {
+        "url": "/preuves/voit-grand-est/",
+        "client": "Voit",
+        "titre": "Centres d’usinage et presses tenus dans le Grand Est",
+        "photo": "/assets/web/x-usine-tours.jpg"
+      }
+    ],
+    "brefMention": "Faire chiffrer mon transfert de production Un chargé d'affaires vous rappelle dans l'heure et identifie les points durs du projet."
   }
 }

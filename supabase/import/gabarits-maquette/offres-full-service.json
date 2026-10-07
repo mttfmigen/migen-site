@@ -1,0 +1,386 @@
+{
+  "url": "/offres/full-service/",
+  "titre_h1": "Full service : toute votre maintenance, un seul partenaire",
+  "contenu": {
+    "gabarit": "offre",
+    "pastille": "Nos offres",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
+    "appelBouton": "Faire chiffrer ma maintenance",
+    "chapeau": "Vous nous confiez le périmètre, nous le tenons en entier : préventif, dépannage, pièces et GMAO, dans un seul contrat et avec un seul interlocuteur. Vous gardez la main sur les décisions, nous portons l'exécution, les équipes et le suivi.",
+    "actions": [
+      {
+        "libelle": "Faire chiffrer ma maintenance",
+        "href": "#besoin"
+      }
+    ],
+    "formulaireHeroTitre": "Faire chiffrer ma maintenance",
+    "formulaireHeroMention": "Rappel dans l'heure",
+    "chiffres": [
+      {
+        "valeur": "10 %",
+        "libelle": "Des candidats retenus. Chaque intervenant est notre salarié, évalué avant d'entrer chez vous"
+      },
+      {
+        "valeur": "4 agences",
+        "libelle": "Lyon (siège), Montréal, Dubaï et Madrid, et 10 hubs de techniciens en France"
+      }
+    ],
+    "reponseTitre": "Migen devient votre service maintenance, sans que vous perdiez la main.",
+    "reponseTexte": "Nous reprenons tout ce que votre équipe ne peut plus absorber, sur un périmètre écrit ensemble, avec un seul contrat pour la mécanique, l'électricité, l'automatisme, l'hydraulique et la pneumatique.",
+    "typesTitre": "Chaque type de maintenance entre dans le même contrat",
+    "typesMaintenance": [
+      {
+        "titre": "Préventif",
+        "phrase": "Gammes par organe, fréquences respectées, pièces d'usure anticipées",
+        "href": "/expertises/types-de-maintenance/maintenance-preventive/",
+        "photo": "/assets/web/ph-technicien.jpg"
+      },
+      {
+        "titre": "Dépannage",
+        "phrase": "Pannes prises en priorité et résolues jusqu'à la cause",
+        "href": "/expertises/types-de-maintenance/",
+        "photo": "/assets/web/team-grind-front.jpg"
+      },
+      {
+        "titre": "Prédictif",
+        "phrase": "Relevés et mesures sur vos organes critiques, remplacement avant la casse",
+        "href": "/expertises/types-de-maintenance/maintenance-conditionnelle/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      },
+      {
+        "titre": "Amélioration continue",
+        "phrase": "Les travaux qui suppriment une panne récurrente au lieu de la réparer chaque mois",
+        "href": "/expertises/types-de-maintenance/maintenance-ameliorative/",
+        "photo": "/assets/web/team-electric.jpg"
+      }
+    ],
+    "complementTypes": [
+      {
+        "texte": "Les décisions, la criticité de vos lignes et les investissements restent chez vous. L'exécution, les équipes, les pièces et la charge administrative passent de notre côté."
+      }
+    ],
+    "problemePhoto": null,
+    "derouleTitre": "De la cartographie des risques au pilotage par les indicateurs",
+    "brefBande": "Et si votre maintenance devenait enfin un poste que vous pilotez ?",
+    "brefMention": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Faire chiffrer ma maintenance",
+      "href": "#besoin"
+    },
+    "complementOffre": [
+      {
+        "texte": "Vous gardez un référent technique chez vous, face à notre chargé d'affaires nommé : c'est ce duo qui fait tenir la fiabilité dans la durée."
+      }
+    ],
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "Votre maintenance tient sur deux personnes et un tableur. Le jour où l'une s'arrête, toute l'usine le paie.",
+        "puces": [
+          {
+            "accroche": "Le budget se subit.",
+            "texte": "Dépannages en urgence, heures supplémentaires, pièces en catastrophe : la facture tombe en fin d'exercice, quand plus rien n'est arbitrable."
+          },
+          {
+            "accroche": "Trois prestataires, zéro coordination.",
+            "texte": "Un pour l'électricité, un pour l'hydraulique, un pour les automates. Aucun ne connaît votre outil de production dans son ensemble."
+          },
+          {
+            "accroche": "La pièce arrive après l'arrêt.",
+            "texte": "Sans stock critique identifié, l'approvisionnement commence quand la ligne est déjà immobilisée."
+          },
+          {
+            "accroche": "La GMAO ne sert à rien.",
+            "texte": "Vide ou mal renseignée, elle ne permet jamais de trancher entre réparer et remplacer."
+          },
+          {
+            "accroche": "Le poste de technicien reste vacant des mois.",
+            "texte": "Pendant ce temps, le préventif recule à chaque panne."
+          }
+        ]
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "Un périmètre écrit, actif par actif",
+              "texte": ", avec les niveaux de service attendus."
+            },
+            "benefice": "Vous savez exactement ce qui est couvert, sans surprise."
+          },
+          {
+            "prestation": {
+              "accroche": "Le préventif planifié et tenu",
+              "texte": ", gamme par gamme."
+            },
+            "benefice": "L'entretien ne recule plus à chaque panne."
+          },
+          {
+            "prestation": {
+              "accroche": "Le dépannage traité en priorité",
+              "texte": ", jusqu'à la cause."
+            },
+            "benefice": "La même panne ne revient pas le mois suivant."
+          },
+          {
+            "prestation": {
+              "accroche": "Les pièces consultées au prix du marché, commandées et posées",
+              "texte": ", délai annoncé avant commande."
+            },
+            "benefice": "Un seul interlocuteur, du diagnostic à la pièce montée."
+          },
+          {
+            "prestation": {
+              "texte": "**Votre GMAO renseignée à chaque passage.**"
+            },
+            "benefice": "Des historiques fiables pour décider de réparer ou de remplacer."
+          },
+          {
+            "prestation": {
+              "texte": "**Toutes les technologies dans un même contrat.**"
+            },
+            "benefice": "Un seul partenaire au lieu de trois."
+          },
+          {
+            "prestation": {
+              "accroche": "Les vérifications réglementaires planifiées",
+              "texte": "contrôles périodiques des équipements, levage, appareils à pression, installations électriques, en lien avec vos organismes agréés."
+            },
+            "benefice": "Les échéances ne tombent plus dans l'oubli, et les rapports sont prêts pour l'audit."
+          },
+          {
+            "prestation": {
+              "accroche": "La gestion des pièces critiques",
+              "texte": "liste des pièces stratégiques par équipement, seuils de réapprovisionnement, suivi des délais fournisseurs et des pièces obsolètes."
+            },
+            "benefice": "La pièce est sur étagère le jour où la machine en a besoin."
+          },
+          {
+            "prestation": {
+              "accroche": "Le choix du modèle de contrat",
+              "texte": "obligation de moyens pour démarrer, puis engagement sur des niveaux de service mesurés quand l'historique le permet."
+            },
+            "benefice": "Vous payez un résultat, pas une présence."
+          },
+          {
+            "prestation": {
+              "accroche": "Un tableau de bord mensuel",
+              "texte": "disponibilité des équipements critiques, temps moyen entre pannes, temps moyen de remise en service, respect du préventif, coûts par ligne."
+            },
+            "benefice": "Vous présentez à votre direction des chiffres, pas des impressions."
+          },
+          {
+            "prestation": {
+              "texte": "**Une revue régulière des indicateurs avec votre responsable.**"
+            },
+            "benefice": "Le contrat s'ajuste sur les résultats, pas sur les intentions."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Le diagnostic du parc",
+            "texte": "nos ingénieurs relèvent chaque équipement, analysent l'historique de pannes et classent les actifs par criticité selon leur impact sur la production, la sécurité et la qualité. Vous recevez une cartographie de vos risques, pas un simple inventaire."
+          },
+          {
+            "titre": "La stratégie de maintenance, équipement par équipement",
+            "texte": "pour chaque actif, nous arbitrons entre préventif systématique, conditionnel ou correctif selon sa criticité et son coût d'arrêt. C'est le cœur du métier : ne pas entretenir tout au même rythme, mais là où une panne coûte cher."
+          },
+          {
+            "titre": "Le périmètre et les engagements écrits",
+            "texte": "actifs couverts, niveaux de service, indicateurs de disponibilité, pièces critiques à tenir en stock, répartition des rôles entre votre référent et notre chargé d'affaires."
+          },
+          {
+            "titre": "Les gammes et le plan de maintenance",
+            "texte": "gammes rédigées par organe, fréquences, points de mesure, pièces d'usure, obligations réglementaires. Tout est intégré à votre GMAO dès le départ."
+          },
+          {
+            "titre": "La reprise sans rupture",
+            "texte": "historiques et gammes récupérés chez votre prestataire sortant, plan de prévention et règles du site pris en main avant la première intervention."
+          },
+          {
+            "titre": "L'exécution tracée",
+            "texte": "préventif tenu, dépannages traités jusqu'à la cause racine, pièces approvisionnées, chaque opération renseignée dans la GMAO."
+          },
+          {
+            "titre": "Le pilotage par les indicateurs",
+            "texte": "disponibilité, temps moyen entre pannes, temps moyen de remise en service, respect du préventif. Les revues avec votre responsable décident des améliorations et anticipent les remplacements lourds."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Un rappel dans l'heure ouvrée",
+            "texte": "une seule porte d'entrée, le 04 78 33 72 05, et une astreinte en option le reste du temps."
+          },
+          {
+            "accroche": "Des intervenants choisis, pas envoyés",
+            "texte": "10 % des candidats retenus, profils présentés avant la première intervention, suivis par un chargé d'affaires nommé."
+          },
+          {
+            "accroche": "Un conseil indépendant",
+            "texte": "ni fabricant ni distributeur, nous n'avons aucun intérêt à vous vendre une machine neuve."
+          },
+          {
+            "accroche": "La sécurité prouvée",
+            "texte": "démarche MASE et évaluation EcoVadis, attestations transmises avec chaque plan de prévention."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Contrat de maintenance préventive annuelle sur des sites logistiques",
+            "texte": "six techniciens polyvalents en permanence depuis septembre 2023, reprise de tous les sites en un mois",
+            "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "photo": "/assets/web/x-technicienne-gilet.jpg"
+          },
+          {
+            "titre": "Maintenance préventive et corrective d'une fonderie automobile",
+            "texte": "depuis octobre 2023, aux côtés des équipes internes",
+            "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/x-meulage-etincelles.jpg"
+          },
+          {
+            "titre": "Contrat de maintenance sur un site agroalimentaire de grande échelle, en Belgique",
+            "texte": "depuis octobre 2024, toujours en cours",
+            "lienLibelle": "Étude de cas McCAIN : Belgique",
+            "lienHref": "/preuves/mccain-belgique/",
+            "photo": "/assets/web/x-tableau-ceinture.jpg"
+          },
+          {
+            "titre": "Maintien opérationnel d'un site logistique",
+            "texte": "deux intervenants en poste, surveillance des convoyeurs et des trieurs",
+            "lienLibelle": "Étude de cas GLS : maintenance curative",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/x-duo-hall.jpg"
+          },
+          {
+            "titre": "Renfort continu chez un équipementier automobile",
+            "texte": "présence quotidienne sur les équipements critiques",
+            "lienLibelle": "Étude de cas JTEKT : maintenance des équipements",
+            "lienHref": "/preuves/jtekt/",
+            "photo": "/assets/web/x-entrepot-automatise.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Pourquoi confier toute sa maintenance à Migen ?",
+            "reponse": "Pour ne plus coordonner plusieurs prestataires, accéder à des compétences que le recrutement ne vous donne pas, et transformer un budget subi en budget décidé. Tout est écrit : périmètre, opérations, indicateurs."
+          },
+          {
+            "question": "Combien coûte le Full service ?",
+            "reponse": "Le chiffrage se fait sur devis, après le diagnostic du parc. Il dépend du nombre d'équipements, de la fréquence des visites, des technologies et de l'astreinte choisie. La bonne comparaison, c'est le coût réel de vos douze derniers mois, arrêts et production perdue compris."
+          },
+          {
+            "question": "Quels types de maintenance sont couverts ?",
+            "reponse": "Le préventif, le correctif et le dépannage, le conditionnel, le prédictif sur les organes tournants, et les travaux d'amélioration ou de mise en conformité."
+          },
+          {
+            "question": "Que deviennent nos données si nous arrêtons ?",
+            "reponse": "Elles restent à vous. Vos rapports et votre GMAO vous appartiennent, les conditions de sortie sont écrites au contrat, la confidentialité de vos programmes fait l'objet d'un article dédié."
+          },
+          {
+            "question": "Obligation de moyens ou obligation de résultat ?",
+            "reponse": "Les deux existent. Nous démarrons souvent en obligation de moyens, le temps de fiabiliser l'historique de vos équipements. Une fois les indicateurs de référence établis, le contrat peut basculer sur des engagements de disponibilité mesurés et revus avec vous."
+          },
+          {
+            "question": "Gérez-vous aussi les contrôles réglementaires ?",
+            "reponse": "Oui. Nous planifions les vérifications périodiques obligatoires, coordonnons les organismes agréés, préparons les équipements et traitons les observations levées. Vous gardez la traçabilité complète pour vos audits."
+          },
+          {
+            "question": "Comment mesurez-vous la performance ?",
+            "reponse": "Par des indicateurs fixés au démarrage : disponibilité des équipements critiques, nombre de pannes, récurrence, respect du préventif. Ils sont revus avec vous, et le programme s'ajuste."
+          },
+          {
+            "question": "Pouvez-vous absorber un pic d'activité ou une absence ?",
+            "reponse": "Oui : renfort saisonnier, remplacement pendant un congé, montée en cadence. Le dispositif se dimensionne sur le besoin, sans embauche précipitée."
+          },
+          {
+            "question": "Nous avons déjà un prestataire. Comment se passe la bascule ?",
+            "reponse": "Elle se prépare pendant votre préavis : historiques et gammes récupérés, calendrier de visites repris. Vous ne résiliez rien avant d'avoir un programme écrit. Chez VEEPEE, la reprise complète a tenu en un mois."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Votre maintenance, tenue par une seule équipe. On en parle ?"
+      }
+    ],
+    "pagesLiees": [
+      {
+        "titre": "Technicien en résidence",
+        "phrase": "Le Full service se combine avec un technicien en résidence quand votre site a besoin d'une présence permanente.",
+        "href": "/offres/residence/",
+        "photo": "/assets/web/team-duo.jpg"
+      },
+      {
+        "titre": "Entreprise de maintenance industrielle",
+        "phrase": "Migen est une entreprise de maintenance industrielle née à Lyon en 2021, présente partout en France, de la métallurgie à la pharmaceutique.",
+        "href": "/offres/",
+        "photo": "/assets/web/x-logistique-entrepot.jpg"
+      },
+      {
+        "titre": "Zéro arrêt",
+        "phrase": "La maintenance en abonnement, au forfait mensuel.",
+        "href": "/offres/zero-arret/",
+        "photo": "/assets/web/ph-technicien.jpg"
+      },
+      {
+        "titre": "Arrêt technique",
+        "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
+        "href": "/offres/arret-technique/",
+        "photo": "/assets/web/ph-hero-raffinerie.jpg"
+      },
+      {
+        "titre": "Travaux industriels",
+        "phrase": "Transfert, démantèlement, démontage et montage.",
+        "href": "/travaux-industriels/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
+      },
+      {
+        "titre": "Bureau d'études",
+        "phrase": "Conception, retrofit et mise en conformité.",
+        "href": "/offres/bureau-etudes/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      }
+    ],
+    "casLies": [
+      {
+        "url": "/preuves/aktid-centre-logistique/",
+        "client": "Aktid",
+        "titre": "Un centre logistique monté en six semaines",
+        "photo": "/assets/web/x-site-raffinerie.jpg"
+      },
+      {
+        "url": "/preuves/amazon-centre-logistique/",
+        "client": "Amazon",
+        "titre": "Maintenir un centre logistique qui ne ferme jamais",
+        "photo": "/assets/web/x-site-raffinerie.jpg"
+      },
+      {
+        "url": "/preuves/amazon-nouveau-site/",
+        "client": "Amazon",
+        "titre": "Un dispositif rodé, transposé sur un nouveau site",
+        "photo": "/assets/web/x-armoire-electrique.jpg"
+      },
+      {
+        "url": "/preuves/autoliv/",
+        "client": "Autoliv",
+        "titre": "Un technicien dédié pour que le parc ne décroche pas",
+        "photo": "/assets/web/x-site-raffinerie.jpg"
+      }
+    ]
+  }
+}

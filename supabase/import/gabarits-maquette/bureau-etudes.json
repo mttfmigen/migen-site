@@ -1,0 +1,347 @@
+{
+  "url": "/bureau-etudes/",
+  "titre_h1": "Bureau d'études industriel : des études qui tiennent au montage",
+  "_reference": "maquette/rendu/bureau-etudes.html, 22 sections, porté le 07/10 contre la porte scripts/verifie-offre-rendu.mjs. CETTE PAGE EST UNE REDIRECTION DANS LA MAQUETTE, et c'est mesuré : sa méthode remapOffer envoie /bureau-etudes/ sur /offres/bureau-etudes/ (table REDIRECTIONS de scripts/capture-maquette.mjs, et docs/PASSATION.md §2). Le texte visible de maquette/rendu/bureau-etudes.html et celui de maquette/rendu/offres--bureau-etudes.html ont donc été comparés ligne à ligne : 432 lignes, DIFFÉRENCE NULLE, seuls les identifiants de blob des images changent. La capture de cette page est antérieure à la table REDIRECTIONS (05/10 16h29, les autres du 05/10 22h48), c'est pourquoi son .json de mesure était resté à l'ancien schéma : voir la note ajoutée dans maquette/rendu/bureau-etudes.json, le HTML figé n'a pas été touché. CE QUE LE SITE FAIT DE CETTE URL : il la SERT (elle répond 200, elle a son entrée dans contenu/site/index.json avec son propre fichier de corpus Offres/bureau-etudes.md, 1605 mots). À FAIRE ARBITRER PAR MEHDI : la maquette la redirige, le site la sert, et les deux URL rendent donc le même texte, ce qui est exactement la cannibalisation que la console doit surveiller (CLAUDE.md §10). Ce fichier ne tranche pas, il rend ce que la référence rend. ÉCARTS ENTRE LE CORPUS (maquette/contenu/site/Offres/bureau-etudes.md) ET LE RENDU, qui fait foi : (1) le corpus titre « Bureau d'étude mécanique : un plan qui tient au montage », le rendu et contenu/site/index.json écrivent « Bureau d'études industriel : des études qui tiennent au montage » ; (2) le rendu PERD la punchline du problème (son h2 et son p sont vides, blocs data-dc-tpl 453 et 454), « punchline » est donc vide ici alors que le corpus porte « Un plan dessiné loin de l'atelier finit toujours par se payer au montage. » ; (3) le rendu écrit « par téléphone » là où le corpus écrit le numéro, et il laisse tomber « 24/24 et 7/7 » de l'astreinte ; (4) le rendu n'applique pas de majuscule initiale au texte de la première garantie, d'où l'espace d'attaque de « du lundi au vendredi » qui neutralise majusculeInitiale(). DEUX LIGNES DE LA RÉFÉRENCE NE SONT PAS RENDUES, déclarées en TROUS_PAR_PAGE de la porte : « +200 » et « Clients industriels accompagnés », premier interdit de scripts/verifie-interdits.mjs. La troisième carte de chiffres reste rendue avec le compte tenu par le dépôt (« + 120 » / « Clients industriels, dont plus de 80 réguliers. »), même arbitrage que /offres/depannage-industriel/astreinte/ : ce n'est pas un synonyme de la phrase interdite, c'est une autre donnée, vraie. NON RÉSOLU, à faire arbitrer : la maquette rend la SYNTAXE MARKDOWN BRUTE des quatre références (son analyseur attend « - **titre** : texte. [lien](href) », ce corpus écrit le lien en tête). La fidélité au rendu est tenue, le remède est dans le corpus, pas ici. LES PHOTOS SONT MESURÉES, PAS CHOISIES : les octets de chaque image rendue par la maquette sur CETTE page ont été extraits par XHR (piège n° 5 de docs/PASSATION.md, le fetch de la page est enrobé et boucle) puis rapprochés de la photothèque du dépôt par sha256 complet. Correspondances exactes : problème = /assets/web/mq-a58d2d5d40d2.jpg ; références = x-technicienne-gilet, x-meulage-etincelles, x-tableau-ceinture, x-duo-hall ; réalisations liées = mq-15bdb671c93a (Savoye ET Aktid, la maquette rend la MÊME image sur les deux cartes, ce n'est pas une erreur de ce fichier), /assets/maquette/17de439bc669.jpg, x-meuleuse-etau, x-duo-hall. Aucune photo n'est posée « au plus proche ».",
+  "contenu": {
+    "gabarit": "offre",
+    "pastille": "Nos offres",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Un projet en attente faute de temps pour le dessiner ? Nous le cadrons avec vous.",
+    "appelBouton": "Faire chiffrer mon étude",
+    "chapeau": "Mécanique, électrique, électronique, automatisme, mise en conformité : nos ingénieurs conçoivent aux côtés de techniciens qui réparent des machines toute l'année. Cadrage, conception, calculs, dossier de fabrication, puis montage et mise en service par les mêmes équipes.",
+    "actions": [
+      {
+        "libelle": "Faire chiffrer mon étude",
+        "href": "#besoin"
+      }
+    ],
+    "formulaireHeroTitre": "Faire chiffrer mon étude",
+    "formulaireHeroMention": "Rappel dans l'heure",
+    "chiffres": [
+      {
+        "valeur": "10 %",
+        "libelle": "Des candidats retenus, entretien technique et comportemental, ingénieurs et projeteurs compris."
+      },
+      {
+        "valeur": "+ 120",
+        "libelle": "Clients industriels, dont plus de 80 réguliers."
+      },
+      {
+        "valeur": "10",
+        "libelle": "Hubs de techniciens, Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon, Nantes."
+      }
+    ],
+    "reperesReassurance": [
+      {
+        "valeur": "Ingénieurs",
+        "libelle": "conception, calculs, CAO, choix des technologies"
+      },
+      {
+        "valeur": "Projeteurs",
+        "libelle": "plans, schémas, dossiers de fabrication"
+      },
+      {
+        "valeur": "Chefs de projet",
+        "libelle": "du cadrage à la mise en service, un seul interlocuteur"
+      }
+    ],
+    "problemePhoto": "/assets/web/mq-a58d2d5d40d2.jpg",
+    "complementOffre": [
+      {
+        "texte": "Structures et châssis, mécano-soudé, transmissions, outillages, implantation sur site, auxquels s'ajoutent les volets électrotechnique, automatisme et électronique embarquée."
+      },
+      {
+        "texte": "Ce que nous ne sommes pas. Ni fabricant, ni distributeur. Notre conseil ne dépend d'aucun catalogue."
+      }
+    ],
+    "complementDeroule": [
+      {
+        "texte": "Chaque étape a un livrable défini et un point de validation. Vous restez maître des choix."
+      }
+    ],
+    "complementGaranties": [
+      {
+        "texte": "La confidentialité par défaut. Vos plans et vos données restent votre propriété. Un accord de confidentialité se signe dès le premier échange si votre projet l'exige."
+      }
+    ],
+    "brefBande": "Besoin de savoir ce que coûterait votre étude avant d'aller plus loin ?",
+    "brefMention": "Le devis décrit le périmètre, les livrables, les jalons et le budget. Un seul échange suffit pour savoir où vous allez.",
+    "brefBouton": {
+      "libelle": "Faire chiffrer mon étude",
+      "href": "#besoin"
+    },
+    "prestationsRegroupees": {
+      "lien": {
+        "libelle": "Décrire mon besoin",
+        "href": "#besoin"
+      },
+      "prestations": [
+        {
+          "titre": "Retrofit machine industrielle",
+          "resume": "Arrêtez de payer des dépannages sur une machine que personne ne remet vraiment à niveau.",
+          "href": "/offres/retrofit/",
+          "hrefLibelle": "Retrofit machine industrielle"
+        },
+        {
+          "titre": "Conseil en maintenance industrielle : sachez où part le budget",
+          "resume": "Dans beaucoup d'usines, la maintenance s'est construite par sédimentation.",
+          "href": "/offres/audit-conseil-maintenance/",
+          "hrefLibelle": "Conseil en maintenance industrielle : sachez où part le budget"
+        }
+      ]
+    },
+    "marquesFamille": "fluide",
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "",
+        "puces": [
+          {
+            "accroche": "Les idées restent des croquis.",
+            "texte": "Un équipement à faire évoluer, un poste à sécuriser, une ligne à modifier : le sujet attend son tour depuis des mois."
+          },
+          {
+            "accroche": "Les devis fournisseurs sont incomparables.",
+            "texte": "Sans cahier des charges écrit, trois offres décrivent trois projets différents."
+          },
+          {
+            "accroche": "Les modifications partent sans calcul.",
+            "texte": "Et la conformité de l'équipement modifié devient votre problème."
+          }
+        ]
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "Assistance à maîtrise d'ouvrage",
+              "texte": "définition du besoin, étude de faisabilité, rédaction du cahier des charges, analyse comparée des offres"
+            },
+            "benefice": "Vos consultations se jouent sur des bases identiques. Le cahier des charges vous protège, y compris si vous confiez la suite à un autre"
+          },
+          {
+            "prestation": {
+              "accroche": "Conception et modélisation CAO",
+              "texte": "avant-projet, conception détaillée, choix des matériaux, des composants et des assemblages"
+            },
+            "benefice": "L'accessibilité des organes et l'entretien futur sont pensés dès le dessin, pas découverts à la première intervention"
+          },
+          {
+            "prestation": {
+              "accroche": "Calculs et simulation",
+              "texte": "résistance des matériaux, structure, thermique, sollicitations dynamiques, analyse vibratoire des machines tournantes"
+            },
+            "benefice": "Les problèmes se voient sur le calcul, pas sur le prototype. Une reprise en série coûte bien plus cher"
+          },
+          {
+            "prestation": {
+              "accroche": "Dossier de fabrication",
+              "texte": "plans d'ensemble et de détail, nomenclatures, spécifications, notices"
+            },
+            "benefice": "Vous consultez les ateliers de votre choix. Nous ne vendons ni machine ni composant, aucune marge cachée sur les pièces"
+          },
+          {
+            "prestation": {
+              "texte": "**Suivi de réalisation et réception des pièces chez les ateliers retenus**"
+            },
+            "benefice": "Les écarts se traitent avant le montage, pas pendant"
+          },
+          {
+            "prestation": {
+              "texte": "**Montage et mise en service par nos propres équipes techniques**"
+            },
+            "benefice": "Le même groupe porte le projet du plan à la machine qui tourne. Plus de renvoi de responsabilité entre celui qui conçoit, celui qui fabrique et celui qui pose"
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Votre appel ou votre formulaire.",
+            "texte": "Un ingénieur vous rappelle dans l'heure pour comprendre le besoin, pas pour remplir une fiche."
+          },
+          {
+            "titre": "Cadrage et faisabilité.",
+            "texte": "Usage, contraintes d'exploitation, environnement, budget, jalons. Sortie : un cahier des charges écrit."
+          },
+          {
+            "titre": "Conception et modélisation.",
+            "texte": "L'avant-projet compare plusieurs solutions, la conception détaillée modélise l'équipement en CAO."
+          },
+          {
+            "titre": "Calculs et simulation.",
+            "texte": "Dimensionnement vérifié, notes de calcul documentées. Prototypage ciblé quand un point sensible le justifie."
+          },
+          {
+            "titre": "Dossier de fabrication.",
+            "texte": "Plans, nomenclatures, spécifications, notices. De quoi consulter et comparer."
+          },
+          {
+            "titre": "Réalisation et réception.",
+            "texte": "Suivi de production chez les ateliers, réception des pièces avant montage."
+          },
+          {
+            "titre": "Montage et mise en service.",
+            "texte": "Intégration dans votre ligne par nos équipes techniques, jusqu'à la production stabilisée."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Un rappel dans l'heure",
+            "texte": " du lundi au vendredi, 8h00 à 18h30, par téléphone, et une astreinte pendant les phases de réalisation."
+          },
+          {
+            "accroche": "Un chef de projet identifié",
+            "texte": ", votre contact unique du cadrage à la réception, qui mobilise les compétences au fil du projet sans vous renvoyer d'un service à l'autre."
+          },
+          {
+            "accroche": "Des compétences évaluées",
+            "texte": "comme nos techniciens, les membres de l'équipe d'études passent une évaluation technique et comportementale à l'entrée. Seuls 10 % des candidats sont retenus."
+          },
+          {
+            "accroche": "Des interventions encadrées sur votre site",
+            "texte": "démarche MASE pour la sécurité des interventions, évaluation EcoVadis pour la performance RSE. Les attestations sont transmises avec chaque plan de prévention."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "",
+            "texte": "[Étude de cas ORTHUS x ECOCEM : nouveau site](/preuves/orthus-ecocem/) · Pilotage complet de la construction d'un site industriel de recherche et développement près de Paris, coordination multi-métiers et jalons tenus.",
+            "lienLibelle": "Étude de cas ORTHUS x ECOCEM : nouveau site",
+            "lienHref": "/preuves/orthus-ecocem/",
+            "photo": "/assets/web/x-technicienne-gilet.jpg"
+          },
+          {
+            "titre": "",
+            "texte": "[Étude de cas JOINT LYONNAIS : défaillances machines](/preuves/joint-lyonnais/) · Lyon, depuis février 2024. Diagnostic technique puis plusieurs solutions chiffrées, arbitrées par le client selon son budget.",
+            "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines",
+            "lienHref": "/preuves/joint-lyonnais/",
+            "photo": "/assets/web/x-meulage-etincelles.jpg"
+          },
+          {
+            "titre": "",
+            "texte": "[Étude de cas EATON : mise en production](/preuves/eaton-mise-en-production/) · Janvier 2023. Six techniciens multidisciplinaires pour l'installation et la mise en production d'un parc machines neuf.",
+            "lienLibelle": "Étude de cas EATON : mise en production",
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "photo": "/assets/web/x-tableau-ceinture.jpg"
+          },
+          {
+            "titre": "",
+            "texte": "[Étude de cas ORTHUS x WASHTEC : installation de stations](/preuves/orthus-washtec/) · Montage des portiques de lavage selon les standards du constructeur, réception, levage et raccordements, partout en France.",
+            "lienLibelle": "Étude de cas ORTHUS x WASHTEC : installation de stations",
+            "lienHref": "/preuves/orthus-washtec/",
+            "photo": "/assets/web/x-duo-hall.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Combien coûte une étude ?",
+            "reponse": "Chaque mission est chiffrée sur devis, sur la base d'un périmètre écrit. Pas d'heures de dessin vendues au kilomètre. Un petit projet bien cadré reste un petit budget."
+          },
+          {
+            "question": "Pouvez-vous reprendre une étude commencée ailleurs ?",
+            "reponse": "Oui. Nous repartons de vos fichiers et de vos documents, nous vérifions les hypothèses de dimensionnement, et nous chiffrons la suite. Vos plans restent vos plans."
+          },
+          {
+            "question": "Travaillez-vous avec notre logiciel de CAO interne ?",
+            "reponse": "Oui. Nous utilisons les standards du marché, Solid Edge, CATIA, Ansys, AutoCAD, et nous livrons des formats exploitables par vos équipes sous SolidWorks, Inventor ou Creo, avec vos règles de codification."
+          },
+          {
+            "question": "Qui conçoit réellement mon projet ?",
+            "reponse": "Des ingénieurs et projeteurs salariés, évalués en entretien technique et comportemental : 10 % des candidats retenus, expérience de l'industrie exigée. Nos études ne sortent pas de bureaux où l'on n'a jamais serré un boulon."
+          },
+          {
+            "question": "Pouvez-vous rédiger seulement le cahier des charges ?",
+            "reponse": "Oui, c'est une mission à part entière : définition du besoin, rédaction, consultation des fournisseurs, analyse des offres. Vous restez libre de confier la suite à qui vous voulez, y compris à un concurrent."
+          },
+          {
+            "question": "Vos intervenants peuvent-ils travailler en sécurité sur notre site ?",
+            "reponse": "Oui. Le montage et la mise en service passent par un plan de prévention établi avec vos équipes. Nous y joignons les attestations de notre démarche MASE et de notre évaluation EcoVadis. Vous savez qui entre chez vous."
+          },
+          {
+            "question": "Intervenez-vous partout en France ?",
+            "reponse": "Oui. Quatre agences, Lyon (siège), Montréal, Dubaï et Madrid, et dix hubs de techniciens à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Ailleurs, nos équipes se déplacent : le montage et la mise en service se font sur votre site, où qu'il soit. Nous accompagnons aussi hors de France les clients qui y exploitent des sites."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin d'un ingénieur qui comprenne votre projet dès le premier appel ?",
+        "bouton": "Faire chiffrer mon étude"
+      }
+    ],
+    "autresSurtitre": "Nos autres offres",
+    "autresTitre": "Un autre besoin ? Il a son offre.",
+    "autres": [
+      {
+        "phrase": "Des techniciens en résidence sur votre site, intégrés à votre équipe, validés par vous.",
+        "libelle": "migen© Résidence",
+        "href": "/offres/residence/"
+      },
+      {
+        "phrase": "Le préventif le samedi, le dépannage la nuit : une maintenance qui ne touche jamais à votre production.",
+        "libelle": "migen© Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      },
+      {
+        "phrase": "Votre arrêt annuel préparé, dimensionné et tenu, ligne rendue à la date annoncée.",
+        "libelle": "migen© Arrêt technique",
+        "href": "/offres/arret-technique/"
+      },
+      {
+        "phrase": "Transfert, montage, démantèlement, levage : le chantier, du relevé à la remise en production.",
+        "libelle": "migen© Travaux industriels",
+        "href": "/travaux-industriels/"
+      },
+      {
+        "phrase": "Lyon, Paris, Nantes, Toulouse, Strasbourg, Lille : on part du hub le plus proche de votre site.",
+        "libelle": "Nos hubs",
+        "href": "/implantations/"
+      }
+    ],
+    "casLies": [
+      {
+        "url": "/preuves/savoye-migration-automates-norvege/",
+        "aLaUne": "À la une · Savoye, Norvège",
+        "client": "Savoye",
+        "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
+        "resume": "Étude, préparation et migration d'automates sur un site intralogistique en exploitation : deux week-ends, zéro jour de production perdu.",
+        "photo": "/assets/web/mq-15bdb671c93a.jpg"
+      },
+      {
+        "url": "/preuves/aktid-centre-logistique/",
+        "client": "Aktid",
+        "titre": "Un centre logistique monté en six semaines",
+        "photo": "/assets/web/mq-15bdb671c93a.jpg"
+      },
+      {
+        "url": "/preuves/alstef-group/",
+        "client": "Alstef Group",
+        "titre": "Des chantiers automatisés contrôlés point par point",
+        "photo": "/assets/maquette/17de439bc669.jpg"
+      },
+      {
+        "url": "/preuves/amazon-centre-logistique/",
+        "client": "Amazon",
+        "titre": "Maintenir un centre logistique qui ne ferme jamais",
+        "photo": "/assets/web/x-meuleuse-etau.jpg"
+      },
+      {
+        "url": "/preuves/amazon-nouveau-site/",
+        "client": "Amazon",
+        "titre": "Un dispositif rodé, transposé sur un nouveau site",
+        "photo": "/assets/web/x-duo-hall.jpg"
+      }
+    ]
+  }
+}

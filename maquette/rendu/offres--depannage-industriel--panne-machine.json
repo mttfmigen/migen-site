@@ -5,9 +5,9 @@
   "h1Attendu": "Panne machine industrielle : agir dans la première heure",
   "h1Rendu": "",
   "nbSections": 19,
-  "hauteurTotale": 9083,
+  "hauteurTotale": 9107,
   "motsAnnonces": 1452,
-  "motsRendus": 1210,
+  "motsRendus": 1240,
   "sections": [
     {
       "ordre": 0,
@@ -23,7 +23,7 @@
       "hauteur": 176,
       "images": 0,
       "liens": 0,
-      "mots": 22
+      "mots": 36
     },
     {
       "ordre": 2,
@@ -63,7 +63,7 @@
       "hauteur": 559,
       "images": 0,
       "liens": 0,
-      "mots": 119
+      "mots": 127
     },
     {
       "ordre": 7,
@@ -92,10 +92,10 @@
     {
       "ordre": 10,
       "titre": "Ce que nous garantissons",
-      "hauteur": 649,
+      "hauteur": 673,
       "images": 0,
       "liens": 0,
-      "mots": 144
+      "mots": 152
     },
     {
       "ordre": 11,

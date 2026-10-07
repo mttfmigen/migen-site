@@ -2,7 +2,8 @@
   "url": "/offres/residence/prestataire-ou-salarie/",
   "contenu": {
     "gabarit": "offre",
-    "mention": ", du lundi au vendredi de 8h00 à 18h30",
+    "pastille": "Nos offres",
+    "mention": "Nous vous rappelons dans l’heure, du lundi au vendredi de 8h00 à 18h30.",
     "chapeau": "Migen emploie plus de 100 collaborateurs et pratique la [sous-traitance de maintenance](/offres/residence/) avec son offre de technicien intégré sur site. Nous vivons les deux mondes tous les jours, et nous disons quand l'embauche est le meilleur choix.",
     "actions": [
       {
@@ -24,8 +25,8 @@
         "libelle": "Collaborateurs Migen, tous salariés de Migen."
       },
       {
-        "valeur": "+ 120",
-        "libelle": "Clients industriels, dont plus de 80 réguliers."
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "4 agences",
@@ -174,28 +175,40 @@
         "type": "preuves",
         "preuves": [
           {
-            "titre": "[Renfort d'équipes sur plusieurs sites, confort thermique](/preuves/groupe-atlantic/)",
-            "texte": "depuis octobre 2024, 1 à 3 techniciens en présence permanente chez GROUPE ATLANTIC, mission toujours en cours"
+            "titre": "Renfort d'équipes sur plusieurs sites, confort thermique",
+            "texte": "depuis octobre 2024, 1 à 3 techniciens en présence permanente chez GROUPE ATLANTIC, mission toujours en cours",
+            "lienLibelle": "Renfort d'équipes sur plusieurs sites, confort thermique",
+            "lienHref": "/preuves/groupe-atlantic/"
           },
           {
-            "titre": "[Pilotage du service pendant une transition, industrie](/preuves/eriks/)",
-            "texte": "troisième trimestre 2025, un responsable maintenance intégré chez ERIKS pour tenir le service pendant que l'organisation bougeait"
+            "titre": "Pilotage du service pendant une transition, industrie",
+            "texte": "troisième trimestre 2025, un responsable maintenance intégré chez ERIKS pour tenir le service pendant que l'organisation bougeait",
+            "lienLibelle": "Pilotage du service pendant une transition, industrie",
+            "lienHref": "/preuves/eriks/"
           },
           {
-            "titre": "[Renfort continu d'une équipe interne, site proche de Paris](/preuves/fdj/)",
-            "texte": "un technicien expérimenté affecté en continu chez FDJ, en renfort et non en remplacement de l'équipe"
+            "titre": "Renfort continu d'une équipe interne, site proche de Paris",
+            "texte": "un technicien expérimenté affecté en continu chez FDJ, en renfort et non en remplacement de l'équipe",
+            "lienLibelle": "Renfort continu d'une équipe interne, site proche de Paris",
+            "lienHref": "/preuves/fdj/"
           },
           {
-            "titre": "[Technicien polyvalent sur parc hétérogène, papier et emballage](/preuves/vpk/)",
-            "texte": "chez VPK, quelqu'un capable de passer d'un équipement à l'autre, plutôt qu'un spécialiste d'une seule machine"
+            "titre": "Technicien polyvalent sur parc hétérogène, papier et emballage",
+            "texte": "chez VPK, quelqu'un capable de passer d'un équipement à l'autre, plutôt qu'un spécialiste d'une seule machine",
+            "lienLibelle": "Technicien polyvalent sur parc hétérogène, papier et emballage",
+            "lienHref": "/preuves/vpk/"
           },
           {
-            "titre": "[Renfort sur site agroalimentaire, Belgique](/preuves/mccain-belgique/)",
-            "texte": "depuis octobre 2024, 1 à 3 techniciens chez McCAIN, premier contrat Migen en Belgique"
+            "titre": "Renfort sur site agroalimentaire, Belgique",
+            "texte": "depuis octobre 2024, 1 à 3 techniciens chez McCAIN, premier contrat Migen en Belgique",
+            "lienLibelle": "Renfort sur site agroalimentaire, Belgique",
+            "lienHref": "/preuves/mccain-belgique/"
           },
           {
-            "titre": "[Maintenance tenue pendant les congés d'été](/preuves/ogf-arret-estival/)",
-            "texte": "été 2025, un technicien intégré chez OGF quand les congés réduisaient l'effectif technique interne"
+            "titre": "Maintenance tenue pendant les congés d'été",
+            "texte": "été 2025, un technicien intégré chez OGF quand les congés réduisaient l'effectif technique interne",
+            "lienLibelle": "Maintenance tenue pendant les congés d'été",
+            "lienHref": "/preuves/ogf-arret-estival/"
           }
         ]
       },
@@ -255,38 +268,77 @@
         "href": "/contact/"
       }
     ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
+    "complementOffre": [
       {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
+        "titre": "Migen Résidence : le technicien intégré sur site",
+        "texte": "La prestation qui tranche le débat en pratique : vous avez le technicien sur site, nous portons la fonction employeur."
       },
       {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
+        "texte": "Le technicien reste salarié de Migen, avec sa protection sociale, sa formation et son suivi de carrière. Vous, vous recevez une prestation dont le résultat se mesure."
+      }
+    ],
+    "pagesLiees": [
+      {
+        "titre": "Technicien en résidence",
+        "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
+        "href": "/offres/residence/",
+        "photo": "/assets/web/team-duo.jpg"
       },
       {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
+        "titre": "Zéro arrêt",
+        "phrase": "La maintenance en abonnement, au forfait mensuel.",
+        "href": "/offres/zero-arret/",
+        "photo": "/assets/web/ph-technicien.jpg"
       },
       {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
+        "titre": "Arrêt technique",
+        "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
+        "href": "/offres/arret-technique/",
+        "photo": "/assets/web/ph-hero-raffinerie.jpg"
       },
       {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
+        "titre": "Full service",
+        "phrase": "Toute votre maintenance, un seul partenaire.",
+        "href": "/offres/full-service/",
+        "photo": "/assets/web/team-grind-front.jpg"
       },
       {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
+        "titre": "Travaux industriels",
+        "phrase": "Transfert, démantèlement, démontage et montage.",
+        "href": "/travaux-industriels/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
+      },
+      {
+        "titre": "Bureau d’études",
+        "phrase": "Conception, retrofit et mise en conformité.",
+        "href": "/offres/bureau-etudes/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      }
+    ],
+    "casLies": [
+      {
+        "url": "/preuves/autoliv/",
+        "client": "Autoliv",
+        "titre": "Un technicien dédié pour que le parc ne décroche pas",
+        "photo": "/assets/web/team-electric.jpg"
+      },
+      {
+        "url": "/preuves/bamesa/",
+        "client": "Bamesa",
+        "titre": "La maintenance tient pendant que l’équipe recrute",
+        "photo": "/assets/web/ph-hero-raffinerie.jpg"
+      },
+      {
+        "url": "/preuves/danone-lignes-de-production/",
+        "client": "Danone (Blédina)",
+        "titre": "Pas un poste sans maintenance, week-end compris",
+        "photo": "/assets/web/ph-technicien.jpg"
+      },
+      {
+        "url": "/preuves/jacquet-brossard/",
+        "client": "Jacquet Brossard",
+        "titre": "Une ligne de pain de mie suivie à chaque poste",
+        "photo": "/assets/web/ph-technicien.jpg"
       }
     ]
   }

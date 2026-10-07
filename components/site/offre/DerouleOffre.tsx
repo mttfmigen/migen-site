@@ -27,6 +27,17 @@ import styles from "./PageOffre.module.css";
 
 export interface ProprietesDerouleOffre {
   section: SectionDeroule;
+  /**
+   * Le H2 de la carte d'en-tête. ABSENT, c'est « Un appel. Un plan. Une ligne
+   * qui repart. », le texte relevé sur la capture de la page pilote
+   * `/offres/residence/`.
+   *
+   * AJOUTÉ LE 07/10 : la capture de `/offres/full-service/` y écrit « De la
+   * cartographie des risques au pilotage par les indicateurs ». Le titre était
+   * figé ici, il devient une donnée de page, à défaut inchangée : les pages
+   * déjà portées ne bougent pas.
+   */
+  titre?: string;
 }
 
 const CARTE_ENTETE: CSSProperties = {
@@ -97,7 +108,10 @@ const TEXTE_ETAPE: CSSProperties = {
   margin: 0,
 };
 
-export default function DerouleOffre({ section }: ProprietesDerouleOffre) {
+export default function DerouleOffre({
+  section,
+  titre = "Un appel. Un plan. Une ligne qui repart.",
+}: ProprietesDerouleOffre) {
   return (
     <section style={SECTION}>
       <div style={LARGEUR}>
@@ -114,7 +128,7 @@ export default function DerouleOffre({ section }: ProprietesDerouleOffre) {
               <div style={{ ...SURTITRE, marginBottom: 14 }}>
                 Notre méthode
               </div>
-              <h2 style={TITRE}>Un appel. Un plan. Une ligne qui repart.</h2>
+              <h2 style={TITRE}>{titre}</h2>
             </div>
             <div
               style={{

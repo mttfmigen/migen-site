@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import "server-only";
@@ -88,7 +89,29 @@ interface RelaisGabarit {
   titreH1?: string;
 }
 
-// Rechargé le 06/10 au soir : FAQ à photo du hub ajoutée au relais.
+// Rechargé le 07/10 : /offres/chantier/transfert-de-production/, photos des cas liés.
+// Rechargé le 07/10 : /offres/zero-arret/ porté contre sa capture (18 sections).
+// Rechargé le 07/10 : /offres/depannage-industriel/astreinte/ porté contre sa capture (17 sections).
+// Rechargé le 07/10 : /offres/retrofit/remise-en-etat/ porté contre sa capture (18 sections).
+// Rechargé le 07/10 : /offres/residence/prestataire-ou-salarie/ porté contre sa capture.
+// Rechargé le 07/10 : /offres/chantier/demenagement-machines/ porté contre sa capture (19 sections).
+// Rechargé le 07/10 : /travaux-industriels/montage-industriel/ porté contre sa capture, 18 sections.
+// Rechargé le 07/10 : /offres/full-service/ porté contre sa capture, 21 sections (page absente de la base, servie par `pageDeRelais`).
+// Rechargé le 07/10 : /offres/residence/cahier-des-charges/ porté contre sa capture (19 sections).
+// Rechargé le 07/10 : /travaux-industriels/demantelement-industriel/ porté contre sa capture (18 sections, maillage aligné).
+// Rechargé le 07/10 : /travaux-industriels/levage-manutention/ porté contre sa capture (19 sections).
+// Rechargé le 07/10 : /travaux-industriels/levage-manutention/, problemePhoto null (capture sans photo).
+// Rechargé le 07/10 : /travaux-industriels/ porté contre sa capture (19 sections).
+// Rechargé le 07/10 : /offres/depannage-industriel/panne-machine/ porté contre sa capture (19 sections).
+// Rechargé le 07/10 : /offres/bureau-etudes/ porté contre sa capture (22 sections).
+// Rechargé le 07/10 : /offres/retrofit/mise-en-conformite-machine/ porté contre sa capture (20 sections).
+// Rechargé le 07/10 : /bureau-etudes/ porté contre sa capture (22 sections), sous-ligne de la bande-question.
+// Rechargé le 07/10 : /travaux-industriels/transfert-industriel/ porté contre sa capture, 19 sections.
+// Rechargé le 07/10 : /entreprise-maintenance-industrielle/ porté contre sa capture (19 sections, « Complément » 4, 5 et 6).
+// Rechargé le 07/10 : /bureau-etudes/bureau-etude-electrique/ porté contre sa capture (19 sections, rail de marques).
+// Rechargé le 07/10 : /bureau-etudes/bureau-etude-electronique/ porté contre sa capture (19 sections, rail de marques).
+// Rechargé le 07/10 : /bureau-etudes/bureau-etude-electronique/, phrase de la carte phare du maillage.
+// Rechargé le 07/10 : /bureau-etudes/mise-en-conformite-machine/ porté contre sa capture (19 sections, rail de marques, 5 trous déclarés).
 const CONTENUS_SUR_DISQUE: ReadonlyMap<string, RelaisGabarit> = (() => {
   const dossier = join(process.cwd(), "supabase", "import", "gabarits-maquette");
   const par = new Map<string, RelaisGabarit>();
@@ -131,6 +154,95 @@ function porteUnGabarit(contenu: unknown): boolean {
   );
 }
 
+/**
+ * Un identifiant STABLE déduit du chemin, à la forme d'un UUID.
+ *
+ * POURQUOI LA FORME COMPTE : `maillage()` interroge `pages` avec
+ * `.eq("parent_id", page.id)`, et `parent_id` est une colonne `uuid`. Une
+ * chaîne qui n'est pas un UUID y fait échouer la requête Postgres, donc toute
+ * la page. Un identifiant de cette forme ne correspond à aucune ligne : la
+ * requête ne remonte simplement rien, ce qui est la vérité pour une page que
+ * la base n'a pas.
+ */
+function identifiantStable(path: string): string {
+  const h = createHash("md5").update(`relais-disque:${path}`).digest("hex");
+  return `${h.slice(0, 8)}-${h.slice(8, 12)}-${h.slice(12, 16)}-${h.slice(16, 20)}-${h.slice(20, 32)}`;
+}
+
+/**
+ * Une page que la base N'A PAS, servie depuis le relais disque.
+ *
+ * POURQUOI, et c'est mesuré le 07/10 : 55 des pages que la maquette rend
+ * n'existent pas dans la table `pages`, dont `/offres/full-service/`, qui
+ * répondait 404 alors que sa capture, son entrée dans
+ * `maquette/contenu/site/index.json` et son contenu rédigé existent tous les
+ * trois. Les écrire en base est impossible : `SUPABASE_SERVICE_ROLE_KEY` est
+ * vide depuis le début du chantier (voir le commentaire de
+ * `CONTENUS_SUR_DISQUE` et `docs/PASSATION.md` §5.9), et le relais disque fait
+ * foi en attendant.
+ *
+ * CE QUI RESTE À FAIRE QUAND LA BASE SERA ÉCRIVABLE : la ligne créée en base
+ * reprend la main d'elle-même, puisque ce repli ne s'applique QUE lorsque la
+ * lecture ne remonte rien.
+ *
+ * TROU CONNU, SIGNALÉ PLUTÔT QUE MASQUÉ : `cheminsPublies()` lit la base, donc
+ * ces pages ne sont ni pré-rendues au build ni annoncées au plan du site. Elles
+ * sont servies à la visite (`dynamicParams` par défaut). Les y ajouter serait
+ * décider à la place de Mehdi quelles pages sont publiées : ça se tranche avec
+ * lui, pas ici.
+ *
+ * LE PARENT EST LU EN BASE pour que le fil d'Ariane et le maillage du cocon
+ * situent la page. Rien n'est inventé : sans parent connu, les deux restent
+ * vides.
+ */
+async function pageDeRelais(
+  path: string,
+  relais: RelaisGabarit,
+): Promise<PageComplete | null> {
+  const segments = path.split("/").filter(Boolean);
+  if (segments.length === 0) return null;
+
+  const cheminParent =
+    segments.length > 1 ? `/${segments.slice(0, -1).join("/")}/` : null;
+  const parent = cheminParent
+    ? await lectureContenu()
+        .from("pages")
+        .select("id")
+        .eq("path", cheminParent)
+        .maybeSingle()
+    : null;
+  if (parent?.error) {
+    throw new Error(`Parent de ${path} : ${parent.error.message}`);
+  }
+
+  const slug = segments[segments.length - 1];
+  /* Une date fixe, pas `new Date()` : elle part dans `generateMetadata` et le
+     plan du site, et une date qui change à chaque rendu annoncerait une mise à
+     jour qui n'a pas eu lieu. */
+  const horodatage = "1970-01-01T00:00:00.000Z";
+
+  return {
+    page: {
+      id: identifiantStable(path),
+      path,
+      slug,
+      titre_h1: relais.titreH1 ?? humanise(slug),
+      contenu: relais.contenu,
+      parent_id: parent?.data?.id ?? null,
+      niveau: segments.length,
+      statut: "published",
+      cta_type: "rappel",
+      mot_cle_principal: null,
+      mots_cles_secondaires: [],
+      persona_cible: [],
+      published_at: horodatage,
+      created_at: horodatage,
+      updated_at: horodatage,
+    },
+    seo: null,
+  };
+}
+
 export const pageParChemin = cache(
   async (path: string): Promise<PageComplete | null> => {
     const { data, error } = await lectureContenu()
@@ -140,7 +252,12 @@ export const pageParChemin = cache(
       .maybeSingle();
 
     if (error) throw new Error(`Lecture de ${path} : ${error.message}`);
-    if (!data) return null;
+    if (!data) {
+      /* La base n'a PAS cette page. Le relais disque en a le contenu : elle est
+         alors servie depuis le disque. Voir `pageDeRelais`. */
+      const surDisque = CONTENUS_SUR_DISQUE.get(path);
+      return surDisque ? pageDeRelais(path, surDisque) : null;
+    }
 
     // La jointure remonte un tableau quand la relation n'est pas déclarée 1-1.
     const { seo, ...page } = data as LignePage & {

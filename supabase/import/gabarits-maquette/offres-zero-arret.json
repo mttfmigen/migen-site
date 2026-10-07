@@ -1,53 +1,57 @@
 {
   "url": "/offres/zero-arret/",
+  "titre_h1": "Zéro arrêt : la maintenance qui ne touche jamais à votre production",
   "contenu": {
     "gabarit": "offre",
-    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 en option.",
-    "chapeau": "L'abonnement Zéro arrêt remplace vos dépannages subis par un programme de visites préventives, un suivi de l'état du parc et une priorité d'intervention. Le prix est fixe et connu d'avance.",
+    "pastille": "Nos offres",
+    "appelBouton": "Demander mon diagnostic gratuit",
     "actions": [
       {
-        "libelle": "Les cinq offres",
-        "href": "/offres/"
+        "libelle": "Demander mon diagnostic gratuit",
+        "href": "#besoin"
       }
     ],
-    "formulaireHeroTitre": "Décrire mon besoin",
+    "formulaireHeroTitre": "Demander mon diagnostic gratuit",
     "formulaireHeroMention": "Rappel dans l'heure",
-    "brefSurtitre": "En bref",
     "chiffres": [
       {
-        "valeur": "+ 80",
-        "libelle": "clients réguliers, la preuve qu'un contrat se renouvelle"
+        "valeur": "Le samedi",
+        "libelle": "L'entretien préventif, 8h chaque mois, machines à l'arrêt"
       },
       {
-        "valeur": "10 %",
-        "libelle": "des candidats retenus, chaque technicien qui passe chez vous est évalué"
+        "valeur": "La nuit",
+        "libelle": "Le dépannage, pour toute panne signalée avant 16h"
+      },
+      {
+        "valeur": "500 à 2 000 €",
+        "libelle": "De production perdue par heure d'arrêt, le coût que Zéro arrêt évite"
       }
     ],
-    "brefBande": "Besoin de savoir si un abonnement vous coûterait moins cher que vos pannes de l'an dernier ?",
+    "brefBande": "Votre site est-il couvert par Zéro arrêt ?",
     "brefBouton": {
-      "libelle": "Lancer mon diagnostic gratuit",
-      "href": "#formulaire"
+      "libelle": "Demander mon diagnostic gratuit",
+      "href": "#besoin"
     },
     "sections": [
       {
         "type": "probleme",
-        "punchline": "Arrêtez de payer des dépannages. Au troisième dépannage dans l'année, nos équipes le constatent sur le terrain : vous avez déjà financé un contrat annuel.",
+        "punchline": "Une panne machine, aujourd'hui, ça se passe comme ça. 9h04, la ligne s'arrête. 9h20, vous appelez votre prestataire. 9h40, « on essaie de passer jeudi ».",
         "puces": [
           {
-            "accroche": "Le tarif se négocie machine à l'arrêt.",
-            "texte": "Personne ne fait un bon achat un vendredi à 16h avec une ligne bloquée."
+            "accroche": "Pendant ce temps, la production est perdue.",
+            "texte": "De 500 à 2 000 € par heure, et personne ne vous signe un délai."
           },
           {
-            "accroche": "Le technicien repart de zéro à chaque fois.",
-            "texte": "Aucun historique, aucune connaissance du parc, le diagnostic se repaie intégralement."
+            "accroche": "Tout le marché veut intervenir en journée.",
+            "texte": "Pendant que vos machines produisent : la maintenance en journée, c'est de la production sacrifiée."
           },
           {
-            "accroche": "La panne revient.",
-            "texte": "On traite le symptôme, jamais la cause racine, et la même machine retombe en panne deux mois plus tard."
+            "accroche": "Le créneau d'intervention est votre créneau de production.",
+            "texte": "Alors on repousse l'entretien, jusqu'à la panne."
           },
           {
-            "accroche": "Le budget de maintenance échappe à tout pilotage.",
-            "texte": "Vous le constatez en fin d'exercice, vous ne le décidez pas en début d'année."
+            "accroche": "Vous n'avez pas de service maintenance structuré.",
+            "texte": "Ou votre équipe est trop limitée pour absorber à la fois les pannes et l'entretien."
           }
         ]
       },
@@ -56,57 +60,50 @@
         "lignes": [
           {
             "prestation": {
-              "accroche": "Un plan de maintenance préventive construit sur votre parc réel",
-              "texte": "inventaire, points critiques, programme de visites, contrôles, graissage, réglages, remplacements périodiques."
+              "accroche": "Une maintenance préventive de 8h chaque mois, le samedi",
+              "texte": ", machines à l'arrêt."
             },
-            "benefice": "Les défaillances sont anticipées au lieu d'être découvertes. Les arrêts deviennent planifiés."
+            "benefice": "L'entretien se fait sans toucher à une minute de production."
           },
           {
             "prestation": {
-              "accroche": "La priorité d'intervention en cas de panne",
-              "texte": ", dans les conditions de délai prévues au contrat."
+              "accroche": "Un ticket de dépannage de nuit garanti chaque mois",
+              "texte": "panne signalée avant 16h, intervention la nuit même."
             },
-            "benefice": "Votre demande n'attend pas qu'un technicien se libère. Elle passe devant les demandes ponctuelles."
+            "benefice": "La ligne repart le lendemain matin, au lieu d'attendre jeudi."
           },
           {
             "prestation": {
-              "accroche": "Un technicien qui connaît déjà votre site",
-              "texte": "à chaque passage."
+              "accroche": "Une astreinte téléphonique",
+              "texte": ", pour signaler la panne."
             },
-            "benefice": "Le temps de prise en main disparaît de la facture et de la durée d'arrêt."
+            "benefice": "Une panne se signale quand elle arrive, pas aux heures de bureau."
           },
           {
             "prestation": {
-              "accroche": "Le suivi de l'état des installations",
-              "texte": "historique, mesures relevées, recommandations, inspections réglementaires."
+              "texte": "**Ni majoration de nuit, ni majoration d'urgence, ni majoration de week-end.**"
             },
-            "benefice": "Vos décisions d'investissement et de renouvellement s'appuient sur des données, pas sur une impression."
+            "benefice": "Le prix mensuel est le prix réel de votre maintenance."
           },
           {
             "prestation": {
-              "accroche": "Un référent technique dédié",
-              "texte": ", joignable entre deux visites."
+              "texte": "**Des pièces facturées au prix réel, avec un coefficient écrit au contrat.**"
             },
-            "benefice": "Pas de plateforme anonyme. Une question technique trouve une réponse rapide."
+            "benefice": "Aucune marge cachée à découvrir sur la facture."
           },
           {
             "prestation": {
-              "accroche": "Trois niveaux de couverture",
-              "texte": "base préventive, couverture complète, couverture étendue avec astreinte ou volume d'heures d'amélioration."
+              "accroche": "Un technicien référent qui connaît votre site avant la première panne",
+              "texte": "électromécanicien, automaticien ou roboticien Migen, à plein temps."
             },
-            "benefice": "Vous payez ce que votre équipe interne ne couvre pas, au lieu d'un forfait uniforme."
+            "benefice": "La nuit, il ne découvre pas votre machine : il sait déjà où chercher."
           },
           {
             "prestation": {
-              "accroche": "Pas de marge cachée sur les pièces",
-              "texte": "nous consultons le marché fournisseur pour vous, notre société ne vit pas de la vente de pièces."
+              "accroche": "Trois formules, Prévention, Zéro arrêt et Zéro arrêt Max",
+              "texte": ", qui diffèrent par la disponibilité et le délai, jamais par les fournitures."
             },
-            "benefice": "La recommandation de remplacement est indépendante de ce qu'elle nous rapporterait."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Besoin d'une intervention ponctuelle avant d'envisager un contrat ? Voir le [dépannage industriel](/offres/depannage-industriel/). Migen est une [entreprise de maintenance industrielle](/offres/) présente partout en France."
+            "benefice": "Vous choisissez un niveau de délai, pas un catalogue. Ce qui fait monter de formule ne s'achète jamais à l'unité."
           }
         ]
       },
@@ -114,28 +111,28 @@
         "type": "deroule",
         "etapes": [
           {
-            "titre": "Le diagnostic gratuit",
-            "texte": "vous remplissez le questionnaire, quelques minutes suffisent, ou vous appelez le 04 78 33 72 05. Aucune contrepartie attendue."
+            "titre": "La visite de votre site",
+            "texte": "le premier mois, le technicien référence vos équipements critiques. La première visite prépare toutes les nuits suivantes."
           },
           {
-            "titre": "L'audit sur site",
-            "texte": "un référent technique visite vos installations, fait l'inventaire et analyse vos historiques de pannes et d'entretien."
+            "titre": "L'organisation des accès nuit et samedi",
+            "texte": "clés, badge, alarme, tout est réglé avant la première intervention."
           },
           {
-            "titre": "Le calcul face à vos chiffres",
-            "texte": "nous additionnons vos douze derniers mois, factures de dépannage, heures de production perdues et temps passé par vos équipes. Ce total est mis en face du montant de l'abonnement."
+            "titre": "Le plan de prévention signé et l'astreinte testée",
+            "texte": "le contrat démarre avec un circuit d'appel qui a déjà fonctionné une fois."
           },
           {
-            "titre": "La recommandation honnête",
-            "texte": "si un abonnement complet ne se justifie pas pour votre site, nous vous le disons et nous proposons le niveau qui convient."
+            "titre": "Vous signalez la panne à l'astreinte",
+            "texte": "par exemple à 14h30, un appel suffit."
           },
           {
-            "titre": "La proposition",
-            "texte": "périmètre, programme de visites, niveaux de service, tarif. Chaque clause se lit sans avocat."
+            "titre": "L'intervention est confirmée pour la nuit",
+            "texte": "à 16h00, pour toute panne signalée avant 16h. Signalée après 16h, l'intervention a lieu la nuit suivante."
           },
           {
-            "titre": "Le démarrage",
-            "texte": "la première visite pose l'état des lieux de référence. Les suivantes déroulent le programme, et les résultats se mesurent : nombre d'incidents, disponibilité, budget tenu."
+            "titre": "Le technicien intervient sur votre site",
+            "texte": "à 22h00, machines à l'arrêt. Votre ligne repart le matin."
           }
         ]
       },
@@ -143,16 +140,20 @@
         "type": "garanties",
         "puces": [
           {
-            "accroche": "Un prix fixe connu d'avance",
-            "texte": "le montant de l'abonnement ne bouge pas en cours de période. Les pièces majeures et les travaux exceptionnels sont chiffrés à part, définis noir sur blanc à la signature."
+            "accroche": "Une intervention garantie par contrat",
+            "texte": "en formule Zéro arrêt, une panne signalée avant 16h est traitée la nuit même. En Zéro arrêt Max, votre site passe devant tout le monde."
           },
           {
-            "accroche": "Des résultats mesurés, pas affirmés",
-            "texte": "nombre d'incidents, disponibilité des équipements, budget tenu. Le programme s'ajuste chaque année sur ces mesures, et l'engagement de 6 mois renouvelable nous oblige à les prouver."
+            "accroche": "Aucune autre ligne n'existe",
+            "texte": "préventifs supplémentaires, tickets de nuit supplémentaires, heures supplémentaires et pièces sont écrits au contrat. Les tarifs des pièces et des heures sont identiques sur les trois formules."
+          },
+          {
+            "accroche": "Une réponse franche sur la couverture",
+            "texte": "couvert, en zone étendue ou refusé, on vous le dit. Nous préférons refuser un contrat que signer une promesse que nous ne tiendrions pas."
           },
           {
             "accroche": "Des attestations transmises, pas des logos",
-            "texte": "démarche MASE pour la sécurité des interventions, évaluation EcoVadis pour la performance RSE. Les attestations partent avec chaque plan de prévention, et les habilitations des techniciens qui entrent sur votre site sont à jour."
+            "texte": "démarche MASE pour la sécurité des interventions, évaluation EcoVadis pour la performance RSE. Les attestations partent avec chaque plan de prévention."
           }
         ]
       },
@@ -195,49 +196,190 @@
         "type": "objections",
         "questions": [
           {
+            "question": "Pour qui est Zéro arrêt ?",
+            "reponse": "Pour les PME industrielles sans service maintenance structuré, ou dont l'équipe est trop limitée pour absorber à la fois les pannes et l'entretien. Partout en France, sans embauche."
+          },
+          {
             "question": "Combien coûte l'abonnement ?",
-            "reponse": "Le montant est établi sur devis, après le diagnostic de vos installations. Il dépend du nombre d'équipements couverts, de la fréquence des visites, des niveaux de service retenus et du volume d'heures inclus. Le diagnostic qui produit ce chiffrage est gratuit, et il vous reste même si vous ne signez pas."
+            "reponse": ""
           },
           {
-            "question": "Sur quelle durée s'engage-t-on ?",
-            "reponse": "L'engagement type est de 6 mois renouvelable. Les conditions de reconduction et de résiliation sont écrites en clair : pas de reconduction piégée, pas de préavis caché. Six mois, c'est assez long pour que la baisse du nombre d'incidents soit mesurable et assez court pour que nous ayons à la démontrer."
+            "question": "Quelle différence entre les trois formules ?",
+            "reponse": "Prévention comprend un préventif le samedi et une astreinte en horaires ouvrés, le dépannage se fait à la demande. Zéro arrêt ajoute un ticket de nuit garanti et l'astreinte 7 jours sur 7. Zéro arrêt Max double les préventifs et les tickets de nuit, et vos interventions deviennent prioritaires."
           },
           {
-            "question": "Nous avons déjà un contrat ailleurs. Comment on bascule ?",
-            "reponse": "Nous préparons la reprise pendant le préavis de votre contrat en cours : inventaire du parc, récupération des historiques et des gammes, reprise du calendrier de visites."
+            "question": "Et si la panne arrive en journée ?",
+            "reponse": "Le dépannage en journée n'est pas dans le périmètre de Zéro arrêt. Signalée avant 16h, la panne est traitée la nuit même ; après 16h, la nuit suivante."
           },
           {
-            "question": "Qui répond de la sécurité pendant les visites ?",
-            "reponse": "Plan de prévention, accueil sécurité, habilitations à jour, respect des consignations et des règles d'accès de votre site. Le contrat précise les obligations de chaque signataire en matière de sécurité et un article dédié à la confidentialité des données techniques."
+            "question": "Pourquoi pas un technicien salarié ?",
+            "reponse": "Un technicien salarié n'est disponible ni la nuit ni le samedi, s'absente six semaines par an, et doit être recruté, équipé et managé. Zéro arrêt couvre la nuit et le samedi, garanti par contrat, opérationnel dès le premier mois."
           },
           {
             "question": "Qui intervient sur nos machines ?",
-            "reponse": "Des techniciens Migen, évalués en entretien technique et comportemental, 10 % des candidats retenus. Sous contrat, c'est le même technicien qui revient : il connaît vos équipements, vos accès et vos contraintes. Toutes les expertises sont mobilisables, mécanique, électricité, automatisme, hydraulique, pneumatique."
-          },
-          {
-            "question": "Couvrez-vous notre région, et les petits sites ?",
-            "reponse": "Oui aux deux. Nous travaillons depuis 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France. Un atelier avec cinq machines critiques justifie un contrat léger mais réel : le programme est dimensionné sur votre réalité, pas sur un catalogue."
+            "reponse": "Des techniciens de maintenance industrielle Migen, à plein temps : électromécaniciens, automaticiens, roboticiens, habitués à intervenir sur des sites et des environnements variés. Votre technicien référent connaît votre site avant la première panne."
           }
         ]
       },
       {
         "type": "ctaFinal",
-        "question": "Besoin d'un budget de maintenance que vous connaissez en janvier plutôt qu'en décembre ?",
-        "bouton": "Lancer mon diagnostic gratuit"
+        "question": "Besoin que l'entretien et les pannes ne touchent plus jamais votre production ?",
+        "bouton": "Demander mon diagnostic gratuit"
       }
     ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
+    "prestationsRegroupees": {
+      "lien": {
+        "libelle": "Décrire mon besoin",
+        "href": "#besoin"
+      },
+      "prestations": [
+        {
+          "titre": "Dépannage industriel",
+          "resume": "En attendant notre arrivée, notre guide sur la panne machine industrielle liste les vérifications utiles et les erreurs à éviter.",
+          "blocs": [
+            {
+              "titre": "Le problème",
+              "puces": [
+                {
+                  "accroche": "Vous cherchez un technicien disponible, pas le bon technicien.",
+                  "texte": "Celui qui décroche n'est pas forcément celui qui connaît votre automate."
+                },
+                {
+                  "accroche": "Le tarif se négocie dans l'urgence.",
+                  "texte": "C'est la pire position d'achat possible, et vous le savez en composant le numéro."
+                },
+                {
+                  "accroche": "Un diagnostic raté immobilise deux jours de plus.",
+                  "texte": "La mauvaise pièce arrive, elle ne résout rien, et la ligne reste à l'arrêt."
+                },
+                {
+                  "accroche": "La panne revient.",
+                  "texte": "Personne n'a cherché la cause racine, alors vous repayez la même intervention dans six semaines."
+                }
+              ]
+            },
+            {
+              "titre": "L’offre",
+              "tableau": {
+                "entetes": [
+                  "Ce que nous faisons",
+                  "Ce que ça change pour vous"
+                ],
+                "lignes": [
+                  [
+                    "Un rappel dans l'heure par un interlocuteur technique, pas par un standard.",
+                    "Le diagnostic commence avant que quiconque prenne la route. Vous savez tout de suite si c'est traitable."
+                  ],
+                  [
+                    "Le choix du technicien sur votre matériel et votre secteur, pas sur la disponibilité du moment.",
+                    "Celui qui arrive a déjà vu votre type de machine. La recherche de panne ne se paie pas deux fois."
+                  ],
+                  [
+                    "Toutes les technologies couvertes en urgence : mécanique, électricité industrielle, automatisme, hydraulique, pneumatique, électromécanique, soudure de réparation.",
+                    "Un seul numéro, quel que soit l'organe en défaut. Pas de renvoi vers un autre prestataire."
+                  ],
+                  [
+                    "Une astreinte avec un circuit d'appel convenu à l'avance. Voir l'astreinte de maintenance.",
+                    "La nuit et le week-end cessent d'être des zones mortes pour vos machines critiques."
+                  ],
+                  [
+                    "La recherche de la cause racine, pas seulement le redémarrage.",
+                    "Une défaillance traitée en profondeur ne dégénère pas en usure prématurée de toute la machine."
+                  ],
+                  [
+                    "Un devis annoncé avant l'intervention : périmètre, délai de mobilisation et conditions.",
+                    "Pas de frais cachés découverts sur la facture. Le dépannage reste facturé à l'intervention."
+                  ],
+                  [
+                    "Un rapport après chaque passage : cause racine, travaux, pièces remplacées, pièces à tenir en stock.",
+                    "Vous évitez la prochaine immobilisation pour la même raison, et votre GMAO s'enrichit."
+                  ]
+                ]
+              }
+            },
+            {
+              "titre": "Le déroulé",
+              "puces": [
+                {
+                  "accroche": "Diagnostic à distance, dans l'heure",
+                  "texte": "équipement concerné, symptômes, code défaut affiché par l'automate, niveau de risque pour votre production. Vous ne savez pas tout ? Nous reconstituons avec vous."
+                },
+                {
+                  "accroche": "Choix du bon expert",
+                  "texte": "nous sélectionnons le technicien dont l'expertise correspond à votre matériel, et nous annonçons le délai de mobilisation dès cet échange, avec le devis."
+                },
+                {
+                  "accroche": "Intervention avec un ordre écrit",
+                  "texte": "diagnostic, réparation, contrôle, essais, compte rendu. Vous connaissez le déroulé avant l'arrivée sur site."
+                },
+                {
+                  "accroche": "Réparation et remise en service",
+                  "texte": "isolement de la cause, remplacement du composant en défaut, réglage, accompagnement du redémarrage en sécurité."
+                },
+                {
+                  "accroche": "Compte rendu et suite",
+                  "texte": "cause racine, travaux réalisés, pièces posées, recommandations d'entretien. Si les pannes se répètent, nous vous présentons le comparatif chiffré avec l'abonnement."
+                }
+              ]
+            },
+            {
+              "titre": "Nos garanties",
+              "puces": [
+                {
+                  "accroche": "Un rappel dans l'heure ouvrée, et une astreinte qui décroche le reste du temps",
+                  "texte": "par téléphone est la même porte d'entrée, jour et nuit."
+                },
+                {
+                  "accroche": "Un technicien évalué et habilité",
+                  "texte": "10 % des candidats retenus, habilitations et certifications exigées par votre site, traçabilité conçue pour s'intégrer dans votre système qualité, y compris chez les industriels certifiés ISO 9001."
+                },
+                {
+                  "accroche": "Ni fabricant ni distributeur",
+                  "texte": "nous n'assurons pas la vente de machines ni de pièces. Nous vous communiquons le délai avant toute commande, donc le conseil de remplacement est indépendant."
+                },
+                {
+                  "accroche": "Les attestations MASE et EcoVadis transmises avec chaque plan de prévention",
+                  "texte": "la démarche MASE encadre la sécurité de nos interventions, l'évaluation EcoVadis documente notre performance RSE. Vos services QHSE et achats reçoivent les attestations avec le plan, sans avoir à les réclamer."
+                }
+              ]
+            }
+          ],
+          "questions": [
+            {
+              "question": "Combien coûte un dépannage industriel ?",
+              "reponse": "Le devis est annoncé dès le rappel, avant l'intervention : périmètre, délai de mobilisation, conditions. Si une pièce doit être approvisionnée, nous la sourçons auprès du fabricant ou d'un distributeur et nous vous communiquons le délai avant toute commande."
+            },
+            {
+              "question": "Faut-il un contrat pour être dépanné ?",
+              "reponse": "Non. Une panne, une intervention, une facture. Le dépannage est une prestation ponctuelle. Si les pannes se répètent sur le même équipement, nous vous montrons le calcul face à l'abonnement Zéro arrêt, et vous décidez : après la troisième intervention, l'abonnement coûte moins cher."
+            },
+            {
+              "question": "Nous avons déjà un prestataire sous contrat. Pouvez-vous intervenir quand même ?",
+              "reponse": "Oui. Un dépannage ponctuel reste une prestation isolée, distincte de votre contrat en cours, et nous intervenons en complément quand votre prestataire habituel n'a pas la compétence ou la disponibilité. Le rapport vous appartient et reste exploitable par votre titulaire."
+            },
+            {
+              "question": "Comment gérez-vous la sécurité sur une intervention en urgence ?",
+              "reponse": "L'urgence ne suspend aucune règle. Plan de prévention, accueil sécurité, habilitations, permis de travail, consignations : nos techniciens interviennent avec les habilitations et certifications exigées par chaque site. Chaque étape, du diagnostic à la remise en service, est tracée pour tenir dans un audit."
+            },
+            {
+              "question": "Qui intervient vraiment ?",
+              "reponse": "Des techniciens salariés de Migen, évalués en entretien sur la technique et sur le comportement, 10 % des candidats retenus. Les spécialités sont couvertes en interne : automatisme, électricité industrielle, électromécanique, mécanique, hydraulique, pneumatique."
+            },
+            {
+              "question": "Intervenez-vous partout en France, et la nuit ?",
+              "reponse": "Oui aux deux. Nous partons du bassin le plus proche, depuis nos 4 agences et nos hubs de techniciens dans les grandes villes de France. L'astreinte fonctionne. Pour un besoin récurrent hors heures ouvrées, l'astreinte est la formule adaptée."
+            }
+          ]
+        }
+      ]
+    },
+    "autresSurtitre": "Nos autres offres",
+    "autresTitre": "Un autre besoin ? Il a son offre.",
     "autres": [
       {
         "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
         "libelle": "Résidence",
         "href": "/offres/residence/"
-      },
-      {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
       },
       {
         "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
@@ -250,9 +392,14 @@
         "href": "/offres/bureau-etudes/"
       },
       {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
+        "phrase": "« J'ai un chantier à mener, du relevé à la remise en production. »",
+        "libelle": "Travaux industriels",
+        "href": "/travaux-industriels/"
+      },
+      {
+        "phrase": "« Je veux savoir d'où partent vos techniciens. »",
+        "libelle": "Nos hubs",
+        "href": "/implantations/"
       }
     ],
     "casLies": [

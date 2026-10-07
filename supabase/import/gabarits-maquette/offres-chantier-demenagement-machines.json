@@ -1,8 +1,13 @@
 {
   "url": "/offres/chantier/demenagement-machines/",
+  "titre_h1": "Déménagement de machines industrielles",
+  "_reference": "maquette/rendu/offres--chantier--demenagement-machines.html, 19 sections. Porté le 07/10. Les écarts avec le corpus sont ceux de la capture, qui fait foi (décision Mehdi 06/10) : la bande de chiffres porte « + 120 collaborateurs » là où le markdown écrit « + 100 », et le héros de la capture ne rend ni chapeau ni bouton (défaut de liaison du gabarit 03 hors des six offres nommées) ; le site les garde, la porte ne contrôle que l'absence, pas le surplus.",
+  "_punchlineVide": "sections[0].punchline est VIDE À DESSEIN. La capture rend un h2 vide dans « 03 Problème » : le gabarit 03 lit la punchline dans ses données `of.*`, qui n'existent que pour les six offres nommées. Même défaut que les 8 pages de docs/MESURE-MAQUETTE.md §2. Le corpus porte bien la phrase (« Une machine mal déposée, ce sont deux jours d'immobilisation en plus. Parfois davantage. ») : elle n'est pas rendue parce que la référence ne la rend pas, elle n'est pas réécrite non plus. À faire corriger DANS LA MAQUETTE, puis à recapturer.",
+  "_photos": "Les quatre photos de « Réalisations liées » ne sont dans aucun fichier du dépôt : extraites des octets de l'application (XHR sur le blob, piège n° 5), vérifiées par sha256 avec contrôle positif sur faq-offres.jpg, déposées sous /assets/maquette/ et nommées par l'empreinte de leur contenu, pour que deux pages qui partagent une photo écrivent le même fichier.",
   "contenu": {
     "gabarit": "offre",
-    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30",
+    "pastille": "Nos offres",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
     "chapeau": "**À l'arrivée, votre machine ne fait pas que voyager : elle produit.** Remise en service comprise.",
     "actions": [
       {
@@ -12,35 +17,34 @@
     ],
     "formulaireHeroTitre": "Décrire mon besoin",
     "formulaireHeroMention": "Rappel dans l'heure",
-    "brefSurtitre": "En bref",
-    "brefTitre": "Le cadre, en quatre chiffres.",
     "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+        "libelle": "Des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
       },
       {
-        "valeur": "+ 100",
-        "libelle": "collaborateurs · techniciens salariés, mobilisables partout en France."
+        "valeur": "+ 120",
+        "libelle": "Collaborateurs · techniciens salariés, mobilisables partout en France."
       },
       {
-        "valeur": "+ 80",
-        "libelle": "clients réguliers · sur plus de 120 clients industriels."
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "4",
-        "libelle": "agences · Lyon (siège), Montréal, Dubaï, Madrid."
+        "libelle": "Agences · Lyon (siège), Montréal, Dubaï, Madrid."
       }
     ],
     "brefBande": "Besoin de déplacer une machine ou un parc sans casser la cadence ?",
+    "brefMention": "Faire chiffrer mon déménagement de machines Un chargé d'affaires vous rappelle dans l'heure et cale la visite d'étude.",
     "brefBouton": {
-      "libelle": "Faire chiffrer mon déménagement de machines",
-      "href": "/contact/"
+      "libelle": "Demander un devis",
+      "href": "#besoin"
     },
     "sections": [
       {
         "type": "probleme",
-        "punchline": "Une machine mal déposée, ce sont deux jours d'immobilisation en plus. Parfois davantage.",
+        "punchline": "",
         "puces": [
           {
             "accroche": "Le déménageur d'entreprise",
@@ -213,38 +217,82 @@
         "rappel": "04 78 33 72 05, astreinte 24/24 et 7/7."
       }
     ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
+    "complementOffre": [
       {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
+        "texte": "Hors périmètre, sans ambiguïté. Archives, bureaux, particuliers, garde-meuble, vente de matériel. Si votre demande relève du tertiaire, nous le disons tout de suite."
+      }
+    ],
+    "marquesFamille": "mo",
+    "pagesLiees": [
+      {
+        "titre": "Technicien en résidence",
+        "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
+        "href": "/offres/residence/",
+        "photo": "/assets/web/team-duo.jpg"
       },
       {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
+        "titre": "Zéro arrêt",
+        "phrase": "La maintenance en abonnement, au forfait mensuel.",
+        "href": "/offres/zero-arret/",
+        "photo": "/assets/web/ph-technicien.jpg"
       },
       {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
+        "titre": "Arrêt technique",
+        "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
+        "href": "/offres/arret-technique/",
+        "photo": "/assets/web/ph-hero-raffinerie.jpg"
       },
       {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
+        "titre": "Full service",
+        "phrase": "Toute votre maintenance, un seul partenaire.",
+        "href": "/offres/full-service/",
+        "photo": "/assets/web/team-grind-front.jpg"
       },
       {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
+        "titre": "Travaux industriels",
+        "phrase": "Transfert, démantèlement, démontage et montage.",
+        "href": "/travaux-industriels/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
       },
       {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
+        "titre": "Bureau d'études",
+        "phrase": "Conception, retrofit et mise en conformité.",
+        "href": "/offres/bureau-etudes/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      }
+    ],
+    "casLies": [
+      {
+        "url": "/preuves/savoye-migration-automates-norvege/",
+        "client": "Savoye",
+        "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
+        "photo": "/assets/maquette/15bdb671c93a.jpg",
+        "aLaUne": "À la une · Savoye, Norvège",
+        "resume": "Étude, préparation et migration d'automates sur un site intralogistique en exploitation : deux week-ends, zéro jour de production perdu."
+      },
+      {
+        "url": "/preuves/bamesa/",
+        "client": "Bamesa",
+        "titre": "La maintenance tient pendant que l'équipe recrute",
+        "photo": "/assets/maquette/17de439bc669.jpg"
+      },
+      {
+        "url": "/preuves/eriks/",
+        "client": "ERIKS",
+        "titre": "Un responsable maintenance pour traverser la transition",
+        "photo": "/assets/maquette/17de439bc669.jpg"
+      },
+      {
+        "url": "/preuves/aktid-centre-logistique/",
+        "client": "Aktid",
+        "titre": "Un centre logistique monté en six semaines",
+        "photo": "/assets/maquette/39276c98747c.jpg"
+      },
+      {
+        "url": "/preuves/salaison-du-maconnais/",
+        "client": "Salaison du Mâconnais",
+        "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
+        "photo": "/assets/maquette/a58d2d5d40d2.jpg"
       }
     ]
   }

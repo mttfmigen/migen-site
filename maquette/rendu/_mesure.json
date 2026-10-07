@@ -1,18 +1,18 @@
 {
-  "date": "2026-10-06T20:10:01.852Z",
+  "date": "2026-10-07T08:10:58.751Z",
   "maquette": "http://localhost:4352/autonome.html",
   "compte": {
-    "rendue": 1
+    "rendue-sans-titre": 1
   },
   "resultats": [
     {
-      "url": "/offres/",
-      "gabarit": "10 Hub de rubrique",
-      "verdict": "rendue",
+      "url": "/offres/depannage-industriel/panne-machine/",
+      "gabarit": "03 Offre et prestation",
+      "verdict": "rendue-sans-titre",
       "nbSections": 19,
-      "hauteurTotale": 9789,
-      "motsAnnonces": 1311,
-      "motsRendus": 1501
+      "hauteurTotale": 9107,
+      "motsAnnonces": 1452,
+      "motsRendus": 1240
     }
   ]
 }

@@ -19,8 +19,11 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { chromium } from "playwright";
 
-const MAQUETTE = "http://localhost:4352/voir.html?url=/offres/residence/";
-const SITE = "http://localhost:4340/offres/residence/";
+/* La page se passe en argument : `node scripts/diff-visuel-offre.mjs /offres/`.
+   Sans argument, la page pilote validée par Mehdi le 06/10. */
+const CHEMIN = process.argv[2] ?? "/offres/residence/";
+const MAQUETTE = `http://localhost:4352/voir.html?url=${CHEMIN}`;
+const SITE = `http://localhost:4340${CHEMIN}`;
 const SORTIE = "/tmp/diff-offre";
 
 /** Au-delà de ce delta par canal, deux pixels sont dits différents. */

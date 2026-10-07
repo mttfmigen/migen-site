@@ -8,6 +8,7 @@ import {
   SURTITRE,
   VERRE,
 } from "@/components/site/blocs/habillage";
+import type { RepereOffre } from "@/types/offre";
 
 /**
  * Section « Réassurance » de la capture (`maquette/rendu/offres--residence.html`) :
@@ -74,7 +75,19 @@ const PUCE_HUB: CSSProperties = {
   color: "rgba(255,255,255,.75)",
 };
 
-/** Les trois repères du panneau, texte fixe de la capture. */
+/**
+ * Les trois repères du panneau, DÉFAUT du gabarit : celui de la capture de la
+ * page pilote `/offres/residence/`.
+ *
+ * ILS NE SONT PAS LES MÊMES PARTOUT, et c'est mesuré le 07/10 sur les
+ * captures : `/travaux-industriels/` et ses sous-pages (dont
+ * `/travaux-industriels/levage-manutention/`) écrivent les métiers du chantier
+ * (« Chefs de chantier », « Monteurs et levageurs », « Un interlocuteur »),
+ * `/offres/bureau-etudes/` écrit ceux de l'étude (« Ingénieurs »,
+ * « Projeteurs », « Chefs de projet »). La page les fournit donc par
+ * `ContenuOffre.reperesReassurance`. Sans ce champ, le défaut ci-dessous est
+ * servi et aucune page déjà portée ne bouge.
+ */
 const REPERES = [
   { valeur: "10 %", libelle: "des candidats retenus" },
   {
@@ -98,7 +111,14 @@ const HUBS = [
   "Nantes",
 ] as const;
 
-export default function Reassurance() {
+export interface ProprietesReassurance {
+  /** Les trois repères de « Qui intervient chez vous ». À défaut, ceux de la capture pilote. */
+  reperes?: readonly RepereOffre[];
+}
+
+export default function Reassurance({
+  reperes = REPERES,
+}: ProprietesReassurance) {
   return (
     <section style={SECTION}>
       <div style={LARGEUR}>
@@ -164,7 +184,7 @@ export default function Reassurance() {
                   gap: 20,
                 }}
               >
-                {REPERES.map((repere) => (
+                {reperes.map((repere) => (
                   <div key={repere.valeur}>
                     <div style={REPERE_VALEUR}>{repere.valeur}</div>
                     <div style={REPERE_LIBELLE}>{repere.libelle}</div>

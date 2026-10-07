@@ -86,7 +86,20 @@ export default function GarantiesOffre({ section }: ProprietesGarantiesOffre) {
                 {puce.accroche ? (
                   <div style={CARTE_TITRE}>{puce.accroche}</div>
                 ) : null}
-                <div style={CARTE_TEXTE}>{majusculeInitiale(puce.texte)}</div>
+                {/* LA MAJUSCULE N'EST PAS SYSTÉMATIQUE, et c'est mesuré sur les
+                    captures, pas choisi ici : la maquette la met quand le
+                    corpus sépare l'accroche par « : » (pilote
+                    `/offres/residence/`, « absence ou départ… » rendu
+                    « Absence ou départ… ») et laisse le texte TEL QUEL quand
+                    la phrase continue l'accroche (« Un seul interlocuteur »
+                    puis « de l'accueil de votre demande… », capture de
+                    `/bureau-etudes/mise-en-conformite-machine/`). Le
+                    séparateur n'est pas dans la donnée : la page le dit par
+                    `puce.suitAccroche`. Absent, le rendu d'avant, donc les
+                    pages déjà portées ne bougent pas. */}
+                <div style={CARTE_TEXTE}>
+                  {puce.suitAccroche ? puce.texte : majusculeInitiale(puce.texte)}
+                </div>
               </div>
             ))}
           </div>

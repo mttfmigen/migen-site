@@ -175,7 +175,7 @@ export default function ReferencesOffre({ section }: ProprietesReferencesOffre) 
             >
               <div style={CADRE_PHOTO}>
                 <Image
-                  src={PHOTOS[rang % PHOTOS.length]}
+                  src={preuve.photo ?? PHOTOS[rang % PHOTOS.length]}
                   alt=""
                   fill
                   sizes="320px"

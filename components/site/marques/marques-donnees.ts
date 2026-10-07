@@ -8,12 +8,21 @@
  * exécution et refuse la moindre divergence.
  *
  * LES CHEMINS DE LOGO viennent de `public/assets/fab/brands.json`, déposé avec
- * les fichiers. Treize des soixante-sept images manquent encore du dépôt, et
- * deux autres portent le logo d'une tout autre société (voir `LOGOS_ECARTES`) :
- * ces quinze constructeurs portent `logo: null` et la tuile rend alors leur nom
- * en texte. Rien n'est remplacé par le logo d'un autre, et rien n'est inventé.
+ * les fichiers. Six des soixante-sept images manquent encore du dépôt, et deux
+ * autres portent le logo d'une tout autre société (voir `LOGOS_ECARTES`) : ces
+ * huit constructeurs portent `logo: null` et la tuile rend alors leur nom en
+ * texte. Rien n'est remplacé par le logo d'un autre, et rien n'est inventé.
  * Le jour où un fichier arrive, le contrôle échoue et réclame son chemin :
  * c'est voulu.
+ *
+ * Le 07/10, sept images ont été rapatriées de la maquette Claude Design
+ * (ABB Robotics, Amada, Billion, Coperion, Davis-Standard, Haas, Hurco) :
+ * octets identiques à la source, en-tête conforme à l'extension, et chacune
+ * ouverte à l'œil pour vérifier qu'elle porte bien la marque annoncée.
+ * Les SIX dernières (Leroy-Somer, Yaskawa, Wittmann, Sidel, TGW, Seepex)
+ * existent dans la même maquette, sous les noms que `brands.json` déclare
+ * déjà : elles n'ont pas été rapatriées parce que la demande ne portait que
+ * sur les sept ci-dessus. Écart signalé, pas tranché.
  */
 
 export interface Marque {
@@ -73,7 +82,7 @@ export const FAMILLES: readonly FamilleMarques[] = [
     marques: [
       { nom: "Fanuc", logo: "/assets/fab/fanuc.png" },
       { nom: "KUKA", logo: "/assets/fab/kuka.svg" },
-      { nom: "ABB Robotics", logo: null },
+      { nom: "ABB Robotics", logo: "/assets/fab/abb-robotics.webp" },
       { nom: "Yaskawa", logo: null },
       { nom: "Kawasaki Robotics", logo: "/assets/fab/kawasaki-robotics.svg" },
       { nom: "Stäubli", logo: "/assets/fab/staubli.svg" },
@@ -88,12 +97,12 @@ export const FAMILLES: readonly FamilleMarques[] = [
       { nom: "DMG Mori", logo: "/assets/fab/dmg-mori.svg" },
       { nom: "Okuma", logo: "/assets/fab/okuma.svg" },
       { nom: "Makino", logo: "/assets/fab/makino.svg" },
-      { nom: "Haas", logo: null },
+      { nom: "Haas", logo: "/assets/fab/haas.png" },
       { nom: "Hermle", logo: "/assets/fab/hermle.svg" },
       { nom: "DN Solutions", logo: "/assets/fab/dn-solutions.svg" },
       { nom: "Hyundai Wia", logo: "/assets/fab/hyundai-wia.svg" },
-      { nom: "Hurco", logo: null },
-      { nom: "Amada", logo: null },
+      { nom: "Hurco", logo: "/assets/fab/hurco.png" },
+      { nom: "Amada", logo: "/assets/fab/amada.png" },
       { nom: "Trumpf", logo: "/assets/fab/trumpf.svg" },
       { nom: "Salvagnini", logo: null },
       { nom: "LVD", logo: "/assets/fab/lvd.svg" },
@@ -108,10 +117,10 @@ export const FAMILLES: readonly FamilleMarques[] = [
       { nom: "Sumitomo Demag", logo: "/assets/fab/sumitomo-demag.svg" },
       { nom: "Haitian", logo: "/assets/fab/haitian.svg" },
       { nom: "Wittmann", logo: null },
-      { nom: "Billion", logo: null },
+      { nom: "Billion", logo: "/assets/fab/billion.png" },
       { nom: "Reifenhäuser", logo: "/assets/fab/reifenhauser.svg" },
-      { nom: "Davis-Standard", logo: null },
-      { nom: "Coperion", logo: null },
+      { nom: "Davis-Standard", logo: "/assets/fab/davis-standard.png" },
+      { nom: "Coperion", logo: "/assets/fab/coperion.png" },
       { nom: "Clextral", logo: "/assets/fab/clextral.svg" },
     ],
   },

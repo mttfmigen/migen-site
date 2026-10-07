@@ -2,37 +2,31 @@
   "url": "/offres/retrofit/mise-en-conformite-machine/",
   "contenu": {
     "gabarit": "offre",
-    "mention": ", du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 pour les équipements arrêtés",
+    "pastille": "Nos offres",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
     "chapeau": "Audit du parc machine par machine, analyse de risques chiffrée, travaux exécutés par nos techniciens, dossier technique remis à l'organisme accrédité de votre choix.",
-    "actions": [
-      {
-        "libelle": "Les cinq offres",
-        "href": "/offres/"
-      }
-    ],
-    "formulaireHeroTitre": "Décrire mon besoin",
+    "formulaireHeroTitre": "Faire auditer mes machines",
     "formulaireHeroMention": "Rappel dans l'heure",
-    "brefSurtitre": "En bref",
-    "brefTitre": "Le cadre, en quatre chiffres.",
     "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, après entretien technique et comportemental."
-      },
-      {
-        "valeur": "+ 100",
-        "libelle": "collaborateurs, techniciens et ingénieurs salariés."
+        "libelle": "Des candidats retenus, après entretien technique et comportemental."
       },
       {
         "valeur": "+ 120",
-        "libelle": "clients industriels, dont plus de 80 réguliers."
+        "libelle": "Collaborateurs, techniciens et ingénieurs salariés."
+      },
+      {
+        "valeur": "+ 80",
+        "libelle": "Clients réguliers · sur plus de 120 clients industriels."
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid."
+        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid."
       }
     ],
     "brefBande": "Besoin de savoir combien de machines de votre parc sont hors des clous ?",
+    "brefMention": "Un audit chiffré vaut mieux qu'une intuition. Le formulaire prend quatre champs.",
     "brefBouton": {
       "libelle": "Faire auditer mes machines",
       "href": "/contact/"
@@ -69,7 +63,7 @@
           {
             "prestation": {
               "accroche": "Analyse de risques",
-              "texte": "poste par poste, appuyée sur les normes d'appréciation du risque"
+              "texte": ", poste par poste, appuyée sur les normes d'appréciation du risque"
             },
             "benefice": "Chaque mesure proposée est justifiée. L'analyse alimente aussi votre document unique"
           },
@@ -83,7 +77,7 @@
           {
             "prestation": {
               "accroche": "Travaux",
-              "texte": "en mécanique, électricité et automatisme, coordonnés avec la production"
+              "texte": ", en mécanique, électricité et automatisme, coordonnés avec la production"
             },
             "benefice": "Les opérations se calent sur vos arrêts. La ligne ne s'arrête pas pour nous"
           },
@@ -97,7 +91,7 @@
           {
             "prestation": {
               "accroche": "Préparation et assistance à la visite",
-              "texte": "de l'organisme accrédité, levée des réserves"
+              "texte": ", de l'organisme accrédité, levée des réserves"
             },
             "benefice": "Vous arrivez à la vérification avec un dossier propre, pas avec des questions ouvertes"
           }
@@ -141,15 +135,15 @@
         "puces": [
           {
             "accroche": "Un rappel dans l'heure",
-            "texte": ", du lundi au vendredi de 8h00 à 18h30, et une astreinte 24/24 et 7/7 au 04 78 33 72 05 quand un équipement est immobilisé."
+            "texte": ", du lundi au vendredi de 8h00 à 18h30, et une astreinte par téléphone quand un équipement est immobilisé."
           },
           {
             "accroche": "Un seul interlocuteur",
-            "texte": "de l'accueil de votre demande jusqu'à la levée des réserves. Personne ne prend votre dossier en marche."
+            "texte": " de l'accueil de votre demande jusqu'à la levée des réserves. Personne ne prend votre dossier en marche."
           },
           {
             "accroche": "Des techniciens salariés Migen, évalués",
-            "texte": "en entretien technique et comportemental : seuls 10 % des candidats sont retenus. Sur un chantier de sécurité, ce filtre n'est pas décoratif."
+            "texte": " en entretien technique et comportemental : seuls 10 % des candidats sont retenus. Sur un chantier de sécurité, ce filtre n'est pas décoratif."
           }
         ]
       },
@@ -157,16 +151,32 @@
         "type": "preuves",
         "preuves": [
           {
-            "titre": "[Étude de cas JOINT LYONNAIS : défaillances machines](/preuves/joint-lyonnais/) · Lyon, depuis février 2024. Diagnostic sur site et plusieurs solutions chiffrées, calées sur le budget d'une PME, plutôt qu'un rachat de matériel."
+            "titre": "Étude de cas JOINT LYONNAIS : défaillances machines",
+            "texte": "Lyon, depuis février 2024. Diagnostic sur site et plusieurs solutions chiffrées, calées sur le budget d'une PME, plutôt qu'un rachat de matériel.",
+            "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines",
+            "lienHref": "/preuves/joint-lyonnais/",
+            "photo": "/assets/web/x-technicienne-gilet.jpg"
           },
           {
-            "titre": "[Étude de cas SUEZ : remise en état d'un site](/preuves/suez-remise-en-etat/) · Un technicien électromécanicien mobilisé six mois en environnement à risque chimique."
+            "titre": "Étude de cas SUEZ : remise en état d'un site",
+            "texte": "Un technicien électromécanicien mobilisé six mois en environnement à risque chimique.",
+            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "photo": "/assets/web/x-meulage-etincelles.jpg"
           },
           {
-            "titre": "[Étude de cas EIFFAGE : partenariat](/preuves/eiffage/) · Trois techniciens en préventif sur une installation photovoltaïque de grande envergure."
+            "titre": "Étude de cas EIFFAGE : partenariat",
+            "texte": "Trois techniciens en préventif sur une installation photovoltaïque de grande envergure.",
+            "lienLibelle": "Étude de cas EIFFAGE : partenariat",
+            "lienHref": "/preuves/eiffage/",
+            "photo": "/assets/web/x-tableau-ceinture.jpg"
           },
           {
-            "titre": "[Étude de cas SOPREMA : travaux ponctuels](/preuves/soprema/) · Montage, déplacement de machines et renfort technique sur chantiers."
+            "titre": "Étude de cas SOPREMA : travaux ponctuels",
+            "texte": "Montage, déplacement de machines et renfort technique sur chantiers.",
+            "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
+            "lienHref": "/preuves/soprema/",
+            "photo": "/assets/web/x-duo-hall.jpg"
           }
         ]
       },
@@ -203,42 +213,82 @@
         "type": "ctaFinal",
         "question": "Besoin d'un plan d'actions chiffré avant votre prochain contrôle ?",
         "bouton": "Faire auditer mes machines",
-        "href": "/contact/",
-        "rappel": "04 78 33 72 05"
+        "href": "/contact/"
       }
     ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
+    "complementOffre": [
       {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
+        "texte": "Ce que nous ne faisons pas, par principe. Nous ne délivrons jamais nous-mêmes l'attestation de conformité. La vérification finale revient à un organisme accrédité indépendant, que vous choisissez. Celui qui réalise les travaux ne doit pas être celui qui les juge."
+      }
+    ],
+    "complementGaranties": [
+      {
+        "texte": "Les pièces, sans avoir à les réclamer. Nos attestations partent avec chaque plan de prévention : démarche MASE pour la sécurité des interventions, évaluation EcoVadis pour la performance RSE."
+      }
+    ],
+    "marquesFamille": "mo",
+    "pagesLiees": [
+      {
+        "titre": "Technicien en résidence",
+        "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
+        "href": "/offres/residence/",
+        "photo": "/assets/web/team-duo.jpg"
       },
       {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
+        "titre": "Zéro arrêt",
+        "phrase": "La maintenance en abonnement, au forfait mensuel.",
+        "href": "/offres/zero-arret/",
+        "photo": "/assets/web/ph-technicien.jpg"
       },
       {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
+        "titre": "Arrêt technique",
+        "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
+        "href": "/offres/arret-technique/",
+        "photo": "/assets/web/ph-hero-raffinerie.jpg"
       },
       {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
+        "titre": "Full service",
+        "phrase": "Toute votre maintenance, un seul partenaire.",
+        "href": "/offres/full-service/",
+        "photo": "/assets/web/team-grind-front.jpg"
       },
       {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
+        "titre": "Travaux industriels",
+        "phrase": "Transfert, démantèlement, démontage et montage.",
+        "href": "/travaux-industriels/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
       },
       {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
+        "titre": "Bureau d'études",
+        "phrase": "Conception, retrofit et mise en conformité.",
+        "href": "/offres/bureau-etudes/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      }
+    ],
+    "casLies": [
+      {
+        "url": "/preuves/dimomaint/",
+        "client": "DimoMaint",
+        "titre": "La GMAO planifie, nos techniciens interviennent",
+        "photo": "/assets/web/x-duo-hall.jpg"
+      },
+      {
+        "url": "/preuves/vpk/",
+        "client": "VPK",
+        "titre": "Une usine de carton en 3x8, un technicien qui tient la cadence",
+        "photo": "/assets/web/mq-15bdb671c93a.jpg"
+      },
+      {
+        "url": "/preuves/jacquet-brossard/",
+        "client": "Jacquet Brossard",
+        "titre": "Une ligne de pain de mie suivie à chaque poste",
+        "photo": "/assets/web/x-usine-tours.jpg"
+      },
+      {
+        "url": "/preuves/mersen/",
+        "client": "Mersen",
+        "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
+        "photo": "/assets/web/x-meulage-etincelles.jpg"
       }
     ]
   }

@@ -1,8 +1,10 @@
 {
   "url": "/offres/retrofit/remise-en-etat/",
+  "titre_h1": "Remise en état machine industrielle",
   "contenu": {
     "gabarit": "offre",
-    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30",
+    "pastille": "Nos offres",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
     "chapeau": "**Une machine fatiguée n'est pas une machine finie.** Elle produit de nouveau à la cote, pour une fraction du prix du neuf.",
     "actions": [
       {
@@ -16,26 +18,27 @@
     "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+        "libelle": "Des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
       },
       {
         "valeur": "+ 80",
-        "libelle": "clients réguliers · sur plus de 120 clients industriels."
+        "libelle": "Clients réguliers · sur plus de 120 clients industriels."
       },
       {
         "valeur": "8",
-        "libelle": "domaines couverts · mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie, robotique."
+        "libelle": "Domaines couverts · mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie, robotique."
       }
     ],
     "brefBande": "Besoin de savoir si votre machine peut retrouver sa cote ?",
+    "brefMention": "Faire expertiser ma machine Un chargé d'affaires vous rappelle dans l'heure et organise l'état des lieux.",
     "brefBouton": {
-      "libelle": "Faire expertiser ma machine",
-      "href": "/contact/"
+      "libelle": "Demander un devis",
+      "href": "#besoin"
     },
     "sections": [
       {
         "type": "probleme",
-        "punchline": "Le dépannage revient tous les mois, et personne n'a jamais cherché la cause racine.",
+        "punchline": "",
         "puces": [
           {
             "accroche": "La précision qui dérive",
@@ -212,38 +215,73 @@
         "rappel": "04 78 33 72 05, astreinte 24/24 et 7/7."
       }
     ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
+    "complementOffre": [
       {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
+        "texte": "Vente de machines et négoce d'équipement d'occasion. Cette indépendance est ce qui rend le conseil utilisable."
+      }
+    ],
+    "pagesLiees": [
+      {
+        "titre": "Technicien en résidence",
+        "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
+        "href": "/offres/residence/",
+        "photo": "/assets/web/team-duo.jpg"
       },
       {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
+        "titre": "Zéro arrêt",
+        "phrase": "La maintenance en abonnement, au forfait mensuel.",
+        "href": "/offres/zero-arret/",
+        "photo": "/assets/web/ph-technicien.jpg"
       },
       {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
+        "titre": "Arrêt technique",
+        "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
+        "href": "/offres/arret-technique/",
+        "photo": "/assets/web/ph-hero-raffinerie.jpg"
       },
       {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
+        "titre": "Full service",
+        "phrase": "Toute votre maintenance, un seul partenaire.",
+        "href": "/offres/full-service/",
+        "photo": "/assets/web/team-grind-front.jpg"
       },
       {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
+        "titre": "Travaux industriels",
+        "phrase": "Transfert, démantèlement, démontage et montage.",
+        "href": "/travaux-industriels/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
       },
       {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
+        "titre": "Bureau d’études",
+        "phrase": "Conception, retrofit et mise en conformité.",
+        "href": "/offres/bureau-etudes/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      }
+    ],
+    "casLies": [
+      {
+        "url": "/preuves/vpk/",
+        "client": "VPK",
+        "titre": "Une usine de carton en 3x8, un technicien qui tient la cadence",
+        "photo": "/assets/web/ph-tuyaux.jpg"
+      },
+      {
+        "url": "/preuves/aktid-centre-logistique/",
+        "client": "Aktid",
+        "titre": "Un centre logistique monté en six semaines",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      },
+      {
+        "url": "/preuves/tournaire/",
+        "client": "Tournaire",
+        "titre": "",
+        "photo": "/assets/web/team-grind-close.jpg"
+      },
+      {
+        "url": "/preuves/eriks/",
+        "client": "ERIKS",
+        "titre": "Un responsable maintenance pour traverser la transition",
+        "photo": "/assets/web/ph-technicien.jpg"
       }
     ]
   }

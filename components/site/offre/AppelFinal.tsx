@@ -30,6 +30,12 @@ export interface ProprietesAppelFinal {
   question?: string;
   /** Identifiant d'analyse des soumissions, repris par HubSpot. */
   formulaire: string;
+  /**
+   * L'en-tête du panneau de formulaire. À défaut, le libellé relevé sur la
+   * capture de la page pilote. AJOUTÉ LE 07/10 : la capture de
+   * `/offres/zero-arret/` écrit « Demander mon diagnostic gratuit ».
+   */
+  bouton?: string;
 }
 
 const PANNEAU: CSSProperties = {
@@ -68,7 +74,11 @@ const TEXTE: CSSProperties = {
   maxWidth: "40ch",
 };
 
-export default function AppelFinal({ question, formulaire }: ProprietesAppelFinal) {
+export default function AppelFinal({
+  question,
+  formulaire,
+  bouton = "Parler à un chargé d’affaires",
+}: ProprietesAppelFinal) {
   return (
     <section style={{ padding: "var(--sec) 24px var(--sec)" }}>
       <div className="mg-pad" style={PANNEAU}>
@@ -100,7 +110,7 @@ export default function AppelFinal({ question, formulaire }: ProprietesAppelFina
           >
             <PanneauFormulaire
               formulaire={formulaire}
-              titre="Parler à un chargé d’affaires"
+              titre={bouton}
               pastille="Rappel dans l’heure"
             />
           </div>

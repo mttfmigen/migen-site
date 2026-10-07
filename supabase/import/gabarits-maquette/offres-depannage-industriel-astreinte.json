@@ -2,23 +2,11 @@
   "url": "/offres/depannage-industriel/astreinte/",
   "contenu": {
     "gabarit": "offre",
-    "mention": "Hors astreinte, du lundi au vendredi de 8h00 à 18h30, nous vous rappelons dans l'heure",
-    "chapeau": "Nous tenons l'astreinte technique de votre site 24/24 et 7/7, partout en France, avec des techniciens de maintenance évalués. En renfort de votre permanence interne, ou à sa place.",
-    "actions": [
-      {
-        "libelle": "Les cinq offres",
-        "href": "/offres/"
-      }
-    ],
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
+    "chapeau": "Nous tenons l'astreinte technique de votre site, partout en France, avec des techniciens de maintenance évalués. En renfort de votre permanence interne, ou à sa place.",
     "formulaireHeroTitre": "Décrire mon besoin",
     "formulaireHeroMention": "Rappel dans l'heure",
-    "brefSurtitre": "En bref",
-    "brefTitre": "Le cadre, en quatre chiffres.",
     "chiffres": [
-      {
-        "valeur": "24/24 et 7/7",
-        "libelle": "Couverture de l'astreinte, nuits, fins de semaine, jours fériés."
-      },
       {
         "valeur": "10 %",
         "libelle": "Part des candidats retenus, après entretien technique et comportemental."
@@ -69,7 +57,7 @@
         "lignes": [
           {
             "prestation": {
-              "texte": "**Numéro dédié, joignable 24/24 et 7/7**"
+              "texte": "**Numéro dédié, joignable**"
             },
             "benefice": "Votre équipe de nuit n'a plus à chercher qui appeler. Un numéro affiché en atelier, une procédure d'une page."
           },
@@ -96,6 +84,30 @@
               "texte": "**Plages ajustables**"
             },
             "benefice": "Astreinte complète, astreinte saisonnière sur vos seuls pics, ou renfort des périodes que votre équipe ne peut pas tenir."
+          },
+          {
+            "prestation": {
+              "texte": "**Formule**"
+            },
+            "benefice": "Ce qui est couvert"
+          },
+          {
+            "prestation": {
+              "texte": "**Astreinte complète**"
+            },
+            "benefice": "Toutes les plages hors heures ouvrées, toute l'année"
+          },
+          {
+            "prestation": {
+              "texte": "**Astreinte saisonnière**"
+            },
+            "benefice": "Vos seules périodes critiques, forte production, fin d'année sous tension, pic logistique"
+          },
+          {
+            "prestation": {
+              "texte": "**Renfort d'astreinte**"
+            },
+            "benefice": "Second niveau technique, et les périodes que votre effectif ne tient pas, congés compris"
           }
         ]
       },
@@ -153,28 +165,46 @@
         "type": "preuves",
         "preuves": [
           {
-            "titre": "[Fonderie tenue 7 jours sur 7](/preuves/stellantis-fonderie-sept-fons/)",
-            "texte": "depuis octobre 2023, 6 techniciens en préventif et curatif sur la fonderie et l'usinage de Dompierre-sur-Besbre, sans interruption"
+            "titre": "Fonderie tenue",
+            "texte": "depuis octobre 2023, 6 techniciens en préventif et curatif sur la fonderie et l'usinage de Dompierre-sur-Besbre, sans interruption",
+            "lienLibelle": "Fonderie tenue",
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/x-technicienne-gilet.jpg"
           },
           {
-            "titre": "[Maintenance en 3x8 sur lignes alimentaires, agroalimentaire](/preuves/danone-lignes-de-production/)",
-            "texte": "2 techniciens intégrés en horaires postés sur les lignes liquides et le conditionnement poudre du site de Steenvoorde"
+            "titre": "Maintenance en 3x8 sur lignes alimentaires, agroalimentaire",
+            "texte": "2 techniciens intégrés en horaires postés sur les lignes liquides et le conditionnement poudre du site de Steenvoorde",
+            "lienLibelle": "Maintenance en 3x8 sur lignes alimentaires, agroalimentaire",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/x-meulage-etincelles.jpg"
           },
           {
-            "titre": "[Curatif continu sur convoyeurs et trieurs, logistique](/preuves/gls-maintenance-curative/)",
-            "texte": "2 techniciens dédiés aux équipements critiques, là où un trieur arrêté décale tous les colis du site"
+            "titre": "Curatif continu sur convoyeurs et trieurs, logistique",
+            "texte": "2 techniciens dédiés aux équipements critiques, là où un trieur arrêté décale tous les colis du site",
+            "lienLibelle": "Curatif continu sur convoyeurs et trieurs, logistique",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/x-tableau-ceinture.jpg"
           },
           {
-            "titre": "[Maintenance tenue pendant les congés](/preuves/ogf-arret-estival/)",
-            "texte": "été 2025, un technicien mobilisé pour couvrir l'arrêt estival de l'équipe interne"
+            "titre": "Maintenance tenue pendant les congés",
+            "texte": "été 2025, un technicien mobilisé pour couvrir l'arrêt estival de l'équipe interne",
+            "lienLibelle": "Maintenance tenue pendant les congés",
+            "lienHref": "/preuves/ogf-arret-estival/",
+            "photo": "/assets/web/x-duo-hall.jpg"
           },
           {
-            "titre": "[Site ouvert 24 heures sur 24, logistique](/preuves/amazon-centre-logistique/)",
-            "texte": "une équipe de techniciens polyvalents mobilisée simultanément, une semaine sur deux, sur un centre qui ne ferme jamais"
+            "titre": "Site ouvert 24 heures sur 24, logistique",
+            "texte": "une équipe de techniciens polyvalents mobilisée simultanément, une semaine sur deux, sur un centre qui ne ferme jamais",
+            "lienLibelle": "Site ouvert 24 heures sur 24, logistique",
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/x-entrepot-automatise.jpg"
           },
           {
-            "titre": "[Renfort en environnement à risque chimique, traitement des eaux](/preuves/suez-remise-en-etat/)",
-            "texte": "un électromécanicien habilité RC1, mobilisé 6 mois sur une remise en état"
+            "titre": "Renfort en environnement à risque chimique, traitement des eaux",
+            "texte": "un électromécanicien habilité RC1, mobilisé 6 mois sur une remise en état",
+            "lienLibelle": "Renfort en environnement à risque chimique, traitement des eaux",
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "photo": "/assets/web/x-meuleuse-etau.jpg"
           }
         ]
       },
@@ -214,38 +244,70 @@
         "href": "/offres/zero-arret/"
       }
     ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
-    "autres": [
+    "pastille": "Nos offres",
+    "pagesLieesTitre": "Les pages qui complètent celle-ci",
+    "pagesLiees": [
       {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
-        "href": "/offres/residence/"
+        "titre": "Technicien en résidence",
+        "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
+        "href": "/offres/residence/",
+        "photo": "/assets/web/team-duo.jpg"
       },
       {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
+        "titre": "Zéro arrêt",
+        "phrase": "La maintenance en abonnement, au forfait mensuel.",
+        "href": "/offres/zero-arret/",
+        "photo": "/assets/web/ph-technicien.jpg"
       },
       {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
-        "href": "/offres/zero-arret/"
+        "titre": "Arrêt technique",
+        "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
+        "href": "/offres/arret-technique/",
+        "photo": "/assets/web/ph-hero-raffinerie.jpg"
       },
       {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
-        "href": "/offres/arret-technique/"
+        "titre": "Full service",
+        "phrase": "Toute votre maintenance, un seul partenaire.",
+        "href": "/offres/full-service/",
+        "photo": "/assets/web/team-grind-front.jpg"
       },
       {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
-        "href": "/offres/bureau-etudes/"
+        "titre": "Travaux industriels",
+        "phrase": "Transfert, démantèlement, démontage et montage.",
+        "href": "/travaux-industriels/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
       },
       {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
+        "titre": "Bureau d’études",
+        "phrase": "Conception, retrofit et mise en conformité.",
+        "href": "/offres/bureau-etudes/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      }
+    ],
+    "casLies": [
+      {
+        "url": "/preuves/eriks/",
+        "client": "ERIKS",
+        "titre": "Un responsable maintenance pour traverser la transition",
+        "photo": "/assets/web/x-meuleuse-etau.jpg"
+      },
+      {
+        "url": "/preuves/danone-lignes-de-production/",
+        "client": "Danone (Blédina)",
+        "titre": "Pas un poste sans maintenance, week-end compris",
+        "photo": "/assets/web/x-usine-tours.jpg"
+      },
+      {
+        "url": "/preuves/mccain-belgique/",
+        "client": "McCain",
+        "titre": "Un premier contrat en Belgique, préventif et correctif",
+        "photo": "/assets/web/x-armoire-electrique.jpg"
+      },
+      {
+        "url": "/preuves/autoliv/",
+        "client": "Autoliv",
+        "titre": "Un technicien dédié pour que le parc ne décroche pas",
+        "photo": "/assets/web/x-site-raffinerie.jpg"
       }
     ]
   }

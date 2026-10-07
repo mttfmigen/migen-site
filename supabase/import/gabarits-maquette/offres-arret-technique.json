@@ -1,37 +1,34 @@
 {
   "url": "/offres/arret-technique/",
+  "titre_h1": "Arrêt technique de maintenance industrielle",
   "contenu": {
     "gabarit": "offre",
-    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 pendant toute la durée de l'arrêt.",
+    "pastille": "Nos offres",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte pendant toute la durée de l'arrêt.",
+    "appelBouton": "Faire chiffrer mon arrêt",
     "chapeau": "Nous cadrons votre programme de travaux bien avant la première consignation, nous constituons des équipes complètes par métier, et un interlocuteur unique porte le chemin critique jusqu'à la date de redémarrage.",
     "actions": [
       {
-        "libelle": "Les cinq offres",
-        "href": "/offres/"
+        "libelle": "Faire chiffrer mon arrêt",
+        "href": "#besoin"
       }
     ],
-    "formulaireHeroTitre": "Décrire mon besoin",
+    "formulaireHeroTitre": "Faire chiffrer mon arrêt",
     "formulaireHeroMention": "Rappel dans l'heure",
-    "brefSurtitre": "En bref",
     "chiffres": [
       {
-        "valeur": "+ 100",
-        "libelle": "collaborateurs, 4 agences, de quoi mobiliser une équipe complète par métier"
+        "valeur": "+ 120",
+        "libelle": "Collaborateurs, 4 agences, de quoi mobiliser une équipe complète par métier"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus",
-        "detail": "Sur un arrêt, chaque heure de technicien compte double"
-      },
-      {
-        "valeur": "24/24 et 7/7",
-        "libelle": "astreinte pendant l'arrêt, horaires étendus, 2x8 et 3x8, week-end compris"
+        "libelle": "Des candidats retenus. Sur un arrêt, chaque heure de technicien compte double"
       }
     ],
     "brefBande": "Besoin de sécuriser la date de redémarrage de votre prochain arrêt ?",
     "brefBouton": {
       "libelle": "Faire chiffrer mon arrêt",
-      "href": "#formulaire"
+      "href": "#besoin"
     },
     "sections": [
       {
@@ -106,11 +103,6 @@
               "texte": "travaux, réserves, mesures, recommandations pour l'année et pour l'arrêt suivant."
             },
             "benefice": "Le prochain arrêt est plus court et moins cher, parce qu'il part de données réelles et non de mémoire."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Migen est une [entreprise de maintenance industrielle](/offres/) présente partout en France. L'arrêt est aussi la bonne fenêtre pour regrouper d'autres travaux : [transfert industriel](/offres/chantier/), rétrofit d'un équipement vieillissant, mise en service d'un matériel neuf."
           }
         ]
       },
@@ -231,33 +223,64 @@
         "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
       }
     ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
+    "complementOffre": [
+      {
+        "texte": "L'arrêt est aussi la bonne fenêtre pour regrouper d'autres travaux : transfert industriel, rétrofit d'un équipement vieillissant, mise en service d'un matériel neuf."
+      }
+    ],
+    "autresSurtitre": "Nos autres offres",
+    "autresTitre": "Un autre besoin ? Il a son offre.",
     "autres": [
       {
-        "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
-        "libelle": "Résidence",
+        "phrase": "Des techniciens en résidence sur votre site, intégrés à votre équipe, validés par vous.",
+        "libelle": "migen© Résidence",
         "href": "/offres/residence/"
       },
       {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
-      },
-      {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
+        "phrase": "Le préventif le samedi, le dépannage la nuit : une maintenance qui ne touche jamais à votre production.",
+        "libelle": "migen© Zéro arrêt",
         "href": "/offres/zero-arret/"
       },
       {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
+        "phrase": "Conception, schémas électriques, mise en conformité machine : des études faites par des gens de terrain.",
+        "libelle": "migen© Bureau d'études",
         "href": "/offres/bureau-etudes/"
       },
       {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
+        "phrase": "Transfert, montage, démantèlement, levage : le chantier, du relevé à la remise en production.",
+        "libelle": "migen© Travaux industriels",
+        "href": "/travaux-industriels/"
+      },
+      {
+        "phrase": "Lyon, Paris, Nantes, Toulouse, Strasbourg, Lille : on part du hub le plus proche de votre site.",
+        "libelle": "Nos hubs",
+        "href": "/implantations/"
+      }
+    ],
+    "casLies": [
+      {
+        "url": "/preuves/amazon-centre-logistique/",
+        "client": "Amazon",
+        "titre": "Maintenir un centre logistique qui ne ferme jamais",
+        "photo": "/assets/web/team-duo.jpg"
+      },
+      {
+        "url": "/preuves/amazon-nouveau-site/",
+        "client": "Amazon",
+        "titre": "Un dispositif rodé, transposé sur un nouveau site",
+        "photo": "/assets/web/ph-technicien.jpg"
+      },
+      {
+        "url": "/preuves/danone-lignes-de-production/",
+        "client": "Danone (Blédina)",
+        "titre": "Pas un poste sans maintenance, week-end compris",
+        "photo": "/assets/web/ph-technicien.jpg"
+      },
+      {
+        "url": "/preuves/dimomaint/",
+        "client": "DimoMaint",
+        "titre": "La GMAO planifie, nos techniciens interviennent",
+        "photo": "/assets/web/team-grind-close.jpg"
       }
     ]
   }

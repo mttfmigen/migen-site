@@ -24,6 +24,17 @@ export interface CasLie {
   client: string;
   titre: string;
   /**
+   * Le surtitre de la carte MISE EN AVANT, à la place du nom du client :
+   * « À la une · Savoye, Norvège ». AJOUTÉ LE 07/10, et trois captures le
+   * demandent : `/travaux-industriels/` (bloc « Réalisations liées », carte
+   * SAVOYE), `/travaux-industriels/demantelement-industriel/` (carte large,
+   * bloc 1261) et `/offres/chantier/demenagement-machines/`. Absent, la carte
+   * reste une carte de grille et aucune page déjà portée ne bouge.
+   */
+  aLaUne?: string;
+  /** Le paragraphe de la carte mise en avant, sous son titre. */
+  resume?: string;
+  /**
    * La photo de la carte, dans `public/assets/web/`. OBLIGATOIRE : associer
    * une photo générique à une étude de cas qui n'en déclare pas serait une
    * association inventée. Un cas sans photo est une erreur de donnée, et elle
@@ -83,9 +94,47 @@ const PIED: CSSProperties = {
   color: "var(--ink)",
 };
 
+/* La carte mise en avant, relevée sur le bloc 1261 de
+   `maquette/rendu/offres--chantier--demenagement-machines.html`. */
+const CARTE_UNE: CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "minmax(0,1.1fr) minmax(0,.9fr)",
+  marginBottom: 14,
+  borderRadius: "var(--rad)",
+  overflow: "hidden",
+  background: "#1c1b19",
+  color: "#fff",
+  boxShadow: "0 30px 60px -36px rgba(0,0,0,.5)",
+};
+
+const ETIQUETTE_UNE: CSSProperties = {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: 8,
+  alignSelf: "flex-start",
+  padding: "6px 12px",
+  borderRadius: 999,
+  background: "rgba(255,124,60,.16)",
+  color: "#ff7c3c",
+  font: "600 11px var(--fb)",
+  letterSpacing: ".12em",
+  textTransform: "uppercase",
+};
+
+const TITRE_UNE: CSSProperties = {
+  font: "600 clamp(22px,2.4vw,32px)/1.12 var(--ft)",
+  letterSpacing: "-.035em",
+  textWrap: "balance",
+};
+
 export default function RealisationsLiees({ cas }: ProprietesRealisationsLiees) {
   const retenus = cas.filter((c) => estCheminInterne(c.url));
   if (retenus.length === 0) return null;
+
+  /* La capture met en avant le PREMIER cas quand il porte son surtitre.
+     Sans ce champ, la section reste la grille seule des pages déjà portées. */
+  const une = retenus[0].aLaUne ? retenus[0] : undefined;
+  const grille = une ? retenus.slice(1) : retenus;
 
   return (
     <section style={SECTION}>
@@ -101,6 +150,70 @@ export default function RealisationsLiees({ cas }: ProprietesRealisationsLiees) 
             Toutes les études de cas →
           </Link>
         </div>
+        {une ? (
+          <Link
+            href={une.url}
+            prefetch={false}
+            className={`mg-r2 ${styles.carteMaillage}`}
+            style={CARTE_UNE}
+          >
+            <div
+              style={{
+                padding: "36px 40px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                gap: 14,
+              }}
+            >
+              <span style={ETIQUETTE_UNE}>{une.aLaUne}</span>
+              <div style={TITRE_UNE}>{une.titre}</div>
+              {une.resume ? (
+                <p
+                  style={{
+                    margin: 0,
+                    font: "400 15.5px/1.6 var(--fb)",
+                    color: "rgba(255,255,255,.72)",
+                    maxWidth: "52ch",
+                  }}
+                >
+                  {une.resume}
+                </p>
+              ) : null}
+              <span
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  marginTop: 6,
+                  font: "600 14.5px var(--fb)",
+                  color: "#ff7c3c",
+                }}
+              >
+                Lire l’étude de cas <span aria-hidden="true">→</span>
+              </span>
+            </div>
+            <div style={{ position: "relative", minHeight: 260 }}>
+              <Image
+                src={une.photo}
+                alt=""
+                fill
+                sizes="(max-width: 900px) 100vw, 520px"
+                style={{ objectFit: "cover", filter: "saturate(var(--sat))" }}
+              />
+              <div
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "linear-gradient(90deg,#1c1b19 0%,rgba(28,27,25,0) 40%)",
+                }}
+              />
+            </div>
+          </Link>
+        ) : null}
+
         <div
           style={{
             display: "grid",
@@ -108,7 +221,7 @@ export default function RealisationsLiees({ cas }: ProprietesRealisationsLiees) 
             gap: 12,
           }}
         >
-          {retenus.map((casLie) => (
+          {grille.map((casLie) => (
             <Link
               key={casLie.url}
               href={casLie.url}

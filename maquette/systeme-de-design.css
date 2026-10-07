@@ -1,0 +1,172 @@
+/* ============================================================
+   MIGEN — Design Tokens : Couleurs & Typographie
+   Source : Charte Migen 2025
+   ============================================================ */
+
+/* Poppins — titres + texte courant (Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+/* Caveat — SUBSTITUT de "Bryndan" (sous-titres manuscrits).
+   Bryndan est une police commerciale non fournie. À remplacer
+   par les vrais fichiers .woff2 dès réception. */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap');
+
+:root {
+  /* ---- PALETTE BRUTE (charte) ---- */
+  --orange:         #ff7c3c;   /* couleur de marque */
+  --gris-souris:    #fafafa;   /* fond clair */
+  --gris-profond:   #737373;   /* gris texte secondaire */
+  --gris-marrone:   #363430;   /* presque-noir chaud */
+  --noir:           #000000;
+
+  /* Variations de l'orange (dérivées en oklch, harmonisées) */
+  --orange-600:     #f4641f;   /* hover / pressé */
+  --orange-700:     #d9520f;   /* texte sur fond clair (contraste) */
+  --orange-100:     #ffe7d9;   /* fond teinté très léger */
+  --orange-050:     #fff4ee;
+
+  /* Échelle de gris neutre */
+  --gris-000:       #ffffff;
+  --gris-050:       #fafafa;
+  --gris-100:       #f2f1ef;
+  --gris-200:       #e5e3df;
+  --gris-300:       #d2cfc9;
+  --gris-400:       #a8a49d;
+  --gris-500:       #737373;
+  --gris-700:       #4a4845;
+  --gris-900:       #363430;
+  --gris-950:       #1c1b19;
+
+  /* ---- RÔLES SÉMANTIQUES ---- */
+  --bg:             var(--gris-000);   /* fond principal */
+  --bg-alt:         var(--gris-050);   /* sections alternées */
+  --bg-inverse:     var(--gris-950);   /* sections sombres / footer */
+  --surface:        #ffffff;           /* cartes */
+
+  --fg:             var(--gris-900);   /* texte principal */
+  --fg-muted:       var(--gris-500);   /* texte secondaire */
+  --fg-faint:       var(--gris-400);   /* légendes, méta */
+  --fg-inverse:     #ffffff;           /* texte sur fond sombre */
+
+  --accent:         var(--orange);
+  --accent-hover:   var(--orange-600);
+  --accent-press:   var(--orange-700);
+  --on-accent:      #ffffff;           /* texte sur orange */
+
+  --border:         var(--gris-200);
+  --border-strong:  var(--gris-300);
+  --ring:           color-mix(in oklch, var(--orange) 45%, transparent);
+
+  /* ---- TYPOGRAPHIE ---- */
+  --font-title:  'Poppins', system-ui, sans-serif;   /* TITRE */
+  --font-body:   'Poppins', system-ui, sans-serif;   /* texte courant */
+  --font-script: 'Caveat', 'Poppins', cursive;       /* sous-titre (Bryndan ≈ substitut) */
+  --font-mono:   ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
+
+  /* Échelle modulaire (1.250 — Major Third) */
+  --text-xs:   0.75rem;   /* 12 */
+  --text-sm:   0.875rem;  /* 14 */
+  --text-base: 1rem;      /* 16 */
+  --text-lg:   1.25rem;   /* 20 */
+  --text-xl:   1.563rem;  /* 25 */
+  --text-2xl:  1.953rem;  /* 31 */
+  --text-3xl:  2.441rem;  /* 39 */
+  --text-4xl:  3.052rem;  /* 49 */
+  --text-5xl:  3.815rem;  /* 61 */
+  --text-6xl:  4.768rem;  /* 76 */
+
+  --leading-tight: 1.05;
+  --leading-snug:  1.2;
+  --leading-normal:1.6;
+
+  --tracking-tight: -0.02em;
+  --tracking-wide:  0.08em;   /* sur-titres / kickers en MAJUSCULES */
+
+  /* ---- ESPACEMENT (base 4px) ---- */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
+  --space-9: 96px; --space-10: 128px;
+
+  /* ---- RAYONS ---- */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* ---- OMBRES (sobres, industrielles) ---- */
+  --shadow-sm: 0 1px 2px rgba(28,27,25,.06), 0 1px 1px rgba(28,27,25,.04);
+  --shadow-md: 0 4px 14px rgba(28,27,25,.08);
+  --shadow-lg: 0 18px 48px rgba(28,27,25,.14);
+  --shadow-accent: 0 10px 30px rgba(255,124,60,.32);
+}
+
+/* ============================================================
+   STYLES TYPOGRAPHIQUES SÉMANTIQUES
+   ============================================================ */
+.t-kicker {            /* sur-titre / label de section */
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.t-script {            /* accent manuscrit (Bryndan ≈ Caveat) */
+  font-family: var(--font-script);
+  font-weight: 600;
+  font-size: var(--text-3xl);
+  color: var(--accent);
+  line-height: 1;
+}
+.t-h1 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 5vw, var(--text-6xl));
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg);
+}
+.t-h2 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 3.5vw, var(--text-4xl));
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg);
+}
+.t-h3 {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: var(--text-2xl);
+  line-height: var(--leading-snug);
+  color: var(--fg);
+}
+.t-h4 {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: var(--text-lg);
+  color: var(--fg);
+}
+.t-lead {              /* chapô */
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-lg);
+  line-height: var(--leading-normal);
+  color: var(--fg-muted);
+}
+.t-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--fg);
+}
+.t-meta {
+  font-family: var(--font-title);
+  font-weight: 500;
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+}

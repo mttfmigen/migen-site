@@ -20,6 +20,16 @@ export interface ProprietesProblemeOffre {
   section: SectionProbleme;
   /** L'alt de la photo. La capture y écrit le H1 de la page. */
   altPhoto: string;
+  /**
+   * La photo de la colonne gauche. ABSENTE, c'est celle de la capture de la
+   * page pilote `/offres/residence/` ; `null` dit que la capture de LA page
+   * n'en rend aucune, et rien n'est rendu.
+   *
+   * AJOUTÉ LE 07/10 : la capture de `/offres/full-service/` rend cette section
+   * SANS photo (0 image relevée sur sa section 8). Y laisser celle de la page
+   * pilote serait une photo posée au hasard.
+   */
+  photo?: string | null;
 }
 
 /** La photo de la colonne gauche, identifiée sur `offres--residence.png`. */
@@ -78,8 +88,10 @@ const TEXTE: CSSProperties = {
 export default function ProblemeOffre({
   section,
   altPhoto,
+  photo,
 }: ProprietesProblemeOffre) {
   const { titre, suite } = coupePunchline(section.punchline);
+  const source = photo === undefined ? PHOTO : photo;
 
   return (
     <section style={SECTION}>
@@ -99,18 +111,20 @@ export default function ProblemeOffre({
             </div>
             <h2 style={TITRE}>{titre}</h2>
             {suite ? <p style={SOUS_PHRASE}>{suite}</p> : null}
-            <div style={CADRE_PHOTO}>
-              <Image
-                src={PHOTO}
-                alt={altPhoto}
-                fill
-                sizes="(max-width: 900px) 100vw, 440px"
-                style={{
-                  objectFit: "cover",
-                  filter: "saturate(var(--sat)) contrast(1.05)",
-                }}
-              />
-            </div>
+            {source ? (
+              <div style={CADRE_PHOTO}>
+                <Image
+                  src={source}
+                  alt={altPhoto}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 440px"
+                  style={{
+                    objectFit: "cover",
+                    filter: "saturate(var(--sat)) contrast(1.05)",
+                  }}
+                />
+              </div>
+            ) : null}
           </div>
 
           <div style={{ display: "grid", gap: 12 }}>

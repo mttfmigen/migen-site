@@ -17,9 +17,23 @@ import styles from "./PageOffre.module.css";
  * texte `rgba(255,255,255,0.8)`). Le bouton orange est le même partout.
  */
 
+/**
+ * DEUX CHAMPS SONT DEVENUS OPTIONNELS LE 07/10, pour `/offres/zero-arret/`,
+ * dont la capture écrit une autre phrase et un autre bouton. Les défauts
+ * reproduisent à l'identique le rendu validé de `/offres/residence/`.
+ */
 export interface ProprietesBandeAppel {
-  /** La phrase à gauche. La mention des horaires du corpus. */
-  mention: string;
+  /**
+   * La phrase à gauche, la mention des horaires du corpus.
+   *
+   * ABSENTE, la bande ne porte que son bouton. C'est le cas de
+   * `/offres/zero-arret/` : sa capture écrit ici un délai chiffré que le
+   * contrat du projet interdit, la phrase n'est donc pas rendue et le trou est
+   * déclaré dans `scripts/verifie-offre-rendu.mjs`.
+   */
+  mention?: string;
+  /** Le libellé du bouton. À défaut, celui de la capture de la page pilote. */
+  bouton?: string;
   /** Le fond de la bande. La capture pose « sombre » sur « Appel · offre ». */
   variante?: "claire" | "sombre";
 }
@@ -70,6 +84,7 @@ const BOUTON: CSSProperties = {
 
 export default function BandeAppel({
   mention,
+  bouton = "Parler à un chargé d’affaires",
   variante = "claire",
 }: ProprietesBandeAppel) {
   const sombre = variante === "sombre";
@@ -77,28 +92,39 @@ export default function BandeAppel({
     <section style={{ padding: "40px 0 0" }}>
       <div style={LARGEUR}>
         <div style={{ ...BANDE, ...(sombre ? BANDE_SOMBRE : BANDE_CLAIRE) }}>
+          {mention ? (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 14,
+                flex: "1 1 0%",
+                minWidth: 260,
+              }}
+            >
+              <span aria-hidden="true" style={PUCE} />
+              <span
+                style={{
+                  font: "500 15px/1.55 var(--fb)",
+                  ...(sombre ? MENTION_SOMBRE : MENTION_CLAIRE),
+                }}
+              >
+                {mention}
+              </span>
+            </div>
+          ) : null}
+          {/* Sans mention, le bouton reste à DROITE de la bande, là où la
+              capture le pose : `space-between` le ramènerait à gauche. */}
           <div
             style={{
               display: "flex",
-              alignItems: "center",
-              gap: 14,
-              flex: "1 1 0%",
-              minWidth: 260,
+              gap: 10,
+              flexWrap: "wrap",
+              marginLeft: mention ? undefined : "auto",
             }}
           >
-            <span aria-hidden="true" style={PUCE} />
-            <span
-              style={{
-                font: "500 15px/1.55 var(--fb)",
-                ...(sombre ? MENTION_SOMBRE : MENTION_CLAIRE),
-              }}
-            >
-              {mention}
-            </span>
-          </div>
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <a href="#besoin" className={styles.boutonPrincipal} style={BOUTON}>
-              Parler à un chargé d’affaires
+              {bouton}
             </a>
           </div>
         </div>

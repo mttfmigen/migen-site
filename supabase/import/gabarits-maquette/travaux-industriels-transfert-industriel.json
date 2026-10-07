@@ -1,0 +1,415 @@
+{
+  "url": "/travaux-industriels/transfert-industriel/",
+  "titre_h1": "Transfert industriel et déménagement de machines industrielles",
+  "_reference": "maquette/rendu/travaux-industriels--transfert-industriel.html, 19 sections, porté le 07/10. Chaînes EXTRAITES de la capture, pas retapées. ÉCARTS entre le corpus (maquette/contenu/site/Offres/travaux-industriels--transfert-industriel.md) et le RENDU de la maquette, qui fait foi, tous à faire ARBITRER par Mehdi, aucun à corriger ici : (1) le corpus écrit « + 100 » collaborateurs, la capture rend « + 120 » : la capture est servie. (2) La capture rend VIDES le chapeau du héros, le libellé du bouton du héros, le titre des deux panneaux de formulaire et le libellé des trois bandes d'appel (spans `sc-interp` vides : défaut du gabarit 03 hors des six offres nommées, arbitrage n° 4 de docs/PASSATION.md). Le chapeau n'est PAS rendu, par fidélité. Les libellés le sont, parce qu'un bouton sans libellé n'est pas livrable, et avec les mots de la page elle-même : « Faire chiffrer mon transfert », que la capture écrit dans la sous-ligne de son « 07 Appel », pour les deux panneaux ; le défaut « Parler à un chargé d'affaires » pour les bandes, qui est aussi l'appel final du corpus. (3) La capture rend VIDES le h2 et la sous-phrase du « 03 Problème » : « punchline » est donc vide ici, alors que le corpus porte « Un transfert improvisé, ce sont des semaines d'arrêt que personne n'avait budgétées. ». (4) La capture PERD la puce « Les utilités. » du bloc « le cas du site entier » : le corpus en porte trois, elle en rend deux, et deux sont servies. (5) La capture concatène le libellé du bouton et la note dans la sous-ligne du « 07 Appel », d'où un « brefMention » qui commence par « Faire chiffrer mon transfert ». PHOTOS identifiées par empreinte sha256 des octets des blobs de la maquette vivante, distance 0, carte par carte : aucune n'est choisie « au plus proche ». La photo de la carte ALSTEF des références n'existait pas dans public/assets/ : ses octets ont été rapatriés tels quels sous public/assets/web/mq-9e486df15162.jpg. Le « Maillage » ne porte AUCUNE photo (six `role=\"img\"` vides dans la capture), donc aucune n'est posée. CIBLES QUI RÉPONDENT 404 aujourd'hui, parce que leur gabarit n'est pas encore porté alors que l'index des 248 pages de la maquette les déclare : /guides/reussir-un-transfert-industriel/ (gabarit 01), /preuves/savoye-migration-automates-norvege/ et /preuves/atena-port-la-rochelle/ (gabarit 02). AUCUN COMPOSANT PARTAGÉ N'A ÉTÉ TOUCHÉ pour cette page.",
+  "contenu": {
+    "gabarit": "offre",
+    "pastille": "Travaux industriels",
+    "mention": "Nous vous rappelons dans l’heure, du lundi au vendredi de 8h00 à 18h30.",
+    "actions": [
+      {
+        "libelle": "Faire chiffrer mon transfert",
+        "href": "#besoin"
+      }
+    ],
+    "formulaireHeroTitre": "Faire chiffrer mon transfert",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
+      {
+        "valeur": "+ 120",
+        "libelle": "Collaborateurs · techniciens salariés Migen, pas de chaîne d'intermédiaires."
+      },
+      {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      },
+      {
+        "valeur": "4",
+        "libelle": "Agences · Lyon (siège), Montréal, Dubaï, Madrid, et des hubs techniques en France."
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "Des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+      }
+    ],
+    "reperesReassurance": [
+      {
+        "valeur": "Chefs de chantier",
+        "libelle": "planning, coordination des corps de métier, sécurité du chantier"
+      },
+      {
+        "valeur": "Monteurs et levageurs",
+        "libelle": "démontage, levage, manutention lourde, remontage"
+      },
+      {
+        "valeur": "Un interlocuteur",
+        "libelle": "du relevé à la remise en production"
+      }
+    ],
+    "problemePhoto": null,
+    "complementOffre": [
+      {
+        "texte": "Ce que nous ne faisons pas. Ni bureaux, ni archives, ni parc informatique, ni vente de machines. Quand un équipement ne mérite pas le voyage, nous le disons et nous vous orientons vers le retrofit machine industrielle."
+      },
+      {
+        "titre": "Transfert industriel, déménagement industriel : le même chantier, deux mots",
+        "texte": "Les deux termes désignent la même opération : sortir un outil de production d'un site et le remettre en marche ailleurs."
+      },
+      {
+        "puces": [
+          {
+            "accroche": "Déménagement industriel",
+            "texte": "est le mot que l'on emploie quand on regarde le camion."
+          },
+          {
+            "accroche": "Transfert industriel",
+            "texte": "est le mot que l'on emploie quand on regarde la production."
+          }
+        ]
+      },
+      {
+        "texte": "Nous employons le second, parce que la question qui compte n'est pas « quand la machine arrive » mais « quand elle produit ». Un déménagement d'usine réussi se mesure au premier bon produit sorti, pas au dernier carton livré."
+      },
+      {
+        "titre": "Déménagement d'usine, transfert d'usine : le cas du site entier",
+        "texte": "Un transfert d'usine complet ajoute trois contraintes que le déplacement d'une machine isolée n'a pas."
+      },
+      {
+        "puces": [
+          {
+            "accroche": "La simultanéité.",
+            "texte": "Des dizaines d'équipements doivent partir et revenir dans un ordre qui tient compte des dépendances de process."
+          },
+          {
+            "accroche": "Les hommes.",
+            "texte": "Vos opérateurs doivent retrouver un poste de travail reconnaissable, sinon la montée en cadence traîne des semaines."
+          }
+        ]
+      },
+      {
+        "texte": "C'est pour cela qu'un déménagement d'usine se pilote comme un projet, avec un plan d'implantation validé et un phasage écrit, jamais comme une succession de prestations achetées séparément."
+      },
+      {
+        "titre": "Transfert de ligne de production : le phasage fait tout",
+        "texte": "Une ligne ne se coupe pas en deux sans conséquence. Le transfert de ligne de production se prépare autour d'une seule question : que produit-on pendant le chantier ?"
+      },
+      {
+        "texte": "Trois réponses possibles, choisies avec vous au moment de l'audit."
+      },
+      {
+        "puces": [
+          {
+            "accroche": "Stock d'avance.",
+            "texte": "On produit en amont pour couvrir l'arrêt. La plus simple, la plus coûteuse en trésorerie."
+          },
+          {
+            "accroche": "Transfert par tronçons.",
+            "texte": "On déplace la ligne par sections, en gardant une capacité partielle. La plus technique, la plus économe en arrêt."
+          },
+          {
+            "accroche": "Ligne miroir.",
+            "texte": "On monte au nouveau site avant de déposer à l'ancien, quand le parc le permet. La plus confortable, la plus exigeante en investissement."
+          }
+        ]
+      }
+    ],
+    "complementDeroule": [
+      {
+        "titre": "Ce qui se passe pendant l'arrêt réel",
+        "texte": "L'arrêt de production ne dure pas tout le chantier. Il ne couvre que les étapes 4 à 7, et seulement pour les équipements concernés par la phase en cours."
+      },
+      {
+        "texte": "Toute la valeur du phasage est là : réduire la fenêtre où la ligne ne produit pas, et non la durée totale du projet."
+      }
+    ],
+    "brefBande": "Besoin de savoir ce que coûterait le transfert de votre site ?",
+    "brefMention": "Faire chiffrer mon transfert Un chargé d'affaires vous rappelle dans l'heure, avec les bonnes questions et une date de visite.",
+    "brefBouton": {
+      "libelle": "Demander un devis",
+      "href": "#besoin"
+    },
+    "pagesLiees": [
+      {
+        "titre": "Levage et manutention lourde",
+        "phrase": "Levage et manutention lourde",
+        "href": "/travaux-industriels/levage-manutention/"
+      },
+      {
+        "titre": "Démantèlement industriel",
+        "phrase": "Démantèlement industriel du site de départ",
+        "href": "/travaux-industriels/demantelement-industriel/"
+      },
+      {
+        "titre": "Montage industriel",
+        "phrase": "Montage industriel sur le site d'arrivée",
+        "href": "/travaux-industriels/montage-industriel/"
+      },
+      {
+        "titre": "Guide pour réussir un transfert industriel",
+        "phrase": "Pour préparer le vôtre, notre guide pour réussir un transfert industriel déroule les étapes et les pièges.",
+        "href": "/guides/reussir-un-transfert-industriel/"
+      },
+      {
+        "titre": "Technicien en résidence",
+        "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
+        "href": "/offres/residence/"
+      },
+      {
+        "titre": "Zéro arrêt",
+        "phrase": "La maintenance en abonnement, au forfait mensuel.",
+        "href": "/offres/zero-arret/"
+      }
+    ],
+    "casLies": [
+      {
+        "url": "/preuves/savoye-migration-automates-norvege/",
+        "client": "Savoye",
+        "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
+        "aLaUne": "À la une · Savoye, Norvège",
+        "resume": "Étude, préparation et migration d’automates sur un site intralogistique en exploitation : deux week-ends, zéro jour de production perdu.",
+        "photo": "/assets/maquette/15bdb671c93a.jpg"
+      },
+      {
+        "url": "/preuves/aktid-centre-logistique/",
+        "client": "Aktid",
+        "titre": "Un centre logistique monté en six semaines",
+        "photo": "/assets/maquette/15bdb671c93a.jpg"
+      },
+      {
+        "url": "/preuves/alstef-group/",
+        "client": "Alstef Group",
+        "titre": "Des chantiers automatisés contrôlés point par point",
+        "photo": "/assets/maquette/17de439bc669.jpg"
+      },
+      {
+        "url": "/preuves/amazon-nouveau-site/",
+        "client": "Amazon",
+        "titre": "Un dispositif rodé, transposé sur un nouveau site",
+        "photo": "/assets/web/x-meulage-etincelles.jpg"
+      },
+      {
+        "url": "/preuves/atena-port-la-rochelle/",
+        "client": "Atena",
+        "titre": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
+        "photo": "/assets/maquette/17de439bc669.jpg"
+      }
+    ],
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "",
+        "puces": [
+          {
+            "accroche": "Équipement endommagé au levage",
+            "texte": ", parce que les points d'élingage n'ont pas été relevés avant la dépose."
+          },
+          {
+            "accroche": "Câblage et tuyauterie raccordés à la hâte",
+            "texte": ", sans repérage : la panne apparaît trois jours après le redémarrage."
+          },
+          {
+            "accroche": "Programmes perdus.",
+            "texte": "Personne n'a sauvegardé l'automate avant la coupure, et le dernier qui connaissait la recette est parti l'an dernier."
+          },
+          {
+            "accroche": "Chaîne qui repart en retard.",
+            "texte": "Vos clients, eux, ne décalent pas leurs commandes."
+          }
+        ]
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "texte": "**Audit de faisabilité et plan d'implantation**"
+            },
+            "benefice": "Vous savez avant de signer ce qui passe, ce qui ne passe pas, et où chaque machine se pose sur le site d'arrivée."
+          },
+          {
+            "prestation": {
+              "texte": "**Pilotage complet du projet**"
+            },
+            "benefice": "Un chef de projet, un numéro, un compte rendu. Vous arbitrez sur votre production, plus entre trois prestataires."
+          },
+          {
+            "prestation": {
+              "texte": "**Déménagement de machines industrielles**"
+            },
+            "benefice": "Une machine ou un parc entier déplacés par des techniciens qui savent ce qu'ils démontent, et pourquoi."
+          },
+          {
+            "prestation": {
+              "texte": "**Transfert de ligne de production**"
+            },
+            "benefice": "Des lignes complètes phasées pour que vos livraisons ne s'arrêtent pas pendant le chantier."
+          },
+          {
+            "prestation": {
+              "texte": "**Levage et manutention lourde**"
+            },
+            "benefice": "Chaque charge déplacée selon un mode opératoire écrit, avec les moyens dimensionnés pour elle."
+          },
+          {
+            "prestation": {
+              "texte": "**Démantèlement industriel du site de départ**"
+            },
+            "benefice": "L'ancien site rendu libre et propre, avec la traçabilité des déchets. Vous rendez les clés sans réserve."
+          },
+          {
+            "prestation": {
+              "texte": "**Montage industriel sur le site d'arrivée**"
+            },
+            "benefice": "Les équipements neufs du nouveau site montés par la même équipe que celle qui remonte les anciens."
+          },
+          {
+            "prestation": {
+              "texte": "**Travaux de maintenance à l'occasion de la dépose**"
+            },
+            "benefice": "La machine part révisée plutôt qu'usée. Vous gagnez une remise à niveau sans second arrêt."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Audit et faisabilité.",
+            "texte": "Visite du site de départ et du site d'arrivée, inventaire des équipements, contraintes d'accès, contraintes de sécurité. La faisabilité est validée avec votre responsable de production."
+          },
+          {
+            "titre": "Plan d'implantation et planning.",
+            "texte": "Place de chaque machine, circulation des matières, réseaux et énergies. Le phasage est calé sur vos dates de livraison, pas sur les nôtres."
+          },
+          {
+            "titre": "Préparation du site d'arrivée.",
+            "texte": "Massifs, scellements, alimentations, réseaux fluides. Tout ce qui peut se faire pendant que l'ancien site produit encore se fait maintenant."
+          },
+          {
+            "titre": "Démontage et conditionnement.",
+            "texte": "Consignation, sauvegarde des programmes, repérage du câblage et des tuyauteries, dépose, calage. Chaque repère servira au remontage."
+          },
+          {
+            "titre": "Transport et logistique.",
+            "texte": "Moyens de levage dimensionnés, transporteurs spécialisés quand le gabarit l'exige, autorisations gérées par nous."
+          },
+          {
+            "titre": "Remontage et raccordements.",
+            "texte": "Mise à niveau, calage, raccordement mécanique, électrique, automatisme, hydraulique, pneumatique, tuyauterie."
+          },
+          {
+            "titre": "Essais et remise en service.",
+            "texte": "Essais à vide, essais sous production, réglages, contrôle qualité, accompagnement de la montée en cadence."
+          },
+          {
+            "titre": "Dossier de fin de chantier.",
+            "texte": "Plans d'implantation à jour, repérages, comptes rendus, réserves levées. Votre équipe de maintenance récupère un site documenté."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Le planning validé ensemble est l'outil de pilotage.",
+            "texte": "Chaque écart est signalé sans attendre, expliqué et traité avec vous. Pas de découverte en réunion de fin de chantier."
+          },
+          {
+            "accroche": "La sécurité passe avant le calendrier.",
+            "texte": "Analyse de risque, plan de prévention, modes opératoires écrits pour chaque phase de levage, pour vos équipes comme pour les nôtres."
+          },
+          {
+            "accroche": "Tout ce qui peut se préparer sans arrêter la production l'est.",
+            "texte": "Le site d'arrivée est prêt avant que la première machine bouge. C'est ce qui raccourcit l'arrêt réel."
+          },
+          {
+            "accroche": "Celui qui démonte est celui qui remonte.",
+            "texte": "La même équipe suit la machine de bout en bout. C'est la seule façon de ne pas perdre en route ce qui n'a pas été écrit."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Montage et déplacement de machines, étanchéité et isolation, 2025.",
+            "texte": "Délais de chantier tenus sans pénalité, transferts de machines sécurisés, sans casse ni improvisation.",
+            "lienLibelle": "Étude de cas SOPREMA",
+            "lienHref": "/preuves/soprema/",
+            "photo": "/assets/web/x-entrepot-automatise.jpg"
+          },
+          {
+            "titre": "Montage d'un centre logistique, Clermont-Ferrand, 2023.",
+            "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés en pleine période estivale, site livré à la date prévue.",
+            "lienLibelle": "Étude de cas AKTID",
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/x-meulage-etincelles.jpg"
+          },
+          {
+            "titre": "Construction d'un site de R&D bas carbone, région parisienne.",
+            "texte": "Chantier piloté de bout en bout par Orthus, filiale du groupe, coordination multi-métiers et jalons critiques suivis.",
+            "lienLibelle": "Étude de cas ORTHUS x ECOCEM",
+            "lienHref": "/preuves/orthus-ecocem/",
+            "photo": "/assets/web/mq-f009bfad304c.jpg"
+          },
+          {
+            "titre": "Montage de portiques de lavage, partout en France.",
+            "texte": "Réception, assemblage, levage, raccordements mécaniques et électriques, validation à l'issue du montage.",
+            "lienLibelle": "Étude de cas ORTHUS x WASHTEC",
+            "lienHref": "/preuves/orthus-washtec/",
+            "photo": "/assets/web/x-duo-hall.jpg"
+          },
+          {
+            "titre": "Contrôle de chantier sur des projets stratégiques, 2025 à 2026.",
+            "texte": "Phases critiques sécurisées, qualité des installations maintenue, aucun recrutement d'urgence côté client.",
+            "lienLibelle": "Étude de cas ALSTEF Group",
+            "lienHref": "/preuves/alstef-group/",
+            "photo": "/assets/web/mq-9e486df15162.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Combien coûte un transfert industriel ?",
+            "reponse": "Le montant dépend du nombre d'équipements, des contraintes d'accès, de la distance et du niveau de prestation retenu. Le chiffrage est établi sur devis après audit, gratuitement, poste par poste. Un prix annoncé sans visite est un prix qui bougera."
+          },
+          {
+            "question": "Quelle différence entre transfert industriel et déménagement industriel ?",
+            "reponse": "Aucune sur le fond : les deux désignent le déplacement d'un outil de production. Le mot transfert met l'accent sur la remise en service, le mot déménagement sur le transport. Une entreprise de transfert industriel doit savoir faire les deux, sinon elle laisse la moitié du chantier à quelqu'un d'autre."
+          },
+          {
+            "question": "Peut-on transférer une usine sans arrêter la production ?",
+            "reponse": "Rarement en totalité, mais l'arrêt se réduit fortement par le phasage : transfert par tronçons, stock d'avance, site d'arrivée préparé, équipements critiques basculés en dernier. C'est l'objet du plan de transfert."
+          },
+          {
+            "question": "Comment choisir une entreprise de transfert industriel ?",
+            "reponse": "Trois questions suffisent à trier. Qui remonte et rebranche, vos équipes ou les siennes ? Qui signe le planning et répond des écarts ? Qui vous rend un dossier de fin de chantier exploitable ? Si l'une des trois réponses est « un sous-traitant », c'est vous qui arbitrerez le jour du chantier."
+          },
+          {
+            "question": "Déplacez-vous une seule machine ou uniquement des sites complets ?",
+            "reponse": "Les deux. Le déménagement de machines industrielles à l'unité relève du même métier : consignation, repérage, dépose, levage, calage, remontage, essais. La différence est l'échelle du phasage, pas la nature du geste."
+          },
+          {
+            "question": "Qui est responsable en cas de casse pendant le transfert ?",
+            "reponse": "Le sujet est traité avant le chantier. Le devis et le cahier des charges précisent les responsabilités de chaque partie, les garanties et l'assurance mobilisée. Vous savez qui répond de quoi avant le premier câble débranché."
+          },
+          {
+            "question": "Qui sont les techniciens qui interviennent ?",
+            "reponse": "Des salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des candidats sont retenus, et les résultats d'évaluation sont partagés avec vous. Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie, robotique."
+          },
+          {
+            "question": "Intervenez-vous partout en France ?",
+            "reponse": "Oui, depuis 4 agences : Lyon (siège), Montréal, Dubaï, Madrid, avec des hubs techniques sur le territoire. Le hub de techniciens proche du site de départ et celui proche du site d'arrivée travaillent sur le même dossier, avec un seul interlocuteur."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin d'un premier avis sur votre transfert, même s'il n'est prévu que dans six mois ?",
+        "bouton": "Parler à un chargé d’affaires"
+      }
+    ]
+  }
+}
