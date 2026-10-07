@@ -81,7 +81,8 @@
             "accroche": "Le dossier technique est introuvable.",
             "texte": "Schémas absents, notices perdues, analyse de risques jamais écrite : impossible de démontrer quoi que ce soit."
           }
-        ]
+        ],
+        "variante": "rangee"
       },
       {
         "type": "offre",

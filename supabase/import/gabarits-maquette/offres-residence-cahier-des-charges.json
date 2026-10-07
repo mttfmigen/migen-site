@@ -62,7 +62,8 @@
             "accroche": "Aucune sortie prévue.",
             "texte": "Pas de réversibilité, donc pas de restitution des données GMAO le jour où vous changez."
           }
-        ]
+        ],
+        "variante": "rangee"
       },
       {
         "type": "offre",

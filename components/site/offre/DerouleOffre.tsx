@@ -112,6 +112,10 @@ export default function DerouleOffre({
   section,
   titre = "Un appel. Un plan. Une ligne qui repart.",
 }: ProprietesDerouleOffre) {
+  // « tuiles » : relevé du diagnostic visuel du 07/10 sur six pages. La
+  // maquette y pose UNE grille de 4 colonnes, gouttière 14, où la carte
+  // d'en-tête occupe la première cellule, de la même taille que les étapes.
+  const tuiles = section.variante === "tuiles";
   return (
     <section style={SECTION}>
       <div style={LARGEUR}>
@@ -119,11 +123,19 @@ export default function DerouleOffre({
           className="mg-rmulti"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3,minmax(0,1fr))",
+            gridTemplateColumns: tuiles
+              ? "repeat(4,minmax(0,1fr))"
+              : "repeat(3,minmax(0,1fr))",
             gap: 14,
           }}
         >
-          <div style={CARTE_ENTETE}>
+          <div
+            style={
+              tuiles
+                ? { ...CARTE_ENTETE, gridColumn: "auto", minHeight: 0 }
+                : CARTE_ENTETE
+            }
+          >
             <div style={{ position: "relative" }}>
               <div style={{ ...SURTITRE, marginBottom: 14 }}>
                 Notre méthode

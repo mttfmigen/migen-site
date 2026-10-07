@@ -12,3 +12,7 @@ apercu/
 # Les contrôles et outils : ils ne participent pas au rendu.
 scripts/
 docs/
+
+# Le dossier de service de la maquette locale : des liens symboliques que
+# l'archive de déploiement ne sait pas suivre, et rien que Vercel doive voir.
+.maquette-servie/

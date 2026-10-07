@@ -160,7 +160,8 @@
             "titre": "Réception et dossier.",
             "texte": "Levée des réserves avec votre exploitant, plans et repérages remis à jour, compte rendu de chantier."
           }
-        ]
+        ],
+        "variante": "tuiles"
       },
       {
         "type": "garanties",

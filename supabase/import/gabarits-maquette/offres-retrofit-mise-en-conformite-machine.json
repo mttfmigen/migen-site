@@ -48,7 +48,8 @@
             "accroche": "Une modification vous transforme en responsable.",
             "texte": "Automatiser, augmenter une capacité, changer un usage : la charge de la conformité bascule sur votre entreprise."
           }
-        ]
+        ],
+        "variante": "panneau-sombre"
       },
       {
         "type": "offre",
@@ -128,7 +129,8 @@
             "titre": "La vérification et la remise en service.",
             "texte": "L'organisme accrédité passe, nous assistons à la visite, nous levons les réserves, la machine repart selon une procédure écrite à l'avance."
           }
-        ]
+        ],
+        "variante": "tuiles"
       },
       {
         "type": "garanties",

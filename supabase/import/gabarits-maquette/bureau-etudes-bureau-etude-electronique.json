@@ -155,7 +155,8 @@
             "accroche": "Le diagnostic tourne en rond.",
             "texte": "Un défaut intermittent sur une carte non documentée immobilise la ligne plusieurs jours."
           }
-        ]
+        ],
+        "variante": "panneau-sombre"
       },
       {
         "type": "offre",
@@ -235,7 +236,8 @@
             "titre": "Suite d'exploitation.",
             "texte": "Les mêmes équipes peuvent assurer ensuite le préventif et le curatif. Voir [maintenance corrective](/expertises/types-de-maintenance/maintenance-corrective/)."
           }
-        ]
+        ],
+        "variante": "tuiles"
       },
       {
         "type": "garanties",

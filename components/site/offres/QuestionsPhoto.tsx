@@ -118,6 +118,18 @@ const QUESTION: CSSProperties = {
 };
 
 const PLUS: CSSProperties = {
+  // Pastille RONDE de 30px, relevée sur la maquette : le « + » blanc repose
+  // sur un cercle gris translucide. À l'ouverture, globals.css tourne la
+  // pastille de 45 degrés et la passe à l'orange : sur un cercle, la rotation
+  // est invisible et le « + » devient une croix, exactement le dessin de la
+  // maquette. L'ancien badge nu donnait un losange orange, faux.
+  width: 30,
+  height: 30,
+  borderRadius: 999,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  background: "rgba(255,255,255,.1)",
   color: "#fff",
   font: "400 20px/1 var(--fb)",
   flex: "0 0 auto",

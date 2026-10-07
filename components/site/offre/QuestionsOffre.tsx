@@ -29,7 +29,7 @@ const ENTETE: CSSProperties = {
 };
 
 const TITRE: CSSProperties = {
-  font: "600 calc(clamp(28px,3vw,42px) * var(--ts))/1.08 var(--ft)",
+  font: "600 calc(clamp(28px,3.3vw,42px) * var(--ts))/1.08 var(--ft)",
   letterSpacing: "-.04em",
   margin: 0,
   maxWidth: "18ch",

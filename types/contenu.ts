@@ -136,6 +136,19 @@ export interface SectionChiffres {
 export interface SectionProbleme {
   type: "probleme";
   punchline: string;
+  /**
+   * Le dessin de la section, TRANSCRIT de la capture de chaque page.
+   *
+   * Mesuré le 07/10 par le diagnostic visuel des 21 pages : la maquette rend
+   * cette section sous TROIS dessins différents selon la page.
+   *   - "colonne"        colonne collante à gauche (surtitre, H2, photo),
+   *                      cartes empilées à droite : la page pilote. Défaut.
+   *   - "rangee"         en-tête pleine largeur puis UNE rangée de cartes
+   *                      égales, le numéro orange posé au-dessus de l'accroche.
+   *   - "panneau-sombre" un seul panneau anthracite arrondi à lueur orange,
+   *                      cartes de verre sombre en grille 2x2, sans photo.
+   */
+  variante?: "colonne" | "rangee" | "panneau-sombre";
   puces: Paragraphe[];
 }
 
@@ -153,6 +166,14 @@ export interface SectionOffre {
 export interface SectionDeroule {
   type: "deroule";
   titre?: string;
+  /**
+   * Le dessin, transcrit de la capture de chaque page (diagnostic du 07/10) :
+   *   - "bandeau" (défaut)  la carte d'en-tête s'étire sur toute la première
+   *                          rangée d'une grille de 3 colonnes : la page pilote.
+   *   - "tuiles"             UNE grille de 4 colonnes où la carte d'en-tête est
+   *                          la première tuile, de la même taille que les étapes.
+   */
+  variante?: "bandeau" | "tuiles";
   intro?: string;
   etapes: Etape[];
 }

@@ -99,7 +99,8 @@
             "accroche": "Le projet d'extension bloque.",
             "texte": "Impossible de chiffrer un ajout de puissance sans savoir ce que porte déjà le tableau."
           }
-        ]
+        ],
+        "variante": "rangee"
       },
       {
         "type": "offre",
@@ -176,7 +177,8 @@
             "titre": "Remise de la documentation à jour.",
             "texte": "Une mise en service sans documentation ne sert personne six mois plus tard."
           }
-        ]
+        ],
+        "variante": "tuiles"
       },
       {
         "type": "garanties",

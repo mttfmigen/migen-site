@@ -63,7 +63,8 @@
             "accroche": "Le rôle d'employeur est devenu le problème.",
             "texte": "Recrutements qui échouent, turnover, absences en cascade, encadrement débordé."
           }
-        ]
+        ],
+        "variante": "rangee"
       },
       {
         "type": "offre",

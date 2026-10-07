@@ -55,7 +55,8 @@
             "accroche": "Un accident arrête le chantier.",
             "texte": "La coactivité concentre tous les risques, et votre responsabilité d'exploitant court sur toute la durée."
           }
-        ]
+        ],
+        "variante": "rangee"
       },
       {
         "type": "offre",

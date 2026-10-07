@@ -85,11 +85,129 @@ const TEXTE: CSSProperties = {
   color: "var(--ink2)",
 };
 
+/* ------------------------------------------------------- les deux variantes
+   relevées par le diagnostic visuel du 07/10, valeurs mesurées sur la maquette
+   qui tourne, pas estimées. Le choix vient de la DONNÉE de chaque page
+   (`section.variante`), transcrit de sa capture. */
+
+const PANNEAU_SOMBRE: CSSProperties = {
+  position: "relative",
+  overflow: "hidden",
+  background: "var(--panel)",
+  borderRadius: 40,
+  padding: "52px 56px",
+};
+
+const LUEUR: CSSProperties = {
+  position: "absolute",
+  top: -120,
+  right: -120,
+  width: 460,
+  height: 460,
+  background: "radial-gradient(circle, rgba(255,124,60,.26) 0%, transparent 70%)",
+  pointerEvents: "none",
+};
+
+const CARTE_SOMBRE: CSSProperties = {
+  padding: "24px 28px",
+  borderRadius: 18,
+  background: "rgba(255,255,255,.07)",
+  border: "1px solid rgba(255,255,255,.12)",
+};
+
+function Sombre({ section }: { section: SectionProbleme }) {
+  const { titre, suite } = coupePunchline(section.punchline);
+  return (
+    <section style={SECTION}>
+      <div style={LARGEUR}>
+        <div style={PANNEAU_SOMBRE}>
+          <div aria-hidden="true" style={LUEUR} />
+          <div style={{ ...SURTITRE, marginBottom: 18 }}>
+            Votre problématique
+          </div>
+          <h2 style={{ ...TITRE, color: "#fff" }}>{titre}</h2>
+          {suite ? (
+            <p style={{ ...SOUS_PHRASE, color: "rgba(255,255,255,.62)" }}>
+              {suite}
+            </p>
+          ) : null}
+          <div
+            className="mg-r2"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+              gap: 12,
+            }}
+          >
+            {section.puces.map((puce, rang) => (
+              <div key={puce.accroche ?? puce.texte} style={CARTE_SOMBRE}>
+                <span style={NUMERO}>{numerote(rang)}</span>
+                {puce.accroche ? (
+                  <div style={{ ...ACCROCHE, color: "#fff" }}>
+                    {puce.accroche}
+                  </div>
+                ) : null}
+                <div style={{ ...TEXTE, color: "rgba(255,255,255,.62)" }}>
+                  {puce.texte}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Rangee({ section }: { section: SectionProbleme }) {
+  const { titre, suite } = coupePunchline(section.punchline);
+  return (
+    <section style={SECTION}>
+      <div style={LARGEUR}>
+        <div style={{ ...SURTITRE, marginBottom: 18 }}>
+          Votre problématique
+        </div>
+        <h2 style={TITRE}>{titre}</h2>
+        {suite ? <p style={SOUS_PHRASE}>{suite}</p> : null}
+        <div
+          className="mg-rmulti"
+          style={{
+            display: "grid",
+            // Autant de colonnes que de cartes : la maquette pose 4 cartes de
+            // ~270px ou 5 de ~214px sur UNE rangée, jamais d'empilement.
+            gridTemplateColumns: `repeat(${section.puces.length}, minmax(0, 1fr))`,
+            gap: 12,
+          }}
+        >
+          {section.puces.map((puce, rang) => (
+            <div
+              key={puce.accroche ?? puce.texte}
+              style={{ ...VERRE, padding: "24px 28px" }}
+            >
+              {/* Le numéro orange est posé AU-DESSUS de l'accroche. */}
+              <div style={{ ...NUMERO, marginBottom: 10 }}>
+                {numerote(rang)}
+              </div>
+              {puce.accroche ? (
+                <div style={ACCROCHE}>{puce.accroche}</div>
+              ) : null}
+              <div style={TEXTE}>{puce.texte}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function ProblemeOffre({
   section,
   altPhoto,
   photo,
 }: ProprietesProblemeOffre) {
+  if (section.variante === "panneau-sombre") return <Sombre section={section} />;
+  if (section.variante === "rangee") return <Rangee section={section} />;
+
   const { titre, suite } = coupePunchline(section.punchline);
   const source = photo === undefined ? PHOTO : photo;
 

@@ -97,7 +97,8 @@
             "accroche": "Le poste de technicien reste vacant des mois.",
             "texte": "Pendant ce temps, le préventif recule à chaque panne."
           }
-        ]
+        ],
+        "variante": "rangee"
       },
       {
         "type": "offre",
@@ -209,7 +210,8 @@
             "titre": "Le pilotage par les indicateurs",
             "texte": "disponibilité, temps moyen entre pannes, temps moyen de remise en service, respect du préventif. Les revues avec votre responsable décident des améliorations et anticipent les remplacements lourds."
           }
-        ]
+        ],
+        "variante": "tuiles"
       },
       {
         "type": "garanties",

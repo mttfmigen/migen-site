@@ -54,7 +54,8 @@
             "accroche": "La charge mentale use les meilleurs.",
             "texte": "Une semaine d'astreinte sur trois, et vos éléments les plus solides finissent par partir."
           }
-        ]
+        ],
+        "variante": "rangee"
       },
       {
         "type": "offre",
