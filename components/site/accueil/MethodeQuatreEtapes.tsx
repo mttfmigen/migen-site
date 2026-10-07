@@ -92,7 +92,7 @@ export default function MethodeQuatreEtapes({
                 maxWidth: "44ch",
               }}
             >
-              Le point commun des cinq offres. Cliquez une étape pour voir qui fait
+              Le point commun des six offres. Cliquez une étape pour voir qui fait
               quoi.
             </p>
           </div>

@@ -33,7 +33,12 @@ mkdirSync(SORTIE, { recursive: true });
 const navigateur = await chromium.launch({ channel: "chrome" });
 const contexte = await navigateur.newContext({
   viewport: { width: LARGEUR, height: 900 },
-  deviceScaleFactor: 2,
+  // ÉCHELLE 1, et c'est payé : à l'échelle 2, une page de plus de ~8 200 px
+  // dépasse la taille maximale de texture de Chromium (16 384 px), la capture
+  // pleine page est alors recousue par morceaux et peut RÉPÉTER des pans
+  // entiers de page. Deux aperçus envoyés à Mehdi montraient la page en
+  // double. Netteté moindre, mais image vraie.
+  deviceScaleFactor: 1,
 });
 const page = await contexte.newPage();
 

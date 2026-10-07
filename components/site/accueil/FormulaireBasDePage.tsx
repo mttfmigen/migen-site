@@ -20,7 +20,7 @@ interface Proprietes {
 
 const TITRE_ACCUEIL = "Décrivez la situation, on vous dit quelle offre tient.";
 const INTRO_ACCUEIL =
-  "Cinq lignes suffisent. Si aucune des cinq offres ne convient, nous le disons aussi.";
+  "Cinq lignes suffisent. Si aucune des six offres ne convient, nous le disons aussi.";
 
 const VERRE: CSSProperties = {
   borderRadius: 36,

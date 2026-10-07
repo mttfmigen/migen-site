@@ -116,10 +116,13 @@ export default function GrilleOffres() {
           gap: "16px",
         }}
       >
-        {/* Carte photographique d'ouverture */}
+        {/* Carte photographique d'ouverture : la maquette la fait courir sur
+            les DEUX premiers rangs, la rangée 04-06 passe dessous pleine
+            largeur. Relevé sur la capture de l'accueil, 07/10 au soir. */}
         <div
           style={{
             position: "relative",
+            gridRow: "1 / 3",
             borderRadius: "var(--rad)",
             overflow: "hidden",
             minHeight: "340px",
@@ -210,11 +213,14 @@ export default function GrilleOffres() {
           </div>
         </div>
 
-        {/* 01, Résidence, sur fond anthracite */}
+        {/* 01, Résidence, sur fond anthracite. La maquette lui donne les
+            colonnes 2 et 3 du premier rang, texte et bouton à gauche, les
+            quatre coches en colonne à droite. */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
+            gridColumn: "2 / 4",
             borderRadius: "var(--rad)",
             padding: "30px 32px 30px",
             background: "var(--panel)",
@@ -237,13 +243,16 @@ export default function GrilleOffres() {
             }}
           />
           <div
+            className="mg-r2"
             style={{
               position: "relative",
-              display: "flex",
-              flexDirection: "column",
+              display: "grid",
+              gridTemplateColumns: "1.1fr .9fr",
+              gap: "16px 28px",
               height: "100%",
             }}
           >
+            <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={NUMERO}>01</div>
             <div style={LIGNE_TITRE}>
               <div
@@ -267,13 +276,30 @@ export default function GrilleOffres() {
               vous avez besoin. Vous constituez l&apos;équipe, validez chaque
               intervenant, et la ligne ne s&apos;arrête plus.
             </p>
+            <a
+              href={LIENS.residence}
+              className={styles.lienAccent}
+              style={{
+                ...BOUTON,
+                background: "var(--acc)",
+                color: "#fff",
+                boxShadow: "0 10px 24px -12px rgba(255,124,60,.85)",
+                transition: "filter var(--tr),transform var(--tr)",
+                marginTop: "auto",
+              }}
+            >
+              Constituer mon équipe
+              <span aria-hidden="true">→</span>
+            </a>
+            </div>
             <ul
               style={{
                 listStyle: "none",
-                margin: "0 0 18px",
+                margin: 0,
                 padding: 0,
                 display: "grid",
                 gap: 8,
+                alignContent: "center",
               }}
             >
               {[
@@ -301,20 +327,6 @@ export default function GrilleOffres() {
                 </li>
               ))}
             </ul>
-            <a
-              href={LIENS.residence}
-              className={styles.lienAccent}
-              style={{
-                ...BOUTON,
-                background: "var(--acc)",
-                color: "#fff",
-                boxShadow: "0 10px 24px -12px rgba(255,124,60,.85)",
-                transition: "filter var(--tr),transform var(--tr)",
-              }}
-            >
-              Constituer mon équipe
-              <span aria-hidden="true">→</span>
-            </a>
           </div>
         </div>
 
