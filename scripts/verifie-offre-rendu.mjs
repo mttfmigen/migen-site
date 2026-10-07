@@ -47,9 +47,15 @@ import { chromium } from "playwright";
 
 const RACINE = fileURLToPath(new URL("..", import.meta.url));
 const SITE = (process.env.SITE_URL ?? "http://localhost:4340/").replace(/\/$/, "");
-const CHEMIN_PAGE = "/offres/residence/";
-const REFERENCE_HTML = join(RACINE, "maquette", "rendu", "offres--residence.html");
-const REFERENCE_JSON = join(RACINE, "maquette", "rendu", "offres--residence.json");
+/* La page se passe en argument : `node scripts/verifie-offre-rendu.mjs /offres/zero-arret/`.
+   Sans argument, la page pilote, celle que Mehdi a validée le 06/10.
+
+   Le nom de la capture se déduit du chemin, convention de `capture-maquette.mjs` :
+   les barres deviennent un double tiret, la racine s'appelle « index ». */
+const CHEMIN_PAGE = process.argv[2] ?? "/offres/residence/";
+const CLE_REFERENCE = CHEMIN_PAGE.replace(/^\/|\/$/g, "").replace(/\//g, "--") || "index";
+const REFERENCE_HTML = join(RACINE, "maquette", "rendu", `${CLE_REFERENCE}.html`);
+const REFERENCE_JSON = join(RACINE, "maquette", "rendu", `${CLE_REFERENCE}.json`);
 const LARGEUR = 1280;
 const HAUTEUR = 860;
 
@@ -62,16 +68,29 @@ const HAUTEUR = 860;
  * servi. Chaque entrée doit correspondre exactement à ce qui est rendu, et
  * son texte doit être ABSENT de la référence : sinon, exception inutile.
  */
+const FIL_ARIANE = {
+  rang: 0,
+  /* Le fil d'Ariane est la SEULE exception commune à tout le gabarit, et son
+     texte change à chaque page : il est donc décrit par une règle, pas par une
+     chaîne. Une chaîne par page obligerait à éditer cette porte pour chaque
+     nouvelle page, et la liste finirait par tout autoriser. */
+  motif: /^Accueil \/ /,
+  pourquoi:
+    "fil d'Ariane du site : la capture fige le <main> de l'application autonome, " +
+    "qui n'a pas de navigation de site. Le fil situe la page dans l'arborescence " +
+    "réelle (maillage interne et données structurées), il ne réécrit aucun mot " +
+    "de la maquette.",
+};
+
+/**
+ * Exceptions PROPRES à une page, en plus du fil d'Ariane. Clé : le chemin.
+ * Vide pour une page qui n'en a pas, ce qui est le cas attendu.
+ */
+const AJOUTS_PAR_PAGE = {};
+
 const SECTIONS_AJOUTEES = [
-  {
-    rang: 0,
-    texte: "Accueil / Entreprise maintenance industrielle / Sous-traitance maintenance",
-    pourquoi:
-      "fil d'Ariane du site : la capture fige le <main> de l'application autonome, " +
-      "qui n'a pas de navigation de site. Le fil situe la page dans l'arborescence " +
-      "réelle (maillage interne et données structurées), il ne réécrit aucun mot " +
-      "de la maquette.",
-  },
+  FIL_ARIANE,
+  ...(AJOUTS_PAR_PAGE[CHEMIN_PAGE] ?? []),
 ];
 
 /**
@@ -81,7 +100,8 @@ const SECTIONS_AJOUTEES = [
  * VIDE AU 06/10 : la capture d'offres--residence ne porte aucun cadratin,
  * et la porte le re-vérifie à chaque passage.
  */
-const TIRETS_REMPLACES = [];
+const TIRETS_PAR_PAGE = {};
+const TIRETS_REMPLACES = TIRETS_PAR_PAGE[CHEMIN_PAGE] ?? [];
 
 /**
  * Trous assumés : lignes de la référence volontairement NON rendues,
@@ -89,7 +109,25 @@ const TIRETS_REMPLACES = [];
  * manquer sur le site, sinon exception inutile. VIDE AU 06/10 : le portage
  * rend les 17 sections sans trou.
  */
-const TROUS_ASSUMES = [];
+const TROUS_PAR_PAGE = {
+  /* Modèle, à suivre pour déclarer un trou :
+   *
+   *   "/offres/zero-arret/": [
+   *     {
+   *       section: 0,
+   *       ligne: "… la phrase EXACTE de la référence …",
+   *       pourquoi: "prix : le contrat du projet interdit tout prix sur le site.",
+   *     },
+   *   ],
+   *
+   * UN TROU N'EST PAS UNE REFORMULATION. Mehdi a tranché le 05/10 : « la
+   * maquette se respecte au mot pour mot, un synonyme est une faute ». Une
+   * phrase que le contrat interdit de copier n'est donc pas réécrite autrement :
+   * elle n'est PAS RENDUE, et elle est déclarée ici avec sa raison. La porte
+   * vérifie les deux sens : la phrase doit exister dans la référence et manquer
+   * sur le site, sinon l'exception est fausse et la porte échoue. */
+};
+const TROUS_ASSUMES = TROUS_PAR_PAGE[CHEMIN_PAGE] ?? [];
 
 /* ------------------------------------------------------------------ */
 /* Normalisation et extraction, le même code pour les deux pages.      */
@@ -165,8 +203,11 @@ function retireAjoutsDeclares(site, texteReference, fautes) {
   const rangsRetires = new Set();
   for (const ajout of SECTIONS_AJOUTEES) {
     const section = site[ajout.rang];
-    const attendu = normalise(ajout.texte);
-    if (!section || section.texte !== attendu) {
+    const attendu = ajout.texte ? normalise(ajout.texte) : null;
+    const correspond = section
+      ? (attendu !== null ? section.texte === attendu : ajout.motif.test(section.texte))
+      : false;
+    if (!correspond) {
       fautes.push(
         `exception devenue inutile ou fausse : la section ajoutée déclarée au rang ` +
           `${ajout.rang} (« ${ajout.texte} ») n'est pas rendue telle quelle.\n` +
@@ -175,7 +216,7 @@ function retireAjoutsDeclares(site, texteReference, fautes) {
       );
       continue;
     }
-    if (texteReference.includes(attendu)) {
+    if (attendu !== null && texteReference.includes(attendu)) {
       fautes.push(
         `exception fausse : le texte de la section ajoutée au rang ${ajout.rang} existe ` +
           `dans la référence, ce n'est donc pas un ajout`,
