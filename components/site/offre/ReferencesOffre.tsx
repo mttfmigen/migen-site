@@ -32,6 +32,86 @@ export interface ProprietesReferencesOffre {
 }
 
 /** Une photo par carte, dans l'ordre des preuves du corpus. */
+/**
+ * Le logo du client, posé en pastille blanche sur la photo de sa carte.
+ *
+ * MESURÉ LE 07/10 sur la maquette qui tourne : pastille blanche, 87x22 en
+ * `contain`, coins 12px, 14px de marge intérieure horizontale, collée à 14px
+ * du bord bas gauche de la photo. Elle manquait entièrement chez nous, et
+ * c'était l'essentiel des 10,3 % d'écart de cette section.
+ *
+ * LA CLÉ EST LE NOM DU CLIENT, normalisé : accents retirés, espaces en tirets.
+ * Le dictionnaire ne liste QUE les logos réellement présents dans le dépôt :
+ * un client sans logo n'affiche pas de pastille, il n'en reçoit pas une
+ * fausse. Les manques sont donc visibles plutôt que masqués.
+ */
+const LOGOS: Readonly<Record<string, string>> = {
+  "aktid": "/assets/clients/aktid.png",
+  "alstef-group": "/assets/clients/alstef-group.webp",
+  "alstef": "/assets/clients/alstef.webp",
+  "amazon": "/assets/clients/amazon.svg",
+  "atena": "/assets/clients/atena.png",
+  "autoliv": "/assets/clients/autoliv.svg",
+  "bamesa": "/assets/clients/bamesa.png",
+  "bledina": "/assets/clients/bledina.svg",
+  "ciuch": "/assets/clients/ciuch.svg",
+  "danone-bledina": "/assets/clients/danone-bledina.png",
+  "danone": "/assets/clients/danone.png",
+  "dimomaint": "/assets/clients/dimomaint.svg",
+  "eaton": "/assets/clients/eaton.svg",
+  "ecocem": "/assets/clients/ecocem.png",
+  "eiffage": "/assets/clients/eiffage.svg",
+  "eriks": "/assets/clients/eriks.svg",
+  "gls": "/assets/clients/gls.svg",
+  "groupe-atlantic": "/assets/clients/groupe-atlantic.png",
+  "jacquet-brossard": "/assets/clients/jacquet-brossard.png",
+  "jeld-wen": "/assets/clients/jeld-wen.png",
+  "joint-lyonnais": "/assets/clients/joint-lyonnais.png",
+  "jtekt": "/assets/clients/jtekt.svg",
+  "la-panetiere": "/assets/clients/la-panetiere.svg",
+  "mccain": "/assets/clients/mccain.svg",
+  "mersen": "/assets/clients/mersen.svg",
+  "motherson": "/assets/clients/motherson.svg",
+  "ogf": "/assets/clients/ogf.png",
+  "orthus-x-ecocem": "/assets/clients/orthus-x-ecocem.png",
+  "orthus-x-washtec": "/assets/clients/orthus-x-washtec.svg",
+  "rector-lesage": "/assets/clients/rector-lesage.png",
+  "salaison-du-maconnais": "/assets/clients/salaison-du-maconnais.png",
+  "savoye": "/assets/clients/savoye.png",
+  "soprema": "/assets/clients/soprema.svg",
+  "stellantis": "/assets/clients/stellantis.png",
+  "suez": "/assets/clients/suez.svg",
+  "timescope": "/assets/clients/timescope.png",
+  "tournaire": "/assets/clients/tournaire.png",
+  "valeo": "/assets/clients/valeo.svg",
+  "veepee": "/assets/clients/veepee.svg",
+  "vignal-systems": "/assets/clients/vignal-systems.svg",
+  "voit": "/assets/clients/voit.svg",
+  "washtec": "/assets/clients/washtec.svg",
+};
+
+/** « Groupe Atlantic » → « groupe-atlantic ». */
+function cleLogo(nom: string): string {
+  return nom
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+const PASTILLE_LOGO: CSSProperties = {
+  position: "absolute",
+  left: 14,
+  bottom: 14,
+  height: 22,
+  padding: "0 14px",
+  display: "flex",
+  alignItems: "center",
+  background: "#fff",
+  borderRadius: 12,
+};
+
 const PHOTOS: readonly string[] = [
   "/assets/web/x-technicienne-gilet.jpg",
   "/assets/web/team-grind-front.jpg",
@@ -184,6 +264,25 @@ export default function ReferencesOffre({ section }: ProprietesReferencesOffre) 
                     filter: "saturate(var(--sat)) contrast(1.05)",
                   }}
                 />
+                {(() => {
+                  // Le client peut manquer (le corpus n'a pas toujours de
+                  // libellé long), et son logo peut manquer aussi : dans les
+                  // deux cas, pas de pastille plutôt qu'une fausse.
+                  const client = etiquetteEtude(preuve);
+                  const logo = client ? LOGOS[cleLogo(client)] : undefined;
+                  if (!client || !logo) return null;
+                  return (
+                    <div style={PASTILLE_LOGO}>
+                      <Image
+                        src={logo}
+                        alt={client}
+                        width={87}
+                        height={22}
+                        style={{ objectFit: "contain", width: "auto", height: 22 }}
+                      />
+                    </div>
+                  );
+                })()}
               </div>
               <div
                 style={{
