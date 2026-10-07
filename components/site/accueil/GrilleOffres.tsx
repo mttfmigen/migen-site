@@ -6,6 +6,7 @@ import styles from "./GrilleOffres.module.css";
 
 type CleOffre =
   | "residence"
+  | "fullService"
   | "zeroArret"
   | "arretTechnique"
   | "bureauEtudes"
@@ -28,6 +29,7 @@ type CleOffre =
  */
 const LIENS: Record<CleOffre, string> = {
   residence: "/offres/residence/",
+  fullService: "/offres/full-service/",
   zeroArret: "/offres/zero-arret/",
   arretTechnique: "/offres/arret-technique/",
   bureauEtudes: "/offres/bureau-etudes/",
@@ -44,14 +46,14 @@ const CARTES_SOBRES: readonly {
 }[] = [
   {
     cle: "arretTechnique",
-    numero: "03",
+    numero: "04",
     titre: "migen© Arrêt technique",
     texte: "Arrêts planifiés, préparés en amont, tenus à la demi-journée.",
     action: "Préparer un arrêt",
   },
   {
     cle: "bureauEtudes",
-    numero: "04",
+    numero: "05",
     titre: "migen© Bureau d’études",
     texte:
       "Conception, schémas électriques, mise en conformité machine : des études faites par des gens de terrain.",
@@ -59,7 +61,7 @@ const CARTES_SOBRES: readonly {
   },
   {
     cle: "travauxIndustriels",
-    numero: "05",
+    numero: "06",
     titre: "migen© Travaux industriels",
     texte:
       "Transfert, montage, démantèlement, levage : le chantier, du relevé à la remise en production.",
@@ -193,7 +195,7 @@ export default function GrilleOffres() {
                 marginBottom: "12px",
               }}
             >
-              Sept façons de travailler ensemble
+              Six façons de travailler ensemble
             </div>
             <div
               style={{
@@ -265,6 +267,40 @@ export default function GrilleOffres() {
               vous avez besoin. Vous constituez l&apos;équipe, validez chaque
               intervenant, et la ligne ne s&apos;arrête plus.
             </p>
+            <ul
+              style={{
+                listStyle: "none",
+                margin: "0 0 18px",
+                padding: 0,
+                display: "grid",
+                gap: 8,
+              }}
+            >
+              {[
+                "Vous validez chaque technicien avant son arrivée",
+                "Remplacement garanti en cas d’absence",
+                "Recrutement, habilitations et paie portés par migen",
+                "Reporting mensuel et suivi d’indicateurs",
+              ].map((garantie) => (
+                <li
+                  key={garantie}
+                  style={{
+                    display: "flex",
+                    gap: 10,
+                    alignItems: "baseline",
+                    padding: "10px 14px",
+                    borderRadius: 12,
+                    background: "rgba(255,255,255,.06)",
+                    border: "1px solid rgba(255,255,255,.1)",
+                    font: "400 13.5px/1.45 var(--fb)",
+                    color: "rgba(255,255,255,.85)",
+                  }}
+                >
+                  <span aria-hidden="true" style={{ color: "var(--acc)" }}>✓</span>
+                  {garantie}
+                </li>
+              ))}
+            </ul>
             <a
               href={LIENS.residence}
               className={styles.lienAccent}
@@ -282,7 +318,9 @@ export default function GrilleOffres() {
           </div>
         </div>
 
-        {/* 02, Zéro arrêt, carte de verre qui se soulève au survol */}
+        {/* 02, Full service, ajoutée le 07/10 : la maquette compte SIX façons et
+            cette carte manquait, d'où notre « Sept » faux avec cinq cartes.
+            Texte mot pour mot de l'accueil de la maquette. */}
         <div
           className={styles.carteLevee}
           style={{
@@ -302,6 +340,73 @@ export default function GrilleOffres() {
             }}
           >
             <div style={NUMERO}>02</div>
+            <div style={LIGNE_TITRE}>
+              <div style={{ font: "600 21px var(--ft)", letterSpacing: "-.03em" }}>
+                migen© Full service
+              </div>
+              <span
+                style={{
+                  font: "600 10.5px var(--fb)",
+                  letterSpacing: ".1em",
+                  textTransform: "uppercase",
+                  color: "var(--acc)",
+                  background: "var(--acc-w)",
+                  padding: "5px 11px",
+                  borderRadius: "999px",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Contrat unique
+              </span>
+            </div>
+            <p
+              style={{
+                font: "400 14.5px/1.6 var(--fb)",
+                color: "var(--ink2)",
+                margin: "10px 0 18px",
+              }}
+            >
+              Toute votre maintenance dans un seul contrat&nbsp;: préventif,
+              dépannage, pièces et GMAO, avec un seul interlocuteur.
+            </p>
+            <a
+              href={LIENS.fullService}
+              className={styles.lienAccent}
+              style={{
+                ...BOUTON,
+                background: "var(--acc)",
+                color: "#fff",
+                boxShadow: "0 10px 24px -12px rgba(255,124,60,.85)",
+                transition: "filter var(--tr),transform var(--tr)",
+                marginTop: "auto",
+              }}
+            >
+              Confier ma maintenance
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+
+        {/* 03, Zéro arrêt, carte de verre qui se soulève au survol */}
+        <div
+          className={styles.carteLevee}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            borderRadius: "var(--rad)",
+            padding: "30px 32px 30px",
+            ...VERRE,
+          }}
+        >
+          <div
+            style={{
+              position: "relative",
+              display: "flex",
+              flexDirection: "column",
+              height: "100%",
+            }}
+          >
+            <div style={NUMERO}>03</div>
             <div style={LIGNE_TITRE}>
               <div style={{ font: "600 21px var(--ft)", letterSpacing: "-.03em" }}>
                 migen© Zéro arrêt
@@ -328,9 +433,12 @@ export default function GrilleOffres() {
                 margin: "10px 0 18px",
               }}
             >
+              {/* La maquette poursuit par « , prix mensuel fixe. Trois
+                  formules, sur devis. » : un prix, interdit par le contrat.
+                  La phrase s'arrête donc là, elle n'est pas reformulée, même
+                  arbitrage que sur la page /offres/zero-arret/. */}
               La maintenance qui ne touche jamais à votre production&nbsp;:
-              entretien le samedi, dépannage la nuit, prix mensuel fixe. Trois
-              formules, sur devis.
+              entretien le samedi, dépannage la nuit.
             </p>
             <a
               href={LIENS.zeroArret}

@@ -280,7 +280,8 @@
       {
         "titre": "Sous-traitance maintenance",
         "phrase": "Un technicien présent chaque jour dans vos murs, intégré à votre équipe de production. Voir la sous-traitance maintenance.",
-        "href": "/offres/residence/"
+        "href": "/offres/residence/",
+        "photo": "/assets/web/team-duo.jpg"
       },
       {
         "titre": "Contrat de maintenance",

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
@@ -8,29 +7,32 @@ import type { CarteTypeMaintenance } from "@/types/offre";
 
 import { numerote } from "./texte-offre";
 
-import styles from "./PageOffre.module.css";
-
 /**
- * Écran « 02 Types de maintenance » de la maquette, porté le 07/10 depuis
- * `maquette/rendu/offres--full-service.html` (bloc 346, section 6 des 21).
+ * Écran « 02 Types de maintenance » de la maquette, relevé le 07/10 sur
+ * `maquette/rendu/offres--full-service.html` (bloc 346, rendu vivant :4352).
  *
- * POURQUOI IL N'EXISTAIT PAS. La page pilote validée le 06/10
- * (`/offres/residence/`, 17 sections) ne l'a pas. La maquette le pose entre la
- * première bande d'appel et la problématique, sur les pages dont l'offre
- * couvre plusieurs natures de maintenance : surtitre « Types de maintenance »,
- * un H2, puis quatre cartes-photos numérotées qui mènent aux pages
- * d'expertise.
+ * LE PREMIER PORTAGE ÉTAIT FAUX : il rendait quatre cartes-photos en grille
+ * avec un lien « Découvrir → », d'après un relevé erroné du bloc 346. La
+ * capture rend tout autre chose : un grand panneau sombre à gauche (surtitre
+ * orange et H2 blanc superposés en bas) et, à droite, quatre rangées
+ * numérotées 01 à 04 séparées par des filets, chacune avec son bouton rond à
+ * flèche et une barre beige sous le texte. Aucun libellé « Découvrir ».
  *
- * MODIFICATION D'UN COMPOSANT PARTAGÉ PAR LES 22 PAGES : ajout seul, aucune
- * retouche des composants existants. Sans `typesMaintenance`, `PageOffre` ne
- * le monte pas, donc les 21 autres pages ne bougent pas.
+ * LA PHOTO DU PANNEAU N'EST PAS POSÉE : la capture la sert en `blob:` (fichier
+ * jamais nommé, alt « Technicien migen en intervention ») et la donnée ne
+ * porte aucune clé photo de panneau. Les clés `photo` des cartes sont des
+ * associations carte par carte issues de l'ancien relevé : en élire une pour
+ * le panneau serait une association inventée (CLAUDE.md §13). Le panneau garde
+ * son fond `rgb(28,27,25)` et son voile, ce que la capture mesure.
  *
- * LE SURTITRE EST FIXE, comme ceux de `ProblemeOffre` et de `PointsOffre`.
- * LE LIBELLÉ DU LIEN aussi : la capture écrit « Découvrir → ». C'est bien
- * l'infinitif, pas l'impératif « découvrez » que le contrat proscrit
- * (CLAUDE.md §9) ; `scripts/verifie-interdits.mjs` ne vise que « découvrez ».
+ * LA BARRE BEIGE de chaque rangée porte, dans la capture, une étiquette VIDE
+ * (bloc 363, `sc-interp` sans texte). Elle se rend donc vide, comme relevée.
  *
- * UNE CIBLE QUI N'EST PAS UN CHEMIN INTERNE FAIT DISPARAÎTRE LA CARTE, elle
+ * LE SURVOL DES RANGÉES n'est pas porté : la capture déclare
+ * `transition: background-color` (classe `scpz`) mais la valeur survolée
+ * n'apparaît dans aucune source de la maquette. Rien n'est inventé.
+ *
+ * UNE CIBLE QUI N'EST PAS UN CHEMIN INTERNE FAIT DISPARAÎTRE LA RANGÉE, elle
  * n'est pas rafistolée vers une cible de repli : même règle que `LiensOffre`.
  */
 
@@ -39,76 +41,134 @@ export interface ProprietesTypesMaintenance {
   cartes: readonly CarteTypeMaintenance[];
 }
 
+/* Bloc 348 de la capture. `mg-r2` replie en une colonne sous 900px. */
+const GRILLE: CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "minmax(0,.9fr) minmax(0,1.1fr)",
+  gap: 48,
+  alignItems: "stretch",
+};
+
+/* Bloc 349 : le panneau photo. Le fond sombre reste seul, voir l'en-tête. */
+const PANNEAU_PHOTO: CSSProperties = {
+  position: "relative",
+  borderRadius: "var(--rad)",
+  overflow: "hidden",
+  minHeight: 440,
+  background: "rgb(28,27,25)",
+};
+
+/* Bloc 351 : le voile qui assoit le texte blanc sur la photo. */
+const VOILE: CSSProperties = {
+  position: "absolute",
+  inset: 0,
+  background:
+    "linear-gradient(to top,rgba(18,17,16,.92) 0%,rgba(18,17,16,.35) 55%,rgba(18,17,16,.05) 100%)",
+};
+
+/* Bloc 352 : surtitre et H2 superposés en bas du panneau. */
+const LEGENDE: CSSProperties = {
+  position: "absolute",
+  left: 0,
+  right: 0,
+  bottom: 0,
+  padding: 34,
+};
+
+/* Bloc 354. */
 const TITRE: CSSProperties = {
-  font: "600 calc(clamp(28px,3vw,42px) * var(--ts))/1.08 var(--ft)",
+  font: "600 calc(clamp(28px,3vw,40px) * var(--ts))/1.08 var(--ft)",
   letterSpacing: "-.04em",
   margin: 0,
-  maxWidth: "22ch",
+  color: "#fff",
+  maxWidth: "18ch",
   textWrap: "balance",
 };
 
-const GRILLE: CSSProperties = {
+/* Bloc 355 : la colonne des rangées. */
+const LISTE: CSSProperties = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  borderTop: "1px solid var(--line)",
+};
+
+/* Bloc 357 : une rangée, lien entier. */
+const RANGEE: CSSProperties = {
   display: "grid",
-  gridTemplateColumns: "repeat(4,minmax(0,1fr))",
-  gap: 12,
-};
-
-const CARTE: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  borderRadius: 24,
-  overflow: "hidden",
-  background: "var(--card)",
-  border: "1px solid var(--line)",
+  gridTemplateColumns: "40px minmax(0,1fr) 36px",
+  gap: 18,
+  alignItems: "start",
+  padding: "26px 6px",
+  borderBottom: "1px solid var(--line)",
   color: "var(--ink)",
-  transition: "transform var(--tr),box-shadow var(--tr)",
+  transition: "background-color var(--tr)",
 };
 
-const CADRE_PHOTO: CSSProperties = {
-  position: "relative",
-  height: 150,
-  overflow: "hidden",
-  background: "var(--ph)",
-};
-
+/* Bloc 358. */
 const NUMERO: CSSProperties = {
-  position: "absolute",
-  left: 16,
-  top: 14,
-  font: "600 11px ui-monospace,Menlo,monospace",
-  color: "#fff",
-  background: "rgba(18,17,16,.55)",
-  backdropFilter: "blur(8px)",
-  WebkitBackdropFilter: "blur(8px)",
-  padding: "4px 9px",
-  borderRadius: 999,
+  font: "600 12px ui-monospace,Menlo,monospace",
+  color: "var(--acc)",
+  paddingTop: 5,
 };
 
-const CORPS: CSSProperties = {
-  padding: "20px 22px 22px",
+/* Bloc 359. */
+const COLONNE_TEXTE: CSSProperties = {
   display: "flex",
   flexDirection: "column",
-  gap: 10,
-  flex: "1 1 0%",
+  gap: 8,
+  minWidth: 0,
 };
 
-const TITRE_CARTE: CSSProperties = {
-  font: "600 calc(20px * var(--ts))/1.2 var(--ft)",
+/* Bloc 360. */
+const TITRE_RANGEE: CSSProperties = {
+  font: "600 calc(21px * var(--ts))/1.2 var(--ft)",
   letterSpacing: "-.03em",
   margin: 0,
 };
 
+/* Bloc 361. */
 const PHRASE: CSSProperties = {
-  font: "400 14px/1.55 var(--fb)",
+  font: "400 14.5px/1.6 var(--fb)",
   color: "var(--ink2)",
-  margin: 0,
+  maxWidth: "56ch",
 };
 
-const LIEN: CSSProperties = {
-  marginTop: "auto",
-  paddingTop: 6,
-  font: "600 13.5px var(--fb)",
-  color: "var(--acc)",
+/* Bloc 362 : la barre beige pleine largeur sous le texte. */
+const BARRE: CSSProperties = {
+  alignSelf: "stretch",
+  display: "flex",
+  flexDirection: "column",
+  gap: 4,
+  marginTop: 6,
+  padding: "11px 14px",
+  borderRadius: 14,
+  background: "var(--acc-w)",
+  font: "500 13px/1.45 var(--fb)",
+  color: "var(--ink1)",
+};
+
+/* Bloc 363 : son étiquette, vide dans la capture. */
+const BARRE_ETIQUETTE: CSSProperties = {
+  font: "600 10px var(--fb)",
+  letterSpacing: ".12em",
+  textTransform: "uppercase",
+  whiteSpace: "nowrap",
+  color: "var(--acc-ink)",
+};
+
+/* Bloc 364 : le bouton rond à flèche. */
+const FLECHE: CSSProperties = {
+  width: 36,
+  height: 36,
+  borderRadius: 999,
+  background: "var(--chip)",
+  color: "var(--ink)",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  font: "600 15px var(--fb)",
+  marginTop: 2,
 };
 
 export default function TypesMaintenance({
@@ -123,41 +183,40 @@ export default function TypesMaintenance({
   return (
     <section style={SECTION}>
       <div style={LARGEUR}>
-        <div style={{ marginBottom: 30 }}>
-          <div style={{ ...SURTITRE, marginBottom: 16 }}>
-            Types de maintenance
+        <div className="mg-r2" style={GRILLE}>
+          <div style={PANNEAU_PHOTO}>
+            <div style={VOILE} />
+            <div style={LEGENDE}>
+              <div style={{ ...SURTITRE, marginBottom: 14 }}>
+                Types de maintenance
+              </div>
+              <h2 style={TITRE}>{titre}</h2>
+            </div>
           </div>
-          <h2 style={TITRE}>{titre}</h2>
-        </div>
-        <div className="mg-rmulti" style={GRILLE}>
-          {retenues.map((carte, rang) => (
-            <Link
-              key={carte.href}
-              href={carte.href}
-              prefetch={false}
-              className={styles.carteReference}
-              style={CARTE}
-            >
-              <div style={CADRE_PHOTO}>
-                <Image
-                  src={carte.photo}
-                  alt=""
-                  fill
-                  sizes="(max-width: 620px) 100vw, 280px"
-                  style={{
-                    objectFit: "cover",
-                    filter: "saturate(var(--sat)) contrast(1.05)",
-                  }}
-                />
+          <div style={LISTE}>
+            {retenues.map((carte, rang) => (
+              <Link
+                key={carte.href}
+                href={carte.href}
+                prefetch={false}
+                style={RANGEE}
+              >
                 <span style={NUMERO}>{numerote(rang)}</span>
-              </div>
-              <div style={CORPS}>
-                <h3 style={TITRE_CARTE}>{carte.titre}</h3>
-                {carte.phrase ? <p style={PHRASE}>{carte.phrase}</p> : null}
-                <span style={LIEN}>Découvrir →</span>
-              </div>
-            </Link>
-          ))}
+                <span style={COLONNE_TEXTE}>
+                  <h3 style={TITRE_RANGEE}>{carte.titre}</h3>
+                  {carte.phrase ? (
+                    <span style={PHRASE}>{carte.phrase}</span>
+                  ) : null}
+                  <span style={BARRE}>
+                    <span style={BARRE_ETIQUETTE} />
+                  </span>
+                </span>
+                <span aria-hidden="true" style={FLECHE}>
+                  →
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>

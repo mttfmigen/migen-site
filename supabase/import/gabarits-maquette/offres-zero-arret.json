@@ -4,6 +4,7 @@
   "contenu": {
     "gabarit": "offre",
     "pastille": "Nos offres",
+    "chapeau": "",
     "appelBouton": "Demander mon diagnostic gratuit",
     "actions": [
       {

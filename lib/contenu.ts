@@ -112,7 +112,7 @@ interface RelaisGabarit {
 // Rechargé le 07/10 : /bureau-etudes/bureau-etude-electronique/ porté contre sa capture (19 sections, rail de marques).
 // Rechargé le 07/10 : /bureau-etudes/bureau-etude-electronique/, phrase de la carte phare du maillage.
 // Rechargé le 07/10 : /bureau-etudes/mise-en-conformite-machine/ porté contre sa capture (19 sections, rail de marques, 5 trous déclarés).
-// relais relu : déroulé en tuiles sur six pages
+// relais relu : restauration chirurgicale après le nettoyage trop large
 const CONTENUS_SUR_DISQUE: ReadonlyMap<string, RelaisGabarit> = (() => {
   const dossier = join(process.cwd(), "supabase", "import", "gabarits-maquette");
   const par = new Map<string, RelaisGabarit>();
@@ -390,10 +390,18 @@ export async function maillage(page: LignePage, maxSoeurs = 4): Promise<Maillage
   // reste stable d'un build à l'autre.
   const soeurs = fratrie.filter((s) => s.id !== page.id);
   const depart = Math.max(0, fratrie.findIndex((s) => s.id === page.id));
-  const fenetre = soeurs
-    .slice(depart, depart + maxSoeurs)
-    .concat(soeurs.slice(0, Math.max(0, depart + maxSoeurs - soeurs.length)))
-    .slice(0, maxSoeurs);
+  // MOINS DE SŒURS QUE LA FENÊTRE : on les rend toutes, UNE fois. Le bouclage
+  // ci-dessous re-concaténait le début de la liste, et toute page à moins de
+  // quatre sœurs voyait les siennes EN DOUBLE dans son maillage. Trouvé le
+  // 07/10 par le diagnostic visuel de /offres/residence/cahier-des-charges/,
+  // qui n'a que deux sœurs : les deux cartes y étaient quatre.
+  const fenetre =
+    soeurs.length <= maxSoeurs
+      ? soeurs
+      : soeurs
+          .slice(depart, depart + maxSoeurs)
+          .concat(soeurs.slice(0, Math.max(0, depart + maxSoeurs - soeurs.length)))
+          .slice(0, maxSoeurs);
 
   return {
     parent: parent ? vers(parent) : null,

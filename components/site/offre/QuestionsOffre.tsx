@@ -28,8 +28,12 @@ const ENTETE: CSSProperties = {
   marginBottom: 30,
 };
 
+/* Relevé maquette (07/10, trois pages concordantes) : le H2 de la FAQ a le
+   MÊME corps que « Nos références » (`ReferencesOffre.tsx`), cap mesurée 30 px
+   à 1280, soit ~42-43 px de corps. L'ancien clamp plafonné à 42px cassait la
+   ligne un mot plus tôt que la maquette. */
 const TITRE: CSSProperties = {
-  font: "600 calc(clamp(28px,3.3vw,42px) * var(--ts))/1.08 var(--ft)",
+  font: "600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.08 var(--ft)",
   letterSpacing: "-.04em",
   margin: 0,
   maxWidth: "18ch",
@@ -89,12 +93,15 @@ const PLUS: CSSProperties = {
   height: 30,
   borderRadius: 999,
   background: "var(--chip)",
-  color: "var(--ink1)",
+  color: "var(--ink2)",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   flex: "0 0 auto",
-  font: "400 19px/1 var(--fb)",
+  /* Relevé maquette (/bureau-etudes/mise-en-conformite-machine/, 07/10) :
+     pastille 30x30 ronde fond var(--chip), « + » en 400 20px/1 var(--fb)
+     couleur var(--ink2) ; à l'ouverture le fond passe var(--acc), rond. */
+  font: "400 20px/1 var(--fb)",
   transition: "transform var(--tr),background var(--tr)",
 };
 
@@ -106,8 +113,11 @@ const REPONSE: CSSProperties = {
 };
 
 function Pli({ question, rang }: { question: Question; rang: number }) {
+  /* Relevé maquette (sept pages concordantes, 07/10) : la PREMIÈRE question
+     est dépliée au chargement, réponse visible, croix sur pastille orange.
+     Le site chargeait tout fermé. */
   return (
-    <details className={styles.pliQuestion} style={PLI}>
+    <details className={styles.pliQuestion} style={PLI} open={rang === 0}>
       <summary style={RESUME}>
         <span style={NUMERO}>{numerote(rang)}</span>
         <span style={QUESTION}>{question.question}</span>

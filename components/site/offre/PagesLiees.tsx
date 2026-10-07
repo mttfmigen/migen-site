@@ -156,10 +156,19 @@ const RANGEE_TITRE: CSSProperties = {
   color: "var(--ink)",
 };
 
+/* Relevé maquette (/entreprise-maintenance-industrielle/, 07/10) : la phrase
+   de chaque rangée est COUPÉE à 2 lignes avec ellipse (« Voir le contrat
+   de… ») ; le texte entier sur 3 lignes rendait rangée et section plus hautes
+   (~88 px maquette contre ~106 px site). Le `-webkit-box` fait office de
+   `display: block` : ne pas le réécraser au point d'usage. */
 const RANGEE_PHRASE: CSSProperties = {
   font: "400 13.5px/1.45 var(--fb)",
   color: "var(--ink2)",
   marginTop: 3,
+  display: "-webkit-box",
+  WebkitLineClamp: 2,
+  WebkitBoxOrient: "vertical",
+  overflow: "hidden",
 };
 
 const FLECHE: CSSProperties = {
@@ -257,9 +266,7 @@ export default function PagesLiees({ pages, titre }: ProprietesPagesLiees) {
                   <span style={{ ...RANGEE_TITRE, display: "block" }}>
                     {page.titre}
                   </span>
-                  <span style={{ ...RANGEE_PHRASE, display: "block" }}>
-                    {page.phrase}
-                  </span>
+                  <span style={RANGEE_PHRASE}>{page.phrase}</span>
                 </span>
                 {/* Masquée aux technologies d'assistance : le nom du lien est
                     le titre de la page, la flèche n'y ajoute rien. */}

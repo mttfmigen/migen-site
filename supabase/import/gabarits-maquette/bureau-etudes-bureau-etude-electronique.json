@@ -107,7 +107,8 @@
       {
         "titre": "Maintenance électrique industrielle",
         "phrase": "Interventions liées : maintenance électrique industrielle, automatisme industriel, dépannage industriel.",
-        "href": "/expertises/electrique/"
+        "href": "/expertises/electrique/",
+        "photo": "/assets/web/team-duo.jpg"
       },
       {
         "titre": "Automatisme industriel",

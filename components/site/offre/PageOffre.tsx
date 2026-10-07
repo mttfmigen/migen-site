@@ -259,7 +259,16 @@ export default function PageOffre({
 
         {chiffres.length > 0 ? (
           <section style={SECTION_CHIFFRES}>
-            <div className="mg-rmulti" style={GRILLE_CHIFFRES}>
+            {/* La maquette rend autant de colonnes que de chiffres (3 sur
+                `/offres/retrofit/remise-en-etat/`, relevé 07/10) : le nombre
+                vient de la donnée, pas d'un `repeat(4,…)` figé. */}
+            <div
+              className="mg-rmulti"
+              style={{
+                ...GRILLE_CHIFFRES,
+                gridTemplateColumns: `repeat(${chiffres.length},minmax(0,1fr))`,
+              }}
+            >
               {chiffres.map((chiffre, rang) => (
                 <div
                   key={`${chiffre.valeur}-${chiffre.libelle}`}

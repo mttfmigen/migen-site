@@ -123,13 +123,21 @@ export const SECTION_CHIFFRES: CSSProperties = {
 };
 
 /**
- * Capture : les quatre chiffres vivent dans UNE SEULE carte en verre, en
- * quatre colonnes séparées par un filet, sans en-tête de section.
+ * Capture : les chiffres vivent dans UNE SEULE carte en verre, en colonnes
+ * égales séparées par un filet, sans en-tête de section.
+ *
+ * PAS DE `gridTemplateColumns` ICI, et c'est mesuré : la maquette cale le
+ * nombre de colonnes sur le nombre de chiffres de la page
+ * (`repeat(3, minmax(0px, 1fr))` relevé dans le rendu de
+ * `/offres/retrofit/remise-en-etat/`, filets aux tiers relevés sur
+ * `/offres/arret-technique/`). L'ancien `repeat(4,…)` figé laissait une 4e
+ * colonne vide sur les pages à 3 chiffres et repliait les libellés sur
+ * 3 lignes. C'est `PageOffre.tsx` qui pose la valeur, depuis
+ * `chiffres.length`.
  */
 export const GRILLE_CHIFFRES: CSSProperties = {
   ...VERRE,
   display: "grid",
-  gridTemplateColumns: "repeat(4,minmax(0,1fr))",
   padding: "22px 8px",
 };
 

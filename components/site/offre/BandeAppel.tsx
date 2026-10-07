@@ -38,13 +38,17 @@ export interface ProprietesBandeAppel {
   variante?: "claire" | "sombre";
 }
 
+/* Relevé maquette (/bureau-etudes/bureau-etude-electrique/, 07/10) : section
+   de 113-115 px contre 136-138 px sur le site, même écart (+23 px) sur les
+   trois bandeaux de la page. Le padding vertical passe de 22 à 11 px pour
+   revenir à la hauteur relevée. */
 const BANDE: CSSProperties = {
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
   gap: 20,
   flexWrap: "wrap",
-  padding: "22px 24px 22px 30px",
+  padding: "11px 24px 11px 30px",
   borderRadius: 28,
 };
 

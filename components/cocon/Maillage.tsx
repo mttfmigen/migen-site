@@ -13,7 +13,22 @@ import type { LignePage } from "@/types/lignes";
  * dans `ListeMaillage.tsx` : il se rend sans base, donc il se contrôle sans
  * base (`components/cocon/verification-maillage.tsx`).
  */
+/**
+ * LES SEULES PAGES OÙ LA MAQUETTE MONTRE CE BLOC, transcrites le 07/10 des 210
+ * captures : « Pages liées » y apparaît 3 fois sur 210, et Mehdi a tranché le
+ * soir même en désignant ce bloc sur l'aperçu : il n'existe pas ailleurs.
+ * Le composant reste monté par les douze gabarits, c'est LUI qui refuse de se
+ * rendre hors de cette liste : un seul endroit à tenir à jour si la maquette
+ * l'ajoute à d'autres pages.
+ */
+const PAGES_AVEC_MAILLAGE = new Set([
+  "/ressources/",
+  "/guides/choisir-une-entreprise-de-maintenance/",
+  "/guides/reussir-un-transfert-industriel/",
+]);
+
 export default async function Maillage({ page }: { page: LignePage }) {
+  if (!PAGES_AVEC_MAILLAGE.has(page.path)) return null;
   const { parent, enfants, soeurs } = await maillage(page);
 
   /*

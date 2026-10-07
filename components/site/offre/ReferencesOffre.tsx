@@ -35,10 +35,13 @@ export interface ProprietesReferencesOffre {
 /**
  * Le logo du client, posé en pastille blanche sur la photo de sa carte.
  *
- * MESURÉ LE 07/10 sur la maquette qui tourne : pastille blanche, 87x22 en
- * `contain`, coins 12px, 14px de marge intérieure horizontale, collée à 14px
- * du bord bas gauche de la photo. Elle manquait entièrement chez nous, et
- * c'était l'essentiel des 10,3 % d'écart de cette section.
+ * REMESURÉ LE 07/10 (la maquette a avancé, l'ancien relevé « 87x22 » ne
+ * correspond plus) : pastille blanche de 42px de haut, min-width 84px,
+ * padding 0 14px, coins 12px, ombre rgba(0,0,0,0.45) 0 10px 24px -12px,
+ * collée à 14px du bord bas gauche de la photo (relevé tpl 960-961 et scan
+ * blanc pur 337-378 sur ref-12.png). Le logo y est CONTENU, max-height 22px :
+ * sans borne de largeur il s'étirait (Stellantis rendu 266px de large sur le
+ * site contre ~139px sur la maquette, GLS débordait de sa pastille).
  *
  * LA CLÉ EST LE NOM DU CLIENT, normalisé : accents retirés, espaces en tirets.
  * Le dictionnaire ne liste QUE les logos réellement présents dans le dépôt :
@@ -104,12 +107,15 @@ const PASTILLE_LOGO: CSSProperties = {
   position: "absolute",
   left: 14,
   bottom: 14,
-  height: 22,
+  height: 42,
+  minWidth: 84,
   padding: "0 14px",
   display: "flex",
   alignItems: "center",
+  justifyContent: "center",
   background: "#fff",
   borderRadius: 12,
+  boxShadow: "rgba(0,0,0,.45) 0 10px 24px -12px",
 };
 
 const PHOTOS: readonly string[] = [
@@ -273,12 +279,14 @@ export default function ReferencesOffre({ section }: ProprietesReferencesOffre) 
                   if (!client || !logo) return null;
                   return (
                     <div style={PASTILLE_LOGO}>
+                      {/* Boîte 87x22 en `contain` : le logo entier tient
+                          dedans, il ne s'étire plus en bandeau. */}
                       <Image
                         src={logo}
                         alt={client}
                         width={87}
                         height={22}
-                        style={{ objectFit: "contain", width: "auto", height: 22 }}
+                        style={{ objectFit: "contain", width: 87, height: 22 }}
                       />
                     </div>
                   );

@@ -265,32 +265,38 @@
       {
         "titre": "Technicien en résidence",
         "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
-        "href": "/offres/residence/"
+        "href": "/offres/residence/",
+        "photo": "/assets/web/team-duo.jpg"
       },
       {
         "titre": "Zéro arrêt",
         "phrase": "La maintenance en abonnement, au forfait mensuel.",
-        "href": "/offres/zero-arret/"
+        "href": "/offres/zero-arret/",
+        "photo": "/assets/web/ph-technicien.jpg"
       },
       {
         "titre": "Arrêt technique",
         "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
-        "href": "/offres/arret-technique/"
+        "href": "/offres/arret-technique/",
+        "photo": "/assets/web/ph-hero-raffinerie.jpg"
       },
       {
         "titre": "Full service",
         "phrase": "Toute votre maintenance, un seul partenaire.",
-        "href": "/offres/full-service/"
+        "href": "/offres/full-service/",
+        "photo": "/assets/web/team-grind-front.jpg"
       },
       {
         "titre": "Travaux industriels",
         "phrase": "Transfert, démantèlement, démontage et montage.",
-        "href": "/travaux-industriels/"
+        "href": "/travaux-industriels/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
       },
       {
         "titre": "Bureau d'études",
         "phrase": "Conception, retrofit et mise en conformité.",
-        "href": "/offres/bureau-etudes/"
+        "href": "/offres/bureau-etudes/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
       }
     ],
     "pagesLieesTitre": "Les offres et prestations voisines"
