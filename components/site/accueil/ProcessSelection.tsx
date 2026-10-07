@@ -26,7 +26,7 @@ const ETAPES: readonly Etape[] = [
     jauge: "100%",
     titre: "Lecture du parcours",
     texte:
-      "Habilitations, technologies pratiquées, stabilité des postes. Un parcours sans terrain ne passe pas cette étape.",
+      "Habilitations, technologies pratiquées, stabilité des postes. Un parcours sans terrain ne passe pas.",
   },
   {
     rang: "02",
@@ -42,7 +42,7 @@ const ETAPES: readonly Etape[] = [
     jauge: "40%",
     titre: "Entretien technique",
     texte:
-      "Un technicien de terrain reprend le parcours machine par machine : installations connues, pannes traitées, arbitrages faits.",
+      "Un technicien de terrain reprend le parcours machine par machine : pannes traitées, arbitrages faits.",
   },
   {
     rang: "04",
@@ -52,7 +52,7 @@ const ETAPES: readonly Etape[] = [
     // Les tirets cadratins de la maquette sont remplacés par une parenthèse :
     // interdit de copie du projet.
     texte:
-      "Épreuves écrites et pratiques par domaine (mécanique, électrotechnique, automatisme, hydraulique), notées sur notre référentiel.",
+      "Épreuves écrites et pratiques par domaine, notées sur notre référentiel.",
   },
   {
     rang: "05",
@@ -60,7 +60,7 @@ const ETAPES: readonly Etape[] = [
     jauge: "15%",
     titre: "Tests comportementaux",
     texte:
-      "Sécurité, autonomie, rigueur du compte rendu, tenue face à l’urgence, relation client. Même référentiel, même barème.",
+      "Sécurité, autonomie, rigueur du compte rendu, tenue face à l’urgence.",
   },
   {
     rang: "06",
@@ -68,7 +68,7 @@ const ETAPES: readonly Etape[] = [
     jauge: "10%",
     titre: "Rencontre du client",
     texte:
-      "Vous rencontrez le technicien avant de dire oui. Lui aussi visite le site. Deux validations, pas une.",
+      "Vous rencontrez le technicien avant de dire oui. Deux validations, pas une.",
     final: true,
   },
 ];
