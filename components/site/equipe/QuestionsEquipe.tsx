@@ -1,3 +1,5 @@
+import { useId } from "react";
+
 import styles from "./Equipe.module.css";
 import { QUESTIONS } from "./equipe-donnees";
 import { CHAPEAU, LARGEUR, SECTION, SURTITRE, TITRE2, VERRE } from "./habillage-equipe";
@@ -11,6 +13,8 @@ import { CHAPEAU, LARGEUR, SECTION, SURTITRE, TITRE2, VERRE } from "./habillage-
  * de la croix à l'ouverture.
  */
 export default function QuestionsEquipe() {
+  // README : une seule question ouverte à la fois. Accordéon exclusif natif.
+  const groupe = useId();
   return (
     <section style={SECTION}>
       <div style={LARGEUR}>
@@ -39,6 +43,7 @@ export default function QuestionsEquipe() {
                 <details
                   key={item.question}
                   open={rang === 0}
+                  name={groupe}
                   style={{
                     borderTop: rang === 0 ? "none" : "1px solid var(--line)",
                   }}

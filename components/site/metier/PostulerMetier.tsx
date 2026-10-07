@@ -1,3 +1,6 @@
+"use client";
+
+import { useId, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 
 import styles from "./FicheMetier.module.css";
@@ -15,6 +18,15 @@ import styles from "./FicheMetier.module.css";
  * porte pas encore d'action : le branchement HubSpot (CLAUDE.md §7) est un
  * chantier de câblage, pas de gabarit, et un envoi muet serait pire qu'un
  * champ inerte. Le bouton reste `type="submit"` comme dans la maquette.
+ *
+ * QUESTIONS OBLIGATOIRES (README de passation, « Candidature ») : `required`
+ * repris de `MigenCarriere.dc.html`, qui le pose sur tous les champs sauf
+ * Message et CV. Une seule exception au relevé de MigenCarriere : la mobilité.
+ * Le README la veut « France entière (uniquement si prêt à déménager) OU une
+ * ou plusieurs régions », ce qu'un `<select>` simple ne sait pas dire. Le
+ * bloc vient donc de la maquette qui pose cette question exacte,
+ * `Migen - Site final.dc.html` (page Carrière, `mobChips` et `MOBS`) : aide,
+ * treize options et exclusivité verbatim.
  */
 
 const ETIQUETTE: CSSProperties = {
@@ -34,12 +46,18 @@ const SAISIE: CSSProperties = {
   background: "var(--card)",
   font: "400 14.5px var(--fb)",
   color: "var(--ink)",
-  outline: "none",
+  // Pas d'`outline: none` (maquette) : en ligne, il écraserait l'anneau
+  // `:focus-visible` de globals.css et le focus clavier deviendrait invisible.
 };
 
-/** L'astérisque orange des champs obligatoires, précédé d'une insécable. */
+/** L'astérisque orange des champs obligatoires, précédé d'une insécable.
+ *  Muet pour les lecteurs d'écran : `required` dit déjà « obligatoire ». */
 function Obligatoire() {
-  return <span style={{ color: "var(--acc)" }}>{" *"}</span>;
+  return (
+    <span aria-hidden="true" style={{ color: "var(--acc)" }}>
+      {" *"}
+    </span>
+  );
 }
 
 function Champ({
@@ -72,12 +90,113 @@ function Champ({
 
 function Choix({ nom, options }: { nom: string; options: string[] }) {
   return (
-    <select name={nom} defaultValue="" style={SAISIE}>
+    <select name={nom} defaultValue="" required style={SAISIE}>
       <option value="">Choisir</option>
       {options.map((o) => (
         <option key={o}>{o}</option>
       ))}
     </select>
+  );
+}
+
+/* `MOBS` de la maquette, dans son ordre. La première vaut déménagement. */
+const FRANCE = "France entière (prêt à déménager)";
+const MOBILITES = [
+  FRANCE,
+  "Auvergne-Rhône-Alpes",
+  "Île-de-France",
+  "Grand Est",
+  "Pays de la Loire",
+  "Bretagne",
+  "Occitanie",
+  "Nouvelle-Aquitaine",
+  "Hauts-de-France",
+  "Bourgogne-Franche-Comté",
+  "Normandie",
+  "Provence-Alpes-Côte d’Azur",
+  "Centre-Val de Loire",
+];
+
+/* L'aide de la maquette, verbatim (insécables des guillemets comprises). */
+const AIDE_MOBILITE =
+  "Choisissez «\u00a0France entière\u00a0» uniquement si vous êtes prêt à déménager, c’est-à-dire à quitter votre région actuelle pour vous installer ailleurs en France. Sinon, sélectionnez la ou les régions dans lesquelles vous pouvez travailler sans déménager.";
+
+/** Bascule de la maquette : « France entière » exclut les régions, et
+ *  réciproquement ; les régions se cumulent. */
+function basculer(choix: readonly string[], option: string): string[] {
+  if (option === FRANCE) return choix.includes(FRANCE) ? [] : [FRANCE];
+  const regions = choix.filter((x) => x !== FRANCE);
+  return regions.includes(option)
+    ? regions.filter((x) => x !== option)
+    : [...regions, option];
+}
+
+/** La pastille `mobChips` de la maquette, sauf `white-space: nowrap` : au
+ *  bureau rien ne change (une pastille passe entière à la ligne), mais sur
+ *  mobile la plus longue déborderait de la carte. */
+function pastille(coche: boolean, france: boolean): CSSProperties {
+  return {
+    position: "relative",
+    font: "500 12.5px var(--fb)",
+    padding: "8px 14px",
+    borderRadius: 999,
+    cursor: "pointer",
+    border: `1px solid ${coche ? "transparent" : france ? "rgba(255,124,60,.4)" : "var(--line)"}`,
+    color: coche ? "#fff" : france ? "var(--acc-ink)" : "var(--ink1)",
+    // `var(--gsol)` vaut exactement les deux fonds de la maquette, clair et sombre.
+    backgroundColor: coche ? "#ff7c3c" : france ? "var(--acc-w)" : "var(--gsol)",
+  };
+}
+
+/** Mobilité géographique : cases à cocher natives (une valeur `mobility` par
+ *  case cochée), obligatoires tant qu'aucune ne l'est. */
+function Mobilite() {
+  const [choix, setChoix] = useState<string[]>([]);
+  const aide = useId();
+  return (
+    <fieldset
+      aria-describedby={aide}
+      style={{ gridColumn: "span 2", minWidth: 0, margin: 0, padding: 0, border: 0 }}
+    >
+      <legend style={{ ...ETIQUETTE, padding: 0 }}>
+        Mobilité géographique
+        <Obligatoire />
+      </legend>
+      <p
+        id={aide}
+        style={{
+          font: "400 12.5px/1.55 var(--fb)",
+          color: "var(--ink2)",
+          margin: "-2px 0 9px",
+          maxWidth: "62ch",
+        }}
+      >
+        {AIDE_MOBILITE}
+      </p>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
+        {MOBILITES.map((option) => {
+          const coche = choix.includes(option);
+          return (
+            <label
+              key={option}
+              className={styles.porteFocus}
+              style={pastille(coche, option === FRANCE)}
+            >
+              <input
+                type="checkbox"
+                name="mobility"
+                value={option}
+                checked={coche}
+                required={choix.length === 0}
+                onChange={() => setChoix((c) => basculer(c, option))}
+                className={styles.masque}
+              />
+              {option}
+            </label>
+          );
+        })}
+      </div>
+    </fieldset>
   );
 }
 
@@ -209,18 +328,20 @@ export default function PostulerMetier() {
               }}
             >
               <Champ etiquette="Nom">
-                <input type="text" name="lastname" style={SAISIE} />
+                <input type="text" name="lastname" required autoComplete="family-name" style={SAISIE} />
               </Champ>
               <Champ etiquette="Prénom">
-                <input type="text" name="firstname" style={SAISIE} />
+                <input type="text" name="firstname" required autoComplete="given-name" style={SAISIE} />
               </Champ>
               <Champ etiquette="E-mail">
-                <input type="email" name="email" style={SAISIE} />
+                <input type="email" name="email" required autoComplete="email" style={SAISIE} />
               </Champ>
               <Champ etiquette="Téléphone">
-                <input type="tel" name="phone" style={SAISIE} />
+                <input type="tel" name="phone" required autoComplete="tel" style={SAISIE} />
               </Champ>
-              <Champ etiquette="Poste visé">
+              {/* Pleine largeur, comme dans `Site final` : la mobilité qui suit
+                  prend toute la ligne, une demi-ligne resterait vide. */}
+              <Champ etiquette="Poste visé" pleine>
                 <Choix
                   nom="job"
                   options={[
@@ -235,20 +356,7 @@ export default function PostulerMetier() {
                   ]}
                 />
               </Champ>
-              <Champ etiquette="Mobilité géographique">
-                <Choix
-                  nom="mobility"
-                  options={[
-                    "France entière",
-                    "Auvergne-Rhône-Alpes",
-                    "Île-de-France",
-                    "Grand Est",
-                    "Hauts-de-France",
-                    "Grand Ouest",
-                    "Sud-Ouest et Occitanie",
-                  ]}
-                />
-              </Champ>
+              <Mobilite />
               <Champ etiquette="Trajet maximal">
                 <Choix
                   nom="commute"
@@ -256,7 +364,14 @@ export default function PostulerMetier() {
                 />
               </Champ>
               <Champ etiquette="Années d’expérience">
-                <input type="number" name="years" placeholder="2" style={SAISIE} />
+                <input
+                  type="number"
+                  name="years"
+                  required
+                  min={0}
+                  placeholder="2"
+                  style={SAISIE}
+                />
               </Champ>
               <Champ etiquette="Délai de démarrage">
                 <Choix nom="start" options={["Immédiat", "Sous 1 mois", "Sous 3 mois"]} />
@@ -265,6 +380,7 @@ export default function PostulerMetier() {
                 <input
                   type="text"
                   name="salary"
+                  required
                   placeholder="25 000 € brut annuel"
                   style={SAISIE}
                 />
@@ -281,7 +397,9 @@ export default function PostulerMetier() {
                 />
               </Champ>
               <label
+                className={styles.porteFocus}
                 style={{
+                  position: "relative",
                   gridColumn: "span 2",
                   display: "flex",
                   alignItems: "center",
@@ -303,7 +421,9 @@ export default function PostulerMetier() {
                   type="file"
                   name="cv"
                   accept=".pdf,.doc,.docx"
-                  style={{ display: "none" }}
+                  // Masqué mais focalisable : `display: none` (maquette) le
+                  // sortait du parcours clavier.
+                  className={styles.masque}
                 />
               </label>
               <div style={{ gridColumn: "span 2" }}>

@@ -125,3 +125,22 @@
     max-width: none !important;
   }
 }
+
+/* ------------------------------------------------- formulaire « Postuler »
+   Cases à cocher de la mobilité et dépôt du CV : le contrôle natif est
+   masqué mais reste focalisable (`display: none` le sortirait du parcours
+   clavier et de la validation `required`). L'anneau de focus passe donc sur
+   la pastille ou la zone qui le porte, comme `:focus-visible` (globals.css). */
+.masque {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.porteFocus:has(:focus-visible) {
+  outline: 2px solid var(--acc);
+  outline-offset: 3px;
+}

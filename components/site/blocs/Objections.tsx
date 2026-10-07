@@ -1,3 +1,5 @@
+import { useId } from "react";
+
 import type { SectionObjections } from "@/types/contenu";
 import styles from "./Blocs.module.css";
 import { LARGEUR, SECTION, SURTITRE, TITRE2, VERRE } from "./habillage";
@@ -13,6 +15,8 @@ import TexteRiche from "./TexteRiche";
  * tient l'état ouvert, rotation de la croix et passage à l'orange.
  */
 export default function Objections({ section }: { section: SectionObjections }) {
+  // README : une seule question ouverte à la fois. Accordéon exclusif natif.
+  const groupe = useId();
   if (section.questions.length === 0) return null;
 
   return (
@@ -39,6 +43,7 @@ export default function Objections({ section }: { section: SectionObjections }) 
               <details
                 key={question.question}
                 className="cx-faq"
+                name={groupe}
                 style={{ ...VERRE, borderRadius: "var(--rad-s)" }}
               >
                 <summary className={styles.questionFaq}>

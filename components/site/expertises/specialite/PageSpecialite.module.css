@@ -1,0 +1,19 @@
+/* Survols du gabarit 05 Spécialité. Rien d'autre : un style en ligne ne peut
+   pas porter d'état, et c'est la seule raison d'être de ce fichier.
+
+   Valeur RELEVÉE le 07/10 sur la maquette vivante (localhost:4352,
+   /expertises/robotique/fanuc/) : la règle générée pour le bouton orange de la
+   bande d'appel (classe `scp6` du rendu) est
+   `filter: brightness(0.93); color: #fff`. Le focus est traité avec le survol,
+   comme partout dans le dépôt (WCAG 2.4.7) : un visiteur au clavier doit voir
+   la même chose qu'un visiteur à la souris. La transition est posée ici parce
+   que la capture ne la déclare pas en ligne sur ce bouton-là. */
+.boutonBande {
+  transition: filter var(--tr);
+}
+
+.boutonBande:hover,
+.boutonBande:focus-visible {
+  filter: brightness(0.93);
+  color: #fff;
+}

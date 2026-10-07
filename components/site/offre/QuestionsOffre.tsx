@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { useId, type CSSProperties } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import type { Question, SectionObjections } from "@/types/contenu";
@@ -112,12 +112,25 @@ const REPONSE: CSSProperties = {
   padding: "0 22px 22px 51px",
 };
 
-function Pli({ question, rang }: { question: Question; rang: number }) {
+function Pli({
+  question,
+  rang,
+  groupe,
+}: {
+  question: Question;
+  rang: number;
+  groupe: string;
+}) {
   /* Relevé maquette (sept pages concordantes, 07/10) : la PREMIÈRE question
      est dépliée au chargement, réponse visible, croix sur pastille orange.
      Le site chargeait tout fermé. */
   return (
-    <details className={styles.pliQuestion} style={PLI} open={rang === 0}>
+    <details
+      className={styles.pliQuestion}
+      style={PLI}
+      open={rang === 0}
+      name={groupe}
+    >
       <summary style={RESUME}>
         <span style={NUMERO}>{numerote(rang)}</span>
         <span style={QUESTION}>{question.question}</span>
@@ -135,6 +148,9 @@ export default function QuestionsOffre({ section }: ProprietesQuestionsOffre) {
   // 02/04/06 à droite, l'ordre de lecture du corpus restant l'ordre visuel.
   const gauche = section.questions.filter((_, i) => i % 2 === 0);
   const droite = section.questions.filter((_, i) => i % 2 === 1);
+  // README : une seule question ouverte à la fois. Accordéon exclusif natif,
+  // `name` partagé par les deux colonnes, unique par instance.
+  const groupe = useId();
 
   return (
     <section style={SECTION}>
@@ -168,12 +184,22 @@ export default function QuestionsOffre({ section }: ProprietesQuestionsOffre) {
         >
           <div style={{ display: "grid", gap: 12, alignContent: "start" }}>
             {gauche.map((question, i) => (
-              <Pli key={question.question} question={question} rang={i * 2} />
+              <Pli
+                key={question.question}
+                question={question}
+                rang={i * 2}
+                groupe={groupe}
+              />
             ))}
           </div>
           <div style={{ display: "grid", gap: 12, alignContent: "start" }}>
             {droite.map((question, i) => (
-              <Pli key={question.question} question={question} rang={i * 2 + 1} />
+              <Pli
+                key={question.question}
+                question={question}
+                rang={i * 2 + 1}
+                groupe={groupe}
+              />
             ))}
           </div>
         </div>

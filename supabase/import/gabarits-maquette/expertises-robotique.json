@@ -1,79 +1,38 @@
 {
   "url": "/expertises/robotique/",
+  "titre_h1": "Maintenance robotique : un robot arrêté, c’est toute la cellule qui attend",
   "contenu": {
     "gabarit": "domaine",
+    "pastille": "Expertises",
     "chapeau": "Un technicien qui traite la mécanique, l'électrique et le programme du même bras, sans attendre le passage du constructeur. Roboticiens ABB et Fanuc, avec les sauvegardes qui restent chez vous.",
-    "boutons": [
+    "mention": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés prend le relais la nuit et le week-end.",
+    "appelBouton": "Demander une intervention",
+    "actions": [
       {
-        "libelle": "Demander une intervention"
+        "libelle": "Demander une intervention",
+        "href": "#besoin"
       }
     ],
-    "traitements": [
-      "Une recherche de cause racine, pas un échange de pièce",
-      "La révision selon la préconisation constructeur",
-      "Vos robots sauvegardés et datés",
-      "Les organes d'usure suivis dans l'ordre",
-      "Le rétrofit chiffré face au remplacement",
-      "La cellule traitée en entier"
-    ],
-    "autres": [
+    "formulaireHeroTitre": "Demander une intervention",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
-        "libelle": "Automatisme industriel",
-        "href": "/expertises/automatisme/"
+        "valeur": "10 %",
+        "libelle": "Des candidats retenus, après entretien technique ET comportemental"
       },
       {
-        "libelle": "Maintenance électrique industrielle",
-        "href": "/expertises/electrique/"
-      },
-      {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
-      },
-      {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance mécanique",
-        "href": "/expertises/mecanique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
+        "valeur": "en continu et tous les jours",
+        "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "cta": {
-      "question": "Besoin que vos arrêts de cellule diminuent au lieu d'augmenter cette année ?",
-      "bouton": {
-        "libelle": "Demander une intervention"
-      }
-    },
-    "reste": [
+    "problemePhoto": "/assets/web/mq-948c28bcda08.jpg",
+    "complementOffre": [
       {
-        "type": "chiffres",
-        "chiffres": [
-          {
-            "valeur": "10 %",
-            "libelle": "des candidats retenus, après entretien technique ET comportemental"
-          },
-          {
-            "valeur": "+ 80",
-            "libelle": "clients réguliers, la plupart arrivés par une panne"
-          },
-          {
-            "valeur": "24/24 et 7/7",
-            "libelle": "astreinte, pour les sites couverts"
-          }
-        ]
-      },
+        "texte": "Un parc entier à remettre sous suivi ? Un robot immobilisé maintenant se traite par le dépannage industriel."
+      }
+    ],
+    "marquesFamille": "robot",
+    "sections": [
       {
         "type": "probleme",
         "punchline": "Un bras qui s'immobilise en plein cycle fige la cellule entière. Et le site attend le technicien du constructeur, seul à connaître la machine.",
@@ -102,55 +61,51 @@
           {
             "prestation": {
               "accroche": "Une recherche de cause racine, pas un échange de pièce",
-              "texte": "lecture des codes défaut du contrôleur, essais axe par axe, mesures sur les moteurs."
+              "texte": "Lecture des codes défaut du contrôleur, essais axe par axe, mesures sur les moteurs."
             },
             "benefice": "Vous arrêtez de remplacer des organes sains pendant que la ligne attend."
           },
           {
             "prestation": {
               "accroche": "La révision selon la préconisation constructeur",
-              "texte": "graissage à la bonne référence, contrôle des jeux, serrages, vérification des sécurités."
+              "texte": "Graissage à la bonne référence, contrôle des jeux, serrages, vérification des sécurités."
             },
             "benefice": "La graisse usée ou inadaptée est la première cause de casse de réducteur. Cette cause-là disparaît."
           },
           {
             "prestation": {
               "accroche": "Vos robots sauvegardés et datés",
-              "texte": "programmes, paramètres, positions, versions archivées."
+              "texte": "Programmes, paramètres, positions, versions archivées."
             },
             "benefice": "Le jour où une carte lâche, on recharge au lieu de tout reprogrammer."
           },
           {
             "prestation": {
               "accroche": "Les organes d'usure suivis dans l'ordre",
-              "texte": "réducteurs, moteurs et codeurs, faisceaux en mouvement, batteries, préhenseurs et outillage."
+              "texte": "Réducteurs, moteurs et codeurs, faisceaux en mouvement, batteries, préhenseurs et outillage."
             },
             "benefice": "Le défaut intermittent du faisceau se teste en mouvement, donc il se trouve."
           },
           {
             "prestation": {
-              "texte": "**La reprise des références après une perte du zéro machine.**"
+              "accroche": "La reprise des références après une perte du zéro machine.",
+              "texte": ""
             },
             "benefice": "Le robot retrouve sa position avec méthode, pas par essais successifs."
           },
           {
             "prestation": {
               "accroche": "Le rétrofit chiffré face au remplacement",
-              "texte": "contrôleur arrêté, composant introuvable."
+              "texte": "Contrôleur arrêté, composant introuvable."
             },
             "benefice": "La décision se prend sur deux chiffres, pas sur le catalogue du constructeur."
           },
           {
             "prestation": {
               "accroche": "La cellule traitée en entier",
-              "texte": "automate de ligne, convoyeur, sécurités, réseau, axes, en lien avec nos automaticiens."
+              "texte": "Automate de ligne, convoyeur, sécurités, réseau, axes, en lien avec nos automaticiens."
             },
             "benefice": "La vraie cause est trouvée même quand elle est en dehors du bras."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Un parc entier à remettre sous suivi ? Le [contrat de maintenance Zéro arrêt](/offres/zero-arret/) couvre la visite préventive par robot et la priorité d'intervention. Un robot immobilisé maintenant se traite par le [dépannage industriel](/offres/depannage-industriel/)."
           }
         ]
       },
@@ -159,7 +114,7 @@
         "etapes": [
           {
             "titre": "Vous décrivez la panne",
-            "texte": "marque, contrôleur, code défaut, moment du cycle. Cinq minutes au téléphone font gagner une demi-journée sur place."
+            "texte": "Marque, contrôleur, code défaut, moment du cycle. Cinq minutes au téléphone font gagner une demi-journée sur place."
           },
           {
             "titre": "Un technicien vous rappelle dans l'heure.",
@@ -167,11 +122,11 @@
           },
           {
             "titre": "Nous cherchons la cause racine",
-            "texte": "alarmes du contrôleur, essais axe après axe, contrôle du réseau et des sécurités de la cellule, avant tout démontage."
+            "texte": "Alarmes du contrôleur, essais axe après axe, contrôle du réseau et des sécurités de la cellule, avant tout démontage."
           },
           {
             "titre": "Nous réparons et remettons en service",
-            "texte": "pièce changée, réglages repris, essais avec vos opérateurs jusqu'au retour de la cadence."
+            "texte": "Pièce changée, réglages repris, essais avec vos opérateurs jusqu'au retour de la cadence."
           },
           {
             "titre": "Les sauvegardes sont reprises et datées",
@@ -179,7 +134,7 @@
           },
           {
             "titre": "Vous recevez le rapport",
-            "texte": "cause identifiée, geste effectué, pièces à mettre en stock, points à surveiller au prochain passage."
+            "texte": "Cause identifiée, geste effectué, pièces à mettre en stock, points à surveiller au prochain passage."
           }
         ]
       },
@@ -188,7 +143,7 @@
         "puces": [
           {
             "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-            "texte": "L'astreinte 24/24 et 7/7 couvre la nuit et le week-end sur les sites concernés."
+            "texte": "L'astreinte la nuit, le week-end et les jours fériés couvre la nuit et le week-end sur les sites concernés."
           },
           {
             "accroche": "Vous restez seul à accéder à vos sauvegardes et à vos recettes.",
@@ -201,48 +156,55 @@
         ]
       },
       {
-        "type": "cta",
-        "question": "Besoin d'un roboticien qui intervienne sans attendre le passage du constructeur ?",
-        "bouton": "Demander une intervention",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
-      },
-      {
         "type": "preuves",
         "preuves": [
           {
             "titre": "Maintenance des équipements critiques d'un équipementier automobile",
-            "texte": "techniciens intégrés au quotidien sur systèmes automatisés, lignes et convoyeurs, avec des roboticiens ABB et Fanuc parmi les spécialités mobilisables, depuis 2025",
-            "lienLibelle": "Étude de cas JTEKT : maintenance des installations",
-            "lienHref": "/preuves/jtekt/"
+            "lienLibelle": "Étude de cas JTEKT",
+            "lienHref": "/preuves/jtekt/",
+            "photo": "/assets/web/x-robotique.jpg",
+            "texte": "Techniciens intégrés au quotidien sur systèmes automatisés, lignes et convoyeurs, avec des roboticiens ABB et Fanuc parmi les spécialités mobilisables, depuis 2025."
           },
           {
             "titre": "Contrôle de chantier sur des projets d'automatisation logistique",
-            "texte": "plusieurs intervenants intégrés aux équipes, roboticiens ABB et Fanuc parmi les spécialités engagées, 2025 à 2026",
-            "lienLibelle": "Étude de cas ALSTEF Group : collaboration",
-            "lienHref": "/preuves/alstef-group/"
+            "lienLibelle": "Étude de cas ALSTEF Group",
+            "lienHref": "/preuves/alstef-group/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "texte": "Plusieurs intervenants intégrés aux équipes, roboticiens ABB et Fanuc parmi les spécialités engagées, 2025 à 2026."
           },
           {
             "titre": "Contrat de maintenance préventive annuelle, logistique",
-            "texte": "six techniciens polyvalents en permanence, robotique comprise dans les domaines couverts, depuis septembre 2023",
-            "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
-            "lienHref": "/preuves/veepee-sites-lyon/"
+            "lienLibelle": "Étude de cas VEEPEE",
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "photo": "/assets/web/x-auto-caisse.jpg",
+            "texte": "Six techniciens polyvalents en permanence, robotique comprise dans les domaines couverts, depuis septembre 2023."
           },
           {
             "titre": "Maintien opérationnel de convoyeurs, trieurs et packaging automatisés, logistique et transport",
-            "texte": "deux techniciens en poste, robotique parmi les domaines couverts en propre",
-            "lienLibelle": "Étude de cas GLS : maintenance curative",
-            "lienHref": "/preuves/gls-maintenance-curative/"
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "texte": "Deux techniciens en poste, robotique parmi les domaines couverts en propre."
           },
           {
             "titre": "Maintenance sous contrat d'un parc déployé partout en France, réalité virtuelle",
-            "texte": "périmètre technique complet, robotique comprise, depuis février 2024",
-            "lienLibelle": "Étude de cas TIMESCOPE : casques de réalité virtuelle",
-            "lienHref": "/preuves/timescope/"
+            "lienLibelle": "Étude de cas TIMESCOPE",
+            "lienHref": "/preuves/timescope/",
+            "photo": "/assets/web/mq-9b461f439fef.jpg",
+            "texte": "Périmètre technique complet, robotique comprise, depuis février 2024."
+          },
+          {
+            "titre": "La GMAO planifie, nos techniciens interviennent",
+            "lienLibelle": "Étude de cas DimoMaint",
+            "lienHref": "/preuves/dimomaint/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg",
+            "texte": ""
           }
         ]
       },
       {
         "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
         "questions": [
           {
             "question": "Combien coûte la maintenance d'un robot, et peut-on n'en couvrir qu'un seul ?",
@@ -269,6 +231,11 @@
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France partout en France. Une visite annuelle et une priorité en cas de panne n'exigent pas un dispositif plus lourd que nécessaire."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que vos arrêts de cellule diminuent au lieu d'augmenter cette année ?",
+        "bouton": "Demander une intervention"
       }
     ]
   }

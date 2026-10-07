@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { CSSProperties, ReactNode } from "react";
+import { useId, type CSSProperties, type ReactNode } from "react";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import { LARGEUR, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
@@ -832,6 +832,8 @@ function Questions({
   intros?: string[];
   questions: { question: string; reponse: string }[];
 }) {
+  // README : une seule question ouverte à la fois. Accordéon exclusif natif.
+  const groupe = useId();
   if (!questions.length) return null;
   return (
     <div
@@ -882,6 +884,7 @@ function Questions({
               key={q.question}
               className={styles.pli}
               open={i === 0}
+              name={groupe}
               style={{ ...VERRE, borderRadius: "var(--rad-s)" }}
             >
               <summary

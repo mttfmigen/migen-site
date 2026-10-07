@@ -93,6 +93,47 @@ async function chargeRedirections(): Promise<Table> {
   );
 }
 
+/**
+ * Les trois 301 de la refonte, versionnées ici et non en base.
+ *
+ * Source : dossier de passation, « Adresses modifiées par la refonte »
+ * (`design_handoff_migen_site/README.md`).
+ *
+ * POURQUOI STATIQUES : leur place est la table `redirects`, mais la base n'est
+ * pas inscriptible depuis ce dépôt (clé de service absente de `.env.local`).
+ * Cette liste ne dépend d'aucun réseau : elle tient même quand Supabase est
+ * injoignable.
+ *
+ * ORDRE : la table passe d'abord. Une ligne en base pour la même source
+ * l'emporte, et une ligne en base qui VISE une de ces anciennes adresses est
+ * renvoyée directement à la nouvelle, en un seul saut (voir `proxy`).
+ *
+ * POUR LA RETIRER, le jour où la base les porte : insérer les trois lignes dans
+ * `redirects` (code 301, `actif`), faire pointer vers `/offres/full-service/`
+ * les deux lignes qui visent encore `/offres/maintenance-externalisee/`,
+ * vérifier par `curl -I` que les trois anciennes adresses répondent 301 sur la
+ * bonne `Location`, puis supprimer cette constante et ses deux usages.
+ *
+ * Clés sous forme canonique (`cheminNormalise`) : la recherche se fait sur la
+ * forme canonique de la requête.
+ */
+const REDIRECTIONS_REFONTE: Table = new Map(
+  (
+    [
+      // EN ATTENTE, à décommenter quand le gabarit 04 Ville sert leurs cibles :
+      // aujourd'hui /implantations/bordeaux/ et /implantations/marseille/ sont
+      // des 404, et ces deux anciennes adresses répondent 200. Les rediriger
+      // maintenant transformerait deux pages vivantes en pages mortes.
+      //   ["/implantations/toulouse/bordeaux/", "/implantations/bordeaux/"],
+      //   ["/implantations/maintenance-industrielle-marseille/", "/implantations/marseille/"],
+      ["/offres/maintenance-externalisee/", "/offres/full-service/"],
+    ] as const
+  ).map(([source, destination]) => [
+    source,
+    { source, destination, code: 301 },
+  ]),
+);
+
 function redirections(): Promise<Table> {
   const maintenant = Date.now();
   if (cache && cache.expireLe > maintenant) return cache.table;
@@ -131,6 +172,20 @@ function cheminNormalise(chemin: string): string {
 }
 
 /**
+ * L'URL demandée, en `URL` standard et non en `NextURL`.
+ *
+ * POURQUOI : un `NextURL` (donc `request.nextUrl.clone()`) mémorise si la
+ * requête REÇUE finissait par un slash, et réécrit le chemin selon cette
+ * mémoire au moment de produire l'en-tête `Location`. Sur « /offres », le slash
+ * posé ici était aussitôt retiré : `Location: /offres`, une 308 vers elle-même,
+ * en boucle, sur toute URL du site demandée sans slash final. Mesuré le 07/10
+ * au `curl -I`. Un `URL` standard écrit le chemin tel qu'on le pose.
+ */
+function urlSansNextUrl(request: NextRequest): URL {
+  return new URL(request.nextUrl.href);
+}
+
+/**
  * La cible d'une redirection, reconstruite comme chemin interne et rien d'autre.
  *
  * POURQUOI ne pas poser `new URL(destination, request.url)` directement : la
@@ -152,10 +207,11 @@ function cibleInterne(destination: string, request: NextRequest): URL | null {
   if (destination.includes("\\")) return null;
 
   const analysee = new URL(destination, request.nextUrl.origin);
-  const cible = request.nextUrl.clone();
   // Le slash final de la destination suit la même règle que celui de la
   // requête : sans cela, une destination « /offres » déclencherait aussitôt la
   // redirection de slash, soit une chaîne de deux sauts là où un seul suffit.
+  // Un `URL` nu, pas un clone de `request.nextUrl` : voir `urlSansNextUrl`.
+  const cible = urlSansNextUrl(request);
   cible.pathname = cheminNormalise(analysee.pathname);
   cible.search = analysee.search;
   cible.hash = analysee.hash;
@@ -175,21 +231,28 @@ export async function proxy(request: NextRequest): Promise<NextResponse> {
     console.error("Proxy, redirections indisponibles :", erreur);
   }
 
-  if (table) {
-    // Les anciennes URL sont stockées telles qu'elles existaient, avec ou sans
-    // slash final, et parfois avec des majuscules. On tente la forme reçue puis
-    // la forme canonique avant de conclure.
-    const regle = table.get(chemin) ?? table.get(canonique);
-    if (regle) {
-      const cible = cibleInterne(regle.destination, request);
-      if (cible) return NextResponse.redirect(cible, regle.code);
+  // Les anciennes URL sont stockées telles qu'elles existaient, avec ou sans
+  // slash final, et parfois avec des majuscules. On tente la forme reçue puis
+  // la forme canonique avant de conclure. La liste statique de la refonte ne
+  // vient qu'après la table, et s'applique même si la table est injoignable.
+  const regle =
+    table?.get(chemin) ??
+    table?.get(canonique) ??
+    REDIRECTIONS_REFONTE.get(canonique);
+  if (regle) {
+    // Une ligne de la base qui vise une adresse retirée par la refonte saute
+    // directement à la nouvelle : un seul saut, jamais une chaîne de deux.
+    const destination =
+      REDIRECTIONS_REFONTE.get(cheminNormalise(regle.destination))
+        ?.destination ?? regle.destination;
+    const cible = cibleInterne(destination, request);
+    if (cible) return NextResponse.redirect(cible, regle.code);
 
-      // Une destination externe est une erreur de donnée, pas une redirection à
-      // honorer : on la journalise et on laisse la requête suivre son cours.
-      console.error(
-        `Proxy, destination non interne ignorée pour « ${regle.source} ».`,
-      );
-    }
+    // Une destination externe est une erreur de donnée, pas une redirection à
+    // honorer : on la journalise et on laisse la requête suivre son cours.
+    console.error(
+      `Proxy, destination non interne ignorée pour « ${regle.source} ».`,
+    );
   }
 
   // Casse et slash final, en un seul saut : deux redirections enchaînées
@@ -200,7 +263,7 @@ export async function proxy(request: NextRequest): Promise<NextResponse> {
   // que l'on ajoute ici et les deux redirections se renverraient la requête
   // sans fin, sur toutes les URL du site.
   if (chemin !== canonique) {
-    const cible = request.nextUrl.clone();
+    const cible = urlSansNextUrl(request);
     cible.pathname = canonique;
     return NextResponse.redirect(cible, 308);
   }

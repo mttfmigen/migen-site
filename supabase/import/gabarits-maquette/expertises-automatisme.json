@@ -1,80 +1,42 @@
 {
   "url": "/expertises/automatisme/",
+  "titre_h1": "Automatisme industriel : quand l’automate se tait, toute la ligne s’arrête",
   "contenu": {
     "gabarit": "domaine",
+    "pastille": "Expertises",
     "chapeau": "Un automaticien branche son ordinateur, lit les registres de l'automate et teste chaque hypothèse au lieu de la deviner. SIEMENS, Schneider, et la reprise du code écrit par quelqu'un d'autre.",
-    "boutons": [
+    "mention": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés prend le relais la nuit et le week-end.",
+    "appelBouton": "Demander une intervention",
+    "actions": [
       {
-        "libelle": "Demander une intervention"
+        "libelle": "Demander une intervention",
+        "href": "#besoin"
       }
     ],
-    "traitements": [
-      "Un diagnostic qui va à la cause",
-      "Vos automatismes sauvegardés et datés",
-      "La reprise d'un code écrit par un autre prestataire",
-      "L'obsolescence traitée",
-      "L'automatisation industrielle de l'existant améliorée",
-      "Les armoires contrôlées en préventif",
-      "Une expertise alignée sur votre parc"
-    ],
-    "autres": [
+    "formulaireHeroTitre": "Demander une intervention",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
-        "libelle": "Maintenance électrique industrielle",
-        "href": "/expertises/electrique/"
+        "valeur": "10 %",
+        "libelle": "Des candidats retenus, après entretien technique ET comportemental"
       },
       {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
+        "valeur": "+ 120",
+        "libelle": "Collaborateurs, depuis 4 agences, Lyon (siège), Montréal, Dubaï et Madrid"
       },
       {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance mécanique",
-        "href": "/expertises/mecanique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Maintenance robotique",
-        "href": "/expertises/robotique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
+        "valeur": "en continu et tous les jours",
+        "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "cta": {
-      "question": "Besoin que quelqu'un sache enfin où se trouve la dernière version de votre programme ?",
-      "bouton": {
-        "libelle": "Demander une intervention"
-      }
-    },
-    "reste": [
+    "problemePhoto": "/assets/web/mq-948c28bcda08.jpg",
+    "complementOffre": [
       {
-        "type": "chiffres",
-        "chiffres": [
-          {
-            "valeur": "10 %",
-            "libelle": "des candidats retenus, après entretien technique ET comportemental"
-          },
-          {
-            "valeur": "+ 100",
-            "libelle": "collaborateurs, depuis 4 agences, Lyon (siège), Montréal, Dubaï et Madrid"
-          },
-          {
-            "valeur": "24/24 et 7/7",
-            "libelle": "astreinte, pour les sites couverts"
-          }
-        ]
-      },
+        "texte": "Une ligne figée maintenant se traite par le dépannage industriel."
+      }
+    ],
+    "marquesFamille": "auto",
+    "sections": [
       {
         "type": "probleme",
         "punchline": "Un automate en défaut, et toute la chaîne s'arrête. Personne sur place ne sait lire le programme, alors l'arrêt dure des heures.",
@@ -103,56 +65,51 @@
           {
             "prestation": {
               "accroche": "Un diagnostic qui va à la cause",
-              "texte": "lecture des défauts de l'automate, contrôle des entrées et sorties, analyse du code, environnement électrique."
+              "texte": "Lecture des défauts de l'automate, contrôle des entrées et sorties, analyse du code, environnement électrique."
             },
             "benefice": "Vous savez pourquoi la ligne s'est arrêtée, pas seulement quelle carte a été changée."
           },
           {
             "prestation": {
               "accroche": "Vos automatismes sauvegardés et datés",
-              "texte": "automates, variateurs, IHM, chaque version archivée."
+              "texte": "Automates, variateurs, IHM, chaque version archivée."
             },
             "benefice": "Le jour où une carte lâche, on recharge au lieu de tout réécrire."
           },
           {
             "prestation": {
               "accroche": "La reprise d'un code écrit par un autre prestataire",
-              "texte": "audit de l'existant, documentation, puis modification propre."
+              "texte": "Audit de l'existant, documentation, puis modification propre."
             },
             "benefice": "Vous reprenez la main sur votre installation, avec une documentation exploitable par vos équipes."
           },
           {
             "prestation": {
               "accroche": "L'obsolescence traitée",
-              "texte": "migration vers une gamme actuelle, étude et conception du projet comprises."
+              "texte": "Migration vers une gamme actuelle, étude et conception du projet comprises."
             },
             "benefice": "La décision se prend avec les coûts sous les yeux, avant la panne qui l'impose."
           },
           {
             "prestation": {
               "accroche": "L'automatisation industrielle de l'existant améliorée",
-              "texte": "cycles raccourcis, défauts mieux tracés, alarmes utiles, nouvelle recette intégrée."
+              "texte": "Cycles raccourcis, défauts mieux tracés, alarmes utiles, nouvelle recette intégrée."
             },
             "benefice": "La même machine produit plus, avec moins de micro-arrêts et moins de rebuts."
           },
           {
             "prestation": {
               "accroche": "Les armoires contrôlées en préventif",
-              "texte": "dépoussiérage, serrages, tensions, batteries de sauvegarde, températures."
+              "texte": "Dépoussiérage, serrages, tensions, batteries de sauvegarde, températures."
             },
             "benefice": "Les gestes simples qui évitent la grande panne, faits avant qu'elle n'arrive."
           },
           {
             "prestation": {
               "accroche": "Une expertise alignée sur votre parc",
-              "texte": "automaticiens SIEMENS et Schneider, avec les variateurs, l'IHM, la supervision et les réseaux de terrain associés."
+              "texte": "Automaticiens SIEMENS et Schneider, avec les variateurs, l'IHM, la supervision et les réseaux de terrain associés."
             },
             "benefice": "Chaque marque a son logiciel et ses pièges : le bon spécialiste arrive, pas un généraliste."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Un besoin durable se couvre par la [sous-traitance maintenance](/offres/residence/), un automaticien intégré à votre équipe pour la durée du projet. Une ligne figée maintenant se traite par le [dépannage industriel](/offres/depannage-industriel/)."
           }
         ]
       },
@@ -161,27 +118,27 @@
         "etapes": [
           {
             "titre": "Vous décrivez la situation",
-            "texte": "marque d'automate, message ou code défaut, moment du cycle, ce qui a été modifié récemment. Quatre champs, ou un appel au 04 78 33 72 05."
+            "texte": "Marque d'automate, message ou code défaut, moment du cycle, ce qui a été modifié récemment. Quatre champs, ou un appel par téléphone."
           },
           {
             "titre": "Un technicien vous rappelle dans l'heure",
-            "texte": "la panne est qualifiée à distance. Vous savez rapidement si nous avons l'automaticien, et lequel."
+            "texte": "La panne est qualifiée à distance. Vous savez rapidement si nous avons l'automaticien, et lequel."
           },
           {
             "titre": "Brancher et lire",
-            "texte": "l'automaticien connecte son ordinateur et lit les registres de l'automate avant de toucher quoi que ce soit."
+            "texte": "L'automaticien connecte son ordinateur et lit les registres de l'automate avant de toucher quoi que ce soit."
           },
           {
             "titre": "Isoler le défaut",
-            "texte": "entrées, sorties, code, environnement électrique. Chaque hypothèse se teste, elle ne se devine pas."
+            "texte": "Entrées, sorties, code, environnement électrique. Chaque hypothèse se teste, elle ne se devine pas."
           },
           {
             "titre": "Réparer, puis prouver",
-            "texte": "remplacement du composant ou rechargement de la sauvegarde, remise en service, essais devant vos opérateurs."
+            "texte": "Remplacement du composant ou rechargement de la sauvegarde, remise en service, essais devant vos opérateurs."
           },
           {
             "titre": "Vous recevez un rapport et vos livrables",
-            "texte": "cause expliquée en langage clair, code documenté, sauvegardes datées remises chez vous."
+            "texte": "Cause expliquée en langage clair, code documenté, sauvegardes datées remises chez vous."
           }
         ]
       },
@@ -190,7 +147,7 @@
         "puces": [
           {
             "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-            "texte": "L'astreinte 24/24 et 7/7 couvre la nuit et le week-end sur les sites concernés."
+            "texte": "L'astreinte la nuit, le week-end et les jours fériés couvre la nuit et le week-end sur les sites concernés."
           },
           {
             "accroche": "Vos programmes, vos recettes et vos sauvegardes restent chez vous.",
@@ -198,53 +155,68 @@
           },
           {
             "accroche": "Un automaticien évalué en entretien technique et comportemental",
-            "texte": ", 10 % des candidats retenus, habilitations électriques à jour pour intervenir en armoire, consignation comprise."
+            "texte": ", 10 % des candidats retenus, habilitations électriques à jour pour intervenir en armoire, consignation comprise.",
+            "suitAccroche": true
           }
         ]
-      },
-      {
-        "type": "cta",
-        "question": "Besoin d'un automaticien capable de lire votre programme aujourd'hui ?",
-        "bouton": "Demander une intervention",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
       },
       {
         "type": "preuves",
         "preuves": [
           {
             "titre": "Démarrage d'une ligne de production neuve, près de Lyon",
-            "texte": "un automaticien spécialisé SIEMENS dédié à temps plein, fiabilisation des installations neuves et suivi continu sur toute la phase de mise en route, T2 et T3 2025",
-            "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
-            "lienHref": "/preuves/mersen/"
+            "lienLibelle": "Étude de cas MERSEN",
+            "lienHref": "/preuves/mersen/",
+            "photo": "/assets/web/mq-5111002ce2b6.jpg",
+            "texte": "Un automaticien spécialisé SIEMENS dédié à temps plein, fiabilisation des installations neuves et suivi continu sur toute la phase de mise en route, T2 et T3 2025."
           },
           {
             "titre": "Renfort continu sur des lignes automatisées, agroalimentaire",
-            "texte": "deux techniciens intégrés en 3x8, maîtrise des automates Schneider et des environnements automatisés du site",
-            "lienLibelle": "Étude de cas DANONE : lignes de production",
-            "lienHref": "/preuves/danone-lignes-de-production/"
+            "lienLibelle": "Étude de cas DANONE",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "texte": "Deux techniciens intégrés en 3x8, maîtrise des automates Schneider et des environnements automatisés du site."
           },
           {
             "titre": "Maintenance des équipements critiques d'un équipementier automobile",
-            "texte": "techniciens intégrés au quotidien sur systèmes automatisés, lignes de production et convoyeurs, depuis 2025",
-            "lienLibelle": "Étude de cas JTEKT : maintenance des installations",
-            "lienHref": "/preuves/jtekt/"
+            "lienLibelle": "Étude de cas JTEKT",
+            "lienHref": "/preuves/jtekt/",
+            "photo": "/assets/web/x-auto-caisse.jpg",
+            "texte": "Techniciens intégrés au quotidien sur systèmes automatisés, lignes de production et convoyeurs, depuis 2025."
           },
           {
             "titre": "Contrôle de chantier sur des projets d'automatisation logistique",
-            "texte": "plusieurs intervenants intégrés aux équipes, aéroports, logistique et industrie, 2025 à 2026",
-            "lienLibelle": "Étude de cas ALSTEF Group : collaboration",
-            "lienHref": "/preuves/alstef-group/"
+            "lienLibelle": "Étude de cas ALSTEF Group",
+            "lienHref": "/preuves/alstef-group/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "texte": "Plusieurs intervenants intégrés aux équipes, aéroports, logistique et industrie, 2025 à 2026."
           },
           {
             "titre": "Maintien opérationnel de convoyeurs, trieurs et systèmes de packaging automatisés, logistique et transport",
-            "texte": "deux techniciens en poste, surveillance continue des équipements critiques",
-            "lienLibelle": "Étude de cas GLS : maintenance curative",
-            "lienHref": "/preuves/gls-maintenance-curative/"
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-0b70202fed79.jpg",
+            "texte": "Deux techniciens en poste, surveillance continue des équipements critiques."
+          },
+          {
+            "titre": "La GMAO planifie, nos techniciens interviennent",
+            "lienLibelle": "Étude de cas DimoMaint",
+            "lienHref": "/preuves/dimomaint/",
+            "photo": "/assets/web/mq-948c28bcda08.jpg",
+            "texte": ""
+          },
+          {
+            "titre": "Six techniciens pour faire démarrer un parc machines",
+            "lienLibelle": "Étude de cas Eaton",
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "photo": "/assets/web/mq-42237c1c8685.jpg",
+            "texte": ""
           }
         ]
       },
       {
         "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
         "questions": [
           {
             "question": "Combien coûte une intervention en automatisme ?",
@@ -263,14 +235,19 @@
             "reponse": "Des automaticiens salariés de Migen, évalués en entretien technique et comportemental, 10 % des candidats retenus. Nos automaticiens travaillent sur SIEMENS et Schneider, et beaucoup viennent de l'électrotechnique et du terrain."
           },
           {
-            "question": "Êtes-vous intégrateur ou mainteneur ?",
-            "reponse": "Mainteneur. L'ingénierie conçoit, l'intégrateur installe, nous faisons durer l'existant, nous le réparons et nous le faisons évoluer année après année. Nous travaillons en lien avec votre intégrateur quand votre projet l'exige."
+            "question": "Êtes-vous intégrateur ou prestataire de maintenance ?",
+            "reponse": "Prestataire de maintenance. L'ingénierie conçoit, l'intégrateur installe, nous faisons durer l'existant, nous le réparons et nous le faisons évoluer année après année. Nous travaillons en lien avec votre intégrateur quand votre projet l'exige."
           },
           {
             "question": "Couvrez-vous notre région, et les installations anciennes ?",
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France. Nous maintenons l'existant tant que c'est raisonnable, et nous chiffrons la migration en parallèle."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que quelqu'un sache enfin où se trouve la dernière version de votre programme ?",
+        "bouton": "Demander une intervention"
       }
     ]
   }

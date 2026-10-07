@@ -7,6 +7,8 @@ import FormulaireBasDePage from "@/components/site/accueil/FormulaireBasDePage";
 import Article from "@/components/site/article/Article";
 import Bloc from "@/components/site/blocs/Bloc";
 import PageCasClients from "@/components/site/casclients/PageCasClients";
+import PageDomaine from "@/components/site/expertises/domaine/PageDomaine";
+import PageSpecialite from "@/components/site/expertises/specialite/PageSpecialite";
 import PageEditoriale from "@/components/site/editorial/PageEditoriale";
 import PageDepartement from "@/components/site/implantation/PageDepartement";
 import PageVille from "@/components/site/implantation/PageVille";
@@ -32,6 +34,7 @@ import type { ContenuArticle } from "@/types/article";
 import { estCasClients } from "@/types/casclients";
 import type { ContenuPage, Section } from "@/types/contenu";
 import { estEditorial } from "@/types/editorial";
+import { estDomaine } from "@/types/domaine";
 import { estDepartement, estVille } from "@/types/implantation";
 import { estImplantations } from "@/types/implantations";
 import { estExpertises } from "@/types/expertises";
@@ -42,6 +45,7 @@ import { estOffre } from "@/types/offre";
 import { estPreuve } from "@/types/preuve";
 import { estRessource } from "@/types/ressource";
 import { estSecteur } from "@/types/secteur";
+import { estSpecialite } from "@/types/specialite";
 
 /**
  * Route attrape-tout du cocon : toute URL hiérarchique passe par ici.
@@ -292,6 +296,45 @@ export default async function PageDuCocon({
         titre={page.titre_h1}
         contenu={page.contenu}
         filAriane={<FilAriane path={page.path} />}
+      />
+    );
+  }
+
+  // Le gabarit « 09 Domaine », les 11 pages `/expertises/<domaine>/`, porté
+  // contre le rendu de la maquette autonome (maquette/rendu/expertises--*).
+  // Il se reconnaît AVANT `estMetierOuDomaine` : même discriminant
+  // « domaine », mais la nouvelle forme porte `sections`, l'ancienne non,
+  // exactement le précédent `estMetier` / `estMetierOuDomaine` juste
+  // au-dessus. La page porte son propre formulaire (héros et appel final) :
+  // la route n'ajoute pas celui de bas de page.
+  if (estDomaine(page.contenu)) {
+    return (
+      <PageDomaine
+        titre={page.titre_h1}
+        contenu={page.contenu}
+        formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+        filAriane={<FilAriane path={page.path} />}
+        maillage={<Maillage page={page} />}
+      />
+    );
+  }
+
+  // Le gabarit « 05 Spécialité », les 19 pages de troisième niveau
+  // `/expertises/<domaine>/<specialite>/`, porté contre le rendu de la
+  // maquette autonome (maquette/rendu/expertises--robotique--fanuc et --abb).
+  // Même dessin que le domaine, mesuré squelette contre squelette, plus le
+  // rail d'onglets de « Marques maintenues » que la capture d'abb rend. On
+  // tranche sur le champ `gabarit` du jsonb, jamais sur le chemin. La page
+  // porte son propre formulaire (héros et appel final) : la route n'ajoute
+  // pas celui de bas de page.
+  if (estSpecialite(page.contenu)) {
+    return (
+      <PageSpecialite
+        titre={page.titre_h1}
+        contenu={page.contenu}
+        formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+        filAriane={<FilAriane path={page.path} />}
+        maillage={<Maillage page={page} />}
       />
     );
   }

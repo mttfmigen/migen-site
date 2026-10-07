@@ -1,0 +1,39 @@
+/*
+ * Survols du gabarit 09 Domaine, relevés dans la MAQUETTE VIVANTE
+ * (localhost:4352, 07/10) : ses attributs `style-hover` deviennent des classes
+ * générées, lues dans son `document.styleSheets`. Chaque règle ci-dessous
+ * recopie la sienne, et la pose AUSSI en `:focus-visible` : la maquette ne
+ * navigue qu'à la souris, le site se parcourt aussi au clavier.
+ *
+ * Les transitions ne sont pas ici : la capture les porte en style EN LIGNE sur
+ * chaque élément (`transition: transform var(--tr)`…), donc les composants les
+ * posent inline, comme elle.
+ */
+
+/* `.scp17` : la carte de secteur. translateY(-4px), texte blanc maintenu. */
+.carteSecteur:hover,
+.carteSecteur:focus-visible {
+  transform: translateY(-4px);
+  color: #fff;
+}
+
+/* `.scp9` : la grande carte « migen© Résidence ». translateY(-3px). */
+.carteLarge:hover,
+.carteLarge:focus-visible {
+  transform: translateY(-3px);
+}
+
+/* `.scp18` : les tuiles d'offres. translateX(4px), filet orange. */
+.tuileOffre:hover,
+.tuileOffre:focus-visible {
+  transform: translateX(4px);
+  border-color: rgb(255, 124, 60);
+  color: var(--ink);
+}
+
+/* `.scp6` : le bouton « Décrire mon besoin → ». brightness(.93). */
+.boutonBesoin:hover,
+.boutonBesoin:focus-visible {
+  filter: brightness(0.93);
+  color: #fff;
+}

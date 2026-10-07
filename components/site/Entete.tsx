@@ -55,11 +55,12 @@ const SEPARATEUR: React.CSSProperties = {
  * Composant client, et il doit l'être : survols, ouverture des panneaux,
  * tiroir, Échap et piège de focus sont tous des comportements de navigateur.
  *
- * Deux écarts assumés avec la maquette, tous deux pour la navigation au
- * clavier. Les entrées à panneau sont de vrais boutons qui ouvrent le panneau
- * au clic, et ne naviguent donc plus : le lien vers la page pilier vit à
- * l'intérieur du panneau. Et le bouton de bascule de thème, en `display:none`
- * dans la maquette, n'est pas porté : un bouton invisible est du code mort.
+ * Deux écarts assumés avec la maquette. Les entrées à panneau sont de vrais
+ * boutons qui ouvrent le panneau au clic, et ne naviguent donc plus : le lien
+ * vers la page pilier vit à l'intérieur du panneau (navigation au clavier). Et
+ * le bouton de bascule de thème, en `display:none` dans la maquette, est
+ * affiché à la même place : le README de passation exige un choix de thème
+ * mémorisé (voir BasculeTheme).
  */
 export default function Entete({
   landingPage = false,
@@ -276,6 +277,7 @@ export default function Entete({
               flex: "none",
             }}
           >
+            {/* <BasculeTheme /> : éteint comme dans la maquette, voir globals.css. */}
             <a
               href={telephone.href}
               className={`mg-tel ${s.tel}`}

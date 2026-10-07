@@ -1,80 +1,34 @@
 {
+  "_source": "maquette/rendu/expertises--robotique--fanuc.html (07/10 21h12, 15 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture, contrôlé par components/site/expertises/specialite/verification-specialite.tsx. TROU DE CONTRAT DÉCLARÉ : la capture dessine TROIS chiffres dont « +200 / Clients industriels accompagnés », premier interdit du contrat (le compte tenu par le dépôt est « plus de 120 clients, dont plus de 80 réguliers ») ; la carte entière n'est pas rendue et n'est pas reformulée, même arbitrage que /offres/chantier/demenagement-machines/. PHOTOS MESURÉES, PAS CHOISIES : octets de chaque image de la maquette vivante extraits puis rapprochés de la photothèque par sha256 complet ; la maquette assigne les photos du rail des références PAR RANG (suite identique sur les quatre pages comparées) : x-robotique, mq-e6322efcd358, x-auto-caisse, mq-2a6115ec9fe0, mq-9b461f439fef, mq-339d39e2a674, mq-42237c1c8685 ; photo du problème = mq-948c28bcda08. ÉCART CONNU, hors donnée : la famille « robot » de marques-donnees.ts compte 8 constructeurs, la capture en rend 9 (ENGEL en plus) ; le composant est partagé avec /marques/, l'ajout est à arbitrer là-bas.",
   "url": "/expertises/robotique/fanuc/",
+  "titre_h1": "Fanuc robotique : remettre la cellule en cycle, pas seulement le robot en route",
   "contenu": {
-    "gabarit": "domaine",
+    "gabarit": "specialite",
+    "pastille": "Expertises",
     "chapeau": "Un technicien qui lit les alarmes du contrôleur, teste axe par axe et reprend le programme lui-même. Robots Fanuc et machines Robodrill, Roboshot, Robocut traités par les mêmes équipes, avec vos sauvegardes datées avant de quitter le site.",
-    "boutons": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés.",
+    "appelBouton": "Demander une intervention",
+    "actions": [
       {
-        "libelle": "Demander une intervention"
+        "libelle": "Demander une intervention",
+        "href": "#besoin"
       }
     ],
-    "traitements": [
-      "La recherche de cause racine, pas l'échange de pièce",
-      "Le remastering et la reprise de points",
-      "Vos programmes sauvegardés et datés",
-      "Les organes d'usure suivis dans l'ordre",
-      "Toute la gamme, pas seulement le bras",
-      "Les machines à commande numérique Fanuc",
-      "Le rétrofit chiffré face au remplacement"
-    ],
-    "autres": [
+    "formulaireHeroTitre": "Demander une intervention",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
-        "libelle": "Automatisme industriel",
-        "href": "/expertises/automatisme/"
+        "valeur": "10 %",
+        "libelle": "Des candidats retenus, après entretien technique ET comportemental"
       },
       {
-        "libelle": "Maintenance électrique industrielle",
-        "href": "/expertises/electrique/"
-      },
-      {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
-      },
-      {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance mécanique",
-        "href": "/expertises/mecanique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
+        "valeur": "en continu et tous les jours",
+        "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "cta": {
-      "question": "Besoin que votre parc Fanuc tienne sa cadence toute l'année au lieu de décrocher par paliers ?",
-      "bouton": {
-        "libelle": "Demander une intervention"
-      }
-    },
-    "reste": [
-      {
-        "type": "chiffres",
-        "chiffres": [
-          {
-            "valeur": "10 %",
-            "libelle": "des candidats retenus, après entretien technique ET comportemental"
-          },
-          {
-            "valeur": "+ 80",
-            "libelle": "clients réguliers, beaucoup arrivés par une panne"
-          },
-          {
-            "valeur": "24/24 et 7/7",
-            "libelle": "astreinte, pour les sites couverts"
-          }
-        ]
-      },
+    "problemePhoto": "/assets/web/mq-948c28bcda08.jpg",
+    "marquesFamille": "robot",
+    "sections": [
       {
         "type": "probleme",
         "punchline": "Le robot jaune est à l'arrêt, un code défaut clignote sur le pupitre, et personne sur le site ne sait le lire.",
@@ -103,28 +57,28 @@
           {
             "prestation": {
               "accroche": "La recherche de cause racine, pas l'échange de pièce",
-              "texte": "lecture des alarmes du contrôleur R-30iB et des générations voisines, contrôle des servomoteurs, essais en charge."
+              "texte": "Lecture des alarmes du contrôleur R-30iB et des générations voisines, contrôle des servomoteurs, essais en charge."
             },
             "benefice": "Vous arrêtez de remplacer des organes sains pendant que la ligne attend."
           },
           {
             "prestation": {
-              "accroche": "Le remastering et la reprise de points",
-              "texte": "après une perte des références."
+              "accroche": "Le remastering et la reprise de points après une perte des références.",
+              "texte": ""
             },
             "benefice": "Le robot retrouve sa trajectoire avec méthode, contrôle de répétabilité à l'appui, pas par essais successifs."
           },
           {
             "prestation": {
               "accroche": "Vos programmes sauvegardés et datés",
-              "texte": "programmes, paramètres et positions de chaque contrôleur, archivés à chaque évolution."
+              "texte": "Programmes, paramètres et positions de chaque contrôleur, archivés à chaque évolution."
             },
             "benefice": "Le jour où une carte lâche, on recharge au lieu de tout réécrire."
           },
           {
             "prestation": {
               "accroche": "Les organes d'usure suivis dans l'ordre",
-              "texte": "freins, réducteurs, batteries d'encodeurs, faisceaux de bras, connectique de l'axe 6."
+              "texte": "Freins, réducteurs, batteries d'encodeurs, faisceaux de bras, connectique de l'axe 6."
             },
             "benefice": "Le défaut fantôme du faisceau se teste en mouvement, donc il se trouve."
           },
@@ -145,14 +99,9 @@
           {
             "prestation": {
               "accroche": "Le rétrofit chiffré face au remplacement",
-              "texte": "contrôleur obsolète, pièce plus fabriquée, application à faire évoluer."
+              "texte": "Contrôleur obsolète, pièce plus fabriquée, application à faire évoluer."
             },
             "benefice": "La décision se prend sur deux chiffres, pas sur le catalogue du constructeur."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Le bras n'est jamais seul : l'armoire, l'automate et les sécurités relèvent de nos équipes [automatisme](/expertises/automatisme/), et la cellule complète de notre [maintenance robotique](/expertises/robotique/). Un parc entier à remettre sous suivi passe par le [contrat Zéro arrêt](/offres/zero-arret/) ; un robot immobilisé maintenant, par le [dépannage industriel](/offres/depannage-industriel/)."
           }
         ]
       },
@@ -161,7 +110,7 @@
         "etapes": [
           {
             "titre": "Vous décrivez la panne",
-            "texte": "modèle Fanuc, contrôleur, code alarme, moment du cycle. Quelques minutes au téléphone évitent un déplacement pour rien."
+            "texte": "Modèle Fanuc, contrôleur, code alarme, moment du cycle. Quelques minutes au téléphone évitent un déplacement pour rien."
           },
           {
             "titre": "Un technicien vous rappelle dans l'heure.",
@@ -169,11 +118,11 @@
           },
           {
             "titre": "Nous cherchons la cause avant de démonter",
-            "texte": "alarmes du contrôleur, essais axe après axe, contrôle des périphériques et des sécurités de cellule."
+            "texte": "Alarmes du contrôleur, essais axe après axe, contrôle des périphériques et des sécurités de cellule."
           },
           {
             "titre": "Nous réparons et remettons en service",
-            "texte": "pièce changée, points repris, essais avec vos opérateurs sur le cycle complet jusqu'au retour de la cadence."
+            "texte": "Pièce changée, points repris, essais avec vos opérateurs sur le cycle complet jusqu'au retour de la cadence."
           },
           {
             "titre": "Les sauvegardes sont reprises et datées",
@@ -181,7 +130,7 @@
           },
           {
             "titre": "Vous recevez le rapport écrit",
-            "texte": "cause racine, travaux réalisés, pièces à mettre en stock, points à surveiller au prochain passage."
+            "texte": "Cause racine, travaux réalisés, pièces à mettre en stock, points à surveiller au prochain passage."
           }
         ]
       },
@@ -190,7 +139,7 @@
         "puces": [
           {
             "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-            "texte": "L'astreinte 24/24 et 7/7 couvre la nuit et le week-end sur les sites concernés."
+            "texte": "L'astreinte la nuit, le week-end et les jours fériés couvre la nuit et le week-end sur les sites concernés."
           },
           {
             "accroche": "Vos programmes, vos recettes et vos données de production restent chez vous.",
@@ -203,48 +152,60 @@
         ]
       },
       {
-        "type": "cta",
-        "question": "Besoin d'un technicien capable de lire le code défaut de votre robot Fanuc aujourd'hui ?",
-        "bouton": "Demander une intervention",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
-      },
-      {
         "type": "preuves",
         "preuves": [
           {
             "titre": "Maintenance des équipements critiques d'un équipementier automobile",
-            "texte": "techniciens intégrés au quotidien sur systèmes automatisés, lignes et convoyeurs, avec des roboticiens ABB et Fanuc parmi les spécialités mobilisables, depuis 2025",
-            "lienLibelle": "Étude de cas JTEKT : maintenance des installations",
-            "lienHref": "/preuves/jtekt/"
+            "texte": "Techniciens intégrés au quotidien sur systèmes automatisés, lignes et convoyeurs, avec des roboticiens ABB et Fanuc parmi les spécialités mobilisables, depuis 2025.",
+            "lienLibelle": "Étude de cas JTEKT",
+            "lienHref": "/preuves/jtekt/",
+            "photo": "/assets/web/x-robotique.jpg"
           },
           {
             "titre": "Maintenance d'un parc d'usinage de précision, un technicien à temps plein",
-            "texte": "centres d'usinage à grande vitesse, presses et diagnostic sur commandes numériques, sur un parc multimarques, 2025",
-            "lienLibelle": "Étude de cas VOIT : site du Grand Est",
-            "lienHref": "/preuves/voit-grand-est/"
+            "texte": "Centres d'usinage à grande vitesse, presses et diagnostic sur commandes numériques, sur un parc multimarques, 2025.",
+            "lienLibelle": "Étude de cas VOIT",
+            "lienHref": "/preuves/voit-grand-est/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "Contrôle de chantier sur des projets d'automatisation logistique",
-            "texte": "plusieurs intervenants intégrés aux équipes, roboticiens ABB et Fanuc parmi les spécialités engagées, 2025 à 2026",
-            "lienLibelle": "Étude de cas ALSTEF Group : collaboration",
-            "lienHref": "/preuves/alstef-group/"
+            "texte": "Plusieurs intervenants intégrés aux équipes, roboticiens ABB et Fanuc parmi les spécialités engagées, 2025 à 2026.",
+            "lienLibelle": "Étude de cas ALSTEF Group",
+            "lienHref": "/preuves/alstef-group/",
+            "photo": "/assets/web/x-auto-caisse.jpg"
           },
           {
             "titre": "18 à 25 techniciens sur plusieurs sites automobiles en transition vers l'électrique",
-            "texte": "préventif et curatif portés par le même dispositif sur des parcs machines qui changent pendant qu'ils produisent, depuis juin 2023",
-            "lienLibelle": "Étude de cas STELLANTIS : sites du Grand Est",
-            "lienHref": "/preuves/stellantis-grand-est/"
+            "texte": "Préventif et curatif portés par le même dispositif sur des parcs machines qui changent pendant qu'ils produisent, depuis juin 2023.",
+            "lienLibelle": "Étude de cas STELLANTIS",
+            "lienHref": "/preuves/stellantis-grand-est/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "Montée en cadence accompagnée dans plusieurs usines françaises",
-            "texte": "trois à cinq techniciens sur lignes de production, ateliers de fabrication et préventif, depuis septembre 2024",
-            "lienLibelle": "Étude de cas VALEO : plusieurs usines",
-            "lienHref": "/preuves/valeo-usines/"
+            "texte": "Trois à cinq techniciens sur lignes de production, ateliers de fabrication et préventif, depuis septembre 2024.",
+            "lienLibelle": "Étude de cas VALEO",
+            "lienHref": "/preuves/valeo-usines/",
+            "photo": "/assets/web/mq-9b461f439fef.jpg"
+          },
+          {
+            "titre": "La GMAO planifie, nos techniciens interviennent",
+            "lienLibelle": "Étude de cas DimoMaint",
+            "lienHref": "/preuves/dimomaint/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg"
+          },
+          {
+            "titre": "Des convoyeurs et des trieurs sous surveillance continue",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-42237c1c8685.jpg"
           }
         ]
       },
       {
         "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
         "questions": [
           {
             "question": "Êtes-vous partenaire officiel Fanuc ?",
@@ -271,6 +232,11 @@
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et 10 hubs de techniciens à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Nos techniciens sont mobiles et interviennent au-delà de ces villes. Une visite préventive annuelle et une priorité en cas de panne n'exigent pas un dispositif plus lourd que nécessaire."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que votre parc Fanuc tienne sa cadence toute l'année au lieu de décrocher par paliers ?",
+        "bouton": "Demander une intervention"
       }
     ]
   }

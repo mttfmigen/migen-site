@@ -1,0 +1,23 @@
+/* Style et `style-hover` du bouton de thème de la maquette, recopiés. En
+   classe et non en ligne : un style en ligne battrait le survol. */
+.bascule {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--ink3);
+  padding: 0;
+  flex: none;
+  transition:
+    background var(--tr),
+    color var(--tr);
+}
+.bascule:hover {
+  background: var(--card);
+  color: var(--ink);
+}

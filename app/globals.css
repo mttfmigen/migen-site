@@ -93,6 +93,61 @@
   --map-b: rgba(255, 255, 255, 0.55);
 }
 
+/* --------------------------------------------------------- palette sombre
+   README, « Palette sombre », et `applyVars()` de « Migen - Site final.dc.html »
+   pour les quatre valeurs que le README ne liste pas mais que la maquette
+   bascule avec le thème : --gl-a (verre à 8 % au lieu de 62 %, sinon les
+   panneaux restent blancs), --acc-w, --sat et color-scheme (listes déroulantes
+   et ascenseurs natifs). Seul l'orange --acc reste fixe.
+
+   --err et --ok ne viennent pas de la maquette (elle n'a pas d'état de
+   formulaire) : les valeurs claires tombent à 2,4:1 et 2,0:1 sur --card
+   sombre. Celles-ci sont choisies et mesurées : 6,3:1 et 7,8:1 sur --card,
+   7,3:1 et 9,1:1 sur --bg.
+
+   Deux sélecteurs, une seule liste : le choix mémorisé (data-theme, posé par
+   le script de app/layout.tsx avant le premier rendu) l'emporte sur le
+   système, et sans choix le système décide. */
+:root[data-theme="sombre"] {
+  --bg: #15141a;
+  --card: #232229;
+  --panel: #201f27;
+  --foot: #100f14;
+  --ink: #f4f3f1;
+  --ink1: rgba(255, 255, 255, 0.76);
+  --ink2: rgba(255, 255, 255, 0.64);
+  --ink3: rgba(255, 255, 255, 0.54);
+  --ink4: rgba(255, 255, 255, 0.52);
+  --line: rgba(255, 255, 255, 0.13);
+  --chip: rgba(255, 255, 255, 0.08);
+  --gbd: rgba(255, 255, 255, 0.11);
+  --gsol: rgba(255, 255, 255, 0.07);
+  --ph: #2b2934;
+  --sheet: rgba(28, 27, 34, 0.92);
+  --logo-f: grayscale(1) invert(1) brightness(1.7);
+  --map-a: rgba(255, 255, 255, 0.14);
+  --map-b: rgba(255, 255, 255, 0.06);
+  --acc-ink: #ffa878;
+  --acc-w: rgba(255, 124, 60, 0.16);
+  --gl-a: 0.079;
+  --sat: 0.5;
+  --err: #e88a82;
+  --ok: #81c784;
+  color-scheme: dark;
+}
+/* LE THÈME QUI SUIT LE SYSTÈME EST ÉTEINT, VOLONTAIREMENT (07/10 au soir).
+   Le README de passation le décrit actif, mais la maquette, source de vérité
+   numéro un selon ce même README, le DÉSACTIVE : sa méthode isDark() commence
+   par « return false » et son bouton est en display:none, dans les trois
+   copies. Et mesuré au navigateur : ~40 textes de l'accueil, portés avec les
+   couleurs fixes du thème clair, tomberaient à un contraste de 1,0 à 1,4 chez
+   tout visiteur dont le système est en sombre.
+   Pour l'allumer, une fois les couleurs fixes des composants passées en
+   tokens : remettre le bloc
+     @media (prefers-color-scheme: dark) { :root:not([data-theme="clair"]) { ... } }
+   avec les mêmes valeurs que :root[data-theme="sombre"] ci-dessus, et remonter
+   <BasculeTheme /> dans Entete.tsx. */
+
 * {
   box-sizing: border-box;
 }

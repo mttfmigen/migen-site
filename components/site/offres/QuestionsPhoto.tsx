@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { CSSProperties } from "react";
+import { useId, type CSSProperties } from "react";
 
 import styles from "./QuestionsPhoto.module.css";
 
@@ -149,6 +149,8 @@ export default function QuestionsPhoto({
 }: {
   donnees: QuestionsPhotoOffres;
 }) {
+  // README : une seule question ouverte à la fois. Accordéon exclusif natif.
+  const groupe = useId();
   if (donnees.questions.length === 0) return null;
 
   return (
@@ -186,6 +188,7 @@ export default function QuestionsPhoto({
                   key={q.question}
                   className="cx-faq"
                   style={PLI}
+                  name={groupe}
                   // La maquette ouvre la PREMIÈRE question, sa réponse est
                   // visible d'emblée. On ne l'ouvre que si elle a une réponse :
                   // sur plusieurs pages d'offres la première réponse est vide,

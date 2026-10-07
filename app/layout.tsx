@@ -85,7 +85,24 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       // défilement. La mise en page vient maintenant de la maquette, dont le
       // conteneur `.mg-site` porte son propre `min-height: 100vh`.
       className={`${poppins.variable} ${caveat.variable}`}
+      // Le script de thème ci-dessous pose `data-theme` avant l'hydratation :
+      // sans cet attribut, React signalerait l'écart entre le HTML serveur et
+      // la racine. Ne couvre que les attributs de <html>, pas ses enfants.
+      suppressHydrationWarning
     >
+      <head>
+        {/* Thème mémorisé, posé AVANT le premier rendu pour éviter l'éclair
+            clair chez qui a choisi « Sombre » (et l'inverse). Même clé et mêmes
+            valeurs que la maquette (`localStorage["migen-theme"]`, « Clair » ou
+            « Sombre »). Sans choix, aucun attribut : globals.css suit alors
+            prefers-color-scheme. try/catch : stockage bloqué ou navigation
+            privée, la page reste sur le réglage du système. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem("migen-theme");if(t==="Sombre"||t==="Clair")document.documentElement.setAttribute("data-theme",t==="Sombre"?"sombre":"clair")}catch(e){}`,
+          }}
+        />
+      </head>
       <body>
         {/*
           ConsentMode EN PREMIER, et ce n'est pas cosmétique : son script est en

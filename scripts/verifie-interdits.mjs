@@ -41,6 +41,15 @@ const INTERDITS = [
   ["sous 72 h", "« rappel dans l'heure », aucun autre délai chiffré"],
   ["h de route", "aucun délai ni distance chiffrés"],
   ["heures de route", "aucun délai ni distance chiffrés"],
+  // Passation, règles validées par le client : « Aucune mention 24h/24, 7j/7
+  // ou « 24h », nulle part ». Motifs et non chaînes : l'espace varie (aucune,
+  // ordinaire, insécable U+00A0 ou fine U+202F, toutes couvertes par \s), et
+  // la lettre aussi (« 24/24 et 7/7 » dit la même chose que « 24h/24, 7j/7 »).
+  [/\b24\s*h?\s*\/\s*(?:24|7)\b/u, "aucune mention de disponibilité 24h/24, à retirer"],
+  [/\b7\s*j?\s*\/\s*7\b/u, "aucune mention 7j/7, à retirer"],
+  // « 24h » ou « 24 h » comme mot isolé : pas « 24 heures », pas « 24h/24 »
+  // (déjà signalé ci-dessus), pas « 124 h ».
+  [/\b24\s*h(?![\p{L}\d]|\s*\/)/u, "aucune mention « 24h », à retirer"],
   // Vocabulaire proscrit.
   ["régie", "« résidence » ou « technicien sur site »"],
   ["intérim", "nommer la prestation, jamais le statut"],
@@ -94,8 +103,13 @@ for (const chemin of [
   const lignes = sansCommentaires(readFileSync(chemin, "utf8")).split("\n");
   lignes.forEach((ligne, i) => {
     if (IGNOREES.some((motif) => motif.test(ligne))) return;
-    for (const [interdit, remede] of INTERDITS) {
-      if (ligne.includes(interdit)) {
+    for (const [motif, remede] of INTERDITS) {
+      // Une chaîne se cherche telle quelle, un motif rend le fragment trouvé.
+      const interdit =
+        typeof motif === "string"
+          ? ligne.includes(motif) && motif
+          : ligne.match(motif)?.[0];
+      if (interdit) {
         trouvailles.push({
           ou: `${relative(RACINE, chemin)}:${i + 1}`,
           interdit,

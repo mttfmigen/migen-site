@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { CSSProperties } from "react";
+import { useId, type CSSProperties } from "react";
 
 import { LARGEUR, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import type { PrestationRegroupee, PrestationsRegroupees as Donnees } from "@/types/offre";
@@ -231,6 +231,9 @@ const REPONSE_QUESTION: CSSProperties = {
 
 /** Le corps d'un pli : les blocs de la prestation absorbée, puis sa FAQ. */
 function CorpsPrestation({ prestation }: { prestation: PrestationRegroupee }) {
+  // README : une seule question ouverte à la fois, un groupe par prestation.
+  // Les cartes de prestation elles-mêmes restent indépendantes.
+  const groupe = useId();
   return (
     <div style={CORPS}>
       {(prestation.blocs ?? []).map((bloc, rangBloc) => (
@@ -334,6 +337,7 @@ function CorpsPrestation({ prestation }: { prestation: PrestationRegroupee }) {
             <details
               key={question.question}
               className={styles.pliQuestion}
+              name={groupe}
               style={{ borderTop: "1px solid var(--line)" }}
             >
               <summary style={RESUME_QUESTION}>

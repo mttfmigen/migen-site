@@ -1,83 +1,39 @@
 {
+  "_source": "maquette/rendu/expertises--robotique--abb.html (07/10 21h12, 15 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture, contrôlé par components/site/expertises/specialite/verification-specialite.tsx. TROU DE CONTRAT DÉCLARÉ : la capture dessine TROIS chiffres dont « +200 / Clients industriels accompagnés », premier interdit du contrat ; la carte entière n'est pas rendue et n'est pas reformulée. PHOTOS MESURÉES, PAS CHOISIES : la maquette assigne les photos du rail des références PAR RANG ; la capture du problème de CETTE page ne rend AUCUNE photo (section 4, 0 image), d'où `problemePhoto: null`. LE RAIL D'ONGLETS de « Marques maintenues » est propre à cette capture (blocs 938-940 : « Automatisme & électricité 10 » actif, « Robotique ») : `marquesFamilles` le porte, les comptes viennent de marques-donnees.ts.",
   "url": "/expertises/robotique/abb/",
+  "titre_h1": "Maintenance de robots ABB : des roboticiens qui connaissent vos cellules par cœur",
   "contenu": {
-    "gabarit": "domaine",
+    "gabarit": "specialite",
+    "pastille": "Expertises",
     "chapeau": "Un technicien qui traite la mécanique, l'électronique de baie et le programme du même bras IRB, sans attendre le passage du constructeur. Nous ne vendons pas de robots, nous les maintenons jusqu'au bout de leur vie utile.",
-    "boutons": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés.",
+    "appelBouton": "Demander une intervention",
+    "actions": [
       {
-        "libelle": "Demander une intervention"
+        "libelle": "Demander une intervention",
+        "href": "#besoin"
       }
     ],
-    "traitements": [
-      "Un diagnostic qui remonte à la cause",
-      "Le préventif tracé sur chaque bras",
-      "La remise en précision après perte de calibration",
-      "La reprise de programme sur sauvegarde à jour",
-      "Les organes d'usure suivis dans l'ordre",
-      "La cellule traitée en entier",
-      "Un technicien intégré sur votre site"
-    ],
-    "autres": [
+    "formulaireHeroTitre": "Demander une intervention",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
-        "libelle": "Automatisme industriel",
-        "href": "/expertises/automatisme/"
+        "valeur": "10 %",
+        "libelle": "Des candidats retenus, après entretien technique ET comportemental"
       },
       {
-        "libelle": "Maintenance électrique industrielle",
-        "href": "/expertises/electrique/"
-      },
-      {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
-      },
-      {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance mécanique",
-        "href": "/expertises/mecanique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
+        "valeur": "en continu et tous les jours",
+        "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "cta": {
-      "question": "Besoin que votre parc ABB tienne dans la durée au lieu de finir en dépannages d'urgence ?",
-      "bouton": {
-        "libelle": "Demander une intervention"
-      }
-    },
-    "reste": [
-      {
-        "type": "chiffres",
-        "chiffres": [
-          {
-            "valeur": "10 %",
-            "libelle": "des candidats retenus, après entretien technique ET comportemental"
-          },
-          {
-            "valeur": "+ 80",
-            "libelle": "clients réguliers, beaucoup arrivés par une panne"
-          },
-          {
-            "valeur": "24/24 et 7/7",
-            "libelle": "astreinte, pour les sites couverts"
-          }
-        ]
-      },
+    "problemePhoto": null,
+    "marquesFamille": "auto",
+    "marquesFamilles": ["auto", "robot"],
+    "sections": [
       {
         "type": "probleme",
         "punchline": "Vous avez acheté ce robot pour quinze ans et le contrat de service s'est arrêté au bout de deux. Depuis, le parc vieillit sans personne pour le suivre.",
+        "variante": "rangee",
         "puces": [
           {
             "accroche": "Le robot dérive bien avant de lâcher.",
@@ -103,56 +59,51 @@
           {
             "prestation": {
               "accroche": "Un diagnostic qui remonte à la cause",
-              "texte": "journal de défauts du contrôleur, essais axe par axe, mesures sur les moteurs, lecture du programme."
+              "texte": "Journal de défauts du contrôleur, essais axe par axe, mesures sur les moteurs, lecture du programme."
             },
             "benefice": "Vous arrêtez de remplacer des organes sains pendant que la ligne est à l'arrêt."
           },
           {
             "prestation": {
               "accroche": "Le préventif tracé sur chaque bras",
-              "texte": "graissage et niveaux, contrôle des jeux, batteries de sauvegarde, état du faisceau, nettoyage d'armoire."
+              "texte": "Graissage et niveaux, contrôle des jeux, batteries de sauvegarde, état du faisceau, nettoyage d'armoire."
             },
             "benefice": "Le robot ne vous surprend plus, et les dégradations se voient six mois avant la casse."
           },
           {
             "prestation": {
               "accroche": "La remise en précision après perte de calibration",
-              "texte": "remise à zéro, recalibrage, contrôle des points de l'application avant tout retour en automatique."
+              "texte": "Remise à zéro, recalibrage, contrôle des points de l'application avant tout retour en automatique."
             },
             "benefice": "Pas de collision coûteuse au redémarrage, pas de rebut le lundi matin."
           },
           {
             "prestation": {
               "accroche": "La reprise de programme sur sauvegarde à jour",
-              "texte": "relecture de l'application, ajustement des points, essais hors production puis validation en charge."
+              "texte": "Relecture de l'application, ajustement des points, essais hors production puis validation en charge."
             },
             "benefice": "La ligne évolue sans repasser par un devis d'intégration."
           },
           {
             "prestation": {
               "accroche": "Les organes d'usure suivis dans l'ordre",
-              "texte": "réducteurs, moteurs et retours de position, freins, faisceaux en mouvement, préhenseurs."
+              "texte": "Réducteurs, moteurs et retours de position, freins, faisceaux en mouvement, préhenseurs."
             },
             "benefice": "Le défaut intermittent se teste en mouvement, donc il se trouve."
           },
           {
             "prestation": {
               "accroche": "La cellule traitée en entier",
-              "texte": "armoire et alimentation, pneumatique de préhension, vision, sécurités, automate de ligne, AMR d'alimentation."
+              "texte": "Armoire et alimentation, pneumatique de préhension, vision, sécurités, automate de ligne, AMR d'alimentation."
             },
             "benefice": "La vraie cause est trouvée même quand elle est en dehors du bras."
           },
           {
             "prestation": {
-              "accroche": "Un technicien intégré sur votre site",
-              "texte": "quand le parc le justifie, à temps plein ou partiel."
+              "accroche": "Un technicien intégré sur votre site quand le parc le justifie, à temps plein ou partiel.",
+              "texte": ""
             },
             "benefice": "Quelqu'un devient la mémoire technique de vos robots, au lieu de la reconstruire à chaque panne."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Cette page prolonge notre [maintenance robotique](/expertises/robotique/) : même méthode, appliquée au parc ABB. Nos techniciens couvrent aussi les parcs [Fanuc](/expertises/robotique/fanuc/) sur le même site. Un parc entier à remettre sous suivi passe par le [contrat Zéro arrêt](/offres/zero-arret/), avec un plan de maintenance préventive adapté à votre site et une priorité d'intervention."
           }
         ]
       },
@@ -161,7 +112,7 @@
         "etapes": [
           {
             "titre": "Vous décrivez la panne",
-            "texte": "modèle IRB ou SCARA, contrôleur, code défaut, moment du cycle. Quelques minutes au téléphone évitent un déplacement pour rien."
+            "texte": "Modèle IRB ou SCARA, contrôleur, code défaut, moment du cycle. Quelques minutes au téléphone évitent un déplacement pour rien."
           },
           {
             "titre": "Un technicien vous rappelle dans l'heure.",
@@ -169,11 +120,11 @@
           },
           {
             "titre": "Nous cherchons la cause avant d'ouvrir",
-            "texte": "historique, alarmes, temps de cycle, comportement en manuel, contrôle des sécurités de cellule."
+            "texte": "Historique, alarmes, temps de cycle, comportement en manuel, contrôle des sécurités de cellule."
           },
           {
             "titre": "Nous réparons et remettons en service",
-            "texte": "pièce changée, points requalifiés, essais en charge avec vos opérateurs jusqu'au retour de la cadence."
+            "texte": "Pièce changée, points requalifiés, essais en charge avec vos opérateurs jusqu'au retour de la cadence."
           },
           {
             "titre": "Les sauvegardes sont reprises et datées",
@@ -181,7 +132,7 @@
           },
           {
             "titre": "Vous recevez le compte rendu",
-            "texte": "cause racine, geste effectué, pièces à mettre en stock, points à surveiller au prochain passage."
+            "texte": "Cause racine, geste effectué, pièces à mettre en stock, points à surveiller au prochain passage."
           }
         ]
       },
@@ -190,11 +141,11 @@
         "puces": [
           {
             "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-            "texte": "L'astreinte 24/24 et 7/7 couvre la nuit et le week-end sur les sites concernés."
+            "texte": "L'astreinte la nuit, le week-end et les jours fériés couvre la nuit et le week-end sur les sites concernés."
           },
           {
             "accroche": "Des habilitations vérifiées avant l'intervention",
-            "texte": "habilitation électrique à jour, formations déclarées, documents à l'appui. Démarche MASE et évaluation EcoVadis, attestations transmises avec chaque plan de prévention."
+            "texte": "Habilitation électrique à jour, formations déclarées, documents à l'appui. Démarche MASE et évaluation EcoVadis, attestations transmises avec chaque plan de prévention."
           },
           {
             "accroche": "Aucune vente de robot ni de licence.",
@@ -203,48 +154,54 @@
         ]
       },
       {
-        "type": "cta",
-        "question": "Besoin d'un roboticien capable de remettre votre bras ABB en production ?",
-        "bouton": "Demander une intervention",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
-      },
-      {
         "type": "preuves",
         "preuves": [
           {
             "titre": "Maintenance des équipements critiques d'un équipementier automobile",
-            "texte": "techniciens intégrés au quotidien sur systèmes automatisés, lignes et convoyeurs, roboticiens ABB et Fanuc parmi les spécialités mobilisables, depuis 2025",
-            "lienLibelle": "Étude de cas JTEKT : maintenance des installations",
-            "lienHref": "/preuves/jtekt/"
+            "texte": "Techniciens intégrés au quotidien sur systèmes automatisés, lignes et convoyeurs, roboticiens ABB et Fanuc parmi les spécialités mobilisables, depuis 2025.",
+            "lienLibelle": "Étude de cas JTEKT",
+            "lienHref": "/preuves/jtekt/",
+            "photo": "/assets/web/x-robotique.jpg"
           },
           {
             "titre": "Contrôle de chantier sur des projets d'automatisation logistique",
-            "texte": "plusieurs intervenants intégrés aux équipes, roboticiens ABB et Fanuc parmi les spécialités mobilisables, 2025 à 2026",
-            "lienLibelle": "Étude de cas ALSTEF Group : collaboration",
-            "lienHref": "/preuves/alstef-group/"
+            "texte": "Plusieurs intervenants intégrés aux équipes, roboticiens ABB et Fanuc parmi les spécialités mobilisables, 2025 à 2026.",
+            "lienLibelle": "Étude de cas ALSTEF Group",
+            "lienHref": "/preuves/alstef-group/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "Contrat de maintenance préventive annuelle, logistique",
-            "texte": "six techniciens polyvalents en permanence, robotique comprise dans les domaines couverts, depuis septembre 2023",
-            "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
-            "lienHref": "/preuves/veepee-sites-lyon/"
+            "texte": "Six techniciens polyvalents en permanence, robotique comprise dans les domaines couverts, depuis septembre 2023.",
+            "lienLibelle": "Étude de cas VEEPEE",
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "photo": "/assets/web/x-auto-caisse.jpg"
           },
           {
             "titre": "Maintien opérationnel de convoyeurs, trieurs et lignes de packaging automatisées, logistique et transport",
-            "texte": "deux techniciens en poste, robotique parmi les domaines couverts en propre",
-            "lienLibelle": "Étude de cas GLS : maintenance curative",
-            "lienHref": "/preuves/gls-maintenance-curative/"
+            "texte": "Deux techniciens en poste, robotique parmi les domaines couverts en propre.",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "Maintenance sous contrat d'un parc déployé partout en France, réalité virtuelle",
-            "texte": "périmètre technique complet, robotique comprise, depuis février 2024",
-            "lienLibelle": "Étude de cas TIMESCOPE : casques de réalité virtuelle",
-            "lienHref": "/preuves/timescope/"
+            "texte": "Périmètre technique complet, robotique comprise, depuis février 2024.",
+            "lienLibelle": "Étude de cas TIMESCOPE",
+            "lienHref": "/preuves/timescope/",
+            "photo": "/assets/web/mq-9b461f439fef.jpg"
+          },
+          {
+            "titre": "La GMAO planifie, nos techniciens interviennent",
+            "lienLibelle": "Étude de cas DimoMaint",
+            "lienHref": "/preuves/dimomaint/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg"
           }
         ]
       },
       {
         "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
         "questions": [
           {
             "question": "Faut-il être le constructeur pour intervenir sur un robot ABB ?",
@@ -271,6 +228,11 @@
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et 10 hubs de techniciens à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Nos techniciens sont mobiles et interviennent partout en France. Une visite annuelle et une priorité en cas de panne n'exigent pas un dispositif plus lourd que nécessaire."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que votre parc ABB tienne dans la durée au lieu de finir en dépannages d'urgence ?",
+        "bouton": "Demander une intervention"
       }
     ]
   }
