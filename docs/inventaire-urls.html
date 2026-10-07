@@ -1,0 +1,2280 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<title>Migen · inventaire des URL</title>
+<style>
+ body{margin:0;padding:28px;font:400 14px/1.5 -apple-system,"system-ui",sans-serif;color:#1c1b19;background:#f1f2f4}
+ h1{font:600 26px/1.2 -apple-system,sans-serif;letter-spacing:-.02em;margin:0 0 6px}
+ p.sous{color:#6a6764;margin:0 0 22px}
+ table{border-collapse:collapse;width:100%;background:#fff;border-radius:14px;overflow:hidden}
+ th,td{text-align:left;padding:9px 12px;border-bottom:1px solid rgba(28,27,25,.07);vertical-align:top}
+ th{font:600 12px/1 -apple-system,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:#6a6764;background:#faf9f8}
+ td.num{font:500 13px ui-monospace,Menlo,monospace;white-space:nowrap}
+ a{color:#1c1b19}
+ .v{font:500 12px/1 -apple-system,sans-serif;white-space:nowrap}
+ .t{font:400 12.5px/1.35 -apple-system,sans-serif;color:#4a4845;max-width:260px}
+ .t.ecart{color:#b26a00;font-weight:500}
+ .filtres{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+ .filtres button{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(28,27,25,.12);
+   background:#fff;border-radius:999px;padding:7px 13px;cursor:pointer;
+   font:500 12.5px/1 -apple-system,sans-serif;color:#1c1b19}
+ .filtres button.actif{background:#1c1b19;color:#fff;border-color:#1c1b19}
+ .pastille{width:8px;height:8px;border-radius:50%;display:inline-block}
+ tr.masquee{display:none}
+</style></head><body>
+<h1>Inventaire des URL</h1>
+<p class="sous">248 pages décrites par la maquette, confrontées à http://localhost:4340.
+Les pages vérifiables d'abord : les 404 sont en bas, cliquer dessus n'apprend rien.</p>
+<div class="filtres">
+<button data-f="absente du site"><span class="pastille" style="background:#b3261e"></span>absente du site <b>101</b></button><button data-f="titre different"><span class="pastille" style="background:#b26a00"></span>titre different <b>87</b></button><button data-f="conforme"><span class="pastille" style="background:#1a7f4b"></span>conforme <b>60</b></button>
+<button data-f="" class="actif">tout <b>248</b></button>
+</div>
+<table><thead><tr>
+<th>URL</th><th>Gabarit</th><th>Code</th><th>Mots<br>maquette / site</th><th>Titre attendu</th><th>Titre servi</th><th>État</th>
+</tr></thead><tbody>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/bureau-etudes/" target="_blank" rel="noreferrer">/bureau-etudes/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1605 / 1446</td>
+<td class="t">Bureau d'études industriel : des études qui tiennent au montage</td>
+<td class="t ecart">Bureau d&amp;#x27;étude mécanique : un plan qui tient au montage</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/bureau-etudes/bureau-etude-electrique/" target="_blank" rel="noreferrer">/bureau-etudes/bureau-etude-electrique/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1328 / 1360</td>
+<td class="t">Bureau d'étude électrique : du schéma à l'armoire qui tourne</td>
+<td class="t ecart">Bureau d&amp;#x27;étude électrique : du schéma à l&amp;#x27;armoire qui tourne</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/bureau-etudes/bureau-etude-electronique/" target="_blank" rel="noreferrer">/bureau-etudes/bureau-etude-electronique/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1453 / 1430</td>
+<td class="t">Bureau d'étude électronique : une carte pensée pour être réparée</td>
+<td class="t ecart">Bureau d&amp;#x27;étude électronique : une carte pensée pour être réparée</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/bureau-etudes/mise-en-conformite-machine/" target="_blank" rel="noreferrer">/bureau-etudes/mise-en-conformite-machine/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1455 / 1519</td>
+<td class="t">Mise en conformité machine : fixez le calendrier avant l'inspection</td>
+<td class="t ecart">Mise en conformité machine : fixez le calendrier avant l&amp;#x27;inspection</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/carriere/" target="_blank" rel="noreferrer">/carriere/</a></td>
+<td>10 Hub de rubrique</td>
+<td class="num">200</td>
+<td class="num">1943 / 779</td>
+<td class="t">Migen recrutement</td>
+<td class="t ecart">Le terrain, avec les moyens de bien le faire.</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/" target="_blank" rel="noreferrer">/expertises/</a></td>
+<td>10 Hub de rubrique</td>
+<td class="num">200</td>
+<td class="num">1619 / 1272</td>
+<td class="t">Maintenance des équipements industriels : un seul appel, huit métiers sur votre site</td>
+<td class="t ecart">Maintenance des équipements industriels</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/automatisme/" target="_blank" rel="noreferrer">/expertises/automatisme/</a></td>
+<td>09 Domaine</td>
+<td class="num">200</td>
+<td class="num">1175 / 1521</td>
+<td class="t">Automatisme industriel : quand l’automate se tait, toute la ligne s’arrête</td>
+<td class="t ecart">Automatisme industriel</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/automatisme/programmation-automate/" target="_blank" rel="noreferrer">/expertises/automatisme/programmation-automate/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1279 / 1611</td>
+<td class="t">Programmation automate : modifier le programme sans arrêter la production</td>
+<td class="t ecart">Programmation automate</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/automatisme/schneider/" target="_blank" rel="noreferrer">/expertises/automatisme/schneider/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1367 / 1688</td>
+<td class="t">Automate Schneider : des automaticiens qui lisent votre programme dès le premier jour</td>
+<td class="t ecart">Automate schneider</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/automatisme/siemens/" target="_blank" rel="noreferrer">/expertises/automatisme/siemens/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1331 / 1655</td>
+<td class="t">Automaticien Siemens : de S5 à TIA Portal, sans perdre une recette</td>
+<td class="t ecart">Automaticien Siemens</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/electrique/" target="_blank" rel="noreferrer">/expertises/electrique/</a></td>
+<td>09 Domaine</td>
+<td class="num">200</td>
+<td class="num">1166 / 1491</td>
+<td class="t">Maintenance électrique industrielle : le défaut trouvé avant qu’il ne coupe la ligne</td>
+<td class="t ecart">Maintenance électrique industrielle</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/electromecanique/" target="_blank" rel="noreferrer">/expertises/electromecanique/</a></td>
+<td>09 Domaine</td>
+<td class="num">200</td>
+<td class="num">1174 / 1496</td>
+<td class="t">Électromécanique industrielle : un seul technicien quand la panne est électrique et mécanique</td>
+<td class="t ecart">Électromécanique industrielle</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/hydraulique/" target="_blank" rel="noreferrer">/expertises/hydraulique/</a></td>
+<td>09 Domaine</td>
+<td class="num">200</td>
+<td class="num">1129 / 1479</td>
+<td class="t">Maintenance hydraulique : la petite fuite d’aujourd’hui, c’est la presse arrêtée de demain</td>
+<td class="t ecart">Maintenance hydraulique</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/hydraulique/verin-hydraulique/" target="_blank" rel="noreferrer">/expertises/hydraulique/verin-hydraulique/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1478 / 1805</td>
+<td class="t">Réparation vérin hydraulique : réparer plutôt qu’attendre un vérin neuf</td>
+<td class="t ecart">Réparation vérin hydraulique</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/mecanique/" target="_blank" rel="noreferrer">/expertises/mecanique/</a></td>
+<td>09 Domaine</td>
+<td class="num">200</td>
+<td class="num">1167 / 1521</td>
+<td class="t">Maintenance mécanique : un roulement qui chauffe ne prévient qu’une fois</td>
+<td class="t ecart">Maintenance mécanique</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/mecanique/lubrification/" target="_blank" rel="noreferrer">/expertises/mecanique/lubrification/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1354 / 1690</td>
+<td class="t">Lubrification industrielle : la panne la moins chère est celle qu’on graisse à temps</td>
+<td class="t ecart">Lubrification industrielle</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/mecanique/machine-outil/" target="_blank" rel="noreferrer">/expertises/mecanique/machine-outil/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1257 / 1572</td>
+<td class="t">Maintenance machine-outil : le centième perdu se paie en rebuts</td>
+<td class="t ecart">Maintenance machine outil</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/pneumatique/" target="_blank" rel="noreferrer">/expertises/pneumatique/</a></td>
+<td>09 Domaine</td>
+<td class="num">200</td>
+<td class="num">1164 / 1479</td>
+<td class="t">Maintenance pneumatique : une fuite d’air coûte en continu, même ligne à l’arrêt</td>
+<td class="t ecart">Maintenance pneumatique</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/robotique/" target="_blank" rel="noreferrer">/expertises/robotique/</a></td>
+<td>09 Domaine</td>
+<td class="num">200</td>
+<td class="num">1173 / 1538</td>
+<td class="t">Maintenance robotique : un robot arrêté, c’est toute la cellule qui attend</td>
+<td class="t ecart">Maintenance robotique</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/robotique/abb/" target="_blank" rel="noreferrer">/expertises/robotique/abb/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1363 / 1708</td>
+<td class="t">Maintenance de robots ABB : des roboticiens qui connaissent vos cellules par cœur</td>
+<td class="t ecart">Maintenance de robots ABB</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/robotique/fanuc/" target="_blank" rel="noreferrer">/expertises/robotique/fanuc/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1381 / 1725</td>
+<td class="t">Fanuc robotique : remettre la cellule en cycle, pas seulement le robot en route</td>
+<td class="t ecart">Fanuc robotique</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/robotique/integrateur-robotique/" target="_blank" rel="noreferrer">/expertises/robotique/integrateur-robotique/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1290 / 1620</td>
+<td class="t">Intégrateur robotique : nous intégrons ce que nous savons maintenir</td>
+<td class="t ecart">Intégrateur robotique</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/soudure/" target="_blank" rel="noreferrer">/expertises/soudure/</a></td>
+<td>09 Domaine</td>
+<td class="num">200</td>
+<td class="num">1249 / 1592</td>
+<td class="t">Soudure industrielle : une reprise qui tient, du premier coup</td>
+<td class="t ecart">Soudure industrielle</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/specialisations-constructeur/" target="_blank" rel="noreferrer">/expertises/specialisations-constructeur/</a></td>
+<td>09 Domaine</td>
+<td class="num">200</td>
+<td class="num">1386 / 1664</td>
+<td class="t">Automaticien industriel multimarques : plusieurs automates, une seule équipe</td>
+<td class="t ecart">Automaticien industriel multimarques</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/tuyauterie/" target="_blank" rel="noreferrer">/expertises/tuyauterie/</a></td>
+<td>09 Domaine</td>
+<td class="num">200</td>
+<td class="num">1229 / 1578</td>
+<td class="t">Maintenance tuyauterie industrielle : un réseau ne fuit jamais au bon moment</td>
+<td class="t ecart">Maintenance tuyauterie industrielle</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/tuyauterie/nettoyage/" target="_blank" rel="noreferrer">/expertises/tuyauterie/nettoyage/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1326 / 1664</td>
+<td class="t">Nettoyage tuyauterie industrielle : un réseau encrassé coûte plus cher qu’un arrêt de nettoyage</td>
+<td class="t ecart">Nettoyage tuyauterie industrielle</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/types-de-maintenance/" target="_blank" rel="noreferrer">/expertises/types-de-maintenance/</a></td>
+<td>09 Domaine</td>
+<td class="num">200</td>
+<td class="num">1559 / 1608</td>
+<td class="t">Types de maintenance : réparer, prévoir ou prédire, le bon choix pour chaque machine</td>
+<td class="t ecart">Types de maintenance</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/types-de-maintenance/maintenance-ameliorative/" target="_blank" rel="noreferrer">/expertises/types-de-maintenance/maintenance-ameliorative/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1402 / 1665</td>
+<td class="t">Maintenance améliorative : supprimer la panne au lieu de la réparer encore</td>
+<td class="t ecart">Maintenance améliorative</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/types-de-maintenance/maintenance-conditionnelle/" target="_blank" rel="noreferrer">/expertises/types-de-maintenance/maintenance-conditionnelle/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1842 / 1883</td>
+<td class="t">Maintenance conditionnelle : intervenir quand la machine le demande, pas le calendrier</td>
+<td class="t ecart">Maintenance conditionnelle</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/types-de-maintenance/maintenance-corrective/" target="_blank" rel="noreferrer">/expertises/types-de-maintenance/maintenance-corrective/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1632 / 1750</td>
+<td class="t">Maintenance corrective : réparer vite, et comprendre pourquoi c’est arrivé</td>
+<td class="t ecart">Maintenance corrective</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/types-de-maintenance/maintenance-curative/" target="_blank" rel="noreferrer">/expertises/types-de-maintenance/maintenance-curative/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1647 / 1662</td>
+<td class="t">Maintenance curative : remettre la ligne en route, puis s’assurer qu’elle y reste</td>
+<td class="t ecart">Maintenance curative</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/types-de-maintenance/maintenance-palliative/" target="_blank" rel="noreferrer">/expertises/types-de-maintenance/maintenance-palliative/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1480 / 1752</td>
+<td class="t">Maintenance palliative : redémarrer maintenant, réparer pour de bon ensuite</td>
+<td class="t ecart">Maintenance palliative</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/types-de-maintenance/maintenance-predictive/" target="_blank" rel="noreferrer">/expertises/types-de-maintenance/maintenance-predictive/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1780 / 1784</td>
+<td class="t">Maintenance prédictive : voir la panne venir avant qu’elle n’arrête la ligne</td>
+<td class="t ecart">Maintenance prédictive</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/types-de-maintenance/maintenance-preventive/" target="_blank" rel="noreferrer">/expertises/types-de-maintenance/maintenance-preventive/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1658 / 1697</td>
+<td class="t">Maintenance préventive : chaque intervention planifiée, c’est un arrêt subi en moins</td>
+<td class="t ecart">Maintenance préventive</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/types-de-maintenance/maintenance-previsionnelle/" target="_blank" rel="noreferrer">/expertises/types-de-maintenance/maintenance-previsionnelle/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1820 / 1776</td>
+<td class="t">Maintenance prévisionnelle : anticiper l’usure, planifier l’arrêt, garder la main</td>
+<td class="t ecart">Maintenance prévisionnelle</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/expertises/types-de-maintenance/preventive-systematique/" target="_blank" rel="noreferrer">/expertises/types-de-maintenance/preventive-systematique/</a></td>
+<td>05 Spécialité</td>
+<td class="num">200</td>
+<td class="num">1551 / 1812</td>
+<td class="t">Maintenance préventive systématique : le calendrier qui protège vos machines critiques</td>
+<td class="t ecart">Maintenance préventive systématique</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/implantations/" target="_blank" rel="noreferrer">/implantations/</a></td>
+<td>10 Hub de rubrique</td>
+<td class="num">200</td>
+<td class="num">1387 / 825</td>
+<td class="t">Un seul partenaire maintenance pour tous vos sites</td>
+<td class="t ecart">Un siège à Lyon, dix hubs de techniciens, des interventions partout en France.</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/implantations/lyon/grenoble/" target="_blank" rel="noreferrer">/implantations/lyon/grenoble/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1339 / 1658</td>
+<td class="t">La maintenance industrielle à Grenoble et dans l'Isère</td>
+<td class="t ecart">La maintenance industrielle à Grenoble et dans l&amp;#x27;Isère</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/implantations/lyon/haute-savoie/" target="_blank" rel="noreferrer">/implantations/lyon/haute-savoie/</a></td>
+<td>06 Département</td>
+<td class="num">200</td>
+<td class="num">1340 / 1651</td>
+<td class="t">La maintenance industrielle en Haute-Savoie, de l'Arve au Genevois</td>
+<td class="t ecart">La maintenance industrielle en Haute-Savoie, de l&amp;#x27;Arve au Genevois</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-dijon/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-dijon/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1205 / 1510</td>
+<td class="t">Maintenance industrielle à Dijon et en Côte-d'Or</td>
+<td class="t ecart">Maintenance industrielle à Dijon et en Côte-d&amp;#x27;Or</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-le-havre/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-le-havre/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1212 / 1530</td>
+<td class="t">Maintenance industrielle au Havre et dans l'estuaire de la Seine</td>
+<td class="t ecart">Maintenance industrielle au Havre et dans l&amp;#x27;estuaire de la Seine</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-montpellier/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-montpellier/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1070 / 1398</td>
+<td class="t">Maintenance industrielle à Montpellier et dans l'Hérault</td>
+<td class="t ecart">Maintenance industrielle à Montpellier et dans l&amp;#x27;Hérault</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-troyes/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-troyes/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1115 / 1433</td>
+<td class="t">Maintenance industrielle à Troyes et dans l'Aube</td>
+<td class="t ecart">Maintenance industrielle à Troyes et dans l&amp;#x27;Aube</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/implantations/nantes/" target="_blank" rel="noreferrer">/implantations/nantes/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1329 / 1669</td>
+<td class="t">La maintenance industrielle à Nantes et dans l'estuaire</td>
+<td class="t ecart">La maintenance industrielle à Nantes et dans l&amp;#x27;estuaire</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/offres/" target="_blank" rel="noreferrer">/offres/</a></td>
+<td>10 Hub de rubrique</td>
+<td class="num">200</td>
+<td class="num">1311 / 1674</td>
+<td class="t">Maintenance industrielle : cinq offres, une seule exigence</td>
+<td class="t ecart">Entreprise maintenance industrielle</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/offres/arret-technique/" target="_blank" rel="noreferrer">/offres/arret-technique/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1427 / 2232</td>
+<td class="t">Arrêt technique de maintenance industrielle</td>
+<td class="t ecart">migen© Arrêt technique, la fenêtre tenue.</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/offres/bureau-etudes/" target="_blank" rel="noreferrer">/offres/bureau-etudes/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1358 / 2006</td>
+<td class="t">Bureau d'études industriel : des études qui tiennent au montage</td>
+<td class="t ecart">migen© Bureau d’études, ce qu’on dessine, on sait le maintenir.</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/offres/chantier/" target="_blank" rel="noreferrer">/offres/chantier/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1240 / 1979</td>
+<td class="t">Transfert industriel</td>
+<td class="t ecart">migen© Chantier, votre ligne déplacée, pas arrêtée.</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/offres/construction/" target="_blank" rel="noreferrer">/offres/construction/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1442 / 2072</td>
+<td class="t">Montage industriel : votre machine produit à la date prévue</td>
+<td class="t ecart">migen© Construction, votre usine montée, puis maintenue.</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/offres/residence/" target="_blank" rel="noreferrer">/offres/residence/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1379 / 2268</td>
+<td class="t">Sous-traitance de maintenance industrielle</td>
+<td class="t ecart">migen© Résidence, un renfort maintenance chez vous.</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/offres/retrofit/mise-en-conformite-machine/" target="_blank" rel="noreferrer">/offres/retrofit/mise-en-conformite-machine/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1275 / 2020</td>
+<td class="t">Mise en conformité des machines : fixez le calendrier avant l'inspection</td>
+<td class="t ecart">Mise en conformité des machines : fixez le calendrier avant l&amp;#x27;inspection</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/offres/zero-arret/" target="_blank" rel="noreferrer">/offres/zero-arret/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1230 / 2626</td>
+<td class="t">Zéro arrêt : la maintenance qui ne touche jamais à votre production</td>
+<td class="t ecart">migen© Zéro Arrêt, la maintenance qui ne touche jamais à votre production.</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/" target="_blank" rel="noreferrer">/preuves/</a></td>
+<td>10 Hub de rubrique</td>
+<td class="num">200</td>
+<td class="num">908 / 1000</td>
+<td class="t">Preuves : nos réalisations</td>
+<td class="t ecart">Ce que nous avons livré, chez qui, et en combien de temps.</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/aktid-centre-logistique/" target="_blank" rel="noreferrer">/preuves/aktid-centre-logistique/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">619 / 701</td>
+<td class="t">Étude de cas AKTID : un centre logistique monté en six semaines</td>
+<td class="t ecart">Étude de cas AKTID : montage d&amp;#x27;un centre logistique</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/alstef-group/" target="_blank" rel="noreferrer">/preuves/alstef-group/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">602 / 711</td>
+<td class="t">Étude de cas ALSTEF GROUP : des chantiers automatisés contrôlés point par point</td>
+<td class="t ecart">Étude de cas ALSTEF Group : contrôle de chantier</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/amazon-centre-logistique/" target="_blank" rel="noreferrer">/preuves/amazon-centre-logistique/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">607 / 705</td>
+<td class="t">Étude de cas AMAZON : maintenir un centre logistique qui ne ferme jamais</td>
+<td class="t ecart">Étude de cas AMAZON : maintien d&amp;#x27;un centre logistique</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/amazon-nouveau-site/" target="_blank" rel="noreferrer">/preuves/amazon-nouveau-site/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">604 / 701</td>
+<td class="t">Étude de cas AMAZON : un dispositif rodé, transposé sur un nouveau site</td>
+<td class="t ecart">Étude de cas AMAZON : démarrage d&amp;#x27;un nouveau site</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/autoliv/" target="_blank" rel="noreferrer">/preuves/autoliv/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">592 / 688</td>
+<td class="t">Étude de cas AUTOLIV : un technicien dédié pour que le parc ne décroche pas</td>
+<td class="t ecart">Étude de cas AUTOLIV : maintien d&amp;#x27;un site</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/danone-lignes-de-production/" target="_blank" rel="noreferrer">/preuves/danone-lignes-de-production/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">575 / 765</td>
+<td class="t">Étude de cas DANONE (BLÉDINA) : pas un poste sans maintenance, week-end compris</td>
+<td class="t ecart">Étude de cas DANONE : lignes de production</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/eaton-mise-en-production/" target="_blank" rel="noreferrer">/preuves/eaton-mise-en-production/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">625 / 686</td>
+<td class="t">Étude de cas EATON : six techniciens pour faire démarrer un parc machines</td>
+<td class="t ecart">Étude de cas EATON : mise en production</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/eiffage/" target="_blank" rel="noreferrer">/preuves/eiffage/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">703 / 743</td>
+<td class="t">Étude de cas EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens</td>
+<td class="t ecart">EIFFAGE : trois techniciens sur un chantier photovoltaïque</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/eriks/" target="_blank" rel="noreferrer">/preuves/eriks/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">641 / 728</td>
+<td class="t">Étude de cas ERIKS : un responsable maintenance pour traverser la transition</td>
+<td class="t ecart">ERIKS : un responsable maintenance pendant la transition</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/fdj/" target="_blank" rel="noreferrer">/preuves/fdj/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">489 / 734</td>
+<td class="t">Étude de cas CIUCH : l’intralogistique d’un grand site tenue en sous-traitance</td>
+<td class="t ecart">FDJ : un technicien de maintenance en continu sur les lignes</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/gls-maintenance-curative/" target="_blank" rel="noreferrer">/preuves/gls-maintenance-curative/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">576 / 670</td>
+<td class="t">Étude de cas GLS : des convoyeurs et des trieurs sous surveillance continue</td>
+<td class="t ecart">Étude de cas GLS : maintenance curative</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/groupe-atlantic/" target="_blank" rel="noreferrer">/preuves/groupe-atlantic/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">692 / 784</td>
+<td class="t">Étude de cas GROUPE ATLANTIC : un renfort devenu une partie de l’équipe</td>
+<td class="t ecart">GROUPE ATLANTIC : un renfort permanent sur les sites de production</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/joint-lyonnais/" target="_blank" rel="noreferrer">/preuves/joint-lyonnais/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">666 / 745</td>
+<td class="t">Étude de cas JOINT LYONNAIS : réparer plutôt que remplacer, au budget d’une PME</td>
+<td class="t ecart">JOINT LYONNAIS : des machines réparées, pas remplacées</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/jtekt/" target="_blank" rel="noreferrer">/preuves/jtekt/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">602 / 702</td>
+<td class="t">Étude de cas JTEKT : voir la dérive avant que l’équipement critique ne tombe</td>
+<td class="t ecart">Étude de cas JTEKT : maintenance des installations</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/mccain-belgique/" target="_blank" rel="noreferrer">/preuves/mccain-belgique/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">596 / 717</td>
+<td class="t">Étude de cas McCAIN : un premier contrat en Belgique, préventif et correctif</td>
+<td class="t ecart">Étude de cas McCAIN : Belgique</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/mersen/" target="_blank" rel="noreferrer">/preuves/mersen/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">677 / 745</td>
+<td class="t">Étude de cas MERSEN : un automaticien SIEMENS pour démarrer une ligne neuve</td>
+<td class="t ecart">MERSEN : sécuriser le démarrage d&amp;#x27;une ligne neuve</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/ogf-arret-estival/" target="_blank" rel="noreferrer">/preuves/ogf-arret-estival/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">696 / 730</td>
+<td class="t">Étude de cas OGF : un été entier sans trou dans la maintenance</td>
+<td class="t ecart">OGF : passer l&amp;#x27;été sans trou dans la maintenance</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/orthus-ecocem/" target="_blank" rel="noreferrer">/preuves/orthus-ecocem/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">642 / 793</td>
+<td class="t">Étude de cas ORTHUS x ECOCEM : de la parcelle au site de R&amp;D, un seul pilote</td>
+<td class="t ecart">ORTHUS x ECOCEM : construire un site de R&amp;amp;D industriel</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/orthus-washtec/" target="_blank" rel="noreferrer">/preuves/orthus-washtec/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">697 / 791</td>
+<td class="t">Étude de cas ORTHUS x WASHTEC : des portiques de lavage montés partout en France</td>
+<td class="t ecart">ORTHUS x WASHTEC : monter des portiques partout en France</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/soprema/" target="_blank" rel="noreferrer">/preuves/soprema/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">609 / 744</td>
+<td class="t">Étude de cas SOPREMA : monter, déplacer, renforcer, chantier après chantier</td>
+<td class="t ecart">SOPREMA : montage, transfert de machines et renfort de chantier</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/stellantis-fonderie-sept-fons/" target="_blank" rel="noreferrer">/preuves/stellantis-fonderie-sept-fons/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">752 / 794</td>
+<td class="t">Étude de cas STELLANTIS : un parc de fonderie repris en huit semaines</td>
+<td class="t ecart">STELLANTIS, fonderie de Sept-Fons : un parc repris en 8 semaines</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/stellantis-grand-est/" target="_blank" rel="noreferrer">/preuves/stellantis-grand-est/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">634 / 747</td>
+<td class="t">Étude de cas STELLANTIS : des dizaines de techniciens pour passer à l’électrique</td>
+<td class="t ecart">Étude de cas STELLANTIS : sites du Grand Est</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/suez-remise-en-etat/" target="_blank" rel="noreferrer">/preuves/suez-remise-en-etat/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">630 / 746</td>
+<td class="t">Étude de cas SUEZ IWT : six mois pour remettre en état un site à risque chimique</td>
+<td class="t ecart">SUEZ IWT : un électromécanicien habilité pour une remise en état</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/timescope/" target="_blank" rel="noreferrer">/preuves/timescope/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">698 / 792</td>
+<td class="t">Étude de cas TIMESCOPE : un parc de casques de réalité virtuelle tenu dans toute la France</td>
+<td class="t ecart">TIMESCOPE : tenir un parc de casques déployé en France</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/valeo-usines/" target="_blank" rel="noreferrer">/preuves/valeo-usines/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">553 / 685</td>
+<td class="t">Étude de cas VALEO : deux usines accompagnées dans leur montée en cadence</td>
+<td class="t ecart">Étude de cas VALEO : plusieurs usines</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/veepee-sites-lyon/" target="_blank" rel="noreferrer">/preuves/veepee-sites-lyon/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">540 / 715</td>
+<td class="t">Étude de cas VEEPEE : des systèmes intralogistiques au rythme du e-commerce</td>
+<td class="t ecart">Étude de cas VEEPEE : sites de Lyon</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/voit-grand-est/" target="_blank" rel="noreferrer">/preuves/voit-grand-est/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">569 / 684</td>
+<td class="t">Étude de cas VOIT : centres d’usinage et presses tenus dans le Grand Est</td>
+<td class="t ecart">Étude de cas VOIT : site du Grand Est</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/preuves/vpk/" target="_blank" rel="noreferrer">/preuves/vpk/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">200</td>
+<td class="num">456 / 743</td>
+<td class="t">Étude de cas VPK : une usine de carton en 3x8, un technicien qui tient la cadence</td>
+<td class="t ecart">VPK : un technicien polyvalent sur un parc en forte cadence</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/secteurs/aeronautique/" target="_blank" rel="noreferrer">/secteurs/aeronautique/</a></td>
+<td>08 Secteur</td>
+<td class="num">200</td>
+<td class="num">1297 / 1528</td>
+<td class="t">Maintenance dans l'industrie aéronautique</td>
+<td class="t ecart">Maintenance dans l&amp;#x27;industrie aéronautique</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/secteurs/automobile/" target="_blank" rel="noreferrer">/secteurs/automobile/</a></td>
+<td>08 Secteur</td>
+<td class="num">200</td>
+<td class="num">1309 / 1564</td>
+<td class="t">Maintenance dans l'industrie automobile</td>
+<td class="t ecart">Maintenance dans l&amp;#x27;industrie automobile</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/secteurs/chimie/" target="_blank" rel="noreferrer">/secteurs/chimie/</a></td>
+<td>08 Secteur</td>
+<td class="num">200</td>
+<td class="num">1226 / 1499</td>
+<td class="t">Maintenance dans l'industrie chimique</td>
+<td class="t ecart">Maintenance dans l&amp;#x27;industrie chimique</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/secteurs/industrie-lourde/" target="_blank" rel="noreferrer">/secteurs/industrie-lourde/</a></td>
+<td>08 Secteur</td>
+<td class="num">200</td>
+<td class="num">1305 / 1567</td>
+<td class="t">Maintenance dans l'industrie lourde</td>
+<td class="t ecart">Maintenance dans l&amp;#x27;industrie lourde</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/secteurs/industrie-metallique/" target="_blank" rel="noreferrer">/secteurs/industrie-metallique/</a></td>
+<td>08 Secteur</td>
+<td class="num">200</td>
+<td class="num">1308 / 1555</td>
+<td class="t">Maintenance dans l'industrie métallique</td>
+<td class="t ecart">Maintenance dans l&amp;#x27;industrie métallique</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="titre different">
+<td><a href="http://localhost:4340/travaux-industriels/" target="_blank" rel="noreferrer">/travaux-industriels/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1067 / 1206</td>
+<td class="t">Travaux industriels : transfert, démantèlement, montage, levage</td>
+<td class="t ecart">Travaux industriels</td>
+<td class="v" style="color:#b26a00">titre different</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/entreprise-maintenance-industrielle/" target="_blank" rel="noreferrer">/entreprise-maintenance-industrielle/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1849 / 1828</td>
+<td class="t">Entreprise de maintenance industrielle</td>
+<td class="t">Entreprise de maintenance industrielle</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/lille/" target="_blank" rel="noreferrer">/implantations/lille/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1395 / 1698</td>
+<td class="t">La maintenance industrielle à Lille et dans les Hauts-de-France</td>
+<td class="t">La maintenance industrielle à Lille et dans les Hauts-de-France</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/lyon/" target="_blank" rel="noreferrer">/implantations/lyon/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1364 / 1727</td>
+<td class="t">La maintenance industrielle à Lyon, depuis notre siège</td>
+<td class="t">La maintenance industrielle à Lyon, depuis notre siège</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/lyon/rhone/" target="_blank" rel="noreferrer">/implantations/lyon/rhone/</a></td>
+<td>06 Département</td>
+<td class="num">200</td>
+<td class="num">1296 / 1593</td>
+<td class="t">La maintenance industrielle dans le Rhône, du Beaujolais à Feyzin</td>
+<td class="t">La maintenance industrielle dans le Rhône, du Beaujolais à Feyzin</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/lyon/saint-etienne/" target="_blank" rel="noreferrer">/implantations/lyon/saint-etienne/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1309 / 1629</td>
+<td class="t">Maintenance industrielle à Saint-Étienne et dans la Loire</td>
+<td class="t">Maintenance industrielle à Saint-Étienne et dans la Loire</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/lyon/valence/" target="_blank" rel="noreferrer">/implantations/lyon/valence/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1296 / 1625</td>
+<td class="t">La maintenance industrielle à Valence et dans la Drôme</td>
+<td class="t">La maintenance industrielle à Valence et dans la Drôme</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-avignon/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-avignon/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1094 / 1426</td>
+<td class="t">Maintenance industrielle à Avignon et dans le Vaucluse</td>
+<td class="t">Maintenance industrielle à Avignon et dans le Vaucluse</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-besancon/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-besancon/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1096 / 1438</td>
+<td class="t">Maintenance industrielle à Besançon et dans le Doubs</td>
+<td class="t">Maintenance industrielle à Besançon et dans le Doubs</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-caen/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-caen/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1167 / 1500</td>
+<td class="t">Maintenance industrielle à Caen et dans le Calvados</td>
+<td class="t">Maintenance industrielle à Caen et dans le Calvados</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-clermont-ferrand/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-clermont-ferrand/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1178 / 1492</td>
+<td class="t">Maintenance industrielle à Clermont-Ferrand et dans le Puy-de-Dôme</td>
+<td class="t">Maintenance industrielle à Clermont-Ferrand et dans le Puy-de-Dôme</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-dunkerque/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-dunkerque/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1086 / 1425</td>
+<td class="t">Maintenance industrielle à Dunkerque et sur le littoral</td>
+<td class="t">Maintenance industrielle à Dunkerque et sur le littoral</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-le-mans/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-le-mans/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1150 / 1456</td>
+<td class="t">Maintenance industrielle au Mans et dans la Sarthe</td>
+<td class="t">Maintenance industrielle au Mans et dans la Sarthe</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-limoges/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-limoges/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1160 / 1483</td>
+<td class="t">Maintenance industrielle à Limoges et en Haute-Vienne</td>
+<td class="t">Maintenance industrielle à Limoges et en Haute-Vienne</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-metz/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-metz/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1271 / 1576</td>
+<td class="t">Maintenance industrielle à Metz et en Moselle</td>
+<td class="t">Maintenance industrielle à Metz et en Moselle</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-nice/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-nice/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1086 / 1416</td>
+<td class="t">Maintenance industrielle à Nice et dans les Alpes-Maritimes</td>
+<td class="t">Maintenance industrielle à Nice et dans les Alpes-Maritimes</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-orleans/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-orleans/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1162 / 1473</td>
+<td class="t">Maintenance industrielle à Orléans et dans le Loiret</td>
+<td class="t">Maintenance industrielle à Orléans et dans le Loiret</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-pau/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-pau/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1071 / 1396</td>
+<td class="t">Maintenance industrielle à Pau et dans le Béarn</td>
+<td class="t">Maintenance industrielle à Pau et dans le Béarn</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-poitiers/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-poitiers/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1226 / 1529</td>
+<td class="t">Maintenance industrielle à Poitiers et dans la Vienne</td>
+<td class="t">Maintenance industrielle à Poitiers et dans la Vienne</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-reims/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-reims/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1137 / 1460</td>
+<td class="t">Maintenance industrielle à Reims et dans la Marne</td>
+<td class="t">Maintenance industrielle à Reims et dans la Marne</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-tours/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-tours/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1178 / 1474</td>
+<td class="t">Maintenance industrielle à Tours et en Touraine</td>
+<td class="t">Maintenance industrielle à Tours et en Touraine</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-valenciennes/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-valenciennes/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1088 / 1421</td>
+<td class="t">Maintenance industrielle à Valenciennes et dans le Nord</td>
+<td class="t">Maintenance industrielle à Valenciennes et dans le Nord</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/nantes/brest/" target="_blank" rel="noreferrer">/implantations/nantes/brest/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1281 / 1598</td>
+<td class="t">Maintenance industrielle à Brest et dans le Finistère</td>
+<td class="t">Maintenance industrielle à Brest et dans le Finistère</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/nantes/loire-atlantique/" target="_blank" rel="noreferrer">/implantations/nantes/loire-atlantique/</a></td>
+<td>06 Département</td>
+<td class="num">200</td>
+<td class="num">1277 / 1533</td>
+<td class="t">Maintenance industrielle en Loire-Atlantique</td>
+<td class="t">Maintenance industrielle en Loire-Atlantique</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/nantes/rennes/" target="_blank" rel="noreferrer">/implantations/nantes/rennes/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1210 / 1497</td>
+<td class="t">Maintenance industrielle à Rennes et en Ille-et-Vilaine</td>
+<td class="t">Maintenance industrielle à Rennes et en Ille-et-Vilaine</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/paris/" target="_blank" rel="noreferrer">/implantations/paris/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1379 / 1715</td>
+<td class="t">Maintenir vos machines dans le tissu le plus dense de France</td>
+<td class="t">Maintenir vos machines dans le tissu le plus dense de France</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/paris/essonne/" target="_blank" rel="noreferrer">/implantations/paris/essonne/</a></td>
+<td>06 Département</td>
+<td class="num">200</td>
+<td class="num">1320 / 1590</td>
+<td class="t">Maintenance industrielle en Essonne</td>
+<td class="t">Maintenance industrielle en Essonne</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/paris/rouen/" target="_blank" rel="noreferrer">/implantations/paris/rouen/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1242 / 1529</td>
+<td class="t">Maintenance industrielle à Rouen et dans la vallée de Seine</td>
+<td class="t">Maintenance industrielle à Rouen et dans la vallée de Seine</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/strasbourg/" target="_blank" rel="noreferrer">/implantations/strasbourg/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1300 / 1636</td>
+<td class="t">La maintenance industrielle à Strasbourg et dans le Bas-Rhin</td>
+<td class="t">La maintenance industrielle à Strasbourg et dans le Bas-Rhin</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/strasbourg/alsace/" target="_blank" rel="noreferrer">/implantations/strasbourg/alsace/</a></td>
+<td>06 Département</td>
+<td class="num">200</td>
+<td class="num">1223 / 1502</td>
+<td class="t">Maintenance industrielle en Alsace, du Bas-Rhin au Haut-Rhin</td>
+<td class="t">Maintenance industrielle en Alsace, du Bas-Rhin au Haut-Rhin</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/strasbourg/mulhouse/" target="_blank" rel="noreferrer">/implantations/strasbourg/mulhouse/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1228 / 1463</td>
+<td class="t">Maintenance industrielle à Mulhouse et dans le Haut-Rhin</td>
+<td class="t">Maintenance industrielle à Mulhouse et dans le Haut-Rhin</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/toulouse/" target="_blank" rel="noreferrer">/implantations/toulouse/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1327 / 1653</td>
+<td class="t">La maintenance industrielle à Toulouse et dans le Sud-Ouest</td>
+<td class="t">La maintenance industrielle à Toulouse et dans le Sud-Ouest</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/toulouse/bordeaux/" target="_blank" rel="noreferrer">/implantations/toulouse/bordeaux/</a></td>
+<td>04 Ville</td>
+<td class="num">200</td>
+<td class="num">1252 / 1573</td>
+<td class="t">Maintenance industrielle à Bordeaux et dans la métropole</td>
+<td class="t">Maintenance industrielle à Bordeaux et dans la métropole</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/toulouse/charente/" target="_blank" rel="noreferrer">/implantations/toulouse/charente/</a></td>
+<td>06 Département</td>
+<td class="num">200</td>
+<td class="num">1147 / 1398</td>
+<td class="t">Maintenance industrielle en Charente</td>
+<td class="t">Maintenance industrielle en Charente</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/toulouse/gironde/" target="_blank" rel="noreferrer">/implantations/toulouse/gironde/</a></td>
+<td>06 Département</td>
+<td class="num">200</td>
+<td class="num">1252 / 1537</td>
+<td class="t">Maintenance industrielle en Gironde</td>
+<td class="t">Maintenance industrielle en Gironde</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/implantations/toulouse/haute-garonne/" target="_blank" rel="noreferrer">/implantations/toulouse/haute-garonne/</a></td>
+<td>06 Département</td>
+<td class="num">200</td>
+<td class="num">1180 / 1371</td>
+<td class="t">Maintenance industrielle en Haute-Garonne</td>
+<td class="t">Maintenance industrielle en Haute-Garonne</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/offres/audit-conseil-maintenance/" target="_blank" rel="noreferrer">/offres/audit-conseil-maintenance/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1645 / 2410</td>
+<td class="t">Conseil en maintenance industrielle : sachez où part le budget</td>
+<td class="t">Conseil en maintenance industrielle : sachez où part le budget</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/offres/chantier/demenagement-machines/" target="_blank" rel="noreferrer">/offres/chantier/demenagement-machines/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1114 / 1941</td>
+<td class="t">Déménagement de machines industrielles</td>
+<td class="t">Déménagement de machines industrielles</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/offres/chantier/transfert-de-production/" target="_blank" rel="noreferrer">/offres/chantier/transfert-de-production/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1196 / 1992</td>
+<td class="t">Transfert de production</td>
+<td class="t">Transfert de production</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/offres/depannage-industriel/" target="_blank" rel="noreferrer">/offres/depannage-industriel/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1234 / 2302</td>
+<td class="t">Dépannage industriel</td>
+<td class="t">Dépannage industriel</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/offres/depannage-industriel/astreinte/" target="_blank" rel="noreferrer">/offres/depannage-industriel/astreinte/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1427 / 2124</td>
+<td class="t">Astreinte de maintenance, 24 heures sur 24</td>
+<td class="t">Astreinte de maintenance, 24 heures sur 24</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/offres/depannage-industriel/panne-machine/" target="_blank" rel="noreferrer">/offres/depannage-industriel/panne-machine/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1452 / 1975</td>
+<td class="t">Panne machine industrielle : agir dans la première heure</td>
+<td class="t">Panne machine industrielle : agir dans la première heure</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/offres/residence/cahier-des-charges/" target="_blank" rel="noreferrer">/offres/residence/cahier-des-charges/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">2230 / 2780</td>
+<td class="t">Cahier des charges de maintenance : la trame à reprendre</td>
+<td class="t">Cahier des charges de maintenance : la trame à reprendre</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/offres/residence/prestataire-ou-salarie/" target="_blank" rel="noreferrer">/offres/residence/prestataire-ou-salarie/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">2155 / 2601</td>
+<td class="t">Prestataire ou salarié : le comparatif honnête</td>
+<td class="t">Prestataire ou salarié : le comparatif honnête</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/offres/retrofit/" target="_blank" rel="noreferrer">/offres/retrofit/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1134 / 1971</td>
+<td class="t">Retrofit machine industrielle</td>
+<td class="t">Retrofit machine industrielle</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/offres/retrofit/remise-en-etat/" target="_blank" rel="noreferrer">/offres/retrofit/remise-en-etat/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1155 / 1987</td>
+<td class="t">Remise en état machine industrielle</td>
+<td class="t">Remise en état machine industrielle</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/ressources/fiches-pratiques/" target="_blank" rel="noreferrer">/ressources/fiches-pratiques/</a></td>
+<td>11 Sous-rubrique ressource</td>
+<td class="num">200</td>
+<td class="num">914 / 1198</td>
+<td class="t">Ressources : Fiches pratiques</td>
+<td class="t">Ressources : Fiches pratiques</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/ressources/fiches-pratiques/plan-de-prevention/" target="_blank" rel="noreferrer">/ressources/fiches-pratiques/plan-de-prevention/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">200</td>
+<td class="num">1941 / 2211</td>
+<td class="t">Plan de prévention</td>
+<td class="t">Plan de prévention</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/ressources/fiches-techniques/" target="_blank" rel="noreferrer">/ressources/fiches-techniques/</a></td>
+<td>11 Sous-rubrique ressource</td>
+<td class="num">200</td>
+<td class="num">417 / 666</td>
+<td class="t">Ressources : Fiches techniques</td>
+<td class="t">Ressources : Fiches techniques</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/secteurs/" target="_blank" rel="noreferrer">/secteurs/</a></td>
+<td>10 Hub de rubrique</td>
+<td class="num">200</td>
+<td class="num">1193 / 1486</td>
+<td class="t">La maintenance usine, secteur par secteur</td>
+<td class="t">La maintenance usine, secteur par secteur</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/secteurs/agroalimentaire/" target="_blank" rel="noreferrer">/secteurs/agroalimentaire/</a></td>
+<td>08 Secteur</td>
+<td class="num">200</td>
+<td class="num">1211 / 1485</td>
+<td class="t">Maintenance agroalimentaire</td>
+<td class="t">Maintenance agroalimentaire</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/secteurs/logistique/" target="_blank" rel="noreferrer">/secteurs/logistique/</a></td>
+<td>08 Secteur</td>
+<td class="num">200</td>
+<td class="num">1310 / 1590</td>
+<td class="t">Maintenance des équipements logistiques</td>
+<td class="t">Maintenance des équipements logistiques</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/secteurs/logistique/maintenance-convoyeur/" target="_blank" rel="noreferrer">/secteurs/logistique/maintenance-convoyeur/</a></td>
+<td>08 Secteur</td>
+<td class="num">200</td>
+<td class="num">1310 / 1512</td>
+<td class="t">Maintenance convoyeur</td>
+<td class="t">Maintenance convoyeur</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/secteurs/logistique/peak-season/" target="_blank" rel="noreferrer">/secteurs/logistique/peak-season/</a></td>
+<td>08 Secteur</td>
+<td class="num">200</td>
+<td class="num">1346 / 1617</td>
+<td class="t">Peak season : préparer la logistique au pic</td>
+<td class="t">Peak season : préparer la logistique au pic</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/secteurs/menuiserie-industrielle/" target="_blank" rel="noreferrer">/secteurs/menuiserie-industrielle/</a></td>
+<td>08 Secteur</td>
+<td class="num">200</td>
+<td class="num">1353 / 1577</td>
+<td class="t">Maintenance en menuiserie industrielle</td>
+<td class="t">Maintenance en menuiserie industrielle</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/secteurs/nucleaire/" target="_blank" rel="noreferrer">/secteurs/nucleaire/</a></td>
+<td>08 Secteur</td>
+<td class="num">200</td>
+<td class="num">1380 / 1602</td>
+<td class="t">Maintenance nucléaire</td>
+<td class="t">Maintenance nucléaire</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/secteurs/pharmaceutique/" target="_blank" rel="noreferrer">/secteurs/pharmaceutique/</a></td>
+<td>08 Secteur</td>
+<td class="num">200</td>
+<td class="num">1278 / 1530</td>
+<td class="t">Maintenance pharmaceutique</td>
+<td class="t">Maintenance pharmaceutique</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/travaux-industriels/demantelement-industriel/" target="_blank" rel="noreferrer">/travaux-industriels/demantelement-industriel/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1221 / 1376</td>
+<td class="t">Démantèlement industriel</td>
+<td class="t">Démantèlement industriel</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/travaux-industriels/levage-manutention/" target="_blank" rel="noreferrer">/travaux-industriels/levage-manutention/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1252 / 1385</td>
+<td class="t">Levage industriel et manutention lourde</td>
+<td class="t">Levage industriel et manutention lourde</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/travaux-industriels/montage-industriel/" target="_blank" rel="noreferrer">/travaux-industriels/montage-industriel/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1230 / 1377</td>
+<td class="t">Montage industriel : machines, lignes et équipements de production</td>
+<td class="t">Montage industriel : machines, lignes et équipements de production</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="conforme">
+<td><a href="http://localhost:4340/travaux-industriels/transfert-industriel/" target="_blank" rel="noreferrer">/travaux-industriels/transfert-industriel/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">200</td>
+<td class="num">1981 / 1761</td>
+<td class="t">Transfert industriel et déménagement de machines industrielles</td>
+<td class="t">Transfert industriel et déménagement de machines industrielles</td>
+<td class="v" style="color:#1a7f4b">conforme</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/a-propos/equipe/" target="_blank" rel="noreferrer">/a-propos/equipe/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">842 / 2</td>
+<td class="t">Vos interlocuteurs</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/carriere/agent-de-maintenance/" target="_blank" rel="noreferrer">/carriere/agent-de-maintenance/</a></td>
+<td>07 Métier et carrière</td>
+<td class="num">404</td>
+<td class="num">1962 / 2</td>
+<td class="t">Agent de maintenance industrielle</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/carriere/alternance/" target="_blank" rel="noreferrer">/carriere/alternance/</a></td>
+<td>07 Métier et carrière</td>
+<td class="num">404</td>
+<td class="num">1871 / 2</td>
+<td class="t">Alternance maintenance industrielle</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/carriere/automaticien/" target="_blank" rel="noreferrer">/carriere/automaticien/</a></td>
+<td>07 Métier et carrière</td>
+<td class="num">404</td>
+<td class="num">1661 / 2</td>
+<td class="t">Automaticien</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/carriere/automaticien/salaire/" target="_blank" rel="noreferrer">/carriere/automaticien/salaire/</a></td>
+<td>07 Métier et carrière</td>
+<td class="num">404</td>
+<td class="num">1672 / 2</td>
+<td class="t">Salaire automaticien</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/carriere/electromecanicien/" target="_blank" rel="noreferrer">/carriere/electromecanicien/</a></td>
+<td>07 Métier et carrière</td>
+<td class="num">404</td>
+<td class="num">1711 / 2</td>
+<td class="t">Électromécanicien</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/carriere/electromecanicien/competences/" target="_blank" rel="noreferrer">/carriere/electromecanicien/competences/</a></td>
+<td>07 Métier et carrière</td>
+<td class="num">404</td>
+<td class="num">1843 / 2</td>
+<td class="t">Compétences électromécanicien</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/carriere/electromecanicien/salaire/" target="_blank" rel="noreferrer">/carriere/electromecanicien/salaire/</a></td>
+<td>07 Métier et carrière</td>
+<td class="num">404</td>
+<td class="num">1872 / 2</td>
+<td class="t">Salaire électromécanicien</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/carriere/responsable-maintenance/" target="_blank" rel="noreferrer">/carriere/responsable-maintenance/</a></td>
+<td>07 Métier et carrière</td>
+<td class="num">404</td>
+<td class="num">1921 / 2</td>
+<td class="t">Responsable maintenance</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/carriere/roboticien/" target="_blank" rel="noreferrer">/carriere/roboticien/</a></td>
+<td>07 Métier et carrière</td>
+<td class="num">404</td>
+<td class="num">1662 / 2</td>
+<td class="t">Roboticien</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/carriere/technicien-de-maintenance/" target="_blank" rel="noreferrer">/carriere/technicien-de-maintenance/</a></td>
+<td>07 Métier et carrière</td>
+<td class="num">404</td>
+<td class="num">1791 / 2</td>
+<td class="t">Technicien de maintenance</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/carriere/technicien-de-maintenance/formation/" target="_blank" rel="noreferrer">/carriere/technicien-de-maintenance/formation/</a></td>
+<td>07 Métier et carrière</td>
+<td class="num">404</td>
+<td class="num">2548 / 2</td>
+<td class="t">Formation technicien de maintenance</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/carriere/technicien-de-maintenance/salaire/" target="_blank" rel="noreferrer">/carriere/technicien-de-maintenance/salaire/</a></td>
+<td>07 Métier et carrière</td>
+<td class="num">404</td>
+<td class="num">1657 / 2</td>
+<td class="t">Salaire technicien de maintenance</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/carriere/technicien-itinerant/" target="_blank" rel="noreferrer">/carriere/technicien-itinerant/</a></td>
+<td>07 Métier et carrière</td>
+<td class="num">404</td>
+<td class="num">2055 / 2</td>
+<td class="t">Technicien de maintenance itinérant</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/guides/choisir-une-entreprise-de-maintenance/" target="_blank" rel="noreferrer">/guides/choisir-une-entreprise-de-maintenance/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2359 / 2</td>
+<td class="t">Comment choisir une entreprise de maintenance industrielle</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/guides/reussir-un-transfert-industriel/" target="_blank" rel="noreferrer">/guides/reussir-un-transfert-industriel/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2706 / 2</td>
+<td class="t">Réussir un transfert industriel : la méthode de bout en bout</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-agen/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-agen/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Agen et dans le Lot-et-Garonne</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-albi/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-albi/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Albi-Castres et dans le Tarn</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-amiens/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-amiens/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Amiens et dans la Somme</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-angers/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-angers/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Angers et dans le Maine-et-Loire</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-angouleme/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-angouleme/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Angoulême et dans la Charente</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-annecy/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-annecy/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Annecy et dans la Haute-Savoie Nord</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-arras/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-arras/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Arras-Lens et dans le bassin minier du Pas-de-Calais</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-bayonne/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-bayonne/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Bayonne et dans le Pays basque et les Landes</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-belfort-montbeliard/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-belfort-montbeliard/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Belfort-Montbéliard et dans le Nord Franche-Comté</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-beziers/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-beziers/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Béziers et dans l’Hérault Ouest</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-bourges/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-bourges/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Bourges et dans le Cher</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-brive/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-brive/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Brive-la-Gaillarde et dans la Corrèze</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-calais/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-calais/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Calais et dans la Côte d’Opale</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-chalon-sur-saone/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-chalon-sur-saone/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Chalon-sur-Saône et dans la Saône-et-Loire</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-chambery/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-chambery/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Chambéry et dans la Savoie</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-chartres/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-chartres/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Chartres et dans l’Eure-et-Loir</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-cherbourg/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-cherbourg/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Cherbourg et dans la Manche</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-compiegne/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-compiegne/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Compiègne et dans l’Oise</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-evreux/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-evreux/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Évreux et dans l’Eure</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-la-rochelle/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-la-rochelle/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à La Rochelle et dans la Charente-Maritime</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-lorient/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-lorient/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Lorient et dans le Morbihan</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-nancy/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-nancy/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Nancy et dans la Meurthe-et-Moselle</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-niort/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-niort/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Niort et dans les Deux-Sèvres</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-quimper/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-quimper/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Quimper et dans le Finistère Sud</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-roanne/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-roanne/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Roanne et dans le Roannais</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-saint-nazaire/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-saint-nazaire/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Saint-Nazaire et dans l’estuaire de la Loire</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-saint-quentin/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-saint-quentin/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Saint-Quentin et dans l’Aisne</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-tarbes/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-tarbes/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Tarbes et dans les Hautes-Pyrénées</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/maintenance-industrielle-vesoul/" target="_blank" rel="noreferrer">/implantations/maintenance-industrielle-vesoul/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Vesoul et dans la Haute-Saône</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/marseille/" target="_blank" rel="noreferrer">/implantations/marseille/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">1335 / 2</td>
+<td class="t">Maintenance industrielle à Marseille et dans les Bouches-du-Rhône</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/marseille/nimes/" target="_blank" rel="noreferrer">/implantations/marseille/nimes/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Nîmes et dans le Gard</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/marseille/perpignan/" target="_blank" rel="noreferrer">/implantations/marseille/perpignan/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Perpignan et dans les Pyrénées-Orientales</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/implantations/marseille/toulon/" target="_blank" rel="noreferrer">/implantations/marseille/toulon/</a></td>
+<td>04 Ville</td>
+<td class="num">404</td>
+<td class="num">900 / 2</td>
+<td class="t">Maintenance industrielle à Toulon et dans le Var</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/offres/full-service/" target="_blank" rel="noreferrer">/offres/full-service/</a></td>
+<td>03 Offre et prestation</td>
+<td class="num">404</td>
+<td class="num">1360 / 2</td>
+<td class="t">Full service : toute votre maintenance, un seul partenaire</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/preuves/atena-port-la-rochelle/" target="_blank" rel="noreferrer">/preuves/atena-port-la-rochelle/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">404</td>
+<td class="num">465 / 2</td>
+<td class="t">Étude de cas ATENA : en finir avec les pannes qui reviennent sur un terminal d’engrais</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/preuves/bamesa/" target="_blank" rel="noreferrer">/preuves/bamesa/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">404</td>
+<td class="num">468 / 2</td>
+<td class="t">Étude de cas BAMESA : la maintenance tient pendant que l’équipe recrute</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/preuves/dimomaint/" target="_blank" rel="noreferrer">/preuves/dimomaint/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">404</td>
+<td class="num">526 / 2</td>
+<td class="t">Étude de cas DIMOMAINT : la GMAO planifie, nos techniciens interviennent</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/preuves/jacquet-brossard/" target="_blank" rel="noreferrer">/preuves/jacquet-brossard/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">404</td>
+<td class="num">407 / 2</td>
+<td class="t">Étude de cas JACQUET BROSSARD : une ligne de pain de mie suivie à chaque poste</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/preuves/jeld-wen/" target="_blank" rel="noreferrer">/preuves/jeld-wen/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">404</td>
+<td class="num">381 / 2</td>
+<td class="t">Étude de cas JELD-WEN : des commandes numériques remises en route à chaque équipe</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/preuves/la-panetiere/" target="_blank" rel="noreferrer">/preuves/la-panetiere/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">404</td>
+<td class="num">317 / 2</td>
+<td class="t">Étude de cas LA PANETIÈRE : un renfort pour que le pain sorte chaque matin</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/preuves/motherson/" target="_blank" rel="noreferrer">/preuves/motherson/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">404</td>
+<td class="num">392 / 2</td>
+<td class="t">Étude de cas MOTHERSON : presses à injecter et robots, le préventif d’abord</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/preuves/rector-lesage/" target="_blank" rel="noreferrer">/preuves/rector-lesage/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">404</td>
+<td class="num">383 / 2</td>
+<td class="t">Étude de cas RECTOR LESAGE : un technicien au cœur d’une ligne de préfabrication béton</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/preuves/salaison-du-maconnais/" target="_blank" rel="noreferrer">/preuves/salaison-du-maconnais/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">404</td>
+<td class="num">349 / 2</td>
+<td class="t">Étude de cas SALAISON DU MÂCONNAIS : du broyage à la cuisson, un seul technicien sur la chaîne</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/preuves/savoye-migration-automates-norvege/" target="_blank" rel="noreferrer">/preuves/savoye-migration-automates-norvege/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">404</td>
+<td class="num">634 / 2</td>
+<td class="t">Étude de cas SAVOYE : deux automates migrés en deux week-ends, sans arrêter la production</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/preuves/savoye/" target="_blank" rel="noreferrer">/preuves/savoye/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">404</td>
+<td class="num">602 / 2</td>
+<td class="t">Étude de cas SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/preuves/tournaire/" target="_blank" rel="noreferrer">/preuves/tournaire/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">404</td>
+<td class="num">436 / 2</td>
+<td class="t">Étude de cas TOURNAIRE : maintenir des machines conçues sur mesure</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/preuves/vignal-systems/" target="_blank" rel="noreferrer">/preuves/vignal-systems/</a></td>
+<td>02 Étude de cas</td>
+<td class="num">404</td>
+<td class="num">449 / 2</td>
+<td class="t">Étude de cas VIGNAL SYSTEMS : maintenir et monter, de jour comme de nuit</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/" target="_blank" rel="noreferrer">/ressources/</a></td>
+<td>10 Hub de rubrique</td>
+<td class="num">404</td>
+<td class="num">1367 / 2</td>
+<td class="t">Guide maintenance industrielle</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/articles/" target="_blank" rel="noreferrer">/ressources/articles/</a></td>
+<td>11 Sous-rubrique ressource</td>
+<td class="num">404</td>
+<td class="num">511 / 2</td>
+<td class="t">Ressources : Articles</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/articles/cout-arret-de-production/" target="_blank" rel="noreferrer">/ressources/articles/cout-arret-de-production/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2734 / 2</td>
+<td class="t">Coût d'un arrêt de production</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/articles/digitalisation-maintenance/" target="_blank" rel="noreferrer">/ressources/articles/digitalisation-maintenance/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2375 / 2</td>
+<td class="t">Digitalisation maintenance</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/articles/gestion-des-dechets/" target="_blank" rel="noreferrer">/ressources/articles/gestion-des-dechets/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">1761 / 2</td>
+<td class="t">Gestion des déchets industriels</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/articles/gmao/" target="_blank" rel="noreferrer">/ressources/articles/gmao/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2499 / 2</td>
+<td class="t">Gestion de maintenance assistée par ordinateur</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/articles/ia-maintenance/" target="_blank" rel="noreferrer">/ressources/articles/ia-maintenance/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2048 / 2</td>
+<td class="t">IA maintenance : ce qui change vraiment</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/articles/maintenance-4-0/" target="_blank" rel="noreferrer">/ressources/articles/maintenance-4-0/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">1934 / 2</td>
+<td class="t">Maintenance 4.0</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/articles/optimiser-la-maintenance/" target="_blank" rel="noreferrer">/ressources/articles/optimiser-la-maintenance/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">1819 / 2</td>
+<td class="t">Optimisation de la maintenance</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/articles/organiser-service-maintenance/" target="_blank" rel="noreferrer">/ressources/articles/organiser-service-maintenance/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2070 / 2</td>
+<td class="t">Comment organiser un service de maintenance</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/articles/plan-de-maintenance/" target="_blank" rel="noreferrer">/ressources/articles/plan-de-maintenance/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2148 / 2</td>
+<td class="t">Plan de maintenance</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/articles/planification-maintenance/" target="_blank" rel="noreferrer">/ressources/articles/planification-maintenance/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2356 / 2</td>
+<td class="t">Planning de maintenance</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/articles/predictive-ou-corrective/" target="_blank" rel="noreferrer">/ressources/articles/predictive-ou-corrective/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2648 / 2</td>
+<td class="t">Maintenance prédictive ou corrective</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/articles/preventive-ou-corrective/" target="_blank" rel="noreferrer">/ressources/articles/preventive-ou-corrective/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2472 / 2</td>
+<td class="t">Maintenance préventive et corrective</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/articles/robot-spot/" target="_blank" rel="noreferrer">/ressources/articles/robot-spot/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">1589 / 2</td>
+<td class="t">Robot spot</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/articles/suivi-de-la-maintenance/" target="_blank" rel="noreferrer">/ressources/articles/suivi-de-la-maintenance/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2161 / 2</td>
+<td class="t">Suivi de la maintenance</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/articles/tpm/" target="_blank" rel="noreferrer">/ressources/articles/tpm/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">1965 / 2</td>
+<td class="t">TPM, la maintenance productive totale</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/fiches-pratiques/5s/" target="_blank" rel="noreferrer">/ressources/fiches-pratiques/5s/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2624 / 2</td>
+<td class="t">5S industrie</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/fiches-pratiques/consignation-electrique/" target="_blank" rel="noreferrer">/ressources/fiches-pratiques/consignation-electrique/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2685 / 2</td>
+<td class="t">Consignation électrique</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/fiches-pratiques/permis-de-feu/" target="_blank" rel="noreferrer">/ressources/fiches-pratiques/permis-de-feu/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">1852 / 2</td>
+<td class="t">Permis de feu</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/fiches-pratiques/securite-maintenance/" target="_blank" rel="noreferrer">/ressources/fiches-pratiques/securite-maintenance/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2255 / 2</td>
+<td class="t">La sécurité en maintenance industrielle</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/fiches-techniques/amdec/" target="_blank" rel="noreferrer">/ressources/fiches-techniques/amdec/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">3292 / 2</td>
+<td class="t">Amdec</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/fiches-techniques/analyse-vibratoire/" target="_blank" rel="noreferrer">/ressources/fiches-techniques/analyse-vibratoire/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2109 / 2</td>
+<td class="t">Analyse vibratoire</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/fiches-techniques/automates-siemens/" target="_blank" rel="noreferrer">/ressources/fiches-techniques/automates-siemens/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">1642 / 2</td>
+<td class="t">Automate Siemens</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/fiches-techniques/cahier-des-charges-gmao/" target="_blank" rel="noreferrer">/ressources/fiches-techniques/cahier-des-charges-gmao/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2373 / 2</td>
+<td class="t">Cahier des charges gmao</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/fiches-techniques/indicateurs-maintenance/" target="_blank" rel="noreferrer">/ressources/fiches-techniques/indicateurs-maintenance/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2386 / 2</td>
+<td class="t">Indicateur maintenance</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/fiches-techniques/mtbf-mttr/" target="_blank" rel="noreferrer">/ressources/fiches-techniques/mtbf-mttr/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">1959 / 2</td>
+<td class="t">Mtbf</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/fiches-techniques/niveaux-de-maintenance/" target="_blank" rel="noreferrer">/ressources/fiches-techniques/niveaux-de-maintenance/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">1990 / 2</td>
+<td class="t">Niveaux de maintenance</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/fiches-techniques/outils-de-diagnostic/" target="_blank" rel="noreferrer">/ressources/fiches-techniques/outils-de-diagnostic/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2132 / 2</td>
+<td class="t">Outils de diagnostic maintenance</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/fiches-techniques/trs/" target="_blank" rel="noreferrer">/ressources/fiches-techniques/trs/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2242 / 2</td>
+<td class="t">TRS : le taux de rendement synthétique</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/livres-blancs/" target="_blank" rel="noreferrer">/ressources/livres-blancs/</a></td>
+<td>11 Sous-rubrique ressource</td>
+<td class="num">404</td>
+<td class="num">294 / 2</td>
+<td class="t">Ressources : Livres blancs</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/livres-blancs/externaliser-sa-maintenance/" target="_blank" rel="noreferrer">/ressources/livres-blancs/externaliser-sa-maintenance/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">1442 / 2</td>
+<td class="t">Livre blanc : externaliser sa maintenance sans perdre la main</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/livres-blancs/retrofit-ou-remplacement/" target="_blank" rel="noreferrer">/ressources/livres-blancs/retrofit-ou-remplacement/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2319 / 2</td>
+<td class="t">Retrofit ou remplacement</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/process/" target="_blank" rel="noreferrer">/ressources/process/</a></td>
+<td>11 Sous-rubrique ressource</td>
+<td class="num">404</td>
+<td class="num">351 / 2</td>
+<td class="t">Ressources : Process</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/process/gestion-maintenance-preventive/" target="_blank" rel="noreferrer">/ressources/process/gestion-maintenance-preventive/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">3099 / 2</td>
+<td class="t">Gestion de la maintenance préventive</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/process/preparer-un-arret-technique/" target="_blank" rel="noreferrer">/ressources/process/preparer-un-arret-technique/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2254 / 2</td>
+<td class="t">Préparation arrêt technique</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/process/protocole-de-securite/" target="_blank" rel="noreferrer">/ressources/process/protocole-de-securite/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">2351 / 2</td>
+<td class="t">Protocole de sécurité</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+<tr data-v="absente du site">
+<td><a href="http://localhost:4340/ressources/process/selection-des-techniciens/" target="_blank" rel="noreferrer">/ressources/process/selection-des-techniciens/</a></td>
+<td>01 Article et fiche</td>
+<td class="num">404</td>
+<td class="num">1764 / 2</td>
+<td class="t">Sélection technicien de maintenance</td>
+<td class="t">—</td>
+<td class="v" style="color:#b3261e">absente du site</td>
+</tr>
+</tbody></table>
+<script>
+// Filtre côté page : on masque les lignes, on ne les reconstruit pas.
+document.querySelectorAll(".filtres button").forEach(function (b) {
+  b.addEventListener("click", function () {
+    document.querySelectorAll(".filtres button").forEach(function (x) { x.classList.remove("actif"); });
+    b.classList.add("actif");
+    var f = b.dataset.f;
+    document.querySelectorAll("tbody tr").forEach(function (tr) {
+      tr.classList.toggle("masquee", Boolean(f) && tr.dataset.v !== f);
+    });
+  });
+});
+</script>
+</body></html>

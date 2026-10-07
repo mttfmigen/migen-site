@@ -1,0 +1,3298 @@
+{
+  "mesureLe": "2026-10-05T13:49:44.177Z",
+  "fenetre": "1280x900",
+  "referenceMaquette": "/Users/mehdi/Landing lovable/maquette/accueil-autonome.html",
+  "gabaritProuveIdentiqueA": "/Users/mehdi/Landing lovable/migen-site/maquette/site-final.html",
+  "urlSite": "http://localhost:4340/offres/residence/",
+  "maquette": {
+    "sections": 10,
+    "hauteurMain": 7646.9
+  },
+  "site": {
+    "sections": 16,
+    "hauteurMain": 11685.3
+  },
+  "releve": [
+    {
+      "rang": 0,
+      "cle": "surtitre:Rappel dans l’heure",
+      "etat": "presente-mais-differente",
+      "ecarts": [
+        {
+          "quoi": "hauteur",
+          "maquette": "689.3 px",
+          "site": "750.8 px",
+          "gravite": "moyenne"
+        },
+        {
+          "quoi": "grille 2 : nombre d'enfants",
+          "maquette": "7",
+          "site": "10",
+          "gravite": "forte"
+        },
+        {
+          "quoi": "carte « Décrire mon besoin RAPPEL DA » : taille rendue",
+          "maquette": "469.9x619.3",
+          "site": "469.9x680.8",
+          "gravite": "moyenne"
+        }
+      ],
+      "maquette": {
+        "rang": 0,
+        "id": null,
+        "hauteur": 689.3,
+        "largeur": 1200,
+        "margesSection": "70px 40px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": null,
+        "surtitre": {
+          "texte": "Rappel dans l’heure",
+          "police": "500 11.5px/normal Poppins",
+          "lettrage": "1.15px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h1",
+          "texte": "migen© Résidence, un renfort maintenance chez vous.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "56.32px",
+          "interligne": "58.0096px",
+          "lettrage": "-2.5344px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "598.078px 469.922px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "52px",
+            "gouttiereLigne": "52px",
+            "nbEnfants": 2,
+            "largeur": 1120
+          },
+          {
+            "colonnes": "197.953px 197.969px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "12px",
+            "gouttiereLigne": "12px",
+            "nbEnfants": 7,
+            "largeur": 407.9
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "Les cinq offres",
+            "rayon": "999px",
+            "fond": "rgba(255, 255, 255, 0.8)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": "blur(14px)",
+            "marges": "15px 26px",
+            "taille": "162.2x55"
+          },
+          {
+            "ancre": "5 agences en France 10 % des",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "26px 0px 0px",
+            "taille": "598.1x73"
+          },
+          {
+            "ancre": "Décrire mon besoin RAPPEL DA",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.42) 0px 30px 70px -34px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "30px 30px 32px",
+            "taille": "469.9x619.3"
+          },
+          {
+            "ancre": "On me rappelle dans l’heure",
+            "rayon": "999px",
+            "fond": "rgb(255, 124, 60)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": "rgba(255, 124, 60, 0.9) 0px 12px 30px -12px",
+            "verre": null,
+            "marges": "14px 24px",
+            "taille": "263.5x51"
+          }
+        ],
+        "images": [],
+        "nbImages": 0,
+        "nbFonds": 0,
+        "texteDebut": "Un renfort maintenance sur votre site Durée adaptée à votre besoin migen© Résidence, un re",
+        "nomsSource": []
+      },
+      "site": {
+        "rang": 1,
+        "id": null,
+        "hauteur": 750.8,
+        "largeur": 1200,
+        "margesSection": "70px 40px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": null,
+        "surtitre": {
+          "texte": "Rappel dans l’heure",
+          "police": "500 11.5px/normal Poppins",
+          "lettrage": "1.15px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h1",
+          "texte": "migen© Résidence, un renfort maintenance chez vous.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "56.32px",
+          "interligne": "58.0096px",
+          "lettrage": "-2.5344px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "598.078px 469.922px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "52px",
+            "gouttiereLigne": "52px",
+            "nbEnfants": 2,
+            "largeur": 1120
+          },
+          {
+            "colonnes": "197.953px 197.969px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "12px",
+            "gouttiereLigne": "12px",
+            "nbEnfants": 10,
+            "largeur": 407.9
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "Les cinq offres",
+            "rayon": "999px",
+            "fond": "rgba(255, 255, 255, 0.8)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": "blur(14px)",
+            "marges": "15px 26px",
+            "taille": "162.2x55"
+          },
+          {
+            "ancre": "5 agences en France 10 % des",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "26px 0px 0px",
+            "taille": "598.1x73"
+          },
+          {
+            "ancre": "Décrire mon besoin RAPPEL DA",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.42) 0px 30px 70px -34px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "30px 30px 32px",
+            "taille": "469.9x680.8"
+          },
+          {
+            "ancre": "On me rappelle dans l’heure",
+            "rayon": "999px",
+            "fond": "rgb(255, 124, 60)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": "rgba(255, 124, 60, 0.9) 0px 12px 30px -12px",
+            "verre": null,
+            "marges": "14px 24px",
+            "taille": "263.5x51"
+          }
+        ],
+        "images": [],
+        "nbImages": 0,
+        "nbFonds": 0,
+        "texteDebut": "Un renfort maintenance sur votre site Durée adaptée à votre besoin migen© Résidence, un re"
+      }
+    },
+    {
+      "rang": 1,
+      "cle": "surtitre:En bref",
+      "etat": "presente",
+      "ecarts": [],
+      "maquette": {
+        "rang": 1,
+        "id": null,
+        "hauteur": 503.6,
+        "largeur": 1280,
+        "margesSection": "120px 0px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "En bref",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Le cadre, en quatre chiffres.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "42.24px",
+          "interligne": "44.7744px",
+          "lettrage": "-1.6896px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "585.188px 478.812px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "56px",
+            "gouttiereLigne": "56px",
+            "nbEnfants": 2,
+            "largeur": 1120
+          },
+          {
+            "colonnes": "271px 271px 271px 271px",
+            "nbColonnes": 4,
+            "gouttiereColonne": "12px",
+            "gouttiereLigne": "12px",
+            "nbEnfants": 4,
+            "largeur": 1120
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "Sur mesure Durée Renouvelabl",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "26px 26px 28px",
+            "taille": "271x164.5"
+          },
+          {
+            "ancre": "3 sem. Délai de mise en post",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "26px 26px 28px",
+            "taille": "271x164.5"
+          },
+          {
+            "ancre": "Option Astreinte possible En",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "26px 26px 28px",
+            "taille": "271x164.5"
+          },
+          {
+            "ancre": "20 % De turnover Contre 60 %",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "26px 26px 28px",
+            "taille": "271x164.5"
+          },
+          {
+            "ancre": "Un renfort à prévoir ? Premi",
+            "rayon": "24px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "16px 16px 16px 26px",
+            "taille": "1120x79"
+          },
+          {
+            "ancre": "Constituer mon équipe",
+            "rayon": "999px",
+            "fond": "rgb(255, 124, 60)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": "rgba(255, 124, 60, 0.9) 0px 12px 30px -12px",
+            "verre": null,
+            "marges": "12px 22px",
+            "taille": "213.7x45"
+          }
+        ],
+        "images": [],
+        "nbImages": 0,
+        "nbFonds": 0,
+        "texteDebut": "EN BREF Le cadre, en quatre chiffres. Une mise à disposition longue, pensée pour que le te",
+        "nomsSource": []
+      },
+      "site": {
+        "rang": 2,
+        "id": null,
+        "hauteur": 503.6,
+        "largeur": 1280,
+        "margesSection": "120px 0px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "En bref",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Le cadre, en quatre chiffres.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "42.24px",
+          "interligne": "44.7744px",
+          "lettrage": "-1.6896px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "585.188px 478.812px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "56px",
+            "gouttiereLigne": "56px",
+            "nbEnfants": 2,
+            "largeur": 1120
+          },
+          {
+            "colonnes": "271px 271px 271px 271px",
+            "nbColonnes": 4,
+            "gouttiereColonne": "12px",
+            "gouttiereLigne": "12px",
+            "nbEnfants": 4,
+            "largeur": 1120
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "Sur mesure Durée Renouvelabl",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "26px 26px 28px",
+            "taille": "271x164.5"
+          },
+          {
+            "ancre": "3 sem. Délai de mise en post",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "26px 26px 28px",
+            "taille": "271x164.5"
+          },
+          {
+            "ancre": "Option Astreinte possible En",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "26px 26px 28px",
+            "taille": "271x164.5"
+          },
+          {
+            "ancre": "20 % De turnover Contre 60 %",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "26px 26px 28px",
+            "taille": "271x164.5"
+          },
+          {
+            "ancre": "Un renfort à prévoir ? Premi",
+            "rayon": "24px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "16px 16px 16px 26px",
+            "taille": "1120x79"
+          },
+          {
+            "ancre": "Constituer mon équipe",
+            "rayon": "999px",
+            "fond": "rgb(255, 124, 60)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": "rgba(255, 124, 60, 0.9) 0px 12px 30px -12px",
+            "verre": null,
+            "marges": "12px 22px",
+            "taille": "213.7x45"
+          }
+        ],
+        "images": [],
+        "nbImages": 0,
+        "nbFonds": 0,
+        "texteDebut": "EN BREF Le cadre, en quatre chiffres. Une mise à disposition longue, pensée pour que le te"
+      }
+    },
+    {
+      "rang": 2,
+      "cle": "surtitre:Le jour et la nuit",
+      "etat": "presente-mais-differente",
+      "ecarts": [
+        {
+          "quoi": "carte « 6 mois pour recruter un tech »",
+          "maquette": "28px, fond rgb(35, 34, 42)",
+          "site": "introuvable (ancre de texte absente)",
+          "gravite": "forte"
+        },
+        {
+          "quoi": "carte « « Un départ, et c’est toute  »",
+          "maquette": "28px, fond rgb(222, 223, 225)",
+          "site": "introuvable (ancre de texte absente)",
+          "gravite": "forte"
+        },
+        {
+          "quoi": "carte « « Deux intérimaires différen »",
+          "maquette": "28px, fond rgb(35, 34, 42)",
+          "site": "introuvable (ancre de texte absente)",
+          "gravite": "forte"
+        },
+        {
+          "quoi": "carte « « Les habilitations expiraie »",
+          "maquette": "28px, fond rgb(222, 223, 225)",
+          "site": "introuvable (ancre de texte absente)",
+          "gravite": "forte"
+        },
+        {
+          "quoi": "carte « 60 % de turnover annuel sur  »",
+          "maquette": "28px, fond rgb(35, 34, 42)",
+          "site": "introuvable (ancre de texte absente)",
+          "gravite": "forte"
+        },
+        {
+          "quoi": "carte « « L’été, trois semaines de c »",
+          "maquette": "28px, fond rgb(222, 223, 225)",
+          "site": "introuvable (ancre de texte absente)",
+          "gravite": "forte"
+        },
+        {
+          "quoi": "carte « 6 mois de délai moyen pour r »",
+          "maquette": "absente de la maquette",
+          "site": "28px, fond rgb(35, 34, 42)",
+          "gravite": "moyenne"
+        },
+        {
+          "quoi": "carte « « On rappelait le même prest »",
+          "maquette": "absente de la maquette",
+          "site": "28px, fond rgb(222, 223, 225)",
+          "gravite": "moyenne"
+        },
+        {
+          "quoi": "carte « « Trois techniciens pour dou »",
+          "maquette": "absente de la maquette",
+          "site": "28px, fond rgb(35, 34, 42)",
+          "gravite": "moyenne"
+        },
+        {
+          "quoi": "carte « « Les habilitations, c’était »",
+          "maquette": "absente de la maquette",
+          "site": "28px, fond rgb(222, 223, 225)",
+          "gravite": "moyenne"
+        },
+        {
+          "quoi": "carte « 72 % des heures passées en c »",
+          "maquette": "absente de la maquette",
+          "site": "28px, fond rgb(35, 34, 42)",
+          "gravite": "moyenne"
+        },
+        {
+          "quoi": "carte « « Un arrêt le vendredi soir, »",
+          "maquette": "absente de la maquette",
+          "site": "28px, fond rgb(222, 223, 225)",
+          "gravite": "moyenne"
+        },
+        {
+          "quoi": "nombre de photos posées en fond",
+          "maquette": "3",
+          "site": "1",
+          "gravite": "forte"
+        }
+      ],
+      "maquette": {
+        "rang": 2,
+        "id": null,
+        "hauteur": 1050.8,
+        "largeur": 1280,
+        "margesSection": "120px 0px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "Le jour et la nuit",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Ce que nos clients vivaient avant de nous appeler.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "40.96px",
+          "interligne": "43.4176px",
+          "lettrage": "-1.6384px",
+          "couleur": "rgb(255, 255, 255)"
+        },
+        "grilles": [
+          {
+            "colonnes": "488px 488px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "56px",
+            "gouttiereLigne": "56px",
+            "nbEnfants": 2,
+            "largeur": 1032
+          },
+          {
+            "colonnes": "288.641px 401.609px 313.75px",
+            "nbColonnes": 3,
+            "gouttiereColonne": "14px",
+            "gouttiereLigne": "14px",
+            "nbEnfants": 6,
+            "largeur": 1032
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "LE JOUR ET LA NUIT Ce que no",
+            "rayon": "40px",
+            "fond": "rgb(23, 22, 27)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "48px 44px 46px",
+            "taille": "1120x930.8"
+          },
+          {
+            "ancre": "Avant migen© Avec migen©",
+            "rayon": "999px",
+            "fond": "rgb(244, 243, 241)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": "rgba(0, 0, 0, 0.5) 0px 12px 30px -14px",
+            "verre": null,
+            "marges": "6px",
+            "taille": "362.3x67"
+          },
+          {
+            "ancre": "Avant migen©",
+            "rayon": "999px",
+            "fond": "rgb(255, 124, 60)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": "rgba(255, 124, 60, 0.9) 0px 8px 22px -10px",
+            "verre": null,
+            "marges": "15px 30px",
+            "taille": "179.3x55"
+          },
+          {
+            "ancre": "Avec migen©",
+            "rayon": "999px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "15px 30px",
+            "taille": "171x55"
+          },
+          {
+            "ancre": "6 mois pour recruter un tech",
+            "rayon": "28px",
+            "fond": "rgb(35, 34, 42)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "0px",
+            "taille": "288.6x290"
+          },
+          {
+            "ancre": "« Un départ, et c’est toute ",
+            "rayon": "28px",
+            "fond": "rgb(222, 223, 225)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "0px",
+            "taille": "401.6x290"
+          },
+          {
+            "ancre": "« Deux intérimaires différen",
+            "rayon": "28px",
+            "fond": "rgb(35, 34, 42)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "0px",
+            "taille": "313.8x290"
+          },
+          {
+            "ancre": "« Les habilitations expiraie",
+            "rayon": "28px",
+            "fond": "rgb(222, 223, 225)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "0px",
+            "taille": "288.6x290"
+          },
+          {
+            "ancre": "60 % de turnover annuel sur ",
+            "rayon": "28px",
+            "fond": "rgb(35, 34, 42)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "0px",
+            "taille": "401.6x290"
+          },
+          {
+            "ancre": "« L’été, trois semaines de c",
+            "rayon": "28px",
+            "fond": "rgb(222, 223, 225)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "0px",
+            "taille": "313.8x290"
+          }
+        ],
+        "images": [
+          {
+            "source": "http://127.0.0.1:4798/assets/web/team-grind-close.jpg",
+            "nom": "team-grind-close.jpg",
+            "chargee": null,
+            "naturelle": "fond",
+            "rendue": "401.6x290",
+            "ajustement": "cover"
+          },
+          {
+            "source": "http://127.0.0.1:4798/assets/web/x-auto-caisse.jpg",
+            "nom": "x-auto-caisse.jpg",
+            "chargee": null,
+            "naturelle": "fond",
+            "rendue": "288.6x290",
+            "ajustement": "cover"
+          },
+          {
+            "source": "http://127.0.0.1:4798/assets/web/ph-tuyaux.jpg",
+            "nom": "ph-tuyaux.jpg",
+            "chargee": null,
+            "naturelle": "fond",
+            "rendue": "313.8x290",
+            "ajustement": "cover"
+          }
+        ],
+        "nbImages": 0,
+        "nbFonds": 3,
+        "texteDebut": "LE JOUR ET LA NUIT Ce que nos clients vivaient avant de nous appeler. Pénurie de profils, ",
+        "nomsSource": []
+      },
+      "site": {
+        "rang": 3,
+        "id": null,
+        "hauteur": 1050.8,
+        "largeur": 1280,
+        "margesSection": "120px 0px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "Le jour et la nuit",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Ce que nos clients vivaient avant de nous appeler.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "40.96px",
+          "interligne": "43.4176px",
+          "lettrage": "-1.6384px",
+          "couleur": "rgb(255, 255, 255)"
+        },
+        "grilles": [
+          {
+            "colonnes": "488px 488px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "56px",
+            "gouttiereLigne": "56px",
+            "nbEnfants": 2,
+            "largeur": 1032
+          },
+          {
+            "colonnes": "288.641px 401.609px 313.75px",
+            "nbColonnes": 3,
+            "gouttiereColonne": "14px",
+            "gouttiereLigne": "14px",
+            "nbEnfants": 6,
+            "largeur": 1032
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "LE JOUR ET LA NUIT Ce que no",
+            "rayon": "40px",
+            "fond": "rgb(23, 22, 27)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "48px 44px 46px",
+            "taille": "1120x930.8"
+          },
+          {
+            "ancre": "Avant migen© Avec migen©",
+            "rayon": "999px",
+            "fond": "rgb(244, 243, 241)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": "rgba(0, 0, 0, 0.5) 0px 12px 30px -14px",
+            "verre": null,
+            "marges": "6px",
+            "taille": "362.3x67"
+          },
+          {
+            "ancre": "Avant migen©",
+            "rayon": "999px",
+            "fond": "rgb(255, 124, 60)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": "rgba(255, 124, 60, 0.9) 0px 8px 22px -10px",
+            "verre": null,
+            "marges": "15px 30px",
+            "taille": "179.3x55"
+          },
+          {
+            "ancre": "Avec migen©",
+            "rayon": "999px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "15px 30px",
+            "taille": "171x55"
+          },
+          {
+            "ancre": "6 mois de délai moyen pour r",
+            "rayon": "28px",
+            "fond": "rgb(35, 34, 42)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "0px",
+            "taille": "288.6x290"
+          },
+          {
+            "ancre": "« On rappelait le même prest",
+            "rayon": "28px",
+            "fond": "rgb(222, 223, 225)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "0px",
+            "taille": "401.6x290"
+          },
+          {
+            "ancre": "« Trois techniciens pour dou",
+            "rayon": "28px",
+            "fond": "rgb(35, 34, 42)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "0px",
+            "taille": "313.8x290"
+          },
+          {
+            "ancre": "« Les habilitations, c’était",
+            "rayon": "28px",
+            "fond": "rgb(222, 223, 225)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "0px",
+            "taille": "288.6x290"
+          },
+          {
+            "ancre": "72 % des heures passées en c",
+            "rayon": "28px",
+            "fond": "rgb(35, 34, 42)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "0px",
+            "taille": "401.6x290"
+          },
+          {
+            "ancre": "« Un arrêt le vendredi soir,",
+            "rayon": "28px",
+            "fond": "rgb(222, 223, 225)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "0px",
+            "taille": "313.8x290"
+          }
+        ],
+        "images": [
+          {
+            "source": "http://localhost:4340/assets/web/ph-hero-raffinerie.jpg",
+            "nom": "ph-hero-raffinerie.jpg",
+            "chargee": null,
+            "naturelle": "fond",
+            "rendue": "288.6x290",
+            "ajustement": "cover"
+          }
+        ],
+        "nbImages": 0,
+        "nbFonds": 1,
+        "texteDebut": "LE JOUR ET LA NUIT Ce que nos clients vivaient avant de nous appeler. Pénurie de profils, "
+      }
+    },
+    {
+      "rang": 3,
+      "cle": "surtitre:Ce qui est inclus",
+      "etat": "presente",
+      "ecarts": [],
+      "maquette": {
+        "rang": 3,
+        "id": null,
+        "hauteur": 771.3,
+        "largeur": 1280,
+        "margesSection": "120px 0px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "Ce qui est inclus",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Vous gardez la main. Nous portons le reste.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "42.24px",
+          "interligne": "44.7744px",
+          "lettrage": "-1.6896px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "585.188px 478.812px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "56px",
+            "gouttiereLigne": "56px",
+            "nbEnfants": 2,
+            "largeur": 1120
+          },
+          {
+            "colonnes": "608.297px 497.688px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "14px",
+            "gouttiereLigne": "14px",
+            "nbEnfants": 2,
+            "largeur": 1120
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "Ce que migen© porte ✓ Le rec",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "30px 32px 18px",
+            "taille": "608.3x393.8"
+          },
+          {
+            "ancre": "✓ Le recrutement et la sélec",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "542.3x75.5"
+          },
+          {
+            "ancre": "✓ Le contrat de travail, la ",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "542.3x52.3"
+          },
+          {
+            "ancre": "✓ Les habilitations et les f",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "542.3x75.5"
+          },
+          {
+            "ancre": "✓ Le remplacement en cas d’a",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "542.3x52.3"
+          },
+          {
+            "ancre": "✓ Un point mensuel avec votr",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "542.3x52.3"
+          },
+          {
+            "ancre": "Ce qui reste chez vous → Le ",
+            "rayon": "28px",
+            "fond": "rgba(28, 27, 25, 0.055)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "30px 32px 18px",
+            "taille": "497.7x393.8"
+          },
+          {
+            "ancre": "→ Le choix final de chaque t",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "431.7x52.3"
+          },
+          {
+            "ancre": "→ L’organisation du travail ",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "431.7x52.3"
+          },
+          {
+            "ancre": "→ Le plan de prévention et l",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "431.7x52.3"
+          },
+          {
+            "ancre": "→ La fin de mission, avec un",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "431.7x52.3"
+          },
+          {
+            "ancre": "Vous voulez lire le contrat ",
+            "rayon": "24px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "16px 16px 16px 26px",
+            "taille": "1120x79"
+          },
+          {
+            "ancre": "Demander le contrat type",
+            "rayon": "999px",
+            "fond": "rgb(255, 124, 60)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": "rgba(255, 124, 60, 0.9) 0px 12px 30px -12px",
+            "verre": null,
+            "marges": "12px 22px",
+            "taille": "233.6x45"
+          }
+        ],
+        "images": [
+          {
+            "source": "blob:http://127.0.0.1:4798/507bc178-ec48-446d-b528-08b3ca9bff9d",
+            "nom": "507bc178-ec48-446d-b528-08b3ca9bff9d",
+            "chargee": true,
+            "naturelle": "500x500",
+            "rendue": "22x22",
+            "ajustement": "fill"
+          }
+        ],
+        "nbImages": 1,
+        "nbFonds": 0,
+        "texteDebut": "CE QUI EST INCLUS Vous gardez la main. Nous portons le reste. En régie comme au forfait, l",
+        "nomsSource": [
+          "logo-migen-mark.png"
+        ]
+      },
+      "site": {
+        "rang": 4,
+        "id": null,
+        "hauteur": 771.3,
+        "largeur": 1280,
+        "margesSection": "120px 0px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "Ce qui est inclus",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Vous gardez la main. Nous portons le reste.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "42.24px",
+          "interligne": "44.7744px",
+          "lettrage": "-1.6896px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "585.188px 478.812px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "56px",
+            "gouttiereLigne": "56px",
+            "nbEnfants": 2,
+            "largeur": 1120
+          },
+          {
+            "colonnes": "608.297px 497.688px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "14px",
+            "gouttiereLigne": "14px",
+            "nbEnfants": 2,
+            "largeur": 1120
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "Ce que migen© porte ✓ Le rec",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "30px 32px 18px",
+            "taille": "608.3x393.8"
+          },
+          {
+            "ancre": "✓ Le recrutement et la sélec",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "542.3x75.5"
+          },
+          {
+            "ancre": "✓ Le contrat de travail, la ",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "542.3x52.3"
+          },
+          {
+            "ancre": "✓ Les habilitations et les f",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "542.3x75.5"
+          },
+          {
+            "ancre": "✓ Le remplacement en cas d’a",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "542.3x52.3"
+          },
+          {
+            "ancre": "✓ Un point mensuel avec votr",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "542.3x52.3"
+          },
+          {
+            "ancre": "Ce qui reste chez vous → Le ",
+            "rayon": "28px",
+            "fond": "rgba(28, 27, 25, 0.055)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "30px 32px 18px",
+            "taille": "497.7x393.8"
+          },
+          {
+            "ancre": "→ Le choix final de chaque t",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "431.7x52.3"
+          },
+          {
+            "ancre": "→ L’organisation du travail ",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "431.7x52.3"
+          },
+          {
+            "ancre": "→ Le plan de prévention et l",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "431.7x52.3"
+          },
+          {
+            "ancre": "→ La fin de mission, avec un",
+            "rayon": "0px",
+            "fond": "rgba(0, 0, 0, 0)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "14px 0px",
+            "taille": "431.7x52.3"
+          },
+          {
+            "ancre": "Vous voulez lire le contrat ",
+            "rayon": "24px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "16px 16px 16px 26px",
+            "taille": "1120x79"
+          },
+          {
+            "ancre": "Demander le contrat type",
+            "rayon": "999px",
+            "fond": "rgb(255, 124, 60)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": "rgba(255, 124, 60, 0.9) 0px 12px 30px -12px",
+            "verre": null,
+            "marges": "12px 22px",
+            "taille": "233.6x45"
+          }
+        ],
+        "images": [
+          {
+            "source": "http://localhost:4340/_next/image/?url=%2Fassets%2Flogo-migen-mark.png&w=32&q=75",
+            "nom": "logo-migen-mark.png",
+            "chargee": true,
+            "naturelle": "32x32",
+            "rendue": "22x22",
+            "ajustement": "fill"
+          }
+        ],
+        "nbImages": 1,
+        "nbFonds": 0,
+        "texteDebut": "CE QUI EST INCLUS Vous gardez la main. Nous portons le reste. En régie comme au forfait, l"
+      }
+    },
+    {
+      "rang": 4,
+      "cle": "surtitre:Notre méthode",
+      "etat": "presente",
+      "ecarts": [],
+      "maquette": {
+        "rang": 4,
+        "id": null,
+        "hauteur": 794.2,
+        "largeur": 1280,
+        "margesSection": "120px 0px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "Notre méthode",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Quatre étapes, et vous gardez la main partout.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "40.96px",
+          "interligne": "43.4176px",
+          "lettrage": "-1.6384px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "532px 532px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "56px",
+            "gouttiereLigne": "56px",
+            "nbEnfants": 2,
+            "largeur": 1120
+          },
+          {
+            "colonnes": "280px 280px 280px 280px",
+            "nbColonnes": 4,
+            "gouttiereColonne": "0px",
+            "gouttiereLigne": "0px",
+            "nbEnfants": 5,
+            "largeur": 1120
+          },
+          {
+            "colonnes": "573.844px 424.156px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "44px",
+            "gouttiereLigne": "44px",
+            "nbEnfants": 2,
+            "largeur": 1042
+          },
+          {
+            "colonnes": "424.156px",
+            "nbColonnes": 1,
+            "gouttiereColonne": "14px",
+            "gouttiereLigne": "14px",
+            "nbEnfants": 2,
+            "largeur": 424.2
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "Qualification Un chargé d’af",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.34) 0px 26px 60px -36px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "36px 38px 38px",
+            "taille": "1120x303.9"
+          },
+          {
+            "ancre": "DE VOTRE CÔTÉ Vous montrez l",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.8)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "20px 22px",
+            "taille": "424.2x106.9"
+          },
+          {
+            "ancre": "CE QUI EN SORT Une propositi",
+            "rayon": "18px",
+            "fond": "rgba(255, 124, 60, 0.11)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 124, 60, 0.3)",
+            "ombre": null,
+            "verre": null,
+            "marges": "20px 22px",
+            "taille": "424.2x106.9"
+          },
+          {
+            "ancre": "SI ÇA NE VA PAS Un technicie",
+            "rayon": "28px",
+            "fond": "rgb(28, 27, 25)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "18px 24px",
+            "taille": "1120x82.4"
+          }
+        ],
+        "images": [],
+        "nbImages": 0,
+        "nbFonds": 0,
+        "texteDebut": "NOTRE MÉTHODE Quatre étapes, et vous gardez la main partout. Le point commun des cinq offr",
+        "nomsSource": []
+      },
+      "site": {
+        "rang": 5,
+        "id": null,
+        "hauteur": 794.2,
+        "largeur": 1280,
+        "margesSection": "120px 0px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "Notre méthode",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Quatre étapes, et vous gardez la main partout.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "40.96px",
+          "interligne": "43.4176px",
+          "lettrage": "-1.6384px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "532px 532px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "56px",
+            "gouttiereLigne": "56px",
+            "nbEnfants": 2,
+            "largeur": 1120
+          },
+          {
+            "colonnes": "280px 280px 280px 280px",
+            "nbColonnes": 4,
+            "gouttiereColonne": "0px",
+            "gouttiereLigne": "0px",
+            "nbEnfants": 5,
+            "largeur": 1120
+          },
+          {
+            "colonnes": "573.844px 424.156px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "44px",
+            "gouttiereLigne": "44px",
+            "nbEnfants": 2,
+            "largeur": 1042
+          },
+          {
+            "colonnes": "424.156px",
+            "nbColonnes": 1,
+            "gouttiereColonne": "14px",
+            "gouttiereLigne": "14px",
+            "nbEnfants": 2,
+            "largeur": 424.2
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "Qualification Un chargé d’af",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.34) 0px 26px 60px -36px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "36px 38px 38px",
+            "taille": "1120x303.9"
+          },
+          {
+            "ancre": "DE VOTRE CÔTÉ Vous montrez l",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.8)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": null,
+            "verre": null,
+            "marges": "20px 22px",
+            "taille": "424.2x106.9"
+          },
+          {
+            "ancre": "CE QUI EN SORT Une propositi",
+            "rayon": "18px",
+            "fond": "rgba(255, 124, 60, 0.11)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 124, 60, 0.3)",
+            "ombre": null,
+            "verre": null,
+            "marges": "20px 22px",
+            "taille": "424.2x106.9"
+          },
+          {
+            "ancre": "SI ÇA NE VA PAS Un technicie",
+            "rayon": "28px",
+            "fond": "rgb(28, 27, 25)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "18px 24px",
+            "taille": "1120x82.4"
+          }
+        ],
+        "images": [],
+        "nbImages": 0,
+        "nbFonds": 0,
+        "texteDebut": "NOTRE MÉTHODE Quatre étapes, et vous gardez la main partout. Le point commun des cinq offr"
+      }
+    },
+    {
+      "rang": 5,
+      "cle": "surtitre:Notre sélection",
+      "etat": "presente-mais-differente",
+      "ecarts": [
+        {
+          "quoi": "carte « Constituer mon équipe → » : taille rendue",
+          "maquette": "240x49",
+          "site": "237.4x49",
+          "gravite": "moyenne"
+        }
+      ],
+      "maquette": {
+        "rang": 5,
+        "id": null,
+        "hauteur": 1158.4,
+        "largeur": 1280,
+        "margesSection": "120px 0px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "Notre sélection",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Seuls 10 % des techniciens réussissent notre process.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "42.24px",
+          "interligne": "44.7744px",
+          "lettrage": "-1.6896px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "611.797px 452.203px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "56px",
+            "gouttiereLigne": "56px",
+            "nbEnfants": 2,
+            "largeur": 1120
+          },
+          {
+            "colonnes": "362.656px 362.672px 362.656px",
+            "nbColonnes": 3,
+            "gouttiereColonne": "16px",
+            "gouttiereLigne": "16px",
+            "nbEnfants": 6,
+            "largeur": 1120
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "Constituer mon équipe →",
+            "rayon": "999px",
+            "fond": "rgb(255, 124, 60)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": "rgba(255, 124, 60, 0.9) 0px 12px 30px -12px",
+            "verre": null,
+            "marges": "14px 24px",
+            "taille": "240x49"
+          },
+          {
+            "ancre": "10 % des techniciens réussis",
+            "rayon": "28px",
+            "fond": "rgb(28, 27, 25)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "24px 28px",
+            "taille": "452.2x104"
+          },
+          {
+            "ancre": "ÉTAPE 1 100 % Lecture du par",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "28px 28px 30px",
+            "taille": "362.7x239.6"
+          },
+          {
+            "ancre": "ÉTAPE 2 55 % Entretien télép",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "28px 28px 30px",
+            "taille": "362.7x239.6"
+          },
+          {
+            "ancre": "ÉTAPE 3 40 % Entretien techn",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "28px 28px 30px",
+            "taille": "362.7x239.6"
+          },
+          {
+            "ancre": "ÉTAPE 4 25 % Tests technique",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "28px 28px 30px",
+            "taille": "362.7x239.6"
+          },
+          {
+            "ancre": "ÉTAPE 5 15 % Tests comportem",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "28px 28px 30px",
+            "taille": "362.7x239.6"
+          },
+          {
+            "ancre": "ÉTAPE 6 10 % Rencontre du cl",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "28px 28px 30px",
+            "taille": "362.7x239.6"
+          },
+          {
+            "ancre": "LE RÉFÉRENTIEL DE COMPÉTENCE",
+            "rayon": "28px",
+            "fond": "rgba(255, 124, 60, 0.11)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 124, 60, 0.3)",
+            "ombre": null,
+            "verre": null,
+            "marges": "32px 36px",
+            "taille": "1120x191.6"
+          }
+        ],
+        "images": [],
+        "nbImages": 0,
+        "nbFonds": 0,
+        "texteDebut": "NOTRE SÉLECTION Seuls 10 % des techniciens réussissent notre process. Six étapes, menées p",
+        "nomsSource": []
+      },
+      "site": {
+        "rang": 6,
+        "id": null,
+        "hauteur": 1158.4,
+        "largeur": 1280,
+        "margesSection": "120px 0px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "Notre sélection",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Seuls 10 % des techniciens réussissent notre process.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "42.24px",
+          "interligne": "44.7744px",
+          "lettrage": "-1.6896px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "611.797px 452.203px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "56px",
+            "gouttiereLigne": "56px",
+            "nbEnfants": 2,
+            "largeur": 1120
+          },
+          {
+            "colonnes": "362.656px 362.672px 362.656px",
+            "nbColonnes": 3,
+            "gouttiereColonne": "16px",
+            "gouttiereLigne": "16px",
+            "nbEnfants": 6,
+            "largeur": 1120
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "Constituer mon équipe →",
+            "rayon": "999px",
+            "fond": "rgb(255, 124, 60)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": "rgba(255, 124, 60, 0.9) 0px 12px 30px -12px",
+            "verre": null,
+            "marges": "14px 24px",
+            "taille": "237.4x49"
+          },
+          {
+            "ancre": "10 % des techniciens réussis",
+            "rayon": "28px",
+            "fond": "rgb(28, 27, 25)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "24px 28px",
+            "taille": "452.2x104"
+          },
+          {
+            "ancre": "ÉTAPE 1 100 % Lecture du par",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "28px 28px 30px",
+            "taille": "362.7x239.6"
+          },
+          {
+            "ancre": "ÉTAPE 2 55 % Entretien télép",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "28px 28px 30px",
+            "taille": "362.7x239.6"
+          },
+          {
+            "ancre": "ÉTAPE 3 40 % Entretien techn",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "28px 28px 30px",
+            "taille": "362.7x239.6"
+          },
+          {
+            "ancre": "ÉTAPE 4 25 % Tests technique",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "28px 28px 30px",
+            "taille": "362.7x239.6"
+          },
+          {
+            "ancre": "ÉTAPE 5 15 % Tests comportem",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "28px 28px 30px",
+            "taille": "362.7x239.6"
+          },
+          {
+            "ancre": "ÉTAPE 6 10 % Rencontre du cl",
+            "rayon": "28px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "28px 28px 30px",
+            "taille": "362.7x239.6"
+          },
+          {
+            "ancre": "LE RÉFÉRENTIEL DE COMPÉTENCE",
+            "rayon": "28px",
+            "fond": "rgba(255, 124, 60, 0.11)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 124, 60, 0.3)",
+            "ombre": null,
+            "verre": null,
+            "marges": "32px 36px",
+            "taille": "1120x191.6"
+          }
+        ],
+        "images": [],
+        "nbImages": 0,
+        "nbFonds": 0,
+        "texteDebut": "NOTRE SÉLECTION Seuls 10 % des techniciens réussissent notre process. Six étapes, menées p"
+      }
+    },
+    {
+      "rang": 6,
+      "cle": "surtitre:Nos dernières réalisations",
+      "etat": "presente-mais-differente",
+      "ecarts": [
+        {
+          "quoi": "carte « bloc:360.7x210 »",
+          "maquette": "0px, fond rgb(222, 223, 225)",
+          "site": "introuvable (ancre de texte absente)",
+          "gravite": "forte"
+        },
+        {
+          "quoi": "nombre de balises <img>",
+          "maquette": "3",
+          "site": "2",
+          "gravite": "forte"
+        },
+        {
+          "quoi": "sources des images",
+          "maquette": "x-faisceaux.jpg, team-electric.jpg, team-grind-close.jpg",
+          "site": "team-electric.jpg, team-grind-close.jpg",
+          "gravite": "forte"
+        }
+      ],
+      "maquette": {
+        "rang": 6,
+        "id": null,
+        "hauteur": 656.9,
+        "largeur": 1280,
+        "margesSection": "120px 0px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "Nos dernières réalisations",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Ce que nous avons fait, chez qui, et comment",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "42.24px",
+          "interligne": "44.7744px",
+          "lettrage": "-1.6896px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "362.656px 362.672px 362.656px",
+            "nbColonnes": 3,
+            "gouttiereColonne": "16px",
+            "gouttiereLigne": "16px",
+            "nbEnfants": 3,
+            "largeur": 1120
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "SUEZ IWT · MIGEN© RÉSIDENCE ",
+            "rayon": "28px",
+            "fond": "rgb(255, 255, 255)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px",
+            "verre": null,
+            "marges": "0px",
+            "taille": "362.7x376.4"
+          },
+          {
+            "ancre": "bloc:360.7x210",
+            "rayon": "0px",
+            "fond": "rgb(222, 223, 225)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "0px",
+            "taille": "360.7x210"
+          },
+          {
+            "ancre": "DANONE · MIGEN© RÉSIDENCE Ma",
+            "rayon": "28px",
+            "fond": "rgb(255, 255, 255)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px",
+            "verre": null,
+            "marges": "0px",
+            "taille": "362.7x376.4"
+          },
+          {
+            "ancre": "bloc:360.7x210",
+            "rayon": "0px",
+            "fond": "rgb(222, 223, 225)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "0px",
+            "taille": "360.7x210"
+          },
+          {
+            "ancre": "JTEKT · MIGEN© RÉSIDENCE Séc",
+            "rayon": "28px",
+            "fond": "rgb(255, 255, 255)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px",
+            "verre": null,
+            "marges": "0px",
+            "taille": "362.7x376.4"
+          },
+          {
+            "ancre": "bloc:360.7x210",
+            "rayon": "0px",
+            "fond": "rgb(222, 223, 225)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "0px",
+            "taille": "360.7x210"
+          }
+        ],
+        "images": [
+          {
+            "source": "blob:http://127.0.0.1:4798/44a08caf-b293-4f6d-8476-4cac3c98cfa9",
+            "nom": "44a08caf-b293-4f6d-8476-4cac3c98cfa9",
+            "chargee": true,
+            "naturelle": "1400x934",
+            "rendue": "360.7x210",
+            "ajustement": "cover"
+          },
+          {
+            "source": "blob:http://127.0.0.1:4798/783aa199-d67b-4199-97ed-3c99813cb9c3",
+            "nom": "783aa199-d67b-4199-97ed-3c99813cb9c3",
+            "chargee": true,
+            "naturelle": "1120x1400",
+            "rendue": "360.7x210",
+            "ajustement": "cover"
+          },
+          {
+            "source": "blob:http://127.0.0.1:4798/6815ba45-107d-4ec5-9bb3-c3e9ef842eac",
+            "nom": "6815ba45-107d-4ec5-9bb3-c3e9ef842eac",
+            "chargee": true,
+            "naturelle": "982x1227",
+            "rendue": "360.7x210",
+            "ajustement": "cover"
+          }
+        ],
+        "nbImages": 3,
+        "nbFonds": 0,
+        "texteDebut": "NOS DERNIÈRES RÉALISATIONS Ce que nous avons fait, chez qui, et comment Voir toutes nos ré",
+        "nomsSource": [
+          "x-faisceaux.jpg",
+          "team-electric.jpg",
+          "team-grind-close.jpg"
+        ]
+      },
+      "site": {
+        "rang": 7,
+        "id": null,
+        "hauteur": 656.9,
+        "largeur": 1280,
+        "margesSection": "120px 0px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "Nos dernières réalisations",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Ce que nous avons fait, chez qui, et comment",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "42.24px",
+          "interligne": "44.7744px",
+          "lettrage": "-1.6896px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "362.656px 362.672px 362.656px",
+            "nbColonnes": 3,
+            "gouttiereColonne": "16px",
+            "gouttiereLigne": "16px",
+            "nbEnfants": 3,
+            "largeur": 1120
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "SUEZ IWT · MIGEN© RÉSIDENCE ",
+            "rayon": "28px",
+            "fond": "rgb(255, 255, 255)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px",
+            "verre": null,
+            "marges": "0px",
+            "taille": "362.7x376.4"
+          },
+          {
+            "ancre": "DANONE · MIGEN© RÉSIDENCE Ma",
+            "rayon": "28px",
+            "fond": "rgb(255, 255, 255)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px",
+            "verre": null,
+            "marges": "0px",
+            "taille": "362.7x376.4"
+          },
+          {
+            "ancre": "bloc:360.7x210",
+            "rayon": "0px",
+            "fond": "rgb(222, 223, 225)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "0px",
+            "taille": "360.7x210"
+          },
+          {
+            "ancre": "JTEKT · MIGEN© RÉSIDENCE Séc",
+            "rayon": "28px",
+            "fond": "rgb(255, 255, 255)",
+            "image": null,
+            "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px",
+            "verre": null,
+            "marges": "0px",
+            "taille": "362.7x376.4"
+          },
+          {
+            "ancre": "bloc:360.7x210",
+            "rayon": "0px",
+            "fond": "rgb(222, 223, 225)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": null,
+            "verre": null,
+            "marges": "0px",
+            "taille": "360.7x210"
+          }
+        ],
+        "images": [
+          {
+            "source": "http://localhost:4340/_next/image/?url=%2Fassets%2Fweb%2Fteam-electric.jpg&w=384&q=75",
+            "nom": "team-electric.jpg",
+            "chargee": true,
+            "naturelle": "380x475",
+            "rendue": "360.7x210",
+            "ajustement": "cover"
+          },
+          {
+            "source": "http://localhost:4340/_next/image/?url=%2Fassets%2Fweb%2Fteam-grind-close.jpg&w=384&q=75",
+            "nom": "team-grind-close.jpg",
+            "chargee": true,
+            "naturelle": "380x475",
+            "rendue": "360.7x210",
+            "ajustement": "cover"
+          }
+        ],
+        "nbImages": 2,
+        "nbFonds": 0,
+        "texteDebut": "NOS DERNIÈRES RÉALISATIONS Ce que nous avons fait, chez qui, et comment Voir toutes nos ré"
+      }
+    },
+    {
+      "rang": 7,
+      "cle": "surtitre:Questions fréquentes",
+      "etat": "presente-mais-differente",
+      "ecarts": [
+        {
+          "quoi": "hauteur",
+          "maquette": "593 px",
+          "site": "500 px",
+          "gravite": "forte"
+        },
+        {
+          "quoi": "carte « Quelle est la durée minimale » : taille rendue",
+          "maquette": "640.8x145",
+          "site": "640.8x68",
+          "gravite": "moyenne"
+        },
+        {
+          "quoi": "carte « Puis-je choisir les technici » : taille rendue",
+          "maquette": "640.8x72",
+          "site": "640.8x68",
+          "gravite": "moyenne"
+        },
+        {
+          "quoi": "carte « Que se passe-t-il en cas d’a » : taille rendue",
+          "maquette": "640.8x72",
+          "site": "640.8x68",
+          "gravite": "moyenne"
+        },
+        {
+          "quoi": "carte « Régie ou forfait : quelle di » : taille rendue",
+          "maquette": "640.8x72",
+          "site": "640.8x68",
+          "gravite": "moyenne"
+        },
+        {
+          "quoi": "carte « Qui gère les habilitations e » : taille rendue",
+          "maquette": "640.8x72",
+          "site": "640.8x68",
+          "gravite": "moyenne"
+        }
+      ],
+      "maquette": {
+        "rang": 7,
+        "id": null,
+        "hauteur": 593,
+        "largeur": 1280,
+        "margesSection": "120px 0px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "Questions fréquentes",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Ce qu’on nous demande avant de signer.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "42.24px",
+          "interligne": "44.7744px",
+          "lettrage": "-1.6896px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "427.188px 640.812px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "52px",
+            "gouttiereLigne": "52px",
+            "nbEnfants": 2,
+            "largeur": 1120
+          },
+          {
+            "colonnes": "640.812px",
+            "nbColonnes": 1,
+            "gouttiereColonne": "10px",
+            "gouttiereLigne": "10px",
+            "nbEnfants": 5,
+            "largeur": 640.8
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "Poser ma question",
+            "rayon": "999px",
+            "fond": "rgb(255, 124, 60)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": "rgba(255, 124, 60, 0.9) 0px 12px 30px -12px",
+            "verre": null,
+            "marges": "15px 26px",
+            "taille": "194.2x53"
+          },
+          {
+            "ancre": "Quelle est la durée minimale",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "0px",
+            "taille": "640.8x145"
+          },
+          {
+            "ancre": "Puis-je choisir les technici",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "0px",
+            "taille": "640.8x72"
+          },
+          {
+            "ancre": "Que se passe-t-il en cas d’a",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "0px",
+            "taille": "640.8x72"
+          },
+          {
+            "ancre": "Régie ou forfait : quelle di",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "0px",
+            "taille": "640.8x72"
+          },
+          {
+            "ancre": "Qui gère les habilitations e",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "0px",
+            "taille": "640.8x72"
+          }
+        ],
+        "images": [],
+        "nbImages": 0,
+        "nbFonds": 0,
+        "texteDebut": "QUESTIONS FRÉQUENTES Ce qu’on nous demande avant de signer. Poser ma question Quelle est l",
+        "nomsSource": []
+      },
+      "site": {
+        "rang": 8,
+        "id": null,
+        "hauteur": 500,
+        "largeur": 1280,
+        "margesSection": "120px 0px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "Questions fréquentes",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Ce qu’on nous demande avant de signer.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "42.24px",
+          "interligne": "44.7744px",
+          "lettrage": "-1.6896px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "427.188px 640.812px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "52px",
+            "gouttiereLigne": "52px",
+            "nbEnfants": 2,
+            "largeur": 1120
+          },
+          {
+            "colonnes": "640.812px",
+            "nbColonnes": 1,
+            "gouttiereColonne": "10px",
+            "gouttiereLigne": "10px",
+            "nbEnfants": 5,
+            "largeur": 640.8
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "Poser ma question",
+            "rayon": "999px",
+            "fond": "rgb(255, 124, 60)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": "rgba(255, 124, 60, 0.9) 0px 12px 30px -12px",
+            "verre": null,
+            "marges": "15px 26px",
+            "taille": "194.2x53"
+          },
+          {
+            "ancre": "Quelle est la durée minimale",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "0px",
+            "taille": "640.8x68"
+          },
+          {
+            "ancre": "Puis-je choisir les technici",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "0px",
+            "taille": "640.8x68"
+          },
+          {
+            "ancre": "Que se passe-t-il en cas d’a",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "0px",
+            "taille": "640.8x68"
+          },
+          {
+            "ancre": "Régie ou forfait : quelle di",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "0px",
+            "taille": "640.8x68"
+          },
+          {
+            "ancre": "Qui gère les habilitations e",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "0px",
+            "taille": "640.8x68"
+          }
+        ],
+        "images": [],
+        "nbImages": 0,
+        "nbFonds": 0,
+        "texteDebut": "QUESTIONS FRÉQUENTES Ce qu’on nous demande avant de signer. Poser ma question Quelle est l"
+      }
+    },
+    {
+      "rang": 8,
+      "cle": "surtitre:Un autre besoin ?",
+      "etat": "presente-mais-differente",
+      "ecarts": [
+        {
+          "quoi": "carte « « Je ne sais pas encore ce q » : taille rendue",
+          "maquette": "555x64.5",
+          "site": "1120x64.5",
+          "gravite": "moyenne"
+        }
+      ],
+      "maquette": {
+        "rang": 8,
+        "id": null,
+        "hauteur": 490.3,
+        "largeur": 1280,
+        "margesSection": "120px 0px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "Un autre besoin ?",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Chaque situation a son offre.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "42.24px",
+          "interligne": "44.7744px",
+          "lettrage": "-1.6896px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "585.188px 478.812px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "56px",
+            "gouttiereLigne": "56px",
+            "nbEnfants": 2,
+            "largeur": 1120
+          },
+          {
+            "colonnes": "555px 555px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "10px",
+            "gouttiereLigne": "10px",
+            "nbEnfants": 5,
+            "largeur": 1120
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "« Je veux confier toute ma m",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "20px 22px",
+            "taille": "555x87"
+          },
+          {
+            "ancre": "« Je paie mes pannes à l’heu",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "20px 22px",
+            "taille": "555x87"
+          },
+          {
+            "ancre": "« J’ai une fenêtre d’arrêt e",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "20px 22px",
+            "taille": "555x87"
+          },
+          {
+            "ancre": "« Mon installation n’est plu",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "20px 22px",
+            "taille": "555x87"
+          },
+          {
+            "ancre": "« Je ne sais pas encore ce q",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "20px 22px",
+            "taille": "555x64.5"
+          }
+        ],
+        "images": [],
+        "nbImages": 0,
+        "nbFonds": 0,
+        "texteDebut": "UN AUTRE BESOIN ? Chaque situation a son offre. Si Résidence n’est pas la bonne réponse, l",
+        "nomsSource": []
+      },
+      "site": {
+        "rang": 14,
+        "id": null,
+        "hauteur": 490.3,
+        "largeur": 1280,
+        "margesSection": "120px 0px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "Un autre besoin ?",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Chaque situation a son offre.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "42.24px",
+          "interligne": "44.7744px",
+          "lettrage": "-1.6896px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "585.188px 478.812px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "56px",
+            "gouttiereLigne": "56px",
+            "nbEnfants": 2,
+            "largeur": 1120
+          },
+          {
+            "colonnes": "555px 555px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "10px",
+            "gouttiereLigne": "10px",
+            "nbEnfants": 5,
+            "largeur": 1120
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "« Je veux confier toute ma m",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "20px 22px",
+            "taille": "555x87"
+          },
+          {
+            "ancre": "« Je paie mes pannes à l’heu",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "20px 22px",
+            "taille": "555x87"
+          },
+          {
+            "ancre": "« J’ai une fenêtre d’arrêt e",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "20px 22px",
+            "taille": "555x87"
+          },
+          {
+            "ancre": "« Mon installation n’est plu",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "20px 22px",
+            "taille": "555x87"
+          },
+          {
+            "ancre": "« Je ne sais pas encore ce q",
+            "rayon": "18px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "20px 22px",
+            "taille": "1120x64.5"
+          }
+        ],
+        "images": [],
+        "nbImages": 0,
+        "nbFonds": 0,
+        "texteDebut": "UN AUTRE BESOIN ? Chaque situation a son offre. Si Résidence n’est pas la bonne réponse, l"
+      }
+    },
+    {
+      "rang": 9,
+      "cle": "surtitre:Décrire mon besoin",
+      "etat": "presente-mais-differente",
+      "ecarts": [
+        {
+          "quoi": "hauteur",
+          "maquette": "843.3 px",
+          "site": "888.3 px",
+          "gravite": "moyenne"
+        },
+        {
+          "quoi": "grille 2 : nombre d'enfants",
+          "maquette": "7",
+          "site": "10",
+          "gravite": "forte"
+        },
+        {
+          "quoi": "carte « DÉCRIRE MON BESOIN Décrivez  » : taille rendue",
+          "maquette": "1120x603.3",
+          "site": "1120x648.3",
+          "gravite": "moyenne"
+        }
+      ],
+      "maquette": {
+        "rang": 9,
+        "id": "form-page",
+        "hauteur": 843.3,
+        "largeur": 1280,
+        "margesSection": "120px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "Décrire mon besoin",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Décrivez le renfort qu’il vous faut. On revient avec des profils.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "33.28px",
+          "interligne": "36.608px",
+          "lettrage": "-1.3312px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "400.969px 577.031px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "48px",
+            "gouttiereLigne": "48px",
+            "nbEnfants": 2,
+            "largeur": 1026
+          },
+          {
+            "colonnes": "282.516px 282.516px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "12px",
+            "gouttiereLigne": "12px",
+            "nbEnfants": 7,
+            "largeur": 577
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "DÉCRIRE MON BESOIN Décrivez ",
+            "rayon": "36px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.4) 0px 30px 70px -40px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "44px 46px 46px",
+            "taille": "1120x603.3"
+          },
+          {
+            "ancre": "On me rappelle dans l’heure",
+            "rayon": "999px",
+            "fond": "rgb(255, 124, 60)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": "rgba(255, 124, 60, 0.9) 0px 12px 30px -12px",
+            "verre": null,
+            "marges": "14px 24px",
+            "taille": "263.5x51"
+          }
+        ],
+        "images": [],
+        "nbImages": 0,
+        "nbFonds": 0,
+        "texteDebut": "DÉCRIRE MON BESOIN Décrivez le renfort qu’il vous faut. On revient avec des profils. Cinq ",
+        "nomsSource": []
+      },
+      "site": {
+        "rang": 15,
+        "id": "formulaire",
+        "hauteur": 888.3,
+        "largeur": 1280,
+        "margesSection": "120px 0px",
+        "fondSection": "rgba(0, 0, 0, 0)",
+        "conteneur": {
+          "largeurMax": "1200px",
+          "marges": "0px 40px",
+          "largeurRendue": 1200
+        },
+        "surtitre": {
+          "texte": "Décrire mon besoin",
+          "police": "600 11.5px/normal Poppins",
+          "lettrage": "1.61px",
+          "couleur": "rgb(255, 124, 60)"
+        },
+        "titre": {
+          "balise": "h2",
+          "texte": "Décrivez le renfort qu’il vous faut. On revient avec des profils.",
+          "famille": "-apple-system",
+          "graisse": "600",
+          "taille": "33.28px",
+          "interligne": "36.608px",
+          "lettrage": "-1.3312px",
+          "couleur": "rgb(28, 27, 25)"
+        },
+        "grilles": [
+          {
+            "colonnes": "400.969px 577.031px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "48px",
+            "gouttiereLigne": "48px",
+            "nbEnfants": 2,
+            "largeur": 1026
+          },
+          {
+            "colonnes": "282.516px 282.516px",
+            "nbColonnes": 2,
+            "gouttiereColonne": "12px",
+            "gouttiereLigne": "12px",
+            "nbEnfants": 10,
+            "largeur": 577
+          }
+        ],
+        "cartes": [
+          {
+            "ancre": "DÉCRIRE MON BESOIN Décrivez ",
+            "rayon": "36px",
+            "fond": "rgba(255, 255, 255, 0.58)",
+            "image": null,
+            "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+            "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.4) 0px 30px 70px -40px",
+            "verre": "blur(22.5px) saturate(1.5)",
+            "marges": "44px 46px 46px",
+            "taille": "1120x648.3"
+          },
+          {
+            "ancre": "On me rappelle dans l’heure",
+            "rayon": "999px",
+            "fond": "rgb(255, 124, 60)",
+            "image": null,
+            "bordure": "aucune",
+            "ombre": "rgba(255, 124, 60, 0.9) 0px 12px 30px -12px",
+            "verre": null,
+            "marges": "14px 24px",
+            "taille": "263.5x51"
+          }
+        ],
+        "images": [],
+        "nbImages": 0,
+        "nbFonds": 0,
+        "texteDebut": "DÉCRIRE MON BESOIN Décrivez le renfort qu’il vous faut. On revient avec des profils. Cinq "
+      }
+    }
+  ],
+  "sectionsEnPlusSurLeSite": [
+    {
+      "rang": 0,
+      "id": null,
+      "hauteur": 44,
+      "largeur": 1200,
+      "margesSection": "24px 40px 0px",
+      "fondSection": "rgba(0, 0, 0, 0)",
+      "conteneur": null,
+      "surtitre": null,
+      "titre": null,
+      "grilles": [],
+      "cartes": [],
+      "images": [],
+      "nbImages": 0,
+      "nbFonds": 0,
+      "texteDebut": "Accueil / Entreprise maintenance industrielle / Sous-traitance maintenance"
+    },
+    {
+      "rang": 9,
+      "id": null,
+      "hauteur": 546,
+      "largeur": 1280,
+      "margesSection": "120px 0px 0px",
+      "fondSection": "rgba(0, 0, 0, 0)",
+      "conteneur": {
+        "largeurMax": "1200px",
+        "marges": "0px 40px",
+        "largeurRendue": 1200
+      },
+      "surtitre": {
+        "texte": "Le problème",
+        "police": "600 11.5px/normal Poppins",
+        "lettrage": "1.61px",
+        "couleur": "rgb(255, 124, 60)"
+      },
+      "titre": {
+        "balise": "h2",
+        "texte": "Le poste de technicien de maintenance reste vacant pendant des mois. Pendant ce temps, l'usine tourne à l'aveugle.",
+        "famille": "-apple-system",
+        "graisse": "600",
+        "taille": "42.24px",
+        "interligne": "44.7744px",
+        "lettrage": "-1.4784px",
+        "couleur": "rgb(255, 255, 255)"
+      },
+      "grilles": [
+        {
+          "colonnes": "1024px",
+          "nbColonnes": 1,
+          "gouttiereColonne": "10px",
+          "gouttiereLigne": "10px",
+          "nbEnfants": 4,
+          "largeur": 1024
+        }
+      ],
+      "cartes": [
+        {
+          "ancre": "LE PROBLÈME Le poste de tech",
+          "rayon": "28px",
+          "fond": "rgb(28, 27, 25)",
+          "image": null,
+          "bordure": "aucune",
+          "ombre": null,
+          "verre": null,
+          "marges": "44px 48px 46px",
+          "taille": "1120x426"
+        }
+      ],
+      "images": [],
+      "nbImages": 0,
+      "nbFonds": 0,
+      "texteDebut": "LE PROBLÈME Le poste de technicien de maintenance reste vacant pendant des mois. Pendant c"
+    },
+    {
+      "rang": 10,
+      "id": null,
+      "hauteur": 924.6,
+      "largeur": 1280,
+      "margesSection": "120px 0px 0px",
+      "fondSection": "rgba(0, 0, 0, 0)",
+      "conteneur": {
+        "largeurMax": "1200px",
+        "marges": "0px 40px",
+        "largeurRendue": 1200
+      },
+      "surtitre": {
+        "texte": "Le périmètre",
+        "police": "600 11.5px/normal Poppins",
+        "lettrage": "1.61px",
+        "couleur": "rgb(255, 124, 60)"
+      },
+      "titre": null,
+      "grilles": [
+        {
+          "colonnes": "585.188px 478.812px",
+          "nbColonnes": 2,
+          "gouttiereColonne": "56px",
+          "gouttiereLigne": "56px",
+          "nbEnfants": 1,
+          "largeur": 1120
+        },
+        {
+          "colonnes": "547.891px 498.109px",
+          "nbColonnes": 2,
+          "gouttiereColonne": "16px",
+          "gouttiereLigne": "16px",
+          "nbEnfants": 2,
+          "largeur": 1118
+        },
+        {
+          "colonnes": "547.891px 498.109px",
+          "nbColonnes": 2,
+          "gouttiereColonne": "16px",
+          "gouttiereLigne": "16px",
+          "nbEnfants": 2,
+          "largeur": 1118
+        },
+        {
+          "colonnes": "547.891px 498.109px",
+          "nbColonnes": 2,
+          "gouttiereColonne": "16px",
+          "gouttiereLigne": "16px",
+          "nbEnfants": 2,
+          "largeur": 1118
+        },
+        {
+          "colonnes": "547.891px 498.109px",
+          "nbColonnes": 2,
+          "gouttiereColonne": "16px",
+          "gouttiereLigne": "16px",
+          "nbEnfants": 2,
+          "largeur": 1118
+        },
+        {
+          "colonnes": "547.891px 498.109px",
+          "nbColonnes": 2,
+          "gouttiereColonne": "16px",
+          "gouttiereLigne": "16px",
+          "nbEnfants": 2,
+          "largeur": 1118
+        },
+        {
+          "colonnes": "547.891px 498.109px",
+          "nbColonnes": 2,
+          "gouttiereColonne": "16px",
+          "gouttiereLigne": "16px",
+          "nbEnfants": 2,
+          "largeur": 1118
+        },
+        {
+          "colonnes": "547.891px 498.109px",
+          "nbColonnes": 2,
+          "gouttiereColonne": "16px",
+          "gouttiereLigne": "16px",
+          "nbEnfants": 2,
+          "largeur": 1118
+        }
+      ],
+      "cartes": [
+        {
+          "ancre": "CE QUE NOUS FAISONS CE QUE Ç",
+          "rayon": "28px",
+          "fond": "rgba(255, 255, 255, 0.58)",
+          "image": null,
+          "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+          "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+          "verre": "blur(22.5px) saturate(1.5)",
+          "marges": "0px",
+          "taille": "1120x599.6"
+        }
+      ],
+      "images": [],
+      "nbImages": 0,
+      "nbFonds": 0,
+      "texteDebut": "LE PÉRIMÈTRE CE QUE NOUS FAISONS CE QUE ÇA CHANGE POUR VOUS Un technicien évalué, présent "
+    },
+    {
+      "rang": 11,
+      "id": null,
+      "hauteur": 667.3,
+      "largeur": 1280,
+      "margesSection": "120px 0px 0px",
+      "fondSection": "rgba(0, 0, 0, 0)",
+      "conteneur": {
+        "largeurMax": "1200px",
+        "marges": "0px 40px",
+        "largeurRendue": 1200
+      },
+      "surtitre": {
+        "texte": "Le déroulé",
+        "police": "600 11.5px/normal Poppins",
+        "lettrage": "1.61px",
+        "couleur": "rgb(255, 124, 60)"
+      },
+      "titre": null,
+      "grilles": [
+        {
+          "colonnes": "585.188px 478.812px",
+          "nbColonnes": 2,
+          "gouttiereColonne": "56px",
+          "gouttiereLigne": "56px",
+          "nbEnfants": 1,
+          "largeur": 1120
+        },
+        {
+          "colonnes": "365.328px 365.328px 365.344px",
+          "nbColonnes": 3,
+          "gouttiereColonne": "12px",
+          "gouttiereLigne": "12px",
+          "nbEnfants": 6,
+          "largeur": 1120
+        }
+      ],
+      "cartes": [
+        {
+          "ancre": "01 Cadrage du besoin un char",
+          "rayon": "28px",
+          "fond": "rgba(255, 255, 255, 0.58)",
+          "image": null,
+          "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+          "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+          "verre": "blur(22.5px) saturate(1.5)",
+          "marges": "26px 26px 28px",
+          "taille": "365.3x269"
+        },
+        {
+          "ancre": "02 Sélection du profil nous ",
+          "rayon": "28px",
+          "fond": "rgba(255, 255, 255, 0.58)",
+          "image": null,
+          "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+          "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+          "verre": "blur(22.5px) saturate(1.5)",
+          "marges": "26px 26px 28px",
+          "taille": "365.3x269"
+        },
+        {
+          "ancre": "03 Validation par vous vous ",
+          "rayon": "28px",
+          "fond": "rgba(255, 255, 255, 0.58)",
+          "image": null,
+          "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+          "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+          "verre": "blur(22.5px) saturate(1.5)",
+          "marges": "26px 26px 28px",
+          "taille": "365.3x269"
+        },
+        {
+          "ancre": "04 Intégration plan de préve",
+          "rayon": "28px",
+          "fond": "rgba(255, 255, 255, 0.58)",
+          "image": null,
+          "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+          "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+          "verre": "blur(22.5px) saturate(1.5)",
+          "marges": "26px 26px 28px",
+          "taille": "365.3x199.3"
+        },
+        {
+          "ancre": "05 Pilotage un référent Mige",
+          "rayon": "28px",
+          "fond": "rgba(255, 255, 255, 0.58)",
+          "image": null,
+          "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+          "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+          "verre": "blur(22.5px) saturate(1.5)",
+          "marges": "26px 26px 28px",
+          "taille": "365.3x199.3"
+        },
+        {
+          "ancre": "06 Progression formation con",
+          "rayon": "28px",
+          "fond": "rgba(255, 255, 255, 0.58)",
+          "image": null,
+          "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+          "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+          "verre": "blur(22.5px) saturate(1.5)",
+          "marges": "26px 26px 28px",
+          "taille": "365.3x199.3"
+        }
+      ],
+      "images": [],
+      "nbImages": 0,
+      "nbFonds": 0,
+      "texteDebut": "LE DÉROULÉ 01 Cadrage du besoin un chargé d'affaires analyse le périmètre avec vous, équip"
+    },
+    {
+      "rang": 12,
+      "id": null,
+      "hauteur": 599,
+      "largeur": 1280,
+      "margesSection": "120px 0px 0px",
+      "fondSection": "rgba(0, 0, 0, 0)",
+      "conteneur": {
+        "largeurMax": "1200px",
+        "marges": "0px 40px",
+        "largeurRendue": 1200
+      },
+      "surtitre": {
+        "texte": "Nos engagements",
+        "police": "600 11.5px/normal Poppins",
+        "lettrage": "1.61px",
+        "couleur": "rgb(255, 124, 60)"
+      },
+      "titre": {
+        "balise": "h2",
+        "texte": "Ce que nous garantissons.",
+        "famille": "-apple-system",
+        "graisse": "600",
+        "taille": "42.24px",
+        "interligne": "44.7744px",
+        "lettrage": "-1.6896px",
+        "couleur": "rgb(28, 27, 25)"
+      },
+      "grilles": [],
+      "cartes": [
+        {
+          "ancre": "✓ La continuité du poste abs",
+          "rayon": "28px",
+          "fond": "rgba(255, 255, 255, 0.58)",
+          "image": null,
+          "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+          "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+          "verre": "blur(22.5px) saturate(1.5)",
+          "marges": "30px 32px 18px",
+          "taille": "1120x375.3"
+        },
+        {
+          "ancre": "✓ La continuité du poste abs",
+          "rayon": "0px",
+          "fond": "rgba(0, 0, 0, 0)",
+          "image": null,
+          "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+          "ombre": null,
+          "verre": null,
+          "marges": "14px 0px",
+          "taille": "1054x75.5"
+        },
+        {
+          "ancre": "✓ Le niveau annoncé du techn",
+          "rayon": "0px",
+          "fond": "rgba(0, 0, 0, 0)",
+          "image": null,
+          "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+          "ombre": null,
+          "verre": null,
+          "marges": "14px 0px",
+          "taille": "1054x75.5"
+        },
+        {
+          "ancre": "✓ La transparence du périmèt",
+          "rayon": "0px",
+          "fond": "rgba(0, 0, 0, 0)",
+          "image": null,
+          "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+          "ombre": null,
+          "verre": null,
+          "marges": "14px 0px",
+          "taille": "1054x75.5"
+        },
+        {
+          "ancre": "✓ La sécurité tracée dès le ",
+          "rayon": "0px",
+          "fond": "rgba(0, 0, 0, 0)",
+          "image": null,
+          "bordure": "1px solid rgba(28, 27, 25, 0.09)",
+          "ombre": null,
+          "verre": null,
+          "marges": "14px 0px",
+          "taille": "1054x98.8"
+        }
+      ],
+      "images": [],
+      "nbImages": 0,
+      "nbFonds": 0,
+      "texteDebut": "NOS ENGAGEMENTS Ce que nous garantissons. ✓ La continuité du poste absence ou départ, nous"
+    },
+    {
+      "rang": 13,
+      "id": null,
+      "hauteur": 358.5,
+      "largeur": 1280,
+      "margesSection": "120px 0px 0px",
+      "fondSection": "rgba(0, 0, 0, 0)",
+      "conteneur": {
+        "largeurMax": "1200px",
+        "marges": "0px 40px",
+        "largeurRendue": 1200
+      },
+      "surtitre": {
+        "texte": "Prochaine étape",
+        "police": "600 11.5px/normal Poppins",
+        "lettrage": "1.61px",
+        "couleur": "rgb(255, 124, 60)"
+      },
+      "titre": {
+        "balise": "h2",
+        "texte": "Besoin d'un technicien qualifié sur votre site sans relancer un recrutement ?",
+        "famille": "-apple-system",
+        "graisse": "600",
+        "taille": "30.72px",
+        "interligne": "35.0208px",
+        "lettrage": "-1.2288px",
+        "couleur": "rgb(28, 27, 25)"
+      },
+      "grilles": [],
+      "cartes": [
+        {
+          "ancre": "PROCHAINE ÉTAPE Besoin d'un ",
+          "rayon": "36px",
+          "fond": "rgba(255, 255, 255, 0.58)",
+          "image": null,
+          "bordure": "1px solid rgba(255, 255, 255, 0.82)",
+          "ombre": "rgba(0, 0, 0, 0.04) 0px 1px 1px 0px, rgba(0, 0, 0, 0.3) 0px 22px 50px -32px",
+          "verre": "blur(22.5px) saturate(1.5)",
+          "marges": "40px 44px",
+          "taille": "1120x238.5"
+        },
+        {
+          "ancre": "Parler à un chargé d'affaire",
+          "rayon": "999px",
+          "fond": "rgb(255, 124, 60)",
+          "image": null,
+          "bordure": "aucune",
+          "ombre": "rgba(255, 124, 60, 0.9) 0px 12px 30px -12px",
+          "verre": null,
+          "marges": "16px 28px",
+          "taille": "271.2x55"
+        }
+      ],
+      "images": [],
+      "nbImages": 0,
+      "nbFonds": 0,
+      "texteDebut": "PROCHAINE ÉTAPE Besoin d'un technicien qualifié sur votre site sans relancer un recrutemen"
+    }
+  ]
+}

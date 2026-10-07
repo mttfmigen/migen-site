@@ -1,18 +1,68 @@
 # Les gabarits de page, et qui sert quoi
 
-Document de référence. Son absence est la cause d'un défaut qui a tenu
-plusieurs semaines : cent vingt-six pages étaient servies par un seul gabarit
-alors que la maquette en dessine sept, et rien ne le signalait.
+> **Corrigé le 05/10.** Ce document annonçait **sept** gabarits et une règle de
+> contenu fausse. Il a envoyé une journée entière de portage contre le mauvais
+> modèle. Le client a dû répéter six fois « ça ne ressemble pas » avant qu'on
+> trouve la cause ici. Ce qui suit est mesuré sur le rendu de sa maquette.
+
+Document de référence. Son absence est la cause d'un défaut qui a tenu plusieurs
+semaines : cent vingt-six pages étaient servies par un seul gabarit, et rien ne
+le signalait.
+
+## La référence
+
+**Le rendu de la maquette fait foi**, décision de Mehdi du 05/10. L'application
+`maquette/site-final-autonome.html` servie avec son dossier `maquette/contenu/`,
+figée page par page dans `maquette/rendu/` par `scripts/capture-maquette.mjs`.
+
+`maquette/site-final.html` empile 33 écrans de démonstration et **n'est le
+gabarit d'aucune page**. Ne pas porter contre lui.
+
+## Onze gabarits, nommés par le client
+
+`maquette/contenu/site/index.json` attribue son gabarit à chacune des 248 pages.
+On le lit, on ne le devine pas.
+
+| Gabarit | Pages |
+|---|---|
+| 01 Article et fiche | 38 |
+| 02 Étude de cas | 41 |
+| 03 Offre et prestation | 28 |
+| 04 Ville | 66 |
+| 05 Spécialité | 19 |
+| 06 Département | 8 |
+| 07 Métier et carrière | 13 |
+| 08 Secteur | 12 |
+| 09 Domaine | 11 |
+| 10 Hub de rubrique | 7 |
+| 11 Sous-rubrique ressource | 5 |
 
 ## La règle
 
-**Le dessin vient de la maquette. Le texte vient du corpus. Rien ne s'invente.**
+**Le dessin vient du gabarit. Le texte vient du corpus. Rien ne s'invente.**
 
-Le corpus, ce sont les 185 pages rédigées dans `migen-refonte/seo/`, analysées
-par les parseurs de `scripts/` et stockées dans `pages.contenu`. C'est la
-substance du référencement : il ne se supprime jamais. Quand la maquette dessine
-moins de sections que le corpus n'en porte, le reste est rendu **sous** les
-sections de la maquette, avec ses motifs à elle.
+Ce document disait que le texte du corpus absent de la maquette était rendu
+**sous** les sections de la maquette, avec ses motifs à elle. **C'est faux**, et
+c'est exactement l'empilement que le client rejetait.
+
+La maquette **consomme le corpus** : elle le charge elle-même, à l'exécution,
+depuis `contenu/site/<famille>/<page>.md`. Le corpus n'est pas un supplément
+qu'on pose en appendice, c'est le contenu de la page, et il se rend **à
+l'intérieur** du gabarit, aux emplacements prévus par le dessin.
+
+Mesuré sur `/offres/residence/`, gabarit « 03 Offre et prestation », 17 sections :
+
+```
+ 5  Le poste de technicien de maintenance reste vacant…   corpus
+ 6  Ce que nous faisons, et ce que ça change pour vous     corpus
+ 8  Un appel. Un plan. Une ligne qui repart.               corpus
+ 9  Ce que nous garantissons                               corpus
+11  Nos références                                         gabarit
+13  Vos questions avant de nous appeler                    gabarit
+14  Un autre besoin ? Il a son offre.                      gabarit
+```
+
+Entrelacé, pas empilé.
 
 ## Qui sert quoi
 

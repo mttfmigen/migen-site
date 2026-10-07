@@ -1,5 +1,10 @@
 # Site Migen, architecture headless
 
+> **Reprise de session : lire `docs/PASSATION.md` AVANT toute action.**
+> Il porte la référence validée par Mehdi (le rendu de la maquette autonome),
+> ses décisions datées, les arbitrages ouverts, les outils et les dix pièges
+> déjà payés. Deux journées ont été en partie perdues faute de l'avoir eu.
+
 Contrat de projet. Relu à chaque session. Ce qui est écrit ici prime sur toute
 habitude de framework.
 
@@ -214,24 +219,84 @@ tel quel sans l'interpréter, depuis un script de `scripts/` avec
 `SUPABASE_SERVICE_ROLE_KEY`. Si la clé manque, la page se signale et attend ;
 elle ne se force pas.
 
-## 16. Les gabarits de page : le piège à connaître
+## 16. Les gabarits de page : onze, et c'est l'index du client qui le dit
 
-La maquette dessine **sept gabarits de page** en plus de l'accueil. Le site les
-sert depuis `app/[...slug]/page.tsx`, qui choisit d'après la **forme** de
-`pages.contenu` : `contenu.gabarit === "offre"` part dans `PageOffre`,
-`"secteur"` dans `PageSecteur`, `"editorial"` dans `PageEditoriale`, et un
-contenu qui porte `sections` retombe sur le gabarit de vente.
+> Réécrit le 05/10. La version précédente annonçait **sept** gabarits et une
+> règle de contenu fausse. Elle a coûté une journée entière de portage contre le
+> mauvais modèle, et le client a dû répéter six fois « ça ne ressemble pas ».
+> Ce qui suit est mesuré, pas supposé.
 
-**Le piège, et il a coûté plusieurs semaines** : un gabarit porté en composant
-ne change RIEN tant que `pages.contenu` ne porte pas son discriminant. Quatre
-gabarits ont été écrits, relus, testés, et 126 pages ont continué d'être servies
-par le gabarit de vente sans que rien ne le signale. Le client l'a vu avant nous.
+### La référence, et elle est unique
 
-Avant de dire qu'un gabarit est porté, ouvrir une vraie page et vérifier ce
-qu'elle sert, pas ce que le composant sait faire. `docs/GABARITS.md` tient la
-carte, `scripts/verifie-liens.mjs` parcourt le site servi.
+**Le rendu de la maquette fait foi.** Décision de Mehdi, le 05/10. Pas un export
+source, pas un fichier intermédiaire : l'application telle qu'elle tourne, avec
+son routeur, son contenu rédigé et ses images.
 
-**La règle de contenu** : le dessin vient de la maquette, le texte vient du
-corpus, rien ne s'invente. Ce que la maquette ne montre pas et que le corpus
-porte n'est jamais supprimé : c'est du texte rédigé et payé, rendu sous les
-sections de la maquette avec ses motifs à elle.
+- L'application : `maquette/site-final-autonome.html`
+- Son contenu : `maquette/contenu/`, 221 markdown et 6 json, dont
+  `contenu/site/index.json` qui décrit les **248 pages**
+- Le rendu figé : `maquette/rendu/`, produit par `scripts/capture-maquette.mjs`
+
+`maquette/site-final.html` est un export de démonstration qui empile 33 écrans.
+**Il n'est le gabarit d'aucune page.** Ne pas porter contre lui.
+
+### Les onze gabarits
+
+Chaque entrée de `contenu/site/index.json` porte un champ `gabarit` :
+
+```json
+{ "url": "/offres/residence/", "h1": "Sous-traitance de maintenance industrielle",
+  "fichier": "Offres/offres--residence.md", "gabarit": "03 Offre et prestation" }
+```
+
+| Gabarit | Pages |
+|---|---|
+| 01 Article et fiche | 38 |
+| 02 Étude de cas | 41 |
+| 03 Offre et prestation | 28 |
+| 04 Ville | 66 |
+| 05 Spécialité | 19 |
+| 06 Département | 8 |
+| 07 Métier et carrière | 13 |
+| 08 Secteur | 12 |
+| 09 Domaine | 11 |
+| 10 Hub de rubrique | 7 |
+| 11 Sous-rubrique ressource | 5 |
+
+C'est l'index qui attribue son gabarit à une page. On ne le devine pas, on le lit.
+
+### La règle de contenu, corrigée
+
+L'ancienne version disait que le texte du corpus absent de la maquette était
+« rendu **sous** les sections de la maquette, avec ses motifs à elle ». **C'est
+faux, et c'est la source de l'empilement que le client rejetait.**
+
+La maquette **consomme le corpus** : elle le charge elle-même, à l'exécution,
+depuis `contenu/site/<famille>/<page>.md` (méthodes `cxBoot` et `cxFetch`). Le
+corpus n'est pas un supplément qu'on pose en dessous : c'est le contenu de la
+page, et il se rend **à l'intérieur** du gabarit, aux emplacements prévus.
+
+Mesuré sur `/offres/residence/` rendu par la maquette, 17 sections :
+
+```
+ 5  Le poste de technicien de maintenance reste vacant…   corpus
+ 6  Ce que nous faisons, et ce que ça change pour vous     corpus
+ 8  Un appel. Un plan. Une ligne qui repart.               corpus
+ 9  Ce que nous garantissons                               corpus
+11  Nos références                                         gabarit
+13  Vos questions avant de nous appeler                    gabarit
+14  Un autre besoin ? Il a son offre.                      gabarit
+```
+
+Entrelacé, pas empilé. Le dessin vient du gabarit, le texte vient du corpus,
+**rien ne s'invente**, et rien ne se range en appendice.
+
+### Le piège qui reste vrai
+
+Un gabarit porté en composant ne change RIEN tant que `pages.contenu` ne porte
+pas son discriminant. Quatre gabarits ont été écrits, relus, testés, et 126 pages
+ont continué d'être servies par le gabarit de vente sans que rien ne le signale.
+Le client l'a vu avant nous, deux fois.
+
+Avant de dire qu'un gabarit est porté, ouvrir une vraie page et comparer son
+rendu à `maquette/rendu/`, pas à ce que le composant sait faire.
