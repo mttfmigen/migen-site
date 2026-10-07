@@ -1,0 +1,157 @@
+# Maintenance préventive et corrective
+
+> URL : /ressources/articles/preventive-ou-corrective/
+> Title SEO : Maintenance préventive et corrective | Migen
+> Meta description : Maintenance préventive et corrective : définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours.
+
+---
+
+# Maintenance préventive et corrective
+
+Une machine tombe en panne, la production s'arrête, tout le monde court. La maintenance préventive et corrective, ce sont les deux réponses possibles à ce moment : agir avant la défaillance, ou réparer après. Cet article de nos [Ressources : Articles](/ressources/articles/) pose les définitions, un comparatif, des exemples et les erreurs à éviter, pour vous aider à trancher.
+
+Chez Migen, entreprise de maintenance industrielle, nos techniciens pratiquent les deux chaque jour sur les équipements de plus de 120 clients. Chaque exemple de ce guide vient de ce terrain, pas d'un manuel.
+
+> Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30, pour un diagnostic de votre organisation de maintenance.
+
+## Maintenance préventive et corrective : définitions
+
+Deux approches, un même objectif : garder vos équipements et vos systèmes en état de produire. La norme NF EN 13306 fixe le vocabulaire commun de la maintenance industrielle.
+
+- **Maintenance préventive** : Effectuée avant la défaillance, à intervalles prédéterminés ou selon des critères prescrits. Elle vise à réduire la probabilité de défaillance, à éviter la panne inattendue, à prévenir la casse et à prolonger la durée de vie de l'équipement.
+- **Maintenance corrective** : Effectuée après la détection d'une panne. La maintenance corrective intervient pour remettre l'équipement en état d'accomplir sa fonction requise, par une réparation provisoire ou définitive.
+- **Le langage du contrat** : La norme donne une définition à chaque type de maintenance. Quand l'entreprise exploitante et son prestataire partagent ce vocabulaire, avec mention du périmètre dans le contrat, les malentendus disparaissent.
+
+> Toute la différence tient au déclencheur : le calendrier ou l'état de l'équipement pour la préventive, la défaillance pour la corrective. Deux logiques différentes, un seul but. La maintenance s'organise ensuite autour de ce choix : coûts, planification, stock de pièces, compétences.
+
+Les deux approches ne s'opposent pas, elles se complètent : une maintenance efficace combine un socle préventif sur les installations critiques et une réponse corrective cadrée pour les pannes qui surviennent malgré tout. Cette combinaison protège la productivité.
+
+## Deux familles, cinq formes de maintenance
+
+Chaque famille se décline en plusieurs formes. Les connaître aide à construire une stratégie de maintenance adaptée à chaque équipement, pas une politique uniforme.
+
+| Forme | Déclencheur | Ce que fait le technicien |
+|---|---|---|
+| Préventive systématique | Un calendrier ou un compteur d'heures | Contrôles et changement des pièces d'usure à échéance fixe, quel que soit l'état constaté |
+| Préventive conditionnelle | L'état mesuré de l'équipement | Surveillance par capteurs ou inspection, intervention programmée au franchissement d'un seuil |
+| Préventive prévisionnelle | L'extrapolation des données | Analyse des tendances visant à planifier l'opération avant l'anomalie, parfois avec l'intelligence artificielle |
+| Corrective palliative | La panne | Dépannage provisoire, réalisé dans l'urgence, uniquement pour relancer la production en attendant mieux |
+| Corrective curative | La panne | Réparation définitive et complète : cause racine traitée, pièces en défaut remplacées |
+
+La maintenance conditionnelle et la [maintenance prédictive](/expertises/types-de-maintenance/maintenance-predictive/) affinent le préventif : on surveille l'état réel au lieu de subir des échéances fixes. Notre guide des [types de maintenance](/expertises/types-de-maintenance/) détaille également chaque forme, avec ses cas d'usage.
+
+Sur le terrain, la frontière est vivante : un dépannage provisoire appelle une réparation curative, une panne répétée déclenche une action préventive. L'enjeu est d'être capable de nommer ce qu'on fait, avec des procédures écrites, pour gérer les priorités sans improvisation.
+
+## Le comparatif, critère par critère
+
+Un tableau vaut mieux qu'un long discours. Voici la différence entre les deux approches, avec leurs effets différents sur le budget, l'atelier et l'équipe.
+
+| Critère | Maintenance préventive | Maintenance corrective |
+|---|---|---|
+| Déclencheur | Planifiée : échéance, compteur, état mesuré | La défaillance, détectée ou constatée |
+| Coût | Budget lissé, planification maîtrisée | Coût imprévu : réparation, urgence, production perdue |
+| Arrêt de production | Programmé aux créneaux creux, en concertation | Interruption inattendue, souvent au pire moment |
+| Pièces détachées | Approvisionnement anticipé, stock dimensionné | Pièce parfois indisponible, immobilisation qui s'allonge |
+| Sécurité | Risques évalués, travaux préparés, prévention organisée | Geste sous pression, risque accru pour le personnel |
+| Compétences | Interventions préparées, modes opératoires et procédures disponibles | Diagnostic dans l'urgence, expérience exigée |
+| Charge de travail | Lissée sur l'année, absorbable | Pics d'activité, heures supplémentaires, tension |
+| Durée de vie | Prolongée par un entretien régulier | Réduite par les casses successives et leurs dégâts induits |
+
+> Chaque approche a ses avantages et ses inconvénients. Les avantages de la maintenance préventive se paient d'un effort de préparation ; la corrective expose à des dépenses subies. Aucun site ne vit à 100 % en préventif : des pannes surviennent même sur un équipement bien entretenu. La vraie question est la part que le correctif occupe dans votre activité, et sa tendance.
+
+## Mettre en place le préventif, étape par étape
+
+Le processus de maintenance préventive se construit en six étapes. Chacune s'appuie sur les données de votre exploitation, jamais sur un modèle standard.
+
+1. **L'inventaire des équipements** : Recenser chaque machine, sa criticité pour la production, son historique. Un équipement critique n'appelle pas la stratégie d'un matériel secondaire ou doublé.
+2. **L'analyse des défaillances** : Identifier les pannes qui reviennent, leur cause, leur coût. Les pannes les plus coûteuses ne sont généralement pas les plus visibles : cette analyse fixe les priorités et les premiers gains à obtenir.
+3. **Le plan de maintenance** : Définir par équipement les opérations, leur fréquence, les pièces nécessaires, les compétences requises. C'est le document qui pilote tout le programme, élément par élément.
+4. **La planification des interventions** : Caler les travaux sur les créneaux de production, préparer les procédures de consignation, réserver les pièces. La mise en œuvre se joue dans ce séquencement.
+5. **L'exécution tracée** : Chaque opération est réalisée selon sa gamme puis enregistrée dans votre GMAO : mesures, remplacements, observations du technicien.
+6. **L'ajustement continu** : Comparer le prévu et le réel pour améliorer le plan : fréquence optimale, visites inutiles supprimées, gammes personnalisées selon les conditions d'utilisation constatées.
+
+> La première étape se lance sur un périmètre court : cinq équipements pénalisants suffisent pour prouver le gain, avant d'étendre au reste du parc. Mieux vaut intervenir tôt sur peu d'équipements que tard sur tous.
+
+## Un exemple concret : un moteur, deux scénarios
+
+Le même moteur de convoyeur, deux histoires. C'est la manière la plus simple de mesurer ce que le choix change, en euros et en heures.
+
+### Scénario correctif : la panne décide
+
+- **Le moteur cale en pleine production** : Le roulement a lâché, l'arbre est marqué. La réparation dépasse largement le simple changement de roulement, et le produit en cours part au rebut.
+- **Tout s'enchaîne** : Pièce à trouver en urgence, technicien mobilisé sur l'imprévu, ligne à l'arrêt, équipe au chômage technique. Les coûts s'additionnent d'heure en heure, sans que personne ne les ait décidés.
+- **La casse se propage** : Un moteur qui a chauffé fragilise son réducteur. La défaillance suivante est déjà en germe, et l'historique vide n'aidera personne à la voir venir.
+
+### Scénario préventif : la surveillance décide
+
+- **Le contrôle vibratoire parle** : Le défaut de roulement est repéré des semaines avant la casse. L'anomalie est connue, chiffrée, suivie : l'intervention se planifie sans stress.
+- **L'opération se fait au créneau choisi** : Le remplacement du roulement se fait pendant un arrêt programmé, alignement vérifié, remise en service mesurée. La production ne voit rien.
+- **Le moteur poursuit sa carrière** : Pas d'arrêt subi, pas de dégât induit. Le coût se réduit à la pièce et à l'heure planifiée, budgétées de longue date.
+
+> Nos équipes font ce constat chaque semaine : une panne coûte la réparation, plus la production perdue, plus les dégâts induits. La visite préventive ne coûte que la première ligne. Sur un moteur critique, l'arbitrage est vite fait, et il se répète pour chaque famille d'équipements : pompes, compresseurs, réducteurs, variateurs.
+
+## Les erreurs les plus fréquentes
+
+Les causes se répètent, les arrêts aussi. Six erreurs reviennent dans la plupart des organisations, quelle que soit la taille de la société.
+
+- **Tout miser sur le correctif** : Attendre la panne semble économique jusqu'au premier arrêt majeur. Les coûts cachés dépassent généralement l'économie apparente, et de loin.
+- **Copier le plan du constructeur** : Les préconisations sont une base, pas une fin. Elles ignorent vos cadences, votre environnement, vos contraintes d'exploitation : l'usure est liée à l'usage réel, pas à la date.
+- **Sur-entretenir les équipements sains** : Des visites trop rapprochées consomment des ressources sans gain. Le sur-entretien ajoute un risque d'erreur à chaque démontage.
+- **Négliger la traçabilité** : Sans historique, impossible d'identifier les récurrences ni d'optimiser les fréquences. La donnée est essentielle : c'est la mémoire de la maintenance, et elle permet d'anticiper les besoins en pièces.
+- **Laisser le préventif glisser** : Chaque visite reportée pour cause d'urgence nourrit le correctif de demain. Le report doit être l'exception tracée, jamais l'habitude, sinon le retard s'accumule.
+- **Oublier l'opérateur** : Le personnel de production voit, entend et sent les dérives avant tout le monde. Une organisation qui ne collecte pas ces signaux se prive de son meilleur capteur.
+
+> Un signe qui ne trompe pas : si le planning préventif du mois dernier n'est pas soldé, la spirale corrective est déjà en route. Le moment d'agir, avant que la panne ne décide à votre place.
+
+## Ce que cela implique pour votre organisation
+
+L'équilibre entre les deux dépend de la criticité des équipements, des compétences internes et du budget. Trois décisions structurent la démarche.
+
+- **Classer les équipements** : Le préventif d'abord sur les machines critiques, celles dont l'arrêt stoppe la production ou crée un risque de sécurité. Le correctif assumé reste un choix rationnel sur les équipements doublés ou faciles à remplacer, pour limiter les dépenses au juste besoin.
+- **Dimensionner l'équipe** : Le préventif demande du temps réservé, protégé des urgences. Si votre personnel est absorbé par le dépannage, sous-traiter une partie des travaux permet d'assurer les visites et de restaurer la productivité.
+- **Mesurer pour arbitrer** : Temps moyen entre pannes, part du correctif dans les heures de maintenance, disponibilité des équipements. Ces indicateurs objectivent la progression, mois après mois, service par service.
+
+Ce diagnostic, nos équipes le réalisent avec vous, sur vos chiffres : historique de pannes, plan actuel, organisation en place. Notre offre Zéro arrêt en découle : un [contrat de maintenance](/offres/zero-arret/) sur devis, engagement type 6 mois renouvelable. Quand la panne survient malgré tout, le [dépannage industriel](/offres/depannage-industriel/) prend le relais, avec l'astreinte en option.
+
+> Les obligations légales pèsent aussi dans la balance : vérifications réglementaires des équipements sous pression, du levage, des installations électriques. Ces contrôles s'intègrent au plan préventif avec leurs échéances propres, pour être traités une fois pour toutes.
+
+## La GMAO tient les deux bouts
+
+Préventif et correctif se pilotent dans le même logiciel de maintenance. La GMAO (gestion de la maintenance assistée par ordinateur) est la colonne vertébrale du dispositif, pour votre équipe comme pour vos prestataires.
+
+- **Planifier le préventif** : La GMAO génère les ordres de travail à échéance, réserve les pièces, envoie des alertes personnalisées en cas de retard. Rien ne repose sur la mémoire d'une seule personne.
+- **Tracer le correctif** : Chaque panne enregistrée enrichit l'historique : cause, durée d'immobilisation, pièces, coût. Ces données alimentent l'analyse des défaillances et les arbitrages.
+- **Gérer le stock et les achats** : Pièces critiques suivies, seuils de réapprovisionnement, suivi fournisseur intégré. La bonne pièce est là quand l'intervention arrive, pas trois semaines après.
+- **Suivre le réglementaire** : Contrôles périodiques planifiés comme le reste, échéances tenues, rapports archivés. Une obligation qui devient une routine.
+- **Partager l'information** : Production, maintenance, achats et direction lisent l'état des équipements en temps réel, chacun à son niveau de détail.
+- **Mesurer la performance** : Tableaux de bord, vues personnalisées par métier, temps moyen entre pannes, taux de disponibilité des actifs. L'information utile pour arbitrer entre les deux approches, fonction par fonction.
+
+Le choix d'une plateforme se fait sur vos processus réels : demandez une démo à chaque éditeur, puis testez au poste de travail, car une démo réussie ne garantit pas une GMAO réellement utilisée par le terrain. Vérifiez les fonctionnalités mobiles et la simplicité de saisie, sinon la base de données restera vide.
+
+Les technologies de surveillance, vibration, température, paramètres électriques, suivent le fonctionnement en continu et alimentent la plateforme : le préventif se rapproche du prédictif. La technologie aide, la méthode décide.
+
+> Nos techniciens travaillent dans la GMAO de chaque client et documentent chaque intervention par des comptes rendus complets.
+
+## Questions fréquentes
+
+**Quelle est la différence entre maintenance corrective et curative ?**
+La corrective est la famille : toute maintenance effectuée après une défaillance. La curative s'en distingue par son ambition de réparation définitive : elle consiste à résoudre le problème à la racine pour que la panne ne revienne pas. La palliative, l'autre forme, est un dépannage provisoire qui maintient l'activité, acceptable uniquement en attendant la réparation complète.
+
+**La maintenance préventive est-elle toujours rentable ?**
+Non, pas partout. Sur un équipement non critique, doublé ou peu coûteux, le correctif assumé se justifie, à condition d'être un choix et non un renoncement. Le préventif devient un investissement gagnant dès que l'arrêt coûte cher en production, en sécurité ou en qualité. D'où l'intérêt de classer le parc avant de bâtir le plan.
+
+**Quel ratio viser entre préventif et correctif ?**
+Il n'existe pas de chiffre universel : la bonne part dépend de la criticité de vos installations, de leur âge et de votre domaine. Le bon repère est la tendance : si les heures correctives progressent d'un trimestre à l'autre, le plan préventif nécessite une révision. L'expérience montre que la part corrective recule vite quand les créneaux préventifs sont protégés.
+
+**Faut-il une GMAO pour commencer ?**
+Un site peut démarrer avec un tableur et un calendrier partagé : l'essentiel est de tracer chaque opération, de manière simple et régulière. La GMAO devient nécessaire quand le parc grossit : elle automatise la planification, gère le stock et produit les indicateurs sans ressaisie, à condition d'être réellement utilisée au quotidien.
+
+**Qui doit réaliser le préventif : vos équipes ou un prestataire ?**
+Les deux se combinent. Les rondes de premier niveau reviennent aux opérateurs, chaque tâche technique planifiée à l'équipe de maintenance, les travaux spécialisés à un prestataire. Migen intervient en renfort ponctuel comme en [sous-traitance maintenance](/offres/residence/) complète, avec des techniciens évalués : 10 % des candidats retenus, entretien technique et comportemental.
+
+**Comment passer d'une culture corrective à une culture préventive ?**
+Par étapes : traiter d'abord les équipements les plus pénalisants, prouver le gain, étendre ensuite. La direction doit protéger les créneaux préventifs contre les urgences, sinon le correctif reprend le dessus. Un regard extérieur accélère la bascule : diagnostic, plan, montée en compétence, puis suivi périodique des indicateurs.
+
+> À lire aussi : [maintenance prédictive ou corrective](/ressources/articles/predictive-ou-corrective/)
+
+> [Demander un diagnostic maintenance](/contact/)

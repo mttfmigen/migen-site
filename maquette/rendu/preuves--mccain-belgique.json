@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/mccain-belgique/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas McCAIN : un premier contrat en Belgique, préventif et correctif",
+  "h1Rendu": "Un premier contrat en Belgique, préventif et correctif",
+  "nbSections": 10,
+  "hauteurTotale": 6421,
+  "motsAnnonces": 596,
+  "motsRendus": 850,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 520,
+      "images": 2,
+      "liens": 2,
+      "mots": 81
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 236,
+      "images": 0,
+      "liens": 0,
+      "mots": 24
+    },
+    {
+      "ordre": 2,
+      "titre": "Un équipement critique à l'arrêt ne coûte pas une heure de technicien.",
+      "hauteur": 529,
+      "images": 0,
+      "liens": 0,
+      "mots": 97
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 1073,
+      "images": 0,
+      "liens": 0,
+      "mots": 131
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 420,
+      "images": 0,
+      "liens": 0,
+      "mots": 74
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 696,
+      "images": 1,
+      "liens": 0,
+      "mots": 34
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 541,
+      "images": 0,
+      "liens": 0,
+      "mots": 55
+    },
+    {
+      "ordre": 7,
+      "titre": "La situation",
+      "hauteur": 287,
+      "images": 0,
+      "liens": 0,
+      "mots": 55
+    },
+    {
+      "ordre": 8,
+      "titre": "Un site à l'étranger ou une production en flux que rien ne doit couper ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 91
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 530,
+      "images": 4,
+      "liens": 4,
+      "mots": 31
+    }
+  ]
+}

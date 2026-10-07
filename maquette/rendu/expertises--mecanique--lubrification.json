@@ -1,0 +1,149 @@
+{
+  "url": "/expertises/mecanique/lubrification/",
+  "gabarit": "05 Spécialité",
+  "verdict": "rendue",
+  "h1Attendu": "Lubrification industrielle : la panne la moins chère est celle qu’on graisse à temps",
+  "h1Rendu": "Lubrification industrielle : la panne la moins chère est celle qu’on graisse à temps",
+  "nbSections": 17,
+  "hauteurTotale": 9369,
+  "motsAnnonces": 1354,
+  "motsRendus": 1504,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 708,
+      "images": 0,
+      "liens": 1,
+      "mots": 110
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 155,
+      "images": 0,
+      "liens": 0,
+      "mots": 14
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": "La plupart de vos roulements ne mourront pas de vieillesse.",
+      "hauteur": 696,
+      "images": 1,
+      "liens": 0,
+      "mots": 120
+    },
+    {
+      "ordre": 5,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 620,
+      "images": 0,
+      "liens": 0,
+      "mots": 238
+    },
+    {
+      "ordre": 6,
+      "titre": null,
+      "hauteur": 135,
+      "images": 0,
+      "liens": 1,
+      "mots": 19
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 165,
+      "images": 0,
+      "liens": 0,
+      "mots": 21
+    },
+    {
+      "ordre": 8,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 830,
+      "images": 0,
+      "liens": 1,
+      "mots": 153
+    },
+    {
+      "ordre": 9,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 624,
+      "images": 0,
+      "liens": 0,
+      "mots": 89
+    },
+    {
+      "ordre": 10,
+      "titre": "Même expertise, contraintes différentes",
+      "hauteur": 668,
+      "images": 0,
+      "liens": 6,
+      "mots": 124
+    },
+    {
+      "ordre": 11,
+      "titre": "Cinq façons de travailler ensemble, selon votre besoin",
+      "hauteur": 699,
+      "images": 5,
+      "liens": 5,
+      "mots": 141
+    },
+    {
+      "ordre": 12,
+      "titre": "Les équipements que nous maintenons déjà",
+      "hauteur": 538,
+      "images": 13,
+      "liens": 0,
+      "mots": 27
+    },
+    {
+      "ordre": 13,
+      "titre": "Nos références",
+      "hauteur": 754,
+      "images": 5,
+      "liens": 6,
+      "mots": 151
+    },
+    {
+      "ordre": 14,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 521,
+      "images": 0,
+      "liens": 0,
+      "mots": 83
+    },
+    {
+      "ordre": 15,
+      "titre": "Ils nous ont confié une mission comparable",
+      "hauteur": 578,
+      "images": 4,
+      "liens": 5,
+      "mots": 70
+    },
+    {
+      "ordre": 16,
+      "titre": "Besoin que vos roulements gagnent des années au lieu de casser en pleine production ?",
+      "hauteur": 1012,
+      "images": 0,
+      "liens": 0,
+      "mots": 72
+    }
+  ]
+}

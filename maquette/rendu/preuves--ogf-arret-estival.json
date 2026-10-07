@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/ogf-arret-estival/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas OGF : un été entier sans trou dans la maintenance",
+  "h1Rendu": "Un été entier sans trou dans la maintenance",
+  "nbSections": 10,
+  "hauteurTotale": 6367,
+  "motsAnnonces": 696,
+  "motsRendus": 943,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 520,
+      "images": 2,
+      "liens": 2,
+      "mots": 56
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 236,
+      "images": 0,
+      "liens": 0,
+      "mots": 20
+    },
+    {
+      "ordre": 2,
+      "titre": "En juillet, l'atelier tourne encore mais l'équipe maintenance est à moitié vide.",
+      "hauteur": 723,
+      "images": 0,
+      "liens": 0,
+      "mots": 154
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 654,
+      "images": 0,
+      "liens": 0,
+      "mots": 109
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 420,
+      "images": 0,
+      "liens": 0,
+      "mots": 86
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 696,
+      "images": 1,
+      "liens": 0,
+      "mots": 29
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 517,
+      "images": 0,
+      "liens": 0,
+      "mots": 44
+    },
+    {
+      "ordre": 7,
+      "titre": "Chiffres clés",
+      "hauteur": 418,
+      "images": 0,
+      "liens": 0,
+      "mots": 121
+    },
+    {
+      "ordre": 8,
+      "titre": "Vous savez déjà que juillet sera tendu ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 88
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 59
+    }
+  ]
+}

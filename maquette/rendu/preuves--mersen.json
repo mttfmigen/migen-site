@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/mersen/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas MERSEN : un automaticien SIEMENS pour démarrer une ligne neuve",
+  "h1Rendu": "Un automaticien SIEMENS pour démarrer une ligne neuve",
+  "nbSections": 10,
+  "hauteurTotale": 6128,
+  "motsAnnonces": 677,
+  "motsRendus": 913,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 568,
+      "images": 2,
+      "liens": 2,
+      "mots": 55
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 236,
+      "images": 0,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 2,
+      "titre": "Une ligne neuve ne se révèle jamais dans les plans.",
+      "hauteur": 792,
+      "images": 0,
+      "liens": 0,
+      "mots": 175
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 672,
+      "images": 0,
+      "liens": 0,
+      "mots": 105
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 420,
+      "images": 0,
+      "liens": 0,
+      "mots": 81
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 540,
+      "images": 1,
+      "liens": 0,
+      "mots": 41
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 517,
+      "images": 0,
+      "liens": 0,
+      "mots": 42
+    },
+    {
+      "ordre": 7,
+      "titre": "Chiffres clés",
+      "hauteur": 201,
+      "images": 0,
+      "liens": 0,
+      "mots": 35
+    },
+    {
+      "ordre": 8,
+      "titre": "Une ligne neuve à démarrer et personne en interne sur l'automatisme ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 115
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 56
+    }
+  ]
+}

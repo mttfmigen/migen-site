@@ -1,0 +1,157 @@
+{
+  "url": "/carriere/",
+  "gabarit": "10 Hub de rubrique",
+  "verdict": "rendue",
+  "h1Attendu": "Migen recrutement",
+  "h1Rendu": "Migen recrutement",
+  "nbSections": 18,
+  "hauteurTotale": 13268,
+  "motsAnnonces": 1943,
+  "motsRendus": 2234,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 557,
+      "images": 1,
+      "liens": 3,
+      "mots": 104
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 2,
+      "titre": "Migen recrutement : pourquoi nous rejoindre",
+      "hauteur": 679,
+      "images": 0,
+      "liens": 0,
+      "mots": 129
+    },
+    {
+      "ordre": 3,
+      "titre": "Cinq façons de travailler chez Migen",
+      "hauteur": 849,
+      "images": 0,
+      "liens": 1,
+      "mots": 135
+    },
+    {
+      "ordre": 4,
+      "titre": "Les métiers que nous recrutons",
+      "hauteur": 770,
+      "images": 5,
+      "liens": 6,
+      "mots": 159
+    },
+    {
+      "ordre": 5,
+      "titre": "Des techniciens confirmés, prêts pour le terrain",
+      "hauteur": 302,
+      "images": 0,
+      "liens": 0,
+      "mots": 38
+    },
+    {
+      "ordre": 6,
+      "titre": "Notre processus de recrutement",
+      "hauteur": 844,
+      "images": 0,
+      "liens": 1,
+      "mots": 153
+    },
+    {
+      "ordre": 7,
+      "titre": "Nos engagements employeur",
+      "hauteur": 512,
+      "images": 0,
+      "liens": 0,
+      "mots": 86
+    },
+    {
+      "ordre": 8,
+      "titre": "Ce que nous ne faisons pas",
+      "hauteur": 594,
+      "images": 0,
+      "liens": 0,
+      "mots": 93
+    },
+    {
+      "ordre": 9,
+      "titre": "Nos hubs et notre couverture",
+      "hauteur": 1190,
+      "images": 7,
+      "liens": 7,
+      "mots": 109
+    },
+    {
+      "ordre": 10,
+      "titre": "Des avis qui parlent du terrain",
+      "hauteur": 911,
+      "images": 0,
+      "liens": 1,
+      "mots": 203
+    },
+    {
+      "ordre": 11,
+      "titre": "La vie chez Migen au quotidien",
+      "hauteur": 544,
+      "images": 0,
+      "liens": 0,
+      "mots": 167
+    },
+    {
+      "ordre": 12,
+      "titre": "Postes ouverts et candidature spontanée",
+      "hauteur": 726,
+      "images": 0,
+      "liens": 1,
+      "mots": 124
+    },
+    {
+      "ordre": 13,
+      "titre": "Nos informations pratiques",
+      "hauteur": 948,
+      "images": 0,
+      "liens": 0,
+      "mots": 203
+    },
+    {
+      "ordre": 14,
+      "titre": "Postuler chez Migen",
+      "hauteur": 635,
+      "images": 0,
+      "liens": 1,
+      "mots": 91
+    },
+    {
+      "ordre": 15,
+      "titre": "Questions fréquentes",
+      "hauteur": 700,
+      "images": 0,
+      "liens": 1,
+      "mots": 99
+    },
+    {
+      "ordre": 16,
+      "titre": "Rejoindre Migen",
+      "hauteur": 944,
+      "images": 0,
+      "liens": 1,
+      "mots": 125
+    },
+    {
+      "ordre": 17,
+      "titre": null,
+      "hauteur": 495,
+      "images": 1,
+      "liens": 1,
+      "mots": 8
+    }
+  ]
+}

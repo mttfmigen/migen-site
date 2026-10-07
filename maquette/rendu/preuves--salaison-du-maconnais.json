@@ -1,0 +1,77 @@
+{
+  "url": "/preuves/salaison-du-maconnais/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas SALAISON DU MÂCONNAIS : du broyage à la cuisson, un seul technicien sur la chaîne",
+  "h1Rendu": "Du broyage à la cuisson, un seul technicien sur la chaîne",
+  "nbSections": 8,
+  "hauteurTotale": 4740,
+  "motsAnnonces": 349,
+  "motsRendus": 534,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 523,
+      "images": 2,
+      "liens": 2,
+      "mots": 81
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 187,
+      "images": 0,
+      "liens": 0,
+      "mots": 11
+    },
+    {
+      "ordre": 2,
+      "titre": "Le parc mêle mécanique, froid industriel et thermique",
+      "hauteur": 390,
+      "images": 0,
+      "liens": 0,
+      "mots": 50
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 450,
+      "images": 0,
+      "liens": 0,
+      "mots": 32
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 397,
+      "images": 0,
+      "liens": 0,
+      "mots": 46
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 632,
+      "images": 1,
+      "liens": 0,
+      "mots": 35
+    },
+    {
+      "ordre": 6,
+      "titre": "Un besoin comparable sur votre site ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 67
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 573,
+      "images": 4,
+      "liens": 4,
+      "mots": 35
+    }
+  ]
+}

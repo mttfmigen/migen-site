@@ -1,0 +1,109 @@
+{
+  "url": "/a-propos/equipe/",
+  "gabarit": "01 Article et fiche",
+  "verdict": "rendue-ecran-natif",
+  "h1Attendu": "Vos interlocuteurs",
+  "h1Rendu": "Celles et ceux qui portent vos projets.",
+  "nbSections": 12,
+  "hauteurTotale": 6277,
+  "motsAnnonces": 842,
+  "motsRendus": 758,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 341,
+      "images": 0,
+      "liens": 0,
+      "mots": 44
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 457,
+      "images": 4,
+      "liens": 0,
+      "mots": 20
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 447,
+      "images": 4,
+      "liens": 0,
+      "mots": 24
+    },
+    {
+      "ordre": 3,
+      "titre": "Une entreprise créée pour garder vos machines en marche.",
+      "hauteur": 376,
+      "images": 0,
+      "liens": 0,
+      "mots": 66
+    },
+    {
+      "ordre": 4,
+      "titre": "Une trajectoire courte et dense.",
+      "hauteur": 552,
+      "images": 0,
+      "liens": 0,
+      "mots": 93
+    },
+    {
+      "ordre": 5,
+      "titre": "La qualité se décide au recrutement.",
+      "hauteur": 505,
+      "images": 0,
+      "liens": 0,
+      "mots": 104
+    },
+    {
+      "ordre": 6,
+      "titre": "Quatre agences, dix hubs de techniciens.",
+      "hauteur": 452,
+      "images": 0,
+      "liens": 1,
+      "mots": 60
+    },
+    {
+      "ordre": 7,
+      "titre": "Des engagements tenus, vérifiables mission après mission.",
+      "hauteur": 463,
+      "images": 0,
+      "liens": 0,
+      "mots": 75
+    },
+    {
+      "ordre": 8,
+      "titre": "Comment l’équipe s’organise autour du technicien.",
+      "hauteur": 562,
+      "images": 0,
+      "liens": 0,
+      "mots": 98
+    },
+    {
+      "ordre": 9,
+      "titre": "Un interlocuteur, pas un standard.",
+      "hauteur": 446,
+      "images": 0,
+      "liens": 1,
+      "mots": 26
+    },
+    {
+      "ordre": 10,
+      "titre": "De votre appel au technicien, trois personnes. Pas plus.",
+      "hauteur": 738,
+      "images": 1,
+      "liens": 1,
+      "mots": 95
+    },
+    {
+      "ordre": 11,
+      "titre": "Parlez directement à l’équipe.",
+      "hauteur": 843,
+      "images": 0,
+      "liens": 0,
+      "mots": 53
+    }
+  ]
+}

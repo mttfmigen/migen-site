@@ -1,0 +1,141 @@
+{
+  "url": "/expertises/types-de-maintenance/maintenance-palliative/",
+  "gabarit": "05 Spécialité",
+  "verdict": "rendue",
+  "h1Attendu": "Maintenance palliative : redémarrer maintenant, réparer pour de bon ensuite",
+  "h1Rendu": "Maintenance palliative : redémarrer maintenant, réparer pour de bon ensuite",
+  "nbSections": 16,
+  "hauteurTotale": 8949,
+  "motsAnnonces": 1480,
+  "motsRendus": 1569,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 708,
+      "images": 0,
+      "liens": 1,
+      "mots": 95
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 155,
+      "images": 0,
+      "liens": 0,
+      "mots": 25
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": "La pièce arrive dans dix jours, il reste trois jours de commandes à sortir, et aucun client n'acceptera d'attendre.",
+      "hauteur": 749,
+      "images": 0,
+      "liens": 0,
+      "mots": 127
+    },
+    {
+      "ordre": 5,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 660,
+      "images": 0,
+      "liens": 0,
+      "mots": 277
+    },
+    {
+      "ordre": 6,
+      "titre": null,
+      "hauteur": 135,
+      "images": 0,
+      "liens": 1,
+      "mots": 17
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 138,
+      "images": 0,
+      "liens": 0,
+      "mots": 11
+    },
+    {
+      "ordre": 8,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 808,
+      "images": 0,
+      "liens": 1,
+      "mots": 146
+    },
+    {
+      "ordre": 9,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 649,
+      "images": 0,
+      "liens": 0,
+      "mots": 105
+    },
+    {
+      "ordre": 10,
+      "titre": "Même expertise, contraintes différentes",
+      "hauteur": 668,
+      "images": 0,
+      "liens": 6,
+      "mots": 124
+    },
+    {
+      "ordre": 11,
+      "titre": "Cinq façons de travailler ensemble, selon votre besoin",
+      "hauteur": 699,
+      "images": 5,
+      "liens": 5,
+      "mots": 141
+    },
+    {
+      "ordre": 12,
+      "titre": "Nos références",
+      "hauteur": 804,
+      "images": 5,
+      "liens": 6,
+      "mots": 197
+    },
+    {
+      "ordre": 13,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 521,
+      "images": 0,
+      "liens": 0,
+      "mots": 94
+    },
+    {
+      "ordre": 14,
+      "titre": "Ils nous ont confié une mission comparable",
+      "hauteur": 578,
+      "images": 4,
+      "liens": 5,
+      "mots": 71
+    },
+    {
+      "ordre": 15,
+      "titre": "Besoin que vos dépannages provisoires soient tracés et soldés au lieu de s'empiler ?",
+      "hauteur": 1012,
+      "images": 0,
+      "liens": 0,
+      "mots": 67
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/suez-remise-en-etat/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas SUEZ IWT : six mois pour remettre en état un site à risque chimique",
+  "h1Rendu": "Six mois pour remettre en état un site à risque chimique",
+  "nbSections": 10,
+  "hauteurTotale": 6118,
+  "motsAnnonces": 630,
+  "motsRendus": 886,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 537,
+      "images": 2,
+      "liens": 2,
+      "mots": 63
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 23
+    },
+    {
+      "ordre": 2,
+      "titre": "Un surcroît d'activité tombe sur un site où l'on ne fait pas entrer n'importe qui.",
+      "hauteur": 703,
+      "images": 0,
+      "liens": 0,
+      "mots": 150
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 671,
+      "images": 0,
+      "liens": 0,
+      "mots": 117
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 420,
+      "images": 0,
+      "liens": 0,
+      "mots": 92
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 696,
+      "images": 1,
+      "liens": 0,
+      "mots": 41
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 491,
+      "images": 0,
+      "liens": 0,
+      "mots": 38
+    },
+    {
+      "ordre": 7,
+      "titre": "Le résultat",
+      "hauteur": 206,
+      "images": 0,
+      "liens": 0,
+      "mots": 44
+    },
+    {
+      "ordre": 8,
+      "titre": "Une charge qui monte sur un site à contraintes réglementaires ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 84
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 57
+    }
+  ]
+}

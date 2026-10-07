@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/fdj/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas CIUCH : l’intralogistique d’un grand site tenue en sous-traitance",
+  "h1Rendu": "L’intralogistique d’un grand site tenue en sous-traitance",
+  "nbSections": 10,
+  "hauteurTotale": 5643,
+  "motsAnnonces": 489,
+  "motsRendus": 691,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 520,
+      "images": 2,
+      "liens": 2,
+      "mots": 68
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 13
+    },
+    {
+      "ordre": 2,
+      "titre": "Il lui faut des techniciens fiables sans gonfler sa masse salariale",
+      "hauteur": 347,
+      "images": 0,
+      "liens": 0,
+      "mots": 56
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 654,
+      "images": 0,
+      "liens": 0,
+      "mots": 43
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 397,
+      "images": 0,
+      "liens": 0,
+      "mots": 46
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 556,
+      "images": 1,
+      "liens": 0,
+      "mots": 29
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 515,
+      "images": 0,
+      "liens": 0,
+      "mots": 37
+    },
+    {
+      "ordre": 7,
+      "titre": "Le résultat",
+      "hauteur": 280,
+      "images": 0,
+      "liens": 0,
+      "mots": 56
+    },
+    {
+      "ordre": 8,
+      "titre": "Votre équipe maintenance encaisse tout et n'a plus de marge ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 117
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 573,
+      "images": 4,
+      "liens": 4,
+      "mots": 49
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "url": "/entreprise-maintenance-industrielle/",
+  "gabarit": "03 Offre et prestation",
+  "verdict": "rendue",
+  "h1Attendu": "Entreprise de maintenance industrielle",
+  "h1Rendu": "Entreprise de maintenance industrielle",
+  "nbSections": 19,
+  "hauteurTotale": 8698,
+  "motsAnnonces": 1849,
+  "motsRendus": 1588,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 708,
+      "images": 0,
+      "liens": 1,
+      "mots": 115
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 176,
+      "images": 0,
+      "liens": 0,
+      "mots": 29
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 24
+    },
+    {
+      "ordre": 5,
+      "titre": "La ligne est arrêtée un vendredi à 16h00.",
+      "hauteur": 533,
+      "images": 0,
+      "liens": 0,
+      "mots": 149
+    },
+    {
+      "ordre": 6,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 599,
+      "images": 0,
+      "liens": 0,
+      "mots": 222
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 135,
+      "images": 0,
+      "liens": 1,
+      "mots": 24
+    },
+    {
+      "ordre": 8,
+      "titre": "Les métiers qui interviennent",
+      "hauteur": 569,
+      "images": 0,
+      "liens": 0,
+      "mots": 158
+    },
+    {
+      "ordre": 9,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 852,
+      "images": 0,
+      "liens": 1,
+      "mots": 188
+    },
+    {
+      "ordre": 10,
+      "titre": null,
+      "hauteur": 138,
+      "images": 0,
+      "liens": 0,
+      "mots": 7
+    },
+    {
+      "ordre": 11,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 649,
+      "images": 0,
+      "liens": 0,
+      "mots": 99
+    },
+    {
+      "ordre": 12,
+      "titre": null,
+      "hauteur": 138,
+      "images": 0,
+      "liens": 0,
+      "mots": 5
+    },
+    {
+      "ordre": 13,
+      "titre": null,
+      "hauteur": 296,
+      "images": 0,
+      "liens": 1,
+      "mots": 28
+    },
+    {
+      "ordre": 14,
+      "titre": "Nos références",
+      "hauteur": 736,
+      "images": 6,
+      "liens": 7,
+      "mots": 152
+    },
+    {
+      "ordre": 15,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 24
+    },
+    {
+      "ordre": 16,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 521,
+      "images": 0,
+      "liens": 0,
+      "mots": 88
+    },
+    {
+      "ordre": 17,
+      "titre": "Les pages qui complètent celle-ci",
+      "hauteur": 696,
+      "images": 0,
+      "liens": 6,
+      "mots": 133
+    },
+    {
+      "ordre": 18,
+      "titre": "Besoin d'un interlocuteur qui vous dise honnêtement de quoi votre site a besoin ?",
+      "hauteur": 1012,
+      "images": 0,
+      "liens": 0,
+      "mots": 71
+    }
+  ]
+}

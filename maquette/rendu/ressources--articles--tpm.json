@@ -1,0 +1,53 @@
+{
+  "url": "/ressources/articles/tpm/",
+  "gabarit": "01 Article et fiche",
+  "verdict": "rendue",
+  "h1Attendu": "TPM, la maintenance productive totale",
+  "h1Rendu": "TPM, la maintenance productive totale",
+  "nbSections": 5,
+  "hauteurTotale": 9244,
+  "motsAnnonces": 1965,
+  "motsRendus": 2138,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 627,
+      "images": 1,
+      "liens": 4,
+      "mots": 111
+    },
+    {
+      "ordre": 1,
+      "titre": "01La TPM, une définition sans jargon",
+      "hauteur": 6124,
+      "images": 0,
+      "liens": 13,
+      "mots": 1680
+    },
+    {
+      "ordre": 2,
+      "titre": "Vos questions, nos réponses",
+      "hauteur": 702,
+      "images": 0,
+      "liens": 0,
+      "mots": 94
+    },
+    {
+      "ordre": 3,
+      "titre": "Sur le même sujet",
+      "hauteur": 426,
+      "images": 3,
+      "liens": 4,
+      "mots": 34
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 509,
+      "images": 0,
+      "liens": 2,
+      "mots": 42
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/eaton-mise-en-production/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas EATON : six techniciens pour faire démarrer un parc machines",
+  "h1Rendu": "Six techniciens pour faire démarrer un parc machines",
+  "nbSections": 10,
+  "hauteurTotale": 5814,
+  "motsAnnonces": 625,
+  "motsRendus": 858,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 520,
+      "images": 2,
+      "liens": 2,
+      "mots": 70
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 236,
+      "images": 0,
+      "liens": 0,
+      "mots": 30
+    },
+    {
+      "ordre": 2,
+      "titre": "Un parc machine neuf ne produit pas le jour où il arrive sur le quai.",
+      "hauteur": 458,
+      "images": 0,
+      "liens": 0,
+      "mots": 84
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 673,
+      "images": 0,
+      "liens": 0,
+      "mots": 108
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 420,
+      "images": 0,
+      "liens": 0,
+      "mots": 80
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 547,
+      "images": 1,
+      "liens": 0,
+      "mots": 40
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 515,
+      "images": 0,
+      "liens": 0,
+      "mots": 40
+    },
+    {
+      "ordre": 7,
+      "titre": "La situation",
+      "hauteur": 280,
+      "images": 0,
+      "liens": 0,
+      "mots": 63
+    },
+    {
+      "ordre": 8,
+      "titre": "Un parc machine qui arrive et personne pour le prendre en main ?",
+      "hauteur": 757,
+      "images": 0,
+      "liens": 0,
+      "mots": 122
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 551,
+      "images": 4,
+      "liens": 4,
+      "mots": 44
+    }
+  ]
+}

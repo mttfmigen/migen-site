@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/stellantis-fonderie-sept-fons/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas STELLANTIS : un parc de fonderie repris en huit semaines",
+  "h1Rendu": "Un parc de fonderie repris en huit semaines",
+  "nbSections": 10,
+  "hauteurTotale": 6265,
+  "motsAnnonces": 752,
+  "motsRendus": 983,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 520,
+      "images": 2,
+      "liens": 2,
+      "mots": 63
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 236,
+      "images": 0,
+      "liens": 0,
+      "mots": 26
+    },
+    {
+      "ordre": 2,
+      "titre": "Le parc machine était en défaillance constante.",
+      "hauteur": 759,
+      "images": 0,
+      "liens": 0,
+      "mots": 172
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 654,
+      "images": 0,
+      "liens": 0,
+      "mots": 116
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 442,
+      "images": 0,
+      "liens": 0,
+      "mots": 91
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 540,
+      "images": 1,
+      "liens": 0,
+      "mots": 36
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 539,
+      "images": 0,
+      "liens": 0,
+      "mots": 77
+    },
+    {
+      "ordre": 7,
+      "titre": "Chiffres clés",
+      "hauteur": 392,
+      "images": 0,
+      "liens": 0,
+      "mots": 75
+    },
+    {
+      "ordre": 8,
+      "titre": "Votre parc machine part en défaillance et vous n'avez pas les bras pour suivre ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 93
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 57
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "url": "/secteurs/industrie-lourde/",
+  "gabarit": "08 Secteur",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Maintenance dans l'industrie lourde",
+  "h1Rendu": "Des équipements lourds. Une remise en route rapide.",
+  "nbSections": 18,
+  "hauteurTotale": 9205,
+  "motsAnnonces": 1305,
+  "motsRendus": 1533,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 756,
+      "images": 0,
+      "liens": 1,
+      "mots": 111
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 218,
+      "images": 0,
+      "liens": 0,
+      "mots": 43
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 455,
+      "images": 87,
+      "liens": 0,
+      "mots": 10
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 29
+    },
+    {
+      "ordre": 5,
+      "titre": "Un broyeur ne se démonte pas à la clé plate.",
+      "hauteur": 553,
+      "images": 0,
+      "liens": 0,
+      "mots": 136
+    },
+    {
+      "ordre": 6,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 559,
+      "images": 0,
+      "liens": 0,
+      "mots": 271
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 135,
+      "images": 0,
+      "liens": 1,
+      "mots": 29
+    },
+    {
+      "ordre": 8,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 830,
+      "images": 0,
+      "liens": 1,
+      "mots": 130
+    },
+    {
+      "ordre": 9,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 624,
+      "images": 0,
+      "liens": 0,
+      "mots": 74
+    },
+    {
+      "ordre": 10,
+      "titre": null,
+      "hauteur": 333,
+      "images": 0,
+      "liens": 1,
+      "mots": 26
+    },
+    {
+      "ordre": 11,
+      "titre": "Les expertises d’un site aux charges lourdes",
+      "hauteur": 486,
+      "images": 0,
+      "liens": 4,
+      "mots": 66
+    },
+    {
+      "ordre": 12,
+      "titre": "Cinq façons de travailler ensemble, selon votre besoin",
+      "hauteur": 699,
+      "images": 5,
+      "liens": 5,
+      "mots": 141
+    },
+    {
+      "ordre": 13,
+      "titre": "Nos références",
+      "hauteur": 717,
+      "images": 6,
+      "liens": 7,
+      "mots": 133
+    },
+    {
+      "ordre": 14,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 29
+    },
+    {
+      "ordre": 15,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 536,
+      "images": 0,
+      "liens": 0,
+      "mots": 89
+    },
+    {
+      "ordre": 16,
+      "titre": "Ils nous ont confié une mission comparable",
+      "hauteur": 557,
+      "images": 4,
+      "liens": 5,
+      "mots": 74
+    },
+    {
+      "ordre": 17,
+      "titre": "Besoin d'un prestataire qui prépare avant d'arriver, plutôt que d'improviser sur place ?",
+      "hauteur": 1012,
+      "images": 0,
+      "liens": 0,
+      "mots": 74
+    }
+  ]
+}

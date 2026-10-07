@@ -1,0 +1,133 @@
+{
+  "url": "/carriere/alternance/",
+  "gabarit": "07 Métier et carrière",
+  "verdict": "rendue",
+  "h1Attendu": "Alternance maintenance industrielle",
+  "h1Rendu": "Alternance maintenance industrielle",
+  "nbSections": 15,
+  "hauteurTotale": 11188,
+  "motsAnnonces": 1871,
+  "motsRendus": 2064,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 703,
+      "images": 1,
+      "liens": 3,
+      "mots": 119
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 2,
+      "titre": "L'alternance en maintenance industrielle, en clair",
+      "hauteur": 714,
+      "images": 0,
+      "liens": 0,
+      "mots": 135
+    },
+    {
+      "ordre": 3,
+      "titre": "Quelle formation ? Du bac pro au BTS",
+      "hauteur": 752,
+      "images": 0,
+      "liens": 0,
+      "mots": 133
+    },
+    {
+      "ordre": 4,
+      "titre": "Ce que fait un alternant au quotidien",
+      "hauteur": 718,
+      "images": 0,
+      "liens": 0,
+      "mots": 149
+    },
+    {
+      "ordre": 5,
+      "titre": "Du stage à l'alternance : les voies d'accès",
+      "hauteur": 758,
+      "images": 0,
+      "liens": 0,
+      "mots": 224
+    },
+    {
+      "ordre": 6,
+      "titre": "Les compétences que vous développez",
+      "hauteur": 667,
+      "images": 0,
+      "liens": 0,
+      "mots": 126
+    },
+    {
+      "ordre": 7,
+      "titre": "La rémunération de l'alternance",
+      "hauteur": 553,
+      "images": 0,
+      "liens": 0,
+      "mots": 114
+    },
+    {
+      "ordre": 8,
+      "titre": "Les habilitations que nous finançons",
+      "hauteur": 801,
+      "images": 0,
+      "liens": 1,
+      "mots": 105
+    },
+    {
+      "ordre": 9,
+      "titre": "Le process de recrutement en 4 étapes",
+      "hauteur": 840,
+      "images": 0,
+      "liens": 0,
+      "mots": 198
+    },
+    {
+      "ordre": 10,
+      "titre": "Pourquoi faire son alternance chez Migen",
+      "hauteur": 890,
+      "images": 0,
+      "liens": 0,
+      "mots": 210
+    },
+    {
+      "ordre": 11,
+      "titre": "Nos offres d'alternance du moment",
+      "hauteur": 600,
+      "images": 0,
+      "liens": 0,
+      "mots": 105
+    },
+    {
+      "ordre": 12,
+      "titre": "Questions fréquentes",
+      "hauteur": 698,
+      "images": 0,
+      "liens": 1,
+      "mots": 106
+    },
+    {
+      "ordre": 13,
+      "titre": "Rejoindre Migen",
+      "hauteur": 944,
+      "images": 0,
+      "liens": 1,
+      "mots": 125
+    },
+    {
+      "ordre": 14,
+      "titre": null,
+      "hauteur": 481,
+      "images": 1,
+      "liens": 1,
+      "mots": 7
+    }
+  ]
+}

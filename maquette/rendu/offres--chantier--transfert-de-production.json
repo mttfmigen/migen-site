@@ -1,0 +1,157 @@
+{
+  "url": "/offres/chantier/transfert-de-production/",
+  "gabarit": "03 Offre et prestation",
+  "verdict": "rendue",
+  "h1Attendu": "Transfert de production",
+  "h1Rendu": "Transfert de production",
+  "nbSections": 18,
+  "hauteurTotale": 8746,
+  "motsAnnonces": 1196,
+  "motsRendus": 1209,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 660,
+      "images": 0,
+      "liens": 1,
+      "mots": 47
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 197,
+      "images": 0,
+      "liens": 0,
+      "mots": 33
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 114,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 5,
+      "titre": null,
+      "hauteur": 504,
+      "images": 1,
+      "liens": 0,
+      "mots": 56
+    },
+    {
+      "ordre": 6,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 539,
+      "images": 0,
+      "liens": 0,
+      "mots": 133
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 112,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 8,
+      "titre": null,
+      "hauteur": 191,
+      "images": 0,
+      "liens": 0,
+      "mots": 33
+    },
+    {
+      "ordre": 9,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 830,
+      "images": 0,
+      "liens": 1,
+      "mots": 151
+    },
+    {
+      "ordre": 10,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 699,
+      "images": 0,
+      "liens": 0,
+      "mots": 123
+    },
+    {
+      "ordre": 11,
+      "titre": null,
+      "hauteur": 320,
+      "images": 0,
+      "liens": 1,
+      "mots": 35
+    },
+    {
+      "ordre": 12,
+      "titre": "Nos références",
+      "hauteur": 736,
+      "images": 5,
+      "liens": 6,
+      "mots": 145
+    },
+    {
+      "ordre": 13,
+      "titre": null,
+      "hauteur": 114,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 14,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 521,
+      "images": 0,
+      "liens": 0,
+      "mots": 87
+    },
+    {
+      "ordre": 15,
+      "titre": "Les pages qui complètent celle-ci",
+      "hauteur": 696,
+      "images": 0,
+      "liens": 6,
+      "mots": 78
+    },
+    {
+      "ordre": 16,
+      "titre": "Ils nous ont confié une mission comparable",
+      "hauteur": 884,
+      "images": 5,
+      "liens": 6,
+      "mots": 119
+    },
+    {
+      "ordre": 17,
+      "titre": "Besoin d'un regard extérieur avant d'arrêter la date de bascule ?",
+      "hauteur": 964,
+      "images": 0,
+      "liens": 0,
+      "mots": 58
+    }
+  ]
+}

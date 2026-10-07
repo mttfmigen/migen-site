@@ -1,0 +1,383 @@
+{
+  "date": "2026-10-05T20:56:33.070Z",
+  "maquette": "http://localhost:4352/autonome.html",
+  "compte": {
+    "rendue-sans-titre": 3,
+    "fichier-contenu-manquant": 17,
+    "rendue-h1-different": 27
+  },
+  "resultats": [
+    {
+      "url": "/bureau-etudes/bureau-etude-electronique/",
+      "gabarit": "03 Offre et prestation",
+      "verdict": "rendue-sans-titre",
+      "nbSections": 19,
+      "hauteurTotale": 8972,
+      "motsAnnonces": 1453,
+      "motsRendus": 1347
+    },
+    {
+      "url": "/implantations/marseille/",
+      "gabarit": "04 Ville",
+      "verdict": "fichier-contenu-manquant",
+      "note": "l'index annonce Implantations/implantations--marseille.md, absent de l'export"
+    },
+    {
+      "url": "/offres/depannage-industriel/panne-machine/",
+      "gabarit": "03 Offre et prestation",
+      "verdict": "rendue-sans-titre",
+      "nbSections": 19,
+      "hauteurTotale": 9083,
+      "motsAnnonces": 1452,
+      "motsRendus": 1210
+    },
+    {
+      "url": "/offres/residence/prestataire-ou-salarie/",
+      "gabarit": "03 Offre et prestation",
+      "verdict": "rendue-sans-titre",
+      "nbSections": 18,
+      "hauteurTotale": 8827,
+      "motsAnnonces": 2155,
+      "motsRendus": 1419
+    },
+    {
+      "url": "/preuves/savoye/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 9,
+      "hauteurTotale": 5796,
+      "motsAnnonces": 602,
+      "motsRendus": 809
+    },
+    {
+      "url": "/preuves/dimomaint/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 9,
+      "hauteurTotale": 5598,
+      "motsAnnonces": 526,
+      "motsRendus": 741
+    },
+    {
+      "url": "/preuves/alstef-group/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 10,
+      "hauteurTotale": 6036,
+      "motsAnnonces": 602,
+      "motsRendus": 849
+    },
+    {
+      "url": "/preuves/amazon-nouveau-site/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 10,
+      "hauteurTotale": 5912,
+      "motsAnnonces": 604,
+      "motsRendus": 829
+    },
+    {
+      "url": "/preuves/danone-lignes-de-production/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 10,
+      "hauteurTotale": 5814,
+      "motsAnnonces": 575,
+      "motsRendus": 742
+    },
+    {
+      "url": "/preuves/eiffage/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 10,
+      "hauteurTotale": 6532,
+      "motsAnnonces": 703,
+      "motsRendus": 970
+    },
+    {
+      "url": "/preuves/fdj/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 10,
+      "hauteurTotale": 5643,
+      "motsAnnonces": 489,
+      "motsRendus": 691
+    },
+    {
+      "url": "/preuves/groupe-atlantic/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 10,
+      "hauteurTotale": 6208,
+      "motsAnnonces": 692,
+      "motsRendus": 936
+    },
+    {
+      "url": "/preuves/jtekt/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 10,
+      "hauteurTotale": 6084,
+      "motsAnnonces": 602,
+      "motsRendus": 849
+    },
+    {
+      "url": "/preuves/mersen/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 10,
+      "hauteurTotale": 6128,
+      "motsAnnonces": 677,
+      "motsRendus": 913
+    },
+    {
+      "url": "/preuves/orthus-ecocem/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 10,
+      "hauteurTotale": 6286,
+      "motsAnnonces": 642,
+      "motsRendus": 907
+    },
+    {
+      "url": "/preuves/soprema/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 10,
+      "hauteurTotale": 6174,
+      "motsAnnonces": 609,
+      "motsRendus": 904
+    },
+    {
+      "url": "/preuves/stellantis-grand-est/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 10,
+      "hauteurTotale": 6061,
+      "motsAnnonces": 634,
+      "motsRendus": 872
+    },
+    {
+      "url": "/preuves/timescope/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 10,
+      "hauteurTotale": 6430,
+      "motsAnnonces": 698,
+      "motsRendus": 949
+    },
+    {
+      "url": "/preuves/veepee-sites-lyon/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 10,
+      "hauteurTotale": 5757,
+      "motsAnnonces": 540,
+      "motsRendus": 705
+    },
+    {
+      "url": "/preuves/vpk/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 10,
+      "hauteurTotale": 5533,
+      "motsAnnonces": 456,
+      "motsRendus": 664
+    },
+    {
+      "url": "/secteurs/aeronautique/",
+      "gabarit": "08 Secteur",
+      "verdict": "rendue-h1-different",
+      "nbSections": 19,
+      "hauteurTotale": 10051,
+      "motsAnnonces": 1297,
+      "motsRendus": 1600
+    },
+    {
+      "url": "/secteurs/automobile/",
+      "gabarit": "08 Secteur",
+      "verdict": "rendue-h1-different",
+      "nbSections": 19,
+      "hauteurTotale": 9742,
+      "motsAnnonces": 1309,
+      "motsRendus": 1631
+    },
+    {
+      "url": "/secteurs/industrie-lourde/",
+      "gabarit": "08 Secteur",
+      "verdict": "rendue-h1-different",
+      "nbSections": 18,
+      "hauteurTotale": 9205,
+      "motsAnnonces": 1305,
+      "motsRendus": 1533
+    },
+    {
+      "url": "/secteurs/logistique/",
+      "gabarit": "08 Secteur",
+      "verdict": "rendue-h1-different",
+      "nbSections": 20,
+      "hauteurTotale": 9766,
+      "motsAnnonces": 1310,
+      "motsRendus": 1615
+    },
+    {
+      "url": "/secteurs/logistique/peak-season/",
+      "gabarit": "08 Secteur",
+      "verdict": "rendue-h1-different",
+      "nbSections": 17,
+      "hauteurTotale": 8356,
+      "motsAnnonces": 1346,
+      "motsRendus": 1411
+    },
+    {
+      "url": "/secteurs/nucleaire/",
+      "gabarit": "08 Secteur",
+      "verdict": "rendue-h1-different",
+      "nbSections": 18,
+      "hauteurTotale": 9403,
+      "motsAnnonces": 1380,
+      "motsRendus": 1619
+    },
+    {
+      "url": "/preuves/atena-port-la-rochelle/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 8,
+      "hauteurTotale": 4865,
+      "motsAnnonces": 465,
+      "motsRendus": 643
+    },
+    {
+      "url": "/preuves/jeld-wen/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 8,
+      "hauteurTotale": 4899,
+      "motsAnnonces": 381,
+      "motsRendus": 564
+    },
+    {
+      "url": "/preuves/tournaire/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 8,
+      "hauteurTotale": 4939,
+      "motsAnnonces": 436,
+      "motsRendus": 612
+    },
+    {
+      "url": "/preuves/motherson/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 8,
+      "hauteurTotale": 4941,
+      "motsAnnonces": 392,
+      "motsRendus": 597
+    },
+    {
+      "url": "/preuves/la-panetiere/",
+      "gabarit": "02 Étude de cas",
+      "verdict": "rendue-h1-different",
+      "nbSections": 8,
+      "hauteurTotale": 4605,
+      "motsAnnonces": 317,
+      "motsRendus": 519
+    },
+    {
+      "url": "/implantations/maintenance-industrielle-amiens/",
+      "gabarit": "04 Ville",
+      "verdict": "fichier-contenu-manquant",
+      "note": "l'index annonce Implantations/implantations--maintenance-industrielle-amiens.md, absent de l'export"
+    },
+    {
+      "url": "/implantations/maintenance-industrielle-nancy/",
+      "gabarit": "04 Ville",
+      "verdict": "fichier-contenu-manquant",
+      "note": "l'index annonce Implantations/implantations--maintenance-industrielle-nancy.md, absent de l'export"
+    },
+    {
+      "url": "/implantations/marseille/toulon/",
+      "gabarit": "04 Ville",
+      "verdict": "fichier-contenu-manquant",
+      "note": "l'index annonce Implantations/implantations--marseille--toulon.md, absent de l'export"
+    },
+    {
+      "url": "/implantations/maintenance-industrielle-bayonne/",
+      "gabarit": "04 Ville",
+      "verdict": "fichier-contenu-manquant",
+      "note": "l'index annonce Implantations/implantations--maintenance-industrielle-bayonne.md, absent de l'export"
+    },
+    {
+      "url": "/implantations/maintenance-industrielle-cherbourg/",
+      "gabarit": "04 Ville",
+      "verdict": "fichier-contenu-manquant",
+      "note": "l'index annonce Implantations/implantations--maintenance-industrielle-cherbourg.md, absent de l'export"
+    },
+    {
+      "url": "/implantations/maintenance-industrielle-la-rochelle/",
+      "gabarit": "04 Ville",
+      "verdict": "fichier-contenu-manquant",
+      "note": "l'index annonce Implantations/implantations--maintenance-industrielle-la-rochelle.md, absent de l'export"
+    },
+    {
+      "url": "/implantations/maintenance-industrielle-niort/",
+      "gabarit": "04 Ville",
+      "verdict": "fichier-contenu-manquant",
+      "note": "l'index annonce Implantations/implantations--maintenance-industrielle-niort.md, absent de l'export"
+    },
+    {
+      "url": "/implantations/maintenance-industrielle-calais/",
+      "gabarit": "04 Ville",
+      "verdict": "fichier-contenu-manquant",
+      "note": "l'index annonce Implantations/implantations--maintenance-industrielle-calais.md, absent de l'export"
+    },
+    {
+      "url": "/implantations/maintenance-industrielle-chartres/",
+      "gabarit": "04 Ville",
+      "verdict": "fichier-contenu-manquant",
+      "note": "l'index annonce Implantations/implantations--maintenance-industrielle-chartres.md, absent de l'export"
+    },
+    {
+      "url": "/implantations/maintenance-industrielle-chalon-sur-saone/",
+      "gabarit": "04 Ville",
+      "verdict": "fichier-contenu-manquant",
+      "note": "l'index annonce Implantations/implantations--maintenance-industrielle-chalon-sur-saone.md, absent de l'export"
+    },
+    {
+      "url": "/implantations/maintenance-industrielle-annecy/",
+      "gabarit": "04 Ville",
+      "verdict": "fichier-contenu-manquant",
+      "note": "l'index annonce Implantations/implantations--maintenance-industrielle-annecy.md, absent de l'export"
+    },
+    {
+      "url": "/implantations/maintenance-industrielle-albi/",
+      "gabarit": "04 Ville",
+      "verdict": "fichier-contenu-manquant",
+      "note": "l'index annonce Implantations/implantations--maintenance-industrielle-albi.md, absent de l'export"
+    },
+    {
+      "url": "/implantations/maintenance-industrielle-agen/",
+      "gabarit": "04 Ville",
+      "verdict": "fichier-contenu-manquant",
+      "note": "l'index annonce Implantations/implantations--maintenance-industrielle-agen.md, absent de l'export"
+    },
+    {
+      "url": "/implantations/maintenance-industrielle-beziers/",
+      "gabarit": "04 Ville",
+      "verdict": "fichier-contenu-manquant",
+      "note": "l'index annonce Implantations/implantations--maintenance-industrielle-beziers.md, absent de l'export"
+    },
+    {
+      "url": "/implantations/maintenance-industrielle-saint-quentin/",
+      "gabarit": "04 Ville",
+      "verdict": "fichier-contenu-manquant",
+      "note": "l'index annonce Implantations/implantations--maintenance-industrielle-saint-quentin.md, absent de l'export"
+    },
+    {
+      "url": "/implantations/maintenance-industrielle-quimper/",
+      "gabarit": "04 Ville",
+      "verdict": "fichier-contenu-manquant",
+      "note": "l'index annonce Implantations/implantations--maintenance-industrielle-quimper.md, absent de l'export"
+    }
+  ]
+}

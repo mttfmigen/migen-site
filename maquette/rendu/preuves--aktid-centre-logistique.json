@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/aktid-centre-logistique/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas AKTID : un centre logistique monté en six semaines",
+  "h1Rendu": "Un centre logistique monté en six semaines",
+  "nbSections": 10,
+  "hauteurTotale": 5780,
+  "motsAnnonces": 619,
+  "motsRendus": 834,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 520,
+      "images": 2,
+      "liens": 2,
+      "mots": 60
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 20
+    },
+    {
+      "ordre": 2,
+      "titre": "Un montage qui glisse, c'est une mise en service qui glisse, et toute l'exploitation derrière.",
+      "hauteur": 483,
+      "images": 0,
+      "liens": 0,
+      "mots": 90
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 654,
+      "images": 0,
+      "liens": 0,
+      "mots": 110
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 442,
+      "images": 0,
+      "liens": 0,
+      "mots": 89
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 540,
+      "images": 1,
+      "liens": 0,
+      "mots": 28
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 515,
+      "images": 0,
+      "liens": 0,
+      "mots": 51
+    },
+    {
+      "ordre": 7,
+      "titre": "La situation",
+      "hauteur": 232,
+      "images": 0,
+      "liens": 0,
+      "mots": 39
+    },
+    {
+      "ordre": 8,
+      "titre": "Un montage à tenir sur une date qui ne bouge pas ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 128
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 42
+    }
+  ]
+}

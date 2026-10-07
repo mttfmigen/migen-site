@@ -1,0 +1,189 @@
+{
+  "url": "/carriere/technicien-de-maintenance/formation/",
+  "gabarit": "07 Métier et carrière",
+  "verdict": "rendue",
+  "h1Attendu": "Formation technicien de maintenance",
+  "h1Rendu": "Formation technicien de maintenance",
+  "nbSections": 22,
+  "hauteurTotale": 14509,
+  "motsAnnonces": 2548,
+  "motsRendus": 2619,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 757,
+      "images": 1,
+      "liens": 3,
+      "mots": 163
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 2,
+      "titre": "Le métier auquel prépare la formation",
+      "hauteur": 753,
+      "images": 0,
+      "liens": 0,
+      "mots": 173
+    },
+    {
+      "ordre": 3,
+      "titre": "Les diplômes et leur niveau",
+      "hauteur": 684,
+      "images": 0,
+      "liens": 0,
+      "mots": 125
+    },
+    {
+      "ordre": 4,
+      "titre": "Du bac pro à la licence pro",
+      "hauteur": 325,
+      "images": 0,
+      "liens": 0,
+      "mots": 41
+    },
+    {
+      "ordre": 5,
+      "titre": "Se former en alternance",
+      "hauteur": 771,
+      "images": 0,
+      "liens": 2,
+      "mots": 154
+    },
+    {
+      "ordre": 6,
+      "titre": "La formation continue et la reconversion adulte",
+      "hauteur": 859,
+      "images": 0,
+      "liens": 0,
+      "mots": 182
+    },
+    {
+      "ordre": 7,
+      "titre": "Le titre professionnel, voie rapide",
+      "hauteur": 325,
+      "images": 0,
+      "liens": 0,
+      "mots": 48
+    },
+    {
+      "ordre": 8,
+      "titre": "Où se former : lycées, centres et organismes",
+      "hauteur": 832,
+      "images": 0,
+      "liens": 1,
+      "mots": 149
+    },
+    {
+      "ordre": 9,
+      "titre": "L'apprentissage par blocs",
+      "hauteur": 641,
+      "images": 0,
+      "liens": 0,
+      "mots": 92
+    },
+    {
+      "ordre": 10,
+      "titre": "Formation technicien de maintenance : le programme",
+      "hauteur": 731,
+      "images": 0,
+      "liens": 1,
+      "mots": 176
+    },
+    {
+      "ordre": 11,
+      "titre": "Les travaux pratiques comptent double",
+      "hauteur": 510,
+      "images": 0,
+      "liens": 0,
+      "mots": 87
+    },
+    {
+      "ordre": 12,
+      "titre": "Vérifier avant de s'inscrire",
+      "hauteur": 420,
+      "images": 0,
+      "liens": 0,
+      "mots": 76
+    },
+    {
+      "ordre": 13,
+      "titre": "Financer sa formation",
+      "hauteur": 640,
+      "images": 0,
+      "liens": 0,
+      "mots": 100
+    },
+    {
+      "ordre": 14,
+      "titre": "Habilitations et certifications",
+      "hauteur": 801,
+      "images": 0,
+      "liens": 1,
+      "mots": 110
+    },
+    {
+      "ordre": 15,
+      "titre": "Après la formation : emploi et évolution",
+      "hauteur": 661,
+      "images": 0,
+      "liens": 2,
+      "mots": 137
+    },
+    {
+      "ordre": 16,
+      "titre": "Du terrain vers l'ingénieur",
+      "hauteur": 622,
+      "images": 0,
+      "liens": 0,
+      "mots": 177
+    },
+    {
+      "ordre": 17,
+      "titre": "Se former, puis nous rejoindre",
+      "hauteur": 577,
+      "images": 0,
+      "liens": 0,
+      "mots": 113
+    },
+    {
+      "ordre": 18,
+      "titre": "Comment nous rejoindre",
+      "hauteur": 454,
+      "images": 0,
+      "liens": 0,
+      "mots": 70
+    },
+    {
+      "ordre": 19,
+      "titre": "Questions fréquentes",
+      "hauteur": 640,
+      "images": 0,
+      "liens": 1,
+      "mots": 95
+    },
+    {
+      "ordre": 20,
+      "titre": "Rejoindre Migen",
+      "hauteur": 944,
+      "images": 0,
+      "liens": 1,
+      "mots": 125
+    },
+    {
+      "ordre": 21,
+      "titre": null,
+      "hauteur": 495,
+      "images": 3,
+      "liens": 3,
+      "mots": 18
+    }
+  ]
+}

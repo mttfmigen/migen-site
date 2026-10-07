@@ -1,0 +1,77 @@
+{
+  "url": "/preuves/rector-lesage/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas RECTOR LESAGE : un technicien au cœur d’une ligne de préfabrication béton",
+  "h1Rendu": "Un technicien au cœur d’une ligne de préfabrication béton",
+  "nbSections": 8,
+  "hauteurTotale": 4805,
+  "motsAnnonces": 383,
+  "motsRendus": 571,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 520,
+      "images": 2,
+      "liens": 2,
+      "mots": 85
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 18
+    },
+    {
+      "ordre": 2,
+      "titre": "Le béton, abrasif et poussiéreux, use vite les équipements",
+      "hauteur": 390,
+      "images": 0,
+      "liens": 0,
+      "mots": 59
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 450,
+      "images": 0,
+      "liens": 0,
+      "mots": 39
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 397,
+      "images": 0,
+      "liens": 0,
+      "mots": 48
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 696,
+      "images": 1,
+      "liens": 0,
+      "mots": 41
+    },
+    {
+      "ordre": 6,
+      "titre": "Un besoin comparable sur votre site ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 67
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 551,
+      "images": 4,
+      "liens": 4,
+      "mots": 37
+    }
+  ]
+}

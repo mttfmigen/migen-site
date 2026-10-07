@@ -1,0 +1,157 @@
+{
+  "url": "/offres/residence/prestataire-ou-salarie/",
+  "gabarit": "03 Offre et prestation",
+  "verdict": "rendue-sans-titre",
+  "h1Attendu": "Prestataire ou salarié : le comparatif honnête",
+  "h1Rendu": "",
+  "nbSections": 18,
+  "hauteurTotale": 8827,
+  "motsAnnonces": 2155,
+  "motsRendus": 1419,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 660,
+      "images": 0,
+      "liens": 1,
+      "mots": 44
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 197,
+      "images": 0,
+      "liens": 0,
+      "mots": 30
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 114,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 5,
+      "titre": null,
+      "hauteur": 591,
+      "images": 0,
+      "liens": 0,
+      "mots": 136
+    },
+    {
+      "ordre": 6,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 559,
+      "images": 0,
+      "liens": 0,
+      "mots": 178
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 112,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 8,
+      "titre": "Migen Résidence : le technicien intégré sur site",
+      "hauteur": 198,
+      "images": 0,
+      "liens": 0,
+      "mots": 55
+    },
+    {
+      "ordre": 9,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 853,
+      "images": 0,
+      "liens": 1,
+      "mots": 144
+    },
+    {
+      "ordre": 10,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 673,
+      "images": 0,
+      "liens": 0,
+      "mots": 154
+    },
+    {
+      "ordre": 11,
+      "titre": null,
+      "hauteur": 243,
+      "images": 0,
+      "liens": 1,
+      "mots": 4
+    },
+    {
+      "ordre": 12,
+      "titre": "Nos références",
+      "hauteur": 838,
+      "images": 6,
+      "liens": 7,
+      "mots": 218
+    },
+    {
+      "ordre": 13,
+      "titre": null,
+      "hauteur": 114,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 14,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 773,
+      "images": 0,
+      "liens": 0,
+      "mots": 145
+    },
+    {
+      "ordre": 15,
+      "titre": "Les pages qui complètent celle-ci",
+      "hauteur": 696,
+      "images": 0,
+      "liens": 6,
+      "mots": 78
+    },
+    {
+      "ordre": 16,
+      "titre": "Ils nous ont confié une mission comparable",
+      "hauteur": 578,
+      "images": 4,
+      "liens": 5,
+      "mots": 75
+    },
+    {
+      "ordre": 17,
+      "titre": null,
+      "hauteur": 964,
+      "images": 0,
+      "liens": 0,
+      "mots": 47
+    }
+  ]
+}

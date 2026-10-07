@@ -1,0 +1,53 @@
+{
+  "url": "/ressources/fiches-techniques/trs/",
+  "gabarit": "01 Article et fiche",
+  "verdict": "rendue",
+  "h1Attendu": "TRS : le taux de rendement synthétique",
+  "h1Rendu": "TRS : le taux de rendement synthétique",
+  "nbSections": 5,
+  "hauteurTotale": 9415,
+  "motsAnnonces": 2242,
+  "motsRendus": 2348,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 714,
+      "images": 1,
+      "liens": 4,
+      "mots": 157
+    },
+    {
+      "ordre": 1,
+      "titre": "01Une définition en trois taux",
+      "hauteur": 6157,
+      "images": 0,
+      "liens": 12,
+      "mots": 1824
+    },
+    {
+      "ordre": 2,
+      "titre": "Vos questions, nos réponses",
+      "hauteur": 753,
+      "images": 0,
+      "liens": 0,
+      "mots": 116
+    },
+    {
+      "ordre": 3,
+      "titre": "Sur le même sujet",
+      "hauteur": 426,
+      "images": 3,
+      "liens": 4,
+      "mots": 32
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 509,
+      "images": 0,
+      "liens": 2,
+      "mots": 42
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "url": "/carriere/roboticien/",
+  "gabarit": "07 Métier et carrière",
+  "verdict": "rendue",
+  "h1Attendu": "Roboticien",
+  "h1Rendu": "Roboticien",
+  "nbSections": 14,
+  "hauteurTotale": 10556,
+  "motsAnnonces": 1662,
+  "motsRendus": 1832,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 664,
+      "images": 1,
+      "liens": 3,
+      "mots": 140
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 2,
+      "titre": "Ce que fait un roboticien au quotidien",
+      "hauteur": 950,
+      "images": 0,
+      "liens": 0,
+      "mots": 200
+    },
+    {
+      "ordre": 3,
+      "titre": "Les robots et technologies maîtrisés",
+      "hauteur": 652,
+      "images": 0,
+      "liens": 0,
+      "mots": 87
+    },
+    {
+      "ordre": 4,
+      "titre": "Habilitations, sécurité et normes",
+      "hauteur": 623,
+      "images": 0,
+      "liens": 1,
+      "mots": 105
+    },
+    {
+      "ordre": 5,
+      "titre": "Devenir roboticien : formation et parcours",
+      "hauteur": 763,
+      "images": 0,
+      "liens": 0,
+      "mots": 169
+    },
+    {
+      "ordre": 6,
+      "titre": "Les compétences qui font la différence",
+      "hauteur": 924,
+      "images": 0,
+      "liens": 0,
+      "mots": 187
+    },
+    {
+      "ordre": 7,
+      "titre": "Salaire d'un roboticien",
+      "hauteur": 756,
+      "images": 0,
+      "liens": 1,
+      "mots": 127
+    },
+    {
+      "ordre": 8,
+      "titre": "Comment évolue un roboticien",
+      "hauteur": 814,
+      "images": 0,
+      "liens": 0,
+      "mots": 146
+    },
+    {
+      "ordre": 9,
+      "titre": "Roboticien chez Migen : le cadre et les moyens",
+      "hauteur": 690,
+      "images": 0,
+      "liens": 0,
+      "mots": 116
+    },
+    {
+      "ordre": 10,
+      "titre": "Comment rejoindre nos équipes",
+      "hauteur": 549,
+      "images": 0,
+      "liens": 0,
+      "mots": 102
+    },
+    {
+      "ordre": 11,
+      "titre": "Questions fréquentes",
+      "hauteur": 665,
+      "images": 0,
+      "liens": 1,
+      "mots": 104
+    },
+    {
+      "ordre": 12,
+      "titre": "Rejoindre Migen",
+      "hauteur": 944,
+      "images": 0,
+      "liens": 1,
+      "mots": 125
+    },
+    {
+      "ordre": 13,
+      "titre": null,
+      "hauteur": 495,
+      "images": 3,
+      "liens": 3,
+      "mots": 16
+    }
+  ]
+}

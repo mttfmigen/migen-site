@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/eiffage/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
+  "h1Rendu": "Le préventif d’une centrale photovoltaïque en trois techniciens",
+  "nbSections": 10,
+  "hauteurTotale": 6532,
+  "motsAnnonces": 703,
+  "motsRendus": 970,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 566,
+      "images": 2,
+      "liens": 2,
+      "mots": 64
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 236,
+      "images": 0,
+      "liens": 0,
+      "mots": 23
+    },
+    {
+      "ordre": 2,
+      "titre": "Sur une centrale solaire, un onduleur qui fatigue ne fait pas de bruit.",
+      "hauteur": 785,
+      "images": 0,
+      "liens": 0,
+      "mots": 169
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 654,
+      "images": 0,
+      "liens": 0,
+      "mots": 105
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 442,
+      "images": 0,
+      "liens": 0,
+      "mots": 81
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 696,
+      "images": 1,
+      "liens": 0,
+      "mots": 33
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 517,
+      "images": 0,
+      "liens": 0,
+      "mots": 42
+    },
+    {
+      "ordre": 7,
+      "titre": "Chiffres clés",
+      "hauteur": 452,
+      "images": 0,
+      "liens": 0,
+      "mots": 109
+    },
+    {
+      "ordre": 8,
+      "titre": "Un chantier qui demande plus de bras que votre équipe n'en a ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 111
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 56
+    }
+  ]
+}

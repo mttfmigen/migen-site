@@ -1,0 +1,85 @@
+{
+  "url": "/preuves/savoye/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+  "h1Rendu": "Une alliance pour tenir les installations intralogistiques de ses clients",
+  "nbSections": 9,
+  "hauteurTotale": 5796,
+  "motsAnnonces": 602,
+  "motsRendus": 809,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 583,
+      "images": 2,
+      "liens": 2,
+      "mots": 72
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 236,
+      "images": 0,
+      "liens": 0,
+      "mots": 28
+    },
+    {
+      "ordre": 2,
+      "titre": "Un intégrateur installe des systèmes complexes chez ses clients, mais ne peut pas y maintenir une équipe en permanence.",
+      "hauteur": 573,
+      "images": 0,
+      "liens": 0,
+      "mots": 109
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 654,
+      "images": 0,
+      "liens": 0,
+      "mots": 93
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 397,
+      "images": 0,
+      "liens": 0,
+      "mots": 65
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 696,
+      "images": 1,
+      "liens": 0,
+      "mots": 42
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 515,
+      "images": 0,
+      "liens": 0,
+      "mots": 50
+    },
+    {
+      "ordre": 7,
+      "titre": "Vous exploitez un site logistique automatisé ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 132
+    },
+    {
+      "ordre": 8,
+      "titre": null,
+      "hauteur": 551,
+      "images": 4,
+      "liens": 4,
+      "mots": 41
+    }
+  ]
+}

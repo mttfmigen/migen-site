@@ -1,0 +1,157 @@
+{
+  "url": "/offres/arret-technique/",
+  "gabarit": "03 Offre et prestation",
+  "verdict": "rendue",
+  "h1Attendu": "Arrêt technique de maintenance industrielle",
+  "h1Rendu": "Arrêt technique de maintenance industrielle",
+  "nbSections": 18,
+  "hauteurTotale": 8730,
+  "motsAnnonces": 1427,
+  "motsRendus": 1497,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 708,
+      "images": 0,
+      "liens": 1,
+      "mots": 99
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 176,
+      "images": 0,
+      "liens": 0,
+      "mots": 27
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 24
+    },
+    {
+      "ordre": 5,
+      "titre": "Le retard de toute l'année s'est accumulé, et vous avez quelques jours pour le rattraper.",
+      "hauteur": 592,
+      "images": 0,
+      "liens": 0,
+      "mots": 123
+    },
+    {
+      "ordre": 6,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 620,
+      "images": 0,
+      "liens": 0,
+      "mots": 259
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 135,
+      "images": 0,
+      "liens": 1,
+      "mots": 24
+    },
+    {
+      "ordre": 8,
+      "titre": null,
+      "hauteur": 165,
+      "images": 0,
+      "liens": 0,
+      "mots": 23
+    },
+    {
+      "ordre": 9,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 875,
+      "images": 0,
+      "liens": 1,
+      "mots": 186
+    },
+    {
+      "ordre": 10,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 747,
+      "images": 0,
+      "liens": 0,
+      "mots": 148
+    },
+    {
+      "ordre": 11,
+      "titre": null,
+      "hauteur": 296,
+      "images": 0,
+      "liens": 1,
+      "mots": 19
+    },
+    {
+      "ordre": 12,
+      "titre": "Nos références",
+      "hauteur": 717,
+      "images": 5,
+      "liens": 6,
+      "mots": 114
+    },
+    {
+      "ordre": 13,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 24
+    },
+    {
+      "ordre": 14,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 521,
+      "images": 0,
+      "liens": 0,
+      "mots": 91
+    },
+    {
+      "ordre": 15,
+      "titre": "Un autre besoin ? Il a son offre.",
+      "hauteur": 648,
+      "images": 0,
+      "liens": 5,
+      "mots": 127
+    },
+    {
+      "ordre": 16,
+      "titre": "Ils nous ont confié une mission comparable",
+      "hauteur": 578,
+      "images": 4,
+      "liens": 5,
+      "mots": 69
+    },
+    {
+      "ordre": 17,
+      "titre": "Besoin de commencer la préparation avant qu'il soit trop tard pour arbitrer ?",
+      "hauteur": 1012,
+      "images": 0,
+      "liens": 0,
+      "mots": 68
+    }
+  ]
+}

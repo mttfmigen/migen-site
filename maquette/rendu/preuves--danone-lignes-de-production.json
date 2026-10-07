@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/danone-lignes-de-production/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas DANONE (BLÉDINA) : pas un poste sans maintenance, week-end compris",
+  "h1Rendu": "Pas un poste sans maintenance, week-end compris",
+  "nbSections": 10,
+  "hauteurTotale": 5814,
+  "motsAnnonces": 575,
+  "motsRendus": 742,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 523,
+      "images": 2,
+      "liens": 2,
+      "mots": 93
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 21
+    },
+    {
+      "ordre": 2,
+      "titre": "Une ligne de lait infantile qui s'arrête, c'est une production qui ne se rattrape pas sans risque sur la qualité",
+      "hauteur": 446,
+      "images": 0,
+      "liens": 0,
+      "mots": 90
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 654,
+      "images": 0,
+      "liens": 0,
+      "mots": 59
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 397,
+      "images": 0,
+      "liens": 0,
+      "mots": 60
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 716,
+      "images": 1,
+      "liens": 0,
+      "mots": 48
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 515,
+      "images": 0,
+      "liens": 0,
+      "mots": 40
+    },
+    {
+      "ordre": 7,
+      "titre": "Le résultat",
+      "hauteur": 232,
+      "images": 0,
+      "liens": 0,
+      "mots": 40
+    },
+    {
+      "ordre": 8,
+      "titre": "Votre maintenance tient la nuit avec l'effectif du jour ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 86
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 530,
+      "images": 4,
+      "liens": 4,
+      "mots": 28
+    }
+  ]
+}

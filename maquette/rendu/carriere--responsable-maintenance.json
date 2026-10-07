@@ -1,0 +1,125 @@
+{
+  "url": "/carriere/responsable-maintenance/",
+  "gabarit": "07 Métier et carrière",
+  "verdict": "rendue",
+  "h1Attendu": "Responsable maintenance",
+  "h1Rendu": "Responsable maintenance",
+  "nbSections": 14,
+  "hauteurTotale": 11327,
+  "motsAnnonces": 1921,
+  "motsRendus": 2067,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 757,
+      "images": 1,
+      "liens": 3,
+      "mots": 139
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 2,
+      "titre": "Ce que fait un responsable maintenance au quotidien",
+      "hauteur": 1001,
+      "images": 0,
+      "liens": 0,
+      "mots": 216
+    },
+    {
+      "ordre": 3,
+      "titre": "Les responsabilités clés du poste",
+      "hauteur": 870,
+      "images": 0,
+      "liens": 0,
+      "mots": 150
+    },
+    {
+      "ordre": 4,
+      "titre": "Les compétences et qualités qui font la différence",
+      "hauteur": 832,
+      "images": 0,
+      "liens": 0,
+      "mots": 176
+    },
+    {
+      "ordre": 5,
+      "titre": "Formation et parcours pour devenir responsable maintenance",
+      "hauteur": 881,
+      "images": 0,
+      "liens": 1,
+      "mots": 204
+    },
+    {
+      "ordre": 6,
+      "titre": "Habilitations, sécurité et normes",
+      "hauteur": 825,
+      "images": 0,
+      "liens": 1,
+      "mots": 110
+    },
+    {
+      "ordre": 7,
+      "titre": "Salaire et évolution du responsable maintenance",
+      "hauteur": 964,
+      "images": 0,
+      "liens": 1,
+      "mots": 192
+    },
+    {
+      "ordre": 8,
+      "titre": "Responsable maintenance chez Migen : le cadre et les moyens",
+      "hauteur": 753,
+      "images": 0,
+      "liens": 0,
+      "mots": 148
+    },
+    {
+      "ordre": 9,
+      "titre": "Emploi et recrutement : qui cherche un responsable maintenance",
+      "hauteur": 734,
+      "images": 0,
+      "liens": 1,
+      "mots": 178
+    },
+    {
+      "ordre": 10,
+      "titre": "Comment rejoindre nos équipes",
+      "hauteur": 549,
+      "images": 0,
+      "liens": 0,
+      "mots": 102
+    },
+    {
+      "ordre": 11,
+      "titre": "Questions fréquentes",
+      "hauteur": 656,
+      "images": 0,
+      "liens": 1,
+      "mots": 100
+    },
+    {
+      "ordre": 12,
+      "titre": "Rejoindre Migen",
+      "hauteur": 944,
+      "images": 0,
+      "liens": 1,
+      "mots": 125
+    },
+    {
+      "ordre": 13,
+      "titre": null,
+      "hauteur": 495,
+      "images": 3,
+      "liens": 3,
+      "mots": 19
+    }
+  ]
+}

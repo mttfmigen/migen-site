@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/valeo-usines/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas VALEO : deux usines accompagnées dans leur montée en cadence",
+  "h1Rendu": "Deux usines accompagnées dans leur montée en cadence",
+  "nbSections": 10,
+  "hauteurTotale": 5730,
+  "motsAnnonces": 553,
+  "motsRendus": 713,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 583,
+      "images": 2,
+      "liens": 2,
+      "mots": 76
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 261,
+      "images": 0,
+      "liens": 0,
+      "mots": 23
+    },
+    {
+      "ordre": 2,
+      "titre": "À Châtellerault, la production mêle mécanique de précision et cellules robotisées",
+      "hauteur": 390,
+      "images": 0,
+      "liens": 0,
+      "mots": 59
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 654,
+      "images": 0,
+      "liens": 0,
+      "mots": 56
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 397,
+      "images": 0,
+      "liens": 0,
+      "mots": 52
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 578,
+      "images": 1,
+      "liens": 0,
+      "mots": 38
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 515,
+      "images": 0,
+      "liens": 0,
+      "mots": 43
+    },
+    {
+      "ordre": 7,
+      "titre": "Le résultat",
+      "hauteur": 232,
+      "images": 0,
+      "liens": 0,
+      "mots": 36
+    },
+    {
+      "ordre": 8,
+      "titre": "Vos cadences montent plus vite que votre effectif de maintenance ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 122
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 530,
+      "images": 4,
+      "liens": 4,
+      "mots": 31
+    }
+  ]
+}

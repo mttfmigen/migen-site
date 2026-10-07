@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/veepee-sites-lyon/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas VEEPEE : des systèmes intralogistiques au rythme du e-commerce",
+  "h1Rendu": "Des systèmes intralogistiques au rythme du e-commerce",
+  "nbSections": 10,
+  "hauteurTotale": 5757,
+  "motsAnnonces": 540,
+  "motsRendus": 705,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 554,
+      "images": 2,
+      "liens": 2,
+      "mots": 88
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 187,
+      "images": 0,
+      "liens": 0,
+      "mots": 12
+    },
+    {
+      "ordre": 2,
+      "titre": "En e-commerce, un convoyeur à l'arrêt, ce sont des colis qui ne partent pas le jour promis",
+      "hauteur": 368,
+      "images": 0,
+      "liens": 0,
+      "mots": 59
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 654,
+      "images": 0,
+      "liens": 0,
+      "mots": 58
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 420,
+      "images": 0,
+      "liens": 0,
+      "mots": 56
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 696,
+      "images": 1,
+      "liens": 0,
+      "mots": 26
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 515,
+      "images": 0,
+      "liens": 0,
+      "mots": 56
+    },
+    {
+      "ordre": 7,
+      "titre": "Le résultat",
+      "hauteur": 179,
+      "images": 0,
+      "liens": 0,
+      "mots": 9
+    },
+    {
+      "ordre": 8,
+      "titre": "Un contrat de préventif à reprendre sans trou de couverture ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 120
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 44
+    }
+  ]
+}

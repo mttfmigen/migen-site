@@ -1,0 +1,149 @@
+{
+  "url": "/secteurs/logistique/maintenance-convoyeur/",
+  "gabarit": "08 Secteur",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Maintenance convoyeur",
+  "h1Rendu": "Un convoyeur à l’arrêt, c’est tout l’entrepôt à l’arrêt. On l’évite.",
+  "nbSections": 17,
+  "hauteurTotale": 8631,
+  "motsAnnonces": 1310,
+  "motsRendus": 1369,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 756,
+      "images": 0,
+      "liens": 1,
+      "mots": 116
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 176,
+      "images": 0,
+      "liens": 0,
+      "mots": 23
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 455,
+      "images": 86,
+      "liens": 0,
+      "mots": 10
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 29
+    },
+    {
+      "ordre": 5,
+      "titre": "Un rouleau à quarante euros bloque un jeudi matin.",
+      "hauteur": 821,
+      "images": 1,
+      "liens": 0,
+      "mots": 142
+    },
+    {
+      "ordre": 6,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 559,
+      "images": 0,
+      "liens": 0,
+      "mots": 278
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 135,
+      "images": 0,
+      "liens": 1,
+      "mots": 29
+    },
+    {
+      "ordre": 8,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 830,
+      "images": 0,
+      "liens": 1,
+      "mots": 146
+    },
+    {
+      "ordre": 9,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 599,
+      "images": 0,
+      "liens": 0,
+      "mots": 88
+    },
+    {
+      "ordre": 10,
+      "titre": null,
+      "hauteur": 296,
+      "images": 0,
+      "liens": 1,
+      "mots": 23
+    },
+    {
+      "ordre": 11,
+      "titre": "Les équipements que nous maintenons déjà",
+      "hauteur": 456,
+      "images": 8,
+      "liens": 0,
+      "mots": 27
+    },
+    {
+      "ordre": 12,
+      "titre": "Nos références",
+      "hauteur": 736,
+      "images": 5,
+      "liens": 6,
+      "mots": 128
+    },
+    {
+      "ordre": 13,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 29
+    },
+    {
+      "ordre": 14,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 506,
+      "images": 0,
+      "liens": 0,
+      "mots": 90
+    },
+    {
+      "ordre": 15,
+      "titre": "Ils nous ont confié une mission comparable",
+      "hauteur": 557,
+      "images": 4,
+      "liens": 5,
+      "mots": 70
+    },
+    {
+      "ordre": 16,
+      "titre": "Besoin de savoir ce que vos lignes vont vous coûter dans six mois ?",
+      "hauteur": 1012,
+      "images": 0,
+      "liens": 0,
+      "mots": 73
+    }
+  ]
+}

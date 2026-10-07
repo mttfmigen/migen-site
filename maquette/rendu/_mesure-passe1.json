@@ -1,0 +1,1939 @@
+{
+ "resultats": [
+  {
+   "url": "/a-propos/equipe/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue-ecran-natif",
+   "nbSections": 12,
+   "hauteurTotale": 6277,
+   "motsAnnonces": 842,
+   "motsRendus": 758
+  },
+  {
+   "url": "/bureau-etudes/mise-en-conformite-machine/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "echec",
+   "note": "page d'arrivée sans h1"
+  },
+  {
+   "url": "/carriere/automaticien/",
+   "gabarit": "07 Métier et carrière",
+   "verdict": "rendue",
+   "nbSections": 13,
+   "hauteurTotale": 9856,
+   "motsAnnonces": 1661,
+   "motsRendus": 1783
+  },
+  {
+   "url": "/carriere/electromecanicien/salaire/",
+   "gabarit": "07 Métier et carrière",
+   "verdict": "rendue",
+   "nbSections": 16,
+   "hauteurTotale": 10851,
+   "motsAnnonces": 1872,
+   "motsRendus": 1950
+  },
+  {
+   "url": "/carriere/technicien-de-maintenance/formation/",
+   "gabarit": "07 Métier et carrière",
+   "verdict": "rendue",
+   "nbSections": 22,
+   "hauteurTotale": 14509,
+   "motsAnnonces": 2548,
+   "motsRendus": 2619
+  },
+  {
+   "url": "/expertises/",
+   "gabarit": "10 Hub de rubrique",
+   "verdict": "rendue",
+   "nbSections": 20,
+   "hauteurTotale": 11134,
+   "motsAnnonces": 1619,
+   "motsRendus": 1652
+  },
+  {
+   "url": "/expertises/automatisme/siemens/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 9234,
+   "motsAnnonces": 1331,
+   "motsRendus": 1489
+  },
+  {
+   "url": "/expertises/hydraulique/verin-hydraulique/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 9447,
+   "motsAnnonces": 1478,
+   "motsRendus": 1591
+  },
+  {
+   "url": "/expertises/pneumatique/",
+   "gabarit": "09 Domaine",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 9202,
+   "motsAnnonces": 1164,
+   "motsRendus": 1451
+  },
+  {
+   "url": "/expertises/robotique/integrateur-robotique/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 9255,
+   "motsAnnonces": 1290,
+   "motsRendus": 1440
+  },
+  {
+   "url": "/expertises/tuyauterie/nettoyage/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 9206,
+   "motsAnnonces": 1326,
+   "motsRendus": 1426
+  },
+  {
+   "url": "/expertises/types-de-maintenance/maintenance-corrective/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 10179,
+   "motsAnnonces": 1632,
+   "motsRendus": 1778
+  },
+  {
+   "url": "/expertises/types-de-maintenance/maintenance-preventive/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 10582,
+   "motsAnnonces": 1658,
+   "motsRendus": 1836
+  },
+  {
+   "url": "/guides/reussir-un-transfert-industriel/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 20,
+   "hauteurTotale": 19179,
+   "motsAnnonces": 2706,
+   "motsRendus": 2944
+  },
+  {
+   "url": "/implantations/lyon/grenoble/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9816,
+   "motsAnnonces": 1339,
+   "motsRendus": 1602
+  },
+  {
+   "url": "/implantations/lyon/valence/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9659,
+   "motsAnnonces": 1296,
+   "motsRendus": 1593
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-clermont-ferrand/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9741,
+   "motsAnnonces": 1178,
+   "motsRendus": 1509
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-le-mans/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9613,
+   "motsAnnonces": 1150,
+   "motsRendus": 1512
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-montpellier/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9621,
+   "motsAnnonces": 1070,
+   "motsRendus": 1466
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-poitiers/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9436,
+   "motsAnnonces": 1226,
+   "motsRendus": 1536
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-valenciennes/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9716,
+   "motsAnnonces": 1088,
+   "motsRendus": 1479
+  },
+  {
+   "url": "/implantations/nantes/rennes/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9857,
+   "motsAnnonces": 1210,
+   "motsRendus": 1559
+  },
+  {
+   "url": "/implantations/strasbourg/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9790,
+   "motsAnnonces": 1300,
+   "motsRendus": 1593
+  },
+  {
+   "url": "/implantations/toulouse/bordeaux/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 10050,
+   "motsAnnonces": 1252,
+   "motsRendus": 1591
+  },
+  {
+   "url": "/offres/",
+   "gabarit": "10 Hub de rubrique",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9789,
+   "motsAnnonces": 1311,
+   "motsRendus": 1501
+  },
+  {
+   "url": "/offres/chantier/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "redirigee",
+   "vers": "/travaux-industriels/",
+   "note": "la maquette l'envoie sur /travaux-industriels/"
+  },
+  {
+   "url": "/offres/depannage-industriel/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "redirigee",
+   "vers": "/offres/zero-arret/",
+   "note": "la maquette l'envoie sur /offres/zero-arret/"
+  },
+  {
+   "url": "/offres/residence/cahier-des-charges/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "echec",
+   "note": "page d'arrivée sans h1"
+  },
+  {
+   "url": "/offres/retrofit/remise-en-etat/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 8485,
+   "motsAnnonces": 1155,
+   "motsRendus": 1128
+  },
+  {
+   "url": "/preuves/savoye/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Une alliance pour tenir les installations intralogistiques de ses clients » au lieu de « Étude de cas SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients »"
+  },
+  {
+   "url": "/preuves/alstef-group/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Des chantiers automatisés contrôlés point par point » au lieu de « Étude de cas ALSTEF GROUP : des chantiers automatisés contrôlés point par point »"
+  },
+  {
+   "url": "/preuves/danone-lignes-de-production/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Pas un poste sans maintenance, week-end compris » au lieu de « Étude de cas DANONE (BLÉDINA) : pas un poste sans maintenance, week-end compris »"
+  },
+  {
+   "url": "/preuves/fdj/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « L’intralogistique d’un grand site tenue en sous-traitance » au lieu de « Étude de cas CIUCH : l’intralogistique d’un grand site tenue en sous-traitance »"
+  },
+  {
+   "url": "/preuves/jtekt/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Voir la dérive avant que l’équipement critique ne tombe » au lieu de « Étude de cas JTEKT : voir la dérive avant que l’équipement critique ne tombe »"
+  },
+  {
+   "url": "/preuves/orthus-ecocem/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « De la parcelle au site de R&D, un seul pilote » au lieu de « Étude de cas ORTHUS x ECOCEM : de la parcelle au site de R&D, un seul pilote »"
+  },
+  {
+   "url": "/preuves/stellantis-grand-est/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Des dizaines de techniciens pour passer à l’électrique » au lieu de « Étude de cas STELLANTIS : des dizaines de techniciens pour passer à l’électrique »"
+  },
+  {
+   "url": "/preuves/veepee-sites-lyon/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Des systèmes intralogistiques au rythme du e-commerce » au lieu de « Étude de cas VEEPEE : des systèmes intralogistiques au rythme du e-commerce »"
+  },
+  {
+   "url": "/ressources/articles/",
+   "gabarit": "11 Sous-rubrique ressource",
+   "verdict": "rendue",
+   "nbSections": 4,
+   "hauteurTotale": 4611,
+   "motsAnnonces": 511,
+   "motsRendus": 803
+  },
+  {
+   "url": "/ressources/articles/gmao/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 9841,
+   "motsAnnonces": 2499,
+   "motsRendus": 2526
+  },
+  {
+   "url": "/ressources/articles/organiser-service-maintenance/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 8766,
+   "motsAnnonces": 2070,
+   "motsRendus": 2103
+  },
+  {
+   "url": "/ressources/articles/preventive-ou-corrective/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 10745,
+   "motsAnnonces": 2472,
+   "motsRendus": 2539
+  },
+  {
+   "url": "/ressources/fiches-pratiques/",
+   "gabarit": "11 Sous-rubrique ressource",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 5439,
+   "motsAnnonces": 914,
+   "motsRendus": 1038
+  },
+  {
+   "url": "/ressources/fiches-pratiques/plan-de-prevention/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 8434,
+   "motsAnnonces": 1941,
+   "motsRendus": 1975
+  },
+  {
+   "url": "/ressources/fiches-techniques/analyse-vibratoire/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 9025,
+   "motsAnnonces": 2109,
+   "motsRendus": 2192
+  },
+  {
+   "url": "/ressources/fiches-techniques/mtbf-mttr/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 8047,
+   "motsAnnonces": 1959,
+   "motsRendus": 1983
+  },
+  {
+   "url": "/ressources/livres-blancs/",
+   "gabarit": "11 Sous-rubrique ressource",
+   "verdict": "rendue",
+   "nbSections": 4,
+   "hauteurTotale": 3342,
+   "motsAnnonces": 294,
+   "motsRendus": 530
+  },
+  {
+   "url": "/ressources/process/gestion-maintenance-preventive/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 12751,
+   "motsAnnonces": 3099,
+   "motsRendus": 3176
+  },
+  {
+   "url": "/secteurs/",
+   "gabarit": "10 Hub de rubrique",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Votre secteur a ses règles. Nos techniciens les connaissent déjà. » au lieu de « La maintenance usine, secteur par secteur »"
+  },
+  {
+   "url": "/secteurs/chimie/",
+   "gabarit": "08 Secteur",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Intervenir sur site sensible, sans prendre de risque. » au lieu de « Maintenance dans l'industrie chimique »"
+  },
+  {
+   "url": "/secteurs/logistique/maintenance-convoyeur/",
+   "gabarit": "08 Secteur",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Un convoyeur à l’arrêt, c’est tout l’entrepôt à l’arrêt. On l’évite. » au lieu de « Maintenance convoyeur »"
+  },
+  {
+   "url": "/secteurs/pharmaceutique/",
+   "gabarit": "08 Secteur",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Vos équipements conformes. Vos lots libérés à temps. » au lieu de « Maintenance pharmaceutique »"
+  },
+  {
+   "url": "/travaux-industriels/montage-industriel/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 8468,
+   "motsAnnonces": 1230,
+   "motsRendus": 1281
+  },
+  {
+   "url": "/preuves/jeld-wen/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Des commandes numériques remises en route à chaque équipe » au lieu de « Étude de cas JELD-WEN : des commandes numériques remises en route à chaque équipe »"
+  },
+  {
+   "url": "/preuves/motherson/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Presses à injecter et robots, le préventif d’abord » au lieu de « Étude de cas MOTHERSON : presses à injecter et robots, le préventif d’abord »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-amiens/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Amiens et dans la Somme »"
+  },
+  {
+   "url": "/implantations/marseille/toulon/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Toulon et dans le Var »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-cherbourg/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Cherbourg et dans la Manche »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-niort/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Niort et dans les Deux-Sèvres »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-chartres/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Chartres et dans l’Eure-et-Loir »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-annecy/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Annecy et dans la Haute-Savoie Nord »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-agen/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Agen et dans le Lot-et-Garonne »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-saint-quentin/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Saint-Quentin et dans l’Aisne »"
+  },
+  {
+   "url": "/bureau-etudes/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "redirigee",
+   "vers": "/offres/bureau-etudes/",
+   "note": "la maquette l'envoie sur /offres/bureau-etudes/"
+  },
+  {
+   "url": "/carriere/",
+   "gabarit": "10 Hub de rubrique",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 13268,
+   "motsAnnonces": 1943,
+   "motsRendus": 2234
+  },
+  {
+   "url": "/carriere/automaticien/salaire/",
+   "gabarit": "07 Métier et carrière",
+   "verdict": "rendue",
+   "nbSections": 10,
+   "hauteurTotale": 8271,
+   "motsAnnonces": 1672,
+   "motsRendus": 1698
+  },
+  {
+   "url": "/carriere/responsable-maintenance/",
+   "gabarit": "07 Métier et carrière",
+   "verdict": "rendue",
+   "nbSections": 14,
+   "hauteurTotale": 11327,
+   "motsAnnonces": 1921,
+   "motsRendus": 2067
+  },
+  {
+   "url": "/carriere/technicien-de-maintenance/salaire/",
+   "gabarit": "07 Métier et carrière",
+   "verdict": "rendue",
+   "nbSections": 11,
+   "hauteurTotale": 8885,
+   "motsAnnonces": 1657,
+   "motsRendus": 1776
+  },
+  {
+   "url": "/expertises/automatisme/",
+   "gabarit": "09 Domaine",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 9289,
+   "motsAnnonces": 1175,
+   "motsRendus": 1469
+  },
+  {
+   "url": "/expertises/electrique/",
+   "gabarit": "09 Domaine",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 9167,
+   "motsAnnonces": 1166,
+   "motsRendus": 1436
+  },
+  {
+   "url": "/expertises/mecanique/",
+   "gabarit": "09 Domaine",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 9389,
+   "motsAnnonces": 1167,
+   "motsRendus": 1460
+  },
+  {
+   "url": "/expertises/robotique/",
+   "gabarit": "09 Domaine",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 9244,
+   "motsAnnonces": 1173,
+   "motsRendus": 1474
+  },
+  {
+   "url": "/expertises/soudure/",
+   "gabarit": "09 Domaine",
+   "verdict": "rendue",
+   "nbSections": 16,
+   "hauteurTotale": 8847,
+   "motsAnnonces": 1249,
+   "motsRendus": 1490
+  },
+  {
+   "url": "/expertises/types-de-maintenance/",
+   "gabarit": "09 Domaine",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 10109,
+   "motsAnnonces": 1559,
+   "motsRendus": 1729
+  },
+  {
+   "url": "/expertises/types-de-maintenance/maintenance-curative/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 10297,
+   "motsAnnonces": 1647,
+   "motsRendus": 1751
+  },
+  {
+   "url": "/expertises/types-de-maintenance/maintenance-previsionnelle/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 11104,
+   "motsAnnonces": 1820,
+   "motsRendus": 1974
+  },
+  {
+   "url": "/implantations/",
+   "gabarit": "10 Hub de rubrique",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 9610,
+   "motsAnnonces": 1387,
+   "motsRendus": 1548
+  },
+  {
+   "url": "/implantations/lyon/haute-savoie/",
+   "gabarit": "06 Département",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9656,
+   "motsAnnonces": 1340,
+   "motsRendus": 1622
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-avignon/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9476,
+   "motsAnnonces": 1094,
+   "motsRendus": 1481
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-dijon/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9601,
+   "motsAnnonces": 1205,
+   "motsRendus": 1524
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-limoges/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9319,
+   "motsAnnonces": 1160,
+   "motsRendus": 1507
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-nice/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 8990,
+   "motsAnnonces": 1086,
+   "motsRendus": 1454
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-reims/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9618,
+   "motsAnnonces": 1137,
+   "motsRendus": 1444
+  },
+  {
+   "url": "/implantations/nantes/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9661,
+   "motsAnnonces": 1329,
+   "motsRendus": 1577
+  },
+  {
+   "url": "/implantations/paris/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9650,
+   "motsAnnonces": 1379,
+   "motsRendus": 1639
+  },
+  {
+   "url": "/implantations/strasbourg/alsace/",
+   "gabarit": "06 Département",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9390,
+   "motsAnnonces": 1223,
+   "motsRendus": 1546
+  },
+  {
+   "url": "/implantations/toulouse/charente/",
+   "gabarit": "06 Département",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9759,
+   "motsAnnonces": 1147,
+   "motsRendus": 1467
+  },
+  {
+   "url": "/offres/arret-technique/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 8730,
+   "motsAnnonces": 1427,
+   "motsRendus": 1497
+  },
+  {
+   "url": "/offres/chantier/demenagement-machines/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9324,
+   "motsAnnonces": 1114,
+   "motsRendus": 1220
+  },
+  {
+   "url": "/offres/depannage-industriel/astreinte/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "echec",
+   "note": "page d'arrivée sans h1"
+  },
+  {
+   "url": "/offres/residence/prestataire-ou-salarie/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "echec",
+   "note": "page d'arrivée sans h1"
+  },
+  {
+   "url": "/offres/zero-arret/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 8584,
+   "motsAnnonces": 1230,
+   "motsRendus": 1365
+  },
+  {
+   "url": "/preuves/savoye-migration-automates-norvege/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Deux automates migrés en deux week-ends, sans arrêter la production » au lieu de « Étude de cas SAVOYE : deux automates migrés en deux week-ends, sans arrêter la production »"
+  },
+  {
+   "url": "/preuves/amazon-centre-logistique/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Maintenir un centre logistique qui ne ferme jamais » au lieu de « Étude de cas AMAZON : maintenir un centre logistique qui ne ferme jamais »"
+  },
+  {
+   "url": "/preuves/eaton-mise-en-production/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Six techniciens pour faire démarrer un parc machines » au lieu de « Étude de cas EATON : six techniciens pour faire démarrer un parc machines »"
+  },
+  {
+   "url": "/preuves/gls-maintenance-curative/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Des convoyeurs et des trieurs sous surveillance continue » au lieu de « Étude de cas GLS : des convoyeurs et des trieurs sous surveillance continue »"
+  },
+  {
+   "url": "/preuves/mccain-belgique/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Un premier contrat en Belgique, préventif et correctif » au lieu de « Étude de cas McCAIN : un premier contrat en Belgique, préventif et correctif »"
+  },
+  {
+   "url": "/preuves/orthus-washtec/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Des portiques de lavage montés partout en France » au lieu de « Étude de cas ORTHUS x WASHTEC : des portiques de lavage montés partout en France »"
+  },
+  {
+   "url": "/preuves/suez-remise-en-etat/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Six mois pour remettre en état un site à risque chimique » au lieu de « Étude de cas SUEZ IWT : six mois pour remettre en état un site à risque chimique »"
+  },
+  {
+   "url": "/preuves/voit-grand-est/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Centres d’usinage et presses tenus dans le Grand Est » au lieu de « Étude de cas VOIT : centres d’usinage et presses tenus dans le Grand Est »"
+  },
+  {
+   "url": "/ressources/articles/cout-arret-de-production/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 10277,
+   "motsAnnonces": 2734,
+   "motsRendus": 2604
+  },
+  {
+   "url": "/ressources/articles/ia-maintenance/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 8894,
+   "motsAnnonces": 2048,
+   "motsRendus": 2105
+  },
+  {
+   "url": "/ressources/articles/plan-de-maintenance/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 9263,
+   "motsAnnonces": 2148,
+   "motsRendus": 2133
+  },
+  {
+   "url": "/ressources/articles/robot-spot/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 7650,
+   "motsAnnonces": 1589,
+   "motsRendus": 1767
+  },
+  {
+   "url": "/ressources/fiches-pratiques/5s/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 10440,
+   "motsAnnonces": 2624,
+   "motsRendus": 2707
+  },
+  {
+   "url": "/ressources/fiches-pratiques/securite-maintenance/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 9427,
+   "motsAnnonces": 2255,
+   "motsRendus": 2294
+  },
+  {
+   "url": "/ressources/fiches-techniques/automates-siemens/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 7259,
+   "motsAnnonces": 1642,
+   "motsRendus": 1672
+  },
+  {
+   "url": "/ressources/fiches-techniques/niveaux-de-maintenance/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 8359,
+   "motsAnnonces": 1990,
+   "motsRendus": 2028
+  },
+  {
+   "url": "/ressources/livres-blancs/externaliser-sa-maintenance/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 7129,
+   "motsAnnonces": 1442,
+   "motsRendus": 1534
+  },
+  {
+   "url": "/ressources/process/preparer-un-arret-technique/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 9161,
+   "motsAnnonces": 2254,
+   "motsRendus": 2252
+  },
+  {
+   "url": "/secteurs/aeronautique/",
+   "gabarit": "08 Secteur",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Zéro défaut toléré. Zéro retard accepté. » au lieu de « Maintenance dans l'industrie aéronautique »"
+  },
+  {
+   "url": "/secteurs/industrie-lourde/",
+   "gabarit": "08 Secteur",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Des équipements lourds. Une remise en route rapide. » au lieu de « Maintenance dans l'industrie lourde »"
+  },
+  {
+   "url": "/secteurs/logistique/peak-season/",
+   "gabarit": "08 Secteur",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Le pic arrive. Vos lignes sont prêtes. » au lieu de « Peak season : préparer la logistique au pic »"
+  },
+  {
+   "url": "/travaux-industriels/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 8792,
+   "motsAnnonces": 1067,
+   "motsRendus": 1292
+  },
+  {
+   "url": "/travaux-industriels/transfert-industriel/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9706,
+   "motsAnnonces": 1981,
+   "motsRendus": 1785
+  },
+  {
+   "url": "/preuves/jacquet-brossard/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Une ligne de pain de mie suivie à chaque poste » au lieu de « Étude de cas JACQUET BROSSARD : une ligne de pain de mie suivie à chaque poste »"
+  },
+  {
+   "url": "/preuves/vignal-systems/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Maintenir et monter, de jour comme de nuit » au lieu de « Étude de cas VIGNAL SYSTEMS : maintenir et monter, de jour comme de nuit »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-angers/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Angers et dans le Maine-et-Loire »"
+  },
+  {
+   "url": "/implantations/marseille/nimes/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Nîmes et dans le Gard »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-belfort-montbeliard/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Belfort-Montbéliard et dans le Nord Franche-Comté »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-lorient/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Lorient et dans le Morbihan »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-bourges/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Bourges et dans le Cher »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-chambery/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Chambéry et dans la Savoie »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-brive/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Brive-la-Gaillarde et dans la Corrèze »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-evreux/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Évreux et dans l’Eure »"
+  },
+  {
+   "url": "/bureau-etudes/bureau-etude-electrique/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "echec",
+   "note": "page d'arrivée sans h1"
+  },
+  {
+   "url": "/carriere/agent-de-maintenance/",
+   "gabarit": "07 Métier et carrière",
+   "verdict": "rendue",
+   "nbSections": 15,
+   "hauteurTotale": 11647,
+   "motsAnnonces": 1962,
+   "motsRendus": 2119
+  },
+  {
+   "url": "/carriere/electromecanicien/",
+   "gabarit": "07 Métier et carrière",
+   "verdict": "rendue",
+   "nbSections": 14,
+   "hauteurTotale": 11153,
+   "motsAnnonces": 1711,
+   "motsRendus": 1902
+  },
+  {
+   "url": "/carriere/roboticien/",
+   "gabarit": "07 Métier et carrière",
+   "verdict": "rendue",
+   "nbSections": 14,
+   "hauteurTotale": 10556,
+   "motsAnnonces": 1662,
+   "motsRendus": 1832
+  },
+  {
+   "url": "/carriere/technicien-itinerant/",
+   "gabarit": "07 Métier et carrière",
+   "verdict": "rendue",
+   "nbSections": 15,
+   "hauteurTotale": 11827,
+   "motsAnnonces": 2055,
+   "motsRendus": 2221
+  },
+  {
+   "url": "/expertises/automatisme/programmation-automate/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 9089,
+   "motsAnnonces": 1279,
+   "motsRendus": 1432
+  },
+  {
+   "url": "/expertises/electromecanique/",
+   "gabarit": "09 Domaine",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 9416,
+   "motsAnnonces": 1174,
+   "motsRendus": 1457
+  },
+  {
+   "url": "/expertises/mecanique/lubrification/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 9369,
+   "motsAnnonces": 1354,
+   "motsRendus": 1504
+  },
+  {
+   "url": "/expertises/robotique/abb/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 16,
+   "hauteurTotale": 9083,
+   "motsAnnonces": 1363,
+   "motsRendus": 1514
+  },
+  {
+   "url": "/expertises/specialisations-constructeur/",
+   "gabarit": "09 Domaine",
+   "verdict": "rendue",
+   "nbSections": 16,
+   "hauteurTotale": 8813,
+   "motsAnnonces": 1386,
+   "motsRendus": 1478
+  },
+  {
+   "url": "/expertises/types-de-maintenance/maintenance-ameliorative/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 15,
+   "hauteurTotale": 8867,
+   "motsAnnonces": 1402,
+   "motsRendus": 1568
+  },
+  {
+   "url": "/expertises/types-de-maintenance/maintenance-palliative/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 16,
+   "hauteurTotale": 8949,
+   "motsAnnonces": 1480,
+   "motsRendus": 1569
+  },
+  {
+   "url": "/expertises/types-de-maintenance/preventive-systematique/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 16,
+   "hauteurTotale": 8851,
+   "motsAnnonces": 1551,
+   "motsRendus": 1617
+  },
+  {
+   "url": "/implantations/lille/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9816,
+   "motsAnnonces": 1395,
+   "motsRendus": 1643
+  },
+  {
+   "url": "/implantations/lyon/rhone/",
+   "gabarit": "06 Département",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9472,
+   "motsAnnonces": 1296,
+   "motsRendus": 1622
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-besancon/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9453,
+   "motsAnnonces": 1096,
+   "motsRendus": 1484
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-dunkerque/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9530,
+   "motsAnnonces": 1086,
+   "motsRendus": 1480
+  },
+  {
+   "url": "/implantations/marseille/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Marseille et dans les Bouches-du-Rhône »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-orleans/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9407,
+   "motsAnnonces": 1162,
+   "motsRendus": 1506
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-tours/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9406,
+   "motsAnnonces": 1178,
+   "motsRendus": 1486
+  },
+  {
+   "url": "/implantations/nantes/brest/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9645,
+   "motsAnnonces": 1281,
+   "motsRendus": 1595
+  },
+  {
+   "url": "/implantations/paris/essonne/",
+   "gabarit": "06 Département",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9686,
+   "motsAnnonces": 1320,
+   "motsRendus": 1635
+  },
+  {
+   "url": "/implantations/strasbourg/mulhouse/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9551,
+   "motsAnnonces": 1228,
+   "motsRendus": 1487
+  },
+  {
+   "url": "/implantations/toulouse/gironde/",
+   "gabarit": "06 Département",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9908,
+   "motsAnnonces": 1252,
+   "motsRendus": 1631
+  },
+  {
+   "url": "/offres/audit-conseil-maintenance/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "redirigee",
+   "vers": "/offres/bureau-etudes/",
+   "note": "la maquette l'envoie sur /offres/bureau-etudes/"
+  },
+  {
+   "url": "/offres/chantier/transfert-de-production/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 8746,
+   "motsAnnonces": 1196,
+   "motsRendus": 1209
+  },
+  {
+   "url": "/offres/depannage-industriel/panne-machine/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "echec",
+   "note": "page d'arrivée sans h1"
+  },
+  {
+   "url": "/offres/retrofit/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "redirigee",
+   "vers": "/offres/bureau-etudes/",
+   "note": "la maquette l'envoie sur /offres/bureau-etudes/"
+  },
+  {
+   "url": "/offres/full-service/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "rendue",
+   "nbSections": 21,
+   "hauteurTotale": 9974,
+   "motsAnnonces": 1360,
+   "motsRendus": 1678
+  },
+  {
+   "url": "/preuves/dimomaint/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « La GMAO planifie, nos techniciens interviennent » au lieu de « Étude de cas DIMOMAINT : la GMAO planifie, nos techniciens interviennent »"
+  },
+  {
+   "url": "/preuves/amazon-nouveau-site/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Un dispositif rodé, transposé sur un nouveau site » au lieu de « Étude de cas AMAZON : un dispositif rodé, transposé sur un nouveau site »"
+  },
+  {
+   "url": "/preuves/eiffage/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Le préventif d’une centrale photovoltaïque en trois techniciens » au lieu de « Étude de cas EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens »"
+  },
+  {
+   "url": "/preuves/groupe-atlantic/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Un renfort devenu une partie de l’équipe » au lieu de « Étude de cas GROUPE ATLANTIC : un renfort devenu une partie de l’équipe »"
+  },
+  {
+   "url": "/preuves/mersen/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Un automaticien SIEMENS pour démarrer une ligne neuve » au lieu de « Étude de cas MERSEN : un automaticien SIEMENS pour démarrer une ligne neuve »"
+  },
+  {
+   "url": "/preuves/soprema/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Monter, déplacer, renforcer, chantier après chantier » au lieu de « Étude de cas SOPREMA : monter, déplacer, renforcer, chantier après chantier »"
+  },
+  {
+   "url": "/preuves/timescope/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Un parc de casques de réalité virtuelle tenu dans toute la France » au lieu de « Étude de cas TIMESCOPE : un parc de casques de réalité virtuelle tenu dans toute la France »"
+  },
+  {
+   "url": "/preuves/vpk/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Une usine de carton en 3x8, un technicien qui tient la cadence » au lieu de « Étude de cas VPK : une usine de carton en 3x8, un technicien qui tient la cadence »"
+  },
+  {
+   "url": "/ressources/articles/digitalisation-maintenance/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 9916,
+   "motsAnnonces": 2375,
+   "motsRendus": 2436
+  },
+  {
+   "url": "/ressources/articles/maintenance-4-0/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 8376,
+   "motsAnnonces": 1934,
+   "motsRendus": 1934
+  },
+  {
+   "url": "/ressources/articles/planification-maintenance/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 9349,
+   "motsAnnonces": 2356,
+   "motsRendus": 2411
+  },
+  {
+   "url": "/ressources/articles/suivi-de-la-maintenance/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 9223,
+   "motsAnnonces": 2161,
+   "motsRendus": 2279
+  },
+  {
+   "url": "/ressources/fiches-pratiques/consignation-electrique/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 10701,
+   "motsAnnonces": 2685,
+   "motsRendus": 2721
+  },
+  {
+   "url": "/ressources/fiches-techniques/",
+   "gabarit": "11 Sous-rubrique ressource",
+   "verdict": "rendue",
+   "nbSections": 4,
+   "hauteurTotale": 3948,
+   "motsAnnonces": 417,
+   "motsRendus": 682
+  },
+  {
+   "url": "/ressources/fiches-techniques/cahier-des-charges-gmao/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 9332,
+   "motsAnnonces": 2373,
+   "motsRendus": 2248
+  },
+  {
+   "url": "/ressources/fiches-techniques/outils-de-diagnostic/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 9419,
+   "motsAnnonces": 2132,
+   "motsRendus": 2207
+  },
+  {
+   "url": "/ressources/livres-blancs/retrofit-ou-remplacement/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 9233,
+   "motsAnnonces": 2319,
+   "motsRendus": 2365
+  },
+  {
+   "url": "/ressources/process/protocole-de-securite/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 9653,
+   "motsAnnonces": 2351,
+   "motsRendus": 2450
+  },
+  {
+   "url": "/secteurs/agroalimentaire/",
+   "gabarit": "08 Secteur",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Vos lignes tournent. Vos produits partent à l’heure. » au lieu de « Maintenance agroalimentaire »"
+  },
+  {
+   "url": "/secteurs/industrie-metallique/",
+   "gabarit": "08 Secteur",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Vos presses et vos lignes, remises en route avant qu’elles ne coûtent. » au lieu de « Maintenance dans l'industrie métallique »"
+  },
+  {
+   "url": "/secteurs/menuiserie-industrielle/",
+   "gabarit": "08 Secteur",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Vos machines suivent vos carnets de commandes. » au lieu de « Maintenance en menuiserie industrielle »"
+  },
+  {
+   "url": "/travaux-industriels/demantelement-industriel/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 8788,
+   "motsAnnonces": 1221,
+   "motsRendus": 1276
+  },
+  {
+   "url": "/preuves/atena-port-la-rochelle/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « En finir avec les pannes qui reviennent sur un terminal d’engrais » au lieu de « Étude de cas ATENA : en finir avec les pannes qui reviennent sur un terminal d’engrais »"
+  },
+  {
+   "url": "/preuves/tournaire/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Maintenir des machines conçues sur mesure » au lieu de « Étude de cas TOURNAIRE : maintenir des machines conçues sur mesure »"
+  },
+  {
+   "url": "/preuves/la-panetiere/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Un renfort pour que le pain sorte chaque matin » au lieu de « Étude de cas LA PANETIÈRE : un renfort pour que le pain sorte chaque matin »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-nancy/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Nancy et dans la Meurthe-et-Moselle »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-bayonne/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Bayonne et dans le Pays basque et les Landes »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-la-rochelle/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à La Rochelle et dans la Charente-Maritime »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-calais/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Calais et dans la Côte d’Opale »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-chalon-sur-saone/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Chalon-sur-Saône et dans la Saône-et-Loire »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-albi/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Albi-Castres et dans le Tarn »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-beziers/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Béziers et dans l’Hérault Ouest »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-quimper/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Quimper et dans le Finistère Sud »"
+  },
+  {
+   "url": "/bureau-etudes/bureau-etude-electronique/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "echec",
+   "note": "page d'arrivée sans h1"
+  },
+  {
+   "url": "/carriere/alternance/",
+   "gabarit": "07 Métier et carrière",
+   "verdict": "rendue",
+   "nbSections": 15,
+   "hauteurTotale": 11188,
+   "motsAnnonces": 1871,
+   "motsRendus": 2064
+  },
+  {
+   "url": "/carriere/electromecanicien/competences/",
+   "gabarit": "07 Métier et carrière",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 11625,
+   "motsAnnonces": 1843,
+   "motsRendus": 1912
+  },
+  {
+   "url": "/carriere/technicien-de-maintenance/",
+   "gabarit": "07 Métier et carrière",
+   "verdict": "rendue",
+   "nbSections": 16,
+   "hauteurTotale": 10940,
+   "motsAnnonces": 1791,
+   "motsRendus": 1879
+  },
+  {
+   "url": "/entreprise-maintenance-industrielle/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 8698,
+   "motsAnnonces": 1849,
+   "motsRendus": 1588
+  },
+  {
+   "url": "/expertises/automatisme/schneider/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 9222,
+   "motsAnnonces": 1367,
+   "motsRendus": 1532
+  },
+  {
+   "url": "/expertises/hydraulique/",
+   "gabarit": "09 Domaine",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 9180,
+   "motsAnnonces": 1129,
+   "motsRendus": 1434
+  },
+  {
+   "url": "/expertises/mecanique/machine-outil/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 9404,
+   "motsAnnonces": 1257,
+   "motsRendus": 1489
+  },
+  {
+   "url": "/expertises/robotique/fanuc/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 16,
+   "hauteurTotale": 9126,
+   "motsAnnonces": 1381,
+   "motsRendus": 1500
+  },
+  {
+   "url": "/expertises/tuyauterie/",
+   "gabarit": "09 Domaine",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 9308,
+   "motsAnnonces": 1229,
+   "motsRendus": 1523
+  },
+  {
+   "url": "/expertises/types-de-maintenance/maintenance-conditionnelle/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 11250,
+   "motsAnnonces": 1842,
+   "motsRendus": 2023
+  },
+  {
+   "url": "/expertises/types-de-maintenance/maintenance-predictive/",
+   "gabarit": "05 Spécialité",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 10453,
+   "motsAnnonces": 1780,
+   "motsRendus": 1883
+  },
+  {
+   "url": "/guides/choisir-une-entreprise-de-maintenance/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 14,
+   "hauteurTotale": 12649,
+   "motsAnnonces": 2359,
+   "motsRendus": 2205
+  },
+  {
+   "url": "/implantations/lyon/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9547,
+   "motsAnnonces": 1364,
+   "motsRendus": 1631
+  },
+  {
+   "url": "/implantations/lyon/saint-etienne/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9759,
+   "motsAnnonces": 1309,
+   "motsRendus": 1589
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-caen/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9793,
+   "motsAnnonces": 1167,
+   "motsRendus": 1503
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-le-havre/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9502,
+   "motsAnnonces": 1212,
+   "motsRendus": 1578
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-metz/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9426,
+   "motsAnnonces": 1271,
+   "motsRendus": 1586
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-pau/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9361,
+   "motsAnnonces": 1071,
+   "motsRendus": 1484
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-troyes/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9347,
+   "motsAnnonces": 1115,
+   "motsRendus": 1491
+  },
+  {
+   "url": "/implantations/nantes/loire-atlantique/",
+   "gabarit": "06 Département",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9770,
+   "motsAnnonces": 1277,
+   "motsRendus": 1631
+  },
+  {
+   "url": "/implantations/paris/rouen/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9884,
+   "motsAnnonces": 1242,
+   "motsRendus": 1588
+  },
+  {
+   "url": "/implantations/toulouse/",
+   "gabarit": "04 Ville",
+   "verdict": "rendue",
+   "nbSections": 18,
+   "hauteurTotale": 9543,
+   "motsAnnonces": 1327,
+   "motsRendus": 1573
+  },
+  {
+   "url": "/implantations/toulouse/haute-garonne/",
+   "gabarit": "06 Département",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9607,
+   "motsAnnonces": 1180,
+   "motsRendus": 1501
+  },
+  {
+   "url": "/offres/bureau-etudes/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "rendue",
+   "nbSections": 22,
+   "hauteurTotale": 9888,
+   "motsAnnonces": 1358,
+   "motsRendus": 1584
+  },
+  {
+   "url": "/offres/construction/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "redirigee",
+   "vers": "/travaux-industriels/",
+   "note": "la maquette l'envoie sur /travaux-industriels/"
+  },
+  {
+   "url": "/offres/residence/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "rendue",
+   "nbSections": 17,
+   "hauteurTotale": 8621,
+   "motsAnnonces": 1379,
+   "motsRendus": 1415
+  },
+  {
+   "url": "/offres/retrofit/mise-en-conformite-machine/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "echec",
+   "note": "page d'arrivée sans h1"
+  },
+  {
+   "url": "/preuves/",
+   "gabarit": "10 Hub de rubrique",
+   "verdict": "rendue",
+   "nbSections": 3,
+   "hauteurTotale": 4865,
+   "motsAnnonces": 908,
+   "motsRendus": 848
+  },
+  {
+   "url": "/preuves/aktid-centre-logistique/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Un centre logistique monté en six semaines » au lieu de « Étude de cas AKTID : un centre logistique monté en six semaines »"
+  },
+  {
+   "url": "/preuves/autoliv/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Un technicien dédié pour que le parc ne décroche pas » au lieu de « Étude de cas AUTOLIV : un technicien dédié pour que le parc ne décroche pas »"
+  },
+  {
+   "url": "/preuves/eriks/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Un responsable maintenance pour traverser la transition » au lieu de « Étude de cas ERIKS : un responsable maintenance pour traverser la transition »"
+  },
+  {
+   "url": "/preuves/joint-lyonnais/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Réparer plutôt que remplacer, au budget d’une PME » au lieu de « Étude de cas JOINT LYONNAIS : réparer plutôt que remplacer, au budget d’une PME »"
+  },
+  {
+   "url": "/preuves/ogf-arret-estival/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Un été entier sans trou dans la maintenance » au lieu de « Étude de cas OGF : un été entier sans trou dans la maintenance »"
+  },
+  {
+   "url": "/preuves/stellantis-fonderie-sept-fons/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Un parc de fonderie repris en huit semaines » au lieu de « Étude de cas STELLANTIS : un parc de fonderie repris en huit semaines »"
+  },
+  {
+   "url": "/preuves/valeo-usines/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Deux usines accompagnées dans leur montée en cadence » au lieu de « Étude de cas VALEO : deux usines accompagnées dans leur montée en cadence »"
+  },
+  {
+   "url": "/ressources/",
+   "gabarit": "10 Hub de rubrique",
+   "verdict": "rendue",
+   "nbSections": 11,
+   "hauteurTotale": 8796,
+   "motsAnnonces": 1367,
+   "motsRendus": 1545
+  },
+  {
+   "url": "/ressources/articles/gestion-des-dechets/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 8201,
+   "motsAnnonces": 1761,
+   "motsRendus": 1895
+  },
+  {
+   "url": "/ressources/articles/optimiser-la-maintenance/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 8080,
+   "motsAnnonces": 1819,
+   "motsRendus": 1904
+  },
+  {
+   "url": "/ressources/articles/predictive-ou-corrective/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 10535,
+   "motsAnnonces": 2648,
+   "motsRendus": 2699
+  },
+  {
+   "url": "/ressources/articles/tpm/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 9244,
+   "motsAnnonces": 1965,
+   "motsRendus": 2138
+  },
+  {
+   "url": "/ressources/fiches-pratiques/permis-de-feu/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 8340,
+   "motsAnnonces": 1852,
+   "motsRendus": 1925
+  },
+  {
+   "url": "/ressources/fiches-techniques/amdec/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 11399,
+   "motsAnnonces": 3292,
+   "motsRendus": 2908
+  },
+  {
+   "url": "/ressources/fiches-techniques/indicateurs-maintenance/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 9492,
+   "motsAnnonces": 2386,
+   "motsRendus": 2379
+  },
+  {
+   "url": "/ressources/fiches-techniques/trs/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 9415,
+   "motsAnnonces": 2242,
+   "motsRendus": 2348
+  },
+  {
+   "url": "/ressources/process/",
+   "gabarit": "11 Sous-rubrique ressource",
+   "verdict": "rendue",
+   "nbSections": 4,
+   "hauteurTotale": 3538,
+   "motsAnnonces": 351,
+   "motsRendus": 580
+  },
+  {
+   "url": "/ressources/process/selection-des-techniciens/",
+   "gabarit": "01 Article et fiche",
+   "verdict": "rendue",
+   "nbSections": 5,
+   "hauteurTotale": 7788,
+   "motsAnnonces": 1764,
+   "motsRendus": 1768
+  },
+  {
+   "url": "/secteurs/automobile/",
+   "gabarit": "08 Secteur",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Pas une minute de cadence perdue. » au lieu de « Maintenance dans l'industrie automobile »"
+  },
+  {
+   "url": "/secteurs/logistique/",
+   "gabarit": "08 Secteur",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Vos commandes partent ce soir. Même en plein pic. » au lieu de « Maintenance des équipements logistiques »"
+  },
+  {
+   "url": "/secteurs/nucleaire/",
+   "gabarit": "08 Secteur",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Des techniciens habilités, prêts quand vous l’êtes. » au lieu de « Maintenance nucléaire »"
+  },
+  {
+   "url": "/travaux-industriels/levage-manutention/",
+   "gabarit": "03 Offre et prestation",
+   "verdict": "rendue",
+   "nbSections": 19,
+   "hauteurTotale": 9075,
+   "motsAnnonces": 1252,
+   "motsRendus": 1288
+  },
+  {
+   "url": "/preuves/bamesa/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « La maintenance tient pendant que l’équipe recrute » au lieu de « Étude de cas BAMESA : la maintenance tient pendant que l’équipe recrute »"
+  },
+  {
+   "url": "/preuves/rector-lesage/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Un technicien au cœur d’une ligne de préfabrication béton » au lieu de « Étude de cas RECTOR LESAGE : un technicien au cœur d’une ligne de préfabrication béton »"
+  },
+  {
+   "url": "/preuves/salaison-du-maconnais/",
+   "gabarit": "02 Étude de cas",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Du broyage à la cuisson, un seul technicien sur la chaîne » au lieu de « Étude de cas SALAISON DU MÂCONNAIS : du broyage à la cuisson, un seul technicien sur la chaîne »"
+  },
+  {
+   "url": "/implantations/marseille/perpignan/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Perpignan et dans les Pyrénées-Orientales »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-saint-nazaire/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Saint-Nazaire et dans l’estuaire de la Loire »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-angouleme/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Angoulême et dans la Charente »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-compiegne/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Compiègne et dans l’Oise »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-roanne/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Roanne et dans le Roannais »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-tarbes/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Tarbes et dans les Hautes-Pyrénées »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-arras/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Arras-Lens et dans le bassin minier du Pas-de-Calais »"
+  },
+  {
+   "url": "/implantations/maintenance-industrielle-vesoul/",
+   "gabarit": "04 Ville",
+   "verdict": "echec",
+   "note": "page d'arrivée inattendue : « Toutes nos pages, au même endroit. » au lieu de « Maintenance industrielle à Vesoul et dans la Haute-Saône »"
+  }
+ ]
+}

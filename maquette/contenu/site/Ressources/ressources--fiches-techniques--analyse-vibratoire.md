@@ -1,0 +1,128 @@
+# Analyse vibratoire
+
+> URL : /ressources/fiches-techniques/analyse-vibratoire/
+> Title SEO : Analyse vibratoire | Migen
+> Meta description : Analyse vibratoire : définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours.
+
+---
+
+# Analyse vibratoire
+
+Une machine tournante prévient toujours avant de casser. L'analyse vibratoire capte cet avertissement : elle mesure les vibrations de la machine, les compare dans le temps et signale le défaut des semaines avant la panne.
+
+Cette fiche de nos [Ressources : Fiches techniques](/ressources/fiches-techniques/) donne la méthode, sans théorie inutile.
+
+Le propos : définition, déroulé d'une mesure, exemple réaliste, erreurs à éviter. De quoi juger ce que l'analyse des vibrations peut apporter à vos équipements, et ce qu'elle exige pour être utile.
+
+> Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30, pour cadrer un diagnostic vibratoire sur vos machines critiques. Pour nous contacter directement : 04 78 33 72 05.
+
+## L'analyse vibratoire, une définition utile
+
+Toute machine tournante vibre. Le problème n'est pas la vibration, c'est son évolution : l'analyse vibratoire en maintenance industrielle consiste à mesurer, comparer et interpréter cette vibration pour évaluer l'état mécanique réel d'un équipement.
+
+- **Une mesure physique** : Un capteur de vibration, le plus souvent un accéléromètre, convertit le mouvement en signal électrique. Le traitement du signal en extrait un niveau global et un spectre.
+- **Une comparaison dans le temps** : Une valeur isolée informe peu. Le suivi de tendance, mesure après mesure, révèle la dérive et son rythme : c'est lui qui transforme la donnée en information.
+- **Une décision de maintenance** : Seuils d'alerte, priorités d'intervention, pièces à commander : la mesure des vibrations n'a de valeur que si elle déclenche la bonne action au bon moment.
+
+L'analyse vibratoire des machines tournantes s'inscrit dans la [maintenance conditionnelle](/expertises/types-de-maintenance/maintenance-conditionnelle/) : on intervient selon l'état constaté, pas selon un calendrier. Poussée jusqu'à la projection de la durée de vie restante, elle devient [maintenance prédictive](/expertises/types-de-maintenance/maintenance-predictive/), et tout le potentiel de la méthode se libère.
+
+## Ce que les vibrations révèlent, défaut par défaut
+
+Chaque défaut mécanique laisse une signature à une fréquence caractéristique. L'interprétation consiste à relier la raie observée dans le spectre à l'organe qui la produit : chaque défaut potentiel se lit avant de s'entendre, assez tôt pour anticiper la défaillance.
+
+| Défaut | Signature vibratoire | Machines les plus exposées |
+|---|---|---|
+| Balourd | Amplitude forte à 1 fois la vitesse de rotation | Ventilateurs, rotors encrassés ou érodés |
+| Désalignement | Raies à 2 fois la fréquence de rotation, vibration axiale | Groupes moteur-pompe, accouplements |
+| Roulement dégradé | Fréquences propres aux bagues, billes et cage, visibles en hautes fréquences d'abord | Moteurs, pompes, broches |
+| Engrènement usé | Fréquence d'engrènement et ses harmoniques | Réducteurs, multiplicateurs |
+| Desserrage, jeu | Harmoniques multiples, signal instable | Châssis, paliers, fixations fatiguées |
+| Résonance | Amplification vibratoire à une fréquence propre de la structure | Structures légères, porte-à-faux, tuyauteries |
+
+> Un desserrage de palier et un roulement en fin de vie ne se traitent pas pareil : identifier la cause avant d'intervenir évite de remplacer une pièce saine. Le lien entre signature et remède, c'est le métier de l'analyste.
+
+## Les machines qui justifient la surveillance
+
+Tout ce qui tourne est concerné. La priorité va aux équipements dont la panne bloque la production ou dégrade la sécurité, là où le gain potentiel est le plus net.
+
+- **Moteurs et pompes** : Groupes de process, circulation, relevage, surpression. Les défauts de roulement et le désalignement s'y lisent des semaines à l'avance.
+- **Ventilateurs et soufflantes** : Sensibles au balourd par encrassement du rotor et à la résonance. Un nettoyage suivi d'une mesure règle bien des dérives.
+- **Réducteurs et transmissions** : Fréquence d'engrènement, jeux, roulements : le spectre lit chaque étage, composant par composant. Les entraînements de convoyage s'y prêtent bien, en lien avec la [maintenance convoyeur](/secteurs/logistique/maintenance-convoyeur/).
+- **Compresseurs et centrales** : Organes coûteux, critiques pour tout le site. La surveillance des vibrations en continu, par capteurs fixes, s'y justifie souvent.
+- **Machines-outils et broches** : La vibration dégrade l'état de surface et la précision. La mesure sert la qualité du produit autant que la machine, en appui de la [maintenance mécanique](/expertises/mecanique/).
+- **Agitateurs et machines lentes** : Accès difficile, défauts progressifs : le suivi de tendance y vaut mieux que l'oreille, à condition de mesurer régulièrement.
+
+## Niveau global, spectre, expertise : trois paliers
+
+L'analyse vibratoire pour la surveillance des machines s'organise par paliers. Chacun a son propos et répond à une question différente, avec son matériel et ses compétences propres.
+
+1. **La surveillance** : Mesure du niveau global en vitesse, comparaison aux seuils de la classe ISO de la machine. Une seule question : l'état se dégrade-t-il ? Un technicien formé au premier niveau la pratique en tournée.
+2. **Le diagnostic** : Après la surveillance vibratoire, l'analyse spectrale et l'examen des harmoniques identifient l'organe en cause et la sévérité. L'affaire d'un analyste certifié, avec une lecture statistique des tendances en appui.
+3. **L'expertise** : Mesures de phase avec un matériel spécialisé, essais en marche et à l'arrêt, recherche de résonance pour les problèmes qui résistent. Un analyste spécialisé traite ces cas, quand c'est nécessaire, avant d'engager des travaux lourds.
+
+> La formation et la certification des analystes, cadrées par l'ISO 18436, distinguent les catégories I à III, des fondamentaux du signal à l'expertise complète. Une certification de catégorie II couvre le diagnostic courant ; la certification III reste rare, et la plupart des parcs vivent très bien sans la mobiliser au quotidien.
+
+## Comment ça marche, étape par étape
+
+La mise en œuvre tient en quatre étapes : préparer, mesurer, analyser, décider. La rigueur du protocole fait la qualité des données, bien plus que la sophistication du matériel.
+
+1. **Préparer le programme de surveillance** : Lister les machines tournantes critiques, choisir les points de mesure sur les paliers, fixer la périodicité. Ce programme de maintenance conditionnelle se cale sur la criticité, pas sur l'habitude.
+2. **Mesurer dans des conditions stables** : Le capteur se pose aux points repérés, de préférence au droit des paliers, machine en charge et à vitesse connue. Une mesure périodique se répète au même point, dans les mêmes conditions de fonctionnement : la comparaison en dépend.
+3. **Analyser le niveau global puis le spectre** : Le niveau global se compare aux seuils de la norme ISO 20816 (l'ISO 10816 a été remplacée), selon la classe de la machine. En cas de doute, l'analyse spectrale localise le défaut : balourd, désalignement, roulement, engrènement.
+4. **Décider et suivre** : Rapport daté et signé de son auteur, seuils d'alerte ajustés, action planifiée, mesure de réception après travaux. Chaque relevé alimente l'historique GMAO et le suivi de l'équipement, en lien avec le plan de maintenance.
+
+> L'analyste s'appuie sur des instruments simples, analyseur de vibrations portatif et accéléromètre, ou sur des capteurs installés à demeure pour la surveillance en continu, avec une connexion à la supervision. Le système d'acquisition compte moins que la constance du protocole.
+
+## Un exemple concret : la pompe qui dérive
+
+Un cas type, courant sur les groupes moteur-pompe de circulation. Le déroulé montre le gain réel de la méthode par rapport au dépannage subi.
+
+1. **Le signal d'alerte** : Grâce au suivi de tendance, la montée régulière du niveau vibratoire côté moteur se voit tôt. Rien d'audible, production normale : sans mesure, personne n'aurait rien vu.
+2. **L'examen du spectre** : Raies aux fréquences caractéristiques du roulement, amplitude qui grimpe en hautes fréquences. Le diagnostic vibratoire pointe une bague extérieure usée, pas un balourd.
+3. **L'intervention choisie** : Remplacement du roulement programmé sur un créneau creux, des travaux courts et préparés, contrôle du lignage par alignement laser au remontage, essai vibratoire de réception.
+4. **Le résultat** : Pas d'arrêt subi, pas de casse en cascade sur l'arbre ou l'accouplement. Le coût se limite à la pièce et à une intervention préparée, au lieu d'heures de production perdues.
+
+> Détecter tôt change tout : un roulement remplacé à temps évite l'immobilisation du groupe. La statistique le confirme sur tous les parcs suivis : la panne aléatoire recule quand la mesure devient régulière, et la disponibilité s'améliore.
+
+## Les erreurs qui ruinent une campagne
+
+La méthode pardonne peu. Six pièges reviennent sur la plupart des sites, ils tiennent tous aux fondamentaux, et ils suffisent à discréditer la démarche en interne.
+
+- **Mesurer sans référence** : Sans mesure d'origine machine saine, impossible d'évaluer une dérive. La première campagne établit la base de comparaison, à reprendre après des travaux de remise en état.
+- **Changer les conditions** : Charge différente, vitesse différente, point déplacé : la comparaison ne vaut plus rien. Le protocole se fige par écrit, avec la mention des conditions de marche au rapport.
+- **Fixer le capteur n'importe où** : Un accéléromètre posé sur un carter souple ou une peinture épaisse fausse la vibration mesurée en hautes fréquences. La fixation se choisit, aimant ou goujon selon le point, avec un accès dégagé.
+- **Appliquer des seuils génériques** : Une petite pompe rigide et un grand ventilateur souple n'ont pas la même classe ISO. Les seuils d'alarme s'ajustent équipement par équipement.
+- **Ignorer l'historique** : Un spectre seul se lit mal, et l'interprétation n'est pas une affaire d'intuition personnelle. Consulter les relevés précédents, les interventions, les travaux et les changements de pièces fait partie du diagnostic.
+- **Mesurer sans agir** : Des rapports qui s'empilent sans décision : la surveillance devient un coût sans avantage. Chaque alerte appelle une suite datée, une responsabilité nommée.
+
+## Ce que cela implique pour votre organisation
+
+La mise en place engage des compétences, du matériel et de la régularité. Au-delà de toute exigence légale, c'est un choix de disponibilité. Trois solutions existent, cumulables selon la taille du parc et l'équipe disponible.
+
+- **Former en interne** : Quelques heures de formation suffisent pour la surveillance de premier niveau en tournée : une formation analyse vibratoire de catégorie I couvre ces fondamentaux, sans viser la certification complète. La certification d'analyste, plus longue, se justifie à partir d'un parc conséquent, avec du temps réservé pour la pratique.
+- **Confier les campagnes à un prestataire spécialisé** : Mesures périodiques, rapports, alarmes tenues à jour : vous achetez une information fiable, la confidentialité de vos données de production respectée, sans immobiliser une équipe ni investir dans les instruments de mesure.
+- **Intégrer la mesure au contrat de maintenance** : Les relevés rejoignent le plan existant et la GMAO, pour améliorer la disponibilité du parc. Nos offres [contrat de maintenance Zéro arrêt](/offres/zero-arret/) et [conseil en maintenance industrielle](/offres/audit-conseil-maintenance/) inscrivent la surveillance vibratoire dans un programme complet, avec des priorités et une vue d'ensemble.
+
+## Questions fréquentes
+
+**À quelle périodicité mesurer les vibrations d'une machine ?**
+La périodicité découle de l'évaluation de criticité et de l'utilisation : mensuelle à trimestrielle pour la plupart des machines tournantes, continue par capteurs fixes quand l'arrêt coûte trop cher. L'historique aide ensuite à améliorer le rythme. Un principe simple : mieux vaut une mesure périodique régulière qu'une grande campagne isolée, le programme compte plus que l'instant.
+
+**Faut-il arrêter la production pour une analyse vibratoire ?**
+Non : la mesure se fait machine en marche, en charge stable, sans démontage. Le principal avantage de la méthode est là : l'état mécanique se lit en cours de fonctionnement, sans immobilisation ni perte de production.
+
+**Quels défauts l'analyse vibratoire détecte-t-elle ?**
+Balourd, désalignement, roulements dégradés, engrènements usés, jeux et desserrages, résonances : chaque famille a sa signature spécifique dans le spectre. Elle couvre la plupart des défaillances des machines tournantes, moteurs, pompes, ventilateurs, réducteurs, compresseurs.
+
+**Capteurs fixes ou mesures portatives : que choisir ?**
+Les deux solutions se complètent. Le portatif couvre un parc large à coût maîtrisé ; les capteurs fixes surveillent en continu les machines critiques, de préférence celles dont la défaillance bloque tout, et le système alerte entre deux tournées. Le choix se fait par criticité.
+
+**L'analyse vibratoire remplace-t-elle la maintenance préventive ?**
+Non, elle l'affine : les remplacements systématiques reculent là où l'état est mesuré, le préventif reste là où la mesure n'apporte rien. Moins de démontages et de travaux inutiles : le mélange des deux réduit le coût global et aide à améliorer le plan de maintenance année après année, avec une réduction visible des arrêts subis.
+
+**Proposez-vous ce type de prestation partout en France ?**
+Oui : nos techniciens interviennent sur tout le territoire français depuis 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et l'astreinte couvre les urgences. Le formulaire en bas de page suffit pour nous contacter : nous vous rappelons dans l'heure aux horaires ouvrés, pour un essai sur une ligne pilote ou une campagne complète.
+
+> À lire aussi : [niveaux de maintenance](/ressources/fiches-techniques/niveaux-de-maintenance/)
+
+> [Demander un diagnostic maintenance](/contact/)

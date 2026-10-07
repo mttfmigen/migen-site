@@ -1,0 +1,125 @@
+{
+  "url": "/guides/choisir-une-entreprise-de-maintenance/",
+  "gabarit": "01 Article et fiche",
+  "verdict": "rendue",
+  "h1Attendu": "Comment choisir une entreprise de maintenance industrielle",
+  "h1Rendu": "Comment choisir une entreprise de maintenance industrielle",
+  "nbSections": 14,
+  "hauteurTotale": 12649,
+  "motsAnnonces": 2359,
+  "motsRendus": 2205,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 417,
+      "images": 0,
+      "liens": 1,
+      "mots": 50
+    },
+    {
+      "ordre": 1,
+      "titre": "Le vrai risque n'est pas le prix, c'est la personne qui se présente",
+      "hauteur": 10955,
+      "images": 0,
+      "liens": 14,
+      "mots": 2065
+    },
+    {
+      "ordre": 2,
+      "titre": "Le vrai risque n'est pas le prix, c'est la personne qui se présente",
+      "hauteur": 594,
+      "images": 0,
+      "liens": 0,
+      "mots": 154
+    },
+    {
+      "ordre": 3,
+      "titre": "Les six critères qui comptent vraiment",
+      "hauteur": 1405,
+      "images": 0,
+      "liens": 1,
+      "mots": 189
+    },
+    {
+      "ordre": 4,
+      "titre": "Le tableau à emporter en rendez-vous",
+      "hauteur": 922,
+      "images": 0,
+      "liens": 0,
+      "mots": 198
+    },
+    {
+      "ordre": 5,
+      "titre": "Les signaux d'alerte",
+      "hauteur": 997,
+      "images": 0,
+      "liens": 0,
+      "mots": 149
+    },
+    {
+      "ordre": 6,
+      "titre": "Les modes de facturation et ce qu'ils impliquent",
+      "hauteur": 1417,
+      "images": 0,
+      "liens": 0,
+      "mots": 211
+    },
+    {
+      "ordre": 7,
+      "titre": "Comparer deux devis qui ne se ressemblent pas",
+      "hauteur": 1098,
+      "images": 0,
+      "liens": 0,
+      "mots": 211
+    },
+    {
+      "ordre": 8,
+      "titre": "Quand il vaut mieux recruter en interne",
+      "hauteur": 1374,
+      "images": 0,
+      "liens": 0,
+      "mots": 227
+    },
+    {
+      "ordre": 9,
+      "titre": "La checklist avant de signer",
+      "hauteur": 1531,
+      "images": 0,
+      "liens": 0,
+      "mots": 256
+    },
+    {
+      "ordre": 10,
+      "titre": "FAQ",
+      "hauteur": 1053,
+      "images": 0,
+      "liens": 0,
+      "mots": 284
+    },
+    {
+      "ordre": 11,
+      "titre": "Pour aller plus loin",
+      "hauteur": 320,
+      "images": 0,
+      "liens": 2,
+      "mots": 67
+    },
+    {
+      "ordre": 12,
+      "titre": "Pages liées",
+      "hauteur": 362,
+      "images": 0,
+      "liens": 2,
+      "mots": 25
+    },
+    {
+      "ordre": 13,
+      "titre": "Un chargé d’affaires vous rappelle dans l’heure.",
+      "hauteur": 819,
+      "images": 0,
+      "liens": 0,
+      "mots": 65
+    }
+  ]
+}

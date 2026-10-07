@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/timescope/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas TIMESCOPE : un parc de casques de réalité virtuelle tenu dans toute la France",
+  "h1Rendu": "Un parc de casques de réalité virtuelle tenu dans toute la France",
+  "nbSections": 10,
+  "hauteurTotale": 6430,
+  "motsAnnonces": 698,
+  "motsRendus": 949,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 600,
+      "images": 2,
+      "liens": 2,
+      "mots": 66
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 236,
+      "images": 0,
+      "liens": 0,
+      "mots": 29
+    },
+    {
+      "ordre": 2,
+      "titre": "Un parc réparti tombe en panne là où personne ne regarde.",
+      "hauteur": 813,
+      "images": 0,
+      "liens": 0,
+      "mots": 167
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 672,
+      "images": 0,
+      "liens": 0,
+      "mots": 112
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 464,
+      "images": 0,
+      "liens": 0,
+      "mots": 97
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 696,
+      "images": 1,
+      "liens": 0,
+      "mots": 41
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 565,
+      "images": 0,
+      "liens": 0,
+      "mots": 88
+    },
+    {
+      "ordre": 7,
+      "titre": "Chiffres clés",
+      "hauteur": 201,
+      "images": 0,
+      "liens": 0,
+      "mots": 27
+    },
+    {
+      "ordre": 8,
+      "titre": "Un parc d'équipements dispersé, sans personne pour le suivre ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 87
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 58
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "defaut": [
+    {
+      "question": "Quelle est la durée minimale d’une mise à disposition ?",
+      "reponse": "Six mois, renouvelables. En dessous, Arrêt technique ou Zéro arrêt sont mieux adaptés : nous vous le dirons dès le premier échange."
+    },
+    {
+      "question": "Puis-je choisir les techniciens affectés à mon site ?",
+      "reponse": "Oui. Nous vous présentons les profils retenus à l’issue de notre process ; vous rencontrez chaque candidat et validez son arrivée. Vous pouvez en écarter un sans justification."
+    },
+    {
+      "question": "Que se passe-t-il en cas d’absence ou de départ ?",
+      "reponse": "Nous assurons le remplacement. Pour les absences prévues — congés, formation — le remplaçant est présenté et formé sur vos lignes avant le départ du titulaire."
+    },
+    {
+      "question": "Régie ou forfait : quelle différence ?",
+      "reponse": "En régie, vous payez les jours travaillés et pilotez l’équipe au quotidien. Au forfait, le périmètre et le résultat sont fixés au contrat. Le choix se fait après la visite de votre site."
+    },
+    {
+      "question": "Qui gère les habilitations et la sécurité ?",
+      "reponse": "Nous. Habilitations électriques, CACES, travail en hauteur : elles sont vérifiées et tenues à jour avant chaque mise à disposition. Le plan de prévention reste établi avec vous."
+    }
+  ],
+  "parOffre": {
+    "zero": [
+      {
+        "question": "Que couvre exactement le forfait ?",
+        "reponse": "Le préventif planifié, l’astreinte avec un délai contractuel et un volume d’heures curatives chaque mois. Les pièces sont facturées au coût, sans marge cachée."
+      },
+      {
+        "question": "Que se passe-t-il si je dépasse les heures curatives incluses ?",
+        "reponse": "Les heures supplémentaires sont facturées au tarif du contrat, affichées dans le reporting mensuel. Si le dépassement se répète, nous vous proposons de changer de formule plutôt que de payer au fil de l’eau."
+      },
+      {
+        "question": "Le forfait peut-il baisser ?",
+        "reponse": "Oui. À chaque échéance annuelle, nous révisons le forfait sur les arrêts réels. Si le préventif a fait son travail, le prix baisse."
+      },
+      {
+        "question": "Peut-on résilier avant douze mois ?",
+        "reponse": "Le contrat prévoit une sortie anticipée avec préavis de trois mois, sans pénalité si nos engagements de délai n’ont pas été tenus."
+      }
+    ],
+    "arret": [
+      {
+        "question": "Combien de temps à l’avance faut-il nous consulter ?",
+        "reponse": "Le plus tôt possible : c’est ce qui permet un chiffrage précis et des approvisionnements verrouillés avant l’arrêt. En urgence, nous tenons des arrêts préparés en trois semaines."
+      },
+      {
+        "question": "Travaillez-vous avec nos sous-traitants habituels ?",
+        "reponse": "Oui. Nous pouvons prendre la coordination de l’ensemble des intervenants, ou n’intervenir que sur nos lots en respectant votre planning directeur."
+      },
+      {
+        "question": "Que se passe-t-il si l’arrêt révèle des travaux imprévus ?",
+        "reponse": "Nous les chiffrons sur place et vous décidez : les intégrer à l’arrêt, ou les reporter. Aucun travail hors périmètre n’est engagé sans votre accord écrit."
+      },
+      {
+        "question": "Qui porte la coordination sécurité ?",
+        "reponse": "Nous rédigeons avec vous le plan de prévention et gérons la coactivité de nos équipes. Le plan reste validé par votre service HSE."
+      }
+    ],
+    "chantier": [
+      {
+        "question": "Prenez-vous en charge le transport des machines ?",
+        "reponse": "Oui, avec des transporteurs spécialisés que nous coordonnons. Le démontage, la manutention, le transport et le remontage restent sous un seul contrat."
+      },
+      {
+        "question": "Qui prépare le site d’arrivée ?",
+        "reponse": "Nous relevons le site d’arrivée avant tout démontage et vous remettons la liste des prérequis : massifs, alimentations, fluides. Les travaux de génie civil peuvent être inclus ou coordonnés."
+      },
+      {
+        "question": "Combien de temps dure un transfert de ligne ?",
+        "reponse": "De quelques jours pour une machine isolée à plusieurs semaines pour une ligne complète. Le planning jalonné vous est remis avec le chiffrage."
+      },
+      {
+        "question": "La ligne est-elle garantie au redémarrage ?",
+        "reponse": "Nous réalisons les essais à vide puis en charge et signons la réception avec vous. Les réserves éventuelles sont levées dans un délai contractuel."
+      }
+    ],
+    "etude": [
+      {
+        "question": "Pouvez-vous reprendre des schémas très anciens ?",
+        "reponse": "Oui. Nous relevons l’installation réelle, pas les plans d’origine, puis nous livrons des schémas à jour au format de votre GMAO et en PDF."
+      },
+      {
+        "question": "Réalisez-vous les travaux après l’étude ?",
+        "reponse": "Si vous le souhaitez : nos équipes de maintenance et de chantier peuvent exécuter ce que le bureau d’études a conçu. Vous pouvez aussi confier la réalisation à un autre prestataire."
+      },
+      {
+        "question": "Faites-vous les mises en conformité machine ?",
+        "reponse": "Oui : analyse de risques, mesures correctives, dossier technique. La déclaration finale reste signée par l’exploitant."
+      },
+      {
+        "question": "Quels logiciels utilisez-vous ?",
+        "reponse": "Nous livrons dans le format de votre choix : AutoCAD, SEE Electrical, EPLAN, ou PDF annoté pour les installations sans outil."
+      }
+    ],
+    "construction": [
+      {
+        "question": "Quels lots prenez-vous en charge ?",
+        "reponse": "Implantation, levage, assemblage mécanique, tuyauterie, raccordements électriques et automatismes, essais et mise en service. Le génie civil et le bâtiment restent coordonnés, pas réalisés."
+      },
+      {
+        "question": "Travaillez-vous avec les fournisseurs d’équipements ?",
+        "reponse": "Oui. Nous montons les équipements selon leurs notices et coordonnons leurs techniciens pour la mise en service."
+      },
+      {
+        "question": "Pouvez-vous assurer la maintenance ensuite ?",
+        "reponse": "C’est l’intérêt : l’équipe qui a monté l’atelier le connaît. Un contrat Résidence ou Zéro arrêt peut prendre le relais dès la réception."
+      },
+      {
+        "question": "Qui porte la coordination SPS ?",
+        "reponse": "Le coordonnateur SPS reste désigné par le maître d’ouvrage. Nous intégrons ses consignes et gérons la coactivité de nos équipes."
+      }
+    ]
+  }
+}

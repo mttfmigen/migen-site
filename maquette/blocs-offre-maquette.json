@@ -1,0 +1,89 @@
+{
+  "heros": {
+    "bouton": {
+      "libelle": "Les cinq offres",
+      "href": "/offres/"
+    },
+    "formulaireTitre": "Décrire mon besoin",
+    "formulaireMention": "Rappel dans l’heure",
+    "envoyeTitre": "Demande envoyée.",
+    "envoyeTexte": "Un chargé d'affaires vous rappelle dans l’heure avec les premiers profils."
+  },
+  "bref": {
+    "surtitre": "En bref",
+    "titre": "Le cadre, en quatre chiffres."
+  },
+  "realisations": {
+    "surtitre": "Nos dernières réalisations",
+    "titre": "Ce que nous avons fait, chez qui, et comment",
+    "lien": {
+      "libelle": "Voir toutes nos réalisations →",
+      "href": "/realisations/"
+    },
+    "cartes": [
+      {
+        "image": "/assets/web/x-faisceaux.jpg",
+        "surtitre": "SUEZ IWT · migen© Résidence",
+        "titre": "Remise en état complète d'un site industriel",
+        "date": "Février 2026"
+      },
+      {
+        "image": "/assets/web/team-electric.jpg",
+        "surtitre": "DANONE · migen© Résidence",
+        "titre": "Maintenance en continu des lignes de production",
+        "date": "Février 2026"
+      },
+      {
+        "image": "/assets/web/team-grind-close.jpg",
+        "surtitre": "JTEKT · migen© Résidence",
+        "titre": "Sécuriser la maintenance de ses installations",
+        "date": "Janvier 2026"
+      }
+    ]
+  },
+  "autres": {
+    "surtitre": "Un autre besoin ?",
+    "titre": "Chaque situation a son offre.",
+    "chapeauGabarit": "Si {{ of.name }} n’est pas la bonne réponse, l’une de celles-ci l’est probablement.",
+    "tuiles": [
+      {
+        "phrase": "« J’ai besoin d’un renfort maintenance sur mon site. »",
+        "libelle": "Résidence",
+        "href": "/offres/residence/"
+      },
+      {
+        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
+        "libelle": "Full service",
+        "href": "/offres/maintenance-externalisee/"
+      },
+      {
+        "phrase": "« Je paie mes pannes à l’heure et je ne maîtrise pas mon budget. »",
+        "libelle": "Zéro arrêt",
+        "href": "/offres/zero-arret/"
+      },
+      {
+        "phrase": "« J’ai une fenêtre d’arrêt et pas le droit de la dépasser. »",
+        "libelle": "Arrêt technique",
+        "href": "/offres/arret-technique/"
+      },
+      {
+        "phrase": "« Mon installation n’est plus conforme et je n’ai plus les schémas. »",
+        "libelle": "Bureau d’études",
+        "href": "/offres/bureau-etudes/"
+      },
+      {
+        "phrase": "« Je ne sais pas encore ce qu’il me faut. »",
+        "libelle": "Toutes les offres",
+        "href": "/offres/"
+      }
+    ]
+  },
+  "inclus": {
+    "bande": "Vous voulez lire le contrat type avant d’en parler ?",
+    "bouton": "Demander le contrat type"
+  },
+  "enteteFaq": {
+    "titre": "Ce qu’on nous demande avant de signer.",
+    "bouton": "Poser ma question"
+  }
+}

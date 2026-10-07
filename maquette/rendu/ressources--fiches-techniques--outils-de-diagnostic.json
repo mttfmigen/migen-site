@@ -1,0 +1,53 @@
+{
+  "url": "/ressources/fiches-techniques/outils-de-diagnostic/",
+  "gabarit": "01 Article et fiche",
+  "verdict": "rendue",
+  "h1Attendu": "Outils de diagnostic maintenance",
+  "h1Rendu": "Outils de diagnostic maintenance",
+  "nbSections": 5,
+  "hauteurTotale": 9419,
+  "motsAnnonces": 2132,
+  "motsRendus": 2207,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 627,
+      "images": 1,
+      "liens": 4,
+      "mots": 110
+    },
+    {
+      "ordre": 1,
+      "titre": "01Outils de diagnostic maintenance : trois familles",
+      "hauteur": 6248,
+      "images": 0,
+      "liens": 14,
+      "mots": 1730
+    },
+    {
+      "ordre": 2,
+      "titre": "Vos questions, nos réponses",
+      "hauteur": 753,
+      "images": 0,
+      "liens": 0,
+      "mots": 116
+    },
+    {
+      "ordre": 3,
+      "titre": "Sur le même sujet",
+      "hauteur": 426,
+      "images": 3,
+      "liens": 4,
+      "mots": 32
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 509,
+      "images": 0,
+      "liens": 2,
+      "mots": 42
+    }
+  ]
+}

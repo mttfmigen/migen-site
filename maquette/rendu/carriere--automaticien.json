@@ -1,0 +1,117 @@
+{
+  "url": "/carriere/automaticien/",
+  "gabarit": "07 Métier et carrière",
+  "verdict": "rendue",
+  "h1Attendu": "Automaticien",
+  "h1Rendu": "Automaticien",
+  "nbSections": 13,
+  "hauteurTotale": 9856,
+  "motsAnnonces": 1661,
+  "motsRendus": 1783,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 582,
+      "images": 1,
+      "liens": 3,
+      "mots": 114
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 2,
+      "titre": "Ce que fait un automaticien au quotidien",
+      "hauteur": 936,
+      "images": 0,
+      "liens": 0,
+      "mots": 226
+    },
+    {
+      "ordre": 3,
+      "titre": "Les automates et technologies maîtrisés",
+      "hauteur": 680,
+      "images": 0,
+      "liens": 0,
+      "mots": 81
+    },
+    {
+      "ordre": 4,
+      "titre": "Habilitations et sécurité",
+      "hauteur": 693,
+      "images": 0,
+      "liens": 1,
+      "mots": 126
+    },
+    {
+      "ordre": 5,
+      "titre": "Devenir automaticien : formation et parcours",
+      "hauteur": 785,
+      "images": 0,
+      "liens": 0,
+      "mots": 173
+    },
+    {
+      "ordre": 6,
+      "titre": "Les compétences qui font la différence",
+      "hauteur": 936,
+      "images": 0,
+      "liens": 0,
+      "mots": 186
+    },
+    {
+      "ordre": 7,
+      "titre": "Salaire d'un automaticien",
+      "hauteur": 780,
+      "images": 0,
+      "liens": 2,
+      "mots": 149
+    },
+    {
+      "ordre": 8,
+      "titre": "Automaticien chez Migen : le cadre et les moyens",
+      "hauteur": 718,
+      "images": 0,
+      "liens": 0,
+      "mots": 159
+    },
+    {
+      "ordre": 9,
+      "titre": "Comment rejoindre nos équipes",
+      "hauteur": 549,
+      "images": 0,
+      "liens": 0,
+      "mots": 109
+    },
+    {
+      "ordre": 10,
+      "titre": "Questions fréquentes",
+      "hauteur": 691,
+      "images": 0,
+      "liens": 1,
+      "mots": 113
+    },
+    {
+      "ordre": 11,
+      "titre": "Rejoindre Migen",
+      "hauteur": 944,
+      "images": 0,
+      "liens": 1,
+      "mots": 125
+    },
+    {
+      "ordre": 12,
+      "titre": null,
+      "hauteur": 495,
+      "images": 3,
+      "liens": 3,
+      "mots": 14
+    }
+  ]
+}

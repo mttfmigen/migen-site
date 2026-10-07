@@ -1,0 +1,165 @@
+{
+  "url": "/implantations/paris/essonne/",
+  "gabarit": "06 Département",
+  "verdict": "rendue",
+  "h1Attendu": "Maintenance industrielle en Essonne",
+  "h1Rendu": "Maintenance industrielle en Essonne",
+  "nbSections": 19,
+  "hauteurTotale": 9686,
+  "motsAnnonces": 1320,
+  "motsRendus": 1635,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 708,
+      "images": 0,
+      "liens": 1,
+      "mots": 136
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 197,
+      "images": 0,
+      "liens": 0,
+      "mots": 42
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 33
+    },
+    {
+      "ordre": 5,
+      "titre": "Essonne : les industries que nos techniciens connaissent déjà",
+      "hauteur": 772,
+      "images": 1,
+      "liens": 6,
+      "mots": 112
+    },
+    {
+      "ordre": 6,
+      "titre": "Un trieur qui lâche à Chilly-Mazarin en fin d'après-midi, ce sont des commandes qui basculent au lendemain.",
+      "hauteur": 632,
+      "images": 0,
+      "liens": 0,
+      "mots": 143
+    },
+    {
+      "ordre": 7,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 599,
+      "images": 0,
+      "liens": 0,
+      "mots": 218
+    },
+    {
+      "ordre": 8,
+      "titre": null,
+      "hauteur": 135,
+      "images": 0,
+      "liens": 1,
+      "mots": 33
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 165,
+      "images": 0,
+      "liens": 0,
+      "mots": 16
+    },
+    {
+      "ordre": 10,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 808,
+      "images": 0,
+      "liens": 1,
+      "mots": 127
+    },
+    {
+      "ordre": 11,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 599,
+      "images": 0,
+      "liens": 0,
+      "mots": 89
+    },
+    {
+      "ordre": 12,
+      "titre": null,
+      "hauteur": 296,
+      "images": 0,
+      "liens": 1,
+      "mots": 22
+    },
+    {
+      "ordre": 13,
+      "titre": "Nos références",
+      "hauteur": 760,
+      "images": 5,
+      "liens": 6,
+      "mots": 149
+    },
+    {
+      "ordre": 14,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 33
+    },
+    {
+      "ordre": 15,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 521,
+      "images": 0,
+      "liens": 0,
+      "mots": 89
+    },
+    {
+      "ordre": 16,
+      "titre": "Les cinq offres, dans chaque bassin.",
+      "hauteur": 648,
+      "images": 0,
+      "liens": 5,
+      "mots": 119
+    },
+    {
+      "ordre": 17,
+      "titre": "Nos références dans des industries comme les vôtres",
+      "hauteur": 892,
+      "images": 8,
+      "liens": 9,
+      "mots": 131
+    },
+    {
+      "ordre": 18,
+      "titre": "Besoin d'un plan préventif qui tienne malgré les effectifs du moment ?",
+      "hauteur": 1012,
+      "images": 0,
+      "liens": 0,
+      "mots": 71
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "url": "/travaux-industriels/",
+  "gabarit": "03 Offre et prestation",
+  "verdict": "rendue",
+  "h1Attendu": "Travaux industriels : transfert, démantèlement, montage, levage",
+  "h1Rendu": "Travaux industriels : transfert, démantèlement, montage, levage",
+  "nbSections": 19,
+  "hauteurTotale": 8792,
+  "motsAnnonces": 1067,
+  "motsRendus": 1292,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 708,
+      "images": 0,
+      "liens": 1,
+      "mots": 99
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 218,
+      "images": 0,
+      "liens": 0,
+      "mots": 44
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 493,
+      "images": 2,
+      "liens": 0,
+      "mots": 76
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 17
+    },
+    {
+      "ordre": 5,
+      "titre": null,
+      "hauteur": 527,
+      "images": 1,
+      "liens": 0,
+      "mots": 61
+    },
+    {
+      "ordre": 6,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 498,
+      "images": 0,
+      "liens": 0,
+      "mots": 92
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 135,
+      "images": 0,
+      "liens": 1,
+      "mots": 17
+    },
+    {
+      "ordre": 8,
+      "titre": null,
+      "hauteur": 191,
+      "images": 0,
+      "liens": 0,
+      "mots": 40
+    },
+    {
+      "ordre": 9,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 573,
+      "images": 0,
+      "liens": 1,
+      "mots": 121
+    },
+    {
+      "ordre": 10,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 624,
+      "images": 0,
+      "liens": 0,
+      "mots": 79
+    },
+    {
+      "ordre": 11,
+      "titre": null,
+      "hauteur": 320,
+      "images": 0,
+      "liens": 1,
+      "mots": 33
+    },
+    {
+      "ordre": 12,
+      "titre": "Les prestations regroupées ici",
+      "hauteur": 217,
+      "images": 0,
+      "liens": 1,
+      "mots": 51
+    },
+    {
+      "ordre": 13,
+      "titre": "Nos références",
+      "hauteur": 733,
+      "images": 5,
+      "liens": 6,
+      "mots": 145
+    },
+    {
+      "ordre": 14,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 17
+    },
+    {
+      "ordre": 15,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 536,
+      "images": 0,
+      "liens": 0,
+      "mots": 87
+    },
+    {
+      "ordre": 16,
+      "titre": "Un autre besoin ? Il a son offre.",
+      "hauteur": 648,
+      "images": 0,
+      "liens": 5,
+      "mots": 127
+    },
+    {
+      "ordre": 17,
+      "titre": "Ils nous ont confié une mission comparable",
+      "hauteur": 884,
+      "images": 5,
+      "liens": 6,
+      "mots": 111
+    },
+    {
+      "ordre": 18,
+      "titre": "Besoin d'un premier avis sur votre projet, même s'il n'est prévu que dans six mois ?",
+      "hauteur": 1012,
+      "images": 0,
+      "liens": 0,
+      "mots": 71
+    }
+  ]
+}

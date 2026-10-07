@@ -1,0 +1,117 @@
+# Robot spot
+
+> URL : /ressources/articles/robot-spot/
+> Title SEO : Robot Spot en inspection industrielle | Migen
+> Meta description : Robot spot : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours.
+
+---
+
+# Robot spot
+
+La ronde que tout le monde évite : galeries, toitures, locaux confinés, zones à risque. C'est la mission pour laquelle le robot Spot de Boston Dynamics a été conçu.
+
+Cet article de nos [Ressources : Articles](/ressources/articles/) fait le tri entre le marketing viral et l'usage réel en milieu industriel : ce que la machine sait faire, ce qu'elle coûte, ce qu'elle change pour l'entreprise et les équipes.
+
+> Envie d'un avis de praticiens sur la robotique d'inspection ? Un premier contact suffit : 04 78 33 72 05, nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.
+
+## Spot, le robot chien en deux mots
+
+Spot est un robot quadrupède : quatre pattes, une vision à 360 degrés, la capacité de franchir escaliers, gravats et obstacles qui arrêtent les machines à roues.
+
+- **Un porteur mobile** : Une trentaine de kilos, une électronique embarquée qui supporte poussière et pluie, conçue pour les environnements accidentés. Il s'utilise à la tablette ou déroule seul des missions enregistrées.
+- **Une charge utile au choix** : Le payload, la charge utile en anglais, se choisit selon le besoin et la capacité d'emport : caméra thermique, scanner laser, capteurs acoustiques, module Spot CAM, décliné en Spot CAM+ et Spot CAM+ IR, ou Spot Arm, le bras qui ouvre les portes.
+- **Un écosystème logiciel** : Un development kit publié en open source, une API documentée et Orbit, le logiciel qui programme les rondes et centralise la collecte de données.
+
+Née start-up issue du MIT, Boston Dynamics a d'abord enflammé les réseaux sociaux avec BigDog, puis avec le robot Atlas. Spot est le premier robot de la marque vendu en série, depuis 2020. L'acquisition par Hyundai Motor Group, en 2021, a accéléré son industrialisation.
+
+## La fiche robot en bref
+
+Un chien robot n'est ni un gadget ni un technicien de plus : c'est un porteur de capteurs qui répète, sans se lasser, cette tâche que l'humain fait de moins en moins volontiers.
+
+| Repère | Ce qu'il faut retenir |
+|---|---|
+| Constructeur | Boston Dynamics, groupe Hyundai Motor depuis 2021 |
+| Versions | Spot Explorer pour débuter, Spot Enterprise pour les rondes longues |
+| Locomotion | Quatre pattes, escaliers, sols glissants ; capable de se relever seul |
+| Autonomie | Batterie interchangeable ; la version Enterprise se recharge seule sur sa station |
+| Pilotage | Tablette en direct, ou missions autonomes rejouées à l'identique |
+| Perception | Caméras à 360 degrés, évitement d'obstacles en temps réel |
+| Accessoires | Spot CAM côté image, Spot Arm côté manipulation |
+| Logiciel | Orbit pour la flotte, Software Development Kit et API pour vos outils |
+
+> Le prix s'entend machine nue : annoncé autour de 75 000 dollars au lancement aux États-Unis, avant les charges utiles et le logiciel. En France, le chiffrage se fait sur devis, par des intégrateurs spécialisés.
+
+## Le robot Spot sur le terrain, étape par étape
+
+Une mission d'inspection se prépare : elle se construit une fois, puis se rejoue à volonté. Voici le déroulé type constaté sur les sites équipés.
+
+1. **La cartographie** : Un opérateur guide Spot une première fois dans l'installation. Le robot enregistre le parcours, les plans et les points de passage, y compris les zones sans connexion stable.
+2. **Les points de mesure** : Prises de photo sous le même angle, relevés thermiques sur les armoires, écoute des machines tournantes. Chaque point est défini une fois, avec son seuil d'alerte.
+3. **Les rondes autonomes** : Le robot autonome rejoue la mission de jour comme de nuit, contourne les obstacles grâce à ses caméras et fait son retour à la station. La surveillance devient une routine qui n'use personne.
+4. **L'exploitation** : Les images capturées et les mesures remontent dans Orbit ou vos outils grâce à l'API. Les modèles d'intelligence artificielle repèrent les écarts ; la tendance nourrit la maintenance prédictive.
+
+## Ce que Spot inspecte déjà en milieu industriel
+
+L'inspection industrielle est son application la plus mûre, son terrain naturel : partout où la donnée vaut le déplacement et où le déplacement use un homme, le quadrupède prend la relève.
+
+- **Rondes thermiques et électriques** : Relevés réguliers sur postes et armoires, détection des points chauds avant la casse. La thermographie répétée au même endroit révèle les dérives.
+- **Détection de fuites** : Capteurs acoustiques pour l'air comprimé, relevés de vibrations, lecture de compteurs dans les zones difficiles d'accès, en environnement poussiéreux ou humide.
+- **Scan et documentation** : En robot de chantier, Spot scanne l'avancement pour le comparer au plan. Les entrepreneurs du bâtiment documentent ainsi, semaine après semaine, un grand nombre de points.
+
+La pétrochimie, l'énergie et la construction ont ouvert la voie : sites étendus, environnements dangereux, opérations de contrôle et surveillance obligatoires. Les cas publiés sur le blog de Boston Dynamics, Spot en tête, viennent de ces industries.
+
+## Un exemple concret : la ronde de nuit
+
+Imaginez une sous-station électrique à traverser chaque nuit, des dizaines de relevés à heure fixe, personne pour s'en réjouir. Voici ce que change une ronde conçue une fois, rejouée chaque soir.
+
+- **Le parcours** : Le robot part seul à heure fixe, franchit les caillebotis, photographie chaque armoire sous le même angle, mesure les températures et l'état des galeries.
+- **Les relevés** : Chaque écart au seuil génère une alerte horodatée, avec l'image et la mesure. Pas d'oubli, pas de relevé recopié de mémoire au chaud.
+- **Le lendemain matin** : L'équipe ouvre une liste d'écarts hiérarchisés, pas une pile de photos. Le temps gagné se réinvestit dans l'analyse et la réparation.
+
+Il faut voir la machine se relever après une glissade et reprendre sa ronde pour mesurer le chemin parcouru par la robotique mobile ces dernières années.
+
+## Les erreurs les plus fréquentes
+
+L'achat déçoit quand l'organisation n'existe pas. Les échecs racontés par les entreprises équipées se ressemblent beaucoup.
+
+- **Acheter la machine avant la méthode** : Sans points de mesure définis ni seuils, le robot promène ses capteurs pour rien. La question à trancher d'abord : quelles données, pour quelle décision ?
+- **Sous-estimer l'intégration** : Interface avec vos outils, infrastructure réseau, stockage des images : le déploiement est un projet informatique autant que robotique.
+- **Ignorer l'acceptabilité** : Un chien robot intrigue, parfois inquiète. La police de New York a restitué le sien sous la pression du grand public : préparez la pédagogie, en interne comme autour du site.
+- **Oublier le cadre** : Obligations légales sur l'image des salariés, confidentialité des données, sécurité autour d'une machine en mouvement. Le sujet doit être traité avant la première ronde, pas après.
+- **Négliger l'humain qui reste** : Le robot relève, la réparation reste humaine. Sans analyse des résultats, sans déclenchement des travaux, la ronde parfaite reste décorative.
+- **Confondre démonstration et série** : Un essai réussi est loin d'un service en production. Jugez l'utilisation réelle sur un pilote mesuré, avec des critères d'arrêt honnêtes.
+
+## Ce que cela implique pour votre organisation
+
+Un Spot, entreprise déjà équipée ou pas encore, pose toujours la même question : qui lira les données, et qui agira derrière ?
+
+- **1** : Un référent des missions · Quelqu'un possède les rondes : parcours, seuils, mises à jour, politique d'inspection. Sans propriétaire, la flotte s'éteint dans un coin d'atelier.
+- **2** : Un circuit de décision · Collecter est un début : chaque alerte doit avoir un destinataire, un délai et une suite. La détection sans action est un coût, pas un progrès.
+
+Aucun robot n'a encore remplacé une paire de mains : l'analyse, le démontage, la réparation restent des gestes de technicien. Chez Migen, seuls 10 % des candidats sont retenus, en entretien technique et comportemental : une technologie vaut par les gens qui s'en servent.
+
+> Notre conseil de terrain : structurez d'abord vos rondes et votre préventif, avec ou sans robot, et avec les précautions légales qui vont avec. Un [contrat de maintenance](/offres/zero-arret/) Zéro arrêt pose ce socle, avec l'astreinte en option. Le robot viendra s'y greffer au bon endroit, au bon moment.
+
+## Questions fréquentes
+
+**Combien coûte le robot Spot ?**
+Le tarif de lancement américain était annoncé autour de 75 000 dollars, machine nue. Ajoutez les charges utiles, le logiciel de flotte et l'accompagnement : le budget total se chiffre sur devis, selon l'activité et la flotte visée.
+
+**Le robot Spot remplace-t-il un technicien ?**
+Non. Il collecte des mesures et des images, sans se lasser et sans être exposé. Le diagnostic final, la réparation et l'amélioration restent des métiers : le robot libère du temps d'expert, il n'en crée pas.
+
+**Spot fonctionne-t-il vraiment seul ?**
+Oui, sur des missions enregistrées : il rejoue son parcours grâce à sa cartographie, gère sa batterie et se recharge en version Enterprise. Un opérateur reste utile pour les zones nouvelles et les fonctionnalités livrées chaque année.
+
+**Quelle différence entre Spot et Atlas ?**
+Chez Boston Dynamics, Atlas cultive la forme humaine et l'acrobatie : un robot humanoïde de recherche, jamais vendu en série. Spot est le produit industriel : moins spectaculaire à l'écran, beaucoup plus utile en atelier.
+
+**Qui vend et déploie Spot en France ?**
+Des intégrateurs spécialisés accompagnent le déploiement du robot Spot. Intuitive Robots, par exemple, distribue la machine en France et connaît les contraintes légales. Le support de l'intégrateur compte autant que le chien.
+
+**Par où commencer sans acheter un robot ?**
+Par vos rondes : points de mesure, fréquences, seuils. C'est le travail que nous menons chez nos clients. Un diagnostic de votre organisation dit vite si Spot est un robot pour vous, et à quel horizon.
+
+> À lire aussi : [maintenance préventive et corrective](/ressources/articles/preventive-ou-corrective/)
+
+> [Demander un diagnostic maintenance](/contact/)

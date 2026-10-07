@@ -1,0 +1,673 @@
+<!--
+  EXTRACTION, PAS UNE REECRITURE.
+
+  Fichier source  : migen-site/maquette/site-final.html (9 517 lignes)
+  Plage extraite  : lignes 4031 a 4484 incluses
+                    debut  = <main data-screen-label="Offre - {{ of.name }}">,
+                             le bloc dont le h1 porte {{ of.h1a }} (ligne 4041)
+                    fin    = derniere ligne avant <section id="form-page"> (ligne 4485),
+                             qui ouvre l'ecran suivant
+  Feuille de style: lignes 20 a 160 de site-final.html, recopiees telles quelles
+
+  Le fragment est colle TEL QUEL. Aucun binding {{ }} n'est resolu, aucun mot
+  n'est touche, aucune section n'est retiree. Les balises du dialecte de la
+  maquette (sc-if, sc-for, style-hover, data-reveal, onClick="{{ }}") sont
+  conservees dans leur ecriture d'origine.
+
+  TROIS AJOUTS, et aucun autre, tous pour que le rendu tienne hors du document
+  complet. Ils sont dans le bloc <style> marque "AJOUTS DE L'EXTRACTION" :
+   1. sc-if / sc-for en display:contents. Dans la maquette, support.js les
+      consomme ; ici ce sont des elements inconnus, donc inline par defaut, ce
+      qui casserait les grilles qu'ils enveloppent (tuiles avant/apres, frise,
+      accordeon). display:contents les rend transparents, comme support.js.
+   2. La police Poppins (--fb). La maquette la charge par
+      _ds/migen-design-system-.../colors_and_type.css, absent du depot ; sans
+      substitution le rendu bascule sur la police systeme.
+   3. </main>, qui ferme le <main> ouvert ligne 4031 et dont la fermeture est
+      ligne 4521, au-dela de la coupe.
+
+  CE QUI S'AFFICHE EN DOUBLE ET QUI EST NORMAL : sans support.js, un <sc-if>
+  n'evalue rien, donc les deux branches d'une condition s'affichent l'une sous
+  l'autre. Sur l'ecran d'offre cela se voit a un seul endroit, la carte de
+  formulaire du heros, ou l'etat d'envoi (« Demande envoyee. ») apparait
+  au-dessus du formulaire vierge. Dans la maquette, une seule des deux est
+  visible a la fois.
+
+  CE QUI MANQUE ET QUI EST NORMAL : les images (assets/web/*.jpg,
+  assets/logo-migen-mark.png) ne sont pas dans migen-site/maquette/, donc les
+  trois cartes de realisations et le logo apparaissent en cadre vide.
+-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maquette - page d'offre (extraction lignes 4031-4484)</title>
+<!-- AJOUT DE L'EXTRACTION no 2 : police Poppins, cf. entete -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+
+<!-- ================================================================== -->
+<!-- Recopie integrale du <style> de site-final.html, lignes 20 a 160    -->
+<!-- ================================================================== -->
+<style>
+:root{
+  --ft:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",sans-serif;
+  --fb:'Poppins',var(--ft);
+  --gl-a:.62; --gl-b:22px;
+  --acc:#ff7c3c; --acc-d:#f4641f; --acc-w:rgba(255,124,60,.11); --acc-ink:#7d3309;
+  --rad:28px; --rad-s:18px;
+  --sec:120px;
+  --sat:.55; --ph-op:1;
+  --ts:1; --tr:200ms;
+  --bg:#f1f2f4; --card:#fff; --panel:#1c1b19; --foot:#141312;
+  --ink:#1c1b19; --ink1:#4a4845; --ink2:#6a6764; --ink3:#737373; --ink4:#a8a49d;
+  --line:rgba(28,27,25,.09); --chip:rgba(28,27,25,.055);
+  --gbd:rgba(255,255,255,.82); --gsol:rgba(255,255,255,.8);
+  --ph:#dedfe1; --sheet:rgba(250,250,251,.9);
+  --logo-f:grayscale(1); --map-a:rgba(255,255,255,.95); --map-b:rgba(255,255,255,.55);
+}
+*{box-sizing:border-box}
+@media (max-width:1100px){.mg-tel{display:none!important}}
+.cx-faq summary::-webkit-details-marker{display:none}
+.cx-faq[open] .cx-plus{transform:rotate(45deg);background:var(--acc)!important;color:#fff!important}
+html,body{overflow-anchor:none}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fb);-webkit-font-smoothing:antialiased}
+a{color:var(--ink);text-decoration:none}
+a:hover{color:var(--acc)}
+input,select,textarea,button{font-family:var(--fb)}
+::selection{background:var(--acc);color:#fff}
+@keyframes mgFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.mg-range{-webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:999px;background:var(--line);outline:none;margin:0}
+.mg-range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:999px;background:#ff7c3c;border:3px solid #fff;box-shadow:0 2px 8px rgba(28,27,25,.28);cursor:grab}
+.mg-range::-moz-range-thumb{width:16px;height:16px;border-radius:999px;background:#ff7c3c;border:3px solid #fff;box-shadow:0 2px 8px rgba(28,27,25,.28);cursor:grab;border-color:#fff}
+.mg-range:active::-webkit-slider-thumb{cursor:grabbing}
+@media (max-width:760px){.cx-row{grid-template-columns:32px minmax(0,1fr)!important;gap:8px 16px!important}.cx-row>*:nth-child(3){grid-column:2}}
+@media (max-width:760px){.mg-cmp{grid-template-columns:1fr 1fr!important}.mg-cmp>*:first-child{grid-column:1/-1}}
+@media (max-width:980px){.cx-lay{grid-template-columns:minmax(0,1fr)!important}.cx-toc{display:none!important}}
+@keyframes mgMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mg-marquee:hover .mg-track{animation-play-state:paused}
+.mg-logo{transition:opacity .35s ease,transform .35s cubic-bezier(.2,.7,.2,1),filter .35s ease}
+.mg-marquee:hover .mg-logo{opacity:.4}
+.mg-logo:hover{opacity:1!important;transform:translateY(-6px) scale(1.08)}
+@media (max-width:1140px){}
+@media (max-width:1100px){.mg-implant{display:none!important}}
+@media (max-width:1180px){.mg-nav>*{padding-left:12px!important;padding-right:12px!important;font-size:14px!important}}
+@media (max-width:1080px){.mg-nav>*{padding-left:10px!important;padding-right:10px!important;font-size:13.5px!important}}
+@media (max-width:640px){.mg-topwrap{padding-left:14px!important;padding-right:14px!important}}
+@media (max-width:1000px){.mg-nav>*{padding-left:8px!important;padding-right:8px!important;font-size:13px!important}}
+@media (max-width:860px){.mg-nav>*{padding-left:7px!important;padding-right:7px!important;font-size:12.5px!important}}
+@media (max-width:880px){.mg-nav{display:none!important}.mg-burger{display:inline-flex!important}}
+.mg-nav>*{white-space:nowrap;flex:none}
+.mg-burger{display:none}
+
+@media (max-width:1000px){.mg-valg{grid-template-columns:repeat(2,minmax(0,1fr))!important}.mg-valg>.mg-val{grid-column:span 1!important}.mg-valg>.mg-val:first-child{grid-column:1 / -1!important}.mg-valg>.mg-val:last-child:nth-child(even){grid-column:1 / -1!important}}
+@media (max-width:640px){.mg-valg{grid-template-columns:minmax(0,1fr)!important}.mg-valg>.mg-val{grid-column:1 / -1!important}}
+@media (max-width:1000px){.mg-rmulti{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (min-width:1001px){.mg-bento>[data-fill="1"]{grid-column:1 / -1}}
+@media (max-width:1000px){.mg-bento{grid-template-columns:repeat(2,minmax(0,1fr))!important}.mg-bento>*[data-open="1"]{grid-column:span 2!important;grid-row:auto!important}}
+@media (max-width:640px){.mg-bento{grid-template-columns:minmax(0,1fr)!important;grid-auto-rows:auto!important}.mg-bento>*[data-open="1"]{grid-column:span 1!important}}
+@media (max-width:1000px){.mg-ba{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (max-width:640px){.mg-ba{grid-template-columns:minmax(0,1fr)!important;grid-auto-rows:minmax(240px,auto)!important}}
+@media (max-width:760px){.mg-doclist>div{grid-template-columns:36px minmax(0,1fr)!important}.mg-doclist>div>span:last-child{grid-column:2}}
+@media (max-width:900px){.mg-r2{grid-template-columns:minmax(0,1fr)!important;gap:36px!important}}
+@media (min-width:901px){.mg-flip>*:last-child{order:-1}}
+@media (max-width:620px){.mg-rmulti{grid-template-columns:minmax(0,1fr)!important}}
+@media (max-width:1000px){.mg-rail{display:none}.mg-tl>*{padding-top:18px;border-top:1px solid var(--line)}.mg-tl>*>*:first-child{margin-bottom:14px!important}}
+@media (max-width:760px){.mg-mosaic{grid-template-columns:minmax(0,1fr)!important}.mg-mosaic>*:first-child{min-height:340px!important}}
+@media (max-width:980px){
+.mg-reslay{grid-template-columns:minmax(0,1fr)!important;gap:26px!important}
+.mg-resrail{position:static!important}
+.mg-fmts,.mg-sits{display:flex!important;flex-wrap:wrap!important;gap:7px!important;margin-bottom:18px!important}
+.mg-fmts>*{width:auto!important;border:1px solid var(--line)!important;border-radius:999px!important;padding:8px 14px!important;gap:7px!important;white-space:nowrap}
+.mg-sits>*{border:1px solid var(--line)!important;border-radius:999px!important;padding:7px 13px!important;font-size:12.5px!important;white-space:nowrap}
+}
+@media (max-width:940px){.mg-mrow{grid-template-columns:1.5fr .9fr 104px!important}.mg-mrow>*:nth-child(2),.mg-mrow>*:nth-child(4){display:none}}
+@media (max-width:620px){.mg-mrow{grid-template-columns:1fr 104px!important;gap:12px!important}.mg-mrow>*:nth-child(3){display:none}}
+@media (max-width:940px){.mg-prow{grid-template-columns:auto minmax(0,1fr) 84px!important}.mg-prow>*:nth-child(3){display:none}}
+@media (max-width:560px){.mg-prow{grid-template-columns:auto minmax(0,1fr)!important;gap:14px!important}.mg-prow>*:nth-child(4){text-align:left!important;grid-column:2!important}}
+@media (max-width:760px){.mg-steps{grid-template-columns:repeat(2,minmax(0,1fr))!important;row-gap:20px!important}.mg-steps>div:first-child{display:none!important}}
+@media (max-width:760px){.mg-r3{grid-template-columns:minmax(0,1fr)!important}}
+.cx-more>summary::-webkit-details-marker{display:none}.cx-more .cx-l2{display:none}.cx-more[open] .cx-l1{display:none}.cx-more[open] .cx-l2{display:inline}
+@media (max-width:760px){.mg-bento2{grid-template-columns:minmax(0,1fr)!important}.mg-bento2>*{grid-column:auto!important}}
+.mg-autorail{scrollbar-width:none!important}.mg-autorail::-webkit-scrollbar{display:none!important}
+details[open] .g3-plus{transform:rotate(45deg);background:var(--acc)!important;color:#fff!important}
+summary::-webkit-details-marker{display:none}
+
+@media (max-width:1000px){.mg-rq3{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (max-width:760px){.mg-rq3{grid-template-columns:minmax(0,1fr)!important}.mg-rq2{grid-template-columns:minmax(0,1fr)!important;gap:20px!important}}
+@media (max-width:760px){
+  .mg-pad,.mg-site section>div[style*="max-width:1200px"],.mg-site main>div[style*="max-width:1200px"],.mg-site footer>div[style*="max-width:1200px"]{padding-left:20px!important;padding-right:20px!important}
+  .mg-site section[style*="max-width:1200px"]{padding-left:20px!important;padding-right:20px!important}
+  .mg-site{--sec:64px}
+  .mg-site h1{font-size:clamp(32px,9vw,42px)!important;letter-spacing:-.035em!important}
+  .mg-site h2{font-size:clamp(26px,7.4vw,34px)!important}
+  .mg-site [style*="position:sticky"][style*="top:110px"],.mg-site [style*="position:sticky"][style*="top:100px"]{position:static!important}
+  .mg-site [style*="border-radius:36px"]{border-radius:24px!important}
+  .mg-site [style*="padding:30px 34px"],.mg-site [style*="padding:36px 40px"],.mg-site [style*="padding:40px 44px"],.mg-site [style*="padding:44px 48px"]{padding:24px 20px!important}
+  .mg-site table{font-size:13px}
+  .mg-site [style*="grid-column:span 2"],.mg-site [style*="grid-column:span 3"]{grid-column:auto!important}
+  .mg-site img[style*="aspect-ratio"]{max-height:70vw}
+}
+@media (max-width:480px){.mg-site h1{font-size:clamp(28px,8.6vw,36px)!important}.mg-site [style*="font:600 calc(clamp(56px"]{font-size:48px!important}}
+
+/* container-query mirror for embedded/narrow previews */
+.mg-site{container-type:inline-size}
+@container (max-width:1100px){.mg-tel{display:none!important}}
+@container (max-width:760px){.cx-row{grid-template-columns:32px minmax(0,1fr)!important;gap:8px 16px!important}.cx-row>*:nth-child(3){grid-column:2}}
+@container (max-width:760px){.mg-cmp{grid-template-columns:1fr 1fr!important}.mg-cmp>*:first-child{grid-column:1/-1}}
+@container (max-width:980px){.cx-lay{grid-template-columns:minmax(0,1fr)!important}.cx-toc{display:none!important}}
+@container (max-width:1100px){.mg-implant{display:none!important}}
+@container (max-width:1180px){.mg-nav>*{padding-left:12px!important;padding-right:12px!important;font-size:14px!important}}
+@container (max-width:1080px){.mg-nav>*{padding-left:10px!important;padding-right:10px!important;font-size:13.5px!important}}
+@container (max-width:640px){.mg-topwrap{padding-left:14px!important;padding-right:14px!important}}
+@container (max-width:1000px){.mg-nav>*{padding-left:8px!important;padding-right:8px!important;font-size:13px!important}}
+@container (max-width:860px){.mg-nav>*{padding-left:7px!important;padding-right:7px!important;font-size:12.5px!important}}
+@container (max-width:880px){.mg-nav{display:none!important}.mg-burger{display:inline-flex!important}}
+@container (max-width:1000px){.mg-valg{grid-template-columns:repeat(2,minmax(0,1fr))!important}.mg-valg>.mg-val{grid-column:span 1!important}.mg-valg>.mg-val:first-child{grid-column:1 / -1!important}.mg-valg>.mg-val:last-child:nth-child(even){grid-column:1 / -1!important}}
+@container (max-width:640px){.mg-valg{grid-template-columns:minmax(0,1fr)!important}.mg-valg>.mg-val{grid-column:1 / -1!important}}
+@container (max-width:1000px){.mg-rmulti{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@container (max-width:1000px){.mg-bento{grid-template-columns:repeat(2,minmax(0,1fr))!important}.mg-bento>*[data-open="1"]{grid-column:span 2!important;grid-row:auto!important}}
+@container (max-width:640px){.mg-bento{grid-template-columns:minmax(0,1fr)!important;grid-auto-rows:auto!important}.mg-bento>*[data-open="1"]{grid-column:span 1!important}}
+@container (max-width:1000px){.mg-ba{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@container (max-width:640px){.mg-ba{grid-template-columns:minmax(0,1fr)!important;grid-auto-rows:minmax(240px,auto)!important}}
+@container (max-width:760px){.mg-doclist>div{grid-template-columns:36px minmax(0,1fr)!important}.mg-doclist>div>span:last-child{grid-column:2}}
+@container (max-width:900px){.mg-r2{grid-template-columns:minmax(0,1fr)!important;gap:36px!important}}
+@container (max-width:620px){.mg-rmulti{grid-template-columns:minmax(0,1fr)!important}}
+@container (max-width:1000px){.mg-rail{display:none}.mg-tl>*{padding-top:18px;border-top:1px solid var(--line)}.mg-tl>*>*:first-child{margin-bottom:14px!important}}
+@container (max-width:760px){.mg-mosaic{grid-template-columns:minmax(0,1fr)!important}.mg-mosaic>*:first-child{min-height:340px!important}}
+@container (max-width:980px){
+.mg-reslay{grid-template-columns:minmax(0,1fr)!important;gap:26px!important}
+@container (max-width:940px){.mg-mrow{grid-template-columns:1.5fr .9fr 104px!important}.mg-mrow>*:nth-child(2),.mg-mrow>*:nth-child(4){display:none}}
+@container (max-width:620px){.mg-mrow{grid-template-columns:1fr 104px!important;gap:12px!important}.mg-mrow>*:nth-child(3){display:none}}
+@container (max-width:940px){.mg-prow{grid-template-columns:auto minmax(0,1fr) 84px!important}.mg-prow>*:nth-child(3){display:none}}
+@container (max-width:560px){.mg-prow{grid-template-columns:auto minmax(0,1fr)!important;gap:14px!important}.mg-prow>*:nth-child(4){text-align:left!important;grid-column:2!important}}
+@container (max-width:760px){.mg-steps{grid-template-columns:repeat(2,minmax(0,1fr))!important;row-gap:20px!important}.mg-steps>div:first-child{display:none!important}}
+@container (max-width:760px){.mg-r3{grid-template-columns:minmax(0,1fr)!important}}
+@container (max-width:760px){.mg-bento2{grid-template-columns:minmax(0,1fr)!important}.mg-bento2>*{grid-column:auto!important}}
+@container (max-width:1000px){.mg-rq3{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@container (max-width:760px){.mg-rq3{grid-template-columns:minmax(0,1fr)!important}.mg-rq2{grid-template-columns:minmax(0,1fr)!important;gap:20px!important}}
+@container (max-width:760px){
+  .mg-pad,.mg-site section>div[style*="max-width:1200px"],.mg-site main>div[style*="max-width:1200px"],.mg-site footer>div[style*="max-width:1200px"]{padding-left:20px!important;padding-right:20px!important}
+@container (max-width:480px){.mg-site h1{font-size:clamp(28px,8.6vw,36px)!important}.mg-site [style*="font:600 calc(clamp(56px"]{font-size:48px!important}}
+</style>
+
+<!-- ================================================================== -->
+<!-- AJOUTS DE L'EXTRACTION no 1 : voir l'entete du fichier              -->
+<!-- ================================================================== -->
+<style>
+sc-if, sc-for { display: contents; }
+</style>
+</head>
+<body>
+<div class="mg-site" style="min-height:100vh;background:var(--bg)">
+
+<!-- ================================================================== -->
+<!-- DEBUT DU FRAGMENT : site-final.html lignes 4031 a 4484, tel quel    -->
+<!-- ================================================================== -->
+<main data-screen-label="Offre — {{ of.name }}" style="padding-top:96px">
+  <section style="max-width:1200px;margin:0 auto;padding:70px 40px 0">
+    <div class="mg-r2" style="display:grid;grid-template-columns:1.12fr .88fr;gap:52px;align-items:start">
+    <div>
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:26px;flex-wrap:wrap">
+      <span style="display:inline-flex;align-items:center;gap:8px;white-space:nowrap;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b));-webkit-backdrop-filter:blur(var(--gl-b));border:1px solid var(--gbd);font:600 12px var(--fb);letter-spacing:.02em;color:var(--ink1);box-shadow:0 2px 10px rgba(0,0,0,.05)">
+        <span style="width:6px;height:6px;border-radius:999px;background:var(--acc)"></span>{{ of.pill }}
+      </span>
+      <span style="font:400 12.5px var(--fb);color:var(--ink4)">{{ of.small }}</span>
+    </div>
+    <h1 style="font:600 calc(clamp(38px,4.4vw,66px) * var(--ts))/1.03 var(--ft);letter-spacing:-.045em;color:var(--ink);margin:0;max-width:16ch;text-wrap:balance">{{ of.h1a }} <span style="color:var(--ink4)">{{ of.h1b }}</span></h1>
+    <p style="font:400 17.5px/1.65 var(--fb);color:var(--ink2);margin:26px 0 0;max-width:48ch">{{ of.lead }}</p>
+    <div style="display:flex;gap:12px;margin-top:26px;flex-wrap:wrap">
+      <a href="#" onClick="{{ goOffres }}" style="display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--gsol);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);color:var(--ink);font:600 15px var(--fb);transition:background var(--tr),transform var(--tr);white-space:nowrap" style-hover="background:var(--card);transform:translateY(-1px)">Les cinq offres</a>
+      
+    </div>
+    <div style="display:flex;align-items:center;gap:26px;margin-top:34px;padding-top:26px;border-top:1px solid var(--line);flex-wrap:wrap">
+      <div><div style="font:600 22px var(--ft);letter-spacing:-.04em">5</div><div style="font:400 12.5px var(--fb);color:var(--ink4);margin-top:2px">agences en France</div></div>
+      <div style="width:1px;height:34px;background:var(--line)"></div>
+      <div><div style="font:600 22px var(--ft);letter-spacing:-.04em">10&nbsp;%</div><div style="font:400 12.5px var(--fb);color:var(--ink4);margin-top:2px">des candidats retenus</div></div>
+      <div style="width:1px;height:34px;background:var(--line)"></div>
+      <div><div style="font:600 22px var(--ft);letter-spacing:-.04em">+200</div><div style="font:400 12.5px var(--fb);color:var(--ink4);margin-top:2px">clients industriels</div></div>
+    </div>
+    </div>
+
+    <div style="position:relative">
+    <div id="besoin" style="position:relative;background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);border-radius:var(--rad);padding:30px 30px 32px;box-shadow:0 1px 1px rgba(0,0,0,.04),0 30px 70px -34px rgba(0,0,0,.42)">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:70px 0;text-align:center">
+          <div style="font:600 23px var(--ft);letter-spacing:-.03em;margin-bottom:10px">Demande envoyée.</div>
+          <p style="font:400 15px/1.6 var(--fb);color:var(--ink2);margin:0 auto;max-width:32ch">Un chargé d'affaires vous rappelle dans l’heure avec les premiers profils.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;column-gap:14px;row-gap:6px;margin-bottom:20px;flex-wrap:wrap">
+        <div style="font:600 20px/1.2 var(--ft);letter-spacing:-.03em;white-space:nowrap">Décrire mon besoin</div>
+        <div style="font:500 11.5px var(--fb);letter-spacing:.1em;text-transform:uppercase;color:var(--acc)">Rappel dans l’heure</div>
+      </div>
+      <div class="mg-r2" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <label style="display:block;grid-column:span 2;min-width:0"><span style="display:block;font:600 10.5px var(--fb);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px">Nom de l’entreprise<span style="color:var(--acc)">&nbsp;*</span></span><input name="company" required="" style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);font:400 14.5px var(--fb);color:var(--ink);outline:none"></label>
+            <label style="display:block"><span style="display:block;font:600 10.5px var(--fb);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px">Nom<span style="color:var(--acc)">&nbsp;*</span></span><input name="lastname" required="" style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);font:400 14.5px var(--fb);color:var(--ink);outline:none"></label>
+            <label style="display:block"><span style="display:block;font:600 10.5px var(--fb);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px">Prénom<span style="color:var(--acc)">&nbsp;*</span></span><input name="firstname" required="" style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);font:400 14.5px var(--fb);color:var(--ink);outline:none"></label>
+            <label style="display:block;grid-column:span 2;min-width:0"><span style="display:block;font:600 10.5px var(--fb);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px">Courriel<span style="color:var(--acc)">&nbsp;*</span></span><input type="email" name="email" required="" style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);font:400 14.5px var(--fb);color:var(--ink);outline:none"></label>
+            <label style="display:block;grid-column:span 2;min-width:0"><span style="display:block;font:600 10.5px var(--fb);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px">Téléphone<span style="color:var(--acc)">&nbsp;*</span></span><span style="display:flex;border-radius:12px;border:1px solid var(--line);background:var(--card);overflow:hidden"><select name="phone_country" style="flex:none;width:84px;border:none;border-right:1px solid var(--line);background:var(--bg);padding:0 4px 0 10px;font:500 12.5px var(--fb);outline:none"><option value="+33">FR +33</option><option value="+32">BE +32</option><option value="+41">CH +41</option><option value="+34">ES +34</option><option value="+1">CA +1</option><option value="+971">AE +971</option></select><input type="tel" name="phone" required="" style="flex:1;min-width:0;border:none;padding:12px;background:transparent;font:400 14.5px var(--fb);outline:none"></span></label>
+            <label style="display:block;grid-column:span 2;min-width:0"><span style="display:block;font:600 10.5px var(--fb);letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px">Message<span style="color:var(--acc)">&nbsp;*</span></span><textarea name="message" rows="3" required="" style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);font:400 14.5px var(--fb);color:var(--ink);outline:none;line-height:1.5;resize:vertical"></textarea></label>
+            <input type="hidden" name="country"><input type="hidden" name="siren"><input type="hidden" name="siret"><input type="hidden" name="address"><input type="hidden" name="zip">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:4px;grid-column:span 2;font:400 11.5px/1.5 var(--fb);color:var(--ink4);text-align:center"><button type="button" onClick="{{ send }}" style="display:inline-flex;align-items:center;padding:14px 24px;border-radius:999px;border:none;background:var(--acc);color:#fff;font:600 15px var(--fb);cursor:pointer;white-space:nowrap;box-shadow:0 12px 30px -12px rgba(255,124,60,.9)" style-hover="filter:brightness(.93)">On me rappelle dans l’heure</button></div>
+          </div>
+      </sc-if>
+    </div>
+    </div>
+
+    </div>
+  </section>
+
+  <section style="padding:var(--sec) 0 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 40px">
+      <div data-reveal="">
+      <div class="mg-r2" style="display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:end;margin-bottom:34px"><div><div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px">En bref</div><h2 style="font:600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft);letter-spacing:-.04em;margin:0;max-width:22ch;text-wrap:balance">Le cadre, en quatre chiffres.</h2></div><p style="font:400 16.5px/1.7 var(--fb);color:var(--ink2);margin:0;max-width:46ch">{{ of.bref }}</p></div>
+      <div class="mg-rmulti" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px"><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:26px 26px 28px"><div style="font:600 calc(34px * var(--ts))/1 var(--ft);letter-spacing:-.05em;color:var(--acc)">{{ of.s00 }}</div><div style="font:600 14.5px var(--ft);letter-spacing:-.02em;color:var(--ink);margin-top:12px">{{ of.s01 }}</div><div style="font:400 13.5px/1.5 var(--fb);color:var(--ink3);margin-top:5px">{{ of.s02 }}</div></div><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:26px 26px 28px"><div style="font:600 calc(34px * var(--ts))/1 var(--ft);letter-spacing:-.05em;color:var(--acc)">{{ of.s10 }}</div><div style="font:600 14.5px var(--ft);letter-spacing:-.02em;color:var(--ink);margin-top:12px">{{ of.s11 }}</div><div style="font:400 13.5px/1.5 var(--fb);color:var(--ink3);margin-top:5px">{{ of.s12 }}</div></div><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:26px 26px 28px"><div style="font:600 calc(34px * var(--ts))/1 var(--ft);letter-spacing:-.05em;color:var(--acc)">{{ of.s20 }}</div><div style="font:600 14.5px var(--ft);letter-spacing:-.02em;color:var(--ink);margin-top:12px">{{ of.s21 }}</div><div style="font:400 13.5px/1.5 var(--fb);color:var(--ink3);margin-top:5px">{{ of.s22 }}</div></div><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:26px 26px 28px"><div style="font:600 calc(34px * var(--ts))/1 var(--ft);letter-spacing:-.05em;color:var(--acc)">{{ of.s30 }}</div><div style="font:600 14.5px var(--ft);letter-spacing:-.02em;color:var(--ink);margin-top:12px">{{ of.s31 }}</div><div style="font:400 13.5px/1.5 var(--fb);color:var(--ink3);margin-top:5px">{{ of.s32 }}</div></div></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:22px;padding:16px 16px 16px 26px;border-radius:24px;background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3)"><span style="font:500 15.5px/1.5 var(--fb);color:var(--ink1)">{{ of.strip }}</span><a href="#form-page" style="display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--acc);color:#fff;font:600 15px var(--fb);white-space:nowrap;box-shadow:0 12px 30px -12px rgba(255,124,60,.9);transition:filter var(--tr),transform var(--tr);padding:12px 22px;font-size:14.5px" style-hover="filter:brightness(.93);transform:translateY(-1px);color:#fff">{{ of.cta }}</a></div>
+      </div>
+    </div>
+  </section>
+
+<sc-if value="{{ of.isZero }}" hint-placeholder-val="{{ false }}">
+<section id="formules" style="padding:var(--sec) 0 0;scroll-margin-top:90px">
+  <div style="max-width:1200px;margin:0 auto;padding:0 40px">
+    <div data-reveal="">
+      <div class="mg-r2" style="display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:end;margin-bottom:28px">
+        <div><div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px">Comment ça marche</div><h2 style="font:600 calc(clamp(28px,3.2vw,46px) * var(--ts))/1.06 var(--ft);letter-spacing:-.04em;color:var(--ink);margin:0;max-width:22ch;text-wrap:balance">Une panne signalée avant 16 h, une intervention garantie.</h2></div>
+        <p style="font:400 15.5px/1.7 var(--fb);color:var(--ink2);margin:0;max-width:44ch">Signalée après 16 h&nbsp;? Intervention la nuit suivante. Le dépannage en journée n’est pas dans le périmètre&nbsp;: il relève de la régie classique.</p>
+      </div>
+      <div class="mg-rmulti" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+        <div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:24px 24px 26px"><div style="font:600 calc(30px * var(--ts))/1 var(--ft);letter-spacing:-.05em;color:var(--acc);margin-bottom:12px">14 h 30</div><div style="font:400 14.5px/1.55 var(--fb);color:var(--ink1)">Vous signalez la panne à l’astreinte.</div></div>
+        <div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:24px 24px 26px"><div style="font:600 calc(30px * var(--ts))/1 var(--ft);letter-spacing:-.05em;color:var(--acc);margin-bottom:12px">16 h 00</div><div style="font:400 14.5px/1.55 var(--fb);color:var(--ink1)">L’intervention est confirmée pour cette nuit.</div></div>
+        <div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:24px 24px 26px"><div style="font:600 calc(30px * var(--ts))/1 var(--ft);letter-spacing:-.05em;color:var(--acc);margin-bottom:12px">22 h 00</div><div style="font:400 14.5px/1.55 var(--fb);color:var(--ink1)">Le technicien intervient sur votre site, machines à l’arrêt.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:var(--sec) 0 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 40px">
+    <div data-reveal="">
+      <div class="mg-r2" style="display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:end;margin-bottom:28px">
+        <div><div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px">Les formules · engagement 12 mois</div><h2 style="font:600 calc(clamp(28px,3.2vw,46px) * var(--ts))/1.06 var(--ft);letter-spacing:-.04em;color:var(--ink);margin:0;max-width:22ch;text-wrap:balance">Trois formules. Une recommandation.</h2></div>
+        <p style="font:400 15.5px/1.7 var(--fb);color:var(--ink2);margin:0;max-width:44ch">Prix mensuel fixe, sans embauche. Ni majoration de nuit, ni d’urgence, ni de week-end. Le tarif vous est présenté en rendez-vous, avec l’étude de couverture de votre site.</p>
+      </div>
+      <div class="mg-rmulti" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch">
+        <div style="display:flex;flex-direction:column;border-radius:var(--rad);padding:34px 30px 32px;background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3)">
+          <div style="font:600 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:14px">Formule 01</div>
+          <div style="font:600 calc(26px * var(--ts)) var(--ft);letter-spacing:-.035em;color:var(--ink);margin-bottom:8px">Prévention</div>
+          <p style="font:400 14px/1.6 var(--fb);color:var(--ink2);margin:0 0 22px">La porte d’entrée, pour une PME prudente.</p>
+          <div style="display:grid;gap:10px;margin-bottom:28px;padding-top:20px;border-top:1px solid var(--line)"><div style="display:flex;gap:10px;font:400 14.5px/1.5 var(--fb);color:var(--ink1)"><span style="color:var(--acc);flex:none">+</span>1 préventif le samedi par mois</div><div style="display:flex;gap:10px;font:400 14.5px/1.5 var(--fb);color:var(--ink1)"><span style="color:var(--acc);flex:none">+</span>Astreinte en horaires ouvrés</div><div style="display:flex;gap:10px;font:400 14.5px/1.5 var(--fb);color:var(--ink1)"><span style="color:var(--acc);flex:none">+</span>Dépannage à la demande</div></div>
+          <a href="#besoin" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:auto;padding:13px 22px;border-radius:999px;background:var(--chip);border:1px solid var(--line);color:var(--ink);font:600 14.5px var(--fb);white-space:nowrap" style-hover="border-color:var(--acc)">Recevoir le tarif</a>
+        </div>
+        <div style="position:relative;display:flex;flex-direction:column;border-radius:var(--rad);padding:34px 30px 32px;background:var(--panel);overflow:hidden;box-shadow:0 30px 70px -36px rgba(0,0,0,.55)">
+          <div style="position:absolute;width:360px;height:360px;right:-150px;top:-170px;background:radial-gradient(circle,rgba(255,124,60,.32),transparent 68%);pointer-events:none"></div>
+          <div style="position:relative;display:flex;flex-direction:column;height:100%">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px"><span style="font:600 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Formule 02</span><span style="font:600 10px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--acc);padding:5px 11px;border-radius:999px;white-space:nowrap">Recommandé</span></div>
+            <div style="font:600 calc(26px * var(--ts)) var(--ft);letter-spacing:-.035em;color:#fff;margin-bottom:8px">Zéro Arrêt</div>
+            <p style="font:400 14px/1.6 var(--fb);color:rgba(255,255,255,.6);margin:0 0 22px">Pour la PME sans maintenance interne.</p>
+            <div style="display:grid;gap:10px;margin-bottom:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12)"><div style="display:flex;gap:10px;font:400 14.5px/1.5 var(--fb);color:rgba(255,255,255,.78)"><span style="color:var(--acc);flex:none">+</span>1 préventif le samedi par mois</div><div style="display:flex;gap:10px;font:400 14.5px/1.5 var(--fb);color:rgba(255,255,255,.78)"><span style="color:var(--acc);flex:none">+</span>1 ticket de dépannage de nuit garanti</div><div style="display:flex;gap:10px;font:400 14.5px/1.5 var(--fb);color:rgba(255,255,255,.78)"><span style="color:var(--acc);flex:none">+</span>Astreinte</div><div style="display:flex;gap:10px;font:400 14.5px/1.5 var(--fb);color:rgba(255,255,255,.78)"><span style="color:var(--acc);flex:none">+</span>Mise en service offerte</div></div>
+            <a href="#besoin" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:auto;padding:14px 22px;border-radius:999px;background:var(--acc);color:#fff;font:600 14.5px var(--fb);white-space:nowrap;box-shadow:0 12px 30px -12px rgba(255,124,60,.9)" style-hover="filter:brightness(.93);color:#fff">Recevoir le tarif</a>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;border-radius:var(--rad);padding:34px 30px 32px;background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3)">
+          <div style="font:600 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:14px">Formule 03</div>
+          <div style="font:600 calc(26px * var(--ts)) var(--ft);letter-spacing:-.035em;color:var(--ink);margin-bottom:8px">Zéro Arrêt Max</div>
+          <p style="font:400 14px/1.6 var(--fb);color:var(--ink2);margin:0 0 22px">Multi-machines, production sensible.</p>
+          <div style="display:grid;gap:10px;margin-bottom:28px;padding-top:20px;border-top:1px solid var(--line)"><div style="display:flex;gap:10px;font:400 14.5px/1.5 var(--fb);color:var(--ink1)"><span style="color:var(--acc);flex:none">+</span>2 préventifs par mois</div><div style="display:flex;gap:10px;font:400 14.5px/1.5 var(--fb);color:var(--ink1)"><span style="color:var(--acc);flex:none">+</span>2 tickets de nuit garantis</div><div style="display:flex;gap:10px;font:400 14.5px/1.5 var(--fb);color:var(--ink1)"><span style="color:var(--acc);flex:none">+</span>Interventions prioritaires</div><div style="display:flex;gap:10px;font:400 14.5px/1.5 var(--fb);color:var(--ink1)"><span style="color:var(--acc);flex:none">+</span>Mise en service offerte</div></div>
+          <a href="#besoin" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:auto;padding:13px 22px;border-radius:999px;background:var(--chip);border:1px solid var(--line);color:var(--ink);font:600 14.5px var(--fb);white-space:nowrap" style-hover="border-color:var(--acc)">Recevoir le tarif</a>
+        </div>
+      </div>
+      <div style="border-radius:var(--rad);overflow:hidden;background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);margin-top:16px">
+        <div class="mg-cmp" style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:16px;padding:18px 28px;border-bottom:1px solid var(--line)"><span style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink4)">Ligne par ligne</span><span style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)">Prévention</span><span style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Zéro Arrêt</span><span style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)">Max</span></div>
+        <div class="mg-cmp" style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:16px;padding:16px 28px;border-bottom:1px solid var(--line)"><span style="font:600 14.5px var(--ft);letter-spacing:-.02em;color:var(--ink)">Préventif samedi (8 h)</span><span style="font:400 14px/1.45 var(--fb);color:var(--ink2)">1 / mois</span><span style="font:600 14px/1.45 var(--fb);color:var(--acc-ink)">1 / mois</span><span style="font:400 14px/1.45 var(--fb);color:var(--ink2)">2 / mois</span></div>
+        <div class="mg-cmp" style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:16px;padding:16px 28px;border-bottom:1px solid var(--line)"><span style="font:600 14.5px var(--ft);letter-spacing:-.02em;color:var(--ink)">Ticket de dépannage de nuit (4 h max)</span><span style="font:400 14px/1.45 var(--fb);color:var(--ink2)">À la demande</span><span style="font:600 14px/1.45 var(--fb);color:var(--acc-ink)">1 / mois</span><span style="font:400 14px/1.45 var(--fb);color:var(--ink2)">2 / mois</span></div>
+        <div class="mg-cmp" style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:16px;padding:16px 28px;border-bottom:1px solid var(--line)"><span style="font:600 14.5px var(--ft);letter-spacing:-.02em;color:var(--ink)">Délai d’intervention curative</span><span style="font:400 14px/1.45 var(--fb);color:var(--ink2)">Nuit suivante, sans engagement</span><span style="font:600 14px/1.45 var(--fb);color:var(--acc-ink)">La nuit même si appel avant 16 h</span><span style="font:400 14px/1.45 var(--fb);color:var(--ink2)">La nuit même, en priorité</span></div>
+        
+        <div class="mg-cmp" style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:16px;padding:16px 28px"><span style="font:600 14.5px var(--ft);letter-spacing:-.02em;color:var(--ink)">Mise en service</span><span style="font:400 14px/1.45 var(--fb);color:var(--ink2)">Facturée</span><span style="font:600 14px/1.45 var(--fb);color:var(--acc-ink)">Offerte</span><span style="font:400 14px/1.45 var(--fb);color:var(--ink2)">Offerte</span></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;margin-top:14px;padding:18px 24px;border-radius:var(--rad);background:var(--acc-w);border:1.5px solid rgba(255,124,60,.3);flex-wrap:wrap">
+        <span style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc-ink);flex:none">La règle</span>
+        <span style="font:400 14.5px/1.6 var(--fb);color:var(--ink1);flex:1;min-width:240px">Ce qui fait monter d’une formule à l’autre, c’est la disponibilité et le délai — jamais les fournitures. En plus de l’abonnement, seules les pièces s’ajoutent, au prix réel avec un coefficient écrit au contrat.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:var(--sec) 0 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 40px">
+    <div data-reveal="" class="mg-r2" style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:34px 34px 36px">
+        <div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px">Le comparatif</div>
+        <div style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.035em;color:var(--ink);margin-bottom:20px;max-width:22ch">Disponible quand un salarié ne l’est pas.</div>
+        <div style="display:grid;gap:10px">
+          <div style="display:flex;gap:10px;font:400 14.5px/1.5 var(--fb);color:var(--ink2)"><span style="color:var(--ink4);flex:none">×</span>Un technicien salarié est indisponible la nuit et le samedi</div>
+          <div style="display:flex;gap:10px;font:400 14.5px/1.5 var(--fb);color:var(--ink2)"><span style="color:var(--ink4);flex:none">×</span>Six semaines d’absence par an</div>
+          <div style="display:flex;gap:10px;font:400 14.5px/1.5 var(--fb);color:var(--ink2)"><span style="color:var(--ink4);flex:none">×</span>À recruter, équiper, manager</div>
+        </div>
+      </div>
+      <div style="border-radius:var(--rad);padding:34px 34px 36px;background:var(--panel);position:relative;overflow:hidden">
+        <div style="position:absolute;width:340px;height:340px;right:-140px;bottom:-170px;background:radial-gradient(circle,rgba(255,124,60,.3),transparent 68%);pointer-events:none"></div>
+        <div style="position:relative">
+          <div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px">Zéro Arrêt</div>
+          <div style="font:600 calc(24px * var(--ts))/1.2 var(--ft);letter-spacing:-.035em;color:#fff;margin-bottom:20px;max-width:22ch">Couvert la nuit et le samedi, garanti par contrat.</div>
+          <div style="display:grid;gap:10px">
+            <div style="display:flex;gap:10px;font:400 14.5px/1.5 var(--fb);color:rgba(255,255,255,.78)"><span style="color:var(--acc);flex:none">✓</span>Couvert la nuit et le samedi</div>
+            <div style="display:flex;gap:10px;font:400 14.5px/1.5 var(--fb);color:rgba(255,255,255,.78)"><span style="color:var(--acc);flex:none">✓</span>Délai garanti par contrat</div>
+            <div style="display:flex;gap:10px;font:400 14.5px/1.5 var(--fb);color:rgba(255,255,255,.78)"><span style="color:var(--acc);flex:none">✓</span>Opérationnel dès le premier mois</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:var(--sec) 0 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 40px">
+    <div data-reveal="">
+      <div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px">Le premier mois</div><h2 style="font:600 calc(clamp(28px,3.2vw,46px) * var(--ts))/1.06 var(--ft);letter-spacing:-.04em;color:var(--ink);margin:0;max-width:22ch;text-wrap:balance">La première visite prépare toutes les nuits suivantes.</h2>
+      <div class="mg-rmulti" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:28px">
+        <div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:26px 26px 28px"><div style="font:600 11px ui-monospace,Menlo,monospace;color:var(--acc);margin-bottom:14px">01</div><div style="font:500 15px/1.55 var(--fb);color:var(--ink1)">Visite de votre site et référencement des équipements critiques.</div></div>
+        <div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:26px 26px 28px"><div style="font:600 11px ui-monospace,Menlo,monospace;color:var(--acc);margin-bottom:14px">02</div><div style="font:500 15px/1.55 var(--fb);color:var(--ink1)">Organisation des accès de nuit et du samedi : clés, badge, alarme.</div></div>
+        <div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:26px 26px 28px"><div style="font:600 11px ui-monospace,Menlo,monospace;color:var(--acc);margin-bottom:14px">03</div><div style="font:500 15px/1.55 var(--fb);color:var(--ink1)">Plan de prévention signé, test de l’astreinte.</div></div>
+      </div>
+      <div style="margin-top:14px;border-radius:36px;background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);padding:40px 44px;display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap">
+        <div style="flex:1;min-width:280px">
+          <div style="font:600 11px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:10px">Prochaine étape</div>
+          <div style="font:600 calc(clamp(22px,2.4vw,32px) * var(--ts))/1.14 var(--ft);letter-spacing:-.04em;color:var(--ink);margin-bottom:10px;max-width:26ch">L’étude de couverture est gratuite.</div>
+          <p style="font:400 15px/1.65 var(--fb);color:var(--ink2);margin:0;max-width:56ch">Votre code postal, une réponse écrite sous 48&nbsp;h&nbsp;: couvert, en zone étendue, ou refusé. On préfère refuser un contrat que signer une promesse qu’on ne tiendra pas.</p>
+        </div>
+        <a href="#besoin" style="display:inline-flex;align-items:center;gap:9px;padding:16px 28px;border-radius:999px;background:var(--acc);color:#fff;font:600 15px var(--fb);white-space:nowrap;box-shadow:0 12px 30px -12px rgba(255,124,60,.9);flex:none" style-hover="filter:brightness(.93);color:#fff">Vérifier ma couverture →</a>
+      </div>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+  <section style="padding:var(--sec) 0 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 40px">
+      <div data-reveal="" style="{{ baCanvas }}">
+        <div style="{{ baGlow }}"></div>
+        <div style="position:relative">
+          <div class="mg-r2" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end;margin-bottom:30px">
+            <div>
+              <div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px">Le jour et la nuit</div>
+              <h2 style="{{ baHeadCss }}">{{ baHead }}</h2>
+            </div>
+            <p style="{{ baSubCss }}">{{ baSub }}</p>
+          </div>
+
+          <div style="{{ baToggleCss }}">
+            <button type="button" onClick="{{ setBefore }}" style="{{ tabBeforeCss }}">Avant migen©</button>
+            <button type="button" onClick="{{ setAfter }}" style="{{ tabAfterCss }}">Avec migen©</button>
+          </div>
+
+          <div class="mg-ba" style="display:grid;grid-template-columns:.92fr 1.28fr 1fr;grid-auto-rows:minmax(290px,auto);gap:14px">
+            <sc-for list="{{ baTiles }}" as="t" hint-placeholder-count="6">
+              <div style="{{ t.wrapCss }}">
+
+                <sc-if value="{{ t.isStat }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-direction:column;justify-content:flex-end;height:100%;padding:30px 32px 32px">
+                    <div style="{{ t.numCss }}">{{ t.num }}</div>
+                    <p style="{{ t.bodyCss }}">{{ t.body }}</p>
+                    <div style="{{ t.srcCss }}">{{ t.src }}</div>
+                  </div>
+                </sc-if>
+
+                <sc-if value="{{ t.isPhoto }}" hint-placeholder-val="{{ false }}">
+                  <div style="{{ t.imgLayer }}"></div>
+                  <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,9,8,.9) 0%,rgba(10,9,8,.28) 52%,rgba(10,9,8,.12) 100%)"></div>
+                  <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:28px 30px 30px">
+                    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px">
+                      <div style="min-width:0">
+                        <p style="font:600 calc(16.5px * var(--ts))/1.45 var(--ft);letter-spacing:-.02em;color:#fff;margin:0 0 8px;max-width:34ch">«&nbsp;{{ t.quote }}&nbsp;»</p>
+                        <div style="font:400 12.5px/1.45 var(--fb);color:rgba(255,255,255,.68)">{{ t.who }}</div>
+                      </div>
+                      <span style="width:38px;height:38px;border-radius:999px;background-color:#ff7c3c;color:#fff;font:400 16px var(--fb);display:flex;align-items:center;justify-content:center;flex:none">→</span>
+                    </div>
+                  </div>
+                </sc-if>
+
+                <sc-if value="{{ t.isQuote }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-direction:column;height:100%;padding:30px 32px 32px">
+                    <p style="{{ t.quoteCss }}">«&nbsp;{{ t.quote }}&nbsp;»</p>
+                    <div style="display:flex;align-items:center;gap:12px;margin-top:auto">
+                      <div style="{{ t.avatarCss }}">{{ t.initials }}</div>
+                      <div style="min-width:0">
+                        <div style="{{ t.nameCss }}">{{ t.who }}</div>
+                        <div style="{{ t.roleCss }}">{{ t.role }}</div>
+                      </div>
+                    </div>
+                  </div>
+                </sc-if>
+
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:var(--sec) 0 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 40px">
+      <div data-reveal="">
+      <div class="mg-r2" style="display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:end;margin-bottom:34px"><div><div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px">Ce qui est inclus</div><h2 style="font:600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft);letter-spacing:-.04em;margin:0;max-width:22ch;text-wrap:balance">{{ of.incT }}</h2></div><p style="font:400 16.5px/1.7 var(--fb);color:var(--ink2);margin:0;max-width:46ch">{{ of.incP }}</p></div>
+      <div class="mg-r2" style="display:grid;grid-template-columns:1.1fr .9fr;gap:14px;align-items:stretch"><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:30px 32px 18px"><div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><img src="assets/logo-migen-mark.png" alt="" style="height:22px;width:auto"><span style="font:600 calc(18px * var(--ts)) var(--ft);letter-spacing:-.028em;color:var(--ink)">Ce que migen© porte</span></div><div style="display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--line);font:400 15px/1.55 var(--fb);color:var(--ink1)"><span style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:999px;flex:none;margin-top:1px;font:600 11px var(--fb);background:var(--acc);color:#fff">✓</span><span>{{ of.us0 }}</span></div><div style="display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--line);font:400 15px/1.55 var(--fb);color:var(--ink1)"><span style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:999px;flex:none;margin-top:1px;font:600 11px var(--fb);background:var(--acc);color:#fff">✓</span><span>{{ of.us1 }}</span></div><div style="display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--line);font:400 15px/1.55 var(--fb);color:var(--ink1)"><span style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:999px;flex:none;margin-top:1px;font:600 11px var(--fb);background:var(--acc);color:#fff">✓</span><span>{{ of.us2 }}</span></div><div style="display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--line);font:400 15px/1.55 var(--fb);color:var(--ink1)"><span style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:999px;flex:none;margin-top:1px;font:600 11px var(--fb);background:var(--acc);color:#fff">✓</span><span>{{ of.us3 }}</span></div><div style="display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--line);font:400 15px/1.55 var(--fb);color:var(--ink1)"><span style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:999px;flex:none;margin-top:1px;font:600 11px var(--fb);background:var(--acc);color:#fff">✓</span><span>{{ of.us4 }}</span></div></div><div style="border-radius:var(--rad);padding:30px 32px 18px;background:var(--chip);border:1px solid var(--line)"><div style="font:600 calc(18px * var(--ts)) var(--ft);letter-spacing:-.028em;color:var(--ink);margin-bottom:14px">Ce qui reste chez vous</div><div style="display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--line);font:400 15px/1.55 var(--fb);color:var(--ink1)"><span style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:999px;flex:none;margin-top:1px;font:600 11px var(--fb);background:var(--card);border:1px solid var(--line);color:var(--ink3)">→</span><span>{{ of.you0 }}</span></div><div style="display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--line);font:400 15px/1.55 var(--fb);color:var(--ink1)"><span style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:999px;flex:none;margin-top:1px;font:600 11px var(--fb);background:var(--card);border:1px solid var(--line);color:var(--ink3)">→</span><span>{{ of.you1 }}</span></div><div style="display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--line);font:400 15px/1.55 var(--fb);color:var(--ink1)"><span style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:999px;flex:none;margin-top:1px;font:600 11px var(--fb);background:var(--card);border:1px solid var(--line);color:var(--ink3)">→</span><span>{{ of.you2 }}</span></div><div style="display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--line);font:400 15px/1.55 var(--fb);color:var(--ink1)"><span style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:999px;flex:none;margin-top:1px;font:600 11px var(--fb);background:var(--card);border:1px solid var(--line);color:var(--ink3)">→</span><span>{{ of.you3 }}</span></div></div></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:22px;padding:16px 16px 16px 26px;border-radius:24px;background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3)"><span style="font:500 15.5px/1.5 var(--fb);color:var(--ink1)">Vous voulez lire le contrat type avant d’en parler&nbsp;?</span><a href="#form-page" style="display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--acc);color:#fff;font:600 15px var(--fb);white-space:nowrap;box-shadow:0 12px 30px -12px rgba(255,124,60,.9);transition:filter var(--tr),transform var(--tr);padding:12px 22px;font-size:14.5px" style-hover="filter:brightness(.93);transform:translateY(-1px);color:#fff">Demander le contrat type</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:var(--sec) 0 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 40px">
+      <div data-reveal="">
+        <div class="mg-r2" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end;margin-bottom:34px">
+          <div>
+            <div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px">Notre méthode</div>
+            <h2 style="font:600 calc(clamp(28px,3.2vw,46px) * var(--ts))/1.06 var(--ft);letter-spacing:-.04em;margin:0;max-width:22ch;text-wrap:balance">Quatre étapes, et vous gardez la main partout.</h2>
+          </div>
+          <p style="font:400 16px/1.7 var(--fb);color:var(--ink2);margin:0;max-width:44ch">Le point commun des cinq offres. Cliquez une étape pour voir qui fait quoi.</p>
+        </div>
+
+        <div class="mg-steps" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;position:relative;margin-bottom:20px">
+          <div style="position:absolute;left:0;right:0;top:11px;height:1px;background:var(--line)"></div>
+          <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+            <button type="button" onClick="{{ st.go }}" style="{{ st.btnCss }}">
+              <span style="{{ st.dotCss }}"></span>
+              <span style="{{ st.numCss }}">{{ st.num }}</span>
+              <span style="{{ st.titleCss }}">{{ st.title }}</span>
+              <span style="{{ st.whenCss }}">{{ st.when }}</span>
+            </button>
+          </sc-for>
+        </div>
+
+        <div style="border-radius:var(--rad);background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 26px 60px -36px rgba(0,0,0,.34);padding:36px 38px 38px">
+          <div class="mg-r2" style="display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start">
+            <div>
+              <div style="font:600 calc(22px * var(--ts))/1.25 var(--ft);letter-spacing:-.03em;margin-bottom:12px">{{ stepTitle }}</div>
+              <p style="font:400 16px/1.7 var(--fb);color:var(--ink2);margin:0;max-width:56ch">{{ stepBody }}</p>
+            </div>
+            <div style="display:grid;gap:14px">
+              <div style="padding:20px 22px;border-radius:var(--rad-s);background:var(--gsol);border:1px solid var(--line)">
+                <div style="font:600 9.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px">De votre côté</div>
+                <div style="font:400 14.5px/1.55 var(--fb);color:var(--ink1)">{{ stepYou }}</div>
+              </div>
+              <div style="padding:20px 22px;border-radius:var(--rad-s);background:var(--acc-w);border:1.5px solid rgba(255,124,60,.3)">
+                <div style="font:600 9.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc-ink);margin-bottom:6px">Ce qui en sort</div>
+                <div style="font:500 14.5px/1.55 var(--fb);color:var(--ink)">{{ stepOut }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:16px;margin-top:14px;padding:18px 24px;border-radius:var(--rad);background:var(--panel);flex-wrap:wrap;position:relative;overflow:hidden">
+          <div style="position:absolute;width:320px;height:320px;right:-130px;top:-160px;background:radial-gradient(circle,rgba(255,124,60,.26),transparent 68%);pointer-events:none"></div>
+          <span style="font:600 10.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);flex:none;position:relative">Si ça ne va pas</span>
+          <span style="font:400 14.5px/1.6 var(--fb);color:rgba(255,255,255,.72);flex:1;min-width:240px;position:relative">Un technicien qui ne convient pas est remplacé, sans discussion et sans frais. C’est la contrepartie du fait que vous l’avez validé à l’étape 02.</span>
+          <a href="#" onClick="{{ goContact }}" style="font:600 13.5px var(--fb);color:var(--acc);flex:none;white-space:nowrap;position:relative" style-hover="color:#fff">Démarrer une qualification →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:var(--sec) 0 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 40px">
+      <div data-reveal="" class="mg-r2" style="display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:end;margin-bottom:38px">
+        <div>
+          <div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:18px">Notre sélection</div>
+          <h2 style="font:600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft);letter-spacing:-.04em;margin:0 0 18px;max-width:22ch;text-wrap:balance">Seuls 10&nbsp;% des techniciens réussissent notre process.</h2>
+          <p style="font:400 16.5px/1.7 var(--fb);color:var(--ink2);margin:0 0 22px;max-width:56ch">Six étapes, menées par des techniciens de terrain, pas par un algorithme. C’est ce qui nous permet de vous envoyer quelqu’un qu’on peut laisser seul devant votre machine.</p>
+          <a href="#form-bas" style="display:inline-flex;align-items:center;gap:9px;padding:14px 24px;border-radius:999px;background:var(--acc);color:#fff;font:600 14.5px var(--fb);white-space:nowrap;box-shadow:0 12px 30px -12px rgba(255,124,60,.9);transition:filter var(--tr),transform var(--tr)" style-hover="filter:brightness(.93);transform:translateY(-1px)">{{ of.cta }} →</a>
+        </div>
+        <div style="position:relative;display:flex;align-items:baseline;gap:16px;padding:24px 28px;border-radius:var(--rad);background:var(--panel)">
+          <span style="font:600 calc(56px * var(--ts))/1 var(--ft);letter-spacing:-.06em;color:var(--acc);white-space:nowrap">10&nbsp;%</span>
+          <span style="font:400 14px/1.5 var(--fb);color:rgba(255,255,255,.62)">des techniciens réussissent le process</span>
+        </div>
+      </div>
+
+      <div data-reveal="" class="mg-rmulti" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
+        <div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:28px 28px 30px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:16px">
+            <span style="font:600 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Étape 1</span>
+            <span style="font:600 21px var(--ft);letter-spacing:-.045em;color:var(--ink)">100 %</span>
+          </div>
+          <div style="height:6px;border-radius:999px;background:var(--chip);overflow:hidden;margin-bottom:16px"><div style="height:100%;width:100%;background:var(--acc);border-radius:999px"></div></div>
+          <div style="font:600 16.5px var(--ft);letter-spacing:-.025em;margin-bottom:8px">Lecture du parcours</div>
+          <p style="font:400 14px/1.6 var(--fb);color:var(--ink2);margin:0">Habilitations, technologies pratiquées, stabilité des postes. Un parcours sans terrain ne passe pas cette étape.</p>
+        </div>
+        <div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:28px 28px 30px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:16px">
+            <span style="font:600 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Étape 2</span>
+            <span style="font:600 21px var(--ft);letter-spacing:-.045em;color:var(--ink)">55 %</span>
+          </div>
+          <div style="height:6px;border-radius:999px;background:var(--chip);overflow:hidden;margin-bottom:16px"><div style="height:100%;width:55%;background:var(--acc);border-radius:999px"></div></div>
+          <div style="font:600 16.5px var(--ft);letter-spacing:-.025em;margin-bottom:8px">Entretien téléphonique</div>
+          <p style="font:400 14px/1.6 var(--fb);color:var(--ink2);margin:0">Vingt minutes avec un chargé d’affaires&nbsp;: mobilité, prétentions, motivation réelle pour le site.</p>
+        </div>
+        <div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:28px 28px 30px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:16px">
+            <span style="font:600 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Étape 3</span>
+            <span style="font:600 21px var(--ft);letter-spacing:-.045em;color:var(--ink)">40 %</span>
+          </div>
+          <div style="height:6px;border-radius:999px;background:var(--chip);overflow:hidden;margin-bottom:16px"><div style="height:100%;width:40%;background:var(--acc);border-radius:999px"></div></div>
+          <div style="font:600 16.5px var(--ft);letter-spacing:-.025em;margin-bottom:8px">Entretien technique</div>
+          <p style="font:400 14px/1.6 var(--fb);color:var(--ink2);margin:0">Un technicien de terrain reprend le parcours machine par machine&nbsp;: installations connues, pannes traitées, arbitrages faits.</p>
+        </div>
+        <div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:28px 28px 30px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:16px">
+            <span style="font:600 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Étape 4</span>
+            <span style="font:600 21px var(--ft);letter-spacing:-.045em;color:var(--ink)">25 %</span>
+          </div>
+          <div style="height:6px;border-radius:999px;background:var(--chip);overflow:hidden;margin-bottom:16px"><div style="height:100%;width:25%;background:var(--acc);border-radius:999px"></div></div>
+          <div style="font:600 16.5px var(--ft);letter-spacing:-.025em;margin-bottom:8px">Tests techniques</div>
+          <p style="font:400 14px/1.6 var(--fb);color:var(--ink2);margin:0">Épreuves écrites et pratiques par domaine — mécanique, électrotechnique, automatisme, hydraulique — notées sur notre référentiel.</p>
+        </div>
+        <div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:28px 28px 30px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:16px">
+            <span style="font:600 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Étape 5</span>
+            <span style="font:600 21px var(--ft);letter-spacing:-.045em;color:var(--ink)">15 %</span>
+          </div>
+          <div style="height:6px;border-radius:999px;background:var(--chip);overflow:hidden;margin-bottom:16px"><div style="height:100%;width:15%;background:var(--acc);border-radius:999px"></div></div>
+          <div style="font:600 16.5px var(--ft);letter-spacing:-.025em;margin-bottom:8px">Tests comportementaux</div>
+          <p style="font:400 14px/1.6 var(--fb);color:var(--ink2);margin:0">Sécurité, autonomie, rigueur du compte rendu, tenue face à l’urgence, relation client. Même référentiel, même barème.</p>
+        </div>
+        <div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad);padding:28px 28px 30px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:16px">
+            <span style="font:600 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">Étape 6</span>
+            <span style="font:600 28px var(--ft);letter-spacing:-.045em;color:var(--acc)">10 %</span>
+          </div>
+          <div style="height:6px;border-radius:999px;background:var(--chip);overflow:hidden;margin-bottom:16px"><div style="height:100%;width:10%;background:var(--acc);border-radius:999px"></div></div>
+          <div style="font:600 16.5px var(--ft);letter-spacing:-.025em;margin-bottom:8px">Rencontre du client</div>
+          <p style="font:400 14px/1.6 var(--fb);color:var(--ink2);margin:0">Vous rencontrez le technicien avant de dire oui. Lui aussi visite le site. Deux validations, pas une.</p>
+        </div>
+      </div>
+
+      <div data-reveal="" style="margin-top:16px;border-radius:var(--rad);background:var(--acc-w);border:1.5px solid rgba(255,124,60,.3);padding:32px 36px;display:flex;align-items:center;gap:40px;flex-wrap:wrap">
+        <div style="flex:1;min-width:280px">
+          <div style="font:600 11px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:10px">Le référentiel de compétences</div>
+          <div style="font:600 18px var(--ft);letter-spacing:-.025em;margin-bottom:8px">Un barème commun, pas une impression</div>
+          <p style="font:400 14.5px/1.6 var(--fb);color:var(--ink1);margin:0;max-width:64ch">Chaque technicien est noté sur un référentiel de compétences techniques et comportementales, révisé chaque année avec nos chargés d’affaires et nos clients. Le même barème sert ensuite au suivi en mission.</p>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:7px;flex:none;max-width:340px">
+          <span style="font:500 12px var(--fb);padding:7px 13px;border-radius:999px;background:var(--card);border:1px solid var(--line);white-space:nowrap">Sécurité</span>
+          <span style="font:500 12px var(--fb);padding:7px 13px;border-radius:999px;background:var(--card);border:1px solid var(--line);white-space:nowrap">Diagnostic</span>
+          <span style="font:500 12px var(--fb);padding:7px 13px;border-radius:999px;background:var(--card);border:1px solid var(--line);white-space:nowrap">Autonomie</span>
+          <span style="font:500 12px var(--fb);padding:7px 13px;border-radius:999px;background:var(--card);border:1px solid var(--line);white-space:nowrap">Compte rendu</span>
+          <span style="font:500 12px var(--fb);padding:7px 13px;border-radius:999px;background:var(--card);border:1px solid var(--line);white-space:nowrap">Relation client</span>
+          <span style="font:500 12px var(--fb);padding:7px 13px;border-radius:999px;background:var(--card);border:1px solid var(--line);white-space:nowrap">Habilitations</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:var(--sec) 0 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 40px">
+      <div data-reveal="" style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:38px;flex-wrap:wrap">
+        <div>
+          <div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px">Nos dernières réalisations</div>
+          <h2 style="font:600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft);letter-spacing:-.04em;margin:0;max-width:24ch;text-wrap:balance">Ce que nous avons fait, chez qui, et comment</h2>
+        </div>
+        <a href="#" onClick="{{ goReal }}" style="font:600 15px var(--fb);color:var(--acc);flex:none;padding-bottom:6px">Voir toutes nos réalisations →</a>
+      </div>
+      <div data-reveal="" class="mg-rmulti" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        <a href="#" onClick="{{ goFiche }}" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;box-shadow:0 1px 1px rgba(0,0,0,.04);transition:transform var(--tr),box-shadow var(--tr)" style-hover="transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(0,0,0,.42)">
+          <div style="height:210px;background:var(--ph);overflow:hidden"><img src="assets/web/x-faisceaux.jpg" alt="" style="width:100%;height:100%;object-fit:cover;filter:saturate(var(--sat)) contrast(1.05);opacity:var(--ph-op)"></div>
+          <div style="padding:24px 26px 28px">
+            <div style="font:600 11.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">SUEZ IWT · migen© Résidence</div>
+            <div style="font:600 19px/1.3 var(--ft);letter-spacing:-.025em;margin-top:12px">Remise en état complète d'un site industriel</div>
+            <div style="font:400 13.5px var(--fb);color:var(--ink4);margin-top:14px">Février 2026</div>
+          </div>
+        </a>
+        <a href="#" onClick="{{ goFiche }}" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;box-shadow:0 1px 1px rgba(0,0,0,.04);transition:transform var(--tr),box-shadow var(--tr)" style-hover="transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(0,0,0,.42)">
+          <div style="height:210px;background:var(--ph);overflow:hidden"><img src="assets/web/team-electric.jpg" alt="" style="width:100%;height:100%;object-fit:cover;filter:saturate(var(--sat)) contrast(1.05);opacity:var(--ph-op)"></div>
+          <div style="padding:24px 26px 28px">
+            <div style="font:600 11.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">DANONE · migen© Résidence</div>
+            <div style="font:600 19px/1.3 var(--ft);letter-spacing:-.025em;margin-top:12px">Maintenance en continu des lignes de production</div>
+            <div style="font:400 13.5px var(--fb);color:var(--ink4);margin-top:14px">Février 2026</div>
+          </div>
+        </a>
+        <a href="#" onClick="{{ goFiche }}" style="display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;box-shadow:0 1px 1px rgba(0,0,0,.04);transition:transform var(--tr),box-shadow var(--tr)" style-hover="transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(0,0,0,.42)">
+          <div style="height:210px;background:var(--ph);overflow:hidden"><img src="assets/web/team-grind-close.jpg" alt="" style="width:100%;height:100%;object-fit:cover;filter:saturate(var(--sat)) contrast(1.05);opacity:var(--ph-op)"></div>
+          <div style="padding:24px 26px 28px">
+            <div style="font:600 11.5px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc)">JTEKT · migen© Résidence</div>
+            <div style="font:600 19px/1.3 var(--ft);letter-spacing:-.025em;margin-top:12px">Sécuriser la maintenance de ses installations</div>
+            <div style="font:400 13.5px var(--fb);color:var(--ink4);margin-top:14px">Janvier 2026</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:var(--sec) 0 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 40px">
+      <div data-reveal="" class="mg-r2" style="display:grid;grid-template-columns:.8fr 1.2fr;gap:52px;align-items:start">
+        <div style="position:sticky;top:112px"><div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px">Questions fréquentes</div><h2 style="font:600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft);letter-spacing:-.04em;margin:0;max-width:22ch;text-wrap:balance;max-width:14ch;margin-bottom:22px">Ce qu’on nous demande avant de signer.</h2><a href="#form-page" style="display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--acc);color:#fff;font:600 15px var(--fb);white-space:nowrap;box-shadow:0 12px 30px -12px rgba(255,124,60,.9);transition:filter var(--tr),transform var(--tr)" style-hover="filter:brightness(.93);transform:translateY(-1px);color:#fff">Poser ma question</a></div>
+        <div style="display:grid;gap:10px"><sc-for list="{{ resFaq }}" as="q" hint-placeholder-count="5"><div style="background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);border-radius:var(--rad-s)"><button type="button" onClick="{{ q.toggle }}" style="display:flex;align-items:center;justify-content:space-between;gap:18px;width:100%;padding:20px 24px;background:transparent;border:none;cursor:pointer;text-align:left"><span style="font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)">{{ q.q }}</span><span style="{{ q.iconCss }}">+</span></button><sc-if value="{{ q.open }}"><div style="padding:0 24px 22px;font:400 15px/1.7 var(--fb);color:var(--ink2);max-width:68ch">{{ q.a }}</div></sc-if></div></sc-for></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:var(--sec) 0 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 40px">
+      <div data-reveal="">
+      <div class="mg-r2" style="display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:end;margin-bottom:34px"><div><div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px">Un autre besoin&nbsp;?</div><h2 style="font:600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft);letter-spacing:-.04em;margin:0;max-width:22ch;text-wrap:balance">Chaque situation a son offre.</h2></div><p style="font:400 16.5px/1.7 var(--fb);color:var(--ink2);margin:0;max-width:46ch">Si {{ of.name }} n’est pas la bonne réponse, l’une de celles-ci l’est probablement.</p></div>
+      <div class="mg-r2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><a href="#" onClick="{{ goSurSite }}" style="display:{{ of.dSurSite }};align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;border-radius:var(--rad-s);background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);transition:transform var(--tr)" style-hover="transform:translateY(-2px)"><span style="font:500 15px/1.5 var(--fb);color:var(--ink1)">«&nbsp;J’ai besoin d’un renfort maintenance sur mon site.&nbsp;»</span><span style="flex:none;font:600 12.5px var(--fb);color:var(--acc-ink);white-space:nowrap">Résidence →</span></a><a href="#" onClick="{{ goFull }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;border-radius:var(--rad-s);background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);transition:transform var(--tr)" style-hover="transform:translateY(-2px)"><span style="font:500 15px/1.5 var(--fb);color:var(--ink1)">«&nbsp;Je veux confier toute ma maintenance à un seul partenaire.&nbsp;»</span><span style="flex:none;font:600 12.5px var(--fb);color:var(--acc-ink);white-space:nowrap">Full service →</span></a><a href="#" onClick="{{ goZero }}" style="display:{{ of.dZero }};align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;border-radius:var(--rad-s);background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);transition:transform var(--tr)" style-hover="transform:translateY(-2px)"><span style="font:500 15px/1.5 var(--fb);color:var(--ink1)">«&nbsp;Je paie mes pannes à l’heure et je ne maîtrise pas mon budget.&nbsp;»</span><span style="flex:none;font:600 12.5px var(--fb);color:var(--acc-ink);white-space:nowrap">Zéro arrêt →</span></a><a href="#" onClick="{{ goArret }}" style="display:{{ of.dArret }};align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;border-radius:var(--rad-s);background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);transition:transform var(--tr)" style-hover="transform:translateY(-2px)"><span style="font:500 15px/1.5 var(--fb);color:var(--ink1)">«&nbsp;J’ai une fenêtre d’arrêt et pas le droit de la dépasser.&nbsp;»</span><span style="flex:none;font:600 12.5px var(--fb);color:var(--acc-ink);white-space:nowrap">Arrêt technique →</span></a><a href="#" onClick="{{ goEtude }}" style="display:{{ of.dEtude }};align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;border-radius:var(--rad-s);background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);transition:transform var(--tr)" style-hover="transform:translateY(-2px)"><span style="font:500 15px/1.5 var(--fb);color:var(--ink1)">«&nbsp;Mon installation n’est plus conforme et je n’ai plus les schémas.&nbsp;»</span><span style="flex:none;font:600 12.5px var(--fb);color:var(--acc-ink);white-space:nowrap">Bureau d’études →</span></a><a href="#" onClick="{{ goOffres }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;border-radius:var(--rad-s);background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3);transition:transform var(--tr)" style-hover="transform:translateY(-2px)"><span style="font:500 15px/1.5 var(--fb);color:var(--ink1)">«&nbsp;Je ne sais pas encore ce qu’il me faut.&nbsp;»</span><span style="flex:none;font:600 12.5px var(--fb);color:var(--acc-ink);white-space:nowrap">Toutes les offres →</span></a></div>
+      </div>
+    </div>
+  </section>
+
+<!-- ================================================================== -->
+<!-- FIN DU FRAGMENT : ligne 4484. La suite (section id="form-page",     -->
+<!-- ligne 4485) appartient a l'ecran suivant et n'est pas reprise.      -->
+<!-- ================================================================== -->
+
+<!-- AJOUT DE L'EXTRACTION no 3 : fermeture du <main> ouvert ligne 4031 -->
+</main>
+
+</div>
+</body>
+</html>

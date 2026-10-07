@@ -1,0 +1,85 @@
+{
+  "url": "/preuves/savoye-migration-automates-norvege/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas SAVOYE : deux automates migrés en deux week-ends, sans arrêter la production",
+  "h1Rendu": "Deux automates migrés en deux week-ends, sans arrêter la production",
+  "nbSections": 9,
+  "hauteurTotale": 5866,
+  "motsAnnonces": 634,
+  "motsRendus": 884,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 583,
+      "images": 2,
+      "liens": 2,
+      "mots": 84
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 236,
+      "images": 0,
+      "liens": 0,
+      "mots": 29
+    },
+    {
+      "ordre": 2,
+      "titre": "Un automate en fin de vie ne prévient pas.",
+      "hauteur": 604,
+      "images": 0,
+      "liens": 0,
+      "mots": 123
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 671,
+      "images": 0,
+      "liens": 0,
+      "mots": 115
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 420,
+      "images": 0,
+      "liens": 0,
+      "mots": 76
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 696,
+      "images": 1,
+      "liens": 0,
+      "mots": 47
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 515,
+      "images": 0,
+      "liens": 0,
+      "mots": 57
+    },
+    {
+      "ordre": 7,
+      "titre": "Vos automates arrivent en fin de vie ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 137
+    },
+    {
+      "ordre": 8,
+      "titre": null,
+      "hauteur": 551,
+      "images": 4,
+      "liens": 4,
+      "mots": 39
+    }
+  ]
+}

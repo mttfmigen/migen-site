@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/eriks/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas ERIKS : un responsable maintenance pour traverser la transition",
+  "h1Rendu": "Un responsable maintenance pour traverser la transition",
+  "nbSections": 10,
+  "hauteurTotale": 6202,
+  "motsAnnonces": 641,
+  "motsRendus": 911,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 537,
+      "images": 2,
+      "liens": 2,
+      "mots": 61
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 236,
+      "images": 0,
+      "liens": 0,
+      "mots": 30
+    },
+    {
+      "ordre": 2,
+      "titre": "Quand le responsable maintenance manque, le préventif glisse et le curatif s'empile.",
+      "hauteur": 712,
+      "images": 0,
+      "liens": 0,
+      "mots": 146
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 675,
+      "images": 0,
+      "liens": 0,
+      "mots": 107
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 464,
+      "images": 0,
+      "liens": 0,
+      "mots": 99
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 547,
+      "images": 1,
+      "liens": 0,
+      "mots": 44
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 541,
+      "images": 0,
+      "liens": 0,
+      "mots": 41
+    },
+    {
+      "ordre": 7,
+      "titre": "Le résultat",
+      "hauteur": 307,
+      "images": 0,
+      "liens": 0,
+      "mots": 65
+    },
+    {
+      "ordre": 8,
+      "titre": "Votre responsable maintenance part au moment où la cadence monte ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 84
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 57
+    }
+  ]
+}

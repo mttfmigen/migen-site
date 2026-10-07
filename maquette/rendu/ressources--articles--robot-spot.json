@@ -1,0 +1,53 @@
+{
+  "url": "/ressources/articles/robot-spot/",
+  "gabarit": "01 Article et fiche",
+  "verdict": "rendue",
+  "h1Attendu": "Robot spot",
+  "h1Rendu": "Robot spot",
+  "nbSections": 5,
+  "hauteurTotale": 7650,
+  "motsAnnonces": 1589,
+  "motsRendus": 1767,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 481,
+      "images": 1,
+      "liens": 4,
+      "mots": 90
+    },
+    {
+      "ordre": 1,
+      "titre": "01Spot, le robot chien en deux mots",
+      "hauteur": 4675,
+      "images": 0,
+      "liens": 11,
+      "mots": 1333
+    },
+    {
+      "ordre": 2,
+      "titre": "Vos questions, nos réponses",
+      "hauteur": 702,
+      "images": 0,
+      "liens": 0,
+      "mots": 91
+    },
+    {
+      "ordre": 3,
+      "titre": "Sur le même sujet",
+      "hauteur": 426,
+      "images": 3,
+      "liens": 4,
+      "mots": 34
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 509,
+      "images": 0,
+      "liens": 2,
+      "mots": 42
+    }
+  ]
+}

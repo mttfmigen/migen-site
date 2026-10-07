@@ -1,0 +1,77 @@
+{
+  "url": "/preuves/la-panetiere/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas LA PANETIÈRE : un renfort pour que le pain sorte chaque matin",
+  "h1Rendu": "Un renfort pour que le pain sorte chaque matin",
+  "nbSections": 8,
+  "hauteurTotale": 4605,
+  "motsAnnonces": 317,
+  "motsRendus": 519,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 520,
+      "images": 2,
+      "liens": 2,
+      "mots": 76
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 16
+    },
+    {
+      "ordre": 2,
+      "titre": "Le site avait besoin d'une compétence maintenance immédiatement opérationnelle",
+      "hauteur": 347,
+      "images": 0,
+      "liens": 0,
+      "mots": 49
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 450,
+      "images": 0,
+      "liens": 0,
+      "mots": 32
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 375,
+      "images": 0,
+      "liens": 0,
+      "mots": 38
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 540,
+      "images": 1,
+      "liens": 0,
+      "mots": 29
+    },
+    {
+      "ordre": 6,
+      "titre": "Un besoin comparable sur votre site ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 67
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 573,
+      "images": 4,
+      "liens": 4,
+      "mots": 35
+    }
+  ]
+}

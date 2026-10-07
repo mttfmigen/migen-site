@@ -1,0 +1,53 @@
+{
+  "url": "/ressources/fiches-pratiques/",
+  "gabarit": "11 Sous-rubrique ressource",
+  "verdict": "rendue",
+  "h1Attendu": "Ressources : Fiches pratiques",
+  "h1Rendu": "Ressources : Fiches pratiques",
+  "nbSections": 5,
+  "hauteurTotale": 5439,
+  "motsAnnonces": 914,
+  "motsRendus": 1038,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 516,
+      "images": 1,
+      "liens": 3,
+      "mots": 53
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 810,
+      "images": 5,
+      "liens": 5,
+      "mots": 57
+    },
+    {
+      "ordre": 2,
+      "titre": "Pourquoi ces fiches existent",
+      "hauteur": 2139,
+      "images": 0,
+      "liens": 0,
+      "mots": 634
+    },
+    {
+      "ordre": 3,
+      "titre": "Vos questions, nos réponses",
+      "hauteur": 607,
+      "images": 0,
+      "liens": 0,
+      "mots": 75
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 509,
+      "images": 0,
+      "liens": 2,
+      "mots": 42
+    }
+  ]
+}

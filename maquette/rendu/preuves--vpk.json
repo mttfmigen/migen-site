@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/vpk/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas VPK : une usine de carton en 3x8, un technicien qui tient la cadence",
+  "h1Rendu": "Une usine de carton en 3x8, un technicien qui tient la cadence",
+  "nbSections": 10,
+  "hauteurTotale": 5533,
+  "motsAnnonces": 456,
+  "motsRendus": 664,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 520,
+      "images": 1,
+      "liens": 2,
+      "mots": 66
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 14
+    },
+    {
+      "ordre": 2,
+      "titre": "Il faut un technicien expérimenté capable d'intervenir seul sur un poste de nuit",
+      "hauteur": 347,
+      "images": 0,
+      "liens": 0,
+      "mots": 56
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 450,
+      "images": 0,
+      "liens": 0,
+      "mots": 26
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 375,
+      "images": 0,
+      "liens": 0,
+      "mots": 40
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 696,
+      "images": 1,
+      "liens": 0,
+      "mots": 27
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 491,
+      "images": 0,
+      "liens": 0,
+      "mots": 37
+    },
+    {
+      "ordre": 7,
+      "titre": "Le résultat",
+      "hauteur": 280,
+      "images": 0,
+      "liens": 0,
+      "mots": 60
+    },
+    {
+      "ordre": 8,
+      "titre": "Votre équipe court après les pannes au lieu de les anticiper ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 111
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 573,
+      "images": 4,
+      "liens": 4,
+      "mots": 50
+    }
+  ]
+}

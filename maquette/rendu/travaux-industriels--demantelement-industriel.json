@@ -1,0 +1,157 @@
+{
+  "url": "/travaux-industriels/demantelement-industriel/",
+  "gabarit": "03 Offre et prestation",
+  "verdict": "rendue",
+  "h1Attendu": "Démantèlement industriel",
+  "h1Rendu": "Démantèlement industriel",
+  "nbSections": 18,
+  "hauteurTotale": 8788,
+  "motsAnnonces": 1221,
+  "motsRendus": 1276,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 660,
+      "images": 0,
+      "liens": 1,
+      "mots": 46
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 218,
+      "images": 0,
+      "liens": 0,
+      "mots": 44
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 493,
+      "images": 2,
+      "liens": 0,
+      "mots": 76
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 114,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 5,
+      "titre": null,
+      "hauteur": 545,
+      "images": 0,
+      "liens": 0,
+      "mots": 69
+    },
+    {
+      "ordre": 6,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 559,
+      "images": 0,
+      "liens": 0,
+      "mots": 253
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 112,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 8,
+      "titre": null,
+      "hauteur": 217,
+      "images": 0,
+      "liens": 0,
+      "mots": 36
+    },
+    {
+      "ordre": 9,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 830,
+      "images": 0,
+      "liens": 1,
+      "mots": 146
+    },
+    {
+      "ordre": 10,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 599,
+      "images": 0,
+      "liens": 0,
+      "mots": 75
+    },
+    {
+      "ordre": 11,
+      "titre": null,
+      "hauteur": 320,
+      "images": 0,
+      "liens": 1,
+      "mots": 35
+    },
+    {
+      "ordre": 12,
+      "titre": "Nos références",
+      "hauteur": 733,
+      "images": 4,
+      "liens": 5,
+      "mots": 119
+    },
+    {
+      "ordre": 13,
+      "titre": null,
+      "hauteur": 114,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 14,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 506,
+      "images": 0,
+      "liens": 0,
+      "mots": 82
+    },
+    {
+      "ordre": 15,
+      "titre": "Les pages qui complètent celle-ci",
+      "hauteur": 696,
+      "images": 0,
+      "liens": 6,
+      "mots": 78
+    },
+    {
+      "ordre": 16,
+      "titre": "Ils nous ont confié une mission comparable",
+      "hauteur": 905,
+      "images": 5,
+      "liens": 6,
+      "mots": 113
+    },
+    {
+      "ordre": 17,
+      "titre": "Besoin d'un inventaire avant de décider ce qui part et ce qui reste ?",
+      "hauteur": 964,
+      "images": 0,
+      "liens": 0,
+      "mots": 61
+    }
+  ]
+}

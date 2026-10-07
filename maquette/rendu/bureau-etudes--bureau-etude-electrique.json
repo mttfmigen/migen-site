@@ -1,0 +1,165 @@
+{
+  "url": "/bureau-etudes/bureau-etude-electrique/",
+  "gabarit": "03 Offre et prestation",
+  "verdict": "rendue-sans-titre",
+  "h1Attendu": "Bureau d'étude électrique : du schéma à l'armoire qui tourne",
+  "h1Rendu": "",
+  "nbSections": 19,
+  "hauteurTotale": 8408,
+  "motsAnnonces": 1328,
+  "motsRendus": 1230,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 660,
+      "images": 0,
+      "liens": 1,
+      "mots": 44
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 218,
+      "images": 0,
+      "liens": 0,
+      "mots": 44
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 493,
+      "images": 2,
+      "liens": 0,
+      "mots": 73
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 114,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 5,
+      "titre": null,
+      "hauteur": 394,
+      "images": 0,
+      "liens": 0,
+      "mots": 81
+    },
+    {
+      "ordre": 6,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 579,
+      "images": 0,
+      "liens": 0,
+      "mots": 183
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 112,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 8,
+      "titre": "Le terrain qui va avec",
+      "hauteur": 275,
+      "images": 0,
+      "liens": 0,
+      "mots": 66
+    },
+    {
+      "ordre": 9,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 695,
+      "images": 0,
+      "liens": 1,
+      "mots": 148
+    },
+    {
+      "ordre": 10,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 624,
+      "images": 0,
+      "liens": 0,
+      "mots": 72
+    },
+    {
+      "ordre": 11,
+      "titre": null,
+      "hauteur": 191,
+      "images": 0,
+      "liens": 0,
+      "mots": 23
+    },
+    {
+      "ordre": 12,
+      "titre": null,
+      "hauteur": 296,
+      "images": 0,
+      "liens": 1,
+      "mots": 35
+    },
+    {
+      "ordre": 13,
+      "titre": "Les équipements que nous maintenons déjà",
+      "hauteur": 535,
+      "images": 10,
+      "liens": 0,
+      "mots": 37
+    },
+    {
+      "ordre": 14,
+      "titre": "Nos références",
+      "hauteur": 724,
+      "images": 4,
+      "liens": 5,
+      "mots": 127
+    },
+    {
+      "ordre": 15,
+      "titre": null,
+      "hauteur": 114,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 16,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 521,
+      "images": 0,
+      "liens": 0,
+      "mots": 77
+    },
+    {
+      "ordre": 17,
+      "titre": "Les pages qui complètent celle-ci",
+      "hauteur": 696,
+      "images": 0,
+      "liens": 6,
+      "mots": 119
+    },
+    {
+      "ordre": 18,
+      "titre": "Besoin d'un dossier électrique qui corresponde enfin à votre installation ?",
+      "hauteur": 964,
+      "images": 0,
+      "liens": 0,
+      "mots": 58
+    }
+  ]
+}

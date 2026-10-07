@@ -1,0 +1,125 @@
+{
+  "url": "/carriere/electromecanicien/",
+  "gabarit": "07 Métier et carrière",
+  "verdict": "rendue",
+  "h1Attendu": "Électromécanicien",
+  "h1Rendu": "Électromécanicien",
+  "nbSections": 14,
+  "hauteurTotale": 11153,
+  "motsAnnonces": 1711,
+  "motsRendus": 1902,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 748,
+      "images": 1,
+      "liens": 3,
+      "mots": 160
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 2,
+      "titre": "Ce que fait un électromécanicien au quotidien",
+      "hauteur": 911,
+      "images": 0,
+      "liens": 0,
+      "mots": 201
+    },
+    {
+      "ordre": 3,
+      "titre": "Les équipements que l'électromécanicien maîtrise",
+      "hauteur": 731,
+      "images": 0,
+      "liens": 0,
+      "mots": 98
+    },
+    {
+      "ordre": 4,
+      "titre": "Habilitations, certifications et sécurité",
+      "hauteur": 641,
+      "images": 0,
+      "liens": 1,
+      "mots": 103
+    },
+    {
+      "ordre": 5,
+      "titre": "Devenir électromécanicien : formation et parcours",
+      "hauteur": 945,
+      "images": 0,
+      "liens": 0,
+      "mots": 216
+    },
+    {
+      "ordre": 6,
+      "titre": "Les compétences qui font la différence",
+      "hauteur": 1000,
+      "images": 0,
+      "liens": 2,
+      "mots": 165
+    },
+    {
+      "ordre": 7,
+      "titre": "Salaire d'un électromécanicien",
+      "hauteur": 756,
+      "images": 0,
+      "liens": 2,
+      "mots": 124
+    },
+    {
+      "ordre": 8,
+      "titre": "Emploi et recrutement : qui cherche un électromécanicien",
+      "hauteur": 685,
+      "images": 0,
+      "liens": 1,
+      "mots": 137
+    },
+    {
+      "ordre": 9,
+      "titre": "Électromécanicien chez Migen : le cadre et les moyens",
+      "hauteur": 714,
+      "images": 0,
+      "liens": 0,
+      "mots": 111
+    },
+    {
+      "ordre": 10,
+      "titre": "Comment rejoindre nos équipes",
+      "hauteur": 599,
+      "images": 0,
+      "liens": 0,
+      "mots": 131
+    },
+    {
+      "ordre": 11,
+      "titre": "Questions fréquentes",
+      "hauteur": 682,
+      "images": 0,
+      "liens": 1,
+      "mots": 103
+    },
+    {
+      "ordre": 12,
+      "titre": "Rejoindre Migen",
+      "hauteur": 944,
+      "images": 0,
+      "liens": 1,
+      "mots": 125
+    },
+    {
+      "ordre": 13,
+      "titre": null,
+      "hauteur": 730,
+      "images": 5,
+      "liens": 5,
+      "mots": 20
+    }
+  ]
+}

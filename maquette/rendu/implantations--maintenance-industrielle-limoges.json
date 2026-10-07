@@ -1,0 +1,157 @@
+{
+  "url": "/implantations/maintenance-industrielle-limoges/",
+  "gabarit": "04 Ville",
+  "verdict": "rendue",
+  "h1Attendu": "Maintenance industrielle à Limoges et en Haute-Vienne",
+  "h1Rendu": "Maintenance industrielle à Limoges et en Haute-Vienne",
+  "nbSections": 18,
+  "hauteurTotale": 9319,
+  "motsAnnonces": 1160,
+  "motsRendus": 1507,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 708,
+      "images": 0,
+      "liens": 1,
+      "mots": 132
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 176,
+      "images": 0,
+      "liens": 0,
+      "mots": 20
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 28
+    },
+    {
+      "ordre": 5,
+      "titre": "Limoges : les industries que nos techniciens connaissent déjà",
+      "hauteur": 784,
+      "images": 1,
+      "liens": 13,
+      "mots": 131
+    },
+    {
+      "ordre": 6,
+      "titre": "Une presse d'émaillage tombe le lundi matin.",
+      "hauteur": 843,
+      "images": 1,
+      "liens": 0,
+      "mots": 162
+    },
+    {
+      "ordre": 7,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 539,
+      "images": 0,
+      "liens": 0,
+      "mots": 219
+    },
+    {
+      "ordre": 8,
+      "titre": null,
+      "hauteur": 135,
+      "images": 0,
+      "liens": 1,
+      "mots": 28
+    },
+    {
+      "ordre": 9,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 808,
+      "images": 0,
+      "liens": 1,
+      "mots": 110
+    },
+    {
+      "ordre": 10,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 624,
+      "images": 0,
+      "liens": 0,
+      "mots": 89
+    },
+    {
+      "ordre": 11,
+      "titre": null,
+      "hauteur": 296,
+      "images": 0,
+      "liens": 1,
+      "mots": 20
+    },
+    {
+      "ordre": 12,
+      "titre": "Nos références",
+      "hauteur": 714,
+      "images": 4,
+      "liens": 5,
+      "mots": 109
+    },
+    {
+      "ordre": 13,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 28
+    },
+    {
+      "ordre": 14,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 536,
+      "images": 0,
+      "liens": 0,
+      "mots": 94
+    },
+    {
+      "ordre": 15,
+      "titre": "Les cinq offres, dans chaque bassin.",
+      "hauteur": 648,
+      "images": 0,
+      "liens": 5,
+      "mots": 119
+    },
+    {
+      "ordre": 16,
+      "titre": "Nos références dans des industries comme les vôtres",
+      "hauteur": 557,
+      "images": 4,
+      "liens": 5,
+      "mots": 75
+    },
+    {
+      "ordre": 17,
+      "titre": "Besoin d'un technicien capable de tenir un parc que personne ne veut reprendre ?",
+      "hauteur": 1012,
+      "images": 0,
+      "liens": 0,
+      "mots": 71
+    }
+  ]
+}

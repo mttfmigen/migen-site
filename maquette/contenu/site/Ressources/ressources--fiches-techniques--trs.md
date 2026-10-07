@@ -1,0 +1,142 @@
+# TRS : le taux de rendement synthétique
+
+> URL : /ressources/fiches-techniques/trs/
+> Title SEO : TRS : calculer et améliorer votre rendement | Migen
+> Meta description : TRS : définition, formule de calcul, exemple chiffré et erreurs à éviter. La fiche technique écrite avec des techniciens qui voient des lignes tous les jours.
+
+---
+
+# TRS : le taux de rendement synthétique
+
+Votre ligne de production tourne, tout le monde est occupé, et la journée finit avec 30 % de production en moins que prévu. Le TRS, taux de rendement synthétique, met un chiffre sur cet écart. Cette fiche de nos [Ressources : Fiches techniques](/ressources/fiches-techniques/) explique la définition, le calcul et les pièges du TRS, avec une seule fin : l'améliorer.
+
+Un indicateur ne répare rien : il montre où regarder. L'industrie parle beaucoup d'innovation ; le TRS, lui, parle du réel de vos équipements industriels, et l'innovation utile commence par la mesure. L'article s'appuie sur ce que nos techniciens constatent en atelier, chez plus de 120 clients. Cet article peut être lu sans prérequis : chaque notion est expliquée, chaque calcul est détaillé.
+
+> Le TRS est l'indicateur de référence de la performance industrielle, défini en France par la norme NF E60-182. Son équivalent international : l'OEE, overall equipment effectiveness, utilisé par les groupes internationaux.
+
+## Une définition en trois taux
+
+Le TRS mesure la part du temps requis réellement transformée en pièces bonnes, à la cadence nominale. Il traduit l'écart entre le potentiel affiché et la production sortie : une seule valeur, trois familles de pertes.
+
+- **Disponibilité** : La machine devait produire, elle était à l'arrêt. Pannes, changements de série, réglages, attente de matière ou d'opérateur.
+- **Performance** : La machine produit, mais sous sa vitesse théorique. Micro-arrêts, ralentissements, allure réduite pour protéger un organe fatigué.
+- **Qualité** : La machine produit, mais des pièces non conformes. Rebuts, retouches, pertes au démarrage de série.
+
+Le TRS se calcule en multipliant les trois facteurs : disponibilité × performance × qualité. Un moyen de production peut afficher 90 % partout et finir à 73 % : les pertes se multiplient entre elles, elles ne s'additionnent pas. C'est la clé de lecture : l'efficacité opérationnelle se juge à travers le produit des trois taux, jamais sur un seul. Pour l'entreprise, utiliser le TRS reste la façon la plus simple de mesurer l'efficacité réelle d'un moyen de fabrication.
+
+## La cascade des temps, de la théorie au réel
+
+Tout calcul commence par découper le temps. La norme descend du temps total au temps utile, et chaque marche est une source de perte à connaître.
+
+| Niveau de temps | Ce qu'il représente | Ce qui est retiré à l'étape |
+|---|---|---|
+| Temps total | La période entière, 24 h sur 24 | Rien : c'est la base du rendement économique |
+| Temps d'ouverture | Les horaires d'ouverture de l'atelier | Fermetures, nuits et week-ends sans équipe |
+| Temps requis | La machine doit produire | Arrêts planifiés : pauses, essais, maintenance planifiée |
+| Temps de fonctionnement | La machine produit | Pannes, réglages, attentes subies |
+| Temps net | Production à cadence nominale | Micro-arrêts et ralentissements |
+| Temps utile | Pièces bonnes uniquement | Rebuts et retouches |
+
+> La formule tient en une ligne : TRS = temps utile / temps requis. Le rapport entre ce qui sort de bon et ce que l'organisation avait décidé de produire.
+
+Chaque niveau, présenté sous forme de cascade, met en évidence une perte différente, de la pause programmée au rebut. Cette décomposition, directement issue de la norme, est la source unique d'un calcul fiable : impossible d'améliorer ce que l'on n'a pas décomposé.
+
+## Le calcul du TRS, étape par étape
+
+Pas besoin d'un logiciel pour démarrer : une feuille au pied de la machine, quatre relevés, une division. La précision viendra avec l'habitude de la collecte.
+
+1. **Le temps requis** : Prenez la durée du poste et retirez les arrêts planifiés, pause comprise. Ce qui reste est l'engagement de production de la journée.
+2. **Les arrêts subis** : Relevez chaque arrêt non planifié avec sa cause : défaillance, réglage, attente d'approvisionnement. Un code d'arrêt par cause, sinon l'analyse restera impossible.
+3. **La quantité produite** : Comparez les unités sorties à la production théorique, calculée sur la cadence nominale de la fiche machine, pas sur le ressenti de l'équipe.
+4. **Les pièces bonnes** : Comptez, au contrôle qualité, les pièces conformes du premier coup. Les retouches se paient deux fois : en temps de cycle et en main d'œuvre.
+
+Autre chemin pour calculer le TRS : nombre de pièces bonnes × temps de cycle théorique / temps requis. Résultat identique, une saisie de moins, l'utilisation la plus simple pour commencer dès demain. Une mesure simple, utilisée chaque jour, suffit pour identifier les premières actions et obtenir des gains rapides.
+
+## Un exemple concret, avec les chiffres
+
+Une ligne d'assemblage, un poste de 8 heures, une cadence nominale de 60 unités par heure. Voici le déroulé complet du calcul.
+
+| Donnée relevée | Valeur | Taux obtenu |
+|---|---|---|
+| Temps requis : 480 min, moins 30 min d'arrêts planifiés | 450 min | Base du calcul |
+| Défaillances et changement de série : 45 + 30 min | 375 min restantes | Disponibilité : 375/450 = 83,3 % |
+| Production réelle, contre 375 pièces en théorique | 340 pièces | Performance : 340/375 = 90,7 % |
+| Pièces conformes, après 17 rebuts | 323 pièces | Qualité : 323/340 = 95,0 % |
+
+TRS = 83,3 % × 90,7 % × 95,0 % = 71,8 %. Vérification par le temps utile : 323 unités bonnes à une minute chacune, soit 323 minutes sur 450 requises. Le compte tombe juste, 71,8 %.
+
+> Lecture : presque 30 % du temps requis n'a produit aucune valeur ajoutée, matière et énergie déjà payées. À l'échelle d'une année, l'écart représente des semaines de capacité perdues.
+
+Refaites ce calcul avec vos propres données : un résultat difficile à croire signale souvent une cadence de référence fausse, une production planifiée trop optimiste ou des interruptions oubliées à la saisie.
+
+## TRS, TRG, TRE : trois périmètres de mesure
+
+Trois sigles voisins, trois dénominateurs différents. Les confondre fausse les comparaisons entre sites et les décisions d'investissement.
+
+- **TRS, taux de rendement synthétique** : Temps utile / temps requis. Il juge la production sur ce qu'elle avait engagé : l'indicateur du pilotage d'atelier au quotidien.
+- **TRG, taux de rendement global** : Temps utile / temps d'ouverture. Il réintègre les arrêts planifiés et questionne l'organisation : pauses, réunions, essais, préventif.
+- **TRE, taux de rendement économique** : Temps utile / temps total. Il mesure l'utilisation de l'outil de production sur l'année : le point de vue de la rentabilité et de l'investissement.
+
+Un même atelier peut afficher un TRS de 72 % et un TRE de 35 % s'il ne travaille qu'en journée. Aucun des deux ne ment : ils ne répondent pas à la même question, et la direction a besoin des deux niveaux d'information. Le TRE sert aussi de repère international pour comparer des sites, et révèle la marge de capacité encore disponible : la réduction des pauses et des essais nourrit le TRG, la réduction des pannes nourrit le TRS.
+
+## Les six grandes pertes à chasser
+
+La total productive maintenance, socle du lean manufacturing, classe les pertes en six familles. Chacune tire un des trois taux vers le bas, et il faut analyser chaque famille séparément pour agir.
+
+- **Défaillances machine** : L'arrêt subi, le plus visible et le plus coûteux. Le préventif et la rapidité du dépannage se jouent ici, sur chaque équipement critique.
+- **Changements de série** : Le temps de changement et de réglage entre deux références. La méthode SMED le réduit fortement, souvent sans investissement.
+- **Micro-arrêts** : Bourrage, capteur, alimentation : moins d'une minute, des dizaines de fois par jour. Invisibles sans collecte automatique, impossibles à réduire sans mesure.
+- **Ralentissements** : La ligne tourne sous sa cadence pour masquer un problème de fond : usure, approvisionnement irrégulier, peur de la casse.
+- **Défauts et retouches** : Pièces non conformes en cours de série. Le taux de qualité chute et la matière part au rebut.
+- **Pertes au démarrage** : Les premières pièces après un redémarrage ou un réglage. Plus les interruptions sont nombreuses, plus elles pèsent.
+
+Ce classement transforme un pourcentage en plan d'action : chaque famille de perte a ses causes, ses responsables et ses remèdes. C'est là que la mesure prend son intérêt. La chasse commence par les défaillances : recherche de la cause racine, préventif ciblé, l'optimisation des fréquences d'entretien. C'est la mission première de la maintenance, et la condition d'une amélioration continue.
+
+## Les erreurs qui faussent la mesure
+
+Un TRS faux est pire qu'aucun TRS : il rassure à tort ou il accuse à tort. Six pièges reviennent dans presque tous les ateliers.
+
+- **Cadence nominale complaisante** : Prendre la vitesse « confortable » plutôt que celle de conception gonfle la performance. La marge de progression disparaît du radar, et les marges de l'entreprise avec elle.
+- **Saisie manuelle floue** : « Arrêt divers » coché en fin de journée ne dit rien. Une saisie fiable exige des codes d'arrêt courts, connus des opérateurs, en nombre limité.
+- **Micro-arrêts ignorés** : Sous la minute, personne ne note. La saisie semi-automatique, les capteurs et la collecte digitale comblent ce trou à faible coût.
+- **Moyenne écran de fumée** : Un TRS moyen, tous équipements confondus, ne guide aucune action. Le suivi se fait machine par machine, équipe par équipe.
+- **Indicateur punitif** : Utilisé pour noter les personnes, le TRS meurt : les données liées aux arrêts s'arrangent. Il mesure un système de production, pas un opérateur.
+- **Précision avant l'habitude** : Attendre l'outil parfait retarde tout. Une mesure simple tenue chaque jour, avec une précision suffisante, vaut mieux qu'un projet de six mois.
+
+Un conseil issu du terrain : commencez par une semaine de relevés sur la ligne la plus contrainte. La discussion qui suit vaut souvent plus que la valeur mesurée. Autre piège : tout outiller avant d'avoir posé la gestion des codes d'arrêt. L'outil n'est qu'une partie de la solution ; une routine efficace exige la transparence sur les règles de comptage.
+
+## Ce que le TRS change dans l'organisation
+
+Bien utilisé, cet indicateur aligne la direction, les managers et le terrain sur les mêmes priorités. Chaque partie intéressée y trouve une décision à prendre.
+
+- **Pour la direction** : Le TRS révèle la capacité cachée de l'usine et l'impact financier des pertes. Gagner des points repousse un investissement de capacité : la rentabilité se joue sur l'existant, la compétitivité aussi.
+- **Pour les managers** : Tableaux de bord au pied des lignes, management visuel, revue courte chaque matin sur l'actualité de la ligne. La mise en place d'un Pareto des causes suffit au manager pour ordonner les priorités de la semaine.
+- **Pour le personnel de production** : Des codes d'arrêt simples, une information qui redescend, des actions visibles. La démarche tient si les opérateurs voient leurs signalements traités.
+
+La disponibilité reste la composante où la maintenance pèse le plus : préventif tenu, réglages tracés, composants critiques en stock. Une amélioration durable passe par ce travail de fond, articulé avec la gestion de production, à travers un plan d'action suivi, avec une mise en œuvre mesurée mois après mois. Les solutions logicielles et le digital aident, à condition de venir après la méthode.
+
+> Nos techniciens interviennent en appui externe de vos équipes : dépannage, préventif, ou notre offre de contrat [Zéro arrêt](/offres/zero-arret/) avec un objectif écrit de disponibilité. Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30, au 04 78 33 72 05.
+
+## Questions fréquentes
+
+**Qu'est-ce qu'un bon TRS ?**
+Il n'existe pas de seuil universel : un processus de production en continu et un atelier de petites séries ne jouent pas dans la même catégorie. Les publications du lean manufacturing citent souvent 85 % comme référence de classe mondiale, beaucoup d'industriels découvrent un niveau réel bien plus bas. La comparaison utile : votre propre mesure, mois après mois, machine par machine.
+
+**Faut-il un logiciel MES pour suivre le TRS ?**
+Non pour démarrer : une feuille de relevés et un tableur sont une solution suffisante pendant des mois. Le logiciel devient utile quand le nombre de machines augmente, pour fiabiliser la collecte, automatiser la saisie et guider l'optimisation de la production sur des tableaux de bord. La règle : la mesure d'abord, l'outillage ensuite.
+
+**Quelle différence entre TRS et productivité ?**
+La productivité rapporte une production aux ressources engagées, temps passé ou effectif. Le TRS, lui, compare l'outil à son propre potentiel : il isole la part de temps requis convertie en pièces bonnes. Une usine peut augmenter sa productivité en ajoutant des heures alors que son rendement synthétique stagne : les deux mesures se complètent.
+
+**À quelle fréquence faut-il le calculer ?**
+Au minimum par journée et par équipe, en agrégeant ensuite à la semaine pour la revue de performance. Un affichage en temps réel aide les lignes à forte cadence, un relevé quotidien suffit pour des procédés plus lents. L'essentiel est la régularité : une série suffisante et continue de données vaut mieux qu'un audit ponctuel très précis.
+
+**Le TRS s'applique-t-il hors production automatisée ?**
+Oui, dans toute l'industrie. Lignes semi-automatiques, machines à cycle, procédés semi-continus, y compris une cellule d'usinage isolée : la méthode peut être appliquée dès qu'une cadence de référence existe. Pour les opérations très manuelles, l'efficacité globale se mesure autrement, mais la logique des trois taux garde toute sa force pédagogique.
+
+**Quel lien entre TRS et maintenance ?**
+Direct. Les défaillances et les micro-arrêts frappent la disponibilité, premier facteur du TRS, et les dérives d'équipement dégradent performance et qualité. Suivre le temps moyen entre défaillances et le temps moyen de réparation complète l'analyse : ces indicateurs se lisent ensemble, sur un périmètre commun, pour piloter le préventif là où il rapporte.
+
+> À lire aussi : [mtbf](/ressources/fiches-techniques/mtbf-mttr/)
+
+> [Demander un diagnostic maintenance](/contact/)

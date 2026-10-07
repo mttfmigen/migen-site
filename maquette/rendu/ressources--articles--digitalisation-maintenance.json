@@ -1,0 +1,53 @@
+{
+  "url": "/ressources/articles/digitalisation-maintenance/",
+  "gabarit": "01 Article et fiche",
+  "verdict": "rendue",
+  "h1Attendu": "Digitalisation maintenance",
+  "h1Rendu": "Digitalisation maintenance",
+  "nbSections": 5,
+  "hauteurTotale": 9916,
+  "motsAnnonces": 2375,
+  "motsRendus": 2436,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 568,
+      "images": 1,
+      "liens": 4,
+      "mots": 95
+    },
+    {
+      "ordre": 1,
+      "titre": "01Digitalisation maintenance : la définition",
+      "hauteur": 6781,
+      "images": 0,
+      "liens": 14,
+      "mots": 1965
+    },
+    {
+      "ordre": 2,
+      "titre": "Vos questions, nos réponses",
+      "hauteur": 753,
+      "images": 0,
+      "liens": 0,
+      "mots": 119
+    },
+    {
+      "ordre": 3,
+      "titre": "Sur le même sujet",
+      "hauteur": 447,
+      "images": 3,
+      "liens": 4,
+      "mots": 38
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 509,
+      "images": 0,
+      "liens": 2,
+      "mots": 42
+    }
+  ]
+}

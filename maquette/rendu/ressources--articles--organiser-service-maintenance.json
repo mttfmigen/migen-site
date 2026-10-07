@@ -1,0 +1,53 @@
+{
+  "url": "/ressources/articles/organiser-service-maintenance/",
+  "gabarit": "01 Article et fiche",
+  "verdict": "rendue",
+  "h1Attendu": "Comment organiser un service de maintenance",
+  "h1Rendu": "Comment organiser un service de maintenance",
+  "nbSections": 5,
+  "hauteurTotale": 8766,
+  "motsAnnonces": 2070,
+  "motsRendus": 2103,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 510,
+      "images": 1,
+      "liens": 4,
+      "mots": 76
+    },
+    {
+      "ordre": 1,
+      "titre": "01Un service de maintenance, définition utile",
+      "hauteur": 5737,
+      "images": 0,
+      "liens": 18,
+      "mots": 1674
+    },
+    {
+      "ordre": 2,
+      "titre": "Vos questions, nos réponses",
+      "hauteur": 727,
+      "images": 0,
+      "liens": 0,
+      "mots": 100
+    },
+    {
+      "ordre": 3,
+      "titre": "Sur le même sujet",
+      "hauteur": 426,
+      "images": 3,
+      "liens": 4,
+      "mots": 34
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 509,
+      "images": 0,
+      "liens": 2,
+      "mots": 42
+    }
+  ]
+}

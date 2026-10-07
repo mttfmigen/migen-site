@@ -1,0 +1,149 @@
+{
+  "url": "/carriere/electromecanicien/competences/",
+  "gabarit": "07 Métier et carrière",
+  "verdict": "rendue",
+  "h1Attendu": "Compétences électromécanicien",
+  "h1Rendu": "Compétences électromécanicien",
+  "nbSections": 17,
+  "hauteurTotale": 11625,
+  "motsAnnonces": 1843,
+  "motsRendus": 1912,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 617,
+      "images": 1,
+      "liens": 3,
+      "mots": 98
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 2,
+      "titre": "Le métier et ses missions",
+      "hauteur": 868,
+      "images": 0,
+      "liens": 0,
+      "mots": 202
+    },
+    {
+      "ordre": 3,
+      "titre": "Compétences électromécanicien : le socle technique",
+      "hauteur": 731,
+      "images": 0,
+      "liens": 0,
+      "mots": 110
+    },
+    {
+      "ordre": 4,
+      "titre": "Lire un schéma avant d'agir",
+      "hauteur": 298,
+      "images": 0,
+      "liens": 0,
+      "mots": 25
+    },
+    {
+      "ordre": 5,
+      "titre": "La recherche de panne et la résolution de problèmes",
+      "hauteur": 740,
+      "images": 0,
+      "liens": 1,
+      "mots": 130
+    },
+    {
+      "ordre": 6,
+      "titre": "Sécurité et habilitations",
+      "hauteur": 623,
+      "images": 0,
+      "liens": 1,
+      "mots": 105
+    },
+    {
+      "ordre": 7,
+      "titre": "Les compétences comportementales",
+      "hauteur": 673,
+      "images": 0,
+      "liens": 0,
+      "mots": 121
+    },
+    {
+      "ordre": 8,
+      "titre": "Comment acquérir ces compétences",
+      "hauteur": 694,
+      "images": 0,
+      "liens": 0,
+      "mots": 127
+    },
+    {
+      "ordre": 9,
+      "titre": "Se former tout au long de la carrière",
+      "hauteur": 352,
+      "images": 0,
+      "liens": 0,
+      "mots": 60
+    },
+    {
+      "ordre": 10,
+      "titre": "Les compétences que Migen évalue",
+      "hauteur": 892,
+      "images": 0,
+      "liens": 1,
+      "mots": 185
+    },
+    {
+      "ordre": 11,
+      "titre": "Secteurs, évolution et compétences transférables",
+      "hauteur": 856,
+      "images": 0,
+      "liens": 1,
+      "mots": 157
+    },
+    {
+      "ordre": 12,
+      "titre": "Travailler chez Migen comme électromécanicien",
+      "hauteur": 670,
+      "images": 0,
+      "liens": 0,
+      "mots": 79
+    },
+    {
+      "ordre": 13,
+      "titre": "Comment nous rejoindre",
+      "hauteur": 454,
+      "images": 0,
+      "liens": 0,
+      "mots": 67
+    },
+    {
+      "ordre": 14,
+      "titre": "Questions fréquentes",
+      "hauteur": 665,
+      "images": 0,
+      "liens": 1,
+      "mots": 104
+    },
+    {
+      "ordre": 15,
+      "titre": "Rejoindre Migen",
+      "hauteur": 944,
+      "images": 0,
+      "liens": 1,
+      "mots": 125
+    },
+    {
+      "ordre": 16,
+      "titre": null,
+      "hauteur": 481,
+      "images": 2,
+      "liens": 2,
+      "mots": 9
+    }
+  ]
+}

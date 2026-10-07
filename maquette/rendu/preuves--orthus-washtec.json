@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/orthus-washtec/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas ORTHUS x WASHTEC : des portiques de lavage montés partout en France",
+  "h1Rendu": "Des portiques de lavage montés partout en France",
+  "nbSections": 10,
+  "hauteurTotale": 6616,
+  "motsAnnonces": 697,
+  "motsRendus": 978,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 566,
+      "images": 2,
+      "liens": 2,
+      "mots": 67
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 261,
+      "images": 0,
+      "liens": 0,
+      "mots": 33
+    },
+    {
+      "ordre": 2,
+      "titre": "Un fabricant d'équipements ne peut pas avoir une équipe de montage dans chaque département.",
+      "hauteur": 836,
+      "images": 0,
+      "liens": 0,
+      "mots": 191
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 675,
+      "images": 0,
+      "liens": 0,
+      "mots": 101
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 442,
+      "images": 0,
+      "liens": 0,
+      "mots": 79
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 696,
+      "images": 1,
+      "liens": 0,
+      "mots": 49
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 517,
+      "images": 0,
+      "liens": 0,
+      "mots": 57
+    },
+    {
+      "ordre": 7,
+      "titre": "Chiffres clés",
+      "hauteur": 440,
+      "images": 0,
+      "liens": 0,
+      "mots": 86
+    },
+    {
+      "ordre": 8,
+      "titre": "Vous fabriquez des équipements et vos installations traînent ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 81
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 57
+    }
+  ]
+}

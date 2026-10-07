@@ -1,0 +1,173 @@
+{
+  "url": "/guides/reussir-un-transfert-industriel/",
+  "gabarit": "01 Article et fiche",
+  "verdict": "rendue",
+  "h1Attendu": "Réussir un transfert industriel : la méthode de bout en bout",
+  "h1Rendu": "Réussir un transfert industriel : la méthode de bout en bout",
+  "nbSections": 20,
+  "hauteurTotale": 19179,
+  "motsAnnonces": 2706,
+  "motsRendus": 2944,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 334,
+      "images": 0,
+      "liens": 1,
+      "mots": 52
+    },
+    {
+      "ordre": 1,
+      "titre": "Le chiffre qui pilote tout le projet",
+      "hauteur": 17547,
+      "images": 0,
+      "liens": 20,
+      "mots": 2806
+    },
+    {
+      "ordre": 2,
+      "titre": "Le chiffre qui pilote tout le projet",
+      "hauteur": 527,
+      "images": 0,
+      "liens": 0,
+      "mots": 120
+    },
+    {
+      "ordre": 3,
+      "titre": "Étape 1 : l'inventaire et la cotation des machines",
+      "hauteur": 1986,
+      "images": 0,
+      "liens": 1,
+      "mots": 249
+    },
+    {
+      "ordre": 4,
+      "titre": "Étape 2 : l'étude des accès et des contraintes de site",
+      "hauteur": 1381,
+      "images": 0,
+      "liens": 0,
+      "mots": 202
+    },
+    {
+      "ordre": 5,
+      "titre": "Étape 3 : l'ordre de démontage",
+      "hauteur": 839,
+      "images": 0,
+      "liens": 0,
+      "mots": 180
+    },
+    {
+      "ordre": 6,
+      "titre": "Étape 4 : le repérage et l'étiquetage",
+      "hauteur": 1550,
+      "images": 0,
+      "liens": 0,
+      "mots": 222
+    },
+    {
+      "ordre": 7,
+      "titre": "Étape 5 : l'emballage et le calage",
+      "hauteur": 923,
+      "images": 0,
+      "liens": 0,
+      "mots": 134
+    },
+    {
+      "ordre": 8,
+      "titre": "Étape 6 : le transport",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 107
+    },
+    {
+      "ordre": 9,
+      "titre": "Étape 7 : le remontage, l'alignement, les raccordements",
+      "hauteur": 1462,
+      "images": 0,
+      "liens": 0,
+      "mots": 156
+    },
+    {
+      "ordre": 10,
+      "titre": "Étape 8 : les essais et la remise en production",
+      "hauteur": 743,
+      "images": 0,
+      "liens": 0,
+      "mots": 148
+    },
+    {
+      "ordre": 11,
+      "titre": "Le rétroplanning",
+      "hauteur": 1025,
+      "images": 0,
+      "liens": 0,
+      "mots": 116
+    },
+    {
+      "ordre": 12,
+      "titre": "Qui fait quoi",
+      "hauteur": 1237,
+      "images": 0,
+      "liens": 0,
+      "mots": 151
+    },
+    {
+      "ordre": 13,
+      "titre": "Les autorisations et la sécurité",
+      "hauteur": 1030,
+      "images": 0,
+      "liens": 0,
+      "mots": 138
+    },
+    {
+      "ordre": 14,
+      "titre": "Les huit points où les projets dérapent",
+      "hauteur": 1008,
+      "images": 0,
+      "liens": 0,
+      "mots": 158
+    },
+    {
+      "ordre": 15,
+      "titre": "La checklist finale",
+      "hauteur": 1459,
+      "images": 0,
+      "liens": 0,
+      "mots": 235
+    },
+    {
+      "ordre": 16,
+      "titre": "FAQ",
+      "hauteur": 1024,
+      "images": 0,
+      "liens": 0,
+      "mots": 266
+    },
+    {
+      "ordre": 17,
+      "titre": "Pour aller plus loin",
+      "hauteur": 349,
+      "images": 0,
+      "liens": 2,
+      "mots": 57
+    },
+    {
+      "ordre": 18,
+      "titre": "Pages liées",
+      "hauteur": 383,
+      "images": 0,
+      "liens": 2,
+      "mots": 21
+    },
+    {
+      "ordre": 19,
+      "titre": "Un chargé d’affaires vous rappelle dans l’heure.",
+      "hauteur": 819,
+      "images": 0,
+      "liens": 0,
+      "mots": 65
+    }
+  ]
+}

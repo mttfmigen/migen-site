@@ -1,0 +1,165 @@
+{
+  "url": "/secteurs/agroalimentaire/",
+  "gabarit": "08 Secteur",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Maintenance agroalimentaire",
+  "h1Rendu": "Vos lignes tournent. Vos produits partent à l’heure.",
+  "nbSections": 19,
+  "hauteurTotale": 9571,
+  "motsAnnonces": 1211,
+  "motsRendus": 1497,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 731,
+      "images": 0,
+      "liens": 1,
+      "mots": 107
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 176,
+      "images": 0,
+      "liens": 0,
+      "mots": 26
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 361,
+      "images": 82,
+      "liens": 0,
+      "mots": 10
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 24
+    },
+    {
+      "ordre": 5,
+      "titre": "La remplisseuse s'arrête un jeudi soir de haute saison.",
+      "hauteur": 574,
+      "images": 0,
+      "liens": 0,
+      "mots": 141
+    },
+    {
+      "ordre": 6,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 599,
+      "images": 0,
+      "liens": 0,
+      "mots": 213
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 135,
+      "images": 0,
+      "liens": 1,
+      "mots": 24
+    },
+    {
+      "ordre": 8,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 830,
+      "images": 0,
+      "liens": 1,
+      "mots": 143
+    },
+    {
+      "ordre": 9,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 649,
+      "images": 0,
+      "liens": 0,
+      "mots": 89
+    },
+    {
+      "ordre": 10,
+      "titre": null,
+      "hauteur": 296,
+      "images": 0,
+      "liens": 1,
+      "mots": 18
+    },
+    {
+      "ordre": 11,
+      "titre": "Les expertises qui font tourner vos lignes",
+      "hauteur": 486,
+      "images": 0,
+      "liens": 4,
+      "mots": 91
+    },
+    {
+      "ordre": 12,
+      "titre": "Cinq façons de travailler ensemble, selon votre besoin",
+      "hauteur": 699,
+      "images": 5,
+      "liens": 5,
+      "mots": 141
+    },
+    {
+      "ordre": 13,
+      "titre": "Les équipements que nous maintenons déjà",
+      "hauteur": 456,
+      "images": 11,
+      "liens": 0,
+      "mots": 27
+    },
+    {
+      "ordre": 14,
+      "titre": "Nos références",
+      "hauteur": 717,
+      "images": 5,
+      "liens": 6,
+      "mots": 123
+    },
+    {
+      "ordre": 15,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 24
+    },
+    {
+      "ordre": 16,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 536,
+      "images": 0,
+      "liens": 0,
+      "mots": 84
+    },
+    {
+      "ordre": 17,
+      "titre": "Ils nous ont confié une mission comparable",
+      "hauteur": 578,
+      "images": 4,
+      "liens": 5,
+      "mots": 76
+    },
+    {
+      "ordre": 18,
+      "titre": "Besoin de sécuriser vos lignes avant la prochaine haute saison ?",
+      "hauteur": 1012,
+      "images": 0,
+      "liens": 0,
+      "mots": 68
+    }
+  ]
+}

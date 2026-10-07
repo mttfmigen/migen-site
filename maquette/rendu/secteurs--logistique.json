@@ -1,0 +1,173 @@
+{
+  "url": "/secteurs/logistique/",
+  "gabarit": "08 Secteur",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Maintenance des équipements logistiques",
+  "h1Rendu": "Vos commandes partent ce soir. Même en plein pic.",
+  "nbSections": 20,
+  "hauteurTotale": 9766,
+  "motsAnnonces": 1310,
+  "motsRendus": 1615,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 708,
+      "images": 0,
+      "liens": 1,
+      "mots": 121
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 197,
+      "images": 0,
+      "liens": 0,
+      "mots": 32
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 455,
+      "images": 86,
+      "liens": 0,
+      "mots": 10
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 29
+    },
+    {
+      "ordre": 5,
+      "titre": "Le trieur principal lâche à 16h30.",
+      "hauteur": 533,
+      "images": 0,
+      "liens": 0,
+      "mots": 133
+    },
+    {
+      "ordre": 6,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 579,
+      "images": 0,
+      "liens": 0,
+      "mots": 214
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 135,
+      "images": 0,
+      "liens": 1,
+      "mots": 29
+    },
+    {
+      "ordre": 8,
+      "titre": null,
+      "hauteur": 191,
+      "images": 0,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 9,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 830,
+      "images": 0,
+      "liens": 1,
+      "mots": 143
+    },
+    {
+      "ordre": 10,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 624,
+      "images": 0,
+      "liens": 0,
+      "mots": 93
+    },
+    {
+      "ordre": 11,
+      "titre": null,
+      "hauteur": 296,
+      "images": 0,
+      "liens": 1,
+      "mots": 22
+    },
+    {
+      "ordre": 12,
+      "titre": "Les expertises d’un site qui ne s’arrête pas",
+      "hauteur": 486,
+      "images": 0,
+      "liens": 4,
+      "mots": 85
+    },
+    {
+      "ordre": 13,
+      "titre": "Cinq façons de travailler ensemble, selon votre besoin",
+      "hauteur": 699,
+      "images": 5,
+      "liens": 5,
+      "mots": 141
+    },
+    {
+      "ordre": 14,
+      "titre": "Les équipements que nous maintenons déjà",
+      "hauteur": 456,
+      "images": 8,
+      "liens": 0,
+      "mots": 27
+    },
+    {
+      "ordre": 15,
+      "titre": "Nos références",
+      "hauteur": 736,
+      "images": 6,
+      "liens": 7,
+      "mots": 173
+    },
+    {
+      "ordre": 16,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 29
+    },
+    {
+      "ordre": 17,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 536,
+      "images": 0,
+      "liens": 0,
+      "mots": 92
+    },
+    {
+      "ordre": 18,
+      "titre": "Ils nous ont confié une mission comparable",
+      "hauteur": 557,
+      "images": 4,
+      "liens": 5,
+      "mots": 70
+    },
+    {
+      "ordre": 19,
+      "titre": "Besoin de fiabiliser vos flux avant la prochaine montée en charge ?",
+      "hauteur": 1012,
+      "images": 0,
+      "liens": 0,
+      "mots": 73
+    }
+  ]
+}

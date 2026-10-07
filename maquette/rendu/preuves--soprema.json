@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/soprema/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas SOPREMA : monter, déplacer, renforcer, chantier après chantier",
+  "h1Rendu": "Monter, déplacer, renforcer, chantier après chantier",
+  "nbSections": 10,
+  "hauteurTotale": 6174,
+  "motsAnnonces": 609,
+  "motsRendus": 904,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 566,
+      "images": 2,
+      "liens": 2,
+      "mots": 65
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 261,
+      "images": 0,
+      "liens": 0,
+      "mots": 32
+    },
+    {
+      "ordre": 2,
+      "titre": "Un transfert de machine mal préparé coûte plus cher que la machine elle-même.",
+      "hauteur": 752,
+      "images": 0,
+      "liens": 0,
+      "mots": 147
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 654,
+      "images": 0,
+      "liens": 0,
+      "mots": 104
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 464,
+      "images": 0,
+      "liens": 0,
+      "mots": 97
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 547,
+      "images": 1,
+      "liens": 0,
+      "mots": 43
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 541,
+      "images": 0,
+      "liens": 0,
+      "mots": 49
+    },
+    {
+      "ordre": 7,
+      "titre": "Le résultat",
+      "hauteur": 206,
+      "images": 0,
+      "liens": 0,
+      "mots": 38
+    },
+    {
+      "ordre": 8,
+      "titre": "Une ligne à monter, une machine à déplacer, et personne de disponible ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 97
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 55
+    }
+  ]
+}

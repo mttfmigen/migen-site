@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/amazon-nouveau-site/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas AMAZON : un dispositif rodé, transposé sur un nouveau site",
+  "h1Rendu": "Un dispositif rodé, transposé sur un nouveau site",
+  "nbSections": 10,
+  "hauteurTotale": 5912,
+  "motsAnnonces": 604,
+  "motsRendus": 829,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 520,
+      "images": 2,
+      "liens": 2,
+      "mots": 70
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 21
+    },
+    {
+      "ordre": 2,
+      "titre": "Ouvrir un deuxième site avec un prestataire qui découvre le métier, c'est repartir de zéro.",
+      "hauteur": 483,
+      "images": 0,
+      "liens": 0,
+      "mots": 85
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 654,
+      "images": 0,
+      "liens": 0,
+      "mots": 102
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 420,
+      "images": 0,
+      "liens": 0,
+      "mots": 83
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 696,
+      "images": 1,
+      "liens": 0,
+      "mots": 41
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 539,
+      "images": 0,
+      "liens": 0,
+      "mots": 58
+    },
+    {
+      "ordre": 7,
+      "titre": "La situation",
+      "hauteur": 206,
+      "images": 0,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 8,
+      "titre": "Vous ouvrez un site et vous voulez y porter ce qui marche déjà ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 117
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 44
+    }
+  ]
+}

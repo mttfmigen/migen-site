@@ -1,0 +1,133 @@
+{
+  "url": "/carriere/agent-de-maintenance/",
+  "gabarit": "07 Métier et carrière",
+  "verdict": "rendue",
+  "h1Attendu": "Agent de maintenance industrielle",
+  "h1Rendu": "Agent de maintenance industrielle",
+  "nbSections": 15,
+  "hauteurTotale": 11647,
+  "motsAnnonces": 1962,
+  "motsRendus": 2119,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 668,
+      "images": 1,
+      "liens": 3,
+      "mots": 120
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 2,
+      "titre": "Ce que fait un agent de maintenance industrielle au quotidien",
+      "hauteur": 972,
+      "images": 0,
+      "liens": 0,
+      "mots": 197
+    },
+    {
+      "ordre": 3,
+      "titre": "Les équipements et machines suivis",
+      "hauteur": 694,
+      "images": 0,
+      "liens": 0,
+      "mots": 94
+    },
+    {
+      "ordre": 4,
+      "titre": "Habilitations, certifications et sécurité",
+      "hauteur": 688,
+      "images": 0,
+      "liens": 1,
+      "mots": 126
+    },
+    {
+      "ordre": 5,
+      "titre": "Devenir agent de maintenance industrielle : formation et parcours",
+      "hauteur": 863,
+      "images": 0,
+      "liens": 0,
+      "mots": 212
+    },
+    {
+      "ordre": 6,
+      "titre": "Les compétences qui font la différence",
+      "hauteur": 924,
+      "images": 0,
+      "liens": 0,
+      "mots": 160
+    },
+    {
+      "ordre": 7,
+      "titre": "Conditions et environnement de travail",
+      "hauteur": 684,
+      "images": 0,
+      "liens": 1,
+      "mots": 145
+    },
+    {
+      "ordre": 8,
+      "titre": "Salaire et évolution de l'agent de maintenance",
+      "hauteur": 840,
+      "images": 0,
+      "liens": 1,
+      "mots": 143
+    },
+    {
+      "ordre": 9,
+      "titre": "Agent de maintenance chez Migen : le cadre et les moyens",
+      "hauteur": 714,
+      "images": 0,
+      "liens": 0,
+      "mots": 114
+    },
+    {
+      "ordre": 10,
+      "titre": "Emploi et recrutement : qui cherche un agent de maintenance",
+      "hauteur": 721,
+      "images": 0,
+      "liens": 1,
+      "mots": 188
+    },
+    {
+      "ordre": 11,
+      "titre": "Comment rejoindre nos équipes",
+      "hauteur": 622,
+      "images": 0,
+      "liens": 0,
+      "mots": 134
+    },
+    {
+      "ordre": 12,
+      "titre": "Questions fréquentes",
+      "hauteur": 750,
+      "images": 0,
+      "liens": 1,
+      "mots": 141
+    },
+    {
+      "ordre": 13,
+      "titre": "Rejoindre Migen",
+      "hauteur": 944,
+      "images": 0,
+      "liens": 1,
+      "mots": 125
+    },
+    {
+      "ordre": 14,
+      "titre": null,
+      "hauteur": 495,
+      "images": 2,
+      "liens": 2,
+      "mots": 12
+    }
+  ]
+}

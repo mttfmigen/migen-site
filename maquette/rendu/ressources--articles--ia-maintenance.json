@@ -1,0 +1,53 @@
+{
+  "url": "/ressources/articles/ia-maintenance/",
+  "gabarit": "01 Article et fiche",
+  "verdict": "rendue",
+  "h1Attendu": "IA maintenance : ce qui change vraiment",
+  "h1Rendu": "IA maintenance : ce qui change vraiment",
+  "nbSections": 5,
+  "hauteurTotale": 8894,
+  "motsAnnonces": 2048,
+  "motsRendus": 2105,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 568,
+      "images": 1,
+      "liens": 4,
+      "mots": 103
+    },
+    {
+      "ordre": 1,
+      "titre": "01IA maintenance : la définition utile",
+      "hauteur": 5756,
+      "images": 0,
+      "liens": 14,
+      "mots": 1616
+    },
+    {
+      "ordre": 2,
+      "titre": "Vos questions, nos réponses",
+      "hauteur": 778,
+      "images": 0,
+      "liens": 0,
+      "mots": 133
+    },
+    {
+      "ordre": 3,
+      "titre": "Sur le même sujet",
+      "hauteur": 426,
+      "images": 3,
+      "liens": 4,
+      "mots": 34
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 509,
+      "images": 0,
+      "liens": 2,
+      "mots": 42
+    }
+  ]
+}

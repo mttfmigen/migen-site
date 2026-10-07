@@ -1,0 +1,53 @@
+{
+  "url": "/ressources/articles/optimiser-la-maintenance/",
+  "gabarit": "01 Article et fiche",
+  "verdict": "rendue",
+  "h1Attendu": "Optimisation de la maintenance",
+  "h1Rendu": "Optimisation de la maintenance",
+  "nbSections": 5,
+  "hauteurTotale": 8080,
+  "motsAnnonces": 1819,
+  "motsRendus": 1904,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 568,
+      "images": 1,
+      "liens": 4,
+      "mots": 102
+    },
+    {
+      "ordre": 1,
+      "titre": "01Optimiser la maintenance industrielle, définition",
+      "hauteur": 4993,
+      "images": 0,
+      "liens": 17,
+      "mots": 1440
+    },
+    {
+      "ordre": 2,
+      "titre": "Vos questions, nos réponses",
+      "hauteur": 727,
+      "images": 0,
+      "liens": 0,
+      "mots": 109
+    },
+    {
+      "ordre": 3,
+      "titre": "Sur le même sujet",
+      "hauteur": 426,
+      "images": 3,
+      "liens": 4,
+      "mots": 34
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 509,
+      "images": 0,
+      "liens": 2,
+      "mots": 42
+    }
+  ]
+}

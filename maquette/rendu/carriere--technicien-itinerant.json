@@ -1,0 +1,133 @@
+{
+  "url": "/carriere/technicien-itinerant/",
+  "gabarit": "07 Métier et carrière",
+  "verdict": "rendue",
+  "h1Attendu": "Technicien de maintenance itinérant",
+  "h1Rendu": "Technicien de maintenance itinérant",
+  "nbSections": 15,
+  "hauteurTotale": 11827,
+  "motsAnnonces": 2055,
+  "motsRendus": 2221,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 668,
+      "images": 1,
+      "liens": 3,
+      "mots": 124
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 2,
+      "titre": "Ce que fait un technicien de maintenance itinérant au quotidien",
+      "hauteur": 934,
+      "images": 0,
+      "liens": 0,
+      "mots": 189
+    },
+    {
+      "ordre": 3,
+      "titre": "Déplacements et grand déplacement : le cadre du poste",
+      "hauteur": 704,
+      "images": 0,
+      "liens": 0,
+      "mots": 123
+    },
+    {
+      "ordre": 4,
+      "titre": "Habilitations, sécurité et matériel",
+      "hauteur": 650,
+      "images": 0,
+      "liens": 1,
+      "mots": 127
+    },
+    {
+      "ordre": 5,
+      "titre": "Devenir technicien de maintenance itinérant : formation et parcours",
+      "hauteur": 800,
+      "images": 0,
+      "liens": 0,
+      "mots": 158
+    },
+    {
+      "ordre": 6,
+      "titre": "Les compétences qui font la différence",
+      "hauteur": 998,
+      "images": 0,
+      "liens": 2,
+      "mots": 161
+    },
+    {
+      "ordre": 7,
+      "titre": "Évolution de carrière du technicien itinérant",
+      "hauteur": 806,
+      "images": 0,
+      "liens": 0,
+      "mots": 184
+    },
+    {
+      "ordre": 8,
+      "titre": "Salaire et avantages du technicien itinérant",
+      "hauteur": 827,
+      "images": 0,
+      "liens": 1,
+      "mots": 154
+    },
+    {
+      "ordre": 9,
+      "titre": "Technicien itinérant chez Migen : le cadre et les moyens",
+      "hauteur": 709,
+      "images": 0,
+      "liens": 0,
+      "mots": 139
+    },
+    {
+      "ordre": 10,
+      "titre": "Emploi et recrutement : qui recrute un technicien itinérant",
+      "hauteur": 777,
+      "images": 0,
+      "liens": 1,
+      "mots": 224
+    },
+    {
+      "ordre": 11,
+      "titre": "Comment rejoindre nos équipes",
+      "hauteur": 689,
+      "images": 0,
+      "liens": 0,
+      "mots": 155
+    },
+    {
+      "ordre": 12,
+      "titre": "Questions fréquentes",
+      "hauteur": 759,
+      "images": 0,
+      "liens": 1,
+      "mots": 134
+    },
+    {
+      "ordre": 13,
+      "titre": "Rejoindre Migen",
+      "hauteur": 944,
+      "images": 0,
+      "liens": 1,
+      "mots": 125
+    },
+    {
+      "ordre": 14,
+      "titre": null,
+      "hauteur": 495,
+      "images": 3,
+      "liens": 3,
+      "mots": 16
+    }
+  ]
+}

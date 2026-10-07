@@ -1,0 +1,77 @@
+{
+  "url": "/preuves/atena-port-la-rochelle/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas ATENA : en finir avec les pannes qui reviennent sur un terminal d’engrais",
+  "h1Rendu": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
+  "nbSections": 8,
+  "hauteurTotale": 4865,
+  "motsAnnonces": 465,
+  "motsRendus": 643,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 523,
+      "images": 2,
+      "liens": 2,
+      "mots": 105
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 236,
+      "images": 0,
+      "liens": 0,
+      "mots": 20
+    },
+    {
+      "ordre": 2,
+      "titre": "Sur un terminal d'engrais, la poussière et la corrosion font revenir les mêmes pannes",
+      "hauteur": 368,
+      "images": 0,
+      "liens": 0,
+      "mots": 65
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 450,
+      "images": 0,
+      "liens": 0,
+      "mots": 58
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 397,
+      "images": 0,
+      "liens": 0,
+      "mots": 53
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 708,
+      "images": 1,
+      "liens": 0,
+      "mots": 61
+    },
+    {
+      "ordre": 6,
+      "titre": "Un besoin comparable sur votre site ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 67
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 37
+    }
+  ]
+}

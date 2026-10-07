@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/amazon-centre-logistique/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas AMAZON : maintenir un centre logistique qui ne ferme jamais",
+  "h1Rendu": "Maintenir un centre logistique qui ne ferme jamais",
+  "nbSections": 10,
+  "hauteurTotale": 5798,
+  "motsAnnonces": 607,
+  "motsRendus": 840,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 520,
+      "images": 2,
+      "liens": 2,
+      "mots": 63
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 24
+    },
+    {
+      "ordre": 2,
+      "titre": "Un site qui ne ferme jamais n'a pas de fenêtre de maintenance.",
+      "hauteur": 436,
+      "images": 0,
+      "liens": 0,
+      "mots": 78
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 673,
+      "images": 0,
+      "liens": 0,
+      "mots": 113
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 420,
+      "images": 0,
+      "liens": 0,
+      "mots": 79
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 609,
+      "images": 1,
+      "liens": 0,
+      "mots": 40
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 539,
+      "images": 0,
+      "liens": 0,
+      "mots": 67
+    },
+    {
+      "ordre": 7,
+      "titre": "La situation",
+      "hauteur": 206,
+      "images": 0,
+      "liens": 0,
+      "mots": 34
+    },
+    {
+      "ordre": 8,
+      "titre": "Un préventif qui ne rentre plus dans vos fenêtres d'arrêt ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 121
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 44
+    }
+  ]
+}

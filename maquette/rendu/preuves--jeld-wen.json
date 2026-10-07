@@ -1,0 +1,77 @@
+{
+  "url": "/preuves/jeld-wen/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas JELD-WEN : des commandes numériques remises en route à chaque équipe",
+  "h1Rendu": "Des commandes numériques remises en route à chaque équipe",
+  "nbSections": 8,
+  "hauteurTotale": 4899,
+  "motsAnnonces": 381,
+  "motsRendus": 564,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 520,
+      "images": 2,
+      "liens": 2,
+      "mots": 89
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 15
+    },
+    {
+      "ordre": 2,
+      "titre": "En 2x8, une panne de fin de poste ne peut pas attendre le lendemain",
+      "hauteur": 368,
+      "images": 0,
+      "liens": 0,
+      "mots": 60
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 654,
+      "images": 0,
+      "liens": 0,
+      "mots": 57
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 353,
+      "images": 0,
+      "liens": 0,
+      "mots": 30
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 609,
+      "images": 1,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 6,
+      "titre": "Un besoin comparable sur votre site ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 67
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 38
+    }
+  ]
+}

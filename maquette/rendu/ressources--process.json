@@ -1,0 +1,45 @@
+{
+  "url": "/ressources/process/",
+  "gabarit": "11 Sous-rubrique ressource",
+  "verdict": "rendue",
+  "h1Attendu": "Ressources : Process",
+  "h1Rendu": "Ressources : Process",
+  "nbSections": 4,
+  "hauteurTotale": 3538,
+  "motsAnnonces": 351,
+  "motsRendus": 580,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 466,
+      "images": 1,
+      "liens": 3,
+      "mots": 58
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 810,
+      "images": 4,
+      "liens": 4,
+      "mots": 47
+    },
+    {
+      "ordre": 2,
+      "titre": "Organiser la maintenance au quotidien",
+      "hauteur": 896,
+      "images": 0,
+      "liens": 6,
+      "mots": 256
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 509,
+      "images": 0,
+      "liens": 2,
+      "mots": 42
+    }
+  ]
+}

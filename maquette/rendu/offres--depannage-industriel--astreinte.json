@@ -1,0 +1,149 @@
+{
+  "url": "/offres/depannage-industriel/astreinte/",
+  "gabarit": "03 Offre et prestation",
+  "verdict": "rendue-sans-titre",
+  "h1Attendu": "Astreinte de maintenance, 24 heures sur 24",
+  "h1Rendu": "",
+  "nbSections": 17,
+  "hauteurTotale": 8256,
+  "motsAnnonces": 1427,
+  "motsRendus": 1285,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 660,
+      "images": 0,
+      "liens": 1,
+      "mots": 44
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 176,
+      "images": 0,
+      "liens": 0,
+      "mots": 30
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 114,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 5,
+      "titre": null,
+      "hauteur": 495,
+      "images": 0,
+      "liens": 0,
+      "mots": 123
+    },
+    {
+      "ordre": 6,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 559,
+      "images": 0,
+      "liens": 0,
+      "mots": 181
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 112,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 8,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 830,
+      "images": 0,
+      "liens": 1,
+      "mots": 156
+    },
+    {
+      "ordre": 9,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 698,
+      "images": 0,
+      "liens": 0,
+      "mots": 140
+    },
+    {
+      "ordre": 10,
+      "titre": null,
+      "hauteur": 243,
+      "images": 0,
+      "liens": 1,
+      "mots": 3
+    },
+    {
+      "ordre": 11,
+      "titre": "Nos références",
+      "hauteur": 816,
+      "images": 6,
+      "liens": 7,
+      "mots": 209
+    },
+    {
+      "ordre": 12,
+      "titre": null,
+      "hauteur": 114,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 13,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 536,
+      "images": 0,
+      "liens": 0,
+      "mots": 91
+    },
+    {
+      "ordre": 14,
+      "titre": "Les pages qui complètent celle-ci",
+      "hauteur": 696,
+      "images": 0,
+      "liens": 6,
+      "mots": 78
+    },
+    {
+      "ordre": 15,
+      "titre": "Ils nous ont confié une mission comparable",
+      "hauteur": 578,
+      "images": 4,
+      "liens": 5,
+      "mots": 72
+    },
+    {
+      "ordre": 16,
+      "titre": null,
+      "hauteur": 964,
+      "images": 0,
+      "liens": 0,
+      "mots": 47
+    }
+  ]
+}

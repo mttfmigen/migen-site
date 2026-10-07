@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/alstef-group/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas ALSTEF GROUP : des chantiers automatisés contrôlés point par point",
+  "h1Rendu": "Des chantiers automatisés contrôlés point par point",
+  "nbSections": 10,
+  "hauteurTotale": 6036,
+  "motsAnnonces": 602,
+  "motsRendus": 849,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 520,
+      "images": 2,
+      "liens": 2,
+      "mots": 58
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 261,
+      "images": 0,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 2,
+      "titre": "Un pic d'activité chantier arrive toujours au mauvais moment.",
+      "hauteur": 531,
+      "images": 0,
+      "liens": 0,
+      "mots": 94
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 671,
+      "images": 0,
+      "liens": 0,
+      "mots": 96
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 420,
+      "images": 0,
+      "liens": 0,
+      "mots": 80
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 696,
+      "images": 1,
+      "liens": 0,
+      "mots": 48
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 539,
+      "images": 0,
+      "liens": 0,
+      "mots": 66
+    },
+    {
+      "ordre": 7,
+      "titre": "La situation",
+      "hauteur": 206,
+      "images": 0,
+      "liens": 0,
+      "mots": 17
+    },
+    {
+      "ordre": 8,
+      "titre": "Une charge chantier qui dépasse vos équipes projet ?",
+      "hauteur": 741,
+      "images": 0,
+      "liens": 0,
+      "mots": 139
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 43
+    }
+  ]
+}

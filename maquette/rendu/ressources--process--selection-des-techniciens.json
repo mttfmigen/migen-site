@@ -1,0 +1,53 @@
+{
+  "url": "/ressources/process/selection-des-techniciens/",
+  "gabarit": "01 Article et fiche",
+  "verdict": "rendue",
+  "h1Attendu": "Sélection technicien de maintenance",
+  "h1Rendu": "Sélection technicien de maintenance",
+  "nbSections": 5,
+  "hauteurTotale": 7788,
+  "motsAnnonces": 1764,
+  "motsRendus": 1768,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 598,
+      "images": 1,
+      "liens": 4,
+      "mots": 111
+    },
+    {
+      "ordre": 1,
+      "titre": "01Le vrai coût d'un mauvais recrutement",
+      "hauteur": 4595,
+      "images": 0,
+      "liens": 21,
+      "mots": 1264
+    },
+    {
+      "ordre": 2,
+      "titre": "Vos questions, nos réponses",
+      "hauteur": 804,
+      "images": 0,
+      "liens": 0,
+      "mots": 140
+    },
+    {
+      "ordre": 3,
+      "titre": "Sur le même sujet",
+      "hauteur": 426,
+      "images": 3,
+      "liens": 4,
+      "mots": 34
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 509,
+      "images": 0,
+      "liens": 2,
+      "mots": 42
+    }
+  ]
+}

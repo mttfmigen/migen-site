@@ -1,0 +1,53 @@
+{
+  "url": "/ressources/process/protocole-de-securite/",
+  "gabarit": "01 Article et fiche",
+  "verdict": "rendue",
+  "h1Attendu": "Protocole de sécurité",
+  "h1Rendu": "Protocole de sécurité",
+  "nbSections": 5,
+  "hauteurTotale": 9653,
+  "motsAnnonces": 2351,
+  "motsRendus": 2450,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 539,
+      "images": 1,
+      "liens": 4,
+      "mots": 103
+    },
+    {
+      "ordre": 1,
+      "titre": "01Le protocole de sécurité, définition sans jargon",
+      "hauteur": 6620,
+      "images": 0,
+      "liens": 11,
+      "mots": 1991
+    },
+    {
+      "ordre": 2,
+      "titre": "Vos questions, nos réponses",
+      "hauteur": 702,
+      "images": 0,
+      "liens": 0,
+      "mots": 102
+    },
+    {
+      "ordre": 3,
+      "titre": "Sur le même sujet",
+      "hauteur": 426,
+      "images": 3,
+      "liens": 4,
+      "mots": 35
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 509,
+      "images": 0,
+      "liens": 2,
+      "mots": 42
+    }
+  ]
+}

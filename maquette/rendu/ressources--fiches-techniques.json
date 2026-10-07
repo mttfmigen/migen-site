@@ -1,0 +1,45 @@
+{
+  "url": "/ressources/fiches-techniques/",
+  "gabarit": "11 Sous-rubrique ressource",
+  "verdict": "rendue",
+  "h1Attendu": "Ressources : Fiches techniques",
+  "h1Rendu": "Ressources : Fiches techniques",
+  "nbSections": 4,
+  "hauteurTotale": 3948,
+  "motsAnnonces": 417,
+  "motsRendus": 682,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 502,
+      "images": 1,
+      "liens": 3,
+      "mots": 70
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 1109,
+      "images": 9,
+      "liens": 9,
+      "mots": 92
+    },
+    {
+      "ordre": 2,
+      "titre": "Mesurer la performance",
+      "hauteur": 971,
+      "images": 0,
+      "liens": 11,
+      "mots": 301
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 509,
+      "images": 0,
+      "liens": 2,
+      "mots": 42
+    }
+  ]
+}

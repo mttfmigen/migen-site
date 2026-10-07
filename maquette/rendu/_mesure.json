@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-06T20:10:01.852Z",
+  "maquette": "http://localhost:4352/autonome.html",
+  "compte": {
+    "rendue": 1
+  },
+  "resultats": [
+    {
+      "url": "/offres/",
+      "gabarit": "10 Hub de rubrique",
+      "verdict": "rendue",
+      "nbSections": 19,
+      "hauteurTotale": 9789,
+      "motsAnnonces": 1311,
+      "motsRendus": 1501
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "url": "/offres/chantier/demenagement-machines/",
+  "gabarit": "03 Offre et prestation",
+  "verdict": "rendue",
+  "h1Attendu": "Déménagement de machines industrielles",
+  "h1Rendu": "Déménagement de machines industrielles",
+  "nbSections": 19,
+  "hauteurTotale": 9324,
+  "motsAnnonces": 1114,
+  "motsRendus": 1220,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 660,
+      "images": 0,
+      "liens": 1,
+      "mots": 48
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 218,
+      "images": 0,
+      "liens": 0,
+      "mots": 37
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 114,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 5,
+      "titre": null,
+      "hauteur": 549,
+      "images": 1,
+      "liens": 0,
+      "mots": 66
+    },
+    {
+      "ordre": 6,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 539,
+      "images": 0,
+      "liens": 0,
+      "mots": 148
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 112,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 8,
+      "titre": null,
+      "hauteur": 191,
+      "images": 0,
+      "liens": 0,
+      "mots": 23
+    },
+    {
+      "ordre": 9,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 808,
+      "images": 0,
+      "liens": 1,
+      "mots": 151
+    },
+    {
+      "ordre": 10,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 674,
+      "images": 0,
+      "liens": 0,
+      "mots": 128
+    },
+    {
+      "ordre": 11,
+      "titre": null,
+      "hauteur": 320,
+      "images": 0,
+      "liens": 1,
+      "mots": 34
+    },
+    {
+      "ordre": 12,
+      "titre": "Les équipements que nous maintenons déjà",
+      "hauteur": 538,
+      "images": 13,
+      "liens": 0,
+      "mots": 27
+    },
+    {
+      "ordre": 13,
+      "titre": "Nos références",
+      "hauteur": 757,
+      "images": 4,
+      "liens": 5,
+      "mots": 111
+    },
+    {
+      "ordre": 14,
+      "titre": null,
+      "hauteur": 114,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 15,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 521,
+      "images": 0,
+      "liens": 0,
+      "mots": 88
+    },
+    {
+      "ordre": 16,
+      "titre": "Les pages qui complètent celle-ci",
+      "hauteur": 696,
+      "images": 0,
+      "liens": 6,
+      "mots": 78
+    },
+    {
+      "ordre": 17,
+      "titre": "Ils nous ont confié une mission comparable",
+      "hauteur": 884,
+      "images": 5,
+      "liens": 6,
+      "mots": 113
+    },
+    {
+      "ordre": 18,
+      "titre": "Besoin de savoir si votre machine supporte le déplacement ?",
+      "hauteur": 964,
+      "images": 0,
+      "liens": 0,
+      "mots": 57
+    }
+  ]
+}

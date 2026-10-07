@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/voit-grand-est/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas VOIT : centres d’usinage et presses tenus dans le Grand Est",
+  "h1Rendu": "Centres d’usinage et presses tenus dans le Grand Est",
+  "nbSections": 10,
+  "hauteurTotale": 5992,
+  "motsAnnonces": 569,
+  "motsRendus": 842,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 520,
+      "images": 2,
+      "liens": 2,
+      "mots": 82
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 261,
+      "images": 0,
+      "liens": 0,
+      "mots": 37
+    },
+    {
+      "ordre": 2,
+      "titre": "Un centre d'usinage à grande vitesse arrêté, c'est une pièce de précision qui ne sort pas.",
+      "hauteur": 506,
+      "images": 0,
+      "liens": 0,
+      "mots": 74
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 654,
+      "images": 0,
+      "liens": 0,
+      "mots": 100
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 420,
+      "images": 0,
+      "liens": 0,
+      "mots": 84
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 696,
+      "images": 1,
+      "liens": 0,
+      "mots": 49
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 565,
+      "images": 0,
+      "liens": 0,
+      "mots": 60
+    },
+    {
+      "ordre": 7,
+      "titre": "La situation",
+      "hauteur": 206,
+      "images": 0,
+      "liens": 0,
+      "mots": 26
+    },
+    {
+      "ordre": 8,
+      "titre": "Des machines multimarques que personne ne couvre en entier ?",
+      "hauteur": 757,
+      "images": 0,
+      "liens": 0,
+      "mots": 110
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 551,
+      "images": 4,
+      "liens": 4,
+      "mots": 43
+    }
+  ]
+}

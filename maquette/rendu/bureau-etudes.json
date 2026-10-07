@@ -1,0 +1,208 @@
+{
+  "url": "/bureau-etudes/",
+  "gabarit": "03 Offre et prestation",
+  "h1": "Bureau d'études industriel : des études qui tiennent au montage",
+  "motsAnnoncesParIndex": 1605,
+  "hauteurTotale": 9888,
+  "nbSections": 22,
+  "sections": [
+    {
+      "ordre": 0,
+      "surtitre": "",
+      "titre": null,
+      "hauteur": 708,
+      "images": 0,
+      "liens": 1,
+      "mots": 119
+    },
+    {
+      "ordre": 1,
+      "surtitre": "",
+      "titre": null,
+      "hauteur": 197,
+      "images": 0,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 2,
+      "surtitre": "",
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "surtitre": "",
+      "titre": null,
+      "hauteur": 493,
+      "images": 2,
+      "liens": 0,
+      "mots": 73
+    },
+    {
+      "ordre": 4,
+      "surtitre": "",
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 33
+    },
+    {
+      "ordre": 5,
+      "surtitre": "",
+      "titre": null,
+      "hauteur": 527,
+      "images": 1,
+      "liens": 0,
+      "mots": 62
+    },
+    {
+      "ordre": 6,
+      "surtitre": "",
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 620,
+      "images": 0,
+      "liens": 0,
+      "mots": 219
+    },
+    {
+      "ordre": 7,
+      "surtitre": "",
+      "titre": null,
+      "hauteur": 135,
+      "images": 0,
+      "liens": 1,
+      "mots": 33
+    },
+    {
+      "ordre": 8,
+      "surtitre": "",
+      "titre": null,
+      "hauteur": 191,
+      "images": 0,
+      "liens": 0,
+      "mots": 34
+    },
+    {
+      "ordre": 9,
+      "surtitre": "",
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 673,
+      "images": 0,
+      "liens": 1,
+      "mots": 132
+    },
+    {
+      "ordre": 10,
+      "surtitre": "",
+      "titre": null,
+      "hauteur": 165,
+      "images": 0,
+      "liens": 0,
+      "mots": 16
+    },
+    {
+      "ordre": 11,
+      "surtitre": "",
+      "titre": "Ce que nous garantissons",
+      "hauteur": 624,
+      "images": 0,
+      "liens": 0,
+      "mots": 111
+    },
+    {
+      "ordre": 12,
+      "surtitre": "",
+      "titre": null,
+      "hauteur": 165,
+      "images": 0,
+      "liens": 0,
+      "mots": 26
+    },
+    {
+      "ordre": 13,
+      "surtitre": "",
+      "titre": null,
+      "hauteur": 320,
+      "images": 0,
+      "liens": 1,
+      "mots": 38
+    },
+    {
+      "ordre": 14,
+      "surtitre": "",
+      "titre": "Les prestations regroupées ici",
+      "hauteur": 237,
+      "images": 0,
+      "liens": 1,
+      "mots": 53
+    },
+    {
+      "ordre": 15,
+      "surtitre": "",
+      "titre": "Les équipements que nous maintenons déjà",
+      "hauteur": 456,
+      "images": 8,
+      "liens": 0,
+      "mots": 27
+    },
+    {
+      "ordre": 16,
+      "surtitre": "JOINT LYONNAIS",
+      "titre": "Nos références",
+      "hauteur": 767,
+      "images": 4,
+      "liens": 5,
+      "mots": 148
+    },
+    {
+      "ordre": 17,
+      "surtitre": "",
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 33
+    },
+    {
+      "ordre": 18,
+      "surtitre": "",
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 590,
+      "images": 0,
+      "liens": 0,
+      "mots": 90
+    },
+    {
+      "ordre": 19,
+      "surtitre": "",
+      "titre": "Un autre besoin ? Il a son offre.",
+      "hauteur": 648,
+      "images": 0,
+      "liens": 5,
+      "mots": 125
+    },
+    {
+      "ordre": 20,
+      "surtitre": "",
+      "titre": "Ils nous ont confié une mission comparable",
+      "hauteur": 884,
+      "images": 5,
+      "liens": 6,
+      "mots": 110
+    },
+    {
+      "ordre": 21,
+      "surtitre": "",
+      "titre": "Besoin d'un ingénieur qui comprenne votre projet dès le premier appel ?",
+      "hauteur": 1012,
+      "images": 0,
+      "liens": 0,
+      "mots": 67
+    }
+  ]
+}

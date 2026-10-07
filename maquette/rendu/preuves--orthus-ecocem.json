@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/orthus-ecocem/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas ORTHUS x ECOCEM : de la parcelle au site de R&D, un seul pilote",
+  "h1Rendu": "De la parcelle au site de R&D, un seul pilote",
+  "nbSections": 10,
+  "hauteurTotale": 6286,
+  "motsAnnonces": 642,
+  "motsRendus": 907,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 534,
+      "images": 2,
+      "liens": 2,
+      "mots": 76
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 236,
+      "images": 0,
+      "liens": 0,
+      "mots": 24
+    },
+    {
+      "ordre": 2,
+      "titre": "Un site de R&D n'est pas un bâtiment industriel classique.",
+      "hauteur": 799,
+      "images": 0,
+      "liens": 0,
+      "mots": 167
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 654,
+      "images": 0,
+      "liens": 0,
+      "mots": 103
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 464,
+      "images": 0,
+      "liens": 0,
+      "mots": 91
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 696,
+      "images": 1,
+      "liens": 0,
+      "mots": 37
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 539,
+      "images": 0,
+      "liens": 0,
+      "mots": 65
+    },
+    {
+      "ordre": 7,
+      "titre": "Le résultat",
+      "hauteur": 179,
+      "images": 0,
+      "liens": 0,
+      "mots": 20
+    },
+    {
+      "ordre": 8,
+      "titre": "Un projet industriel à construire et aucune ressource pour le piloter ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 90
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 57
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "url": "/ressources/livres-blancs/externaliser-sa-maintenance/",
+  "gabarit": "01 Article et fiche",
+  "verdict": "rendue",
+  "h1Attendu": "Livre blanc : externaliser sa maintenance sans perdre la main",
+  "h1Rendu": "Livre blanc : externaliser sa maintenance sans perdre la main",
+  "nbSections": 5,
+  "hauteurTotale": 7129,
+  "motsAnnonces": 1442,
+  "motsRendus": 1534,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 539,
+      "images": 0,
+      "liens": 4,
+      "mots": 100
+    },
+    {
+      "ordre": 1,
+      "titre": "01Externaliser sa maintenance, ce que cela veut dire",
+      "hauteur": 4096,
+      "images": 0,
+      "liens": 9,
+      "mots": 1080
+    },
+    {
+      "ordre": 2,
+      "titre": "Vos questions, nos réponses",
+      "hauteur": 702,
+      "images": 0,
+      "liens": 0,
+      "mots": 100
+    },
+    {
+      "ordre": 3,
+      "titre": "Sur le même sujet",
+      "hauteur": 426,
+      "images": 3,
+      "liens": 4,
+      "mots": 35
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 509,
+      "images": 0,
+      "liens": 2,
+      "mots": 42
+    }
+  ]
+}

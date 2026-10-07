@@ -1,0 +1,77 @@
+{
+  "url": "/preuves/vignal-systems/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas VIGNAL SYSTEMS : maintenir et monter, de jour comme de nuit",
+  "h1Rendu": "Maintenir et monter, de jour comme de nuit",
+  "nbSections": 8,
+  "hauteurTotale": 4998,
+  "motsAnnonces": 449,
+  "motsRendus": 625,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 520,
+      "images": 2,
+      "liens": 2,
+      "mots": 100
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 16
+    },
+    {
+      "ordre": 2,
+      "titre": "Les travaux de montage, eux, demandent des bras sans dégarnir la maintenance courante",
+      "hauteur": 368,
+      "images": 0,
+      "liens": 0,
+      "mots": 59
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 654,
+      "images": 0,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 397,
+      "images": 0,
+      "liens": 0,
+      "mots": 52
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 685,
+      "images": 1,
+      "liens": 0,
+      "mots": 48
+    },
+    {
+      "ordre": 6,
+      "titre": "Un besoin comparable sur votre site ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 67
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 573,
+      "images": 4,
+      "liens": 4,
+      "mots": 38
+    }
+  ]
+}

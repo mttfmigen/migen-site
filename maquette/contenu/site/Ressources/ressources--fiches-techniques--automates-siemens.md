@@ -1,0 +1,105 @@
+# Automate Siemens
+
+> URL : /ressources/fiches-techniques/automates-siemens/
+> Title SEO : Automate Siemens | Migen
+> Meta description : Automate Siemens : définition, gammes SIMATIC, TIA Portal, diagnostic et obsolescence, par des techniciens qui interviennent tous les jours.
+
+---
+
+# Automate Siemens
+
+Quand l'automate s'arrête, l'usine s'arrête : plus personne ne pilote les moteurs, les vannes ni la sécurité machine.
+
+L'automate Siemens équipe une grande partie de l'industrie française, et cette page de nos [Ressources : Fiches techniques](/ressources/fiches-techniques/) le prend pour ce qu'il est : l'organe le plus critique de vos installations.
+
+Gammes SIMATIC, logiciel TIA Portal, langages, diagnostic, obsolescence : cet article fait le tour complet du sujet, écrit par une entreprise de maintenance dont les automaticiens interviennent sur ces systèmes toute l'année, en prestataire indépendant du constructeur.
+
+> Une panne d'automate en cours ? Appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30 : un chargé d'affaires vous rappelle dans l'heure. L'astreinte couvre le reste.
+
+## Un automate programmable, à quoi ça sert
+
+L'automate programmable industriel, API en français, PLC en anglais, est le cerveau électronique de la machine. Trois repères avant d'entrer dans les gammes.
+
+- **Le principe** : L'automate lit des entrées, capteurs et boutons, exécute un programme en cycle, puis commande des sorties : moteurs, vérins, voyants. Automatiser une séquence, réguler, compter : chaque cycle se joue en millisecondes, en temps réel.
+- **La place de Siemens** : Héritière de Siemens & Halske, la marque a fait de l'automatisation industrielle son terrain, avec la famille SIMATIC. Le PLC Siemens est un standard de fait dans l'industrie, en France comme ailleurs.
+- **Ce que ça implique** : Un défaut d'automate immobilise toute l'installation. La disponibilité de vos systèmes dépend du matériel, du programme, et de la personne capable d'y lire les défauts, tout au long du cycle de vie de la ligne.
+
+## SIMATIC : quelle gamme pour quel besoin
+
+L'offre Siemens SIMATIC va du petit module logique au système de conduite de procédé. Ce tableau situe chaque famille de la large gamme de la marque.
+
+| Gamme | Usage type | À retenir en maintenance |
+|---|---|---|
+| LOGO! | Petites automatisations, utilités | Module logique simple, remplacement rapide |
+| S7-1200 | Machines compactes | CPU d'entrée de gamme, programmée sous TIA |
+| S7-1500 | Lignes de production exigeantes | Haute performance, châssis modulaire, diagnostic intégré poussé |
+| S7-300 et S7-400 | Parc installé des années 2000 | Programmés sous STEP 7 Classic, matériel en fin de vie |
+| ET 200SP | Périphérie décentralisée | Entrées-sorties déportées, flexibilité d'implantation |
+| SIMATIC PCS 7 | Conduite de process continue | Chimie, énergie, traitement de l'eau |
+
+> La famille comprend également des CPU de sécurité, les IHM, interface homme machine, et le S7-1500 Software Controller, un automate logiciel conçu pour tourner sur PC industriel. SIMATIC Automation désigne l'ensemble : des produits différents, un même environnement d'ingénierie, Totally Integrated Automation, TIA.
+
+## TIA Portal, STEP 7 et les langages de programmation
+
+Le logiciel fait la moitié de la valeur d'un automate Siemens. Depuis les S7-1200 et S7-1500, la génération TIA a tout regroupé.
+
+- **TIA Portal** : L'environnement qui réunit programmation de la CPU, paramétrage des variateurs et supervision. Il remplace STEP 7 Classic, l'outil des S7-300 et S7-400, et apporte la possibilité de simuler un programme avant la mise en service.
+- **Les langages de programmation** : Le CONT, langage graphique à contacts, le plus utilisé en maintenance, le logigramme, le texte structuré SCL, qui apporte la flexibilité d'un langage de haut niveau, et le GRAPH pour les séquences. Chaque langage de programmation a son terrain, et l'emploi du bon rend le programme lisible par l'équipe de maintenance, pas seulement par son auteur.
+- **La communication** : Les réseaux PROFINET et PROFIBUS relient CPU, périphérie décentralisée et variateurs. Cette connectivité s'examine avec les mêmes outils que l'automate : en panne, une perte de réseau se lit dans le tampon de la CPU, une lecture essentielle que peu d'équipes pratiquent.
+
+> L'utilisation des blocs standard, l'emploi de noms de variables clairs et des commentaires à jour font la différence entre un programme efficace et une boîte noire. Une exigence à écrire dans tout cahier des charges d'automatisme industriel, quelle que soit la marque.
+
+## Panne d'automate : la méthode de diagnostic
+
+Une carte en défaut se voit ; un programme qui déraille, beaucoup moins. La méthode compte plus que la chance, surtout en cours de production.
+
+1. **La lecture des voyants** : Les LED de CPU, d'alimentation et de bus racontent l'essentiel : défaut matériel, erreur de programme, perte de communication. Un diagnostic commence là, avant tout démontage.
+2. **Le tampon de défauts** : En utilisant la console en ligne, on peut afficher l'historique horodaté des défauts de la CPU. L'environnement sait aussi afficher l'état des entrées-sorties en temps réel : la cause se lit souvent en clair.
+3. **Le contrôle du terrain** : Capteur mort, câblage coupé, alimentation qui s'écroule : la majorité des arrêts vient de la périphérie, pas de l'automate. Le contrôle efficace se fait point par point, schéma électrique en main.
+4. **La remise en service** : Correction, sauvegarde du programme, essais avec la production, puis mise en service : chaque opération se documente. Sans sauvegarde à jour, la prochaine panne coûtera dix fois plus cher.
+
+## Obsolescence : du S5 au S7, préparer la transition
+
+Siemens a arrêté le S5 et retire progressivement le support des S7-300 et S7-400. La technologie n'attend pas : la solution est d'anticiper, pas de subir.
+
+- **L'état des lieux** : Inventaire du parc, versions de processeurs, espace mémoire, sauvegardes disponibles, disponibilité des pièces de rechange. La différence entre une migration maîtrisée et une urgence se joue dans ce document.
+- **La conversion du programme** : Le passage vers S7-1500 sous TIA impose de convertir, parfois de réécrire. C'est l'occasion de purger vingt ans de modifications accumulées et de retrouver un système flexible, documenté : de la flexibilité pour les évolutions futures.
+- **La migration par étapes** : Périphérie d'abord, unité centrale ensuite, pendant les arrêts planifiés : une transition fluide, sans immobiliser l'usine. Notre [bureau d'études](/offres/bureau-etudes/) chiffre chaque scénario de ce projet, investissement et gains à l'appui.
+
+> Sur le long terme, garder une base installée obsolète coûte plus cher à l'entreprise que la moderniser : pièces rares, compétences qui partent, arrêts qui s'allongent. L'évolution se planifie, l'actualité du support Siemens aussi. Et la protection des accès, mots de passe et comptes nominatifs, se traite dans le même chantier.
+
+## L'automate Siemens en panne : qui intervient
+
+Un automaticien se juge devant une baie ouverte, pas sur un CV. Voilà comment nous tenons le niveau sur des installations complexes.
+
+- **Automaticiens évalués** : Pas de cabinet de recrutement : notre sélection interne, entretien technique et comportemental sur cas réels, retient 10 % des candidats, résultats partagés avec vous. Nos automaticiens SIEMENS et Schneider en sont issus.
+- **Appui du groupe** : Le technicien sur site n'est jamais seul : plus de 100 collaborateurs, des spécialistes par domaine, et l'accès aux ressources du groupe pour les cas complexes de contrôle-commande.
+- **Trois formats d'intervention** : [Dépannage industriel](/offres/depannage-industriel/) ponctuel, [contrat de maintenance](/offres/zero-arret/) avec préventif planifié, ou [automaticien en résidence](/offres/residence/) intégré à votre équipe : la même exigence, adaptée à votre équipement et à votre besoin.
+
+> Plus de 120 clients nous font travailler, dont plus de 80 en contrat régulier. Grâce à cette diversité de parcs, nos équipes pratiquent chaque semaine des générations d'automates que peu d'ateliers voient encore : un avantage décisif quand votre machine date de 2003.
+
+## Questions fréquentes
+
+Les questions que responsables maintenance et travaux neufs nous posent le plus sur ces systèmes, réponses d'automaticiens pour clore cet article.
+
+**Quelle différence entre S7-1200 et S7-1500 ?**
+Le S7-1200 vise les petites installations : moins de mémoire, moins d'entrées-sorties, prix contenu. Les S7-1500 offrent davantage de puissance, une surveillance système plus fine et des fonctions de sécurité étendues pour les lignes exigeantes. Les deux se programment dans le même environnement : le choix se fait sur la taille de l'application et le cycle requis.
+
+**Peut-on encore maintenir un S7-300 ou un S7-400 ?**
+Oui, et nous le faisons toutes les semaines : le parc peut être maintenu tant que pièces et sauvegardes suivent, et son fonctionnement est bien connu. Le risque est ailleurs : pièces de rechange en raréfaction et compétences STEP 7 Classic qui quittent le marché de l'emploi. Maintenir, oui ; rester sans plan de migration ni sauvegardes, non.
+
+**Faut-il TIA Portal pour dépanner un automate Siemens ?**
+Pour les S7-1200 et S7-1500, oui : la console est indispensable pour lire les défauts et modifier le programme. Pour les gammes précédentes, STEP 7 Classic reste l'outil utilisé en référence. Nos automaticiens interviennent avec leurs licences et leur poste d'ingénierie : vous n'avez rien à fournir, hormis l'accès à l'armoire.
+
+**Pouvez-vous reprendre un programme écrit par un intégrateur ?**
+Oui. Nous auditons le programme, reconstituons la documentation manquante et sécurisons une sauvegarde de référence avant toute modification. Si le code est verrouillé par des blocs protégés, nous établissons avec vous les possibilités de récupérer la main, avec ou sans l'auteur d'origine.
+
+**Comment protéger un automate connecté au réseau de l'usine ?**
+Segmenter les réseaux industriels, activer les niveaux de protection de l'automate, tracer les connexions et sauvegarder hors ligne : quatre gestes qui évitent l'essentiel des mauvaises surprises. L'échange de données vers vos outils de gestion se construit ensuite, de manière fluide et cadrée, sans exposer vos processus de production.
+
+**Formez-vous nos équipes au premier niveau sur automates ?**
+Oui, sur vos installations : lecture des voyants, consultation du tampon de défauts, gestes qui sauvent avant l'arrivée du spécialiste, et utilisation raisonnée des forçages. Une formation courte du personnel de production réduit les arrêts et fiabilise les échanges avec nos équipes d'automatisme.
+
+> À lire aussi : [cahier des charges gmao](/ressources/fiches-techniques/cahier-des-charges-gmao/)
+
+> [Demander une intervention sur vos automates](/contact/)

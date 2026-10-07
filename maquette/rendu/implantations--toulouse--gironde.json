@@ -1,0 +1,165 @@
+{
+  "url": "/implantations/toulouse/gironde/",
+  "gabarit": "06 Département",
+  "verdict": "rendue",
+  "h1Attendu": "Maintenance industrielle en Gironde",
+  "h1Rendu": "Maintenance industrielle en Gironde",
+  "nbSections": 19,
+  "hauteurTotale": 9908,
+  "motsAnnonces": 1252,
+  "motsRendus": 1631,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 708,
+      "images": 0,
+      "liens": 1,
+      "mots": 128
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 176,
+      "images": 0,
+      "liens": 0,
+      "mots": 28
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 33
+    },
+    {
+      "ordre": 5,
+      "titre": "Gironde : les industries que nos techniciens connaissent déjà",
+      "hauteur": 784,
+      "images": 1,
+      "liens": 10,
+      "mots": 141
+    },
+    {
+      "ordre": 6,
+      "titre": "Un broyeur qui s'arrête à Bassens, une ligne d'embouteillage qui casse dans le Libournais.",
+      "hauteur": 866,
+      "images": 1,
+      "liens": 0,
+      "mots": 143
+    },
+    {
+      "ordre": 7,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 599,
+      "images": 0,
+      "liens": 0,
+      "mots": 197
+    },
+    {
+      "ordre": 8,
+      "titre": null,
+      "hauteur": 135,
+      "images": 0,
+      "liens": 1,
+      "mots": 33
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 191,
+      "images": 0,
+      "liens": 0,
+      "mots": 29
+    },
+    {
+      "ordre": 10,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 808,
+      "images": 0,
+      "liens": 1,
+      "mots": 137
+    },
+    {
+      "ordre": 11,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 599,
+      "images": 0,
+      "liens": 0,
+      "mots": 85
+    },
+    {
+      "ordre": 12,
+      "titre": null,
+      "hauteur": 296,
+      "images": 0,
+      "liens": 1,
+      "mots": 20
+    },
+    {
+      "ordre": 13,
+      "titre": "Nos références",
+      "hauteur": 733,
+      "images": 5,
+      "liens": 6,
+      "mots": 145
+    },
+    {
+      "ordre": 14,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 33
+    },
+    {
+      "ordre": 15,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 521,
+      "images": 0,
+      "liens": 0,
+      "mots": 81
+    },
+    {
+      "ordre": 16,
+      "titre": "Les cinq offres, dans chaque bassin.",
+      "hauteur": 648,
+      "images": 0,
+      "liens": 5,
+      "mots": 119
+    },
+    {
+      "ordre": 17,
+      "titre": "Nos références dans des industries comme les vôtres",
+      "hauteur": 892,
+      "images": 8,
+      "liens": 9,
+      "mots": 136
+    },
+    {
+      "ordre": 18,
+      "titre": "Besoin de fiabiliser un parc réparti sur plusieurs sites du département ?",
+      "hauteur": 1012,
+      "images": 0,
+      "liens": 0,
+      "mots": 71
+    }
+  ]
+}

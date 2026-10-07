@@ -1,0 +1,141 @@
+{
+  "url": "/expertises/specialisations-constructeur/",
+  "gabarit": "09 Domaine",
+  "verdict": "rendue",
+  "h1Attendu": "Automaticien industriel multimarques : plusieurs automates, une seule équipe",
+  "h1Rendu": "Automaticien industriel multimarques : plusieurs automates, une seule équipe",
+  "nbSections": 16,
+  "hauteurTotale": 8813,
+  "motsAnnonces": 1386,
+  "motsRendus": 1478,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 708,
+      "images": 0,
+      "liens": 1,
+      "mots": 101
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 155,
+      "images": 0,
+      "liens": 0,
+      "mots": 14
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": "Votre parc mélange trois marques d'automates, et la seule personne capable de lire le code est en congés.",
+      "hauteur": 749,
+      "images": 0,
+      "liens": 0,
+      "mots": 121
+    },
+    {
+      "ordre": 5,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 620,
+      "images": 0,
+      "liens": 0,
+      "mots": 295
+    },
+    {
+      "ordre": 6,
+      "titre": null,
+      "hauteur": 135,
+      "images": 0,
+      "liens": 1,
+      "mots": 17
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 138,
+      "images": 0,
+      "liens": 0,
+      "mots": 10
+    },
+    {
+      "ordre": 8,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 808,
+      "images": 0,
+      "liens": 1,
+      "mots": 137
+    },
+    {
+      "ordre": 9,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 599,
+      "images": 0,
+      "liens": 0,
+      "mots": 75
+    },
+    {
+      "ordre": 10,
+      "titre": "Même expertise, contraintes différentes",
+      "hauteur": 668,
+      "images": 0,
+      "liens": 6,
+      "mots": 124
+    },
+    {
+      "ordre": 11,
+      "titre": "Cinq façons de travailler ensemble, selon votre besoin",
+      "hauteur": 699,
+      "images": 5,
+      "liens": 5,
+      "mots": 141
+    },
+    {
+      "ordre": 12,
+      "titre": "Nos références",
+      "hauteur": 779,
+      "images": 5,
+      "liens": 6,
+      "mots": 150
+    },
+    {
+      "ordre": 13,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 521,
+      "images": 0,
+      "liens": 0,
+      "mots": 83
+    },
+    {
+      "ordre": 14,
+      "titre": "Ils nous ont confié une mission comparable",
+      "hauteur": 557,
+      "images": 4,
+      "liens": 5,
+      "mots": 73
+    },
+    {
+      "ordre": 15,
+      "titre": "Besoin de sauvegarder vos automatismes avant la prochaine carte qui lâche ?",
+      "hauteur": 1012,
+      "images": 0,
+      "liens": 0,
+      "mots": 65
+    }
+  ]
+}

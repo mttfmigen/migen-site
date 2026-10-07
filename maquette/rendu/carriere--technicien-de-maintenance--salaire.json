@@ -1,0 +1,101 @@
+{
+  "url": "/carriere/technicien-de-maintenance/salaire/",
+  "gabarit": "07 Métier et carrière",
+  "verdict": "rendue",
+  "h1Attendu": "Salaire technicien de maintenance",
+  "h1Rendu": "Salaire technicien de maintenance",
+  "nbSections": 11,
+  "hauteurTotale": 8885,
+  "motsAnnonces": 1657,
+  "motsRendus": 1776,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 948,
+      "images": 1,
+      "liens": 3,
+      "mots": 217
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 2,
+      "titre": "Le salaire technicien de maintenance en un coup d'œil",
+      "hauteur": 863,
+      "images": 0,
+      "liens": 1,
+      "mots": 173
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce qui fait varier la rémunération",
+      "hauteur": 955,
+      "images": 0,
+      "liens": 0,
+      "mots": 212
+    },
+    {
+      "ordre": 4,
+      "titre": "Secteurs et régions où ça paie le mieux",
+      "hauteur": 666,
+      "images": 0,
+      "liens": 0,
+      "mots": 118
+    },
+    {
+      "ordre": 5,
+      "titre": "Du diplôme à l'expertise : le parcours qui fait monter la paie",
+      "hauteur": 770,
+      "images": 0,
+      "liens": 0,
+      "mots": 203
+    },
+    {
+      "ordre": 6,
+      "titre": "Les compétences et habilitations qui paient",
+      "hauteur": 760,
+      "images": 0,
+      "liens": 0,
+      "mots": 207
+    },
+    {
+      "ordre": 7,
+      "titre": "Technicien de maintenance chez Migen : le cadre et les moyens",
+      "hauteur": 727,
+      "images": 0,
+      "liens": 0,
+      "mots": 169
+    },
+    {
+      "ordre": 8,
+      "titre": "Questions fréquentes",
+      "hauteur": 691,
+      "images": 0,
+      "liens": 1,
+      "mots": 131
+    },
+    {
+      "ordre": 9,
+      "titre": "Rejoindre Migen",
+      "hauteur": 944,
+      "images": 0,
+      "liens": 1,
+      "mots": 125
+    },
+    {
+      "ordre": 10,
+      "titre": null,
+      "hauteur": 495,
+      "images": 2,
+      "liens": 2,
+      "mots": 13
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "url": "/ressources/articles/predictive-ou-corrective/",
+  "gabarit": "01 Article et fiche",
+  "verdict": "rendue",
+  "h1Attendu": "Maintenance prédictive ou corrective",
+  "h1Rendu": "Maintenance prédictive ou corrective",
+  "nbSections": 5,
+  "hauteurTotale": 10535,
+  "motsAnnonces": 2648,
+  "motsRendus": 2699,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 656,
+      "images": 1,
+      "liens": 4,
+      "mots": 118
+    },
+    {
+      "ordre": 1,
+      "titre": "01Deux stratégies, deux rapports à la panne",
+      "hauteur": 7335,
+      "images": 0,
+      "liens": 12,
+      "mots": 2214
+    },
+    {
+      "ordre": 2,
+      "titre": "Vos questions, nos réponses",
+      "hauteur": 753,
+      "images": 0,
+      "liens": 0,
+      "mots": 114
+    },
+    {
+      "ordre": 3,
+      "titre": "Sur le même sujet",
+      "hauteur": 426,
+      "images": 3,
+      "liens": 4,
+      "mots": 34
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 509,
+      "images": 0,
+      "liens": 2,
+      "mots": 42
+    }
+  ]
+}

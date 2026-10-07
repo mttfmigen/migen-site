@@ -1,0 +1,37 @@
+{
+  "url": "/preuves/",
+  "gabarit": "10 Hub de rubrique",
+  "verdict": "rendue",
+  "h1Attendu": "Preuves : nos réalisations",
+  "h1Rendu": "Preuves : nos réalisations",
+  "nbSections": 3,
+  "hauteurTotale": 4865,
+  "motsAnnonces": 908,
+  "motsRendus": 848,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 390,
+      "images": 3,
+      "liens": 1,
+      "mots": 67
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 3345,
+      "images": 47,
+      "liens": 24,
+      "mots": 588
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 273,
+      "images": 0,
+      "liens": 1,
+      "mots": 16
+    }
+  ]
+}

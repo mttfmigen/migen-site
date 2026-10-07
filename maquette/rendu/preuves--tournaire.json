@@ -1,0 +1,77 @@
+{
+  "url": "/preuves/tournaire/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas TOURNAIRE : maintenir des machines conçues sur mesure",
+  "h1Rendu": "Maintenir des machines conçues sur mesure",
+  "nbSections": 8,
+  "hauteurTotale": 4939,
+  "motsAnnonces": 436,
+  "motsRendus": 612,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 552,
+      "images": 2,
+      "liens": 2,
+      "mots": 98
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 236,
+      "images": 0,
+      "liens": 0,
+      "mots": 18
+    },
+    {
+      "ordre": 2,
+      "titre": "Quand 80 % des machines d'une ligne sont uniques, il n'existe ni manuel constructeur ni pièce standard pour se rassurer",
+      "hauteur": 390,
+      "images": 0,
+      "liens": 0,
+      "mots": 63
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 450,
+      "images": 0,
+      "liens": 0,
+      "mots": 42
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 420,
+      "images": 0,
+      "liens": 0,
+      "mots": 63
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 708,
+      "images": 1,
+      "liens": 0,
+      "mots": 46
+    },
+    {
+      "ordre": 6,
+      "titre": "Un besoin comparable sur votre site ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 67
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 38
+    }
+  ]
+}

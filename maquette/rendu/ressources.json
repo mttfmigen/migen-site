@@ -1,0 +1,101 @@
+{
+  "url": "/ressources/",
+  "gabarit": "10 Hub de rubrique",
+  "verdict": "rendue",
+  "h1Attendu": "Guide maintenance industrielle",
+  "h1Rendu": "Guide maintenance industrielle",
+  "nbSections": 11,
+  "hauteurTotale": 8796,
+  "motsAnnonces": 1367,
+  "motsRendus": 1545,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 343,
+      "images": 0,
+      "liens": 2,
+      "mots": 56
+    },
+    {
+      "ordre": 1,
+      "titre": "Cinq rayons, un objectif : agir",
+      "hauteur": 7021,
+      "images": 0,
+      "liens": 14,
+      "mots": 1373
+    },
+    {
+      "ordre": 2,
+      "titre": "Cinq rayons, un objectif : agir",
+      "hauteur": 1010,
+      "images": 0,
+      "liens": 0,
+      "mots": 209
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que recouvre un guide maintenance industrielle",
+      "hauteur": 1158,
+      "images": 0,
+      "liens": 1,
+      "mots": 161
+    },
+    {
+      "ordre": 4,
+      "titre": "Par où commencer, selon votre urgence",
+      "hauteur": 818,
+      "images": 0,
+      "liens": 0,
+      "mots": 164
+    },
+    {
+      "ordre": 5,
+      "titre": "Les thèmes couverts, une vue d'ensemble",
+      "hauteur": 701,
+      "images": 0,
+      "liens": 0,
+      "mots": 122
+    },
+    {
+      "ordre": 6,
+      "titre": "Des auteurs qui pratiquent ce qu'ils écrivent",
+      "hauteur": 928,
+      "images": 0,
+      "liens": 0,
+      "mots": 127
+    },
+    {
+      "ordre": 7,
+      "titre": "Du guide à l'intervention, sans rupture",
+      "hauteur": 657,
+      "images": 0,
+      "liens": 1,
+      "mots": 174
+    },
+    {
+      "ordre": 8,
+      "titre": "Questions fréquentes",
+      "hauteur": 1437,
+      "images": 0,
+      "liens": 3,
+      "mots": 301
+    },
+    {
+      "ordre": 9,
+      "titre": "Pages liées",
+      "hauteur": 517,
+      "images": 0,
+      "liens": 6,
+      "mots": 51
+    },
+    {
+      "ordre": 10,
+      "titre": "Un chargé d’affaires vous rappelle dans l’heure.",
+      "hauteur": 819,
+      "images": 0,
+      "liens": 0,
+      "mots": 65
+    }
+  ]
+}

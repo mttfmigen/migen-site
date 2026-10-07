@@ -1,0 +1,53 @@
+{
+  "url": "/ressources/fiches-pratiques/securite-maintenance/",
+  "gabarit": "01 Article et fiche",
+  "verdict": "rendue",
+  "h1Attendu": "La sécurité en maintenance industrielle",
+  "h1Rendu": "La sécurité en maintenance industrielle",
+  "nbSections": 5,
+  "hauteurTotale": 9427,
+  "motsAnnonces": 2255,
+  "motsRendus": 2294,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 656,
+      "images": 1,
+      "liens": 4,
+      "mots": 131
+    },
+    {
+      "ordre": 1,
+      "titre": "01Sécurité maintenance industrielle : la définition utile",
+      "hauteur": 6175,
+      "images": 0,
+      "liens": 15,
+      "mots": 1776
+    },
+    {
+      "ordre": 2,
+      "titre": "Vos questions, nos réponses",
+      "hauteur": 804,
+      "images": 0,
+      "liens": 0,
+      "mots": 134
+    },
+    {
+      "ordre": 3,
+      "titre": "Sur le même sujet",
+      "hauteur": 426,
+      "images": 3,
+      "liens": 4,
+      "mots": 34
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 509,
+      "images": 0,
+      "liens": 2,
+      "mots": 42
+    }
+  ]
+}

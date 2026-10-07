@@ -1,0 +1,93 @@
+{
+  "url": "/carriere/automaticien/salaire/",
+  "gabarit": "07 Métier et carrière",
+  "verdict": "rendue",
+  "h1Attendu": "Salaire automaticien",
+  "h1Rendu": "Salaire automaticien",
+  "nbSections": 10,
+  "hauteurTotale": 8271,
+  "motsAnnonces": 1672,
+  "motsRendus": 1698,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 585,
+      "images": 1,
+      "liens": 3,
+      "mots": 120
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 211,
+      "images": 0,
+      "liens": 0,
+      "mots": 31
+    },
+    {
+      "ordre": 2,
+      "titre": "Le salaire automaticien en un coup d'œil",
+      "hauteur": 859,
+      "images": 0,
+      "liens": 1,
+      "mots": 187
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce qui fait varier la rémunération",
+      "hauteur": 1048,
+      "images": 0,
+      "liens": 0,
+      "mots": 260
+    },
+    {
+      "ordre": 4,
+      "titre": "Du bac pro à l'expertise : le parcours et la paie",
+      "hauteur": 870,
+      "images": 0,
+      "liens": 0,
+      "mots": 224
+    },
+    {
+      "ordre": 5,
+      "titre": "Les compétences qui se paient le mieux",
+      "hauteur": 922,
+      "images": 0,
+      "liens": 0,
+      "mots": 238
+    },
+    {
+      "ordre": 6,
+      "titre": "Automaticien chez Migen : le cadre et les moyens",
+      "hauteur": 830,
+      "images": 0,
+      "liens": 0,
+      "mots": 211
+    },
+    {
+      "ordre": 7,
+      "titre": "Questions fréquentes",
+      "hauteur": 665,
+      "images": 0,
+      "liens": 1,
+      "mots": 119
+    },
+    {
+      "ordre": 8,
+      "titre": "Rejoindre Migen",
+      "hauteur": 944,
+      "images": 0,
+      "liens": 1,
+      "mots": 125
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 481,
+      "images": 1,
+      "liens": 1,
+      "mots": 6
+    }
+  ]
+}

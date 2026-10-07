@@ -1,0 +1,77 @@
+{
+  "url": "/preuves/bamesa/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas BAMESA : la maintenance tient pendant que l’équipe recrute",
+  "h1Rendu": "La maintenance tient pendant que l’équipe recrute",
+  "nbSections": 8,
+  "hauteurTotale": 4855,
+  "motsAnnonces": 468,
+  "motsRendus": 642,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 523,
+      "images": 2,
+      "liens": 2,
+      "mots": 107
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 236,
+      "images": 0,
+      "liens": 0,
+      "mots": 28
+    },
+    {
+      "ordre": 2,
+      "titre": "Un poste de maintenance vacant sur une ligne de bobines, c'est une ligne qui tourne sans filet",
+      "hauteur": 390,
+      "images": 0,
+      "liens": 0,
+      "mots": 64
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 450,
+      "images": 0,
+      "liens": 0,
+      "mots": 43
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 420,
+      "images": 0,
+      "liens": 0,
+      "mots": 70
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 696,
+      "images": 1,
+      "liens": 0,
+      "mots": 48
+    },
+    {
+      "ordre": 6,
+      "titre": "Un besoin comparable sur votre site ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 67
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 551,
+      "images": 4,
+      "liens": 4,
+      "mots": 38
+    }
+  ]
+}

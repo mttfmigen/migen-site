@@ -1,0 +1,157 @@
+{
+  "url": "/implantations/nantes/",
+  "gabarit": "04 Ville",
+  "verdict": "rendue",
+  "h1Attendu": "La maintenance industrielle à Nantes et dans l'estuaire",
+  "h1Rendu": "La maintenance industrielle à Nantes et dans l'estuaire",
+  "nbSections": 18,
+  "hauteurTotale": 9661,
+  "motsAnnonces": 1329,
+  "motsRendus": 1577,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 708,
+      "images": 0,
+      "liens": 1,
+      "mots": 137
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 197,
+      "images": 0,
+      "liens": 0,
+      "mots": 37
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 27
+    },
+    {
+      "ordre": 5,
+      "titre": "Nantes : les industries que nos techniciens connaissent déjà",
+      "hauteur": 806,
+      "images": 1,
+      "liens": 9,
+      "mots": 143
+    },
+    {
+      "ordre": 6,
+      "titre": "Votre ligne de conditionnement s'arrête après le lavage du soir, et le seul technicien qui la connaît est en congé jusqu'à lundi.",
+      "hauteur": 672,
+      "images": 0,
+      "liens": 0,
+      "mots": 158
+    },
+    {
+      "ordre": 7,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 559,
+      "images": 0,
+      "liens": 0,
+      "mots": 155
+    },
+    {
+      "ordre": 8,
+      "titre": null,
+      "hauteur": 135,
+      "images": 0,
+      "liens": 1,
+      "mots": 27
+    },
+    {
+      "ordre": 9,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 830,
+      "images": 0,
+      "liens": 1,
+      "mots": 136
+    },
+    {
+      "ordre": 10,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 624,
+      "images": 0,
+      "liens": 0,
+      "mots": 84
+    },
+    {
+      "ordre": 11,
+      "titre": null,
+      "hauteur": 296,
+      "images": 0,
+      "liens": 1,
+      "mots": 21
+    },
+    {
+      "ordre": 12,
+      "titre": "Nos références",
+      "hauteur": 736,
+      "images": 5,
+      "liens": 6,
+      "mots": 130
+    },
+    {
+      "ordre": 13,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 27
+    },
+    {
+      "ordre": 14,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 605,
+      "images": 0,
+      "liens": 0,
+      "mots": 99
+    },
+    {
+      "ordre": 15,
+      "titre": "Les cinq offres, dans chaque bassin.",
+      "hauteur": 648,
+      "images": 0,
+      "liens": 5,
+      "mots": 119
+    },
+    {
+      "ordre": 16,
+      "titre": "Nos références dans des industries comme les vôtres",
+      "hauteur": 892,
+      "images": 8,
+      "liens": 9,
+      "mots": 133
+    },
+    {
+      "ordre": 17,
+      "titre": "Besoin d'un prestataire de maintenance qui tienne l'aéronautique, le naval et l'agroalimentaire ?",
+      "hauteur": 1012,
+      "images": 0,
+      "liens": 0,
+      "mots": 72
+    }
+  ]
+}

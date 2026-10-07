@@ -1,0 +1,45 @@
+{
+  "url": "/ressources/articles/",
+  "gabarit": "11 Sous-rubrique ressource",
+  "verdict": "rendue",
+  "h1Attendu": "Ressources : Articles",
+  "h1Rendu": "Ressources : Articles",
+  "nbSections": 4,
+  "hauteurTotale": 4611,
+  "motsAnnonces": 511,
+  "motsRendus": 803,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 466,
+      "images": 1,
+      "liens": 3,
+      "mots": 72
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 1727,
+      "images": 15,
+      "liens": 15,
+      "mots": 148
+    },
+    {
+      "ordre": 2,
+      "titre": "Choisir sa stratégie de maintenance",
+      "hauteur": 1052,
+      "images": 0,
+      "liens": 14,
+      "mots": 364
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 509,
+      "images": 0,
+      "liens": 2,
+      "mots": 42
+    }
+  ]
+}

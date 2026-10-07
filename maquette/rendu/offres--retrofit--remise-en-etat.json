@@ -1,0 +1,157 @@
+{
+  "url": "/offres/retrofit/remise-en-etat/",
+  "gabarit": "03 Offre et prestation",
+  "verdict": "rendue",
+  "h1Attendu": "Remise en état machine industrielle",
+  "h1Rendu": "Remise en état machine industrielle",
+  "nbSections": 18,
+  "hauteurTotale": 8485,
+  "motsAnnonces": 1155,
+  "motsRendus": 1128,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 660,
+      "images": 0,
+      "liens": 1,
+      "mots": 49
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 218,
+      "images": 0,
+      "liens": 0,
+      "mots": 33
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 114,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 5,
+      "titre": null,
+      "hauteur": 607,
+      "images": 1,
+      "liens": 0,
+      "mots": 58
+    },
+    {
+      "ordre": 6,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 539,
+      "images": 0,
+      "liens": 0,
+      "mots": 161
+    },
+    {
+      "ordre": 7,
+      "titre": null,
+      "hauteur": 112,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 8,
+      "titre": null,
+      "hauteur": 165,
+      "images": 0,
+      "liens": 0,
+      "mots": 16
+    },
+    {
+      "ordre": 9,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 875,
+      "images": 0,
+      "liens": 1,
+      "mots": 159
+    },
+    {
+      "ordre": 10,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 650,
+      "images": 0,
+      "liens": 0,
+      "mots": 114
+    },
+    {
+      "ordre": 11,
+      "titre": null,
+      "hauteur": 296,
+      "images": 0,
+      "liens": 1,
+      "mots": 30
+    },
+    {
+      "ordre": 12,
+      "titre": "Nos références",
+      "hauteur": 733,
+      "images": 3,
+      "liens": 4,
+      "mots": 95
+    },
+    {
+      "ordre": 13,
+      "titre": null,
+      "hauteur": 114,
+      "images": 0,
+      "liens": 1,
+      "mots": 13
+    },
+    {
+      "ordre": 14,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 521,
+      "images": 0,
+      "liens": 0,
+      "mots": 95
+    },
+    {
+      "ordre": 15,
+      "titre": "Les pages qui complètent celle-ci",
+      "hauteur": 696,
+      "images": 0,
+      "liens": 6,
+      "mots": 78
+    },
+    {
+      "ordre": 16,
+      "titre": "Ils nous ont confié une mission comparable",
+      "hauteur": 557,
+      "images": 4,
+      "liens": 5,
+      "mots": 71
+    },
+    {
+      "ordre": 17,
+      "titre": "Besoin d'un avis écrit avant d'arbitrer entre réparer et remplacer ?",
+      "hauteur": 964,
+      "images": 0,
+      "liens": 0,
+      "mots": 58
+    }
+  ]
+}

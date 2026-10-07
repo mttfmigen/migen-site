@@ -1,0 +1,93 @@
+{
+  "url": "/preuves/gls-maintenance-curative/",
+  "gabarit": "02 Étude de cas",
+  "verdict": "rendue-h1-different",
+  "h1Attendu": "Étude de cas GLS : des convoyeurs et des trieurs sous surveillance continue",
+  "h1Rendu": "Des convoyeurs et des trieurs sous surveillance continue",
+  "nbSections": 10,
+  "hauteurTotale": 5792,
+  "motsAnnonces": 576,
+  "motsRendus": 828,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 520,
+      "images": 2,
+      "liens": 2,
+      "mots": 65
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 236,
+      "images": 0,
+      "liens": 0,
+      "mots": 26
+    },
+    {
+      "ordre": 2,
+      "titre": "Un trieur à l'arrêt, ce sont des colis qui partent en retard et un client final qui le voit.",
+      "hauteur": 480,
+      "images": 0,
+      "liens": 0,
+      "mots": 78
+    },
+    {
+      "ordre": 3,
+      "titre": "Ce que nous avons mis en place",
+      "hauteur": 654,
+      "images": 0,
+      "liens": 0,
+      "mots": 105
+    },
+    {
+      "ordre": 4,
+      "titre": "Le déroulé",
+      "hauteur": 420,
+      "images": 0,
+      "liens": 0,
+      "mots": 78
+    },
+    {
+      "ordre": 5,
+      "titre": "Le dispositif",
+      "hauteur": 578,
+      "images": 1,
+      "liens": 0,
+      "mots": 44
+    },
+    {
+      "ordre": 6,
+      "titre": "Le résultat",
+      "hauteur": 515,
+      "images": 0,
+      "liens": 0,
+      "mots": 48
+    },
+    {
+      "ordre": 7,
+      "titre": "La situation",
+      "hauteur": 206,
+      "images": 0,
+      "liens": 0,
+      "mots": 33
+    },
+    {
+      "ordre": 8,
+      "titre": "Vos arrêts machine se voient jusque chez votre client final ?",
+      "hauteur": 732,
+      "images": 0,
+      "liens": 0,
+      "mots": 131
+    },
+    {
+      "ordre": 9,
+      "titre": null,
+      "hauteur": 594,
+      "images": 4,
+      "liens": 4,
+      "mots": 43
+    }
+  ]
+}
