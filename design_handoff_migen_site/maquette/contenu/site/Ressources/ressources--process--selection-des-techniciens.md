@@ -1,0 +1,107 @@
+# Sélection technicien de maintenance
+
+> URL : /ressources/process/selection-des-techniciens/
+> Title SEO : Sélection technicien de maintenance | Migen
+> Meta description : Sélection technicien de maintenance : la méthode Migen, entretien technique et comportemental, 10 % des candidats retenus, résultats partagés.
+
+---
+
+# Sélection technicien de maintenance
+
+Rédiger une offre d'emploi ne suffit plus : recruter un technicien de maintenance prend des mois, et une erreur se paie en pannes, en heures supplémentaires et en clients livrés en retard. Cette page de nos [Ressources : Process](/ressources/process/) documente notre réponse : une sélection qui ne retient que 10 % des candidats.
+
+La méthode n'a rien de secret. Recherche, entretien technique, entretien comportemental, contrôles, restitution : chaque étape est décrite ici, telle que nous la pratiquons pour chaque recrutement confié, partout en France.
+
+> Besoin d'un technicien intégré sur site ou d'un renfort ponctuel ? Appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30 : nous vous rappelons dans l'heure.
+
+## Le vrai coût d'un mauvais recrutement
+
+La pénurie de techniciens de maintenance touche toute l'industrie, partout en France. Elle fait monter les salaires annuels, part variable comprise, et baisser le niveau d'exigence : le piège exact à éviter.
+
+- **Un marché asséché** : Les offres d'emploi technicien de maintenance, en CDI temps plein comme en CDD, restent des mois sans réponse, sur France Travail comme sur les job-boards. Les bons candidats sont déjà salariés, souvent en CDI, et ne postulent pas : il faut aller les chercher.
+- **Un CV ne prouve rien** : Dix ans d'expérience peuvent cacher dix fois la même année. La valeur d'un technicien de maintenance se juge devant une armoire électrique ou un variateur en défaut, pas sur une liste de missions.
+- **L'erreur qui coûte** : Un recrutement raté laisse l'emploi vacant six mois de plus, épuise opérateurs et encadrement en place et dégrade la production de l'entreprise. La sélection est un investissement, pas une formalité administrative.
+
+## La sélection technicien de maintenance, en six étapes
+
+Un entonnoir documenté, identique pour chaque métier de la maintenance : technicien ou technicienne de maintenance industrielle généraliste, électromécanicien, automaticien, roboticien. En sortie, 10 % des candidats.
+
+1. **La recherche de profils** : Sourcing direct, cooptation, candidatures : notre équipe recrutement travaille le marché de l'emploi en continu, métier par métier, de Paris à Nantes, en CDI, en CDD comme en alternance. Le traitement des candidatures commence par un tri sans complaisance.
+2. **Le premier échange** : Parcours réel, formation initiale, habilitations, mobilité, attentes : un premier filtre pour écarter les candidatures hors sujet et cadrer la suite. Environ la moitié des candidats s'arrête là : pour devenir finaliste, il faut passer l'atelier.
+3. **L'entretien technique** : Mises en situation sur des cas réels : diagnostic d'une panne, lecture de schéma, consignation, méthode de travail. L'objectif de la question n'est jamais de piéger : il est de voir la personne raisonner, dire ce qu'elle sait et ce qu'elle ignore.
+4. **L'entretien comportemental** : Sécurité, rigueur, communication, tenue face à la pression d'un arrêt de production. Un excellent dépanneur qui met l'atelier en danger ou brusque vos opérateurs reste un mauvais choix.
+5. **Les contrôles** : Références employeurs, diplômes, du Bac pro préparé en lycée professionnel au BUT génie industriel et maintenance ou à la licence pro, habilitations électriques et autorisations spécifiques. La mention d'une habilitation ne suffit pas : elle se vérifie, pièce par pièce, c'est une obligation légale et une question de sécurité.
+6. **La restitution** : Les résultats des deux entretiens vous sont présentés avant toute décision. Vous validez le profil, ou nous cherchons encore : le choix final reste chez vous, sur pièces.
+
+## Ce que nous évaluons, critère par critère
+
+Les grilles sont les mêmes pour tous, ajustées au métier de maintenance visé dans un seul but : identifier le niveau réel. Extrait des critères type pour une embauche d'électromécanicien en environnement de production.
+
+| Critère | Ce que nous vérifions | Comment |
+|---|---|---|
+| Diagnostic | Le raisonnement en panne, de l'effet vers la cause | Mise en situation sur un cas réel |
+| Électricité | Lecture de schéma, consignation, habilitations | Cas pratique et contrôle des titres |
+| Mécanique | Roulements, alignements, transmissions | Questions d'atelier, retours de travaux réels |
+| Automatisme | Variateurs, capteurs, régulation automatique, premier niveau sur automate | Questions ciblées d'automatisme, équipement à l'appui |
+| Sécurité | Réflexes de consignation, EPI, analyse de risque | Scénarios vécus, réponses attendues |
+| Posture | Compte rendu, ponctualité, relation avec le client | Entretien comportemental structuré |
+
+> La grille change selon la spécialité : un [automaticien](/carriere/automaticien/) est poussé sur les langages et le contrôle-commande, un [électromécanicien](/carriere/electromecanicien/) sur l'accouplement moteur et les transmissions. Le niveau d'exigence, lui, ne bouge pas.
+
+## Les profils que nous sélectionnons
+
+Un socle commun, une diversité de spécialités. Chaque fiche décrit le périmètre du métier, le parcours utile pour devenir opérationnel et la place dans une équipe de maintenance ou de SAV.
+
+- **[Technicien de maintenance](/carriere/technicien-de-maintenance/)** : Le généraliste du parc : maintenance préventive des systèmes de production, dépannage, réglages. Le pilier de toute équipe de maintenance industrielle.
+- **[Électromécanicien](/carriere/electromecanicien/)** : Mécanique et électricité réunies : moteurs, transmissions, armoires. Le candidat le plus coté dans les usines.
+- **[Automaticien](/carriere/automaticien/)** : Programmation et diagnostic des automates SIEMENS et Schneider, variateurs, supervision : la marque de la haute technicité.
+- **[Roboticien](/carriere/roboticien/)** : Robots ABB et Fanuc : trajectoires, reprises après incident, entretien des cellules, en lien avec la production.
+- **[Technicien itinérant](/carriere/technicien-itinerant/)** : Multisites, SAV, dépannage : l'autonomie complète d'un itinérant sur chaque lieu d'intervention, compte rendu systématique, semaine après semaine.
+- **[Agent de maintenance](/carriere/agent-de-maintenance/)** : Premier niveau au contact des opérateurs : graissage, rondes, remontées d'information. Le maillon qui évite bien des arrêts.
+
+> Vous structurez le service entier ? La fiche [responsable maintenance](/carriere/responsable-maintenance/) décrit la fonction qui pilote ces spécialistes, budget et indicateurs compris. Et pour l'activité en 3x8, week-end ou astreinte, le rythme se précise dès la demande : environnement, horaires, contraintes du terrain. Les affectations de maintenance itinérante, multitechnique, CVC ou SAV, jusqu'aux utilités du bâtiment, passent la même grille ; l'autonomie s'ajoute aux critères pour un itinérant ou une itinérante.
+
+## Les erreurs de sélection les plus chères
+
+Nous reprenons chaque année des postes où le recrutement a échoué. Trois causes reviennent, toujours les mêmes.
+
+- **Recruter sur le CV** : L'entretien de politesse, sans mise en situation, laisse passer les beaux parleurs. Six mois plus tard, la GMAO est vide, les machines retombent en panne, et tout recommence.
+- **Confier le tri au mauvais filtre** : Un cabinet de recrutement généraliste évalue la personne, rarement le geste. Qui, chez un cabinet classique, fait passer à un technicien un test de consignation avant travaux ou une lecture de schéma ? Le geste professionnel mérite un examen professionnel.
+- **Ignorer le comportemental** : Compétent mais ingérable : l'équipe se désorganise, le climat se dégrade, les meilleurs partent. Le savoir-être se sélectionne aussi, avec des critères écrits.
+
+## Ce que notre sélection change pour vous
+
+Vous ne subissez plus ni le marché de l'emploi ni le pari du recrutement : vous jugez sur pièces, résultats en main. Les usines recrutent, les offres d'emploi s'accumulent, CDI comme CDD : notre réponse est une présélection prouvée, pas une publicité ; le but : un candidat retenu sur dix.
+
+- **10 %** : Candidats retenus · Entretien technique et comportemental, résultats partagés avant votre décision.
+- **+200** : clients industriels accompagnés
+
+Cette sélection alimente nos trois offres : le [dépannage industriel](/offres/depannage-industriel/) ponctuel, le [contrat de maintenance](/offres/zero-arret/) Zéro arrêt, et la [sous-traitance maintenance](/offres/residence/) avec technicien intégré sur site, prise de poste en 2 à 3 semaines, technicien remplacé si besoin. La recherche de candidats commence tôt, du lycée professionnel et du centre de formation à la licence pro, souvent en alternance : devenir technicien de maintenance industrielle est un parcours que nous connaissons de l'intérieur, en tant qu'employeur.
+
+> Dernier point, qui change tout au quotidien : nous restons l'employeur. Encadrement, montée en compétences, remplacement : c'est notre travail, pas le vôtre. Vous gardez la décision et le résultat.
+
+## Questions fréquentes
+
+Les questions que directions d'entreprises industrielles et RH, tous secteurs confondus, de l'industrie logistique à l'agroalimentaire, nous posent le plus souvent sur cette politique de sélection en maintenance industrielle.
+
+**Que contient exactement l'entretien technique ?**
+Des mises en situation calées sur l'emploi visé : par exemple un diagnostic à dérouler, un schéma d'installation à lire, une question de génie mécanique ou d'automatisme selon la technologie en cause, une gamme de maintenance préventive à critiquer, des questions d'atelier ou de SAV. Le candidat explique son raisonnement à voix haute : la méthode compte autant que la réponse. La grille est remplie en séance, pas de mémoire. Le but est double : juger le geste et la méthode.
+
+**Qui voit les résultats des évaluations ?**
+Vous. C'est un principe de la maison : les résultats des entretiens techniques et comportementaux vous sont présentés avant votre décision, dans le respect de la confidentialité due aux candidats. Vous comparez, vous questionnez, vous tranchez en connaissance de cause : l'information utile est sur la table, sans réserve.
+
+**Que se passe-t-il si le profil ne convient pas ?**
+C'est votre droit : vous l'écartez, sans justification à fournir, et d'autres candidats suivent. Après la prise de poste, le suivi continue : un référent Migen contrôle la qualité des travaux, et en cas d'absence ou de départ, un technicien équivalent est fourni, briefé sur vos machines.
+
+**Sélectionnez-vous pour des horaires postés ou de l'astreinte ?**
+Oui. Le rythme fait partie de l'étude initiale du besoin : 3x8, nuit, week-end, astreinte, tournées SAV. Ce critère est à identifier dès la recherche pour ne présenter que des techniciens ou techniciennes réellement disponibles sur ces créneaux, avec également l'habitude de travailler posté quand la fonction l'exige. Une astreinte reste simple à ajouter au cadrage, selon votre organisation.
+
+**Quelle différence avec un cabinet de recrutement ?**
+Un cabinet place un candidat et facture le placement ; sa responsabilité s'arrête à l'embauche. Nous fournissons une prestation de services de maintenance : le technicien reste salarié Migen, en CDI, encadré par un référent, remplacé si besoin. Notre responsabilité porte sur le résultat dans votre atelier, semaine après semaine : c'est le but de la prestation.
+
+**Vérifiez-vous les habilitations et les aptitudes ?**
+Systématiquement : habilitations électriques, autorisations de conduite, aptitudes médicales, à jour avant la prise de poste, puis suivies dans le temps. L'accueil sécurité et le plan de prévention se préparent avec votre personnel, avant les premiers travaux de maintenance : la première journée sur le lieu de travail se passe dans les règles, pas dans l'improvisation.
+
+> À lire aussi : [préparation arrêt technique](/ressources/process/preparer-un-arret-technique/)
+
+> [Demander un devis](/contact/)

@@ -1,0 +1,158 @@
+# Consignation électrique
+
+> URL : /ressources/fiches-pratiques/consignation-electrique/
+> Title SEO : Consignation électrique | Migen
+> Meta description : Consignation électrique : définition, étapes de la norme NF C 18-510, habilitations et erreurs à éviter, par des techniciens qui la pratiquent chaque jour.
+
+---
+
+# Consignation électrique
+
+Un disjoncteur réarmé au mauvais moment, et l'intervention tourne à l'accident grave.
+
+La consignation électrique est la procédure de sécurité qui empêche ce scénario : séparer, condamner, vérifier, avant tous travaux hors tension. Cette fiche de nos [Ressources : Fiches pratiques](/ressources/fiches-pratiques/) déroule la méthode complète, étape par étape.
+
+Nos techniciens la pratiquent chaque jour en usine, sur des installations basse tension et haute tension. Armoires de machines ou réseaux d'atelier : la méthode est la même, et elle sauve des vies.
+
+> Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30 : 04 78 33 72 05.
+
+## Consignation électrique : la définition utile
+
+Consigner, c'est mettre une installation électrique hors d'état de nuire, et garantir qu'elle le reste pendant toute la durée des travaux. La définition tient en six idées.
+
+- **Séparer la source** : La consignation électrique consiste à couper le courant d'un équipement en ouvrant un organe de coupure. L'installation est isolée de toute source d'énergie, du réseau d'usine au poste isolé.
+- **Condamner la coupure** : Un cadenas de consignation verrouille l'appareil en position ouverte. Personne ne peut remettre l'installation sous tension par erreur : le dispositif ferme cette porte.
+- **Vérifier avant d'agir** : La coupure ne suffit pas. La vérification d'absence de tension (VAT) prouve que le circuit est réellement mort : on travaille sur une preuve, jamais sur une supposition.
+- **Tracer l'opération** : Une attestation de consignation écrite engage un responsable nommé, le chargé de consignation. La traçabilité protège les personnes autant que le cadenas.
+- **Un cadre réglementaire** : La norme NF C18-510 encadre ces opérations, en lien avec les articles R. 4544 du Code du travail. Ce texte constitue le référentiel français des travaux d'ordre électrique.
+- **Une pratique universelle** : Ateliers, réseaux de distribution, panneaux photovoltaïques, armoires de machine : la même procédure s'applique, adaptée à chaque installation, à son niveau de risque et à sa tension. Elle vaut pour l'électricien comme pour l'opérateur formé aux manœuvres simples.
+
+L'électricité expose à des accidents parmi les plus graves : contact direct avec une pièce nue sous tension, arc électrique, électrisation, électrocution.
+
+- **Une remise en marche accidentelle suffit.**
+- **La consignation existe pour prévenir ces situations** : son principe est de supprimer le risque au lieu de le côtoyer.
+
+> L'essentiel : la question à laquelle cette page répond est simple. Comment garantir des travaux hors tension réellement sûrs, du premier geste à la remise en service ? Réponse : par une procédure, des étapes, et zéro exception.
+
+## Les cinq étapes de la consignation électrique
+
+La procédure de consignation suit un ordre strict, défini par la norme NF C 18-510. Chaque étape doit être réalisée dans l'ordre, par une personne habilitée, sans en sauter aucune.
+
+1. **La préparation** : Analyse du risque, identification de l'installation concernée et de la zone de travail, équipes à prévenir. Cette étape produit une description claire du mode opératoire, schémas en main.
+2. **La séparation** : Ouverture de l'organe de coupure : disjoncteur, sectionneur, prise débrochable. La séparation concerne toutes les sources d'énergie de l'équipement, circuits de commande compris.
+3. **La condamnation** : Verrouillage de l'appareil en position d'ouverture, pose d'un cadenas et d'une signalisation datée et signée. La clé reste avec celui qui a consigné : personne d'autre ne peut la retirer.
+4. **L'identification** : S'assurer que la partie d'installation condamnée est bien celle où auront lieu les travaux. Repérages, marquages, schémas à jour : l'erreur d'armoire est un grand classique de l'accident.
+5. **La vérification d'absence de tension** : La VAT est effectuée sur chaque conducteur, au plus près de la zone de travail, à l'aide d'un vérificateur conforme testé avant et après la mesure. C'est l'étape qui transforme la coupure en certitude.
+6. **La mise à la terre et en court-circuit (MALT et CC)** : Elle protège contre tout retour de tension et contre la tension induite. Obligatoire en haute tension, elle s'impose aussi en basse tension dès qu'un risque de réalimentation existe. L'attestation de consignation est alors remise au chargé de travaux.
+
+Les travaux de maintenance peuvent commencer : uniquement dans le périmètre défini, uniquement pour les personnes couvertes par l'attestation.
+
+### La déconsignation, dans l'ordre inverse
+
+Remettre l'installation en service est la suite logique, avec une méthode tout aussi rigoureuse : quatre étapes, en sens inverse.
+
+1. **Fin de travaux confirmée** : Le chargé de travaux restitue son attestation : outillage retiré, personnel dégagé, zone rendue. Rien ne se déconsigne sur un simple appel téléphonique.
+2. **Dépose des mises à la terre** : Les équipements de MALT et CC sont retirés, les protections provisoires déposées, les capots refermés.
+3. **Retrait de la condamnation** : Celui qui a consigné retire cadenas et étiquette, puis referme l'organe de coupure. Lui seul détient la clé.
+4. **Retour en service** : Contrôles d'usage et information des équipes avant de procéder à la remise sous tension. La remise en marche se gagne sans précipitation : la fin de chantier concentre les accidents.
+
+## Habilitations : qui a le droit de consigner
+
+La consignation est réalisée par un chargé de consignation, désigné par l'employeur et titulaire d'une habilitation électrique adaptée à la mission comme à la tension.
+
+| Rôle | Habilitation | Ce qu'il fait |
+|---|---|---|
+| Chargé de consignation | BC en basse tension, HC en haute tension | Effectue la consignation, délivre l'attestation |
+| Chargé de travaux | B2V ou H2V | Dirige les travaux, y compris au voisinage de pièces restées sous tension |
+| Exécutant électricien | B1V ou H1V | Réalise les travaux d'ordre électrique sous la direction du chargé de travaux |
+| Chargé d'intervention | BR | Mène dépannage et mesures en basse tension, consigne pour son propre compte |
+| Non-électricien | B0 ou H0 | Accède à la zone pour des travaux d'ordre non électrique, sans toucher aux circuits |
+
+L'habilitation électrique B2V ou BC n'est pas un diplôme : c'est une reconnaissance délivrée par l'employeur après formation et évaluation, puis renouvelée périodiquement.
+
+- **La mention V** signale l'aptitude à travailler au voisinage de pièces sous tension.
+- **Le lien entre habilitation et mission** doit être vérifié à chaque opération : c'est elle qui engage l'entreprise.
+
+## Lockout tagout : le cadenassage, même combat
+
+Les groupes internationaux parlent de lockout tagout, le LOTO ; le français dit consignation ; les Québécois, cadenassage. Le principe reste identique : un cadenas, une signalisation, une énergie neutralisée.
+
+- **Lockout, le verrouillage** : Chaque intervenant pose son propre cadenas sur l'organe de coupure, souvent à l'aide d'une pince multi-cadenas. Ces dispositifs autorisent un cadenassage collectif qui protège chaque personne individuellement, pour garantir la sécurité de chacun : on ne travaille jamais sous le cadenas d'un autre.
+- **Tagout, l'étiquette** : L'étiquette identifie l'opération, son responsable et sa date. Elle complète le verrouillage, elle ne le remplace jamais : le papier seul ne retient pas une manœuvre.
+- **Multi-énergies** : Le cadenassage s'étend à toutes les énergies : électricité, mais aussi mécanique, hydraulique, pneumatique, thermique. Un risque identique vaut partout : ressorts comprimés, pression résiduelle et pièces en hauteur se neutralisent aussi.
+
+> Le kit de consignation regroupe cadenas, pinces, macarons et accessoires adaptés à chaque appareil : disjoncteurs modulaires, vannes, prises. Sa mise en place au plus près des installations conditionne tout. Un kit complet au bon endroit, c'est une procédure appliquée ; un cadenas introuvable, c'est une consignation sautée, pour un prix dérisoire face au coût d'un accident.
+
+## Le matériel d'une consignation sûre
+
+Des solutions simples existent pour chaque appareil, élément par élément. Au-delà du kit, rien ne doit manquer au moment de consigner.
+
+- **Cadenas de consignation** : Un cadenas par intervenant, à clé unique, réservé à cet usage. Les cadenas rouges de sécurité ne ferment jamais un vestiaire.
+- **Vérificateur d'absence de tension** : Le VAT conforme, testé avant et après chaque mesure sur une source connue. Un multimètre n'est pas un vérificateur d'absence de tension.
+- **Équipements de mise à la terre** : Perches, pinces et câbles : ces dispositifs se dimensionnent pour le courant de court-circuit possible au point considéré.
+- **Gants et tapis isolants** : Gants isolants contrôlés à chaque utilisation, tapis isolant au poste, écran facial contre l'arc électrique. La protection individuelle reste la dernière barrière, jamais la première.
+- **Outillage isolé** : Outils isolants certifiés, nappe isolante pour couvrir les pièces voisines restées sous tension. Le matériel se vérifie avant chaque opération, pas une fois par an.
+- **Macarons, pancartes et panneaux d'avertissement** : Identification datée et signée de chaque point condamné. La règle d'atelier : qui consigne signe, qui signe répond.
+
+Du cadenas au tapis isolant, ce matériel protège la vie des intervenants : il se choisit conforme, il se vérifie, il se remplace sans discuter. À cette condition, et à cette condition seulement, la procédure tient ses promesses.
+
+## Un exemple concret : moteur de convoyeur
+
+Le remplacement d'un motoréducteur sur une ligne de production, un cas que nos équipes rencontrent chaque semaine, en dépannage comme en maintenance programmée. En pratique, l'exercice consiste à dérouler la procédure sans raccourci.
+
+1. **Préparer** : Accueil sécurité fait, le technicien identifie le départ moteur dans l'armoire, vérifie le schéma, prévient la production. Variateur, commande à distance, condensateurs : chaque source d'alimentation a été listée, l'accessibilité de l'organe de coupure est vérifiée.
+2. **Consigner** : Ouverture du sectionneur principal, condamnation par cadenas, étiquette posée. VAT sur les trois phases au bornier du moteur : à propos des variateurs, coupés en amont, ils gardent de l'énergie plusieurs minutes.
+3. **Intervenir** : Remplacement du moteur, recherche de défaut au besoin, contrôles mécaniques, câblage. La zone de travail reste balisée pendant toute l'intervention de dépannage, personne d'autre n'entre dans l'armoire.
+4. **Déconsigner** : Vérifications, retrait de la condamnation, tension rétablie, essais avec la production. Chaque action se trace dans un compte rendu écrit, pour signaler toute anomalie et alimenter l'historique GMAO de l'équipement.
+
+> Ce déroulé vaut pour un moteur comme pour une armoire complète : seuls changent l'analyse et le nombre de points à condamner. En vue d'une intervention lourde, un arrêt technique par exemple, le processus de consignation se planifie des semaines à l'avance, poste par poste, étape par étape.
+
+## Les erreurs les plus fréquentes
+
+L'électricité ne pardonne pas l'à-peu-près, et les accidents en intervention se ressemblent. Six erreurs reviennent, toutes évitables par une application rigoureuse de la procédure.
+
+- **Couper sans condamner** : La mise hors tension simple n'est pas une consignation. Sans cadenas, une remise sous tension accidentelle reste possible à chaque instant : réarmement à distance, automatisme, collègue pressé. Le principal risque des travaux électriques naît là.
+- **Sauter la VAT** : Le départ semble coupé, le schéma le confirme, et le schéma se trompe. L'étape est facile à sauter, et c'est la plus grave des erreurs : seule la vérification d'absence de tension fait foi.
+- **Oublier une source** : Double alimentation, secours, condensateurs chargés, circuits de commande séparés : chaque source d'énergie se neutralise. Les installations réelles dépassent toujours leur schéma.
+- **Confondre les rôles** : Chargé de consignation et chargé de travaux peuvent être deux personnes distinctes : l'attestation matérialise ce passage de responsabilité. Sans elle, personne ne sait qui garantit quoi.
+- **Bâcler la remise en service** : Terres oubliées, outillage resté dans l'armoire, équipe encore en zone : la déconsignation mérite la même vérification rigoureuse que la consignation, dans l'ordre inverse.
+- **Improviser sur machine complexe** : Presse, ligne automatisée, robot : la condamnation concerne aussi les énergies mécaniques et les fluides. Le mode opératoire mérite d'être écrit avant, pas pendant.
+
+## Ce que cela implique pour votre organisation
+
+Une procédure de consignation qui fonctionne est une affaire d'organisation, pas d'héroïsme individuel. Quatre chantiers concrets, à la portée de toute entreprise.
+
+- **Des procédures écrites et accessibles** : Fiches de consignation par équipement, modes opératoires, schémas à jour. L'accessibilité des documents au poste de travail change tout : une procédure rangée dans un classeur ne protège personne. En règle générale, plus la fiche est facile à lire, plus elle est appliquée. Un texte court, des photos, le tour est joué.
+- **Des habilitations suivies** : Qui est BC, qui est B2V, qui est BR ? Un tableau de suivi, des recyclages planifiés, de quoi garantir une habilitation adaptée à chaque mission et à chaque niveau de tension.
+- **Un accueil sécurité qui pose le cadre** : Plan de prévention et prise en compte des entreprises extérieures, accueil sécurité de chaque intervenant, points d'arrêt définis. Notre fiche [plan de prévention](/ressources/fiches-pratiques/plan-de-prevention/) détaille l'exercice, document par document.
+- **Une traçabilité réelle** : Attestations archivées, GMAO renseignée, retours d'expérience et bonnes pratiques partagés : une vue d'ensemble qui améliore la procédure à chaque intervention. Chaque chantier produit sa trace écrite, et la gestion de la sécurité se pilote comme la production : avec des faits.
+
+Sous-traiter la maintenance ne dispense d'aucune de ces règles : une obligation légale reste une obligation légale, et le cadre réglementaire s'applique au prestataire comme aux équipes internes, face à des risques identiques.
+
+- **Une consignation intégrée au plan de prévention.** Quand une équipe Migen intervient, la consignation s'intègre au plan de prévention du site, avec des techniciens formés, habilités et évalués : 10 % des candidats retenus, après un entretien technique et comportemental.
+- **La sécurité dans le chiffrage.** Pour un chantier de [maintenance électrique](/expertises/electrique/) ou un [dépannage industriel](/offres/depannage-industriel/), demandez un devis : la sécurité fait partie du chiffrage, jamais des options.
+- **Un doute résiduel ?** La FAQ ci-dessous répond aux questions les plus posées, et votre espace client conserve comptes rendus et attestations en toute confidentialité : une ressource utile le jour d'un audit.
+
+## Questions fréquentes
+
+**Quelle différence entre consignation et mise hors tension ?**
+La mise hors tension coupe l'électricité ; la consignation électrique garantit qu'elle ne reviendra pas : condamnation par cadenas, vérification d'absence de tension, attestation. Travailler après une simple coupure expose au retour de tension à tout moment. Pour des travaux hors tension, la consignation est la seule solution sûre et reconnue.
+
+**Qui peut effectuer la consignation électrique ?**
+Le chargé de consignation, désigné par l'employeur, habilité BC en basse tension ou HC en haute tension. Pour ses propres interventions de dépannage, un chargé d'intervention BR consigne pour son compte. La désignation s'appuie sur la formation et l'expérience, et elle est formalisée par écrit.
+
+**L'attestation de consignation est-elle obligatoire ?**
+Oui dès que celui qui consigne et celui qui dirige les travaux sont deux personnes différentes : elle constitue la preuve du transfert de l'installation consignée. Son texte est simple : qui, quoi, quand. Datée, signée, restituée en fin de travaux, elle assure la traçabilité de l'opération, de quoi garantir sa valeur, avec une portée légale en cas de contrôle ou d'accident.
+
+**Faut-il consigner pour remplacer une ampoule ?**
+Le remplacement d'une lampe ou d'un fusible relève, selon le cas, d'une intervention élémentaire sur un circuit préalablement mis hors tension, qui peut être couverte par l'habilitation BS. Dès que l'opération sort de ce cadre étroit, la question ne se pose plus : la consignation s'impose. En général, le réflexe le plus facile à retenir tient en quatre mots : dans le doute, consigner.
+
+**Que couvre la norme NF C 18-510 ?**
+Ce texte de référence définit les opérations sur les ouvrages et installations électriques : habilitations, procédures, distances de voisinage, équipements. Sa mise en œuvre passe par la formation, les recyclages et des modes opératoires adaptés à chaque site, ce qui améliore durablement la culture sécurité. En cas d'accident, les textes réglementaires servent de base à l'analyse des responsabilités, article par article.
+
+**Comment consigner une machine à plusieurs énergies ?**
+À la suite d'une analyse énergie par énergie : électrique par consignation, pneumatique et hydraulique par purge et obturation, mécanique par calage et détente des ressorts, thermique par refroidissement. Chaque point reçoit sa condamnation, regroupée dans une procédure de cadenassage unique, la solution la plus lisible pour l'atelier. Nos équipes pratiquent ces consignations multi-énergies au quotidien, machine par machine, étape par étape.
+
+> À lire aussi : [permis de feu](/ressources/fiches-pratiques/permis-de-feu/)
+
+> [Demander un devis](/contact/)

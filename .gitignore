@@ -56,3 +56,14 @@ _sheet_tmp.*
 
 # Les photos d'aperçu, régénérables par scripts/apercu-pages.mjs
 /apercu/
+
+# Le colis de passation : on ne versionne que le TEXTE (README, routes, règles,
+# contenu). Les images (383 Mo, déjà dans public/assets) et les maquettes HTML
+# (déjà dans maquette/) restent hors dépôt.
+design_handoff_migen_site/maquette/assets/
+design_handoff_migen_site/maquette/*.html
+design_handoff_migen_site/maquette/mg-data*.js
+design_handoff_migen_site/maquette/migen-store.js
+design_handoff_migen_site/maquette/support.js
+design_handoff_migen_site/maquette/_ds/
+design_handoff_migen_site/Migen - Site final (autonome).html

@@ -1,0 +1,150 @@
+# Cahier des charges gmao
+
+> URL : /ressources/fiches-techniques/cahier-des-charges-gmao/
+> Title SEO : Cahier des charges gmao | Migen
+> Meta description : Cahier des charges gmao : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours.
+
+---
+
+# Cahier des charges gmao
+
+Vous comparez des logiciels de GMAO depuis des semaines, et chaque démonstration semble parfaite. Sans cahier des charges, vous choisirez sur une impression, pas sur votre besoin.
+
+Le cahier des charges GMAO remet le projet à l'endroit : d'abord le besoin de votre service maintenance, ensuite le logiciel. Cette fiche de nos [Ressources : Fiches techniques](/ressources/fiches-techniques/) donne la définition, la méthode de rédaction et un exemple concret, par des techniciens qui interviennent en entreprise tous les jours.
+
+> Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30, pour un diagnostic maintenance : 04 78 33 72 05.
+
+## Le cahier des charges GMAO, définition sans jargon
+
+Un cahier des charges GMAO est le document qui décrit précisément ce que votre future GMAO doit faire. Il formalise le besoin avant de regarder la moindre solution.
+
+- **Sa fonction** : Le cahier des charges GMAO met noir sur blanc le besoin du service maintenance, le périmètre du projet et les fonctionnalités attendues du logiciel. Ce document sert de référence tout au long du projet.
+- **Sa raison d'être** : Il aligne l'équipe, guide le choix de la solution et limite les mauvaises surprises. Sans lui, chaque éditeur impose son vocabulaire, et la comparaison devient impossible.
+- **Ce qu'il n'est pas** : Ni une liste de rêves, ni un copier-coller d'un modèle trouvé en ligne. Un cahier des charges GMAO utile part de votre organisation, de vos équipements et de vos interventions réelles.
+- **Qui le rédige** : Le responsable maintenance, avec les futurs utilisateurs et le service informatique. La GMAO, gestion de maintenance assistée par ordinateur, concerne plusieurs métiers, pas un seul. Le document traduit l'expertise technique de vos équipes en exigences.
+
+Ce document est la boussole du projet GMAO. Bien construit, il transforme un achat de logiciel en projet d'entreprise maîtrisé, aligné sur un besoin réel et non sur une belle démonstration commerciale.
+
+## Que contient un cahier des charges GMAO
+
+Un bon cahier des charges GMAO ne se mesure pas à son épaisseur, mais à sa précision. Le tableau ci-dessous liste les rubriques qui comptent vraiment.
+
+| Rubrique | Ce qu'elle décrit | Pourquoi elle est utile |
+|---|---|---|
+| Contexte et objectifs | L'entreprise, le service maintenance, le but du projet | Cadre le besoin et donne du sens |
+| Périmètre | Sites, équipements, nombre d'utilisateurs | Évite un projet flou et sans limite |
+| Besoins fonctionnels | Interventions, préventif, stock, achats, indicateurs | Cœur du cahier des charges GMAO |
+| Besoins techniques | Mode web ou mobile, connexion à l'ERP, sécurité | Garantit que la solution s'intègre |
+| Contraintes et budget | Délais, enveloppe, accompagnement attendu | Aligne les attentes dès le départ |
+| Critères de choix | Grille de notation des solutions | Rend la décision objective |
+
+> La rubrique des besoins fonctionnels fait la différence. Décrivez comment vos techniciens travaillent vraiment, pas comment un logiciel voudrait qu'ils travaillent. Le cahier des charges GMAO part du terrain, jamais de la brochure.
+
+Parmi ces besoins, les indicateurs comptent : taux de disponibilité, taux de réalisation du préventif, taux de service. Une GMAO qui ne calcule aucun taux ne pilote rien. La gestion des interventions, la gestion des stocks, la gestion des équipements et la gestion du préventif forment le socle du besoin, aux côtés de la maintenance corrective et des bons de travaux.
+
+## Comment rédiger un cahier des charges GMAO, étape par étape
+
+Rédiger un cahier des charges GMAO n'a rien d'insurmontable. La méthode qui suit, étape par étape, garde le document utile et relié au besoin réel. Un diagnostic gratuit sur le terrain permet souvent d'y voir clair avant de se lancer.
+
+1. **Analyser l'existant** : Décrire comment le service maintenance travaille aujourd'hui, ses interventions, son préventif, ses équipements. Cette analyse fait apparaître les vrais besoins.
+2. **Définir les objectifs** : Poser ce que le projet doit optimiser, réduire les arrêts, tracer les interventions, piloter le stock. Des objectifs clairs guident tout le reste.
+3. **Cadrer le périmètre** : Fixer les sites, les équipements, le nombre d'utilisateurs. Un périmètre précis évite le projet qui gonfle sans fin.
+4. **Lister les besoins fonctionnels** : Détailler chaque fonction attendue de la GMAO, intervention par intervention, avec les priorités. C'est le cœur du document.
+5. **Préciser les besoins techniques** : Mode web ou mobile, connexion aux autres logiciels, sécurité des données. Ces contraintes filtrent les solutions dès le départ.
+6. **Construire la grille de choix** : Traduire les besoins en critères notés, pour comparer les solutions sur des faits. Vous pouvez télécharger un modèle de grille pour gagner du temps.
+7. **Faire relire et valider** : Partager le document avec l'équipe et la direction. Un cahier des charges GMAO validé par tous engage tout le monde sur le même besoin.
+
+## Un exemple concret de plan
+
+Voici la trame d'un cahier des charges GMAO pour une PME industrielle mono-site. Chaque partie répond à une question simple, à adapter à votre entreprise.
+
+| Partie du document | Question à laquelle elle répond |
+|---|---|
+| Présentation de l'entreprise | Qui sommes-nous, que produisons-nous ? |
+| Objectifs du projet GMAO | Que voulons-nous optimiser grâce à la GMAO ? |
+| Périmètre et équipements | Quelles machines, quels sites, combien d'utilisateurs ? |
+| Besoins fonctionnels | Quelles interventions, quel préventif, quel stock gérer ? |
+| Besoins techniques | Web, mobile, connexion ERP, sécurité : quelles exigences ? |
+| Budget et planning | Quelle enveloppe, quels délais, quel accompagnement ? |
+| Grille d'évaluation | Comment noter et comparer les solutions reçues ? |
+
+Cette trame tient sur quelques pages. Un cahier des charges GMAO efficace reste court et précis : il vaut mieux dix pages qui décrivent le vrai besoin que cinquante pages recopiées d'un modèle générique téléchargé sans réflexion.
+
+Un cahier des charges GMAO précise ce que la solution permettra de faire :
+
+- La GMAO permettra de gérer les interventions et d'optimiser le temps passé sur chaque équipement.
+- Elle permettra de suivre le stock de pièces et de réduire le coût des réparations.
+- Elle permettra d'améliorer le système d'information et de partager les données dans toute l'entreprise.
+
+Adaptez ces attentes à votre secteur : un secteur agroalimentaire n'a pas les mêmes besoins qu'un secteur métallurgique. Précisez les exigences techniques, un éditeur français et une solution qui sait se connecter à votre ERP comme se connecter à vos outils mobiles, pour gagner du temps sur le long terme.
+
+## Du cahier des charges à la sélection du fournisseur
+
+Le cahier des charges GMAO n'est pas une fin : il sert à choisir. La sélection du fournisseur suit alors une méthode simple, où le document fait le tri.
+
+1. **Diffuser le document** : Envoyer le cahier des charges GMAO aux éditeurs retenus. Chaque fournisseur répond sur le même besoin, ce qui rend les offres comparables partie par partie.
+2. **Noter les réponses** : Reprendre la grille de choix et attribuer un taux de couverture du besoin à chaque solution. Un éditeur français, une connexion facile à l'ERP, un bon accompagnement pèsent dans la note.
+3. **Vérifier en conditions réelles** : Demander une démonstration gratuite sur vos propres cas, ou un essai gratuit en conditions réelles. L'expert de l'éditeur doit prouver que la solution assure la gestion de vos interventions, pas celle d'un cas d'école.
+4. **Sécuriser le contrat** : Valider le périmètre, le planning de mise en place, la reprise des données et le support. La sélection réussie tient autant au logiciel qu'à la capacité du fournisseur à assurer le déploiement.
+
+Une bonne GMAO couvre la maintenance préventive et corrective, les bons de travaux, la main-d'œuvre, le suivi des consommations, et s'étend parfois au bâtiment. En production, la demande d'intervention doit rester simple, sinon personne ne l'utilise. La clé du succès : associer toutes les parties prenantes. Sans obligation réglementaire à respecter, le cahier des charges reste un choix de bon sens qui sécurise un projet réussi.
+
+## Les erreurs les plus fréquentes
+
+Un cahier des charges GMAO raté conduit à choisir la mauvaise solution, puis à la subir des années. Les mêmes pièges reviennent d'un projet à l'autre.
+
+- **Copier un modèle sans l'adapter** : Reprendre un cahier des charges GMAO trouvé en ligne sans partir de son propre besoin donne un document creux. Le modèle aide à démarrer, il ne remplace pas l'analyse.
+- **Confondre besoin et fonctionnalité** : Lister des fonctionnalités de logiciel plutôt que des besoins métier fait choisir sur des cases à cocher, pas sur l'usage réel du service maintenance.
+- **Oublier les utilisateurs** : Rédiger le cahier des charges GMAO seul, loin des techniciens, produit un document déconnecté du terrain. Ceux qui saisiront les interventions doivent participer.
+- **Négliger la reprise des données** : Ne pas décrire l'existant à migrer, équipements, historique, stock, réserve de mauvaises surprises au déploiement de la solution.
+- **Zapper la grille de choix** : Sans critères notés, la décision se prend à l'affect, sur la meilleure démonstration. La grille rend le choix de la GMAO objectif et défendable.
+
+## Bien choisir sa GMAO grâce au cahier des charges
+
+Une fois le cahier des charges GMAO écrit, le choix de la solution devient une affaire de méthode, pas de séduction commerciale. Le document travaille pour vous.
+
+- **Comparer sur des faits** : Chaque éditeur répond au même document, sur les mêmes besoins. La grille de notation classe les solutions sans se laisser éblouir par une démonstration.
+- **Sécuriser le déploiement** : Un besoin bien décrit prépare la reprise des données, la formation et la mise en place. Le projet GMAO démarre sur des bases saines, pas sur un malentendu.
+- **Optimiser l'investissement** : Le cahier des charges évite de payer des fonctionnalités inutiles et de découvrir les manques après signature. Il fait correspondre le budget au besoin réel.
+- **Impliquer le terrain** : Un document co-construit avec l'équipe engage les futurs utilisateurs. Une GMAO adoptée par ceux qui la remplissent vaut mieux qu'un logiciel imposé et déserté.
+
+- **En faire une stratégie** : Rédiger ce document, c'est identifier les risques du projet, sécuriser la planification et améliorer la situation existante. Décrivez l'activité réelle, la facturation, le code des équipements et la main-d'œuvre : une gestion industrielle réussie repose sur ce processus clair, dans un environnement de production maîtrisé.
+- **Chercher le bon conseil** : Un conseil testé sur le marché vaut mieux qu'une brochure commerciale. La clé d'une GMAO efficace tient dans un cahier des charges honnête, pas dans la promesse d'un éditeur français ou étranger.
+
+> Migen ne vend pas de logiciel de GMAO. Nos techniciens alimentent la GMAO de nos clients à chaque intervention et connaissent le besoin terrain.
+
+## Questions fréquentes (FAQ)
+
+**Qu'est-ce qu'un cahier des charges GMAO ?**
+C'est le document qui décrit le besoin de votre service maintenance avant de choisir une GMAO. Il formalise le contexte, le périmètre, les besoins fonctionnels et techniques, puis sert de référence pour comparer les solutions et piloter le projet.
+
+**Pourquoi rédiger un cahier des charges GMAO ?**
+Parce qu'il aligne l'équipe, cadre le projet et rend le choix objectif. Sans lui, chaque éditeur impose son vocabulaire et vous choisissez sur une démonstration. Avec lui, vous comparez les solutions sur votre besoin réel, pas sur une brochure.
+
+**Que doit contenir un cahier des charges GMAO ?**
+Le contexte et les objectifs, le périmètre, les besoins fonctionnels, les besoins techniques, les contraintes de budget et de délai, et une grille de choix. Les besoins fonctionnels, tirés des interventions réelles, en sont le cœur. Il couvre la fonction maintenance dans son ensemble, jusqu'aux tableaux de bord. Sans obligation légale, ce document reste un choix qui améliore la recherche d'une bonne GMAO ; notre livre blanc sur l'externalisation complète également le sujet, disponible gratuitement.
+
+**Peut-on télécharger un modèle de cahier des charges GMAO ?**
+Oui, de nombreux modèles se trouvent en ligne, se téléchargent gratuitement et aident à ne rien oublier en peu de temps, dans l'industrie comme ailleurs. Mais un cahier des charges GMAO efficace part de votre organisation et de vos équipements : le modèle téléchargé est un point de départ, jamais un document fini.
+
+**Qui doit rédiger le cahier des charges GMAO ?**
+Le responsable maintenance, avec les techniciens qui utiliseront l'outil et le service informatique. La GMAO touche plusieurs métiers ; un document rédigé seul, loin du terrain, produit une solution que personne n'adopte.
+
+**Combien de pages fait un bon cahier des charges GMAO ?**
+Il n'y a pas de longueur idéale. Un document court et précis, qui décrit le vrai besoin en quelques pages, vaut mieux qu'un pavé générique. La qualité se juge à la clarté du besoin, pas au nombre de pages.
+
+**Comment le cahier des charges aide-t-il à choisir le fournisseur ?**
+Il sert de base commune : chaque fournisseur répond au même document, et vous notez les solutions sur une grille. La sélection devient objective. Un taux de couverture du besoin, la capacité à se connecter à vos outils et la qualité de l'accompagnement départagent les éditeurs.
+
+**Un expert est-il nécessaire pour rédiger un cahier des charges GMAO ?**
+Pas toujours. Le responsable maintenance et les techniciens connaissent le besoin mieux que quiconque. Un expert ou un prestataire peut aider à structurer le document et à assurer la mise en place, mais le contenu métier reste le vôtre.
+
+**Le cahier des charges GMAO sert-il pour un appel d'offres ?**
+Oui. Le choix d'une GMAO passe souvent par un appel d'offres, et le cahier des charges en est la pièce maîtresse : il cadre le projet de GMAO et permet de comparer les solutions de GMAO reçues. Une bonne solution de GMAO doit permettre d'assurer une transition en douceur depuis vos tableurs, et parfois de couvrir la gestion des actifs, l'asset management ou GMAO EAM, ou même le facility management du bâtiment. Certaines se connectent aussi à la gestion commerciale et à la facturation.
+
+**En quoi est-ce un projet de gestion de la maintenance ?**
+La mise en œuvre d'une GMAO n'est pas l'achat d'un logiciel de gestion, c'est un projet de gestion de la maintenance. En vue de la mise en place, précisez également le budget et le planning : la réussite d'un projet de maintenance industrielle se joue autant sur la préparation que sur l'outil.
+
+> À lire aussi : [analyse vibratoire](/ressources/fiches-techniques/analyse-vibratoire/)
+
+> [Demander un diagnostic maintenance](/contact/)

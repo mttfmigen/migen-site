@@ -1,0 +1,123 @@
+# Niveaux de maintenance
+
+> URL : /ressources/fiches-techniques/niveaux-de-maintenance/
+> Title SEO : Niveaux de maintenance | Migen
+> Meta description : Niveaux de maintenance : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours.
+
+---
+
+# Niveaux de maintenance
+
+*8 min de lecture*
+
+Une intervention confiée à la mauvaise personne, c'est une machine immobilisée deux jours de plus, parfois un accident. Les niveaux de maintenance servent à éviter ça : classer chaque opération selon sa complexité, puis définir qui la réalise, avec quel outillage, quelle formation et quelles pièces.
+
+Ce guide complet de nos [Ressources : Fiches techniques](/ressources/fiches-techniques/) donne la définition des cinq niveaux, des exemples par équipement et une méthode pour répartir les interventions entre votre personnel et un prestataire externe.
+
+> Envie d'en parler de vive voix ? Appelez le 04 78 33 72 05 : un expert vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30.
+
+## Niveaux de maintenance : ce que dit la norme AFNOR
+
+La notion vient de la norme française AFNOR X 60-010, prolongée par la NF EN 13306 qui fixe le vocabulaire de la maintenance industrielle. Les niveaux de maintenance industrielle classent les actions de maintenance en cinq degrés de complexité croissante. La finalité : confier chaque geste au bon profil.
+
+- **Une échelle de complexité** : Chaque niveau correspond à un degré de difficulté, du réglage simple à la reprise complète d'un équipement en fin de course.
+- **Trois critères par échelon** : Pour définir le classement d'une opération : qui intervient (utilisateur, technicien, spécialiste, constructeur), avec quel outillage, selon quelle procédure ou instruction de maintenance.
+- **Un langage commun** : La classification donne un vocabulaire partagé entre le service maintenance, la production et les entreprises extérieures. Contrats, GMAO, plans de prévention : chaque acteur désigne la même chose.
+
+À ne pas confondre avec les types de maintenance : la [maintenance préventive](/expertises/types-de-maintenance/maintenance-preventive/) ou la [maintenance corrective](/expertises/types-de-maintenance/maintenance-corrective/) décrivent la finalité de l'action, le niveau décrit sa complexité et les moyens nécessaires, pour des types différents d'interventions. La maintenance informatique utilise une échelle voisine ; cette fiche traite des équipements industriels.
+
+## Les cinq niveaux, du voyant à la reconstruction
+
+La norme définit cinq échelons, du geste simple au chantier complexe. Chaque niveau regroupe des opérations de même complexité, pour garantir le bon fonctionnement des équipements. Le tableau résume ce qu'ils impliquent en pratique pour votre organisation.
+
+| Niveau | Qui intervient | Exemples d'opérations | Avec quoi |
+|---|---|---|---|
+| 1 | L'utilisateur de l'équipement, à son poste | Relevé de compteur, test d'un voyant, remplacement d'un fusible ou d'une ampoule | Sans outillage particulier, instructions d'utilisation |
+| 2 | Personnel habilité | Changement d'un filtre, graissage, contrôle de niveaux, échange d'un consommable | Outils courants, procédures simples, pièces à proximité |
+| 3 | Technicien de maintenance qualifié | Diagnostic de panne, remplacement d'un composant, réparation mécanique mineure | Outillage prévu par les instructions, appareils de mesure |
+| 4 | Spécialistes, encadrement technique | Révision d'un réducteur, reprise d'un programme automate, travaux importants de maintenance corrective ou préventive | Matériel lourd, dossier constructeur |
+| 5 | Constructeur ou société spécialisée | Rénovation, reconstruction, rétrofit complet | Logistique proche de la fabrication |
+
+### La maintenance de premier niveau : niveaux 1 et 2
+
+Des actions simples, nécessaires au bon fonctionnement et à l'exploitation, réalisées sur des éléments facilement accessibles, en toute sécurité. Au premier échelon, pas de démontage : l'utilisateur contrôle, relève, réarme, remplace un fusible.
+
+Le niveau 2 regroupe les opérations basiques effectuées par un personnel habilité, avec des procédures détaillées : consommables, filtre, réglage simple. La formation du personnel de fabrication à ces gestes est le socle de la maintenance productive totale, la TPM : une approche productive qui rend vos opérateurs acteurs de la fiabilité.
+
+### Les niveaux 3 et 4 : le métier du service maintenance
+
+Au troisième niveau, la maintenance passe au diagnostic des pannes et aux réparations par échange de composants ou d'éléments fonctionnels. Ces interventions de maintenance nécessitent un technicien qualifié, une connaissance fine du matériel et des appareils de mesure, sur place ou en atelier.
+
+Dans les niveaux de maintenance AFNOR, le niveau 4 concerne les travaux de maintenance corrective de niveau supérieur et les révisions importantes : des opérations complexes nécessitant une expertise technique particulière, un encadrement défini, et qui doivent être suivies de vérifications et d'essais spécifiques avant remise en service.
+
+### Le niveau 5 : rénovation ou reconstruction
+
+Remise à neuf générale, mise à niveau complète : des travaux confiés au constructeur ou à une entreprise spécialisée, avec une logistique de soutien proche de la fabrication. C'est le terrain du [retrofit](/offres/retrofit/), qui inclut souvent une [mise en conformité machine](/offres/retrofit/mise-en-conformite-machine/) : moderniser l'existant plutôt que remplacer.
+
+## Répartir les niveaux, étape par étape
+
+Sur le papier, la classification est claire. Sur le terrain, tout se joue dans la répartition : définir qui fait quoi, avec quelle formation, quelle traçabilité. La mise en œuvre tient en six étapes.
+
+1. **L'inventaire du parc** : Listez vos équipements, leur criticité pour la production, l'historique de pannes. Un appareil critique ne se gère pas comme un matériel de confort.
+2. **Le classement des opérations** : Classez chaque tâche par degré, en suivant la norme et la documentation du constructeur, disponible sur le site web de la marque quand la notice a disparu.
+3. **L'affectation des ressources** : La fabrication sur les niveaux 1 et 2 quand la sécurité le permet, les techniciens au troisième échelon, spécialistes ou prestataire au-delà.
+4. **Les habilitations** : Une habilitation électrique ne s'improvise pas. Vérifiez les qualifications et les compétences, formez, tracez : la sécurité des personnes passe avant le délai.
+5. **Les instructions et le stockage** : Chaque opération a son mode opératoire : outillage, points de contrôle, consignation préalable si nécessaire. Le stockage des pièces suit la même logique, consommables au poste, magasin outillé pour le reste.
+6. **Le suivi dans la GMAO** : Chaque intervention réalisée est enregistrée avec son niveau. La gestion de la maintenance s'appuie sur ces données pour optimiser le plan de maintenance, les coûts et les stocks.
+
+## Un exemple concret : cinq pannes, cinq réponses
+
+Le même convoyeur d'embouteillage traverse toute l'échelle, selon la panne du jour. C'est la meilleure façon de comprendre la notion.
+
+- **Un voyant s'allume** : L'opérateur contrôle et réarme à son poste : niveau 1, cinq minutes, sans arrêter la production.
+- **Le filtre hydraulique s'encrasse** : Changement planifié, confié à un opérateur formé, pièce en stock : niveau 2.
+- **La bande dérive, le moteur chauffe** : Mesure d'intensité, remplacement du roulement, essai : niveau 3, technicien outillé.
+- **Le réducteur montre une usure importante** : Démontage complet en atelier, expertise, remontage : niveau 4, équipe spécialisée, machine consignée.
+- **La ligne a vingt ans** : Rénovation ou remplacement : niveau 5, chiffré avec le [bureau d'études](/offres/bureau-etudes/) et le fabricant.
+
+Le [MTBF et le MTTR](/ressources/fiches-techniques/mtbf-mttr/) mesurent l'effet de cette répartition : le MTBF, mean time between failures, espace les pannes ; le mean time to repair suit le temps moyen de retour en service. Dans la maintenance industrielle, les deux progressent quand chaque échelon est tenu par la bonne personne.
+
+## Les erreurs les plus fréquentes
+
+D'un site à l'autre, le même problème revient sous d'autres formes. Voici les pièges, pour vous les épargner.
+
+- **Tout envoyer au service maintenance** : Les gestes de niveau 1 saturent vos techniciens. Le préventif saute, les vraies pannes attendent, la charge devient importante pour rien.
+- **Laisser démonter sans habilitation** : Les opérations de démontage nécessitent habilitation et consignation. Sans elles, risque d'accident et garantie constructeur perdue.
+- **Zéro instruction écrite** : Sans procédure, l'intervention dépend de la mémoire d'un homme. Le jour où il part, le savoir part avec lui.
+- **Une répartition jamais revue** : Changements d'utilisation, technologies nouvelles, compétences qui partent : le classement se revoit chaque année, atelier par atelier, en fonction de l'état du parc.
+- **Un stock sans surveillance** : Des pièces nécessitant une vérification d'état dorment sans contrôle, et le niveau 2 s'arrête faute de filtre le jour J. Des conditions de stockage négligées coûtent cher.
+- **Une GMAO muette sur les niveaux** : Si l'outil ne trace pas l'échelon de chaque intervention, impossible de mesurer la charge par catégorie, d'ajuster la planification ni d'optimiser les coûts.
+
+## Quels niveaux confier à un prestataire
+
+Votre équipe ne peut pas tout tenir, et elle n'a pas à le faire. La bonne approche : choisir quoi externaliser, échelon par échelon, une approche définie en fonction de votre effectif et de vos enjeux.
+
+- **Niveaux 1 et 2 : gardez-les** : Ces gestes appartiennent à la production. Nous formons vos équipes plutôt que de vendre des visites : votre autonomie d'abord, c'est aussi un avantage économique direct.
+- **Niveau 3 : selon votre effectif** : Le [dépannage industriel](/offres/depannage-industriel/) exige des techniciens qualifiés, disponibles aussi la nuit. Le technicien Migen [intégré sur site](/offres/residence/) vient en soutien de votre équipe, jamais à sa place.
+- **Niveaux 4 et 5 : l'accès aux spécialistes** : Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, soudeurs : des profils que peu d'usines gardent en interne. Un contrat [Zéro arrêt](/offres/zero-arret/) vous donne un accès prioritaire à ces compétences, avec l'astreinte prévue en option au contrat.
+
+Trois garanties, quel que soit le périmètre : des techniciens évalués en entretien technique et comportemental, seuls 10 % des candidats sont retenus, une exigence encore rare dans l'industrie ; la confidentialité de vos procédés, cadrée dès le plan de prévention, avec un accueil sécurité préparé ; un compte rendu après chaque passage, mention de l'échelon tenu comprise, versé également dans votre GMAO.
+
+## Questions fréquentes
+
+**Quels sont les 5 niveaux de maintenance ?**
+Niveau 1 : les actions simples nécessaires à l'exploitation, sans outillage, assurées par la production. Niveau 2 : les opérations mineures menées avec des procédures simples par un personnel formé. Niveau 3 : les interventions qui demandent un technicien et l'outillage prévu par les instructions. Niveau 4 : les travaux importants encadrés par des spécialistes. Niveau 5 : la remise à neuf complète, généralement confiée au constructeur.
+
+**Niveaux et types de maintenance, quelle différence ?**
+Le type de maintenance décrit la finalité : préventive avant la panne, corrective après. Le niveau décrit la complexité et les ressources engagées. Une même visite peut être un mélange : une partie des tâches relève du niveau 1, une autre du niveau 3. Les deux notions se combinent dans le plan de maintenance et la planification des interventions.
+
+**Qui peut réaliser la maintenance de niveau 3 ?**
+Un technicien de maintenance qualifié, formé au type d'équipement concerné, avec les appareils prévus. En interne si votre effectif le permet, ou en faisant appel à un prestataire : l'objectif est d'assurer un redémarrage rapide et conforme aux règles de sécurité, par des professionnels de la maintenance industrielle qui interviennent tous les jours.
+
+**Faut-il une habilitation pour la maintenance de premier niveau ?**
+Pas en général : le niveau 1 se limite à des éléments accessibles en toute sécurité, sans démontage ni risque particulier. Dès qu'une énergie entre en jeu, électricité, hydraulique, air comprimé, l'opération change d'échelon et demande une habilitation, également obligatoire pour intervenir sous tension. Le doute se tranche du côté de la sécurité.
+
+**Comment la GMAO aide-t-elle à la gestion des niveaux ?**
+Elle rattache chaque intervention à son échelon, son temps passé, ses pièces. Vous voyez la charge par catégorie, l'état du stockage, des dérives importantes de coûts, et vous ajustez : ce qui reste en interne, ce qui part en externe. Les solutions GMAO les plus simples suffisent, à condition de les alimenter à chaque passage, en comptant également les gestes de premier niveau.
+
+**Peut-on confier les niveaux 4 et 5 à un prestataire plutôt qu'au constructeur ?**
+Oui, si l'entreprise mandatée dispose de l'expertise, de l'outillage, des pièces d'origine et d'une conformité documentée. Nos spécialistes réalisent des révisions de niveau 4 et accompagnent les remises à neuf avec les fabricants, avec un avantage : un seul responsable pour les travaux complexes, du premier contrôle à la remise en production, et une lecture transparente des coûts.
+
+> À lire aussi : [indicateur maintenance](/ressources/fiches-techniques/indicateurs-maintenance/)
+
+> [Demander un diagnostic maintenance](/contact/)

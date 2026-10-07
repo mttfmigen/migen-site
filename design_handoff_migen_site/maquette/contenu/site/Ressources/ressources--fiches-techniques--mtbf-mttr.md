@@ -1,0 +1,109 @@
+# Mtbf
+
+> URL : /ressources/fiches-techniques/mtbf-mttr/
+> Title SEO : Mtbf | Migen
+> Meta description : Mtbf : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours.
+
+---
+
+# Mtbf
+
+Le MTBF (mean time between failures, temps moyen entre pannes ou temps de bon fonctionnement) mesure la fiabilité d'un équipement, d'un système ou d'un appareil : plus il est élevé, plus la machine tient entre deux défaillances. Cette fiche de nos [Ressources : Fiches techniques](/ressources/fiches-techniques/) donne la définition, la formule et un exemple de calcul, appliqués à la maintenance industrielle.
+
+Le MTBF se lit toujours avec le MTTR, le temps moyen de réparation. Les deux ensemble racontent une histoire complète : la fréquence des pannes, le taux de disponibilité qui en découle, et la vitesse à laquelle l'équipe de maintenance remet la machine en service. Chaque indicateur clé se calcule en heures, avec les données du travail réel.
+
+> Un doute sur vos chiffres de fiabilité ? Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30, pour un diagnostic maintenance : 04 78 33 72 05.
+
+## Le MTBF, une définition sans jargon
+
+Le MTBF est un indicateur de fiabilité, pas de performance globale. Il répond à une seule question : combien de temps un équipement fonctionne, en moyenne, avant qu'il ne tombe en panne. La définition s'utilise pour tout actif : machine de production, armoire électrique, appareil électronique, système ou installation complète. Les normes de maintenance, NF EN 13306 en tête, fixent ce vocabulaire.
+
+- **La formule du MTBF** : Temps de fonctionnement total divisé par le nombre de pannes sur l'intervalle de temps observé. Un MTBF de 500 heures signifie qu'en moyenne, une panne survient toutes les 500 heures de marche : il représente le temps moyen de fonctionnement entre deux incidents.
+- **Le MTTR, son complément** : MTTR, mean time to repair en anglais. Le temps total de réparation rapporté au nombre de pannes mesure la durée moyenne d'indisponibilité, du diagnostic jusqu'à la remise en fonctionnement.
+- **Le MTTA, souvent oublié** : Il désigne le temps moyen entre l'alerte et la prise en charge par un technicien, la capacité de réaction de l'organisation. Un MTTA élevé gonfle artificiellement le MTTR sans que la réparation ne soit longue.
+
+Ces trois durées ne se calculent pas au doigt mouillé : elles viennent des données de la GMAO, le logiciel de gestion de maintenance, journal des pannes, code de défaut, horodatage des interventions, historique par composant. Sans donnée fiable, le calcul reste une estimation statistique, pas l'information nécessaire à la décision.
+
+## MTBF, MTTR, MTTA : ce que mesure chaque indicateur
+
+Confondre ces sigles fait dire n'importe quoi à un tableau de bord. Le tableau suivant distingue ce que chaque sigle désigne, avec le taux de panne et le taux de disponibilité qui en découlent.
+
+| Indicateur | Ce qu'il mesure | Formule | Ce qu'un chiffre élevé signifie |
+|---|---|---|---|
+| MTBF | Temps moyen entre deux pannes | Temps de fonctionnement / nombre de pannes | Bonne fiabilité |
+| MTTR | Temps moyen de réparation | Temps de réparation / nombre de pannes | Réparation longue, à réduire |
+| MTTA | Temps moyen avant prise en charge | Temps d'alerte à intervention / nombre d'incidents | Astreinte ou détection à améliorer |
+| Taux de panne | Fréquence des défaillances | 1 / MTBF | Équipement fragile |
+| Disponibilité | Part du temps où la machine peut produire | MTBF / (MTBF + MTTR) | Bon niveau de service |
+
+> Un MTBF élevé avec un MTTR élevé peut donner une disponibilité correcte, et masquer un vrai problème d'organisation : peu de pannes, mais chacune immobilise la ligne trop longtemps. Lire les deux indicateurs ensemble évite l'erreur ; le MDT, mean down time, complète également le tableau en ajoutant les délais logistiques liés à l'indisponibilité.
+
+## Comment calculer le MTBF, étape par étape
+
+Le calcul du MTBF suit une méthode simple, à condition d'utiliser des données propres. Voici la marche à suivre : un processus identique pour chaque domaine de l'industrie.
+
+1. **Fixer la période et le périmètre** : Un équipement, un appareil, une ligne, ou un parc entier, sur une période représentative, un trimestre ou une année. Une période trop courte fausse la moyenne ; déterminer le bon périmètre est la première étape.
+2. **Recenser les pannes** : Extraire de la GMAO chaque défaillance, électrique ou mécanique, ayant arrêté l'équipement, avec sa date de début et de fin. Exclure les arrêts programmés, entretien ou contrôle de conformité, pour obtenir le nombre total d'incidents réellement subis.
+3. **Additionner le temps de fonctionnement** : Prendre en compte le temps total de la période, moins les arrêts planifiés et les pannes elles-mêmes. C'est le temps où l'équipement a réellement tourné, calculé de manière identique d'un mois sur l'autre.
+4. **Rapporter au nombre de pannes** : Temps de fonctionnement total divisé par le nombre de défaillances recensées. Le résultat est le MTBF, généralement exprimé en heures : la valeur du MTBF obtenue.
+5. **Calculer le MTTR en parallèle** : Additionner la durée de chaque opération de remise en état, puis rapporter cette durée totale à ce nombre de pannes. Ce chiffre complète la lecture du MTBF.
+6. **Observer la tendance, pas la valeur isolée** : Un MTBF se compare dans le temps, mois après mois, pour détecter une dérive avant qu'elle ne coûte cher. La tendance sert de base à l'analyse et à la stratégie de maintenance ; un chiffre supérieur au trimestre précédent valide les actions engagées.
+
+## Un exemple concret de calcul
+
+Prenons un convoyeur suivi sur un trimestre, 2 000 heures d'ouverture de l'atelier. L'historique de la GMAO indique les chiffres suivants ; nous pouvons calculer les trois indicateurs avec ces seules données.
+
+| Donnée | Valeur |
+|---|---|
+| Heures d'ouverture sur le trimestre | 2 000 heures |
+| Arrêts programmés (nettoyage, réglages) | 100 heures |
+| Nombre de pannes sur la période | 4 |
+| Temps total de réparation | 20 heures |
+
+Le temps de fonctionnement réel est de 2 000 moins 100 moins 20, soit 1 880 heures. Le MTBF est alors de 1 880 divisé par 4, soit 470 heures entre deux pannes : ce chiffre représente la fiabilité réelle de l'appareil sur le trimestre.
+
+> Le MTTR, lui, est de 20 heures pour 4 réparations, soit 5 heures par réparation. La disponibilité atteint 470 sur 475, environ 99 %, un chiffre qui a du sens uniquement rapporté à un objectif qui doit être fixé par métier : un convoyeur d'emballage et une presse critique n'acceptent pas le même seuil, chaque contexte a sa cible spécifique de qualité de service.
+
+## Les erreurs les plus fréquentes
+
+Un MTBF mal calculé donne une fausse impression de fiabilité, dans un sens ou dans l'autre. Les pièges listés dans cet article reviennent d'un site à l'autre.
+
+- **Compter les arrêts programmés comme des pannes** : Un réglage ou un nettoyage n'est pas une défaillance : la machine est arrêtée pour une opération planifiée, pas en panne. Les inclure fait baisser le MTBF sans raison.
+- **Oublier les micro-arrêts** : Des coupures courtes, équipement arrêté puis relancé, non tracées dans la GMAO, faussent le compte réel de pannes. Sans traçabilité systématique, le chiffre sous-estime la fréquence à laquelle la machine tombe en panne.
+- **Mélanger plusieurs équipements différents** : Calculer un MTBF unique pour une ligne entière noie les composants fragiles dans la moyenne, moteur électrique comme carte électronique : des technologies différentes, des durées de vie différentes. Le calcul gagne à être fait appareil par appareil, voire composant par composant.
+- **Ignorer le MTTR** : Se satisfaire d'un bon MTBF sans regarder le temps de réparation cache une organisation lente en intervention. Les deux indicateurs se lisent ensemble.
+- **Comparer sans contexte** : Un MTBF de 200 heures n'est ni bon ni mauvais en soi ; un MTBF bas sur un appareil récent signale un problème d'usage ou de conception. Il se compare à l'historique du même équipement, à la norme du secteur ou à un standard industriel du même type de matériel. Les valeurs affichées par les fournisseurs d'appareils électroniques ou de baies de stockage, souvent des centaines de milliers d'heures, sortent d'un modèle statistique de conception : elles qualifient la fabrication, pas l'usage de terrain.
+
+## Ce que le MTBF implique pour votre organisation
+
+Suivre le MTBF et le MTTR change la façon de piloter un parc d'actifs : la maintenance devient une donnée de gestion, pas une suite de dépannages. Les tableaux de bord servent alors à optimiser la disponibilité, l'efficacité du préventif et la productivité de la ligne.
+
+- **Prioriser le préventif** : Un MTBF en baisse sur un équipement signale un composant à surveiller avant la panne suivante. Le plan de maintenance préventive se recentre sur ce que le chiffre désigne, pas sur une routine générale, pour planifier chaque visite au bon moment.
+- **Argumenter un budget** : Un MTTR élevé justifie un stock de pièces critiques, un stockage organisé ou une astreinte renforcée : chaque solution peut être chiffrée, avec un calcul à présenter en direction. Le retour sur investissement se démontre, il ne se suppose pas.
+- **Choisir entre réparer et remplacer** : Un MTBF qui s'effondre malgré l'entretien indique une fin de cycle de vie du composant. Le chiffre objective une décision autrement discutée à l'instinct, et la meilleure solution se choisit sur des faits, fiche de vie à l'appui.
+
+> Migen calcule MTBF et MTTR pour ses clients en contrat de maintenance, avec les données remontées sur le terrain. Nous pouvons aussi déterminer avec vous les seuils utiles et le stockage minimal de pièces à prévoir.
+
+## Questions fréquentes
+
+**Quelle différence entre MTBF et MTTF ?**
+Le MTBF (mean time between failures) s'applique à un équipement réparable, remis en service après chaque panne. Le MTTF (mean time to failure) représente la durée de vie d'un composant ou d'un appareil non réparable, remplacé une fois défaillant, comme un roulement ou un fusible.
+
+**Quel MTBF viser pour un équipement industriel ?**
+Il n'existe pas de seuil universel : plusieurs facteurs jouent, la technologie de l'équipement, son âge, ses conditions d'utilisation, de température et de stockage, son rôle dans la production. Le meilleur repère est l'évolution du MTBF de cet équipement dans le temps, pas une valeur statistique affichée par un constructeur : celle-ci décrit le produit neuf, pas vos conditions réelles.
+
+**Le MTBF se calcule-t-il sans GMAO ?**
+Oui, sur un tableur : la solution convient à un petit parc, à condition de dater chaque panne et sa durée, appareil par appareil. Au-delà, la saisie manuelle par chaque utilisateur devient vite le point faible du calcul : un logiciel ou une plateforme de GMAO fiabilise la donnée et automatise le suivi, jour après jour ; l'outil devient la source unique d'information.
+
+**Comment réduire le MTTR ?**
+Trois remèdes reviennent le plus souvent : un stockage de pièces critiques accessible, des procédures de diagnostic écrites, et une astreinte qui répond vite. Réduire le MTTA, le délai entre l'incident et la prise en charge, fait souvent autant gagner que le geste technique lui-même ; pour augmenter le MTBF et optimiser la disponibilité, le travail se joue côté préventif, pour améliorer la fiabilité à la source.
+
+**Le MTBF s'applique-t-il à un parc entier ?**
+Il se calcule surtout équipement par équipement, pour rester utile à la décision. Un MTBF de parc donne une tendance générale, utile en réunion de direction, mais il masque les machines les plus fragiles. Mieux vaut assurer le suivi appareil par appareil, en gardant un œil sur chaque actif critique.
+
+**Qui doit suivre ces indicateurs dans l'entreprise ?**
+Le responsable maintenance en premier lieu, pour arbitrer le préventif et les stocks. Côté management, la direction de site les regarde en tableau de bord, pour suivre le coût de la fiabilité, mesurer l'effet des actions engagées et décider des investissements : l'avantage se lit sur la productivité du site. Migen propose ces indicateurs en tableaux de bord aux clients sous contrat, et nous pouvons les construire avec chaque client.
+
+> À lire aussi : [amdec](/ressources/fiches-techniques/amdec/)
+
+> [Demander un diagnostic maintenance](/contact/)
