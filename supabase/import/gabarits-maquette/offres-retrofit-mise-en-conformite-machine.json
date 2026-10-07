@@ -179,9 +179,19 @@
             "photo": "/assets/web/x-duo-hall.jpg"
           },
           {
+            "titre": "La GMAO planifie, nos techniciens interviennent",
+            "lienLibelle": "DimoMaint",
+            "lienHref": "/preuves/dimomaint/"
+          },
+          {
             "titre": "Une usine de carton en 3x8, un technicien qui tient la cadence",
             "lienLibelle": "VPK",
             "lienHref": "/preuves/vpk/"
+          },
+          {
+            "titre": "Une ligne de pain de mie suivie à chaque poste",
+            "lienLibelle": "Jacquet Brossard",
+            "lienHref": "/preuves/jacquet-brossard/"
           },
           {
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",

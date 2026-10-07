@@ -203,7 +203,7 @@
         "questions": [
           {
             "question": "Combien coûte une remise en état de machine ?",
-            "reponse": "Chaque cas est chiffré sur devis : l'état constaté, les pièces à remplacer et le degré de finition attendu font le prix. L'état des lieux préalable donne la rentabilité avant l'engagement, et la comparaison avec la valeur actuelle du matériel fait partie de la réponse."
+            "reponse": ""
           },
           {
             "question": "Quelle différence entre remise en état et dépannage ?",
