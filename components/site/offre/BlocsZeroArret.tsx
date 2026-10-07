@@ -5,6 +5,7 @@ import {
   LARGEUR,
   LUEUR,
   SECTION,
+  SURTITRE,
   TITRE2,
 } from "@/components/site/blocs/habillage";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
@@ -40,7 +41,6 @@ import {
   PREMIER_MOIS_CARTE,
   PREMIER_MOIS_NUMERO,
   PREMIER_MOIS_TEXTE,
-  SURTITRE_OFFRE,
 } from "./habillage-offre";
 
 import styles from "./PageOffre.module.css";
@@ -79,6 +79,27 @@ import styles from "./PageOffre.module.css";
  *
  * Ce n'est donc ni un oubli ni un contournement : c'est la règle
  * « zéro donnée inventée, vide plutôt que faux », appliquée au dessin.
+ *
+ * ──────────────────────────────────────────────────────────────────────────────
+ * À FAIRE ARBITRER PAR MEHDI (relecture adverse du 06/10, tour 2)
+ * ──────────────────────────────────────────────────────────────────────────────
+ * La relecture conteste ce choix : environ 750 lignes (ce fichier, les
+ * constantes JALON_* / FORMULE_* / BANDE_REGLE_* / COMPARATIF_* /
+ * PREMIER_MOIS_* de `habillage-offre.ts`, les champs Zéro Arrêt de
+ * `types/offre.ts`, les quatre montages de `PageOffre`, `.boutonSecondaire`
+ * du module CSS) pour quatre sections qu'aucun des 18 relais JSON ne peut
+ * activer, et dont la matière de la maquette est interdite par le contrat.
+ * De la flexibilité morte, compilée et embarquée pour zéro pixel rendu.
+ *
+ * Les deux issues possibles, au choix de Mehdi :
+ *   · SUPPRIMER : ce fichier, les quatre montages de `PageOffre`, les
+ *     constantes citées, les champs Zéro Arrêt de `ContenuOffre`, puis adapter
+ *     la porte 7 de `verification-offre.tsx`. Rien d'irrécupérable : les
+ *     valeurs restent dans `maquette/accueil-rendu.html` l. 4772-4886
+ *     (citées ligne par ligne ci-dessus) et dans git.
+ *   · CONSERVER : la position défendue plus haut, mise en page prête pour le
+ *     jour où une matière conforme existe.
+ * En attendant l'arbitrage, rien n'est supprimé.
  */
 
 /* ------------------------------------------------- 1. « Comment ça marche » */
@@ -97,7 +118,7 @@ export function CommentCaMarche({ contenu }: { contenu: ContenuOffre }) {
           >
             <div>
               {contenu.commentCaMarcheSurtitre ? (
-                <div style={SURTITRE_OFFRE}>
+                <div style={SURTITRE}>
                   {contenu.commentCaMarcheSurtitre}
                 </div>
               ) : null}
@@ -152,7 +173,7 @@ export function Formules({ contenu }: { contenu: ContenuOffre }) {
             <div className="mg-r2" style={ENTETE}>
               <div>
                 {contenu.formulesSurtitre ? (
-                  <div style={SURTITRE_OFFRE}>{contenu.formulesSurtitre}</div>
+                  <div style={SURTITRE}>{contenu.formulesSurtitre}</div>
                 ) : null}
                 {contenu.formulesTitre ? (
                   <h2 style={TITRE2}>{contenu.formulesTitre}</h2>
@@ -329,7 +350,7 @@ export function Comparatif({ contenu }: { contenu: ContenuOffre }) {
               >
                 {phare ? <div style={LUEUR} /> : null}
                 <div style={{ position: "relative" }}>
-                  <div style={SURTITRE_OFFRE}>{colonne.surtitre}</div>
+                  <div style={SURTITRE}>{colonne.surtitre}</div>
                   <div
                     style={
                       phare
@@ -390,7 +411,7 @@ export function PremierMois({ contenu }: { contenu: ContenuOffre }) {
       <div style={LARGEUR}>
         <div data-reveal="">
           {contenu.premierMoisSurtitre ? (
-            <div style={SURTITRE_OFFRE}>{contenu.premierMoisSurtitre}</div>
+            <div style={SURTITRE}>{contenu.premierMoisSurtitre}</div>
           ) : null}
           {contenu.premierMoisTitre ? (
             <h2 style={TITRE2}>{contenu.premierMoisTitre}</h2>
@@ -422,7 +443,7 @@ export function PremierMois({ contenu }: { contenu: ContenuOffre }) {
               <div style={{ flex: 1, minWidth: 280 }}>
                 {contenu.premierMoisAppelSurtitre ? (
                   <div
-                    style={{ ...SURTITRE_OFFRE, fontSize: 11, marginBottom: 10 }}
+                    style={{ ...SURTITRE, fontSize: 11, marginBottom: 10 }}
                   >
                     {contenu.premierMoisAppelSurtitre}
                   </div>

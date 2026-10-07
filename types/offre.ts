@@ -205,6 +205,26 @@ export interface ContenuOffre {
   autresChapeau?: string;
   autres?: CarteOffre[];
 
+  /* ----------------------------------------------------- « Réalisations liées » */
+
+  /**
+   * Les études de cas liées à la page, section « Réalisations liées » de la
+   * capture. Reprises de `maquette/contenu/site/cas-lies.json` pour l'URL de
+   * la page : rien ne s'invente, une page sans cas liés ne rend pas la
+   * section.
+   */
+  casLies?: {
+    url: string;
+    client: string;
+    titre: string;
+    /**
+     * La photo de la carte, dans `public/assets/web/`. OBLIGATOIRE : pas de
+     * photo de secours côté rendu, une photo générique associée à une étude
+     * de cas qui n'en déclare pas serait une donnée inventée (CLAUDE.md §13).
+     */
+    photo: string;
+  }[];
+
   /* ----------------------------------------------------- le formulaire de bas de page */
 
   formulaireTitre?: string;

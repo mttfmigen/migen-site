@@ -1,41 +1,41 @@
 {
   "url": "/offres/residence/",
+  "titre_h1": "Sous-traitance de maintenance industrielle",
   "contenu": {
     "gabarit": "offre",
+    "pastille": "Nos offres",
     "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
     "chapeau": "Un technicien Migen travaille chaque jour dans vos murs, intégré à votre équipe de production. Nous portons le recrutement, l'encadrement et le remplacement. Vous gardez la décision et la connaissance de vos machines.",
     "actions": [
       {
-        "libelle": "Les cinq offres",
-        "href": "/offres/"
+        "libelle": "Parler à un chargé d'affaires",
+        "href": "#besoin"
       }
     ],
-    "formulaireHeroTitre": "Décrire mon besoin",
+    "formulaireHeroTitre": "Parler à un chargé d'affaires",
     "formulaireHeroMention": "Rappel dans l'heure",
-    "brefSurtitre": "En bref",
-    "brefTitre": "Le cadre, en quatre chiffres.",
     "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des candidats retenus, entretien technique et comportemental, résultats partagés"
       },
       {
-        "valeur": "+ 100",
-        "libelle": "collaborateurs, dont des automaticiens SIEMENS et Schneider, des roboticiens ABB et Fanuc"
+        "valeur": "+ 120",
+        "libelle": "Collaborateurs, dont des automaticiens SIEMENS et Schneider, des roboticiens ABB et Fanuc"
       },
       {
-        "valeur": "+ 80",
-        "libelle": "clients réguliers, la seule mesure qui compte pour une prestation renouvelée"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, taux horaire homogène partout"
+        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, taux horaire homogène partout"
       }
     ],
     "brefBande": "Besoin d'un technicien qualifié sur votre site sans relancer un recrutement ?",
     "brefBouton": {
       "libelle": "Parler à un chargé d'affaires",
-      "href": "#formulaire"
+      "href": "#besoin"
     },
     "sections": [
       {
@@ -221,7 +221,7 @@
           },
           {
             "question": "Sur quelle durée doit-on s'engager ?",
-            "reponse": "La durée se cale sur votre besoin réel, pas sur un minimum commercial. Les conditions d'évolution et de sortie figurent au contrat, en clair, avec les modalités de préavis. Nous préférons être renouvelés plutôt que verrouillés : plus de 80 clients travaillent avec nous de façon régulière."
+            "reponse": "La durée se cale sur votre besoin réel, pas sur un minimum commercial. Les conditions d'évolution et de sortie figurent au contrat, en clair, avec les modalités de préavis. Nous préférons être renouvelés plutôt que verrouillés : plus de 200 clients travaillent avec nous."
           },
           {
             "question": "Nous avons déjà un prestataire sur ce poste. Comment se passe la reprise ?",
@@ -248,33 +248,59 @@
         "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
       }
     ],
-    "autresSurtitre": "Un autre besoin ?",
-    "autresTitre": "Chaque situation a son offre.",
+    "autresSurtitre": "Nos autres offres",
+    "autresTitre": "Un autre besoin ? Il a son offre.",
     "autres": [
       {
-        "phrase": "« Je veux confier toute ma maintenance à un seul partenaire. »",
-        "libelle": "Périmètre complet",
-        "href": "/offres/maintenance-externalisee/"
-      },
-      {
-        "phrase": "« Je paie mes pannes à l'heure et je ne maîtrise pas mon budget. »",
-        "libelle": "Zéro arrêt",
+        "phrase": "Le préventif le samedi, le dépannage la nuit : une maintenance qui ne touche jamais à votre production.",
+        "libelle": "migen© Zéro arrêt",
         "href": "/offres/zero-arret/"
       },
       {
-        "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",
-        "libelle": "Arrêt technique",
+        "phrase": "Votre arrêt annuel préparé, dimensionné et tenu, ligne rendue à la date annoncée.",
+        "libelle": "migen© Arrêt technique",
         "href": "/offres/arret-technique/"
       },
       {
-        "phrase": "« Mon installation n'est plus conforme et je n'ai plus les schémas. »",
-        "libelle": "Bureau d'études",
+        "phrase": "Conception, schémas électriques, mise en conformité machine : des études faites par des gens de terrain.",
+        "libelle": "migen© Bureau d'études",
         "href": "/offres/bureau-etudes/"
       },
       {
-        "phrase": "« Je ne sais pas encore ce qu'il me faut. »",
-        "libelle": "Toutes les offres",
-        "href": "/offres/"
+        "phrase": "Transfert, montage, démantèlement, levage : le chantier, du relevé à la remise en production.",
+        "libelle": "migen© Travaux industriels",
+        "href": "/travaux-industriels/"
+      },
+      {
+        "phrase": "Lyon, Paris, Nantes, Toulouse, Strasbourg, Lille : on part du hub le plus proche de votre site.",
+        "libelle": "Nos hubs",
+        "href": "/implantations/"
+      }
+    ],
+    "casLies": [
+      {
+        "url": "/preuves/autoliv/",
+        "client": "Autoliv",
+        "titre": "Un technicien dédié pour que le parc ne décroche pas",
+        "photo": "/assets/web/team-electric.jpg"
+      },
+      {
+        "url": "/preuves/bamesa/",
+        "client": "Bamesa",
+        "titre": "La maintenance tient pendant que l'équipe recrute",
+        "photo": "/assets/web/ph-hero-raffinerie.jpg"
+      },
+      {
+        "url": "/preuves/danone-lignes-de-production/",
+        "client": "Danone (Blédina)",
+        "titre": "Pas un poste sans maintenance, week-end compris",
+        "photo": "/assets/web/ph-technicien.jpg"
+      },
+      {
+        "url": "/preuves/jacquet-brossard/",
+        "client": "Jacquet Brossard",
+        "titre": "Une ligne de pain de mie suivie à chaque poste",
+        "photo": "/assets/web/ph-technicien.jpg"
       }
     ]
   }

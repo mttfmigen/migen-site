@@ -2,10 +2,8 @@ import type { CSSProperties } from "react";
 
 import {
   BOUTON_ACTION,
-  BOUTON_SECONDAIRE,
   LUEUR,
   PANNEAU,
-  SURTITRE,
   VERRE,
 } from "@/components/site/blocs/habillage";
 
@@ -25,11 +23,11 @@ import {
 
 /* ------------------------------------------------------------------- le héros */
 
-/** l. 4708 */
+/** Capture, section « 01 Héros » : `padding: 40px 40px 0`. */
 export const HERO: CSSProperties = {
   maxWidth: 1200,
   margin: "0 auto",
-  padding: "70px 40px 0",
+  padding: "40px 40px 0",
 };
 
 /** l. 4709. Sans panneau de formulaire, le héros passe sur une colonne. */
@@ -70,12 +68,6 @@ export const PASTILLE_PUCE: CSSProperties = {
   background: "var(--acc)",
 };
 
-/** l. 4715 */
-export const MENTION: CSSProperties = {
-  font: "400 12.5px var(--fb)",
-  color: "var(--ink4)",
-};
-
 /** l. 4717. Plus grand que le TITRE1 du gabarit secteur : 66px contre 62px. */
 export const TITRE1: CSSProperties = {
   font: "600 calc(clamp(38px,4.4vw,66px) * var(--ts))/1.03 var(--ft)",
@@ -86,11 +78,11 @@ export const TITRE1: CSSProperties = {
   textWrap: "balance",
 };
 
-/** l. 4718 */
+/** Capture : `font: 400 16.5px/1.65`, `margin: 20px 0 0`. */
 export const CHAPEAU_HERO: CSSProperties = {
-  font: "400 17.5px/1.65 var(--fb)",
+  font: "400 16.5px/1.65 var(--fb)",
   color: "var(--ink2)",
-  margin: "26px 0 0",
+  margin: "20px 0 0",
   maxWidth: "48ch",
 };
 
@@ -103,137 +95,61 @@ export const HERO_RANGEE_BOUTONS: CSSProperties = {
 };
 
 /**
- * l. 4720 : le bouton du héros est le bouton SECONDAIRE en verre, pas l'orange.
- * `whiteSpace` repassé en `normal` : un libellé long doit se replier plutôt que
- * déborder d'un écran de 320px, ce que la maquette ne teste pas.
+ * Capture : le bouton du héros est le bouton ORANGE (« Parler à un chargé
+ * d'affaires » → #besoin), plus le secondaire en verre de l'ancien montage.
+ * `whiteSpace` repassé en `normal` : un libellé long doit se replier plutôt
+ * que déborder d'un écran de 320px, ce que la maquette ne teste pas.
  */
 export const BOUTON_HERO: CSSProperties = {
-  ...BOUTON_SECONDAIRE,
+  ...BOUTON_ACTION,
   whiteSpace: "normal",
 };
 
-/** l. 4723, la bande de repères sous les boutons. */
-export const HERO_BANDE_REPERES: CSSProperties = {
-  display: "flex",
-  alignItems: "center",
-  gap: 26,
-  marginTop: 34,
-  paddingTop: 26,
-  borderTop: "1px solid var(--line)",
-  flexWrap: "wrap",
-};
-
-/** l. 4724 */
-export const HERO_REPERE_VALEUR: CSSProperties = {
-  font: "600 22px var(--ft)",
-  letterSpacing: "-.04em",
-};
-
-/** l. 4724 */
-export const HERO_REPERE_LIBELLE: CSSProperties = {
-  font: "400 12.5px var(--fb)",
-  color: "var(--ink4)",
-  marginTop: 2,
-};
-
-/** l. 4725, le filet vertical entre deux repères. */
-export const HERO_FILET: CSSProperties = {
-  width: 1,
-  height: 34,
-  background: "var(--line)",
-};
-
-/** l. 4733, le panneau de formulaire du héros : ombre plus portante que VERRE. */
-export const HERO_PANNEAU_FORMULAIRE: CSSProperties = {
-  ...VERRE,
-  position: "relative",
-  padding: "30px 30px 32px",
-  boxShadow: "0 1px 1px rgba(0,0,0,.04),0 30px 70px -34px rgba(0,0,0,.42)",
-};
-
-/** l. 4741 */
-export const HERO_FORMULAIRE_ENTETE: CSSProperties = {
-  display: "flex",
-  alignItems: "flex-start",
-  justifyContent: "space-between",
-  columnGap: 14,
-  rowGap: 6,
-  marginBottom: 20,
-  flexWrap: "wrap",
-};
-
-/** l. 4742 */
-export const HERO_FORMULAIRE_TITRE: CSSProperties = {
-  font: "600 20px/1.2 var(--ft)",
-  letterSpacing: "-.03em",
-  whiteSpace: "nowrap",
-};
-
-/** l. 4743 */
-export const HERO_FORMULAIRE_MENTION: CSSProperties = {
-  font: "500 11.5px var(--fb)",
-  letterSpacing: ".1em",
-  textTransform: "uppercase",
-  color: "var(--acc)",
-};
-
-/* ----------------------------------------------------------------- « En bref » */
-
-/** l. 4766, la carte d'un chiffre. */
-export const CARTE_CHIFFRE: CSSProperties = {
-  ...VERRE,
-  padding: "26px 26px 28px",
-};
-
-/** l. 4766 */
-export const CHIFFRE_VALEUR: CSSProperties = {
-  font: "600 calc(34px * var(--ts))/1 var(--ft)",
-  letterSpacing: "-.05em",
-  color: "var(--acc)",
-};
-
-/** l. 4766 */
-export const CHIFFRE_LIBELLE: CSSProperties = {
-  font: "600 14.5px var(--ft)",
-  letterSpacing: "-.02em",
-  color: "var(--ink)",
-  marginTop: 12,
-};
-
-/** l. 4766 */
-export const CHIFFRE_DETAIL: CSSProperties = {
-  font: "400 13.5px/1.5 var(--fb)",
+/** Capture : la mention des horaires, SOUS les boutons du héros. */
+export const HERO_MENTION: CSSProperties = {
+  font: "400 13.5px/1.6 var(--fb)",
   color: "var(--ink3)",
-  marginTop: 5,
+  margin: "22px 0 0",
+  maxWidth: "52ch",
+};
+
+/* --------------------------------------------------------- « 01 Chiffres » */
+
+/** Capture, section « 01 Chiffres » : `padding: 44px 40px 0`. */
+export const SECTION_CHIFFRES: CSSProperties = {
+  maxWidth: 1200,
+  margin: "0 auto",
+  padding: "44px 40px 0",
 };
 
 /**
- * l. 4767 et l. 4959 : la bande en verre, une phrase à gauche, un bouton à
- * droite. La maquette la pose deux fois à l'identique.
+ * Capture : les quatre chiffres vivent dans UNE SEULE carte en verre, en
+ * quatre colonnes séparées par un filet, sans en-tête de section.
  */
-export const BANDE: CSSProperties = {
+export const GRILLE_CHIFFRES: CSSProperties = {
   ...VERRE,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  gap: 18,
-  flexWrap: "wrap",
-  marginTop: 22,
-  padding: "16px 16px 16px 26px",
-  borderRadius: 24,
+  display: "grid",
+  gridTemplateColumns: "repeat(4,minmax(0,1fr))",
+  padding: "22px 8px",
 };
 
-/** l. 4767 */
-export const BANDE_TEXTE: CSSProperties = {
-  font: "500 15.5px/1.5 var(--fb)",
+/** Capture : la cellule d'un chiffre. Le filet gauche s'ajoute dès le 2e. */
+export const CARTE_CHIFFRE: CSSProperties = {
+  padding: "4px 24px",
+};
+
+/** Capture : `font: 600 calc(28px * var(--ts))/1`, encre pleine, pas orange. */
+export const CHIFFRE_VALEUR: CSSProperties = {
+  font: "600 calc(28px * var(--ts))/1 var(--ft)",
+  letterSpacing: "-.045em",
+  color: "var(--ink)",
+};
+
+/** Capture : `font: 400 14px/1.5`, `margin-top: 8px`. */
+export const CHIFFRE_LIBELLE: CSSProperties = {
+  font: "400 14px/1.5 var(--fb)",
   color: "var(--ink1)",
-};
-
-/** l. 4767 : le bouton orange, resserré dans la bande. */
-export const BANDE_BOUTON: CSSProperties = {
-  ...BOUTON_ACTION,
-  padding: "12px 22px",
-  fontSize: 14.5,
+  marginTop: 8,
 };
 
 /* ----------------------------- « Comment ça marche », section sous condition */
@@ -491,34 +407,3 @@ export const PREMIER_MOIS_APPEL_BOUTON: CSSProperties = {
   padding: "16px 28px",
   flex: "none",
 };
-
-/* ------------------------------------------------------- « Un autre besoin ? » */
-
-/** l. 5156, la carte en verre d'une autre offre. */
-export const CARTE_AUTRE: CSSProperties = {
-  ...VERRE,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  gap: 16,
-  padding: "20px 22px",
-  borderRadius: "var(--rad-s)",
-  transition: "transform var(--tr)",
-};
-
-/** l. 5156 */
-export const CARTE_AUTRE_PHRASE: CSSProperties = {
-  font: "500 15px/1.5 var(--fb)",
-  color: "var(--ink1)",
-};
-
-/** l. 5156 */
-export const CARTE_AUTRE_LIBELLE: CSSProperties = {
-  flex: "none",
-  font: "600 12.5px var(--fb)",
-  color: "var(--acc-ink)",
-  whiteSpace: "nowrap",
-};
-
-/** Le surtitre des sections de ce gabarit, identique au reste du site. */
-export const SURTITRE_OFFRE = SURTITRE;

@@ -24,10 +24,13 @@
   --fb: var(--font-poppins), var(--ft);
   --fs: var(--font-caveat), var(--fb);
 
-  /* Opacité et flou du verre dépoli. Valeurs RENDUES par la maquette, relevées
-     au getComputedStyle sur onze surfaces, et non celles de son bloc :root, qui
-     sont arrondies. L'écart se voit sur les grandes cartes. */
-  --gl-a: 0.582;
+  /* Opacité et flou du verre dépoli. Valeur RENDUE par la maquette : relevée
+     le 06/10 au getComputedStyle sur TOUTES les surfaces verre de
+     `/offres/residence/` (héros, chiffres, réassurance, problème, offre,
+     déroulé, questions, réalisations, appel final), qui rendent toutes
+     rgba(255,255,255,0.62). L'ancienne valeur 0.582 venait d'une mesure qui ne
+     portait pas sur ces surfaces. */
+  --gl-a: 0.62;
   --gl-b: 22.5px;
 
   /* Orange de marque et ses dérivés */

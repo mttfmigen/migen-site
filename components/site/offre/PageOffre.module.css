@@ -22,8 +22,37 @@
   transform: translateY(-1px);
 }
 
-/* style-hover="transform:translateY(-2px)" (l. 5156, cartes des autres offres) */
-.carteAutre:hover,
-.carteAutre:focus-visible {
+/* Cartes des références et des réalisations liées (capture : transition
+   transform + box-shadow). */
+.carteReference:hover,
+.carteReference:focus-visible {
   transform: translateY(-2px);
+  box-shadow: 0 22px 50px -32px rgba(0, 0, 0, 0.3);
+}
+
+/* Cartes-photos du maillage des offres. */
+.carteMaillage:hover,
+.carteMaillage:focus-visible {
+  transform: translateY(-2px);
+}
+
+/* Les liens du corpus rendus dans le texte courant (maillage du cocon,
+   étape 01 du déroulé). `app/globals.css` retire le soulignement de tous les
+   liens : ici il est rétabli, un lien dans un paragraphe doit rester
+   identifiable sans la couleur (WCAG 1.4.1). */
+.texteAvecLiens a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Les questions repliées de « 09 Questions » : pas de marqueur natif, et le
+   « + » pivote en croix de fermeture quand le pli est ouvert. */
+.pliQuestion > summary::-webkit-details-marker {
+  display: none;
+}
+
+.pliQuestion[open] .pliPlus {
+  transform: rotate(45deg);
+  background: var(--acc);
+  color: #fff;
 }

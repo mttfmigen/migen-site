@@ -20,7 +20,9 @@ export interface ProprietesMarqueeClients {
   logos?: readonly Logo[];
 }
 
-const LOGOS_MAQUETTE: readonly Logo[] = [
+/** Exportée : `offre/LogosClients` affiche la MÊME liste. Un logo ajouté ou
+    retiré ici suit automatiquement sur les pages d'offres, aucune recopie. */
+export const LOGOS_MAQUETTE: readonly Logo[] = [
   { src: "/assets/clients/danone.png", alt: "Danone" },
   { src: "/assets/clients/stellantis.png", alt: "Stellantis" },
   { src: "/assets/clients/amazon.svg", alt: "Amazon" },

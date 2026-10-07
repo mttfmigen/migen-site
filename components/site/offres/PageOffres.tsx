@@ -9,6 +9,7 @@ import Besoins from "./Besoins";
 import Fin from "./Fin";
 import Hero from "./Hero";
 import Offres from "./Offres";
+import QuestionsPhoto from "./QuestionsPhoto";
 
 /**
  * Gabarit du hub `/offres/`, porté de `maquette/accueil-rendu.html`, bloc
@@ -105,9 +106,25 @@ export default function PageOffres({
         />
 
         {besoins ? <Besoins besoins={besoins} /> : null}
+
+        {/* La FAQ à photo précède la grille des offres, comme dans la maquette
+            (« 09 Questions · photo » juste avant « Cinq offres, un seul
+            interlocuteur »). */}
+        {contenu.questionsPhoto ? (
+          <QuestionsPhoto donnees={contenu.questionsPhoto} />
+        ) : null}
+
         {offres ? <Offres offres={offres} /> : null}
 
-        {complement?.map((section, i) => (
+        {complement
+          ?.filter(
+            // Un seul modèle de FAQ par page (consigne du 06/10) : quand la
+            // variante photo est rendue, l'ancienne section « objections » du
+            // corpus ne l'est plus.
+            (section) =>
+              !(contenu.questionsPhoto && section.type === "objections"),
+          )
+          .map((section, i) => (
           // L'index suffit comme clé : l'ordre du tableau EST celui du corpus,
           // il ne se réarrange pas, et deux sections de même type ne se
           // distinguent par rien d'autre.

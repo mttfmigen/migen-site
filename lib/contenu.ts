@@ -75,9 +75,23 @@ export function cheminCanonique(segments: string[] | string): string {
  *
  * Lu UNE fois par processus : c'est du build, pas une requête.
  */
-const CONTENUS_SUR_DISQUE: ReadonlyMap<string, LignePage["contenu"]> = (() => {
+interface RelaisGabarit {
+  contenu: LignePage["contenu"];
+  /**
+   * Le H1 de la maquette quand la base n'a pas le bon. La capture de
+   * `/offres/residence/` attend « Sous-traitance de maintenance industrielle »
+   * là où la base écrit « Sous-traitance maintenance » : tant que la base ne
+   * peut pas être corrigée (même raison que le relais de contenu), le fichier
+   * porte le titre attendu. Dès que la base porte un gabarit, elle reprend la
+   * main sur TOUT, titre compris.
+   */
+  titreH1?: string;
+}
+
+// Rechargé le 06/10 au soir : FAQ à photo du hub ajoutée au relais.
+const CONTENUS_SUR_DISQUE: ReadonlyMap<string, RelaisGabarit> = (() => {
   const dossier = join(process.cwd(), "supabase", "import", "gabarits-maquette");
-  const par = new Map<string, LignePage["contenu"]>();
+  const par = new Map<string, RelaisGabarit>();
   let fichiers: string[];
   try {
     fichiers = readdirSync(dossier);
@@ -91,9 +105,12 @@ const CONTENUS_SUR_DISQUE: ReadonlyMap<string, LignePage["contenu"]> = (() => {
     try {
       const lu = JSON.parse(readFileSync(join(dossier, nom), "utf8")) as {
         url?: string;
+        titre_h1?: string;
         contenu?: LignePage["contenu"];
       };
-      if (lu.url && lu.contenu) par.set(lu.url, lu.contenu);
+      if (lu.url && lu.contenu) {
+        par.set(lu.url, { contenu: lu.contenu, titreH1: lu.titre_h1 });
+      }
     } catch (erreur) {
       // Un fichier illisible se signale au build plutôt que de disparaître en
       // silence : une page muette est plus difficile à diagnostiquer.
@@ -131,13 +148,19 @@ export const pageParChemin = cache(
     };
     /* Le fichier ne gagne que si la base n'a pas encore son gabarit : la base
        reste la source, le disque n'est qu'un relais tant qu'elle ne peut pas
-       être écrite. */
+       être écrite. Quand le fichier gagne, il porte aussi, s'il l'écrit, le
+       H1 attendu par la maquette. */
     const surDisque = CONTENUS_SUR_DISQUE.get(path);
-    const contenu =
-      surDisque && !porteUnGabarit(page.contenu) ? surDisque : page.contenu;
+    const relaisActif = !!surDisque && !porteUnGabarit(page.contenu);
+    const contenu = relaisActif ? surDisque.contenu : page.contenu;
+    const titre_h1 =
+      relaisActif && surDisque.titreH1 ? surDisque.titreH1 : page.titre_h1;
 
     return {
-      page: contenu === page.contenu ? page : { ...page, contenu },
+      page:
+        contenu === page.contenu && titre_h1 === page.titre_h1
+          ? page
+          : { ...page, contenu, titre_h1 },
       seo: Array.isArray(seo) ? (seo[0] ?? null) : seo,
     };
   },

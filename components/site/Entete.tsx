@@ -233,11 +233,20 @@ export default function Entete({
                   className={s.itemNav}
                   style={ITEM_NAV}
                   onMouseEnter={() => setPanneau(entree.id)}
-                  onClick={() =>
+                  onClick={(evenement) => {
+                    // À la souris, `mouseenter` a déjà ouvert le panneau avant
+                    // que le clic n'arrive : basculer ici le refermait dans la
+                    // foulée, et l'entrée paraissait morte. Le clic ne referme
+                    // donc que pour le clavier et le tactile, qui n'ont pas de
+                    // survol pour ouvrir à leur place.
+                    const sansSurvol =
+                      evenement.detail === 0 ||
+                      (evenement.nativeEvent as PointerEvent).pointerType !==
+                        "mouse";
                     setPanneau((actuel) =>
-                      actuel === entree.id ? null : entree.id,
-                    )
-                  }
+                      actuel === entree.id && sansSurvol ? null : entree.id,
+                    );
+                  }}
                 >
                   {entree.libelle}
                 </button>

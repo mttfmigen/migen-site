@@ -241,6 +241,40 @@
           }
         ]
       }
-    ]
+    ],
+    "questionsPhoto": {
+      "surtitre": "Questions fréquentes",
+      "titre": "Vos questions avant de nous appeler",
+      "chapeau": "Délais, sécurité, qui intervient, comment on démarre : les réponses aux questions que nos clients posent avant de signer.",
+      "lienTexte": "Poser une autre question",
+      "lienHref": "/contact/",
+      "photo": "/assets/web/faq-offres.jpg",
+      "questions": [
+        {
+          "question": "Combien ça coûte ?",
+          "reponse": "Le chiffrage se fait après qualification du besoin, avec une visite quand le périmètre le justifie. Le taux horaire est homogène dans toute la France. Le devis détaille chaque poste, et nous cherchons la prestation la plus économique pour votre situation, pas la plus grosse."
+        },
+        {
+          "question": "Faut-il s'engager pour travailler avec vous ?",
+          "reponse": "Non pour le dépannage : une panne, une intervention, une facture. L'abonnement Zéro arrêt est le seul format qui vous lie : l'engagement type est de 6 mois renouvelable, écrit en clair. Assez long pour produire des résultats mesurables, assez court pour que nous ayons à les prouver."
+        },
+        {
+          "question": "Nous avons déjà un prestataire sous contrat. Comment on change ?",
+          "reponse": "Nous reprenons le périmètre existant sans casser la continuité : inventaire du parc, récupération des historiques, reprise du plan de visites, puis ajustement. La bascule se prépare pendant le préavis de votre contrat en cours. Nous ne demandons jamais de résilier avant d'avoir un programme écrit."
+        },
+        {
+          "question": "Et la sécurité sur nos installations ?",
+          "reponse": "Plan de prévention, accueil sécurité du site, habilitations à jour, équipements de protection, respect des consignations : c'est un préalable, pas une case à cocher. Nos comptes rendus sont conçus pour tenir dans un système qualité, y compris chez les industriels certifiés ISO 9001."
+        },
+        {
+          "question": "Qui vient vraiment sur notre site ?",
+          "reponse": "Des techniciens salariés de Migen, évalués en entretien sur la technique et sur le comportement. Seuls 10 % des candidats sont retenus, et les résultats de ces évaluations vous sont présentés. Les profils vont du bac pro maintenance au diplôme d'ingénieur, avec des spécialistes automatisme SIEMENS et Schneider, robotique ABB et Fanuc."
+        },
+        {
+          "question": "Couvrez-vous notre région ?",
+          "reponse": "Oui, partout en France. La couverture repose sur nos 10 hubs de techniciens : Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon, Nantes. Le siège est à Lyon. La grande majorité des interventions est réalisée par des techniciens du bassin concerné. Cela joue sur les temps de trajet, et sur la connaissance du tissu industriel local."
+        }
+      ]
+    }
   }
 }

@@ -136,6 +136,12 @@ export interface ContenuOffres {
    * qu'un seul motif de section soit inventé pour l'occasion.
    */
   complement?: Section[];
+  /**
+   * La FAQ du hub, variante « 09 Questions · photo » de la maquette.
+   * Quand elle est présente, elle remplace la section « objections » du
+   * complément : un seul modèle de FAQ par page, consigne de Mehdi du 06/10.
+   */
+  questionsPhoto?: QuestionsPhotoOffres;
 }
 
 /**
@@ -151,4 +157,15 @@ export function estOffres(contenu: unknown): contenu is ContenuOffres {
     typeof contenu === "object" &&
     (contenu as ContenuOffres).gabarit === "offres"
   );
+}
+
+/** La FAQ à photo du hub des offres, textes mot pour mot de la maquette. */
+export interface QuestionsPhotoOffres {
+  surtitre: string;
+  titre: string;
+  chapeau: string;
+  lienTexte: string;
+  lienHref: string;
+  photo: string;
+  questions: { question: string; reponse: string }[];
 }
