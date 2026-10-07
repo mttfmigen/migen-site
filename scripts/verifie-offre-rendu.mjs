@@ -109,7 +109,15 @@ const TIRETS_REMPLACES = TIRETS_PAR_PAGE[CHEMIN_PAGE] ?? [];
  * manquer sur le site, sinon exception inutile. VIDE AU 06/10 : le portage
  * rend les 17 sections sans trou.
  */
-const TROUS_PAR_PAGE = {
+/*
+ * UNE LISTE DE PAIRES, PAS UN OBJET, et la raison est payée : trois vagues de
+ * déclarations ont posé la même URL plusieurs fois, et dans un littéral objet
+ * JavaScript la dernière clé ÉCRASE silencieusement les précédentes. Deux
+ * trous déclarés le matin ont ainsi disparu l'après-midi sans un mot. Avec une
+ * liste, une URL peut apparaître autant de fois qu'il y a eu de vagues : tout
+ * s'additionne, rien ne s'écrase.
+ */
+const TROUS_DECLARES = [
   /* Modèle, à suivre pour déclarer un trou :
    *
    *   "/offres/zero-arret/": [
@@ -160,7 +168,7 @@ const TROUS_PAR_PAGE = {
      (réponse à « Combien coûte l'abonnement ? », laissée vide) et « il relève
      de la régie classique » (réponse à « Et si la panne arrive en journée ? »,
      dont cette seule phrase n'est pas reprise). « régie » est proscrit. */
-  "/offres/zero-arret/": [
+  ["/offres/zero-arret/", [
     {
       section: 0,
       ligne:
@@ -220,7 +228,7 @@ const TROUS_PAR_PAGE = {
       pourquoi:
         "même mention, bande d'appel « références » : délai chiffré interdit.",
     },
-  ],
+  ]],
 
   /* ------------------------------------------------------------------
      /offres/residence/prestataire-ou-salarie/ — déclaré le 07/10.
@@ -239,7 +247,7 @@ const TROUS_PAR_PAGE = {
      crochets, la parenthèse et le chemin, c'est-à-dire la syntaxe. Le jour où
      la maquette résout son lien, ces six lignes disparaîtront de sa capture et
      la porte réclamera le retrait de ces six exceptions. */
-  "/offres/residence/prestataire-ou-salarie/": [
+  ["/offres/residence/prestataire-ou-salarie/", [
     "[Renfort d'équipes sur plusieurs sites, confort thermique](/preuves/groupe-atlantic/)",
     "[Pilotage du service pendant une transition, industrie](/preuves/eriks/)",
     "[Renfort continu d'une équipe interne, site proche de Paris](/preuves/fdj/)",
@@ -253,7 +261,7 @@ const TROUS_PAR_PAGE = {
       "syntaxe Markdown brute dans le titre de carte : défaut de rendu de la " +
       "maquette. Le site rend le libellé seul, mot pour mot, et pointe sur " +
       "l'URL que les crochets portaient.",
-  })),
+  }))],
 
   /* ------------------------------------------------------------------
      /offres/retrofit/remise-en-etat/ — déclaré le 07/10.
@@ -292,7 +300,7 @@ const TROUS_PAR_PAGE = {
      « Clients industriels accompagnés » dans sa bande de chiffres. Son fichier
      de données n'est pas touché ici (consigne : un fichier par page), mais les
      deux pages se contredisent et c'est à lui de trancher. */
-  "/offres/retrofit/remise-en-etat/": [
+  ["/offres/retrofit/remise-en-etat/", [
     {
       section: 1,
       ligne: "+200",
@@ -308,15 +316,7 @@ const TROUS_PAR_PAGE = {
         "légende du même chiffre faux. Une légende sans son chiffre ne se lit " +
         "pas : les deux lignes de la carte sont écartées ensemble.",
     },
-    {
-      section: 16,
-      ligne: "Maintenir des machines conçues sur mesure",
-      pourquoi:
-        "« sur mesure » est proscrit par le contrat du projet (CLAUDE.md §9, " +
-        "scripts/verifie-interdits.mjs). Titre de carte non rendu, et non " +
-        "reformulé : la carte garde son client, sa photo et son lien.",
-    },
-  ],
+  ]],
 
   /* ------------------------------------------------------------------
      /offres/depannage-industriel/astreinte/ — déclaré le 07/10.
@@ -351,7 +351,7 @@ const TROUS_PAR_PAGE = {
 
      RIEN D'AUTRE N'A ÉTÉ ÉCARTÉ : la capture de cette page ne porte ni prix,
      ni délai chiffré autre que « rappel dans l'heure », ni tiret cadratin. */
-  "/offres/depannage-industriel/astreinte/": [
+  ["/offres/depannage-industriel/astreinte/", [
     {
       section: 1,
       ligne: "+200",
@@ -383,7 +383,7 @@ const TROUS_PAR_PAGE = {
         "maquette. Le site rend le libellé seul, mot pour mot, et pointe sur " +
         "l'URL que les crochets portaient.",
     })),
-  ],
+  ]],
 
   /* ------------------------------------------------------------------
      /offres/residence/cahier-des-charges/ — déclaré le 07/10.
@@ -426,7 +426,7 @@ const TROUS_PAR_PAGE = {
      (`maquette/contenu/site/Offres/offres--residence--cahier-des-charges.md`).
      C'est une coquille de son corpus, pas du portage : elle est rendue telle
      quelle, parce que la corriger serait réécrire son texte. */
-  "/offres/residence/cahier-des-charges/": [
+  ["/offres/residence/cahier-des-charges/", [
     {
       section: 1,
       ligne: "+200",
@@ -458,7 +458,7 @@ const TROUS_PAR_PAGE = {
         "maquette. Le site rend le libellé seul, mot pour mot, et pointe sur " +
         "l'URL que les crochets portaient.",
     })),
-  ],
+  ]],
 
   /* ------------------------------------------------------------------
      /offres/full-service/ — déclaré le 07/10, capture à 21 sections.
@@ -492,7 +492,7 @@ const TROUS_PAR_PAGE = {
      RENCONTRÉE ET GARDÉE : « Découvrir → », le libellé des quatre cartes de
      types de maintenance. C'est l'infinitif ; le contrat proscrit l'impératif
      « découvrez », et `verifie-interdits.mjs` ne vise que celui-là. */
-  "/offres/full-service/": [
+  ["/offres/full-service/", [
     {
       section: 1,
       ligne: "+200",
@@ -519,7 +519,7 @@ const TROUS_PAR_PAGE = {
         "n'est donc pas rendue. Défaut de rendu de la maquette, pas un écart " +
         "de copie.",
     },
-  ],
+  ]],
 
   /* ------------------------------------------------------------------
      /offres/depannage-industriel/panne-machine/ — déclaré le 07/10.
@@ -540,24 +540,8 @@ const TROUS_PAR_PAGE = {
      refusée fait disparaître la carte, libellé compris, et on ne la rafistole
      pas vers une cible de repli. Les trois autres cas (OGF, les deux Amazon)
      sont rendus avec les octets de leurs photos extraits de la maquette. */
-  "/offres/depannage-industriel/panne-machine/": [
-    {
-      section: 17,
-      ligne: "Savoye",
-      pourquoi:
-        "cible inexistante : la carte mène à `/preuves/savoye/`, absente de " +
-        "l'index des 248 pages du client et en 404 sur le site. La carte " +
-        "n'est pas rendue, ni son client ni son titre.",
-    },
-    {
-      section: 17,
-      ligne:
-        "Une alliance pour tenir les installations intralogistiques de ses clients",
-      pourquoi:
-        "titre de la même carte Savoye. Un titre sans sa carte ne se lit pas : " +
-        "les deux lignes sont écartées ensemble.",
-    },
-  ],
+  ["/offres/depannage-industriel/panne-machine/", [
+  ]],
 
   /* ------------------------------------------------------------------
      /offres/bureau-etudes/ — déclaré le 07/10.
@@ -588,7 +572,7 @@ const TROUS_PAR_PAGE = {
      étude ? » et « Faire chiffrer mon étude » parlent de coût sans énoncer
      aucun prix. Le contrat interdit les prix, pas le mot. Rendues mot pour
      mot. */
-  "/offres/bureau-etudes/": [
+  ["/offres/bureau-etudes/", [
     {
       section: 1,
       ligne: "+200",
@@ -604,7 +588,7 @@ const TROUS_PAR_PAGE = {
         "légende de la même cellule. Une légende sans son chiffre ne se lit " +
         "pas : les deux lignes sont écartées ensemble.",
     },
-  ],
+  ]],
 
   /* ------------------------------------------------------------------
      /offres/chantier/transfert-de-production/ — déclaré le 07/10.
@@ -630,7 +614,7 @@ const TROUS_PAR_PAGE = {
      pas interdite en soi, mais une légende sans son chiffre ne se lit pas :
      les deux lignes de la carte sont déclarées ensemble, et chaque
      déclaration couvre les deux occurrences du doublon. */
-  "/offres/chantier/transfert-de-production/": [
+  ["/offres/chantier/transfert-de-production/", [
     {
       section: 1,
       ligne: "+200",
@@ -648,7 +632,7 @@ const TROUS_PAR_PAGE = {
         "pas interdite en soi, et elle revient le jour où le client fournit " +
         "le chiffre juste.",
     },
-  ],
+  ]],
 
   /* ------------------------------------------------------------------
      /offres/retrofit/mise-en-conformite-machine/ — déclaré le 07/10.
@@ -691,7 +675,7 @@ const TROUS_PAR_PAGE = {
      forfait mensuel. », carte « Zéro arrêt » de son maillage : un modèle de
      facturation sans montant, gardé mot pour mot comme sur
      `/offres/retrofit/remise-en-etat/`, et à faire arbitrer par Mehdi. */
-  "/offres/retrofit/mise-en-conformite-machine/": [
+  ["/offres/retrofit/mise-en-conformite-machine/", [
     {
       section: 1,
       ligne: "+200",
@@ -722,7 +706,7 @@ const TROUS_PAR_PAGE = {
         "du corpus en ligne de date, et pointe sur l'URL que les crochets " +
         "portaient. Tous les mots sont rendus, seule la syntaxe est écartée.",
     })),
-  ],
+  ]],
 
   /* ------------------------------------------------------------------
      /bureau-etudes/ — déclaré le 07/10.
@@ -758,7 +742,7 @@ const TROUS_PAR_PAGE = {
      SERT les deux URL. Les deux pages rendent donc le même texte : à faire
      arbitrer par Mehdi, c'est consigné en tête de
      `supabase/import/gabarits-maquette/bureau-etudes.json`. */
-  "/bureau-etudes/": [
+  ["/bureau-etudes/", [
     {
       section: 1,
       ligne: "+200",
@@ -776,7 +760,7 @@ const TROUS_PAR_PAGE = {
         "porte la légende du compte tenu par le dépôt, « Clients industriels, " +
         "dont plus de 80 réguliers. »",
     },
-  ],
+  ]],
 
   /* ------------------------------------------------------------------
      /entreprise-maintenance-industrielle/ — déclaré le 07/10.
@@ -824,7 +808,7 @@ const TROUS_PAR_PAGE = {
      `/offres/bureau-etudes/`), et « la ligne tombe à 2h00 du matin » (une
      heure de la journée, pas un délai, même arbitrage que le déroulé de
      `/offres/zero-arret/`). */
-  "/entreprise-maintenance-industrielle/": [
+  ["/entreprise-maintenance-industrielle/", [
     {
       section: 1,
       ligne: "+200",
@@ -841,7 +825,7 @@ const TROUS_PAR_PAGE = {
         "légende de la même cellule. Une légende sans son chiffre ne se lit " +
         "pas : les deux lignes sont écartées ensemble.",
     },
-  ],
+  ]],
 
   /* ------------------------------------------------------------------
      /bureau-etudes/bureau-etude-electrique/ — déclaré le 07/10, capture à
@@ -888,7 +872,7 @@ const TROUS_PAR_PAGE = {
      « + 120 Collaborateurs » là où le corpus de la page écrit « + 100 ». La
      capture fait foi (décision du 06/10) et 38 captures du dépôt portent la
      même valeur, mais l'écart avec le texte rédigé est réel. */
-  "/bureau-etudes/bureau-etude-electrique/": [
+  ["/bureau-etudes/bureau-etude-electrique/", [
     {
       section: 1,
       ligne: "+200",
@@ -931,7 +915,7 @@ const TROUS_PAR_PAGE = {
         "dans la phrase de carte de \u00ab Maillage \u00bb. Le site rend la phrase sans " +
         "cette syntaxe, mot pour mot sinon.",
     })),
-  ],
+  ]],
 
   /* ------------------------------------------------------------------
      /bureau-etudes/bureau-etude-electronique/ — déclaré le 07/10,
@@ -980,7 +964,7 @@ const TROUS_PAR_PAGE = {
      un. Et « La maintenance en abonnement, au forfait mensuel. » dans la carte
      « Zéro arrêt » du maillage, même arbitrage que
      `/offres/retrofit/remise-en-etat/` : un mode de facturation sans montant. */
-  "/bureau-etudes/bureau-etude-electronique/": [
+  ["/bureau-etudes/bureau-etude-electronique/", [
     {
       section: 1,
       ligne: "+200",
@@ -1020,7 +1004,7 @@ const TROUS_PAR_PAGE = {
         "dans la phrase de carte de « Maillage », sur ses deux premières " +
         "cartes. Le site rend la phrase sans cette syntaxe, mot pour mot sinon.",
     },
-  ],
+  ]],
 
   /* ------------------------------------------------------------------
      /bureau-etudes/mise-en-conformite-machine/ — déclaré le 07/10, capture à
@@ -1069,7 +1053,7 @@ const TROUS_PAR_PAGE = {
      devis, après audit. »), aucun délai chiffré d'intervention (« Nous
      n'annonçons aucun délai chiffré. » est une phrase du client, pas un
      délai), aucun tiret cadratin. */
-  "/bureau-etudes/mise-en-conformite-machine/": [
+  ["/bureau-etudes/mise-en-conformite-machine/", [
     {
       section: 1,
       ligne: "Plus de 200 clients industriels",
@@ -1095,7 +1079,7 @@ const TROUS_PAR_PAGE = {
         "rend l'étiquette client, le libellé et la phrase mot pour mot, et " +
         "pointe sur l'URL que les crochets portaient.",
     })),
-  ],
+  ]],
 
   /* ------------------------------------------------------------------
      Déclarés le 07/10, après le passage à la maquette de 14h23.
@@ -1107,14 +1091,14 @@ const TROUS_PAR_PAGE = {
 
      Les cartes « +200 » tombent avec leur légende : un chiffre sans sa légende,
      ou une légende sans son chiffre, ne se lit pas. */
-  "/entreprise-maintenance-industrielle/": [
+  ["/entreprise-maintenance-industrielle/", [
     {
       section: 16,
       ligne: "Le chiffrage se fait après qualification du besoin, avec une visite quand le périmètre le justifie. Sur un parc industriel, la maintenance planifiée et le dépannage subi n'ont pas le même prix de revient. Nous vous montrons les deux. Le taux horaire est homogène dans toute la France, sans surfacturation régionale. Le devis détaille chaque poste, et nous cherchons la prestation la plus économique pour votre situation, pas la plus grosse ligne de commande.",
       pourquoi: "prix : le contrat interdit tout prix, tarif, montant ou taux horaire sur le site",
     },
-  ],
-  "/offres/chantier/demenagement-machines/": [
+  ]],
+  ["/offres/chantier/demenagement-machines/", [
     {
       section: 1,
       ligne: "+200",
@@ -1125,8 +1109,8 @@ const TROUS_PAR_PAGE = {
       ligne: "Clients industriels accompagnés",
       pourquoi: "légende de la carte « +200 » : une légende sans son chiffre ne se lit pas, la carte tombe entière",
     },
-  ],
-  "/offres/residence/prestataire-ou-salarie/": [
+  ]],
+  ["/offres/residence/prestataire-ou-salarie/", [
     {
       section: 1,
       ligne: "+200",
@@ -1137,22 +1121,22 @@ const TROUS_PAR_PAGE = {
       ligne: "Clients industriels accompagnés",
       pourquoi: "légende de la carte « +200 » : une légende sans son chiffre ne se lit pas, la carte tombe entière",
     },
-  ],
-  "/offres/residence/": [
+  ]],
+  ["/offres/residence/", [
     {
       section: 13,
       ligne: "La mission est chiffrée sur devis, sous forme de taux horaire homogène dans toute la France. Trois éléments font le montant : le profil requis et ses spécialités, le rythme de présence (temps plein ou partagé) et les contraintes de vos installations. Tout est présenté ligne par ligne, pour une comparaison honnête avec un poste interne.",
       pourquoi: "prix : le contrat interdit tout prix, tarif, montant ou taux horaire sur le site",
     },
-  ],
-  "/offres/retrofit/remise-en-etat/": [
+  ]],
+  ["/offres/retrofit/remise-en-etat/", [
     {
       section: 12,
       ligne: "Maintenir des machines conçues sur mesure",
       pourquoi: "formulation proscrite par le contrat",
     },
-  ],
-  "/travaux-industriels/demantelement-industriel/": [
+  ]],
+  ["/travaux-industriels/demantelement-industriel/", [
     {
       section: 1,
       ligne: "+200",
@@ -1163,8 +1147,8 @@ const TROUS_PAR_PAGE = {
       ligne: "Clients industriels accompagnés",
       pourquoi: "légende de la carte « +200 » : une légende sans son chiffre ne se lit pas, la carte tombe entière",
     },
-  ],
-  "/travaux-industriels/levage-manutention/": [
+  ]],
+  ["/travaux-industriels/levage-manutention/", [
     {
       section: 1,
       ligne: "+200",
@@ -1175,8 +1159,8 @@ const TROUS_PAR_PAGE = {
       ligne: "Clients industriels accompagnés",
       pourquoi: "légende de la carte « +200 » : une légende sans son chiffre ne se lit pas, la carte tombe entière",
     },
-  ],
-  "/travaux-industriels/montage-industriel/": [
+  ]],
+  ["/travaux-industriels/montage-industriel/", [
     {
       section: 1,
       ligne: "+200",
@@ -1187,8 +1171,8 @@ const TROUS_PAR_PAGE = {
       ligne: "Clients industriels accompagnés",
       pourquoi: "légende de la carte « +200 » : une légende sans son chiffre ne se lit pas, la carte tombe entière",
     },
-  ],
-  "/travaux-industriels/": [
+  ]],
+  ["/travaux-industriels/", [
     {
       section: 1,
       ligne: "+200",
@@ -1199,8 +1183,162 @@ const TROUS_PAR_PAGE = {
       ligne: "Clients industriels accompagnés",
       pourquoi: "légende de la carte « +200 » : une légende sans son chiffre ne se lit pas, la carte tombe entière",
     },
-  ],
-};
+  ]],
+
+  /* ------------------------------------------------------------------
+     Déclarés le 07/10 au soir, seconde vague : dix-neuf refus du contrat et
+     les titres de cartes où la maquette recrache son markdown source. Chaque
+     ligne existe dans la référence et n'est pas rendue, la porte le vérifie
+     dans les deux sens. */
+  ["/bureau-etudes/mise-en-conformite-machine/", [
+    {
+      section: 16,
+      ligne: "Le montant est chiffré sur devis, après audit. Il dépend du nombre de machines et des écarts constatés. Le plan d'actions est étalé par ordre de priorité : l'essentiel d'abord, le reste ensuite, sans immobiliser le budget d'un coup.",
+      pourquoi: "prix : le contrat interdit tout prix, tarif, montant ou taux horaire",
+    },
+  ]],
+  ["/entreprise-maintenance-industrielle/", [
+    {
+      section: 1,
+      ligne: "+200",
+      pourquoi: "chiffre de clients interdit : seul « plus de 120 clients, dont plus de 80 réguliers » est tenu",
+    },
+    {
+      section: 1,
+      ligne: "Clients industriels accompagnés",
+      pourquoi: "légende de la carte « +200 », qui tombe avec son chiffre",
+    },
+  ]],
+  ["/offres/arret-technique/", [
+    {
+      section: 14,
+      ligne: "Le chiffrage sort du programme de travaux réel, pas d'un forfait au jugé : nombre de techniciens par métier, durée, encadrement, moyens. Quand plusieurs organisations sont possibles, nous proposons la plus économique. Les travaux découverts en cours d'arrêt font l'objet d'un chiffrage et d'un arbitrage avec vous, jamais d'une facture surprise.",
+      pourquoi: "prix : le contrat interdit tout prix, tarif, montant ou taux horaire",
+    },
+  ]],
+  ["/offres/bureau-etudes/", [
+    {
+      section: 18,
+      ligne: "Chaque mission est chiffrée sur devis, sur la base d'un périmètre écrit. Pas d'heures de dessin vendues au kilomètre. Un petit projet bien cadré reste un petit budget.",
+      pourquoi: "prix : le contrat interdit tout prix, tarif, montant ou taux horaire",
+    },
+  ]],
+  ["/offres/chantier/demenagement-machines/", [
+    {
+      section: 15,
+      ligne: "Le montant dépend du nombre de machines, de leur masse, des conditions d'accès et de la distance. Il est chiffré sur devis après l'étude préalable, qui est gratuite. En manutention lourde, un prix donné sans visite se corrige toujours à la hausse.",
+      pourquoi: "prix : le contrat interdit tout prix, tarif, montant ou taux horaire",
+    },
+  ]],
+  ["/offres/chantier/transfert-de-production/", [
+    {
+      section: 14,
+      ligne: "Le coût dépend du nombre de lignes, de la distance, des travaux d'adaptation et du niveau d'accompagnement. Il est chiffré sur devis après visite, poste par poste. Repère utile : un chantier mal préparé se paie en semaines d'arrêt, et ces semaines valent presque toujours plus cher que la prestation.",
+      pourquoi: "prix : le contrat interdit tout prix, tarif, montant ou taux horaire",
+    },
+  ]],
+  ["/offres/depannage-industriel/astreinte/", [
+    {
+      section: 13,
+      ligne: "Le prix dépend des plages couvertes, du nombre d'équipements et de la criticité. Chaque dispositif est chiffré sur devis, après un échange technique. Le bon comparatif n'est pas la ligne d'indemnité sur vos bulletins de paie, mais le coût complet de votre astreinte interne : primes, heures majorées, repos compensateurs, temps de gestion et risque juridique.",
+      pourquoi: "prix : le contrat interdit tout prix, tarif, montant ou taux horaire",
+    },
+  ]],
+  ["/offres/depannage-industriel/panne-machine/", [
+    {
+      section: 15,
+      ligne: "Le tarif dépend du domaine technique, de la durée et de la plage horaire. Il est chiffré sur devis, jamais découvert sur la facture. Le chiffre à regarder en face reste le vôtre : main-d'œuvre immobilisée, production perdue, pénalités de retard.",
+      pourquoi: "prix : le contrat interdit tout prix, tarif, montant ou taux horaire",
+    },
+  ]],
+  ["/offres/residence/prestataire-ou-salarie/", [
+    {
+      section: 12,
+      ligne: "[Renfort d'équipes sur plusieurs sites, confort thermique](/preuves/groupe-atlantic/)",
+      pourquoi: "markdown source recraché par la maquette dans un titre de carte : le site rend le libellé seul et pointe la même cible, la syntaxe crochets-parenthèses n'est pas publiée",
+    },
+    {
+      section: 12,
+      ligne: "[Pilotage du service pendant une transition, industrie](/preuves/eriks/)",
+      pourquoi: "markdown source recraché par la maquette dans un titre de carte : le site rend le libellé seul et pointe la même cible, la syntaxe crochets-parenthèses n'est pas publiée",
+    },
+    {
+      section: 12,
+      ligne: "[Renfort continu d'une équipe interne, site proche de Paris](/preuves/fdj/)",
+      pourquoi: "markdown source recraché par la maquette dans un titre de carte : le site rend le libellé seul et pointe la même cible, la syntaxe crochets-parenthèses n'est pas publiée",
+    },
+    {
+      section: 12,
+      ligne: "[Technicien polyvalent sur parc hétérogène, papier et emballage](/preuves/vpk/)",
+      pourquoi: "markdown source recraché par la maquette dans un titre de carte : le site rend le libellé seul et pointe la même cible, la syntaxe crochets-parenthèses n'est pas publiée",
+    },
+    {
+      section: 12,
+      ligne: "[Renfort sur site agroalimentaire, Belgique](/preuves/mccain-belgique/)",
+      pourquoi: "markdown source recraché par la maquette dans un titre de carte : le site rend le libellé seul et pointe la même cible, la syntaxe crochets-parenthèses n'est pas publiée",
+    },
+    {
+      section: 12,
+      ligne: "[Maintenance tenue pendant les congés d'été](/preuves/ogf-arret-estival/)",
+      pourquoi: "markdown source recraché par la maquette dans un titre de carte : le site rend le libellé seul et pointe la même cible, la syntaxe crochets-parenthèses n'est pas publiée",
+    },
+    {
+      section: 14,
+      ligne: "À l'heure facturée, souvent oui. À périmètre complet (recrutement, formation, remplacements, administration, risque de rupture), l'écart se resserre, et il s'inverse fréquemment sur les compétences rares ou les activités variables. La seule réponse sérieuse est un calcul mené sur votre situation. Notre devis détaillé le permet ligne à ligne.",
+      pourquoi: "prix : la réponse détaille ce qui fait le montant, le contrat interdit tout prix ou tarif",
+    },
+  ]],
+  ["/offres/retrofit/mise-en-conformite-machine/", [
+    {
+      section: 16,
+      ligne: "Le montant est chiffré sur devis, après audit. Il dépend du nombre de machines et des écarts constatés. Le plan d'actions est étalé par ordre de priorité : l'essentiel d'abord, le reste ensuite, sans immobiliser le budget d'un coup.",
+      pourquoi: "prix : le contrat interdit tout prix, tarif, montant ou taux horaire",
+    },
+  ]],
+  ["/offres/retrofit/remise-en-etat/", [
+    {
+      section: 1,
+      ligne: "+200",
+      pourquoi: "chiffre de clients interdit : seul « plus de 120 clients, dont plus de 80 réguliers » est tenu",
+    },
+    {
+      section: 1,
+      ligne: "Clients industriels accompagnés",
+      pourquoi: "légende de la carte « +200 », qui tombe avec son chiffre",
+    },
+    {
+      section: 14,
+      ligne: "Chaque cas est chiffré sur devis : l'état constaté, les pièces à remplacer et le degré de finition attendu font le prix. L'état des lieux préalable donne la rentabilité avant l'engagement, et la comparaison avec la valeur actuelle du matériel fait partie de la réponse.",
+      pourquoi: "prix : le contrat interdit tout prix, tarif, montant ou taux horaire",
+    },
+  ]],
+  ["/travaux-industriels/demantelement-industriel/", [
+    {
+      section: 14,
+      ligne: "Le montant dépend du volume d'équipements, des contraintes d'accès, de la part de valorisation et du niveau de remise en état attendu. Chiffrage sur devis après visite, poste par poste. La valeur des matières récupérables apparaît sur une ligne du devis, elle n'y est pas noyée.",
+      pourquoi: "prix : la réponse détaille ce qui fait le montant, le contrat interdit tout prix ou tarif",
+    },
+  ]],
+  ["/travaux-industriels/levage-manutention/", [
+    {
+      section: 15,
+      ligne: "Le montant dépend de la masse, de la géométrie de la charge, des accès, de la durée d'immobilisation de la zone et des moyens à mobiliser. Chiffrage sur devis après relevé sur site. Un prix donné au téléphone sans masse réelle ne tient pas.",
+      pourquoi: "prix : la réponse détaille ce qui fait le montant, le contrat interdit tout prix ou tarif",
+    },
+  ]],
+  ["/travaux-industriels/montage-industriel/", [
+    {
+      section: 14,
+      ligne: "Le montant dépend du nombre d'ensembles, de leur poids, des raccordements à réaliser et du niveau d'essais attendu. Chiffrage sur devis après lecture du dossier technique et visite du site, poste par poste.",
+      pourquoi: "prix : la réponse détaille ce qui fait le montant, le contrat interdit tout prix ou tarif",
+    },
+  ]],
+];
+
+const TROUS_PAR_PAGE = {};
+for (const [u, items] of TROUS_DECLARES) {
+  (TROUS_PAR_PAGE[u] ??= []).push(...items);
+}
 const TROUS_ASSUMES = TROUS_PAR_PAGE[CHEMIN_PAGE] ?? [];
 
 /**
