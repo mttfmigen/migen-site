@@ -1,0 +1,209 @@
+{
+  "url": "/preuves/amazon-centre-logistique/",
+  "titre_h1": "Maintenir un centre logistique qui ne ferme jamais",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "AMAZON",
+    "chapeau": [
+      "AMAZON exploite le centre logistique ORY4 en continu, nuit et week-end. Migen y assure les interventions préventives une semaine sur deux, sous contrat annuel."
+    ],
+    "bouton": "Faire chiffrer mon besoin",
+    "heroFiche": [
+      {
+        "libelle": "Site",
+        "valeur": "Centre logistique ORY4"
+      },
+      {
+        "libelle": "Régime",
+        "valeur": "Fonctionnement ininterrompu, sans fenêtre d'arrêt longue"
+      },
+      {
+        "libelle": "Engagement",
+        "valeur": "Contrat annuel, toujours en cours"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Durée d'intervention",
+        "valeur": "8 heures"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "10 à 20 techniciens polyvalents"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Maintenance préventive, contrôle, tests en série"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Centre logistique ORY4"
+      }
+    ],
+    "situationTitre": "Un site qui ne ferme jamais n'a pas de fenêtre de maintenance.",
+    "situationProse": [
+      "Chaque minute d'immobilisation se paie sur les flux sortants."
+    ],
+    "objectifs": [
+      {
+        "titre": "Aucune plage longue",
+        "texte": "Les opérations doivent tenir dans quelques heures."
+      },
+      {
+        "titre": "Un volume d'équipements élevé",
+        "texte": "Beaucoup de machines à couvrir sur le même créneau."
+      },
+      {
+        "titre": "Un rythme imposé",
+        "texte": "Une semaine sur deux, sans décalage possible."
+      },
+      {
+        "titre": "Un risque qui remonte vite",
+        "texte": "Le préventif en retard se transforme en défaillance."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Effectif massé sur le créneau",
+        "texte": "10 à 20 techniciens polyvalents mobilisés en même temps, pour traiter un grand nombre d'interventions préventives en parallèle."
+      },
+      {
+        "titre": "Format calé sur 8 heures",
+        "texte": "Les opérations sont découpées pour entrer dans des plages de quelques heures, sans débordement sur l'exploitation."
+      },
+      {
+        "titre": "Préparation partagée",
+        "texte": "Les équipes AMAZON organisent les opérations en amont et rendent les pièces de rechange disponibles avant l'arrivée des techniciens."
+      },
+      {
+        "titre": "Exécution et contrôle",
+        "texte": "Migen prend en charge l'exécution, le contrôle et les tests en série de chaque opération."
+      },
+      {
+        "titre": "Rythme tenu dans la durée",
+        "texte": "Le dispositif tourne une semaine sur deux, sans rupture."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Préparation du créneau",
+        "texte": "Les équipes AMAZON préparent et organisent les opérations à venir."
+      },
+      {
+        "titre": "Approvisionnement",
+        "texte": "Les pièces de rechange nécessaires sont disponibles avant l'intervention."
+      },
+      {
+        "titre": "Exécution en parallèle",
+        "texte": "Les techniciens Migen se répartissent les équipements et traitent les opérations simultanément."
+      },
+      {
+        "titre": "Contrôle et tests en série",
+        "texte": "Chaque opération est vérifiée, puis testée avant restitution du matériel."
+      },
+      {
+        "titre": "Reconduction",
+        "texte": "Le créneau suivant repart une semaine plus tard, sous le même contrat annuel."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "AMAZON"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Centre logistique ORY4"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "10 à 20 techniciens polyvalents"
+      },
+      {
+        "libelle": "Durée d'intervention",
+        "valeur": "8 heures"
+      },
+      {
+        "libelle": "Fréquence",
+        "valeur": "1 semaine sur 2"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Maintenance préventive, contrôle, tests en série"
+      },
+      {
+        "libelle": "Cadre",
+        "valeur": "Contrat annuel"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Une opération maîtrisée",
+        "texte": "Délicate au départ, elle l'est devenue grâce à l'organisation et à l'entraînement des équipes, côté prestataire comme côté client."
+      },
+      {
+        "titre": "Un risque de défaillance réduit",
+        "texte": "Le préventif passe dans la fenêtre prévue, ce qui sécurise la continuité opérationnelle du site."
+      },
+      {
+        "titre": "Un périmètre qui s'élargit",
+        "texte": "Migen réalise toujours ces interventions, avec des responsabilités de plus en plus importantes."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "La situation",
+        "texte": "La contrainte posée par AMAZON tenait en quatre points :"
+      },
+      {
+        "titre": "Le résultat",
+        "texte": "Le contrat est reconduit chaque année. Un site logistique de cette taille ne reconduit pas un prestataire qui le ralentit."
+      }
+    ],
+    "besoinTitre": "Un préventif qui ne rentre plus dans vos fenêtres d'arrêt ?",
+    "besoinProse": [
+      "Dites-nous votre rythme d'exploitation, nous dimensionnons l'équipe pour le créneau.",
+      "Le préventif qui glisse ne disparaît pas. Il revient sous forme de correctif, au pire moment, et au prix fort."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Après votre demande, du lundi au vendredi de 8h00 à 18h30."
+      },
+      {
+        "titre": "Plus de 120 techniciens",
+        "texte": "De quoi masser un effectif important sur une plage courte."
+      },
+      {
+        "titre": "Astreinte la nuit, le week-end et les jours fériés",
+        "texte": "Proposée en option pour les sites qui ne s'arrêtent pas, par téléphone."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Entretien technique et entretien comportemental, avant toute affectation sur site."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance équipements logistiques",
+        "href": "/secteurs/logistique/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "AMAZON : démarrage d'un nouveau site",
+        "href": "/preuves/amazon-nouveau-site/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

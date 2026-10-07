@@ -1,0 +1,192 @@
+{
+  "url": "/preuves/savoye-migration-automates-norvege/",
+  "titre_h1": "Deux automates migrés en deux week-ends, sans arrêter la production",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "SAVOYE",
+    "chapeau": [
+      "Savoye, intégrateur de solutions d'automatisation logistique, a confié à Migen la migration des automates de deux de ses machines, installées chez un exploitant logistique en Norvège. Migen est intervenu au nom de Savoye, sous le pilotage d'Orthus, filiale du groupe Migen."
+    ],
+    "bouton": "Préparer ma migration",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Intralogistique, centre logistique automatisé"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "2 machines Savoye, automates et IHM"
+      },
+      {
+        "libelle": "Fenêtre",
+        "valeur": "2 week-ends consécutifs, pendant les arrêts de production"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif",
+        "valeur": "1 électromécanicien et 1 automaticien Migen"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Migration matériel et logiciel automates, reprise IHM"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Centre logistique automatisé, Norvège"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "2 machines Savoye, à fonctionnalités identiques"
+      }
+    ],
+    "situationTitre": "Un automate en fin de vie ne prévient pas.",
+    "situationProse": [
+      "Le jour où le fabricant cesse de fournir les pièces et le support, chaque panne devient un arrêt long.",
+      "Les deux machines du site tournaient sur une génération d'automates que le fabricant cessait de produire et de supporter."
+    ],
+    "objectifs": [
+      {
+        "titre": "La migration était inévitable",
+        "texte": "Passer au nouveau matériel et au nouveau logiciel, avec exactement les mêmes fonctionnalités."
+      },
+      {
+        "titre": "Pas d'équipe disponible chez Savoye",
+        "texte": "Le chantier ne pouvait pas être réalisé en interne dans les délais."
+      },
+      {
+        "titre": "Un report d'un an en vue",
+        "texte": "Sans renfort, l'exploitant restait un an de plus sur un parc obsolète."
+      },
+      {
+        "titre": "L'exploitation ne devait pas s'arrêter",
+        "texte": "Tout devait tenir dans les arrêts de production."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Un binôme sur les deux couches techniques",
+        "texte": "Un automaticien pour le programme automate et l'IHM, un électromécanicien pour le décâblage et le câblage du nouveau matériel."
+      },
+      {
+        "titre": "Une préparation complète en amont",
+        "texte": "Matériel de remplacement défini et programme développé avant le départ, pour que le chantier se limite au remplacement et aux essais."
+      },
+      {
+        "titre": "Un pilotage par Orthus",
+        "texte": "Un interlocuteur unique pour Savoye, du cadrage à la remise en service."
+      },
+      {
+        "titre": "Un chef de chantier sur place",
+        "texte": "Billets d'avion repoussés, bagages perdus, outillage en retard, erreurs découvertes aux essais : chaque aléa est réglé sur le terrain, sans remettre en cause la livraison."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Préparation",
+        "texte": "Définition du matériel, développement de la programmation automate et de la reprise IHM."
+      },
+      {
+        "titre": "Décâblage et câblage",
+        "texte": "Dépose de l'ancien équipement, câblage du nouveau, dès le vendredi après-midi."
+      },
+      {
+        "titre": "Chargement du programme",
+        "texte": "Injection du nouveau logiciel automate."
+      },
+      {
+        "titre": "Essais",
+        "texte": "Tests de fonctionnement et correction des erreurs découvertes sur site."
+      },
+      {
+        "titre": "Remise en service",
+        "texte": "Un équipement en marche le lundi soir, puis la seconde machine le week-end suivant."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Savoye, intégrateur de solutions intralogistiques"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Centre logistique automatisé, Norvège"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Migration matériel et logiciel automates, reprise IHM"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "2 machines Savoye, à fonctionnalités identiques"
+      },
+      {
+        "libelle": "Effectif",
+        "valeur": "1 électromécanicien et 1 automaticien Migen"
+      },
+      {
+        "libelle": "Pilotage",
+        "valeur": "Orthus, filiale du groupe Migen"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Deux équipements livrés en marche",
+        "texte": "Les deux machines migrées et remises en service dans les fenêtres d'arrêt prévues."
+      },
+      {
+        "titre": "Un an de report évité",
+        "texte": "L'exploitant dispose d'un parc à jour, sans perte de fonctionnalités."
+      },
+      {
+        "titre": "Un engagement tenu sans recruter",
+        "texte": "Savoye a répondu à son client malgré une équipe interne indisponible."
+      }
+    ],
+    "besoinTitre": "Vos automates arrivent en fin de vie ?",
+    "besoinProse": [
+      "Dites-nous combien de machines sont concernées et quand tombent vos arrêts, nous préparons la migration.",
+      "Une migration réussie se joue avant le chantier. Le programme est prêt avant le départ, le week-end sert à remplacer et à tester."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Après votre demande, du lundi au vendredi de 8h00 à 18h30."
+      },
+      {
+        "titre": "Préparation en amont",
+        "texte": "Programme développé et testé avant le départ, le chantier ne sert qu'à remplacer et à valider."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, évalués en entretien technique et comportemental."
+      },
+      {
+        "titre": "Plus de 200 clients",
+        "texte": "Sur des chantiers et des sites en exploitation."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance équipements logistiques",
+        "href": "/secteurs/logistique/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : alliance intralogistique",
+        "href": "/preuves/savoye/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "AKTID : un centre logistique monté en six semaines",
+        "href": "/preuves/aktid-centre-logistique/"
+      }
+    ]
+  }
+}

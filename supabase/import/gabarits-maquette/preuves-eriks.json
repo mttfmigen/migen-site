@@ -1,0 +1,180 @@
+{
+  "url": "/preuves/eriks/",
+  "titre_h1": "Un responsable maintenance pour traverser la transition",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "ERIKS",
+    "chapeau": [
+      "ERIKS est un acteur industriel. Le site traverse deux mouvements simultanés : une intensification de la production et une transition interne dans ses équipes de maintenance.",
+      "Migen intègre sur site un responsable maintenance expérimenté, en présence continue, sous supervision Migen."
+    ],
+    "bouton": "Faire piloter mon service maintenance",
+    "chiffres": [
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "1 responsable maintenance, présence continue"
+      },
+      {
+        "libelle": "Nature des interventions",
+        "valeur": "Planification et ordonnancement du préventif et du curatif"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "ERIKS, acteur industriel"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Ensemble des opérations de maintenance du site"
+      }
+    ],
+    "situationTitre": "Quand le responsable maintenance manque, le préventif glisse et le curatif s'empile.",
+    "situationProse": [
+      "Personne ne voit venir l'arrêt, et il arrive au pire moment de l'année.",
+      "ERIKS posait trois exigences.",
+      "Le besoin n'était pas une paire de bras de plus. Il fallait quelqu'un capable de tenir le service pendant que l'organisation bougeait.",
+      "Les deux mouvements s'aggravent l'un l'autre. La cadence monte au moment précis où l'encadrement technique est le plus fragile.",
+      "Promouvoir un technicien en interne aurait retiré un intervenant du terrain pour en faire un manager sans appui. Le site aurait perdu deux fois."
+    ],
+    "objectifs": [
+      {
+        "titre": "Superviser",
+        "texte": "L'ensemble des opérations de maintenance industrielle du site."
+      },
+      {
+        "titre": "Manager",
+        "texte": "Les équipes déjà en place, sans casser leurs habitudes de travail."
+      },
+      {
+        "titre": "Tenir les process",
+        "texte": "Sans perte de qualité ni arrêt de production."
+      },
+      {
+        "titre": "Préparer l’arrivée d’un responsable permanent dans de bonnes conditions."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Vous avez un responsable nommé, pas une ressource anonyme",
+        "texte": "Il prend l'exploitation, l'organisation des interventions et le reporting."
+      },
+      {
+        "titre": "Vous démarrez sans rupture d'activité",
+        "texte": "Les ressources sont engagées dès la validation du besoin, la production ne s'arrête pas pour accueillir le renfort."
+      },
+      {
+        "titre": "Vous gardez votre organisation",
+        "texte": "Le responsable travaille dans les équipes ERIKS, l'encadrement technique reste porté par Migen."
+      },
+      {
+        "titre": "Vous avez un seul interlocuteur maintenance",
+        "texte": "Production, achats et services HSE parlent à la même personne."
+      },
+      {
+        "titre": "Vous recevez un reporting technique et stratégique",
+        "texte": "Il remonte à la direction industrielle pendant toute la prestation."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Cadrage du besoin",
+        "texte": "ERIKS pose son problème, montée de cadence et transition d'équipe. Le profil attendu est arrêté avec lui."
+      },
+      {
+        "titre": "Engagement des ressources",
+        "texte": "Validation du besoin, puis mobilisation du responsable maintenance."
+      },
+      {
+        "titre": "Prise de poste sur site",
+        "texte": "Intégration dans les équipes en place, reprise de la planification et de l'ordonnancement."
+      },
+      {
+        "titre": "Conduite de la mission",
+        "texte": "Préventif et curatif ordonnancés, techniciens ERIKS et Migen managés au quotidien."
+      },
+      {
+        "titre": "Coordination transverse",
+        "texte": "Production, achats et HSE travaillent avec un interlocuteur maintenance identifié."
+      },
+      {
+        "titre": "Reporting",
+        "texte": "Point technique et stratégique remonté à la direction industrielle."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Site",
+        "valeur": "ERIKS, acteur industriel"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Ensemble des opérations de maintenance du site"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "1 responsable maintenance, présence continue"
+      },
+      {
+        "libelle": "Nature des interventions",
+        "valeur": "Planification et ordonnancement du préventif et du curatif"
+      },
+      {
+        "libelle": "Encadrement",
+        "valeur": "Supervision Migen, reporting à la direction industrielle"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Zéro interruption critique",
+        "texte": "Sur toute la durée de la prestation."
+      },
+      {
+        "titre": "Montée en compétence des équipes internes",
+        "texte": ", qui ont travaillé aux côtés du responsable Migen."
+      },
+      {
+        "titre": "Organisation optimisée",
+        "texte": "Sur une période chargée de l'année."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "Le résultat",
+        "texte": "Le dossier ERIKS retient trois effets, tels quels."
+      },
+      {
+        "texte": "La continuité d'exploitation a été tenue pendant toute la phase de transition, sans arrêt de production."
+      },
+      {
+        "texte": "Le troisième point mérite d'être relevé. Les équipes internes ne sont pas sorties de la mission dans l'état où elles y sont entrées : elles ont travaillé aux côtés du responsable Migen, et gardé ce qu'elles en ont appris."
+      }
+    ],
+    "besoinTitre": "Votre responsable maintenance part au moment où la cadence monte ?",
+    "besoinProse": [
+      "Expliquez-nous le calendrier, nous regardons qui peut tenir le service en attendant.",
+      "L'astreinte la nuit, le week-end et les jours fériés s'ajoute en option pour les périodes tendues.",
+      "Confier le pilotage d'un service suppose un intervenant de niveau. Entretien technique, entretien comportemental, 10 % de candidats retenus, résultats d'évaluation partagés avant la prise de poste."
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Étude de cas",
+        "titre": "OGF : la maintenance pendant l'arrêt estival",
+        "href": "/preuves/ogf-arret-estival/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
+        "href": "/preuves/dimomaint/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
+        "href": "/preuves/eiffage/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

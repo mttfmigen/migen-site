@@ -1,0 +1,188 @@
+{
+  "url": "/preuves/groupe-atlantic/",
+  "titre_h1": "Un renfort devenu une partie de l’équipe",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "GROUPE ATLANTIC",
+    "chapeau": [
+      "Le Groupe Atlantic est un acteur du confort thermique. La mission porte sur ses sites de production, pas sur un atelier isolé.",
+      "Migen y renforce les équipes de maintenance. La collaboration est toujours en cours, en présence permanente."
+    ],
+    "bouton": "Renforcer mes équipes de maintenance",
+    "chiffres": [
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "1 à 3 techniciens"
+      },
+      {
+        "libelle": "Nature des interventions",
+        "valeur": "Maintenance préventive et corrective"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Sites de production, installations industrielles"
+      },
+      {
+        "libelle": "Fréquence",
+        "valeur": "Permanente, engagement de moyen terme"
+      }
+    ],
+    "situationTitre": "Un service maintenance en sous-effectif sur plusieurs sites, c'est la disponibilité machine qui se rejoue chaque semaine.",
+    "situationProse": [
+      "Le Groupe Atlantic visait quatre choses en s'adressant à Migen.",
+      "Ces objectifs supposent une présence stable. Un dépannage appelé au coup par coup ne construit rien, et le préventif reste toujours le premier sacrifié.",
+      "Sur plusieurs sites, le problème change de nature. Ce n'est plus une équipe qui sature, c'est une compétence qui manque à plusieurs endroits en même temps.",
+      "Chaque site tente alors de se débrouiller seul. Les bonnes pratiques ne circulent plus, et la même panne se traite trois fois différemment.",
+      "Un renfort permanent, dimensionné site par site, casse cette logique. L'effectif s'ajuste à la charge sans qu'aucun site n'ait à ouvrir un poste dans l'urgence."
+    ],
+    "objectifs": [
+      {
+        "titre": "Renforcer les équipes de maintenance",
+        "texte": "Sur les sites de production."
+      },
+      {
+        "titre": "Améliorer la disponibilité des installations",
+        "texte": "Et la continuité de production."
+      },
+      {
+        "titre": "Réduire les temps d'arrêt",
+        "texte": "Sur les équipements."
+      },
+      {
+        "titre": "Anticiper les besoins de maintenance",
+        "texte": "Préventive et corrective."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Vous ajustez l'effectif au besoin réel",
+        "texte": "Un à trois techniciens sont déployés selon la charge des sites."
+      },
+      {
+        "titre": "Vous installez une présence permanente",
+        "texte": ", pas une intervention ponctuelle. C'est ce qui rend le préventif tenable."
+      },
+      {
+        "titre": "Vous visez le moyen terme",
+        "texte": "La mission est cadrée dans la durée, ce qui permet aux intervenants de connaître les installations."
+      },
+      {
+        "titre": "Vous gagnez en réactivité sur les équipements de production",
+        "texte": ", avec un suivi rigoureux des interventions."
+      },
+      {
+        "titre": "Vous n'ouvrez pas de postes",
+        "texte": "Migen recrute, encadre et suit les techniciens affectés."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Décision",
+        "texte": "Le Groupe Atlantic choisit de renforcer ses équipes de maintenance plutôt que d'étirer l'existant."
+      },
+      {
+        "titre": "Démarrage",
+        "texte": "La collaboration s'engage sur les sites de production."
+      },
+      {
+        "titre": "Déploiement",
+        "texte": "Un à trois techniciens sont affectés selon les besoins des sites."
+      },
+      {
+        "titre": "Régime permanent",
+        "texte": "La présence s'installe dans la durée, sur un horizon de moyen terme."
+      },
+      {
+        "titre": "Suivi des interventions",
+        "texte": "Les opérations préventives et correctives sont tenues avec les équipes internes."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Groupe Atlantic, confort thermique"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Sites de production, installations industrielles"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "1 à 3 techniciens"
+      },
+      {
+        "libelle": "Nature des interventions",
+        "valeur": "Maintenance préventive et corrective"
+      },
+      {
+        "libelle": "Fréquence",
+        "valeur": "Permanente, engagement de moyen terme"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Une collaboration reconduite",
+        "texte": "La mission est toujours en cours sur les sites de production, en présence permanente."
+      },
+      {
+        "titre": "Un effectif tenu au niveau du besoin",
+        "texte": "Un à trois techniciens selon la charge de chaque site, sans que le Groupe Atlantic ait eu à ouvrir de poste."
+      },
+      {
+        "titre": "Le préventif et le correctif menés ensemble",
+        "texte": "Les interventions sur les équipements de production sont suivies avec les équipes internes, dans la durée."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "Chiffres clés",
+        "puces": [
+          {
+            "accroche": "1 à 3 techniciens",
+            "texte": "l'effectif suit la charge de chaque site, il ne s'impose pas au même niveau partout"
+          },
+          {
+            "accroche": "Présence permanente",
+            "texte": "un engagement de moyen terme, pas un dépannage appelé au coup par coup"
+          },
+          {
+            "accroche": "10 %",
+            "texte": "des candidats retenus, après entretien technique ET comportemental"
+          }
+        ]
+      },
+      {
+        "titre": "Le résultat",
+        "texte": "La mission se poursuit sur le même périmètre. Le dossier ne publie aucun indicateur de disponibilité machine, et nous n'en fabriquons pas pour la circonstance."
+      }
+    ],
+    "besoinTitre": "Plusieurs sites, un service maintenance qui ne suit plus ?",
+    "besoinProse": [
+      "Dites-nous combien de sites et quelles familles d'équipements, nous dimensionnons le renfort.",
+      "L'astreinte la nuit, le week-end et les jours fériés se souscrit en option quand les sites tournent hors horaires.",
+      "Un renfort permanent se juge sur qui arrive. Entretien technique, entretien comportemental, 10 % des candidats retenus : c'est notre filtre avant toute affectation."
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Étude de cas",
+        "titre": "JOINT LYONNAIS : parc machines défaillant",
+        "href": "/preuves/joint-lyonnais/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
+        "href": "/preuves/dimomaint/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
+        "href": "/preuves/eiffage/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

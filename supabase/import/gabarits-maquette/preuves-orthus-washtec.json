@@ -1,0 +1,203 @@
+{
+  "url": "/preuves/orthus-washtec/",
+  "titre_h1": "Des portiques de lavage montés partout en France",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "ORTHUS x WASHTEC",
+    "chapeau": [
+      "WashTec est un acteur mondial des systèmes de lavage automobile. Ses portiques s'installent chez ses propres clients, sur des sites dispersés.",
+      "Orthus, filiale du groupe Migen, assure le montage complet de ces portiques sur l'ensemble du territoire français, du transport à l'assemblage final."
+    ],
+    "bouton": "Confier l'installation de mes équipements",
+    "chiffres": [
+      {
+        "libelle": "Intervenant",
+        "valeur": "Orthus, filiale du groupe Migen, équipes mobiles"
+      },
+      {
+        "libelle": "Sites",
+        "valeur": "Stations-service, concessions, centres de lavage, sites industriels ou privés"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Montage complet des portiques, du transport à l'assemblage final"
+      },
+      {
+        "libelle": "Domaines",
+        "valeur": "Mécanique, électricité, automatisme, levage"
+      }
+    ],
+    "situationTitre": "Un fabricant d'équipements ne peut pas avoir une équipe de montage dans chaque département.",
+    "situationProse": [
+      "C'est pourtant là que se joue la satisfaction de son client final.",
+      "WashTec avait besoin de trois choses en même temps.",
+      "L'enjeu tient en une phrase : chaque installation doit être prête à fonctionner, conforme, sans reprise après coup.",
+      "Une installation qui traîne immobilise deux parties à la fois. Le fabricant ne facture pas la mise en service, et le client ne lave aucune voiture.",
+      "Confier chaque chantier à un poseur local semble plus simple. La qualité devient alors variable d'un site à l'autre, et c'est la marque de l'équipement qui porte les reprises.",
+      "Un montage sur site client mélange aussi plusieurs métiers. Levage, raccordement mécanique, raccordement électrique : un seul manque et la mise en service est repoussée."
+    ],
+    "objectifs": [
+      {
+        "titre": "Un montage complet",
+        "texte": "De ses portiques de lavage haute technologie."
+      },
+      {
+        "titre": "Une gestion de projet d'installation sur site client",
+        "texte": ", en station-service, en concession ou en centre auto."
+      },
+      {
+        "titre": "Une couverture nationale",
+        "texte": ", avec des équipes capables d'intervenir partout en France."
+      },
+      {
+        "titre": "Livrer chaque station prête à fonctionner, essais compris."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Vous avez un interlocuteur unique pour l'installation complète",
+        "texte": "Réception, assemblage, levage et raccordements mécaniques et électriques sont pris en charge."
+      },
+      {
+        "titre": "Vous travaillez avec des techniciens formés à vos équipements",
+        "texte": "Les intervenants sont formés aux matériels spécifiques WashTec."
+      },
+      {
+        "titre": "Vous montez selon les standards constructeur",
+        "texte": "Chaque portique est validé pour une mise en service immédiate."
+      },
+      {
+        "titre": "Vous couvrez tout le territoire",
+        "texte": "Un réseau d'équipes mobiles intervient partout, avec une coordination centralisée."
+      },
+      {
+        "titre": "Vous gardez la maîtrise de la chaîne",
+        "texte": "L'engagement est porté sur le terrain, sans sous-traitance en cascade."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Planification de l'installation",
+        "texte": "Le chantier est cadré avec WashTec, sur un site client identifié."
+      },
+      {
+        "titre": "Logistique",
+        "texte": "Les livraisons et les interventions techniques sont coordonnées en amont."
+      },
+      {
+        "titre": "Réception du matériel",
+        "texte": "L'équipe Orthus réceptionne le portique sur site."
+      },
+      {
+        "titre": "Assemblage et levage",
+        "texte": "Le montage est réalisé selon les standards constructeur."
+      },
+      {
+        "titre": "Raccordements",
+        "texte": "Les raccordements mécaniques et électriques sont exécutés et contrôlés."
+      },
+      {
+        "titre": "Validation",
+        "texte": "L'installation est validée pour une mise en service immédiate."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "WashTec, systèmes de lavage automobile"
+      },
+      {
+        "libelle": "Sites",
+        "valeur": "Stations-service, concessions, centres de lavage, sites industriels ou privés"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Montage complet des portiques, du transport à l'assemblage final"
+      },
+      {
+        "libelle": "Intervenant",
+        "valeur": "Orthus, filiale du groupe Migen, équipes mobiles"
+      },
+      {
+        "libelle": "Domaines",
+        "valeur": "Mécanique, électricité, automatisme, levage"
+      },
+      {
+        "libelle": "Couverture",
+        "valeur": "Nationale, coordination centralisée"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Les portiques sont montés partout en France",
+        "texte": ", avec des équipes itinérantes."
+      },
+      {
+        "titre": "Les normes de sécurité, de qualité et de délais",
+        "texte": "Sont suivies sur chaque chantier."
+      },
+      {
+        "titre": "La réactivité territoriale",
+        "texte": "Permet de tenir les délais d'installation à grande échelle."
+      },
+      {
+        "titre": "L'expérience porte sur des centaines de sites",
+        "texte": "Installés en France."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "Chiffres clés",
+        "puces": [
+          {
+            "accroche": "Des centaines de sites",
+            "texte": "installations réalisées en France sur ce partenariat, stations-service, concessions, centres de lavage et sites industriels"
+          },
+          {
+            "accroche": "4 domaines",
+            "texte": "mécanique, électricité, automatisme et levage tenus par la même équipe de montage"
+          },
+          {
+            "accroche": "10 hubs de techniciens",
+            "texte": "Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes, d'où partent les équipes mobiles"
+          }
+        ]
+      },
+      {
+        "titre": "Le résultat",
+        "texte": "Ce que le partenariat produit, tel que le dossier le documente."
+      },
+      {
+        "texte": "Le modèle repose sur la proximité terrain, la technicité et un interlocuteur unique côté client."
+      }
+    ],
+    "besoinTitre": "Vous fabriquez des équipements et vos installations traînent ?",
+    "besoinProse": [
+      "Parlons volumes, zones géographiques et standards de montage.",
+      "Pour les mises en service hors horaires, l'astreinte la nuit, le week-end et les jours fériés existe en option.",
+      "Une installation ratée se répare sur votre réputation, pas seulement sur le matériel. Nos techniciens sont évalués en entretien technique et comportemental, et 10 % sont retenus."
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Étude de cas",
+        "titre": "AMAZON ORY4 : le préventif de masse",
+        "href": "/preuves/amazon-centre-logistique/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
+        "href": "/preuves/dimomaint/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
+        "href": "/preuves/eiffage/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

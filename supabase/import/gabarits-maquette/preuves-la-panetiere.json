@@ -1,0 +1,149 @@
+{
+  "url": "/preuves/la-panetiere/",
+  "titre_h1": "Un renfort pour que le pain sorte chaque matin",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "LA PANETIÈRE",
+    "chapeau": [
+      "La Panetière, entreprise du groupe Occipain (coopérative Arterris), produit à Toulouse les pains d'un réseau de boulangeries. Migen y a assuré pendant 6 mois la maintenance du site de production."
+    ],
+    "bouton": "Demander un renfort de maintenance",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Boulangerie industrielle"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Site de production de pains pour un réseau de boulangeries"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "1 technicien intégré au site"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Agroalimentaire"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif",
+        "valeur": "1 technicien"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Toulouse (31)"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Production de pains pour réseau de boulangeries"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Agroalimentaire"
+      }
+    ],
+    "situationTitre": "Le site avait besoin d'une compétence maintenance immédiatement opérationnelle",
+    "objectifs": [
+      {
+        "titre": "Tenir la disponibilité des équipements de panification."
+      },
+      {
+        "titre": "Un dispositif sur une durée définie."
+      },
+      {
+        "titre": "Soulager l’équipe interne pendant une période de charge."
+      },
+      {
+        "titre": "Intervenir dans le respect des règles d’hygiène alimentaire."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Un technicien dédié au site pendant toute la mission.",
+        "texte": ""
+      },
+      {
+        "titre": "Un engagement à durée définie, sans recrutement pour le client.",
+        "texte": ""
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "Renfort maintenance du site de production."
+      },
+      {
+        "titre": "Affectation",
+        "texte": "Un technicien Migen."
+      },
+      {
+        "titre": "Intégration",
+        "texte": "Prise de poste sur le site."
+      },
+      {
+        "titre": "Clôture",
+        "texte": "Fin de mission après 6 mois."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "La Panetière (groupe Occipain, coopérative Arterris)"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Toulouse (31)"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Production de pains pour réseau de boulangeries"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Agroalimentaire"
+      },
+      {
+        "libelle": "Effectif",
+        "valeur": "1 technicien"
+      }
+    ],
+    "besoinTitre": "Un besoin comparable sur votre site ?",
+    "besoinProse": [
+      "Décrivez-le, nous vous présentons les techniciens adaptés."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Après votre demande, en semaine de 8h00 à 18h30."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Techniciens évalués sur la technique et le comportement avant affectation."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Offre",
+        "titre": "Sous-traitance maintenance",
+        "href": "/offres/residence/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance agroalimentaire",
+        "href": "/secteurs/agroalimentaire/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "DANONE (BLÉDINA) : pas un poste sans maintenance, week-end compris",
+        "href": "/preuves/danone-lignes-de-production/"
+      }
+    ]
+  }
+}

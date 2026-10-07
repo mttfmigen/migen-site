@@ -1,141 +1,109 @@
 {
   "url": "/offres/depannage-industriel/astreinte/",
   "gabarit": "03 Offre et prestation",
-  "verdict": "rendue-sans-titre",
-  "h1Attendu": "Astreinte de maintenance, 24 heures sur 24",
-  "h1Rendu": "",
-  "nbSections": 16,
-  "hauteurTotale": 8050,
+  "verdict": "rendue",
+  "h1Attendu": "Astreinte de maintenance : quelqu’un décroche, la nuit comme le week-end",
+  "h1Rendu": "Astreinte de maintenance : quelqu’un décroche, la nuit comme le week-end",
+  "nbSections": 12,
+  "hauteurTotale": 8808,
   "motsAnnonces": 1427,
-  "motsRendus": 1294,
+  "motsRendus": 1106,
   "sections": [
     {
       "ordre": 0,
       "titre": null,
-      "hauteur": 660,
+      "hauteur": 706,
       "images": 0,
-      "liens": 1,
-      "mots": 44
+      "liens": 4,
+      "mots": 127
     },
     {
       "ordre": 1,
       "titre": null,
-      "hauteur": 204,
-      "images": 0,
-      "liens": 0,
-      "mots": 44
+      "hauteur": 364,
+      "images": 1,
+      "liens": 8,
+      "mots": 22
     },
     {
       "ordre": 2,
-      "titre": null,
-      "hauteur": 203,
-      "images": 76,
-      "liens": 0,
-      "mots": 4
+      "titre": "Le problème",
+      "hauteur": 963,
+      "images": 0,
+      "liens": 1,
+      "mots": 176
     },
     {
       "ordre": 3,
-      "titre": null,
-      "hauteur": 463,
-      "images": 2,
-      "liens": 0,
-      "mots": 68
+      "titre": "Le déroulé",
+      "hauteur": 908,
+      "images": 0,
+      "liens": 1,
+      "mots": 160
     },
     {
       "ordre": 4,
-      "titre": null,
-      "hauteur": 114,
-      "images": 0,
-      "liens": 1,
-      "mots": 13
+      "titre": "Nos références",
+      "hauteur": 835,
+      "images": 76,
+      "liens": 6,
+      "mots": 93
     },
     {
       "ordre": 5,
-      "titre": null,
-      "hauteur": 495,
+      "titre": "Chiffres clés",
+      "hauteur": 666,
       "images": 0,
-      "liens": 0,
-      "mots": 123
+      "liens": 1,
+      "mots": 41
     },
     {
       "ordre": 6,
-      "titre": "Ce que nous faisons, et ce que ça change pour vous",
-      "hauteur": 559,
+      "titre": "L’offre",
+      "hauteur": 921,
       "images": 0,
-      "liens": 0,
-      "mots": 189
+      "liens": 1,
+      "mots": 121
     },
     {
       "ordre": 7,
-      "titre": null,
-      "hauteur": 112,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 1192,
       "images": 0,
-      "liens": 1,
-      "mots": 13
+      "liens": 2,
+      "mots": 182
     },
     {
       "ordre": 8,
-      "titre": "Un appel. Un plan. Une ligne qui repart.",
-      "hauteur": 830,
+      "titre": "Ce qu’on nous demande avant de signer",
+      "hauteur": 446,
       "images": 0,
       "liens": 1,
-      "mots": 156
+      "mots": 19
     },
     {
       "ordre": 9,
-      "titre": "Ce que nous garantissons",
-      "hauteur": 698,
+      "titre": null,
+      "hauteur": 333,
       "images": 0,
-      "liens": 0,
-      "mots": 140
+      "liens": 1,
+      "mots": 25
     },
     {
       "ordre": 10,
-      "titre": null,
-      "hauteur": 243,
+      "titre": "Pages liées",
+      "hauteur": 560,
       "images": 0,
-      "liens": 1,
-      "mots": 3
+      "liens": 6,
+      "mots": 75
     },
     {
       "ordre": 11,
-      "titre": "Nos références",
-      "hauteur": 816,
-      "images": 10,
-      "liens": 9,
-      "mots": 234
-    },
-    {
-      "ordre": 12,
-      "titre": null,
-      "hauteur": 114,
-      "images": 0,
-      "liens": 1,
-      "mots": 13
-    },
-    {
-      "ordre": 13,
-      "titre": "Vos questions avant de nous appeler",
-      "hauteur": 880,
-      "images": 0,
-      "liens": 1,
-      "mots": 125
-    },
-    {
-      "ordre": 14,
-      "titre": "Les offres et prestations voisines",
-      "hauteur": 696,
-      "images": 0,
-      "liens": 6,
-      "mots": 78
-    },
-    {
-      "ordre": 15,
-      "titre": null,
-      "hauteur": 964,
+      "titre": "Un chargé d’affaires vous rappelle dans l’heure.",
+      "hauteur": 819,
       "images": 0,
       "liens": 0,
-      "mots": 47
+      "mots": 65
     }
   ]
 }

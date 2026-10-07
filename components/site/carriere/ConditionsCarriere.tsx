@@ -4,7 +4,7 @@ import type { CSSProperties } from "react";
  * « Ce que nous offrons » : quatre conditions, maquette lignes 3213 à 3242.
  *
  * ÉCART À LA MAQUETTE : elle écrit « Cinq agences », interdit de copie du
- * projet. Le compte tenu est quatre agences (Lyon siège à Limonest, Montréal,
+ * projet. Le compte tenu est quatre agences (Lyon siège à Écully, Montréal,
  * Dubaï, Madrid) et dix hubs de techniciens.
  */
 

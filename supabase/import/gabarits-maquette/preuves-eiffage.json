@@ -1,0 +1,201 @@
+{
+  "url": "/preuves/eiffage/",
+  "titre_h1": "Le préventif d’une centrale photovoltaïque en trois techniciens",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "EIFFAGE",
+    "chapeau": [
+      "Eiffage conduit un projet de grande envergure dans le photovoltaïque. L'installation solaire concernée demande une maintenance préventive rigoureuse.",
+      "Migen a été sélectionné pour rejoindre Eiffage sur ce chantier. Trois techniciens spécialisés sont venus en renfort des équipes déjà présentes sur le site."
+    ],
+    "bouton": "Renforcer mes équipes de chantier",
+    "chiffres": [
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "3 techniciens spécialisés"
+      },
+      {
+        "libelle": "Nature des interventions",
+        "valeur": "Maintenance préventive"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Installation solaire de grande envergure"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Panneaux solaires, onduleurs, dispositifs de suivi"
+      }
+    ],
+    "situationTitre": "Sur une centrale solaire, un onduleur qui fatigue ne fait pas de bruit.",
+    "situationProse": [
+      "Il fait baisser la production, sans prévenir, et la perte se lit sur la facture avant de se lire sur le terrain.",
+      "Le chantier posait deux exigences.",
+      "Les équipes Eiffage étaient déjà mobilisées sur le chantier. Le préventif de masse sur un parc étendu demande des bras supplémentaires, et une compétence qui arrive prête.",
+      "Une installation solaire ne s'arrête pas franchement. Elle se dégrade par points, sur des milliers de composants identiques, et la dérive passe inaperçue tant que personne ne la mesure.",
+      "Un renfort mal choisi coûte alors deux fois. Il faut l'encadrer, puis reprendre derrière lui ce qui a été contrôlé trop vite."
+    ],
+    "objectifs": [
+      {
+        "titre": "Anticiper les pannes",
+        "texte": "Avant qu'elles n'entraînent des interruptions de service."
+      },
+      {
+        "titre": "Maintenir une production d'énergie solaire continue",
+        "texte": "Pendant toute la durée du projet."
+      },
+      {
+        "titre": "Disposer de techniciens habilités sur installations électriques photovoltaïques."
+      },
+      {
+        "titre": "Tenir le planning du chantier sans mobiliser les équipes internes."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Vous renforcez les équipes en place, sans les remplacer",
+        "texte": "Trois techniciens spécialisés Migen viennent en appui sur le site."
+      },
+      {
+        "titre": "Vous couvrez les composants essentiels du système",
+        "texte": "Panneaux solaires, onduleurs et dispositifs de suivi entrent dans le périmètre de contrôle."
+      },
+      {
+        "titre": "Vous détectez l'usure avant la panne",
+        "texte": "Les signes de dysfonctionnement sont relevés avant qu'ils ne coupent la production."
+      },
+      {
+        "titre": "Vous maximisez la durée de vie des installations",
+        "texte": "Un préventif tenu repousse les remplacements d'équipements."
+      },
+      {
+        "titre": "Vous partagez les bonnes pratiques",
+        "texte": "La collaboration entre les deux équipes fait circuler les méthodes de maintenance."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Sélection",
+        "texte": "Migen est retenu pour rejoindre Eiffage sur le projet photovoltaïque."
+      },
+      {
+        "titre": "Cadrage du renfort",
+        "texte": "Trois techniciens spécialisés sont affectés au chantier."
+      },
+      {
+        "titre": "Déploiement sur site",
+        "texte": "L'équipe Migen s'intègre aux équipes Eiffage déjà présentes."
+      },
+      {
+        "titre": "Contrôle des composants",
+        "texte": "Panneaux, onduleurs et dispositifs de suivi sont passés en revue."
+      },
+      {
+        "titre": "Maintenance préventive",
+        "texte": "Les signes d'usure et de dysfonctionnement sont traités avant interruption de service."
+      },
+      {
+        "titre": "Fin de mission",
+        "texte": "Le renfort se retire à l'échéance."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Eiffage, chantier photovoltaïque"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Installation solaire de grande envergure"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Panneaux solaires, onduleurs, dispositifs de suivi"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "3 techniciens spécialisés"
+      },
+      {
+        "libelle": "Nature des interventions",
+        "valeur": "Maintenance préventive"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "La maintenance préventive a été renforcée",
+        "texte": "Sur toute la durée de la mission."
+      },
+      {
+        "titre": "La continuité des opérations",
+        "texte": "A été tenue pendant le projet."
+      },
+      {
+        "titre": "Les bonnes pratiques ont circulé",
+        "texte": "Entre les équipes Migen et Eiffage."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "Chiffres clés",
+        "puces": [
+          {
+            "accroche": "3 techniciens",
+            "texte": "l'équipe spécialisée affectée en renfort, en appui des équipes Eiffage déjà sur site"
+          },
+          {
+            "accroche": "6 semaines",
+            "texte": "la durée du renfort"
+          },
+          {
+            "accroche": "3 familles de composants",
+            "texte": "panneaux solaires, onduleurs et dispositifs de suivi dans le périmètre de contrôle"
+          },
+          {
+            "accroche": "10 %",
+            "texte": "des candidats retenus, après entretien technique ET comportemental"
+          }
+        ]
+      },
+      {
+        "titre": "Le résultat",
+        "texte": "Ce que le renfort a apporté au chantier, tel que le dossier le documente."
+      },
+      {
+        "texte": "Le dossier retient une capacité à intervenir sur des projets à haute technicité, aux côtés d'un acteur majeur des énergies renouvelables."
+      },
+      {
+        "texte": "Le renfort est reparti à l'échéance prévue, la mission terminée. Sur un chantier, c'est aussi une forme de résultat."
+      }
+    ],
+    "besoinTitre": "Un chantier qui demande plus de bras que votre équipe n'en a ?",
+    "besoinProse": [
+      "Donnez-nous le périmètre technique et la fenêtre, nous mobilisons le nombre de techniciens qu'il faut.",
+      "L'astreinte la nuit, le week-end et les jours fériés reste disponible en option pendant les phases critiques.",
+      "Sur un chantier, un technicien mal choisi se voit tout de suite. Nos intervenants passent une évaluation technique et une évaluation comportementale, pour un taux de sélection de 10 %.",
+      "Les résultats sont partagés avec le client. Vous savez qui rejoint vos équipes avant qu'il n'arrive sur site."
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SOPREMA : montage et transfert de machines",
+        "href": "/preuves/soprema/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
+        "href": "/preuves/dimomaint/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "ERIKS : un responsable maintenance pour traverser la transition",
+        "href": "/preuves/eriks/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

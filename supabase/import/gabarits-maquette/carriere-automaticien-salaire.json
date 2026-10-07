@@ -1,300 +1,236 @@
 {
  "url": "/carriere/automaticien/salaire/",
- "h1": "Salaire automaticien",
+ "titre_h1": "Salaire automaticien",
  "mot_cle": "salaire automaticien",
  "contenu": {
   "gabarit": "metier",
-  "chapeau": "Migen emploie des automaticiens SIEMENS et Schneider dans toute la France : ce que nous décrivons ici, nous le vivons en entretien de recrutement chaque semaine. Le regard est celui d'un employeur, pas d'un simple agrégateur d'annonces.",
-  "boutons": [
-   {
-    "libelle": "Recruter ce profil"
-   },
-   {
-    "libelle": "Candidater chez Migen",
-    "href": "/contact/"
-   }
-  ],
-  "competences": [
-   "Automates SIEMENS et Schneider",
-   "Robotique",
-   "Supervision et interface homme-machine",
-   "Réseaux et informatique industrielle",
-   "Électrotechnique et variation de vitesse",
-   "Communication"
-  ],
-  "autres": [
-   {
-    "libelle": "Technicien de maintenance",
-    "href": "/carriere/technicien-de-maintenance/"
-   },
-   {
-    "libelle": "Électromécanicien",
-    "href": "/carriere/electromecanicien/"
-   },
-   {
-    "libelle": "Automaticien",
-    "href": "/carriere/automaticien/"
-   },
-   {
-    "libelle": "Roboticien",
-    "href": "/carriere/roboticien/"
-   },
-   {
-    "libelle": "Responsable maintenance",
-    "href": "/carriere/responsable-maintenance/"
-   },
-   {
-    "libelle": "Agent de maintenance industrielle",
-    "href": "/carriere/agent-de-maintenance/"
-   },
-   {
-    "libelle": "Technicien de maintenance itinérant",
-    "href": "/carriere/technicien-itinerant/"
-   },
-   {
-    "libelle": "Alternance maintenance industrielle",
-    "href": "/carriere/alternance/"
-   }
-  ],
-  "cta": {
-   "question": "Ce métier vous manque sur votre site ?",
-   "rappel": "Décrivez le poste et les habilitations attendues. Nous vous présentons des techniciens à valider.",
-   "bouton": {
-    "libelle": "Je veux ce profil"
+  "heros": {
+   "pastille": "Métier",
+   "chapeau": "Vous savez faire parler un automate ; votre fiche de paie, elle, reste muette. Le salaire automaticien varie du simple au double selon l'expérience, le secteur et la ville : ce guide pose les fourchettes réelles du marché, et ce qui les fait bouger. Il complète la fiche métier [automaticien](/carriere/automaticien/). L'automaticien y trouve le détail des missions, cette page traite la paie.",
+   "paragraphes": [
+    "Migen emploie des automaticiens SIEMENS et Schneider dans toute la France : ce que nous décrivons ici, nous le vivons en entretien de recrutement chaque semaine. Le regard est celui d'un employeur, pas d'un simple agrégateur d'annonces."
+   ],
+   "chiffre": {
+    "valeur": "10 %",
+    "texte": "des candidats retenus, après un test technique et un entretien"
    }
   },
-  "corps": [
+  "sections": [
    {
-    "type": "citation",
-    "texte": "Envie d'en parler directement ? Un échange au 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30, et votre profil est fixé sur sa valeur de marché."
-   },
-   {
-    "type": "titre",
-    "niveau": 2,
-    "texte": "Le salaire automaticien en un coup d'œil",
-    "id": "le-salaire-automaticien-en-un-coup-d-il"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Les études de rémunération publiées par les cabinets de recrutement et les job-boards convergent : voici les fourchettes constatées en France, en salaire brut annuel."
-   },
-   {
-    "type": "tableau",
-    "entetes": [
-     "Niveau",
-     "Fourchette annuelle constatée"
-    ],
-    "lignes": [
-     [
-      "Débutant, 0 à 2 ans",
-      "28 000 à 35 000 €"
-     ],
-     [
-      "Confirmé, autour de 5 ans",
-      "35 000 à 45 000 €"
-     ],
-     [
-      "Expert ou chef de projet automatisme",
-      "45 000 à 60 000 €"
-     ],
-     [
-      "Ingénieur automaticien senior",
-      "jusqu'à 70 000 €"
-     ]
+    "type": "chiffres",
+    "items": [
+     {
+      "valeur": "+100",
+      "texte": "collaborateurs, techniciens salariés de Migen"
+     },
+     {
+      "valeur": "10 %",
+      "texte": "des candidats retenus après évaluation"
+     },
+     {
+      "valeur": "4 agences",
+      "texte": "et des hubs de techniciens partout en France"
+     },
+     {
+      "valeur": "CDI",
+      "texte": "alternance et stage, à tous les niveaux"
+     }
     ]
    },
    {
-    "type": "paragraphe",
-    "texte": "Le salaire médian se situe autour de 33 000 à 36 000 € brut, soit un salaire mensuel d'environ 2 750 à 3 000 €. Pour passer du brut au net avant impôt, comptez environ 75 à 78 % : un salaire de base de 32 000 € en annuel donne à peu près 2 050 € nets par mois. Le rapport brut net exact dépend du statut et de la convention collective."
-   },
-   {
-    "type": "citation",
-    "texte": "Le propos est clair : ces chiffres sont des repères de marché issus de données publiées, pas une grille Migen. Chez nous, la rémunération se discute dossier en main, dès le premier entretien."
-   },
-   {
-    "type": "titre",
-    "niveau": 2,
-    "texte": "Ce qui fait varier la rémunération",
-    "id": "ce-qui-fait-varier-la-remuneration"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Deux automaticiens au même niveau de formation peuvent afficher 10 000 € d'écart. Six facteurs expliquent l'essentiel, et vous pouvez agir sur chacun."
-   },
-   {
-    "type": "liste",
-    "items": [
+    "type": "tableau",
+    "surtitre": "01 · Salaire",
+    "titre": "Le salaire automaticien en un coup d'œil",
+    "intros": [
+     "Les études de rémunération publiées par les cabinets de recrutement et les job-boards convergent : voici les fourchettes constatées en France, en salaire brut annuel.",
+     "Le salaire médian se situe autour de 33 000 à 36 000 € brut, soit un salaire mensuel d'environ 2 750 à 3 000 €. Pour passer du brut au net avant impôt, comptez environ 75 à 78 % : un salaire de base de 32 000 € en annuel donne à peu près 2 050 € nets par mois. Le rapport brut net exact dépend du statut et de la convention collective."
+    ],
+    "entetes": {
+     "gauche": "Niveau",
+     "droite": "Fourchette annuelle constatée"
+    },
+    "lignes": [
      {
-      "accroche": "L'expérience",
+      "gauche": "Débutant, 0 à 2 ans",
+      "droite": "28 000 à 35 000 €"
+     },
+     {
+      "gauche": "Confirmé, autour de 5 ans",
+      "droite": "35 000 à 45 000 €"
+     },
+     {
+      "gauche": "Expert ou chef de projet automatisme",
+      "droite": "45 000 à 60 000 €"
+     },
+     {
+      "gauche": "Ingénieur automaticien senior",
+      "droite": "jusqu'à 70 000 €"
+     }
+    ],
+    "bande": {
+     "texte": "Le propos est clair : ces chiffres sont des repères de marché issus de données publiées, pas une grille Migen. Chez nous, la rémunération se discute dossier en main, dès le premier entretien."
+    }
+   },
+   {
+    "type": "bento",
+    "surtitre": "02 · Salaire",
+    "titre": "Ce qui fait varier la rémunération",
+    "intros": [
+     "Deux automaticiens au même niveau de formation peuvent afficher 10 000 € d'écart. Six facteurs expliquent l'essentiel, et vous pouvez agir sur chacun."
+    ],
+    "cartes": [
+     {
+      "titre": "L'expérience",
       "texte": "Le premier poste paie la promesse, les suivants paient les preuves. Les actions concrètes, mises en service réussies et redémarrages tenus, valent plus qu'une ligne de CV."
      },
      {
-      "accroche": "Le secteur",
+      "titre": "Le secteur",
       "texte": "Nucléaire, automobile, pharmaceutique et énergie paient au-dessus de la moyenne ; l'agroalimentaire et la logistique, supply chain comprise, recrutent en volume dans toute l'industrie, production continue en tête. Le secteur le plus exigeant en sécurité est souvent le mieux rémunéré."
      },
      {
-      "accroche": "La région",
+      "titre": "La région",
       "texte": "Paris et l'Île-de-France affichent les montants les plus hauts, à pouvoir d'achat égal l'écart fond. Les bassins de Toulouse et Bordeaux, tirés par l'aéronautique, recrutent fort, Bordeaux ajoutant le spatial et la défense ; Strasbourg profite du travail frontalier, Nantes et Lyon d'un tissu industriel dense."
      },
      {
-      "accroche": "La taille de l'entreprise",
+      "titre": "La taille de l'entreprise",
       "texte": "Un grand groupe offre primes, treizième mois et avantages ; une PME offre l'autonomie et la polyvalence. La politique salariale change avec la taille de l'entreprise, structure de la paie autant que montant."
      },
      {
-      "accroche": "Les logiciels maîtrisés",
+      "titre": "Les logiciels maîtrisés",
       "texte": "TIA Portal, Unity Pro ou Studio 5000, la supervision et les réseaux industriels : l'utilisation courante de chaque logiciel élargit le marché. La double compétence automatisme et informatique est la plus recherchée."
      },
      {
-      "accroche": "Le type de poste",
+      "titre": "Le type de poste",
       "texte": "Le rôle change tout : l'automaticien en bureau d'études, le technicien terrain et l'itinérant n'ont pas la même vie ni la même paie. L'itinérance se paie, l'astreinte aussi."
      }
     ]
    },
    {
-    "type": "titre",
-    "niveau": 2,
-    "texte": "Du bac pro à l'expertise : le parcours et la paie",
-    "id": "du-bac-pro-a-l-expertise-le-parcours-et-la-paie"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "La progression est rapide pour qui enchaîne les projets. Voici le chemin type, celui que suivent nos propres équipes d'automatisme."
-   },
-   {
-    "type": "liste",
-    "items": [
+    "type": "etapes",
+    "surtitre": "03 · Formation",
+    "titre": "Du bac pro à l'expertise : le parcours et la paie",
+    "intros": [
+     "La progression est rapide pour qui enchaîne les projets. Voici le chemin type, celui que suivent nos propres équipes d'automatisme.",
+     "Le métier voisin de dessinateur projeteur en bureau d'études, ou l'électrotechnique pure, offrent des passerelles réelles : la conception et les schémas électriques mènent aussi à l'automatisme, et l'inverse est également vrai."
+    ],
+    "etapes": [
      {
-      "accroche": "La formation",
+      "titre": "La formation",
       "texte": "Devenir automaticien commence par un bac pro ou un bac technologique, puis BTS CRSA ou CIRA, BUT GEII, génie électrique et informatique industrielle, licence professionnelle en automatisme, jusqu'au master ou au diplôme d'ingénieur en génie industriel. Un stage long en industrie fait la différence à l'embauche."
      },
      {
-      "accroche": "Le premier poste",
+      "titre": "Le premier poste",
       "texte": "Technicien en automatisme ou automaticien de maintenance industrielle : diagnostic, tests, dépannage, petites modifications de programme. C'est là que se joue la construction du socle terrain, et les fourchettes de départ citées plus haut."
      },
      {
-      "accroche": "La spécialisation",
+      "titre": "La spécialisation",
       "texte": "Programmation d'automates multi-marques, robotique industrielle, supervision, travaux de mise en service à l'international. Un automaticien spécialisé voit sa rémunération suivre la rareté des compétences, en l'espace de quelques années."
      },
      {
-      "accroche": "L'évolution",
+      "titre": "L'évolution",
       "texte": "Chef de projet automatisme, responsable d'équipe, expert process, développement vers l'ingénierie, ou statut d'indépendant pour les missions courtes. Chaque option ajoute sa part de responsabilité et sa logique de revenu ; l'expertise technique reste la base commune."
      }
-    ],
-    "ordonnee": true
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Le métier voisin de dessinateur projeteur en bureau d'études, ou l'électrotechnique pure, offrent des passerelles réelles : la conception et les schémas électriques mènent aussi à l'automatisme, et l'inverse est également vrai."
-   },
-   {
-    "type": "titre",
-    "niveau": 2,
-    "texte": "Les compétences qui se paient le mieux",
-    "id": "les-competences-qui-se-paient-le-mieux"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Un recruteur lit votre CV avec une analyse en trois points principaux : les automates, les environnements, les preuves. Ces compétences tirent les propositions vers le haut."
+    ]
    },
    {
     "type": "liste",
-    "items": [
+    "surtitre": "04 · Compétences",
+    "titre": "Les compétences qui se paient le mieux",
+    "intros": [
+     "Un recruteur lit votre CV avec une analyse en trois points principaux : les automates, les environnements, les preuves. Ces compétences tirent les propositions vers le haut."
+    ],
+    "cartes": [
      {
-      "accroche": "Automates SIEMENS et Schneider",
+      "titre": "Automates SIEMENS et Schneider",
       "texte": "Le socle du marché français. Le fonctionnement de toute l'usine repose sur l'automate programmable : machines, lignes, utilités, des procédés continus à l'automatisation de la production en séries."
      },
      {
-      "accroche": "Robotique",
+      "titre": "Robotique",
       "texte": "ABB, Fanuc et les cellules automatisées : la frontière entre automaticien et roboticien s'estompe, et le profil hybride est rare, donc cher."
      },
      {
-      "accroche": "Supervision et interface homme-machine",
+      "titre": "Supervision et interface homme-machine",
       "texte": "Concevoir une supervision claire, c'est une solution directe pour réduire les arrêts de production. Une compétence visible en entretien, appréciée en atelier, payée en poste."
      },
      {
-      "accroche": "Réseaux et informatique industrielle",
+      "titre": "Réseaux et informatique industrielle",
       "texte": "Profinet, Ethernet/IP, connexion des équipements au système d'information, cybersécurité des installations. Le domaine qui fait le pont entre l'électronique, l'exploitation et l'informatique : le grand chantier du moment, avec l'intelligence artificielle en ligne de mire."
      },
      {
-      "accroche": "Électrotechnique et variation de vitesse",
+      "titre": "Électrotechnique et variation de vitesse",
       "texte": "Lire un schéma, câbler une armoire, régler un variateur : le matériel d'abord, habilitations à jour comprises. Les meilleurs automaticiens restent des électriciens complets, l'électricité industrielle en socle, à l'aise sur tout équipement électrique."
      },
      {
-      "accroche": "Communication",
+      "titre": "Communication",
       "texte": "Expliquer un problème à la production, écrire un compte rendu utile, former un opérateur. À ce propos, les entretiens le montrent : ce qui manque le plus au marché n'est pas technique."
      }
     ]
    },
    {
-    "type": "titre",
-    "niveau": 2,
-    "texte": "Automaticien chez Migen : le cadre et les moyens",
-    "id": "automaticien-chez-migen-le-cadre-et-les-moyens"
-   },
-   {
-    "type": "paragraphe",
-    "texte": "Le besoin est là : l'industrie manque d'automaticiens, les offres d'emploi le prouvent, l'actualité de l'emploi automaticien aussi, du site de France Travail au cabinet de recrutement. Le talent se négocie, encore faut-il choisir un poste qui fait progresser : voici ce que Migen propose comme employeur."
-   },
-   {
-    "type": "liste",
-    "items": [
+    "type": "bento",
+    "surtitre": "05 · Carrière",
+    "titre": "Automaticien chez Migen : le cadre et les moyens",
+    "intros": [
+     "Le besoin est là : l'industrie manque d'automaticiens, les offres d'emploi le prouvent, l'actualité de l'emploi automaticien aussi, du site de France Travail au cabinet de recrutement. Le talent se négocie, encore faut-il choisir un poste qui fait progresser : voici ce que Migen propose comme employeur.",
+     "La mise en place est rapide et le processus de recrutement direct : un échange avec un chargé d'affaires, un entretien technique, une réponse rapide, en toute confidentialité vis-à-vis de votre employeur actuel. La rémunération et les conditions se posent dès le premier contact : gestion claire, zéro promesse floue."
+    ],
+    "cartes": [
      {
-      "accroche": "De la variété, pas de routine",
+      "titre": "De la variété, pas de routine",
       "texte": "Dépannage, maintenance préventive, rétrofit, programmation, installation de supervision, mise en service : chaque semaine sa mission sur des lignes automatisées, chez des clients de tous secteurs, de la fabrication mécanique à l'agroalimentaire."
      },
      {
-      "accroche": "Un vrai collectif technique",
-      "texte": "Plus de 100 collaborateurs, des agences à Lyon (siège), Montréal, Dubaï et Madrid, un groupe où l'entraide et le suivi fonctionnent."
+      "titre": "Un vrai collectif technique",
+      "texte": "Plus de 120 techniciens, des agences à Lyon (siège), Montréal, Dubaï et Madrid, un groupe où l'entraide et le suivi fonctionnent."
      },
      {
-      "accroche": "Une sélection exigeante, assumée",
+      "titre": "Une sélection exigeante, assumée",
       "texte": "Entretien technique et comportemental, 10 % des candidats retenus. Votre futur collègue a passé la même porte : le niveau d'équipe est votre premier avantage quotidien, et l'accueil est à la hauteur."
      }
     ]
    },
    {
-    "type": "paragraphe",
-    "texte": "La mise en place est rapide et le processus de recrutement direct : un échange avec un chargé d'affaires, un entretien technique, une réponse rapide, en toute confidentialité vis-à-vis de votre employeur actuel. La rémunération et les conditions se posent dès le premier contact : gestion claire, zéro promesse floue."
+    "type": "faq",
+    "surtitre": "06 · Questions",
+    "titre": "Questions fréquentes",
+    "questions": [
+     {
+      "question": "Quel est le salaire d'un automaticien débutant ?",
+      "reponse": "Les données publiées situent le démarrage entre 28 000 et 35 000 € brut annuel en France, selon la région, le secteur d'activité et le diplôme. Un BTS avec une belle alternance démarre parfois au niveau d'une licence : le terrain, même sur une courte durée, se paie dès l'embauche."
+     },
+     {
+      "question": "Un automaticien gagne-t-il plus qu'un technicien de maintenance ?",
+      "reponse": "À expérience égale, oui : l'automaticien est mieux rémunéré dans la plupart des cas, la programmation et la rareté tirant la fonction vers le haut. Le technicien de maintenance polyvalent qui travaille son automatisme fait souvent le meilleur calcul de carrière : voir notre fiche métier pour ce chemin de reconversion."
+     },
+     {
+      "question": "Où le salaire d'un automaticien est-il le plus élevé ?",
+      "reponse": "En Île-de-France d'abord, puis dans les bassins tendus : l'aéronautique autour de Toulouse et de Bordeaux, la chimie et l'énergie dans la vallée du Rhône, le travail frontalier vers la Suisse et l'Allemagne depuis Strasbourg, Bordeaux et sa région suivant de près. Les portails suisses annoncent un salaire moyen (CHF 68 000 environ) nettement supérieur aux grilles françaises, coût de la vie à part."
+     },
+     {
+      "question": "Le statut d'automaticien indépendant est-il plus rémunérateur ?",
+      "reponse": "Le chiffre d'affaires peut être supérieur à un salaire, mais sans congés payés, sans avantages et avec la prospection en plus. La plupart des professionnels choisissent l'indépendance après dix ans, le réseau s'étant bâti en cours de route. En contrat de travail salarié, la progression passe par les projets confiés."
+     },
+     {
+      "question": "Faut-il un diplôme d'ingénieur pour bien gagner sa vie ?",
+      "reponse": "Non. Le niveau bac + 2 ou + 3 chevronné atteint les fourchettes hautes du métier ; le titre d'ingénieur ouvre plus vite les postes de conception et de chef de projet. Le marché paie la capacité à livrer un système automatique qui tourne, diplôme ou pas."
+     },
+     {
+      "question": "Comment négocier son salaire d'automaticien en entretien ?",
+      "reponse": "Le guide tient en une ligne : venez avec des faits, machines redémarrées, programmes repris, gains mesurés, à temps plein, à temps partiel ou en alternance. Demandez la fourchette de l'offre d'emploi, posez vos prétentions dans la moyenne haute justifiée par vos preuves, et regardez tout le package pour optimiser l'ensemble : primes, astreintes, véhicule, formation. Un employeur sérieux répond précisément ; un flou prolongé est une réponse aussi."
+     }
+    ]
    },
    {
-    "type": "titre",
-    "niveau": 2,
-    "texte": "Questions fréquentes",
-    "id": "questions-frequentes"
+    "type": "postuler"
    },
    {
-    "type": "paragraphe",
-    "accroche": "Quel est le salaire d'un automaticien débutant ?",
-    "texte": "Les données publiées situent le démarrage entre 28 000 et 35 000 € brut annuel en France, selon la région, le secteur d'activité et le diplôme. Un BTS avec une belle alternance démarre parfois au niveau d'une licence : le terrain, même sur une courte durée, se paie dès l'embauche."
-   },
-   {
-    "type": "paragraphe",
-    "accroche": "Un automaticien gagne-t-il plus qu'un technicien de maintenance ?",
-    "texte": "À expérience égale, oui : l'automaticien est mieux rémunéré dans la plupart des cas, la programmation et la rareté tirant la fonction vers le haut. Le technicien de maintenance polyvalent qui travaille son automatisme fait souvent le meilleur calcul de carrière : voir notre fiche métier pour ce chemin de reconversion."
-   },
-   {
-    "type": "paragraphe",
-    "accroche": "Où le salaire d'un automaticien est-il le plus élevé ?",
-    "texte": "En Île-de-France d'abord, puis dans les bassins tendus : l'aéronautique autour de Toulouse et de Bordeaux, la chimie et l'énergie dans la vallée du Rhône, le travail frontalier vers la Suisse et l'Allemagne depuis Strasbourg, Bordeaux et sa région suivant de près. Les portails suisses annoncent un salaire moyen (CHF 68 000 environ) nettement supérieur aux grilles françaises, coût de la vie à part."
-   },
-   {
-    "type": "paragraphe",
-    "accroche": "Le statut d'automaticien indépendant est-il plus rémunérateur ?",
-    "texte": "Le chiffre d'affaires peut être supérieur à un salaire, mais sans congés payés, sans avantages et avec la prospection en plus. La plupart des professionnels choisissent l'indépendance après dix ans, le réseau s'étant bâti en cours de route. En contrat de travail salarié, la progression passe par les projets confiés."
-   },
-   {
-    "type": "paragraphe",
-    "accroche": "Faut-il un diplôme d'ingénieur pour bien gagner sa vie ?",
-    "texte": "Non. Le niveau bac + 2 ou + 3 chevronné atteint les fourchettes hautes du métier ; le titre d'ingénieur ouvre plus vite les postes de conception et de chef de projet. Le marché paie la capacité à livrer un système automatique qui tourne, diplôme ou pas."
-   },
-   {
-    "type": "paragraphe",
-    "accroche": "Comment négocier son salaire d'automaticien en entretien ?",
-    "texte": "Le guide tient en une ligne : venez avec des faits, machines redémarrées, programmes repris, gains mesurés, à temps plein, à temps partiel ou en alternance. Demandez la fourchette de l'offre d'emploi, posez vos prétentions dans la moyenne haute justifiée par vos preuves, et regardez tout le package pour optimiser l'ensemble : primes, astreintes, véhicule, formation. Un employeur sérieux répond précisément ; un flou prolongé est une réponse aussi."
-   },
-   {
-    "type": "citation",
-    "texte": "À lire aussi : [automaticien](/carriere/automaticien/)"
+    "type": "liens",
+    "items": [
+     {
+      "libelle": "Automaticien",
+      "href": "/carriere/automaticien/"
+     }
+    ]
    }
   ]
  }

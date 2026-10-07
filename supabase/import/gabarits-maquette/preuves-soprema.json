@@ -1,0 +1,180 @@
+{
+  "url": "/preuves/soprema/",
+  "titre_h1": "Monter, déplacer, renforcer, chantier après chantier",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "SOPREMA",
+    "chapeau": [
+      "SOPREMA est un acteur mondial de l'étanchéité et de l'isolation. Son développement industriel génère des chantiers ponctuels qui ne rentrent pas dans le plan de charge des équipes internes.",
+      "Migen y est intervenu sur plusieurs missions ciblées, avec des techniciens qualifiés mobilisés à la mission."
+    ],
+    "bouton": "Chiffrer mon chantier de montage",
+    "chiffres": [
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "Équipes mobilisées à la mission"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Montage de lignes et sous-ensembles, transfert de machines, renfort de chantier"
+      },
+      {
+        "libelle": "Domaines",
+        "valeur": "Mécanique, électromécanique, électricité, montage"
+      },
+      {
+        "libelle": "Modalité",
+        "valeur": "Facturation à la journée ou au forfait"
+      }
+    ],
+    "situationTitre": "Un transfert de machine mal préparé coûte plus cher que la machine elle-même.",
+    "situationProse": [
+      "Trois types de situations revenaient chez SOPREMA.",
+      "Aucune de ces trois ne justifie un recrutement. Toutes exigent pourtant une compétence de montage réelle, disponible au moment où le chantier démarre, pas trois mois après.",
+      "Ces chantiers ont un point commun : ils tombent en plus du plan de charge. L'équipe maintenance les absorbe, et le préventif du site en paie le prix.",
+      "Un transfert de machine mobilise aussi des compétences que la maintenance courante n'entretient pas. Levage, calage, réalignement, remise en service : ce sont des gestes de montage, pas de dépannage."
+    ],
+    "objectifs": [
+      {
+        "titre": "Montage mécanique ou électromécanique",
+        "texte": "De lignes ou de sous-ensembles."
+      },
+      {
+        "titre": "Déplacement ou reconfiguration",
+        "texte": "De machines industrielles."
+      },
+      {
+        "titre": "Interventions urgentes",
+        "texte": "Sur chantiers complexes ou en surcharge d'activité."
+      },
+      {
+        "titre": "Un partenaire mobilisable rapidement, chantier après chantier."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Vous mobilisez des techniciens qualifiés selon le besoin",
+        "texte": ", sans réorganiser vos équipes internes."
+      },
+      {
+        "titre": "Vous définissez le périmètre technique à l'avance",
+        "texte": "Montage, démontage, transfert de machines, assistance à la production : ce qui est couvert est écrit."
+      },
+      {
+        "titre": "Vous gardez l'encadrement chez nous",
+        "texte": "Migen assure l'encadrement opérationnel des interventions, pour l'efficacité comme pour la sécurité."
+      },
+      {
+        "titre": "Vous savez ce que vous payez",
+        "texte": "La facturation se fait à la journée ou au forfait, avec une logistique allégée."
+      },
+      {
+        "titre": "Vous mobilisez partout en France",
+        "texte": ", sur des sites différents, avec la même approche."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "SOPREMA identifie un chantier de montage, un transfert ou une surcharge à absorber."
+      },
+      {
+        "titre": "Cadrage du périmètre",
+        "texte": "Le contenu technique de la mission est arrêté avant le déplacement."
+      },
+      {
+        "titre": "Mobilisation des profils",
+        "texte": "Monteurs, électriciens ou techniciens de maintenance sont engagés selon le chantier."
+      },
+      {
+        "titre": "Intervention sur site",
+        "texte": "L'équipe réalise le montage, le déplacement ou le renfort convenu."
+      },
+      {
+        "titre": "Encadrement opérationnel",
+        "texte": "Migen pilote l'exécution et les conditions de sécurité pendant la mission."
+      },
+      {
+        "titre": "Clôture",
+        "texte": "La mission se termine à la livraison du chantier, sans prolongation par défaut."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "SOPREMA, étanchéité et isolation"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Montage de lignes et sous-ensembles, transfert de machines, renfort de chantier"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "Équipes mobilisées à la mission"
+      },
+      {
+        "libelle": "Domaines",
+        "valeur": "Mécanique, électromécanique, électricité, montage"
+      },
+      {
+        "libelle": "Modalité",
+        "valeur": "Facturation à la journée ou au forfait"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Les délais de chantier ont été respectés",
+        "texte": ", sans pénalité."
+      },
+      {
+        "titre": "Les transferts de machines ont été sécurisés",
+        "texte": ""
+      },
+      {
+        "titre": "Le soutien technique a été apporté",
+        "texte": "Sans surcharge pour les équipes RH."
+      },
+      {
+        "titre": "Les charges temporaires ont été absorbées",
+        "texte": "Sans recrutement ni réorganisation interne."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "Le résultat",
+        "texte": "Les interventions réalisées pour SOPREMA ont produit quatre effets, tels que le dossier les documente."
+      },
+      {
+        "texte": "La mobilisation de techniciens dans toute la France est ce qui rend ce modèle utilisable sur plusieurs sites à la fois."
+      }
+    ],
+    "besoinTitre": "Une ligne à monter, une machine à déplacer, et personne de disponible ?",
+    "besoinProse": [
+      "Décrivez le chantier et la fenêtre de travail, nous chiffrons à la journée ou au forfait.",
+      "Pour les chantiers de nuit ou de week-end, l'astreinte la nuit, le week-end et les jours fériés est proposée en option.",
+      "Un monteur qui ne maîtrise pas son geste met en danger le chantier et les équipes. Nous ne retenons que 10 % des candidats, après entretien technique et comportemental."
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Étude de cas",
+        "titre": "TIMESCOPE : maintenance sous contrat",
+        "href": "/preuves/timescope/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
+        "href": "/preuves/dimomaint/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
+        "href": "/preuves/eiffage/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

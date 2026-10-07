@@ -1,0 +1,162 @@
+{
+  "url": "/preuves/bamesa/",
+  "titre_h1": "La maintenance tient pendant que l’équipe recrute",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "BAMESA",
+    "bouton": "Demander un renfort de maintenance",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Centre de service acier : déroulage, découpe, retraitement de bobines"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Lignes de déroulage et de retraitement de bobines"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "Renfort intégré à l'équipe maintenance"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Maintenance des lignes pendant la période de recrutement"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Métallurgie, fournisseur de l'automobile"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif",
+        "valeur": "Jusqu'à 2 techniciens, 1 actuellement"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Renfort de maintenance pendant une période de recrutement"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Bonneuil-sur-Marne (94)"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Lignes de déroulage et retraitement de bobines"
+      }
+    ],
+    "situationTitre": "Un poste de maintenance vacant sur une ligne de bobines, c'est une ligne qui tourne sans filet",
+    "objectifs": [
+      {
+        "titre": "Couvrir immédiatement les postes de maintenance vacants."
+      },
+      {
+        "titre": "Maintenir la disponibilité des lignes pendant toute la période de recrutement."
+      },
+      {
+        "titre": "Éviter la surcharge de l'équipe maintenance en place."
+      },
+      {
+        "titre": "Passer le relais proprement une fois les recrutements internes faits."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Des techniciens opérationnels sans délai d'intégration long",
+        "texte": "Profils habitués aux lignes de transformation de l'acier."
+      },
+      {
+        "titre": "Un dispositif à la carte",
+        "texte": "Jusqu'à 2 techniciens, ajusté au fil des recrutements du client."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "Postes de maintenance à couvrir le temps de recruter."
+      },
+      {
+        "titre": "Affectation",
+        "texte": "2 techniciens mobilisés sur les lignes."
+      },
+      {
+        "titre": "Intégration",
+        "texte": "Prise de poste dans l'organisation maintenance du site."
+      },
+      {
+        "titre": "Maintenance au quotidien",
+        "texte": "Suivi et interventions sur les lignes de déroulage et de retraitement."
+      },
+      {
+        "titre": "Relais",
+        "texte": "Un poste rendu au client après son recrutement interne, un technicien Migen toujours en place."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Bamesa France (groupe Bamesa, Barcelone)"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Bonneuil-sur-Marne (94)"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Centre de service acier"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Métallurgie, automobile"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Lignes de déroulage et retraitement de bobines"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Renfort de maintenance pendant une période de recrutement"
+      },
+      {
+        "libelle": "Effectif",
+        "valeur": "Jusqu'à 2 techniciens, 1 actuellement"
+      }
+    ],
+    "besoinTitre": "Un besoin comparable sur votre site ?",
+    "besoinProse": [
+      "Décrivez-le, nous vous présentons les techniciens adaptés."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Après votre demande, en semaine de 8h00 à 18h30."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Techniciens évalués sur la technique et le comportement avant affectation."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Offre",
+        "titre": "Sous-traitance maintenance",
+        "href": "/offres/residence/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance industrie automobile",
+        "href": "/secteurs/automobile/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "AUTOLIV : un technicien dédié pour que le parc ne décroche pas",
+        "href": "/preuves/autoliv/"
+      }
+    ]
+  }
+}

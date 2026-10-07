@@ -1,0 +1,182 @@
+{
+  "url": "/preuves/vpk/",
+  "titre_h1": "Une usine de carton en 3x8, un technicien qui tient la cadence",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "VPK",
+    "chapeau": [
+      "À Saint-Quentin (Aisne), VPK fabrique des emballages en carton. Migen y a placé un technicien senior en 3x8 sur les lignes de découpe et de convoyage."
+    ],
+    "bouton": "Demander un renfort sur mon parc machines",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Carton et emballage industriel"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Découpe, convoyage"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "3x8"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Emballage"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif",
+        "valeur": "1 technicien senior"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Saint-Quentin (02)"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Carton et emballage industriel"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Emballage"
+      }
+    ],
+    "situationTitre": "Il faut un technicien expérimenté capable d'intervenir seul sur un poste de nuit",
+    "objectifs": [
+      {
+        "titre": "Une couverture maintenance sur les trois postes."
+      },
+      {
+        "titre": "Réduire les arrêts sur les lignes de découpe."
+      },
+      {
+        "titre": "Un profil autonome pour les postes à effectif réduit."
+      },
+      {
+        "titre": "Garder le préventif à jour malgré la cadence."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Un technicien senior intégré en 3x8.",
+        "texte": ""
+      },
+      {
+        "titre": "Interventions sur la découpe et le convoyage.",
+        "texte": ""
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "Renfort maintenance en 3x8."
+      },
+      {
+        "titre": "Affectation",
+        "texte": "Un technicien senior."
+      },
+      {
+        "titre": "Intégration",
+        "texte": "Prise de poste dans les équipes."
+      },
+      {
+        "titre": "Maintenance au quotidien",
+        "texte": "Découpe et convoyage."
+      },
+      {
+        "titre": "Suivi",
+        "texte": "Mission en cours."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "VPK"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Saint-Quentin (02)"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Carton et emballage industriel"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Emballage"
+      },
+      {
+        "libelle": "Équipements",
+        "valeur": "Découpe, convoyeurs"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "3x8"
+      },
+      {
+        "libelle": "Effectif",
+        "valeur": "1 technicien senior"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Meilleure répartition de la charge",
+        "texte": "Entre équipes internes et renfort."
+      },
+      {
+        "titre": "Temps d'arrêt réduits",
+        "texte": "Sur le parc machines."
+      },
+      {
+        "titre": "Meilleure anticipation des pannes",
+        "texte": ", le préventif n'étant plus sacrifié aux urgences."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "Le résultat",
+        "texte": "Le dossier VPK retient trois effets, tels quels."
+      },
+      {
+        "texte": "La continuité des interventions a été tenue sans surcharger les équipes fixes."
+      },
+      {
+        "texte": "Le troisième effet est celui qui dure. Quand le préventif cesse d'être sacrifié aux urgences, la courbe des pannes finit par redescendre d'elle-même."
+      },
+      {
+        "texte": "La mission court sur plusieurs exercices, avec un suivi régulier assuré par les coordinateurs Migen."
+      }
+    ],
+    "besoinTitre": "Votre équipe court après les pannes au lieu de les anticiper ?",
+    "besoinProse": [
+      "Décrivez votre parc, nous vous disons quel profil le tient réellement.",
+      "Le 04 78 33 72 05 répond du lundi au vendredi, 8h00 à 18h30, et le rappel arrive dans l'heure. Pour un site en cadence continue, l'astreinte se souscrit en option.",
+      "Sur un parc hétérogène, la polyvalence se vérifie avant d'être promise. Chaque candidat passe un entretien technique et un entretien comportemental, et nous en retenons 10 %."
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "GROUPE ATLANTIC : renfort sur plusieurs sites",
+        "href": "/preuves/groupe-atlantic/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
+        "href": "/preuves/dimomaint/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
+        "href": "/preuves/eiffage/"
+      }
+    ]
+  }
+}

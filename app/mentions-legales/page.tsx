@@ -67,7 +67,7 @@ const SECTIONS: readonly SectionLegale[] = [
       "Éditeur : migen©",
       `Forme juridique : ${A_COMPLETER}`,
       `Capital social : ${A_COMPLETER}`,
-      "Siège social : 1 rue des Vergers, Bâtiment 3, 69760 Limonest, France",
+      "Siège social : 129 chemin du Moulin Carron, 69130 Écully, France",
       `RCS : ${A_COMPLETER}`,
       `SIRET : ${A_COMPLETER}`,
       `TVA intracommunautaire : ${A_COMPLETER}`,

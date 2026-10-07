@@ -1,0 +1,184 @@
+{
+  "url": "/preuves/savoye/",
+  "titre_h1": "Une alliance pour tenir les installations intralogistiques de ses clients",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "SAVOYE",
+    "chapeau": [
+      "Savoye conçoit, fabrique et intègre des solutions d'automatisation logistique : convoyeurs, systèmes de tri, préparation de commandes. Migen apporte ses techniciens chez les clients de Savoye, pour la maintenance, le montage, le démontage et le rétrofit des équipements."
+    ],
+    "bouton": "Parler de mon site logistique",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Intralogistique, automatisation d'entrepôts"
+      },
+      {
+        "libelle": "Environnements",
+        "valeur": "Entrepôts et centres logistiques automatisés"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif",
+        "valeur": "Techniciens Migen formés aux équipements Savoye"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Maintenance, dépannage, montage, démontage, rétrofit"
+      },
+      {
+        "libelle": "Environnements",
+        "valeur": "Entrepôts et centres logistiques automatisés"
+      },
+      {
+        "libelle": "Cadre",
+        "valeur": "Résidence sur site ou intervention ponctuelle"
+      }
+    ],
+    "situationTitre": "Un intégrateur installe des systèmes complexes chez ses clients, mais ne peut pas y maintenir une équipe en permanence.",
+    "situationProse": [
+      "C'est pourtant sur la disponibilité de ces systèmes que le client juge l'installation.",
+      "Les sites logistiques automatisés vivent sous trois contraintes à la fois."
+    ],
+    "objectifs": [
+      {
+        "titre": "Des équipements de plus en plus complexes",
+        "texte": "Ils demandent des techniciens formés à leurs technologies."
+      },
+      {
+        "titre": "Une pénurie de techniciens qualifiés",
+        "texte": "Chaque recrutement devient long et incertain."
+      },
+      {
+        "titre": "Une exigence de disponibilité",
+        "texte": "Un tri arrêté bloque toute la chaîne d'expédition."
+      },
+      {
+        "titre": "Un interlocuteur unique pour ses clients",
+        "texte": "Une seule équipe pour la maintenance, le montage et le rétrofit."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Des techniciens formés aux équipements Savoye",
+        "texte": "Ils connaissent les technologies et les process du constructeur avant d'arriver sur site."
+      },
+      {
+        "titre": "Des résidents ou des intervenants ponctuels",
+        "texte": "Savoye mobilise les équipes Migen selon le besoin de chaque site client."
+      },
+      {
+        "titre": "Le montage, le démontage et le rétrofit",
+        "texte": "Les mêmes équipes interviennent sur l'installation, le transfert et la modernisation des systèmes."
+      },
+      {
+        "titre": "Un support technique en lien avec le constructeur",
+        "texte": "Quand une panne dépasse le terrain, l'échange avec les équipes Savoye est direct."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Rapprochement",
+        "texte": "Savoye et Migen constatent des besoins communs chez leurs clients logistiques."
+      },
+      {
+        "titre": "Alliance",
+        "texte": "La collaboration est officialisée, à Dijon."
+      },
+      {
+        "titre": "Formation",
+        "texte": "Les techniciens Migen sont formés aux technologies et aux process Savoye."
+      },
+      {
+        "titre": "Déploiement",
+        "texte": "Les équipes interviennent chez les clients de Savoye, en résidence ou en mission."
+      },
+      {
+        "titre": "Élargissement",
+        "texte": "DimoMaint rejoint l'alliance pour la partie GMAO."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Savoye, concepteur et intégrateur de solutions intralogistiques"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Maintenance, dépannage, montage, démontage, rétrofit"
+      },
+      {
+        "libelle": "Environnements",
+        "valeur": "Entrepôts et centres logistiques automatisés"
+      },
+      {
+        "libelle": "Effectif",
+        "valeur": "Techniciens Migen formés aux équipements Savoye"
+      },
+      {
+        "libelle": "Cadre",
+        "valeur": "Résidence sur site ou intervention ponctuelle"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Des arrêts limités",
+        "texte": "Les techniciens connaissent déjà les équipements quand ils arrivent sur site."
+      },
+      {
+        "titre": "Des opérations sécurisées",
+        "texte": "Une présence terrain en lien direct avec le constructeur."
+      },
+      {
+        "titre": "Tout le cycle de vie couvert",
+        "texte": "Un seul dispositif, de l'installation à la modernisation des systèmes."
+      }
+    ],
+    "besoinTitre": "Vous exploitez un site logistique automatisé ?",
+    "besoinProse": [
+      "Dites-nous vos équipements et vos horaires, nous vous proposons le dispositif qui tient votre disponibilité.",
+      "Un système de tri arrêté bloque toute la chaîne d'expédition. Un technicien qui connaît déjà l'équipement redémarre plus vite."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Après votre demande, du lundi au vendredi de 8h00 à 18h30."
+      },
+      {
+        "titre": "Formés aux équipements Savoye",
+        "texte": "Les techniciens connaissent les technologies du constructeur avant d'arriver sur site."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, évalués en entretien technique et comportemental."
+      },
+      {
+        "titre": "Plus de 200 clients",
+        "texte": "Sur des chantiers et des sites en exploitation."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance équipements logistiques",
+        "href": "/secteurs/logistique/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : migration d'automates en Norvège",
+        "href": "/preuves/savoye-migration-automates-norvege/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "AKTID : un centre logistique monté en six semaines",
+        "href": "/preuves/aktid-centre-logistique/"
+      }
+    ]
+  }
+}

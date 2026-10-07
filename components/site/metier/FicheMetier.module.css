@@ -1,0 +1,127 @@
+/* Survols et points de rupture du gabarit 07 « Métier et carrière ».
+   Rien d'autre : le dessin vit en styles en ligne, recopiés de la capture
+   `maquette/rendu/carriere--automaticien.html`. Un style en ligne ne pouvant
+   porter ni état ni media query, ils sont les deux seules raisons d'être de ce
+   fichier.
+
+   SURVOLS : valeurs relevées dans les attributs `style-hover` de
+   `maquette/accueil-rendu.html` (mêmes motifs : bouton orange, bouton gris,
+   lien souligné, carte-photo). Le focus est traité avec le survol partout :
+   un visiteur au clavier doit voir la même chose qu'un visiteur à la souris
+   (WCAG 2.4.7). */
+
+/* style-hover="filter:brightness(.93);transform:translateY(-1px);color:#fff" */
+.boutonOrange:hover,
+.boutonOrange:focus-visible {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+/* style-hover="background:var(--card);transform:translateY(-1px)" */
+.boutonTelephone:hover,
+.boutonTelephone:focus-visible {
+  background: var(--card);
+  transform: translateY(-1px);
+}
+
+/* Le combiné blanc translucide du panneau sombre :
+   style-hover="filter:brightness(.93);color:#fff" */
+.chipTelephone:hover,
+.chipTelephone:focus-visible {
+  filter: brightness(0.93);
+  color: #fff;
+}
+
+/* Le bouton d'envoi du formulaire : style-hover="filter:brightness(.93)" */
+.envoyer:hover,
+.envoyer:focus-visible {
+  filter: brightness(0.93);
+}
+
+/* Les liens du corpus dans le texte courant : style-hover="color:var(--acc)".
+   Le soulignement vient de la capture (underline orange, décalé de 3px). */
+.texteLie a {
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline rgba(255, 124, 60, 0.6);
+  text-underline-offset: 3px;
+  transition: color var(--tr);
+}
+.texteLie a:hover,
+.texteLie a:focus-visible {
+  color: var(--acc);
+}
+
+/* Les cartes-photos « Pour aller plus loin » :
+   style-hover="transform:translateY(-3px)" (carte à image 140px). */
+.carteLien:hover,
+.carteLien:focus-visible {
+  transform: translateY(-3px);
+}
+
+/* Les plis des questions : pas de marqueur natif, le « + » pivote en croix. */
+.pli > summary::-webkit-details-marker {
+  display: none;
+}
+.pli[open] .pliPlus {
+  transform: rotate(45deg);
+  background: var(--acc);
+  color: #fff;
+}
+
+/* ------------------------------------------------------- points de rupture
+   La capture est un rendu de bureau : les règles d'écran étroit de la
+   maquette (classes ck-*) n'y sont pas sérialisées. Les ruptures ci-dessous
+   suivent celles que le site applique déjà aux autres gabarits
+   (app/globals.css : 1000, 900 et 640px), à défaut de valeur relevable. */
+
+@media (max-width: 1000px) {
+  .bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .bento > .travee3 {
+    grid-column: span 2 !important;
+  }
+  .etapes,
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .deuxColonnes {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 36px !important;
+  }
+  .colleEnHaut {
+    position: static !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .bento {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .bento > * {
+    grid-column: span 1 !important;
+  }
+  .etapes,
+  .stats,
+  .duoCartes,
+  .champs {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .champs > * {
+    grid-column: span 1 !important;
+  }
+  .rangTableau {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 6px !important;
+  }
+  .flottante {
+    position: static !important;
+    margin-top: 14px;
+    max-width: none !important;
+  }
+}

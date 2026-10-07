@@ -1,0 +1,201 @@
+{
+  "url": "/preuves/gls-maintenance-curative/",
+  "titre_h1": "Des convoyeurs et des trieurs sous surveillance continue",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "GLS",
+    "chapeau": [
+      "GLS, acteur reconnu de la logistique et du transport, a confié à Migen le maintien opérationnel de ses équipements. Deux techniciens expérimentés sont aujourd'hui en poste sur le site."
+    ],
+    "bouton": "Demander un renfort sur site",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Logistique et transport de colis"
+      },
+      {
+        "libelle": "Équipements couverts",
+        "valeur": "Convoyeurs, trieurs, systèmes de packaging automatisés"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "2 techniciens expérimentés sur site"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Maintenance curative, surveillance continue"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Convoyeurs, trieurs, systèmes de packaging automatisés"
+      },
+      {
+        "libelle": "Couverture",
+        "valeur": "Semaine, horaires décalés, week-end"
+      }
+    ],
+    "situationTitre": "Un trieur à l'arrêt, ce sont des colis qui partent en retard et un client final qui le voit.",
+    "situationProse": [
+      "La panne ne reste jamais dans l'atelier."
+    ],
+    "objectifs": [
+      {
+        "titre": "Les flux du site entier sont touchés",
+        "texte": "Dès qu'un arrêt non planifié survient."
+      },
+      {
+        "titre": "L'acheminement des colis prend du retard",
+        "texte": "Au moment où la ligne s'immobilise."
+      },
+      {
+        "titre": "La satisfaction client encaisse",
+        "texte": "Directement ces retards."
+      },
+      {
+        "titre": "Les équipements critiques sont nombreux",
+        "texte": "Convoyeurs, trieurs, packaging automatisé."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Deux techniciens dédiés",
+        "texte": "Affectés à la maintenance curative et à la surveillance continue des équipements critiques du site."
+      },
+      {
+        "titre": "Une présence permanente",
+        "texte": "Les équipes Migen sont sur place en continu, pour tenir la disponibilité des installations logistiques."
+      },
+      {
+        "titre": "Une réaction sans déplacement",
+        "texte": "Le dysfonctionnement est traité au moment où il se produit, par quelqu'un qui est déjà là."
+      },
+      {
+        "titre": "Une intégration aux équipes GLS",
+        "texte": "Les techniciens travaillent au sein de l'organisation existante, sans la complexifier."
+      },
+      {
+        "titre": "Des horaires calés sur l'exploitation",
+        "texte": "La couverture porte sur la semaine, les horaires décalés et le week-end."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Définition de la mission",
+        "texte": "Maintenir le parc machine et réduire les temps d'arrêt."
+      },
+      {
+        "titre": "Affectation des profils",
+        "texte": "Deux techniciens expérimentés sont retenus pour le curatif et la surveillance."
+      },
+      {
+        "titre": "Intégration sur site",
+        "texte": "Les techniciens rejoignent directement les équipes GLS."
+      },
+      {
+        "titre": "Surveillance continue",
+        "texte": "Convoyeurs, trieurs et systèmes de packaging automatisés sont suivis en permanence."
+      },
+      {
+        "titre": "Intervention au fil de l'eau",
+        "texte": "Chaque dysfonctionnement est traité immédiatement, sans passer par une demande externe."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "GLS, logistique et transport"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "2 techniciens expérimentés sur site"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Maintenance curative, surveillance continue"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Convoyeurs, trieurs, systèmes de packaging automatisés"
+      },
+      {
+        "libelle": "Couverture",
+        "valeur": "Semaine, horaires décalés, week-end"
+      },
+      {
+        "libelle": "Pilotage",
+        "valeur": "Suivi de prestation assuré par Migen"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Des temps d'arrêt réduits",
+        "texte": "La présence continue des techniciens permet à GLS de raccourcir ses arrêts."
+      },
+      {
+        "titre": "Des installations plus performantes",
+        "texte": "La performance des installations logistiques augmente."
+      },
+      {
+        "titre": "Un flux plus fluide",
+        "texte": "Le flux opérationnel du site est maintenu, jour après jour."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "La situation",
+        "texte": "Chez GLS, la disponibilité des équipements est un enjeu quotidien :"
+      },
+      {
+        "titre": "Le résultat",
+        "texte": "Ces trois effets sont ceux que GLS constate sur le terrain, après l'arrivée des deux techniciens en poste."
+      }
+    ],
+    "besoinTitre": "Vos arrêts machine se voient jusque chez votre client final ?",
+    "besoinProse": [
+      "Décrivez le parc et vos horaires, nous vous disons quel profil le tient.",
+      "Un trieur immobilisé ne se rattrape pas le lendemain. La seule variable qui compte, c'est le temps qui sépare la panne de la personne capable de la traiter."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Votre demande revient vers vous sans attendre, en semaine de 8h00 à 18h30."
+      },
+      {
+        "titre": "Astreinte la nuit, le week-end et les jours fériés",
+        "texte": "Disponible en option pour les sites en horaires décalés, par téléphone."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, robotique."
+      },
+      {
+        "titre": "Quatre agences",
+        "texte": "Lyon (siège), Montréal, Dubaï et Madrid, et plus de 120 techniciens."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance équipements logistiques",
+        "href": "/secteurs/logistique/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "VEEPEE : sites de Lyon",
+        "href": "/preuves/veepee-sites-lyon/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

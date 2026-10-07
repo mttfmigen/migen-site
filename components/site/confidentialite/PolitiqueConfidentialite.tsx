@@ -101,7 +101,7 @@ const PARTIES: readonly Partie[] = [
     titre: "Responsable du traitement",
     corps: (
       <p style={P}>
-        migen©, 1 rue des Vergers, Bâtiment 3, 69760 Limonest. Contact du
+        migen©, 129 chemin du Moulin Carron, 69130 Écully. Contact du
         référent données&nbsp;: à compléter.
       </p>
     ),

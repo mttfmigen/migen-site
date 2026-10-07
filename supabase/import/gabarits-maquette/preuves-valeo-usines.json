@@ -1,0 +1,190 @@
+{
+  "url": "/preuves/valeo-usines/",
+  "titre_h1": "Deux usines accompagnées dans leur montée en cadence",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "VALEO",
+    "bouton": "Parler à un chargé d'affaires",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Systèmes d'essuyage et d'éclairage automobile"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Lignes de production de 2 sites"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "Techniciens intégrés, dont une équipe samedi-dimanche"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Industrie automobile"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Sites",
+        "valeur": "Châtellerault (86) et Mazamet (81)"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Moteurs d'essuie-glace et timoneries (Châtellerault), produits d'éclairage (Mazamet)"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Industrie automobile"
+      },
+      {
+        "libelle": "Équipements",
+        "valeur": "Lignes d'assemblage, cellules robotisées"
+      }
+    ],
+    "situationTitre": "À Châtellerault, la production mêle mécanique de précision et cellules robotisées",
+    "objectifs": [
+      {
+        "titre": "Couvrir le week-end sans surcharger les équipes internes."
+      },
+      {
+        "titre": "Intervenir sur des lignes robotisées et de mécanique de précision."
+      },
+      {
+        "titre": "Un même partenaire sur plusieurs sites du groupe."
+      },
+      {
+        "titre": "Accompagner la montée en cadence sans dégrader la disponibilité des lignes."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Une équipe samedi-dimanche",
+        "texte": "Les techniciens Migen tiennent les plages où l'effectif interne est réduit."
+      },
+      {
+        "titre": "Des profils robotique et automatisme",
+        "texte": "Adaptés aux lignes d'assemblage robotisées de Châtellerault."
+      },
+      {
+        "titre": "Un dispositif reproductible d'un site à l'autre",
+        "texte": "Même mode de fonctionnement à Châtellerault et à Mazamet."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "Renforcer la maintenance, y compris le week-end."
+      },
+      {
+        "titre": "Premier site",
+        "texte": "Déploiement de techniciens Migen."
+      },
+      {
+        "titre": "Intégration",
+        "texte": "Prise de poste dans les équipes maintenance du site."
+      },
+      {
+        "titre": "Deuxième site",
+        "texte": "Extension du dispositif."
+      },
+      {
+        "titre": "Suite",
+        "texte": "D'autres sites du groupe à venir (non communicables)."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Valeo, division Valeo Light"
+      },
+      {
+        "libelle": "Sites",
+        "valeur": "Châtellerault (86) et Mazamet (81)"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Moteurs d'essuie-glace et timoneries (Châtellerault), produits d'éclairage (Mazamet)"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Industrie automobile"
+      },
+      {
+        "libelle": "Équipements",
+        "valeur": "Lignes d'assemblage, cellules robotisées"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "Dont équipe samedi-dimanche"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Une qualité de production constante",
+        "texte": "Le niveau est maintenu pendant l'accélération des cadences."
+      },
+      {
+        "titre": "Un accompagnement flexible et réactif",
+        "texte": "Il s'ajuste aux besoins de chaque service."
+      },
+      {
+        "titre": "Des capacités industrielles renforcées",
+        "texte": "Sans recrutement interne mené dans l'urgence."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "Le résultat",
+        "texte": "La montée en cadence est accompagnée par un renfort déployé au bon endroit. VALEO n'a pas eu à détourner ses équipes de ses objectifs de production."
+      },
+      {
+        "texte": "Ce que le dispositif apporte au client :"
+      }
+    ],
+    "besoinTitre": "Vos cadences montent plus vite que votre effectif de maintenance ?",
+    "besoinProse": [
+      "Dites-nous les usines concernées, nous répartissons le renfort service par service.",
+      "Les heures supplémentaires tiennent quelques mois. Ensuite viennent l'épuisement des équipes, les départs, et un recrutement devenu impossible."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Du lundi au vendredi, de 8h00 à 18h30."
+      },
+      {
+        "titre": "Astreinte",
+        "texte": "Proposée en option sur les sites en forte charge, au 04 78 33 72 05."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Entretien technique et entretien comportemental avant toute affectation."
+      },
+      {
+        "titre": "Quatre agences",
+        "texte": "Lyon (siège), Montréal, Dubaï et Madrid, pour déployer sur plusieurs usines à la fois."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Offre",
+        "titre": "Sous-traitance maintenance",
+        "href": "/offres/residence/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance industrie automobile",
+        "href": "/secteurs/automobile/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "EATON : mise en production",
+        "href": "/preuves/eaton-mise-en-production/"
+      }
+    ]
+  }
+}

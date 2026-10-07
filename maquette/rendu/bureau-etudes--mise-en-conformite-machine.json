@@ -1,165 +1,109 @@
 {
   "url": "/bureau-etudes/mise-en-conformite-machine/",
   "gabarit": "03 Offre et prestation",
-  "verdict": "rendue-sans-titre",
+  "verdict": "rendue",
   "h1Attendu": "Mise en conformité machine : fixez le calendrier avant l'inspection",
-  "h1Rendu": "",
-  "nbSections": 19,
-  "hauteurTotale": 9172,
+  "h1Rendu": "Mise en conformité machine : fixez le calendrier avant l'inspection",
+  "nbSections": 12,
+  "hauteurTotale": 8661,
   "motsAnnonces": 1455,
-  "motsRendus": 1366,
+  "motsRendus": 1080,
   "sections": [
     {
       "ordre": 0,
       "titre": null,
-      "hauteur": 660,
+      "hauteur": 828,
       "images": 0,
-      "liens": 1,
-      "mots": 44
+      "liens": 4,
+      "mots": 136
     },
     {
       "ordre": 1,
       "titre": null,
-      "hauteur": 267,
-      "images": 0,
-      "liens": 0,
-      "mots": 75
+      "hauteur": 364,
+      "images": 1,
+      "liens": 8,
+      "mots": 22
     },
     {
       "ordre": 2,
-      "titre": null,
-      "hauteur": 203,
-      "images": 76,
-      "liens": 0,
-      "mots": 4
+      "titre": "Le problème",
+      "hauteur": 864,
+      "images": 0,
+      "liens": 1,
+      "mots": 152
     },
     {
       "ordre": 3,
-      "titre": null,
-      "hauteur": 493,
-      "images": 2,
-      "liens": 0,
-      "mots": 73
+      "titre": "Le déroulé",
+      "hauteur": 906,
+      "images": 0,
+      "liens": 1,
+      "mots": 188
     },
     {
       "ordre": 4,
-      "titre": null,
-      "hauteur": 114,
-      "images": 0,
-      "liens": 1,
-      "mots": 13
+      "titre": "Nos références",
+      "hauteur": 496,
+      "images": 76,
+      "liens": 4,
+      "mots": 42
     },
     {
       "ordre": 5,
-      "titre": null,
-      "hauteur": 434,
+      "titre": "Chiffres clés",
+      "hauteur": 666,
       "images": 0,
-      "liens": 0,
-      "mots": 104
+      "liens": 1,
+      "mots": 84
     },
     {
       "ordre": 6,
-      "titre": "Ce que nous faisons, et ce que ça change pour vous",
-      "hauteur": 620,
+      "titre": "L’offre",
+      "hauteur": 1030,
       "images": 0,
-      "liens": 0,
-      "mots": 225
+      "liens": 2,
+      "mots": 125
     },
     {
       "ordre": 7,
-      "titre": null,
-      "hauteur": 112,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 1275,
       "images": 0,
-      "liens": 1,
-      "mots": 13
+      "liens": 3,
+      "mots": 159
     },
     {
       "ordre": 8,
-      "titre": "Ce que nous ne faisons pas, par principe",
-      "hauteur": 261,
+      "titre": "Ce qu’on nous demande avant de signer",
+      "hauteur": 446,
       "images": 0,
-      "liens": 0,
-      "mots": 77
+      "liens": 1,
+      "mots": 12
     },
     {
       "ordre": 9,
-      "titre": "Un appel. Un plan. Une ligne qui repart.",
-      "hauteur": 918,
+      "titre": null,
+      "hauteur": 333,
       "images": 0,
       "liens": 1,
-      "mots": 184
+      "mots": 24
     },
     {
       "ordre": 10,
-      "titre": "Ce que nous garantissons",
-      "hauteur": 649,
+      "titre": "Pages liées",
+      "hauteur": 538,
       "images": 0,
-      "liens": 0,
-      "mots": 90
+      "liens": 6,
+      "mots": 71
     },
     {
       "ordre": 11,
-      "titre": null,
-      "hauteur": 165,
+      "titre": "Un chargé d’affaires vous rappelle dans l’heure.",
+      "hauteur": 819,
       "images": 0,
       "liens": 0,
-      "mots": 21
-    },
-    {
-      "ordre": 12,
-      "titre": null,
-      "hauteur": 296,
-      "images": 0,
-      "liens": 1,
-      "mots": 31
-    },
-    {
-      "ordre": 13,
-      "titre": "Les équipements que nous maintenons déjà",
-      "hauteur": 617,
-      "images": 13,
-      "liens": 0,
-      "mots": 37
-    },
-    {
-      "ordre": 14,
-      "titre": "Nos références",
-      "hauteur": 745,
-      "images": 8,
-      "liens": 5,
-      "mots": 124
-    },
-    {
-      "ordre": 15,
-      "titre": null,
-      "hauteur": 114,
-      "images": 0,
-      "liens": 1,
-      "mots": 13
-    },
-    {
-      "ordre": 16,
-      "titre": "Vos questions avant de nous appeler",
-      "hauteur": 844,
-      "images": 0,
-      "liens": 1,
-      "mots": 103
-    },
-    {
-      "ordre": 17,
-      "titre": "Les offres et prestations voisines",
-      "hauteur": 696,
-      "images": 0,
-      "liens": 6,
-      "mots": 78
-    },
-    {
-      "ordre": 18,
-      "titre": "Besoin d'un plan d'actions chiffré avant votre prochain contrôle ?",
-      "hauteur": 964,
-      "images": 0,
-      "liens": 0,
-      "mots": 57
+      "mots": 65
     }
   ]
 }

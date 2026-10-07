@@ -165,7 +165,7 @@ const MAILLAGE: readonly GroupeMaillage[] = [
 ];
 
 /* Adresse du siège : celle de la maquette, mot pour mot. */
-const ADRESSE_SIEGE = "1 rue des Vergers, 69760 Limonest";
+const ADRESSE_SIEGE = "129 chemin du Moulin Carron, 69130 Écully";
 
 const styleCadre: CSSProperties = {
   maxWidth: 1200,

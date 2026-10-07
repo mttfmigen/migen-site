@@ -11,16 +11,21 @@ habitude de framework.
 ## 1. Contexte
 
 Migen, maintenance industrielle B2B : déploiement de techniciens
-électromécaniciens, automaticiens et roboticiens sur sites clients. Siège à
-Limonest, près de Lyon.
+électromécaniciens, automaticiens et roboticiens sur sites clients. **Siège à
+Écully**, 129 chemin du Moulin Carron, 69130 Écully, près de Lyon.
 
-> Cette ligne disait « Écully et Lyon ». Corrigée le 02/10 après vérification,
+> **Tranché par Mehdi le 07/10 au soir : « le siège est à Écully ».** Cette
+> ligne avait été corrigée vers Limonest le 02/10 sur trois sources ; la
+> décision du client les remplace, et le dossier de passation de la maquette
+> porte la même adresse. Toute phrase qui place le siège à Limonest est fausse.
+
+> **CADUC depuis le 07/10, gardé pour l'histoire.** Cette ligne disait « Écully et Lyon ». Corrigée le 02/10 après vérification,
 > parce que trois sources plus récentes et concordantes disent Limonest : la
 > maquette validée (« 1 rue des Vergers, 69760 Limonest »), le corpus rédigé
 > (« le siège du groupe est à Limonest, près de Lyon ») et le site en ligne.
 > L'adresse d'Écully (129 chemin du Moulin Carron, 69130) figure encore sur
-> certaines pages du site actuel : c'est l'ancienne, à purger à la recette.
-> **À confirmer par Mehdi** avant la mise en ligne, c'est une mention légale.
+> certaines pages du site actuel. Mehdi a confirmé le 07/10 que c'est elle,
+> l'adresse du siège : le raisonnement ci-dessus était faux.
 
 Un site existe déjà, en Astro, dans `../migen-refonte` (223 pages construites,
 corpus rédigé, portes de vérification). Il reste en ligne pendant toute la
@@ -149,8 +154,8 @@ Interdits de rédaction, hérités du site actuel et non négociables : aucun d�
 chiffré d'intervention (seul « rappel dans l'heure » est autorisé), aucun prix,
 jamais « régie », « intérim », « mise à disposition », « sans engagement »,
 jamais « levier », « clé en main », « sur mesure », « concrètement »,
-« notamment », « incontournable », « découvrez ». Quatre agences (Lyon siège,
-Montréal, Dubaï, Madrid), aucune autre en France, dix hubs de techniciens.
+« notamment », « incontournable », « découvrez ». Quatre agences (Lyon, siège à
+Écully, Montréal, Dubaï, Madrid), aucune autre en France, dix hubs de techniciens.
 
 ## 10. Console marketing
 

@@ -95,7 +95,7 @@ const PORTE = [
   // Copie des agences.
   "Nos agences",
   "plus proche de votre site, jamais du siège.",
-  "1 rue des Vergers, Bâtiment 3, 69760 Limonest",
+  "129 chemin du Moulin Carron, 69130 Écully",
   "Level 20, 48 Burj Tower, Downtown",
   "2020 route Transcanadienne, Dorval, Québec",
   // Géométrie et habillage, recopiés tels quels.
@@ -175,11 +175,13 @@ for (const interdit of [
   assert.ok(!rendu.includes(interdit), `copie interdite rendue : « ${interdit} »`);
 }
 
-/* Les quatre agences du contrat, et aucune autre. L'adresse d'Écully est
-   l'ancienne du siège : elle ne doit pas revenir. */
-assert.ok(rendu.includes("Limonest"), "le siège doit être nommé");
+/* Les quatre agences du contrat, et aucune autre. Le siège est à ÉCULLY,
+   décision de Mehdi du 07/10 au soir : c'est Limonest qui ne doit plus
+   revenir. Cette règle disait l'inverse jusque-là. */
+assert.ok(rendu.includes("Écully"), "le siège doit être nommé");
+assert.ok(!rendu.includes("Limonest"), "Limonest rendu : le siège est à Écully");
 assert.ok(rendu.includes("Dubaï") && rendu.includes("Montréal") && rendu.includes("Madrid"));
-for (const ancienne of ["Écully", "Moulin Carron", "Strasbourg", "Toulouse", "Nantes"]) {
+for (const ancienne of ["Strasbourg", "Toulouse", "Nantes"]) {
   assert.ok(
     !rendu.includes(ancienne),
     `« ${ancienne} » est un hub ou une ancienne adresse, pas une agence`,

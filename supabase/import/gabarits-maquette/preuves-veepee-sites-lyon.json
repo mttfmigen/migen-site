@@ -1,0 +1,198 @@
+{
+  "url": "/preuves/veepee-sites-lyon/",
+  "titre_h1": "Des systèmes intralogistiques au rythme du e-commerce",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "VEEPEE",
+    "chapeau": [
+      "Pionnier des ventes événementielles en ligne, Veepee prépare ses commandes sur des systèmes automatisés : convoyeurs, encartonneuses, transporteurs. Migen y déploie une équipe de 4 techniciens pour que les flux de préparation ne s'arrêtent pas."
+    ],
+    "bouton": "Faire reprendre mon contrat",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "E-commerce, ventes événementielles"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Intralogistique : préparation et expédition des commandes"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "Équipe de 4 techniciens, en 2x8 ou en journée"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Dépannage, interventions sur systèmes automatisés"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "E-commerce, logistique"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif",
+        "valeur": "4 techniciens"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Dépannage, interventions"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Intralogistique"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "E-commerce"
+      }
+    ],
+    "situationTitre": "En e-commerce, un convoyeur à l'arrêt, ce sont des colis qui ne partent pas le jour promis",
+    "objectifs": [
+      {
+        "titre": "Maintenir les flux de préparation sans interruption."
+      },
+      {
+        "titre": "Intervenir vite sur convoyeurs, encartonneuses et transporteurs."
+      },
+      {
+        "titre": "Renforcer l'équipe maintenance du site avec une équipe stable."
+      },
+      {
+        "titre": "Tenir les pics d’activité du e-commerce sans rupture."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Une équipe dédiée, pas des intervenants de passage",
+        "texte": "4 techniciens Migen qui connaissent les installations."
+      },
+      {
+        "titre": "Dépannage au plus près des flux",
+        "texte": "Intervention immédiate sur les points de blocage de la ligne."
+      },
+      {
+        "titre": "Polyvalence mécanique, électrique, automatisme",
+        "texte": "Les systèmes de convoyage et d'encartonnage mêlent les trois."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "Sécuriser la disponibilité des systèmes de préparation de commandes."
+      },
+      {
+        "titre": "Affectation",
+        "texte": "Constitution d'une équipe de techniciens intralogistique."
+      },
+      {
+        "titre": "Intégration",
+        "texte": "Prise de poste dans l'organisation maintenance du site."
+      },
+      {
+        "titre": "Exploitation",
+        "texte": "Dépannage et interventions sur convoyeurs, encartonneuses, transporteurs."
+      },
+      {
+        "titre": "Montée en charge",
+        "texte": "Équipe portée à 4 techniciens."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Veepee"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "E-commerce"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Logistique"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Intralogistique"
+      },
+      {
+        "libelle": "Équipements",
+        "valeur": "Convoyeurs, encartonneuses, transporteurs"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Dépannage, interventions"
+      },
+      {
+        "libelle": "Effectif",
+        "valeur": "4 techniciens"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Une reprise bouclée en un mois",
+        "texte": "Le passage de l'ensemble des sites sous contrat Migen a tenu dans un mois."
+      },
+      {
+        "titre": "Une continuité protégée",
+        "texte": "La bascule a limité les pertes de production."
+      },
+      {
+        "titre": "Un parc couvert en entier",
+        "texte": "Les 6 techniciens polyvalents répondent à l'ensemble des besoins du centre logistique."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "Le résultat",
+        "texte": "Le contrat court et reste en place."
+      }
+    ],
+    "besoinTitre": "Un contrat de préventif à reprendre sans trou de couverture ?",
+    "besoinProse": [
+      "Envoyez-nous le périmètre actuel, nous cadrons la bascule avec vous.",
+      "Changer de prestataire fait peur pour une seule raison : la période de flottement. C'est précisément la partie que nous préparons en premier."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Du lundi au vendredi, de 8h00 à 18h30."
+      },
+      {
+        "titre": "Astreinte",
+        "texte": "Proposée en option sur les parcs sensibles, au 04 78 33 72 05."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Sélection par entretien technique et entretien comportemental, siège en région lyonnaise."
+      },
+      {
+        "titre": "Plus de 200 clients",
+        "texte": "La fidélité se mesure aux contrats reconduits."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance équipements logistiques",
+        "href": "/secteurs/logistique/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "ALSTEF Group : contrôle de chantier",
+        "href": "/preuves/alstef-group/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "url": "/preuves/orthus-ecocem/",
+  "titre_h1": "De la parcelle au site de R&D, un seul pilote",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "ORTHUS x ECOCEM",
+    "chapeau": [
+      "Ecocem est une entreprise irlandaise spécialisée dans les matériaux bas carbone, pionnière européenne des ciments à faible émission de CO₂.",
+      "Elle a confié à Orthus, filiale du groupe Migen, la construction complète de son nouveau site industriel de recherche et développement, en région parisienne. Le chantier s'étend sur plusieurs mois."
+    ],
+    "bouton": "Faire piloter mon projet industriel",
+    "chiffres": [
+      {
+        "libelle": "Intervenant",
+        "valeur": "Orthus, filiale du groupe Migen, équipe dédiée"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Région parisienne"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Conception et réalisation complète du site"
+      },
+      {
+        "libelle": "Domaines",
+        "valeur": "Fondations, structures, équipements, raccordements industriels"
+      }
+    ],
+    "situationTitre": "Un site de R&D n'est pas un bâtiment industriel classique.",
+    "situationProse": [
+      "Il doit accueillir des essais, une production pilote et des plateformes de tests, avec des contraintes qui n'apparaissent qu'à l'usage.",
+      "Ecocem investit dans cette infrastructure pour trois raisons.",
+      "Un tel projet mobilise plusieurs corps de métier sur un planning long. Chaque jalon manqué décale la mise en service, et le risque logistique pèse autant que le risque technique.",
+      "Un industriel qui pilote lui-même ce type de chantier y passe ses meilleures ressources. Elles quittent la production pendant des mois, au profit d'un métier qui n'est pas le leur.",
+      "La seconde difficulté est la coordination. Sans interlocuteur unique, chaque corps de métier optimise son planning, et les interfaces se découvrent trop tard."
+    ],
+    "objectifs": [
+      {
+        "titre": "Développer de nouveaux procédés",
+        "texte": "De fabrication bas carbone."
+      },
+      {
+        "titre": "Tester des solutions innovantes",
+        "texte": "En conditions industrielles réelles."
+      },
+      {
+        "titre": "Renforcer sa présence technologique",
+        "texte": "En France et en Europe."
+      },
+      {
+        "titre": "Un seul pilote pour coordonner tous les corps de métier."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Vous avez un pilote unique du chantier",
+        "texte": "Orthus assure la gestion du projet de bout en bout, de la conception à la réalisation."
+      },
+      {
+        "titre": "Vous n'arbitrez pas entre les corps de métier",
+        "texte": "La coordination des intervenants est portée par Orthus."
+      },
+      {
+        "titre": "Vous tenez un planning long",
+        "texte": "Les jalons critiques sont suivis jusqu'à la livraison prévue."
+      },
+      {
+        "titre": "Vous limitez les risques techniques et logistiques",
+        "texte": "Grâce à une organisation pensée pour ça dès le départ."
+      },
+      {
+        "titre": "Vous avez une équipe dédiée",
+        "texte": ", qui suit fondations, structures, équipements, raccordements industriels et sécurisation des installations."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Choix du partenaire",
+        "texte": "Ecocem confie à Orthus la conception et la réalisation complète du site industriel."
+      },
+      {
+        "titre": "Cadrage du projet",
+        "texte": "Le périmètre, les corps de métier et les jalons critiques sont arrêtés."
+      },
+      {
+        "titre": "Constitution de l'équipe",
+        "texte": "Une équipe Orthus dédiée est affectée au suivi de chaque étape."
+      },
+      {
+        "titre": "Travaux structurels",
+        "texte": "Fondations, structures et bâtiments industriels sont réalisés."
+      },
+      {
+        "titre": "Équipements et raccordements",
+        "texte": "Réseaux, plateformes de tests et raccordements industriels sont intégrés."
+      },
+      {
+        "titre": "Sécurisation et livraison",
+        "texte": "Les installations sont sécurisées, la livraison est prévue d'ici."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Ecocem, matériaux bas carbone, entreprise irlandaise"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Région parisienne"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Conception et réalisation complète du site"
+      },
+      {
+        "libelle": "Intervenant",
+        "valeur": "Orthus, filiale du groupe Migen, équipe dédiée"
+      },
+      {
+        "libelle": "Domaines",
+        "valeur": "Fondations, structures, équipements, raccordements industriels"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Un chantier planifié sur plusieurs mois",
+        "texte": ", avec des jalons critiques suivis jusqu'à la livraison prévue d'ici."
+      },
+      {
+        "titre": "Un pilotage complet assuré par Orthus",
+        "texte": ", de la conception à la réalisation, avec une équipe dédiée sur chaque étape."
+      },
+      {
+        "titre": "Un site destiné à la recherche appliquée",
+        "texte": "Sur les matériaux de construction durables, monté sous exigences qualité, sécurité et performance."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "Le résultat",
+        "texte": "Ce que le dossier documente à ce stade."
+      },
+      {
+        "texte": "Le chantier est en cours, la livraison est attendue d'ici."
+      }
+    ],
+    "besoinTitre": "Un projet industriel à construire et aucune ressource pour le piloter ?",
+    "besoinProse": [
+      "Exposez le programme et l'échéance, nous vous disons ce que le pilotage demande.",
+      "Une fois le site en exploitation, l'astreinte la nuit, le week-end et les jours fériés peut prendre le relais.",
+      "Un chantier industriel ne pardonne pas les approximations. Les techniciens du groupe passent un entretien technique et un entretien comportemental, pour un taux de sélection de 10 %."
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Étude de cas",
+        "titre": "ORTHUS x WASHTEC : montage de portiques",
+        "href": "/preuves/orthus-washtec/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
+        "href": "/preuves/dimomaint/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
+        "href": "/preuves/eiffage/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "url": "/preuves/motherson/",
+  "titre_h1": "Presses à injecter et robots, le préventif d’abord",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "MOTHERSON",
+    "chapeau": [
+      "Motherson, l'un des plus grands fabricants mondiaux de modules automobiles en polymère, produit dans le Nord des équipements intérieurs : planches de bord, panneaux de porte, pièces injectées. Migen y assure la maintenance préventive d'un parc qui mêle presses à injection, lasers et robots."
+    ],
+    "bouton": "Demander un renfort de maintenance",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Équipements intérieurs automobiles en plastique"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Fabrication globale du site"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "2x8"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Maintenance préventive"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Industrie automobile"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Préventif"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Fabrication globale"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Planches de bord, panneaux de porte, pièces injectées"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Industrie automobile"
+      }
+    ],
+    "situationTitre": "Pour un fournisseur de rang 1, ces deux échecs remontent jusqu'au constructeur",
+    "objectifs": [
+      {
+        "titre": "Faire tenir le préventif sur un parc d'équipements variés."
+      },
+      {
+        "titre": "Maintenir des technologies très différentes : injection, laser, robotique, automatismes."
+      },
+      {
+        "titre": "Réduire les arrêts non planifiés sur les presses à injecter."
+      },
+      {
+        "titre": "Disposer de techniciens polyvalents sur toutes ces technologies."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Un préventif tenu dans la durée",
+        "texte": "Les techniciens Migen exécutent les gammes au rythme prévu, sans les reporter au profit du curatif."
+      },
+      {
+        "titre": "Des profils multi-technologies",
+        "texte": "Presses à injection, découpe laser, laser scoring, automates et robots."
+      },
+      {
+        "titre": "Une intégration aux équipes de poste",
+        "texte": "Présence calée sur l'organisation du site."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "Renforcer la maintenance préventive du site."
+      },
+      {
+        "titre": "Affectation",
+        "texte": "Techniciens aux compétences injection, laser et robotique."
+      },
+      {
+        "titre": "Intégration",
+        "texte": "Prise de poste dans les équipes du site."
+      },
+      {
+        "titre": "Préventif au quotidien",
+        "texte": "Exécution des gammes sur l'ensemble du parc."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Samvardhana Motherson Reydel Companies (SMRC)"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Planches de bord, panneaux de porte, pièces injectées"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Industrie automobile"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Fabrication globale"
+      },
+      {
+        "libelle": "Équipements",
+        "valeur": "Presses à injection, découpe laser, laser scoring, automates, robots"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Préventif"
+      }
+    ],
+    "besoinTitre": "Un besoin comparable sur votre site ?",
+    "besoinProse": [
+      "Décrivez-le, nous vous présentons les techniciens adaptés."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Après votre demande, en semaine de 8h00 à 18h30."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Techniciens évalués sur la technique et le comportement avant affectation."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Offre",
+        "titre": "Sous-traitance maintenance",
+        "href": "/offres/residence/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance industrie automobile",
+        "href": "/secteurs/automobile/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "AUTOLIV : un technicien dédié pour que le parc ne décroche pas",
+        "href": "/preuves/autoliv/"
+      }
+    ]
+  }
+}

@@ -1,165 +1,109 @@
 {
   "url": "/bureau-etudes/bureau-etude-electronique/",
   "gabarit": "03 Offre et prestation",
-  "verdict": "rendue-sans-titre",
+  "verdict": "rendue",
   "h1Attendu": "Bureau d'étude électronique : une carte pensée pour être réparée",
-  "h1Rendu": "",
-  "nbSections": 19,
-  "hauteurTotale": 9265,
+  "h1Rendu": "Bureau d'étude électronique : une carte pensée pour être réparée",
+  "nbSections": 12,
+  "hauteurTotale": 9250,
   "motsAnnonces": 1453,
-  "motsRendus": 1367,
+  "motsRendus": 1086,
   "sections": [
     {
       "ordre": 0,
       "titre": null,
-      "hauteur": 660,
+      "hauteur": 798,
       "images": 0,
-      "liens": 1,
-      "mots": 44
+      "liens": 4,
+      "mots": 141
     },
     {
       "ordre": 1,
       "titre": null,
-      "hauteur": 218,
-      "images": 0,
-      "liens": 0,
-      "mots": 46
+      "hauteur": 364,
+      "images": 1,
+      "liens": 8,
+      "mots": 22
     },
     {
       "ordre": 2,
-      "titre": null,
-      "hauteur": 203,
-      "images": 76,
-      "liens": 0,
-      "mots": 4
+      "titre": "Le problème",
+      "hauteur": 799,
+      "images": 0,
+      "liens": 1,
+      "mots": 127
     },
     {
       "ordre": 3,
-      "titre": null,
-      "hauteur": 493,
-      "images": 2,
-      "liens": 0,
-      "mots": 73
+      "titre": "Le déroulé",
+      "hauteur": 860,
+      "images": 0,
+      "liens": 1,
+      "mots": 155
     },
     {
       "ordre": 4,
-      "titre": null,
-      "hauteur": 114,
-      "images": 0,
-      "liens": 1,
-      "mots": 13
+      "titre": "Nos références",
+      "hauteur": 509,
+      "images": 76,
+      "liens": 4,
+      "mots": 43
     },
     {
       "ordre": 5,
-      "titre": null,
-      "hauteur": 545,
+      "titre": "Chiffres clés",
+      "hauteur": 666,
       "images": 0,
-      "liens": 0,
-      "mots": 74
+      "liens": 1,
+      "mots": 54
     },
     {
       "ordre": 6,
-      "titre": "Ce que nous faisons, et ce que ça change pour vous",
-      "hauteur": 599,
+      "titre": "L’offre",
+      "hauteur": 1741,
       "images": 0,
-      "liens": 0,
-      "mots": 206
+      "liens": 5,
+      "mots": 214
     },
     {
       "ordre": 7,
-      "titre": null,
-      "hauteur": 112,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 1280,
       "images": 0,
-      "liens": 1,
-      "mots": 13
+      "liens": 3,
+      "mots": 158
     },
     {
       "ordre": 8,
-      "titre": "La maintenance électronique industrielle, l'autre moitié du métier",
-      "hauteur": 591,
+      "titre": "Ce qu’on nous demande avant de signer",
+      "hauteur": 446,
       "images": 0,
-      "liens": 0,
-      "mots": 161
+      "liens": 1,
+      "mots": 12
     },
     {
       "ordre": 9,
-      "titre": "Un appel. Un plan. Une ligne qui repart.",
-      "hauteur": 673,
+      "titre": null,
+      "hauteur": 333,
       "images": 0,
       "liens": 1,
-      "mots": 151
-    },
-    {
-      "ordre": 10,
-      "titre": "Ce que nous garantissons",
-      "hauteur": 624,
-      "images": 0,
-      "liens": 0,
-      "mots": 82
-    },
-    {
-      "ordre": 11,
-      "titre": null,
-      "hauteur": 165,
-      "images": 0,
-      "liens": 0,
       "mots": 24
     },
     {
-      "ordre": 12,
-      "titre": null,
-      "hauteur": 320,
-      "images": 0,
-      "liens": 1,
-      "mots": 34
-    },
-    {
-      "ordre": 13,
-      "titre": "Les équipements que nous maintenons déjà",
-      "hauteur": 535,
-      "images": 10,
-      "liens": 0,
-      "mots": 37
-    },
-    {
-      "ordre": 14,
-      "titre": "Nos références",
-      "hauteur": 810,
-      "images": 8,
-      "liens": 5,
-      "mots": 154
-    },
-    {
-      "ordre": 15,
-      "titre": null,
-      "hauteur": 114,
-      "images": 0,
-      "liens": 1,
-      "mots": 13
-    },
-    {
-      "ordre": 16,
-      "titre": "Vos questions avant de nous appeler",
-      "hauteur": 829,
-      "images": 0,
-      "liens": 1,
-      "mots": 95
-    },
-    {
-      "ordre": 17,
-      "titre": "Les offres et prestations voisines",
-      "hauteur": 696,
+      "ordre": 10,
+      "titre": "Pages liées",
+      "hauteur": 538,
       "images": 0,
       "liens": 6,
-      "mots": 84
+      "mots": 71
     },
     {
-      "ordre": 18,
-      "titre": "Besoin d'une électronique qui ne vous piège pas dans dix ans ?",
-      "hauteur": 964,
+      "ordre": 11,
+      "titre": "Un chargé d’affaires vous rappelle dans l’heure.",
+      "hauteur": 819,
       "images": 0,
       "liens": 0,
-      "mots": 59
+      "mots": 65
     }
   ]
 }

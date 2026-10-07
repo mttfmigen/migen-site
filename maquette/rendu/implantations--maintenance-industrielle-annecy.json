@@ -1,0 +1,149 @@
+{
+  "url": "/implantations/maintenance-industrielle-annecy/",
+  "gabarit": "04 Ville",
+  "verdict": "rendue",
+  "h1Attendu": "Maintenance industrielle à Annecy et dans la Haute-Savoie Nord",
+  "h1Rendu": "Maintenance industrielle à Annecy et dans la Haute-Savoie Nord",
+  "nbSections": 17,
+  "hauteurTotale": 8755,
+  "motsAnnonces": 900,
+  "motsRendus": 1329,
+  "sections": [
+    {
+      "ordre": 0,
+      "titre": null,
+      "hauteur": 708,
+      "images": 0,
+      "liens": 1,
+      "mots": 139
+    },
+    {
+      "ordre": 1,
+      "titre": null,
+      "hauteur": 197,
+      "images": 0,
+      "liens": 0,
+      "mots": 34
+    },
+    {
+      "ordre": 2,
+      "titre": null,
+      "hauteur": 203,
+      "images": 76,
+      "liens": 0,
+      "mots": 4
+    },
+    {
+      "ordre": 3,
+      "titre": null,
+      "hauteur": 463,
+      "images": 2,
+      "liens": 0,
+      "mots": 68
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 28
+    },
+    {
+      "ordre": 5,
+      "titre": "Annecy : les industries que nos techniciens connaissent déjà",
+      "hauteur": 922,
+      "images": 1,
+      "liens": 16,
+      "mots": 154
+    },
+    {
+      "ordre": 6,
+      "titre": "Des tolérances au micron où la machine doit rester stable.",
+      "hauteur": 705,
+      "images": 0,
+      "liens": 0,
+      "mots": 110
+    },
+    {
+      "ordre": 7,
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 559,
+      "images": 0,
+      "liens": 0,
+      "mots": 163
+    },
+    {
+      "ordre": 8,
+      "titre": null,
+      "hauteur": 135,
+      "images": 0,
+      "liens": 1,
+      "mots": 28
+    },
+    {
+      "ordre": 9,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 762,
+      "images": 0,
+      "liens": 1,
+      "mots": 101
+    },
+    {
+      "ordre": 10,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 599,
+      "images": 0,
+      "liens": 0,
+      "mots": 64
+    },
+    {
+      "ordre": 11,
+      "titre": null,
+      "hauteur": 296,
+      "images": 0,
+      "liens": 1,
+      "mots": 19
+    },
+    {
+      "ordre": 12,
+      "titre": "Nos références",
+      "hauteur": 646,
+      "images": 12,
+      "liens": 7,
+      "mots": 96
+    },
+    {
+      "ordre": 13,
+      "titre": null,
+      "hauteur": 137,
+      "images": 0,
+      "liens": 1,
+      "mots": 28
+    },
+    {
+      "ordre": 14,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 625,
+      "images": 0,
+      "liens": 1,
+      "mots": 81
+    },
+    {
+      "ordre": 15,
+      "titre": "Les six offres, dans chaque bassin.",
+      "hauteur": 648,
+      "images": 0,
+      "liens": 6,
+      "mots": 143
+    },
+    {
+      "ordre": 16,
+      "titre": "Besoin de fiabiliser un site où chaque heure d'arrêt se paie ?",
+      "hauteur": 1012,
+      "images": 0,
+      "liens": 0,
+      "mots": 69
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+{
+  "url": "/preuves/stellantis-grand-est/",
+  "titre_h1": "Des dizaines de techniciens pour passer à l’électrique",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "STELLANTIS",
+    "chapeau": [
+      "STELLANTIS, anciennement PSA, a retenu Migen comme partenaire pour plusieurs de ses sites du Grand Est. La décision s'inscrit dans la transition de ses usines vers la production de véhicules électriques."
+    ],
+    "bouton": "Parler à un chargé d'affaires",
+    "heroFiche": [
+      {
+        "libelle": "Territoire",
+        "valeur": "Plusieurs sites industriels du Grand Est"
+      },
+      {
+        "libelle": "Contexte",
+        "valeur": "Transition des usines vers le véhicule électrique"
+      },
+      {
+        "libelle": "Effectif",
+        "valeur": "18 à 25 techniciens Migen mobilisés"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "18 à 25 techniciens"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Maintenance préventive et curative"
+      },
+      {
+        "libelle": "Territoire",
+        "valeur": "Plusieurs sites du Grand Est"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Industrie automobile"
+      }
+    ],
+    "situationTitre": "Faire basculer des usines vers l'électrique demande des compétences que les équipes en place n'ont pas toutes.",
+    "situationProse": [
+      "Le problème n'est pas d'ajouter des heures, il est d'ajouter des compétences absentes en interne.",
+      "La problématique posée : un manque de compétence pour prendre en charge les parcs machines de plusieurs sites, dans un contexte de transition technologique."
+    ],
+    "objectifs": [
+      {
+        "titre": "Plusieurs sites en même temps",
+        "texte": "Le besoin ne portait pas sur une usine isolée."
+      },
+      {
+        "titre": "Des compétences variées à réunir",
+        "texte": "Du préventif au curatif, sur des équipements différents."
+      },
+      {
+        "titre": "Un outil industriel mouvant",
+        "texte": "Les parcs machines changent pendant que les usines produisent."
+      },
+      {
+        "titre": "Un seul partenaire pour tous les sites",
+        "texte": "Une coordination unique et des standards communs."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Des dizaines d'intervenants en simultané",
+        "texte": "Plusieurs dizaines de collaborateurs aux compétences variées, mobilisés en même temps sur les sites concernés."
+      },
+      {
+        "titre": "Préventif et curatif portés ensemble",
+        "texte": "Le même dispositif couvre les deux, sans découpage artificiel entre la prévention et la réparation."
+      },
+      {
+        "titre": "Une montée en charge progressive",
+        "texte": "Le partenariat a commencé sur un périmètre réduit, puis s'est étendu après résolution des premières difficultés techniques."
+      },
+      {
+        "titre": "Un engagement long",
+        "texte": "Le contrat porte sur le développement et l'amélioration des performances, pas sur une intervention ponctuelle."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Sélection du partenaire",
+        "texte": "STELLANTIS retient Migen pour renforcer ses besoins techniques dans le Grand Est."
+      },
+      {
+        "titre": "Premières difficultés techniques",
+        "texte": "Les équipes Migen traitent les problèmes remontés sur les parcs machines."
+      },
+      {
+        "titre": "Approfondissement du partenariat",
+        "texte": "Le périmètre s'étend à plusieurs sites."
+      },
+      {
+        "titre": "Montée en effectif",
+        "texte": "Plusieurs dizaines d'intervenants opèrent en simultané, entre 18 et 25 techniciens."
+      },
+      {
+        "titre": "Reconduction longue durée",
+        "texte": "Le contrat est prolongé, avec un engagement continu sur les performances."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "STELLANTIS, anciennement PSA"
+      },
+      {
+        "libelle": "Territoire",
+        "valeur": "Plusieurs sites du Grand Est"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Industrie automobile"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "18 à 25 techniciens"
+      },
+      {
+        "libelle": "Problématique",
+        "valeur": "Manque de compétence sur les parcs machines en transition technologique"
+      },
+      {
+        "libelle": "Réponse",
+        "valeur": "Plusieurs dizaines de collaborateurs aux compétences variées"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Maintenance préventive et curative"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Les parcs machines de plusieurs sites sont pris en charge",
+        "texte": "Le manque de compétence initial est couvert."
+      },
+      {
+        "titre": "Le préventif et le curatif tiennent ensemble",
+        "texte": "Un seul dispositif porte les deux."
+      },
+      {
+        "titre": "La collaboration s'est élargie dans la durée",
+        "texte": "Site après site, sur un engagement continu."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "Ce que nous avons mis en place",
+        "texte": "Ce qui a déclenché l'extension du périmètre : la confiance mutuelle et la capacité de Migen à traiter efficacement les premières difficultés techniques. Le besoin est passé d'un point technique à couvrir à plusieurs sites servis en parallèle."
+      },
+      {
+        "titre": "Le résultat",
+        "texte": "Le contrat a été reconduit sur le long terme. C'est le seul indicateur que le client rend public, et c'est celui qui pèse : une usine ne reconduit pas un prestataire qui la ralentit."
+      }
+    ],
+    "besoinTitre": "Une transition technologique qui dépasse les compétences de vos équipes ?",
+    "besoinProse": [
+      "Dites-nous ce que vos parcs machines deviennent, nous mobilisons les compétences qui manquent."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Du lundi au vendredi, de 8h00 à 18h30."
+      },
+      {
+        "titre": "Astreinte la nuit, le week-end et les jours fériés",
+        "texte": "Disponible en option sur les sites à forte cadence, par téléphone."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Entretien technique et entretien comportemental, résultats d'évaluation partagés avec le client."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Offre",
+        "titre": "Sous-traitance maintenance",
+        "href": "/offres/residence/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance industrie automobile",
+        "href": "/secteurs/automobile/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "JTEKT : maintenance des installations",
+        "href": "/preuves/jtekt/"
+      }
+    ]
+  }
+}

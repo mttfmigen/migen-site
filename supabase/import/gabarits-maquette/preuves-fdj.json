@@ -1,0 +1,183 @@
+{
+  "url": "/preuves/fdj/",
+  "titre_h1": "L’intralogistique d’un grand site tenue en sous-traitance",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "CIUCH",
+    "chapeau": [
+      "Ciuch intervient sur les installations intralogistiques de la FDJ à Saint-Mard. Dans un contrat tripartite, Migen apporte les techniciens qui assurent le préventif et le curatif des lignes automatisées et des convoyeurs."
+    ],
+    "bouton": "Demander un technicien en renfort",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Intralogistique"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Lignes automatisées, convoyeurs"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "Journée"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Préventif, curatif"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Logistique"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Préventif, curatif"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Saint-Mard"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Logistique"
+      },
+      {
+        "libelle": "Équipements",
+        "valeur": "Lignes automatisées, convoyeurs"
+      }
+    ],
+    "situationTitre": "Il lui faut des techniciens fiables sans gonfler sa masse salariale",
+    "objectifs": [
+      {
+        "titre": "Tenir la disponibilité des lignes automatisées chez le client final."
+      },
+      {
+        "titre": "Traiter le curatif sans délai d'intervention extérieur."
+      },
+      {
+        "titre": "Un cadre contractuel clair entre intégrateur, client final et Migen."
+      },
+      {
+        "titre": "Des techniciens formés aux équipements de l’intégrateur."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Un contrat tripartite éprouvé, sur le modèle déjà mis en place avec Savoye.",
+        "texte": ""
+      },
+      {
+        "titre": "Des techniciens intralogistique habitués aux convoyeurs et lignes automatisées.",
+        "texte": ""
+      },
+      {
+        "titre": "Préventif et curatif sur site, en journée.",
+        "texte": ""
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "L'intégrateur cherche des techniciens pour le site de son client."
+      },
+      {
+        "titre": "Contractualisation",
+        "texte": "Contrat tripartite."
+      },
+      {
+        "titre": "Affectation",
+        "texte": "Techniciens intralogistique."
+      },
+      {
+        "titre": "Intégration",
+        "texte": "Accès et règles du site du client final."
+      },
+      {
+        "titre": "Exploitation",
+        "texte": "Préventif et curatif au quotidien."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Ciuch, pour le client final FDJ"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Saint-Mard"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Logistique"
+      },
+      {
+        "libelle": "Équipements",
+        "valeur": "Lignes automatisées, convoyeurs"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Préventif, curatif"
+      },
+      {
+        "libelle": "Montage",
+        "valeur": "Contrat tripartite"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "L'intégration dans la structure existante",
+        "texte": "S'est faite efficacement."
+      },
+      {
+        "titre": "L'expertise a été immédiate",
+        "texte": "Pour les équipes en place."
+      },
+      {
+        "titre": "La continuité de service",
+        "texte": "A été tenue, sans rupture dans les interventions."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "Le résultat",
+        "texte": "Ce que la mission a produit, tel que le dossier le documente."
+      },
+      {
+        "texte": "La collaboration avec la Française des Jeux illustre la capacité de Migen à intervenir dans des contextes industriels sensibles."
+      },
+      {
+        "texte": "La mission se poursuit, sur le même périmètre. Une présence reconduite sur deux exercices est le seul indicateur de satisfaction qui compte vraiment."
+      }
+    ],
+    "besoinTitre": "Votre équipe maintenance encaisse tout et n'a plus de marge ?",
+    "besoinProse": [
+      "Dites-nous ce que vous n'arrivez plus à tenir, nous regardons quel profil comble le trou.",
+      "Le 04 78 33 72 05 est ouvert du lundi au vendredi de 8h00 à 18h30, avec un rappel dans l'heure. Pour les nuits et les week-ends, l'astreinte est disponible en option.",
+      "Un technicien qui arrive sur une ligne en production doit être bon tout de suite. C'est pour cela que nous n'en retenons que 10 %, après un entretien technique et un entretien comportemental."
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "MERSEN : démarrage d'une ligne neuve",
+        "href": "/preuves/mersen/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
+        "href": "/preuves/dimomaint/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
+        "href": "/preuves/eiffage/"
+      }
+    ]
+  }
+}

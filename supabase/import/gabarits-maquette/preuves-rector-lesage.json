@@ -1,0 +1,161 @@
+{
+  "url": "/preuves/rector-lesage/",
+  "titre_h1": "Un technicien au cœur d’une ligne de préfabrication béton",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "RECTOR LESAGE",
+    "chapeau": [
+      "Rector Lesage, entreprise familiale créée et leader français des planchers en béton précontraint, compte 25 implantations et près de 1 200 salariés. Migen y assure la maintenance d'une ligne de fabrication de dalles en béton armé."
+    ],
+    "bouton": "Demander un renfort de maintenance",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Préfabrication béton pour le bâtiment"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Ligne de fabrication de dalles en béton armé"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "1 technicien intégré au site"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Matériaux de construction"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif",
+        "valeur": "1 technicien"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Weyersheim (67)"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Ligne de fabrication de dalles en béton armé"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Préfabrication béton"
+      }
+    ],
+    "situationTitre": "Le béton, abrasif et poussiéreux, use vite les équipements",
+    "objectifs": [
+      {
+        "titre": "Tenir la cadence de la ligne de fabrication de dalles."
+      },
+      {
+        "titre": "Fiabiliser les équipements de manutention : tables de transfert, convoyage."
+      },
+      {
+        "titre": "Disposer d'une compétence maintenance stable sur le site."
+      },
+      {
+        "titre": "Réduire les arrêts liés à l’environnement béton : poussière, vibrations, abrasion."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Un technicien dédié au site",
+        "texte": "Il connaît la ligne et son historique de pannes."
+      },
+      {
+        "titre": "Interventions sur toute la chaîne",
+        "texte": "Cuves à béton, tables de transfert, convoyage."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "Renforcer la maintenance d'une ligne de dalles."
+      },
+      {
+        "titre": "Affectation",
+        "texte": "Un technicien Migen."
+      },
+      {
+        "titre": "Intégration",
+        "texte": "Prise de poste sur le site."
+      },
+      {
+        "titre": "Maintenance au quotidien",
+        "texte": "Interventions sur cuves, tables de transfert et convoyage."
+      },
+      {
+        "titre": "Suivi",
+        "texte": "Mission en cours."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Rector Lesage"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Weyersheim (67)"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Préfabrication béton"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Matériaux de construction (bâtiment et industrie)"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Ligne de fabrication de dalles en béton armé"
+      },
+      {
+        "libelle": "Équipements",
+        "valeur": "Cuves béton, tables de transfert, convoyage"
+      },
+      {
+        "libelle": "Effectif",
+        "valeur": "1 technicien"
+      }
+    ],
+    "besoinTitre": "Un besoin comparable sur votre site ?",
+    "besoinProse": [
+      "Décrivez-le, nous vous présentons les techniciens adaptés."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Après votre demande, en semaine de 8h00 à 18h30."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Techniciens évalués sur la technique et le comportement avant affectation."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Offre",
+        "titre": "Sous-traitance maintenance",
+        "href": "/offres/residence/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance industrie lourde",
+        "href": "/secteurs/industrie-lourde/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "VIGNAL SYSTEMS : maintenir et monter, de jour comme de nuit",
+        "href": "/preuves/vignal-systems/"
+      }
+    ]
+  }
+}

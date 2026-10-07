@@ -13,9 +13,11 @@ import PageVille from "@/components/site/implantation/PageVille";
 import PageImplantations from "@/components/site/implantations/PageImplantations";
 import PageExpertises from "@/components/site/expertises/PageExpertises";
 import PageFiche from "@/components/site/fiche/PageFiche";
+import PageFicheMetier from "@/components/site/metier/PageFicheMetier";
 import PageMetier from "@/components/site/metier/PageMetier";
 import PageOffres from "@/components/site/offres/PageOffres";
 import PageOffre from "@/components/site/offre/PageOffre";
+import PagePreuve from "@/components/site/preuve/PagePreuve";
 import PageRessource from "@/components/site/ressource/PageRessource";
 import PageSecteur from "@/components/site/secteur/PageSecteur";
 import {
@@ -34,9 +36,10 @@ import { estDepartement, estVille } from "@/types/implantation";
 import { estImplantations } from "@/types/implantations";
 import { estExpertises } from "@/types/expertises";
 import { estFiche } from "@/types/fiche";
-import { estMetierOuDomaine } from "@/types/metier";
+import { estMetier, estMetierOuDomaine } from "@/types/metier";
 import { estOffres } from "@/types/offres";
 import { estOffre } from "@/types/offre";
+import { estPreuve } from "@/types/preuve";
 import { estRessource } from "@/types/ressource";
 import { estSecteur } from "@/types/secteur";
 
@@ -277,6 +280,22 @@ export default async function PageDuCocon({
     );
   }
 
+  // Le gabarit 07 « Métier et carrière », les 13 fiches `/carriere/<metier>/`,
+  // porté contre le rendu de la maquette autonome (maquette/rendu/carriere--*).
+  // Il se reconnaît AVANT `estMetierOuDomaine` : même discriminant « metier »,
+  // mais la nouvelle forme porte `heros` et `sections`, l'ancienne non.
+  // La page porte son propre formulaire (#postuler) et son maillage « Pour
+  // aller plus loin » : rien d'autre ne s'ajoute sous elle, c'est la capture.
+  if (estMetier(page.contenu)) {
+    return (
+      <PageFicheMetier
+        titre={page.titre_h1}
+        contenu={page.contenu}
+        filAriane={<FilAriane path={page.path} />}
+      />
+    );
+  }
+
   // Les gabarits MÉTIER et DOMAINE, pour `/carriere/<metier>/` et
   // `/expertises/<domaine>/`. Une fiche métier n'a ni punchline, ni duo
   // prestation-bénéfice, ni garanties : pliée au gabarit de vente, elle
@@ -299,6 +318,26 @@ export default async function PageDuCocon({
             </div>
           </>
         }
+      />
+    );
+  }
+
+  // Le gabarit ÉTUDE DE CAS, « 02 Étude de cas » de l'index de la maquette
+  // (41 pages /preuves/<client>/) : héros à pastille client, chiffres du
+  // dispositif, situation, réponse en bento, déroulé, fiche mission, résultat,
+  // complément, formulaire « Votre besoin », maillage « Pour aller plus loin ».
+  // Porté des captures pilotes `preuves--suez-remise-en-etat` et
+  // `preuves--danone-lignes-de-production` (07/10). Il porte son propre
+  // formulaire : la route n'ajoute pas celui de bas de page. On tranche sur le
+  // champ `gabarit` du jsonb, jamais sur le chemin.
+  if (estPreuve(page.contenu)) {
+    return (
+      <PagePreuve
+        titre={page.titre_h1}
+        contenu={page.contenu}
+        formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+        filAriane={<FilAriane path={page.path} />}
+        maillage={<Maillage page={page} />}
       />
     );
   }

@@ -1,0 +1,161 @@
+{
+  "url": "/preuves/salaison-du-maconnais/",
+  "titre_h1": "Du broyage à la cuisson, un seul technicien sur la chaîne",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "SALAISON DU MÂCONNAIS",
+    "chapeau": [
+      "À Pierreclos (Saône-et-Loire), Salaison du Mâconnais transforme la viande sur une chaîne complète : broyage, mélange, séchage, cuisson, conditionnement. Migen y assure la maintenance en 2x8, des machines de transformation jusqu'aux chambres froides."
+    ],
+    "bouton": "Demander un renfort de maintenance",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Salaison, transformation de la viande"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Broyage, mélange, conditionnement, froid, séchage, cuisson"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "1 technicien en 2x8"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Agroalimentaire (viande)"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif",
+        "valeur": "1 technicien"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Pierreclos (71)"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Salaison"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Agroalimentaire (viande)"
+      }
+    ],
+    "situationTitre": "Le parc mêle mécanique, froid industriel et thermique",
+    "objectifs": [
+      {
+        "titre": "Tenir la disponibilité des broyeuses, mélangeurs et encartonneuses."
+      },
+      {
+        "titre": "Couvrir les deux postes de production."
+      },
+      {
+        "titre": "Tenir la chaîne du froid sans interruption."
+      },
+      {
+        "titre": "Intervenir dans le respect des règles d’hygiène d’un site agroalimentaire."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Un technicien en 2x8 intégré à l'organisation du site.",
+        "texte": ""
+      },
+      {
+        "titre": "Polyvalence mécanique, froid et thermique sur l'ensemble de la chaîne.",
+        "texte": ""
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "Renforcer la maintenance de la chaîne de transformation."
+      },
+      {
+        "titre": "Affectation",
+        "texte": "Un technicien polyvalent."
+      },
+      {
+        "titre": "Intégration",
+        "texte": "Prise de poste en 2x8."
+      },
+      {
+        "titre": "Maintenance au quotidien",
+        "texte": "Broyage, mélange, conditionnement, froid, séchage, cuisson."
+      },
+      {
+        "titre": "Suivi",
+        "texte": "Mission en cours."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Salaison du Mâconnais"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Pierreclos (71)"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Salaison"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Agroalimentaire (viande)"
+      },
+      {
+        "libelle": "Équipements",
+        "valeur": "Broyeuse, mélangeur, encartonneuse, chambres froides, ateliers de séchage et de cuisson"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "2x8"
+      },
+      {
+        "libelle": "Effectif",
+        "valeur": "1 technicien"
+      }
+    ],
+    "besoinTitre": "Un besoin comparable sur votre site ?",
+    "besoinProse": [
+      "Décrivez-le, nous vous présentons les techniciens adaptés."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Après votre demande, en semaine de 8h00 à 18h30."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Techniciens évalués sur la technique et le comportement avant affectation."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Offre",
+        "titre": "Sous-traitance maintenance",
+        "href": "/offres/residence/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance agroalimentaire",
+        "href": "/secteurs/agroalimentaire/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "DANONE (BLÉDINA) : pas un poste sans maintenance, week-end compris",
+        "href": "/preuves/danone-lignes-de-production/"
+      }
+    ]
+  }
+}

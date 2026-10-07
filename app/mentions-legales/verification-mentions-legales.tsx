@@ -97,14 +97,21 @@ for (const marqueur of ["droit de la propriété intellectuelle", "titre indicat
   );
 }
 
-// L'adresse du siège, la seule valeur légale que la maquette renseigne.
+// L'adresse du siège. LA MAQUETTE ET LE RENDU DIVERGENT VOLONTAIREMENT :
+// la page légale de la maquette écrit encore Limonest, et Mehdi a tranché le
+// 07/10 au soir « le siège est à Écully ». Les deux côtés sont vérifiés : le
+// jour où la maquette est corrigée, cette exception tombe et le dit.
 assert.ok(
   texteMaquette.includes("1 rue des Vergers, Bâtiment 3, 69760 Limonest, France"),
-  "la maquette ne porte plus l'adresse du siège : vérifier avant de corriger le rendu",
+  "la maquette ne porte plus Limonest : l'exception du 07/10 n'a plus d'objet, la retirer",
 );
 assert.ok(
-  texteRendu.includes("1 rue des Vergers, Bâtiment 3, 69760 Limonest, France"),
-  "l'adresse du siège de la maquette n'est pas rendue",
+  texteRendu.includes("129 chemin du Moulin Carron, 69130 Écully, France"),
+  "le siège d'Écully (décision de Mehdi du 07/10) n'est pas rendu",
+);
+assert.ok(
+  !texteRendu.includes("Limonest"),
+  "Limonest est rendu : le siège est à Écully depuis la décision du 07/10",
 );
 
 // Le numéro du site, jamais celui de la landing page.

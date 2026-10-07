@@ -1,0 +1,53 @@
+/* Survols et replis du gabarit ÉTUDE DE CAS. Rien d'autre : un style en ligne
+   ne peut pas porter d'état.
+
+   LES SURVOLS : la capture (`maquette/rendu/preuves--*.html`) référence des
+   classes `scp*` et `cs-*` dont la feuille n'a pas été figée, l'export
+   autonome sur disque étant en retard sur la maquette qui a produit les
+   captures (noté le 07/10, à ré-exporter). Les valeurs posées ici sont celles
+   des MÊMES motifs relevées dans `maquette/site-final-autonome.html` :
+   bouton orange, bouton en verre, carte qui se soulève.
+
+   Le focus est traité avec le survol partout : un visiteur au clavier doit
+   voir la même chose qu'un visiteur à la souris (WCAG 2.4.7). */
+
+/* style-hover="filter:brightness(.93);transform:translateY(-1px);color:#fff" */
+.boutonPrincipal:hover,
+.boutonPrincipal:focus-visible {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+/* style-hover="background:var(--card);transform:translateY(-1px)" */
+.boutonSecondaire:hover,
+.boutonSecondaire:focus-visible {
+  background: var(--card);
+  transform: translateY(-1px);
+}
+
+/* Cartes « Pour aller plus loin » : la capture porte
+   `transition: transform var(--tr)`, le motif identique de la maquette déclare
+   style-hover="transform:translateY(-3px)". */
+.cartePlusLoin:hover,
+.cartePlusLoin:focus-visible {
+  transform: translateY(-3px);
+}
+
+/* Replis propres au gabarit, en complément de `mg-r2` et `mg-rmulti` de la
+   charte (`app/globals.css`) : la carte sombre du bento « Notre réponse »
+   occupe deux colonnes, elle doit n'en occuper qu'une quand la grille passe
+   en une colonne (620px, seuil de `.mg-rmulti`). */
+@media (max-width: 620px) {
+  .carteSombre {
+    grid-column: span 1 !important;
+  }
+}
+
+/* Le panneau sombre du résultat : la capture le dessine à 60px/56px, un écran
+   de 320px ne les a pas. Même réduction que les panneaux de la charte. */
+@media (max-width: 760px) {
+  .panneauResultat {
+    padding: 40px 24px !important;
+  }
+}

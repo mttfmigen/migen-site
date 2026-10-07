@@ -1,0 +1,189 @@
+{
+  "url": "/preuves/stellantis-fonderie-sept-fons/",
+  "titre_h1": "Un parc de fonderie repris en huit semaines",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "STELLANTIS",
+    "chapeau": [
+      "Stellantis exploite à Dompierre-sur-Besbre un site qui réunit deux ateliers lourds, la fonderie et l'usinage. Les parcs machines y sont de taille conséquente.",
+      "Migen assure la maintenance préventive et curative de ce site. La mission est toujours en cours."
+    ],
+    "bouton": "Faire chiffrer la reprise de ma maintenance",
+    "chiffres": [
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "6 techniciens de maintenance"
+      },
+      {
+        "libelle": "Nature des interventions",
+        "valeur": "Préventif et curatif, gestion complète"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Dompierre-sur-Besbre (03)"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Fonderie et usinage, parcs machines de taille conséquente"
+      }
+    ],
+    "situationTitre": "Le parc machine était en défaillance constante.",
+    "situationProse": [
+      "Le site nomme lui-même les deux causes.",
+      "Quand ces deux facteurs se cumulent, le préventif saute le premier. Le curatif devient le seul mode de fonctionnement, et la panne s'installe comme état normal du parc.",
+      "Un directeur d'usine connaît la suite. Chaque arrêt se paie en tonnage perdu, et personne n'a le temps de chercher la cause racine.",
+      "S'ajoute la dépendance aux deux ou trois techniciens qui connaissent encore les machines. Le jour où ils manquent, l'atelier devient aveugle.",
+      "Recruter aurait été la réponse normale. Sur un bassin où le personnel qualifié se raréfie, elle ne tenait pas le calendrier du site."
+    ],
+    "objectifs": [
+      {
+        "titre": "L'activité de fonderie sollicite les équipements en continu",
+        "texte": "La cadence ne redescend jamais, l'usure non plus."
+      },
+      {
+        "titre": "Le personnel qualifié manquait",
+        "texte": "Sans effectif, le rythme des défaillances dépasse la capacité à les traiter."
+      },
+      {
+        "titre": "Reprendre la gestion du parc rapidement, sans perte de cadence."
+      },
+      {
+        "titre": "Tenir préventif et curatif sur la fonderie comme sur l’usinage."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Vous confiez la maintenance du site, pas une portion de périmètre",
+        "texte": "Migen prend le préventif et le curatif, sur la fonderie comme sur l'usinage."
+      },
+      {
+        "titre": "Vous disposez d'une équipe dimensionnée pour le parc réel",
+        "texte": "Six techniciens de maintenance sont affectés au site."
+      },
+      {
+        "titre": "Vous gardez le site en marche sept jours sur sept",
+        "texte": "Les interventions se déploient sans interruption, y compris le week-end."
+      },
+      {
+        "titre": "Vous travaillez avec vos équipes, pas à côté d'elles",
+        "texte": "La prestation se mène en partenariat avec les équipes techniques de Stellantis."
+      },
+      {
+        "titre": "Vous n'avez pas de recrutement à porter",
+        "texte": "Migen recrute, encadre et fait tourner l'équipe qui tient le parc."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Constat partagé",
+        "texte": "Le parc est en défaillance constante, sous l'effet de l'activité de fonderie et du manque de personnel qualifié."
+      },
+      {
+        "titre": "Engagement",
+        "texte": "Migen s'engage sur la gestion complète de la maintenance du site."
+      },
+      {
+        "titre": "Reprise en 8 semaines",
+        "texte": "La transition vers la prise en charge complète tient en quelques semaines, pas en une année."
+      },
+      {
+        "titre": "Extension aux deux ateliers",
+        "texte": "Fonderie et usinage entrent dans le même périmètre d'intervention."
+      },
+      {
+        "titre": "Régime continu",
+        "texte": "Préventif et curatif tournent sept jours sur sept, avec les équipes Stellantis."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Site",
+        "valeur": "Dompierre-sur-Besbre (03)"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Fonderie et usinage, parcs machines de taille conséquente"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "6 techniciens de maintenance"
+      },
+      {
+        "libelle": "Nature des interventions",
+        "valeur": "Préventif et curatif, gestion complète"
+      },
+      {
+        "libelle": "Rythme",
+        "valeur": ", sans interruption"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "La bascule a tenu en 8 semaines",
+        "texte": "Passer d'un parc en défaillance constante à la prise en charge complète du site a demandé quelques semaines, pas une année."
+      },
+      {
+        "titre": "Six techniciens tiennent le parc",
+        "texte": "L'effectif qui manquait au site est monté et encadré par Migen, sur la fonderie comme sur l'usinage."
+      },
+      {
+        "titre": "La continuité est protégée",
+        "texte": "Préventif et curatif se déploient sans interruption, en partenariat avec les équipes techniques de Stellantis."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "Chiffres clés",
+        "puces": [
+          {
+            "accroche": "8 semaines",
+            "texte": "la bascule d'un parc en défaillance vers la prise en charge complète du site"
+          },
+          {
+            "accroche": "6 techniciens",
+            "texte": "l'équipe Migen affectée en propre à la fonderie et à l'usinage"
+          },
+          {
+            "accroche": "7 jours sur 7",
+            "texte": "le rythme des interventions préventives et curatives, week-end compris"
+          }
+        ]
+      },
+      {
+        "titre": "Le résultat",
+        "texte": "Ce que la reprise a produit, tel que le dossier le documente."
+      },
+      {
+        "texte": "La mission se poursuit aujourd'hui sur le même périmètre et au même rythme d'intervention."
+      }
+    ],
+    "besoinTitre": "Votre parc machine part en défaillance et vous n'avez pas les bras pour suivre ?",
+    "besoinProse": [
+      "Décrivez la situation, nous vous disons ce que la reprise demande.",
+      "Nous vous rappelons dans l'heure.",
+      "Les six techniciens de Sept-Fons sont passés par notre sélection. Entretien technique, entretien comportemental, 10 % des candidats retenus. Les résultats d'évaluation sont partagés avec le client avant la prise de poste."
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SUEZ : remise en état d'un site",
+        "href": "/preuves/suez-remise-en-etat/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
+        "href": "/preuves/dimomaint/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
+        "href": "/preuves/eiffage/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

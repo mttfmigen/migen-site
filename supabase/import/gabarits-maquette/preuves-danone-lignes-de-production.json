@@ -1,0 +1,203 @@
+{
+  "url": "/preuves/danone-lignes-de-production/",
+  "titre_h1": "Pas un poste sans maintenance, week-end compris",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "DANONE (BLÉDINA)",
+    "chapeau": [
+      "À Steenvoorde (Nord), l'usine Blédina du groupe Danone produit les laits infantiles du groupe, sous forme liquide et en poudre. Migen y assure une présence de maintenance en continu, semaine et week-end, sur les lignes liquides et le conditionnement poudre."
+    ],
+    "bouton": "Demander un renfort de maintenance",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Nutrition infantile (laits liquides et en poudre)"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Lignes liquides et conditionnement poudre"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "3x8 en semaine, présence week-end, couverture continue"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Préventif, curatif, dépannage"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Agroalimentaire infantile"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif",
+        "valeur": "Jusqu'à 3 techniciens, 1 actuellement"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Préventif, curatif, dépannage"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Steenvoorde (59)"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Lignes liquides et conditionnement poudre"
+      }
+    ],
+    "situationTitre": "Une ligne de lait infantile qui s'arrête, c'est une production qui ne se rattrape pas sans risque sur la qualité",
+    "situationProse": [
+      "Sur un site qui tourne jour et nuit, la maintenance doit être là à chaque poste, week-end compris."
+    ],
+    "objectifs": [
+      {
+        "titre": "Couvrir toutes les plages de production, 3x8 et week-end, sans trou de présence."
+      },
+      {
+        "titre": "Réduire les temps d'arrêt sur les lignes automatisées."
+      },
+      {
+        "titre": "Tenir le préventif malgré la charge du curatif."
+      },
+      {
+        "titre": "Intervenir dans le respect des règles d’hygiène d’un site de nutrition infantile."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Des techniciens postés, pas d'astreinte à distance",
+        "texte": "Deux techniciens intégrés aux équipes en 3x8, un troisième dédié au week-end."
+      },
+      {
+        "titre": "Une compétence automatisme",
+        "texte": "Les techniciens interviennent sur des lignes pilotées par automates Schneider."
+      },
+      {
+        "titre": "Préventif et curatif tenus ensemble",
+        "texte": "Le préventif planifié n'est pas sacrifié au dépannage."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "Sécuriser la maintenance sur l'ensemble des postes de production."
+      },
+      {
+        "titre": "Affectation",
+        "texte": "Jusqu'à 3 techniciens qualifiés en automatisme et mécanique de ligne."
+      },
+      {
+        "titre": "Exploitation au quotidien",
+        "texte": "Préventif, curatif et dépannage en 3x8 et le week-end."
+      },
+      {
+        "titre": "Ajustement du dispositif",
+        "texte": "Effectif adapté au besoin du site, 1 technicien en poste aujourd'hui."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Danone (Blédina)"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Steenvoorde (59)"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Nutrition infantile"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Agroalimentaire"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Lignes liquides et conditionnement poudre"
+      },
+      {
+        "libelle": "Équipements",
+        "valeur": "Lignes automatisées, automates Schneider"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Préventif, curatif, dépannage"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "3x8 (2 techniciens) + week-end (1 technicien)"
+      },
+      {
+        "libelle": "Effectif",
+        "valeur": "Jusqu'à 3 techniciens, 1 actuellement"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Des techniciens qualifiés et autonomes",
+        "texte": "Opérationnels sans encadrement permanent."
+      },
+      {
+        "titre": "Une flexibilité d'organisation",
+        "texte": "Le dispositif suit le rythme réel de la production."
+      },
+      {
+        "titre": "Une compétence alignée",
+        "texte": "Le niveau technique correspond aux équipements en service."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "Le résultat",
+        "texte": "La continuité de service est assurée sur les deux familles de lignes, sans création de poste ni alourdissement de la structure interne du client."
+      },
+      {
+        "texte": "Ce que Blédina retire de la collaboration, tel que le site le formule :"
+      }
+    ],
+    "besoinTitre": "Votre maintenance tient la nuit avec l'effectif du jour ?",
+    "besoinProse": [
+      "Dites-nous votre rythme de postes, nous cadrons le renfort autour."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Du lundi au vendredi, de 8h00 à 18h30."
+      },
+      {
+        "titre": "Astreinte",
+        "texte": "Proposée en option sur les productions continues, au 04 78 33 72 05."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Entretien technique et entretien comportemental, résultats partagés avec le client."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Offre",
+        "titre": "Sous-traitance maintenance",
+        "href": "/offres/residence/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance agroalimentaire",
+        "href": "/secteurs/agroalimentaire/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "McCAIN : Belgique",
+        "href": "/preuves/mccain-belgique/"
+      }
+    ]
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "url": "/preuves/voit-grand-est/",
+  "titre_h1": "Centres d’usinage et presses tenus dans le Grand Est",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "VOIT",
+    "chapeau": [
+      "VOIT, spécialiste de la fabrication de pièces mécaniques de précision, a intégré un technicien Migen à temps plein sur son site. L'objectif posé : tenir la disponibilité de ses équipements critiques."
+    ],
+    "bouton": "Demander un technicien sur site",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Pièces mécaniques de précision"
+      },
+      {
+        "libelle": "Familles de machines",
+        "valeur": "Centres d'usinage grande vitesse, presses automatisées, machines à commande numérique"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "1 technicien expérimenté, à temps plein sur site"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "1 technicien de maintenance expérimenté, à temps plein"
+      },
+      {
+        "libelle": "Périmètre machines",
+        "valeur": "Centres d'usinage grande vitesse, presses automatisées, machines CN"
+      },
+      {
+        "libelle": "Besoin",
+        "valeur": "Renforcer les équipes de maintenance, tenir la disponibilité des équipements"
+      },
+      {
+        "libelle": "Suivi",
+        "valeur": "Supervision par les coordinateurs Migen"
+      }
+    ],
+    "situationTitre": "Un centre d'usinage à grande vitesse arrêté, c'est une pièce de précision qui ne sort pas.",
+    "situationProse": [
+      "Et un client qui attend.",
+      "Dans l'environnement industriel de VOIT, la disponibilité des équipements est un enjeu quotidien."
+    ],
+    "objectifs": [
+      {
+        "titre": "Réactive",
+        "texte": "Pour limiter les arrêts non planifiés."
+      },
+      {
+        "titre": "Préventive",
+        "texte": "Pour anticiper l'usure avant la casse."
+      },
+      {
+        "titre": "Adaptée",
+        "texte": "À des machines complexes, souvent multimarques."
+      },
+      {
+        "titre": "Durable",
+        "texte": "Une équipe stable qui connaît le parc."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Préventif et réglages sur les centres d'usinage",
+        "texte": "Le technicien tient le plan d'entretien et les réglages sur les centres à grande vitesse."
+      },
+      {
+        "titre": "Dépannage des presses",
+        "texte": "Les presses hydrauliques comme mécaniques sont prises en charge sur place."
+      },
+      {
+        "titre": "Diagnostic sur commandes numériques",
+        "texte": "Les erreurs CN sont identifiées et corrigées sans attendre un intervenant extérieur."
+      },
+      {
+        "titre": "Travail direct avec la production",
+        "texte": "Le technicien collabore avec les équipes de production pour raccourcir les temps d'arrêt."
+      },
+      {
+        "titre": "Supervision Migen",
+        "texte": "Les coordinateurs Migen suivent la prestation tout au long de la mission."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "VOIT fait appel à Migen pour renforcer ses équipes de maintenance."
+      },
+      {
+        "titre": "Définition du profil",
+        "texte": "Le périmètre couvre usinage, presses et commande numérique, sur un parc multimarques."
+      },
+      {
+        "titre": "Intégration sur site",
+        "texte": "Un technicien expérimenté est affecté à temps plein dans les équipes VOIT."
+      },
+      {
+        "titre": "Suivi de prestation",
+        "texte": "Les coordinateurs Migen assurent le pilotage dans la durée."
+      },
+      {
+        "titre": "Amélioration du plan",
+        "texte": "Le plan de maintenance évolue en continu, en lien avec les standards VOIT."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "VOIT, pièces mécaniques de précision"
+      },
+      {
+        "libelle": "Besoin",
+        "valeur": "Renforcer les équipes de maintenance, tenir la disponibilité des équipements"
+      },
+      {
+        "libelle": "Périmètre machines",
+        "valeur": "Centres d'usinage grande vitesse, presses automatisées, machines CN"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "1 technicien de maintenance expérimenté, à temps plein"
+      },
+      {
+        "libelle": "Suivi",
+        "valeur": "Supervision par les coordinateurs Migen"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Disponibilité accrue",
+        "texte": "Les lignes de production tournent davantage."
+      },
+      {
+        "titre": "Moins d'incidents récurrents",
+        "texte": "Les pannes qui revenaient faute de traitement de fond ont reculé."
+      },
+      {
+        "titre": "Montée en compétence des équipes internes",
+        "texte": "Elle vient de la collaboration quotidienne avec le technicien Migen."
+      },
+      {
+        "titre": "Plan de maintenance amélioré en continu",
+        "texte": "Il reste aligné sur les standards VOIT."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "La situation",
+        "texte": "La maintenance devait tenir trois exigences en même temps :"
+      },
+      {
+        "titre": "Le résultat",
+        "texte": "Les premiers effets sont visibles dès les premières semaines de la mission."
+      }
+    ],
+    "besoinTitre": "Des machines multimarques que personne ne couvre en entier ?",
+    "besoinProse": [
+      "Décrivez le parc, nous cherchons le profil qui tient les trois familles.",
+      "Appeler un intervenant différent par marque de machine, c'est payer trois déplacements pour un seul atelier. Un technicien qui couvre le parc entier change l'équation."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Du lundi au vendredi, de 8h00 à 18h30."
+      },
+      {
+        "titre": "Astreinte la nuit, le week-end et les jours fériés",
+        "texte": "Proposée en option sur les parcs critiques, par téléphone."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Usinage, commande numérique, presses et automatisme, après entretien technique et comportemental."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance industrie automobile",
+        "href": "/secteurs/automobile/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "STELLANTIS : fonderie de Sept-Fons",
+        "href": "/preuves/stellantis-fonderie-sept-fons/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "AUTOLIV : un technicien dédié pour que le parc ne décroche pas",
+        "href": "/preuves/autoliv/"
+      }
+    ]
+  }
+}

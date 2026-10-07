@@ -1,0 +1,161 @@
+{
+  "url": "/preuves/jeld-wen/",
+  "titre_h1": "Des commandes numériques remises en route à chaque équipe",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "JELD-WEN",
+    "chapeau": [
+      "Jeld-Wen, premier fabricant mondial de portes, produit en France ses portes et blocs-portes intérieurs dans deux usines. Migen renforce la maintenance curative d'un site organisé en 2x8, sur un parc de machines à commande numérique."
+    ],
+    "bouton": "Demander un renfort de maintenance",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Portes et blocs-portes intérieurs bois"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Machines à commande numérique de l'atelier de fabrication"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "2 techniciens, un par équipe en 2x8"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Maintenance curative"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Menuiserie industrielle"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif",
+        "valeur": "2 techniciens"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Curatif"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Portes et blocs-portes intérieurs"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Menuiserie industrielle"
+      }
+    ],
+    "situationTitre": "En 2x8, une panne de fin de poste ne peut pas attendre le lendemain",
+    "objectifs": [
+      {
+        "titre": "Un technicien présent sur chaque équipe, matin et après-midi."
+      },
+      {
+        "titre": "Réduire le temps de remise en route des machines CN."
+      },
+      {
+        "titre": "Soulager l'équipe maintenance interne sur le curatif."
+      },
+      {
+        "titre": "Garder une trace des pannes pour réduire leur répétition."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Un technicien par équipe",
+        "texte": "Deux techniciens Migen calés sur l'organisation 2x8 du site."
+      },
+      {
+        "titre": "Des profils commande numérique",
+        "texte": "Diagnostic sur la partie mécanique, électrique et la commande des machines."
+      },
+      {
+        "titre": "Réaction sur place",
+        "texte": "La panne est prise en charge dans le poste où elle survient."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "Renforcer le curatif sur les machines CN."
+      },
+      {
+        "titre": "Proposition",
+        "texte": "2 techniciens en 2x8."
+      },
+      {
+        "titre": "Contractualisation",
+        "texte": "En cours de signature."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Jeld-Wen France"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Portes et blocs-portes intérieurs"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Menuiserie industrielle"
+      },
+      {
+        "libelle": "Équipements",
+        "valeur": "Machines à commande numérique"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Curatif"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "2x8"
+      },
+      {
+        "libelle": "Effectif",
+        "valeur": "2 techniciens"
+      }
+    ],
+    "besoinTitre": "Un besoin comparable sur votre site ?",
+    "besoinProse": [
+      "Décrivez-le, nous vous présentons les techniciens adaptés."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Après votre demande, en semaine de 8h00 à 18h30."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Techniciens évalués sur la technique et le comportement avant affectation."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Offre",
+        "titre": "Sous-traitance maintenance",
+        "href": "/offres/residence/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance menuiserie industrielle",
+        "href": "/secteurs/menuiserie-industrielle/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

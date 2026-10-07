@@ -1,0 +1,193 @@
+{
+  "url": "/preuves/joint-lyonnais/",
+  "titre_h1": "Réparer plutôt que remplacer, au budget d’une PME",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "JOINT LYONNAIS",
+    "chapeau": [
+      "Joint Lyonnais est une PME lyonnaise spécialisée dans la production de joints aux caractéristiques spécifiques.",
+      "Des défaillances techniques entravaient sa production. Migen intervient sur son parc machines, et la collaboration se poursuit."
+    ],
+    "bouton": "Faire diagnostiquer mes machines",
+    "chiffres": [
+      {
+        "libelle": "Nature des interventions",
+        "valeur": "Diagnostic sur site, propositions techniques, réparation"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Lyon (69)"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Défaillances techniques entravant la production"
+      },
+      {
+        "libelle": "Contrainte cadrante",
+        "valeur": "Budget de PME, sans rachat de matériel neuf"
+      }
+    ],
+    "situationTitre": "Une PME avec des machines qui lâchent et un budget qui ne suit pas.",
+    "situationProse": [
+      "Ce n'est pas un problème de matériel, c'est un problème de diagnostic.",
+      "Deux contraintes tenaient le dossier.",
+      "À ce stade, le réflexe classique consiste à remplacer la machine. C'est la décision la plus chère, et souvent la moins justifiée : elle se prend faute d'avoir compris la panne.",
+      "Dans une PME, l'arbitrage est brutal. Un investissement machine non prévu se retire du reste, de l'outillage à l'embauche.",
+      "Sur des joints aux caractéristiques spécifiques, l'équipement n'est pas interchangeable. Un remplacement impose aussi de retrouver les réglages, et la production redémarre plus lentement qu'on ne l'imagine.",
+      "La bonne question n'est donc pas quoi racheter, mais ce que la machine a réellement. Ce diagnostic demande un niveau technique que peu de PME gardent en interne."
+    ],
+    "objectifs": [
+      {
+        "titre": "La situation était critique",
+        "texte": "Les défaillances entravaient directement la production, il fallait une intervention rapide."
+      },
+      {
+        "titre": "Les compétences techniques manquaient sur place",
+        "texte": "Le diagnostic demandait un niveau que la PME n'avait pas en interne."
+      },
+      {
+        "titre": "Obtenir un diagnostic précis avant toute dépense."
+      },
+      {
+        "titre": "Choisir entre plusieurs solutions chiffrées, adaptées au budget."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Vous obtenez un diagnostic rapide sur place",
+        "texte": "Les techniciens se déplacent, étudient minutieusement les aspects techniques du parc."
+      },
+      {
+        "titre": "Vous recevez plusieurs propositions, pas une seule",
+        "texte": "Chacune est adaptée aux contraintes budgétaires de l'entreprise."
+      },
+      {
+        "titre": "Vous économisez sur l'acquisition de matériel neuf",
+        "texte": "Les solutions conçues permettent de conserver les équipements en place."
+      },
+      {
+        "titre": "Vous optimisez les ressources dont vous disposez déjà",
+        "texte": ", au lieu d'en acheter d'autres."
+      },
+      {
+        "titre": "Vous préservez votre efficacité opérationnelle",
+        "texte": "Pendant le traitement des défaillances."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Appel du client",
+        "texte": "Joint Lyonnais sollicite Migen face à des défaillances qui entravent la production."
+      },
+      {
+        "titre": "Déplacement des techniciens",
+        "texte": "Une équipe est dépêchée sur place, sur le parc machines lyonnais."
+      },
+      {
+        "titre": "Étude technique",
+        "texte": "Les aspects techniques des équipements sont examinés en détail."
+      },
+      {
+        "titre": "Propositions chiffrées",
+        "texte": "Plusieurs options sont présentées, calées sur le budget de la PME."
+      },
+      {
+        "titre": "Traitement des défaillances",
+        "texte": "Les solutions retenues sont mises en œuvre sur le parc existant."
+      },
+      {
+        "titre": "Suite de la collaboration",
+        "texte": "La relation se poursuit."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Joint Lyonnais, production de joints spécifiques"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Lyon (69)"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Défaillances techniques entravant la production"
+      },
+      {
+        "libelle": "Nature des interventions",
+        "valeur": "Diagnostic sur site, propositions techniques, réparation"
+      },
+      {
+        "libelle": "Contrainte cadrante",
+        "valeur": "Budget de PME, sans rachat de matériel neuf"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Les difficultés rencontrées ont été palliées",
+        "texte": "Sur le parc existant."
+      },
+      {
+        "titre": "L'entreprise a économisé",
+        "texte": "Sur l'acquisition de nouveaux produits."
+      },
+      {
+        "titre": "Les ressources disponibles ont été optimisées",
+        "texte": ", sans investissement supplémentaire."
+      },
+      {
+        "titre": "L'efficacité opérationnelle a été préservée",
+        "texte": "Pendant toute l'intervention."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "Chiffres clés",
+        "puces": [
+          {
+            "accroche": "1 parc machines",
+            "texte": "l'ensemble des équipements lyonnais diagnostiqué sur place, pas une machine isolée"
+          },
+          {
+            "accroche": "0 machine remplacée",
+            "texte": "les solutions retenues conservent les équipements en place, sans rachat de matériel neuf"
+          }
+        ]
+      },
+      {
+        "titre": "Le résultat",
+        "texte": "Ce que l'intervention a produit, tel que le dossier le documente."
+      },
+      {
+        "texte": "L'approche personnalisée est ce que le dossier retient : des solutions conçues pour ce parc, pas un devis de remplacement."
+      }
+    ],
+    "besoinTitre": "Un devis de remplacement vous attend sur le bureau ?",
+    "besoinProse": [
+      "Faites regarder la machine avant de signer. Un diagnostic coûte toujours moins cher qu'un achat évitable.",
+      "Un diagnostic ne vaut que par celui qui le pose. Nos techniciens sont évalués en entretien technique et comportemental, et nous en retenons 10 %."
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Étude de cas",
+        "titre": "EIFFAGE : maintenance préventive photovoltaïque",
+        "href": "/preuves/eiffage/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
+        "href": "/preuves/dimomaint/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "ERIKS : un responsable maintenance pour traverser la transition",
+        "href": "/preuves/eriks/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

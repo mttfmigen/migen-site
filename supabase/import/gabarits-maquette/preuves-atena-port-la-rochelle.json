@@ -1,0 +1,165 @@
+{
+  "url": "/preuves/atena-port-la-rochelle/",
+  "titre_h1": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "ATENA",
+    "chapeau": [
+      "Filiale du groupe Sica Atlantique, Atena réceptionne, traite et ensache des engrais solides sur le port de La Rochelle, premier port français importateur de fertilisants. Migen y intervient pour venir à bout des pannes récurrentes qui freinaient la chaîne, du déchargement des navires jusqu'à l'ensachage."
+    ],
+    "bouton": "Demander un renfort de maintenance",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Logistique et ensachage d'engrais solides"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Déchargement portuaire, traitement, séchage, ensachage"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "2 techniciens sur site, dont 1 en long terme"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Dépannage, traitement des pannes récurrentes"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Engrais agricoles, logistique portuaire"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif",
+        "valeur": "2 techniciens"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Dépannage, résolution des pannes récurrentes"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "La Rochelle (17)"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Déchargement, traitement, séchage, ensachage"
+      }
+    ],
+    "situationTitre": "Sur un terminal d'engrais, la poussière et la corrosion font revenir les mêmes pannes",
+    "objectifs": [
+      {
+        "titre": "Sortir des pannes récurrentes au lieu de les réparer à chaque fois."
+      },
+      {
+        "titre": "Sécuriser le déchargement pendant les escales de navires."
+      },
+      {
+        "titre": "Garder la chaîne continue jusqu'au séchage et à l'ensachage."
+      },
+      {
+        "titre": "Disposer d'une ressource stable sur le site, au-delà du dépannage ponctuel."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Des techniciens présents sur le terminal",
+        "texte": "Ils connaissent les équipements et n'arrivent pas « à froid » sur la panne."
+      },
+      {
+        "titre": "Compétences levage et grande hauteur",
+        "texte": "Interventions sur grues de déchargement et sur un convoyeur aérien d'environ 150 m de long, à 45 m de hauteur."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "Des pannes qui reviennent sur la chaîne de déchargement et de traitement."
+      },
+      {
+        "titre": "Affectation",
+        "texte": "Un premier technicien sur site."
+      },
+      {
+        "titre": "Dépannage et fiabilisation",
+        "texte": "Interventions sur grues, convoyeurs, séchage et ensachage."
+      },
+      {
+        "titre": "Pérennisation",
+        "texte": "Un second technicien installé en long terme, négocié en septembre."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Atena (groupe Sica Atlantique)"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "La Rochelle (17)"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Réception, traitement et ensachage d'engrais solides"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Engrais agricoles, logistique portuaire"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Déchargement, traitement, séchage, ensachage"
+      },
+      {
+        "libelle": "Équipements",
+        "valeur": "Grues de déchargement, convoyeur aérien (45 m de haut, environ 150 m), charges lourdes de 8 t"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Dépannage, résolution des pannes récurrentes"
+      },
+      {
+        "libelle": "Effectif",
+        "valeur": "2 techniciens"
+      }
+    ],
+    "besoinTitre": "Un besoin comparable sur votre site ?",
+    "besoinProse": [
+      "Décrivez-le, nous vous présentons les techniciens adaptés."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Après votre demande, en semaine de 8h00 à 18h30."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Techniciens évalués sur la technique et le comportement avant affectation."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Offre",
+        "titre": "Sous-traitance maintenance",
+        "href": "/offres/residence/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance logistique",
+        "href": "/secteurs/logistique/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

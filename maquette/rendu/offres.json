@@ -1,8 +1,8 @@
 {
   "url": "/offres/",
   "gabarit": "10 Hub de rubrique",
-  "verdict": "rendue-h1-different",
-  "h1Attendu": "Maintenance industrielle : cinq offres, une seule exigence",
+  "verdict": "rendue",
+  "h1Attendu": "Maintenance industrielle : six offres, une seule exigence",
   "h1Rendu": "Maintenance industrielle : six offres, une seule exigence",
   "nbSections": 18,
   "hauteurTotale": 9443,

@@ -1,0 +1,208 @@
+{
+  "url": "/preuves/jtekt/",
+  "titre_h1": "Voir la dérive avant que l’équipement critique ne tombe",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "JTEKT",
+    "chapeau": [
+      "JTEKT conçoit et fabrique des composants techniques : systèmes de direction, roulements pour l'industrie et pour l'automobile. Le groupe a fait appel à Migen pour sécuriser la maintenance de ses installations industrielles."
+    ],
+    "bouton": "Demander un renfort de maintenance",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Systèmes de direction, roulements industrie et automobile"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Équipements critiques des sites de production"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "Techniciens intégrés aux équipes de maintenance, présents au quotidien"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Surveillance, maintenance curative, gestion des interventions"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Équipements critiques des sites de production"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Systèmes de direction, roulements industrie et automobile"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Industrie automobile"
+      }
+    ],
+    "situationTitre": "Un équipement critique qui tombe sans prévenir immobilise une chaîne entière.",
+    "situationProse": [
+      "Dans une branche en réorganisation, ces arrêts se paient deux fois : en production perdue et en compétitivité du site."
+    ],
+    "objectifs": [
+      {
+        "titre": "Disponibilité maximale des équipements critiques",
+        "texte": "Sur les sites de production."
+      },
+      {
+        "titre": "Réduction des temps d'arrêt",
+        "texte": ", planifiés comme subis."
+      },
+      {
+        "titre": "Optimisation de la performance des installations",
+        "texte": ", au-delà du simple dépannage."
+      },
+      {
+        "titre": "Renforcement des équipes internes",
+        "texte": ", sans réorganiser le service maintenance."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Des techniciens dans l'équipe, pas à côté",
+        "texte": "Les techniciens Migen sont intégrés aux équipes de maintenance de JTEKT et présents chaque jour."
+      },
+      {
+        "titre": "Surveillance proactive des équipements",
+        "texte": "Le dispositif ne se déclenche pas à la panne. Les machines sont suivies pour repérer la dérive avant l'arrêt."
+      },
+      {
+        "titre": "Réaction immédiate sur incident",
+        "texte": "La présence sur site évite d'attendre la disponibilité d'un intervenant extérieur."
+      },
+      {
+        "titre": "Appui aux équipes internes",
+        "texte": "Les techniciens accompagnent les équipes JTEKT dans la gestion courante des opérations."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "JTEKT cherche à sécuriser et renforcer sa maintenance industrielle."
+      },
+      {
+        "titre": "Affectation de compétences qualifiées",
+        "texte": "Migen mobilise des techniciens capables d'intervenir sur systèmes automatisés et lignes de production."
+      },
+      {
+        "titre": "Intégration aux équipes",
+        "texte": "Les techniciens prennent leur place dans l'organisation existante du site."
+      },
+      {
+        "titre": "Surveillance et curatif au quotidien",
+        "texte": "Suivi proactif des équipements, intervention rapide sur incident."
+      },
+      {
+        "titre": "Accompagnement des équipes internes",
+        "texte": "Appui à la gestion courante des opérations de maintenance."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "JTEKT"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Systèmes de direction, roulements industrie et automobile"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Industrie automobile"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Équipements critiques des sites de production"
+      },
+      {
+        "libelle": "Équipements",
+        "valeur": "Systèmes automatisés, lignes de production, convoyeurs"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Surveillance, maintenance curative, gestion des interventions"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "Techniciens intégrés aux équipes de maintenance"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "La fiabilité du parc machine progresse",
+        "texte": "Des techniciens spécialisés et une surveillance continue y contribuent directement."
+      },
+      {
+        "titre": "Les équipes internes gagnent en efficacité",
+        "texte": "Elles sont appuyées au quotidien plutôt que dépassées."
+      },
+      {
+        "titre": "Les risques d'arrêt reculent",
+        "texte": "Dans un contexte industriel où chaque heure de production compte."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "La situation",
+        "texte": "Les objectifs posés par JTEKT :"
+      },
+      {
+        "titre": "Ce que nous avons mis en place",
+        "texte": "Le périmètre technique couvre les systèmes automatisés, les lignes de production, les convoyeurs et les autres équipements complexes du parc. Les interventions portent sur la surveillance, la maintenance curative et la gestion des interventions."
+      },
+      {
+        "titre": "Le résultat",
+        "texte": "L'intégration sur site permet d'éviter les interruptions non planifiées et de tenir la continuité des opérations de production."
+      },
+      {
+        "texte": "Ce que JTEKT retire de la collaboration :"
+      }
+    ],
+    "besoinTitre": "Vos équipements critiques tombent avant que quiconque ait vu la dérive ?",
+    "besoinProse": [
+      "Dites-nous lesquels, nous construisons la surveillance autour.",
+      "Une panne qui revient signale que personne n'a cherché la cause racine. Un technicien présent chaque jour finit par la trouver."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Après votre demande, en semaine de 8h00 à 18h30."
+      },
+      {
+        "titre": "Astreinte la nuit, le week-end et les jours fériés",
+        "texte": "Proposée en option sur les parcs sensibles, par téléphone."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, évalués avant affectation."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Offre",
+        "titre": "Sous-traitance maintenance",
+        "href": "/offres/residence/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance industrie automobile",
+        "href": "/secteurs/automobile/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "AUTOLIV : maintien d'un site",
+        "href": "/preuves/autoliv/"
+      }
+    ]
+  }
+}

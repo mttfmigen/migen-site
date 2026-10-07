@@ -1,149 +1,101 @@
 {
   "url": "/offres/residence/prestataire-ou-salarie/",
   "gabarit": "03 Offre et prestation",
-  "verdict": "rendue-sans-titre",
+  "verdict": "rendue",
   "h1Attendu": "Prestataire ou salarié : le comparatif honnête",
-  "h1Rendu": "",
-  "nbSections": 17,
-  "hauteurTotale": 8726,
+  "h1Rendu": "Prestataire ou salarié : le comparatif honnête",
+  "nbSections": 11,
+  "hauteurTotale": 10010,
   "motsAnnonces": 2155,
-  "motsRendus": 1394,
+  "motsRendus": 1486,
   "sections": [
     {
       "ordre": 0,
       "titre": null,
-      "hauteur": 660,
+      "hauteur": 334,
       "images": 0,
-      "liens": 1,
-      "mots": 44
+      "liens": 3,
+      "mots": 57
     },
     {
       "ordre": 1,
-      "titre": null,
-      "hauteur": 197,
+      "titre": "Parler du cas de votre site",
+      "hauteur": 8201,
       "images": 0,
-      "liens": 0,
-      "mots": 29
+      "liens": 22,
+      "mots": 1286
     },
     {
       "ordre": 2,
-      "titre": null,
-      "hauteur": 203,
-      "images": 76,
+      "titre": "Chiffres clés",
+      "hauteur": 612,
+      "images": 0,
       "liens": 0,
-      "mots": 4
+      "mots": 36
     },
     {
       "ordre": 3,
-      "titre": null,
-      "hauteur": 463,
-      "images": 2,
-      "liens": 0,
-      "mots": 68
+      "titre": "Le problème",
+      "hauteur": 1732,
+      "images": 0,
+      "liens": 2,
+      "mots": 267
     },
     {
       "ordre": 4,
-      "titre": null,
-      "hauteur": 114,
+      "titre": "L’offre",
+      "hauteur": 1392,
       "images": 0,
-      "liens": 1,
-      "mots": 13
+      "liens": 0,
+      "mots": 228
     },
     {
       "ordre": 5,
-      "titre": null,
-      "hauteur": 591,
+      "titre": "Le déroulé",
+      "hauteur": 960,
       "images": 0,
       "liens": 0,
-      "mots": 136
+      "mots": 139
     },
     {
       "ordre": 6,
-      "titre": "Ce que nous faisons, et ce que ça change pour vous",
-      "hauteur": 559,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 1334,
       "images": 0,
-      "liens": 0,
-      "mots": 178
+      "liens": 1,
+      "mots": 201
     },
     {
       "ordre": 7,
-      "titre": null,
-      "hauteur": 112,
+      "titre": "Nos références",
+      "hauteur": 862,
       "images": 0,
-      "liens": 1,
-      "mots": 13
+      "liens": 6,
+      "mots": 136
     },
     {
       "ordre": 8,
-      "titre": "Migen Résidence : le technicien intégré sur site",
-      "hauteur": 198,
+      "titre": "Questions fréquentes",
+      "hauteur": 864,
       "images": 0,
-      "liens": 0,
-      "mots": 55
+      "liens": 2,
+      "mots": 179
     },
     {
       "ordre": 9,
-      "titre": "Un appel. Un plan. Une ligne qui repart.",
-      "hauteur": 853,
-      "images": 0,
-      "liens": 1,
-      "mots": 144
-    },
-    {
-      "ordre": 10,
-      "titre": "Ce que nous garantissons",
-      "hauteur": 673,
-      "images": 0,
-      "liens": 0,
-      "mots": 154
-    },
-    {
-      "ordre": 11,
-      "titre": null,
-      "hauteur": 243,
-      "images": 0,
-      "liens": 1,
-      "mots": 4
-    },
-    {
-      "ordre": 12,
-      "titre": "Nos références",
-      "hauteur": 838,
-      "images": 10,
-      "liens": 9,
-      "mots": 247
-    },
-    {
-      "ordre": 13,
-      "titre": null,
-      "hauteur": 114,
-      "images": 0,
-      "liens": 1,
-      "mots": 13
-    },
-    {
-      "ordre": 14,
-      "titre": "Vos questions avant de nous appeler",
-      "hauteur": 1250,
-      "images": 0,
-      "liens": 1,
-      "mots": 167
-    },
-    {
-      "ordre": 15,
-      "titre": "Les offres et prestations voisines",
-      "hauteur": 696,
+      "titre": "Pages liées",
+      "hauteur": 560,
       "images": 0,
       "liens": 6,
       "mots": 78
     },
     {
-      "ordre": 16,
-      "titre": null,
-      "hauteur": 964,
+      "ordre": 10,
+      "titre": "Un chargé d’affaires vous rappelle dans l’heure.",
+      "hauteur": 819,
       "images": 0,
       "liens": 0,
-      "mots": 47
+      "mots": 65
     }
   ]
 }

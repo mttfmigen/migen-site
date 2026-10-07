@@ -1,0 +1,209 @@
+{
+  "url": "/preuves/amazon-nouveau-site/",
+  "titre_h1": "Un dispositif rodé, transposé sur un nouveau site",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "AMAZON",
+    "chapeau": [
+      "Migen assure le maintien d'un deuxième centre logistique AMAZON : le site ETZ 2, à Metz. Le dispositif éprouvé sur ORY 4, à Paris, y a été transposé."
+    ],
+    "bouton": "Faire chiffrer mon besoin",
+    "heroFiche": [
+      {
+        "libelle": "Site",
+        "valeur": "Centre logistique ETZ 2, Metz"
+      },
+      {
+        "libelle": "Régime",
+        "valeur": "Fonctionnement ininterrompu, nuit et week-end"
+      },
+      {
+        "libelle": "Référence",
+        "valeur": "Le site ORY 4 de Paris, couvert"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Durée d'intervention",
+        "valeur": "8 heures"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "10 techniciens polyvalents"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Maintenance préventive, contrôle, tests en série"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Metz (57)"
+      }
+    ],
+    "situationTitre": "Ouvrir un deuxième site avec un prestataire qui découvre le métier, c'est repartir de zéro.",
+    "situationProse": [
+      "Le temps d'apprentissage se paie en arrêts."
+    ],
+    "objectifs": [
+      {
+        "titre": "La même exigence de continuité",
+        "texte": "Le centre fonctionne sans interruption, comme celui de Paris."
+      },
+      {
+        "titre": "Des créneaux courts",
+        "texte": "Les opérations doivent tenir dans quelques heures."
+      },
+      {
+        "titre": "Une coordination à reconstruire",
+        "texte": "Les équipes locales ne sont pas celles d'ORY 4."
+      },
+      {
+        "titre": "Aucune marge d'apprentissage",
+        "texte": "Le préventif démarre au rythme du site, pas au rythme du prestataire."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Un mode opératoire transposé",
+        "texte": "La méthode appliquée sur ORY 4 est reprise sur ETZ 2, plutôt que réinventée."
+      },
+      {
+        "titre": "Une équipe dédiée au site",
+        "texte": "10 techniciens polyvalents mobilisés ensemble, pour traiter simultanément un grand nombre d'interventions préventives."
+      },
+      {
+        "titre": "Un rythme mensuel",
+        "texte": "Une semaine d'intervention par mois sur le site de Metz."
+      },
+      {
+        "titre": "Une préparation côté client",
+        "texte": "Les équipes AMAZON organisent les opérations en amont et assurent la disponibilité des pièces de rechange."
+      },
+      {
+        "titre": "Une exécution complète",
+        "texte": "Migen prend en charge l'exécution, le contrôle et les tests en série des opérations."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Reprise du modèle ORY 4",
+        "texte": "Le mode opératoire éprouvé à Paris sert de base au démarrage messin."
+      },
+      {
+        "titre": "Préparation partagée",
+        "texte": "Les équipes AMAZON sur place préparent et organisent les opérations du créneau."
+      },
+      {
+        "titre": "Approvisionnement",
+        "texte": "Les pièces de rechange sont disponibles avant l'arrivée de l'équipe."
+      },
+      {
+        "titre": "Exécution en parallèle",
+        "texte": "Les 10 techniciens se répartissent les équipements sur une plage de 8 heures."
+      },
+      {
+        "titre": "Contrôle et tests en série",
+        "texte": "Chaque opération est vérifiée, puis testée avant restitution."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "AMAZON"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Metz (57)"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "10 techniciens polyvalents"
+      },
+      {
+        "libelle": "Durée d'intervention",
+        "valeur": "8 heures"
+      },
+      {
+        "libelle": "Fréquence",
+        "valeur": "1 semaine par mois"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Maintenance préventive, contrôle, tests en série"
+      },
+      {
+        "libelle": "Site de référence",
+        "valeur": "ORY 4, Paris, couvert"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Un deuxième site confié",
+        "texte": "ETZ 2 rejoint ORY 4. AMAZON travaille désormais avec Migen sur deux centres logistiques."
+      },
+      {
+        "titre": "Une opération maîtrisée",
+        "texte": "L'organisation et l'entraînement des équipes, prestataires comme clientes, ont rendu maîtrisée une opération délicate."
+      },
+      {
+        "titre": "Un risque de défaillance réduit",
+        "texte": "La continuité opérationnelle du site est tenue, créneau après créneau."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "La situation",
+        "texte": "Ce que le nouveau site imposait :"
+      },
+      {
+        "titre": "Le résultat",
+        "texte": "Un client ne duplique pas un dispositif sur un second site tant que le premier n'a pas fait ses preuves."
+      }
+    ],
+    "besoinTitre": "Vous ouvrez un site et vous voulez y porter ce qui marche déjà ?",
+    "besoinProse": [
+      "Parlons du site existant d'abord, du nouveau ensuite.",
+      "Un démarrage se joue sur les premières semaines. Reprendre un mode opératoire déjà éprouvé évite de les passer à apprendre."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Votre demande est reprise sans attendre, de 8h00 à 18h30 en semaine."
+      },
+      {
+        "titre": "Partout en France",
+        "texte": "Quatre agences, à Lyon (siège), Montréal, Dubaï et Madrid."
+      },
+      {
+        "titre": "Astreinte la nuit, le week-end et les jours fériés",
+        "texte": "En option pour les exploitations continues, par téléphone."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Chaque technicien passe un entretien technique et un entretien comportemental."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance équipements logistiques",
+        "href": "/secteurs/logistique/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "AKTID : montage d'un centre logistique",
+        "href": "/preuves/aktid-centre-logistique/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

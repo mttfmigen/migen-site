@@ -1,0 +1,177 @@
+{
+  "url": "/preuves/jacquet-brossard/",
+  "titre_h1": "Une ligne de pain de mie suivie à chaque poste",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "JACQUET BROSSARD",
+    "chapeau": [
+      "Filiale du groupe coopératif Limagrain, Jacquet Brossard fabrique à Clamecy (Nièvre) une partie de ses pains de mie. Migen y a installé 3 techniciens, postés sur les équipes de production, de la préparation de pâte au convoyage."
+    ],
+    "bouton": "Demander un renfort de maintenance",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Boulangerie industrielle, pain de mie"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Pétrins, mélangeurs, convoyage"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "3x8 (2 techniciens) + 2x8 (1 technicien)"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Préventif, curatif, dépannage"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Agroalimentaire"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif",
+        "valeur": "3 techniciens"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Préventif, curatif, dépannage"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Clamecy (58)"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Pétrins, mélangeurs, convoyage"
+      }
+    ],
+    "situationTitre": "Sur une ligne automatisée qui tourne en continu, la maintenance doit être dans l'atelier à chaque poste",
+    "objectifs": [
+      {
+        "titre": "Couvrir les trois postes de production."
+      },
+      {
+        "titre": "Tenir le préventif sur les équipements de pétrissage et de mélange."
+      },
+      {
+        "titre": "Étendre la couverture au-delà de la semaine."
+      },
+      {
+        "titre": "Intervenir dans le respect des règles d’hygiène alimentaire."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Des techniciens intégrés aux équipes de quart",
+        "texte": "Deux en 3x8, un en 2x8."
+      },
+      {
+        "titre": "Préventif et curatif sur l'ensemble de la ligne",
+        "texte": "Pétrins, mélangeurs, convoyage."
+      },
+      {
+        "titre": "Une équipe week-end",
+        "texte": "Un technicien rejoint l'équipe samedi-dimanche."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "Sécuriser la disponibilité de la ligne de pain de mie."
+      },
+      {
+        "titre": "Affectation",
+        "texte": "3 techniciens mobilisés."
+      },
+      {
+        "titre": "Intégration",
+        "texte": "Prise de poste dans les équipes 3x8 et 2x8."
+      },
+      {
+        "titre": "Maintenance au quotidien",
+        "texte": "Préventif, curatif et dépannage."
+      },
+      {
+        "titre": "Extension",
+        "texte": "Passage d'un technicien en équipe week-end."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Jacquet Brossard (groupe Limagrain)"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Clamecy (58)"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Pain de mie"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Agroalimentaire"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Pétrins, mélangeurs, convoyage"
+      },
+      {
+        "libelle": "Équipements",
+        "valeur": "Ligne automatisée"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Préventif, curatif, dépannage"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "3x8 + 2x8, équipe week-end à venir"
+      },
+      {
+        "libelle": "Effectif",
+        "valeur": "3 techniciens"
+      }
+    ],
+    "besoinTitre": "Un besoin comparable sur votre site ?",
+    "besoinProse": [
+      "Décrivez-le, nous vous présentons les techniciens adaptés."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Après votre demande, en semaine de 8h00 à 18h30."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Techniciens évalués sur la technique et le comportement avant affectation."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Offre",
+        "titre": "Sous-traitance maintenance",
+        "href": "/offres/residence/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance agroalimentaire",
+        "href": "/secteurs/agroalimentaire/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "DANONE (BLÉDINA) : pas un poste sans maintenance, week-end compris",
+        "href": "/preuves/danone-lignes-de-production/"
+      }
+    ]
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "url": "/preuves/aktid-centre-logistique/",
+  "titre_h1": "Un centre logistique monté en six semaines",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "AKTID",
+    "chapeau": [
+      "AKTID a confié à Migen le montage de son nouveau centre logistique, à Clermont-Ferrand. Six semaines de chantier en pleine période estivale, avec une date de livraison qui ne bougeait pas."
+    ],
+    "bouton": "Faire chiffrer mon chantier",
+    "heroFiche": [
+      {
+        "libelle": "Site",
+        "valeur": "Nouveau centre logistique, Clermont-Ferrand"
+      },
+      {
+        "libelle": "Nature",
+        "valeur": "Montage d'installations logistiques"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Montage d'installations logistiques"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Clermont-Ferrand (63)"
+      },
+      {
+        "libelle": "Moyens humains",
+        "valeur": "12 monteurs mécaniciens"
+      },
+      {
+        "libelle": "Moyens matériels",
+        "valeur": "8 engins de levage"
+      }
+    ],
+    "situationTitre": "Un montage qui glisse, c'est une mise en service qui glisse, et toute l'exploitation derrière.",
+    "situationProse": [
+      "La date de livraison, elle, ne se renégocie pas."
+    ],
+    "objectifs": [
+      {
+        "titre": "La période estivale",
+        "texte": "Le moment le plus difficile de l'année pour réunir des monteurs disponibles."
+      },
+      {
+        "titre": "Des délais impartis",
+        "texte": "La livraison du centre logistique était bornée dans le calendrier."
+      },
+      {
+        "titre": "Un montage lourd",
+        "texte": "Les installations demandaient des moyens de levage en nombre."
+      },
+      {
+        "titre": "Des obstacles en cours de route",
+        "texte": "Plusieurs difficultés ont dû être franchies pendant le chantier."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Une équipe de montage complète",
+        "texte": "12 monteurs mécaniciens mobilisés sur le chantier, soit plus d'une dizaine d'intervenants en simultané."
+      },
+      {
+        "titre": "Les moyens de levage sur place",
+        "texte": "8 engins de levage engagés pour le montage des installations."
+      },
+      {
+        "titre": "Une équipe intégrée au client",
+        "texte": "Les équipes Migen ont travaillé en lien direct avec celles d'AKTID, sur le même planning."
+      },
+      {
+        "titre": "Un chantier calé sur la saison",
+        "texte": "Le montage a été conduit pendant l'été, avec les contraintes de disponibilité que cela impose."
+      },
+      {
+        "titre": "Un objectif unique",
+        "texte": "Livrer le centre logistique dans les délais impartis, sans arbitrage sur la qualité du montage."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Prise en charge du montage",
+        "texte": "AKTID fait appel à Migen pour le nouveau centre logistique de Clermont-Ferrand."
+      },
+      {
+        "titre": "Mobilisation des moyens",
+        "texte": "12 monteurs mécaniciens et 8 engins de levage sont engagés sur site."
+      },
+      {
+        "titre": "Montage en collaboration",
+        "texte": "Les équipes Migen et AKTID avancent ensemble, poste par poste."
+      },
+      {
+        "titre": "Passage des obstacles",
+        "texte": "Les difficultés rencontrées sont traitées sans décaler la date de livraison."
+      },
+      {
+        "titre": "Livraison du site",
+        "texte": "Après environ six semaines de travaux, le centre logistique est remis dans les temps prévus."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "AKTID"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Clermont-Ferrand (63)"
+      },
+      {
+        "libelle": "Moyens humains",
+        "valeur": "12 monteurs mécaniciens"
+      },
+      {
+        "libelle": "Moyens matériels",
+        "valeur": "8 engins de levage"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Montage d'installations logistiques"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Le site livré dans les temps",
+        "texte": "Après environ six semaines de chantier, le centre logistique a été remis à la date prévue."
+      },
+      {
+        "titre": "Une réussite conjointe",
+        "texte": "Le résultat tient à la collaboration étroite entre les équipes Migen et les équipes AKTID, malgré les défis rencontrés."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "La situation",
+        "texte": "Le projet a présenté d'importants défis pour les équipes engagées :"
+      },
+      {
+        "titre": "Le résultat",
+        "texte": "Un chantier d'été tenu au jour près, avec des monteurs trouvés au moment où personne n'en trouve. C'est le fait que le client retient."
+      }
+    ],
+    "besoinTitre": "Un montage à tenir sur une date qui ne bouge pas ?",
+    "besoinProse": [
+      "Donnez-nous la date de livraison, nous partons de là pour dimensionner l'équipe.",
+      "Un monteur qualifié disponible en plein mois d'août reste l'objet le plus rare du marché. Nous partons du calendrier, pas de ce qui traîne sur le banc."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Du lundi au vendredi, de 8h00 à 18h30."
+      },
+      {
+        "titre": "Astreinte la nuit, le week-end et les jours fériés",
+        "texte": "Disponible en option une fois le site en exploitation, par téléphone."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Mécanique, soudure et chaudronnerie comprises, après entretien technique et comportemental."
+      },
+      {
+        "titre": "Quatre agences",
+        "texte": "Lyon (siège), Montréal, Dubaï et Madrid, pour mobiliser un chantier partout en France."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance équipements logistiques",
+        "href": "/secteurs/logistique/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "GLS : maintenance curative",
+        "href": "/preuves/gls-maintenance-curative/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

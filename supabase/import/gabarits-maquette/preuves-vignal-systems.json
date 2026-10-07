@@ -1,0 +1,177 @@
+{
+  "url": "/preuves/vignal-systems/",
+  "titre_h1": "Maintenir et monter, de jour comme de nuit",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "VIGNAL SYSTEMS",
+    "chapeau": [
+      "Vignal Group conçoit et fabrique l'éclairage et les équipements de sécurité des véhicules industriels et commerciaux. À Corbas, au sud de Lyon, son site regroupe production, R&D et siège. Migen y assure maintenance et travaux de montage, avec une présence de nuit."
+    ],
+    "bouton": "Demander un renfort de maintenance",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Éclairage et signalisation pour véhicules industriels"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Maintenance de production et travaux de montage"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "1 technicien de nuit + 1 technicien en 2x8"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Préventif, curatif, montage"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Équipement de véhicules"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif",
+        "valeur": "2 techniciens"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Préventif, curatif, montage"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Corbas (69)"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Maintenance et montage"
+      }
+    ],
+    "situationTitre": "Les travaux de montage, eux, demandent des bras sans dégarnir la maintenance courante",
+    "objectifs": [
+      {
+        "titre": "Couvrir le poste de nuit avec un technicien sur place."
+      },
+      {
+        "titre": "Tenir préventif et curatif sur les postes de jour."
+      },
+      {
+        "titre": "Réaliser des travaux de montage sans ponctionner l'équipe interne."
+      },
+      {
+        "titre": "Un partenaire réactif et proche du site."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Un technicien de nuit",
+        "texte": "Les pannes sont traitées dans le poste, pas reportées au lendemain."
+      },
+      {
+        "titre": "Un technicien en 2x8",
+        "texte": "Préventif et curatif en continuité avec les équipes de jour."
+      },
+      {
+        "titre": "Des compétences montage",
+        "texte": "Les techniciens interviennent aussi pour la branche travaux."
+      },
+      {
+        "titre": "La proximité lyonnaise",
+        "texte": "Migen est basé à Écully, de l'autre côté de l'agglomération."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "Renfort maintenance et montage."
+      },
+      {
+        "titre": "Affectation",
+        "texte": "2 techniciens aux compétences maintenance et montage."
+      },
+      {
+        "titre": "Intégration",
+        "texte": "Prise de poste de nuit et en 2x8."
+      },
+      {
+        "titre": "Exploitation",
+        "texte": "Préventif, curatif et travaux de montage."
+      },
+      {
+        "titre": "Suivi",
+        "texte": "Mission en cours depuis 2 à 3 mois."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Vignal Systems (Vignal Group)"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Corbas (69)"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Éclairage et sécurité des véhicules industriels et commerciaux"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Équipement de véhicules"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Maintenance et montage"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Préventif, curatif, montage"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "1 de nuit + 1 en 2x8"
+      },
+      {
+        "libelle": "Effectif",
+        "valeur": "2 techniciens"
+      }
+    ],
+    "besoinTitre": "Un besoin comparable sur votre site ?",
+    "besoinProse": [
+      "Décrivez-le, nous vous présentons les techniciens adaptés."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Après votre demande, en semaine de 8h00 à 18h30."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Techniciens évalués sur la technique et le comportement avant affectation."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Page",
+        "titre": "Travaux industriels",
+        "href": "/travaux-industriels/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance industrie lourde",
+        "href": "/secteurs/industrie-lourde/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "RECTOR LESAGE : un technicien au cœur d’une ligne de préfabrication béton",
+        "href": "/preuves/rector-lesage/"
+      }
+    ]
+  }
+}

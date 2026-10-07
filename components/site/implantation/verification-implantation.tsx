@@ -112,7 +112,7 @@ const VILLE: ContenuVille = {
   chapeau: "Des techniciens mobilisés, et un [contrat](/offres/zero-arret/) qui tient.",
   actions: [{ libelle: "Chiffrer mon besoin", href: "#formulaire" }],
   panneauSurtitre: "Notre présence",
-  adresse: ["1 rue des Vergers", "69760 Limonest"],
+  adresse: ["129 chemin du Moulin Carron", "69130 Écully"],
   reperes: [
     { valeur: "10 %", libelle: "des candidats retenus" },
     { valeur: "4", libelle: "agences", detail: "Aucune sur place, des techniciens qui s'y déplacent" },

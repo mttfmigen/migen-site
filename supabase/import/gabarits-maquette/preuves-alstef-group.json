@@ -1,0 +1,197 @@
+{
+  "url": "/preuves/alstef-group/",
+  "titre_h1": "Des chantiers automatisés contrôlés point par point",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "ALSTEF GROUP",
+    "chapeau": [
+      "ALSTEF Group, spécialiste mondial des solutions d'automatisation logistique, a choisi Migen pour renforcer ses équipes de terrain. Plusieurs intervenants ont été déployés sur le contrôle de chantier de projets stratégiques."
+    ],
+    "bouton": "Demander un renfort chantier",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Automatisation logistique"
+      },
+      {
+        "libelle": "Environnements",
+        "valeur": "Aéroports, logistique, industrie"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Durée de mission",
+        "valeur": "De quelques semaines à plusieurs mois"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Contrôle et suivi de chantier"
+      },
+      {
+        "libelle": "Environnements",
+        "valeur": "Aéroports, logistique, industrie"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Suivi des prestataires, vérification des installations, respect des procédures"
+      }
+    ],
+    "situationTitre": "Un pic d'activité chantier arrive toujours au mauvais moment.",
+    "situationProse": [
+      "Soit vous recrutez dans l'urgence, soit vous videz vos équipes internes. Les deux coûtent cher."
+    ],
+    "objectifs": [
+      {
+        "titre": "Le contrôle de chantier est une phase clé",
+        "texte": "Pour la conformité, la sécurité et la qualité des installations livrées."
+      },
+      {
+        "titre": "Des techniciens capables de s'intégrer vite",
+        "texte": "Étaient nécessaires sur les projets stratégiques."
+      },
+      {
+        "titre": "Un renfort fiable manquait",
+        "texte": "Pour le suivi des prestataires et la vérification des installations."
+      },
+      {
+        "titre": "La souplesse comptait autant que la compétence",
+        "texte": "Le besoin suit les pics d'activité chantier."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Des techniciens dans l'équipe projet",
+        "texte": "Un ou plusieurs intervenants assurent le suivi opérationnel de chantier au sein des équipes ALSTEF Group."
+      },
+      {
+        "titre": "Des profils autonomes",
+        "texte": "Intervenants expérimentés, qui comprennent les environnements industriels automatisés sans période de découverte."
+      },
+      {
+        "titre": "Une prestation encadrée",
+        "texte": "Les équipes Migen coordonnent la mission pendant toute sa durée."
+      },
+      {
+        "titre": "Une durée ajustable",
+        "texte": "La mission va de quelques semaines à plusieurs mois, selon la charge chantier."
+      },
+      {
+        "titre": "Un cadre contractuel simple",
+        "texte": "Sans avenant, sans rupture de charge, avec un tarif horaire maîtrisé."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "ALSTEF Group cherche du renfort qualifié pour encadrer ses chantiers."
+      },
+      {
+        "titre": "Sélection des profils",
+        "texte": "Migen retient des techniciens au niveau de technicité requis par les projets."
+      },
+      {
+        "titre": "Déploiement sur les projets stratégiques",
+        "texte": "Plusieurs intervenants prennent en charge le contrôle de chantier."
+      },
+      {
+        "titre": "Suivi opérationnel",
+        "texte": "Suivi des prestataires, vérification des installations, respect des procédures."
+      },
+      {
+        "titre": "Coordination Migen",
+        "texte": "La prestation reste pilotée par nos équipes jusqu'à la fin de la mission."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "ALSTEF Group, automatisation logistique"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Contrôle et suivi de chantier"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Suivi des prestataires, vérification des installations, respect des procédures"
+      },
+      {
+        "libelle": "Environnements",
+        "valeur": "Aéroports, logistique, industrie"
+      },
+      {
+        "libelle": "Durée de mission",
+        "valeur": "De quelques semaines à plusieurs mois"
+      },
+      {
+        "libelle": "Cadre",
+        "valeur": "Sans avenant, tarif horaire maîtrisé"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Les phases critiques sécurisées",
+        "texte": "Le contrôle de chantier a été tenu sur les projets stratégiques."
+      },
+      {
+        "titre": "Le niveau de qualité maintenu",
+        "texte": "La qualité et la conformité des installations livrées sont restées au niveau attendu."
+      },
+      {
+        "titre": "Aucun recrutement d'urgence",
+        "texte": "ALSTEF Group a absorbé la charge projet sans recruter dans la précipitation et sans déplacer ses ressources internes d'un site à l'autre."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "La situation",
+        "texte": "ALSTEF Group gère des chantiers complexes, avec des systèmes automatisés, dans des environnements exigeants :"
+      }
+    ],
+    "besoinTitre": "Une charge chantier qui dépasse vos équipes projet ?",
+    "besoinProse": [
+      "Dites-nous le niveau de technicité attendu, nous vous proposons le profil qui correspond.",
+      "Déplacer un chef de projet d'un site à l'autre pour boucher un trou, c'est créer le trou suivant. Un renfort activé au bon moment coûte moins cher qu'un recrutement décidé sous pression."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Après votre demande, du lundi au vendredi de 8h00 à 18h30."
+      },
+      {
+        "titre": "Astreinte la nuit, le week-end et les jours fériés",
+        "texte": "Disponible en option sur les installations en exploitation, par téléphone."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, évalués en entretien technique et comportemental."
+      },
+      {
+        "titre": "Plus de 200 clients",
+        "texte": "Sur des chantiers et des sites en exploitation."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance équipements logistiques",
+        "href": "/secteurs/logistique/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "DANONE : lignes de production",
+        "href": "/preuves/danone-lignes-de-production/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

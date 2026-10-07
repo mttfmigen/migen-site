@@ -1,0 +1,208 @@
+{
+  "url": "/preuves/autoliv/",
+  "titre_h1": "Un technicien dédié pour que le parc ne décroche pas",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "AUTOLIV",
+    "chapeau": [
+      "AUTOLIV a sollicité Migen pour renforcer son équipe technique. Un technicien de maintenance polyvalent a été affecté au site, pour contribuer au maintien du parc machines."
+    ],
+    "bouton": "Demander un technicien sur site",
+    "heroFiche": [
+      {
+        "libelle": "Secteur",
+        "valeur": "Industrie automobile"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "1 technicien de maintenance polyvalent"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "Présence continue, en coordination avec les équipes AUTOLIV"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "1 technicien de maintenance polyvalent"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Maintien opérationnel du parc machines"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Industrie automobile"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "Technicien intégré aux équipes internes, présence continue"
+      }
+    ],
+    "situationTitre": "Un poste de maintenance vacant ne se voit pas tout de suite.",
+    "situationProse": [
+      "Il se voit le jour où le parc machines commence à décrocher.",
+      "Recruter un technicien prend des mois. Pendant ce temps, l'équipe en place absorbe la charge, le préventif saute et le correctif s'accumule."
+    ],
+    "objectifs": [
+      {
+        "titre": "Maintenir le parc machines",
+        "texte": "Sans créer un poste dans l'urgence."
+      },
+      {
+        "titre": "Soutenir l'équipe existante",
+        "texte": "Sans désorganiser son fonctionnement."
+      },
+      {
+        "titre": "Disposer d'un profil opérationnel tout de suite",
+        "texte": ", pas d'un renfort à former."
+      },
+      {
+        "titre": "Garder une trace claire des interventions pour anticiper les suivantes."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Un technicien dédié, pas un dépanneur de passage",
+        "texte": "Un profil polyvalent est affecté au site et intégré aux équipes internes d'AUTOLIV."
+      },
+      {
+        "titre": "Une présence continue",
+        "texte": "Le technicien travaille sur les horaires et les priorités du site, aux côtés des équipes en place."
+      },
+      {
+        "titre": "Un renfort sans réorganisation",
+        "texte": "L'équipe maintenance garde son fonctionnement. Le renfort s'ajoute, il ne remplace rien."
+      },
+      {
+        "titre": "Un pilotage assuré par Migen",
+        "texte": "Le suivi de la prestation reste de notre côté. Le client garde son temps pour la production."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Sollicitation d'AUTOLIV",
+        "texte": "Le site exprime un besoin de renfort sur son équipe technique."
+      },
+      {
+        "titre": "Sélection du profil",
+        "texte": "Migen identifie un technicien de maintenance polyvalent, opérationnel dès l'arrivée."
+      },
+      {
+        "titre": "Affectation au site",
+        "texte": "Le technicien rejoint les équipes internes d'AUTOLIV."
+      },
+      {
+        "titre": "Prise en charge du parc machines",
+        "texte": "Actions de maintenance, continuité de fonctionnement, appui technique."
+      },
+      {
+        "titre": "Suivi de mission",
+        "texte": "Migen assure le pilotage de la prestation dans la durée."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "AUTOLIV"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Industrie automobile"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "1 technicien de maintenance polyvalent"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Maintien opérationnel du parc machines"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "Technicien intégré aux équipes internes, présence continue"
+      },
+      {
+        "libelle": "Pilotage",
+        "valeur": "Suivi de mission assuré par Migen"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Une approche directe, sur le terrain",
+        "texte": "Pas de surcouche de gestion entre le besoin et le technicien."
+      },
+      {
+        "titre": "Le bon profil au bon moment",
+        "texte": "Les équipements industriels restent opérationnels."
+      },
+      {
+        "titre": "Une continuité de fonctionnement",
+        "texte": "Le parc machines est tenu, sans création de poste."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "La situation",
+        "texte": "Le besoin posé par le site :"
+      },
+      {
+        "titre": "Ce que nous avons mis en place",
+        "texte": "Ce que couvre le technicien sur site : la participation aux actions de maintenance, la continuité de fonctionnement des équipements et l'appui technique aux équipes, sur le terrain."
+      },
+      {
+        "titre": "Le résultat",
+        "texte": "Le renfort soutient l'équipe maintenance existante sans désorganisation, avec un profil opérationnel dès la prise de poste."
+      },
+      {
+        "texte": "Ce que la mission illustre :"
+      }
+    ],
+    "besoinTitre": "Un poste de maintenance vacant que le recrutement ne comble pas ?",
+    "besoinProse": [
+      "Décrivez le parc et les horaires, nous cherchons le technicien correspondant.",
+      "Chaque mois de vacance se paie en préventif reporté. Le correctif qui suit coûte plus cher que le poste que vous n'avez pas pourvu."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Du lundi au vendredi, de 8h00 à 18h30."
+      },
+      {
+        "titre": "Astreinte la nuit, le week-end et les jours fériés",
+        "texte": "Disponible en option, par téléphone."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Entretien technique et entretien comportemental avant toute affectation."
+      },
+      {
+        "titre": "Remplacement assuré",
+        "texte": "En cas d'absence du technicien affecté, la continuité du poste reste de notre côté."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Offre",
+        "titre": "Sous-traitance maintenance",
+        "href": "/offres/residence/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance industrie automobile",
+        "href": "/secteurs/automobile/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "VALEO : plusieurs usines",
+        "href": "/preuves/valeo-usines/"
+      }
+    ]
+  }
+}

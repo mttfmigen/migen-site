@@ -30,7 +30,7 @@ import { metadonneesSeo } from "@/lib/seo/metadonnees";
  *   · « 5 / agences en France » devient « 4 / agences », et
  *     « Cinq agences en France, deux à l'international » devient « Quatre
  *     agences, dix hubs de techniciens ». Le compte tenu est quatre agences,
- *     Lyon (siège à Limonest), Montréal, Dubaï, Madrid.
+ *     Lyon (siège à Écully), Montréal, Dubaï, Madrid.
  *   · « +200 / clients industriels » devient « +120 ». Le compte tenu est
  *     « plus de 120 clients, dont plus de 80 réguliers ».
  *   · les repères « 48 h » et « 3 sem. » des trois étapes tombent : seul le

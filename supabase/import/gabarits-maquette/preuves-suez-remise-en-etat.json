@@ -1,0 +1,177 @@
+{
+  "url": "/preuves/suez-remise-en-etat/",
+  "titre_h1": "Six mois pour remettre en état un site à risque chimique",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "SUEZ IWT",
+    "chapeau": [
+      "SUEZ IWT est spécialiste du traitement des eaux industrielles. Le site concerné demande des travaux de remise en état sur des installations critiques.",
+      "L'environnement est à risque chimique. Cette contrainte commande tout le reste du dossier."
+    ],
+    "bouton": "Poser mon besoin de renfort technique",
+    "chiffres": [
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "1 technicien de maintenance industrielle"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "SUEZ IWT, traitement des eaux industrielles"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Remise en état d'installations critiques"
+      },
+      {
+        "libelle": "Environnement",
+        "valeur": "Risque chimique"
+      }
+    ],
+    "situationTitre": "Un surcroît d'activité tombe sur un site où l'on ne fait pas entrer n'importe qui.",
+    "situationProse": [
+      "Quatre contraintes se cumulaient.",
+      "Le réflexe habituel, lancer un recrutement, ne répond à aucune des quatre. Un poste ouvert pour une charge qui a une fin annoncée se pourvoit mal, et l'habilitation reste à obtenir de toute façon.",
+      "L'autre option, étaler la charge sur les équipes internes, se paie en heures supplémentaires puis en retard sur le reste du site. Sur des installations critiques, cette dette technique se rattrape mal.",
+      "La contrainte d'habilitation tranche la question. Sans RC1, l'intervenant n'entre pas sur site, quel que soit son niveau technique."
+    ],
+    "objectifs": [
+      {
+        "titre": "Remettre en état les équipements",
+        "texte": "Pour garantir leur fiabilité."
+      },
+      {
+        "titre": "Absorber le surcroît d'activité",
+        "texte": "Sans désorganiser les équipes en place."
+      },
+      {
+        "titre": "Tenir la sécurité des opérations",
+        "texte": "En environnement chimique."
+      },
+      {
+        "titre": "Travailler conformément",
+        "texte": "Aux normes et habilitations en vigueur."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Vous obtenez un profil qui couvre tout le parc",
+        "texte": "Le technicien combine compétences mécaniques, électriques et notions d'automatisme, ce qui évite d'empiler les intervenants."
+      },
+      {
+        "titre": "Vous accueillez quelqu'un déjà habilité",
+        "texte": "Le technicien a été formé et habilité RC1, habilitation risque chimique niveau 1, avant la première journée sur site."
+      },
+      {
+        "titre": "Vous calez la durée sur la charge réelle",
+        "texte": "La mission est définie pour 6 mois, pas pour un horizon indéterminé."
+      },
+      {
+        "titre": "Vous démarrez conforme",
+        "texte": "L'intervention est cadrée sur les standards de sécurité du client dès la mise en opération."
+      },
+      {
+        "titre": "Vous n'ouvrez pas de poste",
+        "texte": "Migen recrute, forme et encadre l'intervenant pendant toute la mission."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Qualification du besoin",
+        "texte": "SUEZ IWT exprime un besoin de renfort pour des travaux de remise en état, sur fond de surcroît d'activité."
+      },
+      {
+        "titre": "Définition du profil",
+        "texte": "Le contexte chimique et la diversité des équipements orientent vers un profil polyvalent."
+      },
+      {
+        "titre": "Formation et habilitation",
+        "texte": "Le technicien suit la formation habilitation risque chimique niveau 1."
+      },
+      {
+        "titre": "Démarrage sur site",
+        "texte": "La mission commence, pour une durée de 6 mois."
+      },
+      {
+        "titre": "Travaux de remise en état",
+        "texte": "Le technicien avance sur les équipements tout en absorbant la charge supplémentaire."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Site",
+        "valeur": "SUEZ IWT, traitement des eaux industrielles"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Remise en état d'installations critiques"
+      },
+      {
+        "libelle": "Environnement",
+        "valeur": "Risque chimique"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "1 technicien de maintenance industrielle"
+      },
+      {
+        "libelle": "Domaines",
+        "valeur": "Électromécanique, mécanique, électricité, notions d'automatisme"
+      },
+      {
+        "libelle": "Habilitation",
+        "valeur": "RC1, risque chimique niveau 1"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Le pic d'activité est absorbé",
+        "texte": "Sans désorganiser les équipes internes."
+      },
+      {
+        "titre": "Les travaux de remise en état avancent",
+        "texte": "Au rythme prévu."
+      },
+      {
+        "titre": "Le renfort est opérationnel",
+        "texte": "Sans contrainte de recrutement à porter."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "Le résultat",
+        "texte": "Ce que la mission apporte à SUEZ IWT, tel que le dossier le documente."
+      },
+      {
+        "texte": "La capacité à former et habiliter le technicien pour le contexte du site est l'élément central de ce cas. C'est ce qui a rendu l'entrée sur site possible."
+      }
+    ],
+    "besoinTitre": "Une charge qui monte sur un site à contraintes réglementaires ?",
+    "besoinProse": [
+      "Dites-nous l'environnement et les habilitations attendues, nous regardons qui peut y entrer.",
+      "L'astreinte la nuit, le week-end et les jours fériés se souscrit en option.",
+      "Sur un site classé, le niveau de l'intervenant n'est pas négociable. Nos techniciens passent un entretien technique et un entretien comportemental, et 10 % des candidats sont retenus."
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Étude de cas",
+        "titre": "FDJ : renfort de maintenance en continu",
+        "href": "/preuves/fdj/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
+        "href": "/preuves/dimomaint/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
+        "href": "/preuves/eiffage/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

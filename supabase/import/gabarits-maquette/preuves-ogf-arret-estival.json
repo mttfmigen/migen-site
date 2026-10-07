@@ -1,0 +1,196 @@
+{
+  "url": "/preuves/ogf-arret-estival/",
+  "titre_h1": "Un été entier sans trou dans la maintenance",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "OGF",
+    "chapeau": [
+      "OGF exploite un site industriel dont les machines stratégiques doivent rester opérationnelles pendant les congés d'été.",
+      "Migen y a intégré un technicien de maintenance pour l'été, en renfort de l'équipe interne, sur toute la période."
+    ],
+    "bouton": "Préparer mon renfort d'été",
+    "chiffres": [
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "1 technicien de maintenance"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "OGF, site industriel"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Machines stratégiques, préventif et curatif"
+      },
+      {
+        "libelle": "Domaines",
+        "valeur": "Mécanique, électrotechnique, pneumatique"
+      }
+    ],
+    "situationTitre": "En juillet, l'atelier tourne encore mais l'équipe maintenance est à moitié vide.",
+    "situationProse": [
+      "Trois contraintes se cumulent chaque été chez les industriels.",
+      "Le calcul est vite fait. Recruter pour deux mois coûte du sourcing et de la formation. Laisser filer coûte une rentrée entière passée à rattraper ce qui n'a pas été fait.",
+      "La troisième voie, demander aux présents de couvrir les absents, épuise l'équipe avant septembre. Les départs qui suivent coûtent bien plus que le renfort évité.",
+      "Reste à poser le besoin assez tôt. Un profil se choisit sur le parc réel du site, ce qui demande un temps de cadrage en amont."
+    ],
+    "objectifs": [
+      {
+        "titre": "Les effectifs techniques baissent",
+        "texte": "Temporairement, pendant plusieurs semaines d'affilée."
+      },
+      {
+        "titre": "Les contraintes de production sont maintenues",
+        "texte": ", ou réduites seulement en partie."
+      },
+      {
+        "titre": "Le préventif et le curatif restent à faire",
+        "texte": "Sur les machines stratégiques."
+      },
+      {
+        "titre": "Revenir de congés sans arriéré de maintenance."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Vous couvrez toute la période, pas les semaines les plus dures",
+        "texte": "Un technicien de maintenance assure la continuité des opérations pendant l'absence des équipes internes."
+      },
+      {
+        "titre": "Vous accueillez quelqu'un qui prend vos méthodes",
+        "texte": "L'intégration se fait dans l'équipe restante, sans changer les habitudes du site."
+      },
+      {
+        "titre": "Vous couvrez l'essentiel du parc avec un seul profil",
+        "texte": "Mécanique, électrotechnique et pneumatique sur le même intervenant."
+      },
+      {
+        "titre": "Vous ne managez pas le renfort",
+        "texte": "Le suivi de mission est assuré par les coordinateurs Migen."
+      },
+      {
+        "titre": "Vous ne gérez ni recrutement ni formation d'un remplaçant",
+        "texte": "Pour une absence qui dure deux mois."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Anticipation",
+        "texte": "Le besoin est posé avant le départ des équipes, pas pendant."
+      },
+      {
+        "titre": "Choix du profil",
+        "texte": "Un technicien polyvalent est retenu sur les compétences utiles au parc d'OGF."
+      },
+      {
+        "titre": "Arrivée sur site",
+        "texte": "Intégration dans l'équipe maintenance restante, prise des consignes."
+      },
+      {
+        "titre": "Conduite de l'été",
+        "texte": "Interventions préventives et curatives, selon les priorités de production."
+      },
+      {
+        "titre": "Suivi de mission",
+        "texte": "Les coordinateurs Migen tiennent le point pendant toute la période."
+      },
+      {
+        "titre": "Sortie propre",
+        "texte": "Les équipes internes reviennent sans phase de rattrapage."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Site",
+        "valeur": "OGF, site industriel"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Machines stratégiques, préventif et curatif"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "1 technicien de maintenance"
+      },
+      {
+        "libelle": "Domaines",
+        "valeur": "Mécanique, électrotechnique, pneumatique"
+      },
+      {
+        "libelle": "Suivi",
+        "valeur": "Coordinateurs Migen"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "La disponibilité des équipements critiques",
+        "texte": "A été préservée pendant les congés."
+      },
+      {
+        "titre": "Aucun retard de remise en route",
+        "texte": "N'a été constaté à la rentrée."
+      },
+      {
+        "titre": "Les équipes internes ont été soulagées",
+        "texte": ", avec les standards de qualité tenus."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "Chiffres clés",
+        "puces": [
+          {
+            "accroche": "1 technicien",
+            "texte": "un seul intervenant couvre les machines stratégiques pendant les congés, sans poste fixe à créer"
+          },
+          {
+            "accroche": "3 domaines",
+            "texte": "mécanique, électrotechnique et pneumatique tenus par le même intervenant, du préventif au curatif"
+          },
+          {
+            "accroche": "10 %",
+            "texte": "des candidats retenus, après entretien technique ET comportemental"
+          }
+        ]
+      },
+      {
+        "titre": "Le résultat",
+        "texte": "Ce que la mission a permis chez OGF, tel que le dossier le documente."
+      },
+      {
+        "texte": "OGF a gardé son niveau de réactivité sur site malgré les absences estivales. La prestation se règle à la semaine ou au mois, selon la durée réelle de l'absence à couvrir."
+      },
+      {
+        "texte": "Le point de bascule est là. Un été couvert se termine par une rentrée normale, et non par un mois de rattrapage sur un préventif en retard."
+      }
+    ],
+    "besoinTitre": "Vous savez déjà que juillet sera tendu ?",
+    "besoinProse": [
+      "Le bon moment pour poser le renfort, c'est avant le départ des équipes, pas après.",
+      "Si le site tourne la nuit et le week-end, l'astreinte la nuit, le week-end et les jours fériés existe en option.",
+      "Un renfort d'été doit être autonome dès le premier jour. Nos techniciens passent un entretien technique et un entretien comportemental, et seuls 10 % des candidats sont retenus."
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Étude de cas",
+        "titre": "VPK : renfort sur un parc en forte cadence",
+        "href": "/preuves/vpk/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
+        "href": "/preuves/dimomaint/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
+        "href": "/preuves/eiffage/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

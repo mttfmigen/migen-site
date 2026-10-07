@@ -1,0 +1,207 @@
+{
+  "url": "/preuves/eaton-mise-en-production/",
+  "titre_h1": "Six techniciens pour faire démarrer un parc machines",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "EATON",
+    "chapeau": [
+      "EATON a sollicité Migen, au moment de l'installation d'un nouveau parc machine sur son site automobile. La demande portait sur un soutien technique à l'intégration, puis à la mise en production de ces outils."
+    ],
+    "bouton": "Faire chiffrer mon démarrage",
+    "heroFiche": [
+      {
+        "libelle": "Site",
+        "valeur": "Site automobile d'EATON"
+      },
+      {
+        "libelle": "Déclencheur",
+        "valeur": "Installation d'un nouveau parc machine"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "6 techniciens multidisciplinaires"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "6 techniciens multidisciplinaires"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Intégration, mise en production, maintenance préventive et curative"
+      },
+      {
+        "libelle": "Déclencheur",
+        "valeur": "Installation d'un nouveau parc machine"
+      },
+      {
+        "libelle": "Rôle de Migen",
+        "valeur": "Soutien technique à l'intégration, puis continuité opérationnelle"
+      }
+    ],
+    "situationTitre": "Un parc machine neuf ne produit pas le jour où il arrive sur le quai.",
+    "situationProse": [
+      "Il produit le jour où quelqu'un sait le régler, le dépanner et le tenir."
+    ],
+    "objectifs": [
+      {
+        "titre": "Des machines neuves à intégrer",
+        "texte": ", livrées et installées dans un calendrier contraint."
+      },
+      {
+        "titre": "Aucun historique de panne",
+        "texte": "Sur lequel s'appuyer pour anticiper les défaillances."
+      },
+      {
+        "titre": "Des compétences variées attendues au même instant",
+        "texte": "Mécanique, électricité, automatisme."
+      },
+      {
+        "titre": "Un préventif à construire",
+        "texte": "Pendant que le curatif tourne déjà."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Une équipe constituée pour le projet",
+        "texte": "6 techniciens multidisciplinaires réunis pour couvrir l'ensemble du périmètre du nouveau parc."
+      },
+      {
+        "titre": "L'accompagnement des livraisons",
+        "texte": "Les techniciens Migen ont suivi l'arrivée et le montage des différentes machines."
+      },
+      {
+        "titre": "La maintenance préventive du parc neuf",
+        "texte": "Le plan d'entretien tourne dès la mise en service, sans attendre les premières casses."
+      },
+      {
+        "titre": "La maintenance curative",
+        "texte": "Les défaillances des premières semaines sont traitées sur place, par des techniciens qui connaissent déjà les machines."
+      },
+      {
+        "titre": "Une équipe qui reste après le démarrage",
+        "texte": "La connaissance machine acquise pendant l'installation ne repart pas avec le chantier."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Sollicitation",
+        "texte": "EATON fait appel à Migen, à l'installation du nouveau parc machine."
+      },
+      {
+        "titre": "Constitution de l'équipe",
+        "texte": "Six techniciens aux compétences variées sont réunis pour couvrir tout le périmètre."
+      },
+      {
+        "titre": "Livraison et installation",
+        "texte": "L'équipe accompagne l'arrivée et le montage des machines sur le site."
+      },
+      {
+        "titre": "Mise en production",
+        "texte": "Préventif et curatif sont assurés en parallèle de la mise en service des outils."
+      },
+      {
+        "titre": "Continuité",
+        "texte": "La mission se poursuit aujourd'hui sur le même site."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "EATON, site automobile"
+      },
+      {
+        "libelle": "Déclencheur",
+        "valeur": "Installation d'un nouveau parc machine"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Intégration, mise en production, maintenance préventive et curative"
+      },
+      {
+        "libelle": "Effectif Migen",
+        "valeur": "6 techniciens multidisciplinaires"
+      },
+      {
+        "libelle": "Rôle de Migen",
+        "valeur": "Soutien technique à l'intégration, puis continuité opérationnelle"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Un démarrage tenu",
+        "texte": "Sans recruter six personnes dans l'urgence."
+      },
+      {
+        "titre": "Une connaissance machine conservée",
+        "texte": "L'équipe reste après la mise en service."
+      },
+      {
+        "titre": "Un seul interlocuteur",
+        "texte": "Pour le préventif, le curatif et l'accompagnement des installations."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "La situation",
+        "texte": "Une mise en production concentre tous les risques industriels au même moment :"
+      },
+      {
+        "titre": "Le résultat",
+        "texte": "La mission n'est pas un épisode fermé : elle dure. Migen continue d'assurer la continuité opérationnelle du site d'EATON."
+      },
+      {
+        "texte": "Les objectifs de production sont en constante progression, ce qui témoigne du succès de la collaboration sur ce projet."
+      },
+      {
+        "texte": "Ce que cela change pour le site :"
+      }
+    ],
+    "besoinTitre": "Un parc machine qui arrive et personne pour le prendre en main ?",
+    "besoinProse": [
+      "Donnez-nous la date de livraison, nous constituons l'équipe autour.",
+      "Une machine neuve n'a pas d'historique de panne. La seule chose qui compense, c'est une équipe présente dès le déballage."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Après votre demande, en semaine de 8h00 à 18h30."
+      },
+      {
+        "titre": "Plus de 120 techniciens",
+        "texte": "De quoi constituer une équipe multidisciplinaire pour un projet."
+      },
+      {
+        "titre": "Astreinte la nuit, le week-end et les jours fériés",
+        "texte": "Disponible en option une fois la ligne en production, par téléphone."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Mécanique, électricité et automatisme réunis dans la même équipe, après entretien technique et comportemental."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance industrie automobile",
+        "href": "/secteurs/automobile/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "VOIT : site du Grand Est",
+        "href": "/preuves/voit-grand-est/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "AUTOLIV : un technicien dédié pour que le parc ne décroche pas",
+        "href": "/preuves/autoliv/"
+      }
+    ]
+  }
+}

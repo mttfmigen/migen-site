@@ -221,7 +221,7 @@ assert.ok(
 // le portage dérive que si la maquette bouge sous lui.
 const PHRASES = [
   "Quatre agences, dix hubs de techniciens.",
-  "Siège · Limonest et Écully",
+  "Siège · Écully",
   "Émirats arabes unis",
   "Une trajectoire courte et dense.",
   "La qualité se décide au recrutement.",

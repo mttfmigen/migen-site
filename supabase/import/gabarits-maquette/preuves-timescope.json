@@ -1,0 +1,182 @@
+{
+  "url": "/preuves/timescope/",
+  "titre_h1": "Un parc de casques de réalité virtuelle tenu dans toute la France",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "TIMESCOPE",
+    "chapeau": [
+      "Timescope propose des solutions de casques de réalité virtuelle installées à travers la France. Le parc est réparti, pas concentré sur un site.",
+      "Migen assure la maintenance de ces équipements sous contrat. La collaboration est toujours en cours."
+    ],
+    "bouton": "Mettre mon parc sous contrat de maintenance",
+    "chiffres": [
+      {
+        "libelle": "Périmètre",
+        "valeur": "Parc de casques déployé à travers la France"
+      },
+      {
+        "libelle": "Cadre",
+        "valeur": "Contrat de maintenance, cahiers des charges établis"
+      },
+      {
+        "libelle": "Points techniques",
+        "valeur": "Étanchéité, réglages des équipements"
+      },
+      {
+        "libelle": "Objectif",
+        "valeur": "Fiabilité et performances des casques"
+      }
+    ],
+    "situationTitre": "Un parc réparti tombe en panne là où personne ne regarde.",
+    "situationProse": [
+      "Un casque hors service sur une borne isolée ne se signale pas tout seul, et chaque jour d'indisponibilité est un jour d'exploitation perdu.",
+      "Timescope avait deux besoins.",
+      "Le second point est le plus exigeant. Sur un marché où les technologies changent vite, un prestataire figé sur une génération d'équipement devient inutile en quelques mois.",
+      "Les casques de réalité virtuelle subissent un usage public intensif. Manipulation répétée, poussière, humidité : les pannes viennent de l'environnement autant que de l'électronique.",
+      "Traiter cela au coup par coup revient à réparer la même chose indéfiniment. Un contrat de maintenance oblige à regarder la cause, pas seulement le symptôme."
+    ],
+    "objectifs": [
+      {
+        "titre": "Un suivi de maintenance approfondi",
+        "texte": "Sur l'ensemble du parc de casques."
+      },
+      {
+        "titre": "Un partenaire capable de suivre l'évolution technologique",
+        "texte": "Rapide de ce secteur émergent."
+      },
+      {
+        "titre": "Remettre en service rapidement les casques défaillants, où qu’ils soient."
+      },
+      {
+        "titre": "Garder un historique de chaque équipement du parc."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Vous cadrez la prestation par un contrat de maintenance",
+        "texte": "Les techniciens Migen s'engagent à respecter les cahiers des charges établis."
+      },
+      {
+        "titre": "Vous traitez l'étanchéité",
+        "texte": ", qui est le point faible connu de ce type d'équipement en usage public."
+      },
+      {
+        "titre": "Vous tenez les réglages",
+        "texte": ", pour que la performance du casque reste conforme à ce qui est vendu à l'utilisateur."
+      },
+      {
+        "titre": "Vous recevez des propositions techniques",
+        "texte": ", pas seulement des réparations. Les solutions visent la fiabilité et les performances des casques."
+      },
+      {
+        "titre": "Vous avancez avec un partenaire qui suit le marché",
+        "texte": ", sur un secteur où les technologies évoluent en continu."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "Timescope cherche un suivi de maintenance approfondi et un partenaire technique dans la durée."
+      },
+      {
+        "titre": "Mise en place du contrat",
+        "texte": "La prestation est cadrée par un contrat de maintenance, avec des cahiers des charges établis."
+      },
+      {
+        "titre": "Prise du parc",
+        "texte": "Les techniciens Migen interviennent sur les casques déployés."
+      },
+      {
+        "titre": "Traitement des points sensibles",
+        "texte": "L'étanchéité et les réglages des équipements concentrent l'effort technique."
+      },
+      {
+        "titre": "Propositions d'amélioration",
+        "texte": "Des solutions sont formulées pour la fiabilité et les performances."
+      },
+      {
+        "titre": "Reconduction",
+        "texte": "Le contrat court toujours, plus d'un an après son démarrage."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Timescope, casques de réalité virtuelle"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Parc de casques déployé à travers la France"
+      },
+      {
+        "libelle": "Cadre",
+        "valeur": "Contrat de maintenance, cahiers des charges établis"
+      },
+      {
+        "libelle": "Points techniques",
+        "valeur": "Étanchéité, réglages des équipements"
+      },
+      {
+        "libelle": "Objectif",
+        "valeur": "Fiabilité et performances des casques"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Un suivi de maintenance approfondi sur tout le parc",
+        "texte": "Le besoin exprimé au départ par Timescope est couvert par le contrat, sur l'ensemble des casques déployés à travers la France."
+      },
+      {
+        "titre": "Les deux familles de défaillance traitées",
+        "texte": "L'étanchéité et les réglages des équipements font l'objet de solutions proposées pour la fiabilité et les performances des casques."
+      },
+      {
+        "titre": "Un partenaire technique tenu dans la durée",
+        "texte": "Les cahiers des charges établis par Timescope sont respectés sur un marché où les technologies se succèdent vite."
+      }
+    ],
+    "complement": [
+      {
+        "titre": "Chiffres clés",
+        "puces": [
+          {
+            "accroche": "2 points techniques",
+            "texte": "étanchéité et réglages, les deux familles de défaillance traitées sur les casques"
+          }
+        ]
+      },
+      {
+        "titre": "Le résultat",
+        "texte": "La collaboration, démarrée, est toujours en cours."
+      }
+    ],
+    "besoinTitre": "Un parc d'équipements dispersé, sans personne pour le suivre ?",
+    "besoinProse": [
+      "Dites-nous ce que vous avez déployé et où, nous cadrons un contrat de maintenance.",
+      "L'astreinte la nuit, le week-end et les jours fériés s'ajoute en option si votre exploitation tourne le week-end.",
+      "Travailler sur une technologie récente demande des techniciens capables d'apprendre vite. Notre sélection retient 10 % des candidats, après entretien technique et comportemental."
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Étude de cas",
+        "titre": "ORTHUS x ECOCEM : construction d'un site R&D",
+        "href": "/preuves/orthus-ecocem/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
+        "href": "/preuves/dimomaint/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
+        "href": "/preuves/eiffage/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/"
+      }
+    ]
+  }
+}

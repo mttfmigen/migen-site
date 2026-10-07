@@ -137,3 +137,133 @@ export function estMetierOuDomaine(contenu: unknown): contenu is ContenuMetier {
   const gabarit = (contenu as { gabarit?: unknown }).gabarit;
   return gabarit === "metier" || gabarit === "domaine";
 }
+
+/* ===========================================================================
+   GABARIT 07 « Métier et carrière », porté le 07/10 contre LA référence :
+   le rendu de la maquette autonome, figé dans `maquette/rendu/carriere--*.html`
+   (13 pages, liste tenue par `maquette/contenu/site/index.json`).
+
+   POURQUOI UN SECOND TYPE MÉTIER : l'union ci-dessus a été portée le 03/10
+   contre « Migen - Site final.dc.html », l'export de démonstration qui n'est
+   le gabarit d'aucune page (CLAUDE.md §16). La vraie page métier du rendu
+   validé n'a ni « missions » en liste cochée ni corps éditorial : elle a de
+   10 à 22 sections typées (bento, tableau, liste numérotée, étapes, duo,
+   encart, grille, questions, postuler, liens). Le type ci-dessous décrit CE
+   rendu-là. L'ancien membre « metier » de l'union reste pour que
+   `scripts/verifie-metier-maquette.tsx` (bâti contre l'ancienne référence)
+   compile encore : la route tranche sur `estMetier` AVANT `estMetierOuDomaine`,
+   l'ancien gabarit métier n'est donc plus jamais servi.
+
+   La donnée vient de la capture MOT POUR MOT (extraction vérifiée : chaque
+   texte visible de la capture doit se retrouver dans le fichier, sinon
+   l'extraction échoue). Rien d'optionnel n'est rempli au hasard : ce que la
+   capture ne donne pas reste absent.
+   =========================================================================== */
+
+/** Une carte titrée : bento, liste numérotée, étape, duo. L'ordinal (01, 02…)
+ *  est du dessin, recalculé au rendu ; l'extraction a vérifié qu'il se suit. */
+export interface CarteFiche {
+  titre: string;
+  /** Peut porter un lien interne en Markdown : `[libellé](/chemin/)`. */
+  texte: string;
+}
+
+export interface BandeFiche {
+  /** La phrase de la bande orange ; son bouton « Postuler » est fixe. */
+  texte: string;
+}
+
+export type SectionFiche =
+  | { type: "chiffres"; items: { valeur: string; texte: string }[] }
+  | {
+      type: "bento";
+      surtitre: string;
+      titre: string;
+      intros?: string[];
+      cartes: CarteFiche[];
+      bande?: BandeFiche;
+    }
+  | {
+      type: "liste";
+      surtitre: string;
+      titre: string;
+      intros?: string[];
+      cartes: CarteFiche[];
+      bande?: BandeFiche;
+    }
+  | {
+      type: "etapes";
+      surtitre: string;
+      titre: string;
+      intros?: string[];
+      etapes: CarteFiche[];
+      bande?: BandeFiche;
+    }
+  | {
+      type: "duo";
+      surtitre: string;
+      titre: string;
+      intros?: string[];
+      cartes: CarteFiche[];
+      bande?: BandeFiche;
+    }
+  | {
+      type: "tableau";
+      surtitre: string;
+      titre: string;
+      intros?: string[];
+      entetes?: { gauche: string; droite: string };
+      lignes: { gauche: string; droite: string }[];
+      bande?: BandeFiche;
+    }
+  | {
+      type: "grille";
+      surtitre: string;
+      titre: string;
+      intros?: string[];
+      colonnes: string[];
+      lignes: string[][];
+      bande?: BandeFiche;
+    }
+  | { type: "encart"; surtitre: string; titre: string; textes: string[] }
+  | {
+      type: "faq";
+      surtitre: string;
+      titre: string;
+      intros?: string[];
+      questions: { question: string; reponse: string }[];
+    }
+  /** La section-formulaire #postuler : toute sa copie est fixe, relevée de la
+   *  capture et identique sur les 13 pages (vérifié à l'extraction). */
+  | { type: "postuler" }
+  | { type: "liens"; items: { libelle: string; href: string }[] };
+
+export interface HerosFiche {
+  /** « Métier » dans la pastille du héros. */
+  pastille: string;
+  /** Le paragraphe d'attaque, en 19px. */
+  chapeau: string;
+  /** Les paragraphes suivants, en 15.5px, liens internes en Markdown. */
+  paragraphes?: string[];
+  /** La carte de verre flottante sur la photo : « 10 % », sa légende. */
+  chiffre?: { valeur: string; texte: string };
+}
+
+export interface ContenuFicheMetier {
+  gabarit: "metier";
+  heros: HerosFiche;
+  sections: SectionFiche[];
+}
+
+/**
+ * La page est-elle une fiche métier du gabarit 07 ?
+ *
+ * `heros` et `sections` départagent la nouvelle forme de l'ancienne (qui
+ * portait `missions`/`corps`) : une donnée ancienne encore en base passerait
+ * par `estMetierOuDomaine` et l'ancien composant, jamais par celui-ci.
+ */
+export function estMetier(contenu: unknown): contenu is ContenuFicheMetier {
+  if (!contenu || typeof contenu !== "object") return false;
+  const c = contenu as { gabarit?: unknown; heros?: unknown; sections?: unknown };
+  return c.gabarit === "metier" && typeof c.heros === "object" && Array.isArray(c.sections);
+}

@@ -1,0 +1,184 @@
+{
+  "url": "/preuves/dimomaint/",
+  "titre_h1": "La GMAO planifie, nos techniciens interviennent",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "DIMOMAINT",
+    "chapeau": [
+      "DimoMaint édite une solution de GMAO pour l'industrie : planification, suivi et analyse des interventions. Migen apporte l'expertise terrain : les techniciens qui interviennent sur les équipements et font vivre les données au quotidien."
+    ],
+    "bouton": "Structurer ma maintenance",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Édition de logiciel GMAO"
+      },
+      {
+        "libelle": "Environnements",
+        "valeur": "Sites industriels et logistiques"
+      }
+    ],
+    "chiffres": [
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Intervention terrain, dépannage, support technique"
+      },
+      {
+        "libelle": "Environnements",
+        "valeur": "Sites industriels et logistiques"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Planification, suivi et analyse des interventions"
+      },
+      {
+        "libelle": "Cadre",
+        "valeur": "Alliance élargie à Savoye pour l'intralogistique"
+      }
+    ],
+    "situationTitre": "Une GMAO ne vaut que par les données qu'on y met.",
+    "situationProse": [
+      "Un technicien sans outil ne capitalise pas sur ce qu'il voit. Les deux doivent avancer ensemble.",
+      "Beaucoup d'industriels subissent encore leur maintenance."
+    ],
+    "objectifs": [
+      {
+        "titre": "Une maintenance réactive",
+        "texte": "On répare sans toujours chercher la cause de la panne."
+      },
+      {
+        "titre": "Des interventions mal tracées",
+        "texte": "Impossible d'anticiper la suivante."
+      },
+      {
+        "titre": "Un outil de GMAO sous-utilisé",
+        "texte": "Les données ne sont pas saisies sur le terrain."
+      },
+      {
+        "titre": "Une maintenance pilotée par la donnée",
+        "texte": "Chaque intervention doit enrichir l’historique de la machine."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Des techniciens qui travaillent avec la GMAO DimoMaint",
+        "texte": "Chaque intervention est saisie, suivie et exploitable."
+      },
+      {
+        "titre": "Des interventions planifiées dans l'outil",
+        "texte": "Le préventif est organisé dans la GMAO, pas sur un tableur."
+      },
+      {
+        "titre": "Des données centralisées pour décider",
+        "texte": "L'historique des pannes guide les choix de maintenance et de remplacement."
+      },
+      {
+        "titre": "Une approche commune avec Savoye",
+        "texte": "Pour les sites intralogistiques, la GMAO est pensée dès la conception de l'installation."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Constat partagé",
+        "texte": "Pénurie de techniciens, installations complexes, défaillances à anticiper."
+      },
+      {
+        "titre": "Alliance",
+        "texte": "Migen et DimoMaint officialisent leur coopération."
+      },
+      {
+        "titre": "Intégration",
+        "texte": "Les opérations de maintenance Migen s'appuient sur la GMAO DimoMaint."
+      },
+      {
+        "titre": "Pilotage",
+        "texte": "Les interventions sont planifiées, suivies et analysées."
+      },
+      {
+        "titre": "Anticipation",
+        "texte": "Les partenaires visent une offre commune de maintenance prédictive."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "DimoMaint, éditeur de GMAO pour l'industrie"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Intervention terrain, dépannage, support technique"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Planification, suivi et analyse des interventions"
+      },
+      {
+        "libelle": "Environnements",
+        "valeur": "Sites industriels et logistiques"
+      },
+      {
+        "libelle": "Cadre",
+        "valeur": "Alliance élargie à Savoye pour l'intralogistique"
+      }
+    ],
+    "resultats": [
+      {
+        "titre": "Une meilleure disponibilité",
+        "texte": "Les équipements critiques sont suivis et entretenus avant la panne."
+      },
+      {
+        "titre": "Moins d'arrêts non planifiés",
+        "texte": "Le préventif est mieux organisé, donc mieux tenu."
+      },
+      {
+        "titre": "Des décisions appuyées sur les données",
+        "texte": "L'historique remplace l'urgence dans les choix de maintenance."
+      }
+    ],
+    "besoinTitre": "Votre GMAO manque de données terrain ?",
+    "besoinProse": [
+      "Dites-nous comment vous suivez vos interventions, nous vous proposons une organisation qui la fait vivre.",
+      "Une panne non tracée reviendra. Une panne tracée se prévoit."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Après votre demande, du lundi au vendredi de 8h00 à 18h30."
+      },
+      {
+        "titre": "Interventions tracées dans la GMAO",
+        "texte": "Chaque passage de technicien enrichit l'historique de vos équipements."
+      },
+      {
+        "titre": "10 % des candidats retenus",
+        "texte": "Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, évalués en entretien technique et comportemental."
+      },
+      {
+        "titre": "Plus de 200 clients",
+        "texte": "Sur des chantiers et des sites en exploitation."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance industrielle",
+        "href": "/secteurs/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : alliance intralogistique",
+        "href": "/preuves/savoye/"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
+        "href": "/preuves/eiffage/"
+      }
+    ]
+  }
+}

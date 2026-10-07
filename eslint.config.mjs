@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Le colis de passation de Claude Design : du JavaScript de prototype, pas
+    // notre code. Il se lit comme référence, il ne se lint pas.
+    "design_handoff_migen_site/**",
   ]),
 ]);
 

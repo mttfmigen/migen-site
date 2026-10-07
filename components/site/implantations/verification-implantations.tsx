@@ -28,8 +28,8 @@ const COMPLET: ContenuImplantations = {
     {
       nom: "Siège et agence de Lyon",
       badge: "Siège",
-      lieu: "Limonest (69)",
-      adresses: ["1 rue des Vergers, Bât. 3, 69760 Limonest"],
+      lieu: "Écully (69)",
+      adresses: ["129 chemin du Moulin Carron, 69130 Écully"],
       rayon: "France entière",
       role: "Direction et coordination",
       siege: true,
