@@ -1,5 +1,5 @@
 {
-  "_source": "maquette/rendu/travaux-industriels--demantelement-industriel.html, 18 sections. Texte copié mot pour mot de cette capture. Les photos des deux sections d'études de cas ont été identifiées sur la maquette vivante (octets des blobs extraits par XHR, puis empreinte 8x8 contre la photothèque du site, aspect et contenu vérifiés à l'œil) : ce sont des prises DÉJÀ présentes dans public/assets/web, à un recadrage près. Aucune phrase interdite par le contrat dans cette capture, donc aucun trou déclaré.",
+  "_source": "maquette/rendu/travaux-industriels--demantelement-industriel.html, 18 sections. Texte copié mot pour mot de cette capture. 07/10, passe G17 : le rail « Nos références » de la capture porte SEPT cartes et non quatre. Les trois manquantes (Savoye, Amazon, Atena) sont les cas liés de maquette/contenu/site/cas-lies.json, dans l'ordre de la capture : Savoye en tête, Amazon et Atena en queue. Leur carte ne porte QUE le libellé client et le titre (le troisième emplacement de la carte est vide dans la capture), donc pas de `texte`. PHOTOS. Les blobs de la capture sont des identités stables d'une capture à l'autre (vérifié : les 9 pages dont le gabarit déclare déjà des photos donnent un blob pour un seul chemin). Savoye et Amazon portent le blob 1e7b43b1, celui de la carte AKTID de CETTE page, déjà identifié /assets/web/team-grind-front.jpg : même image, pas une association choisie. TROU : le blob c96cc07d de la carte Atena n'est identifié nulle part dans le dépôt, donc aucune photo n'est déclarée pour elle plutôt qu'une approchante (CLAUDE.md §13). TROU DE CONTRAT : la capture porte « +200 / Clients industriels accompagnés » dans la bande du héros. Le contrat interdit tout chiffre de clients autre que « plus de 120 clients, dont plus de 80 réguliers » : la carte n'est pas rendue, et elle n'est pas reformulée non plus. La bande du héros porte donc 3 chiffres au lieu de 4.",
   "url": "/travaux-industriels/demantelement-industriel/",
   "titre_h1": "Démantèlement industriel",
   "contenu": {
@@ -12,10 +12,6 @@
       {
         "valeur": "+ 120",
         "libelle": "Collaborateurs · techniciens salariés Migen, pas de chaîne d'intermédiaires."
-      },
-      {
-        "valeur": "+200",
-        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "4",
@@ -179,6 +175,12 @@
         "type": "preuves",
         "preuves": [
           {
+            "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
+            "lienLibelle": "Savoye",
+            "lienHref": "/preuves/savoye-migration-automates-norvege/",
+            "photo": "/assets/web/team-grind-front.jpg"
+          },
+          {
             "titre": "Montage et déplacement de machines, étanchéité et isolation, 2025.",
             "texte": "Transferts de machines sécurisés, sans casse ni improvisation, délais de chantier tenus.",
             "lienLibelle": "SOPREMA",
@@ -205,6 +207,17 @@
             "lienLibelle": "ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
             "photo": "/assets/web/team-duo.jpg"
+          },
+          {
+            "titre": "Un dispositif rodé, transposé sur un nouveau site",
+            "lienLibelle": "Amazon",
+            "lienHref": "/preuves/amazon-nouveau-site/",
+            "photo": "/assets/web/team-grind-front.jpg"
+          },
+          {
+            "titre": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
+            "lienLibelle": "Atena",
+            "lienHref": "/preuves/atena-port-la-rochelle/"
           }
         ]
       },

@@ -27,7 +27,7 @@
       },
       {
         "valeur": "Plus de 120 clients industriels",
-        "libelle": "Plus de 80 reviennent régulièrement, ce qui se juge après le chantier, pas pendant."
+        "libelle": "La qualité se juge après le chantier, pas pendant."
       },
       {
         "valeur": "10 hubs de techniciens",
@@ -174,7 +174,7 @@
         "puces": [
           {
             "accroche": "Un rappel dans l'heure",
-            "texte": ", du lundi au vendredi de 8h00 à 18h30, et une astreinte par téléphone quand un équipement est immobilisé.",
+            "texte": ", du lundi au vendredi de 8h00 à 18h30, et une astreinte la nuit, le week-end et les jours fériés par téléphone quand un équipement est immobilisé.",
             "suitAccroche": true
           },
           {

@@ -269,6 +269,21 @@
             "lienLibelle": "Étude de cas JTEKT : maintenance des équipements",
             "lienHref": "/preuves/jtekt/",
             "photo": "/assets/web/x-entrepot-automatise.jpg"
+          },
+          {
+            "titre": "Un centre logistique monté en six semaines",
+            "lienLibelle": "Étude de cas Aktid",
+            "lienHref": "/preuves/aktid-centre-logistique/"
+          },
+          {
+            "titre": "Maintenir un centre logistique qui ne ferme jamais",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-centre-logistique/"
+          },
+          {
+            "titre": "Un dispositif rodé, transposé sur un nouveau site",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-nouveau-site/"
           }
         ]
       },
@@ -318,44 +333,37 @@
         "question": "Votre maintenance, tenue par une seule équipe. On en parle ?"
       }
     ],
-    "pagesLiees": [
+    "autres": [
       {
-        "titre": "Technicien en résidence",
-        "phrase": "Le Full service se combine avec un technicien en résidence quand votre site a besoin d'une présence permanente.",
-        "href": "/offres/residence/",
-        "photo": "/assets/web/team-duo.jpg"
+        "phrase": "Des techniciens en résidence sur votre site, intégrés à votre équipe, validés par vous.",
+        "libelle": "migen© Résidence",
+        "href": "/offres/residence/"
       },
       {
-        "titre": "Entreprise de maintenance industrielle",
-        "phrase": "Migen est une entreprise de maintenance industrielle née à Lyon en 2021, présente partout en France, de la métallurgie à la pharmaceutique.",
-        "href": "/offres/",
-        "photo": "/assets/web/x-logistique-entrepot.jpg"
+        "phrase": "Le préventif le samedi, le dépannage la nuit : une maintenance qui ne touche jamais à votre production.",
+        "libelle": "migen© Zéro arrêt",
+        "href": "/offres/zero-arret/"
       },
       {
-        "titre": "Zéro arrêt",
-        "phrase": "La maintenance en abonnement, au forfait mensuel.",
-        "href": "/offres/zero-arret/",
-        "photo": "/assets/web/ph-technicien.jpg"
+        "phrase": "Votre arrêt annuel préparé, dimensionné et tenu, ligne rendue à la date annoncée.",
+        "libelle": "migen© Arrêt technique",
+        "href": "/offres/arret-technique/"
       },
       {
-        "titre": "Arrêt technique",
-        "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
-        "href": "/offres/arret-technique/",
-        "photo": "/assets/web/ph-hero-raffinerie.jpg"
+        "phrase": "Conception, schémas électriques, mise en conformité machine : des études faites par des gens de terrain.",
+        "libelle": "migen© Bureau d'études",
+        "href": "/offres/bureau-etudes/"
       },
       {
-        "titre": "Travaux industriels",
-        "phrase": "Transfert, démantèlement, démontage et montage.",
-        "href": "/travaux-industriels/",
-        "photo": "/assets/web/ph-tuyaux.jpg"
+        "phrase": "Transfert, montage, démantèlement, levage : le chantier, du relevé à la remise en production.",
+        "libelle": "migen© Travaux industriels",
+        "href": "/travaux-industriels/"
       },
       {
-        "titre": "Bureau d'études",
-        "phrase": "Conception, retrofit et mise en conformité.",
-        "href": "/offres/bureau-etudes/",
-        "photo": "/assets/web/ph-robots-solaire.jpg"
+        "phrase": "Lyon, Paris, Nantes, Toulouse, Strasbourg, Lille : on part du hub le plus proche de votre site.",
+        "libelle": "Nos hubs",
+        "href": "/implantations/"
       }
-    ],
-    "pagesLieesTitre": "Un autre besoin ? Il a son offre."
+    ]
   }
 }

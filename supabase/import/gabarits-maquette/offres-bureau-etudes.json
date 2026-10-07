@@ -1,7 +1,7 @@
 {
   "url": "/offres/bureau-etudes/",
   "titre_h1": "Bureau d'études industriel : des études qui tiennent au montage",
-  "_reference": "maquette/rendu/offres--bureau-etudes.html, 22 sections, porté le 07/10 contre la porte scripts/verifie-offre-rendu.mjs. CINQ SECTIONS DE PLUS que la page pilote /offres/residence/ (17) : trois compléments de prose du corpus (Complément 4, 5 et 6 de la maquette), « Les prestations regroupées ici » et « Les équipements que nous maintenons déjà ». ÉCARTS ENTRE LE CORPUS (maquette/contenu/site/Offres/offres--bureau-etudes.md) ET LE RENDU, qui fait foi : (1) le corpus titre « Bureau d'études mécanique : un plan qui tient au montage », le rendu et contenu/site/index.json écrivent « Bureau d'études industriel : des études qui tiennent au montage » ; (2) le rendu PERD la punchline du problème (h2 et p vides, bloc data-dc-tpl 453), « punchline » est donc vide ici alors que le corpus porte « Un plan dessiné loin de l'atelier finit toujours par se payer au montage. » ; (3) le rendu écrit « par téléphone » là où le corpus écrit le numéro, et il laisse tomber « 24/24 et 7/7 » de l'astreinte : le rendu est servi ; (4) le rendu n'applique pas de majuscule initiale au texte de la première garantie, d'où l'espace d'attaque de « du lundi au vendredi » qui neutralise majusculeInitiale(). DEUX LIGNES DE LA RÉFÉRENCE NE SONT PAS RENDUES, déclarées en TROUS_PAR_PAGE de la porte : « +200 » et « Clients industriels accompagnés », premier interdit de scripts/verifie-interdits.mjs (le compte tenu est « plus de 120 clients, dont plus de 80 réguliers »). NON RÉSOLU, à faire arbitrer : la maquette rend la syntaxe Markdown brute des quatre références (son analyseur attend « - **titre** : texte. [lien](href) », ce corpus écrit le lien en tête) ; la fidélité au rendu est tenue, le remède est dans le corpus, pas ici. Les photos des cas liés sont reprises des pages sœurs (offres-zero-arret.json, travaux-industriels.json) pour les mêmes études de cas : elles ne sont pas vérifiées par empreinte contre CETTE capture, les images de la maquette étant des blobs morts. LES DEUX PRESTATIONS REGROUPÉES NE SONT PAS RECOPIÉES ICI : la maquette redirige /offres/retrofit/ et /offres/audit-conseil-maintenance/ vers cette page et replie leur contenu entier dans le pli ; le site SERT ces deux URL (200), le pli porte donc le lien vers la page réelle plutôt que sa copie, sans quoi deux URL rendraient le même texte.",
+  "_reference": "maquette/rendu/offres--bureau-etudes.html, 22 sections, porté le 07/10 contre la porte scripts/verifie-offre-rendu.mjs. CINQ SECTIONS DE PLUS que la page pilote /offres/residence/ (17) : trois compléments de prose du corpus (Complément 4, 5 et 6 de la maquette), « Les prestations regroupées ici » et « Les équipements que nous maintenons déjà ». ÉCARTS ENTRE LE CORPUS (maquette/contenu/site/Offres/offres--bureau-etudes.md) ET LE RENDU, qui fait foi : (1) le corpus titre « Bureau d'études mécanique : un plan qui tient au montage », le rendu et contenu/site/index.json écrivent « Bureau d'études industriel : des études qui tiennent au montage » ; (2) le rendu PERD la punchline du problème (h2 et p vides, bloc data-dc-tpl 453), « punchline » est donc vide ici alors que le corpus porte « Un plan dessiné loin de l'atelier finit toujours par se payer au montage. » ; (3) le rendu écrit « par téléphone » là où le corpus écrit le numéro, et il laisse tomber « 24/24 et 7/7 » de l'astreinte : le rendu est servi ; (4) le rendu n'applique pas de majuscule initiale au texte de la première garantie, d'où l'espace d'attaque de « du lundi au vendredi » qui neutralise majusculeInitiale(). DEUX LIGNES DE LA RÉFÉRENCE NE SONT PAS RENDUES, déclarées en TROUS_PAR_PAGE de la porte : « +200 » et « Clients industriels accompagnés », premier interdit de scripts/verifie-interdits.mjs (le compte tenu est « plus de 120 clients, dont plus de 80 réguliers »). NON RÉSOLU, à faire arbitrer : la maquette rend la syntaxe Markdown brute des quatre références (son analyseur attend « - **titre** : texte. [lien](href) », ce corpus écrit le lien en tête) ; la fidélité au rendu est tenue, le remède est dans le corpus, pas ici. Les photos des cas liés sont reprises des pages sœurs (offres-zero-arret.json, travaux-industriels.json) pour les mêmes études de cas : elles ne sont pas vérifiées par empreinte contre CETTE capture, les images de la maquette étant des blobs morts. RÉALIGNEMENT DU 07/10 SUR LA CAPTURE DU 07/10 14h23, treize anomalies de la porte G17. (1) La garantie du rappel reprend la clause d'astreinte entière de la capture, « la nuit, le week-end et les jours fériés ». (2) LES QUATRE CAS LIÉS DE cas-lies.json SONT DES `preuves`, ET NON DES `casLies` : la capture les rend DANS le rail « Nos références » (gabarits 956 à 968, étiquette client, titre, ligne de date vide), et cette page N'A PAS de section « Réalisations liées » ; les poser dans `casLies` aurait monté une 22e section que la référence n'a pas, donc fait échouer le contrôle de structure de la porte. Savoye ouvre le rail, Aktid, Alstef Group et Amazon le ferment, dans l'ordre de la capture ; le cinquième cas de cas-lies.json (/preuves/amazon-nouveau-site/) n'est PAS repris, la capture ne le rend pas. Leurs photos sont celles que bureau-etudes.json déclare pour LES MÊMES études de cas, pas un choix au plus proche ; ni `aLaUne` ni `resume`, la capture ne rend pas de carte mise en avant ici. « Deux automates migrés en deux week-ends » et « Un centre logistique monté en six semaines » sont des DURÉES DE CHANTIERS PASSÉS, pas des délais d'intervention promis : elles sont rendues. (3) La carte « migen© Full service » est ajoutée en DEUXIÈME position de `autres`, comme la capture. DEUX ANOMALIES RESTENT, et aucune ne se corrige dans ce fichier : · components/site/offre/MaillageOffres.tsx n'a pas d'entrée « /offres/full-service/ » dans CARTES_GABARIT, donc la carte est filtrée au rendu et les trois lignes « CONTRAT UNIQUE », « migen© Full service » et sa phrase manquent encore ; la donnée est posée, il manque la clé du dictionnaire (étiquette « Contrat unique », titre « migen© Full service », phrase de la capture, lien « Voir l'offre »). · components/site/offre/QuestionsOffre.tsx rend tous ses <details> fermés, là où la capture ouvre LE PREMIER (bloc 1121, attribut open) : innerText masque donc chez nous la réponse « Chaque mission est chiffrée sur devis… », qui est pourtant déjà dans la donnée. Ce n'est pas un trou de contrat, c'est un attribut de rendu. LES DEUX PRESTATIONS REGROUPÉES NE SONT PAS RECOPIÉES ICI : la maquette redirige /offres/retrofit/ et /offres/audit-conseil-maintenance/ vers cette page et replie leur contenu entier dans le pli ; le site SERT ces deux URL (200), le pli porte donc le lien vers la page réelle plutôt que sa copie, sans quoi deux URL rendraient le même texte. ÉCART HORS PORTE, relevé le 07/10 en relisant la capture ligne à ligne : la capture écrit « Lyon (siège, à Limonest et Écully) » dans la réponse « Intervenez-vous partout en France ? », nous écrivions « Lyon (siège) ». La porte ne peut pas le voir, ce pli est fermé dans la capture comme chez nous, mais la règle du mot pour mot vaut quand même : la ponctuation de la capture est reprise jusqu'à « à Limonest », et « et Écully » reste un TROU, le contrat ne sanctionnant que « Lyon (siège à Limonest), Montréal, Dubaï, Madrid » comme liste de sites. Reformuler aurait été une faute, copier Écully aurait ajouté un site hors liste.",
   "contenu": {
     "gabarit": "offre",
     "pastille": "Nos offres",
@@ -187,7 +187,7 @@
         "puces": [
           {
             "accroche": "Un rappel dans l'heure",
-            "texte": " du lundi au vendredi, 8h00 à 18h30, par téléphone, et une astreinte pendant les phases de réalisation."
+            "texte": " du lundi au vendredi, 8h00 à 18h30, par téléphone, et une astreinte la nuit, le week-end et les jours fériés pendant les phases de réalisation."
           },
           {
             "accroche": "Un chef de projet identifié",
@@ -206,6 +206,12 @@
       {
         "type": "preuves",
         "preuves": [
+          {
+            "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
+            "lienLibelle": "Savoye",
+            "lienHref": "/preuves/savoye-migration-automates-norvege/",
+            "photo": "/assets/web/mq-15bdb671c93a.jpg"
+          },
           {
             "titre": "",
             "texte": "[Étude de cas ORTHUS x ECOCEM : nouveau site](/preuves/orthus-ecocem/) · Pilotage complet de la construction d'un site industriel de recherche et développement près de Paris, coordination multi-métiers et jalons tenus.",
@@ -229,6 +235,24 @@
             "texte": "[Étude de cas ORTHUS x WASHTEC : installation de stations](/preuves/orthus-washtec/) · Montage des portiques de lavage selon les standards du constructeur, réception, levage et raccordements, partout en France.",
             "lienLibelle": "Étude de cas ORTHUS x WASHTEC : installation de stations",
             "lienHref": "/preuves/orthus-washtec/"
+          },
+          {
+            "titre": "Un centre logistique monté en six semaines",
+            "lienLibelle": "Aktid",
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/mq-15bdb671c93a.jpg"
+          },
+          {
+            "titre": "Des chantiers automatisés contrôlés point par point",
+            "lienLibelle": "Alstef Group",
+            "lienHref": "/preuves/alstef-group/",
+            "photo": "/assets/maquette/17de439bc669.jpg"
+          },
+          {
+            "titre": "Maintenir un centre logistique qui ne ferme jamais",
+            "lienLibelle": "Amazon",
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/x-meuleuse-etau.jpg"
           }
         ]
       },
@@ -261,7 +285,7 @@
           },
           {
             "question": "Intervenez-vous partout en France ?",
-            "reponse": "Oui. Quatre agences, Lyon (siège), Montréal, Dubaï et Madrid, et dix hubs de techniciens à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Ailleurs, nos équipes se déplacent : le montage et la mise en service se font sur votre site, où qu'il soit. Nous accompagnons aussi hors de France les clients qui y exploitent des sites."
+            "reponse": "Oui. Quatre agences, Lyon (siège, à Limonest), Montréal, Dubaï et Madrid, et dix hubs de techniciens à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Ailleurs, nos équipes se déplacent : le montage et la mise en service se font sur votre site, où qu'il soit. Nous accompagnons aussi hors de France les clients qui y exploitent des sites."
           }
         ]
       },
@@ -278,6 +302,11 @@
         "phrase": "Des techniciens en résidence sur votre site, intégrés à votre équipe, validés par vous.",
         "libelle": "migen© Résidence",
         "href": "/offres/residence/"
+      },
+      {
+        "phrase": "Toute votre maintenance dans un seul contrat : préventif, dépannage, pièces et GMAO, un seul interlocuteur.",
+        "libelle": "migen© Full service",
+        "href": "/offres/full-service/"
       },
       {
         "phrase": "Le préventif le samedi, le dépannage la nuit : une maintenance qui ne touche jamais à votre production.",

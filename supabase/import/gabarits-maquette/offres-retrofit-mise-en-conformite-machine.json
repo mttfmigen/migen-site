@@ -135,7 +135,7 @@
         "puces": [
           {
             "accroche": "Un rappel dans l'heure",
-            "texte": ", du lundi au vendredi de 8h00 à 18h30, et une astreinte par téléphone quand un équipement est immobilisé."
+            "texte": ", du lundi au vendredi de 8h00 à 18h30, et une astreinte la nuit, le week-end et les jours fériés par téléphone quand un équipement est immobilisé."
           },
           {
             "accroche": "Un seul interlocuteur",
@@ -177,6 +177,16 @@
             "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
             "lienHref": "/preuves/soprema/",
             "photo": "/assets/web/x-duo-hall.jpg"
+          },
+          {
+            "titre": "Une usine de carton en 3x8, un technicien qui tient la cadence",
+            "lienLibelle": "VPK",
+            "lienHref": "/preuves/vpk/"
+          },
+          {
+            "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
+            "lienLibelle": "Mersen",
+            "lienHref": "/preuves/mersen/"
           }
         ]
       },
@@ -189,7 +199,7 @@
           },
           {
             "question": "Une machine ancienne sans marquage CE est-elle forcément hors la loi ?",
-            "reponse": "Non. Le marquage s'impose aux machines mises sur le marché depuis son entrée en vigueur. Les équipements antérieurs relèvent des prescriptions techniques prévues pour les machines en service."
+            "reponse": "Non. Le marquage s'impose aux machines mises sur le marché depuis son entrée en vigueur. Les équipements antérieurs relèvent des prescriptions techniques prévues pour les machines en service. Une machine ancienne bien protégée peut être parfaitement en règle. L'ancienneté ne dispense de rien, et elle ne condamne rien non plus : seul un diagnostic tranche."
           },
           {
             "question": "Pouvez-vous reprendre un dossier commencé par un autre prestataire ?",
@@ -201,11 +211,11 @@
           },
           {
             "question": "Qui intervient réellement sur mes machines ?",
-            "reponse": "Des techniciens salariés Migen, évalués en entretien technique et comportemental à l'entrée : 10 % des candidats sont retenus."
+            "reponse": "Des techniciens salariés Migen, évalués en entretien technique et comportemental à l'entrée : 10 % des candidats sont retenus. Leurs habilitations sont à jour et vérifiables, les attestations partent avec le plan de prévention, et ils passent par votre accueil sécurité comme vos propres équipes."
           },
           {
             "question": "Intervenez-vous partout en France ?",
-            "reponse": "Oui. Nos techniciens partent de dix hubs, Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes, et se déplacent sur votre site où qu'il soit."
+            "reponse": "Oui. Nos techniciens partent de dix hubs, Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes, et se déplacent sur votre site où qu'il soit. Le siège est à Lyon, avec trois autres agences à Montréal, Dubaï et Madrid. Un parc réparti sur plusieurs implantations est traité par un seul interlocuteur, avec le même référentiel d'audit partout."
           }
         ]
       },

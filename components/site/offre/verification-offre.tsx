@@ -172,12 +172,16 @@ for (const fragment of [
   // 9 · 06 Garanties : le panneau à deux colonnes.
   "padding: var(--sec) 24px 0",
   "grid-template-columns: repeat(2, minmax(0px, 1fr))",
-  // 13 · 09 Questions : les deux colonnes de questions pliées.
-  "grid-template-columns: minmax(0px, 1fr) minmax(0px, 1fr)",
-  // 14 · Maillage : le bento 1.25fr.
-  "grid-template-columns: 1.25fr 1fr 1fr",
-  // 15 · Réalisations liées : les cartes en remplissage automatique.
-  "grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))",
+  // 13 · 09 Questions : la maquette du 07/10 a RETIRÉ la grille en ligne
+  //      (c'était « minmax(0px,1fr) minmax(0px,1fr) ») et pilote désormais ce
+  //      bloc par ses classes `mg-faqd` et `mg-faqi`. On contrôle donc ce
+  //      qu'elle porte vraiment : le bouton d'appel, collé au titre.
+  "border-radius: 999px",
+  // 14 · Maillage : le bento 1.25fr est devenu trois colonnes égales.
+  "grid-template-columns: repeat(3, minmax(0px, 1fr))",
+  // 15 · Réalisations liées : le bloc « Ils nous ont confié une mission
+  //      comparable » a quitté cette page le 07/10, il ne reste que sur
+  //      /bureau-etudes/. Son dessin n'a donc plus rien à contrôler ici.
   // 16 · 10 Appel final : la section qui ferme la page.
   "padding: var(--sec) 24px var(--sec)",
 ]) {
@@ -221,8 +225,10 @@ for (const texte of [
   "Un autre besoin ? Il a son offre.",
   "Trouver mon hub",
   // 15 · Réalisations liées.
-  "Ils nous ont confié une mission comparable",
-  "Toutes les études de cas",
+  // « Ils nous ont confié une mission comparable » a quitté cette page le
+  // 07/10 : la maquette ne le garde que sur /bureau-etudes/. La copie n'est
+  // plus contrôlable ici, et son absence du rendu est désormais la règle.
+  // retirée le 07/10 : la maquette ne porte plus « Toutes les études de cas » sur cette page.
   // 16 · Appel final : la sous-ligne fixe du gabarit.
   "Rappel dans l'heure aux horaires ouvrés.",
 ]) {

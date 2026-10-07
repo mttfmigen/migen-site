@@ -209,6 +209,11 @@
             "texte": "1 à 3 techniciens, depuis octobre 2024",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes",
             "lienHref": "/preuves/groupe-atlantic/"
+          },
+          {
+            "titre": "Un technicien dédié pour que le parc ne décroche pas",
+            "lienLibelle": "Autoliv",
+            "lienHref": "/preuves/autoliv/"
           }
         ]
       },
@@ -217,7 +222,7 @@
         "questions": [
           {
             "question": "Combien coûte la sous-traitance de la maintenance ?",
-            "reponse": "La mission est chiffrée sur devis, sous forme de taux horaire homogène dans toute la France. Trois éléments font le montant : le profil requis et ses spécialités, le rythme de présence (temps plein ou partagé) et les contraintes de vos installations. Tout est présenté ligne par ligne, pour une comparaison honnête avec un poste interne."
+            "reponse": ""
           },
           {
             "question": "Sur quelle durée doit-on s'engager ?",
@@ -251,6 +256,11 @@
     "autresSurtitre": "Nos autres offres",
     "autresTitre": "Un autre besoin ? Il a son offre.",
     "autres": [
+      {
+        "phrase": "Toute votre maintenance dans un seul contrat : préventif, dépannage, pièces et GMAO, un seul interlocuteur.",
+        "libelle": "migen© Full service",
+        "href": "/offres/full-service/"
+      },
       {
         "phrase": "Le préventif le samedi, le dépannage la nuit : une maintenance qui ne touche jamais à votre production.",
         "libelle": "migen© Zéro arrêt",

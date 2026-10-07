@@ -4,7 +4,7 @@
   "contenu": {
     "gabarit": "offre",
     "pastille": "Nos offres",
-    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte en dehors de ces horaires.",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en dehors de ces horaires.",
     "chapeau": "Vous comparez des prestataires, et tous promettent la même chose. Migen est une entreprise de maintenance industrielle présente partout en France. Nous écrivons ce que les autres laissent vide : qui intervient, en combien de temps on vous rappelle, et ce qui figure sur le devis.",
     "actions": [
       {
@@ -25,7 +25,7 @@
       }
     ],
     "brefBande": "Besoin de savoir quelle formule coûte le moins cher pour votre site ?",
-    "brefMention": "Nous vous rappelons dans l'heure. En dehors, l'astreinte prend le relais.",
+    "brefMention": "Nous vous rappelons dans l'heure. En dehors, l'astreinte la nuit, le week-end et les jours fériés prend le relais.",
     "brefBouton": {
       "libelle": "Faire chiffrer mon besoin",
       "href": "#besoin"
@@ -84,7 +84,7 @@
           },
           {
             "prestation": {
-              "accroche": "Une astreinte",
+              "accroche": "Une astreinte la nuit, le week-end et les jours fériés",
               "texte": ", nuits, week-ends et jours fériés. Voir l'[astreinte industrielle](/offres/depannage-industriel/astreinte/)."
             },
             "benefice": "Un numéro qui décroche quand la ligne tombe à 2h00 du matin, avec un technicien déjà briefé sur votre site."
@@ -197,7 +197,7 @@
         "questions": [
           {
             "question": "Combien coûte une prestation de maintenance industrielle ?",
-            "reponse": "Le chiffrage se fait après qualification du besoin, avec une visite quand le périmètre le justifie. Sur un parc industriel, la maintenance planifiée et le dépannage subi n'ont pas le même prix de revient. Nous vous montrons les deux. Le taux horaire est homogène dans toute la France, sans surfacturation régionale. Le devis détaille chaque poste, et nous cherchons la prestation la plus économique pour votre situation, pas la plus grosse ligne de commande."
+            "reponse": "Le chiffrage se fait après qualification du besoin, avec une visite quand le périmètre le justifie. Sur un parc industriel, la maintenance planifiée et le dépannage subi n'ont pas le même prix de revient. Nous vous montrons les deux. Le devis détaille chaque poste, et nous cherchons la prestation la plus économique pour votre situation, pas la plus grosse ligne de commande."
           },
           {
             "question": "Faut-il s'engager pour travailler avec vous ?",
@@ -289,7 +289,7 @@
       },
       {
         "titre": "Astreinte industrielle",
-        "phrase": "Une astreinte, nuits, week-ends et jours fériés. Voir l'astreinte industrielle.",
+        "phrase": "Une astreinte la nuit, le week-end et les jours fériés, nuits, week-ends et jours fériés. Voir l'astreinte industrielle.",
         "href": "/offres/depannage-industriel/astreinte/"
       },
       {

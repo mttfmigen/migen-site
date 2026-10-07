@@ -242,7 +242,8 @@
         "puces": [
           {
             "accroche": "Un rappel dans l'heure",
-            "texte": " du lundi au vendredi, 8h00 à 18h30, par téléphone, et une astreinte quand la machine est à l'arrêt."
+            "texte": "du lundi au vendredi, 8h00 à 18h30, par téléphone, et une astreinte la nuit, le week-end et les jours fériés quand la machine est à l'arrêt.",
+            "suitAccroche": true
           },
           {
             "accroche": "Le dossier est à vous.",

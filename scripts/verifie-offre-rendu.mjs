@@ -373,7 +373,7 @@ const TROUS_PAR_PAGE = {
       "[Maintenance en 3x8 sur lignes alimentaires, agroalimentaire](/preuves/danone-lignes-de-production/)",
       "[Curatif continu sur convoyeurs et trieurs, logistique](/preuves/gls-maintenance-curative/)",
       "[Maintenance tenue pendant les congés](/preuves/ogf-arret-estival/)",
-      "[Site ouvert 24 heures sur 24, logistique](/preuves/amazon-centre-logistique/)",
+      "[Site ouvert nuit et week-end, logistique](/preuves/amazon-centre-logistique/)",
       "[Renfort en environnement à risque chimique, traitement des eaux](/preuves/suez-remise-en-etat/)",
     ].map((ligne) => ({
       section: 11,
@@ -1096,6 +1096,110 @@ const TROUS_PAR_PAGE = {
         "pointe sur l'URL que les crochets portaient.",
     })),
   ],
+
+  /* ------------------------------------------------------------------
+     Déclarés le 07/10, après le passage à la maquette de 14h23.
+
+     Quinze lignes de la maquette tombent sous un interdit NOMMÉ du contrat
+     (CLAUDE.md §9). Aucune n'est reformulée, décision de Mehdi du 05/10 : un
+     synonyme est une faute. Elles ne sont pas rendues, et chacune est déclarée
+     ici avec la règle qui l'interdit.
+
+     Les cartes « +200 » tombent avec leur légende : un chiffre sans sa légende,
+     ou une légende sans son chiffre, ne se lit pas. */
+  "/entreprise-maintenance-industrielle/": [
+    {
+      section: 16,
+      ligne: "Le chiffrage se fait après qualification du besoin, avec une visite quand le périmètre le justifie. Sur un parc industriel, la maintenance planifiée et le dépannage subi n'ont pas le même prix de revient. Nous vous montrons les deux. Le taux horaire est homogène dans toute la France, sans surfacturation régionale. Le devis détaille chaque poste, et nous cherchons la prestation la plus économique pour votre situation, pas la plus grosse ligne de commande.",
+      pourquoi: "prix : le contrat interdit tout prix, tarif, montant ou taux horaire sur le site",
+    },
+  ],
+  "/offres/chantier/demenagement-machines/": [
+    {
+      section: 1,
+      ligne: "+200",
+      pourquoi: "chiffre de clients interdit : seul « plus de 120 clients, dont plus de 80 réguliers » est tenu",
+    },
+    {
+      section: 1,
+      ligne: "Clients industriels accompagnés",
+      pourquoi: "légende de la carte « +200 » : une légende sans son chiffre ne se lit pas, la carte tombe entière",
+    },
+  ],
+  "/offres/residence/prestataire-ou-salarie/": [
+    {
+      section: 1,
+      ligne: "+200",
+      pourquoi: "chiffre de clients interdit : seul « plus de 120 clients, dont plus de 80 réguliers » est tenu",
+    },
+    {
+      section: 1,
+      ligne: "Clients industriels accompagnés",
+      pourquoi: "légende de la carte « +200 » : une légende sans son chiffre ne se lit pas, la carte tombe entière",
+    },
+  ],
+  "/offres/residence/": [
+    {
+      section: 13,
+      ligne: "La mission est chiffrée sur devis, sous forme de taux horaire homogène dans toute la France. Trois éléments font le montant : le profil requis et ses spécialités, le rythme de présence (temps plein ou partagé) et les contraintes de vos installations. Tout est présenté ligne par ligne, pour une comparaison honnête avec un poste interne.",
+      pourquoi: "prix : le contrat interdit tout prix, tarif, montant ou taux horaire sur le site",
+    },
+  ],
+  "/offres/retrofit/remise-en-etat/": [
+    {
+      section: 12,
+      ligne: "Maintenir des machines conçues sur mesure",
+      pourquoi: "formulation proscrite par le contrat",
+    },
+  ],
+  "/travaux-industriels/demantelement-industriel/": [
+    {
+      section: 1,
+      ligne: "+200",
+      pourquoi: "chiffre de clients interdit : seul « plus de 120 clients, dont plus de 80 réguliers » est tenu",
+    },
+    {
+      section: 1,
+      ligne: "Clients industriels accompagnés",
+      pourquoi: "légende de la carte « +200 » : une légende sans son chiffre ne se lit pas, la carte tombe entière",
+    },
+  ],
+  "/travaux-industriels/levage-manutention/": [
+    {
+      section: 1,
+      ligne: "+200",
+      pourquoi: "chiffre de clients interdit : seul « plus de 120 clients, dont plus de 80 réguliers » est tenu",
+    },
+    {
+      section: 1,
+      ligne: "Clients industriels accompagnés",
+      pourquoi: "légende de la carte « +200 » : une légende sans son chiffre ne se lit pas, la carte tombe entière",
+    },
+  ],
+  "/travaux-industriels/montage-industriel/": [
+    {
+      section: 1,
+      ligne: "+200",
+      pourquoi: "chiffre de clients interdit : seul « plus de 120 clients, dont plus de 80 réguliers » est tenu",
+    },
+    {
+      section: 1,
+      ligne: "Clients industriels accompagnés",
+      pourquoi: "légende de la carte « +200 » : une légende sans son chiffre ne se lit pas, la carte tombe entière",
+    },
+  ],
+  "/travaux-industriels/": [
+    {
+      section: 1,
+      ligne: "+200",
+      pourquoi: "chiffre de clients interdit : seul « plus de 120 clients, dont plus de 80 réguliers » est tenu",
+    },
+    {
+      section: 1,
+      ligne: "Clients industriels accompagnés",
+      pourquoi: "légende de la carte « +200 » : une légende sans son chiffre ne se lit pas, la carte tombe entière",
+    },
+  ],
 };
 const TROUS_ASSUMES = TROUS_PAR_PAGE[CHEMIN_PAGE] ?? [];
 
@@ -1142,7 +1246,7 @@ const TITRES_VIDES_PAR_PAGE = {
         "sous-titre que le corpus écrit sous « ## Le problème ».",
     },
     {
-      section: 17,
+      section: 16,
       rendu: "Vous voulez trancher sur des chiffres, pas sur une intuition ?",
       pourquoi:
         "titre du panneau de formulaire final. Même défaut. Le site sert la " +
@@ -1170,7 +1274,7 @@ const TITRES_VIDES_PAR_PAGE = {
         "sous-titre que le corpus écrit sous « ## Le problème ».",
     },
     {
-      section: 16,
+      section: 15,
       rendu: "Votre astreinte sonne trop souvent ?",
       pourquoi:
         "titre du panneau de formulaire final. Même défaut. Le site sert la " +
@@ -1202,7 +1306,7 @@ const TITRES_VIDES_PAR_PAGE = {
         "sous-titre que le corpus écrit sous « ## Le problème ».",
     },
     {
-      section: 18,
+      section: 17,
       rendu: "Votre besoin est encore en amont ?",
       pourquoi:
         "titre du panneau de formulaire final. Même défaut. Le site sert la " +
@@ -1235,7 +1339,7 @@ const TITRES_VIDES_PAR_PAGE = {
         "sous-titre que le corpus écrit sous « ## Le problème ».",
     },
     {
-      section: 18,
+      section: 17,
       rendu: "Combien de fois cette machine s'est-elle arrêtée cette année ?",
       pourquoi:
         "titre du panneau de formulaire final. Même défaut. Le site sert la " +

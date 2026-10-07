@@ -1,7 +1,7 @@
 {
   "url": "/travaux-industriels/",
   "titre_h1": "Travaux industriels : transfert, démantèlement, montage, levage",
-  "_reference": "maquette/rendu/travaux-industriels.html, 19 sections, porté le 07/10. QUATRE ÉCARTS entre le CORPUS (maquette/contenu/site/Offres/travaux-industriels.md) et le RENDU de la maquette, qui fait foi (décision de Mehdi du 06/10). Ce sont des ARBITRAGES pour lui, pas des corrections à faire ici. (1) Le corpus écrit « + 100 » collaborateurs, le rendu affiche « + 120 » : c'est le rendu qui est servi, et il concorde avec /offres/residence/. (2) Le rendu PERD la punchline du problème : son h2 et son p sont vides dans la capture (blocs 453 et 454), « punchline » est donc vide ici alors que le corpus porte « Un chantier industriel se joue rarement sur la technique. Il se joue sur qui tient le planning. » Conséquence visible : la colonne de gauche du problème n'a que son surtitre et sa photo. (3) Le rendu recolle le libellé du bouton devant la note de la bande-question (bloc 706), d'où « brefMention » qui commence par « Faire chiffrer mes travaux » ; même artefact que sur offres--retrofit--remise-en-etat, et la même décision (voir ContenuOffre.brefMention). (4) Dans le pli « Montage industriel », le rendu laisse tomber l'amorce « Un point d'avancement chaque semaine » et ne garde que « heures passées et tâches soldées, pas un ressenti. » : ce fragment orphelin n'est PAS rendu ici, c'est le seul texte de la référence volontairement omis, et il est invisible (contenu replié, hors du contrôle de la porte).",
+  "_reference": "maquette/rendu/travaux-industriels.html, 19 sections, porté le 07/10. QUATRE ÉCARTS entre le CORPUS (maquette/contenu/site/Offres/travaux-industriels.md) et le RENDU de la maquette, qui fait foi (décision de Mehdi du 06/10). Ce sont des ARBITRAGES pour lui, pas des corrections à faire ici. (1) Le corpus écrit « + 100 » collaborateurs, le rendu affiche « + 120 » : c'est le rendu qui est servi, et il concorde avec /offres/residence/. (2) Le rendu PERD la punchline du problème : son h2 et son p sont vides dans la capture (blocs 453 et 454), « punchline » est donc vide ici alors que le corpus porte « Un chantier industriel se joue rarement sur la technique. Il se joue sur qui tient le planning. » Conséquence visible : la colonne de gauche du problème n'a que son surtitre et sa photo. (3) Le rendu recolle le libellé du bouton devant la note de la bande-question (bloc 706), d'où « brefMention » qui commence par « Faire chiffrer mes travaux » ; même artefact que sur offres--retrofit--remise-en-etat, et la même décision (voir ContenuOffre.brefMention). (4) Dans le pli « Montage industriel », le rendu laisse tomber l'amorce « Un point d'avancement chaque semaine » et ne garde que « heures passées et tâches soldées, pas un ressenti. » : ce fragment orphelin n'est PAS rendu ici, c'est le seul texte de la référence volontairement omis, et il est invisible (contenu replié, hors du contrôle de la porte). RELEVÉ DU 07/10, porte G17. (5) Le rail des références porte HUIT cartes dans la capture : « Savoye » en tête, « Vignal Systems » et « Amazon » en queue, chacune sans ligne de résultat (bloc 965 vide), d'où trois preuves sans `texte` ni `photo` ici : la liste fixe de `ReferencesOffre` sert leur photo, la capture ne donne que des `blob:`. (6) Le chiffre « +200 / Clients industriels accompagnés » de la capture n'est PAS rendu ici : le contrat client interdit tout chiffre de clients autre que « plus de 120 clients, dont plus de 80 réguliers », et la capture ne porte pas cette formulation. Trou assumé, pas une reformulation. La bande n'a donc plus que trois chiffres pour quatre colonnes dans `GRILLE_CHIFFRES`. (7) `/offres/full-service/` est porté ici à sa place de la capture mais reste invisible : `CARTES_GABARIT` de `MaillageOffres.tsx` n'a pas sa clé.",
   "contenu": {
     "gabarit": "offre",
     "pastille": "Travaux industriels",
@@ -20,10 +20,6 @@
       {
         "valeur": "+ 120",
         "libelle": "Collaborateurs · techniciens salariés Migen, pas de chaîne d'intermédiaires."
-      },
-      {
-        "valeur": "+200",
-        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "4",
@@ -428,6 +424,11 @@
         "type": "preuves",
         "preuves": [
           {
+            "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
+            "lienLibelle": "Étude de cas Savoye",
+            "lienHref": "/preuves/savoye-migration-automates-norvege/"
+          },
+          {
             "titre": "Montage d'un centre logistique, Clermont-Ferrand, 2023.",
             "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés en pleine période estivale, site livré à la date prévue.",
             "lienLibelle": "Étude de cas AKTID",
@@ -461,6 +462,16 @@
             "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
             "photo": "/assets/web/x-auto-ligne.jpg"
+          },
+          {
+            "titre": "Maintenir et monter, de jour comme de nuit",
+            "lienLibelle": "Étude de cas Vignal Systems",
+            "lienHref": "/preuves/vignal-systems/"
+          },
+          {
+            "titre": "Un dispositif rodé, transposé sur un nouveau site",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-nouveau-site/"
           }
         ]
       },
@@ -506,6 +517,11 @@
         "phrase": "Des techniciens en résidence sur votre site, intégrés à votre équipe, validés par vous.",
         "libelle": "migen© Résidence",
         "href": "/offres/residence/"
+      },
+      {
+        "phrase": "Toute votre maintenance dans un seul contrat : préventif, dépannage, pièces et GMAO, un seul interlocuteur.",
+        "libelle": "migen© Full service",
+        "href": "/offres/full-service/"
       },
       {
         "phrase": "Le préventif le samedi, le dépannage la nuit : une maintenance qui ne touche jamais à votre production.",

@@ -175,6 +175,26 @@
             "texte": "Trois techniciens en renfort, suivi rigoureux des équipements sur toute la durée du chantier",
             "lienLibelle": "Étude de cas EIFFAGE",
             "lienHref": "/preuves/eiffage/"
+          },
+          {
+            "titre": "Une usine de carton en 3x8, un technicien qui tient la cadence",
+            "lienLibelle": "Étude de cas VPK",
+            "lienHref": "/preuves/vpk/"
+          },
+          {
+            "titre": "Un centre logistique monté en six semaines",
+            "lienLibelle": "Étude de cas Aktid",
+            "lienHref": "/preuves/aktid-centre-logistique/"
+          },
+          {
+            "titre": "",
+            "lienLibelle": "Étude de cas Tournaire",
+            "lienHref": "/preuves/tournaire/"
+          },
+          {
+            "titre": "Un responsable maintenance pour traverser la transition",
+            "lienLibelle": "Étude de cas ERIKS",
+            "lienHref": "/preuves/eriks/"
           }
         ]
       },

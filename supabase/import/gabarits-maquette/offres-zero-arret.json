@@ -189,6 +189,21 @@
             "texte": "depuis octobre 2024, toujours en cours",
             "lienLibelle": "Étude de cas McCAIN : Belgique",
             "lienHref": "/preuves/mccain-belgique/"
+          },
+          {
+            "titre": "Un centre logistique monté en six semaines",
+            "lienLibelle": "Étude de cas AKTID : montage d'un centre logistique",
+            "lienHref": "/preuves/aktid-centre-logistique/"
+          },
+          {
+            "titre": "Maintenir un centre logistique qui ne ferme jamais",
+            "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique",
+            "lienHref": "/preuves/amazon-centre-logistique/"
+          },
+          {
+            "titre": "Un dispositif rodé, transposé sur un nouveau site",
+            "lienLibelle": "Étude de cas AMAZON : démarrage d'un nouveau site",
+            "lienHref": "/preuves/amazon-nouveau-site/"
           }
         ]
       },
@@ -380,6 +395,11 @@
         "phrase": "« J'ai besoin d'un renfort maintenance sur mon site. »",
         "libelle": "Résidence",
         "href": "/offres/residence/"
+      },
+      {
+        "phrase": "Toute votre maintenance dans un seul contrat : préventif, dépannage, pièces et GMAO, un seul interlocuteur.",
+        "libelle": "Full service",
+        "href": "/offres/full-service/"
       },
       {
         "phrase": "« J'ai une fenêtre d'arrêt et pas le droit de la dépasser. »",

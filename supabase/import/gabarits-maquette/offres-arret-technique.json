@@ -4,7 +4,7 @@
   "contenu": {
     "gabarit": "offre",
     "pastille": "Nos offres",
-    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte pendant toute la durée de l'arrêt.",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés pendant toute la durée de l'arrêt.",
     "appelBouton": "Faire chiffrer mon arrêt",
     "chapeau": "Nous cadrons votre programme de travaux bien avant la première consignation, nous constituons des équipes complètes par métier, et un interlocuteur unique porte le chemin critique jusqu'à la date de redémarrage.",
     "actions": [
@@ -23,6 +23,10 @@
       {
         "valeur": "10 %",
         "libelle": "Des candidats retenus. Sur un arrêt, chaque heure de technicien compte double"
+      },
+      {
+        "valeur": "en continu et tous les jours",
+        "libelle": "Astreinte pendant l'arrêt, horaires étendus, 2x8 et 3x8, week-end compris"
       }
     ],
     "brefBande": "Besoin de sécuriser la date de redémarrage de votre prochain arrêt ?",
@@ -184,6 +188,21 @@
             "texte": "depuis septembre 2024",
             "lienLibelle": "Étude de cas VALEO : plusieurs usines",
             "lienHref": "/preuves/valeo-usines/"
+          },
+          {
+            "titre": "Maintenir un centre logistique qui ne ferme jamais",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-centre-logistique/"
+          },
+          {
+            "titre": "Un dispositif rodé, transposé sur un nouveau site",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-nouveau-site/"
+          },
+          {
+            "titre": "Pas un poste sans maintenance, week-end compris",
+            "lienLibelle": "Étude de cas Danone (Blédina)",
+            "lienHref": "/preuves/danone-lignes-de-production/"
           }
         ]
       },
@@ -212,7 +231,7 @@
           },
           {
             "question": "Pouvez-vous mobiliser partout en France ?",
-            "reponse": "Oui. Nos 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, nos hubs techniques et nos plus de 100 collaborateurs permettent de dimensionner un arrêt partiel sur une seule ligne comme un grand arrêt annuel de site. Nous intervenons aussi hors de France, pour les clients qui y exploitent des usines."
+            "reponse": "Oui. Nos 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, nos hubs techniques et nos plus de 120 techniciens permettent de dimensionner un arrêt partiel sur une seule ligne comme un grand arrêt annuel de site. Nous intervenons aussi hors de France, pour les clients qui y exploitent des usines."
           }
         ]
       },
@@ -235,6 +254,11 @@
         "phrase": "Des techniciens en résidence sur votre site, intégrés à votre équipe, validés par vous.",
         "libelle": "migen© Résidence",
         "href": "/offres/residence/"
+      },
+      {
+        "phrase": "Toute votre maintenance dans un seul contrat : préventif, dépannage, pièces et GMAO, un seul interlocuteur.",
+        "libelle": "migen© Full service",
+        "href": "/offres/full-service/"
       },
       {
         "phrase": "Le préventif le samedi, le dépannage la nuit : une maintenance qui ne touche jamais à votre production.",

@@ -21,12 +21,8 @@
         "libelle": "Part des candidats retenus, après entretien technique et comportemental."
       },
       {
-        "valeur": "+ 100",
+        "valeur": "+120",
         "libelle": "Collaborateurs Migen, tous salariés de Migen."
-      },
-      {
-        "valeur": "+200",
-        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "4 agences",
@@ -209,6 +205,16 @@
             "texte": "été 2025, un technicien intégré chez OGF quand les congés réduisaient l'effectif technique interne",
             "lienLibelle": "Maintenance tenue pendant les congés d'été",
             "lienHref": "/preuves/ogf-arret-estival/"
+          },
+          {
+            "titre": "Un technicien dédié pour que le parc ne décroche pas",
+            "lienLibelle": "Autoliv",
+            "lienHref": "/preuves/autoliv/"
+          },
+          {
+            "titre": "La maintenance tient pendant que l’équipe recrute",
+            "lienLibelle": "Bamesa",
+            "lienHref": "/preuves/bamesa/"
           }
         ]
       },

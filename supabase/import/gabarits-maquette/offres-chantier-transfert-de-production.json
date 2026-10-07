@@ -143,6 +143,11 @@
         "type": "preuves",
         "preuves": [
           {
+            "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
+            "lienLibelle": "Savoye",
+            "lienHref": "/preuves/savoye-migration-automates-norvege/"
+          },
+          {
             "titre": "Installation et mise en production d'un nouveau parc machine, site automobile.",
             "texte": "6 techniciens mobilisés, objectifs de production en progression continue depuis",
             "lienLibelle": "Étude de cas EATON",
@@ -171,6 +176,16 @@
             "texte": "12 monteurs, 8 engins de levage, livraison à la date prévue",
             "lienLibelle": "Étude de cas AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/"
+          },
+          {
+            "titre": "Un renfort pour que le pain sorte chaque matin",
+            "lienLibelle": "La Panetière",
+            "lienHref": "/preuves/la-panetiere/"
+          },
+          {
+            "titre": "Maintenir un centre logistique qui ne ferme jamais",
+            "lienLibelle": "Amazon",
+            "lienHref": "/preuves/amazon-centre-logistique/"
           }
         ]
       },

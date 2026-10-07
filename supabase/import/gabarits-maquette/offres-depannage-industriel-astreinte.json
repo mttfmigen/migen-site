@@ -8,11 +8,15 @@
     "formulaireHeroMention": "Rappel dans l'heure",
     "chiffres": [
       {
+        "valeur": "en continu et tous les jours",
+        "libelle": "Couverture de l'astreinte, nuits, fins de semaine, jours fériés."
+      },
+      {
         "valeur": "10 %",
         "libelle": "Part des candidats retenus, après entretien technique et comportemental."
       },
       {
-        "valeur": "+ 100",
+        "valeur": "+120",
         "libelle": "Collaborateurs, et 4 agences dans le monde, Lyon (siège), Montréal, Dubaï et Madrid."
       },
       {
@@ -57,7 +61,7 @@
         "lignes": [
           {
             "prestation": {
-              "texte": "**Numéro dédié, joignable**"
+              "texte": "**Numéro dédié, joignable la nuit, le week-end et les jours fériés**"
             },
             "benefice": "Votre équipe de nuit n'a plus à chercher qui appeler. Un numéro affiché en atelier, une procédure d'une page."
           },
@@ -193,9 +197,9 @@
             "photo": "/assets/web/x-duo-hall.jpg"
           },
           {
-            "titre": "Site ouvert 24 heures sur 24, logistique",
+            "titre": "Site ouvert nuit et week-end, logistique",
             "texte": "une équipe de techniciens polyvalents mobilisée simultanément, une semaine sur deux, sur un centre qui ne ferme jamais",
-            "lienLibelle": "Site ouvert 24 heures sur 24, logistique",
+            "lienLibelle": "Site ouvert nuit et week-end, logistique",
             "lienHref": "/preuves/amazon-centre-logistique/",
             "photo": "/assets/web/x-entrepot-automatise.jpg"
           },
@@ -205,6 +209,17 @@
             "lienLibelle": "Renfort en environnement à risque chimique, traitement des eaux",
             "lienHref": "/preuves/suez-remise-en-etat/",
             "photo": "/assets/web/x-meuleuse-etau.jpg"
+          },
+          {
+            "titre": "Un responsable maintenance pour traverser la transition",
+            "lienLibelle": "ERIKS",
+            "lienHref": "/preuves/eriks/",
+            "photo": "/assets/web/x-meuleuse-etau.jpg"
+          },
+          {
+            "titre": "Un premier contrat en Belgique, préventif et correctif",
+            "lienLibelle": "McCain",
+            "lienHref": "/preuves/mccain-belgique/"
           }
         ]
       },
