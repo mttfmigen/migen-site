@@ -1,6 +1,6 @@
 # Les pages du site sur Vercel
 
-Déploiement du soir : https://migen-site-i50ogacad-migenservice.vercel.app
+Adresse STABLE (production, toujours à jour) : https://migen-site.vercel.app
 
 
 ## En ligne : 161 pages
@@ -8,230 +8,230 @@ Déploiement du soir : https://migen-site-i50ogacad-migenservice.vercel.app
 
 ### /bureau-etudes (4)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/bureau-etudes/
-- https://migen-site-i50ogacad-migenservice.vercel.app/bureau-etudes/bureau-etude-electrique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/bureau-etudes/bureau-etude-electronique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/bureau-etudes/mise-en-conformite-machine/
+- https://migen-site.vercel.app/bureau-etudes/
+- https://migen-site.vercel.app/bureau-etudes/bureau-etude-electrique/
+- https://migen-site.vercel.app/bureau-etudes/bureau-etude-electronique/
+- https://migen-site.vercel.app/bureau-etudes/mise-en-conformite-machine/
 
 ### /carriere (1)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/carriere/
+- https://migen-site.vercel.app/carriere/
 
 ### /confidentialite (1)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/confidentialite/
+- https://migen-site.vercel.app/confidentialite/
 
 ### /contact (1)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/contact/
+- https://migen-site.vercel.app/contact/
 
 ### /entreprise-maintenance-industrielle (1)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/entreprise-maintenance-industrielle/
+- https://migen-site.vercel.app/entreprise-maintenance-industrielle/
 
 ### /equipe (1)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/equipe/
+- https://migen-site.vercel.app/equipe/
 
 ### /expertises (31)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/automatisme/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/automatisme/programmation-automate/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/automatisme/schneider/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/automatisme/siemens/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/electrique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/electromecanique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/hydraulique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/hydraulique/verin-hydraulique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/mecanique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/mecanique/lubrification/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/mecanique/machine-outil/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/pneumatique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/robotique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/robotique/abb/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/robotique/fanuc/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/robotique/integrateur-robotique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/soudure/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/specialisations-constructeur/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/tuyauterie/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/tuyauterie/nettoyage/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/types-de-maintenance/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/types-de-maintenance/maintenance-ameliorative/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/types-de-maintenance/maintenance-conditionnelle/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/types-de-maintenance/maintenance-corrective/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/types-de-maintenance/maintenance-curative/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/types-de-maintenance/maintenance-palliative/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/types-de-maintenance/maintenance-predictive/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/types-de-maintenance/maintenance-preventive/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/types-de-maintenance/maintenance-previsionnelle/
-- https://migen-site-i50ogacad-migenservice.vercel.app/expertises/types-de-maintenance/preventive-systematique/
+- https://migen-site.vercel.app/expertises/
+- https://migen-site.vercel.app/expertises/automatisme/
+- https://migen-site.vercel.app/expertises/automatisme/programmation-automate/
+- https://migen-site.vercel.app/expertises/automatisme/schneider/
+- https://migen-site.vercel.app/expertises/automatisme/siemens/
+- https://migen-site.vercel.app/expertises/electrique/
+- https://migen-site.vercel.app/expertises/electromecanique/
+- https://migen-site.vercel.app/expertises/hydraulique/
+- https://migen-site.vercel.app/expertises/hydraulique/verin-hydraulique/
+- https://migen-site.vercel.app/expertises/mecanique/
+- https://migen-site.vercel.app/expertises/mecanique/lubrification/
+- https://migen-site.vercel.app/expertises/mecanique/machine-outil/
+- https://migen-site.vercel.app/expertises/pneumatique/
+- https://migen-site.vercel.app/expertises/robotique/
+- https://migen-site.vercel.app/expertises/robotique/abb/
+- https://migen-site.vercel.app/expertises/robotique/fanuc/
+- https://migen-site.vercel.app/expertises/robotique/integrateur-robotique/
+- https://migen-site.vercel.app/expertises/soudure/
+- https://migen-site.vercel.app/expertises/specialisations-constructeur/
+- https://migen-site.vercel.app/expertises/tuyauterie/
+- https://migen-site.vercel.app/expertises/tuyauterie/nettoyage/
+- https://migen-site.vercel.app/expertises/types-de-maintenance/
+- https://migen-site.vercel.app/expertises/types-de-maintenance/maintenance-ameliorative/
+- https://migen-site.vercel.app/expertises/types-de-maintenance/maintenance-conditionnelle/
+- https://migen-site.vercel.app/expertises/types-de-maintenance/maintenance-corrective/
+- https://migen-site.vercel.app/expertises/types-de-maintenance/maintenance-curative/
+- https://migen-site.vercel.app/expertises/types-de-maintenance/maintenance-palliative/
+- https://migen-site.vercel.app/expertises/types-de-maintenance/maintenance-predictive/
+- https://migen-site.vercel.app/expertises/types-de-maintenance/maintenance-preventive/
+- https://migen-site.vercel.app/expertises/types-de-maintenance/maintenance-previsionnelle/
+- https://migen-site.vercel.app/expertises/types-de-maintenance/preventive-systematique/
 
 ### /implantations (43)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/lille/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/lyon/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/lyon/grenoble/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/lyon/haute-savoie/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/lyon/rhone/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/lyon/saint-etienne/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/lyon/valence/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-avignon/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-besancon/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-caen/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-clermont-ferrand/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-dijon/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-dunkerque/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-le-havre/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-le-mans/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-limoges/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-marseille/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-metz/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-montpellier/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-nice/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-orleans/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-pau/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-poitiers/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-reims/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-tours/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-troyes/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/maintenance-industrielle-valenciennes/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/nantes/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/nantes/brest/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/nantes/loire-atlantique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/nantes/rennes/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/paris/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/paris/essonne/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/paris/rouen/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/strasbourg/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/strasbourg/alsace/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/strasbourg/mulhouse/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/toulouse/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/toulouse/bordeaux/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/toulouse/charente/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/toulouse/gironde/
-- https://migen-site-i50ogacad-migenservice.vercel.app/implantations/toulouse/haute-garonne/
+- https://migen-site.vercel.app/implantations/
+- https://migen-site.vercel.app/implantations/lille/
+- https://migen-site.vercel.app/implantations/lyon/
+- https://migen-site.vercel.app/implantations/lyon/grenoble/
+- https://migen-site.vercel.app/implantations/lyon/haute-savoie/
+- https://migen-site.vercel.app/implantations/lyon/rhone/
+- https://migen-site.vercel.app/implantations/lyon/saint-etienne/
+- https://migen-site.vercel.app/implantations/lyon/valence/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-avignon/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-besancon/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-caen/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-clermont-ferrand/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-dijon/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-dunkerque/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-le-havre/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-le-mans/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-limoges/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-marseille/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-metz/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-montpellier/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-nice/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-orleans/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-pau/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-poitiers/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-reims/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-tours/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-troyes/
+- https://migen-site.vercel.app/implantations/maintenance-industrielle-valenciennes/
+- https://migen-site.vercel.app/implantations/nantes/
+- https://migen-site.vercel.app/implantations/nantes/brest/
+- https://migen-site.vercel.app/implantations/nantes/loire-atlantique/
+- https://migen-site.vercel.app/implantations/nantes/rennes/
+- https://migen-site.vercel.app/implantations/paris/
+- https://migen-site.vercel.app/implantations/paris/essonne/
+- https://migen-site.vercel.app/implantations/paris/rouen/
+- https://migen-site.vercel.app/implantations/strasbourg/
+- https://migen-site.vercel.app/implantations/strasbourg/alsace/
+- https://migen-site.vercel.app/implantations/strasbourg/mulhouse/
+- https://migen-site.vercel.app/implantations/toulouse/
+- https://migen-site.vercel.app/implantations/toulouse/bordeaux/
+- https://migen-site.vercel.app/implantations/toulouse/charente/
+- https://migen-site.vercel.app/implantations/toulouse/gironde/
+- https://migen-site.vercel.app/implantations/toulouse/haute-garonne/
 
 ### /marques (1)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/marques/
+- https://migen-site.vercel.app/marques/
 
 ### /mentions-legales (1)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/mentions-legales/
+- https://migen-site.vercel.app/mentions-legales/
 
 ### /nous-connaitre (1)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/nous-connaitre/
+- https://migen-site.vercel.app/nous-connaitre/
 
 ### /offres (19)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/arret-technique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/audit-conseil-maintenance/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/bureau-etudes/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/chantier/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/chantier/demenagement-machines/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/chantier/transfert-de-production/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/construction/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/depannage-industriel/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/depannage-industriel/astreinte/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/depannage-industriel/panne-machine/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/maintenance-externalisee/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/residence/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/residence/cahier-des-charges/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/residence/prestataire-ou-salarie/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/retrofit/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/retrofit/mise-en-conformite-machine/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/retrofit/remise-en-etat/
-- https://migen-site-i50ogacad-migenservice.vercel.app/offres/zero-arret/
+- https://migen-site.vercel.app/offres/
+- https://migen-site.vercel.app/offres/arret-technique/
+- https://migen-site.vercel.app/offres/audit-conseil-maintenance/
+- https://migen-site.vercel.app/offres/bureau-etudes/
+- https://migen-site.vercel.app/offres/chantier/
+- https://migen-site.vercel.app/offres/chantier/demenagement-machines/
+- https://migen-site.vercel.app/offres/chantier/transfert-de-production/
+- https://migen-site.vercel.app/offres/construction/
+- https://migen-site.vercel.app/offres/depannage-industriel/
+- https://migen-site.vercel.app/offres/depannage-industriel/astreinte/
+- https://migen-site.vercel.app/offres/depannage-industriel/panne-machine/
+- https://migen-site.vercel.app/offres/maintenance-externalisee/
+- https://migen-site.vercel.app/offres/residence/
+- https://migen-site.vercel.app/offres/residence/cahier-des-charges/
+- https://migen-site.vercel.app/offres/residence/prestataire-ou-salarie/
+- https://migen-site.vercel.app/offres/retrofit/
+- https://migen-site.vercel.app/offres/retrofit/mise-en-conformite-machine/
+- https://migen-site.vercel.app/offres/retrofit/remise-en-etat/
+- https://migen-site.vercel.app/offres/zero-arret/
 
 ### /partenaires (1)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/partenaires/
+- https://migen-site.vercel.app/partenaires/
 
 ### /plan-du-site (1)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/plan-du-site/
+- https://migen-site.vercel.app/plan-du-site/
 
 ### /preuves (29)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/aktid-centre-logistique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/alstef-group/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/amazon-centre-logistique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/amazon-nouveau-site/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/autoliv/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/danone-lignes-de-production/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/eaton-mise-en-production/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/eiffage/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/eriks/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/fdj/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/gls-maintenance-curative/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/groupe-atlantic/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/joint-lyonnais/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/jtekt/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/mccain-belgique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/mersen/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/ogf-arret-estival/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/orthus-ecocem/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/orthus-washtec/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/soprema/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/stellantis-fonderie-sept-fons/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/stellantis-grand-est/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/suez-remise-en-etat/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/timescope/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/valeo-usines/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/veepee-sites-lyon/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/voit-grand-est/
-- https://migen-site-i50ogacad-migenservice.vercel.app/preuves/vpk/
+- https://migen-site.vercel.app/preuves/
+- https://migen-site.vercel.app/preuves/aktid-centre-logistique/
+- https://migen-site.vercel.app/preuves/alstef-group/
+- https://migen-site.vercel.app/preuves/amazon-centre-logistique/
+- https://migen-site.vercel.app/preuves/amazon-nouveau-site/
+- https://migen-site.vercel.app/preuves/autoliv/
+- https://migen-site.vercel.app/preuves/danone-lignes-de-production/
+- https://migen-site.vercel.app/preuves/eaton-mise-en-production/
+- https://migen-site.vercel.app/preuves/eiffage/
+- https://migen-site.vercel.app/preuves/eriks/
+- https://migen-site.vercel.app/preuves/fdj/
+- https://migen-site.vercel.app/preuves/gls-maintenance-curative/
+- https://migen-site.vercel.app/preuves/groupe-atlantic/
+- https://migen-site.vercel.app/preuves/joint-lyonnais/
+- https://migen-site.vercel.app/preuves/jtekt/
+- https://migen-site.vercel.app/preuves/mccain-belgique/
+- https://migen-site.vercel.app/preuves/mersen/
+- https://migen-site.vercel.app/preuves/ogf-arret-estival/
+- https://migen-site.vercel.app/preuves/orthus-ecocem/
+- https://migen-site.vercel.app/preuves/orthus-washtec/
+- https://migen-site.vercel.app/preuves/soprema/
+- https://migen-site.vercel.app/preuves/stellantis-fonderie-sept-fons/
+- https://migen-site.vercel.app/preuves/stellantis-grand-est/
+- https://migen-site.vercel.app/preuves/suez-remise-en-etat/
+- https://migen-site.vercel.app/preuves/timescope/
+- https://migen-site.vercel.app/preuves/valeo-usines/
+- https://migen-site.vercel.app/preuves/veepee-sites-lyon/
+- https://migen-site.vercel.app/preuves/voit-grand-est/
+- https://migen-site.vercel.app/preuves/vpk/
 
 ### /racine (1)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/
+- https://migen-site.vercel.app/
 
 ### /realisations (1)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/realisations/
+- https://migen-site.vercel.app/realisations/
 
 ### /ressources (3)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/ressources/fiches-pratiques/
-- https://migen-site-i50ogacad-migenservice.vercel.app/ressources/fiches-pratiques/plan-de-prevention/
-- https://migen-site-i50ogacad-migenservice.vercel.app/ressources/fiches-techniques/
+- https://migen-site.vercel.app/ressources/fiches-pratiques/
+- https://migen-site.vercel.app/ressources/fiches-pratiques/plan-de-prevention/
+- https://migen-site.vercel.app/ressources/fiches-techniques/
 
 ### /rse (1)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/rse/
+- https://migen-site.vercel.app/rse/
 
 ### /secteurs (13)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/secteurs/
-- https://migen-site-i50ogacad-migenservice.vercel.app/secteurs/aeronautique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/secteurs/agroalimentaire/
-- https://migen-site-i50ogacad-migenservice.vercel.app/secteurs/automobile/
-- https://migen-site-i50ogacad-migenservice.vercel.app/secteurs/chimie/
-- https://migen-site-i50ogacad-migenservice.vercel.app/secteurs/industrie-lourde/
-- https://migen-site-i50ogacad-migenservice.vercel.app/secteurs/industrie-metallique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/secteurs/logistique/
-- https://migen-site-i50ogacad-migenservice.vercel.app/secteurs/logistique/maintenance-convoyeur/
-- https://migen-site-i50ogacad-migenservice.vercel.app/secteurs/logistique/peak-season/
-- https://migen-site-i50ogacad-migenservice.vercel.app/secteurs/menuiserie-industrielle/
-- https://migen-site-i50ogacad-migenservice.vercel.app/secteurs/nucleaire/
-- https://migen-site-i50ogacad-migenservice.vercel.app/secteurs/pharmaceutique/
+- https://migen-site.vercel.app/secteurs/
+- https://migen-site.vercel.app/secteurs/aeronautique/
+- https://migen-site.vercel.app/secteurs/agroalimentaire/
+- https://migen-site.vercel.app/secteurs/automobile/
+- https://migen-site.vercel.app/secteurs/chimie/
+- https://migen-site.vercel.app/secteurs/industrie-lourde/
+- https://migen-site.vercel.app/secteurs/industrie-metallique/
+- https://migen-site.vercel.app/secteurs/logistique/
+- https://migen-site.vercel.app/secteurs/logistique/maintenance-convoyeur/
+- https://migen-site.vercel.app/secteurs/logistique/peak-season/
+- https://migen-site.vercel.app/secteurs/menuiserie-industrielle/
+- https://migen-site.vercel.app/secteurs/nucleaire/
+- https://migen-site.vercel.app/secteurs/pharmaceutique/
 
 ### /travaux-industriels (5)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/travaux-industriels/
-- https://migen-site-i50ogacad-migenservice.vercel.app/travaux-industriels/demantelement-industriel/
-- https://migen-site-i50ogacad-migenservice.vercel.app/travaux-industriels/levage-manutention/
-- https://migen-site-i50ogacad-migenservice.vercel.app/travaux-industriels/montage-industriel/
-- https://migen-site-i50ogacad-migenservice.vercel.app/travaux-industriels/transfert-industriel/
+- https://migen-site.vercel.app/travaux-industriels/
+- https://migen-site.vercel.app/travaux-industriels/demantelement-industriel/
+- https://migen-site.vercel.app/travaux-industriels/levage-manutention/
+- https://migen-site.vercel.app/travaux-industriels/montage-industriel/
+- https://migen-site.vercel.app/travaux-industriels/transfert-industriel/
 
 ### /valeurs (1)
 
-- https://migen-site-i50ogacad-migenservice.vercel.app/valeurs/
+- https://migen-site.vercel.app/valeurs/
 
 
 ## Pas encore en ligne : 101 pages, et pourquoi
