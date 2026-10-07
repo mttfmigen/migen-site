@@ -5,9 +5,9 @@
   "h1Attendu": "Gestion des déchets industriels",
   "h1Rendu": "Gestion des déchets industriels",
   "nbSections": 5,
-  "hauteurTotale": 8201,
+  "hauteurTotale": 8289,
   "motsAnnonces": 1761,
-  "motsRendus": 1895,
+  "motsRendus": 1910,
   "sections": [
     {
       "ordre": 0,
@@ -28,7 +28,7 @@
     {
       "ordre": 2,
       "titre": "Vos questions, nos réponses",
-      "hauteur": 753,
+      "hauteur": 841,
       "images": 0,
       "liens": 0,
       "mots": 115

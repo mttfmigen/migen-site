@@ -160,40 +160,6 @@
         "href": "/offres/zero-arret/"
       }
     ],
-    "casLies": [
-      {
-        "url": "/preuves/savoye-migration-automates-norvege/",
-        "client": "Savoye",
-        "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
-        "aLaUne": "À la une · Savoye, Norvège",
-        "resume": "Étude, préparation et migration d’automates sur un site intralogistique en exploitation : deux week-ends, zéro jour de production perdu.",
-        "photo": "/assets/maquette/15bdb671c93a.jpg"
-      },
-      {
-        "url": "/preuves/aktid-centre-logistique/",
-        "client": "Aktid",
-        "titre": "Un centre logistique monté en six semaines",
-        "photo": "/assets/maquette/15bdb671c93a.jpg"
-      },
-      {
-        "url": "/preuves/alstef-group/",
-        "client": "Alstef Group",
-        "titre": "Des chantiers automatisés contrôlés point par point",
-        "photo": "/assets/maquette/17de439bc669.jpg"
-      },
-      {
-        "url": "/preuves/amazon-nouveau-site/",
-        "client": "Amazon",
-        "titre": "Un dispositif rodé, transposé sur un nouveau site",
-        "photo": "/assets/web/x-meulage-etincelles.jpg"
-      },
-      {
-        "url": "/preuves/atena-port-la-rochelle/",
-        "client": "Atena",
-        "titre": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
-        "photo": "/assets/maquette/17de439bc669.jpg"
-      }
-    ],
     "sections": [
       {
         "type": "probleme",
@@ -410,6 +376,7 @@
         "question": "Besoin d'un premier avis sur votre transfert, même s'il n'est prévu que dans six mois ?",
         "bouton": "Parler à un chargé d’affaires"
       }
-    ]
+    ],
+    "pagesLieesTitre": "Les offres et prestations voisines"
   }
 }

@@ -4,10 +4,10 @@
   "verdict": "rendue",
   "h1Attendu": "Maintenance industrielle : cinq offres, une seule exigence",
   "h1Rendu": "Maintenance industrielle : cinq offres, une seule exigence",
-  "nbSections": 19,
-  "hauteurTotale": 9789,
+  "nbSections": 18,
+  "hauteurTotale": 9443,
   "motsAnnonces": 1311,
-  "motsRendus": 1501,
+  "motsRendus": 1497,
   "sections": [
     {
       "ordre": 0,
@@ -101,9 +101,9 @@
       "ordre": 11,
       "titre": "Nos références",
       "hauteur": 714,
-      "images": 6,
-      "liens": 7,
-      "mots": 133
+      "images": 16,
+      "liens": 9,
+      "mots": 164
     },
     {
       "ordre": 12,
@@ -131,30 +131,22 @@
     },
     {
       "ordre": 15,
-      "titre": null,
-      "hauteur": 604,
-      "images": 1,
+      "titre": "Vos questions avant de nous appeler",
+      "hauteur": 814,
+      "images": 0,
       "liens": 1,
-      "mots": 78
+      "mots": 102
     },
     {
       "ordre": 16,
-      "titre": "Cinq offres, un seul interlocuteur.",
+      "titre": "Six offres, un seul interlocuteur.",
       "hauteur": 648,
       "images": 0,
-      "liens": 5,
-      "mots": 118
+      "liens": 6,
+      "mots": 142
     },
     {
       "ordre": 17,
-      "titre": "Ils nous ont confié une mission comparable",
-      "hauteur": 557,
-      "images": 4,
-      "liens": 5,
-      "mots": 83
-    },
-    {
-      "ordre": 18,
       "titre": "Besoin d'un interlocuteur qui vous dise honnêtement de quoi votre site a besoin ?",
       "hauteur": 1012,
       "images": 0,

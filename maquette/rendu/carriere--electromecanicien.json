@@ -5,9 +5,9 @@
   "h1Attendu": "Électromécanicien",
   "h1Rendu": "Électromécanicien",
   "nbSections": 14,
-  "hauteurTotale": 11153,
+  "hauteurTotale": 11323,
   "motsAnnonces": 1711,
-  "motsRendus": 1902,
+  "motsRendus": 1915,
   "sections": [
     {
       "ordre": 0,
@@ -100,10 +100,10 @@
     {
       "ordre": 11,
       "titre": "Questions fréquentes",
-      "hauteur": 682,
+      "hauteur": 852,
       "images": 0,
       "liens": 1,
-      "mots": 103
+      "mots": 101
     },
     {
       "ordre": 12,

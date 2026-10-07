@@ -5,9 +5,9 @@
   "h1Attendu": "Ressources : Fiches pratiques",
   "h1Rendu": "Ressources : Fiches pratiques",
   "nbSections": 5,
-  "hauteurTotale": 5439,
+  "hauteurTotale": 5527,
   "motsAnnonces": 914,
-  "motsRendus": 1038,
+  "motsRendus": 1053,
   "sections": [
     {
       "ordre": 0,
@@ -36,7 +36,7 @@
     {
       "ordre": 3,
       "titre": "Vos questions, nos réponses",
-      "hauteur": 607,
+      "hauteur": 695,
       "images": 0,
       "liens": 0,
       "mots": 75

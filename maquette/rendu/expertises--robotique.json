@@ -4,10 +4,10 @@
   "verdict": "rendue",
   "h1Attendu": "Maintenance robotique : un robot arrêté, c’est toute la cellule qui attend",
   "h1Rendu": "Maintenance robotique : un robot arrêté, c’est toute la cellule qui attend",
-  "nbSections": 17,
-  "hauteurTotale": 9244,
+  "nbSections": 16,
+  "hauteurTotale": 9193,
   "motsAnnonces": 1173,
-  "motsRendus": 1474,
+  "motsRendus": 1463,
   "sections": [
     {
       "ordre": 0,
@@ -15,15 +15,15 @@
       "hauteur": 708,
       "images": 0,
       "liens": 1,
-      "mots": 101
+      "mots": 109
     },
     {
       "ordre": 1,
       "titre": null,
-      "hauteur": 155,
+      "hauteur": 176,
       "images": 0,
       "liens": 0,
-      "mots": 14
+      "mots": 25
     },
     {
       "ordre": 2,
@@ -63,7 +63,7 @@
       "hauteur": 135,
       "images": 0,
       "liens": 1,
-      "mots": 23
+      "mots": 31
     },
     {
       "ordre": 7,
@@ -84,10 +84,10 @@
     {
       "ordre": 9,
       "titre": "Ce que nous garantissons",
-      "hauteur": 599,
+      "hauteur": 624,
       "images": 0,
       "liens": 0,
-      "mots": 92
+      "mots": 100
     },
     {
       "ordre": 10,
@@ -99,11 +99,11 @@
     },
     {
       "ordre": 11,
-      "titre": "Cinq façons de travailler ensemble, selon votre besoin",
-      "hauteur": 699,
-      "images": 5,
-      "liens": 5,
-      "mots": 141
+      "titre": "Six façons de travailler ensemble, selon votre besoin",
+      "hauteur": 851,
+      "images": 7,
+      "liens": 7,
+      "mots": 137
     },
     {
       "ordre": 12,
@@ -117,28 +117,20 @@
       "ordre": 13,
       "titre": "Nos références",
       "hauteur": 822,
-      "images": 5,
-      "liens": 6,
-      "mots": 155
+      "images": 12,
+      "liens": 7,
+      "mots": 167
     },
     {
       "ordre": 14,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 521,
+      "hauteur": 829,
       "images": 0,
-      "liens": 0,
-      "mots": 91
+      "liens": 1,
+      "mots": 107
     },
     {
       "ordre": 15,
-      "titre": "Ils nous ont confié une mission comparable",
-      "hauteur": 557,
-      "images": 4,
-      "liens": 5,
-      "mots": 70
-    },
-    {
-      "ordre": 16,
       "titre": "Besoin que vos arrêts de cellule diminuent au lieu d'augmenter cette année ?",
       "hauteur": 1012,
       "images": 0,

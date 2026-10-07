@@ -5,9 +5,9 @@
   "h1Attendu": "Mtbf",
   "h1Rendu": "Mtbf",
   "nbSections": 5,
-  "hauteurTotale": 8047,
+  "hauteurTotale": 8135,
   "motsAnnonces": 1959,
-  "motsRendus": 1983,
+  "motsRendus": 1998,
   "sections": [
     {
       "ordre": 0,
@@ -28,7 +28,7 @@
     {
       "ordre": 2,
       "titre": "Vos questions, nos réponses",
-      "hauteur": 727,
+      "hauteur": 815,
       "images": 0,
       "liens": 0,
       "mots": 100

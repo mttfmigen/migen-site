@@ -5,9 +5,9 @@
   "h1Attendu": "Étude de cas STELLANTIS : des dizaines de techniciens pour passer à l’électrique",
   "h1Rendu": "Des dizaines de techniciens pour passer à l’électrique",
   "nbSections": 10,
-  "hauteurTotale": 6061,
+  "hauteurTotale": 6062,
   "motsAnnonces": 634,
-  "motsRendus": 872,
+  "motsRendus": 895,
   "sections": [
     {
       "ordre": 0,
@@ -79,7 +79,7 @@
       "hauteur": 732,
       "images": 0,
       "liens": 0,
-      "mots": 89
+      "mots": 97
     },
     {
       "ordre": 9,

@@ -4,10 +4,10 @@
   "verdict": "rendue",
   "h1Attendu": "Transfert de production",
   "h1Rendu": "Transfert de production",
-  "nbSections": 18,
-  "hauteurTotale": 8746,
+  "nbSections": 17,
+  "hauteurTotale": 8195,
   "motsAnnonces": 1196,
-  "motsRendus": 1209,
+  "motsRendus": 1164,
   "sections": [
     {
       "ordre": 0,
@@ -109,9 +109,9 @@
       "ordre": 12,
       "titre": "Nos références",
       "hauteur": 736,
-      "images": 5,
-      "liens": 6,
-      "mots": 145
+      "images": 16,
+      "liens": 9,
+      "mots": 191
     },
     {
       "ordre": 13,
@@ -124,14 +124,14 @@
     {
       "ordre": 14,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 521,
+      "hauteur": 854,
       "images": 0,
-      "liens": 0,
-      "mots": 87
+      "liens": 1,
+      "mots": 115
     },
     {
       "ordre": 15,
-      "titre": "Les pages qui complètent celle-ci",
+      "titre": "Les offres et prestations voisines",
       "hauteur": 696,
       "images": 0,
       "liens": 6,
@@ -139,14 +139,6 @@
     },
     {
       "ordre": 16,
-      "titre": "Ils nous ont confié une mission comparable",
-      "hauteur": 884,
-      "images": 5,
-      "liens": 6,
-      "mots": 119
-    },
-    {
-      "ordre": 17,
       "titre": "Besoin d'un regard extérieur avant d'arrêter la date de bascule ?",
       "hauteur": 964,
       "images": 0,

@@ -5,9 +5,9 @@
   "h1Attendu": "Maintenance 4.0",
   "h1Rendu": "Maintenance 4.0",
   "nbSections": 5,
-  "hauteurTotale": 8376,
+  "hauteurTotale": 8464,
   "motsAnnonces": 1934,
-  "motsRendus": 1934,
+  "motsRendus": 1949,
   "sections": [
     {
       "ordre": 0,
@@ -28,7 +28,7 @@
     {
       "ordre": 2,
       "titre": "Vos questions, nos réponses",
-      "hauteur": 727,
+      "hauteur": 815,
       "images": 0,
       "liens": 0,
       "mots": 97

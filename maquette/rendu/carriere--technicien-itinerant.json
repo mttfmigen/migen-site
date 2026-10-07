@@ -5,9 +5,9 @@
   "h1Attendu": "Technicien de maintenance itinérant",
   "h1Rendu": "Technicien de maintenance itinérant",
   "nbSections": 15,
-  "hauteurTotale": 11827,
+  "hauteurTotale": 11980,
   "motsAnnonces": 2055,
-  "motsRendus": 2221,
+  "motsRendus": 2234,
   "sections": [
     {
       "ordre": 0,
@@ -108,10 +108,10 @@
     {
       "ordre": 12,
       "titre": "Questions fréquentes",
-      "hauteur": 759,
+      "hauteur": 912,
       "images": 0,
       "liens": 1,
-      "mots": 134
+      "mots": 132
     },
     {
       "ordre": 13,

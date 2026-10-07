@@ -272,7 +272,8 @@
             "question": "Intervenez-vous partout en France ?",
             "reponse": "Oui. Quatre agences, Lyon (siège), Montréal, Dubaï et Madrid, et dix hubs de techniciens à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Ailleurs, nos équipes se déplacent : le montage et la mise en service se font sur votre site, où qu'il soit. Nous accompagnons aussi hors de France les clients qui y exploitent des sites."
           }
-        ]
+        ],
+        "chapeau": "Délais, sécurité, qui intervient, comment on démarre : les réponses aux questions que nos clients posent avant de signer."
       },
       {
         "type": "ctaFinal",

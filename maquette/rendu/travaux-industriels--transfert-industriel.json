@@ -4,10 +4,10 @@
   "verdict": "rendue",
   "h1Attendu": "Transfert industriel et déménagement de machines industrielles",
   "h1Rendu": "Transfert industriel et déménagement de machines industrielles",
-  "nbSections": 19,
-  "hauteurTotale": 9706,
+  "nbSections": 18,
+  "hauteurTotale": 9203,
   "motsAnnonces": 1981,
-  "motsRendus": 1785,
+  "motsRendus": 1735,
   "sections": [
     {
       "ordre": 0,
@@ -117,9 +117,9 @@
       "ordre": 13,
       "titre": "Nos références",
       "hauteur": 733,
-      "images": 5,
-      "liens": 6,
-      "mots": 161
+      "images": 16,
+      "liens": 9,
+      "mots": 208
     },
     {
       "ordre": 14,
@@ -132,14 +132,14 @@
     {
       "ordre": 15,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 605,
+      "hauteur": 1008,
       "images": 0,
-      "liens": 0,
-      "mots": 108
+      "liens": 1,
+      "mots": 124
     },
     {
       "ordre": 16,
-      "titre": "Les pages qui complètent celle-ci",
+      "titre": "Les offres et prestations voisines",
       "hauteur": 696,
       "images": 0,
       "liens": 6,
@@ -147,14 +147,6 @@
     },
     {
       "ordre": 17,
-      "titre": "Ils nous ont confié une mission comparable",
-      "hauteur": 905,
-      "images": 5,
-      "liens": 6,
-      "mots": 113
-    },
-    {
-      "ordre": 18,
       "titre": "Besoin d'un premier avis sur votre transfert, même s'il n'est prévu que dans six mois ?",
       "hauteur": 964,
       "images": 0,

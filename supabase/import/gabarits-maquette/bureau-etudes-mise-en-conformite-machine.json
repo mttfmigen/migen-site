@@ -56,7 +56,10 @@
       "href": "#besoin"
     },
     "marquesFamille": "mo",
-    "marquesFamilles": ["mo", "fluide"],
+    "marquesFamilles": [
+      "mo",
+      "fluide"
+    ],
     "sections": [
       {
         "type": "probleme",
@@ -312,6 +315,7 @@
         "href": "/offres/bureau-etudes/",
         "photo": "/assets/web/ph-robots-solaire.jpg"
       }
-    ]
+    ],
+    "pagesLieesTitre": "Les offres et prestations voisines"
   }
 }

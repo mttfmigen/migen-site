@@ -5,9 +5,9 @@
   "h1Attendu": "Coût d'un arrêt de production",
   "h1Rendu": "Coût d'un arrêt de production",
   "nbSections": 5,
-  "hauteurTotale": 10277,
+  "hauteurTotale": 10365,
   "motsAnnonces": 2734,
-  "motsRendus": 2604,
+  "motsRendus": 2619,
   "sections": [
     {
       "ordre": 0,
@@ -28,7 +28,7 @@
     {
       "ordre": 2,
       "titre": "Vos questions, nos réponses",
-      "hauteur": 1003,
+      "hauteur": 1091,
       "images": 0,
       "liens": 0,
       "mots": 155

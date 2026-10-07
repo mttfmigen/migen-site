@@ -256,32 +256,6 @@
         "libelle": "Nos hubs",
         "href": "/implantations/"
       }
-    ],
-    "casLies": [
-      {
-        "url": "/preuves/amazon-centre-logistique/",
-        "client": "Amazon",
-        "titre": "Maintenir un centre logistique qui ne ferme jamais",
-        "photo": "/assets/web/team-duo.jpg"
-      },
-      {
-        "url": "/preuves/amazon-nouveau-site/",
-        "client": "Amazon",
-        "titre": "Un dispositif rodé, transposé sur un nouveau site",
-        "photo": "/assets/web/ph-technicien.jpg"
-      },
-      {
-        "url": "/preuves/danone-lignes-de-production/",
-        "client": "Danone (Blédina)",
-        "titre": "Pas un poste sans maintenance, week-end compris",
-        "photo": "/assets/web/ph-technicien.jpg"
-      },
-      {
-        "url": "/preuves/dimomaint/",
-        "client": "DimoMaint",
-        "titre": "La GMAO planifie, nos techniciens interviennent",
-        "photo": "/assets/web/team-grind-close.jpg"
-      }
     ]
   }
 }

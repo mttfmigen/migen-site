@@ -5,9 +5,9 @@
   "h1Attendu": "Cahier des charges gmao",
   "h1Rendu": "Cahier des charges gmao",
   "nbSections": 5,
-  "hauteurTotale": 9332,
+  "hauteurTotale": 9420,
   "motsAnnonces": 2373,
-  "motsRendus": 2248,
+  "motsRendus": 2263,
   "sections": [
     {
       "ordre": 0,
@@ -28,7 +28,7 @@
     {
       "ordre": 2,
       "titre": "Vos questions, nos réponses",
-      "hauteur": 978,
+      "hauteur": 1066,
       "images": 0,
       "liens": 0,
       "mots": 154

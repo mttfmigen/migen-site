@@ -4,10 +4,10 @@
   "verdict": "rendue",
   "h1Attendu": "Bureau d'études industriel : des études qui tiennent au montage",
   "h1Rendu": "Bureau d'études industriel : des études qui tiennent au montage",
-  "nbSections": 22,
-  "hauteurTotale": 9888,
+  "nbSections": 21,
+  "hauteurTotale": 9285,
   "motsAnnonces": 1358,
-  "motsRendus": 1584,
+  "motsRendus": 1568,
   "sections": [
     {
       "ordre": 0,
@@ -103,7 +103,7 @@
       "hauteur": 624,
       "images": 0,
       "liens": 0,
-      "mots": 111
+      "mots": 119
     },
     {
       "ordre": 12,
@@ -141,9 +141,9 @@
       "ordre": 16,
       "titre": "Nos références",
       "hauteur": 767,
-      "images": 4,
-      "liens": 5,
-      "mots": 148
+      "images": 16,
+      "liens": 9,
+      "mots": 205
     },
     {
       "ordre": 17,
@@ -156,29 +156,21 @@
     {
       "ordre": 18,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 590,
+      "hauteur": 871,
       "images": 0,
-      "liens": 0,
-      "mots": 90
+      "liens": 1,
+      "mots": 95
     },
     {
       "ordre": 19,
       "titre": "Un autre besoin ? Il a son offre.",
       "hauteur": 648,
       "images": 0,
-      "liens": 5,
-      "mots": 125
+      "liens": 6,
+      "mots": 149
     },
     {
       "ordre": 20,
-      "titre": "Ils nous ont confié une mission comparable",
-      "hauteur": 884,
-      "images": 5,
-      "liens": 6,
-      "mots": 110
-    },
-    {
-      "ordre": 21,
       "titre": "Besoin d'un ingénieur qui comprenne votre projet dès le premier appel ?",
       "hauteur": 1012,
       "images": 0,

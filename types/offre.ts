@@ -471,6 +471,8 @@ export interface ContenuOffre {
    * l'un des deux ; remplir les deux rendrait deux blocs de maillage.
    */
   pagesLiees?: LienPageLiee[];
+  /** H2 du bloc de maillage, relevé dans la capture de la page. */
+  pagesLieesTitre?: string;
 
   /* --------------------------------- « Les équipements que nous maintenons » */
 

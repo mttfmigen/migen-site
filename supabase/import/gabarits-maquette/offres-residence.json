@@ -276,32 +276,6 @@
         "libelle": "Nos hubs",
         "href": "/implantations/"
       }
-    ],
-    "casLies": [
-      {
-        "url": "/preuves/autoliv/",
-        "client": "Autoliv",
-        "titre": "Un technicien dédié pour que le parc ne décroche pas",
-        "photo": "/assets/web/team-electric.jpg"
-      },
-      {
-        "url": "/preuves/bamesa/",
-        "client": "Bamesa",
-        "titre": "La maintenance tient pendant que l'équipe recrute",
-        "photo": "/assets/web/ph-hero-raffinerie.jpg"
-      },
-      {
-        "url": "/preuves/danone-lignes-de-production/",
-        "client": "Danone (Blédina)",
-        "titre": "Pas un poste sans maintenance, week-end compris",
-        "photo": "/assets/web/ph-technicien.jpg"
-      },
-      {
-        "url": "/preuves/jacquet-brossard/",
-        "client": "Jacquet Brossard",
-        "titre": "Une ligne de pain de mie suivie à chaque poste",
-        "photo": "/assets/web/ph-technicien.jpg"
-      }
     ]
   }
 }

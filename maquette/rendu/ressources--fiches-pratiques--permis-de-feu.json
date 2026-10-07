@@ -5,9 +5,9 @@
   "h1Attendu": "Permis de feu",
   "h1Rendu": "Permis de feu",
   "nbSections": 5,
-  "hauteurTotale": 8340,
+  "hauteurTotale": 8428,
   "motsAnnonces": 1852,
-  "motsRendus": 1925,
+  "motsRendus": 1940,
   "sections": [
     {
       "ordre": 0,
@@ -28,7 +28,7 @@
     {
       "ordre": 2,
       "titre": "Vos questions, nos réponses",
-      "hauteur": 727,
+      "hauteur": 815,
       "images": 0,
       "liens": 0,
       "mots": 124

@@ -248,40 +248,7 @@
         "href": "/travaux-industriels/"
       }
     ],
-    "casLies": [
-      {
-        "url": "/preuves/savoye-migration-automates-norvege/",
-        "client": "Savoye",
-        "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
-        "resume": "Étude, préparation et migration d’automates sur un site intralogistique en exploitation : deux week-ends, zéro jour de production perdu.",
-        "aLaUne": "À la une · Savoye, Norvège",
-        "photo": "/assets/web/mq-15bdb671c93a.jpg"
-      },
-      {
-        "url": "/preuves/la-panetiere/",
-        "client": "La Panetière",
-        "titre": "Un renfort pour que le pain sorte chaque matin",
-        "photo": "/assets/web/x-armoire-electrique.jpg"
-      },
-      {
-        "url": "/preuves/amazon-centre-logistique/",
-        "client": "Amazon",
-        "titre": "Maintenir un centre logistique qui ne ferme jamais",
-        "photo": "/assets/web/mq-15bdb671c93a.jpg"
-      },
-      {
-        "url": "/preuves/salaison-du-maconnais/",
-        "client": "Salaison du Mâconnais",
-        "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
-        "photo": "/assets/web/mq-12eb6f1b9e2b.jpg"
-      },
-      {
-        "url": "/preuves/voit-grand-est/",
-        "client": "Voit",
-        "titre": "Centres d’usinage et presses tenus dans le Grand Est",
-        "photo": "/assets/web/x-usine-tours.jpg"
-      }
-    ],
-    "brefMention": "Faire chiffrer mon transfert de production Un chargé d'affaires vous rappelle dans l'heure et identifie les points durs du projet."
+    "brefMention": "Faire chiffrer mon transfert de production Un chargé d'affaires vous rappelle dans l'heure et identifie les points durs du projet.",
+    "pagesLieesTitre": "Les offres et prestations voisines"
   }
 }

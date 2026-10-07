@@ -5,9 +5,9 @@
   "h1Attendu": "La sécurité en maintenance industrielle",
   "h1Rendu": "La sécurité en maintenance industrielle",
   "nbSections": 5,
-  "hauteurTotale": 9427,
+  "hauteurTotale": 9515,
   "motsAnnonces": 2255,
-  "motsRendus": 2294,
+  "motsRendus": 2314,
   "sections": [
     {
       "ordre": 0,
@@ -23,12 +23,12 @@
       "hauteur": 6175,
       "images": 0,
       "liens": 15,
-      "mots": 1776
+      "mots": 1781
     },
     {
       "ordre": 2,
       "titre": "Vos questions, nos réponses",
-      "hauteur": 804,
+      "hauteur": 892,
       "images": 0,
       "liens": 0,
       "mots": 134

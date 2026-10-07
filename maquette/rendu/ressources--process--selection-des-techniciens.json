@@ -5,9 +5,9 @@
   "h1Attendu": "Sélection technicien de maintenance",
   "h1Rendu": "Sélection technicien de maintenance",
   "nbSections": 5,
-  "hauteurTotale": 7788,
+  "hauteurTotale": 7876,
   "motsAnnonces": 1764,
-  "motsRendus": 1768,
+  "motsRendus": 1783,
   "sections": [
     {
       "ordre": 0,
@@ -28,7 +28,7 @@
     {
       "ordre": 2,
       "titre": "Vos questions, nos réponses",
-      "hauteur": 804,
+      "hauteur": 892,
       "images": 0,
       "liens": 0,
       "mots": 140

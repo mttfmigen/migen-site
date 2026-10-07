@@ -31,6 +31,18 @@ import styles from "./PageOffre.module.css";
 
 export interface ProprietesPagesLiees {
   pages: LienPageLiee[];
+  /**
+   * Le H2 du bloc, relevé dans la capture de CHAQUE page.
+   *
+   * POURQUOI IL VIENT DE LA DONNÉE : la maquette n'a pas un titre mais trois,
+   * et elle choisit selon la place de la page dans l'arborescence. « Un autre
+   * besoin ? Il a son offre. » sur les pages mères, « Les offres et
+   * prestations voisines » sur les filles, « Par où continuer ? » sur
+   * `/entreprise-maintenance-industrielle/`. Un titre écrit dans le composant
+   * était faux sur quinze pages, et c'était de la copie inventée : la règle du
+   * dépôt est que rien ne s'écrit ici qui ne soit relevé dans la référence.
+   */
+  titre: string;
 }
 
 const ENTETE: CSSProperties = {
@@ -162,7 +174,7 @@ const FLECHE: CSSProperties = {
   font: "600 15px var(--fb)",
 };
 
-export default function PagesLiees({ pages }: ProprietesPagesLiees) {
+export default function PagesLiees({ pages, titre }: ProprietesPagesLiees) {
   const retenues = pages.filter((page) => cibleSure(page.href));
   if (retenues.length === 0) return null;
 
@@ -176,7 +188,7 @@ export default function PagesLiees({ pages }: ProprietesPagesLiees) {
             <div style={{ ...SURTITRE, marginBottom: 14 }}>
               Pour aller plus loin
             </div>
-            <h2 style={TITRE}>Les pages qui complètent celle-ci</h2>
+            <h2 style={TITRE}>{titre}</h2>
           </div>
           <span style={COMPTE}>{retenues.length} pages liées</span>
         </div>

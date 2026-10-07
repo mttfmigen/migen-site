@@ -5,9 +5,9 @@
   "h1Attendu": "Salaire électromécanicien",
   "h1Rendu": "Salaire électromécanicien",
   "nbSections": 16,
-  "hauteurTotale": 10851,
+  "hauteurTotale": 11034,
   "motsAnnonces": 1872,
-  "motsRendus": 1950,
+  "motsRendus": 1963,
   "sections": [
     {
       "ordre": 0,
@@ -116,10 +116,10 @@
     {
       "ordre": 13,
       "titre": "Questions fréquentes",
-      "hauteur": 640,
+      "hauteur": 822,
       "images": 0,
       "liens": 1,
-      "mots": 87
+      "mots": 85
     },
     {
       "ordre": 14,

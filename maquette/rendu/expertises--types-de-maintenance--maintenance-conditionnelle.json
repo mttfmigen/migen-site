@@ -4,10 +4,10 @@
   "verdict": "rendue",
   "h1Attendu": "Maintenance conditionnelle : intervenir quand la machine le demande, pas le calendrier",
   "h1Rendu": "Maintenance conditionnelle : intervenir quand la machine le demande, pas le calendrier",
-  "nbSections": 18,
-  "hauteurTotale": 11250,
+  "nbSections": 17,
+  "hauteurTotale": 11242,
   "motsAnnonces": 1842,
-  "motsRendus": 2023,
+  "motsRendus": 2009,
   "sections": [
     {
       "ordre": 0,
@@ -15,7 +15,7 @@
       "hauteur": 708,
       "images": 0,
       "liens": 1,
-      "mots": 105
+      "mots": 113
     },
     {
       "ordre": 1,
@@ -44,10 +44,10 @@
     {
       "ordre": 4,
       "titre": "Les chiffres Migen",
-      "hauteur": 578,
+      "hauteur": 702,
       "images": 0,
       "liens": 3,
-      "mots": 55
+      "mots": 31
     },
     {
       "ordre": 5,
@@ -71,7 +71,7 @@
       "hauteur": 599,
       "images": 0,
       "liens": 0,
-      "mots": 240
+      "mots": 248
     },
     {
       "ordre": 8,
@@ -79,7 +79,7 @@
       "hauteur": 135,
       "images": 0,
       "liens": 1,
-      "mots": 20
+      "mots": 28
     },
     {
       "ordre": 9,
@@ -115,38 +115,30 @@
     },
     {
       "ordre": 13,
-      "titre": "Cinq façons de travailler ensemble, selon votre besoin",
-      "hauteur": 699,
-      "images": 5,
-      "liens": 5,
-      "mots": 141
+      "titre": "Six façons de travailler ensemble, selon votre besoin",
+      "hauteur": 851,
+      "images": 7,
+      "liens": 7,
+      "mots": 137
     },
     {
       "ordre": 14,
       "titre": "Nos références",
       "hauteur": 711,
-      "images": 5,
-      "liens": 6,
-      "mots": 118
+      "images": 16,
+      "liens": 9,
+      "mots": 161
     },
     {
       "ordre": 15,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 536,
+      "hauteur": 829,
       "images": 0,
-      "liens": 0,
-      "mots": 97
+      "liens": 1,
+      "mots": 116
     },
     {
       "ordre": 16,
-      "titre": "Ils nous ont confié une mission comparable",
-      "hauteur": 578,
-      "images": 4,
-      "liens": 5,
-      "mots": 72
-    },
-    {
-      "ordre": 17,
       "titre": "Besoin d'arrêter de jeter des pièces encore bonnes, et de voir venir celles qui lâchent ?",
       "hauteur": 1012,
       "images": 0,

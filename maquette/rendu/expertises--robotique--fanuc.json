@@ -4,10 +4,10 @@
   "verdict": "rendue",
   "h1Attendu": "Fanuc robotique : remettre la cellule en cycle, pas seulement le robot en route",
   "h1Rendu": "Fanuc robotique : remettre la cellule en cycle, pas seulement le robot en route",
-  "nbSections": 16,
-  "hauteurTotale": 9126,
+  "nbSections": 15,
+  "hauteurTotale": 9102,
   "motsAnnonces": 1381,
-  "motsRendus": 1500,
+  "motsRendus": 1520,
   "sections": [
     {
       "ordre": 0,
@@ -15,15 +15,15 @@
       "hauteur": 708,
       "images": 0,
       "liens": 1,
-      "mots": 105
+      "mots": 113
     },
     {
       "ordre": 1,
       "titre": null,
-      "hauteur": 155,
+      "hauteur": 176,
       "images": 0,
       "liens": 0,
-      "mots": 14
+      "mots": 25
     },
     {
       "ordre": 2,
@@ -63,7 +63,7 @@
       "hauteur": 135,
       "images": 0,
       "liens": 1,
-      "mots": 17
+      "mots": 25
     },
     {
       "ordre": 7,
@@ -79,7 +79,7 @@
       "hauteur": 625,
       "images": 0,
       "liens": 0,
-      "mots": 85
+      "mots": 93
     },
     {
       "ordre": 9,
@@ -91,11 +91,11 @@
     },
     {
       "ordre": 10,
-      "titre": "Cinq façons de travailler ensemble, selon votre besoin",
-      "hauteur": 699,
-      "images": 5,
-      "liens": 5,
-      "mots": 141
+      "titre": "Six façons de travailler ensemble, selon votre besoin",
+      "hauteur": 851,
+      "images": 7,
+      "liens": 7,
+      "mots": 137
     },
     {
       "ordre": 11,
@@ -109,28 +109,20 @@
       "ordre": 12,
       "titre": "Nos références",
       "hauteur": 822,
-      "images": 5,
-      "liens": 6,
-      "mots": 177
+      "images": 14,
+      "liens": 8,
+      "mots": 203
     },
     {
       "ordre": 13,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 521,
+      "hauteur": 880,
       "images": 0,
-      "liens": 0,
-      "mots": 90
+      "liens": 1,
+      "mots": 123
     },
     {
       "ordre": 14,
-      "titre": "Ils nous ont confié une mission comparable",
-      "hauteur": 557,
-      "images": 4,
-      "liens": 5,
-      "mots": 70
-    },
-    {
-      "ordre": 15,
       "titre": "Besoin que votre parc Fanuc tienne sa cadence toute l'année au lieu de décrocher par paliers ?",
       "hauteur": 1012,
       "images": 0,

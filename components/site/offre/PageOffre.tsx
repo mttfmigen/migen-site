@@ -454,8 +454,11 @@ export default function PageOffre({
             Une page n'en porte qu'un : `autres` ou `pagesLiees`, jamais les
             deux. Voir `PagesLiees.tsx` (ajouté le 07/10 pour
             `/offres/residence/prestataire-ou-salarie/`). */}
-        {contenu.pagesLiees?.length ? (
-          <PagesLiees pages={contenu.pagesLiees} />
+        {contenu.pagesLiees?.length && contenu.pagesLieesTitre ? (
+          <PagesLiees
+            pages={contenu.pagesLiees}
+            titre={contenu.pagesLieesTitre}
+          />
         ) : null}
 
         {/* -------------------------------------- 16. Réalisations liées */}

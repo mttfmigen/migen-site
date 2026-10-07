@@ -5,9 +5,9 @@
   "h1Attendu": "Niveaux de maintenance",
   "h1Rendu": "Niveaux de maintenance",
   "nbSections": 5,
-  "hauteurTotale": 8359,
+  "hauteurTotale": 8447,
   "motsAnnonces": 1990,
-  "motsRendus": 2028,
+  "motsRendus": 2048,
   "sections": [
     {
       "ordre": 0,
@@ -23,12 +23,12 @@
       "hauteur": 5323,
       "images": 0,
       "liens": 19,
-      "mots": 1562
+      "mots": 1567
     },
     {
       "ordre": 2,
       "titre": "Vos questions, nos réponses",
-      "hauteur": 778,
+      "hauteur": 866,
       "images": 0,
       "liens": 0,
       "mots": 138

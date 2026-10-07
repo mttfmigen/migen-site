@@ -5,9 +5,9 @@
   "h1Attendu": "Salaire automaticien",
   "h1Rendu": "Salaire automaticien",
   "nbSections": 10,
-  "hauteurTotale": 8271,
+  "hauteurTotale": 8428,
   "motsAnnonces": 1672,
-  "motsRendus": 1698,
+  "motsRendus": 1711,
   "sections": [
     {
       "ordre": 0,
@@ -68,10 +68,10 @@
     {
       "ordre": 7,
       "titre": "Questions fréquentes",
-      "hauteur": 665,
+      "hauteur": 822,
       "images": 0,
       "liens": 1,
-      "mots": 119
+      "mots": 117
     },
     {
       "ordre": 8,

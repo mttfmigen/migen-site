@@ -5,9 +5,9 @@
   "h1Attendu": "IA maintenance : ce qui change vraiment",
   "h1Rendu": "IA maintenance : ce qui change vraiment",
   "nbSections": 5,
-  "hauteurTotale": 8894,
+  "hauteurTotale": 8982,
   "motsAnnonces": 2048,
-  "motsRendus": 2105,
+  "motsRendus": 2120,
   "sections": [
     {
       "ordre": 0,
@@ -28,7 +28,7 @@
     {
       "ordre": 2,
       "titre": "Vos questions, nos réponses",
-      "hauteur": 778,
+      "hauteur": 866,
       "images": 0,
       "liens": 0,
       "mots": 133

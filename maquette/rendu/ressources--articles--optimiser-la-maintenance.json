@@ -5,9 +5,9 @@
   "h1Attendu": "Optimisation de la maintenance",
   "h1Rendu": "Optimisation de la maintenance",
   "nbSections": 5,
-  "hauteurTotale": 8080,
+  "hauteurTotale": 8168,
   "motsAnnonces": 1819,
-  "motsRendus": 1904,
+  "motsRendus": 1919,
   "sections": [
     {
       "ordre": 0,
@@ -28,7 +28,7 @@
     {
       "ordre": 2,
       "titre": "Vos questions, nos réponses",
-      "hauteur": 727,
+      "hauteur": 815,
       "images": 0,
       "liens": 0,
       "mots": 109

@@ -5,9 +5,9 @@
   "h1Attendu": "Retrofit ou remplacement",
   "h1Rendu": "Retrofit ou remplacement",
   "nbSections": 5,
-  "hauteurTotale": 9233,
+  "hauteurTotale": 9321,
   "motsAnnonces": 2319,
-  "motsRendus": 2365,
+  "motsRendus": 2380,
   "sections": [
     {
       "ordre": 0,
@@ -28,7 +28,7 @@
     {
       "ordre": 2,
       "titre": "Vos questions, nos réponses",
-      "hauteur": 727,
+      "hauteur": 815,
       "images": 0,
       "liens": 0,
       "mots": 111

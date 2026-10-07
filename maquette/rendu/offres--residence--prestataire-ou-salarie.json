@@ -4,10 +4,10 @@
   "verdict": "rendue-sans-titre",
   "h1Attendu": "Prestataire ou salarié : le comparatif honnête",
   "h1Rendu": "",
-  "nbSections": 18,
-  "hauteurTotale": 8827,
+  "nbSections": 17,
+  "hauteurTotale": 8726,
   "motsAnnonces": 2155,
-  "motsRendus": 1419,
+  "motsRendus": 1394,
   "sections": [
     {
       "ordre": 0,
@@ -23,7 +23,7 @@
       "hauteur": 197,
       "images": 0,
       "liens": 0,
-      "mots": 30
+      "mots": 29
     },
     {
       "ordre": 2,
@@ -109,9 +109,9 @@
       "ordre": 12,
       "titre": "Nos références",
       "hauteur": 838,
-      "images": 6,
-      "liens": 7,
-      "mots": 218
+      "images": 10,
+      "liens": 9,
+      "mots": 247
     },
     {
       "ordre": 13,
@@ -124,14 +124,14 @@
     {
       "ordre": 14,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 773,
+      "hauteur": 1250,
       "images": 0,
-      "liens": 0,
-      "mots": 145
+      "liens": 1,
+      "mots": 167
     },
     {
       "ordre": 15,
-      "titre": "Les pages qui complètent celle-ci",
+      "titre": "Les offres et prestations voisines",
       "hauteur": 696,
       "images": 0,
       "liens": 6,
@@ -139,14 +139,6 @@
     },
     {
       "ordre": 16,
-      "titre": "Ils nous ont confié une mission comparable",
-      "hauteur": 578,
-      "images": 4,
-      "liens": 5,
-      "mots": 75
-    },
-    {
-      "ordre": 17,
       "titre": null,
       "hauteur": 964,
       "images": 0,

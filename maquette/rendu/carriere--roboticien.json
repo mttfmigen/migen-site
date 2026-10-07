@@ -5,9 +5,9 @@
   "h1Attendu": "Roboticien",
   "h1Rendu": "Roboticien",
   "nbSections": 14,
-  "hauteurTotale": 10556,
+  "hauteurTotale": 10727,
   "motsAnnonces": 1662,
-  "motsRendus": 1832,
+  "motsRendus": 1845,
   "sections": [
     {
       "ordre": 0,
@@ -100,10 +100,10 @@
     {
       "ordre": 11,
       "titre": "Questions fréquentes",
-      "hauteur": 665,
+      "hauteur": 837,
       "images": 0,
       "liens": 1,
-      "mots": 104
+      "mots": 102
     },
     {
       "ordre": 12,

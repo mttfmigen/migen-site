@@ -4,10 +4,10 @@
   "verdict": "rendue",
   "h1Attendu": "Maintenance industrielle en Gironde",
   "h1Rendu": "Maintenance industrielle en Gironde",
-  "nbSections": 19,
-  "hauteurTotale": 9908,
+  "nbSections": 18,
+  "hauteurTotale": 9309,
   "motsAnnonces": 1252,
-  "motsRendus": 1631,
+  "motsRendus": 1580,
   "sections": [
     {
       "ordre": 0,
@@ -54,8 +54,8 @@
       "titre": "Gironde : les industries que nos techniciens connaissent déjà",
       "hauteur": 784,
       "images": 1,
-      "liens": 10,
-      "mots": 141
+      "liens": 9,
+      "mots": 140
     },
     {
       "ordre": 6,
@@ -117,9 +117,9 @@
       "ordre": 13,
       "titre": "Nos références",
       "hauteur": 733,
-      "images": 5,
-      "liens": 6,
-      "mots": 145
+      "images": 15,
+      "liens": 9,
+      "mots": 186
     },
     {
       "ordre": 14,
@@ -132,29 +132,21 @@
     {
       "ordre": 15,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 521,
+      "hauteur": 814,
       "images": 0,
-      "liens": 0,
-      "mots": 81
+      "liens": 1,
+      "mots": 102
     },
     {
       "ordre": 16,
-      "titre": "Les cinq offres, dans chaque bassin.",
+      "titre": "Les six offres, dans chaque bassin.",
       "hauteur": 648,
       "images": 0,
-      "liens": 5,
-      "mots": 119
+      "liens": 6,
+      "mots": 143
     },
     {
       "ordre": 17,
-      "titre": "Nos références dans des industries comme les vôtres",
-      "hauteur": 892,
-      "images": 8,
-      "liens": 9,
-      "mots": 136
-    },
-    {
-      "ordre": 18,
       "titre": "Besoin de fiabiliser un parc réparti sur plusieurs sites du département ?",
       "hauteur": 1012,
       "images": 0,

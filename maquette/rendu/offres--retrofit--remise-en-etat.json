@@ -4,10 +4,10 @@
   "verdict": "rendue",
   "h1Attendu": "Remise en état machine industrielle",
   "h1Rendu": "Remise en état machine industrielle",
-  "nbSections": 18,
-  "hauteurTotale": 8485,
+  "nbSections": 17,
+  "hauteurTotale": 8239,
   "motsAnnonces": 1155,
-  "motsRendus": 1128,
+  "motsRendus": 1136,
   "sections": [
     {
       "ordre": 0,
@@ -108,10 +108,10 @@
     {
       "ordre": 12,
       "titre": "Nos références",
-      "hauteur": 733,
-      "images": 3,
-      "liens": 4,
-      "mots": 95
+      "hauteur": 736,
+      "images": 13,
+      "liens": 8,
+      "mots": 151
     },
     {
       "ordre": 13,
@@ -124,14 +124,14 @@
     {
       "ordre": 14,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 521,
+      "hauteur": 829,
       "images": 0,
-      "liens": 0,
-      "mots": 95
+      "liens": 1,
+      "mots": 118
     },
     {
       "ordre": 15,
-      "titre": "Les pages qui complètent celle-ci",
+      "titre": "Les offres et prestations voisines",
       "hauteur": 696,
       "images": 0,
       "liens": 6,
@@ -139,14 +139,6 @@
     },
     {
       "ordre": 16,
-      "titre": "Ils nous ont confié une mission comparable",
-      "hauteur": 557,
-      "images": 4,
-      "liens": 5,
-      "mots": 71
-    },
-    {
-      "ordre": 17,
       "titre": "Besoin d'un avis écrit avant d'arbitrer entre réparer et remplacer ?",
       "hauteur": 964,
       "images": 0,

@@ -245,7 +245,7 @@
       }
     ],
     "pastille": "Nos offres",
-    "pagesLieesTitre": "Les pages qui complètent celle-ci",
+    "pagesLieesTitre": "Les offres et prestations voisines",
     "pagesLiees": [
       {
         "titre": "Technicien en résidence",
@@ -282,32 +282,6 @@
         "phrase": "Conception, retrofit et mise en conformité.",
         "href": "/offres/bureau-etudes/",
         "photo": "/assets/web/ph-robots-solaire.jpg"
-      }
-    ],
-    "casLies": [
-      {
-        "url": "/preuves/eriks/",
-        "client": "ERIKS",
-        "titre": "Un responsable maintenance pour traverser la transition",
-        "photo": "/assets/web/x-meuleuse-etau.jpg"
-      },
-      {
-        "url": "/preuves/danone-lignes-de-production/",
-        "client": "Danone (Blédina)",
-        "titre": "Pas un poste sans maintenance, week-end compris",
-        "photo": "/assets/web/x-usine-tours.jpg"
-      },
-      {
-        "url": "/preuves/mccain-belgique/",
-        "client": "McCain",
-        "titre": "Un premier contrat en Belgique, préventif et correctif",
-        "photo": "/assets/web/x-armoire-electrique.jpg"
-      },
-      {
-        "url": "/preuves/autoliv/",
-        "client": "Autoliv",
-        "titre": "Un technicien dédié pour que le parc ne décroche pas",
-        "photo": "/assets/web/x-site-raffinerie.jpg"
       }
     ]
   }

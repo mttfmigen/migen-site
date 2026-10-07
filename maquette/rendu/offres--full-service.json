@@ -4,10 +4,10 @@
   "verdict": "rendue",
   "h1Attendu": "Full service : toute votre maintenance, un seul partenaire",
   "h1Rendu": "Full service : toute votre maintenance, un seul partenaire",
-  "nbSections": 21,
-  "hauteurTotale": 9974,
+  "nbSections": 20,
+  "hauteurTotale": 9878,
   "motsAnnonces": 1360,
-  "motsRendus": 1678,
+  "motsRendus": 1693,
   "sections": [
     {
       "ordre": 0,
@@ -60,10 +60,10 @@
     {
       "ordre": 6,
       "titre": "Chaque type de maintenance entre dans le même contrat",
-      "hauteur": 636,
-      "images": 0,
+      "hauteur": 772,
+      "images": 1,
       "liens": 4,
-      "mots": 71
+      "mots": 67
     },
     {
       "ordre": 7,
@@ -133,9 +133,9 @@
       "ordre": 15,
       "titre": "Nos références",
       "hauteur": 733,
-      "images": 5,
-      "liens": 6,
-      "mots": 125
+      "images": 16,
+      "liens": 9,
+      "mots": 166
     },
     {
       "ordre": 16,
@@ -148,29 +148,21 @@
     {
       "ordre": 17,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 689,
+      "hauteur": 1060,
       "images": 0,
-      "liens": 0,
-      "mots": 113
+      "liens": 1,
+      "mots": 120
     },
     {
       "ordre": 18,
-      "titre": "Les pages qui complètent celle-ci",
-      "hauteur": 696,
+      "titre": "Un autre besoin ? Il a son offre.",
+      "hauteur": 648,
       "images": 0,
       "liens": 6,
-      "mots": 105
+      "mots": 148
     },
     {
       "ordre": 19,
-      "titre": "Ils nous ont confié une mission comparable",
-      "hauteur": 557,
-      "images": 4,
-      "liens": 5,
-      "mots": 72
-    },
-    {
-      "ordre": 20,
       "titre": "Votre maintenance, tenue par une seule équipe. On en parle ?",
       "hauteur": 1012,
       "images": 0,

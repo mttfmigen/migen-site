@@ -5,9 +5,9 @@
   "h1Attendu": "Salaire technicien de maintenance",
   "h1Rendu": "Salaire technicien de maintenance",
   "nbSections": 11,
-  "hauteurTotale": 8885,
+  "hauteurTotale": 9042,
   "motsAnnonces": 1657,
-  "motsRendus": 1776,
+  "motsRendus": 1789,
   "sections": [
     {
       "ordre": 0,
@@ -76,10 +76,10 @@
     {
       "ordre": 8,
       "titre": "Questions fréquentes",
-      "hauteur": 691,
+      "hauteur": 848,
       "images": 0,
       "liens": 1,
-      "mots": 131
+      "mots": 129
     },
     {
       "ordre": 9,

@@ -5,9 +5,9 @@
   "h1Attendu": "Étude de cas TIMESCOPE : un parc de casques de réalité virtuelle tenu dans toute la France",
   "h1Rendu": "Un parc de casques de réalité virtuelle tenu dans toute la France",
   "nbSections": 10,
-  "hauteurTotale": 6430,
+  "hauteurTotale": 6431,
   "motsAnnonces": 698,
-  "motsRendus": 949,
+  "motsRendus": 972,
   "sections": [
     {
       "ordre": 0,
@@ -79,7 +79,7 @@
       "hauteur": 732,
       "images": 0,
       "liens": 0,
-      "mots": 87
+      "mots": 95
     },
     {
       "ordre": 9,

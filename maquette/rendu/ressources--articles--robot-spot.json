@@ -5,9 +5,9 @@
   "h1Attendu": "Robot spot",
   "h1Rendu": "Robot spot",
   "nbSections": 5,
-  "hauteurTotale": 7650,
+  "hauteurTotale": 7738,
   "motsAnnonces": 1589,
-  "motsRendus": 1767,
+  "motsRendus": 1787,
   "sections": [
     {
       "ordre": 0,
@@ -23,12 +23,12 @@
       "hauteur": 4675,
       "images": 0,
       "liens": 11,
-      "mots": 1333
+      "mots": 1338
     },
     {
       "ordre": 2,
       "titre": "Vos questions, nos réponses",
-      "hauteur": 702,
+      "hauteur": 790,
       "images": 0,
       "liens": 0,
       "mots": 91

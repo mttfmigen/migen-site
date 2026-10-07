@@ -5,9 +5,9 @@
   "h1Attendu": "Compétences électromécanicien",
   "h1Rendu": "Compétences électromécanicien",
   "nbSections": 17,
-  "hauteurTotale": 11625,
+  "hauteurTotale": 11782,
   "motsAnnonces": 1843,
-  "motsRendus": 1912,
+  "motsRendus": 1925,
   "sections": [
     {
       "ordre": 0,
@@ -124,10 +124,10 @@
     {
       "ordre": 14,
       "titre": "Questions fréquentes",
-      "hauteur": 665,
+      "hauteur": 822,
       "images": 0,
       "liens": 1,
-      "mots": 104
+      "mots": 102
     },
     {
       "ordre": 15,

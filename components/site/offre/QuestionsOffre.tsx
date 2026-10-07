@@ -42,6 +42,21 @@ const CHAPEAU: CSSProperties = {
   maxWidth: "46ch",
 };
 
+/** La pastille orange de la maquette, relevée sur la capture (classe `scp3`). */
+const BOUTON: CSSProperties = {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: 9,
+  padding: "15px 26px",
+  borderRadius: 999,
+  background: "var(--acc)",
+  color: "#fff",
+  font: "600 15px var(--fb)",
+  whiteSpace: "nowrap",
+  boxShadow: "rgba(255, 124, 60, .9) 0 12px 30px -12px",
+  justifySelf: "start",
+};
+
 const PLI: CSSProperties = {
   ...VERRE,
   borderRadius: 22,
@@ -121,10 +136,16 @@ export default function QuestionsOffre({ section }: ProprietesQuestionsOffre) {
             </div>
             <h2 style={TITRE}>Vos questions avant de nous appeler</h2>
           </div>
-          <p style={CHAPEAU}>
-            Délais, sécurité, qui intervient, comment on démarre : les réponses
-            aux questions que nos clients posent avant de signer.
-          </p>
+          {section.chapeau ? (
+            <p style={CHAPEAU}>{section.chapeau}</p>
+          ) : (
+            // `#mgx-form` est l'ancre du formulaire, celle que porte la
+            // maquette. Le lien n'ouvre rien, il descend sur le panneau déjà
+            // présent dans la page : pas de script, pas de piège au clavier.
+            <a href="#mgx-form" style={BOUTON}>
+              Poser ma question
+            </a>
+          )}
         </div>
         <div
           className="mg-r2"

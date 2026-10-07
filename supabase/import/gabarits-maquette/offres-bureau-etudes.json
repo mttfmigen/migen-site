@@ -299,40 +299,6 @@
         "libelle": "Nos hubs",
         "href": "/implantations/"
       }
-    ],
-    "casLies": [
-      {
-        "url": "/preuves/savoye-migration-automates-norvege/",
-        "aLaUne": "À la une · Savoye, Norvège",
-        "client": "Savoye",
-        "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
-        "resume": "Étude, préparation et migration d’automates sur un site intralogistique en exploitation : deux week-ends, zéro jour de production perdu.",
-        "photo": "/assets/web/ph-robots-solaire.jpg"
-      },
-      {
-        "url": "/preuves/aktid-centre-logistique/",
-        "client": "Aktid",
-        "titre": "Un centre logistique monté en six semaines",
-        "photo": "/assets/web/ph-tuyaux.jpg"
-      },
-      {
-        "url": "/preuves/alstef-group/",
-        "client": "Alstef Group",
-        "titre": "Des chantiers automatisés contrôlés point par point",
-        "photo": "/assets/web/ph-technicien.jpg"
-      },
-      {
-        "url": "/preuves/amazon-centre-logistique/",
-        "client": "Amazon",
-        "titre": "Maintenir un centre logistique qui ne ferme jamais",
-        "photo": "/assets/web/ph-tuyaux.jpg"
-      },
-      {
-        "url": "/preuves/amazon-nouveau-site/",
-        "client": "Amazon",
-        "titre": "Un dispositif rodé, transposé sur un nouveau site",
-        "photo": "/assets/web/team-electric.jpg"
-      }
     ]
   }
 }

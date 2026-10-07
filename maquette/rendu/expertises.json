@@ -4,10 +4,10 @@
   "verdict": "rendue",
   "h1Attendu": "Maintenance des équipements industriels : un seul appel, huit métiers sur votre site",
   "h1Rendu": "Maintenance des équipements industriels : un seul appel, huit métiers sur votre site",
-  "nbSections": 20,
-  "hauteurTotale": 11134,
+  "nbSections": 19,
+  "hauteurTotale": 10928,
   "motsAnnonces": 1619,
-  "motsRendus": 1652,
+  "motsRendus": 1556,
   "sections": [
     {
       "ordre": 0,
@@ -15,7 +15,7 @@
       "hauteur": 708,
       "images": 0,
       "liens": 1,
-      "mots": 97
+      "mots": 105
     },
     {
       "ordre": 1,
@@ -52,16 +52,16 @@
     {
       "ordre": 5,
       "titre": "Les huit domaines techniques que couvrent nos équipes",
-      "hauteur": 1118,
+      "hauteur": 991,
       "images": 0,
       "liens": 8,
-      "mots": 218
+      "mots": 123
     },
     {
       "ordre": 6,
       "titre": "Quel type de maintenance pour quel besoin",
-      "hauteur": 677,
-      "images": 0,
+      "hauteur": 858,
+      "images": 1,
       "liens": 4,
       "mots": 80
     },
@@ -87,7 +87,7 @@
       "hauteur": 559,
       "images": 0,
       "liens": 0,
-      "mots": 163
+      "mots": 171
     },
     {
       "ordre": 10,
@@ -95,7 +95,7 @@
       "hauteur": 135,
       "images": 0,
       "liens": 1,
-      "mots": 19
+      "mots": 27
     },
     {
       "ordre": 11,
@@ -133,36 +133,28 @@
       "ordre": 15,
       "titre": "Nos références",
       "hauteur": 717,
-      "images": 6,
-      "liens": 7,
-      "mots": 139
+      "images": 16,
+      "liens": 9,
+      "mots": 165
     },
     {
       "ordre": 16,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 521,
+      "hauteur": 840,
       "images": 0,
-      "liens": 0,
-      "mots": 87
+      "liens": 1,
+      "mots": 105
     },
     {
       "ordre": 17,
-      "titre": "Les pages qui complètent celle-ci",
+      "titre": "Par où continuer ?",
       "hauteur": 696,
       "images": 0,
       "liens": 6,
-      "mots": 92
+      "mots": 91
     },
     {
       "ordre": 18,
-      "titre": "Ils nous ont confié une mission comparable",
-      "hauteur": 578,
-      "images": 4,
-      "liens": 5,
-      "mots": 68
-    },
-    {
-      "ordre": 19,
       "titre": "Besoin d'un seul interlocuteur pour toute la machine, pas de trois devis contradictoires ?",
       "hauteur": 1012,
       "images": 0,

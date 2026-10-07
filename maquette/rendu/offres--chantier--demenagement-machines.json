@@ -4,10 +4,10 @@
   "verdict": "rendue",
   "h1Attendu": "Déménagement de machines industrielles",
   "h1Rendu": "Déménagement de machines industrielles",
-  "nbSections": 19,
-  "hauteurTotale": 9324,
+  "nbSections": 18,
+  "hauteurTotale": 8733,
   "motsAnnonces": 1114,
-  "motsRendus": 1220,
+  "motsRendus": 1188,
   "sections": [
     {
       "ordre": 0,
@@ -117,9 +117,9 @@
       "ordre": 13,
       "titre": "Nos références",
       "hauteur": 757,
-      "images": 4,
-      "liens": 5,
-      "mots": 111
+      "images": 16,
+      "liens": 9,
+      "mots": 172
     },
     {
       "ordre": 14,
@@ -132,14 +132,14 @@
     {
       "ordre": 15,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 521,
+      "hauteur": 814,
       "images": 0,
-      "liens": 0,
-      "mots": 88
+      "liens": 1,
+      "mots": 108
     },
     {
       "ordre": 16,
-      "titre": "Les pages qui complètent celle-ci",
+      "titre": "Les offres et prestations voisines",
       "hauteur": 696,
       "images": 0,
       "liens": 6,
@@ -147,14 +147,6 @@
     },
     {
       "ordre": 17,
-      "titre": "Ils nous ont confié une mission comparable",
-      "hauteur": 884,
-      "images": 5,
-      "liens": 6,
-      "mots": 113
-    },
-    {
-      "ordre": 18,
       "titre": "Besoin de savoir si votre machine supporte le déplacement ?",
       "hauteur": 964,
       "images": 0,

@@ -4,10 +4,10 @@
   "verdict": "rendue-sans-titre",
   "h1Attendu": "Mise en conformité des machines : fixez le calendrier avant l'inspection",
   "h1Rendu": "",
-  "nbSections": 20,
-  "hauteurTotale": 9115,
+  "nbSections": 19,
+  "hauteurTotale": 8906,
   "motsAnnonces": 1275,
-  "motsRendus": 1237,
+  "motsRendus": 1247,
   "sections": [
     {
       "ordre": 0,
@@ -92,10 +92,10 @@
     {
       "ordre": 10,
       "titre": "Ce que nous garantissons",
-      "hauteur": 599,
+      "hauteur": 624,
       "images": 0,
       "liens": 0,
-      "mots": 78
+      "mots": 86
     },
     {
       "ordre": 11,
@@ -125,9 +125,9 @@
       "ordre": 14,
       "titre": "Nos références",
       "hauteur": 745,
-      "images": 4,
-      "liens": 5,
-      "mots": 123
+      "images": 15,
+      "liens": 9,
+      "mots": 184
     },
     {
       "ordre": 15,
@@ -140,14 +140,14 @@
     {
       "ordre": 16,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 521,
+      "hauteur": 844,
       "images": 0,
-      "liens": 0,
-      "mots": 86
+      "liens": 1,
+      "mots": 103
     },
     {
       "ordre": 17,
-      "titre": "Les pages qui complètent celle-ci",
+      "titre": "Les offres et prestations voisines",
       "hauteur": 696,
       "images": 0,
       "liens": 6,
@@ -155,14 +155,6 @@
     },
     {
       "ordre": 18,
-      "titre": "Ils nous ont confié une mission comparable",
-      "hauteur": 557,
-      "images": 4,
-      "liens": 5,
-      "mots": 76
-    },
-    {
-      "ordre": 19,
       "titre": "Besoin d'un plan d'actions chiffré avant votre prochain contrôle ?",
       "hauteur": 964,
       "images": 0,

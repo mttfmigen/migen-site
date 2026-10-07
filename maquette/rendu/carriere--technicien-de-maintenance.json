@@ -5,9 +5,9 @@
   "h1Attendu": "Technicien de maintenance",
   "h1Rendu": "Technicien de maintenance",
   "nbSections": 16,
-  "hauteurTotale": 10940,
+  "hauteurTotale": 11097,
   "motsAnnonces": 1791,
-  "motsRendus": 1879,
+  "motsRendus": 1892,
   "sections": [
     {
       "ordre": 0,
@@ -116,10 +116,10 @@
     {
       "ordre": 13,
       "titre": "Questions fréquentes (FAQ)",
-      "hauteur": 665,
+      "hauteur": 822,
       "images": 0,
       "liens": 1,
-      "mots": 94
+      "mots": 92
     },
     {
       "ordre": 14,

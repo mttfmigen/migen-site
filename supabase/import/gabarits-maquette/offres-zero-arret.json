@@ -401,32 +401,6 @@
         "libelle": "Nos hubs",
         "href": "/implantations/"
       }
-    ],
-    "casLies": [
-      {
-        "url": "/preuves/aktid-centre-logistique/",
-        "client": "Aktid",
-        "titre": "Un centre logistique monté en six semaines",
-        "photo": "/assets/web/ph-tuyaux.jpg"
-      },
-      {
-        "url": "/preuves/amazon-centre-logistique/",
-        "client": "Amazon",
-        "titre": "Maintenir un centre logistique qui ne ferme jamais",
-        "photo": "/assets/web/ph-tuyaux.jpg"
-      },
-      {
-        "url": "/preuves/amazon-nouveau-site/",
-        "client": "Amazon",
-        "titre": "Un dispositif rodé, transposé sur un nouveau site",
-        "photo": "/assets/web/team-electric.jpg"
-      },
-      {
-        "url": "/preuves/autoliv/",
-        "client": "Autoliv",
-        "titre": "Un technicien dédié pour que le parc ne décroche pas",
-        "photo": "/assets/web/ph-tuyaux.jpg"
-      }
     ]
   }
 }

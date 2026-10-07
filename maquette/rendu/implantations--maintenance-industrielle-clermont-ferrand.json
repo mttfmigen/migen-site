@@ -4,10 +4,10 @@
   "verdict": "rendue",
   "h1Attendu": "Maintenance industrielle à Clermont-Ferrand et dans le Puy-de-Dôme",
   "h1Rendu": "Maintenance industrielle à Clermont-Ferrand et dans le Puy-de-Dôme",
-  "nbSections": 18,
-  "hauteurTotale": 9741,
+  "nbSections": 17,
+  "hauteurTotale": 9361,
   "motsAnnonces": 1178,
-  "motsRendus": 1509,
+  "motsRendus": 1538,
   "sections": [
     {
       "ordre": 0,
@@ -15,7 +15,7 @@
       "hauteur": 756,
       "images": 0,
       "liens": 1,
-      "mots": 127
+      "mots": 135
     },
     {
       "ordre": 1,
@@ -44,18 +44,18 @@
     {
       "ordre": 4,
       "titre": null,
-      "hauteur": 137,
+      "hauteur": 156,
       "images": 0,
       "liens": 1,
-      "mots": 32
+      "mots": 40
     },
     {
       "ordre": 5,
       "titre": "Clermont-Ferrand : les industries que nos techniciens connaissent déjà",
-      "hauteur": 826,
+      "hauteur": 899,
       "images": 1,
-      "liens": 13,
-      "mots": 135
+      "liens": 16,
+      "mots": 141
     },
     {
       "ordre": 6,
@@ -71,15 +71,15 @@
       "hauteur": 559,
       "images": 0,
       "liens": 0,
-      "mots": 152
+      "mots": 160
     },
     {
       "ordre": 8,
       "titre": null,
-      "hauteur": 135,
+      "hauteur": 154,
       "images": 0,
       "liens": 1,
-      "mots": 32
+      "mots": 40
     },
     {
       "ordre": 9,
@@ -92,10 +92,10 @@
     {
       "ordre": 10,
       "titre": "Ce que nous garantissons",
-      "hauteur": 599,
+      "hauteur": 624,
       "images": 0,
       "liens": 0,
-      "mots": 79
+      "mots": 87
     },
     {
       "ordre": 11,
@@ -109,44 +109,36 @@
       "ordre": 12,
       "titre": "Nos références",
       "hauteur": 760,
-      "images": 5,
-      "liens": 6,
-      "mots": 133
+      "images": 15,
+      "liens": 9,
+      "mots": 174
     },
     {
       "ordre": 13,
       "titre": null,
-      "hauteur": 137,
+      "hauteur": 156,
       "images": 0,
       "liens": 1,
-      "mots": 32
+      "mots": 40
     },
     {
       "ordre": 14,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 536,
+      "hauteur": 895,
       "images": 0,
-      "liens": 0,
-      "mots": 98
+      "liens": 1,
+      "mots": 140
     },
     {
       "ordre": 15,
-      "titre": "Les cinq offres, dans chaque bassin.",
+      "titre": "Les six offres, dans chaque bassin.",
       "hauteur": 648,
       "images": 0,
-      "liens": 5,
-      "mots": 119
+      "liens": 6,
+      "mots": 143
     },
     {
       "ordre": 16,
-      "titre": "Nos références dans des industries comme les vôtres",
-      "hauteur": 892,
-      "images": 8,
-      "liens": 9,
-      "mots": 132
-    },
-    {
-      "ordre": 17,
       "titre": "Besoin de préparer vos équipements avant la prochaine saison ?",
       "hauteur": 1012,
       "images": 0,

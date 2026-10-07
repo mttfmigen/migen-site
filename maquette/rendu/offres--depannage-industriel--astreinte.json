@@ -4,10 +4,10 @@
   "verdict": "rendue-sans-titre",
   "h1Attendu": "Astreinte de maintenance, 24 heures sur 24",
   "h1Rendu": "",
-  "nbSections": 17,
-  "hauteurTotale": 8256,
+  "nbSections": 16,
+  "hauteurTotale": 8050,
   "motsAnnonces": 1427,
-  "motsRendus": 1285,
+  "motsRendus": 1294,
   "sections": [
     {
       "ordre": 0,
@@ -20,10 +20,10 @@
     {
       "ordre": 1,
       "titre": null,
-      "hauteur": 176,
+      "hauteur": 204,
       "images": 0,
       "liens": 0,
-      "mots": 30
+      "mots": 44
     },
     {
       "ordre": 2,
@@ -63,7 +63,7 @@
       "hauteur": 559,
       "images": 0,
       "liens": 0,
-      "mots": 181
+      "mots": 189
     },
     {
       "ordre": 7,
@@ -101,9 +101,9 @@
       "ordre": 11,
       "titre": "Nos références",
       "hauteur": 816,
-      "images": 6,
-      "liens": 7,
-      "mots": 209
+      "images": 10,
+      "liens": 9,
+      "mots": 234
     },
     {
       "ordre": 12,
@@ -116,14 +116,14 @@
     {
       "ordre": 13,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 536,
+      "hauteur": 880,
       "images": 0,
-      "liens": 0,
-      "mots": 91
+      "liens": 1,
+      "mots": 125
     },
     {
       "ordre": 14,
-      "titre": "Les pages qui complètent celle-ci",
+      "titre": "Les offres et prestations voisines",
       "hauteur": 696,
       "images": 0,
       "liens": 6,
@@ -131,14 +131,6 @@
     },
     {
       "ordre": 15,
-      "titre": "Ils nous ont confié une mission comparable",
-      "hauteur": 578,
-      "images": 4,
-      "liens": 5,
-      "mots": 72
-    },
-    {
-      "ordre": 16,
       "titre": null,
       "hauteur": 964,
       "images": 0,

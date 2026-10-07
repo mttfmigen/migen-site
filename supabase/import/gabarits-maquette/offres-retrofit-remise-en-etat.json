@@ -258,31 +258,6 @@
         "photo": "/assets/web/ph-robots-solaire.jpg"
       }
     ],
-    "casLies": [
-      {
-        "url": "/preuves/vpk/",
-        "client": "VPK",
-        "titre": "Une usine de carton en 3x8, un technicien qui tient la cadence",
-        "photo": "/assets/web/ph-tuyaux.jpg"
-      },
-      {
-        "url": "/preuves/aktid-centre-logistique/",
-        "client": "Aktid",
-        "titre": "Un centre logistique monté en six semaines",
-        "photo": "/assets/web/ph-robots-solaire.jpg"
-      },
-      {
-        "url": "/preuves/tournaire/",
-        "client": "Tournaire",
-        "titre": "",
-        "photo": "/assets/web/team-grind-close.jpg"
-      },
-      {
-        "url": "/preuves/eriks/",
-        "client": "ERIKS",
-        "titre": "Un responsable maintenance pour traverser la transition",
-        "photo": "/assets/web/ph-technicien.jpg"
-      }
-    ]
+    "pagesLieesTitre": "Les offres et prestations voisines"
   }
 }

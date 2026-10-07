@@ -180,6 +180,16 @@ export interface SectionPreuves {
 export interface SectionObjections {
   type: "objections";
   titre?: string;
+  /**
+   * Le paragraphe à droite du titre, à la place du bouton.
+   *
+   * MESURÉ LE 07/10 sur les 210 captures : la maquette porte ce bloc FAQ sur
+   * 109 pages, et 108 d'entre elles affichent le bouton « Poser ma question ».
+   * UNE SEULE, `/bureau-etudes/`, porte un paragraphe à la place. Le texte
+   * était écrit en dur dans le composant, donc inventé sur 108 pages : il
+   * descend dans la donnée, et le bouton devient le cas normal.
+   */
+  chapeau?: string;
   questions: Question[];
 }
 

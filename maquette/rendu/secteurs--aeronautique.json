@@ -4,10 +4,10 @@
   "verdict": "rendue-h1-different",
   "h1Attendu": "Maintenance dans l'industrie aéronautique",
   "h1Rendu": "Zéro défaut toléré. Zéro retard accepté.",
-  "nbSections": 19,
-  "hauteurTotale": 10051,
+  "nbSections": 18,
+  "hauteurTotale": 9955,
   "motsAnnonces": 1297,
-  "motsRendus": 1600,
+  "motsRendus": 1615,
   "sections": [
     {
       "ordre": 0,
@@ -15,7 +15,7 @@
       "hauteur": 756,
       "images": 0,
       "liens": 1,
-      "mots": 126
+      "mots": 134
     },
     {
       "ordre": 1,
@@ -47,7 +47,7 @@
       "hauteur": 156,
       "images": 0,
       "liens": 1,
-      "mots": 36
+      "mots": 44
     },
     {
       "ordre": 5,
@@ -71,7 +71,7 @@
       "hauteur": 154,
       "images": 0,
       "liens": 1,
-      "mots": 36
+      "mots": 44
     },
     {
       "ordre": 8,
@@ -107,11 +107,11 @@
     },
     {
       "ordre": 12,
-      "titre": "Cinq façons de travailler ensemble, selon votre besoin",
-      "hauteur": 699,
-      "images": 5,
-      "liens": 5,
-      "mots": 141
+      "titre": "Six façons de travailler ensemble, selon votre besoin",
+      "hauteur": 851,
+      "images": 7,
+      "liens": 7,
+      "mots": 137
     },
     {
       "ordre": 13,
@@ -125,9 +125,9 @@
       "ordre": 14,
       "titre": "Nos références",
       "hauteur": 742,
-      "images": 5,
-      "liens": 6,
-      "mots": 123
+      "images": 16,
+      "liens": 9,
+      "mots": 165
     },
     {
       "ordre": 15,
@@ -135,26 +135,18 @@
       "hauteur": 156,
       "images": 0,
       "liens": 1,
-      "mots": 36
+      "mots": 44
     },
     {
       "ordre": 16,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 521,
+      "hauteur": 829,
       "images": 0,
-      "liens": 0,
-      "mots": 84
+      "liens": 1,
+      "mots": 100
     },
     {
       "ordre": 17,
-      "titre": "Ils nous ont confié une mission comparable",
-      "hauteur": 557,
-      "images": 4,
-      "liens": 5,
-      "mots": 71
-    },
-    {
-      "ordre": 18,
       "titre": "Besoin d'un entretien de vos moyens à la hauteur de ce que vous fabriquez ?",
       "hauteur": 1012,
       "images": 0,

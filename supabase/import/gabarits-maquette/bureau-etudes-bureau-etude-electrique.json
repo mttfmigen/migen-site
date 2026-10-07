@@ -291,6 +291,7 @@
         "phrase": "La maintenance en abonnement, au forfait mensuel.",
         "href": "/offres/zero-arret/"
       }
-    ]
+    ],
+    "pagesLieesTitre": "Les offres et prestations voisines"
   }
 }

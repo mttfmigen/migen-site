@@ -5,9 +5,9 @@
   "h1Attendu": "Automaticien",
   "h1Rendu": "Automaticien",
   "nbSections": 13,
-  "hauteurTotale": 9856,
+  "hauteurTotale": 10027,
   "motsAnnonces": 1661,
-  "motsRendus": 1783,
+  "motsRendus": 1796,
   "sections": [
     {
       "ordre": 0,
@@ -92,10 +92,10 @@
     {
       "ordre": 10,
       "titre": "Questions fréquentes",
-      "hauteur": 691,
+      "hauteur": 862,
       "images": 0,
       "liens": 1,
-      "mots": 113
+      "mots": 111
     },
     {
       "ordre": 11,

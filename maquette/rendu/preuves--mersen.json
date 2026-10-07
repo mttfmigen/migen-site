@@ -5,9 +5,9 @@
   "h1Attendu": "Étude de cas MERSEN : un automaticien SIEMENS pour démarrer une ligne neuve",
   "h1Rendu": "Un automaticien SIEMENS pour démarrer une ligne neuve",
   "nbSections": 10,
-  "hauteurTotale": 6128,
+  "hauteurTotale": 6186,
   "motsAnnonces": 677,
-  "motsRendus": 913,
+  "motsRendus": 957,
   "sections": [
     {
       "ordre": 0,
@@ -68,10 +68,10 @@
     {
       "ordre": 7,
       "titre": "Chiffres clés",
-      "hauteur": 201,
+      "hauteur": 259,
       "images": 0,
       "liens": 0,
-      "mots": 35
+      "mots": 56
     },
     {
       "ordre": 8,
@@ -79,7 +79,7 @@
       "hauteur": 732,
       "images": 0,
       "liens": 0,
-      "mots": 115
+      "mots": 123
     },
     {
       "ordre": 9,

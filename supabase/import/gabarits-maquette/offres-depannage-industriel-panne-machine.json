@@ -272,25 +272,6 @@
         "photo": "/assets/web/ph-robots-solaire.jpg"
       }
     ],
-    "casLies": [
-      {
-        "url": "/preuves/ogf-arret-estival/",
-        "client": "OGF",
-        "titre": "Un été entier sans trou dans la maintenance",
-        "photo": "/assets/web/mq-12eb6f1b9e2b.jpg"
-      },
-      {
-        "url": "/preuves/amazon-nouveau-site/",
-        "client": "Amazon",
-        "titre": "Un dispositif rodé, transposé sur un nouveau site",
-        "photo": "/assets/web/mq-a58d2d5d40d2.jpg"
-      },
-      {
-        "url": "/preuves/amazon-centre-logistique/",
-        "client": "Amazon",
-        "titre": "Maintenir un centre logistique qui ne ferme jamais",
-        "photo": "/assets/web/mq-cb2571890bea.jpg"
-      }
-    ]
+    "pagesLieesTitre": "Les offres et prestations voisines"
   }
 }

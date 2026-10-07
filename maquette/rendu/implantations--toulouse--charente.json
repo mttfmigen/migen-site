@@ -4,10 +4,10 @@
   "verdict": "rendue",
   "h1Attendu": "Maintenance industrielle en Charente",
   "h1Rendu": "Maintenance industrielle en Charente",
-  "nbSections": 19,
-  "hauteurTotale": 9759,
+  "nbSections": 18,
+  "hauteurTotale": 9180,
   "motsAnnonces": 1147,
-  "motsRendus": 1467,
+  "motsRendus": 1421,
   "sections": [
     {
       "ordre": 0,
@@ -54,8 +54,8 @@
       "titre": "Charente : les industries que nos techniciens connaissent déjà",
       "hauteur": 781,
       "images": 1,
-      "liens": 10,
-      "mots": 136
+      "liens": 9,
+      "mots": 135
     },
     {
       "ordre": 6,
@@ -117,9 +117,9 @@
       "ordre": 13,
       "titre": "Nos références",
       "hauteur": 714,
-      "images": 5,
-      "liens": 6,
-      "mots": 139
+      "images": 15,
+      "liens": 9,
+      "mots": 182
     },
     {
       "ordre": 14,
@@ -132,29 +132,21 @@
     {
       "ordre": 15,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 605,
+      "hauteur": 896,
       "images": 0,
-      "liens": 0,
-      "mots": 93
+      "liens": 1,
+      "mots": 115
     },
     {
       "ordre": 16,
-      "titre": "Les cinq offres, dans chaque bassin.",
+      "titre": "Les six offres, dans chaque bassin.",
       "hauteur": 648,
       "images": 0,
-      "liens": 5,
-      "mots": 119
+      "liens": 6,
+      "mots": 143
     },
     {
       "ordre": 17,
-      "titre": "Nos références dans des industries comme les vôtres",
-      "hauteur": 871,
-      "images": 8,
-      "liens": 9,
-      "mots": 134
-    },
-    {
-      "ordre": 18,
       "titre": "Besoin de savoir quels équipements vous lâcheront en premier cette année ?",
       "hauteur": 1012,
       "images": 0,

@@ -5,9 +5,9 @@
   "h1Attendu": "5S industrie",
   "h1Rendu": "5S industrie",
   "nbSections": 5,
-  "hauteurTotale": 10440,
+  "hauteurTotale": 10528,
   "motsAnnonces": 2624,
-  "motsRendus": 2707,
+  "motsRendus": 2722,
   "sections": [
     {
       "ordre": 0,
@@ -28,7 +28,7 @@
     {
       "ordre": 2,
       "titre": "Vos questions, nos réponses",
-      "hauteur": 753,
+      "hauteur": 841,
       "images": 0,
       "liens": 0,
       "mots": 119

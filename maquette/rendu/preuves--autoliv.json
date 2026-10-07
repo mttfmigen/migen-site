@@ -7,7 +7,7 @@
   "nbSections": 10,
   "hauteurTotale": 5935,
   "motsAnnonces": 592,
-  "motsRendus": 842,
+  "motsRendus": 865,
   "sections": [
     {
       "ordre": 0,
@@ -79,7 +79,7 @@
       "hauteur": 732,
       "images": 0,
       "liens": 0,
-      "mots": 119
+      "mots": 127
     },
     {
       "ordre": 9,

@@ -265,31 +265,6 @@
         "photo": "/assets/web/ph-robots-solaire.jpg"
       }
     ],
-    "casLies": [
-      {
-        "url": "/preuves/dimomaint/",
-        "client": "DimoMaint",
-        "titre": "La GMAO planifie, nos techniciens interviennent",
-        "photo": "/assets/web/x-duo-hall.jpg"
-      },
-      {
-        "url": "/preuves/vpk/",
-        "client": "VPK",
-        "titre": "Une usine de carton en 3x8, un technicien qui tient la cadence",
-        "photo": "/assets/web/mq-15bdb671c93a.jpg"
-      },
-      {
-        "url": "/preuves/jacquet-brossard/",
-        "client": "Jacquet Brossard",
-        "titre": "Une ligne de pain de mie suivie à chaque poste",
-        "photo": "/assets/web/x-usine-tours.jpg"
-      },
-      {
-        "url": "/preuves/mersen/",
-        "client": "Mersen",
-        "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
-        "photo": "/assets/web/x-meulage-etincelles.jpg"
-      }
-    ]
+    "pagesLieesTitre": "Les offres et prestations voisines"
   }
 }

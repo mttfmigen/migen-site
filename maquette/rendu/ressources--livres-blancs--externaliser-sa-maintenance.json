@@ -5,9 +5,9 @@
   "h1Attendu": "Livre blanc : externaliser sa maintenance sans perdre la main",
   "h1Rendu": "Livre blanc : externaliser sa maintenance sans perdre la main",
   "nbSections": 5,
-  "hauteurTotale": 7129,
+  "hauteurTotale": 7217,
   "motsAnnonces": 1442,
-  "motsRendus": 1534,
+  "motsRendus": 1549,
   "sections": [
     {
       "ordre": 0,
@@ -28,7 +28,7 @@
     {
       "ordre": 2,
       "titre": "Vos questions, nos réponses",
-      "hauteur": 702,
+      "hauteur": 790,
       "images": 0,
       "liens": 0,
       "mots": 100

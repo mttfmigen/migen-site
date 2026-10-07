@@ -4,10 +4,10 @@
   "verdict": "rendue-h1-different",
   "h1Attendu": "Maintenance dans l'industrie lourde",
   "h1Rendu": "Des équipements lourds. Une remise en route rapide.",
-  "nbSections": 18,
-  "hauteurTotale": 9205,
+  "nbSections": 17,
+  "hauteurTotale": 9166,
   "motsAnnonces": 1305,
-  "motsRendus": 1533,
+  "motsRendus": 1547,
   "sections": [
     {
       "ordre": 0,
@@ -15,7 +15,7 @@
       "hauteur": 756,
       "images": 0,
       "liens": 1,
-      "mots": 111
+      "mots": 119
     },
     {
       "ordre": 1,
@@ -44,10 +44,10 @@
     {
       "ordre": 4,
       "titre": null,
-      "hauteur": 137,
+      "hauteur": 156,
       "images": 0,
       "liens": 1,
-      "mots": 29
+      "mots": 37
     },
     {
       "ordre": 5,
@@ -63,15 +63,15 @@
       "hauteur": 559,
       "images": 0,
       "liens": 0,
-      "mots": 271
+      "mots": 279
     },
     {
       "ordre": 7,
       "titre": null,
-      "hauteur": 135,
+      "hauteur": 154,
       "images": 0,
       "liens": 1,
-      "mots": 29
+      "mots": 37
     },
     {
       "ordre": 8,
@@ -107,46 +107,38 @@
     },
     {
       "ordre": 12,
-      "titre": "Cinq façons de travailler ensemble, selon votre besoin",
-      "hauteur": 699,
-      "images": 5,
-      "liens": 5,
-      "mots": 141
+      "titre": "Six façons de travailler ensemble, selon votre besoin",
+      "hauteur": 851,
+      "images": 7,
+      "liens": 7,
+      "mots": 137
     },
     {
       "ordre": 13,
       "titre": "Nos références",
       "hauteur": 717,
-      "images": 6,
-      "liens": 7,
-      "mots": 133
+      "images": 15,
+      "liens": 9,
+      "mots": 168
     },
     {
       "ordre": 14,
       "titre": null,
-      "hauteur": 137,
+      "hauteur": 156,
       "images": 0,
       "liens": 1,
-      "mots": 29
+      "mots": 37
     },
     {
       "ordre": 15,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 536,
+      "hauteur": 844,
       "images": 0,
-      "liens": 0,
-      "mots": 89
+      "liens": 1,
+      "mots": 106
     },
     {
       "ordre": 16,
-      "titre": "Ils nous ont confié une mission comparable",
-      "hauteur": 557,
-      "images": 4,
-      "liens": 5,
-      "mots": 74
-    },
-    {
-      "ordre": 17,
       "titre": "Besoin d'un prestataire qui prépare avant d'arriver, plutôt que d'improviser sur place ?",
       "hauteur": 1012,
       "images": 0,

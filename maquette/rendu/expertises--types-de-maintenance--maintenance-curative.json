@@ -4,10 +4,10 @@
   "verdict": "rendue",
   "h1Attendu": "Maintenance curative : remettre la ligne en route, puis s’assurer qu’elle y reste",
   "h1Rendu": "Maintenance curative : remettre la ligne en route, puis s’assurer qu’elle y reste",
-  "nbSections": 17,
-  "hauteurTotale": 10297,
+  "nbSections": 16,
+  "hauteurTotale": 10164,
   "motsAnnonces": 1647,
-  "motsRendus": 1751,
+  "motsRendus": 1741,
   "sections": [
     {
       "ordre": 0,
@@ -15,7 +15,7 @@
       "hauteur": 708,
       "images": 0,
       "liens": 1,
-      "mots": 103
+      "mots": 111
     },
     {
       "ordre": 1,
@@ -63,7 +63,7 @@
       "hauteur": 599,
       "images": 0,
       "liens": 0,
-      "mots": 192
+      "mots": 200
     },
     {
       "ordre": 7,
@@ -71,7 +71,7 @@
       "hauteur": 135,
       "images": 0,
       "liens": 1,
-      "mots": 19
+      "mots": 27
     },
     {
       "ordre": 8,
@@ -107,38 +107,30 @@
     },
     {
       "ordre": 12,
-      "titre": "Cinq façons de travailler ensemble, selon votre besoin",
-      "hauteur": 699,
-      "images": 5,
-      "liens": 5,
-      "mots": 141
+      "titre": "Six façons de travailler ensemble, selon votre besoin",
+      "hauteur": 851,
+      "images": 7,
+      "liens": 7,
+      "mots": 137
     },
     {
       "ordre": 13,
       "titre": "Nos références",
       "hauteur": 736,
-      "images": 6,
-      "liens": 7,
-      "mots": 157
+      "images": 15,
+      "liens": 9,
+      "mots": 184
     },
     {
       "ordre": 14,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 521,
+      "hauteur": 814,
       "images": 0,
-      "liens": 0,
-      "mots": 85
+      "liens": 1,
+      "mots": 97
     },
     {
       "ordre": 15,
-      "titre": "Ils nous ont confié une mission comparable",
-      "hauteur": 578,
-      "images": 4,
-      "liens": 5,
-      "mots": 69
-    },
-    {
-      "ordre": 16,
       "titre": "Besoin de solder une dette technique qui traîne depuis six mois ?",
       "hauteur": 1012,
       "images": 0,

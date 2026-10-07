@@ -5,9 +5,9 @@
   "h1Attendu": "Guide maintenance industrielle",
   "h1Rendu": "Guide maintenance industrielle",
   "nbSections": 11,
-  "hauteurTotale": 8796,
+  "hauteurTotale": 8793,
   "motsAnnonces": 1367,
-  "motsRendus": 1545,
+  "motsRendus": 1550,
   "sections": [
     {
       "ordre": 0,
@@ -20,18 +20,18 @@
     {
       "ordre": 1,
       "titre": "Cinq rayons, un objectif : agir",
-      "hauteur": 7021,
+      "hauteur": 7018,
       "images": 0,
-      "liens": 14,
-      "mots": 1373
+      "liens": 19,
+      "mots": 1378
     },
     {
       "ordre": 2,
       "titre": "Cinq rayons, un objectif : agir",
-      "hauteur": 1010,
+      "hauteur": 968,
       "images": 0,
-      "liens": 0,
-      "mots": 209
+      "liens": 5,
+      "mots": 214
     },
     {
       "ordre": 3,
@@ -76,7 +76,7 @@
     {
       "ordre": 8,
       "titre": "Questions fréquentes",
-      "hauteur": 1437,
+      "hauteur": 1475,
       "images": 0,
       "liens": 3,
       "mots": 301

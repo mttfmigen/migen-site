@@ -4,10 +4,10 @@
   "verdict": "rendue",
   "h1Attendu": "Maintenance industrielle à Dunkerque et sur le littoral",
   "h1Rendu": "Maintenance industrielle à Dunkerque et sur le littoral",
-  "nbSections": 18,
-  "hauteurTotale": 9530,
+  "nbSections": 17,
+  "hauteurTotale": 9040,
   "motsAnnonces": 1086,
-  "motsRendus": 1480,
+  "motsRendus": 1509,
   "sections": [
     {
       "ordre": 0,
@@ -15,7 +15,7 @@
       "hauteur": 708,
       "images": 0,
       "liens": 1,
-      "mots": 129
+      "mots": 137
     },
     {
       "ordre": 1,
@@ -23,7 +23,7 @@
       "hauteur": 176,
       "images": 0,
       "liens": 0,
-      "mots": 15
+      "mots": 31
     },
     {
       "ordre": 2,
@@ -47,15 +47,15 @@
       "hauteur": 137,
       "images": 0,
       "liens": 1,
-      "mots": 28
+      "mots": 36
     },
     {
       "ordre": 5,
       "titre": "Dunkerque : les industries que nos techniciens connaissent déjà",
-      "hauteur": 772,
+      "hauteur": 845,
       "images": 1,
-      "liens": 11,
-      "mots": 111
+      "liens": 14,
+      "mots": 117
     },
     {
       "ordre": 6,
@@ -71,7 +71,7 @@
       "hauteur": 539,
       "images": 0,
       "liens": 0,
-      "mots": 211
+      "mots": 219
     },
     {
       "ordre": 8,
@@ -79,7 +79,7 @@
       "hauteur": 135,
       "images": 0,
       "liens": 1,
-      "mots": 28
+      "mots": 36
     },
     {
       "ordre": 9,
@@ -109,9 +109,9 @@
       "ordre": 12,
       "titre": "Nos références",
       "hauteur": 714,
-      "images": 4,
-      "liens": 5,
-      "mots": 106
+      "images": 15,
+      "liens": 9,
+      "mots": 162
     },
     {
       "ordre": 13,
@@ -119,34 +119,26 @@
       "hauteur": 137,
       "images": 0,
       "liens": 1,
-      "mots": 28
+      "mots": 36
     },
     {
       "ordre": 14,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 536,
+      "hauteur": 844,
       "images": 0,
-      "liens": 0,
-      "mots": 89
+      "liens": 1,
+      "mots": 112
     },
     {
       "ordre": 15,
-      "titre": "Les cinq offres, dans chaque bassin.",
+      "titre": "Les six offres, dans chaque bassin.",
       "hauteur": 648,
       "images": 0,
-      "liens": 5,
-      "mots": 119
+      "liens": 6,
+      "mots": 143
     },
     {
       "ordre": 16,
-      "titre": "Nos références dans des industries comme les vôtres",
-      "hauteur": 871,
-      "images": 8,
-      "liens": 9,
-      "mots": 136
-    },
-    {
-      "ordre": 17,
       "titre": "Besoin de fiabiliser une unité avant le prochain arrêt de campagne ?",
       "hauteur": 1012,
       "images": 0,

@@ -1,32 +1,24 @@
 {
   "url": "/implantations/toulouse/bordeaux/",
   "gabarit": "04 Ville",
-  "verdict": "rendue",
+  "verdict": "rendue-sans-titre",
   "h1Attendu": "Maintenance industrielle à Bordeaux et dans la métropole",
-  "h1Rendu": "Maintenance industrielle à Bordeaux et dans la métropole",
-  "nbSections": 19,
-  "hauteurTotale": 10050,
+  "h1Rendu": "",
+  "nbSections": 14,
+  "hauteurTotale": 5376,
   "motsAnnonces": 1252,
-  "motsRendus": 1591,
+  "motsRendus": 344,
   "sections": [
     {
       "ordre": 0,
       "titre": null,
-      "hauteur": 708,
+      "hauteur": 660,
       "images": 0,
       "liens": 1,
-      "mots": 121
+      "mots": 31
     },
     {
       "ordre": 1,
-      "titre": null,
-      "hauteur": 246,
-      "images": 0,
-      "liens": 0,
-      "mots": 50
-    },
-    {
-      "ordre": 2,
       "titre": null,
       "hauteur": 203,
       "images": 76,
@@ -34,7 +26,7 @@
       "mots": 4
     },
     {
-      "ordre": 3,
+      "ordre": 2,
       "titre": null,
       "hauteur": 463,
       "images": 2,
@@ -42,124 +34,92 @@
       "mots": 68
     },
     {
-      "ordre": 4,
+      "ordre": 3,
       "titre": null,
-      "hauteur": 137,
+      "hauteur": 114,
       "images": 0,
       "liens": 1,
-      "mots": 27
+      "mots": 0
+    },
+    {
+      "ordre": 4,
+      "titre": null,
+      "hauteur": 271,
+      "images": 0,
+      "liens": 0,
+      "mots": 2
     },
     {
       "ordre": 5,
-      "titre": "Bordeaux : les industries que nos techniciens connaissent déjà",
-      "hauteur": 806,
-      "images": 1,
-      "liens": 10,
-      "mots": 143
+      "titre": "Ce que nous faisons, et ce que ça change pour vous",
+      "hauteur": 317,
+      "images": 0,
+      "liens": 0,
+      "mots": 14
     },
     {
       "ordre": 6,
-      "titre": "En pleine vendange, une étiqueteuse en défaut ne se répare pas la semaine suivante.",
-      "hauteur": 612,
+      "titre": null,
+      "hauteur": 112,
       "images": 0,
-      "liens": 0,
-      "mots": 127
+      "liens": 1,
+      "mots": 0
     },
     {
       "ordre": 7,
-      "titre": "Ce que nous faisons, et ce que ça change pour vous",
-      "hauteur": 559,
-      "images": 0,
+      "titre": "Un appel. Un plan. Une ligne qui repart.",
+      "hauteur": 684,
+      "images": 1,
       "liens": 0,
-      "mots": 182
+      "mots": 18
     },
     {
       "ordre": 8,
-      "titre": null,
-      "hauteur": 135,
+      "titre": "Ce que nous garantissons",
+      "hauteur": 348,
       "images": 0,
-      "liens": 1,
-      "mots": 27
+      "liens": 0,
+      "mots": 7
     },
     {
       "ordre": 9,
-      "titre": "Un appel. Un plan. Une ligne qui repart.",
-      "hauteur": 808,
+      "titre": null,
+      "hauteur": 220,
       "images": 0,
       "liens": 1,
-      "mots": 126
+      "mots": 0
     },
     {
       "ordre": 10,
-      "titre": "Ce que nous garantissons",
-      "hauteur": 624,
+      "titre": "Nos références",
+      "hauteur": 258,
       "images": 0,
-      "liens": 0,
-      "mots": 86
+      "liens": 1,
+      "mots": 10
     },
     {
       "ordre": 11,
       "titre": null,
-      "hauteur": 296,
+      "hauteur": 114,
       "images": 0,
       "liens": 1,
-      "mots": 19
+      "mots": 0
     },
     {
       "ordre": 12,
-      "titre": "Les équipements que nous maintenons déjà",
-      "hauteur": 456,
-      "images": 8,
-      "liens": 0,
-      "mots": 27
+      "titre": "Les six offres, dans chaque bassin.",
+      "hauteur": 648,
+      "images": 0,
+      "liens": 6,
+      "mots": 143
     },
     {
       "ordre": 13,
-      "titre": "Nos références",
-      "hauteur": 717,
-      "images": 5,
-      "liens": 6,
-      "mots": 140
-    },
-    {
-      "ordre": 14,
       "titre": null,
-      "hauteur": 137,
-      "images": 0,
-      "liens": 1,
-      "mots": 27
-    },
-    {
-      "ordre": 15,
-      "titre": "Vos questions avant de nous appeler",
-      "hauteur": 590,
+      "hauteur": 964,
       "images": 0,
       "liens": 0,
-      "mots": 87
-    },
-    {
-      "ordre": 16,
-      "titre": "Les cinq offres, dans chaque bassin.",
-      "hauteur": 648,
-      "images": 0,
-      "liens": 5,
-      "mots": 119
-    },
-    {
-      "ordre": 17,
-      "titre": "Nos références dans des industries comme les vôtres",
-      "hauteur": 892,
-      "images": 8,
-      "liens": 9,
-      "mots": 137
-    },
-    {
-      "ordre": 18,
-      "titre": "Besoin de savoir ce que vos arrêts non planifiés coûtent réellement sur une année ?",
-      "hauteur": 1012,
-      "images": 0,
-      "liens": 0,
-      "mots": 74
+      "mots": 47
     }
   ]
 }

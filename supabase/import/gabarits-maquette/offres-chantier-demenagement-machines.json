@@ -261,39 +261,6 @@
         "photo": "/assets/web/ph-robots-solaire.jpg"
       }
     ],
-    "casLies": [
-      {
-        "url": "/preuves/savoye-migration-automates-norvege/",
-        "client": "Savoye",
-        "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
-        "photo": "/assets/maquette/15bdb671c93a.jpg",
-        "aLaUne": "À la une · Savoye, Norvège",
-        "resume": "Étude, préparation et migration d'automates sur un site intralogistique en exploitation : deux week-ends, zéro jour de production perdu."
-      },
-      {
-        "url": "/preuves/bamesa/",
-        "client": "Bamesa",
-        "titre": "La maintenance tient pendant que l'équipe recrute",
-        "photo": "/assets/maquette/17de439bc669.jpg"
-      },
-      {
-        "url": "/preuves/eriks/",
-        "client": "ERIKS",
-        "titre": "Un responsable maintenance pour traverser la transition",
-        "photo": "/assets/maquette/17de439bc669.jpg"
-      },
-      {
-        "url": "/preuves/aktid-centre-logistique/",
-        "client": "Aktid",
-        "titre": "Un centre logistique monté en six semaines",
-        "photo": "/assets/maquette/39276c98747c.jpg"
-      },
-      {
-        "url": "/preuves/salaison-du-maconnais/",
-        "client": "Salaison du Mâconnais",
-        "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
-        "photo": "/assets/maquette/a58d2d5d40d2.jpg"
-      }
-    ]
+    "pagesLieesTitre": "Les offres et prestations voisines"
   }
 }

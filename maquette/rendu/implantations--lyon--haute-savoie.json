@@ -4,10 +4,10 @@
   "verdict": "rendue",
   "h1Attendu": "La maintenance industrielle en Haute-Savoie, de l'Arve au Genevois",
   "h1Rendu": "La maintenance industrielle en Haute-Savoie, de l'Arve au Genevois",
-  "nbSections": 18,
-  "hauteurTotale": 9656,
+  "nbSections": 17,
+  "hauteurTotale": 9118,
   "motsAnnonces": 1340,
-  "motsRendus": 1622,
+  "motsRendus": 1606,
   "sections": [
     {
       "ordre": 0,
@@ -15,7 +15,7 @@
       "hauteur": 731,
       "images": 0,
       "liens": 1,
-      "mots": 137
+      "mots": 145
     },
     {
       "ordre": 1,
@@ -44,10 +44,10 @@
     {
       "ordre": 4,
       "titre": null,
-      "hauteur": 137,
+      "hauteur": 156,
       "images": 0,
       "liens": 1,
-      "mots": 27
+      "mots": 35
     },
     {
       "ordre": 5,
@@ -71,15 +71,15 @@
       "hauteur": 599,
       "images": 0,
       "liens": 0,
-      "mots": 193
+      "mots": 201
     },
     {
       "ordre": 8,
       "titre": null,
-      "hauteur": 135,
+      "hauteur": 154,
       "images": 0,
       "liens": 1,
-      "mots": 27
+      "mots": 35
     },
     {
       "ordre": 9,
@@ -109,44 +109,36 @@
       "ordre": 12,
       "titre": "Nos références",
       "hauteur": 739,
-      "images": 5,
-      "liens": 6,
-      "mots": 141
+      "images": 16,
+      "liens": 9,
+      "mots": 183
     },
     {
       "ordre": 13,
       "titre": null,
-      "hauteur": 137,
+      "hauteur": 156,
       "images": 0,
       "liens": 1,
-      "mots": 27
+      "mots": 35
     },
     {
       "ordre": 14,
       "titre": "Vos questions avant de nous appeler",
-      "hauteur": 620,
+      "hauteur": 896,
       "images": 0,
-      "liens": 0,
-      "mots": 93
+      "liens": 1,
+      "mots": 103
     },
     {
       "ordre": 15,
-      "titre": "Les cinq offres, dans chaque bassin.",
+      "titre": "Les six offres, dans chaque bassin.",
       "hauteur": 648,
       "images": 0,
-      "liens": 5,
-      "mots": 119
+      "liens": 6,
+      "mots": 143
     },
     {
       "ordre": 16,
-      "titre": "Nos références dans des industries comme les vôtres",
-      "hauteur": 871,
-      "images": 8,
-      "liens": 9,
-      "mots": 132
-    },
-    {
-      "ordre": 17,
       "titre": "Besoin d'un prestataire de maintenance qui tienne un parc de décolletage comme une ligne automatisée ?",
       "hauteur": 1012,
       "images": 0,

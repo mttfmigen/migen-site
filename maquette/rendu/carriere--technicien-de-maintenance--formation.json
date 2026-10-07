@@ -5,9 +5,9 @@
   "h1Attendu": "Formation technicien de maintenance",
   "h1Rendu": "Formation technicien de maintenance",
   "nbSections": 22,
-  "hauteurTotale": 14509,
+  "hauteurTotale": 14666,
   "motsAnnonces": 2548,
-  "motsRendus": 2619,
+  "motsRendus": 2632,
   "sections": [
     {
       "ordre": 0,
@@ -164,10 +164,10 @@
     {
       "ordre": 19,
       "titre": "Questions fréquentes",
-      "hauteur": 640,
+      "hauteur": 797,
       "images": 0,
       "liens": 1,
-      "mots": 95
+      "mots": 93
     },
     {
       "ordre": 20,
