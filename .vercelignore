@@ -1,0 +1,14 @@
+# Ce que Vercel n'a aucune raison de recevoir.
+#
+# `maquette/` pèse 85 Mo (l'application autonome, 210 captures HTML, 6 PNG) et
+# AUCUN code de production ne la lit : seuls des commentaires la citent, et les
+# contrôles qui s'en servent tournent en local, jamais au build. Les données que
+# la route sert vivent dans `supabase/import/`, qui reste inclus.
+maquette/
+
+# Les photos d'aperçu, régénérables par scripts/apercu-pages.mjs.
+apercu/
+
+# Les contrôles et outils : ils ne participent pas au rendu.
+scripts/
+docs/
