@@ -1,0 +1,13 @@
+/* Survols RELEVÉS dans l'export du client (attributs `style-hover`, 07/10) :
+   la pastille orange s'assombrit et se soulève d'un pixel, le lien fléché du
+   hub passe à l'orange. `:focus-visible` suit, même retour pour le clavier. */
+.pastille:hover,
+.pastille:focus-visible {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+}
+
+.lienFleche:hover,
+.lienFleche:focus-visible {
+  color: var(--acc);
+}

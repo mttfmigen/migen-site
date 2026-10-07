@@ -26,7 +26,8 @@
    transform + box-shadow). */
 .carteReference:hover,
 .carteReference:focus-visible {
-  transform: translateY(-2px);
+  /* relevé style-hover du 07/10 : -3px, pas -2 */
+  transform: translateY(-3px);
   box-shadow: 0 22px 50px -32px rgba(0, 0, 0, 0.3);
 }
 

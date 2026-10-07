@@ -1,6 +1,8 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 
+import styles from "./QuestionsPhoto.module.css";
+
 import { LARGEUR } from "@/components/site/blocs/habillage";
 import type { QuestionsPhotoOffres } from "@/types/offres";
 
@@ -52,6 +54,7 @@ const PASTILLE: CSSProperties = {
   whiteSpace: "nowrap",
   boxShadow: "rgba(255, 124, 60, .9) 0 12px 30px -12px",
   textDecoration: "none",
+  transition: "filter var(--tr), transform var(--tr)",
 };
 
 const GRILLE: CSSProperties = {
@@ -168,11 +171,11 @@ export default function QuestionsPhoto({
                 <p style={CHAPEAU_BLOC}>{donnees.chapeau}</p>
               ) : null}
               {donnees.bouton ? (
-                <a href={donnees.lienHref} style={PASTILLE}>
+                <a href={donnees.lienHref} className={styles.pastille} style={PASTILLE}>
                   {donnees.lienTexte}
                 </a>
               ) : (
-                <a href={donnees.lienHref} style={LIEN}>
+                <a href={donnees.lienHref} className={styles.lienFleche} style={LIEN}>
                   {donnees.lienTexte} →
                 </a>
               )}
