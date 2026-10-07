@@ -24,7 +24,7 @@ import type { QuestionsPhotoOffres } from "@/types/offres";
 
 const CARTE: CSSProperties = {
   position: "relative",
-  borderRadius: "var(--rad)",
+  borderRadius: 28,
   overflow: "hidden",
   background: "rgb(28, 27, 25)",
 };
@@ -32,8 +32,11 @@ const CARTE: CSSProperties = {
 const VOILE: CSSProperties = {
   position: "absolute",
   inset: 0,
+  // Relevé le 07/10 sur la maquette qui tourne, pas estimé : le voile allait
+  // de .88 à .32, la maquette va de .92 à .62. La photo reste donc nettement
+  // plus sombre à droite, et les cartes de questions s'y détachent moins.
   background:
-    "linear-gradient(90deg, rgba(18,17,16,.88) 0%, rgba(18,17,16,.62) 45%, rgba(18,17,16,.32) 100%)",
+    "linear-gradient(90deg, rgba(18,17,16,.92) 0%, rgba(18,17,16,.8) 50%, rgba(18,17,16,.62) 100%)",
 };
 
 /** La pastille orange pleine des pages d'offres, relevée sur leur capture. */
@@ -55,7 +58,9 @@ const GRILLE: CSSProperties = {
   position: "relative",
   display: "grid",
   gridTemplateColumns: "minmax(0, .8fr) minmax(0, 1.2fr)",
-  gap: 36,
+  // 52px et non 36 : mesuré sur la maquette (392px + 52 + 588px dans 1120).
+  gap: 52,
+  alignItems: "start",
   padding: 44,
 };
 
@@ -71,7 +76,7 @@ const TITRE_BLOC: CSSProperties = {
   font: "600 calc(clamp(26px,2.6vw,36px) * var(--ts))/1.12 var(--ft)",
   letterSpacing: "-.04em",
   color: "#fff",
-  marginBottom: 16,
+  marginBottom: 22,
 };
 
 const CHAPEAU_BLOC: CSSProperties = {
@@ -85,10 +90,19 @@ const LIEN: CSSProperties = {
   color: "rgb(255, 124, 60)",
 };
 
+/**
+ * Le pli, RELEVÉ LE 07/10 sur la maquette qui tourne, valeur par valeur.
+ *
+ * L'erreur qu'on corrige : nos cartes étaient blanches à 90 %, donc opaques,
+ * et masquaient la photo. La maquette les pose à 10 % de blanc sur un flou :
+ * c'est du verre, on voit l'atelier au travers, et tout le texte est blanc.
+ * C'est ce qui faisait 30 % de divergence sur cette section.
+ */
 const PLI: CSSProperties = {
   borderRadius: 18,
-  background: "rgba(255,255,255,.9)",
-  backdropFilter: "blur(18px)",
+  background: "rgba(255,255,255,.1)",
+  border: "1px solid rgba(255,255,255,.18)",
+  backdropFilter: "blur(22px) saturate(1.5)",
 };
 
 const QUESTION: CSSProperties = {
@@ -97,22 +111,22 @@ const QUESTION: CSSProperties = {
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  gap: 16,
-  padding: "18px 22px",
-  font: "600 16px/1.35 var(--fb)",
-  color: "var(--ink)",
+  gap: 18,
+  padding: "20px 24px",
+  font: "400 16px/1.4 var(--fb)",
+  color: "#fff",
 };
 
 const PLUS: CSSProperties = {
-  color: "rgb(255, 124, 60)",
+  color: "#fff",
   font: "400 20px/1 var(--fb)",
   flex: "0 0 auto",
 };
 
 const REPONSE: CSSProperties = {
-  padding: "0 22px 18px",
-  font: "400 14.5px/1.6 var(--fb)",
-  color: "rgb(74, 72, 69)",
+  padding: "0 24px 22px",
+  font: "400 15px/1.7 var(--fb)",
+  color: "rgba(255,255,255,.8)",
 };
 
 export default function QuestionsPhoto({

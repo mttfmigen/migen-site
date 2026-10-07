@@ -465,11 +465,12 @@ export default function PageOffre({
                 lienTexte: "Poser ma question",
                 lienHref: "#mgx-form",
                 bouton: true,
-                // La photo du paquet du client, celle du hub : la capture du
-                // `<main>` ne porte pas l'image du bloc, elle vit dans la
-                // feuille de style de la maquette. Même photo d'atelier, et
-                // aucune image inventée. À confirmer par Mehdi.
-                photo: "/assets/web/faq-offres.jpg",
+                // LA photo du bloc, extraite de la maquette qui tourne le
+                // 07/10 : elle y est servie par un `blob:`, donc invisible
+                // dans la capture du `<main>`. Octets récupérés par XHR depuis
+                // le cadre (le `fetch` de la page est enrobé et boucle), posés
+                // ici. Ce n'est plus une hypothèse, c'est son fichier.
+                photo: "/assets/web/faq-offre.jpg",
                 questions: objections.questions.map((q) => ({
                   question: q.question,
                   reponse: q.reponse ?? "",
