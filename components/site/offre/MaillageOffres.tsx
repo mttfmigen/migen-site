@@ -30,11 +30,27 @@ interface CarteMaillage {
   titre: string;
   phrase: string;
   lien: string;
-  photo: string;
+  /** Absente pour « Full service » : la maquette la rend en carte sombre pleine. */
+  photo?: string;
 }
 
 /** Le dictionnaire du gabarit, texte fixe de la capture. */
 const CARTES_GABARIT: Readonly<Record<string, CarteMaillage>> = {
+  // Relevée le 07/10 dans la maquette qui tourne : elle manquait à ce
+  // dictionnaire, et comme le composant filtre sur lui, la carte disparaissait
+  // du site alors que la donnée la portait bien en première position. C'est
+  // elle que la porte G17 réclamait sous « CONTRAT UNIQUE » et
+  // « migen© Full service » sur cinq pages.
+  //
+  // SANS PHOTO, et ce n'est pas un oubli : photographiée dans la maquette,
+  // c'est une carte sombre pleine, la seule des six.
+  "/offres/full-service/": {
+    etiquette: "Contrat unique",
+    titre: "migen© Full service",
+    phrase:
+      "Toute votre maintenance dans un seul contrat : préventif, dépannage, pièces et GMAO, un seul interlocuteur.",
+    lien: "Voir l’offre",
+  },
   "/offres/zero-arret/": {
     etiquette: "Abonnement",
     titre: "migen© Zéro arrêt",
@@ -95,8 +111,11 @@ const TITRE: CSSProperties = {
 
 const GRILLE: CSSProperties = {
   display: "grid",
-  gridTemplateColumns: "1.25fr 1fr 1fr",
-  gridTemplateRows: "repeat(2,minmax(210px,auto))",
+  // TROIS COLONNES ÉGALES, mesuré le 07/10 : 365 + 12 + 365 + 12 + 365 dans
+  // 1120. La maquette a abandonné le bento 1.25fr et sa carte phare sur deux
+  // rangs ; ses six cartes font toutes 365 x 210.
+  gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+  gridTemplateRows: "repeat(2, minmax(210px, auto))",
   gap: 12,
 };
 
@@ -107,6 +126,7 @@ const CARTE: CSSProperties = {
   borderRadius: 24,
   color: "#fff",
   minHeight: 210,
+  background: "rgb(26, 25, 24)",
   transition: "transform var(--tr)",
 };
 
@@ -155,30 +175,34 @@ export default function MaillageOffres({ cartes }: ProprietesMaillageOffres) {
         </div>
         <h2 style={TITRE}>Un autre besoin ? Il a son offre.</h2>
         <div className="mg-rmulti" style={GRILLE}>
-          {retenues.map(({ href, gabarit }, rang) => (
+          {retenues.map(({ href, gabarit }) => (
             <Link
               key={href}
               href={href}
               prefetch={false}
               className={styles.carteMaillage}
-              style={rang === 0 ? { ...CARTE, gridRow: "span 2" } : CARTE}
+              style={CARTE}
             >
-              <Image
-                src={gabarit.photo}
-                alt=""
-                fill
-                sizes="(max-width: 620px) 100vw, (max-width: 1000px) 50vw, 400px"
-                style={{
-                  objectFit: "cover",
-                  filter: "saturate(var(--sat)) brightness(.72)",
-                }}
-              />
-              <div aria-hidden="true" style={VOILE} />
+              {gabarit.photo ? (
+                <>
+                  <Image
+                    src={gabarit.photo}
+                    alt=""
+                    fill
+                    sizes="(max-width: 620px) 100vw, (max-width: 1000px) 50vw, 400px"
+                    style={{
+                      objectFit: "cover",
+                      filter: "saturate(var(--sat)) brightness(.72)",
+                    }}
+                  />
+                  <div aria-hidden="true" style={VOILE} />
+                </>
+              ) : null}
               <div style={CONTENU}>
                 <span style={ETIQUETTE}>{gabarit.etiquette}</span>
                 <span
                   style={{
-                    font: `600 ${rang === 0 ? 26 : 18}px/1.2 var(--ft)`,
+                    font: "600 18px/1.2 var(--ft)",
                     letterSpacing: "-.03em",
                     color: "#fff",
                   }}
