@@ -21,7 +21,8 @@ import styles from "./Maillage.module.css";
  */
 
 export interface GroupeLiens {
-  titre: string;
+  /** Facultatif : la maquette ne nomme pas ses groupes, elle liste à plat. */
+  titre?: string;
   liens: Lien[];
 }
 
@@ -140,8 +141,10 @@ export default function ListeMaillage({ groupes }: { groupes: GroupeLiens[] }) {
       </h2>
       <div style={GROUPES}>
         {remplis.map((groupe) => (
-          <section key={groupe.titre}>
-            <h3 style={TITRE_GROUPE}>{groupe.titre}</h3>
+          <section key={groupe.titre ?? "liens"}>
+            {groupe.titre ? (
+              <h3 style={TITRE_GROUPE}>{groupe.titre}</h3>
+            ) : null}
             <ul style={GRILLE}>
               {groupe.liens.map((lien) => (
                 <li key={lien.path} style={ELEMENT}>
