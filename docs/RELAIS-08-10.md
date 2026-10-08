@@ -60,16 +60,11 @@ Secteurs étaient encore l'ancienne version en ligne, Mehdi l'a vu).
 1. Vérification finale du chantier « site au pixel » : TERMINÉE, verdict non conforme.
    46 contrôles sur 49 verts, tsc propre, 247/248 titres à la bonne hauteur. Ses défauts
    sont la section « Défauts trouvés par la vérification finale » ci-dessous.
-2. Banque de photos variées : la recherche (7 thèmes) et le jury sont FINIS, 109 photos
-   retenues, liste complète dans `docs/photos-selection-jury.json` (pour chacune : `lien`
-   Envato, `titre`, `orientation`, `themes`, `nom_fichier` cible). À 16 h 30, l'agent de
-   téléchargement en était au lot 13 (photos 62 à 66 sur 109), sous licence « migen.fr »,
-   dans le Chrome de Mehdi : ne pas piloter Chrome tant qu'il tourne. Sortie attendue :
-   `public/assets/photos/*.jpg` et `public/assets/photos/registre.json`
-   ({ fichier, lien_envato, titre, orientation, themes, licence, sha256 }), à commiter.
-   S'il s'est arrêté avant la fin : les fichiers bruts sont dans `~/Downloads`
-   (`*-utc.jpg` du 08/10, nommés d'après le titre Envato, pas d'après le lien) ;
-   reprendre les manquantes depuis la liste du jury.
+2. Banque de photos variées : FINIE et commitée. 109 photos sous licence « migen.fr »
+   dans `public/assets/photos/` (2000 px max, JPEG q82, 89 paysage, 20 portrait),
+   registre `public/assets/photos/registre.json` : { fichier, lien_envato, titre (Envato),
+   description (en français), orientation, themes (ceux du jury), licence, sha256 }.
+   Originaux pleine résolution dans `~/Downloads`. Reste à les répartir (point 2 plus bas).
 3. Nouveau bloc « Notre sélection » : FAIT et en ligne. `ProcessSelection.tsx` +
    `CarteEtapes.tsx` (défilement des étapes), contrôle
    `bun components/site/accueil/verification-selection.tsx`. Écart assumé : contenu
