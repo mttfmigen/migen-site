@@ -1,10 +1,39 @@
-/* Survol du bouton d'appel à l'action, repris de `style-hover` de la maquette. */
-.boutonAccent {
-  transition:
-    filter var(--tr),
-    transform var(--tr);
+/* « Notre sélection », ce que MigenSelection.dc.html ne peut pas dire en ligne.
+   Les `!important` sont ceux de la source : la règle doit battre le style en
+   ligne. */
+
+/* `style-hover` des deux liens de l'en-tête. */
+.cta:hover {
+  filter: brightness(.93) !important;
+  transform: translateY(-1px) !important;
+  color: #fff !important;
 }
-.boutonAccent:hover {
-  filter: brightness(0.93);
-  transform: translateY(-1px);
+.lien:hover {
+  color: #ff7c3c !important;
+}
+
+/* La <helmet> de la source, telle quelle. */
+@media (max-width: 980px) {
+  .tete {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 18px !important;
+    align-items: start !important;
+  }
+  .bento {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .photo {
+    min-height: 440px !important;
+  }
+}
+@media (max-width: 640px) {
+  .wrap {
+    padding: 0 18px !important;
+  }
+  .photo {
+    min-height: 400px !important;
+  }
+  .carte {
+    padding: 18px 8px 20px !important;
+  }
 }

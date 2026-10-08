@@ -25,6 +25,7 @@ jamais de tiret cadratin dans un texte visible.
 | `SORTIE=… HAUTEUR=2400 [LARGEUR=390] node scripts/diff-visuel-offre.mjs <url>` | % de pixels divergents par section, montages maquette/site |
 | `node scripts/diff-styles.mjs <url>` | styles calculés de chaque texte, valeur maquette \| valeur site |
 | `node scripts/verifie-position-titre.mjs ["<gabarit>" \| urls]` | hauteur du H1 contre la maquette, à ±2 px |
+| `SITE_URL=https://migen-site.vercel.app node scripts/diff-visuel-offre.mjs <url>` | même mesure, sur la version en ligne |
 | `node scripts/relis-relais.mjs` | fait relire les fiches au serveur de dev |
 | `bun lib/verification-decisions-copie.ts` | règles de copie décidées par Mehdi |
 
@@ -50,8 +51,9 @@ hubs de rubrique, Ressources, page Équipe à `/a-propos/equipe/`, cas clients
 (`/preuves/` 41 études, `/realisations/` redirigé), décalage de 34 px sous l'en-tête
 corrigé, fil d'Ariane visible retiré (gardé en données structurées), bouton des
 formulaires = titre du panneau, flèche « → » dessinée comme la maquette, pied de
-page aligné. Dernière mise en ligne : avant les décisions de copie et le relais
-« la fiche gagne toujours » ; tout le reste attend la prochaine.
+page aligné. Mise en ligne du 08/10 en fin d'après-midi : tout ce qui précède, plus
+le nouveau bloc « Notre sélection » (248/248 adresses en 200 en ligne ; les 12 pages
+Secteurs étaient encore l'ancienne version en ligne, Mehdi l'a vu).
 
 ## Ce qui tournait au moment du relais
 
@@ -62,10 +64,11 @@ page aligné. Dernière mise en ligne : avant les décisions de copie et le rela
    photos, un agent les télécharge sous licence « migen.fr » via le Chrome de Mehdi.
    Sortie attendue : `public/assets/photos/*.jpg` et `public/assets/photos/registre.json`
    ({ fichier, lien_envato, titre, orientation, themes, licence, sha256 }).
-3. Nouveau bloc « Notre sélection » (refait par Mehdi sur Claude Design) : source
-   `design_handoff_migen_site/maquette/MigenSelection.dc.html`, rendu de référence
-   `~/Downloads/Migen Bloc Selection Redesign.html`, à porter dans
-   `components/site/accueil/ProcessSelection.tsx` (défilement automatique des étapes).
+3. Nouveau bloc « Notre sélection » : FAIT et en ligne. `ProcessSelection.tsx` +
+   `CarteEtapes.tsx` (défilement des étapes), contrôle
+   `bun components/site/accueil/verification-selection.tsx`. Écart assumé : contenu
+   de 1 120 px au lieu de 1 200 (l'export de Mehdi n'a pas `box-sizing: border-box`,
+   la maquette complète si).
 
 ## Reste à faire, dans l'ordre
 
@@ -83,7 +86,7 @@ page aligné. Dernière mise en ligne : avant les décisions de copie et le rela
    « de la maquette OU du registre » (plusieurs contrôles exigent aujourd'hui les octets
    de la maquette : preuve, carrière, spécialité, domaine, ville, secteurs-hub). Garder
    les vraies photos de l'équipe Migen (t-shirts « migen » : team-*, sv-*), moins répétées.
-3. **Bloc « Notre sélection »** : vérifier le portage (point 3 ci-dessus) à 1280 et 390.
+3. ~~Bloc « Notre sélection »~~ : fait, identique à 1280, 1000, 800 et 390 px.
 4. **Formulaire mobile** : sous 900 px le champ « Nom » fait 37 px. Correctif dans
    `components/formulaire/FormulaireContact.module.css`, dans le `@media (max-width: 900px)` :
    `.grille > * { grid-column: 1 / -1 !important; }`, puis vérifier toutes les pages à formulaire.
@@ -103,7 +106,10 @@ page aligné. Dernière mise en ligne : avant les décisions de copie et le rela
 8. **Base Supabase** : la table `seo` et les contenus datent d'avant ; l'import
    (`node scripts/importe_rest.mjs`) demande la clé de service, absente de `.env.local`.
 9. **`.vercelignore`** n'est pas appliqué avec `--archive` (envoi de 486 Mo) : à étudier.
-10. Avant chaque mise en ligne : `bunx tsc --noEmit`, les contrôles de gabarit, un
+10. Mettre en ligne depuis une copie propre du dernier commit (le dossier de travail
+    contient souvent du travail en cours) : `git worktree add --detach <dossier> HEAD`,
+    y copier `.vercel/` et `next-env.d.ts`, `bunx next typegen`, puis déployer.
+    Avant chaque mise en ligne : `bunx tsc --noEmit`, les contrôles de gabarit, un
     balayage des 249 URL en 200 sur le serveur de dev, puis le déploiement, puis la
     même vérification sur https://migen-site.vercel.app.
 

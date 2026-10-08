@@ -23,7 +23,7 @@ import { chromium } from "playwright";
    Sans argument, la page pilote validée par Mehdi le 06/10. */
 const CHEMIN = process.argv[2] ?? "/offres/residence/";
 const MAQUETTE = `http://localhost:4352/voir.html?url=${CHEMIN}`;
-const SITE = `http://localhost:4340${CHEMIN}`;
+const SITE = `${process.env.SITE_URL ?? "http://localhost:4340"}${CHEMIN}`;
 const SORTIE = process.env.SORTIE ?? "/tmp/diff-offre"; // configurable : des mesures parallèles ne doivent pas s'écraser
 
 /** Au-delà de ce delta par canal, deux pixels sont dits différents. */

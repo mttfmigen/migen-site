@@ -505,18 +505,6 @@ details[open] .g3-plus {
   }
 }
 
-/* Les six étapes de la sélection (accueil), règles de la maquette. */
-@media (max-width: 1100px) {
-  .mg-proc3 {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
-}
-@media (max-width: 560px) {
-  .mg-proc3 {
-    grid-template-columns: 1fr !important;
-  }
-}
-
 /* Lignes de tableau : des colonnes tombent avant que la ligne ne se casse */
 @media (max-width: 980px) {
   .cx-lay {
