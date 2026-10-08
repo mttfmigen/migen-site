@@ -1,53 +1,104 @@
 /* Survols et replis du gabarit ÉTUDE DE CAS. Rien d'autre : un style en ligne
    ne peut pas porter d'état.
 
-   LES SURVOLS : la capture (`maquette/rendu/preuves--*.html`) référence des
-   classes `scp*` et `cs-*` dont la feuille n'a pas été figée, l'export
-   autonome sur disque étant en retard sur la maquette qui a produit les
-   captures (noté le 07/10, à ré-exporter). Les valeurs posées ici sont celles
-   des MÊMES motifs relevées dans `maquette/site-final-autonome.html` :
-   bouton orange, bouton en verre, carte qui se soulève.
+   LES SURVOLS sont relevés PAR ÉLÉMENT dans la source du gabarit, `MigenCas`,
+   embarquée dans `maquette/site-final-autonome.html` (attributs
+   `style-hover`) ; `verification-preuve.tsx` relit chacun. Le logo, les photos
+   et les vignettes n'en portent aucun.
 
    Le focus est traité avec le survol partout : un visiteur au clavier doit
    voir la même chose qu'un visiteur à la souris (WCAG 2.4.7). */
 
-/* style-hover="filter:brightness(.93);transform:translateY(-1px);color:#fff" */
+/* style-hover="filter:brightness(.93);color:#fff" */
 .boutonPrincipal:hover,
 .boutonPrincipal:focus-visible {
   filter: brightness(0.93);
-  transform: translateY(-1px);
   color: #fff;
 }
 
-/* style-hover="background:var(--card);transform:translateY(-1px)" */
+/* style-hover="background:#fff" */
 .boutonSecondaire:hover,
 .boutonSecondaire:focus-visible {
-  background: var(--card);
-  transform: translateY(-1px);
+  background: #fff;
 }
 
-/* Cartes « Pour aller plus loin » : la capture porte
-   `transition: transform var(--tr)`, le motif identique de la maquette déclare
-   style-hover="transform:translateY(-3px)". */
+/* Cartes « Pour aller plus loin » : style-hover="transform:translateY(-3px)". */
 .cartePlusLoin:hover,
 .cartePlusLoin:focus-visible {
   transform: translateY(-3px);
 }
 
-/* Replis propres au gabarit, en complément de `mg-r2` et `mg-rmulti` de la
-   charte (`app/globals.css`) : la carte sombre du bento « Notre réponse »
-   occupe deux colonnes, elle doit n'en occuper qu'une quand la grille passe
-   en une colonne (620px, seuil de `.mg-rmulti`). */
-@media (max-width: 620px) {
-  .carteSombre {
+/* « Votre besoin » : dans MigenCas, le bouton d'envoi est une cellule de la
+   grille du formulaire, `grid-column:span 2;padding:15px 26px`, sans ombre
+   (472 × 53 px mesurés). `FormulaireContact`, partagé, le pose dans une rangée
+   flex à `margin-top:4px`, en style en ligne : d'où `!important`, limité à
+   cette carte. Le survol reste celui du composant, `brightness(.93)`, le même
+   que le `style-hover` de MigenCas. */
+.carteFormulaire form > div:has(> button[type="submit"]) {
+  margin-top: 0 !important;
+}
+
+.carteFormulaire button[type="submit"] {
+  width: 100%;
+  padding: 15px 26px !important;
+  box-shadow: none !important;
+}
+
+/* Replis du gabarit : le bloc `<style>` de MigenCas (ressource embarquée de
+   l'autonome), règle pour règle, `!important` compris. Correspondance des
+   classes : `.mgc-root` → .racine, `.g3-sticky` → .collante, `.cs-float` →
+   .ficheFlottante, `.cs-bento` → .bento, `.cs-w2` → .largeDeux, `.cs-steps` →
+   .etapes, `.cs-dot` → .pastille, `.cs-res` → .resultats, `.cs-pad` →
+   .panneauResultat. `.cs-facts` (chiffres) et `.cs-line` (rail) gardent
+   `mg-rmulti` et `mg-rail` de la charte, mêmes seuils, même effet. */
+@media (max-width: 1000px) {
+  .bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .bento > * {
     grid-column: span 1 !important;
+  }
+  .bento > .largeDeux {
+    grid-column: span 2 !important;
+  }
+  .etapes {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0 !important;
+  }
+  .etapes > * {
+    display: grid !important;
+    grid-template-columns: 44px minmax(0, 1fr);
+    column-gap: 18px;
+    padding-bottom: 24px !important;
+  }
+  .etapes > * > .pastille {
+    grid-row: span 3;
   }
 }
 
-/* Le panneau sombre du résultat : la capture le dessine à 60px/56px, un écran
-   de 320px ne les a pas. Même réduction que les panneaux de la charte. */
-@media (max-width: 760px) {
+@media (max-width: 900px) {
+  .racine :global(.mg-r2) {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 30px !important;
+  }
+  .collante {
+    position: static !important;
+  }
+  .ficheFlottante {
+    position: static !important;
+    margin-top: 12px !important;
+    max-width: none !important;
+  }
+  .resultats {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .bento {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
   .panneauResultat {
-    padding: 40px 24px !important;
+    padding: 36px 22px !important;
   }
 }

@@ -9,6 +9,8 @@
       "Migen assure la maintenance préventive et curative de ce site. La mission est toujours en cours."
     ],
     "bouton": "Faire chiffrer la reprise de ma maintenance",
+    "logo": "/assets/clients/stellantis.png",
+    "photoHero": "/assets/web/mq-5111002ce2b6.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -117,6 +119,7 @@
         "valeur": ", sans interruption"
       }
     ],
+    "photoDispositif": "/assets/web/mq-2a6115ec9fe0.jpg",
     "resultats": [
       {
         "titre": "La bascule a tenu en 8 semaines",
@@ -142,10 +145,6 @@
           {
             "accroche": "6 techniciens",
             "texte": "l'équipe Migen affectée en propre à la fonderie et à l'usinage"
-          },
-          {
-            "accroche": "7 jours sur 7",
-            "texte": "le rythme des interventions préventives et curatives, week-end compris"
           }
         ]
       },
@@ -161,28 +160,32 @@
     "besoinProse": [
       "Décrivez la situation, nous vous disons ce que la reprise demande.",
       "Nous vous rappelons dans l'heure.",
-      "Les six techniciens de Sept-Fons sont passés par notre sélection. Entretien technique, entretien comportemental, 10 % des candidats retenus. Les résultats d'évaluation sont partagés avec le client avant la prise de poste."
+      "Les six techniciens de Sept-Fons sont passés par notre sélection. Entretien technique, entretien comportemental, 10 % des techniciens retenus. Les résultats d'évaluation sont partagés avec le client avant la prise de poste."
     ],
     "plusLoin": [
       {
         "surtitre": "Étude de cas",
         "titre": "SUEZ : remise en état d'un site",
-        "href": "/preuves/suez-remise-en-etat/"
+        "href": "/preuves/suez-remise-en-etat/",
+        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
-        "href": "/preuves/dimomaint/"
+        "href": "/preuves/dimomaint/",
+        "photo": "/assets/web/mq-e6322efcd358.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
-        "href": "/preuves/eiffage/"
+        "href": "/preuves/eiffage/",
+        "photo": "/assets/web/mq-339d39e2a674.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
-        "href": "/preuves/savoye/"
+        "href": "/preuves/savoye/",
+        "photo": "/assets/web/mq-056f3c250981.jpg"
       }
     ]
   }

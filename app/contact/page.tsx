@@ -23,7 +23,7 @@ import { metadonneesSeo } from "@/lib/seo/metadonnees";
  * C'est la cible du bouton de la barre d'action mobile et de l'appel à l'action
  * de l'en-tête, donc la page de conversion la plus atteinte après l'accueil.
  *
- * CE QUI S'ÉCARTE DE LA MAQUETTE, et pourquoi. Trois corrections, toutes
+ * CE QUI S'ÉCARTE DE LA MAQUETTE, et pourquoi. Deux corrections, toutes deux
  * imposées par les interdits de copie du contrat, qui gagnent contre la
  * maquette quand ils se contredisent :
  *
@@ -31,8 +31,6 @@ import { metadonneesSeo } from "@/lib/seo/metadonnees";
  *     « Cinq agences en France, deux à l'international » devient « Quatre
  *     agences, dix hubs de techniciens ». Le compte tenu est quatre agences,
  *     Lyon (siège à Écully), Montréal, Dubaï, Madrid.
- *   · « +200 / clients industriels » devient « +120 ». Le compte tenu est
- *     « plus de 120 clients, dont plus de 80 réguliers ».
  *   · les repères « 48 h » et « 3 sem. » des trois étapes tombent : seul le
  *     rappel dans l'heure est un délai chiffré autorisé. Voir
  *     `components/site/contact/ApresDemande.tsx`.

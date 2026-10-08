@@ -1,209 +1,194 @@
 {
   "url": "/implantations/maintenance-industrielle-troyes/",
+  "titre_h1": "Maintenance industrielle à Troyes et dans l'Aube",
   "contenu": {
     "gabarit": "ville",
+    "pastille": "Nos implantations",
     "chapeau": "La bonneterie troyenne a laissé deux héritages. Des ateliers de textile technique qui font encore tourner des métiers à tricoter. Et des centres de marques, qui ont attiré les entrepôts du e-commerce autour de l'agglomération. Ajoutez les malteries de Nogent-sur-Seine, et l'Aube travaille sur trois calendriers différents. Nos techniciens itinérants couvrent le département et se déplacent partout en France.",
     "actions": [
       {
         "libelle": "Demander une intervention à Troyes",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés couvre les nuits, les week-ends et les jours fériés.",
+    "formulaireHeroTitre": "Demander une intervention à Troyes",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "appelBouton": "Demander une intervention à Troyes",
+    "chiffres": [
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels accompagnés, dont plus de 80 réguliers"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental"
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, et des techniciens mobiles partout en France"
+        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, et des techniciens mobiles partout en France"
       }
     ],
-    "contact": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 couvre les nuits, les week-ends et les jours fériés.",
-    "constatTexte": "Une ligne d'agroalimentaire décroche un vendredi soir dans l'Aube. C'est tout le week-end de production qui saute, et lundi la commande est déjà en retard.",
-    "constatPuces": [
+    "hubLocal": {
+      "surtitre": "Votre hub local · Troyes",
+      "titre": "Troyes : les industries que nos techniciens connaissent déjà",
+      "photo": "/assets/web/team-electric.jpg",
+      "badge": "Techniciens itinérants",
+      "nom": "Troyes et ses environs",
+      "texte": "Nos techniciens itinérants couvrent Troyes et son bassin, appuyés par le réseau national Migen.",
+      "bouton": "Demander une intervention à Troyes",
+      "cartes": [
+        {
+          "surtitre": "Tissu principal",
+          "titre": "Logistique",
+          "texte": "Sur les entrepôts de la couronne troyenne, un trieur à l'arrêt en pleine vague bloque des milliers d'expéditions.",
+          "lien": "Notre approche logistique",
+          "href": "/secteurs/logistique/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Agroalimentaire",
+          "texte": "Nos techniciens interviennent sur les sites agroalimentaires du bassin.",
+          "lien": "Notre approche agroalimentaire",
+          "href": "/secteurs/agroalimentaire/"
+        }
+      ],
+      "zonesTitre": "Nos hubs",
+      "zones": [
+        {
+          "libelle": "Hub Lille",
+          "href": "/implantations/lille/"
+        },
+        {
+          "libelle": "Hub Lyon",
+          "href": "/implantations/lyon/"
+        },
+        {
+          "libelle": "Hub Nantes",
+          "href": "/implantations/nantes/"
+        },
+        {
+          "libelle": "Hub Paris",
+          "href": "/implantations/paris/"
+        },
+        {
+          "libelle": "Hub Strasbourg",
+          "href": "/implantations/strasbourg/"
+        },
+        {
+          "libelle": "Hub Toulouse",
+          "href": "/implantations/toulouse/"
+        },
+        {
+          "libelle": "Hub Marseille",
+          "href": "/implantations/marseille/"
+        },
+        {
+          "libelle": "Hub Bordeaux",
+          "href": "/implantations/bordeaux/"
+        },
+        {
+          "libelle": "Hub Metz",
+          "href": "/implantations/maintenance-industrielle-metz/"
+        },
+        {
+          "libelle": "Hub Dijon",
+          "href": "/implantations/maintenance-industrielle-dijon/"
+        }
+      ]
+    },
+    "brefBande": "Besoin de tenir vos lignes pendant le prochain pic de commandes ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Demander une intervention à Troyes",
+      "href": "#besoin"
+    },
+    "sections": [
       {
-        "texte": "Sur les entrepôts de la couronne troyenne, un trieur à l'arrêt en pleine vague bloque des milliers d'expéditions.",
-        "accroche": "Le pic de commandes ne se négocie pas."
+        "type": "probleme",
+        "punchline": "Une ligne d'agroalimentaire décroche un vendredi soir dans l'Aube. C'est tout le week-end de production qui saute, et lundi la commande est déjà en retard.",
+        "puces": [
+          {
+            "accroche": "Le pic de commandes ne se négocie pas.",
+            "texte": "Sur les entrepôts de la couronne troyenne, un trieur à l'arrêt en pleine vague bloque des milliers d'expéditions."
+          },
+          {
+            "accroche": "Les machines textiles sont rares et anciennes.",
+            "texte": "Peu de gens savent encore les régler, et les remplacer coûte plus que les fiabiliser."
+          },
+          {
+            "accroche": "Le continu ne laisse pas de fenêtre.",
+            "texte": "Malteries et lignes de conditionnement tournent sans interruption : le préventif se planifie des mois à l'avance."
+          },
+          {
+            "accroche": "Une presse à injecter mal entretenue produit du rebut.",
+            "texte": "En plasturgie, la dérive se voit dans la pièce avant de se voir dans l'alarme."
+          },
+          {
+            "accroche": "Un départ, et l'atelier perd sa mémoire.",
+            "texte": "Le technicien qui connaissait le parc emporte l'historique avec lui."
+          }
+        ],
+        "variante": "rangee"
       },
-      {
-        "texte": "Peu de gens savent encore les régler, et les remplacer coûte plus que les fiabiliser.",
-        "accroche": "Les machines textiles sont rares et anciennes."
-      },
-      {
-        "texte": "Malteries et lignes de conditionnement tournent sans interruption : le préventif se planifie des mois à l'avance.",
-        "accroche": "Le continu ne laisse pas de fenêtre."
-      },
-      {
-        "texte": "En plasturgie, la dérive se voit dans la pièce avant de se voir dans l'alarme.",
-        "accroche": "Une presse à injecter mal entretenue produit du rebut."
-      },
-      {
-        "texte": "Le technicien qui connaissait le parc emporte l'historique avec lui.",
-        "accroche": "Un départ, et l'atelier perd sa mémoire."
-      }
-    ],
-    "reponsePuces": [
-      {
-        "texte": "Entretien technique et comportemental, 10 % des candidats retenus, résultats d'évaluation partagés.",
-        "accroche": "Le profil vous est présenté avant l'intervention."
-      },
-      {
-        "texte": "Comptes rendus versés dans votre outil, préconisations chiffrées. Vous ne dépendez pas de la mémoire d'un homme, ni de la nôtre.",
-        "accroche": "L'historique machine reste chez vous."
-      },
-      {
-        "texte": "Inclus, exclu, conditions d'astreinte, conditions d'arrêt du contrat.",
-        "accroche": "Un périmètre et une sortie écrits."
-      }
-    ],
-    "faq": [
-      {
-        "reponse": "Oui. Nous n'avons pas d'agence dans l'Aube et nous ne l'inventons pas : nos techniciens se déplacent partout en France et interviennent sur site. Votre demande est rappelée dans l'heure aux horaires ouvrés, et vous savez dès le premier appel si le besoin est tenable.",
-        "question": "Intervenez-vous vraiment à Troyes, alors que votre siège est à Lyon ?"
-      },
-      {
-        "reponse": "Troyes, Sainte-Savine, La Chapelle-Saint-Luc, Rosières-près-Troyes et les zones d'activité de la couronne, ainsi que Nogent-sur-Seine. Au-delà, le réseau national prend le relais.",
-        "question": "Quelles communes couvrez-vous ?"
-      },
-      {
-        "reponse": "Le premier passage sert d'état des lieux. Mécanique fine, réglage, variation de vitesse et rétrofit d'automate se traitent machine par machine. Si une spécialité manque, le chargé d'affaires le dit au lieu d'envoyer quelqu'un au hasard.",
-        "question": "Nos machines textiles sont spécifiques. Vous savez intervenir dessus ?"
-      },
-      {
-        "reponse": "L'astreinte 24/24 et 7/7 prend l'appel et mobilise un technicien. Le circuit d'appel et l'ordre des priorités sont écrits au devis, site par site, avant la première urgence.",
-        "question": "Que se passe-t-il en cas de panne un vendredi soir ?"
-      },
-      {
-        "reponse": "L'offre Zéro arrêt fonctionne en abonnement, trois niveaux de couverture, sur devis, engagement type 6 mois renouvelable, diagnostic gratuit au départ.",
-        "question": "Combien coûte un contrat de maintenance ?"
-      },
-      {
-        "reponse": "Oui. Chaque intervention y est saisie : temps passé, pièces, préconisations, historique par machine. Pas de système parallèle, pas de double saisie. Vos données vous appartiennent.",
-        "question": "Travaillez-vous dans notre GMAO ?"
-      }
-    ],
-    "autres": [
-      {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
-      },
-      {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
-      },
-      {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
-      },
-      {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
-      },
-      {
-        "libelle": "Valence",
-        "href": "/implantations/lyon/valence/"
-      },
-      {
-        "libelle": "Nantes",
-        "href": "/implantations/nantes/"
-      },
-      {
-        "libelle": "Brest",
-        "href": "/implantations/nantes/brest/"
-      },
-      {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
-      },
-      {
-        "libelle": "paris",
-        "href": "/implantations/paris/"
-      },
-      {
-        "libelle": "Rouen",
-        "href": "/implantations/paris/rouen/"
-      },
-      {
-        "libelle": "Strasbourg",
-        "href": "/implantations/strasbourg/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
-      },
-      {
-        "libelle": "Toulouse",
-        "href": "/implantations/toulouse/"
-      },
-      {
-        "libelle": "Bordeaux",
-        "href": "/implantations/toulouse/bordeaux/"
-      }
-    ],
-    "reste": [
       {
         "type": "offre",
         "lignes": [
           {
-            "benefice": "Les révisions tombent avant la charge, jamais pendant la vague.",
             "prestation": {
-              "texte": "sur vos heures de fonctionnement réelles, resserré avant les pics de commandes.",
-              "accroche": "Préventif planifié"
-            }
+              "accroche": "Préventif planifié sur vos heures de fonctionnement réelles, resserré avant les pics de commandes.",
+              "texte": ""
+            },
+            "benefice": "Les révisions tombent avant la charge, jamais pendant la vague."
           },
           {
-            "benefice": "Le même défaut ne revient pas sous un autre nom le mois suivant.",
             "prestation": {
-              "texte": "avec recherche de cause racine, du moteur à l'armoire électrique.",
-              "accroche": "Dépannage sur site"
-            }
+              "accroche": "Dépannage sur site avec recherche de cause racine, du moteur à l'armoire électrique.",
+              "texte": ""
+            },
+            "benefice": "Le même défaut ne revient pas sous un autre nom le mois suivant."
           },
           {
-            "benefice": "Vous prolongez un outil amorti au lieu d'investir dans du neuf.",
             "prestation": {
-              "texte": "réglage, remise en état, rétrofit d'automate et de variation de vitesse.",
-              "accroche": "Machines anciennes et parcs hétérogènes"
-            }
+              "accroche": "Machines anciennes et parcs hétérogènes",
+              "texte": "Réglage, remise en état, rétrofit d'automate et de variation de vitesse."
+            },
+            "benefice": "Vous prolongez un outil amorti au lieu d'investir dans du neuf."
           },
           {
-            "benefice": "Un seul contrat du quai de réception au quai d'expédition.",
             "prestation": {
-              "texte": "des entrepôts : voir la [maintenance équipements logistiques](/secteurs/logistique/).",
-              "accroche": "Convoyeurs, trieurs et quais"
-            }
+              "accroche": "Convoyeurs, trieurs et quais des entrepôts : voir la maintenance équipements logistiques.",
+              "texte": ""
+            },
+            "benefice": "Un seul contrat du quai de réception au quai d'expédition."
           },
           {
-            "benefice": "La dérive énergétique se corrige avant de peser sur la facture.",
             "prestation": {
-              "texte": "échangeurs, réseaux d'air comprimé, réseaux d'eau, chasse aux fuites.",
-              "accroche": "Froid industriel et utilités"
-            }
+              "accroche": "Froid industriel et utilités",
+              "texte": "Échangeurs, réseaux d'air comprimé, réseaux d'eau, chasse aux fuites."
+            },
+            "benefice": "La dérive énergétique se corrige avant de peser sur la facture."
           },
           {
-            "benefice": "Une panne du vendredi soir ne coûte pas un week-end de production.",
             "prestation": {
-              "texte": ", mobilisation de techniciens mobiles partout en France.",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
+              "accroche": "Astreinte la nuit, le week-end et les jours fériés en option mobilisation de techniciens mobiles partout en France.",
+              "texte": ""
+            },
+            "benefice": "Une panne du vendredi soir ne coûte pas un week-end de production."
           },
           {
-            "benefice": "Le poste vacant cesse d'être une fragilité, remplacement assuré.",
             "prestation": {
-              "texte": "intégré à votre équipe, prise de poste en 2 à 3 semaines.",
-              "accroche": "Technicien en [Résidence](/offres/residence/)"
-            }
+              "accroche": "",
+              "texte": ""
+            },
+            "benefice": "Le poste vacant cesse d'être une fragilité, remplacement assuré."
           },
           {
-            "benefice": "Le préventif entre au planning au lieu de sauter dès que la charge monte.",
             "prestation": {
-              "texte": "visites planifiées, priorité en cas de panne, diagnostic gratuit au départ.",
-              "accroche": "Contrat [Zéro arrêt](/offres/zero-arret/)"
-            }
+              "accroche": "Contrat Zéro arrêt",
+              "texte": "Visites planifiées, priorité en cas de panne, diagnostic gratuit au départ."
+            },
+            "benefice": "Le préventif entre au planning au lieu de sauter dès que la charge monte."
           }
         ]
       },
@@ -211,72 +196,144 @@
         "type": "deroule",
         "etapes": [
           {
-            "texte": "vous décrivez la panne ou le besoin. Un chargé d'affaires rappelle dans l'heure aux horaires ouvrés.",
-            "titre": "Premier contact"
+            "titre": "Premier contact",
+            "texte": "Vous décrivez la panne ou le besoin. Un chargé d'affaires rappelle dans l'heure aux horaires ouvrés."
           },
           {
-            "texte": "machines, accès au site, habilitations, contraintes d'hygiène et de cadence. Tout se note avant le chiffrage.",
-            "titre": "Qualification"
+            "titre": "Qualification",
+            "texte": "Machines, accès au site, habilitations, contraintes d'hygiène et de cadence. Tout se note avant le chiffrage."
           },
           {
-            "texte": "périmètre, créneaux, matériel, conditions horaires. L'exceptionnel se chiffre en amont.",
-            "titre": "Devis écrit"
+            "titre": "Devis écrit",
+            "texte": "Périmètre, créneaux, matériel, conditions horaires. L'exceptionnel se chiffre en amont."
           },
           {
-            "texte": "accueil sécurité, plan de prévention, consignation, diagnostic, réparation, redémarrage sécurisé.",
-            "titre": "Intervention"
+            "titre": "Intervention",
+            "texte": "Accueil sécurité, plan de prévention, consignation, diagnostic, réparation, redémarrage sécurisé."
           },
           {
-            "texte": "opérations, temps passé, pièces à prévoir, préconisations, versés dans votre GMAO.",
-            "titre": "Compte rendu"
+            "titre": "Compte rendu",
+            "texte": "Opérations, temps passé, pièces à prévoir, préconisations, versés dans votre GMAO."
           },
           {
-            "texte": "sur contrat, revue de la disponibilité et de la récurrence, équipement par équipement.",
-            "titre": "Suivi"
+            "titre": "Suivi",
+            "texte": "Sur contrat, revue de la disponibilité et de la récurrence, équipement par équipement."
           }
         ]
       },
       {
-        "type": "cta",
-        "bouton": "Demander une intervention à Troyes",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin de tenir vos lignes pendant le prochain pic de commandes ?"
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Le profil vous est présenté avant l'intervention.",
+            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats d'évaluation partagés."
+          },
+          {
+            "accroche": "L'historique machine reste chez vous.",
+            "texte": "Comptes rendus versés dans votre outil, préconisations chiffrées. Vous ne dépendez pas de la mémoire d'un homme, ni de la nôtre."
+          },
+          {
+            "accroche": "Un périmètre et une sortie écrits.",
+            "texte": "Inclus, exclu, conditions d'astreinte, conditions d'arrêt du contrat."
+          }
+        ]
       },
       {
         "type": "preuves",
         "preuves": [
           {
-            "texte": ", reprise complète en un mois",
             "titre": "6 techniciens polyvalents en permanence sur un contrat de préventif annuel e-commerce",
+            "texte": ", reprise complète en un mois.",
+            "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "lienLibelle": "Étude de cas VEEPEE : sites de Lyon"
+            "photo": "/assets/web/x-tech-portrait.jpg"
           },
           {
-            "texte": ", depuis septembre 2022",
             "titre": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures, sur un centre logistique en continu",
+            "texte": ", depuis septembre 2022.",
+            "lienLibelle": "Étude de cas AMAZON",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique"
+            "photo": "/assets/web/team-grind-front.jpg"
           },
           {
-            "texte": ", liquides et conditionnement poudre",
             "titre": "2 techniciens intégrés en 3x8 sur des lignes agroalimentaires à haute cadence",
+            "texte": ", liquides et conditionnement poudre.",
+            "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "lienLibelle": "Étude de cas DANONE : lignes de production"
+            "photo": "/assets/web/x-elec-cablage.jpg"
           },
           {
-            "texte": ", 2025 à 2026",
             "titre": "Un technicien polyvalent sur un parc machines hétérogène en papier et emballage",
+            "texte": ", 2025 à 2026.",
+            "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "lienLibelle": "Étude de cas VPK : maintenance de site"
+            "photo": "/assets/web/team-duo.jpg"
+          },
+          {
+            "titre": "Des convoyeurs et des trieurs sous surveillance continue",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/ph-technicien.jpg"
+          },
+          {
+            "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
+            "lienLibelle": "Étude de cas Savoye",
+            "lienHref": "/preuves/savoye-migration-automates-norvege/",
+            "photo": "/assets/web/team-grind-impact.jpg"
+          },
+          {
+            "titre": "Des chantiers automatisés contrôlés point par point",
+            "lienLibelle": "Étude de cas Alstef Group",
+            "lienHref": "/preuves/alstef-group/",
+            "photo": "/assets/web/team-duo.jpg"
+          },
+          {
+            "titre": "Un centre logistique monté en six semaines",
+            "lienLibelle": "Étude de cas Aktid",
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/team-grind-front.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Intervenez-vous vraiment à Troyes, alors que votre siège est à Lyon ?",
+            "reponse": "Oui. Nous n'avons pas d'agence dans l'Aube et nous ne l'inventons pas : nos techniciens se déplacent partout en France et interviennent sur site. Votre demande est rappelée dans l'heure aux horaires ouvrés, et vous savez dès le premier appel si le besoin est tenable."
+          },
+          {
+            "question": "Quelles communes couvrez-vous ?",
+            "reponse": "Troyes, Sainte-Savine, La Chapelle-Saint-Luc, Rosières-près-Troyes et les zones d'activité de la couronne, ainsi que Nogent-sur-Seine. Au-delà, le réseau national prend le relais."
+          },
+          {
+            "question": "Nos machines textiles sont spécifiques. Vous savez intervenir dessus ?",
+            "reponse": "Le premier passage sert d'état des lieux. Mécanique fine, réglage, variation de vitesse et rétrofit d'automate se traitent machine par machine. Si une spécialité manque, le chargé d'affaires le dit au lieu d'envoyer quelqu'un au hasard."
+          },
+          {
+            "question": "Que se passe-t-il en cas de panne un vendredi soir ?",
+            "reponse": "L'astreinte la nuit, le week-end et les jours fériés prend l'appel et mobilise un technicien. Le circuit d'appel et l'ordre des priorités sont écrits au devis, site par site, avant la première urgence."
+          },
+          {
+            "question": "Combien coûte un contrat de maintenance ?",
+            "reponse": "L'offre Zéro arrêt fonctionne en abonnement, trois niveaux de couverture, sur devis, engagement type 6 mois renouvelable, diagnostic gratuit au départ."
+          },
+          {
+            "question": "Travaillez-vous dans notre GMAO ?",
+            "reponse": "Oui. Chaque intervention y est saisie : temps passé, pièces, préconisations, historique par machine. Pas de système parallèle, pas de double saisie. Vos données vous appartiennent."
           }
         ]
       },
       {
         "type": "ctaFinal",
-        "bouton": "Demander une intervention à Troyes",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
         "question": "Besoin d'un partenaire technique avant la prochaine montée en charge ?"
       }
     ]
-  }
+  },
+  "trous": [
+    {
+      "ligne": "Technicien en Résidence intégré à votre équipe, prise de poste en 2 à 3 semaines.",
+      "pourquoi": "délai chiffré (« en 2 à 3 semaines ») : seul « rappel dans l'heure » est autorisé. Intitulé d'une ligne de « 04 Offre ». C'était tout le champ : il reste vide."
+    }
+  ]
 }

@@ -88,13 +88,12 @@ export default function PourquoiExternaliser({
           </div>
 
           <div>
-            {/* La maquette finit cette phrase par « pour des prestations sur
-                mesure ». « Sur mesure » est une formulation interdite par le
-                contrat, et la phrase se tient sans elle : elle est coupée après
-                « validés par vos soins ». C'est la seule cause des 28 px de
-                moins que la maquette sur cette section, soit exactement une
-                ligne à 16,5/1,7. Ne pas « réparer » en recopiant la maquette :
-                `scripts/verifie-interdits.mjs` refuserait le build. */}
+            {/* La maquette poursuit par « Nous vous garantissons des techniciens
+                hautement qualifiés, validés par vos soins, pour des prestations
+                sur mesure. » « Sur mesure » est interdit : la phrase est RETIRÉE
+                entière (règle de copie du 08/10, une phrase interdite ne se
+                reformule pas), écart déclaré. D'où les lignes de moins que la
+                maquette sur ce paragraphe. */}
             <p
               style={{
                 font: "400 16.5px/1.7 var(--fb)",
@@ -102,7 +101,7 @@ export default function PourquoiExternaliser({
                 margin: "0 0 16px",
               }}
             >
-              {"Chez migen©, seuls 10 % des techniciens réussissent notre process de sélection, éprouvé sur l’expertise en maintenance industrielle et la polyvalence. Nous vous garantissons des techniciens hautement qualifiés, validés par vos soins."}
+              {"Chez migen©, seuls 10 % des techniciens réussissent notre process de sélection, éprouvé sur l’expertise en maintenance industrielle et la polyvalence."}
             </p>
             <p
               style={{

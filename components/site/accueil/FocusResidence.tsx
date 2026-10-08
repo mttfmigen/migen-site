@@ -191,8 +191,12 @@ export default function FocusResidence({
                 </div>
               ))}
             </div>
-            {/* La maquette écrivait « Découvrir Résidence ». « découvrez » et
-                sa famille sont un interdit de copie du projet. */}
+            {/* « Découvrir Résidence », mot pour mot : la liste des interdits
+                (contrat de projet, scripts/verifie-interdits.mjs) proscrit
+                « découvrez », pas l'infinitif. Le libellé « Voir migen©
+                Résidence » qui le remplaçait était une reformulation non
+                admise. Si toute la famille de « découvrir » doit tomber, c'est
+                le bouton qui se retire, pas son texte qui se réécrit. */}
             <a
               href={href}
               className={styles.boutonAccent}
@@ -208,7 +212,7 @@ export default function FocusResidence({
                 font: "600 15px var(--fb)",
               }}
             >
-              Voir migen© Résidence
+              Découvrir Résidence
             </a>
           </div>
         </div>

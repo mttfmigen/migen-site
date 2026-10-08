@@ -21,11 +21,11 @@
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental."
+        "libelle": "des techniciens retenus, entretien technique et comportemental."
       },
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels, dont plus de 80 réguliers."
+        "valeur": "+200",
+        "libelle": "clients industriels accompagnés"
       },
       {
         "valeur": "10",
@@ -159,7 +159,7 @@
           },
           {
             "accroche": "Des monteurs évalués",
-            "texte": "chaque monteur, mécanicien, électricien ou chaudronnier a passé une évaluation technique et comportementale. Seuls 10 % des candidats sont retenus, et la compétence se voit tout de suite en montage."
+            "texte": "chaque monteur, mécanicien, électricien ou chaudronnier a passé une évaluation technique et comportementale. Seuls 10 % des techniciens sont retenus, et la compétence se voit tout de suite en montage."
           },
           {
             "accroche": "La sécurité comme condition de départ",
@@ -211,7 +211,7 @@
           },
           {
             "question": "Qui intervient sur mon site ?",
-            "reponse": "Des équipes complètes de techniciens salariés Migen, pas des renforts isolés à encadrer par vos soins. Chacun est évalué à l'entrée en entretien technique et comportemental, 10 % des candidats retenus, puis passé par votre accueil sécurité."
+            "reponse": "Des équipes complètes de techniciens salariés Migen, pas des renforts isolés à encadrer par vos soins. Chacun est évalué à l'entrée en entretien technique et comportemental, 10 % des techniciens retenus, puis passé par votre accueil sécurité."
           },
           {
             "question": "Intervenez-vous pendant un arrêt de production ?",
@@ -264,6 +264,7 @@
         "libelle": "Toutes les offres",
         "href": "/offres/"
       }
-    ]
+    ],
+    "pastille": "Nos offres"
   }
 }

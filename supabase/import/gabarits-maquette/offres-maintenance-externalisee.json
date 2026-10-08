@@ -17,12 +17,12 @@
     "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique ET comportemental",
+        "libelle": "des techniciens retenus, entretien technique ET comportemental",
         "detail": "L'intervenant qui entre chez vous est notre salarié"
       },
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels, dont plus de 80 réguliers",
+        "valeur": "+200",
+        "libelle": "clients industriels accompagnés",
         "detail": "Un contrat d'externalisation se juge à son renouvellement"
       },
       {
@@ -163,7 +163,7 @@
           },
           {
             "accroche": "Des intervenants évalués avant d'entrer chez vous",
-            "texte": "10 % des candidats retenus, entretien technique et entretien comportemental, résultats présentés avant la première intervention. Ce sont nos salariés, en prestation de services, avec un chargé d'affaires nommé qui assure le suivi de votre dossier."
+            "texte": "10 % des techniciens retenus, entretien technique et entretien comportemental, résultats présentés avant la première intervention. Ce sont nos salariés, en prestation de services, avec un chargé d'affaires nommé qui assure le suivi de votre dossier."
           },
           {
             "accroche": "Ni fabricant ni distributeur",

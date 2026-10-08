@@ -1,0 +1,258 @@
+{
+  "_source": "maquette/rendu/expertises--types-de-maintenance--preventive-systematique.html (07/10 21h12, 15 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (entités décodées, apostrophes de la capture conservées), contrôlé par components/site/expertises/specialite/verification-specialite.tsx. CHIFFRES : les trois cartes de la capture, « +200 / Clients industriels accompagnés » compris (règle client : « +200 clients », jamais « réguliers »). PHOTOS MESURÉES, PAS CHOISIES : octets de chaque blob du rail des références de la maquette vivante (localhost:4352/voir.html, 08/10) rapprochés de public/assets/web par sha256 complet, dans l'ordre des cartes ; ordre des clients vérifié identique à la capture. « Marques maintenues » absente de la capture, donc pas de marquesFamille. Problème dessiné « rangee », aucune photo (problemePhoto null). « Complément 4 » porté.",
+  "url": "/expertises/types-de-maintenance/preventive-systematique/",
+  "titre_h1": "Maintenance préventive systématique : le calendrier qui protège vos machines critiques",
+  "contenu": {
+    "gabarit": "specialite",
+    "pastille": "Expertises",
+    "chapeau": "Un échéancier fixe, en temps ou en unités d'usage, que personne ne discute et que quelqu'un vient réellement exécuter. Gammes écrites machine par machine, rapport après chaque visite, intervalles corrigés avec vos données.",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés.",
+    "appelBouton": "Demander un diagnostic maintenance",
+    "actions": [
+      {
+        "libelle": "Demander un diagnostic maintenance",
+        "href": "#besoin"
+      }
+    ],
+    "formulaireHeroTitre": "Demander un diagnostic maintenance",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
+      {
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, après entretien technique ET comportemental"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      },
+      {
+        "valeur": "MASE et EcoVadis",
+        "libelle": "Démarche sécurité et évaluation RSE, attestations transmises avec chaque plan de prévention"
+      }
+    ],
+    "problemePhoto": null,
+    "complementOffre": [
+      {
+        "texte": "Un parc entier à mettre sous suivi ? Avant de vous engager, l'audit et conseil en maintenance chiffre ce qui mérite un régime systématique."
+      }
+    ],
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "Le préventif saute parce que les urgences mangent la journée, et le correctif explose parce que le préventif a sauté. Vous connaissez le cercle.",
+        "puces": [
+          {
+            "accroche": "Le plan existe, personne ne le tient.",
+            "texte": "En dessous de 80 % de réalisation, l'échéancier n'existe plus que sur le papier, et les arrêts subis reviennent au même niveau qu'avant."
+          },
+          {
+            "accroche": "La périodicité est recopiée du manuel constructeur.",
+            "texte": "Elle a été calculée pour une cadence, une poussière et une température qui ne sont pas les vôtres. Vous déposez des pièces encore parfaites, ou vous cassez avant l'échéance."
+          },
+          {
+            "accroche": "Tout repose sur une seule personne.",
+            "texte": "Le jour où le technicien qui connaît le parc est absent, l'usine devient aveugle."
+          },
+          {
+            "accroche": "Les échéances tombent sans la pièce en stock.",
+            "texte": "L'intervention est reportée, puis oubliée, et la dérive s'installe machine après machine."
+          }
+        ],
+        "variante": "rangee"
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "L'inventaire du parc et la cotation de criticité",
+              "texte": "Une fiche par machine, code repère, fonction, environnement, historique de pannes, pièces associées."
+            },
+            "benefice": "Vous savez enfin quels équipements méritent un régime systématique, et lesquels coûteraient plus cher à entretenir qu'à réparer."
+          },
+          {
+            "prestation": {
+              "accroche": "L'écriture des gammes",
+              "texte": "Nettoyage, graissage, contrôle des serrages, remplacement des consommables, vérification des réglages, organe par organe."
+            },
+            "benefice": "Le savoir sort de la tête d'une personne et entre dans un document. L'absence d'un technicien n'arrête plus le programme."
+          },
+          {
+            "prestation": {
+              "accroche": "La périodicité calée sur l'usage réel",
+              "texte": "Heures de fonctionnement, cycles, quantité produite, et pas seulement le calendrier."
+            },
+            "benefice": "Une machine en trois huit et une machine utilisée deux jours par semaine arrêtent de partager la même échéance."
+          },
+          {
+            "prestation": {
+              "accroche": "L'exécution du préventif sur site par des techniciens évalués en entretien technique et comportemental, 10 % des techniciens retenus.",
+              "texte": ""
+            },
+            "benefice": "Le programme est tenu même quand vos équipes sont prises par les urgences. C'est le seul point qui fait bouger le taux de réalisation."
+          },
+          {
+            "prestation": {
+              "accroche": "Le contrôle des organes de sécurité et des vérifications réglementaires",
+              "texte": "Freins, arrêts d'urgence, protecteurs, soupapes."
+            },
+            "benefice": "Le calendrier réglementaire est déjà écrit. Il est suivi, tracé, et vous n'avez plus à y penser."
+          },
+          {
+            "prestation": {
+              "accroche": "Toutes les spécialités chez un seul partenaire",
+              "texte": "Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie, robotique."
+            },
+            "benefice": "Un contact unique pour l'ensemble du parc, au lieu de plusieurs prestataires à coordonner sur la même fenêtre d'arrêt."
+          },
+          {
+            "prestation": {
+              "accroche": "L'ajustement des intervalles avec les données du terrain",
+              "texte": "État des pièces déposées, observations de visite, historique de défaillances."
+            },
+            "benefice": "Vous arrêtez de sur-entretenir ce qui va bien, et vous resserrez là où ça casse. Le budget se déplace vers les bonnes machines."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Vous décrivez votre situation",
+            "texte": "Nombre d'équipements, secteur, état du programme actuel, taux de réalisation si vous le connaissez. Quelques minutes au téléphone suffisent à cadrer le diagnostic."
+          },
+          {
+            "titre": "Un expert vous rappelle dans l'heure",
+            "texte": ", du lundi au vendredi de 8h00 à 18h30."
+          },
+          {
+            "titre": "Le diagnostic maintenance, gratuit.",
+            "texte": "Nous analysons vos installations, vos historiques et vos pannes récurrentes, puis nous remettons une recommandation argumentée, y compris quand elle conclut qu'un équipement ne justifie aucune prévention."
+          },
+          {
+            "titre": "La préparation du programme",
+            "texte": "Criticité, gammes, périodicité, ressources, fenêtres d'arrêt, pièces à mettre en stock. Vous gardez la main sur chaque arbitrage."
+          },
+          {
+            "titre": "Le démarrage sur les équipements les plus critiques.",
+            "texte": "Un plan trop ambitieux prend du retard dès le deuxième mois. Nous tenons un périmètre restreint, puis nous élargissons."
+          },
+          {
+            "titre": "L'exécution et le compte rendu",
+            "texte": "Après chaque visite, ce qui a été fait, ce qui a été mesuré, ce qui doit être surveillé, avec les seuils d'alerte. Les intervalles se corrigent trimestre après trimestre."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
+            "texte": "L'astreinte la nuit, le week-end et les jours fériés couvre la nuit et le week-end sur les sites concernés."
+          },
+          {
+            "accroche": "Des techniciens évalués, pas des exécutants.",
+            "texte": "Chaque technicien passe un entretien technique ET comportemental, 10 % sont retenus. Une visite préventive ne vaut que par l'œil de celui qui la fait."
+          },
+          {
+            "accroche": "Une indépendance totale vis à vis des constructeurs.",
+            "texte": "Nous ne vivons pas de la vente de matériel. Quand un intervalle peut être allongé, nous le disons, même si cela réduit le nombre de visites."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Contrat de maintenance préventive annuelle, logistique",
+            "texte": "Six techniciens polyvalents en permanence sur les sites lyonnais, reprise complète du préventif menée en un mois, depuis septembre 2023.",
+            "lienLibelle": "Étude de cas VEEPEE",
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "photo": "/assets/web/mq-1ef16ef335a6.jpg"
+          },
+          {
+            "titre": "Préventif et curatif tenus sur des lignes en forte activité",
+            "texte": "Un technicien de maintenance expérimenté affecté en continu sur un site proche de Paris, 2025 et 2026.",
+            "lienLibelle": "Étude de cas FDJ",
+            "lienHref": "/preuves/fdj/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
+          },
+          {
+            "titre": "Préventif maintenu pendant les congés d'été",
+            "texte": "Un technicien intégré à l'équipe maintenance sur juillet et août, équipements stratégiques couverts malgré l'effectif réduit, été 2025.",
+            "lienLibelle": "Étude de cas OGF",
+            "lienHref": "/preuves/ogf-arret-estival/",
+            "photo": "/assets/web/x-elec-cablage.jpg"
+          },
+          {
+            "titre": "Suivi des équipements avec la même rigueur d'un site à l'autre, confort thermique",
+            "texte": "1 à 3 techniciens en présence permanente sur plusieurs sites de production, depuis octobre 2024.",
+            "lienLibelle": "Étude de cas GROUPE ATLANTIC",
+            "lienHref": "/preuves/groupe-atlantic/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+          },
+          {
+            "titre": "Maintien d'un parc machines quand le préventif décroche, industrie automobile",
+            "texte": "Un technicien dédié intégré aux équipes du site, en présence continue, 2025.",
+            "lienLibelle": "Étude de cas AUTOLIV",
+            "lienHref": "/preuves/autoliv/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
+          },
+          {
+            "titre": "Maintenir un centre logistique qui ne ferme jamais",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+          },
+          {
+            "titre": "Un dispositif rodé, transposé sur un nouveau site",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-nouveau-site/",
+            "photo": "/assets/web/mq-0699d4d92e7e.jpg"
+          },
+          {
+            "titre": "Pas un poste sans maintenance, week-end compris",
+            "lienLibelle": "Étude de cas Danone (Blédina)",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/mq-056f3c250981.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
+        "questions": [
+          {
+            "question": "Nous avons déjà un plan de maintenance, il n'est simplement jamais tenu. Vous faites quoi de plus ?",
+            "reponse": "Nous exécutons. Le problème n'est presque jamais la méthode, c'est le temps disponible quand les urgences mangent les journées. Nous reprenons vos gammes existantes, nous les corrigeons là où elles sont fausses, et des techniciens viennent faire les visites aux échéances. Le taux de réalisation est l'indicateur que nous suivons avec vous, pas le volume d'opérations."
+          },
+          {
+            "question": "Le préventif systématique ne coûte-t-il pas plus cher que de réparer quand ça casse ?",
+            "reponse": "Il génère un coût visible et régulier, là où le correctif génère un coût invisible et brutal. Posez le total sur douze mois, pièces, main d'œuvre et production perdue comprises, en face du coût des arrêts subis des douze mois précédents. Sur les équipements à usure prévisible, la prévention gagne généralement. Quand ce n'est pas le cas, nous vous le disons : certaines machines ne justifient aucune prévention."
+          },
+          {
+            "question": "Comment fixez-vous les intervalles, et pourquoi pas ceux du constructeur ?",
+            "reponse": "Le préconisé constructeur est notre point de départ, jamais notre conclusion. Il est calculé pour des conditions d'utilisation qui ne sont pas les vôtres, et il ignore votre poussière, votre humidité, votre cadence. Nous le corrigeons avec votre historique de défaillances et l'état réel des pièces déposées. Si un composant lâche avant l'échéance, l'intervalle est trop long. S'il sort en parfait état, il est trop court."
+          },
+          {
+            "question": "Faut-il une GMAO pour démarrer ?",
+            "reponse": "Non. Sur un parc réduit, un tableur rigoureux et un responsable identifié suffisent. Un logiciel devient utile au delà de quelques dizaines d'équipements, pour déclencher les échéances et exploiter l'historique. Mais un outil ne crée pas de rigueur, il révèle celle que vous avez déjà. Commencez par l'inventaire et les gammes, l'outil vient après."
+          },
+          {
+            "question": "Nos équipes internes vont-elles se sentir remplacées ?",
+            "reponse": "C'est l'inverse qui se produit. Nos techniciens absorbent les visites planifiées que vos équipes n'arrivent plus à caser, ce qui leur rend du temps sur le correctif et l'amélioration. Sur la plupart de nos missions, les techniciens Migen sont intégrés aux équipes du site, sur leurs horaires et leurs priorités, coordonnés par nous."
+          },
+          {
+            "question": "Couvrez-vous notre région, même loin de Lyon ?",
+            "reponse": "Oui. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et 10 hubs de techniciens à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Nos techniciens sont mobiles, nous intervenons aussi en dehors de ces villes. Notre démarche MASE et notre évaluation EcoVadis sont transmises avec chaque plan de prévention, quel que soit le site."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de savoir quels équipements méritent vraiment un régime systématique, et à quelle fréquence ?",
+        "bouton": "Demander un diagnostic maintenance"
+      }
+    ]
+  }
+}

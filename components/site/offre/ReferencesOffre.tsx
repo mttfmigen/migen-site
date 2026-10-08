@@ -29,6 +29,8 @@ import styles from "./PageOffre.module.css";
 
 export interface ProprietesReferencesOffre {
   section: SectionPreuves;
+  /** La page Ville de la maquette garde la date telle qu'écrite (« d'un site… »). */
+  dateBrute?: boolean;
 }
 
 /** Une photo par carte, dans l'ordre des preuves du corpus. */
@@ -93,6 +95,13 @@ const LOGOS: Readonly<Record<string, string>> = {
   "washtec": "/assets/clients/washtec.svg",
 };
 
+/**
+ * Logos clairs, que la maquette inverse sur la pastille blanche : relevé tpl
+ * 961 des captures, OGF et Groupe Atlantic en `invert(1) hue-rotate(180deg)`,
+ * tous les autres en `filter: none` (même règle que `casclients/vues-preuves`).
+ */
+const LOGOS_INVERSES: ReadonlySet<string> = new Set(["ogf", "groupe-atlantic"]);
+
 /** « Groupe Atlantic » → « groupe-atlantic ». */
 function cleLogo(nom: string): string {
   return nom
@@ -135,6 +144,30 @@ const ENTETE: CSSProperties = {
   gap: 40,
   marginBottom: 38,
   flexWrap: "wrap",
+};
+
+/**
+ * Le compteur du rail, VIDE sur les 136 captures qui portent « 08 Références »
+ * (tpl 953) : il ne dit rien, mais ses marges (-10px puis 12px) posent le rail
+ * 2px plus bas que l'en-tête seul. Sans lui, toute la section remontait de
+ * 2px, et chaque bord de texte et de photo divergeait (Lyon, 11,3 %).
+ */
+const COMPTEUR: CSSProperties = {
+  display: "flex",
+  justifyContent: "flex-end",
+  margin: "-10px 0 12px",
+  font: "500 13px var(--fb)",
+  color: "var(--ink3)",
+};
+
+/** Le logo dans sa pastille, relevé tpl 961 : taille propre, bornée à 112x22. */
+const LOGO: CSSProperties = {
+  maxHeight: 22,
+  maxWidth: 112,
+  width: "auto",
+  height: "auto",
+  objectFit: "contain",
+  display: "block",
 };
 
 const TITRE: CSSProperties = {
@@ -227,7 +260,7 @@ const FLECHE: CSSProperties = {
   font: "600 15px var(--fb)",
 };
 
-export default function ReferencesOffre({ section }: ProprietesReferencesOffre) {
+export default function ReferencesOffre({ section, dateBrute = false }: ProprietesReferencesOffre) {
   const preuves = section.preuves.filter(
     (preuve) => !!preuve.lienHref && estCheminInterne(preuve.lienHref),
   );
@@ -246,6 +279,7 @@ export default function ReferencesOffre({ section }: ProprietesReferencesOffre) 
             Toutes nos études de cas →
           </Link>
         </div>
+        <div style={COMPTEUR} />
         {/* La classe `g3-refrail` branche le rail sur le moteur d'auto-
             défilement de `Moteurs.tsx` (0,45 px par image), comme dans la
             maquette : sans elle, le rail du site restait immobile là où celui
@@ -275,18 +309,23 @@ export default function ReferencesOffre({ section }: ProprietesReferencesOffre) 
                   // libellé long), et son logo peut manquer aussi : dans les
                   // deux cas, pas de pastille plutôt qu'une fausse.
                   const client = etiquetteEtude(preuve);
-                  const logo = client ? LOGOS[cleLogo(client)] : undefined;
+                  const cle = client ? cleLogo(client) : "";
+                  // La fiche peut nommer le fichier exact de la capture
+                  // (identifié par ses octets) : il prime sur le dictionnaire.
+                  const logo = (preuve as { logo?: string }).logo ?? LOGOS[cle];
                   if (!client || !logo) return null;
                   return (
                     <div style={PASTILLE_LOGO}>
-                      {/* Boîte 87x22 en `contain` : le logo entier tient
-                          dedans, il ne s'étire plus en bandeau. */}
+                      {/* Comme la capture : le logo garde ses proportions,
+                          borné à 112x22, servi tel quel pour que sa taille
+                          propre soit celle du fichier. */}
                       <Image
                         src={logo}
                         alt={client}
-                        width={87}
+                        width={112}
                         height={22}
-                        style={{ objectFit: "contain", width: 87, height: 22 }}
+                        unoptimized
+                        style={{ ...LOGO, filter: LOGOS_INVERSES.has(cle) ? "invert(1) hue-rotate(180deg)" : "none" }}
                       />
                     </div>
                   );
@@ -302,7 +341,7 @@ export default function ReferencesOffre({ section }: ProprietesReferencesOffre) 
               >
                 <div style={ETIQUETTE}>{etiquetteEtude(preuve)}</div>
                 <div style={TITRE_CARTE}>{preuve.titre}</div>
-                <div style={DATE_CARTE}>{phraseDate(preuve.texte)}</div>
+                <div style={DATE_CARTE}>{dateBrute ? preuve.texte : phraseDate(preuve.texte)}</div>
                 <div style={PIED_CARTE}>
                   <span style={{ font: "600 14px var(--fb)", color: "var(--ink)" }}>
                     Lire l’étude de cas

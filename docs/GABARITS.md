@@ -124,8 +124,11 @@ Un par gabarit, chacun relit la maquette à chaque exécution et refuse une vale
 bun components/site/offre/verification-offre.tsx
 bun components/site/secteur/verification-secteur.tsx
 bun components/site/implantation/verification-implantation.tsx
-bun scripts/verifie-offres.tsx
-bun scripts/verifie-metier-maquette.tsx
+bun components/site/offres/verification-offres.tsx
+bun components/site/metier/verification-metier.tsx
+bun components/site/preuve/verification-preuve.tsx
+bun components/site/expertises/specialite/verification-specialite.tsx
+bun components/site/expertises/domaine/verification-domaine.tsx
 bun scripts/verifie-ressource.tsx
 ```
 

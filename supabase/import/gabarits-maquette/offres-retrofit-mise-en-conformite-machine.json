@@ -1,292 +1,304 @@
 {
   "url": "/offres/retrofit/mise-en-conformite-machine/",
+  "titre_h1": "Mise en conformité des machines : fixez le calendrier avant l'inspection",
   "contenu": {
     "gabarit": "offre",
-    "pastille": "Nos offres",
-    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-    "chapeau": "Audit du parc machine par machine, analyse de risques chiffrée, travaux exécutés par nos techniciens, dossier technique remis à l'organisme accrédité de votre choix.",
-    "formulaireHeroTitre": "Faire auditer mes machines",
-    "formulaireHeroMention": "Rappel dans l'heure",
-    "chiffres": [
-      {
-        "valeur": "10 %",
-        "libelle": "Des candidats retenus, après entretien technique et comportemental."
-      },
-      {
-        "valeur": "+ 120",
-        "libelle": "Collaborateurs, techniciens et ingénieurs salariés."
-      },
-      {
-        "valeur": "+ 80",
-        "libelle": "Clients réguliers · sur plus de 120 clients industriels."
-      },
-      {
-        "valeur": "4",
-        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid."
-      }
-    ],
-    "brefBande": "Besoin de savoir combien de machines de votre parc sont hors des clous ?",
-    "brefMention": "Un audit chiffré vaut mieux qu'une intuition. Le formulaire prend quatre champs.",
-    "brefBouton": {
-      "libelle": "Faire auditer mes machines",
-      "href": "/contact/"
-    },
-    "sections": [
-      {
-        "type": "probleme",
-        "punchline": "Une machine mal protégée, et c'est l'inspection du travail qui fixe votre calendrier.",
-        "puces": [
-          {
-            "accroche": "Les protections tombent avec le temps.",
-            "texte": "Un protecteur démonté pour un réglage, un arrêt d'urgence contourné, et la machine sort de son état d'origine."
-          },
-          {
-            "accroche": "Les anciennes machines restent concernées.",
-            "texte": "Un équipement mis en service avant l'obligation de marquage doit respecter les prescriptions techniques du code du travail, CE ou pas."
-          },
-          {
-            "accroche": "Une modification vous transforme en responsable.",
-            "texte": "Automatiser, augmenter une capacité, changer un usage : la charge de la conformité bascule sur votre entreprise."
-          }
-        ],
-        "variante": "panneau-sombre"
-      },
-      {
-        "type": "offre",
-        "lignes": [
-          {
-            "prestation": {
-              "accroche": "Audit de conformité sur site",
-              "texte": ", machine par machine : protecteurs, commandes, partie électrique, pneumatique, hydraulique, documentation"
-            },
-            "benefice": "Vous savez exactement où vous en êtes, équipement par équipement, au lieu d'apprendre les écarts pendant un contrôle"
-          },
-          {
-            "prestation": {
-              "accroche": "Analyse de risques",
-              "texte": ", poste par poste, appuyée sur les normes d'appréciation du risque"
-            },
-            "benefice": "Chaque mesure proposée est justifiée. L'analyse alimente aussi votre document unique"
-          },
-          {
-            "prestation": {
-              "accroche": "Plan d'actions chiffré",
-              "texte": "protecteurs, barrages immatériels, commandes bimanuelles, arrêts d'urgence, reprise de circuit, asservissements"
-            },
-            "benefice": "Vous arbitrez avec les coûts sous les yeux. Le budget s'étale par priorité au lieu de partir d'un coup"
-          },
-          {
-            "prestation": {
-              "accroche": "Travaux",
-              "texte": ", en mécanique, électricité et automatisme, coordonnés avec la production"
-            },
-            "benefice": "Les opérations se calent sur vos arrêts. La ligne ne s'arrête pas pour nous"
-          },
-          {
-            "prestation": {
-              "accroche": "Mise à jour du dossier technique",
-              "texte": "schémas, notices, consignes, rapport de réalisation"
-            },
-            "benefice": "Votre démarche est démontrable devant un contrôleur comme devant un donneur d'ordres"
-          },
-          {
-            "prestation": {
-              "accroche": "Préparation et assistance à la visite",
-              "texte": ", de l'organisme accrédité, levée des réserves"
-            },
-            "benefice": "Vous arrivez à la vérification avec un dossier propre, pas avec des questions ouvertes"
-          }
-        ]
-      },
-      {
-        "type": "deroule",
-        "etapes": [
-          {
-            "titre": "Votre appel ou votre formulaire.",
-            "texte": "Nous vous rappelons dans l'heure. Un échange technique cadre le périmètre : nombre de machines, secteur, contraintes de production."
-          },
-          {
-            "titre": "L'audit sur site.",
-            "texte": "Un ingénieur ou un technicien confirmé examine chaque équipement en conditions réelles d'utilisation, opérateurs compris."
-          },
-          {
-            "titre": "L'analyse de risques.",
-            "texte": "Phénomènes dangereux, situations d'exposition, gravité, probabilité. Méthode transparente, écart par écart."
-          },
-          {
-            "titre": "Le plan d'actions chiffré.",
-            "texte": "Une solution technique et un coût en face de chaque écart, classés par niveau de risque. Vous décidez de l'ordre."
-          },
-          {
-            "titre": "Les travaux.",
-            "texte": "Nos techniciens exécutent, appuyés si besoin par notre bureau d'études, en coordination avec votre production."
-          },
-          {
-            "titre": "La documentation.",
-            "texte": "Dossier technique, schémas et consignes mis à jour. Une mise en conformité sans documentation ne protège personne."
-          },
-          {
-            "titre": "La vérification et la remise en service.",
-            "texte": "L'organisme accrédité passe, nous assistons à la visite, nous levons les réserves, la machine repart selon une procédure écrite à l'avance."
-          }
-        ],
-        "variante": "tuiles"
-      },
-      {
-        "type": "garanties",
-        "puces": [
-          {
-            "accroche": "Un rappel dans l'heure",
-            "texte": ", du lundi au vendredi de 8h00 à 18h30, et une astreinte la nuit, le week-end et les jours fériés par téléphone quand un équipement est immobilisé."
-          },
-          {
-            "accroche": "Un seul interlocuteur",
-            "texte": " de l'accueil de votre demande jusqu'à la levée des réserves. Personne ne prend votre dossier en marche."
-          },
-          {
-            "accroche": "Des techniciens salariés Migen, évalués",
-            "texte": " en entretien technique et comportemental : seuls 10 % des candidats sont retenus. Sur un chantier de sécurité, ce filtre n'est pas décoratif."
-          }
-        ]
-      },
-      {
-        "type": "preuves",
-        "preuves": [
-          {
-            "titre": "Étude de cas JOINT LYONNAIS : défaillances machines",
-            "texte": "Lyon, depuis février 2024. Diagnostic sur site et plusieurs solutions chiffrées, calées sur le budget d'une PME, plutôt qu'un rachat de matériel.",
-            "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines",
-            "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/web/x-technicienne-gilet.jpg"
-          },
-          {
-            "titre": "Étude de cas SUEZ : remise en état d'un site",
-            "texte": "Un technicien électromécanicien mobilisé six mois en environnement à risque chimique.",
-            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
-            "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/x-meulage-etincelles.jpg"
-          },
-          {
-            "titre": "Étude de cas EIFFAGE : partenariat",
-            "texte": "Trois techniciens en préventif sur une installation photovoltaïque de grande envergure.",
-            "lienLibelle": "Étude de cas EIFFAGE : partenariat",
-            "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/web/x-tableau-ceinture.jpg"
-          },
-          {
-            "titre": "Étude de cas SOPREMA : travaux ponctuels",
-            "texte": "Montage, déplacement de machines et renfort technique sur chantiers.",
-            "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
-            "lienHref": "/preuves/soprema/",
-            "photo": "/assets/web/x-duo-hall.jpg"
-          },
-          {
-            "titre": "La GMAO planifie, nos techniciens interviennent",
-            "lienLibelle": "DimoMaint",
-            "lienHref": "/preuves/dimomaint/"
-          },
-          {
-            "titre": "Une usine de carton en 3x8, un technicien qui tient la cadence",
-            "lienLibelle": "VPK",
-            "lienHref": "/preuves/vpk/"
-          },
-          {
-            "titre": "Une ligne de pain de mie suivie à chaque poste",
-            "lienLibelle": "Jacquet Brossard",
-            "lienHref": "/preuves/jacquet-brossard/"
-          },
-          {
-            "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
-            "lienLibelle": "Mersen",
-            "lienHref": "/preuves/mersen/"
-          }
-        ]
-      },
-      {
-        "type": "objections",
-        "questions": [
-          {
-            "question": "Combien coûte une mise en conformité ?",
-            "reponse": ""
-          },
-          {
-            "question": "Une machine ancienne sans marquage CE est-elle forcément hors la loi ?",
-            "reponse": "Non. Le marquage s'impose aux machines mises sur le marché depuis son entrée en vigueur. Les équipements antérieurs relèvent des prescriptions techniques prévues pour les machines en service. Une machine ancienne bien protégée peut être parfaitement en règle. L'ancienneté ne dispense de rien, et elle ne condamne rien non plus : seul un diagnostic tranche."
-          },
-          {
-            "question": "Pouvez-vous reprendre un dossier commencé par un autre prestataire ?",
-            "reponse": "Oui. Nous reprenons l'analyse de risques existante, nous vérifions ce qui a été réalisé, et nous chiffrons uniquement le reste à faire. Aucune obligation de tout recommencer."
-          },
-          {
-            "question": "Qui délivre l'attestation de conformité ?",
-            "reponse": "Un organisme accrédité indépendant, jamais nous. Migen réalise le chantier, constitue le dossier et vous assiste pendant la visite. Cette séparation des rôles est ce qui donne sa valeur à la vérification."
-          },
-          {
-            "question": "Qui intervient réellement sur mes machines ?",
-            "reponse": "Des techniciens salariés Migen, évalués en entretien technique et comportemental à l'entrée : 10 % des candidats sont retenus. Leurs habilitations sont à jour et vérifiables, les attestations partent avec le plan de prévention, et ils passent par votre accueil sécurité comme vos propres équipes."
-          },
-          {
-            "question": "Intervenez-vous partout en France ?",
-            "reponse": "Oui. Nos techniciens partent de dix hubs, Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes, et se déplacent sur votre site où qu'il soit. Le siège est à Lyon, avec trois autres agences à Montréal, Dubaï et Madrid. Un parc réparti sur plusieurs implantations est traité par un seul interlocuteur, avec le même référentiel d'audit partout."
-          }
-        ]
-      },
-      {
-        "type": "ctaFinal",
-        "question": "Besoin d'un plan d'actions chiffré avant votre prochain contrôle ?",
-        "bouton": "Faire auditer mes machines",
-        "href": "/contact/"
-      }
-    ],
-    "complementOffre": [
-      {
-        "texte": "Ce que nous ne faisons pas, par principe. Nous ne délivrons jamais nous-mêmes l'attestation de conformité. La vérification finale revient à un organisme accrédité indépendant, que vous choisissez. Celui qui réalise les travaux ne doit pas être celui qui les juge."
-      }
-    ],
-    "complementGaranties": [
-      {
-        "texte": "Les pièces, sans avoir à les réclamer. Nos attestations partent avec chaque plan de prévention : démarche MASE pour la sécurité des interventions, évaluation EcoVadis pour la performance RSE."
-      }
-    ],
-    "marquesFamille": "mo",
-    "pagesLiees": [
-      {
-        "titre": "Technicien en résidence",
-        "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
-        "href": "/offres/residence/",
-        "photo": "/assets/web/team-duo.jpg"
-      },
-      {
-        "titre": "Zéro arrêt",
-        "phrase": "La maintenance en abonnement, au forfait mensuel.",
-        "href": "/offres/zero-arret/",
-        "photo": "/assets/web/ph-technicien.jpg"
-      },
-      {
-        "titre": "Arrêt technique",
-        "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
-        "href": "/offres/arret-technique/",
-        "photo": "/assets/web/ph-hero-raffinerie.jpg"
-      },
-      {
-        "titre": "Full service",
-        "phrase": "Toute votre maintenance, un seul partenaire.",
-        "href": "/offres/full-service/",
-        "photo": "/assets/web/team-grind-front.jpg"
-      },
-      {
-        "titre": "Travaux industriels",
-        "phrase": "Transfert, démantèlement, démontage et montage.",
-        "href": "/travaux-industriels/",
-        "photo": "/assets/web/ph-tuyaux.jpg"
-      },
-      {
-        "titre": "Bureau d'études",
-        "phrase": "Conception, retrofit et mise en conformité.",
-        "href": "/offres/bureau-etudes/",
-        "photo": "/assets/web/ph-robots-solaire.jpg"
-      }
-    ],
-    "pagesLieesTitre": "Les offres et prestations voisines"
+    "generique": {
+      "url": "/offres/retrofit/mise-en-conformite-machine/",
+      "mode": "vente",
+      "famille": "Offres",
+      "mots": 1275,
+      "fil": [
+        {
+          "label": "Accueil",
+          "href": "/"
+        },
+        {
+          "label": "Maintenance industrielle : six offres, une seule exigence",
+          "href": "/offres/"
+        },
+        {
+          "label": "Retrofit machine industrielle",
+          "href": "/offres/retrofit/"
+        },
+        {
+          "label": "Mise en conformité des machines : fixez le calendrier avant l'inspection",
+          "href": "/offres/retrofit/mise-en-conformite-machine/"
+        }
+      ],
+      "liees": [
+        {
+          "h1": "Retrofit machine industrielle",
+          "fam": "Offres",
+          "href": "/offres/retrofit/"
+        },
+        {
+          "h1": "Remise en état machine industrielle",
+          "fam": "Offres",
+          "href": "/offres/retrofit/remise-en-etat/"
+        },
+        {
+          "h1": "Bureau d'études industriel : des études qui tiennent au montage",
+          "fam": "Offres",
+          "href": "/bureau-etudes/"
+        },
+        {
+          "h1": "Bureau d'étude électrique : du schéma à l'armoire qui tourne",
+          "fam": "Offres",
+          "href": "/bureau-etudes/bureau-etude-electrique/"
+        },
+        {
+          "h1": "Bureau d'étude électronique : une carte pensée pour être réparée",
+          "fam": "Offres",
+          "href": "/bureau-etudes/bureau-etude-electronique/"
+        },
+        {
+          "h1": "Mise en conformité machine : fixez le calendrier avant l'inspection",
+          "fam": "Offres",
+          "href": "/bureau-etudes/mise-en-conformite-machine/"
+        }
+      ],
+      "blocs": [
+        {
+          "type": "p",
+          "text": "Audit du parc machine par machine, analyse de risques chiffrée, travaux exécutés par nos techniciens, dossier technique remis à l'organisme accrédité de votre choix."
+        },
+        {
+          "type": "p",
+          "text": "**Besoin de savoir où en est votre parc ?**"
+        },
+        {
+          "type": "quote",
+          "text": "[Faire auditer mes machines](/contact/) · 04 78 33 72 05"
+        },
+        {
+          "type": "p",
+          "text": "**Nous vous rappelons dans l'heure**, du lundi au vendredi de 8h00 à 18h30. Astreinte pour les équipements arrêtés."
+        },
+        {
+          "type": "h2",
+          "text": "Chiffres clés"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "**10 %** : des techniciens retenus, après entretien technique et comportemental.",
+            "**+120** : collaborateurs, techniciens et ingénieurs salariés.",
+            "**+200** : clients industriels accompagnés",
+            "**4** : agences, Lyon (siège), Montréal, Dubaï, Madrid."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Le problème"
+        },
+        {
+          "type": "h3",
+          "text": "Une machine mal protégée, et c'est l'inspection du travail qui fixe votre calendrier."
+        },
+        {
+          "type": "p",
+          "text": "**Le constat.** La conformité d'un parc n'est jamais acquise une fois pour toutes."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "**Les protections tombent avec le temps.** Un protecteur démonté pour un réglage, un arrêt d'urgence contourné, et la machine sort de son état d'origine.",
+            "**Les anciennes machines restent concernées.** Un équipement mis en service avant l'obligation de marquage doit respecter les prescriptions techniques du code du travail, CE ou pas.",
+            "**Une modification vous transforme en responsable.** Automatiser, augmenter une capacité, changer un usage : la charge de la conformité bascule sur votre entreprise."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "**Le coût de l'inaction.** Un arrêt imposé par un agent de contrôle tombe toujours au pire moment. L'accident, lui, engage la responsabilité de l'employeur."
+        },
+        {
+          "type": "p",
+          "text": "**La réponse.** Traiter la conformité comme un projet planifié, priorisé par niveau de risque, étalé sur vos fenêtres de production."
+        },
+        {
+          "type": "h2",
+          "text": "L’offre"
+        },
+        {
+          "type": "table",
+          "head": [
+            "Prestation",
+            "Ce que vous y gagnez"
+          ],
+          "rows": [
+            [
+              "**Audit de conformité sur site**, machine par machine : protecteurs, commandes, partie électrique, pneumatique, hydraulique, documentation",
+              "Vous savez exactement où vous en êtes, équipement par équipement, au lieu d'apprendre les écarts pendant un contrôle"
+            ],
+            [
+              "**Analyse de risques** poste par poste, appuyée sur les normes d'appréciation du risque",
+              "Chaque mesure proposée est justifiée. L'analyse alimente aussi votre document unique"
+            ],
+            [
+              "**Plan d'actions chiffré** : protecteurs, barrages immatériels, commandes bimanuelles, arrêts d'urgence, reprise de circuit, asservissements",
+              "Vous arbitrez avec les coûts sous les yeux. Le budget s'étale par priorité au lieu de partir d'un coup"
+            ],
+            [
+              "**Travaux** en mécanique, électricité et automatisme, coordonnés avec la production",
+              "Les opérations se calent sur vos arrêts. La ligne ne s'arrête pas pour nous"
+            ],
+            [
+              "**Mise à jour du dossier technique** : schémas, notices, consignes, rapport de réalisation",
+              "Votre démarche est démontrable devant un contrôleur comme devant un donneur d'ordres"
+            ],
+            [
+              "**Préparation et assistance à la visite** de l'organisme accrédité, levée des réserves",
+              "Vous arrivez à la vérification avec un dossier propre, pas avec des questions ouvertes"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "**Ce que nous ne faisons pas, par principe.** Nous ne délivrons jamais nous-mêmes l'attestation de conformité. La vérification finale revient à un organisme accrédité indépendant, que vous choisissez. Celui qui réalise les travaux ne doit pas être celui qui les juge."
+        },
+        {
+          "type": "h2",
+          "text": "Le déroulé"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "**Votre appel ou votre formulaire.** Nous vous rappelons dans l'heure. Un échange technique cadre le périmètre : nombre de machines, secteur, contraintes de production.",
+            "**L'audit sur site.** Un ingénieur ou un technicien confirmé examine chaque équipement en conditions réelles d'utilisation, opérateurs compris.",
+            "**L'analyse de risques.** Phénomènes dangereux, situations d'exposition, gravité, probabilité. Méthode transparente, écart par écart.",
+            "**Le plan d'actions chiffré.** Une solution technique et un coût en face de chaque écart, classés par niveau de risque. Vous décidez de l'ordre.",
+            "**Les travaux.** Nos techniciens exécutent, appuyés si besoin par notre bureau d'études, en coordination avec votre production.",
+            "**La documentation.** Dossier technique, schémas et consignes mis à jour. Une mise en conformité sans documentation ne protège personne.",
+            "**La vérification et la remise en service.** L'organisme accrédité passe, nous assistons à la visite, nous levons les réserves, la machine repart selon une procédure écrite à l'avance."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Ce que nous garantissons"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "**Un rappel dans l'heure**, du lundi au vendredi de 8h00 à 18h30, et une astreinte au 04 78 33 72 05 quand un équipement est immobilisé.",
+            "**Un seul interlocuteur** de l'accueil de votre demande jusqu'à la levée des réserves. Personne ne prend votre dossier en marche.",
+            "**Des techniciens salariés Migen, évalués** en entretien technique et comportemental : seuls 10 % des techniciens sont retenus. Sur un chantier de sécurité, ce filtre n'est pas décoratif."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "**Les pièces, sans avoir à les réclamer.** Nos attestations partent avec chaque plan de prévention : démarche MASE pour la sécurité des interventions, évaluation EcoVadis pour la performance RSE."
+        },
+        {
+          "type": "p",
+          "text": "**Besoin de savoir combien de machines de votre parc sont hors des clous ?**"
+        },
+        {
+          "type": "quote",
+          "text": "[Faire auditer mes machines](/contact/) · 04 78 33 72 05, rappel dans l'heure"
+        },
+        {
+          "type": "p",
+          "text": "Un audit chiffré vaut mieux qu'une intuition. Le formulaire prend quatre champs."
+        },
+        {
+          "type": "h2",
+          "text": "Nos références"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "[Étude de cas JOINT LYONNAIS : défaillances machines](/preuves/joint-lyonnais/) · Lyon, depuis février 2024. Diagnostic sur site et plusieurs solutions chiffrées, calées sur le budget d'une PME, plutôt qu'un rachat de matériel.",
+            "[Étude de cas SUEZ : remise en état d'un site](/preuves/suez-remise-en-etat/) · Un technicien électromécanicien mobilisé six mois en environnement à risque chimique.",
+            "[Étude de cas EIFFAGE : partenariat](/preuves/eiffage/) · Trois techniciens en préventif sur une installation photovoltaïque de grande envergure.",
+            "[Étude de cas SOPREMA : travaux ponctuels](/preuves/soprema/) · Montage, déplacement de machines et renfort technique sur chantiers."
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "Toutes nos réalisations documentées : [Preuves : nos réalisations](/preuves/)"
+        },
+        {
+          "type": "h2",
+          "text": "Questions fréquentes"
+        },
+        {
+          "type": "p",
+          "text": "**Combien coûte une mise en conformité ?**"
+        },
+        {
+          "type": "p",
+          "text": "Le montant est chiffré sur devis, après audit. Il dépend du nombre de machines et des écarts constatés. Le plan d'actions est étalé par ordre de priorité : l'essentiel d'abord, le reste ensuite, sans immobiliser le budget d'un coup."
+        },
+        {
+          "type": "p",
+          "text": "**Une machine ancienne sans marquage CE est-elle forcément hors la loi ?**"
+        },
+        {
+          "type": "p",
+          "text": "Non. Le marquage s'impose aux machines mises sur le marché depuis son entrée en vigueur. Les équipements antérieurs relèvent des prescriptions techniques prévues pour les machines en service."
+        },
+        {
+          "type": "p",
+          "text": "Une machine ancienne bien protégée peut être parfaitement en règle. L'ancienneté ne dispense de rien, et elle ne condamne rien non plus : seul un diagnostic tranche."
+        },
+        {
+          "type": "p",
+          "text": "**Pouvez-vous reprendre un dossier commencé par un autre prestataire ?**"
+        },
+        {
+          "type": "p",
+          "text": "Oui. Nous reprenons l'analyse de risques existante, nous vérifions ce qui a été réalisé, et nous chiffrons uniquement le reste à faire. Aucune obligation de tout recommencer."
+        },
+        {
+          "type": "p",
+          "text": "**Qui délivre l'attestation de conformité ?**"
+        },
+        {
+          "type": "p",
+          "text": "Un organisme accrédité indépendant, jamais nous. Migen réalise le chantier, constitue le dossier et vous assiste pendant la visite. Cette séparation des rôles est ce qui donne sa valeur à la vérification."
+        },
+        {
+          "type": "p",
+          "text": "**Qui intervient réellement sur mes machines ?**"
+        },
+        {
+          "type": "p",
+          "text": "Des techniciens salariés Migen, évalués en entretien technique et comportemental à l'entrée : 10 % des techniciens sont retenus."
+        },
+        {
+          "type": "p",
+          "text": "Leurs habilitations sont à jour et vérifiables, les attestations partent avec le plan de prévention, et ils passent par votre accueil sécurité comme vos propres équipes."
+        },
+        {
+          "type": "p",
+          "text": "**Intervenez-vous partout en France ?**"
+        },
+        {
+          "type": "p",
+          "text": "Oui. Nos techniciens partent de dix hubs, Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes, et se déplacent sur votre site où qu'il soit."
+        },
+        {
+          "type": "p",
+          "text": "Le siège est à Lyon, avec trois autres agences à Montréal, Dubaï et Madrid. Un parc réparti sur plusieurs implantations est traité par un seul interlocuteur, avec le même référentiel d'audit partout."
+        },
+        {
+          "type": "p",
+          "text": "Plus de 200 clients industriels, de l'agroalimentaire à l'automobile, nous confient leurs équipements."
+        },
+        {
+          "type": "p",
+          "text": "**Besoin d'un plan d'actions chiffré avant votre prochain contrôle ?**"
+        },
+        {
+          "type": "quote",
+          "text": "[Faire auditer mes machines](/contact/) · 04 78 33 72 05 Rappel dans l'heure du lundi au vendredi, 8h00 à 18h30. Astreinte."
+        },
+        {
+          "type": "quote",
+          "text": "À lire aussi : [remise en état machine industrielle](/offres/retrofit/remise-en-etat/) · [retrofit machine industrielle](/offres/retrofit/)"
+        }
+      ]
+    }
   }
 }

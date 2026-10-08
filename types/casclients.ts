@@ -107,16 +107,77 @@ export interface ContenuCasClients {
   avis?: AvisCasClients;
 }
 
+/* ------------------------------------------------------------------------
+ * LE HUB /preuves/, gabarit « 10 Hub de rubrique » de l'index de la maquette,
+ * rendu par `MigenPreuves.dc.html`. Mesuré le 08/10 contre
+ * `maquette/rendu/preuves.html` : trois écrans (héros à mosaïque, études de
+ * cas filtrées par type de besoin, bandeau d'appel), rien de commun avec la
+ * page sur mesure /realisations/ que décrit le reste de ce fichier.
+ *
+ * MÊME DISCRIMINANT `gabarit: "casclients"`, distingué par `vue: "hub"` :
+ * la route tranche déjà sur `estCasClients`, et la ligne /preuves/ porte ce
+ * gabarit en base. Aucune branche de routage n'est à ajouter.
+ *
+ * LA DONNÉE EST LE CORPUS, `maquette/contenu/site/Preuves/preuves.md`, tel
+ * que la fonction `parse` de la maquette le lit : chaque chaîne est la copie
+ * de ce qu'affiche la capture. Photos, logos et libellés de structure sont du
+ * gabarit (`components/site/casclients/vues-preuves.ts`), pas de la donnée.
+ * ---------------------------------------------------------------------- */
+
+/** Une étude de cas, telle que la carte l'affiche. */
+export interface CasHubPreuves {
+  /** « DANONE (BLÉDINA) », en capitales dans le corpus. */
+  client: string;
+  /** Le titre de mission, majuscule initiale : « Pas un poste sans maintenance… ». */
+  sujet?: string;
+  /** La phrase de la liste du corpus, majuscule initiale. */
+  resume: string;
+  /** La fiche : « /preuves/<cas>/ ». */
+  url: string;
+}
+
+/** Un type de besoin, c'est-à-dire un onglet du filtre. */
+export interface CategorieHubPreuves {
+  /** Le libellé de l'onglet, court : « Maintenance en continu ». */
+  libelle: string;
+  /** « Le besoin : … », affiché quand l'onglet est actif. */
+  besoin: string;
+  cas: CasHubPreuves[];
+}
+
+export interface ContenuHubPreuves {
+  gabarit: "casclients";
+  vue: "hub";
+  /** La phrase en gras du chapeau. */
+  accroche: string;
+  /** Le reste du chapeau. */
+  intro: string;
+  categories: CategorieHubPreuves[];
+  /** Les fiches de « Les derniers publiés » : pastille « Récent ». */
+  recents: string[];
+}
+
 /**
  * Le contenu est-il celui d'une page de cas clients ?
  *
  * Lu sur un `jsonb`, donc sur de l'`unknown` : on regarde le discriminant
  * plutôt que de se fier au type déclaré.
  */
-export function estCasClients(contenu: unknown): contenu is ContenuCasClients {
+export function estCasClients(
+  contenu: unknown,
+): contenu is ContenuCasClients | ContenuHubPreuves {
   return (
     !!contenu &&
     typeof contenu === "object" &&
     (contenu as ContenuCasClients).gabarit === "casclients"
+  );
+}
+
+/** Le contenu est-il celui du hub /preuves/ ? */
+export function estHubPreuves(contenu: unknown): contenu is ContenuHubPreuves {
+  return (
+    estCasClients(contenu) &&
+    (contenu as ContenuHubPreuves).vue === "hub" &&
+    Array.isArray((contenu as ContenuHubPreuves).categories)
   );
 }

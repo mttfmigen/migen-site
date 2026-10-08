@@ -1,4 +1,5 @@
-import type { ReactNode } from "react";
+import Image from "next/image";
+import type { CSSProperties, ReactNode } from "react";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import { VERRE } from "@/components/site/blocs/habillage";
@@ -22,10 +23,26 @@ import SectionFicheMetier, { BoutonPostuler } from "./SectionsFicheMetier";
  * révélations au défilement en `data-reveal`, animées par `Moteurs.tsx` déjà
  * monté dans la mise en page racine.
  *
- * LES PHOTOS DE LA CAPTURE SONT EN `blob:` : le fichier n'est pas nommé, donc
- * aucune photo n'est rendue (contrat), les cadres `var(--ph)` restent. À
- * combler quand la maquette nommera ses fichiers.
+ * LES PHOTOS : la capture les sert en `blob:`. Relues le 08/10 dans la
+ * maquette vivante (octets lus par XHR, sha256 contre `public/assets/web`),
+ * chacune est un fichier du dépôt, nommé dans la donnée (`heros.photo`,
+ * `liens[].photo`). Sans photo dans la donnée, le cadre `var(--ph)` reste.
+ *
+ * PAS DE RANGÉE DE FIL D'ARIANE : `FilAriane` ne rend plus que son JSON-LD
+ * (aucune des 248 captures n'en dessine), et la section de 24 px qui
+ * l'enveloppait, avec le `paddingTop: 96` d'avant, posait le H1 58 px plus bas
+ * que la maquette (`padding-top: 62px`, mesuré par verifie-position-titre).
  */
+
+/**
+ * Les jetons de `.mgk-root`, la racine de `MigenCarriere.dc.html` : ils sont
+ * ceux de `:root` à une exception près, `--sec: 120px` À TOUTES LES LARGEURS.
+ * La règle `.mg-site { --sec: 64px }` sous 760 px (globals.css) ne descend donc
+ * pas jusqu'aux pages carrière de la maquette : mesuré à 390 px, 120 px dans
+ * la maquette, 64 sur le site, soit 56 px d'écart en tête de chaque section.
+ * Partagé avec le hub `/carriere/`, servi par le même fichier.
+ */
+export const RACINE_CARRIERE = { "--sec": "120px" } as CSSProperties;
 
 export interface ProprietesPageFicheMetier {
   titre: string;
@@ -41,11 +58,9 @@ export default function PageFicheMetier({
 }: ProprietesPageFicheMetier) {
   const heros = contenu.heros;
   return (
-    <div className="mg-site">
-      <main style={{ paddingTop: 96 }}>
-        <section style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 40px 0" }}>
-          {filAriane}
-        </section>
+    <div className="mg-site" style={RACINE_CARRIERE}>
+      <main style={{ paddingTop: 62 }}>
+        {filAriane}
 
         {/* ---------------------------------------------------------- héros */}
         <section style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 40px 0" }}>
@@ -151,18 +166,27 @@ export default function PageFicheMetier({
               </div>
             </div>
             <div style={{ position: "relative" }}>
-              {/* Le cadre-photo du héros. La capture sert l'image en `blob:`,
-                  fichier non nommé : le cadre attend sa photo, rien n'est
-                  inventé à sa place. */}
               <div
                 style={{
+                  position: "relative",
                   borderRadius: 32,
                   overflow: "hidden",
                   height: 470,
                   background: "var(--ph)",
                   boxShadow: "0 40px 90px -50px rgba(28,27,25,.55)",
                 }}
-              />
+              >
+                {heros.photo ? (
+                  <Image
+                    src={heros.photo.src}
+                    alt={heros.photo.alt ?? ""}
+                    fill
+                    priority
+                    sizes="(max-width: 900px) 100vw, 520px"
+                    style={{ objectFit: "cover", filter: "saturate(var(--sat)) contrast(1.05)" }}
+                  />
+                ) : null}
+              </div>
               {heros.chiffre ? (
                 <div
                   className={styles.flottante}

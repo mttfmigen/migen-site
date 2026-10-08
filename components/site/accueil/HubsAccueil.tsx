@@ -1,8 +1,16 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import styles from "./HubsAccueil.module.css";
+import bordeaux from "./hubs/bordeaux.jpg";
+import lille from "./hubs/lille.jpg";
+import lyon from "./hubs/lyon.jpg";
+import marseille from "./hubs/marseille.jpg";
+import nantes from "./hubs/nantes.jpg";
+import paris from "./hubs/paris.jpg";
+import strasbourg from "./hubs/strasbourg.jpg";
+import toulouse from "./hubs/toulouse.jpg";
 
 export interface HubAccueil {
   /** Ville, affichée dans la pastille blanche. */
@@ -11,56 +19,104 @@ export interface HubAccueil {
   /** Territoires couverts, une seule ligne. */
   couverture: string;
   chemin: string;
-  image: string;
+  image: string | StaticImageData;
+  alt: string;
 }
 
 interface Proprietes {
   hubs?: readonly HubAccueil[];
 }
 
-/** Les hubs présents dans la maquette, dans son ordre. */
+/**
+ * Les dix hubs de la maquette autonome, dans son ordre, textes et photos
+ * compris (relevé du 08/10 ; l'ancien relevé, sur `accueil-rendu.html` du
+ * 02/10, n'en comptait que six et rattachait Bordeaux à Toulouse).
+ *
+ * Huit photos de ville n'existent que dans la maquette : extraites telles
+ * quelles dans `./hubs/`, importées statiquement (next/image les sert à la
+ * taille de la carte). Metz et Dijon emploient des fichiers déjà présents
+ * dans `public/`, identiques octet pour octet à ceux de la maquette.
+ */
 const HUBS: readonly HubAccueil[] = [
   {
     ville: "Lyon",
     titre: "Hub Lyon",
     couverture: "Siège · Grenoble, Saint-Étienne, Valence, Haute-Savoie",
     chemin: "/implantations/lyon/",
-    image: "/assets/web/sv-convoyeur.jpg",
+    image: lyon,
+    alt: "Lyon, la basilique de Fourvière au coucher du soleil",
   },
   {
     ville: "Paris",
     titre: "Hub Paris",
     couverture: "Essonne, Rouen",
     chemin: "/implantations/paris/",
-    image: "/assets/web/ph-hero-raffinerie.jpg",
+    image: paris,
+    alt: "Paris et la tour Eiffel",
   },
   {
     ville: "Lille",
     titre: "Hub Lille",
     couverture: "Hauts-de-France",
     chemin: "/implantations/lille/",
-    image: "/assets/web/x-logistique-entrepot.jpg",
+    image: lille,
+    alt: "Façades du centre de Lille",
   },
   {
     ville: "Strasbourg",
     titre: "Hub Strasbourg",
     couverture: "Alsace, Mulhouse",
     chemin: "/implantations/strasbourg/",
-    image: "/assets/web/x-cimenterie.jpg",
+    image: strasbourg,
+    alt: "Strasbourg, les Ponts couverts",
   },
   {
     ville: "Nantes",
     titre: "Hub Nantes",
     couverture: "Loire-Atlantique, Rennes, Brest",
     chemin: "/implantations/nantes/",
-    image: "/assets/web/sv-armoire.jpg",
+    image: nantes,
+    alt: "Vue aérienne de Nantes",
   },
   {
     ville: "Toulouse",
     titre: "Hub Toulouse",
-    couverture: "Haute-Garonne, Bordeaux, Gironde, Charente",
+    couverture: "Haute-Garonne, Albi, Tarbes, Agen",
     chemin: "/implantations/toulouse/",
-    image: "/assets/web/ph-robots-solaire.jpg",
+    image: toulouse,
+    alt: "Toulouse, la Garonne et la ville rose",
+  },
+  {
+    ville: "Marseille",
+    titre: "Hub Marseille",
+    couverture: "Fos, Toulon, Nîmes, Perpignan",
+    chemin: "/implantations/marseille/",
+    image: marseille,
+    alt: "Marseille, le Vieux-Port",
+  },
+  {
+    ville: "Bordeaux",
+    titre: "Hub Bordeaux",
+    couverture: "Gironde, Mérignac, Charente",
+    chemin: "/implantations/bordeaux/",
+    image: bordeaux,
+    alt: "Bordeaux, les quais de la Garonne",
+  },
+  {
+    ville: "Metz",
+    titre: "Hub Metz",
+    couverture: "Moselle, Nancy, sillon lorrain",
+    chemin: "/implantations/maintenance-industrielle-metz/",
+    image: "/assets/web/mq-dcd9cac6ffbf.jpg",
+    alt: "Site industriel en Lorraine",
+  },
+  {
+    ville: "Dijon",
+    titre: "Hub Dijon",
+    couverture: "Côte-d’Or, Besançon, Chalon",
+    chemin: "/implantations/maintenance-industrielle-dijon/",
+    image: "/assets/web/x-cablerie.jpg",
+    alt: "Atelier industriel en Bourgogne",
   },
 ];
 
@@ -162,7 +218,7 @@ export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
             >
               <Image
                 src={hub.image}
-                alt=""
+                alt={passe === 0 ? hub.alt : ""}
                 fill
                 sizes="(max-width: 760px) 86vw, 320px"
                 style={{

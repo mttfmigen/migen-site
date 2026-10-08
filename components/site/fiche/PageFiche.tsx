@@ -126,11 +126,7 @@ export default function PageFiche({
   return (
     <div className="mg-site">
       <main style={{ paddingTop: 96 }}>
-        {filAriane ? (
-          <section style={{ ...LARGEUR, padding: "24px 40px 0" }}>
-            {filAriane}
-          </section>
-        ) : null}
+        {filAriane}
 
         <section style={{ ...LARGEUR, padding: "70px 40px 0" }}>
           <div

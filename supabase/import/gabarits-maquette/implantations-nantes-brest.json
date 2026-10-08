@@ -1,199 +1,164 @@
 {
   "url": "/implantations/nantes/brest/",
+  "titre_h1": "Maintenance industrielle à Brest et dans le Finistère",
   "contenu": {
     "gabarit": "ville",
+    "pastille": "Nos implantations",
     "chapeau": "Réparation navale, marée, légumes, ateliers d'usinage en séries courtes. La pointe bretonne travaille avec du levage partout et peu de prestataires techniques à portée. Nous y intervenons avec des techniciens qui se déplacent partout en France : nous n'avons ni agence ni hub de techniciens dans le Finistère.",
     "actions": [
       {
         "libelle": "Faire chiffrer ma maintenance à Brest",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperes": [
+    "mention": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. En option, l'astreinte la nuit, le week-end et les jours fériés prend les appels de nuit, de week-end et de jour férié.",
+    "formulaireHeroTitre": "Faire chiffrer ma maintenance à Brest",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "appelBouton": "Faire chiffrer ma maintenance à Brest",
+    "chiffres": [
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels en France, dont plus de 80 réguliers"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, évalués en entretien technique et comportemental, embauchés en CDI"
+        "libelle": "Des techniciens retenus, évalués en entretien technique et comportemental, embauchés en CDI"
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, et des techniciens qui se déplacent partout en France"
+        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, et des techniciens qui se déplacent partout en France"
       }
     ],
-    "contact": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. En option, l'astreinte 24/24 et 7/7 prend les appels de nuit, de week-end et de jour férié.",
-    "constatTexte": "À Brest, un prestataire lointain met d'abord une heure à retrouver la carte du Finistère. Pendant ce temps, votre ligne de marée est à l'arrêt et la matière première tourne.",
-    "constatPuces": [
+    "hubLocal": {
+      "surtitre": "Votre hub local · Brest",
+      "titre": "Brest : les industries que nos techniciens connaissent déjà",
+      "photo": "/assets/web/sv-duo-impact.jpg",
+      "badge": "Rattaché au hub Nantes",
+      "nom": "Brest, couvert par le hub Nantes",
+      "texte": "Les techniciens du hub Nantes interviennent à Brest et alentour, avec les mêmes méthodes et un seul interlocuteur.",
+      "bouton": "Demander une intervention à Brest",
+      "cartes": [
+        {
+          "surtitre": "Tissu principal",
+          "titre": "Industrie métallique",
+          "texte": "Port, réparation navale, manutention de quai : les moyens lourds exigent des habilitations à jour, pas de la bonne…",
+          "lien": "Notre approche industrie métallique",
+          "href": "/secteurs/industrie-metallique/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Agroalimentaire",
+          "texte": "L'agroalimentaire breton travaille avec du frais.",
+          "lien": "Notre approche agroalimentaire",
+          "href": "/secteurs/agroalimentaire/"
+        }
+      ],
+      "zonesTitre": "Hub de rattachement et zones voisines",
+      "zones": [
+        {
+          "libelle": "Hub Nantes",
+          "href": "/implantations/nantes/"
+        },
+        {
+          "libelle": "Loire-Atlantique",
+          "href": "/implantations/nantes/loire-atlantique/"
+        },
+        {
+          "libelle": "Rennes",
+          "href": "/implantations/nantes/rennes/"
+        }
+      ]
+    },
+    "complementOffre": [
       {
-        "texte": "Port, réparation navale, manutention de quai : les moyens lourds exigent des habilitations à jour, pas de la bonne volonté.",
-        "accroche": "Le levage est partout, et il ne s'improvise pas."
-      },
-      {
-        "texte": "Lait, marée, légumes : l'arrêt prolongé met en jeu le produit avant la production.",
-        "accroche": "L'agroalimentaire breton travaille avec du frais."
-      },
-      {
-        "texte": "Usinage, chaudronnerie, construction mécanique : un parc varié, des délais tendus, aucune marge de reprise.",
-        "accroche": "Les séries courtes usent les ateliers."
-      },
-      {
-        "texte": "Compresseurs, pompes, traitement de l'eau, chaufferies : leur panne arrête des ateliers qui vont très bien.",
-        "accroche": "Les utilités portent tout le reste."
-      },
-      {
-        "texte": "Faire venir une spécialité rare prend du temps si personne ne l'a organisée à l'avance.",
-        "accroche": "Vous êtes loin des grands centres."
+        "texte": "Le format des sites qui concentrent leurs interventions lourdes sur une fenêtre courte."
       }
     ],
-    "reponseTexte": "L'[arrêt technique](/offres/arret-technique/) se prépare de J-90 à J-30, avec restitution à la demi-journée. Le format des sites qui concentrent leurs interventions lourdes sur une fenêtre courte.",
-    "reponsePuces": [
+    "brefBande": "Besoin d'un partenaire technique qui se déplace vraiment jusqu'au Finistère ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Faire chiffrer ma maintenance à Brest",
+      "href": "#besoin"
+    },
+    "sections": [
       {
-        "texte": "un site éloigné des grands centres n'est pas un site de seconde zone. Les visites se planifient par tournées préparées, pour que chaque passage soit outillé.",
-        "accroche": "Le même niveau de service qu'en région dense"
+        "type": "probleme",
+        "punchline": "À Brest, un prestataire lointain met d'abord une heure à retrouver la carte du Finistère. Pendant ce temps, votre ligne de marée est à l'arrêt et la matière première tourne.",
+        "puces": [
+          {
+            "accroche": "Le levage est partout, et il ne s'improvise pas.",
+            "texte": "Port, réparation navale, manutention de quai : les moyens lourds exigent des habilitations à jour, pas de la bonne volonté."
+          },
+          {
+            "accroche": "L'agroalimentaire breton travaille avec du frais.",
+            "texte": "Lait, marée, légumes : l'arrêt prolongé met en jeu le produit avant la production."
+          },
+          {
+            "accroche": "Les séries courtes usent les ateliers.",
+            "texte": "Usinage, chaudronnerie, construction mécanique : un parc varié, des délais tendus, aucune marge de reprise."
+          },
+          {
+            "accroche": "Les utilités portent tout le reste.",
+            "texte": "Compresseurs, pompes, traitement de l'eau, chaufferies : leur panne arrête des ateliers qui vont très bien."
+          },
+          {
+            "accroche": "Vous êtes loin des grands centres.",
+            "texte": "Faire venir une spécialité rare prend du temps si personne ne l'a organisée à l'avance."
+          }
+        ],
+        "variante": "rangee"
       },
-      {
-        "texte": "automaticiens, roboticiens ABB et Fanuc, soudeurs, mécaniciens, bureau d'études. Personne ne reste seul face à une panne rare.",
-        "accroche": "Un groupe derrière chaque technicien"
-      },
-      {
-        "texte": "dites la situation, nous vous mettons sur la bonne offre, pas sur la plus chère. Le tri se fait en amont, votre budget s'en ressent.",
-        "accroche": "Une orientation honnête sur le format"
-      }
-    ],
-    "faq": [
-      {
-        "reponse": "Oui : Guipavas et Gouesnou aux portes de la ville, Plougastel et Landerneau, Saint-Renan et le pays d'Iroise. Puis Morlaix au nord, Quimper et Concarneau en Cornouaille, et les zones rurales entre les trois. Disons-le franchement : nous n'avons ni agence ni hub de techniciens dans le Finistère, mais nos techniciens s'y déplacent et la mission est préparée avant l'arrivée. L'axe Saint-Brieuc, Saint-Malo, Rennes prolonge la continuité vers l'est.",
-        "question": "Couvrez-vous tout le Finistère au-delà de Brest ?"
-      },
-      {
-        "reponse": "Aucun chiffre ne sera publié ici. Un chargé d'affaires vous rappelle dans l'heure aux horaires ouvrés et cale l'intervention selon l'urgence réelle : machine arrêtée, production dégradée ou visite à planifier. Les urgences de nuit et de week-end passent par l'astreinte souscrite au contrat.",
-        "question": "Sous quel délai intervenez-vous ?"
-      },
-      {
-        "reponse": "Oui, construction et réparation navale comprises. Nos équipes pratiquent l'application stricte des plans de prévention, les permis de travaux, le levage lourd et les règles sanitaires des ateliers agroalimentaires. Les résultats d'évaluation de chaque intervenant sont partagés avant la mission.",
-        "question": "Intervenez-vous en environnement naval ou agroalimentaire ?"
-      },
-      {
-        "reponse": "Corrective pour remettre en route, préventive pour éviter la panne, améliorative pour fiabiliser durablement. Le plan d'entretien se construit sur vos heures de fonctionnement réelles, et chaque visite alimente votre GMAO au jour le jour.",
-        "question": "Quels types de maintenance proposez-vous ?"
-      },
-      {
-        "reponse": "Oui : un seul interlocuteur, un seul cadre contractuel, une même politique de maintenance sur les deux. Nos comptes rendus sortent au même format et le taux horaire reste homogène partout en France.",
-        "question": "Pouvez-vous couvrir un site à Brest et un autre ailleurs en France ?"
-      },
-      {
-        "reponse": "Nous consultons le marché au prix réel : moteurs, roulements, composants électriques, matériel de levage, hydraulique et pneumatique. La pièce à son prix, la main d'œuvre à son taux, aucun coefficient caché. Nous conseillons aussi un stock minimal de pièces critiques, dimensionné sur vos historiques.",
-        "question": "Fournissez-vous les pièces détachées ?"
-      }
-    ],
-    "autres": [
-      {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
-      },
-      {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
-      },
-      {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
-      },
-      {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
-      },
-      {
-        "libelle": "Valence",
-        "href": "/implantations/lyon/valence/"
-      },
-      {
-        "libelle": "Nantes",
-        "href": "/implantations/nantes/"
-      },
-      {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
-      },
-      {
-        "libelle": "paris",
-        "href": "/implantations/paris/"
-      },
-      {
-        "libelle": "Rouen",
-        "href": "/implantations/paris/rouen/"
-      },
-      {
-        "libelle": "Strasbourg",
-        "href": "/implantations/strasbourg/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
-      },
-      {
-        "libelle": "Toulouse",
-        "href": "/implantations/toulouse/"
-      },
-      {
-        "libelle": "Bordeaux",
-        "href": "/implantations/toulouse/bordeaux/"
-      }
-    ],
-    "reste": [
       {
         "type": "offre",
         "lignes": [
           {
-            "benefice": "Les opérations lourdes se déroulent en sécurité, et la traçabilité suit sans effort de votre part.",
             "prestation": {
-              "texte": "permis de travaux, plans de prévention, élingage, contrôles.",
-              "accroche": "Mécanique lourde et levage en environnement naval"
-            }
+              "accroche": "Mécanique lourde et levage en environnement naval",
+              "texte": "Permis de travaux, plans de prévention, élingage, contrôles."
+            },
+            "benefice": "Les opérations lourdes se déroulent en sécurité, et la traçabilité suit sans effort de votre part."
           },
           {
-            "benefice": "Une dérive thermique repérée tôt évite la casse complète et le délai de réapprovisionnement.",
             "prestation": {
-              "texte": "diagnostic électrique, alignement, réparation ou remplacement.",
-              "accroche": "Moteurs et motoréducteurs"
-            }
+              "accroche": "Moteurs et motoréducteurs",
+              "texte": "Diagnostic électrique, alignement, réparation ou remplacement."
+            },
+            "benefice": "Une dérive thermique repérée tôt évite la casse complète et le délai de réapprovisionnement."
           },
           {
-            "benefice": "La pression redevient fiable, et les surconsommations d'énergie baissent avec.",
             "prestation": {
-              "texte": "recherche de fuites, cavitation, vérins fatigués, filtres.",
-              "accroche": "Pompes, hydraulique et réseaux d'air"
-            }
+              "accroche": "Pompes, hydraulique et réseaux d'air",
+              "texte": "Recherche de fuites, cavitation, vérins fatigués, filtres."
+            },
+            "benefice": "La pression redevient fiable, et les surconsommations d'énergie baissent avec."
           },
           {
-            "benefice": "Votre installation redevient pilotable, y compris quand le constructeur n'existe plus.",
             "prestation": {
-              "texte": "défauts intermittents, cartes en fin de vie, programmes repris sans documentation.",
-              "accroche": "Automatismes et variateurs"
-            }
+              "accroche": "Automatismes et variateurs",
+              "texte": "Défauts intermittents, cartes en fin de vie, programmes repris sans documentation."
+            },
+            "benefice": "Votre installation redevient pilotable, y compris quand le constructeur n'existe plus."
           },
           {
-            "benefice": "Le transport interne cesse d'être le maillon qui casse en premier.",
             "prestation": {
-              "texte": "en cadence portuaire ou logistique : bandes, rouleaux, chaînes, engins.",
-              "accroche": "Convoyeurs et manutention"
-            }
+              "accroche": "Convoyeurs et manutention en cadence portuaire ou logistique : bandes, rouleaux, chaînes, engins.",
+              "texte": ""
+            },
+            "benefice": "Le transport interne cesse d'être le maillon qui casse en premier."
           },
           {
-            "benefice": "Vous voyez venir la défaillance au lieu de la subir un samedi.",
             "prestation": {
-              "texte": "relevés, thermographie, remplacement des pièces d'usure.",
-              "accroche": "Préventif construit sur vos heures de fonctionnement"
-            }
+              "accroche": "Préventif construit sur vos heures de fonctionnement",
+              "texte": "Relevés, thermographie, remplacement des pièces d'usure."
+            },
+            "benefice": "Vous voyez venir la défaillance au lieu de la subir un samedi."
           },
           {
-            "benefice": "Un cadre écrit sur devis, 6 mois renouvelables, diagnostic gratuit au départ.",
             "prestation": {
-              "texte": "préventif planifié, priorité en cas de panne, astreinte en option.",
-              "accroche": "Contrat [Zéro arrêt](/offres/zero-arret/)"
-            }
+              "accroche": "Contrat Zéro arrêt",
+              "texte": "Préventif planifié, priorité en cas de panne, astreinte en option."
+            },
+            "benefice": "Un cadre écrit sur devis, 6 mois renouvelables, diagnostic gratuit au départ."
           }
         ]
       },
@@ -201,78 +166,145 @@
         "type": "deroule",
         "etapes": [
           {
-            "texte": "machine, symptôme, contexte, au 04 78 33 72 05 ou par le formulaire. Standard ouvert du lundi au vendredi.",
-            "titre": "La demande"
+            "titre": "La demande",
+            "texte": "Machine, symptôme, contexte, par téléphone ou par le formulaire. Standard ouvert du lundi au vendredi."
           },
           {
-            "texte": "rappel dans l'heure aux horaires ouvrés. Périmètre, risques, pièces probables, chiffrage, bureau d'études en appui si le sujet le demande.",
-            "titre": "La qualification"
+            "titre": "La qualification",
+            "texte": "Rappel dans l'heure aux horaires ouvrés. Périmètre, risques, pièces probables, chiffrage, bureau d'études en appui si le sujet le demande."
           },
           {
-            "texte": "si le besoin sort de notre champ, nous le disons au lieu de facturer un déplacement inutile.",
-            "titre": "L'avis franc"
+            "titre": "L'avis franc",
+            "texte": "Si le besoin sort de notre champ, nous le disons au lieu de facturer un déplacement inutile."
           },
           {
-            "texte": "technicien briefé, habilitations à jour, accueil sécurité respecté, diagnostic.",
-            "titre": "L'intervention sur site"
+            "titre": "L'intervention sur site",
+            "texte": "Technicien briefé, habilitations à jour, accueil sécurité respecté, diagnostic."
           },
           {
-            "texte": "contrôles en charge et validation avec votre exploitation.",
-            "titre": "Les essais et la mise en service"
+            "titre": "Les essais et la mise en service",
+            "texte": "Contrôles en charge et validation avec votre exploitation."
           },
           {
-            "texte": "sans attendre, dans votre GMAO ou notre rapport type. Cause, actions, pièces, préconisations.",
-            "titre": "Le compte rendu"
+            "titre": "Le compte rendu",
+            "texte": "Sans attendre, dans votre GMAO ou notre rapport type. Cause, actions, pièces, préconisations."
           }
         ]
       },
       {
-        "type": "cta",
-        "bouton": "Faire chiffrer ma maintenance à Brest",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin d'un partenaire technique qui se déplace vraiment jusqu'au Finistère ?"
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Le même niveau de service qu'en région dense",
+            "texte": "Un site éloigné des grands centres n'est pas un site de seconde zone. Les visites se planifient par tournées préparées, pour que chaque passage soit outillé."
+          },
+          {
+            "accroche": "Un groupe derrière chaque technicien",
+            "texte": "Automaticiens, roboticiens ABB et Fanuc, soudeurs, mécaniciens, bureau d'études. Personne ne reste seul face à une panne rare."
+          },
+          {
+            "accroche": "Une orientation honnête sur le format",
+            "texte": "Dites la situation, nous vous mettons sur la bonne offre, pas sur la plus chère. Le tri se fait en amont, votre budget s'en ressent."
+          }
+        ]
       },
       {
         "type": "preuves",
         "preuves": [
           {
-            "texte": "réception, assemblage, levage et raccordements, pour un fabricant qui installe sur tout le territoire",
             "titre": "Le montage complet de portiques de lavage partout en France",
+            "texte": "Réception, assemblage, levage et raccordements, pour un fabricant qui installe sur tout le territoire.",
+            "lienLibelle": "Étude de cas ORTHUS x WASHTEC",
             "lienHref": "/preuves/orthus-washtec/",
-            "lienLibelle": "Étude de cas ORTHUS x WASHTEC : installation de stations"
+            "photo": "/assets/web/x-tech-portrait.jpg"
           },
           {
-            "texte": ", en préventif, de septembre à novembre 2024",
             "titre": "Un renfort de trois techniciens spécialisés sur une centrale solaire de grande envergure",
+            "texte": ", en préventif, de septembre à novembre 2024.",
+            "lienLibelle": "Étude de cas EIFFAGE",
             "lienHref": "/preuves/eiffage/",
-            "lienLibelle": "Étude de cas EIFFAGE : partenariat"
+            "photo": "/assets/web/team-grind-front.jpg"
           },
           {
-            "texte": ", pour un industriel de l'étanchéité",
             "titre": "Montages, déplacements de machines et renfort technique sur chantiers sous tension",
+            "texte": ", pour un industriel de l'étanchéité.",
+            "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels"
+            "photo": "/assets/web/x-elec-cablage.jpg"
           },
           {
-            "texte": ", premier contrat hors de France",
             "titre": "1 à 3 techniciens en maintenance corrective et préventive sur un site agroalimentaire en flux permanent",
+            "texte": ", premier contrat hors de France.",
+            "lienLibelle": "Étude de cas McCAIN",
             "lienHref": "/preuves/mccain-belgique/",
-            "lienLibelle": "Étude de cas McCAIN : Belgique"
+            "photo": "/assets/web/team-duo.jpg"
           },
           {
-            "texte": "pendant les congés des équipes internes",
             "titre": "Un technicien intégré pendant l'arrêt estival pour tenir les équipements critiques",
+            "texte": "pendant les congés des équipes internes.",
+            "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "lienLibelle": "Étude de cas OGF : arrêt estival"
+            "photo": "/assets/web/x-logistique-entrepot.jpg"
+          },
+          {
+            "titre": "Pas un poste sans maintenance, week-end compris",
+            "lienLibelle": "Étude de cas Danone (Blédina)",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/team-duo.jpg"
+          },
+          {
+            "titre": "Une ligne de pain de mie suivie à chaque poste",
+            "lienLibelle": "Étude de cas Jacquet Brossard",
+            "lienHref": "/preuves/jacquet-brossard/",
+            "photo": "/assets/web/team-duo.jpg"
+          },
+          {
+            "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
+            "lienLibelle": "Étude de cas Salaison du Mâconnais",
+            "lienHref": "/preuves/salaison-du-maconnais/",
+            "photo": "/assets/web/ph-tuyaux.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Couvrez-vous tout le Finistère au-delà de Brest ?",
+            "reponse": "Oui : Guipavas et Gouesnou aux portes de la ville, Plougastel et Landerneau, Saint-Renan et le pays d'Iroise. Puis Morlaix au nord, Quimper et Concarneau en Cornouaille, et les zones rurales entre les trois. Disons-le franchement : nous n'avons ni agence ni hub de techniciens dans le Finistère, mais nos techniciens s'y déplacent et la mission est préparée avant l'arrivée. L'axe Saint-Brieuc, Saint-Malo, Rennes prolonge la continuité vers l'est."
+          },
+          {
+            "question": "Sous quel délai intervenez-vous ?",
+            "reponse": "Aucun chiffre ne sera publié ici. Un chargé d'affaires vous rappelle dans l'heure aux horaires ouvrés et cale l'intervention selon l'urgence réelle : machine arrêtée, production dégradée ou visite à planifier. Les urgences de nuit et de week-end passent par l'astreinte souscrite au contrat."
+          },
+          {
+            "question": "Intervenez-vous en environnement naval ou agroalimentaire ?",
+            "reponse": "Oui, construction et réparation navale comprises. Nos équipes pratiquent l'application stricte des plans de prévention, les permis de travaux, le levage lourd et les règles sanitaires des ateliers agroalimentaires. Les résultats d'évaluation de chaque intervenant sont partagés avant la mission."
+          },
+          {
+            "question": "Quels types de maintenance proposez-vous ?",
+            "reponse": "Corrective pour remettre en route, préventive pour éviter la panne, améliorative pour fiabiliser durablement. Le plan d'entretien se construit sur vos heures de fonctionnement réelles, et chaque visite alimente votre GMAO au jour le jour."
+          },
+          {
+            "question": "Pouvez-vous couvrir un site à Brest et un autre ailleurs en France ?",
+            "reponse": "Oui : un seul interlocuteur, un seul cadre contractuel, une même politique de maintenance sur les deux."
+          },
+          {
+            "question": "Fournissez-vous les pièces détachées ?",
+            "reponse": "Nous consultons le marché au prix réel : moteurs, roulements, composants électriques, matériel de levage, hydraulique et pneumatique. La pièce à son prix, la main d'œuvre à son taux, aucun coefficient caché. Nous conseillons aussi un stock minimal de pièces critiques, dimensionné sur vos historiques."
           }
         ]
       },
       {
         "type": "ctaFinal",
-        "bouton": "Faire chiffrer ma maintenance à Brest",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
         "question": "Besoin de fiabiliser vos utilités avant la prochaine saison de production ?"
       }
     ]
-  }
+  },
+  "trous": [
+    {
+      "ligne": "Nos comptes rendus sortent au même format et le taux horaire reste homogène partout en France.",
+      "pourquoi": "« taux horaire » : aucun prix, tarif ni taux horaire (contrat de rédaction et passation du client). Dernière phrase d'une réponse de « 09 Questions », le reste de la réponse est rendu."
+    }
+  ]
 }

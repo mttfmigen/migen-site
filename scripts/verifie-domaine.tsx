@@ -33,7 +33,9 @@ import { readdirSync, readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import PageMetier from "@/components/site/metier/PageMetier";
+import { estDomaine } from "@/types/domaine";
 import { estMetierOuDomaine, type ContenuMetier } from "@/types/metier";
+import { estSpecialite } from "@/types/specialite";
 
 /** La branche « domaine » de l'union, la seule que ce contrôle produit. */
 type Domaine = Extract<ContenuMetier, { gabarit: "domaine" }>;
@@ -129,8 +131,11 @@ const INTERDITS: [RegExp, string][] = [
     /\b(cl[ée] en main|sur mesure|levier|concr[èe]tement|notamment|incontournable|d[ée]couvrez)\b/i,
     "dire ce qui est fait",
   ],
-  [/\b(5|cinq)\s+agences/i, "quatre agences : Lyon siège à Limonest, Montréal, Dubaï, Madrid"],
-  [/\+\s?200|\b200\s+clients/i, "plus de 120 clients, dont plus de 80 réguliers"],
+  [/\b(5|cinq)\s+agences/i, "quatre agences : Lyon siège à Écully, Montréal, Dubaï, Madrid"],
+  // Règle validée par le client (design_handoff_migen_site/README.md) :
+  // « +200 clients », sans jamais préciser « réguliers ». « +200 » est exigé
+  // plus bas là où la capture le porte.
+  [/\b(?:clients|80)\s+r[ée]guliers\b/i, "« +200 clients », sans jamais préciser « réguliers »"],
   [/[—–]/, "virgule, parenthèses ou deux-points, jamais de tiret cadratin"],
   [/\bsous\s+\d+\s*(h|heures?|jours?)\b/i, "seul « rappel dans l'heure » est autorisé"],
   [
@@ -175,11 +180,20 @@ const fichiers = readdirSync(DOSSIER)
 assert.ok(fichiers.length > 0, `aucun fichier dans ${DOSSIER}`);
 
 const pages: { url: string; contenu: ContenuMetier }[] = [];
+let avec200 = 0;
+let autreGabarit = 0;
 for (const nom of fichiers) {
   const brut = JSON.parse(readFileSync(`${DOSSIER}/${nom}`, "utf8")) as {
     url: unknown;
     contenu: unknown;
   };
+  // Comme la route (`app/[...slug]/page.tsx`) : les pages passées à la forme
+  // `domaine` à sections ou `specialite` ne vont plus à ce composant, et ont
+  // leur propre contrôle (`components/site/expertises/**/verification-*.tsx`).
+  if (estDomaine(brut.contenu) || estSpecialite(brut.contenu)) {
+    autreGabarit += 1;
+    continue;
+  }
   assert.ok(
     estChaine(brut.url) && /^\/expertises\/[a-z-]+\/([a-z-]+\/)?$/.test(brut.url),
     `${nom} : url /expertises/<domaine>/[<sous-page>/] attendue, reçu « ${String(brut.url)} »`,
@@ -222,6 +236,19 @@ for (const nom of fichiers) {
     if (ou.endsWith(".href") || ou.endsWith(".src") || ou.endsWith(".lienHref")) continue;
     for (const [motif, remede] of INTERDITS)
       assert.ok(!motif.test(s), `${ou} : ${motif} interdit (${remede}) dans « ${s.slice(0, 120)} »`);
+  }
+
+  // « +200 » est exigé là où la capture le porte, en texte visible (hors script).
+  const capture = readFileSync(
+    `maquette/rendu/${(brut.url as string).slice(1, -1).replaceAll("/", "--")}.html`,
+    "utf8",
+  );
+  if (capture.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]*>/g, "").includes("+200")) {
+    assert.ok(
+      chaines(brut.contenu, nom).some(([, s]) => s.includes("+200")),
+      `${nom} : « +200 » est dans la capture, pas dans le contenu`,
+    );
+    avec200 += 1;
   }
 
   pages.push({ url: brut.url as string, contenu: brut.contenu as ContenuMetier });
@@ -367,7 +394,8 @@ assert.ok(
 );
 
 console.log(
-  `domaine : ${pages.length} pages conformes, ${rendus} éléments de la maquette rendus, ` +
+  `domaine : ${pages.length} pages conformes (${autreGabarit} passées à un autre gabarit), ` +
+    `« +200 » porté par les ${avec200} dont la capture l'affiche, ${rendus} éléments de la maquette rendus, ` +
     `${VIDES.length} cases déclarées vides, ${surtitres.length} sur-titres relus dans la maquette, ` +
     `rendu plein ${rendu.length} o, rendu creux ${renduCreux.length} o`,
 );

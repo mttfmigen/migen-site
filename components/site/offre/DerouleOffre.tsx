@@ -112,10 +112,15 @@ export default function DerouleOffre({
   section,
   titre = "Un appel. Un plan. Une ligne qui repart.",
 }: ProprietesDerouleOffre) {
-  // « tuiles » : relevé du diagnostic visuel du 07/10 sur six pages. La
-  // maquette y pose UNE grille de 4 colonnes, gouttière 14, où la carte
-  // d'en-tête occupe la première cellule, de la même taille que les étapes.
-  const tuiles = section.variante === "tuiles";
+  // La grille SE DÉDUIT DU NOMBRE D'ÉTAPES, relevé sur les 15 captures du
+  // gabarit 03 (08/10) : 3 colonnes jusqu'à 6 étapes, 4 au-delà ; la carte
+  // d'en-tête comble la rangée, donc pleine largeur quand les étapes tombent
+  // juste (6 sur 3, 8 sur 4), une seule cellule sinon (5 sur 3, 7 sur 4). La
+  // variante « tuiles » de la donnée (4 colonnes, en-tête d'une cellule) en
+  // est le cas à 7 étapes.
+  const n = section.etapes.length;
+  const colonnes = n <= 6 ? 3 : 4;
+  const tuiles = n % colonnes !== 0;
   return (
     <section style={SECTION}>
       <div style={LARGEUR}>
@@ -123,9 +128,7 @@ export default function DerouleOffre({
           className="mg-rmulti"
           style={{
             display: "grid",
-            gridTemplateColumns: tuiles
-              ? "repeat(4,minmax(0,1fr))"
-              : "repeat(3,minmax(0,1fr))",
+            gridTemplateColumns: `repeat(${colonnes},minmax(0,1fr))`,
             gap: 14,
           }}
         >

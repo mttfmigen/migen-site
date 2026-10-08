@@ -13,6 +13,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { FormulaireContact } from "@/components/formulaire/FormulaireContact";
+import { valideCharge } from "@/components/formulaire/validation";
 
 const html = renderToStaticMarkup(<FormulaireContact formulaire="controle" />);
 
@@ -27,6 +28,12 @@ assert.ok(bouton, "un bouton d'envoi");
 assert.match(bouton, /border-radius:\s*999px/, "bouton en pilule");
 assert.match(bouton, /background:\s*var\(--acc\)/, "fond orange de marque");
 assert.match(bouton, /On me rappelle dans l[’']heure/, "libellé de la maquette");
+// Sous un titre de panneau, la maquette répète ce titre sur le bouton (297
+// formulaires sur 327 des captures) : `PanneauFormulaire` le passe ici.
+const boutonTitre =
+  renderToStaticMarkup(<FormulaireContact formulaire="controle" libelleEnvoi="Parler à un chargé d’affaires" />)
+    .match(/<button[^>]*type="submit"[^>]*>([\s\S]*?)<\/button>/)?.[1] ?? "";
+assert.equal(boutonTitre, "Parler à un chargé d’affaires", "le bouton répète le titre du panneau");
 assert.doesNotMatch(bouton, /bg-foreground|text-background/, "plus d'utilitaire sans jeton");
 
 // Les libellés : sur-titres discrets, en capitales. Le premier `<label>` du
@@ -88,4 +95,29 @@ if (maquette) {
   console.log("fichier maquette absent : contrôle sur les valeurs relevées à la main");
 }
 
-console.log("formulaire conforme à la maquette");
+// test-technicien est un formulaire comme les autres (décision du 08/10) : la
+// route exige pour lui les mêmes champs que pour « contact », et le composant
+// rend les mêmes. Une validation ou un rendu réduits par identifiant échouent ici.
+function verifieSansVariante(charge: typeof valideCharge, rendu: (formulaire: string) => string) {
+  const partiel = { prenom: "Ana", email: "ana@exemple.fr", indicatif: "+33" };
+  for (const formulaire of ["test-technicien", "contact"]) {
+    assert.deepEqual(
+      Object.keys(charge({ ...partiel, formulaire }).erreurs),
+      ["entreprise", "nom", "telephone", "message"],
+      `${formulaire} : la route doit exiger les champs de tous les formulaires`,
+    );
+  }
+  const noms = (h: string) => [...h.matchAll(/\bname="([^"]+)"/g)].map((m) => m[1]);
+  assert.deepEqual(noms(rendu("test-technicien")), noms(rendu("contact")), "test-technicien : champs rendus différents");
+}
+const rendFormulaire = (formulaire: string) => renderToStaticMarkup(<FormulaireContact formulaire={formulaire} />);
+verifieSansVariante(valideCharge, rendFormulaire);
+// Et il sait échouer : une route qui n'exige plus rien, un rendu réduit.
+assert.throws(() => verifieSansVariante((b) => ({ ...valideCharge(b), erreurs: {} }), rendFormulaire));
+assert.throws(() =>
+  verifieSansVariante(valideCharge, (f) =>
+    f === "test-technicien" ? rendFormulaire(f).replace(/<textarea[\s\S]*?<\/textarea>/, "") : rendFormulaire(f),
+  ),
+);
+
+console.log("formulaire conforme à la maquette ; test-technicien : mêmes champs et même validation que les autres formulaires");

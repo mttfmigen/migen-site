@@ -1,137 +1,297 @@
 /**
- * Contrôle de l'écran « Équipe / Direction », sans navigateur ni base.
+ * Contrôle de l'écran « Équipe / Direction » contre SA CAPTURE, sans navigateur
+ * ni base.
  *
  *   bun components/site/equipe/verification-equipe.tsx
  *
- * Sans cadre de test, comme les autres `verification.*` du projet.
+ * LA RÉFÉRENCE est `maquette/rendu/a-propos--equipe.html`, le rendu figé de la
+ * maquette autonome pour `/a-propos/equipe/`. Chaque section du rendu porté est
+ * comparée MOT POUR MOT à la section de même rang de la capture : un mot changé,
+ * ajouté ou retiré fait échouer le contrôle. Les seules différences admises sont
+ * les substitutions écrites plus bas, imposées par une décision du client, et
+ * chacune est vérifiée dans les deux sens.
  *
- * TOUTE VALEUR ATTENDUE EST RELUE DANS `maquette/accueil-rendu.html` À CHAQUE
- * EXÉCUTION, lignes 5845 à 6030. Rien n'est écrit de mémoire : une note de
- * lecture peut se tromper et personne ne peut la rejouer. Les deux seules
- * valeurs écrites en dur sont les corrections imposées par les interdits du
- * contrat, et elles sont vérifiées DANS LES DEUX SENS, l'interdit absent et la
- * correction présente.
+ * LES SURVOLS sont relus dans `maquette/site-final-autonome.html` (attributs
+ * `style-hover`, élément par élément) et comparés aux règles `:hover` de
+ * `Equipe.module.css` portées par l'élément rendu correspondant.
  *
- * La page elle-même n'est pas montée : `generateMetadata` appelle Supabase. Son
- * H1 et son meta title sont comparés par leurs constantes, qui sont celles que
- * la page rend.
+ * La page elle-même n'est pas montée : `generateMetadata` appelle Supabase. Le
+ * héros, qui en était le seul contenu propre, vit dans `EnteteEquipe`.
  */
 
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 
 import { renderToStaticMarkup } from "react-dom/server";
 
-import AppelInterlocuteur from "@/components/site/equipe/AppelInterlocuteur";
-import EngagementsEquipe from "@/components/site/equipe/EngagementsEquipe";
-import GroupeEquipe from "@/components/site/equipe/GroupeEquipe";
-import ImplantationsEquipe from "@/components/site/equipe/ImplantationsEquipe";
-import NotreHistoire from "@/components/site/equipe/NotreHistoire";
-import QuestionsEquipe from "@/components/site/equipe/QuestionsEquipe";
-import QuiNousSommes from "@/components/site/equipe/QuiNousSommes";
-import QuiVousRepond from "@/components/site/equipe/QuiVousRepond";
-import SelectionEquipe from "@/components/site/equipe/SelectionEquipe";
-import {
-  DIRECTION,
-  H1,
-  SUPPORT,
-  TITRE_PAR_DEFAUT,
-} from "@/components/site/equipe/equipe-donnees";
+import { appliqueDecisions } from "@/lib/decisions-copie";
 
-// ------------------------------------------------------- la source de vérité
-const MAQUETTE = readFileSync(
-  new URL("../../../maquette/accueil-rendu.html", import.meta.url),
-  "utf8",
-)
-  .split("\n")
-  .slice(5844, 6030)
-  .join("\n");
+/* Bun ne résout pas les modules CSS : `styles.x` vaudrait `undefined` et la
+   classe disparaîtrait du rendu. Le greffon rend chaque classe sous son propre
+   nom, le temps du contrôle, pour qu'on puisse vérifier qui porte quel survol.
+   `declare` : même raison que `components/consentement/verification-bandeau.tsx`,
+   le projet n'installe pas `@types/bun`. */
+declare const Bun: {
+  plugin(greffon: {
+    name: string;
+    setup(build: {
+      onLoad(
+        filtre: { filter: RegExp },
+        charge: () => { contents: string; loader: "ts" },
+      ): void;
+    }): void;
+  }): void;
+};
 
+Bun.plugin({
+  name: "classes-equipe-lisibles",
+  setup(build) {
+    build.onLoad({ filter: /components\/site\/equipe\/Equipe\.module\.css$/ }, () => ({
+      contents: "export default new Proxy({}, { get: (_, nom) => String(nom) });",
+      loader: "ts",
+    }));
+  },
+});
+
+const { default: FormulaireBasDePage } = await import("@/components/site/accueil/FormulaireBasDePage");
+const { default: AppelInterlocuteur } = await import("@/components/site/equipe/AppelInterlocuteur");
+const { default: EngagementsEquipe } = await import("@/components/site/equipe/EngagementsEquipe");
+const { default: EnteteEquipe } = await import("@/components/site/equipe/EnteteEquipe");
+const { default: GroupeEquipe } = await import("@/components/site/equipe/GroupeEquipe");
+const { default: ImplantationsEquipe } = await import("@/components/site/equipe/ImplantationsEquipe");
+const { default: NotreHistoire } = await import("@/components/site/equipe/NotreHistoire");
+const { default: QuestionsEquipe } = await import("@/components/site/equipe/QuestionsEquipe");
+const { default: QuiNousSommes } = await import("@/components/site/equipe/QuiNousSommes");
+const { default: QuiVousRepond } = await import("@/components/site/equipe/QuiVousRepond");
+const { default: SelectionEquipe } = await import("@/components/site/equipe/SelectionEquipe");
+const { CHEMIN, DIRECTION, H1, SUPPORT, TITRE_PAR_DEFAUT } = await import(
+  "@/components/site/equipe/equipe-donnees"
+);
+
+const lis = (chemin: string): string =>
+  readFileSync(new URL(chemin, import.meta.url), "utf8");
+
+// --------------------------------------------------------- la capture, la source
+const CAPTURE = lis("../../../maquette/rendu/a-propos--equipe.html");
 assert.ok(
-  MAQUETTE.includes('data-screen-label="Équipe / Direction"'),
-  "les lignes 5845 à 6030 de la maquette ne sont plus l'écran équipe : le portage doit être relu avant ce contrôle",
+  CAPTURE.includes('data-screen-label="Équipe / Direction"'),
+  "la capture n'est plus celle de l'écran équipe",
+);
+assert.equal(
+  JSON.parse(lis("../../../maquette/rendu/a-propos--equipe.json")).url,
+  CHEMIN,
+  "la capture ne décrit plus l'adresse canonique de l'écran",
 );
 
-/** La tranche avec ses entités résolues : `&amp;` y redevient `&`. */
-const MAQUETTE_LISIBLE = MAQUETTE.replace(/&amp;/g, "&").replace(
-  /&nbsp;/g,
-  " ",
-);
+/** Les sections de la capture, dans l'ordre (le premier morceau est le `<main>`),
+ *  décisions de copie appliquées (lib/decisions-copie.ts) : la donnée les porte. */
+const SECTIONS_CAPTURE = appliqueDecisions(CAPTURE).split(/(?=<section[\s>])/).slice(1);
 
-/** Le texte visible de la tranche, balises et styles retirés. */
-const TEXTE_MAQUETTE = MAQUETTE_LISIBLE.replace(/<[^>]*>/g, " ").replace(
-  /\s+/g,
-  " ",
-);
+/** Le texte visible d'un fragment HTML, normalisé pour comparer. */
+function texte(html: string): string {
+  return html
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&#x27;|&#39;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&nbsp;|\u00a0|\u202f/g, " ")
+    .replace(/[’‘]/g, "'")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 
 // ------------------------------------------------------------- le rendu porté
-const html = [
-  renderToStaticMarkup(<GroupeEquipe groupe={DIRECTION} paddingHaut={44} />),
-  renderToStaticMarkup(<GroupeEquipe groupe={SUPPORT} paddingHaut={34} />),
-  renderToStaticMarkup(<QuiNousSommes />),
-  renderToStaticMarkup(<NotreHistoire />),
-  renderToStaticMarkup(<SelectionEquipe />),
-  renderToStaticMarkup(<ImplantationsEquipe />),
-  renderToStaticMarkup(<EngagementsEquipe />),
-  renderToStaticMarkup(<QuestionsEquipe />),
-  renderToStaticMarkup(<AppelInterlocuteur />),
-  renderToStaticMarkup(<QuiVousRepond />),
-].join("");
+const SECTIONS_RENDUES = [
+  <EnteteEquipe key="entete" />,
+  <GroupeEquipe key="direction" groupe={DIRECTION} paddingHaut={44} />,
+  <GroupeEquipe key="support" groupe={SUPPORT} paddingHaut={34} />,
+  <QuiNousSommes key="qui" />,
+  <NotreHistoire key="histoire" />,
+  <SelectionEquipe key="selection" />,
+  <ImplantationsEquipe key="implantations" />,
+  <EngagementsEquipe key="engagements" />,
+  <QuestionsEquipe key="questions" />,
+  <AppelInterlocuteur key="appel" />,
+  <QuiVousRepond key="relais" />,
+  // Mêmes propriétés que `app/a-propos/equipe/page.tsx`.
+  <FormulaireBasDePage
+    key="formulaire"
+    formulaire="equipe"
+    titre="Parlez directement à l’équipe."
+    intro="Pas de standard ni de centre d’appels : votre demande arrive chez un chargé d’affaires."
+  />,
+].map((element) => renderToStaticMarkup(element));
 
-const TEXTE = html
-  .replace(/<[^>]*>/g, " ")
-  .replace(/&amp;/g, "&")
-  .replace(/&#x27;|&#39;/g, "'")
-  .replace(/&nbsp;/g, " ")
-  .replace(/\s+/g, " ");
+const HTML = SECTIONS_RENDUES.join("");
+const TEXTE = texte(HTML);
 
-// ------------------------------------------------------ un seul h1, pas deux
-// Les sections n'ont pas le droit d'en poser un : le h1 de la page est dans
-// `app/equipe/page.tsx`, et un second ferait deux titres de niveau 1.
 assert.equal(
-  html.match(/<h1[\s>]/g)?.length ?? 0,
-  0,
-  "une section de l'écran équipe pose un h1 : il n'y en a qu'un, dans la page",
+  SECTIONS_RENDUES.length,
+  SECTIONS_CAPTURE.length,
+  "le rendu n'a plus le même nombre de sections que la capture",
 );
 
-// ------------------------------------------------- titre de recherche ≠ h1
-assert.notEqual(
-  TITRE_PAR_DEFAUT,
-  H1,
-  "le meta title répète le H1 : il se lit dans une page de résultats, pas dans la page",
-);
-assert.ok(
-  TEXTE_MAQUETTE.includes(H1),
-  `le H1 porté n'est pas celui de la maquette : ${H1}`,
-);
+// ------------------------------------- substitutions imposées par le client
+// Le siège : la capture écrit encore Limonest, Mehdi a tranché le 07/10 au soir
+// « le siège est à Écully ». Chaque phrase de la capture est relue (sinon
+// l'exception n'a plus d'objet et le contrôle le dit), sa correction est rendue.
+const SUBSTITUTIONS: readonly (readonly [string, string])[] = [
+  ["Siège · Limonest et Écully", "Siège · Écully"],
+  [
+    "l'entreprise pilote son activité depuis Limonest, avec des bureaux à Écully.",
+    "l'entreprise pilote son activité depuis son siège d'Écully.",
+  ],
+];
+for (const [capture, rendu] of SUBSTITUTIONS) {
+  assert.ok(
+    texte(CAPTURE).includes(capture),
+    `la capture ne porte plus « ${capture} » : l'exception du 07/10 n'a plus d'objet, la retirer`,
+  );
+  assert.ok(TEXTE.includes(rendu), `« ${rendu} » (décision du 07/10) manque dans le rendu`);
+}
+
+const corrige = (s: string): string =>
+  SUBSTITUTIONS.reduce((acc, [capture, rendu]) => acc.split(capture).join(rendu), s);
+
+// ------------------------------------------ le texte, section par section
+// Les onze sections propres à l'écran : égalité stricte.
+for (let i = 0; i < SECTIONS_RENDUES.length - 1; i += 1) {
+  assert.equal(
+    texte(SECTIONS_RENDUES[i]),
+    corrige(texte(SECTIONS_CAPTURE[i])),
+    `section ${i} : le texte rendu n'est pas celui de la capture, mot pour mot`,
+  );
+}
+
+// Le formulaire est le composant partagé du site. Chaque fragment de texte de
+// la capture y est rendu, dans l'ordre ; il ajoute la mention RGPD (et le champ
+// piège invisible), qui appartiennent au formulaire commun.
+{
+  const rendu = texte(SECTIONS_RENDUES.at(-1) ?? "");
+  const fragments = (SECTIONS_CAPTURE.at(-1) ?? "")
+    .split(/<[^>]*>/)
+    .map(texte)
+    .filter(Boolean);
+  let curseur = 0;
+  for (const fragment of fragments) {
+    const position = rendu.indexOf(fragment, curseur);
+    assert.ok(position >= 0, `formulaire : « ${fragment} » manque ou est déplacé`);
+    curseur = position + fragment.length;
+  }
+}
+
+// ----------------------------------------------------- un seul h1, le bon
+assert.equal(HTML.match(/<h1[\s>]/g)?.length ?? 0, 1, "l'écran doit poser un et un seul h1");
+assert.ok(texte(SECTIONS_CAPTURE[0]).includes(H1), `le H1 porté n'est pas celui de la capture : ${H1}`);
+assert.notEqual(TITRE_PAR_DEFAUT, H1, "le meta title répète le H1");
+
+// ------------------------------------------------------- photos, dans l'ordre
+// Mêmes images, mêmes textes alternatifs, même ordre que la capture. La photo
+// de fond de la FAQ est un fond CSS dans la maquette : décorative, `alt=""`.
+{
+  const alts = (html: string): string[] =>
+    [...html.matchAll(/<img[^>]*\balt="([^"]*)"/g)]
+      .map((m) => texte(m[1]))
+      .filter(Boolean);
+  assert.deepEqual(alts(HTML), alts(CAPTURE), "les images rendues ne sont pas celles de la capture");
+  for (const personne of [...DIRECTION.personnes, ...SUPPORT.personnes]) {
+    assert.ok(personne.photo, `${personne.nom} n'a pas son portrait`);
+    const fichier = typeof personne.photo === "string" ? personne.photo : personne.photo.src;
+    assert.ok(existsSync(fichier) && statSync(fichier).size > 0, `portrait illisible : ${fichier}`);
+  }
+  assert.ok(HTML.includes("faq-offre.jpg"), "la photo de fond de la FAQ manque");
+  assert.ok(HTML.includes("mq-f10bb16f54d0.jpg"), "la photo « Techniciens migen sur site » manque");
+}
+
+// ----------------------------------------------------- la FAQ, état initial
+// La capture montre les six plis fermés, et un seul s'ouvre à la fois.
+{
+  const questions = SECTIONS_RENDUES[8];
+  assert.equal(questions.match(/<details/g)?.length ?? 0, 6, "la FAQ n'a plus six plis");
+  assert.ok(!/<details[^>]*\bopen\b/.test(questions), "un pli de la FAQ est ouvert, la capture les montre fermés");
+  assert.equal(new Set([...questions.matchAll(/<details[^>]*name="([^"]+)"/g)].map((m) => m[1])).size, 1, "les plis ne partagent pas un même groupe exclusif");
+  assert.ok(/--gl-a:\.1/.test(questions), "le panneau de la FAQ n'a plus son verre à 10 %");
+  assert.ok(SECTIONS_CAPTURE[8].includes("mg-faqph"), "la capture n'a plus son panneau photo");
+}
+
+// ------------------------------------------------------------- les survols
+// Chaque `style-hover` de l'écran dans la maquette, relevé élément par élément,
+// doit se retrouver dans la règle `:hover` de la classe que porte l'élément
+// rendu. Une déclaration identique à l'état de repos ne demande aucune règle.
+{
+  const source = lis("../../../maquette/site-final-autonome.html");
+  const debut = source.indexOf('data-screen-label=\\"Équipe / Direction\\"');
+  assert.ok(debut >= 0, "l'écran équipe est introuvable dans la maquette autonome");
+  const fin = source.slice(debut + 1).search(/data-screen-label=\\"(?!Équipe)/);
+  const ecran = source
+    .slice(debut, debut + 1 + fin)
+    .replace(/\\"/g, '"')
+    .replace(/\\n/g, "\n")
+    .replace(/\\u002F/g, "/");
+
+  const declarations = (bloc: string): Set<string> =>
+    new Set(
+      bloc
+        .split(";")
+        .map((d) => d.toLowerCase().replace(/\s+/g, "").replace(/(^|[^\d.])0\./g, "$1."))
+        .filter(Boolean),
+    );
+
+  const css = lis("./Equipe.module.css").replace(/\/\*[\s\S]*?\*\//g, "");
+  const survols = new Map(
+    [...css.matchAll(/\.([\w-]+):hover\s*\{([^}]*)\}/g)].map((m) => [m[1], declarations(m[2])]),
+  );
+
+  // Le bouton du formulaire appartient au formulaire commun et à son module.
+  const HORS_ECRAN = ["On me rappelle dans l’heure"];
+
+  let curseur = 0;
+  let releves = 0;
+  for (const m of ecran.matchAll(/<([a-z]+)\s([^>]*?)style-hover="([^"]*)"[^>]*>/g)) {
+    const avant = m[2] + m[0];
+    const repos = declarations(avant.match(/\sstyle="([^"]*)"/)?.[1] ?? "");
+    const attendu = [...declarations(m[3])].filter((d) => !repos.has(d));
+    // L'élément est repéré par le premier texte qui le suit : son libellé, ou
+    // le nom de la personne pour une carte.
+    const suite = ecran.slice((m.index ?? 0) + m[0].length);
+    const repere = texte((`>${suite}`.match(/>([^<]*[^<\s][^<]*)</) ?? ["", ""])[1]);
+    if (HORS_ECRAN.some((h) => repere.startsWith(h))) continue;
+    releves += 1;
+    const position = HTML.indexOf(repere.replace(/'/g, "’").replace(/&/g, "&amp;"), curseur);
+    const position2 = position >= 0 ? position : HTML.indexOf(repere, curseur);
+    assert.ok(position2 >= 0, `survol : élément « ${repere} » introuvable dans le rendu`);
+    curseur = position2 + repere.length;
+    if (attendu.length === 0) continue;
+    const classes = [...HTML.slice(0, position2).matchAll(/class="([^"]*)"/g)]
+      .flatMap((c) => c[1].split(/\s+/))
+      .filter((c) => survols.has(c));
+    const classe = classes.at(-1);
+    assert.ok(classe, `survol de « ${repere} » : aucune classe de survol sur l'élément rendu`);
+    for (const d of attendu) {
+      assert.ok(survols.get(classe)?.has(d), `survol de « ${repere} » (.${classe}) : « ${d} » manque`);
+    }
+  }
+  assert.ok(releves >= 11, `seulement ${releves} survols relevés dans la maquette, l'extraction a dérivé`);
+}
 
 // ------------------------------------------------------------ liens inertes
-// La maquette écrit « # » partout, sa navigation était interne à l'éditeur.
-assert.ok(
-  !html.includes('href="#"'),
-  'un lien de l\'écran équipe est rendu inerte (href="#")',
-);
+assert.ok(!HTML.includes('href="#"'), 'un lien de l\'écran équipe est rendu inerte (href="#")');
 
 // --------------------------------------- aucune classe Tailwind de couleur
-// La charte vit dans les jetons de `app/globals.css`. Une palette Tailwind à
-// côté d'eux, c'est deux chartes dans le même écran.
-for (const classe of html.matchAll(/class="([^"]*)"/g)) {
+for (const classe of HTML.matchAll(/class="([^"]*)"/g)) {
   assert.ok(
     !/\b(?:text|bg|border|ring|divide|from|via|to|shadow|accent|caret)-(?:zinc|gray|slate|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose|white|black)-?\d*\b/.test(
       classe[1],
     ),
     `classe Tailwind de couleur dans le rendu : ${classe[1]}`,
   );
-  assert.ok(
-    !/\bdark:/.test(classe[1]),
-    `variante dark: dans le rendu, le site n'a pas de mode sombre : ${classe[1]}`,
-  );
 }
 
 // --------------------------------------------- interdits de copie du contrat
 for (const interdit of [
-  "+200",
-  "200 clients",
+  "réguliers",
   "levier",
   "clé en main",
   "sur mesure",
@@ -144,139 +304,28 @@ for (const interdit of [
   "intérim",
   "mise à disposition",
   "sans engagement",
-  "cinq agences",
-  "5 agences",
-  "sous 24",
-  "sous 48",
+  "24h",
+  "24 h",
+  "7j/7",
+  "7 j/7",
+  "Teamtailor",
+  "Limonest",
   "—",
   "–",
 ]) {
   assert.ok(!TEXTE.includes(interdit), `copie interdite : ${interdit}`);
 }
-
-// Les deux corrections imposées par le contrat, vérifiées dans le bon sens :
-// la maquette affichait bien le chiffre interdit, et le rendu porte le compte
-// tenu. Si la maquette change, l'assertion le dit au lieu de dormir.
-assert.ok(
-  MAQUETTE.includes("+200"),
-  "la maquette ne porte plus « +200 » : la correction de chiffre n'a plus d'objet, relire",
-);
-assert.ok(
-  TEXTE.includes("plus de 80 réguliers"),
-  "le compte de clients corrigé a disparu : « plus de 120 clients, dont plus de 80 réguliers »",
-);
+assert.ok(/\+200\b/.test(TEXTE), "le compte « +200 » de la capture manque");
 
 // -------------------------------- rien d'invisible, le CSS fait l'apparition
-assert.ok(
-  !/opacity:0(?![.0-9])/.test(html),
-  "un bloc de l'écran équipe est rendu avec une opacité nulle",
-);
+assert.ok(!/opacity:0(?![.0-9])/.test(HTML), "un bloc de l'écran équipe est rendu avec une opacité nulle");
 
 // ------------------------------------------- marges mobiles des conteneurs
-// `app/globals.css` rattrape la gouttière sous 760px par un sélecteur
-// d'attribut : `[style*="max-width:1200px"]`. Une largeur sérialisée autrement
-// coûte 20px de marge sur téléphone, sans rien casser d'autre. Neuf sections
-// portées ici, neuf conteneurs.
-assert.equal(
-  html.split("max-width:1200px").length - 1,
-  10,
-  "un conteneur de section a perdu sa largeur littérale de 1200px",
+// `app/globals.css` rattrape la gouttière sous 760px par `[style*="max-width:1200px"]`.
+SECTIONS_RENDUES.slice(0, -1).forEach((section, i) => {
+  assert.ok(section.includes("max-width:1200px"), `section ${i} : conteneur sans largeur littérale de 1200px`);
+});
+
+console.log(
+  `Écran équipe : ${SECTIONS_RENDUES.length} sections conformes à la capture, mot pour mot, images et survols compris.`,
 );
-
-// ---------------------------------------- les personnes, nom par fonction
-// Une personne mal titrée sur un site public est l'erreur qui se voit. Chaque
-// couple est donc relu DANS la maquette, pas dans une note.
-for (const personne of [...DIRECTION.personnes, ...SUPPORT.personnes]) {
-  assert.ok(
-    MAQUETTE_LISIBLE.includes(
-      `alt="${personne.nom}, ${personne.fonction} chez migen`,
-    ),
-    `« ${personne.nom}, ${personne.fonction} » ne figure pas ainsi dans la maquette`,
-  );
-  assert.ok(
-    TEXTE.includes(personne.nom) && TEXTE.includes(personne.fonction),
-    `« ${personne.nom} » ou sa fonction manque dans le rendu`,
-  );
-}
-
-// Aucun portrait n'existe dans `public/` : le rendu ne doit poser AUCUNE image
-// de personne. Un visage emprunté sous le nom d'un dirigeant est pire qu'un
-// cadre vide.
-assert.ok(
-  !/<img[^>]*chez migen/.test(html),
-  "une photo de personne est rendue alors qu'aucun portrait n'existe dans public/",
-);
-
-// Et tant qu'il n'y a pas de photo, le cadre reste au jeton de remplacement :
-// `--acc` est la teinte de chargement DERRIÈRE une photo, pas un carré orange
-// plein à la place d'un visage.
-assert.ok(
-  html.includes("background:var(--ph)"),
-  "les cadres de personnes sans photo ne portent pas le jeton de remplacement --ph",
-);
-
-// ---------------------------------- le texte des sections, relu dans la source
-// Les phrases qui portent un engagement, un chiffre ou un nom de ville. Chacune
-// est cherchée dans la maquette ET dans le rendu : le contrôle échoue autant si
-// le portage dérive que si la maquette bouge sous lui.
-const PHRASES = [
-  "Quatre agences, dix hubs de techniciens.",
-  "Siège · Écully",
-  "Émirats arabes unis",
-  "Une trajectoire courte et dense.",
-  "La qualité se décide au recrutement.",
-  "des candidats sont retenus",
-  "Rappel dans l’heure",
-  "Astreinte en option",
-  "Transparence complète",
-  "Un interlocuteur, pas un standard.",
-  "De votre appel au technicien, trois personnes. Pas plus.",
-  "Qui est mon interlocuteur au quotidien ?",
-  "04 78 33 72 05",
-  "Une entreprise créée pour garder vos machines en marche.",
-];
-for (const phrase of PHRASES) {
-  assert.ok(
-    TEXTE_MAQUETTE.includes(phrase),
-    `« ${phrase} » n'est plus dans la maquette : le portage doit être relu`,
-  );
-  assert.ok(TEXTE.includes(phrase), `« ${phrase} » manque dans le rendu`);
-}
-
-// Les dix hubs et les quatre agences, comptés et non supposés.
-for (const ville of [
-  "Paris",
-  "Lille",
-  "Marseille",
-  "Toulouse",
-  "Lyon",
-  "Metz",
-  "Strasbourg",
-  "Bordeaux",
-  "Dijon",
-  "Nantes",
-  "Montréal",
-  "Dubaï",
-  "Madrid",
-]) {
-  assert.ok(
-    TEXTE_MAQUETTE.includes(ville) && TEXTE.includes(ville),
-    `la ville « ${ville} » manque dans la maquette ou dans le rendu`,
-  );
-}
-
-// Les six questions fréquentes, dans leur ordre.
-{
-  const questions = [
-    ...MAQUETTE.matchAll(/<summary[^>]*>([^<]+)</g),
-  ].map((m) => m[1].trim());
-  assert.equal(questions.length, 6, "la maquette ne porte plus six questions");
-  let position = -1;
-  for (const question of questions) {
-    const suivante = TEXTE.indexOf(question);
-    assert.ok(suivante > position, `question absente ou déplacée : ${question}`);
-    position = suivante;
-  }
-}
-
-console.log("Écran équipe : toutes les assertions passent.");

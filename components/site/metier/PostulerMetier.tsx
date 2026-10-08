@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 
 import styles from "./FicheMetier.module.css";
@@ -23,10 +23,15 @@ import styles from "./FicheMetier.module.css";
  * repris de `MigenCarriere.dc.html`, qui le pose sur tous les champs sauf
  * Message et CV. Une seule exception au relevé de MigenCarriere : la mobilité.
  * Le README la veut « France entière (uniquement si prêt à déménager) OU une
- * ou plusieurs régions », ce qu'un `<select>` simple ne sait pas dire. Le
- * bloc vient donc de la maquette qui pose cette question exacte,
- * `Migen - Site final.dc.html` (page Carrière, `mobChips` et `MOBS`) : aide,
- * treize options et exclusivité verbatim.
+ * ou plusieurs régions », ce qu'un `<select>` simple ne sait pas dire. Les
+ * options et l'aide viennent donc de l'application qui pose cette question
+ * exacte (`mobChips` et `MOBS`, présents dans `site-final-autonome.html`) :
+ * aide, treize options et exclusivité verbatim.
+ *
+ * LE DESSIN, LUI, EST CELUI DE LA CAPTURE : un `<select>` « Choisir » dans la
+ * demi-colonne, à droite de « Poste visé ». Les treize pastilles déplient sous
+ * ce sélecteur au clic, au lieu de pousser tout le formulaire de 220 px (écart
+ * de 7 % mesuré le 08/10 par diff-visuel-offre sur « Rejoindre Migen »).
  */
 
 const ETIQUETTE: CSSProperties = {
@@ -148,55 +153,138 @@ function pastille(coche: boolean, france: boolean): CSSProperties {
   };
 }
 
-/** Mobilité géographique : cases à cocher natives (une valeur `mobility` par
- *  case cochée), obligatoires tant qu'aucune ne l'est. */
+/** Mobilité géographique, au repos : le `<select>` « Choisir » de la capture.
+ *
+ *  La face EST un `<select>` natif, rendu `inert` (ni focus, ni clic, hors de
+ *  l'arbre d'accessibilité) : sa flèche et ses marges sont celles du
+ *  navigateur, comme dans la maquette. Un bouton transparent posé dessus ouvre
+ *  le panneau des cases (une valeur `mobility` par case cochée). Le panneau
+ *  fermé reste dans le formulaire (`hidden`) : ses cases sont envoyées. Le
+ *  champ `required` est un témoin sans nom, focalisable par le navigateur
+ *  seul, qui porte la bulle « obligatoire » sur la face et rouvre le panneau. */
 function Mobilite() {
   const [choix, setChoix] = useState<string[]>([]);
+  const [ouvert, setOuvert] = useState(false);
+  const racine = useRef<HTMLDivElement>(null);
+  const bouton = useRef<HTMLButtonElement>(null);
+  const etiquette = useId();
+  const panneau = useId();
   const aide = useId();
+  const resume = choix.length ? choix.join(", ") : "Choisir";
+
+  useEffect(() => {
+    if (!ouvert) return;
+    const dehors = (e: PointerEvent) => {
+      if (!racine.current?.contains(e.target as Node)) setOuvert(false);
+    };
+    document.addEventListener("pointerdown", dehors);
+    return () => document.removeEventListener("pointerdown", dehors);
+  }, [ouvert]);
+
   return (
-    <fieldset
-      aria-describedby={aide}
-      style={{ gridColumn: "span 2", minWidth: 0, margin: 0, padding: 0, border: 0 }}
+    <div
+      ref={racine}
+      style={{ position: "relative", minWidth: 0 }}
+      onKeyDown={(e) => {
+        if (e.key === "Escape" && ouvert) {
+          setOuvert(false);
+          bouton.current?.focus();
+        }
+      }}
+      onBlur={(e) => {
+        // Seule une tabulation vers un autre champ referme. Un clic sur une
+        // pastille (étiquette non focalisable) laisse `relatedTarget` vide : le
+        // panneau doit rester ouvert ; le clic dehors est traité plus haut.
+        const vers = e.relatedTarget as Node | null;
+        if (vers && !racine.current?.contains(vers)) setOuvert(false);
+      }}
     >
-      <legend style={{ ...ETIQUETTE, padding: 0 }}>
+      <span id={etiquette} style={ETIQUETTE}>
         Mobilité géographique
         <Obligatoire />
-      </legend>
-      <p
-        id={aide}
-        style={{
-          font: "400 12.5px/1.55 var(--fb)",
-          color: "var(--ink2)",
-          margin: "-2px 0 9px",
-          maxWidth: "62ch",
-        }}
-      >
-        {AIDE_MOBILITE}
-      </p>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
-        {MOBILITES.map((option) => {
-          const coche = choix.includes(option);
-          return (
-            <label
-              key={option}
-              className={styles.porteFocus}
-              style={pastille(coche, option === FRANCE)}
-            >
-              <input
-                type="checkbox"
-                name="mobility"
-                value={option}
-                checked={coche}
-                required={choix.length === 0}
-                onChange={() => setChoix((c) => basculer(c, option))}
-                className={styles.masque}
-              />
-              {option}
-            </label>
-          );
-        })}
+      </span>
+      <div style={{ position: "relative" }}>
+        <select inert value="" onChange={() => {}} style={SAISIE}>
+          <option value="">{resume}</option>
+        </select>
+        <button
+          ref={bouton}
+          type="button"
+          aria-haspopup="true"
+          aria-expanded={ouvert}
+          aria-controls={panneau}
+          aria-labelledby={`${etiquette} ${panneau}-resume`}
+          onClick={() => setOuvert((o) => !o)}
+          style={{
+            position: "absolute",
+            inset: 0,
+            border: 0,
+            borderRadius: "var(--rad-s)",
+            background: "transparent",
+            cursor: "pointer",
+          }}
+        >
+          <span id={`${panneau}-resume`} className={styles.lu}>
+            {resume}
+          </span>
+        </button>
+        <input
+          tabIndex={-1}
+          aria-hidden="true"
+          required
+          value={choix.join(", ")}
+          onChange={() => {}}
+          // N'ouvre que si la mobilité est le PREMIER champ en défaut : le
+          // navigateur y pose sa bulle. Sinon (nom vide…) le panneau resterait
+          // ouvert loin du champ que le navigateur désigne.
+          onInvalid={(e) => {
+            if (e.currentTarget.form?.querySelector(":invalid") === e.currentTarget) setOuvert(true);
+          }}
+          className={styles.masque}
+        />
       </div>
-    </fieldset>
+      <div
+        id={panneau}
+        role="group"
+        aria-labelledby={etiquette}
+        aria-describedby={aide}
+        hidden={!ouvert}
+        className={styles.panneauMobilite}
+      >
+        <p
+          id={aide}
+          style={{
+            font: "400 12.5px/1.55 var(--fb)",
+            color: "var(--ink2)",
+            margin: "0 0 10px",
+          }}
+        >
+          {AIDE_MOBILITE}
+        </p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
+          {MOBILITES.map((option) => {
+            const coche = choix.includes(option);
+            return (
+              <label
+                key={option}
+                className={styles.porteFocus}
+                style={pastille(coche, option === FRANCE)}
+              >
+                <input
+                  type="checkbox"
+                  name="mobility"
+                  value={option}
+                  checked={coche}
+                  onChange={() => setChoix((c) => basculer(c, option))}
+                  className={styles.masque}
+                />
+                {option}
+              </label>
+            );
+          })}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -223,6 +311,7 @@ export default function PostulerMetier() {
       style={{ padding: "var(--sec) 24px 0", scrollMarginTop: 90 }}
     >
       <div
+        className={styles.pad}
         style={{
           maxWidth: 1200,
           margin: "0 auto",
@@ -318,7 +407,11 @@ export default function PostulerMetier() {
               padding: 28,
             }}
           >
+            {/* `post` en attendant le branchement (CLAUDE.md §7) : sans
+                méthode, l'envoi passait nom, e-mail et téléphone dans l'URL
+                (historique, journaux du serveur). La route rend la page. */}
             <form
+              method="post"
               className={styles.champs}
               style={{
                 display: "grid",
@@ -339,9 +432,7 @@ export default function PostulerMetier() {
               <Champ etiquette="Téléphone">
                 <input type="tel" name="phone" required autoComplete="tel" style={SAISIE} />
               </Champ>
-              {/* Pleine largeur, comme dans `Site final` : la mobilité qui suit
-                  prend toute la ligne, une demi-ligne resterait vide. */}
-              <Champ etiquette="Poste visé" pleine>
+              <Champ etiquette="Poste visé">
                 <Choix
                   nom="job"
                   options={[
@@ -374,7 +465,7 @@ export default function PostulerMetier() {
                 />
               </Champ>
               <Champ etiquette="Délai de démarrage">
-                <Choix nom="start" options={["Immédiat", "Sous 1 mois", "Sous 3 mois"]} />
+                <Choix nom="start" options={["Immédiat", "Sous 1 mois", "Sous 3 mois", "Au-delà de 3 mois"]} />
               </Champ>
               <Champ etiquette="Prétentions salariales">
                 <input

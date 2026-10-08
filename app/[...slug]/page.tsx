@@ -10,7 +10,6 @@ import PageCasClients from "@/components/site/casclients/PageCasClients";
 import PageDomaine from "@/components/site/expertises/domaine/PageDomaine";
 import PageSpecialite from "@/components/site/expertises/specialite/PageSpecialite";
 import PageEditoriale from "@/components/site/editorial/PageEditoriale";
-import PageDepartement from "@/components/site/implantation/PageDepartement";
 import PageVille from "@/components/site/implantation/PageVille";
 import PageImplantations from "@/components/site/implantations/PageImplantations";
 import PageExpertises from "@/components/site/expertises/PageExpertises";
@@ -35,7 +34,7 @@ import { estCasClients } from "@/types/casclients";
 import type { ContenuPage, Section } from "@/types/contenu";
 import { estEditorial } from "@/types/editorial";
 import { estDomaine } from "@/types/domaine";
-import { estDepartement, estVille } from "@/types/implantation";
+import { estVille } from "@/types/implantation";
 import { estImplantations } from "@/types/implantations";
 import { estExpertises } from "@/types/expertises";
 import { estFiche } from "@/types/fiche";
@@ -184,27 +183,11 @@ export default async function PageDuCocon({
   // AVANT l'éditorial, qui servait ces pages jusqu'ici en colonne de lecture
   // avec un sommaire : la maquette n'en dessine aucun, et c'est ce que le
   // client a vu. Les six rayons de `/ressources/` restent éditoriaux, ce sont
-  // des pages de liste.
+  // des pages de liste. Ni fil d'Ariane ni maillage passés : la capture n'en
+  // porte aucun, le fil est dans le héros et le maillage est « Sur le même
+  // sujet », tous deux rendus par `PageRessource`.
   if (estRessource(page.contenu)) {
-    return (
-      <PageRessource
-        titre={page.titre_h1}
-        contenu={page.contenu}
-        filAriane={<FilAriane path={page.path} />}
-        maillage={
-          <>
-            <FormulaireBasDePage
-              formulaire={`cocon${page.path.replace(/\//g, "-")}`}
-            />
-            <div
-              style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}
-            >
-              <Maillage page={page} />
-            </div>
-          </>
-        }
-      />
-    );
+    return <PageRessource titre={page.titre_h1} contenu={page.contenu} />;
   }
 
   if (estEditorial(page.contenu)) {
@@ -225,61 +208,40 @@ export default async function PageDuCocon({
     );
   }
 
-  // Le gabarit secteur, pour `/secteurs/<secteur>/` et
-  // `/implantations/<ville>/<departement>/` : hero avec ses repères, enjeux du
-  // terrain, territoire couvert, pages sœurs, appel. Ces pages ancrent, elles
-  // ne vendent pas une offre : le gabarit de vente y annonçait une prestation
-  // là où le visiteur cherche un secteur ou un département.
+  // Le gabarit « 08 Secteur », les 12 pages `/secteurs/<secteur>/`, porté le
+  // 08/10 contre leur capture (maquette/rendu/secteurs--*) : les écrans d'une
+  // offre plus « Expertises du secteur » et « Offres du secteur ». La page
+  // porte ses deux formulaires (héros et « 10 Appel final ») : la route
+  // n'ajoute pas celui de bas de page, qui en aurait rendu un troisième, hors
+  // capture. `PageSecteur` met le maillage dans sa gouttière, comme `PageOffre`.
   if (estSecteur(page.contenu)) {
     return (
       <PageSecteur
         titre={page.titre_h1}
         contenu={page.contenu}
+        formulaire={`cocon${page.path.replace(/\//g, "-")}`}
         filAriane={<FilAriane path={page.path} />}
-        maillage={
-          <>
-            <FormulaireBasDePage
-              formulaire={`cocon${page.path.replace(/\//g, "-")}`}
-            />
-            <div
-              style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}
-            >
-              <Maillage page={page} />
-            </div>
-          </>
-        }
+        maillage={<Maillage page={page} />}
       />
     );
   }
 
-  // Les gabarits VILLE et DÉPARTEMENT, pour les 42 pages filles de
-  // `/implantations/`. La maquette leur donne DEUX dessins distincts, cinq
-  // sections pour une ville, trois pour un département : une ville vend une
-  // intervention sur un bassin industriel, un département couvre un territoire
-  // et distribue vers ses voisins. Le gabarit de vente leur imposait ses dix
-  // sections à toutes les deux. `PageDepartement` est une enveloppe au-dessus
-  // de `PageSecteur`, qui porte déjà ces trois sections au pixel.
-  if (estVille(page.contenu) || estDepartement(page.contenu)) {
-    const Gabarit = estVille(page.contenu) ? PageVille : PageDepartement;
+  // Le gabarit VILLE, pour les pages filles de `/implantations/`, villes ET
+  // départements : les 8 captures du gabarit « 06 Département » ont les 17
+  // écrans d'une ville (08/10), leurs fiches portent donc `gabarit: "ville"`.
+  //
+  // La VILLE est servie comme l'offre (08/10) : son gabarit porte déjà les
+  // deux formulaires de la capture, héros et « 10 Appel final ». Lui ajouter
+  // `FormulaireBasDePage` en rendait un troisième, hors capture, et
+  // `formulaire` n'était pas transmis (identifiant HubSpot « undefined-hero »).
+  if (estVille(page.contenu)) {
     return (
-      <Gabarit
+      <PageVille
         titre={page.titre_h1}
-        // Le garde a tranché juste au-dessus ; TypeScript ne relie pas le
-        // composant choisi à la branche qui l'a choisi.
-        contenu={page.contenu as never}
+        contenu={page.contenu}
+        formulaire={`cocon${page.path.replace(/\//g, "-")}`}
         filAriane={<FilAriane path={page.path} />}
-        maillage={
-          <>
-            <FormulaireBasDePage
-              formulaire={`cocon${page.path.replace(/\//g, "-")}`}
-            />
-            <div
-              style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}
-            >
-              <Maillage page={page} />
-            </div>
-          </>
-        }
+        maillage={<Maillage page={page} />}
       />
     );
   }

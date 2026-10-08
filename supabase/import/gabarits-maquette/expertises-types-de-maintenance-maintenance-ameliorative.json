@@ -1,0 +1,252 @@
+{
+  "_source": "maquette/rendu/expertises--types-de-maintenance--maintenance-ameliorative.html (07/10 21h12), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (relevé par data-dc-tpl, mêmes cibles que les pilotes fanuc et abb, dont le relevé redonne le relais à l'identique), contrôlé par components/site/expertises/specialite/verification-specialite.tsx. PHOTOS MESURÉES, PAS CHOISIES : octets de chaque image de la maquette vivante (localhost:4352) rapprochés de public/assets/web par sha256 complet, le 08/10 ; photo de carte de référence = première image de la carte. Photo du problème = mq-0699d4d92e7e.jpg. PHRASES INTERDITES NON RENDUES (ne se reformulent pas) : « Pas de prix catalogue : la modification se chiffre sur devis, une fois le diagnostic posé. » (contenu.sections[5].questions[0].reponse).",
+  "url": "/expertises/types-de-maintenance/maintenance-ameliorative/",
+  "titre_h1": "Maintenance améliorative : supprimer la panne au lieu de la réparer encore",
+  "contenu": {
+    "gabarit": "specialite",
+    "pastille": "Expertises",
+    "chapeau": "Nous cherchons la cause de la panne qui revient, puis nous modifions l'équipement pour qu'elle ne revienne plus. Capteur déplacé, organe redimensionné, accès repris, logique automate corrigée. L'écart se mesure avant et après, sur vos propres indicateurs.",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés.",
+    "appelBouton": "Demander un diagnostic maintenance",
+    "actions": [
+      {
+        "libelle": "Demander un diagnostic maintenance",
+        "href": "#besoin"
+      }
+    ],
+    "formulaireHeroTitre": "Demander un diagnostic maintenance",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
+      {
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, après entretien technique ET comportemental"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      },
+      {
+        "valeur": "8 domaines",
+        "libelle": "Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie, robotique"
+      }
+    ],
+    "problemePhoto": "/assets/web/mq-0699d4d92e7e.jpg",
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "La même panne revient tous les deux mois. Vous la réparez, elle revient. La réparer une quatrième fois n'est pas une stratégie.",
+        "puces": [
+          {
+            "accroche": "Vous payez deux fois la même réparation.",
+            "texte": "Main d'œuvre, pièce, casse collatérale, rebuts. Le coût annuel de la défaillance dépasse souvent celui de la modification qui la supprime."
+          },
+          {
+            "accroche": "Le problème n'est plus la panne, c'est la conception.",
+            "texte": "Capteur mal placé, roulement sous-dimensionné, armoire qui chauffe. Réparer à l'identique remet la cause en service avec la pièce neuve."
+          },
+          {
+            "accroche": "Vos opérateurs ont inventé une astuce pour contourner le défaut.",
+            "texte": "Une astuce qui dure est toujours le symptôme d'une amélioration jamais faite."
+          },
+          {
+            "accroche": "Personne n'a le temps de sortir du quotidien.",
+            "texte": "L'équipe absorbe le correctif, les postes de nuit et les aléas. Le chantier de fond attend."
+          }
+        ]
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "Supprimer la panne qui revient",
+              "texte": "Extraction de l'historique GMAO, cinq pourquoi et arbre des causes, analyse des modes de défaillance sur les actifs sensibles, modification chiffrée, contrôle du résultat."
+            },
+            "benefice": "L'équipement sort du top 3 des heures de dépannage, et il n'y revient pas."
+          },
+          {
+            "prestation": {
+              "accroche": "Gagner du temps de réparation",
+              "texte": "Accès facilités, point de graissage déporté, repérage des câbles, standardisation des composants, documentation refaite."
+            },
+            "benefice": "Votre MTTR baisse sans changer la machine. Chaque intervention future coûte moins d'immobilisation."
+          },
+          {
+            "prestation": {
+              "accroche": "Fiabiliser la partie commande",
+              "texte": "Reprise de la logique automate, temporisations revues, diagnostics lisibles sur pupitre, alarmes explicites au lieu d'un code défaut muet."
+            },
+            "benefice": "Le technicien de garde sait quoi faire à 3h du matin sans appeler personne."
+          },
+          {
+            "prestation": {
+              "accroche": "Traiter les causes mécaniques de fond",
+              "texte": "Redimensionnement d'un organe qui lâche, massif renforcé, accouplement adapté, guidage ajusté, traitement thermique de l'armoire électrique."
+            },
+            "benefice": "La cascade s'arrête. Un balourd ne détruit plus les paliers les uns après les autres."
+          },
+          {
+            "prestation": {
+              "accroche": "Instrumenter un équipement critique",
+              "texte": "Capteurs de vibration ou de température, remontée vers votre supervision, seuils d'alerte réglés avec vos équipes."
+            },
+            "benefice": "Deux ou trois actifs suffisent pour savoir où porter l'effort suivant, sans instrumenter tout le parc."
+          },
+          {
+            "prestation": {
+              "accroche": "Mettre en sécurité une machine ancienne",
+              "texte": "Protecteurs, arrêts d'urgence, verrouillages, suppression des gestes à risque."
+            },
+            "benefice": "Le geste dangereux disparaît du mode opératoire, il n'est plus seulement signalé."
+          },
+          {
+            "prestation": {
+              "accroche": "Moderniser sans remplacer",
+              "texte": "Quand la mécanique est saine mais l'électronique dépassée, automate sans pièce de rechange, variateur plus fabriqué."
+            },
+            "benefice": "Le cycle de vie repart pour plusieurs années, au chiffrage d'une reprise et non d'un investissement neuf."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Vous décrivez la panne qui revient",
+            "texte": "Équipement, fréquence, ce qui a déjà été changé, ce que dit la GMAO. Quelques minutes au téléphone évitent un déplacement pour rien."
+          },
+          {
+            "titre": "Un technicien vous rappelle dans l'heure.",
+            "texte": "Vous savez rapidement si nous avons la compétence, et laquelle."
+          },
+          {
+            "titre": "Nous posons le diagnostic maintenance, gratuitement",
+            "texte": "Parc, criticité, historique sur douze mois, contraintes d'exploitation, palmarès des équipements par heures immobilisées."
+          },
+          {
+            "titre": "Nous cadrons et nous chiffrons",
+            "texte": "Périmètre, cause racine identifiée, gain attendu, arrêt nécessaire, devis. Vous comparez le montant au coût annuel de la défaillance."
+          },
+          {
+            "titre": "Nous réalisons pendant un arrêt planifié",
+            "texte": "Consignation, modification, essais, remise en service. Une reprise improvisée en pleine urgence est une dette technique de plus."
+          },
+          {
+            "titre": "Nous prouvons et nous documentons",
+            "texte": "Écart mesuré avant et après sur les indicateurs convenus, schémas mis à jour, gammes reprises, dossier machine complété, équipes formées."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
+            "texte": "L'astreinte la nuit, le week-end et les jours fériés couvre la nuit et le week-end sur les sites concernés."
+          },
+          {
+            "accroche": "Chaque modification est tracée et laissée entre vos mains.",
+            "texte": "Schéma à jour, dossier machine complété, gammes reprises. Une machine améliorée dont le plan n'est pas mis à jour devient impossible à dépanner pour le suivant, y compris pour nous."
+          },
+          {
+            "accroche": "Des interventions cadrées par la démarche MASE et l'évaluation EcoVadis.",
+            "texte": "Les attestations sont transmises avec chaque plan de prévention, avant la première journée sur site."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Diagnostic de défaillances récurrentes sur un parc machines, fabrication de joints techniques",
+            "texte": "Étude technique machine par machine, plusieurs options chiffrées, remise en état du parc existant plutôt que rachat de matériel neuf, depuis février 2024.",
+            "lienLibelle": "Étude de cas JOINT LYONNAIS",
+            "lienHref": "/preuves/joint-lyonnais/",
+            "photo": "/assets/web/mq-1ef16ef335a6.jpg"
+          },
+          {
+            "titre": "Réduction des incidents machine récurrents, pièces mécaniques de précision",
+            "texte": "Un technicien à temps plein sur centres d'usinage grande vitesse, presses et commandes numériques, plan de maintenance repris en continu, 2025.",
+            "lienLibelle": "Étude de cas VOIT",
+            "lienHref": "/preuves/voit-grand-est/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
+          },
+          {
+            "titre": "Sortie du mode pompier sur un parc hétérogène, papier et emballage",
+            "texte": "Un technicien polyvalent intégré aux lignes, temps d'arrêt réduits et préventif qui n'est plus sacrifié aux urgences, 2025 à 2026.",
+            "lienLibelle": "Étude de cas VPK",
+            "lienHref": "/preuves/vpk/",
+            "photo": "/assets/web/x-elec-cablage.jpg"
+          },
+          {
+            "titre": "Travaux de remise en état d'installations critiques, traitement des eaux industrielles",
+            "texte": "Électromécanicien polyvalent habilité risque chimique niveau 1 avant l'entrée sur site, mission de 6 mois depuis février 2026.",
+            "lienLibelle": "Étude de cas SUEZ",
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+          },
+          {
+            "titre": "Temps de remise en service raccourci sur des lignes à haute cadence, nutrition infantile",
+            "texte": "Deux techniciens intégrés en 3x8 sur les lignes liquides et le conditionnement poudre, site de Steenvoorde.",
+            "lienLibelle": "Étude de cas DANONE",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
+          },
+          {
+            "titre": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
+            "lienLibelle": "Étude de cas Atena",
+            "lienHref": "/preuves/atena-port-la-rochelle/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg"
+          },
+          {
+            "titre": "Voir la dérive avant que l’équipement critique ne tombe",
+            "lienLibelle": "Étude de cas JTEKT",
+            "lienHref": "/preuves/jtekt/",
+            "photo": "/assets/web/mq-948c28bcda08.jpg"
+          },
+          {
+            "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
+            "lienLibelle": "Étude de cas Mersen",
+            "lienHref": "/preuves/mersen/",
+            "photo": "/assets/web/mq-056f3c250981.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
+        "questions": [
+          {
+            "question": "Combien coûte une action améliorative ?",
+            "reponse": "Le bon repère n'est pas le montant du chantier, mais son écart avec le coût annuel de la défaillance qu'il supprime."
+          },
+          {
+            "question": "Faut-il un contrat pour lancer une amélioration ?",
+            "reponse": "Non. Une action isolée se traite en intervention ponctuelle, sur devis. L'abonnement Zéro arrêt se discute quand le même équipement revient plusieurs fois dans l'année et que le budget n'est plus pilotable."
+          },
+          {
+            "question": "Pouvez-vous reprendre un parc déjà suivi par un autre prestataire ?",
+            "reponse": "Oui. Nous partons de l'existant : historique GMAO, plans, gammes en place. Le diagnostic maintenance est gratuit et ses conclusions vous restent acquises, y compris si vous décidez de poursuivre avec votre prestataire actuel."
+          },
+          {
+            "question": "Qui répond de la sécurité pendant les travaux ?",
+            "reponse": "Nos interventions sont cadrées par la démarche MASE et l'évaluation EcoVadis, attestations transmises avec chaque plan de prévention. La modification se réalise pendant un arrêt planifié, machine consignée, essais avant remise en service."
+          },
+          {
+            "question": "Qui réalise ces travaux, nos équipes ou un prestataire ?",
+            "reponse": "Les deux fonctionnent, et beaucoup de sites gardent les améliorations légères en interne. Nos techniciens sont salariés de Migen, retenus après entretien technique et comportemental, 10 % des techniciens évalués. Nous documentons chaque action pour que vos équipes la reproduisent sans nous."
+          },
+          {
+            "question": "Intervenez-vous partout en France ?",
+            "reponse": "Oui. Nos quatre agences sont à Lyon (siège), Montréal, Dubaï et Madrid, et nos équipes se déplacent partout en France. Dites-nous où se trouve l'équipement et dans quel domaine technique, nous vous disons qui intervient."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de savoir quel équipement de votre parc vous coûte le plus cher chaque année ?",
+        "bouton": "Demander un diagnostic maintenance"
+      }
+    ]
+  }
+}

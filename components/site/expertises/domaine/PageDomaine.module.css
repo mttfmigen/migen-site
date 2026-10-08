@@ -10,10 +10,16 @@
  * posent inline, comme elle.
  */
 
-/* `.scp17` : la carte de secteur. translateY(-4px), texte blanc maintenu. */
+/* La carte de secteur : translateY(-3px), texte blanc maintenu.
+   CORRIGÉ le 07/10 au soir (-4px → -3px) : les classes `scpN` sont NUMÉROTÉES
+   À CHAQUE DÉMARRAGE de la maquette, un relevé par nom de classe lit donc la
+   règle d'un autre élément dès que l'onglet a changé de page. Relevé refait en
+   partant de l'ÉLÉMENT (classList de `a[href^="/secteurs/"]` sur
+   /expertises/robotique/abb/ et /expertises/robotique/, deux boots) :
+   `transform: translateY(-3px); color: #fff`. */
 .carteSecteur:hover,
 .carteSecteur:focus-visible {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   color: #fff;
 }
 
@@ -23,12 +29,16 @@
   transform: translateY(-3px);
 }
 
-/* `.scp18` : les tuiles d'offres. translateX(4px), filet orange. */
+/* Les tuiles d'offres : translateY(-3px) et l'ombre qui se creuse.
+   CORRIGÉ le 07/10 au soir (translateX + filet orange → translateY + ombre),
+   même cause que `.carteSecteur` : l'ancien relevé par nom de classe lisait la
+   règle d'un autre élément. Relevé refait en partant de l'ÉLÉMENT (classList
+   de `a[href="/offres/full-service/"]` du bento, deux boots) :
+   `transform: translateY(-3px); box-shadow: 0 26px 56px -30px rgba(0,0,0,.45)`. */
 .tuileOffre:hover,
 .tuileOffre:focus-visible {
-  transform: translateX(4px);
-  border-color: rgb(255, 124, 60);
-  color: var(--ink);
+  transform: translateY(-3px);
+  box-shadow: 0 26px 56px -30px rgba(0, 0, 0, 0.45);
 }
 
 /* `.scp6` : le bouton « Décrire mon besoin → ». brightness(.93). */
@@ -36,4 +46,67 @@
 .boutonBesoin:focus-visible {
   filter: brightness(0.93);
   color: #fff;
+}
+
+/* « 03 Problème », règles de repli de la source (`MigenExpertise.dc.html`,
+   l. 36 et 52) : `.g3-pbgrid` pour la rangée de cartes, `.g3-pad` pour le
+   panneau sombre. Le `!important` est le sien : il l'emporte sur le style en
+   ligne, comme dans la maquette. */
+@media (max-width: 1000px) {
+  .grilleProbleme {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .grilleProbleme > div:first-child:nth-last-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* `.g3-pad` : 620 px dans la feuille de la maquette VIVANTE (CSSOM relu le
+   08/10 sur /expertises/robotique/), pas 900. */
+@media (max-width: 620px) {
+  .panneauProbleme {
+    padding: 40px 24px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .grilleProbleme {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* RÈGLES MOBILES de « Secteurs de l'expertise » (`.g3-sect6`) et du bento
+   « Offres du secteur » (`.mgx-obento`, `.mgx-ob-a`, `.mgx-ob-b`), relues le
+   08/10 dans la feuille de la maquette VIVANTE (CSSOM de
+   /expertises/robotique/ à 390 px), recopiées règle pour règle. Avant elles,
+   la grande carte gardait `grid-column: span 2` dans une grille d'une colonne :
+   une colonne implicite poussait « Zéro arrêt » et « Bureau d'études » hors de
+   l'écran. */
+@media (max-width: 900px) {
+  .sect6 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .obento {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .obento > .obA,
+  .obento > .obB {
+    grid-area: auto / 1 / auto / -1 !important;
+  }
+  .obA {
+    min-height: 380px !important;
+  }
+}
+@media (max-width: 600px) {
+  .obento {
+    grid-template-columns: 1fr !important;
+  }
+  .obB {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 560px) {
+  .sect6 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
 }

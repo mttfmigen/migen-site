@@ -144,12 +144,13 @@ const TITRE_BLOC: CSSProperties = {
   margin: 0,
 };
 
-/** Les paragraphes sans puce d'un bloc (`prose`), même encre que les puces. */
+/** Les paragraphes sans puce d'un bloc (`prose`). Relevé de la maquette qui
+    tourne (08/10, /travaux-industriels/) : 15,5px/1.7, 66ch. */
 const PROSE: CSSProperties = {
-  font: "400 15px/1.6 var(--fb)",
+  font: "400 15.5px/1.7 var(--fb)",
   color: "var(--ink1)",
   margin: 0,
-  maxWidth: "70ch",
+  maxWidth: "66ch",
   textWrap: "pretty",
 };
 

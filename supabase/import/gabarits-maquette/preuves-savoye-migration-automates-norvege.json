@@ -22,6 +22,8 @@
         "valeur": "2 week-ends consécutifs, pendant les arrêts de production"
       }
     ],
+    "logo": "/assets/clients/savoye.png",
+    "photoHero": "/assets/web/mq-d50c84e228cb.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -129,6 +131,7 @@
         "valeur": "Orthus, filiale du groupe Migen"
       }
     ],
+    "photoDispositif": "/assets/web/mq-17e2f3bce95f.jpg",
     "resultats": [
       {
         "titre": "Deux équipements livrés en marche",
@@ -158,7 +161,7 @@
         "texte": "Programme développé et testé avant le départ, le chantier ne sert qu'à remplacer et à valider."
       },
       {
-        "titre": "10 % des candidats retenus",
+        "titre": "10 % des techniciens retenus",
         "texte": "Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, évalués en entretien technique et comportemental."
       },
       {
@@ -170,22 +173,26 @@
       {
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
-        "href": "/preuves/"
+        "href": "/preuves/",
+        "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
-        "href": "/secteurs/logistique/"
+        "href": "/secteurs/logistique/",
+        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : alliance intralogistique",
-        "href": "/preuves/savoye/"
+        "href": "/preuves/savoye/",
+        "photo": "/assets/web/mq-e6322efcd358.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "AKTID : un centre logistique monté en six semaines",
-        "href": "/preuves/aktid-centre-logistique/"
+        "href": "/preuves/aktid-centre-logistique/",
+        "photo": "/assets/web/mq-339d39e2a674.jpg"
       }
     ]
   }

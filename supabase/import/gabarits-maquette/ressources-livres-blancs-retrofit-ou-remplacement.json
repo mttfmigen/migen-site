@@ -1,341 +1,235 @@
 {
   "url": "/ressources/livres-blancs/retrofit-ou-remplacement/",
-  "h1": "Retrofit ou remplacement",
+  "titre_h1": "Retrofit ou remplacement",
   "contenu": {
     "gabarit": "ressource",
-    "categorie": "Livre blanc",
-    "chapeau": "*10 min de lecture*",
-    "rappel": "Envie d'un conseil sur votre cas ? Appelez le 04 78 33 72 05 : un expert vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-    "cartes": [
-      {
-        "surtitre": "Aller plus loin",
-        "titre": "Livre blanc : externaliser sa maintenance sans perdre la main",
-        "lienHref": "/ressources/livres-blancs/externaliser-sa-maintenance/",
-        "lienLibelle": "La page complète →"
-      }
+    "rayon": "livres-blancs",
+    "chapo": [
+      "*10 min de lecture*",
+      "Votre machine a vingt ans, le devis de la neuve donne le vertige, et personne ne veut trancher. Retrofit ou remplacement : ce livre blanc de nos [Ressources : Livres blancs](/ressources/livres-blancs/) pose une grille de décision simple, critère par critère, pour arbitrer avec des faits."
     ],
-    "corps": [
+    "avant": [
       {
-        "type": "paragraphe",
-        "texte": "Votre machine a vingt ans, le devis de la neuve donne le vertige, et personne ne veut trancher. Retrofit ou remplacement : ce livre blanc de nos [Ressources : Livres blancs](/ressources/livres-blancs/) pose une grille de décision simple, critère par critère, pour arbitrer avec des faits."
+        "type": "encadre",
+        "texte": "Envie d'un conseil sur votre cas ? appelez-nous : un expert vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30."
       },
       {
         "type": "paragraphe",
         "texte": "Cette page est née sur le terrain, machine par machine, auprès de techniciens qui vivent les deux scénarios chaque année, et leurs suites. Le mot rétrofit, lui, vient de l'automobile : convertir un véhicule thermique en véhicule électrique. L'industrie se pose la question de la voiture, à l'échelle d'un parc machines."
-      },
+      }
+    ],
+    "parties": [
       {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Retrofit ou remplacement : de quoi parle-t-on ?",
-        "id": "retrofit-ou-remplacement-de-quoi-parle-t-on"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Trois chemins existent pour un parc vieillissant, pas deux. Les nommer correctement évite déjà bien des faux débats."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Retrofit ou remplacement : de quoi parle-t-on ?",
+        "blocs": [
           {
-            "accroche": "Le rétrofit",
-            "texte": "Moderniser un bien existant en conservant sa structure : moteurs électriques neufs, variateurs, automate récent, pupitre, chaîne de sécurité remise au niveau. La machine garde son bâti, change de cerveau et redémarre pour un cycle de vie complet."
+            "type": "paragraphe",
+            "texte": "Trois chemins existent pour un parc vieillissant, pas deux. Les nommer correctement évite déjà bien des faux débats."
           },
           {
-            "accroche": "Le remplacement",
-            "texte": "Acheter un modèle récent et se séparer de l'ancien. Performance garantie par le fabricant, mais budget lourd, délais d'approvisionnement, génie civil, implantation et formation à prendre en compte."
+            "type": "puces",
+            "items": [
+              "**Le rétrofit** : Moderniser un bien existant en conservant sa structure : moteurs électriques neufs, variateurs, automate récent, pupitre, chaîne de sécurité remise au niveau. La machine garde son bâti, change de cerveau et redémarre pour un cycle de vie complet.",
+              "**Le remplacement** : Acheter un modèle récent et se séparer de l'ancien. Performance garantie par le fabricant, mais budget lourd, délais d'approvisionnement, génie civil, implantation et formation à prendre en compte.",
+              "**La rénovation partielle** : Remettre en état ce qui est usé, sans transformation du pilotage : roulements, glissières, vérins, câblage électrique fatigué. Une solution utile quand la commande tient encore la route, insuffisante quand les pièces disparaissent."
+            ]
           },
           {
-            "accroche": "La rénovation partielle",
-            "texte": "Remettre en état ce qui est usé, sans transformation du pilotage : roulements, glissières, vérins, câblage électrique fatigué. Une solution utile quand la commande tient encore la route, insuffisante quand les pièces disparaissent."
+            "type": "paragraphe",
+            "texte": "La suite de cette page compare les deux options du titre, car c'est là que les montants et les risques divergent le plus."
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "La suite de cette page compare les deux options du titre, car c'est là que les montants et les risques divergent le plus."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Un mot popularisé par la voiture électrique",
-        "id": "un-mot-popularise-par-la-voiture-electrique"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Tapez rétrofit dans un moteur de recherche : l'actualité et les articles en tête parlent d'automobile et de véhicule électrique, pas d'usines. Le détour vaut la peine : la logique se transpose trait pour trait."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Un mot popularisé par la voiture électrique",
+        "blocs": [
           {
-            "accroche": "Le rétrofit automobile",
-            "texte": "Le rétrofit électrique consiste à modifier la motorisation d'un véhicule. Depuis 2020, la France autorise la conversion d'un véhicule thermique, essence ou diesel, en véhicule électrique ou hybride rechargeable : un professionnel habilité dépose le moteur thermique et le réservoir de carburant, puis réalise l'installation d'un moteur électrique et d'une batterie, via un kit de conversion homologué, quel que soit le type de véhicule concerné. Après ce changement de motorisation, la carte grise du propriétaire est mise à jour : le certificat d'immatriculation suit la transformation, avec la mention de la nouvelle énergie."
+            "type": "paragraphe",
+            "texte": "Tapez rétrofit dans un moteur de recherche : l'actualité et les articles en tête parlent d'automobile et de véhicule électrique, pas d'usines. Le détour vaut la peine : la logique se transpose trait pour trait."
           },
           {
-            "accroche": "Un cadre précis",
-            "texte": "Voiture, camionnette, moto ou quadricycle : chaque catégorie de véhicule rétrofité reste conforme au code de la route et obtient la vignette Crit'Air la plus favorable pour la circulation. Des aides existent, dont la prime au rétrofit, réservée sous conditions à toute personne physique majeure, selon le revenu fiscal de référence, et parfois ouverte à une personne morale : de quoi bénéficier d'une remise réelle sur le coût de la conversion. Le ministère de la Transition écologique publie le montant, les plafonds de revenus et les infos utiles sur ecologie.gouv.fr."
+            "type": "puces",
+            "items": [
+              "**Le rétrofit automobile** : Le rétrofit électrique consiste à modifier la motorisation d'un véhicule. Depuis 2020, la France autorise la conversion d'un véhicule thermique, essence ou diesel, en véhicule électrique ou hybride rechargeable : un professionnel habilité dépose le moteur thermique et le réservoir de carburant, puis réalise l'installation d'un moteur électrique et d'une batterie, via un kit de conversion homologué, quel que soit le type de véhicule concerné. Après ce changement de motorisation, la carte grise du propriétaire est mise à jour : le certificat d'immatriculation suit la transformation, avec la mention de la nouvelle énergie.",
+              "**Un cadre précis** : Voiture, camionnette, moto ou quadricycle : chaque catégorie de véhicule rétrofité reste conforme au code de la route et obtient la vignette Crit'Air la plus favorable pour la circulation. Des aides existent, dont la prime au rétrofit, réservée sous conditions à toute personne physique majeure, selon le revenu fiscal de référence, et parfois ouverte à une personne morale : de quoi bénéficier d'une remise réelle sur le coût de la conversion. Le ministère de la Transition écologique publie le montant, les plafonds de revenus et les infos utiles sur ecologie.gouv.fr.",
+              "**Ce que l'industrie en retient** : Donner une seconde vie à un bien dont la structure est saine plutôt que l'envoyer à la casse : batterie contre réservoir chez les uns, variateurs et automates contre relais chez les autres. À la clé, réduire les émissions de gaz à effet de serre liées à une fabrication neuve et alléger le bilan carbone : la décarbonation vaut pour le parc automobile comme pour le parc machines, en France comme ailleurs."
+            ]
           },
           {
-            "accroche": "Ce que l'industrie en retient",
-            "texte": "Donner une seconde vie à un bien dont la structure est saine plutôt que l'envoyer à la casse : batterie contre réservoir chez les uns, variateurs et automates contre relais chez les autres. À la clé, réduire les émissions de gaz à effet de serre liées à une fabrication neuve et alléger le bilan carbone : la décarbonation vaut pour le parc automobile comme pour le parc machines, en France comme ailleurs."
+            "type": "paragraphe",
+            "texte": "Autonomie en kilomètres, borne de recharge à domicile, recharge rapide, assurance auto, hybride rechargeable, durée de vie de la batterie : les questions du particulier qui veut transformer sa voiture thermique ne sont pas les vôtres. Le type de véhicule change tout, et l'économie du projet dépend des kilomètres parcourus, du prix du kit et de l'assurance auto du véhicule converti."
+          },
+          {
+            "type": "puces",
+            "items": [
+              "**La question de fond : moderniser ou racheter ?** Elle se pose dans les mêmes termes devant une presse de 1995 que devant une berline diesel : machine ou véhicule, l'arbitrage se ressemble.",
+              "**La vague de la mobilité électrique** a juste rendu visible, jusque sur les réseaux sociaux, une pratique que les ateliers connaissent déjà depuis longtemps : une nouvelle tendance en apparence, un savoir-faire ancien en réalité."
+            ]
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "Autonomie en kilomètres, borne de recharge à domicile, recharge rapide, assurance auto, hybride rechargeable, durée de vie de la batterie : les questions du particulier qui veut transformer sa voiture thermique ne sont pas les vôtres. Le type de véhicule change tout, et l'économie du projet dépend des kilomètres parcourus, du prix du kit et de l'assurance auto du véhicule converti."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "La grille de décision, critère par critère",
+        "blocs": [
           {
-            "accroche": "La question de fond : moderniser ou racheter ?",
-            "texte": "Elle se pose dans les mêmes termes devant une presse de 1995 que devant une berline diesel : machine ou véhicule, l'arbitrage se ressemble."
+            "type": "paragraphe",
+            "texte": "Un bon arbitrage ne sort pas d'une intuition : il sort d'une grille remplie honnêtement, avec les données de la GMAO et un œil sur place."
           },
           {
-            "accroche": "La vague de la mobilité électrique",
-            "texte": "a juste rendu visible, jusque sur les réseaux sociaux, une pratique que les ateliers connaissent déjà depuis longtemps : une nouvelle tendance en apparence, un savoir-faire ancien en réalité."
+            "type": "tableau",
+            "entetes": [
+              "Critère",
+              "Plutôt rétrofit",
+              "Plutôt remplacement"
+            ],
+            "lignes": [
+              [
+                "Bâti et mécanique",
+                "Structure saine, géométrie correcte, santé mécanique vérifiée",
+                "Bâti fissuré, usure généralisée, reprise plus chère que la valeur"
+              ],
+              [
+                "Commande et pilotage",
+                "Obsolescence majeure de l'armoire, le reste tient",
+                "Toute la conception est dépassée, pilotage compris"
+              ],
+              [
+                "Pièces détachées",
+                "Accessibilité des pièces mécaniques encore bonne",
+                "Composants critiques introuvables, y compris mécaniques"
+              ],
+              [
+                "Coûts d'entretien",
+                "Pannes ciblées sur la partie commande",
+                "Courbe de coûts en hausse sur tous les organes"
+              ],
+              [
+                "Sécurité et conformité",
+                "Mise au niveau possible et documentée",
+                "Écarts trop nombreux, remise au niveau hors de prix"
+              ],
+              [
+                "Besoin de production",
+                "Cadence et qualité atteignables à périmètre égal",
+                "Changement de produit, de format ou de volume"
+              ],
+              [
+                "Énergie",
+                "Moteurs anciens remplacés par des moteurs électriques de classe efficace",
+                "Procédé entier énergivore, technologie dépassée"
+              ],
+              [
+                "Délai",
+                "Fenêtre d'arrêt courte, machine indisponible brièvement",
+                "Délai long accepté, espace au sol repensé"
+              ],
+              [
+                "Budget",
+                "Montant d'investissement inférieur, amortissement rapide",
+                "Capacité à financer, parfois par prêt, un saut de génération"
+              ]
+            ]
+          },
+          {
+            "type": "encadre",
+            "texte": "Trois conseils de terrain : remplissez la grille à plusieurs, production comprise ; datez chaque constat, date de mise en service et historique à l'appui ; et chiffrez les deux scénarios en coût complet, pas en prix d'achat. Le premier conseil évite les angles morts, le dernier évite les regrets ; chaque scénario garde ses limites, aucune grille ne les gomme."
           }
         ]
       },
       {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "La grille de décision, critère par critère",
-        "id": "la-grille-de-decision-critere-par-critere"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Un bon arbitrage ne sort pas d'une intuition : il sort d'une grille remplie honnêtement, avec les données de la GMAO et un œil sur place."
-      },
-      {
-        "type": "tableau",
-        "entetes": [
-          "Critère",
-          "Plutôt rétrofit",
-          "Plutôt remplacement"
-        ],
-        "lignes": [
-          [
-            "Bâti et mécanique",
-            "Structure saine, géométrie correcte, santé mécanique vérifiée",
-            "Bâti fissuré, usure généralisée, reprise plus chère que la valeur"
-          ],
-          [
-            "Commande et pilotage",
-            "Obsolescence majeure de l'armoire, le reste tient",
-            "Toute la conception est dépassée, pilotage compris"
-          ],
-          [
-            "Pièces détachées",
-            "Accessibilité des pièces mécaniques encore bonne",
-            "Composants critiques introuvables, y compris mécaniques"
-          ],
-          [
-            "Coûts d'entretien",
-            "Pannes ciblées sur la partie commande",
-            "Courbe de coûts en hausse sur tous les organes"
-          ],
-          [
-            "Sécurité et conformité",
-            "Mise au niveau possible et documentée",
-            "Écarts trop nombreux, remise au niveau hors de prix"
-          ],
-          [
-            "Besoin de production",
-            "Cadence et qualité atteignables à périmètre égal",
-            "Changement de produit, de format ou de volume"
-          ],
-          [
-            "Énergie",
-            "Moteurs anciens remplacés par des moteurs électriques de classe efficace",
-            "Procédé entier énergivore, technologie dépassée"
-          ],
-          [
-            "Délai",
-            "Fenêtre d'arrêt courte, machine indisponible brièvement",
-            "Délai long accepté, espace au sol repensé"
-          ],
-          [
-            "Budget",
-            "Montant d'investissement inférieur, amortissement rapide",
-            "Capacité à financer, parfois par prêt, un saut de génération"
-          ]
-        ]
-      },
-      {
-        "type": "citation",
-        "texte": "Trois conseils de terrain : remplissez la grille à plusieurs, production comprise ; datez chaque constat, date de mise en service et historique à l'appui ; et chiffrez les deux scénarios en coût complet, pas en prix d'achat. Le premier conseil évite les angles morts, le dernier évite les regrets ; chaque scénario garde ses limites, aucune grille ne les gomme."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "La méthode, du diagnostic aux essais",
-        "id": "la-methode-du-diagnostic-aux-essais"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Décider en salle de réunion ne suffit pas. Voici le déroulé que nous appliquons, du premier contact à la remise en production."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "La méthode, du diagnostic aux essais",
+        "blocs": [
           {
-            "accroche": "L'audit du bien",
-            "texte": "État physique de l'équipement : mécanique, électrique, hydraulique, relevés sur place, historique GMAO, date de fabrication, obsolescence des composants. Le dossier présente des faits, pas des impressions."
+            "type": "paragraphe",
+            "texte": "Décider en salle de réunion ne suffit pas. Voici le déroulé que nous appliquons, du premier contact à la remise en production."
           },
           {
-            "accroche": "Les deux scénarios chiffrés",
-            "texte": "Rétrofit et remplacement, chacun sur devis, en coût complet : acquisition ou travaux, arrêt de production, formation, pièces, énergie. L'objet du chiffrage est la comparaison, en euros comme en jours d'arrêt."
-          },
-          {
-            "accroche": "La décision partagée",
-            "texte": "La grille remplie, à partager avec la direction et l'exploitation. Un arbitrage écrit, daté, avec les limites connues de chaque option : personne ne le rejouera l'année suivante."
-          },
-          {
-            "accroche": "La préparation",
-            "texte": "Pièces approvisionnées, schémas à jour, plan de prévention, accueil sécurité, fenêtre d'arrêt calée avec la production. Tout le nécessaire est prêt avant de toucher la machine."
-          },
-          {
-            "accroche": "Les travaux",
-            "texte": "Dépose de l'ancienne commande, câblage, variateurs, automate, essais à vide, points d'arrêt qualité à chaque phase. Les imprévus se gèrent dans le créneau, pas à l'étape suivante."
-          },
-          {
-            "accroche": "Les essais et la remise en production",
-            "texte": "Montée en charge, formation des opérateurs, documentation technique et schémas remis, garantie posée par écrit. La machine est suivie de près les premières semaines."
-          }
-        ],
-        "ordonnee": true
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Un exemple concret : une machine de vingt ans",
-        "id": "un-exemple-concret-une-machine-de-vingt-ans"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Une machine spéciale d'assemblage, acquise neuve à la fin des années 2000, illustre bien l'arbitrage. Les symptômes parleront à beaucoup."
-      },
-      {
-        "type": "liste",
-        "items": [
-          {
-            "accroche": "Le constat",
-            "texte": "Arrêts répétés, cartes électroniques introuvables, un seul ancien sait encore la dépanner, variateur en panne majeure deux fois dans l'année."
-          },
-          {
-            "accroche": "La grille",
-            "texte": "Bâti sain, réducteurs et roues dentées d'origine en bon état, géométrie correcte. Le problème est concentré sur la commande : le rétrofit s'impose, le remplacement attendra."
-          },
-          {
-            "accroche": "Les travaux",
-            "texte": "Rétrofit électrique de l'armoire : l'association d'un automate récent, de moteurs neufs et de variateurs du commerce, pupitre repensé avec les opérateurs, protections remises au niveau réglementaire."
-          },
-          {
-            "accroche": "Le résultat",
-            "texte": "Pannes espacées, pièces disponibles en stock courant, diagnostic accessible à toute l'équipe, consommation en baisse. La machine rétrofitée bénéficie d'une nouvelle jeunesse, sans déménager la ligne."
+            "type": "etapes",
+            "items": [
+              "**L'audit du bien** : État physique de l'équipement : mécanique, électrique, hydraulique, relevés sur place, historique GMAO, date de fabrication, obsolescence des composants. Le dossier présente des faits, pas des impressions.",
+              "**Les deux scénarios chiffrés** : Rétrofit et remplacement, chacun sur devis, en coût complet : acquisition ou travaux, arrêt de production, formation, pièces, énergie. L'objet du chiffrage est la comparaison, en euros comme en jours d'arrêt.",
+              "**La décision partagée** : La grille remplie, à partager avec la direction et l'exploitation. Un arbitrage écrit, daté, avec les limites connues de chaque option : personne ne le rejouera l'année suivante.",
+              "**La préparation** : Pièces approvisionnées, schémas à jour, plan de prévention, accueil sécurité, fenêtre d'arrêt calée avec la production. Tout le nécessaire est prêt avant de toucher la machine.",
+              "**Les travaux** : Dépose de l'ancienne commande, câblage, variateurs, automate, essais à vide, points d'arrêt qualité à chaque phase. Les imprévus se gèrent dans le créneau, pas à l'étape suivante.",
+              "**Les essais et la remise en production** : Montée en charge, formation des opérateurs, documentation technique et schémas remis, garantie posée par écrit. La machine est suivie de près les premières semaines."
+            ]
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "Aucun cas ne fait référence universelle : les chiffres d'un chantier ne valent que pour lui. Au bout du compte, c'est la démarche qui se copie, pas le résultat."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Les erreurs les plus fréquentes",
-        "id": "les-erreurs-les-plus-frequentes"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Des deux côtés de la balance, les mêmes pièges reviennent. Les connaître avant de signer change la fin de l'histoire."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Un exemple concret : une machine de vingt ans",
+        "blocs": [
           {
-            "accroche": "Décider sans données",
-            "texte": "Sans historique ni relevés, l'arbitrage se fait à l'affect. La machine bruyante n'est pas forcément la plus coûteuse."
+            "type": "paragraphe",
+            "texte": "Une machine spéciale d'assemblage, acquise neuve à la fin des années 2000, illustre bien l'arbitrage. Les symptômes parleront à beaucoup."
           },
           {
-            "accroche": "Rétrofiter un bâti fatigué",
-            "texte": "Mettre une commande neuve sur une mécanique morte, c'est remplacer le moteur d'une carrosserie rouillée. L'audit mécanique vient d'abord."
+            "type": "puces",
+            "items": [
+              "**Le constat** : Arrêts répétés, cartes électroniques introuvables, un seul ancien sait encore la dépanner, variateur en panne majeure deux fois dans l'année.",
+              "**La grille** : Bâti sain, réducteurs et roues dentées d'origine en bon état, géométrie correcte. Le problème est concentré sur la commande : le rétrofit s'impose, le remplacement attendra.",
+              "**Les travaux** : Rétrofit électrique de l'armoire : l'association d'un automate récent, de moteurs neufs et de variateurs du commerce, pupitre repensé avec les opérateurs, protections remises au niveau réglementaire.",
+              "**Le résultat** : Pannes espacées, pièces disponibles en stock courant, diagnostic accessible à toute l'équipe, consommation en baisse. La machine rétrofitée bénéficie d'une nouvelle jeunesse, sans déménager la ligne."
+            ]
           },
           {
-            "accroche": "Sous-estimer le remplacement",
-            "texte": "Le prix d'achat n'est qu'une fraction du total : transport, génie civil, réseaux de l'atelier, formation, montée en cadence. Le délai réel non plus n'est pas celui du catalogue."
-          },
-          {
-            "accroche": "Négliger la conformité",
-            "texte": "Une modification importante du bien engage une exigence légale de remise au niveau : sécurité, documentation, marquage. Le dossier réglementaire s'intègre aux travaux, pas aux options."
-          },
-          {
-            "accroche": "Attendre la panne définitive",
-            "texte": "Décider à chaud, machine à l'arrêt, c'est payer plus cher dans les deux sens : rétrofit improvisé ou remplacement précipité. La grille se remplit à froid."
-          },
-          {
-            "accroche": "Penser machine seule",
-            "texte": "Une ligne est un système : moderniser un maillon sans regarder l'amont et l'aval déplace le goulot au lieu de le supprimer."
+            "type": "paragraphe",
+            "texte": "Aucun cas ne fait référence universelle : les chiffres d'un chantier ne valent que pour lui. Au bout du compte, c'est la démarche qui se copie, pas le résultat."
           }
         ]
       },
       {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Ce que cela implique pour votre organisation",
-        "id": "ce-que-cela-implique-pour-votre-organisation"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Choisir, c'est engager le site pour dix ans. Trois dimensions méritent d'être posées noir sur blanc avant de lancer le moindre chantier."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Les erreurs les plus fréquentes",
+        "blocs": [
           {
-            "accroche": "La dimension budgétaire",
-            "texte": "Le rétrofit étale l'effort et reste souvent moins cher que l'achat d'une machine neuve ; le remplacement concentre l'investissement, avec un amortissement fiscal différent, et un prêt d'équipement se discute plus facilement dossier technique en main. Dans les deux cas, le prix moyen constaté ailleurs ne remplace pas votre chiffrage : chaque configuration est un cas particulier."
+            "type": "paragraphe",
+            "texte": "Des deux côtés de la balance, les mêmes pièges reviennent. Les connaître avant de signer change la fin de l'histoire."
           },
           {
-            "accroche": "La dimension production",
-            "texte": "Fenêtre d'arrêt courte et maîtrisée côté rétrofit, indisponibilité longue mais planifiée côté machine neuve. La bonne option est celle qui respecte vos engagements de livraison, pas celle qui flatte le tableau d'investissements."
-          },
-          {
-            "accroche": "La dimension compétences",
-            "texte": "Automate récent, variateurs électriques, supervision : le rétrofit remet vos équipements au standard actuel et vos équipes en terrain connu : un avantage sous-estimé. Le remplacement impose un apprentissage complet, à budgéter en formation et en temps."
+            "type": "puces",
+            "items": [
+              "**Décider sans données** : Sans historique ni relevés, l'arbitrage se fait à l'affect. La machine bruyante n'est pas forcément la plus coûteuse.",
+              "**Rétrofiter un bâti fatigué** : Mettre une commande neuve sur une mécanique morte, c'est remplacer le moteur d'une carrosserie rouillée. L'audit mécanique vient d'abord.",
+              "**Sous-estimer le remplacement** : Le prix d'achat n'est qu'une fraction du total : transport, génie civil, réseaux de l'atelier, formation, montée en cadence. Le délai réel non plus n'est pas celui du catalogue.",
+              "**Négliger la conformité** : Une modification importante du bien engage une exigence légale de remise au niveau : sécurité, documentation, marquage. Le dossier réglementaire s'intègre aux travaux, pas aux options.",
+              "**Attendre la panne définitive** : Décider à chaud, machine à l'arrêt, c'est payer plus cher dans les deux sens : rétrofit improvisé ou remplacement précipité. La grille se remplit à froid.",
+              "**Penser machine seule** : Une ligne est un système : moderniser un maillon sans regarder l'amont et l'aval déplace le goulot au lieu de le supprimer."
+            ]
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "Migen intervient des deux côtés de la décision."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Ce que cela implique pour votre organisation",
+        "blocs": [
           {
-            "accroche": "Notre [bureau d'études](/offres/bureau-etudes/)",
-            "texte": "mène l'audit et le chiffrage."
+            "type": "paragraphe",
+            "texte": "Choisir, c'est engager le site pour dix ans. Trois dimensions méritent d'être posées noir sur blanc avant de lancer le moindre chantier."
           },
           {
-            "accroche": "Nos équipes",
-            "texte": "réalisent le [retrofit machine](/offres/retrofit/) et la [mise en conformité machine](/offres/retrofit/mise-en-conformite-machine/)."
+            "type": "puces",
+            "items": [
+              "**La dimension budgétaire** : Le rétrofit étale l'effort et reste souvent moins cher que l'achat d'une machine neuve ; le remplacement concentre l'investissement, avec un amortissement fiscal différent, et un prêt d'équipement se discute plus facilement dossier technique en main. Dans les deux cas, le prix moyen constaté ailleurs ne remplace pas votre chiffrage : chaque configuration est un cas particulier.",
+              "**La dimension production** : Fenêtre d'arrêt courte et maîtrisée côté rétrofit, indisponibilité longue mais planifiée côté machine neuve. La bonne option est celle qui respecte vos engagements de livraison, pas celle qui flatte le tableau d'investissements.",
+              "**La dimension compétences** : Automate récent, variateurs électriques, supervision : le rétrofit remet vos équipements au standard actuel et vos équipes en terrain connu : un avantage sous-estimé. Le remplacement impose un apprentissage complet, à budgéter en formation et en temps."
+            ]
           },
           {
-            "accroche": "Le [dépannage industriel](/offres/depannage-industriel/)",
-            "texte": "tient la ligne en attendant l'arbitrage, avec des techniciens évalués en entretien technique et comportemental, 10 % des candidats retenus, et une information claire à chaque étape."
+            "type": "paragraphe",
+            "texte": "Migen intervient des deux côtés de la décision."
+          },
+          {
+            "type": "puces",
+            "items": [
+              "**Notre [bureau d'études](/offres/bureau-etudes/)** mène l'audit et le chiffrage.",
+              "**Nos équipes** réalisent le [retrofit machine](/offres/retrofit/) et la [mise en conformité machine](/offres/retrofit/mise-en-conformite-machine/).",
+              "**Le [dépannage industriel](/offres/depannage-industriel/)** tient la ligne en attendant l'arbitrage, avec des techniciens évalués en entretien technique et comportemental, 10 % des techniciens retenus, et une information claire à chaque étape."
+            ]
+          },
+          {
+            "type": "encadre",
+            "texte": "La décarbonation de l'industrie passe aussi par là : prolonger un bien sain, remplacer un procédé dépassé. Les objectifs de décarbonation et la veille réglementaire se traitent en parallèle de la grille : c'est le sens d'un arbitrage complet, et l'avantage d'un partenaire qui voit les deux mondes. En France, ce mouvement concerne chaque site industriel."
           }
         ]
-      },
-      {
-        "type": "citation",
-        "texte": "La décarbonation de l'industrie passe aussi par là : prolonger un bien sain, remplacer un procédé dépassé. Les objectifs de décarbonation et la veille réglementaire se traitent en parallèle de la grille : c'est le sens d'un arbitrage complet, et l'avantage d'un partenaire qui voit les deux mondes. En France, ce mouvement concerne chaque site industriel."
-      },
-      {
-        "type": "citation",
-        "texte": "[Demander un diagnostic maintenance](/contact/)"
       }
     ],
     "questions": [
@@ -361,9 +255,29 @@
       },
       {
         "question": "Et si la machine rétrofitée tombe encore en panne ?",
-        "reponse": "La garantie des travaux couvre le périmètre modernisé, et l'entretien courant reprend ses droits sur le reste. Le plus efficace : adosser le rétrofit à un [contrat de maintenance](/offres/zero-arret/), pour suivre la machine dans la durée, du réglage initial à la maintenance préventive. Une machine modernisée mal entretenue redeviendrait le problème qu'elle a cessé d'être."
+        "reponse": "La garantie des travaux couvre le périmètre modernisé, et l'entretien courant reprend ses droits sur le reste. Le plus efficace : adosser le rétrofit à un contrat de maintenance, pour suivre la machine dans la durée, du réglage initial à la maintenance préventive. Une machine modernisée mal entretenue redeviendrait le problème qu'elle a cessé d'être. ---"
+      }
+    ],
+    "minutes": 11,
+    "aLire": [
+      {
+        "href": "/ressources/livres-blancs/externaliser-sa-maintenance/",
+        "titre": "Livre blanc : externaliser sa maintenance sans perdre la main",
+        "minutes": 7,
+        "image": "/assets/web/team-electric.jpg"
+      },
+      {
+        "href": "/ressources/articles/cout-arret-de-production/",
+        "titre": "Coût d'un arrêt de production",
+        "minutes": 12,
+        "image": "/assets/web/ph-tuyaux.jpg"
+      },
+      {
+        "href": "/ressources/articles/digitalisation-maintenance/",
+        "titre": "Digitalisation maintenance",
+        "minutes": 11,
+        "image": "/assets/web/team-grind-impact.jpg"
       }
     ]
-  },
-  "blocs_corpus": 41
+  }
 }

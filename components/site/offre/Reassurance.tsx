@@ -89,7 +89,7 @@ const PUCE_HUB: CSSProperties = {
  * servi et aucune page déjà portée ne bouge.
  */
 const REPERES = [
-  { valeur: "10 %", libelle: "des candidats retenus" },
+  { valeur: "10 %", libelle: "des techniciens retenus" },
   {
     valeur: "Salariés",
     libelle: "techniciens Migen, évalués sur la technique et le comportement",

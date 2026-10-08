@@ -1,157 +1,194 @@
 {
   "url": "/secteurs/logistique/",
-  "source": "dessin : maquette/accueil-rendu.html, gabarit isSecteur, lignes 6278 à 6364. texte : supabase/import/corpus-analyse.json, produit par scripts/produit-secteurs.mjs.",
+  "titre_h1": "Vos commandes partent ce soir. Même en plein pic.",
+  "source": "dessin : maquette/rendu/secteurs--logistique.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {
     "gabarit": "secteur",
-    "surtitre": "Secteur d'activité",
+    "pastille": "Maintenance des équipements logistiques",
     "chapeau": "Nous travaillons sur vos indicateurs, pas à côté : disponibilité par zone, récurrence par équipement, respect du plan préventif. Les interventions se calent sur vos vagues de préparation, et l'astreinte couvre les nuits et les week-ends.",
     "actions": [
       {
         "libelle": "Faire chiffrer la maintenance de mon entrepôt",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperesSurtitre": "Nos repères dans le secteur",
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option pour les nuits et les pics.",
+    "formulaireHeroTitre": "Faire chiffrer la maintenance de mon entrepôt",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels et logisticiens, dont plus de 80 réguliers"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, astreinte portée par le hub de techniciens le plus proche"
+        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, astreinte portée par le hub de techniciens le plus proche"
       }
     ],
-    "enjeuxSurtitre": "Les enjeux du secteur",
-    "enjeuxTitre": "Le trieur principal lâche à 16h30. Des milliers de commandes basculent au lendemain, et le client final ne connaît pas vos contraintes techniques.",
-    "enjeux": [
+    "logosTitre": "Ils nous confient leurs sites logistiques",
+    "logos": [
       {
-        "titre": "L'expédition sans attendre ne se rattrape pas.",
-        "texte": "Une heure perdue en fin d'après-midi se paie en promesses rompues, pas en heures de main d'œuvre."
+        "nom": "Amazon",
+        "src": "/assets/clients/mq-3103d0f3f9ba.svg"
       },
       {
-        "titre": "Plus le site est automatisé, plus la panne coûte cher.",
-        "texte": "Trieurs, transstockeurs, navettes, AGV : la productivité monte, et le prix de l'arrêt avec elle."
+        "nom": "Savoye",
+        "src": "/assets/clients/savoye.png"
       },
       {
-        "titre": "Votre pic concentre l'année sur quelques semaines.",
-        "texte": "L'équipement doit être prêt avant, pas réparé pendant."
+        "nom": "GLS",
+        "src": "/assets/clients/mq-09708b77564e.svg"
       },
       {
-        "titre": "Vous rendez des comptes en chiffres.",
-        "texte": "Et votre mainteneur actuel vous répond en impressions."
+        "nom": "Veepee",
+        "src": "/assets/clients/mq-ff81dfbb55c7.svg"
       },
       {
-        "titre": "Les allées sont pleines pendant que vous intervenez.",
-        "texte": "Préparateurs, caristes et techniciens partagent le même espace : la coactivité n'est pas une option."
+        "nom": "Alstef Group",
+        "src": "/assets/clients/alstef.webp"
+      },
+      {
+        "nom": "ERIKS",
+        "src": "/assets/clients/mq-441fc873c0d9.svg"
+      },
+      {
+        "nom": "DimoMaint",
+        "src": "/assets/clients/mq-e2c58c98b787.svg"
+      },
+      {
+        "nom": "Aktid",
+        "src": "/assets/clients/aktid.png"
+      },
+      {
+        "nom": "Ciuch",
+        "src": "/assets/clients/mq-d2b02ebe550d.svg"
+      },
+      {
+        "nom": "Atena",
+        "src": "/assets/clients/atena.png"
       }
     ],
-    "autresSurtitre": "Les autres secteurs",
-    "autres": [
+    "appelBouton": "Faire chiffrer la maintenance de mon entrepôt",
+    "problemePhoto": null,
+    "complementOffre": [
       {
-        "libelle": "Agroalimentaire",
-        "href": "/secteurs/agroalimentaire/"
-      },
-      {
-        "libelle": "Automobile",
-        "href": "/secteurs/automobile/"
-      },
-      {
-        "libelle": "Pharmaceutique",
-        "href": "/secteurs/pharmaceutique/"
-      },
-      {
-        "libelle": "Aéronautique",
-        "href": "/secteurs/aeronautique/"
-      },
-      {
-        "libelle": "Chimie",
-        "href": "/secteurs/chimie/"
-      },
-      {
-        "libelle": "Nucléaire",
-        "href": "/secteurs/nucleaire/"
-      },
-      {
-        "libelle": "Industrie lourde",
-        "href": "/secteurs/industrie-lourde/"
-      },
-      {
-        "libelle": "Industrie métallique",
-        "href": "/secteurs/industrie-metallique/"
-      },
-      {
-        "libelle": "Menuiserie industrielle",
-        "href": "/secteurs/menuiserie-industrielle/"
+        "texte": "Pour les gros travaux, montage d'une ligne, transfert d'activité, extension de site, notre offre chantier prend le relais avec un chef de projet unique, de l'étude à la mise en route."
       }
     ],
-    "appelTitre": "Besoin de fiabiliser vos flux avant la prochaine montée en charge ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
+    "brefBande": "Besoin de savoir où votre entrepôt perd réellement de la capacité ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
       "libelle": "Faire chiffrer la maintenance de mon entrepôt",
-      "href": "#formulaire"
+      "href": "#besoin"
     },
-    "complement": [
+    "expertisesTitre": "Les expertises d’un site qui ne s’arrête pas",
+    "expertisesChapeau": "Tri, convoyage, stockage automatisé : le site tourne en continu, les pics de saison ne préviennent pas.",
+    "expertises": [
+      {
+        "titre": "Mécanique",
+        "texte": "Convoyeurs, rouleaux, courroies et motoréducteurs : le préventif avant le pic.",
+        "href": "/expertises/mecanique/",
+        "photo": "/assets/web/team-grind-front.jpg"
+      },
+      {
+        "titre": "Électromécanique",
+        "texte": "Moteurs et variateurs des lignes de tri, remplacés sans couper tout le flux.",
+        "href": "/expertises/electromecanique/",
+        "photo": "/assets/web/team-electric.jpg"
+      },
+      {
+        "titre": "Automatisme",
+        "texte": "Trieurs et transstockeurs : défauts capteurs et logique de tri.",
+        "href": "/expertises/automatisme/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      },
+      {
+        "titre": "Électrique",
+        "texte": "Distribution, armoires et éclairage d’entrepôts de grande surface.",
+        "href": "/expertises/electrique/",
+        "photo": "/assets/web/team-electric.jpg"
+      }
+    ],
+    "marquesFamille": "logi",
+    "sections": [
+      {
+        "type": "probleme",
+        "variante": "rangee",
+        "punchline": "Le trieur principal lâche à 16h30. Des milliers de commandes basculent au lendemain, et le client final ne connaît pas vos contraintes techniques.",
+        "puces": [
+          {
+            "accroche": "L'expédition sans attendre ne se rattrape pas.",
+            "texte": "Une heure perdue en fin d'après-midi se paie en promesses rompues, pas en heures de main d'œuvre."
+          },
+          {
+            "accroche": "Plus le site est automatisé, plus la panne coûte cher.",
+            "texte": "Trieurs, transstockeurs, navettes, AGV : la productivité monte, et le prix de l'arrêt avec elle."
+          },
+          {
+            "accroche": "Votre pic concentre l'année sur quelques semaines.",
+            "texte": "L'équipement doit être prêt avant, pas réparé pendant."
+          },
+          {
+            "accroche": "Vous rendez des comptes en chiffres.",
+            "texte": "Et votre prestataire de maintenance actuel vous répond en impressions."
+          },
+          {
+            "accroche": "Les allées sont pleines pendant que vous intervenez.",
+            "texte": "Préparateurs, caristes et techniciens partagent le même espace : la coactivité n'est pas une option."
+          }
+        ]
+      },
       {
         "type": "offre",
         "lignes": [
           {
             "prestation": {
-              "accroche": "Préventif calé sur vos heures de fonctionnement réelles",
-              "texte": ", resserré avant les pics."
+              "accroche": "Préventif calé sur vos heures de fonctionnement réelles resserré avant les pics."
             },
             "benefice": "Vous entretenez au rythme du flux, pas au rythme d'un calendrier constructeur."
           },
           {
             "prestation": {
               "accroche": "Priorisation par impact sur l'expédition",
-              "texte": "un trieur principal ne se traite pas comme une ligne de délestage."
+              "texte": "Un trieur principal ne se traite pas comme une ligne de délestage."
             },
             "benefice": "Le budget maintenance va là où l'arrêt bloque vraiment le quai."
           },
           {
             "prestation": {
               "accroche": "Mesure et restitution",
-              "texte": "disponibilité par zone, temps moyen de remise en service, récurrence par équipement, coût par colis."
+              "texte": "Disponibilité par zone, temps moyen de remise en service, récurrence par équipement, coût par colis."
             },
             "benefice": "Vos revues d'exploitation s'appuient sur des faits. Le gestionnaire voit la capacité, la direction voit le coût."
           },
           {
             "prestation": {
-              "accroche": "Interventions en heures creuses",
-              "texte": ", tôt le matin, entre deux équipes, de nuit."
+              "accroche": "Interventions en heures creuses tôt le matin, entre deux équipes, de nuit."
             },
             "benefice": "Les opérations lourdes ne mangent jamais une vague de préparation."
           },
           {
             "prestation": {
               "accroche": "Couverture complète du site",
-              "texte": "[convoyeurs et tri](/secteurs/logistique/maintenance-convoyeur/), transstockeurs, navettes, quais et portes rapides, pesage, froid et utilités."
+              "texte": "Convoyeurs et tri, transstockeurs, navettes, quais et portes rapides, pesage, froid et utilités."
             },
             "benefice": "Un seul contrat du quai de réception au quai d'expédition, au lieu d'un prestataire par famille."
           },
           {
             "prestation": {
-              "accroche": "Astreinte 24/24 et 7/7 en option",
-              "texte": ", mobilisation depuis le hub de techniciens le plus proche."
+              "accroche": "Astreinte la nuit, le week-end et les jours fériés en option mobilisation depuis le hub de techniciens le plus proche."
             },
             "benefice": "Une panne du dimanche soir ne devient pas un lundi matin sacrifié."
           },
           {
             "prestation": {
-              "accroche": "Conseil de stock minimal de pièces critiques",
-              "texte": ", dimensionné sur vos historiques et les délais fournisseur."
+              "accroche": "Conseil de stock minimal de pièces critiques dimensionné sur vos historiques et les délais fournisseur."
             },
             "benefice": "Une part importante des arrêts longs vient d'une pièce manquante en magasin."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Pour les gros travaux, montage d'une ligne, transfert d'activité, extension de site, notre offre [chantier](/offres/chantier/) prend le relais avec un chef de projet unique, de l'étude à la mise en route. Et la [peak season logistique](/secteurs/logistique/peak-season/) se prépare selon un compte à rebours dédié."
           }
         ]
       },
@@ -160,27 +197,27 @@
         "etapes": [
           {
             "titre": "Audit d'entrée",
-            "texte": "état des lieux du parc, analyse des défaillances récurrentes, revue des contrôles réglementaires. Vous obtenez l'état réel de vos installations, zone par zone."
+            "texte": "État des lieux du parc, analyse des défaillances récurrentes, revue des contrôles réglementaires. Vous obtenez l'état réel de vos installations, zone par zone."
           },
           {
             "titre": "Reprise de l'historique",
-            "texte": "récupération des données d'arrêt existantes, connexion à votre GMAO et à vos outils d'exploitation. Pas de système parallèle, pas de double saisie."
+            "texte": "Récupération des données d'arrêt existantes, connexion à votre GMAO et à vos outils d'exploitation. Pas de système parallèle, pas de double saisie."
           },
           {
             "titre": "Plan priorisé",
-            "texte": "fréquences calées sur l'utilisation réelle, points de contrôle par type d'équipement, pièces critiques identifiées."
+            "texte": "Fréquences calées sur l'utilisation réelle, points de contrôle par type d'équipement, pièces critiques identifiées."
           },
           {
             "titre": "Mise en service",
-            "texte": "plan de prévention, balisage, protection des personnes, coordination avec vos chefs d'équipe. Les règles de coactivité sont écrites avant la première intervention."
+            "texte": "Plan de prévention, balisage, protection des personnes, coordination avec vos chefs d'équipe. Les règles de coactivité sont écrites avant la première intervention."
           },
           {
             "titre": "Exécution",
-            "texte": "préventif en fenêtres creuses, correctif prioritaire, astreinte activée selon le contrat."
+            "texte": "Préventif en fenêtres creuses, correctif prioritaire, astreinte activée selon le contrat."
           },
           {
             "titre": "Bilan à trois mois",
-            "texte": "disponibilité, récurrence, coûts par zone. Si les chiffres ne progressent pas, la conversation est simple."
+            "texte": "Disponibilité, récurrence, coûts par zone. Si les chiffres ne progressent pas, la conversation est simple."
           }
         ]
       },
@@ -189,23 +226,17 @@
         "puces": [
           {
             "accroche": "La mesure avant l'affirmation",
-            "texte": "disponibilité par zone, récurrence par équipement, respect du plan préventif. Vous jugez sur vos propres indicateurs, sans rien croire sur parole."
+            "texte": "Disponibilité par zone, récurrence par équipement, respect du plan préventif. Vous jugez sur vos propres indicateurs, sans rien croire sur parole."
           },
           {
             "accroche": "Une transition sans interruption de service",
-            "texte": "reprise de l'historique, phase de recouvrement, coordination avec vos équipes et, si besoin, avec le prestataire sortant. La chaîne de responsabilité reste nette à chaque instant."
+            "texte": "Reprise de l'historique, phase de recouvrement, coordination avec vos équipes et, si besoin, avec le prestataire sortant. La chaîne de responsabilité reste nette à chaque instant."
           },
           {
             "accroche": "Un périmètre et des modalités de sortie écrits",
-            "texte": "ce qui est inclus, ce qui ne l'est pas, les indicateurs suivis, les conditions d'arrêt. Le cadre protège les deux parties."
+            "texte": "Ce qui est inclus, ce qui ne l'est pas, les indicateurs suivis, les conditions d'arrêt. Le cadre protège les deux parties."
           }
         ]
-      },
-      {
-        "type": "cta",
-        "question": "Besoin de savoir où votre entrepôt perd réellement de la capacité ?",
-        "bouton": "Faire chiffrer la maintenance de mon entrepôt",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
       },
       {
         "type": "preuves",
@@ -214,37 +245,43 @@
             "titre": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures, sur un site en continu",
             "texte": "centre logistique ORY4, depuis septembre 2022, contrat annuel",
             "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique",
-            "lienHref": "/preuves/amazon-centre-logistique/"
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
           },
           {
             "titre": "Dispositif transposé sur un deuxième site",
             "texte": "10 techniciens polyvalents une semaine par mois, ETZ 2 à Metz, depuis mai 2024",
             "lienLibelle": "Étude de cas AMAZON : démarrage d'un nouveau site",
-            "lienHref": "/preuves/amazon-nouveau-site/"
+            "lienHref": "/preuves/amazon-nouveau-site/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "Deux techniciens dédiés à la maintenance curative des convoyeurs, trieurs et packaging, transport",
             "texte": "en poste sur site",
             "lienLibelle": "Étude de cas GLS : maintenance curative",
-            "lienHref": "/preuves/gls-maintenance-curative/"
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-d50c84e228cb.jpg"
           },
           {
             "titre": "Six techniciens en permanence sur le contrat de préventif annuel des sites de Lyon",
             "texte": "depuis septembre 2023, prise en charge complète en un mois",
             "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
-            "lienHref": "/preuves/veepee-sites-lyon/"
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "12 monteurs mécaniciens et 8 engins de levage pour le montage d'un centre logistique",
             "texte": "6 semaines de chantier, livraison tenue",
             "lienLibelle": "Étude de cas AKTID : montage d'un centre logistique",
-            "lienHref": "/preuves/aktid-centre-logistique/"
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/mq-c5856badee79.jpg"
           },
           {
             "titre": "Renfort de contrôle de chantier chez un spécialiste de l'automatisation logistique",
             "texte": "intervenants intégrés aux équipes sur des projets stratégiques",
             "lienLibelle": "Étude de cas ALSTEF Group : collaboration",
-            "lienHref": "/preuves/alstef-group/"
+            "lienHref": "/preuves/alstef-group/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
           }
         ]
       },
@@ -264,7 +301,7 @@
             "reponse": "Oui. Nos comptes rendus s'y intègrent, et nous exploitons vos données d'arrêt pour affiner le plan de maintenance. Pas de système parallèle, pas de double saisie."
           },
           {
-            "question": "Que faites-vous que notre mainteneur actuel ne fait pas ?",
+            "question": "Que faites-vous que notre prestataire de maintenance actuel ne fait pas ?",
             "reponse": "Nous mesurons, et nous montrons : disponibilité, récurrence, coûts par zone. Si un contrat vous lie déjà, nous pouvons démarrer par un périmètre d'essai et laisser les chiffres parler. Le changement de fournisseur se décide sur des faits."
           },
           {
@@ -273,9 +310,15 @@
           },
           {
             "question": "Que se passe-t-il en cas de panne un dimanche soir ?",
-            "reponse": "L'astreinte 24/24 et 7/7 prend l'appel et mobilise un technicien depuis l'hub de techniciens le plus proche. L'objectif de travail reste le même : rendre la ligne avant l'ouverture de la vague suivante."
+            "reponse": "L'astreinte la nuit, le week-end et les jours fériés prend l'appel et mobilise un technicien depuis l'hub de techniciens le plus proche. L'objectif de travail reste le même : rendre la ligne avant l'ouverture de la vague suivante."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de fiabiliser vos flux avant la prochaine montée en charge ?",
+        "bouton": "Faire chiffrer la maintenance de mon entrepôt",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
       }
     ]
   }

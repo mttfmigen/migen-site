@@ -20,12 +20,11 @@ import { LARGEUR, SECTION, SURTITRE } from "@/components/site/blocs/habillage";
  * la capture écrit « Pourquoi Migen ? ». Le jour où une page en écrit un
  * autre, il devient un champ, pas avant.
  *
- * TROU SIGNALÉ, ET IL VIENT DE LA MAQUETTE : la capture dessine une photo en
- * seconde colonne (`assets/web/x-tech-portrait.jpg`), mais ce fichier
- * N'EXISTE PAS dans le paquet d'assets de la maquette (son serveur répond une
- * page d'erreur de 469 octets) ni dans `public/assets/web/`. Poser une autre
- * photo à sa place serait une association inventée (CLAUDE.md §13) : la
- * section est donc rendue sur une colonne, et la photo reste à réclamer.
+ * LA PHOTO DE SECONDE COLONNE (`assets/web/x-tech-portrait.jpg`) manquait
+ * au paquet le 07/10 : le colis de passation Claude Design l'apporte, elle est
+ * dans `public/assets/web/`. Rendue comme la capture (08/10) : grille
+ * 1,1fr / 0,9fr, image de fond de 360 px de haut minimum, rôle `img` et
+ * libellé repris tels quels.
  */
 
 export interface ProprietesReponseDirecte {
@@ -49,16 +48,42 @@ const TEXTE: CSSProperties = {
   textWrap: "pretty",
 };
 
+const GRILLE: CSSProperties = {
+  ...LARGEUR,
+  display: "grid",
+  gridTemplateColumns: "minmax(0,1.1fr) minmax(0,.9fr)",
+  gap: 48,
+  alignItems: "center",
+};
+
+const PHOTO: CSSProperties = {
+  minHeight: 360,
+  height: "100%",
+  borderRadius: "var(--rad)",
+  backgroundColor: "var(--ph)",
+  backgroundImage: "url('/assets/web/x-tech-portrait.jpg')",
+  backgroundPosition: "center",
+  backgroundSize: "cover",
+  filter: "saturate(var(--sat)) contrast(1.05)",
+};
+
 export default function ReponseDirecte({
   titre,
   texte,
 }: ProprietesReponseDirecte) {
   return (
     <section style={SECTION}>
-      <div style={LARGEUR}>
-        <div style={{ ...SURTITRE, marginBottom: 16 }}>Pourquoi Migen ?</div>
-        <h2 style={TITRE}>{titre}</h2>
-        {texte ? <p style={TEXTE}>{texte}</p> : null}
+      <div className="mg-r2" style={GRILLE}>
+        <div>
+          <div style={{ ...SURTITRE, marginBottom: 16 }}>Pourquoi Migen ?</div>
+          <h2 style={TITRE}>{titre}</h2>
+          {texte ? <p style={TEXTE}>{texte}</p> : null}
+        </div>
+        <div
+          role="img"
+          aria-label="Technicien migen en intervention sur une ligne de production"
+          style={PHOTO}
+        />
       </div>
     </section>
   );

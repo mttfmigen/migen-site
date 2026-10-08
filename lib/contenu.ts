@@ -68,11 +68,15 @@ export function cheminCanonique(segments: string[] | string): string {
  * Conséquence, sans ce détour : les pages retombent sur le gabarit de vente et
  * le portage reste invisible. Le client l'a dit, trois fois.
  *
- * CE QUE FAIT CE MODULE : au build, il lit ces fichiers et, pour une page dont
- * le contenu en base NE PORTE PAS de gabarit, il substitue celui du fichier.
- * La base garde la priorité dès qu'elle porte un gabarit : le jour où
- * `node scripts/importe_rest.mjs` a tourné, ce détour ne sert plus à rien et
- * ne change plus rien. Il disparaîtra alors sans que rien ne bouge.
+ * CE QUE FAIT CE MODULE : au build, il lit ces fichiers et, pour toute page
+ * qui en a un, il substitue son contenu à celui de la base. Le fichier est
+ * produit contre la capture de la maquette du jour ; la base, elle, date d'un
+ * import antérieur. Le 08/10, la règle inverse (« la base garde la priorité dès
+ * qu'elle porte un gabarit ») servait encore l'ancien gabarit « fiche » à 28
+ * études de cas sur 41, et l'ancien éditorial à 4 autres pages : le portage
+ * était fait, le site ne le montrait pas. Le jour où
+ * `node scripts/importe_rest.mjs` a tourné, base et fichier disent la même
+ * chose : ce détour ne change plus rien et disparaîtra sans que rien ne bouge.
  *
  * Lu UNE fois par processus : c'est du build, pas une requête.
  */
@@ -112,7 +116,7 @@ interface RelaisGabarit {
 // Rechargé le 07/10 : /bureau-etudes/bureau-etude-electronique/ porté contre sa capture (19 sections, rail de marques).
 // Rechargé le 07/10 : /bureau-etudes/bureau-etude-electronique/, phrase de la carte phare du maillage.
 // Rechargé le 07/10 : /bureau-etudes/mise-en-conformite-machine/ porté contre sa capture (19 sections, rail de marques, 5 trous déclarés).
-// relais relu : règles du README de passation
+// relais relu : 2026-10-08T12:49:37.141Z
 const CONTENUS_SUR_DISQUE: ReadonlyMap<string, RelaisGabarit> = (() => {
   const dossier = join(process.cwd(), "supabase", "import", "gabarits-maquette");
   const par = new Map<string, RelaisGabarit>();
@@ -145,15 +149,6 @@ const CONTENUS_SUR_DISQUE: ReadonlyMap<string, RelaisGabarit> = (() => {
   }
   return par;
 })();
-
-/** La page porte-t-elle déjà un gabarit de la maquette ? */
-function porteUnGabarit(contenu: unknown): boolean {
-  return (
-    typeof contenu === "object" &&
-    contenu !== null &&
-    typeof (contenu as { gabarit?: unknown }).gabarit === "string"
-  );
-}
 
 /**
  * Un identifiant STABLE déduit du chemin, à la forme d'un UUID.
@@ -264,12 +259,11 @@ export const pageParChemin = cache(
     const { seo, ...page } = data as LignePage & {
       seo: LigneSeo | LigneSeo[] | null;
     };
-    /* Le fichier ne gagne que si la base n'a pas encore son gabarit : la base
-       reste la source, le disque n'est qu'un relais tant qu'elle ne peut pas
-       être écrite. Quand le fichier gagne, il porte aussi, s'il l'écrit, le
-       H1 attendu par la maquette. */
+    /* Le fichier gagne toujours : il est porté contre la capture, la base ne
+       l'est pas encore (voir `CONTENUS_SUR_DISQUE`). Il porte aussi, s'il
+       l'écrit, le H1 attendu par la maquette. */
     const surDisque = CONTENUS_SUR_DISQUE.get(path);
-    const relaisActif = !!surDisque && !porteUnGabarit(page.contenu);
+    const relaisActif = !!surDisque;
     const contenu = relaisActif ? surDisque.contenu : page.contenu;
     const titre_h1 =
       relaisActif && surDisque.titreH1 ? surDisque.titreH1 : page.titre_h1;
@@ -321,7 +315,8 @@ export async function filAriane(
 
   const connues = new Map((data ?? []).map((p) => [p.path, p.titre_h1]));
   return chemins.map((c, i) => {
-    const titre = connues.get(c);
+    // Le relais disque gagne ici comme dans `pageParChemin`.
+    const titre = CONTENUS_SUR_DISQUE.get(c)?.titreH1 ?? connues.get(c);
     return {
       titre: titre ?? humanise(segments[i]),
       path: titre ? c : null,

@@ -18,7 +18,11 @@
     "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "Des candidats retenus, après entretien technique ET comportemental"
+        "libelle": "Des techniciens retenus, après entretien technique ET comportemental"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "en continu et tous les jours",
@@ -220,7 +224,7 @@
           },
           {
             "question": "Qui intervient sur nos robots ?",
-            "reponse": "Des techniciens salariés de Migen, évalués en entretien technique et comportemental, 10 % des candidats retenus. Nos roboticiens travaillent sur ABB et Fanuc, et beaucoup viennent de l'électrotechnique, de l'automatisme et de la production."
+            "reponse": "Des techniciens salariés de Migen, évalués en entretien technique et comportemental, 10 % des techniciens retenus. Nos roboticiens travaillent sur ABB et Fanuc, et beaucoup viennent de l'électrotechnique, de l'automatisme et de la production."
           },
           {
             "question": "Êtes-vous intégrateur ?",

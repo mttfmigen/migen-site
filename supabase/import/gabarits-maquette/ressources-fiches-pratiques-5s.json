@@ -1,23 +1,17 @@
 {
   "url": "/ressources/fiches-pratiques/5s/",
-  "h1": "5S industrie",
+  "titre_h1": "5S industrie",
   "contenu": {
     "gabarit": "ressource",
-    "categorie": "Fiche pratique",
-    "chapeau": "Vingt minutes pour retrouver une clé dynamométrique, un chariot qui bloque l'allée, une fuite jamais signalée : le désordre coûte tous les jours, sans jamais apparaître dans un budget. La méthode 5S, née dans l'industrie automobile japonaise, s'attaque à ces pertes invisibles.",
-    "rappel": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30 : un contact direct pour parler organisation d'atelier ou diagnostic de votre maintenance.",
-    "cartes": [
-      {
-        "surtitre": "Aller plus loin",
-        "titre": "Sécurité maintenance industrielle",
-        "lienHref": "/ressources/fiches-pratiques/securite-maintenance/",
-        "lienLibelle": "La page complète →"
-      }
+    "rayon": "fiches-pratiques",
+    "chapo": [
+      "Vingt minutes pour retrouver une clé dynamométrique, un chariot qui bloque l'allée, une fuite jamais signalée : le désordre coûte tous les jours, sans jamais apparaître dans un budget. La méthode 5S, née dans l'industrie automobile japonaise, s'attaque à ces pertes invisibles.",
+      "Cette fiche fait partie de nos [Ressources : Fiches pratiques](/ressources/fiches-pratiques/) : un guide pratique écrit du point de vue de la maintenance industrielle, par des équipes qui passent leurs journées dans vos ateliers."
     ],
-    "corps": [
+    "avant": [
       {
-        "type": "paragraphe",
-        "texte": "Cette fiche fait partie de nos [Ressources : Fiches pratiques](/ressources/fiches-pratiques/) : un guide pratique écrit du point de vue de la maintenance industrielle, par des équipes qui passent leurs journées dans vos ateliers."
+        "type": "encadre",
+        "texte": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30 : un contact direct pour parler organisation d'atelier ou diagnostic de votre maintenance."
       },
       {
         "type": "paragraphe",
@@ -26,379 +20,251 @@
       {
         "type": "paragraphe",
         "texte": "Les repères clés tiennent sur cette page, les fiches liées en bas de page complètent."
-      },
+      }
+    ],
+    "parties": [
       {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Les 5S en industrie : la définition",
-        "id": "les-5s-en-industrie-la-definition"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Un environnement de travail encombré fabrique des pannes et des retards, quel que soit le secteur. La méthode consiste à créer un poste où chaque élément est en état de servir, puis à l'y maintenir."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Les 5S en industrie : la définition",
+        "blocs": [
           {
-            "accroche": "Une méthode japonaise",
-            "texte": "Elle a été formalisée par la société Toyota, dans le cadre du Toyota Production System, pour organiser chaque poste de travail. Le nom vient de cinq mots japonais qui commencent par S."
+            "type": "paragraphe",
+            "texte": "Un environnement de travail encombré fabrique des pannes et des retards, quel que soit le secteur. La méthode consiste à créer un poste où chaque élément est en état de servir, puis à l'y maintenir."
           },
           {
-            "accroche": "Un cycle en cinq étapes",
-            "texte": "Trier, ranger, nettoyer, standardiser, suivre. Chaque étape prépare la suivante, et la cinquième ramène à la première."
+            "type": "puces",
+            "items": [
+              "**Une méthode japonaise** : Elle a été formalisée par la société Toyota, dans le cadre du Toyota Production System, pour organiser chaque poste de travail. Le nom vient de cinq mots japonais qui commencent par S.",
+              "**Un cycle en cinq étapes** : Trier, ranger, nettoyer, standardiser, suivre. Chaque étape prépare la suivante, et la cinquième ramène à la première.",
+              "**Un pilier du lean** : Le lean manufacturing, ou gestion allégée de la production, chasse le gaspillage. Un système d'organisation avant d'être une philosophie : les 5S en sont la première brique, celle qui se voit sur le terrain."
+            ]
           },
           {
-            "accroche": "Un pilier du lean",
-            "texte": "Le lean manufacturing, ou gestion allégée de la production, chasse le gaspillage. Un système d'organisation avant d'être une philosophie : les 5S en sont la première brique, celle qui se voit sur le terrain."
+            "type": "paragraphe",
+            "texte": "La littérature anglophone parle de « 5S system » ; les francophones disent méthode 5S, démarche 5S ou chantier 5S. Le but reste le même : un environnement de travail propre, organisé, où l'anomalie saute aux yeux avant de devenir une panne."
+          },
+          {
+            "type": "encadre",
+            "texte": "Toyota, devenu leader mondial de l'automobile, l'a imposée à ses ateliers puis à ses fournisseurs ; le lean manufacturing l'a ensuite répandue dans tout le secteur industriel, de l'aéronautique à la mécanique. Son avantage sur les grandes démarches : une application rapide, des résultats visibles en quelques semaines."
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "La littérature anglophone parle de « 5S system » ; les francophones disent méthode 5S, démarche 5S ou chantier 5S. Le but reste le même : un environnement de travail propre, organisé, où l'anomalie saute aux yeux avant de devenir une panne."
-      },
-      {
-        "type": "citation",
-        "texte": "Toyota, devenu leader mondial de l'automobile, l'a imposée à ses ateliers puis à ses fournisseurs ; le lean manufacturing l'a ensuite répandue dans tout le secteur industriel, de l'aéronautique à la mécanique. Son avantage sur les grandes démarches : une application rapide, des résultats visibles en quelques semaines."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Seiri, Seiton, Seiso, Seiketsu, Shitsuke",
-        "id": "seiri-seiton-seiso-seiketsu-shitsuke"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Derrière l'acronyme, cinq gestes concrets. La traduction varie d'une entreprise à l'autre, le principe jamais."
-      },
-      {
-        "type": "tableau",
-        "entetes": [
-          "Terme japonais",
-          "Traduction courante",
-          "Le geste au poste de travail"
-        ],
-        "lignes": [
-          [
-            "Seiri",
-            "Trier",
-            "Séparer l'utile de l'inutile, éliminer ce qui ne sert pas à l'activité, ne garder que l'essentiel"
-          ],
-          [
-            "Seiton",
-            "Ranger",
-            "Donner une place à chaque objet, au plus près de son utilisation, avec un emplacement de référence"
-          ],
-          [
-            "Seiso",
-            "Nettoyer",
-            "Remettre le poste en état, et profiter du nettoyage pour inspecter et détecter les anomalies"
-          ],
-          [
-            "Seiketsu",
-            "Standardiser",
-            "Écrire la règle qui maintient l'acquis, pour éviter la dérive : photos, marquages, procédures simples et visibles"
-          ],
-          [
-            "Shitsuke",
-            "Suivre",
-            "Auditer, mesurer, corriger : faire vivre le standard dans le temps"
-          ]
-        ]
-      },
-      {
-        "type": "paragraphe",
-        "texte": "La version francisée retient cinq verbes : Supprimer (Seiri), Situer (Seiton), faire Scintiller (Seiso), Standardiser (Seiketsu), Suivre (Shitsuke). Une formule résume les deux premiers : une place pour chaque chose et chaque chose à sa place."
-      },
-      {
-        "type": "citation",
-        "texte": "Grâce à ce repère, être capable de trouver n'importe quel outil d'un simple regard : voilà le test qui ne trompe pas. Le cinquième S est le plus dur : Shitsuke, maintenir l'effort quand la nouveauté retombe, sépare les entreprises qui tiennent des entreprises qui recommencent tous les deux ans. La culture d'atelier se joue là."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "La mise en place, étape par étape",
-        "id": "la-mise-en-place-etape-par-etape"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Un déploiement 5S réussi se conduit comme une gestion de projet : un périmètre, un pilote, un plan d'action, des points de contrôle. Voici la méthodologie que nous voyons fonctionner sur les sites industriels."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Seiri, Seiton, Seiso, Seiketsu, Shitsuke",
+        "blocs": [
           {
-            "accroche": "Le cadrage",
-            "texte": "Choisir une zone pilote limitée, un atelier de maintenance ou un magasin de pièces, nommer un responsable, former les opérateurs et les employés concernés. Le pilote expertise le périmètre : accès, flux, risques. La direction annonce l'objectif et s'engage sur les moyens nécessaires."
+            "type": "paragraphe",
+            "texte": "Derrière l'acronyme, cinq gestes concrets. La traduction varie d'une entreprise à l'autre, le principe jamais."
           },
           {
-            "accroche": "Seiri, trier",
-            "texte": "Passer chaque objet de la zone en revue. Ce qui sert reste, ce qui ne sert pas sort, ce qui hésite part en attente avec une étiquette datée. Supprimer l'inutile libère de l'espace et révèle l'état réel du poste."
+            "type": "tableau",
+            "entetes": [
+              "Terme japonais",
+              "Traduction courante",
+              "Le geste au poste de travail"
+            ],
+            "lignes": [
+              [
+                "Seiri",
+                "Trier",
+                "Séparer l'utile de l'inutile, éliminer ce qui ne sert pas à l'activité, ne garder que l'essentiel"
+              ],
+              [
+                "Seiton",
+                "Ranger",
+                "Donner une place à chaque objet, au plus près de son utilisation, avec un emplacement de référence"
+              ],
+              [
+                "Seiso",
+                "Nettoyer",
+                "Remettre le poste en état, et profiter du nettoyage pour inspecter et détecter les anomalies"
+              ],
+              [
+                "Seiketsu",
+                "Standardiser",
+                "Écrire la règle qui maintient l'acquis, pour éviter la dérive : photos, marquages, procédures simples et visibles"
+              ],
+              [
+                "Shitsuke",
+                "Suivre",
+                "Auditer, mesurer, corriger : faire vivre le standard dans le temps"
+              ]
+            ]
           },
           {
-            "accroche": "Seiton, ranger",
-            "texte": "Définir un emplacement par outil, par bac, par consommable, au plus près du geste. Marquage au sol pour les allées de circulation et le stockage, ombres d'outillage sur les panneaux, code couleur par famille : chaque bac se laisse identifier d'un regard. Le mobilier se déplace ou se remplace si l'ergonomie l'exige, un mobilier technique adapté épargne des gestes inutiles."
+            "type": "paragraphe",
+            "texte": "La version francisée retient cinq verbes : Supprimer (Seiri), Situer (Seiton), faire Scintiller (Seiso), Standardiser (Seiketsu), Suivre (Shitsuke). Une formule résume les deux premiers : une place pour chaque chose et chaque chose à sa place."
           },
           {
-            "accroche": "Seiso, nettoyer",
-            "texte": "Remettre à neuf, faire scintiller le poste, puis répartir l'entretien courant en tâches courtes et fréquentes. Chaque nettoyage devient une inspection : fuite, desserrage, câble abîmé, tout écart se signale et alimente la maintenance."
-          },
-          {
-            "accroche": "Seiketsu, standardiser",
-            "texte": "Photographier l'état de référence, afficher les règles au poste, intégrer les contrôles dans les processus et les routines. Le système de management visuel fait le travail : un écart se voit sans qu'on le cherche."
-          },
-          {
-            "accroche": "Shitsuke, suivre",
-            "texte": "Auditer chaque périmètre à fréquence régulière, publier les résultats, corriger vite. Les audits nourrissent l'amélioration continue et préparent le déploiement des espaces suivants."
-          }
-        ],
-        "ordonnee": true
-      },
-      {
-        "type": "citation",
-        "texte": "Commencer petit, réussir, montrer, étendre, pour éviter l'essoufflement : le chantier pilote qui tient trois mois convainc plus que dix réunions de lancement."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Un exemple concret : l'atelier de maintenance",
-        "id": "un-exemple-concret-l-atelier-de-maintenance"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Prenez un atelier de maintenance classique : établi saturé, magasin qui déborde, gestion de stock au petit bonheur. C'est l'exemple parfait, parce que chaque minute perdue là-bas se paie en temps d'arrêt machine. Voici de quelle façon la méthode s'applique."
-      },
-      {
-        "type": "liste",
-        "items": [
-          {
-            "accroche": "Avant",
-            "texte": "Les techniciens perdent du temps de recherche à chaque intervention, l'outillage circule sans revenir, des pièces mécaniques dorment en double parce que personne ne sait qu'elles existent. Les pertes de temps s'additionnent, la machine attend."
-          },
-          {
-            "accroche": "Le tri",
-            "texte": "Un week-end de Seiri sort de l'atelier les équipements hors d'usage, les matériaux de rebut, la documentation périmée. Ce qui reste tient dans la moitié de l'espace."
-          },
-          {
-            "accroche": "Le rangement",
-            "texte": "Bacs étiquetés par référence, mobilier repositionné pour raccourcir les déplacements, marquage au sol des allées, servantes dédiées par technicien, le matériel le plus utilisé à portée de main. Chaque outil retrouve sa place, visible en un regard."
-          },
-          {
-            "accroche": "La remise en état",
-            "texte": "Elle révèle une fuite hydraulique et deux flexibles fatigués, détectés avant la casse. L'entretien régulier devient un contrôle continu."
-          },
-          {
-            "accroche": "Le standard",
-            "texte": "Une photo de l'état de référence par poste, une règle claire d'emprunt d'outillage, un point de cinq minutes par semaine. Pas besoin de modifier le code couleur ni les règles tous les mois : le standard vit, il n'empile pas."
-          },
-          {
-            "accroche": "Le suivi",
-            "texte": "Un audit mensuel d'une demi-heure, une grille simple, un affichage des résultats. Les écarts se traitent dans la semaine, pas au prochain grand ménage."
+            "type": "encadre",
+            "texte": "Grâce à ce repère, être capable de trouver n'importe quel outil d'un simple regard : voilà le test qui ne trompe pas. Le cinquième S est le plus dur : Shitsuke, maintenir l'effort quand la nouveauté retombe, sépare les entreprises qui tiennent des entreprises qui recommencent tous les deux ans. La culture d'atelier se joue là."
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "Résultat typique de ce genre de chantier : moins de temps perdu en recherches, un magasin fiable, des interventions préparées plus vite. La productivité de l'atelier monte sans un euro d'investissement machine."
-      },
-      {
-        "type": "citation",
-        "texte": "L'exemple donne envie d'améliorer le reste : l'efficacité opérationnelle progresse, la communication entre équipes aussi, chacun peut voir l'état du poste."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Ce que la démarche rapporte",
-        "id": "ce-que-la-demarche-rapporte"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Les 5S ne sont pas une opération propreté pour la visite des clients. Les bénéfices se mesurent, poste par poste, sur la productivité et sur des indicateurs que vous suivez déjà."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "La mise en place, étape par étape",
+        "blocs": [
           {
-            "accroche": "Sécurité",
-            "texte": "Allées dégagées, produits identifiés, voies de circulation marquées. Les statistiques d'incidents reculent quand l'environnement redevient lisible."
+            "type": "paragraphe",
+            "texte": "Un déploiement 5S réussi se conduit comme une gestion de projet : un périmètre, un pilote, un plan d'action, des points de contrôle. Voici la méthodologie que nous voyons fonctionner sur les sites industriels."
           },
           {
-            "accroche": "Qualité",
-            "texte": "Un poste organisé limite les erreurs de pièce, les oublis de serrage, les mélanges de matériaux. La non-qualité recule avec le désordre qui la nourrissait."
+            "type": "etapes",
+            "items": [
+              "**Le cadrage** : Choisir une zone pilote limitée, un atelier de maintenance ou un magasin de pièces, nommer un responsable, former les opérateurs et les employés concernés. Le pilote expertise le périmètre : accès, flux, risques. La direction annonce l'objectif et s'engage sur les moyens nécessaires.",
+              "**Seiri, trier** : Passer chaque objet de la zone en revue. Ce qui sert reste, ce qui ne sert pas sort, ce qui hésite part en attente avec une étiquette datée. Supprimer l'inutile libère de l'espace et révèle l'état réel du poste.",
+              "**Seiton, ranger** : Définir un emplacement par outil, par bac, par consommable, au plus près du geste. Marquage au sol pour les allées de circulation et le stockage, ombres d'outillage sur les panneaux, code couleur par famille : chaque bac se laisse identifier d'un regard. Le mobilier se déplace ou se remplace si l'ergonomie l'exige, un mobilier technique adapté épargne des gestes inutiles.",
+              "**Seiso, nettoyer** : Remettre à neuf, faire scintiller le poste, puis répartir l'entretien courant en tâches courtes et fréquentes. Chaque nettoyage devient une inspection : fuite, desserrage, câble abîmé, tout écart se signale et alimente la maintenance.",
+              "**Seiketsu, standardiser** : Photographier l'état de référence, afficher les règles au poste, intégrer les contrôles dans les processus et les routines. Le système de management visuel fait le travail : un écart se voit sans qu'on le cherche.",
+              "**Shitsuke, suivre** : Auditer chaque périmètre à fréquence régulière, publier les résultats, corriger vite. Les audits nourrissent l'amélioration continue et préparent le déploiement des espaces suivants."
+            ]
           },
           {
-            "accroche": "Disponibilité machine",
-            "texte": "Le nettoyage-inspection détecte les anomalies avant la panne. Les 5S préparent la maintenance préventive et la fiabilisation des équipements."
-          },
-          {
-            "accroche": "Temps utile",
-            "texte": "Moins de temps de recherche, des temps de changement de série raccourcis, des interventions qui démarrent tout de suite. L'efficacité se gagne dans les minutes, pas dans les slogans."
-          },
-          {
-            "accroche": "Engagement",
-            "texte": "Les opérateurs conçoivent le rangement de leur propre poste. Une équipe écoutée sur ses conditions de travail s'implique dans la suite : kaizen, TPM, chantiers d'optimisation."
-          },
-          {
-            "accroche": "Image",
-            "texte": "Un site propre et organisé se visite. Clients et auditeurs lisent la maîtrise d'une usine dans ses allées avant de lire ses rapports."
+            "type": "encadre",
+            "texte": "Commencer petit, réussir, montrer, étendre, pour éviter l'essoufflement : le chantier pilote qui tient trois mois convainc plus que dix réunions de lancement."
           }
         ]
       },
       {
-        "type": "titre",
-        "niveau": 3,
-        "texte": "Les indicateurs qui bougent",
-        "id": "les-indicateurs-qui-bougent"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Le suivi passe par des mesures simples, pas par un audit lourd."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Un exemple concret : l'atelier de maintenance",
+        "blocs": [
           {
-            "accroche": "Taux de rendement synthétique",
-            "texte": ", dont le calcul est détaillé dans notre fiche [TRS](/ressources/fiches-techniques/trs/)."
+            "type": "paragraphe",
+            "texte": "Prenez un atelier de maintenance classique : établi saturé, magasin qui déborde, gestion de stock au petit bonheur. C'est l'exemple parfait, parce que chaque minute perdue là-bas se paie en temps d'arrêt machine. Voici de quelle façon la méthode s'applique."
           },
           {
-            "texte": "**Taux d'accidents et de presqu'accidents.**"
+            "type": "puces",
+            "items": [
+              "**Avant** : Les techniciens perdent du temps de recherche à chaque intervention, l'outillage circule sans revenir, des pièces mécaniques dorment en double parce que personne ne sait qu'elles existent. Les pertes de temps s'additionnent, la machine attend.",
+              "**Le tri** : Un week-end de Seiri sort de l'atelier les équipements hors d'usage, les matériaux de rebut, la documentation périmée. Ce qui reste tient dans la moitié de l'espace.",
+              "**Le rangement** : Bacs étiquetés par référence, mobilier repositionné pour raccourcir les déplacements, marquage au sol des allées, servantes dédiées par technicien, le matériel le plus utilisé à portée de main. Chaque outil retrouve sa place, visible en un regard.",
+              "**La remise en état** : Elle révèle une fuite hydraulique et deux flexibles fatigués, détectés avant la casse. L'entretien régulier devient un contrôle continu.",
+              "**Le standard** : Une photo de l'état de référence par poste, une règle claire d'emprunt d'outillage, un point de cinq minutes par semaine. Pas besoin de modifier le code couleur ni les règles tous les mois : le standard vit, il n'empile pas.",
+              "**Le suivi** : Un audit mensuel d'une demi-heure, une grille simple, un affichage des résultats. Les écarts se traitent dans la semaine, pas au prochain grand ménage."
+            ]
           },
           {
-            "texte": "**Taux de pannes des équipements critiques.**"
+            "type": "paragraphe",
+            "texte": "Résultat typique de ce genre de chantier : moins de temps perdu en recherches, un magasin fiable, des interventions préparées plus vite. La productivité de l'atelier monte sans un euro d'investissement machine."
           },
           {
-            "texte": "**Taux de service du magasin de pièces.**"
-          },
-          {
-            "texte": "**Taux de rebut en production.**"
-          },
-          {
-            "texte": "**Taux de conformité des audits 5S eux-mêmes.**"
+            "type": "encadre",
+            "texte": "L'exemple donne envie d'améliorer le reste : l'efficacité opérationnelle progresse, la communication entre équipes aussi, chacun peut voir l'état du poste."
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "Un tableau de bord par zone suffit pour optimiser la suite : cinq chiffres, une tendance, un plan d'action."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Les erreurs qui font échouer les 5S",
-        "id": "les-erreurs-qui-font-echouer-les-5s"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "La méthode est simple, l'échec est fréquent. Les causes se ressemblent d'un site à l'autre."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Ce que la démarche rapporte",
+        "blocs": [
           {
-            "accroche": "Le grand ménage unique",
-            "texte": "Un grand coup de balai sans standard ni suivi. L'atelier est propre un vendredi, le désordre revient dans le mois."
+            "type": "paragraphe",
+            "texte": "Les 5S ne sont pas une opération propreté pour la visite des clients. Les bénéfices se mesurent, poste par poste, sur la productivité et sur des indicateurs que vous suivez déjà."
           },
           {
-            "accroche": "La démarche imposée d'en haut",
-            "texte": "Des règles écrites loin du terrain, sans les opérateurs. Le rangement théorique gêne le geste réel, l'équipe contourne, la direction s'étonne."
+            "type": "puces",
+            "items": [
+              "**Sécurité** : Allées dégagées, produits identifiés, voies de circulation marquées. Les statistiques d'incidents reculent quand l'environnement redevient lisible.",
+              "**Qualité** : Un poste organisé limite les erreurs de pièce, les oublis de serrage, les mélanges de matériaux. La non-qualité recule avec le désordre qui la nourrissait.",
+              "**Disponibilité machine** : Le nettoyage-inspection détecte les anomalies avant la panne. Les 5S préparent la maintenance préventive et la fiabilisation des équipements.",
+              "**Temps utile** : Moins de temps de recherche, des temps de changement de série raccourcis, des interventions qui démarrent tout de suite. L'efficacité se gagne dans les minutes, pas dans les slogans.",
+              "**Engagement** : Les opérateurs conçoivent le rangement de leur propre poste. Une équipe écoutée sur ses conditions de travail s'implique dans la suite : kaizen, TPM, chantiers d'optimisation.",
+              "**Image** : Un site propre et organisé se visite. Clients et auditeurs lisent la maîtrise d'une usine dans ses allées avant de lire ses rapports."
+            ]
           },
           {
-            "accroche": "Tout déployer d'un coup",
-            "texte": "Dix espaces lancés de front, aucun fini. Mieux vaut une zone exemplaire qui sert de modèle que dix chantiers essoufflés."
+            "type": "intertitre",
+            "texte": "Les indicateurs qui bougent"
           },
           {
-            "accroche": "Aucun temps alloué au suivi",
-            "texte": "Sans créneau réservé pour les audits et l'entretien du standard, la production reprend toujours le dessus. Le cinquième S se budgète et se programme comme le reste."
+            "type": "paragraphe",
+            "texte": "Le suivi passe par des mesures simples, pas par un audit lourd."
           },
           {
-            "accroche": "Confondre 5S et austérité",
-            "texte": "Vider les postes au point de gêner le travail. Le tri sert l'utilisation réelle, pas la photo du siège : on garde le mobilier qui sert, on retire le mobilier qui encombre, un poste 5S est efficace d'abord."
+            "type": "puces",
+            "items": [
+              "**Taux de rendement synthétique**, dont le calcul est détaillé dans notre fiche [TRS](/ressources/fiches-techniques/trs/).",
+              "**Taux d'accidents et de presqu'accidents.**",
+              "**Taux de pannes des équipements critiques.**",
+              "**Taux de service du magasin de pièces.**",
+              "**Taux de rebut en production.**",
+              "**Taux de conformité des audits 5S eux-mêmes.**"
+            ]
           },
           {
-            "accroche": "Ignorer la reconnaissance",
-            "texte": "Des employés qui tiennent le standard sans jamais un retour, pas même un merci. Publier les progrès, dire merci lors des audits, montrer les espaces exemplaires : la discipline se nourrit de considération."
+            "type": "paragraphe",
+            "texte": "Un tableau de bord par zone suffit pour optimiser la suite : cinq chiffres, une tendance, un plan d'action."
           }
         ]
       },
       {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Les 5S à l'heure de la digitalisation",
-        "id": "les-5s-a-l-heure-de-la-digitalisation"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "La méthode a soixante ans, ses outils rajeunissent. La digitalisation ne remplace pas le geste, elle fiabilise le suivi. L'essentiel reste au poste."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Les erreurs qui font échouer les 5S",
+        "blocs": [
           {
-            "accroche": "Audits numériques",
-            "texte": "Grilles sur tablette, photos horodatées, taux et statistiques de conformité par zone, chaque écart tracé à la source. Le responsable voit la dérive en temps réel, sans attendre la revue de direction, et peut partager l'information au fil de l'eau."
+            "type": "paragraphe",
+            "texte": "La méthode est simple, l'échec est fréquent. Les causes se ressemblent d'un site à l'autre."
           },
           {
-            "accroche": "5S du travail informatique",
-            "texte": "Le principe s'applique également aux fichiers et aux dossiers à partager en équipe. Trier les documents, standardiser les noms, archiver l'obsolète : les mêmes pertes de temps se cachent dans les systèmes que dans les armoires."
-          },
-          {
-            "accroche": "La gestion du changement",
-            "texte": "Un programme de déploiement digital se pilote comme un chantier : informer, former, écrire la procédure, écouter. La digitalisation qui précède la culture échoue ; celle qui la sert accélère l'amélioration."
-          },
-          {
-            "accroche": "Lien avec la GMAO",
-            "texte": "Les anomalies détectées pendant l'entretien du poste alimentent la gestion de maintenance assistée par ordinateur. Le 5S devient un capteur de terrain pour le plan de maintenance, la boucle est complète."
+            "type": "puces",
+            "items": [
+              "**Le grand ménage unique** : Un grand coup de balai sans standard ni suivi. L'atelier est propre un vendredi, le désordre revient dans le mois.",
+              "**La démarche imposée d'en haut** : Des règles écrites loin du terrain, sans les opérateurs. Le rangement théorique gêne le geste réel, l'équipe contourne, la direction s'étonne.",
+              "**Tout déployer d'un coup** : Dix espaces lancés de front, aucun fini. Mieux vaut une zone exemplaire qui sert de modèle que dix chantiers essoufflés.",
+              "**Aucun temps alloué au suivi** : Sans créneau réservé pour les audits et l'entretien du standard, la production reprend toujours le dessus. Le cinquième S se budgète et se programme comme le reste.",
+              "**Confondre 5S et austérité** : Vider les postes au point de gêner le travail. Le tri sert l'utilisation réelle, pas la photo du siège : on garde le mobilier qui sert, on retire le mobilier qui encombre, un poste 5S est efficace d'abord.",
+              "**Ignorer la reconnaissance** : Des employés qui tiennent le standard sans jamais un retour, pas même un merci. Publier les progrès, dire merci lors des audits, montrer les espaces exemplaires : la discipline se nourrit de considération."
+            ]
           }
         ]
       },
       {
-        "type": "citation",
-        "texte": "La gestion du déploiement digital suit la même règle que le reste : d'abord un usage simple qui sert le terrain, puis l'extension pour améliorer le suivi en continu. Un outil de plus n'a jamais rangé un atelier."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Les 5S vus de la maintenance industrielle",
-        "id": "les-5s-vus-de-la-maintenance-industrielle"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Nous ne vendons pas de formation 5S en salle. Nous entretenons et dépannons des équipements industriels, et nous voyons chaque semaine ce que le désordre coûte en pannes et en heures perdues."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Les 5S à l'heure de la digitalisation",
+        "blocs": [
           {
-            "accroche": "Le magasin de pièces",
-            "texte": "C'est la zone où les 5S rapportent le plus vite en maintenance. Un stock trié, des niveaux suivis, des bacs identifiés : le dépannage commence par trouver la pièce, pas par la chercher."
+            "type": "paragraphe",
+            "texte": "La méthode a soixante ans, ses outils rajeunissent. La digitalisation ne remplace pas le geste, elle fiabilise le suivi. L'essentiel reste au poste."
           },
           {
-            "accroche": "Le poste de graissage et d'outillage",
-            "texte": "Lubrifiants identifiés par code couleur, outillage complet et contrôlé, matériel de consignation à sa place. La sécurité et la vitesse d'intervention se jouent là."
+            "type": "puces",
+            "items": [
+              "**Audits numériques** : Grilles sur tablette, photos horodatées, taux et statistiques de conformité par zone, chaque écart tracé à la source. Le responsable voit la dérive en temps réel, sans attendre la revue de direction, et peut partager l'information au fil de l'eau.",
+              "**5S du travail informatique** : Le principe s'applique également aux fichiers et aux dossiers à partager en équipe. Trier les documents, standardiser les noms, archiver l'obsolète : les mêmes pertes de temps se cachent dans les systèmes que dans les armoires.",
+              "**La gestion du changement** : Un programme de déploiement digital se pilote comme un chantier : informer, former, écrire la procédure, écouter. La digitalisation qui précède la culture échoue ; celle qui la sert accélère l'amélioration.",
+              "**Lien avec la GMAO** : Les anomalies détectées pendant l'entretien du poste alimentent la gestion de maintenance assistée par ordinateur. Le 5S devient un capteur de terrain pour le plan de maintenance, la boucle est complète."
+            ]
           },
           {
-            "accroche": "Les abords machine",
-            "texte": "Un équipement accessible, propre, dégagé, s'inspecte et se répare plus vite. Les 5S permettent de réduire la durée de chaque intervention et de faciliter le diagnostic."
+            "type": "encadre",
+            "texte": "La gestion du déploiement digital suit la même règle que le reste : d'abord un usage simple qui sert le terrain, puis l'extension pour améliorer le suivi en continu. Un outil de plus n'a jamais rangé un atelier."
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "De l'automobile à l'aéronautique, de l'agroalimentaire à la mécanique, plus de 120 clients industriels nous confient leurs lignes de production et leurs équipements. Nos techniciens sont retenus après une évaluation technique et comportementale qui ne conserve que 10 % des candidats."
-      },
-      {
-        "type": "citation",
-        "texte": "Ils travaillent dans des ateliers 5S au quotidien : ils savent respecter vos règles d'atelier et les renforcer. Cette culture se prolonge dans la TPM, la maintenance productive totale, dont les 5S sont le socle : notre article [TPM](/ressources/articles/tpm/) détaille le développement de cette démarche."
-      },
-      {
-        "type": "citation",
-        "texte": "Un doute sur l'organisation de votre maintenance, des interventions qui traînent, un magasin qui déborde ? Le diagnostic se fait sur site, au contact de vos équipes, et débouche sur des conseils écrits : appelez le 04 78 33 72 05."
-      },
-      {
-        "type": "citation",
-        "texte": "[Demander un diagnostic maintenance](/contact/)"
+        "titre": "Les 5S vus de la maintenance industrielle",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Nous ne vendons pas de formation 5S en salle. Nous entretenons et dépannons des équipements industriels, et nous voyons chaque semaine ce que le désordre coûte en pannes et en heures perdues."
+          },
+          {
+            "type": "puces",
+            "items": [
+              "**Le magasin de pièces** : C'est la zone où les 5S rapportent le plus vite en maintenance. Un stock trié, des niveaux suivis, des bacs identifiés : le dépannage commence par trouver la pièce, pas par la chercher.",
+              "**Le poste de graissage et d'outillage** : Lubrifiants identifiés par code couleur, outillage complet et contrôlé, matériel de consignation à sa place. La sécurité et la vitesse d'intervention se jouent là.",
+              "**Les abords machine** : Un équipement accessible, propre, dégagé, s'inspecte et se répare plus vite. Les 5S permettent de réduire la durée de chaque intervention et de faciliter le diagnostic."
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "texte": "De l'automobile à l'aéronautique, de l'agroalimentaire à la mécanique, plus de 200 clients industriels nous confient leurs lignes de production et leurs équipements. Nos techniciens sont retenus après une évaluation technique et comportementale qui ne conserve que 10 % des techniciens."
+          },
+          {
+            "type": "encadre",
+            "texte": "Ils travaillent dans des ateliers 5S au quotidien : ils savent respecter vos règles d'atelier et les renforcer. Cette culture se prolonge dans la TPM, la maintenance productive totale, dont les 5S sont le socle : notre article [TPM](/ressources/articles/tpm/) détaille le développement de cette démarche."
+          },
+          {
+            "type": "encadre",
+            "texte": "Un doute sur l'organisation de votre maintenance, des interventions qui traînent, un magasin qui déborde ? Le diagnostic se fait sur site, au contact de vos équipes, et débouche sur des conseils écrits : appelez-nous."
+          }
+        ]
       }
     ],
     "questions": [
@@ -424,9 +290,30 @@
       },
       {
         "question": "Quel rapport entre 5S, lean et TPM ?",
-        "reponse": "Les 5S sont l'étape d'entrée du lean management : sans poste stable et lisible, aucune optimisation ne tient. La TPM s'appuie sur les 5S pour confier l'entretien de premier niveau aux opérateurs. Les démarches d'excellence opérationnelle, Lean Six Sigma, lean production ou lean manufacturing, les utilisent comme fondation, et le développement se poursuit : on stabilise, puis on vise à améliorer, de manière durable."
+        "reponse": "Les 5S sont l'étape d'entrée du lean management : sans poste stable et lisible, aucune optimisation ne tient. La TPM s'appuie sur les 5S pour confier l'entretien de premier niveau aux opérateurs. Les démarches d'excellence opérationnelle, Lean Six Sigma, lean production ou lean manufacturing, les utilisent comme fondation, et le développement se poursuit : on stabilise, puis on vise à améliorer, de manière durable. ---"
+      }
+    ],
+    "minutes": 12,
+    "image": "/assets/web/ph-robots-solaire.jpg",
+    "aLire": [
+      {
+        "href": "/ressources/fiches-pratiques/consignation-electrique/",
+        "titre": "Consignation électrique",
+        "minutes": 12,
+        "image": "/assets/web/team-electric.jpg"
+      },
+      {
+        "href": "/ressources/fiches-pratiques/permis-de-feu/",
+        "titre": "Permis de feu",
+        "minutes": 8,
+        "image": "/assets/web/ph-robots-solaire.jpg"
+      },
+      {
+        "href": "/ressources/fiches-pratiques/plan-de-prevention/",
+        "titre": "Plan de prévention",
+        "minutes": 9,
+        "image": "/assets/web/team-duo.jpg"
       }
     ]
-  },
-  "blocs_corpus": 52
+  }
 }

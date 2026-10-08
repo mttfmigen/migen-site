@@ -156,7 +156,7 @@ export default function SecteursDomaine() {
           </p>
         </div>
         <div
-          className="mg-rmulti"
+          className={styles.sect6}
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3,minmax(0,1fr))",

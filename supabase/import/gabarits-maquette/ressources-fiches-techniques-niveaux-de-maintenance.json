@@ -1,300 +1,210 @@
 {
   "url": "/ressources/fiches-techniques/niveaux-de-maintenance/",
-  "h1": "Niveaux de maintenance",
+  "titre_h1": "Niveaux de maintenance",
   "contenu": {
     "gabarit": "ressource",
-    "categorie": "Fiche technique",
-    "chapeau": "*8 min de lecture*",
-    "rappel": "Envie d'en parler de vive voix ? Appelez le 04 78 33 72 05 : un expert vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-    "cartes": [
-      {
-        "surtitre": "Aller plus loin",
-        "titre": "Indicateur maintenance",
-        "lienHref": "/ressources/fiches-techniques/indicateurs-maintenance/",
-        "lienLibelle": "La page complète →"
-      }
+    "rayon": "fiches-techniques",
+    "chapo": [
+      "*8 min de lecture*",
+      "Une intervention confiée à la mauvaise personne, c'est une machine immobilisée deux jours de plus, parfois un accident. Les niveaux de maintenance servent à éviter ça : classer chaque opération selon sa complexité, puis définir qui la réalise, avec quel outillage, quelle formation et quelles pièces."
     ],
-    "corps": [
+    "avant": [
       {
-        "type": "paragraphe",
-        "texte": "Une intervention confiée à la mauvaise personne, c'est une machine immobilisée deux jours de plus, parfois un accident. Les niveaux de maintenance servent à éviter ça : classer chaque opération selon sa complexité, puis définir qui la réalise, avec quel outillage, quelle formation et quelles pièces."
+        "type": "encadre",
+        "texte": "Envie d'en parler de vive voix ? appelez-nous : un expert vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30."
       },
       {
         "type": "paragraphe",
         "texte": "Ce guide complet de nos [Ressources : Fiches techniques](/ressources/fiches-techniques/) donne la définition des cinq niveaux, des exemples par équipement et une méthode pour répartir les interventions entre votre personnel et un prestataire externe."
-      },
+      }
+    ],
+    "parties": [
       {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Niveaux de maintenance : ce que dit la norme AFNOR",
-        "id": "niveaux-de-maintenance-ce-que-dit-la-norme-afnor"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "La notion vient de la norme française AFNOR X 60-010, prolongée par la NF EN 13306 qui fixe le vocabulaire de la maintenance industrielle. Les niveaux de maintenance industrielle classent les actions de maintenance en cinq degrés de complexité croissante. La finalité : confier chaque geste au bon profil."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Niveaux de maintenance : ce que dit la norme AFNOR",
+        "blocs": [
           {
-            "accroche": "Une échelle de complexité",
-            "texte": "Chaque niveau correspond à un degré de difficulté, du réglage simple à la reprise complète d'un équipement en fin de course."
+            "type": "paragraphe",
+            "texte": "La notion vient de la norme française AFNOR X 60-010, prolongée par la NF EN 13306 qui fixe le vocabulaire de la maintenance industrielle. Les niveaux de maintenance industrielle classent les actions de maintenance en cinq degrés de complexité croissante. La finalité : confier chaque geste au bon profil."
           },
           {
-            "accroche": "Trois critères par échelon",
-            "texte": "Pour définir le classement d'une opération : qui intervient (utilisateur, technicien, spécialiste, constructeur), avec quel outillage, selon quelle procédure ou instruction de maintenance."
+            "type": "puces",
+            "items": [
+              "**Une échelle de complexité** : Chaque niveau correspond à un degré de difficulté, du réglage simple à la reprise complète d'un équipement en fin de course.",
+              "**Trois critères par échelon** : Pour définir le classement d'une opération : qui intervient (utilisateur, technicien, spécialiste, constructeur), avec quel outillage, selon quelle procédure ou instruction de maintenance.",
+              "**Un langage commun** : La classification donne un vocabulaire partagé entre le service maintenance, la production et les entreprises extérieures. Contrats, GMAO, plans de prévention : chaque acteur désigne la même chose."
+            ]
           },
           {
-            "accroche": "Un langage commun",
-            "texte": "La classification donne un vocabulaire partagé entre le service maintenance, la production et les entreprises extérieures. Contrats, GMAO, plans de prévention : chaque acteur désigne la même chose."
+            "type": "paragraphe",
+            "texte": "À ne pas confondre avec les types de maintenance : la [maintenance préventive](/expertises/types-de-maintenance/maintenance-preventive/) ou la [maintenance corrective](/expertises/types-de-maintenance/maintenance-corrective/) décrivent la finalité de l'action, le niveau décrit sa complexité et les moyens nécessaires, pour des types différents d'interventions. La maintenance informatique utilise une échelle voisine ; cette fiche traite des équipements industriels."
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "À ne pas confondre avec les types de maintenance : la [maintenance préventive](/expertises/types-de-maintenance/maintenance-preventive/) ou la [maintenance corrective](/expertises/types-de-maintenance/maintenance-corrective/) décrivent la finalité de l'action, le niveau décrit sa complexité et les moyens nécessaires, pour des types différents d'interventions. La maintenance informatique utilise une échelle voisine ; cette fiche traite des équipements industriels."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Les cinq niveaux, du voyant à la reconstruction",
-        "id": "les-cinq-niveaux-du-voyant-a-la-reconstruction"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "La norme définit cinq échelons, du geste simple au chantier complexe. Chaque niveau regroupe des opérations de même complexité, pour garantir le bon fonctionnement des équipements. Le tableau résume ce qu'ils impliquent en pratique pour votre organisation."
-      },
-      {
-        "type": "tableau",
-        "entetes": [
-          "Niveau",
-          "Qui intervient",
-          "Exemples d'opérations",
-          "Avec quoi"
-        ],
-        "lignes": [
-          [
-            "1",
-            "L'utilisateur de l'équipement, à son poste",
-            "Relevé de compteur, test d'un voyant, remplacement d'un fusible ou d'une ampoule",
-            "Sans outillage particulier, instructions d'utilisation"
-          ],
-          [
-            "2",
-            "Personnel habilité",
-            "Changement d'un filtre, graissage, contrôle de niveaux, échange d'un consommable",
-            "Outils courants, procédures simples, pièces à proximité"
-          ],
-          [
-            "3",
-            "Technicien de maintenance qualifié",
-            "Diagnostic de panne, remplacement d'un composant, réparation mécanique mineure",
-            "Outillage prévu par les instructions, appareils de mesure"
-          ],
-          [
-            "4",
-            "Spécialistes, encadrement technique",
-            "Révision d'un réducteur, reprise d'un programme automate, travaux importants de maintenance corrective ou préventive",
-            "Matériel lourd, dossier constructeur"
-          ],
-          [
-            "5",
-            "Constructeur ou société spécialisée",
-            "Rénovation, reconstruction, rétrofit complet",
-            "Logistique proche de la fabrication"
-          ]
-        ]
-      },
-      {
-        "type": "titre",
-        "niveau": 3,
-        "texte": "La maintenance de premier niveau : niveaux 1 et 2",
-        "id": "la-maintenance-de-premier-niveau-niveaux-1-et-2"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Des actions simples, nécessaires au bon fonctionnement et à l'exploitation, réalisées sur des éléments facilement accessibles, en toute sécurité. Au premier échelon, pas de démontage : l'utilisateur contrôle, relève, réarme, remplace un fusible."
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Le niveau 2 regroupe les opérations basiques effectuées par un personnel habilité, avec des procédures détaillées : consommables, filtre, réglage simple. La formation du personnel de fabrication à ces gestes est le socle de la maintenance productive totale, la TPM : une approche productive qui rend vos opérateurs acteurs de la fiabilité."
-      },
-      {
-        "type": "titre",
-        "niveau": 3,
-        "texte": "Les niveaux 3 et 4 : le métier du service maintenance",
-        "id": "les-niveaux-3-et-4-le-metier-du-service-maintena"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Au troisième niveau, la maintenance passe au diagnostic des pannes et aux réparations par échange de composants ou d'éléments fonctionnels. Ces interventions de maintenance nécessitent un technicien qualifié, une connaissance fine du matériel et des appareils de mesure, sur place ou en atelier."
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Dans les niveaux de maintenance AFNOR, le niveau 4 concerne les travaux de maintenance corrective de niveau supérieur et les révisions importantes : des opérations complexes nécessitant une expertise technique particulière, un encadrement défini, et qui doivent être suivies de vérifications et d'essais spécifiques avant remise en service."
-      },
-      {
-        "type": "titre",
-        "niveau": 3,
-        "texte": "Le niveau 5 : rénovation ou reconstruction",
-        "id": "le-niveau-5-renovation-ou-reconstruction"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Remise à neuf générale, mise à niveau complète : des travaux confiés au constructeur ou à une entreprise spécialisée, avec une logistique de soutien proche de la fabrication. C'est le terrain du [retrofit](/offres/retrofit/), qui inclut souvent une [mise en conformité machine](/offres/retrofit/mise-en-conformite-machine/) : moderniser l'existant plutôt que remplacer."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Répartir les niveaux, étape par étape",
-        "id": "repartir-les-niveaux-etape-par-etape"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Sur le papier, la classification est claire. Sur le terrain, tout se joue dans la répartition : définir qui fait quoi, avec quelle formation, quelle traçabilité. La mise en œuvre tient en six étapes."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Les cinq niveaux, du voyant à la reconstruction",
+        "blocs": [
           {
-            "accroche": "L'inventaire du parc",
-            "texte": "Listez vos équipements, leur criticité pour la production, l'historique de pannes. Un appareil critique ne se gère pas comme un matériel de confort."
+            "type": "paragraphe",
+            "texte": "La norme définit cinq échelons, du geste simple au chantier complexe. Chaque niveau regroupe des opérations de même complexité, pour garantir le bon fonctionnement des équipements. Le tableau résume ce qu'ils impliquent en pratique pour votre organisation."
           },
           {
-            "accroche": "Le classement des opérations",
-            "texte": "Classez chaque tâche par degré, en suivant la norme et la documentation du constructeur, disponible sur le site web de la marque quand la notice a disparu."
+            "type": "tableau",
+            "entetes": [
+              "Niveau",
+              "Qui intervient",
+              "Exemples d'opérations",
+              "Avec quoi"
+            ],
+            "lignes": [
+              [
+                "1",
+                "L'utilisateur de l'équipement, à son poste",
+                "Relevé de compteur, test d'un voyant, remplacement d'un fusible ou d'une ampoule",
+                "Sans outillage particulier, instructions d'utilisation"
+              ],
+              [
+                "2",
+                "Personnel habilité",
+                "Changement d'un filtre, graissage, contrôle de niveaux, échange d'un consommable",
+                "Outils courants, procédures simples, pièces à proximité"
+              ],
+              [
+                "3",
+                "Technicien de maintenance qualifié",
+                "Diagnostic de panne, remplacement d'un composant, réparation mécanique mineure",
+                "Outillage prévu par les instructions, appareils de mesure"
+              ],
+              [
+                "4",
+                "Spécialistes, encadrement technique",
+                "Révision d'un réducteur, reprise d'un programme automate, travaux importants de maintenance corrective ou préventive",
+                "Matériel lourd, dossier constructeur"
+              ],
+              [
+                "5",
+                "Constructeur ou société spécialisée",
+                "Rénovation, reconstruction, rétrofit complet",
+                "Logistique proche de la fabrication"
+              ]
+            ]
           },
           {
-            "accroche": "L'affectation des ressources",
-            "texte": "La fabrication sur les niveaux 1 et 2 quand la sécurité le permet, les techniciens au troisième échelon, spécialistes ou prestataire au-delà."
+            "type": "intertitre",
+            "texte": "La maintenance de premier niveau : niveaux 1 et 2"
           },
           {
-            "accroche": "Les habilitations",
-            "texte": "Une habilitation électrique ne s'improvise pas. Vérifiez les qualifications et les compétences, formez, tracez : la sécurité des personnes passe avant le délai."
+            "type": "paragraphe",
+            "texte": "Des actions simples, nécessaires au bon fonctionnement et à l'exploitation, réalisées sur des éléments facilement accessibles, en toute sécurité. Au premier échelon, pas de démontage : l'utilisateur contrôle, relève, réarme, remplace un fusible."
           },
           {
-            "accroche": "Les instructions et le stockage",
-            "texte": "Chaque opération a son mode opératoire : outillage, points de contrôle, consignation préalable si nécessaire. Le stockage des pièces suit la même logique, consommables au poste, magasin outillé pour le reste."
+            "type": "paragraphe",
+            "texte": "Le niveau 2 regroupe les opérations basiques effectuées par un personnel habilité, avec des procédures détaillées : consommables, filtre, réglage simple. La formation du personnel de fabrication à ces gestes est le socle de la maintenance productive totale, la TPM : une approche productive qui rend vos opérateurs acteurs de la fiabilité."
           },
           {
-            "accroche": "Le suivi dans la GMAO",
-            "texte": "Chaque intervention réalisée est enregistrée avec son niveau. La gestion de la maintenance s'appuie sur ces données pour optimiser le plan de maintenance, les coûts et les stocks."
-          }
-        ],
-        "ordonnee": true
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Un exemple concret : cinq pannes, cinq réponses",
-        "id": "un-exemple-concret-cinq-pannes-cinq-reponses"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Le même convoyeur d'embouteillage traverse toute l'échelle, selon la panne du jour. C'est la meilleure façon de comprendre la notion."
-      },
-      {
-        "type": "liste",
-        "items": [
-          {
-            "accroche": "Un voyant s'allume",
-            "texte": "L'opérateur contrôle et réarme à son poste : niveau 1, cinq minutes, sans arrêter la production."
+            "type": "intertitre",
+            "texte": "Les niveaux 3 et 4 : le métier du service maintenance"
           },
           {
-            "accroche": "Le filtre hydraulique s'encrasse",
-            "texte": "Changement planifié, confié à un opérateur formé, pièce en stock : niveau 2."
+            "type": "paragraphe",
+            "texte": "Au troisième niveau, la maintenance passe au diagnostic des pannes et aux réparations par échange de composants ou d'éléments fonctionnels. Ces interventions de maintenance nécessitent un technicien qualifié, une connaissance fine du matériel et des appareils de mesure, sur place ou en atelier."
           },
           {
-            "accroche": "La bande dérive, le moteur chauffe",
-            "texte": "Mesure d'intensité, remplacement du roulement, essai : niveau 3, technicien outillé."
+            "type": "paragraphe",
+            "texte": "Dans les niveaux de maintenance AFNOR, le niveau 4 concerne les travaux de maintenance corrective de niveau supérieur et les révisions importantes : des opérations complexes nécessitant une expertise technique particulière, un encadrement défini, et qui doivent être suivies de vérifications et d'essais spécifiques avant remise en service."
           },
           {
-            "accroche": "Le réducteur montre une usure importante",
-            "texte": "Démontage complet en atelier, expertise, remontage : niveau 4, équipe spécialisée, machine consignée."
+            "type": "intertitre",
+            "texte": "Le niveau 5 : rénovation ou reconstruction"
           },
           {
-            "accroche": "La ligne a vingt ans",
-            "texte": "Rénovation ou remplacement : niveau 5, chiffré avec le [bureau d'études](/offres/bureau-etudes/) et le fabricant."
+            "type": "paragraphe",
+            "texte": "Remise à neuf générale, mise à niveau complète : des travaux confiés au constructeur ou à une entreprise spécialisée, avec une logistique de soutien proche de la fabrication. C'est le terrain du [retrofit](/offres/retrofit/), qui inclut souvent une [mise en conformité machine](/offres/retrofit/mise-en-conformite-machine/) : moderniser l'existant plutôt que remplacer."
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "Le [MTBF et le MTTR](/ressources/fiches-techniques/mtbf-mttr/) mesurent l'effet de cette répartition : le MTBF, mean time between failures, espace les pannes ; le mean time to repair suit le temps moyen de retour en service. Dans la maintenance industrielle, les deux progressent quand chaque échelon est tenu par la bonne personne."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Les erreurs les plus fréquentes",
-        "id": "les-erreurs-les-plus-frequentes"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "D'un site à l'autre, le même problème revient sous d'autres formes. Voici les pièges, pour vous les épargner."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Répartir les niveaux, étape par étape",
+        "blocs": [
           {
-            "accroche": "Tout envoyer au service maintenance",
-            "texte": "Les gestes de niveau 1 saturent vos techniciens. Le préventif saute, les vraies pannes attendent, la charge devient importante pour rien."
+            "type": "paragraphe",
+            "texte": "Sur le papier, la classification est claire. Sur le terrain, tout se joue dans la répartition : définir qui fait quoi, avec quelle formation, quelle traçabilité. La mise en œuvre tient en six étapes."
           },
           {
-            "accroche": "Laisser démonter sans habilitation",
-            "texte": "Les opérations de démontage nécessitent habilitation et consignation. Sans elles, risque d'accident et garantie constructeur perdue."
-          },
-          {
-            "accroche": "Zéro instruction écrite",
-            "texte": "Sans procédure, l'intervention dépend de la mémoire d'un homme. Le jour où il part, le savoir part avec lui."
-          },
-          {
-            "accroche": "Une répartition jamais revue",
-            "texte": "Changements d'utilisation, technologies nouvelles, compétences qui partent : le classement se revoit chaque année, atelier par atelier, en fonction de l'état du parc."
-          },
-          {
-            "accroche": "Un stock sans surveillance",
-            "texte": "Des pièces nécessitant une vérification d'état dorment sans contrôle, et le niveau 2 s'arrête faute de filtre le jour J. Des conditions de stockage négligées coûtent cher."
-          },
-          {
-            "accroche": "Une GMAO muette sur les niveaux",
-            "texte": "Si l'outil ne trace pas l'échelon de chaque intervention, impossible de mesurer la charge par catégorie, d'ajuster la planification ni d'optimiser les coûts."
+            "type": "etapes",
+            "items": [
+              "**L'inventaire du parc** : Listez vos équipements, leur criticité pour la production, l'historique de pannes. Un appareil critique ne se gère pas comme un matériel de confort.",
+              "**Le classement des opérations** : Classez chaque tâche par degré, en suivant la norme et la documentation du constructeur, disponible sur le site web de la marque quand la notice a disparu.",
+              "**L'affectation des ressources** : La fabrication sur les niveaux 1 et 2 quand la sécurité le permet, les techniciens au troisième échelon, spécialistes ou prestataire au-delà.",
+              "**Les habilitations** : Une habilitation électrique ne s'improvise pas. Vérifiez les qualifications et les compétences, formez, tracez : la sécurité des personnes passe avant le délai.",
+              "**Les instructions et le stockage** : Chaque opération a son mode opératoire : outillage, points de contrôle, consignation préalable si nécessaire. Le stockage des pièces suit la même logique, consommables au poste, magasin outillé pour le reste.",
+              "**Le suivi dans la GMAO** : Chaque intervention réalisée est enregistrée avec son niveau. La gestion de la maintenance s'appuie sur ces données pour optimiser le plan de maintenance, les coûts et les stocks."
+            ]
           }
         ]
       },
       {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Quels niveaux confier à un prestataire",
-        "id": "quels-niveaux-confier-a-un-prestataire"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Votre équipe ne peut pas tout tenir, et elle n'a pas à le faire. La bonne approche : choisir quoi externaliser, échelon par échelon, une approche définie en fonction de votre effectif et de vos enjeux."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Un exemple concret : cinq pannes, cinq réponses",
+        "blocs": [
           {
-            "accroche": "Niveaux 1 et 2 : gardez-les",
-            "texte": "Ces gestes appartiennent à la production. Nous formons vos équipes plutôt que de vendre des visites : votre autonomie d'abord, c'est aussi un avantage économique direct."
+            "type": "paragraphe",
+            "texte": "Le même convoyeur d'embouteillage traverse toute l'échelle, selon la panne du jour. C'est la meilleure façon de comprendre la notion."
           },
           {
-            "accroche": "Niveau 3 : selon votre effectif",
-            "texte": "Le [dépannage industriel](/offres/depannage-industriel/) exige des techniciens qualifiés, disponibles aussi la nuit. Le technicien Migen [intégré sur site](/offres/residence/) vient en soutien de votre équipe, jamais à sa place."
+            "type": "puces",
+            "items": [
+              "**Un voyant s'allume** : L'opérateur contrôle et réarme à son poste : niveau 1, cinq minutes, sans arrêter la production.",
+              "**Le filtre hydraulique s'encrasse** : Changement planifié, confié à un opérateur formé, pièce en stock : niveau 2.",
+              "**La bande dérive, le moteur chauffe** : Mesure d'intensité, remplacement du roulement, essai : niveau 3, technicien outillé.",
+              "**Le réducteur montre une usure importante** : Démontage complet en atelier, expertise, remontage : niveau 4, équipe spécialisée, machine consignée.",
+              "**La ligne a vingt ans** : Rénovation ou remplacement : niveau 5, chiffré avec le [bureau d'études](/offres/bureau-etudes/) et le fabricant."
+            ]
           },
           {
-            "accroche": "Niveaux 4 et 5 : l'accès aux spécialistes",
-            "texte": "Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, soudeurs : des profils que peu d'usines gardent en interne. Un contrat [Zéro arrêt](/offres/zero-arret/) vous donne un accès prioritaire à ces compétences, avec l'astreinte 24/24 et 7/7 prévue en option au contrat."
+            "type": "paragraphe",
+            "texte": "Le [MTBF et le MTTR](/ressources/fiches-techniques/mtbf-mttr/) mesurent l'effet de cette répartition : le MTBF, mean time between failures, espace les pannes ; le mean time to repair suit le temps moyen de retour en service. Dans la maintenance industrielle, les deux progressent quand chaque échelon est tenu par la bonne personne."
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "Trois garanties, quel que soit le périmètre : des techniciens évalués en entretien technique et comportemental, seuls 10 % des candidats sont retenus, une exigence encore rare dans l'industrie ; la confidentialité de vos procédés, cadrée dès le plan de prévention, avec un accueil sécurité préparé ; un compte rendu après chaque passage, mention de l'échelon tenu comprise, versé également dans votre GMAO."
+        "titre": "Les erreurs les plus fréquentes",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "D'un site à l'autre, le même problème revient sous d'autres formes. Voici les pièges, pour vous les épargner."
+          },
+          {
+            "type": "puces",
+            "items": [
+              "**Tout envoyer au service maintenance** : Les gestes de niveau 1 saturent vos techniciens. Le préventif saute, les vraies pannes attendent, la charge devient importante pour rien.",
+              "**Laisser démonter sans habilitation** : Les opérations de démontage nécessitent habilitation et consignation. Sans elles, risque d'accident et garantie constructeur perdue.",
+              "**Zéro instruction écrite** : Sans procédure, l'intervention dépend de la mémoire d'un homme. Le jour où il part, le savoir part avec lui.",
+              "**Une répartition jamais revue** : Changements d'utilisation, technologies nouvelles, compétences qui partent : le classement se revoit chaque année, atelier par atelier, en fonction de l'état du parc.",
+              "**Un stock sans surveillance** : Des pièces nécessitant une vérification d'état dorment sans contrôle, et le niveau 2 s'arrête faute de filtre le jour J. Des conditions de stockage négligées coûtent cher.",
+              "**Une GMAO muette sur les niveaux** : Si l'outil ne trace pas l'échelon de chaque intervention, impossible de mesurer la charge par catégorie, d'ajuster la planification ni d'optimiser les coûts."
+            ]
+          }
+        ]
       },
       {
-        "type": "citation",
-        "texte": "[Demander un diagnostic maintenance](/contact/)"
+        "titre": "Quels niveaux confier à un prestataire",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Votre équipe ne peut pas tout tenir, et elle n'a pas à le faire. La bonne approche : choisir quoi externaliser, échelon par échelon, une approche définie en fonction de votre effectif et de vos enjeux."
+          },
+          {
+            "type": "puces",
+            "items": [
+              "**Niveaux 1 et 2 : gardez-les** : Ces gestes appartiennent à la production. Nous formons vos équipes plutôt que de vendre des visites : votre autonomie d'abord, c'est aussi un avantage économique direct.",
+              "**Niveau 3 : selon votre effectif** : Le [dépannage industriel](/offres/depannage-industriel/) exige des techniciens qualifiés, disponibles aussi la nuit. Le technicien Migen [intégré sur site](/offres/residence/) vient en soutien de votre équipe, jamais à sa place.",
+              "**Niveaux 4 et 5 : l'accès aux spécialistes** : Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, soudeurs : des profils que peu d'usines gardent en interne. Un contrat [Zéro arrêt](/offres/zero-arret/) vous donne un accès prioritaire à ces compétences, avec l'astreinte la nuit, le week-end et les jours fériés prévue en option au contrat."
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Trois garanties, quel que soit le périmètre : des techniciens évalués en entretien technique et comportemental, seuls 10 % des techniciens sont retenus, une exigence encore rare dans l'industrie ; la confidentialité de vos procédés, cadrée dès le plan de prévention, avec un accueil sécurité préparé ; un compte rendu après chaque passage, mention de l'échelon tenu comprise, versé également dans votre GMAO."
+          }
+        ]
       }
     ],
     "questions": [
@@ -320,9 +230,30 @@
       },
       {
         "question": "Peut-on confier les niveaux 4 et 5 à un prestataire plutôt qu'au constructeur ?",
-        "reponse": "Oui, si l'entreprise mandatée dispose de l'expertise, de l'outillage, des pièces d'origine et d'une conformité documentée. Nos spécialistes réalisent des révisions de niveau 4 et accompagnent les remises à neuf avec les fabricants, avec un avantage : un seul responsable pour les travaux complexes, du premier contrôle à la remise en production, et une lecture transparente des coûts."
+        "reponse": "Oui, si l'entreprise mandatée dispose de l'expertise, de l'outillage, des pièces d'origine et d'une conformité documentée. Nos spécialistes réalisent des révisions de niveau 4 et accompagnent les remises à neuf avec les fabricants, avec un avantage : un seul responsable pour les travaux complexes, du premier contrôle à la remise en production, et une lecture transparente des coûts. ---"
+      }
+    ],
+    "minutes": 9,
+    "image": "/assets/web/team-grind-impact.jpg",
+    "aLire": [
+      {
+        "href": "/ressources/fiches-techniques/amdec/",
+        "titre": "Amdec",
+        "minutes": 15,
+        "image": "/assets/web/team-grind-front.jpg"
+      },
+      {
+        "href": "/ressources/fiches-techniques/analyse-vibratoire/",
+        "titre": "Analyse vibratoire",
+        "minutes": 10,
+        "image": "/assets/web/ph-robots-solaire.jpg"
+      },
+      {
+        "href": "/ressources/fiches-techniques/automates-siemens/",
+        "titre": "Automate Siemens",
+        "minutes": 7,
+        "image": "/assets/web/team-electric.jpg"
       }
     ]
-  },
-  "blocs_corpus": 41
+  }
 }

@@ -37,17 +37,22 @@ import { fileURLToPath } from "node:url";
 
 import { renderToStaticMarkup } from "react-dom/server";
 
+import { appliqueDecisions } from "@/lib/decisions-copie";
 import type { ContenuOffre } from "@/types/offre";
 
 import PageOffre from "./PageOffre";
+import { BLOCS_LECTURE } from "./generique/BlocsLecture";
+import { BLOCS_VENTE, INTERNES_VENTE } from "./generique/BlocsVente";
+import type { Bloc } from "./generique/types";
+import { ficheGenerique, vueDe } from "./generique/vue";
 
 const RACINE = fileURLToPath(new URL("../../..", import.meta.url));
 
 /* ----------------------------------------- la capture, relue à chaque fois */
 
-const CAPTURE = readFileSync(
-  join(RACINE, "maquette", "rendu", "offres--residence.html"),
-  "utf8",
+/** Décisions de copie appliquées (lib/decisions-copie.ts) : la donnée les porte. */
+const CAPTURE = appliqueDecisions(
+  readFileSync(join(RACINE, "maquette", "rendu", "offres--residence.html"), "utf8"),
 );
 
 /**
@@ -455,6 +460,39 @@ for (const nom of fichiers) {
   );
   assert.ok(!/href="#"/.test(html), `${nom} : un href="#" est rendu`);
   verifieInterdits(html, nom);
+
+  /* Pages génériques : chaque bloc que le code de la maquette produit doit
+     avoir son rendu porté. Un type nouveau (une page ajoutée, un markdown
+     réécrit) ferait sinon disparaître son texte sans un mot. */
+  const generique = ficheGenerique(page.contenu);
+  if (generique) {
+    const vue = vueDe(page.titre_h1 ?? page.url, generique);
+    const types = (b: Bloc) => Object.keys(b).filter((k) => k.startsWith("is") && b[k as keyof Bloc] === true);
+    const exige = (blocs: Bloc[], connus: readonly string[], ou: string) => {
+      for (const b of blocs) {
+        const inconnus = types(b).filter((k) => !connus.includes(k));
+        assert.deepEqual(inconnus, [], `${nom} : bloc ${inconnus.join(", ")} sans rendu porté (${ou})`);
+        for (const u of [...(b.units ?? []), ...(b.unit ? [b.unit] : [])]) {
+          for (const x of u.blocks) {
+            const cles = Object.keys(x).filter((k) => x[k as keyof typeof x] === true);
+            const hors = cles.filter((k) => !(INTERNES_VENTE as readonly string[]).includes(k));
+            assert.deepEqual(hors, [], `${nom} : sous-bloc ${hors.join(", ")} sans rendu porté (${ou})`);
+          }
+        }
+      }
+    };
+    if (vue.cVente) {
+      for (const sec of vue.spRest) {
+        exige(sec.head, BLOCS_VENTE, sec.title);
+        assert.equal(sec.more.length, 0, `${nom} : « Lire la suite » d'une section de vente, non porté`);
+      }
+      for (const q of vue.spFaq.items ?? []) exige(q.blocks, BLOCS_LECTURE, "questions");
+      assert.ok(vue.spProblem.hasSplit || !vue.spHasProblem, `${nom} : constat sans les deux panneaux, non porté`);
+    } else {
+      exige(vue.cIntro, BLOCS_LECTURE, "chapô");
+      for (const sec of vue.cSections) exige([...sec.head, ...sec.more], BLOCS_LECTURE, sec.title);
+    }
+  }
 }
 
 console.log(`gabarit offre : toutes les vérifications passent.`);

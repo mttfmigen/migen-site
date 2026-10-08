@@ -1,196 +1,167 @@
 {
   "url": "/implantations/nantes/",
+  "titre_h1": "La maintenance industrielle à Nantes et dans l'estuaire",
   "contenu": {
     "gabarit": "ville",
+    "pastille": "Nos implantations",
     "chapeau": "Trois industries se partagent le bassin et n'ont rien en commun : l'aéronautique de la Basse-Loire, qui exige une traçabilité totale, le naval de Saint-Nazaire, qui vit de mécanique lourde et de soudure, et l'agroalimentaire du Grand Ouest, qui lave ses lignes tous les jours. Notre hub de techniciens de Nantes couvre les trois avec les mêmes techniciens évalués.",
     "actions": [
       {
         "libelle": "Faire chiffrer ma maintenance à Nantes",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option, nuits, week-ends et jours fériés.",
+    "formulaireHeroTitre": "Faire chiffrer ma maintenance à Nantes",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "appelBouton": "Faire chiffrer ma maintenance à Nantes",
+    "chiffres": [
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels accompagnés, dont plus de 80 réguliers"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
         "valeur": "10",
-        "libelle": "hubs de techniciens en France, dont un à Nantes, plus notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid"
+        "libelle": "Hubs de techniciens en France, dont un à Nantes, plus notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid"
       }
     ],
-    "contact": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 en option, nuits, week-ends et jours fériés.",
-    "constatTexte": "Votre ligne de conditionnement s'arrête après le lavage du soir, et le seul technicien qui la connaît est en congé jusqu'à lundi. Dans le Grand Ouest, la compétence rare est plus difficile à remplacer que la pièce.",
-    "constatPuces": [
+    "hubLocal": {
+      "surtitre": "Votre hub local · Nantes",
+      "titre": "Nantes : les industries que nos techniciens connaissent déjà",
+      "photo": "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/cb/13/e0/c0/4d/v1_E10/E10OW8U.jpg?w=600&cf_fit=scale-down&mark-alpha=18&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark4.png&q=85&format=auto&s=98e90fda62d15cbfc2480766142816968f3f7926ab129b98e4f365cf39ce8eb4",
+      "credit": "Nantes city in France · RossHelen",
+      "badge": "Hub Migen",
+      "nom": "Hub Nantes",
+      "texte": "Une équipe de techniciens installée à Nantes, au plus près de vos sites, appuyée par le réseau national Migen.",
+      "bouton": "Demander une intervention à Nantes",
+      "cartes": [
+        {
+          "surtitre": "Tissu principal",
+          "titre": "Agroalimentaire",
+          "texte": "Le secteur le plus représenté de la région a sa page dédiée : maintenance industrielle agroalimentaire, hygiène et…",
+          "lien": "Notre approche agroalimentaire",
+          "href": "/secteurs/agroalimentaire/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Industrie métallique",
+          "texte": "Le naval travaille sur des pièces qui ne passent pas la porte.",
+          "lien": "Notre approche industrie métallique",
+          "href": "/secteurs/industrie-metallique/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Aéronautique",
+          "texte": "L'aéronautique ne tolère aucun trou documentaire.",
+          "lien": "Notre approche aéronautique",
+          "href": "/secteurs/aeronautique/"
+        },
+        {
+          "surtitre": "Notre offre",
+          "titre": "Migen Résidence",
+          "texte": "Un technicien intégré à votre équipe, sur votre planning, avec remplacement garanti.",
+          "lien": "Voir l’offre",
+          "href": "/offres/residence/"
+        }
+      ],
+      "zonesTitre": "Zones couvertes par le hub",
+      "zones": [
+        {
+          "libelle": "Brest",
+          "href": "/implantations/nantes/brest/"
+        },
+        {
+          "libelle": "Loire-Atlantique",
+          "href": "/implantations/nantes/loire-atlantique/"
+        },
+        {
+          "libelle": "Rennes",
+          "href": "/implantations/nantes/rennes/"
+        }
+      ]
+    },
+    "brefBande": "Besoin de sécuriser une ligne que seule une personne sait dépanner ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Faire chiffrer ma maintenance à Nantes",
+      "href": "#besoin"
+    },
+    "sections": [
       {
-        "texte": "Agroalimentaire du Grand Ouest : eau, soude, températures, et des roulements qui ne tiennent pas les durées théoriques.",
-        "accroche": "Le lavage intensif use les équipements plus vite."
+        "type": "probleme",
+        "punchline": "Votre ligne de conditionnement s'arrête après le lavage du soir, et le seul technicien qui la connaît est en congé jusqu'à lundi. Dans le Grand Ouest, la compétence rare est plus difficile à remplacer que la pièce.",
+        "puces": [
+          {
+            "accroche": "Le lavage intensif use les équipements plus vite.",
+            "texte": "Agroalimentaire du Grand Ouest : eau, soude, températures, et des roulements qui ne tiennent pas les durées théoriques."
+          },
+          {
+            "accroche": "L'aéronautique ne tolère aucun trou documentaire.",
+            "texte": "Un contrôle manqué vaut un arrêt, même quand la machine fonctionne."
+          },
+          {
+            "accroche": "Le naval travaille sur des pièces qui ne passent pas la porte.",
+            "texte": "Reprise sur site, soudure, chaudronnerie : l'atelier vient à la pièce, pas l'inverse."
+          },
+          {
+            "accroche": "Le bassin est étendu, la compétence concentrée.",
+            "texte": "Entre l'estuaire, le vignoble et la Vendée, trouver un automaticien disponible prend plus de temps que réparer."
+          },
+          {
+            "accroche": "Un prestataire local seul plafonne vite.",
+            "texte": "Le jour où le défaut sort de sa spécialité, il sous-traite, et vous perdez le fil."
+          }
+        ],
+        "variante": "rangee"
       },
-      {
-        "texte": "Un contrôle manqué vaut un arrêt, même quand la machine fonctionne.",
-        "accroche": "L'aéronautique ne tolère aucun trou documentaire."
-      },
-      {
-        "texte": "Reprise sur site, soudure, chaudronnerie : l'atelier vient à la pièce, pas l'inverse.",
-        "accroche": "Le naval travaille sur des pièces qui ne passent pas la porte."
-      },
-      {
-        "texte": "Entre l'estuaire, le vignoble et la Vendée, trouver un automaticien disponible prend plus de temps que réparer.",
-        "accroche": "Le bassin est étendu, la compétence concentrée."
-      },
-      {
-        "texte": "Le jour où le défaut sort de sa spécialité, il sous-traite, et vous perdez le fil.",
-        "accroche": "Un prestataire local seul plafonne vite."
-      }
-    ],
-    "reponseTexte": "Le secteur le plus représenté de la région a sa page dédiée : [maintenance industrielle agroalimentaire](/secteurs/agroalimentaire/), hygiène et redémarrage propre compris.",
-    "reponsePuces": [
-      {
-        "texte": "pas de personne différente à chaque visite. Sur un contrat suivi, l'intervenant qui connaît vos machines revient, et l'historique reste sur le site.",
-        "accroche": "La même équipe dans la durée"
-      },
-      {
-        "texte": "entretien technique et comportemental, 10 % des candidats retenus, résultats d'évaluation présentés avant la première intervention.",
-        "accroche": "Une compétence vérifiée avant l'arrivée"
-      },
-      {
-        "texte": "si un matériel sort de notre périmètre, nous le disons au premier échange. Le périmètre couvert est écrit au devis.",
-        "accroche": "Un refus net plutôt qu'un dépannage raté"
-      }
-    ],
-    "faq": [
-      {
-        "reponse": "Oui. Nantes est l'un de nos 10 hubs de techniciens en France : des techniciens basés sur le bassin, pas une équipe envoyée de loin. S'y ajoutent notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid pour les compétences rares.",
-        "question": "Êtes-vous vraiment implantés à Nantes ?"
-      },
-      {
-        "reponse": "Oui. Nos techniciens basés à Nantes couvrent la métropole nantaise, l'estuaire jusqu'à Saint-Nazaire, le vignoble, le pays de Grand-Lieu et le nord du département. Au-delà, elles interviennent vers Rennes, Brest, Angers et la Vendée, avec le renfort des autres hubs de techniciens et du siège lyonnais quand une compétence rare est requise.",
-        "question": "Couvrez-vous toute la Loire-Atlantique et le Grand Ouest ?"
-      },
-      {
-        "reponse": "Oui. Tenues, procédures d'entrée, nettoyage des outils, redémarrage propre : les règles du site s'appliquent à nos techniciens comme à vos équipes. Les opérations lourdes se planifient après lavage ou pendant l'arrêt programmé, jamais au milieu d'une production.",
-        "question": "Intervenez-vous en zone sous sas d'hygiène ?"
-      },
-      {
-        "reponse": "Nous ne promettons pas un chiffre : la distance, l'accès et la pièce en cause changent tout. L'engagement tenu est le rappel dans l'heure aux horaires ouvrés, un technicien briefé qui n'arrive pas en découverte, et l'astreinte 24/24 et 7/7 en option pour les nuits et les week-ends.",
-        "question": "Quel délai pour une intervention à Nantes ?"
-      },
-      {
-        "reponse": "Zéro arrêt commence à sur devis, trois niveaux de couverture, engagement type de 6 mois renouvelable. Le chiffrage suit votre parc, vos fréquences de visite et l'astreinte retenue, après un état des lieux mené sur le terrain. Le diagnostic de départ ne vous est pas facturé.",
-        "question": "Combien coûte un contrat de maintenance ?"
-      },
-      {
-        "reponse": "Oui, c'est l'offre [Résidence](/offres/residence/) : un technicien salarié Migen intégré à votre équipe, encadré par un référent, prise de poste en 2 à 3 semaines et remplacement assuré en cas d'absence. La même personne vous suit dans la durée, et votre entreprise garde l'historique de ses machines.",
-        "question": "Pouvez-vous tenir un poste à temps plein dans notre usine ?"
-      },
-      {
-        "reponse": "Les deux. Une PME de mécanique a les mêmes pannes qu'un grand groupe avec moins de ressources pour les absorber. Les formats vont de l'intervention unique à quelques visites par an ou au contrat complet, dimensionnés sur le besoin réel.",
-        "question": "Travaillez-vous avec les PME ou seulement les grands groupes ?"
-      }
-    ],
-    "autres": [
-      {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
-      },
-      {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
-      },
-      {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
-      },
-      {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
-      },
-      {
-        "libelle": "Valence",
-        "href": "/implantations/lyon/valence/"
-      },
-      {
-        "libelle": "Brest",
-        "href": "/implantations/nantes/brest/"
-      },
-      {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
-      },
-      {
-        "libelle": "paris",
-        "href": "/implantations/paris/"
-      },
-      {
-        "libelle": "Rouen",
-        "href": "/implantations/paris/rouen/"
-      },
-      {
-        "libelle": "Strasbourg",
-        "href": "/implantations/strasbourg/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
-      },
-      {
-        "libelle": "Toulouse",
-        "href": "/implantations/toulouse/"
-      },
-      {
-        "libelle": "Bordeaux",
-        "href": "/implantations/toulouse/bordeaux/"
-      }
-    ],
-    "reste": [
       {
         "type": "offre",
         "lignes": [
           {
-            "benefice": "Vos lignes agroalimentaires tiennent les cadences sans réparations à répétition.",
             "prestation": {
-              "texte": "points de contrôle, étanchéité, protection des moteurs, éléments d'usure suivis.",
-              "accroche": "Des gammes adaptées au lavage intensif"
-            }
+              "accroche": "Des gammes adaptées au lavage intensif",
+              "texte": "Points de contrôle, étanchéité, protection des moteurs, éléments d'usure suivis."
+            },
+            "benefice": "Vos lignes agroalimentaires tiennent les cadences sans réparations à répétition."
           },
           {
-            "benefice": "Vos audits passent sans course aux justificatifs.",
             "prestation": {
-              "texte": "traçabilité, historique par équipement, pièces référencées.",
-              "accroche": "Une qualité documentaire au niveau des donneurs d'ordre aéronautiques"
-            }
+              "accroche": "Une qualité documentaire au niveau des donneurs d'ordre aéronautiques",
+              "texte": "Traçabilité, historique par équipement, pièces référencées."
+            },
+            "benefice": "Vos audits passent sans course aux justificatifs."
           },
           {
-            "benefice": "Une pièce lourde se répare où elle est, sans démontage complet ni transport.",
             "prestation": {
-              "texte": "reprise de bâtis, tuyauterie, réparations d'urgence.",
-              "accroche": "Soudure et chaudronnerie sur site"
-            }
+              "accroche": "Soudure et chaudronnerie sur site",
+              "texte": "Reprise de bâtis, tuyauterie, réparations d'urgence."
+            },
+            "benefice": "Une pièce lourde se répare où elle est, sans démontage complet ni transport."
           },
           {
-            "benefice": "Un seul contrat pour un parc qui mélange toujours plusieurs technologies.",
             "prestation": {
-              "texte": "[mécanique](/expertises/mecanique/), [électricité](/expertises/electrique/), [électromécanique](/expertises/electromecanique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure](/expertises/soudure/).",
-              "accroche": "Le champ technique complet"
-            }
+              "accroche": "Le champ technique complet",
+              "texte": "Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure."
+            },
+            "benefice": "Un seul contrat pour un parc qui mélange toujours plusieurs technologies."
           },
           {
-            "benefice": "Une panne du dimanche soir ne devient pas un lundi matin sacrifié.",
             "prestation": {
-              "texte": "pour les sites en continu.",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
+              "accroche": "Astreinte la nuit, le week-end et les jours fériés en option pour les sites en continu.",
+              "texte": ""
+            },
+            "benefice": "Une panne du dimanche soir ne devient pas un lundi matin sacrifié."
           },
           {
-            "benefice": "Un industriel réparti entre Bretagne et Pays de la Loire garde un seul interlocuteur.",
             "prestation": {
-              "texte": "[Loire-Atlantique](/implantations/nantes/loire-atlantique/), [Rennes](/implantations/nantes/rennes/), [Brest](/implantations/nantes/brest/).",
-              "accroche": "Relais du Grand Ouest"
-            }
+              "accroche": "Relais du Grand Ouest",
+              "texte": "Loire-Atlantique, Rennes, Brest."
+            },
+            "benefice": "Un industriel réparti entre Bretagne et Pays de la Loire garde un seul interlocuteur."
           }
         ]
       },
@@ -198,78 +169,149 @@
         "type": "deroule",
         "etapes": [
           {
-            "texte": "Panne bloquante, dérive d'équipement ou retard de préventif, au 04 78 33 72 05 ou par le formulaire.",
-            "titre": "Vous décrivez la situation"
+            "titre": "Vous décrivez la situation",
+            "texte": "Panne bloquante, dérive d'équipement ou retard de préventif, par téléphone ou par le formulaire."
           },
           {
-            "texte": "Aux horaires ouvrés, un chargé d'affaires qualifie la machine, l'accès, les habilitations et les pièces pressenties. Vous savez rapidement si nous avons le technicien, et lequel.",
-            "titre": "Rappel dans l'heure"
+            "titre": "Rappel dans l'heure",
+            "texte": "Aux horaires ouvrés, un chargé d'affaires qualifie la machine, l'accès, les habilitations et les pièces pressenties. Vous savez rapidement si nous avons le technicien, et lequel."
           },
           {
-            "texte": "Brief technique, consignes de sécurité du site, accueil sécurité, plan de prévention. Rien n'est découvert sur place.",
-            "titre": "La préparation"
+            "titre": "La préparation",
+            "texte": "Brief technique, consignes de sécurité du site, accueil sécurité, plan de prévention. Rien n'est découvert sur place."
           },
           {
-            "texte": "Mesures, contrôles, diagnostic, réparation, essais, remise en cadence avec vos opérateurs.",
-            "titre": "L'intervention"
+            "titre": "L'intervention",
+            "texte": "Mesures, contrôles, diagnostic, réparation, essais, remise en cadence avec vos opérateurs."
           },
           {
-            "texte": "Causes, actions, pièces, préconisations, versés dans votre GMAO, avec ce que le premier niveau doit surveiller ensuite.",
-            "titre": "Le compte rendu"
+            "titre": "Le compte rendu",
+            "texte": "Causes, actions, pièces, préconisations, versés dans votre GMAO, avec ce que le premier niveau doit surveiller ensuite."
           },
           {
-            "texte": "Disponibilité, récurrence par équipement, retard de préventif résorbé. Les chiffres décident de la suite.",
-            "titre": "Le point périodique"
+            "titre": "Le point périodique",
+            "texte": "Disponibilité, récurrence par équipement, retard de préventif résorbé. Les chiffres décident de la suite."
           }
         ]
       },
       {
-        "type": "cta",
-        "bouton": "Faire chiffrer ma maintenance à Nantes",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin de sécuriser une ligne que seule une personne sait dépanner ?"
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "La même équipe dans la durée",
+            "texte": "Pas de personne différente à chaque visite. Sur un contrat suivi, l'intervenant qui connaît vos machines revient, et l'historique reste sur le site."
+          },
+          {
+            "accroche": "Une compétence vérifiée avant l'arrivée",
+            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats d'évaluation présentés avant la première intervention."
+          },
+          {
+            "accroche": "Un refus net plutôt qu'un dépannage raté",
+            "texte": "Si un matériel sort de notre périmètre, nous le disons au premier échange. Le périmètre couvert est écrit au devis."
+          }
+        ]
       },
       {
         "type": "preuves",
         "preuves": [
           {
-            "texte": ", confort thermique, depuis octobre 2024",
             "titre": "1 à 3 techniciens en renfort permanent sur plusieurs sites de production",
+            "texte": ", confort thermique, depuis octobre 2024.",
+            "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes"
+            "photo": "/assets/web/x-tech-portrait.jpg"
           },
           {
-            "texte": "d'un site agroalimentaire",
             "titre": "Deux techniciens en 3x8 sur les lignes liquides et poudre",
+            "texte": "d'un site agroalimentaire.",
+            "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "lienLibelle": "Étude de cas DANONE : lignes de production"
+            "photo": "/assets/web/team-grind-front.jpg"
           },
           {
-            "texte": "troisième trimestre 2025, reporting à la direction industrielle",
             "titre": "Un responsable maintenance intégré sur site pendant une montée de cadence",
+            "texte": "Troisième trimestre 2025, reporting à la direction industrielle.",
+            "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "lienLibelle": "Étude de cas ERIKS"
+            "photo": "/assets/web/x-elec-cablage.jpg"
           },
           {
-            "texte": "intervenants intégrés aux équipes sur des projets stratégiques",
             "titre": "Renfort de contrôle de chantier chez un spécialiste de l'automatisation logistique",
+            "texte": "Intervenants intégrés aux équipes sur des projets stratégiques.",
+            "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "lienLibelle": "Étude de cas ALSTEF Group : collaboration"
+            "photo": "/assets/web/team-duo.jpg"
           },
           {
-            "texte": "chez un acteur de l'étanchéité et de l'isolation, sur l'année 2025",
             "titre": "Montages, déplacements de machines et renfort technique ponctuel",
+            "texte": "chez un acteur de l'étanchéité et de l'isolation, sur l'année 2025.",
+            "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels"
+            "photo": "/assets/web/x-logistique-entrepot.jpg"
+          },
+          {
+            "titre": "Un premier contrat en Belgique, préventif et correctif",
+            "lienLibelle": "Étude de cas McCain",
+            "lienHref": "/preuves/mccain-belgique/",
+            "photo": "/assets/web/ph-tuyaux.jpg"
+          },
+          {
+            "titre": "Une ligne de pain de mie suivie à chaque poste",
+            "lienLibelle": "Étude de cas Jacquet Brossard",
+            "lienHref": "/preuves/jacquet-brossard/",
+            "photo": "/assets/web/team-duo.jpg"
+          },
+          {
+            "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
+            "lienLibelle": "Étude de cas Salaison du Mâconnais",
+            "lienHref": "/preuves/salaison-du-maconnais/",
+            "photo": "/assets/web/ph-tuyaux.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Êtes-vous vraiment implantés à Nantes ?",
+            "reponse": "Oui. Nantes est l'un de nos 10 hubs de techniciens en France : des techniciens basés sur le bassin, pas une équipe envoyée de loin. S'y ajoutent notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid pour les compétences rares."
+          },
+          {
+            "question": "Couvrez-vous toute la Loire-Atlantique et le Grand Ouest ?",
+            "reponse": "Oui. Nos techniciens basés à Nantes couvrent la métropole nantaise, l'estuaire jusqu'à Saint-Nazaire, le vignoble, le pays de Grand-Lieu et le nord du département. Au-delà, elles interviennent vers Rennes, Brest, Angers et la Vendée, avec le renfort des autres hubs de techniciens et du siège lyonnais quand une compétence rare est requise."
+          },
+          {
+            "question": "Intervenez-vous en zone sous sas d'hygiène ?",
+            "reponse": "Oui. Tenues, procédures d'entrée, nettoyage des outils, redémarrage propre : les règles du site s'appliquent à nos techniciens comme à vos équipes. Les opérations lourdes se planifient après lavage ou pendant l'arrêt programmé, jamais au milieu d'une production."
+          },
+          {
+            "question": "Quel délai pour une intervention à Nantes ?",
+            "reponse": "Nous ne promettons pas un chiffre : la distance, l'accès et la pièce en cause changent tout. L'engagement tenu est le rappel dans l'heure aux horaires ouvrés, un technicien briefé qui n'arrive pas en découverte, et l'astreinte la nuit, le week-end et les jours fériés en option pour les nuits et les week-ends."
+          },
+          {
+            "question": "Combien coûte un contrat de maintenance ?",
+            "reponse": "Zéro arrêt commence à sur devis, trois niveaux de couverture, engagement type de 6 mois renouvelable. Le chiffrage suit votre parc, vos fréquences de visite et l'astreinte retenue, après un état des lieux mené sur le terrain. Le diagnostic de départ ne vous est pas facturé."
+          },
+          {
+            "question": "Pouvez-vous tenir un poste à temps plein dans notre usine ?",
+            "reponse": "La même personne vous suit dans la durée, et votre entreprise garde l'historique de ses machines."
+          },
+          {
+            "question": "Travaillez-vous avec les PME ou seulement les grands groupes ?",
+            "reponse": "Les deux. Une PME de mécanique a les mêmes pannes qu'un grand groupe avec moins de ressources pour les absorber. Les formats vont de l'intervention unique à quelques visites par an ou au contrat complet, dimensionnés sur le besoin réel."
           }
         ]
       },
       {
         "type": "ctaFinal",
-        "bouton": "Faire chiffrer ma maintenance à Nantes",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-        "question": "Besoin d'un mainteneur qui tienne l'aéronautique, le naval et l'agroalimentaire ?"
+        "question": "Besoin d'un prestataire de maintenance qui tienne l'aéronautique, le naval et l'agroalimentaire ?"
       }
     ]
-  }
+  },
+  "trous": [
+    {
+      "ligne": "Oui, c'est l'offre Résidence : un technicien salarié Migen intégré à votre équipe, encadré par un référent, prise de poste en 2 à 3 semaines et remplacement assuré en cas d'absence.",
+      "pourquoi": "délai chiffré (« prise de poste en 2 à 3 semaines ») : seul « rappel dans l'heure » est autorisé (contrat de rédaction et passation du client), et Résidence n'a aucune durée affichée. Première phrase de la réponse à la question Résidence (09 Questions), la suite reste."
+    }
+  ]
 }

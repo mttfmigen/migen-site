@@ -267,7 +267,10 @@ for (const page of pages) {
 /* ------------------------------------------------------- les interdits de copie */
 
 const INTERDITS: [RegExp, string][] = [
-  [/\+\s?200|\b200\s+clients\b/i, "« plus de 120 clients, dont plus de 80 réguliers »"],
+  // Règle validée par le client (design_handoff_migen_site/README.md) :
+  // « +200 clients », sans jamais préciser « réguliers ». « +200 » est exigé
+  // plus bas là où la capture le porte.
+  [/\b(?:clients|80)\s+r[ée]guliers\b/i, "« +200 clients », sans jamais préciser « réguliers »"],
   [/\b(?:5|cinq)\s+agences\b/i, "quatre agences : Lyon siège, Montréal, Dubaï, Madrid"],
   [/\b(?:r[ée]gie|int[ée]rim|mise à disposition|sans engagement)\b/i, "nommer la prestation"],
   [/\b(?:cl[ée] en main|sur mesure|levier|concr[èe]tement|notamment|incontournable|d[ée]couvrez)\b/i,
@@ -311,7 +314,21 @@ function chaines(v: unknown, ou: string, out: [string, string][] = []): [string,
 }
 
 let controlees = 0;
+let compte200 = 0;
 for (const page of pages) {
+  /* Le compte de clients est exigé là où la capture le porte, en texte visible
+     (hors script) : `maquette/rendu/<clé>.html`, la référence validée. */
+  const capture = readFileSync(`maquette/rendu/${page.url.slice(1, -1).replaceAll("/", "--")}.html`, "utf8")
+    .replace(/<script[\s\S]*?<\/script>/g, "")
+    .replace(/<[^>]*>/g, "");
+  for (const compte of ["+200", "200 clients"]) {
+    if (!capture.includes(compte)) continue;
+    assert.ok(
+      chaines(page.contenu, page.url).some(([, t]) => t.includes(compte)),
+      `${page.url} : « ${compte} » est dans la capture, pas dans le contenu`,
+    );
+    compte200 += 1;
+  }
   for (const [ou, texte] of chaines(page.contenu, page.url)) {
     if (ou.endsWith(".lienHref")) continue;
     controlees += 1;
@@ -356,5 +373,6 @@ for (const [motif, remede] of INTERDITS) {
 console.log(
   `ressource : ${pages.length} page(s) conformes, ${VALEURS.length} valeurs relues dans la maquette ` +
     `et retrouvées au rendu, ${COPIE.length} phrases de copie, ${controlees} chaînes passées aux interdits, ` +
+    `${compte200} comptes de clients de la capture portés, ` +
     `rendu plein ${(rendu.length / 1024).toFixed(1)} ko sur ${PLEINE.url}.`,
 );

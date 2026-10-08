@@ -12,17 +12,17 @@
         "href": "/offres/"
       }
     ],
-    "formulaireHeroTitre": "Décrire mon besoin",
+    "formulaireHeroTitre": "",
     "formulaireHeroMention": "Rappel dans l'heure",
     "brefSurtitre": "En bref",
     "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "Des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+        "libelle": "Des techniciens retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
       },
       {
-        "valeur": "+ 80",
-        "libelle": "Clients réguliers · sur plus de 120 clients industriels."
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "8",
@@ -162,39 +162,52 @@
             "titre": "Parc machines défaillant remis en service, Lyon, depuis février 2024.",
             "texte": "Diagnostic sur site, plusieurs options chiffrées dans le budget d'une PME, parc existant conservé plutôt que racheté",
             "lienLibelle": "Étude de cas JOINT LYONNAIS",
-            "lienHref": "/preuves/joint-lyonnais/"
+            "lienHref": "/preuves/joint-lyonnais/",
+            "photo": "/assets/web/x-tech-portrait.jpg",
+            "logo": "/assets/clients/joint-lyonnais.png"
           },
           {
             "titre": "Montage, déplacement et renfort technique, étanchéité et isolation, 2025.",
             "texte": "Machines existantes reconfigurées sans casse, délais tenus sans pénalité",
             "lienLibelle": "Étude de cas SOPREMA",
-            "lienHref": "/preuves/soprema/"
+            "lienHref": "/preuves/soprema/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "logo": "/assets/clients/mq-127f9e03c53b.svg"
           },
           {
             "titre": "Maintenance préventive d'une centrale photovoltaïque, fin 2024.",
             "texte": "Trois techniciens en renfort, suivi rigoureux des équipements sur toute la durée du chantier",
             "lienLibelle": "Étude de cas EIFFAGE",
-            "lienHref": "/preuves/eiffage/"
+            "lienHref": "/preuves/eiffage/",
+            "photo": "/assets/web/x-elec-cablage.jpg",
+            "logo": "/assets/clients/mq-21daf7c60970.svg"
           },
           {
             "titre": "Une usine de carton en 3x8, un technicien qui tient la cadence",
             "lienLibelle": "Étude de cas VPK",
-            "lienHref": "/preuves/vpk/"
+            "lienHref": "/preuves/vpk/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas Aktid",
-            "lienHref": "/preuves/aktid-centre-logistique/"
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/mq-948c28bcda08.jpg",
+            "logo": "/assets/clients/aktid.png"
           },
           {
-            "titre": "",
+            "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
-            "lienHref": "/preuves/tournaire/"
+            "lienHref": "/preuves/tournaire/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg",
+            "logo": "/assets/clients/mq-7c01e175985e.png"
           },
           {
             "titre": "Un responsable maintenance pour traverser la transition",
             "lienLibelle": "Étude de cas ERIKS",
-            "lienHref": "/preuves/eriks/"
+            "lienHref": "/preuves/eriks/",
+            "photo": "/assets/web/mq-0699d4d92e7e.jpg",
+            "logo": "/assets/clients/mq-441fc873c0d9.svg"
           }
         ]
       },
@@ -203,7 +216,7 @@
         "questions": [
           {
             "question": "Combien coûte une remise en état de machine ?",
-            "reponse": ""
+            "reponse": "Chaque cas est chiffré sur devis : l'état constaté, les pièces à remplacer et le degré de finition attendu font le prix. L'état des lieux préalable donne la rentabilité avant l'engagement, et la comparaison avec la valeur actuelle du matériel fait partie de la réponse."
           },
           {
             "question": "Quelle différence entre remise en état et dépannage ?",
@@ -219,7 +232,7 @@
           },
           {
             "question": "Qui réalise le travail ?",
-            "reponse": "Des techniciens salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des candidats sont retenus. Une équipe est affectée selon la machine : mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie."
+            "reponse": "Des techniciens salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des techniciens sont retenus. Une équipe est affectée selon la machine : mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie."
           },
           {
             "question": "Le travail a-t-il lieu sur site ou en atelier, et partout en France ?",

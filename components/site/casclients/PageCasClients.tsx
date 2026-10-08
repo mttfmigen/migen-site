@@ -3,17 +3,27 @@ import { Fragment, type CSSProperties, type ReactNode } from "react";
 import { FormulaireContact } from "@/components/formulaire/FormulaireContact";
 import MarqueeClients from "@/components/site/accueil/MarqueeClients";
 import { ANCRE_FORMULAIRE } from "@/components/site/blocs/habillage";
-import type { ChiffresCasClients, ContenuCasClients } from "@/types/casclients";
+import {
+  estHubPreuves,
+  type ChiffresCasClients,
+  type ContenuCasClients,
+  type ContenuHubPreuves,
+} from "@/types/casclients";
 
 import AvisCasClients from "./AvisCasClients";
 import ChantiersCasClients from "./ChantiersCasClients";
 import { BOUTON_ACTION, LARGEUR, SURTITRE, VERRE } from "./habillage";
 import styles from "./PageCasClients.module.css";
+import PreuvesHub from "./PreuvesHub";
 import ProcessCasClients from "./ProcessCasClients";
 
 /**
  * Gabarit « Cas clients », porté de « Migen - Site final.dc.html », lignes 6646
- * à 6931. Il sert /preuves/ et /realisations/.
+ * à 6931 : la page sur mesure /realisations/.
+ *
+ * LE HUB /preuves/ N'EST PAS CE DESSIN. Sa capture (`maquette/rendu/preuves.html`)
+ * est celle de `MigenPreuves.dc.html` : un contenu qui porte `vue: "hub"` est
+ * rendu par `PreuvesHub`, sans rien de ce qui suit.
  *
  * Sept sections, dans l'ordre de la maquette : hero, bento de chiffres, bandeau
  * de logos, chantiers livrés, process de sélection, avis Google, formulaire.
@@ -187,7 +197,7 @@ function Chiffres({ chiffres }: { chiffres: ChiffresCasClients }) {
 export interface ProprietesPageCasClients {
   /** Le H1, porté par `pages.titre_h1`. */
   titre: string;
-  contenu: ContenuCasClients;
+  contenu: ContenuCasClients | ContenuHubPreuves;
   /** Identifiant d'analyse de la soumission, repris par HubSpot. */
   formulaire?: string;
   /**
@@ -208,17 +218,16 @@ export default function PageCasClients({
   filAriane,
   maillage,
 }: ProprietesPageCasClients) {
+  // Le hub n'a ni fil d'Ariane, ni formulaire, ni maillage : sa capture non plus.
+  if (estHubPreuves(contenu)) return <PreuvesHub titre={titre} contenu={contenu} />;
+
   const surtitre = contenu.surtitre ?? "Cas clients";
   const chantiers = contenu.chantiers ?? [];
 
   return (
     <div className="mg-site">
       <main style={{ paddingTop: 96 }}>
-        {filAriane ? (
-          <section style={{ ...LARGEUR, padding: "24px 40px 0" }}>
-            {filAriane}
-          </section>
-        ) : null}
+        {filAriane}
 
         <section style={{ ...LARGEUR, padding: "70px 40px 0" }}>
           {/* Surtitre de la maquette par défaut. Une chaîne vide le retire,

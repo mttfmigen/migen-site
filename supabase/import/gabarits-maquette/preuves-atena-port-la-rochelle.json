@@ -30,6 +30,8 @@
         "valeur": "Engrais agricoles, logistique portuaire"
       }
     ],
+    "logo": "/assets/clients/atena.png",
+    "photoHero": "/assets/web/mq-e6322efcd358.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -125,6 +127,7 @@
         "valeur": "2 techniciens"
       }
     ],
+    "photoDispositif": "/assets/web/mq-056f3c250981.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -135,7 +138,7 @@
         "texte": "Après votre demande, en semaine de 8h00 à 18h30."
       },
       {
-        "titre": "10 % des candidats retenus",
+        "titre": "10 % des techniciens retenus",
         "texte": "Techniciens évalués sur la technique et le comportement avant affectation."
       }
     ],
@@ -143,22 +146,26 @@
       {
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
-        "href": "/preuves/"
+        "href": "/preuves/",
+        "photo": "/assets/web/mq-948c28bcda08.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
-        "href": "/offres/residence/"
+        "href": "/offres/residence/",
+        "photo": "/assets/web/mq-17e2f3bce95f.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance logistique",
-        "href": "/secteurs/logistique/"
+        "href": "/secteurs/logistique/",
+        "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
-        "href": "/preuves/savoye/"
+        "href": "/preuves/savoye/",
+        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
       }
     ]
   }

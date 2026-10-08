@@ -5,17 +5,17 @@
  * des boutons dépend de l'étape choisie, donc d'un état local : elle vit dans
  * `MethodeQuatreEtapes.module.css` et n'a rien à faire ici.
  *
- * TROIS ÉCARTS ASSUMÉS PAR RAPPORT À LA MAQUETTE
- * (`docs/CONTRAT-PORTAGE-MAQUETTE.md`, « Interdits de copie ») :
+ * ÉCARTS DÉCLARÉS PAR RAPPORT À LA MAQUETTE (règles de copie du 08/10 : une
+ * phrase interdite est RETIRÉE, jamais reformulée) :
  *
  * 1. `quand` des étapes 01 et 02 : la maquette écrit « 2 à 5 jours » et
- *    « 1 à 2 semaines ». Aucun délai chiffré n'est autorisé, la seule promesse
- *    du site étant « rappel dans l'heure ». Remplacés par le repère que
- *    l'étape porte elle-même, sans chiffre.
- * 2. `corps` de l'étape 02 : « avant toute mise à disposition » devient
- *    « avant toute arrivée sur votre site ». « Mise à disposition » est
- *    interdit.
- * 3. Tirets cadratins des étapes 02 et 04, remplacés par deux-points.
+ *    « 1 à 2 semaines », délais chiffrés interdits. Retirés, rien à la place.
+ * 2. `corps` de l'étape 02 : la phrase « Vous les rencontrez avant toute mise
+ *    à disposition. » est retirée entière (« mise à disposition » interdit).
+ * 3. Tirets cadratins des étapes 02 et 04, remplacés par deux-points : c'est
+ *    une correction typographique (contrat de projet, « virgule, parenthèses
+ *    ou deux-points »), pas une reformulation. À trancher si la règle de
+ *    retrait doit aussi s'y appliquer.
  */
 
 import type { EtapeMethode } from "./MethodeQuatreEtapes";
@@ -25,7 +25,6 @@ export const ETAPES_METHODE: readonly EtapeMethode[] = [
     cle: "qualification",
     numero: "01",
     titre: "Qualification",
-    quand: "Au premier contact",
     corps:
       "Un chargé d’affaires vient sur site. Il relève les technologies en présence, les contraintes d’accès et d’horaires, le niveau d’habilitation exigé et ce que coûte une heure d’arrêt.",
     votreCote: "Vous montrez l’installation et dites ce qui vous bloque.",
@@ -36,9 +35,8 @@ export const ETAPES_METHODE: readonly EtapeMethode[] = [
     cle: "selection",
     numero: "02",
     titre: "Sélection",
-    quand: "Avant l’arrivée sur site",
     corps:
-      "Nous présentons les techniciens retenus à l’issue de notre process : parcours, habilitations, sites comparables déjà tenus. Vous les rencontrez avant toute arrivée sur votre site.",
+      "Nous présentons les techniciens retenus à l’issue de notre process : parcours, habilitations, sites comparables déjà tenus.",
     votreCote:
       "Vous validez ou écartez chaque profil, sans avoir à vous justifier.",
     resultat: "Une équipe que vous avez choisie, pas subie.",

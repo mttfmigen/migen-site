@@ -1,136 +1,174 @@
 {
   "url": "/implantations/lyon/rhone/",
+  "titre_h1": "La maintenance industrielle dans le Rhône, du Beaujolais à Feyzin",
   "contenu": {
-    "gabarit": "departement",
+    "gabarit": "ville",
+    "pastille": "Nos implantations",
     "chapeau": "Le département tient sur trois bandes industrielles qui ne se ressemblent pas : la chimie lourde au sud, entre Saint-Fons, Feyzin et Pierre-Bénite, la mécanique et la logistique à l'est, de Saint-Priest à Genas et Corbas, l'agroalimentaire et l'emballage au nord, dans le val de Saône autour de Villefranche. Notre agence de Lyon couvre les trois, sans changer de méthode.",
     "actions": [
       {
         "libelle": "Faire chiffrer ma maintenance dans le Rhône",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option, nuits, week-ends et jours fériés.",
+    "formulaireHeroTitre": "Faire chiffrer ma maintenance dans le Rhône",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "appelBouton": "Faire chiffrer ma maintenance dans le Rhône",
+    "chiffres": [
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels accompagnés, dont plus de 80 réguliers"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
-        "valeur": "+ 100",
-        "libelle": "collaborateurs, mécaniciens, électriciens, automaticiens, roboticiens"
+        "valeur": "+ 120",
+        "libelle": "Collaborateurs, mécaniciens, électriciens, automaticiens, roboticiens"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       }
     ],
-    "autresSurtitre": "Les autres départements",
-    "autres": [
-      {
-        "libelle": "Haute-Savoie",
-        "href": "/implantations/lyon/haute-savoie/"
-      },
-      {
-        "libelle": "Loire-Atlantique",
-        "href": "/implantations/nantes/loire-atlantique/"
-      },
-      {
-        "libelle": "Essonne",
-        "href": "/implantations/paris/essonne/"
-      },
-      {
-        "libelle": "Alsace",
-        "href": "/implantations/strasbourg/alsace/"
-      },
-      {
-        "libelle": "Charente",
-        "href": "/implantations/toulouse/charente/"
-      },
-      {
-        "libelle": "Gironde",
-        "href": "/implantations/toulouse/gironde/"
-      },
-      {
-        "libelle": "Haute-Garonne",
-        "href": "/implantations/toulouse/haute-garonne/"
-      }
-    ],
-    "appelTitre": "Besoin de la même méthode sur vos sites du nord et du sud du département ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
-      "libelle": "Faire chiffrer ma maintenance dans le Rhône",
-      "href": "#formulaire"
+    "hubLocal": {
+      "surtitre": "Votre hub local · Rhône",
+      "titre": "Rhône : les industries que nos techniciens connaissent déjà",
+      "photo": "/assets/web/sv-portrait.jpg",
+      "badge": "Rattaché au hub Lyon",
+      "nom": "Rhône, couvert par le hub Lyon",
+      "texte": "Les techniciens du hub Lyon interviennent à Rhône et alentour, avec les mêmes méthodes et un seul interlocuteur.",
+      "bouton": "Demander une intervention à Rhône",
+      "cartes": [
+        {
+          "surtitre": "Tissu principal",
+          "titre": "Chimie",
+          "texte": "La vallée de la chimie au sud, l'est lyonnais de Saint-Priest à Genas et Corbas, Villeurbanne et Vaulx-en-Velin, le…",
+          "lien": "Notre approche chimie",
+          "href": "/secteurs/chimie/"
+        },
+        {
+          "surtitre": "Notre offre",
+          "titre": "Migen Résidence",
+          "texte": "Un technicien intégré à votre équipe, sur votre planning, avec remplacement garanti.",
+          "lien": "Voir l’offre",
+          "href": "/offres/residence/"
+        },
+        {
+          "surtitre": "Notre offre",
+          "titre": "Zéro arrêt",
+          "texte": "Un budget fermé et moins d’arrêts non planifiés sur votre parc.",
+          "lien": "Voir l’offre",
+          "href": "/offres/zero-arret/"
+        },
+        {
+          "surtitre": "Notre offre",
+          "titre": "Arrêt technique",
+          "texte": "Une équipe dimensionnée pour tenir votre fenêtre d’arrêt.",
+          "lien": "Voir l’offre",
+          "href": "/offres/arret-technique/"
+        }
+      ],
+      "zonesTitre": "Hub de rattachement et zones voisines",
+      "zones": [
+        {
+          "libelle": "Hub Lyon",
+          "href": "/implantations/lyon/"
+        },
+        {
+          "libelle": "Grenoble",
+          "href": "/implantations/lyon/grenoble/"
+        },
+        {
+          "libelle": "Haute-Savoie",
+          "href": "/implantations/lyon/haute-savoie/"
+        },
+        {
+          "libelle": "Saint-Étienne",
+          "href": "/implantations/lyon/saint-etienne/"
+        },
+        {
+          "libelle": "Valence",
+          "href": "/implantations/lyon/valence/"
+        }
+      ]
     },
-    "reste": [
+    "brefBande": "Besoin d'un prestataire de maintenance qui prépare l'accès avant de parler de la panne ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Faire chiffrer ma maintenance dans le Rhône",
+      "href": "#besoin"
+    },
+    "sections": [
       {
         "type": "probleme",
+        "punchline": "Au sud du département, une intervention mal préparée ne démarre pas. À l'est, elle démarre trop tard. Dans les deux cas, la production paie la différence.",
         "puces": [
           {
-            "texte": "Installations classées, procédés continus, consignations et protocoles de sécurité : une visite qui n'a pas été cadrée n'entre pas en zone.",
-            "accroche": "Le sud impose le plan avant le geste."
+            "accroche": "Le sud impose le plan avant le geste.",
+            "texte": "Installations classées, procédés continus, consignations et protocoles de sécurité : une visite qui n'a pas été cadrée n'entre pas en zone."
           },
           {
-            "texte": "Saint-Priest, Corbas, Genas, Vaulx-en-Velin : la plus forte concentration d'ateliers et de plateformes du département, et des techniciens que tout le monde cherche.",
-            "accroche": "L'est concentre la densité et la concurrence."
+            "accroche": "L'est concentre la densité et la concurrence.",
+            "texte": "Saint-Priest, Corbas, Genas, Vaulx-en-Velin : la plus forte concentration d'ateliers et de plateformes du département, et des techniciens que tout le monde cherche."
           },
           {
-            "texte": "Val de Saône et Beaujolais : conditionnement, embouteillage, emballage, avec des pics saisonniers où l'équipement doit être prêt avant, pas réparé pendant.",
-            "accroche": "Le nord vit au rythme des campagnes."
+            "accroche": "Le nord vit au rythme des campagnes.",
+            "texte": "Val de Saône et Beaujolais : conditionnement, embouteillage, emballage, avec des pics saisonniers où l'équipement doit être prêt avant, pas réparé pendant."
           },
           {
-            "texte": "Port Édouard-Herriot, quais, sites contraints : manutention lourde et créneaux de livraison se préparent, jamais un vendredi après-midi.",
-            "accroche": "Le fleuve structure les accès."
+            "accroche": "Le fleuve structure les accès.",
+            "texte": "Port Édouard-Herriot, quais, sites contraints : manutention lourde et créneaux de livraison se préparent, jamais un vendredi après-midi."
           },
           {
-            "texte": "Sans recherche de cause racine, la même défaillance repart pour un tour, et le budget correctif dérape.",
-            "accroche": "Réparer sans comprendre revient plus cher."
+            "accroche": "Réparer sans comprendre revient plus cher.",
+            "texte": "Sans recherche de cause racine, la même défaillance repart pour un tour, et le budget correctif dérape."
           }
         ],
-        "punchline": "Au sud du département, une intervention mal préparée ne démarre pas. À l'est, elle démarre trop tard. Dans les deux cas, la production paie la différence."
+        "variante": "rangee"
       },
       {
         "type": "offre",
         "lignes": [
           {
-            "benefice": "Une intervention au sud du département ne se bloque plus sur un point de procédure.",
             "prestation": {
-              "texte": "plan de prévention, protocole de sécurité, habilitations, coordination HSE.",
-              "accroche": "L'entrée en site classé cadrée avant le départ"
-            }
+              "accroche": "L'entrée en site classé cadrée avant le départ",
+              "texte": "Plan de prévention, protocole de sécurité, habilitations, coordination HSE."
+            },
+            "benefice": "Une intervention au sud du département ne se bloque plus sur un point de procédure."
           },
           {
-            "benefice": "Vous entrez en pic avec un parc préparé, pas avec une liste de réparations en attente.",
             "prestation": {
-              "texte": "du val de Saône et du Beaujolais.",
-              "accroche": "Un préventif resserré avant les campagnes saisonnières"
-            }
+              "accroche": "Un préventif resserré avant les campagnes saisonnières du val de Saône et du Beaujolais.",
+              "texte": ""
+            },
+            "benefice": "Vous entrez en pic avec un parc préparé, pas avec une liste de réparations en attente."
           },
           {
-            "benefice": "Un seul contrat pour un parc qui mélange pompes de procédé, machines-outils et convoyeurs.",
             "prestation": {
-              "texte": "[mécanique](/expertises/mecanique/), [électricité](/expertises/electrique/), [électromécanique](/expertises/electromecanique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure](/expertises/soudure/).",
-              "accroche": "Le champ technique complet"
-            }
+              "accroche": "Le champ technique complet",
+              "texte": "Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure."
+            },
+            "benefice": "Un seul contrat pour un parc qui mélange pompes de procédé, machines-outils et convoyeurs."
           },
           {
-            "benefice": "Un défaut d'automate ne devient plus une attente de spécialiste extérieur.",
             "prestation": {
-              "texte": "en appui du technicien présent.",
-              "accroche": "Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc"
-            }
+              "accroche": "Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc en appui du technicien présent.",
+              "texte": ""
+            },
+            "benefice": "Un défaut d'automate ne devient plus une attente de spécialiste extérieur."
           },
           {
-            "benefice": "Les installations en service continu sont couvertes la nuit et le week-end.",
             "prestation": {
-              "texte": ", portée par l'agence de [Lyon](/implantations/lyon/).",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
+              "accroche": "Astreinte la nuit, le week-end et les jours fériés en option portée par l'agence de Lyon.",
+              "texte": ""
+            },
+            "benefice": "Les installations en service continu sont couvertes la nuit et le week-end."
           },
           {
-            "benefice": "Regroupement d'ateliers ou déménagement de ligne : un chef de projet unique, des jalons datés.",
             "prestation": {
-              "texte": "[transfert de production](/offres/chantier/transfert-de-production/), [remise en état](/offres/retrofit/remise-en-etat/), [arrêt planifié](/offres/arret-technique/).",
-              "accroche": "Les grands projets pris en charge"
-            }
+              "accroche": "Les grands projets pris en charge",
+              "texte": "Transfert de production, remise en état, arrêt planifié."
+            },
+            "benefice": "Regroupement d'ateliers ou déménagement de ligne : un chef de projet unique, des jalons datés."
           }
         ]
       },
@@ -138,28 +176,28 @@
         "type": "deroule",
         "etapes": [
           {
-            "texte": "Panne, dérive ou besoin de travaux, au 04 78 33 72 05 ou par le formulaire. Le rappel arrive dans l'heure aux horaires ouvrés, et qualifie l'équipement, l'accès et les habilitations.",
-            "titre": "La prise de contact"
+            "titre": "La prise de contact",
+            "texte": "Panne, dérive ou besoin de travaux, par téléphone ou par le formulaire. Le rappel arrive dans l'heure aux horaires ouvrés, et qualifie l'équipement, l'accès et les habilitations."
           },
           {
-            "texte": "Périmètre, moyens, conditions d'intervention. Ce qui sort du cadre est chiffré avant d'être fait, pas au moment de la facture.",
-            "titre": "Le devis écrit"
+            "titre": "Le devis écrit",
+            "texte": "Périmètre, moyens, conditions d'intervention. Ce qui sort du cadre est chiffré avant d'être fait, pas au moment de la facture."
           },
           {
-            "texte": "En site classé, le plan de prévention et le protocole se valident avant le départ du technicien.",
-            "titre": "La préparation d'accès"
+            "titre": "La préparation d'accès",
+            "texte": "En site classé, le plan de prévention et le protocole se valident avant le départ du technicien."
           },
           {
-            "texte": "Accueil sécurité, consignation, diagnostic, remplacement de la pièce en cause, essais.",
-            "titre": "L'intervention"
+            "titre": "L'intervention",
+            "texte": "Accueil sécurité, consignation, diagnostic, remplacement de la pièce en cause, essais."
           },
           {
-            "texte": "L'analyse cherche pourquoi la défaillance est arrivée, puis débouche sur un plan d'action chiffré.",
-            "titre": "La cause racine"
+            "titre": "La cause racine",
+            "texte": "L'analyse cherche pourquoi la défaillance est arrivée, puis débouche sur un plan d'action chiffré."
           },
           {
-            "texte": "Actions, pièces, résultats, préconisations, versés dans votre GMAO, de la première à la dernière visite.",
-            "titre": "Le compte rendu"
+            "titre": "Le compte rendu",
+            "texte": "Actions, pièces, résultats, préconisations, versés dans votre GMAO, de la première à la dernière visite."
           }
         ]
       },
@@ -167,57 +205,74 @@
         "type": "garanties",
         "puces": [
           {
-            "texte": "sur un contrat suivi, le même technicien aussi longtemps que possible, et un profil équivalent briefé sur vos machines en cas d'absence.",
-            "accroche": "Un intervenant qui revient"
+            "accroche": "Un intervenant qui revient",
+            "texte": "Sur un contrat suivi, le même technicien aussi longtemps que possible, et un profil équivalent briefé sur vos machines en cas d'absence."
           },
           {
-            "texte": "entretien technique et comportemental, 10 % des candidats retenus. Les résultats d'évaluation vous parviennent avant le premier déplacement.",
-            "accroche": "Un niveau technique vérifié en amont"
+            "accroche": "Un niveau technique vérifié en amont",
+            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus. Les résultats d'évaluation vous parviennent avant le premier déplacement."
           },
           {
-            "texte": "pas de coefficient caché, et un conseil de stock minimal de pièces critiques dimensionné sur vos historiques.",
-            "accroche": "Des pièces au prix du marché et un périmètre écrit"
+            "accroche": "Des pièces au prix du marché et un périmètre écrit",
+            "texte": "Pas de coefficient caché, et un conseil de stock minimal de pièces critiques dimensionné sur vos historiques."
           }
         ]
-      },
-      {
-        "type": "cta",
-        "bouton": "Faire chiffrer ma maintenance dans le Rhône",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin d'un mainteneur qui prépare l'accès avant de parler de la panne ?"
       },
       {
         "type": "preuves",
         "preuves": [
           {
-            "texte": "PME de production de joints, depuis février 2024",
             "titre": "Diagnostic sur site et réparation d'un parc machines défaillant, à Lyon, sans rachat de matériel neuf",
+            "texte": "PME de production de joints, depuis février 2024.",
+            "lienLibelle": "Étude de cas JOINT LYONNAIS",
             "lienHref": "/preuves/joint-lyonnais/",
-            "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines"
+            "photo": "/assets/web/x-tech-portrait.jpg"
           },
           {
-            "texte": "depuis septembre 2023, prise en charge complète réalisée en un mois",
             "titre": "Six techniciens en permanence sur le contrat de préventif annuel des sites de Lyon",
+            "texte": "Depuis septembre 2023, prise en charge complète réalisée en un mois.",
+            "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "lienLibelle": "Étude de cas VEEPEE : sites de Lyon"
+            "photo": "/assets/web/team-grind-front.jpg"
           },
           {
-            "texte": "deuxième et troisième trimestres 2025",
             "titre": "Un automaticien SIEMENS à temps plein pour le démarrage d'une ligne neuve près de Lyon",
+            "texte": "Deuxième et troisième trimestres 2025.",
+            "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "lienLibelle": "Étude de cas MERSEN : nouvelles lignes"
+            "photo": "/assets/web/x-elec-cablage.jpg"
           },
           {
-            "texte": "remise en état d'un site de traitement des eaux industrielles",
             "titre": "Un électromécanicien habilité risque chimique mobilisé 6 mois",
+            "texte": "Remise en état d'un site de traitement des eaux industrielles.",
+            "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
+            "photo": "/assets/web/team-duo.jpg"
           },
           {
-            "texte": "2025 à 2026",
             "titre": "Un polyvalent intégré sur un parc papier et emballage aux contraintes techniques variées",
+            "texte": "2025 à 2026.",
+            "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "lienLibelle": "Étude de cas VPK : maintenance de site"
+            "photo": "/assets/web/x-logistique-entrepot.jpg"
+          },
+          {
+            "titre": "Maintenir des machines conçues en interne",
+            "lienLibelle": "Étude de cas Tournaire",
+            "lienHref": "/preuves/tournaire/",
+            "photo": "/assets/web/ph-technicien.jpg"
+          },
+          {
+            "titre": "Maintenir un centre logistique qui ne ferme jamais",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/ph-technicien.jpg"
+          },
+          {
+            "titre": "Des convoyeurs et des trieurs sous surveillance continue",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/team-duo.jpg"
           }
         ]
       },
@@ -225,31 +280,41 @@
         "type": "objections",
         "questions": [
           {
-            "reponse": "Oui. Plan de prévention, protocole de sécurité, habilitations électriques à jour, coordination avec votre service HSE : nous entrons dans vos règles, pas dans les nôtres. Les contraintes du site figurent au devis, en préventif comme en curatif.",
-            "question": "Intervenez-vous sur un site classé Seveso dans la vallée de la chimie ?"
+            "question": "Intervenez-vous sur un site classé Seveso dans la vallée de la chimie ?",
+            "reponse": "Oui. Plan de prévention, protocole de sécurité, habilitations électriques à jour, coordination avec votre service HSE : nous entrons dans vos règles, pas dans les nôtres. Les contraintes du site figurent au devis, en préventif comme en curatif."
           },
           {
-            "reponse": "La vallée de la chimie au sud, l'est lyonnais de Saint-Priest à Genas et Corbas, Villeurbanne et Vaulx-en-Velin, le val de Saône jusqu'à Villefranche-sur-Saône et les zones d'activité du Beaujolais. Au-delà, le réseau couvre l'Auvergne-Rhône-Alpes puis la France entière, avec un contrat unique.",
-            "question": "Quelles zones du département couvrez-vous ?"
+            "question": "Quelles zones du département couvrez-vous ?",
+            "reponse": "La vallée de la chimie au sud, l'est lyonnais de Saint-Priest à Genas et Corbas, Villeurbanne et Vaulx-en-Velin, le val de Saône jusqu'à Villefranche-sur-Saône et les zones d'activité du Beaujolais. Au-delà, le réseau couvre l'Auvergne-Rhône-Alpes puis la France entière, avec un contrat unique."
           },
           {
-            "reponse": "Zéro arrêt est chiffré sur devis, avec trois niveaux de couverture et un engagement type de 6 mois renouvelable. Une installation classée du sud du département demande plus de préparation qu'un atelier de l'est, et le devis en tient compte, installation par installation. Le diagnostic de départ est gratuit.",
-            "question": "Combien coûte un contrat de maintenance ?"
+            "question": "Combien coûte un contrat de maintenance ?",
+            "reponse": "Zéro arrêt est chiffré sur devis, avec trois niveaux de couverture et un engagement type de 6 mois renouvelable. Une installation classée du sud du département demande plus de préparation qu'un atelier de l'est, et le devis en tient compte, installation par installation. Le diagnostic de départ est gratuit."
           },
           {
-            "reponse": "Oui, c'est l'offre [résidence](/offres/residence/). Le technicien est salarié Migen, intégré à votre équipe et suivi par un référent, avec une prise de poste en 2 à 3 semaines. En cas d'absence, le remplacement s'organise sur vos installations, il ne se cherche pas dans l'urgence.",
-            "question": "Pouvez-vous tenir un poste à demeure dans notre usine ?"
+            "question": "Pouvez-vous tenir un poste à demeure dans notre usine ?",
+            "reponse": "Oui, c'est l'offre résidence. En cas d'absence, le remplacement s'organise sur vos installations, il ne se cherche pas dans l'urgence."
           },
           {
-            "reponse": "Oui. Chaque intervention y est saisie : historique par équipement, programme de visites, temps passé, pièces, préconisations. Aucun outil parallèle, aucune saisie en double. Les données vous appartiennent et restent lisibles par votre direction.",
-            "question": "Travaillez-vous dans notre GMAO ?"
+            "question": "Travaillez-vous dans notre GMAO ?",
+            "reponse": "Oui. Chaque intervention y est saisie : historique par équipement, programme de visites, temps passé, pièces, préconisations. Aucun outil parallèle, aucune saisie en double. Les données vous appartiennent et restent lisibles par votre direction."
           },
           {
-            "reponse": "Non, ce n'est pas notre métier. Nous entretenons et réparons le vôtre, et nous chiffrons la remise en état quand elle coûte moins cher que le neuf. Si un équipement doit être remplacé, nous le disons avec les chiffres qui le justifient.",
-            "question": "Louez-vous du matériel de remplacement ?"
+            "question": "Louez-vous du matériel de remplacement ?",
+            "reponse": "Non, ce n'est pas notre métier. Nous entretenons et réparons le vôtre, et nous chiffrons la remise en état quand elle coûte moins cher que le neuf. Si un équipement doit être remplacé, nous le disons avec les chiffres qui le justifient."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de la même méthode sur vos sites du nord et du sud du département ?"
       }
     ]
-  }
+  },
+  "trous": [
+    {
+      "ligne": "Le technicien est salarié Migen, intégré à votre équipe et suivi par un référent, avec une prise de poste en 2 à 3 semaines.",
+      "pourquoi": "délai chiffré : seul « rappel dans l'heure » est autorisé (contrat de rédaction et passation du client) : « 2 à 3 semaines ». Réponse à « Pouvez-vous tenir un poste à demeure dans notre usine ? » (09 Questions), le reste du texte demeure."
+    }
+  ]
 }

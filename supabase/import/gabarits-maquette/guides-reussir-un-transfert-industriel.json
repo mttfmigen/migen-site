@@ -1,0 +1,885 @@
+{
+  "url": "/guides/reussir-un-transfert-industriel/",
+  "titre_h1": "Réussir un transfert industriel : la méthode de bout en bout",
+  "source": "maquette/rendu/guides--reussir-un-transfert-industriel.html, transcrite mot pour mot (gabarit générique édito de la maquette)",
+  "phrases_retirees": [],
+  "contenu": {
+    "gabarit": "editorial",
+    "blocs": [],
+    "edito": {
+      "format": "Guide",
+      "lecture": "12 min de lecture",
+      "ariane": [
+        {
+          "label": "Accueil",
+          "href": "/"
+        },
+        {
+          "label": "Réussir un transfert industriel : la méthode de bout en bout"
+        }
+      ],
+      "chapeau": "Un transfert industriel ne se juge pas à la durée du chantier. Il se juge au nombre d'heures où votre production est arrêtée.",
+      "intro": [
+        {
+          "type": "p",
+          "texte": "Ce guide donne la méthode complète : inventaire, cotation, accès, ordre de démontage, repérage, emballage, transport, remontage, alignement, raccordements, essais, redémarrage. Avec les points de contrôle et les pièges."
+        },
+        {
+          "type": "p",
+          "texte": "Il est écrit pour être utilisable tel quel, que vous pilotiez le projet en interne, avec un prestataire ou avec plusieurs."
+        }
+      ],
+      "sections": [
+        {
+          "titre": "Le chiffre qui pilote tout le projet",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "**La durée d'arrêt de production est la seule variable qui coûte vraiment cher.** Le reste du budget se négocie, celui-là se paie en commandes perdues."
+            },
+            {
+              "type": "p",
+              "texte": "Fixez-le avant tout le reste :"
+            },
+            {
+              "type": "cartes",
+              "items": [
+                {
+                  "titre": "Le nombre d'heures d'arrêt acceptable",
+                  "texte": "Calculé à partir de votre marge horaire et de vos engagements clients."
+                },
+                {
+                  "titre": "Les lignes qui n'ont pas le droit de s'arrêter",
+                  "texte": "Et le stock tampon qu'il faut constituer pour elles."
+                },
+                {
+                  "titre": "La date à laquelle la cadence nominale doit être retrouvée",
+                  "texte": "Pas la date à laquelle la machine tourne."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "Tant que ces trois points ne sont pas écrits, aucun planning n'a de sens. Ils conditionnent le phasage, le nombre d'intervenants et le coût final."
+            }
+          ]
+        },
+        {
+          "titre": "Étape 1 : l'inventaire et la cotation des machines",
+          "blocs": [
+            {
+              "type": "photo",
+              "image": "/assets/web/team-duo.jpg"
+            },
+            {
+              "type": "p",
+              "texte": "Un inventaire de transfert n'est pas un inventaire comptable. Il décrit ce qu'il faut démonter, porter et rebrancher."
+            },
+            {
+              "type": "h3",
+              "texte": "Ce que doit contenir chaque fiche machine"
+            },
+            {
+              "type": "bento",
+              "colonnes": 2,
+              "items": [
+                {
+                  "titre": "Identification",
+                  "texte": "Repère atelier, constructeur, modèle, numéro de série, année."
+                },
+                {
+                  "titre": "Dimensions et masse",
+                  "texte": "Hors tout, machine démontée et machine entière, avec le centre de gravité quand il est excentré."
+                },
+                {
+                  "titre": "Points de levage",
+                  "texte": "Homologués, points d'élingage, présence ou non d'anneaux."
+                },
+                {
+                  "titre": "Énergies et fluides",
+                  "texte": "Tension, puissance, air comprimé, eau, vapeur, gaz, aspiration, extraction."
+                },
+                {
+                  "titre": "Interfaces",
+                  "texte": "Convoyeurs amont et aval, réseau, GTC, GMAO, capteurs déportés."
+                },
+                {
+                  "titre": "Sensibilités",
+                  "texte": "Chocs, vibrations, humidité, poussière, électronique embarquée, axes à bloquer."
+                },
+                {
+                  "titre": "Documentation disponible",
+                  "texte": "Plans, schémas électriques, programmes automate, notices, certificats."
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "texte": "La cotation, là où les projets déraillent"
+            },
+            {
+              "type": "p",
+              "texte": "**Une cote fausse apparaît le jour de la dépose, quand tout le monde est déjà sur place.** C'est le scénario le plus cher du chantier."
+            },
+            {
+              "type": "p",
+              "texte": "Trois règles simples :"
+            },
+            {
+              "type": "numeros",
+              "items": [
+                {
+                  "titre": "Mesurez, ne reprenez pas la documentation constructeur",
+                  "texte": "Les machines évoluent, les rehausses et les capotages s'ajoutent, les plans ne suivent pas."
+                },
+                {
+                  "titre": "Cotez la machine telle qu'elle sortira",
+                  "texte": "Dans l'état de démontage prévu pour la sortie, pas telle qu'elle est installée aujourd'hui."
+                },
+                {
+                  "titre": "Ajoutez la marge de manutention",
+                  "texte": "La place pour les élingues, le gabarit du chariot, le rayon de braquage dans l'allée."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "Point de contrôle : chaque machine a une fiche signée par quelqu'un qui l'a mesurée physiquement."
+            },
+            {
+              "type": "panneau"
+            }
+          ]
+        },
+        {
+          "titre": "Étape 2 : l'étude des accès et des contraintes de site",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "Les deux sites se relèvent avec la même exigence. Le site d'arrivée réserve plus de mauvaises surprises que le site de départ."
+            },
+            {
+              "type": "h3",
+              "texte": "Sur le site de départ"
+            },
+            {
+              "type": "bento",
+              "colonnes": 2,
+              "items": [
+                {
+                  "titre": "Le chemin de sortie complet",
+                  "texte": "Machine par machine, du poste jusqu'au camion."
+                },
+                {
+                  "titre": "Les passages contraints",
+                  "texte": "Largeur de porte, hauteur sous poutre, angle de couloir, seuil, caniveau."
+                },
+                {
+                  "titre": "La capacité des sols",
+                  "texte": "Dalle, plancher, fosse, plancher technique, charge admissible au mètre carré."
+                },
+                {
+                  "titre": "Les moyens disponibles",
+                  "texte": "Pont roulant et sa charge, quai, aire de retournement, accès poids lourd."
+                },
+                {
+                  "titre": "Les activités voisines",
+                  "texte": "Qui continuent pendant la dépose, et ce qu'elles interdisent."
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "texte": "Sur le site d'arrivée"
+            },
+            {
+              "type": "bento",
+              "colonnes": 2,
+              "items": [
+                {
+                  "titre": "Le plan d'implantation validé",
+                  "texte": "Avec les flux matière et les zones de circulation."
+                },
+                {
+                  "titre": "Les réservations au sol",
+                  "texte": "Massifs, scellements, fosses, caniveaux, évacuations."
+                },
+                {
+                  "titre": "Les arrivées d'énergie",
+                  "texte": "Au bon endroit, au bon calibre, avec les protections dimensionnées."
+                },
+                {
+                  "titre": "Les utilités",
+                  "texte": "Air comprimé et son réseau, eau, extraction, traitement d'effluents."
+                },
+                {
+                  "titre": "L'ordre d'arrivée",
+                  "texte": "Qui doit correspondre à l'ordre de montage et non à l'ordre de démontage."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "**Le site d'arrivée doit être prêt avant l'arrêt, pas pendant.** Chaque tâche basculée en amont est une heure de production sauvée."
+            }
+          ]
+        },
+        {
+          "titre": "Étape 3 : l'ordre de démontage",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "L'ordre de démontage n'est pas l'inverse de l'ordre de montage. Il se construit à partir de trois contraintes qui se contredisent souvent."
+            },
+            {
+              "type": "tableau",
+              "entetes": [
+                "Contrainte",
+                "Ce qu'elle impose",
+                "Arbitrage courant"
+              ],
+              "lignes": [
+                [
+                  "**Continuité de production**",
+                  "Les machines qui produisent encore partent en dernier",
+                  "On démonte d'abord les équipements doublés ou peu chargés"
+                ],
+                [
+                  "**Accès physique**",
+                  "Ce qui bloque le chemin part en premier",
+                  "Un convoyeur peut partir avant la machine qu'il sert"
+                ],
+                [
+                  "**Ordre de remontage**",
+                  "Le premier arrivé doit être le premier posé",
+                  "On charge les camions dans l'ordre inverse du déchargement"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "Trois règles pour trancher :"
+            },
+            {
+              "type": "numeros",
+              "items": [
+                {
+                  "titre": "Les utilités partent après les machines qu'elles alimentent",
+                  "texte": "Débrancher un réseau avant d'avoir déposé ce qu'il dessert immobilise tout l'atelier."
+                },
+                {
+                  "titre": "Les gros porteurs sortent quand le chemin est encore dégagé",
+                  "texte": "Une machine lourde se déplace mal dans un atelier à moitié démonté."
+                },
+                {
+                  "titre": "Les équipements longs à remonter partent en tête de convoi",
+                  "texte": "Le temps de remontage pilote l'ordre, pas le temps de dépose."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "Point de contrôle : l'ordre de démontage a été relu par la personne qui remontera."
+            }
+          ]
+        },
+        {
+          "titre": "Étape 4 : le repérage et l'étiquetage",
+          "blocs": [
+            {
+              "type": "photo",
+              "image": "/assets/web/team-grind-close.jpg"
+            },
+            {
+              "type": "p",
+              "texte": "**C'est la tâche la moins valorisante du chantier et celle qui fait gagner le plus de jours.** Un câble non repéré se paie en heures de recherche au remontage, avec une ligne qui attend."
+            },
+            {
+              "type": "h3",
+              "texte": "La règle des deux extrémités"
+            },
+            {
+              "type": "p",
+              "texte": "Tout ce qui se débranche se repère **aux deux bouts**, avec le même identifiant, avant la coupure. Un seul côté repéré ne sert à rien : la moitié de l'information est déjà perdue."
+            },
+            {
+              "type": "h3",
+              "texte": "Ce qui se repère"
+            },
+            {
+              "type": "bento",
+              "colonnes": 2,
+              "items": [
+                {
+                  "titre": "Câbles de puissance et de commande",
+                  "texte": "Y compris les liaisons qui ne figurent sur aucun schéma."
+                },
+                {
+                  "titre": "Flexibles et tuyauteries",
+                  "texte": "Avec le sens de circulation marqué."
+                },
+                {
+                  "titre": "Boulonnerie et cales de réglage",
+                  "texte": "En sachets identifiés par machine et par point."
+                },
+                {
+                  "titre": "Position au sol",
+                  "texte": "Axes tracés, cotes relevées par rapport à deux références fixes du bâtiment."
+                },
+                {
+                  "titre": "Réglages de production",
+                  "texte": "Butées, consignes, courses, positions de capteurs."
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "texte": "Ce qui se sauvegarde avant de couper"
+            },
+            {
+              "type": "ul",
+              "items": [
+                "**Programmes automate, variateurs et robots**, extraits et archivés en double, sur deux supports distincts.",
+                "**Paramètres IHM et recettes de fabrication**, exportés et datés.",
+                "**Photos** de chaque armoire ouverte, de chaque raccordement, de chaque implantation au sol, prises avant la première intervention."
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "Point de contrôle : un tiers qui n'a pas participé au démontage doit pouvoir rebrancher à partir du repérage seul."
+            }
+          ]
+        },
+        {
+          "titre": "Étape 5 : l'emballage et le calage",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "Le transport casse rarement les machines. Ce sont les manipulations et les vibrations longues qui les abîment."
+            },
+            {
+              "type": "bento",
+              "colonnes": 2,
+              "items": [
+                {
+                  "titre": "Bloquez les axes mobiles",
+                  "texte": "Avant tout mouvement : chariots, tables, broches, bras, vérins."
+                },
+                {
+                  "titre": "Protégez les surfaces fonctionnelles",
+                  "texte": "Glissières, tiges de vérin, portées d'appui, capteurs."
+                },
+                {
+                  "titre": "Caissez l'électronique et la métrologie",
+                  "texte": "À part, sur supports antivibratoires, à l'abri de l'humidité."
+                },
+                {
+                  "titre": "Purgez les circuits",
+                  "texte": "De fluides quand c'est possible, et obturez les entrées et sorties."
+                },
+                {
+                  "titre": "Calez sur le centre de gravité réel",
+                  "texte": "Pas sur le centre géométrique de la palette."
+                },
+                {
+                  "titre": "Identifiez chaque colis",
+                  "texte": "Avec le repère machine, le poids, le sens de levage et le contenu."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "Ajoutez un indicateur de choc ou d'inclinaison sur les équipements sensibles. Il coûte peu et il tranche une discussion d'assurance."
+            }
+          ]
+        },
+        {
+          "titre": "Étape 6 : le transport",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "Le transport se prépare avec la liste des colis, pas avec la liste des machines."
+            },
+            {
+              "type": "bento",
+              "colonnes": 2,
+              "items": [
+                {
+                  "titre": "Vérifiez le gabarit",
+                  "texte": "Hauteur, largeur, masse, et la nécessité d'un convoi exceptionnel."
+                },
+                {
+                  "titre": "Validez les itinéraires",
+                  "texte": "Et les points durs, ronds-points, ponts, passages sous ouvrage."
+                },
+                {
+                  "titre": "Alignez les assurances",
+                  "texte": "Sur la valeur de remplacement, pas sur la valeur comptable."
+                },
+                {
+                  "titre": "Calez l'ordre de chargement",
+                  "texte": "Sur l'ordre de déchargement souhaité au site d'arrivée."
+                },
+                {
+                  "titre": "Prévoyez la zone de dépose",
+                  "texte": "À l'arrivée, avec un sol capable de recevoir les charges."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "Point de contrôle : personne ne charge un camion avant que le plan de déchargement soit écrit."
+            }
+          ]
+        },
+        {
+          "titre": "Étape 7 : le remontage, l'alignement, les raccordements",
+          "blocs": [
+            {
+              "type": "photo",
+              "image": "/assets/web/team-duo.jpg"
+            },
+            {
+              "type": "p",
+              "texte": "Le remontage est l'étape où le temps se rattrape ou se perd définitivement."
+            },
+            {
+              "type": "h3",
+              "texte": "L'ordre d'intervention"
+            },
+            {
+              "type": "etapes",
+              "items": [
+                {
+                  "titre": "Pose et calage",
+                  "texte": "Sur les repères tracés, avec relevé par rapport aux références du bâtiment."
+                },
+                {
+                  "titre": "Mise à niveau et alignement",
+                  "texte": "Machine par machine puis ligne par ligne."
+                },
+                {
+                  "titre": "Raccordements fluides",
+                  "texte": "Mise en pression progressive, contrôle d'étanchéité."
+                },
+                {
+                  "titre": "Raccordements électriques",
+                  "texte": "Vérification des terres, des protections et des sens de rotation."
+                },
+                {
+                  "titre": "Rechargement des programmes",
+                  "texte": "Et des paramètres sauvegardés, en version identifiée."
+                },
+                {
+                  "titre": "Remise en service des sécurités",
+                  "texte": "Avant toute mise en mouvement."
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "texte": "L'alignement, le poste le plus sous-estimé"
+            },
+            {
+              "type": "p",
+              "texte": "**Une ligne mal alignée fonctionne, puis casse trois mois plus tard.** Les roulements, les accouplements et les convoyeurs paient la facture, loin du chantier, quand plus personne ne fait le lien."
+            },
+            {
+              "type": "p",
+              "texte": "Alignez avec un moyen de mesure, pas à l'œil. Relevez les valeurs, datez-les, gardez-les : elles serviront de référence au prochain contrôle."
+            }
+          ]
+        },
+        {
+          "titre": "Étape 8 : les essais et la remise en production",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "Les essais se font par paliers. Chaque palier a un critère de passage écrit à l'avance."
+            },
+            {
+              "type": "tableau",
+              "entetes": [
+                "Palier",
+                "Ce qu'on vérifie",
+                "Critère de passage"
+              ],
+              "lignes": [
+                [
+                  "**Essais à vide**",
+                  "Mouvements, sens, fins de course, sécurités",
+                  "Tous les arrêts d'urgence testés et tracés"
+                ],
+                [
+                  "**Essais en charge**",
+                  "Efforts, températures, pressions, bruit, vibrations",
+                  "Valeurs dans les plages constructeur"
+                ],
+                [
+                  "**Première série**",
+                  "Qualité produit, conformité, réglages",
+                  "Pièces conformes au contrôle qualité"
+                ],
+                [
+                  "**Montée en cadence**",
+                  "Débit, taux de rebut, micro-arrêts",
+                  "Cadence nominale tenue sur une durée représentative"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "**Le chantier n'est pas fini quand la machine démarre. Il est fini quand elle tient sa cadence.** C'est la clause à écrire dans le contrat, et le critère qui doit conditionner la réception."
+            },
+            {
+              "type": "p",
+              "texte": "Prévoyez une période d'accompagnement des opérateurs après le redémarrage. Un environnement neuf, des repères déplacés et des habitudes cassées produisent des erreurs que personne n'a anticipées."
+            }
+          ]
+        },
+        {
+          "titre": "Le rétroplanning",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "Ces repères sont indicatifs. Ils se resserrent pour une machine isolée et s'allongent pour un site complet."
+            },
+            {
+              "type": "duo",
+              "lignes": [
+                [
+                  "**J-90**",
+                  "Inventaire, cotations, relevé des deux sites, plan d'implantation validé"
+                ],
+                [
+                  "**J-60**",
+                  "Ordre de démontage arrêté, transport réservé, autorisations déposées, stocks tampons lancés"
+                ],
+                [
+                  "**J-30**",
+                  "Travaux du site d'arrivée engagés, plan de prévention signé, équipes constituées"
+                ],
+                [
+                  "**J-7**",
+                  "Repérage terminé, programmes sauvegardés en double, consignations préparées"
+                ],
+                [
+                  "**J0**",
+                  "Arrêt, consignation, dépose, chargement"
+                ],
+                [
+                  "**J+**",
+                  "Pose, alignement, raccordements, essais par paliers, montée en cadence"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "Règle de sécurité : tout ce qui peut être fait avant J0 est fait avant J0. Le planning se construit en remplissant d'abord la colonne amont."
+            }
+          ]
+        },
+        {
+          "titre": "Qui fait quoi",
+          "blocs": [
+            {
+              "type": "photo",
+              "image": "/assets/web/team-grind-close.jpg"
+            },
+            {
+              "type": "p",
+              "texte": "Un transfert échoue rarement par incompétence technique. Il échoue parce qu'une responsabilité n'était attribuée à personne."
+            },
+            {
+              "type": "tableau",
+              "entetes": [
+                "Rôle",
+                "Responsabilité",
+                "Point de vigilance"
+              ],
+              "lignes": [
+                [
+                  "**Direction de site**",
+                  "Arbitrage des dates et du budget, engagement client",
+                  "Doit trancher vite, sinon le chantier attend"
+                ],
+                [
+                  "**Chef de projet transfert**",
+                  "Phasage, coordination, suivi des écarts",
+                  "Un seul responsable de l'exécution, jamais deux"
+                ],
+                [
+                  "**Production**",
+                  "Stocks tampons, arrêt et reprise, formation opérateurs",
+                  "Souvent consultée trop tard"
+                ],
+                [
+                  "**Maintenance interne**",
+                  "Connaissance machine, réglages, historique",
+                  "Ressource rare, à protéger du quotidien pendant le chantier"
+                ],
+                [
+                  "**Prestataire technique**",
+                  "Dépose, transport, repose, raccordements, essais",
+                  "Doit fournir des comptes rendus écrits quotidiens"
+                ],
+                [
+                  "**HSE**",
+                  "Analyse de risque, plan de prévention, autorisations",
+                  "Doit être dans la boucle dès le relevé, pas à J-7"
+                ],
+                [
+                  "**Achats et juridique**",
+                  "Contrats, assurances, pénalités",
+                  "Vérifier qui porte le risque pendant le transport"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "Écrivez ce tableau avec des noms, pas des fonctions. Une case sans nom est un incident à venir."
+            }
+          ]
+        },
+        {
+          "titre": "Les autorisations et la sécurité",
+          "blocs": [
+            {
+              "type": "h3",
+              "texte": "Ce qui se prépare en amont"
+            },
+            {
+              "type": "bento",
+              "colonnes": 2,
+              "items": [
+                {
+                  "titre": "Plan de prévention",
+                  "texte": "Avec chaque entreprise extérieure, et protocole de sécurité pour le transport."
+                },
+                {
+                  "titre": "Analyse de risque",
+                  "texte": "Par phase, incluant le levage, la coactivité et le travail en hauteur."
+                },
+                {
+                  "titre": "Autorisations de voirie",
+                  "texte": "Et de convoi exceptionnel quand le gabarit l'impose."
+                },
+                {
+                  "titre": "Permis feu",
+                  "texte": "Pour les découpes et les travaux par point chaud."
+                },
+                {
+                  "titre": "Déclarations d'équipements",
+                  "texte": "Et vérifications réglementaires à reconduire sur le nouveau site."
+                },
+                {
+                  "titre": "Consignations",
+                  "texte": "Électriques, fluides et mécaniques, avec les attestations signées."
+                }
+              ]
+            },
+            {
+              "type": "h3",
+              "texte": "Ce qui se surveille pendant"
+            },
+            {
+              "type": "p",
+              "texte": "**La coactivité est le premier facteur d'accident sur un transfert.** Plusieurs métiers, des engins en mouvement, un site partiellement démonté et des repères habituels qui ont disparu."
+            },
+            {
+              "type": "p",
+              "texte": "Tenez un point sécurité quotidien, court, sur le terrain, avec toutes les entreprises présentes. Tracez les décisions."
+            }
+          ]
+        },
+        {
+          "titre": "Les huit points où les projets dérapent",
+          "blocs": [
+            {
+              "type": "etapes",
+              "items": [
+                {
+                  "titre": "Le site d'arrivée n'est pas prêt",
+                  "texte": "Le chantier attend le gros œuvre, et l'arrêt de production s'allonge sans que personne l'ait décidé."
+                },
+                {
+                  "titre": "Une cote fausse",
+                  "texte": "La machine ne passe pas la porte, et le démontage supplémentaire n'était ni prévu ni chiffré."
+                },
+                {
+                  "titre": "Le repérage bâclé",
+                  "texte": "Des heures perdues à retrouver quel câble va où, avec une ligne à l'arrêt en face."
+                },
+                {
+                  "titre": "Les programmes non sauvegardés",
+                  "texte": "Une version manquante, un automate à reprogrammer, une semaine perdue."
+                },
+                {
+                  "titre": "La connaissance partie avec les équipes",
+                  "texte": "Plus personne ne sait pourquoi ce réglage avait été fixé ainsi."
+                },
+                {
+                  "titre": "Le stock tampon sous-dimensionné",
+                  "texte": "Le moindre aléa se transforme en rupture de livraison."
+                },
+                {
+                  "titre": "L'alignement négligé",
+                  "texte": "La ligne redémarre, puis casse quelques mois plus tard, et personne ne fait le lien."
+                },
+                {
+                  "titre": "La réception prononcée trop tôt",
+                  "texte": "Le prestataire part, la cadence n'est pas là, et les réserves se négocient en position faible."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "titre": "La checklist finale",
+          "blocs": [
+            {
+              "type": "photo",
+              "image": "/assets/web/team-duo.jpg"
+            },
+            {
+              "type": "p",
+              "texte": "À passer avant de prononcer la réception."
+            },
+            {
+              "type": "p",
+              "texte": "**Préparation**"
+            },
+            {
+              "type": "ul2",
+              "items": [
+                "[ ] Nombre d'heures d'arrêt acceptable écrit et validé par la direction",
+                "[ ] Fiche machine complète et mesurée physiquement pour chaque équipement",
+                "[ ] Relevé d'accès fait sur les deux sites, chemin de sortie et d'entrée tracé",
+                "[ ] Plan d'implantation du site d'arrivée validé par la production",
+                "[ ] Ordre de démontage relu par celui qui remontera"
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "**Avant l'arrêt**"
+            },
+            {
+              "type": "ul2",
+              "items": [
+                "[ ] Repérage fait aux deux extrémités sur tout ce qui se débranche",
+                "[ ] Programmes, paramètres et recettes sauvegardés en double sur deux supports",
+                "[ ] Photos d'armoires, de raccordements et d'implantation archivées",
+                "[ ] Travaux du site d'arrivée terminés, énergies et utilités disponibles",
+                "[ ] Plan de prévention signé, analyses de risque diffusées, consignations préparées",
+                "[ ] Stocks tampons constitués, clients prévenus si nécessaire"
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "**Après la repose**"
+            },
+            {
+              "type": "ul2",
+              "items": [
+                "[ ] Alignements mesurés, relevés et archivés",
+                "[ ] Terres, protections et sens de rotation vérifiés",
+                "[ ] Étanchéité des circuits contrôlée sous pression",
+                "[ ] Sécurités machines testées une par une et tracées",
+                "[ ] Essais à vide, en charge et première série validés selon les critères écrits",
+                "[ ] Cadence nominale tenue sur une durée représentative",
+                "[ ] Dossier de fin de chantier remis : plans à jour, relevés, versions de programmes, réserves"
+              ]
+            }
+          ]
+        },
+        {
+          "titre": "FAQ",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "**Combien de temps faut-il prévoir pour un transfert industriel ?**"
+            },
+            {
+              "type": "p",
+              "texte": "La durée totale dépend du nombre de machines, de la distance et de l'état du site d'arrivée. La question utile est différente : combien d'heures votre production peut-elle rester arrêtée ? Construisez le planning à partir de cette contrainte, pas l'inverse."
+            },
+            {
+              "type": "p",
+              "texte": "**Peut-on continuer à produire pendant le transfert ?**"
+            },
+            {
+              "type": "p",
+              "texte": "En grande partie, si le projet est phasé tôt. Stocks constitués en amont, bascule ligne par ligne, démarrage de la première chaîne transférée pendant que la suivante se prépare. Les process critiques basculent en dernier."
+            },
+            {
+              "type": "p",
+              "texte": "**Faut-il un seul prestataire ou plusieurs ?**"
+            },
+            {
+              "type": "p",
+              "texte": "Plusieurs intervenants sont fréquents, un seul responsable de l'exécution est indispensable. Si personne ne porte la coordination, chaque retard devient le retard de quelqu'un d'autre et le planning glisse sans arbitrage."
+            },
+            {
+              "type": "p",
+              "texte": "**Que faire si la documentation technique est incomplète ?**"
+            },
+            {
+              "type": "p",
+              "texte": "Reconstituez avant de démonter, pas après. Photos systématiques, relevés de raccordement, extraction des programmes, notes des opérateurs sur les réglages. Un transfert est le dernier moment où cette information est encore accessible."
+            },
+            {
+              "type": "p",
+              "texte": "**Qui porte le risque pendant le transport ?**"
+            },
+            {
+              "type": "p",
+              "texte": "Cela se lit dans le contrat et dans la police d'assurance, jamais dans une discussion orale. Vérifiez la valeur assurée, la franchise, le périmètre couvert pendant le levage et les exclusions liées à l'emballage."
+            },
+            {
+              "type": "p",
+              "texte": "**Quand le chantier est-il terminé ?**"
+            },
+            {
+              "type": "p",
+              "texte": "Quand la ligne tient sa cadence nominale sur une durée représentative, avec un taux de rebut maîtrisé. Écrivez ce critère dans le contrat avant le début du chantier. Une réception prononcée au premier démarrage se paie ensuite en réserves difficiles à faire valoir."
+            }
+          ]
+        },
+        {
+          "titre": "Pour aller plus loin",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "Ce guide décrit la méthode. Si vous cherchez une équipe pour l'exécuter, voir la page [transfert industriel](/travaux-industriels/transfert-industriel/)."
+            },
+            {
+              "type": "p",
+              "texte": "**Besoin d'un regard extérieur avant d'arrêter votre date de bascule ?**"
+            },
+            {
+              "type": "p",
+              "texte": "[Faire chiffrer mon transfert industriel](/contact/) · 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30."
+            },
+            {
+              "type": "p",
+              "texte": "Nous vous rappelons dans l'heure."
+            }
+          ]
+        }
+      ],
+      "liees": [
+        {
+          "famille": "Guide",
+          "titre": "Comment choisir une entreprise de maintenance industrielle",
+          "href": "/guides/choisir-une-entreprise-de-maintenance/"
+        },
+        {
+          "famille": "Guide",
+          "titre": "Vos interlocuteurs",
+          "href": "/a-propos/equipe/"
+        }
+      ],
+      "formulaire": "cocon-guides-reussir-un-transfert-industriel-"
+    }
+  }
+}

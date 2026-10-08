@@ -6,9 +6,7 @@ import styles from "./BentoBesoins.module.css";
 export interface Besoin {
   /** Identifiant stable, sert de clé de liste et d'ancre du panneau déplié. */
   id: string;
-  /** Numéro affiché en monospace : « 01 ». */
-  num: string;
-  /** La phrase du visiteur : « Je n'arrive pas à tenir mon poste de nuit ». */
+  /** La phrase du visiteur : « J'ai besoin d'un renfort maintenance… ». */
   need: string;
   /** La réponse courte, sous la phrase. */
   answer: string;
@@ -21,20 +19,16 @@ export interface Besoin {
   cta: string;
   /** Destination du bouton principal. */
   href: string;
-  cadre: string;
   /**
-   * Jamais de délai chiffré d'intervention : voir le contrat de portage. Le
-   * champ est donc facultatif, et la ligne « Délai » disparaît quand la
-   * maquette n'offre aucune valeur portable. Mieux vaut pas de ligne qu'une
-   * ligne inventée.
+   * Lignes du tableau du panneau déplié. Facultatives : une valeur interdite
+   * de la maquette (« régie », « clé en main », délai chiffré) est retirée, et
+   * sa ligne avec, plutôt que remplacée par une valeur inventée.
    */
+  cadre?: string;
   delai?: string;
-  duree: string;
-  /** Styles portés par les données, recopiés tels quels. */
-  wrapCss: CSSProperties;
-  signCss: CSSProperties;
-  tagCss: CSSProperties;
-  imgCss: CSSProperties;
+  duree?: string;
+  /** Visuel du panneau déplié. */
+  img: string;
 }
 
 interface Proprietes {
@@ -72,31 +66,66 @@ const BOUTON_NU: CSSProperties = {
   textAlign: "left",
 };
 
+const NUMERO: CSSProperties = {
+  font: "600 11px ui-monospace,Menlo,monospace",
+  color: "var(--ink4)",
+};
+
+/*
+ * Les styles qui dépendent de l'ouverture, recopiés du getter `needs` de la
+ * maquette (thème clair). La tuile ouverte prend toute la largeur, en tête ;
+ * les six autres forment deux rangées pleines de trois.
+ */
+function cadreTuile(ouverte: boolean): CSSProperties {
+  return {
+    borderRadius: "var(--rad)",
+    overflow: "hidden",
+    backgroundColor: ouverte ? "var(--card)" : "rgba(255,255,255,.8)",
+    border: `1px solid ${ouverte ? "var(--gbd)" : "var(--line)"}`,
+    ...(ouverte && {
+      order: -1,
+      gridColumn: "1 / -1",
+      boxShadow: "0 1px 1px rgba(0,0,0,.04),0 26px 60px -36px rgba(0,0,0,.34)",
+    }),
+  };
+}
+
+function pastille(ouverte: boolean): CSSProperties {
+  return {
+    font: `600 ${ouverte ? "11px" : "10.5px"} var(--fb)`,
+    letterSpacing: ".08em",
+    textTransform: "uppercase",
+    whiteSpace: "nowrap",
+    padding: "5px 11px",
+    borderRadius: 999,
+    color: "var(--acc-ink)",
+    backgroundColor: "var(--acc-w)",
+    border: `1px solid ${ouverte ? "var(--acc)" : "transparent"}`,
+    ...(!ouverte && { alignSelf: "flex-start", marginTop: "auto" }),
+  };
+}
+
+function signe(ouverte: boolean): CSSProperties {
+  return {
+    font: "300 20px/1 var(--fb)",
+    color: "var(--ink3)",
+    flex: "none",
+    width: 20,
+    textAlign: "center",
+    display: "inline-block",
+    transition: "transform 220ms cubic-bezier(.2,.7,.2,1)",
+    transform: `rotate(${ouverte ? "45deg" : "0deg"})`,
+  };
+}
+
 export default function BentoBesoins({
   besoins = [],
   hrefChiffrer = "/contact/",
 }: Proprietes) {
-  /*
-   * La PREMIÈRE TUILE EST OUVERTE À L'ARRIVÉE, comme dans la maquette.
-   *
-   * Ce n'est pas un détail : le pavage tire tout son relief de ce grand panneau
-   * déplié au milieu de six tuiles fermées. Arrivé plat, avec sept cartes
-   * identiques, il perd sa raison d'être. C'est très exactement ce que le
-   * client a appelé « trop grossier ».
-   */
+  /* La PREMIÈRE TUILE EST OUVERTE À L'ARRIVÉE, comme dans la maquette : le
+     pavage tire son relief de ce grand panneau déplié au-dessus des six
+     tuiles fermées. */
   const [ouvert, setOuvert] = useState<string | null>(besoins[0]?.id ?? null);
-
-  /*
-   * `data-fill` est POSITIONNEL, pas lié à l'ouverture.
-   *
-   * Dans la maquette, il marque la dernière tuile FERMÉE, que la règle
-   * `.mg-bento > [data-fill="1"] { grid-column: 1 / -1 }` étale alors sur toute
-   * la largeur pour fermer proprement la dernière rangée. Le lier à l'ouverture
-   * laissait la grille se terminer sur deux trous au repos, et faisait se
-   * disputer deux règles sur la même tuile quand une s'ouvrait.
-   */
-  const idRemplissage =
-    [...besoins].reverse().find((b) => b.id !== ouvert)?.id ?? null;
 
   return (
     <section style={{ maxWidth: 1200, margin: "0 auto", padding: "56px 40px 0" }}>
@@ -138,7 +167,7 @@ export default function BentoBesoins({
         </div>
 
         <div
-          className={`mg-bento ${styles.grille}`}
+          className="mg-bento"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3,minmax(0,1fr))",
@@ -146,19 +175,22 @@ export default function BentoBesoins({
             gap: 14,
           }}
         >
-          {besoins.map((n) => {
+          {besoins.map((n, i) => {
             const estOuvert = ouvert === n.id;
+            const num = String(i + 1).padStart(2, "0");
             const idPanneau = `besoin-${n.id}-panneau`;
             const basculer = () => setOuvert(estOuvert ? null : n.id);
+            /* `data-fill` : la règle `.mg-bento > [data-fill="1"]` étale la
+               première tuile sur toute la largeur quand AUCUNE n'est ouverte,
+               pour que le pavage fermé ne finisse pas sur un trou. */
+            const remplit = !estOuvert && i === 0 && ouvert === null;
 
             return (
               <div
                 key={n.id}
-                /* data-open et data-fill portent la mise en page du bento,
-                   les règles .mg-bento de globals.css les ciblent. */
                 data-open={estOuvert ? "1" : "0"}
-                data-fill={n.id === idRemplissage ? "1" : "0"}
-                style={n.wrapCss}
+                data-fill={remplit ? "1" : "0"}
+                style={cadreTuile(estOuvert)}
               >
                 {!estOuvert && (
                   <button
@@ -183,19 +215,10 @@ export default function BentoBesoins({
                         marginBottom: 14,
                       }}
                     >
-                      <span
-                        style={{
-                          font: "600 11px ui-monospace,Menlo,monospace",
-                          color: "var(--ink4)",
-                        }}
-                      >
-                        {n.num}
+                      <span style={NUMERO}>
+                        <span>{num}</span>
                       </span>
-                      <span
-                        aria-hidden="true"
-                        className={styles.signe}
-                        style={n.signCss}
-                      >
+                      <span aria-hidden="true" style={signe(false)}>
                         +
                       </span>
                     </div>
@@ -206,7 +229,7 @@ export default function BentoBesoins({
                         color: "var(--ink)",
                       }}
                     >
-                      {n.need}
+                      <span>{n.need}</span>
                     </div>
                     <div
                       style={{
@@ -215,20 +238,16 @@ export default function BentoBesoins({
                         marginTop: 8,
                       }}
                     >
-                      {n.answer}
+                      <span>{n.answer}</span>
                     </div>
-                    <span style={n.tagCss}>{n.offer}</span>
+                    <span style={pastille(false)}>
+                      <span>{n.offer}</span>
+                    </span>
                   </button>
                 )}
 
                 {estOuvert && (
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      height: "100%",
-                    }}
-                  >
+                  <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
                     <button
                       type="button"
                       onClick={basculer}
@@ -243,15 +262,8 @@ export default function BentoBesoins({
                         padding: "24px 28px 18px",
                       }}
                     >
-                      <span
-                        style={{
-                          font: "600 11px ui-monospace,Menlo,monospace",
-                          color: "var(--ink4)",
-                          flex: "none",
-                          width: 20,
-                        }}
-                      >
-                        {n.num}
+                      <span style={{ ...NUMERO, flex: "none", width: 20 }}>
+                        <span>{num}</span>
                       </span>
                       <div style={{ minWidth: 0 }}>
                         <div
@@ -261,7 +273,7 @@ export default function BentoBesoins({
                             color: "var(--ink)",
                           }}
                         >
-                          {n.need}
+                          <span>{n.need}</span>
                         </div>
                         <div
                           style={{
@@ -270,15 +282,13 @@ export default function BentoBesoins({
                             marginTop: 5,
                           }}
                         >
-                          {n.answer}
+                          <span>{n.answer}</span>
                         </div>
                       </div>
-                      <span style={n.tagCss}>{n.offer}</span>
-                      <span
-                        aria-hidden="true"
-                        className={styles.signe}
-                        style={n.signCss}
-                      >
+                      <span style={pastille(true)}>
+                        <span>{n.offer}</span>
+                      </span>
+                      <span aria-hidden="true" style={signe(true)}>
                         +
                       </span>
                     </button>
@@ -292,16 +302,10 @@ export default function BentoBesoins({
                         gap: 26,
                         padding: "0 28px 26px",
                         alignItems: "start",
-                        flex: 1,
+                        flex: "1 1 0%",
                       }}
                     >
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          height: "100%",
-                        }}
-                      >
+                      <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
                         <p
                           style={{
                             font: "400 15px/1.7 var(--fb)",
@@ -310,14 +314,13 @@ export default function BentoBesoins({
                             maxWidth: "58ch",
                           }}
                         >
-                          {n.detail}
+                          <span>{n.detail}</span>
                         </p>
                         <ul
                           style={{
                             display: "grid",
                             gap: 8,
-                            marginBottom: 20,
-                            marginTop: 0,
+                            margin: "0 0 20px",
                             padding: 0,
                             listStyle: "none",
                           }}
@@ -332,24 +335,14 @@ export default function BentoBesoins({
                                 color: "var(--ink1)",
                               }}
                             >
-                              <span
-                                aria-hidden="true"
-                                style={{ color: "var(--acc)", flex: "none" }}
-                              >
+                              <span aria-hidden="true" style={{ color: "var(--acc)", flex: "none" }}>
                                 ✓
                               </span>
-                              {p}
+                              <span>{p}</span>
                             </li>
                           ))}
                         </ul>
-                        <div
-                          style={{
-                            display: "flex",
-                            gap: 10,
-                            flexWrap: "wrap",
-                            marginTop: "auto",
-                          }}
-                        >
+                        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: "auto" }}>
                           <a
                             href={n.href}
                             className={styles.ctaOffre}
@@ -366,7 +359,7 @@ export default function BentoBesoins({
                               transition: "filter var(--tr)",
                             }}
                           >
-                            {n.cta}
+                            <span>{n.cta}</span>
                           </a>
                           <a
                             href={hrefChiffrer}
@@ -389,7 +382,17 @@ export default function BentoBesoins({
                       </div>
 
                       <div>
-                        <div aria-hidden="true" style={n.imgCss} />
+                        <div
+                          aria-hidden="true"
+                          style={{
+                            height: 132,
+                            borderRadius: "var(--rad-s)",
+                            marginBottom: 12,
+                            background: `var(--ph) url('${n.img}') center/cover no-repeat`,
+                            filter: "saturate(var(--sat)) contrast(1.05)",
+                            opacity: "var(--ph-op)",
+                          }}
+                        />
                         <div
                           style={{
                             display: "grid",
@@ -400,20 +403,23 @@ export default function BentoBesoins({
                             overflow: "hidden",
                           }}
                         >
-                          <div style={CELLULE}>
-                            <span style={CLE}>Cadre</span>
-                            <span style={VALEUR}>{n.cadre}</span>
-                          </div>
-                          {n.delai && (
-                            <div style={CELLULE}>
-                              <span style={CLE}>Délai</span>
-                              <span style={VALEUR}>{n.delai}</span>
-                            </div>
+                          {(
+                            [
+                              ["Cadre", n.cadre],
+                              ["Délai", n.delai],
+                              ["Durée", n.duree],
+                            ] as const
+                          ).map(
+                            ([cle, valeur]) =>
+                              valeur && (
+                                <div key={cle} style={CELLULE}>
+                                  <span style={CLE}>{cle}</span>
+                                  <span style={VALEUR}>
+                                    <span>{valeur}</span>
+                                  </span>
+                                </div>
+                              ),
                           )}
-                          <div style={CELLULE}>
-                            <span style={CLE}>Durée</span>
-                            <span style={VALEUR}>{n.duree}</span>
-                          </div>
                         </div>
                       </div>
                     </div>

@@ -1,407 +1,281 @@
 {
   "url": "/ressources/articles/predictive-ou-corrective/",
-  "h1": "Maintenance prédictive ou corrective",
+  "titre_h1": "Maintenance prédictive ou corrective",
+  "retraits": [
+    "Plus de 200 clients nous font confiance, dont plus de 80 en contrat régulier."
+  ],
   "contenu": {
     "gabarit": "ressource",
-    "categorie": "Article",
-    "chapeau": "Maintenance prédictive ou corrective : ce choix décide de votre budget de maintenance, de la disponibilité de vos équipements et de la charge de votre équipe. Ce guide complet de nos [Ressources : Articles](/ressources/articles/) compare les deux stratégies de maintenance sur un seul critère : ce qu'elles coûtent réellement à l'entreprise.",
-    "rappel": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30, au 04 78 33 72 05. Le diagnostic maintenance est réalisé gratuitement.",
-    "cartes": [
+    "rayon": "articles",
+    "chapo": [
+      "Maintenance prédictive ou corrective : ce choix décide de votre budget de maintenance, de la disponibilité de vos équipements et de la charge de votre équipe. Ce guide complet de nos [Ressources : Articles](/ressources/articles/) compare les deux stratégies de maintenance sur un seul critère : ce qu'elles coûtent réellement à l'entreprise.",
+      "Migen fait de la maintenance industrielle tous les jours, en correctif d'urgence comme en préventif planifié. Cet article s'appuie sur le terrain : ce que la panne subie coûte, ce que la surveillance rapporte, et comment choisir équipement par équipement."
+    ],
+    "avant": [
       {
-        "surtitre": "Aller plus loin",
-        "titre": "Ia maintenance",
-        "lienHref": "/ressources/articles/ia-maintenance/",
-        "lienLibelle": "La page complète →"
+        "type": "encadre",
+        "texte": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30, par téléphone. Le diagnostic maintenance est réalisé gratuitement."
       }
     ],
-    "corps": [
+    "parties": [
       {
-        "type": "paragraphe",
-        "texte": "Migen fait de la maintenance industrielle tous les jours, en correctif d'urgence comme en préventif planifié. Cet article s'appuie sur le terrain : ce que la panne subie coûte, ce que la surveillance rapporte, et comment choisir équipement par équipement."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Deux stratégies, deux rapports à la panne",
-        "id": "deux-strategies-deux-rapports-a-la-panne"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "La différence tient en une phrase : la maintenance corrective répare une fois la défaillance arrivée, la maintenance prédictive planifie l'action avant la casse, sur la foi de données mesurées. Définition par définition, voici la famille complète des types de maintenance."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Deux stratégies, deux rapports à la panne",
+        "blocs": [
           {
-            "accroche": "Maintenance corrective",
-            "texte": "Elle consiste à réparer ou remplacer un composant défaillant une fois la panne là. Aucun investissement initial, une mise en route immédiate : on attend, et on subit le calendrier des défaillances."
+            "type": "paragraphe",
+            "texte": "La différence tient en une phrase : la maintenance corrective répare une fois la défaillance arrivée, la maintenance prédictive planifie l'action avant la casse, sur la foi de données mesurées. Définition par définition, voici la famille complète des types de maintenance."
           },
           {
-            "accroche": "Maintenance curative ou palliative",
-            "texte": "La curative traite le problème en profondeur, la palliative dépanne pour tenir jusqu'à la vraie réparation. Deux nuances du correctif, utiles à distinguer dans votre GMAO pour suivre ce que chaque machine coûte."
-          },
-          {
-            "accroche": "Maintenance préventive systématique",
-            "texte": "Des opérations d'entretien à calendrier fixe, que l'équipement en ait besoin ou non. Cette méthode permet d'éviter des pannes, au prix d'interventions de maintenance parfois inutiles."
-          },
-          {
-            "accroche": "Maintenance conditionnelle",
-            "texte": "L'action se déclenche quand un paramètre mesuré franchit un seuil : température, vibration, pression. On agit sur l'état réel, pas sur une date."
-          },
-          {
-            "accroche": "Maintenance prédictive",
-            "texte": "L'analyse des données dans le temps sert à prédire la défaillance et à anticiper les pannes avant les premiers signes visibles : capteurs utilisés en continu, historique, souvent machine learning. Contrairement à la corrective, la maintenance prédictive choisit son moment."
-          },
-          {
-            "accroche": "Le bon dosage",
-            "texte": "Aucune usine ne vit à 100 % en prédictif. Chaque type de maintenance a sa place : la bonne politique de maintenance combine les approches selon la criticité de chaque actif. Une approche adaptée par famille d'équipements : prévenir là où ça compte, réparer là où ça suffit."
+            "type": "puces",
+            "items": [
+              "**Maintenance corrective** : Elle consiste à réparer ou remplacer un composant défaillant une fois la panne là. Aucun investissement initial, une mise en route immédiate : on attend, et on subit le calendrier des défaillances.",
+              "**Maintenance curative ou palliative** : La curative traite le problème en profondeur, la palliative dépanne pour tenir jusqu'à la vraie réparation. Deux nuances du correctif, utiles à distinguer dans votre GMAO pour suivre ce que chaque machine coûte.",
+              "**Maintenance préventive systématique** : Des opérations d'entretien à calendrier fixe, que l'équipement en ait besoin ou non. Cette méthode permet d'éviter des pannes, au prix d'interventions de maintenance parfois inutiles.",
+              "**Maintenance conditionnelle** : L'action se déclenche quand un paramètre mesuré franchit un seuil : température, vibration, pression. On agit sur l'état réel, pas sur une date.",
+              "**Maintenance prédictive** : L'analyse des données dans le temps sert à prédire la défaillance et à anticiper les pannes avant les premiers signes visibles : capteurs utilisés en continu, historique, souvent machine learning. Contrairement à la corrective, la maintenance prédictive choisit son moment.",
+              "**Le bon dosage** : Aucune usine ne vit à 100 % en prédictif. Chaque type de maintenance a sa place : la bonne politique de maintenance combine les approches selon la criticité de chaque actif. Une approche adaptée par famille d'équipements : prévenir là où ça compte, réparer là où ça suffit."
+            ]
           }
         ]
       },
       {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Maintenance prédictive ou corrective : le comparatif économique",
-        "id": "maintenance-predictive-ou-corrective-le-comparat"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Comparer exige de tout compter : l'intervention, l'arrêt de production, les pièces, la trésorerie immobilisée. Poste par poste, l'avantage change de camp selon la criticité de l'équipement."
-      },
-      {
-        "type": "tableau",
-        "entetes": [
-          "Poste de coût",
-          "Maintenance corrective",
-          "Maintenance prédictive"
-        ],
-        "lignes": [
-          [
-            "Investissement initial",
-            "Aucun : on attend la panne",
-            "Capteurs, plateforme IoT, temps d'ingénierie"
-          ],
-          [
-            "Coût de l'intervention",
-            "Élevé : urgence, nuit, week-end",
-            "Maîtrisé : intervention planifiée en journée"
-          ],
-          [
-            "Arrêt de production",
-            "Subi, au pire moment",
-            "Choisi, calé sur un créneau creux"
-          ],
-          [
-            "Pièces détachées",
-            "Achat en urgence, transport express",
-            "Commande anticipée au prix normal"
-          ],
-          [
-            "Stock immobilisé",
-            "Gonflé par précaution",
-            "Réduit au nécessaire : la donnée remplace le stock de sécurité"
-          ],
-          [
-            "Durée de vie des équipements",
-            "Écourtée par les casses",
-            "Prolongée : l'usure est traitée à la source"
-          ],
-          [
-            "Retour sur investissement",
-            "Aucun : le budget est subi",
-            "Mesurable sur les actifs critiques"
-          ]
-        ]
-      },
-      {
-        "type": "citation",
-        "texte": "Le ROI de la maintenance prédictive ne se juge jamais capteur par capteur, mais sur un périmètre : une mesure isolée ne vaut rien, une ligne qui ne s'arrête plus vaut beaucoup. À ce propos, la durée d'immobilisation évitée fait l'essentiel du calcul."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Ce que coûte une panne subie",
-        "id": "ce-que-coute-une-panne-subie"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Le prix d'une défaillance ne s'arrête pas à la facture de réparation. Les coûts cachés font la vraie différence économique entre les deux approches de maintenance, et chacun finit par se découvrir tout seul, toujours trop tard."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Maintenance prédictive ou corrective : le comparatif économique",
+        "blocs": [
           {
-            "accroche": "Production perdue",
-            "texte": "Une ligne à l'arrêt coûte des milliers d'euros de l'heure dans beaucoup d'usines. Premier poste de perte, et il n'apparaît sur aucune facture."
+            "type": "paragraphe",
+            "texte": "Comparer exige de tout compter : l'intervention, l'arrêt de production, les pièces, la trésorerie immobilisée. Poste par poste, l'avantage change de camp selon la criticité de l'équipement."
           },
           {
-            "accroche": "Urgence payée au prix fort",
-            "texte": "Pièce défectueuse remplacée en express, majorations de nuit, déplacement d'urgence : le correctif subi cumule les surcoûts."
+            "type": "tableau",
+            "entetes": [
+              "Poste de coût",
+              "Maintenance corrective",
+              "Maintenance prédictive"
+            ],
+            "lignes": [
+              [
+                "Investissement initial",
+                "Aucun : on attend la panne",
+                "Capteurs, plateforme IoT, temps d'ingénierie"
+              ],
+              [
+                "Coût de l'intervention",
+                "Élevé : urgence, nuit, week-end",
+                "Maîtrisé : intervention planifiée en journée"
+              ],
+              [
+                "Arrêt de production",
+                "Subi, au pire moment",
+                "Choisi, calé sur un créneau creux"
+              ],
+              [
+                "Pièces détachées",
+                "Achat en urgence, transport express",
+                "Commande anticipée au prix normal"
+              ],
+              [
+                "Stock immobilisé",
+                "Gonflé par précaution",
+                "Réduit au nécessaire : la donnée remplace le stock de sécurité"
+              ],
+              [
+                "Durée de vie des équipements",
+                "Écourtée par les casses",
+                "Prolongée : l'usure est traitée à la source"
+              ],
+              [
+                "Retour sur investissement",
+                "Aucun : le budget est subi",
+                "Mesurable sur les actifs critiques"
+              ]
+            ]
           },
           {
-            "accroche": "Dégâts en cascade",
-            "texte": "Un roulement qui lâche abîme l'arbre, le réducteur, parfois le moteur et ses cartes électroniques. Réparer tard, c'est réparer plus, et payer deux fois."
-          },
-          {
-            "accroche": "Relation client dégradée",
-            "texte": "Retards de livraison, pénalités, commandes perdues : la panne se paie aussi en confiance, côté management comme côté commerce."
-          },
-          {
-            "accroche": "Équipe épuisée",
-            "texte": "Dépannages de nuit, week-ends sacrifiés, tension permanente. La spirale des heures supplémentaires use les ressources humaines et fait partir les meilleurs."
-          },
-          {
-            "accroche": "Information perdue",
-            "texte": "Chaque panne traitée dans l'urgence, sans prendre le temps de découvrir la cause, est une occasion manquée : la source du problème reste en place, la prévention des récidives n'existe pas."
+            "type": "encadre",
+            "texte": "Le ROI de la maintenance prédictive ne se juge jamais capteur par capteur, mais sur un périmètre : une mesure isolée ne vaut rien, une ligne qui ne s'arrête plus vaut beaucoup. À ce propos, la durée d'immobilisation évitée fait l'essentiel du calcul."
           }
         ]
       },
       {
-        "type": "citation",
-        "texte": "Ces coûts, votre entreprise les paie déjà, sans les voir sur une ligne budgétaire. [Passer du curatif subi à l'abonnement Zéro arrêt](/offres/zero-arret/) : notre offre de maintenance préventive planifiée, avec priorité en cas de panne, sur devis, engagement type 6 mois renouvelable."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "La maintenance prédictive, étape par étape",
-        "id": "la-maintenance-predictive-etape-par-etape"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Pas besoin d'un projet pharaonique pour adopter cette approche proactive. La mise en œuvre suit quatre étapes, et chacune produit déjà de la valeur."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Ce que coûte une panne subie",
+        "blocs": [
           {
-            "accroche": "Cibler les actifs critiques",
-            "texte": "Tout ne mérite pas un capteur. On classe les équipements par criticité : impact sur la production, coût de défaillance, historique tiré de la GMAO, gestion de la maintenance assistée par ordinateur."
+            "type": "paragraphe",
+            "texte": "Le prix d'une défaillance ne s'arrête pas à la facture de réparation. Les coûts cachés font la vraie différence économique entre les deux approches de maintenance, et chacun finit par se découvrir tout seul, toujours trop tard."
           },
           {
-            "accroche": "Mesurer l'état réel",
-            "texte": "Capteurs de vibration, de température, de pression, analyse d'huile, relevés d'intensité électrique. Les données utilisées remontent vers une plateforme IoT ou un simple logiciel de maintenance, selon la taille du site industriel."
+            "type": "puces",
+            "items": [
+              "**Production perdue** : Une ligne à l'arrêt coûte des milliers d'euros de l'heure dans beaucoup d'usines. Premier poste de perte, et il n'apparaît sur aucune facture.",
+              "**Urgence payée au prix fort** : Pièce défectueuse remplacée en express, majorations de nuit, déplacement d'urgence : le correctif subi cumule les surcoûts.",
+              "**Dégâts en cascade** : Un roulement qui lâche abîme l'arbre, le réducteur, parfois le moteur et ses cartes électroniques. Réparer tard, c'est réparer plus, et payer deux fois.",
+              "**Relation client dégradée** : Retards de livraison, pénalités, commandes perdues : la panne se paie aussi en confiance, côté management comme côté commerce.",
+              "**Équipe épuisée** : Dépannages de nuit, week-ends sacrifiés, tension permanente. La spirale des heures supplémentaires use les ressources humaines et fait partir les meilleurs.",
+              "**Information perdue** : Chaque panne traitée dans l'urgence, sans prendre le temps de découvrir la cause, est une occasion manquée : la source du problème reste en place, la prévention des récidives n'existe pas."
+            ]
           },
           {
-            "accroche": "Analyser et détecter",
-            "texte": "Des seuils d'alerte aux modèles de machine learning, l'analyse repère l'anomalie et la dégradation avant la casse. L'intelligence artificielle aide à identifier les signaux faibles, elle ne remplace pas l'œil expert du métier."
-          },
-          {
-            "accroche": "Planifier l'intervention",
-            "texte": "L'alerte devient un ordre de travail : pièce commandée, créneau choisi avec l'atelier, technicien préparé. La planification remplace l'imprévu, et la panne ne surprend plus personne."
-          }
-        ],
-        "ordonnee": true
-      },
-      {
-        "type": "titre",
-        "niveau": 3,
-        "texte": "Les outils qui portent la démarche",
-        "id": "les-outils-qui-portent-la-demarche"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Un principe avant tout achat : l'outil suit le besoin, jamais l'inverse. Trois briques couvrent l'essentiel, et l'actualité des technologies de mesure évolue vite : louer avant d'acheter reste un bon réflexe."
-      },
-      {
-        "type": "liste",
-        "items": [
-          {
-            "accroche": "La GMAO d'abord",
-            "texte": "Le logiciel de maintenance tient l'historique, les ordres de travail et les coûts par actif : une source de vérité unique pour toute l'activité maintenance, un historique propre pour optimiser les gammes. Certaines couvrent aussi le patrimoine immobilier, utile aux sites qui gèrent bâtiments et process ensemble."
-          },
-          {
-            "accroche": "Les capteurs ensuite",
-            "texte": "Vibration, température, pression, intensité électrique : chaque mesure, correctement utilisée, devient une source de données exploitable. Le développement se fait par paliers, en commençant par les machines critiques de l'atelier, car chaque process industriel a ses points sensibles."
-          },
-          {
-            "accroche": "La plateforme au besoin",
-            "texte": "Les plateformes IoT agrègent les signaux et déclenchent les alertes. Avant de signer, demandez une démo sur vos propres mesures, posez le calcul du ROI attendu, vérifiez la confidentialité de ce qui sort de l'usine, et faites valider l'ergonomie par un expert métier : c'est le moyen sûr de réduire durablement la part d'imprévu."
+            "type": "encadre",
+            "texte": "Ces coûts, votre entreprise les paie déjà, sans les voir sur une ligne budgétaire. [Passer du curatif subi à l'abonnement Zéro arrêt](/offres/zero-arret/) : notre offre de maintenance préventive planifiée, avec priorité en cas de panne, sur devis, engagement type 6 mois renouvelable."
           }
         ]
       },
       {
-        "type": "citation",
-        "texte": "La maintenance conditionnelle applique les mêmes mesures avec un déclenchement à seuil, sans modèle pour prédire la date de défaillance. Pour une PME, c'est souvent l'étape intermédiaire au meilleur rapport coût sur bénéfice : intervenir avant la casse, sans le prix d'un système complet de surveillance."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Un exemple concret : un moteur, deux histoires",
-        "id": "un-exemple-concret-un-moteur-deux-histoires"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Prenez un moteur d'entraînement sur une ligne critique. Le même roulement fatigue, deux organisations de maintenance en font deux histoires très différentes."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "La maintenance prédictive, étape par étape",
+        "blocs": [
           {
-            "accroche": "Scénario correctif",
-            "texte": "Le roulement lâche un vendredi soir. La ligne tombe en panne, l'astreinte met la nuit à découvrir le problème de fond, la pièce n'est pas en stock. Redémarrage deux jours plus tard : de la fabrication perdue, un transport express, un week-end d'équipe sacrifié, et une recherche de cause bâclée faute de temps."
+            "type": "paragraphe",
+            "texte": "Pas besoin d'un projet pharaonique pour adopter cette approche proactive. La mise en œuvre suit quatre étapes, et chacune produit déjà de la valeur."
           },
           {
-            "accroche": "Scénario prédictif",
-            "texte": "L'analyse de vibration signale l'anomalie et sa source probable plusieurs semaines plus tôt. Le remplacement est planifié sur un créneau creux, la pièce arrive au prix normal, le contrôle de remise en route confirme la réparation. Personne ne s'en souvient, et c'est le but."
+            "type": "etapes",
+            "items": [
+              "**Cibler les actifs critiques** : Tout ne mérite pas un capteur. On classe les équipements par criticité : impact sur la production, coût de défaillance, historique tiré de la GMAO, gestion de la maintenance assistée par ordinateur.",
+              "**Mesurer l'état réel** : Capteurs de vibration, de température, de pression, analyse d'huile, relevés d'intensité électrique. Les données utilisées remontent vers une plateforme IoT ou un simple logiciel de maintenance, selon la taille du site industriel.",
+              "**Analyser et détecter** : Des seuils d'alerte aux modèles de machine learning, l'analyse repère l'anomalie et la dégradation avant la casse. L'intelligence artificielle aide à identifier les signaux faibles, elle ne remplace pas l'œil expert du métier.",
+              "**Planifier l'intervention** : L'alerte devient un ordre de travail : pièce commandée, créneau choisi avec l'atelier, technicien préparé. La planification remplace l'imprévu, et la panne ne surprend plus personne."
+            ]
+          },
+          {
+            "type": "intertitre",
+            "texte": "Les outils qui portent la démarche"
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Un principe avant tout achat : l'outil suit le besoin, jamais l'inverse. Trois briques couvrent l'essentiel, et l'actualité des technologies de mesure évolue vite : louer avant d'acheter reste un bon réflexe."
+          },
+          {
+            "type": "puces",
+            "items": [
+              "**La GMAO d'abord** : Le logiciel de maintenance tient l'historique, les ordres de travail et les coûts par actif : une source de vérité unique pour toute l'activité maintenance, un historique propre pour optimiser les gammes. Certaines couvrent aussi le patrimoine immobilier, utile aux sites qui gèrent bâtiments et process ensemble.",
+              "**Les capteurs ensuite** : Vibration, température, pression, intensité électrique : chaque mesure, correctement utilisée, devient une source de données exploitable. Le développement se fait par paliers, en commençant par les machines critiques de l'atelier, car chaque process industriel a ses points sensibles.",
+              "**La plateforme au besoin** : Les plateformes IoT agrègent les signaux et déclenchent les alertes. Avant de signer, demandez une démo sur vos propres mesures, posez le calcul du ROI attendu, vérifiez la confidentialité de ce qui sort de l'usine, et faites valider l'ergonomie par un expert métier : c'est le moyen sûr de réduire durablement la part d'imprévu."
+            ]
+          },
+          {
+            "type": "encadre",
+            "texte": "La maintenance conditionnelle applique les mêmes mesures avec un déclenchement à seuil, sans modèle pour prédire la date de défaillance. Pour une PME, c'est souvent l'étape intermédiaire au meilleur rapport coût sur bénéfice : intervenir avant la casse, sans le prix d'un système complet de surveillance."
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "Sur ce type d'avarie, le temps de diagnostic pèse autant que la réparation elle-même, quelle que soit la source de l'alerte."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Les erreurs les plus fréquentes",
-        "id": "les-erreurs-les-plus-frequentes"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Le comparatif économique tourne court quand la stratégie de maintenance est mal posée. Six pièges reviennent dans presque toutes les usines, quelle que soit l'industrie."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Un exemple concret : un moteur, deux histoires",
+        "blocs": [
           {
-            "accroche": "Opposer les deux approches",
-            "texte": "Le but n'est pas de supprimer la maintenance corrective. Sur un équipement doublé et bon marché, réparer la panne reste la solution la moins coûteuse."
+            "type": "paragraphe",
+            "texte": "Prenez un moteur d'entraînement sur une ligne critique. Le même roulement fatigue, deux organisations de maintenance en font deux histoires très différentes."
           },
           {
-            "accroche": "Tout instrumenter d'un coup",
-            "texte": "Poser des capteurs partout gonfle l'investissement initial et le risque de projet, sans retour mesurable. On commence par les goulots pour optimiser chaque euro, puis on étend selon les résultats."
+            "type": "puces",
+            "items": [
+              "**Scénario correctif** : Le roulement lâche un vendredi soir. La ligne tombe en panne, l'astreinte met la nuit à découvrir le problème de fond, la pièce n'est pas en stock. Redémarrage deux jours plus tard : de la fabrication perdue, un transport express, un week-end d'équipe sacrifié, et une recherche de cause bâclée faute de temps.",
+              "**Scénario prédictif** : L'analyse de vibration signale l'anomalie et sa source probable plusieurs semaines plus tôt. Le remplacement est planifié sur un créneau creux, la pièce arrive au prix normal, le contrôle de remise en route confirme la réparation. Personne ne s'en souvient, et c'est le but."
+            ]
           },
           {
-            "accroche": "Ignorer la donnée existante",
-            "texte": "Une GMAO bien tenue révèle déjà les équipements défaillants, les pannes récurrentes, les coûts par machine. Beaucoup d'entreprises ont cette source de vérité sans l'utiliser."
-          },
-          {
-            "accroche": "Confondre prédictif et conditionnel",
-            "texte": "Le seuil déclenche, le modèle prédit : la différence est réelle. Vendre l'un pour l'autre nourrit les déceptions et les projets abandonnés."
-          },
-          {
-            "accroche": "Oublier l'humain",
-            "texte": "Un capteur n'a jamais réparé une machine, et une alerte sans technicien ne produit aucune action. Sans équipe formée au diagnostic et à la réparation, la technologie tourne à vide."
-          },
-          {
-            "accroche": "Piloter sans indicateurs",
-            "texte": "Temps moyen entre pannes, part de correctif, coût par équipement : sans suivi, impossible de prouver le ROI ni d'améliorer le plan de maintenance."
+            "type": "paragraphe",
+            "texte": "Sur ce type d'avarie, le temps de diagnostic pèse autant que la réparation elle-même, quelle que soit la source de l'alerte."
           }
         ]
       },
       {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Quelle stratégie pour quel équipement",
-        "id": "quelle-strategie-pour-quel-equipement"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "La bonne réponse se décide actif par actif, jamais en bloc. Trois questions suffisent : que coûte l'arrêt, la défaillance est-elle prévisible, que dit l'historique de maintenance ?"
-      },
-      {
-        "type": "tableau",
-        "entetes": [
-          "Situation",
-          "Stratégie adaptée",
-          "Pourquoi"
-        ],
-        "lignes": [
-          [
-            "Goulot de production, arrêt très coûteux",
-            "Prédictive ou conditionnelle",
-            "L'imprévu y coûte plus cher que la surveillance"
-          ],
-          [
-            "Équipement soumis à obligation légale",
-            "Préventive systématique",
-            "Le calendrier est imposé, la traçabilité aussi"
-          ],
-          [
-            "Machine standard à historique connu",
-            "Préventive ajustée sur données",
-            "L'entretien suit les conditions réelles d'utilisation"
-          ],
-          [
-            "Équipement doublé, remplacement bon marché",
-            "Corrective assumée",
-            "Surveiller coûterait plus cher que réparer"
-          ]
-        ]
-      },
-      {
-        "type": "titre",
-        "niveau": 3,
-        "texte": "Les indicateurs qui tranchent",
-        "id": "les-indicateurs-qui-tranchent"
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Les erreurs les plus fréquentes",
+        "blocs": [
           {
-            "accroche": "Temps moyen entre pannes",
-            "texte": "Le MTBF par actif désigne les équipements où le correctif ne passe plus. C'est la base du tri pour anticiper les remplacements, sur les données déjà présentes dans vos outils."
+            "type": "paragraphe",
+            "texte": "Le comparatif économique tourne court quand la stratégie de maintenance est mal posée. Six pièges reviennent dans presque toutes les usines, quelle que soit l'industrie."
           },
           {
-            "accroche": "Part de correctif",
-            "texte": "La proportion d'heures subies mesure la maturité du service maintenance. La faire baisser est le signe le plus efficace d'un préventif qui fonctionne."
-          },
-          {
-            "accroche": "Coût complet par actif",
-            "texte": "Pièces, main d'œuvre, arrêts : ce chiffre mesure l'impact réel de chaque machine, décide où investir pour réduire le risque, et où une politique différente s'impose."
+            "type": "puces",
+            "items": [
+              "**Opposer les deux approches** : Le but n'est pas de supprimer la maintenance corrective. Sur un équipement doublé et bon marché, réparer la panne reste la solution la moins coûteuse.",
+              "**Tout instrumenter d'un coup** : Poser des capteurs partout gonfle l'investissement initial et le risque de projet, sans retour mesurable. On commence par les goulots pour optimiser chaque euro, puis on étend selon les résultats.",
+              "**Ignorer la donnée existante** : Une GMAO bien tenue révèle déjà les équipements défaillants, les pannes récurrentes, les coûts par machine. Beaucoup d'entreprises ont cette source de vérité sans l'utiliser.",
+              "**Confondre prédictif et conditionnel** : Le seuil déclenche, le modèle prédit : la différence est réelle. Vendre l'un pour l'autre nourrit les déceptions et les projets abandonnés.",
+              "**Oublier l'humain** : Un capteur n'a jamais réparé une machine, et une alerte sans technicien ne produit aucune action. Sans équipe formée au diagnostic et à la réparation, la technologie tourne à vide.",
+              "**Piloter sans indicateurs** : Temps moyen entre pannes, part de correctif, coût par équipement : sans suivi, impossible de prouver le ROI ni d'améliorer le plan de maintenance."
+            ]
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "À l'issue de ce tri, le plan de maintenance se réécrit sur des faits : moins de visites là où tout va bien, plus de surveillance là où les pannes surviennent. C'est le moyen le plus court de réduire le budget de maintenance sans dégrader la fiabilité, et d'optimiser les fréquences de visite année après année."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Ce que cela implique pour votre organisation",
-        "id": "ce-que-cela-implique-pour-votre-organisation"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Changer de stratégie de maintenance n'est pas un achat de technologie : c'est une évolution du service, de ses processus et de ses compétences. Voici ce qui change, service par service."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Quelle stratégie pour quel équipement",
+        "blocs": [
           {
-            "accroche": "Le service maintenance évolue",
-            "texte": "Moins de pompiers, plus d'analystes : le technicien de maintenance lit des tendances, prépare ses interventions, documente chaque action. La gestion de la maintenance devient un processus de maintenance piloté, plus une suite d'urgences à subir."
+            "type": "paragraphe",
+            "texte": "La bonne réponse se décide actif par actif, jamais en bloc. Trois questions suffisent : que coûte l'arrêt, la défaillance est-elle prévisible, que dit l'historique de maintenance ?"
           },
           {
-            "accroche": "Les outils se connectent",
-            "texte": "GMAO, supervision, souvent l'ERP pour la planification des achats et des pièces, parfois le CRM côté service client. La donnée circule d'une source à l'autre au lieu de dormir, et le pilotage budgétaire y gagne un appui solide."
+            "type": "tableau",
+            "entetes": [
+              "Situation",
+              "Stratégie adaptée",
+              "Pourquoi"
+            ],
+            "lignes": [
+              [
+                "Goulot de production, arrêt très coûteux",
+                "Prédictive ou conditionnelle",
+                "L'imprévu y coûte plus cher que la surveillance"
+              ],
+              [
+                "Équipement soumis à obligation légale",
+                "Préventive systématique",
+                "Le calendrier est imposé, la traçabilité aussi"
+              ],
+              [
+                "Machine standard à historique connu",
+                "Préventive ajustée sur données",
+                "L'entretien suit les conditions réelles d'utilisation"
+              ],
+              [
+                "Équipement doublé, remplacement bon marché",
+                "Corrective assumée",
+                "Surveiller coûterait plus cher que réparer"
+              ]
+            ]
           },
           {
-            "accroche": "Le budget change de forme",
-            "texte": "Des dépenses subies et variables vers une part fixe, planifiée et lissée sur le cycle de vie des équipements. La direction y gagne de la visibilité, le service y gagne de la crédibilité."
+            "type": "intertitre",
+            "texte": "Les indicateurs qui tranchent"
           },
           {
-            "accroche": "Les compétences montent",
-            "texte": "Analyse de mesures, interprétation des tendances, recherche de cause : le développement de ces savoir-faire demande de la formation, de nouveaux réflexes, ou un renfort extérieur à contacter au bon moment."
+            "type": "puces",
+            "items": [
+              "**Temps moyen entre pannes** : Le MTBF par actif désigne les équipements où le correctif ne passe plus. C'est la base du tri pour anticiper les remplacements, sur les données déjà présentes dans vos outils.",
+              "**Part de correctif** : La proportion d'heures subies mesure la maturité du service maintenance. La faire baisser est le signe le plus efficace d'un préventif qui fonctionne.",
+              "**Coût complet par actif** : Pièces, main d'œuvre, arrêts : ce chiffre mesure l'impact réel de chaque machine, décide où investir pour réduire le risque, et où une politique différente s'impose."
+            ]
           },
           {
-            "accroche": "Le dialogue avec l'atelier change",
-            "texte": "L'exploitation n'appelle plus pour se plaindre d'une panne : elle reçoit un planning d'opérations choisies, sans arrêter l'activité au pire moment. La relation s'inverse, l'activité respire."
-          },
-          {
-            "accroche": "La preuve remplace l'opinion",
-            "texte": "Chaque euro investi se justifie par une mesure à améliorer d'un trimestre à l'autre : disponibilité, part de correctif, coût par actif, et chaque intervention laisse une mention datée dans l'historique. Le modèle économique du service devient lisible pour un directeur comme pour un contrôleur de gestion."
+            "type": "paragraphe",
+            "texte": "À l'issue de ce tri, le plan de maintenance se réécrit sur des faits : moins de visites là où tout va bien, plus de surveillance là où les pannes surviennent. C'est le moyen le plus court de réduire le budget de maintenance sans dégrader la fiabilité, et d'optimiser les fréquences de visite année après année."
           }
         ]
       },
       {
-        "type": "citation",
-        "texte": "Nos techniciens sont recrutés pour ce niveau d'exigence : 10 % des candidats retenus, après un entretien technique et comportemental dont les résultats vous sont partagés. Dans l'industrie, être capable de tenir un préventif qui progresse vaut mieux qu'un correctif qui se répète : c'est ce que nos experts installent chez plus de 80 clients réguliers, sites industriels de toute taille."
-      },
-      {
-        "type": "citation",
-        "texte": "[Demander mon diagnostic maintenance](/contact/)"
+        "titre": "Ce que cela implique pour votre organisation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Changer de stratégie de maintenance n'est pas un achat de technologie : c'est une évolution du service, de ses processus et de ses compétences. Voici ce qui change, service par service."
+          },
+          {
+            "type": "puces",
+            "items": [
+              "**Le service maintenance évolue** : Moins de pompiers, plus d'analystes : le technicien de maintenance lit des tendances, prépare ses interventions, documente chaque action. La gestion de la maintenance devient un processus de maintenance piloté, plus une suite d'urgences à subir.",
+              "**Les outils se connectent** : GMAO, supervision, souvent l'ERP pour la planification des achats et des pièces, parfois le CRM côté service client. La donnée circule d'une source à l'autre au lieu de dormir, et le pilotage budgétaire y gagne un appui solide.",
+              "**Le budget change de forme** : Des dépenses subies et variables vers une part fixe, planifiée et lissée sur le cycle de vie des équipements. La direction y gagne de la visibilité, le service y gagne de la crédibilité.",
+              "**Les compétences montent** : Analyse de mesures, interprétation des tendances, recherche de cause : le développement de ces savoir-faire demande de la formation, de nouveaux réflexes, ou un renfort extérieur à contacter au bon moment.",
+              "**Le dialogue avec l'atelier change** : L'exploitation n'appelle plus pour se plaindre d'une panne : elle reçoit un planning d'opérations choisies, sans arrêter l'activité au pire moment. La relation s'inverse, l'activité respire.",
+              "**La preuve remplace l'opinion** : Chaque euro investi se justifie par une mesure à améliorer d'un trimestre à l'autre : disponibilité, part de correctif, coût par actif, et chaque intervention laisse une mention datée dans l'historique. Le modèle économique du service devient lisible pour un directeur comme pour un contrôleur de gestion."
+            ]
+          },
+          {
+            "type": "encadre",
+            "texte": "Nos techniciens sont recrutés pour ce niveau d'exigence : 10 % des techniciens retenus, après un entretien technique et comportemental dont les résultats vous sont partagés. Dans l'industrie, être capable de tenir un préventif qui progresse vaut mieux qu'un correctif qui se répète : c'est ce que nos experts installent chez plus de 200 clients, sites industriels de toute taille."
+          }
+        ]
       }
     ],
     "questions": [
@@ -427,9 +301,30 @@
       },
       {
         "question": "Comment Migen intervient-il dans cette démarche ?",
-        "reponse": "Par les deux bouts : le dépannage et la réparation quand la panne est là, le contrat Zéro arrêt pour installer le préventif qui la fait reculer et optimiser la disponibilité. Plus de 120 clients nous font confiance, dont plus de 80 en contrat régulier. Le plus simple reste de contacter un chargé d'affaires au 04 78 33 72 05 : vous gardez un contact unique du diagnostic à la remise en route."
+        "reponse": "Par les deux bouts : le dépannage et la réparation quand la panne est là, le contrat Zéro arrêt pour installer le préventif qui la fait reculer et optimiser la disponibilité. Le plus simple reste de contacter un chargé d'affaires par téléphone : vous gardez un contact unique du diagnostic à la remise en route. ---"
+      }
+    ],
+    "minutes": 12,
+    "image": "/assets/web/ph-robots-solaire.jpg",
+    "aLire": [
+      {
+        "href": "/ressources/articles/cout-arret-de-production/",
+        "titre": "Coût d'un arrêt de production",
+        "minutes": 12,
+        "image": "/assets/web/ph-tuyaux.jpg"
+      },
+      {
+        "href": "/ressources/articles/digitalisation-maintenance/",
+        "titre": "Digitalisation maintenance",
+        "minutes": 11,
+        "image": "/assets/web/team-grind-impact.jpg"
+      },
+      {
+        "href": "/ressources/articles/gestion-des-dechets/",
+        "titre": "Gestion des déchets industriels",
+        "minutes": 8,
+        "image": "/assets/web/team-duo.jpg"
       }
     ]
-  },
-  "blocs_corpus": 46
+  }
 }

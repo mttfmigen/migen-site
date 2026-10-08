@@ -257,8 +257,11 @@ for (const interdit of [
   "5 agences",
   "Cinq agences",
   "cinq agences",
-  "200 clients",
-  "+200",
+  // « +200 clients », sans jamais préciser « réguliers » : règle validée par le
+  // client (design_handoff_migen_site/README.md). Ni la maquette ni de capture
+  // ne portent « +200 » sur cette page : il n'y est donc pas exigé.
+  "clients réguliers",
+  "80 réguliers",
   "sous 48",
   "sous 24",
   "45 min",

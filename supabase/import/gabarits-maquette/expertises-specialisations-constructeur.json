@@ -1,0 +1,273 @@
+{
+  "url": "/expertises/specialisations-constructeur/",
+  "titre_h1": "Automaticien industriel multimarques : plusieurs automates, une seule équipe",
+  "contenu": {
+    "gabarit": "domaine",
+    "pastille": "Expertises",
+    "chapeau": "Un automaticien qui arrive avec le bon atelier logiciel déjà installé, pour la marque qui est en défaut chez vous. Siemens, Schneider Electric, Allen Bradley, robotique, machines spéciales et commande numérique, y compris les versions anciennes encore en service.",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés.",
+    "appelBouton": "Demander une intervention",
+    "actions": [
+      {
+        "libelle": "Demander une intervention",
+        "href": "#besoin"
+      }
+    ],
+    "formulaireHeroTitre": "Demander une intervention",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
+      {
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, après entretien technique ET comportemental"
+      },
+      {
+        "valeur": "en continu et tous les jours",
+        "libelle": "Astreinte, pour les sites couverts"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      }
+    ],
+    "complementOffre": [
+      {
+        "texte": "Un équipement immobilisé maintenant se traite par le dépannage industriel."
+      }
+    ],
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "Votre parc mélange trois marques d'automates, et la seule personne capable de lire le code est en congés.",
+        "puces": [
+          {
+            "accroche": "Un généraliste découvre votre marque sur place.",
+            "texte": "Il ouvre le logiciel pour la première fois pendant que la ligne attend. Les heures perdues sont des heures de production."
+          },
+          {
+            "accroche": "Chaque constructeur a ses pièges.",
+            "texte": "Logiciel propriétaire, langages, versions incompatibles entre elles. Ce qui marche sur un Modicon ne se transpose pas sur un S7."
+          },
+          {
+            "accroche": "Le programme n'a jamais été sauvegardé.",
+            "texte": "La carte lâche, et il n'existe aucune version à jour du code à recharger."
+          },
+          {
+            "accroche": "L'automate est annoncé en fin de vie.",
+            "texte": "Pièces introuvables, et personne n'a préparé la migration. Elle se fera donc en urgence, au pire moment."
+          }
+        ],
+        "variante": "panneau-sombre"
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "Siemens, du diagnostic à la reprise de code",
+              "texte": "SIMATIC S7-300, S7-400, S7-1200 et S7-1500, TIA Portal, STEP 7, supervision WinCC."
+            },
+            "benefice": "Le technicien ouvre votre projet dès son arrivée au lieu de chercher la bonne version du logiciel."
+          },
+          {
+            "prestation": {
+              "accroche": "Schneider Electric sur toute la gamme",
+              "texte": "Modicon M221 à M580, Unity Pro, EcoStruxure, Zelio."
+            },
+            "benefice": "Un seul prestataire couvre le petit relais programmable et l'automate de sécurité de la ligne."
+          },
+          {
+            "prestation": {
+              "accroche": "Rockwell Automation",
+              "texte": "Les gammes Allen Bradley rencontrées chez nos clients, en agroalimentaire."
+            },
+            "benefice": "Plus besoin de faire venir un spécialiste d'une autre région pour cette partie du parc."
+          },
+          {
+            "prestation": {
+              "accroche": "Robotique industrielle",
+              "texte": "Cellules robotisées, axes pilotés, dialogue entre le contrôleur de ligne et le robot."
+            },
+            "benefice": "La cause est trouvée même quand elle est en dehors du bras, dans l'automate ou le réseau."
+          },
+          {
+            "prestation": {
+              "accroche": "Machines spéciales et commande numérique",
+              "texte": "Conditionnement, assemblage, usinage, manutention, des équipements souvent uniques et peu documentés."
+            },
+            "benefice": "Vos machines sans documentation cessent d'être des zones que personne n'ose toucher."
+          },
+          {
+            "prestation": {
+              "accroche": "Les ateliers logiciels anciens toujours maîtrisés y compris les versions encore en service dans l'industrie française.",
+              "texte": ""
+            },
+            "benefice": "Votre automate le plus ancien se dépanne au lieu de se remplacer en catastrophe."
+          },
+          {
+            "prestation": {
+              "accroche": "Vos automatismes sauvegardés et datés",
+              "texte": "API, variateurs, pupitres, chaque version archivée."
+            },
+            "benefice": "Le jour où une carte lâche, on recharge au lieu de tout réécrire."
+          },
+          {
+            "prestation": {
+              "accroche": "L'obsolescence traitée en projet",
+              "texte": "Étude, conception, reprogrammation, essais, chiffrés en parallèle du maintien de l'existant."
+            },
+            "benefice": "Vous décidez de migrer avec les coûts sous les yeux, pas sous la pression d'une panne."
+          },
+          {
+            "prestation": {
+              "accroche": "Vos standards internes respectés",
+              "texte": "Nous pouvons travailler avec votre intégrateur et vos règles de nommage plutôt que d'imposer les nôtres."
+            },
+            "benefice": "Votre équipe relit le code après notre passage sans avoir à réapprendre une convention."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Vous décrivez la panne",
+            "texte": "Marque, référence de l'automate, message affiché, moment du cycle. Quelques minutes au téléphone évitent un déplacement pour rien."
+          },
+          {
+            "titre": "Un technicien vous rappelle dans l'heure.",
+            "texte": "Vous savez rapidement si nous avons l'automaticien de cette marque, et lequel."
+          },
+          {
+            "titre": "L'automaticien arrive équipé",
+            "texte": "Ordinateur portable, câbles, licence et version du logiciel constructeur correspondant à votre installation."
+          },
+          {
+            "titre": "Nous cherchons la cause racine",
+            "texte": "Lecture du code, test des capteurs, contrôle des actionneurs, mesure des signaux, état du réseau de terrain."
+          },
+          {
+            "titre": "Nous réparons et remettons en service",
+            "texte": "Composant remplacé, sauvegarde rechargée, essais avec vos opérateurs jusqu'au retour à la cadence."
+          },
+          {
+            "titre": "Vous recevez la trace écrite",
+            "texte": "Code sauvegardé et daté, schéma corrigé, cause identifiée, points à surveiller au prochain passage."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
+            "texte": "L'astreinte la nuit, le week-end et les jours fériés couvre la nuit et le week-end sur les sites concernés."
+          },
+          {
+            "accroche": "Vos codes, vos recettes et vos données restent chez vous.",
+            "texte": "La confidentialité figure au contrat, elle ne repose pas sur des bonnes intentions."
+          },
+          {
+            "accroche": "La sécurité tracée avant l'intervention",
+            "texte": "Habilitations électriques à jour, démarche MASE, évaluation EcoVadis. Les attestations sont transmises avec chaque plan de prévention."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Un automaticien spécialisé SIEMENS affecté à temps plein, industrie près de Lyon",
+            "lienLibelle": "Étude de cas MERSEN",
+            "lienHref": "/preuves/mersen/",
+            "photo": "/assets/web/mq-1ef16ef335a6.jpg",
+            "texte": "Démarrage d'une nouvelle ligne de production, T2 et T3 2025."
+          },
+          {
+            "titre": "Maintenance d'un parc multimarques, pièces mécaniques de précision",
+            "lienLibelle": "Étude de cas VOIT",
+            "lienHref": "/preuves/voit-grand-est/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "texte": "Centres d'usinage, presses et commandes numériques, un technicien intégré à temps plein en 2025."
+          },
+          {
+            "titre": "Installation et mise en production d'un parc machine neuf, site automobile",
+            "lienLibelle": "Étude de cas EATON",
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "photo": "/assets/web/x-elec-cablage.jpg",
+            "texte": "Six techniciens aux compétences variées, mécanique, électricité et automatisme, depuis janvier 2023."
+          },
+          {
+            "titre": "Montage aux standards d'un constructeur d'équipements, partout en France",
+            "lienLibelle": "Étude de cas ORTHUS x WASHTEC",
+            "lienHref": "/preuves/orthus-washtec/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "texte": "Techniciens formés aux équipements du fabricant, raccordements mécaniques et électriques compris."
+          },
+          {
+            "titre": "Contrôle de chantier sur des projets d'automatisation logistique",
+            "lienLibelle": "Étude de cas ALSTEF Group",
+            "lienHref": "/preuves/alstef-group/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg",
+            "texte": "Plusieurs intervenants intégrés aux équipes, systèmes automatisés en aéroport, logistique et industrie."
+          },
+          {
+            "titre": "Réparer plutôt que remplacer, au budget d’une PME",
+            "lienLibelle": "Étude de cas Joint Lyonnais",
+            "lienHref": "/preuves/joint-lyonnais/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg",
+            "texte": ""
+          },
+          {
+            "titre": "Un renfort pour que le pain sorte chaque matin",
+            "lienLibelle": "Étude de cas La Panetière",
+            "lienHref": "/preuves/la-panetiere/",
+            "photo": "/assets/web/mq-056f3c250981.jpg",
+            "texte": ""
+          },
+          {
+            "titre": "Voir la dérive avant que l’équipement critique ne tombe",
+            "lienLibelle": "Étude de cas JTEKT",
+            "lienHref": "/preuves/jtekt/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg",
+            "texte": ""
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
+        "questions": [
+          {
+            "question": "Notre parc mélange plusieurs marques. Vous couvrez tout ?",
+            "reponse": "C'est le cas le plus fréquent, et c'est la raison d'être de cette page. Nous couvrons Siemens, Schneider Electric, les gammes Allen Bradley rencontrées chez nos clients, la robotique industrielle, les machines spéciales et la commande numérique. Décrivez votre parc au téléphone : nous vous disons quelles marques nous prenons en propre et lesquelles demandent un spécialiste supplémentaire. Vous n'avez pas à multiplier les prestataires pour un seul atelier."
+          },
+          {
+            "question": "Pouvez-vous reprendre un programme écrit par un autre prestataire ?",
+            "reponse": "Oui, c'est un cas très fréquent. Nous auditons l'existant, nous le documentons, puis nous le modifions proprement. Vous reprenez la main sur votre installation, avec une sauvegarde à jour. Vos codes restent votre propriété, la confidentialité figure au contrat."
+          },
+          {
+            "question": "Intervenez-vous sur des automates anciens ou obsolètes ?",
+            "reponse": "Oui. Nos équipes savent utiliser les ateliers logiciels de chaque marque, y compris les versions anciennes encore en service dans l'industrie française. Nous maintenons l'existant tant que c'est raisonnable, et nous chiffrons la migration en parallèle : étude, conception, reprogrammation, essais. Vous décidez avec les coûts sous les yeux. Un automate annoncé en fin de vie se remplace en projet, pas en urgence."
+          },
+          {
+            "question": "Qui intervient réellement sur nos machines ?",
+            "reponse": "Des techniciens salariés de Migen, évalués en entretien technique et comportemental, 10 % des techniciens retenus. Leurs habilitations électriques sont à jour pour la consignation, la mesure sous tension et l'intervention en armoire. Nous n'envoyons jamais une sortie d'école seule sur un site que personne ne connaît. L'autonomie se vérifie avant, pas chez vous."
+          },
+          {
+            "question": "Combien coûte l'intervention d'un automaticien ?",
+            "reponse": "Cela dépend du défaut, de l'équipement et de l'urgence. Le devis est chiffré au cas par cas, sans coefficient caché. Nous qualifions le besoin au téléphone, gratuitement, avant de chiffrer quoi que ce soit. Comparez toujours ce montant à celui d'une seule journée de ligne figée."
+          },
+          {
+            "question": "Couvrez-vous notre région ?",
+            "reponse": "Oui. Quatre agences, Lyon en siège, Montréal, Dubaï et Madrid, et dix hubs de techniciens à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Hors de ces villes, nos techniciens se déplacent : l'intervention n'est pas conditionnée à un hub à côté de votre site. Pour mettre un parc entier sous suivi, l'abonnement Zéro arrêt propose trois niveaux de couverture, chiffrés sur devis."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de sauvegarder vos automatismes avant la prochaine carte qui lâche ?",
+        "bouton": "Demander une intervention"
+      }
+    ]
+  }
+}

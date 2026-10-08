@@ -4,7 +4,9 @@
     border-color var(--tr),
     color var(--tr);
 }
+/* `!important`, comme les classes scp* de la maquette : le lien porte bordure
+   et couleur en style en ligne, qui battrait sinon la règle. */
 .lienMarques:hover {
-  border-color: var(--acc);
-  color: var(--acc);
+  border-color: var(--acc) !important;
+  color: var(--acc) !important;
 }

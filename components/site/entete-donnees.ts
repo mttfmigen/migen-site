@@ -210,15 +210,13 @@ export const CAS: CasClient[] = [
   },
 ];
 
-/* « +200 clients » dans la maquette. Le compte tenu par Migen est « plus de 120
-   clients, dont plus de 80 réguliers » : c'est la formulation mandatée, et un
-   chiffre public faux est un risque, pas un détail de copie. Corrigé partout où
-   il était rendu (en-tête, héros, bande de logos, frise, bande de chiffres). */
+/* Mot pour mot la maquette : « +200 clients », règle validée par le client
+   (« +200 clients, sans jamais préciser « réguliers » »). */
 export const CHIFFRES: Chiffre[] = [
-  { valeur: "+120", libelle: "clients" },
+  { valeur: "+200", libelle: "clients" },
   { valeur: "28", libelle: "études de cas", accent: true },
   { valeur: "4,6/5", libelle: "avis Google" },
-  { valeur: "10 %", libelle: "des candidats retenus" },
+  { valeur: "10 %", libelle: "des techniciens retenus" },
 ];
 
 /* --------------------------------------------------- panneau Ressources */
@@ -264,7 +262,7 @@ export const APROPOS_ENTREPRISE: LienDecrit[] = [
   {
     libelle: "Équipe & direction",
     description: "Les huit visages du siège, nom et e-mail",
-    href: "/equipe/",
+    href: "/a-propos/equipe/",
   },
   {
     libelle: "Partenaires",
@@ -365,7 +363,7 @@ export const TIROIR: SectionTiroir[] = [
     libelle: "Migen",
     description: "Qui nous sommes, où nous sommes",
     liens: [
-      { libelle: "Nos réalisations", href: "/realisations/" },
+      { libelle: "Nos réalisations", href: "/preuves/" },
       {
         libelle: "Notre sélection 10 %",
         href: "/ressources/process/selection-des-techniciens/",

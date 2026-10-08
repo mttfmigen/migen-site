@@ -1,199 +1,242 @@
 {
   "url": "/secteurs/nucleaire/",
-  "source": "dessin : maquette/accueil-rendu.html, gabarit isSecteur, lignes 6278 à 6364. texte : supabase/import/corpus-analyse.json, produit par scripts/produit-secteurs.mjs.",
+  "titre_h1": "Des techniciens habilités, prêts quand vous l’êtes.",
+  "source": "dessin : maquette/rendu/secteurs--nucleaire.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {
     "gabarit": "secteur",
-    "surtitre": "Secteur d'activité",
+    "pastille": "Maintenance nucléaire",
     "chapeau": "Notre périmètre est écrit : les équipements conventionnels et les utilités de vos sites, en appui de vos équipes et de vos titulaires. Dossier d'intervention, analyse de risques et gammes validés avant le premier geste.",
     "actions": [
       {
         "libelle": "Étudier mon besoin avec un chargé d'affaires",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperesSurtitre": "Nos repères dans le secteur",
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30, pour vérifier ce que nous pouvons couvrir. Astreinte la nuit, le week-end et les jours fériés en option sur le périmètre conventionnel.",
+    "formulaireHeroTitre": "Étudier mon besoin avec un chargé d'affaires",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
         "valeur": "0",
-        "libelle": "sous-traitance en cascade, les techniciens qui interviennent chez vous sont salariés Migen"
+        "libelle": "Sous-traitance en cascade, les techniciens qui interviennent chez vous sont salariés Migen"
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, organisation identique partout"
+        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, organisation identique partout"
       }
     ],
-    "enjeuxSurtitre": "Les enjeux du secteur",
-    "enjeuxTitre": "Un prestataire qui découvre vos exigences sur place fait perdre du temps à tout le monde, et fragilise votre démonstration de sûreté.",
-    "enjeux": [
+    "logosTitre": "Ils nous confient leurs sites industriels",
+    "logos": [
       {
-        "titre": "La préparation se joue avant l'accès, pas après.",
-        "texte": "Dossier d'intervention, analyse de risques, gammes validées. L'improvisation, ailleurs tolérée, est ici une faute."
+        "nom": "Eaton",
+        "src": "/assets/clients/mq-70bce765c1a2.svg"
       },
       {
-        "titre": "L'accès se gagne dossier par dossier.",
-        "texte": "Prérequis de formation, visites de santé au travail, autorisations, suivi individuel. Un dossier incomplet, c'est un technicien qui n'entre pas."
+        "nom": "Mersen",
+        "src": "/assets/clients/mq-eb9461b85e59.svg"
       },
       {
-        "titre": "La gestion documentaire fait partie du travail demandé",
-        "texte": ", au même niveau que la technique. Chaque opération, chaque mesure, chaque contrôle laisse une trace vérifiable."
+        "nom": "Suez",
+        "src": "/assets/clients/mq-89100525ef89.svg"
       },
       {
-        "titre": "Les profils qualifiés se font attendre.",
-        "texte": "Les postes restent ouverts des mois, et chaque exploitant se dispute les mêmes techniciens."
+        "nom": "Eiffage",
+        "src": "/assets/clients/mq-21daf7c60970.svg"
       },
       {
-        "titre": "Les renforts d'arrêt se réservent tôt.",
-        "texte": "Le planning d'un arrêt ne se décale pas, et les bons profils partent en premier."
+        "nom": "Ecocem",
+        "src": "/assets/clients/ecocem.png"
+      },
+      {
+        "nom": "Groupe Atlantic",
+        "src": "/assets/clients/groupe-atlantic.png",
+        "filtre": "invert(1) hue-rotate(180deg)"
+      },
+      {
+        "nom": "Tournaire",
+        "src": "/assets/clients/mq-7c01e175985e.png"
+      },
+      {
+        "nom": "Rector Lesage",
+        "src": "/assets/clients/rector-lesage.png"
+      },
+      {
+        "nom": "Joint Lyonnais",
+        "src": "/assets/clients/joint-lyonnais.png"
+      },
+      {
+        "nom": "Soprema",
+        "src": "/assets/clients/mq-127f9e03c53b.svg"
+      },
+      {
+        "nom": "WashTec",
+        "src": "/assets/clients/orthus-x-washtec.svg"
       }
     ],
-    "autresSurtitre": "Les autres secteurs",
-    "autres": [
-      {
-        "libelle": "Agroalimentaire",
-        "href": "/secteurs/agroalimentaire/"
-      },
-      {
-        "libelle": "Équipements logistiques",
-        "href": "/secteurs/logistique/"
-      },
-      {
-        "libelle": "Automobile",
-        "href": "/secteurs/automobile/"
-      },
-      {
-        "libelle": "Pharmaceutique",
-        "href": "/secteurs/pharmaceutique/"
-      },
-      {
-        "libelle": "Aéronautique",
-        "href": "/secteurs/aeronautique/"
-      },
-      {
-        "libelle": "Chimie",
-        "href": "/secteurs/chimie/"
-      },
-      {
-        "libelle": "Industrie lourde",
-        "href": "/secteurs/industrie-lourde/"
-      },
-      {
-        "libelle": "Industrie métallique",
-        "href": "/secteurs/industrie-metallique/"
-      },
-      {
-        "libelle": "Menuiserie industrielle",
-        "href": "/secteurs/menuiserie-industrielle/"
-      }
-    ],
-    "appelTitre": "Besoin de réserver des renforts conventionnels pour votre prochain arrêt ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
-      "libelle": "Parler à un chargé d'affaires",
-      "href": "#formulaire"
+    "appelBouton": "Étudier mon besoin avec un chargé d'affaires",
+    "problemePhoto": null,
+    "brefBande": "Besoin de renfort sur le périmètre conventionnel de votre site ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Étudier mon besoin avec un chargé d'affaires",
+      "href": "#besoin"
     },
-    "complement": [
+    "expertisesTitre": "Les expertises d’un environnement réglementé",
+    "expertisesChapeau": "Accès contrôlés, préparation longue, traçabilité complète : chaque geste est préparé en amont.",
+    "expertises": [
+      {
+        "titre": "Mécanique",
+        "texte": "Robinetterie, pompes et mécanismes, interventions préparées et tracées.",
+        "href": "/expertises/mecanique/",
+        "photo": "/assets/web/team-grind-front.jpg"
+      },
+      {
+        "titre": "Tuyauterie",
+        "texte": "Lignes et supports en zone réglementée.",
+        "href": "/expertises/tuyauterie/",
+        "photo": "/assets/web/ph-hero-raffinerie.jpg"
+      },
+      {
+        "titre": "Soudure",
+        "texte": "Soudures qualifiées, contrôlées avant remise en service.",
+        "href": "/expertises/soudure/",
+        "photo": "/assets/web/team-grind-close.jpg"
+      },
+      {
+        "titre": "Électrique",
+        "texte": "Consignations et interventions sous procédure.",
+        "href": "/expertises/electrique/",
+        "photo": "/assets/web/team-electric.jpg"
+      }
+    ],
+    "sections": [
+      {
+        "type": "probleme",
+        "variante": "rangee",
+        "punchline": "Un prestataire qui découvre vos exigences sur place fait perdre du temps à tout le monde, et fragilise votre démonstration de sûreté.",
+        "puces": [
+          {
+            "accroche": "La préparation se joue avant l'accès, pas après.",
+            "texte": "Dossier d'intervention, analyse de risques, gammes validées. L'improvisation, ailleurs tolérée, est ici une faute."
+          },
+          {
+            "accroche": "L'accès se gagne dossier par dossier.",
+            "texte": "Prérequis de formation, visites de santé au travail, autorisations, suivi individuel. Un dossier incomplet, c'est un technicien qui n'entre pas."
+          },
+          {
+            "accroche": "La gestion documentaire fait partie du travail demandé",
+            "texte": ", au même niveau que la technique. Chaque opération, chaque mesure, chaque contrôle laisse une trace vérifiable."
+          },
+          {
+            "accroche": "Les profils qualifiés se font attendre.",
+            "texte": "Les postes restent ouverts des mois, et chaque exploitant se dispute les mêmes techniciens."
+          },
+          {
+            "accroche": "Les renforts d'arrêt se réservent tôt.",
+            "texte": "Le planning d'un arrêt ne se décale pas, et les bons profils partent en premier."
+          }
+        ]
+      },
       {
         "type": "offre",
         "lignes": [
           {
             "prestation": {
               "accroche": "Un périmètre annoncé et tenu",
-              "texte": "équipements conventionnels et utilités, hors circuit primaire, matières radioactives et cycle du combustible."
+              "texte": "Équipements conventionnels et utilités, hors circuit primaire, matières radioactives et cycle du combustible."
             },
             "benefice": "Vous savez exactement ce que nous couvrons dès le premier échange. Nous ne promettons pas une expertise que nous n'avons pas."
           },
           {
             "prestation": {
               "accroche": "Préparation écrite avant l'accès",
-              "texte": "dossiers d'intervention, analyses de risques, gammes."
+              "texte": "Dossiers d'intervention, analyses de risques, gammes."
             },
             "benefice": "Votre surveillance n'a pas à rattraper une préparation absente. Le droit de faire se gagne sur pièces."
           },
           {
             "prestation": {
-              "accroche": "Dossiers d'accès constitués en amont",
-              "texte": "avec votre service en charge des accès : demandes, visites de santé au travail, formations prérequises."
+              "accroche": "Dossiers d'accès constitués en amont avec votre service en charge des accès : demandes, visites de santé au travail, formations prérequises."
             },
             "benefice": "Le technicien se présente avec un dossier complet. Pas de surprise à la barrière."
           },
           {
             "prestation": {
               "accroche": "Utilités et fluides industriels",
-              "texte": "air comprimé, pompage, ventilation, traitement d'eau, réseaux de tuyauterie auxiliaires."
+              "texte": "Air comprimé, pompage, ventilation, traitement d'eau, réseaux de tuyauterie auxiliaires."
             },
             "benefice": "Le socle silencieux dont dépend l'exploitation est suivi comme un équipement de production."
           },
           {
             "prestation": {
               "accroche": "Machines tournantes",
-              "texte": "pompes, moteurs, compresseurs, réducteurs. Alignement, équilibrage, roulements, remise en état mécanique."
+              "texte": "Pompes, moteurs, compresseurs, réducteurs. Alignement, équilibrage, roulements, remise en état mécanique."
             },
             "benefice": "La mécanique conventionnelle est prise par des gens dont c'est le métier quotidien."
           },
           {
             "prestation": {
               "accroche": "Électricité et automatismes hors sûreté",
-              "texte": "armoires, distribution, éclairage, supervision d'utilités, capteurs, variateurs, avec les consignations exigées."
+              "texte": "Armoires, distribution, éclairage, supervision d'utilités, capteurs, variateurs, avec les consignations exigées."
             },
             "benefice": "Les équipements périphériques cessent d'attendre une disponibilité de vos équipes internes."
           },
           {
             "prestation": {
               "accroche": "Manutention et levage",
-              "texte": "ponts, palans, appareils de levage, en lien avec vos contrôles réglementaires."
+              "texte": "Ponts, palans, appareils de levage, en lien avec vos contrôles réglementaires."
             },
             "benefice": "Les vérifications et l'entretien suivent votre calendrier réglementaire, pas le nôtre."
           },
           {
             "prestation": {
-              "accroche": "Tuyauterie conventionnelle",
-              "texte": "avec notre expertise en [tuyauterie industrielle](/expertises/tuyauterie/), modes opératoires exigés compris."
+              "accroche": "Tuyauterie conventionnelle avec notre expertise en [tuyauterie industrielle](/expertises/tuyauterie/), modes opératoires exigés compris."
             },
             "benefice": "Les réseaux auxiliaires sont traités sans empiéter sur le terrain de vos titulaires spécialisés."
           },
           {
             "prestation": {
-              "texte": "Exigence de la filière"
+              "accroche": "Exigence de la filière"
             },
             "benefice": "Notre engagement"
           },
           {
             "prestation": {
-              "texte": "Culture de sûreté"
+              "accroche": "Culture de sûreté"
             },
             "benefice": "Techniciens sensibilisés, attitude interrogative, écarts signalés sans délai"
           },
           {
             "prestation": {
-              "texte": "Accès au site"
+              "accroche": "Accès au site"
             },
             "benefice": "Prérequis, autorisations et visites médicales gérés en amont, selon vos modalités"
           },
           {
             "prestation": {
-              "texte": "Préparation d'intervention"
+              "accroche": "Préparation d'intervention"
             },
             "benefice": "Dossiers et analyses de risques rédigés, gammes respectées"
           },
           {
             "prestation": {
-              "texte": "Traçabilité"
+              "accroche": "Traçabilité"
             },
             "benefice": "Comptes rendus complets, disponibles pour vos audits et inspections"
           },
           {
             "prestation": {
-              "texte": "Surveillance"
+              "accroche": "Surveillance"
             },
             "benefice": "Acceptation pleine de vos contrôles et points d'arrêt"
           },
           {
             "prestation": {
-              "texte": "Environnement et déchets"
+              "accroche": "Environnement et déchets"
             },
             "benefice": "Tri et gestion selon les règles de l'installation, zéro sortie non contrôlée"
           }
@@ -204,27 +247,27 @@
         "etapes": [
           {
             "titre": "Qualification du périmètre",
-            "texte": "ce que nous savons tenir, et ce que nous ne prenons pas. La réponse arrive au premier échange, avant tout engagement."
+            "texte": "Ce que nous savons tenir, et ce que nous ne prenons pas. La réponse arrive au premier échange, avant tout engagement."
           },
           {
             "titre": "Constitution des dossiers d'accès",
-            "texte": "prérequis de formation, visites de santé au travail, autorisations, avec votre service en charge des accès."
+            "texte": "Prérequis de formation, visites de santé au travail, autorisations, avec votre service en charge des accès."
           },
           {
             "titre": "Préparation écrite",
-            "texte": "dossier d'intervention, analyse de risques, gammes validées, lecture des consignes du site."
+            "texte": "Dossier d'intervention, analyse de risques, gammes validées, lecture des consignes du site."
           },
           {
             "titre": "Périmètre d'essai",
-            "texte": "une première intervention cadrée sur un équipement conventionnel, pour juger le résultat sur pièces."
+            "texte": "Une première intervention cadrée sur un équipement conventionnel, pour juger le résultat sur pièces."
           },
           {
             "titre": "Montée en charge par paliers",
-            "texte": "un lot d'équipements confié en entretien, avec un [contrat de maintenance](/offres/zero-arret/) au périmètre écrit et des indicateurs suivis."
+            "texte": "Un lot d'équipements confié en entretien, avec un [contrat de maintenance](/offres/zero-arret/) au périmètre écrit et des indicateurs suivis."
           },
           {
             "titre": "Renfort durable",
-            "texte": "des techniciens Migen au sein de vos équipes, en [sous-traitance maintenance](/offres/residence/), pour les charges longues et les pics de projet."
+            "texte": "Des techniciens Migen au sein de vos équipes, en [sous-traitance maintenance](/offres/residence/), pour les charges longues et les pics de projet."
           }
         ]
       },
@@ -233,23 +276,17 @@
         "puces": [
           {
             "accroche": "Aucune sous-traitance en cascade",
-            "texte": "les techniciens qui interviennent chez vous sont salariés Migen, recrutés, formés et encadrés par nous. Chaque candidature vous est présentée avant le démarrage."
+            "texte": "Les techniciens qui interviennent chez vous sont salariés Migen, recrutés, formés et encadrés par nous. Chaque candidature vous est présentée avant le démarrage."
           },
           {
             "accroche": "Un périmètre honnête",
-            "texte": "la science du réacteur n'est pas notre métier, sa périphérie industrielle l'est. Nous préférons refuser un lot plutôt que promettre une expertise que nous n'avons pas."
+            "texte": "La science du réacteur n'est pas notre métier, sa périphérie industrielle l'est. Nous préférons refuser un lot plutôt que promettre une expertise que nous n'avons pas."
           },
           {
             "accroche": "L'acceptation pleine de votre surveillance",
-            "texte": "contrôles croisés, points d'arrêt, supervision par l'exploitant. Nous ne discutons jamais un contrôle, et nous signalons nos écarts nous-mêmes."
+            "texte": "Contrôles croisés, points d'arrêt, supervision par l'exploitant. Nous ne discutons jamais un contrôle, et nous signalons nos écarts nous-mêmes."
           }
         ]
-      },
-      {
-        "type": "cta",
-        "question": "Besoin de renfort sur le périmètre conventionnel de votre site ?",
-        "bouton": "Étudier mon besoin avec un chargé d'affaires",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
       },
       {
         "type": "preuves",
@@ -258,31 +295,54 @@
             "titre": "Électromécanicien habilité risque chimique RC1, mobilisé 6 mois sur la remise en état d'un site de traitement des eaux industrielles",
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
-            "lienHref": "/preuves/suez-remise-en-etat/"
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "photo": "/assets/web/mq-1ef16ef335a6.jpg"
           },
           {
             "titre": "Trois techniciens en renfort sur la maintenance préventive d'une centrale photovoltaïque, énergie",
             "texte": "septembre à novembre 2024, plus de six semaines",
             "lienLibelle": "Étude de cas EIFFAGE : partenariat",
-            "lienHref": "/preuves/eiffage/"
+            "lienHref": "/preuves/eiffage/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne de production neuve, matériaux",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
-            "lienHref": "/preuves/mersen/"
+            "lienHref": "/preuves/mersen/",
+            "photo": "/assets/web/x-elec-cablage.jpg"
           },
           {
-            "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, 7 jours sur 7",
+            "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage",
             "texte": "environnement thermique sévère, depuis octobre 2023",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
-            "lienHref": "/preuves/stellantis-fonderie-sept-fons/"
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "Renfort d'équipes de maintenance sur plusieurs sites de production",
             "texte": "depuis octobre 2024",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes",
-            "lienHref": "/preuves/groupe-atlantic/"
+            "lienHref": "/preuves/groupe-atlantic/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
+          },
+          {
+            "titre": "Un été entier sans trou dans la maintenance",
+            "lienLibelle": "Étude de cas OGF",
+            "lienHref": "/preuves/ogf-arret-estival/",
+            "photo": "/assets/web/mq-0699d4d92e7e.jpg"
+          },
+          {
+            "titre": "Deux usines accompagnées dans leur montée en cadence",
+            "lienLibelle": "Étude de cas Valeo",
+            "lienHref": "/preuves/valeo-usines/",
+            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg"
+          },
+          {
+            "titre": "Six techniciens pour faire démarrer un parc machines",
+            "lienLibelle": "Étude de cas Eaton",
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "photo": "/assets/web/mq-42237c1c8685.jpg"
           }
         ]
       },
@@ -314,6 +374,12 @@
             "reponse": "Oui : laboratoires, plateformes de recherche, entreprises sous-traitantes de la filière, plateformes utilisant des sources. Partout où les exigences de sûreté s'appliquent, hors environnement radioactif, notre façon de travailler a sa place. Le domaine militaire relève d'un autre cadre que le nôtre."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de réserver des renforts conventionnels pour votre prochain arrêt ?",
+        "bouton": "Parler à un chargé d'affaires",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
       }
     ]
   }

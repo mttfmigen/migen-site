@@ -1,326 +1,211 @@
 {
   "url": "/ressources/articles/organiser-service-maintenance/",
-  "h1": "Comment organiser un service de maintenance",
+  "titre_h1": "Comment organiser un service de maintenance",
   "contenu": {
     "gabarit": "ressource",
-    "categorie": "Article",
-    "chapeau": "*10 min de lecture*",
-    "rappel": "Vous voulez un état des lieux avant de réorganiser ? Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. Nous contacter : 04 78 33 72 05.",
-    "cartes": [
+    "rayon": "articles",
+    "chapo": [
+      "*10 min de lecture*",
+      "Le préventif saute, le correctif déborde, l'équipe compense en heures supplémentaires. Comment organiser un service de maintenance qui tienne la charge ? Cet article de nos [Ressources : Articles](/ressources/articles/) donne la méthode, celle que nos techniciens voient fonctionner sur le terrain."
+    ],
+    "avant": [
       {
-        "surtitre": "Aller plus loin",
-        "titre": "Optimisation de la maintenance",
-        "lienHref": "/ressources/articles/optimiser-la-maintenance/",
-        "lienLibelle": "La page complète →"
+        "type": "encadre",
+        "texte": "Vous voulez un état des lieux avant de réorganiser ? Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. Nous contacter : ."
       }
     ],
-    "corps": [
+    "parties": [
       {
-        "type": "paragraphe",
-        "texte": "Le préventif saute, le correctif déborde, l'équipe compense en heures supplémentaires. Comment organiser un service de maintenance qui tienne la charge ? Cet article de nos [Ressources : Articles](/ressources/articles/) donne la méthode, celle que nos techniciens voient fonctionner sur le terrain."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Un service de maintenance, définition utile",
-        "id": "un-service-de-maintenance-definition-utile"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "La définition ne se récite pas, elle se pilote. La fonction maintenance existe pour une chose : garder l'outil de production disponible, en sécurité, au juste coût, sur tout le cycle de vie des équipements."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Un service de maintenance, définition utile",
+        "blocs": [
           {
-            "accroche": "Maintenance préventive",
-            "texte": "Visites planifiées, contrôles, remplacements avant la casse. Elle prolonge la durée de vie des équipements et des installations, et protège la production."
+            "type": "paragraphe",
+            "texte": "La définition ne se récite pas, elle se pilote. La fonction maintenance existe pour une chose : garder l'outil de production disponible, en sécurité, au juste coût, sur tout le cycle de vie des équipements."
           },
           {
-            "accroche": "Maintenance corrective",
-            "texte": "Dépannage et recherche de panne quand l'incident survient. Réparer vite, puis éviter la récidive."
+            "type": "puces",
+            "items": [
+              "**Maintenance préventive** : Visites planifiées, contrôles, remplacements avant la casse. Elle prolonge la durée de vie des équipements et des installations, et protège la production.",
+              "**Maintenance corrective** : Dépannage et recherche de panne quand l'incident survient. Réparer vite, puis éviter la récidive.",
+              "**Amélioration continue** : Analyse des défaillances répétées, fiabilisation, modifications ciblées pour améliorer la fiabilité. Le service apprend de chaque arrêt.",
+              "**Sécurité et conformité** : Consignation, vérifications réglementaires, évaluation des risques, plan de prévention signé entre entreprise exploitante et entreprise extérieure. Une obligation légale avant d'être une ligne de budget.",
+              "**Pièces et outillage** : Stock minimal défini, magasin rangé, outillage à portée de main. Sans pièce disponible, pas de réparation rapide.",
+              "**Historique par équipement** : Chaque intervention enregistrée nourrit le dossier technique. Cette mémoire appartient au service, jamais à une seule tête."
+            ]
           },
           {
-            "accroche": "Amélioration continue",
-            "texte": "Analyse des défaillances répétées, fiabilisation, modifications ciblées pour améliorer la fiabilité. Le service apprend de chaque arrêt."
-          },
-          {
-            "accroche": "Sécurité et conformité",
-            "texte": "Consignation, vérifications réglementaires, évaluation des risques, plan de prévention signé entre entreprise exploitante et entreprise extérieure. Une obligation légale avant d'être une ligne de budget."
-          },
-          {
-            "accroche": "Pièces et outillage",
-            "texte": "Stock minimal défini, magasin rangé, outillage à portée de main. Sans pièce disponible, pas de réparation rapide."
-          },
-          {
-            "accroche": "Historique par équipement",
-            "texte": "Chaque intervention enregistrée nourrit le dossier technique. Cette mémoire appartient au service, jamais à une seule tête."
+            "type": "paragraphe",
+            "texte": "Un service de maintenance industrielle et le facility management partagent le même principe : sans organisation écrite, tout repose sur une ou deux personnes, et chaque absence devient un risque pour l'activité, dans tous les secteurs."
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "Un service de maintenance industrielle et le facility management partagent le même principe : sans organisation écrite, tout repose sur une ou deux personnes, et chaque absence devient un risque pour l'activité, dans tous les secteurs."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Poser les rôles avant de choisir les outils",
-        "id": "poser-les-roles-avant-de-choisir-les-outils"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Une maintenance efficace repose sur des rôles écrits, connus de tous, du technicien au responsable maintenance. L'organisation de la maintenance ne tient jamais sur un homme providentiel."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Poser les rôles avant de choisir les outils",
+        "blocs": [
           {
-            "accroche": "Le responsable maintenance",
-            "texte": "Il arbitre les priorités, défend le budget, rend compte à la direction. Un pilote unique, une stratégie lisible."
+            "type": "paragraphe",
+            "texte": "Une maintenance efficace repose sur des rôles écrits, connus de tous, du technicien au responsable maintenance. L'organisation de la maintenance ne tient jamais sur un homme providentiel."
           },
           {
-            "accroche": "Les méthodes",
-            "texte": "Préparation des interventions de maintenance, gammes, standards, base documentaire à jour avec la documentation technique de chaque équipement. Chaque gamme devient un document utile au quotidien, réutilisable par tous."
+            "type": "puces",
+            "items": [
+              "**Le responsable maintenance** : Il arbitre les priorités, défend le budget, rend compte à la direction. Un pilote unique, une stratégie lisible.",
+              "**Les méthodes** : Préparation des interventions de maintenance, gammes, standards, base documentaire à jour avec la documentation technique de chaque équipement. Chaque gamme devient un document utile au quotidien, réutilisable par tous.",
+              "**Les techniciens de terrain** : Diagnostic, dépannage, préventif, rapports d'intervention. Leur temps se protège : un technicien qui court partout ne fiabilise rien."
+            ]
           },
           {
-            "accroche": "Les techniciens de terrain",
-            "texte": "Diagnostic, dépannage, préventif, rapports d'intervention. Leur temps se protège : un technicien qui court partout ne fiabilise rien."
+            "type": "paragraphe",
+            "texte": "En pratique, dans un petit atelier, une même personne cumule plusieurs rôles. Peu importe l'organigramme : chaque tâche doit avoir un propriétaire, et chaque rôle ses droits d'accès dans les outils."
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "En pratique, dans un petit atelier, une même personne cumule plusieurs rôles. Peu importe l'organigramme : chaque tâche doit avoir un propriétaire, et chaque rôle ses droits d'accès dans les outils."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Comment organiser un service de maintenance, étape par étape",
-        "id": "comment-organiser-un-service-de-maintenance-etap"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "La mise en place suit un ordre précis, la mise en œuvre aussi. Le processus tient en six étapes, et chacune laisse un livrable écrit qui survit aux personnes."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Comment organiser un service de maintenance, étape par étape",
+        "blocs": [
           {
-            "accroche": "L'inventaire des équipements",
-            "texte": "Recenser chaque machine et chaque équipement, avec chaque élément de son dossier technique et son historique d'incidents, une page de synthèse par équipement. L'inventaire étant posé, la suite devient une affaire de priorités."
+            "type": "paragraphe",
+            "texte": "La mise en place suit un ordre précis, la mise en œuvre aussi. Le processus tient en six étapes, et chacune laisse un livrable écrit qui survit aux personnes."
           },
           {
-            "accroche": "La criticité",
-            "texte": "Classer les équipements selon l'impact d'une panne sur la production, la sécurité, la qualité. La criticité décide où va l'effort, et ce que l'on accepte de laisser en correctif."
-          },
-          {
-            "accroche": "Le plan de maintenance préventive",
-            "texte": "Définir les tâches de maintenance, les fréquences, les gammes, sur la base des préconisations constructeur et des heures d'utilisation réelles. Notre article [plan de maintenance](/ressources/articles/plan-de-maintenance/) détaille l'exercice."
-          },
-          {
-            "accroche": "Les flux de travail",
-            "texte": "Qui demande une intervention, qui priorise, qui exécute, qui clôture. Chaque ordre de travail porte la mention du niveau d'urgence : le tri cesse d'être une négociation."
-          },
-          {
-            "accroche": "La GMAO",
-            "texte": "Choisir un logiciel de gestion adapté à la taille de l'équipe, y enregistrer chaque opération dès le premier jour. Notre article [GMAO](/ressources/articles/gmao/) aide à cadrer ce choix."
-          },
-          {
-            "accroche": "Les indicateurs et la revue",
-            "texte": "Suivre le taux de disponibilité, le MTBF, les coûts par équipement. Une revue mensuelle courte corrige la trajectoire de l'activité et partage les résultats avec la direction."
-          }
-        ],
-        "ordonnee": true
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Le bon dosage entre préventif et correctif",
-        "id": "le-bon-dosage-entre-preventif-et-correctif"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Cent pour cent correctif épuise les équipes ; cent pour cent préventif ruine le budget. Le dosage se décide équipement par équipement, jamais en moyenne."
-      },
-      {
-        "type": "tableau",
-        "entetes": [
-          "Forme de maintenance",
-          "Quand elle s'impose",
-          "Ce qu'elle demande"
-        ],
-        "lignes": [
-          [
-            "Maintenance corrective",
-            "Équipements secondaires ou redondants",
-            "Pièces disponibles, recherche de panne outillée"
-          ],
-          [
-            "Préventive systématique",
-            "Usure connue, obligations réglementaires",
-            "Un planning tenu, de la discipline"
-          ],
-          [
-            "Maintenance conditionnelle",
-            "Dérive mesurable : vibration, température, intensité",
-            "Des relevés à fréquence régulière, des seuils définis"
-          ],
-          [
-            "Maintenance prédictive",
-            "Équipements critiques instrumentés",
-            "Des données fiables, des capteurs à connecter, une analyse des tendances"
-          ]
-        ]
-      },
-      {
-        "type": "citation",
-        "texte": "À titre d'exemple, la maintenance corrective garde sa place : sur un équipement secondaire, attendre la panne reste parfois la stratégie la plus rentable. Le problème n'est pas le correctif, c'est le correctif subi partout, sans recherche de cause."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "La GMAO et les indicateurs qui comptent",
-        "id": "la-gmao-et-les-indicateurs-qui-comptent"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "La gestion de la maintenance ne tient pas dans un carnet. Sans outil commun, pas de vue d'ensemble : l'information se perd dans les têtes et les tableurs isolés."
-      },
-      {
-        "type": "liste",
-        "items": [
-          {
-            "accroche": "La GMAO au quotidien",
-            "texte": "Demandes d'intervention, ordres de travail, historique, stock, droits d'accès par rôle, une application mobile pour saisir au pied de la machine. Des menus simples : une saisie qui dépasse deux minutes ne sera jamais réalisée en fin de poste."
-          },
-          {
-            "accroche": "Les données qui servent",
-            "texte": "Temps passé, cause de panne, pièces consommées, état depuis la dernière visite. Cinq données bien saisies valent mieux que cinquante champs remplis à moitié : le reste est inutile."
-          },
-          {
-            "accroche": "Le tableau de bord",
-            "texte": "MTBF, mean time between failures ; MTTR, mean time to repair ; taux de disponibilité ; coût par équipement. Quatre KPI suffisent pour piloter. Nos fiches [MTBF et MTTR](/ressources/fiches-techniques/mtbf-mttr/) et [indicateurs de maintenance](/ressources/fiches-techniques/indicateurs-maintenance/) donnent les formules."
+            "type": "etapes",
+            "items": [
+              "**L'inventaire des équipements** : Recenser chaque machine et chaque équipement, avec chaque élément de son dossier technique et son historique d'incidents, une page de synthèse par équipement. L'inventaire étant posé, la suite devient une affaire de priorités.",
+              "**La criticité** : Classer les équipements selon l'impact d'une panne sur la production, la sécurité, la qualité. La criticité décide où va l'effort, et ce que l'on accepte de laisser en correctif.",
+              "**Le plan de maintenance préventive** : Définir les tâches de maintenance, les fréquences, les gammes, sur la base des préconisations constructeur et des heures d'utilisation réelles. Notre article [plan de maintenance](/ressources/articles/plan-de-maintenance/) détaille l'exercice.",
+              "**Les flux de travail** : Qui demande une intervention, qui priorise, qui exécute, qui clôture. Chaque ordre de travail porte la mention du niveau d'urgence : le tri cesse d'être une négociation.",
+              "**La GMAO** : Choisir un logiciel de gestion adapté à la taille de l'équipe, y enregistrer chaque opération dès le premier jour. Notre article [GMAO](/ressources/articles/gmao/) aide à cadrer ce choix.",
+              "**Les indicateurs et la revue** : Suivre le taux de disponibilité, le MTBF, les coûts par équipement. Une revue mensuelle courte corrige la trajectoire de l'activité et partage les résultats avec la direction."
+            ]
           }
         ]
       },
       {
-        "type": "citation",
-        "texte": "Un tableur Office suffit pour démarrer seul ; un logiciel GMAO devient nécessaire dès que plusieurs personnes saisissent. Le principe ne change pas : tout enregistrer au même endroit, pour accéder à l'historique en quelques secondes, garantir la traçabilité et garder des données lisibles par tous, confidentialité comprise. Le site web du constructeur reste la source de référence pour la documentation de chaque équipement."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Un exemple concret, du correctif subi au préventif tenu",
-        "id": "un-exemple-concret-du-correctif-subi-au-preventi"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Cas type, rencontré des dizaines de fois : toute l'activité en correctif permanent, sans recherche de cause, une équipe épuisée, une direction qui ne voit que la facture. Voici le processus de maintenance remis debout."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Le bon dosage entre préventif et correctif",
+        "blocs": [
           {
-            "accroche": "Semaine 1, l'état des lieux",
-            "texte": "Inventaire, criticité, relevé des arrêts de la dernière année. L'historique montre où frappe le correctif, quels incidents reviennent, et ce que chaque heure perdue coûte à la production."
+            "type": "paragraphe",
+            "texte": "Cent pour cent correctif épuise les équipes ; cent pour cent préventif ruine le budget. Le dosage se décide équipement par équipement, jamais en moyenne."
           },
           {
-            "accroche": "Mois 1, les urgences cadrées",
-            "texte": "Un canal unique de demandes, des priorités affichées en management visuel, fin des interventions parachutées dans l'atelier. Le service reprend la main sur son temps."
+            "type": "tableau",
+            "entetes": [
+              "Forme de maintenance",
+              "Quand elle s'impose",
+              "Ce qu'elle demande"
+            ],
+            "lignes": [
+              [
+                "Maintenance corrective",
+                "Équipements secondaires ou redondants",
+                "Pièces disponibles, recherche de panne outillée"
+              ],
+              [
+                "Préventive systématique",
+                "Usure connue, obligations réglementaires",
+                "Un planning tenu, de la discipline"
+              ],
+              [
+                "Maintenance conditionnelle",
+                "Dérive mesurable : vibration, température, intensité",
+                "Des relevés à fréquence régulière, des seuils définis"
+              ],
+              [
+                "Maintenance prédictive",
+                "Équipements critiques instrumentés",
+                "Des données fiables, des capteurs à connecter, une analyse des tendances"
+              ]
+            ]
           },
           {
-            "accroche": "Mois 2 et 3, le préventif minimal",
-            "texte": "Dix équipements critiques, des gammes courtes, des fréquences réalistes. Mieux vaut un plan modeste tenu qu'un plan parfait abandonné."
-          },
-          {
-            "accroche": "Mois 6, la revue",
-            "texte": "Les défaillances répétitives passent en analyse de cause racine, les fréquences s'ajustent pour améliorer la disponibilité, le budget de la nouvelle année s'appuie sur des faits mesurés."
-          }
-        ],
-        "ordonnee": true
-      },
-      {
-        "type": "citation",
-        "texte": "Pas de magie dans ce scénario : des écrits, une revue régulière, une communication simple avec la production, de quoi maintenir le cap. Grâce au temps repris sur les urgences, le préventif se finance tout seul. Un conseil à ce propos : commencer petit, prouver, étendre. Le modèle se transpose à tout site."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Les erreurs qui reviennent le plus souvent",
-        "id": "les-erreurs-qui-reviennent-le-plus-souvent"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Le propos n'est pas de juger : les échecs d'organisation se ressemblent plus que les réussites. Six pièges, tous vus en pratique, tous évitables."
-      },
-      {
-        "type": "liste",
-        "items": [
-          {
-            "accroche": "Tout numériser d'abord",
-            "texte": "Une GMAO déployée avant les rôles et les flux enregistre le désordre. L'outil vient en troisième, jamais en premier."
-          },
-          {
-            "accroche": "Le plan copié du voisin",
-            "texte": "Chaque site a ses équipements, son environnement, son historique. Un modèle standard s'adapte aux conditions réelles, il ne se recopie pas."
-          },
-          {
-            "accroche": "L'homme-clé",
-            "texte": "Un service qui repose sur une seule mémoire s'arrête avec elle. L'accessibilité des gammes, des schémas et de l'historique protège toute l'équipe."
-          },
-          {
-            "accroche": "Le préventif sacrifié",
-            "texte": "Première victime des semaines chargées. Si le planning cède à chaque urgence, le correctif ne reculera jamais et la spirale continue."
-          },
-          {
-            "accroche": "Les indicateurs de façade",
-            "texte": "Mesurer sans décider ne sert à rien. Un tableau de bord efficace déclenche des actions ; un indicateur qui dérive sans réaction décore un rapport."
-          },
-          {
-            "accroche": "Faire seul trop longtemps",
-            "texte": "L'habitude rend aveugle. Un [audit de maintenance](/offres/audit-conseil-maintenance/) extérieur repère en quelques jours ce que la routine ne voit plus."
+            "type": "encadre",
+            "texte": "À titre d'exemple, la maintenance corrective garde sa place : sur un équipement secondaire, attendre la panne reste parfois la stratégie la plus rentable. Le problème n'est pas le correctif, c'est le correctif subi partout, sans recherche de cause."
           }
         ]
       },
       {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Ce que cela implique pour votre organisation",
-        "id": "ce-que-cela-implique-pour-votre-organisation"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Structurer le service, c'est choisir ce que l'entreprise porte en interne et ce qu'elle confie. Trois besoins reviennent dans chaque projet, avec une solution éprouvée pour chacun."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "La GMAO et les indicateurs qui comptent",
+        "blocs": [
           {
-            "accroche": "Des compétences à couvrir",
-            "texte": "Mécanique, électricité, automatisme, hydraulique, jusqu'à la maintenance en tuyauterie industrielle : peu d'équipes couvrent tout, et la formation interne prend du temps. La sous-traitance comble les creux sans embaucher."
+            "type": "paragraphe",
+            "texte": "La gestion de la maintenance ne tient pas dans un carnet. Sans outil commun, pas de vue d'ensemble : l'information se perd dans les têtes et les tableurs isolés."
           },
           {
-            "accroche": "De la continuité",
-            "texte": "Congés, absences, départs : un poste vacant se paie en arrêts. Un technicien Migen en [résidence](/offres/residence/) tient le poste pour assurer la continuité, sans manager un métier qui n'est pas le vôtre, avec remplacement organisé."
+            "type": "puces",
+            "items": [
+              "**La GMAO au quotidien** : Demandes d'intervention, ordres de travail, historique, stock, droits d'accès par rôle, une application mobile pour saisir au pied de la machine. Des menus simples : une saisie qui dépasse deux minutes ne sera jamais réalisée en fin de poste.",
+              "**Les données qui servent** : Temps passé, cause de panne, pièces consommées, état depuis la dernière visite. Cinq données bien saisies valent mieux que cinquante champs remplis à moitié : le reste est inutile.",
+              "**Le tableau de bord** : MTBF, mean time between failures ; MTTR, mean time to repair ; taux de disponibilité ; coût par équipement. Quatre KPI suffisent pour piloter. Nos fiches [MTBF et MTTR](/ressources/fiches-techniques/mtbf-mttr/) et [indicateurs de maintenance](/ressources/fiches-techniques/indicateurs-maintenance/) donnent les formules."
+            ]
           },
           {
-            "accroche": "Un cadre écrit",
-            "texte": "Préventif planifié, priorité en cas de panne, astreinte 24/24 et 7/7 en option : notre [contrat de maintenance](/offres/zero-arret/) Zéro arrêt pose le périmètre, sur devis."
+            "type": "encadre",
+            "texte": "Un tableur Office suffit pour démarrer seul ; un logiciel GMAO devient nécessaire dès que plusieurs personnes saisissent. Le principe ne change pas : tout enregistrer au même endroit, pour accéder à l'historique en quelques secondes, garantir la traçabilité et garder des données lisibles par tous, confidentialité comprise. Le site web du constructeur reste la source de référence pour la documentation de chaque équipement."
           }
         ]
       },
       {
-        "type": "citation",
-        "texte": "Nos techniciens sont évalués en entretien technique et comportemental, 10 % des candidats sont retenus, et les résultats d'évaluation vous sont présentés. Pour nous contacter : 04 78 33 72 05."
+        "titre": "Un exemple concret, du correctif subi au préventif tenu",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Cas type, rencontré des dizaines de fois : toute l'activité en correctif permanent, sans recherche de cause, une équipe épuisée, une direction qui ne voit que la facture. Voici le processus de maintenance remis debout."
+          },
+          {
+            "type": "etapes",
+            "items": [
+              "**Semaine 1, l'état des lieux** : Inventaire, criticité, relevé des arrêts de la dernière année. L'historique montre où frappe le correctif, quels incidents reviennent, et ce que chaque heure perdue coûte à la production.",
+              "**Mois 1, les urgences cadrées** : Un canal unique de demandes, des priorités affichées en management visuel, fin des interventions parachutées dans l'atelier. Le service reprend la main sur son temps.",
+              "**Mois 2 et 3, le préventif minimal** : Dix équipements critiques, des gammes courtes, des fréquences réalistes. Mieux vaut un plan modeste tenu qu'un plan parfait abandonné.",
+              "**Mois 6, la revue** : Les défaillances répétitives passent en analyse de cause racine, les fréquences s'ajustent pour améliorer la disponibilité, le budget de la nouvelle année s'appuie sur des faits mesurés."
+            ]
+          },
+          {
+            "type": "encadre",
+            "texte": "Pas de magie dans ce scénario : des écrits, une revue régulière, une communication simple avec la production, de quoi maintenir le cap. Grâce au temps repris sur les urgences, le préventif se finance tout seul. Un conseil à ce propos : commencer petit, prouver, étendre. Le modèle se transpose à tout site."
+          }
+        ]
       },
       {
-        "type": "paragraphe",
-        "texte": "Cette FAQ condense les questions posées avant de lancer la démarche."
+        "titre": "Les erreurs qui reviennent le plus souvent",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Le propos n'est pas de juger : les échecs d'organisation se ressemblent plus que les réussites. Six pièges, tous vus en pratique, tous évitables."
+          },
+          {
+            "type": "puces",
+            "items": [
+              "**Tout numériser d'abord** : Une GMAO déployée avant les rôles et les flux enregistre le désordre. L'outil vient en troisième, jamais en premier.",
+              "**Le plan copié du voisin** : Chaque site a ses équipements, son environnement, son historique. Un modèle standard s'adapte aux conditions réelles, il ne se recopie pas.",
+              "**L'homme-clé** : Un service qui repose sur une seule mémoire s'arrête avec elle. L'accessibilité des gammes, des schémas et de l'historique protège toute l'équipe.",
+              "**Le préventif sacrifié** : Première victime des semaines chargées. Si le planning cède à chaque urgence, le correctif ne reculera jamais et la spirale continue.",
+              "**Les indicateurs de façade** : Mesurer sans décider ne sert à rien. Un tableau de bord efficace déclenche des actions ; un indicateur qui dérive sans réaction décore un rapport.",
+              "**Faire seul trop longtemps** : L'habitude rend aveugle. Un [audit de maintenance](/offres/audit-conseil-maintenance/) extérieur repère en quelques jours ce que la routine ne voit plus."
+            ]
+          }
+        ]
       },
       {
-        "type": "citation",
-        "texte": "[Demander un diagnostic maintenance](/contact/)"
+        "titre": "Ce que cela implique pour votre organisation",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Structurer le service, c'est choisir ce que l'entreprise porte en interne et ce qu'elle confie. Trois besoins reviennent dans chaque projet, avec une solution éprouvée pour chacun."
+          },
+          {
+            "type": "puces",
+            "items": [
+              "**Des compétences à couvrir** : Mécanique, électricité, automatisme, hydraulique, jusqu'à la maintenance en tuyauterie industrielle : peu d'équipes couvrent tout, et la formation interne prend du temps. La sous-traitance comble les creux sans embaucher.",
+              "**De la continuité** : Congés, absences, départs : un poste vacant se paie en arrêts. Un technicien Migen en [résidence](/offres/residence/) tient le poste pour assurer la continuité, sans manager un métier qui n'est pas le vôtre, avec remplacement organisé.",
+              "**Un cadre écrit** : Préventif planifié, priorité en cas de panne, astreinte la nuit, le week-end et les jours fériés en option : notre [contrat de maintenance](/offres/zero-arret/) Zéro arrêt pose le périmètre, sur devis."
+            ]
+          },
+          {
+            "type": "encadre",
+            "texte": "Nos techniciens sont évalués en entretien technique et comportemental, 10 % des techniciens sont retenus, et les résultats d'évaluation vous sont présentés. Pour nous contacter : ."
+          }
+        ]
       }
     ],
     "questions": [
@@ -346,9 +231,30 @@
       },
       {
         "question": "Combien de temps avant des résultats mesurables ?",
-        "reponse": "Les premières semaines calment le flux d'urgences ; le taux de rendement remonte après quelques mois de préventif tenu, une fois que le gros du retard a été absorbé, et l'efficacité finit par se voir dans les chiffres. Beaucoup de sites calent la revue annuelle sur septembre, 2026 compris, avant le budget. La dernière étape, l'amélioration continue, ne s'arrête jamais : chaque revue ajuste les fréquences pour optimiser le préventif et réduire les coûts. Nos articles de blog détaillent chaque indicateur."
+        "reponse": "Les premières semaines calment le flux d'urgences ; le taux de rendement remonte après quelques mois de préventif tenu, une fois que le gros du retard a été absorbé, et l'efficacité finit par se voir dans les chiffres. Beaucoup de sites calent la revue annuelle sur septembre, 2026 compris, avant le budget. La dernière étape, l'amélioration continue, ne s'arrête jamais : chaque revue ajuste les fréquences pour optimiser le préventif et réduire les coûts. Nos articles de blog détaillent chaque indicateur. ---"
+      }
+    ],
+    "minutes": 9,
+    "image": "/assets/web/ph-tuyaux.jpg",
+    "aLire": [
+      {
+        "href": "/ressources/articles/cout-arret-de-production/",
+        "titre": "Coût d'un arrêt de production",
+        "minutes": 12,
+        "image": "/assets/web/ph-tuyaux.jpg"
+      },
+      {
+        "href": "/ressources/articles/digitalisation-maintenance/",
+        "titre": "Digitalisation maintenance",
+        "minutes": 11,
+        "image": "/assets/web/team-grind-impact.jpg"
+      },
+      {
+        "href": "/ressources/articles/gestion-des-dechets/",
+        "titre": "Gestion des déchets industriels",
+        "minutes": 8,
+        "image": "/assets/web/team-duo.jpg"
       }
     ]
-  },
-  "blocs_corpus": 42
+  }
 }

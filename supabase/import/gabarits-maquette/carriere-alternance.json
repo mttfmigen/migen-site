@@ -13,7 +13,11 @@
    ],
    "chiffre": {
     "valeur": "10 %",
-    "texte": "des candidats retenus, après un test technique et un entretien"
+    "texte": "des techniciens retenus, après un test technique et un entretien"
+   },
+   "photo": {
+    "src": "/assets/web/mq-2a6115ec9fe0.jpg",
+    "alt": "Technicien migen en intervention"
    }
   },
   "sections": [
@@ -26,7 +30,7 @@
      },
      {
       "valeur": "10 %",
-      "texte": "des candidats retenus après évaluation"
+      "texte": "des techniciens retenus après évaluation"
      },
      {
       "valeur": "4 agences",
@@ -375,7 +379,8 @@
     "items": [
      {
       "libelle": "Migen recrutement",
-      "href": "/carriere/"
+      "href": "/carriere/",
+      "photo": "/assets/web/mq-056f3c250981.jpg"
      }
     ]
    }

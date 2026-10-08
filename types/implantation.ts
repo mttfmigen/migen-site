@@ -1,135 +1,138 @@
 /**
- * Forme du contenu des pages de VILLE et de DÉPARTEMENT, sous `/implantations/`.
+ * Forme du contenu des pages filles de `/implantations/`, villes et
+ * départements : depuis le 08/10, les 8 captures du gabarit « 06 Département »
+ * ont les 17 écrans d'une ville, leurs fiches portent donc `ContenuVille`.
  *
- * DEUX GABARITS DE LA MAQUETTE, pas un. `maquette/accueil-rendu.html` les
- * dessine séparément et ils n'ont ni le même nombre de sections ni le même
- * propos :
+ * LA VILLE, refaite le 07/10 contre la référence du jour : le rendu figé de
+ * CHAQUE page, `maquette/rendu/implantations--<cle>.html`. Le gabarit « 04
+ * Ville » est rendu par `MigenExpertise.dc.html` en mode ville (passation du
+ * client, `design_handoff_migen_site/README.md`) : c'est le gabarit 03 Offre,
+ * section pour section, plus UN écran propre, « Hub local », entre la bande
+ * d'appel des domaines et la problématique. Trois écrans y ont un dessin de
+ * ville (problème en rangée ou en panneau sombre, questions, maillage) :
+ * `components/site/implantation/`. L'ancien type portait le bloc
+ * `isVille` de `accueil-rendu.html`, un écran de démonstration qui n'est le
+ * gabarit d'aucune page.
  *
- *   · `isVille`, lignes 3962 à 4076, « SEO service + ville », CINQ sections :
- *     hero à deux colonnes, bandeau photo, constat/réponse en vis-à-vis,
- *     questions fréquentes en cartes, autres villes en pastilles.
- *   · `isDept`, lignes 6365 à 6433, « Gabarit département », TROIS sections :
- *     hero à deux colonnes, communes couvertes puis autres départements,
- *     panneau d'appel.
+ * D'OÙ LA FORME : les champs de `ContenuOffre` que ces sections lisent, repris
+ * par `Pick` et jamais redéclarés, plus `hubLocal`. Les écrans de l'offre sont
+ * rendus par les composants de `components/site/offre/`, avec la même donnée.
  *
- * Une page de ville vend une intervention sur un bassin industriel. Une page de
- * département couvre un territoire et distribue vers ses voisins. Les plier au
- * même gabarit, ce qui était l'état du site, donnait les dix sections de vente
- * sur les quarante-deux pages de la branche.
- *
- * POURQUOI LE DÉPARTEMENT N'A PAS SON COMPOSANT ICI. `components/site/secteur/
- * PageSecteur.tsx` rend DÉJÀ ces trois sections, au pixel : son hero, son bloc
- * communes + pages sœurs, son panneau d'appel sont ceux de `isDept`.
- * `ContenuDepartement` reprend donc `ContenuSecteur` tel quel et ne change que
- * le discriminant, et `PageDepartement` n'est qu'une enveloppe. Rien n'est
- * recopié, et `types/secteur.ts` n'est pas touché : il annonçait déjà servir
- * les deux gabarits voisins.
- *
- * AUCUNE VALEUR N'EST INVENTÉE. Tout est optionnel, toute section dont le corpus
- * ne fournit pas la matière ne se rend PAS DU TOUT. Ce que la maquette dessine
- * et que le corpus ne remplit pas est laissé vide, jamais comblé au jugé.
- *
- * LES LIBELLÉS DE STRUCTURE NE SONT PAS ICI. « Le constat terrain », « Notre
- * réponse », « Questions fréquentes », « Autres villes » sont les mêmes sur les
- * trente-quatre pages de ville : ils vivent dans le composant, relevés dans la
- * maquette. Même convention que `types/implantations.ts` pour « Rayon » et
- * « Rôle », et pour la même raison : les exposer en données aurait invité à les
- * réécrire page par page.
+ * AUCUNE VALEUR N'EST INVENTÉE. Tout est optionnel, et une section sans donnée
+ * ne se rend pas. Une phrase de la capture que le contrat interdit n'est pas
+ * reformulée : elle n'est pas écrite ici, et elle est déclarée dans le champ
+ * `trous` du fichier de la page, que `verification-ville.tsx` relit.
  */
 
-import type { Paragraphe, Question, Section } from "./contenu";
-import type { ContenuSecteur, LienSecteur, RepereSecteur } from "./secteur";
+import type { Section } from "./contenu";
+import type { ContenuOffre } from "./offre";
+import type { ContenuSecteur } from "./secteur";
 
-/**
- * Un repère du panneau du hero, avec sa précision éventuelle.
- *
- * `RepereSecteur` ne porte que la valeur et le libellé, comme le panneau de la
- * maquette. Mais quatre pages du corpus écrivent un `detail` sur leur chiffre
- * « 4 agences » : « Aucune en Isère, des techniciens qui s'y déplacent ». C'est
- * une précision qui DIT L'ABSENCE d'agence sur place, exactement le genre de
- * phrase que ce site refuse de laisser croire le contraire. Sans elle, « 4
- * agences » sur une page de Grenoble se lit comme s'il y en avait une à côté.
- *
- * Rendue en troisième ligne du même petit texte, sous le libellé.
- */
-export interface RepereVille extends RepereSecteur {
-  detail?: string;
+/** Une carte de la grille du hub local : un secteur du bassin, ou une offre. */
+export interface CarteHubLocal {
+  /** « Tissu principal », « Aussi présent », « Notre offre ». */
+  surtitre: string;
+  titre: string;
+  texte: string;
+  /** « Notre approche chimie », « Voir l’offre ». La flèche est du gabarit. */
+  lien: string;
+  href: string;
+}
+
+/** Une pastille de la bande des zones. */
+export interface ZoneHubLocal {
+  libelle: string;
+  href: string;
 }
 
 /**
- * Le contenu d'une page de VILLE, gabarit `isVille` de la maquette.
+ * L'écran « Hub local », relevé sur `implantations--lyon.html` (un hub) et
+ * `implantations--maintenance-industrielle-angers.html` (une ville sans hub).
+ * Le téléphone, la flèche du bouton et le préfixe « Aperçu Envato · » sont du
+ * gabarit : ils sont les mêmes sur les 66 captures.
  *
- * `reste` porte les sections du corpus que ces cinq sections n'accueillent pas,
- * rendues en dessous par les blocs déjà portés de `components/site/blocs/`,
- * qui sont les motifs de section de la maquette. Le corpus de ces pages est
- * rédigé, relu et payé : il ne se perd pas parce que la maquette ne lui a pas
- * prévu de case.
+ * Trois cas, que la source (`cityVals` de `MigenExpertise.dc.html`) tire de
+ * l'URL : un HUB (`/implantations/lyon/`), une ZONE d'un hub
+ * (`/implantations/lyon/grenoble/`), une VILLE sans hub
+ * (`/implantations/maintenance-industrielle-angers/`). Le texte se copie
+ * toujours de la capture de la page.
  */
-export interface ContenuVille {
+export interface HubLocal {
+  /** « Votre hub local · Lyon ». */
+  surtitre: string;
+  /** Le H2, espace insécable avant les deux-points comme la capture. */
+  titre: string;
+  /**
+   * La photo du panneau sombre. La capture ne la montre pas (`blob:`) : c'est
+   * la RÈGLE de la source, que `verification-ville.tsx` recalcule. L'URL
+   * Envato `src` de `maquette/contenu/site/photos-villes.json` pour les douze
+   * pages qui y figurent, sinon `/assets/web/<repli>.jpg`, le repli étant
+   * `["sv-convoyeur", "sv-armoire", "sv-duo-impact", "sv-portrait",
+   * "team-grind-front", "team-electric"][h % 6]`, `h = (h * 31 + code) >>> 0`
+   * sur les caractères de l'URL.
+   */
+  photo: string;
+  /** Le `credit` de `photos-villes.json`, seulement avec une photo Envato. */
+  credit?: string;
+  /** Hub « Hub Migen », zone « Rattaché au hub Lyon », ville « Techniciens itinérants ». */
+  badge: string;
+  /** « Hub Lyon », « Grenoble, couvert par le hub Lyon », « Angers et ses environs ». */
+  nom: string;
+  texte: string;
+  /** Le libellé du bouton vers `/contact/` : « Demander une intervention à Lyon ». */
+  bouton: string;
+  cartes: CarteHubLocal[];
+  /**
+   * « Zones couvertes par le hub », « Hub de rattachement et zones voisines »,
+   * « Nos hubs ». Un hub sans zone (Lille, Metz, Dijon, Bordeaux) n'a ni titre
+   * ni pastilles : la bande ne se rend pas.
+   */
+  zonesTitre?: string;
+  zones?: ZoneHubLocal[];
+}
+
+/** Le contenu d'une page de VILLE, gabarit « 04 Ville ». */
+export interface ContenuVille
+  extends Pick<
+    ContenuOffre,
+    | "pastille"
+    | "chapeau"
+    | "actions"
+    | "mention"
+    | "appelBouton"
+    | "formulaireHeroTitre"
+    | "formulaireHeroMention"
+    | "chiffres"
+    | "problemePhoto"
+    | "complementOffre"
+    | "brefBande"
+    | "brefBouton"
+    | "brefMention"
+    | "marquesFamille"
+    | "marquesFamilles"
+    | "sections"
+  > {
   gabarit: "ville";
-
-  /** Surtitre orange du hero : « Rhône · Grand Lyon » dans la maquette. */
-  surtitre?: string;
-  /** Le paragraphe sous le H1. Le H1 vient de `pages.titre_h1`. */
-  chapeau?: string;
-  /** La maquette n'en pose qu'un, orange. Les suivants passent en secondaire. */
-  actions?: LienSecteur[];
-
-  /** Panneau en verre du hero. Sans repères ni contact, le hero tient sur une colonne. */
-  panneauSurtitre?: string;
+  hubLocal?: HubLocal;
   /**
-   * L'adresse de l'agence, une ligne par élément : rue, puis code postal et
-   * commune. La maquette en affiche une ; le corpus n'en fournit aucune, et
-   * l'adresse du siège n'est vraie que pour une page sur quarante-deux.
+   * Le H2 de « 03 Problème » est un TROU : la première phrase de la punchline
+   * de la capture est interdite (Vesoul, « 24 h sur 24 »). La `punchline` du
+   * fichier ne porte alors que la suite, rendue à sa place (le paragraphe de
+   * droite), et aucun H2 n'est rendu. Honoré en rangée et en panneau sombre,
+   * les deux dessins des captures concernées. `verification-ville.tsx` exige
+   * que la phrase soit déclarée dans `trous`, et l'inverse.
    */
-  adresse?: string[];
-  reperes?: RepereVille[];
-  /** Sous le filet du panneau : comment joindre, horaires, rappel dans l'heure. */
-  contact?: string;
-
-  /** Colonne de gauche du vis-à-vis : ce que le terrain montre. */
-  constatTitre?: string;
-  constatTexte?: string;
-  /**
-   * Les contraintes du terrain, sous le paragraphe du constat.
-   *
-   * La maquette ne met pas de liste dans cette colonne : elle n'en met que dans
-   * celle de droite. Celle-ci reprend la MÊME géométrie de liste (maquette
-   * 4023), avec la croix orange du panneau « Le problème » (maquette, section
-   * portée dans `blocs/Probleme.tsx`). Deux motifs de la maquette assemblés,
-   * aucun inventé : sans cette liste, les cinq contraintes écrites par le
-   * client pour chaque ville n'auraient aucune case et seraient perdues.
-   */
-  constatPuces?: Paragraphe[];
-
-  /** Colonne de droite : ce que nous faisons, et les points tenus. */
-  reponseTitre?: string;
-  reponseTexte?: string;
-  /** La liste à coches de la maquette, ligne 4023. Accroche en gras, puis le texte. */
-  reponsePuces?: Paragraphe[];
-
-  /** Les questions fréquentes, en cartes de verre empilées. */
-  faqTitre?: string;
-  faq?: Question[];
-
-  /** Les villes sœurs, en pastilles cliquables. */
-  autres?: LienSecteur[];
-
-  /** Les sections du corpus que la maquette ne montre pas, rendues en dessous. */
-  reste?: Section[];
+  problemeSansTitre?: boolean;
 }
 
 /**
- * Le contenu d'une page de DÉPARTEMENT, gabarit `isDept` de la maquette.
- *
- * C'est `ContenuSecteur`, au discriminant près : les trois sections de `isDept`
- * sont exactement celles que `PageSecteur` rend déjà. Le discriminant diffère
- * pour que la route sache passer par `PageDepartement`, qui ajoute `reste`
- * sous le gabarit.
+ * MORT, en attente de suppression. Plus aucune fiche ne porte
+ * `gabarit: "departement"` et la route ne le reconnaît plus (08/10). Ce type ne
+ * reste que pour `components/site/implantation/PageDepartement.tsx` et
+ * `verification-implantation.tsx`, eux-mêmes morts : il part avec eux.
  */
 export interface ContenuDepartement extends Omit<ContenuSecteur, "gabarit"> {
   gabarit: "departement";
-  /** Les sections du corpus que les trois sections n'accueillent pas. */
   reste?: Section[];
 }
 
@@ -139,14 +142,5 @@ export function estVille(contenu: unknown): contenu is ContenuVille {
     !!contenu &&
     typeof contenu === "object" &&
     (contenu as ContenuVille).gabarit === "ville"
-  );
-}
-
-/** Le contenu est-il celui d'une page de département ? */
-export function estDepartement(contenu: unknown): contenu is ContenuDepartement {
-  return (
-    !!contenu &&
-    typeof contenu === "object" &&
-    (contenu as ContenuDepartement).gabarit === "departement"
   );
 }

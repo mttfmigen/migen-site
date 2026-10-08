@@ -20,7 +20,7 @@
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus",
+        "libelle": "des techniciens retenus",
         "detail": "Le technicien qui vient sait réparer, pas seulement constater"
       },
       {
@@ -152,7 +152,7 @@
           },
           {
             "accroche": "Un technicien évalué et habilité",
-            "texte": "10 % des candidats retenus, habilitations et certifications exigées par votre site, traçabilité conçue pour s'intégrer dans votre système qualité, y compris chez les industriels certifiés ISO 9001."
+            "texte": "10 % des techniciens retenus, habilitations et certifications exigées par votre site, traçabilité conçue pour s'intégrer dans votre système qualité, y compris chez les industriels certifiés ISO 9001."
           },
           {
             "accroche": "Ni fabricant ni distributeur",
@@ -220,7 +220,7 @@
           },
           {
             "question": "Qui intervient vraiment ?",
-            "reponse": "Des techniciens salariés de Migen, évalués en entretien sur la technique et sur le comportement, 10 % des candidats retenus. Les spécialités sont couvertes en interne : automatisme, électricité industrielle, électromécanique, mécanique, hydraulique, pneumatique."
+            "reponse": "Des techniciens salariés de Migen, évalués en entretien sur la technique et sur le comportement, 10 % des techniciens retenus. Les spécialités sont couvertes en interne : automatisme, électricité industrielle, électromécanique, mécanique, hydraulique, pneumatique."
           },
           {
             "question": "Intervenez-vous partout en France, et la nuit ?",
@@ -267,6 +267,7 @@
         "libelle": "Toutes les offres",
         "href": "/offres/"
       }
-    ]
+    ],
+    "pastille": "Nos offres"
   }
 }

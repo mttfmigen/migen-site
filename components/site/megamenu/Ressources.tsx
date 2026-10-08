@@ -12,7 +12,7 @@ export default function PanneauRessources() {
       style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32 }}
     >
       <div>
-        <SurTitre>Par format</SurTitre>
+        <SurTitre marge={14}>Par format</SurTitre>
         <div style={{ display: "grid", gap: 1 }}>
           {RES_FORMATS.map((format) => (
             <RangeeDecrite key={format.libelle} {...format} />
@@ -20,7 +20,7 @@ export default function PanneauRessources() {
         </div>
       </div>
       <div>
-        <SurTitre>Par situation</SurTitre>
+        <SurTitre marge={14}>Par situation</SurTitre>
         <div style={{ display: "grid", gap: 1 }}>
           {RES_SITUATIONS.map((lien) => (
             <Link

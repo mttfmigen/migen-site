@@ -17,8 +17,12 @@
     "formulaireHeroMention": "Rappel dans l'heure",
     "chiffres": [
       {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      },
+      {
         "valeur": "10 %",
-        "libelle": "Des candidats retenus. Chaque intervenant est notre salarié, évalué avant d'entrer chez vous"
+        "libelle": "Des techniciens retenus. Chaque intervenant est notre salarié, évalué avant d'entrer chez vous"
       },
       {
         "valeur": "4 agences",
@@ -222,7 +226,7 @@
           },
           {
             "accroche": "Des intervenants choisis, pas envoyés",
-            "texte": "10 % des candidats retenus, profils présentés avant la première intervention, suivis par un chargé d'affaires nommé."
+            "texte": "10 % des techniciens retenus, profils présentés avant la première intervention, suivis par un chargé d'affaires nommé."
           },
           {
             "accroche": "Un conseil indépendant",
@@ -242,50 +246,61 @@
             "texte": "six techniciens polyvalents en permanence depuis septembre 2023, reprise de tous les sites en un mois",
             "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/web/x-technicienne-gilet.jpg"
+            "photo": "/assets/web/x-tech-portrait.jpg",
+            "logo": "/assets/clients/mq-ff81dfbb55c7.svg"
           },
           {
             "titre": "Maintenance préventive et corrective d'une fonderie automobile",
             "texte": "depuis octobre 2023, aux côtés des équipes internes",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/web/x-meulage-etincelles.jpg"
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "logo": "/assets/clients/stellantis.png"
           },
           {
             "titre": "Contrat de maintenance sur un site agroalimentaire de grande échelle, en Belgique",
             "texte": "depuis octobre 2024, toujours en cours",
             "lienLibelle": "Étude de cas McCAIN : Belgique",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/web/x-tableau-ceinture.jpg"
+            "photo": "/assets/web/x-elec-cablage.jpg",
+            "logo": "/assets/clients/mq-c23abfa0ca07.svg"
           },
           {
             "titre": "Maintien opérationnel d'un site logistique",
             "texte": "deux intervenants en poste, surveillance des convoyeurs et des trieurs",
             "lienLibelle": "Étude de cas GLS : maintenance curative",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/web/x-duo-hall.jpg"
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "logo": "/assets/clients/mq-09708b77564e.svg"
           },
           {
             "titre": "Renfort continu chez un équipementier automobile",
             "texte": "présence quotidienne sur les équipements critiques",
             "lienLibelle": "Étude de cas JTEKT : maintenance des équipements",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/web/x-entrepot-automatise.jpg"
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg",
+            "logo": "/assets/clients/mq-e93a6ad5abf7.svg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas Aktid",
-            "lienHref": "/preuves/aktid-centre-logistique/"
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg",
+            "logo": "/assets/clients/aktid.png"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
-            "lienHref": "/preuves/amazon-centre-logistique/"
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg",
+            "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
-            "lienHref": "/preuves/amazon-nouveau-site/"
+            "lienHref": "/preuves/amazon-nouveau-site/",
+            "photo": "/assets/web/mq-056f3c250981.jpg",
+            "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           }
         ]
       },

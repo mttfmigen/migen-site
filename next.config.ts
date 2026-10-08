@@ -71,6 +71,27 @@ const nextConfig: NextConfig = {
    */
   trailingSlash: true,
 
+  /**
+   * L'outil Diagnostic Zéro Arrêt (application Vite séparée, projet Vercel
+   * « migen-diagnostic-zero-arret ») servi sur le domaine du site.
+   *
+   * L'outil est construit avec `base: "/diagnostic-zero-arret/"` : ses fichiers
+   * sont demandés sous ce préfixe, donc ne heurtent pas `/assets/` du site.
+   * Réécriture `afterFiles` (forme tableau) : elle passe après le proxy, qui
+   * ajoute le slash final, et avant `app/[...slug]`, qui ne la voit jamais.
+   * `:chemin*` couvre aussi la racine de l'outil.
+   */
+  async rewrites() {
+    return [
+      // L'outil Diagnostic Zéro arrêt (projet Vercel séparé), servi sous le
+      // domaine du site. Il est construit avec la base « /diagnostic-zero-arret/ ».
+      {
+        source: "/diagnostic-zero-arret/:chemin*",
+        destination: "https://migen-diagnostic-zero-arret.vercel.app/:chemin*",
+      },
+    ];
+  },
+
   async headers() {
     // `/:chemin*` couvre la racine comme tous les sous-chemins.
     return [{ source: "/:chemin*", headers: ENTETES_SECURITE }];

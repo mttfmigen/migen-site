@@ -1,0 +1,725 @@
+{
+  "url": "/guides/choisir-une-entreprise-de-maintenance/",
+  "titre_h1": "Comment choisir une entreprise de maintenance industrielle",
+  "source": "maquette/rendu/guides--choisir-une-entreprise-de-maintenance.html, transcrite mot pour mot (gabarit générique édito de la maquette)",
+  "phrases_retirees": [],
+  "contenu": {
+    "gabarit": "editorial",
+    "blocs": [],
+    "edito": {
+      "format": "Guide",
+      "lecture": "11 min de lecture",
+      "ariane": [
+        {
+          "label": "Accueil",
+          "href": "/"
+        },
+        {
+          "label": "Comment choisir une entreprise de maintenance industrielle"
+        }
+      ],
+      "chapeau": "Choisir une entreprise de maintenance industrielle se joue rarement sur le prix affiché. Cela se joue sur qui vient, ce qu'il sait faire, et ce qu'il laisse derrière lui.",
+      "intro": [
+        {
+          "type": "p",
+          "texte": "Ce guide donne les critères qui comptent, les questions à poser, les signaux d'alerte, les modes de facturation et leurs conséquences réelles. Il dit aussi quand il vaut mieux recruter en interne."
+        },
+        {
+          "type": "p",
+          "texte": "Il est utilisable tel quel, y compris pour évaluer votre prestataire actuel."
+        }
+      ],
+      "sections": [
+        {
+          "titre": "Le vrai risque n'est pas le prix, c'est la personne qui se présente",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "**Le taux horaire se négocie en une réunion. Le technicien qui ne sait pas diagnostiquer vous coûte deux jours d'arrêt.** Les deux ne pèsent pas du tout le même poids sur votre année."
+            },
+            {
+              "type": "p",
+              "texte": "Un mauvais choix se paie sur trois postes rarement chiffrés dans le devis :"
+            },
+            {
+              "type": "cartes",
+              "items": [
+                {
+                  "titre": "Le temps de diagnostic",
+                  "texte": "Qui est la part la plus variable d'une intervention et la moins visible dans une facture."
+                },
+                {
+                  "titre": "La panne qui revient",
+                  "texte": "Parce que personne n'a cherché la cause racine et que le symptôme seul a été traité."
+                },
+                {
+                  "titre": "La perte de connaissance",
+                  "texte": "Quand aucun compte rendu exploitable n'est laissé et que tout est à refaire au prochain incident."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "Le critère de sélection utile n'est donc pas le prix de l'heure. C'est le coût complet de la remise en marche, et la probabilité que le problème ne revienne pas."
+            }
+          ]
+        },
+        {
+          "titre": "Les six critères qui comptent vraiment",
+          "blocs": [
+            {
+              "type": "photo",
+              "image": "/assets/web/team-duo.jpg"
+            },
+            {
+              "type": "h3",
+              "texte": "1. La qualification réelle des intervenants, et comment la vérifier"
+            },
+            {
+              "type": "p",
+              "texte": "Toutes les entreprises annoncent des techniciens qualifiés. Peu acceptent de dire comment elles le vérifient."
+            },
+            {
+              "type": "p",
+              "texte": "Demandez trois choses précises :"
+            },
+            {
+              "type": "cartes",
+              "items": [
+                {
+                  "titre": "Comment les candidats sont évalués avant l'embauche",
+                  "texte": "Évaluation technique réelle, évaluation comportementale, taux de sélection."
+                },
+                {
+                  "titre": "Le CV et les habilitations de l'intervenant pressenti",
+                  "texte": "Avant l'intervention, pas après."
+                },
+                {
+                  "titre": "Les habilitations à jour",
+                  "texte": "Électrique selon le domaine de tension, travail en hauteur, espaces confinés, CACES selon les engins utilisés."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "**Signal fiable : une entreprise qui partage les résultats d'évaluation de ses techniciens.** Une entreprise qui refuse de nommer qui vient n'a pas la maîtrise de ses ressources."
+            },
+            {
+              "type": "h3",
+              "texte": "2. La continuité quand l'intervenant est absent"
+            },
+            {
+              "type": "p",
+              "texte": "C'est le critère le plus souvent oublié, et celui qui fait le plus mal."
+            },
+            {
+              "type": "ul",
+              "items": [
+                "**Qui remplace en cas d'arrêt maladie, de congés ou de départ ?**",
+                "**Sous quel délai le remplaçant est-il opérationnel sur votre site ?**",
+                "**Comment la connaissance de votre installation est-elle transmise au remplaçant ?**"
+              ]
+            },
+            {
+              "type": "suite",
+              "blocs": [
+                {
+                  "type": "p",
+                  "texte": "Un prestataire qui repose sur une seule personne reproduit exactement le risque que vous cherchiez à supprimer en externalisant."
+                },
+                {
+                  "type": "h3",
+                  "texte": "3. La qualité du compte rendu"
+                },
+                {
+                  "type": "p",
+                  "texte": "Le compte rendu est le seul livrable que vous gardez. S'il est pauvre, vous avez payé une intervention et rien capitalisé."
+                },
+                {
+                  "type": "p",
+                  "texte": "Un compte rendu exploitable contient :"
+                },
+                {
+                  "type": "bento",
+                  "colonnes": 2,
+                  "items": [
+                    {
+                      "titre": "Le constat",
+                      "texte": "Ce qui a été observé, mesuré, relevé."
+                    },
+                    {
+                      "titre": "La cause identifiée",
+                      "texte": "Ou la mention explicite qu'elle n'a pas été trouvée."
+                    },
+                    {
+                      "titre": "Les actions réalisées",
+                      "texte": "Et les pièces remplacées, avec références."
+                    },
+                    {
+                      "titre": "Ce qui reste à faire",
+                      "texte": "Avec un niveau d'urgence."
+                    },
+                    {
+                      "titre": "Les recommandations",
+                      "texte": "Pour éviter la récidive."
+                    }
+                  ]
+                },
+                {
+                  "type": "p",
+                  "texte": "Demandez un exemple anonymisé en rendez-vous. Une entreprise qui n'en a pas sous la main vous dit déjà tout."
+                },
+                {
+                  "type": "h3",
+                  "texte": "4. La traçabilité"
+                },
+                {
+                  "type": "p",
+                  "texte": "Vos données d'intervention doivent rester exploitables, et rester les vôtres."
+                },
+                {
+                  "type": "bento",
+                  "colonnes": 2,
+                  "items": [
+                    {
+                      "titre": "Intégration à votre GMAO",
+                      "texte": "Ou fourniture d'un format que vous pouvez importer."
+                    },
+                    {
+                      "titre": "Historique machine par machine",
+                      "texte": "Pas seulement par date d'intervention."
+                    },
+                    {
+                      "titre": "Propriété et restitution des données",
+                      "texte": "En fin de contrat, écrites dans le contrat."
+                    },
+                    {
+                      "titre": "Relevés et mesures archivés",
+                      "texte": "Avec leurs valeurs, pas seulement une mention « conforme »."
+                    }
+                  ]
+                },
+                {
+                  "type": "h3",
+                  "texte": "5. La couverture horaire"
+                },
+                {
+                  "type": "p",
+                  "texte": "Une panne ne choisit pas son moment. Vérifiez ce qui est réellement couvert."
+                },
+                {
+                  "type": "bento",
+                  "colonnes": 2,
+                  "items": [
+                    {
+                      "titre": "Les plages d'intervention",
+                      "texte": "Incluses dans le contrat, et celles qui déclenchent une majoration."
+                    },
+                    {
+                      "titre": "L'existence d'une astreinte",
+                      "texte": "En dehors des heures ouvrées, et ce qu'elle couvre."
+                    },
+                    {
+                      "titre": "Le numéro que vous appelez la nuit",
+                      "texte": "Et qui décroche à l'autre bout."
+                    },
+                    {
+                      "titre": "Le délai de rappel",
+                      "texte": "Après une demande, qui est un engagement bien plus tenable qu'un délai d'arrivée sur site."
+                    }
+                  ]
+                },
+                {
+                  "type": "p",
+                  "texte": "Méfiez-vous d'un engagement d'arrivée sur site chiffré sans condition. En maintenance industrielle, la distance, la pièce et la nature de la panne rendent cette promesse difficile à tenir. Un rappel rapide et un diagnostic honnête valent mieux qu'un chiffre qui ne sera pas respecté."
+                },
+                {
+                  "type": "h3",
+                  "texte": "6. La réversibilité du contrat"
+                },
+                {
+                  "type": "p",
+                  "texte": "Un bon contrat prévoit sa propre fin. C'est un signe de confiance, pas de défiance."
+                },
+                {
+                  "type": "bento",
+                  "colonnes": 2,
+                  "items": [
+                    {
+                      "titre": "Durée d'engagement et conditions de sortie",
+                      "texte": "Écrites noir sur blanc."
+                    },
+                    {
+                      "titre": "Préavis",
+                      "texte": "Et modalités de résiliation en cas de manquement."
+                    },
+                    {
+                      "titre": "Restitution des données",
+                      "texte": "Des historiques et de la documentation à jour."
+                    },
+                    {
+                      "titre": "Transfert vers un autre prestataire ou vers vos équipes",
+                      "texte": "Organisé et non improvisé."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "panneau"
+            }
+          ]
+        },
+        {
+          "titre": "Le tableau à emporter en rendez-vous",
+          "blocs": [
+            {
+              "type": "tableau",
+              "entetes": [
+                "Critère",
+                "La question à poser",
+                "Ce que contient une bonne réponse"
+              ],
+              "lignes": [
+                [
+                  "**Qualification**",
+                  "Comment évaluez-vous vos techniciens avant embauche ?",
+                  "Un processus décrit, un taux de sélection, des résultats partageables"
+                ],
+                [
+                  "**Qui vient**",
+                  "Puis-je voir le CV et les habilitations avant l'intervention ?",
+                  "Oui, systématiquement, avant la première visite"
+                ],
+                [
+                  "**Continuité**",
+                  "Que se passe-t-il si votre technicien est absent trois semaines ?",
+                  "Un remplaçant nommé, une passation organisée, un délai annoncé"
+                ],
+                [
+                  "**Compte rendu**",
+                  "Montrez-moi un compte rendu réel, anonymisé",
+                  "Constat, cause, actions, reste à faire, recommandations"
+                ],
+                [
+                  "**Traçabilité**",
+                  "Comment mes données arrivent-elles dans ma GMAO ?",
+                  "Intégration ou export dans un format que vous lisez"
+                ],
+                [
+                  "**Couverture**",
+                  "Qui décroche à 2 h du matin, et que couvre l'astreinte ?",
+                  "Un numéro, une organisation, un périmètre écrit"
+                ],
+                [
+                  "**Diagnostic**",
+                  "Comment réduisez-vous le temps de diagnostic ?",
+                  "Une méthode, des outils, des éléments mesurables"
+                ],
+                [
+                  "**Sortie**",
+                  "Que se passe-t-il si nous arrêtons dans un an ?",
+                  "Préavis clair, restitution des données, passation prévue"
+                ],
+                [
+                  "**Prix**",
+                  "Que comprend exactement le taux horaire ?",
+                  "Déplacement, temps de trajet, consommables, majorations, minimum facturé"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "Imprimez ce tableau. Posez les neuf questions au même rendez-vous, à chaque candidat, et comparez les silences autant que les réponses."
+            }
+          ]
+        },
+        {
+          "titre": "Les signaux d'alerte",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "**Un prestataire qui refuse de répondre précisément à une question simple vous a déjà donné sa réponse.**"
+            },
+            {
+              "type": "lignes",
+              "items": [
+                {
+                  "titre": "Refus de nommer l'intervenant",
+                  "texte": "Avant la mission, ou changement de personne à chaque visite."
+                },
+                {
+                  "titre": "Aucun compte rendu écrit",
+                  "texte": "Ou un compte rendu qui tient en une ligne."
+                },
+                {
+                  "titre": "Un devis sans détail",
+                  "texte": "Une ligne globale, aucune décomposition, aucune hypothèse écrite."
+                },
+                {
+                  "titre": "Un coefficient de refacturation des pièces jamais annoncé",
+                  "texte": "Ou annoncé après la première facture."
+                },
+                {
+                  "titre": "Une promesse de délai d'arrivée",
+                  "texte": "Très courte, sans condition ni périmètre."
+                },
+                {
+                  "titre": "Aucune question sur votre parc",
+                  "texte": "Pendant le rendez-vous. Un professionnel interroge avant de proposer."
+                },
+                {
+                  "titre": "Aucune référence vérifiable",
+                  "texte": "Dans votre secteur ou sur des équipements comparables."
+                },
+                {
+                  "titre": "Un discours qui évite la sécurité",
+                  "texte": "Pas de mention du plan de prévention, des habilitations ni de l'analyse de risque."
+                },
+                {
+                  "titre": "Une pression à signer vite",
+                  "texte": "Avec une remise qui expire."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "titre": "Les modes de facturation et ce qu'ils impliquent",
+          "blocs": [
+            {
+              "type": "photo",
+              "image": "/assets/web/team-grind-close.jpg"
+            },
+            {
+              "type": "p",
+              "texte": "Aucun mode n'est bon en soi. Chacun déplace le risque à un endroit différent."
+            },
+            {
+              "type": "tableau",
+              "entetes": [
+                "Mode",
+                "Comment ça marche",
+                "Ce que ça implique pour vous",
+                "Quand c'est adapté"
+              ],
+              "lignes": [
+                [
+                  "**À l'intervention**",
+                  "Chaque dépannage est facturé au temps passé et aux pièces",
+                  "Budget imprévisible, aucune incitation à supprimer la cause",
+                  "Parc peu critique, pannes rares"
+                ],
+                [
+                  "**Forfait de maintenance**",
+                  "Un montant périodique couvre un périmètre défini",
+                  "Budget lisible, mais tout dépend de la précision du périmètre",
+                  "Parc stable, besoins réguliers"
+                ],
+                [
+                  "**Contrat à obligation de moyens**",
+                  "Un volume d'heures et de visites est engagé",
+                  "Vous payez la présence, pas le résultat",
+                  "Préventif planifié, accompagnement"
+                ],
+                [
+                  "**Contrat à obligation de résultat**",
+                  "Des indicateurs de disponibilité sont contractualisés",
+                  "Plus cher, exige une mesure fiable et partagée",
+                  "Équipements critiques, données fiables"
+                ],
+                [
+                  "**Technicien intégré sur site**",
+                  "Un ou plusieurs techniciens travaillent chez vous en continu",
+                  "Connaissance du parc qui s'accumule, coût lissé et prévisible",
+                  "Besoin durable, charge de travail réelle et continue"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "Trois questions qui changent le coût réel, quel que soit le mode :"
+            },
+            {
+              "type": "numeros",
+              "items": [
+                {
+                  "titre": "Le temps de trajet est-il facturé",
+                  "texte": "Et à quel taux ?"
+                },
+                {
+                  "titre": "Quel coefficient est appliqué sur les pièces",
+                  "texte": "Refacturées ?"
+                },
+                {
+                  "titre": "Y a-t-il un minimum facturé",
+                  "texte": "Par déplacement, et des majorations par plage horaire ?"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "titre": "Comparer deux devis qui ne se ressemblent pas",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "C'est là que la plupart des comparaisons déraillent. Voici comment rendre deux offres comparables."
+            },
+            {
+              "type": "etapes",
+              "items": [
+                {
+                  "titre": "Ramenez tout au même périmètre",
+                  "texte": "Listez les équipements couverts par l'un et pas par l'autre, et faites chiffrer les manquants. Un devis moins cher couvre souvent moins de machines."
+                },
+                {
+                  "titre": "Ramenez tout à la même durée",
+                  "texte": "Un forfait mensuel, un engagement annuel et un taux horaire ne se lisent qu'au coût sur douze mois, à volume d'activité identique."
+                },
+                {
+                  "titre": "Sortez les hypothèses cachées",
+                  "texte": "Nombre d'interventions prévues, heures incluses, pièces incluses ou non, consommables, déplacements. Écrivez-les à côté du prix."
+                },
+                {
+                  "titre": "Ajoutez le coût des exclusions",
+                  "texte": "Ce qui n'est pas couvert sera fait par quelqu'un, donc payé par vous. Chiffrez-le et rajoutez-le à la ligne du devis concerné."
+                },
+                {
+                  "titre": "Valorisez le temps de diagnostic",
+                  "texte": "Multipliez votre coût d'arrêt horaire par l'écart de temps de diagnostic annoncé. Cette ligne dépasse souvent l'écart de prix entre les deux offres."
+                },
+                {
+                  "titre": "Notez les critères non financiers",
+                  "texte": "Sur la même grille : continuité, compte rendu, traçabilité, couverture, réversibilité. Une note par critère, le même barème pour les deux."
+                },
+                {
+                  "titre": "Décidez sur le total, pas sur la première ligne",
+                  "texte": "Le devis le moins cher à l'heure est rarement le moins cher à l'année."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "titre": "Quand il vaut mieux recruter en interne",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "La sous-traitance n'est pas toujours la bonne réponse. Voici les cas où le recrutement l'emporte franchement."
+            },
+            {
+              "type": "bento",
+              "colonnes": 2,
+              "items": [
+                {
+                  "titre": "La charge est pleine, stable et prévisible",
+                  "texte": "Un besoin continu sur un poste entier coûte moins cher en salarié qu'en prestation, et la connaissance reste chez vous."
+                },
+                {
+                  "titre": "La compétence est votre cœur de métier",
+                  "texte": "Un savoir-faire qui fait la différence sur votre produit ne se délègue pas durablement."
+                },
+                {
+                  "titre": "Le parc est très spécifique",
+                  "texte": "Machines uniques, process propriétaire, réglages qui ne s'apprennent que chez vous : le temps de montée en compétence rend la rotation d'intervenants coûteuse."
+                },
+                {
+                  "titre": "Vous avez la capacité d'encadrer",
+                  "texte": "Un technicien recruté sans responsable de maintenance pour le piloter produit rarement ce qu'on attendait."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "Et les cas où un prestataire gagne :"
+            },
+            {
+              "type": "bento",
+              "colonnes": 2,
+              "items": [
+                {
+                  "titre": "Le besoin est variable ou saisonnier",
+                  "texte": "Ou lié à un pic de charge daté."
+                },
+                {
+                  "titre": "La compétence est rare et utilisée par intermittence",
+                  "texte": "Automatisme, robotique, électronique, soudure qualifiée."
+                },
+                {
+                  "titre": "Vous devez couvrir une absence",
+                  "texte": "Sans casser le rythme de l'atelier."
+                },
+                {
+                  "titre": "Le recrutement est bloqué",
+                  "texte": "Sur votre bassin, et l'attente coûte plus cher que la prestation."
+                },
+                {
+                  "titre": "Vous voulez tester un besoin",
+                  "texte": "Avant de créer un poste permanent."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "**La bonne question n'est pas interne ou externe. C'est quelle part de la charge est stable.** La part stable se recrute, la part variable se sous-traite."
+            }
+          ]
+        },
+        {
+          "titre": "La checklist avant de signer",
+          "blocs": [
+            {
+              "type": "photo",
+              "image": "/assets/web/team-duo.jpg"
+            },
+            {
+              "type": "p",
+              "texte": "**Sur l'entreprise**"
+            },
+            {
+              "type": "ul",
+              "items": [
+                "[ ] Processus d'évaluation des techniciens décrit, avec un taux de sélection",
+                "[ ] Références vérifiables sur des équipements ou un secteur comparables",
+                "[ ] Couverture géographique réelle sur votre site, pas seulement annoncée",
+                "[ ] Assurance responsabilité civile professionnelle à jour, attestation fournie"
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "**Sur les intervenants**"
+            },
+            {
+              "type": "ul2",
+              "items": [
+                "[ ] CV et habilitations communiqués avant la première intervention",
+                "[ ] Habilitations électriques adaptées au domaine de tension de votre installation",
+                "[ ] Autorisations spécifiques présentes : hauteur, espaces confinés, engins",
+                "[ ] Solution de remplacement nommée et organisée"
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "**Sur le contrat**"
+            },
+            {
+              "type": "ul2",
+              "items": [
+                "[ ] Périmètre d'équipements listé machine par machine",
+                "[ ] Inclusions et exclusions écrites, pièces et consommables tranchés",
+                "[ ] Coefficient sur pièces annoncé, trajets et minimum facturé précisés",
+                "[ ] Plages horaires couvertes et majorations détaillées",
+                "[ ] Astreinte : périmètre, numéro, organisation de la réponse",
+                "[ ] Format et fréquence des comptes rendus définis",
+                "[ ] Intégration ou export vers votre GMAO validé techniquement",
+                "[ ] Durée, préavis, conditions de sortie et restitution des données écrits",
+                "[ ] Plan de prévention prévu et analyse de risque à fournir"
+              ]
+            },
+            {
+              "type": "p",
+              "texte": "**Sur la décision**"
+            },
+            {
+              "type": "ul2",
+              "items": [
+                "[ ] Devis ramenés au même périmètre et à la même durée",
+                "[ ] Exclusions chiffrées et réintégrées dans la comparaison",
+                "[ ] Coût d'arrêt horaire de votre site calculé et utilisé dans l'arbitrage",
+                "[ ] Critères non financiers notés sur une grille commune"
+              ]
+            }
+          ]
+        },
+        {
+          "titre": "FAQ",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "**Comment vérifier la qualification réelle d'un technicien avant qu'il arrive ?**"
+            },
+            {
+              "type": "p",
+              "texte": "Demandez le CV et les habilitations en amont, et demandez comment l'entreprise évalue ses candidats à l'embauche. Une évaluation technique et comportementale documentée, avec un taux de sélection annoncé, vaut mieux qu'une liste de logos sur une plaquette."
+            },
+            {
+              "type": "p",
+              "texte": "**Faut-il choisir un généraliste ou un spécialiste ?**"
+            },
+            {
+              "type": "p",
+              "texte": "Cela dépend de votre parc. Un parc hétérogène est mieux servi par une entreprise couvrant plusieurs domaines, mécanique, électricité, automatisme, hydraulique, pneumatique. Un équipement très particulier peut exiger un spécialiste, quitte à avoir deux prestataires."
+            },
+            {
+              "type": "p",
+              "texte": "**Le moins cher est-il vraiment le moins cher ?**"
+            },
+            {
+              "type": "p",
+              "texte": "Rarement, parce que le devis ne montre que le prix de l'heure. Le coût complet inclut le temps de diagnostic, les récidives, les exclusions et le temps que vos équipes passent à encadrer. Ramenez les offres au même périmètre avant de conclure."
+            },
+            {
+              "type": "p",
+              "texte": "**Combien de prestataires consulter ?**"
+            },
+            {
+              "type": "p",
+              "texte": "Deux ou trois suffisent si vous les comparez sérieusement. Au-delà, le temps de dépouillement dépasse le gain. Posez les mêmes questions aux mêmes moments, et notez les réponses sur la même grille."
+            },
+            {
+              "type": "p",
+              "texte": "**Peut-on changer de prestataire en cours de contrat ?**"
+            },
+            {
+              "type": "p",
+              "texte": "Cela dépend du préavis et des conditions de sortie écrites au contrat. Vérifiez ce point avant de signer, pas au moment où vous voulez partir. Un prestataire qui organise sa propre réversibilité est en général celui qui a le moins peur d'être comparé."
+            },
+            {
+              "type": "p",
+              "texte": "**Comment reprendre un contrat existant sans casser la continuité ?**"
+            },
+            {
+              "type": "p",
+              "texte": "Par un chevauchement organisé : inventaire du parc, récupération des historiques et de la documentation, période de passation sur site, puis bascule. Le point critique est la restitution des données par le prestataire sortant. Exigez-la par écrit dès la notification."
+            }
+          ]
+        },
+        {
+          "titre": "Pour aller plus loin",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "Ce guide décrit la méthode de choix. Si vous voulez appliquer cette grille à une offre précise, voir la page [entreprise de maintenance industrielle](/entreprise-maintenance-industrielle/)."
+            },
+            {
+              "type": "p",
+              "texte": "**Besoin d'un avis extérieur sur deux devis que vous n'arrivez pas à départager ?**"
+            },
+            {
+              "type": "p",
+              "texte": "[Parler à un chargé d'affaires](/contact/) · 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30."
+            },
+            {
+              "type": "p",
+              "texte": "Nous vous rappelons dans l'heure."
+            }
+          ]
+        }
+      ],
+      "liees": [
+        {
+          "famille": "Guide",
+          "titre": "Réussir un transfert industriel : la méthode de bout en bout",
+          "href": "/guides/reussir-un-transfert-industriel/"
+        },
+        {
+          "famille": "Guide",
+          "titre": "Vos interlocuteurs",
+          "href": "/a-propos/equipe/"
+        }
+      ],
+      "formulaire": "cocon-guides-choisir-une-entreprise-de-maintenance-"
+    }
+  }
+}

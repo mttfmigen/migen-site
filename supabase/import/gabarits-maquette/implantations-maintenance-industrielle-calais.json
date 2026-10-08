@@ -1,0 +1,315 @@
+{
+  "url": "/implantations/maintenance-industrielle-calais/",
+  "titre_h1": "Maintenance industrielle à Calais et dans la Côte d’Opale",
+  "contenu": {
+    "gabarit": "ville",
+    "pastille": "Nos implantations",
+    "chapeau": "Autour de Calais, trois tissus se côtoient : la logistique transmanche et les plateformes du tunnel et du port, la chimie et la pharmacie de Boulogne-sur-Mer et la métallurgie et les dentelles mécaniques calaisiennes. Aucun n'a les mêmes fenêtres d'arrêt ni les mêmes règles d'accès. Nos techniciens itinérants couvrent la Côte d’Opale, appuyés par le hub le plus proche et le réseau national.",
+    "actions": [
+      {
+        "libelle": "Demander une intervention à Calais",
+        "href": "#besoin"
+      }
+    ],
+    "mention": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte en option, nuits, week-ends et jours fériés.",
+    "formulaireHeroTitre": "Demander une intervention à Calais",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "appelBouton": "Demander une intervention à Calais",
+    "chiffres": [
+      {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, évaluation transmise avant l'arrivée"
+      },
+      {
+        "valeur": "Itinérant",
+        "libelle": "Des techniciens mobiles qui viennent sur votre site, avec un chargé d’affaires qui connaît votre dossier"
+      }
+    ],
+    "hubLocal": {
+      "surtitre": "Votre hub local · Calais",
+      "titre": "Calais : les industries que nos techniciens connaissent déjà",
+      "photo": "/assets/web/sv-convoyeur.jpg",
+      "badge": "Techniciens itinérants",
+      "nom": "Calais et ses environs",
+      "texte": "Nos techniciens itinérants couvrent Calais et son bassin, appuyés par le réseau national Migen.",
+      "bouton": "Demander une intervention à Calais",
+      "cartes": [
+        {
+          "surtitre": "Tissu principal",
+          "titre": "Logistique",
+          "texte": "Nos techniciens connaissent la logistique transmanche, leurs fenêtres d’arrêt et leurs règles d’accès.",
+          "lien": "Notre approche logistique",
+          "href": "/secteurs/logistique/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Chimie",
+          "texte": "Nos techniciens connaissent la chimie, leurs fenêtres d’arrêt et leurs règles d’accès.",
+          "lien": "Notre approche chimie",
+          "href": "/secteurs/chimie/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Industrie métallique",
+          "texte": "Nos techniciens connaissent la métallurgie, leurs fenêtres d’arrêt et leurs règles d’accès.",
+          "lien": "Notre approche industrie métallique",
+          "href": "/secteurs/industrie-metallique/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Pharmaceutique",
+          "texte": "Nos techniciens connaissent la pharmacie de Boulogne-sur-Mer, leurs fenêtres d’arrêt et leurs règles d’accès.",
+          "lien": "Notre approche pharmaceutique",
+          "href": "/secteurs/pharmaceutique/"
+        }
+      ],
+      "zonesTitre": "Nos hubs",
+      "zones": [
+        {
+          "libelle": "Hub Lille",
+          "href": "/implantations/lille/"
+        },
+        {
+          "libelle": "Hub Lyon",
+          "href": "/implantations/lyon/"
+        },
+        {
+          "libelle": "Hub Nantes",
+          "href": "/implantations/nantes/"
+        },
+        {
+          "libelle": "Hub Paris",
+          "href": "/implantations/paris/"
+        },
+        {
+          "libelle": "Hub Strasbourg",
+          "href": "/implantations/strasbourg/"
+        },
+        {
+          "libelle": "Hub Toulouse",
+          "href": "/implantations/toulouse/"
+        },
+        {
+          "libelle": "Hub Marseille",
+          "href": "/implantations/marseille/"
+        },
+        {
+          "libelle": "Hub Bordeaux",
+          "href": "/implantations/bordeaux/"
+        },
+        {
+          "libelle": "Hub Metz",
+          "href": "/implantations/maintenance-industrielle-metz/"
+        },
+        {
+          "libelle": "Hub Dijon",
+          "href": "/implantations/maintenance-industrielle-dijon/"
+        }
+      ]
+    },
+    "brefBande": "Un équipement qui inquiète avant la prochaine fenêtre de production ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Demander une intervention à Calais",
+      "href": "#besoin"
+    },
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "Des flux qui ne s’arrêtent pas, de jour comme de nuit. Et pendant ce temps, le préventif attend.",
+        "puces": [
+          {
+            "accroche": "Des flux qui ne s’arrêtent pas, de jour comme de nuit.",
+            "texte": "Sur ce bassin, un arrêt non planifié se paie en production perdue avant de se payer en réparation."
+          },
+          {
+            "accroche": "Un air marin qui corrode tout ce qui est exposé.",
+            "texte": "Les annonces restent ouvertes des mois, et chaque départ emporte l'historique du parc."
+          },
+          {
+            "accroche": "Les métiers se mélangent sur une même panne.",
+            "texte": "Mécanique, électrique, automatisme, hydraulique : appeler trois prestataires, c'est perdre trois jours."
+          },
+          {
+            "accroche": "La cause racine n'est jamais cherchée.",
+            "texte": "La panne revient sous un autre nom, et le budget correctif dérape."
+          }
+        ],
+        "variante": "rangee"
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "Des techniciens qui connaissent la logistique transmanche et les plateformes du tunnel et du port et ses contraintes d'accès et de cadence.",
+              "texte": ""
+            },
+            "benefice": "La méthode arrive avec le technicien, pas après trois visites d'apprentissage."
+          },
+          {
+            "prestation": {
+              "accroche": "Dépannage sur site avec recherche de cause racine du moteur à l'armoire.",
+              "texte": ""
+            },
+            "benefice": "La ligne repart, et le défaut ne revient pas sous un autre nom."
+          },
+          {
+            "prestation": {
+              "accroche": "Préventif écrit, calé sur vos heures de fonctionnement et vos fenêtres de production.",
+              "texte": ""
+            },
+            "benefice": "L'arrêt subi recule, et la charge de vos équipes internes s'allège."
+          },
+          {
+            "prestation": {
+              "accroche": "Couverture multi-technique",
+              "texte": "Mécanique, électrique, automatisme, hydraulique, pneumatique, soudure."
+            },
+            "benefice": "Un seul contrat pour un parc qui mélange toujours plusieurs technologies."
+          },
+          {
+            "prestation": {
+              "accroche": "Astreinte en option circuit et priorités écrits à l'avance.",
+              "texte": ""
+            },
+            "benefice": "Un appel de nuit trouve un technicien mobilisé, pas un répondeur."
+          },
+          {
+            "prestation": {
+              "accroche": "",
+              "texte": ""
+            },
+            "benefice": "La compétence qui vous manque, sans recruter, avec remplacement garanti."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Vous décrivez la situation",
+            "texte": "Équipement, symptôme, criticité, fenêtre de production, accès au site."
+          },
+          {
+            "titre": "Nous vous rappelons dans l'heure",
+            "texte": "Qualification du besoin, du profil disponible et des pièces à prévoir."
+          },
+          {
+            "titre": "Le devis précède le déplacement",
+            "texte": "Périmètre, conditions, chiffrage écrit, options d'astreinte comprises."
+          },
+          {
+            "titre": "L'intervention suit votre protocole",
+            "texte": "Accueil sécurité, plan de prévention, consignation, diagnostic."
+          },
+          {
+            "titre": "La cause racine est traitée après la remise en route",
+            "texte": "Mesures, historique, conditions réelles d'exploitation."
+          },
+          {
+            "titre": "Le compte rendu part dans votre GMAO",
+            "texte": "Constat, actions, pièces, organes à surveiller."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Le préventif se cale sur votre calendrier, pas sur le nôtre",
+            "texte": "Les opérations lourdes tombent hors fenêtre de production."
+          },
+          {
+            "accroche": "Vous savez qui entre sur le site",
+            "texte": "10 % des techniciens retenus, résultats d'évaluation transmis avant l'arrivée."
+          },
+          {
+            "accroche": "Vous gardez la main",
+            "texte": "Vos priorités, vos règles de sécurité, votre GMAO. Nos techniciens entrent dans votre organisation sans la redessiner."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Maintenir un centre logistique qui ne ferme jamais",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/team-duo.jpg"
+          },
+          {
+            "titre": "Des convoyeurs et des trieurs sous surveillance continue",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/team-grind-close.jpg"
+          },
+          {
+            "titre": "Des systèmes intralogistiques au rythme du e-commerce",
+            "lienLibelle": "Étude de cas Veepee",
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "photo": "/assets/web/team-duo.jpg"
+          },
+          {
+            "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
+            "lienLibelle": "Étude de cas Savoye",
+            "lienHref": "/preuves/savoye-migration-automates-norvege/",
+            "photo": "/assets/web/ph-robots-solaire.jpg"
+          },
+          {
+            "titre": "Des chantiers automatisés contrôlés point par point",
+            "lienLibelle": "Étude de cas Alstef Group",
+            "lienHref": "/preuves/alstef-group/",
+            "photo": "/assets/web/team-electric.jpg"
+          },
+          {
+            "titre": "Un centre logistique monté en six semaines",
+            "lienLibelle": "Étude de cas Aktid",
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/ph-technicien.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Êtes-vous implantés à Calais ?",
+            "reponse": "Nous n’avons pas de hub à Calais, et nous préférons le dire. Nos techniciens sont mobiles : ils viennent sur votre site, avec un chargé d’affaires qui connaît votre dossier, appuyés par le hub le plus proche."
+          },
+          {
+            "question": "Couvrez-vous tout la Côte d’Opale ?",
+            "reponse": "Oui : Calais, Boulogne-sur-Mer, Saint-Omer, Dunkerque Ouest et Berck. Au-delà, le réseau national prend le relais, avec un contrat unique et des comptes rendus au même format."
+          },
+          {
+            "question": "Quel délai pour une intervention à Calais ?",
+            "reponse": "Un rappel dans l'heure aux horaires ouvrés, une qualification assez précise pour éviter un second déplacement, et l'astreinte en option la nuit, le week-end et les jours fériés. Le circuit et les priorités s'écrivent au devis."
+          },
+          {
+            "question": "Pouvez-vous affecter un technicien à demeure sur notre site ?",
+            "reponse": "Absence ou départ, un profil équivalent prend le relais."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de fiabiliser un site où chaque heure d'arrêt se paie ?"
+      }
+    ]
+  },
+  "trous": [
+    {
+      "ligne": "Technicien en résidence possible, intégré à votre équipe sous 2 à 3 semaines.",
+      "pourquoi": "délai chiffré (« sous 2 à 3 semaines ») : seul « rappel dans l'heure » est autorisé. Intitulé du point 06 de « 04 Offre » : le point reste avec son bénéfice, son intitulé est vide."
+    },
+    {
+      "ligne": "Oui, avec l'offre résidence : un salarié Migen qui rejoint votre équipe, suivi par un référent, en poste sous 2 à 3 semaines.",
+      "pourquoi": "délai chiffré (« en poste sous 2 à 3 semaines ») : seul « rappel dans l'heure » est autorisé. Première phrase de la réponse à « Pouvez-vous affecter un technicien à demeure sur notre site ? », la seconde reste."
+    }
+  ]
+}

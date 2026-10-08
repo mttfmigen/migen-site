@@ -1,199 +1,237 @@
 {
   "url": "/secteurs/pharmaceutique/",
-  "source": "dessin : maquette/accueil-rendu.html, gabarit isSecteur, lignes 6278 à 6364. texte : supabase/import/corpus-analyse.json, produit par scripts/produit-secteurs.mjs.",
+  "titre_h1": "Vos équipements conformes. Vos lots libérés à temps.",
+  "source": "dessin : maquette/rendu/secteurs--pharmaceutique.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {
     "gabarit": "secteur",
-    "surtitre": "Secteur d'activité",
+    "pastille": "Maintenance pharmaceutique",
     "chapeau": "Le circuit de validation des interventions est écrit avec votre assurance qualité avant le premier geste. Chaque opération suit sa gamme, chaque écart se déclare, et la GMAO est alimentée dans l'instant, pas en fin de semaine.",
     "actions": [
       {
         "libelle": "Faire chiffrer ma maintenance pharmaceutique",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperesSurtitre": "Nos repères dans le secteur",
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option, aux mêmes règles documentaires.",
+    "formulaireHeroTitre": "Faire chiffrer ma maintenance pharmaceutique",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
-        "valeur": "+ 100",
-        "libelle": "collaborateurs, dont des automaticiens SIEMENS et Schneider et des roboticiens ABB et Fanuc"
+        "valeur": "+ 120",
+        "libelle": "Collaborateurs, dont des automaticiens SIEMENS et Schneider et des roboticiens ABB et Fanuc"
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, mêmes exigences documentaires partout"
+        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, mêmes exigences documentaires partout"
       }
     ],
-    "enjeuxSurtitre": "Les enjeux du secteur",
-    "enjeuxTitre": "Une intervention technique non documentée n'existe pas. Et une machine mal requalifiée peut bloquer un lot entier.",
-    "enjeux": [
+    "logosTitre": "Ils nous confient leurs sites industriels",
+    "logos": [
       {
-        "titre": "L'intervenant qui découvre les BPF chez vous est un risque.",
-        "texte": "Pour le lot, pour le médicament, pour votre certification. Pas une économie."
+        "nom": "Eaton",
+        "src": "/assets/clients/mq-70bce765c1a2.svg"
       },
       {
-        "titre": "Certaines opérations imposent une requalification avant tout retour en production.",
-        "texte": "Le technicien doit le savoir avant d'ouvrir l'armoire, pas après l'avoir refermée."
+        "nom": "Mersen",
+        "src": "/assets/clients/mq-eb9461b85e59.svg"
       },
       {
-        "titre": "On n'entre pas en ZAC comme dans un atelier de mécanique.",
-        "texte": "Tenues, sas, flux, gestion des particules : le comportement s'acquiert par l'expérience, pas par une note de service."
+        "nom": "Suez",
+        "src": "/assets/clients/mq-89100525ef89.svg"
       },
       {
-        "titre": "Vos auditeurs veulent la preuve écrite.",
-        "texte": "Gammes, comptes rendus, enregistrements, chaque donnée à sa place. L'inspection ne prévient pas toujours."
+        "nom": "Eiffage",
+        "src": "/assets/clients/mq-21daf7c60970.svg"
       },
       {
-        "titre": "Un arrêt non planifié sur une ligne de conditionnement réorganise un programme de fabrication entier.",
-        "texte": "Le coût ne s'arrête pas à la réparation."
+        "nom": "Ecocem",
+        "src": "/assets/clients/ecocem.png"
+      },
+      {
+        "nom": "Groupe Atlantic",
+        "src": "/assets/clients/groupe-atlantic.png",
+        "filtre": "invert(1) hue-rotate(180deg)"
+      },
+      {
+        "nom": "Tournaire",
+        "src": "/assets/clients/mq-7c01e175985e.png"
+      },
+      {
+        "nom": "Rector Lesage",
+        "src": "/assets/clients/rector-lesage.png"
+      },
+      {
+        "nom": "Joint Lyonnais",
+        "src": "/assets/clients/joint-lyonnais.png"
+      },
+      {
+        "nom": "Soprema",
+        "src": "/assets/clients/mq-127f9e03c53b.svg"
+      },
+      {
+        "nom": "WashTec",
+        "src": "/assets/clients/orthus-x-washtec.svg"
       }
     ],
-    "autresSurtitre": "Les autres secteurs",
-    "autres": [
-      {
-        "libelle": "Agroalimentaire",
-        "href": "/secteurs/agroalimentaire/"
-      },
-      {
-        "libelle": "Équipements logistiques",
-        "href": "/secteurs/logistique/"
-      },
-      {
-        "libelle": "Automobile",
-        "href": "/secteurs/automobile/"
-      },
-      {
-        "libelle": "Aéronautique",
-        "href": "/secteurs/aeronautique/"
-      },
-      {
-        "libelle": "Chimie",
-        "href": "/secteurs/chimie/"
-      },
-      {
-        "libelle": "Nucléaire",
-        "href": "/secteurs/nucleaire/"
-      },
-      {
-        "libelle": "Industrie lourde",
-        "href": "/secteurs/industrie-lourde/"
-      },
-      {
-        "libelle": "Industrie métallique",
-        "href": "/secteurs/industrie-metallique/"
-      },
-      {
-        "libelle": "Menuiserie industrielle",
-        "href": "/secteurs/menuiserie-industrielle/"
-      }
-    ],
-    "appelTitre": "Besoin d'un partenaire de maintenance compatible avec votre système qualité ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
-      "libelle": "Parler à un chargé d'affaires",
-      "href": "#formulaire"
+    "appelBouton": "Faire chiffrer ma maintenance pharmaceutique",
+    "problemePhoto": null,
+    "brefBande": "Besoin d'un intervenant déjà formé aux BPF et au comportement en ZAC ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Faire chiffrer ma maintenance pharmaceutique",
+      "href": "#besoin"
     },
-    "complement": [
+    "expertisesTitre": "Les expertises d’un site sous contrôle qualité",
+    "expertisesChapeau": "Zones propres, qualification, traçabilité : chaque intervention doit pouvoir être relue par un auditeur.",
+    "expertises": [
+      {
+        "titre": "Automatisme",
+        "texte": "Modifications tracées, sauvegardes de programmes, conformité des systèmes.",
+        "href": "/expertises/automatisme/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      },
+      {
+        "titre": "Pneumatique",
+        "texte": "Air comprimé propre et actionneurs des lignes de conditionnement.",
+        "href": "/expertises/pneumatique/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
+      },
+      {
+        "titre": "Mécanique",
+        "texte": "Remplacements documentés pièce par pièce, dans le respect des zones.",
+        "href": "/expertises/mecanique/",
+        "photo": "/assets/web/team-grind-front.jpg"
+      },
+      {
+        "titre": "Électrique",
+        "texte": "Consignations et interventions en environnement contrôlé.",
+        "href": "/expertises/electrique/",
+        "photo": "/assets/web/team-electric.jpg"
+      }
+    ],
+    "marquesFamille": "agro",
+    "sections": [
+      {
+        "type": "probleme",
+        "variante": "rangee",
+        "punchline": "Une intervention technique non documentée n'existe pas. Et une machine mal requalifiée peut bloquer un lot entier.",
+        "puces": [
+          {
+            "accroche": "L'intervenant qui découvre les BPF chez vous est un risque.",
+            "texte": "Pour le lot, pour le médicament, pour votre certification. Pas une économie."
+          },
+          {
+            "accroche": "Certaines opérations imposent une requalification avant tout retour en production.",
+            "texte": "Le technicien doit le savoir avant d'ouvrir l'armoire, pas après l'avoir refermée."
+          },
+          {
+            "accroche": "On n'entre pas en ZAC comme dans un atelier de mécanique.",
+            "texte": "Tenues, sas, flux, gestion des particules : le comportement s'acquiert par l'expérience, pas par une note de service."
+          },
+          {
+            "accroche": "Vos auditeurs veulent la preuve écrite.",
+            "texte": "Gammes, comptes rendus, enregistrements, chaque donnée à sa place. L'inspection ne prévient pas toujours."
+          },
+          {
+            "accroche": "Un arrêt non planifié sur une ligne de conditionnement réorganise un programme de fabrication entier.",
+            "texte": "Le coût ne s'arrête pas à la réparation."
+          }
+        ]
+      },
       {
         "type": "offre",
         "lignes": [
           {
             "prestation": {
-              "accroche": "Techniciens formés aux BPF avant la mission",
-              "texte": ", attestations fournies à vos équipes."
+              "accroche": "Techniciens formés aux BPF avant la mission attestations fournies à vos équipes."
             },
             "benefice": "Aucune formation à improviser sur site, aucun doute à lever pendant un audit."
           },
           {
             "prestation": {
               "accroche": "Cadrage écrit avec l'assurance qualité",
-              "texte": "périmètre, procédures applicables, niveaux d'habilitation, circuit de validation, conditions d'accès."
+              "texte": "Périmètre, procédures applicables, niveaux d'habilitation, circuit de validation, conditions d'accès."
             },
             "benefice": "Le cadre est posé avant le premier geste, fiche par fiche. Rien ne se négocie en cours d'intervention."
           },
           {
             "prestation": {
               "accroche": "Exécution tracée",
-              "texte": "chaque opération suit sa gamme, chaque pièce remplacée est enregistrée, chaque écart est déclaré."
+              "texte": "Chaque opération suit sa gamme, chaque pièce remplacée est enregistrée, chaque écart est déclaré."
             },
             "benefice": "Pas de correction silencieuse. Votre système qualité voit tout ce qui s'est passé."
           },
           {
             "prestation": {
-              "accroche": "GMAO alimentée en temps réel",
-              "texte": ", au format de votre référentiel documentaire."
+              "accroche": "GMAO alimentée en temps réel au format de votre référentiel documentaire."
             },
             "benefice": "L'inspection se prépare sur l'existant, sans reconstitution de dernière minute."
           },
           {
             "prestation": {
-              "accroche": "Requalification suivant le circuit défini avec vos équipes",
-              "texte": ", jamais improvisée."
+              "accroche": "Requalification suivant le circuit défini avec vos équipes jamais improvisée."
             },
             "benefice": "Rien ne repart en production sans validation. La règle du secteur est appliquée sans discussion."
           },
           {
             "prestation": {
               "accroche": "Comportement maîtrisé en zone à atmosphère contrôlée",
-              "texte": "habillage, flux, matériel dédié."
+              "texte": "Habillage, flux, matériel dédié."
             },
             "benefice": "Votre production et votre AQ n'ont pas à encadrer chaque déplacement de l'intervenant."
           },
           {
             "prestation": {
               "accroche": "Couverture du parc et des utilités",
-              "texte": "lignes de conditionnement, mélangeurs, granulateurs, comprimeuses, air comprimé, vide, eau purifiée côté distribution, HVAC en appui de vos titulaires."
+              "texte": "Lignes de conditionnement, mélangeurs, granulateurs, comprimeuses, air comprimé, vide, eau purifiée côté distribution, HVAC en appui de vos titulaires."
             },
             "benefice": "Un interlocuteur du process aux utilités, en coordination avec votre service technique."
           },
           {
             "prestation": {
-              "texte": "Exigence du site"
+              "accroche": "Exigence du site"
             },
             "benefice": "Réponse Migen"
           },
           {
             "prestation": {
-              "texte": "Formation BPF des intervenants"
+              "accroche": "Formation BPF des intervenants"
             },
             "benefice": "Techniciens formés avant la mission, attestations fournies"
           },
           {
             "prestation": {
-              "texte": "Documentation des interventions"
+              "accroche": "Documentation des interventions"
             },
             "benefice": "Comptes rendus au format de votre GMAO et de votre référentiel"
           },
           {
             "prestation": {
-              "texte": "Gestion des écarts"
+              "accroche": "Gestion des écarts"
             },
             "benefice": "Déclaration immédiate, jamais de correction silencieuse"
           },
           {
             "prestation": {
-              "texte": "Zones à atmosphère contrôlée"
+              "accroche": "Zones à atmosphère contrôlée"
             },
             "benefice": "Respect des flux, tenues et comportements, accueil sécurité suivi"
           },
           {
             "prestation": {
-              "texte": "Requalification"
+              "accroche": "Requalification"
             },
             "benefice": "Circuit défini avec l'assurance qualité, jamais improvisé"
           },
           {
             "prestation": {
-              "texte": "Astreinte"
+              "accroche": "Astreinte"
             },
-            "benefice": "24/24 et 7/7 en option, mêmes règles documentaires la nuit que le jour"
-          }
-        ],
-        "prose": [
-          {
-            "texte": "En appui, notre [bureau d'études](/offres/bureau-etudes/) conçoit les améliorations et la mise en conformité des machines, avec des dossiers techniques au niveau attendu par votre système documentaire."
+            "benefice": "la nuit, le week-end et les jours fériés en option, mêmes règles documentaires la nuit que le jour"
           }
         ]
       },
@@ -202,7 +240,7 @@
         "etapes": [
           {
             "titre": "Cadrage avec l'assurance qualité",
-            "texte": "périmètre, procédures applicables, habilitations, circuit de validation, conditions d'accès. Tout est écrit avant la première intervention."
+            "texte": "Périmètre, procédures applicables, habilitations, circuit de validation, conditions d'accès. Tout est écrit avant la première intervention."
           },
           {
             "titre": "Formation et habilitations vérifiées",
@@ -210,19 +248,19 @@
           },
           {
             "titre": "Intégration",
-            "texte": "plan de prévention, accueil sécurité, prise en main des lignes et des procédures propres à votre site."
+            "texte": "Plan de prévention, accueil sécurité, prise en main des lignes et des procédures propres à votre site."
           },
           {
             "titre": "Exécution tracée",
-            "texte": "gamme suivie, pièces enregistrées, écarts déclarés, GMAO alimentée dans l'instant."
+            "texte": "Gamme suivie, pièces enregistrées, écarts déclarés, GMAO alimentée dans l'instant."
           },
           {
             "titre": "Requalification",
-            "texte": "quand une opération touche un paramètre critique, la remise en production suit le circuit défini avec vos équipes. Essais, vérifications, enregistrements."
+            "texte": "Quand une opération touche un paramètre critique, la remise en production suit le circuit défini avec vos équipes. Essais, vérifications, enregistrements."
           },
           {
             "titre": "Revue",
-            "texte": "disponibilité, récurrence des pannes, respect du planning préventif, tendance mois par mois. Le suivi se lit en revue de direction comme en réunion technique."
+            "texte": "Disponibilité, récurrence des pannes, respect du planning préventif, tendance mois par mois. Le suivi se lit en revue de direction comme en réunion technique."
           }
         ]
       },
@@ -235,19 +273,13 @@
           },
           {
             "accroche": "La déclaration immédiate de tout écart",
-            "texte": "aucune correction silencieuse, aucune intervention non consignée. C'est la condition d'une maintenance compatible avec votre système qualité."
+            "texte": "Aucune correction silencieuse, aucune intervention non consignée. C'est la condition d'une maintenance compatible avec votre système qualité."
           },
           {
             "accroche": "Le respect du circuit de requalification",
-            "texte": "rien ne repart en production sans validation de vos équipes. Nous ne déclenchons jamais une remise en production pour gagner du temps."
+            "texte": "Rien ne repart en production sans validation de vos équipes. Nous ne déclenchons jamais une remise en production pour gagner du temps."
           }
         ]
-      },
-      {
-        "type": "cta",
-        "question": "Besoin d'un intervenant déjà formé aux BPF et au comportement en ZAC ?",
-        "bouton": "Faire chiffrer ma maintenance pharmaceutique",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
       },
       {
         "type": "preuves",
@@ -256,31 +288,54 @@
             "titre": "Deux techniciens en 3x8 sur des lignes de nutrition infantile, hygiène et traçabilité auditées",
             "texte": "site de Steenvoorde",
             "lienLibelle": "Étude de cas DANONE : lignes de production",
-            "lienHref": "/preuves/danone-lignes-de-production/"
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/mq-1ef16ef335a6.jpg"
           },
           {
             "titre": "Électromécanicien habilité risque chimique sur une remise en état de site, traitement des eaux industrielles",
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
-            "lienHref": "/preuves/suez-remise-en-etat/"
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve, matériaux",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
-            "lienHref": "/preuves/mersen/"
+            "lienHref": "/preuves/mersen/",
+            "photo": "/assets/web/x-elec-cablage.jpg"
           },
           {
             "titre": "Technicien affecté en continu à la fiabilité d'équipements de production en forte activité",
             "texte": "site proche de Paris",
             "lienLibelle": "Étude de cas FDJ : site proche de Paris",
-            "lienHref": "/preuves/fdj/"
+            "lienHref": "/preuves/fdj/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "Renfort de maintenance sur un site agroalimentaire de grande échelle",
             "texte": "depuis octobre 2024",
             "lienLibelle": "Étude de cas McCAIN : Belgique",
-            "lienHref": "/preuves/mccain-belgique/"
+            "lienHref": "/preuves/mccain-belgique/",
+            "photo": "/assets/web/mq-2d11362f7867.jpg"
+          },
+          {
+            "titre": "Un dispositif rodé, transposé sur un nouveau site",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-nouveau-site/",
+            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg"
+          },
+          {
+            "titre": "Monter, déplacer, renforcer, chantier après chantier",
+            "lienLibelle": "Étude de cas Soprema",
+            "lienHref": "/preuves/soprema/",
+            "photo": "/assets/web/mq-056f3c250981.jpg"
+          },
+          {
+            "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
+            "lienLibelle": "Étude de cas Salaison du Mâconnais",
+            "lienHref": "/preuves/salaison-du-maconnais/",
+            "photo": "/assets/web/mq-0699d4d92e7e.jpg"
           }
         ]
       },
@@ -309,9 +364,15 @@
           },
           {
             "question": "Intervenez-vous en urgence sur une ligne arrêtée ?",
-            "reponse": "Oui : le rappel arrive dans l'heure aux horaires ouvrés, et l'astreinte 24/24 et 7/7 couvre le reste en option, aux mêmes exigences documentaires."
+            "reponse": "Oui : le rappel arrive dans l'heure aux horaires ouvrés, et l'astreinte la nuit, le week-end et les jours fériés couvre le reste en option, aux mêmes exigences documentaires."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin d'un partenaire de maintenance compatible avec votre système qualité ?",
+        "bouton": "Parler à un chargé d'affaires",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
       }
     ]
   }

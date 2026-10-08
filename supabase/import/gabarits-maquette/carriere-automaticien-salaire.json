@@ -12,7 +12,11 @@
    ],
    "chiffre": {
     "valeur": "10 %",
-    "texte": "des candidats retenus, après un test technique et un entretien"
+    "texte": "des techniciens retenus, après un test technique et un entretien"
+   },
+   "photo": {
+    "src": "/assets/web/mq-056f3c250981.jpg",
+    "alt": "Technicien migen en intervention"
    }
   },
   "sections": [
@@ -25,7 +29,7 @@
      },
      {
       "valeur": "10 %",
-      "texte": "des candidats retenus après évaluation"
+      "texte": "des techniciens retenus après évaluation"
      },
      {
       "valeur": "4 agences",
@@ -185,7 +189,7 @@
      },
      {
       "titre": "Une sélection exigeante, assumée",
-      "texte": "Entretien technique et comportemental, 10 % des candidats retenus. Votre futur collègue a passé la même porte : le niveau d'équipe est votre premier avantage quotidien, et l'accueil est à la hauteur."
+      "texte": "Entretien technique et comportemental, 10 % des techniciens retenus. Votre futur collègue a passé la même porte : le niveau d'équipe est votre premier avantage quotidien, et l'accueil est à la hauteur."
      }
     ]
    },
@@ -228,7 +232,8 @@
     "items": [
      {
       "libelle": "Automaticien",
-      "href": "/carriere/automaticien/"
+      "href": "/carriere/automaticien/",
+      "photo": "/assets/web/mq-0699d4d92e7e.jpg"
      }
     ]
    }

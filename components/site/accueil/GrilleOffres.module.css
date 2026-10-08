@@ -1,23 +1,50 @@
-/* Survols de la grille d'offres. Ils vivent ici et non dans `app/globals.css` :
-   un fichier partagé entre agents produirait des conflits. Les valeurs sont
-   celles des attributs `style-hover` de la maquette, recopiées. */
+/* Survols et repli mobile de la grille d'offres. Ils vivent ici et non dans
+   `app/globals.css` : un fichier partagé entre agents produirait des conflits.
+   Les valeurs sont celles des attributs `style-hover` de la maquette et de ses
+   règles `.mg-off-*`, recopiées. */
 
-/* Carte « Zéro arrêt ». La maquette ne déclare pas de transition sur cette
-   carte : le déplacement est net, comme à l'écran validé. */
+/* scp9 : cartes « Full service » et « Zéro arrêt ». La maquette ne déclare pas
+   de transition sur ces cartes : le déplacement est net. */
 .carteLevee:hover {
   transform: translateY(-3px);
 }
 
-/* Bouton orange pleine couleur. Le `color` tient tête à la règle globale
-   `a:hover { color: var(--acc) }`, qui décolorerait le texte blanc. */
+/* scp3 : bouton orange des cartes 02 et 03. Le `color` tient tête à la règle
+   globale `a:hover { color: var(--acc) }`. */
 .lienAccent:hover {
   filter: brightness(0.93);
   transform: translateY(-1px);
   color: #fff;
 }
 
-/* Bouton discret sur fond de verre */
+/* scp8 : bouton orange de Résidence, sans reprise de couleur. */
+.lienResidence:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+}
+
+/* scpa : bouton discret sur fond de verre */
 .lienNeutre:hover {
   background: var(--chip);
   transform: translateY(-1px);
+}
+
+/* `.mg-off-img`, `.mg-off-main`, `.mg-off-in` de la maquette : sous 1000 px,
+   Résidence passe en tête sur toute la largeur et la photo redevient une carte
+   ordinaire ; sous 620 px, les garanties passent sous le texte. */
+@media (max-width: 1000px) {
+  .offImg {
+    grid-area: auto !important;
+    min-height: 300px !important;
+  }
+  .offMain {
+    order: -1;
+    grid-column: 1 / -1 !important;
+  }
+}
+@media (max-width: 620px) {
+  .offIn {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 18px !important;
+  }
 }

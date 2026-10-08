@@ -1,210 +1,199 @@
 {
   "url": "/implantations/maintenance-industrielle-avignon/",
+  "titre_h1": "Maintenance industrielle à Avignon et dans le Vaucluse",
   "contenu": {
     "gabarit": "ville",
+    "pastille": "Nos implantations",
     "chapeau": "Le Vaucluse vit au rythme des fruits et légumes. Marché d'intérêt national d'Avignon, stations de conditionnement de Cavaillon et de Carpentras, entrepôts de Courtine du couloir rhodanien : la saison commande tout. À côté, les procédés continus de Sorgues n'admettent aucune improvisation. Nos techniciens itinérants couvrent le bassin et se déplacent partout en France.",
     "actions": [
       {
         "libelle": "Demander une intervention à Avignon",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés couvre les nuits, les week-ends et les jours fériés.",
+    "formulaireHeroTitre": "Demander une intervention à Avignon",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "appelBouton": "Demander une intervention à Avignon",
+    "chiffres": [
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels accompagnés, dont plus de 80 réguliers"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental"
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, et des techniciens mobiles partout en France"
+        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, et des techniciens mobiles partout en France"
       }
     ],
-    "contact": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 couvre les nuits, les week-ends et les jours fériés.",
-    "constatTexte": "La calibreuse s'arrête en pleine campagne de conditionnement. Les palettes continuent d'arriver, et le fruit ne se stocke pas.",
-    "constatPuces": [
+    "hubLocal": {
+      "surtitre": "Votre hub local · Avignon",
+      "titre": "Avignon : les industries que nos techniciens connaissent déjà",
+      "photo": "/assets/web/team-electric.jpg",
+      "badge": "Techniciens itinérants",
+      "nom": "Avignon et ses environs",
+      "texte": "Nos techniciens itinérants couvrent Avignon et son bassin, appuyés par le réseau national Migen.",
+      "bouton": "Demander une intervention à Avignon",
+      "cartes": [
+        {
+          "surtitre": "Tissu principal",
+          "titre": "Logistique",
+          "texte": "Un rouleau bloqué fige un entrepôt entier.",
+          "lien": "Notre approche logistique",
+          "href": "/secteurs/logistique/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Chimie",
+          "texte": "La chimie ne laisse pas entrer n'importe qui.",
+          "lien": "Notre approche chimie",
+          "href": "/secteurs/chimie/"
+        }
+      ],
+      "zonesTitre": "Nos hubs",
+      "zones": [
+        {
+          "libelle": "Hub Lille",
+          "href": "/implantations/lille/"
+        },
+        {
+          "libelle": "Hub Lyon",
+          "href": "/implantations/lyon/"
+        },
+        {
+          "libelle": "Hub Nantes",
+          "href": "/implantations/nantes/"
+        },
+        {
+          "libelle": "Hub Paris",
+          "href": "/implantations/paris/"
+        },
+        {
+          "libelle": "Hub Strasbourg",
+          "href": "/implantations/strasbourg/"
+        },
+        {
+          "libelle": "Hub Toulouse",
+          "href": "/implantations/toulouse/"
+        },
+        {
+          "libelle": "Hub Marseille",
+          "href": "/implantations/marseille/"
+        },
+        {
+          "libelle": "Hub Bordeaux",
+          "href": "/implantations/bordeaux/"
+        },
+        {
+          "libelle": "Hub Metz",
+          "href": "/implantations/maintenance-industrielle-metz/"
+        },
+        {
+          "libelle": "Hub Dijon",
+          "href": "/implantations/maintenance-industrielle-dijon/"
+        }
+      ]
+    },
+    "complementOffre": [
       {
-        "texte": "Un arrêt en campagne coûte du produit perdu, pas seulement des heures de main d'œuvre.",
-        "accroche": "La saison commande, pas le calendrier de maintenance."
-      },
-      {
-        "texte": "Sur les plateformes de Courtine, la manutention ne supporte pas l'à-peu-près.",
-        "accroche": "Un rouleau bloqué fige un entrepôt entier."
-      },
-      {
-        "texte": "Consignation, permis de feu, espaces confinés : un prestataire sans le cadre écrit est un risque, pas une aide.",
-        "accroche": "La chimie ne laisse pas entrer n'importe qui."
-      },
-      {
-        "texte": "Il revient toujours plus tard, sous forme de casse.",
-        "accroche": "Le préventif saute dès que la charge monte."
-      },
-      {
-        "texte": "Le bassin recrute en agro, en logistique et en mécanique en même temps.",
-        "accroche": "Le bon technicien est déjà chez le voisin."
+        "texte": "Pour une mise en service, un transfert de ligne ou une extension, notre offre chantier prend le relais avec un chef de projet unique."
       }
     ],
-    "reponseTexte": "Pour une mise en service, un transfert de ligne ou une extension, notre offre [chantier](/offres/chantier/) prend le relais avec un chef de projet unique.",
-    "reponsePuces": [
+    "brefBande": "Besoin de passer la prochaine campagne sans arrêt subi ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Demander une intervention à Avignon",
+      "href": "#besoin"
+    },
+    "sections": [
       {
-        "texte": "Entretien technique et comportemental, 10 % des candidats retenus, habilitations à jour vérifiées.",
-        "accroche": "Le profil vous est présenté avant l'intervention."
+        "type": "probleme",
+        "punchline": "La calibreuse s'arrête en pleine campagne de conditionnement. Les palettes continuent d'arriver, et le fruit ne se stocke pas.",
+        "puces": [
+          {
+            "accroche": "La saison commande, pas le calendrier de maintenance.",
+            "texte": "Un arrêt en campagne coûte du produit perdu, pas seulement des heures de main d'œuvre."
+          },
+          {
+            "accroche": "Un rouleau bloqué fige un entrepôt entier.",
+            "texte": "Sur les plateformes de Courtine, la manutention ne supporte pas l'à-peu-près."
+          },
+          {
+            "accroche": "La chimie ne laisse pas entrer n'importe qui.",
+            "texte": "Consignation, permis de feu, espaces confinés : un prestataire sans le cadre écrit est un risque, pas une aide."
+          },
+          {
+            "accroche": "Le préventif saute dès que la charge monte.",
+            "texte": "Il revient toujours plus tard, sous forme de casse."
+          },
+          {
+            "accroche": "Le bon technicien est déjà chez le voisin.",
+            "texte": "Le bassin recrute en agro, en logistique et en mécanique en même temps."
+          }
+        ],
+        "variante": "rangee"
       },
-      {
-        "texte": "Plan de prévention, consignation, permis de feu et règles d'espaces confinés se traitent en préalable, pas en option.",
-        "accroche": "Le cadre de sécurité précède le travail."
-      },
-      {
-        "texte": "Inclus, exclu, conditions d'astreinte, conditions d'arrêt. Le cadre protège les deux parties.",
-        "accroche": "Le périmètre et la sortie sont écrits."
-      }
-    ],
-    "faq": [
-      {
-        "reponse": "Oui. Nous n'avons pas d'agence à Avignon et nous ne l'inventons pas : nos techniciens se déplacent partout en France et interviennent sur site. Votre demande est rappelée dans l'heure aux horaires ouvrés, et vous savez dès le premier appel si le besoin est tenable.",
-        "question": "Intervenez-vous vraiment dans le Vaucluse, alors que votre siège est à Lyon ?"
-      },
-      {
-        "reponse": "Avignon et Le Pontet, la zone de Courtine, Sorgues, Cavaillon, Carpentras et les zones d'activité de la périphérie. Au-delà, le relais passe au réseau national.",
-        "question": "Quelles communes couvrez-vous ?"
-      },
-      {
-        "reponse": "Oui, avec le cadre : plan de prévention, consignation, permis de feu, permis de travail, règles d'espaces confinés. Le point se fait à la qualification, avant le devis, jamais sur place.",
-        "question": "Vos techniciens peuvent-ils intervenir sur un site classé ?"
-      },
-      {
-        "reponse": "Oui. Le renfort saisonnier se prépare en amont : état des lieux, pièces critiques identifiées, créneaux réservés. Le préventif se resserre avant la montée en charge.",
-        "question": "Pouvez-vous intervenir uniquement en campagne, quelques semaines par an ?"
-      },
-      {
-        "reponse": "L'offre Zéro arrêt fonctionne en abonnement, trois niveaux de couverture, sur devis, engagement type 6 mois renouvelable, diagnostic gratuit au départ.",
-        "question": "Combien coûte un contrat de maintenance ?"
-      },
-      {
-        "reponse": "Oui. Reprise de l'historique, connexion à vos données d'arrêt, phase de recouvrement avec le prestataire sortant. La chaîne de responsabilité reste nette pendant la bascule.",
-        "question": "Pouvez-vous reprendre un contrat existant ?"
-      }
-    ],
-    "autres": [
-      {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
-      },
-      {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
-      },
-      {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
-      },
-      {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
-      },
-      {
-        "libelle": "Valence",
-        "href": "/implantations/lyon/valence/"
-      },
-      {
-        "libelle": "Nantes",
-        "href": "/implantations/nantes/"
-      },
-      {
-        "libelle": "Brest",
-        "href": "/implantations/nantes/brest/"
-      },
-      {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
-      },
-      {
-        "libelle": "paris",
-        "href": "/implantations/paris/"
-      },
-      {
-        "libelle": "Rouen",
-        "href": "/implantations/paris/rouen/"
-      },
-      {
-        "libelle": "Strasbourg",
-        "href": "/implantations/strasbourg/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
-      },
-      {
-        "libelle": "Toulouse",
-        "href": "/implantations/toulouse/"
-      },
-      {
-        "libelle": "Bordeaux",
-        "href": "/implantations/toulouse/bordeaux/"
-      }
-    ],
-    "reste": [
       {
         "type": "offre",
         "lignes": [
           {
-            "benefice": "Les révisions tombent quand la ligne est disponible, pas quand elle casse.",
             "prestation": {
-              "texte": ", resserré avant la saison et allégé pendant les creux.",
-              "accroche": "Préventif calé sur la campagne"
-            }
+              "accroche": "Préventif calé sur la campagne resserré avant la saison et allégé pendant les creux.",
+              "texte": ""
+            },
+            "benefice": "Les révisions tombent quand la ligne est disponible, pas quand elle casse."
           },
           {
-            "benefice": "Le même défaut ne revient pas trois fois dans l'année.",
             "prestation": {
-              "texte": "avec recherche de cause racine, du motoréducteur à l'armoire électrique.",
-              "accroche": "Dépannage sur site"
-            }
+              "accroche": "Dépannage sur site avec recherche de cause racine, du motoréducteur à l'armoire électrique.",
+              "texte": ""
+            },
+            "benefice": "Le même défaut ne revient pas trois fois dans l'année."
           },
           {
-            "benefice": "Vos sites classés accueillent une équipe qui connaît les règles avant d'arriver.",
             "prestation": {
-              "texte": "plan de prévention, consignation, permis de travail.",
-              "accroche": "Cadre de sécurité écrit avant l'intervention"
-            }
+              "accroche": "Cadre de sécurité écrit avant l'intervention",
+              "texte": "Plan de prévention, consignation, permis de travail."
+            },
+            "benefice": "Vos sites classés accueillent une équipe qui connaît les règles avant d'arriver."
           },
           {
-            "benefice": "Un seul contrat du quai de réception au quai d'expédition.",
             "prestation": {
-              "texte": "des plateformes : voir la [maintenance équipements logistiques](/secteurs/logistique/).",
-              "accroche": "Convoyeurs, quais et systèmes de tri"
-            }
+              "accroche": "Convoyeurs, quais et systèmes de tri des plateformes : voir la maintenance équipements logistiques.",
+              "texte": ""
+            },
+            "benefice": "Un seul contrat du quai de réception au quai d'expédition."
           },
           {
-            "benefice": "L'automate qui bloque trouve quelqu'un capable de le lire.",
             "prestation": {
-              "texte": "SIEMENS et Schneider, lecture des codes défaut, défauts intermittents.",
-              "accroche": "Automatisme et variation de vitesse"
-            }
+              "accroche": "Automatisme et variation de vitesse",
+              "texte": "SIEMENS et Schneider, lecture des codes défaut, défauts intermittents."
+            },
+            "benefice": "L'automate qui bloque trouve quelqu'un capable de le lire."
           },
           {
-            "benefice": "La dérive thermique se corrige avant de se voir dans le produit.",
             "prestation": {
-              "texte": "échangeurs, réseaux d'air, réseaux d'eau, chasse aux fuites.",
-              "accroche": "Froid industriel et utilités"
-            }
+              "accroche": "Froid industriel et utilités",
+              "texte": "Échangeurs, réseaux d'air, réseaux d'eau, chasse aux fuites."
+            },
+            "benefice": "La dérive thermique se corrige avant de se voir dans le produit."
           },
           {
-            "benefice": "Une panne du week-end en pleine campagne trouve un interlocuteur.",
             "prestation": {
-              "texte": ", mobilisation de techniciens mobiles partout en France.",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
+              "accroche": "Astreinte la nuit, le week-end et les jours fériés en option mobilisation de techniciens mobiles partout en France.",
+              "texte": ""
+            },
+            "benefice": "Une panne du week-end en pleine campagne trouve un interlocuteur."
           },
           {
-            "benefice": "Le poste que vous n'arrivez pas à pourvoir est tenu, remplacement assuré.",
             "prestation": {
-              "texte": "intégré à votre équipe, prise de poste en 2 à 3 semaines.",
-              "accroche": "Technicien en [Résidence](/offres/residence/)"
-            }
+              "accroche": "",
+              "texte": ""
+            },
+            "benefice": "Le poste que vous n'arrivez pas à pourvoir est tenu, remplacement assuré."
           }
         ]
       },
@@ -212,72 +201,144 @@
         "type": "deroule",
         "etapes": [
           {
-            "texte": "vous décrivez la panne ou le projet. Un chargé d'affaires rappelle dans l'heure aux horaires ouvrés.",
-            "titre": "Premier contact"
+            "titre": "Premier contact",
+            "texte": "Vous décrivez la panne ou le projet. Un chargé d'affaires rappelle dans l'heure aux horaires ouvrés."
           },
           {
-            "texte": "machines, accès au site, habilitations, contraintes d'hygiène et de sécurité. Tout se note avant le chiffrage.",
-            "titre": "Qualification"
+            "titre": "Qualification",
+            "texte": "Machines, accès au site, habilitations, contraintes d'hygiène et de sécurité. Tout se note avant le chiffrage."
           },
           {
-            "texte": "périmètre, créneaux, matériel, conditions horaires. L'exceptionnel se chiffre en amont.",
-            "titre": "Devis écrit"
+            "titre": "Devis écrit",
+            "texte": "Périmètre, créneaux, matériel, conditions horaires. L'exceptionnel se chiffre en amont."
           },
           {
-            "texte": "accueil sécurité, plan de prévention, consignation, diagnostic, réparation, redémarrage sécurisé.",
-            "titre": "Intervention"
+            "titre": "Intervention",
+            "texte": "Accueil sécurité, plan de prévention, consignation, diagnostic, réparation, redémarrage sécurisé."
           },
           {
-            "texte": "opérations, temps passé, pièces à prévoir, préconisations, versés dans votre GMAO.",
-            "titre": "Compte rendu"
+            "titre": "Compte rendu",
+            "texte": "Opérations, temps passé, pièces à prévoir, préconisations, versés dans votre GMAO."
           },
           {
-            "texte": "sur contrat, revue de la disponibilité et de la récurrence, équipement par équipement.",
-            "titre": "Suivi"
+            "titre": "Suivi",
+            "texte": "Sur contrat, revue de la disponibilité et de la récurrence, équipement par équipement."
           }
         ]
       },
       {
-        "type": "cta",
-        "bouton": "Demander une intervention à Avignon",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin de passer la prochaine campagne sans arrêt subi ?"
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Le profil vous est présenté avant l'intervention.",
+            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, habilitations à jour vérifiées."
+          },
+          {
+            "accroche": "Le cadre de sécurité précède le travail.",
+            "texte": "Plan de prévention, consignation, permis de feu et règles d'espaces confinés se traitent en préalable, pas en option."
+          },
+          {
+            "accroche": "Le périmètre et la sortie sont écrits.",
+            "texte": "Inclus, exclu, conditions d'astreinte, conditions d'arrêt. Le cadre protège les deux parties."
+          }
+        ]
       },
       {
         "type": "preuves",
         "preuves": [
           {
-            "texte": ", liquides et conditionnement poudre",
             "titre": "2 techniciens intégrés en 3x8 sur des lignes de nutrition infantile",
+            "texte": ", liquides et conditionnement poudre.",
+            "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "lienLibelle": "Étude de cas DANONE : lignes de production"
+            "photo": "/assets/web/x-tech-portrait.jpg"
           },
           {
-            "texte": ", avec habilitation dédiée",
             "titre": "Renfort de 6 mois sur un site de traitement des eaux industrielles à risque chimique",
+            "texte": ", avec habilitation dédiée.",
+            "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
+            "photo": "/assets/web/team-grind-front.jpg"
           },
           {
-            "texte": ", reprise complète en un mois",
             "titre": "6 techniciens polyvalents en permanence sur un contrat de préventif annuel logistique",
+            "texte": ", reprise complète en un mois.",
+            "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "lienLibelle": "Étude de cas VEEPEE : sites de Lyon"
+            "photo": "/assets/web/x-elec-cablage.jpg"
           },
           {
-            "texte": ", pour tenir les équipements en juillet et août",
             "titre": "Un technicien en renfort pendant les congés d'été",
+            "texte": ", pour tenir les équipements en juillet et août.",
+            "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "lienLibelle": "Étude de cas OGF : arrêt estival"
+            "photo": "/assets/web/team-duo.jpg"
+          },
+          {
+            "titre": "Maintenir un centre logistique qui ne ferme jamais",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/team-grind-impact.jpg"
+          },
+          {
+            "titre": "Des convoyeurs et des trieurs sous surveillance continue",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/team-electric.jpg"
+          },
+          {
+            "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
+            "lienLibelle": "Étude de cas Savoye",
+            "lienHref": "/preuves/savoye-migration-automates-norvege/",
+            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+          },
+          {
+            "titre": "Des chantiers automatisés contrôlés point par point",
+            "lienLibelle": "Étude de cas Alstef Group",
+            "lienHref": "/preuves/alstef-group/",
+            "photo": "/assets/web/ph-tuyaux.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Intervenez-vous vraiment dans le Vaucluse, alors que votre siège est à Lyon ?",
+            "reponse": "Oui. Nous n'avons pas d'agence à Avignon et nous ne l'inventons pas : nos techniciens se déplacent partout en France et interviennent sur site. Votre demande est rappelée dans l'heure aux horaires ouvrés, et vous savez dès le premier appel si le besoin est tenable."
+          },
+          {
+            "question": "Quelles communes couvrez-vous ?",
+            "reponse": "Avignon et Le Pontet, la zone de Courtine, Sorgues, Cavaillon, Carpentras et les zones d'activité de la périphérie. Au-delà, le relais passe au réseau national."
+          },
+          {
+            "question": "Vos techniciens peuvent-ils intervenir sur un site classé ?",
+            "reponse": "Oui, avec le cadre : plan de prévention, consignation, permis de feu, permis de travail, règles d'espaces confinés. Le point se fait à la qualification, avant le devis, jamais sur place."
+          },
+          {
+            "question": "Pouvez-vous intervenir uniquement en campagne, quelques semaines par an ?",
+            "reponse": "Oui. Le renfort saisonnier se prépare en amont : état des lieux, pièces critiques identifiées, créneaux réservés. Le préventif se resserre avant la montée en charge."
+          },
+          {
+            "question": "Combien coûte un contrat de maintenance ?",
+            "reponse": "L'offre Zéro arrêt fonctionne en abonnement, trois niveaux de couverture, sur devis, engagement type 6 mois renouvelable, diagnostic gratuit au départ."
+          },
+          {
+            "question": "Pouvez-vous reprendre un contrat existant ?",
+            "reponse": "Oui. Reprise de l'historique, connexion à vos données d'arrêt, phase de recouvrement avec le prestataire sortant. La chaîne de responsabilité reste nette pendant la bascule."
           }
         ]
       },
       {
         "type": "ctaFinal",
-        "bouton": "Demander une intervention à Avignon",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
         "question": "Besoin de fiabiliser vos lignes avant la montée en charge ?"
       }
     ]
-  }
+  },
+  "trous": [
+    {
+      "ligne": "Technicien en Résidence intégré à votre équipe, prise de poste en 2 à 3 semaines.",
+      "pourquoi": "délai chiffré : seul « rappel dans l'heure » est autorisé (contrat de rédaction et passation du client). Délai « prise de poste en 2 à 3 semaines ». Intitulé du point 08 de « 04 Offre » : le point reste avec son bénéfice, son intitulé est vide."
+    }
+  ]
 }

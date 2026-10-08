@@ -22,13 +22,20 @@ import { ROUTES_STATIQUES } from "@/lib/routes-statiques";
 const APP = fileURLToPath(new URL(".", import.meta.url));
 
 /* Un dossier de `app/` est une page publique s'il porte un `page.tsx` et que
-   son nom n'est ni un segment dynamique, ni un groupe, ni une route d'API. */
-const routesSurDisque = readdirSync(APP, { withFileTypes: true })
-  .filter((entree) => entree.isDirectory())
-  .map((entree) => entree.name)
-  .filter((nom) => !nom.startsWith("[") && !nom.startsWith("(") && nom !== "api")
-  .filter((nom) => existsSync(join(APP, nom, "page.tsx")))
-  .map((nom) => `/${nom}/`);
+   son nom n'est ni un segment dynamique, ni un groupe, ni une route d'API.
+   Les dossiers sont parcourus en profondeur : `/a-propos/equipe/` en est un. */
+function routesSous(dossier: string, prefixe: string): string[] {
+  return readdirSync(dossier, { withFileTypes: true })
+    .filter((entree) => entree.isDirectory())
+    .map((entree) => entree.name)
+    .filter((nom) => !nom.startsWith("[") && !nom.startsWith("(") && nom !== "api")
+    .flatMap((nom) => {
+      const route = `${prefixe}${nom}/`;
+      const sous = routesSous(join(dossier, nom), route);
+      return existsSync(join(dossier, nom, "page.tsx")) ? [route, ...sous] : sous;
+    });
+}
+const routesSurDisque = routesSous(APP, "/");
 
 if (existsSync(join(APP, "page.tsx"))) routesSurDisque.unshift("/");
 

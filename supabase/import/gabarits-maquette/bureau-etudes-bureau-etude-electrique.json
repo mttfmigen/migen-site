@@ -3,297 +3,315 @@
   "titre_h1": "Bureau d'étude électrique : du schéma à l'armoire qui tourne",
   "contenu": {
     "gabarit": "offre",
-    "pastille": "Bureau d’études",
-    "mention": "Nous vous rappelons dans l’heure, du lundi au vendredi de 8h00 à 18h30.",
-    "chapeau": "L’étude électrique se fait chez nous à quatre mains : notre [bureau d’étude mécanique](/bureau-etudes/) et ses électroniciens tiennent le dossier, nos électriciens industriels tiennent le terrain. Relevé, schémas, armoire, raccordement, mise en service.",
-    "actions": [
-      {
-        "libelle": "Faire chiffrer mon étude électrique",
-        "href": "#besoin"
-      }
-    ],
-    "formulaireHeroTitre": "",
-    "formulaireHeroMention": "Rappel dans l’heure",
-    "reperesReassurance": [
-      {
-        "valeur": "Ingénieurs",
-        "libelle": "conception, calculs, CAO, choix des technologies"
-      },
-      {
-        "valeur": "Projeteurs",
-        "libelle": "plans, schémas, dossiers de fabrication"
-      },
-      {
-        "valeur": "Chefs de projet",
-        "libelle": "du cadrage à la mise en service, un seul interlocuteur"
-      }
-    ],
-    "chiffres": [
-      {
-        "valeur": "+ 120",
-        "libelle": "Collaborateurs · techniciens salariés Migen, pas de chaîne d'intermédiaires."
-      },
-      {
-        "valeur": "4",
-        "libelle": "Agences · Lyon (siège), Montréal, Dubaï, Madrid, et des hubs techniques en France."
-      },
-      {
-        "valeur": "10 %",
-        "libelle": "Des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
-      }
-    ],
-    "brefBande": "Besoin de savoir ce que porte réellement votre tableau avant de lancer un projet ?",
-    "brefMention": "Un relevé chiffré vaut mieux qu'un schéma de 2016. Le formulaire tient en quatre champs.",
-    "brefBouton": {
-      "libelle": "Faire chiffrer mon étude électrique",
-      "href": "#besoin"
-    },
-    "problemePhoto": null,
-    "complementOffre": [
-      {
-        "titre": "Le terrain qui va avec",
-        "texte": "Le dossier ne vaut que s'il est tenu par des gens qui travaillent sur l'installation."
-      },
-      {
-        "titre": "Ce que nous ne faisons pas",
-        "puces": [
-          {
-            "accroche": "Nous ne sommes ni fabricant ni distributeur de matériel électrique.",
-            "texte": "Aucune marge sur les composants que nous vous faisons acheter."
-          },
-          {
-            "accroche": "Nous n'annonçons aucun délai chiffré.",
-            "texte": "Un relevé d'existant dépend de ce qu'on trouve derrière la porte de l'armoire."
-          }
-        ]
-      }
-    ],
-    "complementGaranties": [
-      {
-        "texte": "La documentation vous appartient. Schémas, folios, nomenclatures : vous repartez avec des fichiers exploitables par vos équipes et par n'importe quel autre prestataire."
-      }
-    ],
-    "marquesFamille": "auto",
-    "marquesFamilles": [
-      "auto",
-      "fluide"
-    ],
-    "sections": [
-      {
-        "type": "probleme",
-        "punchline": "Le schéma de l'armoire est faux depuis huit ans, et tout le monde fait avec.",
-        "puces": [
-          {
-            "accroche": "Les modifications ne sont pas reportées.",
-            "texte": "Un départ ajouté ici, un shunt posé là, et le folio ne correspond plus à la réalité."
-          },
-          {
-            "accroche": "Une seule personne sait.",
-            "texte": "Le jour où elle est absente, l'atelier est aveugle devant un bornier."
-          },
-          {
-            "accroche": "Les repères ont disparu.",
-            "texte": "Câbles non étiquetés, borniers illisibles : chaque recherche de défaut recommence à zéro."
-          },
-          {
-            "accroche": "Le projet d'extension bloque.",
-            "texte": "Impossible de chiffrer un ajout de puissance sans savoir ce que porte déjà le tableau."
-          }
-        ],
-        "variante": "rangee"
-      },
-      {
-        "type": "offre",
-        "lignes": [
-          {
-            "prestation": {
-              "accroche": "Relevé de l'existant",
-              "texte": "identification des départs, repérage des câbles et des borniers, reconstitution des folios manquants"
-            },
-            "benefice": "Vous récupérez une installation lisible. Toute intervention suivante démarre avec une longueur d'avance"
-          },
-          {
-            "prestation": {
-              "accroche": "Schémas et dossier technique",
-              "texte": "puissance, commande, plans de câblage, nomenclature, notices"
-            },
-            "benefice": "Un document unique fait foi. Vos équipes, vos prestataires et un contrôleur lisent la même chose"
-          },
-          {
-            "prestation": {
-              "accroche": "Définition d'armoire",
-              "texte": "protections, distribution, départs moteurs, implantation, choix des composants"
-            },
-            "benefice": "Le choix des composants est motivé par la tenue et la disponibilité, jamais par un catalogue fournisseur"
-          },
-          {
-            "prestation": {
-              "texte": "Consultation et suivi de réalisation chez le tableautier de votre choix"
-            },
-            "benefice": "Les offres se comparent sur des bases identiques. Nous ne vendons aucun tableau, aucune marge cachée"
-          },
-          {
-            "prestation": {
-              "texte": "Raccordement et mise en service par nos électriciens industriels, consignations selon les règles"
-            },
-            "benefice": "Celui qui a écrit le schéma est joignable pendant la mise en service. Les écarts se règlent sur place"
-          },
-          {
-            "prestation": {
-              "texte": "Mise à jour documentaire après travaux, existant compris"
-            },
-            "benefice": "La documentation reste vraie après notre passage. C'est ce qui manque presque partout"
-          }
-        ]
-      },
-      {
-        "type": "deroule",
-        "etapes": [
-          {
-            "titre": "Votre appel ou votre formulaire.",
-            "texte": "Rappel dans l'heure par un interlocuteur technique. Nature de l'installation, documentation disponible, contraintes de production."
-          },
-          {
-            "titre": "Visite et relevé.",
-            "texte": "Ce qui existe, ce qui est repéré, ce qui ne l'est plus. Sortie : un état des lieux écrit et chiffré."
-          },
-          {
-            "titre": "Schémas et dossier.",
-            "texte": "Puissance, commande, câblage, nomenclature. Le dossier est relu avec vos équipes avant d'être figé."
-          },
-          {
-            "titre": "Définition et consultation.",
-            "texte": "Armoire, protections, départs. Vous consultez les tableautiers avec un dossier identique pour tous."
-          },
-          {
-            "titre": "Réalisation et réception.",
-            "texte": "Suivi chez le tableautier, contrôle avant livraison sur site."
-          },
-          {
-            "titre": "Raccordement et mise en service.",
-            "texte": "Nos électriciens posent, raccordent, consignent et déconsignent selon une procédure écrite à l'avance."
-          },
-          {
-            "titre": "Remise de la documentation à jour.",
-            "texte": "Une mise en service sans documentation ne sert personne six mois plus tard."
-          }
-        ],
-        "variante": "tuiles"
-      },
-      {
-        "type": "garanties",
-        "puces": [
-          {
-            "accroche": "Un rappel dans l'heure",
-            "texte": " du lundi au vendredi, 8h00 à 18h30, par téléphone, et une astreinte la nuit, le week-end et les jours fériés quand l'installation est arrêtée."
-          },
-          {
-            "accroche": "Un seul interlocuteur",
-            "texte": " du relevé à la mise en service. Personne ne prend votre dossier en marche."
-          },
-          {
-            "accroche": "Des intervenants évalués",
-            "texte": "entretien technique et comportemental à l'entrée, 10 % des candidats retenus, résultats partagés avec vous. Sur une installation sous tension, ce filtre n'est pas décoratif."
-          }
-        ]
-      },
-      {
-        "type": "preuves",
-        "preuves": [
-          {
-            "titre": "Étude de cas EIFFAGE : partenariat",
-            "texte": "Trois techniciens en maintenance préventive sur une installation photovoltaïque de grande envergure.",
-            "lienLibelle": "Étude de cas EIFFAGE : partenariat",
-            "lienHref": "/preuves/eiffage/"
-          },
-          {
-            "titre": "Étude de cas SUEZ : remise en état d'un site",
-            "texte": "Un technicien électromécanicien mobilisé six mois en environnement à risque chimique.",
-            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
-            "lienHref": "/preuves/suez-remise-en-etat/"
-          },
-          {
-            "titre": "Étude de cas MERSEN : nouvelles lignes",
-            "texte": "2025, près de Lyon. Un automaticien SIEMENS sur site pour le démarrage d'une ligne de production neuve.",
-            "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
-            "lienHref": "/preuves/mersen/"
-          },
-          {
-            "titre": "Étude de cas JOINT LYONNAIS : défaillances machines",
-            "texte": "Lyon, depuis février 2024. Diagnostic sur site et plusieurs solutions chiffrées, calées sur le budget d'une PME.",
-            "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines",
-            "lienHref": "/preuves/joint-lyonnais/"
-          }
-        ]
-      },
-      {
-        "type": "objections",
-        "questions": [
-          {
-            "question": "Pouvez-vous travailler sans schéma d'origine ?",
-            "reponse": "Oui, et c'est le cas le plus fréquent. Le relevé de l'existant est une prestation à part entière, chiffrée avant d'être lancée. Vous savez ce qu'elle coûte avant de décider."
-          },
-          {
-            "question": "Faites-vous les travaux, ou seulement l'étude ?",
-            "reponse": "Les deux, et séparément si vous préférez. Un bureau d'étude électrique qui ne pose jamais rien finit par dessiner des choses impossibles à câbler. Nos électriciens raccordent et mettent en service."
-          },
-          {
-            "question": "Fournissez-vous l'armoire ?",
-            "reponse": "Non. Nous définissons, nous rédigeons le dossier, vous consultez les tableautiers de votre choix, nous suivons la réalisation et nous réceptionnons. Nous ne prenons aucune marge sur le matériel."
-          },
-          {
-            "question": "Qui intervient réellement sur mon installation ?",
-            "reponse": "Des électriciens et des automaticiens salariés Migen, habilités selon les exigences de votre site, évalués en entretien technique et comportemental : 10 % des candidats retenus."
-          },
-          {
-            "question": "Pouvez-vous reprendre un projet commencé par un autre prestataire ?",
-            "reponse": "Oui. Nous repartons de ce qui existe, nous vérifions ce qui a été réalisé, nous chiffrons le reste à faire. Aucune obligation de tout recommencer."
-          },
-          {
-            "question": "Intervenez-vous partout en France ?",
-            "reponse": "Oui. Quatre agences, Lyon (siège), Montréal, Dubaï, Madrid, et des hubs de techniciens dans les grandes villes de France. Le hub le plus proche reste votre point d'entrée."
-          }
-        ]
-      },
-      {
-        "type": "ctaFinal",
-        "question": "Besoin d'un dossier électrique qui corresponde enfin à votre installation ?",
-        "bouton": "Faire chiffrer mon étude électrique",
-        "href": "#besoin"
-      }
-    ],
-    "pagesLiees": [
-      {
-        "titre": "Maintenance électrique industrielle",
-        "phrase": "Électriciens industriels habilités, accueillis à votre protocole de sécurité, consignations dans les règles. Voir maintenance électrique industrielle.",
-        "href": "/expertises/electrique/"
-      },
-      {
-        "titre": "Automatisme industriel",
-        "phrase": "Automaticiens SIEMENS et Schneider quand la partie commande est en jeu. Voir automatisme industriel.",
-        "href": "/expertises/automatisme/"
-      },
-      {
-        "titre": "Bureau d'étude électronique",
-        "phrase": "Électroniciens du bureau d'études quand une carte ou une fonction de commande doit être reprise. Voir bureau d'étude électronique.",
-        "href": "/bureau-etudes/bureau-etude-electronique/"
-      },
-      {
-        "titre": "Mise en conformité machine",
-        "phrase": "Notre part est décrite sur mise en conformité machine.",
-        "href": "/bureau-etudes/mise-en-conformite-machine/"
-      },
-      {
-        "titre": "Technicien en résidence",
-        "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
-        "href": "/offres/residence/"
-      },
-      {
-        "titre": "Zéro arrêt",
-        "phrase": "La maintenance en abonnement, au forfait mensuel.",
-        "href": "/offres/zero-arret/"
-      }
-    ],
-    "pagesLieesTitre": "Les offres et prestations voisines"
+    "generique": {
+      "url": "/bureau-etudes/bureau-etude-electrique/",
+      "mode": "vente",
+      "famille": "Offres",
+      "mots": 1328,
+      "fil": [
+        {
+          "label": "Accueil",
+          "href": "/"
+        },
+        {
+          "label": "Bureau d'études industriel : des études qui tiennent au montage",
+          "href": "/bureau-etudes/"
+        },
+        {
+          "label": "Bureau d'étude électrique : du schéma à l'armoire qui tourne",
+          "href": "/bureau-etudes/bureau-etude-electrique/"
+        }
+      ],
+      "liees": [
+        {
+          "h1": "Bureau d'études industriel : des études qui tiennent au montage",
+          "fam": "Offres",
+          "href": "/bureau-etudes/"
+        },
+        {
+          "h1": "Bureau d'étude électronique : une carte pensée pour être réparée",
+          "fam": "Offres",
+          "href": "/bureau-etudes/bureau-etude-electronique/"
+        },
+        {
+          "h1": "Mise en conformité machine : fixez le calendrier avant l'inspection",
+          "fam": "Offres",
+          "href": "/bureau-etudes/mise-en-conformite-machine/"
+        },
+        {
+          "h1": "Entreprise de maintenance industrielle",
+          "fam": "Offres",
+          "href": "/entreprise-maintenance-industrielle/"
+        },
+        {
+          "h1": "Maintenance industrielle : six offres, une seule exigence",
+          "fam": "Offres",
+          "href": "/offres/"
+        },
+        {
+          "h1": "Arrêt technique de maintenance industrielle",
+          "fam": "Offres",
+          "href": "/offres/arret-technique/"
+        }
+      ],
+      "blocs": [
+        {
+          "type": "p",
+          "text": "L'étude électrique se fait chez nous à quatre mains : notre [bureau d'étude mécanique](/bureau-etudes/) et ses électroniciens tiennent le dossier, nos électriciens industriels tiennent le terrain. Relevé, schémas, armoire, raccordement, mise en service."
+        },
+        {
+          "type": "p",
+          "text": "**Une armoire que personne ne sait plus lire ?**"
+        },
+        {
+          "type": "quote",
+          "text": "[Faire chiffrer mon étude électrique](/contact/) · 04 78 33 72 05"
+        },
+        {
+          "type": "p",
+          "text": "**Nous vous rappelons dans l'heure**, du lundi au vendredi de 8h00 à 18h30. Astreinte quand une installation est à l'arrêt."
+        },
+        {
+          "type": "h2",
+          "text": "Chiffres clés"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "**+120** : collaborateurs · techniciens salariés Migen, pas de chaîne d'intermédiaires.",
+            "**+200** : clients industriels accompagnés",
+            "**4** : agences · Lyon (siège), Montréal, Dubaï, Madrid, et des hubs techniques en France.",
+            "**10 %** : des techniciens retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Le problème"
+        },
+        {
+          "type": "h3",
+          "text": "Le schéma de l'armoire est faux depuis huit ans, et tout le monde fait avec."
+        },
+        {
+          "type": "p",
+          "text": "**Le constat.** Une installation électrique industrielle dérive plus vite que sa documentation."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "**Les modifications ne sont pas reportées.** Un départ ajouté ici, un shunt posé là, et le folio ne correspond plus à la réalité.",
+            "**Une seule personne sait.** Le jour où elle est absente, l'atelier est aveugle devant un bornier.",
+            "**Les repères ont disparu.** Câbles non étiquetés, borniers illisibles : chaque recherche de défaut recommence à zéro.",
+            "**Le projet d'extension bloque.** Impossible de chiffrer un ajout de puissance sans savoir ce que porte déjà le tableau."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "**Le coût de l'inaction.** Une recherche de défaut qui dure deux jours au lieu de deux heures. Et un risque qui ne se voit que le jour où il se réalise."
+        },
+        {
+          "type": "p",
+          "text": "**La réponse.** Repartir du réel : relever l'existant, produire un dossier juste, puis faire les travaux avec ce dossier en main."
+        },
+        {
+          "type": "h2",
+          "text": "L’offre"
+        },
+        {
+          "type": "h3",
+          "text": "Ce que couvre l'étude électrique"
+        },
+        {
+          "type": "table",
+          "head": [
+            "Prestation",
+            "Ce que vous y gagnez"
+          ],
+          "rows": [
+            [
+              "**Relevé de l'existant** : identification des départs, repérage des câbles et des borniers, reconstitution des folios manquants",
+              "Vous récupérez une installation lisible. Toute intervention suivante démarre avec une longueur d'avance"
+            ],
+            [
+              "**Schémas et dossier technique** : puissance, commande, plans de câblage, nomenclature, notices",
+              "Un document unique fait foi. Vos équipes, vos prestataires et un contrôleur lisent la même chose"
+            ],
+            [
+              "**Définition d'armoire** : protections, distribution, départs moteurs, implantation, choix des composants",
+              "Le choix des composants est motivé par la tenue et la disponibilité, jamais par un catalogue fournisseur"
+            ],
+            [
+              "**Consultation et suivi de réalisation** chez le tableautier de votre choix",
+              "Les offres se comparent sur des bases identiques. Nous ne vendons aucun tableau, aucune marge cachée"
+            ],
+            [
+              "**Raccordement et mise en service** par nos électriciens industriels, consignations selon les règles",
+              "Celui qui a écrit le schéma est joignable pendant la mise en service. Les écarts se règlent sur place"
+            ],
+            [
+              "**Mise à jour documentaire** après travaux, existant compris",
+              "La documentation reste vraie après notre passage. C'est ce qui manque presque partout"
+            ]
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "Le terrain qui va avec"
+        },
+        {
+          "type": "p",
+          "text": "Le dossier ne vaut que s'il est tenu par des gens qui travaillent sur l'installation."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "**Électriciens industriels habilités**, accueillis à votre protocole de sécurité, consignations dans les règles. Voir [maintenance électrique industrielle](/expertises/electrique/).",
+            "**Automaticiens SIEMENS et Schneider** quand la partie commande est en jeu. Voir [automatisme industriel](/expertises/automatisme/).",
+            "**Électroniciens du bureau d'études** quand une carte ou une fonction de commande doit être reprise. Voir [bureau d'étude électronique](/bureau-etudes/bureau-etude-electronique/)."
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "Ce que nous ne faisons pas"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "**Nous ne délivrons aucune attestation ni aucun rapport de vérification réglementaire.** Ce rôle revient à un organisme accrédité indépendant que vous choisissez. Notre part est décrite sur [mise en conformité machine](/bureau-etudes/mise-en-conformite-machine/).",
+            "**Nous ne sommes ni fabricant ni distributeur de matériel électrique.** Aucune marge sur les composants que nous vous faisons acheter.",
+            "**Nous n'annonçons aucun délai chiffré.** Un relevé d'existant dépend de ce qu'on trouve derrière la porte de l'armoire."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Le déroulé"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "**Votre appel ou votre formulaire.** Rappel dans l'heure par un interlocuteur technique. Nature de l'installation, documentation disponible, contraintes de production.",
+            "**Visite et relevé.** Ce qui existe, ce qui est repéré, ce qui ne l'est plus. Sortie : un état des lieux écrit et chiffré.",
+            "**Schémas et dossier.** Puissance, commande, câblage, nomenclature. Le dossier est relu avec vos équipes avant d'être figé.",
+            "**Définition et consultation.** Armoire, protections, départs. Vous consultez les tableautiers avec un dossier identique pour tous.",
+            "**Réalisation et réception.** Suivi chez le tableautier, contrôle avant livraison sur site.",
+            "**Raccordement et mise en service.** Nos électriciens posent, raccordent, consignent et déconsignent selon une procédure écrite à l'avance.",
+            "**Remise de la documentation à jour.** Une mise en service sans documentation ne sert personne six mois plus tard."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Ce que nous garantissons"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "**Un rappel dans l'heure** du lundi au vendredi, 8h00 à 18h30, au 04 78 33 72 05, et une astreinte quand l'installation est arrêtée.",
+            "**Un seul interlocuteur** du relevé à la mise en service. Personne ne prend votre dossier en marche.",
+            "**Des intervenants évalués** : entretien technique et comportemental à l'entrée, 10 % des techniciens retenus, résultats partagés avec vous. Sur une installation sous tension, ce filtre n'est pas décoratif."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "**La documentation vous appartient.** Schémas, folios, nomenclatures : vous repartez avec des fichiers exploitables par vos équipes et par n'importe quel autre prestataire."
+        },
+        {
+          "type": "p",
+          "text": "**Besoin de savoir ce que porte réellement votre tableau avant de lancer un projet ?**"
+        },
+        {
+          "type": "quote",
+          "text": "[Faire chiffrer mon étude électrique](/contact/) · 04 78 33 72 05, rappel dans l'heure"
+        },
+        {
+          "type": "p",
+          "text": "Un relevé chiffré vaut mieux qu'un schéma de 2016. Le formulaire tient en quatre champs."
+        },
+        {
+          "type": "h2",
+          "text": "Nos références"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "[Étude de cas EIFFAGE : partenariat](/preuves/eiffage/) · Trois techniciens en maintenance préventive sur une installation photovoltaïque de grande envergure.",
+            "[Étude de cas SUEZ : remise en état d'un site](/preuves/suez-remise-en-etat/) · Un technicien électromécanicien mobilisé six mois en environnement à risque chimique.",
+            "[Étude de cas MERSEN : nouvelles lignes](/preuves/mersen/) · 2025, près de Lyon. Un automaticien SIEMENS sur site pour le démarrage d'une ligne de production neuve.",
+            "[Étude de cas JOINT LYONNAIS : défaillances machines](/preuves/joint-lyonnais/) · Lyon, depuis février 2024. Diagnostic sur site et plusieurs solutions chiffrées, calées sur le budget d'une PME."
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "Toutes nos réalisations documentées : [Preuves : nos réalisations](/preuves/)"
+        },
+        {
+          "type": "h2",
+          "text": "Questions fréquentes"
+        },
+        {
+          "type": "p",
+          "text": "**Pouvez-vous travailler sans schéma d'origine ?**"
+        },
+        {
+          "type": "p",
+          "text": "Oui, et c'est le cas le plus fréquent. Le relevé de l'existant est une prestation à part entière, chiffrée avant d'être lancée. Vous savez ce qu'elle coûte avant de décider."
+        },
+        {
+          "type": "p",
+          "text": "**Faites-vous les travaux, ou seulement l'étude ?**"
+        },
+        {
+          "type": "p",
+          "text": "Les deux, et séparément si vous préférez. Un bureau d'étude électrique qui ne pose jamais rien finit par dessiner des choses impossibles à câbler. Nos électriciens raccordent et mettent en service."
+        },
+        {
+          "type": "p",
+          "text": "**Fournissez-vous l'armoire ?**"
+        },
+        {
+          "type": "p",
+          "text": "Non. Nous définissons, nous rédigeons le dossier, vous consultez les tableautiers de votre choix, nous suivons la réalisation et nous réceptionnons. Nous ne prenons aucune marge sur le matériel."
+        },
+        {
+          "type": "p",
+          "text": "**Qui intervient réellement sur mon installation ?**"
+        },
+        {
+          "type": "p",
+          "text": "Des électriciens et des automaticiens salariés Migen, habilités selon les exigences de votre site, évalués en entretien technique et comportemental : 10 % des techniciens retenus."
+        },
+        {
+          "type": "p",
+          "text": "**Pouvez-vous reprendre un projet commencé par un autre prestataire ?**"
+        },
+        {
+          "type": "p",
+          "text": "Oui. Nous repartons de ce qui existe, nous vérifions ce qui a été réalisé, nous chiffrons le reste à faire. Aucune obligation de tout recommencer."
+        },
+        {
+          "type": "p",
+          "text": "**Intervenez-vous partout en France ?**"
+        },
+        {
+          "type": "p",
+          "text": "Oui. Quatre agences, Lyon (siège), Montréal, Dubaï, Madrid, et des hubs de techniciens dans les grandes villes de France. Le hub le plus proche reste votre point d'entrée."
+        },
+        {
+          "type": "p",
+          "text": "Plus de 200 clients travaillent avec le groupe dans la durée, de la PME au site multi-lignes."
+        },
+        {
+          "type": "p",
+          "text": "**Besoin d'un dossier électrique qui corresponde enfin à votre installation ?**"
+        },
+        {
+          "type": "quote",
+          "text": "[Faire chiffrer mon étude électrique](/contact/) · 04 78 33 72 05 Rappel dans l'heure du lundi au vendredi, 8h00 à 18h30. Astreinte."
+        },
+        {
+          "type": "quote",
+          "text": "À lire aussi : [bureau d'étude mécanique](/bureau-etudes/) · [bureau d'étude électronique](/bureau-etudes/bureau-etude-electronique/) · [retrofit machine industrielle](/offres/retrofit/)"
+        }
+      ]
+    }
   }
 }

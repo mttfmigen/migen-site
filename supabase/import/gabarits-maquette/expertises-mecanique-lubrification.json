@@ -1,80 +1,43 @@
 {
+  "_source": "maquette/rendu/expertises--mecanique--lubrification.html (capture du 07/10 21h12, 16 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (littéral, entités seules décodées), relevé par data-dc-tpl, contrôlé par components/site/expertises/specialite/verification-specialite.tsx. Ni « 02 Domaines » ni « Complément 2 » dans la capture ; « Complément 4 » présent. Problème dessiné « colonne », photo de la colonne mesurée mq-e6322efcd358. Marques : famille « mo » (BRAND_RULES de la maquette, une seule famille, pas de rail). PHOTOS DES RÉFÉRENCES MESURÉES, PAS CHOISIES : octets des images du rail servis par la maquette vivante (localhost:4352, 08/10), sha256 complet rapproché de public/assets/web ; ordre et identité des blobs recoupés avec la capture : mq-2a8c78b5c75c, mq-e6322efcd358, mq-0b70202fed79, mq-2a6115ec9fe0, mq-e69a240d8656, mq-339d39e2a674, mq-17e2f3bce95f, mq-dcd9cac6ffbf.",
   "url": "/expertises/mecanique/lubrification/",
+  "titre_h1": "Lubrification industrielle : la panne la moins chère est celle qu’on graisse à temps",
   "contenu": {
-    "gabarit": "domaine",
+    "gabarit": "specialite",
+    "pastille": "Expertises",
     "chapeau": "Un plan écrit point par point, avec le produit, la quantité et la fréquence, puis des rondes tenues et tracées sur site. Trois analyses d'huile par an disent quand vidanger, au lieu de le décider au calendrier.",
-    "boutons": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés.",
+    "appelBouton": "Demander un plan de graissage",
+    "actions": [
       {
-        "libelle": "Demander un plan de graissage"
+        "libelle": "Demander un plan de graissage",
+        "href": "#besoin"
       }
     ],
-    "traitements": [
-      "Le relevé complet de vos points à lubrifier",
-      "Le choix des références par la physique, pas par l'habitude du magasin",
-      "La vérification des compatibilités",
-      "Les rondes de graissage prises en charge",
-      "L'analyse d'huile et sa lecture",
-      "Le traitement des circuits pollués",
-      "L'amélioration du dispositif"
-    ],
-    "autres": [
+    "formulaireHeroTitre": "Demander un plan de graissage",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
-        "libelle": "Automatisme industriel",
-        "href": "/expertises/automatisme/"
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, après entretien technique ET comportemental"
       },
       {
-        "libelle": "Maintenance électrique industrielle",
-        "href": "/expertises/electrique/"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
-      },
-      {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Maintenance robotique",
-        "href": "/expertises/robotique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
+        "valeur": "en continu et tous les jours",
+        "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "cta": {
-      "question": "Besoin que vos roulements gagnent des années au lieu de casser en pleine production ?",
-      "bouton": {
-        "libelle": "Demander un plan de graissage"
-      }
-    },
-    "reste": [
+    "problemePhoto": "/assets/web/mq-e6322efcd358.jpg",
+    "complementOffre": [
       {
-        "type": "chiffres",
-        "chiffres": [
-          {
-            "valeur": "10 %",
-            "libelle": "des candidats retenus, après entretien technique ET comportemental"
-          },
-          {
-            "valeur": "+ 80",
-            "libelle": "clients réguliers, sur plus de 120 clients"
-          },
-          {
-            "valeur": "24/24 et 7/7",
-            "libelle": "astreinte, pour les sites couverts"
-          }
-        ]
-      },
+        "texte": "Nous ne vendons aucun lubrifiant, et notre catalogue est vide par choix. Un palier qui chauffe maintenant relève du dépannage industriel."
+      }
+    ],
+    "marquesFamille": "mo",
+    "sections": [
       {
         "type": "probleme",
         "punchline": "La plupart de vos roulements ne mourront pas de vieillesse. Ils mourront de graissage : trop, pas assez, ou le mauvais produit.",
@@ -103,56 +66,51 @@
           {
             "prestation": {
               "accroche": "Le relevé complet de vos points à lubrifier",
-              "texte": "équipement par équipement, avec photo et description de l'accès."
+              "texte": "Équipement par équipement, avec photo et description de l'accès."
             },
             "benefice": "Le graissage sort de la mémoire d'un seul homme et devient un document que n'importe qui applique."
           },
           {
             "prestation": {
               "accroche": "Le choix des références par la physique, pas par l'habitude du magasin",
-              "texte": "viscosité selon charge, vitesse et température, additifs extrême pression, antioxydant ou anti-usure selon l'organe."
+              "texte": "Viscosité selon charge, vitesse et température, additifs extrême pression, antioxydant ou anti-usure selon l'organe."
             },
             "benefice": "Une gamme resserrée remplace l'étagère de bidons. Moins de bidons, moins d'erreurs."
           },
           {
             "prestation": {
               "accroche": "La vérification des compatibilités",
-              "texte": "base minérale, base de synthèse, silicone, polymère, lubrifiant biodégradable, produit pour contact alimentaire."
+              "texte": "Base minérale, base de synthèse, silicone, polymère, lubrifiant biodégradable, produit pour contact alimentaire."
             },
             "benefice": "Le mélange crée un vernis, et le vernis crée la panne. Ce risque-là disparaît."
           },
           {
             "prestation": {
               "accroche": "Les rondes de graissage prises en charge",
-              "texte": "par votre équipe, par la nôtre, ou en alternance."
+              "texte": "Par votre équipe, par la nôtre, ou en alternance."
             },
             "benefice": "La ronde tient même en période de congés et de surcharge."
           },
           {
             "prestation": {
               "accroche": "L'analyse d'huile et sa lecture",
-              "texte": "viscosité, acidité, eau, particules d'usure, rapport court et décision claire."
+              "texte": "Viscosité, acidité, eau, particules d'usure, rapport court et décision claire."
             },
             "benefice": "Vous arrêtez les vidanges inutiles et vous évitez celle qui arrive trop tard, quand le réducteur est déjà perdu."
           },
           {
             "prestation": {
               "accroche": "Le traitement des circuits pollués",
-              "texte": "nettoyage, vidange, remise en service après casse, recherche de la cause."
+              "texte": "Nettoyage, vidange, remise en service après casse, recherche de la cause."
             },
             "benefice": "Un équipement qui repart sans diagnostic recassera. Celui-ci repart propre."
           },
           {
             "prestation": {
               "accroche": "L'amélioration du dispositif",
-              "texte": "déport des graisseurs inaccessibles, automatisation là où elle se justifie, fréquences ajustées."
+              "texte": "Déport des graisseurs inaccessibles, automatisation là où elle se justifie, fréquences ajustées."
             },
             "benefice": "Le geste sort du planning là où il coûtait le plus cher."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Nous ne vendons aucun lubrifiant, et notre catalogue est vide par choix. Un parc entier à remettre sous suivi passe par le [contrat de maintenance Zéro arrêt](/offres/zero-arret/). Un palier qui chauffe maintenant relève du [dépannage industriel](/offres/depannage-industriel/). La lubrification forme le socle de notre [maintenance mécanique](/expertises/mecanique/) et concerne aussi vos [machines-outils](/expertises/mecanique/machine-outil/), glissières, broches et liquide de coupe compris."
           }
         ]
       },
@@ -161,7 +119,7 @@
         "etapes": [
           {
             "titre": "Vous décrivez votre parc",
-            "texte": "types de machines, nombre de points, produits déjà référencés, contraintes de secteur. Quelques minutes au téléphone cadrent la visite."
+            "texte": "Types de machines, nombre de points, produits déjà référencés, contraintes de secteur. Quelques minutes au téléphone cadrent la visite."
           },
           {
             "titre": "Un technicien vous rappelle dans l'heure",
@@ -169,11 +127,11 @@
           },
           {
             "titre": "Nous relevons les points sur site",
-            "texte": "inventaire, photo, accès, état des graisseurs et des carters, capacité réelle relevée et non supposée."
+            "texte": "Inventaire, photo, accès, état des graisseurs et des carters, capacité réelle relevée et non supposée."
           },
           {
             "titre": "Vous recevez le plan écrit",
-            "texte": "produit, quantité, fréquence, repère, point par point. Lisible par n'importe quel technicien, y compris le vôtre."
+            "texte": "Produit, quantité, fréquence, repère, point par point. Lisible par n'importe quel technicien, y compris le vôtre."
           },
           {
             "titre": "Les rondes démarrent",
@@ -181,7 +139,7 @@
           },
           {
             "titre": "Le plan se corrige au fil des relevés",
-            "texte": "fréquences ajustées, points déportés, automatisation là où elle est rentable. Un réglage amélioré se voit dès la ronde suivante."
+            "texte": "Fréquences ajustées, points déportés, automatisation là où elle est rentable. Un réglage amélioré se voit dès la ronde suivante."
           }
         ]
       },
@@ -190,7 +148,7 @@
         "puces": [
           {
             "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-            "texte": "L'astreinte 24/24 et 7/7 couvre la nuit et le week-end sur les sites concernés."
+            "texte": "L'astreinte la nuit, le week-end et les jours fériés couvre la nuit et le week-end sur les sites concernés."
           },
           {
             "accroche": "Aucune vente de lubrifiant, aucun catalogue à remplir.",
@@ -203,48 +161,66 @@
         ]
       },
       {
-        "type": "cta",
-        "question": "Besoin d'un plan de graissage écrit plutôt que d'un geste confié à la mémoire d'un seul homme ?",
-        "bouton": "Demander un plan de graissage",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
-      },
-      {
         "type": "preuves",
         "preuves": [
           {
             "titre": "Contrat de maintenance préventive annuelle, centre logistique",
-            "texte": "six techniciens polyvalents en permanence, mécanique et hydraulique parmi les domaines couverts, depuis septembre 2023",
-            "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
-            "lienHref": "/preuves/veepee-sites-lyon/"
+            "texte": "Six techniciens polyvalents en permanence, mécanique et hydraulique parmi les domaines couverts, depuis septembre 2023.",
+            "lienLibelle": "Étude de cas VEEPEE",
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "photo": "/assets/web/mq-2a8c78b5c75c.jpg"
           },
           {
             "titre": "Maintenance des centres d'usinage, des presses et des machines à commande numérique",
-            "texte": "un technicien à temps plein, plan d'entretien et réglages tenus sur site, 2025",
-            "lienLibelle": "Étude de cas VOIT : site du Grand Est",
-            "lienHref": "/preuves/voit-grand-est/"
+            "texte": "Un technicien à temps plein, plan d'entretien et réglages tenus sur site, 2025.",
+            "lienLibelle": "Étude de cas VOIT",
+            "lienHref": "/preuves/voit-grand-est/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "Curatif et préventif dans le même périmètre, agroalimentaire",
-            "texte": "actions préventives ciblées sur les équipements critiques, premier contrat hors de France, depuis octobre 2024",
-            "lienLibelle": "Étude de cas McCAIN : Belgique",
-            "lienHref": "/preuves/mccain-belgique/"
+            "texte": "Actions préventives ciblées sur les équipements critiques, premier contrat hors de France, depuis octobre 2024.",
+            "lienLibelle": "Étude de cas McCAIN",
+            "lienHref": "/preuves/mccain-belgique/",
+            "photo": "/assets/web/mq-0b70202fed79.jpg"
           },
           {
             "titre": "Maintenance préventive et curative des lignes liquides et poudre, agroalimentaire",
-            "texte": "deux techniciens intégrés en 3x8, présence quand la ligne tourne",
-            "lienLibelle": "Étude de cas DANONE : lignes de production",
-            "lienHref": "/preuves/danone-lignes-de-production/"
+            "texte": "Deux techniciens intégrés en 3x8, présence quand la ligne tourne.",
+            "lienLibelle": "Étude de cas DANONE",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "Maintenance des installations d'un équipementier automobile",
-            "texte": "techniciens intégrés au quotidien chez un fabricant de roulements pour l'industrie et l'automobile, depuis 2025",
-            "lienLibelle": "Étude de cas JTEKT : maintenance des installations",
-            "lienHref": "/preuves/jtekt/"
+            "texte": "Techniciens intégrés au quotidien chez un fabricant de roulements pour l'industrie et l'automobile, depuis 2025.",
+            "lienLibelle": "Étude de cas JTEKT",
+            "lienHref": "/preuves/jtekt/",
+            "photo": "/assets/web/mq-e69a240d8656.jpg"
+          },
+          {
+            "titre": "Un centre logistique monté en six semaines",
+            "lienLibelle": "Étude de cas Aktid",
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg"
+          },
+          {
+            "titre": "Six techniciens pour faire démarrer un parc machines",
+            "lienLibelle": "Étude de cas Eaton",
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+          },
+          {
+            "titre": "Des convoyeurs et des trieurs sous surveillance continue",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg"
           }
         ]
       },
       {
         "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
         "questions": [
           {
             "question": "Qu'est-ce que la lubrification industrielle, au juste ?",
@@ -268,9 +244,14 @@
           },
           {
             "question": "Intervenez-vous en urgence après une casse, et partout en France ?",
-            "reponse": "Oui aux deux. 4 agences, Lyon en siège, Montréal, Dubaï et Madrid, et 10 hubs de techniciens à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Nos techniciens sont mobiles, y compris hors de ces villes. Nettoyage du circuit, remise en service, recherche de la cause : en journée comme en astreinte 24/24 et 7/7."
+            "reponse": "Oui aux deux. 4 agences, Lyon en siège, Montréal, Dubaï et Madrid, et 10 hubs de techniciens à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Nos techniciens sont mobiles, y compris hors de ces villes. Nettoyage du circuit, remise en service, recherche de la cause : en journée comme en astreinte la nuit, le week-end et les jours fériés."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que vos roulements gagnent des années au lieu de casser en pleine production ?",
+        "bouton": "Demander un plan de graissage"
       }
     ]
   }

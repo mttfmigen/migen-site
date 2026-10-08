@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
@@ -18,12 +19,12 @@ import { numerote } from "./texte-offre";
  * numérotées 01 à 04 séparées par des filets, chacune avec son bouton rond à
  * flèche et une barre beige sous le texte. Aucun libellé « Découvrir ».
  *
- * LA PHOTO DU PANNEAU N'EST PAS POSÉE : la capture la sert en `blob:` (fichier
- * jamais nommé, alt « Technicien migen en intervention ») et la donnée ne
- * porte aucune clé photo de panneau. Les clés `photo` des cartes sont des
- * associations carte par carte issues de l'ancien relevé : en élire une pour
- * le panneau serait une association inventée (CLAUDE.md §13). Le panneau garde
- * son fond `rgb(28,27,25)` et son voile, ce que la capture mesure.
+ * LA PHOTO DU PANNEAU, servie en `blob:` par la maquette (alt « Technicien
+ * migen en intervention »), est identifiée le 08/10 par ses octets : lus par
+ * XHR dans le cadre de la maquette vivante, leur sha256 est celui de
+ * `public/assets/web/mq-17e2f3bce95f.jpg`. Ce n'est pas une association
+ * choisie, c'est son fichier. Rendue comme la capture : plein cadre, `cover`,
+ * `saturate(var(--sat))`, sous le voile.
  *
  * LA BARRE BEIGE de chaque rangée porte, dans la capture, une étiquette VIDE
  * (bloc 363, `sc-interp` sans texte). Elle se rend donc vide, comme relevée.
@@ -49,7 +50,7 @@ const GRILLE: CSSProperties = {
   alignItems: "stretch",
 };
 
-/* Bloc 349 : le panneau photo. Le fond sombre reste seul, voir l'en-tête. */
+/* Bloc 349 : le panneau photo, fond sombre sous l'image. */
 const PANNEAU_PHOTO: CSSProperties = {
   position: "relative",
   borderRadius: "var(--rad)",
@@ -185,6 +186,13 @@ export default function TypesMaintenance({
       <div style={LARGEUR}>
         <div className="mg-r2" style={GRILLE}>
           <div style={PANNEAU_PHOTO}>
+            <Image
+              src="/assets/web/mq-17e2f3bce95f.jpg"
+              alt="Technicien migen en intervention"
+              fill
+              sizes="(max-width: 900px) 100vw, 520px"
+              style={{ objectFit: "cover", filter: "saturate(var(--sat))" }}
+            />
             <div style={VOILE} />
             <div style={LEGENDE}>
               <div style={{ ...SURTITRE, marginBottom: 14 }}>

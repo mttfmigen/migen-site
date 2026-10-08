@@ -108,10 +108,10 @@ async function chargeRedirections(): Promise<Table> {
  * l'emporte, et une ligne en base qui VISE une de ces anciennes adresses est
  * renvoyée directement à la nouvelle, en un seul saut (voir `proxy`).
  *
- * POUR LA RETIRER, le jour où la base les porte : insérer les trois lignes dans
+ * POUR LA RETIRER, le jour où la base les porte : insérer ces lignes dans
  * `redirects` (code 301, `actif`), faire pointer vers `/offres/full-service/`
  * les deux lignes qui visent encore `/offres/maintenance-externalisee/`,
- * vérifier par `curl -I` que les trois anciennes adresses répondent 301 sur la
+ * vérifier par `curl -I` que les anciennes adresses répondent 301 sur la
  * bonne `Location`, puis supprimer cette constante et ses deux usages.
  *
  * Clés sous forme canonique (`cheminNormalise`) : la recherche se fait sur la
@@ -120,13 +120,11 @@ async function chargeRedirections(): Promise<Table> {
 const REDIRECTIONS_REFONTE: Table = new Map(
   (
     [
-      // EN ATTENTE, à décommenter quand le gabarit 04 Ville sert leurs cibles :
-      // aujourd'hui /implantations/bordeaux/ et /implantations/marseille/ sont
-      // des 404, et ces deux anciennes adresses répondent 200. Les rediriger
-      // maintenant transformerait deux pages vivantes en pages mortes.
-      //   ["/implantations/toulouse/bordeaux/", "/implantations/bordeaux/"],
-      //   ["/implantations/maintenance-industrielle-marseille/", "/implantations/marseille/"],
+      ["/implantations/toulouse/bordeaux/", "/implantations/bordeaux/"],
+      ["/implantations/maintenance-industrielle-marseille/", "/implantations/marseille/"],
       ["/offres/maintenance-externalisee/", "/offres/full-service/"],
+      ["/equipe/", "/a-propos/equipe/"],
+      ["/realisations/", "/preuves/"],
     ] as const
   ).map(([source, destination]) => [
     source,

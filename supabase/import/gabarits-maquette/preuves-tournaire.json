@@ -1,0 +1,173 @@
+{
+  "url": "/preuves/tournaire/",
+  "titre_h1": "Maintenir des machines conçues en interne",
+  "contenu": {
+    "gabarit": "etude-de-cas",
+    "client": "TOURNAIRE",
+    "chapeau": [
+      "Implanté à Grasse depuis 1833, Tournaire fabrique des emballages en aluminium monobloc pour la parfumerie, la santé et la chimie de spécialité, dont des contenants homologués pour le transport de matières dangereuses. Migen est intervenu sur sa ligne de conditionnement, équipée à 80 % de machines conçues en interne."
+    ],
+    "bouton": "Demander un renfort de maintenance",
+    "heroFiche": [
+      {
+        "libelle": "Activité",
+        "valeur": "Emballages techniques en aluminium"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Ligne de conditionnement"
+      },
+      {
+        "libelle": "Organisation",
+        "valeur": "Technicien intégré au service maintenance"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Méthodes, préventif, curatif, amélioration continue"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Emballage industriel (parfumerie, santé, chimie)"
+      }
+    ],
+    "logo": "/assets/clients/mq-7c01e175985e.png",
+    "photoHero": "/assets/web/mq-0699d4d92e7e.jpg",
+    "chiffres": [
+      {
+        "libelle": "Effectif",
+        "valeur": "1 technicien"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Méthodes, préventif, curatif, amélioration continue"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Grasse (06)"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Ligne de conditionnement"
+      }
+    ],
+    "situationTitre": "Quand 80 % des machines d'une ligne sont uniques, il n'existe ni manuel constructeur ni pièce standard pour se rassurer",
+    "objectifs": [
+      {
+        "titre": "Structurer la maintenance : méthodes, gammes de préventif."
+      },
+      {
+        "titre": "Réduire le curatif par l'amélioration continue."
+      },
+      {
+        "titre": "Documenter des machines dont le savoir-faire n’existe nulle part ailleurs."
+      }
+    ],
+    "reponseCartes": [
+      {
+        "titre": "Un profil méthodes autant que terrain",
+        "texte": "Le technicien Migen intervient sur la machine et formalise ce qu'il apprend."
+      },
+      {
+        "titre": "Curatif et amélioration continue liés",
+        "texte": "Chaque panne nourrit une action d'amélioration."
+      }
+    ],
+    "etapes": [
+      {
+        "titre": "Expression du besoin",
+        "texte": "Renforcer la maintenance d'une ligne de conditionnement spécifique."
+      },
+      {
+        "titre": "Affectation",
+        "texte": "Un technicien aux compétences méthodes et maintenance."
+      },
+      {
+        "titre": "Prise en main",
+        "texte": "Appropriation de machines conçues en interne."
+      },
+      {
+        "titre": "Méthodes, préventif, curatif",
+        "texte": "Structuration et exécution en parallèle."
+      },
+      {
+        "titre": "Suite",
+        "texte": "Besoins ponctuels depuis la fin de mission, installation d'un technicien long terme en discussion."
+      }
+    ],
+    "dispositif": [
+      {
+        "libelle": "Client",
+        "valeur": "Tournaire"
+      },
+      {
+        "libelle": "Site",
+        "valeur": "Grasse (06)"
+      },
+      {
+        "libelle": "Activité",
+        "valeur": "Emballages aluminium monobloc"
+      },
+      {
+        "libelle": "Secteur",
+        "valeur": "Emballage pour parfumerie, santé, chimie de spécialité"
+      },
+      {
+        "libelle": "Périmètre",
+        "valeur": "Ligne de conditionnement"
+      },
+      {
+        "libelle": "Équipements",
+        "valeur": "Machines conçues en interne à 80 %"
+      },
+      {
+        "libelle": "Nature des travaux",
+        "valeur": "Méthodes, préventif, curatif, amélioration continue"
+      },
+      {
+        "libelle": "Effectif",
+        "valeur": "1 technicien"
+      }
+    ],
+    "photoDispositif": "/assets/web/mq-339d39e2a674.jpg",
+    "besoinTitre": "Un besoin comparable sur votre site ?",
+    "besoinProse": [
+      "Décrivez-le, nous vous présentons les techniciens adaptés."
+    ],
+    "besoinTuiles": [
+      {
+        "titre": "Rappel dans l'heure",
+        "texte": "Après votre demande, en semaine de 8h00 à 18h30."
+      },
+      {
+        "titre": "10 % des techniciens retenus",
+        "texte": "Techniciens évalués sur la technique et le comportement avant affectation."
+      }
+    ],
+    "plusLoin": [
+      {
+        "surtitre": "Études de cas",
+        "titre": "Études de cas maintenance industrielle",
+        "href": "/preuves/",
+        "photo": "/assets/web/mq-056f3c250981.jpg"
+      },
+      {
+        "surtitre": "Offre",
+        "titre": "Sous-traitance maintenance",
+        "href": "/offres/residence/",
+        "photo": "/assets/web/mq-948c28bcda08.jpg"
+      },
+      {
+        "surtitre": "Secteur",
+        "titre": "Maintenance industrie chimique",
+        "href": "/secteurs/chimie/",
+        "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+      },
+      {
+        "surtitre": "Étude de cas",
+        "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
+        "href": "/preuves/savoye/",
+        "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+      }
+    ]
+  }
+}

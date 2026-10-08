@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { ANCRE_FORMULAIRE } from "@/components/site/blocs/habillage";
 
 import styles from "./Equipe.module.css";
@@ -6,13 +8,11 @@ import { LARGEUR, SURTITRE, TEXTE_CARTE, VERRE_COURT } from "./habillage-equipe"
 
 /**
  * « Qui vous répond » : la photo chiffrée à gauche, les trois relais à droite.
- * Maquette lignes 5975 à 5991.
+ * Relevé sur la capture `maquette/rendu/a-propos--equipe.html`.
  *
- * LA PHOTO N'EST PAS PORTÉE. La maquette la désigne par un identifiant interne
- * à l'éditeur et aucun fichier de `public/` ne correspond : le cadre garde son
- * fond `--ph`, qui est le jeton de remplacement prévu par la charte, et la
- * pastille chiffrée reste lisible. Poser une autre photo serait choisir à la
- * place du client.
+ * La photo est celle de la maquette, octet pour octet : `mq-f10bb16f54d0.jpg`
+ * (empreinte comparée au blob de la maquette le 08/10), avec son filtre
+ * `saturate(var(--sat)) contrast(1.05)` et son opacité `--ph-op`.
  */
 export default function QuiVousRepond() {
   return (
@@ -38,6 +38,17 @@ export default function QuiVousRepond() {
               boxShadow: "0 30px 70px -40px rgba(0,0,0,.5)",
             }}
           >
+            <Image
+              src="/assets/web/mq-f10bb16f54d0.jpg"
+              alt="Techniciens migen sur site"
+              fill
+              sizes="(max-width: 900px) 100vw, 480px"
+              style={{
+                objectFit: "cover",
+                filter: "saturate(var(--sat)) contrast(1.05)",
+                opacity: "var(--ph-op)",
+              }}
+            />
             <div
               style={{
                 ...VERRE_COURT,

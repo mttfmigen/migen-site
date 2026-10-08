@@ -1,202 +1,170 @@
 {
   "url": "/implantations/paris/",
+  "titre_h1": "Maintenir vos machines dans le tissu le plus dense de France",
   "contenu": {
     "gabarit": "ville",
+    "pastille": "Nos implantations",
     "chapeau": "En Île-de-France, la contrainte n'est pas la machine, c'est ce qui l'entoure : un atelier en fond de cour sans aire de déchargement, un entrepôt de couronne qui ne peut pas s'arrêter avant 22h, des riverains à trois mètres du portail. Nos techniciens basés à Paris préparent l'accès avant de partir sur site.",
     "actions": [
       {
         "libelle": "Faire chiffrer ma maintenance en Île-de-France",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option, nuits, week-ends et jours fériés.",
+    "formulaireHeroTitre": "Faire chiffrer ma maintenance en Île-de-France",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "appelBouton": "Faire chiffrer ma maintenance en Île-de-France",
+    "chiffres": [
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels accompagnés, dont plus de 80 réguliers"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
         "valeur": "10",
-        "libelle": "hubs de techniciens en France, dont un à Paris, plus notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid"
+        "libelle": "Hubs de techniciens en France, dont un à Paris, plus notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid"
       }
     ],
-    "contact": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 en option, nuits, week-ends et jours fériés.",
-    "constatTexte": "Le technicien est disponible, la pièce est en stock, et il met la matinée à se garer. En Île-de-France, la moitié du coût d'une intervention se joue avant qu'elle commence.",
-    "constatPuces": [
+    "hubLocal": {
+      "surtitre": "Votre hub local · Paris",
+      "titre": "Paris : les industries que nos techniciens connaissent déjà",
+      "photo": "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/0f/6d/30/49/03/v1_E10/E10QF8J.jpg?w=600&cf_fit=scale-down&mark-alpha=18&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark4.png&q=85&format=auto&s=94a42e1ba056ca8e0bba1bf9e475c59d7e679b27dd5781edae0a95caa914cef9",
+      "credit": "La Défense · RossHelen",
+      "badge": "Hub Migen",
+      "nom": "Hub Paris",
+      "texte": "Une équipe de techniciens installée à Paris, au plus près de vos sites, appuyée par le réseau national Migen.",
+      "bouton": "Demander une intervention à Paris",
+      "cartes": [
+        {
+          "surtitre": "Tissu principal",
+          "titre": "Logistique",
+          "texte": "Logistique de couronne en flux tendu, ateliers de nuit, dépôts de transport : les opérations lourdes se calent entre…",
+          "lien": "Notre approche logistique",
+          "href": "/secteurs/logistique/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Pharmaceutique",
+          "texte": "Nos techniciens interviennent sur les sites pharmaceutiques du bassin.",
+          "lien": "Notre approche pharmaceutique",
+          "href": "/secteurs/pharmaceutique/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Agroalimentaire",
+          "texte": "Pharmacie, cosmétique et agroalimentaire imposent une qualité documentaire au moins égale au geste technique …",
+          "lien": "Notre approche agroalimentaire",
+          "href": "/secteurs/agroalimentaire/"
+        },
+        {
+          "surtitre": "Notre offre",
+          "titre": "Migen Résidence",
+          "texte": "Un technicien intégré à votre équipe, sur votre planning, avec remplacement garanti.",
+          "lien": "Voir l’offre",
+          "href": "/offres/residence/"
+        }
+      ],
+      "zonesTitre": "Zones couvertes par le hub",
+      "zones": [
+        {
+          "libelle": "Essonne",
+          "href": "/implantations/paris/essonne/"
+        },
+        {
+          "libelle": "Rouen",
+          "href": "/implantations/paris/rouen/"
+        }
+      ]
+    },
+    "brefBande": "Besoin d'un prestataire de maintenance qui règle la question de l'accès avant celle de la panne ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Faire chiffrer ma maintenance en Île-de-France",
+      "href": "#besoin"
+    },
+    "sections": [
       {
-        "texte": "Zone à circulation restreinte, cour étroite, monte-charge saturé : sans préparation, le déplacement est perdu.",
-        "accroche": "L'accès se négocie rue par rue."
+        "type": "probleme",
+        "punchline": "Le technicien est disponible, la pièce est en stock, et il met la matinée à se garer. En Île-de-France, la moitié du coût d'une intervention se joue avant qu'elle commence.",
+        "puces": [
+          {
+            "accroche": "L'accès se négocie rue par rue.",
+            "texte": "Zone à circulation restreinte, cour étroite, monte-charge saturé : sans préparation, le déplacement est perdu."
+          },
+          {
+            "accroche": "Les fenêtres d'arrêt sont courtes.",
+            "texte": "Logistique de couronne en flux tendu, ateliers de nuit, dépôts de transport : les opérations lourdes se calent entre deux rotations."
+          },
+          {
+            "accroche": "Les riverains sont à portée de bruit.",
+            "texte": "Meulage, levage, essais moteur : ce qui passe en zone industrielle isolée se négocie ici avec le voisinage."
+          },
+          {
+            "accroche": "La pénurie de techniciens est maximale.",
+            "texte": "Le bassin francilien absorbe plus de profils de maintenance que ses formations n'en produisent, et beaucoup basculent vers le tertiaire."
+          },
+          {
+            "accroche": "Le prestataire de passage ne revient jamais deux fois.",
+            "texte": "Personne différente à chaque visite, aucun historique, et la même panne qui repart pour un tour."
+          }
+        ],
+        "variante": "rangee"
       },
-      {
-        "texte": "Logistique de couronne en flux tendu, ateliers de nuit, dépôts de transport : les opérations lourdes se calent entre deux rotations.",
-        "accroche": "Les fenêtres d'arrêt sont courtes."
-      },
-      {
-        "texte": "Meulage, levage, essais moteur : ce qui passe en zone industrielle isolée se négocie ici avec le voisinage.",
-        "accroche": "Les riverains sont à portée de bruit."
-      },
-      {
-        "texte": "Le bassin francilien absorbe plus de profils de maintenance que ses formations n'en produisent, et beaucoup basculent vers le tertiaire.",
-        "accroche": "La pénurie de techniciens est maximale."
-      },
-      {
-        "texte": "Personne différente à chaque visite, aucun historique, et la même panne qui repart pour un tour.",
-        "accroche": "Le prestataire de passage ne revient jamais deux fois."
-      }
-    ],
-    "reponsePuces": [
-      {
-        "texte": "un chargé d'affaires nommé qui connaît votre site, ses accès et son historique, et le même technicien aussi longtemps que possible.",
-        "accroche": "Un interlocuteur stable, pas un numéro"
-      },
-      {
-        "texte": "entretien technique et comportemental, 10 % des candidats retenus, résultats d'évaluation présentés avant la première visite.",
-        "accroche": "Une compétence vérifiée avant l'arrivée"
-      },
-      {
-        "texte": "les relevés et les historiques de vos équipements restent chez vous, lisibles par votre direction, jamais réutilisés ailleurs.",
-        "accroche": "La confidentialité des données de procédé"
-      }
-    ],
-    "faq": [
-      {
-        "reponse": "Oui, à condition de le savoir avant. La qualification téléphonique couvre l'accès, les moyens de levage disponibles et les créneaux de circulation. Le technicien part avec l'outillage adapté et, si besoin, les moyens de manutention. C'est le quotidien francilien, pas une exception.",
-        "question": "Notre atelier est en fond de cour, sans quai ni pont roulant. Vous intervenez quand même ?"
-      },
-      {
-        "reponse": "Oui. Paris est l'un de nos 10 hubs de techniciens en France : les professionnels qui franchissent votre portail sont basés dans le bassin. Derrière eux, notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid. Ce qui compte sur votre site reste le niveau du technicien, son outillage et ses habilitations.",
-        "question": "Intervenez-vous vraiment sur place, à Paris ?"
-      },
-      {
-        "reponse": "Nous ne vendons pas un chiffre. L'engagement tenu est le rappel dans l'heure aux horaires ouvrés, une qualification qui évite les allers-retours, et l'astreinte 24/24 et 7/7 en option pour les nuits et les week-ends. Sur une panne critique, le bon technicien du premier coup rend plus de temps qu'une promesse.",
-        "question": "Quels sont vos délais d'intervention à Paris ?"
-      },
-      {
-        "reponse": "Oui. Les opérations lourdes se planifient tôt le matin, entre deux équipes ou de nuit, selon vos rotations. Pour les dépôts de transport et les plateformes, c'est la règle plutôt que l'exception : les modalités et le circuit d'appel sont écrits au contrat.",
-        "question": "Intervenez-vous en dehors des horaires d'exploitation ?"
-      },
-      {
-        "reponse": "Zéro arrêt part de sur devis, trois niveaux de couverture, engagement type de 6 mois renouvelable. Un parc francilien compact avec une astreinte large ne se chiffre pas comme un site étendu visité deux fois par an. Le diagnostic de départ n'est pas facturé, et le périmètre figure au contrat.",
-        "question": "Combien coûte un contrat de maintenance ?"
-      },
-      {
-        "reponse": "Oui. Un atelier de vingt salariés attend la même rigueur qu'un site d'un grand groupe, et l'arrêt lui coûte proportionnellement plus cher. Les formats vont de l'intervention unique au [technicien en résidence](/offres/residence/), avec une prise de poste en 2 à 3 semaines et le remplacement assuré.",
-        "question": "Travaillez-vous avec les PME comme avec les grands groupes ?"
-      },
-      {
-        "reponse": "Oui. Pharmacie, cosmétique et agroalimentaire imposent une qualité documentaire au moins égale au geste technique : comptes rendus complets, historique par équipement, pièces tracées. Nos techniciens travaillent dans vos procédures, pas à côté.",
-        "question": "Suivez-vous les process réglementés, salles propres et traçabilité ?"
-      }
-    ],
-    "autres": [
-      {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
-      },
-      {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
-      },
-      {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
-      },
-      {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
-      },
-      {
-        "libelle": "Valence",
-        "href": "/implantations/lyon/valence/"
-      },
-      {
-        "libelle": "Nantes",
-        "href": "/implantations/nantes/"
-      },
-      {
-        "libelle": "Brest",
-        "href": "/implantations/nantes/brest/"
-      },
-      {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
-      },
-      {
-        "libelle": "Rouen",
-        "href": "/implantations/paris/rouen/"
-      },
-      {
-        "libelle": "Strasbourg",
-        "href": "/implantations/strasbourg/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
-      },
-      {
-        "libelle": "Toulouse",
-        "href": "/implantations/toulouse/"
-      },
-      {
-        "libelle": "Bordeaux",
-        "href": "/implantations/toulouse/bordeaux/"
-      }
-    ],
-    "reste": [
       {
         "type": "offre",
         "lignes": [
           {
-            "benefice": "Le technicien entre et travaille, au lieu de chercher son chemin pendant une demi-journée.",
             "prestation": {
-              "texte": "créneaux, aire de déchargement, monte-charge, badges, plan de prévention.",
-              "accroche": "La préparation d'accès avant le départ"
-            }
+              "accroche": "La préparation d'accès avant le départ",
+              "texte": "Créneaux, aire de déchargement, monte-charge, badges, plan de prévention."
+            },
+            "benefice": "Le technicien entre et travaille, au lieu de chercher son chemin pendant une demi-journée."
           },
           {
-            "benefice": "Une opération lourde ne mange jamais une vague de préparation ni une rotation de quai.",
             "prestation": {
-              "texte": ", tôt le matin, entre deux équipes, de nuit.",
-              "accroche": "Des interventions calées sur vos fenêtres réelles"
-            }
+              "accroche": "Des interventions calées sur vos fenêtres réelles tôt le matin, entre deux équipes, de nuit.",
+              "texte": ""
+            },
+            "benefice": "Une opération lourde ne mange jamais une vague de préparation ni une rotation de quai."
           },
           {
-            "benefice": "Un parc francilien mélange toujours plusieurs technologies : un seul contrat les couvre.",
             "prestation": {
-              "texte": "[mécanique](/expertises/mecanique/), [électricité](/expertises/electrique/), [électromécanique](/expertises/electromecanique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [robotique](/expertises/robotique/).",
-              "accroche": "Le champ technique complet"
-            }
+              "accroche": "Le champ technique complet",
+              "texte": "Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, robotique."
+            },
+            "benefice": "Un parc francilien mélange toujours plusieurs technologies : un seul contrat les couvre."
           },
           {
-            "benefice": "Pharmacie, cosmétique et agroalimentaire gardent une documentation conforme à chaque passage.",
             "prestation": {
-              "texte": "salles propres, traçabilité, qualification des équipements.",
-              "accroche": "Le respect des process réglementés"
-            }
+              "accroche": "Le respect des process réglementés",
+              "texte": "Salles propres, traçabilité, qualification des équipements."
+            },
+            "benefice": "Pharmacie, cosmétique et agroalimentaire gardent une documentation conforme à chaque passage."
           },
           {
-            "benefice": "Une panne d'eau de process ou d'air comprimé un dimanche trouve un technicien.",
             "prestation": {
-              "texte": "pour les sites en continu et les utilités critiques.",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
+              "accroche": "Astreinte la nuit, le week-end et les jours fériés en option pour les sites en continu et les utilités critiques.",
+              "texte": ""
+            },
+            "benefice": "Une panne d'eau de process ou d'air comprimé un dimanche trouve un technicien."
           },
           {
-            "benefice": "Les techniciens qui interviennent chez vous sont basés dans le bassin, pas dépêchés depuis l'autre bout du pays.",
             "prestation": {
-              "texte": ", l'un de nos 10 hubs en France, adossé au siège lyonnais.",
-              "accroche": "Un hub de techniciens à Paris"
-            }
+              "accroche": "Un hub de techniciens à Paris l'un de nos 10 hubs en France, adossé au siège lyonnais.",
+              "texte": ""
+            },
+            "benefice": "Les techniciens qui interviennent chez vous sont basés dans le bassin, pas dépêchés depuis l'autre bout du pays."
           },
           {
-            "benefice": "Un groupe réparti entre petite couronne et vallée de la Seine garde un seul interlocuteur.",
             "prestation": {
-              "texte": "[Essonne](/implantations/paris/essonne/) au sud, [Rouen](/implantations/paris/rouen/) sur l'axe Seine aval.",
-              "accroche": "Relais du bassin"
-            }
+              "accroche": "Relais du bassin",
+              "texte": "Essonne au sud, Rouen sur l'axe Seine aval."
+            },
+            "benefice": "Un groupe réparti entre petite couronne et vallée de la Seine garde un seul interlocuteur."
           }
         ]
       },
@@ -204,78 +172,149 @@
         "type": "deroule",
         "etapes": [
           {
-            "texte": "Vous exposez la panne au 04 78 33 72 05, et nous rappelons dans l'heure aux horaires ouvrés. Symptômes, historique, criticité : le diagnostic commence au téléphone.",
-            "titre": "L'appel qualifié"
+            "titre": "L'appel qualifié",
+            "texte": "Vous exposez la panne par téléphone, et nous rappelons dans l'heure aux horaires ouvrés. Symptômes, historique, criticité : le diagnostic commence au téléphone."
           },
           {
-            "texte": "Adresse exacte, horaires du site, contraintes de circulation, moyens de levage disponibles, habilitations attendues. Ce point évite le déplacement inutile.",
-            "titre": "La logistique d'accès"
+            "titre": "La logistique d'accès",
+            "texte": "Adresse exacte, horaires du site, contraintes de circulation, moyens de levage disponibles, habilitations attendues. Ce point évite le déplacement inutile."
           },
           {
-            "texte": "Profil choisi selon la technologie, pièces pressenties, outillage embarqué. Un atelier sans pont roulant change la méthode.",
-            "titre": "La préparation technique"
+            "titre": "La préparation technique",
+            "texte": "Profil choisi selon la technologie, pièces pressenties, outillage embarqué. Un atelier sans pont roulant change la méthode."
           },
           {
-            "texte": "Accueil sécurité, consignation, diagnostic, réparation, essais.",
-            "titre": "L'intervention"
+            "titre": "L'intervention",
+            "texte": "Accueil sécurité, consignation, diagnostic, réparation, essais."
           },
           {
-            "texte": "Essais réalisés, mise en service, seuils d'alerte relevés avec vos opérateurs.",
-            "titre": "Le redémarrage tracé"
+            "titre": "Le redémarrage tracé",
+            "texte": "Essais réalisés, mise en service, seuils d'alerte relevés avec vos opérateurs."
           },
           {
-            "texte": "Causes, actions, pièces, préconisations, versés dans votre GMAO. Vos données restent chez vous.",
-            "titre": "Le compte rendu"
+            "titre": "Le compte rendu",
+            "texte": "Causes, actions, pièces, préconisations, versés dans votre GMAO. Vos données restent chez vous."
           }
         ]
       },
       {
-        "type": "cta",
-        "bouton": "Faire chiffrer ma maintenance en Île-de-France",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin d'un mainteneur qui règle la question de l'accès avant celle de la panne ?"
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Un interlocuteur stable, pas un numéro",
+            "texte": "Un chargé d'affaires nommé qui connaît votre site, ses accès et son historique, et le même technicien aussi longtemps que possible."
+          },
+          {
+            "accroche": "Une compétence vérifiée avant l'arrivée",
+            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats d'évaluation présentés avant la première visite."
+          },
+          {
+            "accroche": "La confidentialité des données de procédé",
+            "texte": "Les relevés et les historiques de vos équipements restent chez vous, lisibles par votre direction, jamais réutilisés ailleurs."
+          }
+        ]
       },
       {
         "type": "preuves",
         "preuves": [
           {
-            "texte": "lignes de production en forte activité, 2025 et 2026",
             "titre": "Un technicien de maintenance expérimenté affecté en continu sur un site proche de Paris",
+            "texte": "Lignes de production en forte activité, 2025 et 2026.",
+            "lienLibelle": "Étude de cas FDJ",
             "lienHref": "/preuves/fdj/",
-            "lienLibelle": "Étude de cas FDJ : site proche de Paris"
+            "photo": "/assets/web/x-tech-portrait.jpg"
           },
           {
-            "texte": "pilotage de chantier, coordination et jalons, par Orthus, filiale Migen",
             "titre": "Construction d'un site industriel de R&D près de Paris",
+            "texte": "Pilotage de chantier, coordination et jalons, par Orthus, filiale Migen.",
+            "lienLibelle": "Étude de cas ORTHUS x ECOCEM",
             "lienHref": "/preuves/orthus-ecocem/",
-            "lienLibelle": "Étude de cas ORTHUS x ECOCEM : nouveau site"
+            "photo": "/assets/web/team-grind-front.jpg"
           },
           {
-            "texte": "réseau national piloté depuis Paris, été 2025",
             "titre": "Un technicien intégré pendant l'arrêt estival pour tenir les équipements critiques",
+            "texte": "Réseau national piloté depuis Paris, été 2025.",
+            "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "lienLibelle": "Étude de cas OGF : arrêt estival"
+            "photo": "/assets/web/x-elec-cablage.jpg"
           },
           {
-            "texte": "remise en état d'un site de traitement des eaux industrielles",
             "titre": "Un électromécanicien habilité risque chimique mobilisé 6 mois",
+            "texte": "Remise en état d'un site de traitement des eaux industrielles.",
+            "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
+            "photo": "/assets/web/team-duo.jpg"
           },
           {
-            "texte": "centre logistique ORY4, depuis septembre 2022, contrat annuel",
             "titre": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures",
+            "texte": "Centre logistique ORY4, depuis septembre 2022, contrat annuel.",
+            "lienLibelle": "Étude de cas AMAZON",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique"
+            "photo": "/assets/web/x-logistique-entrepot.jpg"
+          },
+          {
+            "titre": "Des convoyeurs et des trieurs sous surveillance continue",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/ph-technicien.jpg"
+          },
+          {
+            "titre": "Des systèmes intralogistiques au rythme du e-commerce",
+            "lienLibelle": "Étude de cas Veepee",
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "photo": "/assets/web/team-grind-close.jpg"
+          },
+          {
+            "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
+            "lienLibelle": "Étude de cas Savoye",
+            "lienHref": "/preuves/savoye-migration-automates-norvege/",
+            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Notre atelier est en fond de cour, sans quai ni pont roulant. Vous intervenez quand même ?",
+            "reponse": "Oui, à condition de le savoir avant. La qualification téléphonique couvre l'accès, les moyens de levage disponibles et les créneaux de circulation. Le technicien part avec l'outillage adapté et, si besoin, les moyens de manutention. C'est le quotidien francilien, pas une exception."
+          },
+          {
+            "question": "Intervenez-vous vraiment sur place, à Paris ?",
+            "reponse": "Oui. Paris est l'un de nos 10 hubs de techniciens en France : les professionnels qui franchissent votre portail sont basés dans le bassin. Derrière eux, notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid. Ce qui compte sur votre site reste le niveau du technicien, son outillage et ses habilitations."
+          },
+          {
+            "question": "Quels sont vos délais d'intervention à Paris ?",
+            "reponse": "Nous ne vendons pas un chiffre. L'engagement tenu est le rappel dans l'heure aux horaires ouvrés, une qualification qui évite les allers-retours, et l'astreinte la nuit, le week-end et les jours fériés en option pour les nuits et les week-ends. Sur une panne critique, le bon technicien du premier coup rend plus de temps qu'une promesse."
+          },
+          {
+            "question": "Intervenez-vous en dehors des horaires d'exploitation ?",
+            "reponse": "Oui. Les opérations lourdes se planifient tôt le matin, entre deux équipes ou de nuit, selon vos rotations. Pour les dépôts de transport et les plateformes, c'est la règle plutôt que l'exception : les modalités et le circuit d'appel sont écrits au contrat."
+          },
+          {
+            "question": "Combien coûte un contrat de maintenance ?",
+            "reponse": "Zéro arrêt part de sur devis, trois niveaux de couverture, engagement type de 6 mois renouvelable. Un parc francilien compact avec une astreinte large ne se chiffre pas comme un site étendu visité deux fois par an. Le diagnostic de départ n'est pas facturé, et le périmètre figure au contrat."
+          },
+          {
+            "question": "Travaillez-vous avec les PME comme avec les grands groupes ?",
+            "reponse": "Oui. Un atelier de vingt salariés attend la même rigueur qu'un site d'un grand groupe, et l'arrêt lui coûte proportionnellement plus cher."
+          },
+          {
+            "question": "Suivez-vous les process réglementés, salles propres et traçabilité ?",
+            "reponse": "Oui. Pharmacie, cosmétique et agroalimentaire imposent une qualité documentaire au moins égale au geste technique : comptes rendus complets, historique par équipement, pièces tracées. Nos techniciens travaillent dans vos procédures, pas à côté."
           }
         ]
       },
       {
         "type": "ctaFinal",
-        "bouton": "Faire chiffrer ma maintenance en Île-de-France",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
         "question": "Besoin de fiabiliser un parc francilien sans bloquer l'exploitation ?"
       }
     ]
-  }
+  },
+  "trous": [
+    {
+      "ligne": "Les formats vont de l'intervention unique au technicien en résidence, avec une prise de poste en 2 à 3 semaines et le remplacement assuré.",
+      "pourquoi": "délai chiffré (« prise de poste en 2 à 3 semaines ») : seul « rappel dans l'heure » est autorisé (contrat de rédaction et passation du client), et Résidence n'a aucune durée affichée. Dernière phrase de la réponse à « Travaillez-vous avec les PME comme avec les grands groupes ? » (09 Questions), le début reste."
+    }
+  ]
 }

@@ -1,0 +1,693 @@
+{
+  "url": "/implantations/",
+  "titre_h1": "Un seul partenaire maintenance pour tous vos sites",
+  "contenu": {
+    "gabarit": "implantations",
+    "pastille": "Nos implantations",
+    "chapeau": "Nos quatre agences, Lyon (siège), Montréal, Dubaï et Madrid, nos 10 hubs de techniciens en France et des équipes mobiles partout ailleurs portent un contrat unique, avec la même méthode d'un site à l'autre.",
+    "actions": [
+      {
+        "libelle": "Faire chiffrer la maintenance de mes sites",
+        "href": "#besoin"
+      }
+    ],
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option, nuits, week-ends et jours fériés.",
+    "formulaireHeroTitre": "Faire chiffrer la maintenance de mes sites",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "appelBouton": "Faire chiffrer la maintenance de mes sites",
+    "chiffres": [
+      {
+        "valeur": "4",
+        "libelle": "Agences, Lyon (siège à Écully), Montréal, Dubaï, Madrid"
+      },
+      {
+        "valeur": "10",
+        "libelle": "Hubs de techniciens en France, Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon, Nantes"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
+      }
+    ],
+    "brefBande": "Besoin d'un seul partenaire maintenance pour des sites répartis sur plusieurs régions ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Faire chiffrer la maintenance de mes sites",
+      "href": "#besoin"
+    },
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "Votre site de Lyon a un contrat, celui de Rouen un dépanneur de passage, celui du Nord personne. Le jour où la panne tombe, vous apprenez lequel des trois était le vrai risque.",
+        "puces": [
+          {
+            "accroche": "Le multi-site multiplie les angles morts.",
+            "texte": "Chaque prestataire connaît son usine et ignore les autres, alors que les mêmes machines tombent pour les mêmes raisons."
+          },
+          {
+            "accroche": "Vous ne pouvez pas comparer vos sites.",
+            "texte": "Trois formats de rapport, trois façons de compter les heures, aucune vision consolidée du parc."
+          },
+          {
+            "accroche": "Le site isolé paie le plus cher.",
+            "texte": ""
+          },
+          {
+            "accroche": "Chaque nouveau site relance un appel d'offres.",
+            "texte": "Le temps passé à sourcer un prestataire de maintenance n'a jamais réparé une machine."
+          },
+          {
+            "accroche": "Le technicien compétent est rare partout.",
+            "texte": "Le sujet n'est pas d'ajouter des heures, il est de trouver la compétence qui manque, en automatisme comme en robotique."
+          }
+        ]
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "Un contrat national, une exécution sur site",
+              "texte": "Un chargé d'affaires nommé suit vos usines, où qu'elles soient."
+            },
+            "benefice": "Un seul interlocuteur pour la direction, un visage connu sur chaque site."
+          },
+          {
+            "prestation": {
+              "accroche": "Le même format de compte rendu partout versé dans votre GMAO.",
+              "texte": ""
+            },
+            "benefice": "Vos sites deviennent comparables, et la revue de parc se prépare en une heure."
+          },
+          {
+            "prestation": {
+              "accroche": "",
+              "texte": ""
+            },
+            "benefice": "La facture d'un site éloigné ne dépend plus de la rareté locale."
+          },
+          {
+            "prestation": {
+              "accroche": "Cinq formats d'engagement",
+              "texte": "Dépannage industriel, astreinte, contrat de maintenance, technicien en résidence, arrêt d'usine planifié."
+            },
+            "benefice": "Chaque site prend le format que sa criticité justifie, pas celui du catalogue."
+          },
+          {
+            "prestation": {
+              "accroche": "Des spécialistes mutualisés",
+              "texte": "Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, soudeurs."
+            },
+            "benefice": "Le technicien présent n'est jamais seul face à un défaut qui le dépasse."
+          },
+          {
+            "prestation": {
+              "accroche": "Astreinte la nuit, le week-end et les jours fériés en option un technicien d'astreinte est mobilisé et se déplace sur votre site.",
+              "texte": ""
+            },
+            "benefice": "Une alerte du dimanche soir ne devient pas un lundi matin perdu."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "La demande",
+            "texte": "Vous décrivez l'incident ou le besoin par téléphone. Un chargé d'affaires vous rappelle dans l'heure aux horaires ouvrés."
+          },
+          {
+            "titre": "La qualification",
+            "texte": "Machines, environnement, conditions d'accès, habilitations attendues. Le périmètre s'écrit avant d'engager quoi que ce soit."
+          },
+          {
+            "titre": "L'état des lieux",
+            "texte": "Sur un parc multi-sites, nous démarrons par un site pilote. Vous jugez la méthode sur une usine avant de l'étendre aux autres."
+          },
+          {
+            "titre": "Le déploiement",
+            "texte": "Reprise des historiques, connexion à votre GMAO, plan de prévention par site, gammes et fréquences calées sur l'utilisation réelle."
+          },
+          {
+            "titre": "L'exécution",
+            "texte": "Préventif planifié, correctif prioritaire, astreinte activée selon le contrat, comptes rendus au même format sur tous les sites."
+          },
+          {
+            "titre": "La revue de parc",
+            "texte": "Disponibilité, récurrence, coûts par site. La comparaison entre usines révèle les écarts que personne ne voyait."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Une compétence prouvée avant l'arrivée",
+            "texte": "10 % des techniciens retenus après un entretien technique et comportemental, résultats présentés avant que le technicien entre chez vous."
+          },
+          {
+            "accroche": "Un périmètre écrit, site par site",
+            "texte": "Ce qui est inclus, ce qui ne l'est pas, les indicateurs suivis, les conditions de sortie. Pas de coefficient caché sur les pièces, que nous consultons au prix du marché."
+          },
+          {
+            "accroche": "La continuité, pas la dépendance à une personne",
+            "texte": "Absence, départ ou surcroît d'activité, le réseau fournit un profil équivalent, briefé sur vos machines."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "18 à 25 techniciens sur plusieurs sites d'un même groupe, depuis juin 2023",
+            "texte": "Transition vers le véhicule électrique, partenariat reconduit.",
+            "lienLibelle": "Étude de cas STELLANTIS : sites du Grand Est",
+            "lienHref": "/preuves/stellantis-grand-est/",
+            "photo": "/assets/web/mq-1ef16ef335a6.jpg"
+          },
+          {
+            "titre": "3 à 5 techniciens déployés dans plusieurs usines françaises, depuis septembre 2024",
+            "texte": "Accompagnement d'une montée en cadence.",
+            "lienLibelle": "Étude de cas VALEO : plusieurs usines",
+            "lienHref": "/preuves/valeo-usines/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
+          },
+          {
+            "titre": "1 à 3 techniciens en renfort sur plusieurs sites de production, depuis octobre 2024",
+            "texte": "Présence permanente, confort thermique.",
+            "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes",
+            "lienHref": "/preuves/groupe-atlantic/",
+            "photo": "/assets/web/x-elec-cablage.jpg"
+          },
+          {
+            "titre": "Deux sites logistiques d'un même donneur d'ordre, ORY4 puis ETZ 2 à Metz",
+            "texte": "Dispositif transposé d'un site à l'autre.",
+            "lienLibelle": "Étude de cas AMAZON : démarrage d'un nouveau site",
+            "lienHref": "/preuves/amazon-nouveau-site/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+          },
+          {
+            "titre": "Un électromécanicien habilité risque chimique mobilisé 6 mois",
+            "texte": "Remise en état d'un site de traitement des eaux industrielles.",
+            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
+          },
+          {
+            "titre": "Premier contrat hors de France depuis octobre 2024",
+            "texte": "Techniciens en renfort sur un site agroalimentaire belge.",
+            "lienLibelle": "Étude de cas McCAIN : Belgique",
+            "lienHref": "/preuves/mccain-belgique/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Nos sites sont éloignés des grandes villes, êtes-vous vraiment présents ?",
+            "reponse": "Oui, et voici l'organisation exacte. Quatre agences : Lyon, notre siège, Montréal, Dubaï et Madrid. Dix hubs de techniciens en France : Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Si votre site n'est ni dans l'un ni dans l'autre, nous y intervenons quand même : nos techniciens sont mobiles partout en France. Le technicien arrive avec le dossier du site préparé par le chargé d'affaires, et un spécialiste du groupe se connecte en appui quand le diagnostic l'exige."
+          },
+          {
+            "question": "Combien coûte un contrat de maintenance ?",
+            "reponse": "Le contrat Zéro arrêt est chiffré sur devis, avec un engagement type de 6 mois renouvelable et trois niveaux de couverture. Le montant dépend du parc, des fréquences et de l'astreinte retenue. Le diagnostic de départ est gratuit, et le périmètre est écrit avant signature. **Nous avons déjà un prestataire sous contrat.** Nous démarrons alors par un périmètre d'essai, un site ou une ligne, et vous comparez sur vos propres indicateurs. La reprise d'un contrat existant se prépare : récupération des historiques, phase de recouvrement, coordination avec le prestataire sortant, pour que la chaîne de responsabilité reste nette."
+          },
+          {
+            "question": "Comment savez-vous que vos techniciens tiennent le niveau ?",
+            "reponse": "Chaque technicien passe un entretien technique et un entretien comportemental, et 10 % sont retenus. Les résultats d'évaluation vous sont présentés avant l'arrivée sur votre site. Habilitations et certifications sont vérifiées et tenues à jour, la formation continue se fait au contact des référents du groupe."
+          },
+          {
+            "question": "Travaillez-vous dans nos outils ou dans les vôtres ?",
+            "reponse": "Dans les vôtres. Chaque intervention est saisie dans votre GMAO : historique par équipement, temps passé, pièces, préconisations. Pas de système parallèle, pas de double saisie."
+          },
+          {
+            "question": "Que se passe-t-il la nuit ou un jour férié ?",
+            "reponse": "L'astreinte la nuit, le week-end et les jours fériés prend l'appel et mobilise un technicien, qui se déplace sur votre site. Le circuit d'appel, les équipements couverts et les priorités sont écrits au contrat avant la mise en route, jamais improvisés le soir de la panne."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de remplacer trois prestataires par une seule méthode ?"
+      }
+    ],
+    "villes": {
+      "titre": "Sept hubs, 74 bassins couverts",
+      "chapeau": "Choisissez votre hub ou votre ville : chaque page détaille le tissu industriel local, nos interventions et nos références sur place.",
+      "hubs": [
+        {
+          "hub": "Lyon",
+          "href": "/implantations/lyon/",
+          "zones": [
+            {
+              "libelle": "Grenoble",
+              "href": "/implantations/lyon/grenoble/"
+            },
+            {
+              "libelle": "Haute-Savoie",
+              "href": "/implantations/lyon/haute-savoie/"
+            },
+            {
+              "libelle": "Rhône",
+              "href": "/implantations/lyon/rhone/"
+            },
+            {
+              "libelle": "Saint-Étienne",
+              "href": "/implantations/lyon/saint-etienne/"
+            },
+            {
+              "libelle": "Valence",
+              "href": "/implantations/lyon/valence/"
+            }
+          ]
+        },
+        {
+          "hub": "Paris",
+          "href": "/implantations/paris/",
+          "zones": [
+            {
+              "libelle": "Essonne",
+              "href": "/implantations/paris/essonne/"
+            },
+            {
+              "libelle": "Rouen",
+              "href": "/implantations/paris/rouen/"
+            }
+          ]
+        },
+        {
+          "hub": "Lille",
+          "href": "/implantations/lille/"
+        },
+        {
+          "hub": "Marseille",
+          "href": "/implantations/marseille/",
+          "zones": [
+            {
+              "libelle": "Nîmes",
+              "href": "/implantations/marseille/nimes/"
+            },
+            {
+              "libelle": "Perpignan",
+              "href": "/implantations/marseille/perpignan/"
+            },
+            {
+              "libelle": "Toulon",
+              "href": "/implantations/marseille/toulon/"
+            }
+          ]
+        },
+        {
+          "hub": "Strasbourg",
+          "href": "/implantations/strasbourg/",
+          "zones": [
+            {
+              "libelle": "Alsace",
+              "href": "/implantations/strasbourg/alsace/"
+            },
+            {
+              "libelle": "Mulhouse",
+              "href": "/implantations/strasbourg/mulhouse/"
+            }
+          ]
+        },
+        {
+          "hub": "Nantes",
+          "href": "/implantations/nantes/",
+          "zones": [
+            {
+              "libelle": "Brest",
+              "href": "/implantations/nantes/brest/"
+            },
+            {
+              "libelle": "Loire-Atlantique",
+              "href": "/implantations/nantes/loire-atlantique/"
+            },
+            {
+              "libelle": "Rennes",
+              "href": "/implantations/nantes/rennes/"
+            }
+          ]
+        },
+        {
+          "hub": "Toulouse",
+          "href": "/implantations/toulouse/",
+          "zones": [
+            {
+              "libelle": "Charente",
+              "href": "/implantations/toulouse/charente/"
+            },
+            {
+              "libelle": "Gironde",
+              "href": "/implantations/toulouse/gironde/"
+            },
+            {
+              "libelle": "Haute-Garonne",
+              "href": "/implantations/toulouse/haute-garonne/"
+            }
+          ]
+        },
+        {
+          "hub": "Bordeaux",
+          "href": "/implantations/bordeaux/",
+          "zones": [
+            {
+              "libelle": "Agen",
+              "href": "/implantations/maintenance-industrielle-agen/"
+            },
+            {
+              "libelle": "Angoulême",
+              "href": "/implantations/maintenance-industrielle-angouleme/"
+            },
+            {
+              "libelle": "Bayonne",
+              "href": "/implantations/maintenance-industrielle-bayonne/"
+            },
+            {
+              "libelle": "La Rochelle",
+              "href": "/implantations/maintenance-industrielle-la-rochelle/"
+            },
+            {
+              "libelle": "Niort",
+              "href": "/implantations/maintenance-industrielle-niort/"
+            }
+          ]
+        },
+        {
+          "hub": "Metz",
+          "href": "/implantations/maintenance-industrielle-metz/",
+          "zones": [
+            {
+              "libelle": "Nancy",
+              "href": "/implantations/maintenance-industrielle-nancy/"
+            },
+            {
+              "libelle": "Reims",
+              "href": "/implantations/maintenance-industrielle-reims/"
+            },
+            {
+              "libelle": "Troyes",
+              "href": "/implantations/maintenance-industrielle-troyes/"
+            }
+          ]
+        },
+        {
+          "hub": "Dijon",
+          "href": "/implantations/maintenance-industrielle-dijon/",
+          "zones": [
+            {
+              "libelle": "Belfort-Montbéliard",
+              "href": "/implantations/maintenance-industrielle-belfort-montbeliard/"
+            },
+            {
+              "libelle": "Besançon",
+              "href": "/implantations/maintenance-industrielle-besancon/"
+            },
+            {
+              "libelle": "Chalon-sur-Saône",
+              "href": "/implantations/maintenance-industrielle-chalon-sur-saone/"
+            },
+            {
+              "libelle": "Vesoul",
+              "href": "/implantations/maintenance-industrielle-vesoul/"
+            }
+          ]
+        }
+      ],
+      "itinerantsTitre": "48 villes couvertes par nos techniciens itinérants",
+      "itinerantsTexte": "Depuis le hub le plus proche, un technicien se déplace sur votre site.",
+      "regions": [
+        {
+          "region": "Hauts-de-France",
+          "villes": [
+            {
+              "libelle": "Dunkerque",
+              "href": "/implantations/maintenance-industrielle-dunkerque/"
+            },
+            {
+              "libelle": "Valenciennes",
+              "href": "/implantations/maintenance-industrielle-valenciennes/"
+            },
+            {
+              "libelle": "Amiens",
+              "href": "/implantations/maintenance-industrielle-amiens/"
+            },
+            {
+              "libelle": "Calais",
+              "href": "/implantations/maintenance-industrielle-calais/"
+            },
+            {
+              "libelle": "Compiègne",
+              "href": "/implantations/maintenance-industrielle-compiegne/"
+            },
+            {
+              "libelle": "Arras-Lens",
+              "href": "/implantations/maintenance-industrielle-arras/"
+            },
+            {
+              "libelle": "Saint-Quentin",
+              "href": "/implantations/maintenance-industrielle-saint-quentin/"
+            }
+          ]
+        },
+        {
+          "region": "Normandie",
+          "villes": [
+            {
+              "libelle": "Caen",
+              "href": "/implantations/maintenance-industrielle-caen/"
+            },
+            {
+              "libelle": "Le Havre",
+              "href": "/implantations/maintenance-industrielle-le-havre/"
+            },
+            {
+              "libelle": "Cherbourg",
+              "href": "/implantations/maintenance-industrielle-cherbourg/"
+            },
+            {
+              "libelle": "Évreux",
+              "href": "/implantations/maintenance-industrielle-evreux/"
+            }
+          ]
+        },
+        {
+          "region": "Grand Est",
+          "villes": [
+            {
+              "libelle": "Metz",
+              "href": "/implantations/maintenance-industrielle-metz/"
+            },
+            {
+              "libelle": "Reims",
+              "href": "/implantations/maintenance-industrielle-reims/"
+            },
+            {
+              "libelle": "Troyes",
+              "href": "/implantations/maintenance-industrielle-troyes/"
+            },
+            {
+              "libelle": "Nancy",
+              "href": "/implantations/maintenance-industrielle-nancy/"
+            }
+          ]
+        },
+        {
+          "region": "Bretagne",
+          "villes": [
+            {
+              "libelle": "Lorient",
+              "href": "/implantations/maintenance-industrielle-lorient/"
+            },
+            {
+              "libelle": "Quimper",
+              "href": "/implantations/maintenance-industrielle-quimper/"
+            }
+          ]
+        },
+        {
+          "region": "Pays de la Loire",
+          "villes": [
+            {
+              "libelle": "Le Mans",
+              "href": "/implantations/maintenance-industrielle-le-mans/"
+            },
+            {
+              "libelle": "Angers",
+              "href": "/implantations/maintenance-industrielle-angers/"
+            },
+            {
+              "libelle": "Saint-Nazaire",
+              "href": "/implantations/maintenance-industrielle-saint-nazaire/"
+            }
+          ]
+        },
+        {
+          "region": "Centre-Val de Loire",
+          "villes": [
+            {
+              "libelle": "Orléans",
+              "href": "/implantations/maintenance-industrielle-orleans/"
+            },
+            {
+              "libelle": "Tours",
+              "href": "/implantations/maintenance-industrielle-tours/"
+            },
+            {
+              "libelle": "Chartres",
+              "href": "/implantations/maintenance-industrielle-chartres/"
+            },
+            {
+              "libelle": "Bourges",
+              "href": "/implantations/maintenance-industrielle-bourges/"
+            }
+          ]
+        },
+        {
+          "region": "Bourgogne-Franche-Comté",
+          "villes": [
+            {
+              "libelle": "Dijon",
+              "href": "/implantations/maintenance-industrielle-dijon/"
+            },
+            {
+              "libelle": "Besançon",
+              "href": "/implantations/maintenance-industrielle-besancon/"
+            },
+            {
+              "libelle": "Belfort-Montbéliard",
+              "href": "/implantations/maintenance-industrielle-belfort-montbeliard/"
+            },
+            {
+              "libelle": "Chalon-sur-Saône",
+              "href": "/implantations/maintenance-industrielle-chalon-sur-saone/"
+            },
+            {
+              "libelle": "Vesoul",
+              "href": "/implantations/maintenance-industrielle-vesoul/"
+            }
+          ]
+        },
+        {
+          "region": "Auvergne-Rhône-Alpes",
+          "villes": [
+            {
+              "libelle": "Clermont-Ferrand",
+              "href": "/implantations/maintenance-industrielle-clermont-ferrand/"
+            },
+            {
+              "libelle": "Roanne",
+              "href": "/implantations/maintenance-industrielle-roanne/"
+            },
+            {
+              "libelle": "Annecy",
+              "href": "/implantations/maintenance-industrielle-annecy/"
+            },
+            {
+              "libelle": "Chambéry",
+              "href": "/implantations/maintenance-industrielle-chambery/"
+            }
+          ]
+        },
+        {
+          "region": "Nouvelle-Aquitaine",
+          "villes": [
+            {
+              "libelle": "Poitiers",
+              "href": "/implantations/maintenance-industrielle-poitiers/"
+            },
+            {
+              "libelle": "Limoges",
+              "href": "/implantations/maintenance-industrielle-limoges/"
+            },
+            {
+              "libelle": "Pau",
+              "href": "/implantations/maintenance-industrielle-pau/"
+            },
+            {
+              "libelle": "Bayonne",
+              "href": "/implantations/maintenance-industrielle-bayonne/"
+            },
+            {
+              "libelle": "La Rochelle",
+              "href": "/implantations/maintenance-industrielle-la-rochelle/"
+            },
+            {
+              "libelle": "Angoulême",
+              "href": "/implantations/maintenance-industrielle-angouleme/"
+            },
+            {
+              "libelle": "Niort",
+              "href": "/implantations/maintenance-industrielle-niort/"
+            },
+            {
+              "libelle": "Agen",
+              "href": "/implantations/maintenance-industrielle-agen/"
+            },
+            {
+              "libelle": "Brive-la-Gaillarde",
+              "href": "/implantations/maintenance-industrielle-brive/"
+            }
+          ]
+        },
+        {
+          "region": "Occitanie",
+          "villes": [
+            {
+              "libelle": "Montpellier",
+              "href": "/implantations/maintenance-industrielle-montpellier/"
+            },
+            {
+              "libelle": "Albi-Castres",
+              "href": "/implantations/maintenance-industrielle-albi/"
+            },
+            {
+              "libelle": "Tarbes",
+              "href": "/implantations/maintenance-industrielle-tarbes/"
+            },
+            {
+              "libelle": "Béziers",
+              "href": "/implantations/maintenance-industrielle-beziers/"
+            }
+          ]
+        },
+        {
+          "region": "Provence-Alpes-Côte d’Azur",
+          "villes": [
+            {
+              "libelle": "Nice",
+              "href": "/implantations/maintenance-industrielle-nice/"
+            },
+            {
+              "libelle": "Avignon",
+              "href": "/implantations/maintenance-industrielle-avignon/"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "trous": [
+    {
+      "ligne": "Trois usines, trois prestataires, trois formats de compte rendu et trois taux horaires : c'est l'organisation la plus répandue chez les groupes multi-sites, et la plus chère.",
+      "pourquoi": "« taux horaire » : aucun prix, tarif, montant ni taux horaire (contrat de rédaction, même règle que les gabarits 03 et 04). Première phrase du chapeau du héros, la suite reste."
+    },
+    {
+      "ligne": "Loin d'un bassin dense, le choix se réduit à un ou deux artisans, et le tarif suit cette rareté.",
+      "pourquoi": "« tarif » : aucun prix. Texte de la carte 03 « Le site isolé paie le plus cher. » de « 03 Problème » : l'accroche reste."
+    },
+    {
+      "ligne": "Un taux horaire homogène en France écrit au devis.",
+      "pourquoi": "« taux horaire » : aucun prix. Intitulé de la carte 03 de « 04 Offre » : la carte reste, numérotée, avec son bénéfice seul."
+    },
+    {
+      "ligne": "Même équipe, même taux horaire.",
+      "pourquoi": "« taux horaire » : aucun prix. Seconde phrase du texte « Au-delà des hubs » de « Nos villes », la première reste."
+    }
+  ]
+}

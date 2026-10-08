@@ -29,6 +29,8 @@ import styles from "./PiedDePage.module.css";
 interface Lien {
   readonly libelle: string;
   readonly href: string;
+  /** « Toutes nos pages » : seul lien en orange et en gras, blanc au survol. */
+  readonly accent?: boolean;
 }
 
 interface Colonne {
@@ -37,16 +39,20 @@ interface Colonne {
 }
 
 /*
- * Destinations relevées dans `docs/urls-site-actuel.json`, jamais déduites.
- * Les libellés de la maquette dont aucune URL de l'inventaire ne correspond ont
- * été retirés plutôt que pointés au hasard : un lien de pied de page en 404 est
- * vu par tout le crawl. Les manques sont listés dans le rapport de portage.
+ * Les trois colonnes de la maquette (`maquette/site-final-autonome.html`),
+ * libellés et ordre mot pour mot. Chaque destination est une page qui répond
+ * sur ce site : `verification-pied-de-page.tsx` les demande une à une. Le
+ * 08/10, les quatre libellés jusque-là retirés faute de page ont la leur :
+ * l'offre Full service, le test technicien, le plan du site et le Diagnostic
+ * Zéro arrêt (l'outil, servi sous le domaine du site par `next.config.ts`).
  */
 const COLONNES: readonly Colonne[] = [
   {
     titre: "Offres",
     liens: [
       { libelle: "migen© Résidence", href: "/offres/residence/" },
+      { libelle: "Diagnostic Zéro arrêt", href: "/diagnostic-zero-arret/" },
+      { libelle: "migen© Full service", href: "/offres/full-service/" },
       { libelle: "migen© Zéro arrêt", href: "/offres/zero-arret/" },
       { libelle: "migen© Arrêt technique", href: "/offres/arret-technique/" },
       { libelle: "migen© Bureau d’études", href: "/offres/bureau-etudes/" },
@@ -72,10 +78,12 @@ const COLONNES: readonly Colonne[] = [
       { libelle: "Nous connaître", href: "/nous-connaitre/" },
       { libelle: "Nos valeurs", href: "/valeurs/" },
       { libelle: "Engagements RSE", href: "/rse/" },
-      { libelle: "Équipe", href: "/equipe/" },
-      { libelle: "Réalisations", href: "/realisations/" },
+      { libelle: "Équipe", href: "/a-propos/equipe/" },
+      { libelle: "Réalisations", href: "/preuves/" },
       { libelle: "Ressources", href: "/ressources/" },
       { libelle: "Carrière", href: "/carriere/" },
+      { libelle: "Test technicien", href: "/test-technicien/" },
+      { libelle: "Toutes nos pages", href: "/plan-du-site/", accent: true },
       /* Deuxième entrée vers /carriere/, comme dans la maquette (même verbe
          `goCarriere`) : deux intentions de recherche, une seule page. */
       { libelle: "Offres d’emploi", href: "/carriere/" },
@@ -104,11 +112,10 @@ interface GroupeMaillage {
 }
 
 /*
- * Maillage SEO, quatre colonnes comme la maquette (`maquette/accueil-rendu.html`
- * lignes 7936 à 7953). « Habilitations » n'a aucune page dans
- * `docs/urls-site-actuel.json` : elle est reprise en texte, mot pour mot, et non
- * supprimée. Son absence écrasait la quatrième colonne de la grille et retirait
- * 111 px au pied de page.
+ * Maillage SEO, quatre colonnes, mot pour mot et dans l'ordre de la maquette.
+ * Une entrée sans page à elle reste du texte : « Habilitations » entière, et
+ * Bas-Rhin, Nord, Drôme, que le site couvre sans page de département (l'Alsace,
+ * Lille et Valence en ont une, mais pointer le mot vers elles serait déduire).
  */
 const MAILLAGE: readonly GroupeMaillage[] = [
   {
@@ -119,7 +126,7 @@ const MAILLAGE: readonly GroupeMaillage[] = [
       { libelle: "Nantes", href: "/implantations/nantes/" },
       { libelle: "Strasbourg", href: "/implantations/strasbourg/" },
       { libelle: "Toulouse", href: "/implantations/toulouse/" },
-      { libelle: "Bordeaux", href: "/implantations/toulouse/bordeaux/" },
+      { libelle: "Bordeaux", href: "/implantations/bordeaux/" },
       { libelle: "Rennes", href: "/implantations/nantes/rennes/" },
       { libelle: "Grenoble", href: "/implantations/lyon/grenoble/" },
       { libelle: "Rouen", href: "/implantations/paris/rouen/" },
@@ -130,8 +137,11 @@ const MAILLAGE: readonly GroupeMaillage[] = [
     titre: "Départements",
     entrees: [
       { libelle: "Rhône", href: "/implantations/lyon/rhone/" },
+      { libelle: "Bas-Rhin" },
       { libelle: "Haute-Garonne", href: "/implantations/toulouse/haute-garonne/" },
+      { libelle: "Nord" },
       { libelle: "Loire-Atlantique", href: "/implantations/nantes/loire-atlantique/" },
+      { libelle: "Drôme" },
       { libelle: "Charente", href: "/implantations/toulouse/charente/" },
       { libelle: "Essonne", href: "/implantations/paris/essonne/" },
       { libelle: "Gironde", href: "/implantations/toulouse/gironde/" },
@@ -268,8 +278,9 @@ export default function PiedDePage({
           >
             <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
               <Image src="/assets/logo-migen-white.png" alt="migen" width={24} height={24} />
-              {/* « mise à disposition », mot de la maquette, est un interdit de
-                  copie du projet. Reformulé, sans rien promettre de plus. */}
+              {/* La maquette ouvre par « Maintenance industrielle et mise à
+                  disposition de techniciens qualifiés. » : interdit de copie,
+                  la phrase est retirée, pas reformulée. */}
               <span
                 style={{
                   font: "400 14px/1.6 var(--fb)",
@@ -277,8 +288,7 @@ export default function PiedDePage({
                   maxWidth: "46ch",
                 }}
               >
-                Maintenance industrielle et renfort de techniciens qualifiés sur votre site.
-                4 agences, dix hubs de techniciens.
+                4 agences, hubs de techniciens dans toute la France.
               </span>
             </div>
             <div style={{ display: "flex", gap: 10, flex: "none", flexWrap: "wrap" }}>
@@ -358,7 +368,11 @@ export default function PiedDePage({
               <div style={styleTitreColonne}>{colonne.titre}</div>
               <div style={{ display: "grid", gap: 9 }}>
                 {colonne.liens.map((lien) => (
-                  <LienSite key={lien.href + lien.libelle} href={lien.href} className={styles.lienNav}>
+                  <LienSite
+                    key={lien.href + lien.libelle}
+                    href={lien.href}
+                    className={lien.accent ? styles.lienPlan : styles.lienNav}
+                  >
                     {lien.libelle}
                   </LienSite>
                 ))}

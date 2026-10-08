@@ -56,6 +56,17 @@
   color: var(--acc);
 }
 
+/* « Toutes nos pages » : style="font:600 14.5px var(--fb);color:var(--acc)"
+   style-hover="color:#fff". */
+.lienPlan {
+  font: 600 14.5px var(--fb);
+  color: var(--acc);
+}
+
+.lienPlan:hover {
+  color: #fff;
+}
+
 /* ------------------------------------------------------------ maillage SEO */
 
 .lienMaillage {
@@ -89,36 +100,31 @@
   color: rgba(255, 255, 255, 0.34);
 }
 
+/* Sans boîte en ligne à lui, le conteneur prenait l'interligne de la page
+   (24 px) et la barre basse dépassait de 6 px celle de la maquette. */
+.reglages {
+  display: inline-flex;
+}
+
 .reglages > button:hover,
 .reglages > a:hover {
   color: rgba(255, 255, 255, 0.7);
 }
 
 /*
- * Sur téléphone, les liens du pied de page atteignent 24 px de haut.
+ * Sur téléphone, les liens gardent le dessin de la maquette.
  *
- * POURQUOI : mesurés à 320 px, les liens de navigation et ceux du maillage font
- * 19 px, collés les uns aux autres (leurs conteneurs n'ont pas d'écart
- * vertical). Le critère 2.5.8 de la WCAG 2.2, niveau AA, demande 24 px, ou un
- * espacement équivalent. Soixante-douze liens étaient en dessous, tous dans le
- * pied de page : c'est là que se trouve le maillage SEO, donc là qu'un visiteur
- * cherche une ville ou un département, au pouce, sur un quai d'usine.
+ * Un remplissage de 3 px les portait à 24 px de haut (critère 2.5.8 de la WCAG
+ * 2.2) et allongeait le pied de page de 196 px à 390 px. Le critère est tenu
+ * sans lui, par son exception d'espacement : un cercle de 24 px centré sur
+ * chaque cible n'en touche aucune autre. Mesuré le 08/10 à 390 px : liens de
+ * navigation de 21 px au pas de 30 (grille, écart de 9), liens du maillage au
+ * pas de 24,7 (interligne 13 × 1,9), le plus étroit à 27 px de large.
  *
- * Le remplissage plutôt que la hauteur : il agrandit la zone de contact sans
- * déplacer le texte ni changer l'interligne, donc sans toucher au dessin de la
- * maquette sur grand écran, où la règle ne s'applique pas.
+ * Le lien de réglage des traceurs garde son remplissage : la CNIL exige qu'il
+ * reste accessible en permanence, il ne se joue pas au pixel.
  */
 @media (max-width: 880px) {
-  .lienNav,
-  .lienMaillage {
-    display: inline-block;
-    padding: 3px 0;
-  }
-
-  /* Le lien de réglage des traceurs est soumis à la même règle, et il compte
-     double : c'est par lui qu'un visiteur revient sur son consentement, et la
-     CNIL exige qu'il soit accessible en permanence. Inatteignable au pouce, il
-     ne l'est pas vraiment. */
   .reglages > button,
   .reglages > a {
     display: inline-block;

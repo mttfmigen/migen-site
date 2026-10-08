@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import type { LigneSeo } from "@/types/lignes";
 
+import { copieConforme } from "@/lib/decisions-copie";
 import { urlAbsolue, urlImage } from "@/lib/seo/url";
 
 /**
@@ -36,8 +37,9 @@ export function metadonneesSeo({
   // On sert alors le H1 comme titre, ce qui est un pis-aller : le meta title ne
   // doit pas dupliquer le H1. La porte de vérification du dépôt est là pour
   // signaler ces pages, elle n'est pas remplacée par ce repli.
-  const title = seo?.meta_title ?? titreRepli;
-  const description = seo?.meta_description;
+  // La table `seo` date d'avant les décisions de copie (« candidats », 24/24…).
+  const title = copieConforme(seo?.meta_title ?? titreRepli);
+  const description = seo?.meta_description ? copieConforme(seo.meta_description) : undefined;
   const image = seo?.og_image ? urlImage(seo.og_image) : undefined;
 
   return {

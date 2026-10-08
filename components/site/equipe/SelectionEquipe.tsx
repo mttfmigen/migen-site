@@ -100,7 +100,7 @@ export default function SelectionEquipe() {
                     color: "rgba(255,255,255,.7)",
                   }}
                 >
-                  des candidats sont retenus
+                  des techniciens sont retenus
                 </span>
               </p>
             </div>

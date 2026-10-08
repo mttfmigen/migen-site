@@ -1,209 +1,208 @@
 {
   "url": "/secteurs/logistique/peak-season/",
-  "source": "dessin : maquette/accueil-rendu.html, gabarit isSecteur, lignes 6278 à 6364. texte : supabase/import/corpus-analyse.json, produit par scripts/produit-secteurs.mjs.",
+  "titre_h1": "Le pic arrive. Vos lignes sont prêtes.",
+  "source": "dessin : maquette/rendu/secteurs--logistique--peak-season.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {
     "gabarit": "secteur",
-    "surtitre": "Secteur d'activité",
-    "chapeau": "Un compte à rebours en quatre étapes, de J-90 au bilan à froid. Revue technique chiffrée, pièces d'usure remplacées avant la vague, renforts briefés sur votre site, astreinte 24/24 et 7/7 pendant la période.",
+    "pastille": "Peak season",
+    "chapeau": "Un compte à rebours en quatre étapes, de J-90 au bilan à froid. Revue technique chiffrée, pièces d'usure remplacées avant la vague, renforts briefés sur votre site, astreinte la nuit, le week-end et les jours fériés pendant la période.",
     "actions": [
       {
         "libelle": "Préparer ma peak season avec Migen",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperesSurtitre": "Nos repères dans le secteur",
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Décrivez la situation, nous vous proposons le bon dispositif.",
+    "formulaireHeroTitre": "Préparer ma peak season avec Migen",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
         "valeur": "J-90",
-        "libelle": "le bon moment pour lancer la revue technique, avant les délais fournisseurs d'automne"
+        "libelle": "Le bon moment pour lancer la revue technique, avant les délais fournisseurs d'automne"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, astreinte 24/24 et 7/7"
+        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, astreinte la nuit, le week-end et les jours fériés"
       }
     ],
-    "enjeuxSurtitre": "Les enjeux du secteur",
-    "enjeuxTitre": "Le Black Friday ne se décale pas. Votre panne, si. Elle attend décembre pour arriver.",
-    "enjeux": [
+    "logosTitre": "Ils nous confient leurs sites logistiques",
+    "logos": [
       {
-        "titre": "Pendant l'événement, il n'existe aucune fenêtre de réparation.",
-        "texte": "Arrêter une ligne de tri une demi-journée en pleine vague est impensable. Ce qui n'a pas été traité avant devra tenir."
+        "nom": "Amazon",
+        "src": "/assets/clients/mq-3103d0f3f9ba.svg"
       },
       {
-        "titre": "Les équipes élargies abîment davantage.",
-        "texte": "Nouveaux venus, cadences inhabituelles, gestes moins soigneux. Les équipements encaissent au pire moment."
+        "nom": "Savoye",
+        "src": "/assets/clients/savoye.png"
       },
       {
-        "titre": "Chaque colis en retard devient un ticket, un avis, un remboursement de frais de port.",
-        "texte": "La satisfaction client de janvier se joue dans l'entrepôt de décembre."
+        "nom": "GLS",
+        "src": "/assets/clients/mq-09708b77564e.svg"
       },
       {
-        "titre": "Les créneaux de chargement se resserrent.",
-        "texte": "Une expédition manquée se reporte sur un réseau de transport déjà saturé."
+        "nom": "Veepee",
+        "src": "/assets/clients/mq-ff81dfbb55c7.svg"
       },
       {
-        "titre": "Les signaux faibles passent inaperçus.",
-        "texte": "Échauffements, bourrages répétés, arrêts courts : personne ne les voit, sauf quelqu'un payé pour ça."
+        "nom": "Alstef Group",
+        "src": "/assets/clients/alstef.webp"
+      },
+      {
+        "nom": "ERIKS",
+        "src": "/assets/clients/mq-441fc873c0d9.svg"
+      },
+      {
+        "nom": "DimoMaint",
+        "src": "/assets/clients/mq-e2c58c98b787.svg"
+      },
+      {
+        "nom": "Aktid",
+        "src": "/assets/clients/aktid.png"
+      },
+      {
+        "nom": "Ciuch",
+        "src": "/assets/clients/mq-d2b02ebe550d.svg"
+      },
+      {
+        "nom": "Atena",
+        "src": "/assets/clients/atena.png"
       }
     ],
-    "autresSurtitre": "Les autres secteurs",
-    "autres": [
-      {
-        "libelle": "Agroalimentaire",
-        "href": "/secteurs/agroalimentaire/"
-      },
-      {
-        "libelle": "Équipements logistiques",
-        "href": "/secteurs/logistique/"
-      },
-      {
-        "libelle": "Automobile",
-        "href": "/secteurs/automobile/"
-      },
-      {
-        "libelle": "Pharmaceutique",
-        "href": "/secteurs/pharmaceutique/"
-      },
-      {
-        "libelle": "Aéronautique",
-        "href": "/secteurs/aeronautique/"
-      },
-      {
-        "libelle": "Chimie",
-        "href": "/secteurs/chimie/"
-      },
-      {
-        "libelle": "Nucléaire",
-        "href": "/secteurs/nucleaire/"
-      },
-      {
-        "libelle": "Industrie lourde",
-        "href": "/secteurs/industrie-lourde/"
-      },
-      {
-        "libelle": "Industrie métallique",
-        "href": "/secteurs/industrie-metallique/"
-      },
-      {
-        "libelle": "Menuiserie industrielle",
-        "href": "/secteurs/menuiserie-industrielle/"
-      }
-    ],
-    "appelTitre": "Besoin d'entrer dans la vague en sachant ce qui va tenir ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
-      "libelle": "Demander une revue technique avant le pic",
-      "href": "#formulaire"
+    "appelBouton": "Préparer ma peak season avec Migen",
+    "problemePhoto": null,
+    "brefBande": "Besoin d'une revue technique avant la prochaine vague ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Préparer ma peak season avec Migen",
+      "href": "#besoin"
     },
-    "complement": [
+    "marquesFamille": "logi",
+    "sections": [
+      {
+        "type": "probleme",
+        "variante": "rangee",
+        "punchline": "Le Black Friday ne se décale pas. Votre panne, si. Elle attend décembre pour arriver.",
+        "puces": [
+          {
+            "accroche": "Pendant l'événement, il n'existe aucune fenêtre de réparation.",
+            "texte": "Arrêter une ligne de tri une demi-journée en pleine vague est impensable. Ce qui n'a pas été traité avant devra tenir."
+          },
+          {
+            "accroche": "Les équipes élargies abîment davantage.",
+            "texte": "Nouveaux venus, cadences inhabituelles, gestes moins soigneux. Les équipements encaissent au pire moment."
+          },
+          {
+            "accroche": "Chaque colis en retard devient un ticket, un avis, un remboursement de frais de port.",
+            "texte": "La satisfaction client de janvier se joue dans l'entrepôt de décembre."
+          },
+          {
+            "accroche": "Les créneaux de chargement se resserrent.",
+            "texte": "Une expédition manquée se reporte sur un réseau de transport déjà saturé."
+          },
+          {
+            "accroche": "Les signaux faibles passent inaperçus.",
+            "texte": "Échauffements, bourrages répétés, arrêts courts : personne ne les voit, sauf quelqu'un payé pour ça."
+          }
+        ]
+      },
       {
         "type": "offre",
         "lignes": [
           {
             "prestation": {
-              "accroche": "Revue technique complète sur site à J-90",
-              "texte": ", chiffrée, équipement critique par équipement critique."
+              "accroche": "Revue technique complète sur site à J-90 chiffrée, équipement critique par équipement critique."
             },
             "benefice": "Vous entrez dans la vague en sachant ce qui tient et ce qui ne tient pas. Plus de découverte en décembre."
           },
           {
             "prestation": {
-              "accroche": "Remplacement des pièces d'usure sensibles à J-60",
-              "texte": ", réglages, constitution du stock de sécurité."
+              "accroche": "Remplacement des pièces d'usure sensibles à J-60 réglages, constitution du stock de sécurité."
             },
             "benefice": "Les délais fournisseurs d'automne ne décident plus de votre saison."
           },
           {
             "prestation": {
-              "accroche": "Renforts techniques briefés sur votre site à J-30",
-              "texte": ", en horaires adaptés à votre organisation."
+              "accroche": "Renforts techniques briefés sur votre site à J-30 en horaires adaptés à votre organisation."
             },
             "benefice": "Le technicien connaît vos lignes avant le premier pic, au lieu de les découvrir pendant."
           },
           {
             "prestation": {
               "accroche": "Surveillance renforcée pendant la période",
-              "texte": "rondes ciblées, contrôles en marche, signalements traités avant la panne."
+              "texte": "Rondes ciblées, contrôles en marche, signalements traités avant la panne."
             },
             "benefice": "Les presque-pannes se traitent tant qu'elles ne coûtent que dix minutes."
           },
           {
             "prestation": {
-              "accroche": "Astreinte 24/24 et 7/7",
-              "texte": ", du week-end du Black Friday aux semaines de Noël, aux mêmes conditions écrites."
+              "accroche": "Astreinte la nuit, le week-end et les jours fériés du week-end du Black Friday aux semaines de Noël, aux mêmes conditions écrites."
             },
             "benefice": "La nuit de novembre n'attend pas le lundi matin."
           },
           {
             "prestation": {
-              "accroche": "Un interlocuteur unique et des points quotidiens",
-              "texte": "avec votre responsable d'exploitation."
+              "accroche": "Un interlocuteur unique et des points quotidiens avec votre responsable d'exploitation."
             },
             "benefice": "Des décisions rapides. La période ne laisse pas le temps des réunions longues."
           },
           {
             "prestation": {
               "accroche": "Bilan à froid écrit après la période",
-              "texte": "ce qui a tenu, ce qui a souffert, ce qui doit changer."
+              "texte": "Ce qui a tenu, ce qui a souffert, ce qui doit changer."
             },
             "benefice": "La préparation de l'année suivante commence avec des faits, pas avec des souvenirs."
           },
           {
             "prestation": {
-              "texte": "**Dispositif prolongé sur la vague des retours de janvier.**"
+              "accroche": "Dispositif prolongé sur la vague des retours de janvier."
             },
             "benefice": "Le second sommet est couvert, alors que la plupart des renforts sont déjà partis."
           },
           {
             "prestation": {
-              "texte": "Sans préparation"
+              "accroche": "Sans préparation"
             },
             "benefice": "Avec préparation"
           },
           {
             "prestation": {
-              "texte": "Pannes découvertes en pleine vague"
+              "accroche": "Pannes découvertes en pleine vague"
             },
             "benefice": "Faiblesses traitées à J-60"
           },
           {
             "prestation": {
-              "texte": "Pièces critiques en rupture fournisseur"
+              "accroche": "Pièces critiques en rupture fournisseur"
             },
             "benefice": "Stock de sécurité constitué d'avance"
           },
           {
             "prestation": {
-              "texte": "Technicien découvert dans l'urgence"
+              "accroche": "Technicien découvert dans l'urgence"
             },
             "benefice": "Renforts briefés sur site à J-30"
           },
           {
             "prestation": {
-              "texte": "Arrêts subis en pleine cadence"
+              "accroche": "Arrêts subis en pleine cadence"
             },
             "benefice": "Interventions calées en heures creuses"
           },
           {
             "prestation": {
-              "texte": "Urgence payée au prix fort"
+              "accroche": "Urgence payée au prix fort"
             },
             "benefice": "Budget cadré, décidé à froid"
           },
           {
             "prestation": {
-              "texte": "Bilan oublié dès janvier"
+              "accroche": "Bilan oublié dès janvier"
             },
             "benefice": "Retour d'expérience écrit, résultat mesuré"
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Le dispositif s'appuie sur notre offre de [maintenance équipements logistiques](/secteurs/logistique/) et, pour le cœur du site, sur la [maintenance convoyeur](/secteurs/logistique/maintenance-convoyeur/)."
           }
         ]
       },
@@ -212,27 +211,27 @@
         "etapes": [
           {
             "titre": "J-90, la revue technique",
-            "texte": "état des lieux de chaque équipement critique, convoyeurs, trieurs, quais, zones de stockage. Ce qui doit être remplacé, réglé ou surveillé. Chiffrage et prévision de pièces."
+            "texte": "État des lieux de chaque équipement critique, convoyeurs, trieurs, quais, zones de stockage. Ce qui doit être remplacé, réglé ou surveillé. Chiffrage et prévision de pièces."
           },
           {
             "titre": "J-60, les travaux et les pièces",
-            "texte": "remplacement des pièces d'usure sensibles, réglages, mise en place du stock de sécurité. Le devis distingue l'indispensable du souhaitable."
+            "texte": "Remplacement des pièces d'usure sensibles, réglages, mise en place du stock de sécurité. Le devis distingue l'indispensable du souhaitable."
           },
           {
             "titre": "J-30, les renforts et les procédures",
-            "texte": "techniciens briefés sur votre site, plan d'astreinte renforcé pour les nuits, consignes de premier niveau partagées avec vos équipes et vos managers."
+            "texte": "Techniciens briefés sur votre site, plan d'astreinte renforcé pour les nuits, consignes de premier niveau partagées avec vos équipes et vos managers."
           },
           {
             "titre": "Jour J, la présence",
-            "texte": "rondes techniques ciblées, interventions en heures creuses, suivi quotidien des signaux faibles, un point court chaque jour avec l'exploitation."
+            "texte": "Rondes techniques ciblées, interventions en heures creuses, suivi quotidien des signaux faibles, un point court chaque jour avec l'exploitation."
           },
           {
             "titre": "Janvier, les retours",
-            "texte": "réception et tri restent sous tension après les fêtes. Le dispositif se prolonge sur ce second sommet."
+            "texte": "Réception et tri restent sous tension après les fêtes. Le dispositif se prolonge sur ce second sommet."
           },
           {
             "titre": "Le bilan",
-            "texte": "ce qui a tenu, ce qui a souffert, ce qui change avant l'année suivante. Écrit, daté, chiffré."
+            "texte": "Ce qui a tenu, ce qui a souffert, ce qui change avant l'année suivante. Écrit, daté, chiffré."
           }
         ]
       },
@@ -241,56 +240,61 @@
         "puces": [
           {
             "accroche": "Un plan d'action daté, pas une liste de bonnes pratiques",
-            "texte": "chaque constat de la revue technique porte une échéance, un chiffrage et un responsable. Vous arbitrez sur un document, pas sur un discours."
+            "texte": "Chaque constat de la revue technique porte une échéance, un chiffrage et un responsable. Vous arbitrez sur un document, pas sur un discours."
           },
           {
             "accroche": "Des renforts qui connaissent le site avant le pic",
-            "texte": "briefing à J-30, sur vos lignes, avec vos consignes. 10 % des candidats retenus en entretien technique et comportemental."
+            "texte": "Briefing à J-30, sur vos lignes, avec vos consignes. 10 % des techniciens retenus en entretien technique et comportemental."
           },
           {
             "accroche": "Une astreinte qui répond aux mêmes conditions la nuit que le jour",
-            "texte": "24/24 et 7/7 en option, mobilisation depuis le hub de techniciens le plus proche, périmètre écrit avant la période."
+            "texte": "La nuit, le week-end et les jours fériés en option, mobilisation depuis le hub de techniciens le plus proche, périmètre écrit avant la période."
           }
         ]
-      },
-      {
-        "type": "cta",
-        "question": "Besoin d'une revue technique avant la prochaine vague ?",
-        "bouton": "Préparer ma peak season avec Migen",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
       },
       {
         "type": "preuves",
         "preuves": [
           {
-            "titre": "Préventif tenu sur un site qui tourne 24 heures sur 24, sans fenêtre d'arrêt confortable",
+            "titre": "Préventif tenu sur un site qui tourne nuit et week-end, sans fenêtre d'arrêt confortable",
             "texte": "10 à 20 techniciens une semaine sur deux depuis septembre 2022",
             "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique",
-            "lienHref": "/preuves/amazon-centre-logistique/"
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
           },
           {
             "titre": "Six techniciens en permanence sur le préventif annuel de sites e-commerce",
             "texte": "prise en charge complète réalisée en un mois",
             "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
-            "lienHref": "/preuves/veepee-sites-lyon/"
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "Maintenance curative dédiée aux convoyeurs, trieurs et packaging d'un transporteur",
             "texte": "deux techniciens en poste sur site",
             "lienLibelle": "Étude de cas GLS : maintenance curative",
-            "lienHref": "/preuves/gls-maintenance-curative/"
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-d50c84e228cb.jpg"
           },
           {
             "titre": "Montage d'un centre logistique en six semaines avec une date de livraison non négociable",
             "texte": "12 monteurs, 8 engins de levage, chantier d'été",
             "lienLibelle": "Étude de cas AKTID : montage d'un centre logistique",
-            "lienHref": "/preuves/aktid-centre-logistique/"
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "Renfort de contrôle de chantier pendant des phases critiques, automatisation logistique",
             "texte": "intervenants intégrés aux équipes",
             "lienLibelle": "Étude de cas ALSTEF Group : collaboration",
-            "lienHref": "/preuves/alstef-group/"
+            "lienHref": "/preuves/alstef-group/",
+            "photo": "/assets/web/mq-c5856badee79.jpg"
+          },
+          {
+            "titre": "Un dispositif rodé, transposé sur un nouveau site",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-nouveau-site/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           }
         ]
       },
@@ -307,7 +311,7 @@
           },
           {
             "question": "Que couvrez-vous pendant le Black Friday et les fêtes ?",
-            "reponse": "Tout ce qui fait tenir l'entrepôt : convoyeurs, tri, quais, emballage, utilités. L'astreinte 24/24 et 7/7 couvre le week-end du Black Friday au Cyber Monday comme les semaines de Noël, aux mêmes conditions écrites qu'en semaine ordinaire."
+            "reponse": "Tout ce qui fait tenir l'entrepôt : convoyeurs, tri, quais, emballage, utilités. L'astreinte la nuit, le week-end et les jours fériés couvre le week-end du Black Friday au Cyber Monday comme les semaines de Noël, aux mêmes conditions écrites qu'en semaine ordinaire."
           },
           {
             "question": "Travaillez-vous avec notre prestataire logistique existant ?",
@@ -322,6 +326,12 @@
             "reponse": "La revue technique se chiffre après une visite, selon la taille du site et l'état du parc. Le devis distingue l'indispensable du souhaitable et classe les actions par priorité. Face à une seule journée d'expédition perdue, la comparaison se fait d'elle-même."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin d'entrer dans la vague en sachant ce qui va tenir ?",
+        "bouton": "Demander une revue technique avant le pic",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
       }
     ]
   }

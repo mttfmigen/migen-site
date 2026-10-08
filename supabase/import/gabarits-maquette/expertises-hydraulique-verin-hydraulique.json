@@ -1,82 +1,46 @@
 {
+  "_source": "maquette/rendu/expertises--hydraulique--verin-hydraulique.html (capture du 07/10 21h12, 16 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (littéral, entités seules décodées), relevé par data-dc-tpl, contrôlé par components/site/expertises/specialite/verification-specialite.tsx. Ni « 02 Domaines » ni « Complément 2 » dans la capture ; « Complément 4 » présent. Problème dessiné « panneau-sombre », sans photo. Marques : famille « fluide » (BRAND_RULES de la maquette, une seule famille, pas de rail). PHOTOS DES RÉFÉRENCES MESURÉES, PAS CHOISIES : octets des images du rail servis par la maquette vivante (localhost:4352, 08/10), sha256 complet rapproché de public/assets/web ; ordre et identité des blobs recoupés avec la capture : mq-2a8c78b5c75c, mq-e6322efcd358, mq-0b70202fed79, mq-2a6115ec9fe0, mq-e69a240d8656, mq-056f3c250981. PHRASES INTERDITES NON RENDUES, retirées entières de la copie de la capture (une phrase interdite ne se reformule pas, elle ne se rend pas) : deroule.etapes[3].texte, la phrase qui porte « prix » ; objections.questions[1].reponse, la phrase qui porte « prix ».",
   "url": "/expertises/hydraulique/verin-hydraulique/",
+  "titre_h1": "Réparation vérin hydraulique : réparer plutôt qu’attendre un vérin neuf",
   "contenu": {
-    "gabarit": "domaine",
+    "gabarit": "specialite",
+    "pastille": "Expertises",
     "chapeau": "Nous venons voir le vérin en charge, sur votre site, avant de décider quoi que ce soit. Inspection complète, kit de joints, guidage repris, essais en pression avant de vous rendre la machine. La réparation remplace presque toujours la commande d'un vérin neuf.",
-    "boutons": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés.",
+    "appelBouton": "Demander une intervention",
+    "actions": [
       {
-        "libelle": "Demander une intervention"
+        "libelle": "Demander une intervention",
+        "href": "#besoin"
       }
     ],
-    "traitements": [
-      "Un diagnostic fait sur votre site",
-      "Un démontage propre",
-      "Une inspection sérieuse avant toute commande",
-      "Un arbitrage honnête entre réparation, usinage et fabrication",
-      "Un remontage au couple, en atelier propre",
-      "Des essais avant de vous rendre la machine",
-      "Un compte rendu écrit"
-    ],
-    "autres": [
+    "formulaireHeroTitre": "Demander une intervention",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
-        "libelle": "Automatisme industriel",
-        "href": "/expertises/automatisme/"
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, après entretien technique ET comportemental"
       },
       {
-        "libelle": "Maintenance électrique industrielle",
-        "href": "/expertises/electrique/"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
-      },
-      {
-        "libelle": "Maintenance mécanique",
-        "href": "/expertises/mecanique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Maintenance robotique",
-        "href": "/expertises/robotique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
+        "valeur": "en continu et tous les jours",
+        "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "cta": {
-      "question": "Besoin qu'un technicien voie votre vérin en charge avant que la décision soit prise à votre place ?",
-      "bouton": {
-        "libelle": "Demander une intervention"
-      }
-    },
-    "reste": [
+    "problemePhoto": null,
+    "complementOffre": [
       {
-        "type": "chiffres",
-        "chiffres": [
-          {
-            "valeur": "10 %",
-            "libelle": "des candidats retenus, après entretien technique ET comportemental"
-          },
-          {
-            "valeur": "+ 80",
-            "libelle": "clients réguliers, beaucoup arrivés par une panne"
-          },
-          {
-            "valeur": "24/24 et 7/7",
-            "libelle": "astreinte, pour les sites couverts"
-          }
-        ]
-      },
+        "texte": "Le vérin n'est souvent que le symptôme : une huile chargée ou une pompe fatiguée le tuera à nouveau. Presse à l'arrêt en ce moment, c'est du dépannage industriel."
+      }
+    ],
+    "marquesFamille": "fluide",
+    "sections": [
       {
         "type": "probleme",
+        "variante": "panneau-sombre",
         "punchline": "Un vérin qui fuit, c'est une presse arrêtée et un devis de remplacement posé sur votre bureau le lendemain.",
         "puces": [
           {
@@ -103,56 +67,51 @@
           {
             "prestation": {
               "accroche": "Un diagnostic fait sur votre site",
-              "texte": "nous venons voir le vérin en charge, pas sur photo. Mesure de la perte de pression, analyse du fluide, contrôle du débit de pompe."
+              "texte": "Nous venons voir le vérin en charge, pas sur photo. Mesure de la perte de pression, analyse du fluide, contrôle du débit de pompe."
             },
             "benefice": "La cause est identifiée avant le démontage. Vous ne payez pas la dépose d'un composant sain."
           },
           {
             "prestation": {
               "accroche": "Un démontage propre",
-              "texte": "consignation, pression résiduelle retirée, charge calée, orifices obturés. Démontage à l'établi, jamais au marteau."
+              "texte": "Consignation, pression résiduelle retirée, charge calée, orifices obturés. Démontage à l'établi, jamais au marteau."
             },
             "benefice": "Le vérin ne sort pas plus abîmé qu'il n'est entré. Et personne ne se blesse sous une charge non calée."
           },
           {
             "prestation": {
               "accroche": "Une inspection sérieuse avant toute commande",
-              "texte": "alésage mesuré, rectitude de la barre chromée, tige de piston, portées, guidage."
+              "texte": "Alésage mesuré, rectitude de la barre chromée, tige de piston, portées, guidage."
             },
             "benefice": "Vous savez ce qui est réellement mort avant d'engager la moindre pièce."
           },
           {
             "prestation": {
               "accroche": "Un arbitrage honnête entre réparation, usinage et fabrication",
-              "texte": "nous ne sommes ni fabricant de vérins ni atelier d'usinage."
+              "texte": "Nous ne sommes ni fabricant de vérins ni atelier d'usinage."
             },
             "benefice": "Aucun intérêt à vous vendre du neuf. Nous vous disons quand le corps est voilé et quand un kit de joints suffit."
           },
           {
             "prestation": {
               "accroche": "Un remontage au couple, en atelier propre",
-              "texte": "kit complet, bagues de guidage neuves, graissage des pièces, contrôle de course à vide."
+              "texte": "Kit complet, bagues de guidage neuves, graissage des pièces, contrôle de course à vide."
             },
             "benefice": "La moitié des retours en panne vient d'un remontage bâclé. Cette cause-là disparaît."
           },
           {
             "prestation": {
               "accroche": "Des essais avant de vous rendre la machine",
-              "texte": "mise en pression par paliers, course complète, étanchéité, tenue sous effort nominal."
+              "texte": "Mise en pression par paliers, course complète, étanchéité, tenue sous effort nominal."
             },
             "benefice": "Un vérin réparé se prouve. Vous ne relancez pas la production sur une promesse."
           },
           {
             "prestation": {
               "accroche": "Un compte rendu écrit",
-              "texte": "cause de la défaillance, mesures relevées, référence des pièces, photos de montage."
+              "texte": "Cause de la défaillance, mesures relevées, référence des pièces, photos de montage."
             },
             "benefice": "Plus de discussion au prochain incident, et votre service maintenance garde la trace."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Le vérin n'est souvent que le symptôme : une huile chargée ou une pompe fatiguée le tuera à nouveau. Le circuit complet relève de notre [maintenance hydraulique](/expertises/hydraulique/). Presse à l'arrêt en ce moment, c'est du [dépannage industriel](/offres/depannage-industriel/). Et si le même vérin vous lâche pour la troisième fois, regardez l'abonnement [Zéro arrêt](/offres/zero-arret/)."
           }
         ]
       },
@@ -161,7 +120,7 @@
         "etapes": [
           {
             "titre": "Vous décrivez le symptôme",
-            "texte": "type de vérin, machine, ce que vous voyez. Fuite à la tête, descente sous charge, perte de force, course incomplète. Quelques minutes au téléphone évitent un déplacement pour rien."
+            "texte": "Type de vérin, machine, ce que vous voyez. Fuite à la tête, descente sous charge, perte de force, course incomplète. Quelques minutes au téléphone évitent un déplacement pour rien."
           },
           {
             "titre": "Un technicien vous rappelle dans l'heure.",
@@ -169,19 +128,18 @@
           },
           {
             "titre": "Nous cherchons la cause avant de démonter",
-            "texte": "essai de pression pour isoler le vérin du circuit, analyse de l'huile, écoute de la pompe."
+            "texte": "Essai de pression pour isoler le vérin du circuit, analyse de l'huile, écoute de la pompe."
           },
           {
-            "titre": "Nous déposons et nous inspectons.",
-            "texte": "Vous recevez le constat pièce par pièce, avec le prix et le délai réels, avant tout engagement de travaux."
+            "titre": "Nous déposons et nous inspectons."
           },
           {
             "titre": "Nous réparons, puis nous essayons",
-            "texte": "joints, guidage, reprise de tige si le chrome le permet. Essai en pression et en effort, banc du spécialiste pour les gros vérins."
+            "texte": "Joints, guidage, reprise de tige si le chrome le permet. Essai en pression et en effort, banc du spécialiste pour les gros vérins."
           },
           {
             "titre": "Nous reposons et nous remettons en service",
-            "texte": "purge, réglage des vitesses, essai de production avec vos opérateurs, compte rendu écrit avant de quitter le site."
+            "texte": "Purge, réglage des vitesses, essai de production avec vos opérateurs, compte rendu écrit avant de quitter le site."
           }
         ]
       },
@@ -190,7 +148,7 @@
         "puces": [
           {
             "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-            "texte": "L'astreinte 24/24 et 7/7 couvre la nuit et le week-end sur les sites concernés."
+            "texte": "L'astreinte la nuit, le week-end et les jours fériés couvre la nuit et le week-end sur les sites concernés."
           },
           {
             "accroche": "Aucune vente de matériel, aucune fabrication maison.",
@@ -203,48 +161,54 @@
         ]
       },
       {
-        "type": "cta",
-        "question": "Besoin de faire réparer un vérin avant de commander un neuf ?",
-        "bouton": "Demander une intervention",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
-      },
-      {
         "type": "preuves",
         "preuves": [
           {
             "titre": "Dépannage de presses hydrauliques et mécaniques, pièces mécaniques de précision",
-            "texte": "un technicien intégré à temps plein, périmètre centres d'usinage grande vitesse, presses automatisées et commande numérique, parc multimarques, 2025",
-            "lienLibelle": "Étude de cas VOIT : site du Grand Est",
-            "lienHref": "/preuves/voit-grand-est/"
+            "texte": "Un technicien intégré à temps plein, périmètre centres d'usinage grande vitesse, presses automatisées et commande numérique, parc multimarques, 2025.",
+            "lienLibelle": "Étude de cas VOIT",
+            "lienHref": "/preuves/voit-grand-est/",
+            "photo": "/assets/web/mq-2a8c78b5c75c.jpg"
           },
           {
             "titre": "Maintien opérationnel de convoyeurs, trieurs et packaging automatisés, logistique et transport",
-            "texte": "deux techniciens en poste, hydraulique parmi les domaines couverts en propre",
-            "lienLibelle": "Étude de cas GLS : maintenance curative",
-            "lienHref": "/preuves/gls-maintenance-curative/"
+            "texte": "Deux techniciens en poste, hydraulique parmi les domaines couverts en propre.",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "Contrat de maintenance préventive annuelle, logistique",
-            "texte": "six techniciens polyvalents en permanence, hydraulique comprise dans les domaines couverts, depuis septembre 2023",
-            "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
-            "lienHref": "/preuves/veepee-sites-lyon/"
+            "texte": "Six techniciens polyvalents en permanence, hydraulique comprise dans les domaines couverts, depuis septembre 2023.",
+            "lienLibelle": "Étude de cas VEEPEE",
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "photo": "/assets/web/mq-0b70202fed79.jpg"
           },
           {
             "titre": "Montages, déplacements de machines et renfort technique, étanchéité et isolation",
-            "texte": "profils assemblés selon le chantier, hydraulique parmi les domaines mobilisables, sur l'année 2025",
-            "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
-            "lienHref": "/preuves/soprema/"
+            "texte": "Profils assemblés selon le chantier, hydraulique parmi les domaines mobilisables, sur l'année 2025.",
+            "lienLibelle": "Étude de cas SOPREMA",
+            "lienHref": "/preuves/soprema/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "Maintenance sous contrat d'un parc déployé partout en France, réalité virtuelle",
-            "texte": "périmètre technique complet, hydraulique comprise, depuis février 2024",
-            "lienLibelle": "Étude de cas TIMESCOPE : casques de réalité virtuelle",
-            "lienHref": "/preuves/timescope/"
+            "texte": "Périmètre technique complet, hydraulique comprise, depuis février 2024.",
+            "lienLibelle": "Étude de cas TIMESCOPE",
+            "lienHref": "/preuves/timescope/",
+            "photo": "/assets/web/mq-e69a240d8656.jpg"
+          },
+          {
+            "titre": "Presses à injecter et robots, le préventif d’abord",
+            "lienLibelle": "Étude de cas Motherson",
+            "lienHref": "/preuves/motherson/",
+            "photo": "/assets/web/mq-056f3c250981.jpg"
           }
         ]
       },
       {
         "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
         "questions": [
           {
             "question": "Peut-on réparer un vérin sans le déposer ?",
@@ -252,7 +216,7 @@
           },
           {
             "question": "Réparer coûte-t-il vraiment moins cher que remplacer ?",
-            "reponse": "Dans la grande majorité des cas, oui, et pour une fraction du prix du neuf. Trois situations font basculer l'arbitrage : un corps voilé ou fendu, un vérin obsolète dont la barre chromée n'existe plus au bon diamètre, et un équipement promis à la casse. Nous vous le disons quand la réparation n'est pas le bon choix. Nous ne fabriquons pas de vérins, nous n'avons rien à gagner à vous vendre du neuf."
+            "reponse": "Trois situations font basculer l'arbitrage : un corps voilé ou fendu, un vérin obsolète dont la barre chromée n'existe plus au bon diamètre, et un équipement promis à la casse. Nous vous le disons quand la réparation n'est pas le bon choix. Nous ne fabriquons pas de vérins, nous n'avons rien à gagner à vous vendre du neuf."
           },
           {
             "question": "Faut-il changer tous les joints ou seulement celui qui lâche ?",
@@ -271,6 +235,11 @@
             "reponse": "Oui. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et 10 hubs de techniciens à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Nos techniciens sont mobiles, y compris hors de ces villes. Notre accueil téléphonique oriente votre besoin vers l'expert le plus proche, et vous rappelle dans l'heure."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin qu'un technicien voie votre vérin en charge avant que la décision soit prise à votre place ?",
+        "bouton": "Demander une intervention"
       }
     ]
   }

@@ -48,7 +48,7 @@ const PAGES = [
   "/ressources/fiches-pratiques/",
   "/contact/",
   "/mentions-legales/",
-  "/equipe/",
+  "/a-propos/equipe/",
 ];
 
 const MESURE = ({ cible, saisie }) => {

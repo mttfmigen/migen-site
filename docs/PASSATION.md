@@ -172,3 +172,35 @@ Mesure avant d'affirmer, montre-lui l'écran plutôt qu'un tableau, parallélise
 par défaut, ne touche à rien sans référence validée, et quand il dit que ça ne
 ressemble pas : **c'est lui qui a raison**, cherche ce que tes outils ne voient
 pas encore.
+
+---
+
+## Reprise du 07/10, 22h : ÉTAT EXACT AU MOMENT DE LA COUPURE (limite d'usage)
+
+**En ligne et commité** (`https://migen-site.vercel.app`, branche `phase-2-gabarits`) :
+texte du gabarit 03 à 0 écart ; accueil refait ; siège à Écully partout ;
+40 études de cas (02) et 13 pages carrière (07) ; règles du README de
+passation (FAQ exclusive, candidature, 24h interdit, 301 maintenance-externalisee).
+Thème sombre écrit mais ÉTEINT (la maquette le désactive, 40 textes illisibles sinon).
+Deux 301 (Bordeaux, Marseille) EN ATTENTE dans proxy.ts : cibles encore en 404.
+
+**Écrit sur disque, PAS commité, chaîne NON relancée** :
+1. Pilotes Expertises : `components/site/expertises/specialite/**` (fanuc, abb) et
+   `domaine/**` (robotique, automatisme), contrôles verts chacun.
+2. Bascule « +200 clients » (README : +200, jamais « réguliers ») : 5 agents,
+   43 « réguliers » retirés, 46 cartes +200 remises, 39 trous +200 retirés de la porte.
+   RESTES connus : `scripts/verifie-offres.tsx:249` interdit encore « +200 » ;
+   `verification-mentions-legales.tsx:264` et d'autres contrôles hors lot aussi ;
+   `verification-equipe` échoue sur « Siège · Écully » (maquette : « Limonest et Écully »).
+3. Vague Ville **ARRÊTÉE** à mi-course : `Workflow({scriptPath: ".../gabarit-04-ville-wf_19a80124-532.js",
+   resumeFromRunId: "wf_19a80124-532"})` la reprend, les agents finis reviennent du cache.
+   `components/site/implantation/**` et `app/[...slug]/page.tsx` peuvent être à
+   moitié écrits : `bunx tsc` y signalait des erreurs.
+
+**Première action de la reprise** : reprendre la vague Ville, puis UNE passe
+d'intégration : recharger le relais (`lib/contenu.ts`), corriger les contrôles
+restants de l'ancienne règle +200, `bun run verifie`, commit, déploiement --prod.
+
+**Tranché par Mehdi le 08/10** : 10 hubs comme la maquette (« c'est la maquette qui
+prime ») ; titre de Tournaire reformulé « Maintenir des machines conçues en interne » ;
+« Au-delà de 3 mois » ajouté au délai de démarrage.

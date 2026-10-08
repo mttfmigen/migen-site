@@ -1,3 +1,6 @@
+import type { Section } from "./contenu";
+import type { ContenuOffre } from "./offre";
+
 /**
  * Forme du contenu d'une page EXPERTISES, troisième gabarit de `pages.contenu`.
  *
@@ -175,5 +178,108 @@ export function estExpertises(contenu: unknown): contenu is ContenuExpertises {
     !!contenu &&
     typeof contenu === "object" &&
     (contenu as ContenuExpertises).gabarit === "expertises"
+  );
+}
+
+/* ===================================================================== hub */
+
+/**
+ * La forme du HUB `/expertises/`, gabarit « 10 Hub de rubrique » de l'index de
+ * la maquette, portée le 08/10 contre la RÉFÉRENCE : la capture
+ * `maquette/rendu/expertises.html` (19 sections, rendues par
+ * `MigenExpertise.dc.html`).
+ *
+ * POURQUOI ELLE REMPLACE `ContenuExpertises` À L'ÉCRAN. L'ancienne forme
+ * ci-dessus vient de l'écran EXPERTISES de l'export de démonstration
+ * (« Migen - Site final.dc.html », lignes 6211 à 6646), qui n'est le gabarit
+ * d'aucune page (CLAUDE.md §16) : six natures en cartes, barres d'heures,
+ * neuf domaines, constructeurs, secteurs, habilitations. La capture n'en
+ * contient AUCUNE. Elle dessine le gabarit d'expertise : héros à formulaire,
+ * chiffres, logos, réassurance, réponse directe, bento des huit domaines,
+ * types de maintenance, problème, offre, déroulé, garanties, marques,
+ * références, questions, maillage, appel final.
+ *
+ * LES FORMES DE CHAMPS SONT CELLES DU GABARIT OFFRE (`ContenuOffre`), comme
+ * pour `ContenuDomaine` : la capture rend les MÊMES écrans, et
+ * `components/site/offre/` les rend déjà. Seuls les trois écrans d'accueil de
+ * rubrique ont leur forme ici : la réponse directe à liste numérotée, le bento
+ * des domaines et les types de maintenance à étiquette « Quand l'utiliser ».
+ *
+ * LE DISCRIMINANT est le tableau `sections`, comme `estDomaine` : l'ancienne
+ * forme n'en a pas. Même `gabarit` (« expertises »), donc même branche de la
+ * route, qui n'a pas à changer.
+ */
+export interface ContenuHubExpertises
+  extends Pick<
+    ContenuOffre,
+    | "pastille"
+    | "chapeau"
+    | "actions"
+    | "mention"
+    | "formulaireHeroTitre"
+    | "formulaireHeroMention"
+    | "appelBouton"
+    | "chiffres"
+    | "complementTypes"
+    | "complementOffre"
+    | "marquesFamille"
+    | "marquesFamilles"
+    | "pagesLiees"
+    | "pagesLieesTitre"
+  > {
+  gabarit: "expertises";
+  /** probleme, offre, deroule, garanties, preuves, objections, ctaFinal. */
+  sections: Section[];
+  /** « 02 Réponse directe » : surtitre, H2, paragraphe, liste numérotée. */
+  reponse?: {
+    surtitre: string;
+    titre: string;
+    texte?: string;
+    points: { titre: string; texte: string }[];
+  };
+  /** « 02 Domaines » : le bento de cartes à photo. */
+  domaines?: { titre: string; cartes: CarteDomaineHub[] };
+  /** « 02 Types de maintenance » : panneau photo et rangées numérotées. */
+  types?: {
+    titre: string;
+    /** La photo du panneau, dans `public/assets/web/`, identifiée par empreinte. */
+    photo: string;
+    /** L'étiquette de la barre beige de chaque rangée. */
+    etiquette: string;
+    rangees: RangeeTypeHub[];
+  };
+}
+
+/** Une carte du bento des domaines. */
+export interface CarteDomaineHub {
+  titre: string;
+  /** La phrase courte, sous le titre. */
+  accroche: string;
+  /** Le paragraphe que la maquette ne montre que sur la grande carte. */
+  texte: string;
+  href: string;
+  /** Le fond de la carte, dans `public/assets/web/`, nommé par la capture. */
+  photo: string;
+}
+
+/** Une rangée des types de maintenance. */
+export interface RangeeTypeHub {
+  titre: string;
+  phrase: string;
+  /** Le texte de la barre beige, après l'étiquette. */
+  quand: string;
+  href: string;
+}
+
+/**
+ * La page porte-t-elle la forme HUB ? Lu sur un `jsonb`, donc sur de
+ * l'`unknown`. Le tableau `sections` la sépare de l'ancienne forme.
+ */
+export function estHubExpertises(
+  contenu: unknown,
+): contenu is ContenuHubExpertises {
+  return (
+    estExpertises(contenu) &&
+    Array.isArray((contenu as { sections?: unknown }).sections)
   );
 }

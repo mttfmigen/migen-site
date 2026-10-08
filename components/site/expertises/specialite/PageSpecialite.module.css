@@ -17,3 +17,49 @@
   filter: brightness(0.93);
   color: #fff;
 }
+
+/* « 02 Domaines » : la grille `.mgx-dom` de `MigenExpertise.dc.html` (l. 15 à
+   19), recopiée règle pour règle. La première carte prend deux colonnes et deux
+   rangées, son nom passe à 32px et sa phrase s'affiche ; la huitième prend deux
+   colonnes. Vérifié le 08/10 sur la maquette vivante à 1440 px : 553 x 474 px
+   pour la première, 269,5 x 230 px pour les suivantes. Les `!important` sont
+   ceux de la source : ils doivent passer devant le style en ligne. Les
+   `@container` de la source ne servent qu'au cadre mobile de la maquette. */
+.domaines > :nth-child(1) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.domaines > :nth-child(8) {
+  grid-column: span 2;
+}
+
+.domaines > :nth-child(1) .nomDomaine {
+  font-size: calc(32px * var(--ts)) !important;
+  letter-spacing: -0.04em !important;
+}
+
+.domaines > :nth-child(1) .phraseDomaine {
+  display: block !important;
+}
+
+@media (max-width: 1000px) {
+  .domaines {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .domaines > :nth-child(1) {
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 620px) {
+  .domaines {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .domaines > * {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+}

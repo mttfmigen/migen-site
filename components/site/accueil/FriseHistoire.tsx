@@ -24,7 +24,7 @@ const JALONS_MAQUETTE: Jalon[] = [
   { annee: "2023", texte: "Premiers hubs de techniciens hors de Lyon." },
   {
     annee: "2024",
-    texte: "Hubs dans les grandes villes de France, plus de 120 clients.",
+    texte: "Hubs dans les grandes villes de France, +200 clients.",
   },
   {
     annee: "2025",
@@ -131,12 +131,15 @@ export default function FriseHistoire({
               visible : « Jalons à confirmer · dates et chiffres à valider… ». Elle ne
               part pas en production, un visiteur n'a pas à lire les réserves
               internes sur les chiffres qu'on lui montre. La réserve elle-même
-              reste ouverte et suivie dans docs/RESERVES-CONTENU.md. */}
+              reste ouverte et suivie dans docs/RESERVES-CONTENU.md.
+              Son emplacement, lui, est gardé : 26 px de marge et une ligne de
+              17 px, soit 43 px ajoutés aux 16 px de l'encart, pour que l'encart
+              tombe à la hauteur de la maquette. */}
         </div>
 
         <div data-reveal=""
           style={{
-            marginTop: 16,
+            marginTop: 59,
             padding: "30px 34px",
             borderRadius: "var(--rad)",
             background: "var(--acc-w)",

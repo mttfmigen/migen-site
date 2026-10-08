@@ -2,439 +2,561 @@
  * Contrôle du gabarit « 09 Domaine », sans navigateur.
  *
  *   bun components/site/expertises/domaine/verification-domaine.tsx
+ *   bun components/site/expertises/domaine/verification-domaine.tsx /expertises/electrique/
  *
  * LA RÉFÉRENCE, et elle est unique : le rendu de la maquette autonome, figé
- * dans `maquette/rendu/expertises--robotique.html` et
- * `expertises--automatisme.html` (16 sections chacune, captures du 07/10).
- * L'ancien contrôle `scripts/verifie-domaine.tsx` comparait à l'export de
- * démonstration `accueil-rendu.html` (`isDomaine`), qui n'est le gabarit
- * d'aucune page : c'est l'erreur du 05/10, et c'est elle qui a produit les
- * écarts de 59 à 73 % mesurés sur `/expertises/robotique/`.
+ * dans `maquette/rendu/<clé>.html`, une capture par page.
  *
- * CE QUE CE CONTRÔLE GARANTIT, calqué sur `verification-offre.tsx` :
+ * TOUTES LES PAGES DU GABARIT, et c'est l'index qui les nomme : les entrées
+ * `"gabarit": "09 Domaine"` de `maquette/contenu/site/index.json` (onze, dont
+ * les deux accueils de rubrique `/expertises/types-de-maintenance/` et
+ * `/expertises/specialisations-constructeur/`). Pour chacune, sa donnée
+ * `supabase/import/gabarits-maquette/<clé>.json` :
  *
- * 1. LES VALEURS DE LA CAPTURE SONT RELUES À CHAQUE EXÉCUTION : chaque dessin
- *    et chaque copie sont d'abord vérifiés PRÉSENTS dans la capture, puis dans
- *    le rendu.
- * 2. LES PAGES RÉELLES sont rendues depuis leur vraie donnée,
- *    `supabase/import/gabarits-maquette/expertises-robotique.json` et
- *    `expertises-automatisme.json`, celles que la route sert.
- * 3. UN SEUL H1, aucun `href="#"`, les cibles du bento et des secteurs rendues.
- * 4. AUCUNE CLASSE TAILWIND DE COULEUR, aucune variante `dark:`.
- * 5. LES INTERDITS DU CONTRAT absents du rendu (prix, tarif, taux horaire,
- *    « +200 », régie, sur mesure, sans engagement, tiret cadratin…).
- * 6. UNE SECTION SANS DONNÉE NE SE REND PAS.
- * 7. LA NOUVELLE FORME NE CAPTURE PAS LES NEUF PAGES NON REPORTÉES : un
- *    fichier à l'ancienne forme ne passe pas `estDomaine`, la route continue
- *    de les servir comme avant.
+ *   · À LA NOUVELLE FORME (`estDomaine`) : la page est rendue et comparée à SA
+ *     capture, ÉCRAN PAR ÉCRAN. Chaque élément stylé de la capture doit avoir
+ *     son jumeau au rendu, déclaration par déclaration (valeurs normalisées :
+ *     `0px`/`0`, `0.88`/`.88`, `rgb(255,255,255)`/`#fff`, `inset`, ordre de
+ *     `box-shadow`), et chaque texte de la capture doit être au rendu, mot pour
+ *     mot. Dans l'autre sens : chaque chaîne du relais existe dans la capture,
+ *     chaque H2/H3 du rendu aussi (un écran que la capture n'a pas se voit),
+ *     chaque lien interne de la capture est rendu.
+ *   · ENCORE À L'ANCIENNE FORME, ou sans fichier : la page est EN ATTENTE, et
+ *     le contrôle sort en échec en la nommant. Un gabarit n'est pas porté tant
+ *     qu'une de ses pages est servie par un autre composant (CLAUDE.md §16).
+ *
+ * LES ÉCARTS QUI RESTENT sont ceux de composants PARTAGÉS, hors du périmètre
+ * de ce gabarit. Ils sont DÉCLARÉS un par un (`ECARTS`), avec leur raison, et
+ * imprimés à chaque exécution. Un écart déclaré qui ne se produit plus fait
+ * échouer le contrôle : la liste ne pourrit pas.
+ *
+ * LES ÉCRANS AJOUTÉS LE 08/10 (« Complément 2 » à tableau, problème en
+ * « rangee » et en « panneau-sombre », rail d'onglets des marques) sont aussi
+ * prouvés SANS ATTENDRE LEUR DONNÉE : leur contenu est relu DANS LA CAPTURE de
+ * la page qui les porte, rendu par le composant, et comparé à cette même
+ * capture. Rien n'est écrit de mémoire. Puis le contrôle prouve qu'il sait
+ * échouer : le mauvais dessin, ou le tableau retiré, doivent être vus.
  */
 
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { estDomaine, type ContenuDomaine } from "@/types/domaine";
+import { FAMILLES } from "@/components/site/marques/marques-donnees";
+import MarquesOffre from "@/components/site/offre/MarquesOffre";
+import { appliqueDecisions } from "@/lib/decisions-copie";
+import type { Paragraphe, SectionProbleme } from "@/types/contenu";
+import {
+  estDomaine,
+  type BlocComplementDomaine,
+  type ContenuDomaine,
+} from "@/types/domaine";
 
+import ComplementsDomaine from "./ComplementsDomaine";
 import PageDomaine from "./PageDomaine";
+import ProblemeDomaine from "./ProblemeDomaine";
 
 const RACINE = fileURLToPath(new URL("../../../..", import.meta.url));
-const DOSSIER = join(RACINE, "supabase", "import", "gabarits-maquette");
+const lit = (...chemin: string[]) => readFileSync(join(RACINE, ...chemin), "utf8");
 
-/* ----------------------------------------- les captures, relues à chaque fois */
+/* ------------------------------------------------ les styles, déclaration par déclaration */
 
-function litCapture(nom: string): string {
-  return readFileSync(join(RACINE, "maquette", "rendu", `${nom}.html`), "utf8");
+/** Coupe sur `sep` hors parenthèses : `rgba(0,0,0,.3)` reste entier. */
+function coupe(valeur: string, sep: string): string[] {
+  const morceaux: string[] = [];
+  let profondeur = 0;
+  let courant = "";
+  for (const c of valeur) {
+    if (c === "(") profondeur++;
+    if (c === ")") profondeur--;
+    if (c === sep && profondeur === 0) {
+      morceaux.push(courant);
+      courant = "";
+    } else courant += c;
+  }
+  morceaux.push(courant);
+  return morceaux.map((m) => m.trim()).filter(Boolean);
 }
 
-/** Même normalisation que `verification-offre.tsx` : une seule écriture. */
-function normaliseStyle(texte: string): string {
-  return texte
-    .replace(/\s*([:;,])\s*/g, "$1")
+/** Une valeur ramenée à une écriture comparable : la capture sérialise comme
+ * le navigateur, React comme l'auteur. */
+function valeur(propriete: string, brute: string): string {
+  let v = brute
+    .replace(/&quot;/g, '"')
+    .replace(/\s*,\s*/g, ",")
     .replace(/\(\s+/g, "(")
     .replace(/\s+\)/g, ")")
     .replace(/\b0px\b/g, "0")
-    .replace(/\b0\.(\d)/g, ".$1");
+    .replace(/(^|[^\d])0\.(\d)/g, "$1.$2")
+    .replace(/rgb\(255,255,255\)/g, "#fff")
+    .replace(/rgb\(0,0,0\)/g, "#000")
+    .replace(/url\("?\/?([^")]*)"?\)/g, "url($1)")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (propriete === "flex" && v === "none") v = "0 0 auto";
+  if (propriete === "box-shadow") {
+    v = coupe(v, ",")
+      .map((couche) => {
+        const mots = coupe(couche, " ");
+        const couleurs = mots.filter((m) => /^(rgba?\(|#|var\()/.test(m));
+        return [...mots.filter((m) => !couleurs.includes(m)), ...couleurs].join(" ");
+      })
+      .join(",");
+  }
+  return v;
 }
 
-function normaliseTexte(texte: string): string {
-  return texte
-    .replace(/&nbsp;| /g, " ")
-    .replace(/&#x27;|’/g, "'")
-    .replace(/\s+/g, " ");
+type Declarations = Map<string, string>;
+
+function declarations(style: string): Declarations {
+  return new Map(
+    coupe(style, ";")
+      .flatMap((d) => {
+        const i = d.indexOf(":");
+        const propriete = d.slice(0, i).trim();
+        const v = valeur(propriete, d.slice(i + 1));
+        return propriete === "inset" && !v.includes(" ")
+          ? ["top", "right", "bottom", "left"].map((p) => [p, v] as const)
+          : [[propriete, v] as const];
+      })
+      .filter(([p]) => p && !p.startsWith("-webkit-")),
+  );
 }
 
-function texteLisible(html: string): string {
-  return normaliseTexte(html.replace(/<[^>]+>/g, " "));
+const stylesDe = (html: string): Declarations[] =>
+  [...html.matchAll(/style="([^"]*)"/g)].map((m) => declarations(m[1]));
+
+/* --------------------------------------------------------------- les textes */
+
+function texte(brut: string): string {
+  return brut
+    .replace(/&nbsp;| /g, " ")
+    .replace(/&#x27;|&#39;|’/g, "'")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+const sansBalises = (html: string) =>
+  html.replace(/<(style|script)[\s\S]*?<\/\1>/g, "").replace(/<[^>]+>/g, " ");
+const texteLisible = (html: string) => texte(sansBalises(html));
+const textesDe = (html: string): string[] => [
+  ...new Set(
+    html
+      .replace(/<(style|script)[\s\S]*?<\/\1>/g, "")
+      .split(/<[^>]+>/)
+      .map(texte)
+      .filter((t) => t && t !== "*"),
+  ),
+];
+const majuscule = (t: string) => t.charAt(0).toLocaleUpperCase("fr-FR") + t.slice(1);
+
+/* ------------------------------------------------------ les écrans de la capture */
+
+/** Les sections de la capture, par `data-screen-label`. Le formulaire est
+ * retiré : `verifie:formulaire` le contrôle, et ses champs se sérialisent en
+ * longues mains (`border-top-width: medium`…) qui ne disent rien du dessin. */
+function ecrans(capture: string): [string, string][] {
+  const debuts = [...capture.matchAll(/<section[^>]*data-screen-label="([^"]*)"/g)];
+  return debuts.map((m, k) => [
+    m[1],
+    capture
+      .slice(m.index, debuts[k + 1]?.index ?? capture.length)
+      .replace(/<form[\s\S]*?<\/form>/g, ""),
+  ]);
+}
+
+function ecran(capture: string, nom: string): string {
+  const trouve = ecrans(capture).find(([l]) => l === nom);
+  assert.ok(trouve, `la capture n'a pas d'écran « ${nom} »`);
+  return trouve[1];
+}
+
+/* ------------------------------------------------------------ la comparaison */
+
+interface Manque {
+  ecran: string;
+  nature: "dessin" | "copie";
+  detail: string;
+}
+
+/** Ce que l'écran de la capture porte et que le rendu n'a pas. Pour un dessin,
+ * le détail nomme les déclarations absentes de l'élément du rendu le plus
+ * proche, avec sa valeur à lui. */
+function compare(nom: string, html: string, rendu: string): Manque[] {
+  const rendus = stylesDe(rendu);
+  const lisible = texteLisible(rendu);
+  const manques: Manque[] = [];
+  for (const attendu of stylesDe(html)) {
+    let meilleur: Declarations = new Map();
+    let score = -1;
+    for (const candidat of rendus) {
+      const n = [...attendu].filter(([p, v]) => candidat.get(p) === v).length;
+      if (n > score) [meilleur, score] = [candidat, n];
+      if (n === attendu.size) break;
+    }
+    if (score === attendu.size) continue;
+    const detail = [...attendu]
+      .filter(([p, v]) => meilleur.get(p) !== v)
+      .map(([p, v]) => `${p}:${v}${meilleur.has(p) ? ` (rendu ${meilleur.get(p)})` : ""}`)
+      .join("; ");
+    manques.push({ ecran: nom, nature: "dessin", detail });
+  }
+  for (const t of textesDe(html)) {
+    if (!lisible.includes(t)) manques.push({ ecran: nom, nature: "copie", detail: t });
+  }
+  return [...new Map(manques.map((m) => [`${m.nature}${m.detail}`, m])).values()];
+}
+
+/* ----------------------------------- les écarts déclarés, hors du périmètre */
+
+interface Ecart {
+  ecran: string;
+  nature: Manque["nature"];
+  /** Le manque est-il celui-ci ? Reçoit le détail et le texte du rendu. */
+  est: (detail: string, lisible: string) => boolean;
+  raison: string;
+  vus: number;
+}
+
+const ecart = (
+  ecranVise: string,
+  nature: Manque["nature"],
+  motif: RegExp | ((detail: string, lisible: string) => boolean),
+  raison: string,
+): Ecart => ({
+  ecran: ecranVise,
+  nature,
+  est: typeof motif === "function" ? motif : (d) => motif.test(d),
+  raison,
+  vus: 0,
+});
+
+const ECARTS: Ecart[] = [
+  ecart("02 Logos", "dessin", /^filter:invert\(1\) hue-rotate\(180deg\)$/,
+    "LogosClients (partagé) n'inverse pas le logo OGF"),
+  ecart("03 Problème", "dessin",
+    // Seule capture du gabarit à suite vide : l'écart ne couvre qu'elle.
+    (d, lisible) => lisible.includes("Une ligne vapeur qui perce, et c'est tout un atelier consigné un lundi matin.")
+      && d.replace(/ \(rendu [^;]*\)/g, "") === "font:400 16px/1.7 var(--fb); margin:0 0 22px; max-width:40ch",
+    "ProblemeOffre (partagé) ne rend pas le paragraphe de suite d'une punchline d'une seule phrase, la capture le rend VIDE (tuyauterie) : aucun texte ne manque, 4px sous le titre"),
+  ecart("04 Offre", "dessin", /^max-width:none$/,
+    "PointsOffre (partagé) : max-width:none absent de l'intitulé du point"),
+  ecart("05 Déroulé", "dessin", /^grid-column:span 3 \(rendu 1 \/ -1\)$/,
+    "DerouleOffre (partagé) : 1 / -1, même étendue sur la grille à 3 colonnes"),
+  ecart("05 Déroulé", "copie", (d, lisible) => lisible.includes(majuscule(d)),
+    "DerouleOffre (partagé) met une majuscule initiale que la capture n'a pas"),
+  ecart("Secteurs de l’expertise", "dessin", /^background:url\(assets\/web\/[^)]+\) center center \/ cover no-repeat rgb\(58,58,60\)$/,
+    "photo servie par next/image (CLAUDE.md §6), même cadrage cover, sans couleur de repli"),
+  ecart("09 Questions", "copie", (d, lisible) => {
+    const phrase = "Donnez-nous l'adresse du site, nous vous disons quelle agence intervient.";
+    return d.endsWith(` ${phrase}`) && lisible.includes(d.slice(0, -phrase.length).trim());
+  }, "règle client du README de passation, en France on dit hubs, pas agences : la phrase ne se reformule pas, elle n'est pas rendue (tuyauterie)"),
+  ecart("Marques maintenues", "dessin", /^color:var\(--ink4\) \(rendu var\(--acc\)\)$/,
+    "MarquesOffre (partagé) : compteur de l'onglet inactif en var(--ink2), la capture dit var(--ink4)"),
+  ecart("10 Appel final", "dessin", /^padding:var\(--sec\) 24px var\(--sec\)$/,
+    "l'ancre #mgx-form est posée par l'enveloppe de PageDomaine, AppelFinal (partagé) porte le padding : même boîte"),
+];
+
+/** Les manques qu'aucun écart déclaré n'explique. */
+function nonDeclares(manques: readonly Manque[], rendu: string): Manque[] {
+  const lisible = texteLisible(rendu);
+  return manques.filter((m) => {
+    const e = ECARTS.find(
+      (x) => x.ecran === m.ecran && x.nature === m.nature && x.est(m.detail, lisible),
+    );
+    if (e) e.vus++;
+    return !e;
+  });
+}
+
+const liste = (manques: readonly Manque[]) =>
+  manques.map((m) => `\n    [${m.ecran}] ${m.nature} : ${m.detail}`).join("");
+
+/* --------------------------------------------------- les interdits du contrat */
+
+const INTERDITS = [
+  "—", "prix ", "tarif", "taux horaire", "régie", "intérim", "mise à disposition",
+  "sans engagement", "clé en main", "sur mesure", "levier", "concrètement",
+  "notamment", "incontournable", "découvrez", "limonest", "réguliers", "24h",
+  "24 h", "24/24", "24/7", "7j/7", "7 j/7",
+] as const;
+
+function verifieHygiene(rendu: string, nom: string): void {
+  const visible = texteLisible(rendu).toLowerCase();
+  for (const mot of INTERDITS) {
+    assert.ok(!visible.includes(mot), `${nom} : mot proscrit par le contrat au rendu, « ${mot} »`);
+  }
+  assert.equal((rendu.match(/<h1[\s>]/g) ?? []).length, 1, `${nom} : un h1, et un seul`);
+  assert.ok(!/href="#"/.test(rendu), `${nom} : un href="#" est rendu`);
+  for (const classe of rendu.matchAll(/class="([^"]*)"/g)) {
+    assert.ok(
+      !/\b(?:text|bg|border|ring|from|via|to|shadow|accent)-(?:zinc|gray|slate|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-\d{2,3}\b|\bdark:/.test(classe[1]),
+      `${nom} : échafaudage Tailwind au rendu, « ${classe[1]} »`,
+    );
+  }
+}
+
+/* ----------------------------------------------- chaque chaîne du relais, dans SA capture */
+
+/** Clés dont la valeur n'est pas une copie : chemins, clés, discriminants.
+ * `lienLibelle` : la capture ne rend que l'étiquette client courte. */
+const HORS_COPIE = new Set([
+  "_source", "url", "gabarit", "href", "lienHref", "lienLibelle", "photo",
+  "problemePhoto", "marquesFamille", "marquesFamilles", "type", "variante",
+]);
+
+function chainesDuRelais(v: unknown, cle?: string): string[] {
+  if (typeof v === "string") return cle && HORS_COPIE.has(cle) ? [] : v ? [v] : [];
+  if (Array.isArray(v)) return v.flatMap((x) => chainesDuRelais(x, cle));
+  if (v && typeof v === "object") {
+    return Object.entries(v).flatMap(([k, x]) => (HORS_COPIE.has(k) ? [] : chainesDuRelais(x, k)));
+  }
+  return [];
+}
+
+/* ------------------------------------------------- les pages du gabarit, d'après l'index */
+
+interface Entree {
+  url: string;
+  gabarit: string;
 }
 
 interface PageRelais {
   url: string;
   titre_h1?: string;
-  contenu: ContenuDomaine;
+  contenu: unknown;
 }
 
-function litPage(nom: string): PageRelais {
-  return JSON.parse(readFileSync(join(DOSSIER, nom), "utf8")) as PageRelais;
+const PAGES = (JSON.parse(lit("maquette", "contenu", "site", "index.json")) as Entree[])
+  .filter((e) => e.gabarit === "09 Domaine")
+  .map((e) => e.url);
+assert.ok(PAGES.length >= 11, `l'index ne nomme que ${PAGES.length} pages « 09 Domaine »`);
+
+const demandees = process.argv.slice(2);
+for (const url of demandees) {
+  assert.ok(PAGES.includes(url), `${url} n'est pas une page du gabarit « 09 Domaine »`);
 }
+const aVerifier = demandees.length ? demandees : PAGES;
 
-/* --------------------------------------------------- les interdits du contrat */
+const segments = (url: string) => url.split("/").filter(Boolean);
+const cleCapture = (url: string) => segments(url).join("--");
+/** La capture, décisions de copie appliquées (lib/decisions-copie.ts) : la donnée les porte. */
+const captureDe = (url: string) => appliqueDecisions(lit("maquette", "rendu", `${cleCapture(url)}.html`));
+const fichierRelais = (url: string) => `${segments(url).join("-")}.json`;
+const DOSSIER = join("supabase", "import", "gabarits-maquette");
 
-const INTERDITS = [
-  "—",
-  "+200",
-  "prix ",
-  "tarif",
-  "taux horaire",
-  "régie",
-  "intérim",
-  "mise à disposition",
-  "sans engagement",
-  "clé en main",
-  "sur mesure",
-  "levier",
-  "concrètement",
-  "notamment",
-  "incontournable",
-  "découvrez",
-  "limonest",
-] as const;
+function verifiePage(url: string): "conforme" | string {
+  const cle = cleCapture(url);
+  const capture = captureDe(url);
+  const fiche = JSON.parse(lit("maquette", "rendu", `${cle}.json`)) as { h1Rendu: string };
+  const chemin = join(DOSSIER, fichierRelais(url));
+  if (!existsSync(join(RACINE, chemin))) return `aucun fichier ${chemin}`;
 
-function verifieInterdits(page: string, nom: string): void {
-  const visible = texteLisible(page.replace(/<[^>]+>/g, " ")).toLowerCase();
-  for (const mot of INTERDITS) {
-    assert.ok(
-      !visible.includes(mot),
-      `${nom} : mot proscrit par le contrat dans le rendu, « ${mot} »`,
-    );
-  }
-}
-
-/* ------------------------------------------- une page pilote contre sa capture */
-
-function verifiePilote(
-  capture: string,
-  fichier: string,
-  dessins: readonly string[],
-  copies: readonly string[],
-  cibles: readonly string[],
-): string {
-  const CAPTURE = litCapture(capture);
-  const CAPTURE_STYLE = normaliseStyle(CAPTURE);
-  const CAPTURE_TEXTE = texteLisible(CAPTURE);
-
-  const page = litPage(fichier);
-  assert.ok(
-    estDomaine(page.contenu),
-    `${fichier} : la donnée doit porter la NOUVELLE forme domaine (gabarit + sections)`,
-  );
-  assert.ok(
-    typeof page.titre_h1 === "string" && page.titre_h1.length > 0,
-    `${fichier} : le relais doit porter le H1 de la capture`,
-  );
-  assert.ok(
-    CAPTURE_TEXTE.includes(normaliseTexte(page.titre_h1!)),
-    `${fichier} : le H1 du relais n'est pas celui de la capture`,
-  );
+  const page = JSON.parse(lit(chemin)) as PageRelais;
+  if (!estDomaine(page.contenu)) return `${chemin} est encore à l'ancienne forme (pas de \`sections\`)`;
+  assert.equal(page.url, url, `${chemin} : son url n'est pas ${url}`);
+  assert.ok(page.titre_h1, `${chemin} : titre_h1 manquant`);
+  assert.equal(texte(page.titre_h1), texte(fiche.h1Rendu), `${chemin} : le H1 n'est pas celui de la capture`);
 
   const rendu = renderToStaticMarkup(
     <PageDomaine
-      titre={page.titre_h1!}
+      titre={page.titre_h1}
       contenu={page.contenu}
-      formulaire={`cocon${page.url.replace(/\//g, "-")}`}
+      formulaire={`cocon${url.replace(/\//g, "-")}`}
     />,
   );
 
-  /* 1. la fidélité du dessin : chaque valeur est d'abord vérifiée dans la
-     capture, puis dans le rendu. */
-  for (const fragment of dessins) {
-    const attendu = normaliseStyle(fragment);
+  const manques = ecrans(capture).flatMap(([nom, html]) => compare(nom, html, rendu));
+  const restants = nonDeclares(manques, rendu);
+  assert.equal(restants.length, 0, `${url} : écarts à la capture non déclarés${liste(restants)}`);
+
+  const captureLisible = texteLisible(capture);
+  for (const chaine of chainesDuRelais(page.contenu)) {
+    assert.ok(captureLisible.includes(texte(chaine)), `${chemin} : chaîne absente de la capture, réécrite ? « ${chaine} »`);
+  }
+  for (const [, titre] of rendu.matchAll(/<h[23][^>]*>([\s\S]*?)<\/h[23]>/g)) {
+    assert.ok(captureLisible.includes(texteLisible(titre)), `${url} : le rendu porte un titre que la capture n'a pas, « ${texteLisible(titre)} »`);
+  }
+  const liens = new Set([...capture.replace(/<form[\s\S]*?<\/form>/g, "").matchAll(/href="(\/[^"]*)"/g)].map((m) => m[1]));
+  for (const lien of liens) {
+    // `next/link` rendu hors de Next ignore `trailingSlash` : la barre finale
+    // peut manquer ici et être servie en ligne.
     assert.ok(
-      CAPTURE_STYLE.includes(attendu),
-      `${capture} ne porte pas le dessin « ${fragment} » : valeur à revérifier`,
-    );
-    assert.ok(
-      normaliseStyle(rendu).includes(attendu),
-      `${fichier} : le rendu ne porte pas le dessin de la capture « ${fragment} »`,
+      rendu.includes(`href="${lien}"`) || rendu.includes(`href="${lien.replace(/(.)\/$/, "$1")}"`),
+      `${url} : la capture vise ${lien}, lien absent du rendu`,
     );
   }
-
-  /* 2. les copies, mot pour mot. */
-  for (const texte of copies) {
-    const attendu = normaliseTexte(texte);
-    assert.ok(
-      CAPTURE_TEXTE.includes(attendu),
-      `${capture} ne porte pas la copie « ${texte} »`,
-    );
-    assert.ok(
-      texteLisible(rendu).includes(attendu),
-      `${fichier} : le rendu ne porte pas la copie de la capture « ${texte} »`,
-    );
-  }
-
-  /* 3. un seul h1, et c'est celui de la page. */
-  assert.equal(
-    (rendu.match(/<h1[\s>]/g) ?? []).length,
-    1,
-    `${fichier} : une page doit porter exactement un h1`,
-  );
-
-  /* 4. aucune cible morte, et les cibles de la capture rendues. */
-  assert.ok(!/href="#"/.test(rendu), `${fichier} : un href="#" est rendu`);
-  assert.ok(
-    rendu.includes('href="#besoin"'),
-    `${fichier} : le bouton du héros doit viser l'ancre du formulaire`,
-  );
-  assert.ok(
-    rendu.includes('id="mgx-form"') && rendu.includes('href="#mgx-form"'),
-    `${fichier} : l'ancre #mgx-form de la capture doit exister ET être visée`,
-  );
-  for (const cible of cibles) {
-    assert.ok(
-      rendu.includes(`href="${cible}/"`) || rendu.includes(`href="${cible}"`),
-      `${fichier} : la capture vise ${cible}/ : lien absent du rendu`,
-    );
-  }
-
-  /* 5. aucun échafaudage Tailwind. */
-  for (const classe of rendu.matchAll(/class="([^"]*)"/g)) {
-    assert.ok(
-      !/\b(?:text|bg|border|ring|from|via|to|shadow|accent)-(?:zinc|gray|slate|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-\d{2,3}\b/.test(
-        classe[1],
-      ),
-      `${fichier} : classe Tailwind de couleur dans le rendu : « ${classe[1]} »`,
-    );
-    assert.ok(
-      !/\bdark:/.test(classe[1]),
-      `${fichier} : variante dark: dans le rendu : « ${classe[1]} »`,
-    );
-  }
-
-  /* 6. les interdits du contrat. */
-  verifieInterdits(rendu, fichier);
-
-  return rendu;
+  assert.ok(rendu.includes('href="#besoin"') && rendu.includes('id="besoin"'), `${url} : l'ancre #besoin du héros`);
+  assert.ok(rendu.includes('href="#mgx-form"') && rendu.includes('id="mgx-form"'), `${url} : l'ancre #mgx-form`);
+  verifieHygiene(rendu, url);
+  return "conforme";
 }
 
-/* ------------------------------------------------- les dessins et copies fixes
-   (présents sur les DEUX captures : la section 10, 11 et la FAQ sont identiques
-   au caractère près sur les 11 captures du gabarit, empreintes du 07/10). */
+const bilan = aVerifier.map((url) => [url, verifiePage(url)] as const);
+const conformes = bilan.filter(([, etat]) => etat === "conforme").map(([url]) => url);
+const enAttente = bilan.filter(([, etat]) => etat !== "conforme");
 
-const DESSINS_COMMUNS = [
-  // 0 · 01 Héros : la section, la grille à deux colonnes, le H1 à 66px.
-  "max-width: 1200px; margin: 0px auto; padding: 40px 40px 0px",
-  "grid-template-columns: 1.12fr 0.88fr",
-  "clamp(38px,4.4vw,66px)",
-  // le panneau de formulaire du héros.
-  "padding: 30px 30px 32px",
-  // 1 · 01 Chiffres : la carte en verre.
-  "padding: 44px 40px 0px",
-  "font: 600 calc(28px * var(--ts))/1 var(--ft)",
-  // 2 · 02 Logos.
-  "padding: 64px 0px 0px",
-  // 3 · Réassurance : la grille .9fr/1.1fr (aussi celle du problème).
-  "grid-template-columns: 0.9fr 1.1fr",
-  // 4 · 03 Problème : la colonne collante et la photo de 280px.
-  "position: sticky; top: 110px",
-  "height: 280px",
-  // 5 · 04 Offre : le rail numéro + texte.
-  "grid-auto-columns: minmax(260px, 300px)",
-  "grid-template-columns: 26px minmax(0px, 1fr)",
-  // 6 · Appel · offre : la bande arrondie sombre.
-  "border-radius: 28px",
-  // 8 · 05 Déroulé : la carte d'en-tête orangée.
-  "min-height: 240px",
-  // 9 · 06 Garanties : le panneau sombre et ses deux colonnes.
-  "padding: var(--sec) 24px 0",
-  "padding: 58px 56px",
-  "grid-template-columns: repeat(2, minmax(0px, 1fr))",
-  // 10 · Secteurs de l'expertise : l'en-tête .8fr/1.2fr et les cartes de 200px.
-  "grid-template-columns: 0.8fr 1.2fr",
-  "min-height: 200px",
-  // 11 · Offres du secteur : le bento.
-  "grid-row: span 2",
-  "min-height: 470px",
-  "grid-template-columns: minmax(0px, 1.1fr) minmax(0px, 0.9fr)",
-  "min-height: 236px",
-  // 12 · Marques maintenues : la grille de tuiles.
-  "repeat(auto-fill, minmax(150px, 1fr))",
-  // 13 · 08 Références : le rail de cartes.
-  "grid-auto-columns: minmax(280px, 320px)",
-  // 14 · 09 Questions : la grille de la carte à photo.
-  "minmax(0px, 0.8fr) minmax(0px, 1.2fr)",
-  // 15 · 10 Appel final.
-  "padding: var(--sec) 24px var(--sec)",
-  "border-radius: 40px",
-] as const;
+/* --------------------- les écrans ajoutés, prouvés depuis la capture qui les porte */
 
-const COPIES_COMMUNES = [
-  // 0 · Héros.
-  "Expertises",
-  "Demander une intervention",
-  "Rappel dans l'heure",
-  // 2 et 3 · Logos et réassurance.
-  "Ils nous font confiance",
-  "Certifications",
-  "Qui intervient chez vous",
-  "4 agences : Lyon (siège), Montréal, Dubaï, Madrid.",
-  // 4 et 5 · Problème et offre.
-  "Votre problématique",
-  "L'offre",
-  "Ce que nous faisons, et ce que ça change pour vous",
-  "7 points",
-  // 8 · Déroulé.
-  "Notre méthode",
-  "Un appel. Un plan. Une ligne qui repart.",
-  "6 étapes",
-  "Démarrer par l'audit",
-  // 9 · Garanties.
-  "Notre parti pris",
-  "Ce que nous garantissons",
-  // 10 · Secteurs de l'expertise, copie fixe du gabarit.
-  "Par secteur d'activité",
-  "Même expertise, contraintes différentes",
-  "Un roulement se change de la même façon partout.",
-  "Agroalimentaire",
-  "Aéronautique",
-  // 11 · Offres du secteur, copie fixe du gabarit.
-  "Nos offres",
-  "Six façons de travailler ensemble, selon votre besoin",
-  "Décrire mon besoin",
-  "migen© Résidence",
-  "Voir l'offre",
-  "migen© Travaux industriels",
-  // 12 · Marques.
-  "Marques et constructeurs",
-  "Les équipements que nous maintenons déjà",
-  // 13 · Références.
-  "Nos réalisations",
-  "Nos références",
-  "Toutes nos études de cas",
-  "Lire l'étude de cas",
-  // 14 · Questions.
-  "Questions fréquentes",
-  "Vos questions avant de nous appeler",
-  "Poser ma question",
-  // 15 · Appel final : la sous-ligne fixe du gabarit.
-  "Rappel dans l'heure aux horaires ouvrés.",
-] as const;
+/** Les cellules de la carte en verre d'un « Complément » : un bloc par cellule,
+ * relu tel que la capture l'affiche. */
+function blocsDuComplement(html: string): BlocComplementDomaine[] {
+  return html
+    .split(/<div[^>]*style="min-width: 0px; padding-bottom: 18px;"[^>]*>/)
+    .slice(1)
+    .map((cellule) => {
+      const bloc: BlocComplementDomaine = {};
+      const titre = cellule.match(/<h3[^>]*>([\s\S]*?)<\/h3>/);
+      if (titre) bloc.titre = texteLisible(titre[1]);
+      const p = cellule.match(/<p[^>]*>([\s\S]*?)<\/p>/);
+      if (p) bloc.texte = texteLisible(p[1]);
+      const puces = [...cellule.matchAll(/<strong[^>]*>([\s\S]*?)<\/strong>([\s\S]*?)<\/span>\s*<\/div>/g)];
+      if (puces.length) {
+        bloc.puces = puces.map((m) => ({ accroche: texteLisible(m[1]), texte: texteLisible(m[2]) }));
+      }
+      const table = cellule.match(/<table[\s\S]*?<\/table>/);
+      if (table) {
+        const cellules = (balise: string, html2: string) =>
+          [...html2.matchAll(new RegExp(`<${balise}[^>]*>([\\s\\S]*?)</${balise}>`, "g"))].map((m) => texteLisible(m[1]));
+        bloc.tableau = {
+          entetes: cellules("th", table[0]),
+          lignes: [...table[0].matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/g)]
+            .map((m) => cellules("td", m[1]))
+            .filter((l) => l.length),
+        };
+      }
+      return bloc;
+    });
+}
 
-const CIBLES_COMMUNES = [
-  "/secteurs/agroalimentaire",
-  "/secteurs/automobile",
-  "/secteurs/logistique",
-  "/secteurs/pharmaceutique",
-  "/secteurs/chimie",
-  "/secteurs/aeronautique",
-  "/offres/residence",
-  "/offres/full-service",
-  "/offres/zero-arret",
-  "/offres/arret-technique",
-  "/offres/bureau-etudes",
-  "/travaux-industriels",
-  "/preuves",
-] as const;
+/** Le problème tel que la capture l'affiche : titre, suite, puis des cartes
+ * « numéro, accroche, texte ». */
+function problemeDeLaCapture(html: string, variante: SectionProbleme["variante"]): SectionProbleme {
+  const titre = texteLisible(html.match(/<h2[^>]*>([\s\S]*?)<\/h2>/)![1]);
+  const suite = texteLisible(html.match(/<\/h2>[\s\S]*?<p[^>]*>([\s\S]*?)<\/p>/)![1]);
+  const jetons = textesDe(html.slice(html.indexOf("</h2>")));
+  const puces: Paragraphe[] = [];
+  jetons.forEach((j, i) => {
+    if (/^\d{2}$/.test(j)) puces.push({ accroche: jetons[i + 1], texte: jetons[i + 2] });
+  });
+  return {
+    type: "probleme",
+    variante,
+    punchline: suite ? `${titre} ${suite}` : titre,
+    puces,
+  } as SectionProbleme;
+}
 
-/* ------------------------------------------------- pilote 1 : la robotique */
 
-const renduRobotique = verifiePilote(
-  "expertises--robotique",
-  "expertises-robotique.json",
-  DESSINS_COMMUNS,
-  [
-    ...COPIES_COMMUNES,
-    // La copie de LA page, un échantillon par section du corpus.
-    "Un bras qui s'immobilise en plein cycle fige la cellule entière.",
-    "Huit fois sur dix, le robot n'est que le messager.",
-    "Une recherche de cause racine, pas un échange de pièce",
-    "Vous arrêtez de remplacer des organes sains pendant que la ligne attend.",
-    "Un parc entier à remettre sous suivi ?",
-    "Vous décrivez la panne",
-    "Aucune vente de robot ni de licence.",
-    "Maintenance des équipements critiques d'un équipementier automobile",
-    "Nous n'avons plus le contrat constructeur. Vous prenez la suite ?",
-    "Besoin que vos arrêts de cellule diminuent au lieu d'augmenter cette année ?",
-  ],
-  [...CIBLES_COMMUNES, "/preuves/jtekt", "/preuves/timescope"],
+
+/** Un écran rendu seul doit égaler l'écran de sa capture, sans écart déclaré
+ * possible quand le composant est de ce gabarit. */
+function prouve(nom: string, html: string, rendu: string, declaresAdmis: boolean): void {
+  const manques = compare(nom, html, rendu);
+  const restants = declaresAdmis ? nonDeclares(manques, rendu) : manques;
+  assert.equal(restants.length, 0, `« ${nom} » ne rend pas sa capture${liste(restants)}`);
+}
+
+// « Complément 2 » de l'accueil des types de maintenance, tableau compris.
+const C2 = ecran(captureDe("/expertises/types-de-maintenance/"), "Complément 2");
+const blocsC2 = blocsDuComplement(C2);
+assert.ok(blocsC2.some((b) => b.tableau?.lignes.length), "la capture des types de maintenance doit porter son tableau");
+prouve("Complément 2", C2, renderToStaticMarkup(<ComplementsDomaine blocs={blocsC2} />), false);
+
+// Le problème en rangée (électrique) et en panneau sombre (hydraulique).
+const RANGEE = ecran(captureDe("/expertises/electrique/"), "03 Problème");
+const SOMBRE = ecran(captureDe("/expertises/hydraulique/"), "03 Problème");
+const rendRangee = (v: SectionProbleme["variante"]) =>
+  renderToStaticMarkup(<ProblemeDomaine section={problemeDeLaCapture(RANGEE, v)} altPhoto="" />);
+const rendSombre = (v: SectionProbleme["variante"]) =>
+  renderToStaticMarkup(<ProblemeDomaine section={problemeDeLaCapture(SOMBRE, v)} altPhoto="" />);
+prouve("03 Problème", RANGEE, rendRangee("rangee"), false);
+prouve("03 Problème", SOMBRE, rendSombre("panneau-sombre"), false);
+
+// Le rail d'onglets des marques (électromécanique) : familles lues sur les onglets.
+const MARQUES = ecran(captureDe("/expertises/electromecanique/"), "Marques maintenues");
+const onglets = [...MARQUES.matchAll(/<button[^>]*?style="([^"]*)"[^>]*>([\s\S]*?)<\/button>/g)].map((m) => {
+  const intitule = textesDe(m[2])[0];
+  const famille = FAMILLES.find((f) => f.titre === intitule);
+  assert.ok(famille, `onglet « ${intitule} » de la capture sans famille dans marques-donnees.ts`);
+  return { cle: famille.cle, actif: /background: var\(--ink\)/.test(m[1]) };
+});
+assert.ok(onglets.length >= 2, "la capture de l'électromécanique doit porter son rail d'onglets");
+prouve(
+  "Marques maintenues",
+  MARQUES,
+  renderToStaticMarkup(
+    <MarquesOffre famille={onglets.find((o) => o.actif)!.cle} familles={onglets.map((o) => o.cle)} />,
+  ),
+  true,
 );
 
-/* ---------------------------------------------- pilote 2 : l'automatisme */
+/* -------------------------------------------------- le contrôle sait échouer */
 
-verifiePilote(
-  "expertises--automatisme",
-  "expertises-automatisme.json",
-  DESSINS_COMMUNS,
-  [
-    ...COPIES_COMMUNES,
-    "Un automate en défaut, et toute la chaîne s'arrête.",
-    "La sauvegarde est introuvable.",
-    "Un diagnostic qui va à la cause",
-    "Vos automatismes sauvegardés et datés",
-    "Une ligne figée maintenant se traite par le dépannage industriel.",
-    "Brancher et lire",
-    "Vos programmes, vos recettes et vos sauvegardes restent chez vous.",
-    "Démarrage d'une ligne de production neuve, près de Lyon",
-    "Pouvez-vous reprendre un code écrit par un autre prestataire ?",
-    "Besoin que quelqu'un sache enfin où se trouve la dernière version de votre programme ?",
-    // Le chiffre que le contrat AUTORISE sur cette page, preuve que la grille
-    // ne se vide pas par principe.
-    "+ 120",
-  ],
-  [...CIBLES_COMMUNES, "/preuves/mersen", "/preuves/eaton-mise-en-production"],
-);
-
-/* ---------------------- le trou déclaré : « +200 » ne se rend sur AUCUNE page */
-
+assert.ok(compare("03 Problème", SOMBRE, rendSombre("rangee")).length > 0, "le mauvais dessin du problème doit être vu");
+assert.ok(compare("03 Problème", RANGEE, rendRangee("colonne")).length > 0, "la colonne à photo à la place de la rangée doit être vue");
 assert.ok(
-  !renduRobotique.includes("+200"),
-  "le chiffre « +200 » de la capture robotique est interdit par le contrat : il ne doit pas se rendre",
+  compare("Complément 2", C2, renderToStaticMarkup(<ComplementsDomaine blocs={blocsC2.filter((b) => !b.tableau)} />))
+    .some((m) => m.nature === "copie" && m.detail === blocsC2.find((b) => b.tableau)!.tableau!.entetes[0]),
+  "un tableau retiré doit être vu, en-tête compris",
 );
+const sansMarques = compare("Marques maintenues", MARQUES, renderToStaticMarkup(<MarquesOffre famille={onglets[0].cle} />));
+assert.ok(sansMarques.length > 0, "un rail d'onglets absent doit être vu");
 
-/* ------------------------- une section sans donnée ne se rend pas */
+// À l'échelle d'une page réelle : le pilote robotique, son problème passé au
+// panneau sombre, ne doit plus être conforme à sa capture.
+{
+  const pilote = JSON.parse(lit(DOSSIER, "expertises-robotique.json")) as { titre_h1: string; contenu: ContenuDomaine };
+  const faux: ContenuDomaine = {
+    ...pilote.contenu,
+    sections: pilote.contenu.sections.map((s) => (s.type === "probleme" ? { ...s, variante: "panneau-sombre" } : s)),
+  };
+  const rendu = renderToStaticMarkup(<PageDomaine titre={pilote.titre_h1} contenu={faux} formulaire="faux" />);
+  const vus = nonDeclares(
+    ecrans(captureDe("/expertises/robotique/")).flatMap(([nom, html]) => compare(nom, html, rendu)),
+    rendu,
+  );
+  assert.ok(vus.some((m) => m.ecran === "03 Problème"), "un pilote au mauvais dessin doit échouer");
+}
+
+/* --------------------------------------------- une section sans donnée ne se rend pas */
 
 const VIDE: ContenuDomaine = { gabarit: "domaine", sections: [] };
-const renduVide = renderToStaticMarkup(
-  <PageDomaine titre="Un titre seul" contenu={VIDE} formulaire="vide" />,
-);
-
-assert.equal(
-  (renduVide.match(/<h1[\s>]/g) ?? []).length,
-  1,
-  "un contenu vide rend le titre, et rien de plus",
-);
+const renduVide = texteLisible(renderToStaticMarkup(<PageDomaine titre="Un titre seul" contenu={VIDE} formulaire="vide" />));
 for (const absent of [
-  "1.12fr .88fr", // pas de panneau de formulaire au héros
-  "Votre problématique",
-  "Notre méthode",
-  "Notre parti pris",
-  "Les équipements que nous maintenons déjà",
-  "Nos références",
-  "Vos questions avant de nous appeler",
+  "Votre problématique", "Notre méthode", "Notre parti pris", "Les équipements que nous maintenons déjà",
+  "Nos références", "Vos questions avant de nous appeler", "Idéal pour",
 ]) {
-  assert.ok(
-    !normaliseTexte(normaliseStyle(renduVide)).includes(absent),
-    `sans donnée, rien ne se rend : « ${absent} » trouvé dans le rendu vide`,
-  );
+  assert.ok(!renduVide.includes(absent), `sans donnée, rien ne se rend : « ${absent} » au rendu vide`);
 }
 
-/* ------------- la nouvelle forme ne capture pas les pages non reportées */
+/* ----------- l'ancienne forme ne passe pas `estDomaine` : la route la sert comme avant */
 
-/* `/expertises/electrique/` est encore sur l'ANCIENNE forme (chapeau,
-   traitements, autres) : elle ne doit PAS passer `estDomaine`, sinon la route
-   l'enverrait vers ce gabarit avec une donnée qu'il ne sait pas lire. */
-const ancienne = JSON.parse(
-  readFileSync(join(DOSSIER, "expertises-electrique.json"), "utf8"),
-) as { contenu: unknown };
 assert.ok(
-  !estDomaine(ancienne.contenu),
-  "expertises-electrique.json (ancienne forme) ne doit pas passer estDomaine : les 9 pages non reportées resteraient muettes",
+  !estDomaine({ gabarit: "domaine", chapeau: "", traitements: [], autres: [] }),
+  "l'ancienne forme (chapeau, traitements, autres) ne doit pas passer estDomaine",
 );
 
-console.log("gabarit domaine : toutes les vérifications passent.");
-console.log(
-  `  2 pilotes rendus contre leur capture, ${DESSINS_COMMUNS.length} dessins, ` +
-    `${COPIES_COMMUNES.length} copies fixes, ${INTERDITS.length} interdits vérifiés absents, ` +
-    `1 trou déclaré (« +200 », chiffre interdit de la capture robotique).`,
-);
+/* ------------------------------------------------------------------- bilan */
+
+if (!demandees.length) {
+  const muets = ECARTS.filter((e) => e.vus === 0);
+  assert.equal(muets.length, 0, `écarts déclarés qui ne se produisent plus, à retirer :${muets.map((e) => `\n    [${e.ecran}] ${e.raison}`).join("")}`);
+}
+
+console.log(`gabarit domaine : ${conformes.length}/${aVerifier.length} pages conformes à leur capture.`);
+for (const url of conformes) console.log(`  conforme    ${url}`);
+for (const [url, raison] of enAttente) console.log(`  EN ATTENTE  ${url} : ${raison}`);
+console.log("  écrans ajoutés prouvés sur leur capture : Complément 2 (types de maintenance), problème rangée (électrique) et panneau sombre (hydraulique), rail d'onglets (électromécanique).");
+console.log(`  écarts déclarés des composants partagés, ${ECARTS.filter((e) => e.vus).length} vus :`);
+for (const e of ECARTS.filter((x) => x.vus)) console.log(`    [${e.ecran}] ${e.raison} (${e.vus})`);
+
+if (enAttente.length) {
+  console.error(`\nÉCHEC : ${enAttente.length} page(s) du gabarit ne sont pas encore servies par lui.`);
+  process.exit(1);
+}

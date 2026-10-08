@@ -5,7 +5,7 @@
     "gabarit": "offre",
     "pastille": "Travaux industriels",
     "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-    "formulaireHeroTitre": "Parler à un chargé d'affaires",
+    "formulaireHeroTitre": "",
     "formulaireHeroMention": "Rappel dans l'heure",
     "chiffres": [
       {
@@ -13,12 +13,16 @@
         "libelle": "Collaborateurs · techniciens salariés Migen, pas de chaîne d'intermédiaires."
       },
       {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      },
+      {
         "valeur": "4",
         "libelle": "Agences · Lyon (siège), Montréal, Dubaï, Madrid, et des hubs techniques en France."
       },
       {
         "valeur": "10 %",
-        "libelle": "Des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+        "libelle": "Des techniciens retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
       }
     ],
     "reperesReassurance": [
@@ -68,7 +72,8 @@
             "accroche": "La cascade de sous-traitance.",
             "texte": "Vous ne savez plus qui monte réellement votre machine, ni selon quel standard."
           }
-        ]
+        ],
+        "variante": "rangee"
       },
       {
         "type": "offre",
@@ -186,52 +191,63 @@
           {
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Étude de cas Savoye",
-            "lienHref": "/preuves/savoye-migration-automates-norvege/"
+            "lienHref": "/preuves/savoye-migration-automates-norvege/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "logo": "/assets/clients/savoye.png"
           },
           {
             "titre": "Montage d'un centre logistique, Clermont-Ferrand, 2023.",
             "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés en pleine période estivale, site livré à la date prévue.",
             "lienLibelle": "Étude de cas AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/web/x-logistique-entrepot.jpg"
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg",
+            "logo": "/assets/clients/aktid.png"
           },
           {
             "titre": "Montage de portiques de lavage pour un fabricant, partout en France.",
             "texte": "Réception, assemblage, levage, raccordements mécaniques et électriques, portique validé à l'issue du montage.",
             "lienLibelle": "Étude de cas ORTHUS x WASHTEC",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "logo": "/assets/clients/orthus-x-washtec.svg"
           },
           {
             "titre": "Montage et déplacement de machines, étanchéité et isolation, 2025.",
             "texte": "Assemblage mécanique et électromécanique de lignes et de sous-ensembles, délais tenus sans pénalité.",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/web/x-cimenterie.jpg"
+            "photo": "/assets/web/mq-e69a240d8656.jpg",
+            "logo": "/assets/clients/mq-127f9e03c53b.svg"
           },
           {
             "titre": "Construction d'un site de R&D bas carbone, région parisienne.",
             "texte": "Mise en place des équipements et raccordements industriels, pilotés par Orthus, filiale du groupe.",
             "lienLibelle": "Étude de cas ORTHUS x ECOCEM",
             "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "logo": "/assets/clients/orthus-x-ecocem.png"
           },
           {
             "titre": "Contrôle de chantier, projets stratégiques, 2025 à 2026.",
             "texte": "Vérification des installations et respect des procédures sur des systèmes automatisés.",
             "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/web/x-auto-ligne.jpg"
+            "photo": "/assets/web/mq-5111002ce2b6.jpg",
+            "logo": "/assets/clients/alstef.webp"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
-            "lienHref": "/preuves/amazon-nouveau-site/"
+            "lienHref": "/preuves/amazon-nouveau-site/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
             "titre": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
             "lienLibelle": "Étude de cas Atena",
-            "lienHref": "/preuves/atena-port-la-rochelle/"
+            "lienHref": "/preuves/atena-port-la-rochelle/",
+            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg",
+            "logo": "/assets/clients/atena.png"
           }
         ]
       },
@@ -240,7 +256,7 @@
         "questions": [
           {
             "question": "Combien coûte un montage industriel ?",
-            "reponse": ""
+            "reponse": "Le montant dépend du nombre d'ensembles, de leur poids, des raccordements à réaliser et du niveau d'essais attendu. Chiffrage sur devis après lecture du dossier technique et visite du site, poste par poste."
           },
           {
             "question": "Concevez-vous ou fabriquez-vous des machines ?",
@@ -260,7 +276,7 @@
           },
           {
             "question": "Qui sont les techniciens qui interviennent ?",
-            "reponse": "Des salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des candidats sont retenus. Monteurs mécaniciens, électriciens, automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc."
+            "reponse": "Des salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des techniciens sont retenus. Monteurs mécaniciens, électriciens, automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc."
           }
         ]
       },

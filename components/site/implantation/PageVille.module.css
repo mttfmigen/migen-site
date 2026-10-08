@@ -1,25 +1,85 @@
-/* Survols du gabarit ville. Rien d'autre : un style en ligne ne peut pas porter
-   d'état, et c'est la seule raison d'être de ce fichier. Valeurs reprises des
-   attributs `style-hover` du bloc `isVille` de `maquette/accueil-rendu.html`,
-   lignes 3962 à 4076.
+/* Le gabarit 04 Ville : survols et reflux mobile que le style en ligne ne
+   peut pas porter. Valeurs des attributs `style-hover` et des `@media` de
+   `MigenExpertise.dc.html` (source de la maquette). Le focus suit le survol :
+   un visiteur au clavier voit ce que voit un visiteur à la souris (WCAG 2.4.7). */
 
-   Les pastilles des autres villes n'ont pas leur règle ici : elles passent par
-   `secteur/PucesLiens.tsx`, qui porte déjà la sienne, aux mêmes valeurs.
-
-   Le focus est traité avec le survol : un visiteur au clavier doit voir ce que
-   voit un visiteur à la souris (WCAG 2.4.7). La maquette ne le prévoit pas, le
-   site l'exige. */
-
-/* Ligne 3972, style-hover="filter:brightness(.93);transform:translateY(-1px)" */
-.boutonPrincipal:hover,
-.boutonPrincipal:focus-visible {
+/* Hub local, bouton : style-hover="filter:brightness(.93);color:#fff" */
+.boutonHub:hover,
+.boutonHub:focus-visible {
   filter: brightness(0.93);
-  transform: translateY(-1px);
+  color: #fff;
 }
 
-/* Le second bouton du hero, que `isVille` laisse vide mais que `isDept` pose
-   ligne 6372, style-hover="background:var(--card)" */
-.boutonSecondaire:hover,
-.boutonSecondaire:focus-visible {
-  background: var(--card);
+/* Hub local, téléphone : style-hover="color:#ff7c3c". `!important` comme la
+   maquette (`.scp10:hover`) : sans lui, la couleur EN LIGNE du lien gagne et le
+   survol ne fait rien (mesuré le 08/10 : blanc au repos, blanc au survol). */
+.telHub:hover,
+.telHub:focus-visible {
+  color: #ff7c3c !important;
+}
+
+/* Hub local, cartes : style-hover="transform:translateY(-3px);color:var(--ink)" */
+.carteHub:hover,
+.carteHub:focus-visible {
+  transform: translateY(-3px);
+  color: var(--ink);
+}
+
+/* Hub local, zones : style-hover="border-color:#ff7c3c;color:var(--ink)",
+   `!important` pour la même raison (bordure et couleur sont en ligne). */
+.zoneHub:hover,
+.zoneHub:focus-visible {
+  border-color: #ff7c3c !important;
+  color: var(--ink) !important;
+}
+
+/* Maillage, cartes : style-hover="transform:translateY(-3px);color:#fff" */
+.carteOffre:hover,
+.carteOffre:focus-visible {
+  transform: translateY(-3px);
+  color: #fff;
+}
+
+/* Les grilles « 03 Problème » en rangée (`g3-pbgrid`) et du maillage
+   (`g3-bento5`) portent les classes de la maquette : leurs règles mobiles sont
+   celles du gabarit, `.gabarit` de `offre/PageOffre.module.css`, posé sur la
+   racine de `PageVille`. */
+
+/* « 09 Questions » : la classe `mg-faqph` de « Migen - Site final.dc.html »,
+   carte sombre à photo qui repeint les jetons en blanc pour tout ce qu'elle
+   contient. La photo est celle que sert la maquette qui tourne, déjà extraite
+   pour les offres (`public/assets/web/faq-offre.jpg`, `PageOffre.tsx`). */
+.faqPhoto {
+  position: relative;
+  border-radius: var(--rad);
+  overflow: hidden;
+  padding: 44px;
+  background:
+    linear-gradient(90deg, rgba(18, 17, 16, 0.92) 0%, rgba(18, 17, 16, 0.8) 50%, rgba(18, 17, 16, 0.62) 100%),
+    url("/assets/web/faq-offre.jpg") center / cover no-repeat #1c1b19;
+  --ink: #fff;
+  --ink1: rgba(255, 255, 255, 0.9);
+  --ink2: rgba(255, 255, 255, 0.8);
+  --ink3: rgba(255, 255, 255, 0.66);
+  --ink4: rgba(255, 255, 255, 0.52);
+  --line: rgba(255, 255, 255, 0.16);
+  --chip: rgba(255, 255, 255, 0.14);
+  --gl-a: 0.1;
+  --gbd: rgba(255, 255, 255, 0.18);
+  --card: rgba(255, 255, 255, 0.08);
+  --acc-ink: #ffb48a;
+  color: var(--ink);
+}
+@media (max-width: 760px) {
+  .faqPhoto {
+    padding: 28px 22px;
+  }
+}
+
+/* Le « + » pivote en croix sur pastille orange quand le pli est ouvert :
+   `details[open]>summary>.mg-faqi` de la maquette. */
+.pli[open] > summary > .plus {
+  transform: rotate(45deg);
+  background: var(--acc) !important;
+  color: #fff !important;
 }

@@ -1,0 +1,302 @@
+{
+ "url": "/implantations/maintenance-industrielle-quimper/",
+ "titre_h1": "Maintenance industrielle à Quimper et dans le Finistère Sud",
+ "contenu": {
+  "gabarit": "ville",
+  "pastille": "Nos implantations",
+  "chapeau": "Autour de Quimper, trois tissus se côtoient : l’agroalimentaire finistérien, conserveries, volaille et produits de la mer, la mécanique et la chaudronnerie navale de Concarneau et de Douarnenez et l’électronique et les télécoms de Quimper. Aucun n'a les mêmes fenêtres d'arrêt ni les mêmes règles d'accès. Nos techniciens itinérants couvrent le Finistère Sud, appuyés par le hub le plus proche et le réseau national.",
+  "actions": [
+   {
+    "libelle": "Demander une intervention à Quimper",
+    "href": "#besoin"
+   }
+  ],
+  "mention": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte en option, nuits, week-ends et jours fériés.",
+  "formulaireHeroTitre": "Demander une intervention à Quimper",
+  "formulaireHeroMention": "Rappel dans l’heure",
+  "appelBouton": "Demander une intervention à Quimper",
+  "chiffres": [
+   {
+    "valeur": "+200",
+    "libelle": "Clients industriels accompagnés"
+   },
+   {
+    "valeur": "10 %",
+    "libelle": "Des techniciens retenus, entretien technique et comportemental, évaluation transmise avant l'arrivée"
+   },
+   {
+    "valeur": "Itinérant",
+    "libelle": "Des techniciens mobiles qui viennent sur votre site, avec un chargé d’affaires qui connaît votre dossier"
+   }
+  ],
+  "hubLocal": {
+   "surtitre": "Votre hub local · Quimper",
+   "titre": "Quimper : les industries que nos techniciens connaissent déjà",
+   "photo": "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/68/4b/8f/6f/78/v1_E10/E109K287.jpg?w=600&cf_fit=scale-down&mark-alpha=18&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark4.png&q=85&format=auto&s=434fdb3f69dcb13086a3ac0904ef6bb6a9a09ddaca36afefbfaa4b1849d79971",
+   "credit": "Quimper · Unai82",
+   "badge": "Techniciens itinérants",
+   "nom": "Quimper et ses environs",
+   "texte": "Nos techniciens itinérants couvrent Quimper et son bassin, appuyés par le réseau national Migen.",
+   "bouton": "Demander une intervention à Quimper",
+   "cartes": [
+    {
+     "surtitre": "Tissu principal",
+     "titre": "Industrie métallique",
+     "texte": "Nos techniciens connaissent la chaudronnerie navale de Concarneau et de Douarnenez, leurs fenêtres d’arrêt et leurs…",
+     "lien": "Notre approche industrie métallique",
+     "href": "/secteurs/industrie-metallique/"
+    },
+    {
+     "surtitre": "Aussi présent",
+     "titre": "Agroalimentaire",
+     "texte": "Nos techniciens connaissent l’agroalimentaire finistérien, leurs fenêtres d’arrêt et leurs règles d’accès.",
+     "lien": "Notre approche agroalimentaire",
+     "href": "/secteurs/agroalimentaire/"
+    }
+   ],
+   "zonesTitre": "Nos hubs",
+   "zones": [
+    {
+     "libelle": "Hub Lille",
+     "href": "/implantations/lille/"
+    },
+    {
+     "libelle": "Hub Lyon",
+     "href": "/implantations/lyon/"
+    },
+    {
+     "libelle": "Hub Nantes",
+     "href": "/implantations/nantes/"
+    },
+    {
+     "libelle": "Hub Paris",
+     "href": "/implantations/paris/"
+    },
+    {
+     "libelle": "Hub Strasbourg",
+     "href": "/implantations/strasbourg/"
+    },
+    {
+     "libelle": "Hub Toulouse",
+     "href": "/implantations/toulouse/"
+    },
+    {
+     "libelle": "Hub Marseille",
+     "href": "/implantations/marseille/"
+    },
+    {
+     "libelle": "Hub Bordeaux",
+     "href": "/implantations/bordeaux/"
+    },
+    {
+     "libelle": "Hub Metz",
+     "href": "/implantations/maintenance-industrielle-metz/"
+    },
+    {
+     "libelle": "Hub Dijon",
+     "href": "/implantations/maintenance-industrielle-dijon/"
+    }
+   ]
+  },
+  "problemePhoto": "/assets/web/ph-hero-raffinerie.jpg",
+  "brefBande": "Un équipement qui inquiète avant la prochaine fenêtre de production ?",
+  "brefMention": "Rappel dans l'heure.",
+  "brefBouton": {
+   "libelle": "Demander une intervention à Quimper",
+   "href": "#besoin"
+  },
+  "sections": [
+   {
+    "type": "probleme",
+    "punchline": "Des ateliers humides qui usent l’électrique et la mécanique. Et pendant ce temps, le préventif attend.",
+    "puces": [
+     {
+      "accroche": "Des ateliers humides qui usent l’électrique et la mécanique.",
+      "texte": "Sur ce bassin, un arrêt non planifié se paie en production perdue avant de se payer en réparation."
+     },
+     {
+      "accroche": "Des pics de production liés à la pêche et aux saisons.",
+      "texte": "Les annonces restent ouvertes des mois, et chaque départ emporte l'historique du parc."
+     },
+     {
+      "accroche": "Les métiers se mélangent sur une même panne.",
+      "texte": "Mécanique, électrique, automatisme, hydraulique : appeler trois prestataires, c'est perdre trois jours."
+     },
+     {
+      "accroche": "La cause racine n'est jamais cherchée.",
+      "texte": "La panne revient sous un autre nom, et le budget correctif dérape."
+     }
+    ]
+   },
+   {
+    "type": "offre",
+    "lignes": [
+     {
+      "prestation": {
+       "accroche": "Des techniciens qui connaissent l’agroalimentaire finistérien, conserveries, volaille et produits de la mer et ses contraintes d'accès et de cadence.",
+       "texte": ""
+      },
+      "benefice": "La méthode arrive avec le technicien, pas après trois visites d'apprentissage."
+     },
+     {
+      "prestation": {
+       "accroche": "Dépannage sur site avec recherche de cause racine du moteur à l'armoire.",
+       "texte": ""
+      },
+      "benefice": "La ligne repart, et le défaut ne revient pas sous un autre nom."
+     },
+     {
+      "prestation": {
+       "accroche": "Préventif écrit, calé sur vos heures de fonctionnement et vos fenêtres de production.",
+       "texte": ""
+      },
+      "benefice": "L'arrêt subi recule, et la charge de vos équipes internes s'allège."
+     },
+     {
+      "prestation": {
+       "accroche": "Couverture multi-technique",
+       "texte": "Mécanique, électrique, automatisme, hydraulique, pneumatique, soudure."
+      },
+      "benefice": "Un seul contrat pour un parc qui mélange toujours plusieurs technologies."
+     },
+     {
+      "prestation": {
+       "accroche": "Astreinte en option circuit et priorités écrits à l'avance.",
+       "texte": ""
+      },
+      "benefice": "Un appel de nuit trouve un technicien mobilisé, pas un répondeur."
+     },
+     {
+      "prestation": {
+       "accroche": "",
+       "texte": ""
+      },
+      "benefice": "La compétence qui vous manque, sans recruter, avec remplacement garanti."
+     }
+    ]
+   },
+   {
+    "type": "deroule",
+    "etapes": [
+     {
+      "titre": "Vous décrivez la situation",
+      "texte": "Équipement, symptôme, criticité, fenêtre de production, accès au site."
+     },
+     {
+      "titre": "Nous vous rappelons dans l'heure",
+      "texte": "Qualification du besoin, du profil disponible et des pièces à prévoir."
+     },
+     {
+      "titre": "Le devis précède le déplacement",
+      "texte": "Périmètre, conditions, chiffrage écrit, options d'astreinte comprises."
+     },
+     {
+      "titre": "L'intervention suit votre protocole",
+      "texte": "Accueil sécurité, plan de prévention, consignation, diagnostic."
+     },
+     {
+      "titre": "La cause racine est traitée après la remise en route",
+      "texte": "Mesures, historique, conditions réelles d'exploitation."
+     },
+     {
+      "titre": "Le compte rendu part dans votre GMAO",
+      "texte": "Constat, actions, pièces, organes à surveiller."
+     }
+    ]
+   },
+   {
+    "type": "garanties",
+    "puces": [
+     {
+      "accroche": "Le préventif se cale sur votre calendrier, pas sur le nôtre",
+      "texte": "Les opérations lourdes tombent hors fenêtre de production."
+     },
+     {
+      "accroche": "Vous savez qui entre sur le site",
+      "texte": "10 % des techniciens retenus, résultats d'évaluation transmis avant l'arrivée."
+     },
+     {
+      "accroche": "Vous gardez la main",
+      "texte": "Vos priorités, vos règles de sécurité, votre GMAO. Nos techniciens entrent dans votre organisation sans la redessiner."
+     }
+    ]
+   },
+   {
+    "type": "preuves",
+    "preuves": [
+     {
+      "titre": "Pas un poste sans maintenance, week-end compris",
+      "lienLibelle": "Étude de cas Danone (Blédina)",
+      "lienHref": "/preuves/danone-lignes-de-production/",
+      "photo": "/assets/web/team-grind-impact.jpg"
+     },
+     {
+      "titre": "Un premier contrat en Belgique, préventif et correctif",
+      "lienLibelle": "Étude de cas McCain",
+      "lienHref": "/preuves/mccain-belgique/",
+      "photo": "/assets/web/ph-technicien.jpg"
+     },
+     {
+      "titre": "Une ligne de pain de mie suivie à chaque poste",
+      "lienLibelle": "Étude de cas Jacquet Brossard",
+      "lienHref": "/preuves/jacquet-brossard/",
+      "photo": "/assets/web/ph-hero-raffinerie.jpg"
+     },
+     {
+      "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
+      "lienLibelle": "Étude de cas Salaison du Mâconnais",
+      "lienHref": "/preuves/salaison-du-maconnais/",
+      "photo": "/assets/web/ph-technicien.jpg"
+     },
+     {
+      "titre": "Un renfort pour que le pain sorte chaque matin",
+      "lienLibelle": "Étude de cas La Panetière",
+      "lienHref": "/preuves/la-panetiere/",
+      "photo": "/assets/web/ph-tuyaux.jpg"
+     },
+     {
+      "titre": "Un été entier sans trou dans la maintenance",
+      "lienLibelle": "Étude de cas OGF",
+      "lienHref": "/preuves/ogf-arret-estival/",
+      "photo": "/assets/web/ph-robots-solaire.jpg"
+     }
+    ]
+   },
+   {
+    "type": "objections",
+    "questions": [
+     {
+      "question": "Êtes-vous implantés à Quimper ?",
+      "reponse": "Nous n’avons pas de hub à Quimper, et nous préférons le dire. Nos techniciens sont mobiles : ils viennent sur votre site, avec un chargé d’affaires qui connaît votre dossier, appuyés par le hub le plus proche."
+     },
+     {
+      "question": "Couvrez-vous tout le Finistère Sud ?",
+      "reponse": "Oui : Quimper, Concarneau, Douarnenez, Quimperlé et Pont-l’Abbé. Au-delà, le réseau national prend le relais, avec un contrat unique et des comptes rendus au même format."
+     },
+     {
+      "question": "Quel délai pour une intervention à Quimper ?",
+      "reponse": "Un rappel dans l'heure aux horaires ouvrés, une qualification assez précise pour éviter un second déplacement, et l'astreinte en option la nuit, le week-end et les jours fériés. Le circuit et les priorités s'écrivent au devis."
+     },
+     {
+      "question": "Pouvez-vous affecter un technicien à demeure sur notre site ?",
+      "reponse": "Absence ou départ, un profil équivalent prend le relais."
+     }
+    ]
+   },
+   {
+    "type": "ctaFinal",
+    "question": "Besoin de fiabiliser un site où chaque heure d'arrêt se paie ?"
+   }
+  ]
+ },
+ "trous": [
+  {
+   "ligne": "Technicien en résidence possible, intégré à votre équipe sous 2 à 3 semaines.",
+   "pourquoi": "délai chiffré (« sous 2 à 3 semaines ») : seul « rappel dans l'heure » est autorisé. Intitulé du point 06 de « 04 Offre » : le point reste avec son bénéfice, son intitulé est vide."
+  },
+  {
+   "ligne": "Oui, avec l'offre résidence : un salarié Migen qui rejoint votre équipe, suivi par un référent, en poste sous 2 à 3 semaines.",
+   "pourquoi": "délai chiffré (« en poste sous 2 à 3 semaines ») : seul « rappel dans l'heure » est autorisé. Première phrase de la réponse à « Pouvez-vous affecter un technicien à demeure sur notre site ? », la seconde reste."
+  }
+ ]
+}

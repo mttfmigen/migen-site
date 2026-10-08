@@ -13,7 +13,11 @@
    ],
    "chiffre": {
     "valeur": "10 %",
-    "texte": "des candidats retenus, après un test technique et un entretien"
+    "texte": "des techniciens retenus, après un test technique et un entretien"
+   },
+   "photo": {
+    "src": "/assets/web/mq-2a6115ec9fe0.jpg",
+    "alt": "Technicien migen en intervention"
    }
   },
   "sections": [
@@ -26,7 +30,7 @@
      },
      {
       "valeur": "10 %",
-      "texte": "des candidats retenus après évaluation"
+      "texte": "des techniciens retenus après évaluation"
      },
      {
       "valeur": "4 agences",
@@ -267,7 +271,7 @@
      }
     ],
     "bande": {
-     "texte": "Notre sélection est exigeante et assumée : entretien technique et comportemental, 10 % des candidats retenus, résultats partagés avec le client. Contrairement à un cabinet de recrutement, nous évaluons le métier, pas un CV. Un emploi technicien chez Migen ne dépend pas de la taille de l'entreprise donneuse d'ordres : les compétences priment. Contactez-nous pour améliorer votre situation."
+     "texte": "Notre sélection est exigeante et assumée : entretien technique et comportemental, 10 % des techniciens retenus, résultats partagés avec le client. Contrairement à un cabinet de recrutement, nous évaluons le métier, pas un CV. Un emploi technicien chez Migen ne dépend pas de la taille de l'entreprise donneuse d'ordres : les compétences priment. Contactez-nous pour améliorer votre situation."
     }
    },
    {
@@ -376,7 +380,7 @@
      },
      {
       "question": "Comment Migen évalue-t-elle les compétences d'un électromécanicien ?",
-      "reponse": "Par un entretien technique mené par un professionnel du métier, puis un entretien comportemental. Seuls 10 % des candidats sont retenus, et les résultats sont transmis au client avant toute décision."
+      "reponse": "Par un entretien technique mené par un professionnel du métier, puis un entretien comportemental. Seuls 10 % des techniciens sont retenus, et les résultats sont transmis au client avant toute décision."
      }
     ]
    },
@@ -388,11 +392,13 @@
     "items": [
      {
       "libelle": "Électromécanicien",
-      "href": "/carriere/electromecanicien/"
+      "href": "/carriere/electromecanicien/",
+      "photo": "/assets/web/mq-056f3c250981.jpg"
      },
      {
       "libelle": "Salaire électromécanicien",
-      "href": "/carriere/electromecanicien/salaire/"
+      "href": "/carriere/electromecanicien/salaire/",
+      "photo": "/assets/web/mq-948c28bcda08.jpg"
      }
     ]
    }

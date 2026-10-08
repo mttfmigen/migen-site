@@ -1,206 +1,219 @@
 {
   "url": "/secteurs/menuiserie-industrielle/",
-  "source": "dessin : maquette/accueil-rendu.html, gabarit isSecteur, lignes 6278 à 6364. texte : supabase/import/corpus-analyse.json, produit par scripts/produit-secteurs.mjs.",
+  "titre_h1": "Vos machines suivent vos carnets de commandes.",
+  "source": "dessin : maquette/rendu/secteurs--menuiserie-industrielle.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {
     "gabarit": "secteur",
-    "surtitre": "Secteur d'activité",
+    "pastille": "Maintenance menuiserie industrielle",
     "chapeau": "Le menuisier connaît le bois, nous connaissons ses machines. Quelques visites bien placées, souvent une par mois, avec le même technicien, valent mieux qu'un programme théorique que personne ne tient.",
     "actions": [
       {
         "libelle": "Faire visiter mon atelier à un chargé d'affaires",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperesSurtitre": "Nos repères dans le secteur",
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30, pour un premier contact sur vos priorités.",
+    "formulaireHeroTitre": "Faire visiter mon atelier à un chargé d'affaires",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
-        "valeur": "+ 100",
-        "libelle": "collaborateurs, automaticiens, spécialistes hydraulique et pneumatique, roboticiens"
+        "valeur": "+ 120",
+        "libelle": "Collaborateurs, automaticiens, spécialistes hydraulique et pneumatique, roboticiens"
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, taux horaire homogène partout"
+        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, taux horaire homogène partout"
       }
     ],
-    "enjeuxSurtitre": "Les enjeux du secteur",
-    "enjeuxTitre": "Les grands prestataires regardent ailleurs. Et votre atelier se débrouille seul avec des machines rapides, précises et dangereuses.",
-    "enjeux": [
+    "logosTitre": "Ils nous confient leurs ateliers",
+    "logos": [
       {
-        "titre": "L'aspiration négligée est le premier signal d'un atelier en danger.",
-        "texte": "Qualité en baisse, broches qui chauffent, risque d'incendie qui monte. C'est souvent notre premier chantier chez un nouveau client."
+        "nom": "Jeld-Wen",
+        "src": "/assets/clients/jeld-wen.png"
       },
       {
-        "titre": "La poussière de bois encrasse tout.",
-        "texte": "Guidages usés, moteurs qui chauffent, accumulation qui s'installe partout où personne ne passe la main."
+        "nom": "Groupe Atlantic",
+        "src": "/assets/clients/groupe-atlantic.png",
+        "filtre": "invert(1) hue-rotate(180deg)"
       },
       {
-        "titre": "Le dixième de millimètre se voit sur le produit fini.",
-        "texte": "Plaqueuses de chant, perceuses multibroches, centres d'usinage à commande numérique : le défaut de réglage se retrouve chez le client."
+        "nom": "Tournaire",
+        "src": "/assets/clients/mq-7c01e175985e.png"
       },
       {
-        "titre": "Une tenonneuse de trente ans cohabite avec un centre connecté.",
-        "texte": "Le technicien doit passer de l'une à l'autre et savoir vite ce qui relève du réglage, de l'usure ou de la commande."
+        "nom": "Rector Lesage",
+        "src": "/assets/clients/rector-lesage.png"
       },
       {
-        "titre": "Lames, fers et presses exposent chaque poste.",
-        "texte": "Protections et arrêts d'urgence se contrôlent à chaque passage, pas une fois par an."
+        "nom": "Soprema",
+        "src": "/assets/clients/mq-127f9e03c53b.svg"
       }
     ],
-    "autresSurtitre": "Les autres secteurs",
-    "autres": [
-      {
-        "libelle": "Agroalimentaire",
-        "href": "/secteurs/agroalimentaire/"
-      },
-      {
-        "libelle": "Équipements logistiques",
-        "href": "/secteurs/logistique/"
-      },
-      {
-        "libelle": "Automobile",
-        "href": "/secteurs/automobile/"
-      },
-      {
-        "libelle": "Pharmaceutique",
-        "href": "/secteurs/pharmaceutique/"
-      },
-      {
-        "libelle": "Aéronautique",
-        "href": "/secteurs/aeronautique/"
-      },
-      {
-        "libelle": "Chimie",
-        "href": "/secteurs/chimie/"
-      },
-      {
-        "libelle": "Nucléaire",
-        "href": "/secteurs/nucleaire/"
-      },
-      {
-        "libelle": "Industrie lourde",
-        "href": "/secteurs/industrie-lourde/"
-      },
-      {
-        "libelle": "Industrie métallique",
-        "href": "/secteurs/industrie-metallique/"
-      }
-    ],
-    "appelTitre": "Besoin de sortir du système D sur vos machines à bois ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
-      "libelle": "Demander une visite d'atelier",
-      "href": "#formulaire"
+    "appelBouton": "Faire visiter mon atelier à un chargé d'affaires",
+    "problemePhoto": "/assets/web/mq-dcd9cac6ffbf.jpg",
+    "brefBande": "Besoin d'un premier état des lieux honnête sur votre parc bois ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Faire visiter mon atelier à un chargé d'affaires",
+      "href": "#besoin"
     },
-    "complement": [
+    "expertisesTitre": "Les expertises d’un atelier de menuiserie",
+    "expertisesChapeau": "Scies, centres d’usinage, aspiration : la poussière et la cadence usent les machines.",
+    "expertises": [
+      {
+        "titre": "Mécanique",
+        "texte": "Broches, guides et transmissions des centres d’usinage.",
+        "href": "/expertises/mecanique/",
+        "photo": "/assets/web/team-grind-front.jpg"
+      },
+      {
+        "titre": "Pneumatique",
+        "texte": "Serrages et presses pneumatiques des lignes d’assemblage.",
+        "href": "/expertises/pneumatique/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
+      },
+      {
+        "titre": "Automatisme",
+        "texte": "Commandes numériques et automates des centres d’usinage.",
+        "href": "/expertises/automatisme/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      },
+      {
+        "titre": "Électrique",
+        "texte": "Moteurs, aspirations et armoires en atelier poussiéreux.",
+        "href": "/expertises/electrique/",
+        "photo": "/assets/web/team-electric.jpg"
+      }
+    ],
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "Les grands prestataires regardent ailleurs. Et votre atelier se débrouille seul avec des machines rapides, précises et dangereuses.",
+        "puces": [
+          {
+            "accroche": "L'aspiration négligée est le premier signal d'un atelier en danger.",
+            "texte": "Qualité en baisse, broches qui chauffent, risque d'incendie qui monte. C'est souvent notre premier chantier chez un nouveau client."
+          },
+          {
+            "accroche": "La poussière de bois encrasse tout.",
+            "texte": "Guidages usés, moteurs qui chauffent, accumulation qui s'installe partout où personne ne passe la main."
+          },
+          {
+            "accroche": "Le dixième de millimètre se voit sur le produit fini.",
+            "texte": "Plaqueuses de chant, perceuses multibroches, centres d'usinage à commande numérique : le défaut de réglage se retrouve chez le client."
+          },
+          {
+            "accroche": "Une tenonneuse de trente ans cohabite avec un centre connecté.",
+            "texte": "Le technicien doit passer de l'une à l'autre et savoir vite ce qui relève du réglage, de l'usure ou de la commande."
+          },
+          {
+            "accroche": "Lames, fers et presses exposent chaque poste.",
+            "texte": "Protections et arrêts d'urgence se contrôlent à chaque passage, pas une fois par an."
+          }
+        ]
+      },
       {
         "type": "offre",
         "lignes": [
           {
             "prestation": {
-              "accroche": "Préventif minimal efficace",
-              "texte": ", souvent une visite par mois, avec le même technicien."
+              "accroche": "Préventif minimal efficace souvent une visite par mois, avec le même technicien."
             },
             "benefice": "Vous sortez du cycle réparer quand ça casse, sans programme théorique impossible à tenir."
           },
           {
             "prestation": {
               "accroche": "Remise à niveau du réseau d'aspiration",
-              "texte": "contrôle des filtres et des débits, reprise de chaudronnerie sur les gaines."
+              "texte": "Contrôle des filtres et des débits, reprise de chaudronnerie sur les gaines."
             },
             "benefice": "Sécurité incendie, matériel propre, air respirable. C'est la première urgence de la plupart des ateliers."
           },
           {
             "prestation": {
               "accroche": "Sciage et débit",
-              "texte": "scies à panneaux horizontales et verticales, déligneuses, tronçonneuses. Alignements, guidages, freins de lame, protecteurs."
+              "texte": "Scies à panneaux horizontales et verticales, déligneuses, tronçonneuses. Alignements, guidages, freins de lame, protecteurs."
             },
             "benefice": "Les coupes reviennent dans la tolérance, et les organes de sécurité redeviennent conformes."
           },
           {
             "prestation": {
               "accroche": "Usinage du bois",
-              "texte": "centres à commande numérique, toupies, moulurières, tenonneuses. Broches, axes, changeurs d'outils, géométrie."
+              "texte": "Centres à commande numérique, toupies, moulurières, tenonneuses. Broches, axes, changeurs d'outils, géométrie."
             },
             "benefice": "La précision se maintient au lieu de se dégrader jusqu'à la reprise en atelier."
           },
           {
             "prestation": {
               "accroche": "Placage et assemblage",
-              "texte": "plaqueuses de chant, presses à plaquer, cadreuses, perceuses multibroches. Température, colle, pression."
+              "texte": "Plaqueuses de chant, presses à plaquer, cadreuses, perceuses multibroches. Température, colle, pression."
             },
             "benefice": "Les réglages qui font la qualité sont suivis et consignés, pas transmis oralement."
           },
           {
             "prestation": {
               "accroche": "Finition",
-              "texte": "ponceuses larges bandes, cabines et lignes de vernissage, séchoirs."
+              "texte": "Ponceuses larges bandes, cabines et lignes de vernissage, séchoirs."
             },
             "benefice": "La régularité d'état de surface cesse de dépendre de l'humeur du matériel."
           },
           {
             "prestation": {
               "accroche": "Flux et manutention",
-              "texte": "convoyeurs, retourneurs, empileurs, robots de palettisation, avec nos roboticiens."
+              "texte": "Convoyeurs, retourneurs, empileurs, robots de palettisation, avec nos roboticiens."
             },
             "benefice": "La ligne complète est couverte, du débit à la palette, y compris la [maintenance convoyeur](/secteurs/logistique/maintenance-convoyeur/)."
           },
           {
             "prestation": {
-              "accroche": "Historique par équipement",
-              "texte": "dans un espace client accessible à votre équipe."
+              "accroche": "Historique par équipement dans un espace client accessible à votre équipe."
             },
             "benefice": "Vos décisions d'investissement s'appuient sur des données réelles, pas sur une impression."
           },
           {
             "prestation": {
-              "texte": "Point suivi"
+              "accroche": "Point suivi"
             },
             "benefice": "Ce que vous y gagnez"
           },
           {
             "prestation": {
-              "texte": "Qualité de coupe et d'usinage"
+              "accroche": "Qualité de coupe et d'usinage"
             },
             "benefice": "Moins de rebuts, moins de reprises, clients livrés"
           },
           {
             "prestation": {
-              "texte": "État de l'aspiration"
+              "accroche": "État de l'aspiration"
             },
             "benefice": "Sécurité incendie, matériel propre, air respirable"
           },
           {
             "prestation": {
-              "texte": "Organes de sécurité"
+              "accroche": "Organes de sécurité"
             },
             "benefice": "Conformité, protection des équipes, sérénité en cas de contrôle"
           },
           {
             "prestation": {
-              "texte": "Broches et organes rapides"
+              "accroche": "Broches et organes rapides"
             },
             "benefice": "Remplacements programmés au lieu de casses subies"
           },
           {
             "prestation": {
-              "texte": "Historique par équipement"
+              "accroche": "Historique par équipement"
             },
             "benefice": "Décisions d'investissement fondées sur des données réelles"
           },
           {
             "prestation": {
-              "texte": "Coût de maintenance"
+              "accroche": "Coût de maintenance"
             },
             "benefice": "Un budget lisible, comparé au coût réel des pannes"
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Pour les capotages, l'accessibilité des organes et les mises en conformité, notre [bureau d'études](/offres/bureau-etudes/) prépare chaque amélioration en dossier chiffré, réalisable sans arrêter l'atelier plus que nécessaire."
           }
         ]
       },
@@ -209,27 +222,27 @@
         "etapes": [
           {
             "titre": "Visite de l'atelier",
-            "texte": "identification des équipements critiques, relevé des urgences réelles. Vous recevez une information hiérarchisée, sans catastrophisme commercial."
+            "texte": "Identification des équipements critiques, relevé des urgences réelles. Vous recevez une information hiérarchisée, sans catastrophisme commercial."
           },
           {
             "titre": "Traitement des urgences",
-            "texte": "l'aspiration en premier dans la majorité des cas, puis les organes de sécurité et les broches."
+            "texte": "L'aspiration en premier dans la majorité des cas, puis les organes de sécurité et les broches."
           },
           {
             "titre": "Préventif minimal",
-            "texte": "quelques visites bien placées, avec le même technicien. On commence petit, on prouve, on étend."
+            "texte": "Quelques visites bien placées, avec le même technicien. On commence petit, on prouve, on étend."
           },
           {
             "titre": "Surveillance des points sensibles",
-            "texte": "aspiration, broches, sécurités. Trois familles de contrôles réguliers qui évitent l'essentiel des mauvaises surprises."
+            "texte": "Aspiration, broches, sécurités. Trois familles de contrôles réguliers qui évitent l'essentiel des mauvaises surprises."
           },
           {
             "titre": "Dépannage outillé",
-            "texte": "diagnostic, intervention documentée, conseil écrit pour éviter la récidive. Chaque passage laisse le parc plus connu qu'avant."
+            "texte": "Diagnostic, intervention documentée, conseil écrit pour éviter la récidive. Chaque passage laisse le parc plus connu qu'avant."
           },
           {
             "titre": "Extension",
-            "texte": "le périmètre s'élargit selon l'évolution réelle de votre activité, jamais selon un plan vendu d'avance."
+            "texte": "Le périmètre s'élargit selon l'évolution réelle de votre activité, jamais selon un plan vendu d'avance."
           }
         ]
       },
@@ -238,23 +251,17 @@
         "puces": [
           {
             "accroche": "Un état des lieux hiérarchisé, sans catastrophisme",
-            "texte": "ce qui est urgent, ce qui peut attendre, ce qui n'a pas besoin d'être touché. Vous arbitrez sur une liste claire."
+            "texte": "Ce qui est urgent, ce qui peut attendre, ce qui n'a pas besoin d'être touché. Vous arbitrez sur une liste claire."
           },
           {
             "accroche": "Le même technicien d'une visite à l'autre",
-            "texte": "sur un parc mixte et souvent non documenté, la mémoire de l'intervenant vaut autant que sa compétence."
+            "texte": "Sur un parc mixte et souvent non documenté, la mémoire de l'intervenant vaut autant que sa compétence."
           },
           {
             "accroche": "Un parc qui se documente passage après passage",
-            "texte": "fiches machine, historique, conseils écrits. Y compris pour les matériels dont le constructeur a disparu."
+            "texte": "Fiches machine, historique, conseils écrits. Y compris pour les matériels dont le constructeur a disparu."
           }
         ]
-      },
-      {
-        "type": "cta",
-        "question": "Besoin d'un premier état des lieux honnête sur votre parc bois ?",
-        "bouton": "Faire visiter mon atelier à un chargé d'affaires",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
       },
       {
         "type": "preuves",
@@ -263,31 +270,54 @@
             "titre": "Diagnostic sur site et réparation d'un parc machines défaillant chez une PME, sans rachat de matériel neuf",
             "texte": "Lyon, février 2024",
             "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines",
-            "lienHref": "/preuves/joint-lyonnais/"
+            "lienHref": "/preuves/joint-lyonnais/",
+            "photo": "/assets/web/mq-1ef16ef335a6.jpg"
           },
           {
             "titre": "Technicien polyvalent sur un parc hétérogène à forte cadence, papier et emballage",
             "texte": "matière souple, rythme continu",
             "lienLibelle": "Étude de cas VPK : maintenance de site",
-            "lienHref": "/preuves/vpk/"
+            "lienHref": "/preuves/vpk/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "1 à 3 techniciens en renfort des équipes de maintenance sur plusieurs sites de production",
             "texte": "depuis octobre 2024",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes",
-            "lienHref": "/preuves/groupe-atlantic/"
+            "lienHref": "/preuves/groupe-atlantic/",
+            "photo": "/assets/web/x-elec-cablage.jpg"
           },
           {
             "titre": "Chantiers de montage, déplacements de machines et renfort technique ponctuel, matériaux",
             "texte": "missions documentées",
             "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
-            "lienHref": "/preuves/soprema/"
+            "lienHref": "/preuves/soprema/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "Renfort de l'équipe de maintenance pendant les congés d'été",
             "texte": "un technicien sur site, été 2025",
             "lienLibelle": "Étude de cas OGF : arrêt estival",
-            "lienHref": "/preuves/ogf-arret-estival/"
+            "lienHref": "/preuves/ogf-arret-estival/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
+          },
+          {
+            "titre": "Des commandes numériques remises en route à chaque équipe",
+            "lienLibelle": "Étude de cas Jeld-Wen",
+            "lienHref": "/preuves/jeld-wen/",
+            "photo": "/assets/web/mq-056f3c250981.jpg"
+          },
+          {
+            "titre": "Maintenir un centre logistique qui ne ferme jamais",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg"
+          },
+          {
+            "titre": "Des chantiers automatisés contrôlés point par point",
+            "lienLibelle": "Étude de cas Alstef Group",
+            "lienHref": "/preuves/alstef-group/",
+            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg"
           }
         ]
       },
@@ -304,7 +334,7 @@
           },
           {
             "question": "Travaillez-vous le samedi ou pendant nos fermetures ?",
-            "reponse": "Oui : les opérations lourdes se calent sur vos fermetures, congés ou week-ends, pour ne pas bloquer l'activité. L'astreinte 24/24 et 7/7 existe en option pour les ateliers qui tournent en continu."
+            "reponse": "Oui : les opérations lourdes se calent sur vos fermetures, congés ou week-ends, pour ne pas bloquer l'activité. L'astreinte la nuit, le week-end et les jours fériés existe en option pour les ateliers qui tournent en continu."
           },
           {
             "question": "Notre matériel est ancien et sans documentation. C'est un problème ?",
@@ -319,6 +349,12 @@
             "reponse": "Un état des lieux chiffré d'abord, un devis clair ensuite : taux horaire homogène partout en France, formules à budget prévisible pour l'entretien programmé. La comparaison honnête avec le coût de vos pannes actuelles se fait généralement d'elle-même."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de sortir du système D sur vos machines à bois ?",
+        "bouton": "Demander une visite d'atelier",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
       }
     ]
   }

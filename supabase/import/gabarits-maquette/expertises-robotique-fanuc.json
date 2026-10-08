@@ -1,5 +1,5 @@
 {
-  "_source": "maquette/rendu/expertises--robotique--fanuc.html (07/10 21h12, 15 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture, contrôlé par components/site/expertises/specialite/verification-specialite.tsx. TROU DE CONTRAT DÉCLARÉ : la capture dessine TROIS chiffres dont « +200 / Clients industriels accompagnés », premier interdit du contrat (le compte tenu par le dépôt est « plus de 120 clients, dont plus de 80 réguliers ») ; la carte entière n'est pas rendue et n'est pas reformulée, même arbitrage que /offres/chantier/demenagement-machines/. PHOTOS MESURÉES, PAS CHOISIES : octets de chaque image de la maquette vivante extraits puis rapprochés de la photothèque par sha256 complet ; la maquette assigne les photos du rail des références PAR RANG (suite identique sur les quatre pages comparées) : x-robotique, mq-e6322efcd358, x-auto-caisse, mq-2a6115ec9fe0, mq-9b461f439fef, mq-339d39e2a674, mq-42237c1c8685 ; photo du problème = mq-948c28bcda08. ÉCART CONNU, hors donnée : la famille « robot » de marques-donnees.ts compte 8 constructeurs, la capture en rend 9 (ENGEL en plus) ; le composant est partagé avec /marques/, l'ajout est à arbitrer là-bas.",
+  "_source": "maquette/rendu/expertises--robotique--fanuc.html (07/10 21h12, 15 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture, contrôlé par components/site/expertises/specialite/verification-specialite.tsx. CHIFFRES : les trois cartes de la capture, dont « +200 / Clients industriels accompagnés », remise le 07/10 (règle éditoriale validée par le client : « +200 clients », sans qualificatif ajouté). PHOTOS MESURÉES, PAS CHOISIES : octets de chaque image de la maquette vivante extraits puis rapprochés de la photothèque par sha256 complet ; la maquette assigne les photos du rail des références PAR RANG (suite identique sur les quatre pages comparées) : x-robotique, mq-e6322efcd358, x-auto-caisse, mq-2a6115ec9fe0, mq-9b461f439fef, mq-339d39e2a674, mq-42237c1c8685 ; photo du problème = mq-948c28bcda08. ÉCART CONNU, hors donnée : la famille « robot » de marques-donnees.ts compte 8 constructeurs, la capture en rend 9 (ENGEL en plus) ; le composant est partagé avec /marques/, l'ajout est à arbitrer là-bas.",
   "url": "/expertises/robotique/fanuc/",
   "titre_h1": "Fanuc robotique : remettre la cellule en cycle, pas seulement le robot en route",
   "contenu": {
@@ -19,7 +19,11 @@
     "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "Des candidats retenus, après entretien technique ET comportemental"
+        "libelle": "Des techniciens retenus, après entretien technique ET comportemental"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "en continu et tous les jours",

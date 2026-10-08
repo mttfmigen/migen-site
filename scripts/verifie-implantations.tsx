@@ -1,224 +1,283 @@
 /**
- * Contrôle du contenu d'une page IMPLANTATIONS contre `types/implantations.ts`,
- * contre l'inventaire des URL et contre les interdits de copie, puis du SQL
- * découpé qui le porte.
+ * Contrôle du hub `/implantations/` contre SA capture, sans navigateur.
  *
- *   bun scripts/verifie-implantations.tsx [supabase/import/gabarits/implantations.json]
+ *   bun scripts/verifie-implantations.tsx
  *
- * Même raison d'être que `verifie-contenu.ts` : le contenu part dans un `jsonb`,
- * et rien entre le JSON composé à la main et le composant qui le lit ne vérifie
- * qu'ils parlent de la même forme. Une clé mal orthographiée (`adresse` pour
- * `adresses`) ne lève aucune erreur : le gabarit ne rend rien, en silence.
+ * La donnée : `supabase/import/gabarits-maquette/implantations.json`, celle
+ * que l'import REST écrira en base. Le rendu : `PageImplantations` par
+ * `renderToStaticMarkup`. La référence : `maquette/rendu/implantations.html`.
  *
- * Le SQL est REJOUÉ ici, sans base : la première instruction pose le socle, les
- * suivantes allongent un tableau. Le résultat doit être identique au JSON
- * source, sinon la découpe a perdu ou dupliqué quelque chose.
+ *  1. LA FORME : clés connues du type, aucune faute de frappe muette.
+ *  2. LE H1 du fichier est celui de la capture, un seul H1 rendu.
+ *  3. MOT POUR MOT, DANS L'ORDRE, sur texte normalisé, sauf les `trous`.
+ *  4. RIEN D'INVENTÉ, puis LE LITTÉRAL (insécables, apostrophes) compté.
+ *  5. LES TROUS SONT VRAIS : dans la capture, absents du rendu.
+ *  6. LES LIENS sont ceux de la capture, aucun `href="#"`.
+ *  7. LES INTERDITS du contrat sont absents du rendu, et « +200 », que la
+ *     capture porte dans « 01 Chiffres », est rendu (l'ancienne exception
+ *     « bande non portée » est tombée avec le portage du 08/10).
+ *  8. LE DESSIN de « Nos villes » (styles relevés dans la capture, relus à
+ *     chaque passage) et ses SURVOLS (classes du module CSS posées).
+ *  9. LES QUESTIONS se replient en accordéon exclusif, la première ouverte.
+ * 10. LE RELAIS : avec l'ANCIEN contenu que la base porte encore, la page rend
+ *     quand même le fichier (voir le `ponytail:` de `PageImplantations`).
+ *
+ * IL PROUVE QU'IL SAIT ÉCHOUER : onze altérations, chacune doit être vue.
  */
 
-import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
+
 import { renderToStaticMarkup } from "react-dom/server";
 
 import PageImplantations from "@/components/site/implantations/PageImplantations";
-import { estImplantations } from "@/types/implantations";
+import { appliqueDecisions } from "@/lib/decisions-copie";
+import { estImplantations, type ContenuImplantations } from "@/types/implantations";
 
-const SOURCE = process.argv[2] ?? "supabase/import/gabarits/implantations.json";
-const INVENTAIRE = "docs/urls-site-actuel.json";
-const PLAFOND = 3800; // octets par instruction, comme `scripts/decoupe_sql.py`
+const SOURCE = "supabase/import/gabarits-maquette/implantations.json";
+/** Décisions de copie appliquées (lib/decisions-copie.ts) : la donnée les porte. */
+const CAPTURE = appliqueDecisions(readFileSync("maquette/rendu/implantations.html", "utf8"));
+const CSS = readFileSync("components/site/implantations/PageImplantations.module.css", "utf8");
+const SOURCE_VILLES = readFileSync("components/site/implantations/NosVilles.tsx", "utf8");
 
-// Les interdits de copie de `docs/CONTRAT-PORTAGE-MAQUETTE.md`.
-const INTERDITS = [
-  /\b(r[ée]gie|int[ée]rim|mise à disposition|sans engagement)\b/i,
-  /\b(cl[ée] en main|sur mesure|levier|concr[èe]tement|notamment|incontournable|d[ée]couvrez)\b/i,
-  /\b(5|cinq)\s+agences/i,
-  /\+\s?200|\b200\s+clients/i,
-  /[—–]/, // tiret cadratin, demi-cadratin
-  // Un délai chiffré : « 2 h de route », « 4 heures », « 48 h », « 2 jours ».
-  // Seul « 1 h » (le rappel) est toléré, contrôlé à part plus bas.
-  /\b\d+\s*(h|heures?|min|minutes?|jours?)\b/i,
+/** Les `style-hover` de « Nos villes » (`hubGroups`, `roamRegions`), et les bases déplacées du style en ligne vers le module. */
+const SURVOLS: [string, string[]][] = [
+  [".hub:hover", ["filter: brightness(1.15)", "color: #fff"]],
+  [".zone {", ["border: 1px solid var(--line)", "color: var(--ink1)"]],
+  [".zone:hover", ["border-color: #ff7c3c", "color: var(--ink)"]],
+  [".ville {", ["color: var(--ink1)"]],
+  [".ville:hover", ["color: #ff7c3c"]],
 ];
-const DELAI_TOLERE = new Set(["1 h", "1 h"]);
 
-const estChaine = (v: unknown): v is string => typeof v === "string" && v.length > 0;
-const estObjet = (v: unknown): v is Record<string, unknown> =>
-  !!v && typeof v === "object" && !Array.isArray(v);
-
-function clesConnues(o: Record<string, unknown>, permises: string[], ou: string) {
-  for (const k of Object.keys(o)) {
-    assert.ok(permises.includes(k), `${ou} : clé « ${k} » inconnue du type (${permises.join(", ")})`);
-  }
-}
-function chaineOptionnelle(o: Record<string, unknown>, k: string, ou: string) {
-  if (o[k] !== undefined) assert.ok(estChaine(o[k]), `${ou}.${k} : chaîne non vide attendue`);
-}
-function listeDeChaines(v: unknown, ou: string) {
-  assert.ok(Array.isArray(v) && v.length > 0, `${ou} : tableau non vide attendu`);
-  v.forEach((x, i) => assert.ok(estChaine(x), `${ou}[${i}] : chaîne non vide attendue`));
+interface Page {
+  url: string;
+  titre_h1: string;
+  contenu: ContenuImplantations;
+  trous: { ligne: string; pourquoi: string }[];
 }
 
-// Toutes les chaînes du contenu, pour les contrôles de copie.
-function chaines(v: unknown, ou: string, out: [string, string][] = []) {
-  if (typeof v === "string") out.push([ou, v]);
-  else if (Array.isArray(v)) v.forEach((x, i) => chaines(x, `${ou}[${i}]`, out));
-  else if (estObjet(v)) for (const [k, x] of Object.entries(v)) chaines(x, `${ou}.${k}`, out);
-  return out;
-}
+/* ------------------------------------------------------------------ textes */
 
-// ------------------------------------------------------------------ la forme
+const entites = (t: string, nbsp: string) =>
+  t
+    .replace(/&nbsp;|&#160;/g, nbsp)
+    .replace(/&#x27;|&#39;|&apos;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&");
+const normalise = (t: string) => t.replace(/[  ]/g, " ").replace(/[’‘]/g, "'").replace(/\s+/g, " ").trim();
+const morceaux = (html: string) => html.replace(/<(script|style)\b[\s\S]*?<\/\1>/g, " ").split(/<[^>]+>/);
+const noeuds = (html: string) => morceaux(html).map((t) => normalise(entites(t, " "))).filter(Boolean);
+const litteraux = (html: string) =>
+  morceaux(html).map((t) => entites(t, " ").replace(/[ \t\n\r]+/g, " ").trim()).filter(Boolean);
+/** `next/link` rendu hors de Next retire le slash final : on compare sans lui. */
+const hrefs = (html: string) =>
+  [...html.matchAll(/\shref="([^"]*)"/g)].map((m) => entites(m[1], " ").replace(/\/+$/, "") || "/");
+const style = (t: string) => t.replace(/\s*([:;,])\s*/g, "$1").replace(/\b0px\b/g, "0").replace(/\b0\.(\d)/g, ".$1");
 
-const page = JSON.parse(readFileSync(SOURCE, "utf8")) as { url: unknown; contenu: unknown };
-assert.ok(estChaine(page.url) && page.url.startsWith("/implantations/"), "url : chemin /implantations/... attendu");
-const contenu = page.contenu;
-assert.ok(estImplantations(contenu), "contenu.gabarit doit valoir « implantations »");
-const c = contenu as unknown as Record<string, unknown>;
-clesConnues(c, ["gabarit", "chapeau", "chiffres", "titreAgences", "agences", "international", "couverture"], "contenu");
-chaineOptionnelle(c, "chapeau", "contenu");
-chaineOptionnelle(c, "titreAgences", "contenu");
+/** Les deux écarts du formulaire partagé, déclarés dans `offre/PanneauFormulaire.tsx`, retirés des deux côtés.
+ * Le bouton d'envoi n'en est plus un depuis le 08/10 : il répète le titre du panneau, comme la capture. */
+const sansEcartsFormulaire = (html: string) =>
+  html.replace(/<form\b[\s\S]*?<\/form>/g, (f) =>
+    f
+      .replace(/<div aria-hidden="true"[^>]*><label[^>]*>Site web<\/label>[\s\S]*?<\/div>/g, "")
+      .replace(/<p[^>]*>Données traitées par Migen[\s\S]*?<\/p>/g, ""),
+  );
 
-if (c.chiffres !== undefined) {
-  assert.ok(Array.isArray(c.chiffres), "contenu.chiffres : tableau attendu");
-  let accents = 0;
-  c.chiffres.forEach((x, i) => {
-    const ou = `chiffres[${i}]`;
-    assert.ok(estObjet(x), `${ou} : objet attendu`);
-    clesConnues(x, ["valeur", "libelle", "accent"], ou);
-    assert.ok(estChaine(x.valeur), `${ou}.valeur : chaîne non vide attendue`);
-    assert.ok(estChaine(x.libelle), `${ou}.libelle : chaîne non vide attendue`);
-    if (x.accent !== undefined) assert.equal(typeof x.accent, "boolean", `${ou}.accent : booléen attendu`);
-    if (x.accent === true) accents += 1;
-  });
-  assert.ok(accents <= 1, "la maquette n'accentue qu'un seul chiffre");
-}
+/** `offre/Reassurance.tsx` écrit « 10 % » en espace simple, la capture en insécable : hors périmètre, toléré une fois. */
+const TOLERES = new Map([["10 %", 1]]);
 
-if (c.agences !== undefined) {
-  assert.ok(Array.isArray(c.agences), "contenu.agences : tableau attendu");
-  let sieges = 0;
-  c.agences.forEach((x, i) => {
-    const ou = `agences[${i}]`;
-    assert.ok(estObjet(x), `${ou} : objet attendu`);
-    clesConnues(x, ["nom", "badge", "lieu", "adresses", "rayon", "role", "siege"], ou);
-    assert.ok(estChaine(x.nom), `${ou}.nom : chaîne non vide attendue`);
-    for (const k of ["badge", "lieu", "rayon", "role"]) chaineOptionnelle(x, k, ou);
-    if (x.adresses !== undefined) listeDeChaines(x.adresses, `${ou}.adresses`);
-    if (x.siege !== undefined) assert.equal(typeof x.siege, "boolean", `${ou}.siege : booléen attendu`);
-    if (x.siege === true) sieges += 1;
-  });
-  assert.ok(sieges <= 1, "un seul siège");
-  assert.ok(c.agences.length <= 4, "quatre agences au plus : Lyon, Montréal, Dubaï, Madrid");
-}
+const INTERDITS: [RegExp, string][] = [
+  [/[—–]/u, "tiret cadratin"],
+  [/\bsous\s+\d/u, "délai chiffré"],
+  [/\b24\s*h(?![\p{L}\d]|\s*\/)/u, "« 24h »"],
+  [/\b7\s*j?\s*\/\s*7\b/u, "« 7j/7 »"],
+  [/\btaux horaire/iu, "taux horaire : aucun prix"],
+  [/\btarifs?\b/iu, "tarif : aucun prix"],
+  [/\d[\d\s  ]*(?:€|euros?\b)/u, "montant"],
+  [/régie|intérim|mise à disposition|sans engagement|clé en main|sur mesure|\blevier|concrètement|notamment|incontournable|découvrez/iu, "vocabulaire proscrit"],
+  [/\b(?:5|cinq) agences/iu, "quatre agences"],
+  [/\b(?:clients|80)\s+r[ée]guliers\b/iu, "« +200 clients », jamais « réguliers »"],
+  [/Limonest/u, "le siège est à Écully"],
+  [/postuler sur Teamtailor/iu, "« postuler sur Teamtailor »"],
+];
 
-if (c.international !== undefined) {
-  const ou = "international";
-  assert.ok(estObjet(c.international), `${ou} : objet attendu`);
-  clesConnues(c.international, ["titre", "texte", "image", "bureaux"], ou);
-  chaineOptionnelle(c.international, "titre", ou);
-  chaineOptionnelle(c.international, "texte", ou);
-  const image = c.international.image;
-  if (image !== undefined) {
-    assert.ok(estObjet(image), `${ou}.image : objet attendu`);
-    clesConnues(image, ["src", "alt"], `${ou}.image`);
-    assert.ok(estChaine(image.src) && image.src.startsWith("/assets/"), `${ou}.image.src : /assets/... attendu`);
-    assert.ok(existsSync(`public${image.src}`), `${ou}.image.src : fichier absent de public${image.src}`);
-    assert.equal(typeof image.alt, "string", `${ou}.image.alt : chaîne attendue (vide si décorative)`);
-  }
-  if (c.international.bureaux !== undefined) {
-    assert.ok(Array.isArray(c.international.bureaux), `${ou}.bureaux : tableau attendu`);
-    c.international.bureaux.forEach((b, i) => {
-      assert.ok(estObjet(b), `${ou}.bureaux[${i}] : objet attendu`);
-      clesConnues(b, ["nom", "lignes"], `${ou}.bureaux[${i}]`);
-      assert.ok(estChaine(b.nom), `${ou}.bureaux[${i}].nom : chaîne non vide attendue`);
-      listeDeChaines(b.lignes, `${ou}.bureaux[${i}].lignes`);
-    });
-  }
-}
+/** Relevés dans la capture, section « Nos villes » : chacun doit y être ET dans le rendu. */
+const DESSIN_VILLES = [
+  "font: 600 calc(clamp(28px,3vw,42px) * var(--ts))/1.08 var(--ft); letter-spacing: -0.04em; margin: 0px 0px 10px; max-width: 24ch",
+  "grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 14px",
+  "border-radius: calc(var(--rad) - 6px); background: var(--panel)",
+  "height: 36px; padding: 0px 13px; border-radius: 999px",
+  "font: 600 calc(clamp(22px,2.3vw,30px) * var(--ts))/1.15 var(--ft)",
+  "grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px",
+  "border-radius: var(--rad-s); background: rgb(255, 255, 255); border: 1px solid var(--line); padding: 20px 22px 18px",
+  "width: 5px; height: 5px; border-radius: 999px; background: rgb(255, 124, 60)",
+];
+/** React écrit `#fff` / `#ff7c3c`, la capture les sérialise en `rgb()`. */
+const couleurs = (t: string) => t.replace(/#fff\b/g, "rgb(255, 255, 255)").replace(/#ff7c3c/g, "rgb(255, 124, 60)");
 
-// ---------------------------------------------------------------- le maillage
-
-const inventaire = new Set(
-  (JSON.parse(readFileSync(INVENTAIRE, "utf8")) as { url: string }[]).map((u) => u.url),
+/**
+ * Les photos de « 08 Références », relevées le 08/10 dans la maquette qui
+ * tourne : la capture ne les montre pas (`blob:`), leurs octets ont été lus
+ * dans le cadre et comparés pixel à pixel à `public/assets/web/` (écart moyen
+ * 0,1 à 0,2 sur 255, le suivant au-delà de 160). Ce n'est PAS la règle
+ * `PH(md)` des villes : sur le hub, elle aurait donné des photos fausses.
+ */
+const PHOTOS_REFERENCES = ["mq-1ef16ef335a6", "mq-e6322efcd358", "x-elec-cablage", "mq-2a6115ec9fe0", "mq-29ebb1b81ced", "mq-17e2f3bce95f"].map(
+  (n) => `/assets/web/${n}.jpg`,
 );
-let nbLiens = 0;
-if (c.couverture !== undefined) {
-  assert.ok(estObjet(c.couverture), "couverture : objet attendu");
-  clesConnues(c.couverture, ["titre", "villes", "departements"], "couverture");
-  chaineOptionnelle(c.couverture, "titre", "couverture");
-  const vus = new Set<string>();
-  for (const k of ["villes", "departements"]) {
-    const liste = c.couverture[k];
-    if (liste === undefined) continue;
-    assert.ok(Array.isArray(liste), `couverture.${k} : tableau attendu`);
-    liste.forEach((l, i) => {
-      const ou = `couverture.${k}[${i}]`;
-      assert.ok(estObjet(l), `${ou} : objet attendu`);
-      clesConnues(l, ["libelle", "href"], ou);
-      assert.ok(estChaine(l.libelle), `${ou}.libelle : chaîne non vide attendue`);
-      assert.ok(estChaine(l.href) && /^\/implantations\/.+\/$/.test(l.href), `${ou}.href : /implantations/.../ avec slash final attendu`);
-      assert.ok(inventaire.has(l.href), `${ou}.href : « ${l.href} » absent de ${INVENTAIRE}`);
-      assert.ok(l.href !== page.url, `${ou}.href : une page ne se maille pas vers elle-même`);
-      assert.ok(!vus.has(l.href), `${ou}.href : « ${l.href} » déjà ciblé par un autre lien`);
-      vus.add(l.href);
-      nbLiens += 1;
-    });
+
+/* ------------------------------------------------------------------ forme */
+
+const CLES = ["gabarit", "pastille", "chapeau", "actions", "mention", "appelBouton", "formulaireHeroTitre",
+  "formulaireHeroMention", "chiffres", "brefBande", "brefBouton", "brefMention", "sections", "villes"];
+
+function forme(page: Page): string[] {
+  const e: string[] = [];
+  if (page.url !== "/implantations/") e.push(`url « ${page.url} »`);
+  if (!estImplantations(page.contenu)) e.push("contenu.gabarit doit valoir « implantations »");
+  for (const k of Object.keys(page.contenu)) if (!CLES.includes(k)) e.push(`clé « ${k} » inconnue du type`);
+  for (const t of page.trous) if (!t.ligne || !t.pourquoi) e.push("un trou sans ligne ou sans raison");
+  return e;
+}
+
+/* --------------------------------------------------------------- contrôle */
+
+const rend = (titre: string, contenu: ContenuImplantations) =>
+  renderToStaticMarkup(<PageImplantations titre={titre} contenu={contenu} formulaire="verification-implantations" />);
+
+function controle(page: Page, htmlBrut: string, css = CSS): string[] {
+  const capture = sansEcartsFormulaire(CAPTURE);
+  const html = sansEcartsFormulaire(htmlBrut);
+  const e = forme(page);
+  const trous = page.trous.map((t) => normalise(t.ligne));
+
+  const h1 = normalise(entites((capture.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/) ?? [])[1]?.replace(/<[^>]+>/g, "") ?? "", " "));
+  if (normalise(page.titre_h1) !== h1) e.push(`H1 « ${page.titre_h1} » au lieu de « ${h1} »`);
+  if ((html.match(/<h1[\s>]/g) ?? []).length !== 1) e.push("le rendu ne porte pas exactement un h1");
+
+  const nCapture = noeuds(capture);
+  const texteCapture = nCapture.join(" ");
+  const texteRendu = noeuds(html).join(" ");
+
+  for (const t of trous) {
+    if (!texteCapture.includes(t)) e.push(`trou absent de la capture : « ${t.slice(0, 90)} »`);
+    if (texteRendu.includes(t)) e.push(`trou déclaré mais rendu : « ${t.slice(0, 90)} »`);
+  }
+
+  // Un trou peut couvrir plusieurs nœuds (la valeur « 4 » et son libellé) :
+  // les nœuds qu'il contient entièrement sont sautés, les autres amputés.
+  const spans = trous.map((t) => [texteCapture.indexOf(t), texteCapture.indexOf(t) + t.length]);
+  let curseur = 0;
+  let debutNoeud = 0;
+  for (const brut of nCapture) {
+    const [s, f] = [debutNoeud, debutNoeud + brut.length];
+    debutNoeud = f + 1;
+    if (spans.some(([a, b]) => a >= 0 && s >= a && f <= b)) continue;
+    const attendu = normalise(trous.reduce((x, t) => x.split(t).join(""), brut));
+    if (!attendu) continue;
+    const i = texteRendu.indexOf(attendu, curseur);
+    if (i < 0) {
+      e.push(`${texteRendu.includes(attendu) ? "hors de son ordre" : "absent du rendu"} : « ${attendu.slice(0, 110)} »`);
+      continue;
+    }
+    curseur = i + attendu.length;
+  }
+
+  for (const n of noeuds(html)) if (!texteCapture.includes(n)) e.push(`texte rendu absent de la capture : « ${n.slice(0, 110)} »`);
+  const lCapture = litteraux(capture).join(" ");
+  const lRendu = litteraux(html).join(" ");
+  const compte = (t: string, m: string) => t.split(m).length - 1;
+  for (const n of new Set(litteraux(html))) {
+    if (texteCapture.includes(normalise(n)) && compte(lRendu, n) - (TOLERES.get(n) ?? 0) > compte(lCapture, n))
+      e.push(`littéral différent de la capture : « ${n.slice(0, 110)} »`);
+  }
+
+  if (/href="#"/.test(html)) e.push('un href="#" est rendu');
+  const liens = new Set(hrefs(capture));
+  for (const h of new Set(hrefs(html))) if (!liens.has(h)) e.push(`lien absent de la capture : ${h}`);
+
+  for (const [motif, raison] of INTERDITS) {
+    const m = texteRendu.match(motif);
+    if (m) e.push(`interdit rendu (${raison}) : « ${m[0]} »`);
+  }
+  if (texteCapture.includes("+200") && !texteRendu.includes("+200")) e.push("« +200 » est dans la capture, pas dans le rendu");
+
+  const debut = capture.indexOf('data-screen-label="Nos villes"');
+  const villesCapture = style(capture.slice(debut, capture.indexOf("data-screen-label=", debut + 1)));
+  const styleRendu = style(couleurs(html));
+  for (const f of DESSIN_VILLES.map(style)) {
+    if (!villesCapture.includes(f)) e.push(`la capture ne porte plus « ${f} » : valeur à relever`);
+    else if (!styleRendu.includes(f)) e.push(`dessin de « Nos villes » absent du rendu : « ${f} »`);
+  }
+  // Les survols : bun ne résout pas les modules CSS (l'import rend le chemin
+  // du fichier, aucune classe ne sort au rendu), donc on lit les règles dans
+  // le module et leur pose dans la source. Valeurs des `style-hover` de `MigenExpertise.dc.html`.
+  for (const [selecteur, attendus] of SURVOLS) {
+    const i = css.indexOf(selecteur);
+    const bloc = i < 0 ? "" : css.slice(css.indexOf("{", i), css.indexOf("}", i));
+    for (const a of attendus) if (!bloc.includes(a)) e.push(`survol : « ${a} » absent de « ${selecteur} » (PageImplantations.module.css)`);
+  }
+  for (const cle of ["hub", "zone", "ville"])
+    if (!SOURCE_VILLES.includes(`className={styles.${cle}}`)) e.push(`survol « ${cle} » non posé dans NosVilles.tsx`);
+
+  const plis = [...html.matchAll(/<details\b([^>]*)>/g)].map((m) => m[1]);
+  if (plis.length !== (capture.match(/<details\b/g) ?? []).length) e.push(`${plis.length} question(s) repliable(s), la capture en a ${(capture.match(/<details\b/g) ?? []).length}`);
+  if (new Set(plis.map((a) => (a.match(/\sname="([^"]*)"/) ?? [])[1] ?? "")).size !== 1) e.push("les questions ne partagent pas un même `name`");
+  if (plis.map((a, i) => (/\sopen(?:=""|\s|$)/.test(a) ? i : -1)).filter((i) => i >= 0).join() !== "0") e.push("seule la première question doit être ouverte");
+
+  const preuves = page.contenu.sections?.find((x) => x.type === "preuves");
+  const photos = preuves?.type === "preuves" ? preuves.preuves.map((x) => x.photo) : [];
+  if (photos.join() !== PHOTOS_REFERENCES.join()) e.push(`photos des références [${photos.join(", ")}] au lieu du relevé`);
+  for (const photo of JSON.stringify(page.contenu).match(/"\/assets\/[^"]+"/g) ?? [])
+    if (!existsSync(`public${photo.slice(1, -1)}`)) e.push(`photo absente de public/ : ${photo}`);
+
+  return e;
+}
+
+/* --------------------------------------------------- la preuve d'échec */
+
+const page = JSON.parse(readFileSync(SOURCE, "utf8")) as Page;
+const altere = (f: (p: Page) => void) => {
+  const p = structuredClone(page);
+  f(p);
+  return p;
+};
+const sections = (p: Page) => p.contenu.sections!;
+
+type Retouche = (x: { html: string; css: string }) => { html: string; css: string };
+const ALTERATIONS: [string, Page, RegExp, Retouche?][] = [
+  ["un mot changé", altere((p) => { const q = sections(p).find((s) => s.type === "objections"); if (q?.type === "objections") q.questions[0].reponse = q.questions[0].reponse.replace("Oui", "Si"); }), /absent du rendu/],
+  ["« Nos villes » retiré", altere((p) => delete p.contenu.villes), /absent du rendu : « Sept hubs/],
+  ["une phrase inventée", altere((p) => (p.contenu.chapeau += " Nos techniciens sont les meilleurs.")), /texte rendu absent de la capture/],
+  ["la bande de chiffres de l'ancien dessin", altere((p) => (p.contenu.chiffres = [{ valeur: "4", libelle: "agences" }, { valeur: "1 h", libelle: "pour un premier rappel" }])), /« \+200 » est dans la capture/],
+  ["le siège rendu tel que la maquette l'écrit, sans sa décision", altere((p) => (p.contenu.chiffres![0].libelle = "Agences, Lyon (siège à Limonest et bureaux à Écully), Montréal, Dubaï, Madrid")), /interdit rendu \(le siège/],
+  ["« candidats » remis là où la décision dit « techniciens »", altere((p) => (p.contenu = JSON.parse(JSON.stringify(p.contenu).replaceAll("techniciens retenus", "candidats retenus")))), /texte rendu absent de la capture/],
+  ["un faux trou", altere((p) => p.trous.push({ ligne: "Hub", pourquoi: "essai" })), /trou déclaré mais rendu/],
+  ["un lien inventé", altere((p) => (p.contenu.villes!.hubs[0].href = "/implantations/villeurbanne/")), /lien absent de la capture/],
+  ["une apostrophe redressée", altere((p) => (p.contenu.formulaireHeroMention = "Rappel dans l'heure")), /littéral différent/],
+  ["une photo devinée", altere((p) => { const r = sections(p).find((x) => x.type === "preuves"); if (r?.type === "preuves") r.preuves[0].photo = "/assets/web/x-tech-portrait.jpg"; }), /photos des références/],
+  ["un survol perdu", page, /« border-color: #ff7c3c » absent/, (x) => ({ ...x, css: x.css.replace("border-color: #ff7c3c", "") })],
+];
+
+let aveugle = false;
+for (const [nom, p, attendu, retouche] of ALTERATIONS) {
+  const x = (retouche ?? ((y) => y))({ html: rend(p.titre_h1, p.contenu), css: CSS });
+  if (!controle(p, x.html, x.css).some((y) => attendu.test(y))) {
+    aveugle = true;
+    console.error(`CONTRÔLE AVEUGLE : « ${nom} » passe sans être vue.`);
   }
 }
+if (aveugle) process.exit(1);
+console.log(`preuve d'échec : les ${ALTERATIONS.length} altérations sont toutes vues.`);
 
-// ----------------------------------------------------------------- la copie
+/* ------------------------------------------------------------- verdict */
 
-for (const [ou, s] of chaines(contenu, "contenu")) {
-  if (ou.endsWith(".href") || ou.endsWith(".src")) continue;
-  for (const motif of INTERDITS) {
-    if (motif.source.startsWith("\\b\\d+") && DELAI_TOLERE.has(s)) continue;
-    assert.ok(!motif.test(s), `${ou} : formulation interdite (${motif}) dans « ${s} »`);
-  }
+const ecarts = controle(page, rend(page.titre_h1, page.contenu));
+
+if (ecarts.length) {
+  console.log(`KO  /implantations/  ${ecarts.length} écart(s)`);
+  for (const x of ecarts) console.log(`      ${x}`);
+  process.exit(1);
 }
-
-// --------------------------------------------------------------- le rendu
-
-const rendu = renderToStaticMarkup(
-  <PageImplantations titre="Titre de contrôle" contenu={contenu} />,
-);
-assert.equal((rendu.match(/<h1[\s>]/g) ?? []).length, 1, "un seul h1");
-const hrefs = [...rendu.matchAll(/href="(\/implantations\/[^"]+)"/g)].map((m) => m[1]);
-assert.equal(hrefs.length, nbLiens, `le rendu doit porter les ${nbLiens} liens du maillage, il en porte ${hrefs.length}`);
-for (const [, s] of chaines(contenu, "contenu")) {
-  if (s.startsWith("/")) continue;
-  // Le texte est échappé par React et le Markdown en ligne est transformé :
-  // on vérifie le premier mot, qui n'est ni un crochet ni une esperluette.
-  const premier = s.split(/[\s& ]/)[0];
-  assert.ok(rendu.includes(premier), `« ${premier} » n'apparaît pas dans le rendu`);
-}
-
-// ----------------------------------------------------------------- le SQL
-
-const sql = SOURCE.replace(/\.json$/, ".sql");
-assert.ok(existsSync(sql), `${sql} absent : lancer scripts/decoupe_gabarit.py d'abord`);
-const lignes = readFileSync(sql, "utf8").split("\n").filter((l) => l.trim());
-const tailles = lignes.map((l) => Buffer.byteLength(l));
-assert.ok(Math.max(...tailles) <= PLAFOND, `une instruction pèse ${Math.max(...tailles)} o, plafond ${PLAFOND}`);
-
-const litteral = (s: string) => JSON.parse(s.replace(/''/g, "'")) as unknown;
-const BASE = /^update pages set contenu = '(.*)'::jsonb where path = '([^']*)';$/;
-const AJOUT = /^update pages set contenu = jsonb_set\(contenu, '\{([^}]+)\}', \(contenu((?:->'[^']+')+)\) \|\| '(.*)'::jsonb\) where path = '([^']*)';$/;
-
-const base = BASE.exec(lignes[0]);
-assert.ok(base, "la première instruction doit poser le contenu de base");
-assert.equal(base[2], page.url, "la première instruction vise la mauvaise page");
-const rejoue = litteral(base[1]) as Record<string, unknown>;
-for (const l of lignes.slice(1)) {
-  const m = AJOUT.exec(l);
-  assert.ok(m, `instruction non reconnue : ${l.slice(0, 80)}…`);
-  assert.equal(m[4], page.url, "une instruction vise une autre page");
-  const chemin = m[1].split(",");
-  assert.equal(m[2], chemin.map((k) => `->'${k}'`).join(""), "chemin jsonb_set et accès -> divergent");
-  let cible: unknown = rejoue;
-  for (const k of chemin.slice(0, -1)) cible = (cible as Record<string, unknown>)[k];
-  const dernier = chemin[chemin.length - 1];
-  const tableau = (cible as Record<string, unknown>)[dernier];
-  assert.ok(Array.isArray(tableau), `${chemin.join(".")} n'est pas un tableau du socle`);
-  (cible as Record<string, unknown>)[dernier] = [...tableau, ...(litteral(m[3]) as unknown[])];
-}
-assert.deepEqual(rejoue, contenu, "le SQL rejoué ne redonne pas le JSON source");
-
-console.log(
-  `implantations : contenu conforme (${page.url}, ${nbLiens} liens, ${lignes.length} instructions, la plus longue ${Math.max(...tailles)} o)`,
-);
+console.log(`OK  /implantations/ conforme à sa capture (${page.trous.length} trou(s) déclaré(s))`);

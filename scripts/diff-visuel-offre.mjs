@@ -34,9 +34,22 @@ const SEUIL_MONTAGE = 4;
 
 mkdirSync(SORTIE, { recursive: true });
 
+/* Les rails de cartes défilent seuls : figés à 0 des deux côtés, sinon la
+   photo diffère selon l'instant de la capture. */
+const FIGE = () => {
+  const desc = Object.getOwnPropertyDescriptor(Element.prototype, "scrollLeft");
+  for (const r of document.querySelectorAll(".g3-refrail,.g3-offrail,[class*=rail]")) {
+    desc.set.call(r, 0);
+    Object.defineProperty(r, "scrollLeft", { configurable: true, get: () => 0, set: () => {} });
+  }
+};
+
 const navigateur = await chromium.launch({ channel: "chrome" });
 const contexte = await navigateur.newContext({
-  viewport: { width: 1280, height: 900 },
+  // HAUTEUR=2400 pour une page dont des sections dépassent 900 px : voir.html
+  // donne à la maquette un cadre de la hauteur de la fenêtre, et tout ce qui
+  // en sort est photographié blanc.
+  viewport: { width: Number(process.env.LARGEUR ?? 1280), height: Number(process.env.HAUTEUR ?? 900) },
   deviceScaleFactor: 1,
 });
 
@@ -96,6 +109,7 @@ async function capture(url, prefixe, preparation) {
   if (preparation) await preparation(page);
   await neutraliseArtefacts(page);
   await laisseSePoser(page);
+  await page.evaluate(FIGE);
 
   const infos = await sectionsDe(page);
   const elements = await page.$$("main section");
@@ -134,7 +148,11 @@ await cadre.evaluate(async () => {
   window.scrollTo(0, 0);
   await dort(400);
 });
-const infosRef = await cadre.$$eval("main", (mains) => {
+// Les pages d'étude de cas de la maquette n'ont pas de <main> : leurs sections
+// pendent directement du corps.
+await cadre.evaluate(FIGE);
+const aMain = (await cadre.$$("main")).length > 0;
+const infosRef = await cadre.$$eval(aMain ? "main" : "body", (mains) => {
   const principal = mains.find((m) => m.getBoundingClientRect().height > 50) ?? mains[0];
   const propre = (s) => (s || "").replace(/\s+/g, " ").trim();
   return [...principal.querySelectorAll("section")].map((s, i) => ({
@@ -142,7 +160,7 @@ const infosRef = await cadre.$$eval("main", (mains) => {
     titre: propre(s.querySelector("h1,h2,h3")?.textContent) || null,
   }));
 });
-const elementsRef = await cadre.$$("main section");
+const elementsRef = await cadre.$$(aMain ? "main section" : "body section");
 const fichiersRef = [];
 for (let i = 0; i < elementsRef.length; i += 1) {
   const boite = await elementsRef[i].boundingBox();

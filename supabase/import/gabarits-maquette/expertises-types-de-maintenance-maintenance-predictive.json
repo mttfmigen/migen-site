@@ -1,0 +1,379 @@
+{
+  "_source": "maquette/rendu/expertises--types-de-maintenance--maintenance-predictive.html (07/10 21h12, 16 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (entités décodées, apostrophes de la capture conservées), contrôlé par components/site/expertises/specialite/verification-specialite.tsx. CHIFFRES : les trois cartes de la capture, « +200 / Clients industriels accompagnés » compris (règle client : « +200 clients », jamais « réguliers »). PHOTOS MESURÉES, PAS CHOISIES : octets de chaque blob du rail des références de la maquette vivante (localhost:4352/voir.html, 08/10) rapprochés de public/assets/web par sha256 complet, dans l'ordre des cartes ; ordre des clients vérifié identique à la capture. « Marques maintenues » absente de la capture, donc pas de marquesFamille. Problème dessiné « panneau-sombre », aucune photo (problemePhoto null). « Complément 2 » (11 cellules, tableaux compris) et « Complément 4 » portés.",
+  "url": "/expertises/types-de-maintenance/maintenance-predictive/",
+  "titre_h1": "Maintenance prédictive : voir la panne venir avant qu’elle n’arrête la ligne",
+  "contenu": {
+    "gabarit": "specialite",
+    "pastille": "Expertises",
+    "chapeau": "Surveiller l'état de santé réel de chaque machine, analyser les données, intervenir avant la panne. Cette page donne la chaîne complète, de la sonde à la décision. Puis elle traite le point que les éditeurs évitent : qui exécute les travaux annoncés.",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option.",
+    "appelBouton": "Demander mon diagnostic gratuit",
+    "actions": [
+      {
+        "libelle": "Demander mon diagnostic gratuit",
+        "href": "#besoin"
+      }
+    ],
+    "formulaireHeroTitre": "Demander mon diagnostic gratuit",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
+      {
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, l'interprétation d'un relevé est un métier qui s'évalue"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      },
+      {
+        "valeur": "0",
+        "libelle": "Capteur ou logiciel vendu par Migen. Nous ne sommes ni éditeur ni fabricant"
+      }
+    ],
+    "complementTypes": [
+      {
+        "texte": "La maintenance prédictive consiste à prévoir la défaillance d'un équipement à partir de données collectées en temps réel, puis à planifier l'intervention avant que la panne ne survienne. Elle repose sur trois piliers, et aucun ne fonctionne sans les deux autres."
+      },
+      {
+        "puces": [
+          {
+            "accroche": "Le relevé.",
+            "texte": "Des capteurs suivent vibration, température, pression, courant moteur, consommation énergétique."
+          },
+          {
+            "accroche": "L'analyse.",
+            "texte": "Un modèle statistique ou un algorithme d'apprentissage automatique compare la donnée à un comportement de référence."
+          },
+          {
+            "accroche": "La décision.",
+            "texte": "Un signal est émis, un technicien programme l'intervention au bon moment, avec le composant de rechange en main."
+          }
+        ]
+      },
+      {
+        "texte": "Le tri entre quatre mots qu'on confond en permanence :"
+      },
+      {
+        "tableau": {
+          "entetes": [
+            "Approche",
+            "Ce qui déclenche l'intervention",
+            "Ce qu'elle exige"
+          ],
+          "lignes": [
+            [
+              "Maintenance corrective",
+              "La panne, une fois survenue",
+              "Rien"
+            ],
+            [
+              "Maintenance préventive systématique",
+              "Le calendrier ou le compteur d'heures",
+              "Un plan"
+            ],
+            [
+              "Maintenance conditionnelle",
+              "Un seuil de relevé dépassé",
+              "Des sondes"
+            ],
+            [
+              "Maintenance prédictive",
+              "Un modèle qui annonce la défaillance à venir",
+              "Des capteurs, des données, un algorithme"
+            ]
+          ]
+        }
+      },
+      {
+        "texte": "Le raccourci utile : la conditionnelle dit « la température est trop haute », la prédictive dit « à ce rythme, le palier lâche dans trois semaines »."
+      },
+      {
+        "texte": "Les grandeurs qui parlent, et ce qu'elles trahissent :"
+      },
+      {
+        "puces": [
+          {
+            "accroche": "La vibration",
+            "texte": "la signature la plus riche. Balourd, défaut d'alignement, bague de roulement piquée, engrenage usé."
+          },
+          {
+            "accroche": "La température",
+            "texte": "un échauffement anormal précède presque toujours la casse. La thermographie infrarouge révèle aussi les défauts électriques."
+          },
+          {
+            "accroche": "Le courant et la consommation",
+            "texte": "la signature électrique d'un moteur trahit son usure mécanique sans le démonter."
+          },
+          {
+            "accroche": "La pression et le débit",
+            "texte": "sur un circuit hydraulique ou pneumatique, la dérive annonce la fuite ou l'encrassement."
+          },
+          {
+            "accroche": "L'analyse d'huile",
+            "texte": "particules métalliques, viscosité, contamination. Un indicateur d'usure interne redoutablement fiable."
+          },
+          {
+            "accroche": "L'ultrason",
+            "texte": "les fuites d'air comprimé, première source d'économie d'énergie dans beaucoup d'usines."
+          }
+        ]
+      },
+      {
+        "texte": "Ce que la prédictive n'est pas :"
+      },
+      {
+        "puces": [
+          {
+            "accroche": "Pas une boule de cristal.",
+            "texte": "Un modèle donne une probabilité et une fenêtre, jamais une date certaine."
+          },
+          {
+            "accroche": "Pas réservé aux grandes usines.",
+            "texte": "Cinq machines critiques instrumentées produisent déjà un effet."
+          },
+          {
+            "accroche": "Pas la fin du préventif.",
+            "texte": "Les deux coexistent : l'un couvre le parc courant, l'autre les actifs critiques."
+          }
+        ]
+      },
+      {
+        "texte": "Les limites, dites franchement :"
+      },
+      {
+        "puces": [
+          {
+            "accroche": "Toutes les pannes ne se prédisent pas.",
+            "texte": "Une casse par corps étranger, une erreur de conduite, un défaut de pièce neuve échappent à tout modèle."
+          },
+          {
+            "accroche": "Le coût d'entrée existe.",
+            "texte": "Capteurs, réseau, plateforme, temps interne : sur un parc peu critique, le calcul ne passe pas."
+          },
+          {
+            "accroche": "La compétence d'interprétation est rare",
+            "texte": ", et un système de surveillance négligé se périme vite. Sonde décalée, seuil jamais révisé, et la confiance s'effondre."
+          }
+        ]
+      }
+    ],
+    "problemePhoto": null,
+    "complementOffre": [
+      {
+        "texte": "Pour une panne en cours, voir le dépannage industriel."
+      }
+    ],
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "Le roulement sifflait depuis trois semaines. La donnée existait déjà. Personne n'était payé pour la regarder.",
+        "puces": [
+          {
+            "accroche": "La donnée dort dans vos automates.",
+            "texte": "Variateurs, compteurs d'énergie, codes défaut récurrents : l'information est là, inexploitée, et on vous vend des capteurs avant de vous avoir demandé ce qui casse."
+          },
+          {
+            "accroche": "L'alerte ne débouche sur rien.",
+            "texte": "Un signalement qui ne crée pas d'ordre de travail est un signalement mort. La boucle se ferme sur le terrain, pas sur un écran."
+          },
+          {
+            "accroche": "Le projet pilote ne finit jamais.",
+            "texte": "Trop grand, trop vite, sans pilote nommé, il ne survit pas à la première réorganisation."
+          },
+          {
+            "accroche": "Et surtout : personne pour exécuter.",
+            "texte": "Aucun éditeur n'enverra un technicien à 6h du matin reprendre l'accouplement que son système vient de signaler."
+          }
+        ],
+        "variante": "panneau-sombre"
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "L'audit de vos installations",
+              "texte": "Une demi-journée sur site suffit à dire quelles machines méritent une surveillance et lesquelles n'en ont pas besoin."
+            },
+            "benefice": "Vous savez où investir avant d'acheter quoi que ce soit. Livrable : une liste priorisée."
+          },
+          {
+            "prestation": {
+              "accroche": "L'inventaire de la donnée existante",
+              "texte": "Automates, variateurs, compteurs, GMAO. On complète, on ne remplace pas."
+            },
+            "benefice": "L'investissement initial tombe, parce qu'une grande partie de l'information est déjà collectée."
+          },
+          {
+            "prestation": {
+              "accroche": "L'aide au choix des outils",
+              "texte": "Instrumentation, réseau, logiciel, hébergement local ou cloud, comparés avec vous."
+            },
+            "benefice": "Un conseil sans intérêt commercial dans le résultat, puisque nous ne vendons ni l'un ni l'autre."
+          },
+          {
+            "prestation": {
+              "accroche": "Les inspections périodiques",
+              "texte": "Analyse vibratoire, thermographie infrarouge, ultrason, contrôle d'huile. Nos techniciens passent, relèvent, interprètent."
+            },
+            "benefice": "Vous obtenez la compétence d'interprétation sans avoir à la recruter sur un marché tendu."
+          },
+          {
+            "prestation": {
+              "accroche": "L'exécution des travaux annoncés par le modèle",
+              "texte": "Remplacement de roulement, réalignement, reprise de connexion, remise en état hydraulique."
+            },
+            "benefice": "La prédiction devient une machine réparée, pas une ligne dans un tableau de bord."
+          },
+          {
+            "prestation": {
+              "accroche": "L'intégration dans votre GMAO",
+              "texte": "Chaque signalement crée une demande d'intervention dans votre outil, pas dans un outil parallèle."
+            },
+            "benefice": "Pas de double saisie, et les indicateurs sortent d'une source unique."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Choisir le périmètre.",
+            "texte": "Cinq à dix équipements critiques, pas davantage. Le critère est ce que coûte une heure d'arrêt, pas l'âge de la machine."
+          },
+          {
+            "titre": "Inventorier la donnée existante.",
+            "texte": "Automates, variateurs, compteurs, historique GMAO. Une grande partie de l'information est déjà là."
+          },
+          {
+            "titre": "Instrumenter ce qui manque.",
+            "texte": "Capteurs fixes sur les actifs critiques, tournée portable ailleurs. On complète le dispositif, on ne le refait pas."
+          },
+          {
+            "titre": "Établir la référence.",
+            "texte": "Plusieurs semaines de fonctionnement normal sont nécessaires pour que le modèle apprenne le comportement sain. Un modèle appris sur une machine déjà dégradée apprend la dégradation comme normale."
+          },
+          {
+            "titre": "Déclencher, tester, corriger.",
+            "texte": "Les premiers signalements sont toujours trop nombreux. Le réglage des seuils est un travail d'ajustement continu, mené avec vos techniciens."
+          },
+          {
+            "titre": "Industrialiser.",
+            "texte": "Une fois la méthode prouvée sur le premier périmètre, l'extension devient un exercice de logistique."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "La donnée reste votre propriété.",
+            "texte": "Nous travaillons dans votre environnement, selon vos règles d'accès, que l'hébergement soit local ou dans le cloud. Vos exigences qualité et vos clauses de confidentialité sont les nôtres."
+          },
+          {
+            "accroche": "L'indépendance du conseil.",
+            "texte": "Nous ne vendons ni capteur ni logiciel. Quand nous vous disons qu'une machine ne mérite pas d'être instrumentée, cela ne nous coûte rien de le dire."
+          },
+          {
+            "accroche": "L'exécution derrière l'alerte.",
+            "texte": "Nos techniciens réalisent les travaux que le modèle annonce, avec les habilitations exigées par votre installation, vérifiées avant le déplacement."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, automobile",
+            "texte": "Tenue, depuis octobre 2023.",
+            "lienLibelle": "Étude de cas STELLANTIS",
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/mq-1ef16ef335a6.jpg"
+          },
+          {
+            "titre": "Maintien d'un parc machines, équipementier automobile",
+            "texte": "Un technicien de maintenance dédié, intégré aux équipes du site en 2025.",
+            "lienLibelle": "Étude de cas AUTOLIV",
+            "lienHref": "/preuves/autoliv/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
+          },
+          {
+            "titre": "Maintenance des installations sécurisée par des techniciens intégrés, équipementier automobile",
+            "texte": "Dispositif en place en 2025.",
+            "lienLibelle": "Étude de cas JTEKT",
+            "lienHref": "/preuves/jtekt/",
+            "photo": "/assets/web/x-elec-cablage.jpg"
+          },
+          {
+            "titre": "Deux techniciens intégrés en 3x8 sur les lignes liquides et poudre, agroalimentaire",
+            "texte": "Site de Steenvoorde.",
+            "lienLibelle": "Étude de cas DANONE",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+          },
+          {
+            "titre": "Maintenance des centres d'usinage, presses et machines à commande numérique, automobile",
+            "texte": "Un technicien à temps plein.",
+            "lienLibelle": "Étude de cas VOIT",
+            "lienHref": "/preuves/voit-grand-est/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
+          },
+          {
+            "titre": "Un automaticien SIEMENS en renfort sur le démarrage d'une nouvelle ligne, industrie",
+            "texte": "Près de Lyon, en 2025.",
+            "lienLibelle": "Étude de cas MERSEN",
+            "lienHref": "/preuves/mersen/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+          },
+          {
+            "titre": "La GMAO planifie, nos techniciens interviennent",
+            "lienLibelle": "Étude de cas DimoMaint",
+            "lienHref": "/preuves/dimomaint/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+          },
+          {
+            "titre": "Des convoyeurs et des trieurs sous surveillance continue",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
+        "questions": [
+          {
+            "question": "Combien ça coûte, et au bout de combien de temps c'est rentable ?",
+            "reponse": "Le chiffrage se fait sur devis, machine par machine. Le retour se calcule sur l'heure d'arrêt évitée, pas sur la taille de l'entreprise. Comptez quelques semaines pour établir la référence, puis quelques mois pour ajuster les seuils avant les premiers signalements utiles."
+          },
+          {
+            "question": "Faut-il de l'intelligence artificielle pour commencer ?",
+            "reponse": "Non. Un seuil bien réglé sur une sonde de température évite déjà des pannes. L'apprentissage automatique apporte un gain réel sur les machines complexes ou nombreuses, quand l'historique est suffisant. Une intelligence artificielle mal nourrie produit de faux signalements, et la confiance s'effondre."
+          },
+          {
+            "question": "Migen vend-il des capteurs ou des logiciels ?",
+            "reponse": "Non, et c'est volontaire. Nous sommes un prestataire de services. Nous vous aidons à choisir les outils, nous les exploitons avec vos équipes, et nous fournissons les techniciens qui interviennent sur les alertes."
+          },
+          {
+            "question": "Est-ce adapté à une PME ?",
+            "reponse": "Oui, à condition de cibler. Trois machines critiques bien suivies valent mieux qu'un programme global inabouti. Le calcul se fait sur ce que coûte une heure d'immobilisation de ces trois machines, rien d'autre."
+          },
+          {
+            "question": "Comment l'intégrer à notre GMAO existante ?",
+            "reponse": "L'objectif est qu'une détection d'anomalie crée directement une demande d'intervention dans votre outil, sans double saisie. La plupart des solutions du marché proposent une interface d'échange, et nous branchons la boucle avec votre service informatique."
+          },
+          {
+            "question": "Que devient la donnée collectée sur nos machines ?",
+            "reponse": "Elle reste votre propriété. Nous travaillons dans votre environnement, selon vos règles d'accès, que l'hébergement soit dans le cloud ou sur vos serveurs locaux. Ce point se traite au contrat, pas après."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de quelqu'un qui regarde les courbes le lundi matin, et qui répare le mardi ?",
+        "bouton": "Demander mon diagnostic gratuit"
+      }
+    ]
+  }
+}

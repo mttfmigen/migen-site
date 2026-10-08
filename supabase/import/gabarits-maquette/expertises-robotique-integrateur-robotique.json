@@ -1,82 +1,46 @@
 {
+  "_source": "maquette/rendu/expertises--robotique--integrateur-robotique.html (07/10 21h12), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (relevé par data-dc-tpl, mêmes cibles que les pilotes fanuc et abb, dont le relevé redonne le relais à l'identique), contrôlé par components/site/expertises/specialite/verification-specialite.tsx. PHOTOS MESURÉES, PAS CHOISIES : octets de chaque image de la maquette vivante (localhost:4352) rapprochés de public/assets/web par sha256 complet, le 08/10 ; photo de carte de référence = première image de la carte. La capture du problème de cette page ne rend aucune photo, d'où `problemePhoto: null`. ÉCART CONNU, hors donnée : la famille « robot » de marques-donnees.ts compte 8 constructeurs, la capture en rend 9 (même écart que fanuc).",
   "url": "/expertises/robotique/integrateur-robotique/",
+  "titre_h1": "Intégrateur robotique : nous intégrons ce que nous savons maintenir",
   "contenu": {
-    "gabarit": "domaine",
+    "gabarit": "specialite",
+    "pastille": "Expertises",
     "chapeau": "Nous ne concevons pas la cellule, nous la faisons tourner. Un roboticien vient sur votre site reprendre la mise en service, les réglages et le programme, du bras jusqu'à l'automate de ligne.",
-    "boutons": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés.",
+    "appelBouton": "Décrire mon projet robotique",
+    "actions": [
       {
-        "libelle": "Décrire mon projet robotique"
+        "libelle": "Décrire mon projet robotique",
+        "href": "#besoin"
       }
     ],
-    "traitements": [
-      "La mise en service accompagnée",
-      "La reprise d'un projet robotique mal terminé",
-      "La recherche de cause racine",
-      "L'optimisation du temps de cycle",
-      "Le préventif écrit, planifié et tracé",
-      "Le système entier, pas le bras seul",
-      "Un compte rendu exploitable à chaque passage"
-    ],
-    "autres": [
+    "formulaireHeroTitre": "Décrire mon projet robotique",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
-        "libelle": "Automatisme industriel",
-        "href": "/expertises/automatisme/"
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, après entretien technique ET comportemental"
       },
       {
-        "libelle": "Maintenance électrique industrielle",
-        "href": "/expertises/electrique/"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
-      },
-      {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance mécanique",
-        "href": "/expertises/mecanique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
+        "valeur": "en continu et tous les jours",
+        "libelle": "Astreinte, en plus du rappel dans l'heure en journée"
       }
     ],
-    "cta": {
-      "question": "Besoin que votre cellule tienne enfin la cadence prévue au cahier des charges ?",
-      "bouton": {
-        "libelle": "Décrire mon projet robotique"
-      }
-    },
-    "reste": [
+    "problemePhoto": null,
+    "complementOffre": [
       {
-        "type": "chiffres",
-        "chiffres": [
-          {
-            "valeur": "10 %",
-            "libelle": "des candidats retenus, après entretien technique ET comportemental"
-          },
-          {
-            "valeur": "+ 120",
-            "libelle": "clients industriels, dont plus de 80 réguliers"
-          },
-          {
-            "valeur": "24/24 et 7/7",
-            "libelle": "astreinte, en plus du rappel dans l'heure en journée"
-          }
-        ]
-      },
+        "texte": "Un bras immobilisé maintenant relève du dépannage industriel."
+      }
+    ],
+    "marquesFamille": "robot",
+    "sections": [
       {
         "type": "probleme",
+        "variante": "panneau-sombre",
         "punchline": "La cellule est installée, l'intégrateur est reparti, et la chaîne ne tient toujours pas sa cadence.",
         "puces": [
           {
@@ -103,56 +67,51 @@
           {
             "prestation": {
               "accroche": "La mise en service accompagnée",
-              "texte": "points de reprise, réglages fins, formation de vos opérateurs aux menus du pupitre."
+              "texte": "Points de reprise, réglages fins, formation de vos opérateurs aux menus du pupitre."
             },
             "benefice": "La cellule neuve entre en production avec des équipes qui savent la conduire."
           },
           {
             "prestation": {
               "accroche": "La reprise d'un projet robotique mal terminé",
-              "texte": "audit de l'état réel, liste des points bloquants, plan d'action chiffré sur devis."
+              "texte": "Audit de l'état réel, liste des points bloquants, plan d'action chiffré sur devis."
             },
             "benefice": "Vous sortez du bras de fer avec le prestataire précédent et vous avancez."
           },
           {
             "prestation": {
               "accroche": "La recherche de cause racine",
-              "texte": "du programme jusqu'à l'outil en bout de bras, préhenseur, capteurs, présentation de la pièce."
+              "texte": "Du programme jusqu'à l'outil en bout de bras, préhenseur, capteurs, présentation de la pièce."
             },
             "benefice": "Vous arrêtez d'échanger des organes sains pendant que la ligne attend."
           },
           {
             "prestation": {
               "accroche": "L'optimisation du temps de cycle",
-              "texte": "trajectoires retravaillées, points morts supprimés, synchronisation revue avec le convoyage."
+              "texte": "Trajectoires retravaillées, points morts supprimés, synchronisation revue avec le convoyage."
             },
             "benefice": "Optimiser un mouvement coûte moins cher que d'automatiser davantage."
           },
           {
             "prestation": {
               "accroche": "Le préventif écrit, planifié et tracé",
-              "texte": "réducteurs, graissage, batteries de sauvegarde, accessibilité des organes."
+              "texte": "Réducteurs, graissage, batteries de sauvegarde, accessibilité des organes."
             },
             "benefice": "La batterie qui meurt en silence n'emporte plus vos positions et vos programmes."
           },
           {
             "prestation": {
               "accroche": "Le système entier, pas le bras seul",
-              "texte": "automates, variateurs, réseaux industriels qui pilotent la cellule."
+              "texte": "Automates, variateurs, réseaux industriels qui pilotent la cellule."
             },
             "benefice": "La vraie cause est trouvée même quand elle se cache en dehors de la baie."
           },
           {
             "prestation": {
               "accroche": "Un compte rendu exploitable à chaque passage",
-              "texte": "constat, actions, pièces, conseils d'utilisation pour vos équipes."
+              "texte": "Constat, actions, pièces, conseils d'utilisation pour vos équipes."
             },
             "benefice": "Vous gardez la main sur l'historique de votre installation, pas votre prestataire."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Un bras immobilisé maintenant relève du [dépannage industriel](/offres/depannage-industriel/). Un parc à remettre sous suivi relève de la [maintenance robotique](/expertises/robotique/). Quand la cause se trouve dans l'automate de ligne, nos [automaticiens](/expertises/automatisme/) prennent le relais sur la même cellule."
           }
         ]
       },
@@ -161,7 +120,7 @@
         "etapes": [
           {
             "titre": "Vous décrivez la situation",
-            "texte": "machine, marque, symptômes, moment du cycle. Cinq minutes au téléphone cadrent le besoin."
+            "texte": "Machine, marque, symptômes, moment du cycle. Cinq minutes au téléphone cadrent le besoin."
           },
           {
             "titre": "Un technicien vous rappelle dans l'heure.",
@@ -177,7 +136,7 @@
           },
           {
             "titre": "Nous cherchons la cause avant de démonter",
-            "texte": "alarmes du contrôleur, essais axe par axe, contrôle du réseau et des sécurités de cellule."
+            "texte": "Alarmes du contrôleur, essais axe par axe, contrôle du réseau et des sécurités de cellule."
           },
           {
             "titre": "Vous recevez le compte rendu",
@@ -190,11 +149,11 @@
         "puces": [
           {
             "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-            "texte": "L'astreinte 24/24 et 7/7 couvre la nuit et le week-end sur les sites concernés."
+            "texte": "L'astreinte la nuit, le week-end et les jours fériés couvre la nuit et le week-end sur les sites concernés."
           },
           {
             "accroche": "Le technicien est évalué avant d'être proposé.",
-            "texte": "Entretien technique et entretien comportemental, 10 % des candidats retenus. C'est la seule façon honnête de tenir une promesse de compétence."
+            "texte": "Entretien technique et entretien comportemental, 10 % des techniciens retenus. C'est la seule façon honnête de tenir une promesse de compétence."
           },
           {
             "accroche": "Les habilitations sont à jour et le cadre est respecté.",
@@ -203,48 +162,54 @@
         ]
       },
       {
-        "type": "cta",
-        "question": "Besoin d'un roboticien pour finir ce que l'intégrateur a laissé en plan ?",
-        "bouton": "Décrire mon projet robotique",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
-      },
-      {
         "type": "preuves",
         "preuves": [
           {
             "titre": "Contrôle de chantier sur des projets d'automatisation logistique, aéroports et industrie",
-            "texte": "plusieurs intervenants intégrés aux équipes projet, roboticiens ABB et Fanuc parmi les spécialités engagées, 2025 à 2026",
-            "lienLibelle": "Étude de cas ALSTEF Group : collaboration",
-            "lienHref": "/preuves/alstef-group/"
+            "texte": "Plusieurs intervenants intégrés aux équipes projet, roboticiens ABB et Fanuc parmi les spécialités engagées, 2025 à 2026.",
+            "lienLibelle": "Étude de cas ALSTEF Group",
+            "lienHref": "/preuves/alstef-group/",
+            "photo": "/assets/web/x-robotique.jpg"
           },
           {
             "titre": "Installation et mise en production d'un parc machine neuf, site automobile",
-            "texte": "six techniciens multidisciplinaires du déballage jusqu'au régime de production, depuis janvier 2023, mission toujours en cours",
-            "lienLibelle": "Étude de cas EATON : mise en production",
-            "lienHref": "/preuves/eaton-mise-en-production/"
+            "texte": "Six techniciens multidisciplinaires du déballage jusqu'au régime de production, depuis janvier 2023, mission toujours en cours.",
+            "lienLibelle": "Étude de cas EATON",
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "Maintenance des équipements critiques d'un équipementier automobile",
-            "texte": "techniciens intégrés au quotidien sur systèmes automatisés, lignes et convoyeurs, roboticiens ABB et Fanuc parmi les spécialités mobilisables, depuis 2025",
-            "lienLibelle": "Étude de cas JTEKT : maintenance des installations",
-            "lienHref": "/preuves/jtekt/"
+            "texte": "Techniciens intégrés au quotidien sur systèmes automatisés, lignes et convoyeurs, roboticiens ABB et Fanuc parmi les spécialités mobilisables, depuis 2025.",
+            "lienLibelle": "Étude de cas JTEKT",
+            "lienHref": "/preuves/jtekt/",
+            "photo": "/assets/web/x-auto-caisse.jpg"
           },
           {
             "titre": "Montage d'un centre logistique à Clermont-Ferrand",
-            "texte": "12 monteurs mécaniciens et 8 engins de levage, six semaines de chantier en période estivale, livraison tenue, depuis juillet 2023",
-            "lienLibelle": "Étude de cas AKTID : montage d'un centre logistique",
-            "lienHref": "/preuves/aktid-centre-logistique/"
+            "texte": "12 monteurs mécaniciens et 8 engins de levage, six semaines de chantier en période estivale, livraison tenue, depuis juillet 2023.",
+            "lienLibelle": "Étude de cas AKTID",
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "Maintien opérationnel de convoyeurs, trieurs et packaging automatisés, logistique et transport",
-            "texte": "deux techniciens en poste, robotique parmi les domaines couverts en propre, 2025",
-            "lienLibelle": "Étude de cas GLS : maintenance curative",
-            "lienHref": "/preuves/gls-maintenance-curative/"
+            "texte": "Deux techniciens en poste, robotique parmi les domaines couverts en propre, 2025.",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-9b461f439fef.jpg"
+          },
+          {
+            "titre": "La GMAO planifie, nos techniciens interviennent",
+            "lienLibelle": "Étude de cas DimoMaint",
+            "lienHref": "/preuves/dimomaint/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg"
           }
         ]
       },
       {
         "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
         "questions": [
           {
             "question": "Migen est-il un intégrateur robotique ?",
@@ -264,13 +229,18 @@
           },
           {
             "question": "Intervenez-vous en urgence sur un robot arrêté ?",
-            "reponse": "Oui, en dépannage comme en astreinte 24/24 et 7/7. Appelez le 04 78 33 72 05 : nous vous rappelons dans l'heure pour qualifier la panne et engager la recherche. Le premier échange sert à savoir si le roboticien suffit ou s'il faut mobiliser un automaticien en parallèle."
+            "reponse": "Oui, en dépannage comme en astreinte la nuit, le week-end et les jours fériés. appelez-nous : nous vous rappelons dans l'heure pour qualifier la panne et engager la recherche. Le premier échange sert à savoir si le roboticien suffit ou s'il faut mobiliser un automaticien en parallèle."
           },
           {
             "question": "Combien coûte l'intervention d'un roboticien ?",
             "reponse": "Cela dépend de la durée, du site et des compétences nécessaires. Tout est chiffré sur devis, sans coefficient caché, après un point précis sur votre besoin. Le contrat Zéro arrêt fonctionne par abonnement, avec trois niveaux de couverture, également sur devis. Comparez toujours ce montant à celui d'une seule journée de ligne figée."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que votre cellule tienne enfin la cadence prévue au cahier des charges ?",
+        "bouton": "Décrire mon projet robotique"
       }
     ]
   }

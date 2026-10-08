@@ -40,6 +40,7 @@ import { fileURLToPath } from "node:url";
 
 import { renderToStaticMarkup } from "react-dom/server";
 
+import { appliqueDecisions } from "@/lib/decisions-copie";
 import { estMetier, type ContenuFicheMetier } from "@/types/metier";
 
 import PageFicheMetier from "./PageFicheMetier";
@@ -49,11 +50,11 @@ const RENDU_MAQUETTE = join(RACINE, "maquette", "rendu");
 
 /* ----------------------------------------- les captures, relues à chaque fois */
 
-/** `/carriere/automaticien/salaire/` → `carriere--automaticien--salaire.html` */
+/** `/carriere/automaticien/salaire/` → `carriere--automaticien--salaire.html`,
+ *  décisions de copie appliquées (lib/decisions-copie.ts) : la donnée les porte. */
 function capturePour(url: string): string {
-  return readFileSync(
-    join(RENDU_MAQUETTE, `${url.replace(/^\/|\/$/g, "").replace(/\//g, "--")}.html`),
-    "utf8",
+  return appliqueDecisions(
+    readFileSync(join(RENDU_MAQUETTE, `${url.replace(/^\/|\/$/g, "").replace(/\//g, "--")}.html`), "utf8"),
   );
 }
 
@@ -429,18 +430,57 @@ for (const url of URLS_GABARIT_07) {
     `${nom} : la section postuler manque, les boutons visent une ancre morte`,
   );
   verifieInterdits(html, nom);
+
+  // Les photos de la maquette (relevé sha256 du 08/10) : celle du héros, celle
+  // de chaque carte de fin, et le panneau-photo de la FAQ. `next/image` encode
+  // le chemin dans `/_next/image?url=…`.
+  const photos = [
+    page.contenu.heros.photo?.src,
+    ...page.contenu.sections.flatMap((x) => (x.type === "liens" ? x.items.map((i) => i.photo) : [])),
+    ...(page.contenu.sections.some((x) => x.type === "faq") ? ["/assets/web/faq-offre.jpg"] : []),
+  ];
+  for (const photo of photos) {
+    assert.ok(photo, `${nom} : une photo de la maquette manque dans la donnée`);
+    assert.ok(
+      html.includes(encodeURIComponent(photo)),
+      `${nom} : la photo ${photo} n'est pas rendue`,
+    );
+  }
 }
+
+/* ------- 8 bis. le formulaire : README de passation, règles « Candidature »
+
+   La mobilité garde la forme de la capture (un sélecteur « Choisir ») et la
+   règle du README (France entière OU plusieurs régions), le témoin `required`
+   la rend obligatoire. La preuve d'échec d'abord : un rendu sans témoin. */
+
+function verifieFormulaire(html: string): void {
+  const texte = texteLisible(html);
+  assert.ok(texte.includes("Au-delà de 3 mois"), "délai de démarrage : « Au-delà de 3 mois » absent");
+  assert.ok(!/teamtailor/i.test(texte), "le site ne mentionne jamais Teamtailor");
+  const cases = html.match(/type="checkbox" name="mobility"/g) ?? [];
+  assert.equal(cases.length, 13, "mobilité : les treize cases de MOBS, France entière comprise");
+  assert.ok(
+    /<input[^>]*aria-hidden="true"[^>]*required=""/.test(html),
+    "mobilité : le témoin required manque, la question n'est plus obligatoire",
+  );
+  assert.ok(html.includes("France entière (prêt à déménager)"), "mobilité : l'option France entière manque");
+}
+assert.throws(() => verifieFormulaire("<form></form>"), /absent|manque|cases/, "verifieFormulaire ne sait pas échouer");
+verifieFormulaire(rendu);
 
 /* ------------------- 9. les survols de la maquette, posés avec :focus-visible */
 
-const MODULE_CSS = readFileSync(
-  join(RACINE, "components", "site", "metier", "FicheMetier.module.css"),
-  "utf8",
-);
+/* Les cartes de fin et la FAQ-photo sont celles du hub (`LiensPhoto`,
+   `QuestionsHub`) : leurs survols vivent dans son module. */
+const MODULE_CSS =
+  readFileSync(join(RACINE, "components", "site", "metier", "FicheMetier.module.css"), "utf8") +
+  readFileSync(join(RACINE, "components", "site", "carriere", "HubCarriere.module.css"), "utf8");
 for (const [selecteur, valeur] of [
   [".boutonOrange", "brightness(0.93)"],
   [".boutonTelephone", "background: var(--card)"],
   [".carteLien", "translateY(-3px)"],
+  [".boutonQuestion", "translateY(-1px)"],
   [".texteLie a", "color: var(--acc)"],
 ] as const) {
   assert.ok(

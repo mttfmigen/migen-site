@@ -28,11 +28,13 @@
  * besoin, sous-texte des objectifs) sont des champs OPTIONNELS : absents, rien
  * de plus n'est rendu.
  *
- * LES PHOTOS NE SONT PAS PORTÉES, et c'est déclaré : la capture sert le logo
- * client, la photo du héros, celle du dispositif et celles des cartes « Pour
- * aller plus loin » par des URL `blob:` qui ne nomment aucun fichier. Poser une
- * photo de la photothèque serait une association inventée (CLAUDE.md §13) : le
- * cadre reste nu, même précédent que `LienPageLiee` du gabarit 03.
+ * LES IMAGES SONT MESURÉES, JAMAIS CHOISIES. La capture sert le logo client,
+ * la photo du héros, celle du dispositif et celles des cartes « Pour aller plus
+ * loin » par des URL `blob:` qui ne nomment aucun fichier. Leurs OCTETS sont lus
+ * dans la maquette qui tourne par `components/site/preuve/mesure-photos.mjs`,
+ * qui donne le fichier de `public/` aux octets identiques (sha256). Les champs
+ * sont OPTIONNELS : absent, le cadre reste nu (et la pastille du logo n'est pas
+ * rendue), jamais une photo de la photothèque posée au jugé (CLAUDE.md §13).
  */
 
 /** Une ligne libellé / valeur : fiche du héros, chiffres, fiche mission. */
@@ -77,6 +79,8 @@ export interface LienPlusLoin {
   surtitre: string;
   titre: string;
   href: string;
+  /** La vignette de 150px, chemin public mesuré (voir l'en-tête). */
+  photo?: string;
 }
 
 export interface ContenuPreuve {
@@ -99,6 +103,19 @@ export interface ContenuPreuve {
   bouton: string;
   /** La fiche en incrustation sur la photo du héros (Danone, pas SUEZ). */
   heroFiche?: LignePreuve[];
+  /**
+   * Le logo du client, dans la pastille blanche à côté de « Étude de cas »,
+   * texte alternatif `client`. Chemin public mesuré. Absent (VPK), pas de
+   * pastille, comme la capture.
+   */
+  logo?: string;
+  /**
+   * Le logo est clair sur fond clair : la maquette l'inverse
+   * (`filter: invert(1) hue-rotate(180deg)`, Groupe Atlantic et OGF).
+   */
+  logoInverse?: boolean;
+  /** La photo du héros, cadre de 480px. Chemin public mesuré. */
+  photoHero?: string;
 
   /** Les cartes « Chiffres du dispositif ». */
   chiffres?: LignePreuve[];
@@ -114,8 +131,10 @@ export interface ContenuPreuve {
   /** « 03 · Étape par étape ». */
   etapes?: CartePreuve[];
 
-  /** « 04 · Fiche mission » : le tableau. La photo n'est pas nommée, voir en-tête. */
+  /** « 04 · Fiche mission » : le tableau. */
   dispositif?: LignePreuve[];
+  /** « 04 · Fiche mission » : la photo à gauche du tableau. Chemin public mesuré. */
+  photoDispositif?: string;
 
   /** « 05 · Résultat » : les coches du panneau sombre. */
   resultats?: CartePreuve[];

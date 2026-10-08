@@ -113,11 +113,7 @@ export default function MarqueeClients({
             flex: "none",
           }}
         >
-          {/* « Plus de 200 clients accompagnés » dans la maquette. Le compte
-              tenu par Migen est « plus de 120 clients, dont plus de 80
-              réguliers » : c'est la formulation mandatée, et un chiffre public
-              faux est un risque, pas un détail de copie. */}
-          Plus de 120 clients, dont plus de 80 réguliers
+          Plus de 200 clients accompagnés
         </span>
       </div>
 

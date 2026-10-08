@@ -1,6 +1,8 @@
 /* `style-hover="color:#ff7c3c;padding-left:12px"` de la maquette. La classe
    bat la règle globale `a:hover` (0,2,0 contre 0,1,1). */
+/* `!important` comme la maquette : couleur et retrait sont aussi posés en
+   style en ligne, qui battrait sinon la règle. */
 .ligne:hover {
-  color: #ff7c3c;
-  padding-left: 12px;
+  color: #ff7c3c !important;
+  padding-left: 12px !important;
 }

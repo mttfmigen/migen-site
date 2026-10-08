@@ -1,81 +1,45 @@
 {
   "url": "/expertises/electrique/",
+  "titre_h1": "Maintenance électrique industrielle : le défaut trouvé avant qu’il ne coupe la ligne",
   "contenu": {
     "gabarit": "domaine",
+    "pastille": "Expertises",
     "chapeau": "Des techniciens habilités au niveau exigé par vos travaux. Ils mesurent avant de remplacer, remontent à la cause du défaut et vous laissent les schémas à jour.",
-    "boutons": [
+    "mention": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés prend le relais la nuit et le week-end.",
+    "appelBouton": "Demander une intervention",
+    "actions": [
       {
-        "libelle": "Demander une intervention"
+        "libelle": "Demander une intervention",
+        "href": "#besoin"
       }
     ],
-    "traitements": [
-      "La distribution tenue",
-      "Les armoires de commande reprises",
-      "Les motorisations diagnostiquées à la mesure",
-      "La thermographie infrarouge sur armoires et moteurs",
-      "La chaîne de sécurité vérifiée",
-      "Le rétrofit et la mise en conformité"
-    ],
-    "autres": [
+    "formulaireHeroTitre": "Demander une intervention",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
-        "libelle": "Automatisme industriel",
-        "href": "/expertises/automatisme/"
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, après entretien technique ET comportemental"
       },
       {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance mécanique",
-        "href": "/expertises/mecanique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Maintenance robotique",
-        "href": "/expertises/robotique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
+        "valeur": "en continu et tous les jours",
+        "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "cta": {
-      "question": "Besoin d'un électricien de maintenance qui laisse les schémas à jour derrière lui ?",
-      "bouton": {
-        "libelle": "Demander une intervention"
-      }
-    },
-    "reste": [
+    "problemePhoto": null,
+    "complementOffre": [
       {
-        "type": "chiffres",
-        "chiffres": [
-          {
-            "valeur": "10 %",
-            "libelle": "des candidats retenus, après entretien technique ET comportemental"
-          },
-          {
-            "valeur": "+ 120",
-            "libelle": "clients, dont plus de 80 réguliers"
-          },
-          {
-            "valeur": "24/24 et 7/7",
-            "libelle": "astreinte, pour les sites couverts"
-          }
-        ]
-      },
+        "texte": "Un défaut électrique qui bloque la ligne maintenant se traite par le dépannage industriel."
+      }
+    ],
+    "marquesFamille": "auto",
+    "sections": [
       {
         "type": "probleme",
+        "variante": "rangee",
         "punchline": "Une armoire qui disjoncte un vendredi soir, et c'est tout le week-end de production qui saute.",
         "puces": [
           {
@@ -109,48 +73,44 @@
           {
             "prestation": {
               "accroche": "Les armoires de commande reprises",
-              "texte": "contacteurs, relais, borniers, câblage, repérage, schémas mis à jour."
+              "texte": "Contacteurs, relais, borniers, câblage, repérage, schémas mis à jour."
             },
             "benefice": "La prochaine intervention ne repart pas de zéro, chez nous comme chez vous."
           },
           {
             "prestation": {
               "accroche": "Les motorisations diagnostiquées à la mesure",
-              "texte": "moteur asynchrone, variateur, démarreur, freinage, intensités et déséquilibres."
+              "texte": "Moteur asynchrone, variateur, démarreur, freinage, intensités et déséquilibres."
             },
             "benefice": "Le bon coupable est identifié : bobinage, roulements ou paramétrage. Rien n'est remplacé au jugé."
           },
           {
             "prestation": {
-              "accroche": "La thermographie infrarouge sur armoires et moteurs",
-              "texte": ", sans arrêter la ligne."
+              "accroche": "La thermographie infrarouge sur armoires et moteurs sans arrêter la ligne.",
+              "texte": ""
             },
             "benefice": "Le point chaud devient un travail planifié au lieu d'un sinistre."
           },
           {
             "prestation": {
               "accroche": "La chaîne de sécurité vérifiée",
-              "texte": "arrêts d'urgence, barrières immatérielles, capteurs de position, asservissements."
+              "texte": "Arrêts d'urgence, barrières immatérielles, capteurs de position, asservissements."
             },
             "benefice": "L'installation protège vos opérateurs, et le prouve par écrit."
           },
           {
             "prestation": {
               "accroche": "Le rétrofit et la mise en conformité",
-              "texte": "composants obsolètes remplacés, passage en variation de vitesse, reprise d'armoire vieillissante."
+              "texte": "Composants obsolètes remplacés, passage en variation de vitesse, reprise d'armoire vieillissante."
             },
             "benefice": "La durée de vie du matériel repart, et la consommation baisse avec elle."
           },
           {
             "prestation": {
-              "texte": "**Un plan d'action chiffré, classé par urgence.**"
+              "accroche": "Un plan d'action chiffré, classé par urgence.",
+              "texte": ""
             },
             "benefice": "Vous arbitrez avec les coûts sous les yeux, nous réalisons ce que vous décidez."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Un défaut électrique qui bloque la ligne maintenant se traite par le [dépannage industriel](/offres/depannage-industriel/). Un besoin durable se couvre par la [sous-traitance maintenance](/offres/residence/), un technicien intégré à votre équipe."
           }
         ]
       },
@@ -159,27 +119,27 @@
         "etapes": [
           {
             "titre": "Vous décrivez la situation",
-            "texte": "équipement, code défaut affiché, repère de l'armoire, contexte d'apparition. Quatre champs, ou un appel au 04 78 33 72 05."
+            "texte": "Équipement, code défaut affiché, repère de l'armoire, contexte d'apparition. Quatre champs, ou un appel par téléphone."
           },
           {
             "titre": "Un technicien vous rappelle dans l'heure",
-            "texte": "la panne est qualifiée à distance et le niveau d'habilitation requis est arrêté avant le déplacement."
+            "texte": "La panne est qualifiée à distance et le niveau d'habilitation requis est arrêté avant le déplacement."
           },
           {
             "titre": "Le diagnostic se fait sur site dans cet ordre",
-            "texte": "mesures, lecture des schémas, analyse des alarmes automate. L'intuition passe après."
+            "texte": "Mesures, lecture des schémas, analyse des alarmes automate. L'intuition passe après."
           },
           {
             "titre": "L'intervention respecte le risque électrique",
-            "texte": "consignation par un chargé de consignation quand elle s'impose, plan de prévention, équipements de protection, balisage."
+            "texte": "Consignation par un chargé de consignation quand elle s'impose, plan de prévention, équipements de protection, balisage."
           },
           {
             "titre": "Réparation et remise en service",
-            "texte": "remplacement du composant, recâblage, réglage, essais et contrôle du bon fonctionnement en charge."
+            "texte": "Remplacement du composant, recâblage, réglage, essais et contrôle du bon fonctionnement en charge."
           },
           {
             "titre": "Vous recevez un compte rendu et vos livrables",
-            "texte": "ce qui a lâché, pourquoi, ce qui a été fait, ce qu'il reste à surveiller, schémas mis à jour à l'appui."
+            "texte": "Ce qui a lâché, pourquoi, ce qui a été fait, ce qu'il reste à surveiller, schémas mis à jour à l'appui."
           }
         ]
       },
@@ -188,7 +148,7 @@
         "puces": [
           {
             "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-            "texte": "L'astreinte 24/24 et 7/7 couvre la nuit et le week-end sur les sites concernés."
+            "texte": "L'astreinte la nuit, le week-end et les jours fériés couvre la nuit et le week-end sur les sites concernés."
           },
           {
             "accroche": "Le bon niveau d'habilitation pour le bon travail.",
@@ -201,48 +161,62 @@
         ]
       },
       {
-        "type": "cta",
-        "question": "Besoin de savoir pourquoi ce disjoncteur déclenche, une bonne fois pour toutes ?",
-        "bouton": "Demander une intervention",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
-      },
-      {
         "type": "preuves",
         "preuves": [
           {
             "titre": "Maintenance préventive d'une centrale photovoltaïque, énergie",
-            "texte": "trois techniciens spécialisés en renfort des équipes Eiffage, de septembre à novembre 2024",
-            "lienLibelle": "Étude de cas EIFFAGE : photovoltaïque",
-            "lienHref": "/preuves/eiffage/"
+            "lienLibelle": "Étude de cas EIFFAGE",
+            "lienHref": "/preuves/eiffage/",
+            "photo": "/assets/web/mq-2d11362f7867.jpg",
+            "texte": "Trois techniciens spécialisés en renfort des équipes Eiffage, de septembre à novembre 2024."
           },
           {
             "titre": "Remise en état d'un site de traitement des eaux industrielles, risque chimique",
-            "texte": "un technicien électromécanicien habilité RC1 mobilisé 6 mois, mécanique, électricité et notions d'automatisme sur le même intervenant",
-            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
-            "lienHref": "/preuves/suez-remise-en-etat/"
+            "lienLibelle": "Étude de cas SUEZ",
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "texte": "Un technicien électromécanicien habilité RC1 mobilisé 6 mois, mécanique, électricité et notions d'automatisme sur le même intervenant."
           },
           {
             "titre": "Installation et mise en production d'un parc machine neuf, automobile",
-            "texte": "6 techniciens mobilisés, mécanique, électricité et automatisme demandés au même instant, depuis janvier 2023",
-            "lienLibelle": "Étude de cas EATON : mise en production",
-            "lienHref": "/preuves/eaton-mise-en-production/"
+            "lienLibelle": "Étude de cas EATON",
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "photo": "/assets/web/x-elec-cablage.jpg",
+            "texte": "6 techniciens mobilisés, mécanique, électricité et automatisme demandés au même instant, depuis janvier 2023."
           },
           {
             "titre": "Renfort continu sur des lignes de production, agroalimentaire",
-            "texte": "deux techniciens intégrés en 3x8 sur des lignes automatisées pilotées par automates Schneider",
-            "lienLibelle": "Étude de cas DANONE : lignes de production",
-            "lienHref": "/preuves/danone-lignes-de-production/"
+            "lienLibelle": "Étude de cas DANONE",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "texte": "Deux techniciens intégrés en 3x8 sur des lignes automatisées pilotées par automates Schneider."
           },
           {
             "titre": "Montage de portiques de lavage partout en France",
-            "texte": "mécanique, électricité et automatisme réunis, levage et raccordements compris",
-            "lienLibelle": "Étude de cas ORTHUS x WASHTEC : installation de stations",
-            "lienHref": "/preuves/orthus-washtec/"
+            "lienLibelle": "Étude de cas ORTHUS x WASHTEC",
+            "lienHref": "/preuves/orthus-washtec/",
+            "photo": "/assets/web/mq-7ee5a26d3e82.jpg",
+            "texte": "Mécanique, électricité et automatisme réunis, levage et raccordements compris."
+          },
+          {
+            "titre": "Des commandes numériques remises en route à chaque équipe",
+            "lienLibelle": "Étude de cas Jeld-Wen",
+            "lienHref": "/preuves/jeld-wen/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "texte": ""
+          },
+          {
+            "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
+            "lienLibelle": "Étude de cas Savoye",
+            "lienHref": "/preuves/savoye-migration-automates-norvege/",
+            "photo": "/assets/web/mq-948c28bcda08.jpg",
+            "texte": ""
           }
         ]
       },
       {
         "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
         "questions": [
           {
             "question": "Combien coûte une intervention électrique ?",
@@ -258,7 +232,7 @@
           },
           {
             "question": "Qui intervient vraiment chez nous ?",
-            "reponse": "Des électriciens de maintenance salariés de Migen, évalués sur cas réels et en entretien comportemental. 10 % des candidats sont retenus. La méthode avant les outils : lire un schéma, isoler une hypothèse, mesurer avant de remplacer."
+            "reponse": "Des électriciens de maintenance salariés de Migen, évalués sur cas réels et en entretien comportemental. 10 % des techniciens sont retenus. La méthode avant les outils : lire un schéma, isoler une hypothèse, mesurer avant de remplacer."
           },
           {
             "question": "Faites-vous la vérification réglementaire annuelle ?",
@@ -269,6 +243,11 @@
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France partout en France, avec la même politique de sécurité électrique sur chaque site."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin d'un électricien de maintenance qui laisse les schémas à jour derrière lui ?",
+        "bouton": "Demander une intervention"
       }
     ]
   }

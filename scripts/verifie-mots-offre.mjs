@@ -43,6 +43,8 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { appliqueDecisions } from "./decisions-copie.mjs";
+
 const RACINE = fileURLToPath(new URL("..", import.meta.url));
 const MAQUETTE = join(RACINE, "maquette", "site-final.html");
 const GABARITS = join(RACINE, "supabase", "import", "gabarits-maquette");
@@ -186,7 +188,9 @@ function texteVisible(html) {
 
 /* ------------------------------------------------- la maquette, relue à chaque fois */
 
-const SOURCE = readFileSync(MAQUETTE, "utf8");
+/* Les décisions de copie (lib/decisions-copie.ts) sont appliquées à la
+   maquette avant toute comparaison : la donnée les porte déjà, la maquette non. */
+const SOURCE = appliqueDecisions(readFileSync(MAQUETTE, "utf8"));
 
 /** Le gabarit `sc-if value="{{ isOfferPage }}"` de la maquette. */
 function gabaritOffre() {
@@ -214,8 +218,10 @@ const GABARIT = gabaritOffre();
  * référence : une phrase rendue par le site doit s'y retrouver.
  */
 const MAQUETTE_ENTIERE = normalise(
-  SOURCE.replace(/\\u([0-9a-fA-F]{4})/g, (_, hex) =>
-    String.fromCharCode(parseInt(hex, 16)),
+  appliqueDecisions(
+    SOURCE.replace(/\\u([0-9a-fA-F]{4})/g, (_, hex) =>
+      String.fromCharCode(parseInt(hex, 16)),
+    ),
   ),
 );
 

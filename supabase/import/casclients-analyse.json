@@ -1,100 +1,305 @@
 [
   {
     "url": "/preuves/",
+    "titre_h1": "Preuves : nos réalisations",
     "contenu": {
       "gabarit": "casclients",
-      "chapeau": "Pas de logos alignés sans contexte. Chaque référence ci-dessous indique l’offre engagée, la durée réelle et ce qui a été remis en marche.",
-      "chiffres": {
-        "principal": {
-          "valeur": "+10 M€",
-          "libelle": "de chiffre d’affaires, en croissance de +40 % année sur année. Une structure qui tient l’échelle nationale."
-        },
-        "cartes": [
-          {
-            "valeur": "4",
-            "libelle": "agences"
-          },
-          {
-            "valeur": "+120",
-            "libelle": "techniciens"
-          }
-        ],
-        "duo": [
-          {
-            "valeur": "+120",
-            "libelle": "techniciens"
-          },
-          {
-            "valeur": "+120",
-            "libelle": "clients industriels, dont plus de 80 réguliers"
-          }
-        ]
-      },
-      "chantiers": [
+      "vue": "hub",
+      "accroche": "Tout le monde promet des techniciens qualifiés. Peu montrent ce qu'ils ont fait, chez qui, et comment.",
+      "intro": "Voici nos interventions, classées par type, avec pour chacune ce qui a été engagé sur le terrain. Migen compte plus de 200 clients. Les cas ci-dessous sont ceux que nos clients nous autorisent à documenter.",
+      "categories": [
         {
-          "client": "SUEZ IWT",
-          "duree": "11 semaines",
-          "titre": "Remise en état complète d’un site industriel",
-          "resume": "Reprise de tuyauterie, électricité et mécanique sur un site arrêté depuis huit mois. Redémarrage tenu à la date annoncée.",
-          "offre": "migen© Chantier",
-          "date": "Février 2026",
-          "image": "/assets/web/ph-tuyaux.jpg",
-          "href": "/preuves/suez-remise-en-etat/"
+          "libelle": "Maintenance en continu",
+          "besoin": "Le besoin : une équipe interne trop courte, et des équipements qui n'attendent pas.",
+          "cas": [
+            {
+              "client": "DANONE (BLÉDINA)",
+              "sujet": "Pas un poste sans maintenance, week-end compris",
+              "resume": "Lignes liquides et conditionnement poudre, 3x8 en semaine, présence week-end, couverture continue.",
+              "url": "/preuves/danone-lignes-de-production/"
+            },
+            {
+              "client": "GLS",
+              "sujet": "Des convoyeurs et des trieurs sous surveillance continue",
+              "resume": "Deux techniciens dédiés aux convoyeurs, trieurs et systèmes de packaging automatisés.",
+              "url": "/preuves/gls-maintenance-curative/"
+            },
+            {
+              "client": "JTEKT",
+              "sujet": "Voir la dérive avant que l’équipement critique ne tombe",
+              "resume": "Surveillance, maintenance curative et gestion des interventions sur équipements critiques.",
+              "url": "/preuves/jtekt/"
+            },
+            {
+              "client": "AUTOLIV",
+              "sujet": "Un technicien dédié pour que le parc ne décroche pas",
+              "resume": "Un technicien de maintenance dédié au maintien du parc machines.",
+              "url": "/preuves/autoliv/"
+            },
+            {
+              "client": "VOIT",
+              "sujet": "Centres d’usinage et presses tenus dans le Grand Est",
+              "resume": "Maintenance des centres d'usinage, presses et machines à commande numérique.",
+              "url": "/preuves/voit-grand-est/"
+            },
+            {
+              "client": "VPK",
+              "sujet": "Une usine de carton en 3x8, un technicien qui tient la cadence",
+              "resume": "Découpe, convoyage, 3x8.",
+              "url": "/preuves/vpk/"
+            },
+            {
+              "client": "CIUCH",
+              "sujet": "L’intralogistique d’un grand site tenue en sous-traitance",
+              "resume": "Lignes automatisées, convoyeurs, journée.",
+              "url": "/preuves/fdj/"
+            },
+            {
+              "client": "ERIKS",
+              "sujet": "Un responsable maintenance pour traverser la transition",
+              "resume": "Un responsable maintenance en renfort, pour piloter les équipes pendant une transition interne.",
+              "url": "/preuves/eriks/"
+            },
+            {
+              "client": "MERSEN",
+              "sujet": "Un automaticien SIEMENS pour démarrer une ligne neuve",
+              "resume": "Un automaticien SIEMENS affecté au démarrage d'une nouvelle ligne, près de Lyon.",
+              "url": "/preuves/mersen/"
+            },
+            {
+              "client": "ALSTEF GROUP",
+              "sujet": "Des chantiers automatisés contrôlés point par point",
+              "resume": "Des intervenants qualifiés pour le contrôle de chantiers automatisés.",
+              "url": "/preuves/alstef-group/"
+            },
+            {
+              "client": "STELLANTIS",
+              "sujet": "Des dizaines de techniciens pour passer à l’électrique",
+              "resume": "Des dizaines d'intervenants sur plusieurs sites en transition vers l'électrique.",
+              "url": "/preuves/stellantis-grand-est/"
+            },
+            {
+              "client": "STELLANTIS",
+              "sujet": "Un parc de fonderie repris en huit semaines",
+              "resume": "Préventif et curatif sur la fonderie et l'usinage.",
+              "url": "/preuves/stellantis-fonderie-sept-fons/"
+            },
+            {
+              "client": "VALEO",
+              "sujet": "Deux usines accompagnées dans leur montée en cadence",
+              "resume": "Lignes de production de 2 sites, techniciens intégrés, dont une équipe samedi-dimanche.",
+              "url": "/preuves/valeo-usines/"
+            },
+            {
+              "client": "GROUPE ATLANTIC",
+              "sujet": "Un renfort devenu une partie de l’équipe",
+              "resume": "Renfort des équipes de maintenance sur les sites de production.",
+              "url": "/preuves/groupe-atlantic/"
+            },
+            {
+              "client": "McCAIN",
+              "sujet": "Un premier contrat en Belgique, préventif et correctif",
+              "resume": "Plusieurs techniciens en maintenance corrective et préventive, premier contrat hors de France.",
+              "url": "/preuves/mccain-belgique/"
+            },
+            {
+              "client": "VEEPEE",
+              "sujet": "Des systèmes intralogistiques au rythme du e-commerce",
+              "resume": "Intralogistique : préparation et expédition des commandes, équipe de 4 techniciens, en 2x8 ou en journée.",
+              "url": "/preuves/veepee-sites-lyon/"
+            },
+            {
+              "client": "ATENA",
+              "sujet": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
+              "resume": "Déchargement portuaire, traitement, séchage, ensachage, 2 techniciens sur site, dont 1 en long terme.",
+              "url": "/preuves/atena-port-la-rochelle/"
+            },
+            {
+              "client": "BAMESA",
+              "sujet": "La maintenance tient pendant que l’équipe recrute",
+              "resume": "Lignes de déroulage et de retraitement de bobines, renfort intégré à l'équipe maintenance.",
+              "url": "/preuves/bamesa/"
+            },
+            {
+              "client": "JACQUET BROSSARD",
+              "sujet": "Une ligne de pain de mie suivie à chaque poste",
+              "resume": "Pétrins, mélangeurs, convoyage, 3x8 (2 techniciens) + 2x8 (1 technicien).",
+              "url": "/preuves/jacquet-brossard/"
+            },
+            {
+              "client": "RECTOR LESAGE",
+              "sujet": "Un technicien au cœur d’une ligne de préfabrication béton",
+              "resume": "Ligne de fabrication de dalles en béton armé, 1 technicien intégré au site.",
+              "url": "/preuves/rector-lesage/"
+            },
+            {
+              "client": "MOTHERSON",
+              "sujet": "Presses à injecter et robots, le préventif d’abord",
+              "resume": "Fabrication globale du site, 2x8.",
+              "url": "/preuves/motherson/"
+            },
+            {
+              "client": "VIGNAL SYSTEMS",
+              "sujet": "Maintenir et monter, de jour comme de nuit",
+              "resume": "Maintenance de production et travaux de montage, 1 technicien de nuit + 1 technicien en 2x8.",
+              "url": "/preuves/vignal-systems/"
+            },
+            {
+              "client": "SALAISON DU MÂCONNAIS",
+              "sujet": "Du broyage à la cuisson, un seul technicien sur la chaîne",
+              "resume": "Broyage, mélange, conditionnement, froid, séchage, cuisson, 1 technicien en 2x8.",
+              "url": "/preuves/salaison-du-maconnais/"
+            },
+            {
+              "client": "JELD-WEN",
+              "sujet": "Des commandes numériques remises en route à chaque équipe",
+              "resume": "Machines à commande numérique de l'atelier de fabrication, 2 techniciens, un par équipe en 2x8.",
+              "url": "/preuves/jeld-wen/"
+            }
+          ]
         },
         {
-          "client": "DANONE",
-          "duree": "18 mois",
-          "titre": "Maintenance en continu des lignes de production",
-          "resume": "Trois techniciens en résidence, astreinte week-end, reprise complète des gammes de préventif sur douze équipements.",
-          "offre": "migen© Résidence",
-          "date": "Février 2026",
-          "image": "/assets/web/team-electric.jpg",
-          "href": "/preuves/danone-lignes-de-production/"
+          "libelle": "Préventif programmé",
+          "besoin": "Le besoin : faire tenir le préventif quand l'exploitation ne s'arrête pas, ou quand les équipes sont en congés.",
+          "cas": [
+            {
+              "client": "AMAZON",
+              "sujet": "Maintenir un centre logistique qui ne ferme jamais",
+              "resume": "Plusieurs dizaines de techniciens, une semaine sur deux, sur un site ouvert nuit et week-end.",
+              "url": "/preuves/amazon-centre-logistique/"
+            },
+            {
+              "client": "AMAZON",
+              "sujet": "Un dispositif rodé, transposé sur un nouveau site",
+              "resume": "Le même dispositif porté sur un second centre logistique, ETZ 2 à Metz.",
+              "url": "/preuves/amazon-nouveau-site/"
+            },
+            {
+              "client": "OGF",
+              "sujet": "Un été entier sans trou dans la maintenance",
+              "resume": "Un technicien mobilisé pour tenir la maintenance pendant les congés d'été.",
+              "url": "/preuves/ogf-arret-estival/"
+            },
+            {
+              "client": "EIFFAGE",
+              "sujet": "Le préventif d’une centrale photovoltaïque en trois techniciens",
+              "resume": "Trois techniciens en préventif sur une installation photovoltaïque de grande envergure.",
+              "url": "/preuves/eiffage/"
+            }
+          ]
         },
         {
-          "client": "JTEKT",
-          "duree": "6 mois",
-          "titre": "Sécuriser la maintenance de ses installations",
-          "resume": "Mise en conformité des consignations et formation des équipes internes aux procédures de sécurité machine.",
-          "offre": "migen© Résidence",
-          "date": "Janvier 2026",
-          "image": "/assets/web/x-auto-ligne.jpg",
-          "href": "/preuves/jtekt/"
+          "libelle": "Montage et démarrage",
+          "besoin": "Le besoin : monter, démarrer ou construire, sans mobiliser l'équipe de maintenance sur le chantier.",
+          "cas": [
+            {
+              "client": "AKTID",
+              "sujet": "Un centre logistique monté en six semaines",
+              "resume": "12 monteurs mécaniciens et 8 engins de levage, 6 semaines de chantier à Clermont-Ferrand.",
+              "url": "/preuves/aktid-centre-logistique/"
+            },
+            {
+              "client": "EATON",
+              "sujet": "Six techniciens pour faire démarrer un parc machines",
+              "resume": "6 techniciens multidisciplinaires pour l'installation et la mise en production d'un parc machines.",
+              "url": "/preuves/eaton-mise-en-production/"
+            },
+            {
+              "client": "SOPREMA",
+              "sujet": "Monter, déplacer, renforcer, chantier après chantier",
+              "resume": "Montage, déplacement de machines et renfort technique sur chantiers.",
+              "url": "/preuves/soprema/"
+            },
+            {
+              "client": "ORTHUS x ECOCEM",
+              "sujet": "De la parcelle au site de R&D, un seul pilote",
+              "resume": "Pilotage complet de la construction d'un site industriel de R&D près de Paris.",
+              "url": "/preuves/orthus-ecocem/"
+            },
+            {
+              "client": "ORTHUS x WASHTEC",
+              "sujet": "Des portiques de lavage montés partout en France",
+              "resume": "Montage des portiques de lavage, réception, levage et raccordements, partout en France.",
+              "url": "/preuves/orthus-washtec/"
+            }
+          ]
         },
         {
-          "client": "GLS",
-          "duree": "4 semaines",
-          "titre": "Maintenance curative de sa plateforme logistique",
-          "resume": "Convoyeurs et trieurs remis en disponibilité avant le pic saisonnier, en horaires décalés pour ne pas couper l’exploitation.",
-          "offre": "migen© Intervention",
-          "date": "Décembre 2025",
-          "image": "/assets/web/ph-hero-raffinerie.jpg",
-          "href": "/preuves/gls-maintenance-curative/"
+          "libelle": "Dépannage",
+          "besoin": "Le besoin : une défaillance qui bloque, ou un parc à remettre en état.",
+          "cas": [
+            {
+              "client": "JOINT LYONNAIS",
+              "sujet": "Réparer plutôt que remplacer, au budget d’une PME",
+              "resume": "Diagnostic et plusieurs solutions chiffrées, adaptées au budget d'une PME.",
+              "url": "/preuves/joint-lyonnais/"
+            },
+            {
+              "client": "SUEZ IWT",
+              "sujet": "Six mois pour remettre en état un site à risque chimique",
+              "resume": "Un technicien électromécanicien mobilisé 6 mois en environnement à risque chimique.",
+              "url": "/preuves/suez-remise-en-etat/"
+            },
+            {
+              "client": "TIMESCOPE",
+              "sujet": "Un parc de casques de réalité virtuelle tenu dans toute la France",
+              "resume": "Maintenance sous contrat d'un parc de casques déployé dans toute la France.",
+              "url": "/preuves/timescope/"
+            },
+            {
+              "client": "TOURNAIRE",
+              "sujet": "Maintenir des machines conçues en interne",
+              "resume": "Ligne de conditionnement, technicien intégré au service maintenance.",
+              "url": "/preuves/tournaire/"
+            },
+            {
+              "client": "LA PANETIÈRE",
+              "sujet": "Un renfort pour que le pain sorte chaque matin",
+              "resume": "Site de production de pains pour un réseau de boulangeries, 1 technicien intégré au site.",
+              "url": "/preuves/la-panetiere/"
+            }
+          ]
         },
         {
-          "client": "ALPINA SAVOIE",
-          "duree": "12 mois",
-          "titre": "Un soudeur-chaudronnier en poste longue durée",
-          "resume": "Reprise de structure et de trémies sur site agroalimentaire, avec contraintes de nettoyabilité.",
-          "offre": "migen© Résidence",
-          "date": "Novembre 2025",
-          "image": "/assets/web/team-grind-front.jpg"
-        },
-        {
-          "client": "SANOFI MARCY",
-          "duree": "3 semaines",
-          "titre": "Mise en conformité d’une installation de dosage",
-          "resume": "Reprise des schémas, analyse de risques et dossier technique complet en environnement pharmaceutique.",
-          "offre": "migen© Bureau d’études",
-          "date": "Octobre 2025",
-          "image": "/assets/web/x-elec-disjoncteur.jpg"
+          "libelle": "Alliances stratégiques",
+          "besoin": "Le besoin : une réponse complète, de l'installation à la GMAO, portée par des partenaires qui travaillent déjà ensemble.",
+          "cas": [
+            {
+              "client": "SAVOYE",
+              "sujet": "Deux automates migrés en deux week-ends, sans arrêter la production",
+              "resume": "Deux machines migrées en deux week-ends chez un exploitant logistique, pendant les arrêts de production.",
+              "url": "/preuves/savoye-migration-automates-norvege/"
+            },
+            {
+              "client": "SAVOYE",
+              "sujet": "Une alliance pour tenir les installations intralogistiques de ses clients",
+              "resume": "Des techniciens Migen formés aux équipements Savoye, en maintenance, montage et rétrofit chez ses clients.",
+              "url": "/preuves/savoye/"
+            },
+            {
+              "client": "DIMOMAINT",
+              "sujet": "La GMAO planifie, nos techniciens interviennent",
+              "resume": "L'intervention terrain Migen associée à la GMAO DimoMaint, pour une maintenance pilotée par la donnée.",
+              "url": "/preuves/dimomaint/"
+            }
+          ]
         }
       ],
-      "avis": {
-        "note": "4,6",
-        "mention": "sur 37 avis Google vérifiés",
-        "verbatims": []
-      }
+      "recents": [
+        "/preuves/atena-port-la-rochelle/",
+        "/preuves/vignal-systems/",
+        "/preuves/jacquet-brossard/",
+        "/preuves/motherson/",
+        "/preuves/savoye-migration-automates-norvege/",
+        "/preuves/dimomaint/",
+        "/preuves/savoye/",
+        "/preuves/suez-remise-en-etat/",
+        "/preuves/danone-lignes-de-production/",
+        "/preuves/gls-maintenance-curative/",
+        "/preuves/vpk/",
+        "/preuves/eriks/",
+        "/preuves/amazon-centre-logistique/"
+      ]
     }
   },
   {
@@ -123,8 +328,8 @@
             "libelle": "techniciens"
           },
           {
-            "valeur": "+120",
-            "libelle": "clients industriels, dont plus de 80 réguliers"
+            "valeur": "+200",
+            "libelle": "clients"
           }
         ]
       },

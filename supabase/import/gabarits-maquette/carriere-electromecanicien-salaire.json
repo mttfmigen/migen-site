@@ -13,7 +13,11 @@
    ],
    "chiffre": {
     "valeur": "10 %",
-    "texte": "des candidats retenus, après un test technique et un entretien"
+    "texte": "des techniciens retenus, après un test technique et un entretien"
+   },
+   "photo": {
+    "src": "/assets/web/mq-2a6115ec9fe0.jpg",
+    "alt": "Technicien migen en intervention"
    }
   },
   "sections": [
@@ -26,7 +30,7 @@
      },
      {
       "valeur": "10 %",
-      "texte": "des candidats retenus après évaluation"
+      "texte": "des techniciens retenus après évaluation"
      },
      {
       "valeur": "4 agences",
@@ -303,7 +307,7 @@
     "cartes": [
      {
       "titre": "Une évaluation honnête",
-      "texte": "Entretien technique et comportemental, 10 % des candidats retenus, résultats partagés avec le client. Être bien évalué, c'est être payé à sa juste valeur."
+      "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats partagés avec le client. Être bien évalué, c'est être payé à sa juste valeur."
      },
      {
       "titre": "De la variété",
@@ -369,7 +373,7 @@
      },
      {
       "question": "Migen recrute-t-elle des électromécaniciens ?",
-      "reponse": "Oui, chaque semaine, partout en France. Nous évaluons chaque candidat en entretien technique et comportemental ; seuls 10 % sont retenus, et un référent accompagne la prise de poste."
+      "reponse": "Oui, chaque semaine, partout en France. Nous évaluons chaque technicien en entretien technique et comportemental ; seuls 10 % sont retenus, et un référent accompagne la prise de poste."
      }
     ]
    },
@@ -381,11 +385,13 @@
     "items": [
      {
       "libelle": "Électromécanicien",
-      "href": "/carriere/electromecanicien/"
+      "href": "/carriere/electromecanicien/",
+      "photo": "/assets/web/mq-056f3c250981.jpg"
      },
      {
       "libelle": "Compétences électromécanicien",
-      "href": "/carriere/electromecanicien/competences/"
+      "href": "/carriere/electromecanicien/competences/",
+      "photo": "/assets/web/mq-948c28bcda08.jpg"
      }
     ]
    }

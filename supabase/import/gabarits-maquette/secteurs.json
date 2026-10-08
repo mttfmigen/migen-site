@@ -1,101 +1,80 @@
 {
   "url": "/secteurs/",
-  "source": "dessin : maquette/accueil-rendu.html, gabarit isSecteur, lignes 6278 à 6364. texte : supabase/import/corpus-analyse.json, produit par scripts/produit-secteurs.mjs.",
+  "titre_h1": "Votre secteur a ses règles. Nos techniciens les connaissent déjà.",
+  "source": "dessin : maquette/rendu/secteurs.html (gabarit 10 Hub de rubrique, 16 écrans au dessin d'une offre, maillage « Par où continuer ? »), rendu par PageOffre. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json là où la capture le reprend. Photos des références identifiées par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {
-    "gabarit": "secteur",
-    "surtitre": "Secteur d'activité",
+    "gabarit": "offre",
+    "pastille": "Maintenance industrielle par secteur",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option.",
+    "appelBouton": "Parler à un chargé d'affaires",
     "chapeau": "Le technicien qui arrive chez vous a déjà travaillé dans un contexte comparable au vôtre. Même type d'équipements, mêmes règles, mêmes urgences. Une organisation commune, des compétences choisies par secteur.",
     "actions": [
       {
         "libelle": "Parler à un chargé d'affaires",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperesSurtitre": "Nos repères dans le secteur",
-    "reperes": [
+    "formulaireHeroTitre": "Parler à un chargé d'affaires",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels, dont plus de 80 réguliers"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, taux horaire homogène partout"
+        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, taux horaire homogène partout"
       }
     ],
-    "enjeuxSurtitre": "Les enjeux du secteur",
-    "enjeuxTitre": "Le prestataire est arrivé lundi. Il a passé trois semaines à comprendre votre procédé avant de toucher une machine.",
-    "enjeux": [
+    "reperesReassurance": [
       {
-        "titre": "Un bon technicien dans la logistique peut être perdu devant une presse de forge.",
-        "texte": "La mécanique est commune, le contexte ne l'est jamais."
+        "valeur": "10 %",
+        "libelle": "des techniciens retenus"
       },
       {
-        "titre": "Les règles ne se devinent pas.",
-        "texte": "Hygiène alimentaire, BPF, zones ATEX, sûreté : la conformité fait partie du travail, pas du décor."
+        "valeur": "Salariés",
+        "libelle": "techniciens Migen, évalués sur la technique et le comportement"
       },
       {
-        "titre": "Le diagnostic est lent quand le procédé est inconnu.",
-        "texte": "Savoir où regarder vaut des heures d'immobilisation."
-      },
-      {
-        "titre": "Vous payez la montée en compétence du prestataire.",
-        "texte": "Et vous la repayez à chaque changement d'intervenant."
+        "valeur": "10",
+        "libelle": "hubs de techniciens en France"
       }
     ],
-    "autresSurtitre": "Les autres secteurs",
-    "autres": [
-      {
-        "libelle": "Agroalimentaire",
-        "href": "/secteurs/agroalimentaire/"
-      },
-      {
-        "libelle": "Équipements logistiques",
-        "href": "/secteurs/logistique/"
-      },
-      {
-        "libelle": "Automobile",
-        "href": "/secteurs/automobile/"
-      },
-      {
-        "libelle": "Pharmaceutique",
-        "href": "/secteurs/pharmaceutique/"
-      },
-      {
-        "libelle": "Aéronautique",
-        "href": "/secteurs/aeronautique/"
-      },
-      {
-        "libelle": "Chimie",
-        "href": "/secteurs/chimie/"
-      },
-      {
-        "libelle": "Nucléaire",
-        "href": "/secteurs/nucleaire/"
-      },
-      {
-        "libelle": "Industrie lourde",
-        "href": "/secteurs/industrie-lourde/"
-      },
-      {
-        "libelle": "Industrie métallique",
-        "href": "/secteurs/industrie-metallique/"
-      },
-      {
-        "libelle": "Menuiserie industrielle",
-        "href": "/secteurs/menuiserie-industrielle/"
-      }
-    ],
-    "appelTitre": "Besoin de savoir, en un appel, si nous avons l'expérience utile à votre usine ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
-      "libelle": "Trouver le bon technicien pour mon usine",
-      "href": "#formulaire"
+    "problemePhoto": null,
+    "brefBande": "Besoin d'un technicien qui connaît déjà votre secteur ?",
+    "brefBouton": {
+      "libelle": "Parler à un chargé d'affaires",
+      "href": "#besoin"
     },
-    "complement": [
+    "brefMention": "Rappel dans l'heure.",
+    "sections": [
+      {
+        "type": "probleme",
+        "variante": "rangee",
+        "punchline": "Le prestataire est arrivé lundi. Il a passé trois semaines à comprendre votre procédé avant de toucher une machine.",
+        "puces": [
+          {
+            "accroche": "Un bon technicien dans la logistique peut être perdu devant une presse de forge.",
+            "texte": "La mécanique est commune, le contexte ne l'est jamais."
+          },
+          {
+            "accroche": "Les règles ne se devinent pas.",
+            "texte": "Hygiène alimentaire, BPF, zones ATEX, sûreté : la conformité fait partie du travail, pas du décor."
+          },
+          {
+            "accroche": "Le diagnostic est lent quand le procédé est inconnu.",
+            "texte": "Savoir où regarder vaut des heures d'immobilisation."
+          },
+          {
+            "accroche": "Vous payez la montée en compétence du prestataire.",
+            "texte": "Et vous la repayez à chaque changement d'intervenant."
+          }
+        ]
+      },
       {
         "type": "offre",
         "lignes": [
@@ -135,8 +114,7 @@
           },
           {
             "prestation": {
-              "accroche": "Rétrofit et mise en conformité chiffrés",
-              "texte": "par notre [bureau d'études](/offres/bureau-etudes/)."
+              "texte": "**Rétrofit et mise en conformité chiffrés par notre bureau d'études.**"
             },
             "benefice": "Vous arbitrez entre entretenir et moderniser sur des chiffres, pas sur une intuition."
           },
@@ -145,11 +123,6 @@
               "texte": "**Un taux horaire homogène partout en France.**"
             },
             "benefice": "Un groupe multi-sites compare ses usines sans corriger les écarts de tarif régional."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Chaque page secteur détaille les équipements couverts et les contraintes propres au terrain : [agroalimentaire](/secteurs/agroalimentaire/), [équipements logistiques](/secteurs/logistique/), [automobile](/secteurs/automobile/), [pharmaceutique](/secteurs/pharmaceutique/), [aéronautique](/secteurs/aeronautique/), [chimie](/secteurs/chimie/), [nucléaire](/secteurs/nucleaire/), [industrie lourde](/secteurs/industrie-lourde/), [industrie métallique](/secteurs/industrie-metallique/), [menuiserie industrielle](/secteurs/menuiserie-industrielle/)."
           }
         ]
       },
@@ -187,7 +160,7 @@
         "puces": [
           {
             "accroche": "Un intervenant dont l'expérience est vérifiable",
-            "texte": "10 % des candidats retenus, évaluation technique et comportementale en entretien, résultats consultables avant que vous décidiez."
+            "texte": "10 % des techniciens retenus, évaluation technique et comportementale en entretien, résultats consultables avant que vous décidiez."
           },
           {
             "accroche": "Aucune sous-traitance en cascade",
@@ -200,49 +173,61 @@
         ]
       },
       {
-        "type": "cta",
-        "question": "Besoin d'un technicien qui connaît déjà votre secteur ?",
-        "bouton": "Parler à un chargé d'affaires",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
-      },
-      {
         "type": "preuves",
         "preuves": [
           {
             "titre": "Deux techniciens en 3x8 sur des lignes de nutrition infantile, agroalimentaire",
             "texte": "site de Steenvoorde",
             "lienLibelle": "Étude de cas DANONE : lignes de production",
-            "lienHref": "/preuves/danone-lignes-de-production/"
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/mq-1ef16ef335a6.jpg"
           },
           {
             "titre": "18 à 25 techniciens sur plusieurs sites pendant la transition vers l'électrique, automobile",
             "texte": "depuis juin 2023",
             "lienLibelle": "Étude de cas STELLANTIS : sites du Grand Est",
-            "lienHref": "/preuves/stellantis-grand-est/"
+            "lienHref": "/preuves/stellantis-grand-est/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
-            "titre": "Préventif d'un centre logistique qui tourne 24 heures sur 24, logistique",
+            "titre": "Préventif d'un centre logistique qui tourne nuit et week-end, logistique",
             "texte": "depuis septembre 2022",
             "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique",
-            "lienHref": "/preuves/amazon-centre-logistique/"
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/x-elec-cablage.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve, matériaux",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
-            "lienHref": "/preuves/mersen/"
+            "lienHref": "/preuves/mersen/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "Électromécanicien habilité risque chimique sur une remise en état de site, traitement des eaux",
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
-            "lienHref": "/preuves/suez-remise-en-etat/"
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
           },
           {
             "titre": "Renfort d'équipes de maintenance sur plusieurs sites de production, confort thermique",
             "texte": "depuis octobre 2024",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes",
-            "lienHref": "/preuves/groupe-atlantic/"
+            "lienHref": "/preuves/groupe-atlantic/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+          },
+          {
+            "titre": "La GMAO planifie, nos techniciens interviennent",
+            "lienLibelle": "DimoMaint",
+            "lienHref": "/preuves/dimomaint/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+          },
+          {
+            "titre": "Une alliance pour tenir les installations intralogistiques de ses clients",
+            "lienLibelle": "Savoye",
+            "lienHref": "/preuves/savoye/",
+            "photo": "/assets/web/mq-948c28bcda08.jpg"
           }
         ]
       },
@@ -274,6 +259,51 @@
             "reponse": "Oui, partout en France depuis 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France. Chaque agence porte l'astreinte de sa zone, et les renforts se mutualisent entre agences pour les gros arrêts."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de savoir, en un appel, si nous avons l'expérience utile à votre usine ?",
+        "bouton": "Trouver le bon technicien pour mon usine",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
+      }
+    ],
+    "pagesLieesTitre": "Par où continuer ?",
+    "pagesLiees": [
+      {
+        "titre": "Bureau d'études",
+        "phrase": "Rétrofit et mise en conformité chiffrés par notre bureau d'études.",
+        "href": "/offres/bureau-etudes/",
+        "photo": "/assets/web/team-duo.jpg"
+      },
+      {
+        "titre": "Agroalimentaire",
+        "phrase": "Chaque page secteur détaille les équipements couverts et les contraintes propres au terrain : agroalimentaire, équipements logistiques, automobile, pharmaceutique, aéronautique, chimie, nucléaire, industrie lourde, industrie métallique, menuiserie industrielle.",
+        "href": "/secteurs/agroalimentaire/",
+        "photo": "/assets/web/x-logistique-entrepot.jpg"
+      },
+      {
+        "titre": "Équipements logistiques",
+        "phrase": "Chaque page secteur détaille les équipements couverts et les contraintes propres au terrain : agroalimentaire, équipements logistiques, automobile, pharmaceutique, aéronautique, chimie, nucléaire, industrie lourde, industrie métallique, menuiserie industrielle.",
+        "href": "/secteurs/logistique/",
+        "photo": "/assets/web/team-grind-close.jpg"
+      },
+      {
+        "titre": "Automobile",
+        "phrase": "Chaque page secteur détaille les équipements couverts et les contraintes propres au terrain : agroalimentaire, équipements logistiques, automobile, pharmaceutique, aéronautique, chimie, nucléaire, industrie lourde, industrie métallique, menuiserie industrielle.",
+        "href": "/secteurs/automobile/",
+        "photo": "/assets/web/x-soudure.jpg"
+      },
+      {
+        "titre": "Pharmaceutique",
+        "phrase": "Chaque page secteur détaille les équipements couverts et les contraintes propres au terrain : agroalimentaire, équipements logistiques, automobile, pharmaceutique, aéronautique, chimie, nucléaire, industrie lourde, industrie métallique, menuiserie industrielle.",
+        "href": "/secteurs/pharmaceutique/",
+        "photo": "/assets/web/team-grind-impact.jpg"
+      },
+      {
+        "titre": "Aéronautique",
+        "phrase": "Chaque page secteur détaille les équipements couverts et les contraintes propres au terrain : agroalimentaire, équipements logistiques, automobile, pharmaceutique, aéronautique, chimie, nucléaire, industrie lourde, industrie métallique, menuiserie industrielle.",
+        "href": "/secteurs/aeronautique/",
+        "photo": "/assets/web/x-mecanique-portrait.jpg"
       }
     ]
   }

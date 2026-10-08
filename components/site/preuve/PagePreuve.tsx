@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 
@@ -22,20 +23,26 @@ import styles from "./PagePreuve.module.css";
  *
  * TROIS ÉCARTS À LA CAPTURE, déclarés :
  *
- *   1. LES PHOTOS NE SONT PAS RENDUES : logo client, photo du héros, photo du
- *      dispositif, vignettes « Pour aller plus loin ». La capture les sert en
- *      `blob:` sans nommer de fichier, et poser une photo de la photothèque
- *      serait une association inventée (CLAUDE.md §13). Le cadre reste nu,
- *      précédent `LienPageLiee` du gabarit 03.
- *   2. LE BOUTON D'ENVOI du formulaire rend « On me rappelle dans l'heure »
- *      (libellé fixe de `FormulaireContact`, composant partagé hors de ce
- *      périmètre) là où la capture écrit le libellé de la page. Même écart,
- *      déjà déclaré et à faire arbitrer, que `PanneauFormulaire` du gabarit 03.
- *   3. LES SURVOLS sont posés depuis les motifs identiques relevés dans
- *      `maquette/site-final-autonome.html` (bouton orange, bouton en verre,
- *      carte qui se soulève) : la capture référence des classes `scp*`/`cs-*`
- *      dont la feuille n'est pas dans le dépôt, l'export autonome sur disque
- *      étant en retard sur la maquette qui a produit les captures.
+ *   1. LES IMAGES (logo client, photo du héros, photo du dispositif, vignettes
+ *      « Pour aller plus loin ») sont rendues QUAND LA DONNÉE LES PORTE. La
+ *      capture les sert en `blob:` sans nommer de fichier : leurs octets sont
+ *      mesurés dans la maquette par `mesure-photos.mjs`, jamais choisis. Sans
+ *      champ, le cadre reste nu et la pastille du logo n'est pas rendue. Les
+ *      cadres du héros et des vignettes portent `position: relative` en plus
+ *      de la capture, exigé par `next/image` en mode `fill` (CLAUDE.md §6) ;
+ *      la photo du dispositif est un `<img>` dans le flux, comme la capture,
+ *      parce que sa proportion naturelle fait la hauteur du cadre.
+ *   2. LE FORMULAIRE est `FormulaireContact`, partagé, hors de ce périmètre.
+ *      Le libellé du bouton d'envoi (`libelleEnvoi`) et sa géométrie (module
+ *      CSS, `.carteFormulaire`) sont ceux de la capture. Restent deux ajouts
+ *      du composant, absents de la capture : la mention RGPD (33 px, exigée au
+ *      point de collecte, articles 13 et 14, même écart que `PanneauFormulaire`
+ *      du gabarit 03) et le choix de l'indicatif devant le téléphone (que la
+ *      capture du gabarit 03 porte, celle-ci non).
+ *   3. LES SURVOLS sont ceux de la source du gabarit, `MigenCas`, embarquée
+ *      dans `maquette/site-final-autonome.html` : attributs `style-hover`
+ *      relevés élément par élément (bouton orange, bouton téléphone, carte
+ *      qui se soulève), relus par `verification-preuve.tsx`.
  *
  * Composant SERVEUR. Le fil d'Ariane et le maillage du cocon restent en props,
  * exigés par CLAUDE.md §4 bien qu'absents de la capture : mêmes raisons que
@@ -148,8 +155,52 @@ const BOUTON_TEL: CSSProperties = {
   whiteSpace: "nowrap",
   transition: "background var(--tr),transform var(--tr)",
 };
-/* Le cadre de la photo du héros. La photo n'est pas nommée : il reste nu. */
+/* La pastille blanche du logo client, et le logo lui-même. `filter` vaut
+   `none`, ou l'inversion des logos clairs (`logoInverse`). */
+const LOGO_PASTILLE: CSSProperties = {
+  display: "inline-flex",
+  alignItems: "center",
+  height: 34,
+  padding: "0 14px",
+  borderRadius: 999,
+  background: "#fff",
+  border: "1px solid var(--line)",
+};
+const LOGO_HAUTEUR = 18;
+const LOGO_LARGEUR_MAX = 110;
+const LOGO: CSSProperties = {
+  height: LOGO_HAUTEUR,
+  width: "auto",
+  maxWidth: LOGO_LARGEUR_MAX,
+  objectFit: "contain",
+  display: "block",
+};
+const LOGO_INVERSE = "invert(1) hue-rotate(180deg)";
+/* La photo dans son cadre, héros et dispositif ; la vignette n'a pas le
+   contraste. `fill` pose déjà largeur et hauteur à 100 %. */
+const PHOTO: CSSProperties = {
+  objectFit: "cover",
+  filter: "saturate(var(--sat)) contrast(1.05)",
+};
+/* `display`, `verticalAlign` : les valeurs de la capture (calculées), que le
+   preflight de Tailwind remplace par `block` et `middle` sur toute image. Posée
+   sur la ligne de base d'un cadre à `line-height: normal`, la photo laisse
+   dessous la descente de la ligne (7 px mesurés sur Bamesa, cadre de 576,5 px) :
+   c'est elle qui fixe la hauteur de la section quand le tableau est plus court. */
+const PHOTO_DANS_LE_FLUX: CSSProperties = {
+  width: "100%",
+  height: "100%",
+  display: "inline",
+  verticalAlign: "baseline",
+  ...PHOTO,
+};
+const VIGNETTE: CSSProperties = {
+  objectFit: "cover",
+  filter: "saturate(var(--sat))",
+};
+/* Le cadre de la photo du héros. Sans photo, il reste nu. */
 const HERO_CADRE: CSSProperties = {
+  position: "relative",
   borderRadius: 32,
   overflow: "hidden",
   height: 480,
@@ -314,7 +365,6 @@ const REPONSE_GRILLE: CSSProperties = {
   gap: 14,
 };
 const REPONSE_SOMBRE: CSSProperties = {
-  gridColumn: "span 2",
   position: "relative",
   overflow: "hidden",
   borderRadius: 28,
@@ -333,7 +383,6 @@ const REPONSE_LUEUR: CSSProperties = {
 };
 const REPONSE_VERRE: CSSProperties = {
   ...CARTE_VERRE,
-  gridColumn: "span 1",
   position: "relative",
   overflow: "hidden",
   borderRadius: 28,
@@ -397,6 +446,8 @@ const DISPOSITIF_CADRE: CSSProperties = {
   overflow: "hidden",
   minHeight: 420,
   background: "var(--ph)",
+  // Calculé dans la capture ; le site hérite 1.5 du preflight. Voir la photo.
+  lineHeight: "normal",
 };
 const DISPOSITIF_TABLE: CSSProperties = {
   ...CARTE_VERRE,
@@ -448,11 +499,11 @@ const RESULTAT_TITRE: CSSProperties = {
   color: "#fff",
   margin: "0 0 40px",
 };
-const RESULTAT_GRILLE: CSSProperties = {
-  display: "grid",
-  gap: 32,
-  gridTemplateColumns: "repeat(3,minmax(0,1fr))",
-};
+/* Les colonnes suivent le nombre de résultats, quatre au plus : `resGrid:
+   cols(Math.min(p.results.length, 4), 32)` dans MigenCas (AKTID en a 2,
+   Joint Lyonnais 4). */
+const RESULTAT_GRILLE: CSSProperties = { display: "grid", gap: 32 };
+const RESULTAT_COLONNES_MAX = 4;
 const RESULTAT_ITEM: CSSProperties = {
   borderTop: "2px solid var(--acc)",
   paddingTop: 22,
@@ -623,6 +674,7 @@ const LOIN_CARTE: CSSProperties = {
   transition: "transform var(--tr)",
 };
 const LOIN_CADRE: CSSProperties = {
+  position: "relative",
   height: 150,
   background: "var(--ph)",
   overflow: "hidden",
@@ -694,12 +746,26 @@ function Objectif({ objectif, rang }: { objectif: ObjectifPreuve; rang: number }
   );
 }
 
-function CarteReponse({ carte, rang }: { carte: CartePreuve; rang: number }) {
+/**
+ * La largeur de chaque carte, `bento` de MigenCas : la première en prend deux,
+ * la dernière comble sa rangée (trois colonnes si elle y est seule, deux s'il
+ * en reste deux), les autres une. `cs-w2` (deux colonnes sous 1000 px) va à la
+ * première, et à la dernière quand le nombre de cartes est pair.
+ */
+function largeurCarte(rang: number, total: number): { colonnes: number; largeDeux: boolean } {
+  const reste = (total + 1) % 3;
+  const derniere = rang === total - 1 && rang > 0;
+  const colonnes = rang === 0 ? 2 : derniere && reste === 1 ? 3 : derniere && reste === 2 ? 2 : 1;
+  return { colonnes, largeDeux: rang === 0 || (derniere && total % 2 === 0) };
+}
+
+function CarteReponse({ carte, rang, total }: { carte: CartePreuve; rang: number; total: number }) {
   const sombre = rang === 0;
+  const { colonnes, largeDeux } = largeurCarte(rang, total);
   return (
     <div
-      className={sombre ? styles.carteSombre : undefined}
-      style={sombre ? REPONSE_SOMBRE : REPONSE_VERRE}
+      className={largeDeux ? styles.largeDeux : undefined}
+      style={{ ...(sombre ? REPONSE_SOMBRE : REPONSE_VERRE), gridColumn: `span ${colonnes}` }}
     >
       {sombre ? <div aria-hidden="true" style={REPONSE_LUEUR} /> : null}
       <div style={REPONSE_CORPS}>
@@ -786,15 +852,18 @@ export default function PagePreuve({
   const plusLoin = (contenu.plusLoin ?? []).filter((l) => cibleSure(l.href));
 
   return (
-    <div className="mg-site">
-      <main style={{ paddingTop: 96 }}>
-        {filAriane ? (
-          <section
-            style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 40px 0" }}
-          >
-            {filAriane}
-          </section>
-        ) : null}
+    // `data-gabarit` : le marqueur que `verification-preuve.tsx` cherche sur la
+    // page SERVIE. Sans lui, une page /preuves/ rendue par un autre gabarit
+    // passait inaperçue (28 pages le 08/10).
+    // `--sec` à 120px : `.mgc-root{--sec:120px}` dans MigenCas, que la règle
+    // mobile `.mg-site{--sec:64px}` n'atteint donc pas dans la maquette.
+    <div
+      className={`mg-site ${styles.racine}`}
+      data-gabarit="etude-de-cas"
+      style={{ "--sec": "120px" } as CSSProperties}
+    >
+      <main style={{ paddingTop: 62 }}>
+        {filAriane}
 
         {/* ----------------------------------- 0 · « Étude de cas · héros » */}
 
@@ -806,9 +875,21 @@ export default function PagePreuve({
                   <span aria-hidden="true" style={PASTILLE_PUCE} />
                   Étude de cas
                 </span>
-                {/* La capture ajoute ici le LOGO du client, servi en `blob:`
-                    sans nommer de fichier : la pastille blanche reste absente
-                    plutôt que de porter un logo inventé. Trou déclaré. */}
+                {contenu.logo ? (
+                  <span style={LOGO_PASTILLE}>
+                    <Image
+                      src={contenu.logo}
+                      alt={contenu.client}
+                      width={LOGO_LARGEUR_MAX}
+                      height={LOGO_HAUTEUR}
+                      priority
+                      style={{
+                        ...LOGO,
+                        filter: contenu.logoInverse ? LOGO_INVERSE : "none",
+                      }}
+                    />
+                  </span>
+                ) : null}
                 <span style={CLIENT}>{contenu.client}</span>
               </div>
 
@@ -839,11 +920,20 @@ export default function PagePreuve({
             </div>
 
             <div style={{ position: "relative" }}>
-              {/* La photo du héros n'est pas nommée par la capture : le cadre
-                  reste nu (précédent LienPageLiee, CLAUDE.md §13). */}
-              <div aria-hidden="true" style={HERO_CADRE} />
+              <div aria-hidden={contenu.photoHero ? undefined : true} style={HERO_CADRE}>
+                {contenu.photoHero ? (
+                  <Image
+                    src={contenu.photoHero}
+                    alt="Intervention migen sur site client"
+                    fill
+                    priority
+                    sizes="(max-width: 900px) 100vw, 520px"
+                    style={PHOTO}
+                  />
+                ) : null}
+              </div>
               {contenu.heroFiche?.length ? (
-                <div style={HERO_FICHE}>
+                <div className={styles.ficheFlottante} style={HERO_FICHE}>
                   {contenu.heroFiche.map((ligne, rang) => (
                     <FicheLigne
                       key={ligne.libelle}
@@ -884,7 +974,7 @@ export default function PagePreuve({
         {contenu.situationTitre ? (
           <section style={SECTION}>
             <div className="mg-r2" style={SITUATION_GRILLE}>
-              <div style={COLONNE_COLLANTE}>
+              <div className={styles.collante} style={COLONNE_COLLANTE}>
                 <div style={KICKER}>01 · La situation</div>
                 <h2 style={SITUATION_TITRE}>{contenu.situationTitre}</h2>
               </div>
@@ -920,9 +1010,14 @@ export default function PagePreuve({
             <div style={LARGEUR}>
               <div style={KICKER}>02 · Notre réponse</div>
               <h2 style={TITRE2}>Ce que nous avons mis en place</h2>
-              <div className="mg-rmulti" style={REPONSE_GRILLE}>
+              <div className={styles.bento} style={REPONSE_GRILLE}>
                 {reponse.map((carte, rang) => (
-                  <CarteReponse key={carte.titre} carte={carte} rang={rang} />
+                  <CarteReponse
+                    key={carte.titre}
+                    carte={carte}
+                    rang={rang}
+                    total={reponse.length}
+                  />
                 ))}
               </div>
             </div>
@@ -940,11 +1035,13 @@ export default function PagePreuve({
                 {/* Le rail orange derrière les pastilles. `mg-rail` le retire
                     quand la grille se replie, convention de la charte. */}
                 <div className="mg-rail" aria-hidden="true" style={DEROULE_RAIL} />
+                {/* `stepGrid: cols(p.steps.length, p.steps.length > 5 ? 14 : 20)`
+                    dans MigenCas : l'écart se resserre à six étapes. */}
                 <div
-                  className="mg-rmulti"
+                  className={styles.etapes}
                   style={{
                     display: "grid",
-                    gap: 20,
+                    gap: etapes.length > 5 ? 14 : 20,
                     gridTemplateColumns: `repeat(${etapes.length},minmax(0,1fr))`,
                   }}
                 >
@@ -953,7 +1050,7 @@ export default function PagePreuve({
                       key={etape.titre}
                       style={{ position: "relative", paddingRight: 8 }}
                     >
-                      <span aria-hidden="true" style={ETAPE_PASTILLE}>
+                      <span aria-hidden="true" className={styles.pastille} style={ETAPE_PASTILLE}>
                         {String(rang + 1).padStart(2, "0")}
                       </span>
                       <div style={ETAPE_TITRE}>{etape.titre}</div>
@@ -971,8 +1068,28 @@ export default function PagePreuve({
         {dispositif.length > 0 ? (
           <section style={SECTION}>
             <div className="mg-r2" style={DISPOSITIF_GRILLE}>
-              {/* Photo non nommée par la capture : cadre nu, trou déclaré. */}
-              <div aria-hidden="true" style={DISPOSITIF_CADRE} />
+              <div
+                aria-hidden={contenu.photoDispositif ? undefined : true}
+                style={DISPOSITIF_CADRE}
+              >
+                {contenu.photoDispositif ? (
+                  // `<img>` et non `next/image` : dans la maquette, la photo
+                  // est DANS le flux, et sa proportion naturelle fixe la
+                  // hauteur du cadre quand le tableau est plus court (Eiffage,
+                  // Bamesa). `fill` la sort du flux (le cadre retombait à
+                  // 420px, mesuré à 14 % d'écart) et la donnée ne porte pas les
+                  // dimensions qu'exige l'autre mode. Mêmes octets que la
+                  // maquette, servis tels quels, sous la ligne de flottaison.
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={contenu.photoDispositif}
+                    alt="Technicien migen en mission"
+                    loading="lazy"
+                    decoding="async"
+                    style={PHOTO_DANS_LE_FLUX}
+                  />
+                ) : null}
+              </div>
               <div>
                 <div style={KICKER}>04 · Fiche mission</div>
                 <h2 style={{ ...TITRE2, margin: "0 0 26px" }}>Le dispositif</h2>
@@ -1005,7 +1122,13 @@ export default function PagePreuve({
               <div style={{ position: "relative" }}>
                 <div style={KICKER}>05 · Résultat</div>
                 <h2 style={RESULTAT_TITRE}>Le résultat</h2>
-                <div className="mg-rmulti" style={RESULTAT_GRILLE}>
+                <div
+                  className={styles.resultats}
+                  style={{
+                    ...RESULTAT_GRILLE,
+                    gridTemplateColumns: `repeat(${Math.min(resultats.length, RESULTAT_COLONNES_MAX)},minmax(0,1fr))`,
+                  }}
+                >
                   {resultats.map((resultat) => (
                     <div key={resultat.titre} style={RESULTAT_ITEM}>
                       <span aria-hidden="true" style={RESULTAT_COCHE}>
@@ -1032,7 +1155,7 @@ export default function PagePreuve({
         {contenu.besoinTitre ? (
           <section id="cas-form" style={BESOIN_SECTION}>
             <div className="mg-r2" style={BESOIN_GRILLE}>
-              <div style={COLONNE_COLLANTE}>
+              <div className={styles.collante} style={COLONNE_COLLANTE}>
                 <div style={KICKER}>Votre besoin</div>
                 <h2 style={BESOIN_TITRE}>{contenu.besoinTitre}</h2>
                 {(contenu.besoinProse ?? []).map((paragraphe) => (
@@ -1041,7 +1164,7 @@ export default function PagePreuve({
                   </p>
                 ))}
                 {contenu.besoinTuiles?.length ? (
-                  <div className="mg-r2" style={BESOIN_TUILES}>
+                  <div style={BESOIN_TUILES}>
                     {contenu.besoinTuiles.map((tuile) => (
                       <div key={tuile.titre} style={BESOIN_TUILE}>
                         <div style={TUILE_TITRE}>{tuile.titre}</div>
@@ -1051,9 +1174,10 @@ export default function PagePreuve({
                   </div>
                 ) : null}
               </div>
-              <div style={FORMULAIRE_CARTE}>
+              <div className={styles.carteFormulaire} style={FORMULAIRE_CARTE}>
                 <div style={FORMULAIRE_TITRE}>{contenu.bouton}</div>
-                <FormulaireContact formulaire={formulaire} />
+                {/* MigenCas répète `p.ctaLabel` sur le bouton d'envoi. */}
+                <FormulaireContact formulaire={formulaire} libelleEnvoi={contenu.bouton} />
               </div>
             </div>
           </section>
@@ -1074,8 +1198,17 @@ export default function PagePreuve({
                     className={styles.cartePlusLoin}
                     style={LOIN_CARTE}
                   >
-                    {/* Vignette non nommée par la capture : cadre nu. */}
-                    <div aria-hidden="true" style={LOIN_CADRE} />
+                    <div aria-hidden="true" style={LOIN_CADRE}>
+                      {lien.photo ? (
+                        <Image
+                          src={lien.photo}
+                          alt=""
+                          fill
+                          sizes="(max-width: 700px) 100vw, 380px"
+                          style={VIGNETTE}
+                        />
+                      ) : null}
+                    </div>
                     <div style={LOIN_CORPS}>
                       <span style={LOIN_SURTITRE}>{lien.surtitre}</span>
                       <div style={LOIN_RANGEE}>

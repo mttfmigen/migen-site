@@ -18,6 +18,8 @@
  * dans le HTML, lisibles sans JavaScript.
  */
 
+import styles from "./ChiffresCroissance.module.css";
+
 export interface Chiffre {
   /** La valeur, mise en forme, par exemple « +120 ». */
   valeur: string;
@@ -52,7 +54,7 @@ const TERTIAIRE: Chiffre = { valeur: "+120", libelle: "collaborateurs" };
 
 const BAS: readonly [Chiffre, Chiffre] = [
   { valeur: "+120", libelle: "collaborateurs" },
-  { valeur: "+120", libelle: "clients industriels" },
+  { valeur: "+200", libelle: "clients industriels" },
 ];
 
 /** Carte de verre, identique sur les trois. */
@@ -169,6 +171,7 @@ export default function ChiffresCroissance({
           </div>
 
           <div
+            className={styles.basLarge}
             style={{
               ...CARTE,
               gridColumn: "span 2",

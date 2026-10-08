@@ -99,7 +99,7 @@ export default function PageMetier({
 
   return (
     <div className="mg-site">
-      <main style={{ paddingTop: 96 }}>
+      <main style={{ paddingTop: 62 }}>
         <section style={{ ...LARGEUR, padding: "24px 40px 0" }}>
           {filAriane}
         </section>

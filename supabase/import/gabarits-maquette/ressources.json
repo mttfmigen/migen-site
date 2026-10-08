@@ -1,0 +1,350 @@
+{
+  "url": "/ressources/",
+  "titre_h1": "Guide maintenance industrielle",
+  "source": "maquette/rendu/ressources.html, transcrite mot pour mot (gabarit générique édito de la maquette)",
+  "phrases_retirees": [
+    "Dépannage, contrats, professionnel intégré sur site : partout en France depuis 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, pour le tissu industriel français.",
+    "Trois sources : les questions récurrentes en intervention, les demandes de nos clients réguliers, plus de 80, et les sujets très mal couverts en ligne. "
+  ],
+  "contenu": {
+    "gabarit": "editorial",
+    "blocs": [],
+    "edito": {
+      "format": "Ressources",
+      "lecture": "6 min de lecture",
+      "ariane": [
+        {
+          "label": "Accueil",
+          "href": "/"
+        },
+        {
+          "label": "Guide maintenance industrielle"
+        }
+      ],
+      "chapeau": "Un guide maintenance industrielle ne vaut que s'il fait gagner du temps en atelier. Cette page rassemble nos guides sur la [maintenance industrielle](/) : articles de fond, fiches, process et livres blancs, écrits par des techniciens qui interviennent tous les jours en usine.",
+      "intro": [
+        {
+          "type": "p",
+          "texte": "Pas de théorie hors sol : chaque page part d'une panne, d'un planning ou d'un budget réel, et va droit à l'essentiel. Tout est en accès libre, sans inscription à une newsletter ni création de compte."
+        },
+        {
+          "type": "appel",
+          "texte": "Une question qu'aucun guide ne règle ? Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30, au"
+        }
+      ],
+      "sections": [
+        {
+          "titre": "Cinq rayons, un objectif : agir",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "Le savoir utile change selon le moment : comprendre, décider ou faire. La bibliothèque se range en cinq familles, chacune avec son format et son usage."
+            },
+            {
+              "type": "bento",
+              "colonnes": 2,
+              "items": [
+                {
+                  "titre": "Ressources : Articles",
+                  "texte": "Comprendre un sujet de fond : préventif ou correctif, GMAO, indicateurs, digitalisation. Le socle, expliqué sans jargon, avec des exemples d'atelier.",
+                  "href": "/ressources/articles/"
+                },
+                {
+                  "titre": "Ressources : Fiches pratiques",
+                  "texte": "Passer à l'action : la mise en place d'un plan de maintenance industrielle, l'organisation d'un service, la préparation d'un arrêt technique. Le titre annonce le geste, la fiche liste ce qu'il y a à réaliser, la FAQ lève les doutes.",
+                  "href": "/ressources/fiches-pratiques/"
+                },
+                {
+                  "titre": "Ressources : Fiches techniques",
+                  "texte": "Aller au composant : automate, variateur, pièce d'usure, robot. La matière que les techniciens s'échangent, au-delà du manuel constructeur, pour prolonger la durée de vie des équipements.",
+                  "href": "/ressources/fiches-techniques/"
+                },
+                {
+                  "titre": "Ressources : Process",
+                  "texte": "Voir comment nous travaillons : sélection en entretien, préparation des interventions, restitution. Nos coulisses, documentées telles quelles.",
+                  "href": "/ressources/process/"
+                },
+                {
+                  "titre": "Ressources : Livres blancs",
+                  "texte": "Trancher une décision d'entreprise : Externaliser sa maintenance (PDF), rétrofit ou remplacement. Des grilles complètes, à lire avant d'engager un budget.",
+                  "href": "/ressources/livres-blancs/"
+                },
+                {
+                  "titre": "L'actualité du terrain",
+                  "texte": "La bibliothèque s'enrichit au rythme des questions de nos clients : sécurité, planification, coût d'un arrêt de production. Revenez, ou demandez un sujet."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "titre": "Ce que recouvre un guide maintenance industrielle",
+          "blocs": [
+            {
+              "type": "photo",
+              "image": "/assets/web/x-robotique.jpg"
+            },
+            {
+              "type": "p",
+              "texte": "Avant la méthode, les fondamentaux : une maintenance efficace commence par des mots précis. Les livres sur la maintenance donnent la théorie ; une bonne fiche pose une définition, montre un exemple en conditions réelles, chiffre l'enjeu économique."
+            },
+            {
+              "type": "cartes",
+              "items": [
+                {
+                  "titre": "Les types de maintenance",
+                  "texte": "Maintenance préventive, maintenance corrective, maintenance curative : le socle. S'y ajoutent la maintenance palliative et la maintenance conditionnelle : chaque type de maintenance répond à un contexte, avec ses niveaux et ses définitions associées."
+                },
+                {
+                  "titre": "La fonction maintenance",
+                  "texte": "Son organisation, sa place dans l'entreprise, son rôle pour le fonctionnement optimal des lignes. L'importance de la maintenance se mesure en heures gagnées, pas en discours."
+                },
+                {
+                  "titre": "La gestion au quotidien",
+                  "texte": "GMAO, planification, stock de pièces, achat de pièces au bon moment. La gestion de la maintenance est une discipline économique au service de la production, autant qu'une affaire d'outils."
+                }
+              ]
+            },
+            {
+              "type": "panneau"
+            }
+          ]
+        },
+        {
+          "titre": "Par où commencer, selon votre urgence",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "Un responsable maintenance qui subit les pannes ne lit pas comme un dirigeant qui arbitre un budget. Quatre parcours, dans l'ordre recommandé."
+            },
+            {
+              "type": "etapes",
+              "items": [
+                {
+                  "titre": "Vous subissez les pannes",
+                  "texte": "Commencez par les fondamentaux : maintenance corrective, maintenance curative, coût d'un arrêt. Puis la marche à suivre pour réduire la casse et développer le préventif."
+                },
+                {
+                  "titre": "Vous structurez un service",
+                  "texte": "Lisez la fonction maintenance, puis les indicateurs par équipement : temps moyen entre pannes, disponibilité de vos actifs, tableaux de bord. Mesurer d'abord grâce à trois chiffres, optimiser ensuite."
+                },
+                {
+                  "titre": "Vous modernisez",
+                  "texte": "Digitalisation de la maintenance, informatique industrielle, capteurs IoT, intelligence artificielle. Le numérique trie ce qui rapporte de ce qui brille : analyse vibratoire et big data se jugent sur pièces."
+                },
+                {
+                  "titre": "Vous envisagez d'externaliser",
+                  "texte": "Le livre blanc Externaliser sa maintenance sans perdre la main pose le cadre : périmètre, mise en œuvre, réversibilité, indicateurs de contrôle, le nécessaire pour garder la main. À lire avant tout appel d'offres."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "titre": "Les thèmes couverts, une vue d'ensemble",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "La bibliothèque suit les questions que nos +200 clients posent réellement : un panorama complet, d'une définition qui manque à une stratégie complète."
+            },
+            {
+              "type": "tableau",
+              "entetes": [
+                "Thème",
+                "Ce que vous y trouvez",
+                "Premier lecteur"
+              ],
+              "lignes": [
+                [
+                  "Types et niveaux de maintenance",
+                  "Définitions, arbres de décision, comparatifs économiques",
+                  "Toute l'équipe"
+                ],
+                [
+                  "GMAO et digitalisation",
+                  "Choisir l'outil, connecter les machines, exploiter la donnée en information utile",
+                  "Responsable maintenance"
+                ],
+                [
+                  "Indicateurs",
+                  "MTBF, MTTR, TRS, analyse des dérives : ce que chaque point gagné améliore",
+                  "Direction de site"
+                ],
+                [
+                  "Sécurité",
+                  "Plan de prévention, consignation, permis de feu : l'obligation légale et la pratique",
+                  "Toute l'entreprise"
+                ],
+                [
+                  "Méthodes",
+                  "TPM, total productive maintenance, 5S, AMDEC, maintenance autonome",
+                  "Service maintenance"
+                ],
+                [
+                  "Économie",
+                  "Coût d'un arrêt, budget, économies du préventif, arbitrages d'achat",
+                  "Direction"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "titre": "Des auteurs qui pratiquent ce qu'ils écrivent",
+          "blocs": [
+            {
+              "type": "photo",
+              "image": "/assets/web/ph-technicien.jpg"
+            },
+            {
+              "type": "p",
+              "texte": "Ce qui rend un guide de la maintenance différent tient en un mot : l'auteur. Une signature humaine : personne n'écrit ici sur la maintenance sans faire de maintenance."
+            },
+            {
+              "type": "cartes",
+              "items": [
+                {
+                  "titre": "Écrits par le terrain",
+                  "texte": "Chaque guide a un auteur qui intervient chez nos clients : dépanneur, automaticien, chargé d'affaires. Des professionnels en exercice, plus de 120 collaborateurs qui nourrissent cette matière."
+                },
+                {
+                  "titre": "Vérifiés sur machines",
+                  "texte": "Un conseil qui n'a pas fonctionné en usine ne se publie pas. Les exemples viennent d'interventions réelles, rendues anonymes."
+                },
+                {
+                  "titre": "Tenus à jour",
+                  "texte": "Un guide pratique de maintenance industrielle vieillit vite. Une méthode évolue, la page aussi, de manière continue : la culture maintenance se transmet mieux quand elle colle à l'actualité des technologies."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "titre": "Du guide à l'intervention, sans rupture",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "Lire prépare, agir répare. Quand la page ne suffit plus, la même maison fournit les techniciens : c'est la différence avec le blog d'un éditeur de logiciel."
+            },
+            {
+              "type": "cartes",
+              "items": [
+                {
+                  "titre": "Un diagnostic pour cadrer",
+                  "texte": "Dites la situation, on vous répond en pratique : diagnostic gratuit à réaliser sur site, conclusions écrites, décision chez vous. Le premier contact n'engage à rien d'autre."
+                },
+                {
+                  "titre": "Des techniciens évalués",
+                  "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats partagés avec vous. La sélection fait la qualité du conseil comme du dépannage."
+                },
+                {
+                  "titre": "Une couverture nationale",
+                  "texte": ""
+                }
+              ]
+            },
+            {
+              "type": "citation",
+              "texte": "Le jour où il faut des bras en plus des idées, une [entreprise maintenance industrielle](/offres/) prend le relais : mêmes équipes, même exigence, une seule façon de travailler. Nos guides restent utiles à double titre : les intégrer à la formation de votre personnel, et parler le même langage que nos intervenants."
+            }
+          ]
+        },
+        {
+          "titre": "Questions fréquentes",
+          "blocs": [
+            {
+              "type": "question",
+              "question": "L'accès aux pages est-il vraiment libre ?"
+            },
+            {
+              "type": "p",
+              "texte": "Oui : pas de formulaire, pas de compte, aucune donnée à laisser, confidentialité préservée. Nous préférons être jugés sur la qualité du contenu plutôt que sur le volume de contacts collectés."
+            },
+            {
+              "type": "question",
+              "question": "Puis-je diffuser ces contenus à mon équipe ?"
+            },
+            {
+              "type": "p",
+              "texte": "Oui, avec mention de la source : partagez les liens en interne, les fiches s'impriment également pour l'affichage en atelier. Au-delà du droit de courte citation dans vos propres documents, merci de nous contacter d'abord."
+            },
+            {
+              "type": "question",
+              "question": "Ces pages remplacent-elles une formation ?"
+            },
+            {
+              "type": "p",
+              "texte": "Non : elles préparent, complètent, rafraîchissent, du bac pro MEI au BTS. Se former demande de réaliser des travaux pratiques sur machines, avec un formateur, pour garantir le geste juste. À ce titre, nos pages veulent être un support avant et après la session, pas un substitut."
+            },
+            {
+              "type": "question",
+              "question": "Comment choisissez-vous les sujets ?"
+            },
+            {
+              "type": "p",
+              "texte": "À ce propos, proposez le vôtre : s'il est utile à d'autres, il monte dans la file. De cette manière, la bibliothèque reste collée au réel."
+            },
+            {
+              "type": "question",
+              "question": "Publiez-vous des retours d'interventions réelles ?"
+            },
+            {
+              "type": "p",
+              "texte": "Oui, rendus anonymes : le contexte, le diagnostic, la solution, ce que cela a changé. Nos études de cas nommées, SUEZ, FDJ, MERSEN, vivent sur nos [références clients](/preuves/), avec l'accord des intéressés."
+            },
+            {
+              "type": "question",
+              "question": "Que faire si ma panne est en cours ?"
+            },
+            {
+              "type": "p",
+              "texte": "Ne lisez pas : une bibliothèque n'est pas un service client, appelez le 04 78 33 72 05. L'urgence se traite au téléphone, et l'astreinte couvre les nuits et les week-ends. Le guide attendra ; vos équipements et votre production, non."
+            },
+            {
+              "type": "citation",
+              "texte": "À lire aussi : [suivi de la maintenance](/ressources/articles/suivi-de-la-maintenance/)"
+            },
+            {
+              "type": "lienCarte",
+              "titre": "Demander un diagnostic maintenance",
+              "href": "/contact/"
+            }
+          ]
+        }
+      ],
+      "liees": [
+        {
+          "famille": "Ressources",
+          "titre": "Ressources : Articles",
+          "href": "/ressources/articles/"
+        },
+        {
+          "famille": "Article",
+          "titre": "Coût d'un arrêt de production",
+          "href": "/ressources/articles/cout-arret-de-production/"
+        },
+        {
+          "famille": "Article",
+          "titre": "Digitalisation maintenance",
+          "href": "/ressources/articles/digitalisation-maintenance/"
+        },
+        {
+          "famille": "Article",
+          "titre": "Gestion des déchets industriels",
+          "href": "/ressources/articles/gestion-des-dechets/"
+        },
+        {
+          "famille": "Article",
+          "titre": "Gestion de maintenance assistée par ordinateur",
+          "href": "/ressources/articles/gmao/"
+        },
+        {
+          "famille": "Article",
+          "titre": "IA maintenance : ce qui change vraiment",
+          "href": "/ressources/articles/ia-maintenance/"
+        }
+      ],
+      "formulaire": "cocon-ressources-"
+    }
+  }
+}

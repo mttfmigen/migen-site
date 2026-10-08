@@ -53,34 +53,20 @@
   color: var(--acc);
 }
 
-/* Les cartes-photos « Pour aller plus loin » :
-   style-hover="transform:translateY(-3px)" (carte à image 140px). */
-.carteLien:hover,
-.carteLien:focus-visible {
-  transform: translateY(-3px);
-}
-
-/* Les plis des questions : pas de marqueur natif, le « + » pivote en croix. */
-.pli > summary::-webkit-details-marker {
-  display: none;
-}
-.pli[open] .pliPlus {
-  transform: rotate(45deg);
-  background: var(--acc);
-  color: #fff;
-}
-
 /* ------------------------------------------------------- points de rupture
-   La capture est un rendu de bureau : les règles d'écran étroit de la
-   maquette (classes ck-*) n'y sont pas sérialisées. Les ruptures ci-dessous
-   suivent celles que le site applique déjà aux autres gabarits
-   (app/globals.css : 1000, 900 et 640px), à défaut de valeur relevable. */
+   Ceux des règles `ck-*` de `MigenCarriere.dc.html` (lignes 25 à 27), relues
+   le 08/10 : 1000, 900 et 620 px. La grille des cartes « duo » et les rangs du
+   tableau n'y portent aucune classe : ils gardent leurs deux colonnes jusqu'au
+   téléphone, comme le rendu de la maquette à 390 px. */
 
 @media (max-width: 1000px) {
   .bento {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
-  .bento > .travee3 {
+  .bento > * {
+    grid-column: span 1 !important;
+  }
+  .bento > .w2 {
     grid-column: span 2 !important;
   }
   .etapes,
@@ -92,37 +78,38 @@
 @media (max-width: 900px) {
   .deuxColonnes {
     grid-template-columns: minmax(0, 1fr) !important;
-    gap: 36px !important;
+    gap: 30px !important;
   }
   .colleEnHaut {
     position: static !important;
   }
+  .flottante {
+    position: static !important;
+    margin-top: 12px;
+    max-width: none !important;
+  }
 }
 
-@media (max-width: 640px) {
-  .bento {
-    grid-template-columns: minmax(0, 1fr) !important;
-  }
-  .bento > * {
-    grid-column: span 1 !important;
-  }
+@media (max-width: 620px) {
+  .bento,
   .etapes,
   .stats,
-  .duoCartes,
   .champs {
     grid-template-columns: minmax(0, 1fr) !important;
   }
+  /* ÉCART VOULU : la maquette garde ici `.cs-w2 { span 2 }` dans une grille
+     d'une colonne. La deuxième piste implicite écrase les cartes 02, 04, 06 à
+     zéro de large : leur texte disparaît à 390 px. Une carte par ligne. */
+  .bento > *,
+  .bento > .w2 {
+    grid-column: auto !important;
+  }
   .champs > * {
-    grid-column: span 1 !important;
+    grid-column: auto !important;
   }
-  .rangTableau {
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 6px !important;
-  }
-  .flottante {
-    position: static !important;
-    margin-top: 14px;
-    max-width: none !important;
+  /* `.ck-pad` : le panneau sombre « Postuler ». */
+  .pad {
+    padding: 36px 22px !important;
   }
 }
 
@@ -143,4 +130,43 @@
 .porteFocus:has(:focus-visible) {
   outline: 2px solid var(--acc);
   outline-offset: 3px;
+}
+
+/* Le panneau des cases de la mobilité, déplié sous son sélecteur. Il couvre les
+   deux colonnes du formulaire (la cellule est la colonne de droite : 200 % plus
+   l'écart de 12 px), une seule sur téléphone. Fond, filet et ombre : ceux des
+   cartes de verre de la capture, sur le blanc de la carte du formulaire. */
+.panneauMobilite {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + 6px);
+  right: 0;
+  width: calc(200% + 12px);
+  padding: 16px;
+  border-radius: var(--rad-s);
+  border: 1px solid var(--line);
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04), 0 22px 50px -24px rgba(0, 0, 0, 0.35);
+}
+@media (max-width: 620px) {
+  .panneauMobilite {
+    width: 100%;
+  }
+}
+
+/* Texte lu par les lecteurs d'écran seulement (le résumé du sélecteur). */
+.lu {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Le texte d'exemple des champs (« 2 », « 25 000 € brut annuel ») : celui du
+   navigateur, comme la maquette (#757575 mesuré dans Chrome), et non le
+   `currentcolor` à 50 % de la base de Tailwind (#8d8d8c). */
+.champs ::placeholder {
+  color: revert;
 }

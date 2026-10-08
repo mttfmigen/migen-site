@@ -30,6 +30,8 @@
         "valeur": "E-commerce, logistique"
       }
     ],
+    "logo": "/assets/clients/mq-ff81dfbb55c7.svg",
+    "photoHero": "/assets/web/mq-c5856badee79.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -129,6 +131,7 @@
         "valeur": "4 techniciens"
       }
     ],
+    "photoDispositif": "/assets/web/mq-17e2f3bce95f.jpg",
     "resultats": [
       {
         "titre": "Une reprise bouclée en un mois",
@@ -164,7 +167,7 @@
         "texte": "Proposée en option sur les parcs sensibles, au 04 78 33 72 05."
       },
       {
-        "titre": "10 % des candidats retenus",
+        "titre": "10 % des techniciens retenus",
         "texte": "Sélection par entretien technique et entretien comportemental, siège en région lyonnaise."
       },
       {
@@ -176,22 +179,26 @@
       {
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
-        "href": "/preuves/"
+        "href": "/preuves/",
+        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
-        "href": "/secteurs/logistique/"
+        "href": "/secteurs/logistique/",
+        "photo": "/assets/web/mq-e6322efcd358.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "ALSTEF Group : contrôle de chantier",
-        "href": "/preuves/alstef-group/"
+        "href": "/preuves/alstef-group/",
+        "photo": "/assets/web/mq-339d39e2a674.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
-        "href": "/preuves/savoye/"
+        "href": "/preuves/savoye/",
+        "photo": "/assets/web/mq-056f3c250981.jpg"
       }
     ]
   }

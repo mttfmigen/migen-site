@@ -24,7 +24,7 @@ export default function PanneauOffres({ hrefDiagnostic }: PanneauOffresProps) {
         {/* Le bouton de la barre ouvre le panneau au lieu de naviguer : c'est
             donc le sur-titre qui porte le lien vers la page pilier. */}
         <SurTitre>
-          <Link href="/offres/" className={s.lienAccent}>
+          <Link href="/offres/" className={s.lienSurTitre}>
             Nos offres
           </Link>
         </SurTitre>

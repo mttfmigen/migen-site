@@ -103,8 +103,27 @@ function styleMaquette(cle: string): string {
 }
 
 // ------------------------------------------------- le texte porté mot pour mot
+
+// L'adresse du siège. LA MAQUETTE ET LE RENDU DIVERGENT VOLONTAIREMENT, même
+// modèle que `app/mentions-legales/verification-mentions-legales.tsx` : la
+// maquette écrit encore Limonest, et Mehdi a tranché le 07/10 au soir « le
+// siège est à Écully ». Les deux côtés sont vérifiés : le jour où la maquette
+// est corrigée, cette exception tombe et le dit.
+assert.equal(
+  phraseMaquette("rue des Vergers"),
+  "migen©, 1 rue des Vergers, Bâtiment 3, 69760 Limonest.",
+  "la maquette ne porte plus Limonest : l'exception du 07/10 n'a plus d'objet, la retirer",
+);
+assert.ok(
+  texteRendu.includes("migen©, 129 chemin du Moulin Carron, 69130 Écully."),
+  "le siège d'Écully (décision de Mehdi du 07/10) n'est pas rendu",
+);
+assert.ok(
+  !texteRendu.includes("Limonest"),
+  "Limonest est rendu : le siège est à Écully depuis la décision du 07/10",
+);
+
 for (const cle of [
-  "rue des Vergers",
   "Via les candidatures",
   "Teamtailor",
   "donnée sensible",
@@ -286,7 +305,11 @@ for (const interdit of [
   "incontournable",
   "découvrez",
   "Découvrez",
-  "200 clients",
+  // « +200 clients », sans jamais préciser « réguliers » : règle validée par le
+  // client (design_handoff_migen_site/README.md). Ni la maquette ni de capture
+  // ne portent « +200 » sur cette page : il n'y est donc pas exigé.
+  "clients réguliers",
+  "80 réguliers",
   "5 agences",
   "sous 24 h",
   "sous 48 h",

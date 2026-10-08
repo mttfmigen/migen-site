@@ -17,7 +17,7 @@
     "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "Des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
         "valeur": "+ 120",
@@ -153,7 +153,7 @@
           },
           {
             "accroche": "Le niveau annoncé du technicien",
-            "texte": "10 % des candidats retenus, évaluation technique et comportementale en entretien, résultats consultables avant que vous décidiez."
+            "texte": "10 % des techniciens retenus, évaluation technique et comportementale en entretien, résultats consultables avant que vous décidiez."
           },
           {
             "accroche": "La transparence du périmètre",
@@ -172,48 +172,62 @@
             "titre": "Renfort habilité risque chimique pour une remise en état de site, traitement des eaux",
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
-            "lienHref": "/preuves/suez-remise-en-etat/"
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "photo": "/assets/web/x-tech-portrait.jpg",
+            "logo": "/assets/clients/mq-89100525ef89.svg"
           },
           {
             "titre": "Technicien affecté en continu à la fiabilité des équipements de production",
             "texte": "site proche de Paris",
             "lienLibelle": "Étude de cas FDJ : site proche de Paris",
-            "lienHref": "/preuves/fdj/"
+            "lienHref": "/preuves/fdj/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
-            "lienHref": "/preuves/mersen/"
+            "lienHref": "/preuves/mersen/",
+            "photo": "/assets/web/x-elec-cablage.jpg",
+            "logo": "/assets/clients/mq-eb9461b85e59.svg"
           },
           {
             "titre": "Responsable maintenance intégré pour piloter un service en transition, industrie",
             "texte": "troisième trimestre 2025",
             "lienLibelle": "Étude de cas ERIKS",
-            "lienHref": "/preuves/eriks/"
+            "lienHref": "/preuves/eriks/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "logo": "/assets/clients/mq-441fc873c0d9.svg"
           },
           {
             "titre": "Renfort de l'équipe maintenance pendant les congés d'été",
             "texte": "un technicien sur site, été 2025",
             "lienLibelle": "Étude de cas OGF : arrêt estival",
-            "lienHref": "/preuves/ogf-arret-estival/"
+            "lienHref": "/preuves/ogf-arret-estival/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg",
+            "logo": "/assets/clients/ogf.png"
           },
           {
             "titre": "Technicien polyvalent sur un parc hétérogène à forte cadence, papier et emballage",
             "texte": "2025 à 2026",
             "lienLibelle": "Étude de cas VPK : maintenance de site",
-            "lienHref": "/preuves/vpk/"
+            "lienHref": "/preuves/vpk/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
           },
           {
             "titre": "Renfort des équipes de maintenance sur plusieurs sites de production, confort thermique",
             "texte": "1 à 3 techniciens, depuis octobre 2024",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes",
-            "lienHref": "/preuves/groupe-atlantic/"
+            "lienHref": "/preuves/groupe-atlantic/",
+            "photo": "/assets/web/mq-752675f1ed93.jpg",
+            "logo": "/assets/clients/groupe-atlantic.png"
           },
           {
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
             "lienLibelle": "Autoliv",
-            "lienHref": "/preuves/autoliv/"
+            "lienHref": "/preuves/autoliv/",
+            "photo": "/assets/web/mq-056f3c250981.jpg",
+            "logo": "/assets/clients/mq-a4d5eb645ce5.svg"
           }
         ]
       },
@@ -222,7 +236,7 @@
         "questions": [
           {
             "question": "Combien coûte la sous-traitance de la maintenance ?",
-            "reponse": ""
+            "reponse": "La mission est chiffrée sur devis, sous forme de taux horaire homogène dans toute la France. Trois éléments font le montant : le profil requis et ses spécialités, le rythme de présence (temps plein ou partagé) et les contraintes de vos installations. Tout est présenté ligne par ligne, pour une comparaison honnête avec un poste interne."
           },
           {
             "question": "Sur quelle durée doit-on s'engager ?",

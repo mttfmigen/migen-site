@@ -52,14 +52,13 @@ const CAPSULE: CSSProperties = {
   whiteSpace: "nowrap",
 };
 
-/* Trois repères sous le titre. La maquette écrivait « 5 agences en France » et
-   « +200 clients industriels » : deux chiffres que le contrat de projet
-   corrige, quatre agences et plus de 120 clients. Voir le détail dans
-   `app/contact/page.tsx`. */
+/* Trois repères sous le titre. La maquette écrivait « 5 agences en France »,
+   que le contrat de projet corrige en quatre agences : voir le détail dans
+   `app/contact/page.tsx`. « +200 clients industriels » est rendu mot pour mot. */
 const REPERES: readonly { valeur: string; libelle: string }[] = [
   { valeur: "4", libelle: "agences" },
-  { valeur: "10 %", libelle: "des candidats retenus" },
-  { valeur: "+120", libelle: "clients industriels" },
+  { valeur: "10 %", libelle: "des techniciens retenus" },
+  { valeur: "+200", libelle: "clients industriels" },
 ];
 
 export default function Ouverture() {

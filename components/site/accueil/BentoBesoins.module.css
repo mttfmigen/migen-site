@@ -1,56 +1,10 @@
+/* scp6 de la maquette : bouton principal du panneau déplié. Le reste de la
+   géométrie (tuile ouverte en tête sur toute la largeur, pastille, « + »
+   pivoté) est porté en style calculé, comme dans le getter `needs` de la
+   maquette ; les replis sous 1000 et 640 px sont dans `app/globals.css`
+   (`.mg-bento`). */
 .ctaOffre:hover,
 .ctaOffre:focus-visible {
   filter: brightness(0.93);
-}
-
-/* ÉTAT DÉPLIÉ DE LA TUILE, au-dessus de 1000px.
- *
- * `app/globals.css` ne traite `[data-open="1"]` que SOUS 1000px, où la grille
- * passe à deux colonnes puis à une. Au-dessus, la maquette fait autre chose :
- * elle recalcule le style de la tuile ouverte à chaque bascule et lui donne
- * deux colonnes sur deux rangées, un fond plein au lieu du verre, une ombre,
- * et elle la remonte en tête de grille. Sans ces règles, le panneau déplié
- * s'écrasait sur une seule colonne : le contenu était là, illisible.
- *
- * Porté en CSS et non en style calculé : le composant est serveur sauf pour la
- * bascule, et l'état tient déjà dans `data-open`, que la maquette utilise elle
- * aussi. Rien à recalculer en JavaScript.
- */
-@media (min-width: 1001px) {
-  .grille > [data-open="1"] {
-    grid-column: span 2;
-    grid-row: span 2;
-    /* En tête : une tuile dépliée au milieu d'une grille pousse ses voisines
-       hors de l'écran, et le lecteur perd ce qu'il venait d'ouvrir. */
-    order: -1;
-    /* `!important` : la tuile porte son fond de repos en style en ligne, venu
-       des données de la maquette, et un style en ligne bat toute règle de
-       feuille. Même raison que pour la pastille plus bas. */
-    background: var(--card) !important;
-    border-color: var(--gbd) !important;
-    box-shadow:
-      0 1px 1px rgba(0, 0, 0, 0.04),
-      0 26px 60px -36px rgba(0, 0, 0, 0.34);
-  }
-}
-
-/* Le « + » devient une croix quand la tuile est ouverte, comme sur les
-   dépliants de la FAQ, où `globals.css` fait déjà exactement cela. */
-.signe {
-  transition:
-    transform var(--tr),
-    background var(--tr),
-    color var(--tr);
-}
-/* `!important` à contrecœur, et pour la même raison que `.cx-plus` et
-   `.g3-plus` dans `app/globals.css`, qui s'écrivent déjà ainsi : la pastille
-   porte son apparence de repos en style EN LIGNE, venu des données de la
-   maquette, et un style en ligne bat toute règle de feuille. Sans la marque,
-   la croix ne tournerait jamais. */
-/* SEULE LA ROTATION change. La maquette garde la pastille dans ses couleurs de
-   repos quand la tuile est ouverte : la passer en orange plein était une
-   extrapolation, faite par analogie avec la FAQ, où la maquette le fait
-   vraiment. Ici elle ne le fait pas. */
-[data-open="1"] .signe {
-  transform: rotate(45deg) !important;
+  color: #fff;
 }

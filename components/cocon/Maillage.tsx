@@ -1,5 +1,6 @@
 import ListeMaillage, { type GroupeLiens } from "@/components/cocon/ListeMaillage";
 import { maillage } from "@/lib/contenu";
+import { estEditorial } from "@/types/editorial";
 import type { LignePage } from "@/types/lignes";
 
 /**
@@ -29,6 +30,11 @@ const PAGES_AVEC_MAILLAGE = new Set([
 
 export default async function Maillage({ page }: { page: LignePage }) {
   if (!PAGES_AVEC_MAILLAGE.has(page.path)) return null;
+  /* 08/10 : ces trois pages portent leurs « Pages liées » mot pour mot de la
+     capture, dans leur vue `edito`, rendue par `PageEditoriale` à sa place
+     (avant le formulaire `#cx-form`, l'ordre de la capture). Le maillage
+     calculé ne s'y ajoute pas ; il ne reste qu'un repli si la vue manque. */
+  if (estEditorial(page.contenu) && page.contenu.edito) return null;
   const { parent, enfants, soeurs } = await maillage(page);
 
   /*

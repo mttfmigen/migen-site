@@ -174,7 +174,7 @@ export default function PanneauPreuves() {
           ))}
         </div>
         <Link
-          href="/realisations/"
+          href="/preuves/"
           className={s.ctaPanneau}
           style={{
             position: "relative",

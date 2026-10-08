@@ -1,313 +1,280 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import Objections from "@/components/site/blocs/Objections";
-import TexteRiche, { estCheminInterne } from "@/components/site/blocs/TexteRiche";
-import { ANCRE_FORMULAIRE } from "@/components/site/blocs/habillage";
-import type { CarteRessource, ContenuRessource } from "@/types/ressource";
+import { FilArianeVue } from "@/components/cocon/FilAriane";
+import type { ContenuRessource, LectureRessource } from "@/types/ressource";
+import type { Question } from "@/types/contenu";
 
-import CorpsRessource from "./CorpsRessource";
+import CorpsRessource, { EnLigne } from "./CorpsRessource";
 import styles from "./Ressource.module.css";
-import {
-  BOUTON_ACTION,
-  BOUTON_SECONDAIRE,
-  CHAPEAU,
-  COLONNE_COLLANTE,
-  FIN,
-  GRILLE_LECTURE,
-  HAUT_DE_PAGE,
-  LARGEUR_LECTURE,
-  LAVIS,
-  PASTILLE,
-  PUCE,
-  SECTION_CORPS,
-  SECTION_ENTETE,
-  SURTITRE,
-  SURTITRE_FIN,
-  SURTITRE_GRIS,
-  SURTITRE_LAVIS,
-  TEXTE_FIN,
-  TITRE1,
-  TITRE_FIN,
-  VERRE,
-} from "./habillage";
+import * as H from "./habillage";
 
 /**
- * Le gabarit RESSOURCE de la maquette, lignes 6502 à 6800 de
- * `maquette/accueil-rendu.html`. Il sert les 35 pages feuilles de
- * `/ressources/` : articles, fiches pratiques, fiches techniques, livres
- * blancs, process.
+ * Le gabarit « 01 Article et fiche » : `MigenRessource.dc.html`, branche
+ * `isArticle`, rendu contre `maquette/rendu/ressources--<rayon>--<page>.html`.
  *
- * LES SEPT SECTIONS DE LA MAQUETTE, et où elles sont rendues :
+ * Cinq sections, et seulement elles, dans l'ordre de la capture :
+ *   Ressources · héros, Article · corps, Questions fréquentes, À lire
+ *   ensuite, Ressources · appel.
  *
- *   1. l'en-tête de document (6504) : ici, pastille de format, H1, chapeau ;
- *   2. la variante ARTICLE (6525) : ici, la grille colonne de lecture plus
- *      colonne collante, et les cartes de `contenu.cartes` ;
- *   3. la variante MÉTIER (6556) : hors de ce gabarit, voir plus bas ;
- *   4. la variante PRATIQUE (6631) : dans `CorpsRessource`, motif de la carte
- *      numérotée, appliqué aux listes ordonnées du corpus ;
- *   5. la variante PROCESS (6671) : son bandeau en lavis orange est ici, sous
- *      l'en-tête, et porte la phrase de rappel du corpus ;
- *   6. la variante TECHNIQUE (6724) : dans `CorpsRessource`, motif du barème,
- *      appliqué aux tableaux du corpus ;
- *   7. l'appel de fin (6780) : ici, à l'identique.
+ * CE QUE LA PAGE NE REND PLUS, et pourquoi. Le fil d'Ariane du cocon, le
+ * formulaire de bas de page et la grille de maillage que la route passe en
+ * `filAriane` et `maillage` : la capture n'en porte aucun. Son fil est DANS le
+ * héros (rendu ici par `FilArianeVue`, la rangée du site, sur le libellé du
+ * rayon et le titre court de la maquette), son maillage est « Sur le même
+ * sujet », son appel final mène à `/contact/`. Les deux props restent typées
+ * pour que la route compile ; rien ne les monte, donc rien ne les exécute.
  *
- * La maquette n'en montre qu'une variante à la fois, choisie par le format de
- * la fiche. Ici le motif est choisi par le TYPE DE BLOC, en place : les 35
- * pages portent toutes une liste ordonnée ET un tableau, et les plier à une
- * variante unique aurait jeté l'une des deux, c'est-à-dire du texte que le
- * client a écrit et payé.
- *
- * LA VARIANTE MÉTIER N'EST PAS PORTÉE ICI, pour deux raisons. Elle décrit un
- * poste, et les pages de métier vivent sous `/carriere/`, déjà servies par
- * `components/site/metier/`. Et son panneau de rémunération (ligne 6586) est
- * une grille de montants, que le contrat de portage refuse.
- *
- * Composant SERVEUR. Aucun état, aucun JavaScript : la page part en HTML
- * complet, filets et cartes compris.
+ * Composant SERVEUR. Le seul comportement est natif : `<details name>` pour la
+ * FAQ à une question ouverte (consigne du README), ancres pour le sommaire.
  */
 
-/** Une carte de la colonne collante, dans l'un de ses quatre motifs. */
-function Carte({ carte }: { carte: CarteRessource }) {
-  const surtitre = carte.accent
-    ? SURTITRE_LAVIS
-    : carte.lienHref || carte.points
-      ? SURTITRE
-      : SURTITRE_GRIS;
+/** `p.short` de la maquette : 46 signes, puis une ellipse. */
+function titreCourt(titre: string): string {
+  return titre.length > 46 ? `${titre.slice(0, 46)}…` : titre;
+}
 
-  const dedans = (
-    <>
-      <div style={{ ...surtitre, marginBottom: carte.points ? 14 : 10 }}>
-        {carte.surtitre}
-      </div>
-      {carte.titre ? (
-        <div
-          style={{
-            font: "600 15.5px/1.35 var(--ft)",
-            letterSpacing: "-.022em",
-            marginBottom: 8,
-          }}
-        >
-          <TexteRiche texte={carte.titre} />
-        </div>
-      ) : null}
-      {carte.texte ? (
-        <p style={{ font: "400 14px/1.6 var(--fb)", color: "var(--ink1)", margin: 0 }}>
-          <TexteRiche texte={carte.texte} />
-        </p>
-      ) : null}
-      {carte.points ? (
-        <div style={{ display: "grid", gap: 10 }}>
-          {carte.points.map((point, i) => (
-            <div
-              key={`${i}-${point.slice(0, 20)}`}
-              style={{
-                display: "flex",
-                gap: 10,
-                font: "400 14px/1.55 var(--fb)",
-                color: "var(--ink1)",
-              }}
-            >
-              <span aria-hidden="true" style={{ color: "var(--acc)", flex: "none" }}>
-                {PUCE}
-              </span>
-              <span>
-                <TexteRiche texte={point} />
-              </span>
-            </div>
-          ))}
-        </div>
-      ) : null}
-      {carte.lienLibelle ? (
-        <span
-          style={{
-            display: "block",
-            marginTop: 8,
-            font: "600 13px var(--fb)",
-            color: "var(--acc)",
-          }}
-        >
-          {carte.lienLibelle}
+/**
+ * La carte du livre blanc, à la place de la photo.
+ *
+ * ÉCART DÉCLARÉ : la maquette simule l'envoi (« C’est envoyé. ») sans rien
+ * envoyer, et aucun PDF n'existe. Ici le dessin est celui de la capture, mais
+ * le bouton mène au formulaire de contact réel. Les champs n'ont pas de `name` :
+ * rien de ce qui est saisi ne part dans l'adresse.
+ */
+function CarteLivre() {
+  return (
+    <div id="mr-dl" style={H.CARTE_LIVRE}>
+      <div style={H.SURTITRE_LIVRE}>{H.COPIE.livreSurtitre}</div>
+      <div style={H.TITRE_LIVRE}>{H.COPIE.livreTitre}</div>
+      <form action={H.CONTACT} style={{ display: "grid", gap: 12 }}>
+        <input
+          type="email"
+          placeholder={H.COPIE.livreEmail}
+          aria-label={H.COPIE.livreEmail}
+          style={H.CHAMP}
+        />
+        <input
+          type="text"
+          placeholder={H.COPIE.livreEntreprise}
+          aria-label={H.COPIE.livreEntreprise}
+          style={H.CHAMP}
+        />
+        <button type="submit" style={H.BOUTON_LIVRE}>
+          {H.COPIE.livreBouton}
+        </button>
+        <span style={{ font: "400 12px var(--fb)", color: "var(--ink4)" }}>
+          {H.COPIE.livreMention}
         </span>
-      ) : null}
-    </>
+      </form>
+    </div>
   );
+}
 
-  const habillage = carte.accent
-    ? { ...LAVIS, padding: "24px 26px" }
-    : { ...VERRE, padding: "26px 28px" };
+function Questions({ questions }: { questions: Question[] }) {
+  return (
+    <section data-screen-label="Questions fréquentes" style={H.SECTION_SUITE}>
+      <div className={styles.faq} style={H.FAQ_CARTE}>
+        <Image src={H.FAQ_PHOTO} alt="" fill sizes="1120px" style={{ objectFit: "cover" }} />
+        <div aria-hidden="true" style={H.FAQ_VOILE} />
+        <div style={{ position: "relative" }}>
+          <div style={H.SURTITRE}>{H.COPIE.faqSurtitre}</div>
+          <h2 style={{ ...H.TITRE_SECTION, margin: "0 0 24px", color: "#fff" }}>
+            {H.COPIE.faqTitre}
+          </h2>
+          <div style={H.FAQ_LISTE}>
+            {questions.map((q, i) => (
+              <details
+                key={q.question}
+                name="faq-ressource"
+                open={i === 0}
+                className={styles.question}
+                style={{ borderTop: i === 0 ? "none" : H.FAQ_FILET }}
+              >
+                <summary style={H.FAQ_QUESTION}>
+                  {q.question}
+                  <span aria-hidden="true" className={styles.plus} style={H.FAQ_PLUS}>
+                    +
+                  </span>
+                </summary>
+                <p style={H.FAQ_REPONSE}>{q.reponse}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
-  // Un lien EXTERNE n'est pas rendu en lien : la carte reste une carte. Même
-  // règle que `TexteRiche`, et pour la même raison, un contenu éditorial n'a
-  // pas à pouvoir expédier le visiteur ailleurs sous l'autorité du domaine.
-  if (carte.lienHref && estCheminInterne(carte.lienHref)) {
-    return (
-      <Link href={carte.lienHref} className={styles.carteLien} style={habillage}>
-        {dedans}
-      </Link>
-    );
-  }
-  return <div style={habillage}>{dedans}</div>;
+function Lectures({
+  lectures,
+  rayon,
+}: {
+  lectures: LectureRessource[];
+  rayon?: ContenuRessource["rayon"];
+}) {
+  const libelle = (rayon && H.RAYONS[rayon]?.libelle) || "ressources";
+  return (
+    <section data-screen-label="À lire ensuite" style={H.SECTION_SUITE}>
+      <div style={H.LECTURES_TETE}>
+        <div>
+          <div style={H.SURTITRE}>{H.COPIE.lecturesSurtitre}</div>
+          <h2 style={H.TITRE_SECTION}>{H.COPIE.lecturesTitre}</h2>
+        </div>
+        <Link href={rayon ? `/ressources/${rayon}/` : "/ressources/"} style={H.LECTURES_LIEN}>
+          {`Tous les ${libelle.toLowerCase()} →`}
+        </Link>
+      </div>
+      <div style={H.LECTURES_GRILLE}>
+        {lectures.map((lecture) => {
+          const format = H.RAYONS[lecture.href.split("/")[2] as keyof typeof H.RAYONS]?.format;
+          return (
+            <Link key={lecture.href} href={lecture.href} style={H.LECTURE}>
+              <div style={H.LECTURE_PHOTO}>
+                <Image
+                  src={lecture.image}
+                  alt=""
+                  fill
+                  sizes="(max-width: 900px) 100vw, 380px"
+                  style={{ objectFit: "cover", filter: "saturate(var(--sat,.55))" }}
+                />
+              </div>
+              <div style={H.LECTURE_TEXTE}>
+                <span style={H.LECTURE_FORMAT}>
+                  {`${format ?? "Ressource"} · ${lecture.minutes} min`}
+                </span>
+                <span style={H.LECTURE_TITRE}>{lecture.titre}</span>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function Appel() {
+  return (
+    <section id="mr-cta" data-screen-label="Ressources · appel" style={H.SECTION_APPEL}>
+      <div className={styles.deux} style={H.APPEL}>
+        <div aria-hidden="true" style={H.APPEL_LUEUR} />
+        <div style={{ position: "relative" }}>
+          <div style={H.APPEL_SURTITRE}>{H.COPIE.appelSurtitre}</div>
+          <h2 className={styles.appelTitre} style={H.APPEL_TITRE}>
+            {H.COPIE.appelTitre}
+          </h2>
+          <p style={H.APPEL_TEXTE}>{H.COPIE.appelTexte}</p>
+        </div>
+        <div style={H.APPEL_BOUTONS}>
+          <Link href={H.CONTACT} style={H.APPEL_BOUTON}>
+            {H.COPIE.decrire}
+          </Link>
+          <a href={H.TELEPHONE.href} style={H.APPEL_TELEPHONE}>
+            {H.TELEPHONE.libelle}
+          </a>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export interface ProprietesPageRessource {
   titre: string;
   contenu: ContenuRessource;
-  /**
-   * Fil d'Ariane et maillage interne, fournis par la route.
-   *
-   * POURQUOI EN PROPS : ce sont des composants SERVEUR ASYNCHRONES, qui
-   * interrogent la base. Les appeler ici rendrait ce fichier asynchrone à son
-   * tour pour deux éléments de chrome, et il ne serait plus montable depuis un
-   * contrôle hors base.
-   */
+  /** Passés par la route, non rendus : voir l'en-tête du fichier. */
   filAriane?: ReactNode;
   maillage?: ReactNode;
 }
 
-export default function PageRessource({
-  titre,
-  contenu,
-  filAriane,
-  maillage,
-}: ProprietesPageRessource) {
-  const { cartes, corps, questions } = contenu;
-  const avecCartes = !!cartes && cartes.length > 0;
-  const avecCorps = !!corps && corps.length > 0;
+export default function PageRessource({ titre, contenu }: ProprietesPageRessource) {
+  const { rayon, chapo = [], parties = [], questions = [], aLire = [] } = contenu;
+  const rayonVu = rayon ? H.RAYONS[rayon] : undefined;
+  const livre = rayon === "livres-blancs";
+
+  /* Un paragraphe du chapo vidé par le contrat (phrase interdite retirée,
+     déclarée dans `retraits`) reste dans la donnée en chaîne vide : c'est la
+     sortie de `maquette-ressource.ts`. Dans la maquette il remplissait la
+     colonne, plus haute que la photo, et le titre tenait le haut de la rangée.
+     Sans lui la colonne devient la plus courte et le centrage de la grille
+     ferait descendre le titre (29 px sur indicateurs-maintenance) : elle
+     s'ancre alors en haut, la photo reste centrée sur la rangée. */
+  const paragraphes = chapo.filter(Boolean);
+  const colonneTexte = paragraphes.length < chapo.length ? H.COLONNE_ANCREE : undefined;
+
+  const etapes = [
+    { titre: "Ressources", path: "/ressources/" },
+    ...(rayonVu ? [{ titre: rayonVu.libelle, path: `/ressources/${rayon}/` }] : []),
+    { titre: titreCourt(titre), path: null },
+  ];
 
   return (
     <div className="mg-site">
-      <main style={{ paddingTop: HAUT_DE_PAGE }}>
-        {filAriane ? (
-          <section style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 40px 0" }}>
-            {filAriane}
-          </section>
-        ) : null}
-
-        {/* 1. L'en-tête de document. */}
-        <section style={SECTION_ENTETE}>
-          <div style={{ maxWidth: LARGEUR_LECTURE }}>
-            {contenu.categorie ? (
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  marginBottom: 18,
-                  flexWrap: "wrap",
-                }}
-              >
-                <span style={PASTILLE}>{contenu.categorie}</span>
-              </div>
-            ) : null}
-            <h1 style={TITRE1}>{titre}</h1>
-            {contenu.chapeau ? (
-              <p style={CHAPEAU}>
-                <TexteRiche texte={contenu.chapeau} />
-              </p>
-            ) : null}
+      <main style={{ paddingTop: H.HAUT_DE_PAGE }}>
+        <section data-screen-label="Ressources · héros" style={H.SECTION_HEROS}>
+          <div style={{ marginBottom: 26 }}>
+            <FilArianeVue etapes={etapes} />
           </div>
-        </section>
-
-        {/* 5. Le bandeau en lavis de la variante process, qui porte le rappel. */}
-        {contenu.rappel ? (
-          <section style={SECTION_CORPS}>
-            <div
-              style={{
-                ...LAVIS,
-                display: "flex",
-                alignItems: "center",
-                gap: 16,
-                padding: "18px 24px",
-                flexWrap: "wrap",
-                maxWidth: LARGEUR_LECTURE,
-              }}
-            >
-              <span
-                style={{
-                  font: "400 14.5px/1.6 var(--fb)",
-                  color: "var(--ink1)",
-                  flex: 1,
-                  minWidth: 240,
-                }}
-              >
-                <TexteRiche texte={contenu.rappel} />
-              </span>
-            </div>
-          </section>
-        ) : null}
-
-        {/* 2, 4 et 6. La colonne de lecture, ses cartes de procédure et ses
-            barèmes, et la colonne collante. */}
-        {avecCorps || avecCartes ? (
-          <section style={SECTION_CORPS}>
-            <div
-              className="mg-r2"
-              style={
-                avecCartes
-                  ? GRILLE_LECTURE
-                  : { ...GRILLE_LECTURE, gridTemplateColumns: `minmax(0,${LARGEUR_LECTURE}px)` }
-              }
-            >
-              {avecCorps ? <CorpsRessource blocs={corps} /> : <div />}
-              {avecCartes ? (
-                <aside style={COLONNE_COLLANTE}>
-                  {cartes.map((carte, i) => (
-                    <Carte key={`${i}-${carte.surtitre}`} carte={carte} />
-                  ))}
-                </aside>
+          <div className={styles.deux} style={H.GRILLE_HEROS}>
+            <div style={colonneTexte}>
+              {rayonVu ? (
+                <span style={H.PASTILLE}>
+                  <span style={H.POINT} />
+                  {rayonVu.format}
+                </span>
               ) : null}
-            </div>
-          </section>
-        ) : null}
-
-        {/* La foire aux questions, par le bloc déjà porté du gabarit de vente. */}
-        {questions && questions.length > 0 ? (
-          <Objections section={{ type: "objections", questions }} />
-        ) : null}
-
-        {/* 7. L'appel de fin. */}
-        <section style={{ padding: "var(--sec) 0 var(--sec)" }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
-            <div
-              data-reveal=""
-              style={{
-                ...VERRE,
-                borderRadius: 36,
-                padding: "44px 48px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: 40,
-                flexWrap: "wrap",
-              }}
-            >
-              <div>
-                <div style={SURTITRE_FIN}>{FIN.surtitre}</div>
-                <h2 style={TITRE_FIN}>{FIN.titre}</h2>
-                <p style={TEXTE_FIN}>{FIN.texte}</p>
-              </div>
-              <div style={{ display: "flex", gap: 10, flex: "none", flexWrap: "wrap" }}>
-                <a
-                  href={ANCRE_FORMULAIRE}
-                  className={styles.boutonAction}
-                  style={BOUTON_ACTION}
-                >
-                  {FIN.boutonPrincipal}
-                </a>
-                <Link
-                  href={FIN.lienSecondaire}
-                  className={styles.boutonSecondaire}
-                  style={BOUTON_SECONDAIRE}
-                >
-                  {FIN.boutonSecondaire}
-                </Link>
+              <h1 style={H.TITRE1}>{titre}</h1>
+              {paragraphes.map((paragraphe, i) => (
+                <p key={i} style={H.CHAPO}>
+                  <EnLigne texte={paragraphe} lien={H.LIEN_PROSE} />
+                </p>
+              ))}
+              <div style={H.SIGNATURE}>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+                  <span aria-hidden="true" style={H.MONOGRAMME}>
+                    M
+                  </span>
+                  {H.COPIE.signature}
+                </span>
+                {contenu.minutes ? (
+                  <>
+                    <span aria-hidden="true">·</span>
+                    <span>{`${contenu.minutes} min de lecture`}</span>
+                  </>
+                ) : null}
+                {parties.length > 0 ? (
+                  <>
+                    <span aria-hidden="true">·</span>
+                    <span>{`${parties.length} parties`}</span>
+                  </>
+                ) : null}
               </div>
             </div>
+            {livre ? (
+              <CarteLivre />
+            ) : contenu.image ? (
+              <div style={H.PHOTO_HEROS}>
+                <Image
+                  src={contenu.image}
+                  alt=""
+                  fill
+                  preload
+                  sizes="(max-width: 980px) 100vw, 520px"
+                  style={{ objectFit: "cover", filter: H.FILTRE_PHOTO }}
+                />
+              </div>
+            ) : null}
           </div>
         </section>
 
-        {maillage}
+        <CorpsRessource avant={contenu.avant} parties={parties} />
+
+        {questions.length > 0 ? <Questions questions={questions} /> : null}
+
+        {aLire.length > 0 ? <Lectures lectures={aLire} rayon={rayon} /> : null}
+
+        <Appel />
       </main>
     </div>
   );

@@ -12,16 +12,24 @@
         "href": "/offres/"
       }
     ],
-    "formulaireHeroTitre": "Décrire mon besoin",
+    "formulaireHeroTitre": "",
     "formulaireHeroMention": "Rappel dans l’heure",
     "chiffres": [
+      {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      },
       {
         "valeur": "4",
         "libelle": "Agences · Lyon (siège), Montréal, Dubaï, Madrid, et des hubs techniques en France."
       },
       {
         "valeur": "10 %",
-        "libelle": "Des candidats retenus · entretien technique et entretien comportemental."
+        "libelle": "Des techniciens retenus · entretien technique et entretien comportemental."
       }
     ],
     "brefBande": "Besoin de savoir combien de jours d'arrêt votre transfert représente vraiment ?",
@@ -145,47 +153,63 @@
           {
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Savoye",
-            "lienHref": "/preuves/savoye-migration-automates-norvege/"
+            "lienHref": "/preuves/savoye-migration-automates-norvege/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "logo": "/assets/clients/savoye.png"
           },
           {
             "titre": "Installation et mise en production d'un nouveau parc machine, site automobile.",
             "texte": "6 techniciens mobilisés, objectifs de production en progression continue depuis",
             "lienLibelle": "Étude de cas EATON",
-            "lienHref": "/preuves/eaton-mise-en-production/"
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg",
+            "logo": "/assets/clients/mq-70bce765c1a2.svg"
           },
           {
             "titre": "Démarrage d'une nouvelle ligne près de Lyon, 2025.",
             "texte": "Un automaticien SIEMENS intégré sur site, prise en main rapide de l'automatisme",
             "lienLibelle": "Étude de cas MERSEN",
-            "lienHref": "/preuves/mersen/"
+            "lienHref": "/preuves/mersen/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "logo": "/assets/clients/mq-eb9461b85e59.svg"
           },
           {
             "titre": "Construction complète d'un site de R&D, région parisienne.",
             "texte": "Coordination technique et exécution pilotées par Orthus, filiale du groupe, jalons critiques suivis",
             "lienLibelle": "Étude de cas ORTHUS x ECOCEM",
-            "lienHref": "/preuves/orthus-ecocem/"
+            "lienHref": "/preuves/orthus-ecocem/",
+            "photo": "/assets/web/mq-e69a240d8656.jpg",
+            "logo": "/assets/clients/orthus-x-ecocem.png"
           },
           {
             "titre": "Montée en cadence de plusieurs usines en France, depuis septembre 2024.",
             "texte": "3 à 5 techniciens déployés, sans détourner les équipes internes de leurs objectifs",
             "lienLibelle": "Étude de cas VALEO",
-            "lienHref": "/preuves/valeo-usines/"
+            "lienHref": "/preuves/valeo-usines/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "logo": "/assets/clients/mq-f6fcccfd4cc8.svg"
           },
           {
             "titre": "Montage d'un centre logistique, Clermont-Ferrand, 2023.",
             "texte": "12 monteurs, 8 engins de levage, livraison à la date prévue",
             "lienLibelle": "Étude de cas AKTID",
-            "lienHref": "/preuves/aktid-centre-logistique/"
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/mq-5111002ce2b6.jpg",
+            "logo": "/assets/clients/aktid.png"
           },
           {
             "titre": "Un renfort pour que le pain sorte chaque matin",
             "lienLibelle": "La Panetière",
-            "lienHref": "/preuves/la-panetiere/"
+            "lienHref": "/preuves/la-panetiere/",
+            "photo": "/assets/web/mq-056f3c250981.jpg",
+            "logo": "/assets/clients/mq-8506472cb2ee.svg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Amazon",
-            "lienHref": "/preuves/amazon-centre-logistique/"
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/mq-948c28bcda08.jpg",
+            "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           }
         ]
       },
@@ -194,7 +218,7 @@
         "questions": [
           {
             "question": "Que coûte un transfert de production ?",
-            "reponse": ""
+            "reponse": "Le coût dépend du nombre de lignes, de la distance, des travaux d'adaptation et du niveau d'accompagnement. Il est chiffré sur devis après visite, poste par poste. Repère utile : un chantier mal préparé se paie en semaines d'arrêt, et ces semaines valent presque toujours plus cher que la prestation."
           },
           {
             "question": "Peut-on maintenir l'activité pendant le transfert ?",
@@ -210,7 +234,7 @@
           },
           {
             "question": "Qui exécute sur le terrain ?",
-            "reponse": "Des techniciens salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des candidats sont retenus, et les résultats d'évaluation sont partagés avec vous."
+            "reponse": "Des techniciens salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des techniciens sont retenus, et les résultats d'évaluation sont partagés avec vous."
           },
           {
             "question": "Intervenez-vous partout en France, et au-delà ?",
@@ -235,32 +259,38 @@
       {
         "titre": "Déménagement de machines industrielles",
         "phrase": "Déménagement de machines industrielles",
-        "href": "/offres/chantier/demenagement-machines/"
+        "href": "/offres/chantier/demenagement-machines/",
+        "photo": "/assets/web/team-duo.jpg"
       },
       {
         "titre": "Technicien en résidence",
         "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
-        "href": "/offres/residence/"
+        "href": "/offres/residence/",
+        "photo": "/assets/web/team-duo.jpg"
       },
       {
         "titre": "Zéro arrêt",
         "phrase": "La maintenance en abonnement, au forfait mensuel.",
-        "href": "/offres/zero-arret/"
+        "href": "/offres/zero-arret/",
+        "photo": "/assets/web/ph-technicien.jpg"
       },
       {
         "titre": "Arrêt technique",
         "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
-        "href": "/offres/arret-technique/"
+        "href": "/offres/arret-technique/",
+        "photo": "/assets/web/ph-hero-raffinerie.jpg"
       },
       {
         "titre": "Full service",
         "phrase": "Toute votre maintenance, un seul partenaire.",
-        "href": "/offres/full-service/"
+        "href": "/offres/full-service/",
+        "photo": "/assets/web/team-grind-front.jpg"
       },
       {
         "titre": "Travaux industriels",
         "phrase": "Transfert, démantèlement, démontage et montage.",
-        "href": "/travaux-industriels/"
+        "href": "/travaux-industriels/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
       }
     ],
     "brefMention": "Faire chiffrer mon transfert de production Un chargé d'affaires vous rappelle dans l'heure et identifie les points durs du projet.",

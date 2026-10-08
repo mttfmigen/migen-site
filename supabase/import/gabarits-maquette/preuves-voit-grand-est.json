@@ -22,6 +22,8 @@
         "valeur": "1 technicien expérimenté, à temps plein sur site"
       }
     ],
+    "logo": "/assets/clients/mq-dd835fd31c69.svg",
+    "photoHero": "/assets/web/mq-5b47b5f6a584.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -129,6 +131,7 @@
         "valeur": "Supervision par les coordinateurs Migen"
       }
     ],
+    "photoDispositif": "/assets/web/mq-17e2f3bce95f.jpg",
     "resultats": [
       {
         "titre": "Disponibilité accrue",
@@ -172,7 +175,7 @@
         "texte": "Proposée en option sur les parcs critiques, par téléphone."
       },
       {
-        "titre": "10 % des candidats retenus",
+        "titre": "10 % des techniciens retenus",
         "texte": "Usinage, commande numérique, presses et automatisme, après entretien technique et comportemental."
       }
     ],
@@ -180,22 +183,26 @@
       {
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
-        "href": "/preuves/"
+        "href": "/preuves/",
+        "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrie automobile",
-        "href": "/secteurs/automobile/"
+        "href": "/secteurs/automobile/",
+        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "STELLANTIS : fonderie de Sept-Fons",
-        "href": "/preuves/stellantis-fonderie-sept-fons/"
+        "href": "/preuves/stellantis-fonderie-sept-fons/",
+        "photo": "/assets/web/mq-339d39e2a674.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "AUTOLIV : un technicien dédié pour que le parc ne décroche pas",
-        "href": "/preuves/autoliv/"
+        "href": "/preuves/autoliv/",
+        "photo": "/assets/web/mq-056f3c250981.jpg"
       }
     ]
   }

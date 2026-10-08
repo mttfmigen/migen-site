@@ -9,6 +9,9 @@
       "Migen y renforce les équipes de maintenance. La collaboration est toujours en cours, en présence permanente."
     ],
     "bouton": "Renforcer mes équipes de maintenance",
+    "logo": "/assets/clients/groupe-atlantic.png",
+    "logoInverse": true,
+    "photoHero": "/assets/web/mq-7ee5a26d3e82.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -119,6 +122,7 @@
         "valeur": "Permanente, engagement de moyen terme"
       }
     ],
+    "photoDispositif": "/assets/web/mq-339d39e2a674.jpg",
     "resultats": [
       {
         "titre": "Une collaboration reconduite",
@@ -147,7 +151,7 @@
           },
           {
             "accroche": "10 %",
-            "texte": "des candidats retenus, après entretien technique ET comportemental"
+            "texte": "des techniciens retenus, après entretien technique ET comportemental"
           }
         ]
       },
@@ -160,28 +164,32 @@
     "besoinProse": [
       "Dites-nous combien de sites et quelles familles d'équipements, nous dimensionnons le renfort.",
       "L'astreinte la nuit, le week-end et les jours fériés se souscrit en option quand les sites tournent hors horaires.",
-      "Un renfort permanent se juge sur qui arrive. Entretien technique, entretien comportemental, 10 % des candidats retenus : c'est notre filtre avant toute affectation."
+      "Un renfort permanent se juge sur qui arrive. Entretien technique, entretien comportemental, 10 % des techniciens retenus : c'est notre filtre avant toute affectation."
     ],
     "plusLoin": [
       {
         "surtitre": "Étude de cas",
         "titre": "JOINT LYONNAIS : parc machines défaillant",
-        "href": "/preuves/joint-lyonnais/"
+        "href": "/preuves/joint-lyonnais/",
+        "photo": "/assets/web/mq-056f3c250981.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
-        "href": "/preuves/dimomaint/"
+        "href": "/preuves/dimomaint/",
+        "photo": "/assets/web/mq-948c28bcda08.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
-        "href": "/preuves/eiffage/"
+        "href": "/preuves/eiffage/",
+        "photo": "/assets/web/mq-17e2f3bce95f.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
-        "href": "/preuves/savoye/"
+        "href": "/preuves/savoye/",
+        "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
       }
     ]
   }

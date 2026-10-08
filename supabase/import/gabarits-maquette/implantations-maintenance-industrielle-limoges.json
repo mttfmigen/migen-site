@@ -1,209 +1,208 @@
 {
   "url": "/implantations/maintenance-industrielle-limoges/",
+  "titre_h1": "Maintenance industrielle à Limoges et en Haute-Vienne",
   "contenu": {
     "gabarit": "ville",
+    "pastille": "Nos implantations",
     "chapeau": "Un four de porcelaine qui dérive de quelques degrés. Un métier de découpe du cuir arrêté à Saint-Junien. Une ligne de carton qui tourne sans interruption vers Brive. Le Limousin fait travailler des machines anciennes à des exigences modernes. Nos techniciens itinérants couvrent la Haute-Vienne, la Corrèze et la Creuse, et se déplacent partout en France.",
     "actions": [
       {
         "libelle": "Demander une intervention à Limoges",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés couvre les nuits, les week-ends et les jours fériés.",
+    "formulaireHeroTitre": "Demander une intervention à Limoges",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "appelBouton": "Demander une intervention à Limoges",
+    "chiffres": [
       {
-        "valeur": "+ 100",
-        "libelle": "collaborateurs, mécaniciens, électriciens, automaticiens, roboticiens"
+        "valeur": "+ 120",
+        "libelle": "Collaborateurs, mécaniciens, électriciens, automaticiens, roboticiens"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental"
       },
       {
-        "valeur": "+ 80",
-        "libelle": "clients réguliers, sur plus de 120 clients accompagnés"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       }
     ],
-    "contact": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 couvre les nuits, les week-ends et les jours fériés.",
-    "constatTexte": "Une presse d'émaillage tombe le lundi matin. Le fournisseur de la machine a fermé il y a quinze ans, et la pièce n'existe plus au catalogue.",
-    "constatPuces": [
+    "hubLocal": {
+      "surtitre": "Votre hub local · Limoges",
+      "titre": "Limoges : les industries que nos techniciens connaissent déjà",
+      "photo": "/assets/web/sv-armoire.jpg",
+      "badge": "Techniciens itinérants",
+      "nom": "Limoges et ses environs",
+      "texte": "Nos techniciens itinérants couvrent Limoges et son bassin, appuyés par le réseau national Migen.",
+      "bouton": "Demander une intervention à Limoges",
+      "cartes": [
+        {
+          "surtitre": "Notre offre",
+          "titre": "Migen Résidence",
+          "texte": "Un technicien intégré à votre équipe, sur votre planning, avec remplacement garanti.",
+          "lien": "Voir l’offre",
+          "href": "/offres/residence/"
+        },
+        {
+          "surtitre": "Notre offre",
+          "titre": "Zéro arrêt",
+          "texte": "Un budget fermé et moins d’arrêts non planifiés sur votre parc.",
+          "lien": "Voir l’offre",
+          "href": "/offres/zero-arret/"
+        },
+        {
+          "surtitre": "Notre offre",
+          "titre": "Arrêt technique",
+          "texte": "Une équipe dimensionnée pour tenir votre fenêtre d’arrêt.",
+          "lien": "Voir l’offre",
+          "href": "/offres/arret-technique/"
+        },
+        {
+          "surtitre": "Notre offre",
+          "titre": "Travaux industriels",
+          "texte": "Transfert, montage, démantèlement : du relevé à la remise en production.",
+          "lien": "Voir l’offre",
+          "href": "/travaux-industriels/"
+        }
+      ],
+      "zonesTitre": "Nos hubs",
+      "zones": [
+        {
+          "libelle": "Hub Lille",
+          "href": "/implantations/lille/"
+        },
+        {
+          "libelle": "Hub Lyon",
+          "href": "/implantations/lyon/"
+        },
+        {
+          "libelle": "Hub Nantes",
+          "href": "/implantations/nantes/"
+        },
+        {
+          "libelle": "Hub Paris",
+          "href": "/implantations/paris/"
+        },
+        {
+          "libelle": "Hub Strasbourg",
+          "href": "/implantations/strasbourg/"
+        },
+        {
+          "libelle": "Hub Toulouse",
+          "href": "/implantations/toulouse/"
+        },
+        {
+          "libelle": "Hub Marseille",
+          "href": "/implantations/marseille/"
+        },
+        {
+          "libelle": "Hub Bordeaux",
+          "href": "/implantations/bordeaux/"
+        },
+        {
+          "libelle": "Hub Metz",
+          "href": "/implantations/maintenance-industrielle-metz/"
+        },
+        {
+          "libelle": "Hub Dijon",
+          "href": "/implantations/maintenance-industrielle-dijon/"
+        }
+      ]
+    },
+    "problemePhoto": "/assets/web/ph-hero-raffinerie.jpg",
+    "brefBande": "Besoin de fiabiliser une machine que plus personne ne sait dépanner ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Demander une intervention à Limoges",
+      "href": "#besoin"
+    },
+    "sections": [
       {
-        "texte": "Ateliers cuir, papier, céramique : beaucoup d'équipements uniques, peu de gens qui savent encore les lire.",
-        "accroche": "Le parc vieillit plus vite que les compétences ne se renouvellent."
+        "type": "probleme",
+        "punchline": "Une presse d'émaillage tombe le lundi matin. Le fournisseur de la machine a fermé il y a quinze ans, et la pièce n'existe plus au catalogue.",
+        "puces": [
+          {
+            "accroche": "Le parc vieillit plus vite que les compétences ne se renouvellent.",
+            "texte": "Ateliers cuir, papier, céramique : beaucoup d'équipements uniques, peu de gens qui savent encore les lire."
+          },
+          {
+            "accroche": "Le recrutement local tourne à vide.",
+            "texte": "Les annonces de technicien de maintenance s'empilent, les candidatures manquent, et l'attente se paie en arrêts."
+          },
+          {
+            "accroche": "La cuisson n'attend pas le devis.",
+            "texte": "En céramique, une dérive thermique gâche une fournée entière avant que quiconque ait eu le temps de réagir."
+          },
+          {
+            "accroche": "Le continu ne laisse pas de fenêtre.",
+            "texte": "Papier et carton tournent douze mois sur douze : le préventif se planifie des mois à l'avance ou il ne se fait jamais."
+          },
+          {
+            "accroche": "Un site isolé finit par être négligé.",
+            "texte": "Sur la Creuse et le plateau, le prestataire vient quand il passe. Vos équipements ne suivent pas ce calendrier."
+          }
+        ]
       },
-      {
-        "texte": "Les annonces de technicien de maintenance s'empilent, les candidatures manquent, et l'attente se paie en arrêts.",
-        "accroche": "Le recrutement local tourne à vide."
-      },
-      {
-        "texte": "En céramique, une dérive thermique gâche une fournée entière avant que quiconque ait eu le temps de réagir.",
-        "accroche": "La cuisson n'attend pas le devis."
-      },
-      {
-        "texte": "Papier et carton tournent douze mois sur douze : le préventif se planifie des mois à l'avance ou il ne se fait jamais.",
-        "accroche": "Le continu ne laisse pas de fenêtre."
-      },
-      {
-        "texte": "Sur la Creuse et le plateau, le prestataire vient quand il passe. Vos équipements ne suivent pas ce calendrier.",
-        "accroche": "Un site isolé finit par être négligé."
-      }
-    ],
-    "reponsePuces": [
-      {
-        "texte": "Entretien technique et comportemental, 10 % des candidats retenus, résultats d'évaluation présentés. Vos machines ne servent pas de terrain d'apprentissage.",
-        "accroche": "Un profil vérifié avant l'arrivée sur site."
-      },
-      {
-        "texte": "Si un site isolé ou une machine hors de notre champ ne peut pas être tenu correctement, le chargé d'affaires le dit au premier échange.",
-        "accroche": "Une réponse franche sur la faisabilité."
-      },
-      {
-        "texte": "Comptes rendus versés dans votre outil, historique à jour, confidentialité respectée. Vous ne dépendez pas de nos fichiers.",
-        "accroche": "Des données qui restent les vôtres."
-      }
-    ],
-    "faq": [
-      {
-        "reponse": "Oui. Nous n'avons pas d'agence en Haute-Vienne et nous le disons : nos techniciens se déplacent partout en France et interviennent sur site. Votre demande est rappelée dans l'heure aux horaires ouvrés, et vous savez dès le premier appel si nous pouvons tenir votre besoin.",
-        "question": "Intervenez-vous vraiment à Limoges, alors que votre siège est à Lyon ?"
-      },
-      {
-        "reponse": "Oui. Limoges et Couzeix, Saint-Junien et Aixe-sur-Vienne à l'ouest, Brive-la-Gaillarde en Corrèze, Guéret et la Creuse. Les sites isolés entrent dans les tournées, pas dans une liste d'attente.",
-        "question": "Couvrez-vous Brive-la-Gaillarde, Saint-Junien et Guéret ?"
-      },
-      {
-        "reponse": "C'est le quotidien du bassin. Le premier passage sert d'état des lieux. Le rétrofit se décide machine par machine, sur l'usage réel et le coût de remplacement, jamais par principe.",
-        "question": "Nos machines sont anciennes et non documentées. Vous savez faire ?"
-      },
-      {
-        "reponse": "L'offre Zéro arrêt fonctionne en abonnement, trois niveaux de couverture, sur devis, engagement type 6 mois renouvelable. Le diagnostic de départ est gratuit et le périmètre s'écrit équipement par équipement.",
-        "question": "Combien coûte un contrat de maintenance ?"
-      },
-      {
-        "reponse": "L'astreinte 24/24 et 7/7 prend l'appel et mobilise un technicien. Le circuit d'appel et l'ordre des priorités sont écrits au devis, site par site, avant la première urgence.",
-        "question": "Que se passe-t-il en cas de panne un dimanche soir ?"
-      },
-      {
-        "reponse": "Oui, en résidence : technicien intégré à votre équipe, encadré par un référent technique Migen, opérationnel en 2 à 3 semaines. Absence ou départ, un profil équivalent arrive briefé sur vos machines.",
-        "question": "Pouvez-vous détacher un technicien dans notre usine ?"
-      }
-    ],
-    "autres": [
-      {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
-      },
-      {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
-      },
-      {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
-      },
-      {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
-      },
-      {
-        "libelle": "Valence",
-        "href": "/implantations/lyon/valence/"
-      },
-      {
-        "libelle": "Nantes",
-        "href": "/implantations/nantes/"
-      },
-      {
-        "libelle": "Brest",
-        "href": "/implantations/nantes/brest/"
-      },
-      {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
-      },
-      {
-        "libelle": "paris",
-        "href": "/implantations/paris/"
-      },
-      {
-        "libelle": "Rouen",
-        "href": "/implantations/paris/rouen/"
-      },
-      {
-        "libelle": "Strasbourg",
-        "href": "/implantations/strasbourg/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
-      },
-      {
-        "libelle": "Toulouse",
-        "href": "/implantations/toulouse/"
-      },
-      {
-        "libelle": "Bordeaux",
-        "href": "/implantations/toulouse/bordeaux/"
-      }
-    ],
-    "reste": [
       {
         "type": "offre",
         "lignes": [
           {
-            "benefice": "La panne ne revient pas le mois suivant sous un autre nom.",
             "prestation": {
-              "texte": "sur site, du moteur au circuit hydraulique, avec recherche de cause racine.",
-              "accroche": "Dépannage et remise en état"
-            }
+              "accroche": "Dépannage et remise en état sur site, du moteur au circuit hydraulique, avec recherche de cause racine.",
+              "texte": ""
+            },
+            "benefice": "La panne ne revient pas le mois suivant sous un autre nom."
           },
           {
-            "benefice": "Vous prolongez un outil amorti au lieu d'investir dans un équipement neuf.",
             "prestation": {
-              "texte": "sur les machines anciennes : automate, variation de vitesse, supervision.",
-              "accroche": "Rétrofit plutôt que remplacement"
-            }
+              "accroche": "Rétrofit plutôt que remplacement sur les machines anciennes : automate, variation de vitesse, supervision.",
+              "texte": ""
+            },
+            "benefice": "Vous prolongez un outil amorti au lieu d'investir dans un équipement neuf."
           },
           {
-            "benefice": "Les révisions se font quand la production le permet, pas quand la casse l'impose.",
             "prestation": {
-              "texte": "calé sur vos arrêts programmés et vos creux de saison.",
-              "accroche": "Préventif planifié"
-            }
+              "accroche": "Préventif planifié calé sur vos arrêts programmés et vos creux de saison.",
+              "texte": ""
+            },
+            "benefice": "Les révisions se font quand la production le permet, pas quand la casse l'impose."
           },
           {
-            "benefice": "Les dérives énergétiques se voient sur vos relevés avant de se voir sur la facture.",
             "prestation": {
-              "texte": "fours, échangeurs, réseaux d'air comprimé, chasse aux fuites.",
-              "accroche": "Maîtrise thermique et fluides"
-            }
+              "accroche": "Maîtrise thermique et fluides",
+              "texte": "Fours, échangeurs, réseaux d'air comprimé, chasse aux fuites."
+            },
+            "benefice": "Les dérives énergétiques se voient sur vos relevés avant de se voir sur la facture."
           },
           {
-            "benefice": "Un seul interlocuteur quand le défaut traverse trois spécialités.",
             "prestation": {
-              "texte": "[mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [automatisme](/expertises/automatisme/), [soudure](/expertises/soudure/).",
-              "accroche": "Domaines combinés"
-            }
+              "accroche": "Domaines combinés",
+              "texte": "Mécanique, électrique, automatisme, soudure."
+            },
+            "benefice": "Un seul interlocuteur quand le défaut traverse trois spécialités."
           },
           {
-            "benefice": "La ligne de carton du dimanche soir trouve quelqu'un au bout du fil.",
             "prestation": {
-              "texte": ", pour les sites en service continu.",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
+              "accroche": "Astreinte la nuit, le week-end et les jours fériés en option pour les sites en service continu.",
+              "texte": ""
+            },
+            "benefice": "La ligne de carton du dimanche soir trouve quelqu'un au bout du fil."
           },
           {
-            "benefice": "Le poste que vous n'arrivez pas à pourvoir est tenu, remplacement assuré.",
             "prestation": {
-              "texte": "avec l'offre [Résidence](/offres/residence/), prise de poste en 2 à 3 semaines.",
-              "accroche": "Technicien intégré à votre équipe"
-            }
+              "accroche": "",
+              "texte": ""
+            },
+            "benefice": "Le poste que vous n'arrivez pas à pourvoir est tenu, remplacement assuré."
           },
           {
-            "benefice": "Le préventif cesse d'être la première victime du carnet de commandes.",
             "prestation": {
-              "texte": "visites planifiées, priorité en cas de panne, astreinte en option.",
-              "accroche": "Contrat [Zéro arrêt](/offres/zero-arret/)"
-            }
+              "accroche": "Contrat Zéro arrêt",
+              "texte": "Visites planifiées, priorité en cas de panne, astreinte en option."
+            },
+            "benefice": "Le préventif cesse d'être la première victime du carnet de commandes."
           }
         ]
       },
@@ -211,72 +210,124 @@
         "type": "deroule",
         "etapes": [
           {
-            "texte": "vous décrivez la situation et les machines concernées. Des photos accélèrent le diagnostic. Rappel dans l'heure aux horaires ouvrés.",
-            "titre": "Premier échange"
+            "titre": "Premier échange",
+            "texte": "Vous décrivez la situation et les machines concernées. Des photos accélèrent le diagnostic. Rappel dans l'heure aux horaires ouvrés."
           },
           {
-            "texte": "accès au site, habilitations, environnement, pièces disponibles. Le champ d'intervention s'écrit noir sur blanc.",
-            "titre": "Qualification"
+            "titre": "Qualification",
+            "texte": "Accès au site, habilitations, environnement, pièces disponibles. Le champ d'intervention s'écrit noir sur blanc."
           },
           {
-            "texte": "périmètre, créneaux, conditions. Rien ne se découvre en fin de mission.",
-            "titre": "Devis ferme"
+            "titre": "Devis ferme",
+            "texte": "Périmètre, créneaux, conditions. Rien ne se découvre en fin de mission."
           },
           {
-            "texte": "accueil sécurité, consignation si nécessaire, diagnostic, réparation, sécurisation du redémarrage.",
-            "titre": "Intervention"
+            "titre": "Intervention",
+            "texte": "Accueil sécurité, consignation si nécessaire, diagnostic, réparation, sécurisation du redémarrage."
           },
           {
-            "texte": "opérations, temps passé, pièces à prévoir, préconisations, versés dans votre GMAO.",
-            "titre": "Compte rendu"
+            "titre": "Compte rendu",
+            "texte": "Opérations, temps passé, pièces à prévoir, préconisations, versés dans votre GMAO."
           },
           {
-            "texte": "chaque visite capitalise sur l'état des lieux du premier passage. L'historique machine se construit.",
-            "titre": "Passage suivant"
+            "titre": "Passage suivant",
+            "texte": "Chaque visite capitalise sur l'état des lieux du premier passage. L'historique machine se construit."
           }
         ]
       },
       {
-        "type": "cta",
-        "bouton": "Demander une intervention à Limoges",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin de fiabiliser une machine que plus personne ne sait dépanner ?"
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Un profil vérifié avant l'arrivée sur site.",
+            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats d'évaluation présentés. Vos machines ne servent pas de terrain d'apprentissage."
+          },
+          {
+            "accroche": "Une réponse franche sur la faisabilité.",
+            "texte": "Si un site isolé ou une machine hors de notre champ ne peut pas être tenu correctement, le chargé d'affaires le dit au premier échange."
+          },
+          {
+            "accroche": "Des données qui restent les vôtres.",
+            "texte": "Comptes rendus versés dans votre outil, historique à jour, confidentialité respectée. Vous ne dépendez pas de nos fichiers."
+          }
+        ]
       },
       {
         "type": "preuves",
         "preuves": [
           {
-            "texte": ", parc machines hétérogène en forte cadence, 2025 à 2026",
             "titre": "Un technicien polyvalent intégré sur un site papier et emballage",
+            "texte": ", parc machines hétérogène en forte cadence, 2025 à 2026.",
+            "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "lienLibelle": "Étude de cas VPK : maintenance de site"
+            "photo": "/assets/web/x-tech-portrait.jpg"
           },
           {
-            "texte": ", sur les trimestres de montée en charge",
             "titre": "Un automaticien SIEMENS affecté au démarrage d'une nouvelle ligne de production",
+            "texte": ", sur les trimestres de montée en charge.",
+            "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "lienLibelle": "Étude de cas MERSEN : nouvelles lignes"
+            "photo": "/assets/web/team-grind-front.jpg"
           },
           {
-            "texte": ", pendant une transition d'équipe",
             "titre": "Le pilotage d'un service maintenance confié à un responsable Migen intégré sur site",
+            "texte": ", pendant une transition d'équipe.",
+            "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "lienLibelle": "Étude de cas ERIKS"
+            "photo": "/assets/web/x-elec-cablage.jpg"
           },
           {
-            "texte": ", pour garder les équipements opérationnels en juillet et août",
             "titre": "Un technicien en renfort pendant les congés d'été",
+            "texte": ", pour garder les équipements opérationnels en juillet et août.",
+            "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "lienLibelle": "Étude de cas OGF : arrêt estival"
+            "photo": "/assets/web/team-duo.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Intervenez-vous vraiment à Limoges, alors que votre siège est à Lyon ?",
+            "reponse": "Oui. Nous n'avons pas d'agence en Haute-Vienne et nous le disons : nos techniciens se déplacent partout en France et interviennent sur site. Votre demande est rappelée dans l'heure aux horaires ouvrés, et vous savez dès le premier appel si nous pouvons tenir votre besoin."
+          },
+          {
+            "question": "Couvrez-vous Brive-la-Gaillarde, Saint-Junien et Guéret ?",
+            "reponse": "Oui. Limoges et Couzeix, Saint-Junien et Aixe-sur-Vienne à l'ouest, Brive-la-Gaillarde en Corrèze, Guéret et la Creuse. Les sites isolés entrent dans les tournées, pas dans une liste d'attente."
+          },
+          {
+            "question": "Nos machines sont anciennes et non documentées. Vous savez faire ?",
+            "reponse": "C'est le quotidien du bassin. Le premier passage sert d'état des lieux. Le rétrofit se décide machine par machine, sur l'usage réel et le coût de remplacement, jamais par principe."
+          },
+          {
+            "question": "Combien coûte un contrat de maintenance ?",
+            "reponse": "L'offre Zéro arrêt fonctionne en abonnement, trois niveaux de couverture, sur devis, engagement type 6 mois renouvelable. Le diagnostic de départ est gratuit et le périmètre s'écrit équipement par équipement."
+          },
+          {
+            "question": "Que se passe-t-il en cas de panne un dimanche soir ?",
+            "reponse": "L'astreinte la nuit, le week-end et les jours fériés prend l'appel et mobilise un technicien. Le circuit d'appel et l'ordre des priorités sont écrits au devis, site par site, avant la première urgence."
+          },
+          {
+            "question": "Pouvez-vous détacher un technicien dans notre usine ?",
+            "reponse": "Absence ou départ, un profil équivalent arrive briefé sur vos machines."
           }
         ]
       },
       {
         "type": "ctaFinal",
-        "bouton": "Demander une intervention à Limoges",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
         "question": "Besoin d'un technicien capable de tenir un parc que personne ne veut reprendre ?"
       }
     ]
-  }
+  },
+  "trous": [
+    {
+      "ligne": "Technicien intégré à votre équipe avec l'offre Résidence, prise de poste en 2 à 3 semaines.",
+      "pourquoi": "délai chiffré (« prise de poste en 2 à 3 semaines ») : seul « rappel dans l'heure » est autorisé (CLAUDE.md §9, contrat du lot). Intitulé du point 07 de « 04 Offre » : le point reste avec son bénéfice, son intitulé est vide."
+    },
+    {
+      "ligne": "Oui, en résidence : technicien intégré à votre équipe, encadré par un référent technique Migen, opérationnel en 2 à 3 semaines.",
+      "pourquoi": "délai chiffré (« opérationnel en 2 à 3 semaines ») : seul « rappel dans l'heure » est autorisé (CLAUDE.md §9, contrat du lot). Première phrase de la réponse à « Pouvez-vous détacher un technicien dans notre usine ? », la seconde reste."
+    }
+  ]
 }

@@ -1,0 +1,359 @@
+{
+  "_source": "maquette/rendu/expertises--types-de-maintenance--maintenance-curative.html (07/10 21h12), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (relevé par data-dc-tpl, mêmes cibles que les pilotes fanuc et abb, dont le relevé redonne le relais à l'identique), contrôlé par components/site/expertises/specialite/verification-specialite.tsx. PHOTOS MESURÉES, PAS CHOISIES : octets de chaque image de la maquette vivante (localhost:4352) rapprochés de public/assets/web par sha256 complet, le 08/10 ; photo de carte de référence = première image de la carte. La capture du problème de cette page ne rend aucune photo, d'où `problemePhoto: null`. PHRASES INTERDITES NON RENDUES (ne se reformulent pas) : « Le coût complet, pas le tarif horaire : » (contenu.complementTypes[7].texte) ; « Prix catalogue » (contenu.complementTypes[8].tableau.lignes[1][1]) ; « La question utile n'est pas le tarif horaire mais le coût complet : main d'œuvre, pièce, transport, production perdue, et la récidive si la cause n'est pas traitée. » (contenu.sections[5].questions[2].reponse).",
+  "url": "/expertises/types-de-maintenance/maintenance-curative/",
+  "titre_h1": "Maintenance curative : remettre la ligne en route, puis s’assurer qu’elle y reste",
+  "contenu": {
+    "gabarit": "specialite",
+    "pastille": "Expertises",
+    "chapeau": "La réparation définitive, celle qui traite la cause et pas seulement l'effet. Cette page donne la définition, le déroulé d'une intervention curative et le calcul réparer ou remplacer. Puis elle dit qui exécute, et comment.",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option.",
+    "appelBouton": "Demander une intervention",
+    "actions": [
+      {
+        "libelle": "Demander une intervention",
+        "href": "#besoin"
+      }
+    ],
+    "formulaireHeroTitre": "Demander une intervention",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
+      {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, chaque technicien est évalué en entretien technique et comportemental"
+      },
+      {
+        "valeur": "+ 120",
+        "libelle": "Collaborateurs, depuis quatre agences, avec la même politique de sécurité partout"
+      }
+    ],
+    "complementTypes": [
+      {
+        "texte": "La maintenance curative regroupe les opérations de réparation définitive exécutées sur un équipement défaillant, pour lui rendre durablement sa fonction requise. La norme NF EN 13306 distingue la réparation, qui rétablit l'état d'origine, du dépannage, qui se contente de faire repartir le matériel."
+      },
+      {
+        "texte": "La hiérarchie à connaître, parce que la confusion se paie en factures."
+      },
+      {
+        "tableau": {
+          "entetes": [
+            "Famille",
+            "Ce que fait le technicien",
+            "Ce qu'il en reste dans six mois"
+          ],
+          "lignes": [
+            [
+              "Maintenance corrective",
+              "La catégorie mère : toute intervention exécutée après la défaillance",
+              "Variable"
+            ],
+            [
+              "Maintenance curative",
+              "La réparation définitive, cause racine traitée",
+              "Le problème a disparu"
+            ],
+            [
+              "Maintenance palliative",
+              "Le dépannage provisoire, la machine repart en mode dégradé",
+              "La rustine est encore là"
+            ]
+          ]
+        }
+      },
+      {
+        "texte": "Quand la curative intervient :"
+      },
+      {
+        "puces": [
+          {
+            "accroche": "Après un dépannage provisoire.",
+            "texte": "La palliative a fait repartir la ligne, la curative vient solder la dette technique quelques jours plus tard."
+          },
+          {
+            "accroche": "Sur une panne récurrente.",
+            "texte": "Troisième arrêt en six mois sur le même équipement : il est temps de chercher la vraie cause."
+          },
+          {
+            "accroche": "Sur un matériel en fin de vie.",
+            "texte": "La réparation devient l'occasion de trancher entre remise en état et remplacement."
+          },
+          {
+            "accroche": "Après une analyse de fiabilité.",
+            "texte": "Les données de la GMAO désignent un organe fautif, on le traite pour de bon."
+          }
+        ]
+      },
+      {
+        "texte": "Les trois erreurs qui transforment une curative en palliative :"
+      },
+      {
+        "puces": [
+          {
+            "accroche": "Monter une pièce neuve sans chercher pourquoi l'ancienne a cassé.",
+            "texte": "Le composant neuf durera exactement aussi longtemps que son prédécesseur."
+          },
+          {
+            "accroche": "Valider sans essais en charge.",
+            "texte": "Un équipement qui démarre à vide n'est pas un équipement remis en service."
+          },
+          {
+            "accroche": "Ne pas tracer l'opération.",
+            "texte": "Sans historique, le prochain intervenant recommencera le même diagnostic depuis zéro."
+          }
+        ]
+      },
+      {
+        "tableau": {
+          "entetes": [
+            "Poste de dépense",
+            "Ce qu'on voit sur la facture",
+            "Ce qu'on oublie"
+          ],
+          "lignes": [
+            [
+              "Main d'œuvre",
+              "Heures de technicien, déplacement",
+              "Heures de nuit et de week-end"
+            ],
+            [
+              "Achat de composants",
+              "",
+              "Transport express, suivi fournisseur"
+            ],
+            [
+              "Immobilisation",
+              "Rien",
+              "Production perdue, commandes en retard"
+            ],
+            [
+              "Récidive",
+              "Rien",
+              "La même intervention dans trois mois"
+            ]
+          ]
+        }
+      }
+    ],
+    "problemePhoto": null,
+    "complementOffre": [
+      {
+        "texte": "Machine à l'arrêt maintenant ? Voir le dépannage industriel."
+      }
+    ],
+    "sections": [
+      {
+        "type": "probleme",
+        "variante": "panneau-sombre",
+        "punchline": "La rustine posée en urgence il y a six mois tient toujours, et tout le monde a oublié pourquoi.",
+        "puces": [
+          {
+            "accroche": "Les dépannages provisoires s'empilent.",
+            "texte": "Personne ne programme jamais la réparation de fond, et les mêmes pannes reviennent à un rythme de plus en plus court."
+          },
+          {
+            "accroche": "Le diagnostic prend le temps qu'on ne lui donne pas.",
+            "texte": "Sous pression, on remplace ce qui a cassé. Chercher l'alignement fautif demande une demi-journée que le planning refuse."
+          },
+          {
+            "accroche": "La connaissance repart avec l'intervenant.",
+            "texte": "Une réparation sans compte rendu écrit n'existe pas : six mois plus tard, tout est à refaire depuis le début."
+          },
+          {
+            "accroche": "Réparer ou remplacer se décide dans l'urgence.",
+            "texte": "La fin de vie se subit au lieu d'être pilotée, et l'achat se fait en catastrophe."
+          }
+        ]
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "La recherche de la cause racine",
+              "texte": "Mesures, relevés, analyse des données de l'automate, essais en conditions réelles. On cherche le pourquoi, pas seulement le quoi."
+            },
+            "benefice": "La panne sort du planning au lieu d'être entretenue tous les trimestres."
+          },
+          {
+            "prestation": {
+              "accroche": "La remise en état ou le remplacement",
+              "texte": "Composant d'origine ou équivalent validé, réglage, contrôle dimensionnel, remise en service progressive."
+            },
+            "benefice": "L'équipement retrouve sa fiabilité, pas seulement sa capacité à démarrer."
+          },
+          {
+            "prestation": {
+              "accroche": "Le bilan écrit à chaque passage",
+              "texte": "Cause identifiée, travaux, pièces changées, recommandations pour éviter la récidive."
+            },
+            "benefice": "La connaissance reste chez vous, dans votre GMAO, pas dans la tête d'un intervenant."
+          },
+          {
+            "prestation": {
+              "accroche": "L'aide à trancher entre réparer, rétrofiter et remplacer chiffres en main.",
+              "texte": ""
+            },
+            "benefice": "La fin de vie se pilote deux ans à l'avance au lieu de se subir un vendredi soir."
+          },
+          {
+            "prestation": {
+              "accroche": "La bascule vers la surveillance après réparation",
+              "texte": "Vous connaissez désormais l'organe fragile, il ne reste qu'à le suivre."
+            },
+            "benefice": "Un correctif de moins dans six mois, pour un coût de surveillance faible."
+          },
+          {
+            "prestation": {
+              "accroche": "L'astreinte la nuit, le week-end et les jours fériés en option partout en France.",
+              "texte": ""
+            },
+            "benefice": "Une casse le samedi ne devient pas un lundi perdu."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Qualification par téléphone.",
+            "texte": "Équipement, symptôme, historique, contraintes du site. Cinq minutes ici font gagner deux heures sur place."
+          },
+          {
+            "titre": "Choix du bon technicien.",
+            "texte": "Nous mobilisons le profil dont la compétence correspond au matériel, pas celui qui est simplement libre."
+          },
+          {
+            "titre": "Sécurisation et consignation.",
+            "texte": "Plan de prévention, autorisations, règles de votre site appliquées avant le premier tournevis."
+          },
+          {
+            "titre": "Recherche de la cause racine.",
+            "texte": "Mesures, relevés, analyse des données de l'automate, essais en conditions réelles."
+          },
+          {
+            "titre": "Remise en état ou remplacement.",
+            "texte": "Composant d'origine ou équivalent validé, réglage, contrôle dimensionnel, remise en service progressive et essais en charge."
+          },
+          {
+            "titre": "Bilan écrit.",
+            "texte": "Cause identifiée, travaux réalisés, pièces changées, recommandations. Le dossier machine s'enrichit à chaque passage."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Une réparation sans bilan écrit n'existe pas.",
+            "texte": "Si le technicien repart sans compte rendu, la connaissance repart avec lui. Le nôtre est exploitable dans votre GMAO et vous reste, même si vous changez de prestataire."
+          },
+          {
+            "accroche": "Le bon profil, pas le profil disponible.",
+            "texte": "Chaque intervenant a passé une évaluation technique et comportementale en entretien, menée par un homme du métier, seuls 10 % des techniciens sont retenus."
+          },
+          {
+            "accroche": "Le conseil indépendant du constructeur.",
+            "texte": "Nous ne vendons pas de machines, donc notre intérêt n'est jamais de vous en faire acheter une. Réparer, rétrofiter ou remplacer : la recommandation se décide sur vos chiffres."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Maintenance curative des convoyeurs, trieurs et packaging, logistique",
+            "texte": "Deux techniciens en poste sur site, dédiés au maintien des équipements.",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-1ef16ef335a6.jpg"
+          },
+          {
+            "titre": "Diagnostic sur site et réparation d'un parc machines défaillant, industrie lyonnaise",
+            "texte": "Remise en état sans rachat de matériel neuf.",
+            "lienLibelle": "Étude de cas JOINT LYONNAIS",
+            "lienHref": "/preuves/joint-lyonnais/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
+          },
+          {
+            "titre": "Remise en état d'un site de traitement des eaux industrielles, environnement",
+            "texte": "Un électromécanicien habilité risque chimique mobilisé six mois.",
+            "lienLibelle": "Étude de cas SUEZ",
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "photo": "/assets/web/x-elec-cablage.jpg"
+          },
+          {
+            "titre": "Maintenance préventive et curative des lignes de production, jeux et loteries",
+            "texte": "Un technicien affecté en continu sur un site proche de Paris.",
+            "lienLibelle": "Étude de cas FDJ",
+            "lienHref": "/preuves/fdj/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+          },
+          {
+            "titre": "Maintenance des centres d'usinage, presses et machines à commande numérique, automobile",
+            "texte": "Un technicien intégré à temps plein.",
+            "lienLibelle": "Étude de cas VOIT",
+            "lienHref": "/preuves/voit-grand-est/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
+          },
+          {
+            "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, automobile",
+            "texte": "Tenue, depuis octobre 2023.",
+            "lienLibelle": "Étude de cas STELLANTIS",
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+          },
+          {
+            "titre": "Un centre logistique monté en six semaines",
+            "lienLibelle": "Étude de cas Aktid",
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg"
+          },
+          {
+            "titre": "Pas un poste sans maintenance, week-end compris",
+            "lienLibelle": "Étude de cas Danone (Blédina)",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
+        "questions": [
+          {
+            "question": "Quelle différence entre maintenance curative et corrective ?",
+            "reponse": "La corrective est la famille, la curative en est la branche définitive. Toute maintenance curative est corrective. L'inverse est faux, puisque le dépannage palliatif appartient lui aussi à la corrective, sans traiter la cause."
+          },
+          {
+            "question": "La maintenance curative est-elle planifiable ?",
+            "reponse": "Oui, dès que la machine tient en mode dégradé. On sécurise la production, on commande les pièces sans transport express, puis on programme les travaux sur une fenêtre d'arrêt. C'est le meilleur des deux mondes, et le moyen le plus simple de supprimer les surcoûts d'urgence."
+          },
+          {
+            "question": "Combien coûte une intervention curative ?",
+            "reponse": "Le chiffrage se fait sur devis. Nous détaillons ces postes avant l'intervention, pas après."
+          },
+          {
+            "question": "Intervenez-vous en urgence, la nuit et le week-end ?",
+            "reponse": "Oui, partout en France, avec une astreinte la nuit, le week-end et les jours fériés en option. appelez-nous : nous qualifions la situation avec vous et nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30."
+          },
+          {
+            "question": "Qui intervient, et avec quelles habilitations ?",
+            "reponse": "Des techniciens salariés de Migen, évalués en entretien technique et comportemental, 10 % des techniciens retenus. Les autorisations exigées par votre installation sont vérifiées avant le déplacement, et le plan de prévention est signé et appliqué."
+          },
+          {
+            "question": "Pouvez-vous intégrer un professionnel dans notre équipe sur site ?",
+            "reponse": "Oui, en prestation de services : un homme de métier Migen travaille dans vos murs pour une durée définie avec vous, évalué au même niveau que pour nos interventions ponctuelles. Décrivez le besoin, nous vous disons franchement si l'expertise est chez nous."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de solder une dette technique qui traîne depuis six mois ?",
+        "bouton": "Demander une intervention"
+      }
+    ]
+  }
+}

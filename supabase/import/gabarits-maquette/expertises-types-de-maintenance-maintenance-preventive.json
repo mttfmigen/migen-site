@@ -1,0 +1,357 @@
+{
+  "_source": "maquette/rendu/expertises--types-de-maintenance--maintenance-preventive.html (07/10 21h12, 17 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (entités décodées, apostrophes de la capture conservées), contrôlé par components/site/expertises/specialite/verification-specialite.tsx. CHIFFRES : les trois cartes de la capture, « +200 / Clients industriels accompagnés » compris (règle client : « +200 clients », jamais « réguliers »). PHOTOS MESURÉES, PAS CHOISIES : octets de chaque blob du rail des références de la maquette vivante (localhost:4352/voir.html, 08/10) rapprochés de public/assets/web par sha256 complet, dans l'ordre des cartes ; ordre des clients vérifié identique à la capture. « Marques maintenues » absente de la capture, donc pas de marquesFamille. Problème dessiné « panneau-sombre », aucune photo (problemePhoto null). « 02 Domaines » (photos lues dans la capture, team-grind-front, team-electric, team-grind-close), « Complément 2 » (6 cellules) et « Complément 4 » portés. PHRASES NON RENDUES : Complément 2, puce « La conditionnelle : l'état réel commande. », « Chaque composant va au bout de sa vie utile, au prix d'instrumentation et de relevés réguliers. » (interdits « prix », « réguliers ») ; 09 Questions, « Combien coûte un programme de maintenance préventive ? », « La vraie comparaison n'est pas le prix du préventif seul, mais sa différence avec le coût de vos arrêts subis sur douze mois. » (interdit « prix »).",
+  "url": "/expertises/types-de-maintenance/maintenance-preventive/",
+  "titre_h1": "Maintenance préventive : chaque intervention planifiée, c’est un arrêt subi en moins",
+  "contenu": {
+    "gabarit": "specialite",
+    "pastille": "Expertises",
+    "chapeau": "Entretenir avant la panne au lieu de réparer après. Ci-dessous : la définition, les trois façons de la pratiquer, le plan en cinq étapes. Puis la vraie question, qui exécute les campagnes quand vos équipes sont prises ailleurs.",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option.",
+    "appelBouton": "Demander mon diagnostic gratuit",
+    "actions": [
+      {
+        "libelle": "Demander mon diagnostic gratuit",
+        "href": "#besoin"
+      }
+    ],
+    "formulaireHeroTitre": "Demander mon diagnostic gratuit",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
+      {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, chaque technicien qui passe chez vous est évalué"
+      },
+      {
+        "valeur": "8",
+        "libelle": "Domaines techniques couverts par une seule équipe, de la mécanique à la robotique"
+      }
+    ],
+    "domainesTitre": "Les chiffres Migen",
+    "domaines": [
+      {
+        "valeur": "+200",
+        "texte": "Clients industriels accompagnés",
+        "photo": "/assets/web/team-grind-front.jpg"
+      },
+      {
+        "valeur": "10 %",
+        "texte": "Des techniciens retenus, chaque technicien qui passe chez vous est évalué",
+        "photo": "/assets/web/team-electric.jpg"
+      },
+      {
+        "valeur": "8",
+        "texte": "Domaines techniques couverts par une seule équipe, de la mécanique à la robotique",
+        "photo": "/assets/web/team-grind-close.jpg"
+      }
+    ],
+    "complementTypes": [
+      {
+        "texte": "La maintenance préventive regroupe les interventions exécutées avant la défaillance, à intervalles prédéterminés ou selon des critères prescrits, pour réduire la probabilité de panne d'un équipement. La norme NF EN 13306 l'oppose à la maintenance corrective, qui intervient une fois le dysfonctionnement constaté."
+      },
+      {
+        "tableau": {
+          "entetes": [
+            "",
+            "Maintenance préventive",
+            "Maintenance corrective"
+          ],
+          "lignes": [
+            [
+              "Moment",
+              "Avant la panne",
+              "Après la panne"
+            ],
+            [
+              "Arrêt",
+              "Planifié, court",
+              "Subi, long"
+            ],
+            [
+              "Budget",
+              "Maîtrisé, prévisible",
+              "Variable, souvent élevé"
+            ],
+            [
+              "Pièces",
+              "Commandées à l'avance",
+              "Parfois introuvables"
+            ],
+            [
+              "Sécurité",
+              "Contrôlée",
+              "Exposée à l'urgence"
+            ]
+          ]
+        }
+      },
+      {
+        "texte": "Les trois façons de la pratiquer, du plus simple au plus avancé :"
+      },
+      {
+        "puces": [
+          {
+            "accroche": "La préventive systématique : l'échéancier commande.",
+            "texte": "Les interventions se déclenchent à durée écoulée, heures de fonctionnement, nombre de cycles. Vidange d'un compresseur toutes les 500 heures, courroies chaque année, graissage hebdomadaire. Simple à budgéter, mais on remplace parfois un composant encore sain."
+          },
+          {
+            "accroche": "La conditionnelle : l'état réel commande.",
+            "texte": "On surveille vibration, température, pression, intensité, analyse d'huile, et l'intervention se déclenche au franchissement d'un seuil."
+          },
+          {
+            "accroche": "La prévisionnelle et la prédictive : la tendance commande.",
+            "texte": "On analyse l'évolution des mesures pour estimer la durée de vie résiduelle. L'intervention se cale sur le planning de production, pas l'inverse. Réservé aux actifs dont l'arrêt paralyse tout."
+          }
+        ]
+      },
+      {
+        "texte": "Le plan en cinq étapes, la méthode standard du métier :"
+      },
+      {
+        "puces": [
+          {
+            "accroche": "Inventorier les équipements",
+            "texte": ", avec identifiant, localisation, documentation. Sans inventaire, pas de plan."
+          },
+          {
+            "accroche": "Classer par criticité",
+            "texte": "impact d'un arrêt sur la production, la sécurité, la qualité. Le haut du classement concentre les efforts."
+          },
+          {
+            "accroche": "Définir les opérations et les intervalles",
+            "texte": ", en croisant recommandations constructeur, obligations réglementaires et votre historique de pannes."
+          },
+          {
+            "accroche": "Planifier et exécuter",
+            "texte": "les travaux entrent au plan de charge avec les pièces nécessaires. Une tâche préventive non planifiée est une tâche qui saute."
+          },
+          {
+            "accroche": "Mesurer et ajuster",
+            "texte": "MTBF, MTTR, taux de réalisation du préventif, part du correctif dans le budget. Un taux de réalisation sous 80 % signifie que le préventif sert de variable d'ajustement."
+          }
+        ]
+      }
+    ],
+    "problemePhoto": null,
+    "complementOffre": [
+      {
+        "texte": "Pour une panne en cours, voir le dépannage industriel."
+      }
+    ],
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "Votre plan préventif est bon. Il n'est simplement jamais exécuté.",
+        "puces": [
+          {
+            "accroche": "Le préventif saute dès que la production réclame la machine.",
+            "texte": "Le créneau est repoussé, puis oublié, et le retard s'installe dans la GMAO jusqu'à la panne qui impose l'arrêt."
+          },
+          {
+            "accroche": "Les gammes n'ont pas bougé depuis l'installation.",
+            "texte": "L'atelier connaît les points faibles, personne n'a jamais formalisé ce savoir, et il repart avec celui qui l'a."
+          },
+          {
+            "accroche": "Le correctif mange les heures du préventif.",
+            "texte": "Vos équipes passent leurs journées à éteindre des incendies, et le cercle se referme sur lui-même."
+          },
+          {
+            "accroche": "Recruter prend des mois.",
+            "texte": "Le marché du technicien de maintenance est tendu, et l'attente coûte plus cher que la campagne que vous n'arrivez pas à lancer."
+          }
+        ],
+        "variante": "panneau-sombre"
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "Exécuter vos campagnes planifiées",
+              "texte": "Inspections, contrôles, réglages, graissage, remplacements périodiques, selon vos gammes ou celles que nous bâtissons avec vous."
+            },
+            "benefice": "Le plan est enfin tenu, y compris les semaines où vos équipes sont ailleurs."
+          },
+          {
+            "prestation": {
+              "accroche": "Rattraper un retard de préventif",
+              "texte": "Campagne de remise à niveau sur un parc laissé de côté, puis retour au rythme normal."
+            },
+            "benefice": "Vous repartez d'un état des lieux propre, sans y consacrer vos propres heures."
+          },
+          {
+            "prestation": {
+              "accroche": "Surveiller vos équipements sensibles",
+              "texte": "Analyse vibratoire, thermographie infrarouge, suivi des lubrifiants, contrôle des intensités."
+            },
+            "benefice": "Le roulement qui chauffe se voit des semaines avant la casse, l'arrêt devient planifié."
+          },
+          {
+            "prestation": {
+              "accroche": "Assurer les vérifications réglementaires",
+              "texte": "Chaque métier technique a ses obligations, nous les intégrons au programme."
+            },
+            "benefice": "Vos obligations sont couvertes par le même passage, pas par un prestataire de plus."
+          },
+          {
+            "prestation": {
+              "accroche": "Intégrer un technicien sur site en prestation de services, qui connaît vos machines et revient.",
+              "texte": ""
+            },
+            "benefice": "Votre production ne dépend plus de deux personnes irremplaçables."
+          },
+          {
+            "prestation": {
+              "accroche": "Un compte rendu à chaque passage",
+              "texte": "Anomalies vues, relevés, pièces, recommandations pour le plan."
+            },
+            "benefice": "Votre GMAO s'enrichit à chaque visite au lieu de se vider."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Le diagnostic gratuit.",
+            "texte": "Vous décrivez votre parc et votre retard en quelques minutes, ou vous appelez-nous. Aucune contrepartie attendue."
+          },
+          {
+            "titre": "L'audit sur site.",
+            "texte": "Un référent technique visite les installations, fait l'inventaire et reprend vos historiques de pannes et d'entretien."
+          },
+          {
+            "titre": "Le calcul en face de vos chiffres.",
+            "texte": "Nous posons le cumul de vos douze derniers mois, factures de dépannage, heures de production perdues, temps passé par vos équipes, en face du coût du programme préventif."
+          },
+          {
+            "titre": "La construction des gammes.",
+            "texte": "Pour chaque opération : équipement concerné, état requis, points à contrôler avec les valeurs attendues, consommables, durée estimée, habilitations nécessaires."
+          },
+          {
+            "titre": "La première campagne.",
+            "texte": "Elle pose l'état des lieux de référence et solde le retard accumulé. Les suivantes déroulent le programme."
+          },
+          {
+            "titre": "La mesure et l'ajustement.",
+            "texte": "Taux de réalisation, nombre d'incidents, part du correctif dans le budget. On réduit ce qui ne sert pas, on renforce là où les pannes persistent."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Le créneau réservé avec la production, pas contre elle.",
+            "texte": "Nous pouvons exécuter les travaux pendant vos arrêts programmés et réaliser les essais avant redémarrage. Nous nous calons sur votre rythme, pas l'inverse."
+          },
+          {
+            "accroche": "Le même technicien qui revient.",
+            "texte": "Il connaît vos équipements, vos accès et vos contraintes. Le temps de prise en main disparaît de la facture et de la durée d'arrêt."
+          },
+          {
+            "accroche": "Des résultats mesurés, pas affirmés.",
+            "texte": "Taux de réalisation du préventif, nombre d'incidents, budget tenu. Le programme s'ajuste chaque année sur ces mesures."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Reprise complète de la maintenance préventive annuelle de deux sites, e-commerce",
+            "texte": "Six techniciens en permanence, prise en charge réalisée en un mois.",
+            "lienLibelle": "Étude de cas VEEPEE",
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "photo": "/assets/web/mq-1ef16ef335a6.jpg"
+          },
+          {
+            "titre": "Préventif tenu sur un centre logistique en flux continu",
+            "texte": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures, sans arrêter les flux.",
+            "lienLibelle": "Étude de cas AMAZON",
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
+          },
+          {
+            "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, automobile",
+            "texte": "Tenue, depuis octobre 2023.",
+            "lienLibelle": "Étude de cas STELLANTIS",
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/x-elec-cablage.jpg"
+          },
+          {
+            "titre": "Renfort sur la maintenance préventive d'une centrale photovoltaïque, énergie",
+            "texte": "Trois techniciens, fin 2024.",
+            "lienLibelle": "Étude de cas EIFFAGE",
+            "lienHref": "/preuves/eiffage/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+          },
+          {
+            "titre": "Préventif tenu pendant l'arrêt estival, services funéraires",
+            "texte": "Un technicien intégré sur les équipements critiques, été 2025.",
+            "lienLibelle": "Étude de cas OGF",
+            "lienHref": "/preuves/ogf-arret-estival/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
+          },
+          {
+            "titre": "Contrat de maintenance sur un site agroalimentaire de grande échelle, Belgique",
+            "texte": "Depuis octobre 2024.",
+            "lienLibelle": "Étude de cas McCAIN",
+            "lienHref": "/preuves/mccain-belgique/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+          },
+          {
+            "titre": "Un dispositif rodé, transposé sur un nouveau site",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-nouveau-site/",
+            "photo": "/assets/web/mq-0699d4d92e7e.jpg"
+          },
+          {
+            "titre": "Un technicien dédié pour que le parc ne décroche pas",
+            "lienLibelle": "Étude de cas Autoliv",
+            "lienHref": "/preuves/autoliv/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
+        "questions": [
+          {
+            "question": "Combien coûte un programme de maintenance préventive ?",
+            "reponse": "Cela dépend du parc, de sa criticité et du niveau de surveillance retenu. Le chiffrage se fait sur devis, après inventaire."
+          },
+          {
+            "question": "Le préventif ne va-t-il pas nous faire remplacer des pièces encore bonnes ?",
+            "reponse": "C'est le risque du tout systématique, et il est réel. La réponse est le dosage : du systématique sur le parc standard, du conditionnel sur les équipements sensibles où la mesure dit quand intervenir. Nous posons cet arbitrage machine par machine pendant l'audit."
+          },
+          {
+            "question": "Nous avons déjà un contrat préventif ailleurs. Comment on bascule ?",
+            "reponse": "Nous préparons la reprise pendant le préavis en cours : inventaire du parc, récupération des historiques et des gammes, reprise du calendrier de visites. Le premier passage Migen s'enchaîne sur le dernier passage du prestataire sortant, sans trou de couverture."
+          },
+          {
+            "question": "Faut-il une GMAO pour démarrer ?",
+            "reponse": "Pas au démarrage. Un tableur bien tenu vaut mieux qu'un projet de GMAO qui traîne deux ans. Dès quelques dizaines d'équipements, un logiciel devient nécessaire pour tenir l'échéancier, l'historique et le stock. Nos comptes rendus s'intègrent à votre outil, pas à un outil parallèle."
+          },
+          {
+            "question": "Qui intervient, et avec quelles habilitations ?",
+            "reponse": "Des techniciens salariés de Migen, évalués en entretien technique et comportemental, 10 % des techniciens retenus. Les autorisations exigées par votre installation sont vérifiées avant le déplacement : consignation électrique, travail en hauteur, espaces confinés, zones classées. Le plan de prévention est signé et appliqué."
+          },
+          {
+            "question": "Peut-on externaliser une partie seulement du préventif ?",
+            "reponse": "Oui, et c'est le cas le plus fréquent. Beaucoup de sites gardent le premier niveau en interne, nettoyage, inspection, lubrification, et confient les campagnes planifiées et les contrôles spécialisés. Vous payez ce que votre équipe ne couvre pas."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que votre plan préventif soit exécuté plutôt qu'écrit ?",
+        "bouton": "Demander mon diagnostic gratuit"
+      }
+    ]
+  }
+}

@@ -73,3 +73,192 @@
   color: var(--ink);
   font-weight: 500;
 }
+
+/* ===================================================================
+   LES DEUX VUES DE LA MAQUETTE (08/10) : survols relevés élément par
+   élément dans les attributs `style-hover` de la maquette, et règles que
+   le style en ligne ne peut pas porter. Valeurs recopiées, pas inventées.
+   =================================================================== */
+
+/* --- Vue « guide » : `Migen - Site final.dc.html`, gabarit cEdito --- */
+
+/* Fil d'Ariane, sommaire, liens en ligne : style-hover « color:var(--acc) ». */
+.ariane a:hover {
+  color: var(--acc);
+}
+.entreeSommaire:hover {
+  color: var(--acc) !important;
+  border-left-color: var(--acc) !important;
+}
+
+/* Les liens du corps : souligné orange, `color:var(--acc)` au survol. */
+.riche a {
+  color: var(--acc-ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 124, 60, 0.4);
+  text-underline-offset: 3px;
+}
+.riche a:hover {
+  color: var(--acc);
+}
+.riche strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Bento : le gras hérite de la cellule (blanc sur la cellule sombre). */
+.bento strong {
+  font-weight: 600;
+  color: inherit;
+}
+.bento a {
+  color: var(--acc);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+/* Le titre-lien d'une cellule : couleur de la cellule, sans soulignement, orange
+   au survol (relevé dans la maquette, repos puis survol). Qualifié par `.bento`,
+   sinon `.bento a` (plus spécifique) le passait en orange souligné au repos. */
+.bento .titreBento {
+  color: inherit;
+  text-decoration: none;
+}
+.bento .titreBento:hover {
+  color: var(--acc);
+}
+
+/* Duo : colonne de gauche soulignée, colonne de droite en orange foncé. */
+.duoGauche strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.duoGauche a {
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 124, 60, 0.55);
+  text-underline-offset: 3px;
+}
+.duoGauche a:hover {
+  color: var(--acc);
+}
+.duoDroite strong {
+  font-weight: 600;
+}
+.duoDroite a {
+  font-weight: 600;
+  color: var(--acc-ink);
+}
+
+/* Boutons orange : « filter:brightness(.93);color:#fff ». */
+.boutonPlein:hover {
+  filter: brightness(0.93);
+  color: #fff;
+}
+/* Boutons orange à transition : « …;transform:translateY(-1px) ». */
+.boutonLeve:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+/* Carte-lien de fin de FAQ : « transform:translateY(-2px) ». */
+.lienCarte:hover {
+  transform: translateY(-2px);
+}
+/* Cartes « Pages liées » : « transform:translateY(-3px) ». */
+.carteLiee:hover {
+  transform: translateY(-3px);
+}
+
+/* --- Vue « rubrique » : `MigenRessource.dc.html`, mode hub --- */
+
+@media (max-width: 980px) {
+  .grille2 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 28px !important;
+  }
+  .une {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* Le chapô : liens et gras en encre pleine, soulignés orange. */
+.chapo strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.chapo a {
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 124, 60, 0.6);
+  text-underline-offset: 3px;
+}
+
+/* Cartes du guide : paragraphes et citations d'une part, listes de l'autre. */
+.carteGuide strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.carteGuide a {
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 124, 60, 0.6);
+}
+.carteGuide .liste a {
+  text-decoration-color: currentColor;
+}
+
+/* Cartes de fiches : « transform:translateY(-2px) » et, pour la grille,
+   « transform:translateY(-3px);box-shadow:0 26px 56px -30px rgba(0,0,0,.35) ». */
+.carteCote:hover {
+  transform: translateY(-2px);
+}
+.carteGrille:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 26px 56px -30px rgba(0, 0, 0, 0.35);
+}
+
+/* La FAQ sur photo (`.mg-faqph` de la maquette). */
+.faqPhoto {
+  position: relative;
+  border-radius: var(--rad);
+  overflow: hidden;
+  padding: 44px !important;
+  background:
+    linear-gradient(90deg, rgba(18, 17, 16, 0.92) 0%, rgba(18, 17, 16, 0.8) 50%, rgba(18, 17, 16, 0.62) 100%),
+    url("/assets/web/sv-portrait.jpg") center / cover no-repeat #1c1b19 !important;
+  color: #fff;
+}
+.faqPhoto h2,
+.faqPhoto summary {
+  color: #fff;
+}
+.faqPhoto summary::-webkit-details-marker {
+  display: none;
+}
+.faqPhoto .plus {
+  background: rgba(255, 255, 255, 0.14) !important;
+  color: #fff;
+}
+.faqPhoto details[open] .plus {
+  transform: rotate(45deg);
+}
+.faqPhoto p {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+.faqPhoto details {
+  border-top-color: rgba(255, 255, 255, 0.14) !important;
+}
+@media (max-width: 760px) {
+  .faqPhoto {
+    padding: 26px 20px !important;
+  }
+}
+
+/* La recherche du héros : la capture retire le contour du champ
+   (`outline:none`) ; le focus clavier se lit donc sur la pilule. */
+.recherche:focus-within {
+  border-color: var(--acc) !important;
+}

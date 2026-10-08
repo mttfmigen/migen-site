@@ -8,9 +8,8 @@ import { VERRE_COURT } from "./habillage-equipe";
  * Un groupe de personnes : son surtitre barré d'un filet, puis la grille de
  * cartes. Maquette lignes 5854 à 5930, deux fois le même bloc.
  *
- * LA CARTE SANS PHOTO rend son cadre carré sur le fond orange de la maquette,
- * sans image. Mettre un visage emprunté sous le nom d'un dirigeant serait une
- * erreur visible ; un cadre vide se corrige en posant le fichier dans `public/`.
+ * Le portrait repose sur le fond orange de la maquette (`--acc`). Une personne
+ * sans portrait garde un cadre `--ph` : jamais un visage emprunté.
  */
 
 interface Proprietes {
@@ -85,10 +84,6 @@ export default function GroupeEquipe({ groupe, paddingHaut }: Proprietes) {
                 transition: "transform var(--tr),box-shadow var(--tr)",
               }}
             >
-              {/* `background:var(--acc)` est la teinte que la maquette pose
-                  DERRIÈRE la photo, le temps qu'elle charge. Sans photo, elle
-                  donne un carré orange plein à la place d'un visage : le cadre
-                  prend alors `--ph`, le jeton de remplacement de la charte. */}
               <div
                 style={{
                   aspectRatio: "1/1",

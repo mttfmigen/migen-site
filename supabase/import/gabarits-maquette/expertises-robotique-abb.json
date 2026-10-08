@@ -1,5 +1,5 @@
 {
-  "_source": "maquette/rendu/expertises--robotique--abb.html (07/10 21h12, 15 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture, contrôlé par components/site/expertises/specialite/verification-specialite.tsx. TROU DE CONTRAT DÉCLARÉ : la capture dessine TROIS chiffres dont « +200 / Clients industriels accompagnés », premier interdit du contrat ; la carte entière n'est pas rendue et n'est pas reformulée. PHOTOS MESURÉES, PAS CHOISIES : la maquette assigne les photos du rail des références PAR RANG ; la capture du problème de CETTE page ne rend AUCUNE photo (section 4, 0 image), d'où `problemePhoto: null`. LE RAIL D'ONGLETS de « Marques maintenues » est propre à cette capture (blocs 938-940 : « Automatisme & électricité 10 » actif, « Robotique ») : `marquesFamilles` le porte, les comptes viennent de marques-donnees.ts.",
+  "_source": "maquette/rendu/expertises--robotique--abb.html (07/10 21h12, 15 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture, contrôlé par components/site/expertises/specialite/verification-specialite.tsx. CHIFFRES : les trois cartes de la capture, dont « +200 / Clients industriels accompagnés », remise le 07/10 (règle éditoriale validée par le client : « +200 clients », sans qualificatif ajouté). PHOTOS MESURÉES, PAS CHOISIES : la maquette assigne les photos du rail des références PAR RANG ; la capture du problème de CETTE page ne rend AUCUNE photo (section 4, 0 image), d'où `problemePhoto: null`. LE RAIL D'ONGLETS de « Marques maintenues » est propre à cette capture (blocs 938-940 : « Automatisme & électricité 10 » actif, « Robotique ») : `marquesFamilles` le porte, les comptes viennent de marques-donnees.ts.",
   "url": "/expertises/robotique/abb/",
   "titre_h1": "Maintenance de robots ABB : des roboticiens qui connaissent vos cellules par cœur",
   "contenu": {
@@ -19,7 +19,11 @@
     "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "Des candidats retenus, après entretien technique ET comportemental"
+        "libelle": "Des techniciens retenus, après entretien technique ET comportemental"
+      },
+      {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "en continu et tous les jours",
@@ -209,7 +213,7 @@
           },
           {
             "question": "Intervenez-vous sans contrat de maintenance ?",
-            "reponse": "Oui, et c'est le cas le plus fréquent. Décrivez la panne et le modèle, nous vous disons rapidement si nous avons le technicien et lequel. Le devis suit, chiffré à partir du diagnostic. Beaucoup de nos clients réguliers sont arrivés comme ça, sur une panne."
+            "reponse": "Oui, et c'est le cas le plus fréquent. Décrivez la panne et le modèle, nous vous disons rapidement si nous avons le technicien et lequel. Le devis suit, chiffré à partir du diagnostic."
           },
           {
             "question": "Le robot a perdu sa calibration, que faire en attendant ?",

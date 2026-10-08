@@ -76,7 +76,7 @@ const ROLES: readonly Role[] = [
     texte:
       "Quand il faut renforcer l’équipe, c’est lui qui source, teste et vous présente les profils. Vous validez chaque intervenant avant son arrivée, sans avoir à vous justifier.",
     action: "Voir l’équipe →",
-    href: "/equipe/",
+    href: "/a-propos/equipe/",
   },
 ];
 

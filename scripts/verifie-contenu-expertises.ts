@@ -45,8 +45,25 @@ const INTERDITS = [
   "découvrez",
   "5 agences",
   "cinq agences",
-  "200 clients",
+  // « +200 clients », sans jamais préciser « réguliers » : règle validée par le
+  // client (design_handoff_migen_site/README.md). « +200 » est exigé plus bas
+  // là où la capture le porte.
+  "clients réguliers",
+  "80 réguliers",
 ];
+
+/**
+ * « +200 » EST EXIGÉ LÀ OÙ LA CAPTURE LE PORTE (`maquette/rendu/<clé>.html`, en
+ * texte visible), SAUF exception nommée et vérifiée des deux côtés.
+ *
+ * `/expertises/` : la capture pose « +200 » dans la bande de trois chiffres
+ * sous le formulaire du héros (« + 120 », « +200 », « 10 % »). Le contenu ne
+ * porte PAS CETTE BANDE DU TOUT, ses deux autres chiffres compris : le hub est
+ * resté sur un dessin antérieur à la capture. Ce n'est pas l'ancienne règle,
+ * c'est un portage à reprendre. L'exception tombe, et le dit, le jour où la
+ * bande est portée.
+ */
+const BANDE_NON_PORTEE = new Map([["/expertises/", "Collaborateurs, depuis 4 agences"]]);
 /** Un délai chiffré : « 24 h », « 2 h », « 48 heures », « 3 jours ». */
 const DELAI_CHIFFRE = /\b\d+\s?(?:h|heures?|min(?:utes?)?|jours?)\b/u;
 
@@ -340,6 +357,23 @@ for (const page of pages) {
   verifieForme(c);
   verifieTextes(c);
   liens += verifieLiens(c, inventaire);
+
+  const capture = readFileSync(`maquette/rendu/${page.url.slice(1, -1).replaceAll("/", "--")}.html`, "utf8")
+    .replace(/<script[\s\S]*?<\/script>/g, "")
+    .replace(/<[^>]*>/g, "");
+  if (capture.includes("+200")) {
+    const textes = chaines(c).map(([, t]) => t);
+    const bande = BANDE_NON_PORTEE.get(page.url);
+    if (bande) {
+      assert.ok(capture.includes(bande), `${page.url} : la capture ne porte plus « ${bande} », l'exception est à relire`);
+      assert.ok(
+        !textes.some((t) => t.includes("+200") || t.includes(bande)),
+        `${page.url} : la bande de chiffres est portée, retirer l'exception et exiger « +200 »`,
+      );
+    } else {
+      assert.ok(textes.some((t) => t.includes("+200")), `${page.url} : « +200 » est dans la capture, pas dans le contenu`);
+    }
+  }
 
   // Deux transcriptions indépendantes de la maquette doivent dire la même chose.
   if (page.url === "/expertises/") {

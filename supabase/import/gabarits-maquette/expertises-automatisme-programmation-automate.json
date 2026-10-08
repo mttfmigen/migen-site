@@ -1,82 +1,46 @@
 {
+  "_source": "maquette/rendu/expertises--automatisme--programmation-automate.html (capture du 07/10 21h12, 16 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (littéral, entités seules décodées), relevé par data-dc-tpl, contrôlé par components/site/expertises/specialite/verification-specialite.tsx. Ni « 02 Domaines » ni « Complément 2 » dans la capture ; « Complément 4 » présent. Problème dessiné « rangee », sans photo. Marques : famille « auto » (BRAND_RULES de la maquette, une seule famille, pas de rail). PHOTOS DES RÉFÉRENCES MESURÉES, PAS CHOISIES : octets des images du rail servis par la maquette vivante (localhost:4352, 08/10), sha256 complet rapproché de public/assets/web ; ordre et identité des blobs recoupés avec la capture : mq-5111002ce2b6, mq-e6322efcd358, x-auto-caisse, mq-2a6115ec9fe0, mq-948c28bcda08. PHRASES INTERDITES NON RENDUES, retirées entières de la copie de la capture (une phrase interdite ne se reformule pas, elle ne se rend pas) : probleme.puces[1].texte, la phrase qui porte « tarif ».",
   "url": "/expertises/automatisme/programmation-automate/",
+  "titre_h1": "Programmation automate : modifier le programme sans arrêter la production",
   "contenu": {
-    "gabarit": "domaine",
+    "gabarit": "specialite",
+    "pastille": "Expertises",
     "chapeau": "Un automaticien qui ouvre le programme avant d'ouvrir la caisse à outils. Il lit le code en ligne, trouve l'étape bloquée, corrige, puis vous rend des sources commentées et des sauvegardes datées qui restent chez vous.",
-    "boutons": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés.",
+    "appelBouton": "Demander un automaticien",
+    "actions": [
       {
-        "libelle": "Demander un automaticien"
+        "libelle": "Demander un automaticien",
+        "href": "#besoin"
       }
     ],
-    "traitements": [
-      "La recherche de panne par le programme",
-      "La reprise d'un programme orphelin",
-      "Vos sources commentées en français",
-      "La modification de séquence en production",
-      "Les cinq langages de la norme CEI 61131-3",
-      "La migration d'un automate obsolète",
-      "L'intégration d'un nouvel équipement"
-    ],
-    "autres": [
+    "formulaireHeroTitre": "Demander un automaticien",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
-        "libelle": "Maintenance électrique industrielle",
-        "href": "/expertises/electrique/"
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, après entretien technique ET comportemental"
       },
       {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance mécanique",
-        "href": "/expertises/mecanique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Maintenance robotique",
-        "href": "/expertises/robotique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
+        "valeur": "en continu et tous les jours",
+        "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "cta": {
-      "question": "Besoin de récupérer la main sur le code qui pilote vos machines ?",
-      "bouton": {
-        "libelle": "Demander un automaticien"
-      }
-    },
-    "reste": [
+    "problemePhoto": null,
+    "complementOffre": [
       {
-        "type": "chiffres",
-        "chiffres": [
-          {
-            "valeur": "10 %",
-            "libelle": "des candidats retenus, après entretien technique ET comportemental"
-          },
-          {
-            "valeur": "+ 80",
-            "libelle": "clients réguliers, beaucoup arrivés par une panne"
-          },
-          {
-            "valeur": "24/24 et 7/7",
-            "libelle": "astreinte, pour les sites couverts"
-          }
-        ]
-      },
+        "texte": "Une ligne immobilisée en ce moment relève du dépannage industriel."
+      }
+    ],
+    "marquesFamille": "auto",
+    "sections": [
       {
         "type": "probleme",
+        "variante": "rangee",
         "punchline": "Votre machine tourne, et personne dans l'entreprise ne sait ce qu'il y a dans l'automate. Le jour où elle s'arrête, c'est la seule chose qui compte.",
         "puces": [
           {
@@ -85,7 +49,7 @@
           },
           {
             "accroche": "Vous n'avez pas les sources.",
-            "texte": "Le contrat d'achat ne les prévoyait pas. Chaque modification repasse par le fournisseur, à son rythme et à son tarif."
+            "texte": "Le contrat d'achat ne les prévoyait pas."
           },
           {
             "accroche": "On cherche la panne à l'aveugle.",
@@ -103,56 +67,51 @@
           {
             "prestation": {
               "accroche": "La recherche de panne par le programme",
-              "texte": "connexion en ligne, lecture des états, forçages maîtrisés, avant tout démontage."
+              "texte": "Connexion en ligne, lecture des états, forçages maîtrisés, avant tout démontage."
             },
             "benefice": "La cause se trouve dans les données, pas en démontant des organes sains."
           },
           {
             "prestation": {
               "accroche": "La reprise d'un programme orphelin",
-              "texte": "audit de l'existant, récupération de ce qui peut l'être depuis l'automate, reconstruction du reste."
+              "texte": "Audit de l'existant, récupération de ce qui peut l'être depuis l'automate, reconstruction du reste."
             },
             "benefice": "Vous redevenez propriétaire de votre logique machine, même sans son auteur."
           },
           {
             "prestation": {
               "accroche": "Vos sources commentées en français",
-              "texte": "règles de nommage claires, versions datées, procédure de rechargement."
+              "texte": "Règles de nommage claires, versions datées, procédure de rechargement."
             },
             "benefice": "Le prochain technicien reprend le programme sans repartir de zéro."
           },
           {
             "prestation": {
               "accroche": "La modification de séquence en production",
-              "texte": "nouvelle recette, cadence différente, nouveau format, préparée et testée avant déploiement en arrêt planifié."
+              "texte": "Nouvelle recette, cadence différente, nouveau format, préparée et testée avant déploiement en arrêt planifié."
             },
             "benefice": "Changer de produit devient une opération maîtrisée et réversible, pas un pari."
           },
           {
             "prestation": {
               "accroche": "Les cinq langages de la norme CEI 61131-3",
-              "texte": "ladder pour le dépannage, FBD pour la régulation, texte structuré pour les calculs, SFC et Grafcet pour les cycles, IL sur les anciens programmes."
+              "texte": "Ladder pour le dépannage, FBD pour la régulation, texte structuré pour les calculs, SFC et Grafcet pour les cycles, IL sur les anciens programmes."
             },
             "benefice": "Chaque fonction est écrite dans le langage que vos techniciens sauront relire."
           },
           {
             "prestation": {
               "accroche": "La migration d'un automate obsolète",
-              "texte": "même processus réécrit proprement sur une gamme actuelle, Siemens ou Schneider, mise en service et essais compris."
+              "texte": "Même processus réécrit proprement sur une gamme actuelle, Siemens ou Schneider, mise en service et essais compris."
             },
             "benefice": "La fin de vie de la gamme cesse d'être une menace pour votre production."
           },
           {
             "prestation": {
               "accroche": "L'intégration d'un nouvel équipement",
-              "texte": "module d'entrées et sorties, variateur, robot, écran IHM programmé dans la même suite logicielle."
+              "texte": "Module d'entrées et sorties, variateur, robot, écran IHM programmé dans la même suite logicielle."
             },
             "benefice": "Le nouveau matériel dialogue avec l'existant dès la mise en service."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Un parc à tenir toute l'année se traite par le [contrat de maintenance Zéro arrêt](/offres/zero-arret/). Une ligne immobilisée en ce moment relève du [dépannage industriel](/offres/depannage-industriel/). Pour le contexte complet du métier, voir l'[automatisme industriel](/expertises/automatisme/) et nos automaticiens [Siemens](/expertises/automatisme/siemens/) et [Schneider](/expertises/automatisme/schneider/)."
           }
         ]
       },
@@ -161,11 +120,11 @@
         "etapes": [
           {
             "titre": "Vous décrivez le besoin",
-            "texte": "au 04 78 33 72 05 : panne, modification, reprise de code, migration. Nous vous rappelons dans l'heure."
+            "texte": "par téléphone : panne, modification, reprise de code, migration. Nous vous rappelons dans l'heure."
           },
           {
             "titre": "Nous validons le contexte",
-            "texte": "marque et gamme de l'automate, logiciel de programmation, accès aux sources et aux mots de passe, contraintes de production."
+            "texte": "Marque et gamme de l'automate, logiciel de programmation, accès aux sources et aux mots de passe, contraintes de production."
           },
           {
             "titre": "Nous vous disons ce qui est récupérable",
@@ -173,15 +132,15 @@
           },
           {
             "titre": "L'automaticien intervient",
-            "texte": "sur site partout en France, en atelier ou à distance selon votre politique de sécurité réseau."
+            "texte": "Sur site partout en France, en atelier ou à distance selon votre politique de sécurité réseau."
           },
           {
             "titre": "La mise en service se fait avec vos équipes",
-            "texte": "chaque entrée et chaque sortie contrôlée une à une, réglages repris avec la production jusqu'au retour de la cadence."
+            "texte": "Chaque entrée et chaque sortie contrôlée une à une, réglages repris avec la production jusqu'au retour de la cadence."
           },
           {
             "titre": "Vous recevez les livrables",
-            "texte": "code commenté, sauvegardes datées de toutes les unités, rapport d'intervention, points à surveiller."
+            "texte": "Code commenté, sauvegardes datées de toutes les unités, rapport d'intervention, points à surveiller."
           }
         ]
       },
@@ -190,7 +149,7 @@
         "puces": [
           {
             "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-            "texte": "L'astreinte 24/24 et 7/7 couvre la nuit et le week-end sur les sites concernés."
+            "texte": "L'astreinte la nuit, le week-end et les jours fériés couvre la nuit et le week-end sur les sites concernés."
           },
           {
             "accroche": "Vos programmes, vos recettes et vos process restent votre propriété.",
@@ -203,42 +162,47 @@
         ]
       },
       {
-        "type": "cta",
-        "question": "Besoin d'un automaticien pour reprendre un programme que plus personne ne connaît ?",
-        "bouton": "Demander un automaticien",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
-      },
-      {
         "type": "preuves",
         "preuves": [
           {
             "titre": "Dépannage en environnement automatisé, nutrition infantile",
-            "texte": "deux techniciens intégrés en 3x8 sur les lignes liquides et poudre, sur automates Schneider",
-            "lienLibelle": "Étude de cas DANONE : lignes de production",
-            "lienHref": "/preuves/danone-lignes-de-production/"
+            "texte": "Deux techniciens intégrés en 3x8 sur les lignes liquides et poudre, sur automates Schneider.",
+            "lienLibelle": "Étude de cas DANONE",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/mq-5111002ce2b6.jpg"
           },
           {
             "titre": "Contrôle de chantier sur des projets d'automatisation logistique",
-            "texte": "intervenants expérimentés des environnements industriels automatisés, intégrés aux équipes projet, 2025 à 2026",
-            "lienLibelle": "Étude de cas ALSTEF Group : collaboration",
-            "lienHref": "/preuves/alstef-group/"
+            "texte": "Intervenants expérimentés des environnements industriels automatisés, intégrés aux équipes projet, 2025 à 2026.",
+            "lienLibelle": "Étude de cas ALSTEF Group",
+            "lienHref": "/preuves/alstef-group/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "Maintenance d'équipements critiques et de systèmes automatisés, équipementier automobile",
-            "texte": "techniciens présents au quotidien dans les équipes, depuis 2025",
-            "lienLibelle": "Étude de cas JTEKT : maintenance des installations",
-            "lienHref": "/preuves/jtekt/"
+            "texte": "Techniciens présents au quotidien dans les équipes, depuis 2025.",
+            "lienLibelle": "Étude de cas JTEKT",
+            "lienHref": "/preuves/jtekt/",
+            "photo": "/assets/web/x-auto-caisse.jpg"
           },
           {
             "titre": "Installation et mise en production d'un nouveau parc machine, site automobile",
-            "texte": "six techniciens multidisciplinaires, depuis janvier 2023",
-            "lienLibelle": "Étude de cas EATON : mise en production",
-            "lienHref": "/preuves/eaton-mise-en-production/"
+            "texte": "Six techniciens multidisciplinaires, depuis janvier 2023.",
+            "lienLibelle": "Étude de cas EATON",
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+          },
+          {
+            "titre": "La GMAO planifie, nos techniciens interviennent",
+            "lienLibelle": "Étude de cas DimoMaint",
+            "lienHref": "/preuves/dimomaint/",
+            "photo": "/assets/web/mq-948c28bcda08.jpg"
           }
         ]
       },
       {
         "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
         "questions": [
           {
             "question": "Pouvez-vous intervenir sans les sources du programme ?",
@@ -265,6 +229,11 @@
             "reponse": "L'automate exécute la logique en temps réel au pied de la machine. La supervision affiche et enregistre le fonctionnement à l'échelle de l'atelier. Les deux se programment et doivent rester cohérents. Nous intervenons sur la chaîne complète, écrans IHM compris, dans la même suite logicielle que l'automate."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de récupérer la main sur le code qui pilote vos machines ?",
+        "bouton": "Demander un automaticien"
       }
     ]
   }

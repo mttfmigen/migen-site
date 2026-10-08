@@ -18,6 +18,8 @@
         "valeur": "Entrepôts et centres logistiques automatisés"
       }
     ],
+    "logo": "/assets/clients/savoye.png",
+    "photoHero": "/assets/web/mq-d50c84e228cb.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -121,6 +123,7 @@
         "valeur": "Résidence sur site ou intervention ponctuelle"
       }
     ],
+    "photoDispositif": "/assets/web/mq-056f3c250981.jpg",
     "resultats": [
       {
         "titre": "Des arrêts limités",
@@ -150,7 +153,7 @@
         "texte": "Les techniciens connaissent les technologies du constructeur avant d'arriver sur site."
       },
       {
-        "titre": "10 % des candidats retenus",
+        "titre": "10 % des techniciens retenus",
         "texte": "Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, évalués en entretien technique et comportemental."
       },
       {
@@ -162,22 +165,26 @@
       {
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
-        "href": "/preuves/"
+        "href": "/preuves/",
+        "photo": "/assets/web/mq-948c28bcda08.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
-        "href": "/secteurs/logistique/"
+        "href": "/secteurs/logistique/",
+        "photo": "/assets/web/mq-17e2f3bce95f.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : migration d'automates en Norvège",
-        "href": "/preuves/savoye-migration-automates-norvege/"
+        "href": "/preuves/savoye-migration-automates-norvege/",
+        "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "AKTID : un centre logistique monté en six semaines",
-        "href": "/preuves/aktid-centre-logistique/"
+        "href": "/preuves/aktid-centre-logistique/",
+        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
       }
     ]
   }

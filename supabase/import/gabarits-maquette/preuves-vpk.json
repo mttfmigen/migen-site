@@ -26,6 +26,7 @@
         "valeur": "Emballage"
       }
     ],
+    "photoHero": "/assets/web/mq-90cb13fdd619.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -121,6 +122,7 @@
         "valeur": "1 technicien senior"
       }
     ],
+    "photoDispositif": "/assets/web/mq-e6322efcd358.jpg",
     "resultats": [
       {
         "titre": "Meilleure répartition de la charge",
@@ -154,28 +156,32 @@
     "besoinProse": [
       "Décrivez votre parc, nous vous disons quel profil le tient réellement.",
       "Le 04 78 33 72 05 répond du lundi au vendredi, 8h00 à 18h30, et le rappel arrive dans l'heure. Pour un site en cadence continue, l'astreinte se souscrit en option.",
-      "Sur un parc hétérogène, la polyvalence se vérifie avant d'être promise. Chaque candidat passe un entretien technique et un entretien comportemental, et nous en retenons 10 %."
+      "Sur un parc hétérogène, la polyvalence se vérifie avant d'être promise. Chaque technicien passe un entretien technique et un entretien comportemental, et nous en retenons 10 %."
     ],
     "plusLoin": [
       {
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
-        "href": "/preuves/"
+        "href": "/preuves/",
+        "photo": "/assets/web/mq-339d39e2a674.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "GROUPE ATLANTIC : renfort sur plusieurs sites",
-        "href": "/preuves/groupe-atlantic/"
+        "href": "/preuves/groupe-atlantic/",
+        "photo": "/assets/web/mq-056f3c250981.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
-        "href": "/preuves/dimomaint/"
+        "href": "/preuves/dimomaint/",
+        "photo": "/assets/web/mq-948c28bcda08.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
-        "href": "/preuves/eiffage/"
+        "href": "/preuves/eiffage/",
+        "photo": "/assets/web/mq-17e2f3bce95f.jpg"
       }
     ]
   }

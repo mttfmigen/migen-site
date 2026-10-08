@@ -30,6 +30,8 @@
         "valeur": "Agroalimentaire infantile"
       }
     ],
+    "logo": "/assets/clients/danone-bledina.png",
+    "photoHero": "/assets/web/mq-1ef16ef335a6.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -136,6 +138,7 @@
         "valeur": "Jusqu'à 3 techniciens, 1 actuellement"
       }
     ],
+    "photoDispositif": "/assets/web/mq-17e2f3bce95f.jpg",
     "resultats": [
       {
         "titre": "Des techniciens qualifiés et autonomes",
@@ -173,7 +176,7 @@
         "texte": "Proposée en option sur les productions continues, au 04 78 33 72 05."
       },
       {
-        "titre": "10 % des candidats retenus",
+        "titre": "10 % des techniciens retenus",
         "texte": "Entretien technique et entretien comportemental, résultats partagés avec le client."
       }
     ],
@@ -181,22 +184,26 @@
       {
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
-        "href": "/preuves/"
+        "href": "/preuves/",
+        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
-        "href": "/offres/residence/"
+        "href": "/offres/residence/",
+        "photo": "/assets/web/mq-e6322efcd358.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance agroalimentaire",
-        "href": "/secteurs/agroalimentaire/"
+        "href": "/secteurs/agroalimentaire/",
+        "photo": "/assets/web/mq-339d39e2a674.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "McCAIN : Belgique",
-        "href": "/preuves/mccain-belgique/"
+        "href": "/preuves/mccain-belgique/",
+        "photo": "/assets/web/mq-056f3c250981.jpg"
       }
     ]
   }

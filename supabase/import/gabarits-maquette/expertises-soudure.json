@@ -1,85 +1,45 @@
 {
   "url": "/expertises/soudure/",
+  "titre_h1": "Soudure industrielle : une reprise qui tient, du premier coup",
   "contenu": {
     "gabarit": "domaine",
+    "pastille": "Expertises",
     "chapeau": "Un soudeur évalué arrive sur votre site avec son outillage, reprend la casse et traite ce qui l'a provoquée. Travaux chiffrés à l'avance, sans embauche et sans investissement en matériel.",
-    "boutons": [
+    "mention": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés prend le relais la nuit et le week-end.",
+    "appelBouton": "Demander une intervention",
+    "actions": [
       {
-        "libelle": "Demander une intervention"
+        "libelle": "Demander une intervention",
+        "href": "#besoin"
       }
     ],
-    "traitements": [
-      "Les fissures traitées avant la rupture",
-      "Les supports et bâtis renforcés",
-      "Le rechargement de pièce usée",
-      "La mécano-soudure de reprise",
-      "La tôlerie de maintenance",
-      "Le bon procédé pour le cas",
-      "Les matériaux courants de l'industrie",
-      "Un examen visuel systématique et un compte rendu"
-    ],
-    "autres": [
+    "formulaireHeroTitre": "Demander une intervention",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
-        "libelle": "Automatisme industriel",
-        "href": "/expertises/automatisme/"
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, après entretien technique ET comportemental"
       },
       {
-        "libelle": "Maintenance électrique industrielle",
-        "href": "/expertises/electrique/"
+        "valeur": "4",
+        "libelle": "Agences, plus des hubs techniques, pour partir du bassin le plus proche"
       },
       {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
+        "valeur": "+ 120",
+        "libelle": "Collaborateurs, partout en France"
       },
       {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance mécanique",
-        "href": "/expertises/mecanique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Maintenance robotique",
-        "href": "/expertises/robotique/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
+        "valeur": "en continu et tous les jours",
+        "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "cta": {
-      "question": "Besoin que la même structure arrête de casser au même endroit ?",
-      "bouton": {
-        "libelle": "Demander une intervention"
-      }
-    },
-    "reste": [
+    "problemePhoto": "/assets/web/mq-e6322efcd358.jpg",
+    "complementOffre": [
       {
-        "type": "chiffres",
-        "chiffres": [
-          {
-            "valeur": "10 %",
-            "libelle": "des candidats retenus, après entretien technique ET comportemental"
-          },
-          {
-            "valeur": "4",
-            "libelle": "agences, plus des hubs techniques, pour partir du bassin le plus proche"
-          },
-          {
-            "valeur": "+ 100",
-            "libelle": "collaborateurs, partout en France"
-          },
-          {
-            "valeur": "24/24 et 7/7",
-            "libelle": "astreinte, pour les sites couverts"
-          }
-        ]
-      },
+        "texte": "Besoin d'un soudeur sur plusieurs semaines ? Une casse métallique en cours se traite par le dépannage industriel."
+      }
+    ],
+    "sections": [
       {
         "type": "probleme",
         "punchline": "La production s'arrête pour quelques centimètres de cordon. Et le soudeur industriel est devenu introuvable.",
@@ -108,35 +68,35 @@
           {
             "prestation": {
               "accroche": "Les fissures traitées avant la rupture",
-              "texte": "préparation, chanfrein, reprise du cordon, examen visuel."
+              "texte": "Préparation, chanfrein, reprise du cordon, examen visuel."
             },
             "benefice": "Une fissure repérée tôt coûte une heure de travail. Trop tard, elle coûte la machine."
           },
           {
             "prestation": {
-              "accroche": "Les supports et bâtis renforcés",
-              "texte": "quand la casse revient au même endroit, avec étude de la contrainte réelle et mesure des déformations."
+              "accroche": "Les supports et bâtis renforcés quand la casse revient au même endroit, avec étude de la contrainte réelle et mesure des déformations.",
+              "texte": ""
             },
             "benefice": "La casse sort du cycle. Vous arrêtez de payer la même réparation deux fois par an."
           },
           {
             "prestation": {
               "accroche": "Le rechargement de pièce usée",
-              "texte": "apport de matière sur un arbre, une glissière, une dent de pignon, puis reprise dimensionnelle."
+              "texte": "Apport de matière sur un arbre, une glissière, une dent de pignon, puis reprise dimensionnelle."
             },
             "benefice": "L'organe repart sans attendre une pièce neuve indisponible."
           },
           {
             "prestation": {
               "accroche": "La mécano-soudure de reprise",
-              "texte": "modification d'un ensemble existant, ajout d'une platine, déplacement d'un point d'ancrage."
+              "texte": "Modification d'un ensemble existant, ajout d'une platine, déplacement d'un point d'ancrage."
             },
             "benefice": "Votre machine s'adapte à un nouveau produit sans être remplacée."
           },
           {
             "prestation": {
               "accroche": "La tôlerie de maintenance",
-              "texte": "carter, capot, goulotte, trémie, réparés sur place."
+              "texte": "Carter, capot, goulotte, trémie, réparés sur place."
             },
             "benefice": "Les protections qui couvrent vos opérateurs redeviennent conformes."
           },
@@ -150,21 +110,16 @@
           {
             "prestation": {
               "accroche": "Les matériaux courants de l'industrie",
-              "texte": "acier de construction, inox, aluminium, fonte et aciers spéciaux avec préchauffage et refroidissement contrôlé."
+              "texte": "Acier de construction, inox, aluminium, fonte et aciers spéciaux avec préchauffage et refroidissement contrôlé."
             },
             "benefice": "Une ligne agroalimentaire en inox et un bâti en acier chargé ne reçoivent pas le même traitement."
           },
           {
             "prestation": {
               "accroche": "Un examen visuel systématique et un compte rendu",
-              "texte": "préparation réalisée, procédé, métal d'apport, points à suivre."
+              "texte": "Préparation réalisée, procédé, métal d'apport, points à suivre."
             },
             "benefice": "Le dossier s'intègre dans votre système documentaire, y compris sous certification ISO 9001."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Besoin d'un soudeur sur plusieurs semaines ? Il intervient aussi en [sous-traitance maintenance](/offres/residence/), intégré à votre équipe. Une casse métallique en cours se traite par le [dépannage industriel](/offres/depannage-industriel/)."
           }
         ]
       },
@@ -173,19 +128,19 @@
         "etapes": [
           {
             "titre": "Vous décrivez la casse et vous envoyez une photo.",
-            "texte": "Matériau, épaisseur estimée, accès à la zone, contexte. Quatre champs, ou un appel au 04 78 33 72 05."
+            "texte": "Matériau, épaisseur estimée, accès à la zone, contexte. Quatre champs, ou un appel par téléphone."
           },
           {
             "titre": "Un technicien vous rappelle dans l'heure",
-            "texte": "la recherche de l'origine du défaut passe avant le chiffrage, pas l'inverse."
+            "texte": "La recherche de l'origine du défaut passe avant le chiffrage, pas l'inverse."
           },
           {
             "titre": "Le devis fixe le cadre",
-            "texte": "procédé retenu, métal d'apport, moyens d'accès, dimension de la zone, niveau de finition attendu."
+            "texte": "Procédé retenu, métal d'apport, moyens d'accès, dimension de la zone, niveau de finition attendu."
           },
           {
             "titre": "La préparation décide de la tenue",
-            "texte": "meulage, dégraissage, chanfrein, protection des équipements voisins, permis de feu et mesures incendie."
+            "texte": "Meulage, dégraissage, chanfrein, protection des équipements voisins, permis de feu et mesures incendie."
           },
           {
             "titre": "Le soudeur intervient, machine consignée.",
@@ -193,7 +148,7 @@
           },
           {
             "titre": "Contrôle et suivi",
-            "texte": "examen visuel, compte rendu écrit, conseil de surveillance, puis un point à distance pour vérifier que la reprise tient dans le temps."
+            "texte": "Examen visuel, compte rendu écrit, conseil de surveillance, puis un point à distance pour vérifier que la reprise tient dans le temps."
           }
         ]
       },
@@ -202,7 +157,7 @@
         "puces": [
           {
             "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-            "texte": "L'astreinte 24/24 et 7/7 couvre la nuit et le week-end sur les sites concernés."
+            "texte": "L'astreinte la nuit, le week-end et les jours fériés couvre la nuit et le week-end sur les sites concernés."
           },
           {
             "accroche": "Un résultat conforme au devis, avec notre responsabilité engagée sur le travail réalisé.",
@@ -210,53 +165,74 @@
           },
           {
             "accroche": "Un poste de soudage installé en sécurité",
-            "texte": "permis de feu, écran de protection, traitement des fumées, alimentation vérifiée, balisage. La sécurité prime sur la cadence, sur votre site comme ailleurs."
+            "texte": "Permis de feu, écran de protection, traitement des fumées, alimentation vérifiée, balisage. La sécurité prime sur la cadence, sur votre site comme ailleurs."
           }
         ]
-      },
-      {
-        "type": "cta",
-        "question": "Besoin d'un soudeur sur site avant que la fissure ne devienne une rupture ?",
-        "bouton": "Demander une intervention",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
       },
       {
         "type": "preuves",
         "preuves": [
           {
             "titre": "Montage d'un centre logistique, Clermont-Ferrand",
-            "texte": "12 monteurs mécaniciens et 8 engins de levage, 6 semaines de chantier, mécaniciens et chaudronniers mobilisés ensemble, livraison tenue",
-            "lienLibelle": "Étude de cas AKTID : montage d'un centre logistique",
-            "lienHref": "/preuves/aktid-centre-logistique/"
+            "lienLibelle": "Étude de cas AKTID",
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/mq-752675f1ed93.jpg",
+            "texte": "12 monteurs mécaniciens et 8 engins de levage, 6 semaines de chantier, mécaniciens et chaudronniers mobilisés ensemble, livraison tenue."
           },
           {
             "titre": "Montages et déplacements de machines, étanchéité et isolation",
-            "texte": "soudure et chaudronnerie parmi les domaines réunis selon le chantier, missions ciblées sur 2025",
-            "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
-            "lienHref": "/preuves/soprema/"
+            "lienLibelle": "Étude de cas SOPREMA",
+            "lienHref": "/preuves/soprema/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "texte": "Soudure et chaudronnerie parmi les domaines réunis selon le chantier, missions ciblées sur 2025."
           },
           {
             "titre": "Construction d'un site industriel de recherche et développement, matériaux bas carbone",
-            "texte": "pilotage de chantier et coordination, soudure et chaudronnerie mobilisées selon les besoins",
-            "lienLibelle": "Étude de cas ORTHUS x ECOCEM : nouveau site",
-            "lienHref": "/preuves/orthus-ecocem/"
+            "lienLibelle": "Étude de cas ORTHUS x ECOCEM",
+            "lienHref": "/preuves/orthus-ecocem/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg",
+            "texte": "Pilotage de chantier et coordination, soudure et chaudronnerie mobilisées selon les besoins."
           },
           {
             "titre": "Maintenance sous contrat d'un parc déployé partout en France, réalité virtuelle",
-            "texte": "périmètre technique complet, soudure et chaudronnerie comprises, depuis février 2024",
-            "lienLibelle": "Étude de cas TIMESCOPE : casques de réalité virtuelle",
-            "lienHref": "/preuves/timescope/"
+            "lienLibelle": "Étude de cas TIMESCOPE",
+            "lienHref": "/preuves/timescope/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "texte": "Périmètre technique complet, soudure et chaudronnerie comprises, depuis février 2024."
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et de son usinage, automobile",
-            "texte": "site tenu 7 jours sur 7 depuis octobre 2023",
-            "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
-            "lienHref": "/preuves/stellantis-fonderie-sept-fons/"
+            "lienLibelle": "Étude de cas STELLANTIS",
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/mq-e69a240d8656.jpg",
+            "texte": "Site tenu depuis octobre 2023."
+          },
+          {
+            "titre": "Six techniciens pour faire démarrer un parc machines",
+            "lienLibelle": "Étude de cas Eaton",
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "photo": "/assets/web/mq-948c28bcda08.jpg",
+            "texte": ""
+          },
+          {
+            "titre": "Maintenir un centre logistique qui ne ferme jamais",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/mq-948c28bcda08.jpg",
+            "texte": ""
+          },
+          {
+            "titre": "Des convoyeurs et des trieurs sous surveillance continue",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg",
+            "texte": ""
           }
         ]
       },
       {
         "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
         "questions": [
           {
             "question": "Combien coûte une intervention de soudure ?",
@@ -272,7 +248,7 @@
           },
           {
             "question": "Qui tient le poste chez nous ?",
-            "reponse": "Un soudeur salarié de Migen, évalué en entretien technique et comportemental, 10 % des candidats retenus. En soudure, la qualité ne se voit pas toujours sur le cordon fini : elle se joue sur le recrutement et sur la préparation."
+            "reponse": "Un soudeur salarié de Migen, évalué en entretien technique et comportemental, 10 % des techniciens retenus. En soudure, la qualité ne se voit pas toujours sur le cordon fini : elle se joue sur le recrutement et sur la préparation."
           },
           {
             "question": "Intervenez-vous sur site ou faut-il déposer la pièce ?",
@@ -283,6 +259,11 @@
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France partout en France. Un bâti à reprendre vaut le déplacement autant qu'une charpente de ligne."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que la même structure arrête de casser au même endroit ?",
+        "bouton": "Demander une intervention"
       }
     ]
   }

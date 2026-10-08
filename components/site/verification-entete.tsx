@@ -118,6 +118,33 @@ assert.ok(
   "l'entrée Diagnostic ne s'affiche pas malgré une cible fournie",
 );
 
+// ------------------------------- les sur-titres des panneaux, au style près
+// Relus dans l'autonome : 12 px de marge sous ceux d'« Offres », 14 sous ceux
+// de « Ressources » et « À propos », orange partout. Le 08/10, les quatre
+// derniers étaient à 12, et « Nos offres », devenu lien, passait au brun.
+const autonome = readFileSync("maquette/site-final-autonome.html", "utf8").replace(/\\"/g, '"');
+const echappe = (t: string) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const SUR_TITRES = ["Nos offres", "Conception &amp; réalisation", "Par format", "Par situation", "L’entreprise", "Nos engagements"];
+const styleSurTitre = (html: string, libelle: string) =>
+  new RegExp(`<div style="([^"]*font:600 11px[^"]*)">(?:<a\\b[^>]*>)?${echappe(libelle)}<`).exec(html)?.[1];
+for (const libelle of SUR_TITRES) {
+  const attendu = styleSurTitre(autonome, libelle);
+  assert.ok(attendu, `la maquette ne porte plus le sur-titre « ${libelle} »`);
+  assert.equal(styleSurTitre(panneaux, libelle), attendu, `sur-titre « ${libelle} » : style différent de la maquette`);
+}
+// « Nos offres » est un lien dans le site : il garde la couleur de son sur-titre.
+assert.match(readFileSync("components/site/megamenu/Offres.tsx", "utf8"), /href="\/offres\/" className=\{s\.lienSurTitre\}/);
+assert.match(
+  readFileSync("components/site/Entete.module.css", "utf8"),
+  /\.lienSurTitre \{\s*color: inherit;\s*\}/,
+  "« Nos offres » ne garde plus la couleur de son sur-titre",
+);
+assert.throws(
+  () => assert.equal(styleSurTitre(panneaux.replace("margin-bottom:14px\">Par format", "margin-bottom:12px\">Par format"), "Par format"), styleSurTitre(autonome, "Par format")),
+  "le contrôle des sur-titres laisse passer une marge de 12 px",
+);
+
 console.log(
-  `navigation vérifiée : ${liens.size} liens, tous dans l'inventaire des 223 URL.`,
+  `navigation vérifiée : ${liens.size} liens, tous dans l'inventaire des 223 URL ; ` +
+    `${SUR_TITRES.length} sur-titres de panneau au style de la maquette.`,
 );

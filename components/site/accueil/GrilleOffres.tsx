@@ -1,8 +1,10 @@
 import Image from "next/image";
 import styles from "./GrilleOffres.module.css";
 
-/* Grille des offres de la page d'accueil, portée de « Migen - Site final »
-   (lignes 535 à 598). Composant serveur : aucun état, les survols sont en CSS. */
+/* Grille des offres de la page d'accueil. Relevée le 08/10 sur le rendu de la
+   maquette autonome (section 2 de l'accueil), élément par élément. Composant
+   serveur : aucun état, les survols sont en CSS (`style-hover` de la maquette,
+   classes scp3, scp8, scp9 et scpa, recopiées dans le module). */
 
 type CleOffre =
   | "residence"
@@ -20,9 +22,7 @@ type CleOffre =
  *
  * `Record` COMPLET et non `Partial` : c'est le garde-fou. Ajouter une clé à
  * `CleOffre` sans son chemin ne compile plus, au lieu de retomber en silence
- * sur un lien mort. Et une constante plutôt qu'une prop : il n'y a qu'une
- * grille d'offres, sur une seule page, et une prop non passée est exactement
- * ce qui a rendu ces cinq cartes inertes.
+ * sur un lien mort.
  *
  * `travauxIndustriels` vit HORS de `/offres/`, contrairement aux quatre
  * autres : c'est l'URL de l'inventaire, elle ne se canonicalise pas ici.
@@ -36,12 +36,12 @@ const LIENS: Record<CleOffre, string> = {
   travauxIndustriels: "/travaux-industriels/",
 };
 
-/** Cartes 03 à 05 : même gabarit, seul le contenu change. */
+/** Cartes 04 à 06 : même gabarit, seul le contenu change. */
 const CARTES_SOBRES: readonly {
   cle: CleOffre;
   numero: string;
   titre: string;
-  texte: React.ReactNode;
+  texte: string;
   action: string;
 }[] = [
   {
@@ -49,7 +49,7 @@ const CARTES_SOBRES: readonly {
     numero: "04",
     titre: "migen© Arrêt technique",
     texte: "Arrêts planifiés, préparés en amont, tenus à la demi-journée.",
-    action: "Préparer un arrêt",
+    action: "Préparer un arrêt →",
   },
   {
     cle: "bureauEtudes",
@@ -57,7 +57,7 @@ const CARTES_SOBRES: readonly {
     titre: "migen© Bureau d’études",
     texte:
       "Conception, schémas électriques, mise en conformité machine : des études faites par des gens de terrain.",
-    action: "Confier une étude",
+    action: "Confier une étude →",
   },
   {
     cle: "travauxIndustriels",
@@ -65,7 +65,7 @@ const CARTES_SOBRES: readonly {
     titre: "migen© Travaux industriels",
     texte:
       "Transfert, montage, démantèlement, levage : le chantier, du relevé à la remise en production.",
-    action: "Préparer un chantier",
+    action: "Préparer un chantier →",
   },
 ];
 
@@ -92,6 +92,17 @@ const LIGNE_TITRE = {
   gap: "14px",
 } as const;
 
+const PASTILLE = {
+  font: "600 10.5px var(--fb)",
+  letterSpacing: ".1em",
+  textTransform: "uppercase",
+  color: "var(--acc)",
+  background: "var(--acc-w)",
+  padding: "5px 11px",
+  borderRadius: "999px",
+  whiteSpace: "nowrap",
+} as const;
+
 const BOUTON = {
   display: "inline-flex",
   alignItems: "center",
@@ -104,8 +115,27 @@ const BOUTON = {
   whiteSpace: "nowrap",
 } as const;
 
-export default function GrilleOffres() {
+const BOUTON_ACCENT = {
+  ...BOUTON,
+  background: "var(--acc)",
+  color: "#fff",
+  transition: "filter var(--tr),transform var(--tr)",
+} as const;
 
+const TEXTE_CARTE = {
+  font: "400 14.5px/1.6 var(--fb)",
+  color: "var(--ink2)",
+  margin: "10px 0 18px",
+} as const;
+
+const GARANTIES_RESIDENCE = [
+  "Vous validez chaque technicien avant son arrivée",
+  "Remplacement garanti en cas d’absence",
+  "Recrutement, habilitations et paie portés par migen",
+  "Reporting mensuel et suivi d’indicateurs",
+] as const;
+
+export default function GrilleOffres() {
   return (
     <section style={{ maxWidth: 1200, margin: "0 auto", padding: "44px 40px 0" }}>
       <div
@@ -116,13 +146,14 @@ export default function GrilleOffres() {
           gap: "16px",
         }}
       >
-        {/* Carte photographique d'ouverture : la maquette la fait courir sur
-            les DEUX premiers rangs, la rangée 04-06 passe dessous pleine
-            largeur. Relevé sur la capture de l'accueil, 07/10 au soir. */}
+        {/* Carte photographique d'ouverture, sur deux rangs. `fill` et `sizes` :
+            le fichier source fait 1279x1600 pour une carte affichée à ~363 px,
+            next/image sert une version à sa taille. */}
         <div
+          className={styles.offImg}
           style={{
+            gridRow: "span 2",
             position: "relative",
-            gridRow: "1 / 3",
             borderRadius: "var(--rad)",
             overflow: "hidden",
             minHeight: "340px",
@@ -130,10 +161,6 @@ export default function GrilleOffres() {
             boxShadow: "0 30px 70px -40px rgba(0,0,0,.5)",
           }}
         >
-          {/* `fill` et `sizes` : le fichier source fait 1279x1600 pour une carte
-              affichée à ~363x340. Servi brut, il coûtait le décodage de deux
-              mégapixels au premier défilement, l'unique image lente mesurée.
-              Avec next/image le navigateur reçoit une version à sa taille. */}
           <Image
             src="/assets/web/team-grind-sparks.jpg"
             alt="Technicien de maintenance migen en intervention"
@@ -180,15 +207,7 @@ export default function GrilleOffres() {
               Innovation, performance, impact.
             </span>
           </div>
-          <div
-            style={{
-              position: "absolute",
-              bottom: 0,
-              left: 0,
-              right: 0,
-              padding: "32px",
-            }}
-          >
+          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "32px" }}>
             <div
               style={{
                 font: "600 11.5px var(--fb)",
@@ -213,262 +232,166 @@ export default function GrilleOffres() {
           </div>
         </div>
 
-        {/* 01, Résidence, sur fond anthracite. La maquette lui donne les
-            colonnes 2 et 3 du premier rang, texte et bouton à gauche, les
-            quatre coches en colonne à droite. */}
+        {/* 01, Résidence, sur fond anthracite, sur deux colonnes : texte et
+            bouton à gauche, les quatre garanties en colonne à droite. */}
         <div
+          className={styles.offMain}
           style={{
+            gridColumn: "span 2",
             display: "flex",
             flexDirection: "column",
-            gridColumn: "2 / 4",
             borderRadius: "var(--rad)",
-            padding: "30px 32px 30px",
+            padding: "30px 32px",
             background: "var(--panel)",
             position: "relative",
             overflow: "hidden",
             boxShadow: "0 24px 56px -32px rgba(0,0,0,.5)",
-            transition: "transform var(--tr)",
           }}
         >
           <div
             style={{
               position: "absolute",
-              width: "340px",
-              height: "340px",
-              right: "-130px",
-              top: "-150px",
-              background:
-                "radial-gradient(circle,rgba(255,124,60,.32),transparent 66%)",
+              width: "420px",
+              height: "420px",
+              right: "-150px",
+              top: "-200px",
+              background: "radial-gradient(circle,rgba(255,124,60,.32),transparent 66%)",
               pointerEvents: "none",
             }}
           />
           <div
-            className="mg-r2"
+            className={styles.offIn}
             style={{
               position: "relative",
               display: "grid",
-              gridTemplateColumns: "1.1fr .9fr",
-              gap: "16px 28px",
-              height: "100%",
+              gridTemplateColumns: "minmax(0,1.1fr) minmax(0,.9fr)",
+              gap: "30px",
+              flex: "1 0 auto",
             }}
           >
             <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={NUMERO}>01</div>
-            <div style={LIGNE_TITRE}>
+              <div style={NUMERO}>01</div>
               <div
                 style={{
-                  font: "600 21px var(--ft)",
-                  letterSpacing: "-.03em",
+                  font: "600 calc(24px * var(--ts)) var(--ft)",
+                  letterSpacing: "-.035em",
                   color: "#fff",
                 }}
               >
                 migen© Résidence
               </div>
+              <p
+                style={{
+                  font: "400 14.5px/1.6 var(--fb)",
+                  color: "rgba(255,255,255,.72)",
+                  margin: "10px 0 20px",
+                  maxWidth: "46ch",
+                }}
+              >
+                Des techniciens en résidence sur votre site, pour la durée dont
+                vous avez besoin. Vous constituez l&apos;équipe, validez chaque
+                intervenant, et la ligne ne s&apos;arrête plus.
+              </p>
+              <a
+                href={LIENS.residence}
+                className={styles.lienResidence}
+                style={{
+                  ...BOUTON_ACCENT,
+                  boxShadow: "0 10px 24px -12px rgba(255,124,60,.85)",
+                }}
+              >
+                Constituer mon équipe →
+              </a>
             </div>
-            <p
-              style={{
-                font: "400 14.5px/1.6 var(--fb)",
-                color: "rgba(255,255,255,.72)",
-                margin: "10px 0 18px",
-              }}
-            >
-              Des techniciens en résidence sur votre site, pour la durée dont
-              vous avez besoin. Vous constituez l&apos;équipe, validez chaque
-              intervenant, et la ligne ne s&apos;arrête plus.
-            </p>
-            <a
-              href={LIENS.residence}
-              className={styles.lienAccent}
-              style={{
-                ...BOUTON,
-                background: "var(--acc)",
-                color: "#fff",
-                boxShadow: "0 10px 24px -12px rgba(255,124,60,.85)",
-                transition: "filter var(--tr),transform var(--tr)",
-                marginTop: "auto",
-              }}
-            >
-              Constituer mon équipe
-              <span aria-hidden="true">→</span>
-            </a>
-            </div>
-            <ul
-              style={{
-                listStyle: "none",
-                margin: 0,
-                padding: 0,
-                display: "grid",
-                gap: 8,
-                alignContent: "center",
-              }}
-            >
-              {[
-                "Vous validez chaque technicien avant son arrivée",
-                "Remplacement garanti en cas d’absence",
-                "Recrutement, habilitations et paie portés par migen",
-                "Reporting mensuel et suivi d’indicateurs",
-              ].map((garantie) => (
-                <li
+            <div style={{ display: "grid", gap: "8px", alignContent: "center" }}>
+              {GARANTIES_RESIDENCE.map((garantie) => (
+                <div
                   key={garantie}
                   style={{
                     display: "flex",
-                    gap: 10,
-                    alignItems: "baseline",
-                    padding: "10px 14px",
-                    borderRadius: 12,
+                    gap: "12px",
+                    alignItems: "flex-start",
+                    padding: "13px 16px",
+                    borderRadius: "var(--rad-s)",
                     background: "rgba(255,255,255,.06)",
-                    border: "1px solid rgba(255,255,255,.1)",
-                    font: "400 13.5px/1.45 var(--fb)",
-                    color: "rgba(255,255,255,.85)",
+                    border: "1px solid rgba(255,255,255,.09)",
+                    font: "400 14px/1.45 var(--fb)",
+                    color: "rgba(255,255,255,.86)",
                   }}
                 >
-                  <span aria-hidden="true" style={{ color: "var(--acc)" }}>✓</span>
+                  <span
+                    aria-hidden="true"
+                    style={{ color: "var(--acc)", flex: "0 0 auto", fontWeight: 600 }}
+                  >
+                    ✓
+                  </span>
                   {garantie}
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
 
-        {/* 02, Full service, ajoutée le 07/10 : la maquette compte SIX façons et
-            cette carte manquait, d'où notre « Sept » faux avec cinq cartes.
-            Texte mot pour mot de l'accueil de la maquette. */}
+        {/* 02, Full service */}
         <div
           className={styles.carteLevee}
           style={{
             display: "flex",
             flexDirection: "column",
             borderRadius: "var(--rad)",
-            padding: "30px 32px 30px",
+            padding: "30px 32px",
             ...VERRE,
           }}
         >
-          <div
-            style={{
-              position: "relative",
-              display: "flex",
-              flexDirection: "column",
-              height: "100%",
-            }}
-          >
+          <div style={{ position: "relative", display: "flex", flexDirection: "column", height: "100%" }}>
             <div style={NUMERO}>02</div>
             <div style={LIGNE_TITRE}>
               <div style={{ font: "600 21px var(--ft)", letterSpacing: "-.03em" }}>
                 migen© Full service
               </div>
-              <span
-                style={{
-                  font: "600 10.5px var(--fb)",
-                  letterSpacing: ".1em",
-                  textTransform: "uppercase",
-                  color: "var(--acc)",
-                  background: "var(--acc-w)",
-                  padding: "5px 11px",
-                  borderRadius: "999px",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Contrat unique
-              </span>
+              <span style={PASTILLE}>Contrat unique</span>
             </div>
-            <p
-              style={{
-                font: "400 14.5px/1.6 var(--fb)",
-                color: "var(--ink2)",
-                margin: "10px 0 18px",
-              }}
-            >
+            <p style={TEXTE_CARTE}>
               Toute votre maintenance dans un seul contrat&nbsp;: préventif,
               dépannage, pièces et GMAO, avec un seul interlocuteur.
             </p>
-            <a
-              href={LIENS.fullService}
-              className={styles.lienAccent}
-              style={{
-                ...BOUTON,
-                background: "var(--acc)",
-                color: "#fff",
-                boxShadow: "0 10px 24px -12px rgba(255,124,60,.85)",
-                transition: "filter var(--tr),transform var(--tr)",
-                marginTop: "auto",
-              }}
-            >
-              Confier ma maintenance
-              <span aria-hidden="true">→</span>
+            <a href={LIENS.fullService} className={styles.lienAccent} style={BOUTON_ACCENT}>
+              Confier ma maintenance →
             </a>
           </div>
         </div>
 
-        {/* 03, Zéro arrêt, carte de verre qui se soulève au survol */}
+        {/* 03, Zéro arrêt. La maquette écrit « La maintenance qui ne touche
+            jamais à votre production : entretien le samedi, dépannage la
+            nuit, prix mensuel fixe. Trois formules, sur devis. » La première
+            phrase annonce un prix : interdite, elle est RETIRÉE entière (pas
+            raccourcie), la seconde reste mot pour mot. Écart déclaré. */}
         <div
           className={styles.carteLevee}
           style={{
             display: "flex",
             flexDirection: "column",
             borderRadius: "var(--rad)",
-            padding: "30px 32px 30px",
+            padding: "30px 32px",
             ...VERRE,
           }}
         >
-          <div
-            style={{
-              position: "relative",
-              display: "flex",
-              flexDirection: "column",
-              height: "100%",
-            }}
-          >
+          <div style={{ position: "relative", display: "flex", flexDirection: "column", height: "100%" }}>
             <div style={NUMERO}>03</div>
             <div style={LIGNE_TITRE}>
               <div style={{ font: "600 21px var(--ft)", letterSpacing: "-.03em" }}>
                 migen© Zéro arrêt
               </div>
-              <span
-                style={{
-                  font: "600 10.5px var(--fb)",
-                  letterSpacing: ".1em",
-                  textTransform: "uppercase",
-                  color: "var(--acc)",
-                  background: "var(--acc-w)",
-                  padding: "5px 11px",
-                  borderRadius: "999px",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Abonnement
-              </span>
+              <span style={PASTILLE}>Abonnement</span>
             </div>
-            <p
-              style={{
-                font: "400 14.5px/1.6 var(--fb)",
-                color: "var(--ink2)",
-                margin: "10px 0 18px",
-              }}
-            >
-              {/* La maquette poursuit par « , prix mensuel fixe. Trois
-                  formules, sur devis. » : un prix, interdit par le contrat.
-                  La phrase s'arrête donc là, elle n'est pas reformulée, même
-                  arbitrage que sur la page /offres/zero-arret/. */}
-              La maintenance qui ne touche jamais à votre production&nbsp;:
-              entretien le samedi, dépannage la nuit.
-            </p>
-            <a
-              href={LIENS.zeroArret}
-              className={styles.lienAccent}
-              style={{
-                ...BOUTON,
-                background: "var(--acc)",
-                color: "#fff",
-                transition: "filter var(--tr),transform var(--tr)",
-              }}
-            >
-              Les trois formules
-              <span aria-hidden="true">→</span>
+            <p style={TEXTE_CARTE}>Trois formules, sur devis.</p>
+            <a href={LIENS.zeroArret} className={styles.lienAccent} style={BOUTON_ACCENT}>
+              Les trois formules →
             </a>
           </div>
         </div>
 
-        {/* 03 à 05, même gabarit sobre */}
+        {/* 04 à 06, même gabarit sobre */}
         {CARTES_SOBRES.map((carte) => (
           <div
             key={carte.cle}
@@ -476,7 +399,7 @@ export default function GrilleOffres() {
               display: "flex",
               flexDirection: "column",
               borderRadius: "var(--rad)",
-              padding: "28px 28px 28px",
+              padding: "28px",
               ...VERRE,
             }}
           >
@@ -505,7 +428,6 @@ export default function GrilleOffres() {
               }}
             >
               {carte.action}
-              <span aria-hidden="true">→</span>
             </a>
           </div>
         ))}

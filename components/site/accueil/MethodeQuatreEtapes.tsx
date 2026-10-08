@@ -9,8 +9,12 @@ export interface EtapeMethode {
   /** Numéro affiché, deux chiffres dans la maquette : « 01 ». */
   numero: string;
   titre: string;
-  /** Repère de temps de l'étape, affiché sous le titre. */
-  quand: string;
+  /**
+   * Repère de temps de l'étape, affiché sous le titre. Facultatif : la
+   * maquette chiffre ceux des étapes 01 et 02 (« 2 à 5 jours », « 1 à 2
+   * semaines »), délais interdits, retirés et non remplacés.
+   */
+  quand?: string;
   corps: string;
   /** Ce que le client fait à cette étape (« De votre côté »). */
   votreCote: string;
@@ -128,9 +132,14 @@ export default function MethodeQuatreEtapes({
                 onClick={() => setChoisie(rang)}
               >
                 <span className={styles.pastille} aria-hidden="true" />
-                <span className={styles.numero}>{etape.numero}</span>
-                <span className={styles.titre}>{etape.titre}</span>
-                <span className={styles.quand}>{etape.quand}</span>
+                <span className={styles.numero}><span>{etape.numero}</span></span>
+                <span className={styles.titre}><span>{etape.titre}</span></span>
+                {/* Repère retiré (délai chiffré) : sa ligne reste, vide, pour que les
+                    quatre étapes gardent la même hauteur, comme dans la maquette
+                    où chacune porte le sien. */}
+                <span className={styles.quand} aria-hidden={!etape.quand || undefined}>
+                  <span>{etape.quand ?? "\u00a0"}</span>
+                </span>
               </button>
             ))}
           </div>
@@ -154,7 +163,7 @@ export default function MethodeQuatreEtapes({
                       marginBottom: 12,
                     }}
                   >
-                    {active.titre}
+                    <span>{active.titre}</span>
                   </div>
                   <p
                     style={{
@@ -164,7 +173,7 @@ export default function MethodeQuatreEtapes({
                       maxWidth: "56ch",
                     }}
                   >
-                    {active.corps}
+                    <span>{active.corps}</span>
                   </p>
                 </div>
                 <div style={{ display: "grid", gap: 14 }}>
@@ -185,7 +194,7 @@ export default function MethodeQuatreEtapes({
                         color: "var(--ink1)",
                       }}
                     >
-                      {active.votreCote}
+                      <span>{active.votreCote}</span>
                     </div>
                   </div>
                   <div
@@ -205,7 +214,7 @@ export default function MethodeQuatreEtapes({
                         color: "var(--ink)",
                       }}
                     >
-                      {active.resultat}
+                      <span>{active.resultat}</span>
                     </div>
                   </div>
                 </div>

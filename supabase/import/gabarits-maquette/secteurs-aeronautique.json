@@ -1,199 +1,242 @@
 {
   "url": "/secteurs/aeronautique/",
-  "source": "dessin : maquette/accueil-rendu.html, gabarit isSecteur, lignes 6278 à 6364. texte : supabase/import/corpus-analyse.json, produit par scripts/produit-secteurs.mjs.",
+  "titre_h1": "Zéro défaut toléré. Zéro retard accepté.",
+  "source": "dessin : maquette/rendu/secteurs--aeronautique.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {
     "gabarit": "secteur",
-    "surtitre": "Secteur d'activité",
+    "pastille": "Maintenance aéronautique",
     "chapeau": "Nous entretenons les moyens qui fabriquent : machines d'usinage 3 à 5 axes, lignes d'assemblage, moyens de mesure, utilités. Chaque intervention produit un historique relié à l'équipement, disponible le jour où votre donneur d'ordre audite le site.",
     "actions": [
       {
         "libelle": "Étudier la maintenance de mes moyens de production",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperesSurtitre": "Nos repères dans le secteur",
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30, pour qualifier votre besoin et notre périmètre. Astreinte la nuit, le week-end et les jours fériés en option pour les sites en équipes.",
+    "formulaireHeroTitre": "Étudier la maintenance de mes moyens de production",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
-        "valeur": "+ 100",
-        "libelle": "collaborateurs, mécaniciens de précision, automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc"
+        "valeur": "+ 120",
+        "libelle": "Collaborateurs, mécaniciens de précision, automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc"
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, et des techniciens au contact des bassins de la filière"
+        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, et des techniciens au contact des bassins de la filière"
       }
     ],
-    "enjeuxSurtitre": "Les enjeux du secteur",
-    "enjeuxTitre": "Une machine qui dérive ne s'arrête pas. Elle continue de produire, et elle produit du rebut.",
-    "enjeux": [
+    "logosTitre": "Ils nous confient leurs sites industriels",
+    "logos": [
       {
-        "titre": "La dérive coûte plus cher que la panne.",
-        "texte": "Des pièces à rebuter, parfois à rappeler. La maintenance participe directement à la conformité du produit."
+        "nom": "Eaton",
+        "src": "/assets/clients/mq-70bce765c1a2.svg"
       },
       {
-        "titre": "Chaque pièce doit être reliée aux conditions de sa fabrication.",
-        "texte": "Une intervention non documentée sur un moyen de production fragilise cette chaîne."
+        "nom": "Mersen",
+        "src": "/assets/clients/mq-eb9461b85e59.svg"
       },
       {
-        "titre": "Les cadences montent, les fenêtres d'immobilisation se négocient serré.",
-        "texte": "Chaque équipement compte quand le palier de production approche."
+        "nom": "Suez",
+        "src": "/assets/clients/mq-89100525ef89.svg"
       },
       {
-        "titre": "L'exigence documentaire descend jusqu'au rang 2",
-        "texte": ", sans les moyens du donneur d'ordre pour l'absorber."
+        "nom": "Eiffage",
+        "src": "/assets/clients/mq-21daf7c60970.svg"
       },
       {
-        "titre": "Le technicien qui connaît la machine de précision est le profil le plus disputé de la filière.",
-        "texte": "Les postes restent ouverts des mois."
+        "nom": "Ecocem",
+        "src": "/assets/clients/ecocem.png"
+      },
+      {
+        "nom": "Groupe Atlantic",
+        "src": "/assets/clients/groupe-atlantic.png",
+        "filtre": "invert(1) hue-rotate(180deg)"
+      },
+      {
+        "nom": "Tournaire",
+        "src": "/assets/clients/mq-7c01e175985e.png"
+      },
+      {
+        "nom": "Rector Lesage",
+        "src": "/assets/clients/rector-lesage.png"
+      },
+      {
+        "nom": "Joint Lyonnais",
+        "src": "/assets/clients/joint-lyonnais.png"
+      },
+      {
+        "nom": "Soprema",
+        "src": "/assets/clients/mq-127f9e03c53b.svg"
+      },
+      {
+        "nom": "WashTec",
+        "src": "/assets/clients/orthus-x-washtec.svg"
       }
     ],
-    "autresSurtitre": "Les autres secteurs",
-    "autres": [
-      {
-        "libelle": "Agroalimentaire",
-        "href": "/secteurs/agroalimentaire/"
-      },
-      {
-        "libelle": "Équipements logistiques",
-        "href": "/secteurs/logistique/"
-      },
-      {
-        "libelle": "Automobile",
-        "href": "/secteurs/automobile/"
-      },
-      {
-        "libelle": "Pharmaceutique",
-        "href": "/secteurs/pharmaceutique/"
-      },
-      {
-        "libelle": "Chimie",
-        "href": "/secteurs/chimie/"
-      },
-      {
-        "libelle": "Nucléaire",
-        "href": "/secteurs/nucleaire/"
-      },
-      {
-        "libelle": "Industrie lourde",
-        "href": "/secteurs/industrie-lourde/"
-      },
-      {
-        "libelle": "Industrie métallique",
-        "href": "/secteurs/industrie-metallique/"
-      },
-      {
-        "libelle": "Menuiserie industrielle",
-        "href": "/secteurs/menuiserie-industrielle/"
-      }
-    ],
-    "appelTitre": "Besoin d'un entretien de vos moyens à la hauteur de ce que vous fabriquez ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
-      "libelle": "Parler à un chargé d'affaires",
-      "href": "#formulaire"
+    "appelBouton": "Étudier la maintenance de mes moyens de production",
+    "problemePhoto": "/assets/web/mq-dcd9cac6ffbf.jpg",
+    "brefBande": "Besoin de sécuriser vos moyens de production avant le prochain palier de cadence ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Étudier la maintenance de mes moyens de production",
+      "href": "#besoin"
     },
-    "complement": [
+    "expertisesTitre": "Les expertises d’une industrie de précision",
+    "expertisesChapeau": "Tolérances serrées, pièces tracées, conformité : l’à-peu-près n’existe pas.",
+    "expertises": [
+      {
+        "titre": "Mécanique",
+        "texte": "Machines-outils et bancs de précision : alignement et géométrie.",
+        "href": "/expertises/mecanique/",
+        "photo": "/assets/web/team-grind-front.jpg"
+      },
+      {
+        "titre": "Automatisme",
+        "texte": "Commandes numériques et automates d’atelier, diagnostic documenté.",
+        "href": "/expertises/automatisme/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      },
+      {
+        "titre": "Robotique",
+        "texte": "Cellules de perçage et de manutention, recalage des trajectoires.",
+        "href": "/expertises/robotique/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      },
+      {
+        "titre": "Hydraulique",
+        "texte": "Presses et bancs d’essai, circuits haute pression.",
+        "href": "/expertises/hydraulique/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
+      }
+    ],
+    "marquesFamille": "robot",
+    "marquesFamilles": [
+      "robot",
+      "mo"
+    ],
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "Une machine qui dérive ne s'arrête pas. Elle continue de produire, et elle produit du rebut.",
+        "puces": [
+          {
+            "accroche": "La dérive coûte plus cher que la panne.",
+            "texte": "Des pièces à rebuter, parfois à rappeler. La maintenance participe directement à la conformité du produit."
+          },
+          {
+            "accroche": "Chaque pièce doit être reliée aux conditions de sa fabrication.",
+            "texte": "Une intervention non documentée sur un moyen de production fragilise cette chaîne."
+          },
+          {
+            "accroche": "Les cadences montent, les fenêtres d'immobilisation se négocient serré.",
+            "texte": "Chaque équipement compte quand le palier de production approche."
+          },
+          {
+            "accroche": "L'exigence documentaire descend jusqu'au rang 2",
+            "texte": ", sans les moyens du donneur d'ordre pour l'absorber."
+          },
+          {
+            "accroche": "Le technicien qui connaît la machine de précision est le profil le plus disputé de la filière.",
+            "texte": "Les postes restent ouverts des mois."
+          }
+        ]
+      },
       {
         "type": "offre",
         "lignes": [
           {
             "prestation": {
               "accroche": "Cartographie de criticité",
-              "texte": "chaque moyen classé selon son impact et son risque."
+              "texte": "Chaque moyen classé selon son impact et son risque."
             },
             "benefice": "Une machine goulot ne se traite pas comme une perceuse d'atelier. Le budget suit la criticité réelle."
           },
           {
             "prestation": {
               "accroche": "Contrôles géométriques et relevés suivis dans le temps",
-              "texte": "broches, axes, changeurs d'outils, lubrification."
+              "texte": "Broches, axes, changeurs d'outils, lubrification."
             },
             "benefice": "La dérive apparaît dans les mesures avant d'apparaître dans les rebuts."
           },
           {
             "prestation": {
               "accroche": "Préventif calé sur vos fenêtres",
-              "texte": "entre les équipes, la nuit, aux arrêts planifiés."
+              "texte": "Entre les équipes, la nuit, aux arrêts planifiés."
             },
             "benefice": "La remise en service du lundi matin ne se découvre pas, elle suit une procédure préparée."
           },
           {
             "prestation": {
               "accroche": "Automaticiens et roboticiens",
-              "texte": "cellules de perçage, de dépose de fibre ou de peinture, variateurs, automates de machines."
+              "texte": "Cellules de perçage, de dépose de fibre ou de peinture, variateurs, automates de machines."
             },
             "benefice": "La partie commande cesse d'être le point aveugle de l'équipe mécanique."
           },
           {
             "prestation": {
               "accroche": "Appui sur les moyens de mesure",
-              "texte": "machines à mesurer, bancs de test, environnement des salles de métrologie."
+              "texte": "Machines à mesurer, bancs de test, environnement des salles de métrologie."
             },
             "benefice": "La fiabilité des moyens qui libèrent vos pièces est suivie comme le reste du parc."
           },
           {
             "prestation": {
-              "accroche": "Comptes rendus au format de votre GMAO",
-              "texte": ", habilitations à jour, plan de prévention signé."
+              "accroche": "Comptes rendus au format de votre GMAO habilitations à jour, plan de prévention signé."
             },
             "benefice": "Quand l'audit client arrive, l'historique complet par moyen est déjà en place."
           },
           {
             "prestation": {
               "accroche": "Renforts préparés pour une montée en cadence",
-              "texte": "entretien resserré sur les goulots, références critiques anticipées."
+              "texte": "Entretien resserré sur les goulots, références critiques anticipées."
             },
             "benefice": "Le palier se passe sans découvrir une pièce manquante la semaine où elle bloque tout."
           },
           {
             "prestation": {
-              "texte": "Attendu de la filière"
+              "accroche": "Attendu de la filière"
             },
             "benefice": "Réponse Migen"
           },
           {
             "prestation": {
-              "texte": "Conformité des moyens"
+              "accroche": "Conformité des moyens"
             },
             "benefice": "Entretien tracé, mesures documentées, dérives signalées"
           },
           {
             "prestation": {
-              "texte": "Temps d'immobilisation"
+              "accroche": "Temps d'immobilisation"
             },
             "benefice": "Interventions préparées, pièces anticipées, fenêtres respectées"
           },
           {
             "prestation": {
-              "texte": "Compétence machines de précision"
+              "accroche": "Compétence machines de précision"
             },
             "benefice": "Mécaniciens et automaticiens confirmés, évalués en entretien"
           },
           {
             "prestation": {
-              "texte": "Traçabilité"
+              "accroche": "Traçabilité"
             },
             "benefice": "Historique complet par équipement, intégrable à vos systèmes"
           },
           {
             "prestation": {
-              "texte": "Sécurité"
+              "accroche": "Sécurité"
             },
             "benefice": "Habilitations vérifiées, coactivité gérée, accueil sécurité suivi"
           },
           {
             "prestation": {
-              "texte": "Couverture nationale"
+              "accroche": "Couverture nationale"
             },
             "benefice": "4 agences, taux horaire homogène, un seul interlocuteur"
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Notre [bureau d'études](/offres/bureau-etudes/) accompagne aussi vos évolutions : reprise d'un poste, mise en conformité d'une machine, adaptation d'une ligne à une nouvelle cadence. Le détail de la spécialité machine se trouve sur notre page [maintenance machine outil](/expertises/mecanique/machine-outil/)."
           }
         ]
       },
@@ -202,27 +245,27 @@
         "etapes": [
           {
             "titre": "Qualification honnête du périmètre",
-            "texte": "ce que nous savons couvrir, et ce que nous ne couvrons pas. La réponse arrive au premier échange, pas après la signature."
+            "texte": "Ce que nous savons couvrir, et ce que nous ne couvrons pas. La réponse arrive au premier échange, pas après la signature."
           },
           {
             "titre": "Cartographie",
-            "texte": "criticité, état, moyens goulots, pièces critiques. C'est la photo de départ dont tout le reste découle."
+            "texte": "Criticité, état, moyens goulots, pièces critiques. C'est la photo de départ dont tout le reste découle."
           },
           {
             "titre": "Plan préventif",
-            "texte": "fréquences calées sur l'utilisation réelle, opérations positionnées dans vos fenêtres, références anticipées."
+            "texte": "Fréquences calées sur l'utilisation réelle, opérations positionnées dans vos fenêtres, références anticipées."
           },
           {
             "titre": "Intégration",
-            "texte": "habilitations vérifiées, plan de prévention signé, coactivité organisée avec vos équipes et les autres intervenants."
+            "texte": "Habilitations vérifiées, plan de prévention signé, coactivité organisée avec vos équipes et les autres intervenants."
           },
           {
             "titre": "Exécution",
-            "texte": "préventif aux fenêtres, dépannage outillé, vérifications et enregistrements systématiques à la remise en route."
+            "texte": "Préventif aux fenêtres, dépannage outillé, vérifications et enregistrements systématiques à la remise en route."
           },
           {
             "titre": "Préparation des paliers",
-            "texte": "renforts réservés avant la montée en cadence, entretien resserré sur les goulots, retour d'expérience de chaque palier passé."
+            "texte": "Renforts réservés avant la montée en cadence, entretien resserré sur les goulots, retour d'expérience de chaque palier passé."
           }
         ]
       },
@@ -231,23 +274,17 @@
         "puces": [
           {
             "accroche": "Un périmètre annoncé sans survente",
-            "texte": "la maintenance des aéronefs relève d'un métier réglementé qui n'est pas le nôtre. Nous entretenons les usines qui fabriquent, et nous le disons dès le premier appel."
+            "texte": "La maintenance des aéronefs relève d'un métier réglementé qui n'est pas le nôtre. Nous entretenons les usines qui fabriquent, et nous le disons dès le premier appel."
           },
           {
             "accroche": "La traçabilité complète par moyen de production",
-            "texte": "gamme, références, vérifications, intégrables à votre GMAO. Vos auditeurs y trouvent l'historique sans reconstitution."
+            "texte": "Gamme, références, vérifications, intégrables à votre GMAO. Vos auditeurs y trouvent l'historique sans reconstitution."
           },
           {
             "accroche": "Des intervenants dont le niveau se prouve",
-            "texte": "10 % des candidats retenus, évaluation technique et comportementale, expérience des machines de précision vérifiée avant l'affectation."
+            "texte": "10 % des techniciens retenus, évaluation technique et comportementale, expérience des machines de précision vérifiée avant l'affectation."
           }
         ]
-      },
-      {
-        "type": "cta",
-        "question": "Besoin de sécuriser vos moyens de production avant le prochain palier de cadence ?",
-        "bouton": "Étudier la maintenance de mes moyens de production",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
       },
       {
         "type": "preuves",
@@ -256,31 +293,54 @@
             "titre": "Technicien intégré à temps plein sur centres d'usinage, presses et machines à commande numérique, pièces mécaniques de précision",
             "texte": "en 2025",
             "lienLibelle": "Étude de cas VOIT : site du Grand Est",
-            "lienHref": "/preuves/voit-grand-est/"
+            "lienHref": "/preuves/voit-grand-est/",
+            "photo": "/assets/web/x-robotique.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne de production neuve",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
-            "lienHref": "/preuves/mersen/"
+            "lienHref": "/preuves/mersen/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "Six techniciens pour l'installation et la mise en production d'un parc machine neuf",
             "texte": "depuis janvier 2023",
             "lienLibelle": "Étude de cas EATON : mise en production",
-            "lienHref": "/preuves/eaton-mise-en-production/"
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "photo": "/assets/web/mq-9b461f439fef.jpg"
           },
           {
             "titre": "3 à 5 techniciens pour accompagner la montée en cadence de plusieurs usines",
             "texte": "depuis septembre 2024",
             "lienLibelle": "Étude de cas VALEO : plusieurs usines",
-            "lienHref": "/preuves/valeo-usines/"
+            "lienHref": "/preuves/valeo-usines/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "Diagnostic sur site et réparation d'un parc machines défaillant, sans rachat de matériel neuf",
             "texte": "Lyon, février 2024",
             "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines",
-            "lienHref": "/preuves/joint-lyonnais/"
+            "lienHref": "/preuves/joint-lyonnais/",
+            "photo": "/assets/web/x-elec-cablage.jpg"
+          },
+          {
+            "titre": "Maintenir un centre logistique qui ne ferme jamais",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+          },
+          {
+            "titre": "Des portiques de lavage montés partout en France",
+            "lienLibelle": "Étude de cas WashTec",
+            "lienHref": "/preuves/orthus-washtec/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg"
+          },
+          {
+            "titre": "Des dizaines de techniciens pour passer à l’électrique",
+            "lienLibelle": "Étude de cas Stellantis",
+            "lienHref": "/preuves/stellantis-grand-est/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
           }
         ]
       },
@@ -312,6 +372,12 @@
             "reponse": "Partout en France : Toulouse et l'Occitanie, les Pays de la Loire, l'Île-de-France, le Grand Est, la région lyonnaise et les Alpes industrielles. 4 agences, un taux horaire homogène, un interlocuteur unique pour les groupes multi-sites."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin d'un entretien de vos moyens à la hauteur de ce que vous fabriquez ?",
+        "bouton": "Parler à un chargé d'affaires",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
       }
     ]
   }

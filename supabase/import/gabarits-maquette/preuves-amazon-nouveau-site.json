@@ -22,6 +22,8 @@
         "valeur": "Le site ORY 4 de Paris, couvert"
       }
     ],
+    "logo": "/assets/clients/mq-3103d0f3f9ba.svg",
+    "photoHero": "/assets/web/mq-29ebb1b81ced.jpg",
     "chiffres": [
       {
         "libelle": "Durée d'intervention",
@@ -136,6 +138,7 @@
         "valeur": "ORY 4, Paris, couvert"
       }
     ],
+    "photoDispositif": "/assets/web/mq-e6322efcd358.jpg",
     "resultats": [
       {
         "titre": "Un deuxième site confié",
@@ -179,7 +182,7 @@
         "texte": "En option pour les exploitations continues, par téléphone."
       },
       {
-        "titre": "10 % des candidats retenus",
+        "titre": "10 % des techniciens retenus",
         "texte": "Chaque technicien passe un entretien technique et un entretien comportemental."
       }
     ],
@@ -187,22 +190,26 @@
       {
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
-        "href": "/preuves/"
+        "href": "/preuves/",
+        "photo": "/assets/web/mq-339d39e2a674.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
-        "href": "/secteurs/logistique/"
+        "href": "/secteurs/logistique/",
+        "photo": "/assets/web/mq-056f3c250981.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "AKTID : montage d'un centre logistique",
-        "href": "/preuves/aktid-centre-logistique/"
+        "href": "/preuves/aktid-centre-logistique/",
+        "photo": "/assets/web/mq-948c28bcda08.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
-        "href": "/preuves/savoye/"
+        "href": "/preuves/savoye/",
+        "photo": "/assets/web/mq-17e2f3bce95f.jpg"
       }
     ]
   }

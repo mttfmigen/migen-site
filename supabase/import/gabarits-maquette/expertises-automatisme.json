@@ -18,7 +18,7 @@
     "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "Des candidats retenus, après entretien technique ET comportemental"
+        "libelle": "Des techniciens retenus, après entretien technique ET comportemental"
       },
       {
         "valeur": "+ 120",
@@ -155,7 +155,7 @@
           },
           {
             "accroche": "Un automaticien évalué en entretien technique et comportemental",
-            "texte": ", 10 % des candidats retenus, habilitations électriques à jour pour intervenir en armoire, consignation comprise.",
+            "texte": ", 10 % des techniciens retenus, habilitations électriques à jour pour intervenir en armoire, consignation comprise.",
             "suitAccroche": true
           }
         ]
@@ -232,7 +232,7 @@
           },
           {
             "question": "Qui intervient sur nos automates ?",
-            "reponse": "Des automaticiens salariés de Migen, évalués en entretien technique et comportemental, 10 % des candidats retenus. Nos automaticiens travaillent sur SIEMENS et Schneider, et beaucoup viennent de l'électrotechnique et du terrain."
+            "reponse": "Des automaticiens salariés de Migen, évalués en entretien technique et comportemental, 10 % des techniciens retenus. Nos automaticiens travaillent sur SIEMENS et Schneider, et beaucoup viennent de l'électrotechnique et du terrain."
           },
           {
             "question": "Êtes-vous intégrateur ou prestataire de maintenance ?",

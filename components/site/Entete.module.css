@@ -91,6 +91,19 @@
   color: var(--acc);
 }
 
+/* « Nos offres », sur-titre du panneau devenu lien vers la page pilier : la
+   maquette le dessine en simple texte orange, sans survol. Il garde donc la
+   couleur de son sur-titre ; le soulignement au survol dit seul que c'est un
+   lien. */
+.lienSurTitre {
+  color: inherit;
+}
+.lienSurTitre:hover,
+.lienSurTitre:focus-visible {
+  color: inherit;
+  text-decoration: underline;
+}
+
 /* Même survol, encre la plus effacée au repos (« Modèle de LP »). */
 .lienDiscret {
   color: var(--ink4);

@@ -1,204 +1,236 @@
 {
   "url": "/secteurs/automobile/",
-  "source": "dessin : maquette/accueil-rendu.html, gabarit isSecteur, lignes 6278 à 6364. texte : supabase/import/corpus-analyse.json, produit par scripts/produit-secteurs.mjs.",
+  "titre_h1": "Pas une minute de cadence perdue.",
+  "source": "dessin : maquette/rendu/secteurs--automobile.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {
     "gabarit": "secteur",
-    "surtitre": "Secteur d'activité",
+    "pastille": "Maintenance automobile",
     "chapeau": "Des roboticiens ABB et Fanuc, des automaticiens SIEMENS et Schneider, et une organisation calée sur votre calendrier de production. Interventions en 2x8, 3x8, nuit et week-end, comptes rendus prêts pour l'audit client.",
     "actions": [
       {
         "libelle": "Faire chiffrer la maintenance de mon site",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperesSurtitre": "Nos repères dans le secteur",
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés couvre les équipes de nuit et de week-end.",
+    "formulaireHeroTitre": "Faire chiffrer la maintenance de mon site",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
         "valeur": "18 à 25",
-        "libelle": "techniciens Migen déployés sur les sites STELLANTIS du Grand Est depuis juin 2023"
+        "libelle": "Techniciens Migen déployés sur les sites STELLANTIS du Grand Est depuis juin 2023"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, taux horaire homogène partout"
+        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, taux horaire homogène partout"
       }
     ],
-    "enjeuxSurtitre": "Les enjeux du secteur",
-    "enjeuxTitre": "Un robot de soudure immobilisé dix minutes, et l'usine entière le sait. Jusqu'au directeur de site.",
-    "enjeux": [
+    "logosTitre": "Ils nous confient leurs usines automobiles",
+    "logos": [
       {
-        "titre": "Zéro stock tampon, zéro minute de marge.",
-        "texte": "La production au plus juste ne pardonne pas à la technique d'arriver en retard."
+        "nom": "Stellantis",
+        "src": "/assets/clients/stellantis.png"
       },
       {
-        "titre": "Une panne chez l'équipementier arrête le constructeur.",
-        "texte": "Les flux synchrones transforment un incident local en pénalité contractuelle."
+        "nom": "Valeo",
+        "src": "/assets/clients/mq-f6fcccfd4cc8.svg"
       },
       {
-        "titre": "Le changement de série concentre les besoins techniques.",
-        "texte": "Nouvelle ligne, nouveau modèle, reconversion d'atelier : les compétences doivent arriver avant la montée en cadence, pas pendant."
+        "nom": "Autoliv",
+        "src": "/assets/clients/mq-a4d5eb645ce5.svg"
       },
       {
-        "titre": "L'électrification demande des profils que vos équipes n'ont pas toutes.",
-        "texte": "Et le marché local ne les fournit pas non plus."
+        "nom": "JTEKT",
+        "src": "/assets/clients/mq-e93a6ad5abf7.svg"
       },
       {
-        "titre": "L'audit client vérifie la documentation des interventions.",
-        "texte": "Une opération technique non tracée sur un moyen de production devient un écart."
+        "nom": "Motherson",
+        "src": "/assets/clients/mq-ed5f02d3ab11.svg"
+      },
+      {
+        "nom": "Voit",
+        "src": "/assets/clients/mq-dd835fd31c69.svg"
+      },
+      {
+        "nom": "Vignal Systems",
+        "src": "/assets/clients/mq-dbf1f974e675.svg"
+      },
+      {
+        "nom": "Bamesa",
+        "src": "/assets/clients/bamesa.png"
       }
     ],
-    "autresSurtitre": "Les autres secteurs",
-    "autres": [
-      {
-        "libelle": "Agroalimentaire",
-        "href": "/secteurs/agroalimentaire/"
-      },
-      {
-        "libelle": "Équipements logistiques",
-        "href": "/secteurs/logistique/"
-      },
-      {
-        "libelle": "Pharmaceutique",
-        "href": "/secteurs/pharmaceutique/"
-      },
-      {
-        "libelle": "Aéronautique",
-        "href": "/secteurs/aeronautique/"
-      },
-      {
-        "libelle": "Chimie",
-        "href": "/secteurs/chimie/"
-      },
-      {
-        "libelle": "Nucléaire",
-        "href": "/secteurs/nucleaire/"
-      },
-      {
-        "libelle": "Industrie lourde",
-        "href": "/secteurs/industrie-lourde/"
-      },
-      {
-        "libelle": "Industrie métallique",
-        "href": "/secteurs/industrie-metallique/"
-      },
-      {
-        "libelle": "Menuiserie industrielle",
-        "href": "/secteurs/menuiserie-industrielle/"
-      }
-    ],
-    "appelTitre": "Besoin de tenir le takt pendant votre prochaine transformation d'atelier ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
-      "libelle": "Parler à un chargé d'affaires",
-      "href": "#formulaire"
+    "appelBouton": "Faire chiffrer la maintenance de mon site",
+    "problemePhoto": null,
+    "brefBande": "Besoin de compétence robot ou automatisme avant votre prochaine montée en cadence ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Faire chiffrer la maintenance de mon site",
+      "href": "#besoin"
     },
-    "complement": [
+    "expertisesTitre": "Les expertises d’une ligne à forte cadence",
+    "expertisesChapeau": "Emboutissage, soudure, assemblage : chaque minute d’arrêt se compte en véhicules non produits.",
+    "expertises": [
+      {
+        "titre": "Robotique",
+        "texte": "Cellules de soudure et de manutention : trajectoires, recalages, remplacement d’outils.",
+        "href": "/expertises/robotique/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      },
+      {
+        "titre": "Automatisme",
+        "texte": "Automates de ligne et réseaux industriels : diagnostic sans arrêter l’îlot voisin.",
+        "href": "/expertises/automatisme/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      },
+      {
+        "titre": "Hydraulique",
+        "texte": "Presses d’emboutissage : circuits haute pression, fuites et remplacement de joints.",
+        "href": "/expertises/hydraulique/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
+      },
+      {
+        "titre": "Soudure",
+        "texte": "Réparation d’outillages et de bâtis, remise en état sur place.",
+        "href": "/expertises/soudure/",
+        "photo": "/assets/web/team-grind-close.jpg"
+      }
+    ],
+    "marquesFamille": "auto",
+    "marquesFamilles": [
+      "auto",
+      "robot",
+      "mo"
+    ],
+    "sections": [
+      {
+        "type": "probleme",
+        "variante": "rangee",
+        "punchline": "Un robot de soudure immobilisé dix minutes, et l'usine entière le sait. Jusqu'au directeur de site.",
+        "puces": [
+          {
+            "accroche": "Zéro stock tampon, zéro minute de marge.",
+            "texte": "La production au plus juste ne pardonne pas à la technique d'arriver en retard."
+          },
+          {
+            "accroche": "Une panne chez l'équipementier arrête le constructeur.",
+            "texte": "Les flux synchrones transforment un incident local en pénalité contractuelle."
+          },
+          {
+            "accroche": "Le changement de série concentre les besoins techniques.",
+            "texte": "Nouvelle ligne, nouveau modèle, reconversion d'atelier : les compétences doivent arriver avant la montée en cadence, pas pendant."
+          },
+          {
+            "accroche": "L'électrification demande des profils que vos équipes n'ont pas toutes.",
+            "texte": "Et le marché local ne les fournit pas non plus."
+          },
+          {
+            "accroche": "L'audit client vérifie la documentation des interventions.",
+            "texte": "Une opération technique non tracée sur un moyen de production devient un écart."
+          }
+        ]
+      },
       {
         "type": "offre",
         "lignes": [
           {
             "prestation": {
               "accroche": "Cartographie de criticité",
-              "texte": "chaque équipement classé selon son impact sur le takt."
+              "texte": "Chaque équipement classé selon son impact sur le takt."
             },
             "benefice": "Le préventif se concentre là où l'immobilisation coûte le plus. Les arbitrages sont assumés et écrits."
           },
           {
             "prestation": {
               "accroche": "Préventif calé sur vos fenêtres imposées",
-              "texte": "week-ends, pauses d'équipe, arrêts programmés."
+              "texte": "Week-ends, pauses d'équipe, arrêts programmés."
             },
             "benefice": "Le plan de maintenance suit le calendrier de production, jamais l'inverse."
           },
           {
             "prestation": {
               "accroche": "Roboticiens ABB et Fanuc",
-              "texte": "diagnostic, remplacement d'axes et de composants, reprise de trajectoires, sauvegardes, périphériques de cellule."
+              "texte": "Diagnostic, remplacement d'axes et de composants, reprise de trajectoires, sauvegardes, périphériques de cellule."
             },
             "benefice": "La compétence robot est disponible au lieu de manquer. Vos généralistes cessent d'improviser sur les cellules."
           },
           {
             "prestation": {
-              "accroche": "Automaticiens SIEMENS et Schneider",
-              "texte": "en appui sur la partie ligne."
+              "accroche": "Automaticiens SIEMENS et Schneider en appui sur la partie ligne."
             },
             "benefice": "Un défaut d'automatisme ne bloque plus une équipe entière pendant une nuit."
           },
           {
             "prestation": {
               "accroche": "Couverture complète des moyens",
-              "texte": "lignes d'assemblage, transferts, visseuses asservies, presses et emboutissage, [machines d'usinage](/expertises/mecanique/machine-outil/), peinture et traitement de surface, utilités."
+              "texte": "Lignes d'assemblage, transferts, visseuses asservies, presses et emboutissage, machines d'usinage, peinture et traitement de surface, utilités."
             },
             "benefice": "Un seul prestataire du poste d'usinage à la cabine de peinture, au lieu d'un contrat par famille."
           },
           {
             "prestation": {
-              "texte": "**Interventions en 2x8, 3x8, nuit et week-end.**"
+              "accroche": "Interventions en 2x8, 3x8, nuit et week-end."
             },
             "benefice": "Le dispositif épouse votre organisation d'équipes, sans majoration de procédure."
           },
           {
             "prestation": {
-              "texte": "**Comptes rendus intégrables à votre GMAO, sans double saisie.**"
+              "accroche": "Comptes rendus intégrables à votre GMAO, sans double saisie."
             },
             "benefice": "Quand l'audit client arrive, l'historique par moyen est déjà là."
           },
           {
             "prestation": {
               "accroche": "Renforts préparés à l'avance pour les phases de transformation",
-              "texte": "nouvelle ligne, nouveau modèle, électrification."
+              "texte": "Nouvelle ligne, nouveau modèle, électrification."
             },
             "benefice": "La montée en cadence se prépare avec les bons profils, réservés avant la bousculade."
           },
           {
             "prestation": {
-              "texte": "Attendu de la filière"
+              "accroche": "Attendu de la filière"
             },
             "benefice": "Réponse Migen"
           },
           {
             "prestation": {
-              "texte": "Tenue du takt"
+              "accroche": "Tenue du takt"
             },
             "benefice": "Priorisation par criticité, dépannage outillé et méthodique"
           },
           {
             "prestation": {
-              "texte": "Compétence robots"
+              "accroche": "Compétence robots"
             },
             "benefice": "Roboticiens ABB et Fanuc, automaticiens SIEMENS et Schneider"
           },
           {
             "prestation": {
-              "texte": "Travail en équipes"
+              "accroche": "Travail en équipes"
             },
             "benefice": "Interventions en 2x8, 3x8, nuit et week-end"
           },
           {
             "prestation": {
-              "texte": "Documentation"
+              "accroche": "Documentation"
             },
             "benefice": "Comptes rendus intégrables à votre GMAO, sans double saisie"
           },
           {
             "prestation": {
-              "texte": "Audits clients"
+              "accroche": "Audits clients"
             },
             "benefice": "Habilitations à jour, plan de prévention, historique disponible"
           },
           {
             "prestation": {
-              "texte": "Coût maîtrisé"
+              "accroche": "Coût maîtrisé"
             },
             "benefice": "Taux horaire homogène, chiffrage après qualification"
-          }
-        ],
-        "prose": [
-          {
-            "texte": "En appui, l'ingénierie de notre [bureau d'études](/offres/bureau-etudes/) chiffre les améliorations : reprise d'un poste goulot, mise en conformité d'une machine, adaptation d'une installation à un nouveau modèle."
           }
         ]
       },
@@ -207,27 +239,27 @@
         "etapes": [
           {
             "titre": "Qualification",
-            "texte": "un chargé d'affaires étudie votre parc, votre rang dans la filière et votre organisation d'équipes. Constructeur, rang 1 ou sous-traitant : les contraintes ne sont pas les mêmes."
+            "texte": "Un chargé d'affaires étudie votre parc, votre rang dans la filière et votre organisation d'équipes. Constructeur, rang 1 ou sous-traitant : les contraintes ne sont pas les mêmes."
           },
           {
             "titre": "Périmètre d'essai",
-            "texte": "une intervention, un atelier, une période courte, avec une date de bilan posée d'avance. Vous jugez sur la disponibilité mesurée et la qualité du document rendu."
+            "texte": "Une intervention, un atelier, une période courte, avec une date de bilan posée d'avance. Vous jugez sur la disponibilité mesurée et la qualité du document rendu."
           },
           {
             "titre": "Intégration aux processus du site",
-            "texte": "gestion des accès, outils existants, clauses de confidentialité, plan de prévention. Un contact identifié par établissement."
+            "texte": "Gestion des accès, outils existants, clauses de confidentialité, plan de prévention. Un contact identifié par établissement."
           },
           {
             "titre": "Cartographie et plan",
-            "texte": "criticité par équipement, fenêtres de production, pièces d'usure anticipées."
+            "texte": "Criticité par équipement, fenêtres de production, pièces d'usure anticipées."
           },
           {
             "titre": "Exécution",
-            "texte": "préventif aux fenêtres, correctif prioritaire sur les goulots, astreinte pour les équipes de nuit et de week-end."
+            "texte": "Préventif aux fenêtres, correctif prioritaire sur les goulots, astreinte pour les équipes de nuit et de week-end."
           },
           {
             "titre": "Extension",
-            "texte": "le référencement fournisseur s'appuie ensuite sur des faits. Le dispositif s'étend atelier par atelier, ou site par site."
+            "texte": "Le référencement fournisseur s'appuie ensuite sur des faits. Le dispositif s'étend atelier par atelier, ou site par site."
           }
         ]
       },
@@ -236,23 +268,17 @@
         "puces": [
           {
             "accroche": "La traçabilité attendue par vos donneurs d'ordre",
-            "texte": "chaque opération sur un moyen de production produit un compte rendu au format de vos outils. Aucune publication de vos données process, aucune référence citée sans accord écrit."
+            "texte": "Chaque opération sur un moyen de production produit un compte rendu au format de vos outils. Aucune publication de vos données process, aucune référence citée sans accord écrit."
           },
           {
             "accroche": "Des intervenants formés à vos standards avant le premier geste seul",
-            "texte": "10 % des candidats retenus, puis intégration à vos procédures spécifiques, quelle que soit l'expérience antérieure."
+            "texte": "10 % des techniciens retenus, puis intégration à vos procédures spécifiques, quelle que soit l'expérience antérieure."
           },
           {
             "accroche": "Des renforts réservés, pas improvisés",
-            "texte": "pour une montée en cadence ou un changement de modèle, les profils se préparent en amont. Plus vous anticipez, meilleurs sont les techniciens disponibles."
+            "texte": "Pour une montée en cadence ou un changement de modèle, les profils se préparent en amont. Plus vous anticipez, meilleurs sont les techniciens disponibles."
           }
         ]
-      },
-      {
-        "type": "cta",
-        "question": "Besoin de compétence robot ou automatisme avant votre prochaine montée en cadence ?",
-        "bouton": "Faire chiffrer la maintenance de mon site",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
       },
       {
         "type": "preuves",
@@ -261,37 +287,49 @@
             "titre": "18 à 25 techniciens sur plusieurs sites dans la transition vers le véhicule électrique",
             "texte": "depuis juin 2023",
             "lienLibelle": "Étude de cas STELLANTIS : sites du Grand Est",
-            "lienHref": "/preuves/stellantis-grand-est/"
+            "lienHref": "/preuves/stellantis-grand-est/",
+            "photo": "/assets/web/mq-5111002ce2b6.jpg"
           },
           {
-            "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, 7 jours sur 7",
+            "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage",
             "texte": "Dompierre-sur-Besbre, depuis octobre 2023",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
-            "lienHref": "/preuves/stellantis-fonderie-sept-fons/"
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "3 à 5 techniciens pour accompagner la montée en cadence de plusieurs usines",
             "texte": "depuis septembre 2024",
             "lienLibelle": "Étude de cas VALEO : plusieurs usines",
-            "lienHref": "/preuves/valeo-usines/"
+            "lienHref": "/preuves/valeo-usines/",
+            "photo": "/assets/web/x-auto-caisse.jpg"
           },
           {
             "titre": "Techniciens intégrés pour sécuriser la maintenance des installations d'un équipementier",
             "texte": "en 2025",
             "lienLibelle": "Étude de cas JTEKT : maintenance des installations",
-            "lienHref": "/preuves/jtekt/"
+            "lienHref": "/preuves/jtekt/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "Technicien dédié au maintien du parc machines d'un site équipementier",
             "texte": "en 2025",
             "lienLibelle": "Étude de cas AUTOLIV : maintien d'un site",
-            "lienHref": "/preuves/autoliv/"
+            "lienHref": "/preuves/autoliv/",
+            "photo": "/assets/web/mq-0b70202fed79.jpg"
           },
           {
             "titre": "Six techniciens pour l'installation et la mise en production d'un parc machine neuf",
             "texte": "site automobile, depuis janvier 2023",
             "lienLibelle": "Étude de cas EATON : mise en production",
-            "lienHref": "/preuves/eaton-mise-en-production/"
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+          },
+          {
+            "titre": "La maintenance tient pendant que l’équipe recrute",
+            "lienLibelle": "Étude de cas Bamesa",
+            "lienHref": "/preuves/bamesa/",
+            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg"
           }
         ]
       },
@@ -323,6 +361,12 @@
             "reponse": "Par un périmètre d'essai : une intervention, un atelier, une période courte, avec une date de bilan posée d'avance. Vous jugez sur la disponibilité mesurée, la qualité du document rendu et le conseil apporté."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de tenir le takt pendant votre prochaine transformation d'atelier ?",
+        "bouton": "Parler à un chargé d'affaires",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
       }
     ]
   }

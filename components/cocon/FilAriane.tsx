@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { filAriane as filArianeJsonLd, jsonLdTexte } from "@/lib/seo/jsonld";
+
 import styles from "./FilAriane.module.css";
 
 /*
@@ -117,6 +119,12 @@ export function FilArianeVue({ etapes }: { etapes: readonly Etape[] }) {
   );
 }
 
+/**
+ * Ce que les routes montent : le fil en BreadcrumbList pour les moteurs, sans
+ * rangée visible. Les 248 captures de la maquette du 08/10 n'en dessinent
+ * aucune ; la rangée visible poussait tout le contenu de 60 px (3 lignes sur
+ * mobile). `FilArianeVue` reste pour un gabarit qui en dessinerait une.
+ */
 export default async function FilAriane({ path }: { path: string }) {
   /* `@/lib/contenu` porte `import "server-only"`, qui lève à la seule
      résolution du module hors d'un rendu serveur. Importé en tête de fichier, il
@@ -125,5 +133,16 @@ export default async function FilAriane({ path }: { path: string }) {
      branche qui lit la base. Le garde-fou du bundler, lui, est intact : Next
      refuse toujours ce module à un composant client, statique ou dynamique. */
   const { filAriane } = await import("@/lib/contenu");
-  return <FilArianeVue etapes={await filAriane(path)} />;
+  const etapes = await filAriane(path);
+  if (etapes.length === 0) return null;
+  const donnees = filArianeJsonLd([
+    { titre: "Accueil", chemin: "/" },
+    ...etapes.map((e) => ({ titre: e.titre, chemin: e.path })),
+  ]);
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: jsonLdTexte(donnees) }}
+    />
+  );
 }

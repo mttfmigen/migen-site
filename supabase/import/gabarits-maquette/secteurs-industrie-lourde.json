@@ -1,199 +1,238 @@
 {
   "url": "/secteurs/industrie-lourde/",
-  "source": "dessin : maquette/accueil-rendu.html, gabarit isSecteur, lignes 6278 à 6364. texte : supabase/import/corpus-analyse.json, produit par scripts/produit-secteurs.mjs.",
+  "titre_h1": "Des équipements lourds. Une remise en route rapide.",
+  "source": "dessin : maquette/rendu/secteurs--industrie-lourde.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {
     "gabarit": "secteur",
-    "surtitre": "Secteur d'activité",
+    "pastille": "Maintenance industrie lourde",
     "chapeau": "Une grosse intervention se gagne avant la première heure. Gammes, levage, calage, outillage spécifique, pièces sur site : nous préparons comme un chantier pour tenir la fenêtre prévue.",
     "actions": [
       {
         "libelle": "Étudier la maintenance de mes équipements lourds",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperesSurtitre": "Nos repères dans le secteur",
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés couvre les lignes qui tournent jour et nuit.",
+    "formulaireHeroTitre": "Étudier la maintenance de mes équipements lourds",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
-        "valeur": "+ 100",
-        "libelle": "collaborateurs, dont des profils confirmés déjà exposés aux sites lourds"
+        "valeur": "+ 120",
+        "libelle": "Collaborateurs, dont des profils confirmés déjà exposés aux sites lourds"
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, et des hubs de techniciens en France, renforts mutualisés pour les gros arrêts"
+        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, et des hubs de techniciens en France, renforts mutualisés pour les gros arrêts"
       }
     ],
-    "enjeuxSurtitre": "Les enjeux du secteur",
-    "enjeuxTitre": "Un broyeur ne se démonte pas à la clé plate. Et une fenêtre d'arrêt ratée ne se rattrape pas au trimestre suivant.",
-    "enjeux": [
+    "logosTitre": "Ils nous confient leurs sites industriels",
+    "logos": [
       {
-        "titre": "Tout souffre en continu.",
-        "texte": "Métal en fusion, poussières abrasives, atmosphères chargées, contraintes thermiques permanentes. L'usure est l'état normal du parc."
+        "nom": "Eaton",
+        "src": "/assets/clients/mq-70bce765c1a2.svg"
       },
       {
-        "titre": "Les énergies en jeu ne pardonnent pas.",
-        "texte": "Fortes puissances électriques, hydraulique haute pression, vapeur. Les consignations se font dans les règles, quelle que soit l'urgence annoncée."
+        "nom": "Mersen",
+        "src": "/assets/clients/mq-eb9461b85e59.svg"
       },
       {
-        "titre": "Certains équipements ne refroidissent jamais.",
-        "texte": "La maintenance doit se glisser dans les fenêtres du procédé, pas les créer."
+        "nom": "Suez",
+        "src": "/assets/clients/mq-89100525ef89.svg"
       },
       {
-        "titre": "La charpente vieillit aussi.",
-        "texte": "Passerelles, supports d'équipements, structures porteuses : personne ne les regarde jusqu'au jour où il faut tout arrêter."
+        "nom": "Eiffage",
+        "src": "/assets/clients/mq-21daf7c60970.svg"
       },
       {
-        "titre": "Un technicien moyen est un danger sur ce type de site.",
-        "texte": "La coactivité dense et les contraintes d'accès s'ajoutent au risque machine."
+        "nom": "Ecocem",
+        "src": "/assets/clients/ecocem.png"
+      },
+      {
+        "nom": "Groupe Atlantic",
+        "src": "/assets/clients/groupe-atlantic.png",
+        "filtre": "invert(1) hue-rotate(180deg)"
+      },
+      {
+        "nom": "Tournaire",
+        "src": "/assets/clients/mq-7c01e175985e.png"
+      },
+      {
+        "nom": "Rector Lesage",
+        "src": "/assets/clients/rector-lesage.png"
+      },
+      {
+        "nom": "Joint Lyonnais",
+        "src": "/assets/clients/joint-lyonnais.png"
+      },
+      {
+        "nom": "Soprema",
+        "src": "/assets/clients/mq-127f9e03c53b.svg"
+      },
+      {
+        "nom": "WashTec",
+        "src": "/assets/clients/orthus-x-washtec.svg"
       }
     ],
-    "autresSurtitre": "Les autres secteurs",
-    "autres": [
-      {
-        "libelle": "Agroalimentaire",
-        "href": "/secteurs/agroalimentaire/"
-      },
-      {
-        "libelle": "Équipements logistiques",
-        "href": "/secteurs/logistique/"
-      },
-      {
-        "libelle": "Automobile",
-        "href": "/secteurs/automobile/"
-      },
-      {
-        "libelle": "Pharmaceutique",
-        "href": "/secteurs/pharmaceutique/"
-      },
-      {
-        "libelle": "Aéronautique",
-        "href": "/secteurs/aeronautique/"
-      },
-      {
-        "libelle": "Chimie",
-        "href": "/secteurs/chimie/"
-      },
-      {
-        "libelle": "Nucléaire",
-        "href": "/secteurs/nucleaire/"
-      },
-      {
-        "libelle": "Industrie métallique",
-        "href": "/secteurs/industrie-metallique/"
-      },
-      {
-        "libelle": "Menuiserie industrielle",
-        "href": "/secteurs/menuiserie-industrielle/"
-      }
-    ],
-    "appelTitre": "Besoin d'un prestataire qui prépare avant d'arriver, plutôt que d'improviser sur place ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
-      "libelle": "Parler à un chargé d'affaires",
-      "href": "#formulaire"
+    "appelBouton": "Étudier la maintenance de mes équipements lourds",
+    "problemePhoto": null,
+    "brefBande": "Besoin de préparer un arrêt de four ou de ligne continue avec une équipe dimensionnée ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Étudier la maintenance de mes équipements lourds",
+      "href": "#besoin"
     },
-    "complement": [
+    "expertisesTitre": "Les expertises d’un site aux charges lourdes",
+    "expertisesChapeau": "Machines massives, environnements poussiéreux, levages lourds : la maintenance y est physique.",
+    "expertises": [
+      {
+        "titre": "Mécanique",
+        "texte": "Réducteurs, paliers et transmissions de forte puissance.",
+        "href": "/expertises/mecanique/",
+        "photo": "/assets/web/team-grind-front.jpg"
+      },
+      {
+        "titre": "Hydraulique",
+        "texte": "Vérins et centrales hydrauliques des engins et presses.",
+        "href": "/expertises/hydraulique/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
+      },
+      {
+        "titre": "Soudure",
+        "texte": "Rechargements et réparations de structures sur place.",
+        "href": "/expertises/soudure/",
+        "photo": "/assets/web/team-grind-close.jpg"
+      },
+      {
+        "titre": "Électromécanique",
+        "texte": "Moteurs de forte puissance et leurs démarreurs.",
+        "href": "/expertises/electromecanique/",
+        "photo": "/assets/web/team-electric.jpg"
+      }
+    ],
+    "sections": [
+      {
+        "type": "probleme",
+        "variante": "rangee",
+        "punchline": "Un broyeur ne se démonte pas à la clé plate. Et une fenêtre d'arrêt ratée ne se rattrape pas au trimestre suivant.",
+        "puces": [
+          {
+            "accroche": "Tout souffre en continu.",
+            "texte": "Métal en fusion, poussières abrasives, atmosphères chargées, contraintes thermiques permanentes. L'usure est l'état normal du parc."
+          },
+          {
+            "accroche": "Les énergies en jeu ne pardonnent pas.",
+            "texte": "Fortes puissances électriques, hydraulique haute pression, vapeur. Les consignations se font dans les règles, quelle que soit l'urgence annoncée."
+          },
+          {
+            "accroche": "Certains équipements ne refroidissent jamais.",
+            "texte": "La maintenance doit se glisser dans les fenêtres du procédé, pas les créer."
+          },
+          {
+            "accroche": "La charpente vieillit aussi.",
+            "texte": "Passerelles, supports d'équipements, structures porteuses : personne ne les regarde jusqu'au jour où il faut tout arrêter."
+          },
+          {
+            "accroche": "Un technicien moyen est un danger sur ce type de site.",
+            "texte": "La coactivité dense et les contraintes d'accès s'ajoutent au risque machine."
+          }
+        ]
+      },
       {
         "type": "offre",
         "lignes": [
           {
             "prestation": {
               "accroche": "Préparation type chantier",
-              "texte": "gammes, levage, calage, pièces, outillage spécifique, coactivité écrite."
+              "texte": "Gammes, levage, calage, pièces, outillage spécifique, coactivité écrite."
             },
             "benefice": "La fenêtre d'arrêt est tenue par la méthode, pas par l'héroïsme du samedi soir."
           },
           {
             "prestation": {
-              "accroche": "Techniciens confirmés uniquement",
-              "texte": ", déjà exposés à ce type de site."
+              "accroche": "Techniciens confirmés uniquement déjà exposés à ce type de site."
             },
             "benefice": "Personne ne découvre une presse de forge chez vous. Le risque d'apprentissage reste chez nous."
           },
           {
             "prestation": {
               "accroche": "Surveillance des usures",
-              "texte": "jeux mesurés, vibrations, températures, historique par machine."
+              "texte": "Jeux mesurés, vibrations, températures, historique par machine."
             },
             "benefice": "Le remplacement se programme au lieu de s'imposer un mardi matin."
           },
           {
             "prestation": {
               "accroche": "Fours et lignes thermiques",
-              "texte": "brûleurs côté servitudes, ventilation, tuyauterie d'utilités, convoyage d'enfournement, portes et mécanismes."
+              "texte": "Brûleurs côté servitudes, ventilation, tuyauterie d'utilités, convoyage d'enfournement, portes et mécanismes."
             },
             "benefice": "Les servitudes du four cessent d'être le poste que personne ne suit."
           },
           {
             "prestation": {
               "accroche": "Presses, broyeurs, concasseurs, cribles",
-              "texte": "mécanique lourde, réglages, pièces d'usure anticipées."
+              "texte": "Mécanique lourde, réglages, pièces d'usure anticipées."
             },
             "benefice": "L'usure rapide est traitée par le stock et le calendrier, pas par la commande en urgence."
           },
           {
             "prestation": {
               "accroche": "Ponts roulants et levage",
-              "texte": "translation, direction, levage, en lien avec vos vérifications réglementaires."
+              "texte": "Translation, direction, levage, en lien avec vos vérifications réglementaires."
             },
             "benefice": "L'organe de manutention le plus critique du site est suivi comme un équipement de production."
           },
           {
             "prestation": {
               "accroche": "Hydraulique et utilités",
-              "texte": "centrales, vérins de forte capacité, compresseurs, réseaux, avec notre page [maintenance hydraulique](/expertises/hydraulique/)."
+              "texte": "Centrales, vérins de forte capacité, compresseurs, réseaux, avec notre page maintenance hydraulique."
             },
             "benefice": "La haute pression est traitée par des gens qui la connaissent, consignations comprises."
           },
           {
             "prestation": {
-              "texte": "Réalité du secteur"
+              "accroche": "Réalité du secteur"
             },
             "benefice": "Réponse Migen"
           },
           {
             "prestation": {
-              "texte": "Grosses interventions"
+              "accroche": "Grosses interventions"
             },
             "benefice": "Préparation type chantier, levage et calage maîtrisés"
           },
           {
             "prestation": {
-              "texte": "Procédés continus"
+              "accroche": "Procédés continus"
             },
-            "benefice": "Interventions aux fenêtres du process, astreinte 24/24 et 7/7"
+            "benefice": "Interventions aux fenêtres du process, astreinte la nuit, le week-end et les jours fériés"
           },
           {
             "prestation": {
-              "texte": "Sécurité exigeante"
+              "accroche": "Sécurité exigeante"
             },
             "benefice": "Techniciens confirmés, habilitations à jour, permis respectés"
           },
           {
             "prestation": {
-              "texte": "Usures rapides"
+              "accroche": "Usures rapides"
             },
             "benefice": "Surveillance programmée, pièces d'usure anticipées"
           },
           {
             "prestation": {
-              "texte": "Structures et chaudronnerie"
+              "accroche": "Structures et chaudronnerie"
             },
             "benefice": "Travaux préparés avec le bureau d'études, de la gamme au contrôle"
           },
           {
             "prestation": {
-              "texte": "Sites isolés"
+              "accroche": "Sites isolés"
             },
             "benefice": "Techniciens mobiles partout en France, renforts mutualisés entre hubs"
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Pour les travaux neufs, les modifications de structure et la chaudronnerie, notre [bureau d'études](/offres/bureau-etudes/) et notre offre [chantier](/offres/chantier/) prennent le relais, avec un seul responsable de bout en bout. La filière métal est traitée en détail sur notre page [industrie métallique](/secteurs/industrie-metallique/), et le convoyage lourd sur [maintenance convoyeur](/secteurs/logistique/maintenance-convoyeur/)."
           }
         ]
       },
@@ -202,27 +241,27 @@
         "etapes": [
           {
             "titre": "Visite du site",
-            "texte": "parc, état réel, contraintes d'accès, fenêtres de procédé. Rien ne se chiffre depuis un bureau sur ce type d'installation."
+            "texte": "Parc, état réel, contraintes d'accès, fenêtres de procédé. Rien ne se chiffre depuis un bureau sur ce type d'installation."
           },
           {
             "titre": "Création de l'historique",
-            "texte": "chaque machine reçoit son dossier, ses usures suivies, ses jeux mesurés. Quand la documentation manque, nous la construisons."
+            "texte": "Chaque machine reçoit son dossier, ses usures suivies, ses jeux mesurés. Quand la documentation manque, nous la construisons."
           },
           {
             "titre": "Préparation",
-            "texte": "rétroplanning, équipe dimensionnée, tâches gammées, moyens de levage définis, pièces sur site avant l'arrêt."
+            "texte": "Rétroplanning, équipe dimensionnée, tâches gammées, moyens de levage définis, pièces sur site avant l'arrêt."
           },
           {
             "titre": "Réalisation",
-            "texte": "consignations, permis, contrôles, mise en œuvre par étapes, remise en service progressive."
+            "texte": "Consignations, permis, contrôles, mise en œuvre par étapes, remise en service progressive."
           },
           {
             "titre": "Astreinte",
-            "texte": "mobilisation depuis le hub de techniciens le plus proche, avec renforts mutualisés entre hubs quand le chantier dépasse une zone."
+            "texte": "Mobilisation depuis le hub de techniciens le plus proche, avec renforts mutualisés entre hubs quand le chantier dépasse une zone."
           },
           {
             "titre": "Mesure",
-            "texte": "disponibilité, récurrence, coût par équipement. L'investissement d'une amélioration se compare au coût réel des pannes évitées."
+            "texte": "Disponibilité, récurrence, coût par équipement. L'investissement d'une amélioration se compare au coût réel des pannes évitées."
           }
         ]
       },
@@ -231,62 +270,74 @@
         "puces": [
           {
             "accroche": "Aucun profil junior sur un site lourd",
-            "texte": "seuls des techniciens confirmés, évalués en entretien technique et comportemental, déjà exposés à ce type d'environnement, interviennent sur ces machines."
+            "texte": "Seuls des techniciens confirmés, évalués en entretien technique et comportemental, déjà exposés à ce type d'environnement, interviennent sur ces machines."
           },
           {
             "accroche": "Des consignations réalisées dans les règles, sans exception",
-            "texte": "fortes puissances, haute pression, vapeur. L'urgence ne justifie jamais un raccourci sur l'énergie."
+            "texte": "Fortes puissances, haute pression, vapeur. L'urgence ne justifie jamais un raccourci sur l'énergie."
           },
           {
             "accroche": "Une préparation écrite avant chaque grosse opération",
-            "texte": "calage, élingage, manœuvre, coactivité. Ce qui n'est pas préparé n'est pas engagé."
+            "texte": "Calage, élingage, manœuvre, coactivité. Ce qui n'est pas préparé n'est pas engagé."
           }
         ]
-      },
-      {
-        "type": "cta",
-        "question": "Besoin de préparer un arrêt de four ou de ligne continue avec une équipe dimensionnée ?",
-        "bouton": "Étudier la maintenance de mes équipements lourds",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
       },
       {
         "type": "preuves",
         "preuves": [
           {
-            "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, 7 jours sur 7",
+            "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage",
             "texte": "Dompierre-sur-Besbre, depuis octobre 2023",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
-            "lienHref": "/preuves/stellantis-fonderie-sept-fons/"
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/mq-e69a240d8656.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve, matériaux",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
-            "lienHref": "/preuves/mersen/"
+            "lienHref": "/preuves/mersen/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "Chantiers de montage, déplacements de machines et renfort technique ponctuel, matériaux de construction",
             "texte": "missions documentées",
             "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
-            "lienHref": "/preuves/soprema/"
+            "lienHref": "/preuves/soprema/",
+            "photo": "/assets/web/mq-752675f1ed93.jpg"
           },
           {
             "titre": "Technicien polyvalent sur un parc hétérogène à forte cadence, papier et emballage",
             "texte": "usure permanente, rythme continu",
             "lienLibelle": "Étude de cas VPK : maintenance de site",
-            "lienHref": "/preuves/vpk/"
+            "lienHref": "/preuves/vpk/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "Électromécanicien habilité risque chimique sur une remise en état de site industriel",
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
-            "lienHref": "/preuves/suez-remise-en-etat/"
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "photo": "/assets/web/mq-5b47b5f6a584.jpg"
           },
           {
             "titre": "12 monteurs mécaniciens et 8 engins de levage sur un chantier de six semaines",
             "texte": "livraison tenue",
             "lienLibelle": "Étude de cas AKTID : montage d'un centre logistique",
-            "lienHref": "/preuves/aktid-centre-logistique/"
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+          },
+          {
+            "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
+            "lienLibelle": "Étude de cas Rector Lesage",
+            "lienHref": "/preuves/rector-lesage/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
+          },
+          {
+            "titre": "Maintenir et monter, de jour comme de nuit",
+            "lienLibelle": "Étude de cas Vignal Systems",
+            "lienHref": "/preuves/vignal-systems/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
           }
         ]
       },
@@ -318,6 +369,12 @@
             "reponse": "Oui : 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des renforts mutualisés entre elles pour les gros arrêts. Le taux horaire reste homogène sur tout le territoire, ce qui rend lisible un parc de sites dispersés."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin d'un prestataire qui prépare avant d'arriver, plutôt que d'improviser sur place ?",
+        "bouton": "Parler à un chargé d'affaires",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
       }
     ]
   }

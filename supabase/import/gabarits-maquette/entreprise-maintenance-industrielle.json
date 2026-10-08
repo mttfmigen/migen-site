@@ -16,8 +16,12 @@
     "formulaireHeroMention": "Rappel dans l'heure",
     "chiffres": [
       {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      },
+      {
         "valeur": "10 %",
-        "libelle": "Des candidats retenus, après un entretien technique ET un entretien comportemental."
+        "libelle": "Des techniciens retenus, après un entretien technique ET un entretien comportemental."
       },
       {
         "valeur": "+ 120",
@@ -56,7 +60,8 @@
             "accroche": "La facture se négocie machine à l'arrêt.",
             "texte": "C'est le pire moment possible pour discuter d'un tarif, et tout le monde le sait."
           }
-        ]
+        ],
+        "variante": "rangee"
       },
       {
         "type": "offre",
@@ -139,7 +144,7 @@
         "puces": [
           {
             "accroche": "Le niveau réel de qui intervient.",
-            "texte": "Évaluation technique et comportementale en entretien, 10 % des candidats retenus, résultats consultables avant que vous décidiez. Ce sont des salariés Migen, pas des inconnus recrutés pour la mission."
+            "texte": "Évaluation technique et comportementale en entretien, 10 % des techniciens retenus, résultats consultables avant que vous décidiez. Ce sont des salariés Migen, pas des inconnus recrutés pour la mission."
           },
           {
             "accroche": "Aucun revenu sur les pièces.",
@@ -158,37 +163,49 @@
             "titre": "Maintenance préventive annuelle sur des centres logistiques",
             "texte": "six techniciens polyvalents en permanence, depuis septembre 2023",
             "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
-            "lienHref": "/preuves/veepee-sites-lyon/"
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "photo": "/assets/web/x-tech-portrait.jpg",
+            "logo": "/assets/clients/mq-ff81dfbb55c7.svg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie,, automobile",
             "texte": "six techniciens en poste depuis octobre 2023, aux côtés des équipes internes",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
-            "lienHref": "/preuves/stellantis-fonderie-sept-fons/"
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "logo": "/assets/clients/stellantis.png"
           },
           {
             "titre": "Renfort continu en 3x8 sur des lignes de nutrition infantile, agroalimentaire",
             "texte": "deux techniciens intégrés aux équipes du site de Steenvoorde",
             "lienLibelle": "Étude de cas DANONE : lignes de production",
-            "lienHref": "/preuves/danone-lignes-de-production/"
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/x-elec-cablage.jpg",
+            "logo": "/assets/clients/danone-bledina.png"
           },
           {
             "titre": "Accompagnement d'une montée en cadence sur plusieurs usines, automobile",
             "texte": "trois à cinq techniciens déployés depuis septembre 2024",
             "lienLibelle": "Étude de cas VALEO : plusieurs usines",
-            "lienHref": "/preuves/valeo-usines/"
+            "lienHref": "/preuves/valeo-usines/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "logo": "/assets/clients/mq-f6fcccfd4cc8.svg"
           },
           {
             "titre": "Installation et mise en production d'un parc machine neuf, automobile",
             "texte": "six techniciens constitués en équipe dédiée depuis janvier 2023",
             "lienLibelle": "Étude de cas EATON : mise en production",
-            "lienHref": "/preuves/eaton-mise-en-production/"
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg",
+            "logo": "/assets/clients/mq-70bce765c1a2.svg"
           },
           {
             "titre": "Remise en état d'un site à risque chimique, traitement des eaux",
             "texte": "renfort habilité, depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
-            "lienHref": "/preuves/suez-remise-en-etat/"
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg",
+            "logo": "/assets/clients/mq-89100525ef89.svg"
           }
         ]
       },
@@ -197,7 +214,7 @@
         "questions": [
           {
             "question": "Combien coûte une prestation de maintenance industrielle ?",
-            "reponse": "Le chiffrage se fait après qualification du besoin, avec une visite quand le périmètre le justifie. Sur un parc industriel, la maintenance planifiée et le dépannage subi n'ont pas le même prix de revient. Nous vous montrons les deux. Le devis détaille chaque poste, et nous cherchons la prestation la plus économique pour votre situation, pas la plus grosse ligne de commande."
+            "reponse": "Le chiffrage se fait après qualification du besoin, avec une visite quand le périmètre le justifie. Sur un parc industriel, la maintenance planifiée et le dépannage subi n'ont pas le même prix de revient. Nous vous montrons les deux. Le taux horaire est homogène dans toute la France, sans surfacturation régionale. Le devis détaille chaque poste, et nous cherchons la prestation la plus économique pour votre situation, pas la plus grosse ligne de commande."
           },
           {
             "question": "Faut-il s'engager pour travailler avec vous ?",
@@ -209,7 +226,7 @@
           },
           {
             "question": "Qui vient réellement sur notre site ?",
-            "reponse": "Des techniciens salariés de Migen, évalués en entretien sur la technique et sur le comportement. Seuls 10 % des candidats sont retenus, et les résultats de ces évaluations vous sont présentés avant votre décision. Les profils vont du bac pro maintenance au diplôme d'ingénieur, avec des spécialistes automatisme et robotique."
+            "reponse": "Des techniciens salariés de Migen, évalués en entretien sur la technique et sur le comportement. Seuls 10 % des techniciens sont retenus, et les résultats de ces évaluations vous sont présentés avant votre décision. Les profils vont du bac pro maintenance au diplôme d'ingénieur, avec des spécialistes automatisme et robotique."
           },
           {
             "question": "Et la sécurité sur nos installations ?",
@@ -286,27 +303,32 @@
       {
         "titre": "Contrat de maintenance",
         "phrase": "Un contrat de visites préventives planifiées, avec suivi de l'état du parc et priorité d'intervention. Voir le contrat de maintenance.",
-        "href": "/offres/zero-arret/"
+        "href": "/offres/zero-arret/",
+        "photo": "/assets/web/x-logistique-entrepot.jpg"
       },
       {
         "titre": "Astreinte industrielle",
         "phrase": "Une astreinte la nuit, le week-end et les jours fériés, nuits, week-ends et jours fériés. Voir l'astreinte industrielle.",
-        "href": "/offres/depannage-industriel/astreinte/"
+        "href": "/offres/depannage-industriel/astreinte/",
+        "photo": "/assets/web/team-grind-close.jpg"
       },
       {
         "titre": "Arrêt technique maintenance",
         "phrase": "La préparation et l'exécution de vos arrêts planifiés, coordination des corps de métier comprise. Voir l'arrêt technique maintenance.",
-        "href": "/offres/arret-technique/"
+        "href": "/offres/arret-technique/",
+        "photo": "/assets/web/x-soudure.jpg"
       },
       {
         "titre": "Guide pour choisir une entreprise de maintenance",
         "phrase": "Avant de choisir, notre guide pour choisir une entreprise de maintenance liste les questions à poser en rendez-vous.",
-        "href": "/guides/choisir-une-entreprise-de-maintenance/"
+        "href": "/guides/choisir-une-entreprise-de-maintenance/",
+        "photo": "/assets/web/team-grind-impact.jpg"
       },
       {
         "titre": "Full service",
         "phrase": "Toute votre maintenance, un seul partenaire.",
-        "href": "/offres/full-service/"
+        "href": "/offres/full-service/",
+        "photo": "/assets/web/team-grind-front.jpg"
       }
     ],
     "pagesLieesTitre": "Par où continuer ?"

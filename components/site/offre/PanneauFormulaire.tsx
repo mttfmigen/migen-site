@@ -15,11 +15,10 @@ import { VERRE } from "@/components/site/blocs/habillage";
  * périmètre du gabarit offre, contrat propre fondé sur « Migen - Site
  * final.dc.html ») :
  *
- *   1. ÉCART CONSERVÉ, À FAIRE ARBITRER PAR MEHDI : le bouton d'envoi rend
- *      « On me rappelle dans l'heure » (FormulaireContact.tsx, l. 389) là où
- *      la capture écrit « Parler à un chargé d'affaires » sur les deux
- *      formulaires. Soit aligner le libellé sur la capture, soit acter que le
- *      composant partagé prime sur la capture pour les formulaires.
+ *   1. Le bouton d'envoi répète le titre du panneau et tient toute la largeur,
+ *      comme la capture (tpl 87). SANS TITRE (sept sous-pages, binding vide de
+ *      la maquette : l'en-tête ET le bouton y sont vides), le bouton prend le
+ *      libellé par défaut du formulaire : un bouton sans nom ne s'annonce pas.
  *   2. ÉCART ASSUMÉ (obligation légale, RGPD articles 13 et 14) : la mention
  *      « Données traitées par Migen… politique de confidentialité » sous le
  *      formulaire (FormulaireContact.tsx, l. 392-405) est absente de la
@@ -91,7 +90,11 @@ export default function PanneauFormulaire({
         ) : null}
         <div style={TITRE}>{titre}</div>
       </div>
-      <FormulaireContact formulaire={formulaire} />
+      <FormulaireContact
+        formulaire={formulaire}
+        libelleEnvoi={titre || undefined}
+        variante="panneau"
+      />
     </div>
   );
 }

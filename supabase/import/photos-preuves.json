@@ -1,0 +1,452 @@
+{
+  "/preuves/aktid-centre-logistique/": {
+    "logo": "/assets/clients/aktid.png",
+    "heros": "/assets/web/mq-29ebb1b81ced.jpg",
+    "dispositif": "/assets/web/mq-2a6115ec9fe0.jpg",
+    "plusLoin": [
+      "/assets/web/mq-0699d4d92e7e.jpg",
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg"
+    ]
+  },
+  "/preuves/alstef-group/": {
+    "logo": "/assets/clients/alstef-group.webp",
+    "heros": "/assets/web/mq-d50c84e228cb.jpg",
+    "dispositif": "/assets/web/mq-e6322efcd358.jpg",
+    "plusLoin": [
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg",
+      "/assets/web/mq-948c28bcda08.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg"
+    ]
+  },
+  "/preuves/amazon-centre-logistique/": {
+    "logo": "/assets/clients/mq-3103d0f3f9ba.svg",
+    "heros": "/assets/web/mq-29ebb1b81ced.jpg",
+    "dispositif": "/assets/web/mq-0699d4d92e7e.jpg",
+    "plusLoin": [
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg",
+      "/assets/web/mq-948c28bcda08.jpg"
+    ]
+  },
+  "/preuves/amazon-nouveau-site/": {
+    "logo": "/assets/clients/mq-3103d0f3f9ba.svg",
+    "heros": "/assets/web/mq-29ebb1b81ced.jpg",
+    "dispositif": "/assets/web/mq-e6322efcd358.jpg",
+    "plusLoin": [
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg",
+      "/assets/web/mq-948c28bcda08.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg"
+    ]
+  },
+  "/preuves/atena-port-la-rochelle/": {
+    "logo": "/assets/clients/atena.png",
+    "heros": "/assets/web/mq-e6322efcd358.jpg",
+    "dispositif": "/assets/web/mq-056f3c250981.jpg",
+    "plusLoin": [
+      "/assets/web/mq-948c28bcda08.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg",
+      "/assets/web/mq-2a6115ec9fe0.jpg",
+      "/assets/web/mq-0699d4d92e7e.jpg"
+    ]
+  },
+  "/preuves/autoliv/": {
+    "logo": "/assets/clients/mq-a4d5eb645ce5.svg",
+    "heros": "/assets/web/mq-0b70202fed79.jpg",
+    "dispositif": "/assets/web/mq-339d39e2a674.jpg",
+    "plusLoin": [
+      "/assets/web/mq-056f3c250981.jpg",
+      "/assets/web/mq-948c28bcda08.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg",
+      "/assets/web/mq-2a6115ec9fe0.jpg"
+    ]
+  },
+  "/preuves/bamesa/": {
+    "logo": "/assets/clients/bamesa.png",
+    "heros": "/assets/web/mq-e6322efcd358.jpg",
+    "dispositif": "/assets/web/mq-056f3c250981.jpg",
+    "plusLoin": [
+      "/assets/web/mq-948c28bcda08.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg",
+      "/assets/web/mq-2a6115ec9fe0.jpg",
+      "/assets/web/mq-0699d4d92e7e.jpg"
+    ]
+  },
+  "/preuves/danone-lignes-de-production/": {
+    "logo": "/assets/clients/danone-bledina.png",
+    "heros": "/assets/web/mq-1ef16ef335a6.jpg",
+    "dispositif": "/assets/web/mq-17e2f3bce95f.jpg",
+    "plusLoin": [
+      "/assets/web/mq-0699d4d92e7e.jpg",
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg"
+    ]
+  },
+  "/preuves/dimomaint/": {
+    "logo": "/assets/clients/mq-e2c58c98b787.svg",
+    "heros": "/assets/web/mq-6f28e577bc79.jpg",
+    "dispositif": "/assets/web/mq-0699d4d92e7e.jpg",
+    "plusLoin": [
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg",
+      "/assets/web/mq-948c28bcda08.jpg"
+    ]
+  },
+  "/preuves/eaton-mise-en-production/": {
+    "logo": "/assets/clients/mq-70bce765c1a2.svg",
+    "heros": "/assets/web/mq-5111002ce2b6.jpg",
+    "dispositif": "/assets/web/mq-948c28bcda08.jpg",
+    "plusLoin": [
+      "/assets/web/mq-17e2f3bce95f.jpg",
+      "/assets/web/mq-2a6115ec9fe0.jpg",
+      "/assets/web/mq-0699d4d92e7e.jpg",
+      "/assets/web/mq-e6322efcd358.jpg"
+    ]
+  },
+  "/preuves/eiffage/": {
+    "logo": "/assets/clients/mq-21daf7c60970.svg",
+    "heros": "/assets/web/mq-948c28bcda08.jpg",
+    "dispositif": "/assets/web/mq-e6322efcd358.jpg",
+    "plusLoin": [
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg",
+      "/assets/web/mq-2a6115ec9fe0.jpg"
+    ]
+  },
+  "/preuves/eriks/": {
+    "logo": "/assets/clients/mq-441fc873c0d9.svg",
+    "heros": "/assets/web/mq-1ef16ef335a6.jpg",
+    "dispositif": "/assets/web/mq-0699d4d92e7e.jpg",
+    "plusLoin": [
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg",
+      "/assets/web/mq-948c28bcda08.jpg"
+    ]
+  },
+  "/preuves/fdj/": {
+    "logo": "/assets/clients/mq-d2b02ebe550d.svg",
+    "heros": "/assets/web/x-elec-cablage.jpg",
+    "dispositif": "/assets/web/mq-339d39e2a674.jpg",
+    "plusLoin": [
+      "/assets/web/mq-948c28bcda08.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg",
+      "/assets/web/mq-2a6115ec9fe0.jpg",
+      "/assets/web/mq-0699d4d92e7e.jpg"
+    ]
+  },
+  "/preuves/gls-maintenance-curative/": {
+    "logo": "/assets/clients/mq-09708b77564e.svg",
+    "heros": "/assets/web/mq-d50c84e228cb.jpg",
+    "dispositif": "/assets/web/mq-339d39e2a674.jpg",
+    "plusLoin": [
+      "/assets/web/mq-948c28bcda08.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg",
+      "/assets/web/mq-2a6115ec9fe0.jpg",
+      "/assets/web/mq-0699d4d92e7e.jpg"
+    ]
+  },
+  "/preuves/groupe-atlantic/": {
+    "logo": "/assets/clients/groupe-atlantic.png",
+    "heros": "/assets/web/mq-7ee5a26d3e82.jpg",
+    "dispositif": "/assets/web/mq-339d39e2a674.jpg",
+    "plusLoin": [
+      "/assets/web/mq-056f3c250981.jpg",
+      "/assets/web/mq-948c28bcda08.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg",
+      "/assets/web/mq-2a6115ec9fe0.jpg"
+    ]
+  },
+  "/preuves/jacquet-brossard/": {
+    "logo": "/assets/clients/mq-68b4119a50b4.png",
+    "heros": "/assets/web/mq-056f3c250981.jpg",
+    "dispositif": "/assets/web/mq-17e2f3bce95f.jpg",
+    "plusLoin": [
+      "/assets/web/mq-2a6115ec9fe0.jpg",
+      "/assets/web/mq-0699d4d92e7e.jpg",
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg"
+    ]
+  },
+  "/preuves/jeld-wen/": {
+    "logo": "/assets/clients/jeld-wen.png",
+    "heros": "/assets/web/mq-948c28bcda08.jpg",
+    "dispositif": "/assets/web/mq-2a6115ec9fe0.jpg",
+    "plusLoin": [
+      "/assets/web/mq-0699d4d92e7e.jpg",
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg"
+    ]
+  },
+  "/preuves/joint-lyonnais/": {
+    "logo": "/assets/clients/joint-lyonnais.png",
+    "heros": "/assets/web/mq-eabc4d10517e.jpg",
+    "dispositif": "/assets/web/mq-948c28bcda08.jpg",
+    "plusLoin": [
+      "/assets/web/mq-17e2f3bce95f.jpg",
+      "/assets/web/mq-2a6115ec9fe0.jpg",
+      "/assets/web/mq-0699d4d92e7e.jpg",
+      "/assets/web/mq-e6322efcd358.jpg"
+    ]
+  },
+  "/preuves/jtekt/": {
+    "logo": "/assets/clients/mq-e93a6ad5abf7.svg",
+    "heros": "/assets/web/mq-2a8c78b5c75c.jpg",
+    "dispositif": "/assets/web/mq-e6322efcd358.jpg",
+    "plusLoin": [
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg",
+      "/assets/web/mq-948c28bcda08.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg"
+    ]
+  },
+  "/preuves/la-panetiere/": {
+    "logo": "/assets/clients/mq-8506472cb2ee.svg",
+    "heros": "/assets/web/mq-17e2f3bce95f.jpg",
+    "dispositif": "/assets/web/mq-0699d4d92e7e.jpg",
+    "plusLoin": [
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg",
+      "/assets/web/mq-948c28bcda08.jpg"
+    ]
+  },
+  "/preuves/mccain-belgique/": {
+    "logo": "/assets/clients/mq-c23abfa0ca07.svg",
+    "heros": "/assets/web/mq-2a8c78b5c75c.jpg",
+    "dispositif": "/assets/web/mq-056f3c250981.jpg",
+    "plusLoin": [
+      "/assets/web/mq-948c28bcda08.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg",
+      "/assets/web/mq-2a6115ec9fe0.jpg",
+      "/assets/web/mq-0699d4d92e7e.jpg"
+    ]
+  },
+  "/preuves/mersen/": {
+    "logo": "/assets/clients/mq-eb9461b85e59.svg",
+    "heros": "/assets/web/mq-2d11362f7867.jpg",
+    "dispositif": "/assets/web/mq-2a6115ec9fe0.jpg",
+    "plusLoin": [
+      "/assets/web/mq-0699d4d92e7e.jpg",
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg"
+    ]
+  },
+  "/preuves/motherson/": {
+    "logo": "/assets/clients/mq-ed5f02d3ab11.svg",
+    "heros": "/assets/web/mq-948c28bcda08.jpg",
+    "dispositif": "/assets/web/mq-2a6115ec9fe0.jpg",
+    "plusLoin": [
+      "/assets/web/mq-0699d4d92e7e.jpg",
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg"
+    ]
+  },
+  "/preuves/ogf-arret-estival/": {
+    "logo": "/assets/clients/ogf.png",
+    "heros": "/assets/web/mq-42237c1c8685.jpg",
+    "dispositif": "/assets/web/mq-e6322efcd358.jpg",
+    "plusLoin": [
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg",
+      "/assets/web/mq-948c28bcda08.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg"
+    ]
+  },
+  "/preuves/orthus-ecocem/": {
+    "logo": "/assets/clients/ecocem.png",
+    "heros": "/assets/web/mq-e69a240d8656.jpg",
+    "dispositif": "/assets/web/mq-17e2f3bce95f.jpg",
+    "plusLoin": [
+      "/assets/web/mq-2a6115ec9fe0.jpg",
+      "/assets/web/mq-0699d4d92e7e.jpg",
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg"
+    ]
+  },
+  "/preuves/orthus-washtec/": {
+    "logo": "/assets/clients/orthus-x-washtec.svg",
+    "heros": "/assets/web/mq-f0a164798e50.jpg",
+    "dispositif": "/assets/web/mq-056f3c250981.jpg",
+    "plusLoin": [
+      "/assets/web/mq-948c28bcda08.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg",
+      "/assets/web/mq-2a6115ec9fe0.jpg",
+      "/assets/web/mq-0699d4d92e7e.jpg"
+    ]
+  },
+  "/preuves/rector-lesage/": {
+    "logo": "/assets/clients/rector-lesage.png",
+    "heros": "/assets/web/mq-2a6115ec9fe0.jpg",
+    "dispositif": "/assets/web/mq-e6322efcd358.jpg",
+    "plusLoin": [
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg",
+      "/assets/web/mq-948c28bcda08.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg"
+    ]
+  },
+  "/preuves/salaison-du-maconnais/": {
+    "logo": "/assets/clients/salaison-du-maconnais.png",
+    "heros": "/assets/web/mq-17e2f3bce95f.jpg",
+    "dispositif": "/assets/web/mq-0699d4d92e7e.jpg",
+    "plusLoin": [
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg",
+      "/assets/web/mq-948c28bcda08.jpg"
+    ]
+  },
+  "/preuves/savoye-migration-automates-norvege/": {
+    "logo": "/assets/clients/savoye.png",
+    "heros": "/assets/web/mq-d50c84e228cb.jpg",
+    "dispositif": "/assets/web/mq-17e2f3bce95f.jpg",
+    "plusLoin": [
+      "/assets/web/mq-2a6115ec9fe0.jpg",
+      "/assets/web/mq-0699d4d92e7e.jpg",
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg"
+    ]
+  },
+  "/preuves/savoye/": {
+    "logo": "/assets/clients/savoye.png",
+    "heros": "/assets/web/mq-d50c84e228cb.jpg",
+    "dispositif": "/assets/web/mq-056f3c250981.jpg",
+    "plusLoin": [
+      "/assets/web/mq-948c28bcda08.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg",
+      "/assets/web/mq-2a6115ec9fe0.jpg",
+      "/assets/web/mq-0699d4d92e7e.jpg"
+    ]
+  },
+  "/preuves/soprema/": {
+    "logo": "/assets/clients/mq-127f9e03c53b.svg",
+    "heros": "/assets/web/mq-90cb13fdd619.jpg",
+    "dispositif": "/assets/web/mq-0699d4d92e7e.jpg",
+    "plusLoin": [
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg",
+      "/assets/web/mq-948c28bcda08.jpg"
+    ]
+  },
+  "/preuves/stellantis-fonderie-sept-fons/": {
+    "logo": "/assets/clients/stellantis.png",
+    "heros": "/assets/web/mq-5111002ce2b6.jpg",
+    "dispositif": "/assets/web/mq-2a6115ec9fe0.jpg",
+    "plusLoin": [
+      "/assets/web/mq-0699d4d92e7e.jpg",
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg"
+    ]
+  },
+  "/preuves/stellantis-grand-est/": {
+    "logo": "/assets/clients/stellantis.png",
+    "heros": "/assets/web/mq-5111002ce2b6.jpg",
+    "dispositif": "/assets/web/mq-17e2f3bce95f.jpg",
+    "plusLoin": [
+      "/assets/web/mq-2a6115ec9fe0.jpg",
+      "/assets/web/mq-0699d4d92e7e.jpg",
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg"
+    ]
+  },
+  "/preuves/suez-remise-en-etat/": {
+    "logo": "/assets/clients/mq-89100525ef89.svg",
+    "heros": "/assets/web/mq-339d39e2a674.jpg",
+    "dispositif": "/assets/web/mq-056f3c250981.jpg",
+    "plusLoin": [
+      "/assets/web/mq-948c28bcda08.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg",
+      "/assets/web/mq-2a6115ec9fe0.jpg",
+      "/assets/web/mq-0699d4d92e7e.jpg"
+    ]
+  },
+  "/preuves/timescope/": {
+    "logo": "/assets/clients/timescope.png",
+    "heros": "/assets/web/x-elec-cablage.jpg",
+    "dispositif": "/assets/web/mq-17e2f3bce95f.jpg",
+    "plusLoin": [
+      "/assets/web/mq-2a6115ec9fe0.jpg",
+      "/assets/web/mq-0699d4d92e7e.jpg",
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg"
+    ]
+  },
+  "/preuves/tournaire/": {
+    "logo": "/assets/clients/mq-7c01e175985e.png",
+    "heros": "/assets/web/mq-0699d4d92e7e.jpg",
+    "dispositif": "/assets/web/mq-339d39e2a674.jpg",
+    "plusLoin": [
+      "/assets/web/mq-056f3c250981.jpg",
+      "/assets/web/mq-948c28bcda08.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg",
+      "/assets/web/mq-2a6115ec9fe0.jpg"
+    ]
+  },
+  "/preuves/valeo-usines/": {
+    "logo": "/assets/clients/mq-f6fcccfd4cc8.svg",
+    "heros": "/assets/web/x-auto-caisse.jpg",
+    "dispositif": "/assets/web/mq-2a6115ec9fe0.jpg",
+    "plusLoin": [
+      "/assets/web/mq-0699d4d92e7e.jpg",
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg"
+    ]
+  },
+  "/preuves/veepee-sites-lyon/": {
+    "logo": "/assets/clients/mq-ff81dfbb55c7.svg",
+    "heros": "/assets/web/mq-c5856badee79.jpg",
+    "dispositif": "/assets/web/mq-17e2f3bce95f.jpg",
+    "plusLoin": [
+      "/assets/web/mq-0699d4d92e7e.jpg",
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg"
+    ]
+  },
+  "/preuves/vignal-systems/": {
+    "logo": "/assets/clients/mq-dbf1f974e675.svg",
+    "heros": "/assets/web/mq-948c28bcda08.jpg",
+    "dispositif": "/assets/web/mq-2a6115ec9fe0.jpg",
+    "plusLoin": [
+      "/assets/web/mq-0699d4d92e7e.jpg",
+      "/assets/web/mq-e6322efcd358.jpg",
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg"
+    ]
+  },
+  "/preuves/voit-grand-est/": {
+    "logo": "/assets/clients/mq-dd835fd31c69.svg",
+    "heros": "/assets/web/mq-5b47b5f6a584.jpg",
+    "dispositif": "/assets/web/mq-17e2f3bce95f.jpg",
+    "plusLoin": [
+      "/assets/web/mq-2a6115ec9fe0.jpg",
+      "/assets/web/mq-0699d4d92e7e.jpg",
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg"
+    ]
+  },
+  "/preuves/vpk/": {
+    "heros": "/assets/web/mq-90cb13fdd619.jpg",
+    "dispositif": "/assets/web/mq-e6322efcd358.jpg",
+    "plusLoin": [
+      "/assets/web/mq-339d39e2a674.jpg",
+      "/assets/web/mq-056f3c250981.jpg",
+      "/assets/web/mq-948c28bcda08.jpg",
+      "/assets/web/mq-17e2f3bce95f.jpg"
+    ]
+  }
+}

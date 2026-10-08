@@ -9,6 +9,8 @@
       "Migen assure la maintenance de ces équipements sous contrat. La collaboration est toujours en cours."
     ],
     "bouton": "Mettre mon parc sous contrat de maintenance",
+    "logo": "/assets/clients/timescope.png",
+    "photoHero": "/assets/web/x-elec-cablage.jpg",
     "chiffres": [
       {
         "libelle": "Périmètre",
@@ -121,6 +123,7 @@
         "valeur": "Fiabilité et performances des casques"
       }
     ],
+    "photoDispositif": "/assets/web/mq-17e2f3bce95f.jpg",
     "resultats": [
       {
         "titre": "Un suivi de maintenance approfondi sur tout le parc",
@@ -154,28 +157,32 @@
     "besoinProse": [
       "Dites-nous ce que vous avez déployé et où, nous cadrons un contrat de maintenance.",
       "L'astreinte la nuit, le week-end et les jours fériés s'ajoute en option si votre exploitation tourne le week-end.",
-      "Travailler sur une technologie récente demande des techniciens capables d'apprendre vite. Notre sélection retient 10 % des candidats, après entretien technique et comportemental."
+      "Travailler sur une technologie récente demande des techniciens capables d'apprendre vite. Notre sélection retient 10 % des techniciens, après entretien technique et comportemental."
     ],
     "plusLoin": [
       {
         "surtitre": "Étude de cas",
         "titre": "ORTHUS x ECOCEM : construction d'un site R&D",
-        "href": "/preuves/orthus-ecocem/"
+        "href": "/preuves/orthus-ecocem/",
+        "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
-        "href": "/preuves/dimomaint/"
+        "href": "/preuves/dimomaint/",
+        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
-        "href": "/preuves/eiffage/"
+        "href": "/preuves/eiffage/",
+        "photo": "/assets/web/mq-e6322efcd358.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
-        "href": "/preuves/savoye/"
+        "href": "/preuves/savoye/",
+        "photo": "/assets/web/mq-339d39e2a674.jpg"
       }
     ]
   }

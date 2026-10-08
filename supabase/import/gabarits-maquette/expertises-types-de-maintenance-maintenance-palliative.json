@@ -1,0 +1,258 @@
+{
+  "_source": "maquette/rendu/expertises--types-de-maintenance--maintenance-palliative.html (07/10 21h12, 15 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (entités décodées, apostrophes de la capture conservées), contrôlé par components/site/expertises/specialite/verification-specialite.tsx. CHIFFRES : les trois cartes de la capture, « +200 / Clients industriels accompagnés » compris (règle client : « +200 clients », jamais « réguliers »). PHOTOS MESURÉES, PAS CHOISIES : octets de chaque blob du rail des références de la maquette vivante (localhost:4352/voir.html, 08/10) rapprochés de public/assets/web par sha256 complet, dans l'ordre des cartes ; ordre des clients vérifié identique à la capture. « Marques maintenues » absente de la capture, donc pas de marquesFamille. Problème dessiné « panneau-sombre », aucune photo (problemePhoto null). « Complément 4 » porté. PHRASE NON RENDUE (interdit « tarif ») : 09 Questions, « Combien coûte une intervention palliative ? », la phrase « La question utile n'est pas le tarif horaire mais le coût complet : main d'œuvre, pièce, transport, production perdue, et la réparation définitive qui reste due. » ; SEULE cette phrase tombe (consigne du 08/10 : on retire la phrase, pas le paragraphe) : « Nous détaillons ces postes avant l'intervention, pas après. » reste rendue, comme sur /expertises/types-de-maintenance/maintenance-curative/.",
+  "url": "/expertises/types-de-maintenance/maintenance-palliative/",
+  "titre_h1": "Maintenance palliative : redémarrer maintenant, réparer pour de bon ensuite",
+  "contenu": {
+    "gabarit": "specialite",
+    "pastille": "Expertises",
+    "chapeau": "Un technicien qui remet la fonction en marche sans toucher aux sécurités, puis écrit le mode dégradé, son échéance et la réparation à planifier. Le dépannage ne reste jamais dans un carnet.",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés.",
+    "appelBouton": "Demander une intervention",
+    "actions": [
+      {
+        "libelle": "Demander une intervention",
+        "href": "#besoin"
+      }
+    ],
+    "formulaireHeroTitre": "Demander une intervention",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
+      {
+        "valeur": "Dans l'heure",
+        "libelle": "Le rappel après votre demande, du lundi au vendredi de 8h00 à 18h30"
+      },
+      {
+        "valeur": "en continu et tous les jours",
+        "libelle": "Astreinte, pour la nuit et le week-end"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, après entretien technique ET comportemental"
+      }
+    ],
+    "problemePhoto": null,
+    "complementOffre": [
+      {
+        "texte": "Machine arrêtée en ce moment : passez par le dépannage industriel."
+      }
+    ],
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "La pièce arrive dans dix jours, il reste trois jours de commandes à sortir, et aucun client n'acceptera d'attendre.",
+        "puces": [
+          {
+            "accroche": "La pièce de rechange n'arrive pas.",
+            "texte": "Référence obsolète ou délai fournisseur long : la ligne s'arrête, et personne n'a de date à donner à la production."
+          },
+          {
+            "accroche": "Le dépannage improvisé casse plus cher.",
+            "texte": "Faire tourner une pompe sans refroidissement correct détruit le moteur en quelques heures. L'incident mineur devient une casse majeure."
+          },
+          {
+            "accroche": "Le provisoire s'installe et personne ne le sait.",
+            "texte": "Une ligne griffonnée dans un carnet, un technicien qui part : le mode dégradé finit en panne un vendredi soir."
+          },
+          {
+            "accroche": "La part du correctif mange le budget.",
+            "texte": "Les dépannages s'accumulent sur les mêmes machines, le MTBF chute, et le préventif disparaît le premier."
+          }
+        ],
+        "variante": "panneau-sombre"
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "La décision avant le geste",
+              "texte": "Ce qui peut repartir en mode dégradé, ce qui exige une action curative immédiate, ce qui impose l'arrêt."
+            },
+            "benefice": "Vous ne mettez pas vos équipes en danger pour tenir une fin de série."
+          },
+          {
+            "prestation": {
+              "accroche": "Mécanique et transmission",
+              "texte": "Surveillance renforcée sur un roulement marqué, cadence réduite, neutralisation d'une fuite d'huile en attendant le joint à la bonne cote, réglage provisoire d'une transmission."
+            },
+            "benefice": "La ligne sort la commande, et le remplacement se fait au créneau que vous avez validé."
+          },
+          {
+            "prestation": {
+              "accroche": "Électricité et automatisme",
+              "texte": "Forçage documenté et tracé dans l'automate sur un capteur défaillant, composant approchant posé avec ses paramètres réajustés, tronçon réalimenté sur une source de secours."
+            },
+            "benefice": "La série en cours se termine sans qu'une seule sécurité soit contournée."
+          },
+          {
+            "prestation": {
+              "accroche": "Hydraulique, pneumatique, fluides",
+              "texte": "Circuit fuyard isolé pour travailler sur la partie saine, raccord provisoire sur l'air comprimé avec contrôle de pression, pompe de substitution pendant la révision."
+            },
+            "benefice": "La presse ne part pas en indisponibilité totale pour une fuite localisée."
+          },
+          {
+            "prestation": {
+              "accroche": "Le refus assumé",
+              "texte": "Fonction de sécurité, mode dégradé qui menace un autre organe, contrôle réglementaire en jeu. Sur ces trois cas, nous disons non."
+            },
+            "benefice": "Votre conformité ne dépend pas de la pression du planning."
+          },
+          {
+            "prestation": {
+              "accroche": "L'écrit systématique",
+              "texte": "Nature de l'action, date, mode dégradé imposé, risque résiduel, date de péremption, réparation à prévoir."
+            },
+            "benefice": "Le dossier reste ouvert jusqu'à sa clôture réelle, et la production connaît la limite physique à ne pas franchir."
+          },
+          {
+            "prestation": {
+              "accroche": "La sortie du palliatif",
+              "texte": "Comptage des dépannages par équipement, tri des machines qui les concentrent, bascule en préventif ou en amélioratif."
+            },
+            "benefice": "Les prochaines interruptions seront choisies, pas subies."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Vous décrivez la panne",
+            "texte": "Machine, domaine technique, code défaut, moment du cycle, échéance de production à tenir. Quelques minutes au téléphone évitent un déplacement pour rien."
+          },
+          {
+            "titre": "Un technicien vous rappelle dans l'heure.",
+            "texte": "Vous savez rapidement qui intervient et quand."
+          },
+          {
+            "titre": "Nous évaluons l'état réel de l'organe",
+            "texte": "avant de décider du mode dégradé acceptable. Sécurités, organes voisins, contrôles réglementaires : les trois cas de refus se tranchent ici."
+          },
+          {
+            "titre": "Nous remettons la fonction en marche",
+            "texte": ", à cadence réduite si nécessaire, avec les essais faits devant vos opérateurs."
+          },
+          {
+            "titre": "Nous écrivons le provisoire",
+            "texte": "Mode dégradé imposé, risque résiduel, limite à ne pas franchir, date de péremption de la solution."
+          },
+          {
+            "titre": "Nous ouvrons la réparation définitive",
+            "texte": "Pièce à commander, créneau d'arrêt à poser, préconisation chiffrée. C'est l'étape qui manque presque partout."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Aucun contournement d'une fonction de sécurité.",
+            "texte": "Protecteur, arrêt d'urgence, capteur de position, dispositif de mise en sécurité : aucune urgence de production ne justifie ce risque."
+          },
+          {
+            "accroche": "Chaque solution provisoire porte une date de fin.",
+            "texte": "Elle est écrite dans le rapport d'intervention, partagée avec la production, et elle remonte en revue de maintenance une fois passée."
+          },
+          {
+            "accroche": "Nous ne vivons pas de la répétition de vos pannes.",
+            "texte": "Quand la même défaillance revient, nous allons modifier le bien pour supprimer la cause. Démarche MASE pour la sécurité des interventions, évaluation EcoVadis pour la RSE, attestations transmises avec chaque plan de prévention."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Maintien opérationnel de convoyeurs, trieurs et packaging automatisés, logistique et transport",
+            "texte": "Deux techniciens en poste, dédiés au curatif et à la surveillance continue, chaque dysfonctionnement traité au moment où il se produit, 2025.",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-1ef16ef335a6.jpg"
+          },
+          {
+            "titre": "Diagnostic sur site et remise en état d'un parc machines défaillant, fabrication de joints",
+            "texte": "Cause cherchée avant le symptôme, plusieurs options chiffrées soumises au client, ressources existantes exploitées avant tout rachat de matériel, depuis février 2024.",
+            "lienLibelle": "Étude de cas JOINT LYONNAIS",
+            "lienHref": "/preuves/joint-lyonnais/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
+          },
+          {
+            "titre": "Parc machine en défaillance constante repris en préventif et curatif, fonderie et usinage",
+            "texte": "Six techniciens affectés au site, interventions, prise en charge complète en huit semaines, depuis octobre 2023.",
+            "lienLibelle": "Étude de cas STELLANTIS",
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/x-elec-cablage.jpg"
+          },
+          {
+            "titre": "Diagnostic rapide et dépannage en environnement automatisé, nutrition infantile",
+            "texte": "Deux techniciens intégrés en 3x8 sur les lignes liquides et le conditionnement poudre, pour raccourcir le temps entre l'arrêt et la remise en service.",
+            "lienLibelle": "Étude de cas DANONE",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+          },
+          {
+            "titre": "Continuité du préventif et du curatif pendant les congés d'équipe, industrie",
+            "texte": "Un technicien polyvalent intégré sur juillet et août, mécanique, électrotechnique et pneumatique, été 2025.",
+            "lienLibelle": "Étude de cas OGF",
+            "lienHref": "/preuves/ogf-arret-estival/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
+          },
+          {
+            "titre": "Un centre logistique monté en six semaines",
+            "lienLibelle": "Étude de cas Aktid",
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg"
+          },
+          {
+            "titre": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
+            "lienLibelle": "Étude de cas Atena",
+            "lienHref": "/preuves/atena-port-la-rochelle/",
+            "photo": "/assets/web/mq-948c28bcda08.jpg"
+          },
+          {
+            "titre": "La GMAO planifie, nos techniciens interviennent",
+            "lienLibelle": "Étude de cas DimoMaint",
+            "lienHref": "/preuves/dimomaint/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
+        "questions": [
+          {
+            "question": "Combien coûte une intervention palliative ?",
+            "reponse": "Le chiffrage se fait sur devis, après qualification de la panne avec vous. Nous détaillons ces postes avant l'intervention, pas après."
+          },
+          {
+            "question": "Faut-il un contrat pour faire appel à vous ?",
+            "reponse": "Non. Un dépannage isolé se traite en intervention ponctuelle. La question du contrat se pose sérieusement au-delà de trois interventions par an sur le même équipement, quand le budget n'est plus pilotable et que le provisoire s'installe."
+          },
+          {
+            "question": "Nous avons déjà un prestataire sous contrat. Pouvez-vous intervenir quand même ?",
+            "reponse": "Oui. Un dépannage ponctuel ne vous engage à rien vis-à-vis de votre contrat en cours, et nous intervenons en complément quand votre prestataire habituel n'a pas la compétence ou la disponibilité. Le rapport d'intervention vous appartient et reste exploitable par votre titulaire."
+          },
+          {
+            "question": "Le palliatif, ce n'est pas du bricolage ?",
+            "reponse": "Non, tant qu'il est décidé, tracé et borné dans le temps. Il devient un problème quand il remplace la réparation, quand personne dans l'entreprise ne sait qu'il existe, ou quand il touche une fonction de sécurité. Le vrai sujet n'est pas de savoir dépanner, c'est de savoir jusqu'où aller sans mettre les équipes en danger ni casser plus cher. C'est ce qui sépare un technicien évalué d'une improvisation."
+          },
+          {
+            "question": "Qui peut réaliser une intervention palliative chez nous ?",
+            "reponse": "Un technicien de maintenance qualifié, titulaire des habilitations correspondant aux travaux, et capable d'évaluer le risque résiduel du mode dégradé. Nos techniciens interviennent avec les habilitations et autorisations requises par leur métier et par votre site : habilitation électrique adaptée aux travaux confiés, autorisation de conduite selon les équipements, accueil sécurité et plan de prévention de votre établissement. Seuls 10 % des techniciens passent notre entretien technique et comportemental."
+          },
+          {
+            "question": "Intervenez-vous si notre site est à Lille, Bordeaux ou Marseille ?",
+            "reponse": "Oui. Nos quatre agences sont à Lyon (siège), Montréal, Dubaï et Madrid, et nos techniciens sont répartis sur dix hubs en France : Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon, Nantes. appelez-nous, nous qualifions la panne avec vous et nous vous rappelons dans l'heure."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que vos dépannages provisoires soient tracés et soldés au lieu de s'empiler ?",
+        "bouton": "Demander une intervention"
+      }
+    ]
+  }
+}

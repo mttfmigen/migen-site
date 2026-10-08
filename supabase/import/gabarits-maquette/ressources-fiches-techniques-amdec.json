@@ -1,430 +1,311 @@
 {
   "url": "/ressources/fiches-techniques/amdec/",
-  "h1": "Amdec",
+  "titre_h1": "Amdec",
   "contenu": {
     "gabarit": "ressource",
-    "categorie": "Fiche technique",
-    "chapeau": "La panne qui arrête votre ligne un vendredi soir, personne ne l'a vue venir. Pourtant, neuf fois sur dix, le mode de défaillance était connu, la cause aussi.",
-    "rappel": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30, pour un diagnostic maintenance : 04 78 33 72 05.",
-    "cartes": [
+    "rayon": "fiches-techniques",
+    "chapo": [
+      "La panne qui arrête votre ligne un vendredi soir, personne ne l'a vue venir. Pourtant, neuf fois sur dix, le mode de défaillance était connu, la cause aussi.",
+      "L'AMDEC sert exactement à ça : voir venir. Cette analyse des modes de défaillance, de leurs effets et de leur criticité liste les défaillances possibles d'un produit, d'un processus ou d'une machine, avant qu'elles ne coûtent cher. Cette fiche de nos [Ressources : Fiches techniques](/ressources/fiches-techniques/) donne la définition, la méthode et un exemple concret, par des techniciens qui interviennent tous les jours."
+    ],
+    "avant": [
       {
-        "surtitre": "Aller plus loin",
-        "titre": "Outils de diagnostic maintenance",
-        "lienHref": "/ressources/fiches-techniques/outils-de-diagnostic/",
-        "lienLibelle": "La page complète →"
+        "type": "encadre",
+        "texte": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30, pour un diagnostic maintenance : ."
       }
     ],
-    "corps": [
+    "parties": [
       {
-        "type": "paragraphe",
-        "texte": "L'AMDEC sert exactement à ça : voir venir. Cette analyse des modes de défaillance, de leurs effets et de leur criticité liste les défaillances possibles d'un produit, d'un processus ou d'une machine, avant qu'elles ne coûtent cher. Cette fiche de nos [Ressources : Fiches techniques](/ressources/fiches-techniques/) donne la définition, la méthode et un exemple concret, par des techniciens qui interviennent tous les jours."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "L'AMDEC, définition sans jargon",
-        "id": "l-amdec-definition-sans-jargon"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "L'AMDEC est un outil d'analyse préventive des risques. Le sigle signifie analyse des modes de défaillance, de leurs effets et de leur criticité. En anglais, on parle de FMEA, failure mode and effects analysis."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "L'AMDEC, définition sans jargon",
+        "blocs": [
           {
-            "accroche": "Ce que l'AMDEC identifie",
-            "texte": "Chaque mode de défaillance d'un système, la cause qui le provoque, l'effet qu'il produit sur le client ou la ligne, et la gravité de cet effet. La méthode transforme une inquiétude vague en liste ordonnée d'actions."
+            "type": "paragraphe",
+            "texte": "L'AMDEC est un outil d'analyse préventive des risques. Le sigle signifie analyse des modes de défaillance, de leurs effets et de leur criticité. En anglais, on parle de FMEA, failure mode and effects analysis."
           },
           {
-            "accroche": "La criticité au centre",
-            "texte": "L'AMDEC ne se contente pas de lister les défaillances potentielles. Elle les note et les classe par criticité, pour concentrer l'action là où le risque est le plus fort et atténuer d'abord ce qui pèse le plus."
+            "type": "puces",
+            "items": [
+              "**Ce que l'AMDEC identifie** : Chaque mode de défaillance d'un système, la cause qui le provoque, l'effet qu'il produit sur le client ou la ligne, et la gravité de cet effet. La méthode transforme une inquiétude vague en liste ordonnée d'actions.",
+              "**La criticité au centre** : L'AMDEC ne se contente pas de lister les défaillances potentielles. Elle les note et les classe par criticité, pour concentrer l'action là où le risque est le plus fort et atténuer d'abord ce qui pèse le plus.",
+              "**Une méthode d'équipe** : L'AMDEC se construit en groupe de travail, avec la maintenance, la production, la qualité et le bureau d'études. Aucune personne seule ne connaît tous les modes de défaillance d'un système complexe.",
+              "**Une origine industrielle** : Née dans l'aéronautique et l'automobile pour garantir la fiabilité, l'AMDEC s'est répandue dans toute l'industrie, du produit à la conception, du processus à la machine de production."
+            ]
           },
           {
-            "accroche": "Une méthode d'équipe",
-            "texte": "L'AMDEC se construit en groupe de travail, avec la maintenance, la production, la qualité et le bureau d'études. Aucune personne seule ne connaît tous les modes de défaillance d'un système complexe."
+            "type": "paragraphe",
+            "texte": "L'AMDEC n'est pas un document qu'on range dans un classeur. C'est une démarche vivante d'amélioration continue : on analyse, on agit, on vérifie que le risque a baissé, puis on recommence."
           },
           {
-            "accroche": "Une origine industrielle",
-            "texte": "Née dans l'aéronautique et l'automobile pour garantir la fiabilité, l'AMDEC s'est répandue dans toute l'industrie, du produit à la conception, du processus à la machine de production."
+            "type": "paragraphe",
+            "texte": "Le mot revient souvent dans le vocabulaire qualité, à côté de l'analyse fonctionnelle, du plan de surveillance et de la gestion des risques. Retenez l'essentiel : l'AMDEC met un chiffre sur un risque, ce chiffre s'appelle la criticité, et ce chiffre décide de l'action à mener. L'AMDEC reste une analyse qualitative, utilisée aussi bien en gestion de projet qu'en atelier, qui vise la satisfaction client en fiabilisant le processus de production. Elle ne garantit pas tout, mais elle teste chaque limite avant qu'elle ne cède."
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "L'AMDEC n'est pas un document qu'on range dans un classeur. C'est une démarche vivante d'amélioration continue : on analyse, on agit, on vérifie que le risque a baissé, puis on recommence."
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Le mot revient souvent dans le vocabulaire qualité, à côté de l'analyse fonctionnelle, du plan de surveillance et de la gestion des risques. Retenez l'essentiel : l'AMDEC met un chiffre sur un risque, ce chiffre s'appelle la criticité, et ce chiffre décide de l'action à mener. L'AMDEC reste une analyse qualitative, utilisée aussi bien en gestion de projet qu'en atelier, qui vise la satisfaction client en fiabilisant le processus de production. Elle ne garantit pas tout, mais elle teste chaque limite avant qu'elle ne cède."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Pourquoi faire une AMDEC : objectifs et bénéfices",
-        "id": "pourquoi-faire-une-amdec-objectifs-et-benefices"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Une défaillance coûte toujours plus qu'un contrôle. L'objectif principal de l'AMDEC est de dépenser un peu d'effort d'analyse pour éviter beaucoup d'argent d'immobilisation."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Pourquoi faire une AMDEC : objectifs et bénéfices",
+        "blocs": [
           {
-            "accroche": "Prévenir plutôt que subir",
-            "texte": "L'AMDEC identifie la défaillance potentielle avant qu'elle ne survienne. Le service maintenance passe d'une logique corrective, où l'on répare après coup, à une logique de prévention chiffrée."
+            "type": "paragraphe",
+            "texte": "Une défaillance coûte toujours plus qu'un contrôle. L'objectif principal de l'AMDEC est de dépenser un peu d'effort d'analyse pour éviter beaucoup d'argent d'immobilisation."
           },
           {
-            "accroche": "Fiabiliser le produit et le procédé",
-            "texte": "En analysant les modes de défaillance à la conception, l'entreprise sécurise le produit avant sa mise sur le marché et réduit les retours client, souvent bien plus coûteux qu'un contrôle interne."
+            "type": "puces",
+            "items": [
+              "**Prévenir plutôt que subir** : L'AMDEC identifie la défaillance potentielle avant qu'elle ne survienne. Le service maintenance passe d'une logique corrective, où l'on répare après coup, à une logique de prévention chiffrée.",
+              "**Fiabiliser le produit et le procédé** : En analysant les modes de défaillance à la conception, l'entreprise sécurise le produit avant sa mise sur le marché et réduit les retours client, souvent bien plus coûteux qu'un contrôle interne.",
+              "**Cibler l'effort de contrôle** : La criticité désigne où placer les points de contrôle et la surveillance. L'AMDEC évite de contrôler partout au hasard et concentre le taux d'inspection sur ce qui compte.",
+              "**Répondre aux exigences qualité** : L'AMDEC s'inscrit dans le management de la qualité et des risques, souvent en réponse aux normes, dont l'ISO 9001. C'est un outil reconnu d'évaluation et de maîtrise des défaillances."
+            ]
           },
           {
-            "accroche": "Cibler l'effort de contrôle",
-            "texte": "La criticité désigne où placer les points de contrôle et la surveillance. L'AMDEC évite de contrôler partout au hasard et concentre le taux d'inspection sur ce qui compte."
+            "type": "puces",
+            "items": [
+              "**Réduire les conséquences en cascade** : Une défaillance non anticipée déclenche souvent une réaction en chaîne, retards logistiques, rebuts, insatisfaction du client. L'AMDEC coupe cette conséquence à la source en traitant le facteur déclencheur, pas seulement son symptôme.",
+              "**Capitaliser l'expérience** : Chaque analyse devient une base de connaissance réutilisée d'un projet à l'autre. Ce retour d'expérience nourrit les versions suivantes du produit et de la ligne, et l'approche gagne en efficacité à mesure qu'on l'utilise."
+            ]
           },
           {
-            "accroche": "Répondre aux exigences qualité",
-            "texte": "L'AMDEC s'inscrit dans le management de la qualité et des risques, souvent en réponse aux normes, dont l'ISO 9001. C'est un outil reconnu d'évaluation et de maîtrise des défaillances."
+            "type": "puces",
+            "items": [
+              "**Limiter le risque à la source** : L'AMDEC recherche la cause racine plutôt que le symptôme. C'est la clé d'une atténuation durable : on traite le facteur, pas la conséquence, et l'activité reprend sur une base plus sûre.",
+              "**Servir de référence pour l'audit** : L'AMDEC constitue un rapport d'analyse de risque utile en audit qualité. Elle prouve, au niveau opérationnel, que les défaillances principales sont bien évaluées et traitées de manière méthodique."
+            ]
+          },
+          {
+            "type": "encadre",
+            "texte": "L'AMDEC ne garantit pas zéro panne. Elle garantit que les défaillances les plus graves et les plus fréquentes sont vues, notées et traitées en premier, avec un critère de décision partagé par toute l'équipe."
           }
         ]
       },
       {
-        "type": "liste",
-        "items": [
+        "titre": "Gravité, fréquence, détection : les trois notes de la criticité",
+        "blocs": [
           {
-            "accroche": "Réduire les conséquences en cascade",
-            "texte": "Une défaillance non anticipée déclenche souvent une réaction en chaîne, retards logistiques, rebuts, insatisfaction du client. L'AMDEC coupe cette conséquence à la source en traitant le facteur déclencheur, pas seulement son symptôme."
+            "type": "paragraphe",
+            "texte": "La criticité d'une défaillance ne se devine pas, elle se calcule. L'AMDEC repose sur trois indices, notés chacun sur une échelle, le plus souvent de 1 à 10."
           },
           {
-            "accroche": "Capitaliser l'expérience",
-            "texte": "Chaque analyse devient une base de connaissance réutilisée d'un projet à l'autre. Ce retour d'expérience nourrit les versions suivantes du produit et de la ligne, et l'approche gagne en efficacité à mesure qu'on l'utilise."
+            "type": "tableau",
+            "entetes": [
+              "Indice",
+              "Ce qu'il évalue",
+              "Une note élevée signifie"
+            ],
+            "lignes": [
+              [
+                "Gravité (G)",
+                "La sévérité de l'effet sur le client, la sécurité ou la production",
+                "L'effet est grave, parfois un accident"
+              ],
+              [
+                "Fréquence (F) ou occurrence",
+                "La probabilité que la cause survienne",
+                "La défaillance apparaît souvent"
+              ],
+              [
+                "Détection (D)",
+                "La capacité à repérer le défaut avant qu'il n'atteigne le client",
+                "Le défaut passe inaperçu, mauvaise détectabilité"
+              ],
+              [
+                "Criticité (C)",
+                "Le produit des trois : G × F × D",
+                "Le risque est prioritaire, action obligatoire"
+              ]
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "texte": "La criticité, aussi appelée indice de priorité du risque, IPR ou NPR, hiérarchise les défaillances. On fixe un seuil : au-dessus, une action corrective est décidée pour atténuer le risque ; en dessous, on surveille. C'est ce calcul qui rend l'AMDEC utile plutôt que théorique."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "La grille de cotation est le cœur de la méthode. Chaque échelle, de la gravité à la détectabilité, doit être définie noir sur blanc avant la réunion. Sans grille écrite, deux personnes noteront une défaillance de façon différente, et la criticité perdra tout sens."
+          },
+          {
+            "type": "encadre",
+            "texte": "Une gravité élevée seule suffit parfois à déclencher une action, y compris si la fréquence est faible. Un effet qui touche la sécurité des personnes ne se négocie pas contre une probabilité d'apparition."
           }
         ]
       },
       {
-        "type": "liste",
-        "items": [
+        "titre": "AMDEC produit, processus, moyen : trois familles",
+        "blocs": [
           {
-            "accroche": "Limiter le risque à la source",
-            "texte": "L'AMDEC recherche la cause racine plutôt que le symptôme. C'est la clé d'une atténuation durable : on traite le facteur, pas la conséquence, et l'activité reprend sur une base plus sûre."
+            "type": "paragraphe",
+            "texte": "Le mot AMDEC recouvre plusieurs analyses selon l'objet étudié. Confondre les trois fait perdre des heures et brouille les résultats."
           },
           {
-            "accroche": "Servir de référence pour l'audit",
-            "texte": "L'AMDEC constitue un rapport d'analyse de risque utile en audit qualité. Elle prouve, au niveau opérationnel, que les défaillances principales sont bien évaluées et traitées de manière méthodique."
+            "type": "puces",
+            "items": [
+              "**L'AMDEC produit** : Elle analyse les défaillances d'un produit liées à sa conception, sa fabrication ou son utilisation. Objectif : sécuriser le produit avant sa mise sur le marché et réduire les retours client. C'est l'affaire du bureau d'études.",
+              "**L'AMDEC processus** : Elle étudie les défaillances d'un processus de fabrication. Chaque étape du flux est passée en revue pour déterminer ce qui peut mal tourner et son impact sur la qualité et la conformité du produit.",
+              "**L'AMDEC moyen de production** : Elle porte sur les machines et équipements, aussi appelée AMDEC machine. C'est celle qui parle le plus à un service de maintenance, car elle relie chaque composant à son mode de défaillance et à son taux de panne."
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Ces trois familles partagent une méthode identique et la même grille de cotation. Ces types d'AMDEC répondent à des besoins distincts, mais l'application de l'AMDEC suit toujours la même grille de cotation AMDEC. Seul le périmètre change : le produit, le procédé, ou la machine. Une organisation mûre les combine, du bureau d'études à l'atelier, pour couvrir tout le cycle de vie."
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Un dernier repère utile : l'AMDEC fonctionnelle part de l'analyse fonctionnelle du système pour déterminer les modes de défaillance de chaque fonction. Elle sert de base à l'AMDEC produit comme à l'AMDEC moyen, et garantit qu'aucune fonction essentielle n'est oubliée dans l'analyse."
           }
         ]
       },
       {
-        "type": "citation",
-        "texte": "L'AMDEC ne garantit pas zéro panne. Elle garantit que les défaillances les plus graves et les plus fréquentes sont vues, notées et traitées en premier, avec un critère de décision partagé par toute l'équipe."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Gravité, fréquence, détection : les trois notes de la criticité",
-        "id": "gravite-frequence-detection-les-trois-notes-de-l"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "La criticité d'une défaillance ne se devine pas, elle se calcule. L'AMDEC repose sur trois indices, notés chacun sur une échelle, le plus souvent de 1 à 10."
-      },
-      {
-        "type": "tableau",
-        "entetes": [
-          "Indice",
-          "Ce qu'il évalue",
-          "Une note élevée signifie"
-        ],
-        "lignes": [
-          [
-            "Gravité (G)",
-            "La sévérité de l'effet sur le client, la sécurité ou la production",
-            "L'effet est grave, parfois un accident"
-          ],
-          [
-            "Fréquence (F) ou occurrence",
-            "La probabilité que la cause survienne",
-            "La défaillance apparaît souvent"
-          ],
-          [
-            "Détection (D)",
-            "La capacité à repérer le défaut avant qu'il n'atteigne le client",
-            "Le défaut passe inaperçu, mauvaise détectabilité"
-          ],
-          [
-            "Criticité (C)",
-            "Le produit des trois : G × F × D",
-            "Le risque est prioritaire, action obligatoire"
-          ]
-        ]
-      },
-      {
-        "type": "paragraphe",
-        "texte": "La criticité, aussi appelée indice de priorité du risque, IPR ou NPR, hiérarchise les défaillances. On fixe un seuil : au-dessus, une action corrective est décidée pour atténuer le risque ; en dessous, on surveille. C'est ce calcul qui rend l'AMDEC utile plutôt que théorique."
-      },
-      {
-        "type": "paragraphe",
-        "texte": "La grille de cotation est le cœur de la méthode. Chaque échelle, de la gravité à la détectabilité, doit être définie noir sur blanc avant la réunion. Sans grille écrite, deux personnes noteront une défaillance de façon différente, et la criticité perdra tout sens."
-      },
-      {
-        "type": "citation",
-        "texte": "Une gravité élevée seule suffit parfois à déclencher une action, y compris si la fréquence est faible. Un effet qui touche la sécurité des personnes ne se négocie pas contre une probabilité d'apparition."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "AMDEC produit, processus, moyen : trois familles",
-        "id": "amdec-produit-processus-moyen-trois-familles"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Le mot AMDEC recouvre plusieurs analyses selon l'objet étudié. Confondre les trois fait perdre des heures et brouille les résultats."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Comment réaliser une AMDEC, étape par étape",
+        "blocs": [
           {
-            "accroche": "L'AMDEC produit",
-            "texte": "Elle analyse les défaillances d'un produit liées à sa conception, sa fabrication ou son utilisation. Objectif : sécuriser le produit avant sa mise sur le marché et réduire les retours client. C'est l'affaire du bureau d'études."
+            "type": "paragraphe",
+            "texte": "Une AMDEC bâclée produit une jolie grille que personne n'applique. La méthode qui suit, proche d'un guide pratique, garde l'analyse reliée à l'action, étape par étape. Le but de ce guide est simple : rendre la méthodologie AMDEC utilisable dès demain, sans outil coûteux."
           },
           {
-            "accroche": "L'AMDEC processus",
-            "texte": "Elle étudie les défaillances d'un processus de fabrication. Chaque étape du flux est passée en revue pour déterminer ce qui peut mal tourner et son impact sur la qualité et la conformité du produit."
+            "type": "etapes",
+            "items": [
+              "**Définir le périmètre et le groupe de travail** : Choisir le système, le produit ou le moyen à analyser, et réunir l'équipe qui le connaît, maintenance, production, qualité, méthodes. Le périmètre doit être précis, sinon l'analyse s'éparpille.",
+              "**Faire l'analyse fonctionnelle** : Décrire ce que le système doit faire, fonction par fonction, et son fonctionnement normal. On ne peut pas lister les défaillances d'une fonction qu'on n'a pas nommée.",
+              "**Identifier les modes de défaillance** : Pour chaque fonction, lister les façons dont elle peut échouer. Un roulement grippe, un capteur dérive, une soudure lâche, un joint fuit. C'est le cœur de l'analyse.",
+              "**Rechercher les causes et les effets** : Remonter à la cause racine de chaque mode de défaillance, et décrire l'effet potentiel sur la production, le client ou la sécurité. Une même cause peut produire plusieurs effets.",
+              "**Noter la gravité, la fréquence et la détection** : Attribuer les trois indices à l'aide de la grille de cotation, en équipe, pour éviter la note d'une seule personne. Chaque niveau de l'échelle doit correspondre à une définition claire.",
+              "**Calculer la criticité et prioriser** : Multiplier les trois notes, classer les défaillances par criticité, fixer le seuil au-dessus duquel une action devient obligatoire. Le tableau AMDEC prend ici tout son sens.",
+              "**Définir et suivre les actions** : Décider des mesures de prévention ou de contrôle pour atténuer le risque, désigner un responsable et une échéance, puis vérifier que la criticité a baissé. C'est l'étape qui transforme l'analyse en résultat."
+            ]
           },
           {
-            "accroche": "L'AMDEC moyen de production",
-            "texte": "Elle porte sur les machines et équipements, aussi appelée AMDEC machine. C'est celle qui parle le plus à un service de maintenance, car elle relie chaque composant à son mode de défaillance et à son taux de panne."
+            "type": "paragraphe",
+            "texte": "La dernière étape est celle qu'on oublie le plus. Une AMDEC sans plan d'action et sans revue est une analyse morte. La valeur naît de la boucle : évaluer, agir, réévaluer, jusqu'à ce que le risque résiduel soit acceptable."
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "Ces trois familles partagent une méthode identique et la même grille de cotation. Ces types d'AMDEC répondent à des besoins distincts, mais l'application de l'AMDEC suit toujours la même grille de cotation AMDEC. Seul le périmètre change : le produit, le procédé, ou la machine. Une organisation mûre les combine, du bureau d'études à l'atelier, pour couvrir tout le cycle de vie."
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Un dernier repère utile : l'AMDEC fonctionnelle part de l'analyse fonctionnelle du système pour déterminer les modes de défaillance de chaque fonction. Elle sert de base à l'AMDEC produit comme à l'AMDEC moyen, et garantit qu'aucune fonction essentielle n'est oubliée dans l'analyse."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Comment réaliser une AMDEC, étape par étape",
-        "id": "comment-realiser-une-amdec-etape-par-etape"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Une AMDEC bâclée produit une jolie grille que personne n'applique. La méthode qui suit, proche d'un guide pratique, garde l'analyse reliée à l'action, étape par étape. Le but de ce guide est simple : rendre la méthodologie AMDEC utilisable dès demain, sans outil coûteux."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Un exemple concret d'AMDEC machine",
+        "blocs": [
           {
-            "accroche": "Définir le périmètre et le groupe de travail",
-            "texte": "Choisir le système, le produit ou le moyen à analyser, et réunir l'équipe qui le connaît, maintenance, production, qualité, méthodes. Le périmètre doit être précis, sinon l'analyse s'éparpille."
+            "type": "paragraphe",
+            "texte": "Prenons un convoyeur d'une ligne de production. L'équipe de maintenance réalise une AMDEC moyen sur son motoréducteur, un composant critique dont la panne arrête toute la ligne."
           },
           {
-            "accroche": "Faire l'analyse fonctionnelle",
-            "texte": "Décrire ce que le système doit faire, fonction par fonction, et son fonctionnement normal. On ne peut pas lister les défaillances d'une fonction qu'on n'a pas nommée."
+            "type": "tableau",
+            "entetes": [
+              "Mode de défaillance",
+              "Cause",
+              "Effet",
+              "G",
+              "F",
+              "D",
+              "Criticité"
+            ],
+            "lignes": [
+              [
+                "Roulement grippé",
+                "Défaut de lubrification",
+                "Arrêt de la ligne",
+                "8",
+                "4",
+                "6",
+                "192"
+              ],
+              [
+                "Courroie rompue",
+                "Usure non détectée",
+                "Arrêt de la ligne",
+                "7",
+                "5",
+                "3",
+                "105"
+              ],
+              [
+                "Capteur de position en dérive",
+                "Vieillissement",
+                "Produits non conformes",
+                "6",
+                "3",
+                "7",
+                "126"
+              ],
+              [
+                "Surchauffe moteur",
+                "Ventilation encrassée",
+                "Détérioration progressive",
+                "5",
+                "4",
+                "4",
+                "80"
+              ]
+            ]
           },
           {
-            "accroche": "Identifier les modes de défaillance",
-            "texte": "Pour chaque fonction, lister les façons dont elle peut échouer. Un roulement grippe, un capteur dérive, une soudure lâche, un joint fuit. C'est le cœur de l'analyse."
+            "type": "paragraphe",
+            "texte": "Avec un seuil fixé à 100, trois défaillances passent au-dessus et déclenchent une action. Le roulement, criticité 192, arrive en tête : sa sévérité et sa mauvaise détection pèsent lourd dans le calcul."
           },
           {
-            "accroche": "Rechercher les causes et les effets",
-            "texte": "Remonter à la cause racine de chaque mode de défaillance, et décrire l'effet potentiel sur la production, le client ou la sécurité. Une même cause peut produire plusieurs effets."
+            "type": "paragraphe",
+            "texte": "La réponse tient en deux mesures concrètes. Un contrôle de lubrification passe en maintenance préventive, ce qui fait baisser la fréquence. Une mesure vibratoire est ajoutée pour détecter le grippage avant l'immobilisation, ce qui améliore la détectabilité. Recalculée, la criticité du roulement retombe sous le seuil."
           },
           {
-            "accroche": "Noter la gravité, la fréquence et la détection",
-            "texte": "Attribuer les trois indices à l'aide de la grille de cotation, en équipe, pour éviter la note d'une seule personne. Chaque niveau de l'échelle doit correspondre à une définition claire."
+            "type": "encadre",
+            "texte": "L'exemple montre l'intérêt de l'indice de détection. Le capteur en dérive n'a qu'une gravité moyenne, mais il passe inaperçu, ce qui le rend presque aussi critique que le roulement. Sans l'AMDEC, on l'aurait ignoré jusqu'au premier lot non conforme."
           },
           {
-            "accroche": "Calculer la criticité et prioriser",
-            "texte": "Multiplier les trois notes, classer les défaillances par criticité, fixer le seuil au-dessus duquel une action devient obligatoire. Le tableau AMDEC prend ici tout son sens."
-          },
-          {
-            "accroche": "Définir et suivre les actions",
-            "texte": "Décider des mesures de prévention ou de contrôle pour atténuer le risque, désigner un responsable et une échéance, puis vérifier que la criticité a baissé. C'est l'étape qui transforme l'analyse en résultat."
-          }
-        ],
-        "ordonnee": true
-      },
-      {
-        "type": "paragraphe",
-        "texte": "La dernière étape est celle qu'on oublie le plus. Une AMDEC sans plan d'action et sans revue est une analyse morte. La valeur naît de la boucle : évaluer, agir, réévaluer, jusqu'à ce que le risque résiduel soit acceptable."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Un exemple concret d'AMDEC machine",
-        "id": "un-exemple-concret-d-amdec-machine"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Prenons un convoyeur d'une ligne de production. L'équipe de maintenance réalise une AMDEC moyen sur son motoréducteur, un composant critique dont la panne arrête toute la ligne."
-      },
-      {
-        "type": "tableau",
-        "entetes": [
-          "Mode de défaillance",
-          "Cause",
-          "Effet",
-          "G",
-          "F",
-          "D",
-          "Criticité"
-        ],
-        "lignes": [
-          [
-            "Roulement grippé",
-            "Défaut de lubrification",
-            "Arrêt de la ligne",
-            "8",
-            "4",
-            "6",
-            "192"
-          ],
-          [
-            "Courroie rompue",
-            "Usure non détectée",
-            "Arrêt de la ligne",
-            "7",
-            "5",
-            "3",
-            "105"
-          ],
-          [
-            "Capteur de position en dérive",
-            "Vieillissement",
-            "Produits non conformes",
-            "6",
-            "3",
-            "7",
-            "126"
-          ],
-          [
-            "Surchauffe moteur",
-            "Ventilation encrassée",
-            "Détérioration progressive",
-            "5",
-            "4",
-            "4",
-            "80"
-          ]
-        ]
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Avec un seuil fixé à 100, trois défaillances passent au-dessus et déclenchent une action. Le roulement, criticité 192, arrive en tête : sa sévérité et sa mauvaise détection pèsent lourd dans le calcul."
-      },
-      {
-        "type": "paragraphe",
-        "texte": "La réponse tient en deux mesures concrètes. Un contrôle de lubrification passe en maintenance préventive, ce qui fait baisser la fréquence. Une mesure vibratoire est ajoutée pour détecter le grippage avant l'immobilisation, ce qui améliore la détectabilité. Recalculée, la criticité du roulement retombe sous le seuil."
-      },
-      {
-        "type": "citation",
-        "texte": "L'exemple montre l'intérêt de l'indice de détection. Le capteur en dérive n'a qu'une gravité moyenne, mais il passe inaperçu, ce qui le rend presque aussi critique que le roulement. Sans l'AMDEC, on l'aurait ignoré jusqu'au premier lot non conforme."
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Ce modèle de tableau AMDEC tient sur une page. Il n'a rien d'un exercice académique : chaque ligne désigne une action de maintenance, un responsable, une échéance. C'est là que l'analyse rejoint le terrain."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Les erreurs les plus fréquentes",
-        "id": "les-erreurs-les-plus-frequentes"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Une AMDEC ratée coûte le temps de l'équipe réunie autour de la table, pour un résultat que personne n'utilise. Les mêmes pièges reviennent d'un site à l'autre."
-      },
-      {
-        "type": "liste",
-        "items": [
-          {
-            "accroche": "Faire l'AMDEC seul",
-            "texte": "Une seule personne ne connaît pas tous les modes de défaillance d'un système. L'analyse perd sa valeur dès qu'elle n'est plus le fruit d'un groupe de travail pluridisciplinaire."
-          },
-          {
-            "accroche": "Noter à l'instinct",
-            "texte": "Sans grille de cotation partagée, la gravité et la fréquence deviennent des avis. Une défaillance identique reçoit alors deux notes selon qui tient le stylo, et la criticité ne veut plus rien dire."
-          },
-          {
-            "accroche": "Viser l'exhaustivité",
-            "texte": "Vouloir lister chaque défaillance potentielle d'un système complexe épuise l'équipe. Mieux vaut traiter à fond les fonctions critiques que tout survoler en surface."
-          },
-          {
-            "accroche": "Oublier la détection",
-            "texte": "Se concentrer sur la gravité et la fréquence, ignorer la capacité à repérer le défaut, sous-estime les défaillances silencieuses, souvent les plus coûteuses à long terme."
-          },
-          {
-            "accroche": "Confondre AMDEC et simple liste",
-            "texte": "Sans les indices de gravité, de fréquence et de détection, on obtient une liste de défaillances, pas une AMDEC. C'est la cotation qui distingue la méthode d'un simple inventaire, et qui permet d'identifier les priorités."
-          },
-          {
-            "accroche": "Ranger la grille et l'oublier",
-            "texte": "Une AMDEC sans plan d'action ni revue périodique ne prévient rien. Le tableau AMDEC doit vivre au rythme des évolutions du produit et du processus, sinon il vieillit mal."
+            "type": "paragraphe",
+            "texte": "Ce modèle de tableau AMDEC tient sur une page. Il n'a rien d'un exercice académique : chaque ligne désigne une action de maintenance, un responsable, une échéance. C'est là que l'analyse rejoint le terrain."
           }
         ]
       },
       {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Ce que l'AMDEC implique pour votre organisation",
-        "id": "ce-que-l-amdec-implique-pour-votre-organisation"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Adopter l'AMDEC, c'est décider de traiter le risque avant la panne, pas après l'accident. Le changement dépasse le service qualité et touche toute l'organisation industrielle."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Les erreurs les plus fréquentes",
+        "blocs": [
           {
-            "accroche": "Prioriser la maintenance préventive",
-            "texte": "La criticité désigne les composants à surveiller en premier. La maintenance préventive et le plan de contrôle se recentrent sur ce que l'analyse a chiffré, pas sur une routine générale appliquée à tout."
+            "type": "paragraphe",
+            "texte": "Une AMDEC ratée coûte le temps de l'équipe réunie autour de la table, pour un résultat que personne n'utilise. Les mêmes pièges reviennent d'un site à l'autre."
           },
           {
-            "accroche": "Alimenter la fiabilité",
-            "texte": "Chaque AMDEC nourrit la connaissance des équipements. Les modes de défaillance repérés deviennent des points de contrôle, et la fiabilité progresse à mesure que le retour d'expérience s'accumule dans l'entreprise."
-          },
-          {
-            "accroche": "Objectiver les décisions",
-            "texte": "Réparer, renforcer, remplacer : la criticité arme l'arbitrage avec un chiffre, pas une intuition. La direction suit un indice de risque, un critère mesurable, pas une impression de terrain."
-          },
-          {
-            "accroche": "Améliorer en continu",
-            "texte": "L'AMDEC s'inscrit dans une démarche qualité, souvent reliée au management des risques et aux normes ISO. L'analyse se révise à chaque évolution du produit, du procédé ou du moyen de production."
+            "type": "puces",
+            "items": [
+              "**Faire l'AMDEC seul** : Une seule personne ne connaît pas tous les modes de défaillance d'un système. L'analyse perd sa valeur dès qu'elle n'est plus le fruit d'un groupe de travail pluridisciplinaire.",
+              "**Noter à l'instinct** : Sans grille de cotation partagée, la gravité et la fréquence deviennent des avis. Une défaillance identique reçoit alors deux notes selon qui tient le stylo, et la criticité ne veut plus rien dire.",
+              "**Viser l'exhaustivité** : Vouloir lister chaque défaillance potentielle d'un système complexe épuise l'équipe. Mieux vaut traiter à fond les fonctions critiques que tout survoler en surface.",
+              "**Oublier la détection** : Se concentrer sur la gravité et la fréquence, ignorer la capacité à repérer le défaut, sous-estime les défaillances silencieuses, souvent les plus coûteuses à long terme.",
+              "**Confondre AMDEC et simple liste** : Sans les indices de gravité, de fréquence et de détection, on obtient une liste de défaillances, pas une AMDEC. C'est la cotation qui distingue la méthode d'un simple inventaire, et qui permet d'identifier les priorités.",
+              "**Ranger la grille et l'oublier** : Une AMDEC sans plan d'action ni revue périodique ne prévient rien. Le tableau AMDEC doit vivre au rythme des évolutions du produit et du processus, sinon il vieillit mal."
+            ]
           }
         ]
       },
       {
-        "type": "liste",
-        "items": [
+        "titre": "Ce que l'AMDEC implique pour votre organisation",
+        "blocs": [
           {
-            "accroche": "Structurer la mise en œuvre",
-            "texte": "L'AMDEC donne un cadre à la mise en place d'un plan de fiabilité industrielle. Chaque utilisateur, du technicien au responsable, sait quel élément surveiller et pourquoi, avec une information partagée."
+            "type": "paragraphe",
+            "texte": "Adopter l'AMDEC, c'est décider de traiter le risque avant la panne, pas après l'accident. Le changement dépasse le service qualité et touche toute l'organisation industrielle."
+          },
+          {
+            "type": "puces",
+            "items": [
+              "**Prioriser la maintenance préventive** : La criticité désigne les composants à surveiller en premier. La maintenance préventive et le plan de contrôle se recentrent sur ce que l'analyse a chiffré, pas sur une routine générale appliquée à tout.",
+              "**Alimenter la fiabilité** : Chaque AMDEC nourrit la connaissance des équipements. Les modes de défaillance repérés deviennent des points de contrôle, et la fiabilité progresse à mesure que le retour d'expérience s'accumule dans l'entreprise.",
+              "**Objectiver les décisions** : Réparer, renforcer, remplacer : la criticité arme l'arbitrage avec un chiffre, pas une intuition. La direction suit un indice de risque, un critère mesurable, pas une impression de terrain.",
+              "**Améliorer en continu** : L'AMDEC s'inscrit dans une démarche qualité, souvent reliée au management des risques et aux normes ISO. L'analyse se révise à chaque évolution du produit, du procédé ou du moyen de production."
+            ]
+          },
+          {
+            "type": "puces",
+            "items": [
+              "**Structurer la mise en œuvre** : L'AMDEC donne un cadre à la mise en place d'un plan de fiabilité industrielle. Chaque utilisateur, du technicien au responsable, sait quel élément surveiller et pourquoi, avec une information partagée."
+            ]
+          },
+          {
+            "type": "puces",
+            "items": [
+              "**Guider la formation** : Le tableau AMDEC sert de support de formation pour les nouveaux techniciens. Il montre, machine par machine, quels problèmes surveiller, un vrai conseil de terrain, plus efficace qu'un cours théorique."
+            ]
+          },
+          {
+            "type": "encadre",
+            "texte": "Nos techniciens s'appuient sur cette logique d'analyse des modes de défaillance pour hiérarchiser les interventions et remonter à la cause racine des pannes récurrentes."
           }
         ]
-      },
-      {
-        "type": "liste",
-        "items": [
-          {
-            "accroche": "Guider la formation",
-            "texte": "Le tableau AMDEC sert de support de formation pour les nouveaux techniciens. Il montre, machine par machine, quels problèmes surveiller, un vrai conseil de terrain, plus efficace qu'un cours théorique."
-          }
-        ]
-      },
-      {
-        "type": "citation",
-        "texte": "Nos techniciens s'appuient sur cette logique d'analyse des modes de défaillance pour hiérarchiser les interventions et remonter à la cause racine des pannes récurrentes."
-      },
-      {
-        "type": "citation",
-        "texte": "[Demander un diagnostic maintenance](/contact/)"
       }
     ],
     "questions": [
@@ -482,9 +363,30 @@
       },
       {
         "question": "L'AMDEC est-elle liée au Lean et au Six Sigma ?",
-        "reponse": "Oui. En matière de qualité, l'analyse AMDEC est souvent utilisée dans une démarche Lean ou Six Sigma, et pendant le développement d'un produit. Un ingénieur qualité s'en sert pour créer un plan de contrôle qui consiste à cibler les défaillances critiques. Cet article présente une solution de bon sens : tester la méthode sur une machine, vérifier l'exigence de fiabilité, puis élargir."
+        "reponse": "Oui. En matière de qualité, l'analyse AMDEC est souvent utilisée dans une démarche Lean ou Six Sigma, et pendant le développement d'un produit. Un ingénieur qualité s'en sert pour créer un plan de contrôle qui consiste à cibler les défaillances critiques. Cet article présente une solution de bon sens : tester la méthode sur une machine, vérifier l'exigence de fiabilité, puis élargir. ---"
+      }
+    ],
+    "minutes": 15,
+    "image": "/assets/web/ph-robots-solaire.jpg",
+    "aLire": [
+      {
+        "href": "/ressources/fiches-techniques/analyse-vibratoire/",
+        "titre": "Analyse vibratoire",
+        "minutes": 10,
+        "image": "/assets/web/ph-robots-solaire.jpg"
+      },
+      {
+        "href": "/ressources/fiches-techniques/automates-siemens/",
+        "titre": "Automate Siemens",
+        "minutes": 7,
+        "image": "/assets/web/team-electric.jpg"
+      },
+      {
+        "href": "/ressources/fiches-techniques/cahier-des-charges-gmao/",
+        "titre": "Cahier des charges gmao",
+        "minutes": 11,
+        "image": "/assets/web/team-grind-front.jpg"
       }
     ]
-  },
-  "blocs_corpus": 61
+  }
 }

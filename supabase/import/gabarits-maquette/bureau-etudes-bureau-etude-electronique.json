@@ -3,326 +3,316 @@
   "titre_h1": "Bureau d'étude électronique : une carte pensée pour être réparée",
   "contenu": {
     "gabarit": "offre",
-    "pastille": "Bureau d’études",
-    "mention": "Nous vous rappelons dans l’heure, du lundi au vendredi de 8h00 à 18h30.",
-    "appelBouton": "Faire chiffrer mon étude électronique",
-    "chapeau": "Notre bureau d'étude électronique est adossé à des techniciens qui dépannent de l'électronique industrielle toute l'année. Une carte sort d'ici avec ses points de mesure, sa documentation et ses composants trouvables. C'est une branche de notre [bureau d'étude mécanique](/bureau-etudes/).",
-    "actions": [
-      {
-        "libelle": "Faire chiffrer mon étude électronique",
-        "href": "#besoin"
-      }
-    ],
-    "formulaireHeroTitre": "Faire chiffrer mon étude électronique",
-    "formulaireHeroMention": "Rappel dans l'heure",
-    "chiffres": [
-      {
-        "valeur": "+ 120",
-        "libelle": "Collaborateurs · techniciens et ingénieurs salariés Migen, pas de chaîne d'intermédiaires."
-      },
-      {
-        "valeur": "+ 80",
-        "libelle": "Clients réguliers · sur plus de 120 clients industriels."
-      },
-      {
-        "valeur": "4",
-        "libelle": "Agences · Lyon (siège), Montréal, Dubaï, Madrid, et des hubs techniques en France."
-      },
-      {
-        "valeur": "10 %",
-        "libelle": "Des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
-      }
-    ],
-    "reperesReassurance": [
-      {
-        "valeur": "Ingénieurs",
-        "libelle": "conception, calculs, CAO, choix des technologies"
-      },
-      {
-        "valeur": "Projeteurs",
-        "libelle": "plans, schémas, dossiers de fabrication"
-      },
-      {
-        "valeur": "Chefs de projet",
-        "libelle": "du cadrage à la mise en service, un seul interlocuteur"
-      }
-    ],
-    "problemePhoto": null,
-    "complementOffre": [
-      {
-        "titre": "La maintenance électronique industrielle, l'autre moitié du métier",
-        "texte": "Nos techniciens interviennent sur l'électronique de commande des machines en exploitation, indépendamment de toute étude."
-      },
-      {
-        "puces": [
-          {
-            "accroche": "Diagnostic sur site",
-            "texte": "défaut de carte, alimentation instable, pile de sauvegarde, capteur qui ment, défaut intermittent."
-          },
-          {
-            "accroche": "Réparation électronique industrielle",
-            "texte": "au composant quand elle est possible, remplacement quand elle ne l'est pas. L'arbitrage se fait avec vous, chiffres en main."
-          },
-          {
-            "accroche": "Reprise documentaire",
-            "texte": "relever un schéma absent, tracer les points de mesure, laisser derrière nous un dossier utilisable par vos équipes."
-          }
-        ]
-      },
-      {
-        "titre": "Ce que nous ne faisons pas",
-        "puces": [
-          {
-            "accroche": "Aucune fabrication en série.",
-            "texte": "Nous concevons et nous suivons. La production part chez un atelier partenaire que vous validez."
-          },
-          {
-            "accroche": "Aucune conception de machine complète.",
-            "texte": "L'électronique que nous dessinons vient équiper ou réparer vos équipements, pas en créer de nouveaux."
-          },
-          {
-            "accroche": "Aucune promesse de délai chiffré.",
-            "texte": "Une reprise d'obsolescence dépend de ce qu'on trouve en ouvrant le coffret. Le devis dit le périmètre, le premier échange dit la faisabilité."
-          }
-        ]
-      }
-    ],
-    "complementGaranties": [
-      {
-        "texte": "L'indépendance, en clair. Ni fabricant de cartes, ni distributeur de composants. Quand nous disons qu'une réparation suffit, nous ne perdons rien à le dire."
-      }
-    ],
-    "brefBande": "Besoin de savoir si votre carte se répare, se refait ou se remplace ?",
-    "brefMention": "Un échange technique suffit pour trancher entre les trois. Le formulaire tient en quatre champs.",
-    "brefBouton": {
-      "libelle": "Faire chiffrer mon étude électronique",
-      "href": "#besoin"
-    },
-    "marquesFamille": "auto",
-    "marquesFamilles": [
-      "auto",
-      "fluide"
-    ],
-    "pagesLiees": [
-      {
-        "titre": "Maintenance électrique industrielle",
-        "phrase": "Interventions liées : maintenance électrique industrielle, automatisme industriel, dépannage industriel.",
-        "href": "/expertises/electrique/",
-        "photo": "/assets/web/team-duo.jpg"
-      },
-      {
-        "titre": "Automatisme industriel",
-        "phrase": "Interventions liées : maintenance électrique industrielle, automatisme industriel, dépannage industriel.",
-        "href": "/expertises/automatisme/"
-      },
-      {
-        "titre": "Maintenance corrective",
-        "href": "/expertises/types-de-maintenance/maintenance-corrective/"
-      },
-      {
-        "titre": "Technicien en résidence",
-        "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
-        "href": "/offres/residence/"
-      },
-      {
-        "titre": "Zéro arrêt",
-        "phrase": "La maintenance en abonnement, au forfait mensuel.",
-        "href": "/offres/zero-arret/"
-      },
-      {
-        "titre": "Arrêt technique",
-        "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
-        "href": "/offres/arret-technique/"
-      }
-    ],
-    "sections": [
-      {
-        "type": "probleme",
-        "punchline": "Une carte électronique en fin de vie arrête une machine qui, elle, va très bien.",
-        "puces": [
-          {
-            "accroche": "Le composant n'existe plus.",
-            "texte": "Le fabricant a arrêté la référence, et toute la machine dépend d'une pièce introuvable."
-          },
-          {
-            "accroche": "La carte de rechange coûte le prix d'un sous-ensemble neuf.",
-            "texte": "Quand elle est encore au catalogue."
-          },
-          {
-            "accroche": "Personne n'a le schéma.",
-            "texte": "La documentation est partie avec le constructeur, ou n'a jamais été remise."
-          },
-          {
-            "accroche": "Le diagnostic tourne en rond.",
-            "texte": "Un défaut intermittent sur une carte non documentée immobilise la ligne plusieurs jours."
-          }
-        ],
-        "variante": "panneau-sombre"
-      },
-      {
-        "type": "offre",
-        "lignes": [
-          {
-            "prestation": {
-              "accroche": "Cadrage et cahier des charges électronique",
-              "texte": "fonctions attendues, contraintes d'environnement, alimentations, interfaces avec l'existant"
-            },
-            "benefice": "Le besoin est écrit avant d'être dessiné. Vous pouvez consulter ailleurs avec le même document"
-          },
-          {
-            "prestation": {
-              "accroche": "Conception électronique",
-              "texte": "schéma, choix des composants, définition des entrées et sorties, implantation dans le coffret"
-            },
-            "benefice": "Les composants retenus sont disponibles et sourçables, pas des références rares qui vous piègent dans trois ans"
-          },
-          {
-            "prestation": {
-              "accroche": "Conception de carte électronique",
-              "texte": "dossier de fabrication, nomenclature, spécifications, documentation de test"
-            },
-            "benefice": "Vous êtes propriétaire du dossier. Vous pouvez faire refabriquer la carte quand vous voulez, chez qui vous voulez"
-          },
-          {
-            "prestation": {
-              "accroche": "Réalisation confiée à un atelier partenaire suivi et réception des cartes",
-              "texte": ""
-            },
-            "benefice": "Nous ne vendons pas de cartes, donc rien ne nous pousse à en faire fabriquer plus que nécessaire. Aucune marge sur les pièces"
-          },
-          {
-            "prestation": {
-              "accroche": "Intégration et mise en service sur la machine par nos techniciens",
-              "texte": ""
-            },
-            "benefice": "Celui qui a dessiné la carte n'est pas parti quand elle arrive sur site. Les écarts se règlent tout de suite"
-          },
-          {
-            "prestation": {
-              "accroche": "Traitement de l'obsolescence",
-              "texte": "reprise d'une fonction existante quand la carte d'origine n'est plus fournie"
-            },
-            "benefice": "La machine repart sans être remplacée. L'investissement porte sur la fonction, pas sur l'équipement entier"
-          }
-        ]
-      },
-      {
-        "type": "deroule",
-        "etapes": [
-          {
-            "titre": "Votre appel ou votre formulaire.",
-            "texte": "Rappel dans l'heure par un interlocuteur technique. Marque, référence, symptôme, criticité de la machine."
-          },
-          {
-            "titre": "État des lieux.",
-            "texte": "Ce qui existe, ce qui est documenté, ce qui ne l'est plus. Une carte sans schéma se relève : c'est un travail à part entière, et il est chiffré."
-          },
-          {
-            "titre": "Arbitrage.",
-            "texte": "Réparer, reconcevoir, ou remplacer par un standard du marché. Trois chiffres en face de trois options, vous décidez."
-          },
-          {
-            "titre": "Conception.",
-            "texte": "Schéma, choix des composants, implantation, dossier de fabrication et documentation de test."
-          },
-          {
-            "titre": "Réalisation.",
-            "texte": "Fabrication chez l'atelier partenaire, réception des cartes, contrôle avant montage."
-          },
-          {
-            "titre": "Intégration et mise en service.",
-            "texte": "Montage sur la machine par nos techniciens, essais en conditions réelles, remise du dossier."
-          },
-          {
-            "titre": "Suite d'exploitation.",
-            "texte": "Les mêmes équipes peuvent assurer ensuite le préventif et le curatif. Voir [maintenance corrective](/expertises/types-de-maintenance/maintenance-corrective/)."
-          }
-        ],
-        "variante": "tuiles"
-      },
-      {
-        "type": "garanties",
-        "puces": [
-          {
-            "accroche": "Un rappel dans l'heure",
-            "texte": "du lundi au vendredi, 8h00 à 18h30, par téléphone, et une astreinte la nuit, le week-end et les jours fériés quand la machine est à l'arrêt.",
-            "suitAccroche": true
-          },
-          {
-            "accroche": "Le dossier est à vous.",
-            "texte": "Schémas, nomenclatures, documentation de test : vous repartez avec de quoi faire refabriquer ailleurs. Nous ne gardons pas votre machine en otage."
-          },
-          {
-            "accroche": "Des compétences évaluées",
-            "texte": "Entretien technique et comportemental à l'entrée, 10 % des candidats retenus, résultats partagés avec vous."
-          }
-        ]
-      },
-      {
-        "type": "preuves",
-        "preuves": [
-          {
-            "titre": "Étude de cas TIMESCOPE : casques de réalité virtuelle",
-            "texte": "Depuis février 2024. Maintenance sous contrat d'un parc d'équipements électroniques déployé partout en France, étanchéité et réglages traités comme des sujets à part entière, propositions d'amélioration de la fiabilité.",
-            "lienLibelle": "Étude de cas TIMESCOPE : casques de réalité virtuelle",
-            "lienHref": "/preuves/timescope/"
-          },
-          {
-            "titre": "Étude de cas MERSEN : nouvelles lignes",
-            "texte": "2025, près de Lyon. Un automaticien SIEMENS sur site pour le démarrage d'une ligne neuve, quand la partie commande décide du calendrier.",
-            "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
-            "lienHref": "/preuves/mersen/"
-          },
-          {
-            "titre": "Étude de cas JOINT LYONNAIS : défaillances machines",
-            "texte": "Lyon, depuis février 2024. Diagnostic sur site et plusieurs solutions chiffrées, plutôt qu'un rachat de matériel.",
-            "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines",
-            "lienHref": "/preuves/joint-lyonnais/"
-          },
-          {
-            "titre": "Étude de cas EATON : mise en production",
-            "texte": "Janvier 2023. Six techniciens multidisciplinaires pour l'installation et la mise en production d'un parc machines neuf.",
-            "lienLibelle": "Étude de cas EATON : mise en production",
-            "lienHref": "/preuves/eaton-mise-en-production/"
-          }
-        ]
-      },
-      {
-        "type": "objections",
-        "questions": [
-          {
-            "question": "Fabriquez-vous les cartes vous-mêmes ?",
-            "reponse": "Non. Nous concevons, nous rédigeons le dossier, nous suivons la fabrication chez un atelier partenaire et nous réceptionnons. Ne pas fabriquer est ce qui rend notre arbitrage crédible : nous n'avons rien à écouler."
-          },
-          {
-            "question": "Pouvez-vous travailler sans le schéma d'origine ?",
-            "reponse": "Oui, c'est le cas le plus fréquent. Le relevé de la carte existante est une prestation à part entière, chiffrée avant d'être lancée. Vous savez ce que ça coûte avant de vous engager."
-          },
-          {
-            "question": "Une réparation de carte électronique industrielle vaut-elle mieux qu'un remplacement ?",
-            "reponse": "Cela dépend de trois choses : la disponibilité du composant fautif, la criticité de la machine et ce que coûte un nouvel arrêt. Nous posons les options chiffrées, vous tranchez. Nous n'en poussons aucune."
-          },
-          {
-            "question": "Qui intervient réellement sur mon matériel ?",
-            "reponse": "Des techniciens et des ingénieurs salariés Migen, évalués en entretien technique et comportemental : 10 % des candidats retenus. Ils sont habilités selon les exigences de votre site et accueillis à votre protocole de sécurité."
-          },
-          {
-            "question": "Reprenez-vous un dossier commencé par un autre prestataire ?",
-            "reponse": "Oui. Nous repartons de vos fichiers, nous vérifions les hypothèses, nous chiffrons uniquement le reste à faire. Aucune obligation de tout recommencer."
-          },
-          {
-            "question": "Intervenez-vous partout en France ?",
-            "reponse": "Oui. Quatre agences, Lyon (siège), Montréal, Dubaï, Madrid, et des hubs de techniciens dans les grandes villes de France. Le siège du groupe est à Écully, près de Lyon."
-          }
-        ]
-      },
-      {
-        "type": "ctaFinal",
-        "question": "Besoin d'une électronique qui ne vous piège pas dans dix ans ?",
-        "bouton": "Faire chiffrer mon étude électronique",
-        "href": "/contact/"
-      }
-    ],
-    "pagesLieesTitre": "Les offres et prestations voisines"
+    "generique": {
+      "url": "/bureau-etudes/bureau-etude-electronique/",
+      "mode": "vente",
+      "famille": "Offres",
+      "mots": 1453,
+      "fil": [
+        {
+          "label": "Accueil",
+          "href": "/"
+        },
+        {
+          "label": "Bureau d'études industriel : des études qui tiennent au montage",
+          "href": "/bureau-etudes/"
+        },
+        {
+          "label": "Bureau d'étude électronique : une carte pensée pour être réparée",
+          "href": "/bureau-etudes/bureau-etude-electronique/"
+        }
+      ],
+      "liees": [
+        {
+          "h1": "Bureau d'études industriel : des études qui tiennent au montage",
+          "fam": "Offres",
+          "href": "/bureau-etudes/"
+        },
+        {
+          "h1": "Bureau d'étude électrique : du schéma à l'armoire qui tourne",
+          "fam": "Offres",
+          "href": "/bureau-etudes/bureau-etude-electrique/"
+        },
+        {
+          "h1": "Mise en conformité machine : fixez le calendrier avant l'inspection",
+          "fam": "Offres",
+          "href": "/bureau-etudes/mise-en-conformite-machine/"
+        },
+        {
+          "h1": "Entreprise de maintenance industrielle",
+          "fam": "Offres",
+          "href": "/entreprise-maintenance-industrielle/"
+        },
+        {
+          "h1": "Maintenance industrielle : six offres, une seule exigence",
+          "fam": "Offres",
+          "href": "/offres/"
+        },
+        {
+          "h1": "Arrêt technique de maintenance industrielle",
+          "fam": "Offres",
+          "href": "/offres/arret-technique/"
+        }
+      ],
+      "blocs": [
+        {
+          "type": "p",
+          "text": "Notre bureau d'étude électronique est adossé à des techniciens qui dépannent de l'électronique industrielle toute l'année. Une carte sort d'ici avec ses points de mesure, sa documentation et ses composants trouvables. C'est une branche de notre [bureau d'étude mécanique](/bureau-etudes/)."
+        },
+        {
+          "type": "p",
+          "text": "**Une carte que plus personne ne fournit, et une machine qui en dépend ?**"
+        },
+        {
+          "type": "quote",
+          "text": "[Faire chiffrer mon étude électronique](/contact/) · 04 78 33 72 05"
+        },
+        {
+          "type": "p",
+          "text": "**Nous vous rappelons dans l'heure**, du lundi au vendredi de 8h00 à 18h30. Astreinte quand un équipement est immobilisé."
+        },
+        {
+          "type": "h2",
+          "text": "Chiffres clés"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "**+120** : collaborateurs · techniciens et ingénieurs salariés Migen, pas de chaîne d'intermédiaires.",
+            "**+200** : clients industriels accompagnés",
+            "**4** : agences · Lyon (siège), Montréal, Dubaï, Madrid, et des hubs techniques en France.",
+            "**10 %** : des techniciens retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Le problème"
+        },
+        {
+          "type": "h3",
+          "text": "Une carte électronique en fin de vie arrête une machine qui, elle, va très bien."
+        },
+        {
+          "type": "p",
+          "text": "**Le constat.** La mécanique tient vingt ans. L'électronique de commande, non."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "**Le composant n'existe plus.** Le fabricant a arrêté la référence, et toute la machine dépend d'une pièce introuvable.",
+            "**La carte de rechange coûte le prix d'un sous-ensemble neuf.** Quand elle est encore au catalogue.",
+            "**Personne n'a le schéma.** La documentation est partie avec le constructeur, ou n'a jamais été remise.",
+            "**Le diagnostic tourne en rond.** Un défaut intermittent sur une carte non documentée immobilise la ligne plusieurs jours."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "**Le coût de l'inaction.** Remplacer toute la machine parce qu'une carte de la taille d'une main n'est plus fabriquée. C'est un arbitrage que beaucoup d'industriels subissent au lieu de le poser."
+        },
+        {
+          "type": "p",
+          "text": "**La réponse.** Une conception électronique faite par des gens qui réparent. La carte est dessinée pour être diagnostiquée, mesurée et réparée, pas seulement pour fonctionner en sortie de bureau."
+        },
+        {
+          "type": "h2",
+          "text": "L’offre"
+        },
+        {
+          "type": "h3",
+          "text": "Ce que couvre l'étude en électronique industrielle"
+        },
+        {
+          "type": "table",
+          "head": [
+            "Prestation",
+            "Ce que vous y gagnez"
+          ],
+          "rows": [
+            [
+              "**Cadrage et cahier des charges électronique** : fonctions attendues, contraintes d'environnement, alimentations, interfaces avec l'existant",
+              "Le besoin est écrit avant d'être dessiné. Vous pouvez consulter ailleurs avec le même document"
+            ],
+            [
+              "**Conception électronique** : schéma, choix des composants, définition des entrées et sorties, implantation dans le coffret",
+              "Les composants retenus sont disponibles et sourçables, pas des références rares qui vous piègent dans trois ans"
+            ],
+            [
+              "**Conception de carte électronique** : dossier de fabrication, nomenclature, spécifications, documentation de test",
+              "Vous êtes propriétaire du dossier. Vous pouvez faire refabriquer la carte quand vous voulez, chez qui vous voulez"
+            ],
+            [
+              "**Réalisation confiée à un atelier partenaire**, suivi et réception des cartes",
+              "Nous ne vendons pas de cartes, donc rien ne nous pousse à en faire fabriquer plus que nécessaire. Aucune marge sur les pièces"
+            ],
+            [
+              "**Intégration et mise en service** sur la machine par nos techniciens",
+              "Celui qui a dessiné la carte n'est pas parti quand elle arrive sur site. Les écarts se règlent tout de suite"
+            ],
+            [
+              "**Traitement de l'obsolescence** : reprise d'une fonction existante quand la carte d'origine n'est plus fournie",
+              "La machine repart sans être remplacée. L'investissement porte sur la fonction, pas sur l'équipement entier"
+            ]
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "La maintenance électronique industrielle, l'autre moitié du métier"
+        },
+        {
+          "type": "p",
+          "text": "Nos techniciens interviennent sur l'électronique de commande des machines en exploitation, indépendamment de toute étude."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "**Diagnostic sur site** : défaut de carte, alimentation instable, pile de sauvegarde, capteur qui ment, défaut intermittent.",
+            "**Réparation électronique industrielle** au composant quand elle est possible, remplacement quand elle ne l'est pas. L'arbitrage se fait avec vous, chiffres en main.",
+            "**Reprise documentaire** : relever un schéma absent, tracer les points de mesure, laisser derrière nous un dossier utilisable par vos équipes.",
+            "**Interventions liées** : [maintenance électrique industrielle](/expertises/electrique/), [automatisme industriel](/expertises/automatisme/), [dépannage industriel](/offres/depannage-industriel/)."
+          ]
+        },
+        {
+          "type": "h3",
+          "text": "Ce que nous ne faisons pas"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "**Aucune fabrication en série.** Nous concevons et nous suivons. La production part chez un atelier partenaire que vous validez.",
+            "**Aucune conception de machine complète.** L'électronique que nous dessinons vient équiper ou réparer vos équipements, pas en créer de nouveaux.",
+            "**Aucune promesse de délai chiffré.** Une reprise d'obsolescence dépend de ce qu'on trouve en ouvrant le coffret. Le devis dit le périmètre, le premier échange dit la faisabilité."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Le déroulé"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "**Votre appel ou votre formulaire.** Rappel dans l'heure par un interlocuteur technique. Marque, référence, symptôme, criticité de la machine.",
+            "**État des lieux.** Ce qui existe, ce qui est documenté, ce qui ne l'est plus. Une carte sans schéma se relève : c'est un travail à part entière, et il est chiffré.",
+            "**Arbitrage.** Réparer, reconcevoir, ou remplacer par un standard du marché. Trois chiffres en face de trois options, vous décidez.",
+            "**Conception.** Schéma, choix des composants, implantation, dossier de fabrication et documentation de test.",
+            "**Réalisation.** Fabrication chez l'atelier partenaire, réception des cartes, contrôle avant montage.",
+            "**Intégration et mise en service.** Montage sur la machine par nos techniciens, essais en conditions réelles, remise du dossier.",
+            "**Suite d'exploitation.** Les mêmes équipes peuvent assurer ensuite le préventif et le curatif. Voir [maintenance corrective](/expertises/types-de-maintenance/maintenance-corrective/)."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Ce que nous garantissons"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "**Un rappel dans l'heure** du lundi au vendredi, 8h00 à 18h30, au 04 78 33 72 05, et une astreinte quand la machine est à l'arrêt.",
+            "**Le dossier est à vous.** Schémas, nomenclatures, documentation de test : vous repartez avec de quoi faire refabriquer ailleurs. Nous ne gardons pas votre machine en otage.",
+            "**Des compétences évaluées** : entretien technique et comportemental à l'entrée, 10 % des techniciens retenus, résultats partagés avec vous."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "**L'indépendance, en clair.** Ni fabricant de cartes, ni distributeur de composants. Quand nous disons qu'une réparation suffit, nous ne perdons rien à le dire."
+        },
+        {
+          "type": "p",
+          "text": "**Besoin de savoir si votre carte se répare, se refait ou se remplace ?**"
+        },
+        {
+          "type": "quote",
+          "text": "[Faire chiffrer mon étude électronique](/contact/) · 04 78 33 72 05, rappel dans l'heure"
+        },
+        {
+          "type": "p",
+          "text": "Un échange technique suffit pour trancher entre les trois. Le formulaire tient en quatre champs."
+        },
+        {
+          "type": "h2",
+          "text": "Nos références"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "[Étude de cas TIMESCOPE : casques de réalité virtuelle](/preuves/timescope/) · Depuis février 2024. Maintenance sous contrat d'un parc d'équipements électroniques déployé partout en France, étanchéité et réglages traités comme des sujets à part entière, propositions d'amélioration de la fiabilité.",
+            "[Étude de cas MERSEN : nouvelles lignes](/preuves/mersen/) · 2025, près de Lyon. Un automaticien SIEMENS sur site pour le démarrage d'une ligne neuve, quand la partie commande décide du calendrier.",
+            "[Étude de cas JOINT LYONNAIS : défaillances machines](/preuves/joint-lyonnais/) · Lyon, depuis février 2024. Diagnostic sur site et plusieurs solutions chiffrées, plutôt qu'un rachat de matériel.",
+            "[Étude de cas EATON : mise en production](/preuves/eaton-mise-en-production/) · Janvier 2023. Six techniciens multidisciplinaires pour l'installation et la mise en production d'un parc machines neuf."
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "Toutes nos réalisations documentées : [Preuves : nos réalisations](/preuves/)"
+        },
+        {
+          "type": "h2",
+          "text": "Questions fréquentes"
+        },
+        {
+          "type": "p",
+          "text": "**Fabriquez-vous les cartes vous-mêmes ?**"
+        },
+        {
+          "type": "p",
+          "text": "Non. Nous concevons, nous rédigeons le dossier, nous suivons la fabrication chez un atelier partenaire et nous réceptionnons. Ne pas fabriquer est ce qui rend notre arbitrage crédible : nous n'avons rien à écouler."
+        },
+        {
+          "type": "p",
+          "text": "**Pouvez-vous travailler sans le schéma d'origine ?**"
+        },
+        {
+          "type": "p",
+          "text": "Oui, c'est le cas le plus fréquent. Le relevé de la carte existante est une prestation à part entière, chiffrée avant d'être lancée. Vous savez ce que ça coûte avant de vous engager."
+        },
+        {
+          "type": "p",
+          "text": "**Une réparation de carte électronique industrielle vaut-elle mieux qu'un remplacement ?**"
+        },
+        {
+          "type": "p",
+          "text": "Cela dépend de trois choses : la disponibilité du composant fautif, la criticité de la machine et ce que coûte un nouvel arrêt. Nous posons les options chiffrées, vous tranchez. Nous n'en poussons aucune."
+        },
+        {
+          "type": "p",
+          "text": "**Qui intervient réellement sur mon matériel ?**"
+        },
+        {
+          "type": "p",
+          "text": "Des techniciens et des ingénieurs salariés Migen, évalués en entretien technique et comportemental : 10 % des techniciens retenus. Ils sont habilités selon les exigences de votre site et accueillis à votre protocole de sécurité."
+        },
+        {
+          "type": "p",
+          "text": "**Reprenez-vous un dossier commencé par un autre prestataire ?**"
+        },
+        {
+          "type": "p",
+          "text": "Oui. Nous repartons de vos fichiers, nous vérifions les hypothèses, nous chiffrons uniquement le reste à faire. Aucune obligation de tout recommencer."
+        },
+        {
+          "type": "p",
+          "text": "**Intervenez-vous partout en France ?**"
+        },
+        {
+          "type": "p",
+          "text": "Oui. Quatre agences, Lyon (siège), Montréal, Dubaï, Madrid, et des hubs de techniciens dans les grandes villes de France. Le siège du groupe est à Limonest, près de Lyon."
+        },
+        {
+          "type": "p",
+          "text": "Plus de 200 clients industriels, de l'agroalimentaire à l'automobile, confient leurs équipements au groupe."
+        },
+        {
+          "type": "p",
+          "text": "**Besoin d'une électronique qui ne vous piège pas dans dix ans ?**"
+        },
+        {
+          "type": "quote",
+          "text": "[Faire chiffrer mon étude électronique](/contact/) · 04 78 33 72 05 Rappel dans l'heure du lundi au vendredi, 8h00 à 18h30. Astreinte."
+        },
+        {
+          "type": "quote",
+          "text": "À lire aussi : [bureau d'étude mécanique](/bureau-etudes/) · [bureau d'étude électrique](/bureau-etudes/bureau-etude-electrique/) · [retrofit machine industrielle](/offres/retrofit/)"
+        }
+      ]
+    }
   }
 }

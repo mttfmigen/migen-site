@@ -10,9 +10,9 @@
  * personne ne peut la rejouer. Le contrôle échoue si le fichier manque, plutôt
  * que de se rabattre en silence sur des valeurs recopiées.
  *
- * Les trois corrections imposées par le contrat (quatre agences, plus de 120
- * clients, aucun délai chiffré hors rappel dans l'heure) sont vérifiées dans
- * l'autre sens : la formulation de la maquette doit être ABSENTE du rendu.
+ * Les deux corrections imposées par le contrat (quatre agences, aucun délai
+ * chiffré hors rappel dans l'heure) sont vérifiées dans l'autre sens : la
+ * formulation de la maquette doit être ABSENTE du rendu.
  */
 
 import assert from "node:assert/strict";
@@ -23,6 +23,7 @@ import Agences from "@/components/site/contact/Agences";
 import ApresDemande from "@/components/site/contact/ApresDemande";
 import Ouverture from "@/components/site/contact/Ouverture";
 import { TITRE_SEO } from "@/components/site/contact/metadonnees";
+import { appliqueDecisions } from "@/lib/decisions-copie";
 
 /** L'écran « Contact / devis » de la maquette : lignes 2950 à 3024. */
 const PREMIERE_LIGNE = 2950;
@@ -65,7 +66,9 @@ function normalise(texte: string): string {
 }
 
 const rendu = normalise(html);
-const source = normalise(maquette);
+// Les décisions de copie (lib/decisions-copie.ts) sont appliquées à la
+// maquette avant toute comparaison : « 10 % des techniciens retenus ».
+const source = normalise(appliqueDecisions(maquette));
 
 /** Ce qui doit se trouver dans la maquette ET dans le rendu. */
 const PORTE = [
@@ -77,7 +80,10 @@ const PORTE = [
   "Un chargé d'affaires étudie votre demande, sélectionne les techniciens adaptés et vous les présente pour validation avant toute intervention.",
   "Les cinq offres",
   "10 %",
-  "des candidats retenus",
+  "des techniciens retenus",
+  // « +200 clients, sans jamais préciser « réguliers » », règle validée par
+  // le client : la carte est rendue mot pour mot.
+  "+200",
   "clients industriels",
   "Décrire mon besoin",
   // Copie des trois étapes.
@@ -133,8 +139,6 @@ for (const valeur of PORTE) {
 const CORRIGE: readonly [string, string][] = [
   ["5", "agences en France"],
   ["Cinq agences en France, deux à l'international.", "Cinq agences en France"],
-  ["+200", "+200"],
-  ["clients industriels", "200 clients"],
   ["48 h", "48 h"],
   ["3 sem.", "3 sem."],
   ["Siège — Limonest", "Siège — Limonest"],

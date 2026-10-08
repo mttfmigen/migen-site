@@ -1,0 +1,559 @@
+{
+  "url": "/ressources/fiches-pratiques/",
+  "titre_h1": "Ressources : Fiches pratiques",
+  "source": "maquette/rendu/ressources--fiches-pratiques.html, transcrite mot pour mot (MigenRessource, vue rubrique)",
+  "phrases_retirees": [],
+  "contenu": {
+    "gabarit": "editorial",
+    "blocs": [],
+    "rubrique": {
+      "rayon": "fiches-pratiques",
+      "court": "Fiches pratiques",
+      "ariane": [
+        {
+          "label": "Accueil",
+          "href": "/"
+        },
+        {
+          "label": "Ressources",
+          "href": "/ressources/"
+        }
+      ],
+      "chapo": [
+        "Une procédure introuvable au moment d'intervenir, c'est une intervention qui dérape.",
+        "Ces fiches complètent notre [guide maintenance industrielle](/ressources/) avec des procédures applicables telles quelles : la règle, les étapes, les pièges."
+      ],
+      "image": "/assets/web/ph-tuyaux.jpg",
+      "chiffres": [
+        {
+          "valeur": "35",
+          "libelle": "ressources"
+        },
+        {
+          "valeur": "5",
+          "libelle": "rayons"
+        },
+        {
+          "valeur": "+200",
+          "libelle": "clients industriels"
+        }
+      ],
+      "categories": [
+        {
+          "rayon": "tout",
+          "libelle": "Tout"
+        },
+        {
+          "rayon": "articles",
+          "libelle": "Articles"
+        },
+        {
+          "rayon": "fiches-pratiques",
+          "libelle": "Fiches pratiques"
+        },
+        {
+          "rayon": "fiches-techniques",
+          "libelle": "Fiches techniques"
+        },
+        {
+          "rayon": "livres-blancs",
+          "libelle": "Livres blancs"
+        },
+        {
+          "rayon": "process",
+          "libelle": "Process"
+        }
+      ],
+      "guide": [
+        {
+          "titre": "Pourquoi ces fiches existent",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "Chaque fiche est écrite par des techniciens qui exécutent ces gestes chaque semaine sur des sites industriels. Pas de théorie : ce qui se fait, dans l'ordre où ça se fait."
+            },
+            {
+              "type": "ul",
+              "items": [
+                "**Écrites par le terrain, pas par un service communication.** Nos techniciens documentent les gestes qu'ils répètent chaque semaine, avec leurs pièges réels.",
+                "**Pensées pour l'atelier, pas pour l'écran.** Chaque fiche est imprimable et affichable au poste de travail.",
+                "**Un doute avant d'agir ? Un humain répond.** Un chargé d'affaires vous rappelle dans l'heure par téléphone, du lundi au vendredi de 8h00 à 18h30."
+              ]
+            }
+          ]
+        },
+        {
+          "titre": "Par thématique",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "La sécurité d'abord, la méthode ensuite. Cinq fiches couvrent les procédures les plus demandées sur le terrain."
+            },
+            {
+              "type": "tableau",
+              "lignes": [
+                [
+                  "La consignation électrique",
+                  "Séparer, condamner, vérifier l'absence de tension : la procédure qui protège l'intervenant avant tout travail sur une installation."
+                ],
+                [
+                  "Le plan de prévention",
+                  "Le document obligatoire quand une entreprise extérieure travaille chez vous : quand le rédiger, avec qui, sur quels risques."
+                ],
+                [
+                  "Le permis de feu",
+                  "Soudage, meulage, découpe : encadrer les travaux par points chauds pour ne pas transformer une réparation en sinistre."
+                ],
+                [
+                  "La sécurité maintenance industrielle",
+                  "Les règles qui font qu'une intervention se termine sans accident, du balisage à la remise en service."
+                ],
+                [
+                  "Les 5s industrie",
+                  "Trier, ranger, nettoyer, standardiser, tenir dans la durée : la méthode qui rend l'atelier lisible et les anomalies visibles."
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "titre": "Par où commencer",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "Un ordre de lecture simple, calé sur le risque : ce qui protège les personnes passe avant ce qui organise l'atelier."
+            },
+            {
+              "type": "ol",
+              "items": [
+                "**Les fondamentaux sécurité** : Consignation et plan de prévention. Ces deux procédures conditionnent toutes les autres : personne ne touche une machine sans elles.",
+                "**Les travaux à risque** : Permis de feu et règles de sécurité en intervention. À relire avant chaque chantier ponctuel, même court.",
+                "**La méthode au quotidien** : Les 5S. Un atelier rangé se diagnostique plus vite et cache moins de défauts."
+              ]
+            }
+          ]
+        },
+        {
+          "titre": "Ce qu'une fiche contient",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "Le même squelette partout, pour aller droit au geste : la règle, les étapes, les pièges."
+            },
+            {
+              "type": "ul",
+              "items": [
+                "**La règle** : Ce que dit la réglementation ou le standard métier, en langage clair.",
+                "**Les étapes** : La procédure dans l'ordre d'exécution, avec les points de contrôle.",
+                "**Les pièges** : Les erreurs que nos techniciens constatent réellement sur site."
+              ]
+            }
+          ]
+        },
+        {
+          "titre": "La règle, sans jargon",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "Ce qui est obligatoire, ce qui est recommandé : la ligne de démarcation est écrite noir sur blanc, pour qu'aucun technicien n'ait à trancher seul sur le terrain."
+            },
+            {
+              "type": "ol",
+              "items": [
+                "**Le texte applicable.** Norme, code du travail ou standard interne, chaque fiche cite la base de la règle.",
+                "**Ce qui est obligatoire.** Distingué de ce qui est recommandé, pour prioriser sous pression de temps.",
+                "**Ce qui reste à votre charge.** Vos consignes internes et vos habilitations restent la référence finale sur votre site."
+              ]
+            }
+          ]
+        },
+        {
+          "titre": "Les étapes, dans l'ordre d'exécution",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "Une procédure lue en diagonale est une procédure mal appliquée. Chaque fiche est numérotée, avec les points de contrôle qui comptent."
+            },
+            {
+              "type": "ul",
+              "items": [
+                "**Le geste, décrit sans ambiguïté.** Une action par ligne, dans l'ordre où elle s'exécute.",
+                "**Le point de contrôle qui suit.** Ce qu'on vérifie avant de passer à l'étape suivante.",
+                "**Le format imprimable.** Chaque fiche s'affiche au poste, sans reformatage."
+              ]
+            }
+          ]
+        },
+        {
+          "titre": "Les pièges à éviter",
+          "blocs": [
+            {
+              "type": "p",
+              "texte": "Les erreurs que nos techniciens constatent réellement sur site, pas des risques théoriques."
+            },
+            {
+              "type": "tableau",
+              "lignes": [
+                [
+                  "Une étape sautée par habitude",
+                  "Le point de contrôle qui la rend visible avant de continuer"
+                ],
+                [
+                  "Un vocabulaire flou entre équipes",
+                  "Une règle écrite, la même pour tout le monde"
+                ],
+                [
+                  "Une consigne connue mais non affichée",
+                  "Une fiche imprimable, posée au poste de travail"
+                ]
+              ]
+            },
+            {
+              "type": "citation",
+              "texte": "Ces fiches ne remplacent ni vos modes opératoires ni vos habilitations. Elles donnent une base saine, à adapter à vos équipements et à vos consignes internes."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "question": "Ces fiches remplacent-elles nos habilitations internes ?",
+          "reponse": "Non. Elles donnent une base saine, à adapter à vos équipements et à vos consignes internes. Vos habilitations et vos modes opératoires restent la référence."
+        },
+        {
+          "question": "Peut-on les imprimer et les afficher au poste ?",
+          "reponse": "Oui, c'est leur usage prévu. Chaque fiche suit le même squelette, la règle, les étapes, les pièges, pensé pour être lu vite sur le terrain."
+        },
+        {
+          "question": "Qui écrit ces fiches ?",
+          "reponse": "Des techniciens Migen qui exécutent ces gestes chaque semaine sur des sites industriels, pas un service communication."
+        },
+        {
+          "question": "Par où commencer si on n'a aucune procédure écrite ?",
+          "reponse": "Par la consignation électrique et le plan de prévention : ces deux fiches conditionnent toutes les autres interventions."
+        },
+        {
+          "question": "Une fiche manque sur un sujet précis ?",
+          "reponse": "Contactez un chargé d'affaires par téléphone : nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. ---"
+        }
+      ],
+      "catalogue": [
+        {
+          "href": "/ressources/articles/cout-arret-de-production/",
+          "titre": "Coût d'un arrêt de production",
+          "recherche": "Coût d'un arrêt de production | Migen",
+          "format": "Article",
+          "minutes": 12,
+          "mots": 2734,
+          "image": "/assets/web/ph-tuyaux.jpg"
+        },
+        {
+          "href": "/ressources/articles/digitalisation-maintenance/",
+          "titre": "Digitalisation maintenance",
+          "recherche": "Digitalisation maintenance : le guide complet | Migen",
+          "format": "Article",
+          "minutes": 11,
+          "mots": 2375,
+          "image": "/assets/web/team-grind-impact.jpg"
+        },
+        {
+          "href": "/ressources/articles/gestion-des-dechets/",
+          "titre": "Gestion des déchets industriels",
+          "recherche": "Gestion des déchets industriels | Migen",
+          "format": "Article",
+          "minutes": 8,
+          "mots": 1761,
+          "image": "/assets/web/team-duo.jpg"
+        },
+        {
+          "href": "/ressources/articles/gmao/",
+          "titre": "Gestion de maintenance assistée par ordinateur",
+          "recherche": "Gestion de maintenance assistée par ordinateur | Migen",
+          "format": "Article",
+          "minutes": 11,
+          "mots": 2499,
+          "image": "/assets/web/ph-robots-solaire.jpg"
+        },
+        {
+          "href": "/ressources/articles/ia-maintenance/",
+          "titre": "IA maintenance : ce qui change vraiment",
+          "recherche": "IA maintenance : usages réels en usine | Migen",
+          "format": "Article",
+          "minutes": 9,
+          "mots": 2048,
+          "image": "/assets/web/ph-tuyaux.jpg"
+        },
+        {
+          "href": "/ressources/articles/maintenance-4-0/",
+          "titre": "Maintenance 4.0",
+          "recherche": "Maintenance 4.0 | Migen",
+          "format": "Article",
+          "minutes": 9,
+          "mots": 1934,
+          "image": "/assets/web/team-grind-impact.jpg"
+        },
+        {
+          "href": "/ressources/articles/optimiser-la-maintenance/",
+          "titre": "Optimisation de la maintenance",
+          "recherche": "Optimisation de la maintenance | Migen",
+          "format": "Article",
+          "minutes": 8,
+          "mots": 1819,
+          "image": "/assets/web/ph-robots-solaire.jpg"
+        },
+        {
+          "href": "/ressources/articles/organiser-service-maintenance/",
+          "titre": "Comment organiser un service de maintenance",
+          "recherche": "Comment organiser un service de maintenance | Migen",
+          "format": "Article",
+          "minutes": 9,
+          "mots": 2070,
+          "image": "/assets/web/team-electric.jpg"
+        },
+        {
+          "href": "/ressources/articles/plan-de-maintenance/",
+          "titre": "Plan de maintenance",
+          "recherche": "Plan de maintenance | Migen",
+          "format": "Article",
+          "minutes": 10,
+          "mots": 2148,
+          "image": "/assets/web/ph-technicien.jpg"
+        },
+        {
+          "href": "/ressources/articles/planification-maintenance/",
+          "titre": "Planning de maintenance",
+          "recherche": "Planning de maintenance | Migen",
+          "format": "Article",
+          "minutes": 11,
+          "mots": 2356,
+          "image": "/assets/web/ph-hero-raffinerie.jpg"
+        },
+        {
+          "href": "/ressources/articles/predictive-ou-corrective/",
+          "titre": "Maintenance prédictive ou corrective",
+          "recherche": "Maintenance prédictive ou corrective | Migen",
+          "format": "Article",
+          "minutes": 12,
+          "mots": 2648,
+          "image": "/assets/web/team-grind-front.jpg"
+        },
+        {
+          "href": "/ressources/articles/preventive-ou-corrective/",
+          "titre": "Maintenance préventive et corrective",
+          "recherche": "Maintenance préventive et corrective | Migen",
+          "format": "Article",
+          "minutes": 11,
+          "mots": 2472,
+          "image": "/assets/web/team-grind-impact.jpg"
+        },
+        {
+          "href": "/ressources/articles/robot-spot/",
+          "titre": "Robot spot",
+          "recherche": "Robot Spot en inspection industrielle | Migen",
+          "format": "Article",
+          "minutes": 7,
+          "mots": 1589,
+          "image": "/assets/web/ph-technicien.jpg"
+        },
+        {
+          "href": "/ressources/articles/suivi-de-la-maintenance/",
+          "titre": "Suivi de la maintenance",
+          "recherche": "Suivi de la maintenance : méthode et outils | Migen",
+          "format": "Article",
+          "minutes": 10,
+          "mots": 2161,
+          "image": "/assets/web/ph-technicien.jpg"
+        },
+        {
+          "href": "/ressources/articles/tpm/",
+          "titre": "TPM, la maintenance productive totale",
+          "recherche": "TPM maintenance productive totale : la méthode | Migen",
+          "format": "Article",
+          "minutes": 9,
+          "mots": 1965,
+          "image": "/assets/web/team-duo.jpg"
+        },
+        {
+          "href": "/ressources/fiches-pratiques/5s/",
+          "titre": "5S industrie",
+          "recherche": "5S industrie | Migen",
+          "format": "Fiche pratique",
+          "minutes": 12,
+          "mots": 2624,
+          "image": "/assets/web/team-grind-front.jpg"
+        },
+        {
+          "href": "/ressources/fiches-pratiques/consignation-electrique/",
+          "titre": "Consignation électrique",
+          "recherche": "Consignation électrique | Migen",
+          "format": "Fiche pratique",
+          "minutes": 12,
+          "mots": 2685,
+          "image": "/assets/web/team-electric.jpg"
+        },
+        {
+          "href": "/ressources/fiches-pratiques/permis-de-feu/",
+          "titre": "Permis de feu",
+          "recherche": "Permis de feu | Migen",
+          "format": "Fiche pratique",
+          "minutes": 8,
+          "mots": 1852,
+          "image": "/assets/web/ph-robots-solaire.jpg"
+        },
+        {
+          "href": "/ressources/fiches-pratiques/plan-de-prevention/",
+          "titre": "Plan de prévention",
+          "recherche": "Plan de prévention : obligations et contenu | Migen",
+          "format": "Fiche pratique",
+          "minutes": 9,
+          "mots": 1941,
+          "image": "/assets/web/team-duo.jpg"
+        },
+        {
+          "href": "/ressources/fiches-pratiques/securite-maintenance/",
+          "titre": "La sécurité en maintenance industrielle",
+          "recherche": "Sécurité maintenance industrielle | Migen",
+          "format": "Fiche pratique",
+          "minutes": 10,
+          "mots": 2255,
+          "image": "/assets/web/ph-technicien.jpg"
+        },
+        {
+          "href": "/ressources/fiches-techniques/amdec/",
+          "titre": "Amdec",
+          "recherche": "Amdec | Migen",
+          "format": "Fiche technique",
+          "minutes": 15,
+          "mots": 3292,
+          "image": "/assets/web/team-grind-front.jpg"
+        },
+        {
+          "href": "/ressources/fiches-techniques/analyse-vibratoire/",
+          "titre": "Analyse vibratoire",
+          "recherche": "Analyse vibratoire | Migen",
+          "format": "Fiche technique",
+          "minutes": 10,
+          "mots": 2109,
+          "image": "/assets/web/ph-robots-solaire.jpg"
+        },
+        {
+          "href": "/ressources/fiches-techniques/automates-siemens/",
+          "titre": "Automate Siemens",
+          "recherche": "Automate Siemens | Migen",
+          "format": "Fiche technique",
+          "minutes": 7,
+          "mots": 1642,
+          "image": "/assets/web/team-electric.jpg"
+        },
+        {
+          "href": "/ressources/fiches-techniques/cahier-des-charges-gmao/",
+          "titre": "Cahier des charges gmao",
+          "recherche": "Cahier des charges gmao | Migen",
+          "format": "Fiche technique",
+          "minutes": 11,
+          "mots": 2373,
+          "image": "/assets/web/team-grind-front.jpg"
+        },
+        {
+          "href": "/ressources/fiches-techniques/indicateurs-maintenance/",
+          "titre": "Indicateur maintenance",
+          "recherche": "Indicateur maintenance | Migen",
+          "format": "Fiche technique",
+          "minutes": 11,
+          "mots": 2386,
+          "image": "/assets/web/team-duo.jpg"
+        },
+        {
+          "href": "/ressources/fiches-techniques/mtbf-mttr/",
+          "titre": "Mtbf",
+          "recherche": "Mtbf | Migen",
+          "format": "Fiche technique",
+          "minutes": 9,
+          "mots": 1959,
+          "image": "/assets/web/team-grind-impact.jpg"
+        },
+        {
+          "href": "/ressources/fiches-techniques/niveaux-de-maintenance/",
+          "titre": "Niveaux de maintenance",
+          "recherche": "Niveaux de maintenance | Migen",
+          "format": "Fiche technique",
+          "minutes": 9,
+          "mots": 1990,
+          "image": "/assets/web/ph-tuyaux.jpg"
+        },
+        {
+          "href": "/ressources/fiches-techniques/outils-de-diagnostic/",
+          "titre": "Outils de diagnostic maintenance",
+          "recherche": "Outils de diagnostic maintenance | Migen",
+          "format": "Fiche technique",
+          "minutes": 10,
+          "mots": 2132,
+          "image": "/assets/web/ph-tuyaux.jpg"
+        },
+        {
+          "href": "/ressources/fiches-techniques/trs/",
+          "titre": "TRS : le taux de rendement synthétique",
+          "recherche": "TRS : calculer et améliorer votre rendement | Migen",
+          "format": "Fiche technique",
+          "minutes": 10,
+          "mots": 2242,
+          "image": "/assets/web/team-grind-close.jpg"
+        },
+        {
+          "href": "/ressources/livres-blancs/externaliser-sa-maintenance/",
+          "titre": "Livre blanc : externaliser sa maintenance sans perdre la main",
+          "recherche": "Externaliser sa maintenance | Migen",
+          "format": "Livre blanc",
+          "minutes": 7,
+          "mots": 1442,
+          "image": "/assets/web/team-electric.jpg"
+        },
+        {
+          "href": "/ressources/livres-blancs/retrofit-ou-remplacement/",
+          "titre": "Retrofit ou remplacement",
+          "recherche": "Retrofit ou remplacement | Migen",
+          "format": "Livre blanc",
+          "minutes": 11,
+          "mots": 2319,
+          "image": "/assets/web/team-grind-close.jpg"
+        },
+        {
+          "href": "/ressources/process/gestion-maintenance-preventive/",
+          "titre": "Gestion de la maintenance préventive",
+          "recherche": "Gestion de la maintenance préventive | Migen",
+          "format": "Process",
+          "minutes": 14,
+          "mots": 3099,
+          "image": "/assets/web/ph-hero-raffinerie.jpg"
+        },
+        {
+          "href": "/ressources/process/preparer-un-arret-technique/",
+          "titre": "Préparation arrêt technique",
+          "recherche": "Préparation arrêt technique | Migen",
+          "format": "Process",
+          "minutes": 10,
+          "mots": 2254,
+          "image": "/assets/web/ph-hero-raffinerie.jpg"
+        },
+        {
+          "href": "/ressources/process/protocole-de-securite/",
+          "titre": "Protocole de sécurité",
+          "recherche": "Protocole de sécurité | Migen",
+          "format": "Process",
+          "minutes": 11,
+          "mots": 2351,
+          "image": "/assets/web/ph-tuyaux.jpg"
+        },
+        {
+          "href": "/ressources/process/selection-des-techniciens/",
+          "titre": "Sélection technicien de maintenance",
+          "recherche": "Sélection technicien de maintenance | Migen",
+          "format": "Process",
+          "minutes": 8,
+          "mots": 1764,
+          "image": "/assets/web/ph-technicien.jpg"
+        }
+      ]
+    }
+  }
+}

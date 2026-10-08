@@ -18,6 +18,8 @@
         "valeur": "Montage d'installations logistiques"
       }
     ],
+    "logo": "/assets/clients/aktid.png",
+    "photoHero": "/assets/web/mq-29ebb1b81ced.jpg",
     "chiffres": [
       {
         "libelle": "Nature des travaux",
@@ -124,6 +126,7 @@
         "valeur": "Montage d'installations logistiques"
       }
     ],
+    "photoDispositif": "/assets/web/mq-2a6115ec9fe0.jpg",
     "resultats": [
       {
         "titre": "Le site livré dans les temps",
@@ -159,7 +162,7 @@
         "texte": "Disponible en option une fois le site en exploitation, par téléphone."
       },
       {
-        "titre": "10 % des candidats retenus",
+        "titre": "10 % des techniciens retenus",
         "texte": "Mécanique, soudure et chaudronnerie comprises, après entretien technique et comportemental."
       },
       {
@@ -171,22 +174,26 @@
       {
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
-        "href": "/preuves/"
+        "href": "/preuves/",
+        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
-        "href": "/secteurs/logistique/"
+        "href": "/secteurs/logistique/",
+        "photo": "/assets/web/mq-e6322efcd358.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "GLS : maintenance curative",
-        "href": "/preuves/gls-maintenance-curative/"
+        "href": "/preuves/gls-maintenance-curative/",
+        "photo": "/assets/web/mq-339d39e2a674.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
-        "href": "/preuves/savoye/"
+        "href": "/preuves/savoye/",
+        "photo": "/assets/web/mq-056f3c250981.jpg"
       }
     ]
   }

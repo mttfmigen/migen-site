@@ -1,5 +1,16 @@
-import type { Section } from "./contenu";
+import type { Section, Tableau } from "./contenu";
 import type { BlocComplement, ChiffreOffre, LienOffre } from "./offre";
+
+/**
+ * Un bloc de l'écran « Complément 2 » du domaine : celui du gabarit offre, plus
+ * le TABLEAU que la maquette sait y poser (`rb.isTable` de
+ * `MigenExpertise.dc.html`, gabarits 391 à 401). Relevé le 08/10 sur
+ * `maquette/rendu/expertises--types-de-maintenance.html`, troisième bloc :
+ * « Type / Ce qui déclenche l'intervention / Objectif / Idéal pour ».
+ */
+export interface BlocComplementDomaine extends BlocComplement {
+  tableau?: Tableau;
+}
 
 /**
  * Forme du contenu des pages DOMAINE, gabarit « 09 Domaine » de l'index de la
@@ -61,20 +72,46 @@ export interface ContenuDomaine {
   /* ------------------------------------------------------- « 01 Chiffres » */
 
   /**
-   * La carte en verre des chiffres. La capture de `/expertises/robotique/` en
-   * dessine trois dont « +200 », que le contrat interdit : ce chiffre-là
-   * N'EST PAS dans la donnée et le trou est déclaré, la grille se resserre.
+   * La carte en verre des chiffres, autant de colonnes que de chiffres : trois
+   * sur la plupart des captures, quatre sur `/expertises/soudure/` et
+   * `/expertises/tuyauterie/`. « +200 clients » est autorisé par le client
+   * (jamais « réguliers ») et se rend comme la capture le porte.
    */
   chiffres?: ChiffreOffre[];
 
   /* --------------------------------------------- retouches d'emplacements */
 
-  /** La photo de la colonne gauche du problème, identifiée par empreinte. */
+  /**
+   * La photo de la colonne gauche du problème, identifiée par empreinte. Lue
+   * par la seule variante « colonne » ; le DESSIN du problème, lui, est
+   * `variante` dans la section `probleme` (« rangee », « panneau-sombre »),
+   * relevé sur la capture de chaque page et rendu par `ProblemeDomaine`.
+   */
   problemePhoto?: string | null;
   /** L'écran « Complément 4 », entre la bande d'appel et le déroulé. */
   complementOffre?: BlocComplement[];
   /** La famille de constructeurs de « Marques maintenues » (`robot`, `auto`…). */
   marquesFamille?: string;
+  /**
+   * Le rail d'onglets au-dessus des tuiles, par clés courtes, l'onglet actif
+   * étant `marquesFamille`. Ajouté le 08/10 : la capture de
+   * `/expertises/electromecanique/` en porte deux (« Automatisme & électricité
+   * 10 », « Machines-outils & tôlerie 13 »). Absent, pas de rail.
+   */
+  marquesFamilles?: string[];
+
+  /* ------------------------------------------ « Complément 2 », accueil */
+
+  /**
+   * L'écran « Complément 2 » de l'accueil de rubrique, entre la réassurance et
+   * la problématique : la carte en verre de « Complément 4 », dont un bloc peut
+   * être un tableau. Même clé que `ContenuOffre.complementTypes`, même
+   * emplacement de la maquette. Seule `/expertises/types-de-maintenance/` le
+   * porte (capture du 07/10, 16 sections) ; sans donnée, rien n'est rendu.
+   * Rendu par `components/site/expertises/domaine/ComplementsDomaine.tsx`, le
+   * seul des deux composants de carte qui dessine le tableau.
+   */
+  complementTypes?: BlocComplementDomaine[];
 }
 
 /**

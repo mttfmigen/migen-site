@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import AppelFinal from "@/components/site/offre/AppelFinal";
@@ -12,7 +12,6 @@ import LogosClients from "@/components/site/offre/LogosClients";
 import MarquesOffre from "@/components/site/offre/MarquesOffre";
 import PanneauFormulaire from "@/components/site/offre/PanneauFormulaire";
 import PointsOffre from "@/components/site/offre/PointsOffre";
-import ProblemeOffre from "@/components/site/offre/ProblemeOffre";
 import Reassurance from "@/components/site/offre/Reassurance";
 import ReferencesOffre from "@/components/site/offre/ReferencesOffre";
 import {
@@ -37,7 +36,9 @@ import QuestionsPhoto from "@/components/site/offres/QuestionsPhoto";
 import type { Section, TypeSection } from "@/types/contenu";
 import type { ContenuDomaine } from "@/types/domaine";
 
+import ComplementsDomaine from "./ComplementsDomaine";
 import OffresDomaine from "./OffresDomaine";
+import ProblemeDomaine from "./ProblemeDomaine";
 import SecteursDomaine from "./SecteursDomaine";
 
 /**
@@ -51,7 +52,8 @@ import SecteursDomaine from "./SecteursDomaine";
  *  1. 01 Chiffres    les chiffres de la page dans UNE carte en verre
  *  2. 02 Logos       « Ils nous font confiance »        → `LogosClients`
  *  3. Réassurance    « Certifications » + « Qui intervient chez vous »
- *  4. 03 Problème    « Votre problématique », puces 01-04     ← corpus
+ *  3 bis. Complément 2  accueil de rubrique, carte en verre à tableau ← donnée
+ *  4. 03 Problème    « Votre problématique », trois dessins     ← corpus
  *  5. 04 Offre       « L'offre », 7 points                     ← corpus
  *  6. Appel · offre  bande SOMBRE (fond `var(--panel)`)   → `BandeAppel`
  *  7. Complément 4   la carte en verre d'une phrase            ← corpus
@@ -59,7 +61,8 @@ import SecteursDomaine from "./SecteursDomaine";
  *  9. 06 Garanties   « Notre parti pris », panneau sombre      ← corpus
  * 10. Secteurs       « Même expertise, contraintes différentes », copie FIXE
  * 11. Offres         « Six façons de travailler ensemble », bento, copie FIXE
- * 12. Marques        « Les équipements que nous maintenons déjà »
+ * 12. Marques        « Les équipements que nous maintenons déjà », rail
+ *                    d'onglets quand la donnée en nomme plusieurs familles
  * 13. 08 Références  « Nos références », rail de cartes        ← corpus
  * 14. 09 Questions   la carte sombre à photo `mg-faqph`        ← corpus
  * 15. 10 Appel final question du corpus + panneau, ANCRE `#mgx-form`
@@ -72,7 +75,13 @@ import SecteursDomaine from "./SecteursDomaine";
  * LE DESSIN vient du gabarit (capture), LE TEXTE vient du corpus via le relais
  * JSON, rien ne s'invente. Les écrans déjà portés par le gabarit 03 sont
  * IMPORTÉS de `components/site/offre/`, jamais recopiés : même charte, un seul
- * endroit. Les trois écrans propres au domaine vivent dans ce dossier.
+ * endroit. Les écrans propres au domaine vivent dans ce dossier.
+ *
+ * AJOUTS DU 08/10, relevés sur les NEUF autres captures du gabarit : le
+ * « Complément 2 » de `/expertises/types-de-maintenance/` (`ComplementsDomaine`),
+ * les dessins « rangee » et « panneau-sombre » du problème (`ProblemeDomaine`)
+ * et le rail d'onglets des marques de `/expertises/electromecanique/`. Chacun
+ * est INERTE sans sa donnée : les deux pilotes ne bougent pas.
  *
  * Composant SERVEUR. Fil d'Ariane et maillage du cocon restent en props,
  * exigés par CLAUDE.md §4 bien qu'absents de la capture.
@@ -122,15 +131,13 @@ export default function PageDomaine({
   const heroFormulaire = typeof contenu.formulaireHeroTitre === "string";
 
   return (
-    <div className="mg-site">
-      <main style={{ paddingTop: 96 }}>
-        {filAriane ? (
-          <section
-            style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 40px 0" }}
-          >
-            {filAriane}
-          </section>
-        ) : null}
+    /* La racine `.mgx-root` de `MigenExpertise` : `--sec` reste à 120 px sur
+       mobile (la règle « --sec: 64px » de `.mg-site` ne l'atteint pas), et les
+       règles mobiles du gabarit sont celles que `PageOffre.module.css` porte
+       sous `.gabarit`. Mesuré le 08/10 à 390 px : 120 px dans la maquette. */
+    <div className={`mg-site ${stylesOffre.gabarit}`} style={{ "--sec": "120px" } as CSSProperties}>
+      <main style={{ paddingTop: 62 }}>
+        {filAriane}
 
         {/* ------------------------------------------------ 0. « 01 Héros » */}
 
@@ -211,15 +218,13 @@ export default function PageDomaine({
 
         {/* -------------------------------------------- 1. « 01 Chiffres » */}
 
-        {/* TROU DÉCLARÉ : la capture de `/expertises/robotique/` dessine ici
-            TROIS chiffres dont « +200 clients industriels », que le contrat
-            interdit (CLAUDE.md §9). Ce chiffre n'est pas dans la donnée, la
-            grille se resserre sur ce qui reste, comme sur les pages d'offre
-            à trois chiffres. */}
+        {/* Les chiffres de la capture, « +200 / Clients industriels
+            accompagnés » compris (README de passation : +200, jamais
+            « réguliers »). `g3-hs`, comme la capture : une colonne sous 620 px. */}
         {chiffres.length > 0 ? (
           <section style={SECTION_CHIFFRES}>
             <div
-              className="mg-rmulti"
+              className="g3-hs"
               style={{
                 ...GRILLE_CHIFFRES,
                 gridTemplateColumns: `repeat(${chiffres.length},minmax(0,1fr))`,
@@ -250,10 +255,19 @@ export default function PageDomaine({
 
         <Reassurance />
 
+        {/* ----------------------------- 3 bis. « Complément 2 » (accueil) */}
+
+        {/* Des onze captures du gabarit, seule celle de
+            `/expertises/types-de-maintenance/` porte cet écran, tableau
+            compris. Sans donnée, rien n'est rendu. */}
+        {contenu.complementTypes?.length ? (
+          <ComplementsDomaine blocs={contenu.complementTypes} />
+        ) : null}
+
         {/* ------------------------------------------ 4. « 03 Problème » */}
 
         {probleme ? (
-          <ProblemeOffre
+          <ProblemeDomaine
             section={probleme}
             altPhoto={titre}
             photo={contenu.problemePhoto}
@@ -301,7 +315,10 @@ export default function PageDomaine({
         {/* ------------------------------- 12. « Marques maintenues » */}
 
         {contenu.marquesFamille ? (
-          <MarquesOffre famille={contenu.marquesFamille} />
+          <MarquesOffre
+            famille={contenu.marquesFamille}
+            familles={contenu.marquesFamilles}
+          />
         ) : null}
 
         {/* --------------------------------------- 13. « 08 Références » */}

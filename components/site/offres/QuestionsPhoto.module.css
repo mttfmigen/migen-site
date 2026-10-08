@@ -1,3 +1,34 @@
+/* `.mg-faqph` de la feuille de la maquette (`site-final-autonome.html`), relue
+   le 08/10 : la carte redéfinit ses encres pour le fond photo. Les styles en
+   ligne du composant s'écrivent donc comme ceux de la capture (`var(--ink)`,
+   `var(--chip)`…) et prennent ici leur valeur sombre. La colonne collante de
+   la capture y est neutralisée : elle reste à sa place. */
+.panneau {
+  --ink: #fff;
+  --ink1: rgba(255, 255, 255, 0.9);
+  --ink2: rgba(255, 255, 255, 0.8);
+  --ink3: rgba(255, 255, 255, 0.66);
+  --ink4: rgba(255, 255, 255, 0.52);
+  --line: rgba(255, 255, 255, 0.16);
+  --chip: rgba(255, 255, 255, 0.14);
+  --gl-a: 0.1;
+  --gbd: rgba(255, 255, 255, 0.18);
+  --card: rgba(255, 255, 255, 0.08);
+  --acc-ink: #ffb48a;
+  color: var(--ink);
+}
+
+.panneau [style*="sticky"] {
+  position: relative !important;
+  top: auto !important;
+}
+
+@media (max-width: 760px) {
+  .grille {
+    padding: 28px 22px !important;
+  }
+}
+
 /* Survols RELEVÉS dans l'export du client (attributs `style-hover`, 07/10) :
    la pastille orange s'assombrit et se soulève d'un pixel, le lien fléché du
    hub passe à l'orange. `:focus-visible` suit, même retour pour le clavier. */

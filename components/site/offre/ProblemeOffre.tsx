@@ -98,60 +98,83 @@ const PANNEAU_SOMBRE: CSSProperties = {
   padding: "52px 56px",
 };
 
+/* Relevé des captures du 08/10 (`travaux-industriels--demantelement-
+   industriel`, `expertises--hydraulique`, `implantations--…-agen` : même
+   balisage) : lueur décalée en haut à droite, titre et sous-phrase propres à
+   ce panneau, cartes au rayon `--rad`. */
 const LUEUR: CSSProperties = {
   position: "absolute",
-  top: -120,
-  right: -120,
+  top: -210,
+  right: -170,
   width: 460,
   height: 460,
-  background: "radial-gradient(circle, rgba(255,124,60,.26) 0%, transparent 70%)",
+  background: "radial-gradient(circle, rgba(255,124,60,.26), transparent 68%)",
   pointerEvents: "none",
 };
 
+const TITRE_SOMBRE: CSSProperties = {
+  font: "600 calc(clamp(26px,3vw,42px) * var(--ts))/1.08 var(--ft)",
+  letterSpacing: "-.04em",
+  color: "#fff",
+  margin: "0 0 12px",
+  maxWidth: "22ch",
+  textWrap: "balance",
+};
+
+const SOUS_PHRASE_SOMBRE: CSSProperties = {
+  font: "400 16px/1.7 var(--fb)",
+  color: "rgba(255,255,255,.64)",
+  margin: "0 0 30px",
+  maxWidth: "56ch",
+};
+
 const CARTE_SOMBRE: CSSProperties = {
-  padding: "24px 28px",
-  borderRadius: 18,
+  padding: "22px 26px",
+  borderRadius: "var(--rad)",
   background: "rgba(255,255,255,.07)",
   border: "1px solid rgba(255,255,255,.12)",
+  display: "flex",
+  gap: 16,
+  alignItems: "baseline",
 };
 
 function Sombre({ section }: { section: SectionProbleme }) {
   const { titre, suite } = coupePunchline(section.punchline);
   return (
-    <section style={SECTION}>
+    <section data-screen-label="03 Problème" style={SECTION}>
       <div style={LARGEUR}>
-        <div style={PANNEAU_SOMBRE}>
+        <div className="mg-pad" style={PANNEAU_SOMBRE}>
           <div aria-hidden="true" style={LUEUR} />
-          <div style={{ ...SURTITRE, marginBottom: 18 }}>
-            Votre problématique
-          </div>
-          <h2 style={{ ...TITRE, color: "#fff" }}>{titre}</h2>
-          {suite ? (
-            <p style={{ ...SOUS_PHRASE, color: "rgba(255,255,255,.62)" }}>
-              {suite}
-            </p>
-          ) : null}
-          <div
-            className="mg-r2"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-              gap: 12,
-            }}
-          >
-            {section.puces.map((puce, rang) => (
-              <div key={puce.accroche ?? puce.texte} style={CARTE_SOMBRE}>
-                <span style={NUMERO}>{numerote(rang)}</span>
-                {puce.accroche ? (
-                  <div style={{ ...ACCROCHE, color: "#fff" }}>
-                    {puce.accroche}
+          <div style={{ position: "relative" }}>
+            <div style={{ ...SURTITRE, marginBottom: 16 }}>
+              Votre problématique
+            </div>
+            <h2 style={TITRE_SOMBRE}>{titre}</h2>
+            <p style={SOUS_PHRASE_SOMBRE}>{suite}</p>
+            <div
+              className="mg-rmulti"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                gap: 12,
+              }}
+            >
+              {section.puces.map((puce, rang) => (
+                <div key={puce.accroche ?? puce.texte} style={CARTE_SOMBRE}>
+                  <span style={NUMERO}>{numerote(rang)}</span>
+                  <div>
+                    {puce.accroche ? (
+                      <div style={{ ...ACCROCHE, color: "#fff" }}>
+                        {puce.accroche}
+                      </div>
+                    ) : null}
+                    <div style={{ ...TEXTE, color: "rgba(255,255,255,.62)" }}>
+                      {puce.texte}
+                    </div>
                   </div>
-                ) : null}
-                <div style={{ ...TEXTE, color: "rgba(255,255,255,.62)" }}>
-                  {puce.texte}
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -159,39 +182,90 @@ function Sombre({ section }: { section: SectionProbleme }) {
   );
 }
 
+/* Relevé des captures du 08/10 (`offres--full-service`, `offres--arret-
+   technique`, `implantations--lyon`, `secteurs--chimie` : même balisage) :
+   en-tête sur deux colonnes, titre à gauche et sous-phrase alignée en bas à
+   droite, puis une rangée de cartes en verre, numéro au-dessus. */
+const RANGEE_ENTETE: CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "1.1fr .9fr",
+  gap: 56,
+  alignItems: "end",
+  marginBottom: 34,
+};
+
+const RANGEE_TITRE: CSSProperties = {
+  font: "600 calc(clamp(26px,2.8vw,38px) * var(--ts))/1.1 var(--ft)",
+  letterSpacing: "-.04em",
+  margin: 0,
+  maxWidth: "20ch",
+  textWrap: "balance",
+};
+
+const RANGEE_SOUS_PHRASE: CSSProperties = {
+  font: "400 15px/1.65 var(--fb)",
+  color: "var(--ink2)",
+  margin: 0,
+  maxWidth: "44ch",
+};
+
+const RANGEE_CARTE: CSSProperties = {
+  ...VERRE,
+  padding: "26px 24px 28px",
+  display: "flex",
+  flexDirection: "column",
+};
+
 function Rangee({ section }: { section: SectionProbleme }) {
   const { titre, suite } = coupePunchline(section.punchline);
   return (
-    <section style={SECTION}>
+    <section data-screen-label="03 Problème" style={SECTION}>
       <div style={LARGEUR}>
-        <div style={{ ...SURTITRE, marginBottom: 18 }}>
-          Votre problématique
+        <div className="mg-r2" style={RANGEE_ENTETE}>
+          <div>
+            <div style={{ ...SURTITRE, marginBottom: 18 }}>
+              Votre problématique
+            </div>
+            <h2 style={RANGEE_TITRE}>{titre}</h2>
+          </div>
+          {suite ? <p style={RANGEE_SOUS_PHRASE}>{suite}</p> : null}
         </div>
-        <h2 style={TITRE}>{titre}</h2>
-        {suite ? <p style={SOUS_PHRASE}>{suite}</p> : null}
         <div
-          className="mg-rmulti"
+          className="g3-pbgrid mg-rmulti"
           style={{
             display: "grid",
-            // Autant de colonnes que de cartes : la maquette pose 4 cartes de
-            // ~270px ou 5 de ~214px sur UNE rangée, jamais d'empilement.
+            // Autant de colonnes que de cartes : 4 ou 5 sur UNE rangée.
             gridTemplateColumns: `repeat(${section.puces.length}, minmax(0, 1fr))`,
             gap: 12,
           }}
         >
           {section.puces.map((puce, rang) => (
-            <div
-              key={puce.accroche ?? puce.texte}
-              style={{ ...VERRE, padding: "24px 28px" }}
-            >
-              {/* Le numéro orange est posé AU-DESSUS de l'accroche. */}
-              <div style={{ ...NUMERO, marginBottom: 10 }}>
+            <div key={puce.accroche ?? puce.texte} style={RANGEE_CARTE}>
+              <span
+                style={{
+                  font: "600 24px/1 var(--ft)",
+                  letterSpacing: "-.05em",
+                  color: "var(--acc)",
+                  marginBottom: 18,
+                }}
+              >
                 {numerote(rang)}
-              </div>
+              </span>
               {puce.accroche ? (
-                <div style={ACCROCHE}>{puce.accroche}</div>
+                <div
+                  style={{
+                    font: "600 15px/1.35 var(--ft)",
+                    letterSpacing: "-.018em",
+                    marginBottom: 6,
+                    color: "var(--ink)",
+                  }}
+                >
+                  {puce.accroche}
+                </div>
               ) : null}
-              <div style={TEXTE}>{puce.texte}</div>
+              <div style={{ font: "400 13px/1.55 var(--fb)", color: "var(--ink2)" }}>
+                {puce.texte}
+              </div>
             </div>
           ))}
         </div>
@@ -212,7 +286,7 @@ export default function ProblemeOffre({
   const source = photo === undefined ? PHOTO : photo;
 
   return (
-    <section style={SECTION}>
+    <section data-screen-label="03 Problème" style={SECTION}>
       <div style={LARGEUR}>
         <div
           className="mg-r2"
@@ -223,7 +297,7 @@ export default function ProblemeOffre({
             alignItems: "start",
           }}
         >
-          <div style={{ position: "sticky", top: 110 }}>
+          <div className="g3-sticky" style={{ position: "sticky", top: 110 }}>
             <div style={{ ...SURTITRE, marginBottom: 18 }}>
               Votre problématique
             </div>

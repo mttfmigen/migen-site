@@ -1,0 +1,346 @@
+{
+  "_source": "maquette/rendu/expertises--types-de-maintenance--maintenance-corrective.html (07/10 21h12), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (relevé par data-dc-tpl, mêmes cibles que les pilotes fanuc et abb, dont le relevé redonne le relais à l'identique), contrôlé par components/site/expertises/specialite/verification-specialite.tsx. PHOTOS MESURÉES, PAS CHOISIES : octets de chaque image de la maquette vivante (localhost:4352) rapprochés de public/assets/web par sha256 complet, le 08/10 ; photo de carte de référence = première image de la carte. La capture du problème de cette page ne rend aucune photo, d'où `problemePhoto: null`. PHRASES INTERDITES NON RENDUES (ne se reformulent pas) : « Le tarif se négocie machine à l'arrêt. » (contenu.sections[0].puces[0].accroche) ; « Nous consultons le marché fournisseur au prix réel. » (contenu.sections[1].lignes[5].prestation.texte).",
+  "url": "/expertises/types-de-maintenance/maintenance-corrective/",
+  "titre_h1": "Maintenance corrective : réparer vite, et comprendre pourquoi c’est arrivé",
+  "contenu": {
+    "gabarit": "specialite",
+    "pastille": "Expertises",
+    "chapeau": "L'intervention exécutée après la défaillance. Cette page donne la définition, la différence avec la curative et la palliative, et le coût réel d'une panne. Puis elle montre comment ramener le correctif à une part minoritaire de votre budget.",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option.",
+    "appelBouton": "Demander une intervention",
+    "actions": [
+      {
+        "libelle": "Demander une intervention",
+        "href": "#besoin"
+      }
+    ],
+    "formulaireHeroTitre": "Demander une intervention",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
+      {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, chaque technicien est évalué en entretien technique et comportemental"
+      },
+      {
+        "valeur": "en continu et tous les jours",
+        "libelle": "Astreinte en option, partout en France"
+      }
+    ],
+    "complementTypes": [
+      {
+        "texte": "La maintenance corrective désigne l'ensemble des opérations exécutées après la détection d'une défaillance, pour remettre un bien en état d'assurer sa fonction requise. Le déclencheur est toujours une panne : arrêt total, fonctionnement dégradé, dysfonctionnement détecté par un opérateur ou par un capteur."
+      },
+      {
+        "texte": "Trois mots, trois factures. La norme NF EN 13306 fait de la corrective la catégorie mère."
+      },
+      {
+        "tableau": {
+          "entetes": [
+            "Terme",
+            "Ce que fait le technicien",
+            "Durée de l'effet"
+          ],
+          "lignes": [
+            [
+              "Maintenance corrective",
+              "La catégorie générale : tout ce qui est exécuté après la défaillance",
+              "Variable"
+            ],
+            [
+              "Maintenance curative",
+              "La réparation définitive, cause racine traitée",
+              "Durable"
+            ],
+            [
+              "Maintenance palliative",
+              "Le dépannage provisoire, la machine repart en mode dégradé",
+              "Temporaire"
+            ]
+          ]
+        }
+      },
+      {
+        "texte": "Immédiate ou différée : le second découpage, celui qui pèse sur votre budget."
+      },
+      {
+        "puces": [
+          {
+            "accroche": "La corrective immédiate.",
+            "texte": "On intervient tout de suite parce que l'immobilisation pèse plus lourd que tout le reste. C'est la maintenance d'urgence, aussi appelée réactive."
+          },
+          {
+            "accroche": "La corrective différée.",
+            "texte": "La panne est constatée, l'intervention est planifiée sur la prochaine fenêtre disponible, la pièce est commandée sans transport express. Moins de stress, moins de dépense inutile."
+          },
+          {
+            "accroche": "La condition pour différer.",
+            "texte": "Un équipement redondant, ou un mode dégradé acceptable. Sans cette condition, la décision est déjà prise à votre place."
+          }
+        ]
+      },
+      {
+        "texte": "Ce que la corrective a pour elle, honnêtement :"
+      },
+      {
+        "puces": [
+          {
+            "accroche": "Aucune dépense tant que rien ne casse.",
+            "texte": "Pas de plan, pas de ronde, pas d'immobilisation programmée. Sur du matériel de faible enjeu, c'est le choix rationnel."
+          },
+          {
+            "accroche": "Une mise en œuvre simple.",
+            "texte": "Aucune organisation lourde, aucun logiciel obligatoire pour démarrer."
+          },
+          {
+            "accroche": "Le bon usage type",
+            "texte": "un convoyeur doublé, où l'indisponibilité d'une voie ne stoppe pas la fabrication."
+          }
+        ]
+      },
+      {
+        "texte": "Et ce qu'elle coûte, une fois le compte complet fait :"
+      },
+      {
+        "puces": [
+          {
+            "accroche": "La facture réelle explose.",
+            "texte": "Heures de nuit, pièce en urgence, transport express, production perdue. Une intervention non planifiée coûte plusieurs fois une opération préventive équivalente."
+          },
+          {
+            "accroche": "Le matériel vieillit plus vite.",
+            "texte": "Un équipement qui casse avant d'être entretenu raccourcit son cycle de vie à chaque épisode."
+          },
+          {
+            "accroche": "Les équipes s'épuisent.",
+            "texte": "Le préventif saute, le retard s'accumule, et la spirale des heures supplémentaires commence."
+          },
+          {
+            "accroche": "La sécurité se dégrade.",
+            "texte": "Un travail effectué sous pression multiplie les risques, pour vos opérateurs comme pour l'installation."
+          }
+        ]
+      }
+    ],
+    "problemePhoto": null,
+    "complementOffre": [
+      {
+        "texte": "Ligne bloquée maintenant ? Voir le dépannage industriel."
+      }
+    ],
+    "sections": [
+      {
+        "type": "probleme",
+        "variante": "panneau-sombre",
+        "punchline": "Beaucoup de sites paient trois fois la même panne. Le composant, la production perdue, puis la récidive.",
+        "puces": [
+          {
+            "texte": "Personne ne fait un bon achat un vendredi à 16h avec une ligne bloquée et un client qui attend."
+          },
+          {
+            "accroche": "Le technicien repart de zéro à chaque fois.",
+            "texte": "Aucun historique, aucune connaissance du parc, et le temps de diagnostic se paie une deuxième fois."
+          },
+          {
+            "accroche": "On traite le symptôme, jamais la cause.",
+            "texte": "Le composant neuf durera exactement aussi longtemps que son prédécesseur, et la même machine repassera par l'atelier dans deux mois."
+          },
+          {
+            "accroche": "Le renfort arrive et ne sait pas faire.",
+            "texte": "Le pire scénario n'est pas la panne, c'est l'intervenant qui découvre le métier sur votre installation."
+          }
+        ]
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "Le diagnostic, la dépose, la réparation, les essais, la remise en service sur tout le parc de production, d'utilités et de manutention.",
+              "texte": ""
+            },
+            "benefice": "La ligne repart, et vous savez pourquoi elle s'était arrêtée."
+          },
+          {
+            "prestation": {
+              "accroche": "La recherche de la cause racine systématiquement, pas seulement le remplacement du composant fautif.",
+              "texte": ""
+            },
+            "benefice": "La troisième facture n'existe pas. Le problème sort de votre quotidien."
+          },
+          {
+            "prestation": {
+              "accroche": "L'intervention en urgence, la nuit et le week-end avec astreinte la nuit, le week-end et les jours fériés en option.",
+              "texte": ""
+            },
+            "benefice": "Une ligne bloquée un samedi ne devient pas un lundi perdu."
+          },
+          {
+            "prestation": {
+              "accroche": "Un écrit exploitable à chaque passage",
+              "texte": "Cause, travaux, pièces remplacées avec références, recommandations."
+            },
+            "benefice": "Le dossier machine s'enrichit au lieu de se vider, et vous capitalisez."
+          },
+          {
+            "prestation": {
+              "accroche": "Le basculement des équipements coûteux vers le préventif ou le conditionnel sur la base de votre historique chiffré.",
+              "texte": ""
+            },
+            "benefice": "La part de l'imprévu dans votre budget baisse, et vous pouvez le prouver."
+          },
+          {
+            "prestation": {
+              "accroche": "Aucune marge sur les pièces",
+              "texte": ""
+            },
+            "benefice": "La recommandation de remplacement est indépendante de ce qu'elle nous rapporterait."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Vous décrivez la situation.",
+            "texte": "Équipement, symptôme, contexte. Deux minutes de description précise font gagner une heure de diagnostic sur site."
+          },
+          {
+            "titre": "Nous qualifions et nous engageons la prise en charge.",
+            "texte": "Bon interlocuteur, bon profil, bonne date, décidés au téléphone et pas trois jours plus tard."
+          },
+          {
+            "titre": "Les autorisations sont vérifiées avant le déplacement.",
+            "texte": "Consignation électrique, travail en hauteur, espaces confinés, zones classées, plan de prévention signé."
+          },
+          {
+            "titre": "Le technicien intervient en autonomie.",
+            "texte": "Consignation, recherche de panne, réparation ou remplacement, essais en charge, application de vos consignes de sécurité."
+          },
+          {
+            "titre": "Vous recevez un écrit exploitable.",
+            "texte": "Cause racine, travaux réalisés, pièces remplacées, recommandations, au format que votre GMAO sait lire."
+          },
+          {
+            "titre": "Nous cherchons à supprimer la récidive.",
+            "texte": "Si une défaillance identique revient, nous proposons une action de fond plutôt qu'une énième réparation."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Un technicien qui sait faire, pas un technicien qui est libre.",
+            "texte": "Nous mobilisons le profil dont la compétence correspond au matériel. Chaque intervenant a passé une évaluation technique et comportementale en entretien, seuls 10 % des techniciens sont retenus."
+          },
+          {
+            "accroche": "Les règles de votre site priment sur les nôtres.",
+            "texte": "Plan de prévention appliqué, accueil au poste suivi à la lettre, procédures qualité et clauses de confidentialité respectées, comptes rendus intégrés à votre système documentaire."
+          },
+          {
+            "accroche": "La sortie du correctif est chiffrée, pas promise.",
+            "texte": "Nous comparons vos dépannages de l'année écoulée avec le programme correspondant, chiffres en main. Si le contrat ne se justifie pas, nous le disons."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Diagnostic sur site et réparation d'un parc machines défaillant, industrie lyonnaise",
+            "texte": "Remise en état sans rachat de matériel neuf.",
+            "lienLibelle": "Étude de cas JOINT LYONNAIS",
+            "lienHref": "/preuves/joint-lyonnais/",
+            "photo": "/assets/web/mq-1ef16ef335a6.jpg"
+          },
+          {
+            "titre": "Maintenance curative des convoyeurs, trieurs et packaging, logistique",
+            "texte": "Deux techniciens en poste sur site.",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
+          },
+          {
+            "titre": "Remise en état d'un site de traitement des eaux industrielles, environnement",
+            "texte": "Un électromécanicien habilité risque chimique mobilisé six mois.",
+            "lienLibelle": "Étude de cas SUEZ",
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "photo": "/assets/web/x-elec-cablage.jpg"
+          },
+          {
+            "titre": "Montage, déplacement de machines et renfort technique ponctuel, matériaux",
+            "texte": "Chantiers confiés au coup par coup.",
+            "lienLibelle": "Étude de cas SOPREMA",
+            "lienHref": "/preuves/soprema/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+          },
+          {
+            "titre": "Parc machines tenu en forte cadence, emballage",
+            "texte": "Un technicien polyvalent intégré sur site.",
+            "lienLibelle": "Étude de cas VPK",
+            "lienHref": "/preuves/vpk/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
+          },
+          {
+            "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, automobile",
+            "texte": "Tenue, depuis octobre 2023.",
+            "lienLibelle": "Étude de cas STELLANTIS",
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+          },
+          {
+            "titre": "Un centre logistique monté en six semaines",
+            "lienLibelle": "Étude de cas Aktid",
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg"
+          },
+          {
+            "titre": "Maintenir un centre logistique qui ne ferme jamais",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
+        "questions": [
+          {
+            "question": "La maintenance corrective coûte-t-elle plus cher que la préventive ?",
+            "reponse": "Sur un équipement critique, oui, et l'écart est large une fois la perte d'exploitation intégrée. Sur du matériel de faible enjeu, elle reste le choix économique. Le tri équipement par équipement est la seule méthode honnête, et c'est l'objet du diagnostic."
+          },
+          {
+            "question": "Intervenez-vous en urgence, la nuit et le week-end ?",
+            "reponse": "Oui, partout en France, avec une astreinte la nuit, le week-end et les jours fériés en option. appelez-nous : nous qualifions le dysfonctionnement avec vous et nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30."
+          },
+          {
+            "question": "Faut-il un contrat pour faire appel à vous ?",
+            "reponse": "Non. Une panne isolée se traite en intervention ponctuelle. La question du contrat se pose sérieusement au-delà de trois interventions par an sur le même équipement, quand le budget n'est plus pilotable."
+          },
+          {
+            "question": "Intervenez-vous si notre site est à Bordeaux, Lille ou Marseille ?",
+            "reponse": "Oui. Nos quatre agences sont à Lyon (siège), Montréal, Dubaï et Madrid, et nos équipes se déplacent partout en France. Le Sud-Ouest est couvert depuis Toulouse, les Hauts-de-France depuis Paris, le Sud-Est depuis Lyon, le Grand Ouest depuis Nantes."
+          },
+          {
+            "question": "Qui répond de la sécurité pendant l'intervention ?",
+            "reponse": "Les autorisations exigées par votre installation sont vérifiées avant le déplacement. Le plan de prévention est signé et appliqué, comme l'impose la réglementation pour toute entreprise extérieure. Vos procédures qualité et vos clauses de confidentialité sont respectées sans exception."
+          },
+          {
+            "question": "Pouvez-vous intégrer un technicien dans notre équipe sur site ?",
+            "reponse": "Oui, en prestation de services : un professionnel Migen travaille dans vos murs pour une durée définie avec vous, évalué au même niveau que pour nos interventions ponctuelles. Décrivez le besoin, nous vous disons si nous avons le profil et lequel."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que cette panne soit la dernière de la série ?",
+        "bouton": "Demander une intervention"
+      }
+    ]
+  }
+}

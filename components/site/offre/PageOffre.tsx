@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import type { Section, TypeSection } from "@/types/contenu";
@@ -33,6 +33,9 @@ import ReferencesOffre from "./ReferencesOffre";
 import ReponseDirecte from "./ReponseDirecte";
 import TypesMaintenance from "./TypesMaintenance";
 import { cibleSure, liensSurs } from "./LiensOffre";
+import PageEdito from "./generique/PageEdito";
+import PageVente from "./generique/PageVente";
+import { ficheGenerique, vueDe } from "./generique/vue";
 import {
   BOUTON_HERO,
   CARTE_CHIFFRE,
@@ -95,6 +98,11 @@ import styles from "./PageOffre.module.css";
  *
  * Composant SERVEUR. Le fil d'Ariane et le maillage du cocon restent en props,
  * exigés par CLAUDE.md §4 bien qu'absents de la capture.
+ *
+ * HUIT PAGES DU GABARIT 03 NE PASSENT PAS PAR CE MONTAGE (08/10) : l'index de
+ * la maquette les marque `sec: false` et son application les sert par son
+ * gabarit GÉNÉRIQUE (« vente » pour six sous-pages, « édito » pour les deux de
+ * /offres/residence/). Leur fiche porte `generique` ; voir `generique/`.
  */
 
 export interface ProprietesPageOffre {
@@ -137,6 +145,26 @@ export default function PageOffre({
   filAriane,
   maillage,
 }: ProprietesPageOffre) {
+  /* Huit sous-pages du gabarit 03 ne sont PAS servies par ce gabarit dans la
+     maquette : son index les marque `sec: false`, et son application les rend
+     avec son gabarit générique, « vente » (6) ou « édito » (2). Leur fiche
+     porte alors `generique` (le markdown découpé par la maquette), et la page
+     est celle de `generique/`, calculée par le code même de la maquette. */
+  const generique = ficheGenerique(contenu);
+  if (generique) {
+    const vue = vueDe(titre, generique);
+    return (
+      <>
+        {filAriane}
+        {vue.cVente ? (
+          <PageVente v={vue} formulaire={formulaire} />
+        ) : (
+          <PageEdito v={vue} formulaire={formulaire} />
+        )}
+      </>
+    );
+  }
+
   const actions = liensSurs(contenu.actions ?? []);
   const chiffres = contenu.chiffres ?? [];
   const sections = contenu.sections ?? [];
@@ -173,15 +201,14 @@ export default function PageOffre({
   const bandeVisible = !!(contenu.mention || contenu.appelBouton);
 
   return (
-    <div className="mg-site">
-      <main style={{ paddingTop: 96 }}>
-        {filAriane ? (
-          <section
-            style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 40px 0" }}
-          >
-            {filAriane}
-          </section>
-        ) : null}
+    /* `--sec` reste à 120 px sur mobile, comme la maquette qui tourne : son
+       gabarit d'offre (embarqué) ne reprend pas la règle mobile « --sec: 64px »
+       de sa page hôte, que `app/globals.css` applique à tout `.mg-site`.
+       Mesuré le 08/10 à 390 px : 120 px sur /offres/residence/, 64 px sur les
+       pages génériques, qui gardent donc la règle commune. */
+    <div className={`mg-site ${styles.gabarit}`} style={{ "--sec": "120px" } as CSSProperties}>
+      <main style={{ paddingTop: 62 }}>
+        {filAriane}
 
         {/* ------------------------------------------------- 0. « 01 Héros » */}
 
@@ -263,7 +290,7 @@ export default function PageOffre({
                 `/offres/retrofit/remise-en-etat/`, relevé 07/10) : le nombre
                 vient de la donnée, pas d'un `repeat(4,…)` figé. */}
             <div
-              className="mg-rmulti"
+              className="g3-hs"
               style={{
                 ...GRILLE_CHIFFRES,
                 gridTemplateColumns: `repeat(${chiffres.length},minmax(0,1fr))`,
@@ -514,10 +541,14 @@ export default function PageOffre({
 
         {/* ------------------------------------- 17. « 10 Appel final » */}
 
+        {/* Le panneau de l'appel final porte LE MÊME en-tête que celui du
+            héros sur les 20 captures (relevé du 08/10, y compris vide sur les
+            sept sous-pages où la maquette ne le renseigne pas) : il le reprend,
+            et `appelBouton` ne sert plus qu'aux pages sans panneau de héros. */}
         <AppelFinal
           question={ctaFinal?.question}
           formulaire={formulaire}
-          bouton={contenu.appelBouton}
+          bouton={heroFormulaire ? contenu.formulaireHeroTitre : contenu.appelBouton}
         />
 
         {maillage ? (

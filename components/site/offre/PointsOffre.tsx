@@ -104,7 +104,10 @@ export default function PointsOffre({ section }: ProprietesPointsOffre) {
           </div>
         </div>
         <div style={COMPTEUR}>
-          <span>{points.length} points</span>
+          {/* Comme la maquette : le nombre interpolé dans sa propre balise. */}
+          <span>
+            <span>{points.length}</span> points
+          </span>
         </div>
         {/* La classe `g3-offrail` branche le rail sur le moteur d'auto-
             défilement de `Moteurs.tsx` (0,45 px par image), comme dans la

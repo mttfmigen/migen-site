@@ -9,6 +9,8 @@
       "Migen intègre sur site un responsable maintenance expérimenté, en présence continue, sous supervision Migen."
     ],
     "bouton": "Faire piloter mon service maintenance",
+    "logo": "/assets/clients/mq-441fc873c0d9.svg",
+    "photoHero": "/assets/web/mq-1ef16ef335a6.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -122,6 +124,7 @@
         "valeur": "Supervision Migen, reporting à la direction industrielle"
       }
     ],
+    "photoDispositif": "/assets/web/mq-0699d4d92e7e.jpg",
     "resultats": [
       {
         "titre": "Zéro interruption critique",
@@ -152,28 +155,32 @@
     "besoinProse": [
       "Expliquez-nous le calendrier, nous regardons qui peut tenir le service en attendant.",
       "L'astreinte la nuit, le week-end et les jours fériés s'ajoute en option pour les périodes tendues.",
-      "Confier le pilotage d'un service suppose un intervenant de niveau. Entretien technique, entretien comportemental, 10 % de candidats retenus, résultats d'évaluation partagés avant la prise de poste."
+      "Confier le pilotage d'un service suppose un intervenant de niveau. Entretien technique, entretien comportemental, 10 % de techniciens retenus, résultats d'évaluation partagés avant la prise de poste."
     ],
     "plusLoin": [
       {
         "surtitre": "Étude de cas",
         "titre": "OGF : la maintenance pendant l'arrêt estival",
-        "href": "/preuves/ogf-arret-estival/"
+        "href": "/preuves/ogf-arret-estival/",
+        "photo": "/assets/web/mq-e6322efcd358.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
-        "href": "/preuves/dimomaint/"
+        "href": "/preuves/dimomaint/",
+        "photo": "/assets/web/mq-339d39e2a674.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
-        "href": "/preuves/eiffage/"
+        "href": "/preuves/eiffage/",
+        "photo": "/assets/web/mq-056f3c250981.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
-        "href": "/preuves/savoye/"
+        "href": "/preuves/savoye/",
+        "photo": "/assets/web/mq-948c28bcda08.jpg"
       }
     ]
   }

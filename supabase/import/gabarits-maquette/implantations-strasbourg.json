@@ -1,192 +1,168 @@
 {
   "url": "/implantations/strasbourg/",
+  "titre_h1": "La maintenance industrielle à Strasbourg et dans le Bas-Rhin",
   "contenu": {
     "gabarit": "ville",
+    "pastille": "Nos implantations",
     "chapeau": "Le Bas-Rhin aligne des industries que peu de départements réunissent : les quais du port rhénan, les brasseries de Schiltigheim, la pharmacie et la biotech d'Illkirch-Graffenstaden, l'automobile de Haguenau et de Molsheim. Notre hub de techniciens de Strasbourg travaille ces quatre univers avec les mêmes intervenants évalués.",
     "actions": [
       {
         "libelle": "Faire chiffrer ma maintenance à Strasbourg",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option, nuits, week-ends et jours fériés.",
+    "formulaireHeroTitre": "Faire chiffrer ma maintenance à Strasbourg",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "appelBouton": "Faire chiffrer ma maintenance à Strasbourg",
+    "chiffres": [
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels accompagnés, dont plus de 80 réguliers"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
         "valeur": "10",
-        "libelle": "hubs de techniciens en France, dont un à Strasbourg, plus notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid"
+        "libelle": "Hubs de techniciens en France, dont un à Strasbourg, plus notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid"
       }
     ],
-    "contact": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 en option, nuits, week-ends et jours fériés.",
-    "constatTexte": "Une ligne de conditionnement à l'arrêt en pleine saison, et votre meilleur électromécanicien qui vient de partir travailler de l'autre côté de la frontière. Le Bas-Rhin perd des techniciens avant de perdre des machines.",
-    "constatPuces": [
+    "hubLocal": {
+      "surtitre": "Votre hub local · Strasbourg",
+      "titre": "Strasbourg : les industries que nos techniciens connaissent déjà",
+      "photo": "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/a0/15/e8/9a/85/v1_E10/E10DWX6.jpg?w=600&cf_fit=scale-down&mark-alpha=18&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark4.png&q=85&format=auto&s=3996d5efcfd2029378bd83e687c8adb6a8af88d3b3f1b1d767970cf1366d51b0",
+      "credit": "Bridges of Strasbourg · Givaga",
+      "badge": "Hub Migen",
+      "nom": "Hub Strasbourg",
+      "texte": "Une équipe de techniciens installée à Strasbourg, au plus près de vos sites, appuyée par le réseau national Migen.",
+      "bouton": "Demander une intervention à Strasbourg",
+      "cartes": [
+        {
+          "surtitre": "Tissu principal",
+          "titre": "Industrie métallique",
+          "texte": "La métallurgie use plus vite que tout le reste.",
+          "lien": "Notre approche industrie métallique",
+          "href": "/secteurs/industrie-metallique/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Automobile",
+          "texte": "L'automobile du Grand Est se transforme pendant qu'elle produit.",
+          "lien": "Notre approche automobile",
+          "href": "/secteurs/automobile/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Pharmaceutique",
+          "texte": "Nos techniciens interviennent sur les sites pharmaceutiques du bassin.",
+          "lien": "Notre approche pharmaceutique",
+          "href": "/secteurs/pharmaceutique/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Logistique",
+          "texte": "Nos clients vont de l'atelier de métallurgie aux sites de groupes industriels, en passant par la logistique et…",
+          "lien": "Notre approche logistique",
+          "href": "/secteurs/logistique/"
+        }
+      ],
+      "zonesTitre": "Zones couvertes par le hub",
+      "zones": [
+        {
+          "libelle": "Alsace",
+          "href": "/implantations/strasbourg/alsace/"
+        },
+        {
+          "libelle": "Mulhouse",
+          "href": "/implantations/strasbourg/mulhouse/"
+        }
+      ]
+    },
+    "complementOffre": [
       {
-        "texte": "Le voisin recrute mieux payé : le bassin forme et voit partir, et vos postes restent ouverts.",
-        "accroche": "La proximité allemande et bâloise tire les salaires techniques."
-      },
-      {
-        "texte": "Pharmacie, chimie, agroalimentaire : protocole, traçabilité, accueil sécurité. L'improvisation se paie en non-conformité.",
-        "accroche": "Les sites réglementés ne laissent aucune marge."
-      },
-      {
-        "texte": "Les parcs machines changent en même temps que les modèles, et les compétences internes ne suivent pas toujours.",
-        "accroche": "L'automobile du Grand Est se transforme pendant qu'elle produit."
-      },
-      {
-        "texte": "Presses, machines-outils, ponts roulants : les organes mécaniques s'y fatiguent à un rythme qui rend le préventif non négociable.",
-        "accroche": "La métallurgie use plus vite que tout le reste."
-      },
-      {
-        "texte": "Convoyage, levage, manutention portuaire : la disponibilité se joue tous les jours, week-ends compris.",
-        "accroche": "Les quais du Rhin ne s'arrêtent pas."
+        "texte": "Pour les gros travaux, transfert, rétrofit ou extension, l'offre chantier prend le relais avec un chef de projet unique, de l'étude à la remise en route."
       }
     ],
-    "reponseTexte": "Pour les gros travaux, transfert, rétrofit ou extension, l'offre [chantier](/offres/chantier/) prend le relais avec un chef de projet unique, de l'étude à la remise en route.",
-    "reponsePuces": [
+    "brefBande": "Besoin de tenir vos lignes sans dépendre du marché de l'emploi transfrontalier ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Faire chiffrer ma maintenance à Strasbourg",
+      "href": "#besoin"
+    },
+    "sections": [
       {
-        "texte": "départ, congé ou surcroît d'activité, le groupe fournit un profil équivalent briefé sur vos machines. Votre production ne dépend plus d'une seule personne.",
-        "accroche": "La continuité, même en cas d'absence"
+        "type": "probleme",
+        "punchline": "Une ligne de conditionnement à l'arrêt en pleine saison, et votre meilleur électromécanicien qui vient de partir travailler de l'autre côté de la frontière. Le Bas-Rhin perd des techniciens avant de perdre des machines.",
+        "puces": [
+          {
+            "accroche": "La proximité allemande et bâloise tire les salaires techniques.",
+            "texte": "Le voisin recrute mieux payé : le bassin forme et voit partir, et vos postes restent ouverts."
+          },
+          {
+            "accroche": "Les sites réglementés ne laissent aucune marge.",
+            "texte": "Pharmacie, chimie, agroalimentaire : protocole, traçabilité, accueil sécurité. L'improvisation se paie en non-conformité."
+          },
+          {
+            "accroche": "L'automobile du Grand Est se transforme pendant qu'elle produit.",
+            "texte": "Les parcs machines changent en même temps que les modèles, et les compétences internes ne suivent pas toujours."
+          },
+          {
+            "accroche": "La métallurgie use plus vite que tout le reste.",
+            "texte": "Presses, machines-outils, ponts roulants : les organes mécaniques s'y fatiguent à un rythme qui rend le préventif non négociable."
+          },
+          {
+            "accroche": "Les quais du Rhin ne s'arrêtent pas.",
+            "texte": "Convoyage, levage, manutention portuaire : la disponibilité se joue tous les jours, week-ends compris."
+          }
+        ],
+        "variante": "rangee"
       },
-      {
-        "texte": "entretien technique et entretien comportemental, un candidat sur dix retenu. Les résultats d'évaluation vous sont remis avant que le technicien franchisse votre portail.",
-        "accroche": "Le niveau prouvé, pas déclaré"
-      },
-      {
-        "texte": "équipements couverts, fréquences, indicateurs suivis, conditions de sortie. Le cadre protège les deux parties.",
-        "accroche": "Un périmètre écrit dès le devis"
-      }
-    ],
-    "faq": [
-      {
-        "reponse": "Oui. Strasbourg est l'un de nos 10 hubs de techniciens en France, épaulé par notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid. Le hub rayonne sur le Bas-Rhin, de la zone portuaire aux bassins de Haguenau et de Molsheim, et travaille avec nos relais du Haut-Rhin jusqu'à Saint-Louis. Un industriel réparti sur les deux départements garde un contrat unique et des comptes rendus au même format.",
-        "question": "Avez-vous vraiment des techniciens à Strasbourg, et intervenez-vous vers Haguenau, Molsheim, Colmar ou Mulhouse ?"
-      },
-      {
-        "reponse": "Nous ne vendons pas un délai standard : il varie selon la panne, l'accès au site et la pièce en cause. L'engagement tenu est le rappel dans l'heure aux horaires ouvrés, et l'astreinte 24/24 et 7/7 en option la nuit, le week-end et les jours fériés.",
-        "question": "Dans quels délais intervenez-vous ?"
-      },
-      {
-        "reponse": "Zéro arrêt est chiffré sur devis, avec trois niveaux de couverture et un engagement type de 6 mois renouvelable. Un site réglementé, avec ses protocoles d'entrée, ne se chiffre pas comme un atelier de mécanique : le devis le dit. Le diagnostic de départ est gratuit.",
-        "question": "Combien coûte un contrat de maintenance ?"
-      },
-      {
-        "reponse": "Selon vos machines, les habilitations requises et l'historique du site. Tous ont passé un entretien technique et comportemental que 10 % des candidats réussissent. Sur un contrat suivi, vous gardez le même intervenant aussi longtemps que possible.",
-        "question": "Comment choisissez-vous le technicien qui vient chez nous ?"
-      },
-      {
-        "reponse": "Oui. Transfert, rétrofit, mise en production d'équipements neufs : un chef de projet unique porte le chantier, de l'étude au redémarrage. Sur un site qui produit pendant les travaux, le phasage et les fenêtres d'arrêt s'écrivent avant le premier démontage.",
-        "question": "Pouvez-vous accompagner un changement de parc machines ?"
-      },
-      {
-        "reponse": "Oui. Nos clients vont de l'atelier de métallurgie aux sites de groupes industriels, en passant par la logistique et l'énergie. Le point commun est un besoin de fiabilité mesurable et un budget cadré, avec la même méthode quel que soit l'effectif.",
-        "question": "Un atelier de vingt salariés vous intéresse-t-il autant qu'un site de groupe ?"
-      }
-    ],
-    "autres": [
-      {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
-      },
-      {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
-      },
-      {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
-      },
-      {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
-      },
-      {
-        "libelle": "Valence",
-        "href": "/implantations/lyon/valence/"
-      },
-      {
-        "libelle": "Nantes",
-        "href": "/implantations/nantes/"
-      },
-      {
-        "libelle": "Brest",
-        "href": "/implantations/nantes/brest/"
-      },
-      {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
-      },
-      {
-        "libelle": "paris",
-        "href": "/implantations/paris/"
-      },
-      {
-        "libelle": "Rouen",
-        "href": "/implantations/paris/rouen/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
-      },
-      {
-        "libelle": "Toulouse",
-        "href": "/implantations/toulouse/"
-      },
-      {
-        "libelle": "Bordeaux",
-        "href": "/implantations/toulouse/bordeaux/"
-      }
-    ],
-    "reste": [
       {
         "type": "offre",
         "lignes": [
           {
-            "benefice": "Vous ne subissez plus le marché de l'emploi transfrontalier pour tenir votre parc.",
             "prestation": {
-              "texte": ", pas des profils trouvés dans l'urgence.",
-              "accroche": "Des techniciens salariés, évalués et encadrés"
-            }
+              "accroche": "Des techniciens salariés, évalués et encadrés pas des profils trouvés dans l'urgence.",
+              "texte": ""
+            },
+            "benefice": "Vous ne subissez plus le marché de l'emploi transfrontalier pour tenir votre parc."
           },
           {
-            "benefice": "Pharmacie, chimie et agroalimentaire gardent une documentation conforme à chaque visite.",
             "prestation": {
-              "texte": "plan de prévention, protocole de sécurité, habilitations à jour, coordination HSE.",
-              "accroche": "L'entrée en site réglementé cadrée"
-            }
+              "accroche": "L'entrée en site réglementé cadrée",
+              "texte": "Plan de prévention, protocole de sécurité, habilitations à jour, coordination HSE."
+            },
+            "benefice": "Pharmacie, chimie et agroalimentaire gardent une documentation conforme à chaque visite."
           },
           {
-            "benefice": "Les lignes cadencées de l'automobile retrouvent leur diagnostic sans attendre un spécialiste extérieur.",
             "prestation": {
-              "texte": "en appui de l'équipe locale.",
-              "accroche": "Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc"
-            }
+              "accroche": "Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc en appui de l'équipe locale.",
+              "texte": ""
+            },
+            "benefice": "Les lignes cadencées de l'automobile retrouvent leur diagnostic sans attendre un spécialiste extérieur."
           },
           {
-            "benefice": "Un seul contrat pour presses, robots, convoyeurs et utilités.",
             "prestation": {
-              "texte": "[mécanique](/expertises/mecanique/), [électricité](/expertises/electrique/), [électromécanique](/expertises/electromecanique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure](/expertises/soudure/).",
-              "accroche": "Le champ technique complet"
-            }
+              "accroche": "Le champ technique complet",
+              "texte": "Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure."
+            },
+            "benefice": "Un seul contrat pour presses, robots, convoyeurs et utilités."
           },
           {
-            "benefice": "Chaufferie, cogénération ou traitement des eaux : la nuit est couverte.",
             "prestation": {
-              "texte": ", mobilisation depuis le hub de techniciens le plus proche.",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
+              "accroche": "Astreinte la nuit, le week-end et les jours fériés en option mobilisation depuis le hub de techniciens le plus proche.",
+              "texte": ""
+            },
+            "benefice": "Chaufferie, cogénération ou traitement des eaux : la nuit est couverte."
           },
           {
-            "benefice": "Un industriel réparti entre les deux départements garde un seul interlocuteur.",
             "prestation": {
-              "texte": "[Alsace](/implantations/strasbourg/alsace/) pour le département, [Mulhouse](/implantations/strasbourg/mulhouse/) pour le Haut-Rhin.",
-              "accroche": "Relais régionaux"
-            }
+              "accroche": "Relais régionaux",
+              "texte": "Alsace pour le département, Mulhouse pour le Haut-Rhin."
+            },
+            "benefice": "Un industriel réparti entre les deux départements garde un seul interlocuteur."
           }
         ]
       },
@@ -194,78 +170,140 @@
         "type": "deroule",
         "etapes": [
           {
-            "texte": "Vous décrivez la panne ou le besoin au 04 78 33 72 05. Un chargé d'affaires rappelle aux horaires ouvrés et qualifie la demande.",
-            "titre": "Le rappel dans l'heure"
+            "titre": "Le rappel dans l'heure",
+            "texte": "Vous décrivez la panne ou le besoin par téléphone. Un chargé d'affaires rappelle aux horaires ouvrés et qualifie la demande."
           },
           {
-            "texte": "Technicien choisi selon la machine et les habilitations, plan de prévention et accueil sécurité validés avec votre responsable de site.",
-            "titre": "La préparation"
+            "titre": "La préparation",
+            "texte": "Technicien choisi selon la machine et les habilitations, plan de prévention et accueil sécurité validés avec votre responsable de site."
           },
           {
-            "texte": "Protocole du site, consignation, protections, tenue adaptée à l'environnement réglementé.",
-            "titre": "L'entrée en zone"
+            "titre": "L'entrée en zone",
+            "texte": "Protocole du site, consignation, protections, tenue adaptée à l'environnement réglementé."
           },
           {
-            "texte": "Réparer vite, puis établir la cause racine.",
-            "titre": "La réparation"
+            "titre": "La réparation",
+            "texte": "Réparer vite, puis établir la cause racine."
           },
           {
-            "texte": "Contrôles de bon fonctionnement, montée en cadence avec vos opérateurs.",
-            "titre": "Les essais et la remise en production"
+            "titre": "Les essais et la remise en production",
+            "texte": "Contrôles de bon fonctionnement, montée en cadence avec vos opérateurs."
           },
           {
-            "texte": "Causes, analyse, actions, préconisations, versés dans votre GMAO. La visite suivante se prépare avec ce contenu.",
-            "titre": "Le compte rendu"
+            "titre": "Le compte rendu",
+            "texte": "Causes, analyse, actions, préconisations, versés dans votre GMAO. La visite suivante se prépare avec ce contenu."
           }
         ]
       },
       {
-        "type": "cta",
-        "bouton": "Faire chiffrer ma maintenance à Strasbourg",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin de tenir vos lignes sans dépendre du marché de l'emploi transfrontalier ?"
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "La continuité, même en cas d'absence",
+            "texte": "Départ, congé ou surcroît d'activité, le groupe fournit un profil équivalent briefé sur vos machines. Votre production ne dépend plus d'une seule personne."
+          },
+          {
+            "accroche": "Le niveau prouvé, pas déclaré",
+            "texte": "Entretien technique et entretien comportemental, un technicien sur dix retenu. Les résultats d'évaluation vous sont remis avant que le technicien franchisse votre portail."
+          },
+          {
+            "accroche": "Un périmètre écrit dès le devis",
+            "texte": "Équipements couverts, fréquences, indicateurs suivis, conditions de sortie. Le cadre protège les deux parties."
+          }
+        ]
       },
       {
         "type": "preuves",
         "preuves": [
           {
-            "texte": "transition vers le véhicule électrique, partenariat reconduit",
             "titre": "18 à 25 techniciens sur plusieurs sites du Grand Est, depuis juin 2023",
+            "texte": "Transition vers le véhicule électrique, partenariat reconduit.",
+            "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-grand-est/",
-            "lienLibelle": "Étude de cas STELLANTIS : sites du Grand Est"
+            "photo": "/assets/web/x-tech-portrait.jpg"
           },
           {
-            "texte": "centres d'usinage, presses et commandes numériques, parc multimarques",
             "titre": "Un technicien à temps plein sur un parc d'usinage du Grand Est, en 2025",
+            "texte": "Centres d'usinage, presses et commandes numériques, parc multimarques.",
+            "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "lienLibelle": "Étude de cas VOIT : site du Grand Est"
+            "photo": "/assets/web/team-grind-front.jpg"
           },
           {
-            "texte": "chez un acteur de l'étanchéité et de l'isolation, sur l'année 2025",
             "titre": "Montages, déplacements de machines et renfort technique ponctuel",
+            "texte": "chez un acteur de l'étanchéité et de l'isolation, sur l'année 2025.",
+            "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels"
+            "photo": "/assets/web/x-elec-cablage.jpg"
           },
           {
-            "texte": "2025 à 2026",
             "titre": "Un technicien polyvalent intégré sur un site papier et emballage en forte cadence",
+            "texte": "2025 à 2026.",
+            "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "lienLibelle": "Étude de cas VPK : maintenance de site"
+            "photo": "/assets/web/team-duo.jpg"
           },
           {
-            "texte": ", site automobile, depuis janvier 2023",
             "titre": "Six techniciens sur l'installation et la mise en production d'un parc machines neuf",
+            "texte": ", site automobile, depuis janvier 2023.",
+            "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "lienLibelle": "Étude de cas EATON : mise en production"
+            "photo": "/assets/web/x-logistique-entrepot.jpg"
+          },
+          {
+            "titre": "Un parc de fonderie repris en huit semaines",
+            "lienLibelle": "Étude de cas Stellantis",
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/ph-tuyaux.jpg"
+          },
+          {
+            "titre": "Deux usines accompagnées dans leur montée en cadence",
+            "lienLibelle": "Étude de cas Valeo",
+            "lienHref": "/preuves/valeo-usines/",
+            "photo": "/assets/web/ph-tuyaux.jpg"
+          },
+          {
+            "titre": "Un technicien dédié pour que le parc ne décroche pas",
+            "lienLibelle": "Étude de cas Autoliv",
+            "lienHref": "/preuves/autoliv/",
+            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Avez-vous vraiment des techniciens à Strasbourg, et intervenez-vous vers Haguenau, Molsheim, Colmar ou Mulhouse ?",
+            "reponse": "Oui. Strasbourg est l'un de nos 10 hubs de techniciens en France, épaulé par notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid. Le hub rayonne sur le Bas-Rhin, de la zone portuaire aux bassins de Haguenau et de Molsheim, et travaille avec nos relais du Haut-Rhin jusqu'à Saint-Louis. Un industriel réparti sur les deux départements garde un contrat unique et des comptes rendus au même format."
+          },
+          {
+            "question": "Dans quels délais intervenez-vous ?",
+            "reponse": "Nous ne vendons pas un délai standard : il varie selon la panne, l'accès au site et la pièce en cause. L'engagement tenu est le rappel dans l'heure aux horaires ouvrés, et l'astreinte la nuit, le week-end et les jours fériés en option la nuit, le week-end et les jours fériés."
+          },
+          {
+            "question": "Combien coûte un contrat de maintenance ?",
+            "reponse": "Zéro arrêt est chiffré sur devis, avec trois niveaux de couverture et un engagement type de 6 mois renouvelable. Un site réglementé, avec ses protocoles d'entrée, ne se chiffre pas comme un atelier de mécanique : le devis le dit. Le diagnostic de départ est gratuit."
+          },
+          {
+            "question": "Comment choisissez-vous le technicien qui vient chez nous ?",
+            "reponse": "Selon vos machines, les habilitations requises et l'historique du site. Tous ont passé un entretien technique et comportemental que 10 % des techniciens réussissent. Sur un contrat suivi, vous gardez le même intervenant aussi longtemps que possible."
+          },
+          {
+            "question": "Pouvez-vous accompagner un changement de parc machines ?",
+            "reponse": "Oui. Transfert, rétrofit, mise en production d'équipements neufs : un chef de projet unique porte le chantier, de l'étude au redémarrage. Sur un site qui produit pendant les travaux, le phasage et les fenêtres d'arrêt s'écrivent avant le premier démontage."
+          },
+          {
+            "question": "Un atelier de vingt salariés vous intéresse-t-il autant qu'un site de groupe ?",
+            "reponse": "Oui. Nos clients vont de l'atelier de métallurgie aux sites de groupes industriels, en passant par la logistique et l'énergie. Le point commun est un besoin de fiabilité mesurable et un budget cadré, avec la même méthode quel que soit l'effectif."
           }
         ]
       },
       {
         "type": "ctaFinal",
-        "bouton": "Faire chiffrer ma maintenance à Strasbourg",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-        "question": "Besoin d'un mainteneur qui tienne le réglementé comme la mécanique lourde ?"
+        "question": "Besoin d'un prestataire de maintenance qui tienne le réglementé comme la mécanique lourde ?"
       }
     ]
-  }
+  },
+  "trous": []
 }

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import {
+  useEffect,
   useId,
   useState,
   type ChangeEvent,
@@ -26,10 +27,30 @@ import {
 
 type Etat = "repos" | "envoi" | "succes" | "erreur";
 
+/**
+ * Événement par lequel un panneau court (« Être rappelé », héros des pages
+ * génériques de la maquette) remet sa saisie à ce formulaire au lieu de la
+ * perdre : `detail` porte `entreprise`, `telephone`, `email`. Seuls ces trois
+ * champs sont repris, et seulement s'ils sont des chaînes non vides.
+ */
+export const EVENEMENT_PREREMPLIR = "migen:preremplir";
+const PREREMPLISSABLES = ["entreprise", "telephone", "email"] as const;
+
 interface Proprietes {
   /** Identifiant du formulaire, en slug : il sert de clé d'analyse des conversions. */
   formulaire: string;
   titre?: string;
+  /** Le texte du bouton d'envoi. La maquette y répète le titre du panneau. */
+  libelleEnvoi?: string;
+  /**
+   * « panneau » : le bouton du formulaire des panneaux en verre de la maquette
+   * (héros et « 10 Appel final » des offres, relevé tpl 87 des captures) tient
+   * toute la largeur, et la mention RGPD prend la place de la rangée centrée
+   * qui le suit (tpl 88, vide dans la maquette). « compact », par défaut : le
+   * bouton à gauche du formulaire « Décrire mon besoin » (tpl 3322). Sans
+   * variante, le rendu des autres gabarits, inchangé (écart mobile compris).
+   */
+  variante?: "compact" | "panneau";
 }
 
 interface Champ {
@@ -162,6 +183,24 @@ const BOUTON: CSSProperties = {
   boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",
 };
 
+/* Relevé tpl 87 : le bouton est une cellule de la grille, sur deux colonnes. */
+const BOUTON_PANNEAU: CSSProperties = {
+  ...BOUTON,
+  gridColumn: "span 2",
+  gap: 9,
+  padding: "15px 26px",
+};
+
+/* Relevé tpl 88 : la rangée sous le bouton, centrée, en 11,5 px. L'encre passe
+   de --ink4 à --ink2 pour la même raison que `RANGEE_ENVOI`. */
+const MENTION_PANNEAU: CSSProperties = {
+  gridColumn: "span 2",
+  font: "400 11.5px/1.5 var(--fb)",
+  color: "var(--ink2)",
+  textAlign: "center",
+  margin: 0,
+};
+
 const MENTION: CSSProperties = {
   gridColumn: "span 2",
   // 11 px : la taille des mentions de la maquette (notes de carte, légendes).
@@ -190,12 +229,34 @@ const ERREUR: CSSProperties = {
 
 const ASTERISQUE: CSSProperties = { color: "var(--acc)" };
 
-export function FormulaireContact({ formulaire, titre }: Proprietes) {
+export function FormulaireContact({
+  formulaire,
+  titre,
+  libelleEnvoi = "On me rappelle dans l’heure",
+  variante,
+}: Proprietes) {
   const [contact, setContact] = useState<Contact>(CONTACT_VIDE);
   const [erreurs, setErreurs] = useState<Erreurs>({});
   const [etat, setEtat] = useState<Etat>("repos");
   const [annonce, setAnnonce] = useState("");
   const prefixe = useId();
+  const panneau = variante === "panneau";
+
+  // La saisie d'un panneau court, reprise ici (voir EVENEMENT_PREREMPLIR).
+  useEffect(() => {
+    function reprend(evenement: Event) {
+      const detail: unknown = (evenement as CustomEvent).detail;
+      if (typeof detail !== "object" || detail === null) return;
+      const repris: Partial<Contact> = {};
+      for (const nom of PREREMPLISSABLES) {
+        const valeur = (detail as Record<string, unknown>)[nom];
+        if (typeof valeur === "string" && valeur.trim()) repris[nom] = valeur.trim();
+      }
+      setContact((precedent) => ({ ...precedent, ...repris }));
+    }
+    window.addEventListener(EVENEMENT_PREREMPLIR, reprend);
+    return () => window.removeEventListener(EVENEMENT_PREREMPLIR, reprend);
+  }, []);
 
   // La saisie efface l'erreur du champ touché, pas celle des autres : corriger
   // un champ ne doit pas faire disparaître la liste de ce qui reste à corriger.
@@ -269,7 +330,13 @@ export function FormulaireContact({ formulaire, titre }: Proprietes) {
   const enCours = etat === "envoi";
 
   return (
-    <form onSubmit={envoie} noValidate className={styles.grille} style={GRILLE}>
+    <form
+      onSubmit={envoie}
+      noValidate
+      /* L'écart de 36 px sous 900 px est celui des panneaux d'offre (voir le module). */
+      className={variante ? `${styles.grille} ${styles.grilleMaquette}` : styles.grille}
+      style={GRILLE}
+    >
       {titre ? <h2 style={TITRE}>{titre}</h2> : null}
 
       {/* Le type de formulaire est aussi dans le document, pour que la balise
@@ -379,23 +446,34 @@ export function FormulaireContact({ formulaire, titre }: Proprietes) {
         );
       })}
 
-      <div style={RANGEE_ENVOI}>
+      {panneau ? (
         <button
           type="submit"
           disabled={enCours}
           className={styles.boutonEnvoi}
-          style={BOUTON}
+          style={BOUTON_PANNEAU}
         >
-          {enCours ? "Envoi en cours…" : "On me rappelle dans l’heure"}
+          {enCours ? "Envoi en cours…" : libelleEnvoi}
         </button>
-      </div>
+      ) : (
+        <div style={RANGEE_ENVOI}>
+          <button
+            type="submit"
+            disabled={enCours}
+            className={styles.boutonEnvoi}
+            style={BOUTON}
+          >
+            {enCours ? "Envoi en cours…" : libelleEnvoi}
+          </button>
+        </div>
+      )}
 
 
       {/* Information au point de collecte, exigée par le RGPD (articles 13 et
           14) : qui traite, pour quoi, qui reçoit, où lire le reste. Elle est
           fixe et non paramétrable, car une page qui pose ce formulaire ne doit
           pas pouvoir l'oublier en omettant une propriété. */}
-      <p style={MENTION}>
+      <p style={panneau ? MENTION_PANNEAU : MENTION}>
         Données traitées par Migen pour répondre à votre demande, enregistrées
         dans HubSpot. Droits et durées de conservation :{" "}
         {/* `/confidentialite/`, l'URL de l'inventaire. L'ancienne,

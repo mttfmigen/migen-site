@@ -1,196 +1,174 @@
 {
   "url": "/implantations/lyon/valence/",
+  "titre_h1": "La maintenance industrielle à Valence et dans la Drôme",
   "contenu": {
     "gabarit": "ville",
+    "pastille": "Nos implantations",
     "chapeau": "Dans la Drôme, l'industrie vit au rythme des campagnes : les fruits arrivent, les lignes d'embouteillage et de conditionnement de la plaine tournent à plein, et tout se joue sur quelques semaines. Autour, l'axe rhodanien aligne les plateformes logistiques, Rovaltain la mécanique de précision, Romans le cuir, le sud du département l'énergie. Nous préparons vos équipements avant le pic, pas pendant.",
     "actions": [
       {
         "libelle": "Faire chiffrer ma maintenance à Valence",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option, nuits, week-ends et jours fériés.",
+    "formulaireHeroTitre": "Faire chiffrer ma maintenance à Valence",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "appelBouton": "Faire chiffrer ma maintenance à Valence",
+    "chiffres": [
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels accompagnés, dont plus de 80 réguliers"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon siège du groupe, Montréal, Dubaï et Madrid",
-        "detail": "Aucune dans la Drôme, des techniciens qui s'y déplacent"
+        "libelle": "Agences, Lyon siège du groupe, Montréal, Dubaï et Madrid. Aucune dans la Drôme, des techniciens qui s'y déplacent"
       }
     ],
-    "contact": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 en option, nuits, week-ends et jours fériés.",
-    "constatTexte": "Une ligne d'embouteillage à l'arrêt en pleine campagne, et le seul technicien qui connaît la machine est en congé. La saison ne se décale pas, elle se perd.",
-    "constatPuces": [
+    "hubLocal": {
+      "surtitre": "Votre hub local · Valence",
+      "titre": "Valence : les industries que nos techniciens connaissent déjà",
+      "photo": "/assets/web/team-electric.jpg",
+      "badge": "Rattaché au hub Lyon",
+      "nom": "Valence, couvert par le hub Lyon",
+      "texte": "Les techniciens du hub Lyon interviennent à Valence et alentour, avec les mêmes méthodes et un seul interlocuteur.",
+      "bouton": "Demander une intervention à Valence",
+      "cartes": [
+        {
+          "surtitre": "Tissu principal",
+          "titre": "Logistique",
+          "texte": "Convoyeurs, trieurs, quais des plateformes de la vallée : les fenêtres d'intervention sont nocturnes.",
+          "lien": "Notre approche logistique",
+          "href": "/secteurs/logistique/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Agroalimentaire",
+          "texte": "Deux techniciens Migen postés en 3x8 sur des lignes liquides et poudre , site agroalimentaire.",
+          "lien": "Notre approche agroalimentaire",
+          "href": "/secteurs/agroalimentaire/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Industrie métallique",
+          "texte": "Autour, l'axe rhodanien aligne les plateformes logistiques, Rovaltain la mécanique de précision, Romans le cuir, le…",
+          "lien": "Notre approche industrie métallique",
+          "href": "/secteurs/industrie-metallique/"
+        },
+        {
+          "surtitre": "Notre offre",
+          "titre": "Migen Résidence",
+          "texte": "Un technicien intégré à votre équipe, sur votre planning, avec remplacement garanti.",
+          "lien": "Voir l’offre",
+          "href": "/offres/residence/"
+        }
+      ],
+      "zonesTitre": "Hub de rattachement et zones voisines",
+      "zones": [
+        {
+          "libelle": "Hub Lyon",
+          "href": "/implantations/lyon/"
+        },
+        {
+          "libelle": "Grenoble",
+          "href": "/implantations/lyon/grenoble/"
+        },
+        {
+          "libelle": "Haute-Savoie",
+          "href": "/implantations/lyon/haute-savoie/"
+        },
+        {
+          "libelle": "Rhône",
+          "href": "/implantations/lyon/rhone/"
+        },
+        {
+          "libelle": "Saint-Étienne",
+          "href": "/implantations/lyon/saint-etienne/"
+        }
+      ]
+    },
+    "brefBande": "Besoin de préparer vos lignes avant la prochaine campagne plutôt que pendant ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Faire chiffrer ma maintenance à Valence",
+      "href": "#besoin"
+    },
+    "sections": [
       {
-        "texte": "Fruits, jus, conditionnement : ce qui n'est pas produit pendant le pic ne se rattrape pas au trimestre suivant.",
-        "accroche": "La saison concentre l'année sur quelques semaines."
+        "type": "probleme",
+        "punchline": "Une ligne d'embouteillage à l'arrêt en pleine campagne, et le seul technicien qui connaît la machine est en congé. La saison ne se décale pas, elle se perd.",
+        "puces": [
+          {
+            "accroche": "La saison concentre l'année sur quelques semaines.",
+            "texte": "Fruits, jus, conditionnement : ce qui n'est pas produit pendant le pic ne se rattrape pas au trimestre suivant."
+          },
+          {
+            "accroche": "Le préventif saute toujours au pire moment.",
+            "texte": "Les visites planifiées passent après la production, jusqu'au jour où le correctif explose le budget."
+          },
+          {
+            "accroche": "Une compétence unique est un risque unique.",
+            "texte": "Un congé, un arrêt maladie, un départ, et le site devient aveugle sur ses propres machines."
+          },
+          {
+            "accroche": "L'axe rhodanien travaille quand les camions partent.",
+            "texte": "Convoyeurs, trieurs, quais des plateformes de la vallée : les fenêtres d'intervention sont nocturnes."
+          },
+          {
+            "accroche": "Le sud du département n'a aucune marge.",
+            "texte": "Énergie, traitement de l'eau, valorisation des déchets : des installations au service du public, tenues par les vérifications légales."
+          }
+        ],
+        "variante": "rangee"
       },
-      {
-        "texte": "Les visites planifiées passent après la production, jusqu'au jour où le correctif explose le budget.",
-        "accroche": "Le préventif saute toujours au pire moment."
-      },
-      {
-        "texte": "Un congé, un arrêt maladie, un départ, et le site devient aveugle sur ses propres machines.",
-        "accroche": "Une compétence unique est un risque unique."
-      },
-      {
-        "texte": "Convoyeurs, trieurs, quais des plateformes de la vallée : les fenêtres d'intervention sont nocturnes.",
-        "accroche": "L'axe rhodanien travaille quand les camions partent."
-      },
-      {
-        "texte": "Énergie, traitement de l'eau, valorisation des déchets : des installations au service du public, tenues par les vérifications légales.",
-        "accroche": "Le sud du département n'a aucune marge."
-      }
-    ],
-    "reponsePuces": [
-      {
-        "texte": "congé, départ ou surcroît d'activité, le réseau fournit un profil équivalent briefé sur vos installations. Votre saison ne repose plus sur une seule personne.",
-        "accroche": "La continuité, même en cas d'absence"
-      },
-      {
-        "texte": "entretien technique et comportemental, 10 % des candidats retenus, résultats d'évaluation remis avant que le renfort arrive.",
-        "accroche": "La sélection prouvée avant la saison"
-      },
-      {
-        "texte": "équipements couverts, fréquences, indicateurs suivis, conditions de sortie. Aucun avenant découvert après coup.",
-        "accroche": "Tout écrit avant la première visite"
-      }
-    ],
-    "faq": [
-      {
-        "reponse": "Oui. Le renfort se dimensionne sur la durée du pic et les technologies en cause, en appui de vos équipes. Beaucoup de sites drômois combinent un préventif resserré avant la saison et une présence pendant, puis reviennent à un rythme normal. Le format et les dates s'écrivent au devis.",
-        "question": "Pouvez-vous nous renforcer uniquement pendant la campagne ?"
-      },
-      {
-        "reponse": "Non. Migen n'a ni agence ni hub de techniciens dans la Drôme. Nos quatre agences sont Lyon, siège du groupe, Montréal, Dubaï et Madrid. Ce que nous avons ici, ce sont des techniciens mobiles qui viennent sur votre site, et un chargé d'affaires qui connaît vos machines et vos accès.",
-        "question": "Avez-vous une agence à Valence ?"
-      },
-      {
-        "reponse": "Oui : Valence, Portes-lès-Valence, Bourg-lès-Valence, Chabeuil, Romans-sur-Isère, Montélimar et la vallée du Rhône. Nos techniciens se déplacent aussi vers Lyon, Grenoble, Saint-Étienne et la France entière, avec un contrat unique et des comptes rendus au même format.",
-        "question": "Couvrez-vous toute la Drôme ?"
-      },
-      {
-        "reponse": "Aucun chiffre d'affichage sur cette page. Nous tenons deux choses : le rappel dans l'heure aux horaires ouvrés et une qualification qui évite un aller-retour inutile. L'astreinte 24/24 et 7/7 couvre en option la nuit, le week-end et les jours fériés.",
-        "question": "Quel délai pour une intervention à Valence ?"
-      },
-      {
-        "reponse": "Zéro arrêt est chiffré sur devis, avec trois niveaux de couverture et un engagement type de 6 mois renouvelable. Sur un site saisonnier, le contrat peut prévoir un préventif renforcé avant campagne et un rythme allégé le reste de l'année. Le diagnostic de départ est gratuit, le périmètre s'écrit après état des lieux.",
-        "question": "Combien coûte un contrat de maintenance ?"
-      },
-      {
-        "reponse": "Oui, avec l'offre [résidence](/offres/residence/) : un salarié Migen intégré à votre équipe et encadré par un référent, en poste sous 2 à 3 semaines. La même personne suit vos machines saison après saison, et le remplacement est assuré en cas d'absence.",
-        "question": "Pouvez-vous tenir un poste chez nous toute l'année ?"
-      },
-      {
-        "reponse": "Non. Le confort thermique et l'entretien de bâtiments tertiaires ne sont pas notre métier. Notre terrain est l'équipement de production industrielle : lignes, machines, convoyeurs et utilités de process, en préventif comme en curatif.",
-        "question": "Faites-vous la maintenance CVC ou multitechnique de bâtiments ?"
-      }
-    ],
-    "autres": [
-      {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
-      },
-      {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
-      },
-      {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
-      },
-      {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
-      },
-      {
-        "libelle": "Nantes",
-        "href": "/implantations/nantes/"
-      },
-      {
-        "libelle": "Brest",
-        "href": "/implantations/nantes/brest/"
-      },
-      {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
-      },
-      {
-        "libelle": "paris",
-        "href": "/implantations/paris/"
-      },
-      {
-        "libelle": "Rouen",
-        "href": "/implantations/paris/rouen/"
-      },
-      {
-        "libelle": "Strasbourg",
-        "href": "/implantations/strasbourg/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
-      },
-      {
-        "libelle": "Toulouse",
-        "href": "/implantations/toulouse/"
-      },
-      {
-        "libelle": "Bordeaux",
-        "href": "/implantations/toulouse/bordeaux/"
-      }
-    ],
-    "reste": [
       {
         "type": "offre",
         "lignes": [
           {
-            "benefice": "Vous entrez en saison avec un parc prêt, pas avec une liste de réparations en attente.",
             "prestation": {
-              "texte": "préventif resserré, pièces d'usure remplacées, points critiques repris avant le démarrage.",
-              "accroche": "Un compte à rebours avant la campagne"
-            }
+              "accroche": "Un compte à rebours avant la campagne",
+              "texte": "Préventif resserré, pièces d'usure remplacées, points critiques repris avant le démarrage."
+            },
+            "benefice": "Vous entrez en saison avec un parc prêt, pas avec une liste de réparations en attente."
           },
           {
-            "benefice": "La cadence tient sans épuiser l'équipe interne ni empiler les heures supplémentaires.",
             "prestation": {
-              "texte": ", en appui de vos équipes, sans embauche précipitée.",
-              "accroche": "Un renfort pendant le pic"
-            }
+              "accroche": "Un renfort pendant le pic en appui de vos équipes, sans embauche précipitée.",
+              "texte": ""
+            },
+            "benefice": "La cadence tient sans épuiser l'équipe interne ni empiler les heures supplémentaires."
           },
           {
-            "benefice": "Vos lignes agroalimentaires cessent de subir les mêmes réparations chaque année.",
             "prestation": {
-              "texte": "étanchéité, protection des moteurs, éléments d'usure suivis.",
-              "accroche": "Des gammes adaptées au lavage et au froid"
-            }
+              "accroche": "Des gammes adaptées au lavage et au froid",
+              "texte": "Étanchéité, protection des moteurs, éléments d'usure suivis."
+            },
+            "benefice": "Vos lignes agroalimentaires cessent de subir les mêmes réparations chaque année."
           },
           {
-            "benefice": "Les opérations lourdes ne mangent jamais une rotation de quai sur l'axe rhodanien.",
             "prestation": {
-              "texte": ", tôt le matin, entre deux équipes, de nuit.",
-              "accroche": "Des interventions en heures creuses"
-            }
+              "accroche": "Des interventions en heures creuses tôt le matin, entre deux équipes, de nuit.",
+              "texte": ""
+            },
+            "benefice": "Les opérations lourdes ne mangent jamais une rotation de quai sur l'axe rhodanien."
           },
           {
-            "benefice": "Un seul contrat pour un parc qui mélange embouteillage, extrusion et convoyage.",
             "prestation": {
-              "texte": "[mécanique](/expertises/mecanique/), [électricité](/expertises/electrique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure](/expertises/soudure/).",
-              "accroche": "Le champ technique complet"
-            }
+              "accroche": "Le champ technique complet",
+              "texte": "Mécanique, électricité, automatisme, hydraulique, pneumatique, soudure."
+            },
+            "benefice": "Un seul contrat pour un parc qui mélange embouteillage, extrusion et convoyage."
           },
           {
-            "benefice": "Une panne de nuit en pleine campagne ne coûte plus une journée de production.",
             "prestation": {
-              "texte": ", tenue par nos techniciens mobiles, comme partout en France ([voir nos implantations](/implantations/lyon/)).",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
+              "accroche": "Astreinte la nuit, le week-end et les jours fériés en option tenue par nos techniciens mobiles, comme partout en France (voir nos implantations).",
+              "texte": ""
+            },
+            "benefice": "Une panne de nuit en pleine campagne ne coûte plus une journée de production."
           }
         ]
       },
@@ -198,77 +176,149 @@
         "type": "deroule",
         "etapes": [
           {
-            "texte": "Vous exposez la situation au 04 78 33 72 05. Rappel dans l'heure aux horaires ouvrés : équipement concerné, accès, habilitations, urgence réelle.",
-            "titre": "L'appel qualifié"
+            "titre": "L'appel qualifié",
+            "texte": "Vous exposez la situation par téléphone. Rappel dans l'heure aux horaires ouvrés : équipement concerné, accès, habilitations, urgence réelle."
           },
           {
-            "texte": "Périmètre, moyens, conditions et taux, écrits avant le départ. Tout écart de périmètre passe par un accord préalable.",
-            "titre": "Le devis"
+            "titre": "Le devis",
+            "texte": "Périmètre, moyens, conditions et taux, écrits avant le départ. Tout écart de périmètre passe par un accord préalable."
           },
           {
-            "texte": "Inventaire des points critiques, pièces d'usure, retard de préventif à résorber avant le démarrage de la campagne.",
-            "titre": "L'état des lieux avant saison"
+            "titre": "L'état des lieux avant saison",
+            "texte": "Inventaire des points critiques, pièces d'usure, retard de préventif à résorber avant le démarrage de la campagne."
           },
           {
-            "texte": "Accueil sécurité, consignation, diagnostic, réparation, essais, montée en cadence avec vos opérateurs.",
-            "titre": "L'intervention"
+            "titre": "L'intervention",
+            "texte": "Accueil sécurité, consignation, diagnostic, réparation, essais, montée en cadence avec vos opérateurs."
           },
           {
-            "texte": "L'analyse cherche l'origine de la défaillance pour qu'elle ne revienne pas au même point la saison suivante.",
-            "titre": "La cause racine"
+            "titre": "La cause racine",
+            "texte": "L'analyse cherche l'origine de la défaillance pour qu'elle ne revienne pas au même point la saison suivante."
           },
           {
-            "texte": "Actions, pièces, résultats, préconisations, versés dans votre GMAO. Les données restent chez vous.",
-            "titre": "Le compte rendu"
+            "titre": "Le compte rendu",
+            "texte": "Actions, pièces, résultats, préconisations, versés dans votre GMAO. Les données restent chez vous."
           }
         ]
       },
       {
-        "type": "cta",
-        "bouton": "Faire chiffrer ma maintenance à Valence",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin de préparer vos lignes avant la prochaine campagne plutôt que pendant ?"
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "La continuité, même en cas d'absence",
+            "texte": "Congé, départ ou surcroît d'activité, le réseau fournit un profil équivalent briefé sur vos installations. Votre saison ne repose plus sur une seule personne."
+          },
+          {
+            "accroche": "La sélection prouvée avant la saison",
+            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats d'évaluation remis avant que le renfort arrive."
+          },
+          {
+            "accroche": "Tout écrit avant la première visite",
+            "texte": "Équipements couverts, fréquences, indicateurs suivis, conditions de sortie. Aucun avenant découvert après coup."
+          }
+        ]
       },
       {
         "type": "preuves",
         "preuves": [
           {
-            "texte": ", site agroalimentaire",
             "titre": "Deux techniciens Migen postés en 3x8 sur des lignes liquides et poudre",
+            "texte": ", site agroalimentaire.",
+            "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "lienLibelle": "Étude de cas DANONE : lignes de production"
+            "photo": "/assets/web/x-tech-portrait.jpg"
           },
           {
             "titre": "Techniciens en renfort sur un site agroalimentaire, premier contrat hors de France depuis octobre 2024",
+            "texte": ".",
+            "lienLibelle": "Étude de cas McCAIN",
             "lienHref": "/preuves/mccain-belgique/",
-            "lienLibelle": "Étude de cas McCAIN : Belgique"
+            "photo": "/assets/web/team-grind-front.jpg"
           },
           {
-            "texte": "2025 à 2026",
             "titre": "Un technicien capable de passer d'un équipement à l'autre sur un site papier et emballage",
+            "texte": "2025 à 2026.",
+            "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "lienLibelle": "Étude de cas VPK : maintenance de site"
+            "photo": "/assets/web/x-elec-cablage.jpg"
           },
           {
-            "texte": "remise en état d'un site de traitement des eaux industrielles",
             "titre": "Un électromécanicien habilité risque chimique mobilisé 6 mois",
+            "texte": "Remise en état d'un site de traitement des eaux industrielles.",
+            "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
+            "photo": "/assets/web/team-duo.jpg"
           },
           {
-            "texte": "prise en charge complète réalisée en un mois",
             "titre": "Six techniciens en permanence sur un contrat de préventif annuel multi-sites",
+            "texte": "Prise en charge complète réalisée en un mois.",
+            "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "lienLibelle": "Étude de cas VEEPEE : sites de Lyon"
+            "photo": "/assets/web/x-logistique-entrepot.jpg"
+          },
+          {
+            "titre": "Maintenir un centre logistique qui ne ferme jamais",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+          },
+          {
+            "titre": "Des convoyeurs et des trieurs sous surveillance continue",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/team-grind-front.jpg"
+          },
+          {
+            "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
+            "lienLibelle": "Étude de cas Savoye",
+            "lienHref": "/preuves/savoye-migration-automates-norvege/",
+            "photo": "/assets/web/ph-technicien.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Pouvez-vous nous renforcer uniquement pendant la campagne ?",
+            "reponse": "Oui. Le renfort se dimensionne sur la durée du pic et les technologies en cause, en appui de vos équipes. Beaucoup de sites drômois combinent un préventif resserré avant la saison et une présence pendant, puis reviennent à un rythme normal. Le format et les dates s'écrivent au devis."
+          },
+          {
+            "question": "Avez-vous une agence à Valence ?",
+            "reponse": "Non. Migen n'a ni agence ni hub de techniciens dans la Drôme. Nos quatre agences sont Lyon, siège du groupe, Montréal, Dubaï et Madrid. Ce que nous avons ici, ce sont des techniciens mobiles qui viennent sur votre site, et un chargé d'affaires qui connaît vos machines et vos accès."
+          },
+          {
+            "question": "Couvrez-vous toute la Drôme ?",
+            "reponse": "Oui : Valence, Portes-lès-Valence, Bourg-lès-Valence, Chabeuil, Romans-sur-Isère, Montélimar et la vallée du Rhône. Nos techniciens se déplacent aussi vers Lyon, Grenoble, Saint-Étienne et la France entière, avec un contrat unique et des comptes rendus au même format."
+          },
+          {
+            "question": "Quel délai pour une intervention à Valence ?",
+            "reponse": "Aucun chiffre d'affichage sur cette page. Nous tenons deux choses : le rappel dans l'heure aux horaires ouvrés et une qualification qui évite un aller-retour inutile. L'astreinte la nuit, le week-end et les jours fériés couvre en option la nuit, le week-end et les jours fériés."
+          },
+          {
+            "question": "Combien coûte un contrat de maintenance ?",
+            "reponse": "Zéro arrêt est chiffré sur devis, avec trois niveaux de couverture et un engagement type de 6 mois renouvelable. Sur un site saisonnier, le contrat peut prévoir un préventif renforcé avant campagne et un rythme allégé le reste de l'année. Le diagnostic de départ est gratuit, le périmètre s'écrit après état des lieux."
+          },
+          {
+            "question": "Pouvez-vous tenir un poste chez nous toute l'année ?",
+            "reponse": "La même personne suit vos machines saison après saison, et le remplacement est assuré en cas d'absence."
+          },
+          {
+            "question": "Faites-vous la maintenance CVC ou multitechnique de bâtiments ?",
+            "reponse": "Non. Le confort thermique et l'entretien de bâtiments tertiaires ne sont pas notre métier. Notre terrain est l'équipement de production industrielle : lignes, machines, convoyeurs et utilités de process, en préventif comme en curatif."
           }
         ]
       },
       {
         "type": "ctaFinal",
-        "bouton": "Faire chiffrer ma maintenance à Valence",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
         "question": "Besoin de passer la campagne sans dépendre d'une seule personne ?"
       }
     ]
-  }
+  },
+  "trous": [
+    {
+      "ligne": "Oui, avec l'offre résidence : un salarié Migen intégré à votre équipe et encadré par un référent, en poste sous 2 à 3 semaines.",
+      "pourquoi": "délai chiffré : seul « rappel dans l'heure » est autorisé (contrat de rédaction et passation du client). Délai « en poste sous 2 à 3 semaines ». Première phrase de la réponse à « Pouvez-vous tenir un poste chez nous toute l'année ? » (09 Questions), la suite reste."
+    }
+  ]
 }

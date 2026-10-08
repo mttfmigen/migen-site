@@ -1,0 +1,297 @@
+{
+ "_source": "Empreintes SHA-1 des octets servis par la maquette vivante (localhost:4352, voir.html) le 08/10, par section : photo du problème, photo de chaque carte de « 08 Références » dans l'ordre, logo de chaque tuile de la grille du secteur dans « 02 Logos ». Lues par verification-secteur.tsx.",
+ "/secteurs/agroalimentaire/": {
+  "logos": [
+   "f1f8c47d8910ddb211d6b3f08bb3dc3ae3724377",
+   "e18d28918c287d6e904a50b823230d6748499141",
+   "c0835c872bee38d4ec4823a0f5656eb496d9a522",
+   "ca053ceb782fa8461b6f742892f59ebe0b544c85",
+   "fa929ea2f20be3124b70dbf856d119155271479c",
+   "dbc7d81c89b67868b42592dcd3c18222d0b14f95"
+  ],
+  "probleme": [],
+  "references": [
+   "dce5eb7927bec147821aa1cc61bb69d180d44be1",
+   "57154b3d11c9fbaec49aca7e1b6ce074c8a36838",
+   "b9b05c380e3a6e433024f48dc9a55a164be424b0",
+   "4539bb3aab149b42fd425bff9af31c7fd2a64c35",
+   "a42de7b7039a6f8b7dd2b88f7fcb1cdf5d44e37d",
+   "ae7e2e509ed9cc140600226ab8a8d9bf596d5c37",
+   "57154b3d11c9fbaec49aca7e1b6ce074c8a36838"
+  ]
+ },
+ "/secteurs/aeronautique/": {
+  "logos": [
+   "ba3d0f60f3249c0a3037c85b435c713e85f41c28",
+   "1c38f340882ede72e7bbbd04fee58cdd7f74bbfb",
+   "2ecf05ce5fab4eda0d1b8c14876902b58f1a6406",
+   "f212bf5ffad27950e62e30d4b6c53a26621d894f",
+   "2811f129380419d9e0fc0ce41042188d1e5779c3",
+   "cbf915e2d44ac42f939d0413997e4651361a3412",
+   "b8d88cac2dca75d744e4cd08f5ed012cf515b326",
+   "38db25864ae47116dff7cc51c5b735cdcbe7c10c",
+   "22ba2fbb33995092d5a5cfdf0c91bd919d268666",
+   "0c866c0ea910505a740a98b0ddfaa1b0f72b854e",
+   "f63f064678f63d59cb84ff6a1b2cfa02962c4d7c"
+  ],
+  "probleme": [
+   "72ed19a8cca9bf516abf1e62a8fadf68d6e5050c"
+  ],
+  "references": [
+   "1994ab784032625cb615976138bf4e7d77f9cbe4",
+   "57154b3d11c9fbaec49aca7e1b6ce074c8a36838",
+   "0acf6cb973cb9685bc046dd7f5116d7b38ae4b60",
+   "4539bb3aab149b42fd425bff9af31c7fd2a64c35",
+   "94c7f2bfced47f9f47c49daea211bac1efc0bc59",
+   "4539bb3aab149b42fd425bff9af31c7fd2a64c35",
+   "3e86e020562c22e2263af3243ea5adcc607d4523",
+   "dc0942249387d71c48010ace2f9428d70b6bd85e"
+  ]
+ },
+ "/secteurs/automobile/": {
+  "logos": [
+   "6bbaa664c32549026bcca5970c1f0f0616028735",
+   "ea82d4889e4b5f65702f4b24938d2bf2958447a6",
+   "13e637a9f91acad1f714c479bf856ea411c3e510",
+   "a72b586b8a1fcfaf59c69d3faf30a325f78b21e1",
+   "1dd9c9b372f7c9e8cab7b1f4c0402c786938274a",
+   "a9a329009e288f9f9d7b3f66467def05ba62f4ba",
+   "70f7c77d3653222d8b834def1860551ceb317d46",
+   "f5c38f29889bf9dcd15ab9847bbb848f79d99126"
+  ],
+  "probleme": [],
+  "references": [
+   "3d41a0e779d783baefaefabbc8fb1f9899c50b1c",
+   "57154b3d11c9fbaec49aca7e1b6ce074c8a36838",
+   "08aa263be8ca65b6cd911d9a9c9935e801e0ac6d",
+   "4539bb3aab149b42fd425bff9af31c7fd2a64c35",
+   "d72a5209d0170ed5759cfc47fa5d2fbc536a734b",
+   "dc0942249387d71c48010ace2f9428d70b6bd85e",
+   "72ed19a8cca9bf516abf1e62a8fadf68d6e5050c"
+  ]
+ },
+ "/secteurs/chimie/": {
+  "logos": [
+   "ba3d0f60f3249c0a3037c85b435c713e85f41c28",
+   "1c38f340882ede72e7bbbd04fee58cdd7f74bbfb",
+   "2ecf05ce5fab4eda0d1b8c14876902b58f1a6406",
+   "f212bf5ffad27950e62e30d4b6c53a26621d894f",
+   "2811f129380419d9e0fc0ce41042188d1e5779c3",
+   "cbf915e2d44ac42f939d0413997e4651361a3412",
+   "b8d88cac2dca75d744e4cd08f5ed012cf515b326",
+   "38db25864ae47116dff7cc51c5b735cdcbe7c10c",
+   "22ba2fbb33995092d5a5cfdf0c91bd919d268666",
+   "0c866c0ea910505a740a98b0ddfaa1b0f72b854e",
+   "f63f064678f63d59cb84ff6a1b2cfa02962c4d7c"
+  ],
+  "probleme": [],
+  "references": [
+   "72ed19a8cca9bf516abf1e62a8fadf68d6e5050c",
+   "57154b3d11c9fbaec49aca7e1b6ce074c8a36838",
+   "3e86e020562c22e2263af3243ea5adcc607d4523",
+   "4539bb3aab149b42fd425bff9af31c7fd2a64c35",
+   "bf5ab628db5a63dc42a9d84294ddb9dd4bff0614",
+   "3e86e020562c22e2263af3243ea5adcc607d4523",
+   "9f95f9c7420bcaa046f98284ce331e74cc709936",
+   "dc0942249387d71c48010ace2f9428d70b6bd85e"
+  ]
+ },
+ "/secteurs/industrie-lourde/": {
+  "logos": [
+   "ba3d0f60f3249c0a3037c85b435c713e85f41c28",
+   "1c38f340882ede72e7bbbd04fee58cdd7f74bbfb",
+   "2ecf05ce5fab4eda0d1b8c14876902b58f1a6406",
+   "f212bf5ffad27950e62e30d4b6c53a26621d894f",
+   "2811f129380419d9e0fc0ce41042188d1e5779c3",
+   "cbf915e2d44ac42f939d0413997e4651361a3412",
+   "b8d88cac2dca75d744e4cd08f5ed012cf515b326",
+   "38db25864ae47116dff7cc51c5b735cdcbe7c10c",
+   "22ba2fbb33995092d5a5cfdf0c91bd919d268666",
+   "0c866c0ea910505a740a98b0ddfaa1b0f72b854e",
+   "f63f064678f63d59cb84ff6a1b2cfa02962c4d7c"
+  ],
+  "probleme": [],
+  "references": [
+   "bf5ab628db5a63dc42a9d84294ddb9dd4bff0614",
+   "57154b3d11c9fbaec49aca7e1b6ce074c8a36838",
+   "0755ffd4dd705f37130a9b9ae35f41f02a1f26ff",
+   "4539bb3aab149b42fd425bff9af31c7fd2a64c35",
+   "a42de7b7039a6f8b7dd2b88f7fcb1cdf5d44e37d",
+   "dc0942249387d71c48010ace2f9428d70b6bd85e",
+   "57154b3d11c9fbaec49aca7e1b6ce074c8a36838",
+   "dc0942249387d71c48010ace2f9428d70b6bd85e"
+  ]
+ },
+ "/secteurs/industrie-metallique/": {
+  "logos": [
+   "ba3d0f60f3249c0a3037c85b435c713e85f41c28",
+   "1c38f340882ede72e7bbbd04fee58cdd7f74bbfb",
+   "2ecf05ce5fab4eda0d1b8c14876902b58f1a6406",
+   "f212bf5ffad27950e62e30d4b6c53a26621d894f",
+   "2811f129380419d9e0fc0ce41042188d1e5779c3",
+   "cbf915e2d44ac42f939d0413997e4651361a3412",
+   "b8d88cac2dca75d744e4cd08f5ed012cf515b326",
+   "38db25864ae47116dff7cc51c5b735cdcbe7c10c",
+   "22ba2fbb33995092d5a5cfdf0c91bd919d268666",
+   "0c866c0ea910505a740a98b0ddfaa1b0f72b854e",
+   "f63f064678f63d59cb84ff6a1b2cfa02962c4d7c"
+  ],
+  "probleme": [],
+  "references": [
+   "bf5ab628db5a63dc42a9d84294ddb9dd4bff0614",
+   "57154b3d11c9fbaec49aca7e1b6ce074c8a36838",
+   "0755ffd4dd705f37130a9b9ae35f41f02a1f26ff",
+   "4539bb3aab149b42fd425bff9af31c7fd2a64c35",
+   "a42de7b7039a6f8b7dd2b88f7fcb1cdf5d44e37d",
+   "dc0942249387d71c48010ace2f9428d70b6bd85e",
+   "4539bb3aab149b42fd425bff9af31c7fd2a64c35",
+   "ae7e2e509ed9cc140600226ab8a8d9bf596d5c37"
+  ]
+ },
+ "/secteurs/logistique/": {
+  "logos": [
+   "1fc630f5ebf7e898d759a9d6d3126ea8e2047dd5",
+   "b6d96f8d65a99cd4c476a0a492e7a380c84a1e9a",
+   "1b73750ed11592360a8d33c493c7888ac85cd173",
+   "3ccbd1d15da4e62d9d2759d2cb2c215d1c714091",
+   "8a7abfb6b61233814b069fb4f31958fd781cb156",
+   "eacb75c18ab704aefc91137bc35f945e8a714e4f",
+   "f3a11e9f1ded8f867880b01fbaca1df5e4396bd0",
+   "3a78301d8406304baff3aa8476f1d03dd4f5230f",
+   "a88bc5dc0848fe2fdd7bb2b192b5862646b6bd41",
+   "490c9de8fdf8d2b299a26ca54cfd137eb7611c5c"
+  ],
+  "probleme": [],
+  "references": [
+   "db074df40fe66daf56bb3c4b7e98151c84ac12d7",
+   "57154b3d11c9fbaec49aca7e1b6ce074c8a36838",
+   "932f868ed272164c2721f8e85e1ac75be38380a5",
+   "4539bb3aab149b42fd425bff9af31c7fd2a64c35",
+   "2cd2805972a3370e0ce6416b47ee17d0314be654",
+   "dc0942249387d71c48010ace2f9428d70b6bd85e"
+  ]
+ },
+ "/secteurs/logistique/maintenance-convoyeur/": {
+  "logos": [
+   "1fc630f5ebf7e898d759a9d6d3126ea8e2047dd5",
+   "b6d96f8d65a99cd4c476a0a492e7a380c84a1e9a",
+   "1b73750ed11592360a8d33c493c7888ac85cd173",
+   "3ccbd1d15da4e62d9d2759d2cb2c215d1c714091",
+   "8a7abfb6b61233814b069fb4f31958fd781cb156",
+   "eacb75c18ab704aefc91137bc35f945e8a714e4f",
+   "f3a11e9f1ded8f867880b01fbaca1df5e4396bd0",
+   "3a78301d8406304baff3aa8476f1d03dd4f5230f",
+   "a88bc5dc0848fe2fdd7bb2b192b5862646b6bd41",
+   "490c9de8fdf8d2b299a26ca54cfd137eb7611c5c"
+  ],
+  "probleme": [
+   "72ed19a8cca9bf516abf1e62a8fadf68d6e5050c"
+  ],
+  "references": [
+   "db074df40fe66daf56bb3c4b7e98151c84ac12d7",
+   "57154b3d11c9fbaec49aca7e1b6ce074c8a36838",
+   "932f868ed272164c2721f8e85e1ac75be38380a5",
+   "4539bb3aab149b42fd425bff9af31c7fd2a64c35",
+   "2cd2805972a3370e0ce6416b47ee17d0314be654",
+   "ae7e2e509ed9cc140600226ab8a8d9bf596d5c37",
+   "57154b3d11c9fbaec49aca7e1b6ce074c8a36838"
+  ]
+ },
+ "/secteurs/logistique/peak-season/": {
+  "logos": [
+   "1fc630f5ebf7e898d759a9d6d3126ea8e2047dd5",
+   "b6d96f8d65a99cd4c476a0a492e7a380c84a1e9a",
+   "1b73750ed11592360a8d33c493c7888ac85cd173",
+   "3ccbd1d15da4e62d9d2759d2cb2c215d1c714091",
+   "8a7abfb6b61233814b069fb4f31958fd781cb156",
+   "eacb75c18ab704aefc91137bc35f945e8a714e4f",
+   "f3a11e9f1ded8f867880b01fbaca1df5e4396bd0",
+   "3a78301d8406304baff3aa8476f1d03dd4f5230f",
+   "a88bc5dc0848fe2fdd7bb2b192b5862646b6bd41",
+   "490c9de8fdf8d2b299a26ca54cfd137eb7611c5c"
+  ],
+  "probleme": [],
+  "references": [
+   "db074df40fe66daf56bb3c4b7e98151c84ac12d7",
+   "57154b3d11c9fbaec49aca7e1b6ce074c8a36838",
+   "932f868ed272164c2721f8e85e1ac75be38380a5",
+   "4539bb3aab149b42fd425bff9af31c7fd2a64c35",
+   "2cd2805972a3370e0ce6416b47ee17d0314be654",
+   "57154b3d11c9fbaec49aca7e1b6ce074c8a36838"
+  ]
+ },
+ "/secteurs/menuiserie-industrielle/": {
+  "logos": [
+   "ad143b08ee2e8a296f4e59288c7c66c98a0c8218",
+   "cbf915e2d44ac42f939d0413997e4651361a3412",
+   "b8d88cac2dca75d744e4cd08f5ed012cf515b326",
+   "38db25864ae47116dff7cc51c5b735cdcbe7c10c",
+   "0c866c0ea910505a740a98b0ddfaa1b0f72b854e"
+  ],
+  "probleme": [
+   "72ed19a8cca9bf516abf1e62a8fadf68d6e5050c"
+  ],
+  "references": [
+   "dce5eb7927bec147821aa1cc61bb69d180d44be1",
+   "57154b3d11c9fbaec49aca7e1b6ce074c8a36838",
+   "94c7f2bfced47f9f47c49daea211bac1efc0bc59",
+   "4539bb3aab149b42fd425bff9af31c7fd2a64c35",
+   "db074df40fe66daf56bb3c4b7e98151c84ac12d7",
+   "9f95f9c7420bcaa046f98284ce331e74cc709936",
+   "3e86e020562c22e2263af3243ea5adcc607d4523",
+   "72ed19a8cca9bf516abf1e62a8fadf68d6e5050c"
+  ]
+ },
+ "/secteurs/nucleaire/": {
+  "logos": [
+   "ba3d0f60f3249c0a3037c85b435c713e85f41c28",
+   "1c38f340882ede72e7bbbd04fee58cdd7f74bbfb",
+   "2ecf05ce5fab4eda0d1b8c14876902b58f1a6406",
+   "f212bf5ffad27950e62e30d4b6c53a26621d894f",
+   "2811f129380419d9e0fc0ce41042188d1e5779c3",
+   "cbf915e2d44ac42f939d0413997e4651361a3412",
+   "b8d88cac2dca75d744e4cd08f5ed012cf515b326",
+   "38db25864ae47116dff7cc51c5b735cdcbe7c10c",
+   "22ba2fbb33995092d5a5cfdf0c91bd919d268666",
+   "0c866c0ea910505a740a98b0ddfaa1b0f72b854e",
+   "f63f064678f63d59cb84ff6a1b2cfa02962c4d7c"
+  ],
+  "probleme": [],
+  "references": [
+   "dce5eb7927bec147821aa1cc61bb69d180d44be1",
+   "57154b3d11c9fbaec49aca7e1b6ce074c8a36838",
+   "94c7f2bfced47f9f47c49daea211bac1efc0bc59",
+   "4539bb3aab149b42fd425bff9af31c7fd2a64c35",
+   "db074df40fe66daf56bb3c4b7e98151c84ac12d7",
+   "204e4f593cbe54b74da041a3daec96e6bbf3d7c2",
+   "72ed19a8cca9bf516abf1e62a8fadf68d6e5050c",
+   "ae7e2e509ed9cc140600226ab8a8d9bf596d5c37"
+  ]
+ },
+ "/secteurs/pharmaceutique/": {
+  "logos": [
+   "ba3d0f60f3249c0a3037c85b435c713e85f41c28",
+   "1c38f340882ede72e7bbbd04fee58cdd7f74bbfb",
+   "2ecf05ce5fab4eda0d1b8c14876902b58f1a6406",
+   "f212bf5ffad27950e62e30d4b6c53a26621d894f",
+   "2811f129380419d9e0fc0ce41042188d1e5779c3",
+   "cbf915e2d44ac42f939d0413997e4651361a3412",
+   "b8d88cac2dca75d744e4cd08f5ed012cf515b326",
+   "38db25864ae47116dff7cc51c5b735cdcbe7c10c",
+   "22ba2fbb33995092d5a5cfdf0c91bd919d268666",
+   "0c866c0ea910505a740a98b0ddfaa1b0f72b854e",
+   "f63f064678f63d59cb84ff6a1b2cfa02962c4d7c"
+  ],
+  "probleme": [],
+  "references": [
+   "dce5eb7927bec147821aa1cc61bb69d180d44be1",
+   "57154b3d11c9fbaec49aca7e1b6ce074c8a36838",
+   "94c7f2bfced47f9f47c49daea211bac1efc0bc59",
+   "4539bb3aab149b42fd425bff9af31c7fd2a64c35",
+   "0ffdc76af70371b3dc3ee3349b956d31ffc7bb87",
+   "72ed19a8cca9bf516abf1e62a8fadf68d6e5050c",
+   "9f95f9c7420bcaa046f98284ce331e74cc709936",
+   "204e4f593cbe54b74da041a3daec96e6bbf3d7c2"
+  ]
+ }
+}

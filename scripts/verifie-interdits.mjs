@@ -4,11 +4,12 @@
  *   node scripts/verifie-interdits.mjs
  *
  * POURQUOI CE CONTRÔLE EXISTE. Chaque gabarit porte déjà sa propre liste
- * d'interdits, appliquée au HTML qu'il rend. Ces listes ont laissé passer cinq
- * fois « +200 clients », parce qu'aucune ne cherchait un CHIFFRE : elles
- * cherchaient des mots. Le compte réel est « plus de 120 clients, dont plus de
- * 80 réguliers », et le faux chiffre était rendu dans l'en-tête, le héros, la
- * bande de logos, la frise et la bande de chiffres.
+ * d'interdits, appliquée au HTML qu'il rend. Ces listes cherchaient des mots,
+ * jamais un CHIFFRE, et un compte de clients faux est passé dans l'en-tête, le
+ * héros, la bande de logos, la frise et la bande de chiffres. Le compte validé
+ * par le client est « +200 clients », sans jamais préciser « réguliers » : ce
+ * sont donc « clients réguliers » et « dont plus de 80 réguliers » qui sont
+ * cherchés ici.
  *
  * Ce contrôle-ci ne rend rien : il lit la SOURCE. C'est ce qui lui permet de
  * voir la copie des composants qu'aucun contrôle de rendu ne monte, et c'est
@@ -28,8 +29,11 @@ const RACINE = fileURLToPath(new URL("..", import.meta.url));
 /** Chaque interdit, avec ce qu'il faut écrire à la place. */
 const INTERDITS = [
   // Chiffres faux ou interdits.
-  ["+200", "le compte tenu est « plus de 120 clients, dont plus de 80 réguliers »"],
-  ["200 clients", "« plus de 120 clients, dont plus de 80 réguliers »"],
+  // Règle validée par le client (passation, README) : « +200 clients, sans
+  // jamais préciser « réguliers » ». « +200 » est donc juste ; c'est l'ancien
+  // compte, « dont plus de 80 réguliers », qui est faux deux fois.
+  [/\bclients\s+r[ée]guliers\b/u, "« +200 clients », sans jamais préciser « réguliers »"],
+  [/\b80\s+r[ée]guliers\b/u, "« +200 clients », sans jamais préciser « réguliers »"],
   ["5 agences", "quatre agences : Lyon siège, Montréal, Dubaï, Madrid"],
   ["Cinq agences", "quatre agences"],
   ["cinq agences", "quatre agences"],

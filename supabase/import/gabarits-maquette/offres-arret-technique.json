@@ -22,7 +22,7 @@
       },
       {
         "valeur": "10 %",
-        "libelle": "Des candidats retenus. Sur un arrêt, chaque heure de technicien compte double"
+        "libelle": "Des techniciens retenus. Sur un arrêt, chaque heure de technicien compte double"
       },
       {
         "valeur": "en continu et tous les jours",
@@ -164,46 +164,62 @@
             "titre": "Renfort de l'équipe maintenance pendant l'arrêt estival",
             "texte": "un technicien intégré, été 2025",
             "lienLibelle": "Étude de cas OGF : arrêt estival",
-            "lienHref": "/preuves/ogf-arret-estival/"
+            "lienHref": "/preuves/ogf-arret-estival/",
+            "photo": "/assets/web/x-tech-portrait.jpg",
+            "logo": "/assets/clients/ogf.png"
           },
           {
             "titre": "Six techniciens sur l'installation et la mise en production d'un parc machine neuf, automobile",
             "texte": "janvier 2023",
             "lienLibelle": "Étude de cas EATON : mise en production",
-            "lienHref": "/preuves/eaton-mise-en-production/"
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "logo": "/assets/clients/mq-70bce765c1a2.svg"
           },
           {
             "titre": "Montage et déplacement de machines en missions ciblées, étanchéité et isolation",
             "texte": "sur l'année 2025",
             "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
-            "lienHref": "/preuves/soprema/"
+            "lienHref": "/preuves/soprema/",
+            "photo": "/assets/web/x-elec-cablage.jpg",
+            "logo": "/assets/clients/mq-127f9e03c53b.svg"
           },
           {
             "titre": "Trois techniciens spécialisés sur un chantier photovoltaïque de plus de six semaines",
             "texte": "septembre à novembre 2024",
             "lienLibelle": "Étude de cas EIFFAGE : partenariat",
-            "lienHref": "/preuves/eiffage/"
+            "lienHref": "/preuves/eiffage/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "logo": "/assets/clients/mq-21daf7c60970.svg"
           },
           {
             "titre": "Trois à cinq techniciens déployés pour accompagner une montée en cadence multi-usines, automobile",
             "texte": "depuis septembre 2024",
             "lienLibelle": "Étude de cas VALEO : plusieurs usines",
-            "lienHref": "/preuves/valeo-usines/"
+            "lienHref": "/preuves/valeo-usines/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg",
+            "logo": "/assets/clients/mq-f6fcccfd4cc8.svg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
-            "lienHref": "/preuves/amazon-centre-logistique/"
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
-            "lienHref": "/preuves/amazon-nouveau-site/"
+            "lienHref": "/preuves/amazon-nouveau-site/",
+            "photo": "/assets/web/mq-0699d4d92e7e.jpg",
+            "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
-            "lienHref": "/preuves/danone-lignes-de-production/"
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/mq-0699d4d92e7e.jpg",
+            "logo": "/assets/clients/danone-bledina.png"
           }
         ]
       },
@@ -212,7 +228,7 @@
         "questions": [
           {
             "question": "Combien coûte la prise en charge d'un arrêt technique ?",
-            "reponse": ""
+            "reponse": "Le chiffrage sort du programme de travaux réel, pas d'un forfait au jugé : nombre de techniciens par métier, durée, encadrement, moyens. Quand plusieurs organisations sont possibles, nous proposons la plus économique. Les travaux découverts en cours d'arrêt font l'objet d'un chiffrage et d'un arbitrage avec vous, jamais d'une facture surprise."
           },
           {
             "question": "Faut-il s'engager au-delà de l'arrêt ?",
@@ -228,7 +244,7 @@
           },
           {
             "question": "Qui compose les équipes ?",
-            "reponse": "Des techniciens salariés de Migen, évalués en entretien technique et comportemental, 10 % des candidats retenus. Nous fournissons l'encadrement de chantier avec eux. Sur un arrêt, où chaque heure compte, la différence entre un technicien moyen et un excellent technicien se lit directement sur le planning."
+            "reponse": "Des techniciens salariés de Migen, évalués en entretien technique et comportemental, 10 % des techniciens retenus. Nous fournissons l'encadrement de chantier avec eux. Sur un arrêt, où chaque heure compte, la différence entre un technicien moyen et un excellent technicien se lit directement sur le planning."
           },
           {
             "question": "Pouvez-vous mobiliser partout en France ?",

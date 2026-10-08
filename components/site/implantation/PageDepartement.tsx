@@ -6,6 +6,11 @@ import type { ContenuDepartement } from "@/types/implantation";
 import type { ContenuSecteur } from "@/types/secteur";
 
 /**
+ * HORS SERVICE DEPUIS LE 08/10 : les 8 pages de département sont rendues par
+ * `PageVille`, leur capture ayant les 17 écrans d'une ville. La route ne
+ * l'importe plus : seul `verification-implantation.tsx` le monte encore. À
+ * supprimer avec lui et `ContenuDepartement` (types/implantation.ts).
+ *
  * Gabarit DÉPARTEMENT, bloc `sc-if value="{{ isDept }}"` de
  * `maquette/accueil-rendu.html`, lignes 6365 à 6433. Il sert les huit pages de
  * département et de région de `/implantations/`.

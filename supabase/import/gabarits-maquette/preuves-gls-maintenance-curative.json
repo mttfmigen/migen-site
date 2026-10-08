@@ -18,6 +18,8 @@
         "valeur": "Convoyeurs, trieurs, systèmes de packaging automatisés"
       }
     ],
+    "logo": "/assets/clients/mq-09708b77564e.svg",
+    "photoHero": "/assets/web/mq-d50c84e228cb.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -128,6 +130,7 @@
         "valeur": "Suivi de prestation assuré par Migen"
       }
     ],
+    "photoDispositif": "/assets/web/mq-339d39e2a674.jpg",
     "resultats": [
       {
         "titre": "Des temps d'arrêt réduits",
@@ -167,7 +170,7 @@
         "texte": "Disponible en option pour les sites en horaires décalés, par téléphone."
       },
       {
-        "titre": "10 % des candidats retenus",
+        "titre": "10 % des techniciens retenus",
         "texte": "Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, robotique."
       },
       {
@@ -179,22 +182,26 @@
       {
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
-        "href": "/preuves/"
+        "href": "/preuves/",
+        "photo": "/assets/web/mq-948c28bcda08.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
-        "href": "/secteurs/logistique/"
+        "href": "/secteurs/logistique/",
+        "photo": "/assets/web/mq-17e2f3bce95f.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "VEEPEE : sites de Lyon",
-        "href": "/preuves/veepee-sites-lyon/"
+        "href": "/preuves/veepee-sites-lyon/",
+        "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
-        "href": "/preuves/savoye/"
+        "href": "/preuves/savoye/",
+        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
       }
     ]
   }

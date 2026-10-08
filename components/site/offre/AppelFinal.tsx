@@ -15,14 +15,10 @@ import PanneauFormulaire from "./PanneauFormulaire";
  * bouton du corpus (« Demander un profil pour mon site ») ; ils ne sont donc
  * pas rendus ici.
  *
- * ÉCARTS À LA CAPTURE, hérités du composant partagé `FormulaireContact` via
- * `PanneauFormulaire` (où ils sont détaillés) :
- *
- *   1. ÉCART CONSERVÉ, À FAIRE ARBITRER PAR MEHDI : bouton d'envoi « On me
- *      rappelle dans l'heure » au lieu du « Parler à un chargé d'affaires »
- *      de la capture.
- *   2. ÉCART ASSUMÉ (RGPD articles 13 et 14) : mention de traitement des
- *      données sous le formulaire, absente de la capture.
+ * ÉCART À LA CAPTURE, hérité du composant partagé `FormulaireContact` via
+ * `PanneauFormulaire` (où il est détaillé) : ÉCART ASSUMÉ (RGPD articles 13
+ * et 14), mention de traitement des données sous le formulaire, absente de la
+ * capture. Le bouton d'envoi répète le titre du panneau, comme la capture.
  */
 
 export interface ProprietesAppelFinal {
@@ -77,7 +73,7 @@ const TEXTE: CSSProperties = {
 export default function AppelFinal({
   question,
   formulaire,
-  bouton = "Parler à un chargé d’affaires",
+  bouton = "Parler à un chargé d'affaires",
 }: ProprietesAppelFinal) {
   return (
     <section style={{ padding: "var(--sec) 24px var(--sec)" }}>

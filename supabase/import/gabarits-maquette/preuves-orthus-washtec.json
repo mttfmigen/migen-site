@@ -9,6 +9,8 @@
       "Orthus, filiale du groupe Migen, assure le montage complet de ces portiques sur l'ensemble du territoire français, du transport à l'assemblage final."
     ],
     "bouton": "Confier l'installation de mes équipements",
+    "logo": "/assets/clients/orthus-x-washtec.svg",
+    "photoHero": "/assets/web/mq-f0a164798e50.jpg",
     "chiffres": [
       {
         "libelle": "Intervenant",
@@ -127,6 +129,7 @@
         "valeur": "Nationale, coordination centralisée"
       }
     ],
+    "photoDispositif": "/assets/web/mq-056f3c250981.jpg",
     "resultats": [
       {
         "titre": "Les portiques sont montés partout en France",
@@ -181,22 +184,26 @@
       {
         "surtitre": "Étude de cas",
         "titre": "AMAZON ORY4 : le préventif de masse",
-        "href": "/preuves/amazon-centre-logistique/"
+        "href": "/preuves/amazon-centre-logistique/",
+        "photo": "/assets/web/mq-948c28bcda08.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
-        "href": "/preuves/dimomaint/"
+        "href": "/preuves/dimomaint/",
+        "photo": "/assets/web/mq-17e2f3bce95f.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
-        "href": "/preuves/eiffage/"
+        "href": "/preuves/eiffage/",
+        "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
-        "href": "/preuves/savoye/"
+        "href": "/preuves/savoye/",
+        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
       }
     ]
   }

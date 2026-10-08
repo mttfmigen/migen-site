@@ -8,9 +8,9 @@
  * exécution et refuse la moindre divergence.
  *
  * LES CHEMINS DE LOGO viennent de `public/assets/fab/brands.json`, déposé avec
- * les fichiers. Six des soixante-sept images manquent encore du dépôt, et deux
- * autres portent le logo d'une tout autre société (voir `LOGOS_ECARTES`) : ces
- * huit constructeurs portent `logo: null` et la tuile rend alors leur nom en
+ * les fichiers. Deux images portent le logo d'une tout autre société (voir
+ * `LOGOS_ECARTES`, et le colis du 08/10 porte les mêmes) : ces deux
+ * constructeurs portent `logo: null` et la tuile rend alors leur nom en
  * texte. Rien n'est remplacé par le logo d'un autre, et rien n'est inventé.
  * Le jour où un fichier arrive, le contrôle échoue et réclame son chemin :
  * c'est voulu.
@@ -19,10 +19,9 @@
  * (ABB Robotics, Amada, Billion, Coperion, Davis-Standard, Haas, Hurco) :
  * octets identiques à la source, en-tête conforme à l'extension, et chacune
  * ouverte à l'œil pour vérifier qu'elle porte bien la marque annoncée.
- * Les SIX dernières (Leroy-Somer, Yaskawa, Wittmann, Sidel, TGW, Seepex)
- * existent dans la même maquette, sous les noms que `brands.json` déclare
- * déjà : elles n'ont pas été rapatriées parce que la demande ne portait que
- * sur les sept ci-dessus. Écart signalé, pas tranché.
+ * Le 08/10, les six dernières (Leroy-Somer, Yaskawa, Wittmann, Sidel, TGW,
+ * Seepex) ont été rapatriées du colis de passation, sous les noms que
+ * `brands.json` déclare, et ouvertes à l'œil de la même façon.
  */
 
 export interface Marque {
@@ -71,7 +70,7 @@ export const FAMILLES: readonly FamilleMarques[] = [
       { nom: "Omron", logo: "/assets/fab/omron.svg" },
       { nom: "B&R", logo: "/assets/fab/bandr.svg" },
       { nom: "ABB", logo: "/assets/fab/abb.svg" },
-      { nom: "Leroy-Somer", logo: null },
+      { nom: "Leroy-Somer", logo: "/assets/fab/leroy-somer.png" },
       { nom: "SEW-Eurodrive", logo: "/assets/fab/sew-eurodrive.svg" },
       { nom: "NORD", logo: "/assets/fab/nord.svg" },
     ],
@@ -83,7 +82,7 @@ export const FAMILLES: readonly FamilleMarques[] = [
       { nom: "Fanuc", logo: "/assets/fab/fanuc.png" },
       { nom: "KUKA", logo: "/assets/fab/kuka.svg" },
       { nom: "ABB Robotics", logo: "/assets/fab/abb-robotics.webp" },
-      { nom: "Yaskawa", logo: null },
+      { nom: "Yaskawa", logo: "/assets/fab/yaskawa.png" },
       { nom: "Kawasaki Robotics", logo: "/assets/fab/kawasaki-robotics.svg" },
       { nom: "Stäubli", logo: "/assets/fab/staubli.svg" },
       { nom: "Universal Robots", logo: "/assets/fab/universal-robots.svg" },
@@ -116,7 +115,7 @@ export const FAMILLES: readonly FamilleMarques[] = [
       { nom: "KraussMaffei", logo: "/assets/fab/kraussmaffei.svg" },
       { nom: "Sumitomo Demag", logo: "/assets/fab/sumitomo-demag.svg" },
       { nom: "Haitian", logo: "/assets/fab/haitian.svg" },
-      { nom: "Wittmann", logo: null },
+      { nom: "Wittmann", logo: "/assets/fab/wittmann.png" },
       { nom: "Billion", logo: "/assets/fab/billion.png" },
       { nom: "Reifenhäuser", logo: "/assets/fab/reifenhauser.svg" },
       { nom: "Davis-Standard", logo: "/assets/fab/davis-standard.png" },
@@ -131,7 +130,7 @@ export const FAMILLES: readonly FamilleMarques[] = [
       { nom: "Tetra Pak", logo: "/assets/fab/tetra-pak.svg" },
       { nom: "Krones", logo: "/assets/fab/krones.svg" },
       { nom: "KHS", logo: "/assets/fab/khs.svg" },
-      { nom: "Sidel", logo: null },
+      { nom: "Sidel", logo: "/assets/fab/sidel.png" },
       { nom: "Serac", logo: "/assets/fab/serac.svg" },
       { nom: "GEA", logo: "/assets/fab/gea.svg" },
       { nom: "Alfa Laval", logo: "/assets/fab/alfa-laval.svg" },
@@ -148,7 +147,7 @@ export const FAMILLES: readonly FamilleMarques[] = [
       { nom: "Savoye", logo: "/assets/fab/savoye.jpg" },
       { nom: "Vanderlande", logo: "/assets/fab/vanderlande.svg" },
       { nom: "KNAPP", logo: "/assets/fab/knapp.svg" },
-      { nom: "TGW", logo: null },
+      { nom: "TGW", logo: "/assets/fab/tgw.png" },
       { nom: "SSI Schäfer", logo: "/assets/fab/ssi-schafer.svg" },
       { nom: "Mecalux", logo: "/assets/fab/mecalux.svg" },
       { nom: "STILL", logo: "/assets/fab/still.svg" },
@@ -166,7 +165,7 @@ export const FAMILLES: readonly FamilleMarques[] = [
       { nom: "KSB", logo: "/assets/fab/ksb.svg" },
       { nom: "Flowserve", logo: "/assets/fab/flowserve.svg" },
       { nom: "Sulzer", logo: "/assets/fab/sulzer.svg" },
-      { nom: "Seepex", logo: null },
+      { nom: "Seepex", logo: "/assets/fab/seepex.png" },
     ],
   },
 ];

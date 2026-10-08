@@ -74,7 +74,7 @@ export default function GarantiesOffre({ section }: ProprietesGarantiesOffre) {
           </div>
           <h2 style={TITRE}>Ce que nous garantissons</h2>
           <div
-            className="mg-r2"
+            className="g3-2 mg-r2"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(2,minmax(0,1fr))",

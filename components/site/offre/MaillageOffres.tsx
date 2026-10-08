@@ -30,7 +30,7 @@ interface CarteMaillage {
   titre: string;
   phrase: string;
   lien: string;
-  /** Absente pour « Full service » : la maquette la rend en carte sombre pleine. */
+  /** Sans photo, la carte se rend en carte sombre pleine. */
   photo?: string;
 }
 
@@ -42,14 +42,16 @@ const CARTES_GABARIT: Readonly<Record<string, CarteMaillage>> = {
   // elle que la porte G17 réclamait sous « CONTRAT UNIQUE » et
   // « migen© Full service » sur cinq pages.
   //
-  // SANS PHOTO, et ce n'est pas un oubli : photographiée dans la maquette,
-  // c'est une carte sombre pleine, la seule des six.
+  // La photo de la carte, absente de la maquette au 07/10 (carte sombre
+  // pleine), y est désormais : relevée le 08/10 sur la maquette qui tourne
+  // (fond de la carte, `assets/web/sv-duo-impact.jpg`, sur les six pages).
   "/offres/full-service/": {
     etiquette: "Contrat unique",
     titre: "migen© Full service",
     phrase:
       "Toute votre maintenance dans un seul contrat : préventif, dépannage, pièces et GMAO, un seul interlocuteur.",
     lien: "Voir l’offre",
+    photo: "/assets/web/sv-duo-impact.jpg",
   },
   "/offres/zero-arret/": {
     etiquette: "Abonnement",
@@ -174,7 +176,7 @@ export default function MaillageOffres({ cartes }: ProprietesMaillageOffres) {
           Nos autres offres
         </div>
         <h2 style={TITRE}>Un autre besoin ? Il a son offre.</h2>
-        <div className="mg-rmulti" style={GRILLE}>
+        <div className="g3-bento5 mg-rmulti" style={GRILLE}>
           {retenues.map(({ href, gabarit }) => (
             <Link
               key={href}
@@ -199,21 +201,28 @@ export default function MaillageOffres({ cartes }: ProprietesMaillageOffres) {
                 </>
               ) : null}
               <div style={CONTENU}>
-                <span style={ETIQUETTE}>{gabarit.etiquette}</span>
+                {/* Relevé de la maquette qui tourne (08/10) : titre à 20px/1.2,
+                    chaque texte interpolé dans sa propre balise, la flèche
+                    hors du libellé. */}
+                <span style={ETIQUETTE}>
+                  <span>{gabarit.etiquette}</span>
+                </span>
                 <span
                   style={{
-                    font: "600 18px/1.2 var(--ft)",
+                    font: "600 20px/1.2 var(--ft)",
                     letterSpacing: "-.03em",
                     color: "#fff",
                   }}
                 >
-                  {gabarit.titre}
+                  <span>{gabarit.titre}</span>
                 </span>
-                <span style={PHRASE}>{gabarit.phrase}</span>
+                <span style={PHRASE}>
+                  <span>{gabarit.phrase}</span>
+                </span>
                 <span
                   style={{ marginTop: 6, font: "600 13px var(--fb)", color: "#fff" }}
                 >
-                  {gabarit.lien} →
+                  <span>{gabarit.lien}</span> →
                 </span>
               </div>
             </Link>

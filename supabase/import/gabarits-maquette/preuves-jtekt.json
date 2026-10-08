@@ -22,6 +22,8 @@
         "valeur": "Techniciens intégrés aux équipes de maintenance, présents au quotidien"
       }
     ],
+    "logo": "/assets/clients/mq-e93a6ad5abf7.svg",
+    "photoHero": "/assets/web/mq-2a8c78b5c75c.jpg",
     "chiffres": [
       {
         "libelle": "Nature des travaux",
@@ -132,6 +134,7 @@
         "valeur": "Techniciens intégrés aux équipes de maintenance"
       }
     ],
+    "photoDispositif": "/assets/web/mq-e6322efcd358.jpg",
     "resultats": [
       {
         "titre": "La fiabilité du parc machine progresse",
@@ -178,7 +181,7 @@
         "texte": "Proposée en option sur les parcs sensibles, par téléphone."
       },
       {
-        "titre": "10 % des candidats retenus",
+        "titre": "10 % des techniciens retenus",
         "texte": "Automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc, évalués avant affectation."
       }
     ],
@@ -186,22 +189,26 @@
       {
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
-        "href": "/preuves/"
+        "href": "/preuves/",
+        "photo": "/assets/web/mq-339d39e2a674.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
-        "href": "/offres/residence/"
+        "href": "/offres/residence/",
+        "photo": "/assets/web/mq-056f3c250981.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrie automobile",
-        "href": "/secteurs/automobile/"
+        "href": "/secteurs/automobile/",
+        "photo": "/assets/web/mq-948c28bcda08.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "AUTOLIV : maintien d'un site",
-        "href": "/preuves/autoliv/"
+        "href": "/preuves/autoliv/",
+        "photo": "/assets/web/mq-17e2f3bce95f.jpg"
       }
     ]
   }

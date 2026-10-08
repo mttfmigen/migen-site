@@ -15,7 +15,11 @@
    ],
    "chiffre": {
     "valeur": "10 %",
-    "texte": "des candidats retenus, après un test technique et un entretien"
+    "texte": "des techniciens retenus, après un test technique et un entretien"
+   },
+   "photo": {
+    "src": "/assets/web/mq-0699d4d92e7e.jpg",
+    "alt": "Technicien migen en intervention"
    }
   },
   "sections": [
@@ -28,7 +32,7 @@
      },
      {
       "valeur": "10 %",
-      "texte": "des candidats retenus après évaluation"
+      "texte": "des techniciens retenus après évaluation"
      },
      {
       "valeur": "4 agences",
@@ -222,7 +226,7 @@
      },
      {
       "titre": "Une sélection exigeante, assumée",
-      "texte": "Entretien technique et comportemental, 10 % des candidats retenus. Les talents attirent les talents : votre futur collègue a passé la même porte, et le niveau de qualité de l'équipe reste votre premier avantage au quotidien."
+      "texte": "Entretien technique et comportemental, 10 % des techniciens retenus. Les talents attirent les talents : votre futur collègue a passé la même porte, et le niveau de qualité de l'équipe reste votre premier avantage au quotidien."
      }
     ]
    },
@@ -265,11 +269,13 @@
     "items": [
      {
       "libelle": "Technicien de maintenance",
-      "href": "/carriere/technicien-de-maintenance/"
+      "href": "/carriere/technicien-de-maintenance/",
+      "photo": "/assets/web/mq-948c28bcda08.jpg"
      },
      {
       "libelle": "Formation technicien de maintenance",
-      "href": "/carriere/technicien-de-maintenance/formation/"
+      "href": "/carriere/technicien-de-maintenance/formation/",
+      "photo": "/assets/web/mq-17e2f3bce95f.jpg"
      }
     ]
    }

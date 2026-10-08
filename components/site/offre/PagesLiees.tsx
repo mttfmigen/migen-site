@@ -66,9 +66,11 @@ const TITRE: CSSProperties = {
 /* La capture écrit `color:var(--ink3)`, soit 4,23:1 sur le fond crème, sous le
    seuil de 4,5:1 de la WCAG 1.4.3. `--ink2` donne 5,02:1 et c'est l'encre
    grise que la charte porte déjà, même arbitrage que `cocon/ListeMaillage`. */
+/* Relevé de la maquette qui tourne (08/10) : `var(--ink3)`, contraste de la
+   maquette maintenu (arbitrage n° 7 de docs/PASSATION.md). */
 const COMPTE: CSSProperties = {
   font: "500 13.5px var(--fb)",
-  color: "var(--ink2)",
+  color: "var(--ink3)",
 };
 
 const GRILLE: CSSProperties = {
@@ -199,7 +201,9 @@ export default function PagesLiees({ pages, titre }: ProprietesPagesLiees) {
             </div>
             <h2 style={TITRE}>{titre}</h2>
           </div>
-          <span style={COMPTE}>{retenues.length} pages liées</span>
+          <span style={COMPTE}>
+            <span>{retenues.length} pages liées</span>
+          </span>
         </div>
 
         <div className="mg-r2" style={GRILLE}>

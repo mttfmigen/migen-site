@@ -37,6 +37,16 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
+  // PAS le repli automatique de next/font, et c'est mesuré le 08/10 : il pose
+  // `local(Arial)` agrandi à 112 % SANS `unicode-range`, donc il dessine aussi,
+  // police chargée, tout glyphe absent de Poppins. La flèche « → » sortait
+  // ainsi en Arial, 16,8 px à 15 px de corps, contre 13,7 px dans la maquette
+  // qui la laisse à la police système. Le repli est redéclaré dans globals.css
+  // (« Poppins Repli », mêmes métriques), borné aux plages de Poppins.
+  // Les DEUX options sont nécessaires : Turbopack ignore `adjustFontFallback`
+  // seul et ne retire son repli automatique que devant un `fallback` explicite.
+  adjustFontFallback: false,
+  fallback: ["Poppins Repli"],
 });
 
 const caveat = Caveat({

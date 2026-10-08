@@ -24,7 +24,7 @@ export const ROUTES_STATIQUES = [
   "/",
   "/contact/",
   "/nous-connaitre/",
-  "/equipe/",
+  "/a-propos/equipe/",
   "/valeurs/",
   "/rse/",
   "/partenaires/",
@@ -33,4 +33,5 @@ export const ROUTES_STATIQUES = [
   "/plan-du-site/",
   "/mentions-legales/",
   "/confidentialite/",
+  "/test-technicien/",
 ] as const;

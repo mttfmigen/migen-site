@@ -22,6 +22,8 @@
         "valeur": "Contrat annuel, toujours en cours"
       }
     ],
+    "logo": "/assets/clients/mq-3103d0f3f9ba.svg",
+    "photoHero": "/assets/web/mq-29ebb1b81ced.jpg",
     "chiffres": [
       {
         "libelle": "Durée d'intervention",
@@ -136,6 +138,7 @@
         "valeur": "Contrat annuel"
       }
     ],
+    "photoDispositif": "/assets/web/mq-0699d4d92e7e.jpg",
     "resultats": [
       {
         "titre": "Une opération maîtrisée",
@@ -179,7 +182,7 @@
         "texte": "Proposée en option pour les sites qui ne s'arrêtent pas, par téléphone."
       },
       {
-        "titre": "10 % des candidats retenus",
+        "titre": "10 % des techniciens retenus",
         "texte": "Entretien technique et entretien comportemental, avant toute affectation sur site."
       }
     ],
@@ -187,22 +190,26 @@
       {
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
-        "href": "/preuves/"
+        "href": "/preuves/",
+        "photo": "/assets/web/mq-e6322efcd358.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
-        "href": "/secteurs/logistique/"
+        "href": "/secteurs/logistique/",
+        "photo": "/assets/web/mq-339d39e2a674.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "AMAZON : démarrage d'un nouveau site",
-        "href": "/preuves/amazon-nouveau-site/"
+        "href": "/preuves/amazon-nouveau-site/",
+        "photo": "/assets/web/mq-056f3c250981.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
-        "href": "/preuves/savoye/"
+        "href": "/preuves/savoye/",
+        "photo": "/assets/web/mq-948c28bcda08.jpg"
       }
     ]
   }

@@ -70,6 +70,7 @@
 
 /* Sur le panneau anthracite, le lien passe au blanc au survol. La règle
    globale `a:hover` est battue par la classe (0,2,0 contre 0,1,1). */
+/* `!important` comme la maquette : la couleur est posée en style en ligne. */
 .lienQualification:hover {
-  color: #fff;
+  color: #fff !important;
 }

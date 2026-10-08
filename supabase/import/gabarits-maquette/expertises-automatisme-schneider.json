@@ -1,82 +1,46 @@
 {
+  "_source": "maquette/rendu/expertises--automatisme--schneider.html (capture du 07/10 21h12, 16 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (littéral, entités seules décodées), relevé par data-dc-tpl, contrôlé par components/site/expertises/specialite/verification-specialite.tsx. Ni « 02 Domaines » ni « Complément 2 » dans la capture ; « Complément 4 » présent. Problème dessiné « rangee », sans photo. Marques : famille « auto » (BRAND_RULES de la maquette, une seule famille, pas de rail). PHOTOS DES RÉFÉRENCES MESURÉES, PAS CHOISIES : octets des images du rail servis par la maquette vivante (localhost:4352, 08/10), sha256 complet rapproché de public/assets/web ; ordre et identité des blobs recoupés avec la capture : mq-5111002ce2b6, mq-e6322efcd358, x-auto-caisse, mq-2a6115ec9fe0, mq-0b70202fed79, mq-dcd9cac6ffbf, mq-948c28bcda08.",
   "url": "/expertises/automatisme/schneider/",
+  "titre_h1": "Automate Schneider : des automaticiens qui lisent votre programme dès le premier jour",
   "contenu": {
-    "gabarit": "domaine",
+    "gabarit": "specialite",
+    "pastille": "Expertises",
     "chapeau": "Un automaticien arrive avec la bonne version du logiciel, branche son ordinateur sur le Modicon et lit les états en temps réel. Le programme est sauvegardé, daté et archivé chez vous avant qu'il reparte.",
-    "boutons": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés.",
+    "appelBouton": "Demander un automaticien",
+    "actions": [
       {
-        "libelle": "Demander un automaticien"
+        "libelle": "Demander un automaticien",
+        "href": "#besoin"
       }
     ],
-    "traitements": [
-      "Un diagnostic qui va à la cause",
-      "Toute la gamme Modicon traitée",
-      "Le bon logiciel dans la sacoche",
-      "Le parc sauvegardé et daté",
-      "La reprise d'un programme hérité",
-      "Le réseau industriel remis au propre",
-      "La migration chiffrée avant l'urgence"
-    ],
-    "autres": [
+    "formulaireHeroTitre": "Demander un automaticien",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
-        "libelle": "Maintenance électrique industrielle",
-        "href": "/expertises/electrique/"
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, après entretien technique ET comportemental"
       },
       {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance mécanique",
-        "href": "/expertises/mecanique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Maintenance robotique",
-        "href": "/expertises/robotique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
+        "valeur": "en continu et tous les jours",
+        "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "cta": {
-      "question": "Besoin que votre parc Modicon soit sauvegardé avant la prochaine carte en défaut ?",
-      "bouton": {
-        "libelle": "Demander un automaticien"
-      }
-    },
-    "reste": [
+    "problemePhoto": null,
+    "complementOffre": [
       {
-        "type": "chiffres",
-        "chiffres": [
-          {
-            "valeur": "10 %",
-            "libelle": "des candidats retenus, après entretien technique ET comportemental"
-          },
-          {
-            "valeur": "+ 80",
-            "libelle": "clients réguliers"
-          },
-          {
-            "valeur": "24/24 et 7/7",
-            "libelle": "astreinte, pour les sites couverts"
-          }
-        ]
-      },
+        "texte": "Un parc entier à remettre sous suivi, sauvegardes comprises ? Une ligne figée en ce moment se traite par le dépannage industriel."
+      }
+    ],
+    "marquesFamille": "auto",
+    "sections": [
       {
         "type": "probleme",
+        "variante": "rangee",
         "punchline": "Un automate en défaut un vendredi soir, et personne sur place ne sait ouvrir le programme. La ligne attend le lundi.",
         "puces": [
           {
@@ -103,7 +67,7 @@
           {
             "prestation": {
               "accroche": "Un diagnostic qui va à la cause",
-              "texte": "lecture du programme, états des entrées et sorties en temps réel, contrôle des réseaux avant tout démontage."
+              "texte": "Lecture du programme, états des entrées et sorties en temps réel, contrôle des réseaux avant tout démontage."
             },
             "benefice": "Vous savez pourquoi la ligne s'est arrêtée, pas seulement qu'elle s'est arrêtée."
           },
@@ -124,14 +88,14 @@
           {
             "prestation": {
               "accroche": "Le parc sauvegardé et daté",
-              "texte": "automates, terminaux Magelis et Harmony, variateurs Altivar, démarreurs Altistart, chaque version archivée."
+              "texte": "Automates, terminaux Magelis et Harmony, variateurs Altivar, démarreurs Altistart, chaque version archivée."
             },
             "benefice": "Le jour où une carte lâche, on recharge au lieu de tout reprogrammer."
           },
           {
             "prestation": {
               "accroche": "La reprise d'un programme hérité",
-              "texte": "audit de l'existant, documentation, puis modification propre avec sauvegarde avant et après."
+              "texte": "Audit de l'existant, documentation, puis modification propre avec sauvegarde avant et après."
             },
             "benefice": "Vous reprenez la main sur votre outil de production, sources comprises."
           },
@@ -145,14 +109,9 @@
           {
             "prestation": {
               "accroche": "La migration chiffrée avant l'urgence",
-              "texte": "un Quantum ou un Premium devient difficile à approvisionner, l'évolution se prépare pendant que la ligne tourne."
+              "texte": "Un Quantum ou un Premium devient difficile à approvisionner, l'évolution se prépare pendant que la ligne tourne."
             },
             "benefice": "La décision se prend sur des chiffres, pas sur une panne un samedi matin."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Un parc entier à remettre sous suivi, sauvegardes comprises ? Le [contrat de maintenance Zéro arrêt](/offres/zero-arret/) couvre la visite préventive et la priorité d'intervention. Une ligne figée en ce moment se traite par le [dépannage industriel](/offres/depannage-industriel/). Sur un parc multimarque, nos [automaticiens Siemens](/expertises/automatisme/siemens/) prennent le reste, et la [programmation automate](/expertises/automatisme/programmation-automate/) détaille les langages et les livrables."
           }
         ]
       },
@@ -161,7 +120,7 @@
         "etapes": [
           {
             "titre": "Vous décrivez le défaut",
-            "texte": "série de l'automate, code affiché au pupitre, moment du cycle, logiciel utilisé en interne. Quelques minutes au téléphone évitent un déplacement sans la bonne licence."
+            "texte": "Série de l'automate, code affiché au pupitre, moment du cycle, logiciel utilisé en interne. Quelques minutes au téléphone évitent un déplacement sans la bonne licence."
           },
           {
             "titre": "Un technicien vous rappelle dans l'heure.",
@@ -169,11 +128,11 @@
           },
           {
             "titre": "Nous cherchons la cause racine",
-            "texte": "lecture du programme en ligne, états des entrées et sorties, contrôle du réseau et de l'alimentation, avant de toucher à une carte."
+            "texte": "Lecture du programme en ligne, états des entrées et sorties, contrôle du réseau et de l'alimentation, avant de toucher à une carte."
           },
           {
             "titre": "Nous réparons et remettons en service",
-            "texte": "module remplacé ou programme rechargé, essais point par point avec vos opérateurs jusqu'au retour de la cadence."
+            "texte": "Module remplacé ou programme rechargé, essais point par point avec vos opérateurs jusqu'au retour de la cadence."
           },
           {
             "titre": "Les sauvegardes sont reprises et datées",
@@ -181,7 +140,7 @@
           },
           {
             "titre": "Vous recevez le rapport",
-            "texte": "cause identifiée, geste effectué, modifications listées, pièces à mettre en stock, points à surveiller au prochain passage."
+            "texte": "Cause identifiée, geste effectué, modifications listées, pièces à mettre en stock, points à surveiller au prochain passage."
           }
         ]
       },
@@ -190,7 +149,7 @@
         "puces": [
           {
             "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-            "texte": "L'astreinte 24/24 et 7/7 couvre la nuit et le week-end sur les sites concernés."
+            "texte": "L'astreinte la nuit, le week-end et les jours fériés couvre la nuit et le week-end sur les sites concernés."
           },
           {
             "accroche": "Aucun verrouillage.",
@@ -203,48 +162,60 @@
         ]
       },
       {
-        "type": "cta",
-        "question": "Besoin d'un automaticien capable d'ouvrir votre programme Modicon dès le premier passage ?",
-        "bouton": "Demander un automaticien",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
-      },
-      {
         "type": "preuves",
         "preuves": [
           {
             "titre": "Contrôle de chantier sur des projets d'automatisation logistique",
-            "texte": "plusieurs intervenants intégrés aux équipes, automaticiens Schneider et Siemens parmi les spécialités engagées",
-            "lienLibelle": "Étude de cas ALSTEF Group : collaboration",
-            "lienHref": "/preuves/alstef-group/"
+            "texte": "Plusieurs intervenants intégrés aux équipes, automaticiens Schneider et Siemens parmi les spécialités engagées.",
+            "lienLibelle": "Étude de cas ALSTEF Group",
+            "lienHref": "/preuves/alstef-group/",
+            "photo": "/assets/web/mq-5111002ce2b6.jpg"
           },
           {
             "titre": "Automaticien dédié à temps plein sur le démarrage d'une ligne neuve, près de Lyon",
-            "texte": "mission menée sur les deuxième et troisième trimestres 2025, sur environnement Siemens",
-            "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
-            "lienHref": "/preuves/mersen/"
+            "texte": "Mission menée sur les deuxième et troisième trimestres 2025, sur environnement Siemens.",
+            "lienLibelle": "Étude de cas MERSEN",
+            "lienHref": "/preuves/mersen/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "Installation et mise en production d'un nouveau parc machine, site automobile",
-            "texte": "six techniciens aux compétences croisées, mécanique, électricité et automatisme, depuis janvier 2023",
-            "lienLibelle": "Étude de cas EATON : mise en production",
-            "lienHref": "/preuves/eaton-mise-en-production/"
+            "texte": "Six techniciens aux compétences croisées, mécanique, électricité et automatisme, depuis janvier 2023.",
+            "lienLibelle": "Étude de cas EATON",
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "photo": "/assets/web/x-auto-caisse.jpg"
           },
           {
             "titre": "Maintenance des équipements critiques d'un équipementier automobile",
-            "texte": "techniciens intégrés au quotidien, périmètre systèmes automatisés, lignes et convoyeurs, depuis 2025",
-            "lienLibelle": "Étude de cas JTEKT : maintenance des installations",
-            "lienHref": "/preuves/jtekt/"
+            "texte": "Techniciens intégrés au quotidien, périmètre systèmes automatisés, lignes et convoyeurs, depuis 2025.",
+            "lienLibelle": "Étude de cas JTEKT",
+            "lienHref": "/preuves/jtekt/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "Maintien opérationnel de convoyeurs, trieurs et packaging automatisés, logistique et transport",
-            "texte": "deux techniciens en poste, automatisme parmi les domaines couverts en propre",
-            "lienLibelle": "Étude de cas GLS : maintenance curative",
-            "lienHref": "/preuves/gls-maintenance-curative/"
+            "texte": "Deux techniciens en poste, automatisme parmi les domaines couverts en propre.",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-0b70202fed79.jpg"
+          },
+          {
+            "titre": "Pas un poste sans maintenance, week-end compris",
+            "lienLibelle": "Étude de cas Danone (Blédina)",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg"
+          },
+          {
+            "titre": "La GMAO planifie, nos techniciens interviennent",
+            "lienLibelle": "Étude de cas DimoMaint",
+            "lienHref": "/preuves/dimomaint/",
+            "photo": "/assets/web/mq-948c28bcda08.jpg"
           }
         ]
       },
       {
         "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
         "questions": [
           {
             "question": "Êtes-vous partenaire ou revendeur Schneider Electric ?",
@@ -260,17 +231,22 @@
           },
           {
             "question": "Combien coûte l'intervention d'un automaticien ?",
-            "reponse": "Cela dépend du défaut, de la machine, de la série d'automate et de l'urgence. Tout est établi sur devis, sans coefficient caché. Comparez ce montant à celui d'une seule journée de ligne figée. Un appel au 04 78 33 72 05 suffit pour cadrer le besoin."
+            "reponse": "Cela dépend du défaut, de la machine, de la série d'automate et de l'urgence. Tout est établi sur devis, sans coefficient caché. Comparez ce montant à celui d'une seule journée de ligne figée. Un appel par téléphone suffit pour cadrer le besoin."
           },
           {
             "question": "Qui intervient dans nos armoires, et avec quelles habilitations ?",
-            "reponse": "Des techniciens salariés de Migen, évalués en entretien technique et comportemental, 10 % des candidats retenus. Habilitations électriques à jour, consignation, plan de prévention signé. notre démarche MASE et notre évaluation EcoVadis sont transmises avec chaque plan de prévention. La sécurité prime sur le planning."
+            "reponse": "Des techniciens salariés de Migen, évalués en entretien technique et comportemental, 10 % des techniciens retenus. Habilitations électriques à jour, consignation, plan de prévention signé. notre démarche MASE et notre évaluation EcoVadis sont transmises avec chaque plan de prévention. La sécurité prime sur le planning."
           },
           {
             "question": "Couvrez-vous notre région, et une seule machine ?",
             "reponse": "Oui aux deux. 4 agences, Lyon en siège, Montréal, Dubaï et Madrid, plus des hubs de techniciens à Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes. Nos techniciens sont mobiles et interviennent au-delà de ces villes. Une sauvegarde de parc et une priorité en cas de panne n'exigent pas un dispositif plus lourd que nécessaire."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que votre parc Modicon soit sauvegardé avant la prochaine carte en défaut ?",
+        "bouton": "Demander un automaticien"
       }
     ]
   }

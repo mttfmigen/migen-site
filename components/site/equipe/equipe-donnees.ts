@@ -1,21 +1,31 @@
+import type { StaticImageData } from "next/image";
+
+import faustineChalayer from "./portraits/faustine-chalayer.jpg";
+import louiseMercier from "./portraits/louise-mercier.jpg";
+import mehdiAttaf from "./portraits/mehdi-attaf.jpg";
+import mehdiToumi from "./portraits/mehdi-toumi.jpg";
+import melanieRosset from "./portraits/melanie-rosset.jpg";
+import nathanJorez from "./portraits/nathan-jorez.jpg";
+import pierreBeck from "./portraits/pierre-beck.jpg";
+import thomasPuthod from "./portraits/thomas-puthod.jpg";
+
 /**
- * Le contenu de l'écran « Équipe / Direction » de la maquette, lignes 5845 à
- * 6030 de `maquette/accueil-rendu.html`.
+ * Le contenu de l'écran « Équipe / Direction », relu sur la capture
+ * `maquette/rendu/a-propos--equipe.html` (référence de la page).
  *
  * Il vit ici, en données typées, parce que l'écran est UNIQUE : aucune autre
  * page ne réemploie sa mise en page. Le corpus éditorial indexé reste en base,
  * cet habillage de page non.
  *
- * LES PHOTOS DE PERSONNES NE SONT PAS PORTÉES. La maquette les désigne par un
- * identifiant interne à l'éditeur (`3df77672-…`), et `public/` ne contient
- * aucun portrait. Une carte sans `photo` rend son bloc image vide plutôt qu'un
- * visage emprunté : c'est la seule option honnête.
+ * LES PORTRAITS sont ceux que la maquette autonome affiche, extraits octet pour
+ * octet de ses ressources le 08/10 (`portraits/`). Importés statiquement : Next
+ * les optimise et connaît leurs dimensions, sans rien poser dans `public/`.
  */
 
 /**
  * Le H1 de la page, et le repli de son meta title.
  *
- * Les deux vivent ici, et non dans `app/equipe/page.tsx`, pour deux raisons :
+ * Les deux vivent ici, et non dans `app/a-propos/equipe/page.tsx`, pour deux raisons :
  * Next n'attend que ses propres exports nommés dans un fichier de route, et le
  * contrôle a besoin de comparer les deux chaînes sans monter la page.
  *
@@ -23,6 +33,9 @@
  * résultats, le second dans la page.
  */
 export const H1 = "Celles et ceux qui portent vos projets.";
+
+/** L'adresse de l'écran dans `routes.csv` et dans le menu : la canonique. */
+export const CHEMIN = "/a-propos/equipe/";
 
 export const TITRE_PAR_DEFAUT =
   "Équipe et direction Migen, maintenance industrielle";
@@ -33,8 +46,8 @@ export const DESCRIPTION_PAR_DEFAUT =
 export interface Personne {
   nom: string;
   fonction: string;
-  /** Chemin dans `public/`. Absent tant qu'aucun portrait n'existe. */
-  photo?: string;
+  /** Le portrait de la maquette. Absent : le cadre reste au jeton `--ph`. */
+  photo?: StaticImageData | string;
 }
 
 export interface GroupePersonnes {
@@ -46,20 +59,20 @@ export interface GroupePersonnes {
 export const DIRECTION: GroupePersonnes = {
   titre: "Direction",
   personnes: [
-    { nom: "Nathan Jorez", fonction: "CEO" },
-    { nom: "Mehdi Toumi", fonction: "Directeur pôle Travaux" },
-    { nom: "Thomas Puthod", fonction: "Directeur commercial avant-vente" },
-    { nom: "Mehdi Attaf", fonction: "Directeur Marketing & Revops" },
+    { nom: "Nathan Jorez", fonction: "CEO", photo: nathanJorez },
+    { nom: "Mehdi Toumi", fonction: "Directeur pôle Travaux", photo: mehdiToumi },
+    { nom: "Thomas Puthod", fonction: "Directeur commercial avant-vente", photo: thomasPuthod },
+    { nom: "Mehdi Attaf", fonction: "Directeur Marketing & Revops", photo: mehdiAttaf },
   ],
 };
 
 export const SUPPORT: GroupePersonnes = {
   titre: "Ressources humaines, staffing et finance",
   personnes: [
-    { nom: "Faustine Chalayer", fonction: "Responsable Ressources Humaines" },
-    { nom: "Mélanie Rosset", fonction: "Responsable Staffing" },
-    { nom: "Louise Mercier", fonction: "Responsable Admin. & Financier" },
-    { nom: "Pierre Beck", fonction: "Responsable Recrutement" },
+    { nom: "Faustine Chalayer", fonction: "Responsable Ressources Humaines", photo: faustineChalayer },
+    { nom: "Mélanie Rosset", fonction: "Responsable Staffing", photo: melanieRosset },
+    { nom: "Louise Mercier", fonction: "Responsable Admin. & Financier", photo: louiseMercier },
+    { nom: "Pierre Beck", fonction: "Responsable Recrutement", photo: pierreBeck },
   ],
 };
 
@@ -86,12 +99,9 @@ export const CHIFFRES: readonly Chiffre[] = [
       "Techniciens, chargés d’affaires, référents techniques et fonctions support, répartis sur quatre agences.",
   },
   {
-    /* La maquette affiche ici un compte de clients que le contrat interdit. Le
-       compte tenu est « plus de 120 clients, dont plus de 80 réguliers ». */
-    valeur: "+120",
+    valeur: "+200",
     libelle: "Clients accompagnés",
-    texte:
-      "Dont plus de 80 réguliers, de la PME à l’industrie lourde, en France entière.",
+    texte: "De la PME à l’industrie lourde, en France entière.",
   },
 ];
 
@@ -119,9 +129,8 @@ export const JALONS: readonly Jalon[] = [
   {
     repere: "Aujourd’hui",
     titre: "L’exigence inchangée",
-    /* Même correction de chiffre que dans CHIFFRES ci-dessus. */
     texte:
-      "Plus de 120 techniciens, plus de 120 clients accompagnés dont plus de 80 réguliers, et une exigence de recrutement inchangée : 10 % des candidats retenus.",
+      "Plus de 120 techniciens, plus de 200 clients accompagnés, et une exigence de recrutement inchangée : 10 % des techniciens retenus.",
     courant: true,
   },
 ];
@@ -137,7 +146,7 @@ export const ETAPES_SELECTION: readonly Etape[] = [
     rang: "01",
     titre: "L’entretien technique",
     texte:
-      "Chaque candidat est évalué sur des cas réels de son métier : diagnostic, méthode, gestes de sécurité. Pas de recrutement sur CV seul.",
+      "Chaque technicien est évalué sur des cas réels de son métier : diagnostic, méthode, gestes de sécurité. Pas de recrutement sur CV seul.",
   },
   {
     rang: "02",
@@ -227,7 +236,7 @@ export const QUESTIONS: readonly Question[] = [
     question:
       "Comment savoir si un technicien est fiable avant qu’il arrive chez moi ?",
     reponse:
-      "Il a passé un entretien technique sur des cas réels, puis un entretien comportemental. Seuls 10 % des candidats sont retenus.",
+      "Il a passé un entretien technique sur des cas réels, puis un entretien comportemental. Seuls 10 % des techniciens sont retenus.",
   },
   {
     question:

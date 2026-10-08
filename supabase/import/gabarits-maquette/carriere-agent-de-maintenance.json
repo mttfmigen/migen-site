@@ -13,7 +13,11 @@
    ],
    "chiffre": {
     "valeur": "10 %",
-    "texte": "des candidats retenus, après un test technique et un entretien"
+    "texte": "des techniciens retenus, après un test technique et un entretien"
+   },
+   "photo": {
+    "src": "/assets/web/mq-e6322efcd358.jpg",
+    "alt": "Technicien migen en intervention"
    }
   },
   "sections": [
@@ -26,7 +30,7 @@
      },
      {
       "valeur": "10 %",
-      "texte": "des candidats retenus après évaluation"
+      "texte": "des techniciens retenus après évaluation"
      },
      {
       "valeur": "4 agences",
@@ -276,7 +280,7 @@
      },
      {
       "titre": "Une sélection exigeante et assumée",
-      "texte": "Entretien technique et comportemental, 10 % des candidats retenus."
+      "texte": "Entretien technique et comportemental, 10 % des techniciens retenus."
      },
      {
       "titre": "Un accueil structuré",
@@ -372,7 +376,7 @@
      },
      {
       "question": "Comment Migen évalue-t-elle un agent de maintenance avant de le proposer à un client ?",
-      "reponse": "Un entretien technique mené par un professionnel du métier, puis un entretien comportemental. Seuls 10 % des candidats sont retenus, et les résultats sont transmis au client avant toute décision."
+      "reponse": "Un entretien technique mené par un professionnel du métier, puis un entretien comportemental. Seuls 10 % des techniciens sont retenus, et les résultats sont transmis au client avant toute décision."
      }
     ]
    },
@@ -384,11 +388,13 @@
     "items": [
      {
       "libelle": "Métiers de la maintenance",
-      "href": "/carriere/"
+      "href": "/carriere/",
+      "photo": "/assets/web/mq-17e2f3bce95f.jpg"
      },
      {
       "libelle": "Responsable maintenance",
-      "href": "/carriere/responsable-maintenance/"
+      "href": "/carriere/responsable-maintenance/",
+      "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
      }
     ]
    }

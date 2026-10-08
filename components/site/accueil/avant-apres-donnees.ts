@@ -19,13 +19,10 @@
  *    d'intervention donné pour un engagement, et une promesse de proximité
  *    d'agence que les quatre implantations ne portent pas. Rien ne la
  *    remplace : choisir un autre chiffre serait un arbitrage éditorial.
- * 2. « Les habilitations sont vérifiées avant chaque mise à disposition »
- *    devient « avant chaque arrivée sur site ». « Mise à disposition » est
- *    interdit.
- * 3. Les photos `x-textile-filature.jpg` et `x-logistique-cariste.jpg`
- *    n'existent pas dans `public/assets/web/`. Les deux tuiles gardent leur
- *    citation sur le gris de remplacement `--ph` : un fichier absent ne se
- *    remplace pas par une autre photo.
+ * 2. « Les habilitations sont vérifiées avant chaque mise à disposition. Je ne
+ *    m'en occupe plus. » : « mise à disposition » est interdit, la PREMIÈRE
+ *    PHRASE est retirée entière (règle de copie du 08/10 : une phrase
+ *    interdite ne se reformule pas), la seconde reste.
  */
 
 import type { CSSProperties } from "react";
@@ -232,6 +229,7 @@ export const VUE_AVANT: VueBascule = {
       "avant-prestataire",
       "On rappelait le même prestataire, et il redécouvrait l’installation à chaque passage.",
       "Responsable maintenance · Agroalimentaire, Rhône",
+      "/assets/web/x-textile-filature.jpg",
     ),
     citation(
       AVANT,
@@ -262,6 +260,7 @@ export const VUE_AVANT: VueBascule = {
       "avant-weekend",
       "Un arrêt le vendredi soir, et personne à appeler avant le lundi matin.",
       "Responsable de production · Logistique",
+      "/assets/web/x-logistique-cariste.jpg",
     ),
   ],
 };
@@ -294,7 +293,7 @@ export const VUE_AVEC: VueBascule = {
     photo(
       AVEC,
       "avec-habilitations",
-      "Les habilitations sont vérifiées avant chaque arrivée sur site. Je ne m’en occupe plus.",
+      "Je ne m’en occupe plus.",
       "Responsable HSE · Chimie, Bas-Rhin",
       "/assets/web/team-grind-impact.jpg",
     ),

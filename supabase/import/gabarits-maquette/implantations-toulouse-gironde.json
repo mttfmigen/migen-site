@@ -1,148 +1,178 @@
 {
   "url": "/implantations/toulouse/gironde/",
+  "titre_h1": "Maintenance industrielle en Gironde",
   "contenu": {
-    "gabarit": "departement",
+    "gabarit": "ville",
+    "pastille": "Nos implantations",
     "chapeau": "La rive droite concentre le port, l'énergie et l'eau. Le Libournais aligne des chais équipés comme des usines, et le massif landais commence par des scieries. Nous avons un hub de techniciens à Bordeaux, et nos équipes couvrent ces trois Girondes avec les mêmes méthodes qu'ailleurs en France.",
     "actions": [
       {
         "libelle": "Faire chiffrer ma maintenance en Gironde",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperes": [
+    "mention": "Pour nous joindre : , du lundi au vendredi de 8h00 à 18h30. Un chargé d'affaires vous rappelle dans l'heure et suit le dossier jusqu'à la clôture.",
+    "formulaireHeroTitre": "Faire chiffrer ma maintenance en Gironde",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "appelBouton": "Faire chiffrer ma maintenance en Gironde",
+    "chiffres": [
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels, dont plus de 80 réguliers qui reviennent contrat après contrat"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, après entretien technique et comportemental"
+        "libelle": "Des techniciens retenus, après entretien technique et comportemental"
       },
       {
         "valeur": "sur devis",
-        "libelle": "point de départ du contrat Zéro arrêt, 6 mois renouvelables, diagnostic gratuit"
+        "libelle": "Point de départ du contrat Zéro arrêt, 6 mois renouvelables, diagnostic gratuit"
       }
     ],
-    "autresSurtitre": "Les autres départements",
-    "autres": [
-      {
-        "libelle": "Haute-Savoie",
-        "href": "/implantations/lyon/haute-savoie/"
-      },
-      {
-        "libelle": "Rhône",
-        "href": "/implantations/lyon/rhone/"
-      },
-      {
-        "libelle": "Loire-Atlantique",
-        "href": "/implantations/nantes/loire-atlantique/"
-      },
-      {
-        "libelle": "Essonne",
-        "href": "/implantations/paris/essonne/"
-      },
-      {
-        "libelle": "Alsace",
-        "href": "/implantations/strasbourg/alsace/"
-      },
-      {
-        "libelle": "Charente",
-        "href": "/implantations/toulouse/charente/"
-      },
-      {
-        "libelle": "Haute-Garonne",
-        "href": "/implantations/toulouse/haute-garonne/"
-      }
-    ],
-    "appelTitre": "Besoin de fiabiliser un parc réparti sur plusieurs sites du département ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
-      "libelle": "Faire chiffrer ma maintenance en Gironde",
-      "href": "#formulaire"
+    "hubLocal": {
+      "surtitre": "Votre hub local · Gironde",
+      "titre": "Gironde : les industries que nos techniciens connaissent déjà",
+      "photo": "/assets/web/sv-armoire.jpg",
+      "badge": "Rattaché au hub Toulouse",
+      "nom": "Gironde, couvert par le hub Toulouse",
+      "texte": "Les techniciens du hub Toulouse interviennent à Gironde et alentour, avec les mêmes méthodes et un seul interlocuteur.",
+      "bouton": "Demander une intervention à Gironde",
+      "cartes": [
+        {
+          "surtitre": "Tissu principal",
+          "titre": "Chimie",
+          "texte": "Un technicien électromécanicien habilité risque chimique niveau 1, 6 mois de mission sur un site de traitement des…",
+          "lien": "Notre approche chimie",
+          "href": "/secteurs/chimie/"
+        },
+        {
+          "surtitre": "Notre offre",
+          "titre": "Migen Résidence",
+          "texte": "Un technicien intégré à votre équipe, sur votre planning, avec remplacement garanti.",
+          "lien": "Voir l’offre",
+          "href": "/offres/residence/"
+        },
+        {
+          "surtitre": "Notre offre",
+          "titre": "Zéro arrêt",
+          "texte": "Un budget fermé et moins d’arrêts non planifiés sur votre parc.",
+          "lien": "Voir l’offre",
+          "href": "/offres/zero-arret/"
+        },
+        {
+          "surtitre": "Notre offre",
+          "titre": "Arrêt technique",
+          "texte": "Une équipe dimensionnée pour tenir votre fenêtre d’arrêt.",
+          "lien": "Voir l’offre",
+          "href": "/offres/arret-technique/"
+        }
+      ],
+      "zonesTitre": "Hub de rattachement et zones voisines",
+      "zones": [
+        {
+          "libelle": "Hub Toulouse",
+          "href": "/implantations/toulouse/"
+        },
+        {
+          "libelle": "Charente",
+          "href": "/implantations/toulouse/charente/"
+        },
+        {
+          "libelle": "Haute-Garonne",
+          "href": "/implantations/toulouse/haute-garonne/"
+        }
+      ]
     },
-    "reste": [
+    "problemePhoto": "/assets/web/ph-hero-raffinerie.jpg",
+    "complementOffre": [
+      {
+        "texte": "Pour un besoin isolé, le dépannage industriel reste le format le plus simple. Nos techniciens partent avec des outils de diagnostic étalonnés et l'appui technique du groupe derrière eux."
+      }
+    ],
+    "brefBande": "Besoin d'un partenaire technique avant la prochaine panne, pas pendant ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Faire chiffrer ma maintenance en Gironde",
+      "href": "#besoin"
+    },
+    "sections": [
       {
         "type": "probleme",
+        "punchline": "Un broyeur qui s'arrête à Bassens, une ligne d'embouteillage qui casse dans le Libournais. Dans les deux cas, personne sur place ne sait remettre en route avant lundi.",
         "puces": [
           {
-            "texte": "Dans les Graves ou le Langonnais, l'arrêt se paie comptant, faute de technicien sur site.",
-            "accroche": "Vos ateliers n'ont pas d'équipe maintenance à demeure."
+            "accroche": "Vos ateliers n'ont pas d'équipe maintenance à demeure.",
+            "texte": "Dans les Graves ou le Langonnais, l'arrêt se paie comptant, faute de technicien sur site."
           },
           {
-            "texte": "Scieries, palettes, emballage : coupe, poussière et abrasion attaquent les machines en permanence.",
-            "accroche": "Le bois use tout, vite."
+            "accroche": "Le bois use tout, vite.",
+            "texte": "Scieries, palettes, emballage : coupe, poussière et abrasion attaquent les machines en permanence."
           },
           {
-            "texte": "Port, énergie, eau, logistique : un procédé arrêté ne se rattrape pas sur le poste suivant.",
-            "accroche": "La rive droite tourne en continu."
+            "accroche": "La rive droite tourne en continu.",
+            "texte": "Port, énergie, eau, logistique : un procédé arrêté ne se rattrape pas sur le poste suivant."
           },
           {
-            "texte": "Lignes d'embouteillage, froid, réseaux d'eau, chaudières : un patrimoine technique que le calendrier viticole ne laisse pas entretenir en saison.",
-            "accroche": "Les chais sont devenus des usines."
+            "accroche": "Les chais sont devenus des usines.",
+            "texte": "Lignes d'embouteillage, froid, réseaux d'eau, chaudières : un patrimoine technique que le calendrier viticole ne laisse pas entretenir en saison."
           },
           {
-            "texte": "Le bon moment pour choisir, c'est avant.",
-            "accroche": "Chercher un prestataire au moment de la panne coûte toujours trop cher."
+            "accroche": "Chercher un prestataire au moment de la panne coûte toujours trop cher.",
+            "texte": "Le bon moment pour choisir, c'est avant."
           }
-        ],
-        "punchline": "Un broyeur qui s'arrête à Bassens, une ligne d'embouteillage qui casse dans le Libournais. Dans les deux cas, personne sur place ne sait remettre en route avant lundi."
+        ]
       },
       {
         "type": "offre",
-        "prose": [
-          {
-            "texte": "Pour un besoin isolé, le [dépannage industriel](/offres/depannage-industriel/) reste le format le plus simple. Nos techniciens partent avec des outils de diagnostic étalonnés et l'appui technique du groupe derrière eux."
-          }
-        ],
         "lignes": [
           {
-            "benefice": "La vendange se passe sans arbitrage entre produire et réparer.",
             "prestation": {
-              "texte": ", planifié hors saison, dépannage tenu en saison.",
-              "accroche": "Entretien des lignes d'embouteillage et du froid process"
-            }
+              "accroche": "Entretien des lignes d'embouteillage et du froid process planifié hors saison, dépannage tenu en saison.",
+              "texte": ""
+            },
+            "benefice": "La vendange se passe sans arbitrage entre produire et réparer."
           },
           {
-            "benefice": "Les pièces d'usure sont changées avant la casse, pas après l'arrêt de ligne.",
             "prestation": {
-              "texte": "convoyage, outils de coupe, environnements poussiéreux.",
-              "accroche": "Mécanique lourde pour le bois et l'emballage"
-            }
+              "accroche": "Mécanique lourde pour le bois et l'emballage",
+              "texte": "Convoyage, outils de coupe, environnements poussiéreux."
+            },
+            "benefice": "Les pièces d'usure sont changées avant la casse, pas après l'arrêt de ligne."
           },
           {
-            "benefice": "Les interventions se font dans les règles, sans arrêter plus que nécessaire.",
             "prestation": {
-              "texte": "consignations, habilitations électriques, exigences d'environnement.",
-              "accroche": "Procédés continus de la rive droite"
-            }
+              "accroche": "Procédés continus de la rive droite",
+              "texte": "Consignations, habilitations électriques, exigences d'environnement."
+            },
+            "benefice": "Les interventions se font dans les règles, sans arrêter plus que nécessaire."
           },
           {
-            "benefice": "Un seul intervenant pour le couple mécanique et électrique, sans renvoi de responsabilité.",
             "prestation": {
-              "texte": "moteurs, pompes, ventilateurs, automates SIEMENS et Schneider, via l'[électromécanique](/expertises/electromecanique/) et l'[automatisme](/expertises/automatisme/).",
-              "accroche": "Électromécanique et automatisme"
-            }
+              "accroche": "Électromécanique et automatisme",
+              "texte": "Moteurs, pompes, ventilateurs, automates SIEMENS et Schneider, via l'électromécanique et l'automatisme."
+            },
+            "benefice": "Un seul intervenant pour le couple mécanique et électrique, sans renvoi de responsabilité."
           },
           {
-            "benefice": "La durée de vie de la machine s'allonge, au lieu d'un remplacement à prix fort.",
             "prestation": {
-              "texte": "quand l'outil vieillit.",
-              "accroche": "Rétrofit chiffré par notre [bureau d'études](/offres/bureau-etudes/)"
-            }
+              "accroche": "Rétrofit chiffré par notre bureau d'études quand l'outil vieillit.",
+              "texte": ""
+            },
+            "benefice": "La durée de vie de la machine s'allonge, au lieu d'un remplacement à prix fort."
           },
           {
-            "benefice": "Le poste est tenu, avec remplacement assuré en cas d'absence.",
             "prestation": {
-              "texte": "en [sous-traitance maintenance](/offres/residence/), prise de poste en 2 à 3 semaines.",
-              "accroche": "Technicien intégré à votre équipe"
-            }
+              "accroche": "",
+              "texte": ""
+            },
+            "benefice": "Le poste est tenu, avec remplacement assuré en cas d'absence."
           },
           {
-            "benefice": "Vous décidez sur des indicateurs mensuels, pas sur des impressions.",
             "prestation": {
-              "texte": "pannes répétitives, fréquences ajustées, composants critiques en stock.",
-              "accroche": "Pilotage par les données de votre GMAO"
-            }
+              "accroche": "Pilotage par les données de votre GMAO",
+              "texte": "Pannes répétitives, fréquences ajustées, composants critiques en stock."
+            },
+            "benefice": "Vous décidez sur des indicateurs mensuels, pas sur des impressions."
           }
         ]
       },
@@ -150,28 +180,28 @@
         "type": "deroule",
         "etapes": [
           {
-            "texte": "appel ou demande en ligne, rappel dans l'heure aux horaires ouvrés. Machine, défaut, accès, criticité : la demande se qualifie et un créneau ferme est proposé.",
-            "titre": "Le contact"
+            "titre": "Le contact",
+            "texte": "Appel ou demande en ligne, rappel dans l'heure aux horaires ouvrés. Machine, défaut, accès, criticité : la demande se qualifie et un créneau ferme est proposé."
           },
           {
-            "texte": "détail ligne à ligne avant tout engagement. Déplacement, temps prévu, pièces au prix du marché, aucune mention en petits caractères.",
-            "titre": "Le chiffrage"
+            "titre": "Le chiffrage",
+            "texte": "Détail ligne à ligne avant tout engagement. Déplacement, temps prévu, pièces au prix du marché, aucune mention en petits caractères."
           },
           {
-            "texte": "le technicien part avec le plan de prévention validé et l'accueil sécurité préparé. La qualité du geste passe avant la vitesse.",
-            "titre": "Le déplacement"
+            "titre": "Le déplacement",
+            "texte": "Le technicien part avec le plan de prévention validé et l'accueil sécurité préparé. La qualité du geste passe avant la vitesse."
           },
           {
-            "texte": "diagnostic, réparation, essais électriques et mécaniques.",
-            "titre": "La remise en marche"
+            "titre": "La remise en marche",
+            "texte": "Diagnostic, réparation, essais électriques et mécaniques."
           },
           {
-            "texte": "chaque opération consignée dans votre GMAO, données et historique tenus à jour.",
-            "titre": "La traçabilité"
+            "titre": "La traçabilité",
+            "texte": "Chaque opération consignée dans votre GMAO, données et historique tenus à jour."
           },
           {
-            "texte": "sur un besoin récurrent, les visites se regroupent et les fréquences s'ajustent à l'usage réel du parc.",
-            "titre": "Le suivi"
+            "titre": "Le suivi",
+            "texte": "Sur un besoin récurrent, les visites se regroupent et les fréquences s'ajustent à l'usage réel du parc."
           }
         ]
       },
@@ -179,57 +209,74 @@
         "type": "garanties",
         "puces": [
           {
-            "texte": "le vôtre dépend de votre site, et nous l'annonçons avant de partir. Le rappel dans l'heure, lui, est écrit.",
-            "accroche": "Aucun délai routier inventé sur cette page"
+            "accroche": "Aucun délai routier inventé sur cette page",
+            "texte": "Le vôtre dépend de votre site, et nous l'annonçons avant de partir. Le rappel dans l'heure, lui, est écrit."
           },
           {
-            "texte": "dimensionné sur vos historiques de défaillance et les délais fournisseur. Une grande part des arrêts longs vient d'une pièce absente du magasin.",
-            "accroche": "Un conseil de stock minimal de pièces critiques"
+            "accroche": "Un conseil de stock minimal de pièces critiques",
+            "texte": "Dimensionné sur vos historiques de défaillance et les délais fournisseur. Une grande part des arrêts longs vient d'une pièce absente du magasin."
           },
           {
-            "texte": "pas de logo décoratif, pas de référence locale inventée, pas de promesse de délai. Du travail contrôlable, rien d'autre.",
-            "accroche": "Des propos vérifiables"
+            "accroche": "Des propos vérifiables",
+            "texte": "Pas de logo décoratif, pas de référence locale inventée, pas de promesse de délai. Du travail contrôlable, rien d'autre."
           }
         ]
-      },
-      {
-        "type": "cta",
-        "bouton": "Faire chiffrer ma maintenance en Gironde",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin d'un partenaire technique avant la prochaine panne, pas pendant ?"
       },
       {
         "type": "preuves",
         "preuves": [
           {
-            "texte": "sur un site de traitement des eaux industrielles",
             "titre": "Un technicien électromécanicien habilité risque chimique niveau 1, 6 mois de mission",
+            "texte": "sur un site de traitement des eaux industrielles.",
+            "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
+            "photo": "/assets/web/x-tech-portrait.jpg"
           },
           {
-            "texte": ", papier et emballage, préventif et curatif, de 2025 à 2026",
             "titre": "Un renfort polyvalent sur un parc aux contraintes techniques variées",
+            "texte": ", papier et emballage, préventif et curatif, de 2025 à 2026.",
+            "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "lienLibelle": "Étude de cas VPK : maintenance de site"
+            "photo": "/assets/web/team-grind-front.jpg"
           },
           {
-            "texte": "plusieurs solutions chiffrées, adaptées au budget",
             "titre": "Un parc machines de PME diagnostiqué et réparé sans rachat de matériel neuf",
+            "texte": "Plusieurs solutions chiffrées, adaptées au budget.",
+            "lienLibelle": "Étude de cas JOINT LYONNAIS",
             "lienHref": "/preuves/joint-lyonnais/",
-            "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines"
+            "photo": "/assets/web/x-elec-cablage.jpg"
           },
           {
-            "texte": ", sur plus de six semaines",
             "titre": "Trois techniciens en renfort sur le préventif d'une installation photovoltaïque de grande envergure",
+            "texte": ", sur plus de six semaines.",
+            "lienLibelle": "Étude de cas EIFFAGE",
             "lienHref": "/preuves/eiffage/",
-            "lienLibelle": "Étude de cas EIFFAGE : partenariat"
+            "photo": "/assets/web/team-duo.jpg"
           },
           {
-            "texte": "réception, assemblage, levage, raccordements, pour un fabricant qui installe sur tout le territoire",
             "titre": "Le montage complet de portiques de lavage partout en France",
+            "texte": "Réception, assemblage, levage, raccordements, pour un fabricant qui installe sur tout le territoire.",
+            "lienLibelle": "Étude de cas ORTHUS x WASHTEC",
             "lienHref": "/preuves/orthus-washtec/",
-            "lienLibelle": "Étude de cas ORTHUS x WASHTEC : installation de stations"
+            "photo": "/assets/web/x-logistique-entrepot.jpg"
+          },
+          {
+            "titre": "Maintenir un centre logistique qui ne ferme jamais",
+            "lienLibelle": "Étude de cas Amazon",
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+          },
+          {
+            "titre": "Des convoyeurs et des trieurs sous surveillance continue",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/team-grind-front.jpg"
+          },
+          {
+            "titre": "Des systèmes intralogistiques au rythme du e-commerce",
+            "lienLibelle": "Étude de cas Veepee",
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "photo": "/assets/web/ph-hero-raffinerie.jpg"
           }
         ]
       },
@@ -237,31 +284,41 @@
         "type": "objections",
         "questions": [
           {
-            "reponse": "Oui : Bordeaux Métropole et la rive droite avec Bassens, Lormont et Ambès. Puis le Libournais et l'Entre-deux-Mers, les Graves et le Langonnais, le littoral et le Bassin d'Arcachon. Les départements voisins se traitent au cas par cas, Dordogne, Charente et Landes comprises.",
-            "question": "Intervenez-vous partout en Gironde, au-delà de Bordeaux ?"
+            "question": "Intervenez-vous partout en Gironde, au-delà de Bordeaux ?",
+            "reponse": "Oui : Bordeaux Métropole et la rive droite avec Bassens, Lormont et Ambès. Puis le Libournais et l'Entre-deux-Mers, les Graves et le Langonnais, le littoral et le Bassin d'Arcachon. Les départements voisins se traitent au cas par cas, Dordogne, Charente et Landes comprises."
           },
           {
-            "reponse": "Aucun chiffre ne sera inventé ici : du nord du département au Sud Gironde, chaque site a son accès et sa criticité. La meilleure réponse reste l'appel, avec rappel dans l'heure aux horaires ouvrés, priorité donnée aux arrêts de production, astreinte 24/24 et 7/7 en option.",
-            "question": "Quels délais d'intervention en Gironde ?"
+            "question": "Quels délais d'intervention en Gironde ?",
+            "reponse": "Aucun chiffre ne sera inventé ici : du nord du département au Sud Gironde, chaque site a son accès et sa criticité. La meilleure réponse reste l'appel, avec rappel dans l'heure aux horaires ouvrés, priorité donnée aux arrêts de production, astreinte la nuit, le week-end et les jours fériés en option."
           },
           {
-            "reponse": "Oui : plan de prévention, consignation électrique haute et basse tension, règles de sécurité groupe et normes propres à chaque installation. Travail en hauteur, espaces confinés : les habilitations sont à jour et vérifiées avant l'arrivée.",
-            "question": "Respectez-vous nos consignations et nos obligations légales ?"
+            "question": "Respectez-vous nos consignations et nos obligations légales ?",
+            "reponse": "Oui : plan de prévention, consignation électrique haute et basse tension, règles de sécurité groupe et normes propres à chaque installation. Travail en hauteur, espaces confinés : les habilitations sont à jour et vérifiées avant l'arrivée."
           },
           {
-            "reponse": "Oui, en résidence : un technicien rattaché à Migen, intégré à votre équipe, encadré par un référent qui transmet les comptes rendus. Migen reste l'employeur. En cas d'absence ou de départ, un profil équivalent reprend le poste.",
-            "question": "Proposez-vous un technicien à demeure ?"
+            "question": "Proposez-vous un technicien à demeure ?",
+            "reponse": "Oui, en résidence : un technicien rattaché à Migen, intégré à votre équipe, encadré par un référent qui transmet les comptes rendus. Migen reste l'employeur. En cas d'absence ou de départ, un profil équivalent reprend le poste."
           },
           {
-            "reponse": "Le détail est écrit ligne à ligne avant tout engagement : déplacement, temps prévu, pièces au prix du marché. Pour un besoin récurrent, un contrat et des visites regroupées coûtent moins cher que l'addition des urgences.",
-            "question": "Combien coûte une intervention ?"
+            "question": "Combien coûte une intervention ?",
+            "reponse": "Le détail est écrit ligne à ligne avant tout engagement : déplacement, temps prévu, pièces au prix du marché. Pour un besoin récurrent, un contrat et des visites regroupées coûtent moins cher que l'addition des urgences."
           },
           {
-            "reponse": "Ni l'un ni l'autre. Migen est une entreprise de prestation de services en maintenance industrielle, qui emploie ses propres techniciens. Si vous cherchez un poste, nos [métiers de la maintenance](/carriere/) détaillent le parcours et la sélection.",
-            "question": "Vous êtes un annuaire ou un site d'emploi ?"
+            "question": "Vous êtes un annuaire ou un site d'emploi ?",
+            "reponse": "Ni l'un ni l'autre. Migen est une entreprise de prestation de services en maintenance industrielle, qui emploie ses propres techniciens. Si vous cherchez un poste, nos métiers de la maintenance détaillent le parcours et la sélection."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de fiabiliser un parc réparti sur plusieurs sites du département ?"
       }
     ]
-  }
+  },
+  "trous": [
+    {
+      "ligne": "Technicien intégré à votre équipe en sous-traitance maintenance, prise de poste en 2 à 3 semaines.",
+      "pourquoi": "délai chiffré : seul « rappel dans l'heure » est autorisé (contrat de rédaction et passation du client) : « 2 à 3 semaines ». Intitulé du point 06 de « 04 Offre » : le point reste avec son bénéfice, c'était tout le champ : il reste vide."
+    }
+  ]
 }

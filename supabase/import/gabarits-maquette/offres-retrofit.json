@@ -16,11 +16,11 @@
     "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus · entretien technique et entretien comportemental."
+        "libelle": "des techniciens retenus · entretien technique et entretien comportemental."
       },
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels · de la PME au grand groupe, dans tous les secteurs."
+        "valeur": "+200",
+        "libelle": "clients industriels accompagnés"
       },
       {
         "valeur": "4",
@@ -231,6 +231,7 @@
         "libelle": "Toutes les offres",
         "href": "/offres/"
       }
-    ]
+    ],
+    "pastille": "Nos offres"
   }
 }

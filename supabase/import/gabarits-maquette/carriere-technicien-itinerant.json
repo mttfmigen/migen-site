@@ -13,7 +13,11 @@
    ],
    "chiffre": {
     "valeur": "10 %",
-    "texte": "des candidats retenus, après un test technique et un entretien"
+    "texte": "des techniciens retenus, après un test technique et un entretien"
+   },
+   "photo": {
+    "src": "/assets/web/mq-0699d4d92e7e.jpg",
+    "alt": "Technicien migen en intervention"
    }
   },
   "sections": [
@@ -26,7 +30,7 @@
      },
      {
       "valeur": "10 %",
-      "texte": "des candidats retenus après évaluation"
+      "texte": "des techniciens retenus après évaluation"
      },
      {
       "valeur": "4 agences",
@@ -275,7 +279,7 @@
      },
      {
       "titre": "Une sélection exigeante et assumée",
-      "texte": "Entretien technique et comportemental, 10 % des candidats retenus."
+      "texte": "Entretien technique et comportemental, 10 % des techniciens retenus."
      },
      {
       "titre": "Un accueil structuré",
@@ -314,7 +318,7 @@
      }
     ],
     "bande": {
-     "texte": "Un candidat indépendant, à l'aise sur la route, trouve un emploi durable. Nous cherchons à recruter ce profil ; chaque candidat passe la même sélection, faite en amont : une politique constante, avec un vrai retour au client."
+     "texte": "Un candidat indépendant, à l'aise sur la route, trouve un emploi durable. Nous cherchons à recruter ce profil ; chaque technicien passe la même sélection, faite en amont : une politique constante, avec un vrai retour au client."
     }
    },
    {
@@ -374,7 +378,7 @@
      },
      {
       "question": "Comment Migen évalue-t-elle un technicien itinérant avant de le proposer à un client ?",
-      "reponse": "Un entretien technique mené par un professionnel du métier, puis un entretien comportemental sur l'autonomie et le service. Seuls 10 % des candidats sont retenus, résultats transmis au client avant décision, comme détaillé plus haut sur cette page."
+      "reponse": "Un entretien technique mené par un professionnel du métier, puis un entretien comportemental sur l'autonomie et le service. Seuls 10 % des techniciens sont retenus, résultats transmis au client avant décision, comme détaillé plus haut sur cette page."
      }
     ]
    },
@@ -386,15 +390,18 @@
     "items": [
      {
       "libelle": "Métiers de la maintenance",
-      "href": "/carriere/"
+      "href": "/carriere/",
+      "photo": "/assets/web/mq-948c28bcda08.jpg"
      },
      {
       "libelle": "Technicien de maintenance",
-      "href": "/carriere/technicien-de-maintenance/"
+      "href": "/carriere/technicien-de-maintenance/",
+      "photo": "/assets/web/mq-17e2f3bce95f.jpg"
      },
      {
       "libelle": "Responsable maintenance",
-      "href": "/carriere/responsable-maintenance/"
+      "href": "/carriere/responsable-maintenance/",
+      "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
      }
     ]
    }

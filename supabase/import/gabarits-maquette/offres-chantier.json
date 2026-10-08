@@ -20,8 +20,8 @@
         "libelle": "collaborateurs · techniciens, monteurs et chefs de projet."
       },
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels · dont plus de 80 clients réguliers."
+        "valeur": "+200",
+        "libelle": "clients industriels accompagnés"
       },
       {
         "valeur": "4",
@@ -29,7 +29,7 @@
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+        "libelle": "des techniciens retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
       }
     ],
     "brefBande": "Besoin de savoir ce que coûterait le transfert de votre site ?",
@@ -133,7 +133,7 @@
           },
           {
             "accroche": "Vous savez qui entre sur votre site.",
-            "texte": "Les intervenants sont retenus après un entretien technique et un entretien comportemental : seuls 10 % des candidats passent cette sélection."
+            "texte": "Les intervenants sont retenus après un entretien technique et un entretien comportemental : seuls 10 % des techniciens passent cette sélection."
           },
           {
             "accroche": "Tout ce qui peut se préparer sans arrêter la production l'est.",
@@ -197,7 +197,7 @@
           },
           {
             "question": "Qui sont les techniciens qui interviennent ?",
-            "reponse": "Des intervenants Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des candidats sont retenus, et les résultats d'évaluation sont partagés avec vous."
+            "reponse": "Des intervenants Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des techniciens sont retenus, et les résultats d'évaluation sont partagés avec vous."
           },
           {
             "question": "Intervenez-vous partout en France ?",
@@ -246,6 +246,7 @@
         "libelle": "Toutes les offres",
         "href": "/offres/"
       }
-    ]
+    ],
+    "pastille": "Nos offres"
   }
 }

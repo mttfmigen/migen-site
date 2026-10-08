@@ -1,209 +1,208 @@
 {
   "url": "/implantations/maintenance-industrielle-nice/",
+  "titre_h1": "Maintenance industrielle à Nice et dans les Alpes-Maritimes",
   "contenu": {
     "gabarit": "ville",
+    "pastille": "Nos implantations",
     "chapeau": "La Côte d'Azur passe pour tertiaire. Sa production est pourtant concentrée dans la plaine du Var, à Carros et Saint-Isidore. S'y ajoutent les sites de parfum et de cosmétique de Grasse, et les ateliers de précision entre Cannes et Sophia Antipolis. Nos techniciens itinérants couvrent ce couloir et se déplacent partout en France.",
     "actions": [
       {
         "libelle": "Demander une intervention à Nice",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés couvre les nuits, les week-ends et les jours fériés.",
+    "formulaireHeroTitre": "Demander une intervention à Nice",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "appelBouton": "Demander une intervention à Nice",
+    "chiffres": [
       {
-        "valeur": "+ 100",
-        "libelle": "collaborateurs, mécaniciens, électriciens, automaticiens, roboticiens"
+        "valeur": "+ 120",
+        "libelle": "Collaborateurs, mécaniciens, électriciens, automaticiens, roboticiens"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental"
       },
       {
-        "valeur": "+ 120",
-        "libelle": "clients accompagnés, dont plus de 80 réguliers"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       }
     ],
-    "contact": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 couvre les nuits, les week-ends et les jours fériés.",
-    "constatTexte": "Une ligne de conditionnement s'arrête à Carros au mois d'août. La moitié de votre équipe maintenance est en congés, et l'autre moitié couvre déjà deux sites.",
-    "constatPuces": [
+    "hubLocal": {
+      "surtitre": "Votre hub local · Nice",
+      "titre": "Nice : les industries que nos techniciens connaissent déjà",
+      "photo": "/assets/web/sv-convoyeur.jpg",
+      "badge": "Techniciens itinérants",
+      "nom": "Nice et ses environs",
+      "texte": "Nos techniciens itinérants couvrent Nice et son bassin, appuyés par le réseau national Migen.",
+      "bouton": "Demander une intervention à Nice",
+      "cartes": [
+        {
+          "surtitre": "Tissu principal",
+          "titre": "Pharmaceutique",
+          "texte": "Parfum et cosmétique imposent la propreté.",
+          "lien": "Notre approche pharmaceutique",
+          "href": "/secteurs/pharmaceutique/"
+        },
+        {
+          "surtitre": "Notre offre",
+          "titre": "Migen Résidence",
+          "texte": "Un technicien intégré à votre équipe, sur votre planning, avec remplacement garanti.",
+          "lien": "Voir l’offre",
+          "href": "/offres/residence/"
+        },
+        {
+          "surtitre": "Notre offre",
+          "titre": "Zéro arrêt",
+          "texte": "Un budget fermé et moins d’arrêts non planifiés sur votre parc.",
+          "lien": "Voir l’offre",
+          "href": "/offres/zero-arret/"
+        },
+        {
+          "surtitre": "Notre offre",
+          "titre": "Arrêt technique",
+          "texte": "Une équipe dimensionnée pour tenir votre fenêtre d’arrêt.",
+          "lien": "Voir l’offre",
+          "href": "/offres/arret-technique/"
+        }
+      ],
+      "zonesTitre": "Nos hubs",
+      "zones": [
+        {
+          "libelle": "Hub Lille",
+          "href": "/implantations/lille/"
+        },
+        {
+          "libelle": "Hub Lyon",
+          "href": "/implantations/lyon/"
+        },
+        {
+          "libelle": "Hub Nantes",
+          "href": "/implantations/nantes/"
+        },
+        {
+          "libelle": "Hub Paris",
+          "href": "/implantations/paris/"
+        },
+        {
+          "libelle": "Hub Strasbourg",
+          "href": "/implantations/strasbourg/"
+        },
+        {
+          "libelle": "Hub Toulouse",
+          "href": "/implantations/toulouse/"
+        },
+        {
+          "libelle": "Hub Marseille",
+          "href": "/implantations/marseille/"
+        },
+        {
+          "libelle": "Hub Bordeaux",
+          "href": "/implantations/bordeaux/"
+        },
+        {
+          "libelle": "Hub Metz",
+          "href": "/implantations/maintenance-industrielle-metz/"
+        },
+        {
+          "libelle": "Hub Dijon",
+          "href": "/implantations/maintenance-industrielle-dijon/"
+        }
+      ]
+    },
+    "brefBande": "Besoin d'un renfort pour tenir vos équipements cet été ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Demander une intervention à Nice",
+      "href": "#besoin"
+    },
+    "sections": [
       {
-        "texte": "Les congés tombent quand la charge monte, et le préventif saute le premier.",
-        "accroche": "L'été vide les ateliers avant de vider les plannings."
+        "type": "probleme",
+        "punchline": "Une ligne de conditionnement s'arrête à Carros au mois d'août. La moitié de votre équipe maintenance est en congés, et l'autre moitié couvre déjà deux sites.",
+        "puces": [
+          {
+            "accroche": "L'été vide les ateliers avant de vider les plannings.",
+            "texte": "Les congés tombent quand la charge monte, et le préventif saute le premier."
+          },
+          {
+            "accroche": "Le foncier industriel est rare, les sites sont dispersés.",
+            "texte": "Entre plaine du Var, Grasse et Cannes, vos équipements ne tiennent pas dans un seul périmètre."
+          },
+          {
+            "accroche": "Parfum et cosmétique imposent la propreté.",
+            "texte": "Une intervention mal documentée sur une ligne sensible coûte plus cher que la panne elle-même."
+          },
+          {
+            "accroche": "L'eau et les utilités tournent en continu.",
+            "texte": "Stations, réseaux, valorisation des déchets : le service rendu ne se met pas en pause pour une réparation."
+          },
+          {
+            "accroche": "Le recrutement industriel perd face au tertiaire.",
+            "texte": "Le bassin attire ailleurs, et vos postes techniques restent ouverts."
+          }
+        ],
+        "variante": "rangee"
       },
-      {
-        "texte": "Entre plaine du Var, Grasse et Cannes, vos équipements ne tiennent pas dans un seul périmètre.",
-        "accroche": "Le foncier industriel est rare, les sites sont dispersés."
-      },
-      {
-        "texte": "Une intervention mal documentée sur une ligne sensible coûte plus cher que la panne elle-même.",
-        "accroche": "Parfum et cosmétique imposent la propreté."
-      },
-      {
-        "texte": "Stations, réseaux, valorisation des déchets : le service rendu ne se met pas en pause pour une réparation.",
-        "accroche": "L'eau et les utilités tournent en continu."
-      },
-      {
-        "texte": "Le bassin attire ailleurs, et vos postes techniques restent ouverts.",
-        "accroche": "Le recrutement industriel perd face au tertiaire."
-      }
-    ],
-    "reponsePuces": [
-      {
-        "texte": "Entretien technique et comportemental, 10 % des candidats retenus, résultats d'évaluation partagés.",
-        "accroche": "Le profil vous est présenté avant l'intervention."
-      },
-      {
-        "texte": "Nous couvrons les Alpes-Maritimes en itinérance depuis le réseau national, et nous le disons au lieu d'afficher une vitrine.",
-        "accroche": "Aucune adresse locale inventée."
-      },
-      {
-        "texte": "Ce qui est inclus, ce qui ne l'est pas, les conditions d'astreinte, les conditions d'arrêt.",
-        "accroche": "Un périmètre écrit et des modalités de sortie claires."
-      }
-    ],
-    "faq": [
-      {
-        "reponse": "Oui. Nous n'avons pas d'agence dans les Alpes-Maritimes et nous ne prétendons pas le contraire : nos techniciens se déplacent partout en France et interviennent sur site. Votre demande est rappelée dans l'heure aux horaires ouvrés, et le chargé d'affaires vous dit dès le premier appel si le besoin est tenable.",
-        "question": "Intervenez-vous vraiment à Nice, alors que votre siège est à Lyon ?"
-      },
-      {
-        "reponse": "Nice et Saint-Isidore, Carros dans la plaine du Var, Saint-Laurent-du-Var, Cannes, Antibes et Grasse. Au-delà, nos techniciens se déplacent partout en France.",
-        "question": "Quelles communes couvrez-vous ?"
-      },
-      {
-        "reponse": "Oui. Contrat unique, comptes rendus au même format, un interlocuteur. Vos sites de la plaine du Var et du bassin grassois se pilotent ensemble.",
-        "question": "Pouvez-vous couvrir plusieurs de nos sites avec un seul contrat ?"
-      },
-      {
-        "reponse": "L'astreinte 24/24 et 7/7 prend l'appel et mobilise un technicien. Le circuit d'appel et l'ordre des priorités sont écrits au devis, site par site.",
-        "question": "Que se passe-t-il en cas de panne la nuit ou un jour férié ?"
-      },
-      {
-        "reponse": "L'offre Zéro arrêt fonctionne en abonnement, trois niveaux de couverture, sur devis, engagement type 6 mois renouvelable. Le diagnostic de départ est gratuit.",
-        "question": "Combien coûte un contrat de maintenance ?"
-      },
-      {
-        "reponse": "Nos techniciens interviennent sur les utilités et la filtration industrielle qui servent la production. Le cœur du métier reste l'équipement de production, pas la gestion de bâtiment tertiaire.",
-        "question": "Faites-vous aussi les utilités et le chauffage, ventilation, climatisation des bâtiments ?"
-      }
-    ],
-    "autres": [
-      {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
-      },
-      {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
-      },
-      {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
-      },
-      {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
-      },
-      {
-        "libelle": "Valence",
-        "href": "/implantations/lyon/valence/"
-      },
-      {
-        "libelle": "Nantes",
-        "href": "/implantations/nantes/"
-      },
-      {
-        "libelle": "Brest",
-        "href": "/implantations/nantes/brest/"
-      },
-      {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
-      },
-      {
-        "libelle": "paris",
-        "href": "/implantations/paris/"
-      },
-      {
-        "libelle": "Rouen",
-        "href": "/implantations/paris/rouen/"
-      },
-      {
-        "libelle": "Strasbourg",
-        "href": "/implantations/strasbourg/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
-      },
-      {
-        "libelle": "Toulouse",
-        "href": "/implantations/toulouse/"
-      },
-      {
-        "libelle": "Bordeaux",
-        "href": "/implantations/toulouse/bordeaux/"
-      }
-    ],
-    "reste": [
       {
         "type": "offre",
         "lignes": [
           {
-            "benefice": "Le préventif de l'été se fait, et votre équipe part vraiment en vacances.",
             "prestation": {
-              "texte": ", technicien intégré à votre équipe sur la période.",
-              "accroche": "Renfort pendant les congés et les pics"
-            }
+              "accroche": "Renfort pendant les congés et les pics technicien intégré à votre équipe sur la période.",
+              "texte": ""
+            },
+            "benefice": "Le préventif de l'été se fait, et votre équipe part vraiment en vacances."
           },
           {
-            "benefice": "La ligne repart et le compte rendu explique pourquoi elle s'était arrêtée.",
             "prestation": {
-              "texte": ", recherche de défaut, remise en route, cause racine cherchée.",
-              "accroche": "Dépannage sur site"
-            }
+              "accroche": "Dépannage sur site recherche de défaut, remise en route, cause racine cherchée.",
+              "texte": ""
+            },
+            "benefice": "La ligne repart et le compte rendu explique pourquoi elle s'était arrêtée."
           },
           {
-            "benefice": "Vos audits trouvent une trace écrite pour chaque passage.",
             "prestation": {
-              "texte": "propreté, traçabilité, habilitations à jour.",
-              "accroche": "Interventions documentées en environnement sensible"
-            }
+              "accroche": "Interventions documentées en environnement sensible",
+              "texte": "Propreté, traçabilité, habilitations à jour."
+            },
+            "benefice": "Vos audits trouvent une trace écrite pour chaque passage."
           },
           {
-            "benefice": "Les dérives se lisent sur vos relevés avant de peser sur la facture.",
             "prestation": {
-              "texte": "eau, air comprimé, électricité, chasse aux fuites, échangeurs.",
-              "accroche": "Utilités et réseaux"
-            }
+              "accroche": "Utilités et réseaux",
+              "texte": "Eau, air comprimé, électricité, chasse aux fuites, échangeurs."
+            },
+            "benefice": "Les dérives se lisent sur vos relevés avant de peser sur la facture."
           },
           {
-            "benefice": "Un automate qui dit non trouve quelqu'un capable de le lire.",
             "prestation": {
-              "texte": "SIEMENS, Schneider, ABB, Fanuc, supervision et rétrofit.",
-              "accroche": "Automatisme et robotique"
-            }
+              "accroche": "Automatisme et robotique",
+              "texte": "SIEMENS, Schneider, ABB, Fanuc, supervision et rétrofit."
+            },
+            "benefice": "Un automate qui dit non trouve quelqu'un capable de le lire."
           },
           {
-            "benefice": "Un interlocuteur pour tous vos sites, au même niveau d'exigence.",
             "prestation": {
-              "texte": ", de la plaine du Var à Grasse et Cannes.",
-              "accroche": "Multi-sites sous contrat unique"
-            }
+              "accroche": "Multi-sites sous contrat unique de la plaine du Var à Grasse et Cannes.",
+              "texte": ""
+            },
+            "benefice": "Un interlocuteur pour tous vos sites, au même niveau d'exigence."
           },
           {
-            "benefice": "Un défaut de nuit ne devient pas un arrêt de production au matin.",
             "prestation": {
-              "texte": ", pour les installations en service continu.",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
+              "accroche": "Astreinte la nuit, le week-end et les jours fériés en option pour les installations en service continu.",
+              "texte": ""
+            },
+            "benefice": "Un défaut de nuit ne devient pas un arrêt de production au matin."
           },
           {
-            "benefice": "Le préventif entre au planning au lieu d'être repoussé chaque mois.",
             "prestation": {
-              "texte": "visites planifiées, priorité en cas de panne, diagnostic gratuit au départ.",
-              "accroche": "Contrat [Zéro arrêt](/offres/zero-arret/)"
-            }
+              "accroche": "Contrat Zéro arrêt",
+              "texte": "Visites planifiées, priorité en cas de panne, diagnostic gratuit au départ."
+            },
+            "benefice": "Le préventif entre au planning au lieu d'être repoussé chaque mois."
           }
         ]
       },
@@ -211,72 +210,115 @@
         "type": "deroule",
         "etapes": [
           {
-            "texte": "vous décrivez la panne ou le besoin. Rappel dans l'heure aux horaires ouvrés par un chargé d'affaires.",
-            "titre": "Premier contact"
+            "titre": "Premier contact",
+            "texte": "Vous décrivez la panne ou le besoin. Rappel dans l'heure aux horaires ouvrés par un chargé d'affaires."
           },
           {
-            "texte": "machines, accès, habilitations, contraintes de propreté ou d'horaires. Le champ d'intervention s'écrit avant le chiffrage.",
-            "titre": "Qualification"
+            "titre": "Qualification",
+            "texte": "Machines, accès, habilitations, contraintes de propreté ou d'horaires. Le champ d'intervention s'écrit avant le chiffrage."
           },
           {
-            "texte": "périmètre, créneaux, matériel, conditions. Rien ne se découvre en bas de facture.",
-            "titre": "Devis écrit"
+            "titre": "Devis écrit",
+            "texte": "Périmètre, créneaux, matériel, conditions. Rien ne se découvre en bas de facture."
           },
           {
-            "texte": "accueil sécurité, plan de prévention, consignation, diagnostic, réparation, redémarrage sécurisé.",
-            "titre": "Intervention"
+            "titre": "Intervention",
+            "texte": "Accueil sécurité, plan de prévention, consignation, diagnostic, réparation, redémarrage sécurisé."
           },
           {
-            "texte": "opérations, temps passé, pièces, préconisations, versés dans votre outil.",
-            "titre": "Compte rendu"
+            "titre": "Compte rendu",
+            "texte": "Opérations, temps passé, pièces, préconisations, versés dans votre outil."
           },
           {
-            "texte": "sur contrat, revue de la récurrence par équipement et du respect du plan préventif.",
-            "titre": "Suivi"
+            "titre": "Suivi",
+            "texte": "Sur contrat, revue de la récurrence par équipement et du respect du plan préventif."
           }
         ]
       },
       {
-        "type": "cta",
-        "bouton": "Demander une intervention à Nice",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin d'un renfort pour tenir vos équipements cet été ?"
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Le profil vous est présenté avant l'intervention.",
+            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats d'évaluation partagés."
+          },
+          {
+            "accroche": "Aucune adresse locale inventée.",
+            "texte": "Nous couvrons les Alpes-Maritimes en itinérance depuis le réseau national, et nous le disons au lieu d'afficher une vitrine."
+          },
+          {
+            "accroche": "Un périmètre écrit et des modalités de sortie claires.",
+            "texte": "Ce qui est inclus, ce qui ne l'est pas, les conditions d'astreinte, les conditions d'arrêt."
+          }
+        ]
       },
       {
         "type": "preuves",
         "preuves": [
           {
-            "texte": ", pour garder les équipements opérationnels en juillet et août",
             "titre": "Un technicien intégré à l'équipe maintenance pendant les congés d'été",
+            "texte": ", pour garder les équipements opérationnels en juillet et août.",
+            "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "lienLibelle": "Étude de cas OGF : arrêt estival"
+            "photo": "/assets/web/x-tech-portrait.jpg"
           },
           {
-            "texte": ", depuis février 2026",
             "titre": "Renfort de 6 mois sur un site de traitement des eaux industrielles à risque chimique",
+            "texte": ", depuis février 2026.",
+            "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
+            "photo": "/assets/web/team-grind-front.jpg"
           },
           {
-            "texte": ", depuis février 2024",
             "titre": "Maintenance sous contrat d'un parc d'équipements dispersé sur tout le territoire",
+            "texte": ", depuis février 2024.",
+            "lienLibelle": "Étude de cas TIMESCOPE",
             "lienHref": "/preuves/timescope/",
-            "lienLibelle": "Étude de cas TIMESCOPE : casques de réalité virtuelle"
+            "photo": "/assets/web/x-elec-cablage.jpg"
           },
           {
-            "texte": ", depuis octobre 2024",
             "titre": "1 à 3 techniciens en renfort permanent sur plusieurs sites de production",
+            "texte": ", depuis octobre 2024.",
+            "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes"
+            "photo": "/assets/web/team-duo.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Intervenez-vous vraiment à Nice, alors que votre siège est à Lyon ?",
+            "reponse": "Oui. Nous n'avons pas d'agence dans les Alpes-Maritimes et nous ne prétendons pas le contraire : nos techniciens se déplacent partout en France et interviennent sur site. Votre demande est rappelée dans l'heure aux horaires ouvrés, et le chargé d'affaires vous dit dès le premier appel si le besoin est tenable."
+          },
+          {
+            "question": "Quelles communes couvrez-vous ?",
+            "reponse": "Nice et Saint-Isidore, Carros dans la plaine du Var, Saint-Laurent-du-Var, Cannes, Antibes et Grasse. Au-delà, nos techniciens se déplacent partout en France."
+          },
+          {
+            "question": "Pouvez-vous couvrir plusieurs de nos sites avec un seul contrat ?",
+            "reponse": "Oui. Contrat unique, comptes rendus au même format, un interlocuteur. Vos sites de la plaine du Var et du bassin grassois se pilotent ensemble."
+          },
+          {
+            "question": "Que se passe-t-il en cas de panne la nuit ou un jour férié ?",
+            "reponse": "L'astreinte la nuit, le week-end et les jours fériés prend l'appel et mobilise un technicien. Le circuit d'appel et l'ordre des priorités sont écrits au devis, site par site."
+          },
+          {
+            "question": "Combien coûte un contrat de maintenance ?",
+            "reponse": "L'offre Zéro arrêt fonctionne en abonnement, trois niveaux de couverture, sur devis, engagement type 6 mois renouvelable. Le diagnostic de départ est gratuit."
+          },
+          {
+            "question": "Faites-vous aussi les utilités et le chauffage, ventilation, climatisation des bâtiments ?",
+            "reponse": "Nos techniciens interviennent sur les utilités et la filtration industrielle qui servent la production. Le cœur du métier reste l'équipement de production, pas la gestion de bâtiment tertiaire."
           }
         ]
       },
       {
         "type": "ctaFinal",
-        "bouton": "Demander une intervention à Nice",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
         "question": "Besoin d'un partenaire technique qui couvre vos sites de Carros à Grasse ?"
       }
     ]
-  }
+  },
+  "trous": []
 }

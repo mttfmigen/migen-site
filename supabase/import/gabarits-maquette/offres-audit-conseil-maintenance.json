@@ -15,12 +15,12 @@
     "brefSurtitre": "En bref",
     "chiffres": [
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels, dont plus de 80 réguliers, autant de sites déjà regardés de près"
+        "valeur": "+200",
+        "libelle": "clients industriels accompagnés"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, le référent qui audite votre site est passé par là"
+        "libelle": "des techniciens retenus, entretien technique et comportemental, le référent qui audite votre site est passé par là"
       },
       {
         "valeur": "10",
@@ -147,7 +147,7 @@
           },
           {
             "accroche": "Le même référent du cadrage à la restitution",
-            "texte": ", évalué comme chaque collaborateur Migen en entretien technique et comportemental : 10 % des candidats retenus."
+            "texte": ", évalué comme chaque collaborateur Migen en entretien technique et comportemental : 10 % des techniciens retenus."
           },
           {
             "accroche": "La confidentialité par défaut",
@@ -196,7 +196,7 @@
           },
           {
             "question": "Qui audite mon site ?",
-            "reponse": "Un référent technique salarié, ingénieur ou technicien de terrain, évalué en entretien technique et comportemental à l'entrée : 10 % des candidats retenus. Pas un consultant de passage qui n'a jamais ouvert une armoire électrique."
+            "reponse": "Un référent technique salarié, ingénieur ou technicien de terrain, évalué en entretien technique et comportemental à l'entrée : 10 % des techniciens retenus. Pas un consultant de passage qui n'a jamais ouvert une armoire électrique."
           },
           {
             "question": "En quoi êtes-vous différents d'un grand cabinet ?",
@@ -204,7 +204,7 @@
           },
           {
             "question": "Intervenez-vous partout en France ?",
-            "reponse": "Oui. Notre siège est à Lyon, avec deux implantations à Limonest et Écully, et trois autres agences à Montréal, Dubaï et Madrid. Nos techniciens sont rattachés à dix hubs, Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes, et ils sont mobiles : un site hors de ces villes est audité comme les autres, le déplacement est simplement posé dans le cadrage."
+            "reponse": "Oui. Nos techniciens sont rattachés à dix hubs, Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon et Nantes, et ils sont mobiles : un site hors de ces villes est audité comme les autres, le déplacement est simplement posé dans le cadrage."
           },
           {
             "question": "Vos intervenants peuvent-ils circuler dans nos ateliers en sécurité ?",
@@ -261,6 +261,7 @@
         "libelle": "Toutes les offres",
         "href": "/offres/"
       }
-    ]
+    ],
+    "pastille": "Nos offres"
   }
 }

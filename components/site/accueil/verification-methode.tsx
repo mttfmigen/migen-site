@@ -180,11 +180,13 @@ const html = renderToStaticMarkup(
 // structure que le module habille, quatre boutons de quatre éléments.
 const boutons = [...html.matchAll(/<button[^>]*>([\s\S]*?)<\/button>/g)];
 assert.equal(boutons.length, 4, "quatre étapes rendues");
+// Pastille, puis numéro, titre et repère (vide quand il a été retiré), chacun
+// avec la `<span>` intérieure que la maquette pose autour de son texte.
 for (const bouton of boutons) {
   assert.equal(
     (bouton[1].match(/<span/g) ?? []).length,
-    4,
-    "chaque étape porte sa pastille, son numéro, son titre et son repère",
+    7,
+    "chaque étape porte sa pastille, son numéro, son titre et la ligne de son repère",
   );
 }
 assert.equal(
@@ -193,13 +195,14 @@ assert.equal(
   "une seule étape choisie au premier rendu",
 );
 
-// -------------------------------- l'écart de copie assumé reste en place
+// -------------------------------- l'écart de copie déclaré reste en place
 // La maquette écrit « 2 à 5 jours » et « 1 à 2 semaines » sous les étapes 01 et
-// 02. Aucun délai chiffré d'intervention n'est autorisé : la substitution est
-// volontaire et ne doit pas être « corrigée » au nom de la fidélité.
+// 02. Aucun délai chiffré n'est autorisé : le repère est RETIRÉ (règle du 08/10,
+// une phrase interdite ne se reformule pas) et ne doit pas revenir au nom de la
+// fidélité.
 for (const etapeMethode of ETAPES_METHODE) {
   assert.doesNotMatch(
-    etapeMethode.quand,
+    etapeMethode.quand ?? "",
     /\d+\s*(à|a)?\s*\d*\s*(jour|semaine|heure|mois|h\b)/i,
     `un délai chiffré est revenu dans l'étape « ${etapeMethode.titre} »`,
   );

@@ -1,0 +1,128 @@
+/* Survols et points de rupture du hub `/carriere/`.
+
+   SURVOLS : relevés PAR ÉLÉMENT dans les attributs `style-hover` de
+   `MigenCarriere.dc.html`, la page que `maquette/site-final-autonome.html`
+   embarque pour `/carriere/` (les classes `scpN` du rendu changent à chaque
+   démarrage, la source ne change pas). Le focus clavier reçoit le même
+   effet que la souris (WCAG 2.4.7).
+
+   POINTS DE RUPTURE : ceux des règles `ck-*` de la même source. */
+
+/* Postuler (héros, bandes) et « Voir les postes ouverts » :
+   style-hover="filter:brightness(.93);color:#fff" */
+.boutonOrange:hover,
+.boutonOrange:focus-visible {
+  filter: brightness(0.93);
+  color: #fff;
+}
+
+/* Le téléphone du héros : style-hover="background:#fff" */
+.boutonTelephone:hover,
+.boutonTelephone:focus-visible {
+  background: #fff;
+}
+
+/* Liens du texte courant : style-hover="color:var(--acc)" */
+.texteLie a {
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline rgba(255, 124, 60, 0.6);
+  text-underline-offset: 3px;
+}
+.texteLie a:hover,
+.texteLie a:focus-visible {
+  color: var(--acc);
+}
+
+/* Cartes des hubs : style-hover="transform:translateY(-4px);color:#fff" */
+.carteHub:hover,
+.carteHub:focus-visible {
+  transform: translateY(-4px);
+  color: #fff;
+}
+
+/* « Pour aller plus loin » : style-hover="transform:translateY(-3px)" */
+.carteLien:hover,
+.carteLien:focus-visible {
+  transform: translateY(-3px);
+}
+
+/* « Poser ma question » :
+   style-hover="filter:brightness(.93);transform:translateY(-1px);color:#fff" */
+.boutonQuestion:hover,
+.boutonQuestion:focus-visible {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+/* Les plis : pas de marqueur natif, le « + » pivote en croix orange
+   (`details[open]>summary>.mg-faqi` de la source). */
+.pli > summary::-webkit-details-marker {
+  display: none;
+}
+.pli[open] > summary > .pliPlus {
+  transform: rotate(45deg);
+  background: var(--acc) !important;
+  color: #fff !important;
+}
+
+/* Le rail des métiers : aucune barre de défilement visible (README). */
+.rail {
+  scrollbar-width: none;
+}
+.rail::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .etapes {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .etapes > * {
+    grid-column: span 1 !important;
+  }
+  .etapes > .dernierImpair {
+    grid-column: span 2 !important;
+  }
+  .avis > * {
+    grid-column: span 3 !important;
+  }
+  .avis > *:last-child:nth-child(odd) {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .deuxColonnes {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 30px !important;
+  }
+  .flottante {
+    position: static !important;
+    margin-top: 12px !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .etapes {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .etapes > .dernierImpair {
+    grid-column: auto !important;
+  }
+  .avis > * {
+    grid-column: 1 / -1 !important;
+  }
+  .pad {
+    padding: 36px 22px !important;
+  }
+}
+
+/* Le panneau-photo des questions (`.mg-faqph` de l'application). */
+@media (max-width: 760px) {
+  .panneauPhoto {
+    padding: 28px 22px !important;
+  }
+}

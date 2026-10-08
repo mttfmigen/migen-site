@@ -1,114 +1,97 @@
 /**
- * Forme du contenu d'une page RESSOURCE, gabarit « isRes » de la maquette
- * (`maquette/accueil-rendu.html`, lignes 6502 à 6800).
+ * Forme du contenu d'une page RESSOURCE, gabarit « 01 Article et fiche » :
+ * les 35 pages `/ressources/<rayon>/<page>/`.
  *
- * POURQUOI UN GABARIT DE PLUS. Les 35 pages feuilles de `/ressources/` sont
- * aujourd'hui servies par le gabarit ÉDITORIAL (`types/editorial.ts`), une
- * colonne de lecture avec un sommaire collant. La maquette en dessine tout
- * autre chose : un en-tête de document avec sa pastille de format, la carte de
- * procédure numérotée, le barème en tableau, les petites cartes collantes, et
- * l'appel de fin. Le sommaire n'y figure NULLE PART. Le client a raison de dire
- * que ces pages ne ressemblent pas à sa maquette : elles rendent le bon texte
- * dans le mauvais dessin.
+ * LA RÉFÉRENCE est le rendu de la maquette autonome, figé dans
+ * `maquette/rendu/ressources--<rayon>--<page>.html`, et le gabarit qui le
+ * produit, `MigenRessource.dc.html` (identique dans le paquet du client et dans
+ * l'autonome). L'ancienne version de ce type était portée contre l'écran
+ * « isRes » de `accueil-rendu.html`, qui n'est le gabarit d'aucune page : même
+ * erreur que celle qui a coûté la journée du 05/10 sur les offres.
  *
- * LE GABARIT ÉDITORIAL N'EST PAS SUPPRIMÉ pour autant. Il sert encore les 24
- * autres pages éditoriales (métiers, entreprise) et les 6 rayons de
- * `/ressources/`, qui sont des pages de liste et relèvent du gabarit
- * « guides » de la maquette, pas de celui-ci.
+ * CINQ SECTIONS, dans cet ordre : héros (fil, pastille, H1, chapo, signature,
+ * photo ou carte du livre blanc), corps (sommaire collant, parties numérotées,
+ * bande d'appel après la deuxième partie), questions fréquentes sur photo,
+ * « Sur le même sujet », appel final.
  *
- * POURQUOI SI PEU DE CHAMPS, ALORS QUE LA MAQUETTE DESSINE SEPT SECTIONS.
- * Parce que les cinq variantes de corps de la maquette (article, métier,
- * pratique, process, technique) ne sont pas cinq jeux de données : ce sont
- * cinq MOTIFS DE DESSIN appliqués au même corps de texte. La carte numérotée de
- * la variante pratique est une liste ordonnée, le barème de la variante
- * technique est un tableau, le bandeau en lavis de la variante process est un
- * encadré. Or le corpus porte déjà ces trois formes dans `corps`, à la place
- * que son auteur leur a donnée. Les hisser dans des champs séparés aurait
- * réordonné la page du client pour rien, et dupliqué les titres. Le motif est
- * donc choisi par le TYPE DE BLOC, en place, dans `CorpsRessource`.
+ * LA DONNÉE EST CELLE QUE LA MAQUETTE CALCULE, pas une interprétation :
+ * `maquette-ressource.ts` porte ses règles (découpage du texte, minutes de
+ * lecture, photo, trois lectures liées) et sait produire chaque fichier. Le
+ * contrôle `verification-ressource.tsx` compare ensuite le rendu à la capture,
+ * section par section, mot pour mot.
  *
- * CE QUE LA MAQUETTE DESSINE ET QUE LE CORPUS NE FOURNIT PAS n'existe pas ici,
- * et c'est la règle du projet (voir `types/contenu.ts`) : pas de champ
- * spéculatif, un champ qu'aucune page ne remplit se rendrait vide ou, pire,
- * inciterait à l'inventer. Sont donc absents, et listés comme tels dans le
- * rapport de portage : la référence en chasse fixe (« FP-01 »), la signature
- * (auteur, rôle, date, durée de lecture), l'image d'ouverture, le lien de
- * téléchargement du PDF, la colonne « acteur » et la colonne « taux de
- * passage » des étapes de process, et le panneau de rémunération de la variante
- * métier, que le contrat refuse de toute façon.
- *
- * TOUT EST OPTIONNEL SAUF `gabarit`. Une section sans donnée ne se rend pas du
- * tout : c'est ce que vérifie `scripts/verifie-ressource.tsx`.
+ * Le texte « en ligne » garde la syntaxe de la maquette : `**gras**`,
+ * `[libellé](/chemin/)` et `**[libellé](/chemin/)**`, rien d'autre. Un chemin
+ * non interne est rendu en texte, sans lien.
  */
 
 import type { Question } from "@/types/contenu";
-import type { BlocEditorial } from "@/types/editorial";
 
-/**
- * Une petite carte de la colonne collante.
- *
- * UN SEUL TYPE POUR LES QUATRE MOTIFS de la maquette, qui ne diffèrent que par
- * les champs remplis : « À retenir » (ligne 6540) porte des `points`, « Aller
- * plus loin » (6546) un lien, « Le piège courant » (6659) le lavis orange,
- * « Référence » (6664) un simple texte. Un champ `motif` à déclarer aurait fait
- * porter aux données une décision que leur contenu dit déjà.
- */
-export interface CarteRessource {
-  /** Surtitre en capitales. Orange, ou orange foncé sur lavis. */
-  surtitre: string;
-  titre?: string;
-  texte?: string;
-  points?: string[];
-  /**
-   * Rend la carte entière cliquable, motif « Aller plus loin ».
-   *
-   * Chemin INTERNE obligatoire, slash final : une cible externe est refusée au
-   * rendu, comme partout ailleurs dans le cocon.
-   */
-  lienLibelle?: string;
-  lienHref?: string;
-  /** Carte en lavis orange plutôt qu'en verre. */
-  accent?: boolean;
+/** Le deuxième segment de l'URL. Il donne la pastille et le fil d'Ariane. */
+export type RayonRessource =
+  | "articles"
+  | "fiches-pratiques"
+  | "fiches-techniques"
+  | "livres-blancs"
+  | "process";
+
+/** Un bloc du corps, dans l'un des six motifs de `blocks()` de la maquette. */
+export type BlocRessource =
+  /** Prose, texte en ligne. */
+  | { type: "paragraphe"; texte: string }
+  /** Ligne `### ` du texte, texte brut. */
+  | { type: "intertitre"; texte: string }
+  /** Carte blanche à coches orange, texte en ligne par entrée. */
+  | { type: "puces"; items: string[] }
+  /** Pastilles orange numérotées 01, 02…, texte en ligne par étape. */
+  | { type: "etapes"; items: string[] }
+  /** Tableau en carte blanche, cellules en texte brut. */
+  | { type: "tableau"; entetes: string[]; lignes: string[][] }
+  /** Encadré en lavis orange (une citation `> ` du texte), texte en ligne. */
+  | { type: "encadre"; texte: string };
+
+/** Une partie `## ` du texte : une entrée de sommaire, un H2 numéroté. */
+export interface PartieRessource {
+  titre: string;
+  blocs: BlocRessource[];
+}
+
+/** Une carte de « Sur le même sujet ». */
+export interface LectureRessource {
+  href: string;
+  titre: string;
+  minutes: number;
+  /** Chemin public de la photo, `/assets/web/<nom>.jpg`. */
+  image: string;
 }
 
 export interface ContenuRessource {
   gabarit: "ressource";
-
-  /** La pastille orange de l'en-tête : « Article », « Fiche technique ». */
-  categorie?: string;
-  /** Le paragraphe sous le H1. Le H1 vient de `pages.titre_h1`. */
-  chapeau?: string;
-
+  /** Toujours rempli dans les fichiers (le contrôle l'exige) ; optionnel pour
+   *  qu'un contenu réduit à son gabarit reste rendable : titre et appel seuls. */
+  rayon?: RayonRessource;
+  /** Les deux premiers paragraphes du texte, sous le H1. Texte en ligne. */
+  chapo?: string[];
+  /** « N min de lecture » de la signature. */
+  minutes?: number;
   /**
-   * Le bandeau en lavis orange sous l'en-tête, motif de la ligne 6716.
-   *
-   * C'est la phrase de rappel téléphonique du corpus, la seule mention de délai
-   * que le contrat autorise.
+   * La photo du héros. Absente sur un livre blanc : la maquette y pose la carte
+   * de téléchargement à la place.
    */
-  rappel?: string;
-
-  /** Les cartes de la colonne collante (ligne 6538). */
-  cartes?: CarteRessource[];
-
-  /**
-   * Le corps de la page, tel que le client l'a écrit et dans son ordre.
-   *
-   * Même type que le gabarit éditorial, et c'est voulu : c'est le même corpus,
-   * déjà analysé, déjà relu. Seul le DESSIN change.
-   */
-  corps?: BlocEditorial[];
-
-  /** La foire aux questions, rendue par le bloc `Objections` déjà porté. */
+  image?: string;
+  /** Les blocs d'introduction qui ne sont pas le chapo, avant la partie 01. */
+  avant?: BlocRessource[];
+  parties?: PartieRessource[];
   questions?: Question[];
+  aLire?: LectureRessource[];
 }
 
 /**
  * Le contenu est-il celui d'une page ressource ?
  *
- * Lu sur un `jsonb`, donc sur de l'`unknown` : on ne se fie pas au type
- * déclaré, on regarde ce qu'il y a. Le test porte sur `gabarit` et non sur la
- * présence de `corps`, parce qu'`estEditorial` teste `blocs` : les deux formes
- * doivent se distinguer sans ambiguïté, quel que soit l'ordre des essais.
+ * Lu sur un `jsonb`, donc sur de l'`unknown` : on regarde ce qu'il y a. Le test
+ * porte sur `gabarit` et non sur un champ, parce qu'`estEditorial` teste
+ * `blocs` : les formes doivent se distinguer quel que soit l'ordre des essais.
  */
 export function estRessource(contenu: unknown): contenu is ContenuRessource {
   return (

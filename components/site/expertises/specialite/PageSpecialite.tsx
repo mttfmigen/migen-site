@@ -1,8 +1,9 @@
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import OffresDomaine from "@/components/site/expertises/domaine/OffresDomaine";
+import ProblemeDomaine from "@/components/site/expertises/domaine/ProblemeDomaine";
 import SecteursDomaine from "@/components/site/expertises/domaine/SecteursDomaine";
 import AppelFinal from "@/components/site/offre/AppelFinal";
 import ComplementsOffre from "@/components/site/offre/ComplementsOffre";
@@ -13,7 +14,6 @@ import LogosClients from "@/components/site/offre/LogosClients";
 import MarquesOffre from "@/components/site/offre/MarquesOffre";
 import PanneauFormulaire from "@/components/site/offre/PanneauFormulaire";
 import PointsOffre from "@/components/site/offre/PointsOffre";
-import ProblemeOffre from "@/components/site/offre/ProblemeOffre";
 import Reassurance from "@/components/site/offre/Reassurance";
 import ReferencesOffre from "@/components/site/offre/ReferencesOffre";
 import {
@@ -38,6 +38,8 @@ import QuestionsPhoto from "@/components/site/offres/QuestionsPhoto";
 import type { Section, TypeSection } from "@/types/contenu";
 import type { ContenuSpecialite } from "@/types/specialite";
 
+import ComplementSpecialite from "./ComplementSpecialite";
+import DomainesSpecialite from "./DomainesSpecialite";
 import styles from "./PageSpecialite.module.css";
 
 /**
@@ -52,11 +54,16 @@ import styles from "./PageSpecialite.module.css";
  *  1. 01 Chiffres    les chiffres de la page dans UNE carte en verre
  *  2. 02 Logos       « Ils nous font confiance »        → `LogosClients`
  *  3. Réassurance    « Certifications » + « Qui intervient chez vous »
+ *  —  02 Domaines    absent des pilotes, rendu si la donnée le porte
+ *                    (conditionnelle, préventive, prévisionnelle : 17 sections)
+ *  —  Complément 2   absent des pilotes, la prose à tableaux de six types de
+ *                    maintenance                     → `ComplementSpecialite`
  *  4. 03 Problème    « Votre problématique », puces 01-04     ← corpus
+ *                    trois dessins, `variante`        → `ProblemeDomaine`
  *  5. 04 Offre       « L'offre », 7 points                     ← corpus
  *  6. Appel · offre  bande SOMBRE (fond `var(--panel)`)   → `BandeAppel`
  *  —  Complément 4   absent de fanuc et d'abb, rendu si la donnée le porte
- *                    (les pages de domaine, 16 sections, le rendent)
+ *                    (16 des 17 autres pages)        → `ComplementsOffre`
  *  7. 05 Déroulé     « Notre méthode », étapes 01-06           ← corpus
  *  8. 06 Garanties   « Notre parti pris », panneau sombre      ← corpus
  *  9. Secteurs       « Même expertise, contraintes différentes », copie FIXE
@@ -72,10 +79,13 @@ import styles from "./PageSpecialite.module.css";
  * `expertises--robotique--fanuc` (05) sont identiques balise à balise, et les
  * deux écrans fixes sont identiques au caractère près sur les quatre captures
  * comparées. Les écrans sont donc IMPORTÉS, jamais recopiés : ceux du gabarit
- * 03 depuis `components/site/offre/`, les deux écrans fixes depuis
- * `components/site/expertises/domaine/`. La seule différence rendue : le rail
- * d'onglets de « Marques maintenues » (`marquesFamilles`), que la capture
- * d'abb rend et qu'aucune page de domaine ne porte.
+ * 03 depuis `components/site/offre/`, les deux écrans fixes et le problème
+ * depuis `components/site/expertises/domaine/`. Propres à ce gabarit : le rail
+ * d'onglets de « Marques maintenues » (`marquesFamilles`, abb), et les deux
+ * écrans des types de maintenance relevés le 08/10 sur les 17 autres
+ * captures, « 02 Domaines » et « Complément 2 », rendus ici faute d'exister
+ * ailleurs (le second porte des tableaux que `ComplementsOffre` ne sait pas
+ * poser).
  *
  * LE DESSIN vient du gabarit (capture), LE TEXTE vient du corpus via le relais
  * JSON, rien ne s'invente. Composant SERVEUR. Fil d'Ariane et maillage du
@@ -127,15 +137,13 @@ export default function PageSpecialite({
   const heroFormulaire = typeof contenu.formulaireHeroTitre === "string";
 
   return (
-    <div className="mg-site">
-      <main style={{ paddingTop: 96 }}>
-        {filAriane ? (
-          <section
-            style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 40px 0" }}
-          >
-            {filAriane}
-          </section>
-        ) : null}
+    /* La racine `.mgx-root` de `MigenExpertise` : `--sec` reste à 120 px sur
+       mobile (la règle « --sec: 64px » de `.mg-site` ne l'atteint pas), et les
+       règles mobiles du gabarit sont celles que `PageOffre.module.css` porte
+       sous `.gabarit`. Mesuré le 08/10 à 390 px : 120 px dans la maquette. */
+    <div className={`mg-site ${stylesOffre.gabarit}`} style={{ "--sec": "120px" } as CSSProperties}>
+      <main style={{ paddingTop: 62 }}>
+        {filAriane}
 
         {/* ------------------------------------------------ 0. « 01 Héros » */}
 
@@ -216,14 +224,13 @@ export default function PageSpecialite({
 
         {/* -------------------------------------------- 1. « 01 Chiffres » */}
 
-        {/* TROU DÉCLARÉ : les captures pilotes dessinent ici TROIS chiffres
-            dont « +200 clients industriels », que le contrat interdit
-            (CLAUDE.md §9). Ce chiffre n'est pas dans la donnée, la grille se
-            resserre sur ce qui reste, même arbitrage que le gabarit 09. */}
+        {/* Les chiffres de la capture, « +200 / Clients industriels
+            accompagnés » compris (README de passation : +200, jamais
+            « réguliers »). `g3-hs`, comme la capture : une colonne sous 620 px. */}
         {chiffres.length > 0 ? (
           <section style={SECTION_CHIFFRES}>
             <div
-              className="mg-rmulti"
+              className="g3-hs"
               style={{
                 ...GRILLE_CHIFFRES,
                 gridTemplateColumns: `repeat(${chiffres.length},minmax(0,1fr))`,
@@ -254,10 +261,35 @@ export default function PageSpecialite({
 
         <Reassurance />
 
+        {/* ---------------------------------------- 3 bis. « 02 Domaines » */}
+
+        {/* Absent des pilotes. Rendu par la conditionnelle, la préventive et
+            la prévisionnelle : voir `DomainesSpecialite.tsx`. */}
+        {contenu.domainesTitre && contenu.domaines?.length ? (
+          <DomainesSpecialite
+            titre={contenu.domainesTitre}
+            cartes={contenu.domaines}
+          />
+        ) : null}
+
+        {/* --------------------------------------- 3 ter. « Complément 2 » */}
+
+        {/* Absent des pilotes. La prose à tableaux de six types de
+            maintenance : voir `ComplementSpecialite.tsx`. */}
+        {contenu.complementTypes?.length ? (
+          <ComplementSpecialite blocs={contenu.complementTypes} />
+        ) : null}
+
         {/* ------------------------------------------ 4. « 03 Problème » */}
 
+        {/* `ProblemeDomaine` et non `ProblemeOffre` : les trois dessins de la
+            source (`pbSplit`, `pbCards`, `pbDark`), le gabarit 09 les porte
+            valeur pour valeur. Le dessin « colonne » (fanuc) lui reste
+            délégué à `ProblemeOffre`, inchangé ; « rangee » (abb et trois
+            autres pages) et « panneau-sombre » (neuf pages) prennent enfin
+            ceux de leurs captures. */}
         {probleme ? (
-          <ProblemeOffre
+          <ProblemeDomaine
             section={probleme}
             altPhoto={titre}
             photo={contenu.problemePhoto}

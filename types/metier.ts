@@ -236,7 +236,9 @@ export type SectionFiche =
   /** La section-formulaire #postuler : toute sa copie est fixe, relevée de la
    *  capture et identique sur les 13 pages (vérifié à l'extraction). */
   | { type: "postuler" }
-  | { type: "liens"; items: { libelle: string; href: string }[] };
+  /** `photo` : le fichier que la maquette pose sur la carte, identifié par
+   *  empreinte sha256 contre `public/assets/web` (relevé du 08/10). */
+  | { type: "liens"; items: { libelle: string; href: string; photo?: string }[] };
 
 export interface HerosFiche {
   /** « Métier » dans la pastille du héros. */
@@ -247,6 +249,8 @@ export interface HerosFiche {
   paragraphes?: string[];
   /** La carte de verre flottante sur la photo : « 10 % », sa légende. */
   chiffre?: { valeur: string; texte: string };
+  /** La photo du héros, identifiée comme celles des cartes de `liens`. */
+  photo?: PhotoMetier;
 }
 
 export interface ContenuFicheMetier {

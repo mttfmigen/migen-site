@@ -1,162 +1,202 @@
 {
   "url": "/secteurs/industrie-metallique/",
-  "source": "dessin : maquette/accueil-rendu.html, gabarit isSecteur, lignes 6278 à 6364. texte : supabase/import/corpus-analyse.json, produit par scripts/produit-secteurs.mjs.",
+  "titre_h1": "Vos presses et vos lignes, remises en route avant qu’elles ne coûtent.",
+  "source": "dessin : maquette/rendu/secteurs--industrie-metallique.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {
     "gabarit": "secteur",
-    "surtitre": "Secteur d'activité",
+    "pastille": "Maintenance industrie métallique",
     "chapeau": "Des techniciens qui viennent de vos machines : mécanique générale, usinage, chaudronnerie, soudure. Nous suivons l'usure par la mesure, jeux, géométrie, vibrations, pour programmer le remplacement au lieu de le subir.",
     "actions": [
       {
         "libelle": "Faire chiffrer la maintenance de mon atelier",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperesSurtitre": "Nos repères dans le secteur",
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés couvre les ateliers qui tournent en continu.",
+    "formulaireHeroTitre": "Faire chiffrer la maintenance de mon atelier",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon au centre du premier bassin métallurgique français, puis Montréal, Dubaï et Madrid"
+        "libelle": "Agences, Lyon au centre du premier bassin métallurgique français, puis Montréal, Dubaï et Madrid"
       },
       {
-        "valeur": "+ 80",
-        "libelle": "clients réguliers, du sous-traitant automobile au fabricant de machines"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       }
     ],
-    "enjeuxSurtitre": "Les enjeux du secteur",
-    "enjeuxTitre": "Le centre d'usinage n'est pas tombé en panne. Il a dérivé. Et vous l'avez su en contrôlant les pièces.",
-    "enjeux": [
+    "logosTitre": "Ils nous confient leurs sites industriels",
+    "logos": [
       {
-        "titre": "La dérive de la machine se paie en rebuts sur le produit fini.",
-        "texte": "Broches, glissières, vis à billes, changeurs d'outils : la précision de la pièce sort de celle de la machine."
+        "nom": "Eaton",
+        "src": "/assets/clients/mq-70bce765c1a2.svg"
       },
       {
-        "titre": "La poussière métallique s'infiltre partout.",
-        "texte": "Elle encrasse les armoires, use les guidages, et personne ne facture jamais le nettoyage technique."
+        "nom": "Mersen",
+        "src": "/assets/clients/mq-eb9461b85e59.svg"
       },
       {
-        "titre": "La soudure est l'environnement le plus dur pour l'électronique.",
-        "texte": "Postes, potences, robots, aspiration : les automatismes vieillissent sous les projections et les champs."
+        "nom": "Suez",
+        "src": "/assets/clients/mq-89100525ef89.svg"
       },
       {
-        "titre": "La structure en acier du hall travaille autant que les machines qu'elle surplombe.",
-        "texte": "Ponts roulants, palonniers, retourneurs, corrosion."
+        "nom": "Eiffage",
+        "src": "/assets/clients/mq-21daf7c60970.svg"
       },
       {
-        "titre": "La maintenance corrective seule mène au mur.",
-        "texte": "Défaillance après défaillance, jusqu'à la casse qui coûte dix fois le préventif qu'on n'a pas fait."
+        "nom": "Ecocem",
+        "src": "/assets/clients/ecocem.png"
+      },
+      {
+        "nom": "Groupe Atlantic",
+        "src": "/assets/clients/groupe-atlantic.png",
+        "filtre": "invert(1) hue-rotate(180deg)"
+      },
+      {
+        "nom": "Tournaire",
+        "src": "/assets/clients/mq-7c01e175985e.png"
+      },
+      {
+        "nom": "Rector Lesage",
+        "src": "/assets/clients/rector-lesage.png"
+      },
+      {
+        "nom": "Joint Lyonnais",
+        "src": "/assets/clients/joint-lyonnais.png"
+      },
+      {
+        "nom": "Soprema",
+        "src": "/assets/clients/mq-127f9e03c53b.svg"
+      },
+      {
+        "nom": "WashTec",
+        "src": "/assets/clients/orthus-x-washtec.svg"
       }
     ],
-    "autresSurtitre": "Les autres secteurs",
-    "autres": [
-      {
-        "libelle": "Agroalimentaire",
-        "href": "/secteurs/agroalimentaire/"
-      },
-      {
-        "libelle": "Équipements logistiques",
-        "href": "/secteurs/logistique/"
-      },
-      {
-        "libelle": "Automobile",
-        "href": "/secteurs/automobile/"
-      },
-      {
-        "libelle": "Pharmaceutique",
-        "href": "/secteurs/pharmaceutique/"
-      },
-      {
-        "libelle": "Aéronautique",
-        "href": "/secteurs/aeronautique/"
-      },
-      {
-        "libelle": "Chimie",
-        "href": "/secteurs/chimie/"
-      },
-      {
-        "libelle": "Nucléaire",
-        "href": "/secteurs/nucleaire/"
-      },
-      {
-        "libelle": "Industrie lourde",
-        "href": "/secteurs/industrie-lourde/"
-      },
-      {
-        "libelle": "Menuiserie industrielle",
-        "href": "/secteurs/menuiserie-industrielle/"
-      }
-    ],
-    "appelTitre": "Besoin d'un suivi d'usure sur vos machines clés avant la prochaine casse ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
-      "libelle": "Parler à un chargé d'affaires",
-      "href": "#formulaire"
+    "appelBouton": "Faire chiffrer la maintenance de mon atelier",
+    "problemePhoto": null,
+    "brefBande": "Besoin de savoir lesquelles de vos machines dérivent avant qu'elles ne produisent du rebut ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Faire chiffrer la maintenance de mon atelier",
+      "href": "#besoin"
     },
-    "complement": [
+    "expertisesTitre": "Les expertises de la transformation du métal",
+    "expertisesChapeau": "Laminage, découpe, usinage : des machines qui chauffent, vibrent et s’usent vite.",
+    "expertises": [
+      {
+        "titre": "Mécanique",
+        "texte": "Machines-outils, laminoirs et cisailles : jeux, alignements, remplacements.",
+        "href": "/expertises/mecanique/",
+        "photo": "/assets/web/team-grind-front.jpg"
+      },
+      {
+        "titre": "Hydraulique",
+        "texte": "Presses et cisailles hydrauliques, circuits haute pression.",
+        "href": "/expertises/hydraulique/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
+      },
+      {
+        "titre": "Soudure",
+        "texte": "Réparation de bâtis et d’outillages, remise en état sur site.",
+        "href": "/expertises/soudure/",
+        "photo": "/assets/web/team-grind-close.jpg"
+      },
+      {
+        "titre": "Automatisme",
+        "texte": "Commandes numériques et automates de ligne.",
+        "href": "/expertises/automatisme/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      }
+    ],
+    "marquesFamille": "mo",
+    "sections": [
+      {
+        "type": "probleme",
+        "variante": "rangee",
+        "punchline": "Le centre d'usinage n'est pas tombé en panne. Il a dérivé. Et vous l'avez su en contrôlant les pièces.",
+        "puces": [
+          {
+            "accroche": "La dérive de la machine se paie en rebuts sur le produit fini.",
+            "texte": "Broches, glissières, vis à billes, changeurs d'outils : la précision de la pièce sort de celle de la machine."
+          },
+          {
+            "accroche": "La poussière métallique s'infiltre partout.",
+            "texte": "Elle encrasse les armoires, use les guidages, et personne ne facture jamais le nettoyage technique."
+          },
+          {
+            "accroche": "La soudure est l'environnement le plus dur pour l'électronique.",
+            "texte": "Postes, potences, robots, aspiration : les automatismes vieillissent sous les projections et les champs."
+          },
+          {
+            "accroche": "La structure en acier du hall travaille autant que les machines qu'elle surplombe.",
+            "texte": "Ponts roulants, palonniers, retourneurs, corrosion."
+          },
+          {
+            "accroche": "La maintenance corrective seule mène au mur.",
+            "texte": "Défaillance après défaillance, jusqu'à la casse qui coûte dix fois le préventif qu'on n'a pas fait."
+          }
+        ]
+      },
       {
         "type": "offre",
         "lignes": [
           {
             "prestation": {
-              "texte": "**Cartographie du parc par criticité et par état.**"
+              "accroche": "Cartographie du parc par criticité et par état."
             },
             "benefice": "L'analyse de départ donne la photo honnête dont toute la suite découle, machine par machine."
           },
           {
             "prestation": {
               "accroche": "Suivi d'usure mesuré",
-              "texte": "jeux, géométrie, vibrations, températures, relevés comparés d'une visite à l'autre."
+              "texte": "Jeux, géométrie, vibrations, températures, relevés comparés d'une visite à l'autre."
             },
             "benefice": "Le remplacement se programme. Les arrêts subis reculent parce que la dérive est vue à temps."
           },
           {
             "prestation": {
               "accroche": "Contrôles géométriques après réparation",
-              "texte": "niveaux, équerrages, jeux, avec les moyens de mesure adaptés."
+              "texte": "Niveaux, équerrages, jeux, avec les moyens de mesure adaptés."
             },
             "benefice": "La précision retrouvée est vérifiée et enregistrée, pas supposée. C'est ce qui sépare une réparation d'un remontage."
           },
           {
             "prestation": {
               "accroche": "Machines de tôlerie et de chaudronnerie",
-              "texte": "découpe laser, poinçonneuses, plieuses, rouleuses, presses hydrauliques, cintreuses, positionneurs."
+              "texte": "Découpe laser, poinçonneuses, plieuses, rouleuses, presses hydrauliques, cintreuses, positionneurs."
             },
             "benefice": "Un seul prestataire du débit à l'assemblage, au lieu d'un contrat par famille de machines."
           },
           {
             "prestation": {
               "accroche": "Robots et automatismes",
-              "texte": "cellules de soudure, d'assemblage et de manipulation, avec nos roboticiens ABB et Fanuc et nos automaticiens SIEMENS et Schneider."
+              "texte": "Cellules de soudure, d'assemblage et de manipulation, avec nos roboticiens ABB et Fanuc et nos automaticiens SIEMENS et Schneider."
             },
             "benefice": "Le parc robotisé cesse d'attendre le constructeur pour un défaut que nous savons traiter."
           },
           {
             "prestation": {
-              "accroche": "Nettoyage technique intégré aux gammes",
-              "texte": ", tracé comme le reste."
+              "accroche": "Nettoyage technique intégré aux gammes tracé comme le reste."
             },
             "benefice": "La poussière métallique cesse d'être le problème que personne ne prend, et les armoires tiennent plus longtemps."
           },
           {
             "prestation": {
               "accroche": "Utilités d'atelier",
-              "texte": "compresseurs, aspirations centralisées, tuyauteries d'air, distribution électrique, levage."
+              "texte": "Compresseurs, aspirations centralisées, tuyauteries d'air, distribution électrique, levage."
             },
             "benefice": "Le socle du site est suivi, lui qui tombe toujours au pire moment."
           },
           {
             "prestation": {
-              "texte": "**Historique complet par machine, dans votre GMAO.**"
+              "accroche": "Historique complet par machine, dans votre GMAO."
             },
             "benefice": "Un parc documenté vaut quelque chose le jour d'un audit, d'un investissement ou d'une cession."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Notre [bureau d'études](/offres/bureau-etudes/) accompagne les modifications, de la conception au chantier : reprise d'un poste, capotage, mise en conformité d'une machine, amélioration de ligne. Le détail machine est sur notre page [maintenance machine outil](/expertises/mecanique/machine-outil/), et les équipements les plus massifs relèvent de l'[industrie lourde](/secteurs/industrie-lourde/)."
           }
         ]
       },
@@ -165,23 +205,23 @@
         "etapes": [
           {
             "titre": "État des lieux",
-            "texte": "visite de l'atelier, classement des équipements par criticité et par état, relevés de référence sur les machines clés."
+            "texte": "Visite de l'atelier, classement des équipements par criticité et par état, relevés de référence sur les machines clés."
           },
           {
             "titre": "Plan priorisé",
-            "texte": "fréquences calées sur vos heures de fonctionnement, points de contrôle par type de machine, pièces d'usure identifiées."
+            "texte": "Fréquences calées sur vos heures de fonctionnement, points de contrôle par type de machine, pièces d'usure identifiées."
           },
           {
             "titre": "Première campagne",
-            "texte": "traitement des urgences réelles, remise à niveau des points sensibles, aspiration et utilités comprises."
+            "texte": "Traitement des urgences réelles, remise à niveau des points sensibles, aspiration et utilités comprises."
           },
           {
             "titre": "Cycle de suivi",
-            "texte": "relevés d'usure comparés, remplacements programmés au seuil, contrôles de précision quand la machine l'exige."
+            "texte": "Relevés d'usure comparés, remplacements programmés au seuil, contrôles de précision quand la machine l'exige."
           },
           {
             "titre": "Revue",
-            "texte": "disponibilité, récurrence, coût par équipement. L'arbitrage entre remise en état, remplacement et solution neuve se fait sur des chiffres."
+            "texte": "Disponibilité, récurrence, coût par équipement. L'arbitrage entre remise en état, remplacement et solution neuve se fait sur des chiffres."
           }
         ]
       },
@@ -190,11 +230,11 @@
         "puces": [
           {
             "accroche": "La cause avant la pièce",
-            "texte": "une casse récurrente a une raison. Nous cherchons l'origine, et le compte rendu la nomme, même quand elle vient d'un réglage ou d'un usage."
+            "texte": "Une casse récurrente a une raison. Nous cherchons l'origine, et le compte rendu la nomme, même quand elle vient d'un réglage ou d'un usage."
           },
           {
             "accroche": "Des contrôles de précision enregistrés",
-            "texte": "quand la machine l'exige, la remise en service inclut niveaux, équerrages et jeux, avec les valeurs consignées dans votre historique."
+            "texte": "Quand la machine l'exige, la remise en service inclut niveaux, équerrages et jeux, avec les valeurs consignées dans votre historique."
           },
           {
             "accroche": "Vos données restent les vôtres",
@@ -203,49 +243,61 @@
         ]
       },
       {
-        "type": "cta",
-        "question": "Besoin de savoir lesquelles de vos machines dérivent avant qu'elles ne produisent du rebut ?",
-        "bouton": "Faire chiffrer la maintenance de mon atelier",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
-      },
-      {
         "type": "preuves",
         "preuves": [
           {
             "titre": "Technicien intégré à temps plein sur centres d'usinage, presses et machines à commande numérique, pièces mécaniques de précision",
             "texte": "en 2025",
             "lienLibelle": "Étude de cas VOIT : site du Grand Est",
-            "lienHref": "/preuves/voit-grand-est/"
+            "lienHref": "/preuves/voit-grand-est/",
+            "photo": "/assets/web/mq-e69a240d8656.jpg"
           },
           {
-            "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, 7 jours sur 7",
+            "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage",
             "texte": "Dompierre-sur-Besbre, depuis octobre 2023",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
-            "lienHref": "/preuves/stellantis-fonderie-sept-fons/"
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne de production neuve, matériaux",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
-            "lienHref": "/preuves/mersen/"
+            "lienHref": "/preuves/mersen/",
+            "photo": "/assets/web/mq-752675f1ed93.jpg"
           },
           {
             "titre": "Diagnostic sur site et réparation d'un parc machines défaillant, sans rachat de matériel neuf",
             "texte": "PME lyonnaise, février 2024",
             "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines",
-            "lienHref": "/preuves/joint-lyonnais/"
+            "lienHref": "/preuves/joint-lyonnais/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "Techniciens intégrés pour sécuriser la maintenance des installations d'un équipementier",
             "texte": "en 2025",
             "lienLibelle": "Étude de cas JTEKT : maintenance des installations",
-            "lienHref": "/preuves/jtekt/"
+            "lienHref": "/preuves/jtekt/",
+            "photo": "/assets/web/mq-5b47b5f6a584.jpg"
           },
           {
             "titre": "Six techniciens pour l'installation et la mise en production d'un parc machine neuf",
             "texte": "depuis janvier 2023",
             "lienLibelle": "Étude de cas EATON : mise en production",
-            "lienHref": "/preuves/eaton-mise-en-production/"
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+          },
+          {
+            "titre": "Des commandes numériques remises en route à chaque équipe",
+            "lienLibelle": "Étude de cas Jeld-Wen",
+            "lienHref": "/preuves/jeld-wen/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+          },
+          {
+            "titre": "Une alliance pour tenir les installations intralogistiques de ses clients",
+            "lienLibelle": "Étude de cas Savoye",
+            "lienHref": "/preuves/savoye/",
+            "photo": "/assets/web/mq-42237c1c8685.jpg"
           }
         ]
       },
@@ -277,6 +329,12 @@
             "reponse": "Le rappel arrive dans l'heure aux horaires ouvrés. Ensuite tout dépend de la qualification : une panne bloquante mobilise le hub de techniciens le plus proche, une visite d'état des lieux se cale à votre convenance. Pour un contrat ou des travaux lourds, l'état des lieux se fait sur site, machine par machine."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin d'un suivi d'usure sur vos machines clés avant la prochaine casse ?",
+        "bouton": "Parler à un chargé d'affaires",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
       }
     ]
   }

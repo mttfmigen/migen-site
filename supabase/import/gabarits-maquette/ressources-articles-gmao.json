@@ -1,340 +1,248 @@
 {
   "url": "/ressources/articles/gmao/",
-  "h1": "Gestion de maintenance assistée par ordinateur",
+  "titre_h1": "Gestion de maintenance assistée par ordinateur",
   "contenu": {
     "gabarit": "ressource",
-    "categorie": "Article",
-    "chapeau": "Votre service maintenance pilote encore ses interventions sur un tableur et trois classeurs. Le jour où le technicien qui connaît la ligne s'absente, l'information part avec lui.",
-    "rappel": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30, pour un diagnostic maintenance : 04 78 33 72 05.",
-    "cartes": [
+    "rayon": "articles",
+    "chapo": [
+      "Votre service maintenance pilote encore ses interventions sur un tableur et trois classeurs. Le jour où le technicien qui connaît la ligne s'absente, l'information part avec lui.",
+      "La gestion de maintenance assistée par ordinateur, la GMAO, remplace ce système fragile par un logiciel d'assistance unique. Cet outil centralise les équipements, les interventions et le stock de pièces d'une entreprise. Cette page de nos [Ressources : Articles](/ressources/articles/) donne la définition, la méthode de mise en place et un exemple concret, par des techniciens qui interviennent en entreprise tous les jours."
+    ],
+    "avant": [
       {
-        "surtitre": "Aller plus loin",
-        "titre": "Suivi de la maintenance",
-        "lienHref": "/ressources/articles/suivi-de-la-maintenance/",
-        "lienLibelle": "La page complète →"
+        "type": "encadre",
+        "texte": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30, pour un diagnostic maintenance : ."
       }
     ],
-    "corps": [
+    "parties": [
       {
-        "type": "paragraphe",
-        "texte": "La gestion de maintenance assistée par ordinateur, la GMAO, remplace ce système fragile par un logiciel d'assistance unique. Cet outil centralise les équipements, les interventions et le stock de pièces d'une entreprise. Cette page de nos [Ressources : Articles](/ressources/articles/) donne la définition, la méthode de mise en place et un exemple concret, par des techniciens qui interviennent en entreprise tous les jours."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "La gestion de maintenance assistée par ordinateur, sans jargon",
-        "id": "la-gestion-de-maintenance-assistee-par-ordinateu"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Une GMAO, gestion de maintenance de toute l'entreprise, est un logiciel qui centralise toute l'activité de maintenance d'une entreprise dans une seule base de données. Fini le savoir dispersé dans les têtes et les tiroirs."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "La gestion de maintenance assistée par ordinateur, sans jargon",
+        "blocs": [
           {
-            "accroche": "La définition",
-            "texte": "La gestion de maintenance assistée par ordinateur désigne un système informatique d'assistance qui planifie, suit et analyse les opérations de maintenance sur un parc d'équipements. Le sigle anglais est CMMS, computerized maintenance management system."
+            "type": "paragraphe",
+            "texte": "Une GMAO, gestion de maintenance de toute l'entreprise, est un logiciel qui centralise toute l'activité de maintenance d'une entreprise dans une seule base de données. Fini le savoir dispersé dans les têtes et les tiroirs."
           },
           {
-            "accroche": "Ce que le logiciel couvre",
-            "texte": "Le matériel et son historique, les demandes et les ordres de travaux, aussi appelés bons de travail, le stock de pièces, la maintenance préventive et corrective, le personnel technique et son planning. La gestion du personnel entre ainsi dans le même outil."
+            "type": "puces",
+            "items": [
+              "**La définition** : La gestion de maintenance assistée par ordinateur désigne un système informatique d'assistance qui planifie, suit et analyse les opérations de maintenance sur un parc d'équipements. Le sigle anglais est CMMS, computerized maintenance management system.",
+              "**Ce que le logiciel couvre** : Le matériel et son historique, les demandes et les ordres de travaux, aussi appelés bons de travail, le stock de pièces, la maintenance préventive et corrective, le personnel technique et son planning. La gestion du personnel entre ainsi dans le même outil.",
+              "**La donnée au centre** : Chaque intervention nourrit la base. Cette assistance transforme une suite de dépannages en information exploitable, utile pour décider où mettre l'argent et le temps.",
+              "**La différence avec l'EAM** : L'EAM, enterprise asset management, élargit la GMAO à la gestion des actifs sur tout leur cycle de vie. Le progiciel de GMAO, lui, reste au plus près du terrain de la maintenance industrielle."
+            ]
           },
           {
-            "accroche": "La donnée au centre",
-            "texte": "Chaque intervention nourrit la base. Cette assistance transforme une suite de dépannages en information exploitable, utile pour décider où mettre l'argent et le temps."
-          },
-          {
-            "accroche": "La différence avec l'EAM",
-            "texte": "L'EAM, enterprise asset management, élargit la GMAO à la gestion des actifs sur tout leur cycle de vie. Le progiciel de GMAO, lui, reste au plus près du terrain de la maintenance industrielle."
+            "type": "paragraphe",
+            "texte": "Cette assistance logicielle ne se limite pas à l'industrie. Le secteur de la santé gère ses équipements médicaux avec une GMAO, les hôpitaux, la santé publique, les collectivités et l'administration aussi, avec la même assistance logicielle. La même méthode de suivi des interventions vaut pour un parc de production comme pour un patrimoine de bâtiments. Un hôpital suit ainsi son matériel médical, une collectivité son patrimoine, avec le même souci de disponibilité. Dans ce domaine, la mise en œuvre d'une solution gmao suit toujours la même règle : l'outil sert la maintenance, il ne la remplace pas."
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "Cette assistance logicielle ne se limite pas à l'industrie. Le secteur de la santé gère ses équipements médicaux avec une GMAO, les hôpitaux, la santé publique, les collectivités et l'administration aussi, avec la même assistance logicielle. La même méthode de suivi des interventions vaut pour un parc de production comme pour un patrimoine de bâtiments. Un hôpital suit ainsi son matériel médical, une collectivité son patrimoine, avec le même souci de disponibilité. Dans ce domaine, la mise en œuvre d'une solution gmao suit toujours la même règle : l'outil sert la maintenance, il ne la remplace pas."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "GMAO, à quoi sert cet outil dans un atelier",
-        "id": "gmao-a-quoi-sert-cet-outil-dans-un-atelier"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Un logiciel de gestion de la maintenance ne se juge pas sur son nombre de fonctionnalités, mais sur les problèmes qu'il règle. Chaque équipement reçoit un code unique, et cette assistance suit ensuite tout ce qui lui arrive. Sur une même page, le code de la machine, sa fiche, son planning et ses documents se retrouvent réunis. Voici les modules qui servent vraiment au quotidien dans l'entreprise. Au sein de l'entreprise, la GMAO relie chaque intervenant à sa mission : le technicien au pied du code équipement, le magasinier au stock, le responsable au tableau de bord. La maintenance au sein du site cesse d'être une somme d'urgences."
-      },
-      {
-        "type": "tableau",
-        "entetes": [
-          "Module de la GMAO",
-          "Ce qu'il pilote",
-          "Le problème qu'il résout"
-        ],
-        "lignes": [
-          [
-            "Gestion du parc",
-            "Code, localisation, historique de chaque machine",
-            "Le savoir ne dépend plus d'une seule personne"
-          ],
-          [
-            "Ordres de travaux",
-            "Demandes, planification, suivi des interventions",
-            "Plus de demande perdue, une trace pour chaque acte"
-          ],
-          [
-            "Maintenance préventive",
-            "Déclenchement automatique des opérations planifiées",
-            "Le préventif ne saute plus quand la charge monte"
-          ],
-          [
-            "Gestion des stocks",
-            "Inventaire des pièces, seuils, achat",
-            "La pièce de référence est là au bon moment"
-          ],
-          [
-            "Tableaux de bord",
-            "Indicateurs, taux de disponibilité, coût",
-            "La maintenance devient une donnée de pilotage"
-          ],
-          [
-            "Application mobile",
-            "Saisie de l'intervention au pied de la machine",
-            "La donnée est propre parce qu'elle est saisie tout de suite"
-          ]
-        ]
-      },
-      {
-        "type": "citation",
-        "texte": "Un outil de GMAO ne remplace pas un bon technicien. Il fait en sorte que le travail du technicien reste dans l'entreprise, équipement après équipement, année après année."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Préventive, corrective, prédictive : ce que le logiciel orchestre",
-        "id": "preventive-corrective-predictive-ce-que-le-logic"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Une GMAO ne se contente pas d'enregistrer les pannes. Elle organise les trois grandes façons de traiter un équipement, du plus subi au plus anticipé."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "GMAO, à quoi sert cet outil dans un atelier",
+        "blocs": [
           {
-            "accroche": "La maintenance corrective",
-            "texte": "On répare après la panne. Le logiciel garde la trace de l'intervention, du temps passé et des pièces posées, pour que la même défaillance ne se traite pas deux fois à l'aveugle."
+            "type": "paragraphe",
+            "texte": "Un logiciel de gestion de la maintenance ne se juge pas sur son nombre de fonctionnalités, mais sur les problèmes qu'il règle. Chaque équipement reçoit un code unique, et cette assistance suit ensuite tout ce qui lui arrive. Sur une même page, le code de la machine, sa fiche, son planning et ses documents se retrouvent réunis. Voici les modules qui servent vraiment au quotidien dans l'entreprise. Au sein de l'entreprise, la GMAO relie chaque intervenant à sa mission : le technicien au pied du code équipement, le magasinier au stock, le responsable au tableau de bord. La maintenance au sein du site cesse d'être une somme d'urgences."
           },
           {
-            "accroche": "La maintenance préventive",
-            "texte": "On agit avant la panne, sur un calendrier ou un compteur d'heures. Cette assistance déclenche l'opération, édite l'ordre de travail et suit sa réalisation."
+            "type": "tableau",
+            "entetes": [
+              "Module de la GMAO",
+              "Ce qu'il pilote",
+              "Le problème qu'il résout"
+            ],
+            "lignes": [
+              [
+                "Gestion du parc",
+                "Code, localisation, historique de chaque machine",
+                "Le savoir ne dépend plus d'une seule personne"
+              ],
+              [
+                "Ordres de travaux",
+                "Demandes, planification, suivi des interventions",
+                "Plus de demande perdue, une trace pour chaque acte"
+              ],
+              [
+                "Maintenance préventive",
+                "Déclenchement automatique des opérations planifiées",
+                "Le préventif ne saute plus quand la charge monte"
+              ],
+              [
+                "Gestion des stocks",
+                "Inventaire des pièces, seuils, achat",
+                "La pièce de référence est là au bon moment"
+              ],
+              [
+                "Tableaux de bord",
+                "Indicateurs, taux de disponibilité, coût",
+                "La maintenance devient une donnée de pilotage"
+              ],
+              [
+                "Application mobile",
+                "Saisie de l'intervention au pied de la machine",
+                "La donnée est propre parce qu'elle est saisie tout de suite"
+              ]
+            ]
           },
           {
-            "accroche": "La maintenance prédictive",
-            "texte": "On surveille l'état réel du matériel, vibrations, température, pour intervenir au bon moment. La GMAO centralise ces mesures et relie l'analyse à l'action de maintenance."
+            "type": "encadre",
+            "texte": "Un outil de GMAO ne remplace pas un bon technicien. Il fait en sorte que le travail du technicien reste dans l'entreprise, équipement après équipement, année après année."
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "Ce processus fait aussi vivre la conformité : contrôle réglementaire, vérifications périodiques, procédures de sécurité. Chaque échéance du plan de maintenance devient une tâche tracée, avec le document de référence associé, disponible pour un audit. Les tableaux de bord tiennent le compte de ce qui est fait et de ce qui reste à faire."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Comment mettre en place une GMAO, étape par étape",
-        "id": "comment-mettre-en-place-une-gmao-etape-par-etape"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Un projet de GMAO qui échoue échoue presque toujours au démarrage, sur un parc mal recensé ou un besoin flou. La méthode qui suit sécurise le déploiement."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Préventive, corrective, prédictive : ce que le logiciel orchestre",
+        "blocs": [
           {
-            "accroche": "Cadrer le besoin",
-            "texte": "Lister ce que le service maintenance doit couvrir, préventif, correctif, stock, sous-traitance. C'est l'objet du cahier des charges, avant même de regarder un logiciel."
+            "type": "paragraphe",
+            "texte": "Une GMAO ne se contente pas d'enregistrer les pannes. Elle organise les trois grandes façons de traiter un équipement, du plus subi au plus anticipé."
           },
           {
-            "accroche": "Inventorier le parc",
-            "texte": "Recenser chaque machine, avec un code, une localisation et un niveau de criticité. Cette codification propre conditionne toutes les analyses futures."
+            "type": "puces",
+            "items": [
+              "**La maintenance corrective** : On répare après la panne. Le logiciel garde la trace de l'intervention, du temps passé et des pièces posées, pour que la même défaillance ne se traite pas deux fois à l'aveugle.",
+              "**La maintenance préventive** : On agit avant la panne, sur un calendrier ou un compteur d'heures. Cette assistance déclenche l'opération, édite l'ordre de travail et suit sa réalisation.",
+              "**La maintenance prédictive** : On surveille l'état réel du matériel, vibrations, température, pour intervenir au bon moment. La GMAO centralise ces mesures et relie l'analyse à l'action de maintenance."
+            ]
           },
           {
-            "accroche": "Choisir la solution",
-            "texte": "Comparer les logiciels sur les fonctionnalités utiles au secteur, le mode web ou mobile, le coût réel et l'accompagnement, pas sur la démonstration commerciale."
-          },
-          {
-            "accroche": "Migrer les données",
-            "texte": "Reprendre l'historique existant, les gammes de maintenance préventive, le stock et les procédures. Une donnée fausse au départ pollue tous les indicateurs ensuite."
-          },
-          {
-            "accroche": "Former les équipes",
-            "texte": "Un technicien qui ne saisit pas ses interventions rend l'outil aveugle. La formation et l'appropriation par les équipes pèsent plus que la technique."
-          },
-          {
-            "accroche": "Optimiser en continu",
-            "texte": "Suivre les tableaux de bord, ajuster les gammes, tenir le stock à jour. Une GMAO se pilote pour optimiser la disponibilité, elle ne s'installe pas une fois pour toutes."
-          }
-        ],
-        "ordonnee": true
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Ce projet reste un projet d'entreprise, pas un achat de licence. Le meilleur progiciel du marché échoue si la direction le traite comme une affaire réservée au service informatique. La gestion de maintenance concerne la production, les achats et la qualité en même temps. Un conseil de terrain : avancer par étapes, un processus après l'autre, une procédure à la fois. On documente, on code chaque équipement, on forme, puis on élargit le plan de déploiement. Cette assistance se gagne pas à pas, l'accompagnement compte autant que le logiciel, et l'aide de l'éditeur pèse dans le résultat."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Un exemple concret dans un atelier",
-        "id": "un-exemple-concret-dans-un-atelier"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Prenons une ligne d'embouteillage suivie par une petite équipe de maintenance. Avant la GMAO, les pannes se traitent au fil de l'eau, sans mémoire d'un mois sur l'autre."
-      },
-      {
-        "type": "tableau",
-        "entetes": [
-          "Situation",
-          "Avant la GMAO",
-          "Après la mise en place"
-        ],
-        "lignes": [
-          [
-            "Une pompe tombe deux fois par mois",
-            "Nul ne relie les deux pannes",
-            "L'historique montre la récurrence, la cause est traitée"
-          ],
-          [
-            "Le préventif d'un moteur de production",
-            "Noté sur un calendrier papier, souvent oublié",
-            "Déclenché automatiquement, tracé, réalisé"
-          ],
-          [
-            "Une pièce de rechange manque",
-            "Découverte pendant l'arrêt, achat en urgence",
-            "Seuil de stock atteint, commande anticipée"
-          ],
-          [
-            "Le coût de la ligne",
-            "Inconnu, ressenti",
-            "Chiffré par équipement, présentable en direction"
-          ]
-        ]
-      },
-      {
-        "type": "paragraphe",
-        "texte": "La GMAO ne répare rien par elle-même. Elle rend visible ce que l'atelier subissait sans le mesurer, et permet d'optimiser l'activité en agissant sur la cause plutôt que sur le symptôme. Le taux de disponibilité de la ligne se met alors à progresser, mois après mois. Les tableaux de bord affichent ce taux, et la recherche de la cause racine s'appuie sur les données plutôt que sur la mémoire. Le rapport présenté en direction repose sur des faits, pas sur une impression."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "GMAO gratuite ou payante, ce que ça change",
-        "id": "gmao-gratuite-ou-payante-ce-que-ca-change"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "« Il existe des GMAO gratuites, pourquoi payer ? » La question est légitime, la réponse dépend de la taille du parc et du sérieux du suivi visé."
-      },
-      {
-        "type": "liste",
-        "items": [
-          {
-            "accroche": "La GMAO gratuite",
-            "texte": "Utile pour découvrir la logique, sur quelques équipements. Le tableur maison entre dans cette catégorie. La limite arrive vite : saisie manuelle, pas d'application mobile, aucune montée en charge."
-          },
-          {
-            "accroche": "Le logiciel payant en mode web",
-            "texte": "Accessible partout, mis à jour par l'éditeur, connecté à l'application mobile des techniciens. Le coût se justifie par le temps gagné et la fiabilité de l'information."
-          },
-          {
-            "accroche": "Le bon critère",
-            "texte": "Ce n'est pas le prix affiché, c'est le coût complet, licence, déploiement, formation, rapporté au nombre d'interventions et de machines réellement suivies."
+            "type": "paragraphe",
+            "texte": "Ce processus fait aussi vivre la conformité : contrôle réglementaire, vérifications périodiques, procédures de sécurité. Chaque échéance du plan de maintenance devient une tâche tracée, avec le document de référence associé, disponible pour un audit. Les tableaux de bord tiennent le compte de ce qui est fait et de ce qui reste à faire."
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "Un éditeur français, un logiciel accessible en ligne, la capacité de se connecter à d'autres outils, la possibilité de partager la donnée avec la production : ce sont des éléments de conseil utiles au moment du choix. Prenez le temps de les vérifier en conditions réelles, un essai vaut mieux qu'une brochure. La gestion des actifs et le suivi de l'activité de maintenance méritent cet examen, en vue d'un choix qui tienne dans la durée."
-      },
-      {
-        "type": "citation",
-        "texte": "Le vrai risque n'est pas de payer un logiciel de gmao, c'est de déployer un outil que personne n'utilise. Un progiciel gratuit bien tenu bat une solution chère laissée à l'abandon."
-      },
-      {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Les erreurs les plus fréquentes",
-        "id": "les-erreurs-les-plus-frequentes"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Une GMAO ratée coûte deux fois : le logiciel, et le temps perdu à contourner un système auquel plus grand monde ne fait confiance. Les mêmes pièges reviennent d'un site à l'autre."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Comment mettre en place une GMAO, étape par étape",
+        "blocs": [
           {
-            "accroche": "Démarrer sans inventaire",
-            "texte": "Lancer l'outil avec un parc incomplet condamne toutes les analyses qui suivent. L'inventaire d'abord, le logiciel ensuite."
+            "type": "paragraphe",
+            "texte": "Un projet de GMAO qui échoue échoue presque toujours au démarrage, sur un parc mal recensé ou un besoin flou. La méthode qui suit sécurise le déploiement."
           },
           {
-            "accroche": "Trop en demander au départ",
-            "texte": "Vouloir couvrir chaque procédure dès le premier jour décourage les équipes. Mieux vaut le préventif et les ordres de travaux, puis élargir."
+            "type": "etapes",
+            "items": [
+              "**Cadrer le besoin** : Lister ce que le service maintenance doit couvrir, préventif, correctif, stock, sous-traitance. C'est l'objet du cahier des charges, avant même de regarder un logiciel.",
+              "**Inventorier le parc** : Recenser chaque machine, avec un code, une localisation et un niveau de criticité. Cette codification propre conditionne toutes les analyses futures.",
+              "**Choisir la solution** : Comparer les logiciels sur les fonctionnalités utiles au secteur, le mode web ou mobile, le coût réel et l'accompagnement, pas sur la démonstration commerciale.",
+              "**Migrer les données** : Reprendre l'historique existant, les gammes de maintenance préventive, le stock et les procédures. Une donnée fausse au départ pollue tous les indicateurs ensuite.",
+              "**Former les équipes** : Un technicien qui ne saisit pas ses interventions rend l'outil aveugle. La formation et l'appropriation par les équipes pèsent plus que la technique.",
+              "**Optimiser en continu** : Suivre les tableaux de bord, ajuster les gammes, tenir le stock à jour. Une GMAO se pilote pour optimiser la disponibilité, elle ne s'installe pas une fois pour toutes."
+            ]
           },
           {
-            "accroche": "Négliger la saisie mobile",
-            "texte": "Une intervention saisie le soir, de mémoire, produit une donnée fausse. La saisie au pied de la machine fait la qualité du système."
-          },
-          {
-            "accroche": "Oublier la conduite du changement",
-            "texte": "La technique est rarement le problème. L'équipe qui n'a pas été associée résiste, et l'outil meurt en silence."
-          },
-          {
-            "accroche": "Confondre GMAO et reporting",
-            "texte": "Empiler des tableaux que personne ne lit ne pilote rien. Quelques indicateurs suivis valent mieux qu'un tableau de bord ignoré."
+            "type": "paragraphe",
+            "texte": "Ce projet reste un projet d'entreprise, pas un achat de licence. Le meilleur progiciel du marché échoue si la direction le traite comme une affaire réservée au service informatique. La gestion de maintenance concerne la production, les achats et la qualité en même temps. Un conseil de terrain : avancer par étapes, un processus après l'autre, une procédure à la fois. On documente, on code chaque équipement, on forme, puis on élargit le plan de déploiement. Cette assistance se gagne pas à pas, l'accompagnement compte autant que le logiciel, et l'aide de l'éditeur pèse dans le résultat."
           }
         ]
       },
       {
-        "type": "titre",
-        "niveau": 2,
-        "texte": "Ce que la gestion de maintenance assistée par ordinateur implique",
-        "id": "ce-que-la-gestion-de-maintenance-assistee-par-or"
-      },
-      {
-        "type": "paragraphe",
-        "texte": "Adopter une gestion de maintenance assistée par ordinateur, c'est décider que la maintenance devient une donnée de gestion, pas une suite d'urgences. Le changement dépasse l'informatique."
-      },
-      {
-        "type": "liste",
-        "items": [
+        "titre": "Un exemple concret dans un atelier",
+        "blocs": [
           {
-            "accroche": "Prioriser le préventif",
-            "texte": "Les données de la GMAO désignent le matériel fragile avant la panne. La maintenance préventive et prédictive se recentre sur ce que les chiffres montrent, la maintenance corrective recule."
+            "type": "paragraphe",
+            "texte": "Prenons une ligne d'embouteillage suivie par une petite équipe de maintenance. Avant la GMAO, les pannes se traitent au fil de l'eau, sans mémoire d'un mois sur l'autre."
           },
           {
-            "accroche": "Défendre un budget",
-            "texte": "Un coût d'arrêt chiffré, un stock de rechange critique justifié par les données, une astreinte dimensionnée sur des faits. La donnée arme les arbitrages en direction. En matière de gestion financière, ce service de maintenance chiffre enfin sa main-d'œuvre et l'utilisation réelle des pièces. L'utilisation quotidienne de l'outil fait toute la différence."
+            "type": "tableau",
+            "entetes": [
+              "Situation",
+              "Avant la GMAO",
+              "Après la mise en place"
+            ],
+            "lignes": [
+              [
+                "Une pompe tombe deux fois par mois",
+                "Nul ne relie les deux pannes",
+                "L'historique montre la récurrence, la cause est traitée"
+              ],
+              [
+                "Le préventif d'un moteur de production",
+                "Noté sur un calendrier papier, souvent oublié",
+                "Déclenché automatiquement, tracé, réalisé"
+              ],
+              [
+                "Une pièce de rechange manque",
+                "Découverte pendant l'arrêt, achat en urgence",
+                "Seuil de stock atteint, commande anticipée"
+              ],
+              [
+                "Le coût de la ligne",
+                "Inconnu, ressenti",
+                "Chiffré par équipement, présentable en direction"
+              ]
+            ]
           },
           {
-            "accroche": "Sécuriser le savoir",
-            "texte": "L'information reste dans l'entreprise quand un technicien part. La GMAO protège la mémoire technique d'un service qui repose souvent sur deux ou trois personnes."
-          },
-          {
-            "accroche": "Intégrer la sous-traitance",
-            "texte": "Une entreprise extérieure s'intègre dans votre GMAO et y remonte ses comptes rendus d'intervention et ses demandes d'achat de matériel. Le prestataire n'est plus une boîte noire, son travail est tracé au même endroit que le vôtre."
+            "type": "paragraphe",
+            "texte": "La GMAO ne répare rien par elle-même. Elle rend visible ce que l'atelier subissait sans le mesurer, et permet d'optimiser l'activité en agissant sur la cause plutôt que sur le symptôme. Le taux de disponibilité de la ligne se met alors à progresser, mois après mois. Les tableaux de bord affichent ce taux, et la recherche de la cause racine s'appuie sur les données plutôt que sur la mémoire. Le rapport présenté en direction repose sur des faits, pas sur une impression."
           }
         ]
       },
       {
-        "type": "paragraphe",
-        "texte": "Le meilleur outil d'assistance ne vaut que par la donnée qu'on lui confie. Une GMAO tenue avec sérieux, dans le public comme dans l'industrie, améliore la disponibilité des équipements et met la maintenance en situation d'être pilotée, pas subie. Cet article ne dit pas autre chose : c'est là tout l'intérêt d'une gestion de maintenance assistée par ordinateur bien conduite."
+        "titre": "GMAO gratuite ou payante, ce que ça change",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "« Il existe des GMAO gratuites, pourquoi payer ? » La question est légitime, la réponse dépend de la taille du parc et du sérieux du suivi visé."
+          },
+          {
+            "type": "puces",
+            "items": [
+              "**La GMAO gratuite** : Utile pour découvrir la logique, sur quelques équipements. Le tableur maison entre dans cette catégorie. La limite arrive vite : saisie manuelle, pas d'application mobile, aucune montée en charge.",
+              "**Le logiciel payant en mode web** : Accessible partout, mis à jour par l'éditeur, connecté à l'application mobile des techniciens. Le coût se justifie par le temps gagné et la fiabilité de l'information.",
+              "**Le bon critère** : Ce n'est pas le prix affiché, c'est le coût complet, licence, déploiement, formation, rapporté au nombre d'interventions et de machines réellement suivies."
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Un éditeur français, un logiciel accessible en ligne, la capacité de se connecter à d'autres outils, la possibilité de partager la donnée avec la production : ce sont des éléments de conseil utiles au moment du choix. Prenez le temps de les vérifier en conditions réelles, un essai vaut mieux qu'une brochure. La gestion des actifs et le suivi de l'activité de maintenance méritent cet examen, en vue d'un choix qui tienne dans la durée."
+          },
+          {
+            "type": "encadre",
+            "texte": "Le vrai risque n'est pas de payer un logiciel de gmao, c'est de déployer un outil que personne n'utilise. Un progiciel gratuit bien tenu bat une solution chère laissée à l'abandon."
+          }
+        ]
       },
       {
-        "type": "citation",
-        "texte": "[Demander un diagnostic maintenance](/contact/)"
+        "titre": "Les erreurs les plus fréquentes",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Une GMAO ratée coûte deux fois : le logiciel, et le temps perdu à contourner un système auquel plus grand monde ne fait confiance. Les mêmes pièges reviennent d'un site à l'autre."
+          },
+          {
+            "type": "puces",
+            "items": [
+              "**Démarrer sans inventaire** : Lancer l'outil avec un parc incomplet condamne toutes les analyses qui suivent. L'inventaire d'abord, le logiciel ensuite.",
+              "**Trop en demander au départ** : Vouloir couvrir chaque procédure dès le premier jour décourage les équipes. Mieux vaut le préventif et les ordres de travaux, puis élargir.",
+              "**Négliger la saisie mobile** : Une intervention saisie le soir, de mémoire, produit une donnée fausse. La saisie au pied de la machine fait la qualité du système.",
+              "**Oublier la conduite du changement** : La technique est rarement le problème. L'équipe qui n'a pas été associée résiste, et l'outil meurt en silence.",
+              "**Confondre GMAO et reporting** : Empiler des tableaux que personne ne lit ne pilote rien. Quelques indicateurs suivis valent mieux qu'un tableau de bord ignoré."
+            ]
+          }
+        ]
+      },
+      {
+        "titre": "Ce que la gestion de maintenance assistée par ordinateur implique",
+        "blocs": [
+          {
+            "type": "paragraphe",
+            "texte": "Adopter une gestion de maintenance assistée par ordinateur, c'est décider que la maintenance devient une donnée de gestion, pas une suite d'urgences. Le changement dépasse l'informatique."
+          },
+          {
+            "type": "puces",
+            "items": [
+              "**Prioriser le préventif** : Les données de la GMAO désignent le matériel fragile avant la panne. La maintenance préventive et prédictive se recentre sur ce que les chiffres montrent, la maintenance corrective recule.",
+              "**Défendre un budget** : Un coût d'arrêt chiffré, un stock de rechange critique justifié par les données, une astreinte dimensionnée sur des faits. La donnée arme les arbitrages en direction. En matière de gestion financière, ce service de maintenance chiffre enfin sa main-d'œuvre et l'utilisation réelle des pièces. L'utilisation quotidienne de l'outil fait toute la différence.",
+              "**Sécuriser le savoir** : L'information reste dans l'entreprise quand un technicien part. La GMAO protège la mémoire technique d'un service qui repose souvent sur deux ou trois personnes.",
+              "**Intégrer la sous-traitance** : Une entreprise extérieure s'intègre dans votre GMAO et y remonte ses comptes rendus d'intervention et ses demandes d'achat de matériel. Le prestataire n'est plus une boîte noire, son travail est tracé au même endroit que le vôtre."
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "texte": "Le meilleur outil d'assistance ne vaut que par la donnée qu'on lui confie. Une GMAO tenue avec sérieux, dans le public comme dans l'industrie, améliore la disponibilité des équipements et met la maintenance en situation d'être pilotée, pas subie. Cet article ne dit pas autre chose : c'est là tout l'intérêt d'une gestion de maintenance assistée par ordinateur bien conduite."
+          }
+        ]
       }
     ],
     "questions": [
@@ -368,9 +276,30 @@
       },
       {
         "question": "GMAO industrielle ou parc informatique, est-ce la même chose ?",
-        "reponse": "Le sigle est le même, l'usage diffère. Un logiciel de maintenance industrielle suit des machines de production ; la maintenance informatique, elle, gère un parc de postes et de serveurs. Les solutions EAM et certaines GMAO couvrent les deux. Un essai gratuit aide à vérifier que le processus de maintenance visé colle à l'outil, sur une même page d'accueil."
+        "reponse": "Le sigle est le même, l'usage diffère. Un logiciel de maintenance industrielle suit des machines de production ; la maintenance informatique, elle, gère un parc de postes et de serveurs. Les solutions EAM et certaines GMAO couvrent les deux. Un essai gratuit aide à vérifier que le processus de maintenance visé colle à l'outil, sur une même page d'accueil. ---"
+      }
+    ],
+    "minutes": 11,
+    "image": "/assets/web/ph-hero-raffinerie.jpg",
+    "aLire": [
+      {
+        "href": "/ressources/articles/cout-arret-de-production/",
+        "titre": "Coût d'un arrêt de production",
+        "minutes": 12,
+        "image": "/assets/web/ph-tuyaux.jpg"
+      },
+      {
+        "href": "/ressources/articles/digitalisation-maintenance/",
+        "titre": "Digitalisation maintenance",
+        "minutes": 11,
+        "image": "/assets/web/team-grind-impact.jpg"
+      },
+      {
+        "href": "/ressources/articles/gestion-des-dechets/",
+        "titre": "Gestion des déchets industriels",
+        "minutes": 8,
+        "image": "/assets/web/team-duo.jpg"
       }
     ]
-  },
-  "blocs_corpus": 45
+  }
 }

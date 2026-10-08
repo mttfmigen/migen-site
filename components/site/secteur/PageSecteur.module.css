@@ -1,5 +1,5 @@
-/* Survols du gabarit secteur. Rien d'autre : un style en ligne ne peut pas
-   porter d'état, et c'est la seule raison d'être de ce fichier.
+/* Survols et replis du gabarit secteur : un style en ligne ne peut pas
+   porter d’état ni de point de rupture, c’est la seule raison d’être de ce fichier.
    Valeurs reprises des attributs `style-hover` de la maquette, lignes 5602 à
    5757 de « Migen - Site final.dc.html ».
 
@@ -25,4 +25,104 @@
 .puceLien:focus-visible {
   background: var(--card);
   color: var(--acc);
+}
+
+/* ---------------------------------------------------- « Expertises du secteur »
+   Source `MigenExpertise.dc.html`, l. 441 : style-hover de la carte
+   « transform:translateY(-3px);color:#fff », et repli `g3-sect6` (l. 48),
+   deux colonnes sous 900px, une sous 560px, `!important` compris : il
+   l'emporte sur le style en ligne, comme dans la maquette. */
+.carteExpertise:hover,
+.carteExpertise:focus-visible {
+  transform: translateY(-3px);
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .grilleExpertises {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .grilleExpertises {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* ------------------------------------------------- la respiration à 390 px
+   `app/globals.css` ramène `--sec` à 64px sous 760px sur tout `.mg-site`. La
+   maquette qui rend ces pages (`MigenExpertise.dc.html`) n'applique pas cette
+   règle : mesuré le 08/10 à 390px sur /secteurs/agroalimentaire/, chaque
+   section y garde 120px en tête (Réassurance, Problème, Offre, Déroulé…), là
+   où le site en posait 64. Rétabli ici pour ce gabarit seulement, la règle
+   globale étant hors de son périmètre ; la spécificité double l'emporte sur
+   `.mg-site` quel que soit l'ordre des feuilles. */
+@media (max-width: 760px) {
+  :global(.mg-site).gabarit {
+    --sec: 120px;
+  }
+}
+
+/* Même cause, même mesure (08/10, 390px) : sous 900px la source de ce gabarit
+   replie `.mg-r2` avec une gouttière de 32px (`MigenExpertise.dc.html`, l. 37),
+   `app/globals.css` en pose 36. Les dix grilles `.mg-r2` de la page la
+   reprennent à la maquette. */
+@media (max-width: 900px) {
+  .gabarit :global(.mg-r2) {
+    gap: 32px !important;
+  }
+}
+
+/* ---------------------------------------------------- « Offres du secteur »
+   `OffresDomaine` (gabarit 09, hors de ce périmètre) se replie par
+   `.mg-rmulti` et `.mg-r2`, pas par les règles de sa source, `.mgx-obento`
+   (`MigenExpertise.dc.html`, l. 45). Mesuré le 08/10 à 390px sur ce gabarit
+   ET sur /expertises/robotique/ : la carte Résidence garde `grid-column:
+   span 2` dans une grille d'une colonne, la grille crée une seconde piste de
+   0px, et les tuiles « Zéro arrêt » et « Bureau d'études » y tombent,
+   INVISIBLES (0×236). Les règles de la source sont reposées ici, sous ce
+   gabarit seulement, en attendant qu'elles le soient dans le composant :
+   ce bloc part alors. Ordre des enfants, celui du composant : le panneau
+   photographique, la carte Résidence, puis les cinq tuiles. */
+@media (min-width: 901px) and (max-width: 1000px) {
+  .offres :global(.mg-rmulti) {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .offres :global(.mg-rmulti) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .offres :global(.mg-rmulti) > :nth-child(-n + 2) {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+  }
+  .offres :global(.mg-rmulti) > :first-child {
+    min-height: 380px !important;
+  }
+  .offres :global(.mg-rmulti) > :nth-child(2) {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr) !important;
+    gap: 0 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .offres :global(.mg-rmulti) {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .offres :global(.mg-rmulti) > :nth-child(2) {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* ------------------------------------------------- le bouton d'envoi
+   Le formulaire partagé (`components/formulaire/FormulaireContact.tsx`, hors
+   de ce périmètre) fige son bouton en `white-space: nowrap`. La maquette le
+   laisse passer à la ligne (mesuré le 08/10 à 390px : `normal`, 232×76) : les
+   libellés de ce gabarit sont longs (« Étudier la maintenance de mes moyens
+   de production »), et à 390px le site les coupait au bord du bouton. */
+.gabarit form button[type="submit"] {
+  white-space: normal !important;
 }

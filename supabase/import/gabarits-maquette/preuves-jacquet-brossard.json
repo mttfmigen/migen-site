@@ -30,6 +30,8 @@
         "valeur": "Agroalimentaire"
       }
     ],
+    "logo": "/assets/clients/mq-68b4119a50b4.png",
+    "photoHero": "/assets/web/mq-056f3c250981.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -137,6 +139,7 @@
         "valeur": "3 techniciens"
       }
     ],
+    "photoDispositif": "/assets/web/mq-17e2f3bce95f.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -147,7 +150,7 @@
         "texte": "Après votre demande, en semaine de 8h00 à 18h30."
       },
       {
-        "titre": "10 % des candidats retenus",
+        "titre": "10 % des techniciens retenus",
         "texte": "Techniciens évalués sur la technique et le comportement avant affectation."
       }
     ],
@@ -155,22 +158,26 @@
       {
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
-        "href": "/preuves/"
+        "href": "/preuves/",
+        "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
-        "href": "/offres/residence/"
+        "href": "/offres/residence/",
+        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance agroalimentaire",
-        "href": "/secteurs/agroalimentaire/"
+        "href": "/secteurs/agroalimentaire/",
+        "photo": "/assets/web/mq-e6322efcd358.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DANONE (BLÉDINA) : pas un poste sans maintenance, week-end compris",
-        "href": "/preuves/danone-lignes-de-production/"
+        "href": "/preuves/danone-lignes-de-production/",
+        "photo": "/assets/web/mq-339d39e2a674.jpg"
       }
     ]
   }

@@ -3,7 +3,7 @@ import { useId, type CSSProperties } from "react";
 
 import styles from "./QuestionsPhoto.module.css";
 
-import { LARGEUR } from "@/components/site/blocs/habillage";
+import { LARGEUR, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import type { QuestionsPhotoOffres } from "@/types/offres";
 
 /**
@@ -19,6 +19,12 @@ import type { QuestionsPhotoOffres } from "@/types/offres";
  * La photo est celle de l'export autonome du client (ressource « r7 » de son
  * paquet, extraite octet pour octet), posée dans `public/assets/web/faq-offres.jpg`.
  *
+ * LES COULEURS S'ÉCRIVENT COMME DANS LA CAPTURE (`var(--ink)`, `var(--ink2)`,
+ * `var(--chip)`, verre `var(--gl-a)`/`var(--gbd)`) : c'est la classe
+ * `.panneau` du module, copie de `.mg-faqph`, qui leur donne leur valeur
+ * sombre. Écrites en dur (`#fff`…), elles divergeaient des 134 captures qui
+ * portent ce bloc, et la pastille « + » était à 10 % de blanc au lieu de 14.
+ *
  * `<details>`/`<summary>` plutôt que l'accordéon piloté de la maquette : même
  * choix que `Objections`, et pour les mêmes raisons, clavier, lecteurs d'écran
  * et contenu lisible par Google sans JavaScript.
@@ -26,9 +32,9 @@ import type { QuestionsPhotoOffres } from "@/types/offres";
 
 const CARTE: CSSProperties = {
   position: "relative",
-  borderRadius: 28,
+  borderRadius: "var(--rad)",
   overflow: "hidden",
-  background: "rgb(28, 27, 25)",
+  background: "#1c1b19",
 };
 
 const VOILE: CSSProperties = {
@@ -46,7 +52,7 @@ const PASTILLE: CSSProperties = {
   display: "inline-flex",
   alignItems: "center",
   gap: 9,
-  padding: "14px 24px",
+  padding: "15px 26px",
   borderRadius: 999,
   background: "var(--acc)",
   color: "#fff",
@@ -67,19 +73,19 @@ const GRILLE: CSSProperties = {
   padding: 44,
 };
 
-const SURTITRE_BLOC: CSSProperties = {
-  font: "600 11.5px var(--fb)",
-  letterSpacing: ".14em",
-  textTransform: "uppercase",
-  color: "rgb(255, 124, 60)",
-  marginBottom: 14,
-};
+/** La colonne du titre : collante dans la capture, neutralisée par `.panneau`. */
+const COLONNE_TITRE: CSSProperties = { position: "sticky", top: 112 };
 
+/* Titre, pastille, question et réponse : styles en ligne du bloc
+   `mg-faqph`, identiques sur les 149 captures qui le portent (relevé du
+   08/10, `maquette/rendu/*.html`). */
 const TITRE_BLOC: CSSProperties = {
-  font: "600 calc(clamp(26px,2.6vw,36px) * var(--ts))/1.12 var(--ft)",
+  font: "600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft)",
   letterSpacing: "-.04em",
-  color: "#fff",
-  marginBottom: 22,
+  color: "var(--ink)",
+  margin: "0 0 22px",
+  textWrap: "balance",
+  maxWidth: "14ch",
 };
 
 const CHAPEAU_BLOC: CSSProperties = {
@@ -93,20 +99,9 @@ const LIEN: CSSProperties = {
   color: "rgb(255, 124, 60)",
 };
 
-/**
- * Le pli, RELEVÉ LE 07/10 sur la maquette qui tourne, valeur par valeur.
- *
- * L'erreur qu'on corrige : nos cartes étaient blanches à 90 %, donc opaques,
- * et masquaient la photo. La maquette les pose à 10 % de blanc sur un flou :
- * c'est du verre, on voit l'atelier au travers, et tout le texte est blanc.
- * C'est ce qui faisait 30 % de divergence sur cette section.
- */
-const PLI: CSSProperties = {
-  borderRadius: 18,
-  background: "rgba(255,255,255,.1)",
-  border: "1px solid rgba(255,255,255,.18)",
-  backdropFilter: "blur(22px) saturate(1.5)",
-};
+/** Le pli : le verre de la maquette, en petits coins (`var(--rad-s)`). Sur
+ * `.panneau`, ce verre passe à 10 % de blanc : on voit l'atelier au travers. */
+const PLI: CSSProperties = { ...VERRE, borderRadius: "var(--rad-s)" };
 
 const QUESTION: CSSProperties = {
   listStyle: "none",
@@ -116,32 +111,35 @@ const QUESTION: CSSProperties = {
   justifyContent: "space-between",
   gap: 18,
   padding: "20px 24px",
-  font: "400 16px/1.4 var(--fb)",
-  color: "#fff",
 };
 
+const INTITULE: CSSProperties = {
+  font: "600 calc(16px * var(--ts))/1.4 var(--ft)",
+  letterSpacing: "-.022em",
+  color: "var(--ink)",
+};
+
+/** Pastille ronde de 30px. Ouverte, globals.css la tourne de 45 degrés et la
+ * passe à l'orange : le « + » devient une croix, le dessin de la maquette. */
 const PLUS: CSSProperties = {
-  // Pastille RONDE de 30px, relevée sur la maquette : le « + » blanc repose
-  // sur un cercle gris translucide. À l'ouverture, globals.css tourne la
-  // pastille de 45 degrés et la passe à l'orange : sur un cercle, la rotation
-  // est invisible et le « + » devient une croix, exactement le dessin de la
-  // maquette. L'ancien badge nu donnait un losange orange, faux.
-  width: 30,
-  height: 30,
-  borderRadius: 999,
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  background: "rgba(255,255,255,.1)",
-  color: "#fff",
-  font: "400 20px/1 var(--fb)",
+  width: 30,
+  height: 30,
+  borderRadius: 999,
   flex: "0 0 auto",
+  font: "400 20px/1 var(--fb)",
+  transition: "transform var(--tr),background var(--tr)",
+  background: "var(--chip)",
+  color: "var(--ink2)",
 };
 
 const REPONSE: CSSProperties = {
   padding: "0 24px 22px",
   font: "400 15px/1.7 var(--fb)",
-  color: "rgba(255,255,255,.8)",
+  color: "var(--ink2)",
+  maxWidth: "68ch",
 };
 
 export default function QuestionsPhoto({
@@ -156,7 +154,7 @@ export default function QuestionsPhoto({
   return (
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={LARGEUR}>
-        <div style={CARTE}>
+        <div className={styles.panneau} style={CARTE}>
           <Image
             src={donnees.photo}
             alt=""
@@ -165,9 +163,9 @@ export default function QuestionsPhoto({
             style={{ objectFit: "cover" }}
           />
           <div style={VOILE} />
-          <div className="mg-r2" style={GRILLE}>
-            <div>
-              <div style={SURTITRE_BLOC}>{donnees.surtitre}</div>
+          <div className={`mg-r2 ${styles.grille}`} style={GRILLE}>
+            <div style={COLONNE_TITRE}>
+              <div style={SURTITRE}>{donnees.surtitre}</div>
               <h2 style={TITRE_BLOC}>{donnees.titre}</h2>
               {donnees.chapeau ? (
                 <p style={CHAPEAU_BLOC}>{donnees.chapeau}</p>
@@ -198,7 +196,7 @@ export default function QuestionsPhoto({
                   open={i === 0 && Boolean(q.reponse.trim())}
                 >
                   <summary style={QUESTION}>
-                    {q.question}
+                    <span style={INTITULE}>{q.question}</span>
                     <span className="cx-plus" style={PLUS}>
                       +
                     </span>

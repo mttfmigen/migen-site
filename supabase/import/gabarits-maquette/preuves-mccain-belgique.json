@@ -22,6 +22,8 @@
         "valeur": "1 à 3 techniciens Migen selon la charge"
       }
     ],
+    "logo": "/assets/clients/mq-c23abfa0ca07.svg",
+    "photoHero": "/assets/web/mq-2a8c78b5c75c.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -148,6 +150,7 @@
         "valeur": "Maintenance corrective et préventive"
       }
     ],
+    "photoDispositif": "/assets/web/mq-056f3c250981.jpg",
     "resultats": [
       {
         "titre": "Une sortie du territoire français réussie",
@@ -193,7 +196,7 @@
         "texte": "Disponible en option sur les productions permanentes, par téléphone."
       },
       {
-        "titre": "10 % des candidats retenus",
+        "titre": "10 % des techniciens retenus",
         "texte": "La même sélection s'applique sur chaque mission, en France comme hors de France."
       }
     ],
@@ -201,22 +204,26 @@
       {
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
-        "href": "/preuves/"
+        "href": "/preuves/",
+        "photo": "/assets/web/mq-948c28bcda08.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
-        "href": "/offres/residence/"
+        "href": "/offres/residence/",
+        "photo": "/assets/web/mq-17e2f3bce95f.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance agroalimentaire",
-        "href": "/secteurs/agroalimentaire/"
+        "href": "/secteurs/agroalimentaire/",
+        "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "STELLANTIS : sites du Grand Est",
-        "href": "/preuves/stellantis-grand-est/"
+        "href": "/preuves/stellantis-grand-est/",
+        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
       }
     ]
   }

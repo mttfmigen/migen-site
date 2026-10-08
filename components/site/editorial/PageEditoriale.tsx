@@ -3,7 +3,9 @@ import type { ReactNode } from "react";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import type { BlocEditorial, ContenuEditorial } from "@/types/editorial";
 
+import Guide from "./Guide";
 import styles from "./PageEditoriale.module.css";
+import Rubrique from "./Rubrique";
 
 /**
  * Rendu des pages éditoriales : métiers, hubs de ressources, entreprise.
@@ -205,6 +207,12 @@ export default function PageEditoriale({
   filAriane,
   maillage,
 }: ProprietesPageEditoriale) {
+  // Les huit pages portées contre leur capture apportent leur vue ; elle
+  // porte son propre fil, ses pages liées et son appel, comme la capture : le
+  // fil et le maillage calculés par la route n'y sont pas montés.
+  if (contenu.edito) return <Guide titre={titre} vue={contenu.edito} />;
+  if (contenu.rubrique) return <Rubrique titre={titre} vue={contenu.rubrique} />;
+
   // Le sommaire se déduit des titres de niveau 2 : jamais saisi deux fois, donc
   // jamais désynchronisé du corps. Sous trois entrées, il n'aide personne et
   // ne s'affiche pas.

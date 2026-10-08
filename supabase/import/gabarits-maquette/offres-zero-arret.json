@@ -4,7 +4,7 @@
   "contenu": {
     "gabarit": "offre",
     "pastille": "Nos offres",
-    "chapeau": "",
+    "chapeau": "L'entretien préventif le samedi, le dépannage la nuit.",
     "appelBouton": "Demander mon diagnostic gratuit",
     "actions": [
       {
@@ -165,46 +165,62 @@
             "titre": "Contrat de maintenance préventive annuelle sur des sites logistiques",
             "texte": "six techniciens polyvalents en permanence, depuis septembre 2023",
             "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
-            "lienHref": "/preuves/veepee-sites-lyon/"
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "photo": "/assets/web/x-tech-portrait.jpg",
+            "logo": "/assets/clients/mq-ff81dfbb55c7.svg"
           },
           {
             "titre": "Maintenance sous contrat d'un parc déployé partout en France, réalité virtuelle",
             "texte": "depuis février 2024",
             "lienLibelle": "Étude de cas TIMESCOPE : casques de réalité virtuelle",
-            "lienHref": "/preuves/timescope/"
+            "lienHref": "/preuves/timescope/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "logo": "/assets/clients/timescope.png"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie",
             "texte": "depuis octobre 2023, aux côtés des équipes internes",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
-            "lienHref": "/preuves/stellantis-fonderie-sept-fons/"
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/x-elec-cablage.jpg",
+            "logo": "/assets/clients/stellantis.png"
           },
           {
             "titre": "Maintien opérationnel des équipements d'un site, logistique et transport",
             "texte": "deux techniciens en poste",
             "lienLibelle": "Étude de cas GLS : maintenance curative",
-            "lienHref": "/preuves/gls-maintenance-curative/"
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "logo": "/assets/clients/mq-09708b77564e.svg"
           },
           {
             "titre": "Contrat de maintenance sur un site agroalimentaire de grande échelle, Belgique",
             "texte": "depuis octobre 2024, toujours en cours",
             "lienLibelle": "Étude de cas McCAIN : Belgique",
-            "lienHref": "/preuves/mccain-belgique/"
+            "lienHref": "/preuves/mccain-belgique/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg",
+            "logo": "/assets/clients/mq-c23abfa0ca07.svg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas AKTID : montage d'un centre logistique",
-            "lienHref": "/preuves/aktid-centre-logistique/"
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg",
+            "logo": "/assets/clients/aktid.png"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique",
-            "lienHref": "/preuves/amazon-centre-logistique/"
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg",
+            "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas AMAZON : démarrage d'un nouveau site",
-            "lienHref": "/preuves/amazon-nouveau-site/"
+            "lienHref": "/preuves/amazon-nouveau-site/",
+            "photo": "/assets/web/mq-056f3c250981.jpg",
+            "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           }
         ]
       },
@@ -217,7 +233,7 @@
           },
           {
             "question": "Combien coûte l'abonnement ?",
-            "reponse": ""
+            "reponse": "Le chiffrage vous est remis avec l'étude de couverture."
           },
           {
             "question": "Quelle différence entre les trois formules ?",
@@ -347,7 +363,7 @@
                 },
                 {
                   "accroche": "Un technicien évalué et habilité",
-                  "texte": "10 % des candidats retenus, habilitations et certifications exigées par votre site, traçabilité conçue pour s'intégrer dans votre système qualité, y compris chez les industriels certifiés ISO 9001."
+                  "texte": "10 % des techniciens retenus, habilitations et certifications exigées par votre site, traçabilité conçue pour s'intégrer dans votre système qualité, y compris chez les industriels certifiés ISO 9001."
                 },
                 {
                   "accroche": "Ni fabricant ni distributeur",
@@ -379,7 +395,7 @@
             },
             {
               "question": "Qui intervient vraiment ?",
-              "reponse": "Des techniciens salariés de Migen, évalués en entretien sur la technique et sur le comportement, 10 % des candidats retenus. Les spécialités sont couvertes en interne : automatisme, électricité industrielle, électromécanique, mécanique, hydraulique, pneumatique."
+              "reponse": "Des techniciens salariés de Migen, évalués en entretien sur la technique et sur le comportement, 10 % des techniciens retenus. Les spécialités sont couvertes en interne : automatisme, électricité industrielle, électromécanique, mécanique, hydraulique, pneumatique."
             },
             {
               "question": "Intervenez-vous partout en France, et la nuit ?",

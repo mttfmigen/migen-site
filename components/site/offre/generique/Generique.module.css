@@ -1,0 +1,108 @@
+/* Les survols des gabarits génériques de la maquette, un par valeur
+   d'attribut `style-hover` du gabarit (« Migen - Site final.dc.html », écrans
+   `cVente` et `cEdito`). `!important` parce que la propriété survolée est posée
+   en style en ligne, comme dans la maquette, et qu'un style en ligne l'emporte
+   sur toute règle sans lui. Le focus clavier reçoit le même rendu (WCAG 2.4.7). */
+
+/* style-hover="color:var(--acc)" */
+.acc:hover,
+.acc:focus-visible {
+  color: var(--acc) !important;
+}
+
+/* style-hover="filter:brightness(.93);transform:translateY(-1px);color:#fff" */
+.bouton:hover,
+.bouton:focus-visible {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff !important;
+}
+
+/* style-hover="filter:brightness(.93);color:#fff" */
+.boutonPlat:hover,
+.boutonPlat:focus-visible {
+  filter: brightness(0.93);
+  color: #fff !important;
+}
+
+/* style-hover="filter:brightness(.93)" */
+.filtre:hover,
+.filtre:focus-visible {
+  filter: brightness(0.93);
+}
+
+/* style-hover="transform:translateY(-2px)" */
+.leve2:hover,
+.leve2:focus-visible {
+  transform: translateY(-2px);
+}
+
+/* style-hover="transform:translateY(-3px)" */
+.leve3:hover,
+.leve3:focus-visible {
+  transform: translateY(-3px);
+}
+
+/* style-hover="background:rgba(255,255,255,.28);color:#fff" */
+.puce:hover,
+.puce:focus-visible {
+  background: rgba(255, 255, 255, 0.28) !important;
+  color: #fff !important;
+}
+
+/* style-hover="color:var(--acc);border-left-color:var(--acc)" */
+.toc:hover,
+.toc:focus-visible {
+  color: var(--acc) !important;
+  border-left-color: var(--acc) !important;
+}
+
+/* Un lien du texte courant reste identifiable sans la couleur (WCAG 1.4.1) :
+   la maquette le souligne déjà, rien à ajouter. Les questions repliées n'ont
+   pas de marqueur natif, comme dans la maquette. */
+.question > summary::-webkit-details-marker {
+  display: none;
+}
+
+.question[open] .plus {
+  transform: rotate(45deg);
+  background: var(--acc) !important;
+  color: #fff !important;
+}
+
+/* La carte sombre à photo des questions (classe `mg-faqph` de la maquette,
+   feuille globale de l'application autonome) : fond dégradé sur la photo du
+   bloc, jetons d'encre retournés pour du texte clair. La photo est celle que
+   `QuestionsPhoto` (« 09 Questions ») sert déjà sous la même classe. */
+.faqPhoto {
+  position: relative;
+  border-radius: var(--rad);
+  overflow: hidden;
+  padding: 44px !important;
+  background:
+    linear-gradient(90deg, rgba(18, 17, 16, 0.92) 0%, rgba(18, 17, 16, 0.8) 50%, rgba(18, 17, 16, 0.62) 100%),
+    url("/assets/web/faq-offre.jpg") center / cover no-repeat #1c1b19 !important;
+  --ink: #fff;
+  --ink1: rgba(255, 255, 255, 0.9);
+  --ink2: rgba(255, 255, 255, 0.8);
+  --ink3: rgba(255, 255, 255, 0.66);
+  --ink4: rgba(255, 255, 255, 0.52);
+  --line: rgba(255, 255, 255, 0.16);
+  --chip: rgba(255, 255, 255, 0.14);
+  --gl-a: 0.1;
+  --gbd: rgba(255, 255, 255, 0.18);
+  --card: rgba(255, 255, 255, 0.08);
+  --acc-ink: #ffb48a;
+  color: var(--ink);
+}
+
+.faqPhoto [style*="sticky"] {
+  position: relative !important;
+  top: auto !important;
+}
+
+@media (max-width: 760px) {
+  .faqPhoto {
+    padding: 28px 22px !important;
+  }
+}

@@ -1,30 +1,31 @@
-/* Survols du gabarit des implantations. Un style en ligne ne peut pas porter
-   d'état : tout ce qui réagit au pointeur ou au clavier vit ici.
-   Les valeurs sont celles des attributs `style-hover` de la maquette. */
+/* « Nos villes » : les survols, valeurs des attributs `style-hover` de
+   `MigenExpertise.dc.html`. Les propriétés survolées sont posées ICI et non en
+   ligne : un style en ligne gagnerait sur `:hover`. Le focus suit le survol
+   (WCAG 2.4.7). */
 
-/* `style-hover="filter:brightness(.93);transform:translateY(-1px)"` */
-.boutonAction:hover,
-.boutonAction:focus-visible {
-  filter: brightness(0.93);
-  transform: translateY(-1px);
-  /* Le bouton est orange, le texte blanc : la règle globale `a:hover` le
-     passerait en orange sur orange. */
+/* Carte de hub : style-hover="filter:brightness(1.15);color:#fff" */
+.hub:hover,
+.hub:focus-visible {
+  filter: brightness(1.15);
   color: #fff;
 }
 
-/* `style-hover="background:var(--card)"` */
-.boutonSecondaire:hover,
-.boutonSecondaire:focus-visible {
-  background: var(--card);
+/* Zone d'un hub : style-hover="border-color:#ff7c3c;color:var(--ink)" */
+.zone {
+  border: 1px solid var(--line);
+  color: var(--ink1);
+}
+.zone:hover,
+.zone:focus-visible {
+  border-color: #ff7c3c;
   color: var(--ink);
 }
 
-/* `style-hover="color:var(--acc)"` sur les liens de villes et de départements */
-.lienCouverture {
+/* Ville itinérante : style-hover="color:#ff7c3c" */
+.ville {
   color: var(--ink1);
-  transition: color var(--tr);
 }
-.lienCouverture:hover,
-.lienCouverture:focus-visible {
-  color: var(--acc);
+.ville:hover,
+.ville:focus-visible {
+  color: #ff7c3c;
 }

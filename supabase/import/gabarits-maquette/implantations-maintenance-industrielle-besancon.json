@@ -1,210 +1,199 @@
 {
   "url": "/implantations/maintenance-industrielle-besancon/",
+  "titre_h1": "Maintenance industrielle à Besançon et dans le Doubs",
   "contenu": {
     "gabarit": "ville",
+    "pastille": "Nos implantations",
     "chapeau": "L'horlogerie bisontine a laissé une culture du micron : microtechnique, décolletage, outillage de précision, puis les lignes de dispositifs médicaux et d'implants autour de Temis. Plus loin, vers Sochaux et Montbéliard, la mécanique lourde de l'automobile impose un tout autre rythme. Nos techniciens itinérants couvrent le Doubs et se déplacent partout en France.",
     "actions": [
       {
         "libelle": "Demander une intervention à Besançon",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés couvre les nuits, les week-ends et les jours fériés.",
+    "formulaireHeroTitre": "Demander une intervention à Besançon",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "appelBouton": "Demander une intervention à Besançon",
+    "chiffres": [
       {
-        "valeur": "+ 100",
-        "libelle": "collaborateurs, mécaniciens, électriciens, automaticiens, roboticiens"
+        "valeur": "+ 120",
+        "libelle": "Collaborateurs, mécaniciens, électriciens, automaticiens, roboticiens"
       },
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
-        "valeur": "+ 120",
-        "libelle": "clients accompagnés, dont plus de 80 réguliers"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       }
     ],
-    "contact": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 couvre les nuits, les week-ends et les jours fériés.",
-    "constatTexte": "Un centre d'usinage décroche de quelques microns. Rien ne s'arrête, et pourtant chaque pièce qui sort part au rebut.",
-    "constatPuces": [
+    "hubLocal": {
+      "surtitre": "Votre hub local · Besançon",
+      "titre": "Besançon : les industries que nos techniciens connaissent déjà",
+      "photo": "/assets/web/sv-duo-impact.jpg",
+      "badge": "Techniciens itinérants",
+      "nom": "Besançon et ses environs",
+      "texte": "Nos techniciens itinérants couvrent Besançon et son bassin, appuyés par le réseau national Migen.",
+      "bouton": "Demander une intervention à Besançon",
+      "cartes": [
+        {
+          "surtitre": "Tissu principal",
+          "titre": "Industrie métallique",
+          "texte": "Le décolletage vit de machines très spécifiques.",
+          "lien": "Notre approche industrie métallique",
+          "href": "/secteurs/industrie-metallique/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Automobile",
+          "texte": "Le bassin recrute les mêmes profils que l'automobile voisine.",
+          "lien": "Notre approche automobile",
+          "href": "/secteurs/automobile/"
+        }
+      ],
+      "zonesTitre": "Nos hubs",
+      "zones": [
+        {
+          "libelle": "Hub Lille",
+          "href": "/implantations/lille/"
+        },
+        {
+          "libelle": "Hub Lyon",
+          "href": "/implantations/lyon/"
+        },
+        {
+          "libelle": "Hub Nantes",
+          "href": "/implantations/nantes/"
+        },
+        {
+          "libelle": "Hub Paris",
+          "href": "/implantations/paris/"
+        },
+        {
+          "libelle": "Hub Strasbourg",
+          "href": "/implantations/strasbourg/"
+        },
+        {
+          "libelle": "Hub Toulouse",
+          "href": "/implantations/toulouse/"
+        },
+        {
+          "libelle": "Hub Marseille",
+          "href": "/implantations/marseille/"
+        },
+        {
+          "libelle": "Hub Bordeaux",
+          "href": "/implantations/bordeaux/"
+        },
+        {
+          "libelle": "Hub Metz",
+          "href": "/implantations/maintenance-industrielle-metz/"
+        },
+        {
+          "libelle": "Hub Dijon",
+          "href": "/implantations/maintenance-industrielle-dijon/"
+        }
+      ]
+    },
+    "complementOffre": [
       {
-        "texte": "Un défaut de machine qui ne déclenche rien coûte une série entière.",
-        "accroche": "En précision, la dérive se voit dans la pièce avant l'alarme."
-      },
-      {
-        "texte": "Traçabilité, propreté, régularité : une intervention non documentée pose un problème de conformité.",
-        "accroche": "Le médical ne tolère aucune improvisation."
-      },
-      {
-        "texte": "Presses de découpage, commandes numériques anciennes : peu de gens savent encore les régler.",
-        "accroche": "Le décolletage vit de machines très spécifiques."
-      },
-      {
-        "texte": "Entre Besançon et Sochaux, vos annonces de technicien attendent.",
-        "accroche": "Le bassin recrute les mêmes profils que l'automobile voisine."
-      },
-      {
-        "texte": "Une ligne de conditionnement arrêtée pendant la charge se paie en matière perdue.",
-        "accroche": "La filière comté et le bois travaillent en saison."
+        "texte": "Pour une mise en service, un transfert de ligne ou une extension d'atelier, notre offre chantier prend le relais avec un chef de projet unique."
       }
     ],
-    "reponseTexte": "Pour une mise en service, un transfert de ligne ou une extension d'atelier, notre offre [chantier](/offres/chantier/) prend le relais avec un chef de projet unique.",
-    "reponsePuces": [
+    "brefBande": "Besoin de ramener une machine dans ses tolérances ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Demander une intervention à Besançon",
+      "href": "#besoin"
+    },
+    "sections": [
       {
-        "texte": "Entretien technique et comportemental, 10 % des candidats retenus, résultats d'évaluation partagés. Vos machines ne servent pas de terrain d'apprentissage.",
-        "accroche": "Le profil vous est présenté avant l'intervention."
+        "type": "probleme",
+        "punchline": "Un centre d'usinage décroche de quelques microns. Rien ne s'arrête, et pourtant chaque pièce qui sort part au rebut.",
+        "puces": [
+          {
+            "accroche": "En précision, la dérive se voit dans la pièce avant l'alarme.",
+            "texte": "Un défaut de machine qui ne déclenche rien coûte une série entière."
+          },
+          {
+            "accroche": "Le médical ne tolère aucune improvisation.",
+            "texte": "Traçabilité, propreté, régularité : une intervention non documentée pose un problème de conformité."
+          },
+          {
+            "accroche": "Le décolletage vit de machines très spécifiques.",
+            "texte": "Presses de découpage, commandes numériques anciennes : peu de gens savent encore les régler."
+          },
+          {
+            "accroche": "Le bassin recrute les mêmes profils que l'automobile voisine.",
+            "texte": "Entre Besançon et Sochaux, vos annonces de technicien attendent."
+          },
+          {
+            "accroche": "La filière comté et le bois travaillent en saison.",
+            "texte": "Une ligne de conditionnement arrêtée pendant la charge se paie en matière perdue."
+          }
+        ],
+        "variante": "rangee"
       },
-      {
-        "texte": "Contrôle après remise en route, compte rendu chiffré, historique versé dans votre outil.",
-        "accroche": "Chaque passage laisse des mesures, pas des impressions."
-      },
-      {
-        "texte": "Inclus, exclu, conditions d'astreinte, conditions d'arrêt du contrat.",
-        "accroche": "Un périmètre et une sortie écrits."
-      }
-    ],
-    "faq": [
-      {
-        "reponse": "Oui. Nous n'avons pas d'agence dans le Doubs et nous ne l'inventons pas : nos techniciens se déplacent partout en France et interviennent sur site. Votre demande est rappelée dans l'heure aux horaires ouvrés, et le chargé d'affaires vous dit si le besoin est tenable.",
-        "question": "Intervenez-vous vraiment à Besançon, alors que votre siège est à Lyon ?"
-      },
-      {
-        "reponse": "Besançon et la zone de Temis, École-Valentin et le Grand Besançon, avec l'axe vers Montbéliard et Sochaux. Au-delà, nos techniciens se déplacent partout en France.",
-        "question": "Quelles communes couvrez-vous ?"
-      },
-      {
-        "reponse": "Le premier passage sert d'état des lieux : jeux, alignements, états de surface, réglages. Si une spécialité manque, le chargé d'affaires le dit au lieu d'envoyer quelqu'un au hasard.",
-        "question": "Savez-vous intervenir sur des machines de précision et du décolletage ?"
-      },
-      {
-        "reponse": "Oui, avec les habilitations et les règles du site. Chaque intervention est documentée, propreté et traçabilité comprises. Le point se fait à la qualification, jamais une fois sur place.",
-        "question": "Vos techniciens travaillent-ils sur des lignes de dispositifs médicaux ?"
-      },
-      {
-        "reponse": "Oui, en résidence : technicien intégré à votre équipe, encadré par un référent technique Migen, opérationnel en 2 à 3 semaines. Absence ou départ, un profil équivalent arrive briefé sur vos machines.",
-        "question": "Pouvez-vous détacher un technicien dans notre atelier ?"
-      },
-      {
-        "reponse": "L'offre Zéro arrêt fonctionne en abonnement, trois niveaux de couverture, sur devis, engagement type 6 mois renouvelable, diagnostic gratuit au départ.",
-        "question": "Combien coûte un contrat de maintenance ?"
-      }
-    ],
-    "autres": [
-      {
-        "libelle": "Lille",
-        "href": "/implantations/lille/"
-      },
-      {
-        "libelle": "Lyon",
-        "href": "/implantations/lyon/"
-      },
-      {
-        "libelle": "Grenoble",
-        "href": "/implantations/lyon/grenoble/"
-      },
-      {
-        "libelle": "saint etienne",
-        "href": "/implantations/lyon/saint-etienne/"
-      },
-      {
-        "libelle": "Valence",
-        "href": "/implantations/lyon/valence/"
-      },
-      {
-        "libelle": "Nantes",
-        "href": "/implantations/nantes/"
-      },
-      {
-        "libelle": "Brest",
-        "href": "/implantations/nantes/brest/"
-      },
-      {
-        "libelle": "Rennes",
-        "href": "/implantations/nantes/rennes/"
-      },
-      {
-        "libelle": "paris",
-        "href": "/implantations/paris/"
-      },
-      {
-        "libelle": "Rouen",
-        "href": "/implantations/paris/rouen/"
-      },
-      {
-        "libelle": "Strasbourg",
-        "href": "/implantations/strasbourg/"
-      },
-      {
-        "libelle": "Mulhouse",
-        "href": "/implantations/strasbourg/mulhouse/"
-      },
-      {
-        "libelle": "Toulouse",
-        "href": "/implantations/toulouse/"
-      },
-      {
-        "libelle": "Bordeaux",
-        "href": "/implantations/toulouse/bordeaux/"
-      }
-    ],
-    "reste": [
       {
         "type": "offre",
         "lignes": [
           {
-            "benefice": "La pièce sort dans la tolérance, et le rebut redescend.",
             "prestation": {
-              "texte": "centres d'usinage, presses, commandes numériques, réglages et reprise de jeux.",
-              "accroche": "Maintenance des machines de précision"
-            }
+              "accroche": "Maintenance des machines de précision",
+              "texte": "Centres d'usinage, presses, commandes numériques, réglages et reprise de jeux."
+            },
+            "benefice": "La pièce sort dans la tolérance, et le rebut redescend."
           },
           {
-            "benefice": "Vos audits trouvent une trace écrite pour chaque passage.",
             "prestation": {
-              "texte": "pour les lignes médicales : propreté, traçabilité, habilitations à jour.",
-              "accroche": "Interventions documentées"
-            }
+              "accroche": "Interventions documentées pour les lignes médicales : propreté, traçabilité, habilitations à jour.",
+              "texte": ""
+            },
+            "benefice": "Vos audits trouvent une trace écrite pour chaque passage."
           },
           {
-            "benefice": "Le même défaut ne revient pas sous un autre nom le mois suivant.",
             "prestation": {
-              "texte": "avec recherche de cause racine, du moteur à l'armoire électrique.",
-              "accroche": "Dépannage sur site"
-            }
+              "accroche": "Dépannage sur site avec recherche de cause racine, du moteur à l'armoire électrique.",
+              "texte": ""
+            },
+            "benefice": "Le même défaut ne revient pas sous un autre nom le mois suivant."
           },
           {
-            "benefice": "Les révisions tombent quand la machine est disponible, pas quand elle casse.",
             "prestation": {
-              "texte": "sur vos heures de fonctionnement réelles, resserré avant les saisons de charge.",
-              "accroche": "Préventif planifié"
-            }
+              "accroche": "Préventif planifié sur vos heures de fonctionnement réelles, resserré avant les saisons de charge.",
+              "texte": ""
+            },
+            "benefice": "Les révisions tombent quand la machine est disponible, pas quand elle casse."
           },
           {
-            "benefice": "Une commande numérique ancienne retrouve un pilotage fiable sans remplacement.",
             "prestation": {
-              "texte": "SIEMENS et Schneider, variation de vitesse, supervision, roboticiens ABB et Fanuc.",
-              "accroche": "Automatisme et rétrofit"
-            }
+              "accroche": "Automatisme et rétrofit",
+              "texte": "SIEMENS et Schneider, variation de vitesse, supervision, roboticiens ABB et Fanuc."
+            },
+            "benefice": "Une commande numérique ancienne retrouve un pilotage fiable sans remplacement."
           },
           {
-            "benefice": "Un seul interlocuteur pour un défaut qui traverse plusieurs spécialités.",
             "prestation": {
-              "texte": "[mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure](/expertises/soudure/).",
-              "accroche": "Domaines combinés"
-            }
+              "accroche": "Domaines combinés",
+              "texte": "Mécanique, électrique, hydraulique, pneumatique, soudure."
+            },
+            "benefice": "Un seul interlocuteur pour un défaut qui traverse plusieurs spécialités."
           },
           {
-            "benefice": "Un arrêt du week-end ne devient pas un lundi de production perdu.",
             "prestation": {
-              "texte": ", mobilisation de techniciens mobiles partout en France.",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
+              "accroche": "Astreinte la nuit, le week-end et les jours fériés en option mobilisation de techniciens mobiles partout en France.",
+              "texte": ""
+            },
+            "benefice": "Un arrêt du week-end ne devient pas un lundi de production perdu."
           },
           {
-            "benefice": "Le poste que le bassin ne vous permet pas de pourvoir est tenu, remplacement assuré.",
             "prestation": {
-              "texte": "intégré à votre équipe, prise de poste en 2 à 3 semaines.",
-              "accroche": "Technicien en [Résidence](/offres/residence/)"
-            }
+              "accroche": "",
+              "texte": ""
+            },
+            "benefice": "Le poste que le bassin ne vous permet pas de pourvoir est tenu, remplacement assuré."
           }
         ]
       },
@@ -212,72 +201,148 @@
         "type": "deroule",
         "etapes": [
           {
-            "texte": "vous décrivez la panne ou le besoin. Un chargé d'affaires rappelle dans l'heure aux horaires ouvrés.",
-            "titre": "Premier contact"
+            "titre": "Premier contact",
+            "texte": "Vous décrivez la panne ou le besoin. Un chargé d'affaires rappelle dans l'heure aux horaires ouvrés."
           },
           {
-            "texte": "machines, tolérances attendues, accès au site, habilitations, contraintes de propreté. Tout se note avant le chiffrage.",
-            "titre": "Qualification"
+            "titre": "Qualification",
+            "texte": "Machines, tolérances attendues, accès au site, habilitations, contraintes de propreté. Tout se note avant le chiffrage."
           },
           {
-            "texte": "périmètre, créneaux, matériel, conditions horaires. L'exceptionnel se chiffre en amont.",
-            "titre": "Devis écrit"
+            "titre": "Devis écrit",
+            "texte": "Périmètre, créneaux, matériel, conditions horaires. L'exceptionnel se chiffre en amont."
           },
           {
-            "texte": "accueil sécurité, plan de prévention, consignation, diagnostic, réparation, contrôle après remise en route.",
-            "titre": "Intervention"
+            "titre": "Intervention",
+            "texte": "Accueil sécurité, plan de prévention, consignation, diagnostic, réparation, contrôle après remise en route."
           },
           {
-            "texte": "opérations, mesures, temps passé, pièces, préconisations, versés dans votre GMAO.",
-            "titre": "Compte rendu"
+            "titre": "Compte rendu",
+            "texte": "Opérations, mesures, temps passé, pièces, préconisations, versés dans votre GMAO."
           },
           {
-            "texte": "sur contrat, revue de la récurrence par équipement et du respect du plan préventif.",
-            "titre": "Suivi"
+            "titre": "Suivi",
+            "texte": "Sur contrat, revue de la récurrence par équipement et du respect du plan préventif."
           }
         ]
       },
       {
-        "type": "cta",
-        "bouton": "Demander une intervention à Besançon",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin de ramener une machine dans ses tolérances ?"
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "Le profil vous est présenté avant l'intervention.",
+            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats d'évaluation partagés. Vos machines ne servent pas de terrain d'apprentissage."
+          },
+          {
+            "accroche": "Chaque passage laisse des mesures, pas des impressions.",
+            "texte": "Contrôle après remise en route, compte rendu chiffré, historique versé dans votre outil."
+          },
+          {
+            "accroche": "Un périmètre et une sortie écrits.",
+            "texte": "Inclus, exclu, conditions d'astreinte, conditions d'arrêt du contrat."
+          }
+        ]
       },
       {
         "type": "preuves",
         "preuves": [
           {
-            "texte": ", centres d'usinage, presses et commandes numériques, en 2025",
             "titre": "Un technicien à temps plein sur un site de pièces mécaniques de précision",
+            "texte": ", centres d'usinage, presses et commandes numériques, en 2025.",
+            "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "lienLibelle": "Étude de cas VOIT : site du Grand Est"
+            "photo": "/assets/web/x-tech-portrait.jpg"
           },
           {
-            "texte": ", pour accompagner la bascule vers le véhicule électrique",
             "titre": "18 à 25 techniciens mobilisés sur plusieurs sites du Grand Est",
+            "texte": ", pour accompagner la bascule vers le véhicule électrique.",
+            "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-grand-est/",
-            "lienLibelle": "Étude de cas STELLANTIS : sites du Grand Est"
+            "photo": "/assets/web/team-grind-front.jpg"
           },
           {
-            "texte": ", depuis 2025",
             "titre": "Techniciens présents au quotidien sur les équipements critiques d'un fabricant de composants techniques",
+            "texte": ", depuis 2025.",
+            "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "lienLibelle": "Étude de cas JTEKT : maintenance des installations"
+            "photo": "/assets/web/x-elec-cablage.jpg"
           },
           {
-            "texte": ", en contexte de montée en charge",
             "titre": "Un automaticien SIEMENS affecté au démarrage d'une nouvelle ligne de production",
+            "texte": ", en contexte de montée en charge.",
+            "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "lienLibelle": "Étude de cas MERSEN : nouvelles lignes"
+            "photo": "/assets/web/team-duo.jpg"
+          },
+          {
+            "titre": "Réparer plutôt que remplacer, au budget d’une PME",
+            "lienLibelle": "Étude de cas Joint Lyonnais",
+            "lienHref": "/preuves/joint-lyonnais/",
+            "photo": "/assets/web/team-electric.jpg"
+          },
+          {
+            "titre": "La maintenance tient pendant que l’équipe recrute",
+            "lienLibelle": "Étude de cas Bamesa",
+            "lienHref": "/preuves/bamesa/",
+            "photo": "/assets/web/team-duo.jpg"
+          },
+          {
+            "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
+            "lienLibelle": "Étude de cas Rector Lesage",
+            "lienHref": "/preuves/rector-lesage/",
+            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+          },
+          {
+            "titre": "Un parc de fonderie repris en huit semaines",
+            "lienLibelle": "Étude de cas Stellantis",
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/team-grind-close.jpg"
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "questions": [
+          {
+            "question": "Intervenez-vous vraiment à Besançon, alors que votre siège est à Lyon ?",
+            "reponse": "Oui. Nous n'avons pas d'agence dans le Doubs et nous ne l'inventons pas : nos techniciens se déplacent partout en France et interviennent sur site. Votre demande est rappelée dans l'heure aux horaires ouvrés, et le chargé d'affaires vous dit si le besoin est tenable."
+          },
+          {
+            "question": "Quelles communes couvrez-vous ?",
+            "reponse": "Besançon et la zone de Temis, École-Valentin et le Grand Besançon, avec l'axe vers Montbéliard et Sochaux. Au-delà, nos techniciens se déplacent partout en France."
+          },
+          {
+            "question": "Savez-vous intervenir sur des machines de précision et du décolletage ?",
+            "reponse": "Le premier passage sert d'état des lieux : jeux, alignements, états de surface, réglages. Si une spécialité manque, le chargé d'affaires le dit au lieu d'envoyer quelqu'un au hasard."
+          },
+          {
+            "question": "Vos techniciens travaillent-ils sur des lignes de dispositifs médicaux ?",
+            "reponse": "Oui, avec les habilitations et les règles du site. Chaque intervention est documentée, propreté et traçabilité comprises. Le point se fait à la qualification, jamais une fois sur place."
+          },
+          {
+            "question": "Pouvez-vous détacher un technicien dans notre atelier ?",
+            "reponse": "Absence ou départ, un profil équivalent arrive briefé sur vos machines."
+          },
+          {
+            "question": "Combien coûte un contrat de maintenance ?",
+            "reponse": "L'offre Zéro arrêt fonctionne en abonnement, trois niveaux de couverture, sur devis, engagement type 6 mois renouvelable, diagnostic gratuit au départ."
           }
         ]
       },
       {
         "type": "ctaFinal",
-        "bouton": "Demander une intervention à Besançon",
-        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
         "question": "Besoin de fiabiliser un parc de précision avant la prochaine série ?"
       }
     ]
-  }
+  },
+  "trous": [
+    {
+      "ligne": "Technicien en Résidence intégré à votre équipe, prise de poste en 2 à 3 semaines.",
+      "pourquoi": "délai chiffré (« prise de poste en 2 à 3 semaines ») : seul « rappel dans l'heure » est autorisé. Intitulé du point 08 de « 04 Offre », une seule phrase : le point reste avec son bénéfice, son intitulé est vide."
+    },
+    {
+      "ligne": "Oui, en résidence : technicien intégré à votre équipe, encadré par un référent technique Migen, opérationnel en 2 à 3 semaines.",
+      "pourquoi": "délai chiffré (« opérationnel en 2 à 3 semaines ») : seul « rappel dans l'heure » est autorisé. Première phrase de la réponse à « Pouvez-vous détacher un technicien dans notre atelier ? », la seconde reste."
+    }
+  ]
 }

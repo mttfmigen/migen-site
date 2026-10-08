@@ -26,6 +26,8 @@
         "valeur": "Matériaux de construction"
       }
     ],
+    "logo": "/assets/clients/rector-lesage.png",
+    "photoHero": "/assets/web/mq-2a6115ec9fe0.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -121,6 +123,7 @@
         "valeur": "1 technicien"
       }
     ],
+    "photoDispositif": "/assets/web/mq-e6322efcd358.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -131,7 +134,7 @@
         "texte": "Après votre demande, en semaine de 8h00 à 18h30."
       },
       {
-        "titre": "10 % des candidats retenus",
+        "titre": "10 % des techniciens retenus",
         "texte": "Techniciens évalués sur la technique et le comportement avant affectation."
       }
     ],
@@ -139,22 +142,26 @@
       {
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
-        "href": "/preuves/"
+        "href": "/preuves/",
+        "photo": "/assets/web/mq-339d39e2a674.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
-        "href": "/offres/residence/"
+        "href": "/offres/residence/",
+        "photo": "/assets/web/mq-056f3c250981.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrie lourde",
-        "href": "/secteurs/industrie-lourde/"
+        "href": "/secteurs/industrie-lourde/",
+        "photo": "/assets/web/mq-948c28bcda08.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "VIGNAL SYSTEMS : maintenir et monter, de jour comme de nuit",
-        "href": "/preuves/vignal-systems/"
+        "href": "/preuves/vignal-systems/",
+        "photo": "/assets/web/mq-17e2f3bce95f.jpg"
       }
     ]
   }

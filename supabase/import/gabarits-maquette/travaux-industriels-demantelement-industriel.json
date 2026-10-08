@@ -1,5 +1,5 @@
 {
-  "_source": "maquette/rendu/travaux-industriels--demantelement-industriel.html, 18 sections. Texte copié mot pour mot de cette capture. 07/10, passe G17 : le rail « Nos références » de la capture porte SEPT cartes et non quatre. Les trois manquantes (Savoye, Amazon, Atena) sont les cas liés de maquette/contenu/site/cas-lies.json, dans l'ordre de la capture : Savoye en tête, Amazon et Atena en queue. Leur carte ne porte QUE le libellé client et le titre (le troisième emplacement de la carte est vide dans la capture), donc pas de `texte`. PHOTOS. Les blobs de la capture sont des identités stables d'une capture à l'autre (vérifié : les 9 pages dont le gabarit déclare déjà des photos donnent un blob pour un seul chemin). Savoye et Amazon portent le blob 1e7b43b1, celui de la carte AKTID de CETTE page, déjà identifié /assets/web/team-grind-front.jpg : même image, pas une association choisie. TROU : le blob c96cc07d de la carte Atena n'est identifié nulle part dans le dépôt, donc aucune photo n'est déclarée pour elle plutôt qu'une approchante (CLAUDE.md §13). TROU DE CONTRAT : la capture porte « +200 / Clients industriels accompagnés » dans la bande du héros. Le contrat interdit tout chiffre de clients autre que « plus de 120 clients, dont plus de 80 réguliers » : la carte n'est pas rendue, et elle n'est pas reformulée non plus. La bande du héros porte donc 3 chiffres au lieu de 4.",
+  "_source": "maquette/rendu/travaux-industriels--demantelement-industriel.html, 18 sections. Texte copié mot pour mot de cette capture. 07/10, passe G17 : le rail « Nos références » de la capture porte SEPT cartes et non quatre. Les trois manquantes (Savoye, Amazon, Atena) sont les cas liés de maquette/contenu/site/cas-lies.json, dans l'ordre de la capture : Savoye en tête, Amazon et Atena en queue. Leur carte ne porte QUE le libellé client et le titre (le troisième emplacement de la carte est vide dans la capture), donc pas de `texte`. PHOTOS. Les blobs de la capture sont des identités stables d'une capture à l'autre (vérifié : les 9 pages dont le gabarit déclare déjà des photos donnent un blob pour un seul chemin). Savoye et Amazon portent le blob 1e7b43b1, celui de la carte AKTID de CETTE page, déjà identifié /assets/web/team-grind-front.jpg : même image, pas une association choisie. TROU : le blob c96cc07d de la carte Atena n'est identifié nulle part dans le dépôt, donc aucune photo n'est déclarée pour elle plutôt qu'une approchante (CLAUDE.md §13). La carte « +200 / Clients industriels accompagnés » de la bande du héros est rendue à sa place de la capture, la deuxième (07/10, règle validée par le client, design_handoff_migen_site/README.md, qui prime sur l'ancien compte du dépôt) : la bande porte 4 chiffres, comme la capture.",
   "url": "/travaux-industriels/demantelement-industriel/",
   "titre_h1": "Démantèlement industriel",
   "contenu": {
@@ -14,12 +14,16 @@
         "libelle": "Collaborateurs · techniciens salariés Migen, pas de chaîne d'intermédiaires."
       },
       {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      },
+      {
         "valeur": "4",
         "libelle": "Agences · Lyon (siège), Montréal, Dubaï, Madrid, et des hubs techniques en France."
       },
       {
         "valeur": "10 %",
-        "libelle": "Des candidats retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+        "libelle": "Des techniciens retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
       }
     ],
     "brefBande": "Besoin de libérer une zone, un atelier ou un site entier ?",
@@ -179,46 +183,54 @@
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "logo": "/assets/clients/savoye.png"
           },
           {
             "titre": "Montage et déplacement de machines, étanchéité et isolation, 2025.",
             "texte": "Transferts de machines sécurisés, sans casse ni improvisation, délais de chantier tenus.",
             "lienLibelle": "SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/web/x-logistique-entrepot.jpg"
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg",
+            "logo": "/assets/clients/mq-127f9e03c53b.svg"
           },
           {
             "titre": "Montage d'un centre logistique, Clermont-Ferrand, 2023.",
             "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés, site livré à la date prévue.",
             "lienLibelle": "AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "logo": "/assets/clients/aktid.png"
           },
           {
             "titre": "Construction d'un site de R&D bas carbone, région parisienne.",
             "texte": "Pilotage de chantier de bout en bout par Orthus, filiale du groupe, coordination multi-métiers.",
             "lienLibelle": "ORTHUS x ECOCEM",
             "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/web/x-cimenterie.jpg"
+            "photo": "/assets/web/mq-e69a240d8656.jpg",
+            "logo": "/assets/clients/orthus-x-ecocem.png"
           },
           {
             "titre": "Contrôle de chantier, projets stratégiques, 2025 à 2026.",
             "texte": "Suivi des prestataires, vérification des installations, respect des procédures.",
             "lienLibelle": "ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "logo": "/assets/clients/alstef.webp"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
             "titre": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
             "lienLibelle": "Atena",
-            "lienHref": "/preuves/atena-port-la-rochelle/"
+            "lienHref": "/preuves/atena-port-la-rochelle/",
+            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg",
+            "logo": "/assets/clients/atena.png"
           }
         ]
       },
@@ -227,7 +239,7 @@
         "questions": [
           {
             "question": "Combien coûte un démantèlement industriel ?",
-            "reponse": ""
+            "reponse": "Le montant dépend du volume d'équipements, des contraintes d'accès, de la part de valorisation et du niveau de remise en état attendu. Chiffrage sur devis après visite, poste par poste. La valeur des matières récupérables apparaît sur une ligne du devis, elle n'y est pas noyée."
           },
           {
             "question": "Intervenez-vous pendant que le site produit encore ?",
@@ -247,7 +259,7 @@
           },
           {
             "question": "Qui sont les techniciens qui interviennent ?",
-            "reponse": "Des salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des candidats sont retenus. Mécanique, électricité, hydraulique, pneumatique, soudure et chaudronnerie."
+            "reponse": "Des salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des techniciens sont retenus. Mécanique, électricité, hydraulique, pneumatique, soudure et chaudronnerie."
           }
         ]
       },

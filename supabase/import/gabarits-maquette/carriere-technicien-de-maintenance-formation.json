@@ -14,7 +14,11 @@
    ],
    "chiffre": {
     "valeur": "10 %",
-    "texte": "des candidats retenus, après un test technique et un entretien"
+    "texte": "des techniciens retenus, après un test technique et un entretien"
+   },
+   "photo": {
+    "src": "/assets/web/mq-056f3c250981.jpg",
+    "alt": "Technicien migen en intervention"
    }
   },
   "sections": [
@@ -27,7 +31,7 @@
      },
      {
       "valeur": "10 %",
-      "texte": "des candidats retenus après évaluation"
+      "texte": "des techniciens retenus après évaluation"
      },
      {
       "valeur": "4 agences",
@@ -440,7 +444,7 @@
      },
      {
       "titre": "Une sélection exigeante et assumée",
-      "texte": "Entretien technique et comportemental, 10 % des candidats retenus, résultats partagés."
+      "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats partagés."
      }
     ]
    },
@@ -494,7 +498,7 @@
      },
      {
       "question": "Migen recrute-t-elle des profils qui sortent de formation ?",
-      "reponse": "Oui, chaque semaine. Nous évaluons chaque candidat en entretien technique et comportemental ; seuls 10 % sont retenus, et un référent accompagne la prise de poste partout en France."
+      "reponse": "Oui, chaque semaine. Nous évaluons chaque technicien en entretien technique et comportemental ; seuls 10 % sont retenus, et un référent accompagne la prise de poste partout en France."
      }
     ]
    },
@@ -506,15 +510,18 @@
     "items": [
      {
       "libelle": "Technicien de maintenance",
-      "href": "/carriere/technicien-de-maintenance/"
+      "href": "/carriere/technicien-de-maintenance/",
+      "photo": "/assets/web/mq-0699d4d92e7e.jpg"
      },
      {
       "libelle": "Alternance en maintenance industrielle",
-      "href": "/carriere/alternance/"
+      "href": "/carriere/alternance/",
+      "photo": "/assets/web/mq-e6322efcd358.jpg"
      },
      {
       "libelle": "Salaire technicien de maintenance",
-      "href": "/carriere/technicien-de-maintenance/salaire/"
+      "href": "/carriere/technicien-de-maintenance/salaire/",
+      "photo": "/assets/web/mq-339d39e2a674.jpg"
      }
     ]
    }

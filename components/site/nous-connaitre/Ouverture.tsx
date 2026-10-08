@@ -92,7 +92,7 @@ export default function Ouverture() {
             }}
           >
             <Link
-              href="/equipe/"
+              href="/a-propos/equipe/"
               className={styles.boutonPrincipal}
               style={{
                 ...BOUTON,

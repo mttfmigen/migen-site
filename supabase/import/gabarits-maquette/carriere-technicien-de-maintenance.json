@@ -13,7 +13,11 @@
    ],
    "chiffre": {
     "valeur": "10 %",
-    "texte": "des candidats retenus, après un test technique et un entretien"
+    "texte": "des techniciens retenus, après un test technique et un entretien"
+   },
+   "photo": {
+    "src": "/assets/web/mq-339d39e2a674.jpg",
+    "alt": "Technicien migen en intervention"
    }
   },
   "sections": [
@@ -26,7 +30,7 @@
      },
      {
       "valeur": "10 %",
-      "texte": "des candidats retenus après évaluation"
+      "texte": "des techniciens retenus après évaluation"
      },
      {
       "valeur": "4 agences",
@@ -305,7 +309,7 @@
      },
      {
       "titre": "Une sélection exigeante et assumée",
-      "texte": "Entretien technique et comportemental, 10 % des candidats retenus, résultats partagés."
+      "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats partagés."
      },
      {
       "titre": "Un accueil structuré",
@@ -374,7 +378,7 @@
      },
      {
       "question": "Comment Migen évalue-t-elle un technicien de maintenance ?",
-      "reponse": "Un entretien technique mené par un professionnel du métier, puis un entretien comportemental. Seuls 10 % des candidats sont retenus, et les résultats sont transmis au client avant toute décision."
+      "reponse": "Un entretien technique mené par un professionnel du métier, puis un entretien comportemental. Seuls 10 % des techniciens sont retenus, et les résultats sont transmis au client avant toute décision."
      }
     ]
    },
@@ -386,19 +390,23 @@
     "items": [
      {
       "libelle": "Métiers de la maintenance",
-      "href": "/carriere/"
+      "href": "/carriere/",
+      "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
      },
      {
       "libelle": "Formation technicien de maintenance",
-      "href": "/carriere/technicien-de-maintenance/formation/"
+      "href": "/carriere/technicien-de-maintenance/formation/",
+      "photo": "/assets/web/mq-0699d4d92e7e.jpg"
      },
      {
       "libelle": "Salaire technicien de maintenance",
-      "href": "/carriere/technicien-de-maintenance/salaire/"
+      "href": "/carriere/technicien-de-maintenance/salaire/",
+      "photo": "/assets/web/mq-e6322efcd358.jpg"
      },
      {
       "libelle": "Électromécanicien",
-      "href": "/carriere/electromecanicien/"
+      "href": "/carriere/electromecanicien/",
+      "photo": "/assets/web/mq-339d39e2a674.jpg"
      }
     ]
    }

@@ -1,268 +1,217 @@
-import TexteRiche from "@/components/site/blocs/TexteRiche";
-import type { Paragraphe, Tableau } from "@/types/contenu";
-import type { BlocEditorial } from "@/types/editorial";
+import Link from "next/link";
+import { Fragment, type CSSProperties, type ReactNode } from "react";
+
+import { estCheminInterne } from "@/components/site/blocs/TexteRiche";
+import type { BlocRessource, PartieRessource } from "@/types/ressource";
 
 import styles from "./Ressource.module.css";
-import {
-  BAREME_CLE,
-  BAREME_ENTETE,
-  BAREME_VALEUR,
-  CITATION,
-  CITATION_TEXTE,
-  ETAPE_TEXTE,
-  ETAPE_TITRE,
-  NUMERO,
-  PROSE,
-  PUCE,
-  TITRE2,
-  TITRE3,
-  VERRE,
-} from "./habillage";
+import * as H from "./habillage";
 
 /**
- * Le corps du gabarit ressource : chaque bloc du corpus dans le motif que la
- * maquette lui donne.
+ * La section « Article · corps » de `MigenRessource.dc.html` : le sommaire
+ * collant à gauche, la colonne de lecture à droite, ses parties numérotées et
+ * la bande d'appel posée après la DEUXIÈME partie (`if (k === 1)` de la
+ * maquette).
  *
- * LA CORRESPONDANCE, bloc du corpus vers motif de la maquette :
- *
- *   titre            -> le H2 de la colonne de lecture (ligne 6530)
- *   paragraphe       -> la prose de la colonne de lecture (6529)
- *   liste ordonnée   -> LA CARTE DE PROCÉDURE NUMÉROTÉE, variante pratique (6634)
- *   liste à puces    -> la liste pointée de la carte « À retenir » (6542)
- *   tableau          -> LE BARÈME, variante technique (6727)
- *   citation         -> l'encadré en barre orange (6533)
- *
- * C'est là tout le portage : les trois variantes de corps de la maquette ne
- * sont pas trois jeux de données mais trois motifs, et le corpus porte déjà les
- * formes auxquelles ils s'appliquent. Les pages de `/ressources/` ont toutes
- * une liste ordonnée ET un tableau : elles reçoivent donc la carte numérotée ET
- * le barème, à la place que leur auteur leur a donnée.
- *
- * POURQUOI PAS `PageEditoriale` : son `Bloc` rend le MÊME texte dans un AUTRE
- * dessin, H2 de 28 px, liste en puces grises, tableau à filets, encadré en
- * lavis. Le réemployer aurait fait ressembler la page à ce que le client a
- * refusé, ce qui est l'objet même de ce portage. Tout ce qui pouvait l'être est
- * réemployé : `TexteRiche` pour le Markdown en ligne du corpus, le bloc
- * `Objections` pour la foire aux questions, le formulaire et le maillage par la
- * route.
- *
- * Composants SERVEUR. Aucun état, aucun JavaScript.
+ * Composant SERVEUR, aucun JavaScript : le sommaire est fait d'ancres réelles,
+ * le décalage sous l'en-tête est porté par `scroll-margin-top` sur chaque H2.
  */
 
-/** Combien de colonnes, et laquelle porte le nom. Motif de la ligne 6733. */
-function grilleBareme(colonnes: number) {
-  return {
-    display: "grid",
-    gridTemplateColumns: ["1.1fr", ...Array(Math.max(0, colonnes - 1)).fill("1fr")].join(
-      " ",
-    ),
-    gap: 16,
-  } as const;
-}
+/** `segs()` de la maquette : lien gras, lien, gras. Rien d'autre. */
+const MOTIF = /\*\*\[([^\]]+)\]\(([^)]+)\)\*\*|\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*/g;
 
 /**
- * Le barème en tableau de la variante technique.
+ * Le texte en ligne, dans l'écriture que la maquette donne au contexte.
  *
- * `table` et non une grille de `div` comme la maquette : sa grille prive un
- * lecteur d'écran de l'en-tête de colonne, la troisième cellule d'une ligne ne
- * se rattachant plus à « Conduite à tenir ». Le `table` rétablit la sémantique,
- * et `Ressource.module.css` lui rend le comportement de grille attendu, si bien
- * que le dessin est le même.
- *
- * LES RÔLES SONT ÉCRITS À LA MAIN, et ce n'est pas du zèle : redéfinir
- * `display` sur un tableau lui RETIRE son rôle implicite dans Chrome comme
- * dans Safari. Sans ces attributs, le `table` aurait coûté le dessin de la
- * maquette sans rien rendre au lecteur d'écran, c'est-à-dire le pire des deux.
- *
- * LA DEUXIÈME COLONNE N'EST PAS EN CHASSE FIXE, contrairement à la maquette
- * (ligne 6740) : elle y porte un seuil chiffré, « inférieur à 2,8 mm/s ». Les
- * tableaux du corpus comparent du texte. Une chasse fixe sur une phrase se
- * lirait comme une valeur mesurée, ce qui serait un faux.
+ * POURQUOI PAS `TexteRiche` : il rend le gras en `<strong>` nu (graisse 700 du
+ * navigateur, la maquette pose 600 et l'encre) et le lien sans style, et il
+ * enveloppe `**[lien](/x/)**` dans un gras que la maquette ne pose pas. Sa
+ * règle de sécurité est reprise telle quelle : seul un chemin interne devient
+ * un lien, le reste est rendu en texte.
  */
-export function Bareme({ tableau }: { tableau: Tableau }) {
-  const colonnes = tableau.entetes.length;
-  if (colonnes === 0 || tableau.lignes.length === 0) return null;
-  const grille = grilleBareme(colonnes);
-
-  return (
-    <div style={{ ...VERRE, overflow: "hidden", margin: "0 0 26px" }}>
-      <table role="table" className={styles.bareme}>
-        <thead role="rowgroup">
-          <tr
-            role="row"
-            className="mg-rq3"
-            style={{
-              ...grille,
-              padding: "14px 30px",
-              borderBottom: "1px solid var(--line)",
-              background: "var(--chip)",
-            }}
-          >
-            {tableau.entetes.map((entete, i) => (
-              <th key={`e${i}`} role="columnheader" scope="col" style={BAREME_ENTETE}>
-                <TexteRiche texte={entete} />
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody role="rowgroup">
-          {tableau.lignes.map((ligne, i) => (
-            <tr
-              key={`l${i}`}
-              role="row"
-              className="mg-rq3"
-              style={{
-                ...grille,
-                alignItems: "center",
-                padding: "16px 30px",
-                // La dernière ligne ne porte pas de filet : la carte se ferme
-                // sur son propre bord (ligne 6748 de la maquette).
-                borderBottom:
-                  i === tableau.lignes.length - 1 ? undefined : "1px solid var(--line)",
-              }}
-            >
-              {ligne.map((cellule, j) => (
-                <td key={`c${j}`} role="cell" style={j === 0 ? BAREME_CLE : BAREME_VALEUR}>
-                  <TexteRiche texte={cellule} />
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-/**
- * La carte de procédure numérotée de la variante pratique.
- *
- * `ol` et non une suite de `div` comme la maquette (ligne 6636) : les pastilles
- * orange de la maquette portent le numéro en texte, qu'un lecteur d'écran lit
- * donc comme un caractère isolé avant chaque étape. En liste ordonnée, le
- * numéro est porté par la structure, la pastille n'est plus que du dessin, et
- * l'ordre, qui est tout le propos d'une procédure, est annoncé.
- *
- * `role="list"` parce que `list-style:none`, qu'impose le dessin en cartes,
- * retire le rôle de liste dans Safari : le rang ne serait alors annoncé nulle
- * part, la pastille qui le porte à l'écran étant masquée au lecteur.
- */
-export function Procedure({ etapes }: { etapes: Paragraphe[] }) {
-  if (etapes.length === 0) return null;
-
-  return (
-    <div style={{ ...VERRE, padding: "30px 34px 32px", margin: "0 0 26px" }}>
-      <ol role="list" style={{ display: "grid", gap: 2, margin: 0, padding: 0, listStyle: "none" }}>
-        {etapes.map((etape, i) => (
-          <li
-            key={`${i}-${etape.texte.slice(0, 24)}`}
-            style={{
-              display: "flex",
-              gap: 18,
-              padding: "20px 0",
-              borderBottom:
-                i === etapes.length - 1 ? undefined : "1px solid var(--line)",
-            }}
-          >
-            {/* Décorative : la liste ordonnée porte déjà le rang. */}
-            <span aria-hidden="true" style={NUMERO}>
-              {i + 1}
-            </span>
-            <div>
-              {etape.accroche ? (
-                <div style={ETAPE_TITRE}>
-                  <TexteRiche texte={etape.accroche} />
-                </div>
-              ) : null}
-              <p style={ETAPE_TEXTE}>
-                <TexteRiche texte={etape.texte} />
-              </p>
-            </div>
-          </li>
-        ))}
-      </ol>
-    </div>
-  );
-}
-
-function Bloc({ bloc }: { bloc: BlocEditorial }) {
-  switch (bloc.type) {
-    case "titre":
-      return bloc.niveau === 2 ? (
-        <h2 id={bloc.id} style={TITRE2}>
-          {bloc.texte}
-        </h2>
-      ) : (
-        <h3 id={bloc.id} style={TITRE3}>
-          {bloc.texte}
-        </h3>
+export function EnLigne({
+  texte,
+  lien,
+  gras = H.GRAS,
+}: {
+  texte: string;
+  lien: CSSProperties;
+  gras?: CSSProperties;
+}) {
+  const morceaux: ReactNode[] = [];
+  let curseur = 0;
+  for (const m of texte.matchAll(MOTIF)) {
+    const debut = m.index ?? 0;
+    if (debut > curseur) morceaux.push(texte.slice(curseur, debut));
+    curseur = debut + m[0].length;
+    const libelle = m[1] ?? m[3];
+    const href = m[2] ?? m[4];
+    if (libelle === undefined) {
+      morceaux.push(
+        <strong key={debut} style={gras}>
+          {m[5]}
+        </strong>,
       );
+    } else if (estCheminInterne(href)) {
+      morceaux.push(
+        <Link key={debut} href={href} prefetch={false} style={lien}>
+          {libelle}
+        </Link>,
+      );
+    } else {
+      morceaux.push(libelle);
+    }
+  }
+  if (curseur < texte.length) morceaux.push(texte.slice(curseur));
+  return <>{morceaux}</>;
+}
 
+function Bloc({ bloc }: { bloc: BlocRessource }) {
+  switch (bloc.type) {
     case "paragraphe":
       return (
-        <p style={PROSE}>
-          {bloc.accroche ? (
-            <strong style={{ color: "var(--ink)" }}>
-              <TexteRiche texte={bloc.accroche} />{" "}
-            </strong>
-          ) : null}
-          <TexteRiche texte={bloc.texte} />
+        <p style={H.PROSE}>
+          <EnLigne texte={bloc.texte} lien={H.LIEN_PROSE} />
         </p>
       );
-
-    case "liste":
-      if (bloc.ordonnee) return <Procedure etapes={bloc.items} />;
+    case "intertitre":
+      return <h3 style={H.TITRE3}>{bloc.texte}</h3>;
+    case "puces":
       return (
-        <ul role="list" style={{ display: "grid", gap: 10, margin: "0 0 22px", padding: 0, listStyle: "none" }}>
+        <ul role="list" style={H.PUCES}>
           {bloc.items.map((item, i) => (
-            <li
-              key={`${i}-${item.texte.slice(0, 24)}`}
-              style={{
-                display: "flex",
-                gap: 10,
-                font: "400 16px/1.65 var(--fb)",
-                color: "var(--ink1)",
-              }}
-            >
-              {/* Décorative : la liste porte déjà le sens. Annoncée, elle
-                  ferait dire « puce » au lecteur d'écran avant chaque entrée. */}
-              <span aria-hidden="true" style={{ color: "var(--acc)", flex: "none" }}>
-                {PUCE}
+            <li key={i} style={H.PUCE}>
+              <span aria-hidden="true" style={H.COCHE}>
+                ✓
               </span>
               <span>
-                {item.accroche ? (
-                  <strong style={{ color: "var(--ink)" }}>
-                    <TexteRiche texte={item.accroche} />{" "}
-                  </strong>
-                ) : null}
-                <TexteRiche texte={item.texte} />
+                <EnLigne texte={item} lien={H.LIEN_PUCE} />
               </span>
             </li>
           ))}
         </ul>
       );
-
-    case "tableau":
-      return <Bareme tableau={bloc} />;
-
-    case "citation":
+    case "etapes":
+      // `ol` : l'ordre est le propos d'une procédure, la liste l'annonce. La
+      // pastille, qui le répète à l'écran, est masquée au lecteur d'écran.
       return (
-        <blockquote style={CITATION}>
-          <p style={CITATION_TEXTE}>
-            <TexteRiche texte={bloc.texte} />
-          </p>
-        </blockquote>
+        <ol role="list" style={H.ETAPES}>
+          {bloc.items.map((item, i) => (
+            <li key={i} style={H.ETAPE}>
+              <span aria-hidden="true" style={H.ETAPE_NUMERO}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div style={H.ETAPE_TEXTE}>
+                <EnLigne texte={item} lien={H.LIEN_ETAPE} />
+              </div>
+            </li>
+          ))}
+        </ol>
+      );
+    case "tableau":
+      return (
+        <div style={H.TABLEAU_CADRE}>
+          <table style={H.TABLEAU}>
+            <thead>
+              <tr>
+                {bloc.entetes.map((entete, i) => (
+                  <th key={i} scope="col" style={H.TABLEAU_ENTETE}>
+                    {entete}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {bloc.lignes.map((ligne, i) => (
+                <tr key={i}>
+                  {ligne.map((cellule, j) => (
+                    <td key={j} style={H.TABLEAU_CELLULE}>
+                      {cellule}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    case "encadre":
+      return (
+        <p style={H.ENCADRE}>
+          <EnLigne texte={bloc.texte} lien={H.LIEN_PUCE} gras={H.GRAS_ENCADRE} />
+        </p>
       );
   }
 }
 
-export default function CorpsRessource({ blocs }: { blocs: BlocEditorial[] }) {
-  if (blocs.length === 0) return null;
+function BandeAppel() {
   return (
-    <article className={styles.corps}>
-      {blocs.map((bloc, i) => (
-        <Bloc key={`${bloc.type}-${i}`} bloc={bloc} />
-      ))}
-    </article>
+    <div style={H.BANDE}>
+      <div style={H.BANDE_TEXTE}>
+        <strong style={{ color: "#fff", fontWeight: 600 }}>{H.COPIE.bandeQuestion}</strong>
+        {H.COPIE.bandeSuite}
+      </div>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        <Link href={H.CONTACT} style={H.BANDE_BOUTON}>
+          {H.COPIE.decrire}
+        </Link>
+        <a href={H.TELEPHONE.href} style={H.BANDE_TELEPHONE}>
+          {H.TELEPHONE.libelle}
+        </a>
+      </div>
+    </div>
+  );
+}
+
+const numero = (i: number) => String(i + 1).padStart(2, "0");
+
+export default function CorpsRessource({
+  avant = [],
+  parties = [],
+}: {
+  avant?: BlocRessource[];
+  parties?: PartieRessource[];
+}) {
+  if (avant.length === 0 && parties.length === 0) return null;
+
+  return (
+    <section data-screen-label="Article · corps" style={H.SECTION_CORPS}>
+      <div className={styles.deux} style={H.GRILLE_CORPS}>
+        <nav aria-label={H.COPIE.sommaire} className={styles.sommaire} style={H.SOMMAIRE}>
+          <div style={H.SOMMAIRE_TITRE}>{H.COPIE.sommaire}</div>
+          {parties.map((partie, i) => (
+            <a
+              key={i}
+              href={`#mr-s${i + 1}`}
+              className={styles.entree}
+              style={H.SOMMAIRE_ENTREE}
+            >
+              <span style={H.NUMERO_MONO}>{numero(i)}</span>
+              {partie.titre}
+            </a>
+          ))}
+          <a href="#mr-cta" style={H.SOMMAIRE_BOUTON}>
+            {H.COPIE.expert}
+          </a>
+        </nav>
+        <div style={H.COLONNE}>
+          {avant.map((bloc, i) => (
+            <Bloc key={`a${i}`} bloc={bloc} />
+          ))}
+          {parties.map((partie, k) => (
+            <Fragment key={k}>
+              <h2 id={`mr-s${k + 1}`} style={H.TITRE2}>
+                <span style={H.TITRE2_NUMERO}>{numero(k)}</span>
+                {partie.titre}
+              </h2>
+              {partie.blocs.map((bloc, i) => (
+                <Bloc key={i} bloc={bloc} />
+              ))}
+              {k === 1 ? <BandeAppel /> : null}
+            </Fragment>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

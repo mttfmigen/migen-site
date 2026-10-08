@@ -177,7 +177,7 @@ export default function OffresDomaine() {
     <section style={SECTION}>
       <div style={LARGEUR}>
         <div
-          className="mg-rmulti"
+          className={styles.obento}
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3,minmax(0,1fr))",
@@ -185,7 +185,7 @@ export default function OffresDomaine() {
           }}
         >
           {/* Le panneau photographique, deux rangs de haut. */}
-          <div style={PANNEAU_PHOTO}>
+          <div className={styles.obA} style={PANNEAU_PHOTO}>
             <Image
               src="/assets/web/mq-17e2f3bce95f.jpg"
               alt="Technicien de maintenance migen en intervention"
@@ -222,7 +222,7 @@ export default function OffresDomaine() {
           <Link
             href="/offres/residence/"
             prefetch={false}
-            className={`mg-r2 ${styles.carteLarge}`}
+            className={`${styles.obB} ${styles.carteLarge}`}
             style={CARTE_LARGE}
           >
             <div

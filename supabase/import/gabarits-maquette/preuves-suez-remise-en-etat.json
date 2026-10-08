@@ -9,6 +9,8 @@
       "L'environnement est à risque chimique. Cette contrainte commande tout le reste du dossier."
     ],
     "bouton": "Poser mon besoin de renfort technique",
+    "logo": "/assets/clients/mq-89100525ef89.svg",
+    "photoHero": "/assets/web/mq-339d39e2a674.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -122,6 +124,7 @@
         "valeur": "RC1, risque chimique niveau 1"
       }
     ],
+    "photoDispositif": "/assets/web/mq-056f3c250981.jpg",
     "resultats": [
       {
         "titre": "Le pic d'activité est absorbé",
@@ -149,28 +152,32 @@
     "besoinProse": [
       "Dites-nous l'environnement et les habilitations attendues, nous regardons qui peut y entrer.",
       "L'astreinte la nuit, le week-end et les jours fériés se souscrit en option.",
-      "Sur un site classé, le niveau de l'intervenant n'est pas négociable. Nos techniciens passent un entretien technique et un entretien comportemental, et 10 % des candidats sont retenus."
+      "Sur un site classé, le niveau de l'intervenant n'est pas négociable. Nos techniciens passent un entretien technique et un entretien comportemental, et 10 % des techniciens sont retenus."
     ],
     "plusLoin": [
       {
         "surtitre": "Étude de cas",
         "titre": "FDJ : renfort de maintenance en continu",
-        "href": "/preuves/fdj/"
+        "href": "/preuves/fdj/",
+        "photo": "/assets/web/mq-948c28bcda08.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
-        "href": "/preuves/dimomaint/"
+        "href": "/preuves/dimomaint/",
+        "photo": "/assets/web/mq-17e2f3bce95f.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
-        "href": "/preuves/eiffage/"
+        "href": "/preuves/eiffage/",
+        "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
-        "href": "/preuves/savoye/"
+        "href": "/preuves/savoye/",
+        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
       }
     ]
   }

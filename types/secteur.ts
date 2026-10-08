@@ -1,35 +1,114 @@
 /**
- * Forme du contenu d'une page SECTEUR, troisième gabarit de `pages.contenu`.
+ * Forme du contenu des pages SECTEUR, gabarit « 08 Secteur » de l'index de la
+ * maquette (12 pages `/secteurs/<secteur>/`), porté le 08/10 contre la
+ * RÉFÉRENCE : le rendu figé `maquette/rendu/secteurs--<secteur>.html`.
  *
- * TROIS GABARITS COHABITENT DANS LA MÊME COLONNE :
+ * DEUX FORMES COHABITENT SOUS LE MÊME DISCRIMINANT `gabarit: "secteur"`.
  *
- *   · VENTE (`types/contenu.ts`), dix sections nommées, porte `sections`.
- *   · ÉDITORIAL (`types/editorial.ts`), blocs suivis, porte `gabarit: "editorial"`.
- *   · SECTEUR (ici), porte `gabarit: "secteur"`.
+ *  1. `ContenuSecteurOffre`, LA FORME SERVIE. La capture d'une page de secteur
+ *     porte la suite d'écrans d'une OFFRE (héros à formulaire, chiffres, logos,
+ *     réassurance, problème, offre, bandes d'appel, déroulé, garanties,
+ *     références, questions, appel final) plus trois écrans propres :
+ *     la grille des logos du secteur dans « 02 Logos », « Expertises du
+ *     secteur » et « Offres du secteur ». Ses champs sont donc ceux de
+ *     `ContenuOffre` (mêmes composants, `components/site/offre/`), plus ces
+ *     trois-là. Elle se reconnaît à son tableau `sections`, exactement comme
+ *     `estDomaine` sépare la nouvelle forme du domaine de l'ancienne.
  *
- * POURQUOI UN TROISIÈME. Les pages de secteur et d'implantation ne vendent pas
- * une offre et n'expliquent pas un métier : elles ancrent. Hero avec ses
- * repères, les contraintes du terrain, le territoire couvert, les pages sœurs,
- * puis l'appel. La maquette leur donne deux gabarits voisins, lignes 5602 à
- * 5757 de « Migen - Site final.dc.html » : SECTEUR et DÉPARTEMENT. Les plier au
- * gabarit de vente, ce qui est l'état actuel du site, produit une page qui
- * annonce une prestation là où le visiteur cherche un territoire.
+ *  2. `ContenuSecteur`, L'ANCIENNE FORME (héros à repères, enjeux, communes,
+ *     pastilles, appel), tirée du bloc `isSecteur` de l'export de démonstration
+ *     qui n'est le gabarit d'aucune page (CLAUDE.md §16). Aucune page n'est plus
+ *     servie sous elle ; elle reste parce que `types/implantation.ts`
+ *     (`ContenuDepartement`) et `components/site/implantation/PageDepartement.tsx`,
+ *     hors service eux aussi mais hors de ce périmètre, s'en servent encore. Elle
+ *     part avec eux.
  *
- * UN SEUL TYPE POUR LES DEUX GABARITS DE LA MAQUETTE, et un seul composant : ils
- * partagent le hero, les pastilles de pages sœurs et l'appel final. Ce qui les
- * distingue, ce sont les DONNÉES, pas une variante à déclarer : le secteur porte
- * des cartes d'enjeux, le département une liste de communes. Chaque section se
- * rend si et seulement si le corpus la fournit, et disparaît sinon. Un drapeau
- * `variante` aurait fait porter au contenu une décision que son contenu dit
- * déjà.
- *
- * URL servies : `/secteurs/<secteur>/` et `/implantations/<ville>/<departement>/`.
- *
- * AUCUNE VALEUR PAR DÉFAUT N'EST INVENTÉE. Tout est optionnel, tout se rend
- * vide. Les textes attendus sont listés dans `docs/` par l'import du corpus.
+ * AUCUNE VALEUR PAR DÉFAUT N'EST INVENTÉE : un écran sans sa donnée ne se rend
+ * pas.
  */
 
 import type { Section } from "./contenu";
+import type { ContenuOffre } from "./offre";
+
+/* =========================================================== la forme servie */
+
+/** Un logo de la grille du secteur, dans « 02 Logos ». */
+export interface LogoSecteur {
+  /** Le nom du client, en `alt`. */
+  nom: string;
+  /**
+   * Le fichier, dans `public/assets/clients/`, aux mêmes octets que celui que
+   * sert la maquette vivante (empreinte SHA-1, relevé du 08/10).
+   */
+  src: string;
+  /** Le filtre de la capture pour les logos clairs (« invert(1) hue-rotate(180deg) »). */
+  filtre?: string;
+}
+
+/** Une carte photographique de « Expertises du secteur ». */
+export interface CarteExpertiseSecteur {
+  titre: string;
+  texte: string;
+  /** La page du domaine d'expertise, chemin interne. */
+  href: string;
+  /** La photo de fond, dans `public/assets/web/`, nommée par la capture. */
+  photo: string;
+}
+
+/**
+ * Les champs de l'offre que la capture d'une page de secteur rend. Repris de
+ * `ContenuOffre` plutôt que redéclarés : ce sont les mêmes écrans, rendus par
+ * les mêmes composants.
+ */
+type ChampsOffre = Pick<
+  ContenuOffre,
+  | "pastille"
+  | "mention"
+  | "appelBouton"
+  | "chapeau"
+  | "actions"
+  | "formulaireHeroTitre"
+  | "formulaireHeroMention"
+  | "chiffres"
+  | "reperesReassurance"
+  | "problemePhoto"
+  | "complementOffre"
+  | "derouleTitre"
+  | "brefBande"
+  | "brefBouton"
+  | "brefMention"
+  | "marquesFamille"
+  | "marquesFamilles"
+>;
+
+export interface ContenuSecteurOffre extends ChampsOffre {
+  gabarit: "secteur";
+
+  /**
+   * Les sections du corpus (probleme, offre, deroule, garanties, preuves,
+   * objections, ctaFinal), placées par TYPE aux emplacements de la capture.
+   * REQUIS, et c'est ce qui distingue cette forme de l'ancienne.
+   */
+  sections: Section[];
+
+  /** « 02 Logos » : le titre de la grille du secteur, puis ses logos. */
+  logosTitre?: string;
+  logos?: LogoSecteur[];
+
+  /**
+   * « Expertises du secteur » : H2, chapeau, cartes. Les DEUX écrans
+   * « Expertises du secteur » et « Offres du secteur » vont ensemble : les dix
+   * captures qui portent l'un portent l'autre, les deux pages de logistique
+   * (convoyeur, peak season) n'en portent aucun. « Offres du secteur » a une
+   * copie FIXE (identique au caractère près aux onze captures du gabarit 09) :
+   * il se rend donc quand ces cartes existent, sans champ de plus.
+   */
+  expertisesTitre?: string;
+  expertisesChapeau?: string;
+  expertises?: CarteExpertiseSecteur[];
+}
+
+/* ====================================================== l'ancienne forme */
 
 /** Une pastille cliquable : page sœur du même niveau. */
 export interface LienSecteur {
@@ -38,7 +117,7 @@ export interface LienSecteur {
   href: string;
 }
 
-/** Un repère chiffré du hero : « 14 » / « sites agroalimentaires suivis ». */
+/** Un repère chiffré du héros : « 14 » / « sites agroalimentaires suivis ». */
 export interface RepereSecteur {
   valeur: string;
   libelle: string;
@@ -50,81 +129,48 @@ export interface EnjeuSecteur {
   texte: string;
 }
 
+/** L'ANCIENNE forme, voir l'en-tête. Rendue par `PageSecteurHistorique`. */
 export interface ContenuSecteur {
   gabarit: "secteur";
-
-  /** Surtitre orange du hero : « Secteur d'activité », « Département 69 ». */
   surtitre?: string;
-  /** Le paragraphe sous le H1. Le H1 vient de `pages.titre_h1`. */
   chapeau?: string;
-  /**
-   * Les actions du hero. La PREMIÈRE est le bouton orange, la seconde le bouton
-   * en verre. Au-delà de deux, la maquette n'en prévoit pas : les suivantes
-   * sont rendues en bouton secondaire, sur la même ligne qui se replie.
-   */
   actions?: LienSecteur[];
-
-  /** Panneau en verre du hero. Sans repères, le hero passe sur une colonne. */
   reperesSurtitre?: string;
   reperes?: RepereSecteur[];
-
-  /** Section des contraintes du secteur. */
   enjeuxSurtitre?: string;
   enjeuxTitre?: string;
   enjeux?: EnjeuSecteur[];
-
-  /** Section du territoire : pastilles NON cliquables, ce sont des faits. */
   communesSurtitre?: string;
   communesTitre?: string;
   communes?: string[];
-
-  /** Pages sœurs : les autres secteurs, ou les autres départements. */
   autresSurtitre?: string;
   autres?: LienSecteur[];
-
-  /** Appel à l'action final, dans le grand panneau en verre. */
   appelTitre?: string;
   appelTexte?: string;
-  /** Sans bouton fourni, l'appel vise l'ancre du formulaire de la page. */
+  /** Sans cible fournie, l'appel vise l'ancre du formulaire de la page. */
   appelBouton?: LienSecteur;
-
-  /**
-   * CE QUE LE CORPUS PORTE ET QUE LA MAQUETTE NE DESSINE PAS.
-   *
-   * La maquette donne quatre sections à une page de secteur : le héros et ses
-   * repères, les enjeux, les pages sœurs, l'appel. Le corpus rédigé en porte
-   * dix. Les six qui restent (`offre`, `deroule`, `garanties`, `cta`,
-   * `preuves`, `objections`) sont du texte écrit, payé, et c'est la substance
-   * du référencement de ces pages : elles ne se suppriment pas parce que la
-   * maquette ne les dessine pas.
-   *
-   * Elles sont donc rendues SOUS les sections de la maquette, par les blocs de
-   * `components/site/blocs/`, eux-mêmes portés de la maquette et qui en
-   * gardent les surtitres. La page reste celle de la maquette et garde tout son
-   * texte.
-   *
-   * POURQUOI UN CHAMP À PART, ET PAS LE `sections` DU GABARIT DE VENTE : une
-   * page qui porterait les deux clés serait ambiguë pour qui la lit, et le
-   * repli de `app/[...slug]/page.tsx` ne doit jamais pouvoir la servir comme
-   * une page de vente. Le nom dit ce que c'est : un complément, sous le
-   * gabarit, pas le gabarit.
-   *
-   * Lu sur un `jsonb` : le gabarit écarte au rendu une section dont le type
-   * n'a pas de bloc, plutôt que de faire tomber la page entière.
-   */
+  /** Le texte du corpus rendu sous le gabarit, par les blocs de vente. */
   complement?: Section[];
 }
 
+/* ============================================================ les gardes */
+
+/** L'une ou l'autre forme, telle que la route la reçoit. */
+export type ContenuPageSecteur = ContenuSecteurOffre | ContenuSecteur;
+
 /**
- * Le contenu est-il celui d'une page secteur ?
- *
- * Lu sur un `jsonb`, donc sur de l'`unknown` : on ne se fie pas au type
- * déclaré, on regarde ce qu'il y a.
+ * Le contenu est-il celui d'une page secteur, d'une forme ou de l'autre ?
+ * Lu sur un `jsonb`, donc sur de l'`unknown` : on regarde ce qu'il y a.
  */
-export function estSecteur(contenu: unknown): contenu is ContenuSecteur {
+export function estSecteur(contenu: unknown): contenu is ContenuPageSecteur {
   return (
     !!contenu &&
     typeof contenu === "object" &&
-    (contenu as ContenuSecteur).gabarit === "secteur"
+    (contenu as { gabarit?: unknown }).gabarit === "secteur"
   );
+}
+
+/** La forme servie, au dessin de la capture : elle porte `sections`. */
+export function estSecteurOffre(contenu: ContenuPageSecteur): contenu is ContenuSecteurOffre {
+  return Array.isArray((contenu as { sections?: unknown }).sections);
 }

@@ -1,156 +1,171 @@
 {
   "url": "/secteurs/agroalimentaire/",
-  "source": "dessin : maquette/accueil-rendu.html, gabarit isSecteur, lignes 6278 à 6364. texte : supabase/import/corpus-analyse.json, produit par scripts/produit-secteurs.mjs.",
+  "titre_h1": "Vos lignes tournent. Vos produits partent à l’heure.",
+  "source": "dessin : maquette/rendu/secteurs--agroalimentaire.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {
     "gabarit": "secteur",
-    "surtitre": "Secteur d'activité",
+    "pastille": "Maintenance agroalimentaire",
     "chapeau": "Des techniciens qui connaissent déjà le lavage haute pression, la marche en avant et les lubrifiants agréés contact alimentaire. Ils arrivent sans semaines d'adaptation, et chaque passage laisse un compte rendu utilisable en audit.",
     "actions": [
       {
         "libelle": "Faire chiffrer ma maintenance agroalimentaire",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperesSurtitre": "Nos repères dans le secteur",
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés couvre le reste du temps.",
+    "formulaireHeroTitre": "Faire chiffrer ma maintenance agroalimentaire",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
-        "valeur": "+ 80",
-        "libelle": "clients réguliers, la seule mesure qui compte dans un secteur audité en permanence"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, taux horaire homogène partout"
+        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, taux horaire homogène partout"
       }
     ],
-    "enjeuxSurtitre": "Les enjeux du secteur",
-    "enjeuxTitre": "La remplisseuse s'arrête un jeudi soir de haute saison. Le produit dans la cuve a une DLC, pas votre prestataire.",
-    "enjeux": [
+    "logosTitre": "Ils nous confient leurs lignes agroalimentaires",
+    "logos": [
       {
-        "titre": "Un lot au rebut coûte plus cher que la réparation.",
-        "texte": "Et la grande distribution ne renégocie pas un déréférencement sur un incident technique."
+        "nom": "Danone",
+        "src": "/assets/clients/danone-bledina.png"
       },
       {
-        "titre": "Vos équipements vieillissent plus vite qu'ailleurs.",
-        "texte": "Lavage haute pression quotidien, produits agressifs, ateliers à 4 °C, condensation. Roulements, capteurs et armoires paient l'addition."
+        "nom": "Blédina",
+        "src": "/assets/clients/bledina.svg"
       },
       {
-        "titre": "Le pic saisonnier ne se déplace pas.",
-        "texte": "Un conditionnement arrêté en pleine saison coûte bien plus que sa remise en état."
+        "nom": "McCain",
+        "src": "/assets/clients/mq-c23abfa0ca07.svg"
       },
       {
-        "titre": "Un rapport manquant peut coûter une certification, donc un marché.",
-        "texte": "La traçabilité n'est pas de la paperasse, c'est votre droit de vendre."
+        "nom": "Jacquet Brossard",
+        "src": "/assets/clients/mq-68b4119a50b4.png"
       },
       {
-        "titre": "Un intervenant qui improvise crée le risque corps étranger.",
-        "texte": "Outillage oublié, visserie perdue, croisement de flux : la contamination se joue aussi pendant la maintenance."
+        "nom": "La Panetière",
+        "src": "/assets/clients/mq-8506472cb2ee.svg"
+      },
+      {
+        "nom": "Salaisons du Mâconnais",
+        "src": "/assets/clients/salaison-du-maconnais.png"
       }
     ],
-    "autresSurtitre": "Les autres secteurs",
-    "autres": [
-      {
-        "libelle": "Équipements logistiques",
-        "href": "/secteurs/logistique/"
-      },
-      {
-        "libelle": "Automobile",
-        "href": "/secteurs/automobile/"
-      },
-      {
-        "libelle": "Pharmaceutique",
-        "href": "/secteurs/pharmaceutique/"
-      },
-      {
-        "libelle": "Aéronautique",
-        "href": "/secteurs/aeronautique/"
-      },
-      {
-        "libelle": "Chimie",
-        "href": "/secteurs/chimie/"
-      },
-      {
-        "libelle": "Nucléaire",
-        "href": "/secteurs/nucleaire/"
-      },
-      {
-        "libelle": "Industrie lourde",
-        "href": "/secteurs/industrie-lourde/"
-      },
-      {
-        "libelle": "Industrie métallique",
-        "href": "/secteurs/industrie-metallique/"
-      },
-      {
-        "libelle": "Menuiserie industrielle",
-        "href": "/secteurs/menuiserie-industrielle/"
-      }
-    ],
-    "appelTitre": "Besoin de sécuriser vos lignes avant la prochaine haute saison ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
+    "appelBouton": "Faire chiffrer ma maintenance agroalimentaire",
+    "problemePhoto": null,
+    "brefBande": "Besoin d'un technicien qui connaît déjà vos contraintes d'hygiène ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
       "libelle": "Faire chiffrer ma maintenance agroalimentaire",
-      "href": "#formulaire"
+      "href": "#besoin"
     },
-    "complement": [
+    "expertisesTitre": "Les expertises qui font tourner vos lignes",
+    "expertisesChapeau": "Conditionnement, process, froid : sur un site agroalimentaire, la panne se paie en produits perdus et en nettoyages à refaire.",
+    "expertises": [
+      {
+        "titre": "Mécanique",
+        "texte": "Convoyeurs, remplisseuses et ensacheuses : réglages et remplacements calés entre deux nettoyages.",
+        "href": "/expertises/mecanique/",
+        "photo": "/assets/web/team-grind-front.jpg"
+      },
+      {
+        "titre": "Pneumatique",
+        "texte": "Vérins et distributeurs des machines de conditionnement, sollicités à chaque cycle.",
+        "href": "/expertises/pneumatique/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
+      },
+      {
+        "titre": "Automatisme",
+        "texte": "Changements de format et recettes : l’automate suit la cadence saisonnière.",
+        "href": "/expertises/automatisme/",
+        "photo": "/assets/web/ph-robots-solaire.jpg"
+      },
+      {
+        "titre": "Électrique",
+        "texte": "Armoires en environnement humide, lavé à grande eau : consignations et étanchéité.",
+        "href": "/expertises/electrique/",
+        "photo": "/assets/web/team-electric.jpg"
+      }
+    ],
+    "marquesFamille": "agro",
+    "sections": [
+      {
+        "type": "probleme",
+        "variante": "rangee",
+        "punchline": "La remplisseuse s'arrête un jeudi soir de haute saison. Le produit dans la cuve a une DLC, pas votre prestataire.",
+        "puces": [
+          {
+            "accroche": "Un lot au rebut coûte plus cher que la réparation.",
+            "texte": "Et la grande distribution ne renégocie pas un déréférencement sur un incident technique."
+          },
+          {
+            "accroche": "Vos équipements vieillissent plus vite qu'ailleurs.",
+            "texte": "Lavage haute pression quotidien, produits agressifs, ateliers à 4 °C, condensation. Roulements, capteurs et armoires paient l'addition."
+          },
+          {
+            "accroche": "Le pic saisonnier ne se déplace pas.",
+            "texte": "Un conditionnement arrêté en pleine saison coûte bien plus que sa remise en état."
+          },
+          {
+            "accroche": "Un rapport manquant peut coûter une certification, donc un marché.",
+            "texte": "La traçabilité n'est pas de la paperasse, c'est votre droit de vendre."
+          },
+          {
+            "accroche": "Un intervenant qui improvise crée le risque corps étranger.",
+            "texte": "Outillage oublié, visserie perdue, croisement de flux : la contamination se joue aussi pendant la maintenance."
+          }
+        ]
+      },
       {
         "type": "offre",
         "lignes": [
           {
             "prestation": {
-              "accroche": "Techniciens formés aux zones et à la marche en avant",
-              "texte": ", tenues dédiées par zone, aucun croisement propre et sale."
+              "accroche": "Techniciens formés aux zones et à la marche en avant tenues dédiées par zone, aucun croisement propre et sale."
             },
             "benefice": "Aucune règle d'hygiène à rappeler à chaque visite. Votre responsable qualité n'a pas à surveiller l'intervenant."
           },
           {
             "prestation": {
-              "texte": "**Interventions coordonnées avec les plannings de lavage et de production.**"
+              "accroche": "Interventions coordonnées avec les plannings de lavage et de production."
             },
             "benefice": "La maintenance se glisse dans les fenêtres existantes au lieu d'en créer de nouvelles."
           },
           {
             "prestation": {
-              "accroche": "Lubrifiants et consommables agréés contact alimentaire",
-              "texte": ", référencés dans votre système qualité."
+              "accroche": "Lubrifiants et consommables agréés contact alimentaire référencés dans votre système qualité."
             },
             "benefice": "Le choix d'un composant ne remet jamais en cause votre conformité produit."
           },
           {
             "prestation": {
-              "accroche": "Inventaire d'outillage en fin d'intervention",
-              "texte": ", gestion stricte des pièces et de la visserie."
+              "accroche": "Inventaire d'outillage en fin d'intervention gestion stricte des pièces et de la visserie."
             },
             "benefice": "Le risque corps étranger est traité comme une procédure, pas comme une bonne intention."
           },
           {
             "prestation": {
-              "accroche": "Compte rendu détaillé après chaque passage",
-              "texte": ", intégrable à votre GMAO et à vos enregistrements qualité."
+              "accroche": "Compte rendu détaillé après chaque passage intégrable à votre GMAO et à vos enregistrements qualité."
             },
             "benefice": "L'audit IFS ou BRC se prépare sur l'historique existant, sans reconstitution de dernière minute."
           },
           {
             "prestation": {
               "accroche": "Couverture complète du parc",
-              "texte": "remplisseuses, operculeuses, convoyeurs modulaires, cuiseurs, froid industriel, palettiseurs."
+              "texte": "Remplisseuses, operculeuses, convoyeurs modulaires, cuiseurs, froid industriel, palettiseurs."
             },
             "benefice": "Un seul interlocuteur du process au conditionnement, au lieu d'un prestataire par famille de machines."
           },
           {
             "prestation": {
-              "accroche": "Renfort dimensionné avant la haute saison",
-              "texte": ", puis ajusté à la baisse."
+              "accroche": "Renfort dimensionné avant la haute saison puis ajusté à la baisse."
             },
             "benefice": "Le pic est absorbé par des techniciens déjà formés au secteur, pas par des heures supplémentaires."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "En appui, notre [bureau d'études](/offres/bureau-etudes/) chiffre les améliorations : mise en conformité d'une machine, reprise d'un poste goulot, automatisation d'une opération manuelle arrivée à sa limite."
           }
         ]
       },
@@ -159,27 +174,27 @@
         "etapes": [
           {
             "titre": "Qualification",
-            "texte": "un chargé d'affaires étudie votre parc, vos priorités de production et vos contraintes sanitaires. Il annonce ce qui est réaliste, pas ce qui fait plaisir."
+            "texte": "Un chargé d'affaires étudie votre parc, vos priorités de production et vos contraintes sanitaires. Il annonce ce qui est réaliste, pas ce qui fait plaisir."
           },
           {
             "titre": "Sélection du profil",
-            "texte": "un technicien dont l'expérience porte sur des lignes comparables aux vôtres. Résultats de l'évaluation technique et comportementale partagés avant votre décision."
+            "texte": "Un technicien dont l'expérience porte sur des lignes comparables aux vôtres. Résultats de l'évaluation technique et comportementale partagés avant votre décision."
           },
           {
             "titre": "Intégration",
-            "texte": "plan de prévention signé, accueil sécurité, habilitations vérifiées, prise en main des protocoles d'hygiène propres à votre site."
+            "texte": "Plan de prévention signé, accueil sécurité, habilitations vérifiées, prise en main des protocoles d'hygiène propres à votre site."
           },
           {
             "titre": "Exécution",
-            "texte": "préventif calé sur vos fenêtres de lavage et vos cadences, correctif outillé, contrôles tracés à chaque passage."
+            "texte": "Préventif calé sur vos fenêtres de lavage et vos cadences, correctif outillé, contrôles tracés à chaque passage."
           },
           {
             "titre": "Traçabilité",
-            "texte": "chaque opération alimente votre GMAO au format attendu par votre système qualité. Pièces remplacées, contrôles, tests effectués."
+            "texte": "Chaque opération alimente votre GMAO au format attendu par votre système qualité. Pièces remplacées, contrôles, tests effectués."
           },
           {
             "titre": "Revue",
-            "texte": "statistiques de pannes, disponibilité machine, plan d'amélioration revu avec votre responsable maintenance et votre chef d'atelier."
+            "texte": "Statistiques de pannes, disponibilité machine, plan d'amélioration revu avec votre responsable maintenance et votre chef d'atelier."
           }
         ]
       },
@@ -188,23 +203,17 @@
         "puces": [
           {
             "accroche": "La preuve écrite, pas la promesse orale",
-            "texte": "chaque passage produit un compte rendu intégrable à vos enregistrements qualité. C'est ce que vos auditeurs demandent, et c'est ce que nous fournissons par défaut."
+            "texte": "Chaque passage produit un compte rendu intégrable à vos enregistrements qualité. C'est ce que vos auditeurs demandent, et c'est ce que nous fournissons par défaut."
           },
           {
             "accroche": "Des techniciens déjà exposés au secteur",
-            "texte": "10 % des candidats retenus, évaluation technique et comportementale, expérience des ateliers froids et des zones de lavage vérifiée avant l'affectation."
+            "texte": "10 % des techniciens retenus, évaluation technique et comportementale, expérience des ateliers froids et des zones de lavage vérifiée avant l'affectation."
           },
           {
             "accroche": "La conformité des consommables",
-            "texte": "produits agréés contact alimentaire quand l'application l'exige, référencés chez vous. Aucun composant introduit sans validation de votre système qualité."
+            "texte": "Produits agréés contact alimentaire quand l'application l'exige, référencés chez vous. Aucun composant introduit sans validation de votre système qualité."
           }
         ]
-      },
-      {
-        "type": "cta",
-        "question": "Besoin d'un technicien qui connaît déjà vos contraintes d'hygiène ?",
-        "bouton": "Faire chiffrer ma maintenance agroalimentaire",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
       },
       {
         "type": "preuves",
@@ -213,31 +222,48 @@
             "titre": "Deux techniciens intégrés en 3x8 sur les lignes liquides et poudre, nutrition infantile",
             "texte": "site de Steenvoorde",
             "lienLibelle": "Étude de cas DANONE : lignes de production",
-            "lienHref": "/preuves/danone-lignes-de-production/"
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/mq-1ef16ef335a6.jpg"
           },
           {
             "titre": "Renfort de maintenance sur un site agroalimentaire de grande échelle",
             "texte": "depuis octobre 2024, premier contrat Migen hors de France",
             "lienLibelle": "Étude de cas McCAIN : Belgique",
-            "lienHref": "/preuves/mccain-belgique/"
+            "lienHref": "/preuves/mccain-belgique/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
             "titre": "Technicien polyvalent sur un parc hétérogène à forte cadence, papier et emballage",
             "texte": "matière fragile, rythme continu",
             "lienLibelle": "Étude de cas VPK : maintenance de site",
-            "lienHref": "/preuves/vpk/"
+            "lienHref": "/preuves/vpk/",
+            "photo": "/assets/web/mq-2a8c78b5c75c.jpg"
           },
           {
             "titre": "Renfort de l'équipe de maintenance pendant les congés d'été",
             "texte": "un technicien sur site, été 2025",
             "lienLibelle": "Étude de cas OGF : arrêt estival",
-            "lienHref": "/preuves/ogf-arret-estival/"
+            "lienHref": "/preuves/ogf-arret-estival/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "Technicien affecté en continu à la fiabilité d'équipements de production en forte activité",
             "texte": "site proche de Paris",
             "lienLibelle": "Étude de cas FDJ : site proche de Paris",
-            "lienHref": "/preuves/fdj/"
+            "lienHref": "/preuves/fdj/",
+            "photo": "/assets/web/mq-5b47b5f6a584.jpg"
+          },
+          {
+            "titre": "Une ligne de pain de mie suivie à chaque poste",
+            "lienLibelle": "Étude de cas Jacquet Brossard",
+            "lienHref": "/preuves/jacquet-brossard/",
+            "photo": "/assets/web/mq-42237c1c8685.jpg"
+          },
+          {
+            "titre": "Un renfort pour que le pain sorte chaque matin",
+            "lienLibelle": "Étude de cas La Panetière",
+            "lienHref": "/preuves/la-panetiere/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           }
         ]
       },
@@ -269,6 +295,12 @@
             "reponse": "Chiffrage après qualification du besoin, taux horaire homogène partout en France, formules à coût prévisible pour le préventif. La comparaison honnête se fait avec le coût réel de vos arrêts et de vos rebuts, pas avec un tarif horaire isolé."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de sécuriser vos lignes avant la prochaine haute saison ?",
+        "bouton": "Faire chiffrer ma maintenance agroalimentaire",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
       }
     ]
   }

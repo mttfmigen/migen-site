@@ -103,11 +103,6 @@ function phaseTuile(retire: boolean, rang: number): CSSProperties {
   };
 }
 
-/** «&nbsp;texte&nbsp;» : l'espace insécable de la maquette, conservé. */
-function entreGuillemets(texte: string): string {
-  return `« ${texte} »`;
-}
-
 export default function AvantApresBascule({
   avant = VUE_VIDE,
   avec = VUE_VIDE,
@@ -150,9 +145,9 @@ export default function AvantApresBascule({
             >
               <div>
                 <div style={SURTITRE}>Le jour et la nuit</div>
-                <h2 style={{ margin: 0, ...vue.styleTitre }}>{vue.titre}</h2>
+                <h2 style={{ margin: 0, ...vue.styleTitre }}><span>{vue.titre}</span></h2>
               </div>
-              <p style={{ margin: 0, ...vue.styleChapo }}>{vue.chapo}</p>
+              <p style={{ margin: 0, ...vue.styleChapo }}><span>{vue.chapo}</span></p>
             </div>
 
             <div
@@ -208,9 +203,9 @@ export default function AvantApresBascule({
                         padding: "30px 32px 32px",
                       }}
                     >
-                      <div style={tuile.styleChiffre}>{tuile.chiffre}</div>
-                      <p style={{ margin: 0, ...tuile.styleCorps }}>{tuile.corps}</p>
-                      <div style={tuile.styleSource}>{tuile.source}</div>
+                      <div style={tuile.styleChiffre}><span>{tuile.chiffre}</span></div>
+                      <p style={{ margin: 0, ...tuile.styleCorps }}><span>{tuile.corps}</span></p>
+                      <div style={tuile.styleSource}><span>{tuile.source}</span></div>
                     </div>
                   )}
 
@@ -251,7 +246,7 @@ export default function AvantApresBascule({
                                 maxWidth: "34ch",
                               }}
                             >
-                              {entreGuillemets(tuile.citation)}
+                              «&nbsp;<span>{tuile.citation}</span>&nbsp;»
                             </p>
                             <div
                               style={{
@@ -259,7 +254,7 @@ export default function AvantApresBascule({
                                 color: "rgba(255,255,255,.68)",
                               }}
                             >
-                              {tuile.qui}
+                              <span>{tuile.qui}</span>
                             </div>
                           </div>
                           <span
@@ -294,7 +289,7 @@ export default function AvantApresBascule({
                       }}
                     >
                       <p style={{ margin: 0, ...tuile.styleCitation }}>
-                        {entreGuillemets(tuile.citation)}
+                        «&nbsp;<span>{tuile.citation}</span>&nbsp;»
                       </p>
                       <div
                         style={{
@@ -305,11 +300,11 @@ export default function AvantApresBascule({
                         }}
                       >
                         <div aria-hidden="true" style={tuile.styleAvatar}>
-                          {tuile.initiales}
+                          <span>{tuile.initiales}</span>
                         </div>
                         <div style={{ minWidth: 0 }}>
-                          <div style={tuile.styleNom}>{tuile.qui}</div>
-                          <div style={tuile.styleRole}>{tuile.role}</div>
+                          <div style={tuile.styleNom}><span>{tuile.qui}</span></div>
+                          <div style={tuile.styleRole}><span>{tuile.role}</span></div>
                         </div>
                       </div>
                     </div>

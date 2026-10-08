@@ -1,5 +1,25 @@
 import type { Section } from "./contenu";
+import type { BlocComplementDomaine } from "./domaine";
 import type { BlocComplement, ChiffreOffre, LienOffre } from "./offre";
+
+/**
+ * Une carte de l'écran « 02 Domaines » (`MigenExpertise.dc.html`, l. 181-199,
+ * objet `dm`). Sur les trois captures qui le rendent, la maquette y verse la
+ * liste « Les chiffres Migen » du corpus : `b` est le chiffre, `r` la phrase,
+ * le nom et le lien sont vides (`href="#"`, titre vide). Le numéro « 01 » se
+ * déduit du rang, comme dans la source.
+ */
+export interface CarteDomaineSpecialite {
+  /** `dm.b`, sous le titre : « +200 », « 10 % ». */
+  valeur: string;
+  /**
+   * `dm.r`, la phrase. La maquette l'écrit sur chaque carte mais ne l'AFFICHE
+   * que sur la première (`.mgx-dom>*:nth-child(1) .mgx-dr{display:block}`).
+   */
+  texte?: string;
+  /** `dm.bg`, la photo que la capture nomme : `/assets/web/<nom>.jpg`. */
+  photo: string;
+}
 
 /**
  * Forme du contenu des pages SPÉCIALITÉ, gabarit « 05 Spécialité » de l'index
@@ -24,12 +44,16 @@ import type { BlocComplement, ChiffreOffre, LienOffre } from "./offre";
  *   · « Complément 4 » reste optionnel : `fanuc` et `abb` ne le rendent pas
  *     (15 sections), les pages de domaine le rendent (16).
  *
- * TROU DE COUVERTURE DÉCLARÉ : les 9 pages
- * `/expertises/types-de-maintenance/…` rendent des écrans de plus (« Les
- * chiffres Migen », une section de prose de 332 mots, relevé sur
- * `expertises--types-de-maintenance--maintenance-preventive.json`, 17
- * sections). Ces écrans ne sont PAS portés ici : ils le seront quand ces pages
- * seront reportées, capture par capture.
+ * LES 17 AUTRES PAGES, relevées le 08/10 sur leurs captures (14 à 17
+ * sections). Elles ne dessinent que deux écrans que les pilotes n'ont pas,
+ * tous deux entre la réassurance et la problématique, tous deux optionnels :
+ *   · « 02 Domaines » (`domainesTitre`, `domaines`) : conditionnelle,
+ *     préventive, prévisionnelle ;
+ *   · « Complément 2 » (`complementTypes`) : la longue prose à tableaux de six
+ *     types de maintenance.
+ * Le reste varie par la DONNÉE seulement : « Complément 4 » (16 pages),
+ * « Marques maintenues » absente des 9 types de maintenance, dessin du
+ * problème (`variante`), nombre de points, de cartes et de références.
  */
 export interface ContenuSpecialite {
   gabarit: "specialite";
@@ -67,6 +91,20 @@ export interface ContenuSpecialite {
    * déclaré dans `verification-specialite.tsx`, et la grille se resserre.
    */
   chiffres?: ChiffreOffre[];
+
+  /* ------------------------------------- « 02 Domaines », « Complément 2 » */
+
+  /** Le H2 de « 02 Domaines » (`p.domainsIntro`) : « Les chiffres Migen ». */
+  domainesTitre?: string;
+  /** Les cartes de « 02 Domaines ». Sans elles, l'écran n'est pas rendu. */
+  domaines?: CarteDomaineSpecialite[];
+  /**
+   * L'écran « Complément 2 », juste avant la problématique : la carte en verre
+   * de « Complément 4 », dont un bloc peut être un TABLEAU. Même clé et même
+   * forme que `ContenuDomaine.complementTypes` : un bloc porte UN contenu
+   * (texte, puces ou tableau), la maquette en faisant une cellule de grille.
+   */
+  complementTypes?: BlocComplementDomaine[];
 
   /* --------------------------------------------- retouches d'emplacements */
 

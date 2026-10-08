@@ -9,9 +9,9 @@
  * écran. Le réemployer imposerait trois contenus que la maquette n'écrit pas
  * ici. Seuls les jalons sont des données, le reste du gabarit diffère.
  *
- * DEUX CORRECTIONS SUR LA COPIE DE LA MAQUETTE, détaillées dans le rapport de
- * portage : « le modèle en régie » (mot proscrit) et « Plus de 200 clients »
- * (le compte tenu est « plus de 120 clients, dont plus de 80 réguliers »).
+ * UNE CORRECTION SUR LA COPIE DE LA MAQUETTE, détaillée dans le rapport de
+ * portage : « le modèle en régie » (mot proscrit). « Plus de 200 clients » est
+ * rendu mot pour mot, règle validée par le client.
  */
 
 interface Jalon {
@@ -41,7 +41,7 @@ const JALONS: readonly Jalon[] = [
   {
     annee: "2024",
     texte:
-      "Couverture nationale. Plus de 120 clients, dont plus de 80 réguliers, missions de quelques semaines à plusieurs années.",
+      "Couverture nationale. Plus de 200 clients, missions de quelques semaines à plusieurs années.",
   },
   {
     annee: "2025",

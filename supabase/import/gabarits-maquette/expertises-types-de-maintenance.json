@@ -1,0 +1,331 @@
+{
+  "url": "/expertises/types-de-maintenance/",
+  "titre_h1": "Types de maintenance : réparer, prévoir ou prédire, le bon choix pour chaque machine",
+  "contenu": {
+    "gabarit": "domaine",
+    "pastille": "Expertises",
+    "chapeau": "Six familles, un seul arbitrage. Ce qui se répare après la panne, ce qui s'entretient au calendrier, ce qui se déclenche sur un état mesuré. Cette page donne la typologie complète, puis la méthode pour la poser sur vos machines.",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option.",
+    "appelBouton": "Demander mon diagnostic gratuit",
+    "actions": [
+      {
+        "libelle": "Demander mon diagnostic gratuit",
+        "href": "#besoin"
+      }
+    ],
+    "formulaireHeroTitre": "Demander mon diagnostic gratuit",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
+      {
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, chaque technicien est évalué en entretien technique et comportemental"
+      },
+      {
+        "valeur": "4",
+        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, des interventions partout en France"
+      }
+    ],
+    "complementTypes": [
+      {
+        "texte": "La définition qui fait foi. La norme NF EN 13306 appelle maintenance l'ensemble des actions techniques, administratives et de gestion menées durant le cycle de vie d'un bien, pour le maintenir ou le rétablir dans un état lui permettant d'accomplir la fonction requise."
+      },
+      {
+        "texte": "Deux verbes, deux mondes. Maintenir, c'est agir avant la panne : la famille préventive. Rétablir, c'est agir une fois la défaillance survenue : la famille corrective. À côté, la maintenance améliorative modifie le bien pour le fiabiliser."
+      },
+      {
+        "tableau": {
+          "entetes": [
+            "Type",
+            "Ce qui déclenche l'intervention",
+            "Objectif",
+            "Idéal pour"
+          ],
+          "lignes": [
+            [
+              "Corrective palliative",
+              "La panne",
+              "Rétablir provisoirement la fonction",
+              "Gagner du temps avant la réparation définitive"
+            ],
+            [
+              "Corrective curative",
+              "La panne",
+              "Réparer durablement, traiter la cause",
+              "Tout équipement, après diagnostic"
+            ],
+            [
+              "Préventive systématique",
+              "Un échéancier fixe, heures ou cycles",
+              "Réduire la probabilité de défaillance",
+              "Composants à usure prévisible"
+            ],
+            [
+              "Conditionnelle",
+              "Un seuil mesuré franchi",
+              "Intervenir au besoin réel",
+              "Équipements instrumentables"
+            ],
+            [
+              "Prévisionnelle et prédictive",
+              "Une tendance, un modèle de données",
+              "Anticiper la date de la panne",
+              "Actifs critiques et coûteux"
+            ],
+            [
+              "Améliorative",
+              "Une décision d'ingénierie",
+              "Fiabiliser, moderniser",
+              "Pannes récurrentes, obsolescence"
+            ]
+          ]
+        }
+      },
+      {
+        "texte": "Les quatre critères qui tranchent, équipement par équipement :"
+      },
+      {
+        "puces": [
+          {
+            "accroche": "La criticité.",
+            "texte": "Que coûte un arrêt de cette machine sur la production, la sécurité, la qualité ? Une machine goulot justifie le préventif évolué, un équipement redondant peut rester en correctif assumé."
+          },
+          {
+            "accroche": "Le coût réel de la panne.",
+            "texte": "Production perdue, main d'œuvre, pièces en urgence, pénalités. Comparez ce total au coût du préventif sur le même actif."
+          },
+          {
+            "accroche": "Le mode de dégradation.",
+            "texte": "Une usure progressive se surveille. Une casse brutale et aléatoire se traite par l'amélioratif ou par un stock de rechange adapté."
+          },
+          {
+            "accroche": "Les ressources disponibles.",
+            "texte": "Compétences, temps, instrumentation. Un plan trop ambitieux pour vos effectifs reste un document dans un tiroir."
+          }
+        ]
+      }
+    ],
+    "complementOffre": [
+      {
+        "texte": "Besoin d'une réparation tout de suite ? Voir le dépannage industriel."
+      }
+    ],
+    "sections": [
+      {
+        "type": "probleme",
+        "punchline": "Vous connaissez la typologie. Ce n'est pas elle qui vous manque, c'est la main d'œuvre pour la tenir.",
+        "puces": [
+          {
+            "accroche": "Le tableau est juste, le plan ne se tient pas.",
+            "texte": "Le préventif est écrit, puis il saute dès que la production réclame la machine. Le retard s'accumule, le correctif reprend le budget."
+          },
+          {
+            "accroche": "Le conditionnel demande une compétence rare.",
+            "texte": "Lire un spectre vibratoire est un métier. Peu de sites ont quelqu'un dont c'est réellement le poste."
+          },
+          {
+            "accroche": "Le curatif dépend d'une ou deux personnes.",
+            "texte": "Le jour où elles sont absentes, l'usine est aveugle et l'arbitrage se fait au téléphone, dans l'urgence."
+          },
+          {
+            "accroche": "Personne ne mesure.",
+            "texte": "Sans répartition chiffrée entre correctif et préventif, le dosage se décide à l'intuition, année après année."
+          }
+        ],
+        "variante": "panneau-sombre"
+      },
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "prestation": {
+              "accroche": "Le diagnostic de votre parc",
+              "texte": "Inventaire, criticité, reprise de votre historique de pannes, répartition réelle entre correctif et préventif."
+            },
+            "benefice": "Vous voyez enfin où part l'argent, machine par machine, et sur quoi agir en premier."
+          },
+          {
+            "prestation": {
+              "accroche": "La maintenance corrective et curative",
+              "texte": "Diagnostic, réparation, essais, remise en service, recherche de la cause racine."
+            },
+            "benefice": "La ligne repart, et la même panne ne revient pas trois mois plus tard."
+          },
+          {
+            "prestation": {
+              "accroche": "Les campagnes préventives planifiées",
+              "texte": "Inspections, contrôles, réglages, graissage, remplacements périodiques, vérifications réglementaires."
+            },
+            "benefice": "Le plan est tenu, y compris les semaines chargées où vos équipes sont prises ailleurs."
+          },
+          {
+            "prestation": {
+              "accroche": "La surveillance conditionnelle",
+              "texte": "Analyse vibratoire, thermographie infrarouge, analyse d'huile, contrôle des grandeurs électriques."
+            },
+            "benefice": "Vous voyez la dégradation venir, et l'arrêt devient planifié au lieu d'être subi."
+          },
+          {
+            "prestation": {
+              "accroche": "Les travaux amélioratifs",
+              "texte": "Fiabilisation d'un point faible, modification de conception, meilleure accessibilité d'un point de contrôle."
+            },
+            "benefice": "La panne sort du planning au lieu d'être entretenue."
+          },
+          {
+            "prestation": {
+              "accroche": "Un compte rendu à chaque passage",
+              "texte": "Cause, travaux, pièces, relevés, recommandations, exploitables dans votre GMAO."
+            },
+            "benefice": "L'historique reste chez vous, même le jour où vous changez de prestataire."
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "titre": "Vous décrivez la situation.",
+            "texte": "Quatre champs, ou un appel par téléphone. Vous dites ce qui casse, pas ce que vous avez déjà diagnostiqué."
+          },
+          {
+            "titre": "Nous qualifions le besoin.",
+            "texte": "Parc, criticité, historique, contraintes de production, compétences déjà présentes chez vous."
+          },
+          {
+            "titre": "Le diagnostic sur site.",
+            "texte": "Un référent technique passe, fait l'inventaire, classe les équipements par criticité et repère les actifs qui concentrent la charge."
+          },
+          {
+            "titre": "La restitution, type par type.",
+            "texte": "Ce qui reste en correctif sans culpabilité, ce qui bascule en préventif, ce qui mérite une surveillance. Une liste priorisée, pas une étude de cinquante pages."
+          },
+          {
+            "titre": "La proposition.",
+            "texte": "Périmètre, fréquences, niveaux de service, chiffrage. Intervention ponctuelle, campagnes planifiées ou abonnement, selon ce qui se justifie."
+          },
+          {
+            "titre": "L'exécution et la mesure.",
+            "texte": "Nos techniciens réalisent les travaux, vous recevez un écrit à chaque passage, et le plan se révise sur les résultats mesurés."
+          }
+        ]
+      },
+      {
+        "type": "garanties",
+        "puces": [
+          {
+            "accroche": "La recommandation honnête.",
+            "texte": "Si un contrat complet ne se justifie pas pour votre site, nous le disons et nous proposons le niveau qui se justifie. Nous ne vendons ni logiciel ni capteur : notre conseil n'a pas d'intérêt commercial caché."
+          },
+          {
+            "accroche": "Le niveau des intervenants.",
+            "texte": "Chaque technicien passe une évaluation technique et comportementale en entretien, seuls 10 % des techniciens sont retenus, et les résultats de ces épreuves sont partageables."
+          },
+          {
+            "accroche": "La traçabilité de bout en bout.",
+            "texte": "Un compte rendu exploitable après chaque passage, un historique par machine, des données qui restent votre propriété et qui vous sont restituées."
+          }
+        ]
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, automobile",
+            "lienLibelle": "Étude de cas STELLANTIS",
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/mq-1ef16ef335a6.jpg",
+            "texte": "Tenue, depuis octobre 2023."
+          },
+          {
+            "titre": "Reprise complète de la maintenance préventive annuelle de deux sites, e-commerce",
+            "lienLibelle": "Étude de cas VEEPEE",
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "texte": "Six techniciens en permanence, prise en charge réalisée en un mois."
+          },
+          {
+            "titre": "Maintenance curative des convoyeurs, trieurs et packaging, logistique",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/x-elec-cablage.jpg",
+            "texte": "Deux techniciens en poste sur site."
+          },
+          {
+            "titre": "Diagnostic sur site et réparation d'un parc machines défaillant, industrie lyonnaise",
+            "lienLibelle": "Étude de cas JOINT LYONNAIS",
+            "lienHref": "/preuves/joint-lyonnais/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "texte": "Remise en état sans rachat de matériel neuf."
+          },
+          {
+            "titre": "Préventif tenu sur un centre logistique en flux continu",
+            "lienLibelle": "Étude de cas AMAZON",
+            "lienHref": "/preuves/amazon-centre-logistique/",
+            "photo": "/assets/web/mq-29ebb1b81ced.jpg",
+            "texte": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures."
+          },
+          {
+            "titre": "L’intralogistique d’un grand site tenue en sous-traitance",
+            "lienLibelle": "Étude de cas Ciuch",
+            "lienHref": "/preuves/fdj/",
+            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg",
+            "texte": ""
+          },
+          {
+            "titre": "Une ligne de pain de mie suivie à chaque poste",
+            "lienLibelle": "Étude de cas Jacquet Brossard",
+            "lienHref": "/preuves/jacquet-brossard/",
+            "photo": "/assets/web/mq-42237c1c8685.jpg",
+            "texte": ""
+          },
+          {
+            "titre": "Des commandes numériques remises en route à chaque équipe",
+            "lienLibelle": "Étude de cas Jeld-Wen",
+            "lienHref": "/preuves/jeld-wen/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "texte": ""
+          }
+        ]
+      },
+      {
+        "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
+        "questions": [
+          {
+            "question": "Combien coûte tout ça ?",
+            "reponse": "Le chiffrage se fait sur devis, après le diagnostic. Il dépend du nombre d'équipements couverts, des fréquences retenues et du niveau de surveillance. Le diagnostic qui produit ce chiffrage est gratuit, et la liste priorisée vous reste même si vous ne signez pas."
+          },
+          {
+            "question": "Faut-il un contrat pour faire appel à vous ?",
+            "reponse": "Non. Une panne isolée se traite en intervention ponctuelle, sans autre formalité qu'un bon de commande. Le contrat devient utile quand vous cherchez un résultat mesuré dans la durée : moins d'immobilisations, un budget lisible, un programme suivi."
+          },
+          {
+            "question": "Nous avons déjà un prestataire. Comment on bascule ?",
+            "reponse": "Nous préparons la reprise pendant le préavis de votre contrat en cours : inventaire du parc, récupération des historiques et des gammes, reprise du calendrier de visites. Le premier passage Migen s'enchaîne sur le dernier passage du prestataire sortant."
+          },
+          {
+            "question": "Qui répond de la sécurité pendant les interventions ?",
+            "reponse": "Plan de prévention signé et appliqué, accueil au poste suivi à la lettre, habilitations vérifiées avant le déplacement, consignation électrique, travail en hauteur, espaces confinés, zones classées. Vos procédures qualité et vos clauses de confidentialité priment sur les nôtres."
+          },
+          {
+            "question": "Qui intervient sur nos machines ?",
+            "reponse": "Des techniciens salariés de Migen, évalués en entretien technique et comportemental, 10 % des techniciens retenus. Huit domaines couverts : mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie, robotique."
+          },
+          {
+            "question": "Couvrez-vous notre région, et les petits parcs ?",
+            "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des interventions partout en France. Un atelier de cinq machines critiques mérite un plan léger mais réel, dimensionné sur votre réalité et pas sur un catalogue."
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin d'un dosage décidé sur vos chiffres plutôt que sur une habitude ?",
+        "bouton": "Demander mon diagnostic gratuit"
+      }
+    ]
+  }
+}

@@ -1,555 +1,451 @@
 /**
- * Contrôle du gabarit secteur, sans navigateur.
+ * Contrôle du gabarit « 08 Secteur », sans navigateur.
  *
  *   bun components/site/secteur/verification-secteur.tsx
  *
- * Ce gabarit sert les 12 pages de secteur et les 42 pages d'implantation. Son
- * contenu arrive par un `jsonb` : ce qui casse en silence, c'est un champ absent
- * qui vide une section, une cible de lien hors domaine, et le texte que personne
- * n'a fourni et qu'un gabarit finit par inventer.
+ * Il monte `PageSecteur` sur les 12 fiches de
+ * `supabase/import/gabarits-maquette/secteurs-<secteur>.json`, telles que la
+ * route les lit, et compare chaque page à SA capture
+ * (`maquette/rendu/secteurs--<secteur>.html`), section par section :
+ *
+ *  1. LE H1 est celui de la capture, et il est seul. Autant de sections qu'elle,
+ *     dans le même ordre.
+ *  2. MOT POUR MOT, DANS L'ORDRE, PAR SECTION : chaque texte de la capture se
+ *     retrouve dans la section rendue de même rang, sur texte normalisé, après
+ *     les décisions de copie (`lib/decisions-copie.ts`) et les retouches de
+ *     cartes admises (`retoucheCarte`). Exceptions : `TROUS`, chacun avec sa
+ *     raison et vérifié vrai.
+ *  3. RIEN D'INVENTÉ, PUIS LE LITTÉRAL : chaque texte rendu existe dans la
+ *     section de la capture, puis tel quel, apostrophes comprises. Exceptions :
+ *     `AJOUTS` (le formulaire partagé) et les retouches déclarées.
+ *  4. LES LIENS de chaque section de la capture, dans l'ordre ; aucun `href="#"`.
+ *  5. LES PHOTOS ET LES LOGOS : ceux que la capture nomme en clair, par leur
+ *     nom ; ceux qu'elle sert en `blob:`, par empreinte SHA-1 contre le relevé
+ *     de la maquette vivante (`releve-photos.json`).
+ *  6. LES INTERDITS du contrat sont absents du rendu.
+ *  7. « NOS RÉFÉRENCES » : mêmes cas liés que la capture, même ordre, cartes
+ *     mot pour mot (le compte de cas comparés est affiché : 89).
+ *
+ * IL PROUVE QU'IL SAIT ÉCHOUER : il altère d'abord une page de huit façons et
+ * exige que chacune soit vue, puis il éprouve le contrôle des références.
  */
 
-import assert from "node:assert/strict";
-import { readFileSync, readdirSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
+
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { ANCRE_FORMULAIRE } from "@/components/site/blocs/habillage";
-import type { Section } from "@/types/contenu";
+import { appliqueDecisions } from "@/lib/decisions-copie";
+import type { ContenuSecteurOffre } from "@/types/secteur";
+
 import PageSecteur from "./PageSecteur";
-import type { ContenuSecteur } from "@/types/secteur";
 
-/* -------------------------------------------------------------- gabarit secteur */
+const RACINE = fileURLToPath(new URL("../../..", import.meta.url));
+const DOSSIER = join(RACINE, "supabase", "import", "gabarits-maquette");
+const RELEVE: Record<string, { probleme?: string[]; references?: string[]; logos?: string[] }> = JSON.parse(
+  readFileSync(join(RACINE, "components", "site", "secteur", "releve-photos.json"), "utf8"),
+);
 
-const SECTEUR: ContenuSecteur = {
-  gabarit: "secteur",
-  surtitre: "Secteur d'activité",
-  chapeau: "Des cadences élevées et un [contrat adapté](/offres/zero-arret/).",
-  actions: [
-    { libelle: "Parler de mon site", href: "/contact/" },
-    { libelle: "Un cas comparable", href: "/realisations/" },
-  ],
-  reperesSurtitre: "Nos repères dans le secteur",
-  reperes: [
-    { valeur: "14", libelle: "sites suivis" },
-    { valeur: "3×8", libelle: "équipes tournantes" },
-  ],
-  enjeuxSurtitre: "Les enjeux du secteur",
-  enjeuxTitre: "Quatre contraintes qu'on connaît",
-  enjeux: [
-    { titre: "Nettoyage agressif", texte: "Soude, acide, haute pression." },
-    { titre: "Fenêtres courtes", texte: "Le préventif se fait entre deux séries." },
-  ],
-  autresSurtitre: "Les autres secteurs",
-  autres: [
-    { libelle: "Automobile", href: "/secteurs/automobile/" },
-    { libelle: "Chimie", href: "/secteurs/chimie/" },
-    // Cible hors domaine : le lien doit DISPARAÎTRE, pas être rafistolé.
-    { libelle: "Ailleurs", href: "https://exemple.test/" },
-  ],
-  appelTitre: "Votre secteur, vos contraintes.",
-  appelTexte: "Envoyez le contexte.",
-  appelBouton: { libelle: "Décrire mon besoin", href: "" },
+interface PageRelais {
+  url: string;
+  titre_h1: string;
+  contenu: ContenuSecteurOffre;
+}
+
+/* ----------------------------------------------------- les écarts déclarés */
+
+/**
+ * Les SEULES retouches admises entre le titre d'une carte de la capture et la
+ * page. Une phrase interdite retire la phrase, jamais la carte ni son lien.
+ */
+export function retoucheCarte(titre: string): string {
+  return titre
+    .replace(/,?\s*7 jours sur 7/u, "") // interdit 7j/7 : retiré
+    .replace("24 heures sur 24", "nuit et week-end") // interdit 24h/24 : les mots de la capture
+    .replace("conçues sur mesure", "conçues en interne") // Tournaire, seule reformulation admise
+    .replace(/\s*,\s*$/u, ""); // la virgule laissée orpheline par le retrait
+}
+
+/** Les nœuds de la capture tels que la page doit les rendre : décisions, puis retouches, nœud par nœud. */
+const attendusDe = (html: string) => noeuds(appliqueDecisions(html)).map(retoucheCarte).filter(Boolean);
+
+interface Ecart {
+  url: string;
+  section: string;
+  texte: string;
+  pourquoi: string;
+}
+
+/**
+ * LA FAMILLE « ROBOTIQUE » DE `components/site/marques/marques-donnees.ts`
+ * compte 8 marques, celle de la maquette 9 (ENGEL en plus), et deux logos y
+ * sont écartés parce que leur fichier porte la marque d'une autre société
+ * (Comau, Salvagnini : nom rendu en texte). Donnée hors de ce périmètre,
+ * signalée, pas contournée ici.
+ */
+const MARQUES = "donnée de marques-donnees.ts (hors périmètre) : robotique à 8 marques, ENGEL absent";
+const LOGO_ECARTE = "logo écarté par marques-donnees.ts (fichier d'une autre société), nom rendu en texte";
+
+/** Dans la capture, absent du rendu, avec sa raison. Les retraits de copie passent par `retoucheCarte`. */
+const TROUS: readonly Ecart[] = [
+  { url: "/secteurs/aeronautique/", section: "Marques maintenues", texte: "9", pourquoi: MARQUES },
+  { url: "/secteurs/automobile/", section: "Marques maintenues", texte: "9", pourquoi: MARQUES },
+];
+
+/** Rendu sur une page, absent de sa capture, avec sa raison. */
+const AJOUTS_PAGE: readonly Ecart[] = [
+  { url: "/secteurs/aeronautique/", section: "Marques maintenues", texte: "8", pourquoi: MARQUES },
+  { url: "/secteurs/aeronautique/", section: "Marques maintenues", texte: "Comau", pourquoi: LOGO_ECARTE },
+  { url: "/secteurs/automobile/", section: "Marques maintenues", texte: "8", pourquoi: MARQUES },
+  { url: "/secteurs/industrie-metallique/", section: "Marques maintenues", texte: "Salvagnini", pourquoi: LOGO_ECARTE },
+];
+
+/**
+ * Rendu partout, absent des captures : le même formulaire partagé, son champ
+ * « Site web » et la mention RGPD obligatoire sous les formulaires.
+ */
+const AJOUTS: readonly string[] = [
+  "Site web",
+  "Données traitées par Migen pour répondre à votre demande, enregistrées dans HubSpot. Droits et durées de conservation : politique de confidentialité",
+];
+
+/**
+ * Logos dont le fichier du dépôt n'a pas les octets de la maquette, avec leur
+ * raison. Blédina : même dessin SVG (même `viewBox`, mêmes tracés), la
+ * maquette y ajoute un manifeste c2pa ; le défilement des logos sert déjà ce
+ * fichier.
+ */
+const LOGOS_HORS_EMPREINTE: Readonly<Record<string, string>> = {
+  "/assets/clients/bledina.svg": "même dessin, manifeste c2pa en moins",
 };
 
-const renduSecteur = renderToStaticMarkup(
-  <PageSecteur titre="Maintenance en agroalimentaire" contenu={SECTEUR} />,
-);
+const INTERDITS: readonly [RegExp, string][] = [
+  [/—/u, "tiret cadratin"],
+  [/\bsous\s+\d+\s*(?:h|heures?|jours?|min)/iu, "délai chiffré"],
+  [/\b24\s*h|\b24\s*heures|24\s*\/\s*24/iu, "« 24h »"],
+  [/\b7\s*j?\s*\/\s*7\b|7 jours sur 7/u, "« 7j/7 »"],
+  [/\d[\d\s  ]*(?:€|euros?\b)/u, "prix"],
+  [/régie/iu, "« régie »"],
+  [/intérim/iu, "« intérim »"],
+  [/mise à disposition/iu, "« mise à disposition »"],
+  [/sans engagement/iu, "« sans engagement »"],
+  [/clé en main/iu, "« clé en main »"],
+  [/sur mesure/iu, "« sur mesure »"],
+  [/\blevier/iu, "« levier »"],
+  [/concrètement/iu, "« concrètement »"],
+  [/notamment/iu, "« notamment »"],
+  [/incontournable/iu, "« incontournable »"],
+  [/découvrez/iu, "« découvrez »"],
+  [/clients?[^.]{0,40}r[ée]guliers|r[ée]guliers[^.]{0,20}clients?/iu, "« réguliers » à côté de clients"],
+  [/Limonest/u, "le siège est à Écully"],
+  [/\b(?:5|cinq) agences/iu, "quatre agences"],
+  [/agences? en France/iu, "en France, des hubs"],
+  [/\b\d+\s?%\s+des\s+candidats|candidats\s+retenus/iu, "« 10 % des techniciens »"],
+];
 
-assert.equal(
-  (renduSecteur.match(/<h1[\s>]/g) ?? []).length,
-  1,
-  "une page doit porter exactement un h1",
-);
+/* -------------------------------------------------------------- les textes */
 
-assert.ok(
-  renduSecteur.includes("Maintenance en agroalimentaire"),
-  "le titre de la page doit être rendu dans le h1",
-);
-
-// Le maillage du corpus écrit en Markdown doit sortir en lien, pas en crochets.
-// `next/link` ne rend le slash final que sous la configuration du site : on
-// vérifie le chemin, pas sa ponctuation.
-assert.ok(
-  renduSecteur.includes('href="/offres/zero-arret') &&
-    !renduSecteur.includes("[contrat adapté]"),
-  "le chapeau doit passer par TexteRiche",
-);
-
-assert.ok(
-  !renduSecteur.includes("exemple.test"),
-  "une cible hors domaine ne doit jamais être rendue en lien",
-);
-assert.ok(
-  !renduSecteur.includes(">Ailleurs<"),
-  "un lien à cible refusée disparaît, libellé compris",
-);
-
-// Sans cible fournie, le bouton de l'appel vise le formulaire de la page.
-assert.ok(
-  renduSecteur.includes('href="#formulaire"'),
-  "le bouton de l'appel doit viser l'ancre du formulaire",
-);
-
-// Deux enjeux fournis : la grille se resserre au lieu de laisser deux colonnes
-// vides en bout de ligne.
-assert.ok(
-  renduSecteur.includes("repeat(2,minmax(0,1fr))"),
-  "la grille des enjeux suit le nombre de cartes, jusqu'à quatre",
-);
-
-// Les animations viennent de Moteurs.tsx : le gabarit ne pose que l'attribut.
-assert.ok(
-  (renduSecteur.match(/data-reveal/g) ?? []).length >= 3,
-  "chaque section sous le hero porte data-reveal",
-);
-
-/* ---------------------------------------------------------- gabarit département */
-
-const DEPARTEMENT: ContenuSecteur = {
-  gabarit: "secteur",
-  surtitre: "Département 69",
-  communesSurtitre: "Communes couvertes",
-  communesTitre: "Tout le département",
-  communes: ["Lyon", "Villeurbanne", "Limonest"],
-  autresSurtitre: "Les autres départements",
-  autres: [{ libelle: "Haute-Savoie", href: "/implantations/lyon/haute-savoie/" }],
-};
-
-const renduDept = renderToStaticMarkup(
-  <PageSecteur titre="Maintenance dans le Rhône" contenu={DEPARTEMENT} />,
-);
-
-assert.equal(
-  (renduDept.match(/<h1[\s>]/g) ?? []).length,
-  1,
-  "le gabarit département porte lui aussi un seul h1",
-);
-
-// Une commune est un fait, pas une page : elle se rend en span.
-assert.ok(
-  renduDept.includes(">Lyon</span>"),
-  "les communes couvertes ne sont pas cliquables",
-);
-assert.ok(
-  renduDept.includes('href="/implantations/lyon/haute-savoie'),
-  "les autres départements sont des liens",
-);
-
-// Sans repères, le hero passe sur une colonne : pas de panneau en verre vide.
-assert.ok(
-  renduDept.includes("minmax(0,1fr)") &&
-    !renduDept.includes("1.1fr .9fr"),
-  "sans repères, le hero tient sur une colonne",
-);
-
-/* ------------------------------------------------------------ contenu quasi vide */
-
-const VIDE: ContenuSecteur = { gabarit: "secteur" };
-
-const renduVide = renderToStaticMarkup(
-  <PageSecteur titre="Un titre seul" contenu={VIDE} />,
-);
-
-assert.equal(
-  (renduVide.match(/<h1[\s>]/g) ?? []).length,
-  1,
-  "un contenu vide rend le titre, et rien de plus",
-);
-assert.ok(
-  !renduVide.includes("<a "),
-  "un contenu vide n'invente aucun lien",
-);
-assert.ok(
-  !renduVide.includes("<h2"),
-  "un contenu vide n'invente aucune section",
-);
-
-/* ============================================================================
-   LA MAQUETTE, RELUE DANS LE FICHIER À CHAQUE EXÉCUTION
-
-   Aucune valeur attendue n'est écrite de mémoire ici : chacune est extraite de
-   `maquette/accueil-rendu.html`, bloc `isSecteur`, au moment où le contrôle
-   tourne. Une note de lecture peut se tromper et personne ne peut la rejouer ;
-   une extraction se rejoue, et elle échoue le jour où la maquette change.
-   ========================================================================== */
-
-const MAQUETTE = readFileSync(
-  fileURLToPath(new URL("../../../maquette/accueil-rendu.html", import.meta.url)),
-  "utf8",
-);
-
-const DEBUT = MAQUETTE.indexOf('<sc-if value="{{ isSecteur }}"');
-assert.ok(DEBUT > -1, "le bloc isSecteur a disparu de la maquette");
-const SUITE = MAQUETTE.indexOf('\n<sc-if value="{{ is', DEBUT + 1);
-assert.ok(SUITE > DEBUT, "la fin du bloc isSecteur est introuvable");
-/** Le gabarit SECTEUR de la maquette, et lui seul. */
-const BLOC = MAQUETTE.slice(DEBUT, SUITE);
-
-/** Les `&nbsp;` de la maquette et les entités de React, ramenés au même texte. */
-function normalise(texte: string): string {
+function entites(texte: string): string {
   return texte
-    .replace(/&nbsp;| /g, " ")
-    .replace(/&#x27;|&#39;/g, "'")
+    .replace(/&nbsp;|&#160;/g, " ")
+    .replace(/&#x27;|&#39;|&apos;/g, "'")
     .replace(/&quot;/g, '"')
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&amp;/g, "&");
 }
 
+/** La forme de comparaison. Le fichier, lui, garde le littéral. */
+function normalise(texte: string): string {
+  return texte.replace(/[’‘]/g, "'").replace(/\s+/g, " ").trim();
+}
+
 /**
- * Les déclarations de style de la balise qui porte `motif`, dans la maquette.
- *
- * `motif` peut être le nom de la balise, une déclaration qu'elle contient, ou
- * le texte qu'elle encadre : on remonte au `<` le plus proche à gauche.
+ * Les nœuds de texte, littéraux (entités décodées, blancs réduits, espaces
+ * insécables comprises : le littéral contrôlé est celui des apostrophes).
+ * Un lien ou un gras DANS une phrase ne la coupe pas : le maillage du corpus,
+ * posé par `TexteRiche`, garde la phrase de la capture d'un seul tenant.
  */
-function declarationsMaquette(motif: string): string[] {
-  const position = BLOC.indexOf(motif);
-  assert.ok(position > -1, `la maquette ne contient plus « ${motif} »`);
-  const ouverture = BLOC.lastIndexOf("<", position);
-  const balise = BLOC.slice(ouverture, BLOC.indexOf(">", ouverture) + 1);
-  const style = /style="([^"]*)"/.exec(balise);
-  assert.ok(style, `la balise de « ${motif} » n'a plus de style en ligne`);
-  return style[1]
-    .split(";")
-    .map((declaration) => declaration.trim())
+function noeuds(html: string): string[] {
+  return html
+    .replace(/<(script|style)\b[\s\S]*?<\/\1>/g, " ")
+    .replace(/<\/?(?:a|strong|em|b)(?:\s[^>]*)?>/g, "")
+    .split(/<[^>]+>/)
+    .map((t) => entites(t).replace(/[ \t\n\r]+/g, " ").trim())
     .filter(Boolean);
 }
 
-/**
- * Chaque déclaration de la maquette doit se retrouver dans le rendu.
- *
- * Le contrôle va de la maquette vers le rendu, pas l'inverse : le gabarit a le
- * droit d'ajouter ce que la maquette n'a pas (un `box-shadow:none` explicite,
- * une transition pour le focus au clavier), jamais de perdre une valeur.
- */
-function memesValeurs(rendu: string, motif: string, tolerees: string[] = []) {
-  for (const declaration of declarationsMaquette(motif)) {
-    if (tolerees.some((debut) => declaration.startsWith(debut))) continue;
-    assert.ok(
-      rendu.includes(declaration),
-      `valeur de la maquette absente du rendu (« ${motif} ») : ${declaration}`,
-    );
+/** Le HTML coupé à chaque `<section` : aucun écran du gabarit n'en imbrique. */
+function sections(html: string): string[] {
+  return html.split(/(?=<section[\s>])/).filter((s) => s.startsWith("<section"));
+}
+
+function attributs(html: string, nom: string): string[] {
+  return [...html.matchAll(new RegExp(`\\s${nom}="([^"]*)"`, "g"))].map((m) => entites(m[1]));
+}
+
+/** `/_next/image?url=%2Fassets%2F…&w=…` comme `/assets/…` : le fichier servi. */
+function images(html: string): string[] {
+  return attributs(html, "src")
+    .map((src) =>
+      src.startsWith("/_next/image") ? decodeURIComponent(new URL(src, "http://x").searchParams.get("url") ?? "") : src,
+    )
+    .filter((src) => src.startsWith("/assets/"));
+}
+
+const occurrences = (meule: string, aiguille: string) => meule.split(aiguille).length - 1;
+const sha1 = (chemin: string) => createHash("sha1").update(readFileSync(join(RACINE, "public", chemin))).digest("hex");
+const sansBarre = (lien: string) => lien.replace(/(.)\/$/, "$1");
+const texteDe = (html: string) => normalise(entites(html.replace(/<[^>]*>/g, " ")));
+
+/* ------------------------------------------------------------ la capture lue */
+
+interface Capture {
+  h1: string;
+  sections: { libelle: string; html: string }[];
+}
+
+function captureDe(url: string): Capture {
+  const brut = readFileSync(join(RACINE, "maquette", "rendu", `${url.slice(1, -1).replaceAll("/", "--")}.html`), "utf8")
+    .replace(/<script[\s\S]*?<\/script>/g, "");
+  return {
+    h1: normalise(noeuds(/<h1[\s\S]*?<\/h1>/.exec(brut)?.[0] ?? "").join(" ")),
+    sections: sections(brut).map((html) => ({ libelle: /data-screen-label="([^"]*)"/.exec(html)?.[1] ?? "?", html })),
+  };
+}
+
+/* ------------------------------------- « Nos références » : les cas liés */
+
+/** Les cas liés d'une page, distincts, dans l'ordre : `/preuves/<cas>/`, hub exclu. */
+function casLies(html: string): string[] {
+  return [...new Set([...html.matchAll(/href="(\/preuves\/[^"/]+\/?)"/g)].map((m) => `${sansBarre(m[1])}/`))];
+}
+
+/** Les cartes du rail « Nos références » de la capture : client, titre, date. */
+function cartesCapture(html: string) {
+  return [...html.matchAll(/<a data-dc-tpl="956" href="([^"]+)"([\s\S]*?)<\/a>/g)].map(([, href, carte]) => {
+    const champ = (tpl: string) => texteDe(new RegExp(`data-dc-tpl="${tpl}"[^>]*>([\\s\\S]*?)</div>`).exec(carte)?.[1] ?? "");
+    return { href, client: champ("963"), titre: champ("964"), texte: champ("965") };
+  });
+}
+
+const sansCasse = (texte: string) => texte.replace(/\.$/u, "").toLocaleLowerCase("fr");
+
+/** Tout ce qui sépare les références rendues de celles de la capture. Vide quand tout concorde. */
+function ecartsReferences(rendu: string, capture: string): string[] {
+  const ecarts: string[] = [];
+  const attendus = casLies(capture);
+  const rendus = casLies(rendu);
+  if (attendus.join() !== rendus.join()) {
+    ecarts.push(`cas liés, capture ${attendus.length} : ${attendus.join(" ")} / page ${rendus.length} : ${rendus.join(" ")}`);
   }
-}
-
-/**
- * Les surtitres orange en capitales d'un fragment, dans l'ordre.
- *
- * La même fonction lit la maquette et le rendu : c'est ce qui permet de
- * comparer des surtitres EXACTS au lieu de vérifier qu'une étiquette apparaît
- * quelque part. « Les enjeux du secteur chimique » contient « Les enjeux du
- * secteur » : une recherche par inclusion laisse passer la dérive, et c'est
- * exactement la faute qu'on veut voir.
- */
-function surtitresDe(html: string): string[] {
-  return [
-    ...html.matchAll(/text-transform:uppercase;color:var\(--acc\)[^>]*>([^<]+)</g),
-  ].map((trouve) => normalise(trouve[1]));
-}
-
-const SURTITRES = surtitresDe(BLOC);
-assert.equal(
-  SURTITRES.length,
-  4,
-  `la maquette dessine ${SURTITRES.length} surtitres au lieu de 4`,
-);
-
-/**
- * LA COPIE D'EXEMPLE DE LA MAQUETTE. Elle ne doit JAMAIS sortir dans une page :
- * ce sont des valeurs de démonstration, et les quatre repères (« 14 »,
- * « IP69K », « HACCP ») sont des données de secteur que le corpus ne fournit
- * pas. Les laisser passer, c'est publier une donnée inventée.
- */
-const EXEMPLES_MAQUETTE = [
-  "Quatre contraintes qu'on connaît",
-  "Nettoyage agressif",
-  "IP69K",
-  "HACCP",
-  "Votre secteur, vos contraintes.",
-  "Un cas comparable",
-  "sites agroalimentaires suivis",
-];
-
-/** Les interdits de copie du contrat, section 9 de CLAUDE.md. */
-const INTERDITS = [
-  "+200",
-  "200 clients",
-  "5 agences",
-  "cinq agences",
-  "sous 24 h",
-  "sous 48 h",
-  "sous 2 h",
-  "sous 4 h",
-  "sous 72 h",
-  "en deux heures",
-  "heures de route",
-  "régie",
-  "intérim",
-  "mise à disposition",
-  "sans engagement",
-  "clé en main",
-  "sur mesure",
-  "levier",
-  "concrètement",
-  "notamment",
-  "incontournable",
-  "découvrez",
-  // Le tiret cadratin, écrit en séquence d'échappement : le caractère
-  // lui-même dans ce fichier ferait de ce contrôle une fausse trouvaille
-  // pour tout outil qui cherche l'interdit dans la source.
-  "\u2014",
-];
-
-/** L'échafaudage Tailwind : aucune couleur par défaut, aucun mode sombre. */
-const ECHAFAUDAGE =
-  /\b(?:text|bg|border|ring|divide|from|via|to|shadow|accent|caret)-(?:zinc|gray|slate|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-\d{2,3}\b|\bdark:/;
-
-/* ============================================================================
-   LES TREIZE PAGES DE /secteurs/, TELLES QU'ELLES SERONT EN BASE
-
-   Le contrôle ne se contente pas d'une donnée d'exemple : il monte le gabarit
-   sur les fichiers que `scripts/importe_rest.mjs` va poser. C'est la seule
-   manière de voir qu'une page a perdu une phrase du corpus, ou qu'un surtitre
-   a dérivé sur une page et pas sur ses voisines.
-   ========================================================================== */
-
-const RACINE = fileURLToPath(new URL("../../../", import.meta.url));
-const DOSSIER = join(RACINE, "supabase", "import", "gabarits-maquette");
-
-/** Le corpus, pour le H1 : il vient de `pages.titre_h1`, soit `heros.h1`. */
-const CORPUS: {
-  url: string;
-  contenu: { sections: (Record<string, unknown> & { type: string; h1?: string })[] };
-}[] = JSON.parse(
-  readFileSync(join(RACINE, "supabase", "import", "corpus-analyse.json"), "utf8"),
-);
-
-const ATTENDUES = CORPUS.filter((entree) => entree.url.includes("/secteurs/")).map(
-  (entree) => entree.url,
-);
-assert.ok(ATTENDUES.length > 0, "le corpus ne porte aucune page de secteur");
-
-const FICHIERS = readdirSync(DOSSIER)
-  .filter((nom) => nom.endsWith(".json"))
-  .map((nom) => JSON.parse(readFileSync(join(DOSSIER, nom), "utf8")))
-  .filter(
-    (fichier) =>
-      typeof fichier.url === "string" &&
-      fichier.url.startsWith("/secteurs/") &&
-      fichier.contenu?.gabarit === "secteur",
+  const cartesRendues = new Map(
+    [...rendu.matchAll(/<a\b[^>]*\shref="(\/preuves\/[^"/]+\/?)"[^>]*>([\s\S]*?)<\/a>/g)].map(([, href, carte]) => [
+      `${sansBarre(href)}/`,
+      texteDe(carte),
+    ]),
   );
-
-for (const url of ATTENDUES) {
-  assert.ok(
-    FICHIERS.some((fichier) => fichier.url === url),
-    `aucun fichier de gabarit pour ${url} : la page resterait au gabarit de vente`,
-  );
+  for (const carte of cartesCapture(capture)) {
+    const texte = cartesRendues.get(carte.href);
+    if (texte === undefined) {
+      ecarts.push(`${carte.href} : carte absente`);
+      continue;
+    }
+    const titre = normalise(retoucheCarte(carte.titre));
+    if (!texte.includes(titre)) ecarts.push(`${carte.href} : titre « ${titre} » absent`);
+    if (carte.texte && !sansCasse(texte).includes(sansCasse(carte.texte))) ecarts.push(`${carte.href} : texte « ${carte.texte} » absent`);
+    if (!sansCasse(texte).includes(sansCasse(carte.client))) ecarts.push(`${carte.href} : client « ${carte.client} » absent`);
+    for (const [motif, pourquoi] of INTERDITS) if (motif.test(texte)) ecarts.push(`${carte.href} : interdit ${pourquoi}`);
+  }
+  return ecarts;
 }
 
-/** Tout texte du corpus doit SORTIR dans la page, markdown rendu. */
-function textesDe(valeur: unknown, sortie: string[] = []): string[] {
-  if (typeof valeur === "string") sortie.push(valeur);
-  else if (Array.isArray(valeur)) for (const v of valeur) textesDe(v, sortie);
-  else if (valeur && typeof valeur === "object") {
-    for (const [cle, v] of Object.entries(valeur)) {
-      // Une cible de lien n'est pas du texte ; `gabarit` et `type` sont des
-      // drapeaux, et le mot « offre » n'a pas à être cherché dans la page.
-      if (
-        cle === "href" ||
-        cle === "lienHref" ||
-        cle === "gabarit" ||
-        cle === "type"
-      ) {
+/* ------------------------------------------------------------- le jugement */
+
+const rendre = (page: PageRelais) =>
+  renderToStaticMarkup(<PageSecteur titre={page.titre_h1} contenu={page.contenu} formulaire="cocon-secteurs-" />);
+
+function juge(page: PageRelais): { fautes: string[]; cas: number } {
+  const fautes: string[] = [];
+  const faute = (message: string) => fautes.push(`${page.url} ${message}`);
+  const capture = captureDe(page.url);
+  const releve = RELEVE[page.url] ?? {};
+  const rendu = rendre(page);
+  const rendues = sections(rendu);
+
+  // 1. Le H1, seul, et les sections.
+  const h1 = rendu.match(/<h1[\s>][\s\S]*?<\/h1>/g) ?? [];
+  if (h1.length !== 1) faute(`: ${h1.length} h1 rendus, un seul attendu`);
+  if (normalise(noeuds(h1[0] ?? "").join(" ")) !== capture.h1) faute(`: H1 « ${page.titre_h1} » au lieu de « ${capture.h1} »`);
+  if (rendues.length !== capture.sections.length) {
+    faute(`: ${rendues.length} sections rendues, la capture en porte ${capture.sections.length}`);
+    return { fautes, cas: 0 };
+  }
+
+  const ajouts = AJOUTS.map(normalise);
+  capture.sections.forEach(({ libelle, html }, rang) => {
+    const ici = rendues[rang];
+    const deLaCapture = attendusDe(html);
+    const texteRendu = normalise(noeuds(ici).join(" "));
+
+    // 2. Mot pour mot, dans l'ordre, trous déclarés retirés.
+    const attendus = deLaCapture.map(normalise);
+    for (const trou of TROUS.filter((t) => t.url === page.url && t.section === libelle)) {
+      const k = attendus.lastIndexOf(normalise(trou.texte));
+      if (k === -1) faute(`${libelle} : trou déclaré absent de la capture « ${trou.texte} »`);
+      else attendus.splice(k, 1);
+      if (occurrences(texteRendu, normalise(trou.texte)) >= occurrences(normalise(deLaCapture.join(" ")), normalise(trou.texte))) {
+        faute(`${libelle} : trou devenu inutile « ${trou.texte} »`);
+      }
+    }
+    let curseur = 0;
+    for (const texte of attendus) {
+      const ou = texteRendu.indexOf(texte, curseur);
+      if (ou === -1) {
+        faute(`${libelle} : manque ou hors d'ordre « ${texte.slice(0, 90)} »`);
         continue;
       }
-      textesDe(v, sortie);
+      curseur = ou + texte.length;
     }
-  }
-  return sortie;
+
+    // 3. Rien d'inventé, puis le littéral. Les ajouts de la page doivent être rendus.
+    const ajoutsIci = AJOUTS_PAGE.filter((a) => a.url === page.url && a.section === libelle).map((a) => normalise(a.texte));
+    for (const a of ajoutsIci) if (!noeuds(ici).map(normalise).includes(a)) faute(`${libelle} : ajout déclaré plus rendu « ${a} »`);
+    const texteIci = normalise(deLaCapture.join(" "));
+    const litteralIci = deLaCapture.join(" ").replace(/\s+/g, " ");
+    for (const noeud of noeuds(ici)) {
+      const n = normalise(noeud);
+      if (ajouts.some((a) => a.includes(n)) || ajoutsIci.includes(n)) continue;
+      if (!texteIci.includes(n)) faute(`${libelle} : texte rendu absent de la capture « ${noeud.slice(0, 90)} »`);
+      else if (!litteralIci.includes(noeud.replace(/\s+/g, " "))) faute(`${libelle} : texte rendu hors littéral de la capture « ${noeud.slice(0, 90)} »`);
+    }
+
+    // 4. Les liens de la capture, dans l'ordre (hors du moteur de Next, `Link`
+    //    rend sans la barre finale que `trailingSlash` remet au service).
+    const liensRendus = attributs(ici, "href").map(sansBarre);
+    let k = 0;
+    for (const lien of attributs(html, "href")) {
+      const ou = liensRendus.indexOf(sansBarre(lien), k);
+      if (ou === -1) faute(`${libelle} : lien de la capture absent ou hors d'ordre ${lien}`);
+      else k = ou + 1;
+    }
+
+    // 5. Photos et logos.
+    const empreintes = (fichiers: string[]) =>
+      fichiers.map((f) => (!existsSync(join(RACINE, "public", f)) ? `absent:${f}` : LOGOS_HORS_EMPREINTE[f] ? f : sha1(f)));
+    if (libelle === "03 Problème") {
+      const vues = empreintes(images(ici));
+      if (vues.join() !== (releve.probleme ?? []).join()) faute(`${libelle} : photo ${images(ici).join(", ") || "aucune"} ≠ maquette`);
+    }
+    if (libelle === "08 Références") {
+      const photos = images(ici).filter((src) => !src.startsWith("/assets/clients/"));
+      if (empreintes(photos).join() !== (releve.references ?? []).join()) faute(`${libelle} : photos des cartes ≠ maquette (${photos.join(", ")})`);
+    }
+    if (libelle === "02 Logos") {
+      const grille = images(ici.split('class="mg-marquee"')[0]);
+      const attendues = (releve.logos ?? []).map((h, i) => (LOGOS_HORS_EMPREINTE[grille[i]] ? grille[i] : h));
+      if (empreintes(grille).join() !== attendues.join()) faute(`${libelle} : logos de la grille ≠ maquette (${grille.join(", ")})`);
+    }
+    if (libelle === "Expertises du secteur") {
+      const nommees = [...html.matchAll(/url\(&quot;(assets\/[^&]+)&quot;\)/g)].map((m) => `/${m[1]}`);
+      if (images(ici).join() !== nommees.join()) faute(`${libelle} : photos ${images(ici).join(", ")} ≠ capture ${nommees.join(", ")}`);
+    }
+  });
+
+  const texteTout = normalise(noeuds(rendu).join(" "));
+  for (const a of ajouts) if (!texteTout.includes(a)) faute(`: ajout déclaré plus rendu « ${a} », à retirer de AJOUTS`);
+
+  // 4 bis et 6. Aucun lien mort, aucun interdit.
+  if (rendu.includes('href="#"')) faute(': un lien href="#" est rendu');
+  for (const [motif, pourquoi] of INTERDITS) if (motif.test(texteTout)) faute(`: interdit rendu, ${pourquoi}`);
+
+  // 7. Les références.
+  const htmlCapture = capture.sections.map((s) => s.html).join("");
+  for (const e of ecartsReferences(rendu, htmlCapture)) faute(`08 Références : ${e}`);
+
+  return { fautes, cas: casLies(htmlCapture).length };
 }
 
-/** `[libellé](/cible/)` devient `libellé`, `**gras**` devient `gras`. */
-function sansMarkdown(texte: string): string {
-  return texte.replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/\*\*/g, "");
-}
+/* ------------------------------------------------------- les douze pages */
 
-for (const fichier of FICHIERS) {
-  const entree = CORPUS.find((e) => e.url === fichier.url);
-  assert.ok(entree, `${fichier.url} n'est pas dans le corpus`);
-  const titre = entree.contenu.sections.find((s) => s.type === "heros")?.h1;
-  assert.ok(titre, `${fichier.url} : le corpus ne donne pas de H1`);
+const INDEX: { url: string; gabarit?: string }[] = JSON.parse(
+  readFileSync(join(RACINE, "maquette", "contenu", "site", "index.json"), "utf8"),
+);
+const ATTENDUES = INDEX.filter((e) => e.gabarit?.startsWith("08 ")).map((e) => e.url);
+if (ATTENDUES.length !== 12) throw new Error(`l'index porte ${ATTENDUES.length} pages « 08 Secteur » au lieu de 12`);
 
-  const contenu = fichier.contenu as ContenuSecteur;
-  const rendu = renderToStaticMarkup(
-    <PageSecteur titre={titre} contenu={contenu} />,
-  );
-  const texte = normalise(rendu);
-  /* LE MÊME RENDU, BALISES RETIRÉES. Le maillage du corpus devient un lien au
-     milieu d'une phrase (« par notre [bureau d'études](...) »), et le gras
-     d'attaque un `strong` : cherchée dans le HTML, la phrase du corpus
-     paraîtrait absente alors qu'elle est là, coupée par une balise. C'est aussi
-     ce qui permet de voir un interdit coupé en deux par un `strong`. */
-  const texteSansBalises = normalise(rendu.replace(/<[^>]*>/g, ""));
-  const ou = fichier.url;
+const PAGES: PageRelais[] = ATTENDUES.map((url) => {
+  const fichier = join(DOSSIER, `secteurs-${url.slice("/secteurs/".length, -1).replaceAll("/", "-")}.json`);
+  if (!existsSync(fichier)) throw new Error(`${url} : aucune fiche ${fichier}`);
+  const page = JSON.parse(readFileSync(fichier, "utf8")) as PageRelais;
+  if (page.url !== url || page.contenu.gabarit !== "secteur" || !Array.isArray(page.contenu.sections)) {
+    throw new Error(`${fichier} doit servir ${url} sous le gabarit « secteur », avec ses \`sections\``);
+  }
+  return page;
+});
 
-  /* UN SEUL H1, et c'est le titre de la page. Le complément passe par les blocs
-     du gabarit de vente, dont le héros rend un H1 : s'il arrivait là, la page
-     en porterait deux. */
-  assert.equal(
-    (rendu.match(/<h1[\s>]/g) ?? []).length,
-    1,
-    `${ou} : la page doit porter exactement un h1`,
-  );
-  assert.ok(texte.includes(titre), `${ou} : le H1 du corpus est absent`);
+/* ------------------------------------------------- il sait échouer, d'abord */
 
-  /* AUCUN LIEN MORT. La maquette navigue par sa propre logique et pose
-     href="#" partout : un href="#" porté en production est un bouton qui ne
-     mène nulle part. */
-  assert.ok(!rendu.includes('href="#"'), `${ou} : un lien href="#" est rendu`);
-  assert.ok(
-    rendu.includes(`href="${ANCRE_FORMULAIRE}"`),
-    `${ou} : aucun bouton ne vise l'ancre du formulaire de la page`,
-  );
+{
+  const base = PAGES.find((p) => p.url === "/secteurs/chimie/")!;
+  const copie = (): PageRelais => structuredClone(base);
+  type S = ContenuSecteurOffre["sections"][number];
+  const section = <T extends S["type"]>(p: PageRelais, type: T) =>
+    p.contenu.sections.find((s) => s.type === type) as Extract<S, { type: T }>;
 
-  /* LA CHARTE, PAS L'ÉCHAFAUDAGE. */
-  const echafaudage = ECHAFAUDAGE.exec(rendu);
-  assert.ok(!echafaudage, `${ou} : classe d'échafaudage rendue : ${echafaudage?.[0]}`);
-
-  /* LES INTERDITS DE COPIE, qui gagnent contre la maquette. */
-  for (const interdit of INTERDITS) {
-    assert.ok(
-      !texteSansBalises
-        .toLocaleLowerCase("fr")
-        .includes(interdit.toLocaleLowerCase("fr")),
-      `${ou} : formulation interdite rendue : « ${interdit} »`,
-    );
+  const ALTERATIONS: [string, (p: PageRelais) => void][] = [
+    ["un mot changé", (p) => { const s = section(p, "garanties"); s.puces[0].texte = s.puces[0].texte.replace(/(\p{L}{5,})/u, "$1s"); }],
+    ["une section retirée", (p) => { p.contenu.sections = p.contenu.sections.filter((s) => s.type !== "deroule"); }],
+    ["une phrase inventée", (p) => { p.contenu.chapeau += " Nous intervenons partout, tout le temps."; }],
+    ["un interdit", (p) => { section(p, "objections").questions[0].reponse += " Nous savons notamment le faire."; }],
+    ["deux photos de références échangées", (p) => { const r = section(p, "preuves").preuves; [r[0].photo, r[1].photo] = [r[1].photo, r[0].photo]; }],
+    ["une apostrophe redressée", (p) => { p.contenu.formulaireHeroMention = "Rappel dans l'heure"; }],
+    ["une carte d'expertise retirée", (p) => { p.contenu.expertises = p.contenu.expertises!.slice(1); }],
+    ["un logo du secteur remplacé", (p) => { p.contenu.logos![0] = { ...p.contenu.logos![0], src: "/assets/clients/danone.png" }; }],
+  ];
+  for (const [nom, altere] of ALTERATIONS) {
+    const p = copie();
+    altere(p);
+    if (juge(p).fautes.length === 0) throw new Error(`contrôle aveugle : « ${nom} » passe sans être vu`);
   }
 
-  /* LA COPIE D'EXEMPLE DE LA MAQUETTE N'EST PAS UNE DONNÉE. */
-  for (const exemple of EXEMPLES_MAQUETTE) {
-    assert.ok(
-      !texteSansBalises.includes(exemple),
-      `${ou} : copie d'exemple de la maquette rendue : « ${exemple} »`,
-    );
-  }
-
-  /* LE DESSIN VIENT DE LA MAQUETTE : les valeurs, relues plus haut. */
-  memesValeurs(rendu, "padding:70px 40px 0");
-  memesValeurs(rendu, "1.1fr .9fr");
-  memesValeurs(rendu, "<h1 ");
-  memesValeurs(rendu, "padding:32px 34px 34px");
-  memesValeurs(rendu, "grid-template-columns:1fr 1fr");
-  memesValeurs(rendu, "font:600 26px var(--ft)");
-  memesValeurs(rendu, "font:400 12.5px/1.45 var(--fb)");
-  memesValeurs(rendu, "repeat(4,minmax(0,1fr))");
-  memesValeurs(rendu, "padding:30px 28px 32px");
-  memesValeurs(rendu, "font:600 17px var(--ft)");
-  memesValeurs(rendu, "Centre logistique", ["color:var(--ink1)"]);
-  memesValeurs(rendu, "padding:52px");
-  memesValeurs(rendu, "Votre secteur, vos contraintes.");
-  // Le bouton du héros ne force pas `nowrap` : un libellé long doit pouvoir
-  // passer à la ligne sur un écran de 320px plutôt que déborder.
-  memesValeurs(rendu, "Parler de mon site", ["white-space"]);
-  memesValeurs(rendu, "Décrire mon besoin", ["white-space"]);
-
-  /* LES SURTITRES SONT CEUX DE LA MAQUETTE, au caractère près. Les surtitres
-     en plus sont ceux des blocs rendus sous la maquette, qui portent les leurs. */
-  const rendus = surtitresDe(rendu);
-  for (const surtitre of SURTITRES) {
-    assert.ok(
-      rendus.includes(surtitre),
-      `${ou} : surtitre de la maquette absent ou réécrit : « ${surtitre} », ` +
-        `rendus : ${rendus.map((s) => `« ${s} »`).join(", ")}`,
-    );
-  }
-
-  /* LE TEXTE VIENT DU CORPUS, ET IL SORT EN ENTIER. Une phrase rangée dans un
-     champ que le gabarit ne rend pas serait du texte payé, perdu en silence. */
-  for (const brut of textesDe(contenu)) {
-    const attendu = normalise(sansMarkdown(brut));
-    assert.ok(
-      texteSansBalises.includes(attendu),
-      `${ou} : texte du corpus absent du rendu : « ${attendu.slice(0, 70)} »`,
-    );
-  }
-
-  /* LE CORPUS ENTIER, ET PAS SEULEMENT CE QUE LE FICHIER A GARDÉ.
-     La boucle précédente prouve que le fichier sort en entier dans la page.
-     Elle ne verrait pas une section du corpus que le fichier aurait oubliée :
-     ce qui n'est plus écrit nulle part ne manque à personne. On repart donc du
-     corpus rédigé, et on exige la même chose de lui.
-
-     DEUX EXCEPTIONS, et elles sont le prix du gabarit : le héros de la maquette
-     n'a ni ligne de téléphone ni ligne d'horaires. Le numéro et le rappel dans
-     l'heure restent lisibles sur la page, portés par `cta.rappel` et par le
-     paragraphe de l'appel final, tous deux vérifiés par la boucle précédente.
-     Si cette liste s'allonge, c'est du texte payé qui disparaît. */
-  const HORS_GABARIT = new Set(["telephone", "phraseDelai"]);
-  for (const section of entree.contenu.sections) {
-    for (const [cle, valeur] of Object.entries(section)) {
-      if (cle === "type" || HORS_GABARIT.has(cle)) continue;
-      for (const brut of textesDe(valeur)) {
-        const attendu = normalise(sansMarkdown(brut));
-        assert.ok(
-          texteSansBalises.includes(attendu),
-          `${ou} : texte du corpus perdu entre le corpus et la page ` +
-            `(section « ${section.type} », champ « ${cle} ») : ` +
-            `« ${attendu.slice(0, 70)} »`,
-        );
-      }
-    }
-  }
-
-  /* LES SURTITRES DES BLOCS SOUS LA MAQUETTE, portés de la maquette eux aussi.
-     Ils prouvent que le texte que la maquette ne dessine pas est bien rendu, et
-     pas seulement stocké. */
-  const types = new Set((contenu.complement ?? []).map((section) => section.type));
-  for (const [type, surtitre] of [
-    ["deroule", "Le déroulé"],
-    ["garanties", "Nos engagements"],
-    ["cta", "Prochaine étape"],
-    ["preuves", "Nos dernières réalisations"],
-    ["objections", "Questions fréquentes"],
+  // Le contrôle des références, seul : une carte retirée, deux interverties, un titre réécrit, un interdit gardé.
+  const capture = captureDe(base.url).sections.map((s) => s.html).join("");
+  const avec = (modifie: (preuves: { titre: string }[]) => { titre: string }[]) => {
+    const p = copie();
+    const s = section(p, "preuves");
+    s.preuves = modifie(s.preuves) as typeof s.preuves;
+    return rendre(p);
+  };
+  const depart = ecartsReferences(avec((p) => p), capture);
+  if (depart.length) throw new Error(`l’épreuve des références part d’une page fausse : ${depart.join(" ; ")}`);
+  for (const [nom, modifie] of [
+    ["une carte retirée", (p: { titre: string }[]) => p.slice(0, -1)],
+    ["deux cartes interverties", (p: { titre: string }[]) => [p[1], p[0], ...p.slice(2)]],
+    ["un titre réécrit", (p: { titre: string }[]) => [{ ...p[0], titre: "Titre inventé" }, ...p.slice(1)]],
+    ["un interdit gardé", (p: { titre: string }[]) => [...p.slice(0, 2), { ...p[2], titre: `${p[2].titre}, 7 jours sur 7` }, ...p.slice(3)]],
   ] as const) {
-    if (!types.has(type)) continue;
-    assert.ok(
-      texte.includes(surtitre),
-      `${ou} : la section « ${type} » du corpus n'est pas rendue (« ${surtitre} » absent)`,
-    );
+    if (ecartsReferences(avec(modifie), capture).length === 0) throw new Error(`le contrôle des références laisse passer ${nom}`);
   }
 }
 
-/* --------------------------------- une section sans donnée ne se rend pas du tout */
+/* -------------------------------------------------------- puis les vraies pages */
 
-const renduSansComplement = renderToStaticMarkup(
-  <PageSecteur
-    titre="Un titre seul"
-    contenu={{ gabarit: "secteur", complement: [] }}
-  />,
-);
-assert.ok(
-  !renduSansComplement.includes("<h2"),
-  "un complément vide ne rend aucune section",
-);
-
-// Une section dont le type n'a pas de bloc est ÉCARTÉE, et n'emporte pas la page.
-const renduTypeInconnu = renderToStaticMarkup(
-  <PageSecteur
-    titre="Un titre seul"
-    contenu={{
-      gabarit: "secteur",
-      complement: [{ type: "inventee" } as unknown as Section],
-    }}
-  />,
-);
-assert.ok(
-  !renduTypeInconnu.includes("<h2") && renduTypeInconnu.includes("Un titre seul"),
-  "une section de type inconnu est écartée, la page se rend quand même",
-);
-
+let cas = 0;
+const fautes: string[] = [];
+for (const page of PAGES) {
+  const j = juge(page);
+  fautes.push(...j.fautes);
+  cas += j.cas;
+}
+if (fautes.length > 0) {
+  console.error(`gabarit secteur : ${fautes.length} écart(s) aux captures\n  · ${fautes.join("\n  · ")}`);
+  process.exit(1);
+}
 console.log(
-  `gabarit secteur : ${FICHIERS.length} pages montées sur leur contenu réel, ` +
-    `valeurs relues dans la maquette, toutes les vérifications passent.`,
+  `gabarit secteur : ${PAGES.length} pages conformes à leur capture (H1, sections, texte mot pour mot dans les deux sens, ` +
+    `liens, photos et logos par empreinte, interdits), ${cas} cas liés identiques à la capture (mêmes URL, même ordre, ` +
+    `cartes mot pour mot), ${TROUS.length} trous et ${AJOUTS.length + AJOUTS_PAGE.length} ajouts déclarés, 8 altérations et 4 épreuves de références toutes vues.`,
 );

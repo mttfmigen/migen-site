@@ -1,140 +1,174 @@
 {
   "url": "/implantations/lyon/haute-savoie/",
+  "titre_h1": "La maintenance industrielle en Haute-Savoie, de l'Arve au Genevois",
   "contenu": {
-    "gabarit": "departement",
+    "gabarit": "ville",
+    "pastille": "Nos implantations",
     "chapeau": "Le département concentre un savoir-faire d'usinage de précision que peu de territoires possèdent, celui du décolletage de la vallée de l'Arve, doublé de la mécatronique du bassin d'Annecy. Et une frontière qui aspire les techniciens vers les salaires suisses. Nous employons, évaluons et encadrons ces profils, pour que vos parcs de tours et de centres d'usinage restent disponibles.",
     "actions": [
       {
         "libelle": "Faire chiffrer ma maintenance en Haute-Savoie",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "autresSurtitre": "Les autres départements",
-    "autres": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option, nuits, week-ends et jours fériés.",
+    "formulaireHeroTitre": "Faire chiffrer ma maintenance en Haute-Savoie",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "appelBouton": "Faire chiffrer ma maintenance en Haute-Savoie",
+    "chiffres": [
       {
-        "libelle": "Rhône",
-        "href": "/implantations/lyon/rhone/"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
-        "libelle": "Loire-Atlantique",
-        "href": "/implantations/nantes/loire-atlantique/"
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
-        "libelle": "Essonne",
-        "href": "/implantations/paris/essonne/"
-      },
-      {
-        "libelle": "Alsace",
-        "href": "/implantations/strasbourg/alsace/"
-      },
-      {
-        "libelle": "Charente",
-        "href": "/implantations/toulouse/charente/"
-      },
-      {
-        "libelle": "Gironde",
-        "href": "/implantations/toulouse/gironde/"
-      },
-      {
-        "libelle": "Haute-Garonne",
-        "href": "/implantations/toulouse/haute-garonne/"
+        "valeur": "4",
+        "libelle": "Agences, Lyon siège du groupe, Montréal, Dubaï et Madrid. Aucune en Haute-Savoie, des techniciens qui s'y déplacent"
       }
     ],
-    "appelTitre": "Besoin d'un mainteneur qui tienne un parc de décolletage comme une ligne automatisée ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
-      "libelle": "Faire chiffrer ma maintenance en Haute-Savoie",
-      "href": "#formulaire"
+    "hubLocal": {
+      "surtitre": "Votre hub local · Haute-Savoie",
+      "titre": "Haute-Savoie : les industries que nos techniciens connaissent déjà",
+      "photo": "/assets/web/sv-convoyeur.jpg",
+      "badge": "Rattaché au hub Lyon",
+      "nom": "Haute-Savoie, couvert par le hub Lyon",
+      "texte": "Les techniciens du hub Lyon interviennent à Haute-Savoie et alentour, avec les mêmes méthodes et un seul interlocuteur.",
+      "bouton": "Demander une intervention à Haute-Savoie",
+      "cartes": [
+        {
+          "surtitre": "Tissu principal",
+          "titre": "Industrie métallique",
+          "texte": "Un atelier de décolletage n'a pas de service maintenance complet.",
+          "lien": "Notre approche industrie métallique",
+          "href": "/secteurs/industrie-metallique/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Automobile",
+          "texte": "Nos techniciens interviennent sur les sites automobiles du bassin.",
+          "lien": "Notre approche automobile",
+          "href": "/secteurs/automobile/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Agroalimentaire",
+          "texte": "Les ateliers de décolletage y côtoient les usines d'assemblage et les lignes agroalimentaires, et nos techniciens…",
+          "lien": "Notre approche agroalimentaire",
+          "href": "/secteurs/agroalimentaire/"
+        },
+        {
+          "surtitre": "Aussi présent",
+          "titre": "Industrie lourde",
+          "texte": "Les équipements lourds punissent le préventif reporté.",
+          "lien": "Notre approche industrie lourde",
+          "href": "/secteurs/industrie-lourde/"
+        }
+      ],
+      "zonesTitre": "Hub de rattachement et zones voisines",
+      "zones": [
+        {
+          "libelle": "Hub Lyon",
+          "href": "/implantations/lyon/"
+        },
+        {
+          "libelle": "Grenoble",
+          "href": "/implantations/lyon/grenoble/"
+        },
+        {
+          "libelle": "Rhône",
+          "href": "/implantations/lyon/rhone/"
+        },
+        {
+          "libelle": "Saint-Étienne",
+          "href": "/implantations/lyon/saint-etienne/"
+        },
+        {
+          "libelle": "Valence",
+          "href": "/implantations/lyon/valence/"
+        }
+      ]
     },
-    "reste": [
-      {
-        "type": "chiffres",
-        "chiffres": [
-          {
-            "valeur": "+ 120",
-            "libelle": "clients industriels accompagnés, dont plus de 80 réguliers"
-          },
-          {
-            "valeur": "10 %",
-            "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
-          },
-          {
-            "detail": "Aucune en Haute-Savoie, des techniciens qui s'y déplacent",
-            "valeur": "4",
-            "libelle": "agences, Lyon siège du groupe, Montréal, Dubaï et Madrid"
-          }
-        ]
-      },
+    "brefBande": "Besoin de tenir votre parc sans dépendre d'un seul régleur ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Faire chiffrer ma maintenance en Haute-Savoie",
+      "href": "#besoin"
+    },
+    "sections": [
       {
         "type": "probleme",
+        "punchline": "Vous formez un bon électromécanicien, et il part travailler de l'autre côté de la frontière. Dans la vallée de l'Arve, la machine n'est pas le problème : c'est la personne qui sait la régler.",
         "puces": [
           {
-            "texte": "Le Genevois et la Suisse voisine recrutent les mêmes profils que vos ateliers, et vos postes restent ouverts des mois.",
-            "accroche": "La frontière tire les salaires techniques."
+            "accroche": "La frontière tire les salaires techniques.",
+            "texte": "Le Genevois et la Suisse voisine recrutent les mêmes profils que vos ateliers, et vos postes restent ouverts des mois."
           },
           {
-            "texte": "Les PME de sous-traitance de précision vivent avec un ou deux polyvalents, et rien derrière eux.",
-            "accroche": "Un atelier de décolletage n'a pas de service maintenance complet."
+            "accroche": "Un atelier de décolletage n'a pas de service maintenance complet.",
+            "texte": "Les PME de sous-traitance de précision vivent avec un ou deux polyvalents, et rien derrière eux."
           },
           {
-            "texte": "Une broche, un axe, une géométrie qui dérive, et c'est le rebut qui augmente avant que la machine ne s'arrête.",
-            "accroche": "Le réglage au micron ne pardonne rien."
+            "accroche": "Le réglage au micron ne pardonne rien.",
+            "texte": "Une broche, un axe, une géométrie qui dérive, et c'est le rebut qui augmente avant que la machine ne s'arrête."
           },
           {
-            "texte": "Automobile, aéronautique, médical : un sous-traitant en retard bloque son donneur d'ordre.",
-            "accroche": "Le retard de production remonte toute la chaîne."
+            "accroche": "Le retard de production remonte toute la chaîne.",
+            "texte": "Automobile, aéronautique, médical : un sous-traitant en retard bloque son donneur d'ordre."
           },
           {
-            "texte": "Presses, extrudeuses, fours de la métallurgie et de la plasturgie : chaque élément d'usure ignoré finit en arrêt long.",
-            "accroche": "Les équipements lourds punissent le préventif reporté."
+            "accroche": "Les équipements lourds punissent le préventif reporté.",
+            "texte": "Presses, extrudeuses, fours de la métallurgie et de la plasturgie : chaque élément d'usure ignoré finit en arrêt long."
           }
         ],
-        "punchline": "Vous formez un bon électromécanicien, et il part travailler de l'autre côté de la frontière. Dans la vallée de l'Arve, la machine n'est pas le problème : c'est la personne qui sait la régler."
+        "variante": "rangee"
       },
       {
         "type": "offre",
         "lignes": [
           {
-            "benefice": "Vous cessez de dépendre d'un marché de l'emploi qui joue contre les ateliers du bassin.",
             "prestation": {
-              "texte": ", pas des profils trouvés dans l'urgence.",
-              "accroche": "Des techniciens salariés, évalués et encadrés"
-            }
+              "accroche": "Des techniciens salariés, évalués et encadrés pas des profils trouvés dans l'urgence.",
+              "texte": ""
+            },
+            "benefice": "Vous cessez de dépendre d'un marché de l'emploi qui joue contre les ateliers du bassin."
           },
           {
-            "benefice": "Le rebut recule avant que la panne n'arrive, et la précision se tient dans la durée.",
             "prestation": {
-              "texte": "géométrie, broches, transmissions, lubrification, éléments d'usure suivis équipement par équipement.",
-              "accroche": "Un suivi machine-outil sérieux"
-            }
+              "accroche": "Un suivi machine-outil sérieux",
+              "texte": "Géométrie, broches, transmissions, lubrification, éléments d'usure suivis équipement par équipement."
+            },
+            "benefice": "Le rebut recule avant que la panne n'arrive, et la précision se tient dans la durée."
           },
           {
-            "benefice": "Un seul contrat pour des lignes automatisées comme pour un parc de tours.",
             "prestation": {
-              "texte": "[mécanique](/expertises/mecanique/), [électricité](/expertises/electrique/), [automatisme](/expertises/automatisme/), [robotique](/expertises/robotique/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/), [soudure](/expertises/soudure/).",
-              "accroche": "Le champ technique complet"
-            }
+              "accroche": "Le champ technique complet",
+              "texte": "Mécanique, électricité, automatisme, robotique, hydraulique, pneumatique, soudure."
+            },
+            "benefice": "Un seul contrat pour des lignes automatisées comme pour un parc de tours."
           },
           {
-            "benefice": "Vous sécurisez la production sans embauche précipitée ni recrutement bâclé.",
             "prestation": {
-              "texte": ", dimensionné sur la durée réelle.",
-              "accroche": "Un renfort en pic d'activité ou en remplacement d'une absence"
-            }
+              "accroche": "Un renfort en pic d'activité ou en remplacement d'une absence dimensionné sur la durée réelle.",
+              "texte": ""
+            },
+            "benefice": "Vous sécurisez la production sans embauche précipitée ni recrutement bâclé."
           },
           {
-            "benefice": "Une alerte du dimanche soir trouve un interlocuteur qui qualifie et mobilise.",
             "prestation": {
-              "texte": ", tenue par nos techniciens mobiles, comme partout en France ([voir nos implantations](/implantations/lyon/)).",
-              "accroche": "Astreinte 24/24 et 7/7 en option"
-            }
+              "accroche": "Astreinte la nuit, le week-end et les jours fériés en option tenue par nos techniciens mobiles, comme partout en France (voir nos implantations).",
+              "texte": ""
+            },
+            "benefice": "Une alerte du dimanche soir trouve un interlocuteur qui qualifie et mobilise."
           },
           {
-            "benefice": "Vous payez une organisation qui fonctionne, pas une adresse de plus sur un papier à en-tête.",
             "prestation": {
-              "texte": "ni agence ni hub de techniciens dans le département, des professionnels itinérants qui viennent sur site.",
-              "accroche": "Pas d'enseigne dans votre rue, et c'est assumé"
-            }
+              "accroche": "Pas d'enseigne dans votre rue, et c'est assumé",
+              "texte": "Ni agence ni hub de techniciens dans le département, des professionnels itinérants qui viennent sur site."
+            },
+            "benefice": "Vous payez une organisation qui fonctionne, pas une adresse de plus sur un papier à en-tête."
           }
         ]
       },
@@ -142,28 +176,28 @@
         "type": "deroule",
         "etapes": [
           {
-            "texte": "Vous décrivez la panne ou le projet au 04 78 33 72 05, l'état de l'installation, l'accès à vos locaux. Rappel dans l'heure aux horaires ouvrés.",
-            "titre": "La qualification"
+            "titre": "La qualification",
+            "texte": "Vous décrivez la panne ou le projet par téléphone, l'état de l'installation, l'accès à vos locaux. Rappel dans l'heure aux horaires ouvrés."
           },
           {
-            "texte": "Technicien choisi selon la technologie en cause, habilitations et certifications vérifiées, accueil sécurité préparé, pièces anticipées quand le diagnostic le permet.",
-            "titre": "La préparation"
+            "titre": "La préparation",
+            "texte": "Technicien choisi selon la technologie en cause, habilitations et certifications vérifiées, accueil sécurité préparé, pièces anticipées quand le diagnostic le permet."
           },
           {
-            "texte": "Diagnostic, réparation, essais, remise en fonctionnement, dans vos règles de sécurité et votre plan de prévention.",
-            "titre": "L'intervention"
+            "titre": "L'intervention",
+            "texte": "Diagnostic, réparation, essais, remise en fonctionnement, dans vos règles de sécurité et votre plan de prévention."
           },
           {
-            "texte": "Sur machines-outils, reprise des réglages et vérification de la géométrie avant relance de série.",
-            "titre": "Le contrôle de précision"
+            "titre": "Le contrôle de précision",
+            "texte": "Sur machines-outils, reprise des réglages et vérification de la géométrie avant relance de série."
           },
           {
-            "texte": "Compte rendu écrit, cause identifiée, recommandations. Vous gardez la connaissance, pas seulement la facture.",
-            "titre": "La restitution"
+            "titre": "La restitution",
+            "texte": "Compte rendu écrit, cause identifiée, recommandations. Vous gardez la connaissance, pas seulement la facture."
           },
           {
-            "texte": "Sur demande, nos techniciens partagent avec vos opérateurs ce que le premier niveau doit voir, entendre et signaler.",
-            "titre": "La transmission"
+            "titre": "La transmission",
+            "texte": "Sur demande, nos techniciens partagent avec vos opérateurs ce que le premier niveau doit voir, entendre et signaler."
           }
         ]
       },
@@ -171,57 +205,74 @@
         "type": "garanties",
         "puces": [
           {
-            "texte": "chaque technicien suit un parcours de formation au contact des référents du groupe, automatisme, robotique, habilitations et certifications tenues à jour.",
-            "accroche": "Une compétence entretenue, pas seulement recrutée"
+            "accroche": "Une compétence entretenue, pas seulement recrutée",
+            "texte": "Chaque technicien suit un parcours de formation au contact des référents du groupe, automatisme, robotique, habilitations et certifications tenues à jour."
           },
           {
-            "texte": "entretien technique et comportemental, 10 % des candidats retenus, résultats d'évaluation présentés avant la première intervention.",
-            "accroche": "Une sélection prouvée avant l'arrivée"
+            "accroche": "Une sélection prouvée avant l'arrivée",
+            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats d'évaluation présentés avant la première intervention."
           },
           {
-            "texte": "un chargé d'affaires nommé, une information claire avant, pendant et après chaque mission. Pas de visage différent à chaque visite.",
-            "accroche": "Un contact unique qui connaît votre dossier"
+            "accroche": "Un contact unique qui connaît votre dossier",
+            "texte": "Un chargé d'affaires nommé, une information claire avant, pendant et après chaque mission. Pas de visage différent à chaque visite."
           }
         ]
-      },
-      {
-        "type": "cta",
-        "bouton": "Faire chiffrer ma maintenance en Haute-Savoie",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
-        "question": "Besoin de tenir votre parc sans dépendre d'un seul régleur ?"
       },
       {
         "type": "preuves",
         "preuves": [
           {
-            "texte": "centres d'usinage, presses et commandes numériques, fabrication de pièces mécaniques de précision",
             "titre": "Un technicien à temps plein sur un parc multimarques, en 2025",
+            "texte": "Centres d'usinage, presses et commandes numériques, fabrication de pièces mécaniques de précision.",
+            "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "lienLibelle": "Étude de cas VOIT : site du Grand Est"
+            "photo": "/assets/web/x-tech-portrait.jpg"
           },
           {
-            "texte": "présence continue, en coordination avec les équipes du site",
             "titre": "Un technicien de maintenance dédié au maintien d'un parc machines, en 2025",
+            "texte": "Présence continue, en coordination avec les équipes du site.",
+            "lienLibelle": "Étude de cas AUTOLIV",
             "lienHref": "/preuves/autoliv/",
-            "lienLibelle": "Étude de cas AUTOLIV : maintien d'un site"
+            "photo": "/assets/web/team-grind-front.jpg"
           },
           {
-            "texte": "périmètre prioritaire sur les équipements critiques",
             "titre": "Des techniciens présents au quotidien dans les équipes de maintenance d'un équipementier automobile, en 2025",
+            "texte": "Périmètre prioritaire sur les équipements critiques.",
+            "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "lienLibelle": "Étude de cas JTEKT : maintenance des installations"
+            "photo": "/assets/web/x-elec-cablage.jpg"
           },
           {
-            "texte": "accompagnement d'une montée en cadence",
             "titre": "3 à 5 techniciens déployés dans plusieurs usines françaises, depuis septembre 2024",
+            "texte": "Accompagnement d'une montée en cadence.",
+            "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "lienLibelle": "Étude de cas VALEO : plusieurs usines"
+            "photo": "/assets/web/team-duo.jpg"
           },
           {
-            "texte": ", site automobile, depuis janvier 2023",
             "titre": "Six techniciens sur l'installation et la mise en production d'un parc machines neuf",
+            "texte": ", site automobile, depuis janvier 2023.",
+            "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "lienLibelle": "Étude de cas EATON : mise en production"
+            "photo": "/assets/web/x-logistique-entrepot.jpg"
+          },
+          {
+            "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
+            "lienLibelle": "Étude de cas Mersen",
+            "lienHref": "/preuves/mersen/",
+            "photo": "/assets/web/ph-tuyaux.jpg"
+          },
+          {
+            "titre": "Réparer plutôt que remplacer, au budget d’une PME",
+            "lienLibelle": "Étude de cas Joint Lyonnais",
+            "lienHref": "/preuves/joint-lyonnais/",
+            "photo": "/assets/web/team-duo.jpg"
+          },
+          {
+            "titre": "La maintenance tient pendant que l’équipe recrute",
+            "lienLibelle": "Étude de cas Bamesa",
+            "lienHref": "/preuves/bamesa/",
+            "photo": "/assets/web/ph-robots-solaire.jpg"
           }
         ]
       },
@@ -229,34 +280,38 @@
         "type": "objections",
         "questions": [
           {
-            "reponse": "Oui, comme dans tout le département : bassin d'Annecy, Genevois, Chablais, Faucigny. Les ateliers de décolletage y côtoient les usines d'assemblage et les lignes agroalimentaires, et nos techniciens connaissent ces environnements, machines-outils comprises.",
-            "question": "Intervenez-vous dans la vallée de l'Arve ?"
+            "question": "Intervenez-vous dans la vallée de l'Arve ?",
+            "reponse": "Oui, comme dans tout le département : bassin d'Annecy, Genevois, Chablais, Faucigny. Les ateliers de décolletage y côtoient les usines d'assemblage et les lignes agroalimentaires, et nos techniciens connaissent ces environnements, machines-outils comprises."
           },
           {
-            "reponse": "Nous ne promettons pas de délai standard : chaque situation est qualifiée d'abord. Ce qui est mesurable, c'est le rappel dans l'heure aux horaires ouvrés, l'astreinte 24/24 et 7/7 en option, et une organisation qui mobilise le bon profil du premier coup.",
-            "question": "Quel délai pour une intervention en Haute-Savoie ?"
+            "question": "Quel délai pour une intervention en Haute-Savoie ?",
+            "reponse": "Nous ne promettons pas de délai standard : chaque situation est qualifiée d'abord. Ce qui est mesurable, c'est le rappel dans l'heure aux horaires ouvrés, l'astreinte la nuit, le week-end et les jours fériés en option, et une organisation qui mobilise le bon profil du premier coup."
           },
           {
-            "reponse": "Oui, et c'est le cas le plus fréquent du bassin : ces ateliers ont rarement un service maintenance complet. Un [technicien en résidence](/offres/residence/) ou quelques visites planifiées par mois suffisent souvent à tenir le parc et à ouvrir l'accès à des compétences rares en cas de coup dur.",
-            "question": "Travaillez-vous avec les PME de sous-traitance de précision ?"
+            "question": "Travaillez-vous avec les PME de sous-traitance de précision ?",
+            "reponse": "Oui, et c'est le cas le plus fréquent du bassin : ces ateliers ont rarement un service maintenance complet. Un technicien en résidence ou quelques visites planifiées par mois suffisent souvent à tenir le parc et à ouvrir l'accès à des compétences rares en cas de coup dur."
           },
           {
-            "reponse": "Zéro arrêt est chiffré sur devis, avec trois niveaux de couverture et un engagement type de 6 mois renouvelable. Pour un atelier de sous-traitance, quelques visites planifiées par mois suffisent souvent, et le contrat le dit noir sur blanc. Le diagnostic de départ est gratuit.",
-            "question": "Combien coûte un contrat de maintenance ?"
+            "question": "Combien coûte un contrat de maintenance ?",
+            "reponse": "Zéro arrêt est chiffré sur devis, avec trois niveaux de couverture et un engagement type de 6 mois renouvelable. Pour un atelier de sous-traitance, quelques visites planifiées par mois suffisent souvent, et le contrat le dit noir sur blanc. Le diagnostic de départ est gratuit."
           },
           {
-            "reponse": "Oui. Renfort de vos équipes en saison, remplacement pendant un congé ou un arrêt, accompagnement d'un projet ou d'un transfert de machines : le dispositif se dimensionne sur la durée et les technologies en cause, sans embauche précipitée.",
-            "question": "Pouvez-vous sécuriser un pic d'activité ou couvrir une absence ?"
+            "question": "Pouvez-vous sécuriser un pic d'activité ou couvrir une absence ?",
+            "reponse": "Oui. Renfort de vos équipes en saison, remplacement pendant un congé ou un arrêt, accompagnement d'un projet ou d'un transfert de machines : le dispositif se dimensionne sur la durée et les technologies en cause, sans embauche précipitée."
           },
           {
-            "reponse": "Oui, les deux départements, du sillon alpin aux vallées, avec la même méthode et le même suivi. Nos techniciens se déplacent aussi dans l'Isère, la Drôme, la Loire et partout en France, avec un contrat unique.",
-            "question": "Couvrez-vous aussi la Savoie ?"
+            "question": "Couvrez-vous aussi la Savoie ?",
+            "reponse": "Oui, les deux départements, du sillon alpin aux vallées, avec la même méthode et le même suivi. Nos techniciens se déplacent aussi dans l'Isère, la Drôme, la Loire et partout en France, avec un contrat unique."
           },
           {
-            "reponse": "Non, ni agence ni hub de techniciens dans le département, et nous ne ferons pas semblant. Nos quatre agences sont Lyon, siège du groupe, Montréal, Dubaï et Madrid. Nos techniciens sont mobiles : ils viennent régler votre machine dans votre atelier, avec un chargé d'affaires qui connaît vos accès.",
-            "question": "Avez-vous une agence en Haute-Savoie ?"
+            "question": "Avez-vous une agence en Haute-Savoie ?",
+            "reponse": "Non, ni agence ni hub de techniciens dans le département, et nous ne ferons pas semblant. Nos quatre agences sont Lyon, siège du groupe, Montréal, Dubaï et Madrid. Nos techniciens sont mobiles : ils viennent régler votre machine dans votre atelier, avec un chargé d'affaires qui connaît vos accès."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin d'un prestataire de maintenance qui tienne un parc de décolletage comme une ligne automatisée ?"
       }
     ]
   }

@@ -1,199 +1,238 @@
 {
   "url": "/secteurs/chimie/",
-  "source": "dessin : maquette/accueil-rendu.html, gabarit isSecteur, lignes 6278 à 6364. texte : supabase/import/corpus-analyse.json, produit par scripts/produit-secteurs.mjs.",
+  "titre_h1": "Intervenir sur site sensible, sans prendre de risque.",
+  "source": "dessin : maquette/rendu/secteurs--chimie.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {
     "gabarit": "secteur",
-    "surtitre": "Secteur d'activité",
+    "pastille": "Maintenance chimie",
     "chapeau": "Le document avant l'outil. Permis de travail, consignations, contrôles d'atmosphère, modes opératoires : nos techniciens arrivent formés à ce cadre, et le respectent sans exception au motif de l'urgence.",
     "actions": [
       {
         "libelle": "Étudier la maintenance de mon site chimique",
-        "href": "#formulaire"
+        "href": "#besoin"
       }
     ],
-    "reperesSurtitre": "Nos repères dans le secteur",
-    "reperes": [
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option, aux mêmes exigences documentaires.",
+    "formulaireHeroTitre": "Étudier la maintenance de mon site chimique",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "des candidats retenus, entretien technique et comportemental, résultats partagés"
+        "libelle": "Des techniciens retenus, entretien technique et comportemental, résultats partagés"
       },
       {
-        "valeur": "+ 120",
-        "libelle": "clients industriels, dont plus de 80 réguliers"
+        "valeur": "+200",
+        "libelle": "Clients industriels accompagnés"
       },
       {
         "valeur": "4",
-        "libelle": "agences, Lyon (siège), Montréal, Dubaï, Madrid, astreinte 24/24 et 7/7"
+        "libelle": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, astreinte la nuit, le week-end et les jours fériés"
       }
     ],
-    "enjeuxSurtitre": "Les enjeux du secteur",
-    "enjeuxTitre": "Sur un site classé, un prestataire qui improvise ne vous coûte pas du temps. Il vous coûte un incident.",
-    "enjeux": [
+    "logosTitre": "Ils nous confient leurs sites industriels",
+    "logos": [
       {
-        "titre": "L'intervenant qui découvre les règles ATEX chez vous est un danger.",
-        "texte": "Le choix d'un outil ou d'une lampe n'y est jamais anodin."
+        "nom": "Eaton",
+        "src": "/assets/clients/mq-70bce765c1a2.svg"
       },
       {
-        "titre": "Une unité qui tourne 24 heures sur 24 ne s'interrompt pas pour une visite.",
-        "texte": "L'entretien se place aux fenêtres programmées, le reste se fait en marche, dans les règles."
+        "nom": "Mersen",
+        "src": "/assets/clients/mq-eb9461b85e59.svg"
       },
       {
-        "titre": "Donneur d'ordre et entreprise extérieure engagent leur responsabilité ensemble.",
-        "texte": "Le choix d'un prestataire est une décision de sécurité avant d'être une décision d'achat."
+        "nom": "Suez",
+        "src": "/assets/clients/mq-89100525ef89.svg"
       },
       {
-        "titre": "Sans permis, rien ne commence.",
-        "texte": "Permis de feu, permis de pénétrer, consignation des énergies : le circuit se respecte, quel que soit le retard annoncé."
+        "nom": "Eiffage",
+        "src": "/assets/clients/mq-21daf7c60970.svg"
       },
       {
-        "titre": "La culture sécurité ne s'improvise pas.",
-        "texte": "Et le marché local de l'emploi technique ne la fournit pas toute faite."
+        "nom": "Ecocem",
+        "src": "/assets/clients/ecocem.png"
+      },
+      {
+        "nom": "Groupe Atlantic",
+        "src": "/assets/clients/groupe-atlantic.png",
+        "filtre": "invert(1) hue-rotate(180deg)"
+      },
+      {
+        "nom": "Tournaire",
+        "src": "/assets/clients/mq-7c01e175985e.png"
+      },
+      {
+        "nom": "Rector Lesage",
+        "src": "/assets/clients/rector-lesage.png"
+      },
+      {
+        "nom": "Joint Lyonnais",
+        "src": "/assets/clients/joint-lyonnais.png"
+      },
+      {
+        "nom": "Soprema",
+        "src": "/assets/clients/mq-127f9e03c53b.svg"
+      },
+      {
+        "nom": "WashTec",
+        "src": "/assets/clients/orthus-x-washtec.svg"
       }
     ],
-    "autresSurtitre": "Les autres secteurs",
-    "autres": [
-      {
-        "libelle": "Agroalimentaire",
-        "href": "/secteurs/agroalimentaire/"
-      },
-      {
-        "libelle": "Équipements logistiques",
-        "href": "/secteurs/logistique/"
-      },
-      {
-        "libelle": "Automobile",
-        "href": "/secteurs/automobile/"
-      },
-      {
-        "libelle": "Pharmaceutique",
-        "href": "/secteurs/pharmaceutique/"
-      },
-      {
-        "libelle": "Aéronautique",
-        "href": "/secteurs/aeronautique/"
-      },
-      {
-        "libelle": "Nucléaire",
-        "href": "/secteurs/nucleaire/"
-      },
-      {
-        "libelle": "Industrie lourde",
-        "href": "/secteurs/industrie-lourde/"
-      },
-      {
-        "libelle": "Industrie métallique",
-        "href": "/secteurs/industrie-metallique/"
-      },
-      {
-        "libelle": "Menuiserie industrielle",
-        "href": "/secteurs/menuiserie-industrielle/"
-      }
-    ],
-    "appelTitre": "Besoin de préparer un arrêt d'unité avec une équipe qualifiée d'avance ?",
-    "appelTexte": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
-    "appelBouton": {
-      "libelle": "Parler à un chargé d'affaires",
-      "href": "#formulaire"
+    "appelBouton": "Étudier la maintenance de mon site chimique",
+    "problemePhoto": null,
+    "brefBande": "Besoin d'un prestataire dont le dossier sécurité est complet avant l'entrée sur site ?",
+    "brefMention": "Rappel dans l'heure.",
+    "brefBouton": {
+      "libelle": "Étudier la maintenance de mon site chimique",
+      "href": "#besoin"
     },
-    "complement": [
+    "expertisesTitre": "Les expertises d’un site à risque",
+    "expertisesChapeau": "Zones ATEX, produits dangereux, permis de travail : on n’y entre qu’avec les bonnes habilitations.",
+    "expertises": [
+      {
+        "titre": "Tuyauterie",
+        "texte": "Lignes de process, brides et supports, remplacement en zone réglementée.",
+        "href": "/expertises/tuyauterie/",
+        "photo": "/assets/web/ph-hero-raffinerie.jpg"
+      },
+      {
+        "titre": "Soudure",
+        "texte": "Soudures qualifiées sur inox et aciers, contrôlées avant remise en service.",
+        "href": "/expertises/soudure/",
+        "photo": "/assets/web/team-grind-close.jpg"
+      },
+      {
+        "titre": "Électrique",
+        "texte": "Matériel ATEX, consignations multi-énergies, habilitations à jour.",
+        "href": "/expertises/electrique/",
+        "photo": "/assets/web/team-electric.jpg"
+      },
+      {
+        "titre": "Hydraulique",
+        "texte": "Pompes et circuits de transfert, étanchéité et remplacement.",
+        "href": "/expertises/hydraulique/",
+        "photo": "/assets/web/ph-tuyaux.jpg"
+      }
+    ],
+    "marquesFamille": "fluide",
+    "sections": [
+      {
+        "type": "probleme",
+        "variante": "rangee",
+        "punchline": "Sur un site classé, un prestataire qui improvise ne vous coûte pas du temps. Il vous coûte un incident.",
+        "puces": [
+          {
+            "accroche": "L'intervenant qui découvre les règles ATEX chez vous est un danger.",
+            "texte": "Le choix d'un outil ou d'une lampe n'y est jamais anodin."
+          },
+          {
+            "accroche": "Une unité qui tourne nuit et week-end ne s'interrompt pas pour une visite.",
+            "texte": "L'entretien se place aux fenêtres programmées, le reste se fait en marche, dans les règles."
+          },
+          {
+            "accroche": "Donneur d'ordre et entreprise extérieure engagent leur responsabilité ensemble.",
+            "texte": "Le choix d'un prestataire est une décision de sécurité avant d'être une décision d'achat."
+          },
+          {
+            "accroche": "Sans permis, rien ne commence.",
+            "texte": "Permis de feu, permis de pénétrer, consignation des énergies : le circuit se respecte, quel que soit le retard annoncé."
+          },
+          {
+            "accroche": "La culture sécurité ne s'improvise pas.",
+            "texte": "Et le marché local de l'emploi technique ne la fournit pas toute faite."
+          }
+        ]
+      },
       {
         "type": "offre",
         "lignes": [
           {
             "prestation": {
-              "accroche": "Formations réglementaires vérifiées avant la mission",
-              "texte": ", attestations fournies à votre responsable HSE."
+              "accroche": "Formations réglementaires vérifiées avant la mission attestations fournies à votre responsable HSE."
             },
             "benefice": "Aucun intervenant n'entre sur le site sans que son dossier soit complet."
           },
           {
             "prestation": {
               "accroche": "Respect strict de vos circuits de permis",
-              "texte": "demande, validation, affichage, clôture."
+              "texte": "Demande, validation, affichage, clôture."
             },
             "benefice": "Vos équipes HSE ne passent pas leur journée à rattraper un prestataire."
           },
           {
             "prestation": {
               "accroche": "Travail en zone ATEX",
-              "texte": "habilitations, matériel certifié, modes opératoires adaptés, contrôles d'atmosphère."
+              "texte": "Habilitations, matériel certifié, modes opératoires adaptés, contrôles d'atmosphère."
             },
             "benefice": "Les opérations en zone se préparent au lieu de se négocier au pied de l'unité."
           },
           {
             "prestation": {
               "accroche": "Machines tournantes",
-              "texte": "pompes de procédé, agitateurs, compresseurs, ventilateurs. Alignement, garnitures, roulements, équilibrage, analyse vibratoire."
+              "texte": "Pompes de procédé, agitateurs, compresseurs, ventilateurs. Alignement, garnitures, roulements, équilibrage, analyse vibratoire."
             },
             "benefice": "La mécanique qui tient vos unités est suivie par la mesure, pas par l'oreille."
           },
           {
             "prestation": {
               "accroche": "Vannes, robinetterie et instrumentation",
-              "texte": "actionneurs, sécurités mécaniques, boucles de régulation, étalonnages selon vos référentiels."
+              "texte": "Actionneurs, sécurités mécaniques, boucles de régulation, étalonnages selon vos référentiels."
             },
             "benefice": "La dérive de procédé se traite avant qu'elle ne devienne un écart qualité."
           },
           {
             "prestation": {
-              "accroche": "Tuyauteries et capacités",
-              "texte": "avec notre expertise en [tuyauterie industrielle](/expertises/tuyauterie/), en lien avec vos exigences d'inspection."
+              "accroche": "Tuyauteries et capacités avec notre expertise en [tuyauterie industrielle](/expertises/tuyauterie/), en lien avec vos exigences d'inspection."
             },
             "benefice": "Les travaux sur lignes suivent les modes opératoires attendus par votre service inspection."
           },
           {
             "prestation": {
               "accroche": "Préparation d'arrêt d'unité",
-              "texte": "équipe dimensionnée, qualifications vérifiées, tâches gammées, pièces anticipées."
+              "texte": "Équipe dimensionnée, qualifications vérifiées, tâches gammées, pièces anticipées."
             },
             "benefice": "La fenêtre courte est tenue, et l'unité est rendue à la date promise."
           },
           {
             "prestation": {
-              "texte": "Exigence du site"
+              "accroche": "Exigence du site"
             },
             "benefice": "Réponse Migen"
           },
           {
             "prestation": {
-              "texte": "Formations réglementaires"
+              "accroche": "Formations réglementaires"
             },
             "benefice": "Vérifiées avant la mission, attestations fournies"
           },
           {
             "prestation": {
-              "texte": "Permis de travail"
+              "accroche": "Permis de travail"
             },
             "benefice": "Respect strict de vos circuits, aucun geste sans document"
           },
           {
             "prestation": {
-              "texte": "Zones ATEX"
+              "accroche": "Zones ATEX"
             },
             "benefice": "Matériel aux normes, habilitations à jour, comportements maîtrisés"
           },
           {
             "prestation": {
-              "texte": "Consignations"
+              "accroche": "Consignations"
             },
             "benefice": "Procédures suivies, contrôles croisés acceptés"
           },
           {
             "prestation": {
-              "texte": "Traçabilité"
+              "accroche": "Traçabilité"
             },
             "benefice": "Comptes rendus au format de votre GMAO, disponibles à l'audit"
           },
           {
             "prestation": {
-              "texte": "Astreinte"
+              "accroche": "Astreinte"
             },
-            "benefice": "24/24 et 7/7 en option, mêmes règles la nuit que le jour"
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Pour les modifications, notre [bureau d'études](/offres/bureau-etudes/) prépare des dossiers techniques au niveau attendu par vos études de dangers et votre gestion des modifications."
+            "benefice": "la nuit, le week-end et les jours fériés en option, mêmes règles la nuit que le jour"
           }
         ]
       },
@@ -202,27 +241,27 @@
         "etapes": [
           {
             "titre": "Cadrage sécurité",
-            "texte": "plan de prévention, analyse des risques liés aux agents chimiques, permis nécessaires, formations et qualifications exigées par le site. Vérifié avec votre responsable HSE avant le premier jour."
+            "texte": "Plan de prévention, analyse des risques liés aux agents chimiques, permis nécessaires, formations et qualifications exigées par le site. Vérifié avec votre responsable HSE avant le premier jour."
           },
           {
             "titre": "Vérification des dossiers",
-            "texte": "habilitations, attestations, aptitudes. Le technicien se présente avec un dossier complet, pas avec une promesse de régularisation."
+            "texte": "Habilitations, attestations, aptitudes. Le technicien se présente avec un dossier complet, pas avec une promesse de régularisation."
           },
           {
             "titre": "Intervention sous permis",
-            "texte": "mode opératoire respecté, consignations réalisées, contrôles d'atmosphère quand ils s'imposent. Le document accompagne le geste."
+            "texte": "Mode opératoire respecté, consignations réalisées, contrôles d'atmosphère quand ils s'imposent. Le document accompagne le geste."
           },
           {
             "titre": "Traçabilité",
-            "texte": "compte rendu détaillé, pièces remplacées, contrôles réalisés, écarts signalés. Votre GMAO et vos audits y trouvent l'information sans reconstitution."
+            "texte": "Compte rendu détaillé, pièces remplacées, contrôles réalisés, écarts signalés. Votre GMAO et vos audits y trouvent l'information sans reconstitution."
           },
           {
             "titre": "Préparation des fenêtres de travaux",
-            "texte": "arrêts d'unité gammés, pièces anticipées, coactivité organisée."
+            "texte": "Arrêts d'unité gammés, pièces anticipées, coactivité organisée."
           },
           {
             "titre": "Retour d'expérience",
-            "texte": "analyse des dysfonctionnements récurrents, propositions d'amélioration, relecture des événements marquants."
+            "texte": "Analyse des dysfonctionnements récurrents, propositions d'amélioration, relecture des événements marquants."
           }
         ]
       },
@@ -231,23 +270,17 @@
         "puces": [
           {
             "accroche": "Aucun geste sans document",
-            "texte": "permis, consignation, mode opératoire. Cette règle ne cède pas devant l'urgence, et c'est ce que vous achetez en nous choisissant."
+            "texte": "Permis, consignation, mode opératoire. Cette règle ne cède pas devant l'urgence, et c'est ce que vous achetez en nous choisissant."
           },
           {
             "accroche": "Des dossiers complets avant l'accès",
-            "texte": "formations réglementaires, habilitations, aptitudes vérifiées. Les attestations sont remises à votre responsable sécurité, systématiquement."
+            "texte": "Formations réglementaires, habilitations, aptitudes vérifiées. Les attestations sont remises à votre responsable sécurité, systématiquement."
           },
           {
             "accroche": "L'acceptation pleine de vos contrôles",
-            "texte": "contrôles croisés, points d'arrêt, surveillance par vos équipes. Nous ne discutons jamais un contrôle qui protège votre site."
+            "texte": "Contrôles croisés, points d'arrêt, surveillance par vos équipes. Nous ne discutons jamais un contrôle qui protège votre site."
           }
         ]
-      },
-      {
-        "type": "cta",
-        "question": "Besoin d'un prestataire dont le dossier sécurité est complet avant l'entrée sur site ?",
-        "bouton": "Étudier la maintenance de mon site chimique",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
       },
       {
         "type": "preuves",
@@ -256,31 +289,54 @@
             "titre": "Électromécanicien habilité risque chimique RC1, mobilisé 6 mois sur la remise en état d'un site de traitement des eaux industrielles",
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
-            "lienHref": "/preuves/suez-remise-en-etat/"
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne de production neuve, matériaux",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
-            "lienHref": "/preuves/mersen/"
+            "lienHref": "/preuves/mersen/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg"
           },
           {
-            "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, 7 jours sur 7",
+            "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage",
             "texte": "environnement thermique sévère, depuis octobre 2023",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
-            "lienHref": "/preuves/stellantis-fonderie-sept-fons/"
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg"
           },
           {
             "titre": "Trois techniciens en renfort sur la maintenance préventive d'une centrale photovoltaïque, énergie",
             "texte": "septembre à novembre 2024",
             "lienLibelle": "Étude de cas EIFFAGE : partenariat",
-            "lienHref": "/preuves/eiffage/"
+            "lienHref": "/preuves/eiffage/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
           },
           {
             "titre": "Deux techniciens en 3x8 sur des lignes de process sous contrainte d'hygiène et de traçabilité",
             "texte": "site de Steenvoorde",
             "lienLibelle": "Étude de cas DANONE : lignes de production",
-            "lienHref": "/preuves/danone-lignes-de-production/"
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/mq-e69a240d8656.jpg"
+          },
+          {
+            "titre": "Maintenir des machines conçues en interne",
+            "lienLibelle": "Étude de cas Tournaire",
+            "lienHref": "/preuves/tournaire/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg"
+          },
+          {
+            "titre": "Monter, déplacer, renforcer, chantier après chantier",
+            "lienLibelle": "Étude de cas Soprema",
+            "lienHref": "/preuves/soprema/",
+            "photo": "/assets/web/mq-056f3c250981.jpg"
+          },
+          {
+            "titre": "Un renfort devenu une partie de l’équipe",
+            "lienLibelle": "Étude de cas Groupe Atlantic",
+            "lienHref": "/preuves/groupe-atlantic/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
           }
         ]
       },
@@ -305,13 +361,19 @@
           },
           {
             "question": "Que se passe-t-il en cas de panne la nuit sur un procédé continu ?",
-            "reponse": "L'astreinte 24/24 et 7/7 prend l'urgence en charge et mobilise un salarié depuis le hub de techniciens le plus proche, avec les mêmes exigences documentaires que le jour."
+            "reponse": "L'astreinte la nuit, le week-end et les jours fériés prend l'urgence en charge et mobilise un salarié depuis le hub de techniciens le plus proche, avec les mêmes exigences documentaires que le jour."
           },
           {
             "question": "Travaillez-vous pour la chimie fine comme pour la grande chimie ?",
-            "reponse": "Oui : unité continue, atelier batch, façonnier, laboratoire industriel. Les règles changent d'échelle, la culture reste la même. Notre expérience de la [pharmaceutique](/secteurs/pharmaceutique/) et de l'[agroalimentaire](/secteurs/agroalimentaire/) complète celle de la chimie."
+            "reponse": "Oui : unité continue, atelier batch, façonnier, laboratoire industriel. Les règles changent d'échelle, la culture reste la même. Notre expérience de la pharmaceutique et de l'agroalimentaire complète celle de la chimie."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin de préparer un arrêt d'unité avec une équipe qualifiée d'avance ?",
+        "bouton": "Parler à un chargé d'affaires",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés."
       }
     ]
   }

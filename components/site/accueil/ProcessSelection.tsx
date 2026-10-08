@@ -115,11 +115,11 @@ export default function ProcessSelection() {
           style={{
             display: "grid",
             gridTemplateColumns: "minmax(0,.72fr) minmax(0,1.28fr)",
-            gap: "48px",
+            gap: "56px",
             alignItems: "start",
           }}
         >
-          <div>
+          <div style={{ position: "sticky", top: "110px" }}>
             <div
               style={{
                 font: "600 11.5px var(--fb)",
@@ -136,7 +136,7 @@ export default function ProcessSelection() {
                 font: "600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft)",
                 letterSpacing: "-.04em",
                 margin: "0 0 18px",
-                maxWidth: "14ch",
+                maxWidth: "16ch",
                 textWrap: "balance",
               }}
             >
@@ -146,7 +146,8 @@ export default function ProcessSelection() {
               style={{
                 font: "400 16.5px/1.7 var(--fb)",
                 color: "var(--ink2)",
-                margin: "0 0 22px",
+                margin: "0 0 26px",
+                maxWidth: "46ch",
               }}
             >
               {
@@ -185,11 +186,11 @@ export default function ProcessSelection() {
               }}
             >
               <span style={CARTOUCHE_GRILLE}>Sur 100 techniciens rencontrés</span>
-              <span style={CARTOUCHE_GRILLE}>10 retenus</span>
+              <span style={{ ...CARTOUCHE_GRILLE, color: "var(--acc)" }}>10 retenus</span>
             </div>
 
             <div
-              className="mg-rmulti"
+              className="mg-proc3"
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(3,minmax(0,1fr))",
@@ -209,7 +210,7 @@ export default function ProcessSelection() {
                       ? {
                           background: "var(--panel)",
                           color: "#fff",
-                          boxShadow: "0 24px 56px -32px rgba(0,0,0,.5)",
+                          boxShadow: "0 24px 50px -30px rgba(0,0,0,.5)",
                         }
                       : {
                           background: "#fff",
@@ -332,20 +333,20 @@ export default function ProcessSelection() {
                     font: "600 15.5px/1.3 var(--ft)",
                     letterSpacing: "-.02em",
                     color: "var(--ink)",
-                    marginBottom: "6px",
                   }}
                 >
                   Un barème commun, pas une impression
                 </div>
                 <p
                   style={{
-                    font: "400 13.5px/1.6 var(--fb)",
-                    color: "var(--ink1)",
-                    margin: 0,
+                    font: "400 13.5px/1.55 var(--fb)",
+                    color: "var(--ink2)",
+                    margin: "6px 0 0",
+                    maxWidth: "60ch",
                   }}
                 >
                   {
-                    "Chaque technicien est noté sur un référentiel de compétences techniques et comportementales, révisé chaque année avec nos chargés d’affaires et nos clients. Le même barème sert ensuite au suivi en mission."
+                    "Chaque technicien est noté sur un référentiel technique et comportemental, révisé chaque année avec nos chargés d’affaires et nos clients. Le même barème sert ensuite au suivi en mission."
                   }
                 </p>
               </div>
@@ -353,8 +354,7 @@ export default function ProcessSelection() {
                 style={{
                   display: "flex",
                   flexWrap: "wrap",
-                  gap: "7px",
-                  flex: "none",
+                  gap: "6px",
                   maxWidth: "300px",
                   justifyContent: "flex-end",
                 }}
@@ -364,10 +364,9 @@ export default function ProcessSelection() {
                     key={critere}
                     style={{
                       font: "500 12px var(--fb)",
-                      padding: "7px 13px",
+                      padding: "6px 12px",
                       borderRadius: "999px",
-                      background: "var(--card)",
-                      border: "1px solid var(--line)",
+                      background: "var(--chip)",
                       whiteSpace: "nowrap",
                     }}
                   >

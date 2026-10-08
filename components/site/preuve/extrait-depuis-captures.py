@@ -5,9 +5,14 @@
 # maquette est ré-exportée et re-capturée. La copie est BYTE-EXACTE depuis le
 # rendu ; les phrases qui portent un interdit du contrat sont retirées et
 # déclarées sur la sortie ; une page au H1 interdit est exclue et déclarée
-# (voir EXCLUES dans verification-preuve.tsx). Après exécution :
+# (voir EXCLUES dans verification-preuve.tsx), sauf reformulation arbitrée
+# (H1_REFORMULES ci-dessous). Les images (logo, logoInverse, photoHero,
+# photoDispositif, photo des cartes plusLoin) viennent de
+# supabase/import/photos-preuves.json, mesurée dans la maquette vivante.
+# SORTIE=<dossier> écrit ailleurs pour comparer avant d'écraser. Après exécution :
+#   node scripts/relis-relais.mjs
 #   bun components/site/preuve/verification-preuve.tsx
-import json, pathlib, re
+import json, os, pathlib, re
 from html.parser import HTMLParser
 
 class N:
@@ -49,9 +54,12 @@ class Tree(HTMLParser):
 
 def style_has(n, frag): return frag in n.attrs.get("style", "")
 
+# « +200 clients » est autorisé depuis le 08/10, « clients réguliers » ne l'est
+# pas ; « 7 jours sur 7 » est le « 7j/7 » du contrat écrit en toutes lettres.
 INTERDITS = ["—", "régie", "intérim", "mise à disposition", "sans engagement",
              "clé en main", "sur mesure", "levier", "concrètement", "notamment",
-             "incontournable", "découvrez", "+200", "cinq agences"]
+             "incontournable", "découvrez", "clients réguliers", "cinq agences",
+             "7j/7", "7 jours sur 7", "24h", "€"]
 
 def interdit_dans(texte):
     bas = texte.lower()
@@ -60,7 +68,22 @@ def interdit_dans(texte):
             return mot
     return None
 
-def extrait(chemin):
+# Les images : la capture sert des `blob:` qui ne nomment aucun fichier. Le
+# fichier vient de la CORRESPONDANCE mesurée (octets lus dans la maquette
+# vivante, voir mesure-photos.mjs), jamais d'un choix. La capture, elle, dit
+# quels emplacements existent : chaque champ posé y est vérifié.
+PHOTOS = "supabase/import/photos-preuves.json"
+ALT_HERO = "Intervention migen sur site client"
+ALT_DISPOSITIF = "Technicien migen en mission"
+LOGO_INVERSE = "invert(1) hue-rotate(180deg)"
+
+def images(n): return n.find_all(lambda x: x.tag == "img")
+
+def filtre(img):
+    m = re.search(r"filter:\s*([^;]+)", img.attrs.get("style", ""))
+    return m.group(1).strip() if m else "none"
+
+def extrait(chemin, photos):
     h = open(chemin, encoding="utf8").read()
     t = Tree(); t.feed(h[:h.find("<footer")])
     S = {s.attrs.get("data-screen-label"): s for s in t.root.find_all(lambda n: n.tag == "section")}
@@ -74,6 +97,20 @@ def extrait(chemin):
     if fiche:
         rows = fiche[0].find_all(lambda n: n.tag == "div" and style_has(n, "grid-template-columns: 104px"))
         c["heroFiche"] = [{"libelle": r.children[0].text(), "valeur": r.children[1].text()} for r in rows]
+
+    # Pastille du logo : présente dans la capture si et seulement si la
+    # correspondance porte un logo (VPK : ni l'un ni l'autre).
+    logos = [i for i in images(hero) if i.attrs.get("alt") == c["client"]]
+    assert sorted(i.attrs.get("alt") for i in images(hero)) == sorted([ALT_HERO] + ([c["client"]] if logos else [])), \
+        "image du héros hors des emplacements connus"
+    assert bool(logos) == ("logo" in photos), ("logo : capture et correspondance divergent", bool(logos))
+    if logos:
+        c["logo"] = photos["logo"]
+        if filtre(logos[0]) == LOGO_INVERSE:
+            c["logoInverse"] = True
+        else:
+            assert filtre(logos[0]) == "none", ("filtre de logo inconnu", filtre(logos[0]))
+    c["photoHero"] = photos["heros"]
 
     cartes = S["Chiffres du dispositif"].find_all(lambda n: n.tag == "div" and style_has(n, "padding: 22px 24px 24px"))
     c["chiffres"] = [{"libelle": k.children[0].text(), "valeur": k.children[1].text()} for k in cartes]
@@ -107,6 +144,8 @@ def extrait(chemin):
 
     rows = S["Le dispositif"].find_all(lambda n: n.tag == "div" and style_has(n, "grid-template-columns: minmax(120px, 0.42fr)"))
     c["dispositif"] = [{"libelle": r.children[0].text(), "valeur": r.children[1].text()} for r in rows]
+    assert [i.attrs.get("alt") for i in images(S["Le dispositif"])] == [ALT_DISPOSITIF], "photo du dispositif absente de la capture"
+    c["photoDispositif"] = photos["dispositif"]
 
     if "Le résultat" in S:
         out = []
@@ -149,27 +188,57 @@ def extrait(chemin):
     bouton = bes.find_all(lambda n: n.tag == "button")[0].text()
     assert panneau == c["bouton"] == bouton, ("libellés du formulaire divergents", panneau, c["bouton"], bouton)
 
+    # Vignettes : la correspondance les range dans l'ordre des cartes de la
+    # capture, rapprochées AVANT la purge des interdits (une carte retirée
+    # emporte sa photo).
     out = []
-    for a in S["Pour aller plus loin"].find_all(lambda n: n.tag == "a"):
+    cartes = S["Pour aller plus loin"].find_all(lambda n: n.tag == "a")
+    assert len(cartes) == len(photos["plusLoin"]), ("vignettes : capture et correspondance divergent", len(cartes), len(photos["plusLoin"]))
+    for a, photo in zip(cartes, photos["plusLoin"]):
+        assert len(images(a)) == 1, ("carte sans vignette dans la capture", a.attrs["href"])
         sur = a.find_all(lambda n: n.tag == "span" and style_has(n, "font: 600 10.5px"))
         tit = a.find_all(lambda n: n.tag == "span" and style_has(n, "font: 600 16.5px"))
-        out.append({"surtitre": sur[0].text(), "titre": tit[0].text(), "href": a.attrs["href"]})
+        out.append({"surtitre": sur[0].text(), "titre": tit[0].text(), "href": a.attrs["href"], "photo": photo})
     if out: c["plusLoin"] = out
 
     return c
 
+# Fin de phrase : ponctuation finale, espace, puis une majuscule ou un guillemet
+# ouvrant. « Z.A.C », « 4,6/5 » ou « (Vienne) » ne coupent rien.
+FIN_DE_PHRASE = re.compile(r"(?<=[.!?…])\s+(?=[«\"A-ZÀ-ÖØ-Þ0-9])")
+
+def phrases(texte): return FIN_DE_PHRASE.split(texte)
+
 def purge_interdits(c, slug, trous):
-    """Retire toute FEUILLE qui porte un interdit, et la déclare."""
+    """Retire LA PHRASE qui porte un interdit, jamais le paragraphe entier, et
+    la déclare. Une unité de liste (carte, coche, objectif) qui perd ainsi un
+    de ses champs n'a plus de sens et tombe en entier, déclarée elle aussi :
+    l'objectif Tournaire, une seule phrase, et la coche « 7 jours sur 7 »."""
     def purge(valeur):
+        if isinstance(valeur, str):
+            gardees = []
+            for phrase in phrases(valeur):
+                mot = interdit_dans(phrase)
+                if mot:
+                    trous.append({"page": slug, "phrase": phrase,
+                                  "raison": f"interdit du contrat « {mot} » : phrase non rendue"})
+                else:
+                    gardees.append(phrase)
+            return " ".join(gardees)
+        if isinstance(valeur, dict):
+            return {k: purge(v) for k, v in valeur.items()}
         if isinstance(valeur, list):
             gardes = []
-            for v in valeur:
-                mot = interdit_dans(json.dumps(v, ensure_ascii=False))
-                if mot:
-                    trous.append({"page": slug, "phrase": json.dumps(v, ensure_ascii=False),
-                                  "raison": f"interdit du contrat « {mot} » : non rendu"})
+            for avant in valeur:
+                apres = purge(avant)
+                vide = apres in ("", [], {}) or (
+                    isinstance(apres, dict)
+                    and any(v in ("", []) and avant[k] not in ("", []) for k, v in apres.items()))
+                if vide:
+                    trous.append({"page": slug, "phrase": json.dumps(avant, ensure_ascii=False),
+                                  "raison": "unité vidée par la phrase retirée : non rendue"})
                 else:
-                    gardes.append(v)
+                    gardes.append(apres)
             return gardes
         return valeur
     for cle in list(c.keys()):
@@ -184,15 +253,31 @@ def purge_interdits(c, slug, trous):
                 raise AssertionError(f"champ obligatoire « {cle} » porte l'interdit « {mot} »")
     return c
 
+# Arbitrage de Mehdi du 08/10, SEULE reformulation autorisée : le H1 de la
+# capture → le H1 servi. Vérifiée des deux côtés par H1_REFORMULES dans
+# verification-preuve.tsx ; « machines conçues en interne » est la propre
+# expression du chapeau de la page.
+H1_REFORMULES = {
+    "/preuves/tournaire/": ("Maintenir des machines conçues sur mesure",
+                            "Maintenir des machines conçues en interne"),
+}
+
 R = pathlib.Path("/Users/mehdi/Landing lovable/migen-site")
-SORTIE = R / "supabase/import/gabarits-maquette"
+# SORTIE=<dossier> régénère ailleurs, pour comparer au dossier réel avant d'écrire.
+SORTIE = pathlib.Path(os.environ.get("SORTIE") or R / "supabase/import/gabarits-maquette")
 index = json.load(open(R / "maquette/contenu/site/index.json"))
 pages02 = [p for p in index if (p.get("gabarit") or "").startswith("02")]
+correspondance = json.load(open(R / PHOTOS, encoding="utf8"))
+assert sorted(correspondance) == sorted(p["url"] for p in pages02), "la correspondance des photos ne couvre pas exactement le gabarit 02"
 
 trous, exclues, ecrites = [], [], []
 for p in sorted(pages02, key=lambda x: x["url"]):
     slug = p["url"].strip("/").split("/")[-1]
     cap = json.load(open(R / "maquette/rendu" / f"preuves--{slug}.json"))
+    if p["url"] in H1_REFORMULES:
+        ancien, nouveau = H1_REFORMULES[p["url"]]
+        assert cap["h1Rendu"] == ancien, (p["url"], "la capture ne porte plus le H1 arbitré", cap["h1Rendu"])
+        cap["h1Rendu"] = nouveau
     mot = interdit_dans(cap["h1Rendu"])
     if mot:
         exclues.append({"page": p["url"],
@@ -200,7 +285,7 @@ for p in sorted(pages02, key=lambda x: x["url"]):
                                   "Un H1 ne se retire ni ne se reformule : page NON portée, à arbitrer."})
         continue
     try:
-        contenu = extrait(R / "maquette/rendu" / f"preuves--{slug}.html")
+        contenu = extrait(R / "maquette/rendu" / f"preuves--{slug}.html", correspondance[p["url"]])
         contenu = purge_interdits(contenu, p["url"], trous)
     except Exception as e:
         exclues.append({"page": p["url"], "raison": repr(e)})

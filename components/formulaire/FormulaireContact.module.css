@@ -45,6 +45,24 @@
     white-space: normal !important;
     max-width: 100%;
   }
+
+  /* Les formulaires de la maquette portent la classe `mg-r2`, qui pose
+     `gap:36px !important` sous 900 px (relevé à 390 px sur les captures des
+     offres, 08/10). Repris pour les seuls formulaires posés par le gabarit
+     offre (`variante` fournie) : les autres gabarits gardent leur écart. */
+  .grilleMaquette {
+    gap: 36px !important;
+  }
+}
+
+/* Même périmètre : dans ces panneaux, le libellé tient sur une ligne dès
+   360 px, débordant dans le rembourrage sans sortir de l'écran, comme la
+   maquette à 390 px. En dessous, il se replie (règle précédente). */
+@media (min-width: 360px) and (max-width: 900px) {
+  .grilleMaquette .boutonEnvoi {
+    white-space: nowrap !important;
+    max-width: none;
+  }
 }
 
 /* La zone d'annonce (role="status") doit rester DANS le document en permanence :

@@ -1,262 +1,413 @@
 /**
- * Contrôle de la page Carrière, sans navigateur.
+ * Contrôle du hub `/carriere/` (gabarit 10, servi par `MigenCarriere.dc.html`),
+ * sans navigateur.
  *
  *   bun components/site/carriere/verification-carriere.tsx
  *
- * TOUTE VALEUR ATTENDUE EST RELUE DANS `maquette/accueil-rendu.html` À CHAQUE
- * EXÉCUTION, jamais écrite de mémoire ici : une note de lecture peut se
- * tromper, et personne ne peut la rejouer. Le contrôle extrait l'écran Carrière
- * du fichier du client, vérifie que la formulation y est bien, puis qu'elle est
- * bien dans le rendu des composants. Si la maquette change, il tombe.
+ * LA RÉFÉRENCE : la capture `maquette/rendu/carriere.html` (le rendu de la
+ * maquette autonome, CLAUDE.md §16), et la source de la page que l'autonome
+ * embarque (`maquette/site-final-autonome.html`, relue et décodée ici) pour ce
+ * que la capture ne garde pas : survols `style-hover` et octets des photos.
  *
- * Il surveille aussi les trois défauts qui sont déjà partis en production sur
- * d'autres pages : un titre identique au h1, un lien inerte, et la palette par
- * défaut de Tailwind à côté des jetons de la charte.
+ * CE QUE CE CONTRÔLE GARANTIT :
+ *  0. IL SAIT ÉCHOUER, prouvé à chaque exécution avant les vraies vérifications.
+ *  1. MOT POUR MOT : chaque chaîne de `donnees-hub.ts` se retrouve dans la
+ *     capture, et le rendu porte tout le texte de chaque section.
+ *  2. L'ORDRE : les titres de section du rendu sont ceux de la capture, dans
+ *     le même ordre, et les liens de la capture sont tous rendus.
+ *  3. LE DESSIN : des valeurs propres à chaque écran, lues dans la capture,
+ *     sont dans le rendu.
+ *  4. LES SURVOLS : chaque `style-hover` repris est dans la source de la page,
+ *     et le module CSS le déclare, focus clavier compris.
+ *  5. LES PHOTOS : chaque fichier existe, et ses octets sont ceux d'une image
+ *     de la maquette, ou il porte le nom que la source lui donne.
+ *  6. LES INTERDITS du contrat et des règles client sont absents du rendu.
+ *     Les décisions de copie (« 10 % des techniciens », siège à Écully) sont
+ *     appliquées à la capture avant toute comparaison.
+ *  7. UN SEUL H1, aucun `href="#"`.
  */
 
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { gunzipSync } from "node:zlib";
+
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { metadata } from "@/app/carriere/page";
-import CandidaterCarriere from "@/components/site/carriere/CandidaterCarriere";
-import ConditionsCarriere from "@/components/site/carriere/ConditionsCarriere";
-import HeroCarriere from "@/components/site/carriere/HeroCarriere";
-import ParcoursCarriere from "@/components/site/carriere/ParcoursCarriere";
-import PostesOuverts from "@/components/site/carriere/PostesOuverts";
-import ProcessusCarriere from "@/components/site/carriere/ProcessusCarriere";
-import TestCarriere from "@/components/site/carriere/TestCarriere";
+import { appliqueDecisions } from "@/lib/decisions-copie";
 
-/**
- * Texte comparable : l'espace insécable, l'apostrophe typographique et les
- * entités HTML du rendu ne doivent pas faire échouer une comparaison de copie.
- * Sans cette normalisation, « d&#x27;entretien » et « d’entretien » sont deux
- * chaînes différentes alors que c'est le même mot.
- */
-function normalise(texte: string): string {
-  return texte
-    .replace(/&nbsp;|&#160;| /g, " ")
-    .replace(/&#x27;|&#39;|&apos;|[’‘']/g, "'")
-    .replace(/&amp;/g, "&")
-    .replace(/&quot;|[«»"]/g, '"')
-    .replace(/&#xA9;|&copy;/g, "©")
-    .replace(/\s+/g, " ");
-}
+import { HUB_CARRIERE, type ContenuHubCarriere } from "./donnees-hub";
+import PageHubCarriere from "./PageHubCarriere";
 
-// ---------------------------------------------------- ce que dit la maquette
-const maquette = readFileSync(
-  new URL("../../../maquette/accueil-rendu.html", import.meta.url),
-  "utf8",
+const RACINE = fileURLToPath(new URL("../../..", import.meta.url));
+const CAPTURE_ENTIERE = readFileSync(join(RACINE, "maquette", "rendu", "carriere.html"), "utf8");
+/** La capture est celle du `<body>` : en-tête et pied en sont retirés, seule
+ *  la page (de la première à la dernière section) sert de référence. Les
+ *  décisions de copie (lib/decisions-copie.ts) y sont appliquées : la donnée
+ *  les porte déjà, la capture non. */
+const CAPTURE = appliqueDecisions(
+  CAPTURE_ENTIERE.slice(
+    CAPTURE_ENTIERE.indexOf("<section"),
+    CAPTURE_ENTIERE.lastIndexOf("</section>") + "</section>".length,
+  ),
 );
+const MODULE_CSS = readFileSync(new URL("./HubCarriere.module.css", import.meta.url), "utf8");
 
-/** L'écran Carrière : du `data-screen-label="Carrière"` à la fin de son main. */
-const ecran = (() => {
-  const debut = maquette.indexOf('data-screen-label="Carrière"');
-  assert.notEqual(debut, -1, "écran Carrière introuvable dans la maquette");
-  const fin = maquette.indexOf("</main>", debut);
-  assert.ok(fin > debut, "fin de l'écran Carrière introuvable");
-  return normalise(maquette.slice(debut, fin));
-})();
+/* --------------------------------------------------------- normalisations */
 
-// ------------------------------------------------------- ce que rend le site
-const html = [
-  renderToStaticMarkup(<HeroCarriere />),
-  renderToStaticMarkup(<ConditionsCarriere />),
-  renderToStaticMarkup(<ParcoursCarriere />),
-  renderToStaticMarkup(<TestCarriere />),
-  renderToStaticMarkup(<PostesOuverts />),
-  renderToStaticMarkup(<CandidaterCarriere />),
-  renderToStaticMarkup(<ProcessusCarriere />),
-].join("");
-const texte = normalise(html);
+/** Espace simple, apostrophe droite, pas d'espace avant point ou virgule. */
+function normaliseTexte(texte: string): string {
+  return texte
+    .replace(/&nbsp;|&#160;| /g, " ")
+    .replace(/&#x27;|&#39;|’/g, "'")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/\s+/g, " ")
+    .replace(/ ([.,])/g, "$1");
+}
 
-// --------------------------------------- la copie portée, lue dans la maquette
-/* Chacune de ces formulations doit être DANS la maquette et DANS le rendu. La
-   première assertion est celle qui compte : elle interdit d'écrire ici une
-   valeur que le client n'a pas validée. */
-const PORTEES: readonly string[] = [
-  "Le terrain, avec les moyens de bien le faire.",
-  "Nous recrutons partout en France.",
-  "+120 techniciens",
-  "Une mission freelance",
-  "Pas de promesses. Des conditions.",
-  "Habilitations payées",
-  "Mobilité France entière",
-  "Des machines qui valent le détour",
-  "On ne discute pas les EPI",
-  "Robotique FANUC et ABB, automates SIEMENS et Schneider",
-  "Démarche MASE, plan de prévention systématique",
-  "Quatre parcours, quatre bassins",
-  "Électrotechnicien",
-  "Soudeur · chaudronnier",
-  "Automaticien",
-  "Électromécanicienne",
-  "Portraits à remplacer par de vrais collaborateurs",
-  "Situez-vous sur nos huit questions d'entretien.",
-  "questions · 6 min",
-  "Nos postes ouverts, mis à jour chaque semaine.",
-  "Six étapes, dont un entretien technique et deux batteries de tests.",
-  "Seuls 10 % des techniciens réussissent notre process.",
-  "Lecture du parcours",
-  "Échange téléphonique",
-  "Entretien technique",
-  "Tests techniques",
-  "Tests comportementaux",
-  "Rencontre du client",
-  "étapes de sélection, annoncées à l'avance",
-  "compte à créer, aucune redirection",
-];
+/** Le texte lisible d'un HTML, balises retirées. */
+function texteLisible(html: string): string {
+  return normaliseTexte(html.replace(/<[^>]+>/g, " "));
+}
 
-for (const valeur of PORTEES) {
-  const attendu = normalise(valeur);
+/** Un texte de donnée, liens Markdown ramenés à leur libellé, gras retiré. */
+function sansMarkdown(texte: string): string {
+  return normaliseTexte(texte.replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/\*\*/g, ""));
+}
+
+/** La capture sérialise le DOM (`minmax(0px, 1fr)`, `0.92`), React compacte. */
+function normaliseStyle(texte: string): string {
+  return texte
+    .replace(/\s*([:;,])\s*/g, "$1")
+    .replace(/\(\s+/g, "(")
+    .replace(/\s+\)/g, ")")
+    .replace(/\b0px\b/g, "0")
+    .replace(/\b0\.(\d)/g, ".$1");
+}
+
+const CAPTURE_TEXTE = texteLisible(CAPTURE);
+const CAPTURE_STYLE = normaliseStyle(CAPTURE);
+
+/* ------------------------------------------------------------ assertions */
+
+function dansCapture(texte: string, quoi: string): void {
   assert.ok(
-    ecran.includes(attendu),
-    `« ${valeur} » n'est plus dans l'écran Carrière de la maquette : relire la maquette avant de corriger le code`,
-  );
-  assert.ok(
-    texte.includes(attendu),
-    `« ${valeur} » est dans la maquette mais pas dans le rendu de la page`,
+    CAPTURE_TEXTE.includes(sansMarkdown(texte)),
+    `${quoi} : « ${texte.slice(0, 80)} » ne se retrouve pas dans la capture`,
   );
 }
 
-// ------------------------------- les corrections imposées par les interdits
-/* Même principe à l'envers : la faute doit être PRÉSENTE dans la maquette, et
-   ABSENTE du rendu. Si la maquette était corrigée un jour, ces assertions le
-   diraient au lieu de passer sans rien vérifier. */
-const CORRIGEES: readonly [string, string][] = [
-  ["Cinq agences", "quatre agences et dix hubs"],
-  ["sous 48 h ouvrées", "aucun délai chiffré"],
-  ["48 H", "aucun délai chiffré"],
-  ["Les 12 postes ouverts", "« Les postes ouverts », aucune offre n'est rendue"],
-  ["Quatre écrans", "le formulaire du site n'a pas quatre écrans"],
-  ["dépose votre dossier dans notre outil de recrutement", "la route /api/lead ne dépose rien dans l'outil de recrutement"],
-  ["d'une heure de route", "aucune distance ni durée de trajet chiffrée"],
-  ["— et un chargé d'affaires", "une virgule, jamais de tiret cadratin"],
-];
-
-for (const [faute, remede] of CORRIGEES) {
-  const cherchee = normalise(faute);
+function dansRendu(rendu: string, texte: string, quoi: string): void {
   assert.ok(
-    ecran.includes(cherchee),
-    `« ${faute} » n'est plus dans la maquette : la correction « ${remede} » n'a peut-être plus lieu d'être`,
-  );
-  assert.ok(
-    !texte.includes(cherchee),
-    `« ${faute} » est reprise de la maquette dans le rendu. À la place : ${remede}`,
+    texteLisible(rendu).includes(sansMarkdown(texte)),
+    `${quoi} : « ${texte.slice(0, 80)} » manque au rendu`,
   );
 }
 
-// --------------------------------------- interdits de copie, liste complète
-for (const interdit of [
+function dessin(rendu: string, fragment: string): void {
+  const attendu = normaliseStyle(fragment);
+  assert.ok(CAPTURE_STYLE.includes(attendu), `la capture ne porte pas le dessin « ${fragment} »`);
+  assert.ok(normaliseStyle(rendu).includes(attendu), `le rendu ne porte pas le dessin « ${fragment} »`);
+}
+
+const INTERDITS = [
+  "—",
+  "24h",
+  "24 h",
+  "24/24",
+  "7j/7",
+  "7/7",
   "régie",
   "intérim",
   "mise à disposition",
-  "sans engagement",
-  "clé en main",
   "sur mesure",
-  "levier",
-  "concrètement",
+  "sans engagement",
   "notamment",
+  "levier",
+  "clé en main",
+  "concrètement",
   "incontournable",
   "découvrez",
-  "Découvrez",
-  "+200",
-  "200 clients",
-  "5 agences",
+  "réguliers",
+  "teamtailor",
+  "limonest",
   "cinq agences",
-  "sous 24 h",
-  "sous 2 h",
-  "sous 4 h",
-  "sous 72 h",
-  "—",
-  "–",
-]) {
-  assert.ok(
-    !texte.includes(normalise(interdit)),
-    `copie interdite dans la page Carrière : « ${interdit} »`,
-  );
+  "5 agences",
+] as const;
+
+function verifieInterdits(html: string, nom: string): void {
+  const visible = texteLisible(html).toLowerCase();
+  for (const mot of INTERDITS) {
+    assert.ok(!visible.includes(mot), `${nom} : formulation interdite dans le rendu, « ${mot} »`);
+  }
 }
 
-// ------------------------------------------------------- un seul h1, ≠ titre
-const h1 = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)];
-assert.equal(h1.length, 1, `${h1.length} h1 rendus, un seul attendu`);
+/* ------------------------------- toutes les chaînes d'une donnée de page */
 
-const texteH1 = normalise(h1[0][1].replace(/<[^>]+>/g, "")).trim();
-const titre = typeof metadata.title === "string" ? metadata.title : "";
-assert.ok(titre, "la page doit exporter un titre");
-assert.notEqual(
-  normalise(titre).trim().toLowerCase(),
-  texteH1.toLowerCase(),
-  "le titre répète le h1 : le titre se lit dans la page de résultats, le h1 sur la page",
-);
-assert.ok(
-  titre.length >= 20 && titre.length <= 75,
-  `titre de ${titre.length} caractères, attendu entre 20 et 75`,
-);
-
-// ------------------------------------------------------------ liens inertes
-assert.ok(
-  !html.includes('href="#"'),
-  'un lien de la page Carrière est rendu inerte (href="#")',
-);
-
-/* Les seules cibles internes posées sont les deux ancres de la page elle-même et
-   la politique de confidentialité du formulaire partagé (vérifiée à 200 sur
-   http://localhost:4340/confidentialite/). Aucune page `/carriere/<métier>/`
-   n'existe encore : elles répondent toutes 404, donc aucune n'est liée. */
-const INTERNES_AUTORISEES = new Set([
-  "#postes",
-  "#candidater",
-  "/confidentialite/",
-  "/confidentialite",
-]);
-const cibles = [...html.matchAll(/<a\b[^>]*\shref="([^"]+)"/g)].map((t) => t[1]);
-for (const cible of cibles) {
-  const interne = cible.startsWith("/") || cible.startsWith("#");
-  assert.ok(
-    !interne || INTERNES_AUTORISEES.has(cible),
-    `cible interne inattendue : ${cible}. Toute cible interne doit répondre 200 avant d'être posée.`,
-  );
+function chaines(contenu: ContenuHubCarriere): { texte: string; quoi: string }[] {
+  const out: { texte: string; quoi: string }[] = [];
+  const ajoute = (texte: string | undefined, quoi: string) => {
+    if (texte) out.push({ texte, quoi });
+  };
+  const { heros } = contenu;
+  ajoute(contenu.titre, "h1");
+  ajoute(heros.pastille, "pastille");
+  ajoute(heros.chapeau, "chapeau");
+  heros.paragraphes?.forEach((p) => ajoute(p, "paragraphe du héros"));
+  ajoute(heros.chiffre?.valeur, "chiffre du héros");
+  ajoute(heros.chiffre?.texte, "chiffre du héros");
+  for (const s of contenu.sections) {
+    const quoi = "titre" in s ? s.titre : s.type;
+    if ("surtitre" in s) ajoute(s.surtitre, `${quoi} · surtitre`);
+    if ("titre" in s) ajoute(s.titre, `${quoi} · titre`);
+    if ("intros" in s) s.intros?.forEach((t) => ajoute(t, `${quoi} · intro`));
+    if ("intro" in s) ajoute(s.intro, `${quoi} · intro`);
+    if ("bande" in s) ajoute(s.bande?.texte, `${quoi} · bande`);
+    switch (s.type) {
+      case "chiffres":
+        s.items.forEach((c) => (ajoute(c.valeur, "chiffre"), ajoute(c.texte, "chiffre")));
+        break;
+      case "bento":
+      case "duo":
+      case "liste":
+        s.cartes.forEach((c) => (ajoute(c.titre, quoi), ajoute(c.texte, quoi)));
+        break;
+      case "etapes":
+        s.etapes.forEach((c) => (ajoute(c.titre, quoi), ajoute(c.texte, quoi)));
+        break;
+      case "refus":
+        s.refus.forEach((c) => (ajoute(c.titre, quoi), ajoute(c.texte, quoi)));
+        break;
+      case "encart":
+        s.textes.forEach((t) => ajoute(t, quoi));
+        break;
+      case "metiers":
+        s.metiers.forEach((m) => (ajoute(m.titre, quoi), ajoute(m.texte, quoi)));
+        s.suite?.forEach((t) => ajoute(t, quoi));
+        break;
+      case "hubs":
+        s.hubs.forEach((h) => (ajoute(h.nom, quoi), ajoute(h.zone, quoi)));
+        break;
+      case "avis":
+        s.avis.forEach((a) => (ajoute(a.texte, quoi), ajoute(a.libelle, quoi)));
+        ajoute(s.fin, quoi);
+        break;
+      case "faq":
+        s.questions.forEach((q) => (ajoute(q.question, quoi), ajoute(q.reponse, quoi)));
+        break;
+      case "liens":
+        s.items.forEach((l) => ajoute(l.libelle, "pour aller plus loin"));
+        break;
+      default:
+        break;
+    }
+  }
+  return out;
 }
 
-/* Le lien externe ouvre un onglet : il doit porter son rel. */
-const externes = [...html.matchAll(/<a\b[^>]*href="https?:[^"]*"[^>]*>/g)].map(
-  (t) => t[0],
+/* ----------------- 0. le contrôle sait échouer, et il le prouve d'abord */
+
+assert.throws(
+  () => dansCapture("cette phrase n'existe dans aucune capture", "preuve"),
+  /ne se retrouve pas/,
+  "dansCapture a accepté une copie absente",
 );
-for (const lien of externes.filter((l) => l.includes('target="_blank"'))) {
-  assert.match(lien, /rel="noopener noreferrer"/, `rel manquant : ${lien}`);
-}
-
-// --------------------------------- aucune palette de framework, aucun dark:
-/* Même recherche que `scripts/verifie-echafaudage.mjs`, mais sur le HTML rendu :
-   une classe calculée à l'exécution échapperait à la lecture de la source. */
-for (const classe of html.matchAll(/class="([^"]*)"/g)) {
-  assert.doesNotMatch(
-    classe[1],
-    /\b(?:text|bg|border|ring|divide|from|via|to|placeholder|shadow)-(?:zinc|gray|slate|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose|white|black)-?\d*\b/,
-    `palette de framework dans « ${classe[1]} » : utiliser les jetons de la charte`,
-  );
-  assert.doesNotMatch(
-    classe[1],
-    /\bdark:/,
-    `variante dark: dans « ${classe[1]} » : le site n'a pas de mode sombre`,
-  );
-}
-
-// ------------------------------------------------------- rien d'invisible
-assert.ok(
-  !/opacity:0(?![.0-9])/.test(html),
-  "un bloc de la page Carrière est rendu avec une opacité nulle",
+assert.throws(
+  () => dessin("<div></div>", "grid-template-columns: 999fr 666fr"),
+  /ne porte pas le dessin/,
+  "dessin a accepté une valeur absente",
 );
-
-// ------------------------------------------- les deux ancres sont bien là
-for (const ancre of ["postes", "candidater"]) {
-  assert.ok(
-    html.includes(`id="${ancre}"`),
-    `l'ancre #${ancre} est visée par un lien de la page mais n'existe pas dans le rendu`,
+assert.throws(
+  () => verifieInterdits("<p>un tiret — cadratin</p>", "preuve"),
+  /interdite/,
+  "verifieInterdits a laissé passer un tiret cadratin",
+);
+{
+  // Une donnée faussée d'un seul mot doit faire échouer le mot pour mot.
+  const faussee: ContenuHubCarriere = {
+    ...HUB_CARRIERE,
+    heros: { ...HUB_CARRIERE.heros, chapeau: `${HUB_CARRIERE.heros.chapeau} Inventé.` },
+  };
+  assert.throws(
+    () => chaines(faussee).forEach((c) => dansCapture(c.texte, c.quoi)),
+    /ne se retrouve pas/,
+    "une donnée faussée est passée : le mot pour mot ne contrôle rien",
   );
 }
+console.log("0 · le contrôle sait échouer : copie absente, dessin absent, tiret cadratin et donnée faussée refusés.");
 
-console.log(
-  `Carrière : ${PORTEES.length} formulations relues dans la maquette, ${CORRIGEES.length} corrections vérifiées, un seul h1, aucun lien inerte.`,
+/* --------------------------------------------- la page, telle que servie */
+
+// `next.config.ts` pose `trailingSlash: true` ; hors de Next, `Link` ne le
+// sait que par cette variable, qu'il lit au rendu. Sans elle, il retirerait
+// le slash final et le rendu contrôlé ne serait pas celui servi.
+process.env.__NEXT_TRAILING_SLASH = "true";
+const RENDU = renderToStaticMarkup(<PageHubCarriere contenu={HUB_CARRIERE} />);
+
+/* ------------------------------------------------------- 1. mot pour mot */
+
+const toutes = chaines(HUB_CARRIERE);
+for (const { texte, quoi } of toutes) {
+  dansCapture(texte, quoi);
+  dansRendu(RENDU, texte, quoi);
+}
+// Les textes alternatifs sont des attributs, pas du texte lisible.
+const altsDe = (html: string) => new Set([...html.matchAll(/<img\b[^>]*\balt="([^"]*)"/g)].map((m) => m[1]));
+const altsRendu = altsDe(RENDU);
+for (const alt of altsDe(CAPTURE)) {
+  assert.ok(altsRendu.has(alt), `texte alternatif de la capture absent du rendu : « ${alt} »`);
+}
+console.log(`1 · mot pour mot : ${toutes.length} chaînes de la donnée retrouvées dans la capture et dans le rendu.`);
+
+/* --------------------------------------------------- 2. ordre et liens */
+
+const titresDe = (html: string) =>
+  [...html.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/g)].map((m) => texteLisible(m[1]).trim());
+assert.deepEqual(titresDe(RENDU), titresDe(CAPTURE), "les titres de section ne suivent pas la capture");
+
+const liensDe = (html: string) =>
+  new Set([...html.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)].map((m) => m[1]));
+const liensRendu = liensDe(RENDU);
+for (const href of liensDe(CAPTURE)) {
+  assert.ok(liensRendu.has(href), `lien de la capture absent du rendu : ${href}`);
+}
+console.log(`2 · ordre : ${titresDe(CAPTURE).length} titres dans l'ordre de la capture ; ${liensDe(CAPTURE).size} cibles de lien rendues.`);
+
+/* ---------------------------------------------------------- 3. le dessin */
+
+const DESSINS = [
+  // héros et chiffre flottant
+  "grid-template-columns: 1.08fr 0.92fr",
+  "font: 600 calc(clamp(38px,4.6vw,64px) * var(--ts))/1.03 var(--ft)",
+  "font: 600 40px/1 var(--ft)",
+  // étapes à cinq
+  "grid-template-columns: repeat(6, minmax(0px, 1fr))",
+  "grid-column: span 3",
+  // rail des métiers
+  "scroll-snap-type: x mandatory",
+  // (la marge du rail, `max(40px,calc((100vw - 1120px) / 2))`, est sérialisée
+  // simplifiée par le navigateur, `max(40px, -560px + 50vw)` : non comparable)
+  "width: 280px",
+  "font: 600 21px/1.2 var(--ft)",
+  "font: 600 24px/1.15 var(--ft)",
+  // bandeau 10 %
+  "font: 600 44px/1 var(--ft)",
+  // refus
+  "border-radius: 40px",
+  "gap: 26px 40px",
+  "font: 600 15px/34px var(--fb)",
+  // hubs
+  "height: 300px",
+  "background: linear-gradient(to top,rgba(18,17,16,.92) 0%,rgba(18,17,16,.1) 65%)",
+  "font: 600 24px/1.1 var(--ft)",
+  // avis
+  "grid-template-columns: 1.05fr 0.95fr",
+  "font: 600 52px/.7 var(--ft)",
+  "grid-template-columns: 1.2fr 0.8fr",
+  // pour aller plus loin
+  "height: 140px",
+];
+for (const d of DESSINS) dessin(RENDU, d);
+assert.ok(CAPTURE.includes("mg-faqph"), "la capture ne porte plus `.mg-faqph` : le panneau-photo de la FAQ est à revoir");
+assert.ok(RENDU.includes("faq-offre.jpg"), "le panneau-photo de la FAQ n'a pas sa photo");
+console.log(`3 · dessin : ${DESSINS.length} valeurs de la capture retrouvées dans le rendu, panneau-photo de la FAQ compris.`);
+
+/* ---------------- la source de la page et ses images, dans l'autonome */
+
+interface Ressource {
+  mime: string;
+  compressed?: boolean;
+  data: string;
+}
+
+function ressources(): Ressource[] {
+  const lignes = readFileSync(join(RACINE, "maquette", "site-final-autonome.html"), "utf8").split("\n");
+  const ligne = lignes.find((l) => l.startsWith('{"') && l.includes('"mime"'));
+  assert.ok(ligne, "l'autonome ne porte plus sa table de ressources");
+  const json = ligne.slice(0, ligne.lastIndexOf("}") + 1);
+  return Object.values(JSON.parse(json) as Record<string, Ressource>);
+}
+
+function octets(r: Ressource): Buffer {
+  const brut = Buffer.from(r.data, "base64");
+  return r.compressed ? gunzipSync(brut) : brut;
+}
+
+const RESSOURCES = ressources();
+const SOURCE = RESSOURCES.filter((r) => r.mime === "text/html")
+  .map((r) => octets(r).toString("utf8"))
+  .find((t) => t.includes('data-screen-label="Carrière · héros"'));
+assert.ok(SOURCE, "la source de MigenCarriere est introuvable dans l'autonome");
+const EMPREINTES = new Set(
+  RESSOURCES.filter((r) => r.mime.startsWith("image/")).map((r) =>
+    createHash("sha256").update(octets(r)).digest("hex"),
+  ),
 );
+
+/* --------------------------------------------------------- 4. survols */
+
+const SURVOLS: [classe: string, styleHover: string, declarations: string[]][] = [
+  ["boutonOrange", "filter:brightness(.93);color:#fff", ["filter: brightness(0.93)", "color: #fff"]],
+  ["boutonTelephone", "background:#fff", ["background: #fff"]],
+  ["carteHub", "transform:translateY(-4px);color:#fff", ["transform: translateY(-4px)"]],
+  ["carteLien", "transform:translateY(-3px)", ["transform: translateY(-3px)"]],
+  [
+    "boutonQuestion",
+    "filter:brightness(.93);transform:translateY(-1px);color:#fff",
+    ["filter: brightness(0.93)", "transform: translateY(-1px)"],
+  ],
+  ["texteLie a", "color:var(--acc)", ["color: var(--acc)"]],
+];
+for (const [classe, survol, declarations] of SURVOLS) {
+  assert.ok(SOURCE.includes(`style-hover="${survol}"`), `la source ne porte pas le survol « ${survol} »`);
+  const regle = new RegExp(
+    `\\.${classe}:hover,\\s*\\.${classe}:focus-visible\\s*\\{([^}]*)\\}`,
+  ).exec(MODULE_CSS);
+  assert.ok(regle, `le module CSS ne déclare pas le survol et le focus de .${classe}`);
+  for (const d of declarations) {
+    assert.ok(regle[1].includes(d), `.${classe} : survol sans « ${d} »`);
+  }
+}
+console.log(`4 · survols : ${SURVOLS.length} relevés dans la source de la page, tous déclarés avec le focus clavier.`);
+
+/* ----------------------------------------------------------- 5. photos */
+
+/** Même photo en plus grand dans le dépôt, nommée ainsi par la source. */
+const NOMMEES_PAR_LA_SOURCE = new Set(["sv-armoire.jpg", "sv-convoyeur.jpg"]);
+
+const photos = new Set<string>([HUB_CARRIERE.heros.photo.src, "/assets/web/faq-offre.jpg"]);
+for (const s of HUB_CARRIERE.sections) {
+  if (s.type === "metiers") s.metiers.forEach((m) => photos.add(m.photo));
+  if (s.type === "hubs") s.hubs.forEach((h) => photos.add(h.photo));
+  if (s.type === "liens") s.items.forEach((l) => photos.add(l.photo));
+}
+for (const photo of photos) {
+  const fichier = join(RACINE, "public", photo);
+  assert.ok(existsSync(fichier), `photo absente du dépôt : ${photo}`);
+  const nom = photo.split("/").pop() ?? "";
+  if (NOMMEES_PAR_LA_SOURCE.has(nom)) {
+    assert.ok(SOURCE.includes(nom.replace(".jpg", "")), `${nom} n'est pas nommée par la source`);
+    continue;
+  }
+  const empreinte = createHash("sha256").update(readFileSync(fichier)).digest("hex");
+  assert.ok(EMPREINTES.has(empreinte), `${photo} : octets inconnus de la maquette, photo inventée`);
+  assert.ok(RENDU.includes(encodeURIComponent(photo)), `${photo} n'est pas rendue`);
+}
+console.log(`5 · photos : ${photos.size} fichiers, octets identiques à la maquette ou nommés par sa source.`);
+
+/* ------------------------------------------------------- 6. interdits */
+
+verifieInterdits(RENDU, "hub /carriere/");
+console.log("6 · interdits absents du rendu ; la phrase du siège de la FAQ est rendue telle que la décide lib/decisions-copie.ts.");
+
+/* ---------------------------------------------------------- 7. hygiène */
+
+assert.equal((RENDU.match(/<h1\b/g) ?? []).length, 1, "le hub doit porter un seul h1");
+assert.ok(!RENDU.includes('href="#"'), 'un lien vide href="#" est rendu');
+assert.ok(RENDU.includes('id="postuler"'), "l'ancre #postuler visée par les boutons manque");
+console.log("7 · un seul h1, aucun lien vide, l'ancre #postuler existe.");
+
+console.log("\nHub /carriere/ conforme à sa capture.");

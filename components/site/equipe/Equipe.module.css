@@ -19,6 +19,16 @@
   color: #fff;
 }
 
+/* `.mg-faqph` de la maquette : 44px de marge intérieure, 28px 22px sous 760px. */
+.panneauQuestions {
+  padding: 44px;
+}
+@media (max-width: 760px) {
+  .panneauQuestions {
+    padding: 28px 22px;
+  }
+}
+
 /* La maquette pose `list-style:none` sur le `summary`, ce qui ne suffit pas sur
    Firefox : le marqueur natif se retire par `::marker`. */
 .questionEquipe::marker,

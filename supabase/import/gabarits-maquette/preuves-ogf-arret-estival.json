@@ -9,6 +9,9 @@
       "Migen y a intégré un technicien de maintenance pour l'été, en renfort de l'équipe interne, sur toute la période."
     ],
     "bouton": "Préparer mon renfort d'été",
+    "logo": "/assets/clients/ogf.png",
+    "logoInverse": true,
+    "photoHero": "/assets/web/mq-42237c1c8685.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -121,6 +124,7 @@
         "valeur": "Coordinateurs Migen"
       }
     ],
+    "photoDispositif": "/assets/web/mq-e6322efcd358.jpg",
     "resultats": [
       {
         "titre": "La disponibilité des équipements critiques",
@@ -149,7 +153,7 @@
           },
           {
             "accroche": "10 %",
-            "texte": "des candidats retenus, après entretien technique ET comportemental"
+            "texte": "des techniciens retenus, après entretien technique ET comportemental"
           }
         ]
       },
@@ -168,28 +172,32 @@
     "besoinProse": [
       "Le bon moment pour poser le renfort, c'est avant le départ des équipes, pas après.",
       "Si le site tourne la nuit et le week-end, l'astreinte la nuit, le week-end et les jours fériés existe en option.",
-      "Un renfort d'été doit être autonome dès le premier jour. Nos techniciens passent un entretien technique et un entretien comportemental, et seuls 10 % des candidats sont retenus."
+      "Un renfort d'été doit être autonome dès le premier jour. Nos techniciens passent un entretien technique et un entretien comportemental, et seuls 10 % des techniciens sont retenus."
     ],
     "plusLoin": [
       {
         "surtitre": "Étude de cas",
         "titre": "VPK : renfort sur un parc en forte cadence",
-        "href": "/preuves/vpk/"
+        "href": "/preuves/vpk/",
+        "photo": "/assets/web/mq-339d39e2a674.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
-        "href": "/preuves/dimomaint/"
+        "href": "/preuves/dimomaint/",
+        "photo": "/assets/web/mq-056f3c250981.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
-        "href": "/preuves/eiffage/"
+        "href": "/preuves/eiffage/",
+        "photo": "/assets/web/mq-948c28bcda08.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
-        "href": "/preuves/savoye/"
+        "href": "/preuves/savoye/",
+        "photo": "/assets/web/mq-17e2f3bce95f.jpg"
       }
     ]
   }

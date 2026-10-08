@@ -1,71 +1,42 @@
-/* Habillage du gabarit ressource. Tout ce qu'un style en ligne ne peut pas
-   porter : les survols, et le style des éléments que le composant ne touche pas
-   un par un (les liens du corps, les cellules du barème). */
+/* Ce que les styles en ligne ne portent pas : survol, pli ouvert, mobile.
+   Valeurs de `MigenRessource.dc.html` (balise <style> et attributs
+   `style-hover`). `!important` là où la maquette le pose, ou pour battre un
+   style en ligne. */
 
-.boutonAction:hover {
-  filter: brightness(0.93);
-  transform: translateY(-1px);
-  color: #fff;
-}
-
-/* Ligne 6788 de la maquette : le bouton secondaire passe son filet à l'orange. */
-.boutonSecondaire:hover {
-  border-color: var(--acc);
+/* style-hover du sommaire : « color:var(--acc) ». */
+.entree:hover,
+.entree:focus-visible {
+  color: var(--acc) !important;
 }
 
-/* Ligne 6546 : la carte « Aller plus loin » fait de même. */
-.carteLien {
-  display: block;
-  transition: border-color var(--tr);
-}
-.carteLien:hover,
-.carteLien:focus-visible {
-  border-color: var(--acc);
+/* `.mr-root details[open] .mr-plus` : le « + » tourne en croix. Le fond reste
+   celui de `.mg-faqph .mr-plus`, posé en !important par la maquette. */
+.question[open] .plus {
+  transform: rotate(45deg);
 }
 
-/* Les liens internes que le corpus pose dans le corps du texte.
-   Soulignés, et pas seulement colorés : l'information ne doit pas passer par la
-   couleur seule, c'est le critère WCAG 1.4.1. */
-.corps a {
-  color: var(--acc-ink);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
-  transition: color var(--tr);
-}
-.corps a:hover,
-.corps a:focus-visible {
-  color: var(--acc-d);
+@media (max-width: 980px) {
+  .deux {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 28px !important;
+  }
+  .sommaire {
+    display: none !important;
+  }
 }
 
-/* LE BARÈME EST UN VRAI TABLEAU, dessiné en grille.
-
-   La maquette l'écrit en `div` imbriquées (lignes 6733 à 6748), ce qui donne le
-   bon dessin mais prive un lecteur d'écran de l'en-tête de colonne : la
-   troisième cellule d'une ligne ne se rattache plus à « Conduite à tenir ».
-   `table` rétablit la sémantique, et ces règles rendent au tableau le
-   comportement de grille que la maquette attend. Les colonnes elles-mêmes sont
-   posées en style en ligne sur chaque `tr`, parce que leur nombre vient des
-   données.
-
-   ATTENTION si ce bloc est touché : redéfinir `display` sur un tableau lui
-   retire son rôle implicite dans Chrome comme dans Safari. C'est pourquoi
-   `CorpsRessource.tsx` écrit `role="table"`, `rowgroup`, `row`, `columnheader`
-   et `cell` à la main. Retirer l'un sans l'autre casse l'accessibilité en
-   silence. */
-.bareme {
-  display: block;
-  width: 100%;
-  border-collapse: collapse;
+@media (max-width: 760px) {
+  .faq {
+    padding: 26px 20px !important;
+  }
 }
-.bareme thead,
-.bareme tbody {
-  display: block;
-}
-.bareme th,
-.bareme td {
-  text-align: left;
-  padding: 0;
-  min-width: 0;
-  vertical-align: middle;
+
+/* Le titre de l'appel final est un `div` dans la maquette : la règle mobile des
+   h2 (`.mg-site h2`, globals.css, 7,4vw) ne l'atteint pas, il garde sa taille
+   en ligne (26 px à 390 px). Il reste un h2 ici, pour le plan du document, à la
+   taille de la maquette. Le préfixe `.mg-site` bat la spécificité de la règle. */
+@media (max-width: 760px) {
+  :global(.mg-site) .appelTitre {
+    font-size: clamp(26px, 3vw, 40px) !important;
+  }
 }

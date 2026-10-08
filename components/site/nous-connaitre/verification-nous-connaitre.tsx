@@ -276,8 +276,9 @@ assert.ok(
 
 // ------------------------------------------- interdits de copie du contrat
 for (const interdit of [
-  "+200",
-  "200 clients",
+  // « +200 clients, sans jamais préciser « réguliers » », règle validée par
+  // le client : c'est l'ancien compte qui est interdit, plus « +200 ».
+  "réguliers",
   "5 agences",
   "cinq agences",
   "régie",
@@ -307,7 +308,6 @@ for (const interdit of [
 // échoue si la maquette change au lieu de passer en silence.
 const CORRECTIONS: readonly { maquette: string; rendu: string }[] = [
   { maquette: "Le modèle en régie se structure", rendu: "technicien en résidence se structure" },
-  { maquette: "Plus de 200 clients", rendu: "Plus de 120 clients, dont plus de 80 réguliers" },
   { maquette: "mettre à disposition du personnel", rendu: "affecter sur vos sites des techniciens" },
   { maquette: "Mettre à disposition des techniciens", rendu: "Affecter des techniciens de maintenance sur votre site" },
   { maquette: "de l'agence la plus proche", rendu: "du hub le plus proche" },
@@ -328,6 +328,13 @@ for (const { maquette, rendu } of CORRECTIONS) {
     `la correction attendue est absente du rendu : « ${rendu} »`,
   );
 }
+
+// Le compte de clients de la frise, rendu mot pour mot : présent dans la
+// maquette ET dans le rendu.
+assert.ok(
+  texteMaquette.includes("Plus de 200 clients") && texteRendu.includes("Plus de 200 clients"),
+  "« Plus de 200 clients » doit être dans la maquette et dans le rendu",
+);
 
 // -------------------------------------------------- ordre des douze sections
 // L'ordre raconte l'entreprise, il n'est pas esthétique. Un tri alphabétique

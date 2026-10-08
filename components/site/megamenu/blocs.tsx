@@ -5,7 +5,9 @@ import s from "../Entete.module.css";
 import type { Offre } from "../entete-donnees";
 
 /** Sur-titre orange des colonnes, répété dans les cinq panneaux. */
-export function SurTitre({ children }: { children: React.ReactNode }) {
+/** `marge` : 12 px sous les sur-titres d'« Offres », 14 sous ceux de
+ *  « Ressources » et « À propos », relevés dans la maquette ouverte. */
+export function SurTitre({ children, marge = 12 }: { children: React.ReactNode; marge?: number }) {
   return (
     <div
       style={{
@@ -13,7 +15,7 @@ export function SurTitre({ children }: { children: React.ReactNode }) {
         letterSpacing: ".14em",
         textTransform: "uppercase",
         color: "var(--acc)",
-        marginBottom: 12,
+        marginBottom: marge,
       }}
     >
       {children}

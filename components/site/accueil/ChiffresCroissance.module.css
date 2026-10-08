@@ -1,0 +1,13 @@
+/* Sous 900 px, `.mg-r2` passe la grille sur une colonne. La carte du bas,
+   en `grid-column: span 2`, y crée alors une seconde colonne implicite et les
+   cartes se chevauchent : c'est le rendu de la maquette à 390 px, où le texte
+   « +40 % année sur année » disparaît sous deux cartes. La maquette déclare
+   elle-même le correctif (`.mg-site [style*="grid-column:span 2"]` →
+   `grid-column: auto`, sous 760 px), mais son moteur réécrit l'attribut avec
+   une espace et la règle ne s'applique jamais. Écart déclaré : le site ne
+   reproduit pas le chevauchement. */
+@media (max-width: 900px) {
+  .basLarge {
+    grid-column: auto !important;
+  }
+}

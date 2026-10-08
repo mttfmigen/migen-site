@@ -1,32 +1,53 @@
 /*
-  Survols du hub `/offres/`, relevés sur `style-hover` dans
-  `maquette/accueil-rendu.html`, bloc `isOffres`, lignes 1886 à 2064.
+  Survols et adaptations des trois écrans propres au hub `/offres/`.
 
-  Ils vivent dans un module CSS et non dans `app/globals.css` : le fichier
-  global est écrit par plusieurs agents en parallèle, et un survol n'est pas
-  exprimable dans un style en ligne.
-
-  Les boutons d'action et le bouton secondaire ne sont pas ici : ils réemploient
-  `.boutonAction` et `.boutonSecondaire` de `blocs/Blocs.module.css`, qui
-  portent déjà les mêmes déclarations.
+  SURVOLS relevés le 08/10 sur la maquette qui tourne, PAR ÉLÉMENT (les
+  classes `scpN` changent à chaque démarrage) : règles `:hover` des classes
+  portées par les blocs 1073, 1095 et 1107 (boutons) et 1133 (cartes).
+  Le focus clavier reçoit le même rendu que le survol (WCAG 2.4.7).
 */
 
-/* « Voir l'offre » : la maquette écrit `transform:translateY(-1px)`, et la
-   transition est dans le style en ligne de la carte. */
-.boutonCarte:hover,
-.boutonCarte:focus-visible {
-  transform: translateY(-1px);
+/* Boutons orange fléchés (blocs 1073, 1095, 1107) :
+   `background-color: rgb(232,104,43) !important; color: #fff !important`.
+   `!important` comme dans la maquette : le fond est posé en ligne. */
+.bouton:hover,
+.bouton:focus-visible {
+  background-color: rgb(232, 104, 43) !important;
+  color: #fff;
 }
 
-/* Carte de besoin. La maquette la rend cliquable et la fait réagir au survol ;
-   elle n'est pas cliquable ici, faute de dépliant à ouvrir, donc le survol se
-   limite à ce qu'une carte non cliquable peut promettre : rien de plus que
-   l'ombre qui se creuse légèrement, jamais un déplacement qui suggère un clic. */
-.carteBesoin {
-  transition: box-shadow var(--tr);
+/* Cartes du maillage (bloc 1133) : `transform: translateY(-3px); color: #fff`. */
+.carte:hover,
+.carte:focus-visible {
+  transform: translateY(-3px);
+  color: #fff;
 }
-.carteBesoin:hover {
-  box-shadow:
-    0 1px 1px rgba(0, 0, 0, 0.04),
-    0 26px 60px -36px rgba(0, 0, 0, 0.34);
+
+/* La grille du maillage : la classe `g3-bento5` de la maquette. */
+@media (max-width: 900px) {
+  .bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: none !important;
+  }
+}
+@media (max-width: 560px) {
+  .bento {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* La racine `.mgx-root` du gabarit d'offre, que la maquette pose sous les deux
+   hubs `/offres/` et `/implantations/` (relevé le 08/10 à 390 px dans
+   l'autonome, feuille du gabarit) :
+   - `--sec:120px` : `.mg-site` le descend à 64 px sous 760 px (globals.css),
+     `.mgx-root` le remonte, et toutes les sections du hub en héritent ;
+   - sous 900 px, `.mg-r2{gap:32px!important}`, qui bat les 36 px de la règle
+     générale (globals.css) parce que la feuille du gabarit vient après. */
+.racine {
+  --sec: 120px;
+}
+@media (max-width: 900px) {
+  .racine :global(.mg-r2) {
+    gap: 32px !important;
+  }
 }

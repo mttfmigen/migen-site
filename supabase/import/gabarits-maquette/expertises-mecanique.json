@@ -1,82 +1,45 @@
 {
   "url": "/expertises/mecanique/",
+  "titre_h1": "Maintenance mécanique : un roulement qui chauffe ne prévient qu’une fois",
   "contenu": {
     "gabarit": "domaine",
+    "pastille": "Expertises",
     "chapeau": "Un mécanicien évalué avant d'être envoyé chez vous, qui remonte à la cause de la casse plutôt qu'à la pièce. Il vous laisse un compte rendu écrit, exploitable par votre équipe.",
-    "boutons": [
+    "mention": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés prend le relais la nuit et le week-end.",
+    "appelBouton": "Demander une intervention",
+    "actions": [
       {
-        "libelle": "Demander une intervention"
+        "libelle": "Demander une intervention",
+        "href": "#besoin"
       }
     ],
-    "traitements": [
-      "La chaîne cinématique complète",
-      "Les roulements traités avant la casse",
-      "L'étanchéité tenue",
-      "Le convoyage remis en ligne",
-      "Les pompes, vérins et presses révisés",
-      "L'ajustage réalisé sur site",
-      "Une expertise mobilisable au-delà de la mécanique"
-    ],
-    "autres": [
+    "formulaireHeroTitre": "Demander une intervention",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
-        "libelle": "Automatisme industriel",
-        "href": "/expertises/automatisme/"
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, après entretien technique ET comportemental"
       },
       {
-        "libelle": "Maintenance électrique industrielle",
-        "href": "/expertises/electrique/"
+        "valeur": "+ 120",
+        "libelle": "Collaborateurs, depuis 4 agences, Lyon (siège), Montréal, Dubaï et Madrid"
       },
       {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
-      },
-      {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance pneumatique",
-        "href": "/expertises/pneumatique/"
-      },
-      {
-        "libelle": "Maintenance robotique",
-        "href": "/expertises/robotique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
+        "valeur": "en continu et tous les jours",
+        "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "cta": {
-      "question": "Besoin que la même machine arrête de casser tous les deux mois ?",
-      "bouton": {
-        "libelle": "Demander une intervention"
-      }
-    },
-    "reste": [
+    "problemePhoto": null,
+    "complementOffre": [
       {
-        "type": "chiffres",
-        "chiffres": [
-          {
-            "valeur": "10 %",
-            "libelle": "des candidats retenus, après entretien technique ET comportemental"
-          },
-          {
-            "valeur": "+ 100",
-            "libelle": "collaborateurs, depuis 4 agences, Lyon (siège), Montréal, Dubaï et Madrid"
-          },
-          {
-            "valeur": "24/24 et 7/7",
-            "libelle": "astreinte, pour les sites couverts"
-          }
-        ]
-      },
+        "texte": "Une casse en cours se traite par le dépannage industriel."
+      }
+    ],
+    "marquesFamille": "mo",
+    "sections": [
       {
         "type": "probleme",
+        "variante": "panneau-sombre",
         "punchline": "Un roulement qui siffle depuis trois semaines casse toujours un vendredi soir. Et le vendredi soir, personne n'est disponible.",
         "puces": [
           {
@@ -103,56 +66,51 @@
           {
             "prestation": {
               "accroche": "La chaîne cinématique complète",
-              "texte": "réducteurs, accouplements, courroies, chaînes, pignons, arbres. Remplacement, alignement, reprise de jeu."
+              "texte": "Réducteurs, accouplements, courroies, chaînes, pignons, arbres. Remplacement, alignement, reprise de jeu."
             },
             "benefice": "Le mouvement se transmet sans perte. Les paliers voisins arrêtent de se détruire les uns après les autres."
           },
           {
             "prestation": {
               "accroche": "Les roulements traités avant la casse",
-              "texte": "montage à chaud, mesure de jeu, analyse vibratoire, échange planifié."
+              "texte": "Montage à chaud, mesure de jeu, analyse vibratoire, échange planifié."
             },
             "benefice": "L'arrêt devient une date dans votre planning, pas une surprise un vendredi."
           },
           {
             "prestation": {
               "accroche": "L'étanchéité tenue",
-              "texte": "joints, garnitures mécaniques, presse-étoupe."
+              "texte": "Joints, garnitures mécaniques, presse-étoupe."
             },
             "benefice": "Plus de fluide perdu, plus de sol glissant, plus d'accident en attente."
           },
           {
             "prestation": {
               "accroche": "Le convoyage remis en ligne",
-              "texte": "bandes, rouleaux, tapis, élévateurs, tables de transfert."
+              "texte": "Bandes, rouleaux, tapis, élévateurs, tables de transfert."
             },
             "benefice": "L'organe qui bloque tout un atelier redevient le premier surveillé."
           },
           {
             "prestation": {
               "accroche": "Les pompes, vérins et presses révisés",
-              "texte": "dépose, expertise, remontage, essais, remise en service."
+              "texte": "Dépose, expertise, remontage, essais, remise en service."
             },
             "benefice": "Un équipement lourd repart avec une cause écrite, pas avec une hypothèse."
           },
           {
             "prestation": {
               "accroche": "L'ajustage réalisé sur site",
-              "texte": "perçage, taraudage, redressage de bâti, changement des pièces d'usure."
+              "texte": "Perçage, taraudage, redressage de bâti, changement des pièces d'usure."
             },
             "benefice": "Pas d'attente d'atelier extérieur quand la reprise peut se faire chez vous."
           },
           {
             "prestation": {
               "accroche": "Une expertise mobilisable au-delà de la mécanique",
-              "texte": "électricité, automatisme, hydraulique, pneumatique, soudure."
+              "texte": "Électricité, automatisme, hydraulique, pneumatique, soudure."
             },
             "benefice": "La panne mixte se traite en une visite, pas en deux déplacements."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Besoin d'un mécanicien intégré à votre équipe pour plusieurs mois ? Voir la [sous-traitance maintenance](/offres/residence/). Une casse en cours se traite par le [dépannage industriel](/offres/depannage-industriel/)."
           }
         ]
       },
@@ -161,11 +119,11 @@
         "etapes": [
           {
             "titre": "Vous décrivez la situation",
-            "texte": "équipement, bruit, vibration, depuis quand, dans quelles conditions. Quatre champs suffisent, ou un appel au 04 78 33 72 05."
+            "texte": "Équipement, bruit, vibration, depuis quand, dans quelles conditions. Quatre champs suffisent, ou un appel par téléphone."
           },
           {
             "titre": "Un technicien vous rappelle dans l'heure",
-            "texte": "la panne est qualifiée avec vous, à distance, avant tout déplacement. Vous savez rapidement si nous avons le mécanicien, et lequel."
+            "texte": "La panne est qualifiée avec vous, à distance, avant tout déplacement. Vous savez rapidement si nous avons le mécanicien, et lequel."
           },
           {
             "titre": "Le profil est choisi sur la machine",
@@ -173,7 +131,7 @@
           },
           {
             "titre": "Le mécanicien intervient en autonomie",
-            "texte": "consignation, dépose, expertise, remontage, essais, application de vos consignes et de votre plan de prévention."
+            "texte": "Consignation, dépose, expertise, remontage, essais, application de vos consignes et de votre plan de prévention."
           },
           {
             "titre": "La cause racine est cherchée",
@@ -181,7 +139,7 @@
           },
           {
             "titre": "Vous récupérez un écrit exploitable",
-            "texte": "cause identifiée, travaux réalisés, pièces remplacées, préconisations. Le dossier machine s'enrichit à chaque passage."
+            "texte": "Cause identifiée, travaux réalisés, pièces remplacées, préconisations. Le dossier machine s'enrichit à chaque passage."
           }
         ]
       },
@@ -190,11 +148,11 @@
         "puces": [
           {
             "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-            "texte": "L'astreinte 24/24 et 7/7 prend le relais en dehors de ces horaires pour les sites couverts."
+            "texte": "L'astreinte la nuit, le week-end et les jours fériés prend le relais en dehors de ces horaires pour les sites couverts."
           },
           {
             "accroche": "Un mécanicien évalué en entretien technique et comportemental.",
-            "texte": "Lecture de plan, méthode de dépose, alignement, choix de la bonne pièce, et la rigueur qui va avec. Seuls 10 % des candidats la franchissent."
+            "texte": "Lecture de plan, méthode de dépose, alignement, choix de la bonne pièce, et la rigueur qui va avec. Seuls 10 % des techniciens la franchissent."
           },
           {
             "accroche": "Aucune vente de matériel, donc aucun remplacement de confort.",
@@ -203,48 +161,69 @@
         ]
       },
       {
-        "type": "cta",
-        "question": "Besoin d'un mécanicien qui remonte à la cause plutôt qu'à la pièce ?",
-        "bouton": "Demander une intervention",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
-      },
-      {
         "type": "preuves",
         "preuves": [
           {
             "titre": "Maintenance d'un parc usinage, pièces mécaniques de précision",
-            "texte": "un technicien intégré à temps plein sur les centres d'usinage à grande vitesse, les presses hydrauliques et mécaniques, les machines à commande numérique, depuis 2025",
-            "lienLibelle": "Étude de cas VOIT : site du Grand Est",
-            "lienHref": "/preuves/voit-grand-est/"
+            "lienLibelle": "Étude de cas VOIT",
+            "lienHref": "/preuves/voit-grand-est/",
+            "photo": "/assets/web/mq-2a8c78b5c75c.jpg",
+            "texte": "Un technicien intégré à temps plein sur les centres d'usinage à grande vitesse, les presses hydrauliques et mécaniques, les machines à commande numérique, depuis 2025."
           },
           {
             "titre": "Montage d'un centre logistique, Clermont-Ferrand",
-            "texte": "12 monteurs mécaniciens et 8 engins de levage, 6 semaines de chantier en période estivale, livraison tenue",
-            "lienLibelle": "Étude de cas AKTID : montage d'un centre logistique",
-            "lienHref": "/preuves/aktid-centre-logistique/"
+            "lienLibelle": "Étude de cas AKTID",
+            "lienHref": "/preuves/aktid-centre-logistique/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "texte": "12 monteurs mécaniciens et 8 engins de levage, 6 semaines de chantier en période estivale, livraison tenue."
           },
           {
             "titre": "Diagnostic et réparation d'un parc machines défaillant, Lyon",
-            "texte": "les machines ont été remises en état sans rachat de matériel neuf, depuis février 2024",
-            "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines",
-            "lienHref": "/preuves/joint-lyonnais/"
+            "lienLibelle": "Étude de cas JOINT LYONNAIS",
+            "lienHref": "/preuves/joint-lyonnais/",
+            "photo": "/assets/web/mq-0b70202fed79.jpg",
+            "texte": "Les machines ont été remises en état sans rachat de matériel neuf, depuis février 2024."
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et de son usinage, automobile",
-            "texte": "site tenu 7 jours sur 7 depuis octobre 2023, aux côtés des équipes internes",
-            "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
-            "lienHref": "/preuves/stellantis-fonderie-sept-fons/"
+            "lienLibelle": "Étude de cas STELLANTIS",
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "texte": "Site tenu depuis octobre 2023, aux côtés des équipes internes."
           },
           {
             "titre": "Montages et déplacements de machines, étanchéité et isolation",
-            "texte": "assemblage mécanique et électromécanique de lignes et de sous-ensembles, missions ciblées sur 2025",
-            "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
-            "lienHref": "/preuves/soprema/"
+            "lienLibelle": "Étude de cas SOPREMA",
+            "lienHref": "/preuves/soprema/",
+            "photo": "/assets/web/x-cimenterie.jpg",
+            "texte": "Assemblage mécanique et électromécanique de lignes et de sous-ensembles, missions ciblées sur 2025."
+          },
+          {
+            "titre": "Pas un poste sans maintenance, week-end compris",
+            "lienLibelle": "Étude de cas Danone (Blédina)",
+            "lienHref": "/preuves/danone-lignes-de-production/",
+            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg",
+            "texte": ""
+          },
+          {
+            "titre": "Six techniciens pour faire démarrer un parc machines",
+            "lienLibelle": "Étude de cas Eaton",
+            "lienHref": "/preuves/eaton-mise-en-production/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg",
+            "texte": ""
+          },
+          {
+            "titre": "Des convoyeurs et des trieurs sous surveillance continue",
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg",
+            "texte": ""
           }
         ]
       },
       {
         "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
         "questions": [
           {
             "question": "Combien coûte une intervention mécanique ?",
@@ -260,7 +239,7 @@
           },
           {
             "question": "Qui intervient vraiment sur nos machines ?",
-            "reponse": "Des mécaniciens salariés de Migen, évalués en entretien technique et comportemental par un homme du métier. 10 % des candidats sont retenus, et l'évaluation continue ensuite sur le terrain : chaque retour client nourrit la fiche du mécanicien."
+            "reponse": "Des mécaniciens salariés de Migen, évalués en entretien technique et comportemental par un homme du métier. 10 % des techniciens sont retenus, et l'évaluation continue ensuite sur le terrain : chaque retour client nourrit la fiche du mécanicien."
           },
           {
             "question": "Faites-vous de la mécanique automobile ou agricole ?",
@@ -271,6 +250,11 @@
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France partout en France. Un atelier de dix personnes avec deux machines critiques a autant besoin de fiabilité qu'une grande usine."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que la même machine arrête de casser tous les deux mois ?",
+        "bouton": "Demander une intervention"
       }
     ]
   }

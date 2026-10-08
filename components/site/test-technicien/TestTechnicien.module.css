@@ -1,0 +1,15 @@
+/* Survols du test technique, repris des `style-hover` du gabarit `isTest` de
+   la maquette. Les transitions restent en ligne, comme dans la maquette. */
+
+/* « Commencer le test → » et « Postuler chez migen© ». */
+.boutonLeve:hover {
+  filter: brightness(0.93);
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+/* « Voir les postes ouverts → » */
+.lienPostes:hover {
+  filter: brightness(0.93);
+  color: #fff;
+}

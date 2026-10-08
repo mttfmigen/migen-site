@@ -1,79 +1,42 @@
 {
   "url": "/expertises/pneumatique/",
+  "titre_h1": "Maintenance pneumatique : une fuite d’air coûte en continu, même ligne à l’arrêt",
   "contenu": {
     "gabarit": "domaine",
+    "pastille": "Expertises",
     "chapeau": "Nous mesurons le débit produit face au débit utile, puis nous localisons chaque fuite à l'ultrason. Nous les classons par débit perdu, et nous réparons ce qui compte en premier.",
-    "boutons": [
+    "mention": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés prend le relais la nuit et le week-end.",
+    "appelBouton": "Demander une intervention",
+    "actions": [
       {
-        "libelle": "Demander une intervention"
+        "libelle": "Demander une intervention",
+        "href": "#besoin"
       }
     ],
-    "traitements": [
-      "La chasse aux fuites",
-      "Une production d'air maîtrisée",
-      "Un traitement de l'air propre",
-      "Des actionneurs fiables",
-      "Une commande précise",
-      "La panne mixte traitée en une visite"
-    ],
-    "autres": [
+    "formulaireHeroTitre": "Demander une intervention",
+    "formulaireHeroMention": "Rappel dans l’heure",
+    "chiffres": [
       {
-        "libelle": "Automatisme industriel",
-        "href": "/expertises/automatisme/"
+        "valeur": "10 %",
+        "libelle": "Des techniciens retenus, après entretien technique ET comportemental"
       },
       {
-        "libelle": "Maintenance électrique industrielle",
-        "href": "/expertises/electrique/"
+        "valeur": "4",
+        "libelle": "Agences, plus des hubs techniques, pour partir du bassin le plus proche"
       },
       {
-        "libelle": "Électromécanique industrielle",
-        "href": "/expertises/electromecanique/"
-      },
-      {
-        "libelle": "Maintenance hydraulique",
-        "href": "/expertises/hydraulique/"
-      },
-      {
-        "libelle": "Maintenance mécanique",
-        "href": "/expertises/mecanique/"
-      },
-      {
-        "libelle": "Maintenance robotique",
-        "href": "/expertises/robotique/"
-      },
-      {
-        "libelle": "Soudure industrielle",
-        "href": "/expertises/soudure/"
-      },
-      {
-        "libelle": "Maintenance tuyauterie industrielle",
-        "href": "/expertises/tuyauterie/"
+        "valeur": "en continu et tous les jours",
+        "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "cta": {
-      "question": "Besoin que votre compresseur arrête de tourner pour rien ?",
-      "bouton": {
-        "libelle": "Demander une intervention"
-      }
-    },
-    "reste": [
+    "problemePhoto": "/assets/web/mq-339d39e2a674.jpg",
+    "complementOffre": [
       {
-        "type": "chiffres",
-        "chiffres": [
-          {
-            "valeur": "10 %",
-            "libelle": "des candidats retenus, après entretien technique ET comportemental"
-          },
-          {
-            "valeur": "4",
-            "libelle": "agences, plus des hubs techniques, pour partir du bassin le plus proche"
-          },
-          {
-            "valeur": "24/24 et 7/7",
-            "libelle": "astreinte, pour les sites couverts"
-          }
-        ]
-      },
+        "texte": "Vos arrêts se répètent toute l'année ? Une ligne bloquée maintenant se traite par le dépannage industriel."
+      }
+    ],
+    "marquesFamille": "fluide",
+    "sections": [
       {
         "type": "probleme",
         "punchline": "Votre compresseur tourne le dimanche alors que l'atelier est vide. Ce n'est pas un problème de compresseur, c'est un réseau percé.",
@@ -102,55 +65,51 @@
           {
             "prestation": {
               "accroche": "La chasse aux fuites",
-              "texte": "test de mise en charge, détection à l'ultrason, localisation et repérage, hiérarchisation par débit perdu, réparation, mesure finale."
+              "texte": "Test de mise en charge, détection à l'ultrason, localisation et repérage, hiérarchisation par débit perdu, réparation, mesure finale."
             },
             "benefice": "Le gain est chiffré avant et après, pas promis. Il se lit sur la facture d'électricité."
           },
           {
             "prestation": {
               "accroche": "Une production d'air maîtrisée",
-              "texte": "compresseur, sécheur, cuve tampon, contrôle du débit et de la température de refoulement."
+              "texte": "Compresseur, sécheur, cuve tampon, contrôle du débit et de la température de refoulement."
             },
             "benefice": "La machine reçoit la pression qu'elle attend, pas celle qui reste."
           },
           {
             "prestation": {
               "accroche": "Un traitement de l'air propre",
-              "texte": "filtres à particules, séparateurs d'eau, coalesceurs, purges automatiques."
+              "texte": "Filtres à particules, séparateurs d'eau, coalesceurs, purges automatiques."
             },
             "benefice": "Les particules et l'humidité cessent de tuer les composants en aval."
           },
           {
             "prestation": {
               "accroche": "Des actionneurs fiables",
-              "texte": "vérins simple et double effet, moteurs pneumatiques, pinces, ventouses. Dépose, révision, réglage."
+              "texte": "Vérins simple et double effet, moteurs pneumatiques, pinces, ventouses. Dépose, révision, réglage."
             },
             "benefice": "La cadence remonte avant que quoi que ce soit ne casse."
           },
           {
             "prestation": {
               "accroche": "Une commande précise",
-              "texte": "distributeurs, électrovannes, régulateurs, limiteurs de débit, blocs de sécurité."
+              "texte": "Distributeurs, électrovannes, régulateurs, limiteurs de débit, blocs de sécurité."
             },
             "benefice": "Le cycle cesse de se bloquer à mi-course."
           },
           {
             "prestation": {
-              "texte": "**La baisse du réglage réseau et la suppression des usages inutiles.**"
+              "accroche": "La baisse du réglage réseau et la suppression des usages inutiles.",
+              "texte": ""
             },
             "benefice": "Une pression excessive use tout le matériel et gonfle la facture pour rien."
           },
           {
             "prestation": {
               "accroche": "La panne mixte traitée en une visite",
-              "texte": "pneumatique, électricité, automatisme, mécanique sur la même équipe."
+              "texte": "Pneumatique, électricité, automatisme, mécanique sur la même équipe."
             },
             "benefice": "Un moteur pneumatique se diagnostique avec sa commande électrique, pas sans elle."
-          }
-        ],
-        "prose": [
-          {
-            "texte": "Vos arrêts se répètent toute l'année ? Le [contrat de maintenance Zéro arrêt](/offres/zero-arret/) intègre les contrôles périodiques du réseau. Une ligne bloquée maintenant se traite par le [dépannage industriel](/offres/depannage-industriel/)."
           }
         ]
       },
@@ -159,15 +118,15 @@
         "etapes": [
           {
             "titre": "Vous décrivez la situation",
-            "texte": "équipement, symptôme, réglage réseau en place, contexte d'apparition. Quatre champs, ou un appel au 04 78 33 72 05."
+            "texte": "Équipement, symptôme, réglage réseau en place, contexte d'apparition. Quatre champs, ou un appel par téléphone."
           },
           {
             "titre": "Un technicien vous rappelle dans l'heure",
-            "texte": "le circuit est qualifié à distance, le bon profil et la bonne date sont arrêtés au téléphone."
+            "texte": "Le circuit est qualifié à distance, le bon profil et la bonne date sont arrêtés au téléphone."
           },
           {
             "titre": "Le test de mise en charge donne un premier chiffrage",
-            "texte": "réseau isolé, atelier à l'arrêt, mesure du temps de remontée. Une heure suffit à savoir où vous en êtes."
+            "texte": "Réseau isolé, atelier à l'arrêt, mesure du temps de remontée. Une heure suffit à savoir où vous en êtes."
           },
           {
             "titre": "L'intervention se fait énergie pneumatique consignée.",
@@ -175,11 +134,11 @@
           },
           {
             "titre": "Les fuites sont classées puis réparées",
-            "texte": "raccords, flexibles, purges, joints. Une fois la fuite localisée, la réparation est le plus souvent rapide."
+            "texte": "Raccords, flexibles, purges, joints. Une fois la fuite localisée, la réparation est le plus souvent rapide."
           },
           {
             "titre": "Vous recevez un document de synthèse",
-            "texte": "points contrôlés, pièces remplacées, anomalies restantes, priorités pour la prochaine visite. De quoi justifier un budget d'une année sur l'autre."
+            "texte": "Points contrôlés, pièces remplacées, anomalies restantes, priorités pour la prochaine visite. De quoi justifier un budget d'une année sur l'autre."
           }
         ]
       },
@@ -188,7 +147,7 @@
         "puces": [
           {
             "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-            "texte": "L'astreinte 24/24 et 7/7 couvre la nuit et le week-end sur les sites concernés."
+            "texte": "L'astreinte la nuit, le week-end et les jours fériés couvre la nuit et le week-end sur les sites concernés."
           },
           {
             "accroche": "Un gain mesuré, pas affirmé.",
@@ -196,53 +155,68 @@
           },
           {
             "accroche": "Un technicien évalué en entretien technique et comportemental",
-            "texte": ", 10 % des candidats retenus. Lecture de schéma pneumatique, méthode de recherche, choix du bon composant, réglage."
+            "texte": ", 10 % des techniciens retenus. Lecture de schéma pneumatique, méthode de recherche, choix du bon composant, réglage.",
+            "suitAccroche": true
           }
         ]
-      },
-      {
-        "type": "cta",
-        "question": "Besoin de savoir combien votre réseau d'air comprimé perd chaque nuit ?",
-        "bouton": "Demander une intervention",
-        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure."
       },
       {
         "type": "preuves",
         "preuves": [
           {
             "titre": "Renfort de maintenance pendant l'arrêt estival, équipements critiques",
-            "texte": "un technicien intégré à l'équipe, mécanique, électrotechnique et pneumatique couvertes par un seul profil, été 2025",
-            "lienLibelle": "Étude de cas OGF : arrêt estival",
-            "lienHref": "/preuves/ogf-arret-estival/"
+            "lienLibelle": "Étude de cas OGF",
+            "lienHref": "/preuves/ogf-arret-estival/",
+            "photo": "/assets/web/mq-2a8c78b5c75c.jpg",
+            "texte": "Un technicien intégré à l'équipe, mécanique, électrotechnique et pneumatique couvertes par un seul profil, été 2025."
           },
           {
             "titre": "Maintien opérationnel de convoyeurs, trieurs et packaging automatisés, logistique et transport",
-            "texte": "deux techniciens en poste, pneumatique comprise dans les domaines couverts en propre",
-            "lienLibelle": "Étude de cas GLS : maintenance curative",
-            "lienHref": "/preuves/gls-maintenance-curative/"
+            "lienLibelle": "Étude de cas GLS",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "texte": "Deux techniciens en poste, pneumatique comprise dans les domaines couverts en propre."
           },
           {
             "titre": "Contrat de maintenance préventive annuelle, logistique",
-            "texte": "six techniciens polyvalents en permanence sur les sites de Lyon, depuis septembre 2023",
-            "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
-            "lienHref": "/preuves/veepee-sites-lyon/"
+            "lienLibelle": "Étude de cas VEEPEE",
+            "lienHref": "/preuves/veepee-sites-lyon/",
+            "photo": "/assets/web/mq-0b70202fed79.jpg",
+            "texte": "Six techniciens polyvalents en permanence sur les sites de Lyon, depuis septembre 2023."
           },
           {
             "titre": "Maintenance sous contrat d'un parc déployé partout en France, réalité virtuelle",
-            "texte": "périmètre technique complet, pneumatique comprise, depuis février 2024",
-            "lienLibelle": "Étude de cas TIMESCOPE : casques de réalité virtuelle",
-            "lienHref": "/preuves/timescope/"
+            "lienLibelle": "Étude de cas TIMESCOPE",
+            "lienHref": "/preuves/timescope/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "texte": "Périmètre technique complet, pneumatique comprise, depuis février 2024."
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie",
-            "texte": "site tenu 7 jours sur 7 depuis octobre 2023",
-            "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
-            "lienHref": "/preuves/stellantis-fonderie-sept-fons/"
+            "lienLibelle": "Étude de cas STELLANTIS",
+            "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
+            "photo": "/assets/web/x-cimenterie.jpg",
+            "texte": "Site tenu depuis octobre 2023."
+          },
+          {
+            "titre": "Deux usines accompagnées dans leur montée en cadence",
+            "lienLibelle": "Étude de cas Valeo",
+            "lienHref": "/preuves/valeo-usines/",
+            "photo": "/assets/web/mq-0699d4d92e7e.jpg",
+            "texte": ""
+          },
+          {
+            "titre": "Maintenir et monter, de jour comme de nuit",
+            "lienLibelle": "Étude de cas Vignal Systems",
+            "lienHref": "/preuves/vignal-systems/",
+            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg",
+            "texte": ""
           }
         ]
       },
       {
         "type": "objections",
+        "titre": "Vos questions avant de nous appeler",
         "questions": [
           {
             "question": "Combien coûte une campagne de détection de fuites ?",
@@ -258,7 +232,7 @@
           },
           {
             "question": "Qui intervient sur nos circuits ?",
-            "reponse": "Des techniciens salariés de Migen, évalués en entretien technique et comportemental par un homme de terrain. 10 % des candidats sont retenus, et l'évaluation se poursuit sur le terrain."
+            "reponse": "Des techniciens salariés de Migen, évalués en entretien technique et comportemental par un homme de terrain. 10 % des techniciens sont retenus, et l'évaluation se poursuit sur le terrain."
           },
           {
             "question": "Faites-vous le montage de pneus sur véhicule ?",
@@ -269,6 +243,11 @@
             "reponse": "Oui aux deux. 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, et des hubs de techniciens dans les grandes villes de France partout en France. Un réseau d'atelier se contrôle aussi utilement qu'un réseau d'usine."
           }
         ]
+      },
+      {
+        "type": "ctaFinal",
+        "question": "Besoin que votre compresseur arrête de tourner pour rien ?",
+        "bouton": "Demander une intervention"
       }
     ]
   }

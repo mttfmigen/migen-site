@@ -1,8 +1,9 @@
-import Link from "next/link";
-import { useId, type CSSProperties, type ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import { LARGEUR, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
+import QuestionsHub from "@/components/site/carriere/QuestionsHub";
+import { LiensPhoto } from "@/components/site/carriere/SectionsHub";
 import type { BandeFiche, CarteFiche, SectionFiche } from "@/types/metier";
 
 import styles from "./FicheMetier.module.css";
@@ -43,10 +44,14 @@ function Titre2({
   largeur?: string;
   clair?: boolean;
 }) {
+  // « clamp(…)/1.08 » : la taille passe dans le calc, l'interligne après lui,
+  // comme la capture l'écrit. L'interligne dans le calc divisait la taille
+  // par 1,08 (35,6 px au lieu de 38,4) et laissait l'interligne à `normal`.
+  const [taille, interligne] = echelle.split("/");
   return (
     <h2
       style={{
-        font: `600 calc(${echelle} * var(--ts)) var(--ft)`,
+        font: `600 calc(${taille} * var(--ts))/${interligne} var(--ft)`,
         letterSpacing: interlettre,
         color: clair ? "#fff" : "var(--ink)",
         margin: marge,
@@ -253,10 +258,13 @@ function Bento({
         {cartes.map((carte, i) => {
           const sombre = i === 0;
           const travee = sombre ? 2 : i === cartes.length - 1 ? traveeDerniere(cartes.length) : 1;
+          // `cs-w2` de la maquette : la carte qui garde deux colonnes sous
+          // 1000 px, la première, et la dernière quand le compte est pair.
+          const w2 = sombre || (i === cartes.length - 1 && cartes.length % 2 === 0);
           return (
             <div
               key={carte.titre}
-              className={travee === 3 ? styles.travee3 : undefined}
+              className={w2 ? styles.w2 : undefined}
               style={{
                 gridColumn: `span ${travee}`,
                 position: "relative",
@@ -549,8 +557,11 @@ function Duo({
             <Intro key={t} texte={t} police="16px/1.7" largeur="62ch" />
           ))}
         </div>
+        {/* Deux colonnes jusqu'au téléphone, comme la maquette (aucune règle
+            d'écran étroit sur cette grille). À 390 px, un mot plus long que la
+            carte (« électrotechnique, ») y déborde de quelques pixels, dans la
+            maquette comme ici : écart de la maquette, déclaré, pas corrigé. */}
         <div
-          className={styles.duoCartes}
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(2,minmax(0,1fr))",
@@ -628,7 +639,9 @@ function Tableau({
     textTransform: "uppercase",
   };
   return (
+    // `ck-2` dans la maquette : sous 900 px, l'écart passe à 30 px.
     <div
+      className={styles.deuxColonnes}
       style={{
         ...LARGEUR,
         display: "grid",
@@ -653,9 +666,7 @@ function Tableau({
         <div style={{ marginTop: 8 }}>
           <div style={{ ...VERRE, padding: "6px 28px" }}>
             {entetes ? (
-              <div
-                className={styles.rangTableau}
-                style={{ ...RANG, padding: "16px 0 12px" }}
+              <div style={{ ...RANG, padding: "16px 0 12px" }}
               >
                 <span style={{ ...ENTETE, color: "var(--acc)" }}>
                   {entetes.gauche}
@@ -668,7 +679,6 @@ function Tableau({
             {lignes.map((ligne) => (
               <div
                 key={ligne.gauche + ligne.droite}
-                className={styles.rangTableau}
                 style={{
                   ...RANG,
                   padding: "15px 0",
@@ -819,206 +829,6 @@ function Encart({
   );
 }
 
-/* -------------------------------------------------------------- questions */
-
-function Questions({
-  surtitre,
-  titre,
-  intros,
-  questions,
-}: {
-  surtitre: string;
-  titre: string;
-  intros?: string[];
-  questions: { question: string; reponse: string }[];
-}) {
-  // README : une seule question ouverte à la fois. Accordéon exclusif natif.
-  const groupe = useId();
-  if (!questions.length) return null;
-  return (
-    <div
-      className={styles.deuxColonnes}
-      style={{
-        ...LARGEUR,
-        display: "grid",
-        gridTemplateColumns: "minmax(0,.8fr) minmax(0,1.2fr)",
-        gap: 52,
-        alignItems: "start",
-      }}
-    >
-      <div className={styles.colleEnHaut} style={{ position: "sticky", top: 110 }}>
-        <div style={SURTITRE}>{surtitre}</div>
-        <Titre2
-          texte={titre}
-          echelle="clamp(30px,3.3vw,48px)/1.06"
-          marge="0 0 22px"
-          largeur="14ch"
-        />
-        <a
-          href="tel:+33478337205"
-          className={styles.boutonOrange}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 9,
-            padding: "15px 26px",
-            borderRadius: 999,
-            background: "var(--acc)",
-            color: "#fff",
-            font: "600 15px var(--fb)",
-            whiteSpace: "nowrap",
-            boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",
-            transition: "filter var(--tr),transform var(--tr)",
-          }}
-        >
-          Poser ma question
-        </a>
-      </div>
-      <div>
-        {intros?.map((t) => (
-          <Intro key={t} texte={t} police="16px/1.7" largeur="62ch" />
-        ))}
-        <div style={{ display: "grid", gap: 10, marginTop: 8 }}>
-          {questions.map((q, i) => (
-            <details
-              key={q.question}
-              className={styles.pli}
-              open={i === 0}
-              name={groupe}
-              style={{ ...VERRE, borderRadius: "var(--rad-s)" }}
-            >
-              <summary
-                style={{
-                  listStyle: "none",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: 18,
-                  padding: "20px 24px",
-                }}
-              >
-                <span
-                  style={{
-                    font: "600 calc(16px * var(--ts))/1.4 var(--ft)",
-                    letterSpacing: "-.022em",
-                    color: "var(--ink)",
-                  }}
-                >
-                  {q.question}
-                </span>
-                <span
-                  className={styles.pliPlus}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: 30,
-                    height: 30,
-                    borderRadius: 999,
-                    flex: "0 0 auto",
-                    font: "400 20px/1 var(--fb)",
-                    transition: "transform var(--tr),background var(--tr)",
-                    background: "var(--chip)",
-                    color: "var(--ink2)",
-                  }}
-                >
-                  +
-                </span>
-              </summary>
-              <div
-                className={styles.texteLie}
-                style={{
-                  padding: "0 24px 22px",
-                  font: "400 15px/1.7 var(--fb)",
-                  color: "var(--ink2)",
-                  maxWidth: "68ch",
-                }}
-              >
-                <TexteRiche texte={q.reponse} />
-              </div>
-            </details>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* --------------------------------------------------- « Pour aller plus loin » */
-
-function Liens({ items }: { items: { libelle: string; href: string }[] }) {
-  if (!items.length) return null;
-  return (
-    <div style={LARGEUR}>
-      <div style={SURTITRE}>Pour aller plus loin</div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill,minmax(250px,1fr))",
-          gap: 14,
-        }}
-      >
-        {items.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            prefetch={false}
-            className={styles.carteLien}
-            style={{
-              ...VERRE,
-              borderRadius: 24,
-              display: "flex",
-              flexDirection: "column",
-              overflow: "hidden",
-              transition: "transform var(--tr)",
-            }}
-          >
-            {/* La capture porte une image en blob:, sans nom de fichier : le
-                cadre reste, la photo attend d'être nommée (contrat : pas de
-                photo inventée). */}
-            <div style={{ height: 140, background: "var(--ph)", overflow: "hidden" }} />
-            <div
-              style={{
-                padding: "18px 20px 20px",
-                display: "flex",
-                justifyContent: "space-between",
-                gap: 10,
-                alignItems: "flex-start",
-              }}
-            >
-              <span
-                style={{
-                  font: "600 16px/1.3 var(--ft)",
-                  letterSpacing: "-.02em",
-                  color: "var(--ink)",
-                }}
-              >
-                {item.libelle}
-              </span>
-              <span
-                style={{
-                  width: 28,
-                  height: 28,
-                  borderRadius: 999,
-                  background: "var(--acc)",
-                  color: "#fff",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flex: "0 0 auto",
-                }}
-              >
-                →
-              </span>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 /* ------------------------------------------------------------- l'aiguillage */
 
 /** Une section du gabarit, rendue selon son `type`. `postuler` est rendu par
@@ -1075,18 +885,14 @@ export default function SectionFicheMetier({ section }: { section: SectionFiche 
           <Encart {...section} />
         </Enveloppe>
       );
+    // La FAQ est posée par l'application dans le panneau-photo sombre
+    // (`.mg-faqph`, photo `faq-offre.jpg`), la même que celle du hub : un seul
+    // modèle de FAQ par page, le photo (docs/PASSATION.md §2).
     case "faq":
-      return (
-        <Enveloppe>
-          <Questions {...section} />
-        </Enveloppe>
-      );
+      return <QuestionsHub {...section} />;
+    // Les cartes-photos de fin, même dessin que celles du hub.
     case "liens":
-      return (
-        <Enveloppe fin>
-          <Liens items={section.items} />
-        </Enveloppe>
-      );
+      return <LiensPhoto items={section.items} />;
     default:
       return null;
   }

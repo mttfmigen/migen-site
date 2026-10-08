@@ -57,3 +57,60 @@
   background: var(--acc);
   color: #fff;
 }
+
+/* LES RÈGLES MOBILES DU GABARIT D'OFFRE DE LA MAQUETTE (feuille embarquée de
+   `MigenExpertise.dc.html`, relevée le 08/10), portées sous `.gabarit` pour
+   ne toucher que les pages de ce gabarit. Elles diffèrent de celles de la page
+   hôte que `app/globals.css` applique à tout le site : `mg-r2` y garde un
+   écart de 32 px (36 ailleurs), la rangée de constats et le bento des offres
+   y passent par deux colonnes.
+
+   NON PORTÉE, et c'est voulu : la règle `.mgx-steps.mgx-even>*:first-child
+   {grid-column:span 2}` du déroulé, qui sous 620 px crée une colonne
+   implicite et fait passer les étapes 01, 03 et 05 SOUS les étapes paires
+   (mesuré à 390 px sur /offres/residence/). Le site garde une colonne. */
+@media (max-width: 1000px) {
+  .gabarit :global(.g3-pbgrid) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .gabarit :global(.g3-pbgrid) > div:first-child:nth-last-child(odd) {
+    grid-column: 1/-1;
+  }
+}
+
+@media (max-width: 900px) {
+  .gabarit :global(.mg-r2),
+  .gabarit :global(.g3-2) {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 32px !important;
+  }
+  .gabarit :global(.g3-sticky) {
+    position: static !important;
+  }
+  .gabarit :global(.g3-bento5) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-template-rows: none !important;
+  }
+  .gabarit :global(.g3-bento5) > * {
+    grid-row: auto !important;
+  }
+  .gabarit [data-screen-label="03 Problème"] :global(.mg-rmulti) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .gabarit :global(.g3-hs) {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .gabarit details > div {
+    padding-left: 26px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .gabarit :global(.g3-pbgrid),
+  .gabarit :global(.g3-bento5) {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}

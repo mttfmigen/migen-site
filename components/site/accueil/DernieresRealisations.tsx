@@ -20,24 +20,27 @@ interface Proprietes {
   hrefToutes?: string;
 }
 
-/** Les trois fiches de la maquette, reprises mot pour mot. */
+/**
+ * Les trois fiches de la maquette, reprises mot pour mot. La maquette les fait
+ * pointer sur « # » : chacune mène ici à son étude de cas.
+ */
 const REALISATIONS_MAQUETTE: Realisation[] = [
   {
-    href: "/realisations/",
+    href: "/preuves/suez-remise-en-etat/",
     image: "/assets/web/ph-tuyaux.jpg",
     client: "SUEZ IWT · migen© Résidence",
     titre: "Remise en état complète d'un site industriel",
     date: "Février 2026",
   },
   {
-    href: "/realisations/",
+    href: "/preuves/danone-lignes-de-production/",
     image: "/assets/web/sv-armoire.jpg",
     client: "DANONE · migen© Résidence",
     titre: "Maintenance en continu des lignes de production",
     date: "Février 2026",
   },
   {
-    href: "/realisations/",
+    href: "/preuves/jtekt/",
     image: "/assets/web/x-cimenterie.jpg",
     client: "JTEKT · migen© Résidence",
     titre: "Sécuriser la maintenance de ses installations",
@@ -47,7 +50,7 @@ const REALISATIONS_MAQUETTE: Realisation[] = [
 
 export default function DernieresRealisations({
   realisations = REALISATIONS_MAQUETTE,
-  hrefToutes = "/realisations/",
+  hrefToutes = "/preuves/",
 }: Proprietes) {
   return (
     <section style={{ padding: "var(--sec) 0 0" }}>
