@@ -16,7 +16,7 @@
  *   node scripts/diff-visuel-offre.mjs
  */
 
-import { mkdirSync, writeFileSync } from "node:fs";
+import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { chromium } from "playwright";
 
 /* La page se passe en argument : `node scripts/diff-visuel-offre.mjs /offres/`.
@@ -148,6 +148,80 @@ await cadre.evaluate(async () => {
   window.scrollTo(0, 0);
   await dort(400);
 });
+/* VÉRIFICATION D'ARRIVÉE. Le routeur de la maquette détourne six adresses par
+   sa table `remapOffer` (/bureau-etudes/ vers /offres/bureau-etudes/,
+   /offres/chantier/ vers /travaux-industriels/, etc.). Sans ce contrôle,
+   l'outil compare sereinement le site à une AUTRE page et rend une divergence
+   énorme et fausse : /bureau-etudes/ a été mesurée à 69 % sur sa FAQ et portée
+   au relais comme un défaut du site, alors que le site reproduit sa capture
+   mot pour mot. Une demi-journée pour s'en apercevoir. On nomme donc la
+   redirection, et on renvoie vers la seule référence valable pour ces
+   adresses : leur capture figée. */
+/* La table de détournement se LIT DANS LA MAQUETTE, elle ne se recopie pas :
+   recopiée, elle dériverait au prochain export du client. Deux pages
+   détournées peuvent partager leur h1 (/bureau-etudes/ et
+   /offres/bureau-etudes/ ont le même), donc comparer les titres ne suffit pas
+   à repérer le détournement. */
+const detournee = (() => {
+  try {
+    const source = readFileSync(
+      new URL("../maquette/site-final-autonome.html", import.meta.url),
+      "utf8",
+    );
+    const bloc = source.match(/remapOffer\(u\)\s*\{[^}]*?const M = \{([^}]*)\}/s);
+    if (!bloc) return null;
+    const table = {};
+    for (const [, de, vers] of bloc[1].matchAll(/\\?"(\/[^"\\]*)\\?"\s*:\s*\\?"(\/[^"\\]*)\\?"/g)) {
+      table[de] = vers;
+    }
+    return table[CHEMIN] ?? null;
+  } catch {
+    return null;
+  }
+})();
+if (detournee) {
+  console.error(`La maquette n'ouvre PAS ${CHEMIN} : son routeur la détourne vers ${detournee}.`);
+  console.error("");
+  console.error("Mesurer ici comparerait le site à une AUTRE page, et la divergence serait");
+  console.error("fausse : c'est ainsi que la FAQ de /bureau-etudes/ a été relevée à 69 % et");
+  console.error("portée au relais comme un défaut, alors que le site reproduit sa capture");
+  console.error("mot pour mot. Pour ces six adresses, la seule référence est la capture");
+  console.error(`figée : maquette/rendu/${(CHEMIN.replace(/^\/|\/$/g, "").replace(/\//g, "--") || "accueil")}.html`);
+  await navigateur.close();
+  process.exit(2);
+}
+
+const h1Attendu = (() => {
+  try {
+    const index = JSON.parse(
+      readFileSync(new URL("../maquette/contenu/site/index.json", import.meta.url), "utf8"),
+    );
+    const pages = Array.isArray(index) ? index : (index.pages ?? index);
+    return pages.find((p) => p?.url === CHEMIN)?.h1 ?? null;
+  } catch {
+    return null;
+  }
+})();
+if (h1Attendu) {
+  const h1Rendu = await cadre.evaluate(
+    () => document.querySelector("h1")?.textContent?.replace(/\s+/g, " ").trim() ?? "",
+  );
+  const pareil = (a, b) =>
+    a.normalize("NFC").replace(/[  ]/g, " ").replace(/[‘’]/g, "'").trim() ===
+    b.normalize("NFC").replace(/[  ]/g, " ").replace(/[‘’]/g, "'").trim();
+  if (h1Rendu && !pareil(h1Rendu, h1Attendu)) {
+    console.error(`La maquette n'a PAS ouvert ${CHEMIN} : son routeur l'a détournée.`);
+    console.error(`  demandé : « ${h1Attendu} »`);
+    console.error(`  obtenu  : « ${h1Rendu} »`);
+    console.error("");
+    console.error("Mesurer ici comparerait le site à une autre page. Pour ces adresses,");
+    console.error("la seule référence est la capture figée, maquette/rendu/<clé>.html :");
+    console.error(`  node scripts/capture-maquette.mjs ${CHEMIN}   (dira « redirigée »)`);
+    await navigateur.close();
+    process.exit(2);
+  }
+}
+
 // Les pages d'étude de cas de la maquette n'ont pas de <main> : leurs sections
 // pendent directement du corps.
 await cadre.evaluate(FIGE);

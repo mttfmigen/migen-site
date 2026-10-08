@@ -163,8 +163,23 @@ Secteurs étaient encore l'ancienne version en ligne, Mehdi l'a vu).
      `scripts/verifie-phrases-estropiees.mjs` lit le **rendu** des 248 pages, parce que le
      défaut naît de l'assemblage de deux champs (5/5 contrôles, échec prouvé de bout en
      bout en réinjectant le défaut réel).
-3. **`/bureau-etudes/`** : FAQ à 69 % (la maquette a le panneau sombre sur photo, le site
-   un accordéon clair), « Un autre besoin ? » à 22 %.
+3. ~~**`/bureau-etudes/`**~~ **CE N'ÉTAIT PAS UN DÉFAUT DU SITE, mesure faussée.**
+   `/bureau-etudes/` fait partie des six adresses que le routeur de la maquette détourne
+   (`remapOffer` l'envoie sur `/offres/bureau-etudes/`). `diff-visuel-offre.mjs` suivait la
+   redirection sans le dire et comparait donc le site à une **autre page** : d'où le panneau
+   sombre vu « dans la maquette », les 69 % et les 22 %. Les deux pages partagent même leur
+   h1, ce qui rendait le détournement invisible.
+   Vérifié : la capture figée `maquette/rendu/bureau-etudes.html` montre bien la FAQ
+   **claire**, avec son chapeau et sans « Poser ma question », et le site la reproduit
+   (recouvrement du vocabulaire 100 %, les seuls écarts étant des fragments d'attributs
+   HTML). La règle de `PageOffre.tsx` (« un chapeau veut dire la version plate ») est juste.
+   **Correctif posé dans l'outil** : `diff-visuel-offre.mjs` lit la table `remapOffer`
+   **dans la maquette** (jamais recopiée, elle dériverait au prochain export), refuse de
+   mesurer une adresse détournée et renvoie vers sa capture figée. Vérifié dans les deux
+   sens : il refuse `/bureau-etudes/`, il mesure `/offres/residence/`.
+   **Attention pour la suite** : la capture de `/bureau-etudes/` est la seule des 244 à
+   dater du 5 octobre, parce que depuis, le script de capture la déclare « redirigée » et
+   ne la rafraîchit plus. Les six adresses détournées sont dans le même cas.
 4. **`/preuves/bamesa/`** : titre 42 px trop bas (seule page décalée sur 248) ; la phrase
    du chapô retirée pour « notamment » doit être déclarée dans la fiche, et le chapô ne
    doit perdre que cette phrase.
