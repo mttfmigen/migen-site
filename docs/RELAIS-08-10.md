@@ -28,6 +28,8 @@ jamais de tiret cadratin dans un texte visible.
 | `SITE_URL=https://migen-site.vercel.app node scripts/diff-visuel-offre.mjs <url>` | même mesure, sur la version en ligne |
 | `node scripts/relis-relais.mjs` | fait relire les fiches au serveur de dev |
 | `bun lib/verification-decisions-copie.ts` | règles de copie décidées par Mehdi |
+| `node scripts/verifie-interdits.mjs` | interdits du contrat dans le code ET les 246 fiches |
+| `node scripts/verifie-phrases-estropiees.mjs [--controle]` | phrases tronquées par un retrait, sur le rendu des 248 pages |
 
 ## Décisions de Mehdi du 08/10 (toutes appliquées ou en cours)
 
@@ -116,15 +118,51 @@ Secteurs étaient encore l'ancienne version en ligne, Mehdi l'a vu).
 
 ## Défauts trouvés par la vérification finale (à traiter en premier)
 
-1. **Consentement RGPD** : « Tout refuser » envoie la preuve de consentement en POST sur
-   `/api/consentement`, le serveur répond 500 (`components/consentement/etat.ts:138`).
-   La preuve n'est pas enregistrée : vérifier la table et la route.
-2. **« 24/24 et 7/7 » visible** (interdit) sur `/offres/depannage-industriel/` (héros,
-   chiffre, garantie 04, FAQ, appel final) et `/offres/construction/` (mention sous les
-   boutons, garantie) ; sur `/offres/construction/` et `/offres/audit-conseil-maintenance/`
-   des mentions commencent par une virgule (« , du lundi au vendredi… ») : un retrait de
-   phrase a laissé un morceau. Ces deux adresses sont des redirections de la maquette
-   (`remapOffer`) : vérifier si elles doivent redevenir des 301.
+1. ~~**Consentement RGPD**~~ **CAUSE NOMMÉE le 08/10, correctif de configuration restant.**
+   Le 500 venait de `ecritureServeur()`, qui lève quand `SUPABASE_SERVICE_ROLE_KEY` est
+   absente ; la migration 0004 réserve délibérément l'`insert` au serveur (l'insertion par
+   la clé anonyme rend bien `42501 permission denied`, vérifié). La route répond désormais
+   **503** avec la cause en journal, au lieu d'un 500 indistinguable d'une base qui casse
+   (`app/api/consentement/route.ts`). Le choix du visiteur a toujours été respecté, il vit
+   dans son cookie ; c'est la **preuve RGPD** qui n'est pas écrite. **Reste à faire, et
+   c'est pour Mehdi : poser la clé de service** (console Supabase, Settings puis API) puis
+   reposter sur `/api/consentement` et vérifier la ligne dans `consent_logs`. Attention aux
+   clés de finalité : `mesure_audience`, `publicite`, `personnalisation`, `suivi_commercial`
+   (un autre nom rend 400 « Preuve incomplète », pas 500).
+2. ~~**« 24/24 et 7/7 » visible**~~ **FAIT le 08/10, et le relais se trompait sur deux points.**
+   - **La mention n'était pas dans la maquette.** 0 occurrence dans les 244 captures,
+     0 dans le corpus des 7 pages concernées : elle a été **injectée au portage**. Les 13
+     chaînes rendues ont donc été restaurées sur leur ligne de corpus, et le chiffre clé
+     « 24/24 et 7/7 » supprimé (les « Chiffres clés » du corpus de dépannage n'en déclarent
+     que deux : 10 % et 4). Mesuré : **0 occurrence de 24/24, 7/7 ou 24h sur les 248 pages**.
+   - **La virgule initiale n'est pas toujours un défaut**, et c'est le piège. 170 champs
+     `texte` commencent par une virgule parce qu'ils suivent une `accroche` sœur rendue en
+     ligne : ils sont **corrects**. Et les 7 paragraphes de `/expertises/` ouverts par une
+     virgule sont **dans la maquette, mot pour mot** (son motif titre-puis-suite) : le site
+     la reproduit, c'est conforme. Ne pas les « corriger ».
+   - Le vrai défaut était ailleurs, et plus large : la **mention** se rend SEULE, dans son
+     propre paragraphe, 4 fois par page. 4 mentions étaient estropiées (construction,
+     audit-conseil, chantier, retrofit) et **20 champs avaient perdu le 04 78 33 72 05**
+     en gardant sa ponctuation (« Pour nous joindre : , du lundi… »). Tout est restauré,
+     17 des 20 redonnant la ligne de corpus à la lettre.
+   - **ARBITRAGE OUVERT POUR MEHDI** : la maquette porte elle-même ce trou du téléphone,
+     elle perd le numéro que son propre corpus écrit (`implantations--toulouse--gironde.md`
+     l.13). Le site s'en écarte donc **en connaissance de cause**. Si la maquette fait foi
+     jusque-là, il faut retirer les 20 numéros et l'en-tête de
+     `scripts/verifie-phrases-estropiees.mjs` dit où.
+   - **Les deux adresses ne sont PAS à passer en 301** : `/offres/depannage-industriel/` et
+     `/offres/construction/` sont bien des pages de `index.json`, avec leur h1 et leur
+     fichier de corpus. `remapOffer` est le raccourci du routeur de démonstration, qui les
+     détourne vers `/offres/zero-arret/` et `/travaux-industriels/` ; c'est pour cela
+     qu'elles n'ont **pas de capture** et qu'aucun diff visuel ne peut les mesurer. Les
+     garder en 200 respecte « aucune page perdue » et « un mot clé principal par page ».
+   - **Deux portes neuves, chacune ayant prouvé qu'elle échoue** :
+     `scripts/verifie-interdits.mjs` ne lisait que le code, jamais les fiches, là où vit la
+     copie : il annonçait « copie conforme » pendant que la mention était visible sur 8
+     pages. Il lit désormais les 246 fiches (4/4 contrôles). Et
+     `scripts/verifie-phrases-estropiees.mjs` lit le **rendu** des 248 pages, parce que le
+     défaut naît de l'assemblage de deux champs (5/5 contrôles, échec prouvé de bout en
+     bout en réinjectant le défaut réel).
 3. **`/bureau-etudes/`** : FAQ à 69 % (la maquette a le panneau sombre sur photo, le site
    un accordéon clair), « Un autre besoin ? » à 22 %.
 4. **`/preuves/bamesa/`** : titre 42 px trop bas (seule page décalée sur 248) ; la phrase
