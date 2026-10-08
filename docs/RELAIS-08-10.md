@@ -55,9 +55,9 @@ page aligné. Dernière mise en ligne : avant les décisions de copie et le rela
 
 ## Ce qui tournait au moment du relais
 
-1. Vérification finale du chantier « site au pixel » (lecture seule) : relancer
-   soi-même les contrôles si son retour manque (liste : `ls components/**/verification-*.tsx
-   app/**/verification-*.tsx scripts/verifie-*.tsx`), plus `verifie-position-titre.mjs`.
+1. Vérification finale du chantier « site au pixel » : TERMINÉE, verdict non conforme.
+   46 contrôles sur 49 verts, tsc propre, 247/248 titres à la bonne hauteur. Ses défauts
+   sont la section « Défauts trouvés par la vérification finale » ci-dessous.
 2. Banque de photos variées : 7 agents cherchent dans Envato, un jury retient 80 à 110
    photos, un agent les télécharge sous licence « migen.fr » via le Chrome de Mehdi.
    Sortie attendue : `public/assets/photos/*.jpg` et `public/assets/photos/registre.json`
@@ -106,3 +106,36 @@ page aligné. Dernière mise en ligne : avant les décisions de copie et le rela
 10. Avant chaque mise en ligne : `bunx tsc --noEmit`, les contrôles de gabarit, un
     balayage des 249 URL en 200 sur le serveur de dev, puis le déploiement, puis la
     même vérification sur https://migen-site.vercel.app.
+
+## Défauts trouvés par la vérification finale (à traiter en premier)
+
+1. **Consentement RGPD** : « Tout refuser » envoie la preuve de consentement en POST sur
+   `/api/consentement`, le serveur répond 500 (`components/consentement/etat.ts:138`).
+   La preuve n'est pas enregistrée : vérifier la table et la route.
+2. **« 24/24 et 7/7 » visible** (interdit) sur `/offres/depannage-industriel/` (héros,
+   chiffre, garantie 04, FAQ, appel final) et `/offres/construction/` (mention sous les
+   boutons, garantie) ; sur `/offres/construction/` et `/offres/audit-conseil-maintenance/`
+   des mentions commencent par une virgule (« , du lundi au vendredi… ») : un retrait de
+   phrase a laissé un morceau. Ces deux adresses sont des redirections de la maquette
+   (`remapOffer`) : vérifier si elles doivent redevenir des 301.
+3. **`/bureau-etudes/`** : FAQ à 69 % (la maquette a le panneau sombre sur photo, le site
+   un accordéon clair), « Un autre besoin ? » à 22 %.
+4. **`/preuves/bamesa/`** : titre 42 px trop bas (seule page décalée sur 248) ; la phrase
+   du chapô retirée pour « notamment » doit être déclarée dans la fiche, et le chapô ne
+   doit perdre que cette phrase.
+5. **Contrôles** : `components/cocon/verification-appel-action.tsx` échoue parce que la
+   règle `.mg-site [style*="padding:40px 44px"]` a été retirée de `app/globals.css`
+   (alignement mobile sur la maquette) : mettre le contrôle à jour ou remettre la règle.
+   `scripts/verifie-domaine.tsx` et `scripts/verifie-ressource.tsx` sont périmés
+   (remplacés par `components/site/expertises/domaine/verification-domaine.tsx` et
+   `components/site/ressource/verification-ressource.tsx`) : les supprimer.
+6. **`/offres/retrofit/remise-en-etat/`** : dans la maquette, les boutons des bandes 4, 7, 13
+   et du formulaire final n'ont pas de libellé ; le site en met un : déclarer l'écart.
+7. **« réguliers »** apparaît encore sur 7 pages (guide choisir-une-entreprise, Poitiers,
+   audit-conseil, résidence, robot-spot, préparer-un-arrêt, menuiserie) : vérifier que
+   ce n'est jamais « clients réguliers » (« contrats réguliers » est permis).
+8. **« taux horaire »** traité de deux façons (retiré sur `/implantations/`, rendu
+   ailleurs : résidence, secteurs, alstef) : trancher et aligner.
+9. **Mobile, gabarit 01** : fil d'Ariane de 54 px contre 48 (titre 6 px plus bas).
+10. `scripts/verifie-position-titre.mjs` peut se figer sur les 248 pages : ajouter une
+    borne de temps par page et un journal au fil de l'eau.
