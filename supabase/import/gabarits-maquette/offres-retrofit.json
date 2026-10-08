@@ -2,7 +2,7 @@
   "url": "/offres/retrofit/",
   "contenu": {
     "gabarit": "offre",
-    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
     "chapeau": "**Votre machine peut produire plusieurs années de plus, pour un coût total très inférieur à celui du neuf.** Le bâti est sain, c'est la commande qui est morte.",
     "actions": [
       {
@@ -195,7 +195,7 @@
         "question": "Besoin d'un chiffrage comparant retrofit et machine neuve, sur votre cas ?",
         "bouton": "Demander un diagnostic",
         "href": "/contact/",
-        "rappel": "04 78 33 72 05, astreinte 24/24 et 7/7."
+        "rappel": "04 78 33 72 05, astreinte."
       }
     ],
     "autresSurtitre": "Un autre besoin ?",

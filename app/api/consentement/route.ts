@@ -91,6 +91,27 @@ export async function POST(requete: Request): Promise<Response> {
     user_agent: etiquetteUserAgent(requete.headers.get("user-agent")),
   };
 
+  // La preuve s'écrit avec la clé de service, et elle seule : la migration
+  // 0004 refuse délibérément `insert` à la clé anonyme (« l'écriture est
+  // réservée au serveur »). Tant que SUPABASE_SERVICE_ROLE_KEY est absente,
+  // `ecritureServeur()` lève et la route rendait un 500 opaque, impossible à
+  // distinguer d'un refus de la base : une demi-journée a été dépensée à le
+  // diagnostiquer le 08/10. On nomme donc la cause, une fois, et on répond 503
+  // (indisponible, pas en erreur) pour que la supervision ne confonde pas une
+  // configuration incomplète avec une base qui casse.
+  if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    console.error(
+      "Preuve de consentement NON ENREGISTRÉE : SUPABASE_SERVICE_ROLE_KEY " +
+        "absente de l'environnement. Le choix du visiteur est respecté (il vit " +
+        "dans son cookie), mais la preuve exigée par le RGPD n'est pas écrite. " +
+        "Poser la clé (console Supabase, Settings puis API) avant la mise en ligne.",
+    );
+    return Response.json(
+      { erreur: "Preuve non enregistrée : configuration du serveur incomplète." },
+      { status: 503 },
+    );
+  }
+
   const { error } = await ecritureServeur()
     .from("consent_logs")
     // `as never` : le paramètre de `insert` est dégradé en `never[]` parce que

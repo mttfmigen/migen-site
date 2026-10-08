@@ -2,7 +2,7 @@
   "url": "/offres/construction/",
   "contenu": {
     "gabarit": "offre",
-    "mention": ", du lundi au vendredi de 8h00 à 18h30. Astreinte 24/24 et 7/7 pour les urgences en cours de chantier",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte pour les urgences en cours de chantier.",
     "chapeau": "Une ingénierie de montage qui prépare, des équipes complètes de techniciens salariés qui exécutent, un ingénieur chargé de projet responsable du planning et du résultat.",
     "actions": [
       {
@@ -155,7 +155,7 @@
         "puces": [
           {
             "accroche": "Un rappel dans l'heure",
-            "texte": "du lundi au vendredi, 8h00 à 18h30, au 04 78 33 72 05, et une astreinte 24/24 et 7/7 pendant toute la durée du chantier."
+            "texte": "du lundi au vendredi, 8h00 à 18h30, au 04 78 33 72 05, et une astreinte pendant toute la durée du chantier."
           },
           {
             "accroche": "Des monteurs évalués",

@@ -2,7 +2,7 @@
   "url": "/offres/chantier/",
   "contenu": {
     "gabarit": "offre",
-    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
     "chapeau": "**Votre outil de production redémarre à la date prévue.** Pas des semaines après, pas en mode dégradé.",
     "actions": [
       {
@@ -210,7 +210,7 @@
         "question": "Besoin d'un premier avis sur votre projet, même s'il n'est encore qu'à l'état d'intention ?",
         "bouton": "Parler à un chargé d'affaires",
         "href": "/contact/",
-        "rappel": "04 78 33 72 05, astreinte 24/24 et 7/7."
+        "rappel": "04 78 33 72 05, astreinte."
       }
     ],
     "autresSurtitre": "Un autre besoin ?",

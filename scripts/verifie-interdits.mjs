@@ -15,6 +15,24 @@
  * voir la copie des composants qu'aucun contrôle de rendu ne monte, et c'est
  * pour cela qu'il complète les autres au lieu de les remplacer.
  *
+ * IL LIT AUSSI LES FICHES DE CONTENU, et c'est une correction du 08/10 : il ne
+ * lisait que `components/`, `app/` et `lib/`, c'est-à-dire le code. Or la copie
+ * du site ne vit pas dans le code, elle vit dans
+ * `supabase/import/gabarits-maquette/*.json`. « 24/24 et 7/7 » était donc
+ * VISIBLE sur huit pages d'offre pendant que ce contrôle annonçait « copie
+ * conforme » : les motifs étaient justes, ils ne regardaient simplement pas au
+ * bon endroit. Les fiches sont du contenu rédigé, pas du code : leurs champs
+ * `_reference` portent la provenance du portage et citent donc parfois la
+ * formulation écartée, exactement comme les commentaires du code. Ils sont
+ * ignorés pour la même raison.
+ *
+ * Il vérifie enfin la FORME des mentions. `copieConforme` retire d'un texte
+ * toute phrase portant un interdit ; appliquée à la main pendant le portage,
+ * elle a laissé quatre mentions estropiées (« , du lundi au vendredi… », sans
+ * sa proposition initiale, rendue telle quelle dans quatre blocs par page).
+ * Une phrase qui commence par une virgule est le reste d'un retrait, pas une
+ * phrase : le contrôle la refuse.
+ *
  * LES COMMENTAIRES SONT RETIRÉS AVANT LA RECHERCHE, et c'est nécessaire : le
  * code explique en commentaire pourquoi il s'écarte de la maquette, donc il
  * cite les formulations interdites. Un contrôle qui ne saurait pas distinguer
@@ -125,6 +143,66 @@ for (const chemin of [
   });
 }
 
+/* LA COPIE RÉDIGÉE. Une fiche par page, et c'est elle que le visiteur lit. */
+const FICHES = join(RACINE, "supabase", "import", "gabarits-maquette");
+
+/* Les champs qui DÉCLARENT un écart au lieu de le rendre. Ils doivent citer
+   la formulation écartée, c'est leur raison d'être : `verification-ressource`
+   et `verification-editorial` relisent ces listes pour vérifier l'ABSENCE de
+   ces phrases du rendu. Les chercher ici retournerait le contrôle contre les
+   contrôles, comme le ferait une recherche dans les commentaires du code. */
+const DECLARATIFS = new Set(["_reference", "retraits", "phrases_retirees", "trous"]);
+
+/** Chaque chaîne de la fiche, avec son chemin, les déclaratifs écartés. */
+function chaines(valeur, chemin = "") {
+  if (typeof valeur === "string") return [[chemin, valeur]];
+  if (Array.isArray(valeur)) return valeur.flatMap((v, i) => chaines(v, `${chemin}[${i}]`));
+  if (valeur && typeof valeur === "object") {
+    return Object.entries(valeur).flatMap(([cle, v]) =>
+      DECLARATIFS.has(cle) ? [] : chaines(v, chemin ? `${chemin}.${cle}` : cle),
+    );
+  }
+  return [];
+}
+
+for (const entree of readdirSync(FICHES).filter((f) => f.endsWith(".json"))) {
+  const fiche = JSON.parse(readFileSync(join(FICHES, entree), "utf8"));
+  for (const [chemin, texte] of chaines(fiche)) {
+    for (const [motif, remede] of INTERDITS) {
+      const interdit =
+        typeof motif === "string" ? texte.includes(motif) && motif : texte.match(motif)?.[0];
+      if (interdit) {
+        trouvailles.push({
+          ou: `${relative(RACINE, join(FICHES, entree))} → ${chemin}`,
+          interdit,
+          remede,
+          ligne: texte.trim().slice(0, 100),
+        });
+      }
+    }
+  }
+
+  /* La mention se rend seule, dans son propre paragraphe : elle doit donc être
+     une phrase entière. Vérifié le 08/10 sur le HTML servi, quatre fois par
+     page (`<p style="font:400 13.5px/1.6 …">`). */
+  const mention = fiche?.contenu?.mention;
+  if (typeof mention === "string" && mention.trim()) {
+    const defaut = /^\s*[,.;:]/.test(mention)
+      ? "commence par une ponctuation : reste d'une phrase retirée"
+      : !/[.!?]\s*$/.test(mention)
+        ? "sans point final"
+        : undefined;
+    if (defaut) {
+      trouvailles.push({
+        ou: `${relative(RACINE, join(FICHES, entree))} → contenu.mention`,
+        interdit: defaut,
+        remede: "la phrase entière du corpus, proposition initiale et point final compris",
+        ligne: mention.trim().slice(0, 100),
+      });
+    }
+  }
+}
+
 if (trouvailles.length > 0) {
   for (const t of trouvailles) {
     console.error(`${t.ou}\n  interdit : « ${t.interdit} »\n  à la place : ${t.remede}\n  ${t.ligne}\n`);
@@ -133,4 +211,5 @@ if (trouvailles.length > 0) {
   process.exit(1);
 }
 
-console.log("copie conforme aux interdits du contrat");
+const nbFiches = readdirSync(FICHES).filter((f) => f.endsWith(".json")).length;
+console.log(`copie conforme aux interdits du contrat (code + ${nbFiches} fiches de contenu)`);

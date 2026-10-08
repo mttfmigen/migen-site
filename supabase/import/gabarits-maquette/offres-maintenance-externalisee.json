@@ -2,7 +2,7 @@
   "url": "/offres/maintenance-externalisee/",
   "contenu": {
     "gabarit": "offre",
-    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 prend le relais la nuit, le week-end et les jours fériés.",
+    "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte prend le relais la nuit, le week-end et les jours fériés.",
     "chapeau": "Vous écrivez le périmètre, nous le tenons en entier : la gestion de la maintenance préventive, le dépannage, les pièces consultées au prix du marché puis posées, et votre GMAO renseignée à chaque passage. Externaliser votre maintenance industrielle, ce n'est pas acheter des heures, c'est acheter une expertise technique disponible et des coûts maîtrisés. Le but tient en une ligne : réduire les arrêts non planifiés et optimiser la disponibilité des équipements qui portent votre production.",
     "actions": [
       {
@@ -24,10 +24,6 @@
         "valeur": "+200",
         "libelle": "clients industriels accompagnés",
         "detail": "Un contrat d'externalisation se juge à son renouvellement"
-      },
-      {
-        "valeur": "24/24 et 7/7",
-        "libelle": "astreinte en option, au 04 78 33 72 05, nuit, week-end et jours fériés"
       },
       {
         "valeur": "4",
@@ -106,7 +102,7 @@
           },
           {
             "prestation": {
-              "accroche": "L'astreinte 24/24 et 7/7 en option",
+              "accroche": "L'astreinte en option",
               "texte": ", avec un circuit d'appel convenu à l'avance. Voir l'[astreinte de maintenance](/offres/depannage-industriel/astreinte/)."
             },
             "benefice": "La nuit et le week-end cessent d'être des zones mortes pour vos actifs critiques."

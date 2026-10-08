@@ -2,7 +2,7 @@
   "url": "/offres/depannage-industriel/",
   "contenu": {
     "gabarit": "offre",
-    "mention": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte 24/24 et 7/7 prend le relais la nuit, le week-end et les jours fériés.",
+    "mention": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte prend le relais la nuit, le week-end et les jours fériés.",
     "chapeau": "Vous décrivez la panne en 4 champs. Un technicien vous rappelle dans l'heure et lance le diagnostic à distance. Un intervenant évalué part ensuite sur votre site avec un ordre d'intervention précis.",
     "actions": [
       {
@@ -14,10 +14,6 @@
     "formulaireHeroMention": "Rappel dans l'heure",
     "brefSurtitre": "En bref",
     "chiffres": [
-      {
-        "valeur": "24/24 et 7/7",
-        "libelle": "astreinte, nuit, week-end et jours fériés, au 04 78 33 72 05"
-      },
       {
         "valeur": "10 %",
         "libelle": "des techniciens retenus",
@@ -82,7 +78,7 @@
           },
           {
             "prestation": {
-              "accroche": "Une astreinte 24/24 et 7/7",
+              "accroche": "Une astreinte",
               "texte": "avec un circuit d'appel convenu à l'avance. Voir l'[astreinte de maintenance](/offres/depannage-industriel/astreinte/)."
             },
             "benefice": "La nuit et le week-end cessent d'être des zones mortes pour vos machines critiques."
@@ -224,7 +220,7 @@
           },
           {
             "question": "Intervenez-vous partout en France, et la nuit ?",
-            "reponse": "Oui aux deux. Nous partons du bassin le plus proche, depuis nos 4 agences et nos hubs de techniciens dans les grandes villes de France. L'astreinte fonctionne 24/24 et 7/7. Pour un besoin récurrent hors heures ouvrées, l'astreinte est la formule adaptée."
+            "reponse": "Oui aux deux. Nous partons du bassin le plus proche, depuis nos 4 agences et nos hubs de techniciens dans les grandes villes de France. L'astreinte fonctionne. Pour un besoin récurrent hors heures ouvrées, l'astreinte est la formule adaptée."
           }
         ]
       },
