@@ -1,0 +1,97 @@
+/*
+ * Le repli n'est QUE visuel, et c'est tout l'intérêt.
+ *
+ * La maquette mobile du client retire le contenu replié du DOM (`sc-if`). Son
+ * README demande pourtant des blocs « qui se déplient pour rester courts SANS
+ * PERDRE LE TEXTE UTILE AU RÉFÉRENCEMENT » : les deux ne tiennent pas ensemble.
+ * Le contenu est donc toujours rendu, dans le HTML servi, et c'est la feuille
+ * de style qui le replie sous 880px. Google lit le texte, les contrôles du
+ * projet qui mesurent le rendu des 248 pages le lisent aussi, et le visiteur
+ * mobile voit une page courte.
+ */
+
+.section {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  margin-top: 4px;
+}
+
+/* L'en-tête n'est un bouton que sur mobile : au-dessus de 880px il n'y a rien
+   à replier, et un bouton qui ne fait rien est un piège au clavier. */
+.bascule {
+  display: none;
+}
+
+.resume {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .bascule {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0;
+    border: 0;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    color: inherit;
+    /* 24px de cible tactile, WCAG 2.5.8. Le remplissage est compensé par une
+       marge négative pour ne pas déplacer le titre, piège déjà payé sur le fil
+       d'Ariane le 09/10. */
+    padding-block: 3px;
+    margin-block: -3px;
+  }
+
+  .kicker {
+    display: block;
+    font: 600 11px/1 var(--ft);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--acc);
+  }
+
+  .titre {
+    display: block;
+    font: 600 16px/1.25 var(--ft);
+    letter-spacing: -0.025em;
+    margin-top: 4px;
+  }
+
+  .chevron {
+    flex: 0 0 auto;
+    font-size: 22px;
+    line-height: 1;
+    color: var(--ink2);
+    transition: transform 0.2s;
+  }
+
+  .section[data-ouvert="true"] .chevron {
+    transform: rotate(90deg);
+  }
+
+  .section[data-ouvert="false"] .resume {
+    display: block;
+    font: 400 13.5px/1.6 var(--fb);
+    color: var(--ink2);
+    margin-top: 8px;
+  }
+
+  .section[data-ouvert="false"] .corps {
+    display: none;
+  }
+
+  .section[data-ouvert="true"] .corps {
+    margin-top: 12px;
+  }
+}
+
+/* Sans animation pour qui en demande moins. */
+@media (prefers-reduced-motion: reduce) {
+  .chevron {
+    transition: none;
+  }
+}

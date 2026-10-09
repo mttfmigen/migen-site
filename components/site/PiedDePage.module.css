@@ -71,6 +71,23 @@
 
 .lienMaillage {
   color: rgba(255, 255, 255, 0.44);
+  /*
+   * 24 px DE CIBLE TACTILE, critère 2.5.8 de la WCAG 2.2, niveau AA.
+   * Mesuré le 09/10 par `node scripts/verifie-mobile.mjs` : ces liens faisaient
+   * 19 px de haut à 320, 375 ET 768 px, soit 24 cibles trop petites par page.
+   * Le pied étant sur les 248 pages, c'était le défaut mobile le plus répandu
+   * du site. Un doigt qui vise « Lyon » à 19 px touche « Nantes » une fois sur
+   * trois, et les quatre colonnes du maillage sont serrées.
+   *
+   * Le remplissage est compensé par une marge négative de même valeur, sans
+   * quoi le maillage grandirait de 6 px par entrée, soit 60 px pour la colonne
+   * des villes. C'est la recette déjà payée sur le fil d'Ariane le 09/10, où
+   * le commentaire affirmait à tort qu'un remplissage « ne déplace pas le
+   * texte » : il compte dans la boîte de marge.
+   */
+  display: inline-block;
+  padding-block: 3px;
+  margin-block: -3px;
 }
 
 .lienMaillage:hover {

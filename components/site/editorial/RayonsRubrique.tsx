@@ -198,13 +198,18 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
                 placeholder="Rechercher un article, une fiche…"
                 value={recherche}
                 onChange={(e) => setRecherche(e.target.value)}
+                /* 16 px sous 880 px, sinon Safari iOS zoome : voir
+                   `.champRecherche` dans PageEditoriale.module.css. */
+                className={styles.champRecherche}
                 style={{
                   flex: 1,
                   minWidth: 0,
                   border: "none",
                   outline: "none",
                   background: "transparent",
-                  font: "400 15px var(--fb)",
+                  /* La police vit dans `.champRecherche` et non ici : un
+                     raccourci `font` en ligne bat la classe, et la règle qui
+                     passe le champ à 16 px sous 880 px ne mordrait sur rien. */
                   color: "var(--ink)",
                   padding: "10px 0",
                 }}

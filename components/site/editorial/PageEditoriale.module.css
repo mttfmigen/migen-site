@@ -262,3 +262,26 @@
 .recherche:focus-within {
   border-color: var(--acc) !important;
 }
+
+/*
+ * LE CHAMP DE RECHERCHE DES RESSOURCES, À 16 px SUR TÉLÉPHONE.
+ *
+ * Mesuré le 09/10 par `node scripts/verifie-mobile.mjs` : la maquette écrit
+ * `font: 400 15px var(--fb)`, et Safari iOS ZOOME la page à l'appui sur tout
+ * champ dont le texte fait moins de 16 px. Le visiteur se retrouve avec une
+ * page agrandie qu'il doit repincer pour revenir, à chaque recherche.
+ *
+ * L'écart à la maquette est donc limité au téléphone, où elle n'a de toute
+ * façon pas de référence à cette largeur : au-dessus de 880 px le champ garde
+ * ses 15 px, mot pour mot. Un point de police qui évite un zoom forcé se paie
+ * moins cher qu'une fidélité qui casse l'usage.
+ */
+.champRecherche {
+  font: 400 15px var(--fb);
+}
+
+@media (max-width: 880px) {
+  .champRecherche {
+    font-size: 16px;
+  }
+}
