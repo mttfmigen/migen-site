@@ -57,15 +57,27 @@ if (LISTE_SEULE) {
 }
 
 const derives = [];
+const nonConcluantes = [];
 for (const [nom, [bin, args], attendu] of PORTES) {
-  let verte = false;
+  let obtenu;
   try {
     await execution(bin, args, { cwd: RACINE, timeout: 180000, maxBuffer: 32 * 1024 * 1024 });
-    verte = true;
-  } catch {
-    verte = false;
+    obtenu = "verte";
+  } catch (erreur) {
+    /* UN DÉLAI DÉPASSÉ N'EST PAS UN ÉCHEC, et les confondre coûte cher : le
+       09/10, cette suite a tourné pendant que quatre agents interrogeaient le
+       serveur de développement, et elle a déclaré TROIS RÉGRESSIONS sur des
+       portes que la même commande rendait vertes une minute plus tard, seule.
+       Une porte qui lit le rendu des 248 pages dépasse les trois minutes dès
+       que le serveur est chargé. Un verdict rendu dans ces conditions n'en est
+       pas un : il est annoncé comme non concluant, et la suite le dit. */
+    obtenu = erreur.killed || erreur.signal === "SIGTERM" || erreur.code === "ETIMEDOUT" ? "non concluante" : "rouge";
   }
-  const obtenu = verte ? "verte" : "rouge";
+  if (obtenu === "non concluante") {
+    console.log(`  ?     ${nom.padEnd(26)} attendue ${attendu}, délai dépassé : à relancer seule`);
+    nonConcluantes.push(nom);
+    continue;
+  }
   const conforme = obtenu === attendu;
   console.log(`  ${conforme ? "OK  " : "DÉRIVE"}  ${nom.padEnd(26)} attendue ${attendu}, obtenue ${obtenu}`);
   if (!conforme) derives.push({ nom, attendu, obtenu });
@@ -82,5 +94,15 @@ if (derives.length > 0) {
   process.exit(1);
 }
 
+if (nonConcluantes.length > 0) {
+  console.log(
+    `\n${nonConcluantes.length} porte(s) non concluante(s), delai depasse : ${nonConcluantes.join(", ")}.` +
+      `\nLes relancer une par une, serveur de developpement au repos. Rien n'est conclu sur elles.`,
+  );
+  process.exit(1);
+}
+
 const vertes = PORTES.filter(([, , a]) => a === "verte").length;
-console.log(`\nportes de gabarit conformes a l'etat publie (${vertes} vertes, ${PORTES.length - vertes} rouge)`);
+console.log(
+  `\nportes de gabarit conformes a l'etat publie (${vertes} verte(s), ${PORTES.length - vertes} rouge(s))`,
+);
