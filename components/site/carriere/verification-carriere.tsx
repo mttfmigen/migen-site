@@ -22,7 +22,8 @@
  *  5. LES PHOTOS : chaque fichier existe, et ses octets sont ceux d'une image
  *     de la maquette, ou il porte le nom que la source lui donne.
  *  6. LES INTERDITS du contrat et des règles client sont absents du rendu.
- *     Les décisions de copie (« 10 % des techniciens », siège à Écully) sont
+ *     Les décisions de copie (« 10 % des techniciens », siège à Limonest depuis
+ *     le 09/10, qui renverse le 07/10) sont
  *     appliquées à la capture avant toute comparaison.
  *  7. UN SEUL H1, aucun `href="#"`.
  */
@@ -133,7 +134,6 @@ const INTERDITS = [
   "découvrez",
   "réguliers",
   "teamtailor",
-  "limonest",
   "cinq agences",
   "5 agences",
 ] as const;

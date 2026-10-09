@@ -179,11 +179,20 @@ for (const interdit of [
   assert.ok(!rendu.includes(interdit), `copie interdite rendue : « ${interdit} »`);
 }
 
-/* Les quatre agences du contrat, et aucune autre. Le siège est à ÉCULLY,
-   décision de Mehdi du 07/10 au soir : c'est Limonest qui ne doit plus
-   revenir. Cette règle disait l'inverse jusque-là. */
-assert.ok(rendu.includes("Écully"), "le siège doit être nommé");
-assert.ok(!rendu.includes("Limonest"), "Limonest rendu : le siège est à Écully");
+/* Les quatre agences du contrat, et aucune autre.
+   LE SIÈGE EST À LIMONEST, L'AGENCE EST À ÉCULLY : décision de Mehdi du 09/10,
+   qui renverse la sienne du 07/10 et donne raison à l'audit de Nathan. Cette
+   assertion a donc changé de sens deux fois en trois jours ; elle porte
+   désormais LES DEUX, parce que la page doit nommer le siège ET l'agence, et
+   que vérifier l'absence de l'un des deux était justement ce qui a laissé
+   passer l'erreur. La maquette écrit « Siège, 1 rue des Vergers, 69760
+   Limonest » sur 96 de ses 244 captures. */
+assert.ok(rendu.includes("Limonest"), "le siège de Limonest doit être nommé");
+assert.ok(rendu.includes("Écully"), "l'agence d'Écully doit être nommée");
+assert.ok(
+  rendu.includes("1 rue des Vergers, 69760 Limonest"),
+  "l'adresse du siège doit être celle de la maquette",
+);
 assert.ok(rendu.includes("Dubaï") && rendu.includes("Montréal") && rendu.includes("Madrid"));
 for (const ancienne of ["Strasbourg", "Toulouse", "Nantes"]) {
   assert.ok(

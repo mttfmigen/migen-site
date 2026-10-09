@@ -29,14 +29,33 @@ const SELECTION: Regle[] = [
   [/\b([Cc]haque\s+)candidat\b(?=[^.;]*?(?:10\s?%|retenu|sélection|évalu|entretien|épreuve))/g, (_, debut) => `${debut}technicien`],
 ];
 
+/* 09/10, LE SIÈGE REVIENT À LIMONEST, L'AGENCE RESTE À ÉCULLY.
+   Décision de Mehdi, qui RENVERSE celle du 07/10 et donne raison à l'audit de
+   Nathan du 09/10 (« le siège à Écully au lieu de Limonest »).
+
+   Le 07/10, sept règles réécrivaient ici « Limonest » en « Écully » sur tout le
+   site, pied de page compris. Elles sont retirées : la maquette écrit
+   elle-même « Siège, 1 rue des Vergers, 69760 Limonest » sur 96 de ses 244
+   captures, et « Lyon — Siège · Limonest et Écully » sur la page Équipe.
+   Revenir à Limonest, c'est donc revenir à la maquette, pas s'en écarter, et
+   c'est pour cela qu'il n'y a plus aucune règle à appliquer : le texte de la
+   capture passe tel quel.
+
+   Ce qui reste à la main, parce que la maquette ne le dit nulle part : Écully
+   n'est plus « le siège » mais « l'agence ». Les trois endroits concernés sont
+   le pied de page, la liste des agences de la page Contact et la politique de
+   confidentialité, tous trois sans capture de maquette pour cette partie. */
 const SIEGE: Regle[] = [
-  [/siège à Limonest et bureaux à Écully/g, () => "siège à Écully"],
-  [/\(siège, à Limonest et Écully\)/g, () => "(siège, à Écully)"],
-  [/(siège est à Lyon), sur Limonest et Écully,/g, (_, debut) => `${debut}, à Écully,`],
-  [/(siège est à Lyon) \(Limonest, bureaux à Écully\)/g, (_, debut) => `${debut} (Écully)`],
-  [/pilote son activité depuis Limonest, avec des bureaux à Écully\./g, () => "pilote son activité depuis son siège d’Écully."],
-  [/Siège · Limonest et Écully/g, () => "Siège · Écully"],
-  [/siège Migen à Limonest/g, () => "siège Migen à Écully"],
+  /* LA SEULE RÈGLE QUI RESTE, et c'est que LA MAQUETTE SE CONTREDIT. Son pied
+     de page écrit « Siège, 1 rue des Vergers, 69760 Limonest » sur 96 captures,
+     mais le bloc « Nos informations pratiques » de /carriere/ écrit « Siège,
+     Chemin du Moulin Carron, bâtiment principal, 69130 Écully ». Les deux ne
+     peuvent pas être vrais. La décision du 09/10 tranche pour Limonest, donc
+     cette seule phrase est réécrite avant comparaison. */
+  [
+    /Chemin du Moulin Carron, bâtiment principal, 69130 Écully, près de Lyon\./g,
+    () => "1 rue des Vergers, 69760 Limonest, près de Lyon.",
+  ],
 ];
 
 /* 08/10, LES PHOTOS DE VILLE SOUS LICENCE. Décision de Mehdi, portée au relais :

@@ -483,7 +483,7 @@ export const HUB_CARRIERE: ContenuHubCarriere = {
         },
         {
           "titre": "Siège",
-          "texte": "Chemin du Moulin Carron, bâtiment principal, 69130 Écully, près de Lyon."
+          "texte": "1 rue des Vergers, 69760 Limonest, près de Lyon."
         },
         {
           "titre": "Couverture",
@@ -566,7 +566,7 @@ export const HUB_CARRIERE: ContenuHubCarriere = {
         },
         {
           "question": "Où sont les agences Migen ?",
-          "reponse": "Notre siège est à Lyon (Écully), et nos hubs de techniciens couvrent les grandes villes de France. Cette couverture nationale nous permet de recruter et d'intervenir partout dans le pays."
+          "reponse": "Notre siège est à Lyon (Limonest, bureaux à Écully), et nos hubs de techniciens couvrent les grandes villes de France. Cette couverture nationale nous permet de recruter et d'intervenir partout dans le pays."
         }
       ]
     },

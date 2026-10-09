@@ -20,7 +20,7 @@
  * 4. Chaque lien interne répond 200 sur le site : un lien de pied de page en
  *    404 est vu par tout le crawl. Une entrée du maillage sans page reste du
  *    texte, et « Habilitations » n'a aucun lien.
- * 5. L'adresse du siège est celle d'Écully, jamais Limonest, et aucun tiret
+ * 5. L'adresse du siège est celle de LIMONEST, celle de la maquette, et aucun tiret
  *    cadratin n'est rendu.
  * Des témoins prouvent que 1, 2 et 4 savent échouer.
  */
@@ -195,10 +195,18 @@ for (const manque of SANS_PAGE) {
 
 // 5 · le siège, et aucun tiret cadratin.
 const texte = lisible(rendu.replace(/<[^>]*>/g, " "));
-assert.ok(texte.includes("Siège 129 chemin du Moulin Carron, 69130 Écully"), "adresse du siège d'Écully absente");
-assert.ok(!/Limonest|—/.test(texte), "Limonest ou un tiret cadratin dans le pied de page");
+/* 09/10 : le siège est revenu à LIMONEST, décision de Mehdi qui renverse la
+   sienne du 07/10. Cette assertion exigeait Écully et REFUSAIT Limonest ; elle
+   exige maintenant l'inverse, et c'est le texte de la maquette, présent sur 96
+   de ses 244 captures. Écully reste l'agence, mais le pied de page ne nomme
+   que le siège, comme la maquette. */
+assert.ok(
+  texte.includes("Siège 1 rue des Vergers, 69760 Limonest"),
+  "adresse du siège de Limonest absente du pied de page",
+);
+assert.ok(!/Moulin Carron|—/.test(texte), "l'adresse d'Écully ou un tiret cadratin dans le pied de page");
 const landing = lisible(renderToStaticMarkup(<PiedDePage landingPage />).replace(/<[^>]*>/g, " "));
-assert.ok(!/Limonest|—|mise à disposition/.test(landing), "interdit dans le pied de page de la landing");
+assert.ok(!/Moulin Carron|—|mise à disposition/.test(landing), "interdit dans le pied de page de la landing");
 
 // ------------------------------------------------------------- témoins
 // Un libellé retiré, deux libellés permutés, un département perdu, un lien
@@ -220,5 +228,5 @@ console.log(
   `pied de page vérifié contre l'autonome : ${relevesNav} libellés de navigation et ${maillageMaquette.length} ` +
     `colonnes de maillage, mot pour mot et dans l'ordre ; « Toutes nos pages » au dessin de la maquette ; ` +
     `${internes.length} liens internes à 200 sur ${SITE} ; ${SANS_PAGE.length} libellé(s) sans page, revérifié(s) : ` +
-    `${SANS_PAGE.map((m) => `« ${m.libelle} » (${m.raison})`).join(", ")} ; siège d'Écully ; témoins d'échec tombés.`,
+    `${SANS_PAGE.map((m) => `« ${m.libelle} » (${m.raison})`).join(", ")} ; siège de Limonest ; témoins d'échec tombés.`,
 );

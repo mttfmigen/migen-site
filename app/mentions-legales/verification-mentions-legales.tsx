@@ -107,7 +107,7 @@ assert.ok(
 );
 assert.ok(
   texteRendu.includes("129 chemin du Moulin Carron, 69130 Écully, France"),
-  "le siège d'Écully (décision de Mehdi du 07/10) n'est pas rendu",
+  "le siège de Limonest (décision de Mehdi du 07/10) n'est pas rendu",
 );
 assert.ok(
   !texteRendu.includes("Limonest"),

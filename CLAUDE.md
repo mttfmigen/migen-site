@@ -11,14 +11,36 @@ habitude de framework.
 ## 1. Contexte
 
 Migen, maintenance industrielle B2B : déploiement de techniciens
-électromécaniciens, automaticiens et roboticiens sur sites clients. **Siège à
-Écully**, 129 chemin du Moulin Carron, 69130 Écully, près de Lyon.
+électromécaniciens, automaticiens et roboticiens sur sites clients.
+**Siège à Limonest**, 1 rue des Vergers, 69760 Limonest.
+**Agence à Écully**, 129 chemin du Moulin Carron, 69130 Écully.
 
-> **Tranché par Mehdi le 07/10 au soir : « le siège est à Écully ».** Cette
-> ligne avait été corrigée vers Limonest le 02/10 sur trois sources ; la
-> décision du client les remplace, et le dossier de passation de la maquette
-> porte la même adresse. Toute phrase qui place le siège à Limonest est fausse.
+> **Tranché par Mehdi le 09/10 : « le siège est à Limonest, l'agence est à
+> Écully ».** Cette décision RENVERSE la sienne du 07/10 et donne raison à
+> l'audit de Nathan Jorez du 09/10, qui signalait « le siège à Écully au lieu de
+> Limonest » dans les mentions légales.
+>
+> **Et elle revient à la maquette, elle ne s'en écarte pas** : la maquette écrit
+> « Siège, 1 rue des Vergers, 69760 Limonest » sur 96 de ses 244 captures,
+> « Lyon, Siège · Limonest et Écully » sur la page Équipe, et « siège à
+> Limonest et bureaux à Écully » dans le chapô de Lyon. Ce sont les sept règles
+> de réécriture du 07/10 qui l'en écartaient ; elles sont retirées de
+> `lib/decisions-copie.ts`, et le texte de la capture passe désormais tel quel.
+>
+> Ce qui reste à notre main, parce que la maquette ne le dit nulle part : Écully
+> est nommée **agence**, et non plus « siège ». Trois endroits, tous sans
+> capture pour cette partie : le pied de page, la liste des agences de
+> `/contact/` et la politique de confidentialité.
+>
+> **Deux portes ont dû être retournées** : `verification-pied-de-page.tsx` et
+> `verification-contact.tsx` refusaient explicitement « Limonest ». Celle de
+> Contact exige maintenant LES DEUX, le siège et l'agence : n'en vérifier qu'un
+> seul est précisément ce qui avait laissé passer l'erreur.
 
+> **CADUC depuis le 09/10, gardé pour l'histoire.** Les deux paragraphes qui
+> suivent ont tour à tour affirmé Écully, puis Limonest, puis Écully. La
+> décision du 09/10 ci-dessus clôt la série : siège à Limonest, agence à Écully.
+>
 > **CADUC depuis le 07/10, gardé pour l'histoire.** Cette ligne disait « Écully et Lyon ». Corrigée le 02/10 après vérification,
 > parce que trois sources plus récentes et concordantes disent Limonest : la
 > maquette validée (« 1 rue des Vergers, 69760 Limonest »), le corpus rédigé
@@ -155,7 +177,8 @@ chiffré d'intervention (seul « rappel dans l'heure » est autorisé), aucun pr
 jamais « régie », « intérim », « mise à disposition », « sans engagement »,
 jamais « levier », « clé en main », « sur mesure », « concrètement »,
 « notamment », « incontournable », « découvrez ». Quatre agences (Lyon, siège à
-Écully, Montréal, Dubaï, Madrid), aucune autre en France, dix hubs de techniciens.
+Limonest et agence à Écully, Montréal, Dubaï, Madrid), aucune autre en France,
+dix hubs de techniciens.
 
 ## 10. Console marketing
 

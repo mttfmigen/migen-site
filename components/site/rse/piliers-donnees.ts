@@ -9,7 +9,7 @@
  * (`docs/CONTRAT-PORTAGE-MAQUETTE.md`) qui l'emportent sur elle :
  *
  *  1. Pilier 04, chapeau : la maquette écrit « Cinq agences ». Le compte tenu
- *     est de quatre agences (Lyon siège à Écully, Montréal, Dubaï, Madrid) et
+ *     est de quatre agences (Lyon siège à Limonest, Montréal, Dubaï, Madrid) et
  *     dix hubs de techniciens.
  *  2. Pilier 04, premier indicateur : « moins de 45 min de trajet moyen depuis
  *     l'agence jusqu'au site » est un délai chiffré d'intervention. Seul

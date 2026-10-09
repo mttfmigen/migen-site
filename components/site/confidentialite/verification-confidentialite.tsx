@@ -104,24 +104,22 @@ function styleMaquette(cle: string): string {
 
 // ------------------------------------------------- le texte porté mot pour mot
 
-// L'adresse du siège. LA MAQUETTE ET LE RENDU DIVERGENT VOLONTAIREMENT, même
-// modèle que `app/mentions-legales/verification-mentions-legales.tsx` : la
-// maquette écrit encore Limonest, et Mehdi a tranché le 07/10 au soir « le
-// siège est à Écully ». Les deux côtés sont vérifiés : le jour où la maquette
-// est corrigée, cette exception tombe et le dit.
+/* L'adresse du siège. PLUS AUCUNE DIVERGENCE DEPUIS LE 09/10 : Mehdi a tranché
+   que le siège est à Limonest, ce que la maquette écrivait déjà. Les deux
+   côtés doivent donc porter le même texte, et c'est ce que vérifient les deux
+   assertions ci-dessous. La troisième, qui refusait « Limonest » au nom de la
+   décision du 07/10, est supprimée : elle disait l'inverse de ce qui est vrai. */
+const ADRESSE_MAQUETTE = "migen©, 1 rue des Vergers, Bâtiment 3, 69760 Limonest.";
 assert.equal(
   phraseMaquette("rue des Vergers"),
-  "migen©, 1 rue des Vergers, Bâtiment 3, 69760 Limonest.",
-  "la maquette ne porte plus Limonest : l'exception du 07/10 n'a plus d'objet, la retirer",
+  ADRESSE_MAQUETTE,
+  "la maquette n'écrit plus cette adresse : la relire avant de changer le rendu",
 );
 assert.ok(
-  texteRendu.includes("migen©, 129 chemin du Moulin Carron, 69130 Écully."),
-  "le siège d'Écully (décision de Mehdi du 07/10) n'est pas rendu",
+  texteRendu.includes(ADRESSE_MAQUETTE),
+  "l'adresse du siège de Limonest n'est pas rendue, mot pour mot comme la maquette",
 );
-assert.ok(
-  !texteRendu.includes("Limonest"),
-  "Limonest est rendu : le siège est à Écully depuis la décision du 07/10",
-);
+
 
 for (const cle of [
   "Via les candidatures",

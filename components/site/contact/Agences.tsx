@@ -9,9 +9,12 @@ import type { CSSProperties } from "react";
  *
  * 1. La maquette annonçait « Cinq agences en France, deux à l'international »
  *    et listait Écully, Paris, Strasbourg, Nantes, Toulouse. Le contrat de
- *    projet tient quatre agences, Lyon (siège, à Écully), Montréal, Dubaï et
- *    Madrid, plus dix hubs de techniciens. Les villes françaises listées sont
- *    des hubs, pas des agences, et l'adresse d'Écully est l'ancienne du siège.
+ *    projet tient quatre agences, Lyon (siège à Limonest, agence à Écully),
+ *    Montréal, Dubaï et Madrid, plus dix hubs de techniciens. Les villes
+ *    françaises listées sont des hubs, pas des agences.
+ *    09/10 : le siège est revenu à Limonest, décision de Mehdi qui renverse
+ *    celle du 07/10. Écully reste, mais comme AGENCE, ce que la maquette ne
+ *    dit nulle part : cette ligne-là est donc à nous, pas à elle.
  * 2. La carte interactive de la maquette (`x-import MigenAgences`) demande une
  *    bibliothèque de cartographie que le contrat interdit d'installer. La liste
  *    prend donc toute la largeur, et le lien vers les implantations tient le
@@ -25,7 +28,8 @@ interface Agence {
 }
 
 const AGENCES: readonly Agence[] = [
-  { nom: "Siège, Écully", adresse: "129 chemin du Moulin Carron, 69130 Écully" },
+  { nom: "Siège, Limonest", adresse: "1 rue des Vergers, 69760 Limonest" },
+  { nom: "Agence, Écully", adresse: "129 chemin du Moulin Carron, 69130 Écully" },
   { nom: "Dubaï", adresse: "Level 20, 48 Burj Tower, Downtown" },
   { nom: "Montréal", adresse: "2020 route Transcanadienne, Dorval, Québec" },
   { nom: "Madrid", adresse: "" },

@@ -174,8 +174,11 @@ const MAILLAGE: readonly GroupeMaillage[] = [
   },
 ];
 
-/* Adresse du siège : celle de la maquette, mot pour mot. */
-const ADRESSE_SIEGE = "129 chemin du Moulin Carron, 69130 Écully";
+/* Adresse du siège : celle de la maquette, mot pour mot, et c'est elle qui est
+   juste. Elle avait été remplacée par Écully le 07/10 ; Mehdi a tranché le
+   09/10 que le siège est bien à Limonest et qu'Écully est l'agence. La
+   maquette l'écrit ainsi sur 96 de ses 244 captures. */
+const ADRESSE_SIEGE = "1 rue des Vergers, 69760 Limonest";
 
 const styleCadre: CSSProperties = {
   maxWidth: 1200,

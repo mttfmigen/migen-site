@@ -17,13 +17,21 @@ const CHANGE: [string, string][] = [
   ["le but : un candidat retenu sur dix.", "le but : un technicien retenu sur dix."],
   ["Entretien technique et comportemental pour chaque candidat, 10 % retenus", "Entretien technique et comportemental pour chaque technicien, 10 % retenus"],
   ["Nous évaluons chaque candidat en entretien technique", "Nous évaluons chaque technicien en entretien technique"],
-  ["Migen est née ici en 2021, siège à Limonest et bureaux à Écully, et nos techniciens", "Migen est née ici en 2021, siège à Écully, et nos techniciens"],
-  ["Quatre agences, Lyon (siège, à Limonest et Écully), Montréal", "Quatre agences, Lyon (siège, à Écully), Montréal"],
-  ["Le siège est à Lyon, sur Limonest et Écully, et le groupe", "Le siège est à Lyon, à Écully, et le groupe"],
-  ["Notre siège est à Lyon (Limonest, bureaux à Écully), et nos hubs", "Notre siège est à Lyon (Écully), et nos hubs"],
-  ["l’entreprise pilote son activité depuis Limonest, avec des bureaux à Écully.", "l’entreprise pilote son activité depuis son siège d’Écully."],
-  ["Lyon Siège · Limonest et Écully Montréal", "Lyon Siège · Écully Montréal"],
 ];
+/* 09/10 : le siège est revenu à Limonest, donc le texte de la maquette ne doit
+   plus être touché du tout. Ces six phrases étaient réécrites jusqu'au 08/10 ;
+   elles doivent désormais passer intactes, et c'est ce qui le prouve. */
+const SIEGE_INTACT = [
+  "Migen est née ici en 2021, siège à Limonest et bureaux à Écully, et nos techniciens",
+  "Quatre agences, Lyon (siège, à Limonest et Écully), Montréal",
+  "Le siège est à Lyon, sur Limonest et Écully, et le groupe",
+  "Notre siège est à Lyon (Limonest, bureaux à Écully), et nos hubs",
+  "l’entreprise pilote son activité depuis Limonest, avec des bureaux à Écully.",
+  "Lyon Siège · Limonest et Écully Montréal",
+  "Maintenance industrielle Lyon : siège Migen à Limonest, dépannage.",
+];
+for (const texte of SIEGE_INTACT) assert.equal(appliqueDecisions(texte), texte);
+
 const INCHANGE = [
   "Rareté des candidats, coût de la vie",
   "faute de candidats en nombre suffisant sur le marché",
@@ -75,9 +83,8 @@ assert.equal(
   copieConforme("Techniciens évalués, 10 % des candidats retenus. Astreinte 24/24 et 7/7 en option. Rappel dans l'heure."),
   "Techniciens évalués, 10 % des techniciens retenus. Rappel dans l'heure.",
 );
-assert.equal(copieConforme("Maintenance industrielle Lyon : siège Migen à Limonest, dépannage."), "Maintenance industrielle Lyon : siège Migen à Écully, dépannage.");
 assert.equal(copieConforme("Pas au hasard. 10 % des candidats retenus, 4 agences en France."), "Pas au hasard.");
 console.log(
   `décisions de copie : ${CHANGE.length} réécritures, ${PHOTOS.length} crédits de photo retirés, ` +
-    `${TEL.length} téléphones rendus, ${INCHANGE.length + TEL_INCHANGE.length} phrases laissées intactes, conformes`,
+    `${TEL.length} téléphones rendus, ${INCHANGE.length + TEL_INCHANGE.length + SIEGE_INTACT.length} phrases laissées intactes, conformes`,
 );

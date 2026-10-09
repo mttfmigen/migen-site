@@ -89,7 +89,7 @@ export const CHIFFRES: readonly Chiffre[] = [
     valeur: "2021",
     libelle: "Année de création",
     texte:
-      "Fondée par Nathan Jorez, l’entreprise pilote son activité depuis son siège d’Écully.",
+      "Fondée par Nathan Jorez, l’entreprise pilote son activité depuis Limonest, avec des bureaux à Écully.",
     sombre: true,
   },
   {
@@ -170,7 +170,7 @@ export interface Agence {
 }
 
 export const AGENCES: readonly Agence[] = [
-  { ville: "Lyon", precision: "Siège · Écully", siege: true },
+  { ville: "Lyon", precision: "Siège · Limonest et Écully", siege: true },
   { ville: "Montréal", precision: "Canada" },
   { ville: "Dubaï", precision: "Émirats arabes unis" },
   { ville: "Madrid", precision: "Espagne" },

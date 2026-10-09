@@ -134,16 +134,11 @@ assert.equal(
 );
 
 // ------------------------------------- substitutions imposées par le client
-// Le siège : la capture écrit encore Limonest, Mehdi a tranché le 07/10 au soir
-// « le siège est à Écully ». Chaque phrase de la capture est relue (sinon
-// l'exception n'a plus d'objet et le contrôle le dit), sa correction est rendue.
-const SUBSTITUTIONS: readonly (readonly [string, string])[] = [
-  ["Siège · Limonest et Écully", "Siège · Écully"],
-  [
-    "l'entreprise pilote son activité depuis Limonest, avec des bureaux à Écully.",
-    "l'entreprise pilote son activité depuis son siège d'Écully.",
-  ],
-];
+/* 09/10 : LE SIÈGE EST REVENU À LIMONEST, décision de Mehdi qui renverse la
+   sienne du 07/10. Cette table réécrivait la capture pour en chasser Limonest ;
+   la capture avait raison, elle est donc laissée telle quelle et la table est
+   vide. Écully reste, nommée comme la maquette la nomme : « bureaux ». */
+const SUBSTITUTIONS: [string, string][] = [];
 for (const [capture, rendu] of SUBSTITUTIONS) {
   assert.ok(
     texte(CAPTURE).includes(capture),
@@ -309,7 +304,6 @@ for (const interdit of [
   "7j/7",
   "7 j/7",
   "Teamtailor",
-  "Limonest",
   "—",
   "–",
 ]) {
