@@ -267,9 +267,57 @@ const PHOTOS_VILLES = JSON.parse(
   readFileSync(join(RACINE, "maquette", "contenu", "site", "photos-villes.json"), "utf8"),
 ) as Record<string, { src: string; credit?: string }>;
 
+/* LES VERSIONS SOUS LICENCE, et pourquoi elles remplacent celles de la maquette.
+   `photos-villes.json` porte ce que la maquette sert : des APERÇUS Envato, 600 px
+   de large, couverts de filigranes « envato », et chargés depuis le CDN d'Envato
+   à chaque visite. Trois raisons de ne pas les mettre en ligne : le filigrane se
+   voit, la licence ne couvre pas l'aperçu, et une page de production ne doit pas
+   dépendre d'un hôte tiers pour ses images. Mehdi a fait acheter les versions
+   sous licence le 08/10 ; elles sont dans `public/assets/villes/`, en 1396 à
+   2000 px. La correspondance a été établie photo par photo, page Envato à
+   l'appui, dans `docs/PHOTOS-VILLES-ENVATO.md` : c'est elle qui fait foi ici.
+   Le crédit disparaît avec l'aperçu : le badge « Aperçu Envato » n'avait de sens
+   que tant que l'image n'était pas sous licence. Marseille et Bordeaux
+   réutilisent la photo de leur carte de hub, c'est la même image dans la
+   maquette. Les 62 autres pages ville gardent leur photo d'atelier (`REPLIS`),
+   la maquette ne leur en donne pas d'autre. */
+const SOUS_LICENCE: Record<string, string> = {
+  "/implantations/lyon/": "ville-lyon.jpg",
+  "/implantations/paris/": "ville-paris.jpg",
+  "/implantations/marseille/": "hub-marseille.jpg",
+  "/implantations/strasbourg/": "ville-strasbourg.jpg",
+  "/implantations/nantes/": "ville-nantes.jpg",
+  "/implantations/bordeaux/": "hub-bordeaux.jpg",
+  "/implantations/paris/rouen/": "ville-rouen.jpg",
+  "/implantations/maintenance-industrielle-orleans/": "ville-orleans.jpg",
+  "/implantations/maintenance-industrielle-quimper/": "ville-quimper.jpg",
+  "/implantations/maintenance-industrielle-lorient/": "ville-lorient.jpg",
+  "/implantations/maintenance-industrielle-le-havre/": "ville-le-havre.jpg",
+  "/implantations/maintenance-industrielle-dunkerque/": "ville-dunkerque.jpg",
+};
+
+/* Les deux tables doivent couvrir exactement les mêmes pages. Si la maquette
+   gagne une photo de ville au prochain export et qu'on oublie de l'acheter, ce
+   contrôle le dit tout de suite au lieu de laisser un aperçu filigrané partir
+   en production. */
+{
+  const deLaMaquette = Object.keys(PHOTOS_VILLES).sort().join("|");
+  const sousLicence = Object.keys(SOUS_LICENCE).sort().join("|");
+  if (deLaMaquette !== sousLicence) {
+    throw new Error(
+      "Les photos de ville de la maquette et celles sous licence ne couvrent plus les mêmes pages.\n" +
+        `  maquette     : ${Object.keys(PHOTOS_VILLES).sort().join(", ")}\n` +
+        `  sous licence : ${Object.keys(SOUS_LICENCE).sort().join(", ")}\n` +
+        "  Acheter la photo manquante (docs/PHOTOS-VILLES-ENVATO.md) ou retirer l'entrée en trop.",
+    );
+  }
+}
+
 /** `cityImg` de `MigenExpertise.dc.html`, à l'identique : `h = h * 31 + code`, sur 32 bits non signés. */
 const REPLIS = ["sv-convoyeur", "sv-armoire", "sv-duo-impact", "sv-portrait", "team-grind-front", "team-electric"];
 function photoAttendue(url: string): { photo: string; credit?: string } {
+  const licence = SOUS_LICENCE[url];
+  if (licence) return { photo: `/assets/villes/${licence}` };
   const envato = PHOTOS_VILLES[url];
   if (envato?.src) return { photo: envato.src, credit: envato.credit };
   let h = 0;

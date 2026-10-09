@@ -36,8 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Lyon",
       "titre": "Lyon : les industries que nos techniciens connaissent déjà",
-      "photo": "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/2b/1f/20/5a/e9/v1_E10/E10QDY1.jpg?w=600&cf_fit=scale-down&mark-alpha=18&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark4.png&q=85&format=auto&s=73a0aefdffec69ef87fa8f57f33e32325386989cfe7cb56710f88666f50c9d93",
-      "credit": "Lyon city in France · RossHelen",
+      "photo": "/assets/villes/ville-lyon.jpg",
       "badge": "Hub Migen",
       "nom": "Hub Lyon",
       "texte": "Une équipe de techniciens installée à Lyon, au plus près de vos sites, appuyée par le réseau national Migen.",

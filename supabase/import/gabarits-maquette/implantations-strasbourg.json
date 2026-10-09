@@ -32,8 +32,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Strasbourg",
       "titre": "Strasbourg : les industries que nos techniciens connaissent déjà",
-      "photo": "https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/a0/15/e8/9a/85/v1_E10/E10DWX6.jpg?w=600&cf_fit=scale-down&mark-alpha=18&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark4.png&q=85&format=auto&s=3996d5efcfd2029378bd83e687c8adb6a8af88d3b3f1b1d767970cf1366d51b0",
-      "credit": "Bridges of Strasbourg · Givaga",
+      "photo": "/assets/villes/ville-strasbourg.jpg",
       "badge": "Hub Migen",
       "nom": "Hub Strasbourg",
       "texte": "Une équipe de techniciens installée à Strasbourg, au plus près de vos sites, appuyée par le réseau national Migen.",

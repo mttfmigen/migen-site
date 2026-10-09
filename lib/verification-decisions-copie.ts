@@ -38,6 +38,37 @@ const INCHANGE = [
   "S'y ajoutent notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid.",
 ];
 
+/* 08/10 : les photos de ville sous licence, et le téléphone rendu à ses phrases.
+   Ces deux règles s'appliquent à la CAPTURE avant comparaison au rendu, donc une
+   règle trop large ferait passer un vrai défaut sans que rien ne le dise. Les
+   contre-exemples comptent ici autant que les exemples. */
+const PHOTOS: [string, string][] = [
+  ["Aperçu Envato · Lyon city in France · RossHelen", ""],
+  ["Aperçu Envato · Bordeaux city in France · RossHelen", ""],
+  ["Aperçu Envato · Port à conteneurs · nikonlamp", ""],
+  ["Aperçu Envato · Vannes · Unai82", ""],
+];
+const TEL: [string, string][] = [
+  ["Pour nous joindre : , du lundi au vendredi de 8h00 à 18h30.", "Pour nous joindre : 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30."],
+  ["Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30 : .", "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30 : 04 78 33 72 05."],
+  ["Un premier contact suffit : , nous vous rappelons dans l'heure.", "Un premier contact suffit : 04 78 33 72 05, nous vous rappelons dans l'heure."],
+];
+/* Ce que la règle du téléphone ne doit SURTOUT pas toucher : un deux-points
+   suivi d'un mot, d'un chiffre ou d'une majuscule est une phrase normale, et le
+   corpus en est plein. */
+const TEL_INCHANGE = [
+  "Habilitations, travail en hauteur, espace confiné : les autorisations sont à jour.",
+  "Pour nous joindre : 04 78 33 72 05, du lundi au vendredi.",
+  "Trois sites, deux équipes ; un seul référent.",
+  "Le constat est simple : moderniser coûte moins cher que remplacer.",
+  "Nos agences : Lyon, Montréal, Dubaï, Madrid.",
+  "Rappel dans l'heure. Astreinte la nuit, le week-end et les jours fériés.",
+];
+
+for (const [avant, apres] of PHOTOS) assert.equal(appliqueDecisions(avant).trim(), apres);
+for (const [avant, apres] of TEL) assert.equal(appliqueDecisions(avant), apres);
+for (const texte of TEL_INCHANGE) assert.equal(appliqueDecisions(texte), texte);
+
 for (const [avant, apres] of CHANGE) assert.equal(appliqueDecisions(avant), apres);
 for (const texte of INCHANGE) assert.equal(appliqueDecisions(texte), texte);
 assert.equal(
@@ -46,4 +77,7 @@ assert.equal(
 );
 assert.equal(copieConforme("Maintenance industrielle Lyon : siège Migen à Limonest, dépannage."), "Maintenance industrielle Lyon : siège Migen à Écully, dépannage.");
 assert.equal(copieConforme("Pas au hasard. 10 % des candidats retenus, 4 agences en France."), "Pas au hasard.");
-console.log(`décisions de copie : ${CHANGE.length} réécritures et ${INCHANGE.length} phrases laissées, conformes`);
+console.log(
+  `décisions de copie : ${CHANGE.length} réécritures, ${PHOTOS.length} crédits de photo retirés, ` +
+    `${TEL.length} téléphones rendus, ${INCHANGE.length + TEL_INCHANGE.length} phrases laissées intactes, conformes`,
+);

@@ -39,7 +39,45 @@ const SIEGE: Regle[] = [
   [/siège Migen à Limonest/g, () => "siège Migen à Écully"],
 ];
 
-const REGLES = [...SELECTION, ...SIEGE];
+/* 08/10, LES PHOTOS DE VILLE SOUS LICENCE. Décision de Mehdi, portée au relais :
+   « Photos de ville : versions sous licence Envato » et « vider hubLocal.credit,
+   le badge Aperçu Envato n'a plus lieu d'être ». La maquette sert les aperçus
+   d'Envato, 600 px, filigranés, chargés depuis le CDN d'Envato, et les
+   accompagne d'un badge de crédit qui n'existe que parce que l'image n'est pas
+   sous licence. Les versions achetées sont dans `public/assets/villes/`, le
+   badge disparaît avec l'aperçu, et la capture doit donc perdre les deux avant
+   d'être comparée au rendu. */
+const PHOTOS_VILLE: Regle[] = [
+  [/Aperçu Envato\s*·\s*/g, () => ""],
+  [/Lyon city in France · RossHelen/g, () => ""],
+  [/La Défense · RossHelen/g, () => ""],
+  [/Marseille Vieux-Port · sam741002/g, () => ""],
+  [/Bridges of Strasbourg · Givaga/g, () => ""],
+  [/Nantes city in France · RossHelen/g, () => ""],
+  [/Bordeaux city in France · RossHelen/g, () => ""],
+  [/Rouen · RossHelen/g, () => ""],
+  [/Orléans · RossHelen/g, () => ""],
+  [/Quimper · Unai82/g, () => ""],
+  [/Vannes · Unai82/g, () => ""],
+  [/Port à conteneurs · nikonlamp/g, () => ""],
+  [/Port et centrale · IndustryAndTravel/g, () => ""],
+];
+
+/* 08/10, LE TÉLÉPHONE RENDU À SES PHRASES. ÉCART À FAIRE CONFIRMER PAR MEHDI.
+   La maquette écrit « Pour nous joindre : , du lundi au vendredi… » et
+   « …de 8h00 à 18h30 : . L'astreinte… » : elle perd le 04 78 33 72 05 que SON
+   PROPRE corpus écrit à cet endroit (`implantations--toulouse--gironde.md`
+   l.13). Un deux-points qui s'ouvre sur une virgule n'est pas une typographie,
+   c'est un trou, et le corpus dit ce qui y manquait. Vingt champs ont donc été
+   restaurés le 08/10, dont dix-sept redonnent la ligne de corpus à la lettre.
+   Le site s'écarte ici de sa maquette EN CONNAISSANCE DE CAUSE. Si Mehdi
+   tranche que la maquette fait foi jusque-là, il faut retirer les vingt numéros
+   et supprimer cette règle. Tant qu'elle est là, la capture reçoit le numéro
+   avant d'être comparée, et `scripts/verifie-phrases-estropiees.mjs` continue
+   de refuser la forme trouée pour qu'un retour en arrière se voie. */
+const TELEPHONE: Regle[] = [[/:\s+(?=[,.])/g, () => ": 04 78 33 72 05"]];
+
+const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE];
 
 /** Le texte tel que le site doit le rendre, à partir de celui de la maquette. */
 export function appliqueDecisions(texte: string): string {
