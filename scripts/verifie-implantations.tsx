@@ -263,7 +263,14 @@ function controle(page: Page, htmlBrut: string, css = CSS): string[] {
       (p) => `/assets/photos/${p.fichier}`,
     ),
   );
-  const devinees = photos.filter((p) => !PHOTOS_REFERENCES.includes(p) && !auRegistre.has(p));
+  /* `photo` est facultative dans le type : une carte de référence sans photo
+     est un défaut en soi, et elle est nommée au lieu d'être filtrée en
+     silence. Les autres sont comparées au relevé puis au registre. */
+  const sansPhoto = photos.filter((p) => !p).length;
+  if (sansPhoto > 0) e.push(`${sansPhoto} carte(s) de référence sans photo`);
+  const devinees = photos
+    .filter((p): p is string => typeof p === "string")
+    .filter((p) => !PHOTOS_REFERENCES.includes(p) && !auRegistre.has(p));
   if (devinees.length > 0) {
     e.push(`photos des références devinées, ni au relevé de la maquette ni au registre : [${devinees.join(", ")}]`);
   }
