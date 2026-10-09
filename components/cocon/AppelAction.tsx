@@ -48,10 +48,18 @@ const APPELS: Record<TypeCta, { titre: string; bouton: string }> = {
 };
 
 /**
- * Le remplissage reste écrit `40px 44px` et le rayon reste `var(--rad)` :
- * `app/globals.css` rattrape l'un et l'autre sous 760px par des sélecteurs
- * d'attribut (`[style*="padding:40px 44px"]`). Une autre valeur, même proche,
- * laisserait 88px de gouttière sur un téléphone de 320px.
+ * Le remplissage reste écrit `40px 44px` et le rayon reste `var(--rad)` parce
+ * que c'est ce que la maquette CALCULE à 390 px, sur un panneau de 308 px,
+ * mesuré des deux côtés le 09/10.
+ *
+ * Ce commentaire disait l'inverse : que `globals.css` rattrapait l'un et
+ * l'autre sous 760 px. C'est faux, et c'est important. La maquette sérialise
+ * son attribut avec une espace (« padding: 40px 44px »), donc son propre
+ * sélecteur `[style*="padding:40px 44px"]` n'atteint aucun élément chez elle.
+ * Porté, il ne mordrait que sur le site, qui rendrait 24px 20px là où la
+ * maquette rend 40px 44px. `globals.css` ne porte donc sciemment aucun
+ * rattrapage ici, et `verification-appel-action.tsx` vérifie qu'il n'en
+ * reprend pas.
  */
 const ENCART: CSSProperties = {
   ...PANNEAU,

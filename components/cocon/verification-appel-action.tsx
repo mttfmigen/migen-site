@@ -148,19 +148,47 @@ for (const d of declarations(styleAvec(2676, "border-radius:999px"))) {
 }
 
 // ===================================================================
-// 4. Le rattrapage mobile de `globals.css` doit retrouver ses sélecteurs
+// 4. `globals.css` ne doit PAS rattraper ce remplissage sous 760 px
 // ===================================================================
-// Il travaille par sélecteurs d'attribut sur le style en ligne. Changer la
-// sérialisation d'un pixel supprime la règle sans rien casser d'autre : 88px de
-// gouttière reviennent sur téléphone, en silence.
+// L'ASSERTION EST INVERSÉE DEPUIS LE 09/10, et c'est une mesure, pas un
+// renoncement. Elle exigeait auparavant que globals.css porte le sélecteur
+// `[style*="padding:40px 44px"]` de la maquette ; la règle a été retirée le
+// 08/10 et ce contrôle échouait depuis.
+//
+// Mesuré à 390 px sur /carriere/, des deux côtés : le panneau fait 308 px et
+// calcule `40px 44px`, à l'identique. La maquette sérialise son attribut AVEC
+// une espace (« padding: 40px 44px ») parce que son moteur pose les styles par
+// le CSSOM : son propre sélecteur, écrit sans espace, n'atteint donc AUCUN
+// élément chez elle. React, lui, écrit l'attribut sans espace. Porter la règle
+// la ferait mordre sur le site SEUL, qui rendrait 24px 20px là où la maquette
+// rend 40px 44px. Le rendu de la maquette fait foi : la règle reste dehors, et
+// ce contrôle garde l'alignement acquis au lieu de le défaire.
+//
+// LES QUATRE VALEURS, pas une seule. Le bloc retiré en couvrait quatre
+// (globals.css, commit 1ee7190) et `30px 34px` est présent sur 85 captures
+// contre 5 pour `40px 44px` : ne verrouiller que la seconde laisserait rentrer
+// la régression la plus large. Voir le commentaire de globals.css qui explique
+// pourquoi aucune de ces règles n'est portée.
 const globals = readFileSync("app/globals.css", "utf8");
-for (const litteral of ["padding:40px 44px"]) {
+/* LES COMMENTAIRES SONT RETIRÉS AVANT LA RECHERCHE, et c'est nécessaire :
+   globals.css explique en commentaire pourquoi il ne porte PAS ces règles, donc
+   il les cite. Un contrôle qui ne saurait pas distinguer l'explication de la
+   règle forcerait à effacer l'explication. Même raison, et même remède, que
+   `scripts/verifie-interdits.mjs`. */
+const regles = globals.replace(/\/\*[\s\S]*?\*\//g, " ");
+for (const litteral of [
+  "padding:30px 34px",
+  "padding:36px 40px",
+  "padding:40px 44px",
+  "padding:44px 48px",
+]) {
   assert.ok(
-    globals.includes(`[style*="${litteral}"]`),
-    `globals.css ne rattrape plus « ${litteral} » sous 760px`,
+    !regles.includes(`[style*="${litteral}"]`),
+    `globals.css rattrape à nouveau « ${litteral} » : le site s'écarterait de la maquette sur téléphone`,
   );
-  assert.ok(html.includes(litteral), `le rendu n'écrit plus « ${litteral} »`);
 }
+// Le rendu, lui, doit continuer d'écrire la valeur de la maquette.
+assert.ok(html.includes("padding:40px 44px"), "le rendu n'écrit plus « padding:40px 44px »");
 
 // ===================================================================
 // 5. Contraste, calculé sur le fond réel

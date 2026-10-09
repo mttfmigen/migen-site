@@ -129,7 +129,7 @@ bun components/site/metier/verification-metier.tsx
 bun components/site/preuve/verification-preuve.tsx
 bun components/site/expertises/specialite/verification-specialite.tsx
 bun components/site/expertises/domaine/verification-domaine.tsx
-bun scripts/verifie-ressource.tsx
+bun components/site/ressource/verification-ressource.tsx
 ```
 
 Chacun a prouvé qu'il échoue sur une faute injectée avant d'être cru.

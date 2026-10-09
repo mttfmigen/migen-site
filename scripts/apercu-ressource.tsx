@@ -11,7 +11,8 @@
  * composant sur le fichier de données et écrit une page ouvrable au navigateur,
  * charte comprise.
  *
- * Il ne remplace pas `scripts/verifie-ressource.tsx`, qui est le contrôle : ici
+ * Il ne remplace pas `components/site/ressource/verification-ressource.tsx`,
+ * qui est le contrôle : ici
  * rien n'est asserté, c'est un oeil humain qui regarde.
  *
  * Tailwind est retiré de la charte parce que sa directive `@import` ne
