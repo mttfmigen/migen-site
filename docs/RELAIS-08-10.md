@@ -264,3 +264,73 @@ Secteurs étaient encore l'ancienne version en ligne, Mehdi l'a vu).
   **À faire trancher par Mehdi** avant d'y toucher. Et en retirant l'interdit, refaire
   porter l'injection de `verification-offres.tsx:335-344` sur un VRAI prix (un montant en
   euros), sans quoi la porte perd sa capacité d'échouer.
+
+---
+
+# Suite du 09/10 : ce qui a été fait, et ce qui attend
+
+## Décisions de Mehdi du 09/10, toutes appliquées
+
+- **Siège à Limonest, agence à Écully.** Renverse le 07/10, donne raison à l'audit
+  de Nathan. Revient à la maquette (96 captures l'écrivent). Les 7 règles de
+  réécriture sont retirées de `lib/decisions-copie.ts` ; il n'en reste qu'une, parce
+  que la maquette se contredit sur `/carriere/`. **Sept portes ont été retournées.**
+- **Orthus devient Migen Travaux / Migen Bureau d'études.** 62 champs de texte +
+  frise + menu. Écart déclaré (bloc `ORTHUS` de `decisions-copie.ts`), la maquette
+  le portant sur 22 captures.
+- **Photos de ville sur `/carriere/`**, 7 cartes de hub. Écart déclaré.
+- **8 portraits du CODIR** remplacés.
+
+## Mesures faites le 09/10, à ne pas refaire
+
+- **Photos** : 1 810 emplacements pour **56 photos distinctes**. `team-duo.jpg` et
+  `team-grind-front.jpg` servies **133 fois chacune**. **130 pages** répètent une
+  photo, six en répètent une **six fois**. Les **109 photos** de
+  `public/assets/photos/` (registre, 27 thèmes) : **zéro utilisée**.
+- **Logos** : deux affichages empilés sur ~138 pages, et **c'est le dessin de la
+  maquette** (écrans « 02 Logos » et « 08 Références »). Mais le bandeau défilant
+  porte **76 à 86 logos** et partage ses marques avec la grille, d'où l'effet de
+  répétition que Mehdi signale. **Sa demande du 09/10 : il ne doit y avoir qu'une
+  seule bande de logos.** À trancher : supprimer le bandeau, ou lui donner des
+  marques différentes de la grille.
+- **Audit de Nathan** : 32 constats vérifiés un par un. 27 confirmés, 4 déjà
+  corrigés, 1 faux (**41 études de cas, pas 28** ; c'est le méga-menu qui dit 28).
+  Détail complet dans le résultat du workflow `audit-nathan-verification`.
+
+## Bloquants de l'audit, confirmés par la mesure
+
+1. **Mentions légales** : 13 champs « à compléter » (forme juridique, capital, RCS,
+   SIRET, TVA, hébergeur, directeur de publication…). `app/mentions-legales/page.tsx`.
+2. **Confidentialité** : bandeau « en cours de validation juridique », et **OpenAI**
+   cité comme destinataire publicitaire alors qu'aucun pixel n'est armé.
+   `PolitiqueConfidentialite.tsx:344` et `lib/consentement.ts:70`.
+3. **Markdown brut visible** : 26 chaînes sur 12 pages, **quatre causes distinctes**,
+   dont un motif de `CorpsRessource.tsx:21` qui ne redescend pas dans « **Le [lien](/x/)** ».
+4. **38 logos** affichés, et les mentions légales disent « utilisés avec leur accord ».
+
+## En attente d'un arbitrage de Mehdi
+
+- Le **04 78 33 72 05** restauré dans 20 phrases (la maquette porte le trou).
+- Le mot **« notamment »** sur 2 pages : le supprimer remettrait le titre de
+  `/preuves/bamesa/` à 158 px, seule page décalée sur 248.
+- **« tarif »** et **« prix mensuel fixe »** : 19 phrases manquent sur 12 pages.
+- **`AppelAction.tsx`**, code mort, remplacé par `AppelFinal.tsx`.
+- Les **40 adresses** et **20 noms de fichiers** qui portent encore « orthus ».
+  Pas de 301 nécessaire (hors production), MAIS `index.json` déclare ces adresses
+  et les portes comptent « 248 pages de l'index » : l'écart est à déclarer.
+
+## Pièges payés le 09/10
+
+- **Vercel est maintenant relié au dépôt** (`vercel git connect --scope migenservice`,
+  branche `phase-2-gabarits`, seule branche du dépôt). **Un push déploie désormais
+  en production.** Le filet d'avant n'existe plus. Le relais du 08/10 dit l'inverse.
+- Déploiement manuel : `--scope migenservice` est **obligatoire**, sans quoi « Not
+  authorized » (la CLI est connectée en compte personnel).
+- `/\bÉcully\b/` ne marche pas en JavaScript : le É n'est pas un caractère de mot
+  au sens ASCII, donc pas de frontière après une espace.
+- Un motif « siège … Écully » sans exclusion attrape la phrase CORRECTE de la
+  maquette : utiliser `(?:(?!Limonest)[^.]){0,60}`.
+- Les pages ne portent **qu'une balise `<img>`** dans leur HTML : les photos sont
+  posées à l'hydratation. Un `curl` ne peut pas les voir, il faut un navigateur.
+- Les images collées dans la conversation **n'existent pas sur le disque** : il faut
+  que Mehdi les dépose lui-même.
