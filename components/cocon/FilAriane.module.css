@@ -68,18 +68,33 @@ a.niveau:hover {
  * d'écran : c'est par lui qu'un visiteur remonte d'un niveau, au pouce.
  *
  * Le remplissage plutôt que la hauteur, comme dans
- * `components/site/PiedDePage.module.css` : il agrandit la zone de contact sans
- * déplacer le texte ni changer l'interligne, donc sans toucher au dessin de la
- * maquette sur grand écran, où la règle ne s'applique pas.
+ * `components/site/PiedDePage.module.css`.
  *
  * 20 + 2 x 3 = 26 px. Mesuré sur `/expertises/` dans Chrome, et non déduit :
  * 19 px au repos à 1440 px de large, 26 px à 375 px, `inline-block`,
  * remplissage 3px/3px. Les 2 px de marge au-dessus du seuil sont voulus, pour
  * que la règle tienne si les métriques de la police varient.
+ *
+ * LES MARGES NÉGATIVES, ajoutées le 09/10, et pourquoi. Ce commentaire
+ * affirmait que le remplissage « agrandit la zone de contact sans déplacer le
+ * texte ni changer l'interligne ». La mesure le dément : le remplissage
+ * vertical compte dans la boîte de marge, et c'est la boîte de marge que lit
+ * le contexte qui empile la rangée. Chaque ligne du fil portant un lien
+ * gagnait donc 6 px, et tout ce qui suit descendait d'autant. Relevé sur
+ * `/ressources/articles/cout-arret-de-production/` : le H1 tombait 6 px plus
+ * bas que dans la maquette, à 320, 360, 375, 390 et 768 px.
+ *
+ * Les marges négatives rendent ces 6 px à la mise en page SANS toucher à la
+ * cible tactile : la boîte de contact garde ses 26 px, c'est la place qu'elle
+ * occupe qui redevient celle de la maquette. Ne pas supprimer la règle
+ * `@media` pour corriger le décalage : la cible retomberait à 20 px, sous les
+ * 24 px exigés par le critère 2.5.8 de la WCAG 2.2.
  */
 @media (max-width: 880px) {
   a.niveau {
     display: inline-block;
     padding: 3px 0;
+    margin-top: -3px;
+    margin-bottom: -3px;
   }
 }

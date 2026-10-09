@@ -121,9 +121,21 @@ export function FilArianeVue({ etapes }: { etapes: readonly Etape[] }) {
 
 /**
  * Ce que les routes montent : le fil en BreadcrumbList pour les moteurs, sans
- * rangée visible. Les 248 captures de la maquette du 08/10 n'en dessinent
- * aucune ; la rangée visible poussait tout le contenu de 60 px (3 lignes sur
- * mobile). `FilArianeVue` reste pour un gabarit qui en dessinerait une.
+ * rangée visible.
+ *
+ * CORRIGÉ LE 09/10 : ce commentaire affirmait que « les 248 captures n'en
+ * dessinent aucune ». C'est faux, et il fallait chercher le bon motif pour le
+ * voir. La maquette ne pose ni classe ni `aria-label` sur sa rangée, et sépare
+ * par des « / » et non des chevrons : 51 de ses 244 captures la dessinent
+ * bel et bien (37 du gabarit « 01 Article et fiche », 8 du « 03 Offre et
+ * prestation », 5 du « 11 Sous-rubrique ressource », 1 du « 10 Hub de
+ * rubrique »), sous la forme « Accueil / Ressources / Articles / … ».
+ *
+ * Le choix de ne pas la rendre reste celui du 08/10, et il est assumé : la
+ * rangée visible poussait tout le contenu de 60 px, trois lignes sur
+ * téléphone. C'est donc un ÉCART DÉCLARÉ à la maquette, pas une absence de
+ * référence. `FilArianeVue` reste monté là où un gabarit la dessine, et
+ * `FilAriane.module.css` porte sa mise au point mobile.
  */
 export default async function FilAriane({ path }: { path: string }) {
   /* `@/lib/contenu` porte `import "server-only"`, qui lève à la seule
