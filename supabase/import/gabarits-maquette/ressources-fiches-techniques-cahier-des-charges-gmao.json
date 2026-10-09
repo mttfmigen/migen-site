@@ -299,25 +299,25 @@
       }
     ],
     "minutes": 11,
-    "image": "/assets/photos/il-female-engineers-working-on-robotics-in-indust.jpg",
+    "image": "/assets/photos/env-automatician-maintenance.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-techniques/amdec/",
         "titre": "Amdec",
         "minutes": 15,
-        "image": "/assets/photos/il-technicien-maintenance-photo-14-1600.jpg"
+        "image": "/assets/photos/tuyau-pointage-bride-tube.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/analyse-vibratoire/",
         "titre": "Analyse vibratoire",
         "minutes": 10,
-        "image": "/assets/photos/il-automaticien-dans-usine-moderne-jan-7-2026-160.jpg"
+        "image": "/assets/photos/il-technicien-maintenance-photo-7-1600.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/automates-siemens/",
         "titre": "Automate Siemens",
         "minutes": 7,
-        "image": "/assets/photos/il-technicien-maintenance-photo-16-800.jpg"
+        "image": "/assets/photos/env-maintenance-automatique.jpg"
       }
     ]
   }

@@ -39,17 +39,17 @@
       {
         "valeur": "10 %",
         "texte": "Des techniciens retenus, chaque technicien est évalué en entretien technique et comportemental",
-        "photo": "/assets/photos/robot-technicienne-inspection-bras.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-photo-jan-7-2026-2-1600.jpg"
       },
       {
         "valeur": "+ 120",
         "texte": "Collaborateurs, depuis quatre agences, partout en France",
-        "photo": "/assets/photos/il-technicien-maintenance-photo-jan-7-2026-2-1600.jpg"
+        "photo": "/assets/photos/chimie-piquage-manometre-gants.jpg"
       },
       {
         "valeur": "8",
         "texte": "Domaines techniques couverts par une seule équipe, de la mécanique à la robotique",
-        "photo": "/assets/photos/elec-multimetre-armoire-automatisme.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-en-usine-1600.jpg"
       }
     ],
     "complementTypes": [
@@ -168,7 +168,7 @@
         }
       }
     ],
-    "problemePhoto": "/assets/photos/chimie-piquage-manometre-gants.jpg",
+    "problemePhoto": "/assets/photos/il-technicien-maintenance-2.jpg",
     "complementOffre": [
       {
         "texte": "Pour une panne en cours, voir le dépannage industriel."
@@ -299,14 +299,14 @@
             "texte": "Six techniciens en permanence, prise en charge réalisée en un mois.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-8-2026-1600.jpg"
+            "photo": "/assets/photos/agro-mains-vanne-sanitaire.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, automobile",
             "texte": "Tenue, depuis octobre 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/elec-local-technicien-accroupi.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-blue-truck-engine.jpg"
           },
           {
             "titre": "Pilotage de la maintenance pendant une montée de cadence, distribution technique",
@@ -320,33 +320,33 @@
             "texte": "Un technicien intégré à temps plein.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/meca-technicienne-cle-machine.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-repairs.jpg"
           },
           {
             "titre": "Renfort de 3 à 5 techniciens sur plusieurs usines en France, automobile",
             "texte": "Depuis septembre 2024, accompagnement d'une montée en cadence.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-8-1600.jpg"
+            "photo": "/assets/photos/il-female-technician-inspects-industrial-equipmen.jpg"
           },
           {
             "titre": "Préventif tenu pendant l'arrêt estival, services funéraires",
             "texte": "Un technicien intégré sur les équipements critiques, été 2025.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-3-1600.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-technicien-maintenance.jpg"
+            "photo": "/assets/photos/hydrau-centrale-hydraulique-technicien.jpg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/il-technicien-maintenance-6.jpg"
+            "photo": "/assets/photos/meca-reducteur-ouvert-plongee.jpg"
           }
         ]
       },

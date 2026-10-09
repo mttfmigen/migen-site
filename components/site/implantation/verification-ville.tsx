@@ -60,8 +60,8 @@
  * IL PROUVE QU'IL SAIT ÉCHOUER : avant de juger les pages, il altère la page
  * pilote de département (`lyon-rhone`) de trois façons (l'ancien « dont plus
  * de 80 réguliers », la prise de poste chiffrée rendue, une phrase inventée à
- * la place d'un trou), et la page pilote de ville de douze façons (un mot changé, une section retirée, une phrase
- * inventée, un interdit, un faux trou, un lien inventé, une photo de
+ * la place d'un trou), et la page pilote de ville de quinze façons (un mot changé, une section retirée, une phrase
+ * inventée, un interdit, un montant en euros, un faux trou, un lien inventé, une photo de
  * référence devinée, une photo de référence du bon dossier mais hors registre,
  * un dessin de problème deviné, une apostrophe
  * redressée, le titre Tournaire vidé, un H2 de problème retiré sans trou,
@@ -178,8 +178,16 @@ const INTERDITS: readonly [RegExp, string][] = [
   [/\b24\s*h(?![\p{L}\d]|\s*\/)/u, "« 24h »"],
   [/\b24\s*h?\s*\/\s*(?:24|7)\b|\b24\s*h\s+sur\s+24\b/u, "« 24h/24 »"],
   [/\b7\s*j?\s*\/\s*7\b/u, "« 7j/7 »"],
-  [/\btaux horaire/u, "taux horaire : aucun prix"],
-  [/\btarifs?\b/iu, "tarif : aucun prix"],
+  /* 09/10 : « taux horaire » et « tarif » NE SONT PLUS DES INTERDITS. Décision
+     de Mehdi : « Ne donnes aucun tarif. Dis juste que c'est sur devis. » Dire
+     qu'un taux horaire est homogène partout, ou qu'un SAV constructeur a ses
+     tarifs, N'ÉNONCE AUCUN MONTANT : cela renvoie au devis, ce que la décision
+     demande. Même arbitrage que le 08/10 sur le gabarit 03 et /secteurs/
+     (scripts/verifie-offre-rendu.mjs). Six phrases de la maquette, sur cinq
+     pages de ce gabarit, étaient retirées pour ce motif : elles sont rendues.
+     CE QUI RESTE INTERDIT, c'est LE MONTANT, et lui seul : un nombre suivi de
+     € ou d'« euros », motif ci-dessous. Le témoin « un montant en euros rendu »
+     prouve à chaque passage qu'il fait encore tomber la porte. */
   [/\d[\d\s  ]*(?:€|euros?\b)/u, "montant : aucun prix"],
   [/régie/iu, "« régie »"],
   [/intérim/iu, "« intérim »"],
@@ -689,6 +697,17 @@ const ALTERATIONS: [string, PageRelais, RegExp, ((html: string) => string)?][] =
         )),
     ),
     /interdit rendu/,
+  ],
+  /* 09/10 : le témoin du PRIX. « taux horaire » et « tarif » ont quitté les
+     interdits (voir INTERDITS), et aucun témoin ne prouvait plus que la règle
+     de prix sait tomber : il n'en restait qu'un motif, le MONTANT, sans
+     personne pour l'éprouver. Celui-ci l'éprouve, avec un vrai montant en
+     euros. S'il passe, c'est que le site peut afficher un prix sans que rien
+     ne le signale. */
+  [
+    "un montant en euros rendu",
+    altere((p) => (p.contenu.chapeau = `${p.contenu.chapeau} Comptez 450 € par intervention.`)),
+    /interdit rendu \(montant/,
   ],
   [
     "« candidats » remis là où la décision dit « techniciens »",

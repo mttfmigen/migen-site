@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Toulon",
       "titre": "Toulon : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/env-industrie-metallique-24-sept-2026.jpg",
+      "photo": "/assets/photos/env-inspection-equipement-fabrication.jpg",
       "badge": "Rattaché au hub Marseille",
       "nom": "Toulon, couvert par le hub Marseille",
       "texte": "Les techniciens du hub Marseille interviennent à Toulon et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -217,37 +217,37 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/env-photos-industrie-agro-alimentaire.jpg"
+            "photo": "/assets/photos/env-structures-industrielles-au-coucher-du-soleil.jpg"
           },
           {
             "titre": "Six techniciens pour faire démarrer un parc machines",
             "lienLibelle": "Étude de cas Eaton",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-5-2026-1600.jpg"
+            "photo": "/assets/photos/env-photos-industrie-menuiserie-3.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/env-ouvriers-usine-allumant-four-sept-22.jpg"
+            "photo": "/assets/photos/env-technicien-maintenance-photo.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-mar-25-2026-1600.jpg"
+            "photo": "/assets/photos/il-portrait-of-engineer-or-technician-worker-woma.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/env-industrie-metallique-21-sept-2026.jpg"
+            "photo": "/assets/photos/il-female-engineer-inspecting-machinery-in-indust.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-industrie-photo-jan-5-2026-1600.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-robotic-arm.jpg"
           }
         ]
       },

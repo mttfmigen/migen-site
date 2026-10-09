@@ -2,7 +2,7 @@
   "url": "/preuves/orthus-ecocem/",
   "seo": {
     "meta_title": "Migen Travaux x ECOCEM : un site R&D construit| Migen",
-    "meta_description": "Ecocem confie à Migen Travaux, la construction complète de son nouveau site industriel de R&D près de Paris, livraison prévue."
+    "meta_description": "Ecocem confie à Migen Travaux la construction complète de son nouveau site industriel de R&D près de Paris, livraison prévue."
   },
   "titre_h1": "De la parcelle au site de R&D, un seul pilote",
   "contenu": {
@@ -10,11 +10,11 @@
     "client": "Migen Travaux x ECOCEM",
     "chapeau": [
       "Ecocem est une entreprise irlandaise spécialisée dans les matériaux bas carbone, pionnière européenne des ciments à faible émission de CO₂.",
-      "Elle a confié à Migen Travaux, la construction complète de son nouveau site industriel de recherche et développement, en région parisienne. Le chantier s'étend sur plusieurs mois."
+      "Elle a confié à Migen Travaux la construction complète de son nouveau site industriel de recherche et développement, en région parisienne. Le chantier s'étend sur plusieurs mois."
     ],
     "bouton": "Faire piloter mon projet industriel",
     "logo": "/assets/clients/ecocem.png",
-    "photoHero": "/assets/photos/env-technicien-maintenance-aeronautique.jpg",
+    "photoHero": "/assets/photos/tuyau-pointage-bride-tube.jpg",
     "chiffres": [
       {
         "libelle": "Intervenant",
@@ -128,7 +128,7 @@
         "valeur": "Fondations, structures, équipements, raccordements industriels"
       }
     ],
-    "photoDispositif": "/assets/photos/il-technicien-maintenance-photo-jan-8-2026-1-1600.jpg",
+    "photoDispositif": "/assets/photos/elec-cablage-armoire-tournevis.jpg",
     "resultats": [
       {
         "titre": "Un chantier planifié sur plusieurs mois",
@@ -163,25 +163,25 @@
         "surtitre": "Étude de cas",
         "titre": "Migen Travaux x WASHTEC : montage de portiques",
         "href": "/preuves/orthus-washtec/",
-        "photo": "/assets/photos/elec-cablage-armoire-tournevis.jpg"
+        "photo": "/assets/web/team-grind-close.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-photo-22-1600.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/il-technicien-maintenance-sur-pipeline-1600.jpg"
+        "photo": "/assets/photos/elec-main-disjoncteurs-borniers.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/env-technician-maintenance-5.jpg"
+        "photo": "/assets/photos/energie-rotor-turbine-vapeur.jpg"
       }
     ]
   }

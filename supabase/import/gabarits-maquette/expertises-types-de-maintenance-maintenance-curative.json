@@ -110,6 +110,9 @@
         ]
       },
       {
+        "texte": "Le coût complet, pas le tarif horaire :"
+      },
+      {
         "tableau": {
           "entetes": [
             "Poste de dépense",
@@ -124,7 +127,7 @@
             ],
             [
               "Achat de composants",
-              "",
+              "Prix catalogue",
               "Transport express, suivi fournisseur"
             ],
             [
@@ -272,7 +275,7 @@
             "texte": "Deux techniciens en poste sur site, dédiés au maintien des équipements.",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/env-technicien-maintenance-cafe-23-sept-2026.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-jan-6-2026-1600.jpg"
           },
           {
             "titre": "Diagnostic sur site et réparation d'un parc machines défaillant, industrie lyonnaise",
@@ -307,19 +310,19 @@
             "texte": "Tenue, depuis octobre 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-mar-18-2026-1-160.jpg"
+            "photo": "/assets/photos/elec-local-technicien-accroupi.jpg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/env-maintenance-automaticien-3.jpg"
+            "photo": "/assets/photos/env-technicien-maintenance-serveur.jpg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/aero-fuselage-serrage-lampe.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-7.jpg"
           }
         ]
       },
@@ -337,7 +340,7 @@
           },
           {
             "question": "Combien coûte une intervention curative ?",
-            "reponse": "Le chiffrage se fait sur devis. Nous détaillons ces postes avant l'intervention, pas après."
+            "reponse": "Le chiffrage se fait sur devis. La question utile n'est pas le tarif horaire mais le coût complet : main d'œuvre, pièce, transport, production perdue, et la récidive si la cause n'est pas traitée. Nous détaillons ces postes avant l'intervention, pas après."
           },
           {
             "question": "Intervenez-vous en urgence, la nuit et le week-end ?",

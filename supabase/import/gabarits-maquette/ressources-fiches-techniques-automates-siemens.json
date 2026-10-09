@@ -205,25 +205,25 @@
       }
     ],
     "minutes": 7,
-    "image": "/assets/photos/env-technician-maintenance-8.jpg",
+    "image": "/assets/photos/il-female-technician-inspects-industrial-equipmen.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-techniques/amdec/",
         "titre": "Amdec",
         "minutes": 15,
-        "image": "/assets/photos/env-focused-young-man-working-on-electrical-wiring.jpg"
+        "image": "/assets/photos/elec-mains-bornier-relais.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/analyse-vibratoire/",
         "titre": "Analyse vibratoire",
         "minutes": 10,
-        "image": "/assets/photos/env-technician-inspecting-electrical-panel-in-a-fa.jpg"
+        "image": "/assets/photos/env-inspection-robot-arm-wiring.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/cahier-des-charges-gmao/",
         "titre": "Cahier des charges gmao",
         "minutes": 11,
-        "image": "/assets/photos/il-femme-inspectant-bras-robotique-2026-1600.jpg"
+        "image": "/assets/photos/env-technician-inspecting-fiber-optics.jpg"
       }
     ]
   }

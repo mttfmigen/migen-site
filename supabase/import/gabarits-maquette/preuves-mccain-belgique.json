@@ -27,7 +27,7 @@
       }
     ],
     "logo": "/assets/clients/mq-c23abfa0ca07.svg",
-    "photoHero": "/assets/photos/env-controle-qualite-femme.jpg",
+    "photoHero": "/assets/photos/agro-panneau-vannes-nep.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -154,7 +154,7 @@
         "valeur": "Maintenance corrective et préventive"
       }
     ],
-    "photoDispositif": "/assets/photos/agro-panneau-vannes-nep.jpg",
+    "photoDispositif": "/assets/photos/agro-atelier-inox-plan-large.jpg",
     "resultats": [
       {
         "titre": "Une sortie du territoire français réussie",
@@ -198,13 +198,13 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
+        "photo": "/assets/photos/env-inspection-du-processus-d-embouteillage.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/env-femmes-en-usine-21-sept-2026.jpg"
+        "photo": "/assets/photos/env-workers-inspecting-large-vats-in-a-manufacturi.jpg"
       },
       {
         "surtitre": "Secteur",

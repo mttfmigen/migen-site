@@ -32,7 +32,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Charente",
       "titre": "Charente : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-technicien-maintenance-photo-23-1600.jpg",
+      "photo": "/assets/photos/energie-rack-canalisations-binome.jpg",
       "badge": "Rattaché au hub Toulouse",
       "nom": "Charente, couvert par le hub Toulouse",
       "texte": "Les techniciens du hub Toulouse interviennent à Charente et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -83,7 +83,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/env-technician-maintenance-robotic-arm.jpg",
+    "problemePhoto": "/assets/photos/il-technicien-maintenance-photo-23-1600.jpg",
     "complementOffre": [
       {
         "texte": "Trois formats se combinent selon votre situation. Le dépannage industriel pour une panne isolée."
@@ -223,41 +223,41 @@
             "texte": ", en préventif comme en curatif, de 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/il-technicien-maintenance-en-usine-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-mars-24-2026-1-16.jpg"
           },
           {
             "titre": "Un technicien mobilisé pendant l'arrêt estival pour tenir les équipements critiques",
             "texte": ", pendant les congés des équipes internes.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/env-femme-en-costume-sterile-industrie-pharmaceuti.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-4.jpg"
           },
           {
             "titre": "6 techniciens en préventif et curatif sur une fonderie et son usinage",
             "texte": "Site pris en charge complètement en 8 semaines.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-equipement-et-pipeline-raffinerie-2026-1600.jpg"
+            "photo": "/assets/photos/il-raffinerie-industrielle-au-crepuscule-1600.jpg"
           },
           {
             "titre": "1 à 3 techniciens en corrective et préventive sur un site agroalimentaire en flux permanent",
             "texte": ".",
             "lienLibelle": "Étude de cas McCAIN",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-en-securite-mar-23-2026-2.jpg"
           },
           {
             "titre": "Un parc machines de PME diagnostiqué et réparé sans rachat de matériel neuf",
             "texte": ", avec plusieurs solutions chiffrées selon le budget.",
             "lienLibelle": "Étude de cas JOINT LYONNAIS",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/env-technician-maintenance-3.jpg"
+            "photo": "/assets/photos/env-deux-hommes-menuiserie.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
+            "photo": "/assets/photos/il-usine-de-ciment-vue-aerienne-1600.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
@@ -269,7 +269,7 @@
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/env-photo-industrie-2.jpg"
+            "photo": "/assets/photos/env-industrie-metallique-21-sept-2026.jpg"
           }
         ]
       },
@@ -290,7 +290,7 @@
           },
           {
             "question": "Technicien du SAV constructeur ou prestataire : qui appeler ?",
-            "reponse": "Nous intervenons sur tout le parc, toutes marques, et nous documentons chaque geste. Les deux approches se complètent, mais au quotidien un seul numéro suffit."
+            "reponse": "Le SAV d'un fabricant intervient sur sa marque, avec ses conditions et ses tarifs. Nous intervenons sur tout le parc, toutes marques, et nous documentons chaque geste. Les deux approches se complètent, mais au quotidien un seul numéro suffit."
           },
           {
             "question": "Pouvez-vous reprendre un préventif abandonné ?",
@@ -320,10 +320,6 @@
     {
       "ligne": "Délai de prise de poste d'un technicien intégré à votre équipe",
       "pourquoi": "libellé du chiffre « 2 à 3 semaines » de « 01 Chiffres », délai chiffré : il ne se rend pas sans sa valeur, le chiffre entier est retiré."
-    },
-    {
-      "ligne": "Le SAV d'un fabricant intervient sur sa marque, avec ses conditions et ses tarifs.",
-      "pourquoi": "tarif : aucun prix : « tarifs ». Réponse à « Technicien du SAV constructeur ou prestataire : qui appeler ? » (09 Questions), le reste du texte demeure."
     }
   ]
 }

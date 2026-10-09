@@ -295,25 +295,25 @@
       }
     ],
     "minutes": 10,
-    "image": "/assets/photos/env-factory-worker-inspecting-food-canning-product.jpg",
+    "image": "/assets/photos/il-technicien-maintenance-avec-robot-1600.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-techniques/amdec/",
         "titre": "Amdec",
         "minutes": 15,
-        "image": "/assets/photos/il-technicien-maintenance-jan-6-2026-1600.jpg"
+        "image": "/assets/photos/aero-nacelle-moteur-technicien.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/analyse-vibratoire/",
         "titre": "Analyse vibratoire",
         "minutes": 10,
-        "image": "/assets/photos/il-automation-female-engineer-with-tablet-for-pro.jpg"
+        "image": "/assets/photos/il-technician-using-control-panel-in-industrial-f.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/automates-siemens/",
         "titre": "Automate Siemens",
         "minutes": 7,
-        "image": "/assets/photos/il-technicien-maintenance-photo-jan-8-2026-1600.jpg"
+        "image": "/assets/photos/env-maintenance-automaticien.jpg"
       }
     ]
   }

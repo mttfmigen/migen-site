@@ -172,28 +172,28 @@
             "texte": "Deux techniciens en poste, dédiés au curatif et à la surveillance continue, chaque dysfonctionnement traité au moment où il se produit, 2025.",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/env-technician-maintenance-blue-truck-engine.jpg"
+            "photo": "/assets/photos/elec-multimetre-armoire-automatisme.jpg"
           },
           {
             "titre": "Diagnostic sur site et remise en état d'un parc machines défaillant, fabrication de joints",
             "texte": "Cause cherchée avant le symptôme, plusieurs options chiffrées soumises au client, ressources existantes exploitées avant tout rachat de matériel, depuis février 2024.",
             "lienLibelle": "Étude de cas JOINT LYONNAIS",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/robot-poignet-technicien-casque.jpg"
+            "photo": "/assets/photos/env-maintenance-automaticien-3.jpg"
           },
           {
             "titre": "Parc machine en défaillance constante repris en préventif et curatif, fonderie et usinage",
             "texte": "Six techniciens affectés au site, interventions, prise en charge complète en huit semaines, depuis octobre 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-7-2026-2-1600.jpg"
+            "photo": "/assets/photos/automatisme-coffret-cartes-portable.jpg"
           },
           {
             "titre": "Diagnostic rapide et dépannage en environnement automatisé, nutrition infantile",
             "texte": "Deux techniciens intégrés en 3x8 sur les lignes liquides et le conditionnement poudre, pour raccourcir le temps entre l'arrêt et la remise en service.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/meca-cle-bride-carter.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-9.jpg"
           },
           {
             "titre": "Continuité du préventif et du curatif pendant les congés d'équipe, industrie",
@@ -212,13 +212,13 @@
             "titre": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
             "lienLibelle": "Étude de cas Atena",
             "lienHref": "/preuves/atena-port-la-rochelle/",
-            "photo": "/assets/photos/robot-multimetre-cablage-robot.jpg"
+            "photo": "/assets/photos/aero-nacelle-moteur-technicien.jpg"
           },
           {
             "titre": "La GMAO planifie, nos techniciens interviennent",
             "lienLibelle": "Étude de cas DimoMaint",
             "lienHref": "/preuves/dimomaint/",
-            "photo": "/assets/photos/pneu-cle-bloc-distribution.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-camion-1600.jpg"
           }
         ]
       },
@@ -228,7 +228,7 @@
         "questions": [
           {
             "question": "Combien coûte une intervention palliative ?",
-            "reponse": "Le chiffrage se fait sur devis, après qualification de la panne avec vous. Nous détaillons ces postes avant l'intervention, pas après."
+            "reponse": "Le chiffrage se fait sur devis, après qualification de la panne avec vous. La question utile n'est pas le tarif horaire mais le coût complet : main d'œuvre, pièce, transport, production perdue, et la réparation définitive qui reste due. Nous détaillons ces postes avant l'intervention, pas après."
           },
           {
             "question": "Faut-il un contrat pour faire appel à vous ?",

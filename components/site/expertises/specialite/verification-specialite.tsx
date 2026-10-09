@@ -122,12 +122,25 @@ const RELAIS = readdirSync(DOSSIER)
 /* Les interdits du contrat (CLAUDE.md §3 et §9, règles client du README de
    passation), cherchés dans le texte visible, sur texte normalisé. Même liste
    que le gabarit 09, plus « cinq agences ». */
+/* 09/10 : « prix », « tarif » et « taux horaire » ONT QUITTÉ CETTE LISTE.
+   Décision de Mehdi : « Ne donnes aucun tarif. Dis juste que c'est sur
+   devis. » Dire qu'une prestation est chiffrée sur devis, au taux horaire,
+   n'énonce aucun montant : c'est la décision même, pas son contraire. Même
+   arbitrage que le 08/10 sur le gabarit 03 et /secteurs/.
+   CE QUI RESTE INTERDIT, C'EST LE MONTANT. Il n'était cherché NULLE PART ici :
+   la liste ne portait que les noms du prix, jamais un chiffre en euros. « € »
+   entre donc dans la liste, et `MONTANT` ci-dessous attrape « 450 euros », que
+   `includes` ne sait pas voir. Sans ces deux ajouts, retirer les trois mots
+   aurait laissé ce contrôle sans aucune prise sur les prix. */
 const INTERDITS = [
-  "—", "prix ", "tarif", "taux horaire", "régie", "intérim", "mise à disposition",
+  "—", "€", "régie", "intérim", "mise à disposition",
   "sans engagement", "clé en main", "sur mesure", "levier", "concrètement",
   "notamment", "incontournable", "découvrez", "limonest", "réguliers", "24h",
   "24 h", "24/24", "24/7", "7j/7", "7 j/7", "cinq agences",
 ] as const;
+
+/** Un montant, le seul interdit de prix qui subsiste : « 450 € », « 450 euros ». */
+const MONTANT = /\d[\d\s  ]*(?:€|euros?\b)/u;
 
 /** Violations portées par une donnée HORS de ce périmètre, déclarées plutôt
  * que masquées. À retirer d'ici le jour où la donnée est corrigée : le
@@ -136,7 +149,10 @@ const VIOLATIONS_CONNUES: Readonly<Record<string, readonly string[]>> = {};
 
 function interditsDe(rendu: string): string[] {
   const visible = texteDe(rendu).toLowerCase();
-  return INTERDITS.filter((mot) => visible.includes(mot));
+  const trouves: string[] = INTERDITS.filter((mot) => visible.includes(mot));
+  const montant = visible.match(MONTANT);
+  if (montant) trouves.push(montant[0]);
+  return trouves;
 }
 
 function verifieInterdits(rendu: string, nom: string): void {
@@ -153,8 +169,10 @@ function verifieInterdits(rendu: string, nom: string): void {
   }
 }
 
-const porteInterdit = (texte: string) =>
-  INTERDITS.some((mot) => normaliseTexte(texte).toLowerCase().includes(mot));
+const porteInterdit = (texte: string) => {
+  const minuscule = normaliseTexte(texte).toLowerCase();
+  return INTERDITS.some((mot) => minuscule.includes(mot)) || MONTANT.test(minuscule);
+};
 
 /** Une phrase interdite ne se reformule pas : elle ne se rend pas. */
 function sansInterdit(texte: string): string {
@@ -763,6 +781,12 @@ for (const absent of [
     ["un écart non déclaré", () => verifieEcran("faux", domaines, bon)],
     ["une cellule de tableau perdue", () => verifieComplement("faux", complement, blocs.map((b) => (b.tableau ? { ...b, tableau: { ...b.tableau, lignes: b.tableau.lignes.slice(1) } } : b)))],
     ["un interdit rendu", () => verifieInterdits("<p>une offre sur mesure</p>", "faux")],
+    /* 09/10 : le témoin du PRIX. Les noms du prix ont quitté INTERDITS, et
+       sans ces deux lignes le contrôle n'aurait plus AUCUNE prise sur les
+       montants : il n'en cherchait aucun avant. Les deux formes comptent, le
+       symbole que `includes` voit et le mot que seul `MONTANT` voit. */
+    ["un montant en euros rendu", () => verifieInterdits("<p>Comptez 450 € de l'heure.</p>", "faux")],
+    ["un montant écrit en euros rendu", () => verifieInterdits("<p>Comptez 450 euros de l'heure.</p>", "faux")],
     ["un écran rendu hors capture", () => verifieDomaines("faux", ecran(litCapture("/expertises/robotique/fanuc/"), "03 Problème")!, titre, cartes)],
   ] as const;
   for (const [cas, essai] of faux) {
@@ -793,6 +817,21 @@ for (const absent of [
   assert.ok(copieDe(amputee, source), "une phrase interdite retirée reste une copie");
   assert.ok(!copieDe(amputee, source.replace("sur mesure", "solide")), "le contrôle doit échouer sur une phrase permise retirée");
   assert.ok(!copieDe("Nous détaillons les postes. Le chiffrage se fait sur devis.", source), "le contrôle doit échouer sur des phrases déplacées");
+
+  /* `porteInterdit` tranche dans les DEUX SENS depuis le 09/10 : une phrase qui
+     renvoie au devis est dicible, donc elle ne peut plus manquer sans que le
+     contrôle le voie ; un montant reste retirable. Éprouvé à part, parce que
+     c'est cette fonction qui décide ce que la capture a le droit de perdre. */
+  for (const dicible of [
+    "La question utile n'est pas le tarif horaire mais le coût complet.",
+    "Pas de prix catalogue : la modification se chiffre sur devis.",
+    "Le taux horaire est homogène dans toute la France.",
+  ]) {
+    assert.ok(!porteInterdit(dicible), `une phrase de tarif sans montant ne peut plus manquer : « ${dicible} »`);
+  }
+  for (const retire of ["Comptez 450 € de l'heure.", "Comptez 450 euros de l'heure."]) {
+    assert.ok(porteInterdit(retire), `un montant doit rester retirable : « ${retire} »`);
+  }
 }
 
 /* --------------------------------------------------------------- le bilan */

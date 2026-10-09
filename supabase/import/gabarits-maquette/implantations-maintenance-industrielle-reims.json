@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Reims",
       "titre": "Reims : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/env-menuisier-dans-l-atelier.jpg",
+      "photo": "/assets/photos/env-photo-industrie-2.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Reims et ses environs",
       "texte": "Nos techniciens itinérants couvrent Reims et son bassin, appuyés par le réseau national Migen.",
@@ -101,7 +101,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-detail-raffinerie-nuit-mars-17-2026-1600.jpg",
+    "problemePhoto": "/assets/photos/env-menuisier-dans-l-atelier.jpg",
     "brefBande": "Besoin de préparer vos équipements avant la prochaine campagne ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -236,53 +236,53 @@
             "texte": "Papier et emballage, 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/il-technicien-maintenance-en-usine-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-mars-24-2026-1-16.jpg"
           },
           {
             "titre": "Deux techniciens intégrés en 3x8 sur des lignes liquides et poudre",
             "texte": "Cadence continue, nutrition infantile.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/env-photos-industrie.jpg"
+            "photo": "/assets/photos/env-ouvriers-usine-allumant-four-sept-22.jpg"
           },
           {
             "titre": "18 à 25 techniciens sur plusieurs sites du Grand Est depuis juin 2023",
             "texte": "Compétences apportées pour une transition industrielle.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-grand-est/",
-            "photo": "/assets/photos/il-technicien-maintenance-portrait-mars-2026-1600.jpg"
+            "photo": "/assets/photos/env-emballage-de-biscuits-en-usine.jpg"
           },
           {
             "titre": "1 à 3 techniciens en renfort des équipes maintenance sur plusieurs sites de production, depuis octobre 2024",
             "texte": "Disponibilité machine tenue semaine après semaine.",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/il-young-african-american-worker-of-industrial-pl.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-3.jpg"
           },
           {
             "titre": "Un technicien intégré pendant l'arrêt estival pour tenir les équipements critiques",
             "texte": "Été 2025, équipe partiellement en congés.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/il-raffinerie-industrielle-au-crepuscule-1600.jpg"
+            "photo": "/assets/photos/env-femme-en-costume-sterile-industrie-pharmaceuti.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/env-photos-industrie-2.jpg"
+            "photo": "/assets/photos/env-industrie-paysage.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/env-structures-industrielles-contre-ciel-nuageux.jpg"
+            "photo": "/assets/photos/chimie-reacteurs-agites-passerelle.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
             "lienLibelle": "Étude de cas Veepee",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/env-industrie-pharmaceutique.jpg"
+            "photo": "/assets/photos/env-bras-robotiques-soudant-cadres-auto.jpg"
           }
         ]
       },

@@ -246,25 +246,25 @@
       }
     ],
     "minutes": 9,
-    "image": "/assets/photos/env-industrial-worker-inspecting-canned-goods-on-a.jpg",
+    "image": "/assets/photos/env-inspection-ligne-production-automatique.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-pratiques/5s/",
         "titre": "5S industrie",
         "minutes": 12,
-        "image": "/assets/photos/il-industrie-paysage-au-coucher-de-soleil-1600.jpg"
+        "image": "/assets/photos/env-maintenance-automaticien.jpg"
       },
       {
         "href": "/ressources/fiches-pratiques/consignation-electrique/",
         "titre": "Consignation électrique",
         "minutes": 12,
-        "image": "/assets/photos/env-menuisier-dans-l-atelier.jpg"
+        "image": "/assets/photos/env-photos-menuiserie-2.jpg"
       },
       {
         "href": "/ressources/fiches-pratiques/permis-de-feu/",
         "titre": "Permis de feu",
         "minutes": 8,
-        "image": "/assets/photos/env-industrie-mettalique-22-sept-2026.jpg"
+        "image": "/assets/photos/env-inspection-robotique-21-sept-2026.jpg"
       }
     ]
   }

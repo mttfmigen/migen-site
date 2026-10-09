@@ -31,7 +31,7 @@
       }
     ],
     "logo": "/assets/clients/salaison-du-maconnais.png",
-    "photoHero": "/assets/photos/env-industrial-worker-inspecting-canned-goods-on-a.jpg",
+    "photoHero": "/assets/photos/env-controle-qualite-femme.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -127,7 +127,7 @@
         "valeur": "1 technicien"
       }
     ],
-    "photoDispositif": "/assets/photos/env-femme-inspectant-des-bouteilles.jpg",
+    "photoDispositif": "/assets/photos/env-industrial-worker-inspecting-canned-goods-on-a.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -147,13 +147,13 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/agro-technicienne-raccord-clamp.jpg"
+        "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/soudure-tig-virole-inox.jpg"
+        "photo": "/assets/photos/env-femmes-en-usine-21-sept-2026.jpg"
       },
       {
         "surtitre": "Secteur",

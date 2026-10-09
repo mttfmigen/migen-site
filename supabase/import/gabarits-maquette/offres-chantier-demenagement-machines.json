@@ -194,7 +194,7 @@
             "texte": "Réception, assemblage, levage, raccordements, validation à l'issue du montage",
             "lienLibelle": "Étude de cas Migen Travaux x WASHTEC",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/photos/env-industrie-metallique-22-sept-2026-1.jpg",
+            "photo": "/assets/photos/il-photo-usine-ciment-16-mars-2026-1600.jpg",
             "logo": "/assets/clients/orthus-x-washtec.svg"
           },
           {
@@ -208,14 +208,14 @@
             "titre": "Un responsable maintenance pour traverser la transition",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/il-photo-usine-ciment-16-mars-2026-1600.jpg",
+            "photo": "/assets/photos/levage-montage-poteau-charpente.jpg",
             "logo": "/assets/clients/mq-441fc873c0d9.svg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/meca-moteur-palan-depose.jpg",
+            "photo": "/assets/photos/il-interieur-de-chantier-naval-24-mars-2026-1600.jpg",
             "logo": "/assets/clients/salaison-du-maconnais.png"
           }
         ]
@@ -268,13 +268,13 @@
         "titre": "Technicien en résidence",
         "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
+        "photo": "/assets/photos/env-industrie-metallique-22-sept-2026-1.jpg"
       },
       {
         "titre": "Zéro arrêt",
         "phrase": "La maintenance en abonnement, au forfait mensuel.",
         "href": "/offres/zero-arret/",
-        "photo": "/assets/photos/env-photos-industrie-metallique.jpg"
+        "photo": "/assets/photos/il-vue-aerienne-usine-ciment-mars-16-2026-1600.jpg"
       },
       {
         "titre": "Arrêt technique",
@@ -292,13 +292,13 @@
         "titre": "Travaux industriels",
         "phrase": "Transfert, démantèlement, démontage et montage.",
         "href": "/travaux-industriels/",
-        "photo": "/assets/photos/levage-montage-poteau-charpente.jpg"
+        "photo": "/assets/photos/env-photos-industrie-metallique.jpg"
       },
       {
         "titre": "Bureau d'études",
         "phrase": "Conception, retrofit et mise en conformité.",
         "href": "/offres/bureau-etudes/",
-        "photo": "/assets/photos/il-vue-aerienne-usine-ciment-mars-16-2026-1600.jpg"
+        "photo": "/assets/photos/env-industrie-metallique-2.jpg"
       }
     ],
     "pagesLieesTitre": "Les offres et prestations voisines"

@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Limoges",
       "titre": "Limoges : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg",
+      "photo": "/assets/photos/env-technician-maintenance-4.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Limoges et ses environs",
       "texte": "Nos techniciens itinérants couvrent Limoges et son bassin, appuyés par le réseau national Migen.",
@@ -264,21 +264,21 @@
             "texte": ", parc machines hétérogène en forte cadence, 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/env-techniciens-semiconducteurs.jpg"
+            "photo": "/assets/photos/env-photo-industrie-chimie.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS affecté au démarrage d'une nouvelle ligne de production",
             "texte": ", sur les trimestres de montée en charge.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/env-photos-industrie-agro-alimentaire.jpg"
+            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
           },
           {
             "titre": "Le pilotage d'un service maintenance confié à un responsable Migen intégré sur site",
             "texte": ", pendant une transition d'équipe.",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/equipe-consignes-atelier-casques.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-portrait-1600.jpg"
           },
           {
             "titre": "Un technicien en renfort pendant les congés d'été",

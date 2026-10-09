@@ -425,25 +425,25 @@
       }
     ],
     "minutes": 14,
-    "image": "/assets/web/sv-armoire.jpg",
+    "image": "/assets/photos/il-technicien-maintenance.jpg",
     "aLire": [
       {
         "href": "/ressources/process/preparer-un-arret-technique/",
         "titre": "Préparation arrêt technique",
         "minutes": 10,
-        "image": "/assets/photos/il-technicien-maintenance-4.jpg"
+        "image": "/assets/photos/soudure-soudeuse-masque-releve.jpg"
       },
       {
         "href": "/ressources/process/protocole-de-securite/",
         "titre": "Protocole de sécurité",
         "minutes": 11,
-        "image": "/assets/photos/il-technicien-maintenance-photo-3-1600.jpg"
+        "image": "/assets/photos/menuiserie-cnc-pupitre-casque.jpg"
       },
       {
         "href": "/ressources/process/selection-des-techniciens/",
         "titre": "Sélection technicien de maintenance",
         "minutes": 8,
-        "image": "/assets/photos/il-technicien-maintenance-photo-11-1600.jpg"
+        "image": "/assets/photos/env-inspection-metal-22-sept-2026-1.jpg"
       }
     ]
   }

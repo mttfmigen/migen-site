@@ -227,7 +227,7 @@
             "texte": "site de Steenvoorde",
             "lienLibelle": "Étude de cas DANONE : lignes de production",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/agro-atelier-inox-plan-large.jpg"
+            "photo": "/assets/photos/env-femme-inspectant-des-bouteilles.jpg"
           },
           {
             "titre": "Renfort de maintenance sur un site agroalimentaire de grande échelle",
@@ -241,14 +241,14 @@
             "texte": "matière fragile, rythme continu",
             "lienLibelle": "Étude de cas VPK : maintenance de site",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/agro-mains-vanne-sanitaire.jpg"
+            "photo": "/assets/photos/soudure-tig-virole-inox.jpg"
           },
           {
             "titre": "Renfort de l'équipe de maintenance pendant les congés d'été",
             "texte": "un technicien sur site, été 2025",
             "lienLibelle": "Étude de cas OGF : arrêt estival",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/env-workers-inspecting-large-vats-in-a-manufacturi.jpg"
+            "photo": "/assets/photos/agro-technicienne-raccord-clamp.jpg"
           },
           {
             "titre": "Technicien affecté en continu à la fiabilité d'équipements de production en forte activité",
@@ -261,13 +261,13 @@
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/env-travailleuse-usine-agroalimentaire.jpg"
+            "photo": "/assets/photos/env-workers-inspecting-large-vats-in-a-manufacturi.jpg"
           },
           {
             "titre": "Un renfort pour que le pain sorte chaque matin",
             "lienLibelle": "Étude de cas La Panetière",
             "lienHref": "/preuves/la-panetiere/",
-            "photo": "/assets/photos/env-factory-worker-inspecting-food-canning-product.jpg"
+            "photo": "/assets/photos/agro-mains-vanne-sanitaire.jpg"
           }
         ]
       },

@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Saint-Étienne",
       "titre": "Saint-Étienne : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/env-man-smiles-at-a-bottling-plant-factory.jpg",
+      "photo": "/assets/photos/env-inspection-metal-22-sept-2026-1.jpg",
       "badge": "Rattaché au hub Lyon",
       "nom": "Saint-Étienne, couvert par le hub Lyon",
       "texte": "Les techniciens du hub Lyon interviennent à Saint-Étienne et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -81,7 +81,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/env-industrial-infrastructure-with-blue-sky-and-cl.jpg",
+    "problemePhoto": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg",
     "brefBande": "Besoin de remettre en route une machine que plus personne ne sait dépanner ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -196,7 +196,7 @@
         "puces": [
           {
             "accroche": "Un périmètre écrit avant le départ",
-            "texte": "Aucun avenant découvert après coup."
+            "texte": "Ce qui est inclus, ce qui ne l'est pas, le taux horaire, les pièces au prix réel. Aucun avenant découvert après coup."
           },
           {
             "accroche": "Des intervenants évalués, pas des inconnus",
@@ -216,7 +216,7 @@
             "texte": "De la mise en route aux premières semaines d'exploitation.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/env-ouvrier-usine-metal-avec-etincelles.jpg"
+            "photo": "/assets/photos/il-usine-kawasaki-jan-11-2026-1600.jpg"
           },
           {
             "titre": "Un parc machines de PME remis en marche sans rachat de matériel neuf",
@@ -230,7 +230,7 @@
             "texte": "Prise en charge complète réalisée en un mois sur les sites lyonnais.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/env-photos-industrie.jpg"
+            "photo": "/assets/photos/il-usine-chimique-nuit-mars-09-2026-1600.jpg"
           },
           {
             "titre": "12 monteurs mécaniciens et 8 engins de levage pour monter un centre logistique à Clermont-Ferrand",
@@ -250,7 +250,7 @@
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-7-2026-1-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-20-1600.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
@@ -262,7 +262,7 @@
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/env-femme-en-costume-sterile-industrie-pharmaceuti.jpg"
+            "photo": "/assets/photos/il-detail-raffinerie-nuit-mars-17-2026-1600.jpg"
           }
         ]
       },
@@ -300,11 +300,5 @@
         "question": "Besoin de savoir ce que votre parc machines vous coûte vraiment chaque année ?"
       }
     ]
-  },
-  "trous": [
-    {
-      "ligne": "Ce qui est inclus, ce qui ne l'est pas, le taux horaire, les pièces au prix réel.",
-      "pourquoi": "« taux horaire » : aucun prix (contrat de rédaction). Première phrase du texte de la première garantie (06 Garanties), la suite « Aucun avenant découvert après coup. » reste."
-    }
-  ]
+  }
 }

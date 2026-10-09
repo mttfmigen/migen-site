@@ -226,25 +226,25 @@
       }
     ],
     "minutes": 7,
-    "image": "/assets/photos/robot-cellules-grillagees.jpg",
+    "image": "/assets/photos/il-femme-en-tenue-professionnelle-pres-d-un-bras-.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/cout-arret-de-production/",
         "titre": "Coût d'un arrêt de production",
         "minutes": 12,
-        "image": "/assets/photos/il-automaticien-avec-robot-arme-mar-19-2026-1600.jpg"
+        "image": "/assets/photos/il-concept-usine-intelligente-2026-1600.jpg"
       },
       {
         "href": "/ressources/articles/digitalisation-maintenance/",
         "titre": "Digitalisation maintenance",
         "minutes": 11,
-        "image": "/assets/photos/env-technician-with-robotic-arm.jpg"
+        "image": "/assets/photos/env-inspection-robotique-21-sept-2026.jpg"
       },
       {
         "href": "/ressources/articles/gestion-des-dechets/",
         "titre": "Gestion des déchets industriels",
         "minutes": 8,
-        "image": "/assets/photos/il-femme-en-tenue-professionnelle-pres-d-un-bras-.jpg"
+        "image": "/assets/photos/robot-cobot-technicienne.jpg"
       }
     ]
   }

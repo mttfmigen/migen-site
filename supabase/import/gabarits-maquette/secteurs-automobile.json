@@ -83,7 +83,7 @@
         "titre": "Robotique",
         "texte": "Cellules de soudure et de manutention : trajectoires, recalages, remplacement d’outils.",
         "href": "/expertises/robotique/",
-        "photo": "/assets/photos/robot-cellules-grillagees.jpg"
+        "photo": "/assets/photos/env-bras-robotiques-soudant-cadres-auto.jpg"
       },
       {
         "titre": "Automatisme",
@@ -299,7 +299,7 @@
             "texte": "Dompierre-sur-Besbre, depuis octobre 2023",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/robot-atelier-ferrage-plongee.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-11.jpg"
           },
           {
             "titre": "3 à 5 techniciens pour accompagner la montée en cadence de plusieurs usines",
@@ -313,27 +313,27 @@
             "texte": "en 2025",
             "lienLibelle": "Étude de cas JTEKT : maintenance des installations",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/env-technician-maintenance-11.jpg"
+            "photo": "/assets/photos/env-car-manufacturing-engine-assembly-on-automated.jpg"
           },
           {
             "titre": "Technicien dédié au maintien du parc machines d'un site équipementier",
             "texte": "en 2025",
             "lienLibelle": "Étude de cas AUTOLIV : maintien d'un site",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/il-technicien-maintenance-jan-9-2026-1-1600.jpg"
+            "photo": "/assets/photos/robot-soudure-points-caisse.jpg"
           },
           {
             "titre": "Six techniciens pour l'installation et la mise en production d'un parc machine neuf",
             "texte": "site automobile, depuis janvier 2023",
             "lienLibelle": "Étude de cas EATON : mise en production",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/env-car-manufacturing-engine-assembly-on-automated.jpg"
+            "photo": "/assets/photos/env-robotic-arms-welding-car-frames.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/env-industrie-automobile.jpg"
+            "photo": "/assets/photos/env-assemblage-carrosseries.jpg"
           }
         ]
       },

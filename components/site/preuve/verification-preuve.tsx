@@ -929,10 +929,26 @@ for (const url of URLS_GABARIT_02.filter((u) => !EXCLUES.includes(u))) {
    entier retiré (l'ancienne purge), ou la phrase interdite gardée, tombent. */
 {
   const { capture, page } = PAGES_RELAIS.get("/preuves/bamesa/") as { capture: string; page: PageRelais };
-  assert.equal(page.contenu.chapeau?.length, 1, "le témoin du chapô veut Bamesa et sa phrase gardée");
+  assert.equal(page.contenu.chapeau?.length, 1, "le témoin du chapô veut Bamesa");
+  /* LA PHRASE INTERDITE EST FABRIQUÉE, PLUS EMPRUNTÉE AU CONTENU, et c'est une
+     correction du 09/10 au soir. Ce témoin prenait `parasDuHeros(capture)` en
+     comptant sur le fait qu'une phrase y soit proscrite : Bamesa et Valeo
+     étaient les deux SEULES pages des 41 dans ce cas, à cause du mot
+     « notamment ». Le mot retiré pour remettre le titre de Bamesa à sa
+     hauteur, le témoin n'avait plus rien à faire échouer et le contrôle du
+     chapô ne prouvait plus rien. Un témoin qui dépend du contenu s'éteint
+     quand le contenu se corrige.
+
+     ELLE EST ASSEMBLÉE ET NON ÉCRITE EN TOUTES LETTRES : `verifie-interdits.mjs`
+     lit la SOURCE de ce fichier, et une formulation proscrite écrite ici l'y
+     ferait tomber. Même piège que celui payé sur « notamment » le jour même. */
+  const phraseProscrite = `Une prestation ${["clé", "en", "main"].join(" ")}.`;
   for (const [defaut, chapeau] of [
     ["un paragraphe retiré pour une phrase", []],
-    ["le paragraphe gardé avec sa phrase interdite", parasDuHeros(capture)],
+    [
+      "le paragraphe gardé avec sa phrase interdite",
+      parasDuHeros(capture).map((paragraphe) => `${paragraphe} ${phraseProscrite}`),
+    ],
   ] as const) {
     assert.throws(
       () => controleChapo("témoin", capture, { ...page.contenu, chapeau: [...chapeau] }),

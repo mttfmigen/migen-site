@@ -58,7 +58,7 @@
       }
     ],
     "appelBouton": "Faire visiter mon atelier à un chargé d'affaires",
-    "problemePhoto": "/assets/photos/env-photos-menuiserie-2.jpg",
+    "problemePhoto": "/assets/photos/env-inspection-de-bois-24-sept-2026.jpg",
     "brefBande": "Besoin d'un premier état des lieux honnête sur votre parc bois ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -72,25 +72,25 @@
         "titre": "Mécanique",
         "texte": "Broches, guides et transmissions des centres d’usinage.",
         "href": "/expertises/mecanique/",
-        "photo": "/assets/photos/env-professionnels-sur-machine-a-bois.jpg"
+        "photo": "/assets/photos/env-menuiserie-circular-saw.jpg"
       },
       {
         "titre": "Pneumatique",
         "texte": "Serrages et presses pneumatiques des lignes d’assemblage.",
         "href": "/expertises/pneumatique/",
-        "photo": "/assets/photos/env-menuiserie-industrie.jpg"
+        "photo": "/assets/photos/env-photos-menuiserie-2.jpg"
       },
       {
         "titre": "Automatisme",
         "texte": "Commandes numériques et automates des centres d’usinage.",
         "href": "/expertises/automatisme/",
-        "photo": "/assets/photos/env-photos-industrie-menuiserie-3.jpg"
+        "photo": "/assets/photos/env-menuisier-dans-l-atelier.jpg"
       },
       {
         "titre": "Électrique",
         "texte": "Moteurs, aspirations et armoires en atelier poussiéreux.",
         "href": "/expertises/electrique/",
-        "photo": "/assets/photos/env-menuisier-avec-masque-sept-2026.jpg"
+        "photo": "/assets/photos/env-professionnels-sur-machine-a-bois.jpg"
       }
     ],
     "sections": [
@@ -303,13 +303,13 @@
             "texte": "un technicien sur site, été 2025",
             "lienLibelle": "Étude de cas OGF : arrêt estival",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/menuiserie-passerelle-usine-bois.jpg"
+            "photo": "/assets/photos/env-menuisier-avec-masque-sept-2026.jpg"
           },
           {
             "titre": "Des commandes numériques remises en route à chaque équipe",
             "lienLibelle": "Étude de cas Jeld-Wen",
             "lienHref": "/preuves/jeld-wen/",
-            "photo": "/assets/photos/env-menuisier-dans-l-atelier.jpg"
+            "photo": "/assets/photos/menuiserie-centre-usinage-soufflette.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
@@ -321,7 +321,7 @@
             "titre": "Des chantiers automatisés contrôlés point par point",
             "lienLibelle": "Étude de cas Alstef Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/env-menuiserie-circular-saw.jpg"
+            "photo": "/assets/photos/menuiserie-passerelle-usine-bois.jpg"
           }
         ]
       },

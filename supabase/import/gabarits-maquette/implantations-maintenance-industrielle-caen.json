@@ -101,7 +101,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/env-structures-industrielles-au-coucher-du-soleil.jpg",
+    "problemePhoto": "/assets/photos/env-ouvrier-industriel-avec-ladle.jpg",
     "complementOffre": [
       {
         "texte": "Pour un montage de ligne, un transfert ou une extension de site, notre offre chantier prend le relais avec un chef de projet unique."
@@ -248,7 +248,7 @@
             "texte": ", en présence continue depuis 2025.",
             "lienLibelle": "Étude de cas AUTOLIV",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/il-chimie-colonnes-raffinerie-nuit.jpg"
+            "photo": "/assets/photos/env-industrie.jpg"
           },
           {
             "titre": "3 à 5 techniciens déployés pour accompagner la montée en cadence de plusieurs usines françaises",
@@ -262,7 +262,7 @@
             "texte": ", liquides et conditionnement poudre.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/env-industrie-metallique.jpg"
+            "photo": "/assets/photos/env-photo-industrie-chimie.jpg"
           },
           {
             "titre": "1 à 3 techniciens en renfort permanent sur plusieurs sites de production",
@@ -281,19 +281,19 @@
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/env-car-manufacturing-engine-assembly-on-automated.jpg"
+            "photo": "/assets/photos/env-industrie-metallique-24-sept-2026.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/photos/env-assemblage-chassis-automobile.jpg"
+            "photo": "/assets/photos/env-photo-industrie-pharmaceutique.jpg"
           },
           {
             "titre": "Centres d’usinage et presses tenus dans le Grand Est",
             "lienLibelle": "Étude de cas Voit",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/il-technicien-maintenance-jan-7-2026-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-en-securite-mar-23-2026-2.jpg"
           }
         ]
       },

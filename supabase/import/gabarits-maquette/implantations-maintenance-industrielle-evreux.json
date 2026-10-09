@@ -115,7 +115,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-technicien-maintenance-robotique-mar-18-2026-1.jpg",
+    "problemePhoto": "/assets/photos/env-industrial-infrastructure-with-blue-sky-and-cl.jpg",
     "brefBande": "Un équipement qui inquiète avant la prochaine fenêtre de production ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -245,37 +245,37 @@
             "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
             "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/photos/env-homme-inspectant-le-bois.jpg"
+            "photo": "/assets/photos/il-mechanic-working-in-warehouse-2.jpg"
           },
           {
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/env-usine-metallique.jpg"
+            "photo": "/assets/photos/il-equipement-et-pipeline-raffinerie-2026-1600.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/env-raffinerie-de-petrole-au-coucher-du-soleil.jpg"
+            "photo": "/assets/photos/env-photos-industrie-menuiserie-2.jpg"
           },
           {
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
             "lienLibelle": "Étude de cas Autoliv",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/env-operateur-de-metal-24-sept-2026.jpg"
+            "photo": "/assets/photos/env-usine-aeronautique-22-sept-2026.jpg"
           },
           {
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/env-promenade-des-ingenieurs-a-la-raffinerie.jpg"
+            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/photos/menuiserie-robot-panneaux.jpg"
+            "photo": "/assets/photos/il-portrait-of-engineer-or-technician-worker-woma.jpg"
           }
         ]
       },

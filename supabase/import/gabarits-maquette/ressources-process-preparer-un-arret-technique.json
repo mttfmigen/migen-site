@@ -272,25 +272,25 @@
       }
     ],
     "minutes": 10,
-    "image": "/assets/photos/equipe-consignes-atelier-casques.jpg",
+    "image": "/assets/photos/elec-porte-armoire-voyants-sectionneurs.jpg",
     "aLire": [
       {
         "href": "/ressources/process/gestion-maintenance-preventive/",
         "titre": "Gestion de la maintenance préventive",
         "minutes": 14,
-        "image": "/assets/photos/elec-porte-armoire-voyants-sectionneurs.jpg"
+        "image": "/assets/photos/energie-rotor-turbine-vapeur.jpg"
       },
       {
         "href": "/ressources/process/protocole-de-securite/",
         "titre": "Protocole de sécurité",
         "minutes": 11,
-        "image": "/assets/photos/tuyau-soudure-reseau-usine.jpg"
+        "image": "/assets/photos/soudure-interieur-virole.jpg"
       },
       {
         "href": "/ressources/process/selection-des-techniciens/",
         "titre": "Sélection technicien de maintenance",
         "minutes": 8,
-        "image": "/assets/photos/soudure-interieur-virole.jpg"
+        "image": "/assets/photos/tuyau-soudure-reseau-usine.jpg"
       }
     ]
   }

@@ -73,7 +73,7 @@
           "blocs": [
             {
               "type": "photo",
-              "image": "/assets/photos/env-homme-inspectant-le-bois.jpg"
+              "image": "/assets/photos/env-industrie-chimie-2.jpg"
             },
             {
               "type": "h3",
@@ -393,7 +393,7 @@
           "blocs": [
             {
               "type": "photo",
-              "image": "/assets/photos/env-manipulation-metal-usine.jpg"
+              "image": "/assets/photos/env-homme-inspectant-le-bois.jpg"
             },
             {
               "type": "p",
@@ -575,7 +575,7 @@
           "blocs": [
             {
               "type": "photo",
-              "image": "/assets/photos/meca-presses-volants-technicienne.jpg"
+              "image": "/assets/photos/env-manipulation-metal-usine.jpg"
             },
             {
               "type": "p",

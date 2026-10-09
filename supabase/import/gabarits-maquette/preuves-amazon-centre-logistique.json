@@ -27,7 +27,7 @@
       }
     ],
     "logo": "/assets/clients/mq-3103d0f3f9ba.svg",
-    "photoHero": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg",
+    "photoHero": "/assets/photos/robot-palettiseur-sacs-poudre.jpg",
     "chiffres": [
       {
         "libelle": "Durée d'intervention",
@@ -191,13 +191,13 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg"
+        "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
         "href": "/secteurs/logistique/",
-        "photo": "/assets/photos/il-pipes-et-structures-raffinerie-2026-1600.jpg"
+        "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
       },
       {
         "surtitre": "Étude de cas",
@@ -209,7 +209,7 @@
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
+        "photo": "/assets/photos/il-mechanic-working-in-warehouse-2.jpg"
       }
     ]
   },

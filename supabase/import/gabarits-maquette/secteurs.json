@@ -184,35 +184,35 @@
             "texte": "site de Steenvoorde",
             "lienLibelle": "Étude de cas DANONE : lignes de production",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-9-2026-3-1600.jpg"
+            "photo": "/assets/photos/env-technicien-maintenance-photo.jpg"
           },
           {
             "titre": "18 à 25 techniciens sur plusieurs sites pendant la transition vers l'électrique, automobile",
             "texte": "depuis juin 2023",
             "lienLibelle": "Étude de cas STELLANTIS : sites du Grand Est",
             "lienHref": "/preuves/stellantis-grand-est/",
-            "photo": "/assets/photos/env-infrastructure-usine-acier-avec-tuyaux.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-robotic-arm.jpg"
           },
           {
             "titre": "Préventif d'un centre logistique qui tourne nuit et week-end, logistique",
             "texte": "depuis septembre 2022",
             "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-mar-19-2026-1-160.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve, matériaux",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/env-photos-industrie-agro-alimentaire.jpg"
+            "photo": "/assets/photos/il-portrait-of-engineer-or-technician-worker-woma.jpg"
           },
           {
             "titre": "Électromécanicien habilité risque chimique sur une remise en état de site, traitement des eaux",
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/automatisme-camera-vision-convoyeur.jpg"
+            "photo": "/assets/photos/il-female-engineer-inspecting-machinery-in-indust.jpg"
           },
           {
             "titre": "Renfort d'équipes de maintenance sur plusieurs sites de production, confort thermique",
@@ -277,7 +277,7 @@
         "titre": "Bureau d'études",
         "phrase": "Rétrofit et mise en conformité chiffrés par notre bureau d'études.",
         "href": "/offres/bureau-etudes/",
-        "photo": "/assets/photos/il-equipement-et-pipeline-raffinerie-2026-1600.jpg"
+        "photo": "/assets/photos/env-industrie-chimie.jpg"
       },
       {
         "titre": "Agroalimentaire",
@@ -307,7 +307,7 @@
         "titre": "Aéronautique",
         "phrase": "Chaque page secteur détaille les équipements couverts et les contraintes propres au terrain : agroalimentaire, équipements logistiques, automobile, pharmaceutique, aéronautique, chimie, nucléaire, industrie lourde, industrie métallique, menuiserie industrielle.",
         "href": "/secteurs/aeronautique/",
-        "photo": "/assets/photos/env-technicien-maintenance-photo.jpg"
+        "photo": "/assets/photos/env-ouvrier-industriel-avec-ladle.jpg"
       }
     ]
   }

@@ -101,7 +101,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-technicien-maintenance-photo-12-1600.jpg",
+    "problemePhoto": "/assets/photos/env-controle-qualite-femme.jpg",
     "brefBande": "Un équipement qui inquiète avant la prochaine fenêtre de production ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -231,37 +231,37 @@
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/chimie-reacteurs-agites-passerelle.jpg"
+            "photo": "/assets/photos/env-inspection-de-la-chaine-alimentaire.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/env-inspection-metal-22-sept-2026-1.jpg"
+            "photo": "/assets/photos/equipe-consignes-atelier-casques.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/il-usines-a-yokkaichi-mars-24-2026-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-1600.jpg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/env-technician-maintenance-6.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-mar-19-2026-1600.jpg"
           },
           {
             "titre": "Un renfort pour que le pain sorte chaque matin",
             "lienLibelle": "Étude de cas La Panetière",
             "lienHref": "/preuves/la-panetiere/",
-            "photo": "/assets/photos/il-silos-agricoles-exterieur.jpg"
+            "photo": "/assets/photos/il-man-working-with-machinery-in-a-factory.jpg"
           },
           {
             "titre": "Un été entier sans trou dans la maintenance",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/env-menuisier-avec-masque-sept-2026.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-4.jpg"
           }
         ]
       },

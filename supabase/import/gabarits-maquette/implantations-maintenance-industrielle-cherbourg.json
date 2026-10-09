@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Cherbourg",
       "titre": "Cherbourg : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/env-technicien-en-costume-de-nettoyage-industrie-p.jpg",
+      "photo": "/assets/photos/env-assemblage-chassis-automobile.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Cherbourg et ses environs",
       "texte": "Nos techniciens itinérants couvrent Cherbourg et son bassin, appuyés par le réseau national Migen.",
@@ -245,37 +245,37 @@
             "titre": "Six mois pour remettre en état un site à risque chimique",
             "lienLibelle": "Étude de cas Suez IWT",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/env-industrial-infrastructure-with-blue-sky-and-cl.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-9-2026-1600.jpg"
           },
           {
             "titre": "Le préventif d’une centrale photovoltaïque en trois techniciens",
             "lienLibelle": "Étude de cas Eiffage",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/photos/il-young-african-american-worker-of-industrial-pl.jpg"
+            "photo": "/assets/photos/env-industrie-metallique.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/env-inspection-equipement-fabrication.jpg"
+            "photo": "/assets/photos/env-car-manufacturing-engine-assembly-on-automated.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/env-menuisier-dans-l-atelier.jpg"
+            "photo": "/assets/photos/env-menuiserie-24-sept-2026.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/env-professionnels-sur-machine-a-bois.jpg"
+            "photo": "/assets/photos/env-oil-and-gas-petrochemical-industrial-oil-refin.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/env-technician-maintenance-4.jpg"
+            "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
           }
         ]
       },

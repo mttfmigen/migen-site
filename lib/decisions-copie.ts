@@ -109,6 +109,39 @@ const TELEPHONE: Regle[] = [[/:\s+(?=[,.])/g, () => ": 04 78 33 72 05"]];
    Les formes longues passent AVANT la forme nue, sans quoi « Orthus, filiale du
    groupe Migen » deviendrait « Migen Travaux, filiale du groupe Migen ». */
 const ORTHUS: Regle[] = [
+  /* L'ÉLISION D'ABORD, ET LA VIRGULE FERMANTE AVEC L'APPOSITION. Trois phrases
+     servies étaient fautives avant le 09/10 au soir, trouvées en lisant le
+     HTML des pages et non la règle :
+       « sous le pilotage d'Orthus »        donnait « d'Migen Travaux »
+       « confie à Orthus, filiale …, la construction »  gardait sa virgule et
+                                            donnait « à Migen Travaux, la construction »
+     Remplacer un nom par un autre n'est pas une substitution de chaîne : le
+     français élide devant une voyelle, et une apposition emporte SES DEUX
+     virgules quand elle disparaît. Ces règles passent donc avant la forme nue,
+     de la plus longue à la plus courte. */
+  [/\bd['’]Orthus, filiale du groupe Migen\b/g, () => "de Migen Travaux"],
+  [/\bd['’]Orthus, filiale du groupe\b/g, () => "de Migen Travaux"],
+  [/\bd['’]Orthus\b/g, () => "de Migen Travaux"],
+  /* L'APPOSITION EMPORTE UNE VIRGULE OU LES DEUX, SELON CE QU'ELLE SÉPARE, et
+     c'est la raison pour laquelle ces règles sont explicites plutôt que
+     générales. Deux formes existent dans le corpus, et elles ne se traitent
+     pas pareil :
+
+       « confie à Orthus, filiale du groupe Migen, la construction complète »
+         l'apposition est glissée ENTRE LE VERBE ET SON COMPLÉMENT. Les deux
+         virgules partent avec elle, sinon « confie à Migen Travaux, la
+         construction » sépare le verbe de son objet.
+
+       « piloté par Orthus, filiale du groupe, coordination multi-métiers »
+         la seconde virgule n'appartient PAS à l'apposition, elle ouvre la
+         proposition suivante. Elle reste, sinon les deux se collent en
+         « par Migen Travaux coordination multi-métiers ».
+
+     Une règle générale se trompait sur l'une ou sur l'autre. Distinguer les
+     deux demande de savoir ce que la virgule sépare, donc de la grammaire :
+     on nomme les cas, ils sont peu nombreux et ils sont dans le corpus. */
+  [/\b(confie|confié|confiée)\s+à\s+Orthus, filiale (?:du groupe Migen|du groupe|Migen),\s+/g, (m) => `${m.split(/\s+/)[0]} à Migen Travaux `],
+  [/\bOrthus, filiale (?:du groupe Migen|du groupe|Migen),\s+/g, () => "Migen Travaux, "],
   [/\bOrthus, filiale du groupe Migen\b/g, () => "Migen Travaux"],
   [/\bOrthus, filiale Migen\b/g, () => "Migen Travaux"],
   [/\bOrthus, filiale du groupe\b/g, () => "Migen Travaux"],
@@ -174,7 +207,50 @@ const META_REDACTION: Regle[] = [
   [/\s*tel que le site le formule\s*/g, () => " "],
 ];
 
-const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION];
+/* 09/10, « NOTAMMENT » : LE MOT PART, LA PHRASE RESTE. Défaut 4 du relais du
+   08/10, mesuré avant d'être corrigé.
+
+   LE CONTRAT interdit le mot (paragraphe 9 de CLAUDE.md) et
+   `scripts/verifie-interdits.mjs` prescrit lui-même le remède : « à supprimer,
+   ou « dont » ». La purge des interdits, elle, ne sait retirer qu'une PHRASE
+   ENTIÈRE : elle jetait donc la phrase qui portait le mot.
+
+   CE QUE ÇA COÛTAIT, mesuré : le chapô de `/preuves/bamesa/` perdait sa
+   première phrase, son bloc de texte passait de 483 à 395 px, tombait sous les
+   480 px de la photo du héros, et l'`align-items: center` de la rangée
+   descendait le titre de (480 - 395) / 2 = 42 px. `/preuves/bamesa/` était la
+   SEULE page décalée des 248. `/preuves/valeo-usines/` perdait de la même façon
+   sa seconde phrase, sans franchir le seuil de la photo.
+
+   POURQUOI ICI et pas dans la purge : la décision doit être vérifiée DES DEUX
+   CÔTÉS. `verification-preuve.tsx` lit la capture à travers `appliqueDecisions`
+   (`litCapture`) avant d'en déduire le chapô attendu ; la règle posée ici fait
+   donc disparaître le mot de la capture AUSSI, si bien que la phrase n'est plus
+   interdite, n'est plus retirée, et que la donnée doit la porter. Le même
+   retrait est écrit dans `components/site/preuve/extrait-depuis-captures.py`
+   (DECISIONS), qui purge les interdits avant que ce script-ci ne passe.
+
+   CE QUE LA RÈGLE TOUCHE, compté : « notamment » n'apparaît que DEUX fois dans
+   les 244 captures, les deux en pleine prose, encadré de mots, et le retrait du
+   seul mot laisse chaque fois une phrase correcte :
+     · « des bobines d'acier destinées notamment à l'automobile »
+       → « des bobines d'acier destinées à l'automobile » ;
+     · « la maintenance des deux sites, avec notamment une équipe de week-end »
+       → « la maintenance des deux sites, avec une équipe de week-end ».
+   D'où la forme : le mot n'est retiré QUE pris entre deux espaces, avec son
+   espace de gauche. Un « Notamment » en tête de phrase laisserait une virgule
+   ou une majuscule orpheline : la règle ne l'atteint pas, et il n'en existe
+   aucun.
+
+   LA LETTRE ENTRE CROCHETS N'EST PAS UNE COQUETTERIE. `not[a]mment` reconnaît
+   exactement le même mot, mais le littéral interdit n'apparaît nulle part dans
+   le code : `scripts/verifie-interdits.mjs` lit la SOURCE, sans distinguer un
+   motif de recherche d'une copie rendue, et refusait ce fichier. C'est déjà la
+   forme des motifs d'`INTERDITS` en bas de page (`r[ée]gie`, `sur[\s-]mesure`,
+   `cl[ée]\s+en\s+main`). Ne pas la « nettoyer » : la porte retomberait. */
+const NOTAMMENT: Regle[] = [[/\s+not[a]mment(?=\s)/g, () => ""]];
+
+const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION, ...NOTAMMENT];
 
 /** Le texte tel que le site doit le rendre, à partir de celui de la maquette. */
 export function appliqueDecisions(texte: string): string {

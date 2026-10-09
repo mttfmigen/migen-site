@@ -200,7 +200,7 @@
             "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés sur le chantier, site livré à la date prévue.",
             "lienLibelle": "Étude de cas AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/energie-eolien-hauteur-harnais.jpg",
+            "photo": "/assets/photos/env-industrie-mettalique.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
@@ -208,7 +208,7 @@
             "texte": "Réception, assemblage, levage et raccordements, portique validé à l'issue du montage.",
             "lienLibelle": "Étude de cas Migen Travaux x WASHTEC",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/photos/env-industrie-metallique-2.jpg",
+            "photo": "/assets/photos/energie-eolien-hauteur-harnais.jpg",
             "logo": "/assets/clients/orthus-x-washtec.svg"
           },
           {
@@ -238,14 +238,14 @@
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/env-industrie-mettalique.jpg",
+            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
             "titre": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
             "lienLibelle": "Étude de cas Atena",
             "lienHref": "/preuves/atena-port-la-rochelle/",
-            "photo": "/assets/photos/env-industrie-metallique-22-sept-2026-1.jpg",
+            "photo": "/assets/photos/env-photos-industrie-metallique.jpg",
             "logo": "/assets/clients/atena.png"
           }
         ]
@@ -291,31 +291,31 @@
         "titre": "Technicien en résidence",
         "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/il-interieur-de-chantier-naval-24-mars-2026-1600.jpg"
+        "photo": "/assets/photos/env-industrie-metallique-22-sept-2026-1.jpg"
       },
       {
         "titre": "Zéro arrêt",
         "phrase": "La maintenance en abonnement, au forfait mensuel.",
         "href": "/offres/zero-arret/",
-        "photo": "/assets/photos/env-photos-industrie-metallique.jpg"
+        "photo": "/assets/photos/env-industrie-metallique-2.jpg"
       },
       {
         "titre": "Arrêt technique",
         "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
         "href": "/offres/arret-technique/",
-        "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
+        "photo": "/assets/photos/il-interieur-de-chantier-naval-24-mars-2026-1600.jpg"
       },
       {
         "titre": "Full service",
         "phrase": "Toute votre maintenance, un seul partenaire.",
         "href": "/offres/full-service/",
-        "photo": "/assets/photos/il-photo-usine-ciment-mars-17-2026-1600.jpg"
+        "photo": "/assets/photos/levage-montage-poteau-charpente.jpg"
       },
       {
         "titre": "Travaux industriels",
         "phrase": "Transfert, démantèlement, démontage et montage.",
         "href": "/travaux-industriels/",
-        "photo": "/assets/photos/levage-montage-poteau-charpente.jpg"
+        "photo": "/assets/photos/il-photo-usine-ciment-mars-17-2026-1600.jpg"
       },
       {
         "titre": "Bureau d'études",

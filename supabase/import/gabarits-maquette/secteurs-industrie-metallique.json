@@ -108,13 +108,13 @@
         "titre": "Soudure",
         "texte": "Réparation de bâtis et d’outillages, remise en état sur site.",
         "href": "/expertises/soudure/",
-        "photo": "/assets/photos/meca-jeune-presse-volant.jpg"
+        "photo": "/assets/photos/env-industrie-paysage.jpg"
       },
       {
         "titre": "Automatisme",
         "texte": "Commandes numériques et automates de ligne.",
         "href": "/expertises/automatisme/",
-        "photo": "/assets/photos/chaudro-meulage-visiere.jpg"
+        "photo": "/assets/photos/env-photos-industrie-2.jpg"
       }
     ],
     "marquesFamille": "mo",
@@ -254,7 +254,7 @@
             "texte": "en 2025",
             "lienLibelle": "Étude de cas VOIT : site du Grand Est",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/il-industrie-photo-jan-5-2026-1600.jpg"
+            "photo": "/assets/photos/env-industrie-mettalique.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage",
@@ -295,7 +295,7 @@
             "titre": "Des commandes numériques remises en route à chaque équipe",
             "lienLibelle": "Étude de cas Jeld-Wen",
             "lienHref": "/preuves/jeld-wen/",
-            "photo": "/assets/photos/env-industrie-mettalique.jpg"
+            "photo": "/assets/photos/env-infrastructure-usine-acier-avec-tuyaux.jpg"
           },
           {
             "titre": "Une alliance pour tenir les installations intralogistiques de ses clients",

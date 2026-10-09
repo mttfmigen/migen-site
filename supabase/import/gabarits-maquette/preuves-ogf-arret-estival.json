@@ -15,7 +15,7 @@
     "bouton": "Préparer mon renfort d'été",
     "logo": "/assets/clients/ogf.png",
     "logoInverse": true,
-    "photoHero": "/assets/photos/chimie-cuve-melange-flexible.jpg",
+    "photoHero": "/assets/photos/il-technician-using-control-panel-in-industrial-f.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -128,7 +128,7 @@
         "valeur": "Coordinateurs Migen"
       }
     ],
-    "photoDispositif": "/assets/photos/env-photos-industrie-pharmaceutique.jpg",
+    "photoDispositif": "/assets/photos/il-technicien-maintenance-inspectant-equipement-j.jpg",
     "resultats": [
       {
         "titre": "La disponibilité des équipements critiques",
@@ -183,25 +183,25 @@
         "surtitre": "Étude de cas",
         "titre": "VPK : renfort sur un parc en forte cadence",
         "href": "/preuves/vpk/",
-        "photo": "/assets/photos/env-reparation-moteur-avion.jpg"
+        "photo": "/assets/photos/env-professionnels-maintenance-aeronautique.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/env-technician-inspecting-power-grid-equipment-in-.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-photo-15-1600.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/il-technicien-maintenance-photo.jpg"
+        "photo": "/assets/photos/env-entretien-avion-22-sept-2026.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/energie-bride-mat-eolienne.jpg"
+        "photo": "/assets/photos/env-inspection-bras-robotiques.jpg"
       }
     ]
   }

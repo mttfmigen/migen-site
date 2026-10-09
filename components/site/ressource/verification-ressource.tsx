@@ -32,6 +32,9 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { PHOTOS_MIGEN } from "@/lib/photos-autorisees";
+import type { LectureRessource } from "@/types/ressource";
+
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { enTexteNu } from "@/components/site/blocs/TexteRiche";
@@ -51,6 +54,20 @@ import {
 
 const RACINE = fileURLToPath(new URL("../../..", import.meta.url));
 const args = process.argv.slice(2);
+/* LE VIVIER DU RÉPARTITEUR, ET RIEN D'AUTRE. Une image acceptable vient de la
+   maquette, du registre sous licence, ou des dix photos de l'équipe Migen :
+   c'est exactement ce dans quoi `scripts/repartit-photos.ts` puise, et donc
+   tout ce qu'une page peut légitimement servir. N'accepter que le registre
+   laissait tomber les pages dont une lecture porte une photo de l'équipe,
+   `/assets/web/team-grind-front.jpg` par exemple. Une photo hors de ce vivier
+   veut dire que quelqu'un a deviné, et elle reste refusée. */
+const VIVIER_AUTORISE = new Set<string>([
+  ...(JSON.parse(readFileSync("public/assets/photos/registre.json", "utf8")) as { fichier: string }[]).map(
+    (p) => `/assets/photos/${p.fichier}`,
+  ),
+  ...PHOTOS_MIGEN,
+]);
+
 const DOSSIER = args.includes("--donnees")
   ? args[args.indexOf("--donnees") + 1]
   : join(RACINE, "supabase", "import", "gabarits-maquette");
@@ -176,12 +193,41 @@ function controle(url: string): string[] {
   verifie(fichier.titre_h1 === entree?.h1, `titre_h1 « ${fichier.titre_h1} » attendu « ${entree?.h1} »`);
   verifie(contenu?.rayon === url.split("/")[2], `rayon « ${contenu?.rayon} » attendu « ${url.split("/")[2]} »`);
   verifie(contenu?.minutes === minutesMaquette(entree?.mots), `minutes attendues ${minutesMaquette(entree?.mots)}`);
+  /* LA PHOTO : CELLE DE LA MAQUETTE, OU UNE PHOTO DU REGISTRE SOUS LICENCE.
+     Correction du 09/10 au soir, la même que celle déjà posée sur les gabarits
+     preuve, spécialité, domaine, ville, secteur et implantations. La
+     répartition du 09/10 a remplacé les photos de calage de la maquette, qui
+     ne comptait que 68 images distinctes pour 1 822 emplacements, par des
+     photos du registre sous licence. Exiger l'image de la maquette à
+     l'identique revenait à exiger le défaut que cette répartition répare, et
+     cette porte rendait 0/35.
+     CE QUI RESTE REFUSÉ, et c'est tout l'objet : une photo DEVINÉE, ni dans la
+     maquette ni au registre. La preuve d'échec de ce contrôle le vérifie. */
   const photo = contenu?.rayon === "livres-blancs" ? undefined : imageMaquette(url, 3);
-  verifie(contenu?.image === photo, `image « ${contenu?.image} » attendue « ${photo} »`);
+  const image = contenu?.image;
+  const duVivier = typeof image === "string" && VIVIER_AUTORISE.has(image);
+  verifie(image === photo || duVivier, `image « ${image} » attendue « ${photo} » ou une photo du vivier`);
+  /* `aLire` PORTE AUSSI DES IMAGES, et c'est ce qui faisait tomber les 35
+     pages : la comparaison était stricte, or la répartition du 09/10 a changé
+     l'image de chaque lecture pour une photo du registre. Le choix des trois
+     lectures, leur ordre, leur titre et leurs minutes restent comparés à
+     l'identique, parce que c'est là qu'une erreur se verrait ; l'image suit la
+     même règle que celle du haut de page, la maquette OU le registre. */
+  const imageAcceptable = (reelle: unknown, attendue: unknown) =>
+    reelle === attendue || (typeof reelle === "string" && VIVIER_AUTORISE.has(reelle));
+  const attenduALire: readonly LectureRessource[] = lecturesMaquette(url, index);
+  const reelALire: readonly LectureRessource[] | undefined = contenu?.aLire;
   try {
-    assert.deepEqual(contenu?.aLire, lecturesMaquette(url, index));
+    assert.equal(reelALire?.length, attenduALire.length);
+    for (const [i, attendue] of attenduALire.entries()) {
+      const reelle: LectureRessource | undefined = reelALire?.[i];
+      assert.equal(reelle?.href, attendue.href);
+      assert.equal(reelle?.titre, attendue.titre);
+      assert.equal(reelle?.minutes, attendue.minutes);
+      assert.ok(imageAcceptable(reelle?.image, attendue.image));
+    }
   } catch {
-    erreurs.push(`aLire : les trois lectures de la maquette sont attendues (rayon d'abord, ordre de l'index)`);
+    erreurs.push(`aLire : les trois lectures de la maquette sont attendues (rayon d'abord, ordre de l'index), image de la maquette ou du registre`);
   }
   for (const retrait of fichier.retraits ?? []) {
     verifie(INTERDITS.some((re) => re.test(retrait)), `retrait sans terme interdit : « ${retrait} »`);

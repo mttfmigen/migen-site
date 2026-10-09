@@ -102,7 +102,7 @@
         "titre": "Tuyauterie",
         "texte": "Lignes et supports en zone réglementée.",
         "href": "/expertises/tuyauterie/",
-        "photo": "/assets/photos/energie-releve-pupitre-salle-commande.jpg"
+        "photo": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg"
       },
       {
         "titre": "Soudure",
@@ -114,7 +114,7 @@
         "titre": "Électrique",
         "texte": "Consignations et interventions sous procédure.",
         "href": "/expertises/electrique/",
-        "photo": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg"
+        "photo": "/assets/photos/energie-releve-pupitre-salle-commande.jpg"
       }
     ],
     "sections": [
@@ -307,7 +307,7 @@
             "texte": "septembre à novembre 2024, plus de six semaines",
             "lienLibelle": "Étude de cas EIFFAGE : partenariat",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/photos/elec-binome-coffret-chaufferie.jpg"
+            "photo": "/assets/photos/env-photo-industrie-2.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne de production neuve, matériaux",
@@ -321,7 +321,7 @@
             "texte": "environnement thermique sévère, depuis octobre 2023",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg"
+            "photo": "/assets/photos/energie-bride-mat-eolienne.jpg"
           },
           {
             "titre": "Renfort d'équipes de maintenance sur plusieurs sites de production",
@@ -334,7 +334,7 @@
             "titre": "Un été entier sans trou dans la maintenance",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/il-photo-industrie-raffinerie-petrole-mars-2026-1.jpg"
+            "photo": "/assets/photos/il-raffinerie-industrielle-au-crepuscule-1600.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
@@ -346,7 +346,7 @@
             "titre": "Six techniciens pour faire démarrer un parc machines",
             "lienLibelle": "Étude de cas Eaton",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg"
+            "photo": "/assets/photos/elec-binome-coffret-chaufferie.jpg"
           }
         ]
       },

@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Dijon",
       "titre": "Dijon : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/ciment-tambour-rotatif-silos.jpg",
+      "photo": "/assets/photos/env-technician-maintenance-2.jpg",
       "badge": "Hub Migen",
       "nom": "Hub Dijon",
       "texte": "Une équipe de techniciens installée à Dijon, au plus près de vos sites, appuyée par le réseau national Migen.",
@@ -72,7 +72,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-inspection-de-terrain-en-securite-mars-2026-16.jpg",
+    "problemePhoto": "/assets/photos/il-photo-usine-ciment-mars-17-2026-1600.jpg",
     "brefBande": "Besoin de reprendre un préventif que le correctif a fini par manger ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -207,53 +207,53 @@
             "texte": "Nutrition infantile, cadence continue, site de Steenvoorde.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/env-technicien-maintenance-photo.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-13.jpg"
           },
           {
             "titre": "1 à 3 techniciens en renfort des équipes maintenance sur plusieurs sites de production, depuis octobre 2024",
             "texte": "Disponibilité machine jouée chaque semaine.",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/levage-montage-poteau-charpente.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-8-2026-3-1600.jpg"
           },
           {
             "titre": "Un technicien intégré pendant l'arrêt estival pour tenir les équipements critiques",
             "texte": "Été 2025, équipe à moitié en congés.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg"
+            "photo": "/assets/photos/env-menuisier-avec-masque-sept-2026.jpg"
           },
           {
             "titre": "Un électromécanicien habilité risque chimique RC1 mobilisé six mois sur un site de traitement des eaux industrielles",
             "texte": "Remise en état complète.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/menuiserie-passerelle-usine-bois.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-9-2026-2-1600.jpg"
           },
           {
             "titre": "Un technicien polyvalent sur un parc machines hétérogène en forte cadence",
             "texte": "Papier et emballage, 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/env-photo-industrie-chimie.jpg"
+            "photo": "/assets/photos/il-industrie-paysage-au-coucher-de-soleil-1600.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/hydrau-presse-pupitre-manometre.jpg"
+            "photo": "/assets/photos/il-detail-raffinerie-nuit-mars-17-2026-1600.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/env-industrie-chimie-3.jpg"
+            "photo": "/assets/photos/env-inspection-de-bois-24-sept-2026.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
             "lienLibelle": "Étude de cas Veepee",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/env-scie-a-ruban-industrielle.jpg"
+            "photo": "/assets/photos/env-scientist-in-pharmaceutical-lab.jpg"
           }
         ]
       },

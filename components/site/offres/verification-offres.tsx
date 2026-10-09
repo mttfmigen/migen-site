@@ -20,12 +20,16 @@
  *  6. aucun `href="#"`, aucune classe Tailwind de couleur, aucun interdit ;
  *  7. une section sans donnée ne se rend pas ;
  *  8. les `trous` du relais : chaque phrase retirée existe dans la capture,
- *     porte un interdit du contrat (prix) et n'est PAS rendue. Elle est
+ *     porte un interdit du contrat et n'est PAS rendue. Elle est
  *     soustraite de la capture avant la comparaison mot pour mot, rien d'autre.
+ *     Le hub n'en déclare plus AUCUN depuis le 09/10 : ses trois phrases de
+ *     tarif sont rendues (décision de Mehdi, voir INTERDITS).
  *
- * ET IL PROUVE QU'IL SAIT ÉCHOUER : à chaque exécution, quatre fautes sont
+ * ET IL PROUVE QU'IL SAIT ÉCHOUER : à chaque exécution, six fautes sont
  * injectées dans une copie de la donnée (un mot changé, un écran retiré, le
- * siège remis à Limonest, « candidats » remis) et chacune DOIT être détectée.
+ * siège remis à Limonest, un faux trou, un montant en euros remis,
+ * « candidats » remis) et chacune DOIT être détectée. `porteUnInterdit` est
+ * éprouvé à part, dans les deux sens.
  */
 
 import assert from "node:assert/strict";
@@ -91,7 +95,8 @@ assert.equal(ECRANS_CAPTURE.length, 18, "la capture du hub compte 18 écrans");
 
 /* « Le siège est à Lyon. » n'est plus retirée : Écully est dans la métropole
    lyonnaise et Lyon est l'agence du siège (README de passation). Les seules
-   phrases retirées sont les `trous` du relais (prix), déclarés avec leur raison. */
+   phrases retirées sont les `trous` du relais, déclarés avec leur raison, et
+   depuis le 09/10 le hub n'en déclare plus aucun. */
 const CAPTURE_TEXTE = visible(CAPTURE);
 const CAPTURE_STYLE = normaliseStyle(CAPTURE);
 
@@ -158,7 +163,13 @@ const INTERDITS = [
   "—", "24h", "24/24", "7j/7", "7/7", "régie", "intérim", "mise à disposition",
   "sur mesure", "sans engagement", "notamment", "levier", "clé en main",
   "concrètement", "incontournable", "découvrez", "réguliers", "teamtailor",
-  "limonest", "€", "taux horaire", "prix mensuel", "tarif",
+  /* 09/10 : « taux horaire », « prix mensuel » et « tarif » NE SONT PLUS DES
+     INTERDITS. Décision de Mehdi : « Ne donnes aucun tarif. Dis juste que
+     c'est sur devis. » Les trois phrases du hub retirées pour ce motif
+     (« Le tarif se négocie machine à l'arrêt… », « …pour un prix mensuel
+     fixe. », « Le taux horaire est homogène dans toute la France. ») ne
+     donnent AUCUN MONTANT : elles sont rendues, et « € » reste interdit. */
+  "limonest", "€",
 ] as const;
 
 /* ---------------------------------------------------- la donnée réelle */
@@ -171,8 +182,21 @@ interface Relais {
   contenu: ContenuOffres;
 }
 
-/** Ce qu'un trou doit porter pour être accepté : un prix, sous l'un de ses noms. */
-const MOTIF_TROU = /\btaux horaires?\b|\btarifs?\b|\bprix\b|€/iu;
+/**
+ * Ce qu'un trou doit porter pour être accepté : UN INTERDIT DU CONTRAT, et
+ * c'est la MÊME liste que celle cherchée dans le rendu, pas une seconde liste
+ * qui dériverait à côté.
+ *
+ * 09/10 : cette liste a perdu les noms du prix (« tarif », « taux horaire »,
+ * « prix mensuel ») et garde le montant (« € », « euros »). Conséquence
+ * voulue : un trou déclaré sur une phrase qui parle de tarif SANS énoncer de
+ * montant est désormais REFUSÉ par la porte, au lieu d'être accepté. C'est
+ * exactement la décision de Mehdi du 09/10, prise dans les deux sens.
+ */
+function porteUnInterdit(ligne: string): boolean {
+  const texte = ligne.toLowerCase();
+  return INTERDITS.some((mot) => texte.includes(mot)) || /\d[\d\s ]*euros?\b/u.test(texte);
+}
 
 const RELAIS = JSON.parse(
   lit("supabase", "import", "gabarits-maquette", "offres.json"),
@@ -247,7 +271,7 @@ function controle(relais: Relais): string[] {
     const ligne = normalise(t.ligne);
     faute(!!t.pourquoi, `trou sans raison : « ${t.ligne} »`);
     faute(CAPTURE_TEXTE.includes(ligne), `trou absent de la capture : « ${t.ligne} »`);
-    faute(MOTIF_TROU.test(ligne), `trou sans interdit du contrat : « ${t.ligne} »`);
+    faute(porteUnInterdit(ligne), `trou sans interdit du contrat : « ${t.ligne} »`);
     faute(!rendu.includes(ligne), `trou déclaré mais rendu : « ${t.ligne} »`);
   }
 
@@ -334,12 +358,18 @@ const injections: [string, (r: Relais) => void][] = [
   ["un faux trou (phrase rendue déclarée retirée)", (r) => {
     r.trous = [...(r.trous ?? []), { ligne: "Nos références", pourquoi: "essai" }];
   }],
-  ["une phrase de prix remise", (r) => {
+  /* 09/10 : ce témoin posait « Le taux horaire est homogène dans toute la
+     France. » et vérifiait qu'elle TOMBAIT. La décision de Mehdi la rend
+     dicible, elle est maintenant DANS la donnée, et le témoin ne prouvait plus
+     rien sur le prix. Il est RETOURNÉ sur un vrai montant en euros, le seul
+     interdit de prix qui reste : si celui-ci passe, le hub peut afficher un
+     prix sans que rien ne le signale. */
+  ["un montant en euros remis", (r) => {
     const faq = r.contenu.sections!.find((s) => s.type === "objections");
     if (faq?.type === "objections") {
       faq.questions[0].reponse = faq.questions[0].reponse.replace(
         "justifie. ",
-        "justifie. Le taux horaire est homogène dans toute la France. ",
+        "justifie. Comptez 450 € de l'heure. ",
       );
     }
   }],
@@ -351,6 +381,21 @@ for (const [nom, injecte] of injections) {
   const fautee = copie();
   injecte(fautee);
   assert.ok(controle(fautee).length > 0, `faute injectée NON détectée : ${nom}`);
+}
+
+/* `porteUnInterdit` tranche dans les DEUX SENS, et il est éprouvé à part parce
+   qu'une injection de trou ferait aussi tomber « trou déclaré mais rendu » :
+   on ne saurait pas lequel des deux contrôles a parlé. 09/10 : une phrase de
+   tarif SANS montant n'est plus un motif de retrait, un montant en est un. */
+for (const dicible of [
+  "Le taux horaire est homogène dans toute la France.",
+  "Le préventif le samedi, le dépannage la nuit, pour un prix mensuel fixe.",
+  "Le tarif se négocie machine à l'arrêt, avec la production qui attend derrière.",
+]) {
+  assert.ok(!porteUnInterdit(dicible), `une phrase de tarif sans montant n'est plus un trou : « ${dicible} »`);
+}
+for (const retire of ["Comptez 450 € de l'heure.", "Comptez 450 euros de l'heure.", "Un contrat sur mesure."]) {
+  assert.ok(porteUnInterdit(retire), `cette phrase doit rester retirable : « ${retire} »`);
 }
 
 console.log("hub /offres/ : toutes les vérifications passent.");

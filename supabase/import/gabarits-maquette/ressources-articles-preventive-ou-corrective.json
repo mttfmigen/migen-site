@@ -329,25 +329,25 @@
       }
     ],
     "minutes": 11,
-    "image": "/assets/photos/il-technicien-maintenance-en-usine-1600.jpg",
+    "image": "/assets/photos/il-female-technician-inspects-industrial-equipmen.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/cout-arret-de-production/",
         "titre": "Coût d'un arrêt de production",
         "minutes": 12,
-        "image": "/assets/photos/hydrau-centrale-hydraulique-technicien.jpg"
+        "image": "/assets/photos/env-maintenance-automaticien-3.jpg"
       },
       {
         "href": "/ressources/articles/digitalisation-maintenance/",
         "titre": "Digitalisation maintenance",
         "minutes": 11,
-        "image": "/assets/photos/il-technicien-maintenance-4.jpg"
+        "image": "/assets/photos/env-menuisier-utilisant-des-outils.jpg"
       },
       {
         "href": "/ressources/articles/gestion-des-dechets/",
         "titre": "Gestion des déchets industriels",
         "minutes": 8,
-        "image": "/assets/photos/il-technicien-maintenance-femme-1600.jpg"
+        "image": "/assets/photos/il-technicien-maintenance-robot-industriel-jan-7-.jpg"
       }
     ]
   }

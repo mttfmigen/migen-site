@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Valenciennes",
       "titre": "Valenciennes : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/energie-rack-canalisations-binome.jpg",
+      "photo": "/assets/photos/il-detail-raffinerie-nuit-mars-17-2026-1600.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Valenciennes et ses environs",
       "texte": "Nos techniciens itinérants couvrent Valenciennes et son bassin, appuyés par le réseau national Migen.",
@@ -101,7 +101,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-detail-raffinerie-nuit-mars-17-2026-1600.jpg",
+    "problemePhoto": "/assets/photos/il-interieur-de-chantier-naval-24-mars-2026-1600.jpg",
     "complementOffre": [
       {
         "texte": "Pour un montage de ligne, un transfert ou une extension, notre offre chantier prend le relais avec un chef de projet unique."
@@ -255,7 +255,7 @@
             "texte": ", pour accompagner la bascule vers le véhicule électrique depuis juin 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-grand-est/",
-            "photo": "/assets/photos/env-infrastructure-usine-acier-avec-tuyaux.jpg"
+            "photo": "/assets/photos/env-photos-industrie-menuiserie-2.jpg"
           },
           {
             "titre": "3 à 5 techniciens déployés sur la montée en cadence de plusieurs usines françaises",
@@ -269,38 +269,38 @@
             "texte": ", depuis 2025.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/hydrau-presse-pupitre-manometre.jpg"
+            "photo": "/assets/photos/metal-four-arc-acierie.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie en service continu",
             "texte": ", depuis octobre 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-technicien-maintenance-portrait-1-1600.jpg"
+            "photo": "/assets/photos/env-usine-metallique.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
+            "photo": "/assets/photos/il-photo-usine-ciment-mars-17-2026-1600.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/env-deux-hommes-menuiserie.jpg"
+            "photo": "/assets/photos/env-inspection-de-bois-24-sept-2026.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/env-ouvrier-industriel-meulant-metal.jpg"
+            "photo": "/assets/photos/env-professionnels-sur-machine-a-bois.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-6.jpg"
           }
         ]
       },

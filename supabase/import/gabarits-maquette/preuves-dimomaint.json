@@ -23,7 +23,7 @@
       }
     ],
     "logo": "/assets/clients/mq-e2c58c98b787.svg",
-    "photoHero": "/assets/photos/pharma-technicienne-machine-comprimes.jpg",
+    "photoHero": "/assets/photos/env-photos-industrie-pharmaceutique.jpg",
     "chiffres": [
       {
         "libelle": "Nature des travaux",
@@ -127,7 +127,7 @@
         "valeur": "Alliance élargie à Savoye pour l'intralogistique"
       }
     ],
-    "photoDispositif": "/assets/photos/env-photos-menuiserie.jpg",
+    "photoDispositif": "/assets/photos/pharma-technicienne-machine-comprimes.jpg",
     "resultats": [
       {
         "titre": "Une meilleure disponibilité",
@@ -170,7 +170,7 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/meca-technicienne-parc-moteurs.jpg"
+        "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg"
       },
       {
         "surtitre": "Secteur",
@@ -182,7 +182,7 @@
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : alliance intralogistique",
         "href": "/preuves/savoye/",
-        "photo": "/assets/web/team-grind-impact.jpg"
+        "photo": "/assets/photos/env-mechanic-inspecting-auto-parts-in-his-workshop.jpg"
       },
       {
         "surtitre": "Étude de cas",

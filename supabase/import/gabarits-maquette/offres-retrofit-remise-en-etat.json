@@ -167,7 +167,7 @@
             "texte": "Diagnostic sur site, plusieurs options chiffrées dans le budget d'une PME, parc existant conservé plutôt que racheté",
             "lienLibelle": "Étude de cas JOINT LYONNAIS",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/pharma-isolateur-salle-propre.jpg",
+            "photo": "/assets/photos/il-technicien-maintenance-photo-9-1600.jpg",
             "logo": "/assets/clients/joint-lyonnais.png"
           },
           {
@@ -175,7 +175,7 @@
             "texte": "Machines existantes reconfigurées sans casse, délais tenus sans pénalité",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/menuiserie-cnc-pupitre-casque.jpg",
+            "photo": "/assets/photos/env-automatician-maintenance.jpg",
             "logo": "/assets/clients/mq-127f9e03c53b.svg"
           },
           {
@@ -196,21 +196,21 @@
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/env-technicien-maintenance.jpg",
+            "photo": "/assets/photos/il-concept-usine-intelligente-2026-1600.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
             "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
             "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/photos/env-maintenance-automaticien.jpg",
+            "photo": "/assets/photos/il-femme-inspectant-bras-robotique-2026-1600.jpg",
             "logo": "/assets/clients/mq-7c01e175985e.png"
           },
           {
             "titre": "Un responsable maintenance pour traverser la transition",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/web/sv-armoire.jpg",
+            "photo": "/assets/photos/il-technicien-maintenance-inspectant-bras-robotiq.jpg",
             "logo": "/assets/clients/mq-441fc873c0d9.svg"
           }
         ]
@@ -262,7 +262,7 @@
         "titre": "Technicien en résidence",
         "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/il-femme-en-tenue-professionnelle-pres-d-un-bras-.jpg"
+        "photo": "/assets/web/sv-armoire.jpg"
       },
       {
         "titre": "Zéro arrêt",
@@ -274,13 +274,13 @@
         "titre": "Arrêt technique",
         "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
         "href": "/offres/arret-technique/",
-        "photo": "/assets/photos/env-inspection-bras-robotiques.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-photo-19-1600.jpg"
       },
       {
         "titre": "Full service",
         "phrase": "Toute votre maintenance, un seul partenaire.",
         "href": "/offres/full-service/",
-        "photo": "/assets/photos/menuiserie-centre-usinage-soufflette.jpg"
+        "photo": "/assets/photos/il-automaticien-verifiant-photo-jan-6-2026-1600.jpg"
       },
       {
         "titre": "Travaux industriels",
@@ -296,5 +296,15 @@
       }
     ],
     "pagesLieesTitre": "Les offres et prestations voisines"
-  }
+  },
+  "trous": [
+    {
+      "ligne": "Parler à un chargé d’affaires",
+      "pourquoi": "libellé que le site ajoute sur les trois bandes d'appel (sections d'ordre 4, 7 et 13 de la capture, « Appel · domaines », « Appel · offre », « Appel · références »), là où la maquette n'en rend aucun. Mesuré dans maquette/rendu/offres--retrofit--remise-en-etat.html : chacune porte `<a href=\"#besoin\" class=\"scp6\"><span class=\"sc-interp\"></span></a>`, soit la pastille orange avec son fond, son arrondi et ses 14px 24px de marge intérieure, mais un emplacement de texte VIDE. Ce n'est pas un parti pris : `sc-interp` est l'emplacement d'interpolation du moteur de la maquette, et son export en laisse 795 vides sur 148 de ses 244 captures, contre 39 573 remplis. Un bouton sans libellé n'est ni utilisable ni accessible (rien à lire pour un lecteur d'écran, rien à annoncer, rien à chercher à l'œil) : le site le nomme donc, avec le libellé par défaut de `components/site/offre/BandeAppel.tsx`, celui que la maquette écrit elle-même sur les bandes dont l'interpolation a tenu. Écart ASSUMÉ, pas un défaut de portage."
+    },
+    {
+      "ligne": "On me rappelle dans l’heure",
+      "pourquoi": "même trou, même raison, sur les boutons d'ENVOI des deux formulaires : celui du héros (ordre 0) et celui de l'appel final (ordre 16, « Besoin d'un avis écrit avant d'arbitrer entre réparer et remplacer ? »). La capture rend `<button type=\"submit\" class=\"scp8\"><span class=\"sc-interp\"></span></button>`, pastille complète et libellé vide. Un bouton d'envoi anonyme est le cas le plus grave des quatre : le visiteur ne sait pas ce qu'il déclenche. Le site écrit le libellé par défaut de `components/formulaire/FormulaireContact.tsx`. Le bouton du héros n'était pas dans le relevé du relais (il citait « les bandes 4, 7, 13 et le formulaire final ») : il est déclaré ici parce que la mesure le trouve dans l'état EXACTEMENT identique, et qu'un trou non déclaré se représente au prochain audit."
+    }
+  ]
 }

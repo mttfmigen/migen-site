@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Belfort-Montbéliard",
       "titre": "Belfort-Montbéliard : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-photo-usine-ciment-16-mars-2026-1600.jpg",
+      "photo": "/assets/photos/il-photo-industrie-raffinerie-petrole-mars-2026-1.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Belfort-Montbéliard et ses environs",
       "texte": "Nos techniciens itinérants couvrent Belfort-Montbéliard et son bassin, appuyés par le réseau national Migen.",
@@ -243,19 +243,19 @@
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
             "lienLibelle": "Étude de cas Autoliv",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/env-industrie.jpg"
+            "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg"
           },
           {
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/env-technician-maintenance-12.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-robot-arm.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/photos/env-photo-industrie-pharmaceutique.jpg"
+            "photo": "/assets/photos/il-pipes-et-structures-raffinerie-2026-1600.jpg"
           },
           {
             "titre": "Centres d’usinage et presses tenus dans le Grand Est",

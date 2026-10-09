@@ -34,7 +34,7 @@
         "libelle": "Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie, robotique"
       }
     ],
-    "problemePhoto": "/assets/photos/agro-remplisseuse-cle-plate.jpg",
+    "problemePhoto": "/assets/photos/meca-senior-rouleuse-combinaison.jpg",
     "sections": [
       {
         "type": "probleme",
@@ -166,7 +166,7 @@
             "texte": "Étude technique machine par machine, plusieurs options chiffrées, remise en état du parc existant plutôt que rachat de matériel neuf, depuis février 2024.",
             "lienLibelle": "Étude de cas JOINT LYONNAIS",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/il-technicien-maintenance.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-7.jpg"
           },
           {
             "titre": "Réduction des incidents machine récurrents, pièces mécaniques de précision",
@@ -180,21 +180,21 @@
             "texte": "Un technicien polyvalent intégré aux lignes, temps d'arrêt réduits et préventif qui n'est plus sacrifié aux urgences, 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/chimie-piquage-manometre-gants.jpg"
+            "photo": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg"
           },
           {
             "titre": "Travaux de remise en état d'installations critiques, traitement des eaux industrielles",
             "texte": "Électromécanicien polyvalent habilité risque chimique niveau 1 avant l'entrée sur site, mission de 6 mois depuis février 2026.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/meca-reducteur-ouvert-plongee.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-blue-truck-engine.jpg"
           },
           {
             "titre": "Temps de remise en service raccourci sur des lignes à haute cadence, nutrition infantile",
             "texte": "Deux techniciens intégrés en 3x8 sur les lignes liquides et le conditionnement poudre, site de Steenvoorde.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/il-technicien-maintenance-7.jpg"
+            "photo": "/assets/photos/aero-fuselage-serrage-lampe.jpg"
           },
           {
             "titre": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
@@ -206,7 +206,7 @@
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/env-technician-maintenance-7.jpg"
+            "photo": "/assets/photos/meca-cle-bride-carter.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
@@ -222,7 +222,7 @@
         "questions": [
           {
             "question": "Combien coûte une action améliorative ?",
-            "reponse": "Le bon repère n'est pas le montant du chantier, mais son écart avec le coût annuel de la défaillance qu'il supprime."
+            "reponse": "Pas de prix catalogue : la modification se chiffre sur devis, une fois le diagnostic posé. Le bon repère n'est pas le montant du chantier, mais son écart avec le coût annuel de la défaillance qu'il supprime."
           },
           {
             "question": "Faut-il un contrat pour lancer une amélioration ?",

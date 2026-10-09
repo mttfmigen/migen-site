@@ -371,25 +371,25 @@
       }
     ],
     "minutes": 15,
-    "image": "/assets/photos/il-portrait-of-engineer-train-inspect-the-train-s-2.jpg",
+    "image": "/assets/photos/pharma-isolateur-salle-propre.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-techniques/analyse-vibratoire/",
         "titre": "Analyse vibratoire",
         "minutes": 10,
-        "image": "/assets/photos/il-technicien-maintenance-2.jpg"
+        "image": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/automates-siemens/",
         "titre": "Automate Siemens",
         "minutes": 7,
-        "image": "/assets/photos/il-technicien-maintenance-photo-mars-24-2026-1-16.jpg"
+        "image": "/assets/photos/il-technicien-maintenance-photo-19-1600.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/cahier-des-charges-gmao/",
         "titre": "Cahier des charges gmao",
         "minutes": 11,
-        "image": "/assets/photos/meca-tour-conventionnel-senior.jpg"
+        "image": "/assets/photos/aero-reacteur-capot-combinaison.jpg"
       }
     ]
   }

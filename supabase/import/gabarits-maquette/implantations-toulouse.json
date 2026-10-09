@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Toulouse",
       "titre": "Toulouse : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-mechanic-working-in-warehouse-2.jpg",
+      "photo": "/assets/photos/env-industrial-infrastructure-with-blue-sky-and-cl.jpg",
       "badge": "Hub Migen",
       "nom": "Hub Toulouse",
       "texte": "Une équipe de techniciens installée à Toulouse, au plus près de vos sites, appuyée par le réseau national Migen.",
@@ -164,7 +164,7 @@
               "accroche": "Un contrat unique de Toulouse à Bordeaux",
               "texte": "Haute-Garonne, Bordeaux, Gironde, Charente."
             },
-            "benefice": ""
+            "benefice": "Un industriel multi-sites du Sud-Ouest garde un seul interlocuteur et un taux horaire homogène."
           }
         ]
       },
@@ -222,53 +222,53 @@
             "texte": "Accompagnement d'une montée en cadence.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/il-automaticien-dans-usine-moderne-jan-7-2026-160.jpg"
+            "photo": "/assets/photos/env-photos-industrie-menuiserie-2.jpg"
           },
           {
             "titre": "Six techniciens sur l'installation et la mise en production d'un parc machines neuf",
             "texte": ", site automobile, depuis janvier 2023.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/env-industrie-paysage.jpg"
+            "photo": "/assets/photos/env-food-production-line-with-workers-in-protectiv.jpg"
           },
           {
             "titre": "Un technicien à temps plein sur un parc multimarques d'usinage, en 2025",
             "texte": "Centres d'usinage, presses et commandes numériques.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/env-photos-industrie-2.jpg"
+            "photo": "/assets/photos/env-assemblage-carrosseries.jpg"
           },
           {
             "titre": "Renfort de contrôle de chantier chez un spécialiste de l'automatisation logistique",
             "texte": "Intervenants intégrés aux équipes sur des projets stratégiques.",
             "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/env-workers-inspecting-large-vats-in-a-manufacturi.jpg"
+            "photo": "/assets/photos/env-industrie-metallique-24-sept-2026.jpg"
           },
           {
             "titre": "Montage de portiques de lavage partout en France",
             "texte": "Réception, assemblage, levage et raccordements, par Migen Travaux.",
             "lienLibelle": "Étude de cas Migen Travaux x WASHTEC",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/photos/env-technician-maintenance-4.jpg"
+            "photo": "/assets/photos/env-assemblage-chassis-automobile.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/levage-montage-poteau-charpente.jpg"
+            "photo": "/assets/photos/env-car-manufacturing-engine-assembly-on-automated.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-18-1600.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
             "lienLibelle": "Étude de cas Veepee",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/env-photos-industrie.jpg"
+            "photo": "/assets/photos/env-bras-robotiques-soudant-cadres-auto.jpg"
           }
         ]
       },
@@ -306,11 +306,5 @@
         "question": "Besoin d'un prestataire de maintenance présent de la Haute-Garonne à la Gironde, sous un seul contrat ?"
       }
     ]
-  },
-  "trous": [
-    {
-      "ligne": "Un industriel multi-sites du Sud-Ouest garde un seul interlocuteur et un taux horaire homogène.",
-      "pourquoi": "taux horaire : aucun prix. Bénéfice entier du point 06 « Un contrat unique de Toulouse à Bordeaux » de « 04 Offre » : le point reste avec son intitulé et sa liste, son bénéfice est vide."
-    }
-  ]
+  }
 }

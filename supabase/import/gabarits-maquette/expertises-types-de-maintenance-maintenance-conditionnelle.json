@@ -39,17 +39,17 @@
       {
         "valeur": "10 %",
         "texte": "Des techniciens retenus, l'interprétation d'un spectre vibratoire s'évalue en entretien",
-        "photo": "/assets/photos/il-technicien-maintenance-photo-mar-18-2026-1600.jpg"
+        "photo": "/assets/photos/env-technician-inspecting-fiber-optics.jpg"
       },
       {
         "valeur": "8",
         "texte": "Domaines techniques couverts par une seule équipe, de la mécanique à la robotique",
-        "photo": "/assets/photos/env-technician-inspecting-fiber-optics.jpg"
+        "photo": "/assets/photos/agro-remplisseuse-cle-plate.jpg"
       },
       {
         "valeur": "4",
         "texte": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, des campagnes partout en France",
-        "photo": "/assets/photos/agro-remplisseuse-cle-plate.jpg"
+        "photo": "/assets/photos/env-technicien-maintenance-cafe-23-sept-2026.jpg"
       }
     ],
     "complementTypes": [
@@ -320,7 +320,7 @@
             "texte": "Tenue, depuis octobre 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/elec-mesure-multimetre-faisceau.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance.jpg"
           },
           {
             "titre": "Reprise complète de la maintenance préventive annuelle de deux sites, e-commerce",
@@ -334,7 +334,7 @@
             "texte": "Un technicien de maintenance dédié, intégré aux équipes en 2025.",
             "lienLibelle": "Étude de cas AUTOLIV",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/robot-cellule-soudure-inspection.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-repairs.jpg"
           },
           {
             "titre": "Renfort de 1 à 3 techniciens sur des sites de production, chauffage et sanitaire",
@@ -348,25 +348,25 @@
             "texte": "Site de Steenvoorde.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/env-technician-maintenance-9.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-mar-24-2026-1600.jpg"
           },
           {
             "titre": "Le préventif d’une centrale photovoltaïque en trois techniciens",
             "lienLibelle": "Étude de cas Eiffage",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/photos/il-technicien-maintenance-air-conditionne-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-2.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/elec-binome-coffret-chaufferie.jpg"
+            "photo": "/assets/photos/chimie-piquage-manometre-gants.jpg"
           },
           {
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/agro-mains-vanne-sanitaire.jpg"
+            "photo": "/assets/photos/meca-reducteur-ouvert-plongee.jpg"
           }
         ]
       },

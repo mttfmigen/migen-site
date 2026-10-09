@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Chalon-sur-Saône",
       "titre": "Chalon-sur-Saône : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/env-assemblage-carrosseries.jpg",
+      "photo": "/assets/photos/il-vue-aerienne-usine-ciment-mars-16-2026-1600.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Chalon-sur-Saône et ses environs",
       "texte": "Nos techniciens itinérants couvrent Chalon-sur-Saône et son bassin, appuyés par le réseau national Migen.",
@@ -245,25 +245,25 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/il-photo-usine-ciment-mars-17-2026-1600.jpg"
+            "photo": "/assets/photos/il-usine-kawasaki-jan-11-2026-1600.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/il-vue-aerienne-usine-ciment-mars-16-2026-1600.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-3.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-17-1600.jpg"
+            "photo": "/assets/photos/il-ingenieur-verifiant-train-electrique-jan-7-202.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/env-scientist-in-pharmaceutical-lab.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-6.jpg"
           },
           {
             "titre": "Six mois pour remettre en état un site à risque chimique",

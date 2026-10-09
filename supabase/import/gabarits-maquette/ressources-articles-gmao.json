@@ -284,25 +284,25 @@
       }
     ],
     "minutes": 11,
-    "image": "/assets/photos/il-technicien-maintenance-photo-jan-8-2026-1-1600.jpg",
+    "image": "/assets/photos/metal-fonderie-coulee.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/cout-arret-de-production/",
         "titre": "Coût d'un arrêt de production",
         "minutes": 12,
-        "image": "/assets/photos/il-technicien-maintenance-photo-6-1600.jpg"
+        "image": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg"
       },
       {
         "href": "/ressources/articles/digitalisation-maintenance/",
         "titre": "Digitalisation maintenance",
         "minutes": 11,
-        "image": "/assets/photos/il-technicien-maintenance-robot-industriel-mar-16.jpg"
+        "image": "/assets/photos/il-technicien-maintenance-photo-8-1600.jpg"
       },
       {
         "href": "/ressources/articles/gestion-des-dechets/",
         "titre": "Gestion des déchets industriels",
         "minutes": 8,
-        "image": "/assets/photos/env-professionnels-maintenance-aeronautique.jpg"
+        "image": "/assets/photos/menuiserie-centre-usinage-soufflette.jpg"
       }
     ]
   }

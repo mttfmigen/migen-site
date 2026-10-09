@@ -102,19 +102,19 @@
         "titre": "Hydraulique",
         "texte": "Vérins et centrales hydrauliques des engins et presses.",
         "href": "/expertises/hydraulique/",
-        "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
+        "photo": "/assets/photos/ciment-tambour-rotatif-silos.jpg"
       },
       {
         "titre": "Soudure",
         "texte": "Rechargements et réparations de structures sur place.",
         "href": "/expertises/soudure/",
-        "photo": "/assets/photos/il-photo-usine-ciment-16-mars-2026-1600.jpg"
+        "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg"
       },
       {
         "titre": "Électromécanique",
         "texte": "Moteurs de forte puissance et leurs démarreurs.",
         "href": "/expertises/electromecanique/",
-        "photo": "/assets/photos/il-vue-aerienne-usine-ciment-mars-16-2026-1600.jpg"
+        "photo": "/assets/photos/ciment-vue-aerienne-usine.jpg"
       }
     ],
     "sections": [
@@ -294,7 +294,7 @@
             "texte": "Dompierre-sur-Besbre, depuis octobre 2023",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg"
+            "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve, matériaux",
@@ -308,7 +308,7 @@
             "texte": "missions documentées",
             "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/ciment-tambour-rotatif-silos.jpg"
+            "photo": "/assets/photos/il-vue-aerienne-usine-ciment-mars-16-2026-1600.jpg"
           },
           {
             "titre": "Technicien polyvalent sur un parc hétérogène à forte cadence, papier et emballage",
@@ -322,7 +322,7 @@
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/ciment-vue-aerienne-usine.jpg"
+            "photo": "/assets/photos/il-photo-usine-ciment-16-mars-2026-1600.jpg"
           },
           {
             "titre": "12 monteurs mécaniciens et 8 engins de levage sur un chantier de six semaines",
@@ -341,7 +341,7 @@
             "titre": "Maintenir et monter, de jour comme de nuit",
             "lienLibelle": "Étude de cas Vignal Systems",
             "lienHref": "/preuves/vignal-systems/",
-            "photo": "/assets/photos/env-industrie-mettalique.jpg"
+            "photo": "/assets/photos/metal-four-arc-acierie.jpg"
           }
         ]
       },

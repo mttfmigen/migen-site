@@ -20,7 +20,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/robot-cellule-soudure-inspection.jpg",
+        "src": "/assets/photos/il-technicien-maintenance-jan-9-2026-1600.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -355,17 +355,17 @@
           {
             "libelle": "Métiers de la maintenance",
             "href": "/carriere/",
-            "photo": "/assets/photos/il-technicien-maintenance-6.jpg"
+            "photo": "/assets/photos/env-technician-with-robotic-arm.jpg"
           },
           {
             "libelle": "Agent de maintenance industrielle",
             "href": "/carriere/agent-de-maintenance/",
-            "photo": "/assets/photos/il-technicien-maintenance-en-securite-mar-23-2026-2.jpg"
+            "photo": "/assets/photos/il-automaticien-dans-usine-moderne-jan-7-2026-160.jpg"
           },
           {
             "libelle": "Automaticien",
             "href": "/carriere/automaticien/",
-            "photo": "/assets/photos/robot-portable-diagnostic-cellule.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-robot-industriel-mar-16.jpg"
           }
         ]
       }

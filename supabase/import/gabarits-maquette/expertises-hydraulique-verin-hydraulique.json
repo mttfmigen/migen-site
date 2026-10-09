@@ -135,7 +135,8 @@
             "texte": "Essai de pression pour isoler le vérin du circuit, analyse de l'huile, écoute de la pompe."
           },
           {
-            "titre": "Nous déposons et nous inspectons."
+            "titre": "Nous déposons et nous inspectons.",
+            "texte": "Vous recevez le constat pièce par pièce, avec le prix et le délai réels, avant tout engagement de travaux."
           },
           {
             "titre": "Nous réparons, puis nous essayons",
@@ -179,14 +180,14 @@
             "texte": "Deux techniciens en poste, hydraulique parmi les domaines couverts en propre.",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/hydrau-verin-tige-chromee.jpg"
+            "photo": "/assets/photos/il-hydrau-verin-godet-engin.jpg"
           },
           {
             "titre": "Contrat de maintenance préventive annuelle, logistique",
             "texte": "Six techniciens polyvalents en permanence, hydraulique comprise dans les domaines couverts, depuis septembre 2023.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/il-technicien-maintenance-inspecte-equipement-ind.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-avion-jan-9-2026-1600.jpg"
           },
           {
             "titre": "Montages, déplacements de machines et renfort technique, étanchéité et isolation",
@@ -206,7 +207,7 @@
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/photos/meca-graissage-couronne-engin.jpg"
+            "photo": "/assets/photos/hydrau-centrale-hydraulique-technicien.jpg"
           }
         ]
       },
@@ -220,7 +221,7 @@
           },
           {
             "question": "Réparer coûte-t-il vraiment moins cher que remplacer ?",
-            "reponse": "Trois situations font basculer l'arbitrage : un corps voilé ou fendu, un vérin obsolète dont la barre chromée n'existe plus au bon diamètre, et un équipement promis à la casse. Nous vous le disons quand la réparation n'est pas le bon choix. Nous ne fabriquons pas de vérins, nous n'avons rien à gagner à vous vendre du neuf."
+            "reponse": "Dans la grande majorité des cas, oui, et pour une fraction du prix du neuf. Trois situations font basculer l'arbitrage : un corps voilé ou fendu, un vérin obsolète dont la barre chromée n'existe plus au bon diamètre, et un équipement promis à la casse. Nous vous le disons quand la réparation n'est pas le bon choix. Nous ne fabriquons pas de vérins, nous n'avons rien à gagner à vous vendre du neuf."
           },
           {
             "question": "Faut-il changer tous les joints ou seulement celui qui lâche ?",

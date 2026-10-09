@@ -35,7 +35,7 @@
       }
     ],
     "logo": "/assets/clients/mq-ed5f02d3ab11.svg",
-    "photoHero": "/assets/photos/env-assemblage-chassis-automobile.jpg",
+    "photoHero": "/assets/photos/il-technicien-maintenance-camion-1600.jpg",
     "chiffres": [
       {
         "libelle": "Nature des travaux",
@@ -127,7 +127,7 @@
         "valeur": "Préventif"
       }
     ],
-    "photoDispositif": "/assets/photos/env-technician-maintenance-11.jpg",
+    "photoDispositif": "/assets/photos/robot-cellules-grillagees.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -153,7 +153,7 @@
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/env-car-bodies-assembly-line.jpg"
+        "photo": "/assets/photos/robot-cellule-soudure-inspection.jpg"
       },
       {
         "surtitre": "Secteur",
@@ -165,7 +165,7 @@
         "surtitre": "Étude de cas",
         "titre": "AUTOLIV : un technicien dédié pour que le parc ne décroche pas",
         "href": "/preuves/autoliv/",
-        "photo": "/assets/photos/robot-soudure-points-caisse.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-photo-4-1600.jpg"
       }
     ]
   }

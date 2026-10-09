@@ -227,46 +227,46 @@
             "texte": ", en préventif, de septembre à novembre 2024.",
             "lienLibelle": "Étude de cas EIFFAGE",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/photos/env-industrie-metallique.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-mar-25-2026-1600.jpg"
           },
           {
             "titre": "Montages, déplacements de machines et renfort technique sur chantiers sous tension",
             "texte": ", pour un industriel de l'étanchéité.",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/env-industrie-chimie.jpg"
+            "photo": "/assets/photos/env-infrastructure-usine-acier-avec-tuyaux.jpg"
           },
           {
             "titre": "1 à 3 techniciens en maintenance corrective et préventive sur un site agroalimentaire en flux permanent",
             "texte": ", premier contrat hors de France.",
             "lienLibelle": "Étude de cas McCAIN",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/equipe-consignes-atelier-casques.jpg"
+            "photo": "/assets/photos/env-avion-en-maintenance.jpg"
           },
           {
             "titre": "Un technicien intégré pendant l'arrêt estival pour tenir les équipements critiques",
             "texte": "pendant les congés des équipes internes.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/il-technicien-maintenance-4.jpg"
+            "photo": "/assets/photos/meca-presses-volants-technicienne.jpg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/env-inspection-de-la-chaine-alimentaire.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-9-2026-3-1600.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-1600.jpg"
+            "photo": "/assets/photos/il-photo-industrie-japon-jan-9-2026-1600.jpg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/il-cimenterie-de-nuit-mars-25-2026-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-robot-industriel-mar-16.jpg"
           }
         ]
       },
@@ -291,7 +291,7 @@
           },
           {
             "question": "Pouvez-vous couvrir un site à Brest et un autre ailleurs en France ?",
-            "reponse": "Oui : un seul interlocuteur, un seul cadre contractuel, une même politique de maintenance sur les deux."
+            "reponse": "Oui : un seul interlocuteur, un seul cadre contractuel, une même politique de maintenance sur les deux. Nos comptes rendus sortent au même format et le taux horaire reste homogène partout en France."
           },
           {
             "question": "Fournissez-vous les pièces détachées ?",
@@ -304,11 +304,5 @@
         "question": "Besoin de fiabiliser vos utilités avant la prochaine saison de production ?"
       }
     ]
-  },
-  "trous": [
-    {
-      "ligne": "Nos comptes rendus sortent au même format et le taux horaire reste homogène partout en France.",
-      "pourquoi": "« taux horaire » : aucun prix, tarif ni taux horaire (contrat de rédaction et passation du client). Dernière phrase d'une réponse de « 09 Questions », le reste de la réponse est rendu."
-    }
-  ]
+  }
 }

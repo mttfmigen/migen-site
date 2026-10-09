@@ -102,13 +102,13 @@
         "titre": "Automatisme",
         "texte": "Commandes numériques et automates d’atelier, diagnostic documenté.",
         "href": "/expertises/automatisme/",
-        "photo": "/assets/photos/il-technicien-maintenance-photo-22-1600.jpg"
+        "photo": "/assets/photos/env-usine-aeronautique-22-sept-2026.jpg"
       },
       {
         "titre": "Robotique",
         "texte": "Cellules de perçage et de manutention, recalage des trajectoires.",
         "href": "/expertises/robotique/",
-        "photo": "/assets/photos/env-reparation-moteur-jet-hangar.jpg"
+        "photo": "/assets/photos/aero-percage-aile-avion.jpg"
       },
       {
         "titre": "Hydraulique",
@@ -298,28 +298,28 @@
             "texte": "en 2025",
             "lienLibelle": "Étude de cas VOIT : site du Grand Est",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/env-photos-industrie-aeronautique.jpg"
+            "photo": "/assets/photos/aero-fuselage-serrage-lampe.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne de production neuve",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/aero-percage-aile-avion.jpg"
+            "photo": "/assets/photos/aero-nacelle-moteur-technicien.jpg"
           },
           {
             "titre": "Six techniciens pour l'installation et la mise en production d'un parc machine neuf",
             "texte": "depuis janvier 2023",
             "lienLibelle": "Étude de cas EATON : mise en production",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/aero-fuselage-serrage-lampe.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-avion-jan-9-2026-1600.jpg"
           },
           {
             "titre": "3 à 5 techniciens pour accompagner la montée en cadence de plusieurs usines",
             "texte": "depuis septembre 2024",
             "lienLibelle": "Étude de cas VALEO : plusieurs usines",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/il-technicien-maintenance-avion-jan-9-2026-1600.jpg"
+            "photo": "/assets/photos/env-avion-en-maintenance.jpg"
           },
           {
             "titre": "Diagnostic sur site et réparation d'un parc machines défaillant, sans rachat de matériel neuf",
@@ -344,7 +344,7 @@
             "titre": "Des dizaines de techniciens pour passer à l’électrique",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-grand-est/",
-            "photo": "/assets/photos/env-professionnels-maintenance-aeronautique.jpg"
+            "photo": "/assets/photos/env-photos-industrie-aeronautique.jpg"
           }
         ]
       },

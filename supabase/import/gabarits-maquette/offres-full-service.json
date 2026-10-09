@@ -53,7 +53,7 @@
         "titre": "Prédictif",
         "phrase": "Relevés et mesures sur vos organes critiques, remplacement avant la casse",
         "href": "/expertises/types-de-maintenance/maintenance-conditionnelle/",
-        "photo": "/assets/photos/env-entretien-avion-22-sept-2026.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-jan-9-2026-1-1600.jpg"
       },
       {
         "titre": "Amélioration continue",
@@ -250,7 +250,7 @@
             "texte": "six techniciens polyvalents en permanence depuis septembre 2023, reprise de tous les sites en un mois",
             "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/env-technician-maintenance-jet-engine.jpg",
+            "photo": "/assets/photos/equipe-transmission-senior-jeune.jpg",
             "logo": "/assets/clients/mq-ff81dfbb55c7.svg"
           },
           {
@@ -266,7 +266,7 @@
             "texte": "depuis octobre 2024, toujours en cours",
             "lienLibelle": "Étude de cas McCAIN : Belgique",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/env-menuisier-utilisant-des-outils.jpg",
+            "photo": "/assets/photos/meca-tour-conventionnel-senior.jpg",
             "logo": "/assets/clients/mq-c23abfa0ca07.svg"
           },
           {
@@ -274,7 +274,7 @@
             "texte": "deux intervenants en poste, surveillance des convoyeurs et des trieurs",
             "lienLibelle": "Étude de cas GLS : maintenance curative",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/env-technician-maintenance-11.jpg",
+            "photo": "/assets/photos/env-technician-maintenance-10.jpg",
             "logo": "/assets/clients/mq-09708b77564e.svg"
           },
           {
@@ -282,28 +282,28 @@
             "texte": "présence quotidienne sur les équipements critiques",
             "lienLibelle": "Étude de cas JTEKT : maintenance des équipements",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/metal-fonderie-coulee.jpg",
+            "photo": "/assets/photos/il-technicien-maintenance-photo.jpg",
             "logo": "/assets/clients/mq-e93a6ad5abf7.svg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/web/sv-portrait.jpg",
+            "photo": "/assets/photos/il-portrait-of-engineer-train-inspect-the-train-s.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg",
+            "photo": "/assets/web/sv-portrait.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/env-inspection-auto-avec-equipe.jpg",
+            "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           }
         ]

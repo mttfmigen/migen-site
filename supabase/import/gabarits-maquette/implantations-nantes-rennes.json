@@ -83,7 +83,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-photo-usine-ciment-16-mars-2026-1600.jpg",
+    "problemePhoto": "/assets/photos/env-inspection-de-la-chaine-alimentaire.jpg",
     "complementOffre": [
       {
         "texte": "Chaque passage alimente votre GMAO : historique, pièces, préconisations. Pour une panne isolée, le dépannage industriel reste le format le plus simple pour nous juger sur pièces."
@@ -230,21 +230,21 @@
             "texte": ", sur les installations critiques, depuis 2025.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/env-technician-maintenance-robot-arm.jpg"
+            "photo": "/assets/photos/hydrau-presse-pupitre-manometre.jpg"
           },
           {
             "titre": "Un technicien de maintenance dédié au maintien d'un parc machines",
             "texte": ", en présence continue et en coordination avec les équipes du site.",
             "lienLibelle": "Étude de cas AUTOLIV",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/env-industrie.jpg"
+            "photo": "/assets/photos/env-operateur-de-metal-24-sept-2026.jpg"
           },
           {
             "titre": "Deux techniciens en 3x8 sur les lignes liquides et le conditionnement poudre",
             "texte": "d'un site de nutrition infantile.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-10-1600.jpg"
+            "photo": "/assets/photos/env-industrie-au-crepuscule.jpg"
           },
           {
             "titre": "Un responsable maintenance intégré sur site pour piloter le service",
@@ -258,25 +258,25 @@
             "texte": "d'un transporteur, en maintenance curative.",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/env-travailleuse-usine-agroalimentaire.jpg"
+            "photo": "/assets/photos/env-industrie-chimie-3.jpg"
           },
           {
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-raffinerie-industrielle-au-crepuscule-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-portrait-1-1600.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/env-ingenieurs-inspectant-site-industriel.jpg"
+            "photo": "/assets/photos/env-industrial-worker-inspecting-canned-goods-on-a.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/photos/env-photo-industrie-pharmaceutique.jpg"
+            "photo": "/assets/photos/menuiserie-robot-panneaux.jpg"
           }
         ]
       },

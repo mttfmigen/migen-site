@@ -94,10 +94,16 @@ const DOSSIER = join(RACINE, "supabase", "import", "gabarits-maquette");
    leurs 270 emplacements, et eux seuls, qui laissaient 24 pages répéter une
    photo. Les deux portes acceptent désormais « de la maquette OU du registre »,
    donc plus rien ne les gèle. */
-const GABARITS_GELES = new Set<string>(["ressource"]);
-/* 09/10 : secteur est DEGELE (sa porte accepte « maquette ou registre »).
-   ressource reste gele : son degel fait tomber sa porte sur « aLire », un
-   defaut sans rapport avec les photos qu'il faudra demeler a part. */
+/* PLUS AUCUN GABARIT GELÉ depuis le 09/10 au soir.
+   `ressource` l'était pour une raison précise, écrite ici : son dégel faisait
+   tomber sa porte sur `aLire`, qui comparait les trois lectures À L'IDENTIQUE,
+   image comprise. La porte accepte désormais, pour l'image seule, la maquette
+   OU le registre sous licence, le choix des lectures et leur ordre restant
+   comparés mot pour mot. Le gel n'avait donc plus de raison d'être, et il
+   laissait 35 pages avec les photos de calage de la maquette, dont deux
+   franchement fausses : `team-duo.jpg` là où la maquette dit
+   `team-grind-close.jpg`, `sv-armoire.jpg` là où elle dit `team-grind-front.jpg`. */
+const GABARITS_GELES = new Set<string>([]);
 
 /** Un chemin de photo qu'on ne remplace jamais : il montre un sujet unique. */
 const CHEMINS_GELES = [/^\/assets\/villes\//, /^\/assets\/clients\//];

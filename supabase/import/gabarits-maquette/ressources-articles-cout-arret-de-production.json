@@ -335,7 +335,7 @@
       }
     ],
     "minutes": 12,
-    "image": "/assets/photos/elec-porte-armoire-voyants-sectionneurs.jpg",
+    "image": "/assets/photos/soudure-interieur-virole.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/digitalisation-maintenance/",
@@ -347,7 +347,7 @@
         "href": "/ressources/articles/gestion-des-dechets/",
         "titre": "Gestion des déchets industriels",
         "minutes": 8,
-        "image": "/assets/photos/soudure-interieur-virole.jpg"
+        "image": "/assets/photos/elec-porte-armoire-voyants-sectionneurs.jpg"
       },
       {
         "href": "/ressources/articles/gmao/",

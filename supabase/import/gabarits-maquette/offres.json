@@ -5,20 +5,6 @@
     "meta_description": "Entreprise maintenance industrielle : plusieurs façons de nous confier vos machines. Techniciens évalués, 10 % des candidats retenus. Rappel dans l'heure."
   },
   "titre_h1": "Maintenance industrielle : six offres, une seule exigence",
-  "trous": [
-    {
-      "ligne": "Le tarif se négocie machine à l'arrêt, avec la production qui attend derrière.",
-      "pourquoi": "« tarif » : aucun prix, tarif, montant ni taux horaire (contrat de rédaction, même règle que /expertises/types-de-maintenance/maintenance-corrective/). Texte de la carte 01 de « 03 Problème » : l'accroche reste."
-    },
-    {
-      "ligne": "Le préventif le samedi, le dépannage la nuit, pour un prix mensuel fixe.",
-      "pourquoi": "« un prix mensuel fixe » : aucun prix (même décision que /offres/zero-arret/, scripts/verifie-offre-rendu.mjs). Première phrase du texte de « Zéro arrêt » dans « 04 Offre » : « Voir le contrat de maintenance Zéro arrêt. » reste."
-    },
-    {
-      "ligne": "Le taux horaire est homogène dans toute la France.",
-      "pourquoi": "« taux horaire » : aucun prix (même règle que /implantations/ et les gabarits 03 et 04). Deuxième phrase de la réponse à « Combien ça coûte ? » dans « 09 Questions · photo » : le reste de la réponse reste."
-    }
-  ],
   "contenu": {
     "gabarit": "offres",
     "pastille": "Nos offres",
@@ -47,7 +33,7 @@
         "libelle": "Collaborateurs, 4 agences dans le monde, interventions partout en France"
       }
     ],
-    "problemePhoto": "/assets/photos/meca-pied-a-coulisse-fraiseuse.jpg",
+    "problemePhoto": "/assets/photos/env-mecanicien-aeronautique.jpg",
     "brefBande": "Besoin de savoir quelle formule coûte le moins cher pour votre site ?",
     "brefBouton": {
       "libelle": "Faire chiffrer mon besoin",
@@ -61,7 +47,7 @@
         "puces": [
           {
             "accroche": "Au troisième dépannage de l'année sur les mêmes machines, le cumul des factures d'urgence et des pertes de production dépasse ce qu'aurait coûté un contrat annuel.",
-            "texte": ""
+            "texte": "Le tarif se négocie machine à l'arrêt, avec la production qui attend derrière."
           },
           {
             "accroche": "Le préventif recule d'un cran à chaque panne.",
@@ -90,7 +76,7 @@
           {
             "prestation": {
               "accroche": "Zéro arrêt",
-              "texte": "Voir le contrat de maintenance Zéro arrêt."
+              "texte": "Le préventif le samedi, le dépannage la nuit, pour un prix mensuel fixe. Voir le contrat de maintenance Zéro arrêt."
             },
             "benefice": "L'entretien et les pannes ne touchent plus à votre production."
           },
@@ -175,54 +161,54 @@
             "texte": "Six techniciens polyvalents en permanence, depuis septembre 2023.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/elec-main-disjoncteurs-borniers.jpg"
+            "photo": "/assets/photos/env-inspection-metal-22-sept-2026.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie",
             "texte": "En poste depuis octobre 2023, aux côtés des équipes internes.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-22-1600.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-11.jpg"
           },
           {
             "titre": "Renfort continu de maintenance sur lignes de nutrition infantile, agroalimentaire",
             "texte": "Deux techniciens intégrés aux équipes.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/elec-tgbt-technicienne-tablette.jpg"
+            "photo": "/assets/photos/env-inspection-auto-avec-equipe.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve",
             "texte": "Près de Lyon.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg"
+            "photo": "/assets/photos/il-technicienne-mecanique-photo-avril-2026-1600.jpg"
           },
           {
             "titre": "Montage et déplacement de machines, étanchéité et isolation",
             "texte": "Plusieurs missions ciblées sur l'année 2025.",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/il-technicien-maintenance-femme-1600.jpg"
+            "photo": "/assets/photos/env-professionnels-maintenance-aeronautique.jpg"
           },
           {
             "titre": "Remise en état d'un site à risque chimique, traitement des eaux",
             "texte": "Renfort habilité, depuis février 2026.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/env-inspection-ligne-production-automatique.jpg"
+            "photo": "/assets/photos/chimie-cuve-melange-flexible.jpg"
           },
           {
             "titre": "Un été entier sans trou dans la maintenance",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/il-technicien-maintenance-avec-robot-1600.jpg"
+            "photo": "/assets/photos/env-entretien-avion-22-sept-2026.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/il-technicien-maintenance-robotique-mar-17-2026-1.jpg"
+            "photo": "/assets/photos/env-menuiserie-industrie.jpg"
           }
         ]
       },
@@ -231,7 +217,7 @@
         "questions": [
           {
             "question": "Combien ça coûte ?",
-            "reponse": "Le chiffrage se fait après qualification du besoin, avec une visite quand le périmètre le justifie. Le devis détaille chaque poste, et nous cherchons la prestation la plus économique pour votre situation, pas la plus grosse."
+            "reponse": "Le chiffrage se fait après qualification du besoin, avec une visite quand le périmètre le justifie. Le taux horaire est homogène dans toute la France. Le devis détaille chaque poste, et nous cherchons la prestation la plus économique pour votre situation, pas la plus grosse."
           },
           {
             "question": "Faut-il s'engager pour travailler avec vous ?",
@@ -309,7 +295,7 @@
         "libelle": "Parler à un chargé d’affaires",
         "href": "/contact/"
       },
-      "photo": "/assets/photos/env-mecanicien-aeronautique.jpg",
+      "photo": "/assets/photos/env-reparation-moteur-aeronautique.jpg",
       "alt": "Techniciens Migen sur une armoire électrique"
     },
     "maillageSurtitre": "Nos offres",
@@ -317,42 +303,42 @@
     "maillage": [
       {
         "href": "/offres/residence/",
-        "photo": "/assets/photos/tuyau-pointage-bride-tube.jpg",
+        "photo": "/assets/photos/env-focused-young-man-working-on-electrical-wiring.jpg",
         "etiquette": "Présence continue",
         "titre": "migen© Résidence",
         "phrase": "Des techniciens en résidence sur votre site, intégrés à votre équipe, validés par vous."
       },
       {
         "href": "/offres/full-service/",
-        "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg",
+        "photo": "/assets/web/team-duo.jpg",
         "etiquette": "Contrat unique",
         "titre": "migen© Full service",
         "phrase": "Toute votre maintenance dans un seul contrat : préventif, dépannage, pièces et GMAO, un seul interlocuteur."
       },
       {
         "href": "/offres/zero-arret/",
-        "photo": "/assets/photos/env-mechanic-inspecting-auto-parts-in-his-workshop.jpg",
+        "photo": "/assets/photos/env-technician-examining-jet-engine.jpg",
         "etiquette": "Abonnement",
         "titre": "migen© Zéro arrêt",
         "phrase": "Le préventif le samedi, le dépannage la nuit : une maintenance qui ne touche jamais à votre production."
       },
       {
         "href": "/offres/arret-technique/",
-        "photo": "/assets/web/team-grind-sparks.jpg",
+        "photo": "/assets/photos/env-menuisier-utilisant-des-outils.jpg",
         "etiquette": "Arrêt planifié",
         "titre": "migen© Arrêt technique",
         "phrase": "Votre arrêt annuel préparé, dimensionné et tenu, ligne rendue à la date annoncée."
       },
       {
         "href": "/offres/bureau-etudes/",
-        "photo": "/assets/web/team-electric.jpg",
+        "photo": "/assets/photos/il-technicien-maintenance-au-travail-jan-9-2026-1.jpg",
         "etiquette": "Études",
         "titre": "migen© Bureau d’études",
         "phrase": "Conception, schémas électriques, mise en conformité machine : des études faites par des gens de terrain."
       },
       {
         "href": "/travaux-industriels/",
-        "photo": "/assets/photos/env-technician-maintenance-jet-engine.jpg",
+        "photo": "/assets/photos/energie-releve-pupitre-salle-commande.jpg",
         "etiquette": "Chantier",
         "titre": "migen© Travaux industriels",
         "phrase": "Transfert, montage, démantèlement, levage : le chantier, du relevé à la remise en production."

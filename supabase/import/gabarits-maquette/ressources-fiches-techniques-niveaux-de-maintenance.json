@@ -238,25 +238,25 @@
       }
     ],
     "minutes": 9,
-    "image": "/assets/photos/chaudro-meulage-visiere.jpg",
+    "image": "/assets/photos/env-inspection-bras-robotiques.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-techniques/amdec/",
         "titre": "Amdec",
         "minutes": 15,
-        "image": "/assets/photos/elec-schema-lampe-frontale.jpg"
+        "image": "/assets/photos/energie-rotor-turbine-vapeur.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/analyse-vibratoire/",
         "titre": "Analyse vibratoire",
         "minutes": 10,
-        "image": "/assets/photos/il-technicien-maintenance-photo-jan-9-2026-2-1600.jpg"
+        "image": "/assets/photos/robot-multimetre-cablage-robot.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/automates-siemens/",
         "titre": "Automate Siemens",
         "minutes": 7,
-        "image": "/assets/photos/il-portrait-of-engineer-or-technician-worker-woma.jpg"
+        "image": "/assets/photos/menuiserie-scie-panneaux-epi.jpg"
       }
     ]
   }

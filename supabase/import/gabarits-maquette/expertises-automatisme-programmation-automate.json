@@ -53,7 +53,7 @@
           },
           {
             "accroche": "Vous n'avez pas les sources.",
-            "texte": "Le contrat d'achat ne les prévoyait pas."
+            "texte": "Le contrat d'achat ne les prévoyait pas. Chaque modification repasse par le fournisseur, à son rythme et à son tarif."
           },
           {
             "accroche": "On cherche la panne à l'aveugle.",
@@ -187,20 +187,20 @@
             "texte": "Techniciens présents au quotidien dans les équipes, depuis 2025.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/il-technician-using-control-panel-in-industrial-f.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-5-1600.jpg"
           },
           {
             "titre": "Installation et mise en production d'un nouveau parc machine, site automobile",
             "texte": "Six techniciens multidisciplinaires, depuis janvier 2023.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/il-man-works-with-robotic-arm-in-factory.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-inspectant-bras-robotiq.jpg"
           },
           {
             "titre": "La GMAO planifie, nos techniciens interviennent",
             "lienLibelle": "Étude de cas DimoMaint",
             "lienHref": "/preuves/dimomaint/",
-            "photo": "/assets/photos/env-automatician-maintenance.jpg"
+            "photo": "/assets/photos/pneu-pince-axe-lineaire.jpg"
           }
         ]
       },

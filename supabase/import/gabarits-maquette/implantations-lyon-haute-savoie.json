@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Haute-Savoie",
       "titre": "Haute-Savoie : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/env-menuisier-avec-masque-sept-2026.jpg",
+      "photo": "/assets/photos/env-inspection-de-bois-24-sept-2026.jpg",
       "badge": "Rattaché au hub Lyon",
       "nom": "Haute-Savoie, couvert par le hub Lyon",
       "texte": "Les techniciens du hub Lyon interviennent à Haute-Savoie et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -237,7 +237,7 @@
             "texte": "Présence continue, en coordination avec les équipes du site.",
             "lienLibelle": "Étude de cas AUTOLIV",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/env-technician-maintenance-6.jpg"
+            "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg"
           },
           {
             "titre": "Des techniciens présents au quotidien dans les équipes de maintenance d'un équipementier automobile, en 2025",
@@ -251,7 +251,7 @@
             "texte": "Accompagnement d'une montée en cadence.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-mar-25-2026-1-160.jpg"
+            "photo": "/assets/photos/env-factory-worker-inspecting-food-canning-product.jpg"
           },
           {
             "titre": "Six techniciens sur l'installation et la mise en production d'un parc machines neuf",
@@ -264,7 +264,7 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/il-usine-kawasaki-jan-11-2026-1600.jpg"
+            "photo": "/assets/photos/il-usine-de-ciment-vue-aerienne-1600.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
@@ -276,7 +276,7 @@
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-20-1600.jpg"
+            "photo": "/assets/photos/env-ouvrier-industriel-meulant-metal.jpg"
           }
         ]
       },

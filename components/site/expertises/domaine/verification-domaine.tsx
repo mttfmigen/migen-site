@@ -280,18 +280,33 @@ const liste = (manques: readonly Manque[]) =>
 
 /* --------------------------------------------------- les interdits du contrat */
 
+/* 09/10 : « prix », « tarif » et « taux horaire » ONT QUITTÉ CETTE LISTE.
+   Décision de Mehdi : « Ne donnes aucun tarif. Dis juste que c'est sur
+   devis. » Dire qu'une prestation se chiffre sur devis, au taux horaire,
+   n'énonce aucun montant. Même arbitrage que le 08/10 sur le gabarit 03 et
+   /secteurs/, et que le gabarit 05 (verification-specialite.tsx).
+   CE QUI RESTE INTERDIT, C'EST LE MONTANT, et il n'était cherché NULLE PART
+   ici : la liste ne portait que les noms du prix, jamais un chiffre en euros.
+   « € » entre donc dans la liste, et `MONTANT` attrape « 450 euros », que
+   `includes` ne sait pas voir. Sans ces deux ajouts, retirer les trois mots
+   aurait laissé cette porte sans aucune prise sur les prix. */
 const INTERDITS = [
-  "—", "prix ", "tarif", "taux horaire", "régie", "intérim", "mise à disposition",
+  "—", "€", "régie", "intérim", "mise à disposition",
   "sans engagement", "clé en main", "sur mesure", "levier", "concrètement",
   "notamment", "incontournable", "découvrez", "limonest", "réguliers", "24h",
   "24 h", "24/24", "24/7", "7j/7", "7 j/7",
 ] as const;
+
+/** Un montant, le seul interdit de prix qui subsiste : « 450 € », « 450 euros ». */
+const MONTANT = /\d[\d\s  ]*(?:€|euros?\b)/u;
 
 function verifieHygiene(rendu: string, nom: string): void {
   const visible = texteLisible(rendu).toLowerCase();
   for (const mot of INTERDITS) {
     assert.ok(!visible.includes(mot), `${nom} : mot proscrit par le contrat au rendu, « ${mot} »`);
   }
+  const montant = visible.match(MONTANT);
+  assert.ok(!montant, `${nom} : montant rendu, le contrat n'en autorise aucun, « ${montant?.[0]} »`);
   assert.equal((rendu.match(/<h1[\s>]/g) ?? []).length, 1, `${nom} : un h1, et un seul`);
   assert.ok(!/href="#"/.test(rendu), `${nom} : un href="#" est rendu`);
   for (const classe of rendu.matchAll(/class="([^"]*)"/g)) {
@@ -580,6 +595,19 @@ assert.ok(
 );
 const sansMarques = compare("Marques maintenues", MARQUES, renderToStaticMarkup(<MarquesOffre famille={onglets[0].cle} />));
 assert.ok(sansMarques.length > 0, "un rail d'onglets absent doit être vu");
+
+/* 09/10 : `verifieHygiene` n'avait AUCUN témoin, et les noms du prix viennent
+   de quitter sa liste. Sans ces trois lignes, rien ne prouverait plus qu'elle
+   sait tomber, ni sur un mot proscrit, ni sur un montant. Les deux écritures
+   du montant sont éprouvées : le symbole, que `includes` voit, et le mot, que
+   seul `MONTANT` voit. */
+for (const [cas, texte] of [
+  ["un mot proscrit", "<p>une offre sur mesure</p>"],
+  ["un montant en euros", "<p>Comptez 450 € de l'heure.</p>"],
+  ["un montant écrit en euros", "<p>Comptez 450 euros de l'heure.</p>"],
+] as const) {
+  assert.throws(() => verifieHygiene(texte, "faux"), `l'hygiène du contrat laisse passer ${cas}`);
+}
 
 // À l'échelle d'une page réelle : le pilote robotique, son problème passé au
 // panneau sombre, ne doit plus être conforme à sa capture.

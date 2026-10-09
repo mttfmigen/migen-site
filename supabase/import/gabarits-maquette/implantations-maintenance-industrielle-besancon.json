@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Besançon",
       "titre": "Besançon : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/env-ouvrier-industriel-avec-ladle.jpg",
+      "photo": "/assets/photos/env-raffinerie-de-petrole-bangkok.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Besançon et ses environs",
       "texte": "Nos techniciens itinérants couvrent Besançon et son bassin, appuyés par le réseau national Migen.",
@@ -255,7 +255,7 @@
             "texte": ", centres d'usinage, presses et commandes numériques, en 2025.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/env-photo-industrie.jpg"
+            "photo": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg"
           },
           {
             "titre": "18 à 25 techniciens mobilisés sur plusieurs sites du Grand Est",
@@ -269,32 +269,32 @@
             "texte": ", depuis 2025.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/env-industrie-metallique-24-sept-2026.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-12.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS affecté au démarrage d'une nouvelle ligne de production",
             "texte": ", en contexte de montée en charge.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
+            "photo": "/assets/photos/il-usine-de-ciment-vue-aerienne-1600.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-13-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-2-1600.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-7-2026-1-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-20-1600.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/env-ingenieurs-inspectant-site-industriel.jpg"
+            "photo": "/assets/photos/env-industrie-metallique-21-sept-2026.jpg"
           },
           {
             "titre": "Un parc de fonderie repris en huit semaines",

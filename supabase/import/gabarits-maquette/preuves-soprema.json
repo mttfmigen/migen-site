@@ -14,7 +14,7 @@
     ],
     "bouton": "Chiffrer mon chantier de montage",
     "logo": "/assets/clients/mq-127f9e03c53b.svg",
-    "photoHero": "/assets/photos/il-technicien-maintenance-femme-1600.jpg",
+    "photoHero": "/assets/photos/meca-jeune-presse-volant.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -127,7 +127,7 @@
         "valeur": "Facturation à la journée ou au forfait"
       }
     ],
-    "photoDispositif": "/assets/photos/meca-jeune-presse-volant.jpg",
+    "photoDispositif": "/assets/photos/env-reparation-moteur-jet-hangar.jpg",
     "resultats": [
       {
         "titre": "Les délais de chantier ont été respectés",
@@ -172,19 +172,19 @@
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/il-man-works-with-robotic-arm-in-factory.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-au-travail-jan-9-2026-1.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/soudure-corps-vanne-forge.jpg"
+        "photo": "/assets/photos/il-engineer-check-and-control-automation-robot-ar.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/robot-pupitre-apprentissage-soudure.jpg"
+        "photo": "/assets/photos/soudure-interieur-virole.jpg"
       }
     ]
   }

@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Vesoul",
       "titre": "Vesoul : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-technicien-maintenance-photo-16-800.jpg",
+      "photo": "/assets/photos/env-photos-industrie-2.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Vesoul et ses environs",
       "texte": "Nos techniciens itinérants couvrent Vesoul et son bassin, appuyés par le réseau national Migen.",
@@ -246,7 +246,7 @@
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/env-usine-metallique.jpg"
+            "photo": "/assets/photos/il-photo-industrie-raffinerie-petrole-mars-2026-1.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
@@ -258,25 +258,25 @@
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
             "lienLibelle": "Étude de cas Autoliv",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/env-operateur-de-metal-24-sept-2026.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-23-1600.jpg"
           },
           {
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/env-promenade-des-ingenieurs-a-la-raffinerie.jpg"
+            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/photos/menuiserie-robot-panneaux.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance.jpg"
           },
           {
             "titre": "Centres d’usinage et presses tenus dans le Grand Est",
             "lienLibelle": "Étude de cas Voit",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/env-industrie-chimie-2.jpg"
+            "photo": "/assets/photos/env-photo-industrie.jpg"
           }
         ]
       },

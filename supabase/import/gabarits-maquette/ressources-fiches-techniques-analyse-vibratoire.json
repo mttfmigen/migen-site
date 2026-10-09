@@ -247,7 +247,7 @@
       }
     ],
     "minutes": 10,
-    "image": "/assets/photos/aero-fuselage-serrage-lampe.jpg",
+    "image": "/assets/photos/pharma-blistereuse-mecanisme.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-techniques/amdec/",
@@ -259,13 +259,13 @@
         "href": "/ressources/fiches-techniques/automates-siemens/",
         "titre": "Automate Siemens",
         "minutes": 7,
-        "image": "/assets/photos/il-technicien-maintenance-photo-mar-19-2026-1-160.jpg"
+        "image": "/assets/photos/env-moteur-d-avion-en-maintenance.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/cahier-des-charges-gmao/",
         "titre": "Cahier des charges gmao",
         "minutes": 11,
-        "image": "/assets/photos/pharma-blistereuse-mecanisme.jpg"
+        "image": "/assets/photos/il-hydrau-verin-godet-engin.jpg"
       }
     ]
   }

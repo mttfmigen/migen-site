@@ -76,7 +76,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/env-femme-en-usine-moderne.jpg",
+    "problemePhoto": "/assets/photos/il-technicien-maintenance-photo-1600.jpg",
     "brefBande": "Besoin d'un diagnostic fiable le vendredi soir plutôt que le lundi matin ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -218,14 +218,14 @@
             "texte": "Agroalimentaire du Nord.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/env-industrie-au-crepuscule.jpg"
+            "photo": "/assets/photos/env-inspection-de-la-chaine-alimentaire.jpg"
           },
           {
             "titre": "Premier contrat hors de France depuis octobre 2024",
             "texte": "Techniciens en renfort sur un site agroalimentaire belge, de l'autre côté de la frontière.",
             "lienLibelle": "Étude de cas McCAIN",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/env-inspection-metal-22-sept-2026-1.jpg"
+            "photo": "/assets/photos/env-controle-qualite-femme.jpg"
           },
           {
             "titre": "Un technicien polyvalent intégré sur un site papier et emballage en forte cadence",

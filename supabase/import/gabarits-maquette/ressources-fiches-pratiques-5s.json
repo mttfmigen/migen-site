@@ -298,25 +298,25 @@
       }
     ],
     "minutes": 12,
-    "image": "/assets/photos/il-raffinerie-industrielle-au-crepuscule-1600.jpg",
+    "image": "/assets/photos/env-entretien-avion-22-sept-2026.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-pratiques/consignation-electrique/",
         "titre": "Consignation électrique",
         "minutes": 12,
-        "image": "/assets/photos/pharma-cuves-process-passerelle.jpg"
+        "image": "/assets/photos/env-photos-industrie-aeronautique.jpg"
       },
       {
         "href": "/ressources/fiches-pratiques/permis-de-feu/",
         "titre": "Permis de feu",
         "minutes": 8,
-        "image": "/assets/photos/il-usines-a-yokkaichi-mars-24-2026-1600.jpg"
+        "image": "/assets/web/team-duo.jpg"
       },
       {
         "href": "/ressources/fiches-pratiques/plan-de-prevention/",
         "titre": "Plan de prévention",
         "minutes": 9,
-        "image": "/assets/photos/env-photos-industrie-pharmaceutique.jpg"
+        "image": "/assets/photos/env-robot-industriel-2026.jpg"
       }
     ]
   }

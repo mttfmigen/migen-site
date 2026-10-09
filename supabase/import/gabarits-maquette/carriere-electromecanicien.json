@@ -21,7 +21,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/elec-binome-coffret-chaufferie.jpg",
+        "src": "/assets/photos/elec-tgbt-technicienne-tablette.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -377,12 +377,12 @@
           {
             "libelle": "Compétences électromécanicien",
             "href": "/carriere/electromecanicien/competences/",
-            "photo": "/assets/photos/il-technicien-maintenance-air-conditionne-1600.jpg"
+            "photo": "/assets/photos/elec-main-disjoncteurs-borniers.jpg"
           },
           {
             "libelle": "Salaire électromécanicien",
             "href": "/carriere/electromecanicien/salaire/",
-            "photo": "/assets/photos/env-technician-inspecting-fiber-optics.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-5.jpg"
           },
           {
             "libelle": "Automaticien",
@@ -392,7 +392,7 @@
           {
             "libelle": "Responsable maintenance",
             "href": "/carriere/responsable-maintenance/",
-            "photo": "/assets/photos/elec-mains-bornier-relais.jpg"
+            "photo": "/assets/photos/elec-porte-armoire-voyants-sectionneurs.jpg"
           }
         ]
       }

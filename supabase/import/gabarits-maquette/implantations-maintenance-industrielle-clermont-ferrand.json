@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Clermont-Ferrand",
       "titre": "Clermont-Ferrand : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-detail-raffinerie-nuit-mars-17-2026-1600.jpg",
+      "photo": "/assets/photos/il-automaticien-dans-usine-moderne-jan-7-2026-160.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Clermont-Ferrand et ses environs",
       "texte": "Nos techniciens itinérants couvrent Clermont-Ferrand et son bassin, appuyés par le réseau national Migen.",
@@ -115,7 +115,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg",
+    "problemePhoto": "/assets/photos/il-technicien-maintenance-portrait-jan-9-2026-160.jpg",
     "brefBande": "Besoin de remettre à plat un parc qui multiplie les arrêts courts ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -250,7 +250,7 @@
             "texte": "Six semaines de chantier en août 2023, date de livraison tenue.",
             "lienLibelle": "Étude de cas AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/env-usine-aeronautique-22-sept-2026.jpg"
+            "photo": "/assets/photos/robot-cellules-grillagees.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et de son usinage,, depuis octobre 2023",
@@ -264,21 +264,21 @@
             "texte": "Nutrition infantile, cadence continue.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/agro-atelier-inox-plan-large.jpg"
+            "photo": "/assets/photos/env-industrie-paysage.jpg"
           },
           {
             "titre": "Un technicien de maintenance dédié au maintien d'un parc machines en 2025",
             "texte": "Poste vacant comblé sans attendre un recrutement.",
             "lienLibelle": "Étude de cas AUTOLIV",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/il-interieur-de-chantier-naval-24-mars-2026-1600.jpg"
+            "photo": "/assets/photos/env-technicien-en-costume-de-nettoyage-industrie-p.jpg"
           },
           {
             "titre": "Un technicien polyvalent sur un parc hétérogène en forte cadence",
             "texte": "Papier et emballage, 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/il-industrie-paysage-au-coucher-de-soleil-1600.jpg"
+            "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
@@ -290,7 +290,7 @@
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/env-workers-inspecting-large-vats-in-a-manufacturi.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-18-1600.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",

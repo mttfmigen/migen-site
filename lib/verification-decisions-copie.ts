@@ -46,6 +46,26 @@ const INCHANGE = [
   "S'y ajoutent notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid.",
 ];
 
+/* 09/10 AU SOIR : LE RENOMMAGE D'ORTHUS DOIT RESTER DU FRANÇAIS.
+   Trois phrases servies étaient fautives, trouvées en lisant le HTML des pages
+   et non la règle : « sous le pilotage d'Migen Travaux » et « confie à Migen
+   Travaux, la construction complète ». Remplacer un nom par un autre n'est pas
+   une substitution de chaîne : le français élide devant une voyelle, et une
+   apposition emporte UNE virgule ou LES DEUX selon ce qu'elle sépare.
+   Les dix phrases ci-dessous sont celles du corpus, relevées une par une. */
+const ORTHUS_FRANCAIS: [string, string][] = [
+  ["Le chantier est mené sous le pilotage d'Orthus, filiale du groupe Migen.", "Le chantier est mené sous le pilotage de Migen Travaux."],
+  ["Ecocem confie à Orthus, filiale du groupe Migen, la construction complète.", "Ecocem confie à Migen Travaux la construction complète."],
+  ["Elle a confié à Orthus, filiale du groupe Migen, la construction complète.", "Elle a confié à Migen Travaux la construction complète."],
+  ["WashTec confie à Orthus, filiale du groupe Migen, le montage complet.", "WashTec confie à Migen Travaux le montage complet."],
+  ["Chantier piloté de bout en bout par Orthus, filiale du groupe, coordination multi-métiers.", "Chantier piloté de bout en bout par Migen Travaux, coordination multi-métiers."],
+  ["Chantier piloté de bout en bout par Orthus, filiale du groupe, jalons critiques suivis.", "Chantier piloté de bout en bout par Migen Travaux, jalons critiques suivis."],
+  ["Ces chantiers sont portés par Orthus, marque sœur créée en 2024 par le groupe, qui partage nos équipes.", "Ces chantiers sont portés par Migen Travaux, qui partage nos équipes."],
+  ["Ecocem confie à Orthus la conception et la réalisation.", "Ecocem confie à Migen Travaux la conception et la réalisation."],
+  ["Le montage est porté par Orthus.", "Le montage est porté par Migen Travaux."],
+  ["L'équipe Orthus réceptionne le portique.", "L'équipe Migen Travaux réceptionne le portique."],
+];
+
 /* 08/10 : les photos de ville sous licence, et le téléphone rendu à ses phrases.
    Ces deux règles s'appliquent à la CAPTURE avant comparaison au rendu, donc une
    règle trop large ferait passer un vrai défaut sans que rien ne le dise. Les
@@ -84,6 +104,11 @@ assert.equal(
   "Techniciens évalués, 10 % des techniciens retenus. Rappel dans l'heure.",
 );
 assert.equal(copieConforme("Pas au hasard. 10 % des candidats retenus, 4 agences en France."), "Pas au hasard.");
+/* Le renommage d'Orthus, phrase par phrase : la forme compte autant que le nom. */
+for (const [avant, apres] of ORTHUS_FRANCAIS) {
+  assert.equal(appliqueDecisions(avant), apres, `renommage d'Orthus : « ${avant} »`);
+}
+
 console.log(
   `décisions de copie : ${CHANGE.length} réécritures, ${PHOTOS.length} crédits de photo retirés, ` +
     `${TEL.length} téléphones rendus, ${INCHANGE.length + TEL_INCHANGE.length + SIEGE_INTACT.length} phrases laissées intactes, conformes`,

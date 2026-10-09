@@ -295,25 +295,25 @@
       }
     ],
     "minutes": 11,
-    "image": "/assets/web/team-duo.jpg",
+    "image": "/assets/photos/il-technicien-maintenance-inspectant-bras-robotiq.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-techniques/amdec/",
         "titre": "Amdec",
         "minutes": 15,
-        "image": "/assets/photos/env-technician-maintenance-3.jpg"
+        "image": "/assets/photos/il-inspection-de-terrain-en-securite-mars-2026-16.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/analyse-vibratoire/",
         "titre": "Analyse vibratoire",
         "minutes": 10,
-        "image": "/assets/photos/env-robotic-arms-welding-car-frames.jpg"
+        "image": "/assets/photos/il-man-working-with-machinery-in-a-factory.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/automates-siemens/",
         "titre": "Automate Siemens",
         "minutes": 7,
-        "image": "/assets/photos/il-technicien-maintenance-photo-12-1600.jpg"
+        "image": "/assets/photos/elec-multimetre-armoire-automatisme.jpg"
       }
     ]
   }

@@ -231,25 +231,25 @@
       }
     ],
     "minutes": 9,
-    "image": "/assets/photos/il-engineer-check-and-control-automation-robot-ar.jpg",
+    "image": "/assets/photos/env-technicien-maintenance-aeronautique.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/cout-arret-de-production/",
         "titre": "Coût d'un arrêt de production",
         "minutes": 12,
-        "image": "/assets/photos/env-technicien-en-costume-de-nettoyage-industrie-p.jpg"
+        "image": "/assets/photos/il-technicien-maintenance-photo-1-1600.jpg"
       },
       {
         "href": "/ressources/articles/digitalisation-maintenance/",
         "titre": "Digitalisation maintenance",
         "minutes": 11,
-        "image": "/assets/photos/elec-tgbt-technicienne-tablette.jpg"
+        "image": "/assets/photos/chimie-technicienne-skid-vanne.jpg"
       },
       {
         "href": "/ressources/articles/gestion-des-dechets/",
         "titre": "Gestion des déchets industriels",
         "minutes": 8,
-        "image": "/assets/photos/il-portrait-of-engineer-train-inspect-the-train-s-2.jpg"
+        "image": "/assets/photos/il-technicien-maintenance-5.jpg"
       }
     ]
   }

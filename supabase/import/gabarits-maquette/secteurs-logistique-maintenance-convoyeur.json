@@ -265,28 +265,28 @@
             "texte": "deux techniciens expérimentés en poste sur site",
             "lienLibelle": "Étude de cas GLS : maintenance curative",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
+            "photo": "/assets/photos/robot-palettisation-tablette.jpg"
           },
           {
             "titre": "Préventif tenu par créneaux de 8 heures sur un site logistique en continu",
             "texte": "10 à 20 techniciens une semaine sur deux depuis septembre 2022",
             "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/env-photos-industrie-menuiserie.jpg"
+            "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
           },
           {
             "titre": "Préventif annuel de sites logistiques volumineux, e-commerce",
             "texte": "six techniciens en permanence, depuis septembre 2023",
             "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/web/sv-convoyeur.jpg"
+            "photo": "/assets/photos/il-pipes-et-structures-raffinerie-2026-1600.jpg"
           },
           {
             "titre": "Montage complet d'un centre logistique, convoyage compris",
             "texte": "12 monteurs mécaniciens, 8 engins de levage, six semaines",
             "lienLibelle": "Étude de cas AKTID : montage d'un centre logistique",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/il-mechanic-working-in-warehouse-2.jpg"
+            "photo": "/assets/web/sv-convoyeur.jpg"
           },
           {
             "titre": "Convoyage agroalimentaire sous contrainte d'hygiène et de cadence 3x8",
@@ -305,7 +305,7 @@
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/robot-palettisation-tablette.jpg"
+            "photo": "/assets/photos/env-photos-industrie-menuiserie.jpg"
           }
         ]
       },

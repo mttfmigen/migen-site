@@ -69,7 +69,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/env-inspection-de-bois-24-sept-2026.jpg",
+    "problemePhoto": "/assets/photos/il-cimenterie-de-nuit-mars-25-2026-1600.jpg",
     "complementOffre": [
       {
         "texte": "Pour l'urgence isolée, notre offre de dépannage industriel reste le format le plus simple pour nous mettre à l'épreuve."
@@ -193,7 +193,7 @@
           },
           {
             "accroche": "Un chiffrage ferme avant intervention",
-            "texte": "L'exceptionnel se chiffre en amont, jamais en fin de facture."
+            "texte": "Périmètre écrit, taux horaire homogène partout en France, pièces au prix réel. L'exceptionnel se chiffre en amont, jamais en fin de facture."
           },
           {
             "accroche": "La reprise d'un préventif abandonné, sans jugement",
@@ -209,21 +209,21 @@
             "texte": "sur un site de traitement des eaux industrielles à remettre en état.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-9-2026-1600.jpg"
+            "photo": "/assets/photos/tuyau-vanne-volant-conserverie.jpg"
           },
           {
             "titre": "Un technicien intégré sur un parc papier-carton où la maintenance conditionne la productivité",
             "texte": ", préventif et curatif, de 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/env-technician-maintenance-12.jpg"
+            "photo": "/assets/photos/env-photo-industrie-chimie.jpg"
           },
           {
             "titre": "Deux techniciens en 3x8 sur des lignes liquides et du conditionnement poudre",
             "texte": ", site agroalimentaire de Steenvoorde.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/env-industrie-metallique-2.jpg"
+            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
           },
           {
             "titre": "1 à 3 techniciens en renfort permanent des équipes maintenance",
@@ -237,25 +237,25 @@
             "texte": ", en pleine montée de cadence.",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/env-technicien-maintenance-photo.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-13-1600.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/env-controle-qualite-femme.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-6-1600.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/env-ouvrier-usine-metal.jpg"
+            "photo": "/assets/photos/env-photos-industrie-4.jpg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/env-technician-maintenance-6.jpg"
+            "photo": "/assets/photos/elec-salle-cellules-ht-ronde.jpg"
           }
         ]
       },
@@ -284,7 +284,7 @@
           },
           {
             "question": "Comment sont chiffrées vos prestations ?",
-            "reponse": "Une demande ponctuelle ne demande aucune durée minimale : c'est le bon format pour juger sur pièces."
+            "reponse": "Chaque prestation est chiffrée avant intervention : périmètre écrit, taux horaire homogène en France, pièces au prix réel du marché. Une demande ponctuelle ne demande aucune durée minimale : c'est le bon format pour juger sur pièces."
           }
         ]
       },
@@ -293,15 +293,5 @@
         "question": "Besoin d'un partenaire qui tienne le préventif quand votre équipe ne peut plus ?"
       }
     ]
-  },
-  "trous": [
-    {
-      "ligne": "Périmètre écrit, taux horaire homogène partout en France, pièces au prix réel.",
-      "pourquoi": "« taux horaire » : aucun prix, tarif ni taux horaire (contrat de rédaction et passation du client). Première phrase du texte de la deuxième garantie (06 Garanties), la suite reste."
-    },
-    {
-      "ligne": "Chaque prestation est chiffrée avant intervention : périmètre écrit, taux horaire homogène en France, pièces au prix réel du marché.",
-      "pourquoi": "« taux horaire » : aucun prix, tarif ni taux horaire (contrat de rédaction et passation du client). Première phrase d'une réponse de « 09 Questions », la suite reste."
-    }
-  ]
+  }
 }

@@ -101,7 +101,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/env-photos-industrie-metallique.jpg",
+    "problemePhoto": "/assets/photos/env-assemblage-carrosseries.jpg",
     "brefBande": "Besoin d'une astreinte réelle sur une installation qui ne s'arrête jamais ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -250,52 +250,52 @@
             "texte": ", avec les équipes techniques du site, depuis octobre 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-technicien-maintenance-portrait-1-1600.jpg"
+            "photo": "/assets/photos/env-industrie-pharmaceutique.jpg"
           },
           {
             "titre": "Renfort habilité risque chimique sur un site de traitement des eaux industrielles",
             "texte": ", mission de 6 mois.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/automatisme-camera-vision-convoyeur.jpg"
+            "photo": "/assets/photos/energie-rack-canalisations-binome.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS affecté au démarrage d'une nouvelle ligne de production",
             "texte": ", en contexte de montée en charge.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-mar-25-2026-1-160.jpg"
           },
           {
             "titre": "Un technicien polyvalent sur un parc machines hétérogène en forte cadence",
             "texte": ", papier et emballage, 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-13-1600.jpg"
+            "photo": "/assets/photos/env-menuisier-dans-l-atelier.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/env-deux-hommes-menuiserie.jpg"
+            "photo": "/assets/photos/il-femme-confiante-en-milieu-industriel-mar-24-20.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/env-ouvrier-industriel-meulant-metal.jpg"
+            "photo": "/assets/photos/env-professionnels-sur-machine-a-bois.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
+            "photo": "/assets/photos/il-photo-usine-ciment-16-mars-2026-1600.jpg"
           },
           {
             "titre": "Monter, déplacer, renforcer, chantier après chantier",
             "lienLibelle": "Étude de cas Soprema",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/env-infrastructure-usine-acier-avec-tuyaux.jpg"
+            "photo": "/assets/photos/metal-four-arc-acierie.jpg"
           }
         ]
       },

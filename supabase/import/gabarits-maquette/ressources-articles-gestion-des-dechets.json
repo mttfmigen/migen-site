@@ -260,25 +260,25 @@
       }
     ],
     "minutes": 8,
-    "image": "/assets/photos/env-ouvrier-industriel-meulant-metal.jpg",
+    "image": "/assets/photos/env-professionnels-maintenance-aeronautique.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/cout-arret-de-production/",
         "titre": "Coût d'un arrêt de production",
         "minutes": 12,
-        "image": "/assets/photos/ciment-vue-aerienne-usine.jpg"
+        "image": "/assets/photos/env-photos-menuiserie.jpg"
       },
       {
         "href": "/ressources/articles/digitalisation-maintenance/",
         "titre": "Digitalisation maintenance",
         "minutes": 11,
-        "image": "/assets/photos/env-photos-industrie-3.jpg"
+        "image": "/assets/photos/env-reparation-moteur-jet-hangar.jpg"
       },
       {
         "href": "/ressources/articles/gmao/",
         "titre": "Gestion de maintenance assistée par ordinateur",
         "minutes": 11,
-        "image": "/assets/photos/env-industrie-pharmaceutique.jpg"
+        "image": "/assets/photos/energie-bride-mat-eolienne.jpg"
       }
     ]
   }

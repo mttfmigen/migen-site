@@ -68,6 +68,26 @@ def interdit_dans(texte):
             return mot
     return None
 
+# LES DÉCISIONS DE COPIE, APPLIQUÉES AVANT LA PURGE. Miroir Python de
+# `lib/decisions-copie.ts` pour les seules règles dont dépend la purge : une
+# décision qui RETIRE un interdit doit passer AVANT lui, sans quoi la phrase
+# tombe entière et la décision ne sert à rien.
+#
+# 09/10, « notamment » : le contrat interdit le mot, et
+# `scripts/verifie-interdits.mjs` prescrit « à supprimer, ou « dont » ». La
+# purge ci-dessous ne sait retirer qu'une phrase : elle jetait donc la première
+# phrase du chapô de Bamesa et la seconde de celui de Valeo. Le chapô de Bamesa
+# tombait alors sous les 480 px de la photo du héros et l'`align-items: center`
+# de sa rangée descendait le titre de 42 px : la SEULE page décalée des 248.
+# Le mot part, la phrase reste, et la même règle vit dans decisions-copie.ts
+# pour que la capture perde le mot avant d'être comparée au rendu.
+DECISIONS = [(re.compile(r"\s+notamment(?=\s)"), "")]
+
+def decisions(texte):
+    for motif, vers in DECISIONS:
+        texte = motif.sub(vers, texte)
+    return texte
+
 # Les images : la capture sert des `blob:` qui ne nomment aucun fichier. Le
 # fichier vient de la CORRESPONDANCE mesurée (octets lus dans la maquette
 # vivante, voir mesure-photos.mjs), jamais d'un choix. La capture, elle, dit
@@ -210,12 +230,15 @@ FIN_DE_PHRASE = re.compile(r"(?<=[.!?…])\s+(?=[«\"A-ZÀ-ÖØ-Þ0-9])")
 def phrases(texte): return FIN_DE_PHRASE.split(texte)
 
 def purge_interdits(c, slug, trous):
-    """Retire LA PHRASE qui porte un interdit, jamais le paragraphe entier, et
-    la déclare. Une unité de liste (carte, coche, objectif) qui perd ainsi un
-    de ses champs n'a plus de sens et tombe en entier, déclarée elle aussi :
-    l'objectif Tournaire, une seule phrase, et la coche « 7 jours sur 7 »."""
+    """Applique d'abord les DÉCISIONS (un interdit qu'un mot retiré suffit à
+    lever), puis retire LA PHRASE qui porte un interdit, jamais le paragraphe
+    entier, et la déclare. Une unité de liste (carte, coche, objectif) qui perd
+    ainsi un de ses champs n'a plus de sens et tombe en entier, déclarée elle
+    aussi : l'objectif Tournaire, une seule phrase, et la coche
+    « 7 jours sur 7 »."""
     def purge(valeur):
         if isinstance(valeur, str):
+            valeur = decisions(valeur)
             gardees = []
             for phrase in phrases(valeur):
                 mot = interdit_dans(phrase)

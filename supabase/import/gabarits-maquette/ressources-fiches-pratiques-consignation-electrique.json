@@ -299,25 +299,25 @@
       }
     ],
     "minutes": 12,
-    "image": "/assets/photos/env-focused-young-man-working-on-electrical-wiring.jpg",
+    "image": "/assets/photos/elec-main-disjoncteurs-borniers.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-pratiques/5s/",
         "titre": "5S industrie",
         "minutes": 12,
-        "image": "/assets/photos/env-technician-inspecting-electrical-panel-in-a-fa.jpg"
+        "image": "/assets/photos/env-technician-maintenance-5.jpg"
       },
       {
         "href": "/ressources/fiches-pratiques/permis-de-feu/",
         "titre": "Permis de feu",
         "minutes": 8,
-        "image": "/assets/photos/env-technician-maintenance-8.jpg"
+        "image": "/assets/photos/il-technicien-maintenance-photo-jan-7-2026-2-1600.jpg"
       },
       {
         "href": "/ressources/fiches-pratiques/plan-de-prevention/",
         "titre": "Plan de prévention",
         "minutes": 9,
-        "image": "/assets/photos/il-technicien-maintenance-photo-5-1600.jpg"
+        "image": "/assets/photos/elec-senior-armoire-relais.jpg"
       }
     ]
   }
