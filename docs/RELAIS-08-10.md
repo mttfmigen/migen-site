@@ -183,12 +183,22 @@ Secteurs étaient encore l'ancienne version en ligne, Mehdi l'a vu).
 4. **`/preuves/bamesa/`** : titre 42 px trop bas (seule page décalée sur 248) ; la phrase
    du chapô retirée pour « notamment » doit être déclarée dans la fiche, et le chapô ne
    doit perdre que cette phrase.
-5. **Contrôles** : `components/cocon/verification-appel-action.tsx` échoue parce que la
-   règle `.mg-site [style*="padding:40px 44px"]` a été retirée de `app/globals.css`
-   (alignement mobile sur la maquette) : mettre le contrôle à jour ou remettre la règle.
-   `scripts/verifie-domaine.tsx` et `scripts/verifie-ressource.tsx` sont périmés
-   (remplacés par `components/site/expertises/domaine/verification-domaine.tsx` et
-   `components/site/ressource/verification-ressource.tsx`) : les supprimer.
+5. ~~**Contrôles**~~ **FAIT le 09/10.** `verification-appel-action.tsx` exigeait
+   l'INVERSE de ce que la mesure dit. Mesuré à 390 px sur `/carriere/`, des deux côtés :
+   le panneau fait 308 px et calcule `40px 44px`, à l'identique. La maquette sérialise son
+   attribut AVEC une espace (son moteur passe par le CSSOM), donc son propre sélecteur,
+   écrit sans espace, n'atteint aucun élément chez elle ; React écrit sans espace, donc la
+   règle portée ne mordrait que sur le site. L'assertion est inversée, sur les QUATRE
+   valeurs du bloc retiré (« 30px 34px » est sur 85 captures contre 5 pour « 40px 44px »).
+   Les commentaires de `globals.css` sont écartés avant la recherche, sans quoi le contrôle
+   tombait sur sa propre explication. Prouvé dans les deux sens.
+   Les deux scripts périmés sont supprimés, avec `docs/GABARITS.md` et
+   `scripts/apercu-ressource.tsx` qui les citaient, dans le même commit.
+   **À arbitrer, dossier complet** : `components/cocon/AppelAction.tsx` n'est importé par
+   aucune page ; son remplaçant vivant est `AppelFinal.tsx`, importé par huit. Le brancher
+   ou le supprimer.
+
+
 6. **`/offres/retrofit/remise-en-etat/`** : dans la maquette, les boutons des bandes 4, 7, 13
    et du formulaire final n'ont pas de libellé ; le site en met un : déclarer l'écart.
 7. **« réguliers »** apparaît encore sur 7 pages (guide choisir-une-entreprise, Poitiers,
@@ -196,6 +206,61 @@ Secteurs étaient encore l'ancienne version en ligne, Mehdi l'a vu).
    ce n'est jamais « clients réguliers » (« contrats réguliers » est permis).
 8. **« taux horaire »** traité de deux façons (retiré sur `/implantations/`, rendu
    ailleurs : résidence, secteurs, alstef) : trancher et aligner.
-9. **Mobile, gabarit 01** : fil d'Ariane de 54 px contre 48 (titre 6 px plus bas).
-10. `scripts/verifie-position-titre.mjs` peut se figer sur les 248 pages : ajouter une
-    borne de temps par page et un journal au fil de l'eau.
+9. ~~**Mobile, gabarit 01**~~ **FAIT le 09/10.** Le relais disait vrai. La règle
+   d'accessibilité (24 px de cible tactile, WCAG 2.5.8) ajoute 3 px de remplissage haut et
+   bas aux liens du fil ; son commentaire affirmait qu'elle « ne déplace pas le texte »,
+   c'est faux, le remplissage compte dans la boîte de marge. Mesuré : +6 px à 320, 360,
+   375, 390 ET 768 px (je n'ai PAS reproduit le « +12 px à 320 » annoncé par la
+   contre-expertise). Corrigé par deux marges négatives de 3 px : l'écart tombe à 0 partout
+   et la cible reste à 26 px. 38/38 pages du gabarit 01 à la hauteur, à 375 comme à 1280 px.
+   Corrigé aussi : `FilAriane.tsx` affirmait que les captures ne dessinent aucune rangée.
+   51 des 244 la dessinent (37 du gabarit 01, 8 du 03, 5 du 11, 1 du 10) ; la maquette ne
+   pose ni classe ni `aria-label` et sépare par des « / », d'où la méprise. Ne pas la rendre
+   reste la décision du 08/10, c'est un **écart déclaré**, pas une absence de référence.
+
+
+10. ~~`scripts/verifie-position-titre.mjs`~~ **FAIT le 09/10.** Il se figeait sur
+    `cadre.evaluate`, qui n'accepte aucune borne de temps : la seule façon de le borner est
+    de fermer l'onglet sous lui. La durée se CALCULE depuis les bornes internes (126 500 ms)
+    au lieu d'être écrite à la main : le premier correctif proposait 40 000 ms, soit MOINS
+    que le chemin légitime de 116 500, et aurait fabriqué de faux décalages.
+    Deux défauts plus graves trouvés au passage : il comptait toute page non mesurée comme
+    DÉCALÉE (trois états désormais : ok, DÉCALÉ, NON MESURÉE), et il signait « conforme »
+    les six adresses détournées en comparant deux pages différentes au H1 de même hauteur.
+    Ajoutés : journal au fil de l'eau, reprise, `--part k/n`.
+
+## Ce qui reste des défauts, au 09/10
+
+- **Défaut 4, `/preuves/bamesa/`** : UN seul défaut, pas deux, et c'est prouvé au pixel.
+  Le chapô perd la phrase portant « notamment », le bloc perd 88 px, passe sous les 480 px
+  de la photo, et `align-items:center` descend le titre de (480-395)/2 = 42 px. Seule page
+  décalée sur 248. **Question à Mehdi, une seule** : supprimer le MOT « notamment » au lieu
+  de jeter la phrase entière (c'est le remède que `verifie-interdits.mjs` prescrit
+  lui-même) ? Cela change le texte visible de 2 pages sur 248 et remet le titre à 158 px.
+  Si oui, trois éditions coordonnées DANS LE MÊME COMMIT, sinon la porte tombe :
+  une règle dans `lib/decisions-copie.ts`, le chapô de `preuves-bamesa.json`, ET celui de
+  `preuves-valeo-usines.json`. Attention, trouvaille de la contre-expertise : les 41 fiches
+  `preuves-*.json` sont PRODUITES par `components/site/preuve/extrait-depuis-captures.py`,
+  qu'il faut corriger aussi sous peine de voir la correction effacée au prochain passage.
+
+- **Défaut 6, `/offres/retrofit/remise-en-etat/`** : diagnostiqué, non appliqué. Les quatre
+  emplacements du relais sont exacts, mais « sans libellé » ne veut pas dire la même chose
+  partout : à mesurer sur le balisage de la capture avant de déclarer. Un bouton sans
+  libellé est inutilisable et inaccessible, donc l'écart est probablement légitime ; il
+  reste à l'écrire dans la forme que les fiches emploient déjà (`trous`).
+
+- **Défaut 8, « taux horaire »** : diagnostiqué, NON appliqué, et plus gros qu'annoncé.
+  Mesuré : **19 phrases réelles manquent sur 12 pages** contre les 9 du diagnostic.
+  La décision existe déjà et personne ne l'a propagée : `scripts/verifie-offre-rendu.mjs`
+  lignes 467-471, datée du 08/10, dit que « taux horaire homogène dans toute la France »
+  ne donne aucun prix. Elle a été appliquée au gabarit 03 et à `/secteurs/`, jamais aux
+  portes du gabarit 04, de `/offres/` et de `/implantations/`.
+  Six portes l'interdisent encore : `verification-ville.tsx:176`,
+  `verification-offres.tsx:161` et son motif `:175`, `scripts/verifie-implantations.tsx:95`,
+  `verification-expertises.tsx:160`, `verification-domaine.tsx:283`,
+  `verification-specialite.tsx:125`.
+  **MAIS la décision ne couvre QUE « taux horaire »**, pas « tarif » ni « prix mensuel
+  fixe », qui manquent aussi (`/offres/`, `/implantations/`, 4 pages d'expertises).
+  **À faire trancher par Mehdi** avant d'y toucher. Et en retirant l'interdit, refaire
+  porter l'injection de `verification-offres.tsx:335-344` sur un VRAI prix (un montant en
+  euros), sans quoi la porte perd sa capacité d'échouer.
