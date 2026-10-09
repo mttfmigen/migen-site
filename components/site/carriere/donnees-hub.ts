@@ -1,3 +1,18 @@
+/**
+ * ÉCART DÉCLARÉ À LA MAQUETTE, 09/10, demandé par Mehdi.
+ *
+ * Les sept cartes de hub de « Nos hubs et notre couverture » portaient les
+ * photos d'ATELIER de la maquette (`sv-convoyeur`, `mq-…`). Elles portent
+ * désormais les photos de VILLE sous licence de `public/assets/villes/`, les
+ * mêmes que les cartes de l'accueil. Mesuré avant le changement : cette section
+ * était à 0,7 % de divergence, c'est-à-dire conforme ; elle s'en écarte donc
+ * sciemment, et ce commentaire est là pour qu'on ne le prenne pas plus tard
+ * pour une dérive.
+ *
+ * Raison : les photos de ville ont été achetées pour nommer les hubs, et une
+ * carte « Lyon » qui montre un convoyeur ne dit pas où est le hub. Les sept
+ * villes de ce bloc sont exactement celles dont la licence a été prise.
+ */
 import type { BandeFiche, CarteFiche, HerosFiche, SectionFiche } from "@/types/metier";
 
 /**
@@ -329,43 +344,43 @@ export const HUB_CARRIERE: ContenuHubCarriere = {
           "zone": "Grenoble, Saint-Étienne, Valence, Haute-Savoie",
           "href": "/implantations/lyon/",
           "siege": true,
-          "photo": "/assets/web/sv-convoyeur.jpg"
+          "photo": "/assets/villes/hub-lyon.jpg"
         },
         {
           "nom": "Paris",
           "zone": "Essonne, Rouen, Île-de-France",
           "href": "/implantations/paris/",
-          "photo": "/assets/web/mq-dcd9cac6ffbf.jpg"
+          "photo": "/assets/villes/hub-paris.jpg"
         },
         {
           "nom": "Lille",
           "zone": "Hauts-de-France",
           "href": "/implantations/lille/",
-          "photo": "/assets/web/mq-29ebb1b81ced.jpg"
+          "photo": "/assets/villes/hub-lille.jpg"
         },
         {
           "nom": "Marseille",
           "zone": "Toulon, Nîmes, Perpignan",
           "href": "/implantations/marseille/",
-          "photo": "/assets/web/mq-339d39e2a674.jpg"
+          "photo": "/assets/villes/hub-marseille.jpg"
         },
         {
           "nom": "Strasbourg",
           "zone": "Alsace, Mulhouse",
           "href": "/implantations/strasbourg/",
-          "photo": "/assets/web/mq-e69a240d8656.jpg"
+          "photo": "/assets/villes/hub-strasbourg.jpg"
         },
         {
           "nom": "Nantes",
           "zone": "Loire-Atlantique, Rennes, Brest",
           "href": "/implantations/nantes/",
-          "photo": "/assets/web/sv-armoire.jpg"
+          "photo": "/assets/villes/hub-nantes.jpg"
         },
         {
           "nom": "Toulouse",
           "zone": "Haute-Garonne, Bordeaux, Gironde, Charente",
           "href": "/implantations/toulouse/",
-          "photo": "/assets/web/mq-948c28bcda08.jpg"
+          "photo": "/assets/villes/hub-toulouse.jpg"
         }
       ]
     },

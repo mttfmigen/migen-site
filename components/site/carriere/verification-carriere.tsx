@@ -378,6 +378,25 @@ console.log(`4 · survols : ${SURVOLS.length} relevés dans la source de la page
 /** Même photo en plus grand dans le dépôt, nommée ainsi par la source. */
 const NOMMEES_PAR_LA_SOURCE = new Set(["sv-armoire.jpg", "sv-convoyeur.jpg"]);
 
+/* LES PHOTOS DE VILLE SOUS LICENCE, écart déclaré du 09/10, demandé par Mehdi.
+   La maquette met une photo d'ATELIER dans les sept cartes de hub ; le site y
+   met désormais la photo de la VILLE, celle de `public/assets/villes/`, la même
+   que sur les cartes de l'accueil. Leurs octets ne viennent donc pas de la
+   maquette, et c'est exact : ce contrôle doit continuer de refuser toute AUTRE
+   photo inconnue d'elle, mais pas celles-là. La raison de l'écart est écrite en
+   tête de `components/site/carriere/donnees-hub.ts`.
+   La liste est close : seules les sept villes dont la licence a été prise y
+   figurent, donc une huitième photo glissée dans ce bloc échouerait. */
+const VILLES_SOUS_LICENCE = new Set([
+  "hub-lyon.jpg",
+  "hub-paris.jpg",
+  "hub-lille.jpg",
+  "hub-marseille.jpg",
+  "hub-strasbourg.jpg",
+  "hub-nantes.jpg",
+  "hub-toulouse.jpg",
+]);
+
 const photos = new Set<string>([HUB_CARRIERE.heros.photo.src, "/assets/web/faq-offre.jpg"]);
 for (const s of HUB_CARRIERE.sections) {
   if (s.type === "metiers") s.metiers.forEach((m) => photos.add(m.photo));
@@ -392,11 +411,21 @@ for (const photo of photos) {
     assert.ok(SOURCE.includes(nom.replace(".jpg", "")), `${nom} n'est pas nommée par la source`);
     continue;
   }
+  if (VILLES_SOUS_LICENCE.has(nom)) {
+    /* On ne compare pas ses octets à la maquette, mais on vérifie qu'elle est
+       bien servie : un écart déclaré reste un écart mesuré. */
+    assert.ok(photo.startsWith("/assets/villes/"), `${photo} : une photo de ville vit dans /assets/villes/`);
+    assert.ok(RENDU.includes(encodeURIComponent(photo)), `${photo} n'est pas rendue`);
+    continue;
+  }
   const empreinte = createHash("sha256").update(readFileSync(fichier)).digest("hex");
   assert.ok(EMPREINTES.has(empreinte), `${photo} : octets inconnus de la maquette, photo inventée`);
   assert.ok(RENDU.includes(encodeURIComponent(photo)), `${photo} n'est pas rendue`);
 }
-console.log(`5 · photos : ${photos.size} fichiers, octets identiques à la maquette ou nommés par sa source.`);
+console.log(
+  `5 · photos : ${photos.size} fichiers, octets identiques à la maquette ou nommés par sa source, ` +
+    `${VILLES_SOUS_LICENCE.size} photos de ville sous licence déclarées en écart.`,
+);
 
 /* ------------------------------------------------------- 6. interdits */
 
