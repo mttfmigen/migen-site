@@ -20,7 +20,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/levage-pont-roulant-hall-acier.jpg",
+        "src": "/assets/photos/il-robot-bras-orange-reglage-souriante.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -395,17 +395,17 @@
           {
             "libelle": "Métiers de la maintenance",
             "href": "/carriere/",
-            "photo": "/assets/photos/il-tuyau-reseau-vert-cuves-inspection.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-robot-arm.jpg"
           },
           {
             "libelle": "Technicien de maintenance",
             "href": "/carriere/technicien-de-maintenance/",
-            "photo": "/assets/photos/il-energie-salle-commande-tableau-bleu.jpg"
+            "photo": "/assets/photos/energie-eolien-hauteur-harnais.jpg"
           },
           {
             "libelle": "Responsable maintenance",
             "href": "/carriere/responsable-maintenance/",
-            "photo": "/assets/web/sv-duo-impact.jpg"
+            "photo": "/assets/photos/env-maintenance-worker-repairing-robot.jpg"
           }
         ]
       }

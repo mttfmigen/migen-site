@@ -196,7 +196,7 @@
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Étude de cas Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/photos/il-chaudro-couronne-dentee-reperage.jpg",
+            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg",
             "logo": "/assets/clients/savoye.png"
           },
           {
@@ -212,7 +212,7 @@
             "texte": "Réception, assemblage, levage, raccordements mécaniques et électriques, portique validé à l'issue du montage.",
             "lienLibelle": "Étude de cas Migen Travaux x WASHTEC",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/photos/energie-levage-eolienne-senior.jpg",
+            "photo": "/assets/photos/il-chaudro-couronne-dentee-reperage.jpg",
             "logo": "/assets/clients/orthus-x-washtec.svg"
           },
           {
@@ -220,7 +220,7 @@
             "texte": "Assemblage mécanique et électromécanique de lignes et de sous-ensembles, délais tenus sans pénalité.",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/il-levage-nef-ponts-roulants-chantier.jpg",
+            "photo": "/assets/photos/il-chaudro-bride-anneau-controle.jpg",
             "logo": "/assets/clients/mq-127f9e03c53b.svg"
           },
           {
@@ -250,7 +250,7 @@
             "titre": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
             "lienLibelle": "Étude de cas Atena",
             "lienHref": "/preuves/atena-port-la-rochelle/",
-            "photo": "/assets/photos/il-chaudro-bride-anneau-controle.jpg",
+            "photo": "/assets/photos/chaudro-meulage-visiere.jpg",
             "logo": "/assets/clients/atena.png"
           }
         ]
@@ -296,13 +296,13 @@
       {
         "href": "/travaux-industriels/levage-manutention/",
         "titre": "Levage et de manutention lourde",
-        "photo": "/assets/photos/soudure-interieur-virole.jpg"
+        "photo": "/assets/photos/energie-levage-eolienne-senior.jpg"
       },
       {
         "href": "/offres/residence/",
         "titre": "Technicien en résidence",
         "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
-        "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg"
+        "photo": "/assets/photos/soudure-interieur-virole.jpg"
       },
       {
         "href": "/offres/zero-arret/",
@@ -314,13 +314,13 @@
         "href": "/offres/arret-technique/",
         "titre": "Arrêt technique",
         "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
-        "photo": "/assets/photos/chaudro-meulage-visiere.jpg"
+        "photo": "/assets/photos/il-levage-nef-ponts-roulants-chantier.jpg"
       },
       {
         "href": "/offres/full-service/",
         "titre": "Full service",
         "phrase": "Toute votre maintenance, un seul partenaire.",
-        "photo": "/assets/photos/soudure-soudeuse-masque-releve.jpg"
+        "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
       },
       {
         "href": "/travaux-industriels/",

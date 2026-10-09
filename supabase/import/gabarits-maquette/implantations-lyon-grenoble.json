@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Grenoble",
       "titre": "Grenoble : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-meca-portrait-centre-usinage.jpg",
+      "photo": "/assets/photos/env-inspection-equipement-fabrication.jpg",
       "badge": "Rattaché au hub Lyon",
       "nom": "Grenoble, couvert par le hub Lyon",
       "texte": "Les techniciens du hub Lyon interviennent à Grenoble et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -95,7 +95,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/web/sv-convoyeur.jpg",
+    "problemePhoto": "/assets/photos/il-meca-portrait-centre-usinage.jpg",
     "brefBande": "Besoin de savoir laquelle de vos utilités arrêtera votre ligne la prochaine fois ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -230,53 +230,53 @@
             "texte": "Troisième trimestre 2025, reporting à la direction industrielle.",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/il-chimie-complexe-vapeur-jour.jpg"
+            "photo": "/assets/photos/env-technicien-maintenance-photo.jpg"
           },
           {
             "titre": "Techniciens intégrés aux équipes pour sécuriser la maintenance des installations",
             "texte": "d'un équipementier automobile, en 2025.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/il-meca-ressorts-suspension-combinaison.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-7.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS à temps plein pour le démarrage d'une ligne neuve",
             "texte": "Deuxième et troisième trimestres 2025.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/il-site-cheminees-montagnes-aube.jpg"
+            "photo": "/assets/photos/env-photos-industrie-agro-alimentaire.jpg"
           },
           {
             "titre": "Un électromécanicien habilité risque chimique mobilisé 6 mois",
             "texte": "Remise en état d'un site de traitement des eaux industrielles.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/il-technicien-portrait-structure-exterieure.jpg"
+            "photo": "/assets/photos/metal-fonderie-coulee.jpg"
           },
           {
             "titre": "3 à 5 techniciens déployés dans plusieurs usines françaises, depuis septembre 2024",
             "texte": "Accompagnement d'une montée en cadence.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/meca-graissage-couronne-engin.jpg"
+            "photo": "/assets/photos/env-ingenieurs-inspectant-site-industriel.jpg"
           },
           {
             "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
             "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/photos/il-technicien-portrait-local-technique.jpg"
+            "photo": "/assets/photos/env-ouvrier-industriel-avec-ladle.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/il-technicien-portrait-epi-atelier.jpg"
+            "photo": "/assets/photos/env-industrie-metallique-21-sept-2026.jpg"
           },
           {
             "titre": "Une usine de carton en 3x8, un technicien qui tient la cadence",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg"
+            "photo": "/assets/photos/env-techniciens-semiconducteurs.jpg"
           }
         ]
       },

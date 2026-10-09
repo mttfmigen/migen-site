@@ -35,7 +35,7 @@
       }
     ],
     "logo": "/assets/clients/bamesa.png",
-    "photoHero": "/assets/photos/il-automatisme-tablette-armoire-rouge-robot.jpg",
+    "photoHero": "/assets/photos/env-assemblage-chassis-automobile.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -131,7 +131,7 @@
         "valeur": "Jusqu'à 2 techniciens, 1 actuellement"
       }
     ],
-    "photoDispositif": "/assets/photos/il-robot-ingenieure-tablette-bras-orange.jpg",
+    "photoDispositif": "/assets/photos/env-assemblage-carrosseries.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -151,13 +151,13 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/robot-soudure-points-caisse.jpg"
+        "photo": "/assets/photos/env-inspection-ligne-production-automatique.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/il-robot-bras-blanc-vue-rapprochee.jpg"
+        "photo": "/assets/photos/env-mechanic-inspecting-auto-parts-in-his-workshop.jpg"
       },
       {
         "surtitre": "Secteur",
@@ -169,7 +169,7 @@
         "surtitre": "Étude de cas",
         "titre": "AUTOLIV : un technicien dédié pour que le parc ne décroche pas",
         "href": "/preuves/autoliv/",
-        "photo": "/assets/photos/il-robot-atelier-commande-numerique.jpg"
+        "photo": "/assets/photos/env-inspection-auto-avec-equipe.jpg"
       }
     ]
   }

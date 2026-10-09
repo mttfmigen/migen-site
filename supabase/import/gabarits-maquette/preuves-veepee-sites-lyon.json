@@ -35,7 +35,7 @@
       }
     ],
     "logo": "/assets/clients/mq-ff81dfbb55c7.svg",
-    "photoHero": "/assets/web/sv-convoyeur.jpg",
+    "photoHero": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -135,7 +135,7 @@
         "valeur": "4 techniciens"
       }
     ],
-    "photoDispositif": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg",
+    "photoDispositif": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg",
     "resultats": [
       {
         "titre": "Une reprise bouclée en un mois",
@@ -184,13 +184,13 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg"
+        "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
         "href": "/secteurs/logistique/",
-        "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
+        "photo": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg"
       },
       {
         "surtitre": "Étude de cas",
@@ -202,7 +202,7 @@
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg"
+        "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
       }
     ]
   }

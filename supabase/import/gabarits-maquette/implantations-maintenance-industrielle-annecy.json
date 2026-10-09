@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Annecy",
       "titre": "Annecy : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-aero-reacteur-ouvert-portrait.jpg",
+      "photo": "/assets/photos/env-technician-maintenance.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Annecy et ses environs",
       "texte": "Nos techniciens itinérants couvrent Annecy et son bassin, appuyés par le réseau national Migen.",
@@ -245,37 +245,37 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/chaudro-presse-plieuse.jpg"
+            "photo": "/assets/photos/env-industrie-metallique-22-sept-2026-1.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/agro-technicienne-raccord-clamp.jpg"
+            "photo": "/assets/photos/env-photo-industrie.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-2.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/il-tuyau-pupitre-local-antibruit.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-4.jpg"
           },
           {
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-elec-armoire-variateurs-ventilation.jpg"
+            "photo": "/assets/photos/metal-four-arc-acierie.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
+            "photo": "/assets/web/sv-duo-impact.jpg"
           }
         ]
       },

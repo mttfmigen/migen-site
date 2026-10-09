@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Saint-Étienne",
       "titre": "Saint-Étienne : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-meca-atelier-bonnet-portrait.jpg",
+      "photo": "/assets/photos/env-inspection-metal-22-sept-2026-1.jpg",
       "badge": "Rattaché au hub Lyon",
       "nom": "Saint-Étienne, couvert par le hub Lyon",
       "texte": "Les techniciens du hub Lyon interviennent à Saint-Étienne et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -81,7 +81,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-outillage-panneau-cles-technicienne.jpg",
+    "problemePhoto": "/assets/photos/il-aero-train-atterrissage-casque-antibruit.jpg",
     "brefBande": "Besoin de remettre en route une machine que plus personne ne sait dépanner ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -216,53 +216,53 @@
             "texte": "De la mise en route aux premières semaines d'exploitation.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/il-automatisme-ligne-reglage-lunettes.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-9.jpg"
           },
           {
             "titre": "Un parc machines de PME remis en marche sans rachat de matériel neuf",
             "texte": "Diagnostic sur site, plusieurs solutions chiffrées, adaptées au budget.",
             "lienLibelle": "Étude de cas JOINT LYONNAIS",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/web/sv-portrait.jpg"
+            "photo": "/assets/photos/il-technicien-portrait-epi-atelier.jpg"
           },
           {
             "titre": "Six techniciens en permanence sur un contrat de préventif annuel",
             "texte": "Prise en charge complète réalisée en un mois sur les sites lyonnais.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/il-metal-siderurgie-bord-d-eau-couchant.jpg"
+            "photo": "/assets/photos/env-photos-industrie-metallique.jpg"
           },
           {
             "titre": "12 monteurs mécaniciens et 8 engins de levage pour monter un centre logistique à Clermont-Ferrand",
             "texte": "6 semaines de chantier en plein été, livraison tenue.",
             "lienLibelle": "Étude de cas AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/il-equipe-bogie-halle-ferroviaire.jpg"
+            "photo": "/assets/photos/env-ouvrier-metallurgiste-avec-metal-en-fusion.jpg"
           },
           {
             "titre": "Préventif et curatif sur une fonderie et son usinage",
             "texte": "6 techniciens, prise en charge complète du site en 8 semaines.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-meca-portrait-machine-outil-pupitre.jpg"
+            "photo": "/assets/photos/env-usine-metallique.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/il-robot-prehenseur-ventouses-controle.jpg"
+            "photo": "/assets/photos/il-chimie-complexe-unites-ciel-bleu.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
+            "photo": "/assets/photos/env-industrie-mettalique.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-energie-salle-commande-tableau-bleu.jpg"
+            "photo": "/assets/photos/env-industrie-paysage.jpg"
           }
         ]
       },

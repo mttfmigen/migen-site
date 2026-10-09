@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Clermont-Ferrand",
       "titre": "Clermont-Ferrand : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-chimie-complexe-unites-ciel-bleu.jpg",
+      "photo": "/assets/photos/env-scie-a-ruban-industrielle.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Clermont-Ferrand et ses environs",
       "texte": "Nos techniciens itinérants couvrent Clermont-Ferrand et son bassin, appuyés par le réseau national Migen.",
@@ -250,14 +250,14 @@
             "texte": "Six semaines de chantier en août 2023, date de livraison tenue.",
             "lienLibelle": "Étude de cas AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/aero-cockpit-inspection-hangar.jpg"
+            "photo": "/assets/photos/env-ouvrier-metallurgiste-avec-metal-en-fusion.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et de son usinage,, depuis octobre 2023",
             "texte": "Site de Dompierre-sur-Besbre.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-elec-armoire-variateurs-ventilation.jpg"
+            "photo": "/assets/photos/env-usine-metallique.jpg"
           },
           {
             "titre": "Deux techniciens intégrés en 3x8 sur des lignes liquides et poudre",
@@ -278,25 +278,25 @@
             "texte": "Papier et emballage, 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
+            "photo": "/assets/photos/aero-percage-aile-avion.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg"
+            "photo": "/assets/photos/il-chimie-colonnes-raffinerie-nuit.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/robot-palettisation-tablette.jpg"
+            "photo": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
             "lienLibelle": "Étude de cas Veepee",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/il-energie-pupitre-instruments-portrait.jpg"
+            "photo": "/assets/photos/env-it-technician-working-on-servers-in-data-cente.jpg"
           }
         ]
       },

@@ -154,7 +154,7 @@
         "valeur": "Maintenance corrective et préventive"
       }
     ],
-    "photoDispositif": "/assets/photos/soudure-virole-inox-hall.jpg",
+    "photoDispositif": "/assets/photos/agro-technicienne-raccord-clamp.jpg",
     "resultats": [
       {
         "titre": "Une sortie du territoire français réussie",
@@ -209,7 +209,7 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/agro-technicienne-raccord-clamp.jpg"
+        "photo": "/assets/photos/il-agro-silos-contre-plongee-passerelles.jpg"
       },
       {
         "surtitre": "Offre",
@@ -221,7 +221,7 @@
         "surtitre": "Secteur",
         "titre": "Maintenance agroalimentaire",
         "href": "/secteurs/agroalimentaire/",
-        "photo": "/assets/photos/il-agro-silos-contre-plongee-passerelles.jpg"
+        "photo": "/assets/photos/agro-ihm-ligne-conditionnement-senior.jpg"
       },
       {
         "surtitre": "Étude de cas",

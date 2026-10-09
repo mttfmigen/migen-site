@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Besançon",
       "titre": "Besançon : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-tuyau-faisceau-blanc-charpente.jpg",
+      "photo": "/assets/photos/env-industrie-mettalique.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Besançon et ses environs",
       "texte": "Nos techniciens itinérants couvrent Besançon et son bassin, appuyés par le réseau national Migen.",
@@ -255,52 +255,52 @@
             "texte": ", centres d'usinage, presses et commandes numériques, en 2025.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/il-chimie-petrochimie-panorama-nuit.jpg"
+            "photo": "/assets/photos/env-industrie-chimie-2.jpg"
           },
           {
             "titre": "18 à 25 techniciens mobilisés sur plusieurs sites du Grand Est",
             "texte": ", pour accompagner la bascule vers le véhicule électrique.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-grand-est/",
-            "photo": "/assets/photos/il-chaudro-bride-anneau-controle.jpg"
+            "photo": "/assets/photos/env-infrastructure-usine-acier-avec-tuyaux.jpg"
           },
           {
             "titre": "Techniciens présents au quotidien sur les équipements critiques d'un fabricant de composants techniques",
             "texte": ", depuis 2025.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/aero-reacteur-capot-combinaison.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-7.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS affecté au démarrage d'une nouvelle ligne de production",
             "texte": ", en contexte de montée en charge.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/il-meca-main-gantee-controle-machine.jpg"
+            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/il-auto-sous-vehicule-tout-terrain.jpg"
+            "photo": "/assets/photos/env-ouvriers-usine-allumant-four-sept-22.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/robot-cellules-grillagees.jpg"
+            "photo": "/assets/photos/env-ouvrier-industriel-meulant-metal.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/menuiserie-cnc-pupitre-casque.jpg"
+            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
           },
           {
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/pharma-cuves-process-passerelle.jpg"
+            "photo": "/assets/photos/il-elec-armoire-variateurs-ventilation.jpg"
           }
         ]
       },

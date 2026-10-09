@@ -195,7 +195,7 @@
             "texte": "Transferts de machines sécurisés, sans casse ni improvisation, délais de chantier tenus.",
             "lienLibelle": "SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/il-chaudro-couronne-dentee-reperage.jpg",
+            "photo": "/assets/photos/levage-montage-poteau-charpente.jpg",
             "logo": "/assets/clients/mq-127f9e03c53b.svg"
           },
           {
@@ -203,7 +203,7 @@
             "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés, site livré à la date prévue.",
             "lienLibelle": "AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/levage-montage-poteau-charpente.jpg",
+            "photo": "/assets/photos/il-chaudro-couronne-dentee-reperage.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
@@ -211,7 +211,7 @@
             "texte": "Pilotage de chantier de bout en bout par Migen Travaux, coordination multi-métiers.",
             "lienLibelle": "Migen Travaux x ECOCEM",
             "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg",
+            "photo": "/assets/photos/chaudro-technicienne-plan-etabli.jpg",
             "logo": "/assets/clients/orthus-x-ecocem.png"
           },
           {
@@ -226,7 +226,7 @@
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/il-meca-grand-disque-volant-inertie.jpg",
+            "photo": "/assets/photos/soudure-soudeuse-masque-releve.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
@@ -278,19 +278,19 @@
         "titre": "Technicien en résidence",
         "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/meca-senior-rouleuse-combinaison.jpg"
+        "photo": "/assets/photos/metal-fonderie-coulee.jpg"
       },
       {
         "titre": "Zéro arrêt",
         "phrase": "La maintenance en abonnement, au forfait mensuel.",
         "href": "/offres/zero-arret/",
-        "photo": "/assets/photos/hydrau-presse-pupitre-manometre.jpg"
+        "photo": "/assets/photos/il-meca-grand-disque-volant-inertie.jpg"
       },
       {
         "titre": "Arrêt technique",
         "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
         "href": "/offres/arret-technique/",
-        "photo": "/assets/photos/il-metal-siderurgie-bord-d-eau-couchant.jpg"
+        "photo": "/assets/photos/env-infrastructure-usine-acier-avec-tuyaux.jpg"
       },
       {
         "titre": "Full service",

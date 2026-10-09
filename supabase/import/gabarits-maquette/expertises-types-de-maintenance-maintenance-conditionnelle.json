@@ -44,12 +44,12 @@
       {
         "valeur": "8",
         "texte": "Domaines techniques couverts par une seule équipe, de la mécanique à la robotique",
-        "photo": "/assets/photos/agro-remplisseuse-cle-plate.jpg"
+        "photo": "/assets/photos/il-elec-ouverture-coffret-gilet-orange.jpg"
       },
       {
         "valeur": "4",
         "texte": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, des campagnes partout en France",
-        "photo": "/assets/photos/il-elec-multimetre-boitier-accroupie.jpg"
+        "photo": "/assets/photos/agro-remplisseuse-cle-plate.jpg"
       }
     ],
     "complementTypes": [
@@ -354,7 +354,7 @@
             "titre": "Le préventif d’une centrale photovoltaïque en trois techniciens",
             "lienLibelle": "Étude de cas Eiffage",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/photos/meca-technicienne-cle-machine.jpg"
+            "photo": "/assets/photos/il-hydrau-verin-godet-engin.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",

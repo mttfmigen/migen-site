@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Alsace",
       "titre": "Alsace : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/meca-senior-rouleuse-combinaison.jpg",
+      "photo": "/assets/photos/env-technician-maintenance-13.jpg",
       "badge": "Rattaché au hub Strasbourg",
       "nom": "Alsace, couvert par le hub Strasbourg",
       "texte": "Les techniciens du hub Strasbourg interviennent à Alsace et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -225,53 +225,53 @@
             "texte": ", depuis juin 2023, dans la transition vers le véhicule électrique.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-grand-est/",
-            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg"
+            "photo": "/assets/photos/il-technicien-releve-machine-presse-papier.jpg"
           },
           {
             "titre": "Un technicien à temps plein sur un parc d'usinage de précision multimarques",
             "texte": "Centres d'usinage, presses, machines à commande numérique.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/il-meca-volant-poulie-reglage.jpg"
+            "photo": "/assets/photos/env-industrie-chimie-2.jpg"
           },
           {
             "titre": "6 techniciens multidisciplinaires pour l'installation et la mise en production d'un nouveau parc machines",
             "texte": "sur un site automobile, depuis janvier 2023.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/il-robot-bras-orange-reglage-souriante.jpg"
+            "photo": "/assets/photos/il-aero-reacteur-ouvert-portrait.jpg"
           },
           {
             "titre": "10 techniciens polyvalents une semaine par mois, par créneaux de 8 heures",
             "texte": ", sur le centre logistique ETZ 2 à Metz, site en continu.",
             "lienLibelle": "Étude de cas AMAZON",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/robot-palettisation-tablette.jpg"
+            "photo": "/assets/photos/il-robot-bras-orange-reglage-souriante.jpg"
           },
           {
             "titre": "1 à 3 techniciens en corrective et préventive sur un site agroalimentaire en flux permanent",
             "texte": "Premier contrat hors de France.",
             "lienLibelle": "Étude de cas McCAIN",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/il-energie-gros-moteur-vert-antibruit.jpg"
+            "photo": "/assets/photos/env-factory-worker-inspecting-robotic-arm-in-manuf.jpg"
           },
           {
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-meca-portrait-machine-outil-pupitre.jpg"
+            "photo": "/assets/photos/il-ciment-tour-beton-grues-vue-haute.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/il-robot-bras-rouge-serrage-hauteur.jpg"
+            "photo": "/assets/photos/env-ingenieurs-inspectant-site-industriel.jpg"
           },
           {
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
             "lienLibelle": "Étude de cas Autoliv",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/robot-cellule-soudure-inspection.jpg"
+            "photo": "/assets/photos/env-industrie-mettalique.jpg"
           }
         ]
       },

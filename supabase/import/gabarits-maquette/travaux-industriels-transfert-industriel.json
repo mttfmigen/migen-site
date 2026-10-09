@@ -328,7 +328,7 @@
             "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés en pleine période estivale, site livré à la date prévue.",
             "lienLibelle": "Étude de cas AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg",
+            "photo": "/assets/web/sv-convoyeur.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
@@ -344,7 +344,7 @@
             "texte": "Réception, assemblage, levage, raccordements mécaniques et électriques, validation à l'issue du montage.",
             "lienLibelle": "Étude de cas Migen Travaux x WASHTEC",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg",
+            "photo": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg",
             "logo": "/assets/clients/orthus-x-washtec.svg"
           },
           {
@@ -359,14 +359,14 @@
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/web/sv-convoyeur.jpg",
+            "photo": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
             "titre": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
             "lienLibelle": "Étude de cas Atena",
             "lienHref": "/preuves/atena-port-la-rochelle/",
-            "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg",
+            "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg",
             "logo": "/assets/clients/atena.png"
           }
         ]

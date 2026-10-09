@@ -115,7 +115,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-soudure-chalumeau-tube-technicienne.jpg",
+    "problemePhoto": "/assets/photos/env-usine-aeronautique-22-sept-2026.jpg",
     "brefBande": "Besoin de tenir un poste de maintenance que vous n'arrivez pas à pourvoir ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -250,7 +250,7 @@
             "texte": "Réorganisation industrielle en cours.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/il-chimie-unites-colonnes-ciel-degage.jpg"
+            "photo": "/assets/photos/il-meca-ressorts-suspension-combinaison.jpg"
           },
           {
             "titre": "3 à 5 techniciens déployés depuis septembre 2024 pour accompagner la montée en cadence de plusieurs usines",
@@ -264,14 +264,14 @@
             "texte": "Poste vacant comblé sans attendre un recrutement.",
             "lienLibelle": "Étude de cas AUTOLIV",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/il-tuyau-faisceau-blanc-charpente.jpg"
+            "photo": "/assets/photos/env-industrie.jpg"
           },
           {
             "titre": "Six techniciens sur l'installation et la mise en production d'un nouveau parc machine",
             "texte": "Site automobile, à partir de janvier 2023.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/il-tuyau-vannes-rouges-manometres.jpg"
+            "photo": "/assets/photos/env-menuiserie-industrie.jpg"
           },
           {
             "titre": "Deux techniciens intégrés en 3x8 sur des lignes liquides et poudre",
@@ -284,7 +284,7 @@
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/automatisme-coffret-cartes-portable.jpg"
+            "photo": "/assets/photos/env-industrie-mettalique-22-sept-2026.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
@@ -296,7 +296,7 @@
             "titre": "Centres d’usinage et presses tenus dans le Grand Est",
             "lienLibelle": "Étude de cas Voit",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/chaudro-presse-plieuse.jpg"
+            "photo": "/assets/photos/il-ciment-cheminee-grue-couchant.jpg"
           }
         ]
       },

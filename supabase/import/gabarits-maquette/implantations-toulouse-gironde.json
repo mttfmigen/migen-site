@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Gironde",
       "titre": "Gironde : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-soudure-poste-masque-releve.jpg",
+      "photo": "/assets/photos/env-industrie-chimie.jpg",
       "badge": "Rattaché au hub Toulouse",
       "nom": "Gironde, couvert par le hub Toulouse",
       "texte": "Les techniciens du hub Toulouse interviennent à Gironde et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -87,7 +87,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-automatisme-armoire-automate-ouverte.jpg",
+    "problemePhoto": "/assets/photos/il-soudure-poste-masque-releve.jpg",
     "complementOffre": [
       {
         "texte": "Pour un besoin isolé, le dépannage industriel reste le format le plus simple. Nos techniciens partent avec des outils de diagnostic étalonnés et l'appui technique du groupe derrière eux."
@@ -234,53 +234,53 @@
             "texte": "sur un site de traitement des eaux industrielles.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/menuiserie-passerelle-usine-bois.jpg"
+            "photo": "/assets/photos/env-maintenance-automatique.jpg"
           },
           {
             "titre": "Un renfort polyvalent sur un parc aux contraintes techniques variées",
             "texte": ", papier et emballage, préventif et curatif, de 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/aero-percage-aile-avion.jpg"
+            "photo": "/assets/photos/il-robot-bras-bleu-intervention-gants.jpg"
           },
           {
             "titre": "Un parc machines de PME diagnostiqué et réparé sans rachat de matériel neuf",
             "texte": "Plusieurs solutions chiffrées, adaptées au budget.",
             "lienLibelle": "Étude de cas JOINT LYONNAIS",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/il-technicien-portrait-epi-atelier.jpg"
+            "photo": "/assets/photos/env-industrie-pharmaceutique.jpg"
           },
           {
             "titre": "Trois techniciens en renfort sur le préventif d'une installation photovoltaïque de grande envergure",
             "texte": ", sur plus de six semaines.",
             "lienLibelle": "Étude de cas EIFFAGE",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/photos/il-ciment-tours-grues-crepuscule.jpg"
+            "photo": "/assets/photos/env-structures-industrielles-contre-ciel-nuageux.jpg"
           },
           {
             "titre": "Le montage complet de portiques de lavage partout en France",
             "texte": "Réception, assemblage, levage, raccordements, pour un fabricant qui installe sur tout le territoire.",
             "lienLibelle": "Étude de cas Migen Travaux x WASHTEC",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/photos/il-technicien-portrait-structure-exterieure.jpg"
+            "photo": "/assets/photos/il-meca-portrait-cle-a-molette-halle.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-energie-salle-commande-tableau-bleu.jpg"
+            "photo": "/assets/photos/il-technicien-portrait-combinaison-orange.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg"
+            "photo": "/assets/photos/robot-cobot-technicienne.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
             "lienLibelle": "Étude de cas Veepee",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/elec-main-disjoncteurs-borniers.jpg"
+            "photo": "/assets/photos/il-tuyau-passerelle-technicien-bras-croises.jpg"
           }
         ]
       },

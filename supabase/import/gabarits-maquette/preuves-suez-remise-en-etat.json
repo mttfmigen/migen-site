@@ -14,7 +14,7 @@
     ],
     "bouton": "Poser mon besoin de renfort technique",
     "logo": "/assets/clients/mq-89100525ef89.svg",
-    "photoHero": "/assets/photos/il-meca-controle-sous-machine-casque-jaune.jpg",
+    "photoHero": "/assets/photos/automatisme-camera-vision-convoyeur.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -128,7 +128,7 @@
         "valeur": "RC1, risque chimique niveau 1"
       }
     ],
-    "photoDispositif": "/assets/photos/il-tuyau-pupitre-local-antibruit.jpg",
+    "photoDispositif": "/assets/photos/env-ouvrier-usine-coupe-metal-avec-scie-circulaire.jpg",
     "resultats": [
       {
         "titre": "Le pic d'activité est absorbé",
@@ -163,25 +163,25 @@
         "surtitre": "Étude de cas",
         "titre": "FDJ : renfort de maintenance en continu",
         "href": "/preuves/fdj/",
-        "photo": "/assets/photos/il-meca-ressorts-suspension-combinaison.jpg"
+        "photo": "/assets/photos/il-equipe-ronde-terrain-raffinerie.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg"
+        "photo": "/assets/photos/env-robot-industriel-2026.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/elec-salle-cellules-ht-ronde.jpg"
+        "photo": "/assets/photos/env-structures-industrielles-contre-ciel-nuageux.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/il-robot-bras-orange-reglage-souriante.jpg"
+        "photo": "/assets/photos/il-technicien-portrait-local-technique.jpg"
       }
     ]
   }

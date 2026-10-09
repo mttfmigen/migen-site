@@ -23,7 +23,7 @@
       }
     ],
     "logo": "/assets/clients/aktid.png",
-    "photoHero": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg",
+    "photoHero": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg",
     "chiffres": [
       {
         "libelle": "Nature des travaux",
@@ -130,7 +130,7 @@
         "valeur": "Montage d'installations logistiques"
       }
     ],
-    "photoDispositif": "/assets/photos/robot-palettiseur-sacs-poudre.jpg",
+    "photoDispositif": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg",
     "resultats": [
       {
         "titre": "Le site livré dans les temps",
@@ -179,7 +179,7 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
+        "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg"
       },
       {
         "surtitre": "Secteur",

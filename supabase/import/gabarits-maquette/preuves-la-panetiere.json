@@ -115,7 +115,7 @@
         "valeur": "1 technicien"
       }
     ],
-    "photoDispositif": "/assets/photos/il-agro-silos-contre-plongee-passerelles.jpg",
+    "photoDispositif": "/assets/photos/agro-remplisseuse-cle-plate.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -135,7 +135,7 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/agro-panneau-vannes-nep.jpg"
+        "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
       },
       {
         "surtitre": "Offre",
@@ -153,7 +153,7 @@
         "surtitre": "Étude de cas",
         "titre": "DANONE (BLÉDINA) : pas un poste sans maintenance, week-end compris",
         "href": "/preuves/danone-lignes-de-production/",
-        "photo": "/assets/photos/agro-atelier-inox-plan-large.jpg"
+        "photo": "/assets/photos/tuyau-vanne-volant-conserverie.jpg"
       }
     ]
   }

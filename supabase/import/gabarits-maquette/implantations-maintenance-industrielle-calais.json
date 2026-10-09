@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Calais",
       "titre": "Calais : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/pharma-isolateur-salle-propre.jpg",
+      "photo": "/assets/photos/env-technician-inspecting-power-grid-equipment-in-.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Calais et ses environs",
       "texte": "Nos techniciens itinérants couvrent Calais et son bassin, appuyés par le réseau national Migen.",
@@ -251,7 +251,7 @@
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg"
+            "photo": "/assets/photos/env-industrie-chimie-3.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
@@ -269,7 +269,7 @@
             "titre": "Des chantiers automatisés contrôlés point par point",
             "lienLibelle": "Étude de cas Alstef Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/web/sv-portrait.jpg"
+            "photo": "/assets/photos/automatisme-camera-vision-convoyeur.jpg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",

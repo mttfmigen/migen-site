@@ -219,35 +219,35 @@
             "texte": "sur un site de traitement des eaux industrielles à remettre en état.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/metal-fonderie-coulee.jpg"
+            "photo": "/assets/photos/env-ouvrier-usine-coupe-metal-avec-scie-circulaire.jpg"
           },
           {
             "titre": "Deux techniciens expérimentés en poste chez un transporteur",
             "texte": ", pour le maintien opérationnel de ses équipements de tri et de convoyage.",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/energie-releve-pupitre-salle-commande.jpg"
+            "photo": "/assets/photos/env-industrie-chimie-3.jpg"
           },
           {
             "titre": "3 à 5 techniciens mobilisés sur des usines françaises passées à des niveaux de production plus élevés",
             "texte": ", depuis septembre 2024.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/il-chimie-colonnes-eclairees-heure-bleue.jpg"
+            "photo": "/assets/photos/agro-ihm-ligne-conditionnement-senior.jpg"
           },
           {
             "titre": "Un technicien polyvalent sur un parc machines hétérogène, en environnement à forte cadence",
             "texte": ", dans le papier et l'emballage.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/il-ciment-tours-grues-crepuscule.jpg"
+            "photo": "/assets/photos/env-photo-industrie-chimie.jpg"
           },
           {
             "titre": "1 à 3 techniciens en corrective et préventive sur un site agroalimentaire produisant en flux permanent",
             "texte": ".",
             "lienLibelle": "Étude de cas McCAIN",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/il-ciment-site-nuit-bord-de-mer.jpg"
+            "photo": "/assets/photos/env-avion-en-maintenance.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
@@ -259,13 +259,13 @@
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
             "lienLibelle": "Étude de cas Veepee",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/il-metal-siderurgie-bord-d-eau-couchant.jpg"
+            "photo": "/assets/photos/env-it-technician-working-on-servers-in-data-cente.jpg"
           },
           {
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Étude de cas Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/photos/il-equipe-ronde-terrain-raffinerie.jpg"
+            "photo": "/assets/photos/env-car-bodies-assembly-line.jpg"
           }
         ]
       },

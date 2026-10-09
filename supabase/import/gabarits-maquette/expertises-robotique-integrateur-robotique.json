@@ -173,21 +173,21 @@
             "texte": "Plusieurs intervenants intégrés aux équipes projet, roboticiens ABB et Fanuc parmi les spécialités engagées, 2025 à 2026.",
             "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/il-robot-poignet-robot-hauteur-gants.jpg"
+            "photo": "/assets/photos/robot-portable-diagnostic-cellule.jpg"
           },
           {
             "titre": "Installation et mise en production d'un parc machine neuf, site automobile",
             "texte": "Six techniciens multidisciplinaires du déballage jusqu'au régime de production, depuis janvier 2023, mission toujours en cours.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/il-robot-programmation-cobot-portable.jpg"
+            "photo": "/assets/photos/robot-cellule-soudure-inspection.jpg"
           },
           {
             "titre": "Maintenance des équipements critiques d'un équipementier automobile",
             "texte": "Techniciens intégrés au quotidien sur systèmes automatisés, lignes et convoyeurs, roboticiens ABB et Fanuc parmi les spécialités mobilisables, depuis 2025.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/il-robot-bras-blanc-vue-rapprochee.jpg"
+            "photo": "/assets/photos/env-maintenance-automatique-robotique.jpg"
           },
           {
             "titre": "Montage d'un centre logistique à Clermont-Ferrand",
@@ -201,13 +201,13 @@
             "texte": "Deux techniciens en poste, robotique parmi les domaines couverts en propre, 2025.",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/robot-cobot-technicienne.jpg"
+            "photo": "/assets/photos/il-robot-atelier-commande-numerique.jpg"
           },
           {
             "titre": "La GMAO planifie, nos techniciens interviennent",
             "lienLibelle": "Étude de cas DimoMaint",
             "lienHref": "/preuves/dimomaint/",
-            "photo": "/assets/photos/menuiserie-robot-panneaux.jpg"
+            "photo": "/assets/photos/env-bras-robotiques-soudant-cadres-auto.jpg"
           }
         ]
       },

@@ -47,7 +47,7 @@
         "libelle": "Collaborateurs, 4 agences dans le monde, interventions partout en France"
       }
     ],
-    "problemePhoto": "/assets/photos/meca-pied-a-coulisse-fraiseuse.jpg",
+    "problemePhoto": "/assets/photos/meca-graissage-couronne-engin.jpg",
     "brefBande": "Besoin de savoir quelle formule coûte le moins cher pour votre site ?",
     "brefBouton": {
       "libelle": "Faire chiffrer mon besoin",
@@ -175,54 +175,54 @@
             "texte": "Six techniciens polyvalents en permanence, depuis septembre 2023.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/il-meca-grande-roue-dentee-portrait.jpg"
+            "photo": "/assets/photos/il-aero-train-atterrissage-casque-antibruit.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie",
             "texte": "En poste depuis octobre 2023, aux côtés des équipes internes.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/elec-local-technicien-accroupi.jpg"
+            "photo": "/assets/photos/meca-reducteur-ouvert-plongee.jpg"
           },
           {
             "titre": "Renfort continu de maintenance sur lignes de nutrition infantile, agroalimentaire",
             "texte": "Deux techniciens intégrés aux équipes.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/pharma-isolateur-salle-propre.jpg"
+            "photo": "/assets/photos/hydrau-centrale-hydraulique-technicien.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve",
             "texte": "Près de Lyon.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/automatisme-armoire-jeune-tablette.jpg"
+            "photo": "/assets/photos/menuiserie-cnc-pupitre-casque.jpg"
           },
           {
             "titre": "Montage et déplacement de machines, étanchéité et isolation",
             "texte": "Plusieurs missions ciblées sur l'année 2025.",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/meca-jeune-presse-volant.jpg"
+            "photo": "/assets/photos/env-technicien-maintenance.jpg"
           },
           {
             "titre": "Remise en état d'un site à risque chimique, traitement des eaux",
             "texte": "Renfort habilité, depuis février 2026.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/team-grind-sparks.jpg"
+            "photo": "/assets/photos/chimie-cuve-melange-flexible.jpg"
           },
           {
             "titre": "Un été entier sans trou dans la maintenance",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/il-elec-armoire-bornier-pointage.jpg"
+            "photo": "/assets/photos/il-technicien-portrait-local-technique.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/il-tuyau-vannes-rouges-manometres.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-repairs.jpg"
           }
         ]
       },
@@ -309,7 +309,7 @@
         "libelle": "Parler à un chargé d’affaires",
         "href": "/contact/"
       },
-      "photo": "/assets/photos/il-meca-atelier-bonnet-portrait.jpg",
+      "photo": "/assets/photos/il-meca-volant-poulie-reglage.jpg",
       "alt": "Techniciens Migen sur une armoire électrique"
     },
     "maillageSurtitre": "Nos offres",
@@ -317,42 +317,42 @@
     "maillage": [
       {
         "href": "/offres/residence/",
-        "photo": "/assets/web/sv-armoire.jpg",
+        "photo": "/assets/photos/tuyau-pointage-bride-tube.jpg",
         "etiquette": "Présence continue",
         "titre": "migen© Résidence",
         "phrase": "Des techniciens en résidence sur votre site, intégrés à votre équipe, validés par vous."
       },
       {
         "href": "/offres/full-service/",
-        "photo": "/assets/photos/il-automatisme-bornier-vert-pince.jpg",
+        "photo": "/assets/photos/env-technician-maintenance-5.jpg",
         "etiquette": "Contrat unique",
         "titre": "migen© Full service",
         "phrase": "Toute votre maintenance dans un seul contrat : préventif, dépannage, pièces et GMAO, un seul interlocuteur."
       },
       {
         "href": "/offres/zero-arret/",
-        "photo": "/assets/photos/il-elec-penche-faisceau-machine.jpg",
+        "photo": "/assets/photos/il-technicien-portrait-casque-antibruit.jpg",
         "etiquette": "Abonnement",
         "titre": "migen© Zéro arrêt",
         "phrase": "Le préventif le samedi, le dépannage la nuit : une maintenance qui ne touche jamais à votre production."
       },
       {
         "href": "/offres/arret-technique/",
-        "photo": "/assets/photos/il-automatisme-pupitre-ihm-casque-bleu.jpg",
+        "photo": "/assets/photos/elec-schema-lampe-frontale.jpg",
         "etiquette": "Arrêt planifié",
         "titre": "migen© Arrêt technique",
         "phrase": "Votre arrêt annuel préparé, dimensionné et tenu, ligne rendue à la date annoncée."
       },
       {
         "href": "/offres/bureau-etudes/",
-        "photo": "/assets/photos/il-aero-reacteur-ouvert-portrait.jpg",
+        "photo": "/assets/photos/il-robot-inspection-articulation-blanche.jpg",
         "etiquette": "Études",
         "titre": "migen© Bureau d’études",
         "phrase": "Conception, schémas électriques, mise en conformité machine : des études faites par des gens de terrain."
       },
       {
         "href": "/travaux-industriels/",
-        "photo": "/assets/photos/il-meca-portrait-cle-plate-machine-usee.jpg",
+        "photo": "/assets/web/sv-duo-impact.jpg",
         "etiquette": "Chantier",
         "titre": "migen© Travaux industriels",
         "phrase": "Transfert, montage, démantèlement, levage : le chantier, du relevé à la remise en production."

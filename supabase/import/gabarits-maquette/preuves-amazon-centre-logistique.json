@@ -27,7 +27,7 @@
       }
     ],
     "logo": "/assets/clients/mq-3103d0f3f9ba.svg",
-    "photoHero": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg",
+    "photoHero": "/assets/photos/levage-pont-roulant-hall-acier.jpg",
     "chiffres": [
       {
         "libelle": "Durée d'intervention",
@@ -142,7 +142,7 @@
         "valeur": "Contrat annuel"
       }
     ],
-    "photoDispositif": "/assets/photos/robot-palettiseur-sacs-poudre.jpg",
+    "photoDispositif": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg",
     "resultats": [
       {
         "titre": "Une opération maîtrisée",
@@ -195,7 +195,7 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
+        "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
       },
       {
         "surtitre": "Secteur",
@@ -213,7 +213,7 @@
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/web/sv-convoyeur.jpg"
+        "photo": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg"
       }
     ]
   }

@@ -231,14 +231,14 @@
             "titre": "Des chantiers automatisés contrôlés point par point",
             "lienLibelle": "Étude de cas Alstef Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/elec-armoire-pont-roulant-gilet.jpg",
+            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg",
             "logo": "/assets/clients/alstef.webp"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg",
+            "photo": "/assets/photos/elec-armoire-pont-roulant-gilet.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
@@ -315,13 +315,13 @@
         "titre": "Travaux industriels",
         "phrase": "Transfert, démantèlement, démontage et montage.",
         "href": "/travaux-industriels/",
-        "photo": "/assets/photos/chimie-reacteurs-agites-passerelle.jpg"
+        "photo": "/assets/photos/il-tuyau-faisceau-blanc-charpente.jpg"
       },
       {
         "titre": "Bureau d'études",
         "phrase": "Conception, retrofit et mise en conformité.",
         "href": "/offres/bureau-etudes/",
-        "photo": "/assets/photos/il-elec-baie-cablage-faisceaux.jpg"
+        "photo": "/assets/photos/pneu-pince-axe-lineaire.jpg"
       }
     ],
     "pagesLieesTitre": "Les offres et prestations voisines"

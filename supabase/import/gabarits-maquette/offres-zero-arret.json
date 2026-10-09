@@ -170,7 +170,7 @@
             "texte": "six techniciens polyvalents en permanence, depuis septembre 2023",
             "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/chimie-piquage-manometre-gants.jpg",
+            "photo": "/assets/photos/robot-pupitre-apprentissage-soudure.jpg",
             "logo": "/assets/clients/mq-ff81dfbb55c7.svg"
           },
           {
@@ -178,7 +178,7 @@
             "texte": "depuis février 2024",
             "lienLibelle": "Étude de cas TIMESCOPE : casques de réalité virtuelle",
             "lienHref": "/preuves/timescope/",
-            "photo": "/assets/photos/aero-fuselage-serrage-lampe.jpg",
+            "photo": "/assets/photos/il-elec-carte-electronique-depose.jpg",
             "logo": "/assets/clients/timescope.png"
           },
           {
@@ -186,7 +186,7 @@
             "texte": "depuis octobre 2023, aux côtés des équipes internes",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-meca-rampe-injection-moteur-bleu.jpg",
+            "photo": "/assets/photos/il-hydrau-presse-rouge-intervention.jpg",
             "logo": "/assets/clients/stellantis.png"
           },
           {
@@ -194,7 +194,7 @@
             "texte": "deux techniciens en poste",
             "lienLibelle": "Étude de cas GLS : maintenance curative",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/il-elec-carte-electronique-depose.jpg",
+            "photo": "/assets/photos/env-workers-inspecting-large-vats-in-a-manufacturi.jpg",
             "logo": "/assets/clients/mq-09708b77564e.svg"
           },
           {
@@ -202,28 +202,28 @@
             "texte": "depuis octobre 2024, toujours en cours",
             "lienLibelle": "Étude de cas McCAIN : Belgique",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/il-elec-rack-cablage-penombre.jpg",
+            "photo": "/assets/photos/chimie-piquage-manometre-gants.jpg",
             "logo": "/assets/clients/mq-c23abfa0ca07.svg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas AKTID : montage d'un centre logistique",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/il-hydrau-verin-godet-engin.jpg",
+            "photo": "/assets/photos/meca-senior-rouleuse-combinaison.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-hydrau-presse-rouge-intervention.jpg",
+            "photo": "/assets/photos/il-elec-rack-cablage-penombre.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas AMAZON : démarrage d'un nouveau site",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/agro-mains-vanne-sanitaire.jpg",
+            "photo": "/assets/photos/aero-fuselage-serrage-lampe.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           }
         ]

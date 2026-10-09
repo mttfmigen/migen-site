@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Vesoul",
       "titre": "Vesoul : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/elec-multimetre-armoire-automatisme.jpg",
+      "photo": "/assets/photos/env-technician-inspecting-fiber-optics.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Vesoul et ses environs",
       "texte": "Nos techniciens itinérants couvrent Vesoul et son bassin, appuyés par le réseau national Migen.",
@@ -252,19 +252,19 @@
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/il-tuyau-reseau-vert-cuves-inspection.jpg"
+            "photo": "/assets/photos/agro-ihm-ligne-conditionnement-senior.jpg"
           },
           {
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
             "lienLibelle": "Étude de cas Autoliv",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/robot-cellule-soudure-inspection.jpg"
+            "photo": "/assets/photos/il-auto-moteur-capot-ouvert-atelier.jpg"
           },
           {
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/il-meca-ressorts-suspension-combinaison.jpg"
+            "photo": "/assets/photos/env-maintenance-automatique-robotique.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
@@ -276,7 +276,7 @@
             "titre": "Centres d’usinage et presses tenus dans le Grand Est",
             "lienLibelle": "Étude de cas Voit",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/energie-releve-pupitre-salle-commande.jpg"
+            "photo": "/assets/photos/soudure-corps-vanne-forge.jpg"
           }
         ]
       },

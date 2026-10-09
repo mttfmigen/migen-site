@@ -115,7 +115,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-meca-volant-poulie-reglage.jpg",
+    "problemePhoto": "/assets/photos/env-photos-industrie-menuiserie-3.jpg",
     "brefBande": "Un équipement qui inquiète avant la prochaine fenêtre de production ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -245,7 +245,7 @@
             "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
             "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/photos/il-aero-train-atterrissage-casque-antibruit.jpg"
+            "photo": "/assets/photos/env-photos-industrie-3.jpg"
           },
           {
             "titre": "Un parc de fonderie repris en huit semaines",
@@ -257,25 +257,25 @@
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
+            "photo": "/assets/photos/env-automatician-maintenance.jpg"
           },
           {
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
             "lienLibelle": "Étude de cas Autoliv",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/il-robot-cellule-grillagee-automaticien.jpg"
+            "photo": "/assets/photos/il-chimie-raffinerie-vue-aerienne-couchant.jpg"
           },
           {
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/il-meca-ressorts-suspension-combinaison.jpg"
+            "photo": "/assets/photos/env-industrie-metallique-24-sept-2026.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/photos/meca-tour-conventionnel-senior.jpg"
+            "photo": "/assets/photos/soudure-soudeuse-masque-releve.jpg"
           }
         ]
       },

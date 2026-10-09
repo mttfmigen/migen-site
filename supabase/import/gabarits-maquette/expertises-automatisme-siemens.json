@@ -34,7 +34,7 @@
         "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "problemePhoto": "/assets/photos/il-robot-ingenieure-tablette-bras-orange.jpg",
+    "problemePhoto": "/assets/photos/env-maintenance-automaticien.jpg",
     "complementOffre": [
       {
         "texte": "Un parc entier à remettre sous suivi ? Une ligne arrêtée maintenant se traite par le dépannage industriel."
@@ -179,34 +179,34 @@
             "texte": "Techniciens intégrés au quotidien sur systèmes automatisés, lignes de production et convoyeurs, depuis 2025.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/elec-porte-armoire-voyants-sectionneurs.jpg"
+            "photo": "/assets/photos/env-technician-with-robotic-arm.jpg"
           },
           {
             "titre": "Contrôle de chantier sur des projets d'automatisation logistique",
             "texte": "Plusieurs intervenants intégrés aux équipes, suivi des prestataires et vérification des installations, 2025 à 2026.",
             "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/il-robot-bras-blanc-vue-rapprochee.jpg"
+            "photo": "/assets/photos/env-inspection-robotique-21-sept-2026.jpg"
           },
           {
             "titre": "Installation et mise en production d'un parc machine neuf, site automobile",
             "texte": "Équipe de six techniciens réunissant mécanique, électricité et automatisme, depuis janvier 2023 et toujours en cours.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/menuiserie-cnc-pupitre-casque.jpg"
+            "photo": "/assets/photos/il-automatisme-pupitre-ihm-casque-bleu.jpg"
           },
           {
             "titre": "Dépannage en environnement automatisé sur lignes à haute cadence, agroalimentaire",
             "texte": "Deux techniciens en 3x8 sur les lignes liquides et le conditionnement poudre.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/il-robot-reglage-outil-bout-de-bras.jpg"
+            "photo": "/assets/photos/il-robot-ingenieure-tablette-bras-orange.jpg"
           },
           {
             "titre": "La GMAO planifie, nos techniciens interviennent",
             "lienLibelle": "Étude de cas DimoMaint",
             "lienHref": "/preuves/dimomaint/",
-            "photo": "/assets/photos/il-automatisme-armoire-automate-ouverte.jpg"
+            "photo": "/assets/photos/env-robot-industriel-2026.jpg"
           }
         ]
       },

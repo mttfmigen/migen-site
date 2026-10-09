@@ -35,7 +35,7 @@
       }
     ],
     "logo": "/assets/clients/mq-ed5f02d3ab11.svg",
-    "photoHero": "/assets/photos/il-robot-ingenieure-designation-cellule.jpg",
+    "photoHero": "/assets/photos/env-inspection-robot-arm-wiring.jpg",
     "chiffres": [
       {
         "libelle": "Nature des travaux",
@@ -127,7 +127,7 @@
         "valeur": "Préventif"
       }
     ],
-    "photoDispositif": "/assets/photos/il-robot-programmation-cobot-portable.jpg",
+    "photoDispositif": "/assets/photos/env-assemblage-chassis-automobile.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -147,19 +147,19 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/il-robot-ingenieure-tablette-bras-orange.jpg"
+        "photo": "/assets/photos/il-robot-atelier-commande-numerique.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/il-automatisme-tablette-armoire-rouge-robot.jpg"
+        "photo": "/assets/photos/il-robot-bras-blanc-vue-rapprochee.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrie automobile",
         "href": "/secteurs/automobile/",
-        "photo": "/assets/photos/il-robot-inspection-articulation-blanche.jpg"
+        "photo": "/assets/photos/il-soudure-robot-torche-operateur-orange.jpg"
       },
       {
         "surtitre": "Étude de cas",

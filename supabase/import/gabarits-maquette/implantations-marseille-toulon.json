@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Toulon",
       "titre": "Toulon : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-meca-sous-machine-gant-bleu.jpg",
+      "photo": "/assets/photos/env-industrie-metallique-24-sept-2026.jpg",
       "badge": "Rattaché au hub Marseille",
       "nom": "Toulon, couvert par le hub Marseille",
       "texte": "Les techniciens du hub Marseille interviennent à Toulon et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -217,37 +217,37 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/il-elec-multimetre-boitier-accroupie.jpg"
+            "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg"
           },
           {
             "titre": "Six techniciens pour faire démarrer un parc machines",
             "lienLibelle": "Étude de cas Eaton",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/il-aero-reacteur-ouvert-portrait.jpg"
+            "photo": "/assets/photos/env-photos-industrie-pharmaceutique.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/agro-technicienne-raccord-clamp.jpg"
+            "photo": "/assets/photos/il-technicien-portrait-epi-atelier.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg"
+            "photo": "/assets/web/sv-convoyeur.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/il-robot-reglage-outil-bout-de-bras.jpg"
+            "photo": "/assets/photos/il-meca-machine-outil-porte-ouverte.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-meca-intervention-accroupi-atelier.jpg"
+            "photo": "/assets/photos/il-energie-salle-commande-tableau-bleu.jpg"
           }
         ]
       },

@@ -23,7 +23,7 @@
       }
     ],
     "logo": "/assets/clients/mq-09708b77564e.svg",
-    "photoHero": "/assets/photos/robot-palettisation-tablette.jpg",
+    "photoHero": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -134,7 +134,7 @@
         "valeur": "Suivi de prestation assuré par Migen"
       }
     ],
-    "photoDispositif": "/assets/photos/robot-palettiseur-sacs-poudre.jpg",
+    "photoDispositif": "/assets/photos/robot-palettisation-tablette.jpg",
     "resultats": [
       {
         "titre": "Des temps d'arrêt réduits",
@@ -187,25 +187,25 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
+        "photo": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
         "href": "/secteurs/logistique/",
-        "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
+        "photo": "/assets/web/sv-convoyeur.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "VEEPEE : sites de Lyon",
         "href": "/preuves/veepee-sites-lyon/",
-        "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
+        "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg"
+        "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
       }
     ]
   }

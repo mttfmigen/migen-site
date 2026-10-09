@@ -101,7 +101,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-meca-atelier-bonnet-portrait.jpg",
+    "problemePhoto": "/assets/photos/agro-atelier-inox-plan-large.jpg",
     "brefBande": "Un équipement qui inquiète avant la prochaine fenêtre de production ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -231,37 +231,37 @@
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/elec-tgbt-technicienne-tablette.jpg"
+            "photo": "/assets/photos/env-industrie-metallique.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/chaudro-meulage-visiere.jpg"
+            "photo": "/assets/photos/env-technician-inspecting-fiber-optics.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/il-automatisme-ligne-reglage-lunettes.jpg"
+            "photo": "/assets/photos/il-chimie-petrochimie-panorama-nuit.jpg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/il-outillage-coffret-douilles-selection.jpg"
+            "photo": "/assets/photos/il-chimie-vapeur-vue-large-jour.jpg"
           },
           {
             "titre": "Un renfort pour que le pain sorte chaque matin",
             "lienLibelle": "Étude de cas La Panetière",
             "lienHref": "/preuves/la-panetiere/",
-            "photo": "/assets/photos/il-automatisme-pupitre-ihm-casque-bleu.jpg"
+            "photo": "/assets/photos/meca-pied-a-coulisse-fraiseuse.jpg"
           },
           {
             "titre": "Un été entier sans trou dans la maintenance",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/il-meca-controle-sous-machine-casque-jaune.jpg"
+            "photo": "/assets/photos/il-chimie-complexe-vapeur-jour.jpg"
           }
         ]
       },

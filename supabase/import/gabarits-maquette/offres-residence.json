@@ -177,7 +177,7 @@
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/il-tuyau-pupitre-local-antibruit.jpg",
+            "photo": "/assets/photos/env-maintenance-automaticien-3.jpg",
             "logo": "/assets/clients/mq-89100525ef89.svg"
           },
           {
@@ -185,14 +185,14 @@
             "texte": "site proche de Paris",
             "lienLibelle": "Étude de cas FDJ : site proche de Paris",
             "lienHref": "/preuves/fdj/",
-            "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg"
+            "photo": "/assets/photos/il-auto-sous-vehicule-tout-terrain.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/il-automatisme-ligne-reglage-lunettes.jpg",
+            "photo": "/assets/photos/il-meca-main-gantee-controle-machine.jpg",
             "logo": "/assets/clients/mq-eb9461b85e59.svg"
           },
           {
@@ -208,7 +208,7 @@
             "texte": "un technicien sur site, été 2025",
             "lienLibelle": "Étude de cas OGF : arrêt estival",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/il-depannage-lampe-torche-recherche-panne.jpg",
+            "photo": "/assets/photos/il-meca-portrait-cle-plate-machine-usee.jpg",
             "logo": "/assets/clients/ogf.png"
           },
           {
@@ -216,21 +216,21 @@
             "texte": "2025 à 2026",
             "lienLibelle": "Étude de cas VPK : maintenance de site",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/il-meca-moteur-lourd-controle-gilet.jpg"
+            "photo": "/assets/photos/meca-technicienne-parc-moteurs.jpg"
           },
           {
             "titre": "Renfort des équipes de maintenance sur plusieurs sites de production, confort thermique",
             "texte": "1 à 3 techniciens, depuis octobre 2024",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/robot-multimetre-cablage-robot.jpg",
+            "photo": "/assets/photos/il-meca-moteur-complexe-jeune-technicien.jpg",
             "logo": "/assets/clients/groupe-atlantic.png"
           },
           {
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
             "lienLibelle": "Autoliv",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/pneu-cle-bloc-distribution.jpg",
+            "photo": "/assets/photos/env-technician-maintenance-6.jpg",
             "logo": "/assets/clients/mq-a4d5eb645ce5.svg"
           }
         ]

@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Tarbes",
       "titre": "Tarbes : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/pharma-cuves-process-passerelle.jpg",
+      "photo": "/assets/photos/env-techniciens-semiconducteurs.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Tarbes et ses environs",
       "texte": "Nos techniciens itinérants couvrent Tarbes et son bassin, appuyés par le réseau national Migen.",
@@ -115,7 +115,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-chimie-complexe-unites-ciel-bleu.jpg",
+    "problemePhoto": "/assets/photos/env-maintenance-worker-repairing-robot.jpg",
     "brefBande": "Un équipement qui inquiète avant la prochaine fenêtre de production ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -245,37 +245,37 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/automatisme-armoire-jeune-tablette.jpg"
+            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
           },
           {
             "titre": "Six techniciens pour faire démarrer un parc machines",
             "lienLibelle": "Étude de cas Eaton",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/elec-armoire-pont-roulant-gilet.jpg"
+            "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/il-automatisme-armoire-automate-ouverte.jpg"
+            "photo": "/assets/photos/env-ouvriers-usine-allumant-four-sept-22.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
+            "photo": "/assets/photos/env-ouvrier-industriel-meulant-metal.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/il-meca-combinaison-rouge-machinerie.jpg"
+            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/web/sv-armoire.jpg"
+            "photo": "/assets/photos/pharma-isolateur-salle-propre.jpg"
           }
         ]
       },

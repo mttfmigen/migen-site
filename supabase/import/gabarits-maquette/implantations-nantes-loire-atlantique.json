@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Loire-Atlantique",
       "titre": "Loire-Atlantique : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-meca-main-gantee-controle-machine.jpg",
+      "photo": "/assets/photos/env-technician-maintenance-jet-engine.jpg",
       "badge": "Rattaché au hub Nantes",
       "nom": "Loire-Atlantique, couvert par le hub Nantes",
       "texte": "Les techniciens du hub Nantes interviennent à Loire-Atlantique et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -234,53 +234,53 @@
             "texte": "sur un site automobile, depuis janvier 2023, mission toujours en cours.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/il-meca-organe-machine-casque-jaune.jpg"
+            "photo": "/assets/photos/il-meca-grand-disque-volant-inertie.jpg"
           },
           {
             "titre": "Montages, déplacements de machines et renfort technique sur chantiers",
             "texte": ", pour un industriel de l'étanchéité et de l'isolation, sur l'année 2025.",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/energie-rotor-turbine-vapeur.jpg"
+            "photo": "/assets/photos/il-chimie-petrochimie-panorama-nuit.jpg"
           },
           {
             "titre": "Des intervenants intégrés aux équipes de contrôle de chantier",
             "texte": "d'un spécialiste mondial de l'automatisation logistique, sur des projets d'aéroports et d'industrie.",
             "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/ciment-tambour-rotatif-silos.jpg"
+            "photo": "/assets/photos/energie-rack-canalisations-binome.jpg"
           },
           {
             "titre": "Des techniciens déployés sur plusieurs usines françaises pour tenir une montée en cadence",
             "texte": ", partenariat démarré en septembre 2024 et toujours en cours.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/il-meca-bloc-moteur-halle-gilet.jpg"
+            "photo": "/assets/photos/il-tuyau-reseau-vert-cuves-inspection.jpg"
           },
           {
             "titre": "Trois techniciens en renfort sur la maintenance préventive d'une installation photovoltaïque de grande envergure",
             "texte": ", sur plus de six semaines.",
             "lienLibelle": "Étude de cas EIFFAGE",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/photos/il-aero-train-atterrissage-casque-antibruit.jpg"
+            "photo": "/assets/photos/env-ouvrier-usine-metal-avec-etincelles.jpg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/hydrau-centrale-hydraulique-technicien.jpg"
+            "photo": "/assets/photos/il-hydrau-flexibles-faisceau-controle.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
+            "photo": "/assets/photos/il-ciment-site-nuit-bord-de-mer.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/il-tuyau-faisceau-blanc-charpente.jpg"
+            "photo": "/assets/photos/env-manipulation-metal-usine.jpg"
           }
         ]
       },

@@ -35,7 +35,7 @@
       }
     ],
     "logo": "/assets/clients/mq-7c01e175985e.png",
-    "photoHero": "/assets/photos/chimie-piquage-manometre-gants.jpg",
+    "photoHero": "/assets/photos/env-promenade-des-ingenieurs-a-la-raffinerie.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -132,7 +132,7 @@
         "valeur": "1 technicien"
       }
     ],
-    "photoDispositif": "/assets/photos/il-chimie-colonnes-raffinerie-nuit.jpg",
+    "photoDispositif": "/assets/photos/env-raffinerie-de-petrole-bangkok.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -152,7 +152,7 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg"
+        "photo": "/assets/photos/env-raffinerie-de-petrole-au-coucher-du-soleil.jpg"
       },
       {
         "surtitre": "Offre",
@@ -170,7 +170,7 @@
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/il-site-cheminees-montagnes-aube.jpg"
+        "photo": "/assets/photos/env-photo-industrie-chimie.jpg"
       }
     ]
   }

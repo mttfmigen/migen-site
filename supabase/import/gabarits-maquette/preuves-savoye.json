@@ -23,7 +23,7 @@
       }
     ],
     "logo": "/assets/clients/savoye.png",
-    "photoHero": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg",
+    "photoHero": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -127,7 +127,7 @@
         "valeur": "Résidence sur site ou intervention ponctuelle"
       }
     ],
-    "photoDispositif": "/assets/photos/metal-technicienne-bobines-acier.jpg",
+    "photoDispositif": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg",
     "resultats": [
       {
         "titre": "Des arrêts limités",
@@ -170,13 +170,13 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg"
+        "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
         "href": "/secteurs/logistique/",
-        "photo": "/assets/web/sv-convoyeur.jpg"
+        "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
       },
       {
         "surtitre": "Étude de cas",
@@ -188,7 +188,7 @@
         "surtitre": "Étude de cas",
         "titre": "AKTID : un centre logistique monté en six semaines",
         "href": "/preuves/aktid-centre-logistique/",
-        "photo": "/assets/photos/robot-palettisation-tablette.jpg"
+        "photo": "/assets/web/sv-convoyeur.jpg"
       }
     ]
   }

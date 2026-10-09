@@ -14,7 +14,7 @@
     ],
     "bouton": "Faire diagnostiquer mes machines",
     "logo": "/assets/clients/joint-lyonnais.png",
-    "photoHero": "/assets/photos/il-meca-main-gantee-controle-machine.jpg",
+    "photoHero": "/assets/photos/menuiserie-robot-panneaux.jpg",
     "chiffres": [
       {
         "libelle": "Nature des interventions",
@@ -128,7 +128,7 @@
         "valeur": "Budget de PME, sans rachat de matériel neuf"
       }
     ],
-    "photoDispositif": "/assets/photos/equipe-transmission-senior-jeune.jpg",
+    "photoDispositif": "/assets/photos/env-technician-maintenance-3.jpg",
     "resultats": [
       {
         "titre": "Les difficultés rencontrées ont été palliées",
@@ -179,25 +179,25 @@
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : maintenance préventive photovoltaïque",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/elec-schema-lampe-frontale.jpg"
+        "photo": "/assets/photos/meca-technicienne-cle-machine.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/il-meca-volant-poulie-reglage.jpg"
+        "photo": "/assets/photos/env-industrial-infrastructure-with-blue-sky-and-cl.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "ERIKS : un responsable maintenance pour traverser la transition",
         "href": "/preuves/eriks/",
-        "photo": "/assets/photos/il-technicien-portrait-combinaison-orange.jpg"
+        "photo": "/assets/photos/il-meca-sous-machine-gant-bleu.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/il-robot-poignet-robot-hauteur-gants.jpg"
+        "photo": "/assets/photos/il-robot-bras-orange-reglage-souriante.jpg"
       }
     ]
   }

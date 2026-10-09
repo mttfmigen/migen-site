@@ -37,7 +37,7 @@
         "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "problemePhoto": "/assets/photos/il-tuyau-faisceau-blanc-charpente.jpg",
+    "problemePhoto": "/assets/photos/il-tuyau-passerelle-technicien-bras-croises.jpg",
     "complementOffre": [
       {
         "texte": "Une rupture en cours se traite par le dépannage industriel."
@@ -182,7 +182,7 @@
             "titre": "Remise en état d'un site de traitement des eaux industrielles, risque chimique",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg",
+            "photo": "/assets/photos/il-tuyau-faisceau-blanc-charpente.jpg",
             "texte": "Un technicien habilité RC1 mobilisé 6 mois, habilitations obtenues avant la première intervention."
           },
           {
@@ -203,21 +203,21 @@
             "titre": "Montages et déplacements de machines, étanchéité et isolation",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/soudure-interieur-virole.jpg",
+            "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg",
             "texte": "Lignes et sous-ensembles assemblés, profils réunis selon le chantier, sur 2025."
           },
           {
             "titre": "Contrat de maintenance sur un site agroalimentaire de grande échelle, Belgique",
             "lienLibelle": "Étude de cas McCAIN",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/il-hydrau-flexibles-faisceau-controle.jpg",
+            "photo": "/assets/photos/soudure-interieur-virole.jpg",
             "texte": "Renfort en place depuis octobre 2024, premier contrat Migen hors de France."
           },
           {
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg",
+            "photo": "/assets/photos/il-hydrau-flexibles-faisceau-controle.jpg",
             "texte": ""
           },
           {

@@ -32,7 +32,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Tours",
       "titre": "Tours : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-meca-grande-roue-dentee-portrait.jpg",
+      "photo": "/assets/photos/meca-pied-a-coulisse-fraiseuse.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Tours et ses environs",
       "texte": "Nos techniciens itinérants couvrent Tours et son bassin, appuyés par le réseau national Migen.",
@@ -246,7 +246,7 @@
             "texte": "Papier et emballage, 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/aero-percage-aile-avion.jpg"
+            "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
           },
           {
             "titre": "Un technicien intégré pendant l'arrêt estival pour tenir les équipements critiques",
@@ -260,39 +260,39 @@
             "texte": "Remise en état complète.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/metal-fonderie-coulee.jpg"
+            "photo": "/assets/photos/automatisme-camera-vision-convoyeur.jpg"
           },
           {
             "titre": "1 à 3 techniciens en renfort des équipes maintenance sur plusieurs sites de production, depuis octobre 2024",
             "texte": "Disponibilité machine tenue semaine après semaine.",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/chimie-technicienne-skid-vanne.jpg"
+            "photo": "/assets/photos/env-femmes-en-usine-21-sept-2026.jpg"
           },
           {
             "titre": "Six techniciens en permanence sur un contrat de préventif annuel, prise en charge complète réalisée en un mois",
             "texte": "Depuis septembre 2023.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/il-metal-siderurgie-bord-d-eau-couchant.jpg"
+            "photo": "/assets/photos/env-technicien-maintenance-2.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
+            "photo": "/assets/photos/il-levage-nef-ponts-roulants-chantier.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
+            "photo": "/assets/photos/menuiserie-robot-panneaux.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/il-elec-lampe-frontale-cablage-dense.jpg"
+            "photo": "/assets/photos/menuiserie-centre-usinage-soufflette.jpg"
           }
         ]
       },

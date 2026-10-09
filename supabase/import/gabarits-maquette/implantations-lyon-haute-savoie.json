@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Haute-Savoie",
       "titre": "Haute-Savoie : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-chimie-petrochimie-panorama-nuit.jpg",
+      "photo": "/assets/photos/env-menuisier-avec-masque-sept-2026.jpg",
       "badge": "Rattaché au hub Lyon",
       "nom": "Haute-Savoie, couvert par le hub Lyon",
       "texte": "Les techniciens du hub Lyon interviennent à Haute-Savoie et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -230,53 +230,53 @@
             "texte": "Centres d'usinage, presses et commandes numériques, fabrication de pièces mécaniques de précision.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/il-meca-volant-poulie-reglage.jpg"
+            "photo": "/assets/photos/env-moteur-d-avion-en-maintenance.jpg"
           },
           {
             "titre": "Un technicien de maintenance dédié au maintien d'un parc machines, en 2025",
             "texte": "Présence continue, en coordination avec les équipes du site.",
             "lienLibelle": "Étude de cas AUTOLIV",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/il-chaudro-bride-anneau-controle.jpg"
+            "photo": "/assets/photos/env-inspection-du-processus-d-embouteillage.jpg"
           },
           {
             "titre": "Des techniciens présents au quotidien dans les équipes de maintenance d'un équipementier automobile, en 2025",
             "texte": "Périmètre prioritaire sur les équipements critiques.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/ciment-vue-aerienne-usine.jpg"
+            "photo": "/assets/photos/env-photos-industrie-aeronautique.jpg"
           },
           {
             "titre": "3 à 5 techniciens déployés dans plusieurs usines françaises, depuis septembre 2024",
             "texte": "Accompagnement d'une montée en cadence.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/il-technicien-portrait-casque-antibruit.jpg"
+            "photo": "/assets/photos/env-femme-en-usine-moderne.jpg"
           },
           {
             "titre": "Six techniciens sur l'installation et la mise en production d'un parc machines neuf",
             "texte": ", site automobile, depuis janvier 2023.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/il-metal-haut-fourneau-silos-quai.jpg"
+            "photo": "/assets/photos/env-photos-industrie-pharmaceutique.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-8.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/il-technicien-portrait-epi-atelier.jpg"
+            "photo": "/assets/photos/env-ouvriers-usine-allumant-four-sept-22.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/menuiserie-centre-usinage-soufflette.jpg"
+            "photo": "/assets/web/sv-convoyeur.jpg"
           }
         ]
       },

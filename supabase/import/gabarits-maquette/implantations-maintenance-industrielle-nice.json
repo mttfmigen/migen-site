@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Nice",
       "titre": "Nice : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/elec-schema-lampe-frontale.jpg",
+      "photo": "/assets/photos/env-inspection-equipement-fabrication.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Nice et ses environs",
       "texte": "Nos techniciens itinérants couvrent Nice et son bassin, appuyés par le réseau national Migen.",
@@ -264,14 +264,14 @@
             "texte": ", pour garder les équipements opérationnels en juillet et août.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/il-metal-haut-fourneau-silos-quai.jpg"
+            "photo": "/assets/photos/il-robot-cellule-grillagee-automaticien.jpg"
           },
           {
             "titre": "Renfort de 6 mois sur un site de traitement des eaux industrielles à risque chimique",
             "texte": ", depuis février 2026.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/il-chimie-vapeur-vue-large-jour.jpg"
+            "photo": "/assets/photos/il-technicien-portrait-structure-exterieure.jpg"
           },
           {
             "titre": "Maintenance sous contrat d'un parc d'équipements dispersé sur tout le territoire",
@@ -285,7 +285,7 @@
             "texte": ", depuis octobre 2024.",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/menuiserie-cnc-pupitre-casque.jpg"
+            "photo": "/assets/photos/il-meca-moteur-complexe-jeune-technicien.jpg"
           }
         ]
       },

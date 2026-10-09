@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Chartres",
       "titre": "Chartres : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/equipe-transmission-senior-jeune.jpg",
+      "photo": "/assets/photos/env-industrie-metallique-2.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Chartres et ses environs",
       "texte": "Nos techniciens itinérants couvrent Chartres et son bassin, appuyés par le réseau national Migen.",
@@ -245,31 +245,31 @@
             "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
             "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/photos/tuyau-pointage-bride-tube.jpg"
+            "photo": "/assets/photos/env-ouvrier-usine-metal.jpg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/elec-tgbt-technicienne-tablette.jpg"
+            "photo": "/assets/photos/env-industrie-au-crepuscule.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/il-energie-gros-moteur-vert-antibruit.jpg"
+            "photo": "/assets/photos/equipe-consignes-atelier-casques.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/il-automatisme-ligne-reglage-lunettes.jpg"
+            "photo": "/assets/photos/env-manipulation-metal-usine.jpg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/il-outillage-coffret-douilles-selection.jpg"
+            "photo": "/assets/photos/il-site-cheminees-montagnes-aube.jpg"
           },
           {
             "titre": "Un renfort pour que le pain sorte chaque matin",

@@ -27,7 +27,7 @@
       }
     ],
     "logo": "/assets/clients/mq-a4d5eb645ce5.svg",
-    "photoHero": "/assets/photos/robot-soudure-points-caisse.jpg",
+    "photoHero": "/assets/photos/env-inspection-auto-avec-equipe.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -134,7 +134,7 @@
         "valeur": "Suivi de mission assuré par Migen"
       }
     ],
-    "photoDispositif": "/assets/photos/il-soudure-robot-torche-operateur-orange.jpg",
+    "photoDispositif": "/assets/photos/env-inspection-ligne-production-automatique.jpg",
     "resultats": [
       {
         "titre": "Une approche directe, sur le terrain",
@@ -194,25 +194,25 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/il-robot-ingenieure-designation-cellule.jpg"
+        "photo": "/assets/photos/env-assemblage-chassis-automobile.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/il-robot-programmation-cobot-portable.jpg"
+        "photo": "/assets/photos/env-mechanic-inspecting-auto-parts-in-his-workshop.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrie automobile",
         "href": "/secteurs/automobile/",
-        "photo": "/assets/photos/il-automatisme-armoire-robot-bleu-fond.jpg"
+        "photo": "/assets/photos/env-assemblage-carrosseries.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "VALEO : plusieurs usines",
         "href": "/preuves/valeo-usines/",
-        "photo": "/assets/photos/il-soudure-robot-pupitre-apprentissage.jpg"
+        "photo": "/assets/photos/robot-soudure-points-caisse.jpg"
       }
     ]
   }

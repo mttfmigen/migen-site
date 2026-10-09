@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Angers",
       "titre": "Angers : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/chimie-technicienne-skid-vanne.jpg",
+      "photo": "/assets/photos/env-technicien-maintenance-serveur.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Angers et ses environs",
       "texte": "Nos techniciens itinérants couvrent Angers et son bassin, appuyés par le réseau national Migen.",
@@ -115,7 +115,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-equipe-ronde-terrain-raffinerie.jpg",
+    "problemePhoto": "/assets/photos/env-technician-maintenance-5.jpg",
     "brefBande": "Un équipement qui inquiète avant la prochaine fenêtre de production ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -245,37 +245,37 @@
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/web/sv-armoire.jpg"
+            "photo": "/assets/photos/env-photos-industrie.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/il-soudure-chalumeau-tube-technicienne.jpg"
+            "photo": "/assets/photos/env-industrie-chimie.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/automatisme-armoire-jeune-tablette.jpg"
+            "photo": "/assets/photos/agro-atelier-inox-plan-large.jpg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/il-meca-moteur-complexe-jeune-technicien.jpg"
+            "photo": "/assets/photos/il-ciment-tour-beton-grues-vue-haute.jpg"
           },
           {
             "titre": "Un renfort pour que le pain sorte chaque matin",
             "lienLibelle": "Étude de cas La Panetière",
             "lienHref": "/preuves/la-panetiere/",
-            "photo": "/assets/photos/il-ciment-tours-grues-crepuscule.jpg"
+            "photo": "/assets/photos/il-meca-ressorts-suspension-combinaison.jpg"
           },
           {
             "titre": "Un été entier sans trou dans la maintenance",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/meca-presses-volants-technicienne.jpg"
+            "photo": "/assets/photos/env-femme-en-costume-sterile-industrie-pharmaceuti.jpg"
           }
         ]
       },

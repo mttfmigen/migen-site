@@ -192,7 +192,7 @@
             "texte": "trois à cinq techniciens déployés depuis septembre 2024",
             "lienLibelle": "Étude de cas VALEO : plusieurs usines",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/agro-ihm-ligne-conditionnement-senior.jpg",
+            "photo": "/assets/photos/il-robot-bras-rouge-serrage-hauteur.jpg",
             "logo": "/assets/clients/mq-f6fcccfd4cc8.svg"
           },
           {
@@ -308,13 +308,13 @@
         "titre": "Contrat de maintenance",
         "phrase": "Un contrat de visites préventives planifiées, avec suivi de l'état du parc et priorité d'intervention. Voir le contrat de maintenance.",
         "href": "/offres/zero-arret/",
-        "photo": "/assets/photos/robot-palettisation-tablette.jpg"
+        "photo": "/assets/photos/env-photo-industrie-2.jpg"
       },
       {
         "titre": "Astreinte industrielle",
         "phrase": "Une astreinte la nuit, le week-end et les jours fériés, nuits, week-ends et jours fériés. Voir l'astreinte industrielle.",
         "href": "/offres/depannage-industriel/astreinte/",
-        "photo": "/assets/photos/il-meca-controle-sous-machine-casque-jaune.jpg"
+        "photo": "/assets/photos/env-oil-and-gas-petrochemical-industrial-oil-refin.jpg"
       },
       {
         "titre": "Arrêt technique maintenance",
@@ -326,7 +326,7 @@
         "titre": "Guide pour choisir une entreprise de maintenance",
         "phrase": "Avant de choisir, notre guide pour choisir une entreprise de maintenance liste les questions à poser en rendez-vous.",
         "href": "/guides/choisir-une-entreprise-de-maintenance/",
-        "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
+        "photo": "/assets/photos/env-industrie-chimie-2.jpg"
       },
       {
         "titre": "Full service",

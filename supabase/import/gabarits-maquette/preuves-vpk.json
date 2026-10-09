@@ -126,7 +126,7 @@
         "valeur": "1 technicien senior"
       }
     ],
-    "photoDispositif": "/assets/photos/energie-eolien-hauteur-harnais.jpg",
+    "photoDispositif": "/assets/photos/env-technician-maintenance-12.jpg",
     "resultats": [
       {
         "titre": "Meilleure répartition de la charge",
@@ -167,25 +167,25 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/meca-technicienne-parc-moteurs.jpg"
+        "photo": "/assets/photos/env-industrie-chimie.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "GROUPE ATLANTIC : renfort sur plusieurs sites",
         "href": "/preuves/groupe-atlantic/",
-        "photo": "/assets/photos/il-tuyau-vannes-technicienne-tablette.jpg"
+        "photo": "/assets/photos/robot-multimetre-cablage-robot.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/pharma-technicienne-machine-comprimes.jpg"
+        "photo": "/assets/photos/env-industrie-metallique-22-sept-2026-1.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/il-ciment-tour-beton-grues-vue-haute.jpg"
+        "photo": "/assets/photos/il-tuyau-vannes-rouges-manometres.jpg"
       }
     ]
   }

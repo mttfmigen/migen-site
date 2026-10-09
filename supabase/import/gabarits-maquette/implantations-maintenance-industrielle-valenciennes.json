@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Valenciennes",
       "titre": "Valenciennes : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-robot-poignet-robot-hauteur-gants.jpg",
+      "photo": "/assets/photos/robot-palettisation-tablette.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Valenciennes et ses environs",
       "texte": "Nos techniciens itinérants couvrent Valenciennes et son bassin, appuyés par le réseau national Migen.",
@@ -101,7 +101,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/robot-technicienne-inspection-bras.jpg",
+    "problemePhoto": "/assets/photos/il-robot-poignet-robot-hauteur-gants.jpg",
     "complementOffre": [
       {
         "texte": "Pour un montage de ligne, un transfert ou une extension, notre offre chantier prend le relais avec un chef de projet unique."
@@ -255,21 +255,21 @@
             "texte": ", pour accompagner la bascule vers le véhicule électrique depuis juin 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-grand-est/",
-            "photo": "/assets/photos/il-technicien-releve-machine-presse-papier.jpg"
+            "photo": "/assets/photos/env-infrastructure-usine-acier-avec-tuyaux.jpg"
           },
           {
             "titre": "3 à 5 techniciens déployés sur la montée en cadence de plusieurs usines françaises",
             "texte": ", depuis septembre 2024.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/agro-ihm-ligne-conditionnement-senior.jpg"
+            "photo": "/assets/photos/env-industrial-worker-inspecting-canned-goods-on-a.jpg"
           },
           {
             "titre": "Techniciens présents au quotidien sur les équipements critiques d'un fabricant de composants automobiles",
             "texte": ", depuis 2025.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/il-ciment-tour-beton-grues-vue-haute.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-7.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie en service continu",
@@ -282,25 +282,25 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/robot-poignet-technicien-casque.jpg"
+            "photo": "/assets/photos/env-photos-industrie-agro-alimentaire.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/agro-panneau-vannes-nep.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-3.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/il-outillage-panneau-atelier-accroupi.jpg"
+            "photo": "/assets/photos/il-robot-prehenseur-ventouses-controle.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/il-tuyau-pupitre-local-antibruit.jpg"
+            "photo": "/assets/photos/env-industrie-metallique-21-sept-2026.jpg"
           }
         ]
       },

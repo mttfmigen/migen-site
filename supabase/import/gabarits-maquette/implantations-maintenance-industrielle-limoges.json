@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Limoges",
       "titre": "Limoges : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg",
+      "photo": "/assets/photos/env-photos-industrie-menuiserie.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Limoges et ses environs",
       "texte": "Nos techniciens itinérants couvrent Limoges et son bassin, appuyés par le réseau national Migen.",
@@ -115,7 +115,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/soudure-virole-inox-hall.jpg",
+    "problemePhoto": "/assets/photos/soudure-fond-bombe-gabarit.jpg",
     "brefBande": "Besoin de fiabiliser une machine que plus personne ne sait dépanner ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -264,21 +264,21 @@
             "texte": ", parc machines hétérogène en forte cadence, 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/chaudro-meulage-visiere.jpg"
+            "photo": "/assets/photos/elec-mains-bornier-relais.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS affecté au démarrage d'une nouvelle ligne de production",
             "texte": ", sur les trimestres de montée en charge.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/robot-poignet-technicien-casque.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-8.jpg"
           },
           {
             "titre": "Le pilotage d'un service maintenance confié à un responsable Migen intégré sur site",
             "texte": ", pendant une transition d'équipe.",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/il-auto-sous-vehicule-tout-terrain.jpg"
+            "photo": "/assets/photos/env-femme-inspectant-des-bouteilles.jpg"
           },
           {
             "titre": "Un technicien en renfort pendant les congés d'été",

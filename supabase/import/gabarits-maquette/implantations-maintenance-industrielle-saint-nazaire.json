@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Saint-Nazaire",
       "titre": "Saint-Nazaire : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-auto-moteur-capot-ouvert-atelier.jpg",
+      "photo": "/assets/photos/env-technician-maintenance-4.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Saint-Nazaire et ses environs",
       "texte": "Nos techniciens itinérants couvrent Saint-Nazaire et son bassin, appuyés par le réseau national Migen.",
@@ -245,37 +245,37 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg"
+            "photo": "/assets/photos/env-factory-worker-inspecting-food-canning-product.jpg"
           },
           {
             "titre": "Six techniciens pour faire démarrer un parc machines",
             "lienLibelle": "Étude de cas Eaton",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/il-elec-senior-coffret-exterieur.jpg"
+            "photo": "/assets/photos/il-technicien-portrait-casque-antibruit.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/il-technicien-portrait-epi-atelier.jpg"
+            "photo": "/assets/photos/env-technicien-maintenance.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/web/sv-convoyeur.jpg"
+            "photo": "/assets/photos/il-levage-crochet-palonnier-controle.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/il-meca-machine-outil-porte-ouverte.jpg"
+            "photo": "/assets/photos/env-technician-maintenance.jpg"
           },
           {
             "titre": "Six mois pour remettre en état un site à risque chimique",
             "lienLibelle": "Étude de cas Suez IWT",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/tuyau-vanne-volant-conserverie.jpg"
+            "photo": "/assets/photos/menuiserie-passerelle-usine-bois.jpg"
           }
         ]
       },

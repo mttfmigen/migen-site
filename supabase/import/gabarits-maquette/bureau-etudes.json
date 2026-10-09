@@ -234,7 +234,7 @@
             "texte": "Janvier 2023. Six techniciens multidisciplinaires pour l'installation et la mise en production d'un parc machines neuf.",
             "lienLibelle": "Étude de cas EATON : mise en production",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/il-energie-pupitre-instruments-portrait.jpg"
+            "photo": "/assets/photos/env-robotic-arms-welding-car-frames.jpg"
           },
           {
             "titre": "",
@@ -327,25 +327,25 @@
         "url": "/preuves/aktid-centre-logistique/",
         "client": "Aktid",
         "titre": "Un centre logistique monté en six semaines",
-        "photo": "/assets/photos/il-tuyau-vannes-technicienne-tablette.jpg"
+        "photo": "/assets/photos/env-bras-robotiques-soudant-cadres-auto.jpg"
       },
       {
         "url": "/preuves/alstef-group/",
         "client": "Alstef Group",
         "titre": "Des chantiers automatisés contrôlés point par point",
-        "photo": "/assets/photos/il-robot-ligne-robots-presse-papier.jpg"
+        "photo": "/assets/photos/il-tuyau-vannes-technicienne-tablette.jpg"
       },
       {
         "url": "/preuves/amazon-centre-logistique/",
         "client": "Amazon",
         "titre": "Maintenir un centre logistique qui ne ferme jamais",
-        "photo": "/assets/photos/il-elec-armoire-variateurs-ventilation.jpg"
+        "photo": "/assets/photos/il-robot-ligne-robots-presse-papier.jpg"
       },
       {
         "url": "/preuves/amazon-nouveau-site/",
         "client": "Amazon",
         "titre": "Un dispositif rodé, transposé sur un nouveau site",
-        "photo": "/assets/photos/chimie-technicienne-skid-vanne.jpg"
+        "photo": "/assets/photos/il-elec-armoire-variateurs-ventilation.jpg"
       }
     ]
   }

@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Belfort-Montbéliard",
       "titre": "Belfort-Montbéliard : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-chimie-colonnes-eclairees-heure-bleue.jpg",
+      "photo": "/assets/web/sv-portrait.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Belfort-Montbéliard et ses environs",
       "texte": "Nos techniciens itinérants couvrent Belfort-Montbéliard et son bassin, appuyés par le réseau national Migen.",
@@ -231,37 +231,37 @@
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-auto-sous-caisse-poids-lourd.jpg"
+            "photo": "/assets/photos/il-meca-portrait-machine-outil-pupitre.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/il-tuyau-vannes-technicienne-tablette.jpg"
+            "photo": "/assets/photos/env-industrial-worker-inspecting-canned-goods-on-a.jpg"
           },
           {
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
             "lienLibelle": "Étude de cas Autoliv",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/il-robot-cellule-grillagee-automaticien.jpg"
+            "photo": "/assets/photos/il-auto-moteur-capot-ouvert-atelier.jpg"
           },
           {
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/metal-four-arc-acierie.jpg"
+            "photo": "/assets/photos/hydrau-presse-pupitre-manometre.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/photos/il-meca-portrait-cle-plate-machine-usee.jpg"
+            "photo": "/assets/photos/menuiserie-robot-panneaux.jpg"
           },
           {
             "titre": "Centres d’usinage et presses tenus dans le Grand Est",
             "lienLibelle": "Étude de cas Voit",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/agro-atelier-inox-plan-large.jpg"
+            "photo": "/assets/photos/env-moteur-d-avion-en-maintenance.jpg"
           }
         ]
       },
