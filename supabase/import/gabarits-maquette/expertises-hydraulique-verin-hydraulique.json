@@ -1,6 +1,10 @@
 {
   "_source": "maquette/rendu/expertises--hydraulique--verin-hydraulique.html (capture du 07/10 21h12, 16 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (littéral, entités seules décodées), relevé par data-dc-tpl, contrôlé par components/site/expertises/specialite/verification-specialite.tsx. Ni « 02 Domaines » ni « Complément 2 » dans la capture ; « Complément 4 » présent. Problème dessiné « panneau-sombre », sans photo. Marques : famille « fluide » (BRAND_RULES de la maquette, une seule famille, pas de rail). PHOTOS DES RÉFÉRENCES MESURÉES, PAS CHOISIES : octets des images du rail servis par la maquette vivante (localhost:4352, 08/10), sha256 complet rapproché de public/assets/web ; ordre et identité des blobs recoupés avec la capture : mq-2a8c78b5c75c, mq-e6322efcd358, mq-0b70202fed79, mq-2a6115ec9fe0, mq-e69a240d8656, mq-056f3c250981. PHRASES INTERDITES NON RENDUES, retirées entières de la copie de la capture (une phrase interdite ne se reformule pas, elle ne se rend pas) : deroule.etapes[3].texte, la phrase qui porte « prix » ; objections.questions[1].reponse, la phrase qui porte « prix ».",
   "url": "/expertises/hydraulique/verin-hydraulique/",
+  "seo": {
+    "meta_title": "Réparer un vérin hydraulique plutôt que le remplacer",
+    "meta_description": "Réparation vérin hydraulique : diagnostic sur site, démontage, joints neufs, essais en pression et remise en service. Toutes marques. Rappel dans l'heure."
+  },
   "titre_h1": "Réparation vérin hydraulique : réparer plutôt qu’attendre un vérin neuf",
   "contenu": {
     "gabarit": "specialite",

@@ -1,6 +1,10 @@
 {
   "_source": "maquette/rendu/expertises--types-de-maintenance--maintenance-ameliorative.html (07/10 21h12), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (relevé par data-dc-tpl, mêmes cibles que les pilotes fanuc et abb, dont le relevé redonne le relais à l'identique), contrôlé par components/site/expertises/specialite/verification-specialite.tsx. PHOTOS MESURÉES, PAS CHOISIES : octets de chaque image de la maquette vivante (localhost:4352) rapprochés de public/assets/web par sha256 complet, le 08/10 ; photo de carte de référence = première image de la carte. Photo du problème = mq-0699d4d92e7e.jpg. PHRASES INTERDITES NON RENDUES (ne se reformulent pas) : « Pas de prix catalogue : la modification se chiffre sur devis, une fois le diagnostic posé. » (contenu.sections[5].questions[0].reponse).",
   "url": "/expertises/types-de-maintenance/maintenance-ameliorative/",
+  "seo": {
+    "meta_title": "Supprimer la panne qui revient | Migen",
+    "meta_description": "Maintenance améliorative : supprimer la cause des pannes qui reviennent au lieu de réparer deux fois. Techniciens évalués, rappel dans l'heure."
+  },
   "titre_h1": "Maintenance améliorative : supprimer la panne au lieu de la réparer encore",
   "contenu": {
     "gabarit": "specialite",

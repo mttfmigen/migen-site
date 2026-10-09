@@ -1,5 +1,9 @@
 {
   "url": "/ressources/fiches-pratiques/permis-de-feu/",
+  "seo": {
+    "meta_title": "Permis de feu | Migen",
+    "meta_description": "Permis de feu : définition, cas obligatoires, rédaction en trois temps, contenu type et pièges à éviter avant vos travaux par points chauds."
+  },
   "titre_h1": "Permis de feu",
   "contenu": {
     "gabarit": "ressource",

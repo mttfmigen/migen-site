@@ -1,5 +1,9 @@
 {
   "url": "/ressources/fiches-techniques/automates-siemens/",
+  "seo": {
+    "meta_title": "Automate Siemens | Migen",
+    "meta_description": "Automate Siemens : définition, gammes SIMATIC, TIA Portal, diagnostic et obsolescence, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Automate Siemens",
   "retraits": [
     "Plus de 200 clients nous font travailler, dont plus de 80 en contrat régulier."

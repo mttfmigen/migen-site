@@ -1,5 +1,9 @@
 {
   "url": "/secteurs/pharmaceutique/",
+  "seo": {
+    "meta_title": "Maintenance de site pharmaceutique BPF | Migen",
+    "meta_description": "Maintenance pharmaceutique : techniciens formés aux BPF et au comportement en ZAC, circuit de requalification défini avec votre assurance qualité."
+  },
   "titre_h1": "Vos équipements conformes. Vos lots libérés à temps.",
   "source": "dessin : maquette/rendu/secteurs--pharmaceutique.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {

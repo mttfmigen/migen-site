@@ -1,5 +1,9 @@
 {
   "url": "/ressources/process/protocole-de-securite/",
+  "seo": {
+    "meta_title": "Protocole de sécurité | Migen",
+    "meta_description": "Protocole de sécurité : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Protocole de sécurité",
   "contenu": {
     "gabarit": "ressource",

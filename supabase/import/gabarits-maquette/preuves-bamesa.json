@@ -1,5 +1,9 @@
 {
   "url": "/preuves/bamesa/",
+  "seo": {
+    "meta_title": "Cas Bamesa : Continuité de maintenance pendant un| Migen",
+    "meta_description": "Pendant qu'elle recrutait ses propres techniciens, Migen a tenu la maintenance de ses lignes de déroulage et de retraitement."
+  },
   "titre_h1": "La maintenance tient pendant que l’équipe recrute",
   "contenu": {
     "gabarit": "etude-de-cas",

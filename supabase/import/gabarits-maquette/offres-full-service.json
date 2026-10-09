@@ -1,5 +1,9 @@
 {
   "url": "/offres/full-service/",
+  "seo": {
+    "meta_title": "Maintenance industrielle externalisée, Full service | Migen",
+    "meta_description": "Migen prend en charge toute votre maintenance industrielle : préventif, dépannage, pièces et GMAO dans un seul contrat. Diagnostic du parc et plan de maintenance, rappel dans l'heure."
+  },
   "titre_h1": "Full service : toute votre maintenance, un seul partenaire",
   "contenu": {
     "gabarit": "offre",

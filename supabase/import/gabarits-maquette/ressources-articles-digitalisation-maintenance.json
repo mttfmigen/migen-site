@@ -1,5 +1,9 @@
 {
   "url": "/ressources/articles/digitalisation-maintenance/",
+  "seo": {
+    "meta_title": "Digitalisation maintenance : le guide complet | Migen",
+    "meta_description": "Digitalisation maintenance : définition, méthode pas à pas, exemple concret et erreurs à éviter, par des techniciens qui interviennent chaque jour."
+  },
   "titre_h1": "Digitalisation maintenance",
   "contenu": {
     "gabarit": "ressource",

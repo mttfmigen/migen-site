@@ -1,5 +1,9 @@
 {
   "url": "/offres/chantier/transfert-de-production/",
+  "seo": {
+    "meta_title": "Déplacer une ligne ou une usine | Migen",
+    "meta_description": "Transfert de production : audit, phasage, démontage, remontage et redémarrage de vos lignes sur le nouveau site. Rappel dans l'heure au 04 78 33 72 05."
+  },
   "titre_h1": "Transfert de production",
   "contenu": {
     "gabarit": "offre",

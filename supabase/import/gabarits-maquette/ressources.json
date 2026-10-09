@@ -1,5 +1,9 @@
 {
   "url": "/ressources/",
+  "seo": {
+    "meta_title": "Guide maintenance industrielle | Migen",
+    "meta_description": "Guide maintenance industrielle : nos guides et fiches pratiques de maintenance industrielle, écrits par nos techniciens."
+  },
   "titre_h1": "Guide maintenance industrielle",
   "source": "maquette/rendu/ressources.html, transcrite mot pour mot (gabarit générique édito de la maquette)",
   "phrases_retirees": [

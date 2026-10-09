@@ -1,5 +1,9 @@
 {
   "url": "/guides/choisir-une-entreprise-de-maintenance/",
+  "seo": {
+    "meta_title": "Choisir son prestataire de maintenance | Migen",
+    "meta_description": "Entreprise maintenance industrielle : les critères qui comptent, les questions à poser en rendez-vous, les signaux d'alerte et comment comparer deux devis."
+  },
   "titre_h1": "Comment choisir une entreprise de maintenance industrielle",
   "source": "maquette/rendu/guides--choisir-une-entreprise-de-maintenance.html, transcrite mot pour mot (gabarit générique édito de la maquette)",
   "phrases_retirees": [],

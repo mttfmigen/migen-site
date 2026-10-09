@@ -1,5 +1,9 @@
 {
   "url": "/ressources/articles/tpm/",
+  "seo": {
+    "meta_title": "TPM maintenance productive totale : la méthode | Migen",
+    "meta_description": "TPM maintenance productive totale : définition, 8 piliers, mise en œuvre et exemple terrain, expliqués par des techniciens de maintenance industrielle."
+  },
   "titre_h1": "TPM, la maintenance productive totale",
   "contenu": {
     "gabarit": "ressource",

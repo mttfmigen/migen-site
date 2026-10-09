@@ -1,5 +1,9 @@
 {
   "url": "/ressources/process/preparer-un-arret-technique/",
+  "seo": {
+    "meta_title": "Préparation arrêt technique | Migen",
+    "meta_description": "Préparation arrêt technique : définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Préparation arrêt technique",
   "contenu": {
     "gabarit": "ressource",

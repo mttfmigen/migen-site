@@ -1,5 +1,9 @@
 {
   "url": "/expertises/electrique/",
+  "seo": {
+    "meta_title": "Électricien de maintenance industrielle | Migen",
+    "meta_description": "Maintenance électrique industrielle : armoires, moteurs, variateurs, thermographie. Techniciens habilités partout en France, rappel dans l'heure."
+  },
   "titre_h1": "Maintenance électrique industrielle : le défaut trouvé avant qu’il ne coupe la ligne",
   "contenu": {
     "gabarit": "domaine",

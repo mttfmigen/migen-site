@@ -1,5 +1,9 @@
 {
   "url": "/implantations/",
+  "seo": {
+    "meta_title": "Maintenance industrielle France : réseau | Migen",
+    "meta_description": "Maintenance industrielle France : 4 agences, Lyon (siège), Montréal, Dubaï et Madrid, 10 hubs de techniciens. Rappel dans l'heure, astreinte."
+  },
   "titre_h1": "Un seul partenaire maintenance pour tous vos sites",
   "contenu": {
     "gabarit": "implantations",

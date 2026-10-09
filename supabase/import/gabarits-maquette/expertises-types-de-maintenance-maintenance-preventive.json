@@ -1,6 +1,10 @@
 {
   "_source": "maquette/rendu/expertises--types-de-maintenance--maintenance-preventive.html (07/10 21h12, 17 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (entités décodées, apostrophes de la capture conservées), contrôlé par components/site/expertises/specialite/verification-specialite.tsx. CHIFFRES : les trois cartes de la capture, « +200 / Clients industriels accompagnés » compris (règle client : « +200 clients », jamais « réguliers »). PHOTOS MESURÉES, PAS CHOISIES : octets de chaque blob du rail des références de la maquette vivante (localhost:4352/voir.html, 08/10) rapprochés de public/assets/web par sha256 complet, dans l'ordre des cartes ; ordre des clients vérifié identique à la capture. « Marques maintenues » absente de la capture, donc pas de marquesFamille. Problème dessiné « panneau-sombre », aucune photo (problemePhoto null). « 02 Domaines » (photos lues dans la capture, team-grind-front, team-electric, team-grind-close), « Complément 2 » (6 cellules) et « Complément 4 » portés. PHRASES NON RENDUES : Complément 2, puce « La conditionnelle : l'état réel commande. », « Chaque composant va au bout de sa vie utile, au prix d'instrumentation et de relevés réguliers. » (interdits « prix », « réguliers ») ; 09 Questions, « Combien coûte un programme de maintenance préventive ? », « La vraie comparaison n'est pas le prix du préventif seul, mais sa différence avec le coût de vos arrêts subis sur douze mois. » (interdit « prix »).",
   "url": "/expertises/types-de-maintenance/maintenance-preventive/",
+  "seo": {
+    "meta_title": "Plan de maintenance préventive tenu | Migen",
+    "meta_description": "Maintenance préventive : définition, les 3 types, le plan en 5 étapes et les indicateurs. Puis qui exécute les campagnes quand vos équipes sont prises."
+  },
   "titre_h1": "Maintenance préventive : chaque intervention planifiée, c’est un arrêt subi en moins",
   "contenu": {
     "gabarit": "specialite",

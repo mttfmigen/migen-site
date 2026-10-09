@@ -1,5 +1,9 @@
 {
   "url": "/ressources/articles/gmao/",
+  "seo": {
+    "meta_title": "Gestion de maintenance assistée par ordinateur | Migen",
+    "meta_description": "Gestion de maintenance assistée par ordinateur : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Gestion de maintenance assistée par ordinateur",
   "contenu": {
     "gabarit": "ressource",

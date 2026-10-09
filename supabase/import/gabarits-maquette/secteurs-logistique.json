@@ -1,5 +1,9 @@
 {
   "url": "/secteurs/logistique/",
+  "seo": {
+    "meta_title": "Maintenance entrepôt et convoyage | Migen",
+    "meta_description": "Maintenance équipements logistiques : convoyeurs, tri, quais, transstockeurs. Disponibilité mesurée, astreinte réelle. AMAZON, GLS, VEEPEE."
+  },
   "titre_h1": "Vos commandes partent ce soir. Même en plein pic.",
   "source": "dessin : maquette/rendu/secteurs--logistique.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {

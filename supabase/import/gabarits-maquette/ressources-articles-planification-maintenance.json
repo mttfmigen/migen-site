@@ -1,5 +1,9 @@
 {
   "url": "/ressources/articles/planification-maintenance/",
+  "seo": {
+    "meta_title": "Planning de maintenance | Migen",
+    "meta_description": "Planning de maintenance : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Planning de maintenance",
   "contenu": {
     "gabarit": "ressource",

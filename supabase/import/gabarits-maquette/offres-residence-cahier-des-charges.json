@@ -1,5 +1,9 @@
 {
   "url": "/offres/residence/cahier-des-charges/",
+  "seo": {
+    "meta_title": "Trame de consultation maintenance | Migen",
+    "meta_description": "Cahier des charges maintenance : la trame en 8 sections, la méthode de rédaction, la grille d'évaluation des offres."
+  },
   "titre_h1": "Cahier des charges de maintenance : la trame à reprendre",
   "contenu": {
     "gabarit": "offre",

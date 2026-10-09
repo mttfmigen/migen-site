@@ -1,5 +1,9 @@
 {
   "url": "/preuves/jeld-wen/",
+  "seo": {
+    "meta_title": "Cas Jeld-Wen : Maintenance curative des machines à| Migen",
+    "meta_description": "Jeld-Wen : Migen renforce la maintenance curative d'un site organisé en 2x8, sur un parc de machines à commande."
+  },
   "titre_h1": "Des commandes numériques remises en route à chaque équipe",
   "contenu": {
     "gabarit": "etude-de-cas",

@@ -1,397 +1,401 @@
 {
- "url": "/carriere/electromecanicien/",
- "titre_h1": "Électromécanicien",
- "mot_cle": "electromecanicien",
- "contenu": {
-  "gabarit": "metier",
-  "heros": {
-   "pastille": "Métier",
-   "chapeau": "Une machine s'arrête, personne ne sait si le défaut vient du moteur ou du circuit électrique, et c'est l'électromécanicien qu'on appelle. Ce métier de maintenance industrielle tient la production debout, entre mécanique et électricité.",
-   "paragraphes": [
-    "Cette fiche métier détaille les missions, la formation, les compétences et le salaire de l'électromécanicien. Elle complète le hub [Métiers de la maintenance](/carriere/), qui présente les sept métiers de la filière. Le service rendu est simple : garder chaque équipement de production en état de marche.",
-    "Migen recrute ce professionnel de la maintenance sur des équipements et des systèmes industriels variés, partout en France. Le regard posé ici est celui d'un employeur qui sélectionne chaque semaine, pas d'une fiche métier générique.",
-    "Métier de terrain, technique et polyvalent, l'électromécanicien intervient dans presque tous les secteurs industriels : agroalimentaire, énergie, automobile, aéronautique. Un travail où chaque installation compte."
-   ],
-   "chiffre": {
-    "valeur": "10 %",
-    "texte": "des techniciens retenus, après un test technique et un entretien"
-   },
-   "photo": {
-    "src": "/assets/web/mq-17e2f3bce95f.jpg",
-    "alt": "Technicien migen en intervention"
-   }
+  "url": "/carriere/electromecanicien/",
+  "seo": {
+    "meta_title": "Électromécanicien | Migen",
+    "meta_description": "Électromécanicien : missions, habilitations, formation et salaire du métier. Migen recrute des électromécaniciens de maintenance industrielle partout en France."
   },
-  "sections": [
-   {
-    "type": "chiffres",
-    "items": [
-     {
-      "valeur": "+100",
-      "texte": "collaborateurs, techniciens salariés de Migen"
-     },
-     {
-      "valeur": "10 %",
-      "texte": "des techniciens retenus après évaluation"
-     },
-     {
-      "valeur": "4 agences",
-      "texte": "et des hubs de techniciens partout en France"
-     },
-     {
-      "valeur": "CDI",
-      "texte": "alternance et stage, à tous les niveaux"
-     }
-    ]
-   },
-   {
-    "type": "bento",
-    "surtitre": "01 · Au quotidien",
-    "titre": "Ce que fait un électromécanicien au quotidien",
-    "intros": [
-     "Machine en panne, ligne de produits à l'arrêt, redémarrage qui traîne : ce technicien diagnostique ce qui bloque, côté électrique comme côté mécanique. Ses travaux couvrent tout le cycle de vie d'un équipement de production."
-    ],
-    "cartes": [
-     {
-      "titre": "Diagnostiquer une panne",
-      "texte": "Identifier l'origine d'un défaut sur un moteur, un capteur ou une armoire, avant qu'il n'arrête la production sur le site."
-     },
-     {
-      "titre": "Réparer et remplacer les composants",
-      "texte": "Changer un roulement, un variateur, un roulement à billes ou un élément de câblage usé, remettre la machine en service."
-     },
-     {
-      "titre": "Assurer la maintenance préventive",
-      "texte": "Contrôler, nettoyer et régler les équipements selon un plan, éviter que le défaut mineur ne devienne un arrêt."
-     },
-     {
-      "titre": "Mettre en service une installation",
-      "texte": "Suivre le montage, tester chaque fonction, valider le fonctionnement avant la mise en place définitive."
-     },
-     {
-      "titre": "Régler et optimiser les machines",
-      "texte": "Le réglage fin d'un système de production fait gagner en fiabilité et en cadence."
-     },
-     {
-      "titre": "Contrôler les connexions",
-      "texte": "Vérifier chaque connexion électrique, identifier un point faible, effectuer la reprise avant qu'il ne lâche."
-     },
-     {
-      "titre": "Tracer chaque intervention",
-      "texte": "Rédiger le compte rendu des travaux dans la GMAO, un réflexe attendu par la majorité des entreprises industrielles."
-     }
-    ]
-   },
-   {
-    "type": "tableau",
-    "surtitre": "02 · Carrière",
-    "titre": "Les équipements que l'électromécanicien maîtrise",
-    "intros": [
-     "Le métier s'exerce à la frontière de l'électricité et de la mécanique. Un bon électromécanicien passe de l'armoire électrique au réducteur, du roulement au variateur, sans changer de posture.",
-     "Selon l'entreprise, le matériel change : agroalimentaire, logistique et transport, énergie renouvelable ou construction n'exploitent pas les mêmes machines."
-    ],
-    "entetes": {
-     "gauche": "Domaine",
-     "droite": "Ce qui est couvert"
+  "titre_h1": "Électromécanicien",
+  "mot_cle": "electromecanicien",
+  "contenu": {
+    "gabarit": "metier",
+    "heros": {
+      "pastille": "Métier",
+      "chapeau": "Une machine s'arrête, personne ne sait si le défaut vient du moteur ou du circuit électrique, et c'est l'électromécanicien qu'on appelle. Ce métier de maintenance industrielle tient la production debout, entre mécanique et électricité.",
+      "paragraphes": [
+        "Cette fiche métier détaille les missions, la formation, les compétences et le salaire de l'électromécanicien. Elle complète le hub [Métiers de la maintenance](/carriere/), qui présente les sept métiers de la filière. Le service rendu est simple : garder chaque équipement de production en état de marche.",
+        "Migen recrute ce professionnel de la maintenance sur des équipements et des systèmes industriels variés, partout en France. Le regard posé ici est celui d'un employeur qui sélectionne chaque semaine, pas d'une fiche métier générique.",
+        "Métier de terrain, technique et polyvalent, l'électromécanicien intervient dans presque tous les secteurs industriels : agroalimentaire, énergie, automobile, aéronautique. Un travail où chaque installation compte."
+      ],
+      "chiffre": {
+        "valeur": "10 %",
+        "texte": "des techniciens retenus, après un test technique et un entretien"
+      },
+      "photo": {
+        "src": "/assets/web/mq-17e2f3bce95f.jpg",
+        "alt": "Technicien migen en intervention"
+      }
     },
-    "lignes": [
-     {
-      "gauche": "Électrique",
-      "droite": "Armoires, câblage, moteurs, variateurs, connexion des équipements"
-     },
-     {
-      "gauche": "Mécanique",
-      "droite": "Roulements, réducteurs, transmissions, engins de levage"
-     },
-     {
-      "gauche": "Automatisme",
-      "droite": "Capteurs, actionneurs, interface avec l'automate industriel"
-     },
-     {
-      "gauche": "Électronique",
-      "droite": "Cartes, composants, mesure et contrôle des signaux"
-     },
-     {
-      "gauche": "Énergie",
-      "droite": "Réseaux industriels, énergie renouvelable, installations photovoltaïque"
-     }
+    "sections": [
+      {
+        "type": "chiffres",
+        "items": [
+          {
+            "valeur": "+100",
+            "texte": "collaborateurs, techniciens salariés de Migen"
+          },
+          {
+            "valeur": "10 %",
+            "texte": "des techniciens retenus après évaluation"
+          },
+          {
+            "valeur": "4 agences",
+            "texte": "et des hubs de techniciens partout en France"
+          },
+          {
+            "valeur": "CDI",
+            "texte": "alternance et stage, à tous les niveaux"
+          }
+        ]
+      },
+      {
+        "type": "bento",
+        "surtitre": "01 · Au quotidien",
+        "titre": "Ce que fait un électromécanicien au quotidien",
+        "intros": [
+          "Machine en panne, ligne de produits à l'arrêt, redémarrage qui traîne : ce technicien diagnostique ce qui bloque, côté électrique comme côté mécanique. Ses travaux couvrent tout le cycle de vie d'un équipement de production."
+        ],
+        "cartes": [
+          {
+            "titre": "Diagnostiquer une panne",
+            "texte": "Identifier l'origine d'un défaut sur un moteur, un capteur ou une armoire, avant qu'il n'arrête la production sur le site."
+          },
+          {
+            "titre": "Réparer et remplacer les composants",
+            "texte": "Changer un roulement, un variateur, un roulement à billes ou un élément de câblage usé, remettre la machine en service."
+          },
+          {
+            "titre": "Assurer la maintenance préventive",
+            "texte": "Contrôler, nettoyer et régler les équipements selon un plan, éviter que le défaut mineur ne devienne un arrêt."
+          },
+          {
+            "titre": "Mettre en service une installation",
+            "texte": "Suivre le montage, tester chaque fonction, valider le fonctionnement avant la mise en place définitive."
+          },
+          {
+            "titre": "Régler et optimiser les machines",
+            "texte": "Le réglage fin d'un système de production fait gagner en fiabilité et en cadence."
+          },
+          {
+            "titre": "Contrôler les connexions",
+            "texte": "Vérifier chaque connexion électrique, identifier un point faible, effectuer la reprise avant qu'il ne lâche."
+          },
+          {
+            "titre": "Tracer chaque intervention",
+            "texte": "Rédiger le compte rendu des travaux dans la GMAO, un réflexe attendu par la majorité des entreprises industrielles."
+          }
+        ]
+      },
+      {
+        "type": "tableau",
+        "surtitre": "02 · Carrière",
+        "titre": "Les équipements que l'électromécanicien maîtrise",
+        "intros": [
+          "Le métier s'exerce à la frontière de l'électricité et de la mécanique. Un bon électromécanicien passe de l'armoire électrique au réducteur, du roulement au variateur, sans changer de posture.",
+          "Selon l'entreprise, le matériel change : agroalimentaire, logistique et transport, énergie renouvelable ou construction n'exploitent pas les mêmes machines."
+        ],
+        "entetes": {
+          "gauche": "Domaine",
+          "droite": "Ce qui est couvert"
+        },
+        "lignes": [
+          {
+            "gauche": "Électrique",
+            "droite": "Armoires, câblage, moteurs, variateurs, connexion des équipements"
+          },
+          {
+            "gauche": "Mécanique",
+            "droite": "Roulements, réducteurs, transmissions, engins de levage"
+          },
+          {
+            "gauche": "Automatisme",
+            "droite": "Capteurs, actionneurs, interface avec l'automate industriel"
+          },
+          {
+            "gauche": "Électronique",
+            "droite": "Cartes, composants, mesure et contrôle des signaux"
+          },
+          {
+            "gauche": "Énergie",
+            "droite": "Réseaux industriels, énergie renouvelable, installations photovoltaïque"
+          }
+        ]
+      },
+      {
+        "type": "liste",
+        "surtitre": "03 · Sécurité",
+        "titre": "Habilitations, certifications et sécurité",
+        "intros": [
+          "Un équipement électromécanique reste raccordé à une installation sous tension : la sécurité n'est jamais optionnelle. Habilitations et certification se contrôlent avant chaque mission."
+        ],
+        "cartes": [
+          {
+            "titre": "Habilitation électrique BR ou B2V",
+            "texte": "Indispensable pour intervenir sur une armoire sous tension, selon le niveau de responsabilité."
+          },
+          {
+            "titre": "Consignation et déconsignation",
+            "texte": "Maîtriser la procédure avant toute opération mécanique ou électrique sur une machine."
+          },
+          {
+            "titre": "Certificat de sécurité machine",
+            "texte": "Un certificat à jour rassure le recruteur comme le client sur chaque site."
+          }
+        ],
+        "bande": {
+          "texte": "Chez Migen, les habilitations sont vérifiées avant chaque intervention : un point de contrôle systématique dès le recrutement."
+        }
+      },
+      {
+        "type": "etapes",
+        "surtitre": "04 · Formation",
+        "titre": "Devenir électromécanicien : formation et parcours",
+        "intros": [
+          "Le métier se construit par étapes, du bac professionnel jusqu'à l'expérience de terrain. Voici le parcours type suivi par nos propres équipes pour devenir électromécanicien.",
+          "Le métier voisin d'électricien ou d'électrotechnicien offre une passerelle vers l'électromécanique. Une reconversion depuis un domaine électronique ou mécanique reste possible avec une formation professionnelle ciblée : un titre professionnel préparé chez un organisme agréé permet également d'accéder au métier. Un site d'orientation ou France Travail recensent les études et la qualification adaptées, jusqu'au métier de technicien de maintenance.",
+          "Être électromécanicien, c'est intervenir vite et juste. Un salarié qui maîtrise une nouvelle machine devient vite indispensable à la réalisation de la production, et peut viser un rôle de technicien de maintenance ou une étude en bureau des méthodes."
+        ],
+        "etapes": [
+          {
+            "titre": "Le bac professionnel",
+            "texte": "Un bac pro maintenance des équipements industriels ou électrotechnique, de niveau bac, première marche vers le métier."
+          },
+          {
+            "titre": "Le BTS ou le BUT",
+            "texte": "Maintenance des systèmes, génie électrique ou BTS conception des processus, le socle technique attendu par les recruteurs."
+          },
+          {
+            "titre": "La licence professionnelle",
+            "texte": "Une licence en maintenance ou en informatique industrielle ouvre des systèmes de production plus complexes."
+          },
+          {
+            "titre": "La formation en alternance",
+            "texte": "L'apprentissage en entreprise reste la voie royale pour bâtir l'expérience réelle, du premier emploi à l'autonomie."
+          }
+        ]
+      },
+      {
+        "type": "bento",
+        "surtitre": "05 · Compétences",
+        "titre": "Les compétences qui font la différence",
+        "intros": [
+          "Un recruteur cherche trois choses sur un CV d'électromécanicien : la double compétence électrique et mécanique, la méthode de diagnostic, l'autonomie de terrain."
+        ],
+        "cartes": [
+          {
+            "titre": "Double compétence électrique et mécanique",
+            "texte": "Savoir passer du moteur au circuit sans appeler deux techniciens."
+          },
+          {
+            "titre": "Lecture de schémas et de plans",
+            "texte": "Comprendre une installation avant d'intervenir, préalable à toute réparation."
+          },
+          {
+            "titre": "Méthode de diagnostic",
+            "texte": "Isoler la cause d'un défaut sur un système complexe, sans multiplier les opérations inutiles."
+          },
+          {
+            "titre": "Rigueur et méthode",
+            "texte": "Vérifier chaque paramètre avant remise en route, respecter les procédures de consignation."
+          },
+          {
+            "titre": "Anglais technique",
+            "texte": "Lire une documentation constructeur en anglais, information de plus en plus utile sur les machines importées."
+          },
+          {
+            "titre": "Sens du terrain",
+            "texte": "Expliquer un défaut à une équipe de production, une connaissance humaine autant que technique."
+          },
+          {
+            "titre": "Veille constante",
+            "texte": "Suivre les nouvelles technologies, l'automate et l'outil numérique qui entrent dans l'atelier."
+          }
+        ],
+        "bande": {
+          "texte": "Le détail figure sur la page [compétences électromécanicien](/carriere/electromecanicien/competences/), avec les savoir-faire attendus par profil."
+        }
+      },
+      {
+        "type": "liste",
+        "surtitre": "06 · Salaire",
+        "titre": "Salaire d'un électromécanicien",
+        "intros": [
+          "La rémunération dépend de plusieurs facteurs, bien avant la négociation. Cinq d'entre eux expliquent l'essentiel des écarts de salaire brut, exprimé par mois, sur le marché de l'emploi."
+        ],
+        "cartes": [
+          {
+            "titre": "L'expérience",
+            "texte": "Le premier poste paie la promesse, les suivants paient les preuves techniques."
+          },
+          {
+            "titre": "Le secteur d'activité",
+            "texte": "Énergie, aéronautique et industrie pharmaceutique paient au-dessus de la moyenne."
+          },
+          {
+            "titre": "La région",
+            "texte": "Les bassins industriels tendus tirent les propositions vers le haut."
+          },
+          {
+            "titre": "La taille de l'entreprise",
+            "texte": "Un grand groupe offre des primes, une PME offre polyvalence et autonomie."
+          },
+          {
+            "titre": "Les certifications",
+            "texte": "Une certification à jour et la double compétence élargissent le marché."
+          }
+        ],
+        "bande": {
+          "texte": "Le détail complet, avec les fourchettes par profil et par secteur, est sur la page [salaire électromécanicien](/carriere/electromecanicien/salaire/)."
+        }
+      },
+      {
+        "type": "duo",
+        "surtitre": "07 · Carrière",
+        "titre": "Emploi et recrutement : qui cherche un électromécanicien",
+        "intros": [
+          "L'industrie manque d'électromécaniciens et d'électromécaniciennes. Les offres d'emploi le montrent, du site de France Travail au cabinet de recrutement spécialisé, où chaque recruteur peine à trouver le bon profil."
+        ],
+        "cartes": [
+          {
+            "titre": "Les industriels de production",
+            "texte": "Agroalimentaire, énergie, automobile, aéronautique, chaque recruteur ouvre des offres en continu."
+          },
+          {
+            "titre": "Les entreprises de services techniques",
+            "texte": "Un recruteur cherche des profils capables d'itinérance sur plusieurs chantiers."
+          },
+          {
+            "titre": "Les cabinets et recruteurs spécialisés",
+            "texte": "Le recruteur en maintenance industrielle reste en tension permanente."
+          },
+          {
+            "titre": "Les projets d'énergie renouvelable",
+            "texte": "Construction et exploitation photovoltaïque recrutent des électromécaniciens de terrain."
+          }
+        ],
+        "bande": {
+          "texte": "Un recruteur exigeant regarde la qualification, l'expérience et la capacité à travailler seul dans son environnement. Chez Migen, ce même travail de sélection est fait en amont, en lien avec chaque fournisseur et client industriel."
+        }
+      },
+      {
+        "type": "bento",
+        "surtitre": "08 · Carrière",
+        "titre": "Électromécanicien chez Migen : le cadre et les moyens",
+        "intros": [
+          "Voici ce que Migen propose comme employeur, au-delà de l'offre d'emploi classique."
+        ],
+        "cartes": [
+          {
+            "titre": "De la variété, pas de routine",
+            "texte": "Dépannage, réparation, mise en service, préventif, chez des clients de tous secteurs."
+          },
+          {
+            "titre": "Un collectif technique complet",
+            "texte": "Plus de 120 techniciens, 4 agences (Lyon, Montréal, Dubaï, Madrid), une équipe où l'entraide fonctionne."
+          },
+          {
+            "titre": "Une sélection exigeante et assumée",
+            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus."
+          },
+          {
+            "titre": "Un accueil structuré",
+            "texte": "Un référent accompagne chaque prise de poste, habilitations vérifiées et outillage fourni."
+          },
+          {
+            "titre": "Une couverture nationale",
+            "texte": "Des missions partout en France, en résidence ou en itinérance, selon votre profil."
+          }
+        ]
+      },
+      {
+        "type": "etapes",
+        "surtitre": "09 · Carrière",
+        "titre": "Comment rejoindre nos équipes",
+        "intros": [
+          "Le processus est direct, sans dossier interminable. Il consiste en quatre étapes, du premier contact à l'arrivée sur site. Vous devez être disponible et prêt à agir sur le terrain, comme un technicien de maintenance confirmé."
+        ],
+        "etapes": [
+          {
+            "titre": "Un échange avec un chargé d'affaires",
+            "texte": "Vous décrivez votre parcours, vos équipements maîtrisés, vos disponibilités."
+          },
+          {
+            "titre": "Un entretien technique et comportemental",
+            "texte": "Mené par un professionnel du métier, pour vérifier la maîtrise réelle, pas seulement le CV. Vous devez être à l'aise sur le terrain."
+          },
+          {
+            "titre": "Une proposition de mission",
+            "texte": "Résidence ou itinérance, selon votre profil et les besoins de nos clients."
+          },
+          {
+            "titre": "L'intégration",
+            "texte": "Un référent vous accompagne à l'arrivée, habilitations et outillage prêts dès le premier jour, sur une ligne de produits comme sur un parc machines."
+          }
+        ]
+      },
+      {
+        "type": "faq",
+        "surtitre": "10 · Questions",
+        "titre": "Questions fréquentes",
+        "questions": [
+          {
+            "question": "Quelle est la différence entre un électromécanicien et un électrotechnicien ?",
+            "reponse": "L'électrotechnicien se concentre sur la partie électrique et les circuits ; l'électromécanicien couvre l'électrique et la mécanique sur le même équipement. Sur le terrain, les deux profils se recoupent souvent, surtout sur les petits sites industriels."
+          },
+          {
+            "question": "Quel diplôme faut-il pour devenir électromécanicien ?",
+            "reponse": "Un bac pro maintenance des équipements industriels ou électrotechnique, suivi d'un BTS, d'un BUT ou d'une licence professionnelle en maintenance des systèmes. La formation en alternance reste la voie la plus efficace pour bâtir l'expérience."
+          },
+          {
+            "question": "Quelles entreprises recrutent des électromécaniciens ?",
+            "reponse": "Toute l'industrie de production : agroalimentaire, énergie, logistique et transport. Les sites les plus automatisés recrutent en continu, faute de candidats en nombre suffisant sur le marché de l'emploi technicien."
+          },
+          {
+            "question": "Un électromécanicien peut-il évoluer vers un autre métier ?",
+            "reponse": "Oui : l'évolution mène vers technicien de maintenance, automaticien, puis vers des fonctions d'encadrement comme responsable maintenance. L'expérience de terrain ouvre aussi la porte au bureau des méthodes."
+          },
+          {
+            "question": "Combien gagne un électromécanicien ?",
+            "reponse": "Le salaire brut varie selon l'expérience et le secteur : le détail figure sur la page salaire électromécanicien, avec les repères de marché par profil."
+          },
+          {
+            "question": "Comment Migen évalue-t-elle un électromécanicien avant de le proposer à un client ?",
+            "reponse": "Un entretien technique mené par un professionnel du métier, puis un entretien comportemental. Seuls 10 % des techniciens sont retenus, et les résultats sont transmis au client avant toute décision."
+          }
+        ]
+      },
+      {
+        "type": "postuler"
+      },
+      {
+        "type": "liens",
+        "items": [
+          {
+            "libelle": "Métiers de la maintenance",
+            "href": "/carriere/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg"
+          },
+          {
+            "libelle": "Compétences électromécanicien",
+            "href": "/carriere/electromecanicien/competences/",
+            "photo": "/assets/web/mq-056f3c250981.jpg"
+          },
+          {
+            "libelle": "Salaire électromécanicien",
+            "href": "/carriere/electromecanicien/salaire/",
+            "photo": "/assets/web/mq-948c28bcda08.jpg"
+          },
+          {
+            "libelle": "Automaticien",
+            "href": "/carriere/automaticien/",
+            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+          },
+          {
+            "libelle": "Responsable maintenance",
+            "href": "/carriere/responsable-maintenance/",
+            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+          }
+        ]
+      }
     ]
-   },
-   {
-    "type": "liste",
-    "surtitre": "03 · Sécurité",
-    "titre": "Habilitations, certifications et sécurité",
-    "intros": [
-     "Un équipement électromécanique reste raccordé à une installation sous tension : la sécurité n'est jamais optionnelle. Habilitations et certification se contrôlent avant chaque mission."
-    ],
-    "cartes": [
-     {
-      "titre": "Habilitation électrique BR ou B2V",
-      "texte": "Indispensable pour intervenir sur une armoire sous tension, selon le niveau de responsabilité."
-     },
-     {
-      "titre": "Consignation et déconsignation",
-      "texte": "Maîtriser la procédure avant toute opération mécanique ou électrique sur une machine."
-     },
-     {
-      "titre": "Certificat de sécurité machine",
-      "texte": "Un certificat à jour rassure le recruteur comme le client sur chaque site."
-     }
-    ],
-    "bande": {
-     "texte": "Chez Migen, les habilitations sont vérifiées avant chaque intervention : un point de contrôle systématique dès le recrutement."
-    }
-   },
-   {
-    "type": "etapes",
-    "surtitre": "04 · Formation",
-    "titre": "Devenir électromécanicien : formation et parcours",
-    "intros": [
-     "Le métier se construit par étapes, du bac professionnel jusqu'à l'expérience de terrain. Voici le parcours type suivi par nos propres équipes pour devenir électromécanicien.",
-     "Le métier voisin d'électricien ou d'électrotechnicien offre une passerelle vers l'électromécanique. Une reconversion depuis un domaine électronique ou mécanique reste possible avec une formation professionnelle ciblée : un titre professionnel préparé chez un organisme agréé permet également d'accéder au métier. Un site d'orientation ou France Travail recensent les études et la qualification adaptées, jusqu'au métier de technicien de maintenance.",
-     "Être électromécanicien, c'est intervenir vite et juste. Un salarié qui maîtrise une nouvelle machine devient vite indispensable à la réalisation de la production, et peut viser un rôle de technicien de maintenance ou une étude en bureau des méthodes."
-    ],
-    "etapes": [
-     {
-      "titre": "Le bac professionnel",
-      "texte": "Un bac pro maintenance des équipements industriels ou électrotechnique, de niveau bac, première marche vers le métier."
-     },
-     {
-      "titre": "Le BTS ou le BUT",
-      "texte": "Maintenance des systèmes, génie électrique ou BTS conception des processus, le socle technique attendu par les recruteurs."
-     },
-     {
-      "titre": "La licence professionnelle",
-      "texte": "Une licence en maintenance ou en informatique industrielle ouvre des systèmes de production plus complexes."
-     },
-     {
-      "titre": "La formation en alternance",
-      "texte": "L'apprentissage en entreprise reste la voie royale pour bâtir l'expérience réelle, du premier emploi à l'autonomie."
-     }
-    ]
-   },
-   {
-    "type": "bento",
-    "surtitre": "05 · Compétences",
-    "titre": "Les compétences qui font la différence",
-    "intros": [
-     "Un recruteur cherche trois choses sur un CV d'électromécanicien : la double compétence électrique et mécanique, la méthode de diagnostic, l'autonomie de terrain."
-    ],
-    "cartes": [
-     {
-      "titre": "Double compétence électrique et mécanique",
-      "texte": "Savoir passer du moteur au circuit sans appeler deux techniciens."
-     },
-     {
-      "titre": "Lecture de schémas et de plans",
-      "texte": "Comprendre une installation avant d'intervenir, préalable à toute réparation."
-     },
-     {
-      "titre": "Méthode de diagnostic",
-      "texte": "Isoler la cause d'un défaut sur un système complexe, sans multiplier les opérations inutiles."
-     },
-     {
-      "titre": "Rigueur et méthode",
-      "texte": "Vérifier chaque paramètre avant remise en route, respecter les procédures de consignation."
-     },
-     {
-      "titre": "Anglais technique",
-      "texte": "Lire une documentation constructeur en anglais, information de plus en plus utile sur les machines importées."
-     },
-     {
-      "titre": "Sens du terrain",
-      "texte": "Expliquer un défaut à une équipe de production, une connaissance humaine autant que technique."
-     },
-     {
-      "titre": "Veille constante",
-      "texte": "Suivre les nouvelles technologies, l'automate et l'outil numérique qui entrent dans l'atelier."
-     }
-    ],
-    "bande": {
-     "texte": "Le détail figure sur la page [compétences électromécanicien](/carriere/electromecanicien/competences/), avec les savoir-faire attendus par profil."
-    }
-   },
-   {
-    "type": "liste",
-    "surtitre": "06 · Salaire",
-    "titre": "Salaire d'un électromécanicien",
-    "intros": [
-     "La rémunération dépend de plusieurs facteurs, bien avant la négociation. Cinq d'entre eux expliquent l'essentiel des écarts de salaire brut, exprimé par mois, sur le marché de l'emploi."
-    ],
-    "cartes": [
-     {
-      "titre": "L'expérience",
-      "texte": "Le premier poste paie la promesse, les suivants paient les preuves techniques."
-     },
-     {
-      "titre": "Le secteur d'activité",
-      "texte": "Énergie, aéronautique et industrie pharmaceutique paient au-dessus de la moyenne."
-     },
-     {
-      "titre": "La région",
-      "texte": "Les bassins industriels tendus tirent les propositions vers le haut."
-     },
-     {
-      "titre": "La taille de l'entreprise",
-      "texte": "Un grand groupe offre des primes, une PME offre polyvalence et autonomie."
-     },
-     {
-      "titre": "Les certifications",
-      "texte": "Une certification à jour et la double compétence élargissent le marché."
-     }
-    ],
-    "bande": {
-     "texte": "Le détail complet, avec les fourchettes par profil et par secteur, est sur la page [salaire électromécanicien](/carriere/electromecanicien/salaire/)."
-    }
-   },
-   {
-    "type": "duo",
-    "surtitre": "07 · Carrière",
-    "titre": "Emploi et recrutement : qui cherche un électromécanicien",
-    "intros": [
-     "L'industrie manque d'électromécaniciens et d'électromécaniciennes. Les offres d'emploi le montrent, du site de France Travail au cabinet de recrutement spécialisé, où chaque recruteur peine à trouver le bon profil."
-    ],
-    "cartes": [
-     {
-      "titre": "Les industriels de production",
-      "texte": "Agroalimentaire, énergie, automobile, aéronautique, chaque recruteur ouvre des offres en continu."
-     },
-     {
-      "titre": "Les entreprises de services techniques",
-      "texte": "Un recruteur cherche des profils capables d'itinérance sur plusieurs chantiers."
-     },
-     {
-      "titre": "Les cabinets et recruteurs spécialisés",
-      "texte": "Le recruteur en maintenance industrielle reste en tension permanente."
-     },
-     {
-      "titre": "Les projets d'énergie renouvelable",
-      "texte": "Construction et exploitation photovoltaïque recrutent des électromécaniciens de terrain."
-     }
-    ],
-    "bande": {
-     "texte": "Un recruteur exigeant regarde la qualification, l'expérience et la capacité à travailler seul dans son environnement. Chez Migen, ce même travail de sélection est fait en amont, en lien avec chaque fournisseur et client industriel."
-    }
-   },
-   {
-    "type": "bento",
-    "surtitre": "08 · Carrière",
-    "titre": "Électromécanicien chez Migen : le cadre et les moyens",
-    "intros": [
-     "Voici ce que Migen propose comme employeur, au-delà de l'offre d'emploi classique."
-    ],
-    "cartes": [
-     {
-      "titre": "De la variété, pas de routine",
-      "texte": "Dépannage, réparation, mise en service, préventif, chez des clients de tous secteurs."
-     },
-     {
-      "titre": "Un collectif technique complet",
-      "texte": "Plus de 120 techniciens, 4 agences (Lyon, Montréal, Dubaï, Madrid), une équipe où l'entraide fonctionne."
-     },
-     {
-      "titre": "Une sélection exigeante et assumée",
-      "texte": "Entretien technique et comportemental, 10 % des techniciens retenus."
-     },
-     {
-      "titre": "Un accueil structuré",
-      "texte": "Un référent accompagne chaque prise de poste, habilitations vérifiées et outillage fourni."
-     },
-     {
-      "titre": "Une couverture nationale",
-      "texte": "Des missions partout en France, en résidence ou en itinérance, selon votre profil."
-     }
-    ]
-   },
-   {
-    "type": "etapes",
-    "surtitre": "09 · Carrière",
-    "titre": "Comment rejoindre nos équipes",
-    "intros": [
-     "Le processus est direct, sans dossier interminable. Il consiste en quatre étapes, du premier contact à l'arrivée sur site. Vous devez être disponible et prêt à agir sur le terrain, comme un technicien de maintenance confirmé."
-    ],
-    "etapes": [
-     {
-      "titre": "Un échange avec un chargé d'affaires",
-      "texte": "Vous décrivez votre parcours, vos équipements maîtrisés, vos disponibilités."
-     },
-     {
-      "titre": "Un entretien technique et comportemental",
-      "texte": "Mené par un professionnel du métier, pour vérifier la maîtrise réelle, pas seulement le CV. Vous devez être à l'aise sur le terrain."
-     },
-     {
-      "titre": "Une proposition de mission",
-      "texte": "Résidence ou itinérance, selon votre profil et les besoins de nos clients."
-     },
-     {
-      "titre": "L'intégration",
-      "texte": "Un référent vous accompagne à l'arrivée, habilitations et outillage prêts dès le premier jour, sur une ligne de produits comme sur un parc machines."
-     }
-    ]
-   },
-   {
-    "type": "faq",
-    "surtitre": "10 · Questions",
-    "titre": "Questions fréquentes",
-    "questions": [
-     {
-      "question": "Quelle est la différence entre un électromécanicien et un électrotechnicien ?",
-      "reponse": "L'électrotechnicien se concentre sur la partie électrique et les circuits ; l'électromécanicien couvre l'électrique et la mécanique sur le même équipement. Sur le terrain, les deux profils se recoupent souvent, surtout sur les petits sites industriels."
-     },
-     {
-      "question": "Quel diplôme faut-il pour devenir électromécanicien ?",
-      "reponse": "Un bac pro maintenance des équipements industriels ou électrotechnique, suivi d'un BTS, d'un BUT ou d'une licence professionnelle en maintenance des systèmes. La formation en alternance reste la voie la plus efficace pour bâtir l'expérience."
-     },
-     {
-      "question": "Quelles entreprises recrutent des électromécaniciens ?",
-      "reponse": "Toute l'industrie de production : agroalimentaire, énergie, logistique et transport. Les sites les plus automatisés recrutent en continu, faute de candidats en nombre suffisant sur le marché de l'emploi technicien."
-     },
-     {
-      "question": "Un électromécanicien peut-il évoluer vers un autre métier ?",
-      "reponse": "Oui : l'évolution mène vers technicien de maintenance, automaticien, puis vers des fonctions d'encadrement comme responsable maintenance. L'expérience de terrain ouvre aussi la porte au bureau des méthodes."
-     },
-     {
-      "question": "Combien gagne un électromécanicien ?",
-      "reponse": "Le salaire brut varie selon l'expérience et le secteur : le détail figure sur la page salaire électromécanicien, avec les repères de marché par profil."
-     },
-     {
-      "question": "Comment Migen évalue-t-elle un électromécanicien avant de le proposer à un client ?",
-      "reponse": "Un entretien technique mené par un professionnel du métier, puis un entretien comportemental. Seuls 10 % des techniciens sont retenus, et les résultats sont transmis au client avant toute décision."
-     }
-    ]
-   },
-   {
-    "type": "postuler"
-   },
-   {
-    "type": "liens",
-    "items": [
-     {
-      "libelle": "Métiers de la maintenance",
-      "href": "/carriere/",
-      "photo": "/assets/web/mq-339d39e2a674.jpg"
-     },
-     {
-      "libelle": "Compétences électromécanicien",
-      "href": "/carriere/electromecanicien/competences/",
-      "photo": "/assets/web/mq-056f3c250981.jpg"
-     },
-     {
-      "libelle": "Salaire électromécanicien",
-      "href": "/carriere/electromecanicien/salaire/",
-      "photo": "/assets/web/mq-948c28bcda08.jpg"
-     },
-     {
-      "libelle": "Automaticien",
-      "href": "/carriere/automaticien/",
-      "photo": "/assets/web/mq-17e2f3bce95f.jpg"
-     },
-     {
-      "libelle": "Responsable maintenance",
-      "href": "/carriere/responsable-maintenance/",
-      "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
-     }
-    ]
-   }
-  ]
- }
+  }
 }

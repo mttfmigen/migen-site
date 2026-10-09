@@ -1,5 +1,9 @@
 {
   "url": "/ressources/fiches-techniques/amdec/",
+  "seo": {
+    "meta_title": "Amdec | Migen",
+    "meta_description": "Amdec : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Amdec",
   "contenu": {
     "gabarit": "ressource",

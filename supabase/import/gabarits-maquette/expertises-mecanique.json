@@ -1,5 +1,9 @@
 {
   "url": "/expertises/mecanique/",
+  "seo": {
+    "meta_title": "Mécanicien de maintenance sur site | Migen",
+    "meta_description": "Maintenance mécanique industrielle : roulements, transmissions, convoyeurs, presses. Mécaniciens évalués, partout en France. Rappel dans l'heure."
+  },
   "titre_h1": "Maintenance mécanique : un roulement qui chauffe ne prévient qu’une fois",
   "contenu": {
     "gabarit": "domaine",

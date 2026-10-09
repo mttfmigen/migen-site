@@ -1,5 +1,9 @@
 {
   "url": "/ressources/fiches-pratiques/",
+  "seo": {
+    "meta_title": "Fiches pratiques de maintenance industrielle | Migen",
+    "meta_description": "Fiches pratiques de maintenance : consignation électrique, plan de prévention, permis de feu, sécurité, 5S. Des procédures écrites par nos techniciens."
+  },
   "titre_h1": "Ressources : Fiches pratiques",
   "source": "maquette/rendu/ressources--fiches-pratiques.html, transcrite mot pour mot (MigenRessource, vue rubrique)",
   "phrases_retirees": [],

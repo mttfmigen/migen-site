@@ -1,5 +1,9 @@
 {
   "url": "/secteurs/automobile/",
+  "seo": {
+    "meta_title": "Maintenance de lignes automobiles | Migen",
+    "meta_description": "Maintenance industrie automobile : takt time, cellules robotisées, changement de série, électrification. STELLANTIS, VALEO, JTEKT, AUTOLIV, EATON."
+  },
   "titre_h1": "Pas une minute de cadence perdue.",
   "source": "dessin : maquette/rendu/secteurs--automobile.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {

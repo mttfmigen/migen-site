@@ -1,5 +1,9 @@
 {
   "url": "/ressources/articles/preventive-ou-corrective/",
+  "seo": {
+    "meta_title": "Maintenance préventive et corrective | Migen",
+    "meta_description": "Maintenance préventive et corrective : définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Maintenance préventive et corrective",
   "contenu": {
     "gabarit": "ressource",

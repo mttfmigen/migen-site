@@ -1,5 +1,9 @@
 {
   "url": "/implantations/bordeaux/",
+  "seo": {
+    "meta_title": "Maintenance industrielle à Bordeaux et dans la métropole | Migen",
+    "meta_description": "Une métropole qui fait tourner dans la même journée des chais en pleine vendange, des ateliers aéronautiques de Mérignac et des plateformes logistiques."
+  },
   "titre_h1": "Maintenance industrielle à Bordeaux et dans la métropole",
   "contenu": {
     "gabarit": "ville",

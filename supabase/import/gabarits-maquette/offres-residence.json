@@ -1,5 +1,9 @@
 {
   "url": "/offres/residence/",
+  "seo": {
+    "meta_title": "Technicien de maintenance sur votre site | Migen",
+    "meta_description": "Sous-traitance maintenance : un technicien Migen intégré à votre équipe, sans charge de recrutement. 10 % des candidats."
+  },
   "titre_h1": "Sous-traitance de maintenance industrielle",
   "contenu": {
     "gabarit": "offre",

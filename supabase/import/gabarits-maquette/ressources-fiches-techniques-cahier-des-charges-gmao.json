@@ -1,5 +1,9 @@
 {
   "url": "/ressources/fiches-techniques/cahier-des-charges-gmao/",
+  "seo": {
+    "meta_title": "Cahier des charges gmao | Migen",
+    "meta_description": "Cahier des charges gmao : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Cahier des charges gmao",
   "contenu": {
     "gabarit": "ressource",

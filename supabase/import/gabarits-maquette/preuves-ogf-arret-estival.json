@@ -1,5 +1,9 @@
 {
   "url": "/preuves/ogf-arret-estival/",
+  "seo": {
+    "meta_title": "OGF : la maintenance tenue tout l'été| Migen",
+    "meta_description": "OGF renforce son équipe maintenance avec un technicien Migen pendant l'arrêt estival : équipements critiques disponibles, remise en route sans retard."
+  },
   "titre_h1": "Un été entier sans trou dans la maintenance",
   "contenu": {
     "gabarit": "etude-de-cas",

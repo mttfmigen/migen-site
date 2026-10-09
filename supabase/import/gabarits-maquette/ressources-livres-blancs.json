@@ -1,5 +1,9 @@
 {
   "url": "/ressources/livres-blancs/",
+  "seo": {
+    "meta_title": "Livres blancs maintenance industrielle | Migen",
+    "meta_description": "Nos livres blancs de maintenance industrielle : des dossiers de décision à emporter, écrits par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Ressources : Livres blancs",
   "source": "maquette/rendu/ressources--livres-blancs.html, transcrite mot pour mot (MigenRessource, vue rubrique)",
   "phrases_retirees": [],

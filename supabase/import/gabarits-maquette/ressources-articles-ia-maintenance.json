@@ -1,5 +1,9 @@
 {
   "url": "/ressources/articles/ia-maintenance/",
+  "seo": {
+    "meta_title": "IA maintenance : usages réels en usine | Migen",
+    "meta_description": "IA maintenance : définition, cas d'usage vérifiés, limites et méthode pour démarrer, par une équipe qui intervient chaque jour en usine."
+  },
   "titre_h1": "IA maintenance : ce qui change vraiment",
   "contenu": {
     "gabarit": "ressource",

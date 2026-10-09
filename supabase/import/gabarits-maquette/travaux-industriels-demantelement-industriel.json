@@ -1,6 +1,10 @@
 {
   "_source": "maquette/rendu/travaux-industriels--demantelement-industriel.html, 18 sections. Texte copié mot pour mot de cette capture. 07/10, passe G17 : le rail « Nos références » de la capture porte SEPT cartes et non quatre. Les trois manquantes (Savoye, Amazon, Atena) sont les cas liés de maquette/contenu/site/cas-lies.json, dans l'ordre de la capture : Savoye en tête, Amazon et Atena en queue. Leur carte ne porte QUE le libellé client et le titre (le troisième emplacement de la carte est vide dans la capture), donc pas de `texte`. PHOTOS. Les blobs de la capture sont des identités stables d'une capture à l'autre (vérifié : les 9 pages dont le gabarit déclare déjà des photos donnent un blob pour un seul chemin). Savoye et Amazon portent le blob 1e7b43b1, celui de la carte AKTID de CETTE page, déjà identifié /assets/web/team-grind-front.jpg : même image, pas une association choisie. TROU : le blob c96cc07d de la carte Atena n'est identifié nulle part dans le dépôt, donc aucune photo n'est déclarée pour elle plutôt qu'une approchante (CLAUDE.md §13). La carte « +200 / Clients industriels accompagnés » de la bande du héros est rendue à sa place de la capture, la deuxième (07/10, règle validée par le client, design_handoff_migen_site/README.md, qui prime sur l'ancien compte du dépôt) : la bande porte 4 chiffres, comme la capture.",
   "url": "/travaux-industriels/demantelement-industriel/",
+  "seo": {
+    "meta_title": "Démantèlement industriel de site et d'équipements | Migen",
+    "meta_description": "Démantèlement industriel : dépose d'équipements, démontage pour valorisation ou transfert, traçabilité des déchets. Rappel dans l'heure au 04 78 33 72 05."
+  },
   "titre_h1": "Démantèlement industriel",
   "contenu": {
     "gabarit": "offre",

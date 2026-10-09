@@ -1,5 +1,9 @@
 {
   "url": "/ressources/articles/",
+  "seo": {
+    "meta_title": "Articles de maintenance industrielle | Migen",
+    "meta_description": "Nos articles de maintenance industrielle : stratégie, organisation, GMAO, coûts. Des guides écrits par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Ressources : Articles",
   "source": "maquette/rendu/ressources--articles.html, transcrite mot pour mot (MigenRessource, vue rubrique)",
   "phrases_retirees": [],

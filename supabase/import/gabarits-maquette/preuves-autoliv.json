@@ -1,5 +1,9 @@
 {
   "url": "/preuves/autoliv/",
+  "seo": {
+    "meta_title": "Cas AUTOLIV : un technicien sur le parc| Migen",
+    "meta_description": "AUTOLIV renforce son équipe technique avec Migen : un technicien de maintenance polyvalent dédié au maintien opérationnel du parc machines."
+  },
   "titre_h1": "Un technicien dédié pour que le parc ne décroche pas",
   "contenu": {
     "gabarit": "etude-de-cas",

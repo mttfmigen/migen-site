@@ -1,5 +1,9 @@
 {
   "url": "/preuves/eriks/",
+  "seo": {
+    "meta_title": "ERIKS : zéro interruption critique| Migen",
+    "meta_description": "ERIKS confie à Migen le pilotage de son service maintenance pendant une montée de cadence et une transition d'équipe. Zéro interruption critique."
+  },
   "titre_h1": "Un responsable maintenance pour traverser la transition",
   "contenu": {
     "gabarit": "etude-de-cas",

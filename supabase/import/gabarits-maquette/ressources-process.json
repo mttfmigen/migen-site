@@ -1,5 +1,9 @@
 {
   "url": "/ressources/process/",
+  "seo": {
+    "meta_title": "Process de maintenance industrielle | Migen",
+    "meta_description": "Nos process de maintenance industrielle : préventif, sélection des techniciens, arrêt technique, sécurité. Les méthodes de terrain, expliquées."
+  },
   "titre_h1": "Ressources : Process",
   "source": "maquette/rendu/ressources--process.html, transcrite mot pour mot (MigenRessource, vue rubrique)",
   "phrases_retirees": [],

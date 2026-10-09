@@ -1,5 +1,9 @@
 {
   "url": "/ressources/articles/organiser-service-maintenance/",
+  "seo": {
+    "meta_title": "Comment organiser un service de maintenance | Migen",
+    "meta_description": "Comment organiser un service de maintenance : définition, méthode en six étapes et exemple concret, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Comment organiser un service de maintenance",
   "contenu": {
     "gabarit": "ressource",

@@ -1,6 +1,10 @@
 {
   "_source": "maquette/rendu/expertises--automatisme--schneider.html (capture du 07/10 21h12, 16 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (littéral, entités seules décodées), relevé par data-dc-tpl, contrôlé par components/site/expertises/specialite/verification-specialite.tsx. Ni « 02 Domaines » ni « Complément 2 » dans la capture ; « Complément 4 » présent. Problème dessiné « rangee », sans photo. Marques : famille « auto » (BRAND_RULES de la maquette, une seule famille, pas de rail). PHOTOS DES RÉFÉRENCES MESURÉES, PAS CHOISIES : octets des images du rail servis par la maquette vivante (localhost:4352, 08/10), sha256 complet rapproché de public/assets/web ; ordre et identité des blobs recoupés avec la capture : mq-5111002ce2b6, mq-e6322efcd358, x-auto-caisse, mq-2a6115ec9fe0, mq-0b70202fed79, mq-dcd9cac6ffbf, mq-948c28bcda08.",
   "url": "/expertises/automatisme/schneider/",
+  "seo": {
+    "meta_title": "Dépannage automate Modicon Schneider | Migen",
+    "meta_description": "Automate Schneider : diagnostic, dépannage et reprise de programme sur toute la gamme Modicon. Automaticiens évalués, rappel dans l'heure."
+  },
   "titre_h1": "Automate Schneider : des automaticiens qui lisent votre programme dès le premier jour",
   "contenu": {
     "gabarit": "specialite",

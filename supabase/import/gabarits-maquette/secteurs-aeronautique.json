@@ -1,5 +1,9 @@
 {
   "url": "/secteurs/aeronautique/",
+  "seo": {
+    "meta_title": "Maintenance des moyens de production aéro | Migen",
+    "meta_description": "Maintenance industrie aéronautique : machines 5 axes, moyens de mesure, montée en cadence. Traçabilité prête pour l'audit client. 4 agences en France."
+  },
   "titre_h1": "Zéro défaut toléré. Zéro retard accepté.",
   "source": "dessin : maquette/rendu/secteurs--aeronautique.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {

@@ -1,6 +1,10 @@
 {
   "_source": "maquette/rendu/expertises--types-de-maintenance--maintenance-conditionnelle.html (07/10 21h12), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (relevé par data-dc-tpl, mêmes cibles que les pilotes fanuc et abb, dont le relevé redonne le relais à l'identique), contrôlé par components/site/expertises/specialite/verification-specialite.tsx. PHOTOS MESURÉES, PAS CHOISIES : octets de chaque image de la maquette vivante (localhost:4352) rapprochés de public/assets/web par sha256 complet, le 08/10 ; photo de carte de référence = première image de la carte. La capture du problème de cette page ne rend aucune photo, d'où `problemePhoto: null`.",
   "url": "/expertises/types-de-maintenance/maintenance-conditionnelle/",
+  "seo": {
+    "meta_title": "Intervenir sur l'état réel, pas sur le calendrier | Migen",
+    "meta_description": "Maintenance conditionnelle : définition NF EN 13306, technologies de surveillance, seuils et mise en place. Puis qui relève et qui interprète chez vous."
+  },
   "titre_h1": "Maintenance conditionnelle : intervenir quand la machine le demande, pas le calendrier",
   "contenu": {
     "gabarit": "specialite",

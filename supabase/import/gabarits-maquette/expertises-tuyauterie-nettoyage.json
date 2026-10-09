@@ -1,6 +1,10 @@
 {
   "_source": "maquette/rendu/expertises--tuyauterie--nettoyage.html (07/10 21h12), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (relevé par data-dc-tpl, mêmes cibles que les pilotes fanuc et abb, dont le relevé redonne le relais à l'identique), contrôlé par components/site/expertises/specialite/verification-specialite.tsx. PHOTOS MESURÉES, PAS CHOISIES : octets de chaque image de la maquette vivante (localhost:4352) rapprochés de public/assets/web par sha256 complet, le 08/10 ; photo de carte de référence = première image de la carte. Photo du problème = mq-339d39e2a674.jpg.",
   "url": "/expertises/tuyauterie/nettoyage/",
+  "seo": {
+    "meta_title": "Nettoyage de tuyauterie industrielle | Migen",
+    "meta_description": "Nettoyage tuyauterie industrielle : diagnostic du dépôt, décapage chimique ou mécanique, rinçage et réception écrite. Rappel dans l'heure."
+  },
   "titre_h1": "Nettoyage tuyauterie industrielle : un réseau encrassé coûte plus cher qu’un arrêt de nettoyage",
   "contenu": {
     "gabarit": "specialite",

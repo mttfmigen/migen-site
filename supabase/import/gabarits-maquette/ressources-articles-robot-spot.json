@@ -1,5 +1,9 @@
 {
   "url": "/ressources/articles/robot-spot/",
+  "seo": {
+    "meta_title": "Robot Spot en inspection industrielle | Migen",
+    "meta_description": "Robot spot : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Robot spot",
   "contenu": {
     "gabarit": "ressource",

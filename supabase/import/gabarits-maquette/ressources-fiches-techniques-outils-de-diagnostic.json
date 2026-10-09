@@ -1,5 +1,9 @@
 {
   "url": "/ressources/fiches-techniques/outils-de-diagnostic/",
+  "seo": {
+    "meta_title": "Outils de diagnostic maintenance | Migen",
+    "meta_description": "Outils de diagnostic maintenance : définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Outils de diagnostic maintenance",
   "retraits": [
     "Vous pouvez aussi nous contacter par la page de contact du site, ou contacter directement votre agence."

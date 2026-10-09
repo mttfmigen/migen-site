@@ -1,5 +1,9 @@
 {
   "url": "/ressources/process/gestion-maintenance-preventive/",
+  "seo": {
+    "meta_title": "Gestion de la maintenance préventive | Migen",
+    "meta_description": "Gestion de la maintenance préventive : définition, méthode pas à pas, exemple concret et erreurs à éviter, par des techniciens de terrain."
+  },
   "titre_h1": "Gestion de la maintenance préventive",
   "contenu": {
     "gabarit": "ressource",

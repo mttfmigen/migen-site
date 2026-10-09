@@ -83,6 +83,19 @@ export function cheminCanonique(segments: string[] | string): string {
 interface RelaisGabarit {
   contenu: LignePage["contenu"];
   /**
+   * Le titre et la description que le CORPUS écrit pour cette page
+   * (`> Title SEO :` et `> Meta description :`, 244 des 248 pages les ont).
+   *
+   * POURQUOI ILS VIVENT ICI. `pageDeRelais` rendait `seo: null`, donc une page
+   * que la base n'a pas sortait SANS balise de description. Mesuré le 08/10 :
+   * 102 des 248 pages, soit les deux cinquièmes du site, pour un site dont le
+   * premier objectif est de générer des leads. La cause n'est pas une erreur de
+   * code, c'est que ces pages n'ont jamais été importées en base, faute de
+   * `SUPABASE_SERVICE_ROLE_KEY`. Les prendre dans le corpus rend le site
+   * autonome : il ne dépend plus d'un import qui n'a pas eu lieu.
+   */
+  seo?: { meta_title: string; meta_description: string };
+  /**
    * Le H1 de la maquette quand la base n'a pas le bon. La capture de
    * `/offres/residence/` attend « Sous-traitance de maintenance industrielle »
    * là où la base écrit « Sous-traitance maintenance » : tant que la base ne
@@ -116,7 +129,7 @@ interface RelaisGabarit {
 // Rechargé le 07/10 : /bureau-etudes/bureau-etude-electronique/ porté contre sa capture (19 sections, rail de marques).
 // Rechargé le 07/10 : /bureau-etudes/bureau-etude-electronique/, phrase de la carte phare du maillage.
 // Rechargé le 07/10 : /bureau-etudes/mise-en-conformite-machine/ porté contre sa capture (19 sections, rail de marques, 5 trous déclarés).
-// relais relu : 2026-10-09T00:01:02.492Z
+// relais relu : 2026-10-09T00:19:20.369Z
 const CONTENUS_SUR_DISQUE: ReadonlyMap<string, RelaisGabarit> = (() => {
   const dossier = join(process.cwd(), "supabase", "import", "gabarits-maquette");
   const par = new Map<string, RelaisGabarit>();
@@ -135,9 +148,14 @@ const CONTENUS_SUR_DISQUE: ReadonlyMap<string, RelaisGabarit> = (() => {
         url?: string;
         titre_h1?: string;
         contenu?: LignePage["contenu"];
+        seo?: { meta_title?: string; meta_description?: string };
       };
       if (lu.url && lu.contenu) {
-        par.set(lu.url, { contenu: lu.contenu, titreH1: lu.titre_h1 });
+        const seo =
+          lu.seo?.meta_title && lu.seo?.meta_description
+            ? { meta_title: lu.seo.meta_title, meta_description: lu.seo.meta_description }
+            : undefined;
+        par.set(lu.url, { contenu: lu.contenu, titreH1: lu.titre_h1, seo });
       }
     } catch (erreur) {
       // Un fichier illisible se signale au build plutôt que de disparaître en
@@ -235,7 +253,28 @@ async function pageDeRelais(
       created_at: horodatage,
       updated_at: horodatage,
     },
-    seo: null,
+    /* Synthétisé comme la page elle-même, avec le même identifiant stable et
+       le même horodatage fixe : ce n'est pas une ligne de base, c'est la
+       métadonnée que le corpus écrit, présentée sous la forme que
+       `generateMetadata` attend. `copieConforme` lui est appliqué en aval
+       (`lib/seo/metadonnees.ts`), donc les décisions de Mehdi valent ici aussi.
+       `noindex` reste faux : une page servie est une page indexable, et c'est
+       la base qui décide du contraire quand elle connaît la page. */
+    seo: relais.seo
+      ? {
+          id: identifiantStable(`${path}#seo`),
+          page_id: identifiantStable(path),
+          article_id: null,
+          meta_title: relais.seo.meta_title,
+          meta_description: relais.seo.meta_description,
+          canonical: null,
+          og_image: null,
+          noindex: false,
+          schema_type: "WebPage",
+          created_at: horodatage,
+          updated_at: horodatage,
+        }
+      : null,
   };
 }
 
@@ -268,12 +307,37 @@ export const pageParChemin = cache(
     const titre_h1 =
       relaisActif && surDisque.titreH1 ? surDisque.titreH1 : page.titre_h1;
 
+    const seoBase = Array.isArray(seo) ? (seo[0] ?? null) : seo;
+    /* Le fichier gagne pour le SEO comme il gagne pour le contenu, et pour la
+       même raison : il est tiré du corpus porté, la base date d'avant les
+       décisions de copie (« candidats », Limonest, 24/24). Sans cela, deux
+       sources coexistaient et la page servait le texte du corpus sous la
+       description de l'ancienne base. */
+    const seoDisque =
+      relaisActif && surDisque.seo
+        ? seoBase
+          ? { ...seoBase, meta_title: surDisque.seo.meta_title, meta_description: surDisque.seo.meta_description }
+          : {
+              id: identifiantStable(`${path}#seo`),
+              page_id: page.id,
+              article_id: null,
+              meta_title: surDisque.seo.meta_title,
+              meta_description: surDisque.seo.meta_description,
+              canonical: null,
+              og_image: null,
+              noindex: false,
+              schema_type: "WebPage" as const,
+              created_at: page.created_at,
+              updated_at: page.updated_at,
+            }
+        : seoBase;
+
     return {
       page:
         contenu === page.contenu && titre_h1 === page.titre_h1
           ? page
           : { ...page, contenu, titre_h1 },
-      seo: Array.isArray(seo) ? (seo[0] ?? null) : seo,
+      seo: seoDisque,
     };
   },
 );

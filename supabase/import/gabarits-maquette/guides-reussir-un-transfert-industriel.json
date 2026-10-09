@@ -1,5 +1,9 @@
 {
   "url": "/guides/reussir-un-transfert-industriel/",
+  "seo": {
+    "meta_title": "Transfert industriel : le guide complet | Migen",
+    "meta_description": "Transfert industriel : la méthode de bout en bout, de l'inventaire des machines au redémarrage. Ordre de démontage, repérage, remontage, essais, checklist."
+  },
   "titre_h1": "Réussir un transfert industriel : la méthode de bout en bout",
   "source": "maquette/rendu/guides--reussir-un-transfert-industriel.html, transcrite mot pour mot (gabarit générique édito de la maquette)",
   "phrases_retirees": [],

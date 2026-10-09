@@ -1,5 +1,9 @@
 {
   "url": "/expertises/electromecanique/",
+  "seo": {
+    "meta_title": "Électromécanicien de maintenance sur site | Migen",
+    "meta_description": "Électromécanique industrielle : moteurs, variateurs, transmissions, capteurs diagnostiqués par un seul intervenant. Rappel dans l'heure, partout en France."
+  },
   "titre_h1": "Électromécanique industrielle : un seul technicien quand la panne est électrique et mécanique",
   "contenu": {
     "gabarit": "domaine",

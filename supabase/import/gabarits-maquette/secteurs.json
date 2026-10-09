@@ -1,5 +1,9 @@
 {
   "url": "/secteurs/",
+  "seo": {
+    "meta_title": "Maintenance industrielle par secteur | Migen",
+    "meta_description": "Maintenance usine : des techniciens affectés selon l'expérience de votre secteur, pas au hasard. 10 % des candidats retenus, 4 agences en France."
+  },
   "titre_h1": "Votre secteur a ses règles. Nos techniciens les connaissent déjà.",
   "source": "dessin : maquette/rendu/secteurs.html (gabarit 10 Hub de rubrique, 16 écrans au dessin d'une offre, maillage « Par où continuer ? »), rendu par PageOffre. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json là où la capture le reprend. Photos des références identifiées par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {

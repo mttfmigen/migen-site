@@ -1,6 +1,10 @@
 {
   "_source": "maquette/rendu/expertises--automatisme--programmation-automate.html (capture du 07/10 21h12, 16 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (littéral, entités seules décodées), relevé par data-dc-tpl, contrôlé par components/site/expertises/specialite/verification-specialite.tsx. Ni « 02 Domaines » ni « Complément 2 » dans la capture ; « Complément 4 » présent. Problème dessiné « rangee », sans photo. Marques : famille « auto » (BRAND_RULES de la maquette, une seule famille, pas de rail). PHOTOS DES RÉFÉRENCES MESURÉES, PAS CHOISIES : octets des images du rail servis par la maquette vivante (localhost:4352, 08/10), sha256 complet rapproché de public/assets/web ; ordre et identité des blobs recoupés avec la capture : mq-5111002ce2b6, mq-e6322efcd358, x-auto-caisse, mq-2a6115ec9fe0, mq-948c28bcda08. PHRASES INTERDITES NON RENDUES, retirées entières de la copie de la capture (une phrase interdite ne se reformule pas, elle ne se rend pas) : probleme.puces[1].texte, la phrase qui porte « tarif ».",
   "url": "/expertises/automatisme/programmation-automate/",
+  "seo": {
+    "meta_title": "Automaticien pour reprendre votre code | Migen",
+    "meta_description": "Programmation automate : reprise de code orphelin, dépannage par le programme, migration Siemens et Schneider. Automaticiens évalués, rappel dans l'heure."
+  },
   "titre_h1": "Programmation automate : modifier le programme sans arrêter la production",
   "contenu": {
     "gabarit": "specialite",

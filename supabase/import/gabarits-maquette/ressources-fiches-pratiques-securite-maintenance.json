@@ -1,5 +1,9 @@
 {
   "url": "/ressources/fiches-pratiques/securite-maintenance/",
+  "seo": {
+    "meta_title": "Sécurité maintenance industrielle | Migen",
+    "meta_description": "Sécurité maintenance industrielle : définition, méthode, exemple et erreurs à éviter, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "La sécurité en maintenance industrielle",
   "contenu": {
     "gabarit": "ressource",

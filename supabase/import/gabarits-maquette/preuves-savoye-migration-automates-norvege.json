@@ -1,5 +1,9 @@
 {
   "url": "/preuves/savoye-migration-automates-norvege/",
+  "seo": {
+    "meta_title": "Deux automates migrés en deux week-ends, sans arrêter la production | Migen",
+    "meta_description": "Savoye, intégrateur de solutions d'automatisation logistique, a confié à Migen la migration des automates de deux de ses machines, installées."
+  },
   "titre_h1": "Deux automates migrés en deux week-ends, sans arrêter la production",
   "contenu": {
     "gabarit": "etude-de-cas",

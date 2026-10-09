@@ -1,5 +1,9 @@
 {
   "url": "/expertises/automatisme/",
+  "seo": {
+    "meta_title": "Automaticien SIEMENS et Schneider sur site | Migen",
+    "meta_description": "Automatisme industriel : diagnostic d'automate, reprise de programme, sauvegardes, migration d'obsolescence. Automaticiens évalués, rappel dans l'heure."
+  },
   "titre_h1": "Automatisme industriel : quand l’automate se tait, toute la ligne s’arrête",
   "contenu": {
     "gabarit": "domaine",

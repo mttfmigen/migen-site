@@ -1,5 +1,9 @@
 {
   "url": "/ressources/fiches-techniques/analyse-vibratoire/",
+  "seo": {
+    "meta_title": "Analyse vibratoire | Migen",
+    "meta_description": "Analyse vibratoire : définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Analyse vibratoire",
   "contenu": {
     "gabarit": "ressource",

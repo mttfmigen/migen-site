@@ -1,5 +1,9 @@
 {
   "url": "/preuves/dimomaint/",
+  "seo": {
+    "meta_title": "La GMAO planifie, nos techniciens interviennent | Migen",
+    "meta_description": "DimoMaint édite une solution de GMAO pour l'industrie : planification, suivi et analyse des interventions."
+  },
   "titre_h1": "La GMAO planifie, nos techniciens interviennent",
   "contenu": {
     "gabarit": "etude-de-cas",

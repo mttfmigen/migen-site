@@ -1,5 +1,9 @@
 {
   "url": "/ressources/fiches-techniques/trs/",
+  "seo": {
+    "meta_title": "TRS : calculer et améliorer votre rendement | Migen",
+    "meta_description": "TRS : définition, formule de calcul, exemple chiffré et erreurs à éviter. La fiche technique écrite avec des techniciens qui voient des lignes tous les jours."
+  },
   "titre_h1": "TRS : le taux de rendement synthétique",
   "retraits": [
     "La période entière, 24 h sur 24"

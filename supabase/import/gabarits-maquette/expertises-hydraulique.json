@@ -1,5 +1,9 @@
 {
   "url": "/expertises/hydraulique/",
+  "seo": {
+    "meta_title": "Dépannage de circuits hydrauliques | Migen",
+    "meta_description": "Maintenance hydraulique industrielle : pression, fuites, vérins, centrales, analyse de fluide. Techniciens évalués partout en France, rappel dans l'heure."
+  },
   "titre_h1": "Maintenance hydraulique : la petite fuite d’aujourd’hui, c’est la presse arrêtée de demain",
   "contenu": {
     "gabarit": "domaine",

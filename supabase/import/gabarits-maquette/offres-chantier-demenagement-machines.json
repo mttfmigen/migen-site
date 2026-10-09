@@ -1,5 +1,9 @@
 {
   "url": "/offres/chantier/demenagement-machines/",
+  "seo": {
+    "meta_title": "Déménager vos machines de production | Migen",
+    "meta_description": "Déménagement de machines industrielles : démontage, emballage, transport, remontage et remise en service. Rappel dans l'heure au 04 78 33 72 05."
+  },
   "titre_h1": "Déménagement de machines industrielles",
   "_reference": "maquette/rendu/offres--chantier--demenagement-machines.html, 19 sections. Porté le 07/10. Les écarts avec le corpus sont ceux de la capture, qui fait foi (décision Mehdi 06/10) : la bande de chiffres porte « + 120 collaborateurs » là où le markdown écrit « + 100 », et le héros de la capture ne rend ni chapeau ni bouton (défaut de liaison du gabarit 03 hors des six offres nommées) ; le site les garde, la porte ne contrôle que l'absence, pas le surplus.",
   "_punchlineVide": "sections[0].punchline est VIDE À DESSEIN. La capture rend un h2 vide dans « 03 Problème » : le gabarit 03 lit la punchline dans ses données `of.*`, qui n'existent que pour les six offres nommées. Même défaut que les 8 pages de docs/MESURE-MAQUETTE.md §2. Le corpus porte bien la phrase (« Une machine mal déposée, ce sont deux jours d'immobilisation en plus. Parfois davantage. ») : elle n'est pas rendue parce que la référence ne la rend pas, elle n'est pas réécrite non plus. À faire corriger DANS LA MAQUETTE, puis à recapturer.",

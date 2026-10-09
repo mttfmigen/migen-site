@@ -1,5 +1,9 @@
 {
   "url": "/ressources/process/selection-des-techniciens/",
+  "seo": {
+    "meta_title": "Sélection technicien de maintenance | Migen",
+    "meta_description": "Sélection technicien de maintenance : la méthode Migen, entretien technique et comportemental, 10 % des candidats retenus, résultats partagés."
+  },
   "titre_h1": "Sélection technicien de maintenance",
   "contenu": {
     "gabarit": "ressource",

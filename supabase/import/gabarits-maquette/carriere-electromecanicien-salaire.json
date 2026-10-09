@@ -1,400 +1,404 @@
 {
- "url": "/carriere/electromecanicien/salaire/",
- "titre_h1": "Salaire électromécanicien",
- "mot_cle": "salaire électromécanicien",
- "contenu": {
-  "gabarit": "metier",
-  "heros": {
-   "pastille": "Métier",
-   "chapeau": "Vous faites tourner des machines qui rapportent des milliers d'euros à l'heure, et vous vous demandez ce que vaut vraiment votre métier sur le marché. Le salaire électromécanicien mérite mieux qu'une fourchette vague trouvée au hasard.",
-   "paragraphes": [
-    "Cette page explique ce qui fait monter ou stagner la paie, du salaire électromécanicien débutant au profil confirmé. Elle complète la fiche [électromécanicien](/carriere/electromecanicien/), qui décrit le métier au quotidien.",
-    "Migen recrute des électromécaniciens partout en France. Le regard posé ici est celui d'un employeur qui embauche chaque semaine, pas d'un simulateur anonyme."
-   ],
-   "chiffre": {
-    "valeur": "10 %",
-    "texte": "des techniciens retenus, après un test technique et un entretien"
-   },
-   "photo": {
-    "src": "/assets/web/mq-2a6115ec9fe0.jpg",
-    "alt": "Technicien migen en intervention"
-   }
+  "url": "/carriere/electromecanicien/salaire/",
+  "seo": {
+    "meta_title": "Salaire électromécanicien | Migen",
+    "meta_description": "Salaire électromécanicien : ce qui fait varier la rémunération, du débutant au confirmé, par secteur et région. Migen recrute partout en France."
   },
-  "sections": [
-   {
-    "type": "chiffres",
-    "items": [
-     {
-      "valeur": "+100",
-      "texte": "collaborateurs, techniciens salariés de Migen"
-     },
-     {
-      "valeur": "10 %",
-      "texte": "des techniciens retenus après évaluation"
-     },
-     {
-      "valeur": "4 agences",
-      "texte": "et des hubs de techniciens partout en France"
-     },
-     {
-      "valeur": "CDI",
-      "texte": "alternance et stage, à tous les niveaux"
-     }
-    ]
-   },
-   {
-    "type": "duo",
-    "surtitre": "01 · Salaire",
-    "titre": "Le métier derrière le salaire",
-    "intros": [
-     "Panne électrique, moteur en défaut, ligne de production à relancer : l'électromécanicien répare ce que personne d'autre ne sait diagnostiquer. Sa double compétence explique une bonne part de sa valeur.",
-     "Ce que paie l'entreprise, ce sont ces gestes précis, chaque jour sur le site."
-    ],
-    "cartes": [
-     {
-      "titre": "Diagnostiquer une panne",
-      "texte": "Localiser un défaut électrique ou mécanique, tester un appareil, isoler un problème avant l'arrêt de la machine."
-     },
-     {
-      "titre": "Réparer et remettre en service",
-      "texte": "Changer une pièce, refaire un raccordement, réaliser la réparation puis valider le fonctionnement de l'équipement."
-     },
-     {
-      "titre": "Assurer la maintenance préventive",
-      "texte": "Contrôler les installations, anticiper l'usure, éviter la panne coûteuse au bon moment."
-     },
-     {
-      "titre": "Travailler en sécurité",
-      "texte": "Consigner une machine, respecter les procédures, porter les protections dans un environnement industriel."
-     }
-    ]
-   },
-   {
-    "type": "tableau",
-    "surtitre": "02 · Salaire",
-    "titre": "Salaire électromécanicien : ce qui le fait varier",
-    "intros": [
-     "Le salaire électromécanicien ne dépend pas d'un barème unique : six facteurs expliquent l'essentiel des écarts, bien avant la négociation en entretien.",
-     "Un même métier, un même diplôme, et pourtant des propositions différentes d'un recruteur à l'autre. La localisation et le secteur expliquent souvent la différence."
-    ],
-    "entetes": {
-     "gauche": "Facteur",
-     "droite": "Effet sur le salaire"
+  "titre_h1": "Salaire électromécanicien",
+  "mot_cle": "salaire électromécanicien",
+  "contenu": {
+    "gabarit": "metier",
+    "heros": {
+      "pastille": "Métier",
+      "chapeau": "Vous faites tourner des machines qui rapportent des milliers d'euros à l'heure, et vous vous demandez ce que vaut vraiment votre métier sur le marché. Le salaire électromécanicien mérite mieux qu'une fourchette vague trouvée au hasard.",
+      "paragraphes": [
+        "Cette page explique ce qui fait monter ou stagner la paie, du salaire électromécanicien débutant au profil confirmé. Elle complète la fiche [électromécanicien](/carriere/electromecanicien/), qui décrit le métier au quotidien.",
+        "Migen recrute des électromécaniciens partout en France. Le regard posé ici est celui d'un employeur qui embauche chaque semaine, pas d'un simulateur anonyme."
+      ],
+      "chiffre": {
+        "valeur": "10 %",
+        "texte": "des techniciens retenus, après un test technique et un entretien"
+      },
+      "photo": {
+        "src": "/assets/web/mq-2a6115ec9fe0.jpg",
+        "alt": "Technicien migen en intervention"
+      }
     },
-    "lignes": [
-     {
-      "gauche": "Expérience",
-      "droite": "Un débutant démarre plus bas qu'un électromécanicien confirmé"
-     },
-     {
-      "gauche": "Secteur d'activité",
-      "droite": "Énergie, automobile et process continu paient au-dessus de la moyenne"
-     },
-     {
-      "gauche": "Région",
-      "droite": "L'Île-de-France et les bassins industriels tendus tirent vers le haut"
-     },
-     {
-      "gauche": "Habilitations",
-      "droite": "Électrique, automatisme, soudure élargissent le champ et la valeur"
-     },
-     {
-      "gauche": "Type de poste",
-      "droite": "Terrain, itinérance ou bureau n'ont pas la même grille"
-     },
-     {
-      "gauche": "Type de contrat",
-      "droite": "CDI, mission longue et astreinte pèsent sur le total mensuel"
-     }
+    "sections": [
+      {
+        "type": "chiffres",
+        "items": [
+          {
+            "valeur": "+100",
+            "texte": "collaborateurs, techniciens salariés de Migen"
+          },
+          {
+            "valeur": "10 %",
+            "texte": "des techniciens retenus après évaluation"
+          },
+          {
+            "valeur": "4 agences",
+            "texte": "et des hubs de techniciens partout en France"
+          },
+          {
+            "valeur": "CDI",
+            "texte": "alternance et stage, à tous les niveaux"
+          }
+        ]
+      },
+      {
+        "type": "duo",
+        "surtitre": "01 · Salaire",
+        "titre": "Le métier derrière le salaire",
+        "intros": [
+          "Panne électrique, moteur en défaut, ligne de production à relancer : l'électromécanicien répare ce que personne d'autre ne sait diagnostiquer. Sa double compétence explique une bonne part de sa valeur.",
+          "Ce que paie l'entreprise, ce sont ces gestes précis, chaque jour sur le site."
+        ],
+        "cartes": [
+          {
+            "titre": "Diagnostiquer une panne",
+            "texte": "Localiser un défaut électrique ou mécanique, tester un appareil, isoler un problème avant l'arrêt de la machine."
+          },
+          {
+            "titre": "Réparer et remettre en service",
+            "texte": "Changer une pièce, refaire un raccordement, réaliser la réparation puis valider le fonctionnement de l'équipement."
+          },
+          {
+            "titre": "Assurer la maintenance préventive",
+            "texte": "Contrôler les installations, anticiper l'usure, éviter la panne coûteuse au bon moment."
+          },
+          {
+            "titre": "Travailler en sécurité",
+            "texte": "Consigner une machine, respecter les procédures, porter les protections dans un environnement industriel."
+          }
+        ]
+      },
+      {
+        "type": "tableau",
+        "surtitre": "02 · Salaire",
+        "titre": "Salaire électromécanicien : ce qui le fait varier",
+        "intros": [
+          "Le salaire électromécanicien ne dépend pas d'un barème unique : six facteurs expliquent l'essentiel des écarts, bien avant la négociation en entretien.",
+          "Un même métier, un même diplôme, et pourtant des propositions différentes d'un recruteur à l'autre. La localisation et le secteur expliquent souvent la différence."
+        ],
+        "entetes": {
+          "gauche": "Facteur",
+          "droite": "Effet sur le salaire"
+        },
+        "lignes": [
+          {
+            "gauche": "Expérience",
+            "droite": "Un débutant démarre plus bas qu'un électromécanicien confirmé"
+          },
+          {
+            "gauche": "Secteur d'activité",
+            "droite": "Énergie, automobile et process continu paient au-dessus de la moyenne"
+          },
+          {
+            "gauche": "Région",
+            "droite": "L'Île-de-France et les bassins industriels tendus tirent vers le haut"
+          },
+          {
+            "gauche": "Habilitations",
+            "droite": "Électrique, automatisme, soudure élargissent le champ et la valeur"
+          },
+          {
+            "gauche": "Type de poste",
+            "droite": "Terrain, itinérance ou bureau n'ont pas la même grille"
+          },
+          {
+            "gauche": "Type de contrat",
+            "droite": "CDI, mission longue et astreinte pèsent sur le total mensuel"
+          }
+        ]
+      },
+      {
+        "type": "encart",
+        "surtitre": "03 · Salaire",
+        "titre": "Le poids de l'expérience",
+        "textes": [
+          "Le premier poste paie la promesse ; les suivants paient les preuves. Un électromécanicien qualifié qui maîtrise l'automatisme et l'électronique négocie mieux, année après année."
+        ]
+      },
+      {
+        "type": "duo",
+        "surtitre": "04 · Salaire",
+        "titre": "Le salaire en début de carrière",
+        "intros": [
+          "Combien gagne un électromécanicien débutant ? La réponse honnête tient en une phrase : cela dépend de l'expérience, du territoire et du secteur, jamais d'un chiffre unique.",
+          "Voici les repères qui pèsent au démarrage, sans vous vendre une fausse fourchette."
+        ],
+        "cartes": [
+          {
+            "titre": "Le niveau de diplôme",
+            "texte": "Un niveau bac, un bac professionnel ou un bac pro maintenance, un BTS ou une licence pro n'ouvrent pas la même porte d'entrée."
+          },
+          {
+            "titre": "La qualification réelle",
+            "texte": "Un candidat déjà autonome sur une machine vaut plus qu'un CV théorique."
+          },
+          {
+            "titre": "Le secteur qui recrute",
+            "texte": "Un débutant bien placé dans l'énergie ou l'automobile démarre au-dessus de la moyenne du marché."
+          },
+          {
+            "titre": "La localisation",
+            "texte": "À métier égal, un bassin industriel tendu paie mieux qu'un territoire détendu."
+          }
+        ],
+        "bande": {
+          "texte": "Aucun chiffre inventé ici : nous situons chaque salaire lors de l'entretien, selon votre expérience et votre localisation, pas selon un tableau générique."
+        }
+      },
+      {
+        "type": "etapes",
+        "surtitre": "05 · Salaire",
+        "titre": "Brut, net et primes : lire sa rémunération",
+        "intros": [
+          "Un salaire ne se résume pas au montant affiché. Comprendre le brut, le net et les compléments évite les mauvaises surprises à l'embauche."
+        ],
+        "etapes": [
+          {
+            "titre": "Le salaire brut par mois",
+            "texte": "Le montant avant cotisations, celui qui figure sur l'offre d'emploi et le contrat."
+          },
+          {
+            "titre": "Le passage brut net",
+            "texte": "Après cotisations, le net mensuel est plus bas ; l'écart tourne autour d'un cinquième du brut."
+          },
+          {
+            "titre": "Les compléments",
+            "texte": "Astreinte, déplacement, heures supplémentaires et prime annuelle gonflent le total réel."
+          },
+          {
+            "titre": "Le salaire moyen",
+            "texte": "Une moyenne masque des écarts énormes ; regardez plutôt votre situation précise et votre zone d'emploi."
+          }
+        ]
+      },
+      {
+        "type": "duo",
+        "surtitre": "06 · Salaire",
+        "titre": "Évolution de carrière et de salaire",
+        "intros": [
+          "La bonne nouvelle, c'est que le plafond monte vite. L'électromécanicien qui se forme voit sa paie suivre ses responsabilités."
+        ],
+        "cartes": [
+          {
+            "titre": "Électromécanicien confirmé",
+            "texte": "La maîtrise de l'électronique et de l'informatique industrielle augmente la valeur sur le marché."
+          },
+          {
+            "titre": "Chef d'équipe maintenance",
+            "texte": "Encadrer une équipe et organiser le préventif ajoute une marche de salaire."
+          },
+          {
+            "titre": "Chef de projet ou responsable maintenance",
+            "texte": "Piloter un service, un budget et des systèmes complexes change de grille."
+          },
+          {
+            "titre": "Ingénieur maintenance",
+            "texte": "Après une reprise d'études, l'ingénieur atteint le haut de la fourchette du secteur."
+          }
+        ],
+        "bande": {
+          "texte": "Le métier voisin d'agent de maintenance ou de mécanicien mène souvent à l'électromécanique ; l'inverse ouvre la voie vers l'ingénieur."
+        }
+      },
+      {
+        "type": "tableau",
+        "surtitre": "07 · Carrière",
+        "titre": "Secteurs et territoires qui paient le mieux",
+        "intros": [
+          "Tous les employeurs ne se valent pas. Certains secteurs et certains territoires tirent le salaire vers le haut, à métier identique.",
+          "Une PME offre souvent l'autonomie et la polyvalence ; un grand groupe offre les avantages et le treizième mois. Le bon choix dépend de votre projet, pas seulement du montant affiché.",
+          "Les énergies renouvelables, le solaire photovoltaïque et le traitement de l'eau recrutent aussi des électromécaniciens, avec une rémunération souvent basée sur la criticité de l'installation."
+        ],
+        "entetes": {
+          "gauche": "",
+          "droite": "Pourquoi il paie mieux"
+        },
+        "lignes": [
+          {
+            "gauche": "Énergie et production continue",
+            "droite": "Astreinte, criticité, arrêt de ligne coûteux"
+          },
+          {
+            "gauche": "Automobile et industrie lourde",
+            "droite": "Cadence, complexité des systèmes automatisés"
+          },
+          {
+            "gauche": "Grandes métropoles, bassins tendus",
+            "droite": "Rareté des candidats, coût de la vie"
+          },
+          {
+            "gauche": "Grands groupes",
+            "droite": "Treizième mois, avantages, perspectives internes"
+          }
+        ]
+      },
+      {
+        "type": "duo",
+        "surtitre": "08 · Salaire",
+        "titre": "Salaire, formation et contrat",
+        "intros": [
+          "Le salaire d'un électromécanicien se lit aussi à l'aune de sa formation et de son contrat. Un même technicien ne gagne pas la même chose selon le chemin suivi.",
+          "Le conseil le plus utile tient en un mot : monter en compétence. Se former à un nouveau système, réparer des équipements plus complexes, devenir référent d'un atelier, tout cela fait le lien entre effort et salaire."
+        ],
+        "cartes": [
+          {
+            "titre": "La formation initiale",
+            "texte": "D'un CAP à une licence, en passant par le bac pro et le lycée technique, chaque niveau ouvre une porte différente sur la grille."
+          },
+          {
+            "titre": "L'alternance et le stage",
+            "texte": "Un contrat en alternance ou un stage bien mené prépare l'embauche et pèse sur la première proposition."
+          },
+          {
+            "titre": "Le statut",
+            "texte": "Salarié en CDI, monteur en mission ou électromécanicien indépendant n'atteignent pas le même revenu annuel."
+          },
+          {
+            "titre": "La spécialité",
+            "texte": "Électricité, mécanique, travaux sur systèmes automatisés ou construction de lignes, chaque domaine a sa valeur de marché."
+          }
+        ],
+        "bande": {
+          "texte": "Le taux d'électromécaniciens qualifiés reste faible sur le marché ; un candidat qui sait diagnostiquer et réparer trouve vite un travail bien payé. La compétence, pas le hasard, fait la différence."
+        }
+      },
+      {
+        "type": "tableau",
+        "surtitre": "09 · Métiers",
+        "titre": "Le salaire face aux métiers voisins",
+        "intros": [
+          "Un chiffre isolé ne dit rien. Comparé aux métiers voisins, le salaire électromécanicien se situe plutôt bien, à condition de viser la bonne évolution.",
+          "Les données de marché circulent sur les job boards, mais elles mélangent tout. Un bon recrutement commence par un recruteur qui sait trier ces jobs et mener le recrutement au bon niveau. Un emploi technicien dans le domaine électronique, une offre de fabrication ou un poste à l'international : un moteur de recherche mélange tout ; à vous de trier selon votre fonction réelle."
+        ],
+        "entetes": {
+          "gauche": "Métier",
+          "droite": "Position sur le marché"
+        },
+        "lignes": [
+          {
+            "gauche": "Électricien",
+            "droite": "Salaire proche, moins de polyvalence mécanique"
+          },
+          {
+            "gauche": "Technicien de maintenance industrielle",
+            "droite": "Fourchette comparable, selon les habilitations"
+          },
+          {
+            "gauche": "Monteur en installation",
+            "droite": "Souvent en dessous au démarrage"
+          },
+          {
+            "gauche": "Manager ou superviseur d'atelier",
+            "droite": "Au-dessus, avec la responsabilité d'équipe"
+          }
+        ],
+        "bande": {
+          "texte": "La compétence rare paie. Être capable de travailler vite et bien sur un système complexe reste, encore aujourd'hui, la meilleure façon d'atteindre le haut de la fourchette. Un certificat professionnel (CQPM) et un vrai job de terrain valent plus qu'un diplôme seul, autant pour un électricien que pour un électromécanicien. La qualité prime, également, sur l'ancienneté. Les entreprises qui recrutent le savent : elles bâtissent un plan de carrière autour des meilleurs, et c'est à ce propos qu'un bon salaire se négocie, sans avoir à être le plus ancien."
+        }
+      },
+      {
+        "type": "duo",
+        "surtitre": "10 · Carrière",
+        "titre": "Se faire recruter à sa juste valeur chez Migen",
+        "intros": [
+          "Un salaire juste, c'est d'abord un recruteur qui comprend le métier de la maintenance industrielle. Voici ce que nous proposons comme employeur à un électromécanicien ou une électromécanicienne qui veut travailler sereinement."
+        ],
+        "cartes": [
+          {
+            "titre": "Une évaluation honnête",
+            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats partagés avec le client. Être bien évalué, c'est être payé à sa juste valeur."
+          },
+          {
+            "titre": "De la variété",
+            "texte": "Dépannage, préventif, mise en service, chez des clients de tous secteurs, partout en France."
+          },
+          {
+            "titre": "Un collectif technique",
+            "texte": "Plus de 120 techniciens, 4 agences (Lyon, Montréal, Dubaï, Madrid), l'entraide entre électromécaniciens, électriciens et techniciens qualifiés, chacun à sa place."
+          },
+          {
+            "titre": "Un accueil structuré",
+            "texte": "Un référent accompagne la prise de poste, habilitations vérifiées et outillage fourni dès le premier jour."
+          }
+        ]
+      },
+      {
+        "type": "etapes",
+        "surtitre": "11 · Carrière",
+        "titre": "Comment nous rejoindre",
+        "etapes": [
+          {
+            "titre": "Un échange",
+            "texte": "Vous décrivez votre parcours, vos habilitations, vos disponibilités."
+          },
+          {
+            "titre": "Un entretien technique et comportemental",
+            "texte": "Mené par un professionnel du métier, pour situer votre qualification réelle."
+          },
+          {
+            "titre": "Une proposition claire",
+            "texte": "Un poste, un niveau de rémunération, une branche, selon votre profil et nos clients."
+          },
+          {
+            "titre": "L'intégration",
+            "texte": "Un référent vous accompagne, sur le site comme en atelier."
+          }
+        ]
+      },
+      {
+        "type": "faq",
+        "surtitre": "12 · Questions",
+        "titre": "Questions fréquentes",
+        "questions": [
+          {
+            "question": "Combien gagne un électromécanicien ?",
+            "reponse": "Cela dépend de l'expérience, du secteur d'activité et de la région, jamais d'un chiffre universel. Un profil confirmé qui maîtrise l'automatisme et l'électronique négocie une rémunération nettement plus élevée qu'un débutant."
+          },
+          {
+            "question": "Quel est le salaire d'un électromécanicien débutant ?",
+            "reponse": "Au démarrage, le diplôme, la qualification réelle et la localisation pèsent le plus. Un débutant bien placé dans l'énergie ou l'automobile démarre au-dessus de la moyenne ; nous situons le montant en entretien."
+          },
+          {
+            "question": "Le salaire est-il indiqué en brut ou en net ?",
+            "reponse": "Une offre d'emploi affiche le salaire brut, avant cotisations. Le net mensuel est plus bas, d'environ un cinquième. Les primes d'astreinte et d'heures supplémentaires s'ajoutent au total."
+          },
+          {
+            "question": "Comment augmenter son salaire d'électromécanicien ?",
+            "reponse": "En montant en compétence : automatisme, électronique, habilitations, puis un rôle de chef d'équipe ou de responsable. Chaque marche de responsabilité ajoute un palier de salaire."
+          },
+          {
+            "question": "Quels secteurs paient le mieux ?",
+            "reponse": "L'énergie, l'automobile et la production continue paient au-dessus de la moyenne, tout comme l'Île-de-France et les bassins industriels tendus. La criticité de la ligne explique l'écart."
+          },
+          {
+            "question": "Migen recrute-t-elle des électromécaniciens ?",
+            "reponse": "Oui, chaque semaine, partout en France. Nous évaluons chaque technicien en entretien technique et comportemental ; seuls 10 % sont retenus, et un référent accompagne la prise de poste."
+          }
+        ]
+      },
+      {
+        "type": "postuler"
+      },
+      {
+        "type": "liens",
+        "items": [
+          {
+            "libelle": "Électromécanicien",
+            "href": "/carriere/electromecanicien/",
+            "photo": "/assets/web/mq-056f3c250981.jpg"
+          },
+          {
+            "libelle": "Compétences électromécanicien",
+            "href": "/carriere/electromecanicien/competences/",
+            "photo": "/assets/web/mq-948c28bcda08.jpg"
+          }
+        ]
+      }
     ]
-   },
-   {
-    "type": "encart",
-    "surtitre": "03 · Salaire",
-    "titre": "Le poids de l'expérience",
-    "textes": [
-     "Le premier poste paie la promesse ; les suivants paient les preuves. Un électromécanicien qualifié qui maîtrise l'automatisme et l'électronique négocie mieux, année après année."
-    ]
-   },
-   {
-    "type": "duo",
-    "surtitre": "04 · Salaire",
-    "titre": "Le salaire en début de carrière",
-    "intros": [
-     "Combien gagne un électromécanicien débutant ? La réponse honnête tient en une phrase : cela dépend de l'expérience, du territoire et du secteur, jamais d'un chiffre unique.",
-     "Voici les repères qui pèsent au démarrage, sans vous vendre une fausse fourchette."
-    ],
-    "cartes": [
-     {
-      "titre": "Le niveau de diplôme",
-      "texte": "Un niveau bac, un bac professionnel ou un bac pro maintenance, un BTS ou une licence pro n'ouvrent pas la même porte d'entrée."
-     },
-     {
-      "titre": "La qualification réelle",
-      "texte": "Un candidat déjà autonome sur une machine vaut plus qu'un CV théorique."
-     },
-     {
-      "titre": "Le secteur qui recrute",
-      "texte": "Un débutant bien placé dans l'énergie ou l'automobile démarre au-dessus de la moyenne du marché."
-     },
-     {
-      "titre": "La localisation",
-      "texte": "À métier égal, un bassin industriel tendu paie mieux qu'un territoire détendu."
-     }
-    ],
-    "bande": {
-     "texte": "Aucun chiffre inventé ici : nous situons chaque salaire lors de l'entretien, selon votre expérience et votre localisation, pas selon un tableau générique."
-    }
-   },
-   {
-    "type": "etapes",
-    "surtitre": "05 · Salaire",
-    "titre": "Brut, net et primes : lire sa rémunération",
-    "intros": [
-     "Un salaire ne se résume pas au montant affiché. Comprendre le brut, le net et les compléments évite les mauvaises surprises à l'embauche."
-    ],
-    "etapes": [
-     {
-      "titre": "Le salaire brut par mois",
-      "texte": "Le montant avant cotisations, celui qui figure sur l'offre d'emploi et le contrat."
-     },
-     {
-      "titre": "Le passage brut net",
-      "texte": "Après cotisations, le net mensuel est plus bas ; l'écart tourne autour d'un cinquième du brut."
-     },
-     {
-      "titre": "Les compléments",
-      "texte": "Astreinte, déplacement, heures supplémentaires et prime annuelle gonflent le total réel."
-     },
-     {
-      "titre": "Le salaire moyen",
-      "texte": "Une moyenne masque des écarts énormes ; regardez plutôt votre situation précise et votre zone d'emploi."
-     }
-    ]
-   },
-   {
-    "type": "duo",
-    "surtitre": "06 · Salaire",
-    "titre": "Évolution de carrière et de salaire",
-    "intros": [
-     "La bonne nouvelle, c'est que le plafond monte vite. L'électromécanicien qui se forme voit sa paie suivre ses responsabilités."
-    ],
-    "cartes": [
-     {
-      "titre": "Électromécanicien confirmé",
-      "texte": "La maîtrise de l'électronique et de l'informatique industrielle augmente la valeur sur le marché."
-     },
-     {
-      "titre": "Chef d'équipe maintenance",
-      "texte": "Encadrer une équipe et organiser le préventif ajoute une marche de salaire."
-     },
-     {
-      "titre": "Chef de projet ou responsable maintenance",
-      "texte": "Piloter un service, un budget et des systèmes complexes change de grille."
-     },
-     {
-      "titre": "Ingénieur maintenance",
-      "texte": "Après une reprise d'études, l'ingénieur atteint le haut de la fourchette du secteur."
-     }
-    ],
-    "bande": {
-     "texte": "Le métier voisin d'agent de maintenance ou de mécanicien mène souvent à l'électromécanique ; l'inverse ouvre la voie vers l'ingénieur."
-    }
-   },
-   {
-    "type": "tableau",
-    "surtitre": "07 · Carrière",
-    "titre": "Secteurs et territoires qui paient le mieux",
-    "intros": [
-     "Tous les employeurs ne se valent pas. Certains secteurs et certains territoires tirent le salaire vers le haut, à métier identique.",
-     "Une PME offre souvent l'autonomie et la polyvalence ; un grand groupe offre les avantages et le treizième mois. Le bon choix dépend de votre projet, pas seulement du montant affiché.",
-     "Les énergies renouvelables, le solaire photovoltaïque et le traitement de l'eau recrutent aussi des électromécaniciens, avec une rémunération souvent basée sur la criticité de l'installation."
-    ],
-    "entetes": {
-     "gauche": "",
-     "droite": "Pourquoi il paie mieux"
-    },
-    "lignes": [
-     {
-      "gauche": "Énergie et production continue",
-      "droite": "Astreinte, criticité, arrêt de ligne coûteux"
-     },
-     {
-      "gauche": "Automobile et industrie lourde",
-      "droite": "Cadence, complexité des systèmes automatisés"
-     },
-     {
-      "gauche": "Grandes métropoles, bassins tendus",
-      "droite": "Rareté des candidats, coût de la vie"
-     },
-     {
-      "gauche": "Grands groupes",
-      "droite": "Treizième mois, avantages, perspectives internes"
-     }
-    ]
-   },
-   {
-    "type": "duo",
-    "surtitre": "08 · Salaire",
-    "titre": "Salaire, formation et contrat",
-    "intros": [
-     "Le salaire d'un électromécanicien se lit aussi à l'aune de sa formation et de son contrat. Un même technicien ne gagne pas la même chose selon le chemin suivi.",
-     "Le conseil le plus utile tient en un mot : monter en compétence. Se former à un nouveau système, réparer des équipements plus complexes, devenir référent d'un atelier, tout cela fait le lien entre effort et salaire."
-    ],
-    "cartes": [
-     {
-      "titre": "La formation initiale",
-      "texte": "D'un CAP à une licence, en passant par le bac pro et le lycée technique, chaque niveau ouvre une porte différente sur la grille."
-     },
-     {
-      "titre": "L'alternance et le stage",
-      "texte": "Un contrat en alternance ou un stage bien mené prépare l'embauche et pèse sur la première proposition."
-     },
-     {
-      "titre": "Le statut",
-      "texte": "Salarié en CDI, monteur en mission ou électromécanicien indépendant n'atteignent pas le même revenu annuel."
-     },
-     {
-      "titre": "La spécialité",
-      "texte": "Électricité, mécanique, travaux sur systèmes automatisés ou construction de lignes, chaque domaine a sa valeur de marché."
-     }
-    ],
-    "bande": {
-     "texte": "Le taux d'électromécaniciens qualifiés reste faible sur le marché ; un candidat qui sait diagnostiquer et réparer trouve vite un travail bien payé. La compétence, pas le hasard, fait la différence."
-    }
-   },
-   {
-    "type": "tableau",
-    "surtitre": "09 · Métiers",
-    "titre": "Le salaire face aux métiers voisins",
-    "intros": [
-     "Un chiffre isolé ne dit rien. Comparé aux métiers voisins, le salaire électromécanicien se situe plutôt bien, à condition de viser la bonne évolution.",
-     "Les données de marché circulent sur les job boards, mais elles mélangent tout. Un bon recrutement commence par un recruteur qui sait trier ces jobs et mener le recrutement au bon niveau. Un emploi technicien dans le domaine électronique, une offre de fabrication ou un poste à l'international : un moteur de recherche mélange tout ; à vous de trier selon votre fonction réelle."
-    ],
-    "entetes": {
-     "gauche": "Métier",
-     "droite": "Position sur le marché"
-    },
-    "lignes": [
-     {
-      "gauche": "Électricien",
-      "droite": "Salaire proche, moins de polyvalence mécanique"
-     },
-     {
-      "gauche": "Technicien de maintenance industrielle",
-      "droite": "Fourchette comparable, selon les habilitations"
-     },
-     {
-      "gauche": "Monteur en installation",
-      "droite": "Souvent en dessous au démarrage"
-     },
-     {
-      "gauche": "Manager ou superviseur d'atelier",
-      "droite": "Au-dessus, avec la responsabilité d'équipe"
-     }
-    ],
-    "bande": {
-     "texte": "La compétence rare paie. Être capable de travailler vite et bien sur un système complexe reste, encore aujourd'hui, la meilleure façon d'atteindre le haut de la fourchette. Un certificat professionnel (CQPM) et un vrai job de terrain valent plus qu'un diplôme seul, autant pour un électricien que pour un électromécanicien. La qualité prime, également, sur l'ancienneté. Les entreprises qui recrutent le savent : elles bâtissent un plan de carrière autour des meilleurs, et c'est à ce propos qu'un bon salaire se négocie, sans avoir à être le plus ancien."
-    }
-   },
-   {
-    "type": "duo",
-    "surtitre": "10 · Carrière",
-    "titre": "Se faire recruter à sa juste valeur chez Migen",
-    "intros": [
-     "Un salaire juste, c'est d'abord un recruteur qui comprend le métier de la maintenance industrielle. Voici ce que nous proposons comme employeur à un électromécanicien ou une électromécanicienne qui veut travailler sereinement."
-    ],
-    "cartes": [
-     {
-      "titre": "Une évaluation honnête",
-      "texte": "Entretien technique et comportemental, 10 % des techniciens retenus, résultats partagés avec le client. Être bien évalué, c'est être payé à sa juste valeur."
-     },
-     {
-      "titre": "De la variété",
-      "texte": "Dépannage, préventif, mise en service, chez des clients de tous secteurs, partout en France."
-     },
-     {
-      "titre": "Un collectif technique",
-      "texte": "Plus de 120 techniciens, 4 agences (Lyon, Montréal, Dubaï, Madrid), l'entraide entre électromécaniciens, électriciens et techniciens qualifiés, chacun à sa place."
-     },
-     {
-      "titre": "Un accueil structuré",
-      "texte": "Un référent accompagne la prise de poste, habilitations vérifiées et outillage fourni dès le premier jour."
-     }
-    ]
-   },
-   {
-    "type": "etapes",
-    "surtitre": "11 · Carrière",
-    "titre": "Comment nous rejoindre",
-    "etapes": [
-     {
-      "titre": "Un échange",
-      "texte": "Vous décrivez votre parcours, vos habilitations, vos disponibilités."
-     },
-     {
-      "titre": "Un entretien technique et comportemental",
-      "texte": "Mené par un professionnel du métier, pour situer votre qualification réelle."
-     },
-     {
-      "titre": "Une proposition claire",
-      "texte": "Un poste, un niveau de rémunération, une branche, selon votre profil et nos clients."
-     },
-     {
-      "titre": "L'intégration",
-      "texte": "Un référent vous accompagne, sur le site comme en atelier."
-     }
-    ]
-   },
-   {
-    "type": "faq",
-    "surtitre": "12 · Questions",
-    "titre": "Questions fréquentes",
-    "questions": [
-     {
-      "question": "Combien gagne un électromécanicien ?",
-      "reponse": "Cela dépend de l'expérience, du secteur d'activité et de la région, jamais d'un chiffre universel. Un profil confirmé qui maîtrise l'automatisme et l'électronique négocie une rémunération nettement plus élevée qu'un débutant."
-     },
-     {
-      "question": "Quel est le salaire d'un électromécanicien débutant ?",
-      "reponse": "Au démarrage, le diplôme, la qualification réelle et la localisation pèsent le plus. Un débutant bien placé dans l'énergie ou l'automobile démarre au-dessus de la moyenne ; nous situons le montant en entretien."
-     },
-     {
-      "question": "Le salaire est-il indiqué en brut ou en net ?",
-      "reponse": "Une offre d'emploi affiche le salaire brut, avant cotisations. Le net mensuel est plus bas, d'environ un cinquième. Les primes d'astreinte et d'heures supplémentaires s'ajoutent au total."
-     },
-     {
-      "question": "Comment augmenter son salaire d'électromécanicien ?",
-      "reponse": "En montant en compétence : automatisme, électronique, habilitations, puis un rôle de chef d'équipe ou de responsable. Chaque marche de responsabilité ajoute un palier de salaire."
-     },
-     {
-      "question": "Quels secteurs paient le mieux ?",
-      "reponse": "L'énergie, l'automobile et la production continue paient au-dessus de la moyenne, tout comme l'Île-de-France et les bassins industriels tendus. La criticité de la ligne explique l'écart."
-     },
-     {
-      "question": "Migen recrute-t-elle des électromécaniciens ?",
-      "reponse": "Oui, chaque semaine, partout en France. Nous évaluons chaque technicien en entretien technique et comportemental ; seuls 10 % sont retenus, et un référent accompagne la prise de poste."
-     }
-    ]
-   },
-   {
-    "type": "postuler"
-   },
-   {
-    "type": "liens",
-    "items": [
-     {
-      "libelle": "Électromécanicien",
-      "href": "/carriere/electromecanicien/",
-      "photo": "/assets/web/mq-056f3c250981.jpg"
-     },
-     {
-      "libelle": "Compétences électromécanicien",
-      "href": "/carriere/electromecanicien/competences/",
-      "photo": "/assets/web/mq-948c28bcda08.jpg"
-     }
-    ]
-   }
-  ]
- }
+  }
 }

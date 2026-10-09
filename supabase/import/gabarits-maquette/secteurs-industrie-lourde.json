@@ -1,5 +1,9 @@
 {
   "url": "/secteurs/industrie-lourde/",
+  "seo": {
+    "meta_title": "Maintenance de fours, presses et broyeurs | Migen",
+    "meta_description": "Maintenance industrie lourde : fours, presses de forge, broyeurs, ponts roulants. Préparation type chantier, techniciens confirmés. STELLANTIS, MERSEN."
+  },
   "titre_h1": "Des équipements lourds. Une remise en route rapide.",
   "source": "dessin : maquette/rendu/secteurs--industrie-lourde.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {

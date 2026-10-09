@@ -1,5 +1,9 @@
 {
   "url": "/offres/chantier/",
+  "seo": {
+    "meta_title": "Transfert industriel en France | Migen",
+    "meta_description": "Transfert industriel : audit, démontage, transport, remontage et remise en service partout en France. Rappel dans l'heure au 04 78 33 72 05."
+  },
   "contenu": {
     "gabarit": "offre",
     "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",

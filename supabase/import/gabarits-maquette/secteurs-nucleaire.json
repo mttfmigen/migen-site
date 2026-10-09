@@ -1,5 +1,9 @@
 {
   "url": "/secteurs/nucleaire/",
+  "seo": {
+    "meta_title": "Maintenance conventionnelle en site nucléaire | Migen",
+    "meta_description": "Maintenance nucléaire : utilités, machines tournantes et équipements conventionnels des sites de la filière. Préparation écrite, traçabilité totale."
+  },
   "titre_h1": "Des techniciens habilités, prêts quand vous l’êtes.",
   "source": "dessin : maquette/rendu/secteurs--nucleaire.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {

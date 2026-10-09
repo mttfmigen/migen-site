@@ -1,5 +1,9 @@
 {
   "url": "/offres/residence/prestataire-ou-salarie/",
+  "seo": {
+    "meta_title": "Embaucher ou sous-traiter sa maintenance | Migen",
+    "meta_description": "Prestataire ou salarié : le comparatif honnête, coût complet, souplesse, risque de requalification. Et les cas où embaucher reste le bon choix."
+  },
   "titre_h1": "Prestataire ou salarié : le comparatif honnête",
   "contenu": {
     "gabarit": "offre",

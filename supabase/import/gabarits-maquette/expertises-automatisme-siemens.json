@@ -1,6 +1,10 @@
 {
   "_source": "maquette/rendu/expertises--automatisme--siemens.html (capture du 07/10 21h12, 16 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (littéral, entités seules décodées), relevé par data-dc-tpl, contrôlé par components/site/expertises/specialite/verification-specialite.tsx. Ni « 02 Domaines » ni « Complément 2 » dans la capture ; « Complément 4 » présent. Problème dessiné « colonne », photo de la colonne mesurée mq-948c28bcda08. Marques : famille « auto » (BRAND_RULES de la maquette, une seule famille, pas de rail). PHOTOS DES RÉFÉRENCES MESURÉES, PAS CHOISIES : octets des images du rail servis par la maquette vivante (localhost:4352, 08/10), sha256 complet rapproché de public/assets/web ; ordre et identité des blobs recoupés avec la capture : mq-5111002ce2b6, mq-e6322efcd358, x-auto-caisse, mq-2a6115ec9fe0, mq-0b70202fed79, mq-948c28bcda08.",
   "url": "/expertises/automatisme/siemens/",
+  "seo": {
+    "meta_title": "Automaticien Siemens SIMATIC et TIA Portal | Migen",
+    "meta_description": "Automaticien Siemens : diagnostic, dépannage et reprise de programme sur parc SIMATIC, TIA Portal et STEP 7. Techniciens évalués, rappel dans l'heure."
+  },
   "titre_h1": "Automaticien Siemens : de S5 à TIA Portal, sans perdre une recette",
   "contenu": {
     "gabarit": "specialite",

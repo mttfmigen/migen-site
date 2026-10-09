@@ -1,5 +1,9 @@
 {
   "url": "/offres/retrofit/",
+  "seo": {
+    "meta_title": "Moderniser une machine plutôt que la remplacer | Migen",
+    "meta_description": "Retrofit machine industrielle : diagnostic, rénovation mécanique, électrique et automatisme, essais et remise en service. Rappel dans l'heure, 04 78 33 72 05."
+  },
   "contenu": {
     "gabarit": "offre",
     "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30.",

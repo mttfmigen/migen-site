@@ -1,5 +1,9 @@
 {
   "url": "/secteurs/industrie-metallique/",
+  "seo": {
+    "meta_title": "Maintenance d'atelier usinage et tôlerie | Migen",
+    "meta_description": "Maintenance industrie métallique : broches, glissières, presses, robots de soudure, poussière métallique. Contrôles géométriques tracés. VOIT, MERSEN."
+  },
   "titre_h1": "Vos presses et vos lignes, remises en route avant qu’elles ne coûtent.",
   "source": "dessin : maquette/rendu/secteurs--industrie-metallique.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {

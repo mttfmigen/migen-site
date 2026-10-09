@@ -1,5 +1,9 @@
 {
   "url": "/preuves/veepee-sites-lyon/",
+  "seo": {
+    "meta_title": "Cas Veepee : Disponibilité des systèmes| Migen",
+    "meta_description": "Veepee : Migen y déploie une équipe de 4 techniciens pour que les flux de préparation ne s'arrêtent."
+  },
   "titre_h1": "Des systèmes intralogistiques au rythme du e-commerce",
   "contenu": {
     "gabarit": "etude-de-cas",

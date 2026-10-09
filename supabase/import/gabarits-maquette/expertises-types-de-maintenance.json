@@ -1,5 +1,9 @@
 {
   "url": "/expertises/types-de-maintenance/",
+  "seo": {
+    "meta_title": "Quel type de maintenance choisir | Migen",
+    "meta_description": "Types de maintenance : corrective, curative, préventive, conditionnelle, prévisionnelle, prédictive. Ce que chacune déclenche, et comment les doser."
+  },
   "titre_h1": "Types de maintenance : réparer, prévoir ou prédire, le bon choix pour chaque machine",
   "contenu": {
     "gabarit": "domaine",

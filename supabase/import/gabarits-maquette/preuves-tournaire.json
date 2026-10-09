@@ -1,5 +1,9 @@
 {
   "url": "/preuves/tournaire/",
+  "seo": {
+    "meta_title": "Cas Tournaire : Méthodes et maintenance sur des| Migen",
+    "meta_description": "Implanté à Grasse depuis 1833, Tournaire fabrique des emballages en aluminium monobloc pour la parfumerie, la santé et la chimie de spécialité, dont."
+  },
   "titre_h1": "Maintenir des machines conçues en interne",
   "contenu": {
     "gabarit": "etude-de-cas",

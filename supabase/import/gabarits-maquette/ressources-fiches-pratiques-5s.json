@@ -1,5 +1,9 @@
 {
   "url": "/ressources/fiches-pratiques/5s/",
+  "seo": {
+    "meta_title": "5S industrie | Migen",
+    "meta_description": "5s industrie : définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "5S industrie",
   "contenu": {
     "gabarit": "ressource",

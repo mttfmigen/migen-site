@@ -1,5 +1,9 @@
 {
   "url": "/ressources/fiches-techniques/niveaux-de-maintenance/",
+  "seo": {
+    "meta_title": "Niveaux de maintenance | Migen",
+    "meta_description": "Niveaux de maintenance : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Niveaux de maintenance",
   "contenu": {
     "gabarit": "ressource",

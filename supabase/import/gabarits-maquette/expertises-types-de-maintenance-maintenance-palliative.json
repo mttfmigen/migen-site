@@ -1,6 +1,10 @@
 {
   "_source": "maquette/rendu/expertises--types-de-maintenance--maintenance-palliative.html (07/10 21h12, 15 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (entités décodées, apostrophes de la capture conservées), contrôlé par components/site/expertises/specialite/verification-specialite.tsx. CHIFFRES : les trois cartes de la capture, « +200 / Clients industriels accompagnés » compris (règle client : « +200 clients », jamais « réguliers »). PHOTOS MESURÉES, PAS CHOISIES : octets de chaque blob du rail des références de la maquette vivante (localhost:4352/voir.html, 08/10) rapprochés de public/assets/web par sha256 complet, dans l'ordre des cartes ; ordre des clients vérifié identique à la capture. « Marques maintenues » absente de la capture, donc pas de marquesFamille. Problème dessiné « panneau-sombre », aucune photo (problemePhoto null). « Complément 4 » porté. PHRASE NON RENDUE (interdit « tarif ») : 09 Questions, « Combien coûte une intervention palliative ? », la phrase « La question utile n'est pas le tarif horaire mais le coût complet : main d'œuvre, pièce, transport, production perdue, et la réparation définitive qui reste due. » ; SEULE cette phrase tombe (consigne du 08/10 : on retire la phrase, pas le paragraphe) : « Nous détaillons ces postes avant l'intervention, pas après. » reste rendue, comme sur /expertises/types-de-maintenance/maintenance-curative/.",
   "url": "/expertises/types-de-maintenance/maintenance-palliative/",
+  "seo": {
+    "meta_title": "Maintenance palliative : dépannage provisoire | Migen",
+    "meta_description": "Maintenance palliative : remise en marche provisoire de votre équipement, réparation définitive tracée. Techniciens évalués, rappel dans l'heure."
+  },
   "titre_h1": "Maintenance palliative : redémarrer maintenant, réparer pour de bon ensuite",
   "contenu": {
     "gabarit": "specialite",

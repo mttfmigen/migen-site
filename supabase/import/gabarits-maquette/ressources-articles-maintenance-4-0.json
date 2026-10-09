@@ -1,5 +1,9 @@
 {
   "url": "/ressources/articles/maintenance-4-0/",
+  "seo": {
+    "meta_title": "Maintenance 4.0 | Migen",
+    "meta_description": "Maintenance 4.0 : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Maintenance 4.0",
   "contenu": {
     "gabarit": "ressource",

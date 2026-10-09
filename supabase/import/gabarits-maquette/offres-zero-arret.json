@@ -1,5 +1,9 @@
 {
   "url": "/offres/zero-arret/",
+  "seo": {
+    "meta_title": "Zéro arrêt, la maintenance hors production | Migen",
+    "meta_description": "Préventif le samedi, dépannage la nuit : un abonnement mensuel fixe, sur 12 mois, pour une maintenance qui ne touche jamais à votre production."
+  },
   "titre_h1": "Zéro arrêt : la maintenance qui ne touche jamais à votre production",
   "contenu": {
     "gabarit": "offre",

@@ -1,5 +1,9 @@
 {
   "url": "/secteurs/logistique/peak-season/",
+  "seo": {
+    "meta_title": "Préparer vos équipements avant le pic | Migen",
+    "meta_description": "Peak season logistique : revue technique à J-90, pièces à J-60, renforts briefés à J-30. Astreinte réelle pendant la vague. AMAZON, VEEPEE, GLS."
+  },
   "titre_h1": "Le pic arrive. Vos lignes sont prêtes.",
   "source": "dessin : maquette/rendu/secteurs--logistique--peak-season.html (gabarit 08 Secteur, écrans d'une offre plus « Expertises du secteur » et « Offres du secteur »), rendu par PageSecteur. texte : relevé mot pour mot dans la capture ; corpus de supabase/import/corpus-analyse.json pour les sections que la capture compose depuis lui. Photos et logos identifiés par empreinte SHA-1 des octets servis par la maquette vivante le 08/10.",
   "contenu": {

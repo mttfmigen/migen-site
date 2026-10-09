@@ -1,5 +1,9 @@
 {
   "url": "/ressources/articles/optimiser-la-maintenance/",
+  "seo": {
+    "meta_title": "Optimisation de la maintenance | Migen",
+    "meta_description": "Optimisation de la maintenance : définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Optimisation de la maintenance",
   "contenu": {
     "gabarit": "ressource",

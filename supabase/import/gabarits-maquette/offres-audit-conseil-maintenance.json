@@ -1,5 +1,9 @@
 {
   "url": "/offres/audit-conseil-maintenance/",
+  "seo": {
+    "meta_title": "Audit et conseil en maintenance | Migen",
+    "meta_description": "Conseil en maintenance industrielle : audit de site, plan d'actions chiffré et priorisé. Diagnostic gratuit, rappel dans l'heure au 04 78 33 72 05."
+  },
   "contenu": {
     "gabarit": "offre",
     "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Le premier état des lieux est gratuit.",

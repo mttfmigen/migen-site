@@ -1,5 +1,9 @@
 {
   "url": "/ressources/livres-blancs/externaliser-sa-maintenance/",
+  "seo": {
+    "meta_title": "Externaliser sa maintenance | Migen",
+    "meta_description": "Externaliser sa maintenance sans perdre la main : la méthode, les garde-fous et les pièges, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Livre blanc : externaliser sa maintenance sans perdre la main",
   "contenu": {
     "gabarit": "ressource",

@@ -1,5 +1,9 @@
 {
   "url": "/expertises/robotique/",
+  "seo": {
+    "meta_title": "Roboticien ABB et Fanuc pour votre cellule | Migen",
+    "meta_description": "Maintenance robotique : préventif, dépannage et remise en service de vos robots industriels. Roboticiens ABB et Fanuc évalués, rappel dans l'heure."
+  },
   "titre_h1": "Maintenance robotique : un robot arrêté, c’est toute la cellule qui attend",
   "contenu": {
     "gabarit": "domaine",

@@ -1,5 +1,9 @@
 {
   "url": "/offres/depannage-industriel/astreinte/",
+  "seo": {
+    "meta_title": "Astreinte industrielle | Migen",
+    "meta_description": "Astreinte maintenance : Astreinte de maintenance partout en France. Un numéro, un technicien évalué, un compte rendu à chaque déclenchement."
+  },
   "titre_h1": "Astreinte de maintenance : quelqu’un décroche, la nuit comme le week-end",
   "contenu": {
     "gabarit": "offre",

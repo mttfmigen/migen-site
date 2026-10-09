@@ -1,5 +1,9 @@
 {
   "url": "/preuves/orthus-ecocem/",
+  "seo": {
+    "meta_title": "ORTHUS x ECOCEM : un site R&D construit| Migen",
+    "meta_description": "Ecocem confie à Orthus, filiale du groupe Migen, la construction complète de son nouveau site industriel de R&D près de Paris, livraison prévue."
+  },
   "titre_h1": "De la parcelle au site de R&D, un seul pilote",
   "contenu": {
     "gabarit": "etude-de-cas",

@@ -1,5 +1,9 @@
 {
   "url": "/ressources/fiches-pratiques/plan-de-prevention/",
+  "seo": {
+    "meta_title": "Plan de prévention : obligations et contenu | Migen",
+    "meta_description": "Plan de prévention : quand il est obligatoire, ce qu'il contient, qui le signe. La fiche pratique d'une entreprise extérieure qui en signe chaque semaine."
+  },
   "titre_h1": "Plan de prévention",
   "contenu": {
     "gabarit": "ressource",

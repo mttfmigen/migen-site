@@ -1,5 +1,9 @@
 {
   "url": "/offres/arret-technique/",
+  "seo": {
+    "meta_title": "Shutdown et grand arrêt de site | Migen",
+    "meta_description": "Arrêt technique maintenance : préparation anticipée, équipes complètes, coordination QHSE et date de redémarrage tenue."
+  },
   "titre_h1": "Arrêt technique de maintenance industrielle",
   "contenu": {
     "gabarit": "offre",

@@ -1,6 +1,10 @@
 {
   "_source": "maquette/rendu/expertises--types-de-maintenance--maintenance-predictive.html (07/10 21h12, 16 sections), gabarit « 05 Spécialité » de l'index. Texte copié mot pour mot de cette capture (entités décodées, apostrophes de la capture conservées), contrôlé par components/site/expertises/specialite/verification-specialite.tsx. CHIFFRES : les trois cartes de la capture, « +200 / Clients industriels accompagnés » compris (règle client : « +200 clients », jamais « réguliers »). PHOTOS MESURÉES, PAS CHOISIES : octets de chaque blob du rail des références de la maquette vivante (localhost:4352/voir.html, 08/10) rapprochés de public/assets/web par sha256 complet, dans l'ordre des cartes ; ordre des clients vérifié identique à la capture. « Marques maintenues » absente de la capture, donc pas de marquesFamille. Problème dessiné « panneau-sombre », aucune photo (problemePhoto null). « Complément 2 » (11 cellules, tableaux compris) et « Complément 4 » portés.",
   "url": "/expertises/types-de-maintenance/maintenance-predictive/",
+  "seo": {
+    "meta_title": "Voir la panne venir, et la planifier | Migen",
+    "meta_description": "Maintenance prédictive : définition, capteurs, données, modèles et retour sur investissement. Puis qui exécute les travaux que le modèle annonce."
+  },
   "titre_h1": "Maintenance prédictive : voir la panne venir avant qu’elle n’arrête la ligne",
   "contenu": {
     "gabarit": "specialite",

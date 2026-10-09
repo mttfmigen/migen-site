@@ -1,5 +1,9 @@
 {
   "url": "/offres/construction/",
+  "seo": {
+    "meta_title": "Montage et installation d'usines | Migen",
+    "meta_description": "Montage industriel : ingénierie, assemblage, raccordements et mise en service de vos lignes. Rappel dans l'heure, astreinte au 04 78 33 72 05."
+  },
   "contenu": {
     "gabarit": "offre",
     "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte pour les urgences en cours de chantier.",

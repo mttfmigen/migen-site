@@ -1,5 +1,9 @@
 {
   "url": "/preuves/la-panetiere/",
+  "seo": {
+    "meta_title": "Cas La Panetière : Renfort de maintenance pour une| Migen",
+    "meta_description": "La Panetière, entreprise du groupe Occipain (coopérative Arterris), produit à Toulouse les pains d'un réseau de boulangeries."
+  },
   "titre_h1": "Un renfort pour que le pain sorte chaque matin",
   "contenu": {
     "gabarit": "etude-de-cas",

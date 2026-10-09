@@ -1,5 +1,9 @@
 {
   "url": "/preuves/timescope/",
+  "seo": {
+    "meta_title": "TIMESCOPE : maintenance de casques VR| Migen",
+    "meta_description": "Timescope confie à Migen la maintenance sous contrat de ses casques de réalité virtuelle déployés en France : étanchéité, réglages et fiabilité."
+  },
   "titre_h1": "Un parc de casques de réalité virtuelle tenu dans toute la France",
   "contenu": {
     "gabarit": "etude-de-cas",

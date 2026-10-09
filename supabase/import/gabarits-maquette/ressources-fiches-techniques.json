@@ -1,5 +1,9 @@
 {
   "url": "/ressources/fiches-techniques/",
+  "seo": {
+    "meta_title": "Fiches techniques de maintenance industrielle | Migen",
+    "meta_description": "Fiches techniques de maintenance : TRS, MTBF, AMDEC, analyse vibratoire, GMAO. Les chiffres et les seuils, expliqués par des techniciens."
+  },
   "titre_h1": "Ressources : Fiches techniques",
   "source": "maquette/rendu/ressources--fiches-techniques.html, transcrite mot pour mot (MigenRessource, vue rubrique)",
   "phrases_retirees": [],

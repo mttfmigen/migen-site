@@ -1,389 +1,393 @@
 {
- "url": "/carriere/responsable-maintenance/",
- "titre_h1": "Responsable maintenance",
- "mot_cle": "responsable maintenance",
- "contenu": {
-  "gabarit": "metier",
-  "heros": {
-   "pastille": "Métier",
-   "chapeau": "La production s'arrête, le budget dérape, l'équipe s'épuise : c'est le responsable maintenance qui doit reprendre la main. Ce métier pilote toute la fonction maintenance d'un site industriel.",
-   "paragraphes": [
-    "Cette fiche métier détaille les missions, la formation, les compétences et le salaire du responsable maintenance. Elle complète le hub [Métiers de la maintenance](/carriere/), qui présente les sept métiers de la filière.",
-    "Le responsable maintenance, aussi appelé responsable du service entretien et maintenance, assure la gestion de la maintenance industrielle d'un site : équipement, système, sécurité et développement de l'outil de production.",
-    "Migen recrute et forme des responsables maintenance dans toute la France. Le regard posé ici est celui d'un employeur qui recrute chaque semaine, pas d'une fiche métier générique."
-   ],
-   "chiffre": {
-    "valeur": "10 %",
-    "texte": "des techniciens retenus, après un test technique et un entretien"
-   },
-   "photo": {
-    "src": "/assets/web/mq-17e2f3bce95f.jpg",
-    "alt": "Technicien migen en intervention"
-   }
+  "url": "/carriere/responsable-maintenance/",
+  "seo": {
+    "meta_title": "Responsable maintenance | Migen",
+    "meta_description": "Responsable maintenance : missions, compétences, formation et salaire du métier. Migen recrute et forme les responsables maintenance de l'industrie en France."
   },
-  "sections": [
-   {
-    "type": "chiffres",
-    "items": [
-     {
-      "valeur": "+100",
-      "texte": "collaborateurs, techniciens salariés de Migen"
-     },
-     {
-      "valeur": "10 %",
-      "texte": "des techniciens retenus après évaluation"
-     },
-     {
-      "valeur": "4 agences",
-      "texte": "et des hubs de techniciens partout en France"
-     },
-     {
-      "valeur": "CDI",
-      "texte": "alternance et stage, à tous les niveaux"
-     }
-    ]
-   },
-   {
-    "type": "bento",
-    "surtitre": "01 · Au quotidien",
-    "titre": "Ce que fait un responsable maintenance au quotidien",
-    "intros": [
-     "Panne à répétition, préventif qui saute, prestataire opaque : le responsable maintenance remet de l'ordre dans le service et garantit la production. Ses missions couvrent le technique, l'humain et le budget.",
-     "Le responsable maintenance participe aussi à la conception des plans de maintenance. Il crée les modes opératoires, organise l'analyse des risques et maîtrise le logiciel de GMAO comme un outil du quotidien."
-    ],
-    "cartes": [
-     {
-      "titre": "Piloter le service maintenance",
-      "texte": "Organiser l'activité de maintenance préventive et corrective, définir les priorités du service sur le site industriel."
-     },
-     {
-      "titre": "Manager l'équipe",
-      "texte": "Encadrer techniciens et agents, organiser le planning, faire monter chacun en compétence au sein de l'équipe."
-     },
-     {
-      "titre": "Gérer le budget",
-      "texte": "Suivre le budget de maintenance, arbitrer un investissement, réduire le coût d'arrêt sans sacrifier la fiabilité."
-     },
-     {
-      "titre": "Exploiter la GMAO",
-      "texte": "Suivre les indicateurs de la GMAO, la gestion de maintenance assistée par ordinateur, analyser les pannes, décider d'une amélioration."
-     },
-     {
-      "titre": "Garantir la sécurité",
-      "texte": "Faire respecter la sécurité, la norme et la procédure sur chaque intervention, un point non négociable."
-     },
-     {
-      "titre": "Piloter les prestataires",
-      "texte": "Cadrer un prestataire, suivre un contrat, contrôler la qualité des travaux sous-traités."
-     },
-     {
-      "titre": "Conduire les projets",
-      "texte": "Mener un projet d'ingénierie de maintenance, une gestion de projet spécifique, du dépannage lourd au remplacement de matériel."
-     }
-    ]
-   },
-   {
-    "type": "tableau",
-    "surtitre": "02 · Carrière",
-    "titre": "Les responsabilités clés du poste",
-    "intros": [
-     "Le responsable maintenance porte une responsabilité large, du technique au management. Voici ce que le poste couvre, dans les faits, dans une entreprise industrielle.",
-     "Sur le terrain, le responsable maintenance assure l'équilibre entre le technique et l'économique. Il supervise l'équipe interne, assure le bon fonctionnement des machines et porte une vision stratégique de la maintenance.",
-     "Il gère aussi les ressources : matériel, pièces, nouveaux équipements. Un responsable ou une directrice de maintenance sait travailler avec la direction de la société comme avec l'atelier, dans l'intérêt de la production."
-    ],
-    "entetes": {
-     "gauche": "Responsabilité",
-     "droite": "Ce que le responsable maintenance assure"
+  "titre_h1": "Responsable maintenance",
+  "mot_cle": "responsable maintenance",
+  "contenu": {
+    "gabarit": "metier",
+    "heros": {
+      "pastille": "Métier",
+      "chapeau": "La production s'arrête, le budget dérape, l'équipe s'épuise : c'est le responsable maintenance qui doit reprendre la main. Ce métier pilote toute la fonction maintenance d'un site industriel.",
+      "paragraphes": [
+        "Cette fiche métier détaille les missions, la formation, les compétences et le salaire du responsable maintenance. Elle complète le hub [Métiers de la maintenance](/carriere/), qui présente les sept métiers de la filière.",
+        "Le responsable maintenance, aussi appelé responsable du service entretien et maintenance, assure la gestion de la maintenance industrielle d'un site : équipement, système, sécurité et développement de l'outil de production.",
+        "Migen recrute et forme des responsables maintenance dans toute la France. Le regard posé ici est celui d'un employeur qui recrute chaque semaine, pas d'une fiche métier générique."
+      ],
+      "chiffre": {
+        "valeur": "10 %",
+        "texte": "des techniciens retenus, après un test technique et un entretien"
+      },
+      "photo": {
+        "src": "/assets/web/mq-17e2f3bce95f.jpg",
+        "alt": "Technicien migen en intervention"
+      }
     },
-    "lignes": [
-     {
-      "gauche": "Équipe",
-      "droite": "Management, recrutement, montée en compétence des techniciens"
-     },
-     {
-      "gauche": "Budget",
-      "droite": "Gestion du budget, investissement, coût de maintenance"
-     },
-     {
-      "gauche": "Production",
-      "droite": "Fiabilité des équipements, disponibilité, réduction des pannes"
-     },
-     {
-      "gauche": "Sécurité",
-      "droite": "Norme, procédure, conformité QHSE et hygiène"
-     },
-     {
-      "gauche": "Méthodes",
-      "droite": "Veille technologique, GMAO, indicateurs, amélioration continue"
-     },
-     {
-      "gauche": "Prestataires",
-      "droite": "Contrat, cahier des charges, suivi de chaque prestataire"
-     }
+    "sections": [
+      {
+        "type": "chiffres",
+        "items": [
+          {
+            "valeur": "+100",
+            "texte": "collaborateurs, techniciens salariés de Migen"
+          },
+          {
+            "valeur": "10 %",
+            "texte": "des techniciens retenus après évaluation"
+          },
+          {
+            "valeur": "4 agences",
+            "texte": "et des hubs de techniciens partout en France"
+          },
+          {
+            "valeur": "CDI",
+            "texte": "alternance et stage, à tous les niveaux"
+          }
+        ]
+      },
+      {
+        "type": "bento",
+        "surtitre": "01 · Au quotidien",
+        "titre": "Ce que fait un responsable maintenance au quotidien",
+        "intros": [
+          "Panne à répétition, préventif qui saute, prestataire opaque : le responsable maintenance remet de l'ordre dans le service et garantit la production. Ses missions couvrent le technique, l'humain et le budget.",
+          "Le responsable maintenance participe aussi à la conception des plans de maintenance. Il crée les modes opératoires, organise l'analyse des risques et maîtrise le logiciel de GMAO comme un outil du quotidien."
+        ],
+        "cartes": [
+          {
+            "titre": "Piloter le service maintenance",
+            "texte": "Organiser l'activité de maintenance préventive et corrective, définir les priorités du service sur le site industriel."
+          },
+          {
+            "titre": "Manager l'équipe",
+            "texte": "Encadrer techniciens et agents, organiser le planning, faire monter chacun en compétence au sein de l'équipe."
+          },
+          {
+            "titre": "Gérer le budget",
+            "texte": "Suivre le budget de maintenance, arbitrer un investissement, réduire le coût d'arrêt sans sacrifier la fiabilité."
+          },
+          {
+            "titre": "Exploiter la GMAO",
+            "texte": "Suivre les indicateurs de la GMAO, la gestion de maintenance assistée par ordinateur, analyser les pannes, décider d'une amélioration."
+          },
+          {
+            "titre": "Garantir la sécurité",
+            "texte": "Faire respecter la sécurité, la norme et la procédure sur chaque intervention, un point non négociable."
+          },
+          {
+            "titre": "Piloter les prestataires",
+            "texte": "Cadrer un prestataire, suivre un contrat, contrôler la qualité des travaux sous-traités."
+          },
+          {
+            "titre": "Conduire les projets",
+            "texte": "Mener un projet d'ingénierie de maintenance, une gestion de projet spécifique, du dépannage lourd au remplacement de matériel."
+          }
+        ]
+      },
+      {
+        "type": "tableau",
+        "surtitre": "02 · Carrière",
+        "titre": "Les responsabilités clés du poste",
+        "intros": [
+          "Le responsable maintenance porte une responsabilité large, du technique au management. Voici ce que le poste couvre, dans les faits, dans une entreprise industrielle.",
+          "Sur le terrain, le responsable maintenance assure l'équilibre entre le technique et l'économique. Il supervise l'équipe interne, assure le bon fonctionnement des machines et porte une vision stratégique de la maintenance.",
+          "Il gère aussi les ressources : matériel, pièces, nouveaux équipements. Un responsable ou une directrice de maintenance sait travailler avec la direction de la société comme avec l'atelier, dans l'intérêt de la production."
+        ],
+        "entetes": {
+          "gauche": "Responsabilité",
+          "droite": "Ce que le responsable maintenance assure"
+        },
+        "lignes": [
+          {
+            "gauche": "Équipe",
+            "droite": "Management, recrutement, montée en compétence des techniciens"
+          },
+          {
+            "gauche": "Budget",
+            "droite": "Gestion du budget, investissement, coût de maintenance"
+          },
+          {
+            "gauche": "Production",
+            "droite": "Fiabilité des équipements, disponibilité, réduction des pannes"
+          },
+          {
+            "gauche": "Sécurité",
+            "droite": "Norme, procédure, conformité QHSE et hygiène"
+          },
+          {
+            "gauche": "Méthodes",
+            "droite": "Veille technologique, GMAO, indicateurs, amélioration continue"
+          },
+          {
+            "gauche": "Prestataires",
+            "droite": "Contrat, cahier des charges, suivi de chaque prestataire"
+          }
+        ]
+      },
+      {
+        "type": "liste",
+        "surtitre": "03 · Compétences",
+        "titre": "Les compétences et qualités qui font la différence",
+        "intros": [
+          "Un recruteur cherche chez un responsable maintenance un double profil : l'expertise technique et la capacité à manager. Rares sont ceux qui réunissent les deux.",
+          "Ce sont des compétences rares dans un seul domaine. Une solution technique, une pièce à commander, un conseil à donner : le responsable maintenance jongle avec tout, et l'ingénierie fait partie de son quotidien."
+        ],
+        "cartes": [
+          {
+            "titre": "Expertise technique",
+            "texte": "En expert, comprendre la mécanique, l'électrique, l'électronique et le système automatisé pour arbitrer une décision."
+          },
+          {
+            "titre": "Management d'équipe",
+            "texte": "Animer, recruter, faire grandir une équipe, un savoir-faire de manager autant que de technicien."
+          },
+          {
+            "titre": "Gestion et budget",
+            "texte": "Piloter un budget, analyser un coût, défendre un investissement devant la direction."
+          },
+          {
+            "titre": "Analyse et méthode",
+            "texte": "Lire les indicateurs, mener une analyse de panne, décider d'une solution durable et spécifique à chaque domaine."
+          },
+          {
+            "titre": "Veille technologique",
+            "texte": "Suivre l'actualité et la technologie, de la GMAO à l'intelligence artificielle appliquée à la maintenance."
+          },
+          {
+            "titre": "Communication",
+            "texte": "Porter un message clair à la direction, à la production et à chaque prestataire."
+          }
+        ]
+      },
+      {
+        "type": "etapes",
+        "surtitre": "04 · Formation",
+        "titre": "Formation et parcours pour devenir responsable maintenance",
+        "intros": [
+          "Le métier se construit par étapes, du diplôme technique à l'expérience de terrain. Voici le parcours type pour devenir responsable maintenance.",
+          "Beaucoup de responsables maintenance ont été techniciens avant de manager. Le stage, l'alternance et l'expérience comptent autant que le diplôme. Un [agent de maintenance industrielle](/carriere/agent-de-maintenance/) motivé peut, avec le temps, viser cette fonction.",
+          "La formation continue reste utile tout au long de la carrière. Un stage de management, une formation courte en gestion de projet ou en ingénierie de maintenance aide à passer du terrain à l'encadrement. C'est une carrière qui se construit, pas un titre qu'on obtient une fois pour toutes."
+        ],
+        "etapes": [
+          {
+            "titre": "Le diplôme technique",
+            "texte": "Un BTS, un BUT ou une licence professionnelle maintenance, de niveau bac +2 à bac +3, souvent en génie mécanique ou électrique."
+          },
+          {
+            "titre": "L'école d'ingénieur ou le master",
+            "texte": "Pour un poste de responsable ou d'ingénieur de maintenance, une école d'ingénieur ou un master, après un stage long en entreprise."
+          },
+          {
+            "titre": "L'expérience de terrain",
+            "texte": "Plusieurs années comme technicien de maintenance ou chef d'équipe, où se construit la crédibilité du futur responsable."
+          },
+          {
+            "titre": "La prise de responsabilité",
+            "texte": "Responsable maintenance, puis directeur technique ou responsable de production, l'évolution est réelle."
+          }
+        ]
+      },
+      {
+        "type": "bento",
+        "surtitre": "05 · Sécurité",
+        "titre": "Habilitations, sécurité et normes",
+        "intros": [
+          "Le responsable maintenance est garant de la sécurité de tout un service : sa responsabilité est aussi juridique. Habilitations et norme se contrôlent en permanence."
+        ],
+        "cartes": [
+          {
+            "titre": "Habilitation électrique",
+            "texte": "Nécessaire pour encadrer et valider les interventions sur les installations sous tension."
+          },
+          {
+            "titre": "Culture QHSE et hygiène",
+            "texte": "Maîtriser la démarche qualité, hygiène, sécurité et environnement attendue sur un site industriel."
+          },
+          {
+            "titre": "Responsabilité juridique",
+            "texte": "Connaître la norme, la procédure et le cadre juridique qui engagent l'entreprise en cas d'accident."
+          }
+        ],
+        "bande": {
+          "texte": "Chez Migen, la sécurité et la certification sont vérifiées avant chaque intervention. Le responsable maintenance en fait un point de contrôle systématique, du technicien au prestataire."
+        }
+      },
+      {
+        "type": "liste",
+        "surtitre": "06 · Salaire",
+        "titre": "Salaire et évolution du responsable maintenance",
+        "intros": [
+          "La rémunération d'un responsable maintenance dépend de plusieurs facteurs. Le salaire évolue avec l'expérience, la taille de l'entreprise et le secteur.",
+          "Le poste peut aussi varier selon le type de contrat et l'environnement industriel. Un responsable de la maintenance en PME touche à tout ; en grand groupe, il se concentre sur la stratégie et la mise en œuvre des plans."
+        ],
+        "cartes": [
+          {
+            "titre": "L'expérience",
+            "texte": "Le premier poste de responsable paie la promesse, les suivants paient les preuves de management."
+          },
+          {
+            "titre": "La taille de l'entreprise",
+            "texte": "Un grand groupe et une PME ne proposent pas la même rémunération ni le même périmètre."
+          },
+          {
+            "titre": "Le secteur d'activité",
+            "texte": "Énergie, pharmaceutique et automobile paient au-dessus de la moyenne du marché."
+          },
+          {
+            "titre": "La responsabilité",
+            "texte": "Nombre de techniciens encadrés, budget géré, nombre de sites pilotés."
+          },
+          {
+            "titre": "L'évolution",
+            "texte": "De responsable maintenance industrielle à responsable technique, directeur de production ou expert méthodes, parfois vers la supply chain."
+          }
+        ],
+        "bande": {
+          "texte": "Le salaire réel se discute selon l'expérience et la région, jamais sur une grille figée. Décrivez votre profil, nous situons la proposition. Un conseil : voir aussi les postes de technicien avant de viser l'encadrement."
+        }
+      },
+      {
+        "type": "bento",
+        "surtitre": "07 · Carrière",
+        "titre": "Responsable maintenance chez Migen : le cadre et les moyens",
+        "intros": [
+          "Voici ce que Migen propose comme employeur, au-delà de l'offre d'emploi classique.",
+          "Vous voulez travailler à ce niveau de responsabilité ? Le responsable, homme ou femme, y est également attendu sur le terrain. Un stage d'observation, un retour d'expérience partagé, et l'on organise ensemble la bonne solution. Envie d'échanger ? Vous pouvez nous contacter."
+        ],
+        "cartes": [
+          {
+            "titre": "Des missions à responsabilité",
+            "texte": "Piloter la maintenance chez nos clients, du diagnostic à l'amélioration continue."
+          },
+          {
+            "titre": "Un collectif technique complet",
+            "texte": "Plus de 120 techniciens, 4 agences (Lyon, Montréal, Dubaï, Madrid), une vraie équipe technique."
+          },
+          {
+            "titre": "Une sélection exigeante et assumée",
+            "texte": "Entretien technique et comportemental, 10 % des techniciens retenus."
+          },
+          {
+            "titre": "Un accueil structuré",
+            "texte": "Un référent accompagne chaque prise de poste, sur site comme au siège."
+          },
+          {
+            "titre": "Une couverture nationale",
+            "texte": "Des missions partout en France, selon votre profil et votre expérience."
+          }
+        ]
+      },
+      {
+        "type": "duo",
+        "surtitre": "08 · Carrière",
+        "titre": "Emploi et recrutement : qui cherche un responsable maintenance",
+        "intros": [
+          "L'industrie manque de responsables maintenance. Les offres d'emploi le montrent, du cabinet de recrutement spécialisé aux réseaux de la métallurgie, où le recruteur peine à trouver le bon profil."
+        ],
+        "cartes": [
+          {
+            "titre": "Les sites industriels",
+            "texte": "Chaque entreprise de production cherche un responsable maintenance capable de gérer une équipe et un budget."
+          },
+          {
+            "titre": "Les cabinets de recrutement",
+            "texte": "Le cabinet et le recruteur spécialisés chassent ces profils rares, à la croisée du technique et du management."
+          },
+          {
+            "titre": "Les groupes multi-sites",
+            "texte": "Une société industrielle avec plusieurs sites recrute des responsables et des directeurs techniques."
+          },
+          {
+            "titre": "Les réseaux professionnels",
+            "texte": "La veille des offres d'emploi et l'intérêt des recruteurs restent forts, on y voit passer chaque nouvelle annonce."
+          }
+        ],
+        "bande": {
+          "texte": "Un recruteur cherche l'équilibre entre expertise technique et capacité de management. Chez Migen, ce même travail de sélection est fait en amont, avec un vrai retour au client. La certification et l'habilitation sont vérifiées, et le salaire fixe se discute selon l'activité. Un vrai talent trouve sa place. Envie d'en savoir plus ? Contactez-nous."
+        }
+      },
+      {
+        "type": "etapes",
+        "surtitre": "09 · Carrière",
+        "titre": "Comment rejoindre nos équipes",
+        "intros": [
+          "Le processus est direct, sans dossier interminable. Il consiste en quatre étapes, du premier contact à la prise de poste."
+        ],
+        "etapes": [
+          {
+            "titre": "Un échange avec un chargé d'affaires",
+            "texte": "Vous décrivez votre parcours, votre expérience de management, vos disponibilités."
+          },
+          {
+            "titre": "Un entretien technique et comportemental",
+            "texte": "Mené par un professionnel du métier, pour vérifier l'expertise et la capacité à travailler en équipe."
+          },
+          {
+            "titre": "Une proposition de mission",
+            "texte": "Selon votre profil, votre expérience et les besoins de nos clients partout en France."
+          },
+          {
+            "titre": "L'intégration",
+            "texte": "Un référent vous accompagne à la prise de poste, sur le site comme dans l'organisation."
+          }
+        ]
+      },
+      {
+        "type": "faq",
+        "surtitre": "10 · Questions",
+        "titre": "Questions fréquentes",
+        "questions": [
+          {
+            "question": "Quelle est la différence entre un responsable maintenance et un technicien ?",
+            "reponse": "Le technicien intervient sur les équipements ; le responsable maintenance pilote le service, l'équipe et le budget. Il ne répare plus lui-même, mais garantit que tout le service de maintenance fonctionne."
+          },
+          {
+            "question": "Quel diplôme faut-il pour devenir responsable maintenance ?",
+            "reponse": "Un BTS ou une licence professionnelle maintenance, puis une école d'ingénieur ou un master pour les postes à forte responsabilité. L'expérience de terrain, souvent comme technicien, reste déterminante pour accéder à la fonction."
+          },
+          {
+            "question": "Un responsable maintenance travaille-t-il seul ?",
+            "reponse": "Non. Il manage une équipe de techniciens et d'agents, pilote des prestataires et travaille avec la production et la direction. Sa mission principale : assurer le bon fonctionnement du parc et organiser la maintenance préventive. Un bon responsable a un impact direct : moins de pannes, un budget maîtrisé, une équipe stable. Une formation technique solide et une connaissance du terrain, jusqu'à l'électricité et la maintenance générale, font la différence."
+          },
+          {
+            "question": "Quelles entreprises recrutent des responsables maintenance ?",
+            "reponse": "Toute l'industrie : métallurgie, énergie, agroalimentaire, pharmaceutique. Chaque site de production a besoin d'un responsable maintenance, et le recrutement reste tendu, faute de candidats."
+          },
+          {
+            "question": "Combien gagne un responsable maintenance ?",
+            "reponse": "Le salaire dépend de l'expérience, de la taille de l'entreprise et du périmètre géré. Décrivez votre profil : nous situons une proposition réaliste, sans grille figée."
+          },
+          {
+            "question": "Comment Migen évalue-t-elle un responsable maintenance avant de le proposer à un client ?",
+            "reponse": "Un entretien technique mené par un professionnel du métier, puis un entretien comportemental sur le management. Seuls 10 % des techniciens sont retenus, et les résultats sont transmis au client avant toute décision."
+          }
+        ]
+      },
+      {
+        "type": "postuler"
+      },
+      {
+        "type": "liens",
+        "items": [
+          {
+            "libelle": "Métiers de la maintenance",
+            "href": "/carriere/",
+            "photo": "/assets/web/mq-339d39e2a674.jpg"
+          },
+          {
+            "libelle": "Agent de maintenance industrielle",
+            "href": "/carriere/agent-de-maintenance/",
+            "photo": "/assets/web/mq-056f3c250981.jpg"
+          },
+          {
+            "libelle": "Technicien de maintenance itinérant",
+            "href": "/carriere/technicien-itinerant/",
+            "photo": "/assets/web/mq-948c28bcda08.jpg"
+          }
+        ]
+      }
     ]
-   },
-   {
-    "type": "liste",
-    "surtitre": "03 · Compétences",
-    "titre": "Les compétences et qualités qui font la différence",
-    "intros": [
-     "Un recruteur cherche chez un responsable maintenance un double profil : l'expertise technique et la capacité à manager. Rares sont ceux qui réunissent les deux.",
-     "Ce sont des compétences rares dans un seul domaine. Une solution technique, une pièce à commander, un conseil à donner : le responsable maintenance jongle avec tout, et l'ingénierie fait partie de son quotidien."
-    ],
-    "cartes": [
-     {
-      "titre": "Expertise technique",
-      "texte": "En expert, comprendre la mécanique, l'électrique, l'électronique et le système automatisé pour arbitrer une décision."
-     },
-     {
-      "titre": "Management d'équipe",
-      "texte": "Animer, recruter, faire grandir une équipe, un savoir-faire de manager autant que de technicien."
-     },
-     {
-      "titre": "Gestion et budget",
-      "texte": "Piloter un budget, analyser un coût, défendre un investissement devant la direction."
-     },
-     {
-      "titre": "Analyse et méthode",
-      "texte": "Lire les indicateurs, mener une analyse de panne, décider d'une solution durable et spécifique à chaque domaine."
-     },
-     {
-      "titre": "Veille technologique",
-      "texte": "Suivre l'actualité et la technologie, de la GMAO à l'intelligence artificielle appliquée à la maintenance."
-     },
-     {
-      "titre": "Communication",
-      "texte": "Porter un message clair à la direction, à la production et à chaque prestataire."
-     }
-    ]
-   },
-   {
-    "type": "etapes",
-    "surtitre": "04 · Formation",
-    "titre": "Formation et parcours pour devenir responsable maintenance",
-    "intros": [
-     "Le métier se construit par étapes, du diplôme technique à l'expérience de terrain. Voici le parcours type pour devenir responsable maintenance.",
-     "Beaucoup de responsables maintenance ont été techniciens avant de manager. Le stage, l'alternance et l'expérience comptent autant que le diplôme. Un [agent de maintenance industrielle](/carriere/agent-de-maintenance/) motivé peut, avec le temps, viser cette fonction.",
-     "La formation continue reste utile tout au long de la carrière. Un stage de management, une formation courte en gestion de projet ou en ingénierie de maintenance aide à passer du terrain à l'encadrement. C'est une carrière qui se construit, pas un titre qu'on obtient une fois pour toutes."
-    ],
-    "etapes": [
-     {
-      "titre": "Le diplôme technique",
-      "texte": "Un BTS, un BUT ou une licence professionnelle maintenance, de niveau bac +2 à bac +3, souvent en génie mécanique ou électrique."
-     },
-     {
-      "titre": "L'école d'ingénieur ou le master",
-      "texte": "Pour un poste de responsable ou d'ingénieur de maintenance, une école d'ingénieur ou un master, après un stage long en entreprise."
-     },
-     {
-      "titre": "L'expérience de terrain",
-      "texte": "Plusieurs années comme technicien de maintenance ou chef d'équipe, où se construit la crédibilité du futur responsable."
-     },
-     {
-      "titre": "La prise de responsabilité",
-      "texte": "Responsable maintenance, puis directeur technique ou responsable de production, l'évolution est réelle."
-     }
-    ]
-   },
-   {
-    "type": "bento",
-    "surtitre": "05 · Sécurité",
-    "titre": "Habilitations, sécurité et normes",
-    "intros": [
-     "Le responsable maintenance est garant de la sécurité de tout un service : sa responsabilité est aussi juridique. Habilitations et norme se contrôlent en permanence."
-    ],
-    "cartes": [
-     {
-      "titre": "Habilitation électrique",
-      "texte": "Nécessaire pour encadrer et valider les interventions sur les installations sous tension."
-     },
-     {
-      "titre": "Culture QHSE et hygiène",
-      "texte": "Maîtriser la démarche qualité, hygiène, sécurité et environnement attendue sur un site industriel."
-     },
-     {
-      "titre": "Responsabilité juridique",
-      "texte": "Connaître la norme, la procédure et le cadre juridique qui engagent l'entreprise en cas d'accident."
-     }
-    ],
-    "bande": {
-     "texte": "Chez Migen, la sécurité et la certification sont vérifiées avant chaque intervention. Le responsable maintenance en fait un point de contrôle systématique, du technicien au prestataire."
-    }
-   },
-   {
-    "type": "liste",
-    "surtitre": "06 · Salaire",
-    "titre": "Salaire et évolution du responsable maintenance",
-    "intros": [
-     "La rémunération d'un responsable maintenance dépend de plusieurs facteurs. Le salaire évolue avec l'expérience, la taille de l'entreprise et le secteur.",
-     "Le poste peut aussi varier selon le type de contrat et l'environnement industriel. Un responsable de la maintenance en PME touche à tout ; en grand groupe, il se concentre sur la stratégie et la mise en œuvre des plans."
-    ],
-    "cartes": [
-     {
-      "titre": "L'expérience",
-      "texte": "Le premier poste de responsable paie la promesse, les suivants paient les preuves de management."
-     },
-     {
-      "titre": "La taille de l'entreprise",
-      "texte": "Un grand groupe et une PME ne proposent pas la même rémunération ni le même périmètre."
-     },
-     {
-      "titre": "Le secteur d'activité",
-      "texte": "Énergie, pharmaceutique et automobile paient au-dessus de la moyenne du marché."
-     },
-     {
-      "titre": "La responsabilité",
-      "texte": "Nombre de techniciens encadrés, budget géré, nombre de sites pilotés."
-     },
-     {
-      "titre": "L'évolution",
-      "texte": "De responsable maintenance industrielle à responsable technique, directeur de production ou expert méthodes, parfois vers la supply chain."
-     }
-    ],
-    "bande": {
-     "texte": "Le salaire réel se discute selon l'expérience et la région, jamais sur une grille figée. Décrivez votre profil, nous situons la proposition. Un conseil : voir aussi les postes de technicien avant de viser l'encadrement."
-    }
-   },
-   {
-    "type": "bento",
-    "surtitre": "07 · Carrière",
-    "titre": "Responsable maintenance chez Migen : le cadre et les moyens",
-    "intros": [
-     "Voici ce que Migen propose comme employeur, au-delà de l'offre d'emploi classique.",
-     "Vous voulez travailler à ce niveau de responsabilité ? Le responsable, homme ou femme, y est également attendu sur le terrain. Un stage d'observation, un retour d'expérience partagé, et l'on organise ensemble la bonne solution. Envie d'échanger ? Vous pouvez nous contacter."
-    ],
-    "cartes": [
-     {
-      "titre": "Des missions à responsabilité",
-      "texte": "Piloter la maintenance chez nos clients, du diagnostic à l'amélioration continue."
-     },
-     {
-      "titre": "Un collectif technique complet",
-      "texte": "Plus de 120 techniciens, 4 agences (Lyon, Montréal, Dubaï, Madrid), une vraie équipe technique."
-     },
-     {
-      "titre": "Une sélection exigeante et assumée",
-      "texte": "Entretien technique et comportemental, 10 % des techniciens retenus."
-     },
-     {
-      "titre": "Un accueil structuré",
-      "texte": "Un référent accompagne chaque prise de poste, sur site comme au siège."
-     },
-     {
-      "titre": "Une couverture nationale",
-      "texte": "Des missions partout en France, selon votre profil et votre expérience."
-     }
-    ]
-   },
-   {
-    "type": "duo",
-    "surtitre": "08 · Carrière",
-    "titre": "Emploi et recrutement : qui cherche un responsable maintenance",
-    "intros": [
-     "L'industrie manque de responsables maintenance. Les offres d'emploi le montrent, du cabinet de recrutement spécialisé aux réseaux de la métallurgie, où le recruteur peine à trouver le bon profil."
-    ],
-    "cartes": [
-     {
-      "titre": "Les sites industriels",
-      "texte": "Chaque entreprise de production cherche un responsable maintenance capable de gérer une équipe et un budget."
-     },
-     {
-      "titre": "Les cabinets de recrutement",
-      "texte": "Le cabinet et le recruteur spécialisés chassent ces profils rares, à la croisée du technique et du management."
-     },
-     {
-      "titre": "Les groupes multi-sites",
-      "texte": "Une société industrielle avec plusieurs sites recrute des responsables et des directeurs techniques."
-     },
-     {
-      "titre": "Les réseaux professionnels",
-      "texte": "La veille des offres d'emploi et l'intérêt des recruteurs restent forts, on y voit passer chaque nouvelle annonce."
-     }
-    ],
-    "bande": {
-     "texte": "Un recruteur cherche l'équilibre entre expertise technique et capacité de management. Chez Migen, ce même travail de sélection est fait en amont, avec un vrai retour au client. La certification et l'habilitation sont vérifiées, et le salaire fixe se discute selon l'activité. Un vrai talent trouve sa place. Envie d'en savoir plus ? Contactez-nous."
-    }
-   },
-   {
-    "type": "etapes",
-    "surtitre": "09 · Carrière",
-    "titre": "Comment rejoindre nos équipes",
-    "intros": [
-     "Le processus est direct, sans dossier interminable. Il consiste en quatre étapes, du premier contact à la prise de poste."
-    ],
-    "etapes": [
-     {
-      "titre": "Un échange avec un chargé d'affaires",
-      "texte": "Vous décrivez votre parcours, votre expérience de management, vos disponibilités."
-     },
-     {
-      "titre": "Un entretien technique et comportemental",
-      "texte": "Mené par un professionnel du métier, pour vérifier l'expertise et la capacité à travailler en équipe."
-     },
-     {
-      "titre": "Une proposition de mission",
-      "texte": "Selon votre profil, votre expérience et les besoins de nos clients partout en France."
-     },
-     {
-      "titre": "L'intégration",
-      "texte": "Un référent vous accompagne à la prise de poste, sur le site comme dans l'organisation."
-     }
-    ]
-   },
-   {
-    "type": "faq",
-    "surtitre": "10 · Questions",
-    "titre": "Questions fréquentes",
-    "questions": [
-     {
-      "question": "Quelle est la différence entre un responsable maintenance et un technicien ?",
-      "reponse": "Le technicien intervient sur les équipements ; le responsable maintenance pilote le service, l'équipe et le budget. Il ne répare plus lui-même, mais garantit que tout le service de maintenance fonctionne."
-     },
-     {
-      "question": "Quel diplôme faut-il pour devenir responsable maintenance ?",
-      "reponse": "Un BTS ou une licence professionnelle maintenance, puis une école d'ingénieur ou un master pour les postes à forte responsabilité. L'expérience de terrain, souvent comme technicien, reste déterminante pour accéder à la fonction."
-     },
-     {
-      "question": "Un responsable maintenance travaille-t-il seul ?",
-      "reponse": "Non. Il manage une équipe de techniciens et d'agents, pilote des prestataires et travaille avec la production et la direction. Sa mission principale : assurer le bon fonctionnement du parc et organiser la maintenance préventive. Un bon responsable a un impact direct : moins de pannes, un budget maîtrisé, une équipe stable. Une formation technique solide et une connaissance du terrain, jusqu'à l'électricité et la maintenance générale, font la différence."
-     },
-     {
-      "question": "Quelles entreprises recrutent des responsables maintenance ?",
-      "reponse": "Toute l'industrie : métallurgie, énergie, agroalimentaire, pharmaceutique. Chaque site de production a besoin d'un responsable maintenance, et le recrutement reste tendu, faute de candidats."
-     },
-     {
-      "question": "Combien gagne un responsable maintenance ?",
-      "reponse": "Le salaire dépend de l'expérience, de la taille de l'entreprise et du périmètre géré. Décrivez votre profil : nous situons une proposition réaliste, sans grille figée."
-     },
-     {
-      "question": "Comment Migen évalue-t-elle un responsable maintenance avant de le proposer à un client ?",
-      "reponse": "Un entretien technique mené par un professionnel du métier, puis un entretien comportemental sur le management. Seuls 10 % des techniciens sont retenus, et les résultats sont transmis au client avant toute décision."
-     }
-    ]
-   },
-   {
-    "type": "postuler"
-   },
-   {
-    "type": "liens",
-    "items": [
-     {
-      "libelle": "Métiers de la maintenance",
-      "href": "/carriere/",
-      "photo": "/assets/web/mq-339d39e2a674.jpg"
-     },
-     {
-      "libelle": "Agent de maintenance industrielle",
-      "href": "/carriere/agent-de-maintenance/",
-      "photo": "/assets/web/mq-056f3c250981.jpg"
-     },
-     {
-      "libelle": "Technicien de maintenance itinérant",
-      "href": "/carriere/technicien-itinerant/",
-      "photo": "/assets/web/mq-948c28bcda08.jpg"
-     }
-    ]
-   }
-  ]
- }
+  }
 }

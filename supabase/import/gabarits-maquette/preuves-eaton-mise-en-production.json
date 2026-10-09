@@ -1,5 +1,9 @@
 {
   "url": "/preuves/eaton-mise-en-production/",
+  "seo": {
+    "meta_title": "Cas EATON : 6 techniciens sur un démarrage| Migen",
+    "meta_description": "EATON confie à Migen l'accompagnement d'un nouveau parc machine sur son site automobile : 6 techniciens multidisciplinaires, de la livraison à la production."
+  },
   "titre_h1": "Six techniciens pour faire démarrer un parc machines",
   "contenu": {
     "gabarit": "etude-de-cas",

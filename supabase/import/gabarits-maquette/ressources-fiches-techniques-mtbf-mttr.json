@@ -1,5 +1,9 @@
 {
   "url": "/ressources/fiches-techniques/mtbf-mttr/",
+  "seo": {
+    "meta_title": "Mtbf | Migen",
+    "meta_description": "Mtbf : Définition, méthode et exemples concrets, par des techniciens qui interviennent tous les jours."
+  },
   "titre_h1": "Mtbf",
   "contenu": {
     "gabarit": "ressource",

@@ -1,5 +1,9 @@
 {
   "url": "/preuves/mersen/",
+  "seo": {
+    "meta_title": "MERSEN : un automaticien SIEMENS dédié| Migen",
+    "meta_description": "MERSEN confie à Migen l'affectation d'un automaticien SIEMENS à temps plein pour sécuriser le démarrage d'une nouvelle ligne de production."
+  },
   "titre_h1": "Un automaticien SIEMENS pour démarrer une ligne neuve",
   "contenu": {
     "gabarit": "etude-de-cas",

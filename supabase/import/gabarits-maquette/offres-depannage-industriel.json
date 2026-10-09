@@ -1,5 +1,9 @@
 {
   "url": "/offres/depannage-industriel/",
+  "seo": {
+    "meta_title": "Dépannage industriel en urgence sur machine | Migen",
+    "meta_description": "Dépannage industriel partout en France : astreinte, techniciens évalués. Décrivez la panne, nous rappelons dans l'heure."
+  },
   "contenu": {
     "gabarit": "offre",
     "mention": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte prend le relais la nuit, le week-end et les jours fériés.",

@@ -1,5 +1,9 @@
 {
   "url": "/ressources/articles/suivi-de-la-maintenance/",
+  "seo": {
+    "meta_title": "Suivi de la maintenance : méthode et outils | Migen",
+    "meta_description": "Suivi de la maintenance : définition, méthode, indicateurs et exemples concrets, par des techniciens qui interviennent tous les jours en usine."
+  },
   "titre_h1": "Suivi de la maintenance",
   "contenu": {
     "gabarit": "ressource",
