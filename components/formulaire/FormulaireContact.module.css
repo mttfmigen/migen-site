@@ -38,6 +38,19 @@
     grid-template-columns: minmax(0, 1fr) !important;
   }
 
+  /* Une colonne ne suffit pas : deux champs du formulaire (l'entreprise et
+     l'adresse e-mail) portent `grid-column: span 2`, hérité de la mise en page
+     à deux colonnes. Dans une grille qui n'a plus qu'une colonne DÉCLARÉE, un
+     enfant qui en demande deux fait naître une colonne IMPLICITE, dimensionnée
+     sur son contenu. Mesuré à 390 px le 08/10 : la colonne implicite prenait
+     199 px, et la colonne `1fr` se repliait sur les 37 px qui restaient. Le
+     champ « Nom » faisait donc 37 px de large, inutilisable au doigt comme au
+     clavier. On ramène chaque enfant sur l'unique colonne : plus de colonne
+     implicite, et `1fr` reprend toute la largeur. */
+  .grille > * {
+    grid-column: 1 / -1 !important;
+  }
+
   /* « On me rappelle dans l'heure » mesure 263 px : dans un formulaire de
      241 px, `white-space:nowrap` sortait une barre de défilement horizontale.
      Le libellé se replie plutôt que de déborder. */
