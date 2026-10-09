@@ -180,6 +180,24 @@ jamais « levier », « clé en main », « sur mesure », « concrètement »,
 Limonest et agence à Écully, Montréal, Dubaï, Madrid), aucune autre en France,
 dix hubs de techniciens.
 
+> **« Aucun prix » NE VEUT PAS DIRE « aucune phrase sur le prix ».** Tranché par
+> Mehdi le 09/10 : « ne donne aucun tarif, dis juste que c'est sur devis ».
+>
+> La purge appliquée jusque-là jetait la PHRASE ENTIÈRE dès qu'elle portait le
+> mot « tarif », « taux horaire » ou « prix mensuel fixe », même sans le moindre
+> montant. Le site perdait ainsi des réponses utiles que sa propre maquette
+> écrit, par exemple « Le contrat Zéro arrêt est chiffré sur devis, avec un
+> engagement type de 6 mois renouvelable et trois niveaux de couverture ».
+>
+> La règle est donc : **un MONTANT reste interdit** (un nombre suivi de € ou
+> d'euros, un taux, une fourchette), **une phrase qui renvoie au devis est
+> autorisée**. « Chiffré sur devis », « taux horaire homogène dans toute la
+> France », « le montant dépend du parc » passent ; « 850 € par mois » non.
+>
+> Conséquence pour les portes : celles qui refusaient le MOT doivent refuser le
+> MONTANT. En les assouplissant, vérifier que leur preuve d'échec porte encore
+> sur un vrai montant, sans quoi elles perdent leur capacité d'échouer.
+
 ## 10. Console marketing
 
 `/admin`, protégée par Supabase Auth, comptes nominatifs inscrits dans
