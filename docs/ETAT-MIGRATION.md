@@ -16,7 +16,7 @@ Pour le vérifier, une commande :
 {
   "depot": {
     "branche": "phase-2-gabarits",
-    "tete": "74d8453"
+    "tete": "a60b026"
   },
   "pages": {
     "declarees": 248,
@@ -34,8 +34,8 @@ Pour le vérifier, une commande :
   },
   "ouverts": {
     "fichesOrthus": 30,
-    "phrasesPrixRetirees": 14,
-    "pagesPrixRetirees": 8,
+    "phrasesPrixRetirees": 4,
+    "pagesPrixRetirees": 1,
     "mentionsLegalesACompleter": 3,
     "cleServiceSupabasePosee": false
   }
@@ -367,3 +367,53 @@ remesurant. Attention en mesurant : cette porte est sensible à la
 recompilation du serveur de développement, un passage pris pendant un rebuild
 a annoncé 21 sections et 17 anomalies, deux passages à froid en annoncent 20
 et 4, de façon stable.
+
+## Les deux balayages du 09/10 au soir, et ce qu'ils ont trouvé
+
+Deux agents ont balayé le site en parallèle, l'un le bureau sur les 248 pages,
+l'autre le mobile au navigateur sur 22 pages couvrant les onze gabarits. Les
+deux rapports complets sont dans les journaux de session ; ce qui suit est ce
+qui a été VÉRIFIÉ à la main et ce qui reste.
+
+### Corrigé dans la foulée
+
+- **L'appel à l'action sortait de l'écran sur 118 des 248 pages**, libellé
+  tranché en plein mot, et AUCUNE porte ne le voyait : `.mg-site` est en
+  `overflow-x: clip`, donc le document reste à 375 px et le contrôle mobile
+  déclarait conforme. La porte mesure désormais l'élément et non le document.
+- **39 titres d'onglet sans espace avant la barre**, restaurés depuis
+  `index.json` qui fait foi.
+- **Un lien interne en 404**, inventé au portage : la capture rend ce texte
+  sans lien.
+- La bascule Avant / Après de l'accueil et la carte d'appel de
+  `/a-propos/equipe/`, toutes deux hors cadre au téléphone.
+
+### Ce qui reste, et qui demande un arbitrage ou un chantier
+
+1. **Le contraste, sur tout le site.** Blanc sur l'orange de marque `#ff7c3c` :
+   **2,56:1** là où la norme AA en exige 4,5, sur CHAQUE bouton principal.
+   Orange sur gris clair : 2,29:1. C'est hérité de la maquette
+   (`maquette/systeme-de-design.css`) et le site ne le franchit nulle part.
+   **Arbitrage de Mehdi** : corriger la couleur de marque, ou assumer.
+2. **Les blocs pliables ne sont toujours pas branchés**, et c'est le quatrième
+   motif de la maquette mobile. Mesuré : la page médiane fait **23 écrans de
+   pouce** à 375 px, cinq pages en dépassent 32, et sur six gabarits le sujet
+   annoncé par le h1 n'arrive qu'au cinquième écran, derrière un formulaire
+   empilé. C'est le plus gros reste du mobile.
+3. **`verifie-mots-offre` : 874 écarts** sur quatre pages d'offre, répartition
+   trop régulière pour être des fautes de copie. Chantier à instruire.
+4. **`verifie-fidelite` : 4 anomalies de hauteur** sur l'accueil, dont deux
+   sans exception déclarée (+312 px et -279 px).
+5. **`diff-visuel-offre.mjs` refuse 55 pages à tort** : son garde compare le h1
+   de la maquette au champ `h1` de l'index, qui porte un préfixe que ni la
+   maquette ni le site ne rendent. Avec les 6 adresses détournées, **61 des 248
+   pages n'ont jamais été comparées au pixel**. Tant que ce garde n'est pas
+   corrigé, « le bureau est fini » reste invérifiable sur un quart du site.
+6. **La barre d'action condamne 68 px en bas de chaque page** et recouvre la
+   dernière rangée du pied, dont le lien de réglage des traceurs, inatteignable
+   au téléphone. Le bandeau de consentement occupe 56 % du premier écran.
+7. **Les carrousels défilent seuls, sans commande**, et se figent au premier
+   contact tactile : `Moteurs.tsx` ne met en pause que sur survol, qui n'existe
+   pas au doigt.
+8. **Accessibilité** : 28 champs sans étiquette sur les 14 pages Carrière,
+   4 979 logos en `alt=""` sans `aria-hidden` sur 140 pages, 9 `h2` vides.
