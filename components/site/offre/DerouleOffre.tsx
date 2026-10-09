@@ -7,6 +7,7 @@ import type { SectionDeroule } from "@/types/contenu";
 import { majusculeInitiale, numerote } from "./texte-offre";
 
 import styles from "./PageOffre.module.css";
+import { continueLeTitre } from "../blocs/TitreEtSuite";
 
 /**
  * Section « 05 Déroulé » de la capture (`maquette/rendu/offres--residence.html`) :
@@ -185,12 +186,34 @@ export default function DerouleOffre({
                   style={{ flex: "1 1 0%", height: 1, background: "var(--line)" }}
                 />
               </div>
-              <div style={TITRE_ETAPE}>{etape.titre}</div>
-              {etape.texte ? (
+              {/* LE TEXTE CONTINUE PARFOIS LA PHRASE DU TITRE, et il se rendait
+                  alors sur une deuxième ligne ouverte par une virgule :
+                  « Un technicien vous rappelle dans l'heure » puis « , du lundi
+                  au vendredi de 8h00 à 18h30. ». Le corpus en fait UNE phrase,
+                  son début en gras. Défaut signalé par Mehdi le 09/10, 7 étapes
+                  des gabarits Spécialité et Domaine.
+                  `majusculeInitiale` ne s'applique PAS dans ce cas : la suite
+                  reprend au milieu d'une phrase, la majuscule y serait une
+                  faute. `TitreEtSuite` n'est pas employé ici parce que le texte
+                  passe par `TexteRiche` (liens du corpus), qui rend des nœuds
+                  et non une chaîne ; la règle de lecture est la même, et c'est
+                  `continueLeTitre` qui la porte.
+                  Porte : scripts/verifie-suites-de-titre.mjs */}
+              {etape.texte && continueLeTitre(etape.texte) ? (
                 <p className={styles.texteAvecLiens} style={TEXTE_ETAPE}>
-                  <TexteRiche texte={majusculeInitiale(etape.texte)} />
+                  <span style={{ ...TITRE_ETAPE, display: "inline" }}>{etape.titre}</span>
+                  <TexteRiche texte={etape.texte} />
                 </p>
-              ) : null}
+              ) : (
+                <>
+                  <div style={TITRE_ETAPE}>{etape.titre}</div>
+                  {etape.texte ? (
+                    <p className={styles.texteAvecLiens} style={TEXTE_ETAPE}>
+                      <TexteRiche texte={majusculeInitiale(etape.texte)} />
+                    </p>
+                  ) : null}
+                </>
+              )}
             </div>
           ))}
         </div>

@@ -241,6 +241,37 @@ def purge_interdits(c, slug, trous):
                     gardes.append(apres)
             return gardes
         return valeur
+    # LA CAUSE RACINE DU DÉFAUT DU 09/10, signalé par Mehdi : « des phrases qui
+    # veulent rien dire ». L'assert de `extrait` se contente de « texte OU
+    # puces », ce qu'un LIBELLÉ D'ANNONCE seul vérifie : « Le besoin posé par le
+    # site : », deux-points ouverts sur rien. La maquette porte elle-même le
+    # trou (son export a vidé l'emplacement des puces), donc la capture est
+    # muette et ce générateur recopiait l'annonce sans son annoncé : 17 blocs
+    # sur 12 études de cas. Le bloc tombe donc ici, et la phrase est déclarée.
+    # RIEN NE DISPARAÎT : la liste annoncée est rendue ailleurs sur la même
+    # page, en cartes (`objectifs`, `reponseCartes`, `resultats`), vérifiée
+    # puce par puce contre le corpus du client.
+    # Porte : scripts/verifie-libelles-orphelins.mjs
+    blocs = c.get("complement")
+    if isinstance(blocs, list):
+        gardes = []
+        for bloc in blocs:
+            annonce = (bloc.get("texte") or "").strip() if isinstance(bloc, dict) else ""
+            orpheline = (
+                annonce.endswith(":")
+                and len(annonce) > 12
+                and len(annonce.split()) >= 3
+                and not (isinstance(bloc, dict) and bloc.get("puces"))
+            )
+            if orpheline:
+                trous.append({"page": slug, "phrase": annonce,
+                              "raison": "annonce sans annoncé : la capture rend ce libellé puis "
+                                        "laisse l'emplacement de sa liste vide ; la liste est "
+                                        "rendue ailleurs sur la page, en cartes"})
+            else:
+                gardes.append(bloc)
+        c["complement"] = gardes
+
     for cle in list(c.keys()):
         c[cle] = purge(c[cle])
         if isinstance(c[cle], list) and not c[cle]:

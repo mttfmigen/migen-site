@@ -152,8 +152,10 @@ export function colonnes(nombre: number): CSSProperties {
  *
  * `#formulaire`, et pas `#form-page` comme l'écrit la maquette : l'id rendu
  * par `components/site/accueil/FormulaireBasDePage.tsx` est `formulaire`,
- * c'est lui qui porte son `scroll-margin-top`, et c'est déjà la cible de
- * `components/cocon/AppelAction.tsx`. Reprendre le nom de la maquette aurait
+ * c'est lui qui porte son `scroll-margin-top`, et c'était déjà la cible de
+ * `components/cocon/AppelAction.tsx`, supprimé le 09/10 comme code mort (son
+ * remplaçant vivant est `components/site/offre/AppelFinal.tsx`).
+ * Reprendre le nom de la maquette aurait
  * donné un second nom d'ancre au projet, et surtout un bouton qui ne mène
  * nulle part sur les 126 pages du cocon : la maquette le rendait vivant par sa
  * propre logique de navigation, qui n'est pas portée.
