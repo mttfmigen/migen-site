@@ -264,21 +264,21 @@
             "texte": "10 à 20 techniciens une semaine sur deux depuis septembre 2022",
             "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg"
+            "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
           },
           {
             "titre": "Six techniciens en permanence sur le préventif annuel de sites e-commerce",
             "texte": "prise en charge complète réalisée en un mois",
             "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg"
+            "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
           },
           {
             "titre": "Maintenance curative dédiée aux convoyeurs, trieurs et packaging d'un transporteur",
             "texte": "deux techniciens en poste sur site",
             "lienLibelle": "Étude de cas GLS : maintenance curative",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
+            "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg"
           },
           {
             "titre": "Montage d'un centre logistique en six semaines avec une date de livraison non négociable",
@@ -292,13 +292,13 @@
             "texte": "intervenants intégrés aux équipes",
             "lienLibelle": "Étude de cas ALSTEF Group : collaboration",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/robot-palettisation-tablette.jpg"
+            "photo": "/assets/photos/il-cimenterie-de-nuit-mars-25-2026-1600.jpg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
+            "photo": "/assets/photos/env-photos-industrie-menuiserie.jpg"
           }
         ]
       },

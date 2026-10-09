@@ -334,3 +334,210 @@ Secteurs étaient encore l'ancienne version en ligne, Mehdi l'a vu).
   posées à l'hydratation. Un `curl` ne peut pas les voir, il faut un navigateur.
 - Les images collées dans la conversation **n'existent pas sur le disque** : il faut
   que Mehdi les dépose lui-même.
+
+---
+
+# Confrontation du 09/10 au soir : ce que le relais dit de faux
+
+Relais relu et **mesuré contre le dépôt**, arbre propre, `HEAD = 363e937`,
+`origin/phase-2-gabarits` au même commit (donc la production est à jour, rien
+n'attend d'être déployé). Six commits sont postérieurs à la rédaction ci-dessus :
+`dbe29d6`, `bc39645`, `346ec92`, `f248493`, `363e937`. Ne pas refaire ce qui suit.
+
+## Points du relais déjà clos, preuve à l'appui
+
+| Point du relais | État réel, mesuré |
+|---|---|
+| Reste 1, photos de ville | **FAIT.** Les 8 fichiers de `components/site/accueil/hubs/` sont **octet pour octet** les versions sous licence de `public/assets/villes/hub-*.jpg` (`cmp` sur les 8). 12 fiches `implantations-*` servent `/assets/villes/`, et **aucun `hubLocal.credit` n'est renseigné** : le badge « Aperçu Envato » a disparu. |
+| Reste 2, varier les photos | **FAIT, et largement.** 1 942 emplacements pour **558 photos distinctes** (contre 56 le 09/10 au matin). La plus servie est un logo, `aktid.png`, 15 fois ; la photo la plus servie l'est **12 fois** (contre 133). **Zéro page sur 231 ne répète une photo.** La banque `public/assets/photos/` compte 517 fichiers, **tous servis**. |
+| Reste 4, formulaire mobile | **FAIT.** `.grille > *` ramené sur l'unique colonne dans le `@media (max-width: 900px)`, avec la mesure des 37 px en commentaire. |
+| Reste 6, méta-description vide | **FAIT.** `entreprise-maintenance-industrielle.json` en porte une. Piège évité : elle écrit « 10 % des candidats », mais `appliqueDecisions` la rend « 10 % des **techniciens** » — conforme à la décision du 08/10. |
+| Défaut 7, « réguliers » | **FAUSSE ALERTE.** Les 2 occurrences restantes de « clients réguliers » sont dans `retraits` (expertises-robotique-abb) et `phrases_retirees` (ressources) : elles **déclarent** le retrait, c'est leur raison d'être. `verifie-interdits.mjs` les écarte à juste titre (`DECLARATIFS`), et il rend « copie conforme (code + 246 fiches) ». |
+| Bloquants de l'audit 1, 2, 3, 4 | **FAITS** (`dbe29d6`). Identité légale tirée de l'extrait Pappers du 09/10 (`docs/IDENTITE-LEGALE.md`, aucune valeur inventée) ; OpenAI retiré des destinataires et le bandeau « validation juridique » supprimé, avec une porte qui vérifie l'alignement destinataires/pixels armés ; markdown brut traité ; une seule bande de logos. |
+
+Portes repassées au vert à l'instant : `node scripts/verifie-interdits.mjs`
+(« copie conforme ») et `bun lib/verification-decisions-copie.ts`
+(« 13 réécritures, 4 crédits retirés, 3 téléphones rendus, 24 phrases intactes »).
+
+## Ce qui reste VRAIMENT, et presque tout attend Mehdi
+
+**Lui seul peut le fournir :**
+1. **Clé de service Supabase** (`SUPABASE_SERVICE_ROLE_KEY`) : sans elle, la preuve
+   RGPD ne s'écrit pas dans `consent_logs` (la route rend 503 et le dit), et
+   `scripts/importe_rest.mjs` ne peut pas tourner. Défaut 1 et reste 8 du relais.
+2. **3 champs des mentions légales** : directeur de la publication (à désigner,
+   ce n'est pas une donnée du greffe), courriel de contact, hébergeur (Vercel Inc.,
+   adresse à confirmer). Les 10 autres champs sont remplis depuis Pappers.
+3. **Les 38 logos** : les mentions légales écrivent « utilisés avec leur accord ».
+4. **Suppressions refusées par les permissions** : reste 7 du relais, inchangé.
+
+**Arbitrages ouverts, aucun code à écrire avant sa réponse :**
+5. Le mot **« notamment »** : le supprimer remet le titre de `/preuves/bamesa/`
+   à 158 px, seule page décalée sur 248. Trois éditions dans le même commit,
+   plus `extrait-depuis-captures.py` sous peine d'effacement.
+6. **« tarif »** et **« prix mensuel fixe »** : 19 phrases manquent sur 12 pages,
+   six portes l'interdisent encore, et la décision du 08/10 ne couvre que
+   « taux horaire ».
+7. Le **04 78 33 72 05** rendu dans 20 phrases alors que la maquette porte le trou.
+8. **`AppelAction.tsx`**, code mort (seul `habillage.ts` le cite, en commentaire) ;
+   son remplaçant vivant est `AppelFinal.tsx`.
+9. Les **30 fiches** qui portent encore « orthus » : écart à déclarer.
+
+**Sans arbitrage, mais non fait :**
+10. **Défaut 6**, `/offres/retrofit/remise-en-etat/` : mesurer le balisage de la
+    capture avant de déclarer les 4 boutons sans libellé dans `trous`.
+11. **Consignes IA du Diagnostic** : prix et « sous 48h » encore dans les fonctions
+    Supabase ; non commité, dépôt `migen-diagnostic-zero-arret`, branche `v5.2`.
+12. **`.vercelignore`** ignoré par `--archive` : 486 Mo envoyés.
+
+## Le piège qui a changé, à ne pas manquer
+
+**Vercel est relié au dépôt depuis le 09/10** : un `git push` sur
+`phase-2-gabarits` déploie en production. La section « Où vit quoi » plus haut
+dit le contraire, elle est périmée. `--scope migenservice` est obligatoire pour
+tout déploiement manuel.
+
+## Défaut signalé par Mehdi le 09/10 au soir : CORRIGÉ
+
+« Des phrases qui veulent rien dire » sur les études de cas, exemple
+/preuves/autoliv/ : « La situation » suivie de « Le besoin posé par le site : »
+et de rien. **17 annonces orphelines sur 12 des 41 études de cas.**
+
+**La cause n'est pas le portage, et elle n'est pas dans le site.** `Complement`
+sait rendre des `puces`, le gabarit de la maquette a l'emplacement, et il est
+VIDE dans la capture (`maquette/rendu/preuves--autoliv.html` : `<p>…site :</p>`
+puis deux lignes blanches). L'export de la maquette a perdu ces listes, et
+`extrait-depuis-captures.py` les a recopiées : son `assert` se contentait de
+« texte OU puces », ce qu'un libellé seul vérifie.
+
+**Rien n'a disparu, et c'est ce qui rend le remède sûr.** Les listes annoncées
+sont rendues ailleurs sur la même page, en cartes (`objectifs`,
+`reponseCartes`, `resultats`), vérifiées puce par puce contre le corpus du
+client. Les titres des blocs retirés (« La situation », « Le résultat »,
+« Ce que nous avons mis en place ») sont eux aussi des doublons : déjà des `h2`
+de la page, deux occurrences chacun, mesuré sur le rendu.
+
+**Trois critères de détection ont été payés avant le bon**, et chacun est
+devenu un cas du contrôle positif, parce que chacun fabriquait de faux défauts
+ou en absolvait de vrais :
+1. lire le rendu balise par balise → déclarait orpheline la page CONFORME
+   /guides/choisir-une-entreprise-de-maintenance/, dont la liste arrive en
+   cartes faites de `<div>` qu'une expression régulière n'apparie pas ;
+2. « le texte suivant est-il un titre ? » → absolvait 8 défauts réels, le texte
+   qui suit étant le sur-titre « Votre besoin », pas un titre de niveau ;
+3. « le conteneur se referme-t-il après l'annonce ? » → déclarait orphelines
+   les annonces de /expertises/types-de-maintenance/, dont la liste vit dans le
+   conteneur FRÈRE, indiscernable du vrai défaut en HTML.
+
+**Le critère retenu est celui des fiches** : une annonce est orpheline si ni son
+bloc ni le bloc SUIVANT ne porte autre chose que de la prose (la maquette met
+`puces` ou `tableau` tantôt dans l'un, tantôt dans l'autre, les deux sont
+conformes). 17 trouvailles, les mêmes que par deux autres mesures indépendantes.
+
+**Ce qui a été posé :**
+- `scripts/verifie-libelles-orphelins.mjs`, porte avec contrôle positif 4/4,
+  dont les 3 faux pas ci-dessus comme cas sains. Elle a échoué à 17 avant
+  correctif, elle est verte après.
+- `scripts/retire-libelles-orphelins.mjs`, le correctif : retire le bloc entier
+  et écrit la phrase dans le `trous` de sa fiche, avec sa raison.
+- `components/site/preuve/extrait-depuis-captures.py`, **la cause racine** : le
+  bloc orphelin tombe maintenant dans `purge_interdits`, sans quoi la
+  correction aurait été effacée au prochain passage du générateur (le piège que
+  le relais signale pour les 41 fiches `preuves-*`).
+
+**Vérifié après correctif** : `tsc --noEmit` propre, `verifie-interdits` vert,
+`verification-decisions-copie` vert, `verification-preuve` vert en entier
+(41/41 pages contre leurs captures), `verifie-libelles-orphelins` vert, et sur
+le rendu de /preuves/autoliv/ les deux phrases ont disparu pendant que les 7
+puces qu'elles annonçaient sont toujours là.
+
+**Non commité** : l'arbre est sale, et un `git push` déploie maintenant en
+production. À arbitrer par Mehdi avant de pousser.
+
+## Deuxième défaut, trouvé par le balayage que Mehdi a demandé : CORRIGÉ
+
+Mehdi : « peux tu checker sur tout les business case ». Le balayage des 41
+études de cas a trouvé une seconde famille, plus large que la première et
+présente sur tout le site : **une phrase du corpus coupée en deux lignes, la
+seconde ouverte par une virgule.**
+
+Le corpus écrit une puce en UNE phrase, son début en gras :
+`- **Disposer d'un profil opérationnel tout de suite**, pas d'un renfort à former.`
+Le portage a mis le gras dans `titre`, la suite dans `texte`, et les cartes
+rendaient DEUX blocs. Le visiteur lisait :
+
+    Disposer d'un profil opérationnel tout de suite
+    , pas d'un renfort à former.
+
+**La maquette porte le même défaut** (`preuves--autoliv.html`,
+`data-dc-tpl="64"` puis `"66"`, deux `div` dont le second a `margin-top: 6px`),
+donc les contrôles de gabarit trouvaient les deux lignes DES DEUX CÔTÉS, et
+`verifie-phrases-estropiees` absout exprès les moignons de début que la capture
+porte aussi. Cette absolution est juste pour les 7 paragraphes de
+`/expertises/`, dont l'accroche est rendue EN LIGNE ; elle couvrait par ricochet
+ce défaut-ci, où rien ne raccommode la phrase.
+
+**Remède, aucun mot changé** : `components/site/blocs/TitreEtSuite.tsx`. Quand
+le texte commence par une virgule ou un point-virgule, titre et suite sont
+rendus dans le MÊME bloc, le titre en ligne, et les marges verticales des deux
+blocs tombent (elles écarteraient le titre de sa propre suite ; elles vivent
+tantôt sur le texte, tantôt sur le titre). Branché sur cinq rendus :
+`PagePreuve` (objectifs, étapes, résultats, cartes de réponse),
+`ReferencesOffre` (74 cartes des pages Villes) et `DerouleOffre` (7 étapes des
+gabarits Spécialité et Domaine, où `majusculeInitiale` ne doit PAS s'appliquer :
+une suite reprend au milieu d'une phrase).
+
+**Mesuré : 108 phrases rendues d'un trait, 0 coupée**, contre 108 coupées avant.
+
+### La porte a menti deux fois, et c'est la leçon à garder
+
+`scripts/verifie-suites-de-titre.mjs`, contrôle positif 3/3. Elle a été fausse
+deux fois avant d'être juste, et les deux fois elle disait « tout va bien » :
+
+1. **Entités hexadécimales.** Elle ne décodait que `&#39;` ; Next.js écrit
+   `&#x27;`. Toute phrase portant une apostrophe échouait : 11 faux défauts sur
+   des études de cas DÉJÀ corrigées.
+2. **Le trou qui comptait.** Elle retirait les balises en les remplaçant par
+   RIEN : `<div>titre</div><div>, suite</div>` devenait `titre, suite`, soit
+   exactement la phrase jointe. **Elle ne pouvait pas distinguer le défaut de
+   son remède**, et elle ne l'a pas vu quand il a été réinjecté exprès dans
+   `TitreEtSuite`. Corrigé en posant une frontière `│` à chaque balise de BLOC,
+   les balises en ligne s'effaçant sans frontière. Reprouvé dans les deux sens :
+   défaut réinjecté → 0 jointes / 108 coupées ; remède restauré → 108 / 0.
+
+Trois critères avaient déjà été payés sur la première famille. Au total, **cinq
+mesures fausses pour deux défauts** : sur ce site, une porte qu'on n'a pas vue
+échouer ne vaut rien, et il faut la faire échouer SUR LE DÉFAUT RÉEL, pas sur un
+cas de laboratoire.
+
+### Décision de Mehdi du 09/10 au soir, appliquée
+
+- **Code mort supprimé** : `components/cocon/AppelAction.tsx`, son module CSS et
+  sa porte `verification-appel-action.tsx`. Aucune page ne l'importait, son
+  remplaçant vivant est `components/site/offre/AppelFinal.tsx`. Le commentaire
+  de `components/site/blocs/habillage.ts` qui le citait est à jour. `tsc` propre.
+
+### Décisions de Mehdi du 09/10 au soir, PAS encore appliquées
+
+- **« Ne donnes aucun tarif, dis juste que c'est sur devis. »** 19 phrases sur
+  12 pages. Et `scripts/verifie-implantations.tsx` le pointe déjà :
+  `/implantations/` perd « Le contrat Zéro arrêt est chiffré sur devis, avec un
+  engagement type de 6 mois renouvelable » que SA CAPTURE PORTE. La décision
+  rend cette phrase, et les 18 autres, dicibles.
+- **Les 40 adresses et 20 noms de fichiers « orthus »** (30 fiches). Mehdi :
+  « pas besoin de redirection on est en preprod, tu peux faire les
+  modifications ». Non commencé : l'index déclare ces adresses et les portes
+  comptent « 248 pages de l'index », donc c'est un changement coordonné.
+
+### `scripts/verifie-implantations.tsx` est PÉRIMÉE sur trois points
+
+Elle rend KO sur `/implantations/` avec 5 écarts, dont AUCUN ne vient des
+corrections ci-dessus. Elle n'a pas été retournée avec les sept autres :
+1. elle attend « siège à Limonest et bureaux à Écully » et déclare
+   « interdit rendu (le siège est à Écully) : Limonest », soit l'INVERSE de la
+   décision du 09/10 ;
+2. elle réclame la phrase « chiffré sur devis », que la décision du 09/10 au
+   soir rend justement ;
+3. elle exige les octets de photo du relevé, là où la répartition du 09/10 a
+   posé des photos du registre (l'item « faire accepter une photo de la maquette
+   OU du registre » du relais, fait ailleurs, pas ici).

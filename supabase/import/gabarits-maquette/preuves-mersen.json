@@ -14,7 +14,7 @@
     ],
     "bouton": "Sécuriser le démarrage de ma ligne",
     "logo": "/assets/clients/mq-eb9461b85e59.svg",
-    "photoHero": "/assets/photos/automatisme-armoire-jeune-tablette.jpg",
+    "photoHero": "/assets/photos/il-femme-souriante-avec-casque-et-lunettes-de-sec.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -123,7 +123,7 @@
         "valeur": "Fiabilisation, amélioration, maintenance"
       }
     ],
-    "photoDispositif": "/assets/photos/il-technicien-maintenance-selectionnant-outils-ja.jpg",
+    "photoDispositif": "/assets/photos/il-soudure-poste-masque-releve.jpg",
     "resultats": [
       {
         "titre": "La prise en main de l'automatisme SIEMENS",
@@ -169,25 +169,25 @@
         "surtitre": "Étude de cas",
         "titre": "ERIKS : pilotage du service maintenance",
         "href": "/preuves/eriks/",
-        "photo": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg"
+        "photo": "/assets/web/team-duo.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/env-robot-industriel-2026.jpg"
+        "photo": "/assets/photos/energie-releve-pupitre-salle-commande.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/il-ciment-tour-beton-grues-vue-haute.jpg"
+        "photo": "/assets/photos/meca-tour-conventionnel-senior.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/il-auto-cliquet-intervention-vehicule.jpg"
+        "photo": "/assets/photos/env-professionnels-maintenance-aeronautique.jpg"
       }
     ]
   }

@@ -35,7 +35,7 @@
       }
     ],
     "logo": "/assets/clients/mq-dbf1f974e675.svg",
-    "photoHero": "/assets/photos/il-ciment-cheminee-grue-couchant.jpg",
+    "photoHero": "/assets/photos/ciment-inspection-binome-harnais.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -143,7 +143,7 @@
         "valeur": "2 techniciens"
       }
     ],
-    "photoDispositif": "/assets/photos/il-cimenterie-de-nuit-mars-25-2026-1600.jpg",
+    "photoDispositif": "/assets/photos/meca-graissage-couronne-engin.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -163,25 +163,25 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/il-ciment-site-nuit-bord-de-mer.jpg"
+        "photo": "/assets/photos/ciment-vue-aerienne-usine.jpg"
       },
       {
         "surtitre": "Page",
         "titre": "Travaux industriels",
         "href": "/travaux-industriels/",
-        "photo": "/assets/photos/meca-senior-rouleuse-combinaison.jpg"
+        "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrie lourde",
         "href": "/secteurs/industrie-lourde/",
-        "photo": "/assets/photos/il-metal-siderurgie-bord-d-eau-couchant.jpg"
+        "photo": "/assets/photos/il-vue-aerienne-usine-ciment-mars-16-2026-1600.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "RECTOR LESAGE : un technicien au cœur d’une ligne de préfabrication béton",
         "href": "/preuves/rector-lesage/",
-        "photo": "/assets/photos/il-meca-grande-roue-dentee-portrait.jpg"
+        "photo": "/assets/photos/ciment-tambour-rotatif-silos.jpg"
       }
     ]
   }

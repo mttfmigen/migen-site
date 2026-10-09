@@ -20,7 +20,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/il-robot-bras-orange-reglage-souriante.jpg",
+        "src": "/assets/photos/il-checking-heavy-equipment-at-modern-plant.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -395,17 +395,17 @@
           {
             "libelle": "Métiers de la maintenance",
             "href": "/carriere/",
-            "photo": "/assets/photos/il-robot-cellule-grillagee-automaticien.jpg"
+            "photo": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
           },
           {
             "libelle": "Technicien de maintenance",
             "href": "/carriere/technicien-de-maintenance/",
-            "photo": "/assets/photos/il-technicien-maintenance-jan-7-2026-1600.jpg"
+            "photo": "/assets/photos/elec-mesure-multimetre-faisceau.jpg"
           },
           {
             "libelle": "Responsable maintenance",
             "href": "/carriere/responsable-maintenance/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-20-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-mar-18-2026-1-160.jpg"
           }
         ]
       }

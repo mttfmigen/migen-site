@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Niort",
       "titre": "Niort : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-robot-reglage-outil-bout-de-bras.jpg",
+      "photo": "/assets/photos/env-scientist-in-pharmaceutical-lab.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Niort et ses environs",
       "texte": "Nos techniciens itinérants couvrent Niort et son bassin, appuyés par le réseau national Migen.",
@@ -115,7 +115,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-robot-cobot-blanc-pupitre.jpg",
+    "problemePhoto": "/assets/photos/env-industrie-metallique-22-sept-2026-1.jpg",
     "brefBande": "Un équipement qui inquiète avant la prochaine fenêtre de production ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -245,37 +245,37 @@
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/env-inspection-de-la-chaine-alimentaire.jpg"
+            "photo": "/assets/photos/env-industrie-au-crepuscule.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/env-technician-maintenance-8.jpg"
+            "photo": "/assets/photos/env-controle-qualite-femme.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-mar-18-2026-1-160.jpg"
+            "photo": "/assets/photos/robot-atelier-ferrage-plongee.jpg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/elec-salle-cellules-ht-ronde.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-mar-19-2026-1600.jpg"
           },
           {
             "titre": "Un renfort pour que le pain sorte chaque matin",
             "lienLibelle": "Étude de cas La Panetière",
             "lienHref": "/preuves/la-panetiere/",
-            "photo": "/assets/photos/meca-jeune-presse-volant.jpg"
+            "photo": "/assets/photos/il-man-working-with-machinery-in-a-factory.jpg"
           },
           {
             "titre": "Un été entier sans trou dans la maintenance",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/il-chimie-colonnes-eclairees-heure-bleue.jpg"
+            "photo": "/assets/photos/env-menuisier-avec-masque-sept-2026.jpg"
           }
         ]
       },

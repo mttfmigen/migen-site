@@ -21,7 +21,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/il-technicien-maintenance-photo-4-1600.jpg",
+        "src": "/assets/photos/env-inspection-du-processus-d-embouteillage.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -374,17 +374,17 @@
           {
             "libelle": "Métiers de la maintenance",
             "href": "/carriere/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-15-1600.jpg"
+            "photo": "/assets/photos/env-maintenance-automaticien-2.jpg"
           },
           {
             "libelle": "Agent de maintenance industrielle",
             "href": "/carriere/agent-de-maintenance/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/photos/env-reparation-moteur-jet-hangar.jpg"
           },
           {
             "libelle": "Technicien de maintenance itinérant",
             "href": "/carriere/technicien-itinerant/",
-            "photo": "/assets/photos/env-maintenance-automatique-robotique.jpg"
+            "photo": "/assets/photos/env-workers-inspecting-large-vats-in-a-manufacturi.jpg"
           }
         ]
       }

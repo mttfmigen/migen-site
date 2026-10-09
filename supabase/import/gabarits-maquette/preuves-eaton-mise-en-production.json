@@ -27,7 +27,7 @@
       }
     ],
     "logo": "/assets/clients/mq-70bce765c1a2.svg",
-    "photoHero": "/assets/photos/env-inspection-ligne-production-automatique.jpg",
+    "photoHero": "/assets/photos/env-technician-maintenance-10.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -134,7 +134,7 @@
         "valeur": "Soutien technique à l'intégration, puis continuité opérationnelle"
       }
     ],
-    "photoDispositif": "/assets/photos/il-technicien-maintenance-inspectant-bras-robotiq.jpg",
+    "photoDispositif": "/assets/photos/robot-soudure-points-caisse.jpg",
     "resultats": [
       {
         "titre": "Un démarrage tenu",
@@ -151,18 +151,11 @@
     ],
     "complement": [
       {
-        "titre": "La situation",
-        "texte": "Une mise en production concentre tous les risques industriels au même moment :"
-      },
-      {
         "titre": "Le résultat",
         "texte": "La mission n'est pas un épisode fermé : elle dure. Migen continue d'assurer la continuité opérationnelle du site d'EATON."
       },
       {
         "texte": "Les objectifs de production sont en constante progression, ce qui témoigne du succès de la collaboration sur ce projet."
-      },
-      {
-        "texte": "Ce que cela change pour le site :"
       }
     ],
     "besoinTitre": "Un parc machine qui arrive et personne pour le prendre en main ?",
@@ -193,26 +186,36 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/env-inspection-robotique-21-sept-2026.jpg"
+        "photo": "/assets/photos/il-technicienne-mecanique-photo-avril-2026-1600.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrie automobile",
         "href": "/secteurs/automobile/",
-        "photo": "/assets/photos/il-femme-en-tenue-professionnelle-pres-d-un-bras-.jpg"
+        "photo": "/assets/photos/robot-cellule-soudure-inspection.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "VOIT : site du Grand Est",
         "href": "/preuves/voit-grand-est/",
-        "photo": "/assets/photos/il-robot-reglage-outil-bout-de-bras.jpg"
+        "photo": "/assets/photos/env-inspection-auto-avec-equipe.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "AUTOLIV : un technicien dédié pour que le parc ne décroche pas",
         "href": "/preuves/autoliv/",
-        "photo": "/assets/photos/il-automatisme-armoire-robot-bleu-fond.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-photo-4-1600.jpg"
       }
     ]
-  }
+  },
+  "trous": [
+    {
+      "ligne": "Une mise en production concentre tous les risques industriels au même moment :",
+      "pourquoi": "annonce sans annoncé : la capture de la maquette rend ce libellé puis laisse l'emplacement de sa liste VIDE (son export a perdu les puces), si bien que le visiteur lisait des deux-points ouverts sur rien. La liste annoncée est rendue ailleurs sur la même page, en cartes (`objectifs`, `reponseCartes`, `resultats`), vérifiée puce par puce contre le corpus du client : aucun contenu ne disparaît. Le titre du bloc part avec, c'est déjà un h2 de la page. Porte : scripts/verifie-libelles-orphelins.mjs"
+    },
+    {
+      "ligne": "Ce que cela change pour le site :",
+      "pourquoi": "annonce sans annoncé : la capture de la maquette rend ce libellé puis laisse l'emplacement de sa liste VIDE (son export a perdu les puces), si bien que le visiteur lisait des deux-points ouverts sur rien. La liste annoncée est rendue ailleurs sur la même page, en cartes (`objectifs`, `reponseCartes`, `resultats`), vérifiée puce par puce contre le corpus du client : aucun contenu ne disparaît. Le titre du bloc part avec, c'est déjà un h2 de la page. Porte : scripts/verifie-libelles-orphelins.mjs"
+    }
+  ]
 }

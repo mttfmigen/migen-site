@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Mulhouse",
       "titre": "Mulhouse : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/env-technician-maintenance-5.jpg",
+      "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg",
       "badge": "Rattaché au hub Strasbourg",
       "nom": "Mulhouse, couvert par le hub Strasbourg",
       "texte": "Les techniciens du hub Strasbourg interviennent à Mulhouse et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -209,53 +209,53 @@
             "texte": "Centres d'usinage, presses et commandes numériques, parc multimarques, en 2025.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/env-structures-industrielles-au-coucher-du-soleil.jpg"
+            "photo": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg"
           },
           {
             "titre": "18 à 25 techniciens sur plusieurs sites industriels du Grand Est",
             "texte": ", depuis juin 2023, pendant la bascule vers le véhicule électrique.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-grand-est/",
-            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-portrait-mars-2026-1600.jpg"
           },
           {
             "titre": "6 techniciens pour installer puis mettre en production un nouveau parc machines",
             "texte": "sur un site automobile, mission toujours en cours.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/il-robot-inspection-articulation-blanche.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-portrait-jan-9-2026-160.jpg"
           },
           {
             "titre": "Des techniciens intégrés au quotidien des équipes de maintenance",
             "texte": "d'un fabricant de systèmes de direction et de roulements, sur les équipements critiques.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/env-reparation-moteur-aeronautique.jpg"
+            "photo": "/assets/photos/env-raffinerie-de-petrole-bangkok.jpg"
           },
           {
             "titre": "Préventif et curatif sur une fonderie et son usinage",
             "texte": "6 techniciens.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-meca-volant-poulie-reglage.jpg"
+            "photo": "/assets/photos/env-bras-robotiques-soudant-cadres-auto.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/il-robot-bras-rouge-serrage-hauteur.jpg"
+            "photo": "/assets/photos/env-oil-and-gas-petrochemical-industrial-oil-refin.jpg"
           },
           {
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
             "lienLibelle": "Étude de cas Autoliv",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/il-auto-moteur-capot-ouvert-atelier.jpg"
+            "photo": "/assets/photos/il-interieur-de-chantier-naval-24-mars-2026-1600.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/photos/menuiserie-robot-panneaux.jpg"
+            "photo": "/assets/photos/env-assemblage-chassis-automobile.jpg"
           }
         ]
       },

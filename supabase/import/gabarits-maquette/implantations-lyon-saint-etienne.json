@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Saint-Étienne",
       "titre": "Saint-Étienne : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/env-inspection-metal-22-sept-2026-1.jpg",
+      "photo": "/assets/photos/env-man-smiles-at-a-bottling-plant-factory.jpg",
       "badge": "Rattaché au hub Lyon",
       "nom": "Saint-Étienne, couvert par le hub Lyon",
       "texte": "Les techniciens du hub Lyon interviennent à Saint-Étienne et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -81,7 +81,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-technicien-maintenance-inspecte-equipement-ind.jpg",
+    "problemePhoto": "/assets/photos/env-industrial-infrastructure-with-blue-sky-and-cl.jpg",
     "brefBande": "Besoin de remettre en route une machine que plus personne ne sait dépanner ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -216,21 +216,21 @@
             "texte": "De la mise en route aux premières semaines d'exploitation.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/il-technicien-maintenance-selectionnant-outils-ja.jpg"
+            "photo": "/assets/photos/env-ouvrier-usine-metal-avec-etincelles.jpg"
           },
           {
             "titre": "Un parc machines de PME remis en marche sans rachat de matériel neuf",
             "texte": "Diagnostic sur site, plusieurs solutions chiffrées, adaptées au budget.",
             "lienLibelle": "Étude de cas JOINT LYONNAIS",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/il-technicien-portrait-epi-atelier.jpg"
+            "photo": "/assets/photos/env-menuiserie-24-sept-2026.jpg"
           },
           {
             "titre": "Six techniciens en permanence sur un contrat de préventif annuel",
             "texte": "Prise en charge complète réalisée en un mois sur les sites lyonnais.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/env-photos-industrie-metallique.jpg"
+            "photo": "/assets/photos/env-photos-industrie.jpg"
           },
           {
             "titre": "12 monteurs mécaniciens et 8 engins de levage pour monter un centre logistique à Clermont-Ferrand",
@@ -262,7 +262,7 @@
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-technicien-portrait-combinaison-orange.jpg"
+            "photo": "/assets/photos/env-femme-en-costume-sterile-industrie-pharmaceuti.jpg"
           }
         ]
       },

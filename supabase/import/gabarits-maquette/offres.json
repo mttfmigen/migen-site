@@ -175,48 +175,48 @@
             "texte": "Six techniciens polyvalents en permanence, depuis septembre 2023.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/il-technicien-maintenance-robot-industriel-jan-7-.jpg"
+            "photo": "/assets/photos/elec-main-disjoncteurs-borniers.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie",
             "texte": "En poste depuis octobre 2023, aux côtés des équipes internes.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-technicien-maintenance-8.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-22-1600.jpg"
           },
           {
             "titre": "Renfort continu de maintenance sur lignes de nutrition infantile, agroalimentaire",
             "texte": "Deux techniciens intégrés aux équipes.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/il-pneu-ligne-verins-portrait.jpg"
+            "photo": "/assets/photos/elec-tgbt-technicienne-tablette.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve",
             "texte": "Près de Lyon.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/il-technicien-maintenance-jan-6-2026-1600.jpg"
+            "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg"
           },
           {
             "titre": "Montage et déplacement de machines, étanchéité et isolation",
             "texte": "Plusieurs missions ciblées sur l'année 2025.",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/il-technicien-maintenance-air-conditionne-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-femme-1600.jpg"
           },
           {
             "titre": "Remise en état d'un site à risque chimique, traitement des eaux",
             "texte": "Renfort habilité, depuis février 2026.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/metal-fonderie-coulee.jpg"
+            "photo": "/assets/photos/env-inspection-ligne-production-automatique.jpg"
           },
           {
             "titre": "Un été entier sans trou dans la maintenance",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/meca-presses-volants-technicienne.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-avec-robot-1600.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
@@ -309,7 +309,7 @@
         "libelle": "Parler à un chargé d’affaires",
         "href": "/contact/"
       },
-      "photo": "/assets/photos/il-meca-atelier-bonnet-portrait.jpg",
+      "photo": "/assets/photos/env-mecanicien-aeronautique.jpg",
       "alt": "Techniciens Migen sur une armoire électrique"
     },
     "maillageSurtitre": "Nos offres",
@@ -317,28 +317,28 @@
     "maillage": [
       {
         "href": "/offres/residence/",
-        "photo": "/assets/web/sv-armoire.jpg",
+        "photo": "/assets/photos/tuyau-pointage-bride-tube.jpg",
         "etiquette": "Présence continue",
         "titre": "migen© Résidence",
         "phrase": "Des techniciens en résidence sur votre site, intégrés à votre équipe, validés par vous."
       },
       {
         "href": "/offres/full-service/",
-        "photo": "/assets/photos/il-technicien-maintenance-photo-17-1600.jpg",
+        "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg",
         "etiquette": "Contrat unique",
         "titre": "migen© Full service",
         "phrase": "Toute votre maintenance dans un seul contrat : préventif, dépannage, pièces et GMAO, un seul interlocuteur."
       },
       {
         "href": "/offres/zero-arret/",
-        "photo": "/assets/photos/env-automatician-maintenance.jpg",
+        "photo": "/assets/photos/env-mechanic-inspecting-auto-parts-in-his-workshop.jpg",
         "etiquette": "Abonnement",
         "titre": "migen© Zéro arrêt",
         "phrase": "Le préventif le samedi, le dépannage la nuit : une maintenance qui ne touche jamais à votre production."
       },
       {
         "href": "/offres/arret-technique/",
-        "photo": "/assets/photos/env-technician-maintenance.jpg",
+        "photo": "/assets/web/team-grind-sparks.jpg",
         "etiquette": "Arrêt planifié",
         "titre": "migen© Arrêt technique",
         "phrase": "Votre arrêt annuel préparé, dimensionné et tenu, ligne rendue à la date annoncée."
@@ -352,7 +352,7 @@
       },
       {
         "href": "/travaux-industriels/",
-        "photo": "/assets/photos/il-technicien-maintenance-robot-soudure-mar-24-20.jpg",
+        "photo": "/assets/photos/env-technician-maintenance-jet-engine.jpg",
         "etiquette": "Chantier",
         "titre": "migen© Travaux industriels",
         "phrase": "Transfert, montage, démantèlement, levage : le chantier, du relevé à la remise en production."

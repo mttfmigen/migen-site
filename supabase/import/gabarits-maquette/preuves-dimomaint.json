@@ -23,7 +23,7 @@
       }
     ],
     "logo": "/assets/clients/mq-e2c58c98b787.svg",
-    "photoHero": "/assets/photos/soudure-fond-bombe-gabarit.jpg",
+    "photoHero": "/assets/photos/pharma-technicienne-machine-comprimes.jpg",
     "chiffres": [
       {
         "libelle": "Nature des travaux",
@@ -127,7 +127,7 @@
         "valeur": "Alliance élargie à Savoye pour l'intralogistique"
       }
     ],
-    "photoDispositif": "/assets/photos/env-industrial-infrastructure-with-blue-sky-and-cl.jpg",
+    "photoDispositif": "/assets/photos/env-photos-menuiserie.jpg",
     "resultats": [
       {
         "titre": "Une meilleure disponibilité",
@@ -170,25 +170,25 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg"
+        "photo": "/assets/photos/meca-technicienne-parc-moteurs.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrielle",
         "href": "/secteurs/",
-        "photo": "/assets/photos/il-aero-train-atterrissage-casque-antibruit.jpg"
+        "photo": "/assets/photos/env-maintenance-automatique.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : alliance intralogistique",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/il-technicien-maintenance-photo-20-1600.jpg"
+        "photo": "/assets/web/team-grind-impact.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/il-technicien-maintenance-photo-mar-25-2026-1600.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-sur-pipeline-1600.jpg"
       }
     ]
   }

@@ -21,7 +21,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/il-technicien-portrait-casque-bleu-atelier.jpg",
+        "src": "/assets/photos/elec-binome-coffret-chaufferie.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -372,27 +372,27 @@
           {
             "libelle": "Métiers de la maintenance",
             "href": "/carriere/",
-            "photo": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
+            "photo": "/assets/photos/aero-cockpit-inspection-hangar.jpg"
           },
           {
             "libelle": "Compétences électromécanicien",
             "href": "/carriere/electromecanicien/competences/",
-            "photo": "/assets/photos/il-automation-female-engineer-with-tablet-for-pro.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-air-conditionne-1600.jpg"
           },
           {
             "libelle": "Salaire électromécanicien",
             "href": "/carriere/electromecanicien/salaire/",
-            "photo": "/assets/photos/il-elec-accroupie-armoire-penombre.jpg"
+            "photo": "/assets/photos/env-technician-inspecting-fiber-optics.jpg"
           },
           {
             "libelle": "Automaticien",
             "href": "/carriere/automaticien/",
-            "photo": "/assets/photos/il-meca-machine-outil-porte-ouverte.jpg"
+            "photo": "/assets/photos/env-maintenance-automaticien-3.jpg"
           },
           {
             "libelle": "Responsable maintenance",
             "href": "/carriere/responsable-maintenance/",
-            "photo": "/assets/photos/il-meca-portrait-machine-outil-pupitre.jpg"
+            "photo": "/assets/photos/elec-mains-bornier-relais.jpg"
           }
         ]
       }

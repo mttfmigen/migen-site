@@ -31,7 +31,7 @@
       }
     ],
     "logo": "/assets/clients/mq-f6fcccfd4cc8.svg",
-    "photoHero": "/assets/photos/env-inspection-robot-arm-wiring.jpg",
+    "photoHero": "/assets/photos/il-technicienne-mecanique-photo-avril-2026-1600.jpg",
     "chiffres": [
       {
         "libelle": "Sites",
@@ -127,7 +127,7 @@
         "valeur": "Dont équipe samedi-dimanche"
       }
     ],
-    "photoDispositif": "/assets/photos/il-robot-cobot-blanc-pupitre.jpg",
+    "photoDispositif": "/assets/photos/env-technician-maintenance-10.jpg",
     "resultats": [
       {
         "titre": "Une qualité de production constante",
@@ -146,9 +146,6 @@
       {
         "titre": "Le résultat",
         "texte": "La montée en cadence est accompagnée par un renfort déployé au bon endroit. VALEO n'a pas eu à détourner ses équipes de ses objectifs de production."
-      },
-      {
-        "texte": "Ce que le dispositif apporte au client :"
       }
     ],
     "besoinTitre": "Vos cadences montent plus vite que votre effectif de maintenance ?",
@@ -179,19 +176,19 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/env-assemblage-chassis-automobile.jpg"
+        "photo": "/assets/photos/env-bras-robotiques-soudant-cadres-auto.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/il-robot-ligne-robots-presse-papier.jpg"
+        "photo": "/assets/photos/env-inspection-auto-avec-equipe.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrie automobile",
         "href": "/secteurs/automobile/",
-        "photo": "/assets/photos/robot-cobot-technicienne.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-camion-1600.jpg"
       },
       {
         "surtitre": "Étude de cas",
@@ -200,5 +197,11 @@
         "photo": "/assets/photos/env-robotic-arms-welding-car-frames.jpg"
       }
     ]
-  }
+  },
+  "trous": [
+    {
+      "ligne": "Ce que le dispositif apporte au client :",
+      "pourquoi": "annonce sans annoncé : la capture de la maquette rend ce libellé puis laisse l'emplacement de sa liste VIDE (son export a perdu les puces), si bien que le visiteur lisait des deux-points ouverts sur rien. La liste annoncée est rendue ailleurs sur la même page, en cartes (`objectifs`, `reponseCartes`, `resultats`), vérifiée puce par puce contre le corpus du client : aucun contenu ne disparaît. Le titre du bloc part avec, c'est déjà un h2 de la page. Porte : scripts/verifie-libelles-orphelins.mjs"
+    }
+  ]
 }

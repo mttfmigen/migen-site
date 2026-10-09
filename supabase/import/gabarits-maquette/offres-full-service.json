@@ -41,25 +41,25 @@
         "titre": "Préventif",
         "phrase": "Gammes par organe, fréquences respectées, pièces d'usure anticipées",
         "href": "/expertises/types-de-maintenance/maintenance-preventive/",
-        "photo": "/assets/photos/soudure-soudeuse-masque-releve.jpg"
+        "photo": "/assets/photos/env-reparation-moteur-avion.jpg"
       },
       {
         "titre": "Dépannage",
         "phrase": "Pannes prises en priorité et résolues jusqu'à la cause",
         "href": "/expertises/types-de-maintenance/",
-        "photo": "/assets/photos/il-technicien-maintenance-photo-mar-19-2026-1-160.jpg"
+        "photo": "/assets/photos/env-menuiserie-circular-saw.jpg"
       },
       {
         "titre": "Prédictif",
         "phrase": "Relevés et mesures sur vos organes critiques, remplacement avant la casse",
         "href": "/expertises/types-de-maintenance/maintenance-conditionnelle/",
-        "photo": "/assets/photos/env-maintenance-automaticien-2.jpg"
+        "photo": "/assets/photos/env-entretien-avion-22-sept-2026.jpg"
       },
       {
         "titre": "Amélioration continue",
         "phrase": "Les travaux qui suppriment une panne récurrente au lieu de la réparer chaque mois",
         "href": "/expertises/types-de-maintenance/maintenance-ameliorative/",
-        "photo": "/assets/photos/env-factory-worker-inspecting-robotic-arm-in-manuf.jpg"
+        "photo": "/assets/photos/env-photos-industrie-aeronautique.jpg"
       }
     ],
     "complementTypes": [
@@ -250,7 +250,7 @@
             "texte": "six techniciens polyvalents en permanence depuis septembre 2023, reprise de tous les sites en un mois",
             "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/elec-main-disjoncteurs-borniers.jpg",
+            "photo": "/assets/photos/env-technician-maintenance-jet-engine.jpg",
             "logo": "/assets/clients/mq-ff81dfbb55c7.svg"
           },
           {
@@ -258,7 +258,7 @@
             "texte": "depuis octobre 2023, aux côtés des équipes internes",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-technicien-maintenance-portrait-1-1600.jpg",
+            "photo": "/assets/photos/aero-percage-aile-avion.jpg",
             "logo": "/assets/clients/stellantis.png"
           },
           {
@@ -266,7 +266,7 @@
             "texte": "depuis octobre 2024, toujours en cours",
             "lienLibelle": "Étude de cas McCAIN : Belgique",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/chaudro-meulage-visiere.jpg",
+            "photo": "/assets/photos/env-menuisier-utilisant-des-outils.jpg",
             "logo": "/assets/clients/mq-c23abfa0ca07.svg"
           },
           {
@@ -274,7 +274,7 @@
             "texte": "deux intervenants en poste, surveillance des convoyeurs et des trieurs",
             "lienLibelle": "Étude de cas GLS : maintenance curative",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-1-1600.jpg",
+            "photo": "/assets/photos/env-technician-maintenance-11.jpg",
             "logo": "/assets/clients/mq-09708b77564e.svg"
           },
           {
@@ -282,28 +282,28 @@
             "texte": "présence quotidienne sur les équipements critiques",
             "lienLibelle": "Étude de cas JTEKT : maintenance des équipements",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo.jpg",
+            "photo": "/assets/photos/metal-fonderie-coulee.jpg",
             "logo": "/assets/clients/mq-e93a6ad5abf7.svg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/aero-cockpit-inspection-hangar.jpg",
+            "photo": "/assets/web/sv-portrait.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/web/sv-portrait.jpg",
+            "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/il-robot-bras-orange-reglage-souriante.jpg",
+            "photo": "/assets/photos/env-inspection-auto-avec-equipe.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           }
         ]

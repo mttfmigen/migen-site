@@ -14,7 +14,7 @@
     ],
     "bouton": "Confier l'installation de mes équipements",
     "logo": "/assets/clients/orthus-x-washtec.svg",
-    "photoHero": "/assets/photos/elec-cablage-armoire-tournevis.jpg",
+    "photoHero": "/assets/photos/il-technicien-maintenance-photo-jan-9-2026-1-1600.jpg",
     "chiffres": [
       {
         "libelle": "Intervenant",
@@ -133,7 +133,7 @@
         "valeur": "Nationale, coordination centralisée"
       }
     ],
-    "photoDispositif": "/assets/photos/il-technicien-maintenance-photo-jan-9-2026-1-1600.jpg",
+    "photoDispositif": "/assets/web/team-grind-close.jpg",
     "resultats": [
       {
         "titre": "Les portiques sont montés partout en France",
@@ -189,25 +189,25 @@
         "surtitre": "Étude de cas",
         "titre": "AMAZON ORY4 : le préventif de masse",
         "href": "/preuves/amazon-centre-logistique/",
-        "photo": "/assets/photos/il-technicien-maintenance-photo-1600.jpg"
+        "photo": "/assets/web/sv-portrait.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/il-technicien-releve-machine-presse-papier.jpg"
+        "photo": "/assets/photos/pharma-technicienne-machine-comprimes.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/env-structures-industrielles-contre-ciel-nuageux.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-air-conditionne-1600.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/il-technicien-portrait-local-technique.jpg"
+        "photo": "/assets/photos/env-mechanic-inspecting-auto-parts-in-his-workshop.jpg"
       }
     ]
   }

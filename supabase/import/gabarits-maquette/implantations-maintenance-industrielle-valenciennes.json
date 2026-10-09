@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Valenciennes",
       "titre": "Valenciennes : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-robot-poignet-robot-hauteur-gants.jpg",
+      "photo": "/assets/photos/energie-rack-canalisations-binome.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Valenciennes et ses environs",
       "texte": "Nos techniciens itinérants couvrent Valenciennes et son bassin, appuyés par le réseau national Migen.",
@@ -101,7 +101,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/env-menuisier-dans-l-atelier.jpg",
+    "problemePhoto": "/assets/photos/il-detail-raffinerie-nuit-mars-17-2026-1600.jpg",
     "complementOffre": [
       {
         "texte": "Pour un montage de ligne, un transfert ou une extension, notre offre chantier prend le relais avec un chef de projet unique."
@@ -255,52 +255,52 @@
             "texte": ", pour accompagner la bascule vers le véhicule électrique depuis juin 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-grand-est/",
-            "photo": "/assets/photos/env-technician-maintenance-13.jpg"
+            "photo": "/assets/photos/env-infrastructure-usine-acier-avec-tuyaux.jpg"
           },
           {
             "titre": "3 à 5 techniciens déployés sur la montée en cadence de plusieurs usines françaises",
             "texte": ", depuis septembre 2024.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-mar-18-2026-1600.jpg"
+            "photo": "/assets/photos/env-raffinerie-de-petrole-au-coucher-du-soleil.jpg"
           },
           {
             "titre": "Techniciens présents au quotidien sur les équipements critiques d'un fabricant de composants automobiles",
             "texte": ", depuis 2025.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/il-ciment-tour-beton-grues-vue-haute.jpg"
+            "photo": "/assets/photos/hydrau-presse-pupitre-manometre.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie en service continu",
             "texte": ", depuis octobre 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-photo-industrie-raffinerie-petrole-mars-2026-1.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-portrait-1-1600.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/il-photo-usine-ciment-mars-17-2026-1600.jpg"
+            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/env-photos-industrie-4.jpg"
+            "photo": "/assets/photos/env-deux-hommes-menuiserie.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/il-ingenieur-verifiant-train-electrique-jan-7-202.jpg"
+            "photo": "/assets/photos/env-ouvrier-industriel-meulant-metal.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/env-technician-maintenance-6.jpg"
+            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
           }
         ]
       },

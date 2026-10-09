@@ -32,7 +32,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Charente",
       "titre": "Charente : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-technicien-maintenance-photo-8-1600.jpg",
+      "photo": "/assets/photos/il-technicien-maintenance-photo-23-1600.jpg",
       "badge": "Rattaché au hub Toulouse",
       "nom": "Charente, couvert par le hub Toulouse",
       "texte": "Les techniciens du hub Toulouse interviennent à Charente et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -83,7 +83,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/energie-rack-canalisations-binome.jpg",
+    "problemePhoto": "/assets/photos/env-technician-maintenance-robotic-arm.jpg",
     "complementOffre": [
       {
         "texte": "Trois formats se combinent selon votre situation. Le dépannage industriel pour une panne isolée."
@@ -223,53 +223,53 @@
             "texte": ", en préventif comme en curatif, de 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/aero-percage-aile-avion.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-en-usine-1600.jpg"
           },
           {
             "titre": "Un technicien mobilisé pendant l'arrêt estival pour tenir les équipements critiques",
             "texte": ", pendant les congés des équipes internes.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/il-elec-armoire-bornier-pointage.jpg"
+            "photo": "/assets/photos/env-femme-en-costume-sterile-industrie-pharmaceuti.jpg"
           },
           {
             "titre": "6 techniciens en préventif et curatif sur une fonderie et son usinage",
             "texte": "Site pris en charge complètement en 8 semaines.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-elec-armoire-variateurs-ventilation.jpg"
+            "photo": "/assets/photos/il-equipement-et-pipeline-raffinerie-2026-1600.jpg"
           },
           {
             "titre": "1 à 3 techniciens en corrective et préventive sur un site agroalimentaire en flux permanent",
             "texte": ".",
             "lienLibelle": "Étude de cas McCAIN",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/il-energie-gros-moteur-vert-antibruit.jpg"
+            "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
           },
           {
             "titre": "Un parc machines de PME diagnostiqué et réparé sans rachat de matériel neuf",
             "texte": ", avec plusieurs solutions chiffrées selon le budget.",
             "lienLibelle": "Étude de cas JOINT LYONNAIS",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-9-1600.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-3.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
+            "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/il-female-technician-inspects-industrial-equipmen.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-20-1600.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
+            "photo": "/assets/photos/env-photo-industrie-2.jpg"
           }
         ]
       },

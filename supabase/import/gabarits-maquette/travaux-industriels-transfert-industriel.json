@@ -137,37 +137,37 @@
         "titre": "Levage et manutention lourde",
         "phrase": "Levage et manutention lourde",
         "href": "/travaux-industriels/levage-manutention/",
-        "photo": "/assets/photos/energie-levage-eolienne-senior.jpg"
+        "photo": "/assets/photos/env-industrie-mettalique.jpg"
       },
       {
         "titre": "Démantèlement industriel",
         "phrase": "Démantèlement industriel du site de départ",
         "href": "/travaux-industriels/demantelement-industriel/",
-        "photo": "/assets/photos/il-levage-crochet-palonnier-controle.jpg"
+        "photo": "/assets/photos/energie-levage-eolienne-senior.jpg"
       },
       {
         "titre": "Montage industriel",
         "phrase": "Montage industriel sur le site d'arrivée",
         "href": "/travaux-industriels/montage-industriel/",
-        "photo": "/assets/photos/meca-moteur-palan-depose.jpg"
+        "photo": "/assets/photos/energie-eolien-hauteur-harnais.jpg"
       },
       {
         "titre": "Guide pour réussir un transfert industriel",
         "phrase": "Pour préparer le vôtre, notre guide pour réussir un transfert industriel déroule les étapes et les pièges.",
         "href": "/guides/reussir-un-transfert-industriel/",
-        "photo": "/assets/photos/levage-montage-poteau-charpente.jpg"
+        "photo": "/assets/photos/env-industrie-metallique-24-sept-2026.jpg"
       },
       {
         "titre": "Technicien en résidence",
         "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
+        "photo": "/assets/photos/env-industrie-metallique-22-sept-2026-1.jpg"
       },
       {
         "titre": "Zéro arrêt",
         "phrase": "La maintenance en abonnement, au forfait mensuel.",
         "href": "/offres/zero-arret/",
-        "photo": "/assets/photos/energie-eolien-hauteur-harnais.jpg"
+        "photo": "/assets/photos/meca-moteur-palan-depose.jpg"
       }
     ],
     "sections": [
@@ -312,7 +312,7 @@
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Étude de cas Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/photos/il-levage-nef-ponts-roulants-chantier.jpg",
+            "photo": "/assets/photos/env-industrie-metallique-2.jpg",
             "logo": "/assets/clients/savoye.png"
           },
           {
@@ -328,7 +328,7 @@
             "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés en pleine période estivale, site livré à la date prévue.",
             "lienLibelle": "Étude de cas AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/web/sv-convoyeur.jpg",
+            "photo": "/assets/photos/il-interieur-de-chantier-naval-24-mars-2026-1600.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
@@ -336,7 +336,7 @@
             "texte": "Chantier piloté de bout en bout par Migen Travaux, coordination multi-métiers et jalons critiques suivis.",
             "lienLibelle": "Étude de cas Migen Travaux x ECOCEM",
             "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg",
+            "photo": "/assets/photos/il-vue-aerienne-usine-ciment-mars-16-2026-1600.jpg",
             "logo": "/assets/clients/orthus-x-ecocem.png"
           },
           {
@@ -344,7 +344,7 @@
             "texte": "Réception, assemblage, levage, raccordements mécaniques et électriques, validation à l'issue du montage.",
             "lienLibelle": "Étude de cas Migen Travaux x WASHTEC",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg",
+            "photo": "/assets/photos/il-photo-usine-ciment-16-mars-2026-1600.jpg",
             "logo": "/assets/clients/orthus-x-washtec.svg"
           },
           {
@@ -352,21 +352,21 @@
             "texte": "Phases critiques sécurisées, qualité des installations maintenue, aucun recrutement d'urgence côté client.",
             "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg",
+            "photo": "/assets/photos/il-photo-usine-ciment-mars-17-2026-1600.jpg",
             "logo": "/assets/clients/alstef.webp"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg",
+            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
             "titre": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
             "lienLibelle": "Étude de cas Atena",
             "lienHref": "/preuves/atena-port-la-rochelle/",
-            "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg",
+            "photo": "/assets/photos/env-photos-industrie-metallique.jpg",
             "logo": "/assets/clients/atena.png"
           }
         ]

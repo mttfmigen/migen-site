@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Pau",
       "titre": "Pau : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-outillage-armoire-douilles-portrait.jpg",
+      "photo": "/assets/photos/ciment-vue-aerienne-usine.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Pau et ses environs",
       "texte": "Nos techniciens itinérants couvrent Pau et son bassin, appuyés par le réseau national Migen.",
@@ -264,52 +264,52 @@
             "texte": ", mission de 6 mois depuis février 2026.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/team-grind-sparks.jpg"
+            "photo": "/assets/photos/env-industrie.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS affecté au démarrage d'une nouvelle ligne de production",
             "texte": ", en contexte de montée en charge.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/il-technicien-maintenance-selectionnant-outils-ja.jpg"
+            "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
           },
           {
             "titre": "6 techniciens sur l'installation d'un nouveau parc machine",
             "texte": ", depuis janvier 2023.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/il-technicien-maintenance-inspectant-bras-robotiq.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-13.jpg"
           },
           {
             "titre": "1 à 3 techniciens en renfort permanent sur plusieurs sites de production",
             "texte": ", depuis octobre 2024.",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/il-tuyau-vannes-technicienne-tablette.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-jan-7-2026-1600.jpg"
           },
           {
             "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
             "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/photos/env-photos-industrie-3.jpg"
+            "photo": "/assets/photos/il-mechanic-working-in-warehouse-2.jpg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/energie-bride-mat-eolienne.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-16-800.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/il-industrial-plant.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-en-securite-mar-23-2026-2.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/il-technicien-maintenance-jan-9-2026-1600.jpg"
+            "photo": "/assets/photos/env-photos-industrie-4.jpg"
           }
         ]
       },

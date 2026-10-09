@@ -15,7 +15,7 @@
     "bouton": "Renforcer mes équipes de maintenance",
     "logo": "/assets/clients/groupe-atlantic.png",
     "logoInverse": true,
-    "photoHero": "/assets/photos/il-technicien-maintenance-jan-7-2026-1600.jpg",
+    "photoHero": "/assets/photos/chimie-technicienne-skid-vanne.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -126,7 +126,7 @@
         "valeur": "Permanente, engagement de moyen terme"
       }
     ],
-    "photoDispositif": "/assets/photos/il-tuyau-vannes-technicienne-tablette.jpg",
+    "photoDispositif": "/assets/web/sv-duo-impact.jpg",
     "resultats": [
       {
         "titre": "Une collaboration reconduite",
@@ -175,25 +175,25 @@
         "surtitre": "Étude de cas",
         "titre": "JOINT LYONNAIS : parc machines défaillant",
         "href": "/preuves/joint-lyonnais/",
-        "photo": "/assets/photos/env-ouvriers-usine-allumant-four-sept-22.jpg"
+        "photo": "/assets/photos/env-menuisier-utilisant-des-outils.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/env-technician-inspecting-fiber-optics.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-au-travail-jan-9-2026-1.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/il-man-working-with-machinery-in-a-factory.jpg"
+        "photo": "/assets/photos/env-entretien-avion-22-sept-2026.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/robot-pupitre-apprentissage-soudure.jpg"
+        "photo": "/assets/photos/aero-reacteur-capot-combinaison.jpg"
       }
     ]
   }

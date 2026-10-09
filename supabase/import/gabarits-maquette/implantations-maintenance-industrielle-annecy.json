@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Annecy",
       "titre": "Annecy : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-young-african-american-worker-of-industrial-pl.jpg",
+      "photo": "/assets/photos/env-industrie-metallique-2.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Annecy et ses environs",
       "texte": "Nos techniciens itinérants couvrent Annecy et son bassin, appuyés par le réseau national Migen.",
@@ -245,37 +245,37 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/il-photo-usine-ciment-mars-17-2026-1600.jpg"
+            "photo": "/assets/photos/il-usine-de-ciment-vue-aerienne-1600.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/env-menuisier-utilisant-des-outils.jpg"
+            "photo": "/assets/photos/env-ouvriers-usine-allumant-four-sept-22.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-17-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-20-1600.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/env-photo-industrie-pharmaceutique.jpg"
+            "photo": "/assets/photos/env-industrie-metallique-21-sept-2026.jpg"
           },
           {
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-raffinerie-industrielle-au-crepuscule-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-portrait-1-1600.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/env-industrie-automobile.jpg"
+            "photo": "/assets/photos/env-raffinerie-de-petrole-au-coucher-du-soleil.jpg"
           }
         ]
       },

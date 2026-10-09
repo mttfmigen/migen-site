@@ -33,7 +33,7 @@
         "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "problemePhoto": "/assets/photos/ciment-tambour-rotatif-silos.jpg",
+    "problemePhoto": "/assets/photos/pneu-cle-bloc-distribution.jpg",
     "complementOffre": [
       {
         "texte": "Vos arrêts se répètent toute l'année ? Une ligne bloquée maintenant se traite par le dépannage industriel."
@@ -171,49 +171,49 @@
             "titre": "Renfort de maintenance pendant l'arrêt estival, équipements critiques",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/meca-presses-volants-technicienne.jpg",
+            "photo": "/assets/photos/il-man-works-with-robotic-arm-in-factory.jpg",
             "texte": "Un technicien intégré à l'équipe, mécanique, électrotechnique et pneumatique couvertes par un seul profil, été 2025."
           },
           {
             "titre": "Maintien opérationnel de convoyeurs, trieurs et packaging automatisés, logistique et transport",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/il-meca-portrait-centre-usinage.jpg",
+            "photo": "/assets/photos/pneu-pince-axe-lineaire.jpg",
             "texte": "Deux techniciens en poste, pneumatique comprise dans les domaines couverts en propre."
           },
           {
             "titre": "Contrat de maintenance préventive annuelle, logistique",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/pneu-cle-bloc-distribution.jpg",
+            "photo": "/assets/photos/robot-pince-reparation-etabli.jpg",
             "texte": "Six techniciens polyvalents en permanence sur les sites de Lyon, depuis septembre 2023."
           },
           {
             "titre": "Maintenance sous contrat d'un parc déployé partout en France, réalité virtuelle",
             "lienLibelle": "Étude de cas TIMESCOPE",
             "lienHref": "/preuves/timescope/",
-            "photo": "/assets/photos/il-levage-crochet-palonnier-controle.jpg",
+            "photo": "/assets/photos/hydrau-verin-tige-chromee.jpg",
             "texte": "Périmètre technique complet, pneumatique comprise, depuis février 2024."
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-hydrau-presse-rouge-intervention.jpg",
+            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg",
             "texte": "Site tenu depuis octobre 2023."
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/meca-graissage-couronne-engin.jpg",
+            "photo": "/assets/photos/il-technicienne-mecanique-photo-avril-2026-1600.jpg",
             "texte": ""
           },
           {
             "titre": "Maintenir et monter, de jour comme de nuit",
             "lienLibelle": "Étude de cas Vignal Systems",
             "lienHref": "/preuves/vignal-systems/",
-            "photo": "/assets/photos/il-chaudro-bride-anneau-controle.jpg",
+            "photo": "/assets/photos/env-ouvrier-usine-coupe-metal-avec-scie-circulaire.jpg",
             "texte": ""
           }
         ]

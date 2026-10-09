@@ -27,7 +27,7 @@
       }
     ],
     "logo": "/assets/clients/mq-c23abfa0ca07.svg",
-    "photoHero": "/assets/photos/agro-panneau-vannes-nep.jpg",
+    "photoHero": "/assets/photos/env-controle-qualite-femme.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -154,7 +154,7 @@
         "valeur": "Maintenance corrective et préventive"
       }
     ],
-    "photoDispositif": "/assets/photos/soudure-virole-inox-hall.jpg",
+    "photoDispositif": "/assets/photos/agro-panneau-vannes-nep.jpg",
     "resultats": [
       {
         "titre": "Une sortie du territoire français réussie",
@@ -171,19 +171,8 @@
     ],
     "complement": [
       {
-        "titre": "La situation",
-        "texte": "Le besoin exprimé par le site tenait en trois points :"
-      },
-      {
-        "titre": "Ce que nous avons mis en place",
-        "texte": "Le périmètre technique couvre quatre volets :"
-      },
-      {
         "titre": "Le résultat",
         "texte": "Le contrat McCAIN est le premier signé par Migen en Belgique. Il est toujours actif et fonctionne en régime permanent."
-      },
-      {
-        "texte": "Ce que la mission démontre :"
       }
     ],
     "besoinTitre": "Un site à l'étranger ou une production en flux que rien ne doit couper ?",
@@ -209,13 +198,13 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/agro-technicienne-raccord-clamp.jpg"
+        "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/soudure-tig-virole-inox.jpg"
+        "photo": "/assets/photos/env-femmes-en-usine-21-sept-2026.jpg"
       },
       {
         "surtitre": "Secteur",
@@ -227,8 +216,22 @@
         "surtitre": "Étude de cas",
         "titre": "STELLANTIS : sites du Grand Est",
         "href": "/preuves/stellantis-grand-est/",
-        "photo": "/assets/photos/tuyau-vanne-volant-conserverie.jpg"
+        "photo": "/assets/photos/env-emballage-de-biscuits-en-usine.jpg"
       }
     ]
-  }
+  },
+  "trous": [
+    {
+      "ligne": "Le besoin exprimé par le site tenait en trois points :",
+      "pourquoi": "annonce sans annoncé : la capture de la maquette rend ce libellé puis laisse l'emplacement de sa liste VIDE (son export a perdu les puces), si bien que le visiteur lisait des deux-points ouverts sur rien. La liste annoncée est rendue ailleurs sur la même page, en cartes (`objectifs`, `reponseCartes`, `resultats`), vérifiée puce par puce contre le corpus du client : aucun contenu ne disparaît. Le titre du bloc part avec, c'est déjà un h2 de la page. Porte : scripts/verifie-libelles-orphelins.mjs"
+    },
+    {
+      "ligne": "Le périmètre technique couvre quatre volets :",
+      "pourquoi": "annonce sans annoncé : la capture de la maquette rend ce libellé puis laisse l'emplacement de sa liste VIDE (son export a perdu les puces), si bien que le visiteur lisait des deux-points ouverts sur rien. La liste annoncée est rendue ailleurs sur la même page, en cartes (`objectifs`, `reponseCartes`, `resultats`), vérifiée puce par puce contre le corpus du client : aucun contenu ne disparaît. Le titre du bloc part avec, c'est déjà un h2 de la page. Porte : scripts/verifie-libelles-orphelins.mjs"
+    },
+    {
+      "ligne": "Ce que la mission démontre :",
+      "pourquoi": "annonce sans annoncé : la capture de la maquette rend ce libellé puis laisse l'emplacement de sa liste VIDE (son export a perdu les puces), si bien que le visiteur lisait des deux-points ouverts sur rien. La liste annoncée est rendue ailleurs sur la même page, en cartes (`objectifs`, `reponseCartes`, `resultats`), vérifiée puce par puce contre le corpus du client : aucun contenu ne disparaît. Le titre du bloc part avec, c'est déjà un h2 de la page. Porte : scripts/verifie-libelles-orphelins.mjs"
+    }
+  ]
 }

@@ -95,7 +95,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/web/sv-convoyeur.jpg",
+    "problemePhoto": "/assets/photos/env-photos-industrie-agro-alimentaire.jpg",
     "brefBande": "Besoin de savoir laquelle de vos utilités arrêtera votre ligne la prochaine fois ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -230,35 +230,35 @@
             "texte": "Troisième trimestre 2025, reporting à la direction industrielle.",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/il-technicien-maintenance-portrait-1600.jpg"
+            "photo": "/assets/photos/env-femme-inspectant-des-bouteilles.jpg"
           },
           {
             "titre": "Techniciens intégrés aux équipes pour sécuriser la maintenance des installations",
             "texte": "d'un équipementier automobile, en 2025.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo.jpg"
+            "photo": "/assets/photos/env-industrie-metallique-2.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS à temps plein pour le démarrage d'une ligne neuve",
             "texte": "Deuxième et troisième trimestres 2025.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/env-photos-industrie-agro-alimentaire.jpg"
+            "photo": "/assets/photos/il-usine-de-ciment-vue-aerienne-1600.jpg"
           },
           {
             "titre": "Un électromécanicien habilité risque chimique mobilisé 6 mois",
             "texte": "Remise en état d'un site de traitement des eaux industrielles.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/metal-fonderie-coulee.jpg"
+            "photo": "/assets/photos/env-photo-industrie-pharmaceutique.jpg"
           },
           {
             "titre": "3 à 5 techniciens déployés dans plusieurs usines françaises, depuis septembre 2024",
             "texte": "Accompagnement d'une montée en cadence.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/env-femme-en-usine-moderne.jpg"
+            "photo": "/assets/photos/env-inspection-de-bois-24-sept-2026.jpg"
           },
           {
             "titre": "Maintenir des machines conçues en interne",
@@ -276,7 +276,7 @@
             "titre": "Une usine de carton en 3x8, un technicien qui tient la cadence",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/env-techniciens-semiconducteurs.jpg"
+            "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg"
           }
         ]
       },

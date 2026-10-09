@@ -168,7 +168,7 @@
             "texte": "six techniciens polyvalents en permanence, depuis septembre 2023",
             "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-3-800.jpg",
+            "photo": "/assets/photos/env-scie-a-ruban-industrielle.jpg",
             "logo": "/assets/clients/mq-ff81dfbb55c7.svg"
           },
           {
@@ -176,7 +176,7 @@
             "texte": "six techniciens en poste depuis octobre 2023, aux côtés des équipes internes",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/elec-mesure-multimetre-faisceau.jpg",
+            "photo": "/assets/photos/il-technicien-maintenance-portrait-1-1600.jpg",
             "logo": "/assets/clients/stellantis.png"
           },
           {
@@ -184,7 +184,7 @@
             "texte": "deux techniciens intégrés aux équipes du site de Steenvoorde",
             "lienLibelle": "Étude de cas DANONE : lignes de production",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/il-technicien-maintenance-7.jpg",
+            "photo": "/assets/photos/env-inspection-de-la-chaine-alimentaire.jpg",
             "logo": "/assets/clients/danone-bledina.png"
           },
           {
@@ -192,7 +192,7 @@
             "texte": "trois à cinq techniciens déployés depuis septembre 2024",
             "lienLibelle": "Étude de cas VALEO : plusieurs usines",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/il-robot-bras-rouge-serrage-hauteur.jpg",
+            "photo": "/assets/photos/env-raffinerie-de-petrole-au-coucher-du-soleil.jpg",
             "logo": "/assets/clients/mq-f6fcccfd4cc8.svg"
           },
           {
@@ -302,7 +302,7 @@
         "titre": "Sous-traitance maintenance",
         "phrase": "Un technicien présent chaque jour dans vos murs, intégré à votre équipe de production. Voir la sous-traitance maintenance.",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/il-meca-portrait-cle-a-molette-halle.jpg"
+        "photo": "/assets/photos/env-industrie-paysage.jpg"
       },
       {
         "titre": "Contrat de maintenance",
@@ -320,7 +320,7 @@
         "titre": "Arrêt technique maintenance",
         "phrase": "La préparation et l'exécution de vos arrêts planifiés, coordination des corps de métier comprise. Voir l'arrêt technique maintenance.",
         "href": "/offres/arret-technique/",
-        "photo": "/assets/photos/il-mechanic-working-in-warehouse-2.jpg"
+        "photo": "/assets/photos/env-operateur-de-metal-24-sept-2026.jpg"
       },
       {
         "titre": "Guide pour choisir une entreprise de maintenance",
@@ -332,7 +332,7 @@
         "titre": "Full service",
         "phrase": "Toute votre maintenance, un seul partenaire.",
         "href": "/offres/full-service/",
-        "photo": "/assets/photos/il-technicien-maintenance-portrait-1-1600.jpg"
+        "photo": "/assets/photos/energie-rack-canalisations-binome.jpg"
       }
     ],
     "pagesLieesTitre": "Par où continuer ?"

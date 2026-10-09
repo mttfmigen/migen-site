@@ -1,0 +1,240 @@
+# État de la migration du site Migen, au 09/10/2026 au soir
+
+Ce document remplace la lecture du relais pour savoir OÙ ON EN EST. Il existe
+parce que `docs/RELAIS-08-10.md` a été trouvé périmé de six commits le 09/10 :
+huit de ses points étaient faits et il annonçait le contraire. Il porte donc un
+bloc de chiffres que `node scripts/verifie-etat-migration.mjs` remesure, et il se
+déclare périmé tout seul.
+
+Pour le vérifier, une commande :
+
+    node scripts/verifie-etat-migration.mjs
+
+## Les chiffres, mesurés et non recopiés
+
+```json etat-migration
+{
+  "depot": { "branche": "phase-2-gabarits", "tete": "363e937" },
+  "pages": { "declarees": 248, "fiches": 246 },
+  "photos": {
+    "emplacements": 1942,
+    "distinctes": 558,
+    "banque": 517,
+    "pagesQuiRepetent": 0
+  },
+  "defauts": { "annoncesOrphelines": 0, "couplesTitreSuite": 108 },
+  "ouverts": {
+    "fichesOrthus": 30,
+    "phrasesPrixRetirees": 14,
+    "pagesPrixRetirees": 8,
+    "mentionsLegalesACompleter": 3,
+    "cleServiceSupabasePosee": false
+  }
+}
+```
+
+## Ce qui est en ligne, et ce qui ne l'est pas
+
+- **La production sert les 248 adresses de l'index en 200**, mesuré sur
+  https://migen-site.vercel.app par `SITE_URL=… node scripts/verifie-adresses-servies.mjs`.
+  Le serveur de développement aussi, 248/248.
+- **La production est une génération en retard.** Elle porte encore la phrase
+  « Le besoin posé par le site : » sur `/preuves/autoliv/`, corrigée en local.
+  C'est la preuve directe que rien du travail du 09/10 au soir n'est déployé.
+- **Rien n'attend d'être poussé** : `phase-2-gabarits` est au même commit que
+  `origin`. Ce qui n'est pas en ligne n'est pas non plus commité : le travail du
+  jour vit dans l'arbre de travail.
+- **Un `git push` déploie désormais en production** (Vercel relié au dépôt le
+  09/10). Le filet d'avant n'existe plus, et le relais du 08/10 dit l'inverse.
+
+## Les deux défauts de copie signalés par Mehdi, et leur état
+
+| Défaut | Ampleur mesurée | État |
+|---|---|---|
+| Annonces sans annoncé (« Le besoin posé par le site : » puis rien) | 17 sur 12 des 41 études de cas | **Clos.** 0 restante, porte `verifie-libelles-orphelins.mjs`, cause racine bouchée dans `extrait-depuis-captures.py` |
+| Phrases coupées en deux lignes, la seconde ouverte par une virgule | 108 sur tout le site : 27 études de cas, 74 cartes de pages Villes, 7 étapes Spécialité et Domaine | **Clos.** 108 rendues d'un trait, 0 coupée, porte `verifie-suites-de-titre.mjs` |
+
+Les deux viennent de la MAQUETTE, pas du portage : sa capture rend le même
+défaut, c'est pourquoi aucune porte de gabarit ne le voyait. Le remède ne change
+aucun mot, il rend la phrase du corpus d'un seul tenant.
+
+## L'état des portes, et la seule rouge
+
+Vérifié par `node scripts/verifie-portes-gabarits.mjs`, qui refuse les deux
+dérives : une verte qui tombe est une régression, une rouge qui passe est un
+rapport périmé.
+
+Neuf vertes : interdits du contrat, décisions de copie, annonces orphelines,
+suites de titre, phrases estropiées, gabarit étude de cas, gabarit spécialité,
+gabarit domaine, hub offres. Plus `bunx tsc --noEmit` propre.
+
+Une rouge, **`scripts/verifie-implantations.tsx`, et elle est PÉRIMÉE**, sur
+trois points tous antérieurs aux corrections du jour :
+1. elle attend « siège à Écully » et traite « Limonest » comme un interdit, soit
+   l'inverse de la décision du 09/10 ;
+2. elle réclame la phrase « Le contrat Zéro arrêt est chiffré sur devis », que
+   la décision du 09/10 au soir autorise justement à rendre ;
+3. elle exige les octets de photo de son relevé, là où la répartition du 09/10 a
+   posé des photos du registre.
+
+## La preuve RGPD : diagnostic prouvé de bout en bout
+
+`node scripts/verifie-preuve-rgpd.mjs`, et ce contrôle vérifie sa propre
+capacité à échouer à chaque passage (un corps invalide doit rendre 400, une
+finalité inventée aussi).
+
+Mesuré : la ligne `SUPABASE_SERVICE_ROLE_KEY` existe dans `.env.local` mais **sa
+valeur est VIDE**. Un corps de preuve valide reçoit donc **503** avec sa cause
+nommée, jamais un 500 muet. Le choix du visiteur est respecté, il vit dans son
+cookie ; c'est la PREUVE qui ne s'écrit pas dans `consent_logs`.
+
+Attention au piège qui a fait conclure l'inverse une première fois : un motif
+`=\s*\S` avale le retour à la ligne et prend la ligne de commentaire suivante
+pour la valeur de la clé.
+
+## Ce qui reste, et à qui
+
+**Mehdi seul peut le fournir :**
+1. **La clé de service Supabase.** Sans elle, aucune preuve de consentement
+   n'est écrite, et `scripts/importe_rest.mjs` ne peut pas tourner.
+2. **Trois champs des mentions légales** : directeur de la publication (à
+   désigner, ce n'est pas une donnée du greffe), courriel de contact, hébergeur.
+   Les dix autres sont remplis depuis l'extrait Pappers du 09/10.
+3. **Les accords des 38 logos**, que les mentions légales affirment.
+
+**Décidé par Mehdi le 09/10 au soir, pas encore appliqué :**
+4. **« Aucun tarif, dire que c'est sur devis. »** 14 phrases déclarées retirées
+   sur 8 pages portent un motif de prix. La porte des implantations réclame déjà
+   l'une d'elles. Le relais annonçait 19 phrases sur 12 pages : ce chiffre n'a
+   pas été reproduit par la mesure et reste à réconcilier avec sa méthode.
+5. **Les 30 fiches qui portent « orthus »**, à renommer. Changement coordonné :
+   l'index déclare ces adresses et les portes comptent les pages de l'index.
+
+**En cours d'instruction :**
+6. **L'intégration des photos**, signalée par Mehdi le 09/10 au soir : « tu les
+   as mal intégré ». Faits déjà établis : les 517 photos du registre sont toutes
+   servies, dont les 149 qu'il a téléchargées lui-même (licence « Envato
+   Elements, licence migen.fr », 431 emplacements) ; aucune page ne répète une
+   photo ; la plus servie l'est 12 fois. Le défaut n'est donc pas une absence,
+   c'est un PLACEMENT. Quatre audits parallèles sont en cours : cohérence
+   thématique, orientation et cadrage, répartition entre pages sœurs, et rendu
+   réel au navigateur. `scripts/repartit-photos.ts` descend d'un palier de thème
+   POUR LA PAGE ENTIÈRE dès qu'un palier ne peut pas servir tous ses
+   emplacements avec six de marge, et son résumé final ne vérifie pas la règle
+   de thème qu'il déclare pourtant comme dure : c'est la cause racine la plus
+   probable, à confirmer.
+
+**Points techniques ouverts :** `.vercelignore` ignoré par `--archive` (486 Mo
+envoyés) ; les consignes IA du Diagnostic qui citent encore des prix, non
+commitées dans `~/Landing lovable/migen-diagnostic-zero-arret`.
+
+## Les photos « mal intégrées » : trois causes, toutes mesurées, toutes de notre fait
+
+Signalé par Mehdi le 09/10 au soir : « traite surtout les photos que j'ai
+téléchargé, tu les as mal intégré sur le site ». Quatre audits parallèles, puis
+vérification indépendante de chaque affirmation décisive. Le défaut n'est pas
+une absence : les 517 photos du registre sont toutes servies, dont les 149 de
+Mehdi sur 431 emplacements, et aucune page ne répète un même nom de fichier.
+
+### Cause 1 : le registre ment, et le répartiteur lui obéit
+
+`scripts/repartit-photos.ts` choisit la photo d'un emplacement sur les THÈMES du
+registre. Il ne peut donc pas faire mieux que ce que le registre lui dit. Or :
+
+| Lot | Descriptions recopiées du titre Envato | Photos à moins de 2 thèmes |
+|---|---|---|
+| Premier lot (109) | 0 | 0 |
+| Industrie Libre (259) | 138 | 107 |
+| **Les 149 de Mehdi** | **149 sur 149** | **113** |
+
+1,38 thème par photo pour son lot contre 3,50 pour le premier. Et au moins un
+thème est FAUX : `env-projet-menuiserie-pere-et-enfant.jpg`, une photo de
+menuiserie, porte le thème `aeronautique`, ce qui l'a posée sur
+`/secteurs/aeronautique/`. Vérifié au registre et dans la fiche.
+
+Le moteur, lui, a bien travaillé : 77,7 % des emplacements portent le thème
+attendu contre 5,9 % pour un tirage au hasard, soit treize fois mieux. Les
+102 incohérences se concentrent sur neuf thèmes à faible stock ou mal exploités,
+dont `bureau-etudes` (0 photo juste sur 18 emplacements alors que les 5 photos
+du thème sont posées ailleurs) et `auto` (27 des 31 photos automobiles jamais
+servies sur les pages automobiles).
+
+Porte : `node scripts/verifie-etiquetage-photos.mjs`. Elle échoue aujourd'hui sur
+507 fautes et sera verte quand le registre décrira ses photos.
+
+### Cause 2 : 128 fichiers sont la même image sous un autre nom
+
+Les 517 fichiers ne contiennent que **389 images distinctes**. 128 sont des
+ré-encodages de la même prise de vue, à une autre résolution ou sous un autre
+nom, avec un sha256 différent, donc invisibles au registre. 41,2 Mo de doublons
+sur le disque.
+
+La première règle dure du répartiteur, « jamais deux fois la même photo dans une
+page », porte sur le CHEMIN. Elle était donc vraie sur les noms et fausse à
+l'écran : **14 pages affichaient deux fois la même image**, dont
+`/preuves/rector-lesage/` et `/preuves/vignal-systems/` où la photo
+d'illustration et celle du dispositif sont la même prise de vue. Et 96 partages
+entre pages sœurs échappaient à tout contrôle par nom de fichier.
+
+Vérifié au pixel, avec témoin négatif à 50,3 de différence absolue moyenne :
+`env-technician-maintenance-8.jpg` et `env-technician-repairing-electrical-appliance.jpg`
+sont strictement identiques (0,00). Quatre photos téléchargées sur Envato
+existaient déjà dans le stock Industrie Libre.
+
+Porte : `python3 scripts/verifie-photos-distinctes.py`, qui éprouve son seuil
+dans les deux sens à chaque passage. Elle échoue aujourd'hui sur 132 paires.
+Remède écrit et simulé : `python3 scripts/dedoublonne-photos.py` (124 groupes,
+186 fiches concernées, 437 références à réécrire, thèmes fusionnés sur le
+survivant le mieux résolu).
+
+### Cause 3 : le registre sait quelles photos sont debout, le code ne lui demande jamais
+
+C'est la cause la plus visible, et la plus simple. Le registre déclare
+l'`orientation` de chaque photo, exactement juste sur les 517 fichiers (480
+paysage, 37 portrait, vérifié sur les en-têtes JPEG). **Aucune ligne du site ne
+lit ce champ** (`grep -rn orientation components/site lib app` ne rend rien).
+
+Conséquence : **137 des 148 emplacements de photo portrait sont dans un cadre
+couché**, en `objectFit: cover` et sans aucun `objectPosition`, donc recadrés sur
+leur bande médiane. **123 placements perdent la moitié de l'image ou plus, sur
+92 pages.** Un portrait à 0,66 de ratio dans le cadre 2,43 de
+`ressource/PageRessource.tsx:136` perd 73 % de sa hauteur : le cadrage tombe sur
+le torse, pas sur le visage. Vérifié fichier par fichier sur trois cas.
+
+L'emplacement le plus destructeur est `offre/ReferencesOffre.tsx:298`, ratio
+2,13, qui porte à lui seul 951 placements.
+
+### Deux défauts de chargement trouvés au passage, vérifiés
+
+- `preuve/PagePreuve.tsx:1087` rend `photoDispositif` en `<img>` brut, hors de
+  l'optimiseur de Next (avec son `eslint-disable` en toutes lettres) : 40 pages
+  de preuve servent le JPEG entier, 15,3 Mo cumulés, dont 800 Ko sur
+  `/preuves/orthus-ecocem/`.
+- `ressource/PageRessource.tsx:262` passe `preload` à `next/image`. Cette
+  propriété n'existe pas, c'est `priority` : le préchargement du visuel de héros
+  n'a jamais eu lieu.
+
+### Ce qui reste à faire sur les photos, dans l'ordre
+
+1. ~~**Réétiqueter les 149 photos de Mehdi en les REGARDANT**~~ **FAIT le 09/10
+   au soir.** Les 149 ont été ouvertes une par une, en quatre lots parallèles, et
+   décrites d'après ce que l'image montre. Mesuré après application :
+   **3,17 thèmes par photo contre 1,38**, zéro description recopiée du titre
+   Envato contre 149 avant, zéro thème hors vocabulaire. Deux photos sont
+   signalées HORS SUJET et attendent l'arbitrage de Mehdi, ce sont ses achats :
+   `env-projet-menuiserie-pere-et-enfant.jpg` (une scène de famille avec un
+   enfant, qui portait le thème `aeronautique` et illustrait
+   /secteurs/aeronautique/) et `env-it-technician-working-on-servers-in-data-cente.jpg`
+   (une baie de serveurs, sans contexte industriel). Erreur systématique trouvée
+   au passage : le thème `auto` avait été posé par confusion entre
+   « automatique » et « automobile », ce qui explique que 27 des 31 photos dites
+   automobiles ne servaient aucune page automobile.
+   **Reste le lot Industrie Libre** : 138 descriptions recopiées et 108 photos à
+   moins de deux thèmes, mesurées par `node scripts/verifie-etiquetage-photos.mjs`.
+2. **Dédoublonner** : `dedoublonne-photos.py --applique`, puis vérifier.
+3. **Apprendre la forme des cadres au répartiteur** pour qu'une photo portrait
+   n'aille jamais dans un cadre large. L'inventaire des 22 emplacements avec leur
+   ratio réel est mesuré et disponible. C'est un ARBITRAGE pour Mehdi : interdire
+   le portrait dans les cadres larges, ou le garder en réglant son
+   `objectPosition` sur le haut de l'image.
+4. **Relancer la répartition** et vérifier au navigateur.

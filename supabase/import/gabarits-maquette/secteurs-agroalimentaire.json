@@ -81,19 +81,19 @@
         "titre": "Pneumatique",
         "texte": "Vérins et distributeurs des machines de conditionnement, sollicités à chaque cycle.",
         "href": "/expertises/pneumatique/",
-        "photo": "/assets/photos/agro-technicienne-raccord-clamp.jpg"
+        "photo": "/assets/photos/tuyau-vanne-volant-conserverie.jpg"
       },
       {
         "titre": "Automatisme",
         "texte": "Changements de format et recettes : l’automate suit la cadence saisonnière.",
         "href": "/expertises/automatisme/",
-        "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
+        "photo": "/assets/photos/env-inspection-du-processus-d-embouteillage.jpg"
       },
       {
         "titre": "Électrique",
         "texte": "Armoires en environnement humide, lavé à grande eau : consignations et étanchéité.",
         "href": "/expertises/electrique/",
-        "photo": "/assets/photos/agro-mains-vanne-sanitaire.jpg"
+        "photo": "/assets/photos/env-man-smiles-at-a-bottling-plant-factory.jpg"
       }
     ],
     "marquesFamille": "agro",
@@ -241,33 +241,33 @@
             "texte": "matière fragile, rythme continu",
             "lienLibelle": "Étude de cas VPK : maintenance de site",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/soudure-tig-virole-inox.jpg"
+            "photo": "/assets/photos/agro-mains-vanne-sanitaire.jpg"
           },
           {
             "titre": "Renfort de l'équipe de maintenance pendant les congés d'été",
             "texte": "un technicien sur site, été 2025",
             "lienLibelle": "Étude de cas OGF : arrêt estival",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/il-agro-silos-contre-plongee-passerelles.jpg"
+            "photo": "/assets/photos/env-workers-inspecting-large-vats-in-a-manufacturi.jpg"
           },
           {
             "titre": "Technicien affecté en continu à la fiabilité d'équipements de production en forte activité",
             "texte": "site proche de Paris",
             "lienLibelle": "Étude de cas FDJ : site proche de Paris",
             "lienHref": "/preuves/fdj/",
-            "photo": "/assets/photos/agro-ihm-ligne-conditionnement-senior.jpg"
+            "photo": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/tuyau-vanne-volant-conserverie.jpg"
+            "photo": "/assets/photos/env-travailleuse-usine-agroalimentaire.jpg"
           },
           {
             "titre": "Un renfort pour que le pain sorte chaque matin",
             "lienLibelle": "Étude de cas La Panetière",
             "lienHref": "/preuves/la-panetiere/",
-            "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg"
+            "photo": "/assets/photos/env-factory-worker-inspecting-food-canning-product.jpg"
           }
         ]
       },

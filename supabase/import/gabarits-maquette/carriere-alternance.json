@@ -20,7 +20,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/il-soudure-chalumeau-tube-technicienne.jpg",
+        "src": "/assets/photos/env-photos-industrie-menuiserie-2.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -384,7 +384,7 @@
           {
             "libelle": "Migen recrutement",
             "href": "/carriere/",
-            "photo": "/assets/photos/aero-cockpit-inspection-hangar.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-robot-arm.jpg"
           }
         ]
       }

@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Calais",
       "titre": "Calais : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/env-technician-inspecting-power-grid-equipment-in-.jpg",
+      "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Calais et ses environs",
       "texte": "Nos techniciens itinérants couvrent Calais et son bassin, appuyés par le réseau national Migen.",
@@ -245,37 +245,37 @@
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/hydrau-presse-pupitre-manometre.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-portrait-1600.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/env-industrie-chimie-3.jpg"
+            "photo": "/assets/photos/env-travailleuse-usine-agroalimentaire.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
             "lienLibelle": "Étude de cas Veepee",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/env-technicien-maintenance-2.jpg"
+            "photo": "/assets/photos/il-metal-siderurgie-bord-d-eau-couchant.jpg"
           },
           {
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Étude de cas Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/photos/il-photo-industrie-japon-jan-9-2026-1600.jpg"
+            "photo": "/assets/photos/il-equipement-et-pipeline-raffinerie-2026-1600.jpg"
           },
           {
             "titre": "Des chantiers automatisés contrôlés point par point",
             "lienLibelle": "Étude de cas Alstef Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-mars-24-2026-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-robotique-mar-18-2026-1.jpg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/il-equipe-bogie-halle-ferroviaire.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-portrait-jan-9-2026-160.jpg"
           }
         ]
       },

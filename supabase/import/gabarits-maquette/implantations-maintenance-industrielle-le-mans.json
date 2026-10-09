@@ -115,7 +115,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-technicien-maintenance-photo-11-1600.jpg",
+    "problemePhoto": "/assets/photos/env-usine-aeronautique-22-sept-2026.jpg",
     "brefBande": "Besoin de tenir un poste de maintenance que vous n'arrivez pas à pourvoir ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -250,47 +250,47 @@
             "texte": "Réorganisation industrielle en cours.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/env-technician-maintenance-7.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-robot-arm.jpg"
           },
           {
             "titre": "3 à 5 techniciens déployés depuis septembre 2024 pour accompagner la montée en cadence de plusieurs usines",
             "texte": "Maintenance renforcée en même temps que la production.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/env-automatician-maintenance.jpg"
+            "photo": "/assets/photos/env-industrial-worker-inspecting-canned-goods-on-a.jpg"
           },
           {
             "titre": "Un technicien de maintenance dédié au maintien d'un parc machines en 2025",
             "texte": "Poste vacant comblé sans attendre un recrutement.",
             "lienLibelle": "Étude de cas AUTOLIV",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/web/team-grind-impact.jpg"
+            "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg"
           },
           {
             "titre": "Six techniciens sur l'installation et la mise en production d'un nouveau parc machine",
             "texte": "Site automobile, à partir de janvier 2023.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-8.jpg"
           },
           {
             "titre": "Deux techniciens intégrés en 3x8 sur des lignes liquides et poudre",
             "texte": "Lavage intensif, froid, traçabilité.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/il-technicien-maintenance-jan-7-2026-800.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-9-2026-3-1600.jpg"
           },
           {
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-raffinerie-industrielle-au-crepuscule-1600.jpg"
+            "photo": "/assets/photos/meca-moteur-palan-depose.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/photos/meca-tour-conventionnel-senior.jpg"
+            "photo": "/assets/photos/il-pipes-et-structures-raffinerie-2026-1600.jpg"
           },
           {
             "titre": "Centres d’usinage et presses tenus dans le Grand Est",

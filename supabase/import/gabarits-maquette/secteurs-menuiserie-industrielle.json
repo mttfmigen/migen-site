@@ -72,25 +72,25 @@
         "titre": "Mécanique",
         "texte": "Broches, guides et transmissions des centres d’usinage.",
         "href": "/expertises/mecanique/",
-        "photo": "/assets/photos/env-deux-hommes-menuiserie.jpg"
+        "photo": "/assets/photos/env-professionnels-sur-machine-a-bois.jpg"
       },
       {
         "titre": "Pneumatique",
         "texte": "Serrages et presses pneumatiques des lignes d’assemblage.",
         "href": "/expertises/pneumatique/",
-        "photo": "/assets/photos/env-photos-menuiserie.jpg"
+        "photo": "/assets/photos/env-menuiserie-industrie.jpg"
       },
       {
         "titre": "Automatisme",
         "texte": "Commandes numériques et automates des centres d’usinage.",
         "href": "/expertises/automatisme/",
-        "photo": "/assets/photos/env-menuiserie-circular-saw.jpg"
+        "photo": "/assets/photos/env-photos-industrie-menuiserie-3.jpg"
       },
       {
         "titre": "Électrique",
         "texte": "Moteurs, aspirations et armoires en atelier poussiéreux.",
         "href": "/expertises/electrique/",
-        "photo": "/assets/photos/env-menuiserie-24-sept-2026.jpg"
+        "photo": "/assets/photos/env-menuisier-avec-masque-sept-2026.jpg"
       }
     ],
     "sections": [
@@ -275,7 +275,7 @@
             "texte": "Lyon, février 2024",
             "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/env-inspection-de-bois-24-sept-2026.jpg"
+            "photo": "/assets/photos/env-deux-hommes-menuiserie.jpg"
           },
           {
             "titre": "Technicien polyvalent sur un parc hétérogène à forte cadence, papier et emballage",
@@ -289,39 +289,39 @@
             "texte": "depuis octobre 2024",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/env-homme-inspectant-le-bois.jpg"
+            "photo": "/assets/photos/menuiserie-cnc-pupitre-casque.jpg"
           },
           {
             "titre": "Chantiers de montage, déplacements de machines et renfort technique ponctuel, matériaux",
             "texte": "missions documentées",
             "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/env-professionnels-sur-machine-a-bois.jpg"
+            "photo": "/assets/photos/env-photos-menuiserie.jpg"
           },
           {
             "titre": "Renfort de l'équipe de maintenance pendant les congés d'été",
             "texte": "un technicien sur site, été 2025",
             "lienLibelle": "Étude de cas OGF : arrêt estival",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/env-photos-industrie-menuiserie.jpg"
+            "photo": "/assets/photos/menuiserie-passerelle-usine-bois.jpg"
           },
           {
             "titre": "Des commandes numériques remises en route à chaque équipe",
             "lienLibelle": "Étude de cas Jeld-Wen",
             "lienHref": "/preuves/jeld-wen/",
-            "photo": "/assets/photos/env-projet-menuiserie-pere-et-enfant.jpg"
+            "photo": "/assets/photos/env-menuisier-dans-l-atelier.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/env-menuiserie-industrie.jpg"
+            "photo": "/assets/photos/env-homme-inspectant-le-bois.jpg"
           },
           {
             "titre": "Des chantiers automatisés contrôlés point par point",
             "lienLibelle": "Étude de cas Alstef Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/env-photos-industrie-menuiserie-2.jpg"
+            "photo": "/assets/photos/env-menuiserie-circular-saw.jpg"
           }
         ]
       },

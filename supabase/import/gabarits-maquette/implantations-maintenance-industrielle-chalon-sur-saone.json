@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Chalon-sur-Saône",
       "titre": "Chalon-sur-Saône : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-tuyau-reseau-vert-cuves-inspection.jpg",
+      "photo": "/assets/photos/env-assemblage-carrosseries.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Chalon-sur-Saône et ses environs",
       "texte": "Nos techniciens itinérants couvrent Chalon-sur-Saône et son bassin, appuyés par le réseau national Migen.",
@@ -245,37 +245,37 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
+            "photo": "/assets/photos/il-photo-usine-ciment-mars-17-2026-1600.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-9-1600.jpg"
+            "photo": "/assets/photos/il-vue-aerienne-usine-ciment-mars-16-2026-1600.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/il-female-technician-inspects-industrial-equipmen.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-17-1600.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
+            "photo": "/assets/photos/env-scientist-in-pharmaceutical-lab.jpg"
           },
           {
             "titre": "Six mois pour remettre en état un site à risque chimique",
             "lienLibelle": "Étude de cas Suez IWT",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/menuiserie-passerelle-usine-bois.jpg"
+            "photo": "/assets/photos/tuyau-vanne-volant-conserverie.jpg"
           },
           {
             "titre": "Le préventif d’une centrale photovoltaïque en trois techniciens",
             "lienLibelle": "Étude de cas Eiffage",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/photos/il-technicien-maintenance-sur-pipeline-1600.jpg"
+            "photo": "/assets/photos/env-ouvrier-usine-metal-avec-etincelles.jpg"
           }
         ]
       },

@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Bayonne",
       "titre": "Bayonne : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-interieur-de-chantier-naval-24-mars-2026-1600.jpg",
+      "photo": "/assets/photos/env-technician-maintenance-2.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Bayonne et ses environs",
       "texte": "Nos techniciens itinérants couvrent Bayonne et son bassin, appuyés par le réseau national Migen.",
@@ -245,19 +245,19 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/il-chimie-petrochimie-panorama-nuit.jpg"
+            "photo": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg"
           },
           {
             "titre": "Six techniciens pour faire démarrer un parc machines",
             "lienLibelle": "Étude de cas Eaton",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/il-technicien-maintenance-portrait-jan-9-2026-160.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-5-2026-1600.jpg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/env-photos-industrie.jpg"
+            "photo": "/assets/photos/env-photo-industrie-chimie.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
@@ -269,13 +269,13 @@
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/il-technicien-maintenance-inspectant-equipement-j.jpg"
+            "photo": "/assets/photos/env-ouvrier-usine-metal.jpg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/il-technicien-maintenance-jan-09-2026-1600.jpg"
+            "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg"
           }
         ]
       },

@@ -162,7 +162,7 @@
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Étude de cas Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/photos/il-photo-industrie-japon-jan-9-2026-1600.jpg",
+            "photo": "/assets/photos/energie-levage-eolienne-senior.jpg",
             "logo": "/assets/clients/savoye.png"
           },
           {
@@ -170,7 +170,7 @@
             "texte": "Transferts de machines sécurisés, sans casse ni improvisation, délais tenus sans pénalité",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/il-chimie-petrochimie-panorama-nuit.jpg",
+            "photo": "/assets/photos/energie-eolien-hauteur-harnais.jpg",
             "logo": "/assets/clients/mq-127f9e03c53b.svg"
           },
           {
@@ -178,7 +178,7 @@
             "texte": "12 monteurs mécaniciens, 8 engins de levage, site livré à la date prévue",
             "lienLibelle": "Étude de cas AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/env-ouvrier-metallurgiste-avec-metal-en-fusion.jpg",
+            "photo": "/assets/photos/env-industrie-mettalique.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
@@ -186,7 +186,7 @@
             "texte": "6 techniciens mobilisés, continuité opérationnelle assurée ensuite",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/env-photos-industrie-pharmaceutique.jpg",
+            "photo": "/assets/photos/elec-armoire-pont-roulant-gilet.jpg",
             "logo": "/assets/clients/mq-70bce765c1a2.svg"
           },
           {
@@ -194,28 +194,28 @@
             "texte": "Réception, assemblage, levage, raccordements, validation à l'issue du montage",
             "lienLibelle": "Étude de cas Migen Travaux x WASHTEC",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/photos/ciment-vue-aerienne-usine.jpg",
+            "photo": "/assets/photos/env-industrie-metallique-22-sept-2026-1.jpg",
             "logo": "/assets/clients/orthus-x-washtec.svg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/il-chimie-complexe-unites-ciel-bleu.jpg",
+            "photo": "/assets/photos/il-photo-usine-ciment-mars-17-2026-1600.jpg",
             "logo": "/assets/clients/bamesa.png"
           },
           {
             "titre": "Un responsable maintenance pour traverser la transition",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/env-femme-inspectant-des-bouteilles.jpg",
+            "photo": "/assets/photos/il-photo-usine-ciment-16-mars-2026-1600.jpg",
             "logo": "/assets/clients/mq-441fc873c0d9.svg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/il-technicien-maintenance-robot-industriel-mar-16.jpg",
+            "photo": "/assets/photos/meca-moteur-palan-depose.jpg",
             "logo": "/assets/clients/salaison-du-maconnais.png"
           }
         ]
@@ -268,37 +268,37 @@
         "titre": "Technicien en résidence",
         "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/env-industrie-paysage.jpg"
+        "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
       },
       {
         "titre": "Zéro arrêt",
         "phrase": "La maintenance en abonnement, au forfait mensuel.",
         "href": "/offres/zero-arret/",
-        "photo": "/assets/photos/env-photo-industrie-2.jpg"
+        "photo": "/assets/photos/env-photos-industrie-metallique.jpg"
       },
       {
         "titre": "Arrêt technique",
         "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
         "href": "/offres/arret-technique/",
-        "photo": "/assets/photos/il-mechanic-working-in-warehouse-2.jpg"
+        "photo": "/assets/photos/il-usine-de-ciment-vue-aerienne-1600.jpg"
       },
       {
         "titre": "Full service",
         "phrase": "Toute votre maintenance, un seul partenaire.",
         "href": "/offres/full-service/",
-        "photo": "/assets/photos/il-usine-kawasaki-jan-11-2026-1600.jpg"
+        "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
       },
       {
         "titre": "Travaux industriels",
         "phrase": "Transfert, démantèlement, démontage et montage.",
         "href": "/travaux-industriels/",
-        "photo": "/assets/photos/il-tuyau-faisceau-blanc-charpente.jpg"
+        "photo": "/assets/photos/levage-montage-poteau-charpente.jpg"
       },
       {
         "titre": "Bureau d'études",
         "phrase": "Conception, retrofit et mise en conformité.",
         "href": "/offres/bureau-etudes/",
-        "photo": "/assets/photos/env-industrie-pharmaceutique.jpg"
+        "photo": "/assets/photos/il-vue-aerienne-usine-ciment-mars-16-2026-1600.jpg"
       }
     ],
     "pagesLieesTitre": "Les offres et prestations voisines"

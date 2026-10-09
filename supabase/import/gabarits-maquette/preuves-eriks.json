@@ -14,7 +14,7 @@
     ],
     "bouton": "Faire piloter mon service maintenance",
     "logo": "/assets/clients/mq-441fc873c0d9.svg",
-    "photoHero": "/assets/photos/il-technicien-maintenance-photo-13-1600.jpg",
+    "photoHero": "/assets/photos/env-menuiserie-circular-saw.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -128,7 +128,7 @@
         "valeur": "Supervision Migen, reporting à la direction industrielle"
       }
     ],
-    "photoDispositif": "/assets/photos/env-technicien-maintenance-photo.jpg",
+    "photoDispositif": "/assets/photos/il-technicien-maintenance-5.jpg",
     "resultats": [
       {
         "titre": "Zéro interruption critique",
@@ -166,25 +166,25 @@
         "surtitre": "Étude de cas",
         "titre": "OGF : la maintenance pendant l'arrêt estival",
         "href": "/preuves/ogf-arret-estival/",
-        "photo": "/assets/photos/il-tuyau-conduits-massifs-contre-plongee.jpg"
+        "photo": "/assets/photos/chaudro-presse-plieuse.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/il-technicien-maintenance-camion-1600.jpg"
+        "photo": "/assets/photos/meca-graissage-couronne-engin.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/elec-salle-cellules-ht-ronde.jpg"
+        "photo": "/assets/photos/il-portrait-of-engineer-train-inspect-the-train-s.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/il-technicien-portrait-casque-antibruit.jpg"
+        "photo": "/assets/photos/env-technician-with-robotic-arm.jpg"
       }
     ]
   }

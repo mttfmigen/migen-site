@@ -39,17 +39,17 @@
       {
         "valeur": "10 %",
         "texte": "Des techniciens retenus, l'interprétation d'un spectre vibratoire s'évalue en entretien",
-        "photo": "/assets/photos/agro-remplisseuse-cle-plate.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-photo-mar-18-2026-1600.jpg"
       },
       {
         "valeur": "8",
         "texte": "Domaines techniques couverts par une seule équipe, de la mécanique à la robotique",
-        "photo": "/assets/photos/il-elec-lampe-frontale-cablage-dense.jpg"
+        "photo": "/assets/photos/env-technician-inspecting-fiber-optics.jpg"
       },
       {
         "valeur": "4",
         "texte": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, des campagnes partout en France",
-        "photo": "/assets/photos/robot-technicienne-inspection-bras.jpg"
+        "photo": "/assets/photos/agro-remplisseuse-cle-plate.jpg"
       }
     ],
     "complementTypes": [
@@ -327,7 +327,7 @@
             "texte": "Six techniciens en permanence.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/pneu-cle-bloc-distribution.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-8-2026-1600.jpg"
           },
           {
             "titre": "Maintien d'un parc machines, équipementier automobile",
@@ -341,20 +341,20 @@
             "texte": "Depuis octobre 2024.",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/robot-multimetre-cablage-robot.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-camion-1600.jpg"
           },
           {
             "titre": "Deux techniciens intégrés en 3x8 sur les lignes liquides et poudre, agroalimentaire",
             "texte": "Site de Steenvoorde.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/il-elec-mesure-coffret-mural.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-9.jpg"
           },
           {
             "titre": "Le préventif d’une centrale photovoltaïque en trois techniciens",
             "lienLibelle": "Étude de cas Eiffage",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/photos/meca-technicienne-cle-machine.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-air-conditionne-1600.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
@@ -366,7 +366,7 @@
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/il-elec-accroupie-armoire-penombre.jpg"
+            "photo": "/assets/photos/agro-mains-vanne-sanitaire.jpg"
           }
         ]
       },

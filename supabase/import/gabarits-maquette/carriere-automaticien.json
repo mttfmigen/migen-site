@@ -20,7 +20,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/il-technicien-maintenance-4.jpg",
+        "src": "/assets/photos/il-automaticien-verifiant-photo-jan-6-2026-1600.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -333,17 +333,17 @@
           {
             "libelle": "Métiers de la maintenance",
             "href": "/carriere/",
-            "photo": "/assets/photos/il-soudure-robot-pupitre-apprentissage.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-15-1600.jpg"
           },
           {
             "libelle": "Salaire automaticien",
             "href": "/carriere/automaticien/salaire/",
-            "photo": "/assets/photos/env-technicien-maintenance-2.jpg"
+            "photo": "/assets/photos/env-inspection-ligne-production-automatique.jpg"
           },
           {
             "libelle": "Roboticien",
             "href": "/carriere/roboticien/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-13-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-jan-9-2026-1600.jpg"
           }
         ]
       }

@@ -177,7 +177,7 @@
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/env-ouvrier-usine-coupe-metal-avec-scie-circulaire.jpg",
+            "photo": "/assets/photos/il-technicien-maintenance-selectionnant-outils-ja.jpg",
             "logo": "/assets/clients/mq-89100525ef89.svg"
           },
           {
@@ -185,14 +185,14 @@
             "texte": "site proche de Paris",
             "lienLibelle": "Étude de cas FDJ : site proche de Paris",
             "lienHref": "/preuves/fdj/",
-            "photo": "/assets/photos/il-meca-ressorts-suspension-combinaison.jpg"
+            "photo": "/assets/photos/env-reparation-moteur-aeronautique.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/il-automatisme-ligne-reglage-lunettes.jpg",
+            "photo": "/assets/photos/env-mecanicien-aeronautique.jpg",
             "logo": "/assets/clients/mq-eb9461b85e59.svg"
           },
           {
@@ -200,7 +200,7 @@
             "texte": "troisième trimestre 2025",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/il-technicien-maintenance-portrait-1600.jpg",
+            "photo": "/assets/photos/env-inspection-metal-22-sept-2026.jpg",
             "logo": "/assets/clients/mq-441fc873c0d9.svg"
           },
           {
@@ -208,7 +208,7 @@
             "texte": "un technicien sur site, été 2025",
             "lienLibelle": "Étude de cas OGF : arrêt estival",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/il-elec-couloir-armoires-talkie.jpg",
+            "photo": "/assets/photos/aero-cockpit-inspection-hangar.jpg",
             "logo": "/assets/clients/ogf.png"
           },
           {
@@ -216,21 +216,21 @@
             "texte": "2025 à 2026",
             "lienLibelle": "Étude de cas VPK : maintenance de site",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/env-photo-industrie-chimie.jpg"
+            "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
           },
           {
             "titre": "Renfort des équipes de maintenance sur plusieurs sites de production, confort thermique",
             "texte": "1 à 3 techniciens, depuis octobre 2024",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-8-2026-3-1600.jpg",
+            "photo": "/assets/photos/il-technicien-maintenance-3.jpg",
             "logo": "/assets/clients/groupe-atlantic.png"
           },
           {
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
             "lienLibelle": "Autoliv",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg",
+            "photo": "/assets/photos/env-inspection-du-processus-d-embouteillage.jpg",
             "logo": "/assets/clients/mq-a4d5eb645ce5.svg"
           }
         ]

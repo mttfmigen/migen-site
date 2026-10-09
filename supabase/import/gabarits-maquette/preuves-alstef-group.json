@@ -23,7 +23,7 @@
       }
     ],
     "logo": "/assets/clients/alstef-group.webp",
-    "photoHero": "/assets/photos/robot-palettisation-tablette.jpg",
+    "photoHero": "/assets/photos/robot-palettiseur-sacs-poudre.jpg",
     "chiffres": [
       {
         "libelle": "Durée de mission",
@@ -134,7 +134,7 @@
         "valeur": "Sans avenant, tarif horaire maîtrisé"
       }
     ],
-    "photoDispositif": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg",
+    "photoDispositif": "/assets/web/sv-convoyeur.jpg",
     "resultats": [
       {
         "titre": "Les phases critiques sécurisées",
@@ -149,12 +149,7 @@
         "texte": "ALSTEF Group a absorbé la charge projet sans recruter dans la précipitation et sans déplacer ses ressources internes d'un site à l'autre."
       }
     ],
-    "complement": [
-      {
-        "titre": "La situation",
-        "texte": "ALSTEF Group gère des chantiers complexes, avec des systèmes automatisés, dans des environnements exigeants :"
-      }
-    ],
+    "complement": [],
     "besoinTitre": "Une charge chantier qui dépasse vos équipes projet ?",
     "besoinProse": [
       "Dites-nous le niveau de technicité attendu, nous vous proposons le profil qui correspond.",
@@ -183,7 +178,7 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
+        "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
       },
       {
         "surtitre": "Secteur",
@@ -195,14 +190,20 @@
         "surtitre": "Étude de cas",
         "titre": "DANONE : lignes de production",
         "href": "/preuves/danone-lignes-de-production/",
-        "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
+        "photo": "/assets/photos/robot-palettisation-tablette.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg"
+        "photo": "/assets/photos/il-mechanic-working-in-warehouse-2.jpg"
       }
     ]
-  }
+  },
+  "trous": [
+    {
+      "ligne": "ALSTEF Group gère des chantiers complexes, avec des systèmes automatisés, dans des environnements exigeants :",
+      "pourquoi": "annonce sans annoncé : la capture de la maquette rend ce libellé puis laisse l'emplacement de sa liste VIDE (son export a perdu les puces), si bien que le visiteur lisait des deux-points ouverts sur rien. La liste annoncée est rendue ailleurs sur la même page, en cartes (`objectifs`, `reponseCartes`, `resultats`), vérifiée puce par puce contre le corpus du client : aucun contenu ne disparaît. Le titre du bloc part avec, c'est déjà un h2 de la page. Porte : scripts/verifie-libelles-orphelins.mjs"
+    }
+  ]
 }

@@ -35,7 +35,7 @@
       }
     ],
     "logo": "/assets/clients/mq-d2b02ebe550d.svg",
-    "photoHero": "/assets/photos/il-silos-agricoles-exterieur.jpg",
+    "photoHero": "/assets/web/team-grind-close.jpg",
     "chiffres": [
       {
         "libelle": "Nature des travaux",
@@ -131,7 +131,7 @@
         "valeur": "Contrat tripartite"
       }
     ],
-    "photoDispositif": "/assets/photos/il-technicien-maintenance-photo-7-1600.jpg",
+    "photoDispositif": "/assets/photos/env-reparation-moteur-aeronautique.jpg",
     "resultats": [
       {
         "titre": "L'intégration dans la structure existante",
@@ -169,25 +169,25 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/env-technician-maintenance-9.jpg"
+        "photo": "/assets/photos/env-menuiserie-industrie.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "MERSEN : démarrage d'une ligne neuve",
         "href": "/preuves/mersen/",
-        "photo": "/assets/photos/il-usine-de-ciment-vue-aerienne-1600.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-selectionnant-outils-ja.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/il-industrial-plant.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-photo-15-1600.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/il-technicien-maintenance-photo-jan-8-2026-1-1600.jpg"
+        "photo": "/assets/photos/aero-percage-aile-avion.jpg"
       }
     ]
   }

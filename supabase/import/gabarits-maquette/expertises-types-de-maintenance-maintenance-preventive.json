@@ -39,7 +39,7 @@
       {
         "valeur": "+200",
         "texte": "Clients industriels accompagnés",
-        "photo": "/assets/photos/il-elec-mesure-coffret-mural.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-jan-09-2026-1600.jpg"
       },
       {
         "valeur": "10 %",
@@ -49,7 +49,7 @@
       {
         "valeur": "8",
         "texte": "Domaines techniques couverts par une seule équipe, de la mécanique à la robotique",
-        "photo": "/assets/photos/il-meca-motoreducteur-controle-gilet.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-photo-mar-18-2026-1600.jpg"
       }
     ],
     "complementTypes": [
@@ -270,21 +270,21 @@
             "texte": "Six techniciens en permanence, prise en charge réalisée en un mois.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/pneu-cle-bloc-distribution.jpg"
+            "photo": "/assets/photos/env-technicien-maintenance-2.jpg"
           },
           {
             "titre": "Préventif tenu sur un centre logistique en flux continu",
             "texte": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures, sans arrêter les flux.",
             "lienLibelle": "Étude de cas AMAZON",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-meca-intervention-accroupi-atelier.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-mar-24-2026-1600.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, automobile",
             "texte": "Tenue, depuis octobre 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-outillage-panneau-atelier-accroupi.jpg"
+            "photo": "/assets/photos/elec-mesure-multimetre-faisceau.jpg"
           },
           {
             "titre": "Renfort sur la maintenance préventive d'une centrale photovoltaïque, énergie",
@@ -298,20 +298,20 @@
             "texte": "Un technicien intégré sur les équipements critiques, été 2025.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/il-meca-controle-sous-machine-casque-jaune.jpg"
+            "photo": "/assets/photos/elec-senior-armoire-relais.jpg"
           },
           {
             "titre": "Contrat de maintenance sur un site agroalimentaire de grande échelle, Belgique",
             "texte": "Depuis octobre 2024.",
             "lienLibelle": "Étude de cas McCAIN",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-7.jpg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/il-meca-combinaison-rouge-machinerie.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-8.jpg"
           },
           {
             "titre": "Un technicien dédié pour que le parc ne décroche pas",

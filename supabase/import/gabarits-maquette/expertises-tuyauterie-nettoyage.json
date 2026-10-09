@@ -34,7 +34,7 @@
         "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "problemePhoto": "/assets/photos/agro-technicienne-raccord-clamp.jpg",
+    "problemePhoto": "/assets/photos/env-technicien-maintenance-photo.jpg",
     "complementOffre": [
       {
         "texte": "Une ligne bouchée maintenant se traite par le dépannage industriel."
@@ -186,26 +186,26 @@
             "texte": "Un à trois techniciens en présence permanente, depuis octobre 2024.",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/energie-rack-canalisations-binome.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-jan-7-2026-1600.jpg"
           },
           {
             "titre": "Parc machines hétérogène tenu en forte cadence, papier et emballage",
             "texte": "Un technicien polyvalent intégré sur site, 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/il-tuyau-vanne-manometre-reglage.jpg"
+            "photo": "/assets/photos/env-photo-industrie-chimie.jpg"
           },
           {
             "titre": "Des chantiers automatisés contrôlés point par point",
             "lienLibelle": "Étude de cas Alstef Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/il-equipement-et-pipeline-raffinerie-2026-1600.jpg"
+            "photo": "/assets/photos/env-industrie-au-crepuscule-2.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-tuyau-conduits-massifs-contre-plongee.jpg"
+            "photo": "/assets/photos/il-industrie-photo-jan-5-2026-1600.jpg"
           },
           {
             "titre": "L’intralogistique d’un grand site tenue en sous-traitance",
@@ -217,7 +217,7 @@
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/il-technicien-maintenance-sur-pipeline-1600.jpg"
+            "photo": "/assets/photos/env-ingenieurs-inspectant-site-industriel.jpg"
           }
         ]
       },

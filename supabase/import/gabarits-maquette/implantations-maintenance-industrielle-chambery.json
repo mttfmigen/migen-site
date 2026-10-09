@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Chambéry",
       "titre": "Chambéry : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/aero-reacteur-capot-combinaison.jpg",
+      "photo": "/assets/photos/il-usine-chimique-nuit-mars-09-2026-1600.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Chambéry et ses environs",
       "texte": "Nos techniciens itinérants couvrent Chambéry et son bassin, appuyés par le réseau national Migen.",
@@ -245,37 +245,37 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/env-photos-industrie-agro-alimentaire.jpg"
+            "photo": "/assets/photos/env-industrie-metallique-22-sept-2026-1.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/il-technicien-maintenance-femme-1600.jpg"
+            "photo": "/assets/photos/env-inspection-de-bois-24-sept-2026.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/env-ouvrier-industriel-meulant-metal.jpg"
+            "photo": "/assets/photos/env-oil-and-gas-petrochemical-industrial-oil-refin.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-8-1600.jpg"
+            "photo": "/assets/photos/il-female-engineer-inspecting-machinery-in-indust.jpg"
           },
           {
             "titre": "Six mois pour remettre en état un site à risque chimique",
             "lienLibelle": "Étude de cas Suez IWT",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/env-ouvrier-usine-coupe-metal-avec-scie-circulaire.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-9-2026-1600.jpg"
           },
           {
             "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
             "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/env-photos-industrie-3.jpg"
           }
         ]
       },

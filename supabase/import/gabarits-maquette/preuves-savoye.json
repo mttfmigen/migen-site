@@ -23,7 +23,7 @@
       }
     ],
     "logo": "/assets/clients/savoye.png",
-    "photoHero": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg",
+    "photoHero": "/assets/photos/metal-technicienne-bobines-acier.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -127,7 +127,7 @@
         "valeur": "Résidence sur site ou intervention ponctuelle"
       }
     ],
-    "photoDispositif": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg",
+    "photoDispositif": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg",
     "resultats": [
       {
         "titre": "Des arrêts limités",
@@ -176,19 +176,19 @@
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
         "href": "/secteurs/logistique/",
-        "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
+        "photo": "/assets/web/sv-convoyeur.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : migration d'automates en Norvège",
         "href": "/preuves/savoye-migration-automates-norvege/",
-        "photo": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg"
+        "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "AKTID : un centre logistique monté en six semaines",
         "href": "/preuves/aktid-centre-logistique/",
-        "photo": "/assets/photos/robot-palettisation-tablette.jpg"
+        "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
       }
     ]
   }

@@ -35,7 +35,7 @@
       }
     ],
     "logo": "/assets/clients/danone-bledina.png",
-    "photoHero": "/assets/photos/agro-atelier-inox-plan-large.jpg",
+    "photoHero": "/assets/photos/agro-panneau-vannes-nep.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -142,7 +142,7 @@
         "valeur": "Jusqu'à 3 techniciens, 1 actuellement"
       }
     ],
-    "photoDispositif": "/assets/photos/tuyau-vanne-volant-conserverie.jpg",
+    "photoDispositif": "/assets/photos/agro-technicienne-raccord-clamp.jpg",
     "resultats": [
       {
         "titre": "Des techniciens qualifiés et autonomes",
@@ -161,9 +161,6 @@
       {
         "titre": "Le résultat",
         "texte": "La continuité de service est assurée sur les deux familles de lignes, sans création de poste ni alourdissement de la structure interne du client."
-      },
-      {
-        "texte": "Ce que Blédina retire de la collaboration :"
       }
     ],
     "besoinTitre": "Votre maintenance tient la nuit avec l'effectif du jour ?",
@@ -189,7 +186,7 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
+        "photo": "/assets/photos/agro-ihm-ligne-conditionnement-senior.jpg"
       },
       {
         "surtitre": "Offre",
@@ -201,14 +198,20 @@
         "surtitre": "Secteur",
         "titre": "Maintenance agroalimentaire",
         "href": "/secteurs/agroalimentaire/",
-        "photo": "/assets/photos/il-agro-silos-contre-plongee-passerelles.jpg"
+        "photo": "/assets/photos/agro-remplisseuse-cle-plate.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "McCAIN : Belgique",
         "href": "/preuves/mccain-belgique/",
-        "photo": "/assets/photos/agro-panneau-vannes-nep.jpg"
+        "photo": "/assets/photos/env-inspection-du-processus-d-embouteillage.jpg"
       }
     ]
-  }
+  },
+  "trous": [
+    {
+      "ligne": "Ce que Blédina retire de la collaboration :",
+      "pourquoi": "annonce sans annoncé : la capture de la maquette rend ce libellé puis laisse l'emplacement de sa liste VIDE (son export a perdu les puces), si bien que le visiteur lisait des deux-points ouverts sur rien. La liste annoncée est rendue ailleurs sur la même page, en cartes (`objectifs`, `reponseCartes`, `resultats`), vérifiée puce par puce contre le corpus du client : aucun contenu ne disparaît. Le titre du bloc part avec, c'est déjà un h2 de la page. Porte : scripts/verifie-libelles-orphelins.mjs"
+    }
+  ]
 }

@@ -27,7 +27,7 @@
       }
     ],
     "logo": "/assets/clients/stellantis.png",
-    "photoHero": "/assets/photos/env-maintenance-worker-repairing-robot.jpg",
+    "photoHero": "/assets/photos/env-industrie-automobile.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -139,7 +139,7 @@
         "valeur": "Maintenance préventive et curative"
       }
     ],
-    "photoDispositif": "/assets/photos/env-technician-maintenance-robotic-arm.jpg",
+    "photoDispositif": "/assets/photos/robot-cellules-grillagees.jpg",
     "resultats": [
       {
         "titre": "Les parcs machines de plusieurs sites sont pris en charge",
@@ -187,25 +187,25 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/env-inspection-bras-robotiques.jpg"
+        "photo": "/assets/photos/robot-atelier-ferrage-plongee.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/il-engineer-check-and-control-automation-robot-ar.jpg"
+        "photo": "/assets/photos/env-robotic-arms-welding-car-frames.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrie automobile",
         "href": "/secteurs/automobile/",
-        "photo": "/assets/photos/env-maintenance-automaticien.jpg"
+        "photo": "/assets/photos/env-assemblage-carrosseries.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "JTEKT : maintenance des installations",
         "href": "/preuves/jtekt/",
-        "photo": "/assets/photos/env-inspection-robotique-22-sept-2026.jpg"
+        "photo": "/assets/photos/env-car-manufacturing-engine-assembly-on-automated.jpg"
       }
     ]
   }

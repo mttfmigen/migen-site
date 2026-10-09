@@ -40,7 +40,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Metz",
       "titre": "Metz : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-portrait-of-engineer-train-inspect-the-train-s-2.jpg",
+      "photo": "/assets/photos/env-inspection-metal-22-sept-2026-1.jpg",
       "badge": "Hub Migen",
       "nom": "Hub Metz",
       "texte": "Une équipe de techniciens installée à Metz, au plus près de vos sites, appuyée par le réseau national Migen.",
@@ -211,35 +211,35 @@
             "texte": "Dispositif transposé d'un premier centre logistique en continu.",
             "lienLibelle": "Étude de cas AMAZON",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/il-robot-bras-orange-reglage-souriante.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-17-1600.jpg"
           },
           {
             "titre": "18 à 25 techniciens sur plusieurs sites du Grand Est depuis juin 2023",
             "texte": "Compétences apportées pour la transition vers le véhicule électrique.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-grand-est/",
-            "photo": "/assets/photos/il-technicien-portrait-casque-bleu-atelier.jpg"
+            "photo": "/assets/photos/env-emballage-de-biscuits-en-usine.jpg"
           },
           {
             "titre": "Un technicien intégré à temps plein sur un parc de centres d'usinage, de presses et de machines à commande numérique",
             "texte": "Fabrication de pièces de précision, 2025.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/energie-releve-pupitre-salle-commande.jpg"
+            "photo": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg"
           },
           {
             "titre": "Six techniciens sur l'installation et la mise en production d'un nouveau parc machine",
             "texte": "Site automobile, à partir de janvier 2023.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/env-photos-industrie-pharmaceutique.jpg"
+            "photo": "/assets/photos/env-robotic-arms-welding-car-frames.jpg"
           },
           {
             "titre": "Techniciens intégrés en 2025 pour sécuriser la maintenance des installations d'un équipementier automobile",
             "texte": "Réorganisation industrielle en cours.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/env-photos-industrie-aeronautique.jpg"
+            "photo": "/assets/photos/env-industrie-metallique-2.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
@@ -251,13 +251,13 @@
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/il-technicien-maintenance-avec-cle-1600.jpg"
+            "photo": "/assets/photos/env-industrie-mettalique-22-sept-2026.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
             "lienLibelle": "Étude de cas Veepee",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/il-metal-siderurgie-bord-d-eau-couchant.jpg"
+            "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
           }
         ]
       },

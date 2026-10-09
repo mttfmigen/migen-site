@@ -20,7 +20,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/il-elec-couloir-armoires-talkie.jpg",
+        "src": "/assets/photos/env-technician-maintenance-5.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -390,12 +390,12 @@
           {
             "libelle": "Électromécanicien",
             "href": "/carriere/electromecanicien/",
-            "photo": "/assets/photos/il-elec-multimetre-boitier-accroupie.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-17-1600.jpg"
           },
           {
             "libelle": "Compétences électromécanicien",
             "href": "/carriere/electromecanicien/competences/",
-            "photo": "/assets/photos/elec-armoire-pont-roulant-gilet.jpg"
+            "photo": "/assets/photos/elec-main-disjoncteurs-borniers.jpg"
           }
         ]
       }

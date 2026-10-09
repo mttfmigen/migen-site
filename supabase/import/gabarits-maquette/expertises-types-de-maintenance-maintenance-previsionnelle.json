@@ -39,17 +39,17 @@
       {
         "valeur": "10 %",
         "texte": "Des techniciens retenus, chaque technicien est évalué en entretien technique et comportemental",
-        "photo": "/assets/photos/elec-senior-armoire-relais.jpg"
+        "photo": "/assets/photos/robot-technicienne-inspection-bras.jpg"
       },
       {
         "valeur": "+ 120",
         "texte": "Collaborateurs, depuis quatre agences, partout en France",
-        "photo": "/assets/photos/robot-technicienne-inspection-bras.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-photo-jan-7-2026-2-1600.jpg"
       },
       {
         "valeur": "8",
         "texte": "Domaines techniques couverts par une seule équipe, de la mécanique à la robotique",
-        "photo": "/assets/photos/il-automatisme-coffret-rouge-accroupi.jpg"
+        "photo": "/assets/photos/elec-multimetre-armoire-automatisme.jpg"
       }
     ],
     "complementTypes": [
@@ -168,7 +168,7 @@
         }
       }
     ],
-    "problemePhoto": "/assets/photos/elec-multimetre-armoire-automatisme.jpg",
+    "problemePhoto": "/assets/photos/chimie-piquage-manometre-gants.jpg",
     "complementOffre": [
       {
         "texte": "Pour une panne en cours, voir le dépannage industriel."
@@ -299,7 +299,7 @@
             "texte": "Six techniciens en permanence, prise en charge réalisée en un mois.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/il-elec-ouverture-coffret-gilet-orange.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-8-2026-1600.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, automobile",
@@ -313,40 +313,40 @@
             "texte": "Un responsable maintenance intégré sur site, T3 2025.",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/il-meca-moteur-lourd-controle-gilet.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-jan-09-2026-1600.jpg"
           },
           {
             "titre": "Maintenance des centres d'usinage, presses et machines à commande numérique, automobile",
             "texte": "Un technicien intégré à temps plein.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/il-elec-multimetre-boitier-accroupie.jpg"
+            "photo": "/assets/photos/meca-technicienne-cle-machine.jpg"
           },
           {
             "titre": "Renfort de 3 à 5 techniciens sur plusieurs usines en France, automobile",
             "texte": "Depuis septembre 2024, accompagnement d'une montée en cadence.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/il-meca-bloc-moteur-halle-gilet.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-8-1600.jpg"
           },
           {
             "titre": "Préventif tenu pendant l'arrêt estival, services funéraires",
             "texte": "Un technicien intégré sur les équipements critiques, été 2025.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/il-depannage-lampe-torche-recherche-panne.jpg"
+            "photo": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-meca-cle-plate-machine-verte.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance.jpg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/agro-mains-vanne-sanitaire.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-6.jpg"
           }
         ]
       },

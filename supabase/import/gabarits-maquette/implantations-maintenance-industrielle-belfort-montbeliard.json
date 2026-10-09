@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Belfort-Montbéliard",
       "titre": "Belfort-Montbéliard : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/env-technician-maintenance-4.jpg",
+      "photo": "/assets/photos/il-photo-usine-ciment-16-mars-2026-1600.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Belfort-Montbéliard et ses environs",
       "texte": "Nos techniciens itinérants couvrent Belfort-Montbéliard et son bassin, appuyés par le réseau national Migen.",
@@ -231,13 +231,13 @@
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-ciment-tour-beton-grues-vue-haute.jpg"
+            "photo": "/assets/photos/meca-moteur-palan-depose.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/env-photos-industrie-menuiserie-3.jpg"
+            "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
           },
           {
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
@@ -249,19 +249,19 @@
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/env-technician-maintenance-11.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-12.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/photos/env-emballage-de-biscuits-en-usine.jpg"
+            "photo": "/assets/photos/env-photo-industrie-pharmaceutique.jpg"
           },
           {
             "titre": "Centres d’usinage et presses tenus dans le Grand Est",
             "lienLibelle": "Étude de cas Voit",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-7-1600.jpg"
+            "photo": "/assets/photos/env-techniciens-semiconducteurs.jpg"
           }
         ]
       },

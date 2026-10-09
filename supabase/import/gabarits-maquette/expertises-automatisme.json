@@ -33,7 +33,7 @@
         "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "problemePhoto": "/assets/photos/il-automaticien-utilisant-un-bras-robotique-1600.jpg",
+    "problemePhoto": "/assets/photos/il-technicien-maintenance-photo-9-1600.jpg",
     "complementOffre": [
       {
         "texte": "Une ligne figée maintenant se traite par le dépannage industriel."
@@ -171,49 +171,49 @@
             "titre": "Démarrage d'une ligne de production neuve, près de Lyon",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/il-elec-carte-electronique-depose.jpg",
+            "photo": "/assets/photos/il-technicien-maintenance-inspectant-equipement-j.jpg",
             "texte": "Un automaticien spécialisé SIEMENS dédié à temps plein, fiabilisation des installations neuves et suivi continu sur toute la phase de mise en route, T2 et T3 2025."
           },
           {
             "titre": "Renfort continu sur des lignes automatisées, agroalimentaire",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/il-automaticien-dans-usine-moderne-jan-7-2026-160.jpg",
+            "photo": "/assets/photos/elec-senior-armoire-relais.jpg",
             "texte": "Deux techniciens intégrés en 3x8, maîtrise des automates Schneider et des environnements automatisés du site."
           },
           {
             "titre": "Maintenance des équipements critiques d'un équipementier automobile",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/il-elec-rack-cablage-penombre.jpg",
+            "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg",
             "texte": "Techniciens intégrés au quotidien sur systèmes automatisés, lignes de production et convoyeurs, depuis 2025."
           },
           {
             "titre": "Contrôle de chantier sur des projets d'automatisation logistique",
             "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/il-tuyau-pupitre-local-antibruit.jpg",
+            "photo": "/assets/photos/il-technicien-maintenance-photo-mar-18-2026-1600.jpg",
             "texte": "Plusieurs intervenants intégrés aux équipes, aéroports, logistique et industrie, 2025 à 2026."
           },
           {
             "titre": "Maintien opérationnel de convoyeurs, trieurs et systèmes de packaging automatisés, logistique et transport",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/elec-multimetre-armoire-automatisme.jpg",
+            "photo": "/assets/photos/env-inspection-bras-robotiques.jpg",
             "texte": "Deux techniciens en poste, surveillance continue des équipements critiques."
           },
           {
             "titre": "La GMAO planifie, nos techniciens interviennent",
             "lienLibelle": "Étude de cas DimoMaint",
             "lienHref": "/preuves/dimomaint/",
-            "photo": "/assets/photos/elec-mains-bornier-relais.jpg",
+            "photo": "/assets/photos/il-technicien-maintenance-robot-soudure-mar-24-20.jpg",
             "texte": ""
           },
           {
             "titre": "Six techniciens pour faire démarrer un parc machines",
             "lienLibelle": "Étude de cas Eaton",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/il-engineer-check-and-control-automation-robot-ar.jpg",
+            "photo": "/assets/photos/env-technician-maintenance-robotic-arm.jpg",
             "texte": ""
           }
         ]

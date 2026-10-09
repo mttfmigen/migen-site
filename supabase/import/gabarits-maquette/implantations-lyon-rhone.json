@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Rhône",
       "titre": "Rhône : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-technicien-maintenance-photo-23-1600.jpg",
+      "photo": "/assets/photos/env-photos-industrie-menuiserie-3.jpg",
       "badge": "Rattaché au hub Lyon",
       "nom": "Rhône, couvert par le hub Lyon",
       "texte": "Les techniciens du hub Lyon interviennent à Rhône et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -237,46 +237,46 @@
             "texte": "Depuis septembre 2023, prise en charge complète réalisée en un mois.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/il-metal-siderurgie-bord-d-eau-couchant.jpg"
+            "photo": "/assets/photos/env-scientist-in-pharmaceutical-lab.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS à temps plein pour le démarrage d'une ligne neuve près de Lyon",
             "texte": "Deuxième et troisième trimestres 2025.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-mar-25-2026-1600.jpg"
+            "photo": "/assets/photos/il-photo-usine-ciment-mars-17-2026-1600.jpg"
           },
           {
             "titre": "Un électromécanicien habilité risque chimique mobilisé 6 mois",
             "texte": "Remise en état d'un site de traitement des eaux industrielles.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/il-checking-heavy-equipment-at-modern-plant.jpg"
+            "photo": "/assets/photos/env-deux-hommes-au-travail-en-menuiserie.jpg"
           },
           {
             "titre": "Un polyvalent intégré sur un parc papier et emballage aux contraintes techniques variées",
             "texte": "2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/il-technician-using-control-panel-in-industrial-f.jpg"
+            "photo": "/assets/photos/env-ouvrier-usine-metal.jpg"
           },
           {
             "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
             "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/photos/env-ouvrier-usine-metal.jpg"
+            "photo": "/assets/photos/env-photos-industrie-2.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-chimie-colonnes-raffinerie-nuit.jpg"
+            "photo": "/assets/photos/il-detail-raffinerie-nuit-mars-17-2026-1600.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/env-travailleuse-usine-agroalimentaire.jpg"
+            "photo": "/assets/photos/env-industrie-chimie.jpg"
           }
         ]
       },

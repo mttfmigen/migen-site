@@ -102,19 +102,19 @@
         "titre": "Tuyauterie",
         "texte": "Lignes et supports en zone réglementée.",
         "href": "/expertises/tuyauterie/",
-        "photo": "/assets/photos/il-meca-rampe-injection-moteur-bleu.jpg"
+        "photo": "/assets/photos/energie-releve-pupitre-salle-commande.jpg"
       },
       {
         "titre": "Soudure",
         "texte": "Soudures qualifiées, contrôlées avant remise en service.",
         "href": "/expertises/soudure/",
-        "photo": "/assets/photos/energie-rack-canalisations-binome.jpg"
+        "photo": "/assets/photos/elec-salle-cellules-ht-ronde.jpg"
       },
       {
         "titre": "Électrique",
         "texte": "Consignations et interventions sous procédure.",
         "href": "/expertises/electrique/",
-        "photo": "/assets/photos/il-energie-pupitre-instruments-portrait.jpg"
+        "photo": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg"
       }
     ],
     "sections": [
@@ -300,14 +300,14 @@
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/energie-bride-mat-eolienne.jpg"
+            "photo": "/assets/photos/energie-rotor-turbine-vapeur.jpg"
           },
           {
             "titre": "Trois techniciens en renfort sur la maintenance préventive d'une centrale photovoltaïque, énergie",
             "texte": "septembre à novembre 2024, plus de six semaines",
             "lienLibelle": "Étude de cas EIFFAGE : partenariat",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/photos/il-chimie-petrochimie-panorama-nuit.jpg"
+            "photo": "/assets/photos/elec-binome-coffret-chaufferie.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne de production neuve, matériaux",
@@ -321,32 +321,32 @@
             "texte": "environnement thermique sévère, depuis octobre 2023",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/elec-binome-coffret-chaufferie.jpg"
+            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg"
           },
           {
             "titre": "Renfort d'équipes de maintenance sur plusieurs sites de production",
             "texte": "depuis octobre 2024",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/il-energie-gros-moteur-vert-antibruit.jpg"
+            "photo": "/assets/photos/energie-rack-canalisations-binome.jpg"
           },
           {
             "titre": "Un été entier sans trou dans la maintenance",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg"
+            "photo": "/assets/photos/il-photo-industrie-raffinerie-petrole-mars-2026-1.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/elec-tgbt-technicienne-tablette.jpg"
+            "photo": "/assets/photos/soudure-corps-vanne-forge.jpg"
           },
           {
             "titre": "Six techniciens pour faire démarrer un parc machines",
             "lienLibelle": "Étude de cas Eaton",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/energie-releve-pupitre-salle-commande.jpg"
+            "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg"
           }
         ]
       },

@@ -33,7 +33,7 @@
         "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "problemePhoto": "/assets/photos/env-bras-robotiques-soudant-cadres-auto.jpg",
+    "problemePhoto": "/assets/photos/il-technicien-maintenance-en-securite-mar-23-2026-2.jpg",
     "complementOffre": [
       {
         "texte": "Un parc entier à remettre sous suivi ? Un robot immobilisé maintenant se traite par le dépannage industriel."
@@ -170,14 +170,14 @@
             "titre": "Maintenance des équipements critiques d'un équipementier automobile",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/env-technician-maintenance-robot-arm.jpg",
+            "photo": "/assets/photos/env-inspection-robotique-22-sept-2026.jpg",
             "texte": "Techniciens intégrés au quotidien sur systèmes automatisés, lignes et convoyeurs, avec des roboticiens ABB et Fanuc parmi les spécialités mobilisables, depuis 2025."
           },
           {
             "titre": "Contrôle de chantier sur des projets d'automatisation logistique",
             "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/robot-palettisation-tablette.jpg",
+            "photo": "/assets/photos/il-technicien-maintenance-jan-9-2026-1600.jpg",
             "texte": "Plusieurs intervenants intégrés aux équipes, roboticiens ABB et Fanuc parmi les spécialités engagées, 2025 à 2026."
           },
           {
@@ -191,14 +191,14 @@
             "titre": "Maintien opérationnel de convoyeurs, trieurs et packaging automatisés, logistique et transport",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/il-robot-bras-rouge-serrage-hauteur.jpg",
+            "photo": "/assets/photos/robot-cobot-technicienne.jpg",
             "texte": "Deux techniciens en poste, robotique parmi les domaines couverts en propre."
           },
           {
             "titre": "Maintenance sous contrat d'un parc déployé partout en France, réalité virtuelle",
             "lienLibelle": "Étude de cas TIMESCOPE",
             "lienHref": "/preuves/timescope/",
-            "photo": "/assets/photos/il-robot-bras-bleu-intervention-gants.jpg",
+            "photo": "/assets/photos/env-inspection-robotique-21-sept-2026.jpg",
             "texte": "Périmètre technique complet, robotique comprise, depuis février 2024."
           },
           {

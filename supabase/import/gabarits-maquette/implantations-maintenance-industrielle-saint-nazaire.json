@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Saint-Nazaire",
       "titre": "Saint-Nazaire : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/chimie-technicienne-skid-vanne.jpg",
+      "photo": "/assets/photos/env-technician-maintenance-4.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Saint-Nazaire et ses environs",
       "texte": "Nos techniciens itinérants couvrent Saint-Nazaire et son bassin, appuyés par le réseau national Migen.",
@@ -251,31 +251,31 @@
             "titre": "Six techniciens pour faire démarrer un parc machines",
             "lienLibelle": "Étude de cas Eaton",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/il-technicien-maintenance-8.jpg"
+            "photo": "/assets/photos/env-food-production-line-with-workers-in-protectiv.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/env-industrie-pharmaceutique.jpg"
+            "photo": "/assets/photos/il-vue-aerienne-usine-ciment-mars-16-2026-1600.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-6-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-7-2026-1-1600.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/env-ingenieurs-inspectant-site-industriel.jpg"
+            "photo": "/assets/photos/il-photo-usine-ciment-16-mars-2026-1600.jpg"
           },
           {
             "titre": "Six mois pour remettre en état un site à risque chimique",
             "lienLibelle": "Étude de cas Suez IWT",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/il-auto-sous-caisse-poids-lourd.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-9-2026-1600.jpg"
           }
         ]
       },

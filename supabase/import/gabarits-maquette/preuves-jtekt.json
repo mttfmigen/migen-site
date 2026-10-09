@@ -27,7 +27,7 @@
       }
     ],
     "logo": "/assets/clients/mq-e93a6ad5abf7.svg",
-    "photoHero": "/assets/photos/env-maintenance-automatique-robotique.jpg",
+    "photoHero": "/assets/photos/il-technicien-maintenance-camion-1600.jpg",
     "chiffres": [
       {
         "libelle": "Nature des travaux",
@@ -138,7 +138,7 @@
         "valeur": "Techniciens intégrés aux équipes de maintenance"
       }
     ],
-    "photoDispositif": "/assets/photos/env-technician-maintenance-robot-arm.jpg",
+    "photoDispositif": "/assets/photos/env-technician-maintenance-11.jpg",
     "resultats": [
       {
         "titre": "La fiabilité du parc machine progresse",
@@ -155,19 +155,12 @@
     ],
     "complement": [
       {
-        "titre": "La situation",
-        "texte": "Les objectifs posés par JTEKT :"
-      },
-      {
         "titre": "Ce que nous avons mis en place",
         "texte": "Le périmètre technique couvre les systèmes automatisés, les lignes de production, les convoyeurs et les autres équipements complexes du parc. Les interventions portent sur la surveillance, la maintenance curative et la gestion des interventions."
       },
       {
         "titre": "Le résultat",
         "texte": "L'intégration sur site permet d'éviter les interruptions non planifiées et de tenir la continuité des opérations de production."
-      },
-      {
-        "texte": "Ce que JTEKT retire de la collaboration :"
       }
     ],
     "besoinTitre": "Vos équipements critiques tombent avant que quiconque ait vu la dérive ?",
@@ -194,26 +187,36 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/robot-soudure-points-caisse.jpg"
+        "photo": "/assets/photos/env-technician-maintenance-10.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/il-technicien-maintenance-robotique-mar-18-2026-1.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-jan-9-2026-1-1600.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrie automobile",
         "href": "/secteurs/automobile/",
-        "photo": "/assets/photos/il-automaticien-ajustant-bras-robotique-1600.jpg"
+        "photo": "/assets/photos/robot-cellule-soudure-inspection.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "AUTOLIV : maintien d'un site",
         "href": "/preuves/autoliv/",
-        "photo": "/assets/photos/il-female-engineers-working-on-robotics-in-indust.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-photo-4-1600.jpg"
       }
     ]
-  }
+  },
+  "trous": [
+    {
+      "ligne": "Les objectifs posés par JTEKT :",
+      "pourquoi": "annonce sans annoncé : la capture de la maquette rend ce libellé puis laisse l'emplacement de sa liste VIDE (son export a perdu les puces), si bien que le visiteur lisait des deux-points ouverts sur rien. La liste annoncée est rendue ailleurs sur la même page, en cartes (`objectifs`, `reponseCartes`, `resultats`), vérifiée puce par puce contre le corpus du client : aucun contenu ne disparaît. Le titre du bloc part avec, c'est déjà un h2 de la page. Porte : scripts/verifie-libelles-orphelins.mjs"
+    },
+    {
+      "ligne": "Ce que JTEKT retire de la collaboration :",
+      "pourquoi": "annonce sans annoncé : la capture de la maquette rend ce libellé puis laisse l'emplacement de sa liste VIDE (son export a perdu les puces), si bien que le visiteur lisait des deux-points ouverts sur rien. La liste annoncée est rendue ailleurs sur la même page, en cartes (`objectifs`, `reponseCartes`, `resultats`), vérifiée puce par puce contre le corpus du client : aucun contenu ne disparaît. Le titre du bloc part avec, c'est déjà un h2 de la page. Porte : scripts/verifie-libelles-orphelins.mjs"
+    }
+  ]
 }

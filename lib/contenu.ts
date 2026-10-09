@@ -129,7 +129,7 @@ interface RelaisGabarit {
 // Rechargé le 07/10 : /bureau-etudes/bureau-etude-electronique/ porté contre sa capture (19 sections, rail de marques).
 // Rechargé le 07/10 : /bureau-etudes/bureau-etude-electronique/, phrase de la carte phare du maillage.
 // Rechargé le 07/10 : /bureau-etudes/mise-en-conformite-machine/ porté contre sa capture (19 sections, rail de marques, 5 trous déclarés).
-// relais relu : 2026-10-09T15:42:32.069Z
+// relais relu : 2026-10-09T19:24:16.379Z
 const CONTENUS_SUR_DISQUE: ReadonlyMap<string, RelaisGabarit> = (() => {
   const dossier = join(process.cwd(), "supabase", "import", "gabarits-maquette");
   const par = new Map<string, RelaisGabarit>();

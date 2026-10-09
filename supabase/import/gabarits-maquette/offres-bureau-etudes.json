@@ -219,7 +219,7 @@
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/photos/il-automaticien-ajustant-bras-robotique-1600.jpg",
+            "photo": "/assets/photos/il-automaticien-utilisant-un-bras-robotique-1600.jpg",
             "logo": "/assets/clients/savoye.png"
           },
           {
@@ -227,7 +227,7 @@
             "texte": "Pilotage complet de la construction d'un site industriel de recherche et développement près de Paris, coordination multi-métiers et jalons tenus.",
             "lienLibelle": "Étude de cas Migen Travaux x ECOCEM : nouveau site",
             "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/photos/env-inspection-robotique-21-sept-2026.jpg",
+            "photo": "/assets/photos/il-automation-female-engineer-with-tablet-for-pro.jpg",
             "logo": "/assets/clients/orthus-x-ecocem.png"
           },
           {
@@ -235,7 +235,7 @@
             "texte": "Lyon, depuis février 2024. Diagnostic technique puis plusieurs solutions chiffrées, arbitrées par le client selon son budget.",
             "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/il-automaticien-utilisant-un-bras-robotique-1600.jpg",
+            "photo": "/assets/photos/elec-schema-lampe-frontale.jpg",
             "logo": "/assets/clients/joint-lyonnais.png"
           },
           {
@@ -243,7 +243,7 @@
             "texte": "Janvier 2023. Six techniciens multidisciplinaires pour l'installation et la mise en production d'un parc machines neuf.",
             "lienLibelle": "Étude de cas EATON : mise en production",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/env-robotic-arms-welding-car-frames.jpg",
+            "photo": "/assets/photos/chaudro-technicienne-plan-etabli.jpg",
             "logo": "/assets/clients/mq-70bce765c1a2.svg"
           },
           {
@@ -258,21 +258,21 @@
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/il-automatisme-tablette-armoire-rouge-robot.jpg",
+            "photo": "/assets/photos/il-concept-usine-intelligente-2026-1600.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
             "titre": "Des chantiers automatisés contrôlés point par point",
             "lienLibelle": "Alstef Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/il-automatisme-armoire-robot-bleu-fond.jpg",
+            "photo": "/assets/photos/il-engineer-check-and-control-automation-robot-ar.jpg",
             "logo": "/assets/clients/alstef.webp"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/env-car-manufacturing-engine-assembly-on-automated.jpg",
+            "photo": "/assets/photos/il-automaticien-verifiant-photo-jan-6-2026-1600.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           }
         ]

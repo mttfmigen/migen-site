@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Troyes",
       "titre": "Troyes : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-chimie-complexe-vapeur-jour.jpg",
+      "photo": "/assets/photos/agro-atelier-inox-plan-large.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Troyes et ses environs",
       "texte": "Nos techniciens itinérants couvrent Troyes et son bassin, appuyés par le réseau national Migen.",
@@ -250,52 +250,52 @@
             "texte": ", reprise complète en un mois.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-8-2026-1600.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-12-1600.jpg"
           },
           {
             "titre": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures, sur un centre logistique en continu",
             "texte": ", depuis septembre 2022.",
             "lienLibelle": "Étude de cas AMAZON",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-technicienne-mecanique-photo-avril-2026-1600.jpg"
+            "photo": "/assets/photos/levage-montage-poteau-charpente.jpg"
           },
           {
             "titre": "2 techniciens intégrés en 3x8 sur des lignes agroalimentaires à haute cadence",
             "texte": ", liquides et conditionnement poudre.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/il-chimie-unites-colonnes-ciel-degage.jpg"
+            "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg"
           },
           {
             "titre": "Un technicien polyvalent sur un parc machines hétérogène en papier et emballage",
             "texte": ", 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/elec-mains-bornier-relais.jpg"
+            "photo": "/assets/photos/env-structures-industrielles-au-coucher-du-soleil.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/web/team-electric.jpg"
+            "photo": "/assets/photos/env-photos-industrie-menuiserie-2.jpg"
           },
           {
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Étude de cas Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/photos/soudure-soudeuse-masque-releve.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-mar-19-2026-1-160.jpg"
           },
           {
             "titre": "Des chantiers automatisés contrôlés point par point",
             "lienLibelle": "Étude de cas Alstef Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/il-automation-female-engineer-with-tablet-for-pro.jpg"
+            "photo": "/assets/photos/il-female-engineer-inspecting-machinery-in-indust.jpg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/env-technicien-maintenance-serveur.jpg"
+            "photo": "/assets/photos/env-ouvrier-metallurgiste-avec-metal-en-fusion.jpg"
           }
         ]
       },

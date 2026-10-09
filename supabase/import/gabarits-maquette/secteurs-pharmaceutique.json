@@ -102,19 +102,19 @@
         "titre": "Pneumatique",
         "texte": "Air comprimé propre et actionneurs des lignes de conditionnement.",
         "href": "/expertises/pneumatique/",
-        "photo": "/assets/photos/chimie-piquage-manometre-gants.jpg"
+        "photo": "/assets/photos/pharma-isolateur-salle-propre.jpg"
       },
       {
         "titre": "Mécanique",
         "texte": "Remplacements documentés pièce par pièce, dans le respect des zones.",
         "href": "/expertises/mecanique/",
-        "photo": "/assets/photos/pharma-technicienne-machine-comprimes.jpg"
+        "photo": "/assets/photos/env-technicien-en-costume-de-nettoyage-industrie-p.jpg"
       },
       {
         "titre": "Électrique",
         "texte": "Consignations et interventions en environnement contrôlé.",
         "href": "/expertises/electrique/",
-        "photo": "/assets/photos/pharma-cuves-process-passerelle.jpg"
+        "photo": "/assets/photos/env-femme-en-costume-sterile-industrie-pharmaceuti.jpg"
       }
     ],
     "marquesFamille": "agro",
@@ -293,53 +293,53 @@
             "texte": "site de Steenvoorde",
             "lienLibelle": "Étude de cas DANONE : lignes de production",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/pharma-isolateur-salle-propre.jpg"
+            "photo": "/assets/photos/env-industrie-pharmaceutique.jpg"
           },
           {
             "titre": "Électromécanicien habilité risque chimique sur une remise en état de site, traitement des eaux industrielles",
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg"
+            "photo": "/assets/photos/env-femme-en-usine-moderne.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve, matériaux",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/soudure-tig-virole-inox.jpg"
+            "photo": "/assets/photos/env-techniciens-semiconducteurs.jpg"
           },
           {
             "titre": "Technicien affecté en continu à la fiabilité d'équipements de production en forte activité",
             "texte": "site proche de Paris",
             "lienLibelle": "Étude de cas FDJ : site proche de Paris",
             "lienHref": "/preuves/fdj/",
-            "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
+            "photo": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg"
           },
           {
             "titre": "Renfort de maintenance sur un site agroalimentaire de grande échelle",
             "texte": "depuis octobre 2024",
             "lienLibelle": "Étude de cas McCAIN : Belgique",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/agro-panneau-vannes-nep.jpg"
+            "photo": "/assets/photos/chimie-piquage-manometre-gants.jpg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg"
+            "photo": "/assets/photos/env-scientist-in-pharmaceutical-lab.jpg"
           },
           {
             "titre": "Monter, déplacer, renforcer, chantier après chantier",
             "lienLibelle": "Étude de cas Soprema",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/env-industrie-metallique-21-sept-2026.jpg"
+            "photo": "/assets/photos/pharma-cuves-process-passerelle.jpg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/agro-atelier-inox-plan-large.jpg"
+            "photo": "/assets/photos/pharma-technicienne-machine-comprimes.jpg"
           }
         ]
       },

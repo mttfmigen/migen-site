@@ -20,7 +20,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/il-outillage-panneau-cles-technicienne.jpg",
+        "src": "/assets/photos/elec-armoire-pont-roulant-gilet.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -397,12 +397,12 @@
           {
             "libelle": "Électromécanicien",
             "href": "/carriere/electromecanicien/",
-            "photo": "/assets/photos/il-auto-sous-vehicule-tout-terrain.jpg"
+            "photo": "/assets/photos/elec-multimetre-armoire-automatisme.jpg"
           },
           {
             "libelle": "Salaire électromécanicien",
             "href": "/carriere/electromecanicien/salaire/",
-            "photo": "/assets/photos/il-robot-bras-bleu-intervention-gants.jpg"
+            "photo": "/assets/photos/automatisme-armoire-jeune-tablette.jpg"
           }
         ]
       }

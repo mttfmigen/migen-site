@@ -35,7 +35,7 @@
       }
     ],
     "logo": "/assets/clients/mq-ed5f02d3ab11.svg",
-    "photoHero": "/assets/photos/env-industrie-automobile.jpg",
+    "photoHero": "/assets/photos/env-assemblage-chassis-automobile.jpg",
     "chiffres": [
       {
         "libelle": "Nature des travaux",
@@ -127,7 +127,7 @@
         "valeur": "Préventif"
       }
     ],
-    "photoDispositif": "/assets/photos/env-inspection-ligne-production-automatique.jpg",
+    "photoDispositif": "/assets/photos/env-technician-maintenance-11.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -147,25 +147,25 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/il-automaticien-dans-usine-moderne-jan-7-2026-160.jpg"
+        "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/il-automaticien-verifiant-photo-jan-6-2026-1600.jpg"
+        "photo": "/assets/photos/env-car-bodies-assembly-line.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrie automobile",
         "href": "/secteurs/automobile/",
-        "photo": "/assets/photos/il-automaticien-utilisant-un-bras-robotique-1600.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-jan-9-2026-1-1600.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "AUTOLIV : un technicien dédié pour que le parc ne décroche pas",
         "href": "/preuves/autoliv/",
-        "photo": "/assets/photos/il-robot-cellule-grillagee-automaticien.jpg"
+        "photo": "/assets/photos/robot-soudure-points-caisse.jpg"
       }
     ]
   }
