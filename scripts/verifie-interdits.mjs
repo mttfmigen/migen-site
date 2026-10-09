@@ -52,6 +52,12 @@ const INTERDITS = [
   // compte, « dont plus de 80 réguliers », qui est faux deux fois.
   [/\bclients\s+r[ée]guliers\b/u, "« +200 clients », sans jamais préciser « réguliers »"],
   [/\b80\s+r[ée]guliers\b/u, "« +200 clients », sans jamais préciser « réguliers »"],
+  /* Les deux formulations que la maquette écrit RÉELLEMENT, et que le motif
+     ci-dessus ne couvrait pas : « dont plus de 80 en contrat régulier » et
+     « dont plus de 80 de manière régulière ». Le trou se voyait dès qu'on
+     cherchait dans la maquette plutôt que dans le site. Il n'y a rien à
+     corriger aujourd'hui, c'est un garde-fou contre un re-portage. */
+  [/\b80\s+(?:en\s+contrat|de\s+mani[èe]re)\s+r[ée]guli[èe]re?\b/u, "« +200 clients », sans jamais préciser « réguliers »"],
   ["5 agences", "quatre agences : Lyon siège, Montréal, Dubaï, Madrid"],
   ["Cinq agences", "quatre agences"],
   ["cinq agences", "quatre agences"],
