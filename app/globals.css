@@ -357,29 +357,29 @@ details[open] .g3-plus {
 }
 
 /* ------------------------------------------------------------- rails sans barre */
-/* 09/10, demande de Mehdi : « il y a une barre de scroll grise qui fait pas
-   joli, si tu peux la retirer de tout le site ». La règle ne visait que
-   `.mg-autorail` ; les autres rails horizontaux (bandes de prestations, rails
-   de cartes, tableaux larges) montraient la leur. Elle couvre maintenant tout
-   ce qui défile horizontalement DANS le site, sans toucher au défilement
-   vertical de la page, qui doit rester visible. */
-.mg-autorail,
-.mg-site [style*="overflow-x:auto"],
-.mg-site [style*="overflow-x: auto"],
-.mg-site [style*="overflow-x:scroll"],
-.mg-site [style*="overflow-x: scroll"],
-.mg-site [class*="rail"],
-.mg-site [class*="defile"] {
+/* 09/10, Mehdi : « il y a une barre de scroll grise qui fait pas joli, si tu
+   peux la retirer de tout le site ». Première version limitée à `.mg-site` :
+   elle ne mordait pas, les rails n'étant pas tous dans ce conteneur. La règle
+   est donc INCONDITIONNELLE sur tout ce qui défile horizontalement, et sur lui
+   seul : le défilement vertical de la page garde sa barre, sans quoi on ne
+   saurait plus où on en est dans une page de 14 000 px. */
+[style*="overflow-x:auto"],
+[style*="overflow-x: auto"],
+[style*="overflow-x:scroll"],
+[style*="overflow-x: scroll"],
+[class*="marquee"],
+[class*="autorail"],
+.mg-track {
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
 }
-.mg-autorail::-webkit-scrollbar,
-.mg-site [style*="overflow-x:auto"]::-webkit-scrollbar,
-.mg-site [style*="overflow-x: auto"]::-webkit-scrollbar,
-.mg-site [style*="overflow-x:scroll"]::-webkit-scrollbar,
-.mg-site [style*="overflow-x: scroll"]::-webkit-scrollbar,
-.mg-site [class*="rail"]::-webkit-scrollbar,
-.mg-site [class*="defile"]::-webkit-scrollbar {
+[style*="overflow-x:auto"]::-webkit-scrollbar,
+[style*="overflow-x: auto"]::-webkit-scrollbar,
+[style*="overflow-x:scroll"]::-webkit-scrollbar,
+[style*="overflow-x: scroll"]::-webkit-scrollbar,
+[class*="marquee"]::-webkit-scrollbar,
+[class*="autorail"]::-webkit-scrollbar,
+.mg-track::-webkit-scrollbar {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
