@@ -14,15 +14,24 @@ Pour le vérifier, une commande :
 
 ```json etat-migration
 {
-  "depot": { "branche": "phase-2-gabarits", "tete": "363e937" },
-  "pages": { "declarees": 248, "fiches": 246 },
+  "depot": {
+    "branche": "phase-2-gabarits",
+    "tete": "db336ad"
+  },
+  "pages": {
+    "declarees": 248,
+    "fiches": 246
+  },
   "photos": {
     "emplacements": 1942,
-    "distinctes": 558,
+    "distinctes": 426,
     "banque": 517,
     "pagesQuiRepetent": 0
   },
-  "defauts": { "annoncesOrphelines": 0, "couplesTitreSuite": 108 },
+  "defauts": {
+    "annoncesOrphelines": 0,
+    "couplesTitreSuite": 108
+  },
   "ouverts": {
     "fichesOrthus": 30,
     "phrasesPrixRetirees": 14,
@@ -238,3 +247,68 @@ L'emplacement le plus destructeur est `offre/ReferencesOffre.tsx:298`, ratio
    le portrait dans les cadres larges, ou le garder en réglant son
    `objectPosition` sur le haut de l'image.
 4. **Relancer la répartition** et vérifier au navigateur.
+
+## Le mobile, à partir de la vraie maquette mobile
+
+Mehdi, 09/10 : « faut que tu attaques le mode mobile avec la vraie maquette
+mobile », puis « ça doit pas toucher le formulaire ».
+
+**La maquette mobile existe, et elle était dans le colis depuis le 07/10** :
+`design_handoff_migen_site/maquette/MigenMobile.dc.html`, documentée au
+paragraphe « Mobile » du README du colis. C'est un modèle Vue qui ne s'exécute
+pas seul, donc on la porte depuis sa source, pas depuis son rendu.
+
+Elle tient en quatre motifs. Deux étaient déjà portés : le **tiroir de
+navigation** (`components/site/TiroirMobile.tsx`) et la **barre d'action basse**
+(`BarreActionMobile.tsx`), tous deux câblés dans `app/layout.tsx`.
+
+### Les 24 défauts mesurés de la mise en page, ramenés à zéro
+
+`node scripts/verifie-mobile.mjs` rendait 24 problèmes sur 320, 375 et 768 px.
+
+- **Les cibles tactiles du pied de page**, 24 par page donc sur les 248 : les
+  entrées du maillage SEO faisaient 19 px de haut contre les 24 px du critère
+  2.5.8 de la WCAG 2.2. Remplissage de 3 px compensé par une marge négative,
+  la recette déjà payée sur le fil d'Ariane. Premier correctif posé sur la
+  mauvaise classe, la mesure l'a dit aussitôt.
+- **Le champ de recherche des ressources** à 15 px : Safari iOS zoome la page à
+  l'appui sous 16 px. Passé à 16 px SOUS 880 px seulement, le bureau garde la
+  valeur de la maquette. La police a dû quitter l'attribut `style` en ligne,
+  sans quoi le raccourci `font` battait la classe.
+
+### Le parcours par le problème, porté
+
+C'est la première phrase de la maquette : « Un parcours guidé par le problème,
+pas par le menu ». `components/site/accueil/ParcoursMobile.tsx`, sous le héros,
+**sur téléphone seulement**. Six problèmes, six réponses, six pages réelles du
+site. Copie dans `lib/parcours-mobile.ts`.
+
+Quatre décisions de portage, toutes assumées :
+1. **Un accordéon `<details name="parcours-mobile">`**, pas une machine à états.
+   Le « une seule réponse à la fois » de la maquette vient du navigateur, avec
+   le clavier et l'annonce « développé / réduit », sans une ligne d'état.
+   Vérifié à l'écran : ouvrir la troisième referme la première.
+2. **Tout le texte est dans le HTML servi.** La maquette retire le contenu
+   replié du DOM (`sc-if`), ce qui contredit son README (« sans perdre le texte
+   utile au référencement »).
+3. **Le formulaire n'est pas touché**, consigne de Mehdi. Le parcours s'arrête
+   à un lien vers la page de l'offre. Corrigé après l'avoir vu à l'écran :
+   « Décrire mon besoin » s'affichait DEUX fois, dans la carte et dans la barre
+   basse qui ne quitte jamais l'écran.
+4. **Trois retraits de copie imposés par le contrat**, déclarés un par un en
+   commentaire dans `lib/parcours-mobile.ts` : « sous 2 à 3 semaines » (délai
+   chiffré), « au prix mensuel fixe » (décision « sur devis » du 09/10) et
+   « l'intérim tourne » (le contrat proscrit le statut). `verifie-interdits` a
+   attrapé le troisième, que j'avais laissé passer.
+
+Porte : `bun scripts/verifie-parcours-mobile.mjs`, prouvée sur ses trois
+défauts (lien mort, accordéon non exclusif, parcours débordant sur le bureau).
+
+### Reste du mobile, non fait
+
+`components/site/blocs/SectionPliableMobile.tsx` est écrit mais **pas branché**.
+Le brancher demande de refondre les en-têtes de section des gabarits existants,
+qui portent déjà leur `h2` : les envelopper dupliquerait le titre. Le gabarit
+Ville est le plus concerné, 74 pages de 13 000 caractères, mais sa porte
+`verifie-implantations.tsx` est déjà rouge pour trois causes antérieures. À
+reprendre une fois cette porte remise d'aplomb.

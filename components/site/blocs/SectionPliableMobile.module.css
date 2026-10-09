@@ -1,13 +1,9 @@
 /*
- * Le repli n'est QUE visuel, et c'est tout l'intérêt.
+ * Le repli est un comportement de TÉLÉPHONE, et le contenu reste dans le HTML.
  *
- * La maquette mobile du client retire le contenu replié du DOM (`sc-if`). Son
- * README demande pourtant des blocs « qui se déplient pour rester courts SANS
- * PERDRE LE TEXTE UTILE AU RÉFÉRENCEMENT » : les deux ne tiennent pas ensemble.
- * Le contenu est donc toujours rendu, dans le HTML servi, et c'est la feuille
- * de style qui le replie sous 880px. Google lit le texte, les contrôles du
- * projet qui mesurent le rendu des 248 pages le lisent aussi, et le visiteur
- * mobile voit une page courte.
+ * Le bloc est rendu `open` par le serveur : Google lit le texte entier, et les
+ * contrôles du projet qui mesurent le rendu des 248 pages le trouvent encore.
+ * C'est un effet client qui le referme, sous 880 px seulement.
  */
 
 .section {
@@ -16,80 +12,89 @@
   margin-top: 4px;
 }
 
-/* L'en-tête n'est un bouton que sur mobile : au-dessus de 880px il n'y a rien
-   à replier, et un bouton qui ne fait rien est un piège au clavier. */
 .bascule {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  /* Le triangle du navigateur, retiré des deux moteurs : la maquette pose son
+     propre chevron à droite. */
+  list-style: none;
+  /* 24 px de cible tactile, WCAG 2.5.8, compensés pour ne rien déplacer. */
+  padding-block: 3px;
+  margin-block: -3px;
+}
+
+.bascule::-webkit-details-marker {
   display: none;
 }
 
+.kicker {
+  display: block;
+  font: 600 11px/1 var(--ft);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--acc);
+}
+
+.titre {
+  display: block;
+  font: 600 16px/1.25 var(--ft);
+  letter-spacing: -0.025em;
+  margin-top: 4px;
+}
+
+.chevron {
+  flex: 0 0 auto;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--ink2);
+  transition: transform 0.2s;
+}
+
+.section[open] .chevron {
+  transform: rotate(90deg);
+}
+
+/* Le résumé ne paraît qu'une fois le bloc replié, donc jamais sur bureau. */
 .resume {
   display: none;
 }
 
+.corps {
+  margin-top: 12px;
+}
+
 @media (max-width: 880px) {
-  .bascule {
-    display: flex;
-    width: 100%;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 0;
-    border: 0;
-    background: none;
-    text-align: left;
-    cursor: pointer;
-    color: inherit;
-    /* 24px de cible tactile, WCAG 2.5.8. Le remplissage est compensé par une
-       marge négative pour ne pas déplacer le titre, piège déjà payé sur le fil
-       d'Ariane le 09/10. */
-    padding-block: 3px;
-    margin-block: -3px;
-  }
-
-  .kicker {
-    display: block;
-    font: 600 11px/1 var(--ft);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--acc);
-  }
-
-  .titre {
-    display: block;
-    font: 600 16px/1.25 var(--ft);
-    letter-spacing: -0.025em;
-    margin-top: 4px;
-  }
-
-  .chevron {
-    flex: 0 0 auto;
-    font-size: 22px;
-    line-height: 1;
-    color: var(--ink2);
-    transition: transform 0.2s;
-  }
-
-  .section[data-ouvert="true"] .chevron {
-    transform: rotate(90deg);
-  }
-
-  .section[data-ouvert="false"] .resume {
+  .section:not([open]) .resume {
     display: block;
     font: 400 13.5px/1.6 var(--fb);
     color: var(--ink2);
     margin-top: 8px;
   }
+}
 
-  .section[data-ouvert="false"] .corps {
-    display: none;
+/*
+ * SUR BUREAU, RIEN NE SE REPLIE, et c'est une règle et non un espoir : si un
+ * script ou un visiteur referme le bloc à cette largeur, le contenu reste
+ * visible. Le chevron disparaît pour que l'en-tête se lise comme un titre
+ * ordinaire, conformément à la maquette de bureau.
+ */
+@media (min-width: 881px) {
+  .section:not([open]) > *:not(summary) {
+    display: revert;
   }
 
-  .section[data-ouvert="true"] .corps {
-    margin-top: 12px;
+  .bascule {
+    cursor: default;
+  }
+
+  .chevron {
+    display: none;
   }
 }
 
-/* Sans animation pour qui en demande moins. */
 @media (prefers-reduced-motion: reduce) {
   .chevron {
     transition: none;

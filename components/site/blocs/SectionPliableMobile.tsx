@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import s from "./SectionPliableMobile.module.css";
 
@@ -10,30 +10,38 @@ export interface SectionPliableMobileProps {
   titre: string;
   /** Une phrase montrée À LA PLACE du contenu quand le bloc est replié. */
   resume?: string;
-  /** Ouvert d'emblée, pour le premier bloc d'une page par exemple. */
-  ouvertParDefaut?: boolean;
+  /** Reste déplié même sur téléphone, pour le premier bloc d'une page. */
+  toujoursOuvert?: boolean;
   children: React.ReactNode;
 }
 
 /**
- * Un bloc de page qui se replie sur mobile, motif « Blocs communs (pliables) »
- * de la maquette `MigenMobile.dc.html`.
+ * Un bloc de page qui se replie sur téléphone, motif « Blocs communs
+ * (pliables) » de `MigenMobile.dc.html`.
  *
  * POURQUOI IL EXISTE. Le README du colis de passation : « les blocs se
  * déplient pour rester courts sans perdre le texte utile au référencement ».
- * Une page de ce site fait souvent huit à quinze sections ; au téléphone elles
- * s'enchaînent en un mur, et l'appel à l'action se retrouve à plusieurs écrans
+ * Une page de ce site porte souvent huit à quinze sections ; au téléphone
+ * elles s'enchaînent en un mur, et l'appel à l'action tombe à plusieurs écrans
  * de défilement.
  *
- * LE REPLI EST VISUEL, JAMAIS STRUCTUREL, et c'est le seul écart assumé à la
- * maquette. Elle retire le contenu replié du DOM (`sc-if`), ce qui contredit
- * son propre README : un texte absent du HTML n'est pas « conservé pour le
- * référencement ». Ici le contenu est TOUJOURS rendu et c'est la feuille de
- * style qui le replie sous 880px. Trois conséquences voulues :
- *  - Google reçoit le texte entier, comme sur bureau ;
- *  - les contrôles du projet qui mesurent le rendu des 248 pages continuent de
- *    le trouver, sans quoi la moitié d'entre eux tomberaient ;
- *  - rien ne change au-dessus de 880px, où l'en-tête n'est même pas un bouton.
+ * TROIS DÉCISIONS DE PORTAGE, et chacune a une raison.
+ *
+ * 1. C'EST UN `<details>` NATIF, pas un état React. Le clavier, le rôle et
+ *    l'annonce « développé / réduit » viennent du navigateur, et personne ne
+ *    les réécrit à moitié. C'est aussi ce que le projet emploie déjà pour
+ *    « Lire la suite » du gabarit générique.
+ *
+ * 2. IL EST RENDU OUVERT, et c'est un repli au chargement, pas à la
+ *    construction. Le HTML servi porte donc `open` : Google reçoit le texte
+ *    entier, et les contrôles qui mesurent le rendu des 248 pages continuent
+ *    de le trouver. Un effet le referme après montage, et SEULEMENT sous
+ *    880 px. Il n'y a aucun écart entre le rendu serveur et le premier rendu
+ *    client, donc aucune erreur d'hydratation.
+ *
+ * 3. LA MAQUETTE, ELLE, RETIRE LE CONTENU REPLIÉ DU DOM (`sc-if`), ce qui
+ *    contredit son propre README : un texte absent du HTML n'est pas
+ *    « conservé pour le référencement ». Écart assumé et déclaré.
  *
  * Porte : `scripts/verifie-blocs-pliables.mjs`.
  */
@@ -41,25 +49,23 @@ export default function SectionPliableMobile({
   kicker,
   titre,
   resume,
-  ouvertParDefaut = false,
+  toujoursOuvert = false,
   children,
 }: SectionPliableMobileProps) {
-  const [ouvert, setOuvert] = useState(ouvertParDefaut);
-  const idCorps = useId();
+  const bloc = useRef<HTMLDetailsElement>(null);
+
+  useEffect(() => {
+    if (toujoursOuvert) return;
+    const element = bloc.current;
+    if (!element) return;
+    /* Le repli n'a lieu qu'au chargement : si le visiteur a déjà ouvert le
+       bloc, un changement de largeur ne doit pas le lui refermer au nez. */
+    if (window.matchMedia("(max-width: 880px)").matches) element.open = false;
+  }, [toujoursOuvert]);
 
   return (
-    <section
-      className={s.section}
-      data-pliable-mobile=""
-      data-ouvert={ouvert ? "true" : "false"}
-    >
-      <button
-        type="button"
-        className={s.bascule}
-        aria-expanded={ouvert}
-        aria-controls={idCorps}
-        onClick={() => setOuvert((avant) => !avant)}
-      >
+    <details ref={bloc} open className={s.section} data-pliable-mobile="">
+      <summary className={s.bascule}>
         <span>
           {kicker ? <span className={s.kicker}>{kicker}</span> : null}
           <span className={s.titre}>{titre}</span>
@@ -67,11 +73,9 @@ export default function SectionPliableMobile({
         <span aria-hidden="true" className={s.chevron}>
           &rsaquo;
         </span>
-      </button>
+      </summary>
       {resume ? <p className={s.resume}>{resume}</p> : null}
-      <div id={idCorps} className={s.corps}>
-        {children}
-      </div>
-    </section>
+      <div className={s.corps}>{children}</div>
+    </details>
   );
 }

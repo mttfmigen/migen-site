@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import ParcoursMobile from "@/components/site/accueil/ParcoursMobile";
 import AvantApresBascule from "@/components/site/accueil/AvantApresBascule";
 import BandeauVerbe from "@/components/site/accueil/BandeauVerbe";
 import BentoBesoins from "@/components/site/accueil/BentoBesoins";
@@ -70,6 +71,12 @@ export default function Accueil() {
     <div className="mg-site">
       <main style={{ paddingTop: "96px" }}>
         <Hero />
+        {/* LE PARCOURS PAR LE PROBLÈME, juste sous le héros et SUR TÉLÉPHONE
+            SEULEMENT. C'est l'ordre de la maquette mobile du colis de
+            passation : le visiteur dit ce qui bloque avant qu'on lui nomme une
+            offre. Sur bureau le composant ne s'affiche pas, la grille d'offres
+            reste l'entrée en matière. */}
+        <ParcoursMobile />
         <GrilleOffres />
         <MarqueeClients />
         <CertificationsRse />
