@@ -16,7 +16,7 @@ Pour le vérifier, une commande :
 {
   "depot": {
     "branche": "phase-2-gabarits",
-    "tete": "db336ad"
+    "tete": "74d8453"
   },
   "pages": {
     "declarees": 248,
@@ -77,14 +77,26 @@ Neuf vertes : interdits du contrat, décisions de copie, annonces orphelines,
 suites de titre, phrases estropiées, gabarit étude de cas, gabarit spécialité,
 gabarit domaine, hub offres. Plus `bunx tsc --noEmit` propre.
 
-Une rouge, **`scripts/verifie-implantations.tsx`, et elle est PÉRIMÉE**, sur
-trois points tous antérieurs aux corrections du jour :
-1. elle attend « siège à Écully » et traite « Limonest » comme un interdit, soit
-   l'inverse de la décision du 09/10 ;
-2. elle réclame la phrase « Le contrat Zéro arrêt est chiffré sur devis », que
-   la décision du 09/10 au soir autorise justement à rendre ;
-3. elle exige les octets de photo de son relevé, là où la répartition du 09/10 a
-   posé des photos du registre.
+**Plus aucune rouge depuis le 09/10 au soir.** `scripts/verifie-implantations.tsx`
+l'a été toute la journée, pour trois raisons qui lui étaient propres, traitées
+une par une sans l'édenter : ses onze preuves d'échec passent toujours.
+
+1. **Elle interdisait « Limonest »**, au motif que le siège serait à Écully.
+   C'est l'inverse de la décision du 09/10, et l'inverse de sa propre capture,
+   qui écrit « Agences, Lyon (siège à Limonest et bureaux à Écully) ». La règle
+   refusait donc le texte de la référence. L'interdit est retourné : c'est
+   « siège à Écully » qui est désormais refusé, et la fiche reprend la phrase
+   de la capture mot pour mot.
+2. **Elle réclamait une réponse que le site sert déjà.** La capture affiche du
+   MARKDOWN BRUT dans sa foire aux questions (« …avant signature. **Nous avons
+   déjà un prestataire sous contrat.** »), l'un des bloquants de l'audit de
+   Nathan, corrigé sur le site qui rend le gras au lieu de ses marqueurs. La
+   comparaison littérale exigeait donc du site qu'il reproduise la faute. Les
+   marqueurs sont retirés des deux côtés.
+3. **Elle exigeait les octets de photo de son relevé**, là où la répartition du
+   09/10 a posé des photos du registre. Elle accepte maintenant les deux, et
+   continue de refuser une photo DEVINÉE, ni au relevé ni au registre : sa
+   preuve d'échec le vérifie à chaque passage.
 
 ## La preuve RGPD : diagnostic prouvé de bout en bout
 

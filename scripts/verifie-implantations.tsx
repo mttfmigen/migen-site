@@ -65,7 +65,21 @@ const entites = (t: string, nbsp: string) =>
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&amp;/g, "&");
-const normalise = (t: string) => t.replace(/[  ]/g, " ").replace(/[’‘]/g, "'").replace(/\s+/g, " ").trim();
+/**
+ * LES ASTÉRISQUES DE MARKDOWN SONT RETIRÉES DES DEUX CÔTÉS, et c'est une
+ * correction du 09/10. La capture de cette page affiche du markdown BRUT dans
+ * sa foire aux questions : « …avant signature. **Nous avons déjà un
+ * prestataire sous contrat.** Nous démarrons alors… ». C'est l'un des
+ * bloquants relevés par l'audit de Nathan Jorez, corrigé sur le site, qui rend
+ * le gras au lieu de montrer ses marqueurs.
+ *
+ * La comparaison littérale exigeait donc du site qu'il reproduise la faute :
+ * elle rendait « absent du rendu » sur une réponse pourtant servie mot pour
+ * mot. Les marqueurs partent des deux côtés, et seul le texte est comparé.
+ */
+const sansMarqueursMarkdown = (t: string) => t.replace(/\*\*(.+?)\*\*/gu, "$1").replace(/(?<![\w*])\*(?![\s*])(.+?)(?<![\s*])\*(?![\w*])/gu, "$1");
+const normalise = (t: string) =>
+  sansMarqueursMarkdown(t.replace(/[  ]/g, " ").replace(/[’‘]/g, "'")).replace(/\s+/g, " ").trim();
 const morceaux = (html: string) => html.replace(/<(script|style)\b[\s\S]*?<\/\1>/g, " ").split(/<[^>]+>/);
 const noeuds = (html: string) => morceaux(html).map((t) => normalise(entites(t, " "))).filter(Boolean);
 const litteraux = (html: string) =>
@@ -98,7 +112,14 @@ const INTERDITS: [RegExp, string][] = [
   [/régie|intérim|mise à disposition|sans engagement|clé en main|sur mesure|\blevier|concrètement|notamment|incontournable|découvrez/iu, "vocabulaire proscrit"],
   [/\b(?:5|cinq) agences/iu, "quatre agences"],
   [/\b(?:clients|80)\s+r[ée]guliers\b/iu, "« +200 clients », jamais « réguliers »"],
-  [/Limonest/u, "le siège est à Écully"],
+  /* PLUS D'INTERDIT SUR « Limonest », ET C'EST UNE CORRECTION DU 09/10.
+     Cette porte refusait le mot, au motif que le siège serait à Écully. La
+     décision de Mehdi du 09/10 dit l'inverse, « le siège est à Limonest,
+     l'agence est à Écully », et elle REVIENT à la maquette : la capture de
+     cette page écrit « Agences, Lyon (siège à Limonest et bureaux à Écully) ».
+     La règle interdisait donc le texte de la référence. C'est l'inverse qui
+     est devenu l'interdit, juste en dessous. */
+  [/si[èe]ge\s+(?:social\s+)?[àa]\s+[ÉE]cully/iu, "le siège est à Limonest, Écully est l'agence (décision du 09/10)"],
   [/postuler sur Teamtailor/iu, "« postuler sur Teamtailor »"],
 ];
 
@@ -228,7 +249,24 @@ function controle(page: Page, htmlBrut: string, css = CSS): string[] {
 
   const preuves = page.contenu.sections?.find((x) => x.type === "preuves");
   const photos = preuves?.type === "preuves" ? preuves.preuves.map((x) => x.photo) : [];
-  if (photos.join() !== PHOTOS_REFERENCES.join()) e.push(`photos des références [${photos.join(", ")}] au lieu du relevé`);
+  /* LES PHOTOS : LE RELEVÉ DE LA MAQUETTE, OU LE REGISTRE SOUS LICENCE.
+     Correction du 09/10, la même que celle déjà posée sur les gabarits preuve,
+     spécialité, domaine, ville et secteur. La répartition du 09/10 a remplacé
+     les photos de calage de la maquette par des photos du registre : exiger le
+     relevé à l'octet près revenait à exiger le défaut que cette répartition
+     répare. Ce qui reste refusé, et c'est tout l'objet, c'est une photo
+     DEVINÉE : un chemin qui n'est ni au relevé ni au registre. La preuve
+     d'échec « une photo devinée » pose justement `/assets/web/x-tech-portrait.jpg`,
+     qui n'est dans aucun des deux. */
+  const auRegistre = new Set(
+    (JSON.parse(readFileSync("public/assets/photos/registre.json", "utf8")) as { fichier: string }[]).map(
+      (p) => `/assets/photos/${p.fichier}`,
+    ),
+  );
+  const devinees = photos.filter((p) => !PHOTOS_REFERENCES.includes(p) && !auRegistre.has(p));
+  if (devinees.length > 0) {
+    e.push(`photos des références devinées, ni au relevé de la maquette ni au registre : [${devinees.join(", ")}]`);
+  }
   for (const photo of JSON.stringify(page.contenu).match(/"\/assets\/[^"]+"/g) ?? [])
     if (!existsSync(`public${photo.slice(1, -1)}`)) e.push(`photo absente de public/ : ${photo}`);
 
@@ -251,7 +289,7 @@ const ALTERATIONS: [string, Page, RegExp, Retouche?][] = [
   ["« Nos villes » retiré", altere((p) => delete p.contenu.villes), /absent du rendu : « Sept hubs/],
   ["une phrase inventée", altere((p) => (p.contenu.chapeau += " Nos techniciens sont les meilleurs.")), /texte rendu absent de la capture/],
   ["la bande de chiffres de l'ancien dessin", altere((p) => (p.contenu.chiffres = [{ valeur: "4", libelle: "agences" }, { valeur: "1 h", libelle: "pour un premier rappel" }])), /« \+200 » est dans la capture/],
-  ["le siège rendu tel que la maquette l'écrit, sans sa décision", altere((p) => (p.contenu.chiffres![0].libelle = "Agences, Lyon (siège à Limonest et bureaux à Écully), Montréal, Dubaï, Madrid")), /interdit rendu \(le siège/],
+  ["le siège déplacé à Écully, contre la décision du 09/10", altere((p) => (p.contenu.chiffres![0].libelle = "Agences, Lyon (siège à Écully), Montréal, Dubaï, Madrid")), /interdit rendu \(le siège est à Limonest/],
   ["« candidats » remis là où la décision dit « techniciens »", altere((p) => (p.contenu = JSON.parse(JSON.stringify(p.contenu).replaceAll("techniciens retenus", "candidats retenus")))), /texte rendu absent de la capture/],
   ["un faux trou", altere((p) => p.trous.push({ ligne: "Hub", pourquoi: "essai" })), /trou déclaré mais rendu/],
   ["un lien inventé", altere((p) => (p.contenu.villes!.hubs[0].href = "/implantations/villeurbanne/")), /lien absent de la capture/],

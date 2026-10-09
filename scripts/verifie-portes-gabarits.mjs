@@ -11,12 +11,21 @@
  * déclarée rouge qui passe au vert est un rapport périmé, et c'est une faute
  * aussi : elle signifie que le document continue d'annoncer un problème résolu.
  *
- * LA SEULE ROUGE ATTENDUE est `scripts/verifie-implantations.tsx`, périmée sur
- * trois points mesurés le 09/10, tous antérieurs aux corrections du jour :
- * elle attend « siège à Écully » là où la décision du 09/10 remet le siège à
- * Limonest ; elle réclame la phrase « chiffré sur devis » que la décision du
- * 09/10 au soir autorise justement à rendre ; elle exige les octets de photo de
- * son relevé là où la répartition du 09/10 a posé des photos du registre.
+ * PLUS AUCUNE ROUGE depuis le 09/10 au soir. `scripts/verifie-implantations.tsx`
+ * l'a été toute la journée, pour trois raisons qui lui étaient propres et que
+ * la correction a traitées une par une :
+ *  - elle INTERDISAIT « Limonest » au motif que le siège serait à Écully, soit
+ *    l'inverse de la décision du 09/10, et l'inverse de sa propre capture.
+ *    L'interdit a été retourné : c'est « siège à Écully » qui est refusé ;
+ *  - elle réclamait la réponse « chiffré sur devis » comme absente du rendu
+ *    alors que le site la sert mot pour mot. La capture, elle, affiche du
+ *    MARKDOWN BRUT (« **Nous avons déjà un prestataire…** »), l'un des
+ *    bloquants de l'audit, corrigé sur le site : la comparaison exigeait donc
+ *    la faute. Les marqueurs sont désormais retirés des deux côtés ;
+ *  - elle exigeait les octets de photo de son relevé là où la répartition du
+ *    09/10 a posé des photos du registre. Elle accepte les deux, et continue
+ *    de refuser une photo devinée, ni au relevé ni au registre.
+ * Ses onze preuves d'échec passent toujours : la porte n'a pas été édentée.
  */
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
@@ -37,7 +46,7 @@ const PORTES = [
   ["gabarit spécialité", ["bun", ["components/site/expertises/specialite/verification-specialite.tsx"]], "verte"],
   ["gabarit domaine", ["bun", ["components/site/expertises/domaine/verification-domaine.tsx"]], "verte"],
   ["hub offres", ["bun", ["components/site/offres/verification-offres.tsx"]], "verte"],
-  ["implantations", ["bun", ["scripts/verifie-implantations.tsx"]], "rouge"],
+  ["implantations", ["bun", ["scripts/verifie-implantations.tsx"]], "verte"],
 ];
 
 if (LISTE_SEULE) {
