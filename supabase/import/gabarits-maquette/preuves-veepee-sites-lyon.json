@@ -35,7 +35,7 @@
       }
     ],
     "logo": "/assets/clients/mq-ff81dfbb55c7.svg",
-    "photoHero": "/assets/photos/meca-cle-bride-carter.jpg",
+    "photoHero": "/assets/web/sv-convoyeur.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -184,7 +184,7 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg"
+        "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg"
       },
       {
         "surtitre": "Secteur",
@@ -202,7 +202,7 @@
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg"
+        "photo": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg"
       }
     ]
   }

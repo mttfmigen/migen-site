@@ -219,7 +219,7 @@
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/photos/pneu-pince-axe-lineaire.jpg",
+            "photo": "/assets/photos/il-automatisme-tablette-armoire-rouge-robot.jpg",
             "logo": "/assets/clients/savoye.png"
           },
           {
@@ -227,7 +227,7 @@
             "texte": "Pilotage complet de la construction d'un site industriel de recherche et développement près de Paris, coordination multi-métiers et jalons tenus.",
             "lienLibelle": "Étude de cas Migen Travaux x ECOCEM : nouveau site",
             "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/photos/nucleaire-salle-commande-centrale.jpg",
+            "photo": "/assets/photos/il-elec-baie-cablage-faisceaux.jpg",
             "logo": "/assets/clients/orthus-x-ecocem.png"
           },
           {
@@ -235,7 +235,7 @@
             "texte": "Lyon, depuis février 2024. Diagnostic technique puis plusieurs solutions chiffrées, arbitrées par le client selon son budget.",
             "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg",
+            "photo": "/assets/photos/nucleaire-salle-commande-centrale.jpg",
             "logo": "/assets/clients/joint-lyonnais.png"
           },
           {
@@ -243,7 +243,7 @@
             "texte": "Janvier 2023. Six techniciens multidisciplinaires pour l'installation et la mise en production d'un parc machines neuf.",
             "lienLibelle": "Étude de cas EATON : mise en production",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/elec-porte-armoire-voyants-sectionneurs.jpg",
+            "photo": "/assets/photos/il-soudure-robot-torche-operateur-orange.jpg",
             "logo": "/assets/clients/mq-70bce765c1a2.svg"
           },
           {
@@ -251,28 +251,28 @@
             "texte": "Montage des portiques de lavage selon les standards du constructeur, réception, levage et raccordements, partout en France.",
             "lienLibelle": "Étude de cas Migen Travaux x WASHTEC : installation de stations",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/photos/elec-binome-coffret-chaufferie.jpg",
+            "photo": "/assets/photos/pneu-pince-axe-lineaire.jpg",
             "logo": "/assets/clients/orthus-x-washtec.svg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/elec-schema-lampe-frontale.jpg",
+            "photo": "/assets/photos/il-robot-ingenieure-tablette-bras-orange.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
             "titre": "Des chantiers automatisés contrôlés point par point",
             "lienLibelle": "Alstef Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/elec-senior-armoire-relais.jpg",
+            "photo": "/assets/photos/il-automatisme-armoire-robot-bleu-fond.jpg",
             "logo": "/assets/clients/alstef.webp"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg",
+            "photo": "/assets/photos/il-robot-bras-blanc-vue-rapprochee.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           }
         ]

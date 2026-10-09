@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Calais",
       "titre": "Calais : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg",
+      "photo": "/assets/photos/pharma-isolateur-salle-propre.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Calais et ses environs",
       "texte": "Nos techniciens itinérants couvrent Calais et son bassin, appuyés par le réseau national Migen.",
@@ -245,13 +245,13 @@
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/web/sv-portrait.jpg"
+            "photo": "/assets/photos/il-energie-salle-commande-tableau-bleu.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/robot-palettisation-tablette.jpg"
+            "photo": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
@@ -269,13 +269,13 @@
             "titre": "Des chantiers automatisés contrôlés point par point",
             "lienLibelle": "Étude de cas Alstef Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/automatisme-camera-vision-convoyeur.jpg"
+            "photo": "/assets/web/sv-portrait.jpg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/robot-cellules-grillagees.jpg"
+            "photo": "/assets/photos/il-equipe-bogie-halle-ferroviaire.jpg"
           }
         ]
       },

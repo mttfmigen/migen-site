@@ -33,7 +33,7 @@
         "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "problemePhoto": "/assets/photos/agro-ihm-ligne-conditionnement-senior.jpg",
+    "problemePhoto": "/assets/photos/il-robot-prehenseur-ventouses-controle.jpg",
     "complementOffre": [
       {
         "texte": "Une ligne figée maintenant se traite par le dépannage industriel."
@@ -178,28 +178,28 @@
             "titre": "Renfort continu sur des lignes automatisées, agroalimentaire",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/elec-local-technicien-accroupi.jpg",
+            "photo": "/assets/photos/nucleaire-salle-commande-centrale.jpg",
             "texte": "Deux techniciens intégrés en 3x8, maîtrise des automates Schneider et des environnements automatisés du site."
           },
           {
             "titre": "Maintenance des équipements critiques d'un équipementier automobile",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg",
+            "photo": "/assets/photos/il-tuyau-pupitre-local-antibruit.jpg",
             "texte": "Techniciens intégrés au quotidien sur systèmes automatisés, lignes de production et convoyeurs, depuis 2025."
           },
           {
             "titre": "Contrôle de chantier sur des projets d'automatisation logistique",
             "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/robot-portable-diagnostic-cellule.jpg",
+            "photo": "/assets/photos/il-robot-cobot-blanc-pupitre.jpg",
             "texte": "Plusieurs intervenants intégrés aux équipes, aéroports, logistique et industrie, 2025 à 2026."
           },
           {
             "titre": "Maintien opérationnel de convoyeurs, trieurs et systèmes de packaging automatisés, logistique et transport",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/elec-multimetre-armoire-automatisme.jpg",
+            "photo": "/assets/photos/il-robot-atelier-commande-numerique.jpg",
             "texte": "Deux techniciens en poste, surveillance continue des équipements critiques."
           },
           {
@@ -213,7 +213,7 @@
             "titre": "Six techniciens pour faire démarrer un parc machines",
             "lienLibelle": "Étude de cas Eaton",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/elec-senior-armoire-relais.jpg",
+            "photo": "/assets/photos/il-automatisme-tablette-armoire-rouge-robot.jpg",
             "texte": ""
           }
         ]

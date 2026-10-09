@@ -115,7 +115,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/tuyau-vanne-volant-rack.jpg",
+    "problemePhoto": "/assets/photos/il-soudure-chalumeau-tube-technicienne.jpg",
     "brefBande": "Besoin de tenir un poste de maintenance que vous n'arrivez pas à pourvoir ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -250,47 +250,47 @@
             "texte": "Réorganisation industrielle en cours.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/metal-four-arc-acierie.jpg"
+            "photo": "/assets/photos/il-chimie-unites-colonnes-ciel-degage.jpg"
           },
           {
             "titre": "3 à 5 techniciens déployés depuis septembre 2024 pour accompagner la montée en cadence de plusieurs usines",
             "texte": "Maintenance renforcée en même temps que la production.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
+            "photo": "/assets/photos/il-robot-cobot-blanc-pupitre.jpg"
           },
           {
             "titre": "Un technicien de maintenance dédié au maintien d'un parc machines en 2025",
             "texte": "Poste vacant comblé sans attendre un recrutement.",
             "lienLibelle": "Étude de cas AUTOLIV",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
+            "photo": "/assets/photos/il-tuyau-faisceau-blanc-charpente.jpg"
           },
           {
             "titre": "Six techniciens sur l'installation et la mise en production d'un nouveau parc machine",
             "texte": "Site automobile, à partir de janvier 2023.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/meca-technicienne-parc-moteurs.jpg"
+            "photo": "/assets/photos/il-tuyau-vannes-rouges-manometres.jpg"
           },
           {
             "titre": "Deux techniciens intégrés en 3x8 sur des lignes liquides et poudre",
             "texte": "Lavage intensif, froid, traçabilité.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/elec-tgbt-technicienne-tablette.jpg"
+            "photo": "/assets/web/sv-armoire.jpg"
           },
           {
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg"
+            "photo": "/assets/photos/automatisme-coffret-cartes-portable.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/photos/meca-pied-a-coulisse-fraiseuse.jpg"
+            "photo": "/assets/photos/il-meca-portrait-cle-plate-machine-usee.jpg"
           },
           {
             "titre": "Centres d’usinage et presses tenus dans le Grand Est",

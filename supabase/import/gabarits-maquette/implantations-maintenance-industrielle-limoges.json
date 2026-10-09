@@ -115,7 +115,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/soudure-interieur-virole.jpg",
+    "problemePhoto": "/assets/photos/soudure-virole-inox-hall.jpg",
     "brefBande": "Besoin de fiabiliser une machine que plus personne ne sait dépanner ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -264,21 +264,21 @@
             "texte": ", parc machines hétérogène en forte cadence, 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/elec-mains-bornier-relais.jpg"
+            "photo": "/assets/photos/chaudro-meulage-visiere.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS affecté au démarrage d'une nouvelle ligne de production",
             "texte": ", sur les trimestres de montée en charge.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/automatisme-armoire-jeune-tablette.jpg"
+            "photo": "/assets/photos/robot-poignet-technicien-casque.jpg"
           },
           {
             "titre": "Le pilotage d'un service maintenance confié à un responsable Migen intégré sur site",
             "texte": ", pendant une transition d'équipe.",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/metal-fonderie-coulee.jpg"
+            "photo": "/assets/photos/il-auto-sous-vehicule-tout-terrain.jpg"
           },
           {
             "titre": "Un technicien en renfort pendant les congés d'été",

@@ -27,7 +27,7 @@
       }
     ],
     "logo": "/assets/clients/mq-3103d0f3f9ba.svg",
-    "photoHero": "/assets/photos/levage-pont-roulant-hall-acier.jpg",
+    "photoHero": "/assets/photos/levage-portique-tubes-exterieur.jpg",
     "chiffres": [
       {
         "libelle": "Durée d'intervention",
@@ -201,19 +201,19 @@
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
         "href": "/secteurs/logistique/",
-        "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
+        "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "AKTID : montage d'un centre logistique",
         "href": "/preuves/aktid-centre-logistique/",
-        "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
+        "photo": "/assets/web/sv-convoyeur.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg"
+        "photo": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg"
       }
     ]
   }

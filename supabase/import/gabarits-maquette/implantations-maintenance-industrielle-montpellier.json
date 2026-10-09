@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Montpellier",
       "titre": "Montpellier : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/pharma-cuves-process-passerelle.jpg",
+      "photo": "/assets/photos/il-chaudro-bride-anneau-controle.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Montpellier et ses environs",
       "texte": "Nos techniciens itinérants couvrent Montpellier et son bassin, appuyés par le réseau national Migen.",
@@ -115,7 +115,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/meca-graissage-couronne-engin.jpg",
+    "problemePhoto": "/assets/photos/soudure-interieur-virole.jpg",
     "brefBande": "Besoin de passer la prochaine saison sans arrêt subi ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -257,40 +257,40 @@
             "texte": ", avec habilitation dédiée.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/tuyau-vanne-volant-conserverie.jpg"
+            "photo": "/assets/photos/il-technicien-portrait-structure-exterieure.jpg"
           },
           {
             "titre": "2 techniciens en 3x8 sur des lignes de nutrition infantile",
             "texte": ", liquides et conditionnement poudre.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg"
+            "photo": "/assets/photos/il-robot-bras-bleu-intervention-gants.jpg"
           },
           {
             "titre": "6 techniciens polyvalents en permanence sur un contrat de préventif annuel",
             "texte": ", prise en charge complète en un mois.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/agro-remplisseuse-cle-plate.jpg"
+            "photo": "/assets/photos/il-agro-silos-contre-plongee-passerelles.jpg"
           },
           {
             "titre": "1 à 3 techniciens en renfort permanent sur plusieurs sites de production",
             "texte": ", depuis octobre 2024.",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/menuiserie-cnc-pupitre-casque.jpg"
+            "photo": "/assets/photos/il-meca-moteur-complexe-jeune-technicien.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/chimie-cuve-melange-flexible.jpg"
+            "photo": "/assets/photos/il-meca-inspection-piece-releve-atelier.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/aero-reacteur-capot-combinaison.jpg"
+            "photo": "/assets/photos/chaudro-technicienne-plan-etabli.jpg"
           },
           {
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
@@ -302,7 +302,7 @@
             "titre": "Des chantiers automatisés contrôlés point par point",
             "lienLibelle": "Étude de cas Alstef Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/agro-technicienne-raccord-clamp.jpg"
+            "photo": "/assets/photos/hydrau-centrale-hydraulique-technicien.jpg"
           }
         ]
       },

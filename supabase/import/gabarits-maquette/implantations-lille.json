@@ -40,7 +40,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Lille",
       "titre": "Lille : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/energie-rack-canalisations-binome.jpg",
+      "photo": "/assets/photos/il-chimie-unites-colonnes-ciel-degage.jpg",
       "badge": "Hub Migen",
       "nom": "Hub Lille",
       "texte": "Une équipe de techniciens installée à Lille, au plus près de vos sites, appuyée par le réseau national Migen.",
@@ -76,7 +76,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/metal-four-arc-acierie.jpg",
+    "problemePhoto": "/assets/photos/il-ciment-tour-beton-grues-vue-haute.jpg",
     "brefBande": "Besoin d'un diagnostic fiable le vendredi soir plutôt que le lundi matin ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -218,21 +218,21 @@
             "texte": "Agroalimentaire du Nord.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/menuiserie-passerelle-usine-bois.jpg"
+            "photo": "/assets/photos/il-chimie-complexe-unites-ciel-bleu.jpg"
           },
           {
             "titre": "Premier contrat hors de France depuis octobre 2024",
             "texte": "Techniciens en renfort sur un site agroalimentaire belge, de l'autre côté de la frontière.",
             "lienLibelle": "Étude de cas McCAIN",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg"
+            "photo": "/assets/photos/il-ciment-cheminee-grue-couchant.jpg"
           },
           {
             "titre": "Un technicien polyvalent intégré sur un site papier et emballage en forte cadence",
             "texte": "2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg"
+            "photo": "/assets/photos/il-chimie-colonnes-raffinerie-nuit.jpg"
           },
           {
             "titre": "Deux techniciens dédiés à la maintenance curative des convoyeurs, trieurs et packaging",
@@ -246,19 +246,19 @@
             "texte": ", depuis octobre 2024.",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/metal-fonderie-coulee.jpg"
+            "photo": "/assets/photos/metal-four-arc-acierie.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/chimie-cuve-melange-flexible.jpg"
+            "photo": "/assets/photos/il-technicien-portrait-combinaison-orange.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
             "lienLibelle": "Étude de cas Veepee",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/web/sv-convoyeur.jpg"
+            "photo": "/assets/photos/il-agro-silos-contre-plongee-passerelles.jpg"
           },
           {
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",

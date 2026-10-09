@@ -33,7 +33,7 @@
         "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "problemePhoto": "/assets/photos/pneu-cle-bloc-distribution.jpg",
+    "problemePhoto": "/assets/photos/il-meca-sous-machine-gant-bleu.jpg",
     "complementOffre": [
       {
         "texte": "Vos arrêts se répètent toute l'année ? Une ligne bloquée maintenant se traite par le dépannage industriel."
@@ -171,21 +171,21 @@
             "titre": "Renfort de maintenance pendant l'arrêt estival, équipements critiques",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/meca-graissage-couronne-engin.jpg",
+            "photo": "/assets/photos/il-depannage-lampe-torche-recherche-panne.jpg",
             "texte": "Un technicien intégré à l'équipe, mécanique, électrotechnique et pneumatique couvertes par un seul profil, été 2025."
           },
           {
             "titre": "Maintien opérationnel de convoyeurs, trieurs et packaging automatisés, logistique et transport",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/hydrau-verin-tige-chromee.jpg",
+            "photo": "/assets/photos/il-auto-sous-caisse-poids-lourd.jpg",
             "texte": "Deux techniciens en poste, pneumatique comprise dans les domaines couverts en propre."
           },
           {
             "titre": "Contrat de maintenance préventive annuelle, logistique",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/equipe-transmission-senior-jeune.jpg",
+            "photo": "/assets/photos/pneu-cle-bloc-distribution.jpg",
             "texte": "Six techniciens polyvalents en permanence sur les sites de Lyon, depuis septembre 2023."
           },
           {
@@ -199,21 +199,21 @@
             "titre": "Maintenance préventive et curative d'une fonderie",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/soudure-brossage-meuleuse-etau.jpg",
+            "photo": "/assets/photos/il-hydrau-presse-rouge-intervention.jpg",
             "texte": "Site tenu depuis octobre 2023."
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/meca-reducteur-ouvert-plongee.jpg",
+            "photo": "/assets/photos/il-technicien-releve-machine-presse-papier.jpg",
             "texte": ""
           },
           {
             "titre": "Maintenir et monter, de jour comme de nuit",
             "lienLibelle": "Étude de cas Vignal Systems",
             "lienHref": "/preuves/vignal-systems/",
-            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg",
+            "photo": "/assets/photos/il-meca-motoreducteur-controle-gilet.jpg",
             "texte": ""
           }
         ]

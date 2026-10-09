@@ -183,21 +183,21 @@
             "titre": "Un automaticien spécialisé SIEMENS affecté à temps plein, industrie près de Lyon",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/nucleaire-salle-commande-centrale.jpg",
+            "photo": "/assets/photos/elec-multimetre-armoire-automatisme.jpg",
             "texte": "Démarrage d'une nouvelle ligne de production, T2 et T3 2025."
           },
           {
             "titre": "Maintenance d'un parc multimarques, pièces mécaniques de précision",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/automatisme-armoire-jeune-tablette.jpg",
+            "photo": "/assets/photos/il-elec-baie-cablage-faisceaux.jpg",
             "texte": "Centres d'usinage, presses et commandes numériques, un technicien intégré à temps plein en 2025."
           },
           {
             "titre": "Installation et mise en production d'un parc machine neuf, site automobile",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg",
+            "photo": "/assets/photos/il-energie-pupitre-instruments-portrait.jpg",
             "texte": "Six techniciens aux compétences variées, mécanique, électricité et automatisme, depuis janvier 2023."
           },
           {
@@ -218,21 +218,21 @@
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/elec-local-technicien-accroupi.jpg",
+            "photo": "/assets/photos/il-pneu-ligne-verins-portrait.jpg",
             "texte": ""
           },
           {
             "titre": "Un renfort pour que le pain sorte chaque matin",
             "lienLibelle": "Étude de cas La Panetière",
             "lienHref": "/preuves/la-panetiere/",
-            "photo": "/assets/photos/elec-senior-armoire-relais.jpg",
+            "photo": "/assets/photos/il-automatisme-pupitre-ihm-casque-bleu.jpg",
             "texte": ""
           },
           {
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/elec-porte-armoire-voyants-sectionneurs.jpg",
+            "photo": "/assets/photos/il-elec-rack-cablage-penombre.jpg",
             "texte": ""
           }
         ]

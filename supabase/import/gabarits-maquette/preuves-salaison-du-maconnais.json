@@ -31,7 +31,7 @@
       }
     ],
     "logo": "/assets/clients/salaison-du-maconnais.png",
-    "photoHero": "/assets/photos/soudure-virole-inox-hall.jpg",
+    "photoHero": "/assets/photos/agro-remplisseuse-cle-plate.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -127,7 +127,7 @@
         "valeur": "1 technicien"
       }
     ],
-    "photoDispositif": "/assets/photos/soudure-tig-virole-inox.jpg",
+    "photoDispositif": "/assets/photos/agro-mains-vanne-sanitaire.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -147,13 +147,13 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/agro-mains-vanne-sanitaire.jpg"
+        "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/agro-remplisseuse-cle-plate.jpg"
+        "photo": "/assets/photos/soudure-tig-virole-inox.jpg"
       },
       {
         "surtitre": "Secteur",

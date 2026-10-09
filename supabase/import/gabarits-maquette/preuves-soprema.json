@@ -14,7 +14,7 @@
     ],
     "bouton": "Chiffrer mon chantier de montage",
     "logo": "/assets/clients/mq-127f9e03c53b.svg",
-    "photoHero": "/assets/photos/elec-tgbt-technicienne-tablette.jpg",
+    "photoHero": "/assets/photos/il-outillage-panneau-cles-technicienne.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -127,7 +127,7 @@
         "valeur": "Facturation à la journée ou au forfait"
       }
     ],
-    "photoDispositif": "/assets/photos/automatisme-coffret-cartes-portable.jpg",
+    "photoDispositif": "/assets/photos/meca-jeune-presse-volant.jpg",
     "resultats": [
       {
         "titre": "Les délais de chantier ont été respectés",
@@ -166,25 +166,25 @@
         "surtitre": "Étude de cas",
         "titre": "TIMESCOPE : maintenance sous contrat",
         "href": "/preuves/timescope/",
-        "photo": "/assets/photos/meca-pied-a-coulisse-fraiseuse.jpg"
+        "photo": "/assets/photos/il-robot-bras-bleu-intervention-gants.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/automatisme-camera-vision-convoyeur.jpg"
+        "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/tuyau-pointage-bride-tube.jpg"
+        "photo": "/assets/photos/meca-technicienne-cle-machine.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/meca-reducteur-ouvert-plongee.jpg"
+        "photo": "/assets/photos/il-technicien-portrait-casque-antibruit.jpg"
       }
     ]
   }

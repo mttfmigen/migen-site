@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Chalon-sur-Saône",
       "titre": "Chalon-sur-Saône : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/tuyau-pointage-bride-tube.jpg",
+      "photo": "/assets/photos/il-tuyau-reseau-vert-cuves-inspection.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Chalon-sur-Saône et ses environs",
       "texte": "Nos techniciens itinérants couvrent Chalon-sur-Saône et son bassin, appuyés par le réseau national Migen.",
@@ -245,25 +245,25 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg"
+            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/agro-technicienne-raccord-clamp.jpg"
+            "photo": "/assets/photos/il-technicien-portrait-epi-atelier.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
+            "photo": "/assets/photos/menuiserie-centre-usinage-soufflette.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
+            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
           },
           {
             "titre": "Six mois pour remettre en état un site à risque chimique",
@@ -275,7 +275,7 @@
             "titre": "Le préventif d’une centrale photovoltaïque en trois techniciens",
             "lienLibelle": "Étude de cas Eiffage",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/photos/metal-fonderie-coulee.jpg"
+            "photo": "/assets/photos/il-ciment-tours-grues-crepuscule.jpg"
           }
         ]
       },

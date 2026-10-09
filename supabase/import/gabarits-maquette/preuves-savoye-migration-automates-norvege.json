@@ -27,7 +27,7 @@
       }
     ],
     "logo": "/assets/clients/savoye.png",
-    "photoHero": "/assets/photos/metal-technicienne-bobines-acier.jpg",
+    "photoHero": "/assets/photos/levage-pont-roulant-hall-acier.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -178,19 +178,19 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
+        "photo": "/assets/web/sv-convoyeur.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
         "href": "/secteurs/logistique/",
-        "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
+        "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : alliance intralogistique",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg"
+        "photo": "/assets/photos/robot-palettisation-tablette.jpg"
       },
       {
         "surtitre": "Étude de cas",

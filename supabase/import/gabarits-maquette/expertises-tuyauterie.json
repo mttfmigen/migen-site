@@ -37,7 +37,7 @@
         "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "problemePhoto": "/assets/photos/chimie-piquage-manometre-gants.jpg",
+    "problemePhoto": "/assets/photos/il-tuyau-faisceau-blanc-charpente.jpg",
     "complementOffre": [
       {
         "texte": "Une rupture en cours se traite par le dépannage industriel."
@@ -182,14 +182,14 @@
             "titre": "Remise en état d'un site de traitement des eaux industrielles, risque chimique",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/tuyau-vanne-volant-conserverie.jpg",
+            "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg",
             "texte": "Un technicien habilité RC1 mobilisé 6 mois, habilitations obtenues avant la première intervention."
           },
           {
             "titre": "Construction d'un site industriel de recherche et développement, matériaux bas carbone",
             "lienLibelle": "Étude de cas Migen Travaux x ECOCEM",
             "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/photos/pharma-cuves-process-passerelle.jpg",
+            "photo": "/assets/photos/chimie-piquage-manometre-gants.jpg",
             "texte": "Pilotage de chantier et coordination, soudure et chaudronnerie parmi les domaines mobilisés selon les besoins."
           },
           {
@@ -203,14 +203,14 @@
             "titre": "Montages et déplacements de machines, étanchéité et isolation",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/agro-panneau-vannes-nep.jpg",
+            "photo": "/assets/photos/soudure-interieur-virole.jpg",
             "texte": "Lignes et sous-ensembles assemblés, profils réunis selon le chantier, sur 2025."
           },
           {
             "titre": "Contrat de maintenance sur un site agroalimentaire de grande échelle, Belgique",
             "lienLibelle": "Étude de cas McCAIN",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/chaudro-meulage-visiere.jpg",
+            "photo": "/assets/photos/il-hydrau-flexibles-faisceau-controle.jpg",
             "texte": "Renfort en place depuis octobre 2024, premier contrat Migen hors de France."
           },
           {
@@ -224,14 +224,14 @@
             "titre": "Centres d’usinage et presses tenus dans le Grand Est",
             "lienLibelle": "Étude de cas Voit",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg",
+            "photo": "/assets/photos/soudure-corps-vanne-forge.jpg",
             "texte": ""
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/chimie-reacteurs-agites-passerelle.jpg",
+            "photo": "/assets/photos/soudure-tig-virole-inox.jpg",
             "texte": ""
           }
         ]

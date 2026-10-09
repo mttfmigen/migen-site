@@ -20,7 +20,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg",
+        "src": "/assets/photos/energie-eolien-hauteur-harnais.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -395,7 +395,7 @@
           {
             "libelle": "Métiers de la maintenance",
             "href": "/carriere/",
-            "photo": "/assets/photos/agro-panneau-vannes-nep.jpg"
+            "photo": "/assets/photos/robot-technicienne-inspection-bras.jpg"
           },
           {
             "libelle": "Formation technicien de maintenance",
@@ -405,12 +405,12 @@
           {
             "libelle": "Salaire technicien de maintenance",
             "href": "/carriere/technicien-de-maintenance/salaire/",
-            "photo": "/assets/photos/menuiserie-cnc-pupitre-casque.jpg"
+            "photo": "/assets/photos/robot-cellule-soudure-inspection.jpg"
           },
           {
             "libelle": "Électromécanicien",
             "href": "/carriere/electromecanicien/",
-            "photo": "/assets/photos/robot-palettisation-tablette.jpg"
+            "photo": "/assets/photos/aero-nacelle-moteur-technicien.jpg"
           }
         ]
       }

@@ -132,7 +132,7 @@
         "valeur": "1 technicien"
       }
     ],
-    "photoDispositif": "/assets/photos/chimie-reacteurs-agites-passerelle.jpg",
+    "photoDispositif": "/assets/photos/il-chimie-colonnes-raffinerie-nuit.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -164,13 +164,13 @@
         "surtitre": "Secteur",
         "titre": "Maintenance industrie chimique",
         "href": "/secteurs/chimie/",
-        "photo": "/assets/photos/chimie-technicienne-skid-vanne.jpg"
+        "photo": "/assets/photos/il-chimie-complexe-unites-ciel-bleu.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/energie-rack-canalisations-binome.jpg"
+        "photo": "/assets/photos/il-site-cheminees-montagnes-aube.jpg"
       }
     ]
   }

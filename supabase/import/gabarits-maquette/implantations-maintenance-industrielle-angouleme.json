@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Angoulême",
       "titre": "Angoulême : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/pharma-technicienne-machine-comprimes.jpg",
+      "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Angoulême et ses environs",
       "texte": "Nos techniciens itinérants couvrent Angoulême et son bassin, appuyés par le réseau national Migen.",
@@ -231,37 +231,37 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
+            "photo": "/assets/photos/il-tuyau-reseau-vert-cuves-inspection.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/web/sv-convoyeur.jpg"
+            "photo": "/assets/photos/agro-panneau-vannes-nep.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/menuiserie-centre-usinage-soufflette.jpg"
+            "photo": "/assets/photos/il-robot-ligne-robots-presse-papier.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
+            "photo": "/assets/photos/il-meca-machine-outil-porte-ouverte.jpg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/chimie-technicienne-skid-vanne.jpg"
+            "photo": "/assets/photos/il-chimie-unites-colonnes-ciel-degage.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/meca-tour-conventionnel-senior.jpg"
+            "photo": "/assets/photos/elec-mains-bornier-relais.jpg"
           }
         ]
       },

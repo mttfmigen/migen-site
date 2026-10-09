@@ -34,7 +34,7 @@
         "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "problemePhoto": "/assets/photos/meca-presses-volants-technicienne.jpg",
+    "problemePhoto": "/assets/photos/il-tuyau-vannes-rouges-manometres.jpg",
     "complementOffre": [
       {
         "texte": "Nous ne vendons aucun lubrifiant, et notre catalogue est vide par choix. Un palier qui chauffe maintenant relève du dépannage industriel."
@@ -172,53 +172,53 @@
             "texte": "Six techniciens polyvalents en permanence, mécanique et hydraulique parmi les domaines couverts, depuis septembre 2023.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/pharma-technicienne-machine-comprimes.jpg"
+            "photo": "/assets/photos/equipe-transmission-senior-jeune.jpg"
           },
           {
             "titre": "Maintenance des centres d'usinage, des presses et des machines à commande numérique",
             "texte": "Un technicien à temps plein, plan d'entretien et réglages tenus sur site, 2025.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/soudure-corps-vanne-forge.jpg"
+            "photo": "/assets/photos/il-outillage-armoire-douilles-portrait.jpg"
           },
           {
             "titre": "Curatif et préventif dans le même périmètre, agroalimentaire",
             "texte": "Actions préventives ciblées sur les équipements critiques, premier contrat hors de France, depuis octobre 2024.",
             "lienLibelle": "Étude de cas McCAIN",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg"
+            "photo": "/assets/photos/il-energie-gros-moteur-vert-antibruit.jpg"
           },
           {
             "titre": "Maintenance préventive et curative des lignes liquides et poudre, agroalimentaire",
             "texte": "Deux techniciens intégrés en 3x8, présence quand la ligne tourne.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/energie-bride-mat-eolienne.jpg"
+            "photo": "/assets/photos/robot-pince-reparation-etabli.jpg"
           },
           {
             "titre": "Maintenance des installations d'un équipementier automobile",
             "texte": "Techniciens intégrés au quotidien chez un fabricant de roulements pour l'industrie et l'automobile, depuis 2025.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
+            "photo": "/assets/photos/il-hydrau-verin-godet-engin.jpg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/robot-pince-reparation-etabli.jpg"
+            "photo": "/assets/photos/meca-senior-rouleuse-combinaison.jpg"
           },
           {
             "titre": "Six techniciens pour faire démarrer un parc machines",
             "lienLibelle": "Étude de cas Eaton",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/web/team-grind-sparks.jpg"
+            "photo": "/assets/photos/il-aero-reacteur-ouvert-portrait.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/energie-levage-eolienne-senior.jpg"
+            "photo": "/assets/photos/il-robot-poignet-robot-hauteur-gants.jpg"
           }
         ]
       },

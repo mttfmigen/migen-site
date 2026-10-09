@@ -26,7 +26,7 @@
       "chapo": [
         "Les décisions de maintenance se prennent sur des chiffres : un taux, un seuil, un indicateur. Ces fiches techniques complètent notre [guide maintenance industrielle](/ressources/) avec le format le plus court possible : la définition, la formule, les seuils utiles, et ce qu'en fait un technicien sur le terrain."
       ],
-      "image": "/assets/photos/energie-bride-mat-eolienne.jpg",
+      "image": "/assets/photos/il-technicien-releve-machine-presse-papier.jpg",
       "chiffres": [
         {
           "valeur": "35",
@@ -145,7 +145,7 @@
           "format": "Article",
           "minutes": 12,
           "mots": 2734,
-          "image": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg"
+          "image": "/assets/photos/hydrau-centrale-hydraulique-technicien.jpg"
         },
         {
           "href": "/ressources/articles/digitalisation-maintenance/",
@@ -154,7 +154,7 @@
           "format": "Article",
           "minutes": 11,
           "mots": 2375,
-          "image": "/assets/photos/energie-rotor-turbine-vapeur.jpg"
+          "image": "/assets/photos/elec-tgbt-technicienne-tablette.jpg"
         },
         {
           "href": "/ressources/articles/gestion-des-dechets/",
@@ -163,7 +163,7 @@
           "format": "Article",
           "minutes": 8,
           "mots": 1761,
-          "image": "/assets/photos/menuiserie-passerelle-usine-bois.jpg"
+          "image": "/assets/photos/il-outillage-panneau-atelier-accroupi.jpg"
         },
         {
           "href": "/ressources/articles/gmao/",
@@ -172,7 +172,7 @@
           "format": "Article",
           "minutes": 11,
           "mots": 2499,
-          "image": "/assets/photos/metal-fonderie-coulee.jpg"
+          "image": "/assets/photos/pneu-cle-bloc-distribution.jpg"
         },
         {
           "href": "/ressources/articles/ia-maintenance/",
@@ -181,7 +181,7 @@
           "format": "Article",
           "minutes": 9,
           "mots": 2048,
-          "image": "/assets/photos/soudure-soudeuse-masque-releve.jpg"
+          "image": "/assets/photos/pharma-isolateur-salle-propre.jpg"
         },
         {
           "href": "/ressources/articles/maintenance-4-0/",
@@ -190,7 +190,7 @@
           "format": "Article",
           "minutes": 9,
           "mots": 1934,
-          "image": "/assets/photos/aero-percage-aile-avion.jpg"
+          "image": "/assets/photos/energie-bride-mat-eolienne.jpg"
         },
         {
           "href": "/ressources/articles/optimiser-la-maintenance/",
@@ -199,7 +199,7 @@
           "format": "Article",
           "minutes": 8,
           "mots": 1819,
-          "image": "/assets/photos/menuiserie-cnc-pupitre-casque.jpg"
+          "image": "/assets/photos/il-meca-portrait-cle-plate-machine-usee.jpg"
         },
         {
           "href": "/ressources/articles/organiser-service-maintenance/",
@@ -208,7 +208,7 @@
           "format": "Article",
           "minutes": 9,
           "mots": 2070,
-          "image": "/assets/web/team-grind-sparks.jpg"
+          "image": "/assets/photos/meca-reducteur-ouvert-plongee.jpg"
         },
         {
           "href": "/ressources/articles/plan-de-maintenance/",
@@ -217,7 +217,7 @@
           "format": "Article",
           "minutes": 10,
           "mots": 2148,
-          "image": "/assets/web/sv-duo-impact.jpg"
+          "image": "/assets/photos/elec-schema-lampe-frontale.jpg"
         },
         {
           "href": "/ressources/articles/planification-maintenance/",
@@ -226,7 +226,7 @@
           "format": "Article",
           "minutes": 11,
           "mots": 2356,
-          "image": "/assets/photos/elec-main-disjoncteurs-borniers.jpg"
+          "image": "/assets/photos/il-meca-moteur-complexe-jeune-technicien.jpg"
         },
         {
           "href": "/ressources/articles/predictive-ou-corrective/",
@@ -235,7 +235,7 @@
           "format": "Article",
           "minutes": 12,
           "mots": 2648,
-          "image": "/assets/photos/agro-remplisseuse-cle-plate.jpg"
+          "image": "/assets/photos/il-meca-portrait-cle-a-molette-halle.jpg"
         },
         {
           "href": "/ressources/articles/preventive-ou-corrective/",
@@ -244,7 +244,7 @@
           "format": "Article",
           "minutes": 11,
           "mots": 2472,
-          "image": "/assets/photos/energie-levage-eolienne-senior.jpg"
+          "image": "/assets/photos/il-meca-volant-poulie-reglage.jpg"
         },
         {
           "href": "/ressources/articles/robot-spot/",
@@ -253,7 +253,7 @@
           "format": "Article",
           "minutes": 7,
           "mots": 1589,
-          "image": "/assets/photos/soudure-fond-bombe-gabarit.jpg"
+          "image": "/assets/photos/elec-senior-armoire-relais.jpg"
         },
         {
           "href": "/ressources/articles/suivi-de-la-maintenance/",
@@ -262,7 +262,7 @@
           "format": "Article",
           "minutes": 10,
           "mots": 2161,
-          "image": "/assets/photos/meca-reducteur-pont-roulant.jpg"
+          "image": "/assets/photos/chimie-technicienne-skid-vanne.jpg"
         },
         {
           "href": "/ressources/articles/tpm/",
@@ -271,7 +271,7 @@
           "format": "Article",
           "minutes": 9,
           "mots": 1965,
-          "image": "/assets/photos/chaudro-technicienne-plan-etabli.jpg"
+          "image": "/assets/photos/aero-reacteur-capot-combinaison.jpg"
         },
         {
           "href": "/ressources/fiches-pratiques/5s/",
@@ -280,7 +280,7 @@
           "format": "Fiche pratique",
           "minutes": 12,
           "mots": 2624,
-          "image": "/assets/photos/elec-mesure-multimetre-faisceau.jpg"
+          "image": "/assets/photos/tuyau-pointage-bride-tube.jpg"
         },
         {
           "href": "/ressources/fiches-pratiques/consignation-electrique/",
@@ -289,7 +289,7 @@
           "format": "Fiche pratique",
           "minutes": 12,
           "mots": 2685,
-          "image": "/assets/photos/elec-cablage-armoire-tournevis.jpg"
+          "image": "/assets/photos/il-energie-pupitre-instruments-portrait.jpg"
         },
         {
           "href": "/ressources/fiches-pratiques/permis-de-feu/",
@@ -298,7 +298,7 @@
           "format": "Fiche pratique",
           "minutes": 8,
           "mots": 1852,
-          "image": "/assets/photos/menuiserie-centre-usinage-soufflette.jpg"
+          "image": "/assets/photos/il-meca-moteur-lourd-controle-gilet.jpg"
         },
         {
           "href": "/ressources/fiches-pratiques/plan-de-prevention/",
@@ -307,7 +307,7 @@
           "format": "Fiche pratique",
           "minutes": 9,
           "mots": 1941,
-          "image": "/assets/photos/elec-mains-bornier-relais.jpg"
+          "image": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
         },
         {
           "href": "/ressources/fiches-pratiques/securite-maintenance/",
@@ -316,7 +316,7 @@
           "format": "Fiche pratique",
           "minutes": 10,
           "mots": 2255,
-          "image": "/assets/photos/soudure-corps-vanne-forge.jpg"
+          "image": "/assets/photos/il-elec-accroupie-armoire-penombre.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/amdec/",
@@ -325,7 +325,7 @@
           "format": "Fiche technique",
           "minutes": 15,
           "mots": 3292,
-          "image": "/assets/photos/elec-schema-lampe-frontale.jpg"
+          "image": "/assets/photos/il-tuyau-vannes-rouges-manometres.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/analyse-vibratoire/",
@@ -334,7 +334,7 @@
           "format": "Fiche technique",
           "minutes": 10,
           "mots": 2109,
-          "image": "/assets/photos/agro-technicienne-raccord-clamp.jpg"
+          "image": "/assets/photos/il-elec-mesure-coffret-mural.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/automates-siemens/",
@@ -343,7 +343,7 @@
           "format": "Fiche technique",
           "minutes": 7,
           "mots": 1642,
-          "image": "/assets/photos/equipe-transmission-senior-jeune.jpg"
+          "image": "/assets/photos/il-meca-grand-disque-volant-inertie.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/cahier-des-charges-gmao/",
@@ -352,7 +352,7 @@
           "format": "Fiche technique",
           "minutes": 11,
           "mots": 2373,
-          "image": "/assets/photos/meca-presses-volants-technicienne.jpg"
+          "image": "/assets/photos/il-meca-machine-outil-porte-ouverte.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/indicateurs-maintenance/",
@@ -361,7 +361,7 @@
           "format": "Fiche technique",
           "minutes": 11,
           "mots": 2386,
-          "image": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
+          "image": "/assets/photos/elec-main-disjoncteurs-borniers.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/mtbf-mttr/",
@@ -370,7 +370,7 @@
           "format": "Fiche technique",
           "minutes": 9,
           "mots": 1959,
-          "image": "/assets/photos/elec-senior-armoire-relais.jpg"
+          "image": "/assets/photos/il-meca-bloc-moteur-halle-gilet.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/niveaux-de-maintenance/",
@@ -379,7 +379,7 @@
           "format": "Fiche technique",
           "minutes": 9,
           "mots": 1990,
-          "image": "/assets/photos/chaudro-meulage-visiere.jpg"
+          "image": "/assets/photos/energie-releve-pupitre-salle-commande.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/outils-de-diagnostic/",
@@ -388,7 +388,7 @@
           "format": "Fiche technique",
           "minutes": 10,
           "mots": 2132,
-          "image": "/assets/photos/ciment-escalier-silo-ronde.jpg"
+          "image": "/assets/photos/il-automatisme-armoire-automate-ouverte.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/trs/",
@@ -397,7 +397,7 @@
           "format": "Fiche technique",
           "minutes": 10,
           "mots": 2242,
-          "image": "/assets/photos/chimie-cuve-melange-flexible.jpg"
+          "image": "/assets/photos/il-aero-reacteur-ouvert-portrait.jpg"
         },
         {
           "href": "/ressources/livres-blancs/externaliser-sa-maintenance/",
@@ -406,7 +406,7 @@
           "format": "Livre blanc",
           "minutes": 7,
           "mots": 1442,
-          "image": "/assets/photos/elec-tgbt-technicienne-tablette.jpg"
+          "image": "/assets/photos/elec-local-technicien-accroupi.jpg"
         },
         {
           "href": "/ressources/livres-blancs/retrofit-ou-remplacement/",
@@ -415,7 +415,7 @@
           "format": "Livre blanc",
           "minutes": 11,
           "mots": 2319,
-          "image": "/assets/photos/meca-senior-rouleuse-combinaison.jpg"
+          "image": "/assets/photos/il-levage-crochet-palonnier-controle.jpg"
         },
         {
           "href": "/ressources/process/gestion-maintenance-preventive/",
@@ -424,7 +424,7 @@
           "format": "Process",
           "minutes": 14,
           "mots": 3099,
-          "image": "/assets/photos/meca-reducteur-ouvert-plongee.jpg"
+          "image": "/assets/photos/il-equipe-bogie-halle-ferroviaire.jpg"
         },
         {
           "href": "/ressources/process/preparer-un-arret-technique/",
@@ -433,7 +433,7 @@
           "format": "Process",
           "minutes": 10,
           "mots": 2254,
-          "image": "/assets/photos/agro-panneau-vannes-nep.jpg"
+          "image": "/assets/photos/il-tuyau-passerelle-technicien-bras-croises.jpg"
         },
         {
           "href": "/ressources/process/protocole-de-securite/",
@@ -442,7 +442,7 @@
           "format": "Process",
           "minutes": 11,
           "mots": 2351,
-          "image": "/assets/photos/meca-jeune-presse-volant.jpg"
+          "image": "/assets/photos/automatisme-armoire-jeune-tablette.jpg"
         },
         {
           "href": "/ressources/process/selection-des-techniciens/",
@@ -451,7 +451,7 @@
           "format": "Process",
           "minutes": 8,
           "mots": 1764,
-          "image": "/assets/photos/elec-local-technicien-accroupi.jpg"
+          "image": "/assets/photos/il-tuyau-reseau-vert-cuves-inspection.jpg"
         }
       ]
     }

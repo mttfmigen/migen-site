@@ -20,7 +20,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/meca-technicienne-cle-machine.jpg",
+        "src": "/assets/photos/automatisme-coffret-cartes-portable.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -355,17 +355,17 @@
           {
             "libelle": "Métiers de la maintenance",
             "href": "/carriere/",
-            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg"
+            "photo": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
           },
           {
             "libelle": "Agent de maintenance industrielle",
             "href": "/carriere/agent-de-maintenance/",
-            "photo": "/assets/photos/robot-soudure-points-caisse.jpg"
+            "photo": "/assets/photos/il-automatisme-armoire-robot-bleu-fond.jpg"
           },
           {
             "libelle": "Automaticien",
             "href": "/carriere/automaticien/",
-            "photo": "/assets/photos/robot-portable-diagnostic-cellule.jpg"
+            "photo": "/assets/web/sv-portrait.jpg"
           }
         ]
       }

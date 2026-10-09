@@ -21,7 +21,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/chimie-cuve-melange-flexible.jpg",
+        "src": "/assets/photos/equipe-consignes-atelier-casques.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -374,17 +374,17 @@
           {
             "libelle": "Métiers de la maintenance",
             "href": "/carriere/",
-            "photo": "/assets/photos/robot-technicienne-inspection-bras.jpg"
+            "photo": "/assets/photos/il-robot-cellule-grillagee-automaticien.jpg"
           },
           {
             "libelle": "Agent de maintenance industrielle",
             "href": "/carriere/agent-de-maintenance/",
-            "photo": "/assets/photos/elec-senior-armoire-relais.jpg"
+            "photo": "/assets/photos/il-automatisme-bornier-vert-pince.jpg"
           },
           {
             "libelle": "Technicien de maintenance itinérant",
             "href": "/carriere/technicien-itinerant/",
-            "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
+            "photo": "/assets/photos/il-robot-bras-orange-reglage-souriante.jpg"
           }
         ]
       }

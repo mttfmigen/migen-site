@@ -31,7 +31,7 @@
       }
     ],
     "logo": "/assets/clients/rector-lesage.png",
-    "photoHero": "/assets/photos/metal-four-arc-acierie.jpg",
+    "photoHero": "/assets/photos/il-chaudro-couronne-dentee-reperage.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -147,25 +147,25 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/chaudro-meulage-visiere.jpg"
+        "photo": "/assets/photos/il-ciment-tours-grues-crepuscule.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/ciment-tambour-rotatif-silos.jpg"
+        "photo": "/assets/photos/metal-fonderie-coulee.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrie lourde",
         "href": "/secteurs/industrie-lourde/",
-        "photo": "/assets/photos/meca-jeune-presse-volant.jpg"
+        "photo": "/assets/photos/il-metal-siderurgie-bord-d-eau-couchant.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "VIGNAL SYSTEMS : maintenir et monter, de jour comme de nuit",
         "href": "/preuves/vignal-systems/",
-        "photo": "/assets/photos/meca-tour-conventionnel-senior.jpg"
+        "photo": "/assets/photos/metal-four-arc-acierie.jpg"
       }
     ]
   }

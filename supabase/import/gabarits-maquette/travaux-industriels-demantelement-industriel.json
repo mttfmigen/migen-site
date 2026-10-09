@@ -195,7 +195,7 @@
             "texte": "Transferts de machines sécurisés, sans casse ni improvisation, délais de chantier tenus.",
             "lienLibelle": "SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/soudure-tig-virole-inox.jpg",
+            "photo": "/assets/photos/il-chaudro-couronne-dentee-reperage.jpg",
             "logo": "/assets/clients/mq-127f9e03c53b.svg"
           },
           {
@@ -211,7 +211,7 @@
             "texte": "Pilotage de chantier de bout en bout par Migen Travaux, coordination multi-métiers.",
             "lienLibelle": "Migen Travaux x ECOCEM",
             "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/photos/hydrau-presse-pupitre-manometre.jpg",
+            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg",
             "logo": "/assets/clients/orthus-x-ecocem.png"
           },
           {
@@ -219,14 +219,14 @@
             "texte": "Suivi des prestataires, vérification des installations, respect des procédures.",
             "lienLibelle": "ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/meca-tour-conventionnel-senior.jpg",
+            "photo": "/assets/photos/il-metal-haut-fourneau-silos-quai.jpg",
             "logo": "/assets/clients/alstef.webp"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/metal-four-arc-acierie.jpg",
+            "photo": "/assets/photos/il-meca-grand-disque-volant-inertie.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
@@ -278,37 +278,37 @@
         "titre": "Technicien en résidence",
         "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/metal-fonderie-coulee.jpg"
+        "photo": "/assets/photos/meca-senior-rouleuse-combinaison.jpg"
       },
       {
         "titre": "Zéro arrêt",
         "phrase": "La maintenance en abonnement, au forfait mensuel.",
         "href": "/offres/zero-arret/",
-        "photo": "/assets/photos/soudure-corps-vanne-forge.jpg"
+        "photo": "/assets/photos/hydrau-presse-pupitre-manometre.jpg"
       },
       {
         "titre": "Arrêt technique",
         "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
         "href": "/offres/arret-technique/",
-        "photo": "/assets/photos/chaudro-meulage-visiere.jpg"
+        "photo": "/assets/photos/il-metal-siderurgie-bord-d-eau-couchant.jpg"
       },
       {
         "titre": "Full service",
         "phrase": "Toute votre maintenance, un seul partenaire.",
         "href": "/offres/full-service/",
-        "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg"
+        "photo": "/assets/photos/meca-tour-conventionnel-senior.jpg"
       },
       {
         "titre": "Travaux industriels",
         "phrase": "Transfert, démantèlement, démontage et montage.",
         "href": "/travaux-industriels/",
-        "photo": "/assets/photos/meca-senior-rouleuse-combinaison.jpg"
+        "photo": "/assets/photos/soudure-corps-vanne-forge.jpg"
       },
       {
         "titre": "Bureau d'études",
         "phrase": "Conception, retrofit et mise en conformité.",
         "href": "/offres/bureau-etudes/",
-        "photo": "/assets/photos/soudure-interieur-virole.jpg"
+        "photo": "/assets/photos/il-tuyau-conduits-massifs-contre-plongee.jpg"
       }
     ],
     "appelBouton": "",

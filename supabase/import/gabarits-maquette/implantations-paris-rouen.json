@@ -69,7 +69,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/web/sv-armoire.jpg",
+    "problemePhoto": "/assets/photos/meca-technicienne-parc-moteurs.jpg",
     "complementOffre": [
       {
         "texte": "Pour l'urgence isolée, notre offre de dépannage industriel reste le format le plus simple pour nous mettre à l'épreuve."
@@ -209,53 +209,53 @@
             "texte": "sur un site de traitement des eaux industrielles à remettre en état.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/menuiserie-passerelle-usine-bois.jpg"
+            "photo": "/assets/photos/chimie-cuve-melange-flexible.jpg"
           },
           {
             "titre": "Un technicien intégré sur un parc papier-carton où la maintenance conditionne la productivité",
             "texte": ", préventif et curatif, de 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/robot-pince-reparation-etabli.jpg"
+            "photo": "/assets/photos/il-robot-inspection-articulation-blanche.jpg"
           },
           {
             "titre": "Deux techniciens en 3x8 sur des lignes liquides et du conditionnement poudre",
             "texte": ", site agroalimentaire de Steenvoorde.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/pharma-isolateur-salle-propre.jpg"
+            "photo": "/assets/photos/il-meca-portrait-cle-plate-machine-usee.jpg"
           },
           {
             "titre": "1 à 3 techniciens en renfort permanent des équipes maintenance",
             "texte": "sur plusieurs sites de production, depuis octobre 2024.",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/robot-multimetre-cablage-robot.jpg"
+            "photo": "/assets/web/sv-duo-impact.jpg"
           },
           {
             "titre": "Un responsable maintenance intégré pour piloter un service pendant une transition interne",
             "texte": ", en pleine montée de cadence.",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/equipe-consignes-atelier-casques.jpg"
+            "photo": "/assets/photos/aero-reacteur-capot-combinaison.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/chaudro-meulage-visiere.jpg"
+            "photo": "/assets/photos/il-chaudro-bride-anneau-controle.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/energie-eolien-hauteur-harnais.jpg"
+            "photo": "/assets/photos/agro-atelier-inox-plan-large.jpg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/elec-salle-cellules-ht-ronde.jpg"
+            "photo": "/assets/photos/automatisme-coffret-cartes-portable.jpg"
           }
         ]
       },

@@ -448,7 +448,7 @@
             "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés en pleine période estivale, site livré à la date prévue.",
             "lienLibelle": "Étude de cas AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/chimie-reacteurs-agites-passerelle.jpg",
+            "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
@@ -456,7 +456,7 @@
             "texte": "Chantier piloté de bout en bout par Migen Travaux, jalons critiques suivis.",
             "lienLibelle": "Étude de cas Migen Travaux x ECOCEM",
             "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg",
+            "photo": "/assets/photos/il-chimie-vapeur-vue-large-jour.jpg",
             "logo": "/assets/clients/orthus-x-ecocem.png"
           },
           {
@@ -464,7 +464,7 @@
             "texte": "Réception, assemblage, levage, raccordements, validation à l'issue du montage.",
             "lienLibelle": "Étude de cas Migen Travaux x WASHTEC",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg",
+            "photo": "/assets/photos/il-technicien-portrait-structure-exterieure.jpg",
             "logo": "/assets/clients/orthus-x-washtec.svg"
           },
           {
@@ -472,7 +472,7 @@
             "texte": "Délais de chantier tenus sans pénalité, transferts de machines sécurisés.",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/hydrau-presse-pupitre-manometre.jpg",
+            "photo": "/assets/photos/il-chimie-petrochimie-panorama-nuit.jpg",
             "logo": "/assets/clients/mq-127f9e03c53b.svg"
           },
           {
@@ -487,14 +487,14 @@
             "titre": "Maintenir et monter, de jour comme de nuit",
             "lienLibelle": "Étude de cas Vignal Systems",
             "lienHref": "/preuves/vignal-systems/",
-            "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg",
+            "photo": "/assets/photos/il-tuyau-pipeline-structures-contre-jour.jpg",
             "logo": "/assets/clients/mq-dbf1f974e675.svg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg",
+            "photo": "/assets/photos/il-ciment-tour-beton-grues-vue-haute.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           }
         ]

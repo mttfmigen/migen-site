@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Pau",
       "titre": "Pau : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/ciment-tambour-rotatif-silos.jpg",
+      "photo": "/assets/photos/il-outillage-armoire-douilles-portrait.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Pau et ses environs",
       "texte": "Nos techniciens itinérants couvrent Pau et son bassin, appuyés par le réseau national Migen.",
@@ -264,7 +264,7 @@
             "texte": ", mission de 6 mois depuis février 2026.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/tuyau-vanne-volant-conserverie.jpg"
+            "photo": "/assets/photos/menuiserie-passerelle-usine-bois.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS affecté au démarrage d'une nouvelle ligne de production",
@@ -285,31 +285,31 @@
             "texte": ", depuis octobre 2024.",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/robot-multimetre-cablage-robot.jpg"
+            "photo": "/assets/photos/il-tuyau-vannes-technicienne-tablette.jpg"
           },
           {
             "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
             "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/photos/tuyau-pointage-bride-tube.jpg"
+            "photo": "/assets/photos/il-chimie-colonnes-raffinerie-nuit.jpg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/energie-bride-mat-eolienne.jpg"
+            "photo": "/assets/photos/pharma-isolateur-salle-propre.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/meca-tour-conventionnel-senior.jpg"
+            "photo": "/assets/photos/il-energie-gros-moteur-vert-antibruit.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/meca-technicienne-cle-machine.jpg"
+            "photo": "/assets/photos/il-robot-bras-rouge-serrage-hauteur.jpg"
           }
         ]
       },

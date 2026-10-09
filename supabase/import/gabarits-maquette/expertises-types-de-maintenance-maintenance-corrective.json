@@ -266,47 +266,47 @@
             "texte": "Deux techniciens en poste sur site.",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
+            "photo": "/assets/photos/il-elec-mesure-coffret-mural.jpg"
           },
           {
             "titre": "Remise en état d'un site de traitement des eaux industrielles, environnement",
             "texte": "Un électromécanicien habilité risque chimique mobilisé six mois.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/chimie-piquage-manometre-gants.jpg"
+            "photo": "/assets/photos/il-meca-controle-sous-machine-casque-jaune.jpg"
           },
           {
             "titre": "Montage, déplacement de machines et renfort technique ponctuel, matériaux",
             "texte": "Chantiers confiés au coup par coup.",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/automatisme-coffret-cartes-portable.jpg"
+            "photo": "/assets/photos/elec-multimetre-armoire-automatisme.jpg"
           },
           {
             "titre": "Parc machines tenu en forte cadence, emballage",
             "texte": "Un technicien polyvalent intégré sur site.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/meca-senior-rouleuse-combinaison.jpg"
+            "photo": "/assets/photos/il-meca-moteur-lourd-controle-gilet.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, automobile",
             "texte": "Tenue, depuis octobre 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/meca-reducteur-ouvert-plongee.jpg"
+            "photo": "/assets/photos/il-outillage-panneau-atelier-accroupi.jpg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/robot-pince-reparation-etabli.jpg"
+            "photo": "/assets/photos/il-elec-carte-electronique-depose.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/pneu-cle-bloc-distribution.jpg"
+            "photo": "/assets/photos/il-meca-intervention-accroupi-atelier.jpg"
           }
         ]
       },

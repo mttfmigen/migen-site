@@ -183,7 +183,7 @@
             "texte": "Trois techniciens en renfort, suivi rigoureux des équipements sur toute la durée du chantier",
             "lienLibelle": "Étude de cas EIFFAGE",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/photos/nucleaire-salle-commande-centrale.jpg",
+            "photo": "/assets/photos/il-chaudro-couronne-dentee-reperage.jpg",
             "logo": "/assets/clients/mq-21daf7c60970.svg"
           },
           {
@@ -196,21 +196,21 @@
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg",
+            "photo": "/assets/photos/il-elec-carte-electronique-depose.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
             "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
             "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/photos/meca-cle-bride-carter.jpg",
+            "photo": "/assets/photos/nucleaire-salle-commande-centrale.jpg",
             "logo": "/assets/clients/mq-7c01e175985e.png"
           },
           {
             "titre": "Un responsable maintenance pour traverser la transition",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/elec-porte-armoire-voyants-sectionneurs.jpg",
+            "photo": "/assets/photos/il-automatisme-tablette-armoire-rouge-robot.jpg",
             "logo": "/assets/clients/mq-441fc873c0d9.svg"
           }
         ]
@@ -262,37 +262,37 @@
         "titre": "Technicien en résidence",
         "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/aero-fuselage-serrage-lampe.jpg"
+        "photo": "/assets/photos/il-hydrau-presse-rouge-intervention.jpg"
       },
       {
         "titre": "Zéro arrêt",
         "phrase": "La maintenance en abonnement, au forfait mensuel.",
         "href": "/offres/zero-arret/",
-        "photo": "/assets/photos/elec-binome-coffret-chaufferie.jpg"
+        "photo": "/assets/photos/elec-porte-armoire-voyants-sectionneurs.jpg"
       },
       {
         "titre": "Arrêt technique",
         "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
         "href": "/offres/arret-technique/",
-        "photo": "/assets/photos/meca-graissage-couronne-engin.jpg"
+        "photo": "/assets/photos/il-robot-atelier-commande-numerique.jpg"
       },
       {
         "titre": "Full service",
         "phrase": "Toute votre maintenance, un seul partenaire.",
         "href": "/offres/full-service/",
-        "photo": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg"
+        "photo": "/assets/photos/il-robot-programmation-cobot-portable.jpg"
       },
       {
         "titre": "Travaux industriels",
         "phrase": "Transfert, démantèlement, démontage et montage.",
         "href": "/travaux-industriels/",
-        "photo": "/assets/photos/automatisme-armoire-jeune-tablette.jpg"
+        "photo": "/assets/photos/il-robot-ingenieure-tablette-bras-orange.jpg"
       },
       {
         "titre": "Bureau d’études",
         "phrase": "Conception, retrofit et mise en conformité.",
         "href": "/offres/bureau-etudes/",
-        "photo": "/assets/photos/robot-pupitre-apprentissage-soudure.jpg"
+        "photo": "/assets/photos/il-soudure-robot-pupitre-apprentissage.jpg"
       }
     ],
     "pagesLieesTitre": "Les offres et prestations voisines"

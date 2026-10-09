@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Brive-la-Gaillarde",
       "titre": "Brive-la-Gaillarde : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg",
+      "photo": "/assets/photos/ciment-tambour-rotatif-silos.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Brive-la-Gaillarde et ses environs",
       "texte": "Nos techniciens itinérants couvrent Brive-la-Gaillarde et son bassin, appuyés par le réseau national Migen.",
@@ -245,37 +245,37 @@
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/elec-tgbt-technicienne-tablette.jpg"
+            "photo": "/assets/photos/il-technicien-portrait-casque-antibruit.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/chaudro-meulage-visiere.jpg"
+            "photo": "/assets/photos/il-levage-crochet-palonnier-controle.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/robot-atelier-ferrage-plongee.jpg"
+            "photo": "/assets/web/sv-duo-impact.jpg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/soudure-corps-vanne-forge.jpg"
+            "photo": "/assets/photos/meca-graissage-couronne-engin.jpg"
           },
           {
             "titre": "Un renfort pour que le pain sorte chaque matin",
             "lienLibelle": "Étude de cas La Panetière",
             "lienHref": "/preuves/la-panetiere/",
-            "photo": "/assets/photos/ciment-vue-aerienne-usine.jpg"
+            "photo": "/assets/photos/il-automatisme-pupitre-ihm-casque-bleu.jpg"
           },
           {
             "titre": "Un été entier sans trou dans la maintenance",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/meca-presses-volants-technicienne.jpg"
+            "photo": "/assets/photos/il-elec-armoire-bornier-pointage.jpg"
           }
         ]
       },

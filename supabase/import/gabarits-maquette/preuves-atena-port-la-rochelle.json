@@ -35,7 +35,7 @@
       }
     ],
     "logo": "/assets/clients/atena.png",
-    "photoHero": "/assets/web/sv-convoyeur.jpg",
+    "photoHero": "/assets/photos/metal-technicienne-bobines-acier.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -157,19 +157,19 @@
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/robot-palettisation-tablette.jpg"
+        "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance logistique",
         "href": "/secteurs/logistique/",
-        "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
+        "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
+        "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
       }
     ]
   }

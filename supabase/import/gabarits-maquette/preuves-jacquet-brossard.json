@@ -35,7 +35,7 @@
       }
     ],
     "logo": "/assets/clients/mq-68b4119a50b4.png",
-    "photoHero": "/assets/photos/agro-mains-vanne-sanitaire.jpg",
+    "photoHero": "/assets/photos/agro-atelier-inox-plan-large.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -163,13 +163,13 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
+        "photo": "/assets/photos/agro-technicienne-raccord-clamp.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/agro-technicienne-raccord-clamp.jpg"
+        "photo": "/assets/photos/agro-remplisseuse-cle-plate.jpg"
       },
       {
         "surtitre": "Secteur",
@@ -181,7 +181,7 @@
         "surtitre": "Étude de cas",
         "titre": "DANONE (BLÉDINA) : pas un poste sans maintenance, week-end compris",
         "href": "/preuves/danone-lignes-de-production/",
-        "photo": "/assets/photos/agro-atelier-inox-plan-large.jpg"
+        "photo": "/assets/photos/tuyau-vanne-volant-conserverie.jpg"
       }
     ]
   }

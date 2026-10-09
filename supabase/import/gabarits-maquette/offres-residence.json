@@ -177,7 +177,7 @@
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/team-grind-sparks.jpg",
+            "photo": "/assets/photos/il-tuyau-pupitre-local-antibruit.jpg",
             "logo": "/assets/clients/mq-89100525ef89.svg"
           },
           {
@@ -185,14 +185,14 @@
             "texte": "site proche de Paris",
             "lienLibelle": "Étude de cas FDJ : site proche de Paris",
             "lienHref": "/preuves/fdj/",
-            "photo": "/assets/photos/robot-pince-reparation-etabli.jpg"
+            "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg",
+            "photo": "/assets/photos/il-automatisme-ligne-reglage-lunettes.jpg",
             "logo": "/assets/clients/mq-eb9461b85e59.svg"
           },
           {
@@ -200,7 +200,7 @@
             "texte": "troisième trimestre 2025",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg",
+            "photo": "/assets/photos/il-meca-sous-machine-gant-bleu.jpg",
             "logo": "/assets/clients/mq-441fc873c0d9.svg"
           },
           {
@@ -208,7 +208,7 @@
             "texte": "un technicien sur site, été 2025",
             "lienLibelle": "Étude de cas OGF : arrêt estival",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/elec-senior-armoire-relais.jpg",
+            "photo": "/assets/photos/il-depannage-lampe-torche-recherche-panne.jpg",
             "logo": "/assets/clients/ogf.png"
           },
           {
@@ -216,7 +216,7 @@
             "texte": "2025 à 2026",
             "lienLibelle": "Étude de cas VPK : maintenance de site",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
+            "photo": "/assets/photos/il-meca-moteur-lourd-controle-gilet.jpg"
           },
           {
             "titre": "Renfort des équipes de maintenance sur plusieurs sites de production, confort thermique",
@@ -230,7 +230,7 @@
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
             "lienLibelle": "Autoliv",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/robot-cellule-soudure-inspection.jpg",
+            "photo": "/assets/photos/pneu-cle-bloc-distribution.jpg",
             "logo": "/assets/clients/mq-a4d5eb645ce5.svg"
           }
         ]

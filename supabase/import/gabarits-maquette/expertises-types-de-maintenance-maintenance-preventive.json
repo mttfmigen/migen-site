@@ -39,17 +39,17 @@
       {
         "valeur": "+200",
         "texte": "Clients industriels accompagnés",
-        "photo": "/assets/photos/elec-schema-lampe-frontale.jpg"
+        "photo": "/assets/photos/il-meca-motoreducteur-controle-gilet.jpg"
       },
       {
         "valeur": "10 %",
         "texte": "Des techniciens retenus, chaque technicien qui passe chez vous est évalué",
-        "photo": "/assets/photos/meca-cle-bride-carter.jpg"
+        "photo": "/assets/photos/il-elec-ouverture-coffret-gilet-orange.jpg"
       },
       {
         "valeur": "8",
         "texte": "Domaines techniques couverts par une seule équipe, de la mécanique à la robotique",
-        "photo": "/assets/photos/robot-portable-diagnostic-cellule.jpg"
+        "photo": "/assets/photos/elec-schema-lampe-frontale.jpg"
       }
     ],
     "complementTypes": [
@@ -270,14 +270,14 @@
             "texte": "Six techniciens en permanence, prise en charge réalisée en un mois.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/pneu-cle-bloc-distribution.jpg"
+            "photo": "/assets/photos/il-meca-rampe-injection-moteur-bleu.jpg"
           },
           {
             "titre": "Préventif tenu sur un centre logistique en flux continu",
             "texte": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures, sans arrêter les flux.",
             "lienLibelle": "Étude de cas AMAZON",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/robot-pince-reparation-etabli.jpg"
+            "photo": "/assets/photos/il-meca-intervention-accroupi-atelier.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, automobile",
@@ -291,14 +291,14 @@
             "texte": "Trois techniciens, fin 2024.",
             "lienLibelle": "Étude de cas EIFFAGE",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/photos/meca-technicienne-cle-machine.jpg"
+            "photo": "/assets/photos/il-hydrau-verin-godet-engin.jpg"
           },
           {
             "titre": "Préventif tenu pendant l'arrêt estival, services funéraires",
             "texte": "Un technicien intégré sur les équipements critiques, été 2025.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/elec-senior-armoire-relais.jpg"
+            "photo": "/assets/photos/il-meca-controle-sous-machine-casque-jaune.jpg"
           },
           {
             "titre": "Contrat de maintenance sur un site agroalimentaire de grande échelle, Belgique",
@@ -311,7 +311,7 @@
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/agro-mains-vanne-sanitaire.jpg"
+            "photo": "/assets/photos/robot-portable-diagnostic-cellule.jpg"
           },
           {
             "titre": "Un technicien dédié pour que le parc ne décroche pas",

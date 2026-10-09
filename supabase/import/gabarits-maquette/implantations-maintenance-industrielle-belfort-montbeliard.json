@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Belfort-Montbéliard",
       "titre": "Belfort-Montbéliard : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/meca-technicienne-parc-moteurs.jpg",
+      "photo": "/assets/photos/il-chimie-colonnes-eclairees-heure-bleue.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Belfort-Montbéliard et ses environs",
       "texte": "Nos techniciens itinérants couvrent Belfort-Montbéliard et son bassin, appuyés par le réseau national Migen.",
@@ -231,19 +231,19 @@
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/pharma-cuves-process-passerelle.jpg"
+            "photo": "/assets/photos/il-auto-sous-caisse-poids-lourd.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/web/sv-duo-impact.jpg"
+            "photo": "/assets/photos/il-tuyau-vannes-technicienne-tablette.jpg"
           },
           {
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
             "lienLibelle": "Étude de cas Autoliv",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/elec-cablage-armoire-tournevis.jpg"
+            "photo": "/assets/photos/il-robot-cellule-grillagee-automaticien.jpg"
           },
           {
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
@@ -255,13 +255,13 @@
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
+            "photo": "/assets/photos/il-meca-portrait-cle-plate-machine-usee.jpg"
           },
           {
             "titre": "Centres d’usinage et presses tenus dans le Grand Est",
             "lienLibelle": "Étude de cas Voit",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/chimie-cuve-melange-flexible.jpg"
+            "photo": "/assets/photos/agro-atelier-inox-plan-large.jpg"
           }
         ]
       },

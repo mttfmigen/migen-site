@@ -34,7 +34,7 @@
         "libelle": "Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie, robotique"
       }
     ],
-    "problemePhoto": "/assets/photos/tuyau-soudure-reseau-usine.jpg",
+    "problemePhoto": "/assets/photos/agro-remplisseuse-cle-plate.jpg",
     "sections": [
       {
         "type": "probleme",
@@ -166,53 +166,53 @@
             "texte": "Étude technique machine par machine, plusieurs options chiffrées, remise en état du parc existant plutôt que rachat de matériel neuf, depuis février 2024.",
             "lienLibelle": "Étude de cas JOINT LYONNAIS",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/elec-armoire-pont-roulant-gilet.jpg"
+            "photo": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg"
           },
           {
             "titre": "Réduction des incidents machine récurrents, pièces mécaniques de précision",
             "texte": "Un technicien à temps plein sur centres d'usinage grande vitesse, presses et commandes numériques, plan de maintenance repris en continu, 2025.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
+            "photo": "/assets/photos/meca-reducteur-ouvert-plongee.jpg"
           },
           {
             "titre": "Sortie du mode pompier sur un parc hétérogène, papier et emballage",
             "texte": "Un technicien polyvalent intégré aux lignes, temps d'arrêt réduits et préventif qui n'est plus sacrifié aux urgences, 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/pneu-cle-bloc-distribution.jpg"
+            "photo": "/assets/photos/il-meca-intervention-accroupi-atelier.jpg"
           },
           {
             "titre": "Travaux de remise en état d'installations critiques, traitement des eaux industrielles",
             "texte": "Électromécanicien polyvalent habilité risque chimique niveau 1 avant l'entrée sur site, mission de 6 mois depuis février 2026.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/hydrau-centrale-hydraulique-technicien.jpg"
+            "photo": "/assets/photos/il-meca-chaine-transmission-reglage.jpg"
           },
           {
             "titre": "Temps de remise en service raccourci sur des lignes à haute cadence, nutrition infantile",
             "texte": "Deux techniciens intégrés en 3x8 sur les lignes liquides et le conditionnement poudre, site de Steenvoorde.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/elec-schema-lampe-frontale.jpg"
+            "photo": "/assets/photos/hydrau-centrale-hydraulique-technicien.jpg"
           },
           {
             "titre": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
             "lienLibelle": "Étude de cas Atena",
             "lienHref": "/preuves/atena-port-la-rochelle/",
-            "photo": "/assets/photos/aero-nacelle-moteur-technicien.jpg"
+            "photo": "/assets/photos/il-elec-ouverture-coffret-gilet-orange.jpg"
           },
           {
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/agro-mains-vanne-sanitaire.jpg"
+            "photo": "/assets/photos/il-hydrau-verin-godet-engin.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/meca-technicienne-cle-machine.jpg"
+            "photo": "/assets/photos/robot-poignet-technicien-casque.jpg"
           }
         ]
       },

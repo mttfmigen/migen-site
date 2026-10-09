@@ -176,7 +176,7 @@
             "texte": "six techniciens en poste depuis octobre 2023, aux côtés des équipes internes",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/meca-moteur-palan-depose.jpg",
+            "photo": "/assets/photos/elec-mesure-multimetre-faisceau.jpg",
             "logo": "/assets/clients/stellantis.png"
           },
           {
@@ -184,7 +184,7 @@
             "texte": "deux techniciens intégrés aux équipes du site de Steenvoorde",
             "lienLibelle": "Étude de cas DANONE : lignes de production",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/pharma-isolateur-salle-propre.jpg",
+            "photo": "/assets/photos/il-pneu-ligne-verins-portrait.jpg",
             "logo": "/assets/clients/danone-bledina.png"
           },
           {
@@ -192,7 +192,7 @@
             "texte": "trois à cinq techniciens déployés depuis septembre 2024",
             "lienLibelle": "Étude de cas VALEO : plusieurs usines",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg",
+            "photo": "/assets/photos/agro-ihm-ligne-conditionnement-senior.jpg",
             "logo": "/assets/clients/mq-f6fcccfd4cc8.svg"
           },
           {
@@ -302,19 +302,19 @@
         "titre": "Sous-traitance maintenance",
         "phrase": "Un technicien présent chaque jour dans vos murs, intégré à votre équipe de production. Voir la sous-traitance maintenance.",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/tuyau-pointage-bride-tube.jpg"
+        "photo": "/assets/web/sv-armoire.jpg"
       },
       {
         "titre": "Contrat de maintenance",
         "phrase": "Un contrat de visites préventives planifiées, avec suivi de l'état du parc et priorité d'intervention. Voir le contrat de maintenance.",
         "href": "/offres/zero-arret/",
-        "photo": "/assets/photos/robot-pince-reparation-etabli.jpg"
+        "photo": "/assets/photos/robot-palettisation-tablette.jpg"
       },
       {
         "titre": "Astreinte industrielle",
         "phrase": "Une astreinte la nuit, le week-end et les jours fériés, nuits, week-ends et jours fériés. Voir l'astreinte industrielle.",
         "href": "/offres/depannage-industriel/astreinte/",
-        "photo": "/assets/photos/energie-rack-canalisations-binome.jpg"
+        "photo": "/assets/photos/il-meca-controle-sous-machine-casque-jaune.jpg"
       },
       {
         "titre": "Arrêt technique maintenance",
@@ -332,7 +332,7 @@
         "titre": "Full service",
         "phrase": "Toute votre maintenance, un seul partenaire.",
         "href": "/offres/full-service/",
-        "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg"
+        "photo": "/assets/photos/energie-rack-canalisations-binome.jpg"
       }
     ],
     "pagesLieesTitre": "Par où continuer ?"

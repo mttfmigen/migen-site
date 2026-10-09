@@ -32,7 +32,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Rennes",
       "titre": "Rennes : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/levage-montage-poteau-charpente.jpg",
+      "photo": "/assets/photos/elec-cablage-armoire-tournevis.jpg",
       "badge": "Rattaché au hub Nantes",
       "nom": "Rennes, couvert par le hub Nantes",
       "texte": "Les techniciens du hub Nantes interviennent à Rennes et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -83,7 +83,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg",
+    "problemePhoto": "/assets/photos/levage-montage-poteau-charpente.jpg",
     "complementOffre": [
       {
         "texte": "Chaque passage alimente votre GMAO : historique, pièces, préconisations. Pour une panne isolée, le dépannage industriel reste le format le plus simple pour nous juger sur pièces."
@@ -230,53 +230,53 @@
             "texte": ", sur les installations critiques, depuis 2025.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg"
+            "photo": "/assets/photos/metal-four-arc-acierie.jpg"
           },
           {
             "titre": "Un technicien de maintenance dédié au maintien d'un parc machines",
             "texte": ", en présence continue et en coordination avec les équipes du site.",
             "lienLibelle": "Étude de cas AUTOLIV",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg"
+            "photo": "/assets/photos/pneu-cle-bloc-distribution.jpg"
           },
           {
             "titre": "Deux techniciens en 3x8 sur les lignes liquides et le conditionnement poudre",
             "texte": "d'un site de nutrition infantile.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/elec-schema-lampe-frontale.jpg"
+            "photo": "/assets/photos/il-auto-sous-vehicule-tout-terrain.jpg"
           },
           {
             "titre": "Un responsable maintenance intégré sur site pour piloter le service",
             "texte": "pendant une intensification de production et une transition d'équipe.",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/aero-reacteur-capot-combinaison.jpg"
+            "photo": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg"
           },
           {
             "titre": "Deux techniciens en poste permanent sur les convoyeurs, trieurs et lignes de packaging",
             "texte": "d'un transporteur, en maintenance curative.",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/robot-cobot-technicienne.jpg"
+            "photo": "/assets/photos/chaudro-technicienne-plan-etabli.jpg"
           },
           {
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg"
+            "photo": "/assets/photos/il-auto-sous-caisse-poids-lourd.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/meca-pied-a-coulisse-fraiseuse.jpg"
+            "photo": "/assets/photos/il-robot-cobot-blanc-pupitre.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
+            "photo": "/assets/photos/soudure-soudeuse-masque-releve.jpg"
           }
         ]
       },

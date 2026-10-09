@@ -39,17 +39,17 @@
       {
         "valeur": "10 %",
         "texte": "Des techniciens retenus, chaque technicien est évalué en entretien technique et comportemental",
-        "photo": "/assets/photos/robot-technicienne-inspection-bras.jpg"
+        "photo": "/assets/photos/elec-senior-armoire-relais.jpg"
       },
       {
         "valeur": "+ 120",
         "texte": "Collaborateurs, depuis quatre agences, partout en France",
-        "photo": "/assets/photos/elec-multimetre-armoire-automatisme.jpg"
+        "photo": "/assets/photos/il-meca-motoreducteur-controle-gilet.jpg"
       },
       {
         "valeur": "8",
         "texte": "Domaines techniques couverts par une seule équipe, de la mécanique à la robotique",
-        "photo": "/assets/photos/chimie-piquage-manometre-gants.jpg"
+        "photo": "/assets/photos/robot-technicienne-inspection-bras.jpg"
       }
     ],
     "complementTypes": [
@@ -168,7 +168,7 @@
         }
       }
     ],
-    "problemePhoto": "/assets/photos/elec-local-technicien-accroupi.jpg",
+    "problemePhoto": "/assets/photos/il-automatisme-coffret-rouge-accroupi.jpg",
     "complementOffre": [
       {
         "texte": "Pour une panne en cours, voir le dépannage industriel."
@@ -299,54 +299,54 @@
             "texte": "Six techniciens en permanence, prise en charge réalisée en un mois.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/meca-cle-bride-carter.jpg"
+            "photo": "/assets/photos/pneu-cle-bloc-distribution.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, automobile",
             "texte": "Tenue, depuis octobre 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/automatisme-coffret-cartes-portable.jpg"
+            "photo": "/assets/photos/il-outillage-panneau-atelier-accroupi.jpg"
           },
           {
             "titre": "Pilotage de la maintenance pendant une montée de cadence, distribution technique",
             "texte": "Un responsable maintenance intégré sur site, T3 2025.",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/agro-remplisseuse-cle-plate.jpg"
+            "photo": "/assets/photos/il-meca-moteur-lourd-controle-gilet.jpg"
           },
           {
             "titre": "Maintenance des centres d'usinage, presses et machines à commande numérique, automobile",
             "texte": "Un technicien intégré à temps plein.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
+            "photo": "/assets/photos/il-elec-multimetre-boitier-accroupie.jpg"
           },
           {
             "titre": "Renfort de 3 à 5 techniciens sur plusieurs usines en France, automobile",
             "texte": "Depuis septembre 2024, accompagnement d'une montée en cadence.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg"
+            "photo": "/assets/photos/il-meca-bloc-moteur-halle-gilet.jpg"
           },
           {
             "titre": "Préventif tenu pendant l'arrêt estival, services funéraires",
             "texte": "Un technicien intégré sur les équipements critiques, été 2025.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/robot-poignet-technicien-casque.jpg"
+            "photo": "/assets/photos/il-depannage-lampe-torche-recherche-panne.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/elec-armoire-pont-roulant-gilet.jpg"
+            "photo": "/assets/photos/il-elec-mesure-coffret-mural.jpg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/aero-nacelle-moteur-technicien.jpg"
+            "photo": "/assets/photos/il-meca-combinaison-rouge-machinerie.jpg"
           }
         ]
       },

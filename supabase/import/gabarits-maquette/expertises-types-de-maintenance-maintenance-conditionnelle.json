@@ -39,17 +39,17 @@
       {
         "valeur": "10 %",
         "texte": "Des techniciens retenus, l'interprétation d'un spectre vibratoire s'évalue en entretien",
-        "photo": "/assets/photos/agro-remplisseuse-cle-plate.jpg"
+        "photo": "/assets/photos/il-elec-lampe-frontale-cablage-dense.jpg"
       },
       {
         "valeur": "8",
         "texte": "Domaines techniques couverts par une seule équipe, de la mécanique à la robotique",
-        "photo": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg"
+        "photo": "/assets/photos/agro-remplisseuse-cle-plate.jpg"
       },
       {
         "valeur": "4",
         "texte": "Agences, Lyon (siège), Montréal, Dubaï, Madrid, des campagnes partout en France",
-        "photo": "/assets/photos/hydrau-centrale-hydraulique-technicien.jpg"
+        "photo": "/assets/photos/il-elec-multimetre-boitier-accroupie.jpg"
       }
     ],
     "complementTypes": [
@@ -334,39 +334,39 @@
             "texte": "Un technicien de maintenance dédié, intégré aux équipes en 2025.",
             "lienLibelle": "Étude de cas AUTOLIV",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/elec-schema-lampe-frontale.jpg"
+            "photo": "/assets/photos/robot-cellule-soudure-inspection.jpg"
           },
           {
             "titre": "Renfort de 1 à 3 techniciens sur des sites de production, chauffage et sanitaire",
             "texte": "Depuis octobre 2024.",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/elec-binome-coffret-chaufferie.jpg"
+            "photo": "/assets/photos/robot-multimetre-cablage-robot.jpg"
           },
           {
             "titre": "Deux techniciens intégrés en 3x8 sur les lignes liquides et poudre, agroalimentaire",
             "texte": "Site de Steenvoorde.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/aero-fuselage-serrage-lampe.jpg"
+            "photo": "/assets/photos/il-elec-penche-faisceau-machine.jpg"
           },
           {
             "titre": "Le préventif d’une centrale photovoltaïque en trois techniciens",
             "lienLibelle": "Étude de cas Eiffage",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg"
+            "photo": "/assets/photos/meca-technicienne-cle-machine.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/elec-multimetre-armoire-automatisme.jpg"
+            "photo": "/assets/photos/elec-binome-coffret-chaufferie.jpg"
           },
           {
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/meca-cle-bride-carter.jpg"
+            "photo": "/assets/photos/il-elec-accroupie-armoire-penombre.jpg"
           }
         ]
       },

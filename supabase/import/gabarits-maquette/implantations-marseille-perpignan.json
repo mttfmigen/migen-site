@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Perpignan",
       "titre": "Perpignan : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/chimie-reacteurs-agites-passerelle.jpg",
+      "photo": "/assets/photos/il-auto-cliquet-intervention-vehicule.jpg",
       "badge": "Rattaché au hub Marseille",
       "nom": "Perpignan, couvert par le hub Marseille",
       "texte": "Les techniciens du hub Marseille interviennent à Perpignan et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -203,13 +203,13 @@
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/energie-bride-mat-eolienne.jpg"
+            "photo": "/assets/photos/il-technicien-portrait-structure-exterieure.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg"
+            "photo": "/assets/photos/il-meca-inspection-piece-releve-atelier.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
@@ -221,19 +221,19 @@
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg"
+            "photo": "/assets/photos/il-meca-grand-disque-volant-inertie.jpg"
           },
           {
             "titre": "Un renfort pour que le pain sorte chaque matin",
             "lienLibelle": "Étude de cas La Panetière",
             "lienHref": "/preuves/la-panetiere/",
-            "photo": "/assets/photos/meca-senior-rouleuse-combinaison.jpg"
+            "photo": "/assets/photos/il-ciment-tours-grues-crepuscule.jpg"
           },
           {
             "titre": "Un été entier sans trou dans la maintenance",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/elec-senior-armoire-relais.jpg"
+            "photo": "/assets/photos/meca-presses-volants-technicienne.jpg"
           }
         ]
       },

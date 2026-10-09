@@ -272,21 +272,21 @@
             "texte": "Deux techniciens en poste sur site, dédiés au maintien des équipements.",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/elec-binome-coffret-chaufferie.jpg"
+            "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg"
           },
           {
             "titre": "Diagnostic sur site et réparation d'un parc machines défaillant, industrie lyonnaise",
             "texte": "Remise en état sans rachat de matériel neuf.",
             "lienLibelle": "Étude de cas JOINT LYONNAIS",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/elec-armoire-pont-roulant-gilet.jpg"
+            "photo": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
           },
           {
             "titre": "Remise en état d'un site de traitement des eaux industrielles, environnement",
             "texte": "Un électromécanicien habilité risque chimique mobilisé six mois.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/robot-technicienne-inspection-bras.jpg"
+            "photo": "/assets/photos/il-meca-chaine-transmission-reglage.jpg"
           },
           {
             "titre": "Maintenance préventive et curative des lignes de production, jeux et loteries",
@@ -300,14 +300,14 @@
             "texte": "Un technicien intégré à temps plein.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/meca-technicienne-cle-machine.jpg"
+            "photo": "/assets/photos/il-meca-bloc-moteur-halle-gilet.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, automobile",
             "texte": "Tenue, depuis octobre 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/elec-mesure-multimetre-faisceau.jpg"
+            "photo": "/assets/photos/elec-local-technicien-accroupi.jpg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
@@ -319,7 +319,7 @@
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/elec-local-technicien-accroupi.jpg"
+            "photo": "/assets/photos/aero-fuselage-serrage-lampe.jpg"
           }
         ]
       },

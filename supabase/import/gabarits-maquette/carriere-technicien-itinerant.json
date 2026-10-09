@@ -20,7 +20,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/elec-salle-cellules-ht-ronde.jpg",
+        "src": "/assets/photos/levage-pont-roulant-hall-acier.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -395,17 +395,17 @@
           {
             "libelle": "Métiers de la maintenance",
             "href": "/carriere/",
-            "photo": "/assets/photos/meca-cle-bride-carter.jpg"
+            "photo": "/assets/photos/il-tuyau-reseau-vert-cuves-inspection.jpg"
           },
           {
             "libelle": "Technicien de maintenance",
             "href": "/carriere/technicien-de-maintenance/",
-            "photo": "/assets/photos/elec-tgbt-technicienne-tablette.jpg"
+            "photo": "/assets/photos/il-energie-salle-commande-tableau-bleu.jpg"
           },
           {
             "libelle": "Responsable maintenance",
             "href": "/carriere/responsable-maintenance/",
-            "photo": "/assets/photos/agro-atelier-inox-plan-large.jpg"
+            "photo": "/assets/web/sv-duo-impact.jpg"
           }
         ]
       }

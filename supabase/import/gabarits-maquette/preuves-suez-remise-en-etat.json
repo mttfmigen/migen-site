@@ -14,7 +14,7 @@
     ],
     "bouton": "Poser mon besoin de renfort technique",
     "logo": "/assets/clients/mq-89100525ef89.svg",
-    "photoHero": "/assets/photos/meca-technicienne-parc-moteurs.jpg",
+    "photoHero": "/assets/photos/il-meca-controle-sous-machine-casque-jaune.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -128,7 +128,7 @@
         "valeur": "RC1, risque chimique niveau 1"
       }
     ],
-    "photoDispositif": "/assets/photos/energie-bride-mat-eolienne.jpg",
+    "photoDispositif": "/assets/photos/il-tuyau-pupitre-local-antibruit.jpg",
     "resultats": [
       {
         "titre": "Le pic d'activité est absorbé",
@@ -163,25 +163,25 @@
         "surtitre": "Étude de cas",
         "titre": "FDJ : renfort de maintenance en continu",
         "href": "/preuves/fdj/",
-        "photo": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg"
+        "photo": "/assets/photos/il-meca-ressorts-suspension-combinaison.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/energie-rack-canalisations-binome.jpg"
+        "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/aero-reacteur-capot-combinaison.jpg"
+        "photo": "/assets/photos/elec-salle-cellules-ht-ronde.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/elec-senior-armoire-relais.jpg"
+        "photo": "/assets/photos/il-robot-bras-orange-reglage-souriante.jpg"
       }
     ]
   }

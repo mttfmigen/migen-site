@@ -23,7 +23,7 @@
       }
     ],
     "logo": "/assets/clients/mq-e2c58c98b787.svg",
-    "photoHero": "/assets/photos/elec-mains-bornier-relais.jpg",
+    "photoHero": "/assets/photos/il-meca-organe-machine-casque-jaune.jpg",
     "chiffres": [
       {
         "libelle": "Nature des travaux",
@@ -127,7 +127,7 @@
         "valeur": "Alliance élargie à Savoye pour l'intralogistique"
       }
     ],
-    "photoDispositif": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg",
+    "photoDispositif": "/assets/photos/elec-mains-bornier-relais.jpg",
     "resultats": [
       {
         "titre": "Une meilleure disponibilité",
@@ -170,25 +170,25 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/soudure-soudeuse-masque-releve.jpg"
+        "photo": "/assets/photos/il-technicien-portrait-casque-antibruit.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrielle",
         "href": "/secteurs/",
-        "photo": "/assets/photos/meca-reducteur-ouvert-plongee.jpg"
+        "photo": "/assets/photos/il-aero-train-atterrissage-casque-antibruit.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : alliance intralogistique",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/hydrau-centrale-hydraulique-technicien.jpg"
+        "photo": "/assets/photos/robot-pupitre-apprentissage-soudure.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/soudure-corps-vanne-forge.jpg"
+        "photo": "/assets/photos/meca-technicienne-cle-machine.jpg"
       }
     ]
   }
