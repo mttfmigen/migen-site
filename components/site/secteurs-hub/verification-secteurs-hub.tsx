@@ -42,7 +42,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import PageOffre from "@/components/site/offre/PageOffre";
 import { appliqueDecisions } from "@/lib/decisions-copie";
-import { deLaRepartition } from "@/scripts/photos-autorisees";
+import { deLaRepartition } from "@/lib/photos-autorisees";
 import type { ContenuOffre } from "@/types/offre";
 
 const RACINE = fileURLToPath(new URL("../../..", import.meta.url));
@@ -171,7 +171,7 @@ function photosLocales(html: string): string[] {
    68 photos distinctes pour 1 822 emplacements, et les 109 photos achetées
    sous licence le 08/10 servies par aucune page. La règle devient, pour CHAQUE
    emplacement : l'empreinte (ou le nom) de la maquette, OU une photo de la
-   répartition du 09/10 (`scripts/photos-autorisees.ts`). Ce qui ne bouge pas,
+   répartition du 09/10 (`lib/photos-autorisees.ts`). Ce qui ne bouge pas,
    et c'est ce qui garde les dents de la porte : LE NOMBRE d'emplacements reste
    celui de la capture, et une photo qui ne vient ni de la maquette ni du
    registre tombe. Deux témoins en font la preuve. */

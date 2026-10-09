@@ -46,7 +46,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import ProblemeDomaine from "@/components/site/expertises/domaine/ProblemeDomaine";
 import ComplementsOffre from "@/components/site/offre/ComplementsOffre";
 import { appliqueDecisions } from "@/lib/decisions-copie";
-import { REGISTRE, cheminRegistre, deLaRepartition } from "@/scripts/photos-autorisees";
+import { REGISTRE, cheminRegistre, deLaRepartition } from "@/lib/photos-autorisees";
 import type { SectionProbleme } from "@/types/contenu";
 import type { BlocComplementDomaine } from "@/types/domaine";
 import { estSpecialite, type ContenuSpecialite } from "@/types/specialite";
@@ -436,7 +436,7 @@ function verifieComplement(nom: string, capture: string, blocs: BlocComplementDo
      - LA MAQUETTE : le fichier est nommé par la capture de la page ;
      - LA RÉPARTITION : le fichier est au registre des 109 photos sous licence,
        ou c'est une des dix photos de l'équipe Migen
-       (`scripts/photos-autorisees.ts`).
+       (`lib/photos-autorisees.ts`).
    Tout le reste tombe, et un témoin en fait la preuve.
 
    CE QUE CETTE RÈGLE NE DIT PAS, et il faut le savoir : elle autorise un

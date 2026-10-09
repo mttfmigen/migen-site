@@ -81,7 +81,7 @@
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-import { PHOTOS_MIGEN, RACINE, REGISTRE, cheminRegistre } from "./photos-autorisees";
+import { PHOTOS_MIGEN, RACINE, REGISTRE, cheminRegistre } from "@/lib/photos-autorisees";
 
 const DOSSIER = join(RACINE, "supabase", "import", "gabarits-maquette");
 

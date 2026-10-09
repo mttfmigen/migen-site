@@ -1,5 +1,13 @@
 /**
  * LES PHOTOS QU'UNE PAGE A LE DROIT DE SERVIR.
+
+ * IL VIT DANS `lib/` ET NON DANS `scripts/`, et ce n'est pas un rangement :
+ * `.vercelignore` exclut `scripts/` du déploiement, alors que six composants
+ * `verification-*.tsx` importent ce module et que Next les typecheck au build.
+ * Les builds déclenchés par GitHub échouaient donc tous sur
+ * « Cannot find module '@/scripts/photos-autorisees' », pendant que les
+ * déploiements manuels passaient, parce que `--archive` n'applique pas
+ * `.vercelignore`. Deux mises en ligne automatiques perdues avant de le voir.
  *
  * ÉCART MAJEUR À LA MAQUETTE, DÉCLARÉ LE 09/10/2025, DEMANDÉ PAR MEHDI.
  * =====================================================================

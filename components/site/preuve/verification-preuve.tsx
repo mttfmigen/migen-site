@@ -56,7 +56,7 @@ import { gunzipSync } from "node:zlib";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { appliqueDecisions } from "@/lib/decisions-copie";
-import { REGISTRE, cheminRegistre, deLaRepartition } from "@/scripts/photos-autorisees";
+import { REGISTRE, cheminRegistre, deLaRepartition } from "@/lib/photos-autorisees";
 import type { ContenuPreuve } from "@/types/preuve";
 
 import PagePreuve from "./PagePreuve";
@@ -298,7 +298,7 @@ function octetsDeLaMaquette(chemin: string): boolean {
    servie 133 fois sur le site). La règle devient DEUX SOURCES, et pas une de
    plus : les octets de la maquette, OU la répartition du 09/10 (registre des
    109 photos sous licence + les dix photos de l'équipe Migen), déclarée dans
-   `scripts/photos-autorisees.ts`. Tout le reste tombe, et le témoin « une
+   `lib/photos-autorisees.ts`. Tout le reste tombe, et le témoin « une
    photo aux octets étrangers » plus bas en fait encore la preuve. */
 function photoAdmise(chemin: string): boolean {
   return octetsDeLaMaquette(chemin) || deLaRepartition(chemin);

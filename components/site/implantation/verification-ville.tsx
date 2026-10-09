@@ -76,7 +76,7 @@ import { fileURLToPath } from "node:url";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { appliqueDecisions } from "@/lib/decisions-copie";
-import { deLaRepartition } from "@/scripts/photos-autorisees";
+import { deLaRepartition } from "@/lib/photos-autorisees";
 import type { ContenuVille } from "@/types/implantation";
 
 import PageVille from "./PageVille";
@@ -333,7 +333,7 @@ const SOUS_LICENCE: Record<string, string> = {
    109 photos achetées sous licence le 08/10 n'étaient servies par aucune page.
    La règle devient DEUX SOURCES : la photo calculée par la maquette, OU une
    photo de la répartition du 09/10 (registre des 109 photos sous licence + les
-   dix photos de l'équipe Migen), déclarée dans `scripts/photos-autorisees.ts`.
+   dix photos de l'équipe Migen), déclarée dans `lib/photos-autorisees.ts`.
    Tout le reste tombe. Deux témoins en font la preuve plus bas : une photo de
    référence devinée parmi celles de la maquette, et un chemin du dossier
    `/assets/photos/` absent du registre. */

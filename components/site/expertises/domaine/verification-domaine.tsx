@@ -48,7 +48,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { FAMILLES } from "@/components/site/marques/marques-donnees";
 import MarquesOffre from "@/components/site/offre/MarquesOffre";
 import { appliqueDecisions } from "@/lib/decisions-copie";
-import { REGISTRE, cheminRegistre, deLaRepartition } from "@/scripts/photos-autorisees";
+import { REGISTRE, cheminRegistre, deLaRepartition } from "@/lib/photos-autorisees";
 import type { Paragraphe, SectionProbleme } from "@/types/contenu";
 import {
   estDomaine,
@@ -365,7 +365,7 @@ const DOSSIER = join("supabase", "import", "gabarits-maquette");
      - LA MAQUETTE : le fichier est nommé par la capture de la page ;
      - LA RÉPARTITION : le fichier est au registre des 109 photos sous licence,
        ou c'est une des dix photos de l'équipe Migen
-       (`scripts/photos-autorisees.ts`).
+       (`lib/photos-autorisees.ts`).
    Tout le reste tombe, et un témoin en fait la preuve.
 
    CE QUE CETTE RÈGLE NE DIT PAS, et il faut le savoir : elle autorise un

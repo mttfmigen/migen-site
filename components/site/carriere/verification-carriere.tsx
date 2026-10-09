@@ -41,7 +41,7 @@ import { gunzipSync } from "node:zlib";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { appliqueDecisions } from "@/lib/decisions-copie";
-import { REGISTRE, cheminRegistre, deLaRepartition } from "@/scripts/photos-autorisees";
+import { REGISTRE, cheminRegistre, deLaRepartition } from "@/lib/photos-autorisees";
 
 import { HUB_CARRIERE, type ContenuHubCarriere } from "./donnees-hub";
 import PageHubCarriere from "./PageHubCarriere";
@@ -408,7 +408,7 @@ const VILLES_SOUS_LICENCE = new Set([
    elle les refusait toutes, et le site servait `team-duo.jpg` 133 fois
    (mesuré par `node scripts/mesure-photos-site.mjs`). On ajoute UNE source,
    fermée : la répartition du 09/10, déclarée dans
-   `scripts/photos-autorisees.ts`. Rien d'autre ne passe. */
+   `lib/photos-autorisees.ts`. Rien d'autre ne passe. */
 function jugePhoto(photo: string): void {
   const fichier = join(RACINE, "public", photo);
   assert.ok(existsSync(fichier), `photo absente du dépôt : ${photo}`);
