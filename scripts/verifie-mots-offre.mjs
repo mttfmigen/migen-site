@@ -64,6 +64,40 @@ const PAGES = {
   construction: "/offres/construction/",
 };
 
+/**
+ * LES ADRESSES QUE LE ROUTEUR DE LA MAQUETTE DÉTOURNE, et qu'on ne peut donc
+ * pas mesurer contre elle.
+ *
+ * Sa table `remapOffer` envoie six adresses ailleurs : `/offres/chantier/` et
+ * `/offres/construction/` vers `/travaux-industriels/`, `/bureau-etudes/` vers
+ * `/offres/bureau-etudes/`, et ainsi de suite. Deux des six pages de cette
+ * porte en font partie. Comparer leur rendu à « la maquette » revenait donc à
+ * les comparer à UNE AUTRE PAGE, et cette porte annonçait 1 196 écarts dont
+ * l'essentiel n'existe pas. Le même piège avait coûté une demi-journée sur
+ * `/bureau-etudes/`, mesurée à 69 % de divergence alors que le site reproduit
+ * sa capture mot pour mot ; `diff-visuel-offre.mjs` l'a corrigé le 09/10, pas
+ * celle-ci.
+ *
+ * LA TABLE SE LIT DANS LA MAQUETTE, elle ne se recopie pas : recopiée, elle
+ * dériverait au prochain export du client. Et comparer les titres ne suffit
+ * pas à repérer un détournement : deux pages détournées partagent parfois leur
+ * h1, c'est précisément ce qui rendait le piège invisible.
+ */
+const DETOURNEES = (() => {
+  try {
+    const source = readFileSync(new URL("../maquette/site-final-autonome.html", import.meta.url), "utf8");
+    const bloc = source.match(/remapOffer\(u\)\s*\{[^}]*?const M = \{([^}]*)\}/s);
+    if (!bloc) return new Map();
+    const table = new Map();
+    for (const [, de, vers] of bloc[1].matchAll(/\\?"(\/[^"\\]*)\\?"\s*:\s*\\?"(\/[^"\\]*)\\?"/g)) {
+      table.set(de, vers);
+    }
+    return table;
+  } catch {
+    return new Map();
+  }
+})();
+
 /** Le serveur de développement. La page construite sert de repli. */
 const SERVEUR = process.env.MIGEN_SITE_URL ?? "http://localhost:4340";
 
@@ -559,7 +593,16 @@ const verbeux = process.argv.includes("--rendu");
 let totalAttendues = 0;
 let totalRendues = 0;
 
+const ecartees = [];
 for (const [cle, url] of Object.entries(PAGES)) {
+  /* Une adresse détournée par le routeur de la maquette n'a pas de référence
+     mesurable : la comparer reviendrait à la comparer à une autre page. Voir
+     l'en-tête de `DETOURNEES`. Sa seule référence valable est sa capture
+     figée, `maquette/rendu/<cle>.html`. */
+  if (DETOURNEES.has(url)) {
+    ecartees.push(`${url} (détournée vers ${DETOURNEES.get(url)})`);
+    continue;
+  }
   const { html, ou } = await rendu(url);
   const corps = corpsDeLaPage(html, url);
   const texte = texteVisible(corps);
@@ -645,6 +688,7 @@ for (const x of SUBSTITUTIONS_ARBITREES) {
 
 /* Le tiret cadratin ne doit apparaître dans AUCUN des six rendus. */
 for (const [, url] of Object.entries(PAGES)) {
+  if (DETOURNEES.has(url)) continue;
   const { html } = await rendu(url);
   const texte = texteVisible(corpsDeLaPage(html, url));
   if (texte.includes("—")) {
@@ -664,8 +708,16 @@ if (defauts.length > 0) {
   process.exit(1);
 }
 
+if (ecartees.length > 0) {
+  console.log(
+    `\n${ecartees.length} adresse(s) écartée(s), détournées par le routeur de la maquette et donc` +
+      ` sans référence mesurable ici :\n  ${ecartees.join("\n  ")}` +
+      `\n  Leur seule référence est leur capture figée, maquette/rendu/<clé>.html.`,
+  );
+}
+
 console.log(
-  `\npage d'offre conforme au mot : ${Object.keys(PAGES).length} offres, ` +
+  `\npage d'offre conforme au mot : ${Object.keys(PAGES).length - ecartees.length} offres mesurées, ` +
     `${totalAttendues} phrases de maquette toutes rendues, ` +
     `${totalRendues} phrases rendues toutes sourcées, ` +
     `${EXCEPTIONS_CADRATIN.length} phrases à tiret cadratin substituées et déclarées, ` +

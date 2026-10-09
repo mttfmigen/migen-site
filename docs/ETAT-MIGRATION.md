@@ -324,3 +324,46 @@ qui portent déjà leur `h2` : les envelopper dupliquerait le titre. Le gabarit
 Ville est le plus concerné, 74 pages de 13 000 caractères, mais sa porte
 `verifie-implantations.tsx` est déjà rouge pour trois causes antérieures. À
 reprendre une fois cette porte remise d'aplomb.
+
+## Ce qui reste au bureau, au 09/10 au soir
+
+Toutes les portes de gabarit sont vertes, `tsc` compris. Deux mesures restent
+rouges, et ce sont les deux derniers chantiers du bureau.
+
+### 1. `scripts/verifie-mots-offre.mjs` : 874 écarts sur quatre pages d'offre
+
+Elle annonçait 1 196. **322 d'entre eux n'existaient pas** : la porte ignorait
+la table `remapOffer` du routeur de la maquette, et comparait
+`/offres/chantier/` et `/offres/construction/` à `/travaux-industriels/`, donc
+à une AUTRE page. C'est le piège qui avait déjà coûté une demi-journée sur
+`/bureau-etudes/`, corrigé dans `diff-visuel-offre.mjs` le 09/10 mais pas ici.
+La porte lit désormais la table DANS la maquette, écarte les adresses
+détournées et le dit, et renvoie vers leur capture figée.
+
+Restent **874 écarts réels**, répartis à peu près également : zéro-arrêt 308,
+bureau d'études 195, arrêt technique 186, résidence 185. 349 sont des phrases
+rendues que la porte ne sait rattacher ni à la maquette ni au corpus. Une
+répartition aussi régulière sur quatre pages n'est pas une poignée de fautes de
+copie : c'est un désaccord de structure, probablement sur la résolution de
+l'objet `OFFERS` ou sur des blocs partagés que la porte croit propres à une
+offre. **À instruire comme un chantier à part**, pas à rafistoler.
+
+### 2. `scripts/verifie-fidelite.mjs` : 4 anomalies de hauteur sur l'accueil
+
+20 sections comparées à 1280 px, 13 au pixel près, 5 écarts déclarés, 4 anomalies :
+
+- **section 1** « INNOVATION, PERFORMANCE, IMPACT » : 953 px contre 641, soit
+  +312 px, sans exception déclarée ;
+- **section 5** « NOTRE SÉLECTION » : 879 px contre 1 158, soit -279 px, sans
+  exception déclarée. C'est le bloc ajouté le 08/10 ;
+- **section 12** « NOTRE HISTOIRE » : écart désormais nul, son exception n'a
+  plus lieu d'être ;
+- **section 13** « POURQUOI EXTERNALISER » : -56 px là où l'exception en
+  attend -28 ± 14.
+
+Le parcours mobile ajouté ce soir N'EST PAS en cause : la porte filtre les
+sections invisibles, et il l'est à 1280 px. Vérifié en le retirant puis en
+remesurant. Attention en mesurant : cette porte est sensible à la
+recompilation du serveur de développement, un passage pris pendant un rebuild
+a annoncé 21 sections et 17 anomalies, deux passages à froid en annoncent 20
+et 4, de façon stable.
