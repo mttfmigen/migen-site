@@ -14,7 +14,7 @@
     ],
     "bouton": "Faire chiffrer la reprise de ma maintenance",
     "logo": "/assets/clients/stellantis.png",
-    "photoHero": "/assets/web/mq-5111002ce2b6.jpg",
+    "photoHero": "/assets/photos/elec-mesure-multimetre-faisceau.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -123,7 +123,7 @@
         "valeur": ", sans interruption"
       }
     ],
-    "photoDispositif": "/assets/web/mq-2a6115ec9fe0.jpg",
+    "photoDispositif": "/assets/photos/elec-local-technicien-accroupi.jpg",
     "resultats": [
       {
         "titre": "La bascule a tenu en 8 semaines",
@@ -171,25 +171,25 @@
         "surtitre": "Étude de cas",
         "titre": "SUEZ : remise en état d'un site",
         "href": "/preuves/suez-remise-en-etat/",
-        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
+        "photo": "/assets/web/team-grind-sparks.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/web/mq-e6322efcd358.jpg"
+        "photo": "/assets/photos/energie-levage-eolienne-senior.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/web/mq-339d39e2a674.jpg"
+        "photo": "/assets/photos/elec-schema-lampe-frontale.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/web/mq-056f3c250981.jpg"
+        "photo": "/assets/photos/soudure-interieur-virole.jpg"
       }
     ]
   }

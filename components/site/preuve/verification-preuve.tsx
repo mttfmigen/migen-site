@@ -31,10 +31,12 @@
  * 9. LES IMAGES : chaque emplacement d'image de la capture (logo, photo du
  *    héros, photo du dispositif, vignette de chaque carte « Pour aller plus
  *    loin ») a son image rendue, avec le dessin de la capture, QUAND LA DONNÉE
- *    LA PORTE ; aucune image n'est rendue hors de ces emplacements ; aucune
- *    image rendue n'a d'octets étrangers aux ressources de la maquette. Les
- *    quatre pilotes de mesure (JTEKT, Bamesa, Eiffage, Tournaire) portent
- *    leurs images mesurées, dans une copie en mémoire de leur donnée.
+ *    LA PORTE ; aucune image n'est rendue hors de ces emplacements ; et chaque
+ *    image rendue vient DE LA MAQUETTE OU DE LA RÉPARTITION (écart du 09/10,
+ *    voir plus bas) : toute autre photo tombe. Les quatre pilotes de mesure
+ *    (JTEKT, Bamesa, Eiffage, Tournaire) portent leurs images mesurées, dans
+ *    une copie en mémoire de leur donnée, et la donnée disque a le droit d'y
+ *    substituer une photo de la répartition.
  * 10. LA PAGE SERVIE sort par CE gabarit (marqueur `data-gabarit`) et porte le
  *    H1 de la donnée : le trou qui a laissé passer 28 pages servies par
  *    `PageFiche` le 08/10.
@@ -54,6 +56,7 @@ import { gunzipSync } from "node:zlib";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { appliqueDecisions } from "@/lib/decisions-copie";
+import { REGISTRE, cheminRegistre, deLaRepartition } from "@/scripts/photos-autorisees";
 import type { ContenuPreuve } from "@/types/preuve";
 
 import PagePreuve from "./PagePreuve";
@@ -286,6 +289,21 @@ function octetsDeLaMaquette(chemin: string): boolean {
   return existsSync(fichier) && EMPREINTES.has(sha256(readFileSync(fichier)));
 }
 
+/* ÉCART MAJEUR À LA MAQUETTE, DÉCLARÉ LE 09/10/2025, DEMANDÉ PAR MEHDI.
+   Cette porte exigeait les OCTETS de la maquette pour toute image rendue.
+   C'était juste tant que le site n'avait pas d'images à lui. Ce ne l'est plus :
+   les 109 photos achetées sous licence le 08/10 ne venaient d'aucune capture,
+   donc cette porte les refusait toutes, et les 41 études de cas se partageaient
+   une poignée de photos de calage (`mesure-photos-site.mjs` : `team-duo.jpg`
+   servie 133 fois sur le site). La règle devient DEUX SOURCES, et pas une de
+   plus : les octets de la maquette, OU la répartition du 09/10 (registre des
+   109 photos sous licence + les dix photos de l'équipe Migen), déclarée dans
+   `scripts/photos-autorisees.ts`. Tout le reste tombe, et le témoin « une
+   photo aux octets étrangers » plus bas en fait encore la preuve. */
+function photoAdmise(chemin: string): boolean {
+  return octetsDeLaMaquette(chemin) || deLaRepartition(chemin);
+}
+
 /**
  * Étape 9, sur une zone rendue (rendu du relais ou page servie) : chaque image
  * portée est rendue à son emplacement, avec le dessin de la capture (image ET
@@ -316,7 +334,10 @@ function controleImages(nom: string, capture: string, contenu: ContenuPreuve, zo
   }
   for (const [cle, rendu] of rendus) {
     assert.ok(portees.has(cle), `${nom} : image rendue en « ${cle} » (${rendu.src}) sans que la donnée la porte`);
-    assert.ok(octetsDeLaMaquette(rendu.src), `${nom} : ${rendu.src} a des octets étrangers à la maquette (ou manque)`);
+    assert.ok(
+      photoAdmise(rendu.src),
+      `${nom} : ${rendu.src} ne vient ni de la maquette ni de la répartition (ou le fichier manque)`,
+    );
   }
   return rendus.size;
 }
@@ -391,9 +412,26 @@ function avecImagesMesurees(url: string, contenu: ContenuPreuve): ContenuPreuve 
     ...champs,
     plusLoin: (contenu.plusLoin ?? []).map((lien) => ({ ...lien, photo: plusLoin[lien.href] })),
   };
+  /* La mesure dit ce que LA MAQUETTE servait. Depuis la répartition du 09/10,
+     la donnée disque a le droit d'y substituer une photo sous licence : on
+     garde alors CELLE DE LA DONNÉE, et c'est elle que le rendu doit porter.
+     Toute autre divergence reste une faute : une photo ni mesurée ni du
+     registre veut dire que quelqu'un a deviné. */
+  const mesurees = imagesPortees(copie);
   for (const [cle, src] of imagesPortees(contenu)) {
-    assert.equal(src, imagesPortees(copie).get(cle), `${url} : la donnée porte ${src} en « ${cle} », la mesure dit autre chose`);
+    if (src === mesurees.get(cle)) continue;
+    assert.ok(
+      deLaRepartition(src),
+      `${url} : la donnée porte ${src} en « ${cle} », la mesure dit ${mesurees.get(cle)} et ce n'est pas une photo de la répartition`,
+    );
+    if (cle === "logo") copie.logo = src;
+    else if (cle === "photoHero") copie.photoHero = src;
+    else if (cle === "photoDispositif") copie.photoDispositif = src;
   }
+  copie.plusLoin = (contenu.plusLoin ?? []).map((lien) => ({
+    ...lien,
+    photo: lien.photo && deLaRepartition(lien.photo) ? lien.photo : plusLoin[lien.href],
+  }));
   return copie;
 }
 
@@ -981,11 +1019,18 @@ assert.deepEqual(
 );
 const IMAGE_ETRANGERE = (() => {
   const nom = readdirSync(join(RACINE, "public", "assets", "web")).find(
-    (n) => /\.(jpe?g|png)$/.test(n) && !octetsDeLaMaquette(`/assets/web/${n}`),
+    (n) => /\.(jpe?g|png)$/.test(n) && !photoAdmise(`/assets/web/${n}`),
   );
-  assert.ok(nom, "aucune photo du dépôt hors de la maquette : le témoin d'octets étrangers n'a pas de sujet");
+  assert.ok(nom, "aucune photo du dépôt hors de la maquette et hors répartition : le témoin n'a pas de sujet");
   return `/assets/web/${nom}`;
 })();
+/** Un chemin qui RESSEMBLE à une photo sous licence sans en être une : la
+ *  répartition est un registre fermé, pas un dossier ouvert. */
+const FAUSSE_SOUS_LICENCE = "/assets/photos/cette-photo-n-est-pas-au-registre.jpg";
+assert.ok(
+  !existsSync(join(RACINE, "public", FAUSSE_SOUS_LICENCE)),
+  `${FAUSSE_SOUS_LICENCE} existe : choisir un autre témoin`,
+);
 {
   const url = "/preuves/jtekt/";
   const { capture, contenu, titre } = PILOTES_IMAGES.get(url) as {
@@ -996,9 +1041,14 @@ const IMAGE_ETRANGERE = (() => {
   const rends = (c: ContenuPreuve) =>
     renderToStaticMarkup(<PagePreuve titre={titre} contenu={c} formulaire="temoin" />);
   const sansPhotoHero: ContenuPreuve = { ...contenu, photoHero: undefined };
+  const fausse: ContenuPreuve = { ...contenu, photoHero: FAUSSE_SOUS_LICENCE };
   const temoins: [defaut: string, donnee: ContenuPreuve, rendu: string][] = [
     ["une photo portée mais pas rendue", contenu, rends(sansPhotoHero)],
     ["une photo aux octets étrangers à la maquette", { ...contenu, photoHero: IMAGE_ETRANGERE }, rends({ ...contenu, photoHero: IMAGE_ETRANGERE })],
+    /* 09/10 : la règle accepte désormais le registre des photos sous licence.
+       Ce témoin prouve qu'elle n'accepte pas le DOSSIER : un chemin en
+       `/assets/photos/` absent du registre tombe comme avant. */
+    ["un chemin /assets/photos/ absent du registre", fausse, rends(fausse)],
     ["un logo inversé à tort", { ...contenu, logoInverse: true }, rends({ ...contenu, logoInverse: true })],
     ["une image rendue que la donnée ne porte pas", sansPhotoHero, rends(contenu)],
   ];
@@ -1008,6 +1058,11 @@ const IMAGE_ETRANGERE = (() => {
       `le contrôle des images laisse passer ${defaut}`,
     );
   }
+  /* L'ENVERS DU TÉMOIN : une photo DU REGISTRE doit passer. Sans cette preuve,
+     une porte qui refuserait tout aurait l'air d'une porte qui sait échouer. */
+  const souslicence = cheminRegistre(REGISTRE[0].fichier);
+  const admise: ContenuPreuve = { ...contenu, photoHero: souslicence };
+  controleImages("témoin admis", capture, admise, rends(admise));
 }
 
 /* -------------------- 11 · les survols, relevés ÉLÉMENT PAR ÉLÉMENT dans la
@@ -1128,8 +1183,9 @@ console.log(
 );
 console.log(
   `  images : ${PILOTES_IMAGES.size} pilotes mesurés (${[...PILOTES_IMAGES.keys()].join(", ")}) rendus à tous les ` +
-    `emplacements de leur capture, octets de la maquette ; ${imagesServies} image(s) sur les pages servies ; ` +
-    `photo portée non rendue, octets étrangers, logo inversé à tort et image non portée font tomber le contrôle.`,
+    `emplacements de leur capture ; ${imagesServies} image(s) sur les pages servies, chacune de la maquette ou de la ` +
+    `répartition du 09/10 ; photo portée non rendue, octets étrangers, chemin /assets/photos/ hors registre, ` +
+    `logo inversé à tort et image non portée font tomber le contrôle, et une photo du registre passe.`,
 );
 console.log(`  survols : ${SURVOLS.length} relevés élément par élément dans MigenCas, posés à l'identique avec le focus.`);
 console.log(

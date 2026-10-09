@@ -20,10 +20,13 @@
  *     capture, puis tel quel, apostrophes typographiques comprises. Seules
  *     exceptions : `AJOUTS`, vérifiés réellement rendus.
  *  4. LES LIENS de chaque section de la capture, dans l'ordre ; aucun `href="#"`.
- *  5. LES PHOTOS : celles des références par empreinte SHA-1 (la capture les
- *     sert en `blob:`, les octets ont été relevés sur la maquette vivante le
- *     08/10 et retrouvés tels quels dans `public/assets/web/`) ; celles du
- *     maillage par leur nom, relu dans la capture à chaque passage.
+ *  5. LES PHOTOS viennent DE LA MAQUETTE OU DE LA RÉPARTITION, emplacement par
+ *     emplacement, et il y en a toujours autant que dans la capture : celles
+ *     des références par empreinte SHA-1 (la capture les sert en `blob:`, les
+ *     octets ont été relevés sur la maquette vivante le 08/10 et retrouvés tels
+ *     quels dans `public/assets/web/`) ou par le registre des photos sous
+ *     licence ; celles du maillage par leur nom relu dans la capture à chaque
+ *     passage, ou par le registre. Écart du 09/10, déclaré plus bas.
  *  6. LES INTERDITS du contrat sont absents du rendu.
  *
  * IL PROUVE QU'IL SAIT ÉCHOUER : il altère d'abord la page de sept façons et
@@ -39,6 +42,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import PageOffre from "@/components/site/offre/PageOffre";
 import { appliqueDecisions } from "@/lib/decisions-copie";
+import { deLaRepartition } from "@/scripts/photos-autorisees";
 import type { ContenuOffre } from "@/types/offre";
 
 const RACINE = fileURLToPath(new URL("../../..", import.meta.url));
@@ -150,11 +154,29 @@ function attributs(html: string, nom: string): string[] {
   return [...html.matchAll(new RegExp(`\\s${nom}="([^"]*)"`, "g"))].map((m) => entites(m[1]));
 }
 
-/** `/_next/image?url=%2Fassets%2F…&w=…` comme `/assets/…` : le fichier servi. */
+/** `/_next/image?url=%2Fassets%2F…&w=…` comme `/assets/…` : le fichier servi.
+ *  `/assets/photos/` est lu comme `/assets/web/` depuis l'écart du 09/10 : sans
+ *  cela une photo sous licence sortirait du contrôle au lieu d'y être jugée. */
 function photosLocales(html: string): string[] {
   return attributs(html, "src")
     .map((src) => (src.startsWith("/_next/image") ? decodeURIComponent(new URL(src, "http://x").searchParams.get("url") ?? "") : src))
-    .filter((src) => src.startsWith("/assets/web/"));
+    .filter((src) => src.startsWith("/assets/web/") || src.startsWith("/assets/photos/"));
+}
+
+/* ÉCART MAJEUR À LA MAQUETTE, DÉCLARÉ LE 09/10/2025, DEMANDÉ PAR MEHDI.
+   Cette porte exigeait, emplacement par emplacement, LA photo de la maquette :
+   les huit empreintes SHA-1 de « 08 Références » et les noms de fichier relus
+   dans la capture pour le maillage. C'était juste tant que le site n'avait pas
+   d'images à lui. Mesuré le 09/10 par `node scripts/mesure-photos-site.mjs` :
+   68 photos distinctes pour 1 822 emplacements, et les 109 photos achetées
+   sous licence le 08/10 servies par aucune page. La règle devient, pour CHAQUE
+   emplacement : l'empreinte (ou le nom) de la maquette, OU une photo de la
+   répartition du 09/10 (`scripts/photos-autorisees.ts`). Ce qui ne bouge pas,
+   et c'est ce qui garde les dents de la porte : LE NOMBRE d'emplacements reste
+   celui de la capture, et une photo qui ne vient ni de la maquette ni du
+   registre tombe. Deux témoins en font la preuve. */
+function photoAdmise(photo: string, deLaMaquette: () => boolean): boolean {
+  return deLaRepartition(photo) || deLaMaquette();
 }
 
 function occurrences(meule: string, aiguille: string): number {
@@ -233,12 +255,28 @@ function juge(page: PageRelais): string[] {
     // 5. Les photos.
     if (libelle === "08 Références") {
       const photos = photosLocales(ici);
-      const empreintes = photos.map((p) => (existsSync(join(RACINE, "public", p)) ? sha1(join(RACINE, "public", p)) : `absent:${p}`));
-      if (empreintes.join() !== EMPREINTES_REFERENCES.join()) faute(`${libelle} : photos des cartes ≠ maquette (${photos.join(", ")})`);
+      if (photos.length !== EMPREINTES_REFERENCES.length) {
+        faute(`${libelle} : ${photos.length} photo(s) de carte, la maquette en sert ${EMPREINTES_REFERENCES.length}`);
+      }
+      photos.forEach((photo, rang) => {
+        const fichier = join(RACINE, "public", photo);
+        if (!existsSync(fichier)) return faute(`${libelle} : carte ${rang + 1}, ${photo} absente de public/`);
+        if (!photoAdmise(photo, () => sha1(fichier) === EMPREINTES_REFERENCES[rang])) {
+          faute(`${libelle} : carte ${rang + 1}, ${photo} n'est ni la photo de la maquette ni une photo de la répartition`);
+        }
+      });
     }
     if (libelle === "Maillage") {
       const attendues = PHOTOS_MAILLAGE_CAPTURE.filter((p) => !PHOTOS_ABSENTES.includes(p));
-      if (photosLocales(ici).join() !== attendues.join()) faute(`${libelle} : photos ${photosLocales(ici).join(", ")} ≠ capture ${attendues.join(", ")}`);
+      const photos = photosLocales(ici);
+      if (photos.length !== attendues.length) {
+        faute(`${libelle} : ${photos.length} photo(s), la capture en nomme ${attendues.length} (${attendues.join(", ")})`);
+      }
+      photos.forEach((photo, rang) => {
+        if (!photoAdmise(photo, () => photo === attendues[rang])) {
+          faute(`${libelle} : rang ${rang + 1}, ${photo} n'est ni ${attendues[rang] ?? "rien"} (capture) ni une photo de la répartition`);
+        }
+      });
       for (const p of PHOTOS_ABSENTES) {
         if (!PHOTOS_MAILLAGE_CAPTURE.includes(p)) faute(`${libelle} : photo déclarée absente mais que la capture ne nomme pas : ${p}`);
         if (existsSync(join(RACINE, "public", p))) faute(`${libelle} : ${p} est arrivée dans public/, la déclarer dans la donnée et la retirer de PHOTOS_ABSENTES`);
@@ -285,7 +323,15 @@ const ALTERATIONS: [string, (p: PageRelais) => void][] = [
   ["une section retirée", (p) => { p.contenu.sections = p.contenu.sections!.filter((s) => s.type !== "garanties"); }],
   ["une phrase inventée", (p) => { p.contenu.chapeau += " Nous intervenons partout, tout le temps."; }],
   ["un interdit", (p) => { section(p, "objections").questions[0].reponse += " Nous savons notamment le faire."; }],
-  ["deux photos de références échangées", (p) => { const r = section(p, "preuves").preuves; [r[0].photo, r[1].photo] = [r[1].photo, r[0].photo]; }],
+  /* 09/10 : ce témoin échangeait deux photos de références. Depuis l'écart
+     déclaré plus haut, les deux sont des photos du registre et l'échange est
+     licite : le témoin ne prouvait plus rien. Il est RETOURNÉ sur ce que la
+     règle refuse encore, une photo de calage de la maquette posée sur une carte
+     dont la maquette servait une AUTRE photo. */
+  ["une photo de référence devinée parmi celles de la maquette", (p) => { section(p, "preuves").preuves[0].photo = "/assets/web/ph-tuyaux.jpg"; }],
+  /* Et le dossier des photos sous licence n'est pas un passe-droit : c'est le
+     REGISTRE qui autorise, fichier par fichier et octet par octet. */
+  ["une photo du dossier sous licence absente du registre", (p) => { section(p, "preuves").preuves[0].photo = "/assets/photos/cette-photo-n-est-pas-au-registre.jpg"; }],
   ["une apostrophe redressée", (p) => { p.contenu.formulaireHeroMention = "Rappel dans l'heure"; }],
   ["une photo de maillage retirée", (p) => { delete p.contenu.pagesLiees![1].photo; }],
 ];

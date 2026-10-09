@@ -168,7 +168,7 @@
             "texte": "six techniciens polyvalents en permanence, depuis septembre 2023",
             "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/web/x-tech-portrait.jpg",
+            "photo": "/assets/photos/elec-main-disjoncteurs-borniers.jpg",
             "logo": "/assets/clients/mq-ff81dfbb55c7.svg"
           },
           {
@@ -176,7 +176,7 @@
             "texte": "six techniciens en poste depuis octobre 2023, aux côtés des équipes internes",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "photo": "/assets/photos/meca-moteur-palan-depose.jpg",
             "logo": "/assets/clients/stellantis.png"
           },
           {
@@ -184,7 +184,7 @@
             "texte": "deux techniciens intégrés aux équipes du site de Steenvoorde",
             "lienLibelle": "Étude de cas DANONE : lignes de production",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/web/x-elec-cablage.jpg",
+            "photo": "/assets/photos/pharma-isolateur-salle-propre.jpg",
             "logo": "/assets/clients/danone-bledina.png"
           },
           {
@@ -192,7 +192,7 @@
             "texte": "trois à cinq techniciens déployés depuis septembre 2024",
             "lienLibelle": "Étude de cas VALEO : plusieurs usines",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg",
             "logo": "/assets/clients/mq-f6fcccfd4cc8.svg"
           },
           {
@@ -200,7 +200,7 @@
             "texte": "six techniciens constitués en équipe dédiée depuis janvier 2023",
             "lienLibelle": "Étude de cas EATON : mise en production",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/web/mq-29ebb1b81ced.jpg",
+            "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg",
             "logo": "/assets/clients/mq-70bce765c1a2.svg"
           },
           {
@@ -208,7 +208,7 @@
             "texte": "renfort habilité, depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/mq-17e2f3bce95f.jpg",
+            "photo": "/assets/photos/menuiserie-passerelle-usine-bois.jpg",
             "logo": "/assets/clients/mq-89100525ef89.svg"
           }
         ]
@@ -302,37 +302,37 @@
         "titre": "Sous-traitance maintenance",
         "phrase": "Un technicien présent chaque jour dans vos murs, intégré à votre équipe de production. Voir la sous-traitance maintenance.",
         "href": "/offres/residence/",
-        "photo": "/assets/web/team-duo.jpg"
+        "photo": "/assets/photos/tuyau-pointage-bride-tube.jpg"
       },
       {
         "titre": "Contrat de maintenance",
         "phrase": "Un contrat de visites préventives planifiées, avec suivi de l'état du parc et priorité d'intervention. Voir le contrat de maintenance.",
         "href": "/offres/zero-arret/",
-        "photo": "/assets/web/x-logistique-entrepot.jpg"
+        "photo": "/assets/photos/robot-pince-reparation-etabli.jpg"
       },
       {
         "titre": "Astreinte industrielle",
         "phrase": "Une astreinte la nuit, le week-end et les jours fériés, nuits, week-ends et jours fériés. Voir l'astreinte industrielle.",
         "href": "/offres/depannage-industriel/astreinte/",
-        "photo": "/assets/web/team-grind-close.jpg"
+        "photo": "/assets/photos/energie-rack-canalisations-binome.jpg"
       },
       {
         "titre": "Arrêt technique maintenance",
         "phrase": "La préparation et l'exécution de vos arrêts planifiés, coordination des corps de métier comprise. Voir l'arrêt technique maintenance.",
         "href": "/offres/arret-technique/",
-        "photo": "/assets/web/x-soudure.jpg"
+        "photo": "/assets/photos/energie-levage-eolienne-senior.jpg"
       },
       {
         "titre": "Guide pour choisir une entreprise de maintenance",
         "phrase": "Avant de choisir, notre guide pour choisir une entreprise de maintenance liste les questions à poser en rendez-vous.",
         "href": "/guides/choisir-une-entreprise-de-maintenance/",
-        "photo": "/assets/web/team-grind-impact.jpg"
+        "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
       },
       {
         "titre": "Full service",
         "phrase": "Toute votre maintenance, un seul partenaire.",
         "href": "/offres/full-service/",
-        "photo": "/assets/web/team-grind-front.jpg"
+        "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg"
       }
     ],
     "pagesLieesTitre": "Par où continuer ?"

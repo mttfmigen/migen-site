@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Bourges",
       "titre": "Bourges : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/web/sv-duo-impact.jpg",
+      "photo": "/assets/photos/agro-panneau-vannes-nep.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Bourges et ses environs",
       "texte": "Nos techniciens itinérants couvrent Bourges et son bassin, appuyés par le réseau national Migen.",
@@ -245,37 +245,37 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
           },
           {
             "titre": "Six techniciens pour faire démarrer un parc machines",
             "lienLibelle": "Étude de cas Eaton",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/web/ph-robots-solaire.jpg"
+            "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+            "photo": "/assets/photos/menuiserie-robot-panneaux.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/web/team-electric.jpg"
+            "photo": "/assets/photos/menuiserie-centre-usinage-soufflette.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/web/team-grind-close.jpg"
+            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/pharma-isolateur-salle-propre.jpg"
           }
         ]
       },

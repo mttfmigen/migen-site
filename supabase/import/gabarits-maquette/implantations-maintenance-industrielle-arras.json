@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Arras-Lens",
       "titre": "Arras-Lens : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/web/sv-convoyeur.jpg",
+      "photo": "/assets/photos/meca-pied-a-coulisse-fraiseuse.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Arras-Lens et ses environs",
       "texte": "Nos techniciens itinérants couvrent Arras-Lens et son bassin, appuyés par le réseau national Migen.",
@@ -245,37 +245,37 @@
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+            "photo": "/assets/photos/aero-percage-aile-avion.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+            "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
           },
           {
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
             "lienLibelle": "Étude de cas Autoliv",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg"
           },
           {
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/web/team-grind-impact.jpg"
+            "photo": "/assets/photos/hydrau-presse-pupitre-manometre.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/web/ph-tuyaux.jpg"
+            "photo": "/assets/photos/soudure-soudeuse-masque-releve.jpg"
           },
           {
             "titre": "Centres d’usinage et presses tenus dans le Grand Est",
             "lienLibelle": "Étude de cas Voit",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/web/ph-technicien.jpg"
+            "photo": "/assets/photos/energie-releve-pupitre-salle-commande.jpg"
           }
         ]
       },

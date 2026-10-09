@@ -101,7 +101,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/web/ph-hero-raffinerie.jpg",
+    "problemePhoto": "/assets/photos/elec-senior-armoire-relais.jpg",
     "brefBande": "Besoin d'une astreinte réelle sur une installation qui ne s'arrête jamais ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -250,52 +250,52 @@
             "texte": ", avec les équipes techniques du site, depuis octobre 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/web/x-tech-portrait.jpg"
+            "photo": "/assets/photos/elec-local-technicien-accroupi.jpg"
           },
           {
             "titre": "Renfort habilité risque chimique sur un site de traitement des eaux industrielles",
             "texte": ", mission de 6 mois.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/photos/automatisme-camera-vision-convoyeur.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS affecté au démarrage d'une nouvelle ligne de production",
             "texte": ", en contexte de montée en charge.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/web/x-elec-cablage.jpg"
+            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
           },
           {
             "titre": "Un technicien polyvalent sur un parc machines hétérogène en forte cadence",
             "texte": ", papier et emballage, 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/aero-percage-aile-avion.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/web/team-electric.jpg"
+            "photo": "/assets/photos/menuiserie-robot-panneaux.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/menuiserie-centre-usinage-soufflette.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
           },
           {
             "titre": "Monter, déplacer, renforcer, chantier après chantier",
             "lienLibelle": "Étude de cas Soprema",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/web/team-grind-impact.jpg"
+            "photo": "/assets/photos/meca-jeune-presse-volant.jpg"
           }
         ]
       },

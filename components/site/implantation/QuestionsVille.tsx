@@ -1,6 +1,7 @@
 import { useId, type CSSProperties } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
+import TexteRiche from "@/components/site/blocs/TexteRiche";
 import stylesOffre from "@/components/site/offre/PageOffre.module.css";
 import type { SectionObjections } from "@/types/contenu";
 
@@ -24,6 +25,15 @@ import styles from "./PageVille.module.css";
  *
  * Le `position: sticky` de la colonne gauche n'est pas repris : la règle
  * `.mg-faqph [style*="sticky"]` de la maquette l'annule toujours.
+ *
+ * LA QUESTION ET LA RÉPONSE PASSENT PAR `TexteRiche` DEPUIS LE 09/10.
+ * TROUVÉ EN MESURANT, PAS DANS LE DIAGNOSTIC : la chasse au Markdown brut du
+ * 09/10 ne nommait que `offre/QuestionsOffre.tsx` et `offres/QuestionsPhoto.tsx`,
+ * mais le balayage des 248 pages servies a trouvé
+ * « **Nous avons déjà un prestataire sous contrat.** » sur `/implantations/`,
+ * que cette FAQ sert (classe `PageVille-module…__plus` dans le HTML servi).
+ * Trois composants rendaient donc le corpus brut, pas deux. ÉCART ASSUMÉ À LA
+ * MAQUETTE, qui affiche elle-même les astérisques.
  */
 
 const GRILLE: CSSProperties = {
@@ -115,12 +125,18 @@ export default function QuestionsVille({ section }: { section: SectionObjections
             {section.questions.map((q, rang) => (
               <details key={q.question} className={styles.pli} style={PLI} name={groupe} open={rang === 0}>
                 <summary style={RESUME}>
-                  <span style={QUESTION}>{q.question}</span>
+                  <span className={styles.texteAvecLiens} style={QUESTION}>
+                    <TexteRiche texte={q.question} />
+                  </span>
                   <span aria-hidden="true" className={styles.plus} style={PLUS}>
                     +
                   </span>
                 </summary>
-                {q.reponse ? <div style={REPONSE}>{q.reponse}</div> : null}
+                {q.reponse ? (
+                  <div className={styles.texteAvecLiens} style={REPONSE}>
+                    <TexteRiche texte={q.reponse} />
+                  </div>
+                ) : null}
               </details>
             ))}
           </div>

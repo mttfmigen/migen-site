@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Brest",
       "titre": "Brest : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/web/sv-duo-impact.jpg",
+      "photo": "/assets/photos/soudure-soudeuse-masque-releve.jpg",
       "badge": "Rattaché au hub Nantes",
       "nom": "Brest, couvert par le hub Nantes",
       "texte": "Les techniciens du hub Nantes interviennent à Brest et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -220,53 +220,53 @@
             "texte": "Réception, assemblage, levage et raccordements, pour un fabricant qui installe sur tout le territoire.",
             "lienLibelle": "Étude de cas Migen Travaux x WASHTEC",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/web/x-tech-portrait.jpg"
+            "photo": "/assets/photos/meca-technicienne-parc-moteurs.jpg"
           },
           {
             "titre": "Un renfort de trois techniciens spécialisés sur une centrale solaire de grande envergure",
             "texte": ", en préventif, de septembre à novembre 2024.",
             "lienLibelle": "Étude de cas EIFFAGE",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/photos/robot-cellules-grillagees.jpg"
           },
           {
             "titre": "Montages, déplacements de machines et renfort technique sur chantiers sous tension",
             "texte": ", pour un industriel de l'étanchéité.",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/web/x-elec-cablage.jpg"
+            "photo": "/assets/photos/elec-multimetre-armoire-automatisme.jpg"
           },
           {
             "titre": "1 à 3 techniciens en maintenance corrective et préventive sur un site agroalimentaire en flux permanent",
             "texte": ", premier contrat hors de France.",
             "lienLibelle": "Étude de cas McCAIN",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/agro-panneau-vannes-nep.jpg"
           },
           {
             "titre": "Un technicien intégré pendant l'arrêt estival pour tenir les équipements critiques",
             "texte": "pendant les congés des équipes internes.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/web/x-logistique-entrepot.jpg"
+            "photo": "/assets/web/sv-armoire.jpg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/chimie-technicienne-skid-vanne.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/robot-atelier-ferrage-plongee.jpg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/web/ph-tuyaux.jpg"
+            "photo": "/assets/photos/equipe-transmission-senior-jeune.jpg"
           }
         ]
       },

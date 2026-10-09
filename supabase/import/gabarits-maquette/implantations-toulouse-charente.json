@@ -32,7 +32,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Charente",
       "titre": "Charente : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/web/sv-armoire.jpg",
+      "photo": "/assets/photos/agro-remplisseuse-cle-plate.jpg",
       "badge": "Rattaché au hub Toulouse",
       "nom": "Charente, couvert par le hub Toulouse",
       "texte": "Les techniciens du hub Toulouse interviennent à Charente et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -83,7 +83,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/web/ph-hero-raffinerie.jpg",
+    "problemePhoto": "/assets/photos/energie-bride-mat-eolienne.jpg",
     "complementOffre": [
       {
         "texte": "Trois formats se combinent selon votre situation. Le dépannage industriel pour une panne isolée."
@@ -223,53 +223,53 @@
             "texte": ", en préventif comme en curatif, de 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/web/x-tech-portrait.jpg"
+            "photo": "/assets/photos/aero-percage-aile-avion.jpg"
           },
           {
             "titre": "Un technicien mobilisé pendant l'arrêt estival pour tenir les équipements critiques",
             "texte": ", pendant les congés des équipes internes.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/photos/meca-presses-volants-technicienne.jpg"
           },
           {
             "titre": "6 techniciens en préventif et curatif sur une fonderie et son usinage",
             "texte": "Site pris en charge complètement en 8 semaines.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/web/x-elec-cablage.jpg"
+            "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg"
           },
           {
             "titre": "1 à 3 techniciens en corrective et préventive sur un site agroalimentaire en flux permanent",
             "texte": ".",
             "lienLibelle": "Étude de cas McCAIN",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/meca-tour-conventionnel-senior.jpg"
           },
           {
             "titre": "Un parc machines de PME diagnostiqué et réparé sans rachat de matériel neuf",
             "texte": ", avec plusieurs solutions chiffrées selon le budget.",
             "lienLibelle": "Étude de cas JOINT LYONNAIS",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/web/x-logistique-entrepot.jpg"
+            "photo": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/web/ph-tuyaux.jpg"
+            "photo": "/assets/photos/automatisme-armoire-jeune-tablette.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/web/ph-tuyaux.jpg"
+            "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/web/ph-technicien.jpg"
+            "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
           }
         ]
       },

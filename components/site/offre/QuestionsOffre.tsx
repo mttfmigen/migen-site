@@ -1,6 +1,7 @@
 import { useId, type CSSProperties } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
+import TexteRiche from "@/components/site/blocs/TexteRiche";
 import type { Question, SectionObjections } from "@/types/contenu";
 
 import { numerote } from "./texte-offre";
@@ -14,6 +15,15 @@ import styles from "./PageOffre.module.css";
  * colonnes : 01/03/05 à gauche, 02/04/06 à droite, chacune avec son « + ».
  *
  * `blocs/Objections.tsx` n'est pas touché : il sert le gabarit de vente.
+ *
+ * LA QUESTION ET LA RÉPONSE PASSENT PAR `TexteRiche` DEPUIS LE 09/10, comme
+ * `blocs/Objections.tsx` le fait déjà. Avant, elles étaient rendues telles
+ * quelles, et le Markdown du corpus s'affichait au visiteur : c'est le défaut
+ * « plusieurs FAQ affichent du Markdown brut » de l'audit de Nathan Jorez du
+ * 09/10. ÉCART ASSUMÉ À LA MAQUETTE : elle montre elle-même les crochets
+ * (relevé dans `maquette/rendu/`), ce qui est précisément ce que l'audit
+ * refuse. Le texte visible perd la syntaxe et rien d'autre, et les sept liens
+ * du cocon écrits dans ces réponses redeviennent des liens.
  */
 
 export interface ProprietesQuestionsOffre {
@@ -133,12 +143,19 @@ function Pli({
     >
       <summary style={RESUME}>
         <span style={NUMERO}>{numerote(rang)}</span>
-        <span style={QUESTION}>{question.question}</span>
+        <span className={styles.texteAvecLiens} style={QUESTION}>
+          <TexteRiche texte={question.question} />
+        </span>
         <span aria-hidden="true" className={styles.pliPlus} style={PLUS}>
           +
         </span>
       </summary>
-      <p style={REPONSE}>{question.reponse}</p>
+      {/* `texteAvecLiens` rend le soulignement que `app/globals.css` retire :
+          un lien dans un paragraphe doit rester identifiable sans la couleur
+          (WCAG 1.4.1), même règle que `PointsOffre` et `DerouleOffre`. */}
+      <p className={styles.texteAvecLiens} style={REPONSE}>
+        <TexteRiche texte={question.reponse} />
+      </p>
     </details>
   );
 }

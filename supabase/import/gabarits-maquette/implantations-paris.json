@@ -225,53 +225,53 @@
             "texte": "Lignes de production en forte activité, 2025 et 2026.",
             "lienLibelle": "Étude de cas FDJ",
             "lienHref": "/preuves/fdj/",
-            "photo": "/assets/web/x-tech-portrait.jpg"
+            "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg"
           },
           {
             "titre": "Construction d'un site industriel de R&D près de Paris",
             "texte": "Pilotage de chantier, coordination et jalons, par Migen Travaux.",
             "lienLibelle": "Étude de cas Migen Travaux x ECOCEM",
             "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg"
           },
           {
             "titre": "Un technicien intégré pendant l'arrêt estival pour tenir les équipements critiques",
             "texte": "Réseau national piloté depuis Paris, été 2025.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/web/x-elec-cablage.jpg"
+            "photo": "/assets/photos/aero-cockpit-inspection-hangar.jpg"
           },
           {
             "titre": "Un électromécanicien habilité risque chimique mobilisé 6 mois",
             "texte": "Remise en état d'un site de traitement des eaux industrielles.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/automatisme-camera-vision-convoyeur.jpg"
           },
           {
             "titre": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures",
             "texte": "Centre logistique ORY4, depuis septembre 2022, contrat annuel.",
             "lienLibelle": "Étude de cas AMAZON",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/web/x-logistique-entrepot.jpg"
+            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/web/ph-technicien.jpg"
+            "photo": "/assets/photos/robot-palettisation-tablette.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
             "lienLibelle": "Étude de cas Veepee",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/web/team-grind-close.jpg"
+            "photo": "/assets/photos/pharma-technicienne-machine-comprimes.jpg"
           },
           {
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Étude de cas Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+            "photo": "/assets/photos/aero-nacelle-moteur-technicien.jpg"
           }
         ]
       },

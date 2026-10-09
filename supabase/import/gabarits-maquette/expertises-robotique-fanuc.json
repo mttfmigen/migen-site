@@ -34,7 +34,7 @@
         "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "problemePhoto": "/assets/web/mq-948c28bcda08.jpg",
+    "problemePhoto": "/assets/photos/robot-cellule-soudure-inspection.jpg",
     "marquesFamille": "robot",
     "sections": [
       {
@@ -167,47 +167,47 @@
             "texte": "Techniciens intégrés au quotidien sur systèmes automatisés, lignes et convoyeurs, avec des roboticiens ABB et Fanuc parmi les spécialités mobilisables, depuis 2025.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/web/x-robotique.jpg"
+            "photo": "/assets/photos/robot-technicienne-inspection-bras.jpg"
           },
           {
             "titre": "Maintenance d'un parc d'usinage de précision, un technicien à temps plein",
             "texte": "Centres d'usinage à grande vitesse, presses et diagnostic sur commandes numériques, sur un parc multimarques, 2025.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/menuiserie-robot-panneaux.jpg"
           },
           {
             "titre": "Contrôle de chantier sur des projets d'automatisation logistique",
             "texte": "Plusieurs intervenants intégrés aux équipes, roboticiens ABB et Fanuc parmi les spécialités engagées, 2025 à 2026.",
             "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/web/x-auto-caisse.jpg"
+            "photo": "/assets/photos/robot-atelier-ferrage-plongee.jpg"
           },
           {
             "titre": "18 à 25 techniciens sur plusieurs sites automobiles en transition vers l'électrique",
             "texte": "Préventif et curatif portés par le même dispositif sur des parcs machines qui changent pendant qu'ils produisent, depuis juin 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-grand-est/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg"
           },
           {
             "titre": "Montée en cadence accompagnée dans plusieurs usines françaises",
             "texte": "Trois à cinq techniciens sur lignes de production, ateliers de fabrication et préventif, depuis septembre 2024.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/web/mq-9b461f439fef.jpg"
+            "photo": "/assets/photos/robot-soudure-points-caisse.jpg"
           },
           {
             "titre": "La GMAO planifie, nos techniciens interviennent",
             "lienLibelle": "Étude de cas DimoMaint",
             "lienHref": "/preuves/dimomaint/",
-            "photo": "/assets/web/mq-339d39e2a674.jpg"
+            "photo": "/assets/photos/robot-pupitre-apprentissage-soudure.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/web/mq-42237c1c8685.jpg"
+            "photo": "/assets/photos/robot-palettisation-tablette.jpg"
           }
         ]
       },

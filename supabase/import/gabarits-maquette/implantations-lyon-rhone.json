@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Rhône",
       "titre": "Rhône : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/web/sv-portrait.jpg",
+      "photo": "/assets/photos/soudure-interieur-virole.jpg",
       "badge": "Rattaché au hub Lyon",
       "nom": "Rhône, couvert par le hub Lyon",
       "texte": "Les techniciens du hub Lyon interviennent à Rhône et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -230,53 +230,53 @@
             "texte": "PME de production de joints, depuis février 2024.",
             "lienLibelle": "Étude de cas JOINT LYONNAIS",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/web/x-tech-portrait.jpg"
+            "photo": "/assets/web/sv-portrait.jpg"
           },
           {
             "titre": "Six techniciens en permanence sur le contrat de préventif annuel des sites de Lyon",
             "texte": "Depuis septembre 2023, prise en charge complète réalisée en un mois.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/photos/elec-main-disjoncteurs-borniers.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS à temps plein pour le démarrage d'une ligne neuve près de Lyon",
             "texte": "Deuxième et troisième trimestres 2025.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/web/x-elec-cablage.jpg"
+            "photo": "/assets/photos/chaudro-presse-plieuse.jpg"
           },
           {
             "titre": "Un électromécanicien habilité risque chimique mobilisé 6 mois",
             "texte": "Remise en état d'un site de traitement des eaux industrielles.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/tuyau-vanne-volant-conserverie.jpg"
           },
           {
             "titre": "Un polyvalent intégré sur un parc papier et emballage aux contraintes techniques variées",
             "texte": "2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/web/x-logistique-entrepot.jpg"
+            "photo": "/assets/photos/aero-percage-aile-avion.jpg"
           },
           {
             "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
             "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/web/ph-technicien.jpg"
+            "photo": "/assets/photos/tuyau-pointage-bride-tube.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/web/ph-technicien.jpg"
+            "photo": "/assets/photos/pharma-technicienne-machine-comprimes.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/energie-releve-pupitre-salle-commande.jpg"
           }
         ]
       },

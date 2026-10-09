@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Chambéry",
       "titre": "Chambéry : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/web/sv-convoyeur.jpg",
+      "photo": "/assets/photos/aero-reacteur-capot-combinaison.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Chambéry et ses environs",
       "texte": "Nos techniciens itinérants couvrent Chambéry et son bassin, appuyés par le réseau national Migen.",
@@ -245,37 +245,37 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+            "photo": "/assets/photos/automatisme-armoire-jeune-tablette.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/web/team-grind-impact.jpg"
+            "photo": "/assets/photos/meca-pied-a-coulisse-fraiseuse.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/web/ph-technicien.jpg"
+            "photo": "/assets/photos/energie-rack-canalisations-binome.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/web/ph-robots-solaire.jpg"
+            "photo": "/assets/photos/menuiserie-cnc-pupitre-casque.jpg"
           },
           {
             "titre": "Six mois pour remettre en état un site à risque chimique",
             "lienLibelle": "Étude de cas Suez IWT",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/team-grind-close.jpg"
+            "photo": "/assets/photos/tuyau-vanne-volant-conserverie.jpg"
           },
           {
             "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
             "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/web/ph-technicien.jpg"
+            "photo": "/assets/photos/pharma-technicienne-machine-comprimes.jpg"
           }
         ]
       },

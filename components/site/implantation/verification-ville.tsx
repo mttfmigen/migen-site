@@ -32,18 +32,21 @@
  *     capture ET dans le rendu, relues dans la capture à chaque passage.
  *  9. LES QUESTIONS SE REPLIENT : autant de `<details>` que la capture, un
  *     seul `name` partagé (accordéon exclusif natif), seul le premier ouvert.
- * 10. LA PHOTO DU HUB LOCAL suit la règle de la maquette (`cityVals` de
- *     `MigenExpertise.dc.html`) : l'URL Envato et son crédit de
- *     `photos-villes.json` quand la page y figure, sinon la photo de repli
- *     tirée d'un hachage de l'URL, sans crédit. La capture ne la montre pas
- *     (adresse `blob:`), d'où cette règle relue dans la source.
+ * 10. LA PHOTO DU HUB LOCAL vient de la maquette OU de la répartition (écart
+ *     du 09/10, déclaré plus bas) : soit exactement ce que calcule la règle de
+ *     la maquette (`cityVals` de `MigenExpertise.dc.html`, voir
+ *     `photoAttendue`), soit une photo du registre des 109 photos sous
+ *     licence. Toute autre photo tombe. La capture ne la montre pas (adresse
+ *     `blob:`), d'où cette règle relue dans la source.
  * 11. LE DESSIN DU PROBLÈME suit la règle de la source (`pbDark`, `pbSplit`,
  *     `pbCards`) : hachage de l'URL et nombre de puces. Vérifiée sur les 66
  *     captures avant d'être écrite ici (66 sur 66). En colonne, la photo est
- *     `topicImg` : `ph-hero-raffinerie` pour toute URL `/implantations/`.
- * 12. LES PHOTOS DES RÉFÉRENCES suivent la règle de la source : les preuves
- *     du corpus d'abord (`PH(md)`, rang par rang), puis les cas liés de
- *     `cas-lies.json` (`casLiesVals`, hachage de l'URL du cas plus son rang).
+ *     `topicImg` (`ph-hero-raffinerie` pour toute URL `/implantations/`) OU une
+ *     photo de la répartition.
+ * 12. LES PHOTOS DES RÉFÉRENCES viennent de la maquette OU de la répartition :
+ *     soit la règle de la source (les preuves du corpus d'abord, `PH(md)` rang
+ *     par rang, puis les cas liés de `cas-lies.json`, `casLiesVals`), soit une
+ *     photo du registre.
  *
  * 13. LE H2 DU PROBLÈME est un trou si et seulement si la page pose
  *     `problemeSansTitre` (Vesoul, « 24 h sur 24 ») : la suite reste dans son
@@ -59,7 +62,8 @@
  * de 80 réguliers », la prise de poste chiffrée rendue, une phrase inventée à
  * la place d'un trou), et la page pilote de ville de douze façons (un mot changé, une section retirée, une phrase
  * inventée, un interdit, un faux trou, un lien inventé, une photo de
- * référence devinée, un dessin de problème deviné, une apostrophe
+ * référence devinée, une photo de référence du bon dossier mais hors registre,
+ * un dessin de problème deviné, une apostrophe
  * redressée, le titre Tournaire vidé, un H2 de problème retiré sans trou,
  * des questions toutes ouvertes) et exige que chacune soit vue.
  * Si une altération passe, le contrôle est déclaré aveugle et échoue.
@@ -72,6 +76,7 @@ import { fileURLToPath } from "node:url";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { appliqueDecisions } from "@/lib/decisions-copie";
+import { deLaRepartition } from "@/scripts/photos-autorisees";
 import type { ContenuVille } from "@/types/implantation";
 
 import PageVille from "./PageVille";
@@ -319,6 +324,24 @@ const SOUS_LICENCE: Record<string, string> = {
   }
 }
 
+/* ÉCART MAJEUR À LA MAQUETTE, DÉCLARÉ LE 09/10/2025, DEMANDÉ PAR MEHDI.
+   Les trois contrôles de photo de cette porte (hub local, photo du problème,
+   photos des références) exigeaient LA photo que la maquette calcule, et rien
+   d'autre. C'était juste tant que le site n'avait pas d'images à lui ; ce ne
+   l'est plus. Mesuré le 09/10 par `node scripts/mesure-photos-site.mjs` : les
+   74 pages de ville se partageaient une poignée de photos de calage, et les
+   109 photos achetées sous licence le 08/10 n'étaient servies par aucune page.
+   La règle devient DEUX SOURCES : la photo calculée par la maquette, OU une
+   photo de la répartition du 09/10 (registre des 109 photos sous licence + les
+   dix photos de l'équipe Migen), déclarée dans `scripts/photos-autorisees.ts`.
+   Tout le reste tombe. Deux témoins en font la preuve plus bas : une photo de
+   référence devinée parmi celles de la maquette, et un chemin du dossier
+   `/assets/photos/` absent du registre. */
+function photoAdmise(photo: string | null | undefined, ...attendues: (string | undefined)[]): boolean {
+  if (!photo) return false;
+  return attendues.includes(photo) || deLaRepartition(photo);
+}
+
 /** `cityImg` de `MigenExpertise.dc.html`, à l'identique : `h = h * 31 + code`, sur 32 bits non signés. */
 const REPLIS = ["sv-convoyeur", "sv-armoire", "sv-duo-impact", "sv-portrait", "team-grind-front", "team-electric"];
 function photoAttendue(url: string): { photo: string; credit?: string } {
@@ -539,7 +562,13 @@ function controle(page: PageRelais, captureBrute: string, htmlBrut: string): str
   if (page.contenu.hubLocal) {
     const attendu = photoAttendue(page.url);
     const { photo, credit } = page.contenu.hubLocal;
-    if (photo !== attendu.photo) ecarts.push(`photo du hub « ${photo.slice(0, 80)} » au lieu de « ${attendu.photo.slice(0, 80)} »`);
+    if (!photoAdmise(photo, attendu.photo)) {
+      ecarts.push(
+        `photo du hub « ${photo.slice(0, 80)} » : ni « ${attendu.photo.slice(0, 80)} » (règle de la maquette) ni une photo de la répartition`,
+      );
+    }
+    /* Le crédit n'accompagne qu'un aperçu Envato, et il n'en reste aucun : il
+       doit donc rester vide, photo de la répartition ou non. */
     if ((credit ?? "") !== (attendu.credit ?? "")) ecarts.push(`crédit du hub « ${credit ?? ""} » au lieu de « ${attendu.credit ?? ""} »`);
   }
 
@@ -549,8 +578,10 @@ function controle(page: PageRelais, captureBrute: string, htmlBrut: string): str
     const attendu = dessinProbleme(page.url, probleme.puces.length);
     const ecrit = probleme.variante ?? "colonne";
     if (ecrit !== attendu) ecarts.push(`problème en « ${ecrit} » au lieu de « ${attendu} » (règle pbDark/pbSplit/pbCards)`);
-    if (attendu === "colonne" && page.contenu.problemePhoto !== PHOTO_PROBLEME)
-      ecarts.push(`photo du problème « ${page.contenu.problemePhoto} » au lieu de « ${PHOTO_PROBLEME} »`);
+    if (attendu === "colonne" && !photoAdmise(page.contenu.problemePhoto, PHOTO_PROBLEME))
+      ecarts.push(
+        `photo du problème « ${page.contenu.problemePhoto} » : ni « ${PHOTO_PROBLEME} » (règle de la maquette) ni une photo de la répartition`,
+      );
     // Le H2 de la capture est un trou SI ET SEULEMENT SI `problemeSansTitre` :
     // sans cette règle, une punchline amputée glisserait sa suite dans le H2.
     const h2 = (problemeCapture.match(/<h2\b[^>]*>([\s\S]*?)<\/h2>/) ?? [])[1] ?? "";
@@ -575,8 +606,10 @@ function controle(page: PageRelais, captureBrute: string, htmlBrut: string): str
       const j = lies.indexOf(preuve.lienHref ?? "");
       const commeCas = j < 0 ? undefined : `/assets/web/${PH_CAS[(empreinte(preuve.lienHref!) + j) % PH_CAS.length]}.jpg`;
       enTete = enTete && preuve.photo === commePreuve;
-      if (!enTete && preuve.photo !== commeCas)
-        ecarts.push(`photo de la référence ${rang + 1} « ${preuve.photo} » : ni ${commePreuve} (preuve du corpus) ni ${commeCas ?? "un cas lié"}`);
+      if (!enTete && !photoAdmise(preuve.photo, commeCas))
+        ecarts.push(
+          `photo de la référence ${rang + 1} « ${preuve.photo} » : ni ${commePreuve} (preuve du corpus), ni ${commeCas ?? "un cas lié"}, ni une photo de la répartition`,
+        );
     });
   }
 
@@ -672,11 +705,25 @@ const ALTERATIONS: [string, PageRelais, RegExp, ((html: string) => string)?][] =
     altere((p) => (p.contenu.hubLocal!.cartes[0].href = "/secteurs/aeronautique/")),
     /lien absent de la capture/,
   ],
+  /* 09/10 : ce témoin posait `team-duo.jpg`. La répartition du 09/10 l'admet
+     désormais partout (c'est une photo de l'équipe Migen), donc il ne prouvait
+     plus rien : il est RETOURNÉ sur une photo de calage de la maquette, qui
+     n'est ni celle que la règle calcule pour ce rang ni une photo du registre. */
   [
     "une photo de référence devinée",
     altere((p) => {
       const r = p.contenu.sections!.find((x) => x.type === "preuves");
-      if (r?.type === "preuves") r.preuves[6].photo = "/assets/web/team-duo.jpg";
+      if (r?.type === "preuves") r.preuves[6].photo = "/assets/web/ph-hero-raffinerie.jpg";
+    }),
+    /photo de la référence 7/,
+  ],
+  /* Et le dossier des photos sous licence n'est pas un passe-droit : c'est le
+     REGISTRE qui autorise, fichier par fichier et octet par octet. */
+  [
+    "une photo du dossier sous licence absente du registre",
+    altere((p) => {
+      const r = p.contenu.sections!.find((x) => x.type === "preuves");
+      if (r?.type === "preuves") r.preuves[6].photo = "/assets/photos/cette-photo-n-est-pas-au-registre.jpg";
     }),
     /photo de la référence 7/,
   ],

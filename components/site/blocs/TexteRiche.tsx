@@ -93,6 +93,40 @@ export function enRichesse(texte: string | null | undefined): ReactNode[] {
   return morceaux;
 }
 
+/**
+ * Le même balisage réduit à son TEXTE VISIBLE : le libellé du lien, le contenu
+ * du gras, sans crochets, parenthèses ni astérisques. Rien n'est jeté que la
+ * syntaxe.
+ *
+ * POURQUOI PAS `enRichesse`, AJOUTÉ LE 09/10. Certains emplacements sont DÉJÀ
+ * dans un lien : la carte de `offre/ReferencesOffre.tsx` est un `<Link>` entier,
+ * du cadre photo au pied « Lire l'étude de cas ». Y rendre `enRichesse`
+ * produirait un `<a>` dans un `<a>`, que le HTML interdit et que React hydrate
+ * de travers. Le choix y est donc : garder les mots, jeter la syntaxe, le lien
+ * de la carte restant celui qui compte.
+ *
+ * `matchAll` et la récursion sont ceux de `enRichesse`, pour la même raison :
+ * le gras peut contenir un lien, et un gras rendu sans y redescendre est
+ * exactement le défaut que l'audit du 09/10 a relevé.
+ */
+export function enTexteNu(texte: string | null | undefined): string {
+  if (!texte) return "";
+
+  let nu = "";
+  let curseur = 0;
+
+  for (const m of texte.matchAll(MOTIF)) {
+    const debut = m.index ?? 0;
+    if (debut > curseur) nu += texte.slice(curseur, debut);
+    curseur = debut + m[0].length;
+
+    const [, libelle, , gras] = m;
+    nu += gras !== undefined ? enTexteNu(gras) : (libelle ?? m[0]);
+  }
+
+  return nu + texte.slice(curseur);
+}
+
 export default function TexteRiche({
   texte,
 }: {

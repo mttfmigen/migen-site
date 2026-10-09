@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Toulouse",
       "titre": "Toulouse : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/web/sv-convoyeur.jpg",
+      "photo": "/assets/photos/soudure-soudeuse-masque-releve.jpg",
       "badge": "Hub Migen",
       "nom": "Hub Toulouse",
       "texte": "Une équipe de techniciens installée à Toulouse, au plus près de vos sites, appuyée par le réseau national Migen.",
@@ -222,53 +222,53 @@
             "texte": "Accompagnement d'une montée en cadence.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/web/x-tech-portrait.jpg"
+            "photo": "/assets/photos/meca-pied-a-coulisse-fraiseuse.jpg"
           },
           {
             "titre": "Six techniciens sur l'installation et la mise en production d'un parc machines neuf",
             "texte": ", site automobile, depuis janvier 2023.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/photos/chimie-technicienne-skid-vanne.jpg"
           },
           {
             "titre": "Un technicien à temps plein sur un parc multimarques d'usinage, en 2025",
             "texte": "Centres d'usinage, presses et commandes numériques.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/web/x-elec-cablage.jpg"
+            "photo": "/assets/photos/meca-reducteur-ouvert-plongee.jpg"
           },
           {
             "titre": "Renfort de contrôle de chantier chez un spécialiste de l'automatisation logistique",
             "texte": "Intervenants intégrés aux équipes sur des projets stratégiques.",
             "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/ciment-tambour-rotatif-silos.jpg"
           },
           {
             "titre": "Montage de portiques de lavage partout en France",
             "texte": "Réception, assemblage, levage et raccordements, par Migen Travaux.",
             "lienLibelle": "Étude de cas Migen Travaux x WASHTEC",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/web/x-logistique-entrepot.jpg"
+            "photo": "/assets/photos/robot-atelier-ferrage-plongee.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+            "photo": "/assets/photos/chimie-cuve-melange-flexible.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/photos/chaudro-technicienne-plan-etabli.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
             "lienLibelle": "Étude de cas Veepee",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+            "photo": "/assets/photos/equipe-transmission-senior-jeune.jpg"
           }
         ]
       },

@@ -76,6 +76,17 @@
   }
 }
 
+/* AJOUTÉ LE 09/10 avec le passage des réponses de `QuestionsVille` par
+   `TexteRiche` (audit de Nathan Jorez, Markdown brut dans les FAQ). Le corpus
+   écrit des liens du cocon dans ces réponses ; `app/globals.css` retire le
+   soulignement de tous les liens, il est rétabli ici pour qu'un lien dans un
+   paragraphe reste identifiable sans la couleur (WCAG 1.4.1). Même règle que
+   `.texteAvecLiens` de `offre/PageOffre.module.css`. */
+.texteAvecLiens a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* Le « + » pivote en croix sur pastille orange quand le pli est ouvert :
    `details[open]>summary>.mg-faqi` de la maquette. */
 .pli[open] > summary > .plus {

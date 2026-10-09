@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Chalon-sur-Saône",
       "titre": "Chalon-sur-Saône : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/web/sv-duo-impact.jpg",
+      "photo": "/assets/photos/tuyau-pointage-bride-tube.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Chalon-sur-Saône et ses environs",
       "texte": "Nos techniciens itinérants couvrent Chalon-sur-Saône et son bassin, appuyés par le réseau national Migen.",
@@ -245,37 +245,37 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+            "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/web/team-grind-impact.jpg"
+            "photo": "/assets/photos/agro-technicienne-raccord-clamp.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/web/ph-technicien.jpg"
+            "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/web/ph-robots-solaire.jpg"
+            "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
           },
           {
             "titre": "Six mois pour remettre en état un site à risque chimique",
             "lienLibelle": "Étude de cas Suez IWT",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/team-grind-close.jpg"
+            "photo": "/assets/photos/menuiserie-passerelle-usine-bois.jpg"
           },
           {
             "titre": "Le préventif d’une centrale photovoltaïque en trois techniciens",
             "lienLibelle": "Étude de cas Eiffage",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/web/team-grind-close.jpg"
+            "photo": "/assets/photos/metal-fonderie-coulee.jpg"
           }
         ]
       },

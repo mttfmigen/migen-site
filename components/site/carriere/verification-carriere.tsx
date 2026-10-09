@@ -19,8 +19,11 @@
  *     sont dans le rendu.
  *  4. LES SURVOLS : chaque `style-hover` repris est dans la source de la page,
  *     et le module CSS le déclare, focus clavier compris.
- *  5. LES PHOTOS : chaque fichier existe, et ses octets sont ceux d'une image
- *     de la maquette, ou il porte le nom que la source lui donne.
+ *  5. LES PHOTOS : chaque fichier existe, et il vient DE LA MAQUETTE OU DE LA
+ *     RÉPARTITION (écart du 09/10, déclaré plus bas) : octets d'une image de la
+ *     maquette, nom que la source lui donne, photo de ville sous licence, ou
+ *     entrée du registre des 109 photos sous licence. Deux témoins prouvent
+ *     qu'une photo venue d'ailleurs tombe encore.
  *  6. LES INTERDITS du contrat et des règles client sont absents du rendu.
  *     Les décisions de copie (« 10 % des techniciens », siège à Limonest depuis
  *     le 09/10, qui renverse le 07/10) sont
@@ -30,7 +33,7 @@
 
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { gunzipSync } from "node:zlib";
@@ -38,6 +41,7 @@ import { gunzipSync } from "node:zlib";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { appliqueDecisions } from "@/lib/decisions-copie";
+import { REGISTRE, cheminRegistre, deLaRepartition } from "@/scripts/photos-autorisees";
 
 import { HUB_CARRIERE, type ContenuHubCarriere } from "./donnees-hub";
 import PageHubCarriere from "./PageHubCarriere";
@@ -397,6 +401,36 @@ const VILLES_SOUS_LICENCE = new Set([
   "hub-toulouse.jpg",
 ]);
 
+/* ÉCART MAJEUR À LA MAQUETTE, DÉCLARÉ LE 09/10/2025, DEMANDÉ PAR MEHDI.
+   Ce contrôle exigeait les OCTETS de la maquette pour toute photo du hub. La
+   règle est devenue fausse : les 109 photos achetées sous licence le 08/10
+   (`public/assets/photos/registre.json`) ne viennent d'aucune capture, donc
+   elle les refusait toutes, et le site servait `team-duo.jpg` 133 fois
+   (mesuré par `node scripts/mesure-photos-site.mjs`). On ajoute UNE source,
+   fermée : la répartition du 09/10, déclarée dans
+   `scripts/photos-autorisees.ts`. Rien d'autre ne passe. */
+function jugePhoto(photo: string): void {
+  const fichier = join(RACINE, "public", photo);
+  assert.ok(existsSync(fichier), `photo absente du dépôt : ${photo}`);
+  const nom = photo.split("/").pop() ?? "";
+  if (NOMMEES_PAR_LA_SOURCE.has(nom)) {
+    assert.ok(SOURCE!.includes(nom.replace(".jpg", "")), `${nom} n'est pas nommée par la source`);
+    return;
+  }
+  if (VILLES_SOUS_LICENCE.has(nom)) {
+    /* On ne compare pas ses octets à la maquette, mais on vérifie qu'elle est
+       bien servie : un écart déclaré reste un écart mesuré. */
+    assert.ok(photo.startsWith("/assets/villes/"), `${photo} : une photo de ville vit dans /assets/villes/`);
+    return;
+  }
+  if (deLaRepartition(photo)) return;
+  const empreinte = createHash("sha256").update(readFileSync(fichier)).digest("hex");
+  assert.ok(
+    EMPREINTES.has(empreinte),
+    `${photo} : ni les octets de la maquette, ni le registre des photos sous licence : photo inventée`,
+  );
+}
+
 const photos = new Set<string>([HUB_CARRIERE.heros.photo.src, "/assets/web/faq-offre.jpg"]);
 for (const s of HUB_CARRIERE.sections) {
   if (s.type === "metiers") s.metiers.forEach((m) => photos.add(m.photo));
@@ -404,27 +438,39 @@ for (const s of HUB_CARRIERE.sections) {
   if (s.type === "liens") s.items.forEach((l) => photos.add(l.photo));
 }
 for (const photo of photos) {
-  const fichier = join(RACINE, "public", photo);
-  assert.ok(existsSync(fichier), `photo absente du dépôt : ${photo}`);
-  const nom = photo.split("/").pop() ?? "";
-  if (NOMMEES_PAR_LA_SOURCE.has(nom)) {
-    assert.ok(SOURCE.includes(nom.replace(".jpg", "")), `${nom} n'est pas nommée par la source`);
-    continue;
-  }
-  if (VILLES_SOUS_LICENCE.has(nom)) {
-    /* On ne compare pas ses octets à la maquette, mais on vérifie qu'elle est
-       bien servie : un écart déclaré reste un écart mesuré. */
-    assert.ok(photo.startsWith("/assets/villes/"), `${photo} : une photo de ville vit dans /assets/villes/`);
-    assert.ok(RENDU.includes(encodeURIComponent(photo)), `${photo} n'est pas rendue`);
-    continue;
-  }
-  const empreinte = createHash("sha256").update(readFileSync(fichier)).digest("hex");
-  assert.ok(EMPREINTES.has(empreinte), `${photo} : octets inconnus de la maquette, photo inventée`);
+  jugePhoto(photo);
   assert.ok(RENDU.includes(encodeURIComponent(photo)), `${photo} n'est pas rendue`);
 }
+
+/* 5 bis · LE CONTRÔLE DES PHOTOS SAIT ÉCHOUER, et la nouvelle source ne lui a
+   pas enlevé ses dents : un fichier absent, une photo du dépôt étrangère à la
+   maquette, et un chemin du dossier sous licence absent du REGISTRE tombent
+   tous les trois. Et l'envers de la preuve : une photo du registre passe. */
+{
+  /* Une photo du dépôt que la maquette ne porte pas : cherchée, pas supposée.
+     Si le dépôt n'en contient plus aucune, le témoin le dit au lieu de passer. */
+  const etrangere = readdirSync(join(RACINE, "public", "assets", "web"))
+    .filter((n) => /\.(jpe?g|png)$/.test(n))
+    .map((n) => `/assets/web/${n}`)
+    .find(
+      (chemin) =>
+        !EMPREINTES.has(createHash("sha256").update(readFileSync(join(RACINE, "public", chemin))).digest("hex")),
+    );
+  assert.ok(etrangere, "aucune photo du dépôt étrangère à la maquette : le témoin n'a pas de sujet");
+  for (const [defaut, chemin] of [
+    ["un fichier absent du dépôt", "/assets/web/cette-photo-n-existe-pas.jpg"],
+    ["une photo du dépôt étrangère à la maquette", etrangere],
+    ["un chemin /assets/photos/ absent du registre", "/assets/photos/cette-photo-n-est-pas-au-registre.jpg"],
+  ] as const) {
+    assert.throws(() => jugePhoto(chemin), `le contrôle des photos laisse passer ${defaut}`);
+  }
+  jugePhoto(cheminRegistre(REGISTRE[0].fichier));
+}
+
 console.log(
-  `5 · photos : ${photos.size} fichiers, octets identiques à la maquette ou nommés par sa source, ` +
-    `${VILLES_SOUS_LICENCE.size} photos de ville sous licence déclarées en écart.`,
+  `5 · photos : ${photos.size} fichiers, octets de la maquette, nom donné par sa source ou registre des ` +
+    `${REGISTRE.length} photos sous licence (écart du 09/10) ; ${VILLES_SOUS_LICENCE.size} photos de ville ` +
+    `sous licence déclarées en écart ; fichier absent, photo étrangère et chemin hors registre font tomber le contrôle.`,
 );
 
 /* ------------------------------------------------------- 6. interdits */

@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Caen",
       "titre": "Caen : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/web/team-grind-front.jpg",
+      "photo": "/assets/web/sv-duo-impact.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Caen et ses environs",
       "texte": "Nos techniciens itinérants couvrent Caen et son bassin, appuyés par le réseau national Migen.",
@@ -101,7 +101,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/web/ph-hero-raffinerie.jpg",
+    "problemePhoto": "/assets/web/sv-convoyeur.jpg",
     "complementOffre": [
       {
         "texte": "Pour un montage de ligne, un transfert ou une extension de site, notre offre chantier prend le relais avec un chef de projet unique."
@@ -248,52 +248,52 @@
             "texte": ", en présence continue depuis 2025.",
             "lienLibelle": "Étude de cas AUTOLIV",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/web/x-tech-portrait.jpg"
+            "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg"
           },
           {
             "titre": "3 à 5 techniciens déployés pour accompagner la montée en cadence de plusieurs usines françaises",
             "texte": ", depuis septembre 2024.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/photos/agro-ihm-ligne-conditionnement-senior.jpg"
           },
           {
             "titre": "2 techniciens intégrés en 3x8 sur des lignes de nutrition infantile",
             "texte": ", liquides et conditionnement poudre.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/web/x-elec-cablage.jpg"
+            "photo": "/assets/photos/energie-bride-mat-eolienne.jpg"
           },
           {
             "titre": "1 à 3 techniciens en renfort permanent sur plusieurs sites de production",
             "texte": ", depuis octobre 2024.",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/equipe-consignes-atelier-casques.jpg"
           },
           {
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/meca-moteur-palan-depose.jpg"
           },
           {
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/web/ph-technicien.jpg"
+            "photo": "/assets/photos/hydrau-presse-pupitre-manometre.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/web/team-grind-close.jpg"
+            "photo": "/assets/photos/meca-tour-conventionnel-senior.jpg"
           },
           {
             "titre": "Centres d’usinage et presses tenus dans le Grand Est",
             "lienLibelle": "Étude de cas Voit",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/photos/energie-releve-pupitre-salle-commande.jpg"
           }
         ]
       },

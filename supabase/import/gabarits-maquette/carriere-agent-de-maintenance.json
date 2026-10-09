@@ -20,7 +20,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/web/mq-e6322efcd358.jpg",
+        "src": "/assets/photos/metal-technicienne-bobines-acier.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -393,12 +393,12 @@
           {
             "libelle": "Métiers de la maintenance",
             "href": "/carriere/",
-            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+            "photo": "/assets/photos/aero-cockpit-inspection-hangar.jpg"
           },
           {
             "libelle": "Responsable maintenance",
             "href": "/carriere/responsable-maintenance/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/robot-poignet-technicien-casque.jpg"
           }
         ]
       }

@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Pau",
       "titre": "Pau : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/web/team-electric.jpg",
+      "photo": "/assets/photos/ciment-tambour-rotatif-silos.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Pau et ses environs",
       "texte": "Nos techniciens itinérants couvrent Pau et son bassin, appuyés par le réseau national Migen.",
@@ -264,52 +264,52 @@
             "texte": ", mission de 6 mois depuis février 2026.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/x-tech-portrait.jpg"
+            "photo": "/assets/photos/tuyau-vanne-volant-conserverie.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS affecté au démarrage d'une nouvelle ligne de production",
             "texte": ", en contexte de montée en charge.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
           },
           {
             "titre": "6 techniciens sur l'installation d'un nouveau parc machine",
             "texte": ", depuis janvier 2023.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/web/x-elec-cablage.jpg"
+            "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg"
           },
           {
             "titre": "1 à 3 techniciens en renfort permanent sur plusieurs sites de production",
             "texte": ", depuis octobre 2024.",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/robot-multimetre-cablage-robot.jpg"
           },
           {
             "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
             "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+            "photo": "/assets/photos/tuyau-pointage-bride-tube.jpg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/energie-bride-mat-eolienne.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/web/ph-robots-solaire.jpg"
+            "photo": "/assets/photos/meca-tour-conventionnel-senior.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/web/ph-tuyaux.jpg"
+            "photo": "/assets/photos/meca-technicienne-cle-machine.jpg"
           }
         ]
       },

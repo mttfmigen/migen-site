@@ -35,7 +35,7 @@
       }
     ],
     "logo": "/assets/clients/mq-dbf1f974e675.svg",
-    "photoHero": "/assets/web/mq-948c28bcda08.jpg",
+    "photoHero": "/assets/photos/ciment-escalier-silo-ronde.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -143,7 +143,7 @@
         "valeur": "2 techniciens"
       }
     ],
-    "photoDispositif": "/assets/web/mq-2a6115ec9fe0.jpg",
+    "photoDispositif": "/assets/photos/metal-four-arc-acierie.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -163,25 +163,25 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
+        "photo": "/assets/photos/metal-fonderie-coulee.jpg"
       },
       {
         "surtitre": "Page",
         "titre": "Travaux industriels",
         "href": "/travaux-industriels/",
-        "photo": "/assets/web/mq-e6322efcd358.jpg"
+        "photo": "/assets/photos/meca-senior-rouleuse-combinaison.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrie lourde",
         "href": "/secteurs/industrie-lourde/",
-        "photo": "/assets/web/mq-339d39e2a674.jpg"
+        "photo": "/assets/photos/meca-jeune-presse-volant.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "RECTOR LESAGE : un technicien au cœur d’une ligne de préfabrication béton",
         "href": "/preuves/rector-lesage/",
-        "photo": "/assets/web/mq-056f3c250981.jpg"
+        "photo": "/assets/photos/meca-presses-volants-technicienne.jpg"
       }
     ]
   }

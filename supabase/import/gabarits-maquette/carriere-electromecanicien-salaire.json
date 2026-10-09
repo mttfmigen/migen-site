@@ -20,7 +20,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/web/mq-2a6115ec9fe0.jpg",
+        "src": "/assets/photos/meca-jeune-presse-volant.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -390,12 +390,12 @@
           {
             "libelle": "Électromécanicien",
             "href": "/carriere/electromecanicien/",
-            "photo": "/assets/web/mq-056f3c250981.jpg"
+            "photo": "/assets/photos/soudure-corps-vanne-forge.jpg"
           },
           {
             "libelle": "Compétences électromécanicien",
             "href": "/carriere/electromecanicien/competences/",
-            "photo": "/assets/web/mq-948c28bcda08.jpg"
+            "photo": "/assets/photos/ciment-tambour-rotatif-silos.jpg"
           }
         ]
       }

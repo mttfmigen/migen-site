@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Dijon",
       "titre": "Dijon : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/web/sv-armoire.jpg",
+      "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg",
       "badge": "Hub Migen",
       "nom": "Hub Dijon",
       "texte": "Une équipe de techniciens installée à Dijon, au plus près de vos sites, appuyée par le réseau national Migen.",
@@ -72,7 +72,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/web/ph-hero-raffinerie.jpg",
+    "problemePhoto": "/assets/photos/soudure-corps-vanne-forge.jpg",
     "brefBande": "Besoin de reprendre un préventif que le correctif a fini par manger ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -207,53 +207,53 @@
             "texte": "Nutrition infantile, cadence continue, site de Steenvoorde.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/web/x-tech-portrait.jpg"
+            "photo": "/assets/photos/pharma-isolateur-salle-propre.jpg"
           },
           {
             "titre": "1 à 3 techniciens en renfort des équipes maintenance sur plusieurs sites de production, depuis octobre 2024",
             "texte": "Disponibilité machine jouée chaque semaine.",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/photos/robot-multimetre-cablage-robot.jpg"
           },
           {
             "titre": "Un technicien intégré pendant l'arrêt estival pour tenir les équipements critiques",
             "texte": "Été 2025, équipe à moitié en congés.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/web/x-elec-cablage.jpg"
+            "photo": "/assets/photos/aero-cockpit-inspection-hangar.jpg"
           },
           {
             "titre": "Un électromécanicien habilité risque chimique RC1 mobilisé six mois sur un site de traitement des eaux industrielles",
             "texte": "Remise en état complète.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/menuiserie-passerelle-usine-bois.jpg"
           },
           {
             "titre": "Un technicien polyvalent sur un parc machines hétérogène en forte cadence",
             "texte": "Papier et emballage, 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/web/x-logistique-entrepot.jpg"
+            "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+            "photo": "/assets/web/sv-portrait.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/photos/robot-palettisation-tablette.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
             "lienLibelle": "Étude de cas Veepee",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+            "photo": "/assets/photos/elec-main-disjoncteurs-borniers.jpg"
           }
         ]
       },

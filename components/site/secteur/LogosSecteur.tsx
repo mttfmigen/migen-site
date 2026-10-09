@@ -22,6 +22,30 @@ import type { LogoSecteur } from "@/types/secteur";
  * LES LOGOS DE LA GRILLE sont servis TELS QUELS (`unoptimized`) : ce sont les
  * fichiers aux mêmes octets que ceux de la maquette vivante, relevés par
  * empreinte, et leur taille propre est celle que la capture borne à 120×40.
+ *
+ * ÉCART DÉCLARÉ À LA MAQUETTE, 09/10 : QUAND LA GRILLE EST LÀ, LE BANDEAU
+ * DÉFILANT NE L'EST PLUS. Demande de Mehdi, « la bande de logo il y en avait
+ * deux… il ne doit y en avoir qu'une ».
+ *
+ * CE QUI A ÉTÉ MESURÉ, et qui décide. La capture empile bien les deux
+ * (`maquette/rendu/secteurs--logistique.html` : `data-dc-tpl` 105, dix tuiles
+ * de 40 px, puis 109 à 259, trente-huit marques écrites deux fois), donc le
+ * portage était fidèle : c'est la maquette elle-même que cette demande corrige.
+ * Mais les deux bandes se suivent à 216 px dans LA MÊME section, en tuiles
+ * blanches de même dessin, et sur les douze fiches de secteur du dépôt 115 des
+ * 115 tuiles de grille portent une marque que le bandeau rejoue juste en
+ * dessous : 100 % de recouvrement, nom à nom.
+ *
+ * POURQUOI PAS « DÉDOUBLONNER » PLUTÔT QUE RETIRER. Retirer du bandeau les
+ * marques de la grille laisse deux bandes empilées, donc le doublon que Mehdi
+ * voit ; retirer de la grille celles du bandeau la VIDE (115 sur 115). Il n'y
+ * avait pas de troisième voie : l'une des deux bandes devait partir.
+ *
+ * CELLE QUI RESTE EST LA GRILLE, parce qu'elle est celle de la page : elle
+ * porte son titre (« Ils nous confient leurs sites logistiques ») et les dix
+ * clients du secteur, là où le bandeau sert les mêmes trente-huit marques sur
+ * cent trente-huit pages. Sans `logos`, rien ne change : le bandeau est alors
+ * la seule bande de la page, et ce composant rend exactement `LogosClients`.
  */
 
 const MASQUE = "linear-gradient(to right,transparent,#000 9%,#000 91%,transparent)";
@@ -83,6 +107,15 @@ export interface ProprietesLogosSecteur {
 }
 
 export default function LogosSecteur({ titre, logos = [] }: ProprietesLogosSecteur) {
+  /* TOUJOURS LA BARRE QUI DÉFILE, décision de Mehdi du 09/10 : « il faut que la
+     barre qui défile ». La grille statique est retirée, elle faisait doublon
+     avec le bloc « Nos références » plus bas dans la page, que Mehdi garde.
+     Quand la page a ses propres logos de secteur, c'est la BARRE qui les porte,
+     au lieu de la liste partagée : une seule bande, et elle dit quelque chose
+     de la page. */
+  const grille = false;
+  const defilants = logos.length > 0 ? logos.map((l) => ({ src: l.src, nom: l.nom, filtre: l.filtre })) : null;
+
   return (
     <section style={{ padding: "64px 0 0" }}>
       <div
@@ -99,7 +132,7 @@ export default function LogosSecteur({ titre, logos = [] }: ProprietesLogosSecte
         <span style={SURTITRE_LIGNE}>Ils nous font confiance</span>
       </div>
 
-      {logos.length > 0 ? (
+      {grille ? (
         <div style={{ maxWidth: 1200, margin: "0 auto 22px", padding: "0 40px" }}>
           {titre ? <div style={TITRE_GRILLE}>{titre}</div> : null}
           <div
@@ -125,38 +158,55 @@ export default function LogosSecteur({ titre, logos = [] }: ProprietesLogosSecte
         </div>
       ) : null}
 
-      <div
-        className="mg-marquee"
-        style={{
-          position: "relative",
-          overflow: "hidden",
-          padding: "16px 0",
-          WebkitMaskImage: MASQUE,
-          maskImage: MASQUE,
-        }}
-      >
-        {/* Écrite deux fois, comme `LogosClients` : la piste translate de
-            -50 %, le second exemplaire, décoratif, comble la boucle. */}
+      {/* LE DÉFILEMENT NE SORT QUE SI LA GRILLE N'EST PAS LÀ : une seule bande
+          de logos par page, écart déclaré du 09/10 en tête de fichier. */}
+      {grille ? null : (
         <div
-          className="mg-track"
+          className="mg-marquee"
           style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 14,
-            width: "max-content",
-            animation: "mgMarquee 40s linear infinite",
-            animationPlayState: "var(--mq-play, running)",
+            position: "relative",
+            overflow: "hidden",
+            padding: "16px 0",
+            WebkitMaskImage: MASQUE,
+            maskImage: MASQUE,
           }}
         >
-          {[0, 1].flatMap((passe) =>
-            LOGOS.map((logo) => (
-              <span key={`${logo.src}-${passe}`} className="mg-logo" style={PASTILLE}>
-                <Image src={logo.src} alt={passe === 0 ? logo.alt : ""} width={120} height={34} style={IMAGE} />
-              </span>
-            )),
-          )}
+          {/* Écrite deux fois, comme `LogosClients` : la piste translate de
+              -50 %, le second exemplaire, décoratif, comble la boucle. */}
+          <div
+            className="mg-track"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 14,
+              width: "max-content",
+              animation: "mgMarquee 40s linear infinite",
+              animationPlayState: "var(--mq-play, running)",
+            }}
+          >
+            {[0, 1].flatMap((passe) =>
+              /* Les logos du secteur quand la page en a, la liste partagée
+                 sinon : la bande dit alors quelque chose de la page au lieu de
+                 rejouer la même suite sur les 138 pages. */
+              (defilants ?? LOGOS).map((logo) => {
+                const nom = "alt" in logo ? logo.alt : logo.nom;
+                return (
+                  <span key={`${logo.src}-${passe}`} className="mg-logo" style={PASTILLE}>
+                    <Image
+                      src={logo.src}
+                      alt={passe === 0 ? nom : ""}
+                      width={120}
+                      height={34}
+                      unoptimized={!("alt" in logo)}
+                      style={{ ...IMAGE, filter: ("filtre" in logo && logo.filtre) || undefined }}
+                    />
+                  </span>
+                );
+              }),
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }

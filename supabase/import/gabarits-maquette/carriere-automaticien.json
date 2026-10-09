@@ -20,7 +20,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/web/mq-e6322efcd358.jpg",
+        "src": "/assets/web/sv-portrait.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -333,17 +333,17 @@
           {
             "libelle": "Métiers de la maintenance",
             "href": "/carriere/",
-            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+            "photo": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
           },
           {
             "libelle": "Salaire automaticien",
             "href": "/carriere/automaticien/salaire/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/energie-rotor-turbine-vapeur.jpg"
           },
           {
             "libelle": "Roboticien",
             "href": "/carriere/roboticien/",
-            "photo": "/assets/web/mq-0699d4d92e7e.jpg"
+            "photo": "/assets/photos/automatisme-coffret-cartes-portable.jpg"
           }
         ]
       }

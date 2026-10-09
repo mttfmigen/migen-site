@@ -177,7 +177,7 @@
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/x-tech-portrait.jpg",
+            "photo": "/assets/web/team-grind-sparks.jpg",
             "logo": "/assets/clients/mq-89100525ef89.svg"
           },
           {
@@ -185,14 +185,14 @@
             "texte": "site proche de Paris",
             "lienLibelle": "Étude de cas FDJ : site proche de Paris",
             "lienHref": "/preuves/fdj/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/robot-pince-reparation-etabli.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/web/x-elec-cablage.jpg",
+            "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg",
             "logo": "/assets/clients/mq-eb9461b85e59.svg"
           },
           {
@@ -200,7 +200,7 @@
             "texte": "troisième trimestre 2025",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "photo": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg",
             "logo": "/assets/clients/mq-441fc873c0d9.svg"
           },
           {
@@ -208,7 +208,7 @@
             "texte": "un technicien sur site, été 2025",
             "lienLibelle": "Étude de cas OGF : arrêt estival",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/web/mq-29ebb1b81ced.jpg",
+            "photo": "/assets/photos/elec-senior-armoire-relais.jpg",
             "logo": "/assets/clients/ogf.png"
           },
           {
@@ -216,21 +216,21 @@
             "texte": "2025 à 2026",
             "lienLibelle": "Étude de cas VPK : maintenance de site",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+            "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
           },
           {
             "titre": "Renfort des équipes de maintenance sur plusieurs sites de production, confort thermique",
             "texte": "1 à 3 techniciens, depuis octobre 2024",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/web/mq-752675f1ed93.jpg",
+            "photo": "/assets/photos/robot-multimetre-cablage-robot.jpg",
             "logo": "/assets/clients/groupe-atlantic.png"
           },
           {
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
             "lienLibelle": "Autoliv",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/web/mq-056f3c250981.jpg",
+            "photo": "/assets/photos/robot-cellule-soudure-inspection.jpg",
             "logo": "/assets/clients/mq-a4d5eb645ce5.svg"
           }
         ]

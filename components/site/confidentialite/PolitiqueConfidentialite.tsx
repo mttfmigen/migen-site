@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 
 import LienReglages from "@/components/consentement/LienReglages";
+import { TELEPHONE_SITE } from "@/components/site/entete-donnees";
 import { CONSERVATION_JOURS, FINALITES, LIBELLES } from "@/lib/consentement";
 
 import styles from "./PolitiqueConfidentialite.module.css";
@@ -34,6 +35,32 @@ import styles from "./PolitiqueConfidentialite.module.css";
  *     fait le plus structurant du traitement (voir `lib/leads.ts`).
  *
  * Tout le reste du texte est celui de la maquette.
+ *
+ * ────────────────────────────────────────────────────────────────────────────
+ * 09/10, LES ÉTIQUETTES DE CHANTIER SONT RETIRÉES. Audit de Nathan Jorez :
+ * la page portait un bandeau « Ce texte est en cours de validation juridique »
+ * et cinq réserves adressées au projet, pas au visiteur. Une politique de
+ * confidentialité qui s'annonce elle-même non validée ne vaut pas mieux que pas
+ * de politique, et elle est citée par la mention RGPD de CHAQUE formulaire.
+ *
+ *   1. LE BANDEAU EST RETIRÉ. Décision de Mehdi, 09/10.
+ *   2. LE POINT DE CONTACT N'EST PLUS « à compléter ». Aucune adresse de
+ *      courriel n'est connue, et on n'en invente pas. Les deux endroits qui la
+ *      réclamaient (responsable du traitement, exercice des droits) renvoient
+ *      vers le formulaire de `/contact/` et donnent le numéro du site, qui sont
+ *      deux moyens de contact réels et vérifiables au dépôt.
+ *   3. LES DURÉES NE PORTENT PLUS « restent à valider » NI « restent à
+ *      arbitrer ». Ces réserves étaient justes et elles sont CONSERVÉES, à leur
+ *      place : `docs/RESERVES-CONTENU.md` et l'en-tête de `lib/consentement.ts`
+ *      pour la durée du choix. Les écrire au visiteur ne lui apprenait rien
+ *      d'utile et décrédibilisait tout le reste de la page.
+ *
+ * CE QUE CELA NE RÈGLE PAS, et qui reste à la main de Mehdi : les trois durées
+ * de conservation (3 ans, 2 ans, durée légale) sont celles de la maquette et
+ * personne ne les a validées ; la purge de la preuve de consentement à six mois
+ * est écrite en commentaire dans `supabase/migrations/0002_consentement.sql`,
+ * donc non armée. La page annonce la politique, le code ne l'applique pas encore.
+ * ────────────────────────────────────────────────────────────────────────────
  */
 
 export const TITRE_H1 = "Politique de confidentialité";
@@ -47,6 +74,30 @@ export const DESCRIPTION_SEO =
 
 /** Seule cible interne de la page. Vérifiée à 200 avant d'être posée. */
 export const CHEMIN_MENTIONS = "/mentions-legales/";
+
+/**
+ * Le moyen d'écrire au responsable du traitement, 09/10.
+ *
+ * La maquette écrit « Contact : [adresse courriel du référent données] » et
+ * « Écrivez à [adresse courriel] ». AUCUNE adresse n'est connue, et inventer
+ * celle d'un point de contact RGPD serait pire que de ne pas en donner : le
+ * visiteur écrirait dans le vide. Le formulaire de `/contact/` et le numéro du
+ * site sont deux voies réelles, vérifiables au dépôt, et c'est ce que les deux
+ * endroits portent désormais.
+ *
+ * À REMPLACER par l'adresse du référent dès que Mehdi la fournit : l'article 13
+ * du RGPD demande un point de contact du responsable du traitement, et un
+ * formulaire commercial n'en est qu'un substitut acceptable.
+ */
+export const CHEMIN_CONTACT = "/contact/";
+
+/**
+ * Date de la dernière révision du TEXTE de la page, pas de son code. La maquette
+ * laisse « Dernière mise à jour : à compléter » ; une politique de
+ * confidentialité sans date ne dit pas au visiteur ce qu'il lit. À REMETTRE À
+ * JOUR À CHAQUE FOIS QUE LE TEXTE CHANGE, et seulement alors.
+ */
+export const DATE_MISE_A_JOUR = "9 octobre 2026";
 
 const LARGEUR = { maxWidth: "1200px", margin: "0 auto" } as const;
 
@@ -100,9 +151,23 @@ const PARTIES: readonly Partie[] = [
     id: "p1",
     titre: "Responsable du traitement",
     corps: (
+      /* 09/10 : LE RESPONSABLE DU TRAITEMENT EST NOMMÉ PAR SA DÉNOMINATION
+         SOCIALE. La maquette écrit « migen© », une marque. L'article 13 du RGPD
+         demande l'identité du responsable, et une marque n'est pas une personne
+         morale : on ne sait pas à qui on écrit. La dénomination vient de
+         `docs/IDENTITE-LEGALE.md` (extrait Pappers transmis par Mehdi, recoupé
+         avec l'annuaire des entreprises de l'État, voir les mentions légales).
+         L'ADRESSE, elle, reste celle de la maquette mot pour mot, et le contrôle
+         continue de l'exiger ainsi. */
       <p style={P}>
-        migen©, 1 rue des Vergers, Bâtiment 3, 69760 Limonest. Contact du
-        référent données&nbsp;: à compléter.
+        MIGEN SERVICE (migen©), 1 rue des Vergers, Bâtiment 3, 69760 Limonest.
+        Pour toute question sur vos données,{" "}
+        {/* Souligné, comme la mention RGPD du formulaire : le style global des
+            liens ne pose ni soulignement ni couleur distincte. */}
+        <Link href={CHEMIN_CONTACT} className="underline">
+          écrivez-nous depuis la page Contact
+        </Link>{" "}
+        ou appelez le {TELEPHONE_SITE.affichage}.
       </p>
     ),
   },
@@ -178,16 +243,24 @@ const PARTIES: readonly Partie[] = [
     titre: "Durées de conservation",
     corps: (
       <>
+        {/* 09/10 : « Ces trois durées restent à valider » retiré. La réserve
+            est juste et elle est conservée dans `docs/RESERVES-CONTENU.md`,
+            § 2 : aucune purge n'applique ces durées, qui vivent dans HubSpot.
+            Elle n'a rien à dire au visiteur, à qui la page annonce une
+            politique, pas l'état d'avancement du chantier. */}
         <p style={P_SUIVI}>
           Prospects&nbsp;: 3 ans à compter du dernier contact. Candidatures non
           retenues&nbsp;: 2 ans. Documents contractuels&nbsp;: durée légale
-          applicable. Ces trois durées restent à valider.
+          applicable.
         </p>
+        {/* 09/10 : « elles restent à arbitrer » retiré, même raison. La réserve
+            sur CONSERVATION_JOURS vit en tête de `lib/consentement.ts`, et celle
+            sur la purge de la preuve dans `0002_consentement.sql`. Les 180 jours
+            annoncés ici sont, eux, EXACTEMENT ce que le code pose. */}
         <p style={P}>
           Votre choix de traceurs est conservé {CONSERVATION_JOURS} jours dans un
           cookie déposé par ce site, et la preuve de ce choix six mois de notre
-          côté. Cette preuve ne porte ni votre nom, ni votre adresse IP. Ces deux
-          durées sont un point de départ, elles restent à arbitrer.
+          côté. Cette preuve ne porte ni votre nom, ni votre adresse IP.
         </p>
       </>
     ),
@@ -198,10 +271,12 @@ const PARTIES: readonly Partie[] = [
     corps: (
       <p style={P}>
         Vous disposez d&apos;un droit d&apos;accès, de rectification,
-        d&apos;effacement, de limitation, d&apos;opposition et de portabilité.
-        Écrivez au référent données, dont l&apos;adresse reste à
-        compléter&nbsp;; une réponse vous sera apportée sous un mois. Vous pouvez
-        également saisir la CNIL.
+        d&apos;effacement, de limitation, d&apos;opposition et de portabilité.{" "}
+        <Link href={CHEMIN_CONTACT} className="underline">
+          Écrivez-nous depuis la page Contact
+        </Link>{" "}
+        ou appelez le {TELEPHONE_SITE.affichage}&nbsp;; une réponse vous sera
+        apportée sous un mois. Vous pouvez également saisir la CNIL.
       </p>
     ),
   },
@@ -248,7 +323,7 @@ export default function PolitiqueConfidentialite() {
             margin: "18px 0 0",
           }}
         >
-          Dernière mise à jour&nbsp;: à compléter
+          Dernière mise à jour&nbsp;: {DATE_MISE_A_JOUR}
         </p>
       </section>
 
@@ -321,33 +396,23 @@ export default function PolitiqueConfidentialite() {
             </nav>
 
             <article style={{ maxWidth: "72ch" }}>
-              {/* La maquette porte ici un encart d'avertissement adressé au
-                  client (« à faire valider par votre DPO »). Il est conservé,
-                  mais réécrit pour le visiteur : lui laisser croire que les
-                  durées sont arrêtées serait pire que de le dire. */}
-              <div
-                style={{
-                  borderRadius: "var(--rad-s)",
-                  background: "var(--acc-w)",
-                  border: "1px solid rgba(255,124,60,.28)",
-                  padding: "20px 24px",
-                  margin: "0 0 32px",
-                }}
-              >
-                <p
-                  style={{
-                    font: "500 14.5px/1.6 var(--fb)",
-                    color: "var(--ink1)",
-                    margin: 0,
-                  }}
-                >
-                  Ce texte est en cours de validation juridique. Les durées de
-                  conservation et le point de contact du référent données ne sont
-                  pas encore arrêtés, ils seront publiés ici dès qu&apos;ils le
-                  seront.
-                </p>
-              </div>
+              {/* 09/10, L'ENCART D'AVERTISSEMENT EST RETIRÉ. Décision de Mehdi,
+                  sur l'audit de Nathan Jorez.
 
+                  La maquette porte ici « Gabarit RGPD : à faire valider par
+                  votre DPO ou votre conseil avant publication », une note
+                  adressée au client. Elle avait été réécrite pour le visiteur
+                  (« Ce texte est en cours de validation juridique »), ce qui
+                  restait une étiquette de chantier sur une page citée par la
+                  mention RGPD de chaque formulaire du site : annoncer que la
+                  politique n'est pas validée retire sa valeur à tout ce qu'elle
+                  dit par ailleurs.
+
+                  Les réserves qu'il portait ne sont pas perdues, elles sont à
+                  leur place : `docs/RESERVES-CONTENU.md` § 2 pour les durées, et
+                  l'en-tête de `lib/consentement.ts` pour la durée du choix.
+                  `verification-confidentialite.tsx` vérifie des deux côtés que
+                  la maquette le porte encore et que le rendu ne le porte plus. */}
               {PARTIES.map((partie) => (
                 <section key={partie.id}>
                   <h2 id={partie.id} style={H2}>

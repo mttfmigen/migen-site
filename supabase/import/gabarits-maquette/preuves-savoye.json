@@ -23,7 +23,7 @@
       }
     ],
     "logo": "/assets/clients/savoye.png",
-    "photoHero": "/assets/web/mq-d50c84e228cb.jpg",
+    "photoHero": "/assets/photos/levage-portique-tubes-exterieur.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -127,7 +127,7 @@
         "valeur": "Résidence sur site ou intervention ponctuelle"
       }
     ],
-    "photoDispositif": "/assets/web/mq-056f3c250981.jpg",
+    "photoDispositif": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg",
     "resultats": [
       {
         "titre": "Des arrêts limités",
@@ -170,25 +170,25 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/web/mq-948c28bcda08.jpg"
+        "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
         "href": "/secteurs/logistique/",
-        "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+        "photo": "/assets/web/sv-convoyeur.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : migration d'automates en Norvège",
         "href": "/preuves/savoye-migration-automates-norvege/",
-        "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+        "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "AKTID : un centre logistique monté en six semaines",
         "href": "/preuves/aktid-centre-logistique/",
-        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
+        "photo": "/assets/photos/robot-palettisation-tablette.jpg"
       }
     ]
   }

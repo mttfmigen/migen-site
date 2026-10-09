@@ -133,7 +133,23 @@ export default function PointsOffre({ section }: ProprietesPointsOffre) {
                 <TexteRiche texte={point.titre} />
               </div>
               <p className={styles.texteAvecLiens} style={PARAGRAPHE}>
-                {point.complement ? <span>{point.complement} </span> : null}
+                {/* LE COMPLÉMENT AUSSI, DEPUIS LE 09/10. Il était le seul des
+                    trois champs de la carte à être rendu brut, alors que
+                    l'intitulé et le bénéfice passaient déjà par `TexteRiche` :
+                    sur `/offres/depannage-industriel/`, la quatrième carte
+                    affichait « Voir l'[astreinte de
+                    maintenance](/offres/depannage-industriel/astreinte/). »,
+                    crochets et chemin compris (audit de Nathan Jorez, 09/10 ;
+                    le champ est `sections[1].lignes[3].prestation.texte`, rendu
+                    ici par `fusionneLigne`). 85 champs de ce type dans les
+                    fiches portent du Markdown, la correction est donc ici et
+                    non dans une donnée. Le texte visible perd la syntaxe et
+                    rien d'autre. */}
+                {point.complement ? (
+                  <span>
+                    <TexteRiche texte={point.complement} />{" "}
+                  </span>
+                ) : null}
                 {/* LE BÉNÉFICE PASSE PAR `TexteRiche`, et c'est le maillage
                     du cocon qui l'exige : le corpus écrit ses liens internes
                     dedans (« dans le cadre d'un [transfert

@@ -4,6 +4,7 @@ import { useId, type CSSProperties } from "react";
 import styles from "./QuestionsPhoto.module.css";
 
 import { LARGEUR, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
+import TexteRiche from "@/components/site/blocs/TexteRiche";
 import type { QuestionsPhotoOffres } from "@/types/offres";
 
 /**
@@ -28,6 +29,15 @@ import type { QuestionsPhotoOffres } from "@/types/offres";
  * `<details>`/`<summary>` plutôt que l'accordéon piloté de la maquette : même
  * choix que `Objections`, et pour les mêmes raisons, clavier, lecteurs d'écran
  * et contenu lisible par Google sans JavaScript.
+ *
+ * LA QUESTION ET LA RÉPONSE PASSENT PAR `TexteRiche` DEPUIS LE 09/10. C'est ce
+ * composant qui portait QUATRE des cinq FAQ en Markdown brut relevées par
+ * l'audit de Nathan Jorez du 09/10 (`/entreprise-maintenance-industrielle/`,
+ * `/offres/arret-technique/`, `/offres/audit-conseil-maintenance/`,
+ * `/offres/depannage-industriel/`) : il rendait `{q.reponse}` tel quel, là où
+ * `blocs/Objections.tsx` passait déjà par `TexteRiche`. ÉCART ASSUMÉ À LA
+ * MAQUETTE, qui affiche elle-même les crochets, ce que l'audit refuse. Seule la
+ * syntaxe disparaît du texte visible.
  */
 
 const CARTE: CSSProperties = {
@@ -196,12 +206,16 @@ export default function QuestionsPhoto({
                   open={i === 0 && Boolean(q.reponse.trim())}
                 >
                   <summary style={QUESTION}>
-                    <span style={INTITULE}>{q.question}</span>
+                    <span className={styles.texteAvecLiens} style={INTITULE}>
+                      <TexteRiche texte={q.question} />
+                    </span>
                     <span className="cx-plus" style={PLUS}>
                       +
                     </span>
                   </summary>
-                  <div style={REPONSE}>{q.reponse}</div>
+                  <div className={styles.texteAvecLiens} style={REPONSE}>
+                    <TexteRiche texte={q.reponse} />
+                  </div>
                 </details>
               ))}
             </div>

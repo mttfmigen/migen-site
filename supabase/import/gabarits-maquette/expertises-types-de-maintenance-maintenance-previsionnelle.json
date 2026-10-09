@@ -39,17 +39,17 @@
       {
         "valeur": "10 %",
         "texte": "Des techniciens retenus, chaque technicien est évalué en entretien technique et comportemental",
-        "photo": "/assets/web/team-grind-front.jpg"
+        "photo": "/assets/photos/robot-technicienne-inspection-bras.jpg"
       },
       {
         "valeur": "+ 120",
         "texte": "Collaborateurs, depuis quatre agences, partout en France",
-        "photo": "/assets/web/team-electric.jpg"
+        "photo": "/assets/photos/elec-multimetre-armoire-automatisme.jpg"
       },
       {
         "valeur": "8",
         "texte": "Domaines techniques couverts par une seule équipe, de la mécanique à la robotique",
-        "photo": "/assets/web/team-grind-close.jpg"
+        "photo": "/assets/photos/chimie-piquage-manometre-gants.jpg"
       }
     ],
     "complementTypes": [
@@ -168,7 +168,7 @@
         }
       }
     ],
-    "problemePhoto": "/assets/web/mq-0699d4d92e7e.jpg",
+    "problemePhoto": "/assets/photos/elec-local-technicien-accroupi.jpg",
     "complementOffre": [
       {
         "texte": "Pour une panne en cours, voir le dépannage industriel."
@@ -299,54 +299,54 @@
             "texte": "Six techniciens en permanence, prise en charge réalisée en un mois.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/web/mq-1ef16ef335a6.jpg"
+            "photo": "/assets/photos/meca-cle-bride-carter.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, automobile",
             "texte": "Tenue, depuis octobre 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/automatisme-coffret-cartes-portable.jpg"
           },
           {
             "titre": "Pilotage de la maintenance pendant une montée de cadence, distribution technique",
             "texte": "Un responsable maintenance intégré sur site, T3 2025.",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/web/x-elec-cablage.jpg"
+            "photo": "/assets/photos/agro-remplisseuse-cle-plate.jpg"
           },
           {
             "titre": "Maintenance des centres d'usinage, presses et machines à commande numérique, automobile",
             "texte": "Un technicien intégré à temps plein.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
           },
           {
             "titre": "Renfort de 3 à 5 techniciens sur plusieurs usines en France, automobile",
             "texte": "Depuis septembre 2024, accompagnement d'une montée en cadence.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
+            "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg"
           },
           {
             "titre": "Préventif tenu pendant l'arrêt estival, services funéraires",
             "texte": "Un technicien intégré sur les équipements critiques, été 2025.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+            "photo": "/assets/photos/robot-poignet-technicien-casque.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/elec-armoire-pont-roulant-gilet.jpg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/web/mq-0699d4d92e7e.jpg"
+            "photo": "/assets/photos/aero-nacelle-moteur-technicien.jpg"
           }
         ]
       },

@@ -14,7 +14,7 @@
     ],
     "bouton": "Faire diagnostiquer mes machines",
     "logo": "/assets/clients/joint-lyonnais.png",
-    "photoHero": "/assets/web/mq-eabc4d10517e.jpg",
+    "photoHero": "/assets/web/sv-portrait.jpg",
     "chiffres": [
       {
         "libelle": "Nature des interventions",
@@ -128,7 +128,7 @@
         "valeur": "Budget de PME, sans rachat de matériel neuf"
       }
     ],
-    "photoDispositif": "/assets/web/mq-948c28bcda08.jpg",
+    "photoDispositif": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg",
     "resultats": [
       {
         "titre": "Les difficultés rencontrées ont été palliées",
@@ -179,25 +179,25 @@
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : maintenance préventive photovoltaïque",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+        "photo": "/assets/photos/elec-salle-cellules-ht-ronde.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+        "photo": "/assets/photos/pharma-technicienne-machine-comprimes.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "ERIKS : un responsable maintenance pour traverser la transition",
         "href": "/preuves/eriks/",
-        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
+        "photo": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/web/mq-e6322efcd358.jpg"
+        "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg"
       }
     ]
   }

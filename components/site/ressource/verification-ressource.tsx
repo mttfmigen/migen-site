@@ -34,6 +34,7 @@ import { fileURLToPath } from "node:url";
 
 import { renderToStaticMarkup } from "react-dom/server";
 
+import { enTexteNu } from "@/components/site/blocs/TexteRiche";
 import { appliqueDecisions } from "@/lib/decisions-copie";
 
 import PageRessource from "./PageRessource";
@@ -66,11 +67,45 @@ function decode(html: string): string {
     .replace(/&amp;/g, "&");
 }
 
-/** Texte lisible : balises en espaces, insécable et apostrophes unifiées. */
+/**
+ * Texte lisible : balises en espaces, insécable et apostrophes unifiées, et
+ * depuis le 09/10 le Markdown en ligne réduit à ses mots.
+ *
+ * POURQUOI `enTexteNu` ICI. Cette fonction sert LES DEUX CÔTÉS, la capture et
+ * le rendu, et c'est tout l'intérêt : la capture montre encore
+ * « Le [dépannage industriel](/offres/depannage-industriel/) », le rendu rend le
+ * lien, et les deux disent les mêmes MOTS. Comparer les mots au lieu de la
+ * syntaxe est ce qui permet à la porte de rester exacte après la correction du
+ * 09/10 sans rien laisser passer : un mot absent échoue comme avant, et le
+ * Markdown lui-même est refusé par un contrôle à part, dans `controle`.
+ */
 function normaliseTexte(texte: string): string {
-  return texte.replace(/ /g, " ").replace(/[’‘]/g, "'").replace(/\s+/g, " ").trim();
+  return enTexteNu(nettoie(texte)).trim();
 }
-const texteDe = (html: string) => normaliseTexte(decode(html.replace(/<[^>]+>/g, " ")));
+
+/** Les espaces et les apostrophes seulement : le balisage reste LISIBLE. */
+function nettoie(texte: string): string {
+  return texte.replace(/ /g, " ").replace(/[’‘]/g, "'").replace(/\s+/g, " ");
+}
+
+const sansBalises = (html: string) => decode(html.replace(/<[^>]+>/g, " "));
+const texteDe = (html: string) => normaliseTexte(sansBalises(html));
+
+/**
+ * Le texte visible AVEC son balisage, pour le seul contrôle qui doit le voir :
+ * la chasse au Markdown rendu. `texteDe` le gomme par construction, le lui
+ * passer ferait un contrôle qui ne peut plus échouer.
+ *
+ * Les balises deviennent des SAUTS DE LIGNE et non des espaces : le dièse de
+ * titre ne se reconnaît qu'en tête de ligne, et tout aplatir sur une seule
+ * ligne rendrait ce motif-là inatteignable, donc muet.
+ */
+const texteBalisageCompris = (html: string) =>
+  decode(html.replace(/<[^>]+>/g, "\n"))
+    .replace(/ /g, " ")
+    .replace(/[’‘]/g, "'")
+    .replace(/[ \t]+/g, " ")
+    .trim();
 
 /** Même valeur, deux écritures (`0px` / `0`, `0.9fr` / `.9fr`, espaces). */
 function normaliseStyle(texte: string): string {
@@ -173,6 +208,29 @@ function controle(url: string): string[] {
     const obtenu = texteDe(sRendu[i] ?? "");
     verifie(attendu === obtenu, `section ${i} : texte différent${ecart(attendu, obtenu)}`);
   });
+
+  /* PORTE RETOURNÉE LE 09/10, et voici pourquoi.
+     Jusqu'ici elle comparait la SYNTAXE Markdown, parce que la capture
+     l'affiche : son rendu figé écrit « ✓ Le [dépannage
+     industriel](/offres/depannage-industriel/) pour l'imprévu ». Le gras de son
+     `segs()` ne redescend pas dans son contenu, exactement comme le nôtre le
+     faisait. L'audit de Nathan Jorez du 09/10 refuse ce Markdown à l'écran : la
+     règle « la capture fait foi jusqu'aux crochets » est devenue fausse, et
+     cinq pages la faisaient échouer alors que le défaut était corrigé.
+
+     LA PORTE N'EST PAS ASSOUPLIE, ELLE EST DÉPLACÉE. `texteDe` compare
+     désormais les MOTS (voir `normaliseTexte`, qui passe les deux côtés par
+     `enTexteNu`) : un mot absent ou changé échoue toujours. Et ce qui était
+     comparé est maintenant INTERDIT dans le rendu, ci-dessous : si le site
+     réaffiche un crochet, elle échoue, ce que l'ancienne version ne faisait
+     pas. Elle est donc plus stricte sur le défaut réel, pas moins. */
+  const brut = texteBalisageCompris(rendu).match(
+    /\*\*[^*\n]{1,200}\*\*|\[[^\]\n]{1,200}\]\([^)\n]{0,300}\)|(?:^|\n)#{1,6}\s+\S/,
+  );
+  verifie(
+    !brut,
+    `Markdown visible dans le rendu : « ${brut?.[0]} » (audit du 09/10 : aucune page ne doit en montrer)`,
+  );
 
   // Le dessin.
   for (const [i, fragment, si] of DESSIN) {

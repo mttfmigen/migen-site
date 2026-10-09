@@ -33,7 +33,7 @@
         "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "problemePhoto": "/assets/web/team-electric.jpg",
+    "problemePhoto": "/assets/photos/meca-presses-volants-technicienne.jpg",
     "complementOffre": [
       {
         "texte": "Un moteur en panne maintenant se traite par le dépannage industriel."
@@ -174,42 +174,42 @@
             "titre": "Remise en état d'un site de traitement des eaux industrielles, risque chimique",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/mq-2d11362f7867.jpg",
+            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg",
             "texte": "Un technicien électromécanicien habilité RC1 mobilisé 6 mois, mécanique, électricité et notions d'automatisme réunies sur le même intervenant."
           },
           {
             "titre": "Montages et déplacements de machines, étanchéité et isolation",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "photo": "/assets/photos/pharma-blistereuse-mecanisme.jpg",
             "texte": "Assemblage mécanique et électromécanique de lignes et de sous-ensembles, missions ciblées sur 2025."
           },
           {
             "titre": "Contrat de maintenance préventive annuelle, logistique",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/web/x-elec-cablage.jpg",
+            "photo": "/assets/photos/equipe-transmission-senior-jeune.jpg",
             "texte": "Six techniciens polyvalents en permanence, mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique et robotique couvertes, depuis septembre 2023."
           },
           {
             "titre": "Maintien opérationnel de convoyeurs, trieurs et packaging automatisés, logistique et transport",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "photo": "/assets/photos/aero-fuselage-serrage-lampe.jpg",
             "texte": "Deux techniciens en poste, domaines couverts en propre."
           },
           {
             "titre": "Maintenance du parc machines d'un équipementier automobile",
             "lienLibelle": "Étude de cas AUTOLIV",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/web/mq-7ee5a26d3e82.jpg",
+            "photo": "/assets/photos/meca-graissage-couronne-engin.jpg",
             "texte": "Un technicien de maintenance dédié, intégré aux équipes du site, en 2025."
           },
           {
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Étude de cas Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "photo": "/assets/web/team-grind-sparks.jpg",
             "texte": ""
           }
         ]

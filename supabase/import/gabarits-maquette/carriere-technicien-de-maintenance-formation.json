@@ -21,7 +21,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/web/mq-056f3c250981.jpg",
+        "src": "/assets/photos/aero-reacteur-capot-combinaison.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -515,17 +515,17 @@
           {
             "libelle": "Technicien de maintenance",
             "href": "/carriere/technicien-de-maintenance/",
-            "photo": "/assets/web/mq-0699d4d92e7e.jpg"
+            "photo": "/assets/photos/aero-percage-aile-avion.jpg"
           },
           {
             "libelle": "Alternance en maintenance industrielle",
             "href": "/carriere/alternance/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/meca-tour-conventionnel-senior.jpg"
           },
           {
             "libelle": "Salaire technicien de maintenance",
             "href": "/carriere/technicien-de-maintenance/salaire/",
-            "photo": "/assets/web/mq-339d39e2a674.jpg"
+            "photo": "/assets/photos/robot-cellule-soudure-inspection.jpg"
           }
         ]
       }

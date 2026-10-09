@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Haute-Garonne",
       "titre": "Haute-Garonne : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/web/team-electric.jpg",
+      "photo": "/assets/photos/robot-poignet-technicien-casque.jpg",
       "badge": "Rattaché au hub Toulouse",
       "nom": "Haute-Garonne, couvert par le hub Toulouse",
       "texte": "Les techniciens du hub Toulouse interviennent à Haute-Garonne et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -227,53 +227,53 @@
             "texte": ", depuis septembre 2024.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/web/x-tech-portrait.jpg"
+            "photo": "/assets/photos/elec-multimetre-armoire-automatisme.jpg"
           },
           {
             "titre": "6 techniciens multidisciplinaires pour l'installation et la mise en production d'un nouveau parc machines",
             "texte": ", mission toujours en cours.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/web/team-grind-sparks.jpg"
           },
           {
             "titre": "Un technicien à temps plein sur des centres d'usinage, des presses et des machines à commande numérique",
             "texte": ", parc multimarques.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/web/x-elec-cablage.jpg"
+            "photo": "/assets/photos/agro-atelier-inox-plan-large.jpg"
           },
           {
             "titre": "Des intervenants qualifiés intégrés au contrôle de chantier",
             "texte": "d'un spécialiste mondial de l'automatisation, sur des projets d'aéroports et d'industrie.",
             "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/chimie-reacteurs-agites-passerelle.jpg"
           },
           {
             "titre": "12 monteurs mécaniciens et 8 engins de levage pour le montage d'un centre logistique",
             "texte": "6 semaines de chantier, date de livraison non négociable, tenue.",
             "lienLibelle": "Étude de cas AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/web/x-logistique-entrepot.jpg"
+            "photo": "/assets/photos/meca-technicienne-parc-moteurs.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/web/ph-tuyaux.jpg"
+            "photo": "/assets/photos/robot-pupitre-apprentissage-soudure.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/agro-technicienne-raccord-clamp.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/web/ph-robots-solaire.jpg"
+            "photo": "/assets/photos/robot-technicienne-inspection-bras.jpg"
           }
         ]
       },

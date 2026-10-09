@@ -22,7 +22,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/web/mq-0699d4d92e7e.jpg",
+        "src": "/assets/photos/metal-fonderie-coulee.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -274,12 +274,12 @@
           {
             "libelle": "Technicien de maintenance",
             "href": "/carriere/technicien-de-maintenance/",
-            "photo": "/assets/web/mq-948c28bcda08.jpg"
+            "photo": "/assets/photos/energie-eolien-hauteur-harnais.jpg"
           },
           {
             "libelle": "Formation technicien de maintenance",
             "href": "/carriere/technicien-de-maintenance/formation/",
-            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+            "photo": "/assets/photos/robot-cobot-technicienne.jpg"
           }
         ]
       }

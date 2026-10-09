@@ -28,6 +28,29 @@ const MOTIF = /\*\*\[([^\]]+)\]\(([^)]+)\)\*\*|\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]
  * enveloppe `**[lien](/x/)**` dans un gras que la maquette ne pose pas. Sa
  * règle de sécurité est reprise telle quelle : seul un chemin interne devient
  * un lien, le reste est rendu en texte.
+ *
+ * LA RÉCURSION DU 09/10, et c'est la cause racine de douze des vingt-six
+ * chaînes de Markdown visibles relevées par l'audit de Nathan Jorez.
+ *
+ * Le corpus écrit « **Le [dépannage industriel](/offres/depannage-industriel/)** » :
+ * un gras qui COMMENCE PAR DU TEXTE et contient un lien. La première branche
+ * de `MOTIF` exige `**[`, elle ne s'applique donc pas ; la troisième,
+ * `\*\*([^*]+)\*\*`, avale tout le gras d'un coup et ne redescendait pas dans
+ * son contenu. Résultat à l'écran : « Le [dépannage industriel](/offres/…) »,
+ * crochets et chemin compris, sur douze puces de cinq pages ressource.
+ *
+ * `blocs/TexteRiche.tsx` avait eu exactement ce défaut, corrigé par récursion ;
+ * la même correction est appliquée ici. Elle termine : `[^*]+` interdit
+ * l'astérisque, donc le contenu réinjecté ne peut plus porter de `**` et ne
+ * peut matcher que la deuxième branche, le lien nu.
+ *
+ * ÉCART ASSUMÉ À LA MAQUETTE, et c'est elle qui avait le défaut : son rendu
+ * figé écrit `<strong …><span class="sc-interp">Le [dépannage
+ * industriel](/offres/depannage-industriel/)</span></strong>`
+ * (`maquette/rendu/ressources--articles--plan-de-maintenance.html`). Son
+ * `segs()` ne redescend pas non plus dans son gras. Nous nous en écartons sur
+ * la foi de l'audit : le dessin et les mots sont ceux de la capture, seule la
+ * syntaxe disparaît, et les douze liens du cocon redeviennent cliquables.
  */
 export function EnLigne({
   texte,
@@ -49,7 +72,8 @@ export function EnLigne({
     if (libelle === undefined) {
       morceaux.push(
         <strong key={debut} style={gras}>
-          {m[5]}
+          {/* RÉCURSION : le gras peut contenir un lien (voir l'en-tête). */}
+          <EnLigne texte={m[5]} lien={lien} gras={gras} />
         </strong>,
       );
     } else if (estCheminInterne(href)) {

@@ -37,7 +37,7 @@
         "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "problemePhoto": "/assets/web/mq-339d39e2a674.jpg",
+    "problemePhoto": "/assets/photos/chimie-piquage-manometre-gants.jpg",
     "complementOffre": [
       {
         "texte": "Une rupture en cours se traite par le dépannage industriel."
@@ -182,56 +182,56 @@
             "titre": "Remise en état d'un site de traitement des eaux industrielles, risque chimique",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/mq-752675f1ed93.jpg",
+            "photo": "/assets/photos/tuyau-vanne-volant-conserverie.jpg",
             "texte": "Un technicien habilité RC1 mobilisé 6 mois, habilitations obtenues avant la première intervention."
           },
           {
             "titre": "Construction d'un site industriel de recherche et développement, matériaux bas carbone",
             "lienLibelle": "Étude de cas Migen Travaux x ECOCEM",
             "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "photo": "/assets/photos/pharma-cuves-process-passerelle.jpg",
             "texte": "Pilotage de chantier et coordination, soudure et chaudronnerie parmi les domaines mobilisés selon les besoins."
           },
           {
             "titre": "Montage de portiques de lavage partout en France",
             "lienLibelle": "Étude de cas Migen Travaux x WASHTEC",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/web/mq-339d39e2a674.jpg",
+            "photo": "/assets/photos/agro-mains-vanne-sanitaire.jpg",
             "texte": "Levage et raccordements compris, mécanique, électricité et automatisme réunis sur le même chantier."
           },
           {
             "titre": "Montages et déplacements de machines, étanchéité et isolation",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "photo": "/assets/photos/agro-panneau-vannes-nep.jpg",
             "texte": "Lignes et sous-ensembles assemblés, profils réunis selon le chantier, sur 2025."
           },
           {
             "titre": "Contrat de maintenance sur un site agroalimentaire de grande échelle, Belgique",
             "lienLibelle": "Étude de cas McCAIN",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/web/mq-e69a240d8656.jpg",
+            "photo": "/assets/photos/chaudro-meulage-visiere.jpg",
             "texte": "Renfort en place depuis octobre 2024, premier contrat Migen hors de France."
           },
           {
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/web/mq-339d39e2a674.jpg",
+            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg",
             "texte": ""
           },
           {
             "titre": "Centres d’usinage et presses tenus dans le Grand Est",
             "lienLibelle": "Étude de cas Voit",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/web/mq-17e2f3bce95f.jpg",
+            "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg",
             "texte": ""
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/web/mq-42237c1c8685.jpg",
+            "photo": "/assets/photos/chimie-reacteurs-agites-passerelle.jpg",
             "texte": ""
           }
         ]

@@ -14,7 +14,7 @@
     ],
     "bouton": "Mettre mon parc sous contrat de maintenance",
     "logo": "/assets/clients/timescope.png",
-    "photoHero": "/assets/web/x-elec-cablage.jpg",
+    "photoHero": "/assets/photos/chimie-cuve-melange-flexible.jpg",
     "chiffres": [
       {
         "libelle": "Périmètre",
@@ -127,7 +127,7 @@
         "valeur": "Fiabilité et performances des casques"
       }
     ],
-    "photoDispositif": "/assets/web/mq-17e2f3bce95f.jpg",
+    "photoDispositif": "/assets/photos/pharma-isolateur-salle-propre.jpg",
     "resultats": [
       {
         "titre": "Un suivi de maintenance approfondi sur tout le parc",
@@ -168,25 +168,25 @@
         "surtitre": "Étude de cas",
         "titre": "Migen Travaux x ECOCEM : construction d'un site R&D",
         "href": "/preuves/orthus-ecocem/",
-        "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+        "photo": "/assets/photos/chaudro-technicienne-plan-etabli.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/web/mq-0699d4d92e7e.jpg"
+        "photo": "/assets/photos/energie-releve-pupitre-salle-commande.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/web/mq-e6322efcd358.jpg"
+        "photo": "/assets/photos/equipe-transmission-senior-jeune.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/web/mq-339d39e2a674.jpg"
+        "photo": "/assets/photos/levage-montage-poteau-charpente.jpg"
       }
     ]
   }

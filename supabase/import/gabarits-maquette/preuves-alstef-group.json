@@ -23,7 +23,7 @@
       }
     ],
     "logo": "/assets/clients/alstef-group.webp",
-    "photoHero": "/assets/web/mq-d50c84e228cb.jpg",
+    "photoHero": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg",
     "chiffres": [
       {
         "libelle": "Durée de mission",
@@ -134,7 +134,7 @@
         "valeur": "Sans avenant, tarif horaire maîtrisé"
       }
     ],
-    "photoDispositif": "/assets/web/mq-e6322efcd358.jpg",
+    "photoDispositif": "/assets/photos/robot-palettiseur-sacs-poudre.jpg",
     "resultats": [
       {
         "titre": "Les phases critiques sécurisées",
@@ -183,25 +183,25 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/web/mq-339d39e2a674.jpg"
+        "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
         "href": "/secteurs/logistique/",
-        "photo": "/assets/web/mq-056f3c250981.jpg"
+        "photo": "/assets/web/sv-convoyeur.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DANONE : lignes de production",
         "href": "/preuves/danone-lignes-de-production/",
-        "photo": "/assets/web/mq-948c28bcda08.jpg"
+        "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+        "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
       }
     ]
   }

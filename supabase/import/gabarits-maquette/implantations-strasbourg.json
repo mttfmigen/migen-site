@@ -223,53 +223,53 @@
             "texte": "Transition vers le véhicule électrique, partenariat reconduit.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-grand-est/",
-            "photo": "/assets/web/x-tech-portrait.jpg"
+            "photo": "/assets/photos/robot-cellules-grillagees.jpg"
           },
           {
             "titre": "Un technicien à temps plein sur un parc d'usinage du Grand Est, en 2025",
             "texte": "Centres d'usinage, presses et commandes numériques, parc multimarques.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
           },
           {
             "titre": "Montages, déplacements de machines et renfort technique ponctuel",
             "texte": "chez un acteur de l'étanchéité et de l'isolation, sur l'année 2025.",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/web/x-elec-cablage.jpg"
+            "photo": "/assets/photos/meca-jeune-presse-volant.jpg"
           },
           {
             "titre": "Un technicien polyvalent intégré sur un site papier et emballage en forte cadence",
             "texte": "2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
           },
           {
             "titre": "Six techniciens sur l'installation et la mise en production d'un parc machines neuf",
             "texte": ", site automobile, depuis janvier 2023.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/web/x-logistique-entrepot.jpg"
+            "photo": "/assets/photos/energie-rack-canalisations-binome.jpg"
           },
           {
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/web/ph-tuyaux.jpg"
+            "photo": "/assets/photos/automatisme-coffret-cartes-portable.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/web/ph-tuyaux.jpg"
+            "photo": "/assets/web/sv-convoyeur.jpg"
           },
           {
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
             "lienLibelle": "Étude de cas Autoliv",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+            "photo": "/assets/photos/pneu-cle-bloc-distribution.jpg"
           }
         ]
       },

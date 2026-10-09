@@ -42,3 +42,16 @@
 .lienFleche:focus-visible {
   color: var(--acc);
 }
+
+/* AJOUTÉ LE 09/10 avec le passage des réponses par `TexteRiche` (audit de
+   Nathan Jorez, « plusieurs FAQ affichent du Markdown brut »). Les réponses du
+   corpus portent des liens du cocon ; `app/globals.css` retire le soulignement
+   de tous les liens, il est rétabli ici pour qu'un lien dans un paragraphe
+   reste identifiable sans la couleur (WCAG 1.4.1). Même règle que
+   `.texteAvecLiens` de `offre/PageOffre.module.css`. Sur ce panneau sombre
+   l'encre est déjà celle de la carte, le lien n'a donc pas de couleur propre :
+   le soulignement est son seul repère, et c'est bien pour cela qu'il y est. */
+.texteAvecLiens a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

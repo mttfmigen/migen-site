@@ -14,16 +14,39 @@
  * (voir l'en-tête de PolitiqueConfidentialite.tsx). Cette page est la cible de
  * la mention RGPD de chaque formulaire du site, une phrase fausse ici est fausse
  * partout.
+ *
+ * ────────────────────────────────────────────────────────────────────────────
+ * UNE ASSERTION A ÉTÉ RETOURNÉE LE 09/10, et deux blocs ont été ajoutés.
+ *
+ *   · RETOURNÉE : la ligne de date. Elle exigeait du rendu le sous-titre de la
+ *     maquette, qui est « Dernière mise à jour : à compléter ». Elle rendait
+ *     donc OBLIGATOIRE l'étiquette de chantier que l'audit de Nathan Jorez du
+ *     09/10 demande de retirer. Les deux côtés sont maintenant vérifiés
+ *     séparément : la maquette doit toujours laisser sa date à compléter (sans
+ *     quoi l'écart n'a plus d'objet), le rendu doit porter une date en clair.
+ *
+ *   · AJOUTÉ : l'absence des étiquettes de chantier. Le bandeau « en cours de
+ *     validation juridique » et les cinq réserves adressées au projet ne
+ *     doivent plus être rendues, et la maquette doit toujours porter le sien,
+ *     sinon l'exception n'a plus d'objet.
+ *
+ *   · AJOUTÉ, et c'est l'assertion la plus utile de ce fichier : LA LISTE DES
+ *     DESTINATAIRES DOIT CORRESPONDRE AUX PIXELS RÉELLEMENT ARMÉS. Elle relit
+ *     `.env.local` et refuse les deux incohérences, dans les deux sens. Voir le
+ *     bloc « OpenAI » plus bas.
+ * ────────────────────────────────────────────────────────────────────────────
  */
 
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { FINALITES, LIBELLES } from "@/lib/consentement";
+import { TELEPHONE_LP, TELEPHONE_SITE } from "@/components/site/entete-donnees";
+import { FINALITES, LIBELLES, LIEN_CONFIDENTIALITE } from "@/lib/consentement";
 import PolitiqueConfidentialite, {
+  CHEMIN_CONTACT,
   CHEMIN_MENTIONS,
   TITRE_H1,
   TITRE_SEO,
@@ -115,9 +138,35 @@ assert.equal(
   ADRESSE_MAQUETTE,
   "la maquette n'écrit plus cette adresse : la relire avant de changer le rendu",
 );
+/* 09/10 : LE RESPONSABLE DU TRAITEMENT EST NOMMÉ PAR SA DÉNOMINATION SOCIALE.
+   La maquette écrit « migen© », une marque ; l'article 13 du RGPD demande
+   l'identité du responsable, et une marque n'est pas une personne morale.
+   L'ADRESSE reste exigée mot pour mot comme dans la maquette, seul le nom est
+   ajouté devant, et il est relu dans sa source au lieu d'être écrit ici. */
+const DENOMINATION = (() => {
+  const chemin = fileURLToPath(
+    new URL("../../../docs/IDENTITE-LEGALE.md", import.meta.url),
+  );
+  assert.ok(
+    existsSync(chemin),
+    "docs/IDENTITE-LEGALE.md est absent : la page nomme un responsable du traitement dont la source n'est plus au dépôt",
+  );
+  const ligne = readFileSync(chemin, "utf8")
+    .split("\n")
+    .find((l) => l.startsWith("| Dénomination sociale |"));
+  assert.ok(ligne, "la dénomination sociale a disparu de docs/IDENTITE-LEGALE.md");
+  return ligne.split("|")[2].trim();
+})();
+/* L'adresse seule, c'est-à-dire la phrase de la maquette privée de sa marque.
+   Elle n'est pas réécrite ici : elle est DÉCOUPÉE dans celle de la maquette,
+   donc elle suit la maquette si celle-ci change de bâtiment ou de code postal. */
+const MARQUE = "migen©, ";
+assert.ok(ADRESSE_MAQUETTE.startsWith(MARQUE), "la maquette n'ouvre plus par la marque");
+const adresseSeule = ADRESSE_MAQUETTE.slice(MARQUE.length);
+const RESPONSABLE = `${DENOMINATION} (migen©), ${adresseSeule}`;
 assert.ok(
-  texteRendu.includes(ADRESSE_MAQUETTE),
-  "l'adresse du siège de Limonest n'est pas rendue, mot pour mot comme la maquette",
+  texteRendu.includes(RESPONSABLE),
+  `le responsable du traitement n'est pas rendu comme « ${RESPONSABLE} » : la dénomination vient de docs/IDENTITE-LEGALE.md, l'adresse de la maquette`,
 );
 
 
@@ -149,12 +198,27 @@ assert.equal(
   "le H1 porté ne dit plus ce que dit celui de la maquette",
 );
 
+/* RETOURNÉE LE 09/10. LA LIGNE DE DATE DIVERGE, PARCE QU'ELLE EST RENSEIGNÉE.
+   L'assertion précédente exigeait du rendu le sous-titre de la maquette, mot
+   pour mot. Or ce sous-titre est « Dernière mise à jour : à compléter » : elle
+   rendait obligatoire l'étiquette de chantier que l'audit de Nathan Jorez du
+   09/10 relève comme le défaut à corriger.
+
+   Les deux côtés sont désormais vérifiés séparément. C'est la FORME de la date
+   qui est exigée du rendu, pas sa valeur, sinon ce contrôle serait à réécrire à
+   chaque révision du texte. */
 const sousTitre = texte(
   /<\/h1>\s*<p[^>]*>([\s\S]*?)<\/p>/.exec(ecran)?.[1] ?? "",
 );
-assert.ok(
-  sousTitre.length > 0 && texteRendu.includes(sousTitre),
-  `la ligne de date de la maquette est absente du rendu : « ${sousTitre} »`,
+assert.equal(
+  sousTitre,
+  "Dernière mise à jour : à compléter",
+  "la maquette ne laisse plus sa date à compléter : l'écart du 09/10 n'a plus d'objet, le rendu peut reprendre son sous-titre",
+);
+assert.match(
+  texteRendu,
+  /Dernière mise à jour : [1-9]\d? [a-zéû]+ 20\d\d/,
+  "la date de dernière mise à jour n'est pas rendue en clair",
 );
 
 // Le sommaire de la maquette et ses six cibles. Chaque entrée doit être un H2
@@ -205,7 +269,10 @@ for (const cle of [
   "padding:48px 0 var(--sec)",
   "padding:0 40px",
   "scroll-margin-top:100px",
-  "background:var(--acc-w)",
+  /* « background:var(--acc-w) » a été RETIRÉ de cette liste le 09/10 : c'était
+     la déclaration du bandeau d'avertissement, qui n'est plus rendu. Son absence
+     n'est pas pour autant laissée sans contrôle, voir le bloc « étiquettes de
+     chantier » plus bas, qui la vérifie des deux côtés. */
   "height:var(--sec)",
   "gap:11px",
   "color:var(--acc);flex:none",
@@ -235,6 +302,136 @@ for (const finalite of FINALITES) {
       `destinataire « ${destinataire} » de la finalité « ${finalite} » non nommé`,
     );
   }
+}
+
+/* ------------- OPENAI : LA PAGE NOMME EXACTEMENT LES PIXELS RÉELLEMENT ARMÉS */
+
+/* AJOUTÉE LE 09/10, sur l'audit de Nathan Jorez. La page nommait « OpenAI »
+   parmi les destinataires de la publicité, alors qu'AUCUN pixel OpenAI n'est
+   chargé : `components/consentement/Tags.tsx` ne le monte que si
+   NEXT_PUBLIC_OPENAI_PIXEL_SRC est posée, et elle ne l'est pas.
+
+   Nommer un destinataire qui ne reçoit rien est aussi faux que taire celui qui
+   reçoit. Cette assertion refuse LES DEUX ÉTATS INCOHÉRENTS : la page qui
+   nomme OpenAI sans pixel armé (le défaut corrigé), et le pixel armé sans que
+   la page le nomme (le défaut symétrique, le plus grave des deux). Elle est
+   donc la seule façon de retirer ce destinataire sans ouvrir la porte à son
+   retour silencieux.
+
+   `.env.local` n'est pas versionné : absent, il vaut « aucun pixel armé », ce
+   qui est l'état correct par défaut en intégration continue. */
+const CHEMIN_ENV = fileURLToPath(
+  new URL("../../../.env.local", import.meta.url),
+);
+const env = existsSync(CHEMIN_ENV) ? readFileSync(CHEMIN_ENV, "utf8") : "";
+const pixelOpenAiArme = /^\s*NEXT_PUBLIC_OPENAI_PIXEL_SRC\s*=\s*\S+/m.test(env);
+assert.equal(
+  texteRendu.includes("OpenAI"),
+  pixelOpenAiArme,
+  pixelOpenAiArme
+    ? "le pixel OpenAI est armé (NEXT_PUBLIC_OPENAI_PIXEL_SRC posée) et la page ne le nomme pas : remettre « OpenAI » dans LIBELLES.publicite ET incrémenter VERSION_BANDEAU"
+    : "la page nomme OpenAI parmi les destinataires alors qu'aucun pixel OpenAI n'est armé : un destinataire qui ne reçoit rien n'a rien à faire dans une page juridique",
+);
+assert.equal(
+  LIBELLES.publicite.destinataires.includes("OpenAI"),
+  pixelOpenAiArme,
+  "LIBELLES.publicite et le pixel réellement armé ont divergé : le bandeau et cette page afficheraient une liste fausse",
+);
+
+/* ------------------------------ aucune étiquette de chantier dans la page */
+
+/* AJOUTÉ LE 09/10. La maquette porte un encart « Gabarit RGPD : à faire valider
+   par votre DPO ou votre conseil avant publication », adressé au client. Il
+   avait été réécrit pour le visiteur ; il est retiré, sur décision de Mehdi.
+   Les cinq réserves qui l'accompagnaient le sont aussi (« à compléter » du
+   point de contact et de la date, « restent à valider », « restent à
+   arbitrer »). Elles vivent maintenant dans `docs/RESERVES-CONTENU.md` et dans
+   l'en-tête de `lib/consentement.ts`.
+
+   La première assertion borne l'exception : si la maquette perd son encart,
+   elle n'a plus d'objet et le contrôle le dit. */
+assert.ok(
+  texte(ecran).includes("Gabarit RGPD"),
+  "la maquette ne porte plus son encart d'avertissement : l'écart du 09/10 n'a plus d'objet",
+);
+for (const etiquette of [
+  "à compléter",
+  "Gabarit RGPD",
+  "en cours de validation",
+  "restent à valider",
+  "restent à arbitrer",
+  "point de départ",
+  "votre DPO",
+  "votre conseil",
+]) {
+  assert.ok(
+    !texteRendu.includes(etiquette),
+    `étiquette de chantier rendue sur une page juridique publique : ${etiquette}`,
+  );
+}
+assert.ok(
+  !rendu.includes("var(--acc-w)") && !rendu.includes("14.5px"),
+  "le bandeau d'avertissement est revenu dans le rendu (ses déclarations de style y sont)",
+);
+
+/* ------------------------- un point de contact réel, à défaut d'un courriel */
+
+/* AJOUTÉ LE 09/10. La maquette écrit « Contact : [adresse courriel du référent
+   données] » et « Écrivez à [adresse courriel] ». Aucune adresse n'est connue et
+   on n'en invente pas : les deux endroits renvoient vers le formulaire de
+   `/contact/` et donnent le numéro du site. Une politique de confidentialité
+   sans AUCUN moyen de contact est incomplète au regard de l'article 13 du RGPD,
+   et elle est citée par la mention RGPD de chaque formulaire. */
+assert.match(
+  rendu,
+  new RegExp(`href="${CHEMIN_CONTACT.replace(/\/$/, "")}/?"`),
+  `la page ne renvoie plus vers ${CHEMIN_CONTACT} : le visiteur n'a aucun moyen d'exercer ses droits`,
+);
+assert.equal(
+  (rendu.match(/href="\/contact\/?"/g) ?? []).length,
+  2,
+  "les deux renvois attendus (responsable du traitement, exercice des droits) ne sont pas tous les deux posés",
+);
+assert.ok(
+  texteRendu.includes(TELEPHONE_SITE.affichage),
+  "le numéro du site n'est plus donné comme second moyen de contact",
+);
+assert.ok(
+  !texteRendu.includes(TELEPHONE_LP.affichage),
+  "le numéro de la landing page est rendu sur le site",
+);
+/* 09/10 : LE BANDEAU DE CONSENTEMENT DOIT VISER CETTE PAGE, PAS SA 301.
+   `LIEN_CONFIDENTIALITE` valait `/politique-de-confidentialite/`, l'ancienne URL
+   du site WordPress, redirigée en 301 vers `/confidentialite/`. C'est le SEUL
+   lien du bandeau, celui que l'article 13 du RGPD y impose : chaque visiteur et
+   chaque robot y perdaient une redirection. Corrigé dans `lib/consentement.ts`,
+   et vérifié ici parce que c'est cette page qui en est la cible. */
+/* Le chemin canonique n'est pas écrit ici : il est LU dans la route qui sert la
+   page, `app/confidentialite/page.tsx`. Deux sources indépendantes comparées, au
+   lieu d'une constante recopiée qui vieillirait avec le reste. */
+const CHEMIN_SERVI = (() => {
+  const route = fileURLToPath(
+    new URL("../../../app/confidentialite/page.tsx", import.meta.url),
+  );
+  const trouve = readFileSync(route, "utf8").match(/const CHEMIN = "([^"]+)"/);
+  assert.ok(trouve, "app/confidentialite/page.tsx ne déclare plus son chemin canonique");
+  return trouve[1];
+})();
+assert.equal(
+  LIEN_CONFIDENTIALITE,
+  CHEMIN_SERVI,
+  `le bandeau de consentement renvoie vers ${LIEN_CONFIDENTIALITE} au lieu de la page servie ${CHEMIN_SERVI} : une redirection à chaque clic`,
+);
+
+// Les deux cibles internes de la page doivent exister sous `app/` : un renvoi
+// mort sur la page des droits est le même défaut que la 404 qu'on a réparée.
+for (const cible of [CHEMIN_CONTACT, CHEMIN_MENTIONS]) {
+  assert.ok(
+    existsSync(
+      fileURLToPath(new URL(`../../../app${cible}page.tsx`, import.meta.url)),
+    ),
+    `cible sans route : ${cible}`,
+  );
 }
 
 // ---------------------------------- ce que la maquette affirme et que le code dément
@@ -319,5 +516,7 @@ for (const interdit of [
 
 console.log(
   `Confidentialité : ${entrees.length} parties, texte et mise en forme ` +
-    "conformes à la maquette, affirmations démenties par le code absentes.",
+    "conformes à la maquette, affirmations démenties par le code absentes, " +
+    "aucune étiquette de chantier rendue, " +
+    `destinataires alignés sur les pixels armés (OpenAI ${pixelOpenAiArme ? "armé" : "non armé"}).`,
 );

@@ -173,47 +173,47 @@
             "texte": "Plusieurs intervenants intégrés aux équipes, automaticiens Schneider et Siemens parmi les spécialités engagées.",
             "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/web/mq-5111002ce2b6.jpg"
+            "photo": "/assets/photos/automatisme-camera-vision-convoyeur.jpg"
           },
           {
             "titre": "Automaticien dédié à temps plein sur le démarrage d'une ligne neuve, près de Lyon",
             "texte": "Mission menée sur les deuxième et troisième trimestres 2025, sur environnement Siemens.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/automatisme-armoire-jeune-tablette.jpg"
           },
           {
             "titre": "Installation et mise en production d'un nouveau parc machine, site automobile",
             "texte": "Six techniciens aux compétences croisées, mécanique, électricité et automatisme, depuis janvier 2023.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/web/x-auto-caisse.jpg"
+            "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
           },
           {
             "titre": "Maintenance des équipements critiques d'un équipementier automobile",
             "texte": "Techniciens intégrés au quotidien, périmètre systèmes automatisés, lignes et convoyeurs, depuis 2025.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/elec-porte-armoire-voyants-sectionneurs.jpg"
           },
           {
             "titre": "Maintien opérationnel de convoyeurs, trieurs et packaging automatisés, logistique et transport",
             "texte": "Deux techniciens en poste, automatisme parmi les domaines couverts en propre.",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/web/mq-0b70202fed79.jpg"
+            "photo": "/assets/photos/elec-binome-coffret-chaufferie.jpg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg"
+            "photo": "/assets/photos/pharma-isolateur-salle-propre.jpg"
           },
           {
             "titre": "La GMAO planifie, nos techniciens interviennent",
             "lienLibelle": "Étude de cas DimoMaint",
             "lienHref": "/preuves/dimomaint/",
-            "photo": "/assets/web/mq-948c28bcda08.jpg"
+            "photo": "/assets/photos/pneu-pince-axe-lineaire.jpg"
           }
         ]
       },

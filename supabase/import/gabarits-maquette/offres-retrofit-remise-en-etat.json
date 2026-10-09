@@ -167,7 +167,7 @@
             "texte": "Diagnostic sur site, plusieurs options chiffrées dans le budget d'une PME, parc existant conservé plutôt que racheté",
             "lienLibelle": "Étude de cas JOINT LYONNAIS",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/web/x-tech-portrait.jpg",
+            "photo": "/assets/photos/soudure-brossage-meuleuse-etau.jpg",
             "logo": "/assets/clients/joint-lyonnais.png"
           },
           {
@@ -175,7 +175,7 @@
             "texte": "Machines existantes reconfigurées sans casse, délais tenus sans pénalité",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "photo": "/assets/photos/pharma-blistereuse-mecanisme.jpg",
             "logo": "/assets/clients/mq-127f9e03c53b.svg"
           },
           {
@@ -183,34 +183,34 @@
             "texte": "Trois techniciens en renfort, suivi rigoureux des équipements sur toute la durée du chantier",
             "lienLibelle": "Étude de cas EIFFAGE",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/web/x-elec-cablage.jpg",
+            "photo": "/assets/photos/nucleaire-salle-commande-centrale.jpg",
             "logo": "/assets/clients/mq-21daf7c60970.svg"
           },
           {
             "titre": "Une usine de carton en 3x8, un technicien qui tient la cadence",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/web/mq-339d39e2a674.jpg"
+            "photo": "/assets/photos/pneu-pince-axe-lineaire.jpg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/web/mq-948c28bcda08.jpg",
+            "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
             "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
             "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/web/mq-17e2f3bce95f.jpg",
+            "photo": "/assets/photos/meca-cle-bride-carter.jpg",
             "logo": "/assets/clients/mq-7c01e175985e.png"
           },
           {
             "titre": "Un responsable maintenance pour traverser la transition",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/web/mq-0699d4d92e7e.jpg",
+            "photo": "/assets/photos/elec-porte-armoire-voyants-sectionneurs.jpg",
             "logo": "/assets/clients/mq-441fc873c0d9.svg"
           }
         ]
@@ -262,37 +262,37 @@
         "titre": "Technicien en résidence",
         "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
         "href": "/offres/residence/",
-        "photo": "/assets/web/team-duo.jpg"
+        "photo": "/assets/photos/aero-fuselage-serrage-lampe.jpg"
       },
       {
         "titre": "Zéro arrêt",
         "phrase": "La maintenance en abonnement, au forfait mensuel.",
         "href": "/offres/zero-arret/",
-        "photo": "/assets/web/ph-technicien.jpg"
+        "photo": "/assets/photos/elec-binome-coffret-chaufferie.jpg"
       },
       {
         "titre": "Arrêt technique",
         "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
         "href": "/offres/arret-technique/",
-        "photo": "/assets/web/ph-hero-raffinerie.jpg"
+        "photo": "/assets/photos/meca-graissage-couronne-engin.jpg"
       },
       {
         "titre": "Full service",
         "phrase": "Toute votre maintenance, un seul partenaire.",
         "href": "/offres/full-service/",
-        "photo": "/assets/web/team-grind-front.jpg"
+        "photo": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg"
       },
       {
         "titre": "Travaux industriels",
         "phrase": "Transfert, démantèlement, démontage et montage.",
         "href": "/travaux-industriels/",
-        "photo": "/assets/web/ph-tuyaux.jpg"
+        "photo": "/assets/photos/automatisme-armoire-jeune-tablette.jpg"
       },
       {
         "titre": "Bureau d’études",
         "phrase": "Conception, retrofit et mise en conformité.",
         "href": "/offres/bureau-etudes/",
-        "photo": "/assets/web/ph-robots-solaire.jpg"
+        "photo": "/assets/photos/robot-pupitre-apprentissage-soudure.jpg"
       }
     ],
     "pagesLieesTitre": "Les offres et prestations voisines"

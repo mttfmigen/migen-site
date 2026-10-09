@@ -219,60 +219,60 @@
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "photo": "/assets/photos/pneu-pince-axe-lineaire.jpg",
             "logo": "/assets/clients/savoye.png"
           },
           {
             "titre": "",
-            "texte": "[Étude de cas ORTHUS x ECOCEM : nouveau site](/preuves/orthus-ecocem/) · Pilotage complet de la construction d'un site industriel de recherche et développement près de Paris, coordination multi-métiers et jalons tenus.",
+            "texte": "Pilotage complet de la construction d'un site industriel de recherche et développement près de Paris, coordination multi-métiers et jalons tenus.",
             "lienLibelle": "Étude de cas Migen Travaux x ECOCEM : nouveau site",
             "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/web/x-tech-portrait.jpg",
+            "photo": "/assets/photos/nucleaire-salle-commande-centrale.jpg",
             "logo": "/assets/clients/orthus-x-ecocem.png"
           },
           {
             "titre": "",
-            "texte": "[Étude de cas JOINT LYONNAIS : défaillances machines](/preuves/joint-lyonnais/) · Lyon, depuis février 2024. Diagnostic technique puis plusieurs solutions chiffrées, arbitrées par le client selon son budget.",
+            "texte": "Lyon, depuis février 2024. Diagnostic technique puis plusieurs solutions chiffrées, arbitrées par le client selon son budget.",
             "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg",
             "logo": "/assets/clients/joint-lyonnais.png"
           },
           {
             "titre": "",
-            "texte": "[Étude de cas EATON : mise en production](/preuves/eaton-mise-en-production/) · Janvier 2023. Six techniciens multidisciplinaires pour l'installation et la mise en production d'un parc machines neuf.",
+            "texte": "Janvier 2023. Six techniciens multidisciplinaires pour l'installation et la mise en production d'un parc machines neuf.",
             "lienLibelle": "Étude de cas EATON : mise en production",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/web/x-elec-cablage.jpg",
+            "photo": "/assets/photos/elec-porte-armoire-voyants-sectionneurs.jpg",
             "logo": "/assets/clients/mq-70bce765c1a2.svg"
           },
           {
             "titre": "",
-            "texte": "[Étude de cas ORTHUS x WASHTEC : installation de stations](/preuves/orthus-washtec/) · Montage des portiques de lavage selon les standards du constructeur, réception, levage et raccordements, partout en France.",
+            "texte": "Montage des portiques de lavage selon les standards du constructeur, réception, levage et raccordements, partout en France.",
             "lienLibelle": "Étude de cas Migen Travaux x WASHTEC : installation de stations",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "photo": "/assets/photos/elec-binome-coffret-chaufferie.jpg",
             "logo": "/assets/clients/orthus-x-washtec.svg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/web/mq-948c28bcda08.jpg",
+            "photo": "/assets/photos/elec-schema-lampe-frontale.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
             "titre": "Des chantiers automatisés contrôlés point par point",
             "lienLibelle": "Alstef Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg",
+            "photo": "/assets/photos/elec-senior-armoire-relais.jpg",
             "logo": "/assets/clients/alstef.webp"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/web/mq-17e2f3bce95f.jpg",
+            "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           }
         ]

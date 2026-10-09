@@ -119,7 +119,62 @@ const ORTHUS: Regle[] = [
   [/\bOrthus\b/g, () => "Migen Travaux"],
 ];
 
-const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS];
+/* 09/10, LE MARKDOWN NE S'AFFICHE PLUS. Écart assumé à la maquette, déclaré
+   ici parce qu'il touche la copie de tout le site, MAIS SANS RÈGLE DE
+   RÉÉCRITURE, et c'est volontaire. Lire ce qui suit avant d'en ajouter une.
+
+   LE DÉFAUT, mesuré le 09/10 en balayant les 248 pages servies : 26 chaînes de
+   Markdown visibles sur 12 pages, identiques en local et en production, comme
+   l'audit de Nathan Jorez le signalait. Quatre causes, toutes dans des
+   composants, aucune dans la donnée :
+     ·  5  les réponses de FAQ rendues telles quelles (`offres/QuestionsPhoto`
+           pour quatre, `implantation/QuestionsVille` pour une) ;
+     ·  1  le complément de carte d'offre (`offre/PointsOffre`) ;
+     ·  8  le texte des cartes de référence (`offre/ReferencesOffre`), doublé
+           d'un préfixe de lien en trop dans deux fiches ;
+     · 12  le gras qui contient un lien (`ressource/CorpsRessource`), dont le
+           motif ne redescendait pas dans son contenu.
+
+   C'EST BIEN UN ÉCART : la maquette affiche elle-même ces crochets. Son rendu
+   figé écrit « ✓ Le [dépannage industriel](/offres/depannage-industriel/) pour
+   l'imprévu » (`maquette/rendu/ressources--articles--plan-de-maintenance.html`)
+   et « [Étude de cas ORTHUS x ECOCEM : nouveau site](/preuves/orthus-ecocem/)
+   · … » sur ses cartes de `/bureau-etudes/`. Son `segs()` a exactement le
+   défaut que le nôtre avait. Nous nous en écartons sur la foi de l'audit : les
+   MOTS et le dessin restent ceux de la capture, seule la syntaxe disparaît, et
+   les 26 liens du cocon qu'elle emprisonnait redeviennent cliquables.
+
+   POURQUOI PAS UNE RÈGLE ICI, et c'est le point à ne pas oublier :
+   `scripts/applique-decisions-copie.ts` passe `appliqueDecisions` sur CHAQUE
+   chaîne de CHAQUE fiche. Une règle qui retire le Markdown y effacerait les
+   quelque 1 800 chaînes balisées des fiches, dont les ~600 liens internes qui
+   sont la raison d'être du cocon. La décision ne peut donc pas vivre en
+   réécriture de donnée : elle vit dans le RENDU.
+
+   OÙ ELLE EST TENUE, ET VÉRIFIÉE :
+     · `blocs/TexteRiche.tsx` rend le balisage (et `enTexteNu` le réduit à ses
+       mots là où un lien est impossible, la carte étant déjà un `<Link>`) ;
+     · `components/site/verification-markdown-brut.tsx` (`bun run
+       verifie:markdown`) refuse qu'un des six composants le rende brut, et ses
+       six régressions ont été remises une à une pour la voir échouer ;
+     · `ressource/verification-ressource.tsx` a dû être RETOURNÉE : elle
+       comparait la syntaxe de la capture, elle compare maintenant les mots, et
+       refuse en plus tout Markdown dans le rendu. Elle échoue toujours sur un
+       mot changé, la preuve a été faite. */
+
+/* 09/10, LE META-TEXTE DU CORPUS. Mehdi : « sur les business case y'a du texte
+   ça va pas, ça ne veut rien dire ». Exemple relevé sur
+   /preuves/danone-lignes-de-production/ : « Ce que Blédina retire de la
+   collaboration, tel que le site le formule : ». C'est une note de rédaction
+   restée dans le corpus, et la maquette la rend telle quelle : la retirer est
+   donc un écart déclaré, pas une correction de portage. Un visiteur n'a que
+   faire de savoir « tel que le site le formule ». */
+const META_REDACTION: Regle[] = [
+  [/,?\s*tel que le site le formule\s*:/g, () => " :"],
+  [/\s*tel que le site le formule\s*/g, () => " "],
+];
+
+const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION];
 
 /** Le texte tel que le site doit le rendre, à partir de celui de la maquette. */
 export function appliqueDecisions(texte: string): string {

@@ -158,7 +158,7 @@
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "photo": "/assets/photos/chaudro-technicienne-plan-etabli.jpg",
             "logo": "/assets/clients/savoye.png"
           },
           {
@@ -166,7 +166,7 @@
             "texte": "6 techniciens mobilisés, objectifs de production en progression continue depuis",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/web/mq-29ebb1b81ced.jpg",
+            "photo": "/assets/photos/robot-atelier-ferrage-plongee.jpg",
             "logo": "/assets/clients/mq-70bce765c1a2.svg"
           },
           {
@@ -174,7 +174,7 @@
             "texte": "Un automaticien SIEMENS intégré sur site, prise en main rapide de l'automatisme",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "photo": "/assets/photos/automobile-ligne-montage-binome.jpg",
             "logo": "/assets/clients/mq-eb9461b85e59.svg"
           },
           {
@@ -182,7 +182,7 @@
             "texte": "Coordination technique et exécution pilotées par Migen Travaux, jalons critiques suivis",
             "lienLibelle": "Étude de cas Migen Travaux x ECOCEM",
             "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/web/mq-e69a240d8656.jpg",
+            "photo": "/assets/photos/tuyau-vanne-volant-conserverie.jpg",
             "logo": "/assets/clients/orthus-x-ecocem.png"
           },
           {
@@ -190,7 +190,7 @@
             "texte": "3 à 5 techniciens déployés, sans détourner les équipes internes de leurs objectifs",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg",
             "logo": "/assets/clients/mq-f6fcccfd4cc8.svg"
           },
           {
@@ -198,21 +198,21 @@
             "texte": "12 monteurs, 8 engins de levage, livraison à la date prévue",
             "lienLibelle": "Étude de cas AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/web/mq-5111002ce2b6.jpg",
+            "photo": "/assets/photos/robot-cellules-grillagees.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
             "titre": "Un renfort pour que le pain sorte chaque matin",
             "lienLibelle": "La Panetière",
             "lienHref": "/preuves/la-panetiere/",
-            "photo": "/assets/web/mq-056f3c250981.jpg",
+            "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg",
             "logo": "/assets/clients/mq-8506472cb2ee.svg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/web/mq-948c28bcda08.jpg",
+            "photo": "/assets/photos/menuiserie-robot-panneaux.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           }
         ]
@@ -264,37 +264,37 @@
         "titre": "Déménagement de machines industrielles",
         "phrase": "Déménagement de machines industrielles",
         "href": "/offres/chantier/demenagement-machines/",
-        "photo": "/assets/web/team-duo.jpg"
+        "photo": "/assets/photos/meca-moteur-palan-depose.jpg"
       },
       {
         "titre": "Technicien en résidence",
         "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
         "href": "/offres/residence/",
-        "photo": "/assets/web/team-duo.jpg"
+        "photo": "/assets/photos/automatisme-camera-vision-convoyeur.jpg"
       },
       {
         "titre": "Zéro arrêt",
         "phrase": "La maintenance en abonnement, au forfait mensuel.",
         "href": "/offres/zero-arret/",
-        "photo": "/assets/web/ph-technicien.jpg"
+        "photo": "/assets/photos/agro-atelier-inox-plan-large.jpg"
       },
       {
         "titre": "Arrêt technique",
         "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
         "href": "/offres/arret-technique/",
-        "photo": "/assets/web/ph-hero-raffinerie.jpg"
+        "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
       },
       {
         "titre": "Full service",
         "phrase": "Toute votre maintenance, un seul partenaire.",
         "href": "/offres/full-service/",
-        "photo": "/assets/web/team-grind-front.jpg"
+        "photo": "/assets/photos/ciment-tambour-rotatif-silos.jpg"
       },
       {
         "titre": "Travaux industriels",
         "phrase": "Transfert, démantèlement, démontage et montage.",
         "href": "/travaux-industriels/",
-        "photo": "/assets/web/ph-tuyaux.jpg"
+        "photo": "/assets/photos/levage-montage-poteau-charpente.jpg"
       }
     ],
     "brefMention": "Faire chiffrer mon transfert de production Un chargé d'affaires vous rappelle dans l'heure et identifie les points durs du projet.",

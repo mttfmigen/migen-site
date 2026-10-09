@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Avignon",
       "titre": "Avignon : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/web/team-electric.jpg",
+      "photo": "/assets/photos/soudure-interieur-virole.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Avignon et ses environs",
       "texte": "Nos techniciens itinérants couvrent Avignon et son bassin, appuyés par le réseau national Migen.",
@@ -255,52 +255,52 @@
             "texte": ", liquides et conditionnement poudre.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/web/x-tech-portrait.jpg"
+            "photo": "/assets/photos/chimie-reacteurs-agites-passerelle.jpg"
           },
           {
             "titre": "Renfort de 6 mois sur un site de traitement des eaux industrielles à risque chimique",
             "texte": ", avec habilitation dédiée.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/photos/menuiserie-passerelle-usine-bois.jpg"
           },
           {
             "titre": "6 techniciens polyvalents en permanence sur un contrat de préventif annuel logistique",
             "texte": ", reprise complète en un mois.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/web/x-elec-cablage.jpg"
+            "photo": "/assets/photos/elec-main-disjoncteurs-borniers.jpg"
           },
           {
             "titre": "Un technicien en renfort pendant les congés d'été",
             "texte": ", pour tenir les équipements en juillet et août.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/chaudro-presse-plieuse.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/web/team-grind-impact.jpg"
+            "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/web/team-electric.jpg"
+            "photo": "/assets/photos/robot-palettisation-tablette.jpg"
           },
           {
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Étude de cas Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+            "photo": "/assets/photos/chaudro-technicienne-plan-etabli.jpg"
           },
           {
             "titre": "Des chantiers automatisés contrôlés point par point",
             "lienLibelle": "Étude de cas Alstef Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/web/ph-tuyaux.jpg"
+            "photo": "/assets/photos/automatisme-camera-vision-convoyeur.jpg"
           }
         ]
       },

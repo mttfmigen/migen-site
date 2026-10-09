@@ -21,7 +21,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/web/mq-17e2f3bce95f.jpg",
+        "src": "/assets/photos/elec-multimetre-armoire-automatisme.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -372,27 +372,27 @@
           {
             "libelle": "Métiers de la maintenance",
             "href": "/carriere/",
-            "photo": "/assets/web/mq-339d39e2a674.jpg"
+            "photo": "/assets/photos/elec-binome-coffret-chaufferie.jpg"
           },
           {
             "libelle": "Compétences électromécanicien",
             "href": "/carriere/electromecanicien/competences/",
-            "photo": "/assets/web/mq-056f3c250981.jpg"
+            "photo": "/assets/web/sv-duo-impact.jpg"
           },
           {
             "libelle": "Salaire électromécanicien",
             "href": "/carriere/electromecanicien/salaire/",
-            "photo": "/assets/web/mq-948c28bcda08.jpg"
+            "photo": "/assets/photos/soudure-brossage-meuleuse-etau.jpg"
           },
           {
             "libelle": "Automaticien",
             "href": "/carriere/automaticien/",
-            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+            "photo": "/assets/web/sv-armoire.jpg"
           },
           {
             "libelle": "Responsable maintenance",
             "href": "/carriere/responsable-maintenance/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/energie-bride-mat-eolienne.jpg"
           }
         ]
       }

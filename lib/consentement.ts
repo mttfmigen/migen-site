@@ -41,8 +41,22 @@ export const COOKIE_NOM = "migen_consentement";
 /** Point de départ : 6 mois, à confirmer (voir l'avertissement en tête). */
 export const CONSERVATION_JOURS = 180;
 
-/** Page d'information, nommée dans le bandeau comme l'exige l'article 13 du RGPD. */
-export const LIEN_CONFIDENTIALITE = "/politique-de-confidentialite/";
+/**
+ * Page d'information, nommée dans le bandeau comme l'exige l'article 13 du RGPD.
+ *
+ * 09/10 : CORRIGÉE EN `/confidentialite/`. Elle valait
+ * `/politique-de-confidentialite/`, l'ANCIENNE URL du site WordPress, qui est
+ * une 301 vers `/confidentialite/` (voir `supabase/import/0003_redirections.sql`
+ * ligne 30). Chaque visiteur qui cliquait depuis le bandeau, et chaque robot qui
+ * suivait ce lien, passaient donc par une redirection, sur le seul lien que le
+ * bandeau porte. Le formulaire et le pied de page visaient déjà la forme
+ * canonique ; le défaut était signalé dans `docs/RESERVES-CONTENU.md` § 2.
+ *
+ * `components/site/confidentialite/verification-confidentialite.tsx` vérifie que
+ * cette valeur est bien celle de la route servie : la page et le bandeau ne
+ * peuvent plus diverger sans que ce soit dit.
+ */
+export const LIEN_CONFIDENTIALITE = "/confidentialite/";
 
 /**
  * Ce que chaque finalité autorise, dit au visiteur sans jargon, et QUI reçoit
@@ -67,7 +81,25 @@ export const LIBELLES: Record<
     titre: "Publicité",
     texte:
       "Savoir quelle annonce vous a amené ici, pour arrêter de payer celles qui n'intéressent personne. Rien n'est revendu.",
-    destinataires: ["Google (Google Ads)", "LinkedIn", "OpenAI"],
+    /* 09/10, « OPENAI » RETIRÉ DE CETTE LISTE. Audit de Nathan Jorez du 09/10,
+       vérifié avant de retirer : `.env.local` ne porte PAS
+       NEXT_PUBLIC_OPENAI_PIXEL_SRC, la seule variable que
+       `components/consentement/Tags.tsx` lit pour ce pixel. Aucun pixel OpenAI
+       n'est donc chargé, sur aucune page, quel que soit le choix du visiteur.
+
+       Nommer un destinataire qui ne reçoit rien est aussi faux que taire celui
+       qui reçoit : la page /confidentialite/ annonce cette liste comme celle des
+       destinataires réels, et c'est une page juridique.
+
+       VERSION_BANDEAU n'est PAS incrémentée, et c'est volontaire : retirer un
+       destinataire restreint ce à quoi le visiteur a consenti, il n'y a rien à
+       lui redemander. L'inverse, lui, l'exige.
+
+       POUR ARMER LE PIXEL UN JOUR : remettre « OpenAI » ici, incrémenter
+       VERSION_BANDEAU, et seulement ensuite poser la variable. L'assertion de
+       `components/site/confidentialite/verification-confidentialite.tsx` relit
+       `.env.local` et refuse les deux états incohérents, dans les deux sens. */
+    destinataires: ["Google (Google Ads)", "LinkedIn"],
   },
   personnalisation: {
     titre: "Personnalisation des annonces",
@@ -87,10 +119,14 @@ export const LIBELLES: Record<
  * Préfixes des cookies de PREMIÈRE PARTIE que chaque finalité fait apparaître.
  * Servent au nettoyage lors d'un retrait (voir `supprimeCookies`).
  *
- * Les pixels LinkedIn et OpenAI écrivent sur leurs propres domaines : ces
- * cookies sont hors de portée d'un script de migen.fr. C'est précisément
- * pourquoi le retrait recharge la page et pourquoi Consent Mode reste la
- * seconde ceinture, au lieu de compter sur ce nettoyage seul.
+ * Le pixel LinkedIn écrit sur son propre domaine : ces cookies sont hors de
+ * portée d'un script de migen.fr. C'est précisément pourquoi le retrait
+ * recharge la page et pourquoi Consent Mode reste la seconde ceinture, au lieu
+ * de compter sur ce nettoyage seul.
+ *
+ * 09/10 : OpenAI ne figure plus dans cette phrase, pour la même raison qu'il ne
+ * figure plus dans LIBELLES ci-dessus (aucun pixel armé, voir le commentaire de
+ * la finalité « publicite »).
  */
 const COOKIES_PAR_FINALITE: Record<Finalite, readonly string[]> = {
   // `_ga` et `_ga_<identifiant de flux>`, posés par Google Analytics 4.

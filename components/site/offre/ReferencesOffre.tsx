@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { LARGEUR, SECTION, SURTITRE } from "@/components/site/blocs/habillage";
-import { estCheminInterne } from "@/components/site/blocs/TexteRiche";
+import { enTexteNu, estCheminInterne } from "@/components/site/blocs/TexteRiche";
 import type { SectionPreuves } from "@/types/contenu";
 
 import { etiquetteEtude, phraseDate } from "./texte-offre";
@@ -340,8 +340,26 @@ export default function ReferencesOffre({ section, dateBrute = false }: Propriet
                 }}
               >
                 <div style={ETIQUETTE}>{etiquetteEtude(preuve)}</div>
-                <div style={TITRE_CARTE}>{preuve.titre}</div>
-                <div style={DATE_CARTE}>{dateBrute ? preuve.texte : phraseDate(preuve.texte)}</div>
+                {/* `enTexteNu` ET PAS `TexteRiche`, POSÉ LE 09/10. Toute la
+                    carte est déjà un `<Link>` : y rendre un lien du corpus
+                    donnerait un `<a>` dans un `<a>`, interdit par le HTML et
+                    mal hydraté par React. Le Markdown y est donc réduit à ses
+                    mots, le lien de la carte restant celui qui compte.
+                    Pourquoi c'est nécessaire : l'audit de Nathan Jorez du 09/10
+                    a relevé huit cartes qui affichaient « [Étude de cas ORTHUS
+                    x ECOCEM : nouveau site](/preuves/orthus-ecocem/) · … » sur
+                    `/bureau-etudes/` et `/offres/bureau-etudes/`. Le préfixe a
+                    été retiré des deux fiches (voir leur champ `texte`), et ce
+                    garde empêche qu'une fiche le ramène sans bruit : cinq
+                    `preuves[].titre` de `offres-audit-conseil-maintenance.json`
+                    en portent encore, invisibles seulement parce qu'ils n'ont
+                    pas de `lienHref` et tombent au filtre ci-dessus. */}
+                <div style={TITRE_CARTE}>{enTexteNu(preuve.titre)}</div>
+                <div style={DATE_CARTE}>
+                  {dateBrute
+                    ? enTexteNu(preuve.texte)
+                    : phraseDate(enTexteNu(preuve.texte))}
+                </div>
                 <div style={PIED_CARTE}>
                   <span style={{ font: "600 14px var(--fb)", color: "var(--ink)" }}>
                     Lire l’étude de cas

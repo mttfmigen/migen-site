@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Annecy",
       "titre": "Annecy : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/web/team-electric.jpg",
+      "photo": "/assets/photos/energie-levage-eolienne-senior.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Annecy et ses environs",
       "texte": "Nos techniciens itinérants couvrent Annecy et son bassin, appuyés par le réseau national Migen.",
@@ -245,37 +245,37 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/web/ph-hero-raffinerie.jpg"
+            "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/web/team-grind-impact.jpg"
+            "photo": "/assets/web/sv-portrait.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/web/ph-technicien.jpg"
+            "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/web/ph-robots-solaire.jpg"
+            "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
           },
           {
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/meca-moteur-palan-depose.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/agro-ihm-ligne-conditionnement-senior.jpg"
           }
         ]
       },

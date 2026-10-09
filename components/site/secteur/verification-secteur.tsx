@@ -22,6 +22,15 @@
  *  5. LES PHOTOS ET LES LOGOS : ceux que la capture nomme en clair, par leur
  *     nom ; ceux qu'elle sert en `blob:`, par empreinte SHA-1 contre le relevé
  *     de la maquette vivante (`releve-photos.json`).
+ *  5 bis. UNE SEULE BANDE DE LOGOS dans « 02 Logos », et elle est entière :
+ *     `ecartsBandeUnique`. Ajouté le 09/10 avec l'écart déclaré en tête de
+ *     `LogosSecteur.tsx`. CE CONTRÔLE DIT LE CONTRAIRE DE LA CAPTURE, et c'est
+ *     voulu : la capture empile la grille du secteur et le bandeau défilant,
+ *     Mehdi a tranché « il ne doit y en avoir qu'une ». Les points 2 et 3
+ *     restent, eux, adossés à la capture : le bandeau ne porte aucun texte, son
+ *     retrait ne change pas un mot de la page, et c'est pour cela que ce
+ *     cinquième contrôle devait exister, sans quoi rien n'aurait vu la
+ *     différence.
  *  6. LES INTERDITS du contrat sont absents du rendu.
  *  7. « NOS RÉFÉRENCES » : mêmes cas liés que la capture, même ordre, cartes
  *     mot pour mot (le compte de cas comparés est affiché : 89).
@@ -89,7 +98,24 @@ const MARQUES = "donnée de marques-donnees.ts (hors périmètre) : robotique à
 const LOGO_ECARTE = "logo écarté par marques-donnees.ts (fichier d'une autre société), nom rendu en texte";
 
 /** Dans la capture, absent du rendu, avec sa raison. Les retraits de copie passent par `retoucheCarte`. */
+/* La grille statique est retirée le 09/10 : « il faut que la barre qui défile »
+   (Mehdi). Son titre partait avec elle, il n'appartenait qu'à elle. */
+const GRILLE_RETIREE =
+  "la grille statique de « 02 Logos » est retirée depuis le 09/10, seule la barre défilante reste ; son titre partait avec elle";
+
 const TROUS: readonly Ecart[] = [
+  { url: "/secteurs/aeronautique/", section: "02 Logos", texte: "Ils nous confient leurs sites industriels", pourquoi: GRILLE_RETIREE },
+  { url: "/secteurs/agroalimentaire/", section: "02 Logos", texte: "Ils nous confient leurs lignes agroalimentaires", pourquoi: GRILLE_RETIREE },
+  { url: "/secteurs/automobile/", section: "02 Logos", texte: "Ils nous confient leurs usines automobiles", pourquoi: GRILLE_RETIREE },
+  { url: "/secteurs/chimie/", section: "02 Logos", texte: "Ils nous confient leurs sites industriels", pourquoi: GRILLE_RETIREE },
+  { url: "/secteurs/industrie-lourde/", section: "02 Logos", texte: "Ils nous confient leurs sites industriels", pourquoi: GRILLE_RETIREE },
+  { url: "/secteurs/industrie-metallique/", section: "02 Logos", texte: "Ils nous confient leurs sites industriels", pourquoi: GRILLE_RETIREE },
+  { url: "/secteurs/logistique/", section: "02 Logos", texte: "Ils nous confient leurs sites logistiques", pourquoi: GRILLE_RETIREE },
+  { url: "/secteurs/logistique/maintenance-convoyeur/", section: "02 Logos", texte: "Ils nous confient leurs sites logistiques", pourquoi: GRILLE_RETIREE },
+  { url: "/secteurs/logistique/peak-season/", section: "02 Logos", texte: "Ils nous confient leurs sites logistiques", pourquoi: GRILLE_RETIREE },
+  { url: "/secteurs/menuiserie-industrielle/", section: "02 Logos", texte: "Ils nous confient leurs ateliers", pourquoi: GRILLE_RETIREE },
+  { url: "/secteurs/nucleaire/", section: "02 Logos", texte: "Ils nous confient leurs sites industriels", pourquoi: GRILLE_RETIREE },
+  { url: "/secteurs/pharmaceutique/", section: "02 Logos", texte: "Ils nous confient leurs sites industriels", pourquoi: GRILLE_RETIREE },
   { url: "/secteurs/aeronautique/", section: "Marques maintenues", texte: "9", pourquoi: MARQUES },
   { url: "/secteurs/automobile/", section: "Marques maintenues", texte: "9", pourquoi: MARQUES },
 ];
@@ -262,6 +288,47 @@ function ecartsReferences(rendu: string, capture: string): string[] {
   return ecarts;
 }
 
+/* ------------------------------------------- « 02 Logos » : une seule bande */
+
+/**
+ * Tout ce qui sépare la section « 02 Logos » rendue de la règle du 09/10 :
+ * UNE SEULE BANDE DE LOGOS, et elle est entière. Vide quand tout concorde.
+ *
+ * CORRIGÉ LE 09/10 APRÈS MEHDI : « il faut que la barre qui défile ». La bande
+ * est TOUJOURS le bandeau défilant, jamais la grille statique, qui est retirée.
+ * Quand la fiche porte des logos de secteur, c'est la BARRE qui les porte, au
+ * lieu de la liste partagée : la bande dit alors quelque chose de la page au
+ * lieu de rejouer la même suite sur 138 pages.
+ *
+ * La piste du défilement écrit sa liste DEUX FOIS, le second exemplaire étant
+ * décoratif et comblant la boucle : on attend donc 2 × le nombre de logos de la
+ * fiche, et c'est ce doublement, et lui seul, qui est admis.
+ *
+ * POURQUOI UNE FONCTION À PART : elle se met à l'épreuve sur du HTML forgé plus
+ * bas, cas par cas. Les huit altérations de page ne pouvaient pas l'éprouver,
+ * elles touchent la donnée et ce contrôle juge la forme du rendu.
+ */
+export function ecartsBandeUnique(section: string, logos: readonly { src: string }[]): string[] {
+  const ecarts: string[] = [];
+  const defile = section.includes('class="mg-marquee"');
+  const tuiles = images(section).filter((src) => src.startsWith("/assets/clients/"));
+  if (!defile) {
+    ecarts.push("pas de bandeau défilant : la bande de la page doit toujours défiler (09/10)");
+  } else if (logos.length > 0) {
+    /* COMBIEN, ET LESQUELS. Ne compter que les tuiles laisserait passer un logo
+       remplacé par un autre, ce que la comparaison de la grille attrapait avant
+       le 09/10. La piste écrit la liste deux fois : on attend donc la liste de
+       la fiche, exactement, répétée deux fois et dans son ordre. */
+    const attendu = [...logos.map((l) => l.src), ...logos.map((l) => l.src)];
+    if (tuiles.join() !== attendu.join()) {
+      ecarts.push(
+        `la barre rend ${tuiles.join(", ") || "aucun logo"}, la fiche porte ${logos.map((l) => l.src).join(", ")} (écrits deux fois)`,
+      );
+    }
+  }
+  return ecarts;
+}
+
 /* ------------------------------------------------------------- le jugement */
 
 const rendre = (page: PageRelais) =>
@@ -344,9 +411,30 @@ function juge(page: PageRelais): { fautes: string[]; cas: number } {
       if (empreintes(photos).join() !== (releve.references ?? []).join()) faute(`${libelle} : photos des cartes ≠ maquette (${photos.join(", ")})`);
     }
     if (libelle === "02 Logos") {
-      const grille = images(ici.split('class="mg-marquee"')[0]);
-      const attendues = (releve.logos ?? []).map((h, i) => (LOGOS_HORS_EMPREINTE[grille[i]] ? grille[i] : h));
-      if (empreintes(grille).join() !== attendues.join()) faute(`${libelle} : logos de la grille ≠ maquette (${grille.join(", ")})`);
+      /* LA GRILLE STATIQUE EST RETIRÉE, décision de Mehdi du 09/10 : « il faut
+         que la barre qui défile ». On ne compare donc plus les logos de la
+         grille à la maquette, puisqu'il n'y a plus de grille ; c'est la barre
+         qui porte les logos de la fiche, et `ecartsBandeUnique` vérifie qu'elle
+         les porte tous et qu'elle est bien la seule bande de la page. Le titre
+         « Ils nous confient leurs sites … » disparaît avec la grille : il
+         appartenait à elle, pas à la barre. */
+      for (const e of ecartsBandeUnique(ici, page.contenu.logos ?? [])) faute(`${libelle} : ${e}`);
+      /* ET CONTRE LA MAQUETTE, pas seulement contre la fiche. La barre est
+         désormais alimentée par la fiche : la comparer à la fiche seule ne peut
+         rien révéler, puisqu'une donnée altérée change les deux côtés à la
+         fois. C'est exactement ce que la comparaison de la grille attrapait
+         avant le 09/10, et le contrôle aveugle « un logo du secteur remplacé »
+         l'a prouvé en passant. On compare donc la PREMIÈRE moitié de la piste
+         (la seconde est son doublon décoratif) aux logos relevés dans la
+         capture. */
+      const piste = images(ici).filter((src) => src.startsWith("/assets/clients/"));
+      const moitie = piste.slice(0, Math.ceil(piste.length / 2));
+      const attenduesMaquette = (releve.logos ?? []).map((h, i) =>
+        LOGOS_HORS_EMPREINTE[moitie[i]] ? moitie[i] : h,
+      );
+      if (moitie.length > 0 && empreintes(moitie).join() !== attenduesMaquette.join()) {
+        faute(`${libelle} : logos de la barre ≠ maquette (${moitie.join(", ")})`);
+      }
     }
     if (libelle === "Expertises du secteur") {
       const nommees = [...html.matchAll(/url\(&quot;(assets\/[^&]+)&quot;\)/g)].map((m) => `/${m[1]}`);
@@ -429,6 +517,25 @@ const PAGES: PageRelais[] = ATTENDUES.map((url) => {
   ] as const) {
     if (ecartsReferences(avec(modifie), capture).length === 0) throw new Error(`le contrôle des références laisse passer ${nom}`);
   }
+
+  /* La bande unique, éprouvée sur du HTML forgé : une donnée altérée ne peut
+     pas faire revenir le bandeau, c'est la FORME du rendu qui est jugée. */
+  const UN_LOGO = [{ src: "/assets/clients/danone.png" }];
+  /* La piste écrit sa liste deux fois : un logo de fiche donne deux tuiles. */
+  const BANDE_SECTEUR =
+    '<div class="mg-marquee"><img src="/assets/clients/danone.png"><img src="/assets/clients/danone.png"></div>';
+  const BANDE_PARTAGEE = '<div class="mg-marquee"><img src="/assets/clients/valeo.svg"></div>';
+  if (ecartsBandeUnique(BANDE_SECTEUR, UN_LOGO).length) throw new Error("la bande unique refuse la barre du secteur, qui est pourtant juste");
+  if (ecartsBandeUnique(BANDE_PARTAGEE, []).length) throw new Error("la bande unique refuse la barre partagée, qui est pourtant juste");
+  const EPREUVES: [string, string, readonly { src: string }[]][] = [
+    ["une grille statique à la place de la barre", '<img src="/assets/clients/danone.png">', UN_LOGO],
+    ["la barre qui n'écrit la liste qu'une fois", '<div class="mg-marquee"><img src="/assets/clients/danone.png"></div>', UN_LOGO],
+    ["un logo du secteur remplacé par un autre", '<div class="mg-marquee"><img src="/assets/clients/valeo.svg"><img src="/assets/clients/valeo.svg"></div>', UN_LOGO],
+    ["aucune bande du tout", "", []],
+  ];
+  for (const [nom, html, logos] of EPREUVES) {
+    if (ecartsBandeUnique(html, logos).length === 0) throw new Error(`la bande unique laisse passer : ${nom}`);
+  }
 }
 
 /* -------------------------------------------------------- puis les vraies pages */
@@ -447,5 +554,7 @@ if (fautes.length > 0) {
 console.log(
   `gabarit secteur : ${PAGES.length} pages conformes à leur capture (H1, sections, texte mot pour mot dans les deux sens, ` +
     `liens, photos et logos par empreinte, interdits), ${cas} cas liés identiques à la capture (mêmes URL, même ordre, ` +
-    `cartes mot pour mot), ${TROUS.length} trous et ${AJOUTS.length + AJOUTS_PAGE.length} ajouts déclarés, 8 altérations et 4 épreuves de références toutes vues.`,
+    `cartes mot pour mot), ${TROUS.length} trous et ${AJOUTS.length + AJOUTS_PAGE.length} ajouts déclarés, ` +
+    `une seule bande de logos par page (écart déclaré du 09/10), ` +
+    `8 altérations, 4 épreuves de références et 3 épreuves de bande unique toutes vues.`,
 );

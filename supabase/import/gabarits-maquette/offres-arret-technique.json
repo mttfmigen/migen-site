@@ -169,7 +169,7 @@
             "texte": "un technicien intégré, été 2025",
             "lienLibelle": "Étude de cas OGF : arrêt estival",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/web/x-tech-portrait.jpg",
+            "photo": "/assets/photos/elec-porte-armoire-voyants-sectionneurs.jpg",
             "logo": "/assets/clients/ogf.png"
           },
           {
@@ -177,7 +177,7 @@
             "texte": "janvier 2023",
             "lienLibelle": "Étude de cas EATON : mise en production",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg",
+            "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg",
             "logo": "/assets/clients/mq-70bce765c1a2.svg"
           },
           {
@@ -185,7 +185,7 @@
             "texte": "sur l'année 2025",
             "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/web/x-elec-cablage.jpg",
+            "photo": "/assets/photos/energie-rotor-turbine-vapeur.jpg",
             "logo": "/assets/clients/mq-127f9e03c53b.svg"
           },
           {
@@ -193,7 +193,7 @@
             "texte": "septembre à novembre 2024",
             "lienLibelle": "Étude de cas EIFFAGE : partenariat",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg",
             "logo": "/assets/clients/mq-21daf7c60970.svg"
           },
           {
@@ -201,28 +201,28 @@
             "texte": "depuis septembre 2024",
             "lienLibelle": "Étude de cas VALEO : plusieurs usines",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/web/mq-29ebb1b81ced.jpg",
+            "photo": "/assets/photos/soudure-interieur-virole.jpg",
             "logo": "/assets/clients/mq-f6fcccfd4cc8.svg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
+            "photo": "/assets/photos/equipe-consignes-atelier-casques.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/web/mq-0699d4d92e7e.jpg",
+            "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/web/mq-0699d4d92e7e.jpg",
+            "photo": "/assets/photos/soudure-tig-virole-inox.jpg",
             "logo": "/assets/clients/danone-bledina.png"
           }
         ]

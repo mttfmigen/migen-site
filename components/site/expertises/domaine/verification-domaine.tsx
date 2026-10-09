@@ -48,6 +48,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { FAMILLES } from "@/components/site/marques/marques-donnees";
 import MarquesOffre from "@/components/site/offre/MarquesOffre";
 import { appliqueDecisions } from "@/lib/decisions-copie";
+import { REGISTRE, cheminRegistre, deLaRepartition } from "@/scripts/photos-autorisees";
 import type { Paragraphe, SectionProbleme } from "@/types/contenu";
 import {
   estDomaine,
@@ -350,6 +351,76 @@ const captureDe = (url: string) => appliqueDecisions(lit("maquette", "rendu", `$
 const fichierRelais = (url: string) => `${segments(url).join("-")}.json`;
 const DOSSIER = join("supabase", "import", "gabarits-maquette");
 
+/* ----------------------------------- les photos : maquette OU répartition
+
+   ÉCART MAJEUR À LA MAQUETTE, DÉCLARÉ LE 09/10/2025, DEMANDÉ PAR MEHDI.
+   Cette porte ne jugeait PAS l'origine des photos. Son seul contrôle d'image
+   était l'écart déclaré « Secteurs de l'expertise », qui excuse le fond CSS de
+   la capture parce que le site sert la photo par `next/image` : le FICHIER
+   n'était comparé à rien. Mesuré le 09/10 par
+   `node scripts/mesure-photos-site.mjs` : 68 photos distinctes pour 1 822
+   emplacements, et les 109 photos achetées sous licence le 08/10 servies par
+   aucune page. La répartition du 09/10 les pose ; cette porte gagne du même
+   coup la règle qui lui manquait, et elle n'a que DEUX sources :
+     - LA MAQUETTE : le fichier est nommé par la capture de la page ;
+     - LA RÉPARTITION : le fichier est au registre des 109 photos sous licence,
+       ou c'est une des dix photos de l'équipe Migen
+       (`scripts/photos-autorisees.ts`).
+   Tout le reste tombe, et un témoin en fait la preuve.
+
+   CE QUE CETTE RÈGLE NE DIT PAS, et il faut le savoir : elle autorise un
+   FICHIER, pas une POSITION. La capture sert ses photos en fond CSS
+   (`background:url("assets/web/…")`) et le site les sert par `next/image` :
+   l'écart est déjà déclaré plus bas, et le rang n'est pas comparable des deux
+   côtés. Donc une photo que la capture de LA PAGE nomme passe à n'importe quel
+   emplacement de cette page. Mesuré le 09/10 : poser `ph-hero-raffinerie.jpg`
+   (nommée par la capture) à la place d'une photo du registre n'est pas vu.
+   Ce qui tombe, et c'est le défaut qu'on craint : tout fichier qu'aucune des
+   deux sources ne nomme, dossier `/assets/photos/` compris. Rendre ce contrôle
+   POSITIONNEL demande de comparer un fond CSS à `next/image` rang par rang :
+   c'est un autre lot, et c'est écrit ici pour qu'il soit fait. */
+
+/** Les fichiers d'image que la capture d'une page nomme. */
+function photosDeLaCapture(capture: string): Set<string> {
+  return new Set(
+    [...capture.matchAll(/assets\/(?:web|photos|villes)\/([A-Za-z0-9._-]+\.(?:jpe?g|png|webp|avif))/g)].map((m) => m[1]),
+  );
+}
+
+/** Les photos que la donnée d'une page porte, chemin public par chemin public. */
+function photosDeLaDonnee(noeud: unknown): string[] {
+  if (Array.isArray(noeud)) return noeud.flatMap(photosDeLaDonnee);
+  if (!noeud || typeof noeud !== "object") return [];
+  const sortie: string[] = [];
+  for (const [cle, valeur] of Object.entries(noeud as Record<string, unknown>)) {
+    if (cle === "logo" || cle === "logoInverse" || cle.startsWith("_")) continue;
+    if (typeof valeur === "string") {
+      if (/^\/assets\/.+\.(jpe?g|png|webp|avif)$/i.test(valeur) && !valeur.startsWith("/assets/clients/")) {
+        sortie.push(valeur);
+      }
+      continue;
+    }
+    sortie.push(...photosDeLaDonnee(valeur));
+  }
+  return sortie;
+}
+
+/** Chaque photo de la donnée vient de la maquette OU de la répartition. */
+function verifiePhotos(nom: string, capture: string, contenu: unknown): number {
+  const deLaCapture = photosDeLaCapture(capture);
+  const photos = photosDeLaDonnee(contenu);
+  for (const photo of photos) {
+    const fichier = photo.split("/").pop() ?? "";
+    assert.ok(
+      deLaCapture.has(fichier) || deLaRepartition(photo),
+      `${nom} : ${photo} n'est ni nommée par la capture ni au registre des photos sous licence`,
+    );
+  }
+  return photos.length;
+}
+
+let photosJugees = 0;
+
 function verifiePage(url: string): "conforme" | string {
   const cle = cleCapture(url);
   const capture = captureDe(url);
@@ -370,6 +441,8 @@ function verifiePage(url: string): "conforme" | string {
       formulaire={`cocon${url.replace(/\//g, "-")}`}
     />,
   );
+
+  photosJugees += verifiePhotos(chemin, capture, page.contenu);
 
   const manques = ecrans(capture).flatMap(([nom, html]) => compare(nom, html, rendu));
   const restants = nonDeclares(manques, rendu);
@@ -524,6 +597,25 @@ assert.ok(sansMarques.length > 0, "un rail d'onglets absent doit être vu");
   assert.ok(vus.some((m) => m.ecran === "03 Problème"), "un pilote au mauvais dessin doit échouer");
 }
 
+/* ------------- le contrôle des photos SAIT ÉCHOUER, et la nouvelle source ne
+   lui a pas enlevé ses dents : une photo que la capture ne nomme pas et que le
+   registre ne connaît pas tombe, dossier `/assets/photos/` compris ; une photo
+   DU registre passe. */
+{
+  const capture = captureDe(PAGES[0]);
+  assert.ok(photosDeLaCapture(capture).size > 0, "la capture ne nomme plus aucune photo : le lecteur est cassé");
+  for (const [cas, photo] of [
+    ["une photo inventée", "/assets/web/cette-photo-n-existe-pas.jpg"],
+    ["un chemin du dossier sous licence absent du registre", "/assets/photos/cette-photo-n-est-pas-au-registre.jpg"],
+  ] as const) {
+    assert.throws(
+      () => verifiePhotos("témoin", capture, { problemePhoto: photo }),
+      `le contrôle des photos laisse passer ${cas}`,
+    );
+  }
+  verifiePhotos("témoin admis", capture, { problemePhoto: cheminRegistre(REGISTRE[0].fichier) });
+}
+
 /* --------------------------------------------- une section sans donnée ne se rend pas */
 
 const VIDE: ContenuDomaine = { gabarit: "domaine", sections: [] };
@@ -550,6 +642,10 @@ if (!demandees.length) {
 }
 
 console.log(`gabarit domaine : ${conformes.length}/${aVerifier.length} pages conformes à leur capture.`);
+console.log(
+  `  photos : ${photosJugees} emplacement(s) jugés, chacun nommé par la capture de sa page ou au registre des ` +
+    `${REGISTRE.length} photos sous licence (écart du 09/10) ; photo inventée et chemin hors registre font tomber le contrôle.`,
+);
 for (const url of conformes) console.log(`  conforme    ${url}`);
 for (const [url, raison] of enAttente) console.log(`  EN ATTENTE  ${url} : ${raison}`);
 console.log("  écrans ajoutés prouvés sur leur capture : Complément 2 (types de maintenance), problème rangée (électrique) et panneau sombre (hydraulique), rail d'onglets (électromécanique).");

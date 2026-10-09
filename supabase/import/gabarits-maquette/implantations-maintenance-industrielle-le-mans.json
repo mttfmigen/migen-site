@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Le Mans",
       "titre": "Le Mans : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/web/team-grind-front.jpg",
+      "photo": "/assets/photos/elec-cablage-armoire-tournevis.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Le Mans et ses environs",
       "texte": "Nos techniciens itinérants couvrent Le Mans et son bassin, appuyés par le réseau national Migen.",
@@ -115,7 +115,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/web/ph-hero-raffinerie.jpg",
+    "problemePhoto": "/assets/photos/tuyau-vanne-volant-rack.jpg",
     "brefBande": "Besoin de tenir un poste de maintenance que vous n'arrivez pas à pourvoir ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -250,53 +250,53 @@
             "texte": "Réorganisation industrielle en cours.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/web/x-tech-portrait.jpg"
+            "photo": "/assets/photos/metal-four-arc-acierie.jpg"
           },
           {
             "titre": "3 à 5 techniciens déployés depuis septembre 2024 pour accompagner la montée en cadence de plusieurs usines",
             "texte": "Maintenance renforcée en même temps que la production.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
           },
           {
             "titre": "Un technicien de maintenance dédié au maintien d'un parc machines en 2025",
             "texte": "Poste vacant comblé sans attendre un recrutement.",
             "lienLibelle": "Étude de cas AUTOLIV",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/web/x-elec-cablage.jpg"
+            "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
           },
           {
             "titre": "Six techniciens sur l'installation et la mise en production d'un nouveau parc machine",
             "texte": "Site automobile, à partir de janvier 2023.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/web/team-duo.jpg"
+            "photo": "/assets/photos/meca-technicienne-parc-moteurs.jpg"
           },
           {
             "titre": "Deux techniciens intégrés en 3x8 sur des lignes liquides et poudre",
             "texte": "Lavage intensif, froid, traçabilité.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/web/x-logistique-entrepot.jpg"
+            "photo": "/assets/photos/elec-tgbt-technicienne-tablette.jpg"
           },
           {
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/web/ph-tuyaux.jpg"
+            "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/web/team-grind-close.jpg"
+            "photo": "/assets/photos/meca-pied-a-coulisse-fraiseuse.jpg"
           },
           {
             "titre": "Centres d’usinage et presses tenus dans le Grand Est",
             "lienLibelle": "Étude de cas Voit",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/web/team-grind-front.jpg"
+            "photo": "/assets/photos/chaudro-presse-plieuse.jpg"
           }
         ]
       },

@@ -15,7 +15,7 @@
     "bouton": "Préparer mon renfort d'été",
     "logo": "/assets/clients/ogf.png",
     "logoInverse": true,
-    "photoHero": "/assets/web/mq-42237c1c8685.jpg",
+    "photoHero": "/assets/photos/aero-cockpit-inspection-hangar.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -128,7 +128,7 @@
         "valeur": "Coordinateurs Migen"
       }
     ],
-    "photoDispositif": "/assets/web/mq-e6322efcd358.jpg",
+    "photoDispositif": "/assets/photos/meca-presses-volants-technicienne.jpg",
     "resultats": [
       {
         "titre": "La disponibilité des équipements critiques",
@@ -183,25 +183,25 @@
         "surtitre": "Étude de cas",
         "titre": "VPK : renfort sur un parc en forte cadence",
         "href": "/preuves/vpk/",
-        "photo": "/assets/web/mq-339d39e2a674.jpg"
+        "photo": "/assets/photos/aero-percage-aile-avion.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/web/mq-056f3c250981.jpg"
+        "photo": "/assets/photos/elec-mains-bornier-relais.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/web/mq-948c28bcda08.jpg"
+        "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+        "photo": "/assets/photos/chaudro-presse-plieuse.jpg"
       }
     ]
   }
