@@ -13,6 +13,8 @@ import type {
 } from "@/types/preuve";
 
 import styles from "./PagePreuve.module.css";
+import TitreEtSuite from "../blocs/TitreEtSuite";
+import { cadragePhoto } from "@/lib/cadrage-photos";
 
 /**
  * Gabarit « 02 Étude de cas », porté de la RÉFÉRENCE : le rendu de la maquette
@@ -737,10 +739,12 @@ function Objectif({ objectif, rang }: { objectif: ObjectifPreuve; rang: number }
         {String(rang + 1).padStart(2, "0")}
       </span>
       <div>
-        <div style={OBJECTIF_TITRE}>{objectif.titre}</div>
-        {objectif.texte ? (
-          <div style={OBJECTIF_TEXTE}>{objectif.texte}</div>
-        ) : null}
+        <TitreEtSuite
+          titre={objectif.titre}
+          texte={objectif.texte}
+          styleTitre={OBJECTIF_TITRE}
+          styleTexte={OBJECTIF_TEXTE}
+        />
       </div>
     </div>
   );
@@ -770,28 +774,24 @@ function CarteReponse({ carte, rang, total }: { carte: CartePreuve; rang: number
       {sombre ? <div aria-hidden="true" style={REPONSE_LUEUR} /> : null}
       <div style={REPONSE_CORPS}>
         <span style={REPONSE_NUMERO}>{String(rang + 1).padStart(2, "0")}</span>
-        <div
-          style={{
+        <TitreEtSuite
+          titre={carte.titre}
+          texte={carte.texte}
+          styleTitre={{
             font: sombre ? "600 22px/1.3 var(--ft)" : "600 17px/1.3 var(--ft)",
             letterSpacing: "-.025em",
             color: sombre ? "#fff" : "var(--ink)",
             marginBottom: 10,
             maxWidth: sombre ? "22ch" : "none",
           }}
-        >
-          {carte.titre}
-        </div>
-        <div
-          style={{
+          styleTexte={{
             font: sombre
               ? "400 15.5px/1.62 var(--fb)"
               : "400 14.5px/1.62 var(--fb)",
             color: sombre ? "rgba(255,255,255,.66)" : "var(--ink2)",
             maxWidth: sombre ? "46ch" : "none",
           }}
-        >
-          {carte.texte}
-        </div>
+        />
       </div>
     </div>
   );
@@ -1053,8 +1053,12 @@ export default function PagePreuve({
                       <span aria-hidden="true" className={styles.pastille} style={ETAPE_PASTILLE}>
                         {String(rang + 1).padStart(2, "0")}
                       </span>
-                      <div style={ETAPE_TITRE}>{etape.titre}</div>
-                      <div style={ETAPE_TEXTE}>{etape.texte}</div>
+                      <TitreEtSuite
+                        titre={etape.titre}
+                        texte={etape.texte}
+                        styleTitre={ETAPE_TITRE}
+                        styleTexte={ETAPE_TEXTE}
+                      />
                     </div>
                   ))}
                 </div>
@@ -1134,8 +1138,12 @@ export default function PagePreuve({
                       <span aria-hidden="true" style={RESULTAT_COCHE}>
                         ✓
                       </span>
-                      <div style={RESULTAT_ITEM_TITRE}>{resultat.titre}</div>
-                      <div style={RESULTAT_ITEM_TEXTE}>{resultat.texte}</div>
+                      <TitreEtSuite
+                        titre={resultat.titre}
+                        texte={resultat.texte}
+                        styleTitre={RESULTAT_ITEM_TITRE}
+                        styleTexte={RESULTAT_ITEM_TEXTE}
+                      />
                     </div>
                   ))}
                 </div>
@@ -1205,7 +1213,9 @@ export default function PagePreuve({
                           alt=""
                           fill
                           sizes="(max-width: 700px) 100vw, 380px"
-                          style={VIGNETTE}
+                          /* Cadre 270x150, ratio 1,80 : `VIGNETTE` est partagée,
+                             le cadrage s'y ajoute sans la modifier ailleurs. */
+                          style={{ ...VIGNETTE, objectPosition: cadragePhoto(lien.photo, 270 / 150) }}
                         />
                       ) : null}
                     </div>

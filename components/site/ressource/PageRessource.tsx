@@ -9,6 +9,7 @@ import type { Question } from "@/types/contenu";
 import CorpsRessource, { EnLigne } from "./CorpsRessource";
 import styles from "./Ressource.module.css";
 import * as H from "./habillage";
+import { cadragePhoto } from "@/lib/cadrage-photos";
 
 /**
  * Le gabarit « 01 Article et fiche » : `MigenRessource.dc.html`, branche
@@ -138,7 +139,13 @@ function Lectures({
                   alt=""
                   fill
                   sizes="(max-width: 900px) 100vw, 380px"
-                  style={{ objectFit: "cover", filter: "saturate(var(--sat,.55))" }}
+                  style={{
+                    objectFit: "cover",
+                    /* Cadre 364x150, ratio 2,43, le plus large du site : un
+                       portrait y perdait 73 % de sa hauteur. */
+                    objectPosition: cadragePhoto(lecture.image, 364 / 150),
+                    filter: "saturate(var(--sat,.55))",
+                  }}
                 />
               </div>
               <div style={H.LECTURE_TEXTE}>

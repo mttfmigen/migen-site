@@ -7,6 +7,7 @@ import type { BlocGuide } from "@/types/editorial";
 
 import { Appel, LienCarte, Panneau, Question, VERRE } from "./AppelsGuide";
 import styles from "./PageEditoriale.module.css";
+import { cadragePhoto } from "@/lib/cadrage-photos";
 
 /**
  * Les blocs du gabarit générique édito de la maquette (`Migen - Site
@@ -402,6 +403,8 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
             sizes="(max-width: 980px) 100vw, 850px"
             style={{
               objectFit: "cover",
+              /* Bande 16/7, ratio 2,29. */
+              objectPosition: cadragePhoto(bloc.image, 16 / 7),
               filter: "saturate(var(--sat)) contrast(1.05)",
               opacity: "var(--ph-op)",
             }}

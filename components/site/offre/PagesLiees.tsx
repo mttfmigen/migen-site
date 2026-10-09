@@ -8,6 +8,7 @@ import type { LienPageLiee } from "@/types/offre";
 import { cibleSure } from "./LiensOffre";
 
 import styles from "./PageOffre.module.css";
+import { cadragePhoto } from "@/lib/cadrage-photos";
 
 /**
  * Section « Maillage » du gabarit 03, relevée dans
@@ -228,6 +229,8 @@ export default function PagesLiees({ pages, titre }: ProprietesPagesLiees) {
                 sizes="(max-width: 900px) 100vw, 580px"
                 style={{
                   objectFit: "cover",
+                  /* Cadre 553x380, ratio 1,46. */
+                  objectPosition: cadragePhoto(phare.photo, 553 / 380),
                   filter: "saturate(var(--sat)) brightness(.7)",
                 }}
               />

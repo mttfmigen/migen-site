@@ -9,6 +9,8 @@ import type { SectionPreuves } from "@/types/contenu";
 import { etiquetteEtude, phraseDate } from "./texte-offre";
 
 import styles from "./PageOffre.module.css";
+import TitreEtSuite, { continueLeTitre } from "../blocs/TitreEtSuite";
+import { cadragePhoto } from "@/lib/cadrage-photos";
 
 /**
  * Section « 08 Références » de la capture (`maquette/rendu/offres--residence.html`) :
@@ -301,6 +303,9 @@ export default function ReferencesOffre({ section, dateBrute = false }: Propriet
                   sizes="320px"
                   style={{
                     objectFit: "cover",
+                    /* Cadre 320x150, ratio 2,13, et 951 placements : l'emplacement
+                       le plus destructeur du site pour une photo portrait. */
+                    objectPosition: cadragePhoto(preuve.photo ?? PHOTOS[rang % PHOTOS.length], 320 / 150),
                     filter: "saturate(var(--sat)) contrast(1.05)",
                   }}
                 />
@@ -354,12 +359,35 @@ export default function ReferencesOffre({ section, dateBrute = false }: Propriet
                     `preuves[].titre` de `offres-audit-conseil-maintenance.json`
                     en portent encore, invisibles seulement parce qu'ils n'ont
                     pas de `lienHref` et tombent au filtre ci-dessus. */}
-                <div style={TITRE_CARTE}>{enTexteNu(preuve.titre)}</div>
-                <div style={DATE_CARTE}>
-                  {dateBrute
-                    ? enTexteNu(preuve.texte)
-                    : phraseDate(enTexteNu(preuve.texte))}
-                </div>
+                {/* LE TEXTE CONTINUE PARFOIS LA PHRASE DU TITRE, et il se
+                    rendait alors sur une deuxième ligne ouverte par une
+                    virgule : « Deux techniciens expérimentés en poste chez un
+                    transporteur » puis « , pour le maintien opérationnel de
+                    ses équipements de tri et de convoyage. ». Le corpus en
+                    fait UNE phrase, son début en gras. Défaut signalé par
+                    Mehdi le 09/10, 74 cartes des pages Villes.
+                    `phraseDate` reste appliqué au cas ordinaire, où ce champ
+                    porte vraiment une date (gabarit Offre, `dateBrute` faux) :
+                    une suite de phrase n'est jamais une date, et
+                    `continueLeTitre` fait exactement ce tri.
+                    Porte : scripts/verifie-suites-de-titre.mjs */}
+                {continueLeTitre(preuve.texte) ? (
+                  <TitreEtSuite
+                    titre={enTexteNu(preuve.titre)}
+                    texte={enTexteNu(preuve.texte)}
+                    styleTitre={TITRE_CARTE}
+                    styleTexte={DATE_CARTE}
+                  />
+                ) : (
+                  <>
+                    <div style={TITRE_CARTE}>{enTexteNu(preuve.titre)}</div>
+                    <div style={DATE_CARTE}>
+                      {dateBrute
+                        ? enTexteNu(preuve.texte)
+                        : phraseDate(enTexteNu(preuve.texte))}
+                    </div>
+                  </>
+                )}
                 <div style={PIED_CARTE}>
                   <span style={{ font: "600 14px var(--fb)", color: "var(--ink)" }}>
                     Lire l’étude de cas

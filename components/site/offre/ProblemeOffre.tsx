@@ -5,6 +5,7 @@ import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habil
 import type { SectionProbleme } from "@/types/contenu";
 
 import { coupePunchline, numerote } from "./texte-offre";
+import { cadragePhoto } from "@/lib/cadrage-photos";
 
 /**
  * Section « 03 Problème » de la capture (`maquette/rendu/offres--residence.html`) :
@@ -312,6 +313,8 @@ export default function ProblemeOffre({
                   sizes="(max-width: 900px) 100vw, 440px"
                   style={{
                     objectFit: "cover",
+                    /* Cadre 479x280, ratio 1,71. */
+                    objectPosition: cadragePhoto(source, 479 / 280),
                     filter: "saturate(var(--sat)) contrast(1.05)",
                   }}
                 />

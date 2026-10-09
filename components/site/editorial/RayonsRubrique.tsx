@@ -8,6 +8,7 @@ import TexteRiche from "@/components/site/blocs/TexteRiche";
 import type { CarteCatalogue, VueRubrique } from "@/types/editorial";
 
 import styles from "./PageEditoriale.module.css";
+import { cadragePhoto } from "@/lib/cadrage-photos";
 
 /**
  * Héros et rayons d'une sous-rubrique, `MigenRessource.dc.html` (sections
@@ -317,7 +318,12 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
                 alt=""
                 fill
                 sizes="(max-width: 980px) 100vw, 640px"
-                style={{ objectFit: "cover", filter: "saturate(var(--sat,.55)) brightness(.62)" }}
+                style={{
+                  objectFit: "cover",
+                  /* La une, cadre 635x400, ratio 1,59. */
+                  objectPosition: cadragePhoto(une.image, 635 / 400),
+                  filter: "saturate(var(--sat,.55)) brightness(.62)",
+                }}
               />
               <div style={{ position: "absolute", left: 30, right: 30, bottom: 28 }}>
                 <span
@@ -421,7 +427,12 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
                   alt=""
                   fill
                   sizes="(max-width: 640px) 100vw, 300px"
-                  style={{ objectFit: "cover", filter: "saturate(var(--sat,.55))" }}
+                  style={{
+                    objectFit: "cover",
+                    /* Cadre 364x160, ratio 2,27. */
+                    objectPosition: cadragePhoto(c.image, 364 / 160),
+                    filter: "saturate(var(--sat,.55))",
+                  }}
                 />
               </div>
               <div

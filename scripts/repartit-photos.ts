@@ -375,11 +375,27 @@ function paliersDeLEmplacement(fiche: Fiche, emplacement: Emplacement, themesPar
 
 const MARGE = 6;
 
-/** À quel point une photo colle au sujet : le rang du premier palier dont elle
- *  porte un thème, et `paliers.length` si elle n'en porte aucun. */
+/** À quel point une photo colle au sujet : le rang du PREMIER THÈME qu'elle
+ *  porte, dans la suite des paliers mis bout à bout.
+ *
+ *  LE RANG EST CELUI DU THÈME, PAS CELUI DU PALIER, et c'est une correction du
+ *  09/10. Un palier porte souvent deux thèmes, le précis puis son voisin :
+ *  `/expertises/hydraulique/` donne `["hydraulique", "mecanique"]`, et
+ *  `/bureau-etudes/` donne `["bureau-etudes", "automatisme"]`. En rendant le
+ *  rang du PALIER, les deux thèmes étaient réputés aussi spécifiques, et le
+ *  départage se faisait alors sur « la moins servie ». Avec 12 photos
+ *  d'hydraulique contre 83 de mécanique, ou 4 de bureau d'études contre 90
+ *  d'automatisme, le thème précis perdait à tous les coups : mesuré le 09/10,
+ *  0 photo d'hydraulique sur les 6 de `/expertises/hydraulique/`, 0 photo de
+ *  bureau d'études sur les 10 de `/bureau-etudes/`.
+ *
+ *  Le thème le plus précis d'un palier est le premier de sa liste, par
+ *  construction de la table : il suffit donc de compter les thèmes et non les
+ *  paliers pour que la page montre d'abord son sujet. */
 function specificite(candidate: Candidate, paliers: readonly string[][]): number {
-  const rang = paliers.findIndex((palier) => palier.some((t) => candidate.themes.includes(t)));
-  return rang < 0 ? paliers.length : rang;
+  const suite = paliers.flat();
+  const rang = suite.findIndex((t) => candidate.themes.includes(t));
+  return rang < 0 ? suite.length : rang;
 }
 
 function vivier(paliers: readonly string[][], besoin: number): Candidate[] {

@@ -8,6 +8,7 @@ import type { BandeFiche, CarteFiche } from "@/types/metier";
 
 import type { HubCarriere, SectionEtapesHub } from "./donnees-hub";
 import styles from "./HubCarriere.module.css";
+import { cadragePhoto } from "@/lib/cadrage-photos";
 
 /**
  * Les écrans du hub `/carriere/` que le gabarit 07 (`SectionsFicheMetier`)
@@ -714,7 +715,12 @@ export function LiensPhoto({ items }: { items: { libelle: string; href: string; 
                     alt=""
                     fill
                     sizes="300px"
-                    style={{ objectFit: "cover", filter: "saturate(var(--sat))" }}
+                    style={{
+                      objectFit: "cover",
+                      /* Cadre 270x140, ratio 1,93. */
+                      objectPosition: cadragePhoto(item.photo, 270 / 140),
+                      filter: "saturate(var(--sat))",
+                    }}
                   />
                 ) : null}
               </div>
