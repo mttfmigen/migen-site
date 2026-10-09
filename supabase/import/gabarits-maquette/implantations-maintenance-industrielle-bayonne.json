@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Bayonne",
       "titre": "Bayonne : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-meca-volant-poulie-reglage.jpg",
+      "photo": "/assets/photos/il-interieur-de-chantier-naval-24-mars-2026-1600.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Bayonne et ses environs",
       "texte": "Nos techniciens itinérants couvrent Bayonne et son bassin, appuyés par le réseau national Migen.",
@@ -245,37 +245,37 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/meca-graissage-couronne-engin.jpg"
+            "photo": "/assets/photos/il-chimie-petrochimie-panorama-nuit.jpg"
           },
           {
             "titre": "Six techniciens pour faire démarrer un parc machines",
             "lienLibelle": "Étude de cas Eaton",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/env-photos-industrie-menuiserie.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-portrait-jan-9-2026-160.jpg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/il-pneu-ligne-verins-portrait.jpg"
+            "photo": "/assets/photos/env-photos-industrie.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/il-energie-gros-moteur-vert-antibruit.jpg"
+            "photo": "/assets/photos/env-structures-industrielles-contre-ciel-nuageux.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/il-automatisme-ligne-reglage-lunettes.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-inspectant-equipement-j.jpg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/il-outillage-coffret-douilles-selection.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-jan-09-2026-1600.jpg"
           }
         ]
       },

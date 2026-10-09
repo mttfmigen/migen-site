@@ -37,7 +37,7 @@
         "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "problemePhoto": "/assets/photos/il-tuyau-passerelle-technicien-bras-croises.jpg",
+    "problemePhoto": "/assets/photos/il-tuyau-faisceau-blanc-charpente.jpg",
     "complementOffre": [
       {
         "texte": "Une rupture en cours se traite par le dépannage industriel."
@@ -182,14 +182,14 @@
             "titre": "Remise en état d'un site de traitement des eaux industrielles, risque chimique",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/il-tuyau-faisceau-blanc-charpente.jpg",
+            "photo": "/assets/photos/env-infrastructure-usine-acier-avec-tuyaux.jpg",
             "texte": "Un technicien habilité RC1 mobilisé 6 mois, habilitations obtenues avant la première intervention."
           },
           {
             "titre": "Construction d'un site industriel de recherche et développement, matériaux bas carbone",
             "lienLibelle": "Étude de cas Migen Travaux x ECOCEM",
             "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/photos/chimie-piquage-manometre-gants.jpg",
+            "photo": "/assets/photos/il-tuyau-pipeline-structures-contre-jour.jpg",
             "texte": "Pilotage de chantier et coordination, soudure et chaudronnerie parmi les domaines mobilisés selon les besoins."
           },
           {
@@ -210,7 +210,7 @@
             "titre": "Contrat de maintenance sur un site agroalimentaire de grande échelle, Belgique",
             "lienLibelle": "Étude de cas McCAIN",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/soudure-interieur-virole.jpg",
+            "photo": "/assets/photos/chimie-piquage-manometre-gants.jpg",
             "texte": "Renfort en place depuis octobre 2024, premier contrat Migen hors de France."
           },
           {

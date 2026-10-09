@@ -130,7 +130,7 @@
         "valeur": "Montage d'installations logistiques"
       }
     ],
-    "photoDispositif": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg",
+    "photoDispositif": "/assets/web/sv-convoyeur.jpg",
     "resultats": [
       {
         "titre": "Le site livré dans les temps",
@@ -185,13 +185,13 @@
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
         "href": "/secteurs/logistique/",
-        "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
+        "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "GLS : maintenance curative",
         "href": "/preuves/gls-maintenance-curative/",
-        "photo": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg"
+        "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
       },
       {
         "surtitre": "Étude de cas",

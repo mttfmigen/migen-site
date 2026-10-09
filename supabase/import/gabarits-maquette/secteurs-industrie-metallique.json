@@ -96,25 +96,25 @@
         "titre": "Mécanique",
         "texte": "Machines-outils, laminoirs et cisailles : jeux, alignements, remplacements.",
         "href": "/expertises/mecanique/",
-        "photo": "/assets/web/team-grind-front.jpg"
+        "photo": "/assets/photos/levage-montage-poteau-charpente.jpg"
       },
       {
         "titre": "Hydraulique",
         "texte": "Presses et cisailles hydrauliques, circuits haute pression.",
         "href": "/expertises/hydraulique/",
-        "photo": "/assets/web/ph-tuyaux.jpg"
+        "photo": "/assets/photos/soudure-brossage-meuleuse-etau.jpg"
       },
       {
         "titre": "Soudure",
         "texte": "Réparation de bâtis et d’outillages, remise en état sur site.",
         "href": "/expertises/soudure/",
-        "photo": "/assets/web/team-grind-close.jpg"
+        "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg"
       },
       {
         "titre": "Automatisme",
         "texte": "Commandes numériques et automates de ligne.",
         "href": "/expertises/automatisme/",
-        "photo": "/assets/web/ph-robots-solaire.jpg"
+        "photo": "/assets/photos/hydrau-presse-pupitre-manometre.jpg"
       }
     ],
     "marquesFamille": "mo",
@@ -254,54 +254,54 @@
             "texte": "en 2025",
             "lienLibelle": "Étude de cas VOIT : site du Grand Est",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/web/mq-e69a240d8656.jpg"
+            "photo": "/assets/photos/soudure-corps-vanne-forge.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage",
             "texte": "Dompierre-sur-Besbre, depuis octobre 2023",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/il-chaudro-couronne-dentee-reperage.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne de production neuve, matériaux",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/web/mq-752675f1ed93.jpg"
+            "photo": "/assets/photos/meca-presses-volants-technicienne.jpg"
           },
           {
             "titre": "Diagnostic sur site et réparation d'un parc machines défaillant, sans rachat de matériel neuf",
             "texte": "PME lyonnaise, février 2024",
             "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/il-metal-haut-fourneau-silos-quai.jpg"
           },
           {
             "titre": "Techniciens intégrés pour sécuriser la maintenance des installations d'un équipementier",
             "texte": "en 2025",
             "lienLibelle": "Étude de cas JTEKT : maintenance des installations",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/web/mq-5b47b5f6a584.jpg"
+            "photo": "/assets/photos/env-bras-robotiques-soudant-cadres-auto.jpg"
           },
           {
             "titre": "Six techniciens pour l'installation et la mise en production d'un parc machine neuf",
             "texte": "depuis janvier 2023",
             "lienLibelle": "Étude de cas EATON : mise en production",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+            "photo": "/assets/photos/il-tuyau-conduits-massifs-contre-plongee.jpg"
           },
           {
             "titre": "Des commandes numériques remises en route à chaque équipe",
             "lienLibelle": "Étude de cas Jeld-Wen",
             "lienHref": "/preuves/jeld-wen/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/il-metal-siderurgie-bord-d-eau-couchant.jpg"
           },
           {
             "titre": "Une alliance pour tenir les installations intralogistiques de ses clients",
             "lienLibelle": "Étude de cas Savoye",
             "lienHref": "/preuves/savoye/",
-            "photo": "/assets/web/mq-42237c1c8685.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-robot-soudure-mar-24-20.jpg"
           }
         ]
       },

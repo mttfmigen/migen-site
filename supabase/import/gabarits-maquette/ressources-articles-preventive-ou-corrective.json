@@ -329,25 +329,25 @@
       }
     ],
     "minutes": 11,
-    "image": "/assets/web/team-electric.jpg",
+    "image": "/assets/photos/il-technicien-maintenance-en-usine-1600.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/cout-arret-de-production/",
         "titre": "Coût d'un arrêt de production",
         "minutes": 12,
-        "image": "/assets/web/ph-tuyaux.jpg"
+        "image": "/assets/photos/hydrau-centrale-hydraulique-technicien.jpg"
       },
       {
         "href": "/ressources/articles/digitalisation-maintenance/",
         "titre": "Digitalisation maintenance",
         "minutes": 11,
-        "image": "/assets/web/team-grind-impact.jpg"
+        "image": "/assets/photos/il-tuyau-passerelle-technicien-bras-croises.jpg"
       },
       {
         "href": "/ressources/articles/gestion-des-dechets/",
         "titre": "Gestion des déchets industriels",
         "minutes": 8,
-        "image": "/assets/web/team-duo.jpg"
+        "image": "/assets/photos/il-meca-sous-machine-gant-bleu.jpg"
       }
     ]
   }

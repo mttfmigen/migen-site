@@ -58,7 +58,7 @@
       }
     ],
     "appelBouton": "Faire visiter mon atelier à un chargé d'affaires",
-    "problemePhoto": "/assets/web/mq-dcd9cac6ffbf.jpg",
+    "problemePhoto": "/assets/photos/env-photos-menuiserie-2.jpg",
     "brefBande": "Besoin d'un premier état des lieux honnête sur votre parc bois ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -72,25 +72,25 @@
         "titre": "Mécanique",
         "texte": "Broches, guides et transmissions des centres d’usinage.",
         "href": "/expertises/mecanique/",
-        "photo": "/assets/web/team-grind-front.jpg"
+        "photo": "/assets/photos/env-deux-hommes-menuiserie.jpg"
       },
       {
         "titre": "Pneumatique",
         "texte": "Serrages et presses pneumatiques des lignes d’assemblage.",
         "href": "/expertises/pneumatique/",
-        "photo": "/assets/web/ph-tuyaux.jpg"
+        "photo": "/assets/photos/env-photos-menuiserie.jpg"
       },
       {
         "titre": "Automatisme",
         "texte": "Commandes numériques et automates des centres d’usinage.",
         "href": "/expertises/automatisme/",
-        "photo": "/assets/web/ph-robots-solaire.jpg"
+        "photo": "/assets/photos/env-menuiserie-circular-saw.jpg"
       },
       {
         "titre": "Électrique",
         "texte": "Moteurs, aspirations et armoires en atelier poussiéreux.",
         "href": "/expertises/electrique/",
-        "photo": "/assets/web/team-electric.jpg"
+        "photo": "/assets/photos/env-menuiserie-24-sept-2026.jpg"
       }
     ],
     "sections": [
@@ -275,53 +275,53 @@
             "texte": "Lyon, février 2024",
             "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/web/mq-1ef16ef335a6.jpg"
+            "photo": "/assets/photos/env-inspection-de-bois-24-sept-2026.jpg"
           },
           {
             "titre": "Technicien polyvalent sur un parc hétérogène à forte cadence, papier et emballage",
             "texte": "matière souple, rythme continu",
             "lienLibelle": "Étude de cas VPK : maintenance de site",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/env-deux-hommes-au-travail-en-menuiserie.jpg"
           },
           {
             "titre": "1 à 3 techniciens en renfort des équipes de maintenance sur plusieurs sites de production",
             "texte": "depuis octobre 2024",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/web/x-elec-cablage.jpg"
+            "photo": "/assets/photos/env-homme-inspectant-le-bois.jpg"
           },
           {
             "titre": "Chantiers de montage, déplacements de machines et renfort technique ponctuel, matériaux",
             "texte": "missions documentées",
             "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/env-professionnels-sur-machine-a-bois.jpg"
           },
           {
             "titre": "Renfort de l'équipe de maintenance pendant les congés d'été",
             "texte": "un technicien sur site, été 2025",
             "lienLibelle": "Étude de cas OGF : arrêt estival",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
+            "photo": "/assets/photos/env-photos-industrie-menuiserie.jpg"
           },
           {
             "titre": "Des commandes numériques remises en route à chaque équipe",
             "lienLibelle": "Étude de cas Jeld-Wen",
             "lienHref": "/preuves/jeld-wen/",
-            "photo": "/assets/web/mq-056f3c250981.jpg"
+            "photo": "/assets/photos/env-projet-menuiserie-pere-et-enfant.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/web/mq-339d39e2a674.jpg"
+            "photo": "/assets/photos/env-menuiserie-industrie.jpg"
           },
           {
             "titre": "Des chantiers automatisés contrôlés point par point",
             "lienLibelle": "Étude de cas Alstef Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg"
+            "photo": "/assets/photos/env-photos-industrie-menuiserie-2.jpg"
           }
         ]
       },

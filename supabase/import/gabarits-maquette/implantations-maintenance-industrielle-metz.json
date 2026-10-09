@@ -40,7 +40,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Metz",
       "titre": "Metz : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-aero-train-atterrissage-casque-antibruit.jpg",
+      "photo": "/assets/photos/il-portrait-of-engineer-train-inspect-the-train-s-2.jpg",
       "badge": "Hub Migen",
       "nom": "Hub Metz",
       "texte": "Une équipe de techniciens installée à Metz, au plus près de vos sites, appuyée par le réseau national Migen.",
@@ -225,39 +225,39 @@
             "texte": "Fabrication de pièces de précision, 2025.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/env-photo-industrie.jpg"
+            "photo": "/assets/photos/energie-releve-pupitre-salle-commande.jpg"
           },
           {
             "titre": "Six techniciens sur l'installation et la mise en production d'un nouveau parc machine",
             "texte": "Site automobile, à partir de janvier 2023.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/il-aero-reacteur-ouvert-portrait.jpg"
+            "photo": "/assets/photos/env-photos-industrie-pharmaceutique.jpg"
           },
           {
             "titre": "Techniciens intégrés en 2025 pour sécuriser la maintenance des installations d'un équipementier automobile",
             "texte": "Réorganisation industrielle en cours.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/env-technician-maintenance-11.jpg"
+            "photo": "/assets/photos/env-photos-industrie-aeronautique.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/env-photos-industrie-2.jpg"
+            "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/robot-cobot-technicienne.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-avec-cle-1600.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
             "lienLibelle": "Étude de cas Veepee",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/energie-rotor-turbine-vapeur.jpg"
+            "photo": "/assets/photos/il-metal-siderurgie-bord-d-eau-couchant.jpg"
           }
         ]
       },

@@ -231,25 +231,25 @@
       }
     ],
     "minutes": 9,
-    "image": "/assets/web/team-electric.jpg",
+    "image": "/assets/photos/il-soudure-robot-torche-operateur-orange.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/cout-arret-de-production/",
         "titre": "Coût d'un arrêt de production",
         "minutes": 12,
-        "image": "/assets/web/ph-tuyaux.jpg"
+        "image": "/assets/photos/env-technicien-en-costume-de-nettoyage-industrie-p.jpg"
       },
       {
         "href": "/ressources/articles/digitalisation-maintenance/",
         "titre": "Digitalisation maintenance",
         "minutes": 11,
-        "image": "/assets/web/team-grind-impact.jpg"
+        "image": "/assets/photos/elec-tgbt-technicienne-tablette.jpg"
       },
       {
         "href": "/ressources/articles/gestion-des-dechets/",
         "titre": "Gestion des déchets industriels",
         "minutes": 8,
-        "image": "/assets/web/team-duo.jpg"
+        "image": "/assets/photos/il-portrait-of-engineer-train-inspect-the-train-s-2.jpg"
       }
     ]
   }

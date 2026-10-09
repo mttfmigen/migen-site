@@ -14,7 +14,7 @@
     ],
     "bouton": "Faire piloter mon service maintenance",
     "logo": "/assets/clients/mq-441fc873c0d9.svg",
-    "photoHero": "/assets/photos/env-femme-inspectant-des-bouteilles.jpg",
+    "photoHero": "/assets/photos/il-technicien-maintenance-photo-13-1600.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -128,7 +128,7 @@
         "valeur": "Supervision Migen, reporting à la direction industrielle"
       }
     ],
-    "photoDispositif": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg",
+    "photoDispositif": "/assets/photos/env-technicien-maintenance-photo.jpg",
     "resultats": [
       {
         "titre": "Zéro interruption critique",
@@ -166,19 +166,19 @@
         "surtitre": "Étude de cas",
         "titre": "OGF : la maintenance pendant l'arrêt estival",
         "href": "/preuves/ogf-arret-estival/",
-        "photo": "/assets/photos/il-meca-controle-sous-machine-casque-jaune.jpg"
+        "photo": "/assets/photos/il-tuyau-conduits-massifs-contre-plongee.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/il-auto-moteur-capot-ouvert-atelier.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-camion-1600.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/il-ciment-tours-grues-crepuscule.jpg"
+        "photo": "/assets/photos/elec-salle-cellules-ht-ronde.jpg"
       },
       {
         "surtitre": "Étude de cas",

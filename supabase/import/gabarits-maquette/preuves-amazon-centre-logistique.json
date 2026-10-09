@@ -27,7 +27,7 @@
       }
     ],
     "logo": "/assets/clients/mq-3103d0f3f9ba.svg",
-    "photoHero": "/assets/photos/levage-pont-roulant-hall-acier.jpg",
+    "photoHero": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg",
     "chiffres": [
       {
         "libelle": "Durée d'intervention",
@@ -142,7 +142,7 @@
         "valeur": "Contrat annuel"
       }
     ],
-    "photoDispositif": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg",
+    "photoDispositif": "/assets/photos/levage-pont-roulant-hall-acier.jpg",
     "resultats": [
       {
         "titre": "Une opération maîtrisée",
@@ -195,19 +195,19 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
+        "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
         "href": "/secteurs/logistique/",
-        "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
+        "photo": "/assets/web/sv-convoyeur.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "AMAZON : démarrage d'un nouveau site",
         "href": "/preuves/amazon-nouveau-site/",
-        "photo": "/assets/photos/robot-palettisation-tablette.jpg"
+        "photo": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg"
       },
       {
         "surtitre": "Étude de cas",

@@ -96,25 +96,25 @@
         "titre": "Mécanique",
         "texte": "Robinetterie, pompes et mécanismes, interventions préparées et tracées.",
         "href": "/expertises/mecanique/",
-        "photo": "/assets/web/team-grind-front.jpg"
+        "photo": "/assets/photos/nucleaire-salle-commande-centrale.jpg"
       },
       {
         "titre": "Tuyauterie",
         "texte": "Lignes et supports en zone réglementée.",
         "href": "/expertises/tuyauterie/",
-        "photo": "/assets/web/ph-hero-raffinerie.jpg"
+        "photo": "/assets/photos/il-meca-rampe-injection-moteur-bleu.jpg"
       },
       {
         "titre": "Soudure",
         "texte": "Soudures qualifiées, contrôlées avant remise en service.",
         "href": "/expertises/soudure/",
-        "photo": "/assets/web/team-grind-close.jpg"
+        "photo": "/assets/photos/energie-rack-canalisations-binome.jpg"
       },
       {
         "titre": "Électrique",
         "texte": "Consignations et interventions sous procédure.",
         "href": "/expertises/electrique/",
-        "photo": "/assets/web/team-electric.jpg"
+        "photo": "/assets/photos/il-energie-pupitre-instruments-portrait.jpg"
       }
     ],
     "sections": [
@@ -300,53 +300,53 @@
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/mq-1ef16ef335a6.jpg"
+            "photo": "/assets/photos/energie-bride-mat-eolienne.jpg"
           },
           {
             "titre": "Trois techniciens en renfort sur la maintenance préventive d'une centrale photovoltaïque, énergie",
             "texte": "septembre à novembre 2024, plus de six semaines",
             "lienLibelle": "Étude de cas EIFFAGE : partenariat",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/il-chimie-petrochimie-panorama-nuit.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne de production neuve, matériaux",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/web/x-elec-cablage.jpg"
+            "photo": "/assets/photos/energie-levage-eolienne-senior.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage",
             "texte": "environnement thermique sévère, depuis octobre 2023",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/elec-binome-coffret-chaufferie.jpg"
           },
           {
             "titre": "Renfort d'équipes de maintenance sur plusieurs sites de production",
             "texte": "depuis octobre 2024",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
+            "photo": "/assets/photos/il-energie-gros-moteur-vert-antibruit.jpg"
           },
           {
             "titre": "Un été entier sans trou dans la maintenance",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/web/mq-0699d4d92e7e.jpg"
+            "photo": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg"
+            "photo": "/assets/photos/elec-tgbt-technicienne-tablette.jpg"
           },
           {
             "titre": "Six techniciens pour faire démarrer un parc machines",
             "lienLibelle": "Étude de cas Eaton",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/web/mq-42237c1c8685.jpg"
+            "photo": "/assets/photos/energie-releve-pupitre-salle-commande.jpg"
           }
         ]
       },

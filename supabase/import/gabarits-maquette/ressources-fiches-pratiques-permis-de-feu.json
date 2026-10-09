@@ -252,25 +252,25 @@
       }
     ],
     "minutes": 8,
-    "image": "/assets/web/ph-hero-raffinerie.jpg",
+    "image": "/assets/photos/soudure-brossage-meuleuse-etau.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-pratiques/5s/",
         "titre": "5S industrie",
         "minutes": 12,
-        "image": "/assets/web/team-grind-front.jpg"
+        "image": "/assets/web/team-grind-sparks.jpg"
       },
       {
         "href": "/ressources/fiches-pratiques/consignation-electrique/",
         "titre": "Consignation électrique",
         "minutes": 12,
-        "image": "/assets/web/team-electric.jpg"
+        "image": "/assets/photos/il-soudure-poste-masque-releve.jpg"
       },
       {
         "href": "/ressources/fiches-pratiques/plan-de-prevention/",
         "titre": "Plan de prévention",
         "minutes": 9,
-        "image": "/assets/web/team-duo.jpg"
+        "image": "/assets/photos/tuyau-pointage-bride-tube.jpg"
       }
     ]
   }

@@ -20,7 +20,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/il-elec-armoire-bornier-pointage.jpg",
+        "src": "/assets/photos/il-elec-couloir-armoires-talkie.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -395,7 +395,7 @@
           {
             "libelle": "Compétences électromécanicien",
             "href": "/carriere/electromecanicien/competences/",
-            "photo": "/assets/photos/env-technician-inspecting-electrical-panel-in-a-fa.jpg"
+            "photo": "/assets/photos/elec-armoire-pont-roulant-gilet.jpg"
           }
         ]
       }

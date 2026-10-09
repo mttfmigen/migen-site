@@ -247,25 +247,25 @@
       }
     ],
     "minutes": 10,
-    "image": "/assets/web/ph-hero-raffinerie.jpg",
+    "image": "/assets/photos/aero-fuselage-serrage-lampe.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-techniques/amdec/",
         "titre": "Amdec",
         "minutes": 15,
-        "image": "/assets/web/team-grind-front.jpg"
+        "image": "/assets/photos/soudure-brossage-meuleuse-etau.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/automates-siemens/",
         "titre": "Automate Siemens",
         "minutes": 7,
-        "image": "/assets/web/team-electric.jpg"
+        "image": "/assets/photos/il-meca-grande-roue-dentee-portrait.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/cahier-des-charges-gmao/",
         "titre": "Cahier des charges gmao",
         "minutes": 11,
-        "image": "/assets/web/team-grind-front.jpg"
+        "image": "/assets/photos/pharma-blistereuse-mecanisme.jpg"
       }
     ]
   }

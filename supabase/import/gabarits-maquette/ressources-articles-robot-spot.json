@@ -226,25 +226,25 @@
       }
     ],
     "minutes": 7,
-    "image": "/assets/web/team-duo.jpg",
+    "image": "/assets/photos/robot-cellules-grillagees.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/cout-arret-de-production/",
         "titre": "Coût d'un arrêt de production",
         "minutes": 12,
-        "image": "/assets/web/ph-tuyaux.jpg"
+        "image": "/assets/photos/il-automaticien-avec-robot-arme-mar-19-2026-1600.jpg"
       },
       {
         "href": "/ressources/articles/digitalisation-maintenance/",
         "titre": "Digitalisation maintenance",
         "minutes": 11,
-        "image": "/assets/web/team-grind-impact.jpg"
+        "image": "/assets/photos/env-technician-with-robotic-arm.jpg"
       },
       {
         "href": "/ressources/articles/gestion-des-dechets/",
         "titre": "Gestion des déchets industriels",
         "minutes": 8,
-        "image": "/assets/web/team-duo.jpg"
+        "image": "/assets/photos/il-robot-ingenieure-designation-cellule.jpg"
       }
     ]
   }

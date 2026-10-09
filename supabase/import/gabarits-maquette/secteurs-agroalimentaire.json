@@ -75,25 +75,25 @@
         "titre": "Mécanique",
         "texte": "Convoyeurs, remplisseuses et ensacheuses : réglages et remplacements calés entre deux nettoyages.",
         "href": "/expertises/mecanique/",
-        "photo": "/assets/web/team-grind-front.jpg"
+        "photo": "/assets/photos/agro-remplisseuse-cle-plate.jpg"
       },
       {
         "titre": "Pneumatique",
         "texte": "Vérins et distributeurs des machines de conditionnement, sollicités à chaque cycle.",
         "href": "/expertises/pneumatique/",
-        "photo": "/assets/web/ph-tuyaux.jpg"
+        "photo": "/assets/photos/agro-technicienne-raccord-clamp.jpg"
       },
       {
         "titre": "Automatisme",
         "texte": "Changements de format et recettes : l’automate suit la cadence saisonnière.",
         "href": "/expertises/automatisme/",
-        "photo": "/assets/web/ph-robots-solaire.jpg"
+        "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
       },
       {
         "titre": "Électrique",
         "texte": "Armoires en environnement humide, lavé à grande eau : consignations et étanchéité.",
         "href": "/expertises/electrique/",
-        "photo": "/assets/web/team-electric.jpg"
+        "photo": "/assets/photos/agro-mains-vanne-sanitaire.jpg"
       }
     ],
     "marquesFamille": "agro",
@@ -227,47 +227,47 @@
             "texte": "site de Steenvoorde",
             "lienLibelle": "Étude de cas DANONE : lignes de production",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/web/mq-1ef16ef335a6.jpg"
+            "photo": "/assets/photos/agro-atelier-inox-plan-large.jpg"
           },
           {
             "titre": "Renfort de maintenance sur un site agroalimentaire de grande échelle",
             "texte": "depuis octobre 2024, premier contrat Migen hors de France",
             "lienLibelle": "Étude de cas McCAIN : Belgique",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/agro-panneau-vannes-nep.jpg"
           },
           {
             "titre": "Technicien polyvalent sur un parc hétérogène à forte cadence, papier et emballage",
             "texte": "matière fragile, rythme continu",
             "lienLibelle": "Étude de cas VPK : maintenance de site",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/web/mq-2a8c78b5c75c.jpg"
+            "photo": "/assets/photos/soudure-tig-virole-inox.jpg"
           },
           {
             "titre": "Renfort de l'équipe de maintenance pendant les congés d'été",
             "texte": "un technicien sur site, été 2025",
             "lienLibelle": "Étude de cas OGF : arrêt estival",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/il-agro-silos-contre-plongee-passerelles.jpg"
           },
           {
             "titre": "Technicien affecté en continu à la fiabilité d'équipements de production en forte activité",
             "texte": "site proche de Paris",
             "lienLibelle": "Étude de cas FDJ : site proche de Paris",
             "lienHref": "/preuves/fdj/",
-            "photo": "/assets/web/mq-5b47b5f6a584.jpg"
+            "photo": "/assets/photos/agro-ihm-ligne-conditionnement-senior.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/web/mq-42237c1c8685.jpg"
+            "photo": "/assets/photos/tuyau-vanne-volant-conserverie.jpg"
           },
           {
             "titre": "Un renfort pour que le pain sorte chaque matin",
             "lienLibelle": "Étude de cas La Panetière",
             "lienHref": "/preuves/la-panetiere/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg"
           }
         ]
       },

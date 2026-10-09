@@ -227,21 +227,21 @@
             "texte": "Lyon, depuis février 2024. Diagnostic technique puis plusieurs solutions chiffrées, arbitrées par le client selon son budget.",
             "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/il-robot-equipe-portable-cellule.jpg"
+            "photo": "/assets/photos/env-inspection-robotique-22-sept-2026.jpg"
           },
           {
             "titre": "",
             "texte": "Janvier 2023. Six techniciens multidisciplinaires pour l'installation et la mise en production d'un parc machines neuf.",
             "lienLibelle": "Étude de cas EATON : mise en production",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/env-robotic-arms-welding-car-frames.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-inspectant-bras-robotiq.jpg"
           },
           {
             "titre": "",
             "texte": "Montage des portiques de lavage selon les standards du constructeur, réception, levage et raccordements, partout en France.",
             "lienLibelle": "Étude de cas Migen Bureau d'études x WASHTEC : installation de stations",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/photos/elec-cablage-armoire-tournevis.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-robotic-arm.jpg"
           }
         ]
       },
@@ -333,19 +333,19 @@
         "url": "/preuves/alstef-group/",
         "client": "Alstef Group",
         "titre": "Des chantiers automatisés contrôlés point par point",
-        "photo": "/assets/photos/il-tuyau-vannes-technicienne-tablette.jpg"
+        "photo": "/assets/photos/il-elec-armoire-variateurs-ventilation.jpg"
       },
       {
         "url": "/preuves/amazon-centre-logistique/",
         "client": "Amazon",
         "titre": "Maintenir un centre logistique qui ne ferme jamais",
-        "photo": "/assets/photos/il-robot-ligne-robots-presse-papier.jpg"
+        "photo": "/assets/photos/il-elec-armoire-bornier-pointage.jpg"
       },
       {
         "url": "/preuves/amazon-nouveau-site/",
         "client": "Amazon",
         "titre": "Un dispositif rodé, transposé sur un nouveau site",
-        "photo": "/assets/photos/il-elec-armoire-variateurs-ventilation.jpg"
+        "photo": "/assets/photos/env-factory-worker-inspecting-robotic-arm-in-manuf.jpg"
       }
     ]
   }

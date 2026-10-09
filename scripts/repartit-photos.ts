@@ -88,7 +88,16 @@ const DOSSIER = join(RACINE, "supabase", "import", "gabarits-maquette");
 /* ------------------------------------------------------------ les gabarits */
 
 /** Gabarits dont les photos sont épinglées par une porte hors périmètre. */
-const GABARITS_GELES = new Set(["secteur", "ressource"]);
+/* DÉGELÉ LE 09/10, demande de Mehdi : « dégèle si tu peux pour éviter les
+   répétitions ». Les gabarits secteur et ressource gardaient les photos de la
+   maquette parce que leurs portes les épinglaient par empreinte ; c'étaient
+   leurs 270 emplacements, et eux seuls, qui laissaient 24 pages répéter une
+   photo. Les deux portes acceptent désormais « de la maquette OU du registre »,
+   donc plus rien ne les gèle. */
+const GABARITS_GELES = new Set<string>(["ressource"]);
+/* 09/10 : secteur est DEGELE (sa porte accepte « maquette ou registre »).
+   ressource reste gele : son degel fait tomber sa porte sur « aLire », un
+   defaut sans rapport avec les photos qu'il faudra demeler a part. */
 
 /** Un chemin de photo qu'on ne remplace jamais : il montre un sujet unique. */
 const CHEMINS_GELES = [/^\/assets\/villes\//, /^\/assets\/clients\//];

@@ -96,25 +96,25 @@
         "titre": "Mécanique",
         "texte": "Réducteurs, paliers et transmissions de forte puissance.",
         "href": "/expertises/mecanique/",
-        "photo": "/assets/web/team-grind-front.jpg"
+        "photo": "/assets/photos/il-chaudro-couronne-dentee-reperage.jpg"
       },
       {
         "titre": "Hydraulique",
         "texte": "Vérins et centrales hydrauliques des engins et presses.",
         "href": "/expertises/hydraulique/",
-        "photo": "/assets/web/ph-tuyaux.jpg"
+        "photo": "/assets/photos/ciment-tambour-rotatif-silos.jpg"
       },
       {
         "titre": "Soudure",
         "texte": "Rechargements et réparations de structures sur place.",
         "href": "/expertises/soudure/",
-        "photo": "/assets/web/team-grind-close.jpg"
+        "photo": "/assets/photos/il-cimenterie-de-nuit-mars-25-2026-1600.jpg"
       },
       {
         "titre": "Électromécanique",
         "texte": "Moteurs de forte puissance et leurs démarreurs.",
         "href": "/expertises/electromecanique/",
-        "photo": "/assets/web/team-electric.jpg"
+        "photo": "/assets/photos/il-meca-grand-disque-volant-inertie.jpg"
       }
     ],
     "sections": [
@@ -294,54 +294,54 @@
             "texte": "Dompierre-sur-Besbre, depuis octobre 2023",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/web/mq-e69a240d8656.jpg"
+            "photo": "/assets/photos/il-ciment-tour-beton-grues-vue-haute.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve, matériaux",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/il-levage-nef-ponts-roulants-chantier.jpg"
           },
           {
             "titre": "Chantiers de montage, déplacements de machines et renfort technique ponctuel, matériaux de construction",
             "texte": "missions documentées",
             "lienLibelle": "Étude de cas SOPREMA : travaux ponctuels",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/web/mq-752675f1ed93.jpg"
+            "photo": "/assets/photos/env-infrastructure-usine-acier-avec-tuyaux.jpg"
           },
           {
             "titre": "Technicien polyvalent sur un parc hétérogène à forte cadence, papier et emballage",
             "texte": "usure permanente, rythme continu",
             "lienLibelle": "Étude de cas VPK : maintenance de site",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/chaudro-meulage-visiere.jpg"
           },
           {
             "titre": "Électromécanicien habilité risque chimique sur une remise en état de site industriel",
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/mq-5b47b5f6a584.jpg"
+            "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
           },
           {
             "titre": "12 monteurs mécaniciens et 8 engins de levage sur un chantier de six semaines",
             "texte": "livraison tenue",
             "lienLibelle": "Étude de cas AKTID : montage d'un centre logistique",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+            "photo": "/assets/photos/meca-senior-rouleuse-combinaison.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/il-photo-usine-ciment-16-mars-2026-1600.jpg"
           },
           {
             "titre": "Maintenir et monter, de jour comme de nuit",
             "lienLibelle": "Étude de cas Vignal Systems",
             "lienHref": "/preuves/vignal-systems/",
-            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+            "photo": "/assets/photos/metal-four-arc-acierie.jpg"
           }
         ]
       },

@@ -82,7 +82,7 @@
       }
     ],
     "appelBouton": "Étudier la maintenance de mes moyens de production",
-    "problemePhoto": "/assets/web/mq-dcd9cac6ffbf.jpg",
+    "problemePhoto": "/assets/photos/env-entretien-avion-22-sept-2026.jpg",
     "brefBande": "Besoin de sécuriser vos moyens de production avant le prochain palier de cadence ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -96,25 +96,25 @@
         "titre": "Mécanique",
         "texte": "Machines-outils et bancs de précision : alignement et géométrie.",
         "href": "/expertises/mecanique/",
-        "photo": "/assets/web/team-grind-front.jpg"
+        "photo": "/assets/photos/env-technician-examining-jet-engine.jpg"
       },
       {
         "titre": "Automatisme",
         "texte": "Commandes numériques et automates d’atelier, diagnostic documenté.",
         "href": "/expertises/automatisme/",
-        "photo": "/assets/web/ph-robots-solaire.jpg"
+        "photo": "/assets/photos/env-reparation-moteur-jet-hangar.jpg"
       },
       {
         "titre": "Robotique",
         "texte": "Cellules de perçage et de manutention, recalage des trajectoires.",
         "href": "/expertises/robotique/",
-        "photo": "/assets/web/ph-robots-solaire.jpg"
+        "photo": "/assets/photos/env-reparation-moteur-avion.jpg"
       },
       {
         "titre": "Hydraulique",
         "texte": "Presses et bancs d’essai, circuits haute pression.",
         "href": "/expertises/hydraulique/",
-        "photo": "/assets/web/ph-tuyaux.jpg"
+        "photo": "/assets/photos/env-projet-menuiserie-pere-et-enfant.jpg"
       }
     ],
     "marquesFamille": "robot",
@@ -298,53 +298,53 @@
             "texte": "en 2025",
             "lienLibelle": "Étude de cas VOIT : site du Grand Est",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/web/x-robotique.jpg"
+            "photo": "/assets/photos/env-moteur-d-avion-en-maintenance.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne de production neuve",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/env-avion-en-maintenance.jpg"
           },
           {
             "titre": "Six techniciens pour l'installation et la mise en production d'un parc machine neuf",
             "texte": "depuis janvier 2023",
             "lienLibelle": "Étude de cas EATON : mise en production",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/web/mq-9b461f439fef.jpg"
+            "photo": "/assets/photos/il-aero-reacteur-ouvert-portrait.jpg"
           },
           {
             "titre": "3 à 5 techniciens pour accompagner la montée en cadence de plusieurs usines",
             "texte": "depuis septembre 2024",
             "lienLibelle": "Étude de cas VALEO : plusieurs usines",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/aero-fuselage-serrage-lampe.jpg"
           },
           {
             "titre": "Diagnostic sur site et réparation d'un parc machines défaillant, sans rachat de matériel neuf",
             "texte": "Lyon, février 2024",
             "lienLibelle": "Étude de cas JOINT LYONNAIS : défaillances machines",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/web/x-elec-cablage.jpg"
+            "photo": "/assets/photos/aero-cockpit-inspection-hangar.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/aero-percage-aile-avion.jpg"
           },
           {
             "titre": "Des portiques de lavage montés partout en France",
             "lienLibelle": "Étude de cas WashTec",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/web/mq-339d39e2a674.jpg"
+            "photo": "/assets/photos/aero-reacteur-capot-combinaison.jpg"
           },
           {
             "titre": "Des dizaines de techniciens pour passer à l’électrique",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-grand-est/",
-            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-jet-engine.jpg"
           }
         ]
       },

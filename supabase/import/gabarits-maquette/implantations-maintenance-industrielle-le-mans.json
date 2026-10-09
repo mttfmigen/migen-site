@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Le Mans",
       "titre": "Le Mans : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/elec-cablage-armoire-tournevis.jpg",
+      "photo": "/assets/photos/env-oil-and-gas-petrochemical-industrial-oil-refin.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Le Mans et ses environs",
       "texte": "Nos techniciens itinérants couvrent Le Mans et son bassin, appuyés par le réseau national Migen.",
@@ -115,7 +115,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/env-usine-aeronautique-22-sept-2026.jpg",
+    "problemePhoto": "/assets/photos/il-technicien-maintenance-photo-11-1600.jpg",
     "brefBande": "Besoin de tenir un poste de maintenance que vous n'arrivez pas à pourvoir ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -250,53 +250,53 @@
             "texte": "Réorganisation industrielle en cours.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/il-meca-ressorts-suspension-combinaison.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-7.jpg"
           },
           {
             "titre": "3 à 5 techniciens déployés depuis septembre 2024 pour accompagner la montée en cadence de plusieurs usines",
             "texte": "Maintenance renforcée en même temps que la production.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/il-robot-cobot-blanc-pupitre.jpg"
+            "photo": "/assets/photos/env-automatician-maintenance.jpg"
           },
           {
             "titre": "Un technicien de maintenance dédié au maintien d'un parc machines en 2025",
             "texte": "Poste vacant comblé sans attendre un recrutement.",
             "lienLibelle": "Étude de cas AUTOLIV",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/env-industrie.jpg"
+            "photo": "/assets/web/team-grind-impact.jpg"
           },
           {
             "titre": "Six techniciens sur l'installation et la mise en production d'un nouveau parc machine",
             "texte": "Site automobile, à partir de janvier 2023.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/env-menuiserie-industrie.jpg"
+            "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg"
           },
           {
             "titre": "Deux techniciens intégrés en 3x8 sur des lignes liquides et poudre",
             "texte": "Lavage intensif, froid, traçabilité.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/web/sv-armoire.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-jan-7-2026-800.jpg"
           },
           {
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/env-industrie-mettalique-22-sept-2026.jpg"
+            "photo": "/assets/photos/il-raffinerie-industrielle-au-crepuscule-1600.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/photos/il-meca-portrait-cle-plate-machine-usee.jpg"
+            "photo": "/assets/photos/meca-tour-conventionnel-senior.jpg"
           },
           {
             "titre": "Centres d’usinage et presses tenus dans le Grand Est",
             "lienLibelle": "Étude de cas Voit",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/il-ciment-cheminee-grue-couchant.jpg"
+            "photo": "/assets/photos/env-industrie-chimie-2.jpg"
           }
         ]
       },

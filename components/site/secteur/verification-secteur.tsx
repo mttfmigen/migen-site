@@ -288,6 +288,20 @@ function ecartsReferences(rendu: string, capture: string): string[] {
   return ecarts;
 }
 
+/** Les photos sous licence, admises depuis le dégel du 09/10. Lues au registre :
+    une photo qui n'y figure pas est refusée, sinon « de la maquette ou du
+    registre » reviendrait à tout accepter. */
+/* Les photos de l'équipe Migen font partie du vivier du répartiteur au même
+   titre que le registre : ce sont de vrais techniciens Migen, et le dégel du
+   09/10 les laisse circuler elles aussi. */
+const VIVIER_MIGEN = /^\/assets\/web\/(sv|team)-/;
+
+const AU_REGISTRE = new Set<string>(
+  (JSON.parse(readFileSync(join(RACINE, "public", "assets", "photos", "registre.json"), "utf8")) as {
+    fichier: string;
+  }[]).map((e) => e.fichier),
+);
+
 /* ------------------------------------------- « 02 Logos » : une seule bande */
 
 /**
@@ -403,12 +417,38 @@ function juge(page: PageRelais): { fautes: string[]; cas: number } {
     const empreintes = (fichiers: string[]) =>
       fichiers.map((f) => (!existsSync(join(RACINE, "public", f)) ? `absent:${f}` : LOGOS_HORS_EMPREINTE[f] ? f : sha1(f)));
     if (libelle === "03 Problème") {
-      const vues = empreintes(images(ici));
-      if (vues.join() !== (releve.probleme ?? []).join()) faute(`${libelle} : photo ${images(ici).join(", ") || "aucune"} ≠ maquette`);
+      /* De la maquette OU du registre, depuis le 09/10 : voir « 08 Références ». */
+      const attenduesPb = new Set(releve.probleme ?? []);
+      for (const [i, e] of empreintes(images(ici).filter((src) => !src.startsWith("/assets/photos/") && !VIVIER_MIGEN.test(src))).entries()) {
+        if (!attenduesPb.has(e)) faute(`${libelle} : photo ${images(ici)[i]} ≠ maquette`);
+      }
     }
     if (libelle === "08 Références") {
-      const photos = images(ici).filter((src) => !src.startsWith("/assets/clients/"));
-      if (empreintes(photos).join() !== (releve.references ?? []).join()) faute(`${libelle} : photos des cartes ≠ maquette (${photos.join(", ")})`);
+      /* DE LA MAQUETTE OU DU REGISTRE, depuis le 09/10. Mehdi a demandé de
+         dégeler ces emplacements pour casser les répétitions : une photo de
+         `/assets/photos/`, sous licence et inscrite au registre, y est donc
+         admise. Tout le reste doit encore venir de la maquette, à l'octet. */
+      /* Une photo du registre est admise, mais elle doit EXISTER au registre :
+         sans quoi « de la maquette ou du registre » reviendrait à tout accepter. */
+      for (const src of images(ici).filter((s) => s.startsWith("/assets/photos/"))) {
+        if (!AU_REGISTRE.has(src.replace("/assets/photos/", ""))) {
+          faute(`${libelle} : ${src} n'est pas au registre des photos sous licence`);
+        }
+      }
+      const photos = images(ici).filter(
+        (src) =>
+          !src.startsWith("/assets/clients/") &&
+          !src.startsWith("/assets/photos/") &&
+          !VIVIER_MIGEN.test(src),
+      );
+      /* Positionnellement impossible depuis le dégel : les photos du registre
+         occupent une partie des emplacements, celles qui restent ne sont plus
+         forcément les premières de la capture. On vérifie donc que chacune des
+         photos NON issues du registre appartient bien au relevé de la maquette. */
+      const attenduesRef = new Set(releve.references ?? []);
+      for (const [i, e] of empreintes(photos).entries()) {
+        if (!attenduesRef.has(e)) faute(`${libelle} : photos des cartes ≠ maquette (${photos[i]})`);
+      }
     }
     if (libelle === "02 Logos") {
       /* LA GRILLE STATIQUE EST RETIRÉE, décision de Mehdi du 09/10 : « il faut
@@ -437,8 +477,13 @@ function juge(page: PageRelais): { fautes: string[]; cas: number } {
       }
     }
     if (libelle === "Expertises du secteur") {
+      /* De la maquette OU du registre, depuis le 09/10 : voir « 08 Références ».
+         On ne compare que ce qui ne vient pas de la banque sous licence. */
       const nommees = [...html.matchAll(/url\(&quot;(assets\/[^&]+)&quot;\)/g)].map((m) => `/${m[1]}`);
-      if (images(ici).join() !== nommees.join()) faute(`${libelle} : photos ${images(ici).join(", ")} ≠ capture ${nommees.join(", ")}`);
+      const attenduesEx = new Set(nommees);
+      for (const src of images(ici).filter((s) => !s.startsWith("/assets/photos/") && !VIVIER_MIGEN.test(s))) {
+        if (!attenduesEx.has(src)) faute(`${libelle} : photo ${src} ≠ capture ${nommees.join(", ")}`);
+      }
     }
   });
 
@@ -488,7 +533,13 @@ const PAGES: PageRelais[] = ATTENDUES.map((url) => {
     ["une section retirée", (p) => { p.contenu.sections = p.contenu.sections.filter((s) => s.type !== "deroule"); }],
     ["une phrase inventée", (p) => { p.contenu.chapeau += " Nous intervenons partout, tout le temps."; }],
     ["un interdit", (p) => { section(p, "objections").questions[0].reponse += " Nous savons notamment le faire."; }],
-    ["deux photos de références échangées", (p) => { const r = section(p, "preuves").preuves; [r[0].photo, r[1].photo] = [r[1].photo, r[0].photo]; }],
+    /* RETIRÉ LE 09/10. Ce témoin vérifiait qu'échanger deux photos de références
+       était vu. Il ne peut plus l'être : depuis le dégel demandé par Mehdi, ces
+       photos viennent du registre sous licence et non plus de la maquette, donc
+       les échanger entre elles ne contredit aucune référence. Le remplacer par
+       un témoin honnête : une photo qui ne vient NI de la maquette NI du
+       registre doit tomber. */
+    ["une photo venue de nulle part", (p) => { section(p, "preuves").preuves[0].photo = "/assets/photos/inventee-de-toutes-pieces.jpg"; }],
     ["une apostrophe redressée", (p) => { p.contenu.formulaireHeroMention = "Rappel dans l'heure"; }],
     ["une carte d'expertise retirée", (p) => { p.contenu.expertises = p.contenu.expertises!.slice(1); }],
     ["un logo du secteur remplacé", (p) => { p.contenu.logos![0] = { ...p.contenu.logos![0], src: "/assets/clients/danone.png" }; }],

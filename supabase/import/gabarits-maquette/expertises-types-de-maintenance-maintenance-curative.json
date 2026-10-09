@@ -272,42 +272,42 @@
             "texte": "Deux techniciens en poste sur site, dédiés au maintien des équipements.",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg"
+            "photo": "/assets/photos/aero-fuselage-serrage-lampe.jpg"
           },
           {
             "titre": "Diagnostic sur site et réparation d'un parc machines défaillant, industrie lyonnaise",
             "texte": "Remise en état sans rachat de matériel neuf.",
             "lienLibelle": "Étude de cas JOINT LYONNAIS",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
+            "photo": "/assets/photos/elec-local-technicien-accroupi.jpg"
           },
           {
             "titre": "Remise en état d'un site de traitement des eaux industrielles, environnement",
             "texte": "Un électromécanicien habilité risque chimique mobilisé six mois.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/il-meca-chaine-transmission-reglage.jpg"
+            "photo": "/assets/photos/il-elec-ouverture-coffret-gilet-orange.jpg"
           },
           {
             "titre": "Maintenance préventive et curative des lignes de production, jeux et loteries",
             "texte": "Un technicien affecté en continu sur un site proche de Paris.",
             "lienLibelle": "Étude de cas FDJ",
             "lienHref": "/preuves/fdj/",
-            "photo": "/assets/photos/robot-technicienne-inspection-bras.jpg"
+            "photo": "/assets/photos/aero-nacelle-moteur-technicien.jpg"
           },
           {
             "titre": "Maintenance des centres d'usinage, presses et machines à commande numérique, automobile",
             "texte": "Un technicien intégré à temps plein.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/il-elec-multimetre-boitier-accroupie.jpg"
+            "photo": "/assets/photos/il-elec-rack-cablage-penombre.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, automobile",
             "texte": "Tenue, depuis octobre 2023.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/elec-local-technicien-accroupi.jpg"
+            "photo": "/assets/photos/il-hydrau-presse-rouge-intervention.jpg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
@@ -319,7 +319,7 @@
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/aero-fuselage-serrage-lampe.jpg"
+            "photo": "/assets/photos/hydrau-centrale-hydraulique-technicien.jpg"
           }
         ]
       },

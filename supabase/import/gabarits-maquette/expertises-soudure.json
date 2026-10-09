@@ -37,7 +37,7 @@
         "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "problemePhoto": "/assets/photos/il-soudure-poste-masque-releve.jpg",
+    "problemePhoto": "/assets/photos/soudure-fond-bombe-gabarit.jpg",
     "complementOffre": [
       {
         "texte": "Besoin d'un soudeur sur plusieurs semaines ? Une casse métallique en cours se traite par le dépannage industriel."
@@ -208,14 +208,14 @@
             "titre": "Maintenance préventive et curative d'une fonderie et de son usinage, automobile",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg",
+            "photo": "/assets/photos/il-chaudro-couronne-dentee-reperage.jpg",
             "texte": "Site tenu depuis octobre 2023."
           },
           {
             "titre": "Six techniciens pour faire démarrer un parc machines",
             "lienLibelle": "Étude de cas Eaton",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg",
+            "photo": "/assets/photos/robot-soudure-points-caisse.jpg",
             "texte": ""
           },
           {
@@ -229,7 +229,7 @@
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/tuyau-pointage-bride-tube.jpg",
+            "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg",
             "texte": ""
           }
         ]

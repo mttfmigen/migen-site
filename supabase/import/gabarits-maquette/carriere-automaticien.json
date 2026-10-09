@@ -20,7 +20,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/il-meca-machine-outil-porte-ouverte.jpg",
+        "src": "/assets/photos/il-technicien-maintenance-4.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -343,7 +343,7 @@
           {
             "libelle": "Roboticien",
             "href": "/carriere/roboticien/",
-            "photo": "/assets/photos/il-meca-main-gantee-controle-machine.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-13-1600.jpg"
           }
         ]
       }

@@ -224,25 +224,25 @@
       }
     ],
     "minutes": 9,
-    "image": "/assets/web/team-electric.jpg",
+    "image": "/assets/photos/meca-technicienne-parc-moteurs.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-techniques/amdec/",
         "titre": "Amdec",
         "minutes": 15,
-        "image": "/assets/web/team-grind-front.jpg"
+        "image": "/assets/photos/il-equipe-bogie-halle-ferroviaire.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/analyse-vibratoire/",
         "titre": "Analyse vibratoire",
         "minutes": 10,
-        "image": "/assets/web/ph-robots-solaire.jpg"
+        "image": "/assets/photos/il-hydrau-verin-godet-engin.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/automates-siemens/",
         "titre": "Automate Siemens",
         "minutes": 7,
-        "image": "/assets/web/team-electric.jpg"
+        "image": "/assets/photos/il-meca-volant-poulie-reglage.jpg"
       }
     ]
   }

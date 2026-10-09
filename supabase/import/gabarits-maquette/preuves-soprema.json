@@ -14,7 +14,7 @@
     ],
     "bouton": "Chiffrer mon chantier de montage",
     "logo": "/assets/clients/mq-127f9e03c53b.svg",
-    "photoHero": "/assets/photos/il-outillage-panneau-cles-technicienne.jpg",
+    "photoHero": "/assets/photos/il-mechanic-working-in-warehouse.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -127,7 +127,7 @@
         "valeur": "Facturation à la journée ou au forfait"
       }
     ],
-    "photoDispositif": "/assets/photos/meca-jeune-presse-volant.jpg",
+    "photoDispositif": "/assets/photos/env-man-smiles-at-a-bottling-plant-factory.jpg",
     "resultats": [
       {
         "titre": "Les délais de chantier ont été respectés",
@@ -166,25 +166,25 @@
         "surtitre": "Étude de cas",
         "titre": "TIMESCOPE : maintenance sous contrat",
         "href": "/preuves/timescope/",
-        "photo": "/assets/photos/env-avion-en-maintenance.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-jan-9-2026-1600.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/il-meca-bloc-moteur-halle-gilet.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-jan-7-2026-800.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/env-technician-maintenance-8.jpg"
+        "photo": "/assets/photos/il-portrait-of-engineer-train-inspect-the-train-s.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/env-photos-industrie-menuiserie-3.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-avec-robot-1600.jpg"
       }
     ]
   }

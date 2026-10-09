@@ -190,20 +190,20 @@
             "titre": "Une usine de carton en 3x8, un technicien qui tient la cadence",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/pneu-pince-axe-lineaire.jpg"
+            "photo": "/assets/photos/il-femme-en-tenue-professionnelle-pres-d-un-bras-.jpg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/soudure-brossage-meuleuse-etau.jpg",
+            "photo": "/assets/photos/il-elec-baie-cablage-faisceaux.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
             "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
             "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/photos/env-inspection-robot-arm-wiring.jpg",
+            "photo": "/assets/photos/il-femme-inspectant-bras-robotique-2026-1600.jpg",
             "logo": "/assets/clients/mq-7c01e175985e.png"
           },
           {
@@ -262,25 +262,25 @@
         "titre": "Technicien en résidence",
         "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/il-robot-programmation-cobot-portable.jpg"
+        "photo": "/assets/photos/il-automaticien-verifiant-photo-jan-6-2026-1600.jpg"
       },
       {
         "titre": "Zéro arrêt",
         "phrase": "La maintenance en abonnement, au forfait mensuel.",
         "href": "/offres/zero-arret/",
-        "photo": "/assets/photos/il-chaudro-couronne-dentee-reperage.jpg"
+        "photo": "/assets/photos/nucleaire-salle-commande-centrale.jpg"
       },
       {
         "titre": "Arrêt technique",
         "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
         "href": "/offres/arret-technique/",
-        "photo": "/assets/photos/nucleaire-salle-commande-centrale.jpg"
+        "photo": "/assets/photos/env-inspection-bras-robotiques.jpg"
       },
       {
         "titre": "Full service",
         "phrase": "Toute votre maintenance, un seul partenaire.",
         "href": "/offres/full-service/",
-        "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
+        "photo": "/assets/photos/il-robot-programmation-cobot-portable.jpg"
       },
       {
         "titre": "Travaux industriels",
@@ -292,7 +292,7 @@
         "titre": "Bureau d’études",
         "phrase": "Conception, retrofit et mise en conformité.",
         "href": "/offres/bureau-etudes/",
-        "photo": "/assets/photos/il-elec-baie-cablage-faisceaux.jpg"
+        "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
       }
     ],
     "pagesLieesTitre": "Les offres et prestations voisines"

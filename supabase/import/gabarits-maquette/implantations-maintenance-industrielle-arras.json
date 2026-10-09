@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Arras-Lens",
       "titre": "Arras-Lens : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-technicien-portrait-casque-antibruit.jpg",
+      "photo": "/assets/photos/env-technician-maintenance-9.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Arras-Lens et ses environs",
       "texte": "Nos techniciens itinérants couvrent Arras-Lens et son bassin, appuyés par le réseau national Migen.",
@@ -245,37 +245,37 @@
             "titre": "Un parc de fonderie repris en huit semaines",
             "lienLibelle": "Étude de cas Stellantis",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/env-technician-maintenance-blue-truck-engine.jpg"
+            "photo": "/assets/photos/il-photo-industrie-raffinerie-petrole-mars-2026-1.jpg"
           },
           {
             "titre": "Deux usines accompagnées dans leur montée en cadence",
             "lienLibelle": "Étude de cas Valeo",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/env-technicien-maintenance-cafe-23-sept-2026.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-2.jpg"
           },
           {
             "titre": "Un technicien dédié pour que le parc ne décroche pas",
             "lienLibelle": "Étude de cas Autoliv",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/photos/env-technicien-en-costume-de-nettoyage-industrie-p.jpg"
+            "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg"
           },
           {
             "titre": "Voir la dérive avant que l’équipement critique ne tombe",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/env-technician-inspecting-power-grid-equipment-in-.jpg"
+            "photo": "/assets/photos/env-photos-industrie-aeronautique.jpg"
           },
           {
             "titre": "Presses à injecter et robots, le préventif d’abord",
             "lienLibelle": "Étude de cas Motherson",
             "lienHref": "/preuves/motherson/",
-            "photo": "/assets/photos/il-chimie-vapeur-vue-large-jour.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance.jpg"
           },
           {
             "titre": "Centres d’usinage et presses tenus dans le Grand Est",
             "lienLibelle": "Étude de cas Voit",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/env-usine-aeronautique-22-sept-2026.jpg"
+            "photo": "/assets/photos/env-photo-industrie.jpg"
           }
         ]
       },

@@ -27,7 +27,7 @@
       }
     ],
     "logo": "/assets/clients/mq-e93a6ad5abf7.svg",
-    "photoHero": "/assets/photos/env-inspection-robotique-22-sept-2026.jpg",
+    "photoHero": "/assets/photos/env-maintenance-automatique-robotique.jpg",
     "chiffres": [
       {
         "libelle": "Nature des travaux",
@@ -138,7 +138,7 @@
         "valeur": "Techniciens intégrés aux équipes de maintenance"
       }
     ],
-    "photoDispositif": "/assets/photos/env-car-manufacturing-engine-assembly-on-automated.jpg",
+    "photoDispositif": "/assets/photos/env-technician-maintenance-robot-arm.jpg",
     "resultats": [
       {
         "titre": "La fiabilité du parc machine progresse",
@@ -194,25 +194,25 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/env-inspection-bras-robotiques.jpg"
+        "photo": "/assets/photos/robot-soudure-points-caisse.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/il-robot-programmation-cobot-portable.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-robotique-mar-18-2026-1.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrie automobile",
         "href": "/secteurs/automobile/",
-        "photo": "/assets/photos/il-robot-ingenieure-designation-cellule.jpg"
+        "photo": "/assets/photos/il-automaticien-ajustant-bras-robotique-1600.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "AUTOLIV : maintien d'un site",
         "href": "/preuves/autoliv/",
-        "photo": "/assets/photos/env-inspection-ligne-production-automatique.jpg"
+        "photo": "/assets/photos/il-female-engineers-working-on-robotics-in-indust.jpg"
       }
     ]
   }

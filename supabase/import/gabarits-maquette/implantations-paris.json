@@ -225,53 +225,53 @@
             "texte": "Lignes de production en forte activité, 2025 et 2026.",
             "lienLibelle": "Étude de cas FDJ",
             "lienHref": "/preuves/fdj/",
-            "photo": "/assets/photos/il-technicien-portrait-casque-bleu-atelier.jpg"
+            "photo": "/assets/photos/il-portrait-of-engineer-or-technician-worker-woma.jpg"
           },
           {
             "titre": "Construction d'un site industriel de R&D près de Paris",
             "texte": "Pilotage de chantier, coordination et jalons, par Migen Travaux.",
             "lienLibelle": "Étude de cas Migen Travaux x ECOCEM",
             "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/photos/env-industrie-metallique.jpg"
+            "photo": "/assets/photos/meca-graissage-couronne-engin.jpg"
           },
           {
             "titre": "Un technicien intégré pendant l'arrêt estival pour tenir les équipements critiques",
             "texte": "Réseau national piloté depuis Paris, été 2025.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/il-robot-cellule-grillagee-automaticien.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-16-1600.jpg"
           },
           {
             "titre": "Un électromécanicien habilité risque chimique mobilisé 6 mois",
             "texte": "Remise en état d'un site de traitement des eaux industrielles.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/env-femme-en-usine-moderne.jpg"
+            "photo": "/assets/photos/il-chimie-vapeur-vue-large-jour.jpg"
           },
           {
             "titre": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures",
             "texte": "Centre logistique ORY4, depuis septembre 2022, contrat annuel.",
             "lienLibelle": "Étude de cas AMAZON",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/env-moteur-d-avion-en-maintenance.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-robotic-arm.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/env-technician-maintenance-10.jpg"
+            "photo": "/assets/photos/env-mecanicien-aeronautique.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
             "lienLibelle": "Étude de cas Veepee",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/il-metal-siderurgie-bord-d-eau-couchant.jpg"
+            "photo": "/assets/photos/il-soudure-poste-masque-releve.jpg"
           },
           {
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Étude de cas Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/photos/il-chimie-raffinerie-vue-aerienne-couchant.jpg"
+            "photo": "/assets/photos/agro-atelier-inox-plan-large.jpg"
           }
         ]
       },

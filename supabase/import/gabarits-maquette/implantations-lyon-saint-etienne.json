@@ -81,7 +81,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-aero-train-atterrissage-casque-antibruit.jpg",
+    "problemePhoto": "/assets/photos/il-technicien-maintenance-inspecte-equipement-ind.jpg",
     "brefBande": "Besoin de remettre en route une machine que plus personne ne sait dépanner ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -216,7 +216,7 @@
             "texte": "De la mise en route aux premières semaines d'exploitation.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/env-technician-maintenance-9.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-selectionnant-outils-ja.jpg"
           },
           {
             "titre": "Un parc machines de PME remis en marche sans rachat de matériel neuf",
@@ -250,19 +250,19 @@
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/il-chimie-complexe-unites-ciel-bleu.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-7-2026-1-1600.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/env-industrie-mettalique.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-portrait-mars-2026-1600.jpg"
           },
           {
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/env-industrie-paysage.jpg"
+            "photo": "/assets/photos/il-technicien-portrait-combinaison-orange.jpg"
           }
         ]
       },

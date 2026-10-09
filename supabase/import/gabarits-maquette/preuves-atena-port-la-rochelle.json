@@ -131,7 +131,7 @@
         "valeur": "2 techniciens"
       }
     ],
-    "photoDispositif": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg",
+    "photoDispositif": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -151,13 +151,13 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
+        "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
+        "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
       },
       {
         "surtitre": "Secteur",

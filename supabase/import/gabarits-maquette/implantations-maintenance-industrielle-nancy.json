@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Nancy",
       "titre": "Nancy : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/env-maintenance-automaticien-2.jpg",
+      "photo": "/assets/photos/env-maintenance-automaticien.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Nancy et ses environs",
       "texte": "Nos techniciens itinérants couvrent Nancy et son bassin, appuyés par le réseau national Migen.",
@@ -245,37 +245,37 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/chaudro-presse-plieuse.jpg"
+            "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/agro-technicienne-raccord-clamp.jpg"
+            "photo": "/assets/photos/il-technicien-portrait-epi-atelier.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/equipe-transmission-senior-jeune.jpg"
+            "photo": "/assets/photos/il-robot-ligne-robots-presse-papier.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/env-photo-industrie-2.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-portrait-mars-2026-1600.jpg"
           },
           {
             "titre": "Six mois pour remettre en état un site à risque chimique",
             "lienLibelle": "Étude de cas Suez IWT",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/env-maintenance-automaticien-3.jpg"
+            "photo": "/assets/photos/env-photo-industrie-pharmaceutique.jpg"
           },
           {
             "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
             "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/photos/chimie-reacteurs-agites-passerelle.jpg"
+            "photo": "/assets/photos/tuyau-pointage-bride-tube.jpg"
           }
         ]
       },

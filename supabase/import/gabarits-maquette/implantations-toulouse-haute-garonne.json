@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Haute-Garonne",
       "titre": "Haute-Garonne : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/robot-poignet-technicien-casque.jpg",
+      "photo": "/assets/photos/il-technicien-maintenance-photo-mar-18-2026-1-160.jpg",
       "badge": "Rattaché au hub Toulouse",
       "nom": "Haute-Garonne, couvert par le hub Toulouse",
       "texte": "Les techniciens du hub Toulouse interviennent à Haute-Garonne et alentour, avec les mêmes méthodes et un seul interlocuteur.",
@@ -227,53 +227,53 @@
             "texte": ", depuis septembre 2024.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/env-factory-worker-inspecting-food-canning-product.jpg"
+            "photo": "/assets/photos/agro-ihm-ligne-conditionnement-senior.jpg"
           },
           {
             "titre": "6 techniciens multidisciplinaires pour l'installation et la mise en production d'un nouveau parc machines",
             "texte": ", mission toujours en cours.",
             "lienLibelle": "Étude de cas EATON",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/env-food-production-line-with-workers-in-protectiv.jpg"
+            "photo": "/assets/photos/ciment-escalier-silo-ronde.jpg"
           },
           {
             "titre": "Un technicien à temps plein sur des centres d'usinage, des presses et des machines à commande numérique",
             "texte": ", parc multimarques.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/env-photo-industrie.jpg"
+            "photo": "/assets/photos/env-moteur-d-avion-en-maintenance.jpg"
           },
           {
             "titre": "Des intervenants qualifiés intégrés au contrôle de chantier",
             "texte": "d'un spécialiste mondial de l'automatisation, sur des projets d'aéroports et d'industrie.",
             "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/ciment-tambour-rotatif-silos.jpg"
+            "photo": "/assets/photos/env-femmes-en-usine-21-sept-2026.jpg"
           },
           {
             "titre": "12 monteurs mécaniciens et 8 engins de levage pour le montage d'un centre logistique",
             "texte": "6 semaines de chantier, date de livraison non négociable, tenue.",
             "lienLibelle": "Étude de cas AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/env-ouvrier-metallurgiste-avec-metal-en-fusion.jpg"
+            "photo": "/assets/photos/il-equipe-bogie-halle-ferroviaire.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/chaudro-presse-plieuse.jpg"
+            "photo": "/assets/photos/il-levage-nef-ponts-roulants-chantier.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/agro-panneau-vannes-nep.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-2-1600.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
+            "photo": "/assets/photos/env-ouvrier-industriel-meulant-metal.jpg"
           }
         ]
       },

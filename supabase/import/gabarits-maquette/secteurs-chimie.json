@@ -96,25 +96,25 @@
         "titre": "Tuyauterie",
         "texte": "Lignes de process, brides et supports, remplacement en zone réglementée.",
         "href": "/expertises/tuyauterie/",
-        "photo": "/assets/web/ph-hero-raffinerie.jpg"
+        "photo": "/assets/photos/env-raffinerie-de-petrole-bangkok.jpg"
       },
       {
         "titre": "Soudure",
         "texte": "Soudures qualifiées sur inox et aciers, contrôlées avant remise en service.",
         "href": "/expertises/soudure/",
-        "photo": "/assets/web/team-grind-close.jpg"
+        "photo": "/assets/photos/env-promenade-des-ingenieurs-a-la-raffinerie.jpg"
       },
       {
         "titre": "Électrique",
         "texte": "Matériel ATEX, consignations multi-énergies, habilitations à jour.",
         "href": "/expertises/electrique/",
-        "photo": "/assets/web/team-electric.jpg"
+        "photo": "/assets/photos/env-raffinerie-de-petrole-au-coucher-du-soleil.jpg"
       },
       {
         "titre": "Hydraulique",
         "texte": "Pompes et circuits de transfert, étanchéité et remplacement.",
         "href": "/expertises/hydraulique/",
-        "photo": "/assets/web/ph-tuyaux.jpg"
+        "photo": "/assets/photos/il-detail-raffinerie-nuit-mars-17-2026-1600.jpg"
       }
     ],
     "marquesFamille": "fluide",
@@ -294,53 +294,53 @@
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg"
+            "photo": "/assets/photos/il-site-cheminees-montagnes-aube.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne de production neuve, matériaux",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/il-photo-industrie-raffinerie-petrole-mars-2026-1.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage",
             "texte": "environnement thermique sévère, depuis octobre 2023",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/web/mq-339d39e2a674.jpg"
+            "photo": "/assets/photos/il-equipement-et-pipeline-raffinerie-2026-1600.jpg"
           },
           {
             "titre": "Trois techniciens en renfort sur la maintenance préventive d'une centrale photovoltaïque, énergie",
             "texte": "septembre à novembre 2024",
             "lienLibelle": "Étude de cas EIFFAGE : partenariat",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/pharma-cuves-process-passerelle.jpg"
           },
           {
             "titre": "Deux techniciens en 3x8 sur des lignes de process sous contrainte d'hygiène et de traçabilité",
             "texte": "site de Steenvoorde",
             "lienLibelle": "Étude de cas DANONE : lignes de production",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/web/mq-e69a240d8656.jpg"
+            "photo": "/assets/photos/il-chimie-unites-colonnes-ciel-degage.jpg"
           },
           {
             "titre": "Maintenir des machines conçues en interne",
             "lienLibelle": "Étude de cas Tournaire",
             "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/web/mq-339d39e2a674.jpg"
+            "photo": "/assets/photos/chimie-reacteurs-agites-passerelle.jpg"
           },
           {
             "titre": "Monter, déplacer, renforcer, chantier après chantier",
             "lienLibelle": "Étude de cas Soprema",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/web/mq-056f3c250981.jpg"
+            "photo": "/assets/photos/il-chimie-complexe-vapeur-jour.jpg"
           },
           {
             "titre": "Un renfort devenu une partie de l’équipe",
             "lienLibelle": "Étude de cas Groupe Atlantic",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+            "photo": "/assets/photos/chimie-piquage-manometre-gants.jpg"
           }
         ]
       },

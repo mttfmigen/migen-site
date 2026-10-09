@@ -298,25 +298,25 @@
       }
     ],
     "minutes": 12,
-    "image": "/assets/web/ph-robots-solaire.jpg",
+    "image": "/assets/photos/il-chimie-unites-colonnes-ciel-degage.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-pratiques/consignation-electrique/",
         "titre": "Consignation électrique",
         "minutes": 12,
-        "image": "/assets/web/team-electric.jpg"
+        "image": "/assets/photos/pharma-cuves-process-passerelle.jpg"
       },
       {
         "href": "/ressources/fiches-pratiques/permis-de-feu/",
         "titre": "Permis de feu",
         "minutes": 8,
-        "image": "/assets/web/ph-robots-solaire.jpg"
+        "image": "/assets/photos/il-usines-a-yokkaichi-mars-24-2026-1600.jpg"
       },
       {
         "href": "/ressources/fiches-pratiques/plan-de-prevention/",
         "titre": "Plan de prévention",
         "minutes": 9,
-        "image": "/assets/web/team-duo.jpg"
+        "image": "/assets/photos/env-photos-industrie-pharmaceutique.jpg"
       }
     ]
   }

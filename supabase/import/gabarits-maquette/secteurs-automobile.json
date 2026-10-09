@@ -83,25 +83,25 @@
         "titre": "Robotique",
         "texte": "Cellules de soudure et de manutention : trajectoires, recalages, remplacement d’outils.",
         "href": "/expertises/robotique/",
-        "photo": "/assets/web/ph-robots-solaire.jpg"
+        "photo": "/assets/photos/il-robot-atelier-commande-numerique.jpg"
       },
       {
         "titre": "Automatisme",
         "texte": "Automates de ligne et réseaux industriels : diagnostic sans arrêter l’îlot voisin.",
         "href": "/expertises/automatisme/",
-        "photo": "/assets/web/ph-robots-solaire.jpg"
+        "photo": "/assets/photos/il-soudure-robot-torche-operateur-orange.jpg"
       },
       {
         "titre": "Hydraulique",
         "texte": "Presses d’emboutissage : circuits haute pression, fuites et remplacement de joints.",
         "href": "/expertises/hydraulique/",
-        "photo": "/assets/web/ph-tuyaux.jpg"
+        "photo": "/assets/photos/il-robot-ingenieure-tablette-bras-orange.jpg"
       },
       {
         "titre": "Soudure",
         "texte": "Réparation d’outillages et de bâtis, remise en état sur place.",
         "href": "/expertises/soudure/",
-        "photo": "/assets/web/team-grind-close.jpg"
+        "photo": "/assets/photos/il-robot-programmation-cobot-portable.jpg"
       }
     ],
     "marquesFamille": "auto",
@@ -292,48 +292,48 @@
             "texte": "depuis juin 2023",
             "lienLibelle": "Étude de cas STELLANTIS : sites du Grand Est",
             "lienHref": "/preuves/stellantis-grand-est/",
-            "photo": "/assets/web/mq-5111002ce2b6.jpg"
+            "photo": "/assets/photos/il-automaticien-avec-robot-arme-mar-19-2026-1600.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage",
             "texte": "Dompierre-sur-Besbre, depuis octobre 2023",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/il-robot-equipe-portable-cellule.jpg"
           },
           {
             "titre": "3 à 5 techniciens pour accompagner la montée en cadence de plusieurs usines",
             "texte": "depuis septembre 2024",
             "lienLibelle": "Étude de cas VALEO : plusieurs usines",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/web/x-auto-caisse.jpg"
+            "photo": "/assets/photos/il-soudure-robot-pupitre-apprentissage.jpg"
           },
           {
             "titre": "Techniciens intégrés pour sécuriser la maintenance des installations d'un équipementier",
             "texte": "en 2025",
             "lienLibelle": "Étude de cas JTEKT : maintenance des installations",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/env-car-manufacturing-engine-assembly-on-automated.jpg"
           },
           {
             "titre": "Technicien dédié au maintien du parc machines d'un site équipementier",
             "texte": "en 2025",
             "lienLibelle": "Étude de cas AUTOLIV : maintien d'un site",
             "lienHref": "/preuves/autoliv/",
-            "photo": "/assets/web/mq-0b70202fed79.jpg"
+            "photo": "/assets/photos/env-inspection-auto-avec-equipe.jpg"
           },
           {
             "titre": "Six techniciens pour l'installation et la mise en production d'un parc machine neuf",
             "texte": "site automobile, depuis janvier 2023",
             "lienLibelle": "Étude de cas EATON : mise en production",
             "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+            "photo": "/assets/photos/env-mechanic-inspecting-auto-parts-in-his-workshop.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/web/mq-dcd9cac6ffbf.jpg"
+            "photo": "/assets/photos/il-automatisme-tablette-armoire-rouge-robot.jpg"
           }
         ]
       },

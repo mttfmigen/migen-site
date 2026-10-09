@@ -127,7 +127,7 @@
         "valeur": "2 techniciens"
       }
     ],
-    "photoDispositif": "/assets/photos/env-photos-menuiserie.jpg",
+    "photoDispositif": "/assets/photos/env-homme-inspectant-le-bois.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -159,7 +159,7 @@
         "surtitre": "Secteur",
         "titre": "Maintenance menuiserie industrielle",
         "href": "/secteurs/menuiserie-industrielle/",
-        "photo": "/assets/photos/env-photos-menuiserie-2.jpg"
+        "photo": "/assets/photos/env-deux-hommes-au-travail-en-menuiserie.jpg"
       },
       {
         "surtitre": "Étude de cas",

@@ -77,7 +77,7 @@
       }
     ],
     "appelBouton": "Demander une intervention sur mes convoyeurs",
-    "problemePhoto": "/assets/web/mq-dcd9cac6ffbf.jpg",
+    "problemePhoto": "/assets/web/sv-convoyeur.jpg",
     "brefBande": "Besoin d'un diagnostic sur une ligne qui dérive ou qui s'arrête trop souvent ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -265,47 +265,47 @@
             "texte": "deux techniciens expérimentés en poste sur site",
             "lienLibelle": "Étude de cas GLS : maintenance curative",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
+            "photo": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg"
           },
           {
             "titre": "Préventif tenu par créneaux de 8 heures sur un site logistique en continu",
             "texte": "10 à 20 techniciens une semaine sur deux depuis septembre 2022",
             "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
           },
           {
             "titre": "Préventif annuel de sites logistiques volumineux, e-commerce",
             "texte": "six techniciens en permanence, depuis septembre 2023",
             "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/web/mq-d50c84e228cb.jpg"
+            "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
           },
           {
             "titre": "Montage complet d'un centre logistique, convoyage compris",
             "texte": "12 monteurs mécaniciens, 8 engins de levage, six semaines",
             "lienLibelle": "Étude de cas AKTID : montage d'un centre logistique",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/robot-palettisation-tablette.jpg"
           },
           {
             "titre": "Convoyage agroalimentaire sous contrainte d'hygiène et de cadence 3x8",
             "texte": "deux techniciens sur lignes liquides et poudre",
             "lienLibelle": "Étude de cas DANONE : lignes de production",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/web/mq-c5856badee79.jpg"
+            "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
           },
           {
             "titre": "Des chantiers automatisés contrôlés point par point",
             "lienLibelle": "Étude de cas Alstef Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/web/mq-42237c1c8685.jpg"
+            "photo": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
           }
         ]
       },

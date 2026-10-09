@@ -31,7 +31,7 @@
       }
     ],
     "logo": "/assets/clients/rector-lesage.png",
-    "photoHero": "/assets/photos/il-chaudro-couronne-dentee-reperage.jpg",
+    "photoHero": "/assets/photos/il-cimenterie-de-nuit-mars-25-2026-1600.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -127,7 +127,7 @@
         "valeur": "1 technicien"
       }
     ],
-    "photoDispositif": "/assets/photos/env-bras-robotiques-soudant-cadres-auto.jpg",
+    "photoDispositif": "/assets/photos/il-photo-usine-ciment-16-mars-2026-1600.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -147,7 +147,7 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/il-tuyau-conduits-massifs-contre-plongee.jpg"
+        "photo": "/assets/photos/il-photo-usine-ciment-mars-17-2026-1600.jpg"
       },
       {
         "surtitre": "Offre",
@@ -159,7 +159,7 @@
         "surtitre": "Secteur",
         "titre": "Maintenance industrie lourde",
         "href": "/secteurs/industrie-lourde/",
-        "photo": "/assets/photos/il-metal-siderurgie-bord-d-eau-couchant.jpg"
+        "photo": "/assets/photos/env-bras-robotiques-soudant-cadres-auto.jpg"
       },
       {
         "surtitre": "Étude de cas",

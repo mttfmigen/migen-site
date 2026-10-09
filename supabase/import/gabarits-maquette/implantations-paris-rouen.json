@@ -69,7 +69,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/env-man-smiles-at-a-bottling-plant-factory.jpg",
+    "problemePhoto": "/assets/photos/env-usine-aeronautique-22-sept-2026.jpg",
     "complementOffre": [
       {
         "texte": "Pour l'urgence isolée, notre offre de dépannage industriel reste le format le plus simple pour nous mettre à l'épreuve."
@@ -209,53 +209,53 @@
             "texte": "sur un site de traitement des eaux industrielles à remettre en état.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/metal-fonderie-coulee.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-15-1600.jpg"
           },
           {
             "titre": "Un technicien intégré sur un parc papier-carton où la maintenance conditionne la productivité",
             "texte": ", préventif et curatif, de 2025 à 2026.",
             "lienLibelle": "Étude de cas VPK",
             "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/env-technician-maintenance-12.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-en-usine-1600.jpg"
           },
           {
             "titre": "Deux techniciens en 3x8 sur des lignes liquides et du conditionnement poudre",
             "texte": ", site agroalimentaire de Steenvoorde.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/env-industrie-metallique-2.jpg"
+            "photo": "/assets/photos/ciment-vue-aerienne-usine.jpg"
           },
           {
             "titre": "1 à 3 techniciens en renfort permanent des équipes maintenance",
             "texte": "sur plusieurs sites de production, depuis octobre 2024.",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/chimie-technicienne-skid-vanne.jpg"
+            "photo": "/assets/photos/metal-four-arc-acierie.jpg"
           },
           {
             "titre": "Un responsable maintenance intégré pour piloter un service pendant une transition interne",
             "texte": ", en pleine montée de cadence.",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-5.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/il-soudure-chalumeau-tube-technicienne.jpg"
+            "photo": "/assets/photos/il-inspection-de-terrain-en-securite-mars-2026-16.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/env-menuiserie-industrie.jpg"
+            "photo": "/assets/photos/il-femme-confiante-en-milieu-industriel-mar-24-20.jpg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/elec-local-technicien-accroupi.jpg"
+            "photo": "/assets/photos/env-inspection-equipement-fabrication.jpg"
           }
         ]
       },

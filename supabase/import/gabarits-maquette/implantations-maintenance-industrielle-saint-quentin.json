@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Saint-Quentin",
       "titre": "Saint-Quentin : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/chimie-reacteurs-agites-passerelle.jpg",
+      "photo": "/assets/photos/il-meca-portrait-cle-a-molette-halle.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Saint-Quentin et ses environs",
       "texte": "Nos techniciens itinérants couvrent Saint-Quentin et son bassin, appuyés par le réseau national Migen.",
@@ -245,37 +245,37 @@
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/il-pneu-ligne-verins-portrait.jpg"
+            "photo": "/assets/web/sv-armoire.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/il-energie-gros-moteur-vert-antibruit.jpg"
+            "photo": "/assets/photos/env-factory-worker-inspecting-robotic-arm-in-manuf.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/il-robot-bras-rouge-serrage-hauteur.jpg"
+            "photo": "/assets/photos/robot-atelier-ferrage-plongee.jpg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
             "lienLibelle": "Étude de cas Salaison du Mâconnais",
             "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/il-outillage-coffret-douilles-selection.jpg"
+            "photo": "/assets/photos/env-controle-qualite-femme.jpg"
           },
           {
             "titre": "Un renfort pour que le pain sorte chaque matin",
             "lienLibelle": "Étude de cas La Panetière",
             "lienHref": "/preuves/la-panetiere/",
-            "photo": "/assets/photos/env-inspection-metal-22-sept-2026.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-inspecte-equipement-ind.jpg"
           },
           {
             "titre": "Un été entier sans trou dans la maintenance",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/il-elec-armoire-bornier-pointage.jpg"
+            "photo": "/assets/photos/il-technician-using-control-panel-in-industrial-f.jpg"
           }
         ]
       },

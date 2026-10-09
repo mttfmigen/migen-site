@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Agen",
       "titre": "Agen : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/nucleaire-tour-aerorefrigerante.jpg",
+      "photo": "/assets/photos/il-ciment-cheminee-grue-couchant.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Agen et ses environs",
       "texte": "Nos techniciens itinérants couvrent Agen et son bassin, appuyés par le réseau national Migen.",
@@ -245,19 +245,19 @@
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/env-industrie-metallique-2.jpg"
+            "photo": "/assets/photos/env-inspection-de-la-chaine-alimentaire.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/env-technician-inspecting-fiber-optics.jpg"
+            "photo": "/assets/photos/il-industrial-plant.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/env-photos-industrie-4.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-mars-24-2026-1600.jpg"
           },
           {
             "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
@@ -269,13 +269,13 @@
             "titre": "Un renfort pour que le pain sorte chaque matin",
             "lienLibelle": "Étude de cas La Panetière",
             "lienHref": "/preuves/la-panetiere/",
-            "photo": "/assets/photos/il-ciment-tours-grues-crepuscule.jpg"
+            "photo": "/assets/photos/il-man-working-with-machinery-in-a-factory.jpg"
           },
           {
             "titre": "Un été entier sans trou dans la maintenance",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/meca-presses-volants-technicienne.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-7-2026-1600.jpg"
           }
         ]
       },

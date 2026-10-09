@@ -22,7 +22,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/env-maintenance-automaticien-2.jpg",
+        "src": "/assets/photos/il-elec-mesure-coffret-mural.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -274,7 +274,7 @@
           {
             "libelle": "Technicien de maintenance",
             "href": "/carriere/technicien-de-maintenance/",
-            "photo": "/assets/photos/aero-percage-aile-avion.jpg"
+            "photo": "/assets/web/team-electric.jpg"
           },
           {
             "libelle": "Formation technicien de maintenance",

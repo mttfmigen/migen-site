@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · La Rochelle",
       "titre": "La Rochelle : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/il-equipe-ronde-terrain-raffinerie.jpg",
+      "photo": "/assets/photos/il-technicien-maintenance-voiture-bleue-1600.jpg",
       "badge": "Techniciens itinérants",
       "nom": "La Rochelle et ses environs",
       "texte": "Nos techniciens itinérants couvrent La Rochelle et son bassin, appuyés par le réseau national Migen.",
@@ -231,7 +231,7 @@
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-technicien-portrait-combinaison-orange.jpg"
+            "photo": "/assets/photos/il-industrie-photo-jan-5-2026-1600.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
@@ -243,7 +243,7 @@
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
             "lienLibelle": "Étude de cas Veepee",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/il-tuyau-passerelle-technicien-bras-croises.jpg"
+            "photo": "/assets/photos/env-it-technician-working-on-servers-in-data-cente.jpg"
           },
           {
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
@@ -261,7 +261,7 @@
             "titre": "Un centre logistique monté en six semaines",
             "lienLibelle": "Étude de cas Aktid",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/robot-cellules-grillagees.jpg"
+            "photo": "/assets/photos/env-ouvrier-metallurgiste-avec-metal-en-fusion.jpg"
           }
         ]
       },

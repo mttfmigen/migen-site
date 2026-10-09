@@ -239,25 +239,25 @@
       }
     ],
     "minutes": 9,
-    "image": "/assets/web/ph-tuyaux.jpg",
+    "image": "/assets/photos/automatisme-coffret-cartes-portable.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/cout-arret-de-production/",
         "titre": "Coût d'un arrêt de production",
         "minutes": 12,
-        "image": "/assets/web/ph-tuyaux.jpg"
+        "image": "/assets/photos/il-technicien-maintenance-photo-1-1600.jpg"
       },
       {
         "href": "/ressources/articles/digitalisation-maintenance/",
         "titre": "Digitalisation maintenance",
         "minutes": 11,
-        "image": "/assets/web/team-grind-impact.jpg"
+        "image": "/assets/photos/il-technicien-maintenance-photo-18-1600.jpg"
       },
       {
         "href": "/ressources/articles/gestion-des-dechets/",
         "titre": "Gestion des déchets industriels",
         "minutes": 8,
-        "image": "/assets/web/team-duo.jpg"
+        "image": "/assets/photos/equipe-transmission-senior-jeune.jpg"
       }
     ]
   }

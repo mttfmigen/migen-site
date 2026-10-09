@@ -371,25 +371,25 @@
       }
     ],
     "minutes": 15,
-    "image": "/assets/web/ph-robots-solaire.jpg",
+    "image": "/assets/photos/il-tuyau-vannes-rouges-manometres.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-techniques/analyse-vibratoire/",
         "titre": "Analyse vibratoire",
         "minutes": 10,
-        "image": "/assets/web/ph-robots-solaire.jpg"
+        "image": "/assets/photos/il-technicien-maintenance-2.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/automates-siemens/",
         "titre": "Automate Siemens",
         "minutes": 7,
-        "image": "/assets/web/team-electric.jpg"
+        "image": "/assets/photos/il-technicien-maintenance-photo-mars-24-2026-1-16.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/cahier-des-charges-gmao/",
         "titre": "Cahier des charges gmao",
         "minutes": 11,
-        "image": "/assets/web/team-grind-front.jpg"
+        "image": "/assets/photos/meca-tour-conventionnel-senior.jpg"
       }
     ]
   }

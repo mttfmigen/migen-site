@@ -87,7 +87,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/env-technicien-maintenance-aeronautique.jpg",
+    "problemePhoto": "/assets/photos/il-engineer-check-and-control-automation-robot-ar.jpg",
     "brefBande": "Besoin d'un technicien habilité sur un site du bassin cette semaine ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -222,53 +222,53 @@
             "texte": "Contexte à risque, accès réglementé.",
             "lienLibelle": "Étude de cas SUEZ",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/env-ouvrier-usine-coupe-metal-avec-scie-circulaire.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-9-2026-1600.jpg"
           },
           {
             "titre": "Maintenance préventive et curative d'une fonderie et de son usinage,, depuis octobre 2023",
             "texte": "Le métal à chaud use les machines plus vite qu'ailleurs.",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/env-usine-metallique.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-19-1600.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS intégré au démarrage d'une nouvelle ligne de production",
             "texte": "Les premières semaines de mise en route, quand l'automate dit non.",
             "lienLibelle": "Étude de cas MERSEN",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/automatisme-armoire-jeune-tablette.jpg"
+            "photo": "/assets/photos/il-chimie-petrochimie-panorama-nuit.jpg"
           },
           {
             "titre": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures, sur un centre logistique en continu",
             "texte": "Sous contrat annuel depuis septembre 2022.",
             "lienLibelle": "Étude de cas AMAZON",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-chimie-colonnes-raffinerie-nuit.jpg"
+            "photo": "/assets/photos/env-industrie-automobile.jpg"
           },
           {
             "titre": "Trois techniciens spécialisés en renfort sur la maintenance préventive d'une centrale photovoltaïque",
             "texte": "De septembre à novembre 2024.",
             "lienLibelle": "Étude de cas EIFFAGE",
             "lienHref": "/preuves/eiffage/",
-            "photo": "/assets/photos/il-ciment-tours-grues-crepuscule.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-air-conditionne-1600.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo-18-1600.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
             "lienLibelle": "Étude de cas Veepee",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/env-it-technician-working-on-servers-in-data-cente.jpg"
+            "photo": "/assets/photos/il-auto-sous-vehicule-tout-terrain.jpg"
           },
           {
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Étude de cas Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/photos/env-car-bodies-assembly-line.jpg"
+            "photo": "/assets/photos/env-technician-maintenance-repairs.jpg"
           }
         ]
       },

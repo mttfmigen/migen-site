@@ -95,7 +95,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/il-meca-portrait-centre-usinage.jpg",
+    "problemePhoto": "/assets/web/sv-convoyeur.jpg",
     "brefBande": "Besoin de savoir laquelle de vos utilités arrêtera votre ligne la prochaine fois ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -230,14 +230,14 @@
             "texte": "Troisième trimestre 2025, reporting à la direction industrielle.",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/env-technicien-maintenance-photo.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-portrait-1600.jpg"
           },
           {
             "titre": "Techniciens intégrés aux équipes pour sécuriser la maintenance des installations",
             "texte": "d'un équipementier automobile, en 2025.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/env-technician-maintenance-7.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-photo.jpg"
           },
           {
             "titre": "Un automaticien SIEMENS à temps plein pour le démarrage d'une ligne neuve",
@@ -258,7 +258,7 @@
             "texte": "Accompagnement d'une montée en cadence.",
             "lienLibelle": "Étude de cas VALEO",
             "lienHref": "/preuves/valeo-usines/",
-            "photo": "/assets/photos/env-ingenieurs-inspectant-site-industriel.jpg"
+            "photo": "/assets/photos/env-femme-en-usine-moderne.jpg"
           },
           {
             "titre": "Maintenir des machines conçues en interne",

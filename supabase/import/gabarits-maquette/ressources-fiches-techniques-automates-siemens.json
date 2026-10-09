@@ -205,25 +205,25 @@
       }
     ],
     "minutes": 7,
-    "image": "/assets/web/ph-tuyaux.jpg",
+    "image": "/assets/photos/env-technician-repairing-electrical-appliance.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-techniques/amdec/",
         "titre": "Amdec",
         "minutes": 15,
-        "image": "/assets/web/team-grind-front.jpg"
+        "image": "/assets/photos/env-focused-young-man-working-on-electrical-wiring.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/analyse-vibratoire/",
         "titre": "Analyse vibratoire",
         "minutes": 10,
-        "image": "/assets/web/ph-robots-solaire.jpg"
+        "image": "/assets/photos/env-technician-inspecting-electrical-panel-in-a-fa.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/cahier-des-charges-gmao/",
         "titre": "Cahier des charges gmao",
         "minutes": 11,
-        "image": "/assets/web/team-grind-front.jpg"
+        "image": "/assets/photos/il-robot-equipe-portable-cellule.jpg"
       }
     ]
   }

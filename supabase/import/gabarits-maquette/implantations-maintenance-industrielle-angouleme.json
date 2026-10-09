@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Angoulême",
       "titre": "Angoulême : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg",
+      "photo": "/assets/photos/env-femme-inspectant-des-bouteilles.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Angoulême et ses environs",
       "texte": "Nos techniciens itinérants couvrent Angoulême et son bassin, appuyés par le réseau national Migen.",
@@ -231,37 +231,37 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/env-ouvrier-usine-metal-avec-etincelles.jpg"
+            "photo": "/assets/photos/il-photo-usine-ciment-16-mars-2026-1600.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/env-factory-worker-inspecting-food-canning-product.jpg"
+            "photo": "/assets/photos/il-vue-aerienne-usine-ciment-mars-16-2026-1600.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/env-industrie-metallique-24-sept-2026.jpg"
+            "photo": "/assets/photos/il-ingenieur-verifiant-train-electrique-jan-7-202.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/env-scientist-in-pharmaceutical-lab.jpg"
+            "photo": "/assets/photos/env-industrie-mettalique.jpg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/env-industrie-automobile.jpg"
+            "photo": "/assets/photos/il-technicien-portrait-structure-exterieure.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/env-food-production-line-with-workers-in-protectiv.jpg"
+            "photo": "/assets/photos/env-technician-inspecting-fiber-optics.jpg"
           }
         ]
       },

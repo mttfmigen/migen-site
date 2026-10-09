@@ -142,7 +142,7 @@
         "valeur": "ORY 4, Paris, couvert"
       }
     ],
-    "photoDispositif": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg",
+    "photoDispositif": "/assets/photos/robot-palettisation-tablette.jpg",
     "resultats": [
       {
         "titre": "Un deuxième site confié",
@@ -195,13 +195,13 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg"
+        "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance équipements logistiques",
         "href": "/secteurs/logistique/",
-        "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
+        "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
       },
       {
         "surtitre": "Étude de cas",

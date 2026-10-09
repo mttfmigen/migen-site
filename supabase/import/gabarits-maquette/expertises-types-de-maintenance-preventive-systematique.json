@@ -172,21 +172,21 @@
             "texte": "Six techniciens polyvalents en permanence sur les sites lyonnais, reprise complète du préventif menée en un mois, depuis septembre 2023.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/il-elec-ouverture-coffret-gilet-orange.jpg"
+            "photo": "/assets/photos/robot-pince-reparation-etabli.jpg"
           },
           {
             "titre": "Préventif et curatif tenus sur des lignes en forte activité",
             "texte": "Un technicien de maintenance expérimenté affecté en continu sur un site proche de Paris, 2025 et 2026.",
             "lienLibelle": "Étude de cas FDJ",
             "lienHref": "/preuves/fdj/",
-            "photo": "/assets/photos/robot-pince-reparation-etabli.jpg"
+            "photo": "/assets/photos/elec-thermometre-infrarouge-armoire.jpg"
           },
           {
             "titre": "Préventif maintenu pendant les congés d'été",
             "texte": "Un technicien intégré à l'équipe maintenance sur juillet et août, équipements stratégiques couverts malgré l'effectif réduit, été 2025.",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/il-depannage-lampe-torche-recherche-panne.jpg"
+            "photo": "/assets/photos/il-elec-senior-coffret-exterieur.jpg"
           },
           {
             "titre": "Suivi des équipements avec la même rigueur d'un site à l'autre, confort thermique",
@@ -206,19 +206,19 @@
             "titre": "Maintenir un centre logistique qui ne ferme jamais",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-elec-mesure-coffret-mural.jpg"
+            "photo": "/assets/photos/il-elec-penche-faisceau-machine.jpg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/il-meca-combinaison-rouge-machinerie.jpg"
+            "photo": "/assets/photos/tuyau-soudure-reseau-usine.jpg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/il-elec-penche-faisceau-machine.jpg"
+            "photo": "/assets/photos/aero-fuselage-serrage-lampe.jpg"
           }
         ]
       },

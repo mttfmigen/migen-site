@@ -36,7 +36,7 @@
     "hubLocal": {
       "surtitre": "Votre hub local · Poitiers",
       "titre": "Poitiers : les industries que nos techniciens connaissent déjà",
-      "photo": "/assets/photos/env-mecanicien-aeronautique.jpg",
+      "photo": "/assets/photos/il-technicien-maintenance-jan-9-2026-1-1600.jpg",
       "badge": "Techniciens itinérants",
       "nom": "Poitiers et ses environs",
       "texte": "Nos techniciens itinérants couvrent Poitiers et son bassin, appuyés par le réseau national Migen.",
@@ -250,53 +250,53 @@
             "texte": "Fabrication de pièces mécaniques de précision, 2025.",
             "lienLibelle": "Étude de cas VOIT",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/env-technicien-en-costume-de-nettoyage-industrie-p.jpg"
+            "photo": "/assets/photos/env-techniciens-semiconducteurs.jpg"
           },
           {
             "titre": "Un responsable maintenance intégré sur site pendant une montée de cadence",
             "texte": "Pilotage du service repris sans rupture, troisième trimestre 2025.",
             "lienLibelle": "Étude de cas ERIKS",
             "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/env-industrial-infrastructure-with-blue-sky-and-cl.jpg"
+            "photo": "/assets/photos/env-femme-inspectant-des-bouteilles.jpg"
           },
           {
             "titre": "Intervenants intégrés aux équipes sur le contrôle de chantier de projets d'automatisation logistique",
             "texte": "Phases critiques sécurisées.",
             "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/ciment-tambour-rotatif-silos.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-6.jpg"
           },
           {
             "titre": "1 à 3 techniciens en renfort des équipes maintenance sur plusieurs sites de production, depuis octobre 2024",
             "texte": "Disponibilité machine tenue chaque semaine.",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/metal-four-arc-acierie.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-camion-1600.jpg"
           },
           {
             "titre": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures, sur un centre logistique en continu",
             "texte": "Contrat annuel depuis septembre 2022.",
             "lienLibelle": "Étude de cas AMAZON",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/env-technician-maintenance-robotic-arm.jpg"
+            "photo": "/assets/photos/il-technicien-portrait-combinaison-orange.jpg"
           },
           {
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/env-technician-maintenance-blue-truck-engine.jpg"
+            "photo": "/assets/photos/env-technicien-maintenance-cafe-23-sept-2026.jpg"
           },
           {
             "titre": "Des systèmes intralogistiques au rythme du e-commerce",
             "lienLibelle": "Étude de cas Veepee",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/il-tuyau-faisceau-blanc-charpente.jpg"
+            "photo": "/assets/photos/env-photos-industrie-metallique.jpg"
           },
           {
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Étude de cas Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/photos/chaudro-technicienne-plan-etabli.jpg"
+            "photo": "/assets/photos/il-meca-atelier-bonnet-portrait.jpg"
           }
         ]
       },

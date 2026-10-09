@@ -15,7 +15,7 @@
     "bouton": "Renforcer mes équipes de maintenance",
     "logo": "/assets/clients/groupe-atlantic.png",
     "logoInverse": true,
-    "photoHero": "/assets/photos/env-femmes-en-usine-21-sept-2026.jpg",
+    "photoHero": "/assets/photos/il-technicien-maintenance-jan-7-2026-1600.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -181,19 +181,19 @@
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/il-meca-organe-machine-casque-jaune.jpg"
+        "photo": "/assets/photos/env-technician-inspecting-fiber-optics.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/env-ouvrier-usine-metal-avec-etincelles.jpg"
+        "photo": "/assets/photos/il-man-working-with-machinery-in-a-factory.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/il-energie-gros-moteur-vert-antibruit.jpg"
+        "photo": "/assets/photos/robot-pupitre-apprentissage-soudure.jpg"
       }
     ]
   }

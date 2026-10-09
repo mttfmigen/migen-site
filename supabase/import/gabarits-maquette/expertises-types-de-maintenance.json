@@ -241,21 +241,21 @@
             "titre": "Maintenance préventive et curative d'une fonderie et d'un usinage, automobile",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/il-outillage-panneau-atelier-accroupi.jpg",
+            "photo": "/assets/photos/il-hydrau-presse-rouge-intervention.jpg",
             "texte": "Tenue, depuis octobre 2023."
           },
           {
             "titre": "Reprise complète de la maintenance préventive annuelle de deux sites, e-commerce",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/agro-mains-vanne-sanitaire.jpg",
+            "photo": "/assets/photos/meca-cle-bride-carter.jpg",
             "texte": "Six techniciens en permanence, prise en charge réalisée en un mois."
           },
           {
             "titre": "Maintenance curative des convoyeurs, trieurs et packaging, logistique",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/elec-binome-coffret-chaufferie.jpg",
+            "photo": "/assets/photos/automatisme-coffret-cartes-portable.jpg",
             "texte": "Deux techniciens en poste sur site."
           },
           {
@@ -269,14 +269,14 @@
             "titre": "Préventif tenu sur un centre logistique en flux continu",
             "lienLibelle": "Étude de cas AMAZON",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-meca-cle-plate-machine-verte.jpg",
+            "photo": "/assets/photos/il-elec-rack-cablage-penombre.jpg",
             "texte": "10 à 20 techniciens une semaine sur deux, par créneaux de 8 heures."
           },
           {
             "titre": "L’intralogistique d’un grand site tenue en sous-traitance",
             "lienLibelle": "Étude de cas Ciuch",
             "lienHref": "/preuves/fdj/",
-            "photo": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg",
+            "photo": "/assets/photos/aero-nacelle-moteur-technicien.jpg",
             "texte": ""
           },
           {
@@ -290,7 +290,7 @@
             "titre": "Des commandes numériques remises en route à chaque équipe",
             "lienLibelle": "Étude de cas Jeld-Wen",
             "lienHref": "/preuves/jeld-wen/",
-            "photo": "/assets/photos/env-menuiserie-circular-saw.jpg",
+            "photo": "/assets/photos/hydrau-centrale-hydraulique-technicien.jpg",
             "texte": ""
           }
         ]

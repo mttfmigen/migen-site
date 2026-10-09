@@ -23,7 +23,7 @@
       }
     ],
     "logo": "/assets/clients/mq-09708b77564e.svg",
-    "photoHero": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg",
+    "photoHero": "/assets/photos/levage-pont-roulant-hall-acier.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -187,7 +187,7 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg"
+        "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg"
       },
       {
         "surtitre": "Secteur",
@@ -199,13 +199,13 @@
         "surtitre": "Étude de cas",
         "titre": "VEEPEE : sites de Lyon",
         "href": "/preuves/veepee-sites-lyon/",
-        "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
+        "photo": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
+        "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg"
       }
     ]
   }

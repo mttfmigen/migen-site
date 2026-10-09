@@ -260,25 +260,25 @@
       }
     ],
     "minutes": 8,
-    "image": "/assets/web/team-grind-close.jpg",
+    "image": "/assets/photos/env-ouvrier-industriel-meulant-metal.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/cout-arret-de-production/",
         "titre": "Coût d'un arrêt de production",
         "minutes": 12,
-        "image": "/assets/web/ph-tuyaux.jpg"
+        "image": "/assets/photos/ciment-vue-aerienne-usine.jpg"
       },
       {
         "href": "/ressources/articles/digitalisation-maintenance/",
         "titre": "Digitalisation maintenance",
         "minutes": 11,
-        "image": "/assets/web/team-grind-impact.jpg"
+        "image": "/assets/photos/env-photos-industrie-3.jpg"
       },
       {
         "href": "/ressources/articles/gmao/",
         "titre": "Gestion de maintenance assistée par ordinateur",
         "minutes": 11,
-        "image": "/assets/web/ph-robots-solaire.jpg"
+        "image": "/assets/photos/env-industrie-pharmaceutique.jpg"
       }
     ]
   }

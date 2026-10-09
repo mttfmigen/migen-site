@@ -27,7 +27,7 @@
       }
     ],
     "logo": "/assets/clients/mq-dd835fd31c69.svg",
-    "photoHero": "/assets/photos/il-robot-reglage-outil-bout-de-bras.jpg",
+    "photoHero": "/assets/photos/env-assemblage-carrosseries.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -135,7 +135,7 @@
         "valeur": "Supervision par les coordinateurs Migen"
       }
     ],
-    "photoDispositif": "/assets/photos/env-assemblage-carrosseries.jpg",
+    "photoDispositif": "/assets/photos/il-automation-female-engineer-with-tablet-for-pro.jpg",
     "resultats": [
       {
         "titre": "Disponibilité accrue",
@@ -188,25 +188,25 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/robot-soudure-points-caisse.jpg"
+        "photo": "/assets/photos/robot-atelier-ferrage-plongee.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrie automobile",
         "href": "/secteurs/automobile/",
-        "photo": "/assets/photos/env-maintenance-automaticien.jpg"
+        "photo": "/assets/photos/env-maintenance-automaticien-3.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "STELLANTIS : fonderie de Sept-Fons",
         "href": "/preuves/stellantis-fonderie-sept-fons/",
-        "photo": "/assets/photos/env-inspection-robotique-22-sept-2026.jpg"
+        "photo": "/assets/photos/il-auto-sous-caisse-poids-lourd.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "AUTOLIV : un technicien dédié pour que le parc ne décroche pas",
         "href": "/preuves/autoliv/",
-        "photo": "/assets/photos/il-robot-cellule-grillagee-automaticien.jpg"
+        "photo": "/assets/photos/il-robot-prehenseur-ventouses-controle.jpg"
       }
     ]
   }

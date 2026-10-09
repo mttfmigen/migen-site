@@ -34,7 +34,7 @@
         "libelle": "Astreinte, pour les sites couverts"
       }
     ],
-    "problemePhoto": "/assets/photos/il-tuyau-vannes-rouges-manometres.jpg",
+    "problemePhoto": "/assets/web/team-grind-close.jpg",
     "complementOffre": [
       {
         "texte": "Nous ne vendons aucun lubrifiant, et notre catalogue est vide par choix. Un palier qui chauffe maintenant relève du dépannage industriel."
@@ -172,7 +172,7 @@
             "texte": "Six techniciens polyvalents en permanence, mécanique et hydraulique parmi les domaines couverts, depuis septembre 2023.",
             "lienLibelle": "Étude de cas VEEPEE",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/equipe-transmission-senior-jeune.jpg"
+            "photo": "/assets/photos/il-technicien-releve-machine-presse-papier.jpg"
           },
           {
             "titre": "Maintenance des centres d'usinage, des presses et des machines à commande numérique",
@@ -193,14 +193,14 @@
             "texte": "Deux techniciens intégrés en 3x8, présence quand la ligne tourne.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/robot-pince-reparation-etabli.jpg"
+            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg"
           },
           {
             "titre": "Maintenance des installations d'un équipementier automobile",
             "texte": "Techniciens intégrés au quotidien chez un fabricant de roulements pour l'industrie et l'automobile, depuis 2025.",
             "lienLibelle": "Étude de cas JTEKT",
             "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/il-hydrau-verin-godet-engin.jpg"
+            "photo": "/assets/photos/il-meca-ressorts-suspension-combinaison.jpg"
           },
           {
             "titre": "Un centre logistique monté en six semaines",
@@ -218,7 +218,7 @@
             "titre": "Des convoyeurs et des trieurs sous surveillance continue",
             "lienLibelle": "Étude de cas GLS",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/il-robot-poignet-robot-hauteur-gants.jpg"
+            "photo": "/assets/photos/il-auto-cliquet-intervention-vehicule.jpg"
           }
         ]
       },

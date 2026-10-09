@@ -295,25 +295,25 @@
       }
     ],
     "minutes": 11,
-    "image": "/assets/web/team-grind-close.jpg",
+    "image": "/assets/web/team-duo.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-techniques/amdec/",
         "titre": "Amdec",
         "minutes": 15,
-        "image": "/assets/web/team-grind-front.jpg"
+        "image": "/assets/photos/env-technician-maintenance-3.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/analyse-vibratoire/",
         "titre": "Analyse vibratoire",
         "minutes": 10,
-        "image": "/assets/web/ph-robots-solaire.jpg"
+        "image": "/assets/photos/env-robotic-arms-welding-car-frames.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/automates-siemens/",
         "titre": "Automate Siemens",
         "minutes": 7,
-        "image": "/assets/web/team-electric.jpg"
+        "image": "/assets/photos/il-technicien-maintenance-photo-12-1600.jpg"
       }
     ]
   }

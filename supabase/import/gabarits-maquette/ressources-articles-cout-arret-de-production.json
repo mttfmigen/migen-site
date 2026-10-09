@@ -335,25 +335,25 @@
       }
     ],
     "minutes": 12,
-    "image": "/assets/web/team-grind-impact.jpg",
+    "image": "/assets/photos/elec-porte-armoire-voyants-sectionneurs.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/digitalisation-maintenance/",
         "titre": "Digitalisation maintenance",
         "minutes": 11,
-        "image": "/assets/web/team-grind-impact.jpg"
+        "image": "/assets/photos/energie-rotor-turbine-vapeur.jpg"
       },
       {
         "href": "/ressources/articles/gestion-des-dechets/",
         "titre": "Gestion des déchets industriels",
         "minutes": 8,
-        "image": "/assets/web/team-duo.jpg"
+        "image": "/assets/photos/soudure-interieur-virole.jpg"
       },
       {
         "href": "/ressources/articles/gmao/",
         "titre": "Gestion de maintenance assistée par ordinateur",
         "minutes": 11,
-        "image": "/assets/web/ph-robots-solaire.jpg"
+        "image": "/assets/photos/ciment-inspection-binome-harnais.jpg"
       }
     ]
   }

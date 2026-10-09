@@ -96,25 +96,25 @@
         "titre": "Mécanique",
         "texte": "Convoyeurs, rouleaux, courroies et motoréducteurs : le préventif avant le pic.",
         "href": "/expertises/mecanique/",
-        "photo": "/assets/web/team-grind-front.jpg"
+        "photo": "/assets/photos/robot-palettiseur-fin-de-ligne.jpg"
       },
       {
         "titre": "Électromécanique",
         "texte": "Moteurs et variateurs des lignes de tri, remplacés sans couper tout le flux.",
         "href": "/expertises/electromecanique/",
-        "photo": "/assets/web/team-electric.jpg"
+        "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg"
       },
       {
         "titre": "Automatisme",
         "texte": "Trieurs et transstockeurs : défauts capteurs et logique de tri.",
         "href": "/expertises/automatisme/",
-        "photo": "/assets/web/ph-robots-solaire.jpg"
+        "photo": "/assets/web/sv-convoyeur.jpg"
       },
       {
         "titre": "Électrique",
         "texte": "Distribution, armoires et éclairage d’entrepôts de grande surface.",
         "href": "/expertises/electrique/",
-        "photo": "/assets/web/team-electric.jpg"
+        "photo": "/assets/photos/metal-technicienne-bobines-acier.jpg"
       }
     ],
     "marquesFamille": "logi",
@@ -250,42 +250,42 @@
             "texte": "centre logistique ORY4, depuis septembre 2022, contrat annuel",
             "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/web/mq-29ebb1b81ced.jpg"
+            "photo": "/assets/photos/il-meca-sous-convoyeur-regard-haut.jpg"
           },
           {
             "titre": "Dispositif transposé sur un deuxième site",
             "texte": "10 techniciens polyvalents une semaine par mois, ETZ 2 à Metz, depuis mai 2024",
             "lienLibelle": "Étude de cas AMAZON : démarrage d'un nouveau site",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/web/mq-e6322efcd358.jpg"
+            "photo": "/assets/photos/env-pommes-de-terre-sur-convoyeur.jpg"
           },
           {
             "titre": "Deux techniciens dédiés à la maintenance curative des convoyeurs, trieurs et packaging, transport",
             "texte": "en poste sur site",
             "lienLibelle": "Étude de cas GLS : maintenance curative",
             "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/web/mq-d50c84e228cb.jpg"
+            "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg"
           },
           {
             "titre": "Six techniciens en permanence sur le contrat de préventif annuel des sites de Lyon",
             "texte": "depuis septembre 2023, prise en charge complète en un mois",
             "lienLibelle": "Étude de cas VEEPEE : sites de Lyon",
             "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
+            "photo": "/assets/photos/logistique-ihm-convoyeur-bacs.jpg"
           },
           {
             "titre": "12 monteurs mécaniciens et 8 engins de levage pour le montage d'un centre logistique",
             "texte": "6 semaines de chantier, livraison tenue",
             "lienLibelle": "Étude de cas AKTID : montage d'un centre logistique",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/web/mq-c5856badee79.jpg"
+            "photo": "/assets/photos/levage-portique-tubes-exterieur.jpg"
           },
           {
             "titre": "Renfort de contrôle de chantier chez un spécialiste de l'automatisation logistique",
             "texte": "intervenants intégrés aux équipes sur des projets stratégiques",
             "lienLibelle": "Étude de cas ALSTEF Group : collaboration",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/web/mq-17e2f3bce95f.jpg"
+            "photo": "/assets/photos/robot-palettisation-tablette.jpg"
           }
         ]
       },

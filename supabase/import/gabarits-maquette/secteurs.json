@@ -184,48 +184,48 @@
             "texte": "site de Steenvoorde",
             "lienLibelle": "Étude de cas DANONE : lignes de production",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/env-inspection-de-la-chaine-alimentaire.jpg"
+            "photo": "/assets/photos/env-industrie-au-crepuscule.jpg"
           },
           {
             "titre": "18 à 25 techniciens sur plusieurs sites pendant la transition vers l'électrique, automobile",
             "texte": "depuis juin 2023",
             "lienLibelle": "Étude de cas STELLANTIS : sites du Grand Est",
             "lienHref": "/preuves/stellantis-grand-est/",
-            "photo": "/assets/photos/env-emballage-de-biscuits-en-usine.jpg"
+            "photo": "/assets/photos/env-menuisier-utilisant-des-outils.jpg"
           },
           {
             "titre": "Préventif d'un centre logistique qui tourne nuit et week-end, logistique",
             "texte": "depuis septembre 2022",
             "lienLibelle": "Étude de cas AMAZON : maintien d'un centre logistique",
             "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-chimie-colonnes-raffinerie-nuit.jpg"
+            "photo": "/assets/photos/il-equipe-ronde-terrain-raffinerie.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve, matériaux",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/meca-moteur-palan-depose.jpg"
+            "photo": "/assets/photos/il-femme-souriante-avec-casque-et-lunettes-de-sec.jpg"
           },
           {
             "titre": "Électromécanicien habilité risque chimique sur une remise en état de site, traitement des eaux",
             "texte": "depuis février 2026",
             "lienLibelle": "Étude de cas SUEZ : remise en état d'un site",
             "lienHref": "/preuves/suez-remise-en-etat/",
-            "photo": "/assets/photos/env-femme-en-usine-moderne.jpg"
+            "photo": "/assets/photos/env-car-bodies-assembly-line.jpg"
           },
           {
             "titre": "Renfort d'équipes de maintenance sur plusieurs sites de production, confort thermique",
             "texte": "depuis octobre 2024",
             "lienLibelle": "Étude de cas GROUPE ATLANTIC : renfort d'équipes",
             "lienHref": "/preuves/groupe-atlantic/",
-            "photo": "/assets/photos/energie-rack-canalisations-binome.jpg"
+            "photo": "/assets/photos/env-scientist-in-pharmaceutical-lab.jpg"
           },
           {
             "titre": "La GMAO planifie, nos techniciens interviennent",
             "lienLibelle": "DimoMaint",
             "lienHref": "/preuves/dimomaint/",
-            "photo": "/assets/photos/env-photos-industrie.jpg"
+            "photo": "/assets/photos/env-travailleuse-usine-agroalimentaire.jpg"
           },
           {
             "titre": "Une alliance pour tenir les installations intralogistiques de ses clients",
@@ -277,13 +277,13 @@
         "titre": "Bureau d'études",
         "phrase": "Rétrofit et mise en conformité chiffrés par notre bureau d'études.",
         "href": "/offres/bureau-etudes/",
-        "photo": "/assets/photos/env-industrie-pharmaceutique.jpg"
+        "photo": "/assets/photos/il-fumee-d-une-plante-avec-montagnes-1600.jpg"
       },
       {
         "titre": "Agroalimentaire",
         "phrase": "Chaque page secteur détaille les équipements couverts et les contraintes propres au terrain : agroalimentaire, équipements logistiques, automobile, pharmaceutique, aéronautique, chimie, nucléaire, industrie lourde, industrie métallique, menuiserie industrielle.",
         "href": "/secteurs/agroalimentaire/",
-        "photo": "/assets/photos/il-chimie-complexe-vapeur-jour.jpg"
+        "photo": "/assets/photos/env-inspection-equipement-fabrication.jpg"
       },
       {
         "titre": "Équipements logistiques",
@@ -295,19 +295,19 @@
         "titre": "Automobile",
         "phrase": "Chaque page secteur détaille les équipements couverts et les contraintes propres au terrain : agroalimentaire, équipements logistiques, automobile, pharmaceutique, aéronautique, chimie, nucléaire, industrie lourde, industrie métallique, menuiserie industrielle.",
         "href": "/secteurs/automobile/",
-        "photo": "/assets/photos/ciment-tambour-rotatif-silos.jpg"
+        "photo": "/assets/photos/env-controle-qualite-femme.jpg"
       },
       {
         "titre": "Pharmaceutique",
         "phrase": "Chaque page secteur détaille les équipements couverts et les contraintes propres au terrain : agroalimentaire, équipements logistiques, automobile, pharmaceutique, aéronautique, chimie, nucléaire, industrie lourde, industrie métallique, menuiserie industrielle.",
         "href": "/secteurs/pharmaceutique/",
-        "photo": "/assets/photos/env-inspection-metal-22-sept-2026.jpg"
+        "photo": "/assets/photos/il-technician-using-control-panel-in-industrial-f.jpg"
       },
       {
         "titre": "Aéronautique",
         "phrase": "Chaque page secteur détaille les équipements couverts et les contraintes propres au terrain : agroalimentaire, équipements logistiques, automobile, pharmaceutique, aéronautique, chimie, nucléaire, industrie lourde, industrie métallique, menuiserie industrielle.",
         "href": "/secteurs/aeronautique/",
-        "photo": "/assets/photos/env-technician-examining-jet-engine.jpg"
+        "photo": "/assets/photos/env-ouvrier-industriel-avec-ladle.jpg"
       }
     ]
   }

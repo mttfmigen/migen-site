@@ -299,25 +299,25 @@
       }
     ],
     "minutes": 11,
-    "image": "/assets/web/ph-robots-solaire.jpg",
+    "image": "/assets/photos/il-robot-bras-blanc-vue-rapprochee.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-techniques/amdec/",
         "titre": "Amdec",
         "minutes": 15,
-        "image": "/assets/web/team-grind-front.jpg"
+        "image": "/assets/photos/il-automatisme-coffret-rouge-accroupi.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/analyse-vibratoire/",
         "titre": "Analyse vibratoire",
         "minutes": 10,
-        "image": "/assets/web/ph-robots-solaire.jpg"
+        "image": "/assets/photos/il-robot-atelier-commande-numerique.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/automates-siemens/",
         "titre": "Automate Siemens",
         "minutes": 7,
-        "image": "/assets/web/team-electric.jpg"
+        "image": "/assets/photos/il-technicien-maintenance-photo-16-800.jpg"
       }
     ]
   }

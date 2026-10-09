@@ -26,7 +26,7 @@
       "chapo": [
         "Les décisions de maintenance se prennent sur des chiffres : un taux, un seuil, un indicateur. Ces fiches techniques complètent notre [guide maintenance industrielle](/ressources/) avec le format le plus court possible : la définition, la formule, les seuils utiles, et ce qu'en fait un technicien sur le terrain."
       ],
-      "image": "/assets/photos/il-technicien-releve-machine-presse-papier.jpg",
+      "image": "/assets/photos/energie-bride-mat-eolienne.jpg",
       "chiffres": [
         {
           "valeur": "35",
@@ -145,7 +145,7 @@
           "format": "Article",
           "minutes": 12,
           "mots": 2734,
-          "image": "/assets/photos/env-technicien-en-costume-de-nettoyage-industrie-p.jpg"
+          "image": "/assets/photos/il-portrait-of-engineer-or-technician-worker-woma.jpg"
         },
         {
           "href": "/ressources/articles/digitalisation-maintenance/",
@@ -154,7 +154,7 @@
           "format": "Article",
           "minutes": 11,
           "mots": 2375,
-          "image": "/assets/web/sv-duo-impact.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-photo-jan-9-2026-3-1600.jpg"
         },
         {
           "href": "/ressources/articles/gestion-des-dechets/",
@@ -163,7 +163,7 @@
           "format": "Article",
           "minutes": 8,
           "mots": 1761,
-          "image": "/assets/photos/chimie-cuve-melange-flexible.jpg"
+          "image": "/assets/photos/equipe-transmission-senior-jeune.jpg"
         },
         {
           "href": "/ressources/articles/gmao/",
@@ -172,7 +172,7 @@
           "format": "Article",
           "minutes": 11,
           "mots": 2499,
-          "image": "/assets/photos/env-technicien-maintenance-cafe-23-sept-2026.jpg"
+          "image": "/assets/photos/pharma-isolateur-salle-propre.jpg"
         },
         {
           "href": "/ressources/articles/ia-maintenance/",
@@ -181,7 +181,7 @@
           "format": "Article",
           "minutes": 9,
           "mots": 2048,
-          "image": "/assets/photos/env-technician-maintenance-robot-arm.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-photo-10-1600.jpg"
         },
         {
           "href": "/ressources/articles/maintenance-4-0/",
@@ -190,7 +190,7 @@
           "format": "Article",
           "minutes": 9,
           "mots": 1934,
-          "image": "/assets/photos/il-energie-salle-commande-tableau-bleu.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-photo-jan-9-2026-2-1600.jpg"
         },
         {
           "href": "/ressources/articles/optimiser-la-maintenance/",
@@ -199,7 +199,7 @@
           "format": "Article",
           "minutes": 8,
           "mots": 1819,
-          "image": "/assets/photos/il-elec-penche-faisceau-machine.jpg"
+          "image": "/assets/photos/il-meca-portrait-cle-plate-machine-usee.jpg"
         },
         {
           "href": "/ressources/articles/organiser-service-maintenance/",
@@ -208,7 +208,7 @@
           "format": "Article",
           "minutes": 9,
           "mots": 2070,
-          "image": "/assets/web/team-grind-sparks.jpg"
+          "image": "/assets/photos/meca-reducteur-ouvert-plongee.jpg"
         },
         {
           "href": "/ressources/articles/plan-de-maintenance/",
@@ -217,7 +217,7 @@
           "format": "Article",
           "minutes": 10,
           "mots": 2148,
-          "image": "/assets/photos/meca-tour-conventionnel-senior.jpg"
+          "image": "/assets/web/sv-duo-impact.jpg"
         },
         {
           "href": "/ressources/articles/planification-maintenance/",
@@ -244,7 +244,7 @@
           "format": "Article",
           "minutes": 11,
           "mots": 2472,
-          "image": "/assets/photos/energie-levage-eolienne-senior.jpg"
+          "image": "/assets/photos/il-meca-volant-poulie-reglage.jpg"
         },
         {
           "href": "/ressources/articles/robot-spot/",
@@ -253,7 +253,7 @@
           "format": "Article",
           "minutes": 7,
           "mots": 1589,
-          "image": "/assets/photos/il-tuyau-pupitre-local-antibruit.jpg"
+          "image": "/assets/photos/env-workers-inspecting-large-vats-in-a-manufacturi.jpg"
         },
         {
           "href": "/ressources/articles/suivi-de-la-maintenance/",
@@ -262,7 +262,7 @@
           "format": "Article",
           "minutes": 10,
           "mots": 2161,
-          "image": "/assets/photos/env-technicien-maintenance-serveur.jpg"
+          "image": "/assets/photos/meca-tour-conventionnel-senior.jpg"
         },
         {
           "href": "/ressources/articles/tpm/",
@@ -271,7 +271,7 @@
           "format": "Article",
           "minutes": 9,
           "mots": 1965,
-          "image": "/assets/photos/chaudro-technicienne-plan-etabli.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-en-securite-mar-23-2026.jpg"
         },
         {
           "href": "/ressources/fiches-pratiques/5s/",
@@ -280,7 +280,7 @@
           "format": "Fiche pratique",
           "minutes": 12,
           "mots": 2624,
-          "image": "/assets/photos/il-automatisme-ligne-reglage-lunettes.jpg"
+          "image": "/assets/photos/tuyau-pointage-bride-tube.jpg"
         },
         {
           "href": "/ressources/fiches-pratiques/consignation-electrique/",
@@ -289,7 +289,7 @@
           "format": "Fiche pratique",
           "minutes": 12,
           "mots": 2685,
-          "image": "/assets/photos/elec-mesure-multimetre-faisceau.jpg"
+          "image": "/assets/photos/il-technicienne-mecanique-photo-avril-2026-1600.jpg"
         },
         {
           "href": "/ressources/fiches-pratiques/permis-de-feu/",
@@ -298,7 +298,7 @@
           "format": "Fiche pratique",
           "minutes": 8,
           "mots": 1852,
-          "image": "/assets/photos/env-maintenance-automaticien-3.jpg"
+          "image": "/assets/photos/il-ingenieur-verifiant-train-electrique-jan-7-202.jpg"
         },
         {
           "href": "/ressources/fiches-pratiques/plan-de-prevention/",
@@ -307,7 +307,7 @@
           "format": "Fiche pratique",
           "minutes": 9,
           "mots": 1941,
-          "image": "/assets/photos/elec-mains-bornier-relais.jpg"
+          "image": "/assets/photos/env-technician-maintenance-jet-engine.jpg"
         },
         {
           "href": "/ressources/fiches-pratiques/securite-maintenance/",
@@ -316,7 +316,7 @@
           "format": "Fiche pratique",
           "minutes": 10,
           "mots": 2255,
-          "image": "/assets/photos/tuyau-pointage-bride-tube.jpg"
+          "image": "/assets/photos/meca-technicienne-parc-moteurs.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/amdec/",
@@ -325,7 +325,7 @@
           "format": "Fiche technique",
           "minutes": 15,
           "mots": 3292,
-          "image": "/assets/photos/elec-schema-lampe-frontale.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-photo-11-1600.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/analyse-vibratoire/",
@@ -334,7 +334,7 @@
           "format": "Fiche technique",
           "minutes": 10,
           "mots": 2109,
-          "image": "/assets/photos/il-robot-ligne-robots-presse-papier.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-photo-16-800.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/automates-siemens/",
@@ -343,7 +343,7 @@
           "format": "Fiche technique",
           "minutes": 7,
           "mots": 1642,
-          "image": "/assets/photos/il-elec-senior-coffret-exterieur.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-photo-jan-8-2026-1600.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/cahier-des-charges-gmao/",
@@ -352,7 +352,7 @@
           "format": "Fiche technique",
           "minutes": 11,
           "mots": 2373,
-          "image": "/assets/photos/meca-presses-volants-technicienne.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-avec-cle-1600.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/indicateurs-maintenance/",
@@ -361,7 +361,7 @@
           "format": "Fiche technique",
           "minutes": 11,
           "mots": 2386,
-          "image": "/assets/photos/il-meca-atelier-bonnet-portrait.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-inspecte-equipement-ind.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/mtbf-mttr/",
@@ -370,7 +370,7 @@
           "format": "Fiche technique",
           "minutes": 9,
           "mots": 1959,
-          "image": "/assets/photos/il-meca-intervention-accroupi-atelier.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-photo-19-1600.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/niveaux-de-maintenance/",
@@ -379,7 +379,7 @@
           "format": "Fiche technique",
           "minutes": 9,
           "mots": 1990,
-          "image": "/assets/photos/il-outillage-panneau-atelier-accroupi.jpg"
+          "image": "/assets/photos/energie-releve-pupitre-salle-commande.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/outils-de-diagnostic/",
@@ -388,7 +388,7 @@
           "format": "Fiche technique",
           "minutes": 10,
           "mots": 2132,
-          "image": "/assets/photos/il-automatisme-bornier-vert-pince.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-photo-mar-19-2026-1600.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/trs/",
@@ -397,7 +397,7 @@
           "format": "Fiche technique",
           "minutes": 10,
           "mots": 2242,
-          "image": "/assets/photos/env-factory-worker-inspecting-food-canning-product.jpg"
+          "image": "/assets/photos/il-automatisme-armoire-automate-ouverte.jpg"
         },
         {
           "href": "/ressources/livres-blancs/externaliser-sa-maintenance/",
@@ -406,7 +406,7 @@
           "format": "Livre blanc",
           "minutes": 7,
           "mots": 1442,
-          "image": "/assets/photos/env-maintenance-automaticien-2.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-photo-jan-9-2026-1600.jpg"
         },
         {
           "href": "/ressources/livres-blancs/retrofit-ou-remplacement/",
@@ -415,7 +415,7 @@
           "format": "Livre blanc",
           "minutes": 11,
           "mots": 2319,
-          "image": "/assets/photos/il-levage-crochet-palonnier-controle.jpg"
+          "image": "/assets/photos/chimie-cuve-melange-flexible.jpg"
         },
         {
           "href": "/ressources/process/gestion-maintenance-preventive/",
@@ -424,7 +424,7 @@
           "format": "Process",
           "minutes": 14,
           "mots": 3099,
-          "image": "/assets/photos/meca-reducteur-ouvert-plongee.jpg"
+          "image": "/assets/photos/il-meca-machine-outil-porte-ouverte.jpg"
         },
         {
           "href": "/ressources/process/preparer-un-arret-technique/",
@@ -433,7 +433,7 @@
           "format": "Process",
           "minutes": 10,
           "mots": 2254,
-          "image": "/assets/photos/soudure-soudeuse-masque-releve.jpg"
+          "image": "/assets/photos/il-aero-reacteur-ouvert-portrait.jpg"
         },
         {
           "href": "/ressources/process/protocole-de-securite/",
@@ -442,7 +442,7 @@
           "format": "Process",
           "minutes": 11,
           "mots": 2351,
-          "image": "/assets/photos/il-robot-prehenseur-ventouses-controle.jpg"
+          "image": "/assets/photos/automatisme-armoire-jeune-tablette.jpg"
         },
         {
           "href": "/ressources/process/selection-des-techniciens/",
@@ -451,7 +451,7 @@
           "format": "Process",
           "minutes": 8,
           "mots": 1764,
-          "image": "/assets/photos/elec-local-technicien-accroupi.jpg"
+          "image": "/assets/photos/il-tuyau-reseau-vert-cuves-inspection.jpg"
         }
       ]
     }

@@ -425,25 +425,25 @@
       }
     ],
     "minutes": 14,
-    "image": "/assets/web/team-grind-front.jpg",
+    "image": "/assets/web/sv-armoire.jpg",
     "aLire": [
       {
         "href": "/ressources/process/preparer-un-arret-technique/",
         "titre": "Préparation arrêt technique",
         "minutes": 10,
-        "image": "/assets/web/ph-hero-raffinerie.jpg"
+        "image": "/assets/photos/il-tuyau-passerelle-technicien-bras-croises.jpg"
       },
       {
         "href": "/ressources/process/protocole-de-securite/",
         "titre": "Protocole de sécurité",
         "minutes": 11,
-        "image": "/assets/web/ph-tuyaux.jpg"
+        "image": "/assets/photos/il-technicien-maintenance-photo-3-1600.jpg"
       },
       {
         "href": "/ressources/process/selection-des-techniciens/",
         "titre": "Sélection technicien de maintenance",
         "minutes": 8,
-        "image": "/assets/web/ph-technicien.jpg"
+        "image": "/assets/photos/il-meca-main-gantee-controle-machine.jpg"
       }
     ]
   }

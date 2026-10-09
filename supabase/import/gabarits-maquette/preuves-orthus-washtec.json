@@ -14,7 +14,7 @@
     ],
     "bouton": "Confier l'installation de mes équipements",
     "logo": "/assets/clients/orthus-x-washtec.svg",
-    "photoHero": "/assets/photos/il-meca-portrait-cle-a-molette-halle.jpg",
+    "photoHero": "/assets/photos/elec-cablage-armoire-tournevis.jpg",
     "chiffres": [
       {
         "libelle": "Intervenant",
@@ -133,7 +133,7 @@
         "valeur": "Nationale, coordination centralisée"
       }
     ],
-    "photoDispositif": "/assets/photos/il-tuyau-vanne-manometre-reglage.jpg",
+    "photoDispositif": "/assets/photos/il-technicien-maintenance-photo-jan-9-2026-1-1600.jpg",
     "resultats": [
       {
         "titre": "Les portiques sont montés partout en France",
@@ -189,25 +189,25 @@
         "surtitre": "Étude de cas",
         "titre": "AMAZON ORY4 : le préventif de masse",
         "href": "/preuves/amazon-centre-logistique/",
-        "photo": "/assets/photos/hydrau-presse-pupitre-manometre.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-photo-1600.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/env-technician-inspecting-fiber-optics.jpg"
+        "photo": "/assets/photos/il-technicien-releve-machine-presse-papier.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/il-chimie-petrochimie-panorama-nuit.jpg"
+        "photo": "/assets/photos/env-structures-industrielles-contre-ciel-nuageux.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/il-auto-cliquet-intervention-vehicule.jpg"
+        "photo": "/assets/photos/il-technicien-portrait-local-technique.jpg"
       }
     ]
   }

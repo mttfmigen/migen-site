@@ -310,25 +310,25 @@
       }
     ],
     "minutes": 11,
-    "image": "/assets/web/team-electric.jpg",
+    "image": "/assets/photos/nucleaire-salle-commande-centrale.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/cout-arret-de-production/",
         "titre": "Coût d'un arrêt de production",
         "minutes": 12,
-        "image": "/assets/web/ph-tuyaux.jpg"
+        "image": "/assets/photos/pneu-pince-axe-lineaire.jpg"
       },
       {
         "href": "/ressources/articles/gestion-des-dechets/",
         "titre": "Gestion des déchets industriels",
         "minutes": 8,
-        "image": "/assets/web/team-duo.jpg"
+        "image": "/assets/photos/il-elec-baie-cablage-faisceaux.jpg"
       },
       {
         "href": "/ressources/articles/gmao/",
         "titre": "Gestion de maintenance assistée par ordinateur",
         "minutes": 11,
-        "image": "/assets/web/ph-robots-solaire.jpg"
+        "image": "/assets/photos/il-femme-inspectant-bras-robotique-2026-1600.jpg"
       }
     ]
   }

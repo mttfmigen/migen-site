@@ -187,7 +187,7 @@
             "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "lienLibelle": "Savoye",
             "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/photos/soudure-brossage-meuleuse-etau.jpg",
+            "photo": "/assets/photos/soudure-soudeuse-masque-releve.jpg",
             "logo": "/assets/clients/savoye.png"
           },
           {
@@ -195,7 +195,7 @@
             "texte": "Transferts de machines sécurisés, sans casse ni improvisation, délais de chantier tenus.",
             "lienLibelle": "SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/levage-montage-poteau-charpente.jpg",
+            "photo": "/assets/photos/meca-jeune-presse-volant.jpg",
             "logo": "/assets/clients/mq-127f9e03c53b.svg"
           },
           {
@@ -203,7 +203,7 @@
             "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés, site livré à la date prévue.",
             "lienLibelle": "AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/il-chaudro-couronne-dentee-reperage.jpg",
+            "photo": "/assets/photos/soudure-brossage-meuleuse-etau.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
@@ -219,21 +219,21 @@
             "texte": "Suivi des prestataires, vérification des installations, respect des procédures.",
             "lienLibelle": "ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/il-metal-haut-fourneau-silos-quai.jpg",
+            "photo": "/assets/photos/meca-tour-conventionnel-senior.jpg",
             "logo": "/assets/clients/alstef.webp"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/soudure-soudeuse-masque-releve.jpg",
+            "photo": "/assets/photos/levage-montage-poteau-charpente.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
             "titre": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
             "lienLibelle": "Atena",
             "lienHref": "/preuves/atena-port-la-rochelle/",
-            "photo": "/assets/photos/meca-jeune-presse-volant.jpg",
+            "photo": "/assets/photos/il-meca-grande-roue-dentee-portrait.jpg",
             "logo": "/assets/clients/atena.png"
           }
         ]
@@ -284,7 +284,7 @@
         "titre": "Zéro arrêt",
         "phrase": "La maintenance en abonnement, au forfait mensuel.",
         "href": "/offres/zero-arret/",
-        "photo": "/assets/photos/il-meca-grand-disque-volant-inertie.jpg"
+        "photo": "/assets/photos/il-chaudro-couronne-dentee-reperage.jpg"
       },
       {
         "titre": "Arrêt technique",
@@ -296,13 +296,13 @@
         "titre": "Full service",
         "phrase": "Toute votre maintenance, un seul partenaire.",
         "href": "/offres/full-service/",
-        "photo": "/assets/photos/meca-tour-conventionnel-senior.jpg"
+        "photo": "/assets/photos/il-levage-nef-ponts-roulants-chantier.jpg"
       },
       {
         "titre": "Travaux industriels",
         "phrase": "Transfert, démantèlement, démontage et montage.",
         "href": "/travaux-industriels/",
-        "photo": "/assets/photos/soudure-corps-vanne-forge.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-robot-soudure-mar-24-20.jpg"
       },
       {
         "titre": "Bureau d'études",

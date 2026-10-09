@@ -309,25 +309,25 @@
       }
     ],
     "minutes": 12,
-    "image": "/assets/web/ph-robots-solaire.jpg",
+    "image": "/assets/photos/il-technicien-maintenance-photo-5-1600.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/cout-arret-de-production/",
         "titre": "Coût d'un arrêt de production",
         "minutes": 12,
-        "image": "/assets/web/ph-tuyaux.jpg"
+        "image": "/assets/photos/il-tuyau-vannes-technicienne-tablette.jpg"
       },
       {
         "href": "/ressources/articles/digitalisation-maintenance/",
         "titre": "Digitalisation maintenance",
         "minutes": 11,
-        "image": "/assets/web/team-grind-impact.jpg"
+        "image": "/assets/web/sv-duo-impact.jpg"
       },
       {
         "href": "/ressources/articles/gestion-des-dechets/",
         "titre": "Gestion des déchets industriels",
         "minutes": 8,
-        "image": "/assets/web/team-duo.jpg"
+        "image": "/assets/photos/chimie-cuve-melange-flexible.jpg"
       }
     ]
   }

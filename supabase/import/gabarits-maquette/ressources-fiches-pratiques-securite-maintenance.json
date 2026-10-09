@@ -247,25 +247,25 @@
       }
     ],
     "minutes": 10,
-    "image": "/assets/web/team-duo.jpg",
+    "image": "/assets/photos/env-technician-inspecting-power-grid-equipment-in-.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-pratiques/5s/",
         "titre": "5S industrie",
         "minutes": 12,
-        "image": "/assets/web/team-grind-front.jpg"
+        "image": "/assets/photos/il-mechanic-working-in-warehouse.jpg"
       },
       {
         "href": "/ressources/fiches-pratiques/consignation-electrique/",
         "titre": "Consignation électrique",
         "minutes": 12,
-        "image": "/assets/web/team-electric.jpg"
+        "image": "/assets/photos/levage-montage-poteau-charpente.jpg"
       },
       {
         "href": "/ressources/fiches-pratiques/permis-de-feu/",
         "titre": "Permis de feu",
         "minutes": 8,
-        "image": "/assets/web/ph-robots-solaire.jpg"
+        "image": "/assets/photos/env-industrie-metallique-24-sept-2026.jpg"
       }
     ]
   }

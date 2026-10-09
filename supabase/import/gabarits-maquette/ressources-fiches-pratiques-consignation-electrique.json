@@ -299,25 +299,25 @@
       }
     ],
     "minutes": 12,
-    "image": "/assets/web/ph-tuyaux.jpg",
+    "image": "/assets/photos/env-focused-young-man-working-on-electrical-wiring.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-pratiques/5s/",
         "titre": "5S industrie",
         "minutes": 12,
-        "image": "/assets/web/team-grind-front.jpg"
+        "image": "/assets/photos/env-technician-inspecting-electrical-panel-in-a-fa.jpg"
       },
       {
         "href": "/ressources/fiches-pratiques/permis-de-feu/",
         "titre": "Permis de feu",
         "minutes": 8,
-        "image": "/assets/web/ph-robots-solaire.jpg"
+        "image": "/assets/photos/env-technician-repairing-electrical-appliance.jpg"
       },
       {
         "href": "/ressources/fiches-pratiques/plan-de-prevention/",
         "titre": "Plan de prévention",
         "minutes": 9,
-        "image": "/assets/web/team-duo.jpg"
+        "image": "/assets/photos/il-automatisme-bornier-vert-pince.jpg"
       }
     ]
   }

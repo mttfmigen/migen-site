@@ -27,7 +27,7 @@
         "Une procédure introuvable au moment d'intervenir, c'est une intervention qui dérape.",
         "Ces fiches complètent notre [guide maintenance industrielle](/ressources/) avec des procédures applicables telles quelles : la règle, les étapes, les pièges."
       ],
-      "image": "/assets/photos/aero-reacteur-capot-combinaison.jpg",
+      "image": "/assets/photos/il-technicien-maintenance-photo-22-1600.jpg",
       "chiffres": [
         {
           "valeur": "35",
@@ -249,7 +249,7 @@
           "format": "Article",
           "minutes": 12,
           "mots": 2734,
-          "image": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-photo-3-1600.jpg"
         },
         {
           "href": "/ressources/articles/digitalisation-maintenance/",
@@ -267,7 +267,7 @@
           "format": "Article",
           "minutes": 8,
           "mots": 1761,
-          "image": "/assets/photos/menuiserie-centre-usinage-soufflette.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-5.jpg"
         },
         {
           "href": "/ressources/articles/gmao/",
@@ -303,7 +303,7 @@
           "format": "Article",
           "minutes": 8,
           "mots": 1819,
-          "image": "/assets/photos/menuiserie-scie-panneaux-epi.jpg"
+          "image": "/assets/photos/menuiserie-cnc-pupitre-casque.jpg"
         },
         {
           "href": "/ressources/articles/organiser-service-maintenance/",
@@ -312,7 +312,7 @@
           "format": "Article",
           "minutes": 9,
           "mots": 2070,
-          "image": "/assets/photos/env-moteur-d-avion-en-maintenance.jpg"
+          "image": "/assets/photos/env-technician-maintenance-6.jpg"
         },
         {
           "href": "/ressources/articles/plan-de-maintenance/",
@@ -330,7 +330,7 @@
           "format": "Article",
           "minutes": 11,
           "mots": 2356,
-          "image": "/assets/photos/robot-poignet-technicien-casque.jpg"
+          "image": "/assets/photos/env-food-production-line-with-workers-in-protectiv.jpg"
         },
         {
           "href": "/ressources/articles/predictive-ou-corrective/",
@@ -339,7 +339,7 @@
           "format": "Article",
           "minutes": 12,
           "mots": 2648,
-          "image": "/assets/web/sv-portrait.jpg"
+          "image": "/assets/photos/il-meca-chaine-transmission-reglage.jpg"
         },
         {
           "href": "/ressources/articles/preventive-ou-corrective/",
@@ -348,7 +348,7 @@
           "format": "Article",
           "minutes": 11,
           "mots": 2472,
-          "image": "/assets/photos/meca-pied-a-coulisse-fraiseuse.jpg"
+          "image": "/assets/photos/il-automatisme-pupitre-ihm-casque-bleu.jpg"
         },
         {
           "href": "/ressources/articles/robot-spot/",
@@ -357,7 +357,7 @@
           "format": "Article",
           "minutes": 7,
           "mots": 1589,
-          "image": "/assets/photos/env-technician-maintenance-jet-engine.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-inspectant-equipement-j.jpg"
         },
         {
           "href": "/ressources/articles/suivi-de-la-maintenance/",
@@ -366,7 +366,7 @@
           "format": "Article",
           "minutes": 10,
           "mots": 2161,
-          "image": "/assets/photos/il-elec-multimetre-boitier-accroupie.jpg"
+          "image": "/assets/photos/env-technicien-maintenance-serveur.jpg"
         },
         {
           "href": "/ressources/articles/tpm/",
@@ -375,7 +375,7 @@
           "format": "Article",
           "minutes": 9,
           "mots": 1965,
-          "image": "/assets/photos/env-technician-maintenance-6.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-photo-jan-7-2026-2-1600.jpg"
         },
         {
           "href": "/ressources/fiches-pratiques/5s/",
@@ -384,7 +384,7 @@
           "format": "Fiche pratique",
           "minutes": 12,
           "mots": 2624,
-          "image": "/assets/photos/env-technician-maintenance.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-photo-mar-18-2026-1600.jpg"
         },
         {
           "href": "/ressources/fiches-pratiques/consignation-electrique/",
@@ -393,7 +393,7 @@
           "format": "Fiche pratique",
           "minutes": 12,
           "mots": 2685,
-          "image": "/assets/photos/elec-cablage-armoire-tournevis.jpg"
+          "image": "/assets/web/team-grind-close.jpg"
         },
         {
           "href": "/ressources/fiches-pratiques/permis-de-feu/",
@@ -402,7 +402,7 @@
           "format": "Fiche pratique",
           "minutes": 8,
           "mots": 1852,
-          "image": "/assets/photos/il-soudure-chalumeau-tube-technicienne.jpg"
+          "image": "/assets/photos/il-hydrau-flexibles-faisceau-controle.jpg"
         },
         {
           "href": "/ressources/fiches-pratiques/plan-de-prevention/",
@@ -411,7 +411,7 @@
           "format": "Fiche pratique",
           "minutes": 9,
           "mots": 1941,
-          "image": "/assets/photos/meca-reducteur-pont-roulant.jpg"
+          "image": "/assets/photos/il-automatisme-bornier-vert-pince.jpg"
         },
         {
           "href": "/ressources/fiches-pratiques/securite-maintenance/",
@@ -420,7 +420,7 @@
           "format": "Fiche pratique",
           "minutes": 10,
           "mots": 2255,
-          "image": "/assets/photos/il-outillage-coffret-douilles-selection.jpg"
+          "image": "/assets/photos/env-technicien-maintenance-cafe-23-sept-2026.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/amdec/",
@@ -429,7 +429,7 @@
           "format": "Fiche technique",
           "minutes": 15,
           "mots": 3292,
-          "image": "/assets/photos/il-elec-ouverture-coffret-gilet-orange.jpg"
+          "image": "/assets/photos/elec-schema-lampe-frontale.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/analyse-vibratoire/",
@@ -438,7 +438,7 @@
           "format": "Fiche technique",
           "minutes": 10,
           "mots": 2109,
-          "image": "/assets/photos/il-auto-sous-caisse-poids-lourd.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-2.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/automates-siemens/",
@@ -447,7 +447,7 @@
           "format": "Fiche technique",
           "minutes": 7,
           "mots": 1642,
-          "image": "/assets/photos/equipe-transmission-senior-jeune.jpg"
+          "image": "/assets/photos/env-maintenance-automatique.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/cahier-des-charges-gmao/",
@@ -465,7 +465,7 @@
           "format": "Fiche technique",
           "minutes": 11,
           "mots": 2386,
-          "image": "/assets/photos/env-technician-maintenance-7.jpg"
+          "image": "/assets/web/team-duo.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/mtbf-mttr/",
@@ -474,7 +474,7 @@
           "format": "Fiche technique",
           "minutes": 9,
           "mots": 1959,
-          "image": "/assets/photos/elec-senior-armoire-relais.jpg"
+          "image": "/assets/photos/il-chaudro-bride-anneau-controle.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/niveaux-de-maintenance/",
@@ -483,7 +483,7 @@
           "format": "Fiche technique",
           "minutes": 9,
           "mots": 1990,
-          "image": "/assets/photos/chaudro-meulage-visiere.jpg"
+          "image": "/assets/photos/aero-reacteur-capot-combinaison.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/outils-de-diagnostic/",
@@ -492,7 +492,7 @@
           "format": "Fiche technique",
           "minutes": 10,
           "mots": 2132,
-          "image": "/assets/photos/env-food-production-line-with-workers-in-protectiv.jpg"
+          "image": "/assets/photos/chaudro-technicienne-plan-etabli.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/trs/",
@@ -501,7 +501,7 @@
           "format": "Fiche technique",
           "minutes": 10,
           "mots": 2242,
-          "image": "/assets/photos/il-meca-inspection-piece-releve-atelier.jpg"
+          "image": "/assets/photos/env-factory-worker-inspecting-food-canning-product.jpg"
         },
         {
           "href": "/ressources/livres-blancs/externaliser-sa-maintenance/",
@@ -510,7 +510,7 @@
           "format": "Livre blanc",
           "minutes": 7,
           "mots": 1442,
-          "image": "/assets/photos/il-chaudro-bride-anneau-controle.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-voiture-bleue-1600.jpg"
         },
         {
           "href": "/ressources/livres-blancs/retrofit-ou-remplacement/",
@@ -519,7 +519,7 @@
           "format": "Livre blanc",
           "minutes": 11,
           "mots": 2319,
-          "image": "/assets/photos/il-meca-combinaison-rouge-machinerie.jpg"
+          "image": "/assets/photos/il-levage-crochet-palonnier-controle.jpg"
         },
         {
           "href": "/ressources/process/gestion-maintenance-preventive/",
@@ -528,7 +528,7 @@
           "format": "Process",
           "minutes": 14,
           "mots": 3099,
-          "image": "/assets/photos/il-meca-moteur-lourd-controle-gilet.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-portrait-mars-2026-1600.jpg"
         },
         {
           "href": "/ressources/process/preparer-un-arret-technique/",
@@ -537,7 +537,7 @@
           "format": "Process",
           "minutes": 10,
           "mots": 2254,
-          "image": "/assets/photos/env-technician-maintenance-10.jpg"
+          "image": "/assets/photos/il-tuyau-passerelle-technicien-bras-croises.jpg"
         },
         {
           "href": "/ressources/process/protocole-de-securite/",
@@ -546,7 +546,7 @@
           "format": "Process",
           "minutes": 11,
           "mots": 2351,
-          "image": "/assets/photos/env-technician-maintenance-11.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-photo-24-1600.jpg"
         },
         {
           "href": "/ressources/process/selection-des-techniciens/",

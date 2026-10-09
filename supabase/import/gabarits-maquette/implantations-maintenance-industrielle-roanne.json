@@ -115,7 +115,7 @@
         }
       ]
     },
-    "problemePhoto": "/assets/photos/soudure-interieur-virole.jpg",
+    "problemePhoto": "/assets/photos/pharma-cuves-process-passerelle.jpg",
     "brefBande": "Un équipement qui inquiète avant la prochaine fenêtre de production ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -245,37 +245,37 @@
             "titre": "Un automaticien SIEMENS pour démarrer une ligne neuve",
             "lienLibelle": "Étude de cas Mersen",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/il-soudure-poste-masque-releve.jpg"
+            "photo": "/assets/photos/il-usine-kawasaki-jan-11-2026-1600.jpg"
           },
           {
             "titre": "Réparer plutôt que remplacer, au budget d’une PME",
             "lienLibelle": "Étude de cas Joint Lyonnais",
             "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/il-meca-portrait-cle-a-molette-halle.jpg"
+            "photo": "/assets/photos/il-automatisme-armoire-automate-ouverte.jpg"
           },
           {
             "titre": "La maintenance tient pendant que l’équipe recrute",
             "lienLibelle": "Étude de cas Bamesa",
             "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/pharma-cuves-process-passerelle.jpg"
+            "photo": "/assets/photos/ciment-inspection-binome-harnais.jpg"
           },
           {
             "titre": "Un technicien au cœur d’une ligne de préfabrication béton",
             "lienLibelle": "Étude de cas Rector Lesage",
             "lienHref": "/preuves/rector-lesage/",
-            "photo": "/assets/photos/env-technician-maintenance-5.jpg"
+            "photo": "/assets/photos/env-industrie-mettalique.jpg"
           },
           {
             "titre": "Pas un poste sans maintenance, week-end compris",
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/il-robot-inspection-articulation-blanche.jpg"
+            "photo": "/assets/photos/il-hydrau-flexibles-faisceau-controle.jpg"
           },
           {
             "titre": "Un premier contrat en Belgique, préventif et correctif",
             "lienLibelle": "Étude de cas McCain",
             "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/env-structures-industrielles-au-coucher-du-soleil.jpg"
+            "photo": "/assets/photos/il-soudure-chalumeau-tube-technicienne.jpg"
           }
         ]
       },
