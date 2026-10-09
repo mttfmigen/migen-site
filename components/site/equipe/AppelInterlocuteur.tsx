@@ -18,6 +18,10 @@ export default function AppelInterlocuteur() {
       <div style={LARGEUR}>
         <div
           data-reveal=""
+          /* `carteAppel` ne change que le remplissage sous 880 px : 52 px de
+             chaque côté sur un écran de 320 en consomment 104, et le bouton
+             n'avait plus que 180 px pour 248. Voir Equipe.module.css. */
+          className={styles.carteAppel}
           style={{
             ...VERRE,
             borderRadius: 36,

@@ -114,3 +114,34 @@
     grid-template-columns: minmax(0, 1fr) !important;
   }
 }
+
+/*
+ * L'APPEL À L'ACTION DOIT TENIR DANS L'ÉCRAN DU TÉLÉPHONE.
+ *
+ * Mesuré le 09/10 au soir, au navigateur, sur 118 des 248 pages : le bouton
+ * fait 409 px de large dans une fenêtre de 375, et son libellé est tranché en
+ * plein mot. Sur /secteurs/agroalimentaire/ le visiteur lit « Faire chiffrer
+ * ma maintenance agroalimenta ». Les gabarits les plus touchés portent le
+ * sujet de la page dans le libellé, donc les plus longs : Ville 66/66,
+ * Secteur 12/12, Département 8/8.
+ *
+ * POURQUOI AUCUNE PORTE NE LE VOYAIT, et c'est le vrai enseignement :
+ * `.mg-site` est en `overflow-x: clip`. Le bouton déborde de son conteneur,
+ * le conteneur le rogne, et la largeur du DOCUMENT reste à 375 px. Le contrôle
+ * mobile cherchait un débordement du document : il n'y en avait pas, et il
+ * déclarait la page conforme pendant que l'appel à l'action principal était
+ * illisible. Un contrôle qui mesure la mauvaise chose est pire que pas de
+ * contrôle, parce qu'il rassure.
+ *
+ * Le `nowrap` vient de la maquette, qui n'a pas de référence sous 880 px : il
+ * y garde le bouton sur une ligne, ce qui est juste sur un grand écran. Sous
+ * 880 px il cède, et le libellé passe à la ligne plutôt que de sortir du
+ * cadre. Le bureau ne change pas d'un pixel.
+ */
+@media (max-width: 880px) {
+  .boutonPrincipal {
+    white-space: normal !important;
+    max-width: 100%;
+    text-align: center;
+  }
+}

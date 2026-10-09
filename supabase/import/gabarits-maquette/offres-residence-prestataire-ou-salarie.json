@@ -198,7 +198,7 @@
         },
         {
           "type": "p",
-          "text": "Dans ces cas, notre guide [recruter un technicien de maintenance](/offres/residence/recruter-un-technicien/) vous accompagne de l'annonce à l'intégration."
+          "text": "Dans ces cas, notre guide recruter un technicien de maintenance vous accompagne de l'annonce à l'intégration."
         },
         {
           "type": "h3",
@@ -446,9 +446,15 @@
         },
         {
           "type": "quote",
-          "text": "À lire aussi : [recruter un technicien de maintenance](/offres/residence/recruter-un-technicien/)"
+          "text": "À lire aussi : recruter un technicien de maintenance"
         }
       ]
     }
-  }
+  },
+  "trous": [
+    {
+      "ligne": "[recruter un technicien de maintenance](/offres/residence/recruter-un-technicien/)",
+      "pourquoi": "lien inventé au portage vers une page qui n'existe pas, 404 mesurée le 09/10. La capture de la maquette rend ce texte SANS lien (href=\"#\", texte non lié) : le site revient à sa référence, texte conservé mot pour mot."
+    }
+  ]
 }

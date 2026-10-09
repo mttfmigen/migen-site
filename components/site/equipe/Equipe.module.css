@@ -36,3 +36,43 @@
   display: none;
   content: "";
 }
+
+/*
+ * L'APPEL À L'ACTION DE LA PAGE ÉQUIPE DOIT TENIR DANS L'ÉCRAN.
+ *
+ * Mesuré le 09/10 au soir à 320 px : « Parler à un chargé d'affaires » fait
+ * 280 px dans un conteneur de 240, en `nowrap`, et sort de 53 px. Le libellé
+ * est tranché sur le plus petit écran encore en service.
+ *
+ * Même cause et même remède que les 118 pages d'offre corrigées le même soir :
+ * le `nowrap` vient de la maquette, qui n'a pas de référence sous 880 px, et
+ * il cède à cette largeur. Le bureau ne bouge pas.
+ */
+@media (max-width: 880px) {
+  .boutonAction,
+  .boutonRelais {
+    white-space: normal !important;
+    /* `max-width: 100%` NE SUFFIT PAS ICI, et c'est le piège : le conteneur du
+       bouton est en `flex: none`, donc sa largeur automatique vaut la largeur
+       de contenu du bouton, 280 px, et « 100 % » de 280 px ne contraint rien.
+       Autoriser le retour à la ligne sans borne de largeur ne change donc
+       rien. La borne est prise sur l'ÉCRAN, marges de page comprises
+       (18 px de chaque côté sous 760 px, plus le remplissage du bloc). */
+    max-width: calc(100vw - 72px) !important;
+    text-align: center;
+  }
+}
+
+/*
+ * LE REMPLISSAGE DE LA CARTE D'APPEL, AU TÉLÉPHONE.
+ *
+ * 52 px de chaque côté est une valeur de grand écran. Sur 320 px elle en
+ * consomme 104, et il ne restait que 180 px de largeur utile pour un bouton
+ * qui en demandait 248 : c'est la vraie cause du débordement, pas la largeur
+ * du bouton. Rapetisser le bouton encore et encore aurait traité le symptôme.
+ */
+@media (max-width: 880px) {
+  .carteAppel {
+    padding: 28px 20px !important;
+  }
+}

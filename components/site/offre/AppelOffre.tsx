@@ -66,6 +66,8 @@ const BOUTON: CSSProperties = {
   background: "var(--acc)",
   color: "#fff",
   font: "600 15px var(--fb)",
+  /* Le `nowrap` cède sous 880 px : voir `.boutonPrincipal` dans
+     PageOffre.module.css, le libellé sortait de l'écran sur 118 pages. */
   whiteSpace: "nowrap",
   boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",
 };

@@ -52,3 +52,37 @@
     opacity 260ms cubic-bezier(0.2, 0.7, 0.2, 1),
     transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
+
+/*
+ * LA BASCULE DOIT TENIR DANS L'ÉCRAN DU TÉLÉPHONE.
+ *
+ * Mesuré le 09/10 au soir : la pastille fait 171 px de trop à 320 px et 65 px
+ * de trop à 375, donc le second onglet, « Avec migen© », est coupé. Le
+ * visiteur ne voit pas qu'il peut basculer, et c'est tout l'objet du bloc.
+ *
+ * Deux onglets à 30 px de remplissage horizontal de chaque côté font 120 px
+ * de remplissage à eux seuls, avant la moindre lettre. Sous 880 px il tombe à
+ * 16 px, ce qui rend 56 px sans toucher à la hauteur de frappe : la cible
+ * tactile reste à 15 + 15 + la ligne, bien au-dessus des 24 px de la WCAG.
+ * Le bureau garde les valeurs de la maquette, qui n'a pas de référence ici.
+ */
+@media (max-width: 880px) {
+  /* PLEINE LARGEUR, DEUX PARTS ÉGALES. Réduire le seul remplissage ne
+     suffisait pas : la pastille restait 64 px trop large à 320 px. Un
+     sélecteur à deux états prend donc toute la largeur disponible et la
+     partage, motif habituel au téléphone. Les deux onglets gardent la même
+     taille quel que soit le libellé, et la cible tactile reste à 15 + 15 + la
+     ligne, bien au-dessus des 24 px de la WCAG. */
+  .onglets {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .onglet {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 15px 10px;
+    text-align: center;
+  }
+}

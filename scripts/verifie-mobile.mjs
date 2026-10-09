@@ -95,6 +95,44 @@ const MESURE = ({ cible, saisie }) => {
     });
   }
 
+  /* LES APPELS À L'ACTION QUI SORTENT DE L'ÉCRAN, et c'est l'angle mort que
+     ce contrôle avait.
+     Mesuré le 09/10 au soir sur 118 des 248 pages : le bouton faisait 409 px
+     dans une fenêtre de 375 et son libellé était tranché en plein mot
+     (« Faire chiffrer ma maintenance agroalimenta »). Ce contrôle déclarait
+     pourtant la page conforme, parce qu'il cherchait un débordement du
+     DOCUMENT : `.mg-site` est en `overflow-x: clip`, le conteneur rogne, et
+     `scrollWidth` reste à 375. Un contrôle qui mesure la mauvaise chose est
+     pire que pas de contrôle, parce qu'il rassure.
+     On mesure donc l'élément lui-même, et non le document. Ce qui vit dans un
+     rail à défilement horizontal est écarté : un carrousel déborde par
+     construction, c'est son objet. */
+  const horsEcran = [];
+  for (const element of document.querySelectorAll('a[href], button, [role="button"]')) {
+    const boite = element.getBoundingClientRect();
+    if (boite.width === 0 || boite.height === 0) continue;
+    const style = getComputedStyle(element);
+    if (style.visibility === "hidden" || style.opacity === "0") continue;
+    let parent = element.parentElement;
+    let dansUnRail = false;
+    while (parent && parent !== document.body) {
+      const debordement = getComputedStyle(parent).overflowX;
+      if (debordement === "auto" || debordement === "scroll") {
+        dansUnRail = true;
+        break;
+      }
+      parent = parent.parentElement;
+    }
+    if (dansUnRail) continue;
+    const depasse = Math.round(boite.right - window.innerWidth);
+    if (depasse > 4) {
+      horsEcran.push(
+        `${Math.round(boite.width)} px de large, dépasse de ${depasse} px` +
+          ` « ${(element.textContent || "").replace(/\s+/g, " ").trim().slice(0, 40)} »`,
+      );
+    }
+  }
+
   const petitesCibles = [];
   for (const element of document.querySelectorAll(
     'a[href], button, input:not([type="hidden"]), select, textarea, [role="button"]',
@@ -144,6 +182,7 @@ const MESURE = ({ cible, saisie }) => {
     largeurDocument: document_.scrollWidth,
     largeurFenetre: window.innerWidth,
     debordements: debordements.map((d) => d.description),
+    horsEcran,
     petitesCibles,
     saisiesTropPetites,
   };
@@ -193,6 +232,12 @@ try {
         problemes.push(
           `${chemin} à ${largeur} px : ${releve.debordements.length} élément(s) sortent de l'écran` +
             ` (rognés, donc invisibles mais présents)\n      ${releve.debordements.slice(0, 3).join("\n      ")}`,
+        );
+      }
+      if (releve.horsEcran.length > 0) {
+        problemes.push(
+          `${chemin} à ${largeur} px : ${releve.horsEcran.length} appel(s) à l'action hors de l'écran` +
+            `\n      ${releve.horsEcran.slice(0, 4).join("\n      ")}`,
         );
       }
       if (releve.petitesCibles.length > 0) {
