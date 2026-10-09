@@ -1,16 +1,16 @@
 {
   "url": "/preuves/orthus-ecocem/",
   "seo": {
-    "meta_title": "ORTHUS x ECOCEM : un site R&D construit| Migen",
-    "meta_description": "Ecocem confie à Orthus, filiale du groupe Migen, la construction complète de son nouveau site industriel de R&D près de Paris, livraison prévue."
+    "meta_title": "Migen Travaux x ECOCEM : un site R&D construit| Migen",
+    "meta_description": "Ecocem confie à Migen Travaux, la construction complète de son nouveau site industriel de R&D près de Paris, livraison prévue."
   },
   "titre_h1": "De la parcelle au site de R&D, un seul pilote",
   "contenu": {
     "gabarit": "etude-de-cas",
-    "client": "ORTHUS x ECOCEM",
+    "client": "Migen Travaux x ECOCEM",
     "chapeau": [
       "Ecocem est une entreprise irlandaise spécialisée dans les matériaux bas carbone, pionnière européenne des ciments à faible émission de CO₂.",
-      "Elle a confié à Orthus, filiale du groupe Migen, la construction complète de son nouveau site industriel de recherche et développement, en région parisienne. Le chantier s'étend sur plusieurs mois."
+      "Elle a confié à Migen Travaux, la construction complète de son nouveau site industriel de recherche et développement, en région parisienne. Le chantier s'étend sur plusieurs mois."
     ],
     "bouton": "Faire piloter mon projet industriel",
     "logo": "/assets/clients/ecocem.png",
@@ -18,7 +18,7 @@
     "chiffres": [
       {
         "libelle": "Intervenant",
-        "valeur": "Orthus, filiale du groupe Migen, équipe dédiée"
+        "valeur": "Migen Travaux, équipe dédiée"
       },
       {
         "libelle": "Site",
@@ -61,11 +61,11 @@
     "reponseCartes": [
       {
         "titre": "Vous avez un pilote unique du chantier",
-        "texte": "Orthus assure la gestion du projet de bout en bout, de la conception à la réalisation."
+        "texte": "Migen Travaux assure la gestion du projet de bout en bout, de la conception à la réalisation."
       },
       {
         "titre": "Vous n'arbitrez pas entre les corps de métier",
-        "texte": "La coordination des intervenants est portée par Orthus."
+        "texte": "La coordination des intervenants est portée par Migen Travaux."
       },
       {
         "titre": "Vous tenez un planning long",
@@ -83,7 +83,7 @@
     "etapes": [
       {
         "titre": "Choix du partenaire",
-        "texte": "Ecocem confie à Orthus la conception et la réalisation complète du site industriel."
+        "texte": "Ecocem confie à Migen Travaux la conception et la réalisation complète du site industriel."
       },
       {
         "titre": "Cadrage du projet",
@@ -91,7 +91,7 @@
       },
       {
         "titre": "Constitution de l'équipe",
-        "texte": "Une équipe Orthus dédiée est affectée au suivi de chaque étape."
+        "texte": "Une équipe Migen Travaux dédiée est affectée au suivi de chaque étape."
       },
       {
         "titre": "Travaux structurels",
@@ -121,7 +121,7 @@
       },
       {
         "libelle": "Intervenant",
-        "valeur": "Orthus, filiale du groupe Migen, équipe dédiée"
+        "valeur": "Migen Travaux, équipe dédiée"
       },
       {
         "libelle": "Domaines",
@@ -135,7 +135,7 @@
         "texte": ", avec des jalons critiques suivis jusqu'à la livraison prévue d'ici."
       },
       {
-        "titre": "Un pilotage complet assuré par Orthus",
+        "titre": "Un pilotage complet assuré par Migen Travaux",
         "texte": ", de la conception à la réalisation, avec une équipe dédiée sur chaque étape."
       },
       {
@@ -161,7 +161,7 @@
     "plusLoin": [
       {
         "surtitre": "Étude de cas",
-        "titre": "ORTHUS x WASHTEC : montage de portiques",
+        "titre": "Migen Travaux x WASHTEC : montage de portiques",
         "href": "/preuves/orthus-washtec/",
         "photo": "/assets/web/mq-2a6115ec9fe0.jpg"
       },

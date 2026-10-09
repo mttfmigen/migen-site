@@ -46,7 +46,7 @@ const JALONS: readonly Jalon[] = [
   {
     annee: "2025",
     texte:
-      "Dubaï et Montréal ouvrent. Orthus lance les travaux industriels et le bureau d’études.",
+      "Dubaï et Montréal ouvrent. Migen lance les travaux industriels et le bureau d’études.",
   },
   {
     annee: "2026",

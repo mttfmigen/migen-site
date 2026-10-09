@@ -9,7 +9,7 @@
     "gabarit": "etude-de-cas",
     "client": "SAVOYE",
     "chapeau": [
-      "Savoye, intégrateur de solutions d'automatisation logistique, a confié à Migen la migration des automates de deux de ses machines, installées chez un exploitant logistique en Norvège. Migen est intervenu au nom de Savoye, sous le pilotage d'Orthus, filiale du groupe Migen."
+      "Savoye, intégrateur de solutions d'automatisation logistique, a confié à Migen la migration des automates de deux de ses machines, installées chez un exploitant logistique en Norvège. Migen est intervenu au nom de Savoye, sous le pilotage d'Migen Travaux."
     ],
     "bouton": "Préparer ma migration",
     "heroFiche": [
@@ -79,7 +79,7 @@
         "texte": "Matériel de remplacement défini et programme développé avant le départ, pour que le chantier se limite au remplacement et aux essais."
       },
       {
-        "titre": "Un pilotage par Orthus",
+        "titre": "Un pilotage par Migen Travaux",
         "texte": "Un interlocuteur unique pour Savoye, du cadrage à la remise en service."
       },
       {
@@ -132,7 +132,7 @@
       },
       {
         "libelle": "Pilotage",
-        "valeur": "Orthus, filiale du groupe Migen"
+        "valeur": "Migen Travaux"
       }
     ],
     "photoDispositif": "/assets/web/mq-17e2f3bce95f.jpg",

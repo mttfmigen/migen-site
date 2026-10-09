@@ -266,7 +266,7 @@ export const APROPOS_ENTREPRISE: LienDecrit[] = [
   },
   {
     libelle: "Partenaires",
-    description: "DimoMaint, Savoye, Orthus",
+    description: "DimoMaint, Savoye",
     href: "/partenaires/",
   },
   {

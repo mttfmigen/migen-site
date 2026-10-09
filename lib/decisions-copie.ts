@@ -96,7 +96,30 @@ const PHOTOS_VILLE: Regle[] = [
    de refuser la forme trouée pour qu'un retour en arrière se voie. */
 const TELEPHONE: Regle[] = [[/:\s+(?=[,.])/g, () => ": 04 78 33 72 05"]];
 
-const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE];
+/* 09/10, ORTHUS DEVIENT MIGEN TRAVAUX. Décision de Mehdi : « Orthus = Migen
+   travaux et bureau d'études ». L'audit de Nathan du 09/10 signalait que le nom
+   était encore là malgré sa décision du 06/10, et qu'il était qualifié
+   « filiale » sur une page et « marque sœur créée en 2024 » sur une autre.
+
+   C'est un ÉCART ASSUMÉ À LA MAQUETTE : elle porte Orthus sur 22 de ses 244
+   captures, 60 occurrences, menu et frise comprises. Les règles transforment
+   donc la capture avant comparaison, pour que la décision soit vérifiée des
+   deux côtés au lieu d'être déclarée page par page.
+
+   Les formes longues passent AVANT la forme nue, sans quoi « Orthus, filiale du
+   groupe Migen » deviendrait « Migen Travaux, filiale du groupe Migen ». */
+const ORTHUS: Regle[] = [
+  [/\bOrthus, filiale du groupe Migen\b/g, () => "Migen Travaux"],
+  [/\bOrthus, filiale Migen\b/g, () => "Migen Travaux"],
+  [/\bOrthus, filiale du groupe\b/g, () => "Migen Travaux"],
+  [/\bOrthus, marque sœur créée en 2024 par le groupe, qui partage/g, () => "Migen Travaux, qui partage"],
+  [/\bL'équipe Orthus\b/g, () => "L'équipe Migen Travaux"],
+  [/\bUne équipe Orthus\b/g, () => "Une équipe Migen Travaux"],
+  [/\bORTHUS\b/g, () => "Migen Travaux"],
+  [/\bOrthus\b/g, () => "Migen Travaux"],
+];
+
+const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS];
 
 /** Le texte tel que le site doit le rendre, à partir de celui de la maquette. */
 export function appliqueDecisions(texte: string): string {

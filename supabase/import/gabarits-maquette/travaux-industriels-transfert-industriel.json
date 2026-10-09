@@ -333,8 +333,8 @@
           },
           {
             "titre": "Construction d'un site de R&D bas carbone, région parisienne.",
-            "texte": "Chantier piloté de bout en bout par Orthus, filiale du groupe, coordination multi-métiers et jalons critiques suivis.",
-            "lienLibelle": "Étude de cas ORTHUS x ECOCEM",
+            "texte": "Chantier piloté de bout en bout par Migen Travaux, coordination multi-métiers et jalons critiques suivis.",
+            "lienLibelle": "Étude de cas Migen Travaux x ECOCEM",
             "lienHref": "/preuves/orthus-ecocem/",
             "photo": "/assets/web/mq-e69a240d8656.jpg",
             "logo": "/assets/clients/orthus-x-ecocem.png"
@@ -342,7 +342,7 @@
           {
             "titre": "Montage de portiques de lavage, partout en France.",
             "texte": "Réception, assemblage, levage, raccordements mécaniques et électriques, validation à l'issue du montage.",
-            "lienLibelle": "Étude de cas ORTHUS x WASHTEC",
+            "lienLibelle": "Étude de cas Migen Travaux x WASHTEC",
             "lienHref": "/preuves/orthus-washtec/",
             "photo": "/assets/web/mq-2a6115ec9fe0.jpg",
             "logo": "/assets/clients/orthus-x-washtec.svg"
