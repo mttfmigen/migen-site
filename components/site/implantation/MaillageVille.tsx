@@ -5,6 +5,7 @@ import type { CSSProperties } from "react";
 import { LARGEUR, SECTION, SURTITRE } from "@/components/site/blocs/habillage";
 
 import styles from "./PageVille.module.css";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * « Maillage · offres » du gabarit 04 Ville : « Les six offres, dans chaque
@@ -144,7 +145,7 @@ export default function MaillageVille() {
             >
               <Image
                 src={carte.photo}
-                alt=""
+                alt={altPhoto(carte.photo)}
                 fill
                 sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 400px"
                 style={{ objectFit: "cover", filter: "saturate(var(--sat)) brightness(.72)" }}

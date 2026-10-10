@@ -15,6 +15,7 @@ import type {
 import styles from "./PagePreuve.module.css";
 import TitreEtSuite from "../blocs/TitreEtSuite";
 import { cadragePhoto } from "@/lib/cadrage-photos";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * Gabarit « 02 Étude de cas », porté de la RÉFÉRENCE : le rendu de la maquette
@@ -1210,7 +1211,7 @@ export default function PagePreuve({
                       {lien.photo ? (
                         <Image
                           src={lien.photo}
-                          alt=""
+                          alt={altPhoto(lien.photo)}
                           fill
                           sizes="(max-width: 700px) 100vw, 380px"
                           /* Cadre 270x150, ratio 1,80 : `VIGNETTE` est partagée,

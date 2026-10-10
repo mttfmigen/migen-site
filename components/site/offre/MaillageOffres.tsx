@@ -6,6 +6,7 @@ import { LARGEUR, SECTION, SURTITRE } from "@/components/site/blocs/habillage";
 import type { CarteOffre } from "@/types/offre";
 
 import styles from "./PageOffre.module.css";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * Section « Maillage · offres » de la capture
@@ -189,7 +190,7 @@ export default function MaillageOffres({ cartes }: ProprietesMaillageOffres) {
                 <>
                   <Image
                     src={gabarit.photo}
-                    alt=""
+                    alt={altPhoto(gabarit.photo)}
                     fill
                     sizes="(max-width: 620px) 100vw, (max-width: 1000px) 50vw, 400px"
                     style={{

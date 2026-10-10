@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import s from "../Entete.module.css";
 import { CAS, CHIFFRES } from "../entete-donnees";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /** Panneau « Cas clients » : trois vignettes d'étude, puis le bloc chiffres. */
 export default function PanneauPreuves() {
@@ -67,7 +68,7 @@ export default function PanneauPreuves() {
             >
               <Image
                 src={cas.image}
-                alt=""
+                alt={altPhoto(cas.image)}
                 fill
                 sizes="(max-width: 1000px) 50vw, 340px"
                 style={{

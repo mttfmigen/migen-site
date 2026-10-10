@@ -10,6 +10,7 @@ import CorpsRessource, { EnLigne } from "./CorpsRessource";
 import styles from "./Ressource.module.css";
 import * as H from "./habillage";
 import { cadragePhoto } from "@/lib/cadrage-photos";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * Le gabarit « 01 Article et fiche » : `MigenRessource.dc.html`, branche
@@ -77,7 +78,7 @@ function Questions({ questions }: { questions: Question[] }) {
   return (
     <section data-screen-label="Questions fréquentes" style={H.SECTION_SUITE}>
       <div className={styles.faq} style={H.FAQ_CARTE}>
-        <Image src={H.FAQ_PHOTO} alt="" fill sizes="1120px" style={{ objectFit: "cover" }} />
+        <Image src={H.FAQ_PHOTO} alt={altPhoto(H.FAQ_PHOTO)} fill sizes="1120px" style={{ objectFit: "cover" }} />
         <div aria-hidden="true" style={H.FAQ_VOILE} />
         <div style={{ position: "relative" }}>
           <div style={H.SURTITRE}>{H.COPIE.faqSurtitre}</div>
@@ -136,7 +137,7 @@ function Lectures({
               <div style={H.LECTURE_PHOTO}>
                 <Image
                   src={lecture.image}
-                  alt=""
+                  alt={altPhoto(lecture.image)}
                   fill
                   sizes="(max-width: 900px) 100vw, 380px"
                   style={{
@@ -264,7 +265,7 @@ export default function PageRessource({ titre, contenu }: ProprietesPageRessourc
               <div style={H.PHOTO_HEROS}>
                 <Image
                   src={contenu.image}
-                  alt=""
+                  alt={altPhoto(contenu.image)}
                   fill
                   preload
                   sizes="(max-width: 980px) 100vw, 520px"

@@ -9,6 +9,7 @@ import { cibleSure } from "./LiensOffre";
 
 import styles from "./PageOffre.module.css";
 import { cadragePhoto } from "@/lib/cadrage-photos";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * Section « Maillage » du gabarit 03, relevée dans
@@ -224,7 +225,7 @@ export default function PagesLiees({ pages, titre }: ProprietesPagesLiees) {
             {phare.photo ? (
               <Image
                 src={phare.photo}
-                alt=""
+                alt={altPhoto(phare.photo)}
                 fill
                 sizes="(max-width: 900px) 100vw, 580px"
                 style={{
@@ -259,7 +260,7 @@ export default function PagesLiees({ pages, titre }: ProprietesPagesLiees) {
                   {page.photo ? (
                     <Image
                       src={page.photo}
-                      alt=""
+                      alt={altPhoto(page.photo)}
                       fill
                       sizes="64px"
                       style={{

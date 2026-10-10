@@ -8,6 +8,7 @@ import type { ContenuFicheMetier } from "@/types/metier";
 import styles from "./FicheMetier.module.css";
 import PostulerMetier from "./PostulerMetier";
 import SectionFicheMetier, { BoutonPostuler } from "./SectionsFicheMetier";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * Gabarit 07 « Métier et carrière », 13 pages `/carriere/<metier>/`.
@@ -179,7 +180,7 @@ export default function PageFicheMetier({
                 {heros.photo ? (
                   <Image
                     src={heros.photo.src}
-                    alt={heros.photo.alt ?? ""}
+                    alt={altPhoto(heros.photo.src) || (heros.photo.alt ?? "")}
                     fill
                     priority
                     sizes="(max-width: 900px) 100vw, 520px"

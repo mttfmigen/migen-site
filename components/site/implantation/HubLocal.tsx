@@ -6,6 +6,7 @@ import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habil
 import type { HubLocal as DonneesHubLocal } from "@/types/implantation";
 
 import styles from "./PageVille.module.css";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * Écran « Hub local » du gabarit 04 Ville, relevé sur les captures du 07/10
@@ -212,7 +213,7 @@ export default function HubLocal({ hub }: { hub: DonneesHubLocal }) {
           <div style={PANNEAU}>
             <Image
               src={hub.photo}
-              alt=""
+              alt={altPhoto(hub.photo)}
               fill
               sizes="(max-width: 900px) 100vw, 520px"
               // Les photos Envato sont des aperçus distants dont la licence

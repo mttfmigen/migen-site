@@ -7,6 +7,7 @@ import { cibleSure } from "@/components/site/offre/LiensOffre";
 import type { CarteMaillageOffres } from "@/types/offres";
 
 import styles from "./PageOffres.module.css";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * « Maillage · offres » de la capture `maquette/rendu/offres.html` (blocs 1127
@@ -88,7 +89,7 @@ export default function SixOffres({ surtitre, titre, cartes }: ProprietesSixOffr
             >
               <Image
                 src={carte.photo}
-                alt=""
+                alt={altPhoto(carte.photo)}
                 fill
                 sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 400px"
                 style={{

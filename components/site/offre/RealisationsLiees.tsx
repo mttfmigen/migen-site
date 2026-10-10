@@ -6,6 +6,7 @@ import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habil
 import { estCheminInterne } from "@/components/site/blocs/TexteRiche";
 
 import styles from "./PageOffre.module.css";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * Section « Réalisations liées » de la capture
@@ -196,7 +197,7 @@ export default function RealisationsLiees({ cas }: ProprietesRealisationsLiees) 
             <div style={{ position: "relative", minHeight: 260 }}>
               <Image
                 src={une.photo}
-                alt=""
+                alt={altPhoto(une.photo)}
                 fill
                 sizes="(max-width: 900px) 100vw, 520px"
                 style={{ objectFit: "cover", filter: "saturate(var(--sat))" }}
@@ -232,7 +233,7 @@ export default function RealisationsLiees({ cas }: ProprietesRealisationsLiees) 
               <div style={CADRE_PHOTO}>
                 <Image
                   src={casLie.photo}
-                  alt=""
+                  alt={altPhoto(casLie.photo)}
                   fill
                   sizes="(max-width: 620px) 100vw, 300px"
                   style={{

@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import s from "../Entete.module.css";
 import type { Offre } from "../entete-donnees";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /** Sur-titre orange des colonnes, répété dans les cinq panneaux. */
 /** `marge` : 12 px sous les sur-titres d'« Offres », 14 sous ceux de
@@ -71,7 +72,7 @@ export function RangeeOffre({ offre }: { offre: Offre }) {
       >
         <Image
           src={offre.image}
-          alt=""
+          alt={altPhoto(offre.image)}
           width={74}
           height={56}
           style={{

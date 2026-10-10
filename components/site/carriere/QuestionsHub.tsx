@@ -5,6 +5,7 @@ import { SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 
 import styles from "./HubCarriere.module.css";
 import { Enveloppe, Paragraphe } from "./SectionsHub";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /* -------------------------------------------------------------- questions */
 
@@ -64,7 +65,7 @@ export default function QuestionsHub({
           color: "var(--ink)",
         }}
       >
-        <Image src={PHOTO_QUESTIONS} alt="" fill sizes="1200px" style={{ objectFit: "cover" }} />
+        <Image src={PHOTO_QUESTIONS} alt={altPhoto(PHOTO_QUESTIONS)} fill sizes="1200px" style={{ objectFit: "cover" }} />
         <div
           style={{
             position: "absolute",

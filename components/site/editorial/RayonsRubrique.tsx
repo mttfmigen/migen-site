@@ -9,6 +9,7 @@ import type { CarteCatalogue, VueRubrique } from "@/types/editorial";
 
 import styles from "./PageEditoriale.module.css";
 import { cadragePhoto } from "@/lib/cadrage-photos";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * Héros et rayons d'une sous-rubrique, `MigenRessource.dc.html` (sections
@@ -238,7 +239,7 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
           >
             <Image
               src={vue.image}
-              alt=""
+              alt={altPhoto(vue.image)}
               fill
               priority
               sizes="(max-width: 980px) 100vw, 500px"
@@ -320,7 +321,7 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
             >
               <Image
                 src={une.image}
-                alt=""
+                alt={altPhoto(une.image)}
                 fill
                 sizes="(max-width: 980px) 100vw, 640px"
                 style={{
@@ -386,7 +387,7 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
                   >
                     <Image
                       src={c.image}
-                      alt=""
+                      alt={altPhoto(c.image)}
                       fill
                       sizes="140px"
                       style={{ objectFit: "cover", filter: "saturate(var(--sat,.55))" }}
@@ -429,7 +430,7 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
               <div style={{ position: "relative", height: 160, background: "var(--ph)", overflow: "hidden" }}>
                 <Image
                   src={c.image}
-                  alt=""
+                  alt={altPhoto(c.image)}
                   fill
                   sizes="(max-width: 640px) 100vw, 300px"
                   style={{

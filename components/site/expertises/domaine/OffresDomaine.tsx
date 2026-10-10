@@ -5,6 +5,7 @@ import type { CSSProperties } from "react";
 import { LARGEUR, SECTION } from "@/components/site/blocs/habillage";
 
 import styles from "./PageDomaine.module.css";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * Section « Offres du secteur » du gabarit 09 Domaine, relevée dans
@@ -295,7 +296,7 @@ export default function OffresDomaine() {
             >
               <Image
                 src={offre.photo}
-                alt=""
+                alt={altPhoto(offre.photo)}
                 fill
                 sizes="(max-width: 1000px) 100vw, 380px"
                 style={{

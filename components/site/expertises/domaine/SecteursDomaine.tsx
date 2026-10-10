@@ -5,6 +5,7 @@ import type { CSSProperties } from "react";
 import { LARGEUR, SECTION } from "@/components/site/blocs/habillage";
 
 import styles from "./PageDomaine.module.css";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * Section « Secteurs de l'expertise » du gabarit 09 Domaine, relevée dans
@@ -173,7 +174,7 @@ export default function SecteursDomaine() {
             >
               <Image
                 src={secteur.photo}
-                alt=""
+                alt={altPhoto(secteur.photo)}
                 fill
                 sizes="(max-width: 1000px) 100vw, 380px"
                 style={{

@@ -6,6 +6,7 @@ import styles from "./QuestionsPhoto.module.css";
 import { LARGEUR, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import type { QuestionsPhotoOffres } from "@/types/offres";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * La FAQ du hub des offres, variante « 09 Questions · photo » de la maquette :
@@ -167,7 +168,7 @@ export default function QuestionsPhoto({
         <div className={styles.panneau} style={CARTE}>
           <Image
             src={donnees.photo}
-            alt=""
+            alt={altPhoto(donnees.photo)}
             fill
             sizes="1200px"
             style={{ objectFit: "cover" }}

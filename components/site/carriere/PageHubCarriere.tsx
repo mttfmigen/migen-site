@@ -18,6 +18,7 @@ import {
   Paragraphe,
   Refus,
 } from "./SectionsHub";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * Le hub `/carriere/`, gabarit 10 « Hub de rubrique » servi par
@@ -163,7 +164,7 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
               >
                 <Image
                   src={heros.photo.src}
-                  alt={heros.photo.alt}
+                  alt={altPhoto(heros.photo.src) || heros.photo.alt}
                   fill
                   priority
                   sizes="(max-width: 900px) 100vw, 520px"

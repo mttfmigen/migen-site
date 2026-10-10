@@ -11,6 +11,7 @@ import { etiquetteEtude, phraseDate } from "./texte-offre";
 import styles from "./PageOffre.module.css";
 import TitreEtSuite, { continueLeTitre } from "../blocs/TitreEtSuite";
 import { cadragePhoto } from "@/lib/cadrage-photos";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * Section « 08 Références » de la capture (`maquette/rendu/offres--residence.html`) :
@@ -298,7 +299,7 @@ export default function ReferencesOffre({ section, dateBrute = false }: Propriet
               <div style={CADRE_PHOTO}>
                 <Image
                   src={preuve.photo ?? PHOTOS[rang % PHOTOS.length]}
-                  alt=""
+                  alt={altPhoto(preuve.photo ?? PHOTOS[rang % PHOTOS.length])}
                   fill
                   sizes="320px"
                   style={{

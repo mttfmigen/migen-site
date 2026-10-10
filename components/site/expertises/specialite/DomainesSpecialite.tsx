@@ -11,6 +11,7 @@ import { numerote } from "@/components/site/offre/texte-offre";
 import type { CarteDomaineSpecialite } from "@/types/specialite";
 
 import styles from "./PageSpecialite.module.css";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * Écran « 02 Domaines » du gabarit 05 Spécialité, relevé le 08/10 sur les trois
@@ -127,7 +128,7 @@ export default function DomainesSpecialite({
             <div key={`${rang}-${carte.valeur}`} style={CARTE}>
               <Image
                 src={carte.photo}
-                alt=""
+                alt={altPhoto(carte.photo)}
                 fill
                 sizes="(max-width: 620px) 100vw, (max-width: 1000px) 50vw, 560px"
                 style={PHOTO}

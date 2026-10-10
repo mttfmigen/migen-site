@@ -9,6 +9,7 @@ import type { BandeFiche, CarteFiche } from "@/types/metier";
 import type { HubCarriere, SectionEtapesHub } from "./donnees-hub";
 import styles from "./HubCarriere.module.css";
 import { cadragePhoto } from "@/lib/cadrage-photos";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * Les écrans du hub `/carriere/` que le gabarit 07 (`SectionsFicheMetier`)
@@ -455,7 +456,7 @@ export function Hubs({
             >
               <Image
                 src={hub.photo}
-                alt=""
+                alt={altPhoto(hub.photo)}
                 fill
                 sizes="(max-width: 700px) 100vw, 380px"
                 style={{
@@ -712,7 +713,7 @@ export function LiensPhoto({ items }: { items: { libelle: string; href: string; 
                 {item.photo ? (
                   <Image
                     src={item.photo}
-                    alt=""
+                    alt={altPhoto(item.photo)}
                     fill
                     sizes="300px"
                     style={{

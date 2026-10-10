@@ -6,6 +6,7 @@ import { useState, type CSSProperties } from "react";
 
 import styles from "./PreuvesHub.module.css";
 import type { CartePreuve, VuePreuves } from "./vues-preuves";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * Deuxième écran du hub /preuves/ : onglets par type de besoin, phrase du
@@ -219,7 +220,7 @@ function Carte({ carte, montreCategorie }: { carte: CartePreuve; montreCategorie
       >
         <Image
           src={carte.photo}
-          alt=""
+          alt={altPhoto(carte.photo)}
           fill
           sizes="(max-width: 480px) 100vw, (max-width: 680px) 50vw, 380px"
           style={{

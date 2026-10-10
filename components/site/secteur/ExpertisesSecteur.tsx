@@ -6,6 +6,7 @@ import { LARGEUR, SECTION, SURTITRE } from "@/components/site/blocs/habillage";
 import type { CarteExpertiseSecteur } from "@/types/secteur";
 
 import styles from "./PageSecteur.module.css";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 /**
  * Section « Expertises du secteur » de la capture
@@ -113,7 +114,7 @@ export default function ExpertisesSecteur({ titre, chapeau, cartes }: Proprietes
               <div aria-hidden="true" style={FOND} />
               <Image
                 src={carte.photo}
-                alt=""
+                alt={altPhoto(carte.photo)}
                 fill
                 sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 290px"
                 style={{ objectFit: "cover", filter: "saturate(var(--sat)) brightness(.66)" }}
