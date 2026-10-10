@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 
 /**
  * Les moteurs d'animation de la maquette, portés à l'identique.
@@ -48,10 +48,42 @@ function mouvementReduit(): boolean {
   );
 }
 
+/* LE REGLAGE EST SUIVI EN CONTINU, plus lu une seule fois au montage. Mesure
+   du 09/10 : le rail des hubs avancait encore de 27 px par seconde apres que
+   le visiteur avait active « reduire les animations », et seul un rechargement
+   complet l'arretait. Ce composant est monte UNE FOIS dans la mise en page
+   racine : la lecture au montage survivait donc aussi a toutes les
+   navigations internes. Meme motif que `accueil/CarteEtapes.tsx`. */
+function abonneMouvementReduit(prevenir: () => void) {
+  const requete = window.matchMedia("(prefers-reduced-motion: reduce)");
+  requete.addEventListener("change", prevenir);
+  return () => requete.removeEventListener("change", prevenir);
+}
+
 export default function Moteurs() {
+  /* Le troisieme argument rend `false` cote serveur : le rendu serveur ne
+     masque rien, c'est le JavaScript qui arme. */
+  const reduit = useSyncExternalStore(
+    abonneMouvementReduit,
+    mouvementReduit,
+    () => false,
+  );
+
   useEffect(() => {
-    const reduit = mouvementReduit();
     const menages: (() => void)[] = [];
+
+    /* Le visiteur vient de demander moins d'animations : on DESARME ce que la
+       passe precedente avait masque. Sans cela, des blocs deja armes et encore
+       sous la ligne resteraient a `opacity: 0` jusqu'au prochain defilement. */
+    if (reduit) {
+      document.querySelectorAll<HTMLElement>("[data-armed]").forEach((el) => {
+        el.removeAttribute("data-armed");
+        el.style.opacity = "1";
+        el.style.transform = "none";
+        const pct = el.getAttribute("data-bar");
+        if (pct !== null) el.style.width = `${pct}%`;
+      });
+    }
 
     // ------------------------------------------------- rails qui défilent seuls
     if (!reduit) {
@@ -59,8 +91,26 @@ export default function Moteurs() {
       const pas = () => {
         document.querySelectorAll<Rail>(SELECTEUR_RAILS).forEach((r) => {
           // Un rail qui tient dans sa largeur n'a rien à faire défiler. Au
-          // survol et pendant un glissement, la main du visiteur gagne.
-          if (r.scrollWidth <= r.clientWidth + 4 || r.matches(":hover") || r._drag) {
+          // survol, au FOCUS CLAVIER et pendant un glissement, la main du
+          // visiteur gagne.
+          //
+          // `:focus-within` n'est pas un ajout de confort. Mesure du 09/10 :
+          // le rail avançait de 27 px par seconde pendant qu'un lien de carte
+          // portait le focus, et poussait donc hors de l'écran la carte que
+          // l'on venait d'atteindre. Le pointeur, dans cette même condition,
+          // l'arrêtait déjà : la cause était l'absence du clavier, rien
+          // d'autre. WCAG 2.2.2.
+          //
+          // La case de pause est cherchée dans la SECTION du rail, jamais
+          // dedans : un contrôle placé dans le conteneur qui défile serait
+          // emporté par le défilement et compterait dans `scrollWidth`, que la
+          // première condition lit.
+          if (
+            r.scrollWidth <= r.clientWidth + 4 ||
+            r.matches(":hover, :focus-within") ||
+            r._drag ||
+            r.closest("section")?.querySelector(".mg-pause-case:checked")
+          ) {
             return;
           }
           r._x = (r._x ?? r.scrollLeft) + VITESSE_RAIL;
@@ -260,7 +310,7 @@ export default function Moteurs() {
     });
 
     return () => menages.forEach((m) => m());
-  }, []);
+  }, [reduit]);
 
   return null;
 }

@@ -28,6 +28,13 @@
  *     doit repincer. La règle ne vaut que pour les champs : les sur-titres de la
  *     maquette sont à 10,5 et 11,5 px, c'est son échelle typographique, pas un
  *     défaut à corriger.
+ *   · LA BARRE D'ACTION BASSE NE COUVRE PAS LA FIN DU PIED DE PAGE. Elle est en
+ *     position fixe : elle ne pousse rien et vit au dessus du contenu. Mesuré
+ *     le 10/10 en production, elle occupait les 68 derniers pixels du pied sur
+ *     les 248 pages, et le réglage CNIL des traceurs y était couvert à 100 % :
+ *     un appui dessus ouvrait le formulaire de contact. Ce contrôle était vert
+ *     et aveugle, parce qu'il mesurait en HAUT de page, là où le pied n'est pas
+ *     à l'écran. On défile donc jusqu'en bas avant de mesurer.
  */
 import { chromium } from "playwright";
 
@@ -188,6 +195,73 @@ const MESURE = ({ cible, saisie }) => {
   };
 };
 
+/**
+ * La barre d'action basse laisse-t-elle lire la fin du pied de page ?
+ *
+ * À exécuter PAGE DÉFILÉE TOUT EN BAS : c'est la seule position où le pied et
+ * la barre sont à l'écran ensemble.
+ *
+ * La mesure est GÉOMÉTRIQUE, croisement de rectangles, et non un test de point :
+ * le bandeau de consentement est lui aussi en bas de l'écran et en z-index 50,
+ * un test de point le désignerait coupable à la place de la barre. Il est fixe,
+ * donc il ne déplace rien et ne fausse pas les rectangles.
+ *
+ * `jeu` est la distance entre la dernière ligne du pied et le haut de la barre.
+ * Négatif, le pied passe SOUS la barre.
+ */
+const MESURE_BARRE_BASSE = () => {
+  const lisible = (texte) =>
+    (texte ?? "")
+      .replace(/&nbsp;|[  ]/g, " ")
+      .replace(/[’‘]/g, "'")
+      .replace(/\s+/g, " ")
+      .trim();
+
+  const pied = document.querySelector("footer");
+  if (!pied) return { erreur: "aucun pied de page" };
+  const barre = [...document.body.children].find((noeud) => {
+    const style = getComputedStyle(noeud);
+    return style.position === "fixed" && style.zIndex === "25" && noeud.querySelector("a[href]");
+  });
+  if (!barre) return { erreur: "barre d'action basse introuvable" };
+  const cadreBarre = barre.getBoundingClientRect();
+  if (cadreBarre.height === 0) return { barreMasquee: true };
+
+  const couverts = [];
+  let basContenu = -Infinity;
+  let derniere = "";
+  for (const element of pied.querySelectorAll("a[href], button, span, div, p, li")) {
+    // Seules les feuilles : un conteneur hériterait du tort de ses enfants.
+    if (element.querySelector("a[href], button")) continue;
+    const texte = lisible(element.textContent);
+    if (!texte) continue;
+    const boite = element.getBoundingClientRect();
+    if (boite.width === 0 || boite.height === 0) continue;
+    const style = getComputedStyle(element);
+    if (style.visibility === "hidden" || style.opacity === "0") continue;
+    if (boite.bottom > basContenu) {
+      basContenu = boite.bottom;
+      derniere = texte.slice(0, 40);
+    }
+    const chevauchementY = Math.min(boite.bottom, cadreBarre.bottom) - Math.max(boite.top, cadreBarre.top);
+    const chevauchementX = Math.min(boite.right, cadreBarre.right) - Math.max(boite.left, cadreBarre.left);
+    if (chevauchementY > 1 && chevauchementX > 1) {
+      couverts.push(
+        `${element.tagName.toLowerCase()} « ${texte.slice(0, 34)} » couvert sur ` +
+          `${Math.round(chevauchementY)} de ses ${Math.round(boite.height)} px` +
+          (element.getAttribute("href") ? ` → ${element.getAttribute("href")}` : ""),
+      );
+    }
+  }
+
+  return {
+    jeu: Math.round(cadreBarre.top - basContenu),
+    derniere,
+    reserve: getComputedStyle(pied).paddingBottom,
+    couverts,
+  };
+};
+
 const navigateur = await chromium.launch({ channel: "chrome" });
 const problemes = [];
 
@@ -253,10 +327,36 @@ try {
         );
       }
 
+      /* LE PIED DE PAGE SOUS LA BARRE D'ACTION. Il faut défiler pour le voir :
+         tous les relevés ci-dessus travaillent en haut de page, où le pied
+         n'est pas à l'écran, et c'est exactement pourquoi ce contrôle était
+         vert le 10/10 alors que la barre couvrait les 68 derniers pixels du
+         pied sur les 248 pages. */
+      await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+      await page.waitForTimeout(600);
+      const bas = await page.evaluate(MESURE_BARRE_BASSE);
+      if (bas.erreur) {
+        problemes.push(`${chemin} à ${largeur} px : ${bas.erreur}`);
+      } else if (!bas.barreMasquee) {
+        if (bas.couverts.length > 0) {
+          problemes.push(
+            `${chemin} à ${largeur} px : la barre d'action basse couvre ${bas.couverts.length} ` +
+              `élément(s) du pied de page (jeu de ${bas.jeu} px sous la dernière ligne, ` +
+              `réserve de ${bas.reserve})\n      ${bas.couverts.slice(0, 4).join("\n      ")}`,
+          );
+        } else if (bas.jeu < 0) {
+          problemes.push(
+            `${chemin} à ${largeur} px : le pied de page passe ${-bas.jeu} px sous la barre ` +
+              `d'action basse (dernière ligne « ${bas.derniere} », réserve de ${bas.reserve})`,
+          );
+        }
+      }
+
       console.log(
         `${chemin.padEnd(32)} ${String(largeur).padStart(4)} px  ` +
           `document ${releve.largeurDocument} px, ${releve.debordements.length} débordement(s), ` +
-          `${releve.petitesCibles.length} cible(s) trop petite(s)`,
+          `${releve.petitesCibles.length} cible(s) trop petite(s), ` +
+          `pied à ${bas.barreMasquee ? "—" : `${bas.jeu} px`} de la barre basse`,
       );
       await page.close();
     }

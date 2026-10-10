@@ -266,7 +266,16 @@ export default function PiedDePage({
 
   if (landingPage) {
     return (
-      <footer style={{ background: "var(--foot)", color: "#fff", padding: "52px 0 30px" }}>
+      <footer
+        style={{
+          background: "var(--foot)",
+          color: "#fff",
+          padding: "52px 0 30px",
+          /* Même réserve que le pied du site, et pour la même raison : la barre
+             d'action basse est posée par la mise en page commune. */
+          paddingBottom: "calc(30px + var(--barre-reserve))",
+        }}
+      >
         <div style={styleCadre}>
           <div
             className="mg-r2"
@@ -334,7 +343,23 @@ export default function PiedDePage({
   }
 
   return (
-    <footer style={{ background: "var(--foot)", color: "#fff", padding: "80px 0 34px" }}>
+    <footer
+      style={{
+        background: "var(--foot)",
+        color: "#fff",
+        padding: "80px 0 34px",
+        /* La barre d'action basse est en position fixe : elle ne pousse rien,
+           et sans cette réserve elle couvrait les 68 derniers pixels du pied
+           sur les 248 pages, dont « Gérer mes traceurs » et « Une mission
+           freelance » à 100 %. Les 34 px du raccourci au dessus restent le jeu
+           visible entre la dernière ligne et la barre.
+
+           Déclaration SÉPARÉE et non fondue dans le raccourci : un navigateur
+           qui ignorerait `env()` ne jetterait que cette ligne, et le pied
+           garderait ses 34 px au lieu de perdre aussi ses 80 px du haut. */
+        paddingBottom: "calc(34px + var(--barre-reserve))",
+      }}
+    >
       <div style={styleCadre}>
         <div
           className="mg-r2"

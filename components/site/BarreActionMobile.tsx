@@ -26,6 +26,13 @@ export interface BarreActionMobileProps {
  * se place au-dessus de la zone de geste des téléphones grâce à
  * `env(safe-area-inset-bottom)` : la maquette réservait 30px en dur, ce qui
  * n'avait de sens que dans son cadre iOS d'aperçu.
+ *
+ * SA GÉOMÉTRIE VIENT DE `app/globals.css` (`--barre-hauteur`, `--barre-marge`)
+ * et n'est plus écrite ici en nombres. Le pied de page réserve la place de
+ * cette barre avec les MÊMES variables (`--barre-reserve`). Mesuré le 10/10 :
+ * tant que les deux portaient des valeurs séparées, la barre couvrait les
+ * 68 derniers pixels du pied sur les 248 pages, dont le réglage CNIL des
+ * traceurs, couvert à 100 %.
  */
 export default function BarreActionMobile({
   landingPage = false,
@@ -42,9 +49,9 @@ export default function BarreActionMobile({
       className={s.barreAction}
       style={{
         position: "fixed",
-        left: 14,
-        right: 14,
-        bottom: "calc(14px + env(safe-area-inset-bottom))",
+        left: "var(--barre-marge)",
+        right: "var(--barre-marge)",
+        bottom: "calc(var(--barre-marge) + env(safe-area-inset-bottom))",
         zIndex: 25,
         gap: 8,
       }}
@@ -54,7 +61,7 @@ export default function BarreActionMobile({
         className={s.ctaPanneau}
         style={{
           flex: 1,
-          height: 54,
+          height: "var(--barre-hauteur)",
           borderRadius: 999,
           display: "grid",
           placeItems: "center",
@@ -67,7 +74,7 @@ export default function BarreActionMobile({
       <a
         href={telephone.href}
         style={{
-          height: 54,
+          height: "var(--barre-hauteur)",
           padding: "0 18px",
           borderRadius: 999,
           background: "rgba(255,255,255,.9)",

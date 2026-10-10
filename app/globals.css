@@ -236,6 +236,47 @@ button {
   border-radius: 4px;
 }
 
+/* ------------------------------------------------- réserve de la barre basse */
+/*
+ * GÉOMÉTRIE DE LA BARRE D'ACTION BASSE, déclarée UNE FOIS et ici.
+ *
+ * `components/site/BarreActionMobile.tsx` se dessine avec `--barre-hauteur` et
+ * `--barre-marge` ; `components/site/PiedDePage.tsx` réserve la place
+ * correspondante avec `--barre-reserve`. Les trois ne vivent qu'ici : tant que
+ * la barre et le pied lisaient des nombres séparés, une barre plus haute
+ * recouvrait la fin du pied sans que rien ne le dise.
+ *
+ * MESURÉ LE 10/10 sur migen-site.vercel.app, téléphone 390 × 844, page défilée
+ * tout en bas : la barre, fixe, occupait les 68 derniers pixels du pied
+ * (54 px de bouton + 14 px de marge basse) sur les 8 pages éprouvées, donc sur
+ * les 248 du site, barre et pied venant tous deux de la mise en page. Les deux
+ * dernières commandes du pied étaient couvertes à 100 % : « Gérer mes
+ * traceurs », que la CNIL exige atteignable en permanence, et « Une mission
+ * freelance ». À 768 px, « Mentions légales » et « Confidentialité » partaient
+ * avec. Un appui dessus déclenchait « Décrire mon besoin », le bouton de la
+ * barre.
+ *
+ * `--barre-reserve` vaut 0 au-delà de 880 px : c'est le seuil qui masque
+ * `.barreAction` dans `components/site/Entete.module.css`, et les deux doivent
+ * rester égaux. Le rendu bureau ne bouge donc d'aucun pixel.
+ */
+:root {
+  --barre-hauteur: 54px;
+  --barre-marge: 14px;
+  --barre-reserve: 0px;
+}
+
+@media (max-width: 880px) {
+  :root {
+    /* Hauteur du bouton + son écart au bord + la zone de geste du téléphone.
+       Le pied garde EN PLUS son propre remplissage bas, qui devient le jeu
+       visible entre la dernière ligne et la barre : 34 px mesurés. */
+    --barre-reserve: calc(
+      var(--barre-hauteur) + var(--barre-marge) + env(safe-area-inset-bottom)
+    );
+  }
+}
+
 /* --------------------------------------------------------------- animations */
 @keyframes mgFloat {
   0%,
@@ -337,10 +378,15 @@ details[open] .g3-plus {
 .mg-marquee {
   --mq-play: running;
 }
+/* `!important` n'est pas une preference : la piste porte
+   `animation-play-state` EN LIGNE (la forme raccourcie `animation:mgMarquee
+   60s linear infinite` de `generique/PageVente.tsx` repose `running`), et un
+   style en ligne bat toute regle de feuille. Mesure du 09/10 : la bande des
+   six pages « vente » ne s'arretait NI au pointeur ni au focus. */
 .mg-marquee:hover .mg-track,
 .mg-marquee:focus-within .mg-track {
   --mq-play: paused;
-  animation-play-state: paused;
+  animation-play-state: paused !important;
 }
 .mg-logo {
   transition:

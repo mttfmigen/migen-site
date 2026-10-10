@@ -18,6 +18,7 @@
     "verifie:markdown": "bun components/site/verification-markdown-brut.tsx",
     "verifie:interdits": "node scripts/verifie-interdits.mjs",
     "verifie:formulaire": "bun scripts/verifie-formulaire.tsx",
+    "verifie:noms-champs": "node scripts/verifie-noms-champs.mjs",
     "verifie:base": "node scripts/verifie-base.mjs",
     "verifie:seo": "node scripts/verifie-seo.mjs",
     "verifie:fidelite": "node scripts/verifie-fidelite.mjs",

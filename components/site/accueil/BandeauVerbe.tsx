@@ -34,12 +34,21 @@ function useVerbeCourant(verbes: readonly string[]): string {
 
   useEffect(() => {
     if (verbes.length < 2) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    /* LE REGLAGE EST RELU A CHAQUE PAS, plus une seule fois au montage : sinon
+       un visiteur qui active « reduire les animations » pendant sa visite garde
+       la rotation jusqu'au rechargement complet. */
+    const requete = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    const minuterie = window.setInterval(
-      () => setIndex((i) => (i + 1) % verbes.length),
-      CADENCE_MS,
-    );
+    const minuterie = window.setInterval(() => {
+      if (requete.matches) return;
+      /* WCAG 2.2.2 s'applique aussi a l'information qui se met a jour seule.
+         `data-cible` evite que l'arret de la bande de logos, plus bas sur la
+         meme page, arrete aussi le verbe, et l'inverse. */
+      if (document.querySelector('.mg-pause-case[data-cible="verbe"]:checked')) {
+        return;
+      }
+      setIndex((i) => (i + 1) % verbes.length);
+    }, CADENCE_MS);
     return () => window.clearInterval(minuterie);
   }, [verbes.length]);
 

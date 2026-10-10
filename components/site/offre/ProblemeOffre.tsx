@@ -150,7 +150,7 @@ function Sombre({ section }: { section: SectionProbleme }) {
             <div style={{ ...SURTITRE, marginBottom: 16 }}>
               Votre problématique
             </div>
-            <h2 style={TITRE_SOMBRE}>{titre}</h2>
+            {titre ? <h2 style={TITRE_SOMBRE}>{titre}</h2> : null}
             <p style={SOUS_PHRASE_SOMBRE}>{suite}</p>
             <div
               className="mg-rmulti"
@@ -227,7 +227,7 @@ function Rangee({ section }: { section: SectionProbleme }) {
             <div style={{ ...SURTITRE, marginBottom: 18 }}>
               Votre problématique
             </div>
-            <h2 style={RANGEE_TITRE}>{titre}</h2>
+            {titre ? <h2 style={RANGEE_TITRE}>{titre}</h2> : null}
           </div>
           {suite ? <p style={RANGEE_SOUS_PHRASE}>{suite}</p> : null}
         </div>
@@ -302,7 +302,7 @@ export default function ProblemeOffre({
             <div style={{ ...SURTITRE, marginBottom: 18 }}>
               Votre problématique
             </div>
-            <h2 style={TITRE}>{titre}</h2>
+            {titre ? <h2 style={TITRE}>{titre}</h2> : null}
             {suite ? <p style={SOUS_PHRASE}>{suite}</p> : null}
             {source ? (
               <div style={CADRE_PHOTO}>

@@ -38,6 +38,23 @@ function titreCourt(titre: string): string {
 }
 
 /**
+ * L'etiquette PRONONCEE d'un champ : la copie, sans l'asterisque decorative.
+ *
+ * L'asterisque marque l'oeil, elle ne se dit pas. Le depot la masque partout
+ * ailleurs (`aria-hidden` sur `Obligatoire()` dans PostulerMetier, sur
+ * `ASTERISQUE` dans FormulaireContact), et le composant frere RappelExpress la
+ * laisse dans le texte indicatif en la retirant de son `aria-label`. La carte du
+ * livre blanc, elle, passait `H.COPIE` tel quel dans les deux : un lecteur
+ * d'ecran annoncait « E-mail professionnel etoile ».
+ *
+ * Le texte indicatif garde son asterisque : c'est la copie visible de la
+ * maquette, et elle ne bouge pas d'un pixel.
+ */
+function etiquetteParlee(copie: string): string {
+  return copie.replace(/\s*\*\s*$/, "");
+}
+
+/**
  * La carte du livre blanc, à la place de la photo.
  *
  * ÉCART DÉCLARÉ : la maquette simule l'envoi (« C’est envoyé. ») sans rien
@@ -54,13 +71,13 @@ function CarteLivre() {
         <input
           type="email"
           placeholder={H.COPIE.livreEmail}
-          aria-label={H.COPIE.livreEmail}
+          aria-label={etiquetteParlee(H.COPIE.livreEmail)}
           style={H.CHAMP}
         />
         <input
           type="text"
           placeholder={H.COPIE.livreEntreprise}
-          aria-label={H.COPIE.livreEntreprise}
+          aria-label={etiquetteParlee(H.COPIE.livreEntreprise)}
           style={H.CHAMP}
         />
         <button type="submit" style={H.BOUTON_LIVRE}>

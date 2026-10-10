@@ -50,10 +50,22 @@ export default function MetiersRecrutes({
   const rail = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    /* LE REGLAGE EST RELU A CHAQUE PAS, plus une seule fois au montage : un
+       visiteur qui active « reduire les animations » pendant sa visite gardait
+       le rail en marche jusqu'au rechargement complet (meme defaut mesure sur
+       le rail des hubs, 27 px/s apres le changement). La requete est
+       construite une fois, seul son booleen est relu, toutes les 4,2 s. */
+    const requete = window.matchMedia?.("(prefers-reduced-motion: reduce)");
     const minuterie = window.setInterval(() => {
+      if (requete?.matches) return;
       const el = rail.current;
-      if (el && !el.matches(":hover, :focus-within")) avance(el, 1);
+      if (!el) return;
+      /* WCAG 2.2.2 : le survol et le focus arretaient deja le rail, mais ni
+         l'un ni l'autre ne tient quand on lache. La case de pause est cherchee
+         DANS LA SECTION, jamais dans le rail : un controle place dans le
+         conteneur qui defile serait emporte par le defilement. */
+      if (el.closest("section")?.querySelector(".mg-pause-case:checked")) return;
+      if (!el.matches(":hover, :focus-within")) avance(el, 1);
     }, PERIODE_MS);
     return () => window.clearInterval(minuterie);
   }, []);
