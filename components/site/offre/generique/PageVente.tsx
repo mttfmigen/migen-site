@@ -40,8 +40,8 @@ import h from "./Generique.module.css";
 const VERRE =
   "background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3)";
 const BOUTON =
-  "display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--acc);color:var(--sur-acc);font:600 15px var(--fb);white-space:nowrap;box-shadow:0 12px 30px -12px rgba(255,124,60,.9);transition:filter var(--tr),transform var(--tr)";
-const SURTITRE = css("font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc-ink);margin-bottom:16px");
+  "display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--acc);color:#fff;font:600 15px var(--fb);white-space:nowrap;box-shadow:0 12px 30px -12px rgba(255,124,60,.9);transition:filter var(--tr),transform var(--tr)";
+const SURTITRE = css("font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px");
 const TITRE_SECTION = "font:600 calc(clamp(28px,3.2vw,46px) * var(--ts))/1.06 var(--ft);letter-spacing:-.042em;color:var(--ink);margin:0;text-wrap:balance";
 const REPERE_VALEUR = css("font:600 21px var(--ft);letter-spacing:-.04em;color:var(--ink)");
 const REPERE_LIBELLE = css("font:400 11.5px var(--fb);color:var(--ink4);margin-top:2px");
@@ -54,7 +54,7 @@ function Heros({ v }: { v: Vue }) {
       <div className="mg-r2" style={css("display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:start")}>
         <div>
           <div style={css("display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap")}>
-            <span style={css("font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc-ink)")}><span>{v.cFam}</span></span>
+            <span style={css("font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc)")}><span>{v.cFam}</span></span>
             <span style={css(`display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;${VERRE};font:600 11.5px var(--fb);color:var(--ink1);white-space:nowrap`)}>
               <span style={css("width:5px;height:5px;border-radius:999px;background:var(--acc)")}></span>Rappel dans l’heure
             </span>
@@ -136,7 +136,7 @@ function Constat({ v }: { v: Vue }) {
   return (
     <section id="sp-problem" style={css("padding:var(--sec) 0 0;scroll-margin-top:96px")}>
       <div style={css("max-width:1200px;margin:0 auto;padding:0 40px")}>
-        <div className={h.panneauSombre} style={css("border-radius:40px;background:var(--panel);padding:56px 56px 52px;position:relative;overflow:hidden")}>
+        <div style={css("border-radius:40px;background:var(--panel);padding:56px 56px 52px;position:relative;overflow:hidden")}>
           <div style={css("position:absolute;width:460px;height:460px;right:-180px;top:-200px;background:radial-gradient(circle,rgba(255,124,60,.28),transparent 68%);pointer-events:none")}></div>
           <div className="mg-r2" style={css("position:relative;display:grid;grid-template-columns:.92fr 1.08fr;gap:52px;align-items:start")}>
             <div>
@@ -192,7 +192,7 @@ function Methode({ v }: { v: Vue }) {
           {v.spMethod.steps.map((x) => (
             <div key={x.n} style={css("position:relative;padding-top:30px;border-top:2px solid var(--line)")}>
               <span style={css("position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:999px;background:var(--acc);box-shadow:0 0 0 5px rgba(255,124,60,.16)")}></span>
-              <div style={css("font:600 calc(40px * var(--ts))/1 var(--ft);letter-spacing:-.05em;color:var(--acc-ink);margin-bottom:14px")}><span>{x.n}</span></div>
+              <div style={css("font:600 calc(40px * var(--ts))/1 var(--ft);letter-spacing:-.05em;color:var(--acc);margin-bottom:14px")}><span>{x.n}</span></div>
               {x.hasTitle ? <div style={css("font:600 calc(17px * var(--ts))/1.3 var(--ft);letter-spacing:-.026em;color:var(--ink);margin-bottom:8px")}><span>{x.title}</span></div> : null}
               <div style={css("font:400 14px/1.65 var(--fb);color:var(--ink2)")}><span>{x.text}</span></div>
             </div>
@@ -234,7 +234,7 @@ function References({ v }: { v: Vue }) {
         <div style={css("display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px")}>
           {v.spProof.cases.map((k, i) => (
             <Link key={i} className={h.leve3} href={k.go} prefetch={false} style={css(`display:flex;flex-direction:column;gap:8px;min-height:160px;padding:24px 24px 22px;border-radius:var(--rad);${VERRE};transition:transform var(--tr)`)}>
-              <span style={css("font:600 10px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc-ink)")}>Étude de cas</span>
+              <span style={css("font:600 10px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc)")}>Étude de cas</span>
               <span style={css("font:600 calc(22px * var(--ts)) var(--ft);letter-spacing:-.04em;color:var(--ink)")}><span>{k.client}</span></span>
               <span style={css("font:400 13.5px/1.5 var(--fb);color:var(--ink2)")}><span>{k.sub}</span></span>
               <span style={css("font:600 12.5px var(--fb);color:var(--acc-ink);margin-top:auto")}>Lire l’étude →</span>
@@ -285,7 +285,7 @@ function SectionNumerotee({ sec }: { sec: Section }) {
                 <div style={css(sec.mediaCss ?? "")}></div>
               </div>
               <div style={css("position:absolute;left:0;bottom:30px;max-width:230px;padding:18px 22px;border-radius:var(--rad-s);background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 20px 44px -26px rgba(0,0,0,.4)")}>
-                <div style={css("font:600 calc(34px * var(--ts))/1 var(--ft);letter-spacing:-.05em;color:var(--acc-ink)")}><span>{sec.statN}</span></div>
+                <div style={css("font:600 calc(34px * var(--ts))/1 var(--ft);letter-spacing:-.05em;color:var(--acc)")}><span>{sec.statN}</span></div>
                 <div style={css("font:400 13px/1.45 var(--fb);color:var(--ink1);margin-top:6px")}><span>{sec.statT}</span></div>
               </div>
             </div>
@@ -311,7 +311,7 @@ function SectionNumerotee({ sec }: { sec: Section }) {
               </div>
             </div>
             <div style={css("display:flex;align-items:center;gap:10px;flex-wrap:wrap")}>
-              <a className={h.boutonPlat} href="#cx-form" style={css("display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;background:var(--acc);color:var(--sur-acc);font:600 14px var(--fb);white-space:nowrap;box-shadow:0 10px 26px -12px rgba(255,124,60,.9)")}>Décrire mon besoin →</a>
+              <a className={h.boutonPlat} href="#cx-form" style={css("display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;background:var(--acc);color:#fff;font:600 14px var(--fb);white-space:nowrap;box-shadow:0 10px 26px -12px rgba(255,124,60,.9)")}>Décrire mon besoin →</a>
             </div>
           </div>
         </div>
@@ -356,7 +356,7 @@ function Appel({ v }: { v: Vue }) {
   return (
     <section style={css("padding:var(--sec) 0 0")}>
       <div style={css("max-width:1200px;margin:0 auto;padding:0 40px")}>
-        <div className={h.panneauSombre} style={css("border-radius:40px;background:var(--panel);padding:52px 56px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap")}>
+        <div style={css("border-radius:40px;background:var(--panel);padding:52px 56px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap")}>
           <div style={css("position:absolute;width:460px;height:460px;left:-180px;bottom:-200px;background:radial-gradient(circle,rgba(255,124,60,.28),transparent 68%);pointer-events:none")}></div>
           <div style={css("position:relative;flex:1;min-width:260px")}>
             <div style={css("font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:12px")}><span>{v.spH1}</span></div>

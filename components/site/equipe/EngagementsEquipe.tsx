@@ -40,8 +40,7 @@ export default function EngagementsEquipe() {
                     aria-hidden="true"
                     style={{
                       font: "600 11px ui-monospace,Menlo,monospace",
-                      // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
-                      color: "var(--acc-ink)",
+                      color: "var(--acc)",
                     }}
                   >
                     {engagement.rang}

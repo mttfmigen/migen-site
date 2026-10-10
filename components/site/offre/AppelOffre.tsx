@@ -64,8 +64,7 @@ const BOUTON: CSSProperties = {
   padding: "15px 26px",
   borderRadius: 999,
   background: "var(--acc)",
-  /* `#fff` donnait 2,56:1 sur l'orange, `--ink` donne 6,72:1. */
-  color: "var(--sur-acc)",
+  color: "#fff",
   font: "600 15px var(--fb)",
   /* Le `nowrap` cède sous 880 px : voir `.boutonPrincipal` dans
      PageOffre.module.css, le libellé sortait de l'écran sur 118 pages. */

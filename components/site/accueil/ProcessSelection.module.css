@@ -6,13 +6,10 @@
 .cta:hover {
   filter: brightness(.93) !important;
   transform: translateY(-1px) !important;
-  /* Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
-     l'encre change : --ink dessus, 6,72:1. */
-  color: var(--sur-acc) !important;
+  color: #fff !important;
 }
 .lien:hover {
-  /* Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1. */
-  color: var(--acc-ink) !important;
+  color: #ff7c3c !important;
 }
 
 /* La <helmet> de la source, telle quelle. */

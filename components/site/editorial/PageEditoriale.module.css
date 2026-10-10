@@ -8,8 +8,7 @@
 }
 .lienSommaire:hover,
 .lienSommaire:focus-visible {
-  /* Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1. */
-  color: var(--acc-ink);
+  color: var(--acc);
 }
 
 /* Les liens internes posés par le corpus dans le corps du texte.
@@ -25,8 +24,7 @@
 }
 .corps a:hover,
 .corps a:focus-visible {
-  /* Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1. */
-  color: var(--acc-ink);
+  color: var(--acc-d);
 }
 
 /* Le tableau garde ses colonnes et défile, au lieu de s'empiler : une donnée
@@ -72,7 +70,7 @@
 }
 /* La première colonne porte l'entrée de lecture : elle est appuyée. */
 .tableau td:first-child {
-  color: var(--sur-acc);
+  color: var(--ink);
   font-weight: 500;
 }
 
@@ -86,12 +84,10 @@
 
 /* Fil d'Ariane, sommaire, liens en ligne : style-hover « color:var(--acc) ». */
 .ariane a:hover {
-  /* Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1. */
-  color: var(--acc-ink);
+  color: var(--acc);
 }
 .entreeSommaire:hover {
-  /* Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1. */
-  color: var(--acc-ink) !important;
+  color: var(--acc) !important;
   border-left-color: var(--acc) !important;
 }
 
@@ -103,12 +99,11 @@
   text-underline-offset: 3px;
 }
 .riche a:hover {
-  /* Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1. */
-  color: var(--acc-ink);
+  color: var(--acc);
 }
 .riche strong {
   font-weight: 600;
-  color: var(--sur-acc);
+  color: var(--ink);
 }
 
 /* Bento : le gras hérite de la cellule (blanc sur la cellule sombre). */
@@ -145,8 +140,7 @@
   text-underline-offset: 3px;
 }
 .duoGauche a:hover {
-  /* Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1. */
-  color: var(--acc-ink);
+  color: var(--acc);
 }
 .duoDroite strong {
   font-weight: 600;
@@ -159,17 +153,13 @@
 /* Boutons orange : « filter:brightness(.93);color:#fff ». */
 .boutonPlein:hover {
   filter: brightness(0.93);
-  /* Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
-     l'encre change : --ink dessus, 6,72:1. */
-  color: var(--ink);
+  color: #fff;
 }
 /* Boutons orange à transition : « …;transform:translateY(-1px) ». */
 .boutonLeve:hover {
   filter: brightness(0.93);
   transform: translateY(-1px);
-  /* Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
-     l'encre change : --ink dessus, 6,72:1. */
-  color: var(--ink);
+  color: #fff;
 }
 /* Carte-lien de fin de FAQ : « transform:translateY(-2px) ». */
 .lienCarte:hover {

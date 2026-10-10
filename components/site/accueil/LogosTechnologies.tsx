@@ -84,8 +84,7 @@ export default function LogosTechnologies({
                   font: "600 11.5px var(--fb)",
                   letterSpacing: ".14em",
                   textTransform: "uppercase",
-                  // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
-                  color: "var(--acc-ink)",
+                  color: "var(--acc)",
                   marginBottom: "14px",
                 }}
               >

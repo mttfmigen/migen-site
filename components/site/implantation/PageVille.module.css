@@ -3,13 +3,11 @@
    `MigenExpertise.dc.html` (source de la maquette). Le focus suit le survol :
    un visiteur au clavier voit ce que voit un visiteur à la souris (WCAG 2.4.7). */
 
-/* Hub local, bouton : style-hover="filter:brightness(.93);color:#fff".
-   Bouton orange plein : `#fff` donnait 2,56:1, `--ink` donne 6,72:1, au repos
-   comme au survol. */
+/* Hub local, bouton : style-hover="filter:brightness(.93);color:#fff" */
 .boutonHub:hover,
 .boutonHub:focus-visible {
   filter: brightness(0.93);
-  color: var(--sur-acc);
+  color: #fff;
 }
 
 /* Hub local, téléphone : style-hover="color:#ff7c3c". `!important` comme la
@@ -32,7 +30,7 @@
 .zoneHub:hover,
 .zoneHub:focus-visible {
   border-color: #ff7c3c !important;
-  color: var(--sur-acc) !important;
+  color: var(--ink) !important;
 }
 
 /* Maillage, cartes : style-hover="transform:translateY(-3px);color:#fff" */
@@ -94,39 +92,5 @@
 .pli[open] > summary > .plus {
   transform: rotate(45deg);
   background: var(--acc) !important;
-  /* Fond orange inchangé, croix de `#fff` (2,56:1) à `--ink` (6,72:1). */
-  color: var(--sur-acc) !important;
-}
-
-/* ------------------------------------- l'encre posée sur l'orange de marque
-
-   Ce panneau retourne `--ink` en blanc parce que SA surface est une photo
-   d'atelier assombrie. Mais une pastille ou un bouton au FOND ORANGE, à
-   l'intérieur, n'est pas sur la photo : sa surface est `--acc` (#ff7c3c), qui
-   est clair, et qui ne bascule pas avec le thème. L'encre du site y est donc
-   rétablie, sans quoi la décision du 09/10 ne mordrait pas ici : le blanc sur
-   cet orange donne 2,56:1, l'encre 6,72:1.
-
-   Le sélecteur par attribut de style est celui que ce fichier emploie déjà
-   pour neutraliser la colonne collante : la maquette pose tout en ligne, c'est
-   le seul endroit où le fond est lisible depuis la feuille.
-
-   `#1c1b19` n'est pas une couleur nouvelle : c'est la valeur de `--ink` de
-   `app/globals.css`, redite parce que le panneau vient de l'écraser, comme il
-   redit `--acc-ink` quelques lignes plus haut. Un jeton par SURFACE.
-   La pastille du « + » y est nommée à part : son fond ne devient orange qu'à
-   l'ouverture du pli, elle ne porte donc pas l'orange dans son style en ligne. */
-.faqPhoto [style*="background:var(--acc)"],
-.faqPhoto [style*="background:#ff7c3c"],
-.faqPhoto .plus {
-  --ink: #1c1b19;
-}
-
-/* Le « + » des questions ne devient orange qu'à l'ouverture du pli, et c'est
-   `app/globals.css` qui le fait (`.cx-faq[open] .cx-plus`, en `!important`).
-   Cette feuille-là est partagée par tout le site : on ne la touche pas, on la
-   précise pour les seuls plis de ce panneau. Même mesure que ci-dessus, 2,56:1
-   en blanc, 6,72:1 en encre. */
-.faqPhoto :global(.cx-faq[open] .cx-plus) {
-  color: var(--ink) !important;
+  color: #fff !important;
 }

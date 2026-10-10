@@ -8,6 +8,5 @@
    et couleur en style en ligne, qui battrait sinon la règle. */
 .lienMarques:hover {
   border-color: var(--acc) !important;
-  /* Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1. */
-  color: var(--acc-ink) !important;
+  color: var(--acc) !important;
 }

@@ -56,14 +56,12 @@ const TITRE: CSSProperties = {
 /** Le lien de bas de pli vers la page réelle de la prestation (07/10). */
 const LIEN_PRESTATION: CSSProperties = {
   font: "600 14px var(--fb)",
-  /* Sur le verre clair du pli : 2,45:1 en `--acc`, 8,57:1 en `--acc-ink`. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
 };
 
 const LIEN: CSSProperties = {
   font: "600 14.5px var(--fb)",
-  /* Sur le fond crème de la section : 2,29:1 en `--acc`, 7,98:1 en `--acc-ink`. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   whiteSpace: "nowrap",
 };
 
@@ -94,10 +92,8 @@ const BADGE: CSSProperties = {
   width: 36,
   height: 36,
   borderRadius: 11,
-  /* Le fond teinté garde l'orange de marque ; le chiffre dessus passe de
-     2,22:1 (`--acc`) à 7,75:1 (`--acc-ink`). */
   background: "var(--acc-w)",
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -175,9 +171,7 @@ const PUCE: CSSProperties = {
 };
 
 const COCHE: CSSProperties = {
-  /* La coche PORTE du sens (« inclus »), ce n'est pas un filet décoratif :
-     2,45:1 en `--acc`, 8,57:1 en `--acc-ink` sur le verre du pli. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   flex: "0 0 auto",
   fontWeight: 600,
 };
@@ -195,9 +189,7 @@ const ENTETE_COLONNE: CSSProperties = {
   font: "600 10.5px var(--fb)",
   letterSpacing: ".12em",
   textTransform: "uppercase",
-  /* En-tête de colonne, sur `--card` blanc : 2,56:1 en `--acc`, 8,94:1 en
-     `--acc-ink`. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   borderBottom: "1px solid var(--line)",
 };
 

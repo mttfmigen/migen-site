@@ -86,9 +86,7 @@ const PUCE: CSSProperties = {
 };
 
 const COCHE: CSSProperties = {
-  /* La coche porte du sens, elle n'est pas un ornement : 2,45:1 en `--acc`
-     sur la carte claire, 8,57:1 en `--acc-ink`. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   flex: "0 0 auto",
   fontWeight: 600,
 };

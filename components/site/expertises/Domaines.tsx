@@ -107,10 +107,6 @@ const FLECHE: CSSProperties = {
   alignItems: "center",
   justifyContent: "center",
   fontSize: 13,
-  // Contraste AA : la pastille héritait du `#fff` de LIEN, soit 2,56:1 sur
-  // l'orange de marque. L'orange ne bouge pas, l'encre est posée ici :
-  // --ink dessus, 6,72:1.
-  color: "var(--ink)",
 };
 
 export default function Domaines({ titre, cartes }: ProprietesDomaines) {

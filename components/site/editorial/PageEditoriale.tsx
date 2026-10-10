@@ -105,8 +105,7 @@ export function Bloc({ bloc }: { bloc: BlocEditorial }) {
                 // ferait dire « puce » au lecteur d'écran avant chaque entrée.
                 <span
                   aria-hidden="true"
-                  // Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1.
-                  style={{ color: "var(--acc-ink)", flex: "none" }}
+                  style={{ color: "var(--acc)", flex: "none" }}
                 >
                   ·
                 </span>

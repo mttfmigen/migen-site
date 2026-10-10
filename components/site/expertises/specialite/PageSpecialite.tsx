@@ -366,9 +366,7 @@ export default function PageSpecialite({
                       padding: "14px 24px",
                       borderRadius: 999,
                       background: "var(--acc)",
-                      // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
-                      // l'encre change : --ink dessus, 6,72:1.
-                      color: "var(--sur-acc)",
+                      color: "#fff",
                       font: "600 15px var(--fb)",
                       whiteSpace: "nowrap",
                       boxShadow: "rgba(255,124,60,.9) 0 12px 30px -12px",

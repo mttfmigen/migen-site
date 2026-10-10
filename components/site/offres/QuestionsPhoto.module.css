@@ -55,37 +55,3 @@
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-
-/* ------------------------------------- l'encre posée sur l'orange de marque
-
-   Ce panneau retourne `--ink` en blanc parce que SA surface est une photo
-   d'atelier assombrie. Mais une pastille ou un bouton au FOND ORANGE, à
-   l'intérieur, n'est pas sur la photo : sa surface est `--acc` (#ff7c3c), qui
-   est clair, et qui ne bascule pas avec le thème. L'encre du site y est donc
-   rétablie, sans quoi la décision du 09/10 ne mordrait pas ici : le blanc sur
-   cet orange donne 2,56:1, l'encre 6,72:1.
-
-   Le sélecteur par attribut de style est celui que ce fichier emploie déjà
-   pour neutraliser la colonne collante : la maquette pose tout en ligne, c'est
-   le seul endroit où le fond est lisible depuis la feuille.
-
-   `#1c1b19` n'est pas une couleur nouvelle : c'est la valeur de `--ink` de
-   `app/globals.css`, redite parce que le panneau vient de l'écraser, comme il
-   redit `--acc-ink` quelques lignes plus haut. Un jeton par SURFACE.
-   La pastille du « + » y est nommée à part : son fond ne devient orange qu'à
-   l'ouverture du pli, elle ne porte donc pas l'orange dans son style en ligne. */
-.panneau [style*="background:var(--acc)"],
-.panneau [style*="background:#ff7c3c"],
-.panneau .pastille,
-.panneau :global(.cx-plus) {
-  --ink: #1c1b19;
-}
-
-/* Le « + » des questions ne devient orange qu'à l'ouverture du pli, et c'est
-   `app/globals.css` qui le fait (`.cx-faq[open] .cx-plus`, en `!important`).
-   Cette feuille-là est partagée par tout le site : on ne la touche pas, on la
-   précise pour les seuls plis de ce panneau. Même mesure que ci-dessus, 2,56:1
-   en blanc, 6,72:1 en encre. */
-.panneau :global(.cx-faq[open] .cx-plus) {
-  color: var(--ink) !important;
-}

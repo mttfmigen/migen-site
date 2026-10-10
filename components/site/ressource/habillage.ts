@@ -127,8 +127,7 @@ export const SURTITRE_LIVRE: CSSProperties = {
   font: "600 11px var(--fb)",
   letterSpacing: ".14em",
   textTransform: "uppercase",
-  // Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1.
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   marginBottom: 10,
 };
 
@@ -152,9 +151,7 @@ export const BOUTON_LIVRE: CSSProperties = {
   borderRadius: 999,
   border: "none",
   background: "var(--acc)",
-  // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
-  // l'encre change : --ink dessus, 6,72:1.
-  color: "var(--sur-acc)",
+  color: "#fff",
   font: "600 15px var(--fb)",
   cursor: "pointer",
 };
@@ -196,8 +193,7 @@ export const SOMMAIRE_ENTREE: CSSProperties = {
 
 export const NUMERO_MONO: CSSProperties = {
   font: "600 11px ui-monospace,Menlo,monospace",
-  // Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1.
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   flex: "none",
 };
 
@@ -207,9 +203,7 @@ export const SOMMAIRE_BOUTON: CSSProperties = {
   padding: 12,
   borderRadius: 999,
   background: "var(--acc)",
-  // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
-  // l'encre change : --ink dessus, 6,72:1.
-  color: "var(--sur-acc)",
+  color: "#fff",
   textAlign: "center",
   font: "600 13.5px var(--fb)",
 };
@@ -227,8 +221,7 @@ export const TITRE2: CSSProperties = {
 export const TITRE2_NUMERO: CSSProperties = {
   display: "block",
   font: "600 11px ui-monospace,Menlo,monospace",
-  // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   marginBottom: 10,
 };
 
@@ -263,8 +256,7 @@ export const PUCE: CSSProperties = {
   color: "var(--ink1)",
 };
 
-// Contraste AA : l'orange de marque donnait 2,56:1 sur ce fond clair, --acc-ink donne 8,94:1.
-export const COCHE: CSSProperties = { color: "var(--acc-ink)", flex: "none", fontWeight: 600 };
+export const COCHE: CSSProperties = { color: "var(--acc)", flex: "none", fontWeight: 600 };
 
 export const ETAPES: CSSProperties = {
   display: "grid",
@@ -286,9 +278,7 @@ export const ETAPE_NUMERO: CSSProperties = {
   height: 38,
   borderRadius: 999,
   background: "var(--acc)",
-  // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
-  // l'encre change : --ink dessus, 6,72:1.
-  color: "var(--sur-acc)",
+  color: "#fff",
   font: "600 13px/38px var(--fb)",
   textAlign: "center",
 };
@@ -315,8 +305,7 @@ export const TABLEAU_ENTETE: CSSProperties = {
   font: "600 10.5px var(--fb)",
   letterSpacing: ".12em",
   textTransform: "uppercase",
-  // Contraste AA : l'orange de marque donnait 2,56:1 sur ce fond clair, --acc-ink donne 8,94:1.
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   borderBottom: "1px solid var(--line)",
 };
 
@@ -335,13 +324,13 @@ export const ENCADRE: CSSProperties = {
   background: "var(--acc-w)",
   border: "1px solid rgba(255,124,60,.28)",
   font: "500 15.5px/1.65 var(--fb)",
-  color: "var(--sur-acc)",
+  color: "var(--ink)",
 };
 
 /* Les quatre écritures de lien de la maquette, et ses deux gras. */
 const LIEN_BASE: CSSProperties = {
   fontWeight: 600,
-  color: "var(--sur-acc)",
+  color: "var(--ink)",
   textDecoration: "underline",
 };
 const SOULIGNE_ORANGE = "rgba(255,124,60,.6)";
@@ -379,9 +368,7 @@ export const BANDE_BOUTON: CSSProperties = {
   padding: "12px 20px",
   borderRadius: 999,
   background: "var(--acc)",
-  // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
-  // l'encre change : --ink dessus, 6,72:1.
-  color: "var(--ink)",
+  color: "#fff",
   font: "600 14px var(--fb)",
   whiteSpace: "nowrap",
 };
@@ -402,11 +389,7 @@ export const SURTITRE: CSSProperties = {
   font: "600 11.5px var(--fb)",
   letterSpacing: ".14em",
   textTransform: "uppercase",
-  // Contraste AA : SURTITRE sert la page claire et la carte FAQ sur photo. Sur
-  // le fond clair, l'orange de marque ne donnait que 2,29:1 contre 7,98:1 pour
-  // --acc-ink. La carte FAQ reprend --acc a son point d'appel, ou le voile
-  // sombre lui laisse 6,37:1.
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   marginBottom: 14,
 };
 
@@ -490,8 +473,7 @@ export const LECTURES_TETE: CSSProperties = {
   marginBottom: 24,
 };
 
-// Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
-export const LECTURES_LIEN: CSSProperties = { font: "600 14.5px var(--fb)", color: "var(--acc-ink)" };
+export const LECTURES_LIEN: CSSProperties = { font: "600 14.5px var(--fb)", color: "var(--acc)" };
 
 export const LECTURES_GRILLE: CSSProperties = {
   display: "grid",
@@ -526,8 +508,7 @@ export const LECTURE_FORMAT: CSSProperties = {
   font: "600 10.5px var(--fb)",
   letterSpacing: ".12em",
   textTransform: "uppercase",
-  // Contraste AA : l'orange de marque donnait 2,56:1 sur ce fond clair, --acc-ink donne 8,94:1.
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
 };
 
 export const LECTURE_TITRE: CSSProperties = {
@@ -590,9 +571,7 @@ export const APPEL_BOUTON: CSSProperties = {
   padding: "16px 30px",
   borderRadius: 999,
   background: "var(--acc)",
-  // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
-  // l'encre change : --ink dessus, 6,72:1.
-  color: "var(--ink)",
+  color: "#fff",
   font: "600 16px var(--fb)",
 };
 

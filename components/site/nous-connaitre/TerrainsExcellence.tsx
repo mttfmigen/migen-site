@@ -37,8 +37,7 @@ export default function TerrainsExcellence() {
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
                 textTransform: "uppercase",
-                // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
-                color: "var(--acc-ink)",
+                color: "var(--acc)",
                 marginBottom: 14,
               }}
             >
@@ -84,8 +83,7 @@ export default function TerrainsExcellence() {
             </p>
             <Link
               href="/secteurs/"
-              // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
-              style={{ font: "600 14.5px var(--fb)", color: "var(--acc-ink)" }}
+              style={{ font: "600 14.5px var(--fb)", color: "#ff7c3c" }}
             >
               Voir nos secteurs →
             </Link>

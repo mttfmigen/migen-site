@@ -46,7 +46,7 @@ const GRILLE: CSSProperties = {
 const TITRE: CSSProperties = {
   font: "600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft)",
   letterSpacing: "-.04em",
-  color: "var(--sur-acc)",
+  color: "var(--ink)",
   margin: "0 0 22px",
   textWrap: "balance",
   maxWidth: "14ch",
@@ -59,8 +59,7 @@ const BOUTON: CSSProperties = {
   padding: "15px 26px",
   borderRadius: 999,
   background: "var(--acc)",
-  /* `#fff` donnait 2,56:1 sur l'orange, `--ink` donne 6,72:1. */
-  color: "var(--ink)",
+  color: "#fff",
   font: "600 15px var(--fb)",
   whiteSpace: "nowrap",
   boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",

@@ -110,9 +110,7 @@ const PASTILLE_PUCE: CSSProperties = {
 const CLIENT: CSSProperties = {
   font: "700 13px var(--ft)",
   letterSpacing: ".1em",
-  /* Nom du client sur le fond crème du héros : 2,29:1 en `--acc`, 7,98:1 en
-     `--acc-ink`. C'est l'information la plus lue de la page. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   textTransform: "uppercase",
 };
 const TITRE1: CSSProperties = {
@@ -141,8 +139,7 @@ const BOUTON_ORANGE: CSSProperties = {
   padding: "15px 26px",
   borderRadius: 999,
   background: "var(--acc)",
-  /* `#fff` donnait 2,56:1 sur l'orange, `--ink` donne 6,72:1. */
-  color: "var(--sur-acc)",
+  color: "#fff",
   font: "600 15px var(--fb)",
   whiteSpace: "nowrap",
   boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",
@@ -155,7 +152,7 @@ const BOUTON_TEL: CSSProperties = {
   borderRadius: 999,
   background: "var(--gsol)",
   border: "1px solid var(--line)",
-  color: "var(--sur-acc)",
+  color: "var(--ink)",
   font: "600 15px var(--fb)",
   whiteSpace: "nowrap",
   transition: "background var(--tr),transform var(--tr)",
@@ -242,7 +239,7 @@ const HERO_FICHE_LIBELLE: CSSProperties = {
 };
 const HERO_FICHE_VALEUR: CSSProperties = {
   font: "500 14px/1.45 var(--fb)",
-  color: "var(--sur-acc)",
+  color: "var(--ink)",
 };
 
 /* 1 · Chiffres du dispositif */
@@ -267,14 +264,13 @@ const CHIFFRE_LIBELLE: CSSProperties = {
   font: "600 10.5px var(--fb)",
   letterSpacing: ".12em",
   textTransform: "uppercase",
-  /* Sur la carte en verre : 2,45:1 en `--acc`, 8,57:1 en `--acc-ink`. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   marginBottom: 10,
 };
 const CHIFFRE_VALEUR: CSSProperties = {
   font: "600 calc(19px * var(--ts))/1.3 var(--ft)",
   letterSpacing: "-.025em",
-  color: "var(--sur-acc)",
+  color: "var(--ink)",
 };
 
 /* motifs communs aux sections 2 à 9 */
@@ -288,10 +284,7 @@ const KICKER: CSSProperties = {
   font: "600 11.5px var(--fb)",
   letterSpacing: ".14em",
   textTransform: "uppercase",
-  /* Sept sur-titres sur huit sont sur le fond crème : 2,29:1 en `--acc`,
-     7,98:1 en `--acc-ink`. Le huitième, « 05 · Résultat », est sur le panneau
-     anthracite où l'orange de marque vaut 6,72:1 : il le garde, voir plus bas. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   marginBottom: 16,
 };
 const TITRE2: CSSProperties = {
@@ -351,9 +344,8 @@ const OBJECTIF_NUMERO: CSSProperties = {
   width: 40,
   height: 40,
   borderRadius: 999,
-  /* Rond teinté sur fond clair : 2,22:1 en `--acc`, 7,75:1 en `--acc-ink`. */
   background: "var(--acc-w)",
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   font: "600 12px/40px ui-monospace,Menlo,monospace",
   textAlign: "center",
 };
@@ -407,9 +399,7 @@ const REPONSE_CORPS: CSSProperties = {
 };
 const REPONSE_NUMERO: CSSProperties = {
   font: "600 11px ui-monospace,Menlo,monospace",
-  /* Valeur de la carte en VERRE, le cas courant : 2,45:1 en `--acc`, 8,57:1
-     en `--acc-ink`. `CarteReponse` remet l'orange sur la carte anthracite. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   marginBottom: 16,
 };
 
@@ -428,8 +418,7 @@ const ETAPE_PASTILLE: CSSProperties = {
   height: 44,
   borderRadius: 999,
   background: "var(--acc)",
-  /* Pastille d'étape : `#fff` donnait 2,56:1, `--ink` donne 6,72:1. */
-  color: "var(--ink)",
+  color: "#fff",
   font: "600 13px/44px var(--fb)",
   textAlign: "center",
   boxShadow: "0 0 0 7px var(--bg)",
@@ -527,9 +516,7 @@ const RESULTAT_COCHE: CSSProperties = {
   height: 34,
   borderRadius: 999,
   background: "var(--acc)",
-  /* Rond orange plein sur le panneau anthracite. Le fond du rond est la
-     marque, la coche dessus passe de 2,56:1 (`#fff`) à 6,72:1 (`--ink`). */
-  color: "var(--ink)",
+  color: "#fff",
   alignItems: "center",
   justifyContent: "center",
   font: "600 15px var(--fb)",
@@ -591,9 +578,7 @@ const COMPLEMENT_PUCE: CSSProperties = {
   color: "var(--ink1)",
 };
 const COMPLEMENT_COCHE: CSSProperties = {
-  /* La coche porte du sens : 2,45:1 en `--acc` sur la carte claire, 8,57:1
-     en `--acc-ink`. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   flex: "0 0 auto",
   fontWeight: 600,
 };
@@ -707,8 +692,7 @@ const LOIN_SURTITRE: CSSProperties = {
   font: "600 10.5px var(--fb)",
   letterSpacing: ".12em",
   textTransform: "uppercase",
-  /* Sur la carte claire : 2,45:1 en `--acc`, 8,57:1 en `--acc-ink`. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
 };
 const LOIN_RANGEE: CSSProperties = {
   display: "flex",
@@ -726,8 +710,7 @@ const LOIN_FLECHE: CSSProperties = {
   height: 28,
   borderRadius: 999,
   background: "var(--acc)",
-  /* `#fff` donnait 2,56:1 sur l'orange, `--ink` donne 6,72:1. */
-  color: "var(--ink)",
+  color: "#fff",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -790,14 +773,7 @@ function CarteReponse({ carte, rang, total }: { carte: CartePreuve; rang: number
     >
       {sombre ? <div aria-hidden="true" style={REPONSE_LUEUR} /> : null}
       <div style={REPONSE_CORPS}>
-        {/* La carte sombre rend l'orange de marque à 6,72:1 : il y reste. */}
-        <span
-          style={
-            sombre ? { ...REPONSE_NUMERO, color: "var(--acc)" } : REPONSE_NUMERO
-          }
-        >
-          {String(rang + 1).padStart(2, "0")}
-        </span>
+        <span style={REPONSE_NUMERO}>{String(rang + 1).padStart(2, "0")}</span>
         <TitreEtSuite
           titre={carte.titre}
           texte={carte.texte}
@@ -1148,11 +1124,7 @@ export default function PagePreuve({
             <div className={styles.panneauResultat} style={RESULTAT_PANNEAU}>
               <div aria-hidden="true" style={RESULTAT_LUEUR} />
               <div style={{ position: "relative" }}>
-                {/* Seul sur-titre posé sur le panneau anthracite : l'orange
-                    de marque y vaut 6,72:1, il reprend donc sa place. */}
-                <div style={{ ...KICKER, color: "var(--acc)" }}>
-                  05 · Résultat
-                </div>
+                <div style={KICKER}>05 · Résultat</div>
                 <h2 style={RESULTAT_TITRE}>Le résultat</h2>
                 <div
                   className={styles.resultats}

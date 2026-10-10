@@ -24,7 +24,7 @@ const TITRE: CSSProperties = {
   font: "600 calc(clamp(28px,3vw,44px) * var(--ts))/1.08 var(--ft)",
   letterSpacing: "-.045em",
   margin: "0 0 28px",
-  color: "var(--sur-acc)",
+  color: "var(--ink)",
   textWrap: "balance",
 };
 
@@ -67,16 +67,12 @@ const LUEUR: CSSProperties = {
   pointerEvents: "none",
 };
 
-/* La coche est posée sur les DEUX colonnes : la claire (verre) et la sombre
-   (anthracite). Sur la claire l'orange de marque donne 2,13:1, `--acc-ink`
-   donne 7,2:1 ; sur la sombre l'orange donne 5,2:1 et reste donc en place.
-   `DeuxApproches` choisit selon la colonne. */
 const COCHE: CSSProperties = {
   width: 22,
   height: 22,
   borderRadius: 999,
   background: "rgba(255,124,60,.16)",
-  color: "var(--acc-ink)",
+  color: "rgb(255,124,60)",
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
@@ -91,8 +87,7 @@ const BOUTON: CSSProperties = {
   padding: "14px 22px",
   borderRadius: 999,
   background: "rgb(255,124,60)",
-  /* `#fff` donnait 2,56:1 sur l'orange, `--ink` donne 6,72:1. */
-  color: "var(--ink)",
+  color: "#fff",
   font: "600 14.5px var(--fb)",
   boxShadow: "rgba(255,124,60,.7) 0 10px 24px -12px",
   transition: "background-color var(--tr)",
@@ -170,10 +165,7 @@ function Colonne({ approche, sombre }: { approche: ApprocheOffres; sombre: boole
               color: sombre ? "rgba(255,255,255,.82)" : "var(--ink1)",
             }}
           >
-            <span
-              aria-hidden="true"
-              style={sombre ? { ...COCHE, color: "var(--acc)" } : COCHE}
-            >
+            <span aria-hidden="true" style={COCHE}>
               ✓
             </span>
             <span>{puce}</span>

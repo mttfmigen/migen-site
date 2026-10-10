@@ -1092,16 +1092,7 @@ assert.ok(SOURCE_CAS, "la source MigenCas est introuvable dans l'autonome");
 const MODULE_CSS = readFileSync(join(RACINE, "components", "site", "preuve", "PagePreuve.module.css"), "utf8");
 const echappe = (t: string) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const SURVOLS: [classe: string, element: string, styleHover: string, declarations: string[]][] = [
-  /* `color: var(--sur-acc)` ET NON `#fff`, et c'est un ÉCART DÉCLARÉ à la
-     maquette, décidé par Mehdi le 09/10 au soir. Le blanc sur l'orange de
-     marque donne 2,56:1, là où le critère 1.4.3 de la WCAG 2.2 niveau AA en
-     exige 4,5. L'orange ne bouge pas, c'est l'encre posée dessus qui change :
-     6,72:1. `--sur-acc` est volontairement identique dans les deux thèmes,
-     parce qu'une surface qui ne bascule pas ne peut pas porter une encre qui
-     bascule, piège mesuré le même soir. La maquette garde son blanc : cette
-     porte compare donc au site corrigé, pas à la capture, sur CE point et sur
-     lui seul. */
-  ["boutonPrincipal", '<a href="#cas-form"', "filter:brightness(.93);color:#fff", ["filter: brightness(0.93)", "color: var(--sur-acc)"]],
+  ["boutonPrincipal", '<a href="#cas-form"', "filter:brightness(.93);color:#fff", ["filter: brightness(0.93)", "color: #fff"]],
   ["boutonSecondaire", '<a href="tel:+33478337205"', "background:#fff", ["background: #fff"]],
   ["cartePlusLoin", '<a href="{{ rl.url }}"', "transform:translateY(-3px)", ["transform: translateY(-3px)"]],
 ];

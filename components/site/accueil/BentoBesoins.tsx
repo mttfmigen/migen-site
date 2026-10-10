@@ -146,8 +146,7 @@ export default function BentoBesoins({
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
                 textTransform: "uppercase",
-                // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
-                color: "var(--acc-ink)",
+                color: "var(--acc)",
                 marginBottom: 14,
               }}
             >
@@ -336,8 +335,7 @@ export default function BentoBesoins({
                                 color: "var(--ink1)",
                               }}
                             >
-                              // Contraste AA : l'orange de marque donnait 2,56:1 sur ce fond clair, --acc-ink donne 8,94:1.
-                              <span aria-hidden="true" style={{ color: "var(--acc-ink)", flex: "none" }}>
+                              <span aria-hidden="true" style={{ color: "var(--acc)", flex: "none" }}>
                                 ✓
                               </span>
                               <span>{p}</span>
@@ -355,9 +353,7 @@ export default function BentoBesoins({
                               padding: "13px 22px",
                               borderRadius: 999,
                               background: "var(--acc)",
-                              // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
-                              // l'encre change : --ink dessus, 6,72:1.
-                              color: "var(--sur-acc)",
+                              color: "#fff",
                               font: "600 14.5px var(--fb)",
                               whiteSpace: "nowrap",
                               transition: "filter var(--tr)",

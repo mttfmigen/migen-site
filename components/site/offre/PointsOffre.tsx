@@ -71,8 +71,7 @@ const CARTE: CSSProperties = {
 const NUMERO: CSSProperties = {
   gridArea: "1 / 1",
   font: "600 11px ui-monospace,Menlo,monospace",
-  /* Sur le verre clair de la carte : 2,45:1 en `--acc`, 8,57:1 en `--acc-ink`. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
 };
 
 const INTITULE: CSSProperties = {

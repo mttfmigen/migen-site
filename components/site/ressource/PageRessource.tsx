@@ -80,8 +80,7 @@ function Questions({ questions }: { questions: Question[] }) {
         <Image src={H.FAQ_PHOTO} alt="" fill sizes="1120px" style={{ objectFit: "cover" }} />
         <div aria-hidden="true" style={H.FAQ_VOILE} />
         <div style={{ position: "relative" }}>
-          {/* Voile sombre de la photo : l'orange de marque y mesure 6,37:1. */}
-          <div style={{ ...H.SURTITRE, color: "var(--acc)" }}>{H.COPIE.faqSurtitre}</div>
+          <div style={H.SURTITRE}>{H.COPIE.faqSurtitre}</div>
           <h2 style={{ ...H.TITRE_SECTION, margin: "0 0 24px", color: "#fff" }}>
             {H.COPIE.faqTitre}
           </h2>

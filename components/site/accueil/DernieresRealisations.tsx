@@ -71,8 +71,7 @@ export default function DernieresRealisations({
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
                 textTransform: "uppercase",
-                // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
-                color: "var(--acc-ink)",
+                color: "var(--acc)",
                 marginBottom: 16,
               }}
             >
@@ -94,8 +93,7 @@ export default function DernieresRealisations({
             href={hrefToutes}
             style={{
               font: "600 15px var(--fb)",
-              // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
-              color: "var(--acc-ink)",
+              color: "var(--acc)",
               flex: "none",
               paddingBottom: 6,
             }}
@@ -156,8 +154,7 @@ export default function DernieresRealisations({
                     font: "600 11.5px var(--fb)",
                     letterSpacing: ".12em",
                     textTransform: "uppercase",
-                    // Contraste AA : l'orange de marque donnait 2,56:1 sur ce fond clair, --acc-ink donne 8,94:1.
-                    color: "var(--acc-ink)",
+                    color: "var(--acc)",
                   }}
                 >
                   {r.client}

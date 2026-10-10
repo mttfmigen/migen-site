@@ -29,7 +29,7 @@ const TITRE: CSSProperties = {
   margin: "0 0 28px",
   maxWidth: "26ch",
   textWrap: "balance",
-  color: "var(--sur-acc)",
+  color: "var(--ink)",
 };
 
 const GRILLE: CSSProperties = {
@@ -114,9 +114,7 @@ const BOUTON: CSSProperties = {
   padding: "13px 20px",
   borderRadius: 999,
   background: "#ff7c3c",
-  /* `#fff` donnait 2,56:1 sur l'orange, `--ink` donne 6,72:1. Le bouton reste
-     orange : c'est l'appel à l'action du hub. */
-  color: "var(--ink)",
+  color: "#fff",
   font: "600 14.5px var(--fb)",
   whiteSpace: "nowrap",
   boxShadow: "0 10px 24px -12px rgba(255,124,60,.7)",
@@ -149,8 +147,7 @@ const CARTE_SURTITRE: CSSProperties = {
   font: "600 11px var(--fb)",
   letterSpacing: ".13em",
   textTransform: "uppercase",
-  /* Carte en verre clair : 2,45:1 en `--acc`, 8,57:1 en `--acc-ink`. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
 };
 
 const CARTE_TITRE: CSSProperties = {
@@ -262,9 +259,7 @@ export default function HubLocal({ hub }: { hub: DonneesHubLocal }) {
                 <span style={CARTE_TITRE}>{carte.titre}</span>
                 <span style={CARTE_TEXTE}>{carte.texte}</span>
                 <span style={CARTE_LIEN}>
-                  {carte.lien}{" "}
-                  {/* 2,45:1 en `--acc` sur le verre, 8,57:1 en `--acc-ink`. */}
-                  <span style={{ color: "var(--acc-ink)" }}>→</span>
+                  {carte.lien} <span style={{ color: "var(--acc)" }}>→</span>
                 </span>
               </Link>
             ))}

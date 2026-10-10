@@ -70,8 +70,7 @@ const CARTE: CSSProperties = {
 const NUMERO: CSSProperties = {
   font: "600 26px var(--ft)",
   letterSpacing: "-.05em",
-  /* Sur le verre clair : 2,45:1 en `--acc`, 8,57:1 en `--acc-ink`. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   flex: "0 0 auto",
 };
 
@@ -247,8 +246,7 @@ function Rangee({ section }: { section: SectionProbleme }) {
                 style={{
                   font: "600 24px/1 var(--ft)",
                   letterSpacing: "-.05em",
-                  /* Sur le verre clair : 2,45:1 en `--acc`, 8,57:1 en `--acc-ink`. */
-                  color: "var(--acc-ink)",
+                  color: "var(--acc)",
                   marginBottom: 18,
                 }}
               >

@@ -13,11 +13,7 @@ const SURTITRE = {
   font: "600 11.5px var(--fb)",
   letterSpacing: ".14em",
   textTransform: "uppercase",
-  // Contraste AA : ce jeton de style sert une surface claire et un panneau
-  // sombre. Le cas courant est le fond clair, ou l'orange de marque ne
-  // donnait que 2,45:1 contre 8,57:1 pour --acc-ink. Le panneau sombre
-  // reprend --acc a son point d'appel, ou il mesure 5,80:1.
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
 } as const;
 
 const CADRE_LOGO = {
@@ -128,8 +124,7 @@ export default function CertificationsRse() {
               }}
             />
             <div style={{ position: "relative" }}>
-              {/* Panneau sombre : l'orange de marque y mesure 5,80:1, il reste. */}
-              <div style={{ ...SURTITRE, color: "var(--acc)", marginBottom: "22px" }}>
+              <div style={{ ...SURTITRE, marginBottom: "22px" }}>
                 Sécurité &amp; RSE
               </div>
               <div

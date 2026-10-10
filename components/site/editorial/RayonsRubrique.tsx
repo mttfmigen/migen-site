@@ -28,8 +28,7 @@ const ETIQUETTE: CSSProperties = {
   font: "600 10.5px var(--fb)",
   letterSpacing: ".12em",
   textTransform: "uppercase",
-  // Contraste AA : l'orange de marque donnait 2,56:1 sur ce fond clair, --acc-ink donne 8,94:1.
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
 };
 
 function Filtre({
@@ -336,9 +335,7 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
                   style={{
                     ...ETIQUETTE,
                     display: "inline-block",
-                    // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
-                    // l'encre change : --ink dessus, 6,72:1.
-                    color: "var(--sur-acc)",
+                    color: "#fff",
                     background: "var(--acc)",
                     padding: "5px 11px",
                     borderRadius: 999,

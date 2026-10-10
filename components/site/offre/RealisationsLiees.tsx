@@ -67,8 +67,7 @@ const TITRE: CSSProperties = {
 
 const LIEN_TOUTES: CSSProperties = {
   font: "600 14.5px var(--fb)",
-  /* Sur le fond crème de la section : 2,29:1 en `--acc`, 7,98:1 en `--acc-ink`. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   whiteSpace: "nowrap",
 };
 
@@ -251,11 +250,7 @@ export default function RealisationsLiees({ cas }: ProprietesRealisationsLiees) 
                   flex: "1 1 0%",
                 }}
               >
-                {/* Nom du client sur la carte en verre : 2,45:1 en `--acc`,
-                    8,57:1 en `--acc-ink`. */}
-                <span
-                  style={{ font: "600 13px var(--fb)", color: "var(--acc-ink)" }}
-                >
+                <span style={{ font: "600 13px var(--fb)", color: "var(--acc)" }}>
                   {casLie.client}
                 </span>
                 <span
@@ -269,9 +264,7 @@ export default function RealisationsLiees({ cas }: ProprietesRealisationsLiees) 
                 </span>
                 <span style={PIED}>
                   Lire l’étude de cas{" "}
-                  {/* 2,45:1 en `--acc` sur le verre de la carte, 8,57:1 en
-                      `--acc-ink`. */}
-                  <span aria-hidden="true" style={{ color: "var(--acc-ink)" }}>
+                  <span aria-hidden="true" style={{ color: "var(--acc)" }}>
                     →
                   </span>
                 </span>

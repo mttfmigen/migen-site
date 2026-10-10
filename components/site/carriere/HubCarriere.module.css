@@ -13,9 +13,7 @@
 .boutonOrange:hover,
 .boutonOrange:focus-visible {
   filter: brightness(0.93);
-  /* Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
-     l'encre change : --ink dessus, 6,72:1. */
-  color: var(--sur-acc);
+  color: #fff;
 }
 
 /* Le téléphone du héros : style-hover="background:#fff" */
@@ -27,14 +25,13 @@
 /* Liens du texte courant : style-hover="color:var(--acc)" */
 .texteLie a {
   font-weight: 600;
-  color: var(--sur-acc);
+  color: var(--ink);
   text-decoration: underline rgba(255, 124, 60, 0.6);
   text-underline-offset: 3px;
 }
 .texteLie a:hover,
 .texteLie a:focus-visible {
-  /* Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1. */
-  color: var(--acc-ink);
+  color: var(--acc);
 }
 
 /* Cartes des hubs : style-hover="transform:translateY(-4px);color:#fff" */
@@ -56,9 +53,7 @@
 .boutonQuestion:focus-visible {
   filter: brightness(0.93);
   transform: translateY(-1px);
-  /* Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
-     l'encre change : --ink dessus, 6,72:1. */
-  color: var(--ink);
+  color: #fff;
 }
 
 /* Les plis : pas de marqueur natif, le « + » pivote en croix orange
@@ -69,9 +64,7 @@
 .pli[open] > summary > .pliPlus {
   transform: rotate(45deg);
   background: var(--acc) !important;
-  /* Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
-     l'encre change : --ink dessus, 6,72:1. */
-  color: var(--sur-acc) !important;
+  color: #fff !important;
 }
 
 /* Le rail des métiers : aucune barre de défilement visible (README). */

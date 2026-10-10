@@ -64,8 +64,7 @@ export default function QuiVousRepond() {
                 style={{
                   font: "600 calc(30px * var(--ts))/1 var(--ft)",
                   letterSpacing: "-.05em",
-                  // Contraste AA : l'orange de marque donnait 2,30:1 sur ce fond clair, --acc-ink donne 8,04:1.
-                  color: "var(--acc-ink)",
+                  color: "var(--acc)",
                 }}
               >
                 +120
@@ -133,11 +132,7 @@ export default function QuiVousRepond() {
                     aria-hidden="true"
                     style={{
                       font: "600 11px ui-monospace,Menlo,monospace",
-                      // Contraste AA : un relais sur deux est en verre clair, ou
-                      // l'orange de marque ne donnait que 2,45:1 contre 8,57:1
-                      // pour --acc-ink. Sur le relais sombre l'orange mesure
-                      // 5,80:1 et reste en place.
-                      color: relais.sombre ? "var(--acc)" : "var(--acc-ink)",
+                      color: "var(--acc)",
                       paddingTop: 3,
                     }}
                   >
@@ -178,9 +173,7 @@ export default function QuiVousRepond() {
                 padding: "14px 24px",
                 borderRadius: 999,
                 background: "var(--acc)",
-                // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
-                // l'encre change : --ink dessus, 6,72:1.
-                color: "var(--sur-acc)",
+                color: "#fff",
                 font: "600 14.5px var(--fb)",
                 whiteSpace: "nowrap",
               }}

@@ -6,8 +6,7 @@
 /* style-hover du sommaire : « color:var(--acc) ». */
 .entree:hover,
 .entree:focus-visible {
-  /* Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1. */
-  color: var(--acc-ink) !important;
+  color: var(--acc) !important;
 }
 
 /* `.mr-root details[open] .mr-plus` : le « + » tourne en croix. Le fond reste

@@ -100,8 +100,7 @@ const RANGEE: CSSProperties = {
 /* Blocs 358 à 364. */
 const NUMERO: CSSProperties = {
   font: "600 12px ui-monospace,Menlo,monospace",
-  // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   paddingTop: 5,
 };
 const COLONNE: CSSProperties = {

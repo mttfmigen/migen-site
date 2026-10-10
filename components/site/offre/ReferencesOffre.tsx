@@ -182,8 +182,7 @@ const TITRE: CSSProperties = {
 
 const LIEN_TOUTES: CSSProperties = {
   font: "600 15px var(--fb)",
-  /* Sur le fond crème de la section : 2,29:1 en `--acc`, 7,98:1 en `--acc-ink`. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   flex: "0 0 auto",
   paddingBottom: 6,
 };
@@ -224,9 +223,7 @@ const ETIQUETTE: CSSProperties = {
   font: "600 11.5px var(--fb)",
   letterSpacing: ".12em",
   textTransform: "uppercase",
-  /* Nom du client sur la carte blanche : 2,56:1 en `--acc`, 8,94:1 en
-     `--acc-ink`. C'est le nom de la référence, pas un ornement. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
 };
 
 const TITRE_CARTE: CSSProperties = {
@@ -256,10 +253,8 @@ const FLECHE: CSSProperties = {
   width: 34,
   height: 34,
   borderRadius: 999,
-  /* Rond orange plein : le fond reste la marque, la flèche passe de `#fff`
-     (2,56:1) à `--ink` (6,72:1). */
   background: "var(--acc)",
-  color: "var(--sur-acc)",
+  color: "#fff",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",

@@ -29,8 +29,7 @@ const SURTITRE: CSSProperties = {
   font: "600 11px var(--fb)",
   letterSpacing: ".12em",
   textTransform: "uppercase",
-  // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   marginBottom: 12,
 };
 

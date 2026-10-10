@@ -137,8 +137,7 @@ export default function TiroirMobile({
                 font: "600 10.5px var(--fb)",
                 letterSpacing: ".14em",
                 textTransform: "uppercase",
-                // Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1.
-                color: "var(--acc-ink)",
+                color: "var(--acc)",
                 marginBottom: 12,
               }}
             >
@@ -270,8 +269,7 @@ export default function TiroirMobile({
                           {lien.libelle}
                           <span
                             aria-hidden="true"
-                            // Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1.
-                            style={{ color: "var(--acc-ink)" }}
+                            style={{ color: "var(--acc)" }}
                           >
                             &rsaquo;
                           </span>

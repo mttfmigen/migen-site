@@ -72,7 +72,7 @@ export const PASTILLE_PUCE: CSSProperties = {
 export const TITRE1: CSSProperties = {
   font: "600 calc(clamp(38px,4.4vw,66px) * var(--ts))/1.03 var(--ft)",
   letterSpacing: "-.045em",
-  color: "var(--sur-acc)",
+  color: "var(--ink)",
   margin: 0,
   maxWidth: "16ch",
   textWrap: "balance",
@@ -102,10 +102,6 @@ export const HERO_RANGEE_BOUTONS: CSSProperties = {
  */
 export const BOUTON_HERO: CSSProperties = {
   ...BOUTON_ACTION,
-  /* `BOUTON_ACTION` vient de `blocs/habillage.ts`, partagé avec les autres
-     gabarits, et porte encore le `#fff` de la maquette : 2,56:1 sur l'orange.
-     L'encre est posée ICI, pour ce gabarit, et donne 6,72:1. */
-  color: "var(--sur-acc)",
   whiteSpace: "normal",
 };
 
@@ -176,9 +172,7 @@ export const JALON_CARTE: CSSProperties = {
 export const JALON_REPERE: CSSProperties = {
   font: "600 calc(30px * var(--ts))/1 var(--ft)",
   letterSpacing: "-.05em",
-  /* JALON_CARTE est du verre clair : 2,45:1 en `--acc`, 8,57:1 en
-     `--acc-ink`. Comme BANDE_REGLE_SURTITRE juste en dessous. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   marginBottom: 12,
 };
 
@@ -223,10 +217,7 @@ export const FORMULE_RANG: CSSProperties = {
   font: "600 11px var(--fb)",
   letterSpacing: ".12em",
   textTransform: "uppercase",
-  /* La valeur par défaut est celle de la carte en VERRE, le cas courant :
-     2,45:1 en `--acc`, 8,57:1 en `--acc-ink`. La carte PHARE est anthracite,
-     l'orange y est lisible (6,72:1) : `BlocsZeroArret` le remet sur elle. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   marginBottom: 14,
 };
 
@@ -235,9 +226,7 @@ export const FORMULE_PASTILLE: CSSProperties = {
   font: "600 10px var(--fb)",
   letterSpacing: ".12em",
   textTransform: "uppercase",
-  /* Pastille orange pleine : le fond reste la marque, l'encre passe de
-     `#fff` (2,56:1) à `--ink` (6,72:1). */
-  color: "var(--ink)",
+  color: "#fff",
   background: "var(--acc)",
   padding: "5px 11px",
   borderRadius: 999,
@@ -302,8 +291,7 @@ export const FORMULE_BOUTON_PHARE: CSSProperties = {
   padding: "14px 22px",
   borderRadius: 999,
   background: "var(--acc)",
-  /* `#fff` donnait 2,56:1 sur l'orange, `--ink` donne 6,72:1. */
-  color: "var(--ink)",
+  color: "#fff",
   font: "600 14.5px var(--fb)",
   whiteSpace: "nowrap",
   boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",
@@ -381,9 +369,7 @@ export const PREMIER_MOIS_CARTE: CSSProperties = {
 /** l. 4871, le numéro en chiffres monospacés. */
 export const PREMIER_MOIS_NUMERO: CSSProperties = {
   font: "600 11px ui-monospace,Menlo,monospace",
-  /* PREMIER_MOIS_CARTE est du verre clair : 2,45:1 en `--acc`, 8,57:1 en
-     `--acc-ink`. */
-  color: "var(--acc-ink)",
+  color: "var(--acc)",
   marginBottom: 14,
 };
 
@@ -426,8 +412,6 @@ export const PREMIER_MOIS_APPEL_TEXTE: CSSProperties = {
 /** l. 4881, le bouton orange du panneau d'appel. */
 export const PREMIER_MOIS_APPEL_BOUTON: CSSProperties = {
   ...BOUTON_ACTION,
-  /* Même raison que `BOUTON_HERO` : 2,56:1 en `#fff` hérité, 6,72:1 en encre. */
-  color: "var(--ink)",
   padding: "16px 28px",
   flex: "none",
 };

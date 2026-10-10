@@ -87,9 +87,7 @@ export default function OrigineDuNom() {
                   padding: "7px 13px",
                   borderRadius: 999,
                   background: "var(--acc)",
-                  // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
-                  // l'encre change : --ink dessus, 6,72:1.
-                  color: "var(--sur-acc)",
+                  color: "#fff",
                 }}
               >
                 Avril 2021
@@ -130,8 +128,7 @@ export default function OrigineDuNom() {
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
                 textTransform: "uppercase",
-                // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
-                color: "var(--acc-ink)",
+                color: "var(--acc)",
                 marginBottom: 16,
               }}
             >
@@ -196,8 +193,7 @@ export default function OrigineDuNom() {
                 font: "600 11px var(--fb)",
                 letterSpacing: ".12em",
                 textTransform: "uppercase",
-                // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
-                color: "var(--acc-ink)",
+                color: "var(--acc)",
                 marginBottom: 14,
               }}
             >
@@ -232,8 +228,7 @@ export default function OrigineDuNom() {
                 style={{
                   font: "600 calc(clamp(34px,4vw,52px) * var(--ts))/1 var(--ft)",
                   letterSpacing: "-.055em",
-                  // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
-                  color: "var(--acc-ink)",
+                  color: "var(--acc)",
                 }}
               >
                 1

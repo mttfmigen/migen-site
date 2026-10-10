@@ -37,8 +37,7 @@ export default function ImplantationsEquipe() {
                   display: "inline-flex",
                   marginTop: 22,
                   font: "600 15px var(--fb)",
-                  // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
-                  color: "var(--acc-ink)",
+                  color: "var(--acc)",
                 }}
               >
                 Nos implantations en détail →

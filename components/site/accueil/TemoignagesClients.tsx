@@ -58,8 +58,7 @@ export default function TemoignagesClients({
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
                 textTransform: "uppercase",
-                // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
-                color: "var(--acc-ink)",
+                color: "var(--acc)",
                 marginBottom: 16,
               }}
             >
@@ -150,8 +149,7 @@ export default function TemoignagesClients({
                 aria-hidden="true"
                 style={{
                   font: "600 26px var(--ft)",
-                  // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
-                  color: "var(--acc-ink)",
+                  color: "var(--acc)",
                   lineHeight: 1,
                   marginBottom: 16,
                 }}

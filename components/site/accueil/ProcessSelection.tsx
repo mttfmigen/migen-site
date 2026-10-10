@@ -31,8 +31,7 @@ export default function ProcessSelection() {
           style={{ display: "grid", gridTemplateColumns: "minmax(0,1.05fr) minmax(0,.95fr)", gap: "24px 64px", alignItems: "end", marginBottom: "34px" }}
         >
           <div>
-            // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
-            <div style={{ font: "600 11.5px var(--fb)", letterSpacing: ".14em", textTransform: "uppercase", color: "var(--acc-ink)", marginBottom: "16px" }}>
+            <div style={{ font: "600 11.5px var(--fb)", letterSpacing: ".14em", textTransform: "uppercase", color: "#ff7c3c", marginBottom: "16px" }}>
               Notre sélection
             </div>
             <h2
@@ -63,9 +62,7 @@ export default function ProcessSelection() {
                   padding: "14px 24px",
                   borderRadius: "999px",
                   background: "#ff7c3c",
-                  // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
-                  // l'encre change : --ink dessus, 6,72:1.
-                  color: "var(--sur-acc)",
+                  color: "#fff",
                   font: "600 14.5px var(--fb)",
                   whiteSpace: "nowrap",
                   boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",

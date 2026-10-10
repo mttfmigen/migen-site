@@ -23,7 +23,7 @@ const CHAMP: CSSProperties = {
   border: "1px solid var(--line)",
   background: "var(--card)",
   font: "400 14.5px var(--fb)",
-  color: "var(--sur-acc)",
+  color: "var(--ink)",
 };
 
 const BOUTON: CSSProperties = {
@@ -31,8 +31,7 @@ const BOUTON: CSSProperties = {
   borderRadius: 999,
   border: "none",
   backgroundColor: "#ff7c3c",
-  /* `#fff` donnait 2,56:1 sur l'orange, `--ink` donne 6,72:1. */
-  color: "var(--ink)",
+  color: "#fff",
   font: "600 15px var(--fb)",
   cursor: "pointer",
   boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",

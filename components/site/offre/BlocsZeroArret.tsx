@@ -226,16 +226,7 @@ export function Formules({ contenu }: { contenu: ContenuOffre }) {
                             marginBottom: 14,
                           }}
                         >
-                          {/* La carte phare est anthracite : l'orange de marque y
-                              vaut 6,72:1, on le remet sur le `--acc-ink` que
-                              FORMULE_RANG porte pour la carte en verre. */}
-                          <span
-                            style={{
-                              ...FORMULE_RANG,
-                              marginBottom: 0,
-                              color: "var(--acc)",
-                            }}
-                          >
+                          <span style={{ ...FORMULE_RANG, marginBottom: 0 }}>
                             {formule.rang}
                           </span>
                           <span style={FORMULE_PASTILLE}>Recommandé</span>
@@ -284,13 +275,7 @@ export function Formules({ contenu }: { contenu: ContenuOffre }) {
                             >
                               <span
                                 aria-hidden="true"
-                                /* Le « + » est sur la carte phare (anthracite,
-                                   orange à 6,72:1) ou sur la carte en verre
-                                   (orange à 2,45:1, `--acc-ink` à 8,57:1). */
-                                style={{
-                                  color: phare ? "var(--acc)" : "var(--acc-ink)",
-                                  flex: "none",
-                                }}
+                                style={{ color: "var(--acc)", flex: "none" }}
                               >
                                 +
                               </span>

@@ -7,15 +7,12 @@
    la même chose qu'un visiteur à la souris (WCAG 2.4.7). La maquette ne le
    prévoit pas, le site l'exige. */
 
-/* style-hover="filter:brightness(.93);transform:translateY(-1px);color:#fff"
-   Le `#fff` de la maquette donnait 2,56:1 sur l'orange, et le survol doit
-   tenir le plancher comme l'état au repos : `--ink` donne 6,72:1. L'orange
-   de marque, lui, ne bouge pas (le `brightness` de la maquette non plus). */
+/* style-hover="filter:brightness(.93);transform:translateY(-1px);color:#fff" */
 .boutonPrincipal:hover,
 .boutonPrincipal:focus-visible {
   filter: brightness(0.93);
   transform: translateY(-1px);
-  color: var(--sur-acc);
+  color: #fff;
 }
 
 /* style-hover="background:var(--card);transform:translateY(-1px)" (l. 4720) */
@@ -55,13 +52,10 @@
   display: none;
 }
 
-/* À l'ouverture la pastille passe au plein orange : le fond est celui de la
-   maquette, la croix posée dessus passe de `#fff` (2,56:1) à `--ink`
-   (6,72:1). */
 .pliQuestion[open] .pliPlus {
   transform: rotate(45deg);
   background: var(--acc);
-  color: var(--sur-acc);
+  color: #fff;
 }
 
 /* LES RÈGLES MOBILES DU GABARIT D'OFFRE DE LA MAQUETTE (feuille embarquée de

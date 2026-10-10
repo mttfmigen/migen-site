@@ -1,5 +1,4 @@
 /* `style-hover="color:var(--acc)"` de la maquette, ligne 5465. */
 .lienCarte:hover {
-  /* Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1. */
-  color: var(--acc-ink);
+  color: var(--acc);
 }
