@@ -2,7 +2,8 @@
  * LA PAGE D'OFFRE DIT-ELLE LES MOTS DE LA MAQUETTE, ET RIEN D'AUTRE ?
  *
  *   node scripts/verifie-mots-offre.mjs
- *   node scripts/verifie-mots-offre.mjs --rendu    imprime le détail par offre
+ *   node scripts/verifie-mots-offre.mjs --rendu     imprime le détail par offre
+ *   node scripts/verifie-mots-offre.mjs --controle  prouve que la porte sait échouer
  *
  * POURQUOI CETTE PORTE EXISTE. « Mot pour mot » doit se prouver, pas s'affirmer.
  * Le site a rendu pendant des semaines « Ce que nous garantissons. » là où la
@@ -16,9 +17,31 @@
  *   A. COMPLÉTUDE. Les trente-trois champs d'`OFFERS` de l'offre contrôlée, plus
  *      la copie que le gabarit écrit en dur, doivent se retrouver dans la page
  *      servie. Une phrase de la maquette absente du rendu est nommée.
- *   B. AUCUNE INVENTION. Chaque phrase du rendu doit venir de la maquette OU du
- *      corpus rédigé de cette page. Une phrase qui ne vient ni de l'une ni de
- *      l'autre est fabriquée, et elle est nommée.
+ *   B. AUCUNE INVENTION. Chaque phrase du rendu doit se retrouver dans LA CAPTURE
+ *      FIGÉE DE SA PAGE, `maquette/rendu/<clé>.html`. Une phrase qui n'y est pas
+ *      est fabriquée, et elle est nommée.
+ *
+ * LE CRITÈRE B A ÉTÉ RÉÉCRIT LE 10/10, PARCE QU'IL MENTAIT À 96 %. Il cherchait
+ * la phrase rendue dans deux bottes de foin trop petites : la source de
+ * `site-final.html` restreinte à l'entrée `OFFERS` de l'offre contrôlée, et les
+ * `sections` du corpus. Or une page d'offre rend AUSSI la grille des six offres
+ * et le maillage du cocon : chaque phrase des cinq autres offres y était donc
+ * comptée comme une invention. Mesure du 10/10 : sur les 353 « inventions »
+ * annoncées, 342 (96,9 %) sont présentes mot pour mot dans la capture figée de
+ * leur propre page. Exemple : la porte accusait `/offres/bureau-etudes/` de dire
+ * « Contrat unique » et « Arrêt planifié », deux tuiles d'autres offres que
+ * `maquette/rendu/offres--bureau-etudes.html` contient.
+ *
+ * LA CAPTURE EST LA RÉFÉRENCE DU PROJET (CLAUDE.md § 16, décision du 05/10) :
+ * c'est l'application telle qu'elle tourne, routeur, corpus et images compris.
+ * Aucune reconstruction ne peut être plus juste qu'elle, et une capture absente
+ * FAIT ÉCHOUER la porte au lieu de la rendre muette.
+ *
+ * LES DÉCISIONS DE COPIE SONT APPLIQUÉES À LA CAPTURE avant comparaison, comme
+ * `lib/decisions-copie.ts` le prescrit dans son propre en-tête. Sans cela, la
+ * porte dénoncerait comme inventions les six phrases où le site écrit « 10 % des
+ * techniciens retenus » là où la capture écrit « candidats » : un arbitrage de
+ * Mehdi du 08/10, pas une invention.
  *
  * COMMENT ELLE RÉSOUT LES LIAISONS, et c'est le point qui la rend utile : une
  * porte qui comparerait des « {{ of.incT }} » ne contrôlerait rien. Les bindings
@@ -37,6 +60,10 @@
  * déclarée avec sa phrase exacte et sa raison, chacune est vérifiée PRÉSENTE dans
  * la maquette et ABSENTE du rendu, et une exception devenue inutile FAIT ÉCHOUER
  * la porte : sinon la liste grossit jusqu'à tout autoriser.
+ *
+ * ELLE PROUVE QU'ELLE SAIT ÉCHOUER : `--controle` réinjecte dans chaque page le
+ * défaut que chaque contrôle cherche, et exige de le voir tomber. Une porte verte
+ * qui ne peut pas rougir ne prouve rien, et celle-ci a déjà menti une fois.
  */
 
 import { existsSync, readFileSync } from "node:fs";
@@ -47,7 +74,7 @@ import { appliqueDecisions } from "./decisions-copie.mjs";
 
 const RACINE = fileURLToPath(new URL("..", import.meta.url));
 const MAQUETTE = join(RACINE, "maquette", "site-final.html");
-const GABARITS = join(RACINE, "supabase", "import", "gabarits-maquette");
+
 
 const lis = (chemin) => JSON.parse(readFileSync(chemin, "utf8"));
 const OFFERS = lis(join(RACINE, "maquette", "offres-maquette.json"));
@@ -218,6 +245,60 @@ function noeuds(html) {
 /** Le texte visible : un noeud par ligne, jamais deux phrases recollees. */
 function texteVisible(html) {
   return noeuds(html).join("\n");
+}
+
+/* --------------------------------------------- la capture figée, référence de B */
+
+/** `/offres/residence/` → `offres--residence`, la convention de `maquette/rendu/`. */
+function cleDeCapture(url) {
+  return url.replace(/^\/|\/$/g, "").replace(/\//g, "--");
+}
+
+/**
+ * LA BOTTE DE FOIN DU CONTRÔLE B : le texte de la capture figée de CETTE page.
+ *
+ * POURQUOI LES BALISES DEVIENNENT UNE ESPACE ET NON UNE FRONTIÈRE. Du côté de
+ * l'aiguille (le rendu), chaque balise est une frontière, pour ne jamais
+ * fabriquer une phrase que personne n'a écrite. Du côté de la botte de foin,
+ * c'est l'inverse qu'il faut : la maquette enveloppe la moitié de ses phrases
+ * dans des `<span class="sc-interp">`, et une frontière y couperait
+ * « Bureau d'études industriel : des études <span>qui tiennent</span> au
+ * montage » en trois morceaux introuvables. On tolère donc qu'une phrase
+ * chevauche deux éléments voisins de la capture ; c'est une indulgence bornée,
+ * et le contrôle positif vérifie qu'elle ne va pas jusqu'à tout accepter.
+ *
+ * LA NAVIGATION N'EST PAS RETIRÉE ICI, elle l'est côté rendu : une phrase
+ * cherchée ne vient donc jamais d'un fil d'Ariane, et sa présence dans celui de
+ * la capture ne fait de mal à personne.
+ */
+const captures = new Map();
+
+/** Le fichier de capture, décisions de copie appliquées. */
+function sourceDeLaCapture(url) {
+  const chemin = join(RACINE, "maquette", "rendu", `${cleDeCapture(url)}.html`);
+  if (!existsSync(chemin)) {
+    throw new Error(
+      `aucune capture figée pour ${url} : ${chemin} est introuvable. ` +
+        "La référence du projet est le rendu de la maquette (CLAUDE.md § 16) ; " +
+        "sans elle, le contrôle B n'a rien à quoi comparer. " +
+        "Relancez scripts/capture-maquette.mjs plutôt que de laisser cette porte deviner.",
+    );
+  }
+  return appliqueDecisions(readFileSync(chemin, "utf8"));
+}
+
+function captureFigee(url) {
+  const dejaLue = captures.get(url);
+  if (dejaLue) return dejaLue;
+  const texte = normalise(
+    sourceDeLaCapture(url)
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<!--[\s\S]*?-->/g, " ")
+      .replace(/<[^>]*>/g, " "),
+  );
+  captures.set(url, texte);
+  return texte;
 }
 
 /* ------------------------------------------------- la maquette, relue à chaque fois */
@@ -458,30 +539,17 @@ function corpsDeLaPage(html, url) {
   return html.slice(debut, fin);
 }
 
-/* ----------------------------------------------------- le corpus de la page */
+/* -------------------------------------------------- POURQUOI PLUS DE CORPUS ICI
 
-/**
- * Le texte DU CORPUS RÉDIGÉ de cette page, pour le contrôle B.
- *
- * SEULES LES `sections` SONT LUES, et c'est important : le reste du fichier
- * (pastille, chapeau, chiffres, lignes incluses, tuiles…) est produit DEPUIS LA
- * MAQUETTE par `scripts/produit_gabarit_offre.mjs`. Prendre le fichier entier
- * ferait du JSON sa propre référence : un mot changé dans le JSON y resterait
- * « sourcé » et le contrôle B ne verrait rien. Contrôle positif à l'appui :
- * « Recevoir le tarif » remplacé par « Demander le tarif » dans le JSON passait
- * le contrôle B avant cette restriction, et le contrôle A seul l'attrapait.
- */
-function texteDuCorpus(url) {
-  const nom = `${url.replace(/^\/|\/$/g, "").replace(/\//g, "-")}.json`;
-  const chemin = join(GABARITS, nom);
-  if (!existsSync(chemin)) return "";
-  return normalise(
-    JSON.stringify(lis(chemin)?.contenu?.sections ?? [])
-      .replace(/\\n/g, " ")
-      .replace(/[\\"[\]{}]/g, " ")
-      .replace(/\]\(/g, " ("),
-  );
-}
+   Le contrôle B lisait aussi les `sections` de
+   `supabase/import/gabarits-maquette/<page>.json` comme seconde source possible.
+   Cette lecture est RETIRÉE le 10/10, et ce n'est pas un relâchement, c'est le
+   contraire : le corpus EST servi par la maquette (CLAUDE.md § 16, « la maquette
+   consomme le corpus »), donc tout ce qu'il contient légitimement se retrouve
+   déjà dans la capture figée. Le garder comme échappatoire laissait passer les
+   phrases que le corpus porte MAIS QUE LA MAQUETTE NE REND PAS : exactement les
+   divergences que cette porte doit nommer. La capture est la seule référence.
+*/
 
 /* --------------------------------------------------------------- le contrôle */
 
@@ -588,6 +656,185 @@ const ENTETES_DE_BLOCS = [
   },
 ];
 
+/* ------------------------------------------------------ les deux contrôles */
+
+/** A. Les phrases de la maquette que le rendu ne dit pas. */
+function ecartsCompletude(url, texte, attendues) {
+  const ecarts = [];
+  for (const { source, texte: attendu } of attendues) {
+    if (!texte.includes(attendu)) {
+      ecarts.push(
+        `${url} : la maquette écrit « ${attendu} » (${source}), le rendu ne le dit pas`,
+      );
+    }
+  }
+  return ecarts;
+}
+
+/**
+ * B. Les phrases du rendu qui ne sont pas dans la capture figée de leur page.
+ *
+ * L'ORDRE DES ÉCHAPPATOIRES COMPTE. La capture d'abord, parce qu'elle est la
+ * référence. Puis les phrases que le contrôle A EXIGE : « Si Zéro arrêt n'est pas
+ * la bonne réponse… » n'existe littéralement nulle part, la maquette écrivant
+ * « Si {{ of.name }} n'est pas… ». Puis les trois listes déclarées, chacune avec
+ * sa raison, chacune vérifiée encore utile plus bas.
+ */
+function ecartsInvention(url, texte, attendues) {
+  const capture = captureFigee(url);
+  const ecarts = [];
+  for (const unite of unites(texte)) {
+    /* LES CHEVRONS SONT POSÉS PAR LE COMPOSANT, pas écrits dans la donnée : la
+       maquette stocke « On rappelait le même prestataire… » sans guillemets et
+       les ajoute au rendu. On cherche donc la phrase avec et sans. */
+    const nu = unite
+      .replace(/^[«»"' ]+/, "")
+      .replace(/[«»"' ]+$/, "")
+      // La flèche de fin est posée par le composant, comme les chevrons.
+      .replace(/\s*→$/, "");
+    if (capture.includes(unite) || capture.includes(nu)) continue;
+    if (attendues.some((x) => x.texte.includes(unite) || x.texte.includes(nu))) continue;
+    if (AJOUTS_ASSUMES.some((a) => unite.includes(normalise(a.quoi)))) continue;
+    if (ENTETES_DE_BLOCS.some((e) => unite === normalise(e.quoi))) continue;
+    if (SUBSTITUTIONS_ARBITREES.some((x) => unite === normalise(x.rendu))) continue;
+    if (EXCEPTIONS_CADRATIN.some((e) => unite.includes(normalise(e.rendu)))) continue;
+    ecarts.push(
+      `${url} : le rendu dit « ${unite} », absent de la capture figée ` +
+        `maquette/rendu/${cleDeCapture(url)}.html`,
+    );
+  }
+  return ecarts;
+}
+
+/* --------------------------------------------------- le contrôle positif */
+
+/**
+ * LA PREUVE QUE CETTE PORTE SAIT ÉCHOUER, exigée par la règle du dépôt et payée
+ * par deux portes qui ont menti le 09/10.
+ *
+ * TROIS SONDES PAR PAGE MESURABLE, et chacune a sa réciproque :
+ *
+ *   1. une phrase que personne n'a écrite, injectée dans le rendu : le contrôle B
+ *      DOIT la nommer. Sinon il ne sert à rien.
+ *   2. une phrase prise dans la capture figée de la page, absente du rendu
+ *      actuel, injectée elle aussi : le contrôle B NE DOIT PAS la nommer. Sinon
+ *      il crie sur sa propre référence, le défaut du 09/10.
+ *   3. une phrase de la maquette actuellement rendue, effacée du rendu : le
+ *      contrôle A DOIT la nommer. Sinon la complétude ne mesure rien.
+ *
+ * LA PHRASE INVENTÉE NE RESSEMBLE À RIEN DU SITE, volontairement : une phrase
+ * plausible risquerait d'être présente quelque part et la sonde conclurait à tort.
+ */
+const PHRASE_INVENTEE =
+  "Migen expédie vos roulements par ballon dirigeable chaque dimanche de pleine lune.";
+
+async function controlePositif() {
+  const echecs = [];
+  let sondes = 0;
+
+  for (const [cle, url] of Object.entries(PAGES)) {
+    if (DETOURNEES.has(url)) continue;
+    const { html } = await rendu(url);
+    const corps = corpsDeLaPage(html, url);
+    const texte = texteVisible(corps);
+    const attendues = phrasesAttendues(cle);
+    const reference = ecartsInvention(url, texte, attendues).length;
+
+    /* 1. L'invention doit tomber. */
+    sondes += 1;
+    const avecInvention = ecartsInvention(
+      url,
+      `${texte}\n${PHRASE_INVENTEE}`,
+      attendues,
+    );
+    if (avecInvention.length !== reference + 1) {
+      echecs.push(
+        `${url} : une phrase inventée injectée dans le rendu n'a PAS fait tomber le ` +
+          `contrôle B (${reference} écart(s) avant, ${avecInvention.length} après). ` +
+          "La porte ne sait plus échouer.",
+      );
+    } else {
+      console.log(`  ✓ ${url.padEnd(26)} B nomme la phrase inventée`);
+    }
+
+    /* 2. Une phrase de la capture ne doit pas tomber. */
+    /* UNE VRAIE PHRASE DE LA CAPTURE, pas un morceau recollé : elle est prise
+       dans UN SEUL nœud de texte de la capture, commence par une majuscule et
+       finit par un point. Prise dans la botte de foin aplatie, elle pourrait
+       chevaucher deux éléments et la sonde ne contrôlerait plus que l'indulgence
+       de l'aplatissement, au lieu de la reconnaissance d'une phrase écrite. */
+    const candidates = unites(texteVisible(sourceDeLaCapture(url)))
+      .filter(
+        (u) => u.length >= 40 && /^[«A-ZÀÂÄÇÉÈÊËÎÏÔÖÙÛÜŸ].*[.!?]$/.test(u) && !texte.includes(u),
+      )
+      .sort((a, b) => b.length - a.length);
+    if (candidates.length === 0) {
+      echecs.push(
+        `${url} : aucune phrase de la capture absente du rendu, la sonde 2 ne peut ` +
+          "pas être posée. Choisissez-en une à la main plutôt que de la sauter.",
+      );
+    } else {
+      sondes += 1;
+      const deLaCapture = candidates[0];
+      const avecCapture = ecartsInvention(url, `${texte}\n${deLaCapture}`, attendues);
+      if (avecCapture.length !== reference) {
+        echecs.push(
+          `${url} : une phrase PRISE DANS LA CAPTURE a fait tomber le contrôle B ` +
+            `(${reference} écart(s) avant, ${avecCapture.length} après) : ` +
+            `« ${deLaCapture.slice(0, 90)} ». La porte crie sur sa propre référence.`,
+        );
+      } else {
+        console.log(
+          `  ✓ ${url.padEnd(26)} B accepte « ${deLaCapture.slice(0, 48)}… » de la capture`,
+        );
+      }
+    }
+
+    /* 3. Une phrase de la maquette effacée doit tomber, côté complétude. */
+    const presentes = attendues
+      .filter((x) => texte.includes(x.texte) && x.texte.length >= 20)
+      .sort((a, b) => b.texte.length - a.texte.length);
+    if (presentes.length === 0) {
+      echecs.push(
+        `${url} : aucune phrase attendue n'est présente dans le rendu, la sonde 3 ` +
+          "ne peut pas être posée.",
+      );
+    } else {
+      sondes += 1;
+      const effacee = presentes[0];
+      const avant = ecartsCompletude(url, texte, attendues).length;
+      const apres = ecartsCompletude(url, texte.split(effacee.texte).join(" "), attendues);
+      if (apres.length <= avant) {
+        echecs.push(
+          `${url} : une phrase de la maquette effacée du rendu n'a PAS fait tomber le ` +
+            `contrôle A (${avant} écart(s) avant, ${apres.length} après) : ` +
+            `« ${effacee.texte.slice(0, 90)} ».`,
+        );
+      } else {
+        console.log(
+          `  ✓ ${url.padEnd(26)} A nomme « ${effacee.texte.slice(0, 48)}… » quand on l'efface`,
+        );
+      }
+    }
+  }
+
+  if (echecs.length > 0) {
+    console.error("");
+    for (const e of echecs) console.error(`  ✗ ${e}`);
+    console.error(`\n${echecs.length} sonde(s) en échec sur ${sondes} : la porte ne prouve rien.`);
+    process.exit(1);
+  }
+  console.log(
+    `\n${sondes} sondes posées, toutes concluantes : la porte nomme le défaut qu'elle ` +
+      "cherche et se tait devant sa référence.",
+  );
+  process.exit(0);
+}
+
+if (process.argv.includes("--controle")) await controlePositif();
+
+/* ------------------------------------------------------------ la mesure */
+
 const defauts = [];
 const verbeux = process.argv.includes("--rendu");
 let totalAttendues = 0;
@@ -606,57 +853,23 @@ for (const [cle, url] of Object.entries(PAGES)) {
   const { html, ou } = await rendu(url);
   const corps = corpsDeLaPage(html, url);
   const texte = texteVisible(corps);
-  const corpus = texteDuCorpus(url);
 
   /* ---- A. COMPLÉTUDE : chaque phrase de la maquette est-elle rendue ? ---- */
   const attendues = phrasesAttendues(cle);
   totalAttendues += attendues.length;
-  let manquantes = 0;
-  for (const { source, texte: attendu } of attendues) {
-    if (!texte.includes(attendu)) {
-      manquantes += 1;
-      defauts.push(
-        `${url} : la maquette écrit « ${attendu} » (${source}), le rendu ne le dit pas`,
-      );
-    }
-  }
+  const manquantes = ecartsCompletude(url, texte, attendues);
+  defauts.push(...manquantes);
 
-  /* ---- B. AUCUNE INVENTION : chaque phrase du rendu a-t-elle une source ? ---- */
+  /* ---- B. AUCUNE INVENTION : chaque phrase du rendu est-elle dans la capture ? -- */
   const rendues = unites(texte);
   totalRendues += rendues.length;
-  let orphelines = 0;
-  for (const unite of rendues) {
-    /* LES CHEVRONS SONT POSÉS PAR LE COMPOSANT, pas écrits dans la donnée : la
-       maquette stocke « On rappelait le même prestataire… » sans guillemets et
-       les ajoute au rendu. On cherche donc la phrase avec et sans. */
-    const nu = unite
-      .replace(/^[«»"' ]+/, "")
-      .replace(/[«»"' ]+$/, "")
-      // La flèche de fin est posée par le composant, comme les chevrons.
-      .replace(/\s*→$/, "");
-    if (MAQUETTE_ENTIERE.includes(unite) || MAQUETTE_ENTIERE.includes(nu)) continue;
-    /* Les phrases que le contrôle A EXIGE sont évidemment sourcées : la maquette
-       les écrit, liaisons résolues. « Si Zéro arrêt n'est pas la bonne réponse… »
-       n'existe pas littéralement dans le fichier de maquette, qui écrit
-       « Si {{ of.name }} n'est pas… ». */
-    if (attendues.some((x) => x.texte.includes(unite) || x.texte.includes(nu))) {
-      continue;
-    }
-    if (corpus.includes(unite) || corpus.includes(nu)) continue;
-    if (AJOUTS_ASSUMES.some((a) => unite.includes(normalise(a.quoi)))) continue;
-    if (ENTETES_DE_BLOCS.some((e) => unite === normalise(e.quoi))) continue;
-    if (SUBSTITUTIONS_ARBITREES.some((x) => unite === normalise(x.rendu))) continue;
-    if (EXCEPTIONS_CADRATIN.some((e) => unite.includes(normalise(e.rendu)))) continue;
-    orphelines += 1;
-    defauts.push(
-      `${url} : le rendu dit « ${unite} », qui n'est ni dans la maquette ni dans le corpus`,
-    );
-  }
+  const orphelines = ecartsInvention(url, texte, attendues);
+  defauts.push(...orphelines);
 
   console.log(
     `${url.padEnd(28)} ${cle.padEnd(13)} ${String(attendues.length).padStart(3)} phrases de maquette ` +
-      `(${manquantes} absente(s)), ${String(rendues.length).padStart(3)} phrases rendues ` +
-      `(${orphelines} sans source) · ${ou}`,
+      `(${manquantes.length} absente(s)), ${String(rendues.length).padStart(3)} phrases rendues ` +
+      `(${orphelines.length} hors capture) · ${ou}`,
   );
   if (verbeux) {
     for (const { source, texte: attendu } of attendues) {
@@ -711,15 +924,16 @@ if (defauts.length > 0) {
 if (ecartees.length > 0) {
   console.log(
     `\n${ecartees.length} adresse(s) écartée(s), détournées par le routeur de la maquette et donc` +
-      ` sans référence mesurable ici :\n  ${ecartees.join("\n  ")}` +
-      `\n  Leur seule référence est leur capture figée, maquette/rendu/<clé>.html.`,
+      ` sans capture figée, donc sans référence mesurable :\n  ${ecartees.join("\n  ")}` +
+      `\n  Le routeur de la maquette les envoie ailleurs ; c'est la page de destination` +
+      `\n  qui porte leur texte, et c'est elle qu'il faut mesurer.`,
   );
 }
 
 console.log(
   `\npage d'offre conforme au mot : ${Object.keys(PAGES).length - ecartees.length} offres mesurées, ` +
     `${totalAttendues} phrases de maquette toutes rendues, ` +
-    `${totalRendues} phrases rendues toutes sourcées, ` +
+    `${totalRendues} phrases rendues toutes présentes dans leur capture figée, ` +
     `${EXCEPTIONS_CADRATIN.length} phrases à tiret cadratin substituées et déclarées, ` +
     `${AJOUTS_ASSUMES.length} ajouts assumés, ` +
     `${ENTETES_DE_BLOCS.length} en-têtes de blocs du corpus, ` +

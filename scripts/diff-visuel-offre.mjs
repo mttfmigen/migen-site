@@ -32,6 +32,20 @@ const SEUIL_CANAL = 40;
 /** Une section dont plus de ce pourcentage de pixels diverge mérite un montage. */
 const SEUIL_MONTAGE = 4;
 
+/**
+ * Attente maximale d'une page, en millisecondes.
+ *
+ * Les 30 s par défaut de Playwright ne suffisent pas, et pas à cause du site :
+ * mesuré le 10/10, le serveur de dev met jusqu'à 25 s à servir ses propres
+ * morceaux (`_next/static/chunks/...next-devtools...`) quand plusieurs
+ * sessions travaillent en même temps, et la maquette autonome pèse 24 Mo sur
+ * un `python -m http.server`. La même page tombait en timeout puis se mesurait
+ * sans rien changer. On attend donc toujours `networkidle` (jamais moins : une
+ * photo prise avant les images rendrait une divergence fausse), simplement
+ * plus longtemps.
+ */
+const ATTENTE = Number(process.env.ATTENTE ?? 90000);
+
 mkdirSync(SORTIE, { recursive: true });
 
 /* Les rails de cartes défilent seuls : figés à 0 des deux côtés, sinon la
@@ -105,7 +119,7 @@ async function sectionsDe(page) {
 /** Photographie chaque section d'une page dans un dossier donné. */
 async function capture(url, prefixe, preparation) {
   const page = await contexte.newPage();
-  await page.goto(url, { waitUntil: "networkidle" });
+  await page.goto(url, { waitUntil: "networkidle", timeout: ATTENTE });
   if (preparation) await preparation(page);
   await neutraliseArtefacts(page);
   await laisseSePoser(page);
@@ -133,10 +147,10 @@ async function capture(url, prefixe, preparation) {
 // La maquette vit dans un iframe de voir.html : on la photographie depuis le
 // cadre lui-même, sinon on photographie la barre d'outils avec.
 const pageRef = await contexte.newPage();
-await pageRef.goto(MAQUETTE, { waitUntil: "networkidle" });
+await pageRef.goto(MAQUETTE, { waitUntil: "networkidle", timeout: ATTENTE });
 await pageRef.waitForFunction(
   () => document.getElementById("etat")?.textContent?.startsWith("page ouverte"),
-  { timeout: 30000 },
+  { timeout: ATTENTE },
 );
 const cadre = pageRef.frames().find((f) => f.url().includes("autonome"));
 await cadre.evaluate(async () => {
@@ -162,6 +176,10 @@ await cadre.evaluate(async () => {
    détournées peuvent partager leur h1 (/bureau-etudes/ et
    /offres/bureau-etudes/ ont le même), donc comparer les titres ne suffit pas
    à repérer le détournement. */
+/** `/offres/residence/` -> `offres--residence`, la clé des captures figées. */
+const cleDeCapture = (url) => url.replace(/^\/|\/$/g, "").replace(/\//g, "--") || "accueil";
+const CLE = cleDeCapture(CHEMIN);
+
 const detournee = (() => {
   try {
     const source = readFileSync(
@@ -186,12 +204,60 @@ if (detournee) {
   console.error("fausse : c'est ainsi que la FAQ de /bureau-etudes/ a été relevée à 69 % et");
   console.error("portée au relais comme un défaut, alors que le site reproduit sa capture");
   console.error("mot pour mot. Pour ces six adresses, la seule référence est la capture");
-  console.error(`figée : maquette/rendu/${(CHEMIN.replace(/^\/|\/$/g, "").replace(/\//g, "--") || "accueil")}.html`);
+  console.error(`figée : maquette/rendu/${CLE}.html`);
   await navigateur.close();
   process.exit(2);
 }
 
-const h1Attendu = (() => {
+/* DEUXIÈME VÉRIFICATION D'ARRIVÉE : est-on sur LA page, ou sur une autre ?
+ *
+ * CE QUI NE MARCHE PAS, et a refusé 55 pages à tort jusqu'au 10/10 : comparer
+ * le h1 rendu au h1 de `index.json`. La maquette affiche souvent une ACCROCHE
+ * COMMERCIALE là où l'index annonce un titre documentaire, et c'est par
+ * construction, pas par détournement :
+ *
+ *   /preuves/autoliv/      index « Étude de cas AUTOLIV : un technicien dédié… »
+ *                          rendu « Un technicien dédié pour que le parc… »
+ *   /secteurs/nucleaire/   index « Maintenance nucléaire »
+ *                          rendu « Des techniciens habilités, prêts quand vous l'êtes. »
+ *   /a-propos/equipe/      écran natif, h1 « Celles et ceux qui portent vos projets. »
+ *
+ * `capture-maquette.mjs` le sait depuis le 05/10 (« le h1 rendu peut différer
+ * de celui de l'index : c'est un constat à consigner, pas un échec »), et le
+ * consigne dans chaque capture sous le verdict `rendue-h1-different` : 41
+ * études de cas, 12 secteurs, le hub /secteurs/ et un écran natif.
+ *
+ * CE QU'ON COMPARE DONC : le h1 vivant au h1 que la maquette a RÉELLEMENT
+ * RENDU quand la capture figée a été prise (`h1Rendu` de
+ * maquette/rendu/<clé>.json), c'est-à-dire à la référence du dépôt, arrivée
+ * déjà vérifiée page par page. Un détournement déplace ce h1 ; une accroche
+ * écourtée, non.
+ *
+ * SANS CAPTURE FIGÉE, on refuse : rien ne permet alors de distinguer un
+ * détournement d'une accroche écourtée, et c'est exactement l'erreur qu'on
+ * vient de payer. Il faut figer la référence d'abord.
+ *
+ * ANGLE MORT ASSUMÉ : deux pages au même h1 rendu (/bureau-etudes/ et
+ * /offres/bureau-etudes/) sont indiscernables ici. C'est la table `remapOffer`
+ * lue plus haut, et elle seule, qui attrape ce cas.
+ */
+
+/** Normalisation du dépôt : entités, apostrophes typographiques, espaces. */
+const memeTexte = (a, b) => {
+  const plat = (s) =>
+    (s ?? "")
+      .normalize("NFC")
+      .replace(/&nbsp;/g, " ")
+      .replace(/&#(?:x27|39);/g, "'")
+      .replace(/&amp;/g, "&")
+      .replace(/[‘’ʼ]/g, "'")
+      .replace(/[   ]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  return plat(a) === plat(b);
+};
+
+const h1Index = (() => {
   try {
     const index = JSON.parse(
       readFileSync(new URL("../maquette/contenu/site/index.json", import.meta.url), "utf8"),
@@ -202,23 +268,60 @@ const h1Attendu = (() => {
     return null;
   }
 })();
-if (h1Attendu) {
-  const h1Rendu = await cadre.evaluate(
+
+const h1Figé = (() => {
+  try {
+    const capture = JSON.parse(
+      readFileSync(new URL(`../maquette/rendu/${CLE}.json`, import.meta.url), "utf8"),
+    );
+    const h1 = capture?.h1Rendu;
+    return h1 && String(h1).trim() ? String(h1) : null;
+  } catch {
+    return null;
+  }
+})();
+
+if (h1Index || h1Figé) {
+  const h1Vivant = await cadre.evaluate(
     () => document.querySelector("h1")?.textContent?.replace(/\s+/g, " ").trim() ?? "",
   );
-  const pareil = (a, b) =>
-    a.normalize("NFC").replace(/[  ]/g, " ").replace(/[‘’]/g, "'").trim() ===
-    b.normalize("NFC").replace(/[  ]/g, " ").replace(/[‘’]/g, "'").trim();
-  if (h1Rendu && !pareil(h1Rendu, h1Attendu)) {
-    console.error(`La maquette n'a PAS ouvert ${CHEMIN} : son routeur l'a détournée.`);
-    console.error(`  demandé : « ${h1Attendu} »`);
-    console.error(`  obtenu  : « ${h1Rendu} »`);
+
+  if (!h1Figé) {
+    console.error(`Aucune capture figée pour ${CHEMIN} : maquette/rendu/${CLE}.json manque.`);
     console.error("");
-    console.error("Mesurer ici comparerait le site à une autre page. Pour ces adresses,");
-    console.error("la seule référence est la capture figée, maquette/rendu/<clé>.html :");
-    console.error(`  node scripts/capture-maquette.mjs ${CHEMIN}   (dira « redirigée »)`);
+    console.error("Sans elle, un h1 rendu différent de l'index peut être deux choses");
+    console.error("opposées : un détournement du routeur, ou l'accroche commerciale que");
+    console.error("la maquette affiche par construction. On ne devine pas, on fige :");
+    console.error(`  node scripts/capture-maquette.mjs ${CHEMIN}`);
+    console.error(`  index  : « ${h1Index ?? "(absent de l'index)"} »`);
+    console.error(`  vivant : « ${h1Vivant} »`);
     await navigateur.close();
     process.exit(2);
+  }
+
+  if (h1Vivant && !memeTexte(h1Vivant, h1Figé)) {
+    console.error(`La maquette n'a PAS ouvert ${CHEMIN} : elle rend une autre page.`);
+    console.error(`  capture figée : « ${h1Figé} »`);
+    console.error(`  rendu vivant  : « ${h1Vivant} »`);
+    console.error("");
+    console.error("Mesurer ici comparerait le site à une AUTRE page, et la divergence");
+    console.error("serait fausse : c'est ainsi que la FAQ de /bureau-etudes/ a été relevée");
+    console.error("à 69 % et portée au relais comme un défaut du site.");
+    console.error("");
+    console.error("Deux causes possibles, à trancher avant de mesurer :");
+    console.error("  1. le routeur de la maquette détourne cette adresse ;");
+    console.error(`  2. la capture figée a vieilli (maquette/rendu/${CLE}.json),`);
+    console.error("     la maquette ayant été ré-exportée depuis. La refaire alors :");
+    console.error(`     node scripts/capture-maquette.mjs ${CHEMIN}`);
+    await navigateur.close();
+    process.exit(2);
+  }
+
+  if (h1Index && !memeTexte(h1Figé, h1Index)) {
+    console.log(
+      `note : la maquette titre « ${h1Figé} » là où l'index annonce « ${h1Index} ».\n` +
+        "      Conforme à sa capture figée : accroche de la maquette, pas un détournement.",
+    );
   }
 }
 
