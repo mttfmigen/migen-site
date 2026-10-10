@@ -49,7 +49,9 @@ const CARTE: CSSProperties = {
 const NUMERO: CSSProperties = {
   font: "600 24px/1 var(--ft)",
   letterSpacing: "-.05em",
-  color: "var(--acc)",
+  /* Carte claire : 2,45:1 en `--acc`, 8,57:1 en `--acc-ink`. Le jumeau
+     `NUMERO_SOMBRE` plus bas garde l'orange, il est sur l'anthracite. */
+  color: "var(--acc-ink)",
   marginBottom: 18,
 };
 

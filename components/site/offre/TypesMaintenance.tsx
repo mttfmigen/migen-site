@@ -109,7 +109,9 @@ const RANGEE: CSSProperties = {
 /* Bloc 358. */
 const NUMERO: CSSProperties = {
   font: "600 12px ui-monospace,Menlo,monospace",
-  color: "var(--acc)",
+  /* Rangée sur le fond crème : 2,29:1 en `--acc`, 7,98:1 en `--acc-ink`.
+     Même jeton que BARRE_ETIQUETTE plus bas. */
+  color: "var(--acc-ink)",
   paddingTop: 5,
 };
 

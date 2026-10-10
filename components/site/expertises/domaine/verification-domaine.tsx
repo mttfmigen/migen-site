@@ -59,6 +59,7 @@ import {
 import ComplementsDomaine from "./ComplementsDomaine";
 import PageDomaine from "./PageDomaine";
 import ProblemeDomaine from "./ProblemeDomaine";
+import { memeCouleurApresDecision } from "@/components/site/expertises/specialite/releve-capture";
 
 const RACINE = fileURLToPath(new URL("../../../..", import.meta.url));
 const lit = (...chemin: string[]) => readFileSync(join(RACINE, ...chemin), "utf8");
@@ -196,13 +197,19 @@ function compare(nom: string, html: string, rendu: string): Manque[] {
     let meilleur: Declarations = new Map();
     let score = -1;
     for (const candidat of rendus) {
-      const n = [...attendu].filter(([p, v]) => candidat.get(p) === v).length;
+      /* `memeCouleurApresDecision` : la décision de contraste du 09/10 change
+         la couleur du TEXTE et elle seule, l'orange des fonds, filets et
+         pastilles restant comparé à l'identique. Déclarée une seule fois,
+         dans `releve-capture.ts`. */
+      const n = [...attendu].filter(
+        ([p, v]) => candidat.get(p) === v || (p === "color" && memeCouleurApresDecision(v, candidat.get(p))),
+      ).length;
       if (n > score) [meilleur, score] = [candidat, n];
       if (n === attendu.size) break;
     }
     if (score === attendu.size) continue;
     const detail = [...attendu]
-      .filter(([p, v]) => meilleur.get(p) !== v)
+      .filter(([p, v]) => meilleur.get(p) !== v && !(p === "color" && memeCouleurApresDecision(v, meilleur.get(p))))
       .map(([p, v]) => `${p}:${v}${meilleur.has(p) ? ` (rendu ${meilleur.get(p)})` : ""}`)
       .join("; ");
     manques.push({ ecran: nom, nature: "dessin", detail });
@@ -247,6 +254,8 @@ const ECARTS: Ecart[] = [
     "ProblemeOffre (partagé) ne rend pas le paragraphe de suite d'une punchline d'une seule phrase, la capture le rend VIDE (tuyauterie) : aucun texte ne manque, 4px sous le titre"),
   ecart("04 Offre", "dessin", /^max-width:none$/,
     "PointsOffre (partagé) : max-width:none absent de l'intitulé du point"),
+  ecart("Marques maintenues", "dessin", /^color:var\(--ink4\) \(rendu var\(--acc-ink\)\)$/,
+    "contraste AA, décision de Mehdi du 09/10 : la capture pose `--ink4` sur le compte de l'onglet, soit 2,48:1 sur blanc, sous les 4,5:1 du critère 1.4.3. Le rendu hérite de `--acc-ink`, 8,94:1. La couleur du TEXTE seule change, l'orange du dessin ne bouge pas"),
   ecart("05 Déroulé", "dessin", /^grid-column:span 3 \(rendu 1 \/ -1\)$/,
     "DerouleOffre (partagé) : 1 / -1, même étendue sur la grille à 3 colonnes"),
   ecart("05 Déroulé", "copie", (d, lisible) => lisible.includes(majuscule(d)),

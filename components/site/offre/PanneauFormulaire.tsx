@@ -53,7 +53,9 @@ const PASTILLE: CSSProperties = {
   font: "600 10.5px var(--fb)",
   letterSpacing: ".1em",
   textTransform: "uppercase",
-  color: "var(--acc)",
+  /* Pastille teintée sur le verre clair du panneau : 2,22:1 en `--acc`,
+     7,75:1 en `--acc-ink`. Le fond teinté, lui, ne change pas. */
+  color: "var(--acc-ink)",
   background: "var(--acc-w)",
   padding: "5px 12px",
   borderRadius: 999,

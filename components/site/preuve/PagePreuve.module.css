@@ -9,11 +9,13 @@
    Le focus est traité avec le survol partout : un visiteur au clavier doit
    voir la même chose qu'un visiteur à la souris (WCAG 2.4.7). */
 
-/* style-hover="filter:brightness(.93);color:#fff" */
+/* style-hover="filter:brightness(.93);color:#fff"
+   Bouton orange plein : `#fff` donnait 2,56:1, `--ink` donne 6,72:1. Le survol
+   tient le même plancher que l'état au repos. */
 .boutonPrincipal:hover,
 .boutonPrincipal:focus-visible {
   filter: brightness(0.93);
-  color: #fff;
+  color: var(--sur-acc);
 }
 
 /* style-hover="background:#fff" */

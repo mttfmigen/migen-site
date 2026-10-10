@@ -112,13 +112,13 @@ export function BlocVente({ b }: { b: Bloc }) {
     );
   if (b.isCta)
     return (
-      <div style={css("margin:26px 0;border-radius:var(--rad);background:#1c1b19;padding:24px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;position:relative;overflow:hidden")}>
+      <div className={h.panneauSombre} style={css("margin:26px 0;border-radius:var(--rad);background:#1c1b19;padding:24px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;position:relative;overflow:hidden")}>
         <div style={css("position:absolute;width:300px;height:300px;right:-120px;top:-150px;background:radial-gradient(circle,rgba(255,124,60,.3),transparent 68%);pointer-events:none")}></div>
         <p style={css("position:relative;font:500 16px/1.55 var(--fb);color:rgba(255,255,255,.86);margin:0;max-width:52ch")}>
           <Segs segs={b.segs} gras={GRAS} lien={LIEN} survol={h.acc} />
         </p>
         <div style={css("position:relative;display:flex;gap:10px;flex-wrap:wrap")}>
-          <a className={h.boutonPlat} href="#cx-form" style={css("padding:12px 20px;border-radius:999px;background:var(--acc);color:#fff;font:600 14px var(--fb);white-space:nowrap")}>Décrire mon besoin</a>
+          <a className={h.boutonPlat} href="#cx-form" style={css("padding:12px 20px;border-radius:999px;background:var(--acc);color:var(--sur-acc);font:600 14px var(--fb);white-space:nowrap")}>Décrire mon besoin</a>
         </div>
       </div>
     );
@@ -144,7 +144,7 @@ export function BlocVente({ b }: { b: Bloc }) {
         {(b.units ?? []).map((u, i) => (
           <div key={i} style={css(`border-radius:var(--rad);padding:24px 24px 14px;${VERRE_SOUS}`)}>
             <div style={css("display:flex;align-items:center;gap:10px;margin-bottom:14px")}>
-              <span style={css("font:600 11px ui-monospace,Menlo,monospace;color:var(--acc)")}><span>{u.n}</span></span>
+              <span style={css("font:600 11px ui-monospace,Menlo,monospace;color:var(--acc-ink)")}><span>{u.n}</span></span>
               <span style={css("flex:1;height:1px;background:var(--line)")}></span>
             </div>
             <h3 style={css("font:600 calc(18px * var(--ts))/1.3 var(--ft);letter-spacing:-.025em;color:var(--ink);margin:0 0 12px;text-wrap:balance")}><span>{u.title}</span></h3>

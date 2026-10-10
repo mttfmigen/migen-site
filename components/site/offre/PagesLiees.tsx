@@ -178,8 +178,9 @@ const FLECHE: CSSProperties = {
   width: 34,
   height: 34,
   borderRadius: 999,
+  /* Rond teinté sur fond clair : 2,22:1 en `--acc`, 7,75:1 en `--acc-ink`. */
   background: "var(--acc-w)",
-  color: "var(--acc)",
+  color: "var(--acc-ink)",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",

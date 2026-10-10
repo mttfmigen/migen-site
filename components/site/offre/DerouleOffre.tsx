@@ -58,7 +58,7 @@ const CARTE_ENTETE: CSSProperties = {
 const TITRE: CSSProperties = {
   font: "600 calc(clamp(24px,2.4vw,32px) * var(--ts))/1.12 var(--ft)",
   letterSpacing: "-.035em",
-  color: "var(--ink)",
+  color: "var(--sur-acc)",
   margin: 0,
   maxWidth: "20ch",
   textWrap: "balance",
@@ -70,7 +70,9 @@ const BOUTON: CSSProperties = {
   padding: "12px 20px",
   borderRadius: 999,
   background: "var(--acc)",
-  color: "#fff",
+  /* L'orange de marque ne bouge pas, l'encre posée dessus oui : le `#fff` de
+     la maquette donnait 2,56:1, `--ink` donne 6,72:1 (WCAG 1.4.3, 4,5:1). */
+  color: "var(--sur-acc)",
   font: "600 14px var(--fb)",
   whiteSpace: "nowrap",
 };
@@ -88,8 +90,11 @@ const BADGE: CSSProperties = {
   width: 34,
   height: 34,
   borderRadius: 11,
+  /* Le fond teinté reste l'orange de marque à 11 %. Le chiffre posé dessus
+     passe à l'encre orange : `--acc` donnait 2,22:1, `--acc-ink` donne
+     7,75:1 sur ce même fond (mesuré, thème clair comme sombre). */
   background: "var(--acc-w)",
-  color: "var(--acc)",
+  color: "var(--acc-ink)",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -162,7 +167,9 @@ export default function DerouleOffre({
                   style={{
                     font: "600 40px/1 var(--ft)",
                     letterSpacing: "-.05em",
-                    color: "var(--acc)",
+                    /* Sur le fond teinté de la section : 2,08:1 en `--acc`,
+                       7,28:1 en `--acc-ink`. */
+                    color: "var(--acc-ink)",
                   }}
                 >
                   {section.etapes.length}

@@ -59,6 +59,9 @@ const FLECHE: CSSProperties = {
   height: 34,
   borderRadius: 999,
   background: "#ff7c3c",
+  /* La flèche héritait le `#fff` de `LIEN_HUB`, soit 2,56:1 sur le rond
+     orange. L'encre posée explicitement donne 6,72:1. */
+  color: "var(--ink)",
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",

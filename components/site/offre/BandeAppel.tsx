@@ -79,7 +79,9 @@ const BOUTON: CSSProperties = {
   padding: "14px 24px",
   borderRadius: 999,
   background: "var(--acc)",
-  color: "#fff",
+  /* `#fff` donnait 2,56:1 sur l'orange, `--ink` donne 6,72:1. La bande, elle,
+     garde ses deux variantes de fond. */
+  color: "var(--sur-acc)",
   font: "600 15px var(--fb)",
   whiteSpace: "nowrap",
   boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",

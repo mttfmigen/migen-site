@@ -64,7 +64,9 @@ const BOUTON: CSSProperties = {
   padding: "15px 26px",
   borderRadius: 999,
   background: "var(--acc)",
-  color: "#fff",
+  /* L'orange de marque ne bouge pas, l'encre posée dessus oui : `#fff`
+     donnait 2,56:1, `--ink` donne 6,72:1. */
+  color: "var(--sur-acc)",
   font: "600 15px var(--fb)",
   whiteSpace: "nowrap",
   boxShadow: "rgba(255, 124, 60, .9) 0 12px 30px -12px",
@@ -87,7 +89,8 @@ const RESUME: CSSProperties = {
 
 const NUMERO: CSSProperties = {
   font: "600 11px ui-monospace,Menlo,monospace",
-  color: "var(--acc)",
+  /* Sur le verre clair du pli : 2,45:1 en `--acc`, 8,57:1 en `--acc-ink`. */
+  color: "var(--acc-ink)",
   flex: "0 0 auto",
 };
 

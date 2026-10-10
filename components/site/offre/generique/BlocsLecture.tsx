@@ -27,12 +27,12 @@ export function Duo({ b }: { b: Bloc }) {
     <div style={css(`margin:8px 0 26px;border-radius:var(--rad);overflow:hidden;${VERRE}`)}>
       {(b.duo ?? []).map((d, i) => (
         <div key={i} className="mg-r2" style={css("display:grid;grid-template-columns:44px minmax(0,1.05fr) minmax(0,.95fr);gap:24px;padding:20px 26px;align-items:start;border-top:1px solid var(--line)")}>
-          <span style={css("font:600 11px ui-monospace,Menlo,monospace;color:var(--acc);padding-top:3px")}><span>{d.n}</span></span>
+          <span style={css("font:600 11px ui-monospace,Menlo,monospace;color:var(--acc-ink);padding-top:3px")}><span>{d.n}</span></span>
           <div style={css("font:400 14.5px/1.62 var(--fb);color:var(--ink1)")}>
             <Segs segs={d.l} gras={GRAS} lien={css("font-weight:600;color:var(--ink);text-decoration:underline;text-decoration-color:rgba(255,124,60,.55);text-underline-offset:3px")} survol={h.acc} />
           </div>
           <div style={css("display:flex;gap:11px;align-items:flex-start;padding:12px 15px;border-radius:14px;background:var(--acc-w)")}>
-            <span style={css("color:var(--acc);font:600 14px var(--fb);flex:none")}>→</span>
+            <span style={css("color:var(--acc-ink);font:600 14px var(--fb);flex:none")}>→</span>
             <span style={css("font:500 14px/1.55 var(--fb);color:var(--ink)")}>
               <Segs segs={d.r} gras={css("font-weight:600")} lien={css("font-weight:600;color:var(--acc-ink)")} />
             </span>
@@ -48,7 +48,7 @@ export function Bento({ b }: { b: Bloc }) {
     <div className="mg-bento2" style={css(b.gridCss ?? "")}>
       {(b.items ?? []).map((it, i) => (
         <div key={i} style={css(it.cellCss ?? "")}>
-          <span style={css("font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.06em;color:var(--acc)")}><span>{it.n}</span></span>
+          <span style={css("font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.06em;color:var(--acc-ink)")}><span>{it.n}</span></span>
           <div>
             <div style={css(it.titleCss ?? "")}>
               {it.hasHref ? (
@@ -58,7 +58,7 @@ export function Bento({ b }: { b: Bloc }) {
               )}
             </div>
             <div style={css(it.txtCss ?? "")}>
-              <Segs segs={it.segs} gras={css("font-weight:600;color:inherit")} lien={css("color:var(--acc);text-decoration:underline;text-underline-offset:3px")} />
+              <Segs segs={it.segs} gras={css("font-weight:600;color:inherit")} lien={css("color:var(--acc-ink);text-decoration:underline;text-underline-offset:3px")} />
             </div>
           </div>
         </div>
@@ -96,7 +96,7 @@ export function BlocLecture({ b, groupe = "" }: { b: Bloc; groupe?: string }) {
       <div style={css("display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:8px 0 26px")}>
         {(b.items ?? []).map((it, i) => (
           <div key={i} style={css(`border-radius:var(--rad-s);padding:24px 24px 26px;${VERRE}`)}>
-            <div style={css("font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.06em;color:var(--acc);margin-bottom:12px")}><span>{it.n}</span></div>
+            <div style={css("font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.06em;color:var(--acc-ink);margin-bottom:12px")}><span>{it.n}</span></div>
             <div style={css("font:600 calc(16px * var(--ts))/1.35 var(--ft);letter-spacing:-.024em;color:var(--ink);margin-bottom:8px")}><span>{it.title}</span></div>
             <div style={css("font:400 14px/1.65 var(--fb);color:var(--ink2)")}>
               <Segs segs={it.segs} gras={GRAS} lien={LIEN} survol={h.acc} />
@@ -111,7 +111,7 @@ export function BlocLecture({ b, groupe = "" }: { b: Bloc; groupe?: string }) {
         {(b.items ?? []).map((it, i) => (
           <div key={i} style={css("display:grid;grid-template-columns:48px minmax(0,1fr);gap:22px")}>
             <div style={css("display:flex;flex-direction:column;align-items:center")}>
-              <span style={css("display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;background:var(--acc);color:#fff;font:600 13.5px var(--fb);flex:none;box-shadow:0 8px 20px -10px rgba(255,124,60,.8)")}><span>{it.n}</span></span>
+              <span style={css("display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;background:var(--acc);color:var(--sur-acc);font:600 13.5px var(--fb);flex:none;box-shadow:0 8px 20px -10px rgba(255,124,60,.8)")}><span>{it.n}</span></span>
               <span style={css(it.railCss ?? "")}></span>
             </div>
             <div style={css("padding:9px 0 32px")}>
@@ -129,7 +129,11 @@ export function BlocLecture({ b, groupe = "" }: { b: Bloc; groupe?: string }) {
   if (b.isQuote)
     return (
       <div style={css("display:flex;gap:16px;margin:22px 0 30px;max-width:64ch")}>
-        <span style={css("font:600 50px/.85 var(--ft);color:var(--acc);flex:none")}>“</span>
+        {/* Le grand guillemet est LU par un lecteur d'écran : il tient donc
+            le plancher comme le reste. 2,29:1 en `--acc` sur le crème,
+            7,98:1 en `--acc-ink` ; dans un panneau anthracite le même jeton
+            vaut #ffb48a (voir `.panneauSombre`), soit 9,96:1. */}
+        <span style={css("font:600 50px/.85 var(--ft);color:var(--acc-ink);flex:none")}>“</span>
         <p style={css("font:500 calc(18.5px * var(--ts))/1.55 var(--ft);letter-spacing:-.018em;color:var(--ink);margin:0;padding-top:4px")}>
           <Segs segs={b.segs} gras={GRAS} lien={LIEN} survol={h.acc} />
         </p>
@@ -142,7 +146,7 @@ export function BlocLecture({ b, groupe = "" }: { b: Bloc; groupe?: string }) {
           <Segs segs={b.segs} gras={GRAS} lien={LIEN} survol={h.acc} />
         </p>
         <div style={css("display:flex;gap:10px;flex:none;flex-wrap:wrap")}>
-          <a className={h.boutonPlat} href="#cx-form" style={css("display:inline-flex;padding:12px 22px;border-radius:999px;background:var(--acc);color:#fff;font:600 14px var(--fb);white-space:nowrap")}>Décrire mon besoin</a>
+          <a className={h.boutonPlat} href="#cx-form" style={css("display:inline-flex;padding:12px 22px;border-radius:999px;background:var(--acc);color:var(--sur-acc);font:600 14px var(--fb);white-space:nowrap")}>Décrire mon besoin</a>
         </div>
       </div>
     );
@@ -150,7 +154,7 @@ export function BlocLecture({ b, groupe = "" }: { b: Bloc; groupe?: string }) {
     return (
       <a className={h.leve2} href={b.go ?? "#"} style={css(`display:flex;align-items:center;justify-content:space-between;gap:18px;margin:8px 0 22px;padding:20px 24px;border-radius:var(--rad-s);${VERRE};transition:transform var(--tr)`)}>
         <span style={css("font:600 calc(16px * var(--ts))/1.4 var(--ft);letter-spacing:-.022em;color:var(--ink)")}><span>{b.title}</span></span>
-        <span style={css("display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;background:var(--acc);color:#fff;font:600 15px var(--fb);flex:none")}>→</span>
+        <span style={css("display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;background:var(--acc);color:var(--sur-acc);font:600 15px var(--fb);flex:none")}>→</span>
       </a>
     );
   if (b.isDuo) return <Duo b={b} />;

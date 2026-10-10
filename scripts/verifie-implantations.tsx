@@ -45,7 +45,12 @@ const SURVOLS: [string, string[]][] = [
   [".zone {", ["border: 1px solid var(--line)", "color: var(--ink1)"]],
   [".zone:hover", ["border-color: #ff7c3c", "color: var(--ink)"]],
   [".ville {", ["color: var(--ink1)"]],
-  [".ville:hover", ["color: #ff7c3c"]],
+  /* `var(--acc-ink)` ET NON `#ff7c3c` : ÉCART DÉCLARÉ, même décision du 09/10.
+     L'orange de marque sur le fond clair du bloc donne 2,29:1 au survol, sous
+     les 4,5:1 du critère 1.4.3. L'orange sombre du système en donne 7,98:1.
+     L'orange DÉCORATIF de ce même bloc, lui, n'a pas bougé : seule la couleur
+     du TEXTE change. */
+  [".ville:hover", ["color: var(--acc-ink)"]],
 ];
 
 interface Page {

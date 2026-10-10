@@ -11,6 +11,25 @@ import type { CSSProperties } from "react";
  *
  * Les chemins d'image relatifs de la maquette (`url('assets/…')`) deviennent
  * absolus : le site sert ces fichiers depuis `public/assets/`.
+ *
+ * DEUX COULEURS DE CES CHAÎNES S'ÉCARTENT DE LA MAQUETTE, décidé le 09/10 au
+ * soir, et c'est le seul écart assumé. Mesuré au navigateur sur les 91 pages
+ * des gabarits offre, preuve et implantation :
+ *
+ * - `color:#fff` POSÉ SUR UN FOND `var(--acc)` devient `color:var(--ink)`.
+ *   Le blanc sur l'orange de marque donne 2,56:1, l'encre donne 6,72:1. Le
+ *   plancher de la WCAG 1.4.3 est 4,5:1 (3:1 au-delà de 24 px). Le FOND ne
+ *   change pas : l'orange `#ff7c3c` est la marque.
+ * - `color:var(--acc)` POSÉ SUR UN FOND CLAIR devient `color:var(--acc-ink)`.
+ *   L'orange de marque donne 2,29:1 sur le crème et 2,56:1 sur le blanc,
+ *   l'encre orange `#7d3309` donne 7,98:1 et 8,94:1. Les deux jetons existent
+ *   dans `app/globals.css` et basculent avec le thème.
+ *
+ * CE QUI NE CHANGE PAS, et il faut le lire comme une règle, pas comme un
+ * oubli : l'orange sur un fond SOMBRE (les panneaux `var(--panel)`, les cartes
+ * à photo assombrie) y est déjà à 6,72:1, et l'orange purement DÉCORATIF
+ * (filets, puces, lueurs, bordures, ombres) n'est pas du texte. Y toucher
+ * abîmerait le site sans rien gagner.
  */
 const memoire = new Map<string, CSSProperties>();
 

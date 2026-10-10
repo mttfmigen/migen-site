@@ -65,7 +65,10 @@ const PASTILLE: CSSProperties = {
   padding: "15px 26px",
   borderRadius: 999,
   background: "var(--acc)",
-  color: "#fff",
+  /* `#fff` donnait 2,56:1 sur l'orange, `--ink` donne 6,72:1. Sur ce bloc,
+     `.panneau` retourne `--ink` pour sa photo : `.pastille` du module le
+     rétablit, voir le commentaire là-bas. */
+  color: "var(--sur-acc)",
   font: "600 15px var(--fb)",
   whiteSpace: "nowrap",
   boxShadow: "rgba(255, 124, 60, .9) 0 12px 30px -12px",

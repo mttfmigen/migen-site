@@ -114,9 +114,47 @@ export function stylesDe(html: string): Declarations[] {
   return [...html.matchAll(/style="([^"]*)"/g)].map((m) => declarations(m[1]));
 }
 
+/**
+ * LA DÉCISION DE CONTRASTE DU 09/10, DÉCLARÉE UNE SEULE FOIS.
+ *
+ * Mehdi, 09/10 au soir : on ne touche pas à l'orange de marque, on change ce
+ * qu'on pose dessus et à côté. Le critère 1.4.3 de la WCAG 2.2, niveau AA,
+ * exige 4,5:1 pour du texte courant ; l'orange `#ff7c3c` en donne 2,29 à
+ * 2,56 sur les fonds clairs du site, et le blanc posé dessus 2,56.
+ *
+ * Les captures de la maquette portent donc une couleur de TEXTE que le site
+ * ne rend plus, et c'est voulu. Plutôt que de retoucher une à une les chaînes
+ * attendues de chaque écran, la correspondance est déclarée ici : elle ne
+ * porte QUE sur la propriété `color`, et QUE vers les deux jetons de la
+ * décision. Tout le reste du dessin, l'orange des fonds, des filets, des
+ * pastilles et des ombres compris, continue d'être comparé à l'identique.
+ */
+const CONTRASTE_0910: ReadonlyMap<string, readonly string[]> = new Map([
+  // 2,29:1 sur le gris clair, 2,56 sur blanc  ->  7,98 et 8,94
+  ["var(--acc)", ["var(--acc-ink)"]],
+  // 2,56:1 sur l'orange  ->  6,72, avec une encre qui ne bascule pas
+  ["#fff", ["var(--sur-acc)"]],
+  ["#ffffff", ["var(--sur-acc)"]],
+  /* Première correction, remplacée le soir même : `--ink` bascule avec le
+     thème alors que l'orange est fixe, et donnait 2,31:1 en sombre, pire que
+     le blanc d'origine. `--sur-acc` ne bascule pas. */
+  ["var(--ink)", ["var(--sur-acc)"]],
+]);
+
+/** La correspondance de couleur admise par la décision du 09/10, pour les
+ *  portes qui comparent les déclarations autrement. */
+export function memeCouleurApresDecision(attendu: string, rendu: string | undefined): boolean {
+  return rendu !== undefined && (CONTRASTE_0910.get(attendu) ?? []).includes(rendu);
+}
+
 /** `a` est-il porté tel quel par `b` (b peut en dire plus) ? */
 export function inclus(a: Declarations, b: Declarations): boolean {
-  return [...a].every(([p, v]) => b.get(p) === v);
+  return [...a].every(([p, v]) => {
+    const rendu = b.get(p);
+    if (rendu === v) return true;
+    if (p !== "color" || rendu === undefined) return false;
+    return (CONTRASTE_0910.get(v) ?? []).includes(rendu);
+  });
 }
 
 export function enClair(d: Declarations): string {

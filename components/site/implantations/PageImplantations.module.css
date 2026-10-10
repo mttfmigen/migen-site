@@ -21,11 +21,13 @@
   color: var(--ink);
 }
 
-/* Ville itinérante : style-hover="color:#ff7c3c" */
+/* Ville itinérante : style-hover="color:#ff7c3c". Le nom est sur fond clair :
+   l'orange de marque y donne 2,29:1, l'encre orange 7,98:1. Un survol ne peut
+   pas faire tomber le contraste sous le plancher. */
 .ville {
   color: var(--ink1);
 }
 .ville:hover,
 .ville:focus-visible {
-  color: #ff7c3c;
+  color: var(--acc-ink);
 }

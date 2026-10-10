@@ -37,12 +37,12 @@ export function Liees({ v }: { v: Vue }) {
   return (
     <section style={css("padding:var(--sec) 0 0")}>
       <div style={css("max-width:1200px;margin:0 auto;padding:0 40px")}>
-        <div style={css("font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:14px")}>Pour aller plus loin</div>
+        <div style={css("font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc-ink);margin-bottom:14px")}>Pour aller plus loin</div>
         <h2 style={css("font:600 calc(clamp(26px,3vw,42px) * var(--ts))/1.08 var(--ft);letter-spacing:-.04em;color:var(--ink);margin:0;text-wrap:balance;margin-bottom:26px")}>Pages liées</h2>
         <div style={css("display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px")}>
           {v.cRelated.map((p) => (
             <Link key={p.go} className={h.leve3} href={p.go} prefetch={false} style={css(`display:flex;flex-direction:column;gap:10px;min-height:140px;padding:22px 24px;border-radius:var(--rad-s);${VERRE};transition:transform var(--tr)`)}>
-              <span style={css("font:600 10px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc)")}><span>{p.fam}</span></span>
+              <span style={css("font:600 10px var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--acc-ink)")}><span>{p.fam}</span></span>
               <span style={css("font:600 calc(16px * var(--ts))/1.35 var(--ft);letter-spacing:-.024em;color:var(--ink)")}><span>{p.h1}</span></span>
               <span style={css("font:600 12.5px var(--fb);color:var(--acc-ink);margin-top:auto")}>Lire →</span>
             </Link>
@@ -64,7 +64,7 @@ export function Besoin({ formulaire }: { formulaire: string }) {
       <div style={css("max-width:1200px;margin:0 auto;padding:0 40px")}>
         <div className="mg-r2" style={css("display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start")}>
           <div>
-            <div style={css("font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:16px")}>Décrire mon besoin</div>
+            <div style={css("font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc-ink);margin-bottom:16px")}>Décrire mon besoin</div>
             <h2 style={css("font:600 calc(clamp(26px,3vw,42px) * var(--ts))/1.08 var(--ft);letter-spacing:-.04em;color:var(--ink);margin:0;text-wrap:balance;margin-bottom:18px;max-width:17ch")}>Un chargé d’affaires vous rappelle dans l’heure.</h2>
             <p style={css("font:400 16px/1.7 var(--fb);color:var(--ink2);margin:0 0 24px;max-width:42ch")}>Du lundi au vendredi, de 8&nbsp;h&nbsp;00 à 18&nbsp;h&nbsp;30. Nous qualifions le besoin et vous annonçons un délai de démarrage réaliste.</p>
           </div>
