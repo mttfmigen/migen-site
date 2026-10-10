@@ -4,6 +4,7 @@ import type { SectionGaranties } from "@/types/contenu";
 
 import { SURTITRE } from "@/components/site/blocs/habillage";
 import { majusculeInitiale } from "./texte-offre";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 /**
  * Section « 06 Garanties » de la capture (`maquette/rendu/offres--residence.html`) :
@@ -69,10 +70,23 @@ export default function GarantiesOffre({ section }: ProprietesGarantiesOffre) {
       <div className="mg-pad" style={PANNEAU}>
         <div aria-hidden="true" style={LUEUR} />
         <div style={{ position: "relative" }}>
-          <div style={{ ...SURTITRE, marginBottom: 18 }}>
-            Notre parti pris
-          </div>
-          <h2 style={TITRE}>Ce que nous garantissons</h2>
+          {/* REPLIÉ SUR TÉLÉPHONE, motif « Blocs communs (pliables) » de la
+              maquette mobile. Le bloc garde SON en-tête, son sur-titre et son
+              `<h2>` relevés dans la capture : le composant les reçoit tels
+              quels plutôt que d'en fabriquer un second. Au-dessus de 880 px
+              rien ne change, le contenu est toujours dans le HTML servi, et
+              c'est la feuille qui le replie. */}
+          <SectionPliableMobile
+            enTete={
+              <span>
+                <span style={{ ...SURTITRE, marginBottom: 18, display: "block" }}>
+                  Notre parti pris
+                </span>
+                <h2 style={TITRE}>Ce que nous garantissons</h2>
+              </span>
+            }
+            resume={`${section.puces.length} engagements, écrits avant la signature.`}
+          >
           <div
             className="g3-2 mg-r2"
             style={{
@@ -103,6 +117,7 @@ export default function GarantiesOffre({ section }: ProprietesGarantiesOffre) {
               </div>
             ))}
           </div>
+          </SectionPliableMobile>
         </div>
       </div>
     </section>

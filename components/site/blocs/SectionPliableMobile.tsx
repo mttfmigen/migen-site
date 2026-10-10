@@ -7,7 +7,19 @@ import s from "./SectionPliableMobile.module.css";
 export interface SectionPliableMobileProps {
   /** Le sur-titre de la maquette, en capitales et en accent. */
   kicker?: string;
-  titre: string;
+  /** Le titre, quand le bloc n'en a pas déjà un à lui. */
+  titre?: string;
+  /**
+   * L'EN-TÊTE DÉJÀ ÉCRIT PAR L'APPELANT, son `<h2>` et son dessin.
+   *
+   * Sans cette porte d'entrée, replier un bloc qui a déjà un titre en
+   * fabriquerait un SECOND, et la page afficherait deux fois le même mot. Les
+   * blocs communs du gabarit Offre, repris par Ville, Secteur, Domaine et
+   * Spécialité, portent tous leur `<h2>` et son style relevé dans la capture :
+   * ils le passent ici tel quel, et le repli ne touche pas à leur dessin.
+   * `<summary>` accepte du contenu de flux, un titre de niveau y est valide.
+   */
+  enTete?: React.ReactNode;
   /** Une phrase montrée À LA PLACE du contenu quand le bloc est replié. */
   resume?: string;
   /** Reste déplié même sur téléphone, pour le premier bloc d'une page. */
@@ -48,6 +60,7 @@ export interface SectionPliableMobileProps {
 export default function SectionPliableMobile({
   kicker,
   titre,
+  enTete,
   resume,
   toujoursOuvert = false,
   children,
@@ -64,17 +77,34 @@ export default function SectionPliableMobile({
   }, [toujoursOuvert]);
 
   return (
-    <details ref={bloc} open className={s.section} data-pliable-mobile="">
+    <details
+      ref={bloc}
+      open
+      className={s.section}
+      data-pliable-mobile=""
+      {...(enTete ? { "data-en-tete-fourni": "" } : {})}
+    >
       <summary className={s.bascule}>
-        <span>
-          {kicker ? <span className={s.kicker}>{kicker}</span> : null}
-          <span className={s.titre}>{titre}</span>
-        </span>
-        <span aria-hidden="true" className={s.chevron}>
+        {enTete ?? (
+          <span>
+            {kicker ? <span className={s.kicker}>{kicker}</span> : null}
+            <span className={s.titre}>{titre}</span>
+          </span>
+        )}
+        {/* `data-mobile-seulement` : masqué au-dessus de 880 px, donc absent
+            de ce qu'un visiteur de bureau voit. Les portes qui comparent une
+            page à sa CAPTURE DE BUREAU doivent l'écarter, sans quoi elles
+            signalent « texte rendu absent de la capture » sur un ornement que
+            la capture n'avait aucune raison de porter. */}
+        <span aria-hidden="true" data-mobile-seulement="" className={s.chevron}>
           &rsaquo;
         </span>
       </summary>
-      {resume ? <p className={s.resume}>{resume}</p> : null}
+      {resume ? (
+        <p data-mobile-seulement="" className={s.resume}>
+          {resume}
+        </p>
+      ) : null}
       <div className={s.corps}>{children}</div>
     </details>
   );

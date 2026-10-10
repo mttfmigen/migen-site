@@ -121,6 +121,11 @@ function normalise(texte: string): string {
 /** Le texte tel qu'écrit : seules les entités sont décodées, `&nbsp;` en U+00A0. */
 function litteral(html: string): string[] {
   return html
+    /* Même retrait que dans `noeuds` : ce qu'un visiteur de bureau ne voit pas
+       n'entre pas dans une comparaison à la capture de bureau. Ne l'avoir posé
+       que sur `noeuds` laissait la comparaison LITTÉRALE buter sur le point
+       final du résumé d'un bloc replié, sur trois pages. */
+    .replace(/<(\w+)\b[^>]*\bdata-mobile-seulement\b[^>]*>[\s\S]*?<\/\1>/g, " ")
     .replace(/<(script|style)\b[\s\S]*?<\/\1>/g, " ")
     .split(/<[^>]+>/)
     .map((t) =>
@@ -145,9 +150,17 @@ function motifLitteral(trou: string): RegExp {
   return new RegExp(source, "gu");
 }
 
-/** Les nœuds de texte visibles d'un HTML, dans l'ordre, normalisés. */
+/** Les nœuds de texte visibles d'un HTML, dans l'ordre, normalisés.
+ *
+ *  CE QU'UN VISITEUR DE BUREAU NE VOIT PAS EN EST ÉCARTÉ. Les éléments
+ *  marqués `data-mobile-seulement` sont masqués au-dessus de 880 px : le
+ *  chevron et le résumé d'un bloc replié, posés le 09/10 au soir avec le motif
+ *  « Blocs communs (pliables) » de la maquette mobile. Les comparer à une
+ *  CAPTURE DE BUREAU faisait signaler « texte rendu absent de la capture :
+ *  « › » » sur un ornement que la capture n'avait aucune raison de porter. */
 function noeuds(html: string): string[] {
   return html
+    .replace(/<(\w+)\b[^>]*\bdata-mobile-seulement\b[^>]*>[\s\S]*?<\/\1>/g, " ")
     .replace(/<(script|style)\b[\s\S]*?<\/\1>/g, " ")
     .split(/<[^>]+>/)
     .map((t) => normalise(decode(t)))
@@ -622,7 +635,17 @@ function controle(page: PageRelais, captureBrute: string, htmlBrut: string): str
   }
 
   // 9. Les questions se replient, une seule ouverte, la première.
-  const plis = [...html.matchAll(/<details\b([^>]*)>/g)].map((m) => m[1]);
+  /* LES QUESTIONS DE LA FOIRE AUX QUESTIONS, ET ELLES SEULES. Ce relevé
+     prenait TOUS les `<details>` de la page, et le motif « Blocs communs
+     (pliables) » de la maquette mobile, posé le 09/10 au soir, en ajoute un
+     qui n'est pas une question : la porte comptait 8 questions au lieu de 7,
+     réclamait un `name` partagé qu'un bloc replié n'a pas, et refusait qu'il
+     soit ouvert. Les blocs repliables se reconnaissent à leur
+     `data-pliable-mobile` et ont leur propre porte,
+     `scripts/verifie-blocs-pliables.mjs`. */
+  const plis = [...html.matchAll(/<details\b([^>]*)>/g)]
+    .map((m) => m[1])
+    .filter((attributs) => !/\bdata-pliable-mobile\b/.test(attributs));
   const plisCapture = (capture.match(/<details\b/g) ?? []).length;
   if (plis.length !== plisCapture) ecarts.push(`${plis.length} question(s) repliable(s) au lieu de ${plisCapture}`);
   const noms = new Set(plis.map((a) => (a.match(/\sname="([^"]*)"/) ?? [])[1] ?? ""));

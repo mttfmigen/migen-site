@@ -80,7 +80,16 @@ const entites = (t: string, nbsp: string) =>
 const sansMarqueursMarkdown = (t: string) => t.replace(/\*\*(.+?)\*\*/gu, "$1").replace(/(?<![\w*])\*(?![\s*])(.+?)(?<![\s*])\*(?![\w*])/gu, "$1");
 const normalise = (t: string) =>
   sansMarqueursMarkdown(t.replace(/[  ]/g, " ").replace(/[’‘]/g, "'")).replace(/\s+/g, " ").trim();
-const morceaux = (html: string) => html.replace(/<(script|style)\b[\s\S]*?<\/\1>/g, " ").split(/<[^>]+>/);
+/* CE QUE LE VISITEUR DE BUREAU NE VOIT PAS N'A RIEN À FAIRE DANS UNE
+   COMPARAISON À LA CAPTURE DE BUREAU. Les éléments marqués
+   `data-mobile-seulement` sont masqués au-dessus de 880 px : le chevron et le
+   résumé d'un bloc replié, posés le 09/10 au soir. Sans ce retrait, la porte
+   signalait « texte rendu absent de la capture : « › » » sur un ornement que
+   la capture n'avait aucune raison de porter. */
+const sansMobileSeulement = (html: string) =>
+  html.replace(/<(\w+)\b[^>]*\bdata-mobile-seulement\b[^>]*>[\s\S]*?<\/\1>/g, " ");
+const morceaux = (html: string) =>
+  sansMobileSeulement(html).replace(/<(script|style)\b[\s\S]*?<\/\1>/g, " ").split(/<[^>]+>/);
 const noeuds = (html: string) => morceaux(html).map((t) => normalise(entites(t, " "))).filter(Boolean);
 const litteraux = (html: string) =>
   morceaux(html).map((t) => entites(t, " ").replace(/[ \t\n\r]+/g, " ").trim()).filter(Boolean);
@@ -242,7 +251,17 @@ function controle(page: Page, htmlBrut: string, css = CSS): string[] {
   for (const cle of ["hub", "zone", "ville"])
     if (!SOURCE_VILLES.includes(`className={styles.${cle}}`)) e.push(`survol « ${cle} » non posé dans NosVilles.tsx`);
 
-  const plis = [...html.matchAll(/<details\b([^>]*)>/g)].map((m) => m[1]);
+  /* LES QUESTIONS DE LA FOIRE AUX QUESTIONS, ET ELLES SEULES. Ce relevé
+     prenait TOUS les `<details>` de la page, et le 09/10 au soir le motif
+     « Blocs communs (pliables) » de la maquette mobile en a ajouté un, qui
+     n'est pas une question : la porte a compté 6 questions au lieu de 5,
+     réclamé un `name` partagé qu'un bloc replié n'a pas, et refusé qu'il soit
+     ouvert. Trois écarts pour un seul malentendu. Les blocs repliables se
+     reconnaissent à leur `data-pliable-mobile` et sont écartés d'ici ; ils ont
+     leur propre porte, `scripts/verifie-blocs-pliables.mjs`. */
+  const plis = [...html.matchAll(/<details\b([^>]*)>/g)]
+    .map((m) => m[1])
+    .filter((attributs) => !/\bdata-pliable-mobile\b/.test(attributs));
   if (plis.length !== (capture.match(/<details\b/g) ?? []).length) e.push(`${plis.length} question(s) repliable(s), la capture en a ${(capture.match(/<details\b/g) ?? []).length}`);
   if (new Set(plis.map((a) => (a.match(/\sname="([^"]*)"/) ?? [])[1] ?? "")).size !== 1) e.push("les questions ne partagent pas un même `name`");
   if (plis.map((a, i) => (/\sopen(?:=""|\s|$)/.test(a) ? i : -1)).filter((i) => i >= 0).join() !== "0") e.push("seule la première question doit être ouverte");
