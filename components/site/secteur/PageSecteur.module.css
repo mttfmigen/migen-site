@@ -24,7 +24,8 @@
 .puceLien:hover,
 .puceLien:focus-visible {
   background: var(--card);
-  color: var(--acc);
+  /* Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1. */
+  color: var(--acc-ink);
 }
 
 /* ---------------------------------------------------- « Expertises du secteur »

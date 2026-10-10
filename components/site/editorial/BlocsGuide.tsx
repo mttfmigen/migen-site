@@ -28,9 +28,14 @@ const VERRE_BENTO: CSSProperties = {
 const NUMERO: CSSProperties = {
   font: "600 11px ui-monospace,Menlo,monospace",
   letterSpacing: ".06em",
-  color: "var(--acc)",
+  // Contraste AA : NUMERO sert deux surfaces. Sur la surface claire, qui est
+  // son cas courant, l'orange de marque donnait 2,45:1 et --acc-ink donne
+  // 8,57:1. La cellule sombre du bento reprend --acc plus bas, où il mesure
+  // 5,80:1 : c'est la seule exception et elle est explicite.
+  color: "var(--acc-ink)",
 };
-const COCHE: CSSProperties = { color: "var(--acc)", flex: "none", fontWeight: 600 };
+// Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
+const COCHE: CSSProperties = { color: "var(--acc-ink)", flex: "none", fontWeight: 600 };
 
 const numero = (i: number) => String(i + 1).padStart(2, "0");
 
@@ -140,7 +145,8 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
                 style={{
                   font: "600 10.5px ui-monospace,Menlo,monospace",
                   letterSpacing: ".06em",
-                  color: "var(--acc)",
+                  // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
+                  color: "var(--acc-ink)",
                   marginBottom: 12,
                 }}
               >
@@ -230,7 +236,9 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
                     height: 44,
                     borderRadius: 999,
                     background: "var(--acc)",
-                    color: "#fff",
+                    // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+                    // l'encre change : --ink dessus, 6,72:1.
+                    color: "var(--sur-acc)",
                     font: "600 13.5px var(--fb)",
                     flex: "none",
                     boxShadow: "0 8px 20px -10px rgba(255,124,60,.8)",
@@ -291,7 +299,8 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
                 style={{
                   font: "600 calc(34px * var(--ts))/1 var(--ft)",
                   letterSpacing: "-.05em",
-                  color: "var(--acc)",
+                  // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
+                  color: "var(--acc-ink)",
                   marginBottom: 16,
                 }}
               >
@@ -350,7 +359,9 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
                   ...(sombre ? { background: "#1c1b19", color: "#fff" } : { ...VERRE_BENTO, color: "var(--ink)" }),
                 }}
               >
-                <span style={NUMERO}>{numero(i)}</span>
+                <span style={{ ...NUMERO, ...(sombre ? { color: "var(--acc)" } : null) }}>
+                  {numero(i)}
+                </span>
                 <div>
                   <div
                     style={{
@@ -490,7 +501,8 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
               <span
                 style={{
                   font: "600 11px ui-monospace,Menlo,monospace",
-                  color: "var(--acc)",
+                  // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
+                  color: "var(--acc-ink)",
                   paddingTop: 3,
                 }}
               >
@@ -512,7 +524,8 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
                   background: "var(--acc-w)",
                 }}
               >
-                <span aria-hidden="true" style={{ color: "var(--acc)", font: "600 14px var(--fb)", flex: "none" }}>
+                // Contraste AA : l'orange de marque donnait 2,22:1 sur ce fond clair, --acc-ink donne 7,76:1.
+                <span aria-hidden="true" style={{ color: "var(--acc-ink)", font: "600 14px var(--fb)", flex: "none" }}>
                   →
                 </span>
                 <span
@@ -530,7 +543,8 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
     case "citation":
       return (
         <div style={{ display: "flex", gap: 16, margin: "22px 0 30px", maxWidth: "64ch" }}>
-          <span aria-hidden="true" style={{ font: "600 50px/.85 var(--ft)", color: "var(--acc)", flex: "none" }}>
+          // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
+          <span aria-hidden="true" style={{ font: "600 50px/.85 var(--ft)", color: "var(--acc-ink)", flex: "none" }}>
             “
           </span>
           <p
@@ -577,7 +591,8 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
           >
             <span className="cx-l1">Lire la suite</span>
             <span className="cx-l2">Réduire</span>
-            <span aria-hidden="true" style={{ color: "var(--acc)", fontWeight: 600 }}>
+            // Contraste AA : l'orange de marque donnait 2,56:1 sur ce fond clair, --acc-ink donne 8,94:1.
+            <span aria-hidden="true" style={{ color: "var(--acc-ink)", fontWeight: 600 }}>
               +
             </span>
           </summary>

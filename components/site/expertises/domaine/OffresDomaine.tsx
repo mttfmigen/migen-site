@@ -119,7 +119,9 @@ const BOUTON: CSSProperties = {
   padding: "12px 20px",
   borderRadius: 999,
   background: "rgb(255, 124, 60)",
-  color: "#fff",
+  // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+  // l'encre change : --ink dessus, 6,72:1.
+  color: "var(--sur-acc)",
   font: "600 14px var(--fb)",
   whiteSpace: "nowrap",
   boxShadow: "rgba(255,124,60,.85) 0 10px 24px -12px",

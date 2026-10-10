@@ -91,7 +91,8 @@ export default function BandeauVerbe({
                 letterSpacing: "-.04em",
               }}
             >
-              On {verbe && <span style={{ color: "var(--acc)" }}>{verbe}</span>}
+              // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
+              On {verbe && <span style={{ color: "var(--acc-ink)" }}>{verbe}</span>}
               {" ?"}
             </div>
             <p

@@ -28,7 +28,7 @@
 }
 .itemNav:hover {
   background: var(--card);
-  color: var(--ink);
+  color: var(--sur-acc);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -41,12 +41,14 @@
 }
 .tel:hover {
   background: var(--card);
-  color: var(--ink);
+  color: var(--sur-acc);
 }
 
 .cta {
   background: var(--acc);
-  color: #fff;
+  /* Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+     l'encre change : --ink dessus, 6,72:1. */
+  color: var(--sur-acc);
   transition:
     filter var(--tr),
     transform var(--tr);
@@ -54,7 +56,9 @@
 .cta:hover {
   filter: brightness(0.93);
   transform: translateY(-1px);
-  color: #fff;
+  /* Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+     l'encre change : --ink dessus, 6,72:1. */
+  color: var(--sur-acc);
 }
 
 /* ------------------------------------------------------------- mega-menus */
@@ -72,7 +76,8 @@
   color: var(--ink1);
 }
 .lienListe:hover {
-  color: var(--acc);
+  /* Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1. */
+  color: var(--acc-ink);
 }
 
 /* Même survol, encre pleine au repos (« Toutes nos expertises → »). */
@@ -80,7 +85,8 @@
   color: var(--ink);
 }
 .lienFort:hover {
-  color: var(--acc);
+  /* Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1. */
+  color: var(--acc-ink);
 }
 
 /* Même survol, encre orange sombre au repos (« Les 23 ressources → »). */
@@ -88,7 +94,8 @@
   color: var(--acc-ink);
 }
 .lienAccent:hover {
-  color: var(--acc);
+  /* Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1. */
+  color: var(--acc-ink);
 }
 
 /* « Nos offres », sur-titre du panneau devenu lien vers la page pilier : la
@@ -109,7 +116,8 @@
   color: var(--ink4);
 }
 .lienDiscret:hover {
-  color: var(--acc);
+  /* Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1. */
+  color: var(--acc-ink);
 }
 
 /* Vignette d'étude de cas : le texte reste blanc, la carte se soulève. */
@@ -124,11 +132,15 @@
 /* Bouton orange posé sur le panneau anthracite. */
 .ctaPanneau {
   background: var(--acc);
-  color: #fff;
+  /* Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+     l'encre change : --ink dessus, 6,72:1. */
+  color: var(--sur-acc);
 }
 .ctaPanneau:hover {
   filter: brightness(0.93);
-  color: #fff;
+  /* Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+     l'encre change : --ink dessus, 6,72:1. */
+  color: var(--ink);
 }
 
 /* ---------------------------------------------------------- tiroir tactile */

@@ -25,7 +25,9 @@ const BOUTON: CSSProperties = {
   padding: "12px 22px",
   borderRadius: 999,
   background: "var(--acc)",
-  color: "#fff",
+  // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+  // l'encre change : --ink dessus, 6,72:1.
+  color: "var(--sur-acc)",
   font: "600 14px var(--fb)",
   whiteSpace: "nowrap",
 };
@@ -90,7 +92,7 @@ export function Question({ question, groupe, ouverte }: { question: string; grou
             style={{
               font: "600 calc(16px * var(--ts))/1.4 var(--ft)",
               letterSpacing: "-.022em",
-              color: "var(--ink)",
+              color: "var(--sur-acc)",
             }}
           >
             {question}
@@ -154,7 +156,7 @@ export function LienCarte({ titre, href }: { titre: string; href: string }) {
           style={{
             font: "600 calc(16px * var(--ts))/1.4 var(--ft)",
             letterSpacing: "-.022em",
-            color: "var(--ink)",
+            color: "var(--sur-acc)",
           }}
         >
           {titre}
@@ -169,7 +171,9 @@ export function LienCarte({ titre, href }: { titre: string; href: string }) {
             height: 34,
             borderRadius: 999,
             background: "var(--acc)",
-            color: "#fff",
+            // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+            // l'encre change : --ink dessus, 6,72:1.
+            color: "var(--ink)",
             font: "600 15px var(--fb)",
             flex: "none",
           }}
@@ -233,7 +237,9 @@ export function Panneau() {
             padding: "15px 26px",
             borderRadius: 999,
             background: "var(--acc)",
-            color: "#fff",
+            // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+            // l'encre change : --ink dessus, 6,72:1.
+            color: "var(--ink)",
             font: "600 15px var(--fb)",
             whiteSpace: "nowrap",
             boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",

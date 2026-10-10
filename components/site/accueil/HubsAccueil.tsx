@@ -155,7 +155,8 @@ export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
               font: "600 11.5px var(--fb)",
               letterSpacing: ".14em",
               textTransform: "uppercase",
-              color: "var(--acc)",
+              // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
+              color: "var(--acc-ink)",
               marginBottom: 14,
             }}
           >
@@ -175,7 +176,8 @@ export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
         </div>
         <Link
           href="/implantations/"
-          style={{ font: "600 14.5px var(--fb)", color: "#ff7c3c" }}
+          // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
+          style={{ font: "600 14.5px var(--fb)", color: "var(--acc-ink)" }}
         >
           Toutes nos implantations &rarr;
         </Link>
@@ -234,7 +236,8 @@ export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
                     padding: "5px 11px",
                     borderRadius: 999,
                     background: "#fff",
-                    color: "#ff7c3c",
+                    // Contraste AA : l'orange de marque donnait 2,56:1 sur ce fond clair, --acc-ink donne 8,94:1.
+                    color: "var(--acc-ink)",
                     font: "600 12px var(--fb)",
                     marginBottom: 10,
                   }}

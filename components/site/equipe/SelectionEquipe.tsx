@@ -132,7 +132,8 @@ export default function SelectionEquipe() {
                       height: 44,
                       borderRadius: 14,
                       background: "var(--acc-w)",
-                      color: "var(--acc)",
+                      // Contraste AA : l'orange de marque donnait 2,22:1 sur ce fond clair, --acc-ink donne 7,76:1.
+                      color: "var(--acc-ink)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",

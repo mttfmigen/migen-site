@@ -180,7 +180,8 @@ export default function Hero() {
                   font: "500 11.5px var(--fb)",
                   letterSpacing: ".1em",
                   textTransform: "uppercase",
-                  color: "var(--acc)",
+                  // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
+                  color: "var(--acc-ink)",
                 }}
               >
                 Rappel dans l’heure

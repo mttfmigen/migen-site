@@ -34,7 +34,9 @@ const PASTILLE: CSSProperties = {
   font: "600 10.5px var(--fb)",
   letterSpacing: ".12em",
   textTransform: "uppercase",
-  color: "#fff",
+  // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+  // l'encre change : --ink dessus, 6,72:1.
+  color: "var(--sur-acc)",
   background: "var(--acc)",
   padding: "5px 12px",
   borderRadius: 999,
@@ -44,7 +46,8 @@ const SURTITRE: CSSProperties = {
   font: "600 11.5px var(--fb)",
   letterSpacing: ".14em",
   textTransform: "uppercase",
-  color: "var(--acc)",
+  // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
+  color: "var(--acc-ink)",
 };
 const TITRE2: CSSProperties = {
   font: "600 calc(clamp(26px,3vw,42px) * var(--ts))/1.08 var(--ft)",
@@ -170,7 +173,8 @@ export default function Guide({ titre, vue }: { titre: string; vue: VueGuide }) 
                     <span
                       style={{
                         font: "600 10.5px ui-monospace,Menlo,monospace",
-                        color: "var(--acc)",
+                        // Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1.
+                        color: "var(--acc-ink)",
                         flex: "none",
                         paddingTop: 2,
                       }}
@@ -191,7 +195,9 @@ export default function Guide({ titre, vue }: { titre: string; vue: VueGuide }) 
                   padding: 13,
                   borderRadius: 999,
                   background: "var(--acc)",
-                  color: "#fff",
+                  // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+                  // l'encre change : --ink dessus, 6,72:1.
+                  color: "var(--sur-acc)",
                   font: "600 13.5px var(--fb)",
                 }}
               >
@@ -211,7 +217,8 @@ export default function Guide({ titre, vue }: { titre: string; vue: VueGuide }) 
                       style={{
                         font: "600 12px ui-monospace,Menlo,monospace",
                         letterSpacing: ".06em",
-                        color: "var(--acc)",
+                        // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
+                        color: "var(--acc-ink)",
                         flex: "none",
                       }}
                     >
@@ -265,7 +272,8 @@ export default function Guide({ titre, vue }: { titre: string; vue: VueGuide }) 
                         font: "600 10px var(--fb)",
                         letterSpacing: ".12em",
                         textTransform: "uppercase",
-                        color: "var(--acc)",
+                        // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
+                        color: "var(--acc-ink)",
                       }}
                     >
                       {page.famille}

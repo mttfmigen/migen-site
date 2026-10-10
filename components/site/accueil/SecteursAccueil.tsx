@@ -56,7 +56,8 @@ export default function SecteursAccueil({
             font: "600 11.5px var(--fb)",
             letterSpacing: ".14em",
             textTransform: "uppercase",
-            color: "var(--acc)",
+            // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
+            color: "var(--acc-ink)",
             marginBottom: 14,
           }}
         >
@@ -127,7 +128,8 @@ export default function SecteursAccueil({
                 {secteur.libelle}
                 <span
                   aria-hidden="true"
-                  style={{ color: "#ff7c3c", font: "400 22px var(--fb)" }}
+                  // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
+                  style={{ color: "var(--acc-ink)", font: "400 22px var(--fb)" }}
                 >
                   &rarr;
                 </span>

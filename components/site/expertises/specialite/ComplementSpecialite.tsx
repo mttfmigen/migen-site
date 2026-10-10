@@ -79,7 +79,8 @@ const PUCE: CSSProperties = {
 };
 
 const COCHE: CSSProperties = {
-  color: "var(--acc)",
+  // Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1.
+  color: "var(--acc-ink)",
   flex: "0 0 auto",
   fontWeight: 600,
 };
@@ -105,7 +106,8 @@ const ENTETE: CSSProperties = {
   font: "600 10.5px var(--fb)",
   letterSpacing: ".12em",
   textTransform: "uppercase",
-  color: "var(--acc)",
+  // Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1.
+  color: "var(--acc-ink)",
   borderBottom: "1px solid var(--line)",
 };
 

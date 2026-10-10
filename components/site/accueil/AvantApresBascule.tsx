@@ -264,7 +264,9 @@ export default function AvantApresBascule({
                               height: 38,
                               borderRadius: 999,
                               backgroundColor: "#ff7c3c",
-                              color: "#fff",
+                              // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+                              // l'encre change : --ink dessus, 6,72:1.
+                              color: "var(--sur-acc)",
                               font: "400 16px var(--fb)",
                               display: "flex",
                               alignItems: "center",

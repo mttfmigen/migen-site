@@ -157,13 +157,17 @@ export default function CarteEtapes() {
                 transition: "background-color .25s ease",
               }}
             >
-              <span style={{ font: "600 11.5px ui-monospace,Menlo,monospace", color: vif ? ACCENT : "var(--ink3)", transition: "color .25s ease" }}>
+              {/* Contraste AA : l'orange de marque donnait 2,30:1 sur la carte
+                  claire, --acc-ink donne 8,04:1. ACCENT reste l'orange pour les
+                  fonds et la jauge, en dessous. */}
+              <span style={{ font: "600 11.5px ui-monospace,Menlo,monospace", color: vif ? "var(--acc-ink)" : "var(--ink3)", transition: "color .25s ease" }}>
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span style={{ font: "600 15px/1.25 var(--ft)", letterSpacing: "-.02em", color: actif ? "var(--ink)" : "var(--ink1)", transition: "color .25s ease" }}>
                 {x.t}
               </span>
-              <span style={{ font: "600 15px/1 var(--ft)", letterSpacing: "-.02em", textAlign: "right", whiteSpace: "nowrap", color: vif ? ACCENT : "var(--ink3)", transition: "color .25s ease" }}>
+              {/* Contraste AA : 2,30:1 en orange de marque, 8,04:1 en --acc-ink. */}
+              <span style={{ font: "600 15px/1 var(--ft)", letterSpacing: "-.02em", textAlign: "right", whiteSpace: "nowrap", color: vif ? "var(--acc-ink)" : "var(--ink3)", transition: "color .25s ease" }}>
                 {`${x.keep} %`}
               </span>
               <span style={{ gridColumn: "2 / 4", display: "block", height: "6px", borderRadius: "999px", background: "var(--chip)", overflow: "hidden" }}>
@@ -189,7 +193,9 @@ export default function CarteEtapes() {
                   transition: "opacity .35s ease,transform .35s ease",
                 }}
               >
-                <div style={{ font: "600 10.5px var(--fb)", letterSpacing: ".13em", textTransform: "uppercase", color: ACCENT, marginBottom: "8px" }}>
+                {/* Contraste AA : 2,56:1 en orange de marque sur le blanc de la
+                    carte, 8,94:1 en --acc-ink. */}
+                <div style={{ font: "600 10.5px var(--fb)", letterSpacing: ".13em", textTransform: "uppercase", color: "var(--acc-ink)", marginBottom: "8px" }}>
                   {`Étape ${String(i + 1).padStart(2, "0")} · ${x.t}`}
                 </div>
                 <p style={{ font: "400 15px/1.6 var(--fb)", color: "var(--ink1)", margin: 0, maxWidth: "58ch", textWrap: "pretty" }}>

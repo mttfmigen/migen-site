@@ -62,6 +62,22 @@
   --acc-d: #f4641f;
   --acc-w: rgba(255, 124, 60, 0.11);
   --acc-ink: #7d3309;
+  /*
+   * CE QU'ON POSE SUR L'ORANGE DE MARQUE, et il NE BASCULE PAS avec le thème.
+   *
+   * Décision de Mehdi du 09/10 : on ne touche pas à `--acc`, on change ce
+   * qu'on met dessus. Ma première recommandation disait « var(--ink) », et
+   * elle était fausse : `--ink` vaut #1c1b19 en clair mais #f4f3f1 en sombre,
+   * alors que `--acc` est fixe. Posée sur l'orange, l'encre sombre donne
+   * 6,72:1 en thème clair et 2,31:1 en thème sombre, soit PIRE que le blanc
+   * d'origine (2,56:1). Trouvé en mesurant les deux thèmes, pas en relisant.
+   *
+   * Une surface et son contenu forment une PAIRE : si la surface ne bascule
+   * pas, son encre ne doit pas basculer non plus. `--sur-acc` est donc défini
+   * à la même valeur dans les deux thèmes, et vaut 6,72:1 sur `--acc`
+   * partout, au-dessus des 4,5:1 du critère 1.4.3 de la WCAG 2.2, niveau AA.
+   */
+  --sur-acc: #1c1b19;
 
   /* États du formulaire. La maquette n'en a pas : elle ne montre jamais une
      erreur de saisie ni une confirmation. Deux jetons sont donc posés ici, et
@@ -138,6 +154,9 @@
   --panel: #201f27;
   --foot: #100f14;
   --ink: #f4f3f1;
+  /* Volontairement IDENTIQUE au thème clair : l'orange ne bascule pas, son
+     encre non plus. Voir le commentaire du bloc clair. */
+  --sur-acc: #1c1b19;
   --ink1: rgba(255, 255, 255, 0.76);
   --ink2: rgba(255, 255, 255, 0.64);
   --ink3: rgba(255, 255, 255, 0.54);

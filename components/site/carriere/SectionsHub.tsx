@@ -58,7 +58,9 @@ export function BoutonPostuler({ libelle = "Postuler" }: { libelle?: string }) {
         padding: "15px 26px",
         borderRadius: 999,
         background: "var(--acc)",
-        color: "#fff",
+        // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+        // l'encre change : --ink dessus, 6,72:1.
+        color: "var(--sur-acc)",
         font: "600 15px var(--fb)",
         whiteSpace: "nowrap",
         boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",
@@ -167,7 +169,9 @@ export function EtapesHub({ section }: { section: SectionEtapesHub }) {
                     height: 38,
                     borderRadius: 999,
                     background: "var(--acc)",
-                    color: "#fff",
+                    // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+                    // l'encre change : --ink dessus, 6,72:1.
+                    color: "var(--sur-acc)",
                     font: "600 13px/38px var(--fb)",
                     textAlign: "center",
                     flex: "0 0 auto",
@@ -480,7 +484,9 @@ export function Hubs({
                     padding: "6px 12px",
                     borderRadius: 999,
                     background: "#ff7c3c",
-                    color: "#fff",
+                    // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+                    // l'encre change : --ink dessus, 6,72:1.
+                    color: "var(--sur-acc)",
                     font: "600 11.5px var(--fb)",
                   }}
                 >
@@ -587,7 +593,11 @@ export function Avis({
                   aria-hidden="true"
                   style={{
                     font: "600 52px/.7 var(--ft)",
-                    color: "var(--acc)",
+                    // Contraste AA : la meme carte existe en sombre et en verre
+                    // clair. Sur le verre, l'orange de marque donnait 2,45:1 et
+                    // --acc-ink donne 8,57:1 ; sur le panneau sombre l'orange
+                    // mesure 5,80:1 et reste donc en place.
+                    color: sombre ? "var(--acc)" : "var(--acc-ink)",
                     display: "block",
                     marginBottom: 14,
                   }}
@@ -654,7 +664,9 @@ export function Avis({
                   padding: "14px 24px",
                   borderRadius: 999,
                   background: "var(--acc)",
-                  color: "#fff",
+                  // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+                  // l'encre change : --ink dessus, 6,72:1.
+                  color: "var(--sur-acc)",
                   font: "600 15px var(--fb)",
                   whiteSpace: "nowrap",
                 }}
@@ -737,7 +749,7 @@ export function LiensPhoto({ items }: { items: { libelle: string; href: string; 
                   style={{
                     font: "600 16px/1.3 var(--ft)",
                     letterSpacing: "-.02em",
-                    color: "var(--ink)",
+                    color: "var(--sur-acc)",
                   }}
                 >
                   {item.libelle}
@@ -749,7 +761,9 @@ export function LiensPhoto({ items }: { items: { libelle: string; href: string; 
                     height: 28,
                     borderRadius: 999,
                     background: "var(--acc)",
-                    color: "#fff",
+                    // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+                    // l'encre change : --ink dessus, 6,72:1.
+                    color: "var(--ink)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",

@@ -3,6 +3,7 @@
 /* `!important` comme la maquette : couleur et retrait sont aussi posés en
    style en ligne, qui battrait sinon la règle. */
 .ligne:hover {
-  color: #ff7c3c !important;
+  /* Contraste AA : état non mesurable sans survol. L'orange de marque donne 2,29:1 sur le gris clair, --acc-ink 7,98:1. */
+  color: var(--acc-ink) !important;
   padding-left: 12px !important;
 }

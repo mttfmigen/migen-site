@@ -111,7 +111,7 @@ export default function MetiersRecrutes({
                 background: "#fff",
                 font: "400 20px var(--fb)",
                 cursor: "pointer",
-                color: "var(--ink)",
+                color: "var(--sur-acc)",
               }}
             >
               ←
@@ -128,7 +128,9 @@ export default function MetiersRecrutes({
                 background: "var(--acc)",
                 font: "400 20px var(--fb)",
                 cursor: "pointer",
-                color: "#fff",
+                // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+                // l'encre change : --ink dessus, 6,72:1.
+                color: "var(--sur-acc)",
               }}
             >
               →
@@ -238,7 +240,9 @@ export default function MetiersRecrutes({
             height: 380,
             borderRadius: 24,
             background: "var(--acc)",
-            color: "#fff",
+            // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+            // l'encre change : --ink dessus, 6,72:1.
+            color: "var(--ink)",
             padding: 28,
             display: "flex",
             flexDirection: "column",

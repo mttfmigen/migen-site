@@ -133,7 +133,8 @@ function Bloc({
         <span
           style={{
             font: "600 11px ui-monospace,Menlo,monospace",
-            color: "var(--acc)",
+            // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
+            color: "var(--acc-ink)",
           }}
         >
           {numero}
@@ -188,7 +189,8 @@ export default function MotDuDirigeant() {
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
                 textTransform: "uppercase",
-                color: "var(--acc)",
+                // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
+                color: "var(--acc-ink)",
                 marginBottom: 16,
               }}
             >
@@ -238,7 +240,11 @@ export default function MotDuDirigeant() {
                     padding: "8px 14px",
                     borderRadius: 999,
                     background: i === 2 ? "var(--acc)" : "var(--ink)",
-                    color: "#fff",
+                    // Contraste AA : la troisième pastille est la seule sur
+                    // l'orange de marque, et le blanc n'y donne que 2,56:1.
+                    // L'orange ne bouge pas, l'encre change : --ink dessus,
+                    // 6,72:1. Les deux autres restent blanches sur --ink.
+                    color: i === 2 ? "var(--sur-acc)" : "#fff",
                     font: "600 13.5px var(--fb)",
                   }}
                 >
@@ -340,7 +346,8 @@ export default function MotDuDirigeant() {
               style={{
                 font: "600 calc(clamp(40px,4.4vw,60px) * var(--ts))/1 var(--ft)",
                 letterSpacing: "-.05em",
-                color: "var(--acc)",
+                // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
+                color: "var(--acc-ink)",
                 marginBottom: 12,
               }}
             >

@@ -48,7 +48,8 @@ export default function GroupeEquipe({ groupe, paddingHaut }: Proprietes) {
               font: "600 11.5px var(--fb)",
               letterSpacing: ".14em",
               textTransform: "uppercase",
-              color: "var(--acc)",
+              // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
+              color: "var(--acc-ink)",
             }}
           >
             {groupe.titre}

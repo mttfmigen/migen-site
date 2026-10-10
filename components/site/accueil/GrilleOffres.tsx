@@ -81,7 +81,11 @@ const NUMERO = {
   font: "600 11px var(--fb)",
   letterSpacing: ".12em",
   textTransform: "uppercase",
-  color: "var(--acc)",
+  // Contraste AA : ce jeton de style sert une surface claire et un panneau
+  // sombre. Le cas courant est le fond clair, ou l'orange de marque ne
+  // donnait que 2,45:1 contre 8,57:1 pour --acc-ink. Le panneau sombre
+  // reprend --acc a son point d'appel, ou il mesure 5,80:1.
+  color: "var(--acc-ink)",
   marginBottom: "10px",
 } as const;
 
@@ -96,7 +100,8 @@ const PASTILLE = {
   font: "600 10.5px var(--fb)",
   letterSpacing: ".1em",
   textTransform: "uppercase",
-  color: "var(--acc)",
+  // Contraste AA : l'orange de marque donnait 2,22:1 sur ce fond clair, --acc-ink donne 7,76:1.
+  color: "var(--acc-ink)",
   background: "var(--acc-w)",
   padding: "5px 11px",
   borderRadius: "999px",
@@ -118,7 +123,9 @@ const BOUTON = {
 const BOUTON_ACCENT = {
   ...BOUTON,
   background: "var(--acc)",
-  color: "#fff",
+  // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+  // l'encre change : --ink dessus, 6,72:1.
+  color: "var(--sur-acc)",
   transition: "filter var(--tr),transform var(--tr)",
 } as const;
 
@@ -213,7 +220,8 @@ export default function GrilleOffres() {
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
                 textTransform: "uppercase",
-                color: "var(--acc)",
+                // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
+                color: "var(--acc-ink)",
                 marginBottom: "12px",
               }}
             >
@@ -270,7 +278,8 @@ export default function GrilleOffres() {
             }}
           >
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <div style={NUMERO}>01</div>
+              {/* Carte sombre : l'orange de marque y mesure 5,80:1, il reste. */}
+              <div style={{ ...NUMERO, color: "var(--acc)" }}>01</div>
               <div
                 style={{
                   font: "600 calc(24px * var(--ts)) var(--ft)",

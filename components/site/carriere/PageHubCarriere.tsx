@@ -190,7 +190,8 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
                     style={{
                       font: "600 40px/1 var(--ft)",
                       letterSpacing: "-.05em",
-                      color: "var(--acc)",
+                      // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
+                      color: "var(--acc-ink)",
                       flex: "0 0 auto",
                     }}
                   >

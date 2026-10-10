@@ -39,7 +39,9 @@
 
 .onglet[aria-pressed="true"] {
   background-color: #ff7c3c;
-  color: #fff;
+  /* Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+     l'encre change : --ink dessus, 6,72:1. */
+  color: var(--sur-acc);
   box-shadow: 0 8px 22px -10px rgba(255, 124, 60, 0.9);
 }
 

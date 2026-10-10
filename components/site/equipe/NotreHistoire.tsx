@@ -79,7 +79,8 @@ export default function NotreHistoire() {
                     <div
                       style={{
                         font: "600 12px ui-monospace,Menlo,monospace",
-                        color: "var(--acc)",
+                        // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
+                        color: "var(--acc-ink)",
                         marginBottom: 8,
                       }}
                     >

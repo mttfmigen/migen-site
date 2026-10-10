@@ -51,7 +51,8 @@ export default function FriseHistoire({
               font: "600 11.5px var(--fb)",
               letterSpacing: ".14em",
               textTransform: "uppercase",
-              color: "var(--acc)",
+              // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
+              color: "var(--acc-ink)",
               marginBottom: 16,
             }}
           >
@@ -184,7 +185,9 @@ export default function FriseHistoire({
               padding: "15px 26px",
               borderRadius: 999,
               background: "var(--acc)",
-              color: "#fff",
+              // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+              // l'encre change : --ink dessus, 6,72:1.
+              color: "var(--sur-acc)",
               font: "600 15px var(--fb)",
               whiteSpace: "nowrap",
               boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",

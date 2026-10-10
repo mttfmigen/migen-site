@@ -22,13 +22,14 @@
   font: 600 11px/1 var(--ft);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--acc);
+  /* Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1. */
+  color: var(--acc-ink);
 }
 
 .titre {
   font: 600 calc(23px * var(--ts)) / 1.18 var(--ft);
   letter-spacing: -0.032em;
-  color: var(--ink);
+  color: var(--sur-acc);
   margin: 10px 0 6px;
   max-width: 18ch;
   text-wrap: balance;
@@ -76,7 +77,8 @@
 .numero {
   font: 600 11px ui-monospace, Menlo, monospace;
   letter-spacing: 0.06em;
-  color: var(--acc);
+  /* Contraste AA : l'orange de marque donnait 2,56:1 sur ce fond clair, --acc-ink donne 8,94:1. */
+  color: var(--acc-ink);
   display: block;
   margin-bottom: 4px;
 }
@@ -133,7 +135,8 @@
 }
 
 .coche {
-  color: var(--acc);
+  /* Contraste AA : l'orange de marque donnait 2,56:1 sur ce fond clair, --acc-ink donne 8,94:1. */
+  color: var(--acc-ink);
   flex: 0 0 auto;
   font-weight: 600;
 }
@@ -178,7 +181,9 @@
 
 .lienOffre {
   background: var(--acc);
-  color: #fff;
+  /* Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+     l'encre change : --ink dessus, 6,72:1. */
+  color: var(--sur-acc);
 }
 
 @media (prefers-reduced-motion: reduce) {

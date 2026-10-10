@@ -76,7 +76,9 @@ export default function AppelInterlocuteur() {
                 padding: "16px 28px",
                 borderRadius: 999,
                 background: "var(--acc)",
-                color: "#fff",
+                // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+                // l'encre change : --ink dessus, 6,72:1.
+                color: "var(--sur-acc)",
                 font: "600 15.5px var(--fb)",
                 whiteSpace: "nowrap",
                 boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)",

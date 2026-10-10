@@ -50,7 +50,8 @@ export default function ProblematiqueClient() {
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
                 textTransform: "uppercase",
-                color: "var(--acc)",
+                // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
+                color: "var(--acc-ink)",
                 marginBottom: "18px",
               }}
             >
@@ -114,7 +115,8 @@ export default function ProblematiqueClient() {
                     style={{
                       font: "600 30px var(--ft)",
                       letterSpacing: "-.05em",
-                      color: "var(--acc)",
+                      // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
+                      color: "var(--acc-ink)",
                       flex: "none",
                     }}
                   >

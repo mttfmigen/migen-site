@@ -55,7 +55,8 @@ export default function PerimetreOuiNon() {
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
                 textTransform: "uppercase",
-                color: "var(--acc)",
+                // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
+                color: "var(--acc-ink)",
                 marginBottom: 18,
               }}
             >
@@ -80,7 +81,8 @@ export default function PerimetreOuiNon() {
                     color: "var(--ink1)",
                   }}
                 >
-                  <span aria-hidden="true" style={{ color: "var(--acc)", flex: "none" }}>
+                  // Contraste AA : l'orange de marque donnait 2,45:1 sur ce fond clair, --acc-ink donne 8,57:1.
+                  <span aria-hidden="true" style={{ color: "var(--acc-ink)", flex: "none" }}>
                     ✓
                   </span>
                   {ligne}

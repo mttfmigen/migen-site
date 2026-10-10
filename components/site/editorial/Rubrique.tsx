@@ -47,10 +47,12 @@ function Bloc({ bloc }: { bloc: BlocRayon }) {
                 aria-hidden={bloc.type === "ul" ? true : undefined}
                 style={
                   bloc.type === "ul"
-                    ? { color: "var(--acc)", flex: "none" }
+                    // Contraste AA : l'orange de marque donnait 2,56:1 sur ce fond clair, --acc-ink donne 8,94:1.
+                    ? { color: "var(--acc-ink)", flex: "none" }
                     : {
                         font: "600 11px ui-monospace,Menlo,monospace",
-                        color: "var(--acc)",
+                        // Contraste AA : l'orange de marque donnait 2,56:1 sur ce fond clair, --acc-ink donne 8,94:1.
+                        color: "var(--acc-ink)",
                         flex: "none",
                         paddingTop: 3,
                       }
@@ -145,7 +147,8 @@ export default function Rubrique({ titre, vue }: { titre: string; vue: VueRubriq
                   <div
                     style={{
                       font: "600 11px ui-monospace,Menlo,monospace",
-                      color: "var(--acc)",
+                      // Contraste AA : l'orange de marque donnait 2,56:1 sur ce fond clair, --acc-ink donne 8,94:1.
+                      color: "var(--acc-ink)",
                       marginBottom: 12,
                     }}
                   >
@@ -315,7 +318,15 @@ export default function Rubrique({ titre, vue }: { titre: string; vue: VueRubriq
               </div>
             </div>
             <div style={{ position: "relative", display: "grid", gap: 10, justifyItems: "start" }}>
-              <Link href="/contact/" prefetch={false} style={{ ...BOUTON_FIN, background: "var(--acc)" }}>
+              <Link
+                href="/contact/"
+                prefetch={false}
+                // Contraste AA : BOUTON_FIN porte `#fff`, juste pour le second
+                // bouton posé sur le verre translucide. Sur l'orange de marque,
+                // le blanc ne donne que 2,56:1. L'orange ne bouge pas, l'encre
+                // change ici seulement : --ink dessus, 6,72:1.
+                style={{ ...BOUTON_FIN, background: "var(--acc)", color: "var(--ink)" }}
+              >
                 Décrire mon besoin
               </Link>
               <a

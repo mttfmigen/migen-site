@@ -138,7 +138,8 @@ export default function FocusResidence({
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
                 textTransform: "uppercase",
-                color: "var(--acc)",
+                // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
+                color: "var(--acc-ink)",
                 marginBottom: "18px",
               }}
             >
@@ -161,7 +162,8 @@ export default function FocusResidence({
                   <span
                     style={{
                       font: "600 12px var(--fb)",
-                      color: "var(--acc)",
+                      // Contraste AA : l'orange de marque donnait 2,29:1 sur ce fond clair, --acc-ink donne 7,98:1.
+                      color: "var(--acc-ink)",
                       flex: "none",
                       width: "26px",
                       paddingTop: "3px",
@@ -208,7 +210,9 @@ export default function FocusResidence({
                 padding: "14px 24px",
                 borderRadius: "999px",
                 background: "var(--acc)",
-                color: "#fff",
+                // Contraste AA : blanc sur l'orange de marque, 2,56:1. L'orange ne bouge pas,
+                // l'encre change : --ink dessus, 6,72:1.
+                color: "var(--sur-acc)",
                 font: "600 15px var(--fb)",
               }}
             >
