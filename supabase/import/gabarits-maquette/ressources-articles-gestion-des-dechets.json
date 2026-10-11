@@ -260,13 +260,13 @@
       }
     ],
     "minutes": 8,
-    "image": "/assets/photos/env-professionnels-maintenance-aeronautique.jpg",
+    "image": "/assets/web/team-duo.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/cout-arret-de-production/",
         "titre": "Coût d'un arrêt de production",
         "minutes": 12,
-        "image": "/assets/photos/env-photos-menuiserie.jpg"
+        "image": "/assets/photos/env-reparation-moteur-aeronautique.jpg"
       },
       {
         "href": "/ressources/articles/digitalisation-maintenance/",
@@ -278,7 +278,7 @@
         "href": "/ressources/articles/gmao/",
         "titre": "Gestion de maintenance assistée par ordinateur",
         "minutes": 11,
-        "image": "/assets/photos/energie-bride-mat-eolienne.jpg"
+        "image": "/assets/photos/il-femme-inspectant-bras-robotique-2026-1600.jpg"
       }
     ]
   }

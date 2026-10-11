@@ -35,7 +35,7 @@
       }
     ],
     "logo": "/assets/clients/mq-7c01e175985e.png",
-    "photoHero": "/assets/photos/chimie-technicienne-skid-vanne.jpg",
+    "photoHero": "/assets/photos/env-photos-industrie-3.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -152,25 +152,25 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg"
+        "photo": "/assets/photos/chimie-cuve-melange-flexible.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/chimie-cuve-melange-flexible.jpg"
+        "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrie chimique",
         "href": "/secteurs/chimie/",
-        "photo": "/assets/photos/chimie-piquage-manometre-gants.jpg"
+        "photo": "/assets/photos/il-inspection-de-terrain-en-securite-mars-2026-16.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/env-photos-industrie.jpg"
+        "photo": "/assets/photos/il-usines-a-yokkaichi-mars-24-2026-1600.jpg"
       }
     ]
   }

@@ -448,7 +448,7 @@
             "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés en pleine période estivale, site livré à la date prévue.",
             "lienLibelle": "Étude de cas AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/env-industrie-mettalique.jpg",
+            "photo": "/assets/photos/energie-eolien-hauteur-harnais.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
@@ -456,7 +456,7 @@
             "texte": "Chantier piloté de bout en bout par Migen Travaux, jalons critiques suivis.",
             "lienLibelle": "Étude de cas Migen Travaux x ECOCEM",
             "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/photos/energie-eolien-hauteur-harnais.jpg",
+            "photo": "/assets/photos/elec-armoire-pont-roulant-gilet.jpg",
             "logo": "/assets/clients/orthus-x-ecocem.png"
           },
           {
@@ -487,14 +487,14 @@
             "titre": "Maintenir et monter, de jour comme de nuit",
             "lienLibelle": "Étude de cas Vignal Systems",
             "lienHref": "/preuves/vignal-systems/",
-            "photo": "/assets/photos/meca-moteur-palan-depose.jpg",
+            "photo": "/assets/photos/env-industrie-mettalique.jpg",
             "logo": "/assets/clients/mq-dbf1f974e675.svg"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg",
+            "photo": "/assets/photos/il-photo-usine-ciment-mars-17-2026-1600.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           }
         ]

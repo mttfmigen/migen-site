@@ -82,7 +82,7 @@
       }
     ],
     "appelBouton": "Étudier la maintenance de mes moyens de production",
-    "problemePhoto": "/assets/photos/env-moteur-d-avion-en-maintenance.jpg",
+    "problemePhoto": "/assets/photos/env-technician-maintenance-jet-engine.jpg",
     "brefBande": "Besoin de sécuriser vos moyens de production avant le prochain palier de cadence ?",
     "brefMention": "Rappel dans l'heure.",
     "brefBouton": {
@@ -298,14 +298,14 @@
             "texte": "en 2025",
             "lienLibelle": "Étude de cas VOIT : site du Grand Est",
             "lienHref": "/preuves/voit-grand-est/",
-            "photo": "/assets/photos/aero-fuselage-serrage-lampe.jpg"
+            "photo": "/assets/photos/env-moteur-d-avion-en-maintenance.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne de production neuve",
             "texte": "près de Lyon",
             "lienLibelle": "Étude de cas MERSEN : nouvelles lignes",
             "lienHref": "/preuves/mersen/",
-            "photo": "/assets/photos/aero-nacelle-moteur-technicien.jpg"
+            "photo": "/assets/photos/aero-fuselage-serrage-lampe.jpg"
           },
           {
             "titre": "Six techniciens pour l'installation et la mise en production d'un parc machine neuf",

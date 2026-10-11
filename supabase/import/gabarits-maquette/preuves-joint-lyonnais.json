@@ -14,7 +14,7 @@
     ],
     "bouton": "Faire diagnostiquer mes machines",
     "logo": "/assets/clients/joint-lyonnais.png",
-    "photoHero": "/assets/photos/meca-pied-a-coulisse-fraiseuse.jpg",
+    "photoHero": "/assets/web/sv-portrait.jpg",
     "chiffres": [
       {
         "libelle": "Nature des interventions",
@@ -128,7 +128,7 @@
         "valeur": "Budget de PME, sans rachat de matériel neuf"
       }
     ],
-    "photoDispositif": "/assets/photos/pharma-isolateur-salle-propre.jpg",
+    "photoDispositif": "/assets/photos/meca-pied-a-coulisse-fraiseuse.jpg",
     "resultats": [
       {
         "titre": "Les difficultés rencontrées ont été palliées",
@@ -179,13 +179,13 @@
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : maintenance préventive photovoltaïque",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/env-inspection-ligne-production-automatique.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-selectionnant-outils-ja.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/meca-graissage-couronne-engin.jpg"
+        "photo": "/assets/photos/soudure-soudeuse-masque-releve.jpg"
       },
       {
         "surtitre": "Étude de cas",
@@ -197,7 +197,7 @@
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/chaudro-presse-plieuse.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-avion-jan-9-2026-1600.jpg"
       }
     ]
   }

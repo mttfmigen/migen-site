@@ -15,7 +15,7 @@
     "bouton": "Renforcer mes équipes de maintenance",
     "logo": "/assets/clients/groupe-atlantic.png",
     "logoInverse": true,
-    "photoHero": "/assets/photos/il-technicien-maintenance-3.jpg",
+    "photoHero": "/assets/photos/env-technician-maintenance-jet-engine.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -126,7 +126,7 @@
         "valeur": "Permanente, engagement de moyen terme"
       }
     ],
-    "photoDispositif": "/assets/photos/env-technician-maintenance-jet-engine.jpg",
+    "photoDispositif": "/assets/photos/chimie-technicienne-skid-vanne.jpg",
     "resultats": [
       {
         "titre": "Une collaboration reconduite",
@@ -175,25 +175,25 @@
         "surtitre": "Étude de cas",
         "titre": "JOINT LYONNAIS : parc machines défaillant",
         "href": "/preuves/joint-lyonnais/",
-        "photo": "/assets/photos/env-inspection-robotique-22-sept-2026.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-femme-1600.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "DIMOMAINT : la GMAO planifie, nos techniciens interviennent",
         "href": "/preuves/dimomaint/",
-        "photo": "/assets/photos/soudure-soudeuse-masque-releve.jpg"
+        "photo": "/assets/photos/env-photos-menuiserie.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "EIFFAGE : le préventif d’une centrale photovoltaïque en trois techniciens",
         "href": "/preuves/eiffage/",
-        "photo": "/assets/photos/menuiserie-centre-usinage-soufflette.jpg"
+        "photo": "/assets/photos/il-portrait-of-engineer-train-inspect-the-train-s.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/env-factory-worker-inspecting-robotic-arm-in-manuf.jpg"
+        "photo": "/assets/web/team-grind-impact.jpg"
       }
     ]
   }

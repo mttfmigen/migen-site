@@ -161,7 +161,7 @@
         "titre": "Technicien en résidence",
         "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/env-industrie-metallique-22-sept-2026-1.jpg"
+        "photo": "/assets/photos/elec-armoire-pont-roulant-gilet.jpg"
       },
       {
         "titre": "Zéro arrêt",
@@ -320,7 +320,7 @@
             "texte": "Délais de chantier tenus sans pénalité, transferts de machines sécurisés, sans casse ni improvisation.",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg",
+            "photo": "/assets/photos/env-industrie-metallique-2.jpg",
             "logo": "/assets/clients/mq-127f9e03c53b.svg"
           },
           {
@@ -328,7 +328,7 @@
             "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés en pleine période estivale, site livré à la date prévue.",
             "lienLibelle": "Étude de cas AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/elec-armoire-pont-roulant-gilet.jpg",
+            "photo": "/assets/photos/levage-montage-poteau-charpente.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
@@ -336,7 +336,7 @@
             "texte": "Chantier piloté de bout en bout par Migen Travaux, coordination multi-métiers et jalons critiques suivis.",
             "lienLibelle": "Étude de cas Migen Travaux x ECOCEM",
             "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/photos/env-industrie-metallique-2.jpg",
+            "photo": "/assets/photos/il-vue-aerienne-usine-ciment-mars-16-2026-1600.jpg",
             "logo": "/assets/clients/orthus-x-ecocem.png"
           },
           {
@@ -352,14 +352,14 @@
             "texte": "Phases critiques sécurisées, qualité des installations maintenue, aucun recrutement d'urgence côté client.",
             "lienLibelle": "Étude de cas ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/il-vue-aerienne-usine-ciment-mars-16-2026-1600.jpg",
+            "photo": "/assets/photos/env-industrie-metallique-22-sept-2026-1.jpg",
             "logo": "/assets/clients/alstef.webp"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/il-photo-usine-ciment-mars-17-2026-1600.jpg",
+            "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {

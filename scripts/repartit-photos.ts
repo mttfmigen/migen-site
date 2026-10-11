@@ -83,6 +83,8 @@ import { join } from "node:path";
 
 import { PHOTOS_MIGEN, RACINE, REGISTRE, cheminRegistre } from "@/lib/photos-autorisees";
 
+import { secteursDuTexte, texteSignifiant } from "../lib/secteur-du-cas";
+
 const DOSSIER = join(RACINE, "supabase", "import", "gabarits-maquette");
 
 /* ------------------------------------------------------------ les gabarits */
@@ -340,9 +342,32 @@ function litFiches(): Fiche[] {
     });
 }
 
-/** Le thème d'une étude de cas : le secteur que SA fiche désigne, sinon le
- *  portrait de technicien. On ne devine pas le secteur d'un client. */
+/**
+ * LE THÈME D'UNE ÉTUDE DE CAS : LE SECTEUR D'ACTIVITÉ DU CLIENT.
+ *
+ * DEUX SOURCES, DANS CET ORDRE, et aucune ne devine quoi que ce soit :
+ *  1. LE TEXTE DE LA FICHE, son titre, son chapeau et les libellés de son
+ *     bandeau (`lib/secteur-du-cas.ts`). C'est la source principale depuis le
+ *     11/10.
+ *  2. À défaut, les liens `/secteurs/<x>/` que la fiche contient. C'était la
+ *     seule source jusque-là, et elle était trop maigre : une fiche de cas ne
+ *     lie pas toujours une page de secteur. Mesure du 11/10 sur les 41 cas,
+ *     38 photos sur 232 (16 %) tombaient hors du secteur de leur client.
+ *     ALSTEF Group, dont la fiche dit « automatisation logistique, aéroports »,
+ *     recevait une photo de bobines d'acier ; VPK, logistique, recevait de la
+ *     robotique ; VIGNAL SYSTEMS, automobile, recevait de la cimenterie.
+ *
+ * On ne classe JAMAIS un client d'après ce qu'on croit savoir de lui : Amazon
+ * est logistique parce que sa fiche écrit « centre logistique ORY4 », pas
+ * parce que c'est Amazon.
+ *
+ * Une fiche qui ne nomme aucun secteur rend les thèmes de son adresse, et la
+ * répartition retombe sur ses paliers plus larges : mieux vaut un portrait de
+ * technicien qu'un secteur inventé.
+ */
 function themesPreuve(fiche: Fiche): readonly string[] {
+  const duTexte = secteursDuTexte(texteSignifiant(fiche.donnee as never));
+  if (duTexte.length) return duTexte.slice(0, 3);
   const secteur = fiche.secteurs[0];
   if (!secteur) return themesDeLUrl(fiche.url);
   return themesDeLUrl(`/secteurs/${secteur}/`);

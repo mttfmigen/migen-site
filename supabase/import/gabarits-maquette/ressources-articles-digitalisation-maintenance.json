@@ -310,25 +310,25 @@
       }
     ],
     "minutes": 11,
-    "image": "/assets/photos/il-technicien-maintenance-robotique-mar-17-2026-1.jpg",
+    "image": "/assets/photos/energie-releve-pupitre-salle-commande.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/cout-arret-de-production/",
         "titre": "Coût d'un arrêt de production",
         "minutes": 12,
-        "image": "/assets/photos/env-maintenance-automaticien.jpg"
+        "image": "/assets/photos/env-professionnels-maintenance-aeronautique.jpg"
       },
       {
         "href": "/ressources/articles/gestion-des-dechets/",
         "titre": "Gestion des déchets industriels",
         "minutes": 8,
-        "image": "/assets/photos/env-maintenance-worker-repairing-robot.jpg"
+        "image": "/assets/photos/equipe-transmission-senior-jeune.jpg"
       },
       {
         "href": "/ressources/articles/gmao/",
         "titre": "Gestion de maintenance assistée par ordinateur",
         "minutes": 11,
-        "image": "/assets/photos/il-femme-inspectant-bras-robotique-2026-1600.jpg"
+        "image": "/assets/photos/env-reparation-moteur-avion.jpg"
       }
     ]
   }

@@ -31,7 +31,7 @@
       }
     ],
     "logo": "/assets/clients/mq-8506472cb2ee.svg",
-    "photoHero": "/assets/photos/agro-mains-vanne-sanitaire.jpg",
+    "photoHero": "/assets/photos/agro-remplisseuse-cle-plate.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -115,7 +115,7 @@
         "valeur": "1 technicien"
       }
     ],
-    "photoDispositif": "/assets/photos/agro-remplisseuse-cle-plate.jpg",
+    "photoDispositif": "/assets/photos/agro-panneau-vannes-nep.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -153,7 +153,7 @@
         "surtitre": "Étude de cas",
         "titre": "DANONE (BLÉDINA) : pas un poste sans maintenance, week-end compris",
         "href": "/preuves/danone-lignes-de-production/",
-        "photo": "/assets/photos/env-femme-inspectant-des-bouteilles.jpg"
+        "photo": "/assets/photos/env-inspection-du-processus-d-embouteillage.jpg"
       }
     ]
   }

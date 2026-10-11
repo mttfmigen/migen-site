@@ -230,19 +230,19 @@
         "href": "/ressources/fiches-techniques/amdec/",
         "titre": "Amdec",
         "minutes": 15,
-        "image": "/assets/photos/pharma-blistereuse-mecanisme.jpg"
+        "image": "/assets/photos/il-hydrau-verin-godet-engin.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/analyse-vibratoire/",
         "titre": "Analyse vibratoire",
         "minutes": 10,
-        "image": "/assets/photos/soudure-brossage-meuleuse-etau.jpg"
+        "image": "/assets/photos/pharma-blistereuse-mecanisme.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/automates-siemens/",
         "titre": "Automate Siemens",
         "minutes": 7,
-        "image": "/assets/photos/meca-cle-bride-carter.jpg"
+        "image": "/assets/photos/env-moteur-d-avion-en-maintenance.jpg"
       }
     ]
   }

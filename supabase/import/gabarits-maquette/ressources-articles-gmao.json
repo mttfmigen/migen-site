@@ -284,25 +284,25 @@
       }
     ],
     "minutes": 11,
-    "image": "/assets/photos/metal-fonderie-coulee.jpg",
+    "image": "/assets/web/team-grind-front.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/cout-arret-de-production/",
         "titre": "Coût d'un arrêt de production",
         "minutes": 12,
-        "image": "/assets/photos/pharma-rouleaux-reglage-panoramique.jpg"
+        "image": "/assets/photos/env-mecanicien-aeronautique.jpg"
       },
       {
         "href": "/ressources/articles/digitalisation-maintenance/",
         "titre": "Digitalisation maintenance",
         "minutes": 11,
-        "image": "/assets/photos/il-technicien-maintenance-photo-8-1600.jpg"
+        "image": "/assets/photos/il-soudure-poste-masque-releve.jpg"
       },
       {
         "href": "/ressources/articles/gestion-des-dechets/",
         "titre": "Gestion des déchets industriels",
         "minutes": 8,
-        "image": "/assets/photos/menuiserie-centre-usinage-soufflette.jpg"
+        "image": "/assets/photos/env-focused-young-man-working-on-electrical-wiring.jpg"
       }
     ]
   }

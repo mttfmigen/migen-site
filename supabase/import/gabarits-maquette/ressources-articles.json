@@ -148,7 +148,7 @@
           "format": "Article",
           "minutes": 12,
           "mots": 2734,
-          "image": "/assets/photos/il-technicien-maintenance-photo-jan-8-2026-1-1600.jpg"
+          "image": "/assets/photos/env-menuiserie-circular-saw.jpg"
         },
         {
           "href": "/ressources/articles/digitalisation-maintenance/",
@@ -157,7 +157,7 @@
           "format": "Article",
           "minutes": 11,
           "mots": 2375,
-          "image": "/assets/web/team-electric.jpg"
+          "image": "/assets/photos/automatisme-coffret-cartes-portable.jpg"
         },
         {
           "href": "/ressources/articles/gestion-des-dechets/",
@@ -166,7 +166,7 @@
           "format": "Article",
           "minutes": 8,
           "mots": 1761,
-          "image": "/assets/photos/elec-multimetre-armoire-automatisme.jpg"
+          "image": "/assets/photos/robot-cobot-technicienne.jpg"
         },
         {
           "href": "/ressources/articles/gmao/",
@@ -238,7 +238,7 @@
           "format": "Article",
           "minutes": 12,
           "mots": 2648,
-          "image": "/assets/photos/env-inspection-robot-arm-wiring.jpg"
+          "image": "/assets/photos/elec-multimetre-armoire-automatisme.jpg"
         },
         {
           "href": "/ressources/articles/preventive-ou-corrective/",
@@ -256,7 +256,7 @@
           "format": "Article",
           "minutes": 7,
           "mots": 1589,
-          "image": "/assets/photos/il-technicien-maintenance-inspectant-equipement-j.jpg"
+          "image": "/assets/photos/env-technician-maintenance-jet-engine.jpg"
         },
         {
           "href": "/ressources/articles/suivi-de-la-maintenance/",
@@ -292,7 +292,7 @@
           "format": "Fiche pratique",
           "minutes": 12,
           "mots": 2685,
-          "image": "/assets/photos/env-reparation-moteur-avion.jpg"
+          "image": "/assets/web/team-grind-front.jpg"
         },
         {
           "href": "/ressources/fiches-pratiques/permis-de-feu/",
@@ -310,7 +310,7 @@
           "format": "Fiche pratique",
           "minutes": 9,
           "mots": 1941,
-          "image": "/assets/photos/env-photos-industrie-pharmaceutique.jpg"
+          "image": "/assets/photos/elec-mains-bornier-relais.jpg"
         },
         {
           "href": "/ressources/fiches-pratiques/securite-maintenance/",
@@ -328,7 +328,7 @@
           "format": "Fiche technique",
           "minutes": 15,
           "mots": 3292,
-          "image": "/assets/photos/elec-mains-bornier-relais.jpg"
+          "image": "/assets/photos/env-reparation-moteur-aeronautique.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/analyse-vibratoire/",
@@ -337,7 +337,7 @@
           "format": "Fiche technique",
           "minutes": 10,
           "mots": 2109,
-          "image": "/assets/photos/robot-multimetre-cablage-robot.jpg"
+          "image": "/assets/photos/env-inspection-robot-arm-wiring.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/automates-siemens/",
@@ -373,7 +373,7 @@
           "format": "Fiche technique",
           "minutes": 9,
           "mots": 1959,
-          "image": "/assets/photos/chaudro-presse-plieuse.jpg"
+          "image": "/assets/photos/env-mecanicien-aeronautique.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/niveaux-de-maintenance/",
@@ -382,7 +382,7 @@
           "format": "Fiche technique",
           "minutes": 9,
           "mots": 1990,
-          "image": "/assets/photos/il-technicien-maintenance-avec-robot-1600.jpg"
+          "image": "/assets/photos/env-inspection-bras-robotiques.jpg"
         },
         {
           "href": "/ressources/fiches-techniques/outils-de-diagnostic/",
@@ -400,7 +400,7 @@
           "format": "Fiche technique",
           "minutes": 10,
           "mots": 2242,
-          "image": "/assets/photos/menuiserie-scie-panneaux-epi.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-avec-robot-1600.jpg"
         },
         {
           "href": "/ressources/livres-blancs/externaliser-sa-maintenance/",
@@ -436,7 +436,7 @@
           "format": "Process",
           "minutes": 10,
           "mots": 2254,
-          "image": "/assets/photos/env-inspection-metal-22-sept-2026.jpg"
+          "image": "/assets/photos/soudure-soudeuse-masque-releve.jpg"
         },
         {
           "href": "/ressources/process/protocole-de-securite/",
@@ -454,7 +454,7 @@
           "format": "Process",
           "minutes": 8,
           "mots": 1764,
-          "image": "/assets/photos/env-reparation-moteur-aeronautique.jpg"
+          "image": "/assets/photos/il-technicien-maintenance-sur-pipeline-1600.jpg"
         }
       ]
     }

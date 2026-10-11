@@ -299,19 +299,19 @@
       }
     ],
     "minutes": 11,
-    "image": "/assets/photos/env-automatician-maintenance.jpg",
+    "image": "/assets/photos/il-technicien-maintenance-photo-7-1600.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-techniques/amdec/",
         "titre": "Amdec",
         "minutes": 15,
-        "image": "/assets/photos/tuyau-pointage-bride-tube.jpg"
+        "image": "/assets/photos/energie-rotor-turbine-vapeur.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/analyse-vibratoire/",
         "titre": "Analyse vibratoire",
         "minutes": 10,
-        "image": "/assets/photos/il-technicien-maintenance-photo-7-1600.jpg"
+        "image": "/assets/photos/il-man-working-with-machinery-in-a-factory.jpg"
       },
       {
         "href": "/ressources/fiches-techniques/automates-siemens/",

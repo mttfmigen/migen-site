@@ -203,7 +203,7 @@
             "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés, site livré à la date prévue.",
             "lienLibelle": "AKTID",
             "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/soudure-soudeuse-masque-releve.jpg",
+            "photo": "/assets/photos/soudure-tig-virole-inox.jpg",
             "logo": "/assets/clients/aktid.png"
           },
           {
@@ -219,14 +219,14 @@
             "texte": "Suivi des prestataires, vérification des installations, respect des procédures.",
             "lienLibelle": "ALSTEF Group",
             "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg",
+            "photo": "/assets/photos/soudure-soudeuse-masque-releve.jpg",
             "logo": "/assets/clients/alstef.webp"
           },
           {
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/chaudro-presse-plieuse.jpg",
+            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           },
           {
@@ -278,7 +278,7 @@
         "titre": "Technicien en résidence",
         "phrase": "Des techniciens intégrés à votre équipe, sur votre site.",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/soudure-tig-virole-inox.jpg"
+        "photo": "/assets/photos/soudure-interieur-virole.jpg"
       },
       {
         "titre": "Zéro arrêt",
@@ -290,13 +290,13 @@
         "titre": "Arrêt technique",
         "phrase": "Vos arrêts planifiés, tenus à la date annoncée.",
         "href": "/offres/arret-technique/",
-        "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
+        "photo": "/assets/photos/chaudro-presse-plieuse.jpg"
       },
       {
         "titre": "Full service",
         "phrase": "Toute votre maintenance, un seul partenaire.",
         "href": "/offres/full-service/",
-        "photo": "/assets/photos/soudure-interieur-virole.jpg"
+        "photo": "/assets/photos/soudure-virole-inox-hall.jpg"
       },
       {
         "titre": "Travaux industriels",

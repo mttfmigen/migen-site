@@ -27,7 +27,7 @@
       }
     ],
     "logo": "/assets/clients/mq-dd835fd31c69.svg",
-    "photoHero": "/assets/photos/env-bras-robotiques-soudant-cadres-auto.jpg",
+    "photoHero": "/assets/photos/pharma-blistereuse-mecanisme.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -135,7 +135,7 @@
         "valeur": "Supervision par les coordinateurs Migen"
       }
     ],
-    "photoDispositif": "/assets/photos/env-technician-maintenance-10.jpg",
+    "photoDispositif": "/assets/photos/soudure-brossage-meuleuse-etau.jpg",
     "resultats": [
       {
         "titre": "Disponibilité accrue",
@@ -184,25 +184,25 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/il-technicien-maintenance-camion-1600.jpg"
+        "photo": "/assets/web/sv-duo-impact.jpg"
       },
       {
         "surtitre": "Secteur",
         "titre": "Maintenance industrie automobile",
         "href": "/secteurs/automobile/",
-        "photo": "/assets/photos/robot-cellule-soudure-inspection.jpg"
+        "photo": "/assets/web/team-grind-close.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "STELLANTIS : fonderie de Sept-Fons",
         "href": "/preuves/stellantis-fonderie-sept-fons/",
-        "photo": "/assets/photos/robot-atelier-ferrage-plongee.jpg"
+        "photo": "/assets/photos/il-portrait-of-engineer-train-inspect-the-train-s-2.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "AUTOLIV : un technicien dédié pour que le parc ne décroche pas",
         "href": "/preuves/autoliv/",
-        "photo": "/assets/photos/il-technicien-maintenance-photo-4-1600.jpg"
+        "photo": "/assets/photos/env-technicien-maintenance-aeronautique.jpg"
       }
     ]
   },

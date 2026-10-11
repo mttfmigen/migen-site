@@ -35,7 +35,7 @@
       }
     ],
     "logo": "/assets/clients/mq-ed5f02d3ab11.svg",
-    "photoHero": "/assets/photos/il-technicien-maintenance-camion-1600.jpg",
+    "photoHero": "/assets/photos/env-technician-maintenance-10.jpg",
     "chiffres": [
       {
         "libelle": "Nature des travaux",
@@ -127,7 +127,7 @@
         "valeur": "Préventif"
       }
     ],
-    "photoDispositif": "/assets/photos/robot-cellules-grillagees.jpg",
+    "photoDispositif": "/assets/photos/env-technician-maintenance-11.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -147,13 +147,13 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/automobile-ligne-montage-binome.jpg"
+        "photo": "/assets/photos/robot-soudure-points-caisse.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/robot-cellule-soudure-inspection.jpg"
+        "photo": "/assets/photos/il-technicienne-mecanique-photo-avril-2026-1600.jpg"
       },
       {
         "surtitre": "Secteur",
@@ -165,7 +165,7 @@
         "surtitre": "Étude de cas",
         "titre": "AUTOLIV : un technicien dédié pour que le parc ne décroche pas",
         "href": "/preuves/autoliv/",
-        "photo": "/assets/photos/il-technicien-maintenance-photo-4-1600.jpg"
+        "photo": "/assets/photos/env-inspection-auto-avec-equipe.jpg"
       }
     ]
   }

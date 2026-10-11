@@ -238,25 +238,25 @@
       }
     ],
     "minutes": 9,
-    "image": "/assets/photos/il-technicien-maintenance-avion-jan-9-2026-1600.jpg",
+    "image": "/assets/photos/il-technicien-maintenance-photo.jpg",
     "aLire": [
       {
         "href": "/ressources/articles/cout-arret-de-production/",
         "titre": "Coût d'un arrêt de production",
         "minutes": 12,
-        "image": "/assets/web/sv-portrait.jpg"
+        "image": "/assets/photos/tuyau-pointage-bride-tube.jpg"
       },
       {
         "href": "/ressources/articles/digitalisation-maintenance/",
         "titre": "Digitalisation maintenance",
         "minutes": 11,
-        "image": "/assets/photos/elec-tgbt-technicienne-tablette.jpg"
+        "image": "/assets/photos/env-technician-examining-jet-engine.jpg"
       },
       {
         "href": "/ressources/articles/gestion-des-dechets/",
         "titre": "Gestion des déchets industriels",
         "minutes": 8,
-        "image": "/assets/photos/il-portrait-of-engineer-train-inspect-the-train-s-2.jpg"
+        "image": "/assets/web/team-grind-sparks.jpg"
       }
     ]
   }
