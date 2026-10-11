@@ -107,7 +107,6 @@ function Questions({ questions }: { questions: Question[] }) {
               <details
                 key={q.question}
                 name="faq-ressource"
-                open={i === 0}
                 className={styles.question}
                 style={{ borderTop: i === 0 ? "none" : H.FAQ_FILET }}
               >

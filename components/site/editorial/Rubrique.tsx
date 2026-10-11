@@ -208,7 +208,6 @@ export default function Rubrique({ titre, vue }: { titre: string; vue: VueRubriq
                   <details
                     key={f.question}
                     name="faq-rubrique"
-                    open={i === 0}
                     style={{ borderTop: i ? "1px solid var(--line)" : "none" }}
                   >
                     <summary

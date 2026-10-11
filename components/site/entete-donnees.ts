@@ -59,13 +59,22 @@ export interface SectionTiroir {
 
 /* ------------------------------------------------------------------ barre */
 
-/** Les cinq entrées qui ouvrent un panneau, dans l'ordre de la maquette. */
-export const NAV_PANNEAUX: { id: PanneauId; libelle: string }[] = [
-  { id: "offres", libelle: "Offres" },
-  { id: "expertises", libelle: "Expertises" },
-  { id: "preuves", libelle: "Cas clients" },
-  { id: "ressources", libelle: "Ressources" },
-  { id: "apropos", libelle: "À propos" },
+/**
+ * Les cinq entrées qui ouvrent un panneau, dans l'ordre de la maquette.
+ *
+ * CHACUNE PORTE L'ADRESSE DE SON HUB depuis le 11/10. Elles étaient des
+ * `<button>` sans lien : au clic, le méga-menu s'ouvrait et rien d'autre, le
+ * visiteur devait ensuite viser « Toutes nos expertises → » à l'intérieur.
+ * Mehdi l'a signalé : « le menu quand je clique dessus ça me renvoie pas vers
+ * les pages de niveau un ». Elles sont maintenant de vrais liens : le survol
+ * et le focus clavier ouvrent le panneau, le clic mène à la page.
+ */
+export const NAV_PANNEAUX: { id: PanneauId; libelle: string; href: string }[] = [
+  { id: "offres", libelle: "Offres", href: "/offres/" },
+  { id: "expertises", libelle: "Expertises", href: "/expertises/" },
+  { id: "preuves", libelle: "Cas clients", href: "/preuves/" },
+  { id: "ressources", libelle: "Ressources", href: "/ressources/" },
+  { id: "apropos", libelle: "À propos", href: "/nous-connaitre/" },
 ];
 
 /** Sixième entrée, sans panneau : elle ferme celui qui serait ouvert. */

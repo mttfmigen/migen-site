@@ -225,32 +225,44 @@ export default function Entete({
               }}
             >
               {NAV_PANNEAUX.map((entree) => (
-                <button
+                <Link
                   key={entree.id}
-                  type="button"
+                  href={entree.href}
                   data-panneau={entree.id}
                   aria-expanded={panneau === entree.id}
                   aria-controls="mg-megamenu"
                   className={s.itemNav}
-                  style={ITEM_NAV}
+                  style={{
+                    ...ITEM_NAV,
+                    display: "inline-flex",
+                    alignItems: "center",
+                  }}
                   onMouseEnter={() => setPanneau(entree.id)}
+                  onFocus={() => setPanneau(entree.id)}
                   onClick={(evenement) => {
-                    // À la souris, `mouseenter` a déjà ouvert le panneau avant
-                    // que le clic n'arrive : basculer ici le refermait dans la
-                    // foulée, et l'entrée paraissait morte. Le clic ne referme
-                    // donc que pour le clavier et le tactile, qui n'ont pas de
-                    // survol pour ouvrir à leur place.
+                    // UN VRAI LIEN DEPUIS LE 11/10. À la souris, le clic suit
+                    // le lien : c'est ce que Mehdi demandait, une entrée de
+                    // menu mène à sa page de niveau un.
+                    //
+                    // Au CLAVIER et au TACTILE il n'y a pas de survol pour
+                    // ouvrir le panneau à la place du clic. Le premier appui
+                    // ouvre donc le panneau sans naviguer, le second suit le
+                    // lien : sans cela, ces deux entrées perdraient l'accès au
+                    // méga-menu, qui est la seule porte vers les sous-pages.
                     const sansSurvol =
                       evenement.detail === 0 ||
                       (evenement.nativeEvent as PointerEvent).pointerType !==
                         "mouse";
-                    setPanneau((actuel) =>
-                      actuel === entree.id && sansSurvol ? null : entree.id,
-                    );
+                    if (sansSurvol && panneau !== entree.id) {
+                      evenement.preventDefault();
+                      setPanneau(entree.id);
+                      return;
+                    }
+                    setPanneau(null);
                   }}
                 >
                   {entree.libelle}
-                </button>
+                </Link>
               ))}
               <Link
                 href={NAV_CARRIERE.href}

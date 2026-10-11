@@ -123,7 +123,7 @@ export default function QuestionsVille({ section }: { section: SectionObjections
           </div>
           <div style={{ display: "grid", gap: 10 }}>
             {section.questions.map((q, rang) => (
-              <details key={q.question} className={styles.pli} style={PLI} name={groupe} open={rang === 0}>
+       <details key={q.question} className={styles.pli} style={PLI} name={groupe} >
                 <summary style={RESUME}>
                   <span className={styles.texteAvecLiens} style={QUESTION}>
                     <TexteRiche texte={q.question} />

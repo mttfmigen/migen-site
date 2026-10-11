@@ -131,14 +131,14 @@ function Pli({
   rang: number;
   groupe: string;
 }) {
-  /* Relevé maquette (sept pages concordantes, 07/10) : la PREMIÈRE question
-     est dépliée au chargement, réponse visible, croix sur pastille orange.
-     Le site chargeait tout fermé. */
+  /* AUCUNE QUESTION N'EST OUVERTE AU CHARGEMENT, arbitrage de Mehdi du 11/10.
+     La maquette, elle, ouvre la première : `<details open="">` sur la première
+     et rien sur les suivantes, vérifié le 11/10 dans les captures figées.
+     C'est donc un écart assumé, demandé pour raccourcir les pages. */
   return (
     <details
       className={styles.pliQuestion}
       style={PLI}
-      open={rang === 0}
       name={groupe}
     >
       <summary style={RESUME}>

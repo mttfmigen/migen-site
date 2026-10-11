@@ -1,15 +1,20 @@
+import Image from "next/image";
 import type { CSSProperties, ReactNode } from "react";
+
+import nathanJorez from "@/components/site/equipe/portraits/nathan-jorez.jpg";
 
 /**
  * Le mot du dirigeant : portrait, manifeste, cinq blocs numérotés, citation.
  *
  * Maquette, lignes 5253 à 5280.
  *
- * LE PORTRAIT N'EST PAS RENDU. La maquette appelle un fichier qui n'a pas été
- * livré avec elle (identifiant `3df77672-…`), et aucune photo de `public/assets`
- * ne représente la personne nommée. Un visage emprunté sous un nom propre
- * serait une donnée inventée, donc le cadre orange de la maquette reste seul en
- * attendant le vrai fichier.
+ * LE PORTRAIT. Cette note disait, jusqu'au 11/10, que la maquette appelait un
+ * fichier non livré et qu'aucune photo ne représentait la personne nommée.
+ * C'était faux : `components/site/equipe/portraits/nathan-jorez.jpg` est dans
+ * le dépôt depuis la passation, et `/a-propos/equipe/` l'affiche déjà. Le cadre
+ * restait donc orange et plein sur toute la largeur du portrait, ce que Mehdi
+ * a vu avant moi. Le même fichier est repris ici, avec le cadrage de la
+ * maquette : carré, coins arrondis, recadré par le centre.
  */
 
 const CADRE_TEXTE: CSSProperties = {
@@ -176,12 +181,21 @@ export default function MotDuDirigeant() {
         >
           <div
             style={{
+              position: "relative",
               borderRadius: "var(--rad,28px)",
               overflow: "hidden",
               aspectRatio: "1/1",
               background: "#ff7c3c",
             }}
-          />
+          >
+            <Image
+              src={nathanJorez}
+              alt="Nathan Jorez, fondateur et dirigeant de migen"
+              fill
+              sizes="(max-width: 900px) 100vw, 280px"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
           <div>
             <div
               style={{

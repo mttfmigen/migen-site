@@ -85,7 +85,17 @@ export default function GarantiesOffre({ section }: ProprietesGarantiesOffre) {
                 <h2 style={TITRE}>Ce que nous garantissons</h2>
               </span>
             }
-            resume={`${section.puces.length} engagements, écrits avant la signature.`}
+            /* LE RESUME SUIT LA REGLE DE LA MAQUETTE MOBILE, et non plus une
+               phrase de notre cru. `MigenMobile.dc.html` construit le resume
+               d'une section repliee a partir de son contenu :
+                 summary = punch | stats | items.h joints par " · " | ...
+               Nous ecrivions « N engagements, ecrits avant la signature. » :
+               mesure du 11/10, zero occurrence dans les 244 captures figees,
+               140 sur le site. Phrase inventee, retiree sur demande de Mehdi. */
+            resume={section.puces
+              .map((puce) => puce.accroche)
+              .filter(Boolean)
+              .join(" · ")}
           >
           <div
             className="g3-2 mg-r2"

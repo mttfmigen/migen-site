@@ -126,7 +126,6 @@ export default function QuestionsHub({
               <details
                 key={q.question}
                 className={styles.pli}
-                open={i === 0}
                 name={groupe}
                 style={{ ...VERRE, borderRadius: "var(--rad-s)" }}
               >

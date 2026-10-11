@@ -198,13 +198,11 @@ export default function QuestionsPhoto({
                   className="cx-faq"
                   style={PLI}
                   name={groupe}
-                  // La maquette ouvre la PREMIÈRE question, sa réponse est
-                  // visible d'emblée. On ne l'ouvre que si elle a une réponse :
-                  // sur plusieurs pages d'offres la première réponse est vide,
-                  // parce que le contrat interdit de copier son prix. Ouvrir un
-                  // pli vide donnerait une carte cassée là où la maquette
-                  // montre un paragraphe.
-                  open={i === 0 && Boolean(q.reponse.trim())}
+                  // AUCUNE QUESTION N'EST OUVERTE AU CHARGEMENT, arbitrage de
+                  // Mehdi du 11/10. La maquette ouvre la première, et ce
+                  // composant le faisait, sauf quand la réponse était vide.
+                  // C'est donc un écart assumé, demandé pour raccourcir les
+                  // pages au téléphone.
                 >
                   <summary style={QUESTION}>
                     <span className={styles.texteAvecLiens} style={INTITULE}>

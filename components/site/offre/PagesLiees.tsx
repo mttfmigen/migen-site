@@ -203,9 +203,10 @@ export default function PagesLiees({ pages, titre }: ProprietesPagesLiees) {
             </div>
             <h2 style={TITRE}>{titre}</h2>
           </div>
-          <span style={COMPTE}>
-            <span>{retenues.length} pages liées</span>
-          </span>
+          {/* LE COMPTEUR « N pages liées » EST RETIRE, sur arbitrage de Mehdi
+              du 11/10. Il etait pourtant conforme : mesure du meme jour, les
+              memes 10 pages le portent dans les captures figees et sur le site.
+              Ecart a la maquette assume, demande explicitement. */}
         </div>
 
         <div className="mg-r2" style={GRILLE}>
