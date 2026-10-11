@@ -156,7 +156,12 @@ export function BlocLecture({ b, groupe = "" }: { b: Bloc; groupe?: string }) {
   if (b.isDuo) return <Duo b={b} />;
   if (b.isTable)
     return (
-      <div style={css(`margin:8px 0 26px;border-radius:var(--rad-s);overflow:auto;${VERRE}`)}>
+      <div
+        style={css(`margin:8px 0 26px;border-radius:var(--rad-s);overflow:auto;${VERRE}`)}
+        tabIndex={0}
+        role="region"
+        aria-label="Tableau, défilement horizontal possible"
+      >
         <table style={css("width:100%;border-collapse:collapse;min-width:540px")}>
           <thead>
             <tr>

@@ -41,7 +41,12 @@ function Interne({ x }: { x: Interne }) {
     );
   if (x.tb)
     return (
-      <div style={css("overflow-x:auto;margin:4px 0 14px;border-radius:var(--rad-s);border:1px solid var(--line)")}>
+      <div
+        style={css("overflow-x:auto;margin:4px 0 14px;border-radius:var(--rad-s);border:1px solid var(--line)")}
+        tabIndex={0}
+        role="region"
+        aria-label="Tableau, défilement horizontal possible"
+      >
         <table style={css("width:100%;border-collapse:collapse;font:400 13.5px/1.55 var(--fb);color:var(--ink2)")}>
           <thead>
             <tr>

@@ -67,7 +67,12 @@ function Bloc({ bloc }: { bloc: BlocRayon }) {
       );
     case "tableau":
       return (
-        <div style={{ overflowX: "auto", margin: "6px 0 12px" }}>
+        <div
+          style={{ overflowX: "auto", margin: "6px 0 12px" }}
+          tabIndex={0}
+          role="region"
+          aria-label="Tableau, défilement horizontal possible"
+        >
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <tbody>
               {bloc.lignes.map((ligne, r) => (

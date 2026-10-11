@@ -737,7 +737,12 @@ function Grille({
       {intros?.map((t) => (
         <Intro key={t} texte={t} police="16px/1.7" largeur="64ch" />
       ))}
-      <div style={{ ...VERRE, overflowX: "auto", marginTop: 14 }}>
+      <div
+        style={{ ...VERRE, overflowX: "auto", marginTop: 14 }}
+        tabIndex={0}
+        role="region"
+        aria-label="Tableau, défilement horizontal possible"
+      >
         <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 560 }}>
           <thead>
             <tr>

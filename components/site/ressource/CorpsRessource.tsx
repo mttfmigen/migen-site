@@ -134,7 +134,12 @@ function Bloc({ bloc }: { bloc: BlocRessource }) {
       );
     case "tableau":
       return (
-        <div style={H.TABLEAU_CADRE}>
+        <div
+          style={H.TABLEAU_CADRE}
+          tabIndex={0}
+          role="region"
+          aria-label="Tableau, défilement horizontal possible"
+        >
           <table style={H.TABLEAU}>
             <thead>
               <tr>

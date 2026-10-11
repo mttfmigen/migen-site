@@ -149,7 +149,12 @@ export default function ComplementsDomaine({
                 </div>
               ) : null}
               {bloc.tableau?.lignes.length ? (
-                <div style={CADRE_TABLEAU}>
+                <div
+                  style={CADRE_TABLEAU}
+                  tabIndex={0}
+                  role="region"
+                  aria-label="Tableau, défilement horizontal possible"
+                >
                   <table
                     style={{
                       width: "100%",
