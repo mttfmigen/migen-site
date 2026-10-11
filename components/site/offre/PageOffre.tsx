@@ -545,11 +545,19 @@ export default function PageOffre({
             héros sur les 20 captures (relevé du 08/10, y compris vide sur les
             sept sous-pages où la maquette ne le renseigne pas) : il le reprend,
             et `appelBouton` ne sert plus qu'aux pages sans panneau de héros. */}
-        <AppelFinal
-          question={ctaFinal?.question}
-          formulaire={formulaire}
-          bouton={heroFormulaire ? contenu.formulaireHeroTitre : contenu.appelBouton}
-        />
+        {/* LA CIBLE DE L'ANCRE #mgx-form, que ce gabarit avait oubliée.
+            Le bouton « Poser ma question » de la FAQ vise #mgx-form ; les
+            captures figées posent bien cet identifiant sur l'écran « 10 Appel
+            final », et les gabarits Expertises, Domaine, Spécialité et Secteur
+            le font. Celui-ci et PageOffres non : le bouton ne menait nulle
+            part sur 21 pages de la branche commerciale. Trouvé le 11/10. */}
+        <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
+          <AppelFinal
+            question={ctaFinal?.question}
+            formulaire={formulaire}
+            bouton={heroFormulaire ? contenu.formulaireHeroTitre : contenu.appelBouton}
+          />
+        </div>
 
         {maillage ? (
           <div

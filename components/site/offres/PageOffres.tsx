@@ -308,11 +308,16 @@ export default function PageOffres({
 
         {/* ------------------------------------------- 17. « 10 Appel final » */}
 
-        <AppelFinal
-          question={ctaFinal?.question}
-          formulaire={formulaire}
-          bouton={contenu.appelBouton}
-        />
+        {/* LA CIBLE DE L'ANCRE #mgx-form, oubliée par ce gabarit comme par
+            PageOffre. Voir la note de ce dernier : le bouton « Poser ma
+            question » de la FAQ ne menait nulle part. */}
+        <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
+          <AppelFinal
+            question={ctaFinal?.question}
+            formulaire={formulaire}
+            bouton={contenu.appelBouton}
+          />
+        </div>
 
         {maillage ? (
           <div
