@@ -5,6 +5,8 @@ import type { CSSProperties, ReactNode } from "react";
 
 import styles from "./FicheMetier.module.css";
 
+import { CHAMP_PIEGE } from "@/components/formulaire/validation";
+
 /**
  * La section « Postuler » du gabarit 07, l'ancre `#postuler` que visent tous
  * les boutons de la page.
@@ -304,7 +306,69 @@ function Coche({ texte }: { texte: string }) {
   );
 }
 
+/**
+ * L'ENVOI, BRANCHÉ LE 11/10. Jusque-là le formulaire portait `method="post"`
+ * sans action ni gestionnaire : le candidat remplissait onze champs, joignait
+ * son CV, cliquait, et la page se rechargeait vide. Aucun message, aucune
+ * trace. Il ne pouvait pas s'en apercevoir avant d'avoir tout saisi, puisque
+ * la validation du navigateur l'empêche d'envoyer à vide.
+ *
+ * La candidature part vers `/api/candidature`, qui la dépose dans TeamTailor.
+ * Si la route n'est pas configurée, elle répond 503 et le candidat lit une
+ * phrase honnête avec l'adresse de secours : jamais « c'est envoyé » sans que
+ * ce le soit.
+ *
+ * LE CV NE PART PAS ENCORE, et le formulaire le dit. Le téléverser demande un
+ * envoi en plusieurs parties que la route ne fait pas ; mieux vaut l'annoncer
+ * que laisser croire que le fichier est joint.
+ */
+type EtatEnvoi = "repos" | "envoi" | "succes" | "erreur";
+
 export default function PostulerMetier() {
+  const [etat, setEtat] = useState<EtatEnvoi>("repos");
+  const [annonce, setAnnonce] = useState("");
+
+  async function envoie(evenement: React.FormEvent<HTMLFormElement>) {
+    evenement.preventDefault();
+    if (etat === "envoi") return;
+    const donnees = new FormData(evenement.currentTarget);
+    const lis = (nom: string) => String(donnees.get(nom) ?? "").trim();
+
+    setEtat("envoi");
+    setAnnonce("");
+    try {
+      const r = await fetch("/api/candidature", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          prenom: lis("firstname"),
+          nom: lis("lastname"),
+          courriel: lis("email"),
+          telephone: lis("phone"),
+          message: lis("message"),
+          origine: window.location.pathname,
+          metier: document.querySelector("h1")?.textContent?.trim() ?? "",
+          [CHAMP_PIEGE]: lis(CHAMP_PIEGE),
+        }),
+      });
+      const corps: unknown = await r.json().catch(() => null);
+      const message =
+        typeof corps === "object" && corps !== null && typeof (corps as { message?: unknown }).message === "string"
+          ? (corps as { message: string }).message
+          : null;
+      if (!r.ok) {
+        setEtat("erreur");
+        setAnnonce(message ?? "L'envoi n'a pas abouti. Écrivez-nous à recrutement@migen.fr.");
+        return;
+      }
+      setEtat("succes");
+      setAnnonce(message ?? "Votre candidature est bien arrivée.");
+    } catch {
+      setEtat("erreur");
+      setAnnonce("L'envoi n'a pas abouti. Écrivez-nous à recrutement@migen.fr.");
+    }
+  }
+
   return (
     <section
       id="postuler"
@@ -407,11 +471,14 @@ export default function PostulerMetier() {
               padding: 28,
             }}
           >
-            {/* `post` en attendant le branchement (CLAUDE.md §7) : sans
-                méthode, l'envoi passait nom, e-mail et téléphone dans l'URL
-                (historique, journaux du serveur). La route rend la page. */}
+            {/* `method="post"` reste la position de repli si le JavaScript ne
+                charge pas : sans méthode, l'envoi passerait nom, e-mail et
+                téléphone dans l'URL, donc dans l'historique et les journaux du
+                serveur. Le gestionnaire ci-dessous le remplace dès qu'il est
+                là, et c'est lui qui dépose réellement la candidature. */}
             <form
               method="post"
+              onSubmit={envoie}
               className={styles.champs}
               style={{
                 display: "grid",
@@ -520,6 +587,7 @@ export default function PostulerMetier() {
               <div style={{ gridColumn: "span 2" }}>
                 <button
                   type="submit"
+                  disabled={etat === "envoi"}
                   className={styles.envoyer}
                   style={{
                     width: "100%",
@@ -529,11 +597,28 @@ export default function PostulerMetier() {
                     background: "var(--acc)",
                     color: "#fff",
                     font: "600 15px var(--fb)",
-                    cursor: "pointer",
+                    cursor: etat === "envoi" ? "progress" : "pointer",
+                    opacity: etat === "envoi" ? 0.7 : 1,
                   }}
                 >
-                  Envoyer ma candidature
+                  {etat === "envoi" ? "Envoi en cours…" : "Envoyer ma candidature"}
                 </button>
+                {/* LA RÉPONSE EST ANNONCÉE, et c'est tout l'objet du
+                    branchement : le formulaire ne se recharge plus en
+                    silence. `role="status"` la fait lire par un lecteur
+                    d'écran sans voler le focus. */}
+                {annonce ? (
+                  <p
+                    role="status"
+                    style={{
+                      margin: "12px 0 0",
+                      font: "500 14px/1.6 var(--fb)",
+                      color: etat === "succes" ? "var(--ink)" : "#b42318",
+                    }}
+                  >
+                    {annonce}
+                  </p>
+                ) : null}
               </div>
             </form>
           </div>
