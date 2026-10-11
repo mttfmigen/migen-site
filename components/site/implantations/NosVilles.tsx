@@ -6,6 +6,8 @@ import type { NosVilles as DonneesNosVilles } from "@/types/implantations";
 
 import styles from "./PageImplantations.module.css";
 
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+
 /**
  * L'écran « Nos villes » de `maquette/rendu/implantations.html` (section 13),
  * propre au hub : les dix cartes de hub et leurs zones, puis « Au-delà des
@@ -101,44 +103,70 @@ export default function NosVilles({ villes }: { villes: DonneesNosVilles }) {
   return (
     <section style={SECTION}>
       <div style={LARGEUR}>
-        <div style={SURTITRE}>Nos implantations</div>
-        <h2 style={TITRE}>{villes.titre}</h2>
-        <p style={CHAPEAU}>{villes.chapeau}</p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(340px,1fr))", gap: 14 }}>
-          {villes.hubs.map((hub) => (
-            <div key={hub.href} style={CARTE_HUB}>
-              <Link href={hub.href} prefetch={false} className={styles.hub} style={LIEN_HUB}>
-                <span>
-                  <span
-                    style={{
-                      display: "block",
-                      font: "600 11px var(--fb)",
-                      letterSpacing: ".13em",
-                      textTransform: "uppercase",
-                      color: "#ff7c3c",
-                      marginBottom: 4,
-                    }}
-                  >
-                    Hub
+        {/* TOUTE LA SECTION SE REPLIE AU TÉLÉPHONE.
+            Mesure du 11/10 : elle fait 4 164 px en 390 px de large, et la page
+            entière 19 656 px, soit 23 écrans. Sept cartes de hub empilées,
+            chacune suivie de ses pastilles de ville, puis des dizaines de
+            villes itinérantes. Mehdi : « la page Nos implantations avec les
+            hubs et les villes, ça fait gros pâté ».
+
+            LE TITRE EXISTANT SERT D'EN-TÊTE, il n'en est pas ajouté un second.
+            Première tentative du même jour : j'avais posé deux blocs avec des
+            titres neufs, « Nos sept hubs » et « Au-delà des hubs ». Mesure :
+            « Au-delà des hubs » passait de 2 à 4 occurrences dans la page, un
+            doublon visible sur ordinateur. Le motif correct est celui de
+            GarantiesOffre, qui passe le titre déjà là dans `enTete`.
+
+            Le résumé suit la règle de la maquette mobile (« Blocs communs
+            (pliables) » de MigenMobile.dc.html) : les intitulés joints par
+            « · ». Sur ordinateur rien ne change, le repli n'a lieu qu'en
+            dessous de 880 px. */}
+        <SectionPliableMobile
+          enTete={
+            <span>
+              <span style={{ ...SURTITRE, display: "block" }}>Nos implantations</span>
+              <h2 style={TITRE}>{villes.titre}</h2>
+            </span>
+          }
+          resume={villes.hubs.map((hub) => hub.hub).join(" · ")}
+        >
+          <p style={CHAPEAU}>{villes.chapeau}</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(340px,1fr))", gap: 14 }}>
+            {villes.hubs.map((hub) => (
+              <div key={hub.href} style={CARTE_HUB}>
+                <Link href={hub.href} prefetch={false} className={styles.hub} style={LIEN_HUB}>
+                  <span>
+                    <span
+                      style={{
+                        display: "block",
+                        font: "600 11px var(--fb)",
+                        letterSpacing: ".13em",
+                        textTransform: "uppercase",
+                        color: "#ff7c3c",
+                        marginBottom: 4,
+                      }}
+                    >
+                      Hub
+                    </span>
+                    <span style={{ font: "600 20px/1.2 var(--ft)", letterSpacing: "-.025em" }}>{hub.hub}</span>
                   </span>
-                  <span style={{ font: "600 20px/1.2 var(--ft)", letterSpacing: "-.025em" }}>{hub.hub}</span>
-                </span>
-                <span aria-hidden="true" style={FLECHE}>
-                  →
-                </span>
-              </Link>
-              {hub.zones?.length ? (
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, padding: "6px 6px 4px" }}>
-                  {hub.zones.map((zone) => (
-                    <Link key={zone.href} href={zone.href} prefetch={false} className={styles.zone} style={ZONE}>
-                      {zone.libelle}
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          ))}
-        </div>
+                  <span aria-hidden="true" style={FLECHE}>
+                    →
+                  </span>
+                </Link>
+                {hub.zones?.length ? (
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6, padding: "6px 6px 4px" }}>
+                    {hub.zones.map((zone) => (
+                      <Link key={zone.href} href={zone.href} prefetch={false} className={styles.zone} style={ZONE}>
+                        {zone.libelle}
+                      </Link>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            ))}
+          </div>
+        </SectionPliableMobile>
 
         <div style={{ marginTop: 56 }}>
           <div
