@@ -251,6 +251,59 @@ function controle(page: Page, htmlBrut: string, css = CSS): string[] {
   for (const cle of ["hub", "zone", "ville"])
     if (!SOURCE_VILLES.includes(`className={styles.${cle}}`)) e.push(`survol « ${cle} » non posé dans NosVilles.tsx`);
 
+  /* ------------------------------------------------- LE FOCUS CLAVIER, 2.4.7
+     POURQUOI CETTE VÉRIFICATION EXISTE. Le 12/10, l'anneau de focus de cette
+     page était tracé en `--acc` (#ff7c3c) : 2,29:1 sur la carte crème et
+     2,56:1 sur blanc, sous les 3:1 qu'exige le critère 1.4.11 de la WCAG pour
+     un composant d'interface. Corrigé en `--ink` (#1c1b19), soit 15,4:1 et
+     17,2:1, mesuré.
+
+     MAIS LA CORRECTION N'ÉTAIT PROTÉGÉE PAR AUCUNE PORTE, et un relecteur
+     adverse l'a dit avant moi : « une future passe sur ce module CSS pourrait
+     la faire disparaître sans que rien ne le signale ». C'est exactement le
+     risque que ce fichier décrit lui-même pour la densité. La voici tenue.
+
+     CE QUE LA PORTE NE PEUT PAS FAIRE, et il faut le savoir : elle lit la
+     RÈGLE, pas le pixel. Vérifier qu'un anneau se voit vraiment demande un
+     navigateur avec une fenêtre, un vrai appui sur la touche de tabulation, et
+     la pseudo-classe `:focus-visible` qui ne se déclenche PAS sur un focus
+     donné par script. Le volet de navigateur de la session du 12/10 rendait
+     une fenêtre de 0 par 0 : la mesure au pixel reste donc à faire. Ce qui est
+     prouvé, et qui ne l'était pas, c'est que la règle est là, qu'elle couvre
+     les quatre cibles, et qu'elle compile (relevé dans le CSS servi en
+     production : `:is(.nosVilles summary:focus-visible, .hub:focus-visible,
+     .zone:focus-visible, .ville:focus-visible){outline-color:var(--ink)}`). */
+  const CIBLES_FOCUS = [
+    ".nosVilles :global(summary:focus-visible)",
+    ".hub:focus-visible",
+    ".zone:focus-visible",
+    ".ville:focus-visible",
+  ];
+  /* UNE SEULE RÈGLE D'ANNEAU, et on l'exige. Ancrer la lecture sur la première
+     occurrence de `outline-color` suffisait tant qu'il n'y en avait qu'une ;
+     une seconde, ajoutée plus haut dans le fichier, ferait lire le mauvais
+     bloc et la porte deviendrait muette sans rien dire. */
+  const occurrencesAnneau = (css.match(/outline-color/g) ?? []).length;
+  if (occurrencesAnneau !== 1) {
+    e.push(
+      `focus clavier : ${occurrencesAnneau} règle(s) « outline-color » dans le module, ` +
+        "il en faut exactement une pour que ce contrôle sache laquelle lire",
+    );
+  }
+  const iFocus = css.indexOf("outline-color");
+  const blocFocus = iFocus < 0 ? "" : css.slice(Math.max(0, css.lastIndexOf("}", iFocus) + 1), css.indexOf("}", iFocus) + 1);
+  if (!blocFocus.includes("var(--ink)")) {
+    e.push(
+      "focus clavier : l'anneau n'est plus tracé en « var(--ink) ». En « var(--acc) » " +
+        "il tombe à 2,29:1 sur la carte crème, sous les 3:1 du critère 1.4.11 de la WCAG",
+    );
+  }
+  for (const cible of CIBLES_FOCUS) {
+    if (!blocFocus.includes(cible)) {
+      e.push(`focus clavier : « ${cible} » a quitté la règle d'anneau (PageImplantations.module.css)`);
+    }
+  }
+
   /* LES QUESTIONS DE LA FOIRE AUX QUESTIONS, ET ELLES SEULES. Ce relevé
      prenait TOUS les `<details>` de la page, et le 09/10 au soir le motif
      « Blocs communs (pliables) » de la maquette mobile en a ajouté un, qui
@@ -322,6 +375,17 @@ const ALTERATIONS: [string, Page, RegExp, Retouche?][] = [
   ["une apostrophe redressée", altere((p) => (p.contenu.formulaireHeroMention = "Rappel dans l'heure")), /littéral différent/],
   ["une photo devinée", altere((p) => { const r = sections(p).find((x) => x.type === "preuves"); if (r?.type === "preuves") r.preuves[0].photo = "/assets/web/x-tech-portrait.jpg"; }), /photos des références/],
   ["un survol perdu", page, /« border-color: #ff7c3c » absent/, (x) => ({ ...x, css: x.css.replace("border-color: #ff7c3c", "") })],
+  /* L'ANNEAU DE FOCUS REPASSÉ EN ORANGE, la régression exacte du 12/10. */
+  ["le focus retombé sous AA", page, /l'anneau n'est plus tracé/, (x) => ({ ...x, css: x.css.replace("outline-color: var(--ink)", "outline-color: var(--acc)") })],
+  /* UNE CIBLE SORTIE DE LA RÈGLE : les pastilles de bassin perdraient leur
+     anneau lisible sans que la couleur change, défaut plus discret encore. */
+  /* LE TÉMOIN VISE LA BONNE OCCURRENCE. Le module porte DEUX
+     `.ville:focus-visible` : une règle de couleur de texte en haut du fichier,
+     et la règle d'anneau en bas. Ma première version remplaçait la première
+     trouvée, donc elle n'exerçait pas le contrôle et la porte se déclarait
+     aveugle. Le motif inclut la déclaration qui suit, ce qui ne laisse aucune
+     ambiguïté. */
+  ["une cible de focus perdue", page, /« \.ville:focus-visible » a quitté/, (x) => ({ ...x, css: x.css.replace(".ville:focus-visible {\n  outline-color", ".villeX:focus-visible {\n  outline-color") })],
 ];
 
 let aveugle = false;
