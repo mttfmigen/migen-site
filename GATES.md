@@ -183,7 +183,7 @@ Dernière relecture : 12/10.
       EXPECT: 0 redirections sur 0 fiches ET 0 redirections dans 0 fichiers SQL
 
 ### G25 — Menu, bloc Ressources : « Fiches métier » renvoie vers le recrutement
-- [ ] EN COURS, agent dédié
+- [x] FAIT. Faute de portage confirmée : dans la maquette les trois rangées « par format » ouvrent sa bibliothèque filtrée, pas son écran de recrutement. Les 5 familles réelles figurent au panneau, avec leur vrai compte. Vérifié dans le navigateur en production.
       MESURE : `components/site/entete-donnees.ts`, `RES_FORMATS` : l'entrée
       « 07 Fiches métier » pointe sur `/carriere/`. Deux entrées portent le même
       numéro 07. Le menu n'expose que 3 des 5 familles réelles de
@@ -191,44 +191,44 @@ Dernière relecture : 12/10.
       blancs, process).
 
 ### G26 — La page /carriere/ devrait s'appeler « Rejoindre migen »
-- [ ] EN COURS, agent dédié
+- [x] FAIT. Libellé du menu « Rejoindre migen », vérifié en production dans la barre de navigation.
       MESURE : la maquette écrit « Rejoindre migen© » dans son écran de
       recrutement, donc la demande va dans le sens de la maquette.
 
 ### G27 — Menu : le « 23 RESSOURCES » renvoie vers le guide de maintenance industrielle
-- [ ] EN COURS, agent dédié
+- [x] FAIT. Sa cible était déjà bonne ; c'est le chiffre qui mentait, 23 comptant la bibliothèque de la maquette et non le site. Affiche « Les 35 ressources », vérifié dans le navigateur.
       MESURE : je n'ai pas localisé l'élément par un grep de « 23 » dans
       l'en-tête servi : c'est très probablement un compteur CALCULÉ. Le compte de
       23 est à confronter aux 41 pages réelles sous `/ressources/`.
 
 ### G28 — Fiche métier : problème avec les titres H2 et la disposition de la page
-- [ ] EN COURS, agent dédié
+- [x] FAIT. 20 titres en double, 140 titres sur 153 à la taille du téléphone sur grand écran, 45 largeurs perdues, 32 cellules aplaties, 117 arrêts de tabulation muets. Tous à zéro. Porte dédiée, témoin 4/4 plus une page conforme acceptée.
       PISTE DONNÉE À L'AGENT : ma première version des bascules mobiles mettait
       des `<span>` habillés au lieu de vrais `<h2>` sur ces 13 pages. Corrigé,
       mais à revérifier page par page.
 
 ### G29 — Fiche pratique : mal agencée, gros blocs « pourquoi ces fiches existent », aucune cohérence
-- [ ] EN COURS, agent dédié
+- [x] FAIT. Cause mesurée et non devinée : le repli coûtait 29 à 33 px par partie sur ce gabarit. 192 des 196 sections sont à 0 px d'écart de leur capture. Porte dédiée, témoin 6/6.
 
 ### G30 — /nous-connaitre/ : toujours la même photo, blocs « Notre force » et « le premier client »
-- [ ] EN COURS, agent dédié
+- [x] FAIT. Le doublon venait de la maquette, ses deux emplacements pointant le même fichier alors que leurs descriptions diffèrent. Chaque bloc a la sienne, choisie sur son propre texte. Porte dédiée, témoin 8/8.
       PISTE : quatre images de `/assets/web/` écrites en dur couvraient chacune
       quatre pages de hub. Même famille de cause que G10.
 
 ### G31 — /rse/ : changer la photo du cas concret
-- [ ] EN COURS, agent dédié
+- [x] FAIT. L'ancienne montrait une armoire NEUVE en montage pour un cas qui parle d'une ligne de 1998 remise en service.
 
 ### G32 — Le bloc « Ce que nous vous transmettons » est mal agencé
-- [ ] EN COURS, agent dédié
+- [x] FAIT, et ce n'était pas un défaut d'agencement. Mesuré à neuf largeurs contre la maquette vivante : remplissage, largeur, alignement, espacements et position de chaque cellule identiques. Le seul écart est une phrase raccourcie par l'interdit de délai chiffré.
 
 ### G33 — /implantations/ : le bloc « sept hubs, 74 bassins » est mal agencé, trop gros, pas assez visuel
-- [ ] NON FAIT
+- [x] FAIT. Section de 1965 à 1424 px à 1440 (moins 28 %), et de 2,67 à 0,41 écran au téléphone. Le vrai pâté était « Au-delà des hubs », 1977 px à lui seul. Notre rendu était CONFORME à la capture (+0,9 %) : c'est donc ton arbitrage contre ta maquette, et il est déclaré comme tel.
 
 ### G34 — /implantations/ : même reproche pour le bloc « au delà des hubs »
-- [ ] NON FAIT
+- [x] FAIT, même passage que G33. Les onze cartes bordées deviennent un annuaire en cinq colonnes.
 
 ### G35 — /offres/ : « c'est que des photos avec des avions, on doit voir du technicien »
-- [ ] EN COURS, atelier dédié
+- [~] PLAN PRÊT, PAS ENCORE APPLIQUÉ. 385 photos jugées image ouverte, 64 disqualifiées, trois sceptiques en ont annulé 20 : 44 restent interdites sur une page commerciale. Vivier propre de 341. Les plans de réattribution sont rendus par famille de pages.
       MESURE : sur les 17 photos de contenu de /offres/, 5 sont de
       l'aéronautique et 2 de la menuiserie. Les 7 portent TOUTES le thème
       `technicien` au registre, donc aucun sélecteur demandant « un technicien »
@@ -250,7 +250,7 @@ Dernière relecture : 12/10.
       Il n'y liste qu'UNE prestation, avec un renvoi vers un guide.
 
 ### G37 — /offres/bureau-etudes/ : la photo du bloc problématique est mal choisie
-- [ ] NON FAIT, même atelier que G35
+- [~] PLAN PRÊT, PAS ENCORE APPLIQUÉ. 385 photos jugées image ouverte, 64 disqualifiées, trois sceptiques en ont annulé 20 : 44 restent interdites sur une page commerciale. Vivier propre de 341. Les plans de réattribution sont rendus par famille de pages.
 
 ### G38 — /offres/bureau-etudes/ : le bloc d'appel toujours pas corrigé
 - [ ] NON FAIT, c'est G14 qu'il rouvre explicitement : « tu n'as toujours pas
@@ -271,7 +271,12 @@ Dernière relecture : 12/10.
       TOUTES les prestations regroupées sous l'offre, ou ne pas exister.
 
 ### G41 — /travaux-industriels/ : retirer la phrase du premier héros
-- [ ] NON FAIT
+- [x] FAIT. Retirée du champ `mention` de la fiche `/travaux-industriels/`, et
+      de là seulement : deux autres pages portent la même phrase et ne sont pas
+      touchées, `travaux-industriels-transfert-industriel` et
+      `offres-chantier-transfert-de-production`.
+      CHECK: curl -s https://migen-site.vercel.app/travaux-industriels/ | grep -c "Nous vous rappelons dans"
+      EXPECT: 0
       « Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à
       18h30. » À retirer du héros de cette page.
 
@@ -296,7 +301,7 @@ Dernière relecture : 12/10.
 - [ ] NON FAIT
 
 ### G45 — L'image du bloc « problématique » est partout la même sur les pages expertises
-- [ ] EN COURS, atelier photos
+- [~] PLAN PRÊT, PAS ENCORE APPLIQUÉ. 385 photos jugées image ouverte, 64 disqualifiées, trois sceptiques en ont annulé 20 : 44 restent interdites sur une page commerciale. Vivier propre de 341. Les plans de réattribution sont rendus par famille de pages.
       Même famille que G35.
 
 ### G46 — /expertises/electromecanique/ : le bloc d'astreinte ne va pas
@@ -420,7 +425,7 @@ Dernière relecture : 12/10.
 - [ ] Mentions légales.
 
 ### B4 — 38 accords de logo
-- [ ] Les logos clients affichés sans accord écrit.
+- [x] LEVÉ le 12/10 : Mehdi confirme que les accords écrits sont obtenus.
 
 ---
 
