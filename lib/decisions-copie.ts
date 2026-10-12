@@ -355,6 +355,13 @@ const NOUS_REJOINDRE: Regle[] = [
        `/carriere/technicien-de-maintenance/`, et « Technicien en résidence »,
        qui est le nom de l'offre `/offres/residence/` : renommer une carte du
        cocon la ferait mentir sur la page qu'elle désigne ;
+       SEUL DOUTE DE CETTE LISTE, à faire trancher par Mehdi : le chapô de
+       `/travaux-industriels/` écrit « Des techniciens de maintenance qui
+       démontent, lèvent, remontent et rebranchent » et sa carte 03 « essayé
+       par des techniciens de maintenance ». C'est le PROFIL DÉPLOYÉ, donc dans
+       la cible de sa demande, mais sous le nom exact du métier, et « experts
+       techniques de maintenance » se dit mal tandis qu'« experts techniques »
+       seul perd la spécialité. Signalé, pas touché : c'est sa copie.
      · les CITATIONS D'ÉTUDES DE CAS (« Six techniciens multidisciplinaires »,
        « Un technicien électromécanicien mobilisé six mois ») : le même texte
        vit sur la page `/preuves/` visée, hors de cette portée, et les deux se
@@ -456,6 +463,34 @@ const EXPERT_TECHNIQUE: Regle[] = [
   [/\bpar des techniciens qui savent\b/g, () => "par des experts techniques qui savent"],
   [/\bdes techniciens qui dépannent\b/g, () => "des experts techniques qui dépannent"],
   [/\b([Cc])omme nos techniciens\b/g, (_t, c) => `${c}omme nos experts techniques`],
+
+  /* LA MÉTA-DESCRIPTION, la seule occurrence QUE LA CAPTURE NE PORTE PAS, et
+     c'est pour cela qu'elle avait survécu à la première passe du 12/10.
+
+     TROUVÉE EN PRODUCTION le 12/10 : `/bureau-etudes/mise-en-conformite-machine/`
+     servait « …et qui réalise les travaux. Techniciens évalués, rappel dans
+     l'heure. » dans son `<meta name="description">`. « Techniciens évalués »
+     est l'affirmation de SÉLECTION, exactement celle que Mehdi vise, et c'est
+     une formule que le paquet de Claude Design réemploie sur tout le site
+     (`design_handoff_migen_site/regles/exemples/`, 6 fichiers) : c'est donc un
+     écart assumé de plus, pas une coquille.
+
+     POURQUOI AUCUNE DES DEUX VÉRIFICATIONS NE LA VOYAIT, et c'est la leçon :
+       · côté CAPTURE, la maquette ne rend pas ses méta-descriptions dans le
+         HTML figé, la phrase n'existe donc pas dans `maquette/rendu/` ;
+       · côté DONNÉE, la porte n'exige qu'un POINT FIXE
+         (`appliqueDecisions(s, fiche) === s`). Une règle ABSENTE est un point
+         fixe parfait : la fiche passait, verte, avec « Techniciens évalués ».
+     Un relevé des 10 pages EN PRODUCTION l'a trouvée ; aucune porte du dépôt
+     ne pouvait le faire. La règle posée ici referme le trou dans ce sens-là :
+     la phrase remise dans une des dix fiches rend désormais la porte rouge.
+
+     ELLE NE CORRIGE PAS LE RENDU À ELLE SEULE : `lib/seo/metadonnees.ts` (l.43)
+     appelle `copieConforme(seo.meta_description)` SANS second argument, donc
+     sans clé de page, donc les règles de portée y sont inertes par
+     construction. La fiche porte la décision ; la règle garde la fiche. */
+  [/\bTechniciens évalués\b/g, () => "Experts techniques évalués"],
+  [/\btechniciens évalués\b/g, () => "experts techniques évalués"],
 ];
 
 const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION, ...NOTAMMENT, ...ASTREINTE, ...NOUS_REJOINDRE];

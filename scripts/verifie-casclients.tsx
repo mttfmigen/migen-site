@@ -30,6 +30,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import PageCasClients from "@/components/site/casclients/PageCasClients";
 import { vuesPreuves } from "@/components/site/casclients/vues-preuves";
+import { appliqueDecisions } from "@/lib/decisions-copie";
 import {
   estCasClients,
   estHubPreuves,
@@ -37,7 +38,19 @@ import {
   type ContenuHubPreuves,
 } from "@/types/casclients";
 
-const CHEMIN = "supabase/import/casclients-analyse.json";
+/**
+ * LE FICHIER QUE LE SITE SERT VRAIMENT, et non celui qu'on avait sous la main.
+ *
+ * CE QUI N'ALLAIT PAS, trouvé le 12/10 : cette porte lisait
+ * `supabase/import/casclients-analyse.json`, daté du 8 octobre, dont elle était
+ * avec un script de découpe le SEUL lecteur du dépôt. Le site, lui, lit
+ * `supabase/import/gabarits-maquette/preuves.json` par `lib/contenu.ts`.
+ *
+ * Elle mesurait donc une chose et en garantissait une autre. C'est la pire
+ * forme d'aveuglement d'une porte : elle passe au vert sur un fichier mort
+ * pendant que la page servie dérive, et son vert vaut moins que son absence.
+ */
+const CHEMIN = "supabase/import/gabarits-maquette/preuves.json";
 
 interface Analyse {
   url: string;
@@ -178,15 +191,29 @@ const DECLARATIONS_JUSTIFIEES = new Set([
   "bottom:0", // next/image, l'équivalent de `inset:0` de la capture
   "-webkit-backdrop-filter:blur(16px)", // écrit par la maquette, que Chrome ne resérialise pas
   "padding-top:62px", // l'enveloppe de la capture, portée par <main>
+  /* LES COULEURS DE LA CATÉGORIE « Alliances stratégiques ».
+     Conséquence directe de l'arbitrage du 12/10 : le cas Norvège prend la
+     première des trois cartes à photo pleine, et c'est donc SA catégorie qui
+     s'affiche en tête, avec sa teinte. La capture, elle, ouvre sur
+     « Maintenance en continu ». Ces deux déclarations ne sont pas des
+     inventions du rendu, ce sont celles de la palette, à une autre place. */
+  "color:rgb(125,51,9)",
+  "color:rgb(115,115,115)",
+  /* `padding:0` vient de la même carte : la capture sérialise ses quatre côtés
+     séparément là où le rendu écrit la forme courte. Même valeur, autre
+     écriture, et le relevé compare des déclarations et non des pixels. */
+  "padding:0",
 ]);
 
 /* -------------------------------------------------------------- les pages */
 
-const analyses = JSON.parse(readFileSync(CHEMIN, "utf8")) as Analyse[];
-assert.equal(analyses.length, 2, "deux pages attendues : /preuves/ et /realisations/");
-const hub = analyses.find((a) => a.url === "/preuves/");
-const realisations = analyses.find((a) => a.url === "/realisations/");
-assert.ok(hub && realisations, "/preuves/ et /realisations/ attendues");
+/* LA FICHE SERVIE EST UN OBJET, pas un tableau de deux pages.
+   L'ancien fichier d'analyse en portait deux, `/preuves/` et `/realisations/`.
+   La seconde N'EST PLUS UNE PAGE : elle répond 301 en production et ne figure
+   pas dans l'index des 248. Vérifier un gabarit sur une adresse qui redirige,
+   c'est garantir quelque chose que personne ne voit. */
+const hub = JSON.parse(readFileSync(CHEMIN, "utf8")) as Analyse;
+assert.equal(hub.url, "/preuves/", `${CHEMIN} ne porte pas /preuves/`);
 
 /* ============================================================== /preuves/ */
 
@@ -252,39 +279,138 @@ const REFORMULATIONS: Record<string, string> = {
   "Maintenir des machines conçues sur mesure": "Maintenir des machines conçues en interne",
 };
 
+/**
+ * LE CORPUS, AVEC LES DÉCISIONS DE COPIE APPLIQUÉES.
+ *
+ * CE QUI MANQUAIT, trouvé le 12/10 : cette porte comparait le contenu servi au
+ * corpus BRUT, sans passer par `lib/decisions-copie.ts`. Elle butait donc sur
+ * « ORTHUS x ECOCEM » contre « Migen Travaux x ECOCEM », alors que ce
+ * remplacement est une décision de Mehdi du 09/10, inscrite et appliquée
+ * partout ailleurs.
+ *
+ * Toutes les autres portes du dépôt passent le texte de la référence par ce
+ * module avant de comparer, pour que la décision soit vérifiée DES DEUX CÔTÉS
+ * au lieu d'être tolérée page par page. Celle-ci ne le faisait pas, et c'est
+ * pour cela qu'elle était rouge sur une décision qui, elle, est bonne.
+ */
 function attenduDuCorpus(): ContenuHubPreuves {
+  const d = (s: string) => appliqueDecisions(s);
   return {
     gabarit: "casclients",
     vue: "hub",
-    accroche: corpus.punch,
-    intro: corpus.intro,
+    accroche: d(corpus.punch),
+    intro: d(corpus.intro),
     categories: corpus.cats.map((c) => ({
-      libelle: maquette.SHORT(c.t),
-      besoin: c.besoin,
+      libelle: d(maquette.SHORT(c.t)),
+      besoin: d(c.besoin),
       cas: c.items.map((it) => ({
-        client: it.client,
-        sujet: REFORMULATIONS[it.subject] ?? it.subject,
-        resume: it.sum,
+        client: d(it.client),
+        sujet: d(REFORMULATIONS[it.subject] ?? it.subject),
+        resume: d(it.sum),
         url: it.url,
       })),
     })),
     recents: Object.keys(corpus.latest),
   };
 }
-assert.deepEqual(contenuHub, attenduDuCorpus(), "/preuves/ : le contenu n'est plus la copie du corpus");
+/**
+ * LE CONTENU EST CELUI DU CORPUS, À UN CHAMP PRÈS ET IL EST DÉCLARÉ.
+ *
+ * `aLaUne` n'existe pas dans le corpus : c'est un marquage que NOUS posons, à
+ * la demande de Mehdi du 12/10, « tu dois également mettre en case mise en
+ * avant celui de Norvège ». Il désigne le cas qui prend la première des trois
+ * cartes à photo pleine.
+ *
+ * On le retire avant la comparaison, et on vérifie SÉPARÉMENT qu'il ne désigne
+ * qu'un seul cas et que ce cas existe. Une tolérance qui se contenterait de
+ * l'ignorer laisserait un marquage se poser n'importe où sans rien dire.
+ */
+const marques = contenuHub.categories.flatMap((c) =>
+  c.cas.filter((x) => (x as { aLaUne?: boolean }).aLaUne).map((x) => x.url),
+);
+assert.ok(
+  marques.length <= 1,
+  `/preuves/ : ${marques.length} cas marqués « aLaUne », un seul peut prendre la première case : ${marques.join(", ")}`,
+);
+const sansMarquage: ContenuHubPreuves = {
+  ...contenuHub,
+  categories: contenuHub.categories.map((c) => ({
+    ...c,
+    cas: c.cas.map((x) => {
+      const { aLaUne: _ignore, ...reste } = x as typeof x & { aLaUne?: boolean };
+      return reste;
+    }),
+  })),
+};
+const attendu = attenduDuCorpus();
+if (JSON.stringify(sansMarquage) !== JSON.stringify(attendu)) {
+  /* Dire OÙ, pas seulement QUE. Un « le contenu n'est plus la copie du
+     corpus » sans chemin oblige le lecteur suivant à refaire le diff. */
+  const chemin = (a: unknown, b: unknown, ou = ""): string => {
+    if (a === b) return "";
+    if (a === null || b === null || typeof a !== "object" || typeof b !== "object") {
+      return `${ou}\n     servi   : ${JSON.stringify(a)?.slice(0, 180)}\n     attendu : ${JSON.stringify(b)?.slice(0, 180)}`;
+    }
+    const ca = a as Record<string, unknown>;
+    const cb = b as Record<string, unknown>;
+    for (const k of [...new Set([...Object.keys(ca), ...Object.keys(cb)])]) {
+      const d = chemin(ca[k], cb[k], `${ou}.${k}`);
+      if (d) return d;
+    }
+    return "";
+  };
+  assert.fail(`/preuves/ : le contenu n'est plus la copie du corpus${chemin(sansMarquage, attendu)}`);
+}
 
 /* --- 2. photos et logos, vue par vue ------------------------------------ */
 
 const vues = vuesPreuves(contenuHub);
 const tousCorpus = corpus.cats.flatMap((c, ci) => c.items.map((it) => ({ ...it, ci })));
-const listesMaquette = [
+/**
+ * L'ORDRE ATTENDU, AVEC LA PROMOTION DU CAS MIS EN AVANT.
+ *
+ * CE QUI MANQUAIT : cette liste était l'ordre BRUT du corpus, alors que le site
+ * fait remonter en tête le cas marqué `aLaUne`, à la demande de Mehdi du 12/10
+ * (« tu dois également mettre en case mise en avant celui de Norvège »). La
+ * porte refusait donc l'arbitrage qu'elle était censée protéger, dès la carte 0
+ * de la vue « Tous ».
+ *
+ * On applique ICI la même règle que `vues-preuves.ts` : le marqué d'abord, les
+ * autres dans leur ordre. L'assertion reste une égalité d'ORDRE COMPLET, elle
+ * continue donc d'attraper une carte manquante, en trop ou déplacée.
+ *
+ * ET LE PRIX DE CETTE PROMOTION EST MESURABLE : elle décale les autres d'un
+ * rang, donc le troisième de la capture perd sa grande case. C'est JTEKT. Ce
+ * n'est pas une décision de la porte, et elle ne la masque pas : elle la rend
+ * visible en l'exigeant.
+ */
+const promu = <T extends { url: string }>(liste: readonly T[]): T[] => {
+  const marques = new Set(
+    contenuHub.categories.flatMap((c) =>
+      c.cas.filter((x) => (x as { aLaUne?: boolean }).aLaUne).map((x) => x.url),
+    ),
+  );
+  if (marques.size === 0) return [...liste];
+  return [...liste.filter((x) => marques.has(x.url)), ...liste.filter((x) => !marques.has(x.url))];
+};
+/* L'ORDRE DU CORPUS, pour l'attribution des photos. */
+const listesCorpus = [
   tousCorpus,
   ...corpus.cats.map((_, ci) => tousCorpus.filter((x) => x.ci === ci)),
 ];
-assert.equal(vues.length, listesMaquette.length, "une vue par onglet");
+assert.equal(vues.length, listesCorpus.length, "une vue par onglet");
 const nomFichier = (p: string) => p.split("/").pop();
-for (const [v, liste] of listesMaquette.entries()) {
-  const images = maquette.pvAssign(liste);
+for (const [v, ordreCorpus] of listesCorpus.entries()) {
+  /* LA PHOTO EST ATTRIBUÉE SUR L'ORDRE DU CORPUS, PUIS LA CARTE REMONTE AVEC
+     ELLE. C'est ce que fait le site, et son commentaire le dit : « remonter une
+     carte avant ce calcul aurait redistribué les photos de toute la vue ; ici
+     chaque carte emporte la sienne, seule sa place change ». Ma première
+     version promouvait AVANT d'appeler `pvAssign`, et la porte refusait alors
+     la photo de GLS : elle mesurait une règle que le site n'applique pas. */
+  const imagesCorpus = maquette.pvAssign(ordreCorpus);
+  const appariees = ordreCorpus.map((x, i) => ({ ...x, photoAttendue: imagesCorpus[i] }));
+  const liste = promu(appariees);
+  const images = liste.map((x) => x.photoAttendue);
   const cartes = [...vues[v].une, ...vues[v].grille];
   assert.equal(cartes.length, liste.length, `vue ${vues[v].libelle} : nombre de cartes`);
   for (const [i, carte] of cartes.entries()) {
@@ -309,7 +435,42 @@ const rendu = renderToStaticMarkup(
   <PageCasClients titre={hub.titre_h1 ?? ""} contenu={contenuHub} />,
 );
 
-const MOTS_CAPTURE = mots(BLOC);
+/**
+ * LES MOTS ATTENDUS, AVEC L'ARBITRAGE DE L'ONGLET OUVERT.
+ *
+ * La capture ouvre le hub sur la PREMIÈRE CATÉGORIE et montre donc son besoin.
+ * Mehdi a tranché le 12/10 : « c'est toujours sur la capsule maintenance en
+ * continu et pas sur Tous, ça devrait être sur tous de base ». Le site ouvre
+ * donc sur « Tous », et c'est le besoin de « Tous » qui s'affiche.
+ *
+ * C'est un ÉCART ASSUMÉ, pas un défaut de portage, et il se déclare ici parce
+ * qu'il ne s'agit pas d'une substitution de mot mais d'une SÉLECTION
+ * différente : `lib/decisions-copie.ts` ne sait pas l'exprimer.
+ *
+ * On substitue donc, dans les mots attendus, le besoin de la première
+ * catégorie par celui de la vue « Tous ». La comparaison reste mot pour mot et
+ * dans l'ordre sur tout le reste : elle continue d'attraper n'importe quelle
+ * autre dérive.
+ */
+const vuesPourAttente = vuesPreuves(contenuHub);
+/* Deux textes suivent l'onglet ouvert : la phrase du besoin et le compte
+   d'études de cas. La capture porte ceux de la première catégorie, le site
+   ceux de « Tous ». */
+const SUBSTITUTIONS: readonly [string, string][] = [
+  [appliqueDecisions(corpus.cats[0].besoin), vuesPourAttente[0].besoin],
+  [vuesPourAttente[1].compte, vuesPourAttente[0].compte],
+];
+let BLOC_ATTENDU = BLOC;
+for (const [deLaCapture, duSite] of SUBSTITUTIONS) {
+  assert.ok(
+    deLaCapture && BLOC.includes(deLaCapture),
+    `l'écart du 12/10 n'a plus d'objet : « ${deLaCapture} » a quitté la capture. ` +
+      "Retirer cette substitution, sinon la porte garde une tolérance qui ne " +
+      "protège plus rien.",
+  );
+  BLOC_ATTENDU = BLOC_ATTENDU.replace(deLaCapture, duSite);
+}
+const MOTS_CAPTURE = mots(BLOC_ATTENDU);
 const STYLES_CAPTURE = declarations(BLOC);
 
 function ecartsStyle(html: string): { manquantes: string[]; inventees: string[] } {
@@ -334,7 +495,52 @@ const copie = structuredClone(contenuHub);
 copie.categories[0].cas[0].sujet += ".";
 assert.throws(() => assert.deepEqual(copie, attenduDuCorpus()), "le contrôle de donnée ne voit pas une faute");
 
-const ecarts = ecartsTexte(MOTS_CAPTURE, mots(rendu));
+/**
+ * LA COMPARAISON MOT POUR MOT S'ARRÊTE AU DÉBUT DES CARTES, et c'est un choix
+ * qu'il faut justifier plutôt que subir.
+ *
+ * POURQUOI. La capture ouvre le hub sur la PREMIÈRE CATÉGORIE et montre donc
+ * ses 24 cartes. Mehdi a tranché le 12/10 : le site ouvre sur « Tous » et en
+ * montre 41. Ce n'est pas une substitution de mots, c'est un AUTRE JEU DE
+ * DONNÉES : comparer les deux listes mot pour mot n'a aucun sens et produirait
+ * un écart à chaque carte.
+ *
+ * CE QUI RESTE COMPARÉ MOT POUR MOT : tout l'habillage, c'est-à-dire le titre,
+ * le chapô, la phrase du besoin et la barre d'onglets avec ses comptes. C'est
+ * là que vit la copie du client.
+ *
+ * CE QUI PREND LE RELAIS SUR LES CARTES, et c'est plus fort qu'une comparaison
+ * de texte : les assertions d'ordre, de photo et de logo ci-dessus vérifient
+ * CHAQUE carte de CHAQUE vue, une par une, contre le corpus et contre les
+ * règles de la maquette. Une carte manquante, en trop, déplacée, ou qui change
+ * de photo y tombe.
+ */
+/* LA COUPE SE FAIT AU COMPTE D'ÉTUDES DE CAS, dernier élément de l'habillage.
+   Premier essai : couper à « Récent », la pastille de la première carte. Trop
+   tard : la CATÉGORIE de cette carte la précède, et elle a changé puisque la
+   Norvège est remontée en tête (« Alliances stratégiques » au lieu de
+   « Maintenance en continu »). Le compte, lui, ferme l'habillage. */
+const FIN_DE_L_HABILLAGE = vuesPourAttente[0].compte.split(" ");
+const coupe = (liste: string[]) => {
+  for (let i = 0; i <= liste.length - FIN_DE_L_HABILLAGE.length; i += 1) {
+    if (FIN_DE_L_HABILLAGE.every((mot, j) => liste[i + j] === mot)) {
+      return liste.slice(0, i + FIN_DE_L_HABILLAGE.length);
+    }
+  }
+  return liste;
+};
+const motsHabillage = coupe(MOTS_CAPTURE);
+assert.ok(
+  motsHabillage.length < MOTS_CAPTURE.length,
+  `le repère « ${vuesPourAttente[0].compte} » a quitté la capture : la coupe ne ` +
+    "coupe plus rien et la comparaison porterait de nouveau sur les cartes",
+);
+assert.ok(
+  motsHabillage.length > 40,
+  `l'habillage comparé est tombé à ${motsHabillage.length} mots : la coupe ` +
+    "mord trop tôt et la porte ne vérifie presque plus rien",
+);
+const ecarts = ecartsTexte(motsHabillage, coupe(mots(rendu)));
 assert.deepEqual(ecarts, [], `/preuves/ : le texte visible n'est pas celui de la capture\n${ecarts.join("\n")}`);
 const styles = ecartsStyle(rendu);
 assert.deepEqual(styles.manquantes, [], "/preuves/ : déclarations de la capture absentes du rendu");
@@ -364,53 +570,14 @@ console.log(
     `${vues.length} vues conformes à la logique de la maquette, ${urlsHub.length} fiches liées. Fautes injectées : toutes vues.`,
 );
 
-/* ========================================================= /realisations/ */
+/* ================================================ /realisations/ RETIRÉE
 
-{
-  const ou = realisations.url;
-  const contenu = realisations.contenu;
-  assert.ok(estCasClients(contenu) && !estHubPreuves(contenu), `${ou} : gabarit historique attendu`);
-  const inventaire = new Map(
-    (
-      JSON.parse(readFileSync("docs/urls-site-actuel.json", "utf8")) as { url: string; h1: string }[]
-    ).map((p) => [p.url, p.h1]),
-  );
-  assert.ok(inventaire.has(ou), `${ou} : absent de l'inventaire des URL`);
-  assert.ok(estChaine(contenu.chapeau), `${ou}.chapeau : chaîne non vide attendue`);
+   Cette section vérifiait le gabarit historique de `/realisations/`. Mesuré le
+   12/10 : l'adresse répond 301 en production et ne figure pas dans l'index des
+   248 pages. Ce n'est plus une page, c'est une redirection.
 
-  const chiffres = contenu.chiffres;
-  assert.ok(chiffres, `${ou}.chiffres : attendu`);
-  assert.ok(estChaine(chiffres.principal.valeur), `${ou}.chiffres.principal.valeur`);
-  assert.ok(estChaine(chiffres.principal.libelle), `${ou}.chiffres.principal.libelle`);
-  assert.ok((chiffres.cartes ?? []).length <= 2, `${ou}.chiffres.cartes : deux au plus`);
-  assert.equal((chiffres.duo ?? []).length, 2, `${ou}.chiffres.duo : deux chiffres attendus`);
-
-  const chantiers = contenu.chantiers ?? [];
-  assert.ok(chantiers.length > 0, `${ou}.chantiers : au moins un`);
-  for (const [i, ch] of chantiers.entries()) {
-    const o = `${ou}.chantiers[${i}]`;
-    assert.ok(estChaine(ch.client) && estChaine(ch.titre), `${o} : client et titre`);
-    if (ch.href !== undefined) {
-      assert.ok(fiches.has(ch.href), `${o}.href : ${ch.href} n'est pas une étude de cas de l'index`);
-    }
-    if (ch.image !== undefined) {
-      assert.ok(existsSync(`public${ch.image}`), `${o}.image : public${ch.image} introuvable`);
-    }
-  }
-  if (contenu.titreChantiers === undefined) {
-    assert.equal(chantiers.length, 6, `${ou} : six chantiers, ou un titreChantiers corrigé`);
-  }
-  for (const s of chaines(contenu)) {
-    assert.ok(!INTERDITS.test(s), `${ou} : interdit de copie dans « ${s} »`);
-    assert.ok(!DELAI_CHIFFRE.test(s), `${ou} : délai chiffré dans « ${s} »`);
-  }
-  const html = renderToStaticMarkup(
-    <PageCasClients titre={inventaire.get(ou) ?? ou} contenu={contenu} />,
-  );
-  assert.equal((html.match(/<h1/g) ?? []).length, 1, `${ou} : un seul H1`);
-  assert.ok(html.includes('href="#cas"') && html.includes('id="cas"'), `${ou} : ancre des chantiers`);
-  assert.ok(!html.includes("Preuves : nos réalisations"), `${ou} : le hub ne s'invite pas ici`);
-  console.log(`${ou} : gabarit historique, ${chantiers.length} chantiers, contrat respecté.`);
-}
+   Une porte qui vérifie une page qui n'existe plus ne protège rien et donne un
+   vert trompeur. Elle est retirée plutôt que neutralisée : une section mise en
+   commentaire se réveille un jour sans que personne ne sache pourquoi. */
 
 console.log("Contrôle CAS CLIENTS : passé.");
