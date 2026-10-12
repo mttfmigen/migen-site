@@ -32,6 +32,38 @@ import styles from "./PageOffre.module.css";
  *
  * Le résumé est tronqué à une ligne, comme la capture (`-webkit-line-clamp: 1`
  * sur le bloc 870) : le texte entier reste dans le DOM.
+ *
+ * ---------------------------------------------------------------------------
+ * CE QUE CE BLOC DOIT LISTER, tranché par Mehdi et mesuré le 12/10
+ * ---------------------------------------------------------------------------
+ *
+ * Il l'a signalé QUATRE FOIS, c'est le défaut le plus rapporté du site :
+ * « pas assez complet », « ce bloc il y a pas toutes les prestations »
+ * (`/offres/bureau-etudes/`), « sa sert a rien ce bloc » (`/offres/zero-arret/`),
+ * « il manque des prestations sur ce bloc » (`/travaux-industriels/`).
+ *
+ * Sa décision : un bloc intitulé « Les prestations regroupées ici » porte
+ * TOUTES les prestations regroupées sous l'offre, ou il n'existe pas. Un bloc
+ * qui annonce « les prestations » et en liste une mentirait sur son intitulé.
+ *
+ * ET C'EST UN ARBITRAGE CONTRE SA PROPRE MAQUETTE, pas un défaut de portage :
+ * mesuré le 12/10, les quatre captures qui portent la section en listent
+ * exactement autant que le site en production (2, 1, 2, 2). La maquette
+ * n'y range que les offres que son routeur REDIRIGE (`remapOffer`), pas les
+ * pages filles de l'offre. Mehdi élargit la règle aux pages filles, qui
+ * existent vraiment, répondent 200 et n'étaient listées nulle part ailleurs
+ * sur la page (`autres` ne pointe que vers les offres sœurs).
+ *
+ * Le compte attendu se déduit donc de l'arborescence, et la porte
+ * `scripts/verifie-prestations-regroupees.mjs` le recalcule à chaque passage :
+ * offres absorbées par `remapOffer` + pages filles de l'offre et de chacune
+ * de ces offres absorbées.
+ *
+ * La carte d'une prestation ajoutée reprend l'intitulé (son `h1`) et
+ * l'accroche de la PAGE CIBLE, telle qu'elle les écrit en production. Aucune
+ * accroche n'est rédigée ici, aucune n'est reprise d'un corpus que la page
+ * cible ne sert pas : les quatre pages filles de `/travaux-industriels/`
+ * n'écrivant aucune accroche, leurs cartes n'en portent pas.
  */
 
 export interface ProprietesPrestationsRegroupees {
@@ -416,7 +448,13 @@ export default function PrestationsRegroupees({
                 <span style={BADGE}>{numerote(rang)}</span>
                 <span style={{ minWidth: 0 }}>
                   <span style={INTITULE}>{prestation.titre}</span>
-                  <span style={RESUME_TEXTE}>{prestation.resume}</span>
+                  {/* Pas de ligne vide quand la page cible n'écrit aucune
+                      accroche : un `-webkit-line-clamp` sur une chaîne vide
+                      laisserait un blanc sous l'intitulé. Voir
+                      `PrestationRegroupee.resume`. */}
+                  {prestation.resume ? (
+                    <span style={RESUME_TEXTE}>{prestation.resume}</span>
+                  ) : null}
                 </span>
                 <span
                   aria-hidden="true"

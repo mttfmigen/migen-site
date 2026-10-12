@@ -27,7 +27,7 @@
       }
     ],
     "logo": "/assets/clients/mq-e93a6ad5abf7.svg",
-    "photoHero": "/assets/photos/env-inspection-auto-avec-equipe.jpg",
+    "photoHero": "/assets/photos/il-technicien-maintenance-photo-8-1600.jpg",
     "chiffres": [
       {
         "libelle": "Nature des travaux",
@@ -187,13 +187,13 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/il-technicien-maintenance-camion-1600.jpg"
+        "photo": "/assets/photos/env-promenade-des-ingenieurs-a-la-raffinerie.jpg"
       },
       {
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/il-technicien-maintenance-jan-9-2026-1-1600.jpg"
+        "photo": "/assets/photos/meca-tour-conventionnel-senior.jpg"
       },
       {
         "surtitre": "Secteur",
@@ -205,7 +205,7 @@
         "surtitre": "Étude de cas",
         "titre": "AUTOLIV : maintien d'un site",
         "href": "/preuves/autoliv/",
-        "photo": "/assets/photos/il-technicien-maintenance-photo-4-1600.jpg"
+        "photo": "/assets/photos/env-ouvrier-usine-coupe-metal-avec-scie-circulaire.jpg"
       }
     ]
   },

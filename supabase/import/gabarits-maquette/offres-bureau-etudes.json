@@ -11,7 +11,7 @@
     "pastille": "Nos offres",
     "mention": "Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Un projet en attente faute de temps pour le dessiner ? Nous le cadrons avec vous.",
     "appelBouton": "Faire chiffrer mon étude",
-    "chapeau": "Mécanique, électrique, électronique, automatisme, mise en conformité : nos ingénieurs conçoivent aux côtés de techniciens qui réparent des machines toute l'année. Cadrage, conception, calculs, dossier de fabrication, puis montage et mise en service par les mêmes équipes.",
+    "chapeau": "Mécanique, électrique, électronique, automatisme, mise en conformité : nos ingénieurs conçoivent aux côtés d'experts techniques qui réparent des machines toute l'année. Cadrage, conception, calculs, dossier de fabrication, puis montage et mise en service par les mêmes équipes.",
     "actions": [
       {
         "libelle": "Faire chiffrer mon étude",
@@ -23,7 +23,7 @@
     "chiffres": [
       {
         "valeur": "10 %",
-        "libelle": "Des techniciens retenus, entretien technique et comportemental, ingénieurs et projeteurs compris."
+        "libelle": "Des experts techniques retenus, entretien technique et comportemental, ingénieurs et projeteurs compris."
       },
       {
         "valeur": "+200",
@@ -89,6 +89,36 @@
           "resume": "Dans beaucoup d'usines, la maintenance s'est construite par sédimentation.",
           "href": "/offres/audit-conseil-maintenance/",
           "hrefLibelle": "Conseil en maintenance industrielle : sachez où part le budget"
+        },
+        {
+          "titre": "Bureau d'étude électrique : du schéma à l'armoire qui tourne",
+          "resume": "Une installation électrique industrielle dérive plus vite que sa documentation.",
+          "href": "/bureau-etudes/bureau-etude-electrique/",
+          "hrefLibelle": "Bureau d'étude électrique : du schéma à l'armoire qui tourne"
+        },
+        {
+          "titre": "Bureau d'étude électronique : une carte pensée pour être réparée",
+          "resume": "La mécanique tient vingt ans. L'électronique de commande, non.",
+          "href": "/bureau-etudes/bureau-etude-electronique/",
+          "hrefLibelle": "Bureau d'étude électronique : une carte pensée pour être réparée"
+        },
+        {
+          "titre": "Mise en conformité machine : fixez le calendrier avant l'inspection",
+          "resume": "La conformité d'un parc n'est jamais acquise une fois pour toutes.",
+          "href": "/bureau-etudes/mise-en-conformite-machine/",
+          "hrefLibelle": "Mise en conformité machine : fixez le calendrier avant l'inspection"
+        },
+        {
+          "titre": "Mise en conformité des machines : fixez le calendrier avant l'inspection",
+          "resume": "La conformité d'un parc n'est jamais acquise une fois pour toutes.",
+          "href": "/offres/retrofit/mise-en-conformite-machine/",
+          "hrefLibelle": "Mise en conformité des machines : fixez le calendrier avant l'inspection"
+        },
+        {
+          "titre": "Remise en état machine industrielle",
+          "resume": "Une machine fatiguée n'est pas une machine finie.",
+          "href": "/offres/retrofit/remise-en-etat/",
+          "hrefLibelle": "Remise en état machine industrielle"
         }
       ]
     },
@@ -204,7 +234,7 @@
           },
           {
             "accroche": "Des compétences évaluées",
-            "texte": "comme nos techniciens, les membres de l'équipe d'études passent une évaluation technique et comportementale à l'entrée. Seuls 10 % des techniciens sont retenus."
+            "texte": "comme nos experts techniques, les membres de l'équipe d'études passent une évaluation technique et comportementale à l'entrée. Seuls 10 % des experts techniques sont retenus."
           },
           {
             "accroche": "Des interventions encadrées sur votre site",
@@ -251,7 +281,7 @@
             "texte": "Montage des portiques de lavage selon les standards du constructeur, réception, levage et raccordements, partout en France.",
             "lienLibelle": "Étude de cas Migen Travaux x WASHTEC : installation de stations",
             "lienHref": "/preuves/orthus-washtec/",
-            "photo": "/assets/photos/menuiserie-centre-usinage-soufflette.jpg",
+            "photo": "/assets/photos/il-technicien-maintenance-photo-mar-18-2026-1600.jpg",
             "logo": "/assets/clients/orthus-x-washtec.svg"
           },
           {
@@ -294,7 +324,7 @@
           },
           {
             "question": "Qui conçoit réellement mon projet ?",
-            "reponse": "Des ingénieurs et projeteurs salariés, évalués en entretien technique et comportemental : 10 % des techniciens retenus, expérience de l'industrie exigée. Nos études ne sortent pas de bureaux où l'on n'a jamais serré un boulon."
+            "reponse": "Des ingénieurs et projeteurs salariés, évalués en entretien technique et comportemental : 10 % des experts techniques retenus, expérience de l'industrie exigée. Nos études ne sortent pas de bureaux où l'on n'a jamais serré un boulon."
           },
           {
             "question": "Pouvez-vous rédiger seulement le cahier des charges ?",

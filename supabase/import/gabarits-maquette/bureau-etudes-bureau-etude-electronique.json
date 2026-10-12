@@ -61,7 +61,7 @@
       "blocs": [
         {
           "type": "p",
-          "text": "Notre bureau d'étude électronique est adossé à des techniciens qui dépannent de l'électronique industrielle toute l'année. Une carte sort d'ici avec ses points de mesure, sa documentation et ses composants trouvables. C'est une branche de notre [bureau d'étude mécanique](/bureau-etudes/)."
+          "text": "Notre bureau d'étude électronique est adossé à des experts techniques qui dépannent de l'électronique industrielle toute l'année. Une carte sort d'ici avec ses points de mesure, sa documentation et ses composants trouvables. C'est une branche de notre [bureau d'étude mécanique](/bureau-etudes/)."
         },
         {
           "type": "p",
@@ -82,10 +82,10 @@
         {
           "type": "ul",
           "items": [
-            "**+120** : collaborateurs · techniciens et ingénieurs salariés Migen, pas de chaîne d'intermédiaires.",
+            "**+120** : collaborateurs · experts techniques et ingénieurs salariés Migen, pas de chaîne d'intermédiaires.",
             "**+200** : clients industriels accompagnés",
             "**4** : agences · Lyon (siège), Montréal, Dubaï, Madrid, et des hubs techniques en France.",
-            "**10 %** : des techniciens retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+            "**10 %** : des experts techniques retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
           ]
         },
         {
@@ -149,7 +149,7 @@
               "Nous ne vendons pas de cartes, donc rien ne nous pousse à en faire fabriquer plus que nécessaire. Aucune marge sur les pièces"
             ],
             [
-              "**Intégration et mise en service** sur la machine par nos techniciens",
+              "**Intégration et mise en service** sur la machine par nos experts techniques",
               "Celui qui a dessiné la carte n'est pas parti quand elle arrive sur site. Les écarts se règlent tout de suite"
             ],
             [
@@ -164,7 +164,7 @@
         },
         {
           "type": "p",
-          "text": "Nos techniciens interviennent sur l'électronique de commande des machines en exploitation, indépendamment de toute étude."
+          "text": "Nos experts techniques interviennent sur l'électronique de commande des machines en exploitation, indépendamment de toute étude."
         },
         {
           "type": "ul",
@@ -199,7 +199,7 @@
             "**Arbitrage.** Réparer, reconcevoir, ou remplacer par un standard du marché. Trois chiffres en face de trois options, vous décidez.",
             "**Conception.** Schéma, choix des composants, implantation, dossier de fabrication et documentation de test.",
             "**Réalisation.** Fabrication chez l'atelier partenaire, réception des cartes, contrôle avant montage.",
-            "**Intégration et mise en service.** Montage sur la machine par nos techniciens, essais en conditions réelles, remise du dossier.",
+            "**Intégration et mise en service.** Montage sur la machine par nos experts techniques, essais en conditions réelles, remise du dossier.",
             "**Suite d'exploitation.** Les mêmes équipes peuvent assurer ensuite le préventif et le curatif. Voir [maintenance corrective](/expertises/types-de-maintenance/maintenance-corrective/)."
           ]
         },
@@ -212,7 +212,7 @@
           "items": [
             "**Un rappel dans l'heure** du lundi au vendredi, 8h00 à 18h30, au 04 78 33 72 05, et une astreinte quand la machine est à l'arrêt.",
             "**Le dossier est à vous.** Schémas, nomenclatures, documentation de test : vous repartez avec de quoi faire refabriquer ailleurs. Nous ne gardons pas votre machine en otage.",
-            "**Des compétences évaluées** : entretien technique et comportemental à l'entrée, 10 % des techniciens retenus, résultats partagés avec vous."
+            "**Des compétences évaluées** : entretien technique et comportemental à l'entrée, 10 % des experts techniques retenus, résultats partagés avec vous."
           ]
         },
         {
@@ -282,7 +282,7 @@
         },
         {
           "type": "p",
-          "text": "Des techniciens et des ingénieurs salariés Migen, évalués en entretien technique et comportemental : 10 % des techniciens retenus. Ils sont habilités selon les exigences de votre site et accueillis à votre protocole de sécurité."
+          "text": "Des experts techniques et des ingénieurs salariés Migen, évalués en entretien technique et comportemental : 10 % des experts techniques retenus. Ils sont habilités selon les exigences de votre site et accueillis à votre protocole de sécurité."
         },
         {
           "type": "p",

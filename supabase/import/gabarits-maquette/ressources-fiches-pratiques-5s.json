@@ -298,13 +298,13 @@
       }
     ],
     "minutes": 12,
-    "image": "/assets/photos/env-entretien-avion-22-sept-2026.jpg",
+    "image": "/assets/photos/env-technician-maintenance-4.jpg",
     "aLire": [
       {
         "href": "/ressources/fiches-pratiques/consignation-electrique/",
         "titre": "Consignation électrique",
         "minutes": 12,
-        "image": "/assets/photos/env-reparation-moteur-avion.jpg"
+        "image": "/assets/photos/elec-main-disjoncteurs-borniers.jpg"
       },
       {
         "href": "/ressources/fiches-pratiques/permis-de-feu/",

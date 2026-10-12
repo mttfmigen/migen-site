@@ -406,6 +406,18 @@
               "reponse": "Oui aux deux. Nous partons du bassin le plus proche, depuis nos 4 agences et nos hubs de techniciens dans les grandes villes de France. L'astreinte fonctionne. Pour un besoin récurrent hors heures ouvrées, l'astreinte est la formule adaptée."
             }
           ]
+        },
+        {
+          "titre": "Astreinte de maintenance : quelqu’un décroche, la nuit comme le week-end",
+          "resume": "Votre ligne s'arrête à 3 heures du matin. Quelqu'un décroche.",
+          "href": "/offres/depannage-industriel/astreinte/",
+          "hrefLibelle": "Astreinte de maintenance : quelqu’un décroche, la nuit comme le week-end"
+        },
+        {
+          "titre": "Panne machine industrielle : agir dans la première heure",
+          "resume": "Une panne machine industrielle se joue dans la première heure.",
+          "href": "/offres/depannage-industriel/panne-machine/",
+          "hrefLibelle": "Panne machine industrielle : agir dans la première heure"
         }
       ]
     },

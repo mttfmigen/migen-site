@@ -272,7 +272,8 @@
             "client": "SAVOYE",
             "sujet": "Deux automates migrés en deux week-ends, sans arrêter la production",
             "resume": "Deux machines migrées en deux week-ends chez un exploitant logistique, pendant les arrêts de production.",
-            "url": "/preuves/savoye-migration-automates-norvege/"
+            "url": "/preuves/savoye-migration-automates-norvege/",
+            "aLaUne": true
           },
           {
             "client": "SAVOYE",

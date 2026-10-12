@@ -21,7 +21,7 @@
     "chiffres": [
       {
         "valeur": "+ 120",
-        "libelle": "Collaborateurs · techniciens salariés Migen, pas de chaîne d'intermédiaires."
+        "libelle": "Collaborateurs · experts techniques salariés Migen, pas de chaîne d'intermédiaires."
       },
       {
         "valeur": "+200",
@@ -33,7 +33,7 @@
       },
       {
         "valeur": "10 %",
-        "libelle": "Des techniciens retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+        "libelle": "Des experts techniques retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
       }
     ],
     "reperesReassurance": [
@@ -213,7 +213,7 @@
             "prestation": {
               "texte": "**Déménagement de machines industrielles**"
             },
-            "benefice": "Une machine ou un parc entier déplacés par des techniciens qui savent ce qu'ils démontent, et pourquoi."
+            "benefice": "Une machine ou un parc entier déplacés par des experts techniques qui savent ce qu'ils démontent, et pourquoi."
           },
           {
             "prestation": {
@@ -399,8 +399,8 @@
             "reponse": "Le sujet est traité avant le chantier. Le devis et le cahier des charges précisent les responsabilités de chaque partie, les garanties et l'assurance mobilisée. Vous savez qui répond de quoi avant le premier câble débranché."
           },
           {
-            "question": "Qui sont les techniciens qui interviennent ?",
-            "reponse": "Des salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des techniciens sont retenus, et les résultats d'évaluation sont partagés avec vous. Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie, robotique."
+            "question": "Qui sont les experts techniques qui interviennent ?",
+            "reponse": "Des salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des experts techniques sont retenus, et les résultats d'évaluation sont partagés avec vous. Mécanique, électricité, électromécanique, automatisme, hydraulique, pneumatique, soudure et chaudronnerie, robotique."
           },
           {
             "question": "Intervenez-vous partout en France ?",

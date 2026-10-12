@@ -116,14 +116,40 @@ export default function BandeAppel({
               </span>
             </div>
           ) : null}
-          {/* Sans mention, le bouton reste à DROITE de la bande, là où la
-              capture le pose : `space-between` le ramènerait à gauche. */}
+          {/* SANS PHRASE, LE BOUTON SE CENTRE. ÉCART DÉCLARÉ À LA CAPTURE, et
+              c'est la capture elle-même qui l'impose, par ce qu'elle ne prévoit
+              pas : ses 244 pages posent TOUJOURS la phrase à gauche de la
+              bande, le bouton à droite, les deux fentes occupées. Aucune de ses
+              bandes n'est à moitié vide, donc elle ne dit rien de ce cas.
+
+              CE QUE REMPLACE CETTE LIGNE, et pourquoi elle était fausse : elle
+              gardait le bouton collé à droite, « là où la capture le pose ».
+              Mesuré le 12/10 à 1440 px sur `/travaux-industriels/` et
+              `/offres/zero-arret/`, les deux seules pages du gabarit sans
+              phrase : bande de 1120 px, bouton de 231 à 244 px, soit 79 % de la
+              bande vide, trois fois par page, six bandes creuses en tout. C'est
+              le défaut que Mehdi nomme « le bloc d'appel est mal disposé »
+              (G14, G15, puis G38 qui le rouvre).
+
+              CENTRER PLUTÔT QUE RÉTRÉCIR : la bande garde exactement la boîte
+              de la capture, 1120 px de large et 137 px de haut section
+              comprise, mesure inchangée après la correction. Seule la place du
+              bouton change, et la fente vide disparaît.
+
+              POURQUOI LA PHRASE MANQUE, et ce n'est pas réparable ici : sur
+              `/offres/zero-arret/` la capture y écrit un délai chiffré que le
+              contrat du projet interdit ; sur `/travaux-industriels/` elle a
+              été retirée du champ `mention` de la fiche le 12/10 (G41), un
+              champ que le gabarit sert À LA FOIS au héros et aux trois bandes,
+              alors que Mehdi n'avait demandé son retrait que du héros. La
+              racine est dans la fiche, pas dans ce composant ; elle est
+              signalée, pas corrigée ici. */}
           <div
             style={{
               display: "flex",
               gap: 10,
               flexWrap: "wrap",
-              marginLeft: mention ? undefined : "auto",
+              ...(mention ? null : { marginInline: "auto" }),
             }}
           >
             <a href="#besoin" className={styles.boutonPrincipal} style={BOUTON}>

@@ -41,25 +41,25 @@
         "titre": "Préventif",
         "phrase": "Gammes par organe, fréquences respectées, pièces d'usure anticipées",
         "href": "/expertises/types-de-maintenance/maintenance-preventive/",
-        "photo": "/assets/photos/env-reparation-moteur-avion.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-jan-7-2026-1600.jpg"
       },
       {
         "titre": "Dépannage",
         "phrase": "Pannes prises en priorité et résolues jusqu'à la cause",
         "href": "/expertises/types-de-maintenance/",
-        "photo": "/assets/photos/env-menuiserie-circular-saw.jpg"
+        "photo": "/assets/photos/il-technicien-maintenance-photo-5-1600.jpg"
       },
       {
         "titre": "Prédictif",
         "phrase": "Relevés et mesures sur vos organes critiques, remplacement avant la casse",
         "href": "/expertises/types-de-maintenance/maintenance-conditionnelle/",
-        "photo": "/assets/photos/il-technicien-maintenance-jan-9-2026-1-1600.jpg"
+        "photo": "/assets/photos/il-checking-heavy-equipment-at-modern-plant.jpg"
       },
       {
         "titre": "Amélioration continue",
         "phrase": "Les travaux qui suppriment une panne récurrente au lieu de la réparer chaque mois",
         "href": "/expertises/types-de-maintenance/maintenance-ameliorative/",
-        "photo": "/assets/photos/env-photos-industrie-aeronautique.jpg"
+        "photo": "/assets/photos/env-technician-maintenance-robot-arm.jpg"
       }
     ],
     "complementTypes": [
@@ -258,7 +258,7 @@
             "texte": "depuis octobre 2023, aux côtés des équipes internes",
             "lienLibelle": "Étude de cas STELLANTIS : fonderie de Sept-Fons",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
-            "photo": "/assets/photos/aero-percage-aile-avion.jpg",
+            "photo": "/assets/photos/env-industrie-metallique.jpg",
             "logo": "/assets/clients/stellantis.png"
           },
           {
@@ -303,7 +303,7 @@
             "titre": "Un dispositif rodé, transposé sur un nouveau site",
             "lienLibelle": "Étude de cas Amazon",
             "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg",
+            "photo": "/assets/photos/env-technicien-maintenance-2.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           }
         ]

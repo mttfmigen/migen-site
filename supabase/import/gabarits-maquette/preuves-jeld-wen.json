@@ -35,7 +35,7 @@
       }
     ],
     "logo": "/assets/clients/jeld-wen.png",
-    "photoHero": "/assets/photos/env-menuiserie-industrie.jpg",
+    "photoHero": "/assets/photos/il-technicien-maintenance-5.jpg",
     "chiffres": [
       {
         "libelle": "Effectif",
@@ -127,7 +127,7 @@
         "valeur": "2 techniciens"
       }
     ],
-    "photoDispositif": "/assets/photos/env-photos-menuiserie-2.jpg",
+    "photoDispositif": "/assets/photos/il-technicien-maintenance-photo-mar-19-2026-1600.jpg",
     "besoinTitre": "Un besoin comparable sur votre site ?",
     "besoinProse": [
       "Décrivez-le, nous vous présentons les techniciens adaptés."
@@ -147,7 +147,7 @@
         "surtitre": "Études de cas",
         "titre": "Études de cas maintenance industrielle",
         "href": "/preuves/",
-        "photo": "/assets/photos/env-menuiserie-circular-saw.jpg"
+        "photo": "/assets/photos/env-industrie-chimie-2.jpg"
       },
       {
         "surtitre": "Offre",
@@ -159,13 +159,13 @@
         "surtitre": "Secteur",
         "titre": "Maintenance menuiserie industrielle",
         "href": "/secteurs/menuiserie-industrielle/",
-        "photo": "/assets/photos/env-menuisier-utilisant-des-outils.jpg"
+        "photo": "/assets/photos/menuiserie-robot-panneaux.jpg"
       },
       {
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/menuiserie-scie-panneaux-epi.jpg"
+        "photo": "/assets/photos/env-photos-industrie-agro-alimentaire.jpg"
       }
     ]
   }

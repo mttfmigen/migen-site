@@ -174,8 +174,19 @@ export interface BlocPrestation {
 export interface PrestationRegroupee {
   /** L'intitulé de la carte : « Dépannage industriel ». */
   titre: string;
-  /** La ligne de résumé sous l'intitulé, tronquée à une ligne au rendu. */
-  resume: string;
+  /**
+   * La ligne de résumé sous l'intitulé, tronquée à une ligne au rendu.
+   *
+   * OPTIONNEL DEPUIS LE 12/10. Mesuré ce jour-là : quatre des prestations que
+   * ce bloc doit lister n'écrivent AUCUNE accroche sur leur propre page en
+   * production (`/travaux-industriels/` : démantèlement, levage, montage,
+   * transfert, dont la section « Le problème » porte une `punchline` vide).
+   * Leur corpus en a bien une, le site ne la sert pas : la recopier ici
+   * mettrait dans ce bloc un texte que la page cible n'écrit pas.
+   * « Vide plutôt que faux » (CLAUDE.md §13) : la carte porte alors son
+   * intitulé et son lien, sans ligne de résumé inventée.
+   */
+  resume?: string;
   blocs?: BlocPrestation[];
   questions?: { question: string; reponse: string }[];
   /**

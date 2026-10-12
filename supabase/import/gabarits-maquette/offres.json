@@ -33,7 +33,7 @@
         "libelle": "Collaborateurs, 4 agences dans le monde, interventions partout en France"
       }
     ],
-    "problemePhoto": "/assets/photos/env-mecanicien-aeronautique.jpg",
+    "problemePhoto": "/assets/photos/il-technicien-maintenance-portrait-jan-9-2026-160.jpg",
     "brefBande": "Besoin de savoir quelle formule coûte le moins cher pour votre site ?",
     "brefBouton": {
       "libelle": "Faire chiffrer mon besoin",
@@ -175,7 +175,7 @@
             "texte": "Deux techniciens intégrés aux équipes.",
             "lienLibelle": "Étude de cas DANONE",
             "lienHref": "/preuves/danone-lignes-de-production/",
-            "photo": "/assets/photos/env-inspection-auto-avec-equipe.jpg"
+            "photo": "/assets/photos/agro-ihm-ligne-conditionnement-senior.jpg"
           },
           {
             "titre": "Automaticien SIEMENS affecté au démarrage d'une ligne neuve",
@@ -189,7 +189,7 @@
             "texte": "Plusieurs missions ciblées sur l'année 2025.",
             "lienLibelle": "Étude de cas SOPREMA",
             "lienHref": "/preuves/soprema/",
-            "photo": "/assets/photos/env-professionnels-maintenance-aeronautique.jpg"
+            "photo": "/assets/photos/meca-senior-rouleuse-combinaison.jpg"
           },
           {
             "titre": "Remise en état d'un site à risque chimique, traitement des eaux",
@@ -202,13 +202,13 @@
             "titre": "Un été entier sans trou dans la maintenance",
             "lienLibelle": "Étude de cas OGF",
             "lienHref": "/preuves/ogf-arret-estival/",
-            "photo": "/assets/photos/env-entretien-avion-22-sept-2026.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-portrait-mars-2026-1600.jpg"
           },
           {
             "titre": "Une ligne de pain de mie suivie à chaque poste",
             "lienLibelle": "Étude de cas Jacquet Brossard",
             "lienHref": "/preuves/jacquet-brossard/",
-            "photo": "/assets/photos/env-menuiserie-industrie.jpg"
+            "photo": "/assets/photos/env-emballage-de-biscuits-en-usine.jpg"
           }
         ]
       },
@@ -295,7 +295,7 @@
         "libelle": "Parler à un chargé d’affaires",
         "href": "/contact/"
       },
-      "photo": "/assets/photos/env-reparation-moteur-aeronautique.jpg",
+      "photo": "/assets/photos/elec-binome-coffret-chaufferie.jpg",
       "alt": "Techniciens Migen sur une armoire électrique"
     },
     "maillageSurtitre": "Nos offres",
@@ -317,14 +317,14 @@
       },
       {
         "href": "/offres/zero-arret/",
-        "photo": "/assets/photos/env-technician-examining-jet-engine.jpg",
+        "photo": "/assets/photos/il-technicien-maintenance-photo-17-1600.jpg",
         "etiquette": "Abonnement",
         "titre": "migen© Zéro arrêt",
         "phrase": "Le préventif le samedi, le dépannage la nuit : une maintenance qui ne touche jamais à votre production."
       },
       {
         "href": "/offres/arret-technique/",
-        "photo": "/assets/photos/env-menuisier-utilisant-des-outils.jpg",
+        "photo": "/assets/photos/tuyau-vanne-volant-rack.jpg",
         "etiquette": "Arrêt planifié",
         "titre": "migen© Arrêt technique",
         "phrase": "Votre arrêt annuel préparé, dimensionné et tenu, ligne rendue à la date annoncée."

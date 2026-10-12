@@ -10,5 +10,5 @@ const { outputText } = ts.transpileModule(source, {
 });
 const transpile = await import(`data:text/javascript;base64,${Buffer.from(outputText).toString("base64")}`);
 
-/** @type {(texte: string) => string} */
+/** @type {(texte: string, page?: string) => string} */
 export const appliqueDecisions = transpile.appliqueDecisions;

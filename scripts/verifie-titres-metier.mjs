@@ -142,7 +142,11 @@ function normalise(texte) {
  * plus, sur treize pages, et la porte accuserait un ornement.
  */
 export function sansOrnementsMobiles(html) {
-  return htmlretireOrnements(html);
+  /* RÉPARÉ le 12/10 : la ligne disait `htmlretireOrnements(html)`, un collage
+     d'édition qui faisait planter la porte sur `ReferenceError` dès son premier
+     appel, témoin compris. Elle ne mesurait donc plus rien depuis. Aucune règle
+     n'est touchée ici : seul l'appel manquant est rendu à sa fonction. */
+  return retireOrnements(html);
 }
 
 /** LE SÉPARATEUR DE BLOC : deux nœuds voisins ne doivent pas se coller. */

@@ -23,7 +23,7 @@
     "chiffres": [
       {
         "valeur": "+ 120",
-        "libelle": "Collaborateurs · techniciens salariés Migen, pas de chaîne d'intermédiaires."
+        "libelle": "Collaborateurs · experts techniques salariés Migen, pas de chaîne d'intermédiaires."
       },
       {
         "valeur": "+200",
@@ -35,7 +35,7 @@
       },
       {
         "valeur": "10 %",
-        "libelle": "Des techniciens retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+        "libelle": "Des experts techniques retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
       }
     ],
     "reperesReassurance": [
@@ -117,7 +117,7 @@
                   ],
                   [
                     "Déménagement de machines industrielles",
-                    "Une machine ou un parc entier déplacés par des techniciens qui savent ce qu'ils démontent, et pourquoi."
+                    "Une machine ou un parc entier déplacés par des experts techniques qui savent ce qu'ils démontent, et pourquoi."
                   ],
                   [
                     "Transfert de production",
@@ -161,7 +161,7 @@
               "puces": [
                 {
                   "accroche": "Vous savez qui entre sur votre site.",
-                  "texte": "Les intervenants sont retenus après un entretien technique et un entretien comportemental : seuls 10 % des techniciens passent cette sélection."
+                  "texte": "Les intervenants sont retenus après un entretien technique et un entretien comportemental : seuls 10 % des experts techniques passent cette sélection."
                 }
               ]
             }
@@ -229,7 +229,7 @@
                     "Les alignements se voient à la première montée en cadence. Ils se traitent au montage, pas après"
                   ],
                   [
-                    "Chaudronnerie et soudure par nos propres techniciens : passerelles, supports, trémies, tuyauterie",
+                    "Chaudronnerie et soudure par nos propres experts techniques : passerelles, supports, trémies, tuyauterie",
                     "Pas de sous-traitance en cascade sur les adaptations de dernière minute"
                   ],
                   [
@@ -300,7 +300,7 @@
                 },
                 {
                   "accroche": "Des monteurs évalués",
-                  "texte": "chaque monteur, mécanicien, électricien ou chaudronnier a passé une évaluation technique et comportementale. Seuls 10 % des techniciens sont retenus, et la compétence se voit tout de suite en montage."
+                  "texte": "chaque monteur, mécanicien, électricien ou chaudronnier a passé une évaluation technique et comportementale. Seuls 10 % des experts techniques sont retenus, et la compétence se voit tout de suite en montage."
                 },
                 {
                   "accroche": "La sécurité comme condition de départ",
@@ -308,7 +308,7 @@
                 },
                 {
                   "accroche": "Une sécurité attestée, pas déclarée",
-                  "texte": "notre démarche MASE, pour la sécurité des interventions, et notre évaluation EcoVadis, pour la performance RSE, donnent lieu à des attestations transmises avec chaque plan de prévention. Les habilitations des techniciens affectés à votre chantier sont à jour et vérifiables par votre service sécurité avant la première intervention."
+                  "texte": "notre démarche MASE, pour la sécurité des interventions, et notre évaluation EcoVadis, pour la performance RSE, donnent lieu à des attestations transmises avec chaque plan de prévention. Les habilitations des experts techniques affectés à votre chantier sont à jour et vérifiables par votre service sécurité avant la première intervention."
                 }
               ]
             },
@@ -333,13 +333,45 @@
             },
             {
               "question": "Qui intervient sur mon site ?",
-              "reponse": "Des équipes complètes de techniciens salariés Migen, pas des renforts isolés à encadrer par vos soins. Chacun est évalué à l'entrée en entretien technique et comportemental, 10 % des techniciens retenus, puis passé par votre accueil sécurité."
+              "reponse": "Des équipes complètes d'experts techniques salariés Migen, pas des renforts isolés à encadrer par vos soins. Chacun est évalué à l'entrée en entretien technique et comportemental, 10 % des experts techniques retenus, puis passé par votre accueil sécurité."
             },
             {
               "question": "Intervenez-vous pendant un arrêt de production ?",
               "reponse": "Oui, c'est fréquent. Beaucoup de montages et d'intégrations se réalisent pendant un arrêt technique planifié, nuits et week-ends compris. L'accès aux zones et la coactivité sont alors gérés avec une rigueur renforcée."
             }
           ]
+        },
+        {
+          "titre": "Démantèlement industriel",
+          "href": "/travaux-industriels/demantelement-industriel/",
+          "hrefLibelle": "Démantèlement industriel"
+        },
+        {
+          "titre": "Levage industriel et manutention lourde",
+          "href": "/travaux-industriels/levage-manutention/",
+          "hrefLibelle": "Levage industriel et manutention lourde"
+        },
+        {
+          "titre": "Montage industriel : machines, lignes et équipements de production",
+          "href": "/travaux-industriels/montage-industriel/",
+          "hrefLibelle": "Montage industriel : machines, lignes et équipements de production"
+        },
+        {
+          "titre": "Transfert industriel et déménagement de machines industrielles",
+          "href": "/travaux-industriels/transfert-industriel/",
+          "hrefLibelle": "Transfert industriel et déménagement de machines industrielles"
+        },
+        {
+          "titre": "Déménagement de machines industrielles",
+          "resume": "À l'arrivée, votre machine ne fait pas que voyager : elle produit.",
+          "href": "/offres/chantier/demenagement-machines/",
+          "hrefLibelle": "Déménagement de machines industrielles"
+        },
+        {
+          "titre": "Transfert de production",
+          "resume": "Vos clients ne doivent rien voir.",
+          "href": "/offres/chantier/transfert-de-production/",
+          "hrefLibelle": "Transfert de production"
         }
       ]
     },
@@ -515,8 +547,8 @@
             "reponse": "Non. Nous intervenons sur le chantier et nous rendons le site à vos équipes et à votre prestataire habituel, avec un compte rendu exploitable."
           },
           {
-            "question": "Qui sont les techniciens qui interviennent ?",
-            "reponse": "Des salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des techniciens sont retenus, et les résultats sont partagés avec vous."
+            "question": "Qui sont les experts techniques qui interviennent ?",
+            "reponse": "Des salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des experts techniques sont retenus, et les résultats sont partagés avec vous."
           },
           {
             "question": "Qui est responsable en cas de casse ?",

@@ -61,7 +61,7 @@
       "blocs": [
         {
           "type": "p",
-          "text": "Audit du parc machine par machine, analyse de risques chiffrée, travaux exécutés par nos techniciens, dossier technique remis à l'organisme accrédité de votre choix. L'étude est portée par notre [bureau d'étude mécanique](/bureau-etudes/), les travaux par nos équipes de terrain."
+          "text": "Audit du parc machine par machine, analyse de risques chiffrée, travaux exécutés par nos experts techniques, dossier technique remis à l'organisme accrédité de votre choix. L'étude est portée par notre [bureau d'étude mécanique](/bureau-etudes/), les travaux par nos équipes de terrain."
         },
         {
           "type": "p",
@@ -82,8 +82,8 @@
         {
           "type": "ul",
           "items": [
-            "**10 % des techniciens retenus** : chaque technicien qui touche à vos protections a passé un entretien technique et comportemental.",
-            "**Plus de 120 collaborateurs** : techniciens et ingénieurs salariés, l'audit et les travaux restent dans la même maison.",
+            "**10 % des experts techniques retenus** : chaque expert technique qui touche à vos protections a passé un entretien technique et comportemental.",
+            "**Plus de 120 collaborateurs** : experts techniques et ingénieurs salariés, l'audit et les travaux restent dans la même maison.",
             "**Plus de 200 clients industriels** : la qualité se juge après le chantier, pas pendant.",
             "**10 hubs de techniciens** : Paris, Lille, Marseille, Toulouse, Lyon, Metz, Strasbourg, Bordeaux, Dijon, Nantes, une équipe locale pour un parc à auditer machine par machine."
           ]
@@ -149,7 +149,7 @@
               "La solution est dessinée et calculée avant d'être posée, pas bricolée le jour du chantier"
             ],
             [
-              "**Travaux** en mécanique, électricité et automatisme par nos techniciens, coordonnés avec la production",
+              "**Travaux** en mécanique, électricité et automatisme par nos experts techniques, coordonnés avec la production",
               "Les opérations se calent sur vos arrêts. La ligne ne s'arrête pas pour nous"
             ],
             [
@@ -182,11 +182,11 @@
           "type": "ol",
           "items": [
             "**Votre appel ou votre formulaire.** Nous vous rappelons dans l'heure. Un échange technique cadre le périmètre : nombre de machines, secteur, contraintes de production.",
-            "**L'audit sur site.** Un ingénieur ou un technicien confirmé examine chaque équipement en conditions réelles d'utilisation, opérateurs compris.",
+            "**L'audit sur site.** Un ingénieur ou un expert technique confirmé examine chaque équipement en conditions réelles d'utilisation, opérateurs compris.",
             "**L'analyse de risques.** Phénomènes dangereux, situations d'exposition, gravité, probabilité. Méthode transparente, écart par écart.",
             "**Le plan d'actions chiffré.** Une solution technique et un coût en face de chaque écart, classés par niveau de risque. Vous décidez de l'ordre.",
             "**L'étude des reprises.** Le bureau d'études dessine et dimensionne les protections et les modifications retenues. Plans, nomenclatures, dossier de fabrication.",
-            "**Les travaux.** Nos techniciens exécutent, en coordination avec votre production et vos fenêtres d'arrêt.",
+            "**Les travaux.** Nos experts techniques exécutent, en coordination avec votre production et vos fenêtres d'arrêt.",
             "**La documentation.** Dossier technique, schémas et consignes mis à jour. Une mise en conformité sans documentation ne protège personne.",
             "**La vérification et la remise en service.** L'organisme accrédité passe, nous assistons à la visite, nous levons les réserves, la machine repart selon une procédure écrite à l'avance."
           ]
@@ -200,7 +200,7 @@
           "items": [
             "**Un rappel dans l'heure**, du lundi au vendredi de 8h00 à 18h30, et une astreinte au 04 78 33 72 05 quand un équipement est immobilisé.",
             "**Un seul interlocuteur** de l'accueil de votre demande jusqu'à la levée des réserves. Personne ne prend votre dossier en marche.",
-            "**Des techniciens salariés Migen, évalués** en entretien technique et comportemental : seuls 10 % des techniciens sont retenus, résultats partagés avec vous. Sur un chantier de sécurité, ce filtre n'est pas décoratif."
+            "**Des experts techniques salariés Migen, évalués** en entretien technique et comportemental : seuls 10 % des experts techniques sont retenus, résultats partagés avec vous. Sur un chantier de sécurité, ce filtre n'est pas décoratif."
           ]
         },
         {
@@ -286,7 +286,7 @@
         },
         {
           "type": "p",
-          "text": "Des techniciens salariés Migen, évalués en entretien technique et comportemental à l'entrée : 10 % des techniciens sont retenus. Ils sont habilités selon les exigences de votre site et accueillis à votre protocole de sécurité."
+          "text": "Des experts techniques salariés Migen, évalués en entretien technique et comportemental à l'entrée : 10 % des experts techniques sont retenus. Ils sont habilités selon les exigences de votre site et accueillis à votre protocole de sécurité."
         },
         {
           "type": "p",

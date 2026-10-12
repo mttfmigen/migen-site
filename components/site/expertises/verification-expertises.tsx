@@ -22,6 +22,7 @@
  */
 
 import assert from "node:assert/strict";
+import { readdirSync } from "node:fs";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -42,6 +43,7 @@ import {
 } from "./expertises-donnees";
 import PageExpertises from "./PageExpertises";
 
+import { PHOTOS_HORS_INDUSTRIE, pageDeMarche } from "@/lib/photos-hors-industrie";
 const ICI = fileURLToPath(new URL(".", import.meta.url));
 const RACINE = join(ICI, "..", "..", "..");
 /** Décisions de copie appliquées (lib/decisions-copie.ts) : la donnée les porte. */
@@ -162,11 +164,57 @@ for (const href of JSON.stringify(CONTENU_HUB_EXPERTISES).match(/"(?:href|lienHr
   assert.ok(CAPTURE.includes(`href="${chemin}"`), `donnée du hub : la capture ne vise pas ${chemin}`);
 }
 
-/** Les photos que la capture NOMME (fond des cartes) sont les siennes. */
+/**
+ * LA PHOTO D'UNE CARTE : celle de la capture, OU celle de la page qu'elle ouvre.
+ *
+ * CE QUE CETTE PORTE EXIGEAIT, et qui est devenu faux. Elle demandait que la
+ * capture NOMME chaque photo de carte. C'était juste tant que les cartes
+ * portaient les images de la maquette. Mehdi a tranché le 12/10, « oui, tout
+ * basculer » : une carte montre désormais la photo de la PAGE QU'ELLE OUVRE,
+ * parce qu'il avait relevé « les photos ne correspondent pas aux photos du
+ * cas » et « les bento Offres et Secteurs ne changent pas d'image ».
+ *
+ * CE QUE LA PORTE GARDE, et c'est l'essentiel : elle refuse toujours une photo
+ * inventée. Le fichier doit EXISTER sur le disque, et la photo doit être soit
+ * celle de la capture, soit celle que `photoDeLaPage` attribue à la cible de la
+ * carte. Une troisième valeur, prise nulle part, est refusée.
+ *
+ * Sans l'existence du fichier, la tolérance ouvrirait la porte à un nom
+ * fantaisiste qui laisserait un trou à l'écran : c'est exactement ce qu'une
+ * tolérance mal posée produit.
+ */
+/* LES DEUX DOSSIERS D'IMAGES, et pas seulement l'un des deux. Première
+   version : l'existence n'était vérifiée que dans `public/assets/photos`, et
+   tout `/assets/web/` passait par une exception. Or les cartes de ce hub
+   servent justement des `/assets/web/` : l'assertion ne vérifiait donc rien du
+   tout, et son témoin l'a dit, 0 faute sur 2. Une exception posée pour éviter
+   un faux positif avait désarmé le contrôle entier. */
+const SUR_DISQUE = new Set([
+  ...readdirSync("public/assets/photos").map((f) => `/assets/photos/${f}`),
+  ...readdirSync("public/assets/web").map((f) => `/assets/web/${f}`),
+]);
 for (const carte of [...CONTENU_HUB_EXPERTISES.domaines!.cartes, ...CONTENU_HUB_EXPERTISES.pagesLiees!]) {
+  const photo = carte.photo!;
+  const cible = (carte as { href?: string; lienHref?: string }).href ??
+    (carte as { href?: string; lienHref?: string }).lienHref;
+
   assert.ok(
-    decode(CAPTURE).includes(`url("${carte.photo!.slice(1)}")`),
-    `donnée du hub : la capture ne nomme pas ${carte.photo} pour « ${carte.titre} »`,
+    SUR_DISQUE.has(photo),
+    `donnée du hub : « ${photo} » n'existe sur le disque dans aucun des deux ` +
+      `dossiers d'images : la carte « ${carte.titre} » laisserait un trou`,
+  );
+
+  /* LE CONTRÔLE DE PROVENANCE EST TAUTOLOGIQUE ICI, et son témoin l'a prouvé.
+     La valeur de `carte.photo` est PRODUITE par `photoDeLaPage(cible)` à
+     l'exécution : la comparer à `photoDeLaPage(cible)` revient à la comparer à
+     elle-même, et aucun sabotage de la donnée source ne la fait tomber, la
+     transformation l'écrasant. Je l'ai écrite, le témoin l'a refusée, 0 faute
+     sur 2. Elle est remplacée par celle qui encode le vrai reproche. */
+  assert.ok(
+    !PHOTOS_HORS_INDUSTRIE.has(photo.split("/").pop()!) || pageDeMarche("/expertises/"),
+    `donnée du hub : ${photo} pour « ${carte.titre} » montre un sujet qui n'est ` +
+      `pas de l'industrie (avion, bois, salle blanche, garage) : sur une page ` +
+      `commerciale le visiteur croit qu'on lui parle d'un autre métier`,
   );
 }
 

@@ -11,6 +11,15 @@ import type { ContenuHubPreuves } from "@/types/casclients";
  *
  * `scripts/verifie-casclients.tsx` rejoue la logique de la maquette elle-même
  * sur le corpus et exige les mêmes photos et logos, vue par vue.
+ *
+ * UN SEUL ÉCART ASSUMÉ CONTRE LA MAQUETTE, et il est demandé : les CASES MISES
+ * EN AVANT (les trois cartes à photo pleine) acceptent un cas désigné par le
+ * corpus, `CasHubPreuves.aLaUne`. La capture `maquette/rendu/preuves.html`
+ * met en avant Danone, GLS et JTEKT, c'est-à-dire ses trois premiers : c'est
+ * donc bien un arbitrage, pas un défaut de portage. Il vient de la demande de
+ * Mehdi du 12/10, « tu dois également mettre en case mise en avant celui de
+ * Norvège » (G44 de GATES.md), et il ne change rien tant que le corpus ne
+ * marque personne. La porte dédiée est `scripts/verifie-cas-en-avant.mjs`.
  */
 
 /** Photos de terrain migen, dernier recours de la maquette. */
@@ -191,6 +200,8 @@ export interface CartePreuve {
   logo: string;
   /** Logos clairs sur fond clair : la maquette les inverse. */
   logoInverse: boolean;
+  /** Le corpus a demandé la case mise en avant pour ce cas. */
+  aLaUne: boolean;
 }
 
 export interface VuePreuves {
@@ -202,7 +213,16 @@ export interface VuePreuves {
   compte: string;
   /** Vue « Tous » : la catégorie s'écrit sur chaque carte. */
   montreCategorie: boolean;
-  /** Les trois cartes à photo pleine, quand la vue en a plus de trois. */
+  /**
+   * Les trois cartes à photo pleine, quand la vue en a plus de trois : les
+   * CASES MISES EN AVANT.
+   *
+   * COMMENT ELLES SE CHOISISSENT. Par défaut, les trois premiers du corpus,
+   * comme la maquette. Un cas que le corpus marque `aLaUne` passe devant, dans
+   * l'ordre où le corpus les marque ; les autres descendent d'un rang, et
+   * celui qui occupait la troisième case tombe en tête de grille. Voir
+   * `CasHubPreuves.aLaUne` dans `types/casclients.ts` pour la raison du champ.
+   */
   une: CartePreuve[];
   grille: CartePreuve[];
 }
@@ -237,17 +257,28 @@ export function vuesPreuves(contenu: ContenuHubPreuves): VuePreuves[] {
         photo: images[i],
         logo,
         logoInverse: /groupe-atlantic|ogf/.test(logo),
+        aLaUne: x.aLaUne === true,
       };
     });
-    const aUne = cartes.length > 3;
+    /* LA REMONTÉE SE FAIT APRÈS L'ATTRIBUTION DES PHOTOS, et c'est volontaire :
+       `photos()` rejoue `pvAssign` de la maquette sur l'ordre du corpus, une
+       photo n'étant jamais reprise deux fois dans la même vue. Remonter une
+       carte avant ce calcul aurait redistribué les photos de toute la vue.
+       Ici chaque carte emporte la sienne, seule sa place change.
+       Partition stable : sans aucun cas marqué, `rangees` vaut `cartes`. */
+    const rangees = [
+      ...cartes.filter((carte) => carte.aLaUne),
+      ...cartes.filter((carte) => !carte.aLaUne),
+    ];
+    const aUne = rangees.length > 3;
     return {
       libelle,
       nombre: liste.length,
       besoin,
       compte: `${liste.length} ${liste.length > 1 ? "études de cas" : "étude de cas"}`,
       montreCategorie,
-      une: aUne ? cartes.slice(0, 3) : [],
-      grille: aUne ? cartes.slice(3) : cartes,
+      une: aUne ? rangees.slice(0, 3) : [],
+      grille: aUne ? rangees.slice(3) : rangees,
     };
   };
 

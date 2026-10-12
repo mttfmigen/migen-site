@@ -83,19 +83,19 @@
         "titre": "Robotique",
         "texte": "Cellules de soudure et de manutention : trajectoires, recalages, remplacement d’outils.",
         "href": "/expertises/robotique/",
-        "photo": "/assets/photos/il-technicien-maintenance-camion-1600.jpg"
+        "photo": "/assets/photos/il-engineer-check-and-control-automation-robot-ar.jpg"
       },
       {
         "titre": "Automatisme",
         "texte": "Automates de ligne et réseaux industriels : diagnostic sans arrêter l’îlot voisin.",
         "href": "/expertises/automatisme/",
-        "photo": "/assets/photos/il-technicien-maintenance-photo-4-1600.jpg"
+        "photo": "/assets/photos/env-technician-inspecting-electrical-panel-in-a-fa.jpg"
       },
       {
         "titre": "Hydraulique",
         "texte": "Presses d’emboutissage : circuits haute pression, fuites et remplacement de joints.",
         "href": "/expertises/hydraulique/",
-        "photo": "/assets/photos/env-inspection-auto-avec-equipe.jpg"
+        "photo": "/assets/photos/hydrau-presse-pupitre-manometre.jpg"
       },
       {
         "titre": "Soudure",

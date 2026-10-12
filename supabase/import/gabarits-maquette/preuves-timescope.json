@@ -14,7 +14,7 @@
     ],
     "bouton": "Mettre mon parc sous contrat de maintenance",
     "logo": "/assets/clients/timescope.png",
-    "photoHero": "/assets/photos/env-photos-industrie-aeronautique.jpg",
+    "photoHero": "/assets/photos/il-technicien-maintenance-jan-6-2026-1600.jpg",
     "chiffres": [
       {
         "libelle": "Périmètre",
@@ -186,7 +186,7 @@
         "surtitre": "Étude de cas",
         "titre": "SAVOYE : une alliance pour tenir les installations intralogistiques de ses clients",
         "href": "/preuves/savoye/",
-        "photo": "/assets/photos/aero-reacteur-capot-combinaison.jpg"
+        "photo": "/assets/photos/env-industrial-worker-inspecting-canned-goods-on-a.jpg"
       }
     ]
   }

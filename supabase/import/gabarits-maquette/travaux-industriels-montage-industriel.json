@@ -14,7 +14,7 @@
     "chiffres": [
       {
         "valeur": "+ 120",
-        "libelle": "Collaborateurs · techniciens salariés Migen, pas de chaîne d'intermédiaires."
+        "libelle": "Collaborateurs · experts techniques salariés Migen, pas de chaîne d'intermédiaires."
       },
       {
         "valeur": "+200",
@@ -26,7 +26,7 @@
       },
       {
         "valeur": "10 %",
-        "libelle": "Des techniciens retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
+        "libelle": "Des experts techniques retenus · entretien technique et entretien comportemental, résultats partagés avec vous."
       }
     ],
     "reperesReassurance": [
@@ -276,11 +276,11 @@
           },
           {
             "question": "Pouvez-vous renforcer notre équipe de montage plutôt que tout prendre ?",
-            "reponse": "Oui. Des techniciens intégrés à votre équipe projet, encadrés par Migen, sur la durée du pic de charge. C'est ce que nous faisons pour le contrôle de chantier chez ALSTEF Group."
+            "reponse": "Oui. Des experts techniques intégrés à votre équipe projet, encadrés par Migen, sur la durée du pic de charge. C'est ce que nous faisons pour le contrôle de chantier chez ALSTEF Group."
           },
           {
-            "question": "Qui sont les techniciens qui interviennent ?",
-            "reponse": "Des salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des techniciens sont retenus. Monteurs mécaniciens, électriciens, automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc."
+            "question": "Qui sont les experts techniques qui interviennent ?",
+            "reponse": "Des salariés Migen, évalués en entretien technique et en entretien comportemental. Seuls 10 % des experts techniques sont retenus. Monteurs mécaniciens, électriciens, automaticiens SIEMENS et Schneider, roboticiens ABB et Fanuc."
           }
         ]
       },

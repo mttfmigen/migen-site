@@ -21,7 +21,7 @@
         "texte": "des techniciens retenus, après un test technique et un entretien"
       },
       "photo": {
-        "src": "/assets/photos/aero-reacteur-capot-combinaison.jpg",
+        "src": "/assets/photos/il-technicien-maintenance-photo-11-1600.jpg",
         "alt": "Technicien migen en intervention"
       }
     },
@@ -515,7 +515,7 @@
           {
             "libelle": "Technicien de maintenance",
             "href": "/carriere/technicien-de-maintenance/",
-            "photo": "/assets/photos/env-photos-menuiserie.jpg"
+            "photo": "/assets/photos/il-technicien-maintenance-portrait-1-1600.jpg"
           },
           {
             "libelle": "Alternance en maintenance industrielle",

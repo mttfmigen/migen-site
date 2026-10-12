@@ -874,8 +874,16 @@ function controleTirets(reference, site, fautes) {
 
 const mesure = JSON.parse(readFileSync(REFERENCE_JSON, "utf8"));
 /* Les décisions de copie (lib/decisions-copie.ts) sont appliquées à la
-   référence avant toute comparaison : la donnée les porte déjà, la capture non. */
-const htmlReference = appliqueDecisions(readFileSync(REFERENCE_HTML, "utf8"));
+   référence avant toute comparaison : la donnée les porte déjà, la capture non.
+
+   LA PAGE EST PASSÉE EN SECOND ARGUMENT depuis le 12/10 : certaines décisions
+   ne valent que pour des pages nommées (« expert technique » sur bureau
+   d'études et travaux industriels). Sans cette identité, le module ne peut pas
+   savoir laquelle appliquer, la capture resterait à « technicien » et la porte
+   refuserait la donnée au lieu de refuser un vrai défaut. L'arbitrage reste
+   déclaré dans le module, à un seul endroit : la porte le consulte, elle ne le
+   redéclare pas. */
+const htmlReference = appliqueDecisions(readFileSync(REFERENCE_HTML, "utf8"), CHEMIN_PAGE);
 /* Sections imbriquées : les pages « édito » génériques rangent leurs sections
    numérotées dans un <article>, à l'intérieur d'une section. */
 const IMBRIQUEES = /<article\b[^]*?<section\b/.test(htmlReference);

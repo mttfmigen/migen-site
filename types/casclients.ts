@@ -134,6 +134,32 @@ export interface CasHubPreuves {
   resume: string;
   /** La fiche : « /preuves/<cas>/ ». */
   url: string;
+  /**
+   * Ce cas passe dans une CASE MISE EN AVANT, c'est-à-dire une des trois
+   * cartes à photo pleine en tête de la vue, au lieu d'attendre son tour dans
+   * la grille.
+   *
+   * POURQUOI CE CHAMP, ET POURQUOI IL NE CRÉE PAS UN SECOND MÉCANISME.
+   * Le hub choisissait ses cartes à la une PAR POSITION, « les trois premiers
+   * du corpus » (`vues-preuves.ts`, port littéral de `pvAssign` de la
+   * maquette). Les pages d'offre, elles, désignent déjà leur carte mise en
+   * avant par un CHAMP de la fiche, `casLies[].aLaUne` (`types/offre.ts`,
+   * `components/site/offre/RealisationsLiees.tsx`, en service sur
+   * `/bureau-etudes/`). Ce champ porte le même nom et le même rôle, il étend
+   * la désignation explicite au hub plutôt que d'inventer une troisième façon
+   * de mettre un cas en avant.
+   *
+   * CE QU'IL NE FAIT PAS : il ne réordonne pas le corpus. Les photos et les
+   * logos sont attribués AVANT la remontée, dans l'ordre du corpus, donc
+   * chaque carte garde exactement la photo que la maquette lui donne. Sans
+   * aucun cas marqué, la sélection reste « les trois premiers », à l'identique.
+   *
+   * Dans `types/offre.ts` le champ est une CHAÎNE, parce que la carte mise en
+   * avant d'une page d'offre affiche un surtitre (« À la une · Savoye,
+   * Norvège »). La carte à la une du hub n'a pas de surtitre : elle affiche sa
+   * catégorie et sa pastille « Récent ». Ici, le champ est donc un booléen.
+   */
+  aLaUne?: boolean;
 }
 
 /** Un type de besoin, c'est-à-dire un onglet du filtre. */

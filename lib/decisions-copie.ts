@@ -316,11 +316,170 @@ const NOUS_REJOINDRE: Regle[] = [
   [/migen recrutement/g, () => "nous rejoindre"],
 ];
 
+/* 12/10, SUR BUREAU D'ÉTUDES ET TRAVAUX INDUSTRIELS, ON DIT « EXPERT TECHNIQUE ».
+   Mehdi, en citant le bloc de chiffres « 10 % · Des techniciens retenus,
+   entretien technique ET comportemental, résultats partagés avec vous » :
+   « on avait dit que sur bureaux d'étude et travaux on parlait pas de
+   technicien mais d'expert technique ».
+
+   POURQUOI ELLE N'AVAIT PAS TENU : la chaîne « expert technique » n'existait
+   NULLE PART dans le dépôt, mesuré avant d'écrire une ligne. La décision était
+   orale, donc perdue au premier passage suivant. Elle est écrite ici, donc
+   appliquée à la capture avant comparaison, donc vérifiée des deux côtés.
+
+   C'EST UN ÉCART ASSUMÉ À LA MAQUETTE : ses dix captures de ces pages écrivent
+   « technicien », et les règles transforment donc la capture avant comparaison.
+
+   LA PORTÉE EST NOMMÉE, PAGE PAR PAGE, et c'est le point de conception nouveau
+   de ce fichier. Les décisions qui précèdent valent pour TOUT le site ;
+   celle-ci ne vaut que pour dix pages. « 10 % des techniciens retenus » vit
+   dans 146 des 246 fiches : une règle globale aurait renommé 146 pages pour une
+   demande qui en vise dix. `appliqueDecisions` reçoit donc, en SECOND argument
+   FACULTATIF, l'identité de la page, sous n'importe laquelle de ses trois
+   écritures (son URL, le nom de sa fiche, le nom ou le chemin de sa capture) :
+   `clePage` les ramène à la même clé. Sans cet argument, les règles de portée
+   restent INERTES, et tout le reste du site passe inchangé, exactement comme
+   avant. C'est pour cela qu'aucune porte existante ne change de verdict.
+
+   CE QUI CHANGE : « technicien » quand il désigne une personne de Migen
+   SÉLECTIONNÉE à l'entrée ou DÉPLOYÉE pour exécuter le travail du client.
+
+   CE QUI NE CHANGE PAS, et chaque exclusion a sa raison, pas sa commodité :
+     · le NOM DU RÉSEAU, « hubs de techniciens » : il nomme l'organisation, pas
+       la personne, il est identique sur 64 fiches, et CLAUDE.md §9 l'écrit
+       lui-même « dix hubs de techniciens » ;
+     · les techniciens DU CLIENT (« vos meilleurs techniciens détournés de la
+       production », « sans vider votre atelier de ses techniciens », « la
+       dépendance à un technicien ») : ce ne sont pas les nôtres ;
+     · le MÉTIER NOMMÉ, « technicien de maintenance », qui est le titre de
+       `/carriere/technicien-de-maintenance/`, et « Technicien en résidence »,
+       qui est le nom de l'offre `/offres/residence/` : renommer une carte du
+       cocon la ferait mentir sur la page qu'elle désigne ;
+     · les CITATIONS D'ÉTUDES DE CAS (« Six techniciens multidisciplinaires »,
+       « Un technicien électromécanicien mobilisé six mois ») : le même texte
+       vit sur la page `/preuves/` visée, hors de cette portée, et les deux se
+       contrediraient.
+
+   CE QUI EST SIGNALÉ À MEHDI ET NON TOUCHÉ, parce que ce n'est pas la copie de
+   ces pages mais celle de composants partagés par tout le site : le chiffre
+   « 10 % · des techniciens réussissent notre double évaluation »
+   (`offre/generique/maquette.js`), « Jours ouvrés · technicien depuis le hub le
+   plus proche » (`offre/generique/PageVente.tsx`), « vous présente les
+   techniciens adaptés » (`offre/AppelFinal.tsx`), « Le technicien qui les
+   connaît fait déjà partie de nos équipes » (`offre/MarquesOffre.tsx`) et
+   l'entrée de menu « Test technicien ». Le premier est une affirmation de
+   SÉLECTION, exactement celle que Mehdi vise : tant qu'il reste, les trois
+   pages filles de bureau d'études diront « experts techniques » dans leur bande
+   de chiffres et « techniciens » dans celle du gabarit. */
+const PAGES_EXPERT_TECHNIQUE = new Set([
+  "offres-bureau-etudes",
+  "bureau-etudes",
+  "bureau-etudes-bureau-etude-electrique",
+  "bureau-etudes-bureau-etude-electronique",
+  "bureau-etudes-mise-en-conformite-machine",
+  "travaux-industriels",
+  "travaux-industriels-demantelement-industriel",
+  "travaux-industriels-levage-manutention",
+  "travaux-industriels-montage-industriel",
+  "travaux-industriels-transfert-industriel",
+]);
+
+/**
+ * L'identité d'une page, ramenée à une clé unique depuis l'une de ses trois
+ * écritures : son URL (`/travaux-industriels/montage-industriel/`), le nom de
+ * sa fiche (`travaux-industriels-montage-industriel.json`) ou le nom, voire le
+ * chemin, de sa capture (`maquette/rendu/travaux-industriels--montage-industriel.html`).
+ * Les trois donnent `travaux-industriels-montage-industriel`.
+ */
+export function clePage(brut: string): string {
+  return brut
+    .replace(/\\/g, "/")
+    .replace(/^.*\/(?:rendu|gabarits-maquette)\//, "")
+    .replace(/\.(?:json|html)$/i, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+const EXPERT_TECHNIQUE: Regle[] = [
+  /* L'ÉLISION D'ABORD. « Des équipes complètes de techniciens salariés Migen »
+     donnerait « de experts techniques » si la règle nue passait la première :
+     le français élide devant une voyelle, comme pour le renommage d'Orthus. */
+  [/\bde techniciens salariés Migen\b/g, () => "d'experts techniques salariés Migen"],
+  [/\baux côtés de techniciens\b/g, () => "aux côtés d'experts techniques"],
+
+  /* LA SÉLECTION, le bloc que Mehdi cite, et ses quatre formulations. */
+  [/\b([Dd])es techniciens retenus\b/g, (_t, d) => `${d}es experts techniques retenus`],
+  [/\bdes techniciens sont retenus\b/g, () => "des experts techniques sont retenus"],
+  [/\bdes techniciens passent cette sélection\b/g, () => "des experts techniques passent cette sélection"],
+  [/\b([Cc])haque technicien qui touche\b/g, (_t, c) => `${c}haque expert technique qui touche`],
+  /* PAS DE `\b` APRÈS « confirmé », et c'est la porte qui me l'a appris. En
+     JavaScript, `\b` se calcule sur `\w`, qui est ASCII : après un « é », il
+     exige un caractère de mot à gauche, n'en trouve pas, et la règle ne part
+     jamais. La forme avec `\b` a été écrite, la porte l'a refusée, et la fiche
+     de `/bureau-etudes/mise-en-conformite-machine/` gardait « un technicien
+     confirmé » sans que rien ne le dise. Toute règle qui finit sur une lettre
+     accentuée a le même piège. */
+  [/\bun technicien confirmé/g, () => "un expert technique confirmé"],
+  [/\bles techniciens qui interviennent\b/g, () => "les experts techniques qui interviennent"],
+
+  /* L'EFFECTIF ET LE PROFIL DÉPLOYÉ.
+     LA CASSE COMPTE, et pour une raison mesurée : la capture coupe la phrase au
+     gras. « **Plus de 120 collaborateurs** : techniciens et ingénieurs
+     salariés » arrive dans la fiche en minuscules et dans la capture en
+     capitale, le gras ayant emporté le début du bloc. Une règle qui n'aurait
+     attrapé qu'une casse aurait laissé l'autre forme dans la comparaison. */
+  [/\btechniciens salariés Migen\b/g, () => "experts techniques salariés Migen"],
+  [
+    /\b([Tt])echniciens et (des )?ingénieurs salariés\b/g,
+    (_t, t, des) => `${t === "T" ? "E" : "e"}xperts techniques et ${des ?? ""}ingénieurs salariés`,
+  ],
+  [/\bdes techniciens affectés\b/g, () => "des experts techniques affectés"],
+  [
+    /\b([Dd])es techniciens intégrés à votre équipe projet\b/g,
+    (_t, d) => `${d}es experts techniques intégrés à votre équipe projet`,
+  ],
+
+  /* LES EXÉCUTANTS DU TRAVAIL.
+     « sur l'électronique » est dans la règle, et ce n'est pas du zèle : la
+     capture de `/offres/bureau-etudes/` porte AUSSI « Nos techniciens
+     interviennent en coordination avec vos équipes de maintenance », phrase de
+     `/offres/retrofit/` que le `remapOffer` de la maquette replie sur le même
+     écran. Une règle nue l'aurait réécrite dans une capture où notre fiche ne
+     la porte pas. */
+  [/\bpar nos (propres )?techniciens\b/g, (_t, propres) => `par nos ${propres ?? ""}experts techniques`],
+  [/\bNos techniciens exécutent\b/g, () => "Nos experts techniques exécutent"],
+  [
+    /\bNos techniciens interviennent sur l['’]électronique\b/g,
+    () => "Nos experts techniques interviennent sur l'électronique",
+  ],
+  [/\bpar des techniciens qui savent\b/g, () => "par des experts techniques qui savent"],
+  [/\bdes techniciens qui dépannent\b/g, () => "des experts techniques qui dépannent"],
+  [/\b([Cc])omme nos techniciens\b/g, (_t, c) => `${c}omme nos experts techniques`],
+];
+
 const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION, ...NOTAMMENT, ...ASTREINTE, ...NOUS_REJOINDRE];
 
-/** Le texte tel que le site doit le rendre, à partir de celui de la maquette. */
-export function appliqueDecisions(texte: string): string {
-  return REGLES.reduce((t, [motif, vers]) => t.replace(motif, vers), texte);
+/** Les règles qui s'appliquent à cette page : les globales, plus les siennes. */
+function reglesDe(page?: string): Regle[] {
+  if (!page || !PAGES_EXPERT_TECHNIQUE.has(clePage(page))) return REGLES;
+  /* Les règles de portée passent APRÈS les globales : la capture écrit
+     « 10 % des candidats retenus », `SELECTION` en fait « des techniciens
+     retenus », et celles-ci « des experts techniques retenus ». */
+  return [...REGLES, ...EXPERT_TECHNIQUE];
+}
+
+/**
+ * Le texte tel que le site doit le rendre, à partir de celui de la maquette.
+ *
+ * `page` est FACULTATIF et ne sert qu'aux décisions de portée limitée : son
+ * absence laisse le comportement d'avant le 12/10, mot pour mot. Les appelants
+ * qui connaissent la page qu'ils traitent (une porte qui lit UNE capture, un
+ * passage de données fiche par fiche) la passent, et l'arbitrage est alors
+ * vérifié des deux côtés. Voir `clePage` pour les écritures acceptées.
+ */
+export function appliqueDecisions(texte: string, page?: string): string {
+  return reglesDe(page).reduce((t, [motif, vers]) => t.replace(motif, vers), texte);
 }
 
 /** Les mots du contrat que le site ne rend jamais (voir scripts/verifie-interdits.mjs). */
@@ -331,8 +490,8 @@ const INTERDITS =
  * Pour un texte qui ne vient pas d'une capture (la table `seo` de la base) :
  * les décisions, puis chaque phrase qui porte un interdit retirée entière.
  */
-export function copieConforme(texte: string): string {
-  return (appliqueDecisions(texte).match(/[^.!?]+(?:[.!?]+|$)\s*/g) ?? [])
+export function copieConforme(texte: string, page?: string): string {
+  return (appliqueDecisions(texte, page).match(/[^.!?]+(?:[.!?]+|$)\s*/g) ?? [])
     .filter((phrase) => !INTERDITS.test(phrase))
     .join("")
     .trim();
