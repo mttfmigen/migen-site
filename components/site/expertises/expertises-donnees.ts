@@ -3,6 +3,8 @@ import type {
   ContenuHubExpertises,
 } from "@/types/expertises";
 
+import { photosDesCibles } from "@/lib/photo-de-la-cible";
+
 /**
  * Le contenu du HUB `/expertises/`, relevé MOT POUR MOT dans la référence :
  * la capture `maquette/rendu/expertises.html` (gabarit « 10 Hub de rubrique »,
@@ -33,7 +35,7 @@ import type {
 export const TITRE_HUB_EXPERTISES =
   "Maintenance des équipements industriels : un seul appel, huit métiers sur votre site";
 
-export const CONTENU_HUB_EXPERTISES: ContenuHubExpertises = {
+const CONTENU_HUB_EXPERTISES_DECLARE: ContenuHubExpertises = {
   gabarit: "expertises",
   pastille: "Expertises",
   chapeau: "Un seul prestataire pour toute la machine, de la transmission mécanique au robot. Huit domaines techniques, des techniciens évalués en entretien, et un compte rendu exploitable après chaque passage.",
@@ -424,6 +426,11 @@ export const CONTENU_HUB_EXPERTISES: ContenuHubExpertises = {
   ],
 };
 
+/* LES IMAGES DES CARTES SUIVENT LEUR CIBLE, depuis le 12/10. Voir
+   `lib/photo-de-la-cible.ts` : 46 images etaient ecrites en dur et quatre
+   d'entre elles couvraient quatre des six pages de hub. */
+export const CONTENU_HUB_EXPERTISES: ContenuHubExpertises = photosDesCibles(CONTENU_HUB_EXPERTISES_DECLARE);
+
 /**
  * L'ANCIENNE FORME, PLUS RENDUE : c'est la ligne que la base porte encore pour
  * `/expertises/`, et `scripts/verifie-contenu-expertises.ts` la compare au SQL
@@ -457,7 +464,7 @@ export const CONTENU_HUB_EXPERTISES: ContenuHubExpertises = {
  * Les chemins viennent de `docs/urls-site-actuel.json`, où ces dix-huit URL
  * existent déjà : rien n'est inventé.
  */
-export const CONTENU_EXPERTISES: ContenuExpertises = {
+const CONTENU_EXPERTISES_DECLARE: ContenuExpertises = {
   gabarit: "expertises",
   surtitre: "Expertises",
   chapeau:
@@ -785,3 +792,8 @@ export const CONTENU_EXPERTISES: ContenuExpertises = {
       "C’est le cas le plus fréquent. Décrivez le symptôme, nous composons l’équipe.",
   },
 };
+
+/* LES IMAGES DES CARTES SUIVENT LEUR CIBLE, depuis le 12/10. Voir
+   `lib/photo-de-la-cible.ts` : 46 images etaient ecrites en dur et quatre
+   d'entre elles couvraient quatre des six pages de hub. */
+export const CONTENU_EXPERTISES: ContenuExpertises = photosDesCibles(CONTENU_EXPERTISES_DECLARE);

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import styles from "./DernieresRealisations.module.css";
 
+import { photoDeLaPage } from "@/lib/photo-par-page";
+
 export interface Realisation {
   /** Lien vers la fiche de la réalisation. */
   href: string;
@@ -24,7 +26,7 @@ interface Proprietes {
  * Les trois fiches de la maquette, reprises mot pour mot. La maquette les fait
  * pointer sur « # » : chacune mène ici à son étude de cas.
  */
-const REALISATIONS_MAQUETTE: Realisation[] = [
+const REALISATIONS_DECLAREES: Realisation[] = [
   {
     href: "/preuves/suez-remise-en-etat/",
     image: "/assets/web/ph-tuyaux.jpg",
@@ -47,6 +49,24 @@ const REALISATIONS_MAQUETTE: Realisation[] = [
     date: "Janvier 2026",
   },
 ];
+
+/*
+ * CHAQUE CARTE MONTRE LA PHOTO DE LA PAGE QU'ELLE OUVRE, depuis le 12/10.
+ *
+ * Mehdi : « les photos ne correspondent pas aux photos du cas », « les bento
+ * ne changent pas d'image ». Mesure du même jour : 46 images venaient de
+ * `/assets/web/`, écrites en dur, et quatre d'entre elles couvraient quatre
+ * des six pages de hub. La répartition du registre ne les voyait pas, elle ne
+ * travaille que sur les fiches.
+ *
+ * `photoDeLaPage` rend la première photo du registre que la page cible sert
+ * elle-même. L'image déclarée reste le repli : une page sans photo du
+ * registre garde celle de la maquette plutôt qu'un trou.
+ */
+const REALISATIONS_MAQUETTE: Realisation[] = REALISATIONS_DECLAREES.map((r) => ({
+  ...r,
+  image: photoDeLaPage(r.href) ?? r.image,
+}));
 
 export default function DernieresRealisations({
   realisations = REALISATIONS_MAQUETTE,

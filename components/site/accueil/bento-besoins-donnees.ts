@@ -21,7 +21,9 @@
 
 import type { Besoin } from "./BentoBesoins";
 
-export const BESOINS: Besoin[] = [
+import { photoDeLaPage } from "@/lib/photo-par-page";
+
+const BESOINS_DECLARES: Besoin[] = [
   {
     id: "residence",
     need: "« J’ai besoin d’un renfort maintenance sur mon site. »",
@@ -154,3 +156,21 @@ export const BESOINS: Besoin[] = [
     img: "/assets/web/team-grind-front.jpg",
   },
 ];
+
+/*
+ * CHAQUE CARTE MONTRE LA PHOTO DE LA PAGE QU'ELLE OUVRE, depuis le 12/10.
+ *
+ * Mehdi : « les photos ne correspondent pas aux photos du cas », « les bento
+ * ne changent pas d'image ». Mesure du même jour : 46 images venaient de
+ * `/assets/web/`, écrites en dur, et quatre d'entre elles couvraient quatre
+ * des six pages de hub. La répartition du registre ne les voyait pas, elle ne
+ * travaille que sur les fiches.
+ *
+ * `photoDeLaPage` rend la première photo du registre que la page cible sert
+ * elle-même. L'image déclarée reste le repli : une page sans photo du
+ * registre garde celle de la maquette plutôt qu'un trou.
+ */
+export const BESOINS: Besoin[] = BESOINS_DECLARES.map((b) => ({
+  ...b,
+  img: photoDeLaPage(b.href) ?? b.img,
+}));
