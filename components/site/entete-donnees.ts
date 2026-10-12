@@ -115,7 +115,11 @@ export const OFFRES: Offre[] = [
   },
   {
     libelle: "migen© Full service",
-    href: "/offres/maintenance-externalisee/",
+    /* L'ADRESSE FINALE, ET NON L'ANCIENNE. `/offres/maintenance-externalisee/`
+       repond 301 vers `/offres/full-service/` : le menu principal faisait donc
+       rebondir le visiteur a chaque clic sur Full service, sur les 248 pages.
+       Trouve le 12/10 en verifiant les codes HTTP sans suivre les redirections. */
+    href: "/offres/full-service/",
     description: "Toute votre maintenance, dans un seul contrat.",
     image: "/assets/web/team-grind-front.jpg",
   },
