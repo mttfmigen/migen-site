@@ -281,7 +281,7 @@
           },
           {
             "question": "Intervenez-vous en urgence à Lille ?",
-            "reponse": "Votre demande est rappelée dans l'heure aux horaires ouvrés, et l'astreinte la nuit, le week-end et les jours fériés prend le relais la nuit, le week-end et les jours fériés. Nous n'affichons aucun délai d'intervention de façade : le circuit d'appel et les priorités s'écrivent au devis, équipement par équipement."
+            "reponse": "Votre demande est rappelée dans l'heure aux horaires ouvrés, et l'astreinte prend le relais la nuit, le week-end et les jours fériés. Nous n'affichons aucun délai d'intervention de façade : le circuit d'appel et les priorités s'écrivent au devis, équipement par équipement."
           },
           {
             "question": "Combien coûte un contrat de maintenance ?",

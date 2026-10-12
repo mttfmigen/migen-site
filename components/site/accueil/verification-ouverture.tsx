@@ -70,6 +70,27 @@ for (const interdit of [
   assert.ok(!html.includes(interdit), `copie interdite : ${interdit}`);
 }
 
+/* CE QUE LA PORTE NE VOYAIT PAS. Le 12/10, « 4 agences · +120 techniciens » a
+   été retiré à côté de la pastille « Partout en France », sur demande de
+   Mehdi : « retire le ». La porte est passée au vert SANS RIEN REMARQUER, parce
+   qu'elle n'avait aucune assertion sur cette chaîne. Une porte aveugle à une
+   décision ne la protège pas : la voici contrainte. */
+for (const interdit of [
+  "4 agences · +120 techniciens",
+  "+120 techniciens",
+]) {
+  assert.ok(
+    !html.includes(interdit),
+    `« ${interdit} » est revenu dans l'ouverture de l'accueil : Mehdi l'a fait retirer le 12/10`,
+  );
+}
+/* ET L'INVERSE, sans quoi l'assertion ci-dessus passerait aussi le jour où
+   toute la pastille disparaîtrait par accident. */
+assert.ok(
+  html.includes("Partout en France"),
+  "la pastille « Partout en France » a disparu de l'ouverture",
+);
+
 console.log("Ouverture de l'accueil : toutes les assertions passent.");
 
 // ------------------------------------------------------------ liens inertes

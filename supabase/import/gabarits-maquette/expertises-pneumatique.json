@@ -9,7 +9,7 @@
     "gabarit": "domaine",
     "pastille": "Expertises",
     "chapeau": "Nous mesurons le débit produit face au débit utile, puis nous localisons chaque fuite à l'ultrason. Nous les classons par débit perdu, et nous réparons ce qui compte en premier.",
-    "mention": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés prend le relais la nuit et le week-end.",
+    "mention": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte prend le relais la nuit, le week-end et les jours fériés.",
     "appelBouton": "Demander une intervention",
     "actions": [
       {
@@ -147,7 +147,7 @@
         "puces": [
           {
             "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-            "texte": "L'astreinte la nuit, le week-end et les jours fériés couvre la nuit et le week-end sur les sites concernés."
+            "texte": "L'astreinte couvre la nuit et le week-end sur les sites concernés."
           },
           {
             "accroche": "Un gain mesuré, pas affirmé.",

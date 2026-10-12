@@ -9,7 +9,7 @@
     "gabarit": "domaine",
     "pastille": "Expertises",
     "chapeau": "Un mécanicien évalué avant d'être envoyé chez vous, qui remonte à la cause de la casse plutôt qu'à la pièce. Il vous laisse un compte rendu écrit, exploitable par votre équipe.",
-    "mention": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés prend le relais la nuit et le week-end.",
+    "mention": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte prend le relais la nuit, le week-end et les jours fériés.",
     "appelBouton": "Demander une intervention",
     "actions": [
       {

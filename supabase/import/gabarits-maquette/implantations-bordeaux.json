@@ -282,7 +282,7 @@
           },
           {
             "question": "Intervenez-vous en urgence ?",
-            "reponse": "Oui. Votre demande obtient un rappel dans l'heure aux horaires ouvrés. L'astreinte la nuit, le week-end et les jours fériés prend le relais la nuit, le week-end et les jours fériés. Aucun délai d'intervention de façade : le circuit et les priorités s'écrivent au devis."
+            "reponse": "Oui. Votre demande obtient un rappel dans l'heure aux horaires ouvrés. L'astreinte prend le relais la nuit, le week-end et les jours fériés. Aucun délai d'intervention de façade : le circuit et les priorités s'écrivent au devis."
           },
           {
             "question": "Entretenez-vous les lignes d'embouteillage et le froid process ?",

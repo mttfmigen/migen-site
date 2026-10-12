@@ -16,12 +16,20 @@ import { altPhoto } from "@/lib/descriptions-photos";
  * COMPOSANT CLIENT pour une seule raison : l'onglet actif. Les vues arrivent
  * calculées du serveur (`vuesPreuves`), ce fichier ne fait que choisir.
  *
- * À L'OUVERTURE, l'onglet actif est la première catégorie, comme la maquette
- * (`state.cat = 0`) et sa capture. Les autres catégories sont rendues
- * MASQUÉES (`hidden`) plutôt qu'absentes : la page liste ainsi ses 41 fiches
- * dans le HTML servi, ce qu'un hub doit à son cocon, sans rien changer à ce
- * qui s'affiche. La vue « Tous » ne se rend qu'active : elle doublerait les
- * mêmes liens.
+ * À L'OUVERTURE, L'ONGLET ACTIF EST « TOUS ». Arbitrage de Mehdi le 12/10 :
+ * « c'est toujours sur la capsule maintenance en continu et pas sur Tous, ça
+ * devrait etre sur tous de base ». La maquette ouvrait sur la première
+ * catégorie (`state.cat = 0` de son script, index 1 ici puisque « Tous » prend
+ * l'index 0), et sa capture le montre : c'est donc bien un écart assumé, pas un
+ * défaut de portage.
+ *
+ * LE PIÈGE QUE CET ARBITRAGE RÉVEILLE, et il est réel. Les catégories sont
+ * rendues MASQUÉES plutôt qu'absentes, pour que la page liste ses 41 fiches
+ * dans le HTML servi : c'est ce qu'un hub doit à son cocon. Mais « Tous »
+ * contient déjà les 41 : les rendre ensemble mettrait chaque lien DEUX fois
+ * dans le HTML. La règle de rendu ci-dessous tranche selon l'onglet actif :
+ * sur « Tous », lui seul se rend, et il suffit au cocon ; sur une catégorie,
+ * toutes les catégories se rendent et « Tous » s'efface.
  */
 
 const PILULE_FONCEE = "#1c1b19";
@@ -359,7 +367,8 @@ export interface ProprietesFiltrePreuves {
 }
 
 export default function FiltrePreuves({ vues }: ProprietesFiltrePreuves) {
-  const [actif, setActif] = useState(vues.length > 1 ? 1 : 0);
+  /* 0 = « Tous ». Voir l'en-tête : arbitrage de Mehdi du 12/10. */
+  const [actif, setActif] = useState(0);
 
   return (
     <section style={{ maxWidth: 1200, margin: "0 auto", padding: "64px 40px 0" }}>
@@ -377,7 +386,11 @@ export default function FiltrePreuves({ vues }: ProprietesFiltrePreuves) {
         ))}
       </div>
       {vues.map((vue, i) =>
-        i === actif || i > 0 ? (
+        /* Sur « Tous » (actif 0), lui seul se rend : il porte les 41 fiches, le
+           cocon est servi, et aucun lien n'est écrit deux fois. Sur une
+           catégorie, toutes les catégories se rendent, les inactives masquées,
+           et « Tous » s'efface pour la même raison. */
+        i === actif || (actif !== 0 && i > 0) ? (
           <Vue key={vue.libelle} vue={vue} cachee={i !== actif} />
         ) : null,
       )}

@@ -227,6 +227,87 @@ Dernière relecture : 12/10.
 ### G34 — /implantations/ : même reproche pour le bloc « au delà des hubs »
 - [ ] NON FAIT
 
+### G35 — /offres/ : « c'est que des photos avec des avions, on doit voir du technicien »
+- [ ] EN COURS, atelier dédié
+      MESURE : sur les 17 photos de contenu de /offres/, 5 sont de
+      l'aéronautique et 2 de la menuiserie. Les 7 portent TOUTES le thème
+      `technicien` au registre, donc aucun sélecteur demandant « un technicien »
+      ne pouvait les écarter : un mécanicien penché sur un moteur d'avion EST un
+      technicien. Ce n'est pas une pénurie, 291 des 385 photos portent
+      `technicien` contre 20 pour `aeronautique`.
+      PÉRIMÈTRE RÉEL : 27 photos à sujet aéronautique servent 71 pages, et
+      22 photos à sujet menuiserie en servent 68.
+      MA PREMIÈRE RÈGLE ÉTAIT FAUSSE : « toute photo portant un thème de
+      secteur » sortait 1039 manquements, en accusant une photo de technicien
+      devant un poste électrique. Un poste électrique se lit encore comme de
+      l'industrie, un avion non. Le discriminant est le SUJET DOMINANT de
+      l'image, pas son étiquette.
+      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/inventorie-photos-hors-sujet.mjs
+      EXPECT: à redéfinir une fois les 385 photos classées par sujet dominant
+
+### G36 — /offres/zero-arret/ : le bloc « Également dans cette offre » ne sert à rien
+- [ ] NON FAIT
+      Il n'y liste qu'UNE prestation, avec un renvoi vers un guide.
+
+### G37 — /offres/bureau-etudes/ : la photo du bloc problématique est mal choisie
+- [ ] NON FAIT, même atelier que G35
+
+### G38 — /offres/bureau-etudes/ : le bloc d'appel toujours pas corrigé
+- [ ] NON FAIT, c'est G14 qu'il rouvre explicitement : « tu n'as toujours pas
+      corrigé ce bloc ». Il s'agit du bloc qui enchaîne « Nous vous rappelons
+      dans l'heure… », « Faire chiffrer mon étude » et « Structures et châssis,
+      mécano-soudé, transmissions… ».
+
+### G39 — /offres/bureau-etudes/ : un bloc qui ne contient qu'une phrase
+- [ ] NON FAIT
+      « Chaque étape a un livrable défini et un point de validation. Vous restez
+      maître des choix. » Seule dans son bloc.
+
+### G40 — Le bloc « Également dans cette offre » n'a pas toutes les prestations
+- [ ] NON FAIT
+      Sur /offres/bureau-etudes/ il n'en liste que deux. C'EST LE MÊME BLOC que
+      G16 (« pas assez complet ») et G36 (« ne sert à rien »), vu sur trois
+      pages. Sa décision se lit maintenant clairement : ce bloc doit porter
+      TOUTES les prestations regroupées sous l'offre, ou ne pas exister.
+
+### G41 — /travaux-industriels/ : retirer la phrase du premier héros
+- [ ] NON FAIT
+      « Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à
+      18h30. » À retirer du héros de cette page.
+
+### G42 — bureau d'études et travaux industriels : « expert technique », pas « technicien »
+- [ ] NON FAIT
+      Il rappelle une décision déjà prise : « on avait dit que sur bureaux
+      d'étude et travaux on parlait pas de technicien mais d'expert
+      technique ». Le bloc visé : « 10 % / Des techniciens retenus · entretien
+      technique et entretien comportemental, résultats partagés avec vous. »
+      À VÉRIFIER : cette décision est-elle écrite dans `lib/decisions-copie.ts` ?
+      Si oui, elle n'est pas appliquée et c'est un défaut de portage. Si non,
+      c'est une décision orale qui n'a jamais été inscrite, et il faut
+      l'inscrire pour qu'elle tienne.
+
+### G43 — /travaux-industriels/ : le bloc « Également dans cette offre » manque des prestations
+- [ ] NON FAIT
+      Il n'en liste que deux, Transfert industriel et Montage industriel.
+      QUATRIÈME SIGNALEMENT DU MÊME BLOC, avec G16, G36 et G40. C'est le défaut
+      le plus rapporté du site.
+
+### G44 — Mettre le cas Norvège en case mise en avant
+- [ ] NON FAIT
+
+### G45 — L'image du bloc « problématique » est partout la même sur les pages expertises
+- [ ] EN COURS, atelier photos
+      Même famille que G35.
+
+### G46 — /expertises/electromecanique/ : le bloc d'astreinte ne va pas
+- [~] UNE MOITIÉ DÉJÀ CORRIGÉE, EN ATTENTE DE DÉPLOIEMENT
+      La phrase « Un moteur en panne maintenant se traite par le dépannage
+      industriel » est retirée en local depuis G24 : il la voyait encore parce
+      que la poussée n'avait pas eu lieu. Poussée le 12/10 avec 2baf1a4.
+      RESTE : la phrase d'astreinte se répète elle-même. « L'astreinte la nuit,
+      le week-end et les jours fériés prend le relais la nuit et le week-end. »
+      dit deux fois « la nuit et le week-end ».
+
 ---
 
 ## Bloqué sur Mehdi, rien à faire de notre côté

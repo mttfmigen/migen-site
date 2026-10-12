@@ -9,7 +9,7 @@
     "gabarit": "domaine",
     "pastille": "Expertises",
     "chapeau": "Un soudeur évalué arrive sur votre site avec son outillage, reprend la casse et traite ce qui l'a provoquée. Travaux chiffrés à l'avance, sans embauche et sans investissement en matériel.",
-    "mention": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte la nuit, le week-end et les jours fériés prend le relais la nuit et le week-end.",
+    "mention": "Rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30. L'astreinte prend le relais la nuit, le week-end et les jours fériés.",
     "appelBouton": "Demander une intervention",
     "actions": [
       {
@@ -157,7 +157,7 @@
         "puces": [
           {
             "accroche": "Le rappel dans l'heure, du lundi au vendredi de 8h00 à 18h30.",
-            "texte": "L'astreinte la nuit, le week-end et les jours fériés couvre la nuit et le week-end sur les sites concernés."
+            "texte": "L'astreinte couvre la nuit et le week-end sur les sites concernés."
           },
           {
             "accroche": "Un résultat conforme au devis, avec notre responsabilité engagée sur le travail réalisé.",

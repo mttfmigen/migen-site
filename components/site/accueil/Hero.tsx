@@ -77,9 +77,9 @@ export default function Hero() {
               />
               Partout en France
             </span>
-            <span style={{ font: "400 12.5px var(--fb)", color: "var(--ink4)" }}>
-              4 agences · +120 techniciens
-            </span>
+            {/* « 4 agences · +120 techniciens » retiré le 12/10, sur demande
+                de Mehdi : « j'ai ce texte a coté de partout en france, retire
+                le ». La pastille « Partout en France » reste seule. */}
           </div>
 
           <h1

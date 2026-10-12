@@ -33,7 +33,7 @@
       }
     ],
     "brefBande": "Besoin de savoir quelle formule coûte le moins cher pour votre site ?",
-    "brefMention": "Nous vous rappelons dans l'heure. En dehors, l'astreinte la nuit, le week-end et les jours fériés prend le relais.",
+    "brefMention": "Nous vous rappelons dans l'heure. En dehors, l'astreinte prend le relais la nuit, le week-end et les jours fériés.",
     "brefBouton": {
       "libelle": "Faire chiffrer mon besoin",
       "href": "#besoin"
