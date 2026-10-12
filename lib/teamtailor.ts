@@ -32,21 +32,80 @@ const VERSION_API = "20240404";
 /** Au-delà, le candidat attend devant un écran figé. */
 const DELAI_MS = 10_000;
 
+/**
+ * LES DOUZE CHAMPS DU FORMULAIRE, et ils partent TOUS.
+ *
+ * Mehdi, le 11/10 : « un formulaire de candidature spontanée qui doit renvoyer
+ * la candidature avec toutes les infos du formulaire en commentaire ». Une
+ * première version n'en transmettait que quatre et jetait le poste visé, la
+ * mobilité, le trajet accepté, la disponibilité, l'expérience et les
+ * prétentions : exactement ce qui sert à qualifier.
+ */
 export interface Candidature {
   prenom: string;
   nom: string;
   courriel: string;
   telephone?: string;
-  ville?: string;
+  /** Poste visé, la liste déroulante « job » du formulaire. */
+  poste?: string;
+  /** Mobilité géographique : « France entière » ou une liste de régions. */
+  mobilite?: string;
+  /** Trajet maximal accepté. */
+  trajet?: string;
+  /** Sous quel délai le candidat peut démarrer. */
+  disponibilite?: string;
+  /** Années d'expérience déclarées. */
+  experience?: string;
+  /** Prétentions salariales déclarées. */
+  pretentions?: string;
   message?: string;
   /** La page d'où part la candidature, pour savoir quel métier l'a amenée. */
   origine?: string;
   /** Le métier de la page, quand la page en désigne un. */
   metier?: string;
+  /** Le candidat a-t-il joint un fichier ? Son nom, à défaut du fichier. */
+  cv?: string;
+}
+
+/**
+ * Le commentaire déposé sur la fiche : la candidature telle qu'elle a été
+ * saisie, champ par champ, dans l'ordre du formulaire.
+ *
+ * Un champ vide est ÉCRIT comme vide plutôt qu'omis : un recruteur doit voir
+ * la différence entre « le candidat n'a pas répondu » et « la question ne lui
+ * a pas été posée ». C'est la règle du dépôt, rien d'inventé, du vide plutôt
+ * que du faux.
+ */
+export function commentaireDeLaCandidature(c: Candidature): string {
+  const lignes: [string, string | undefined][] = [
+    ["Poste visé", c.poste],
+    ["Mobilité géographique", c.mobilite],
+    ["Trajet maximal accepté", c.trajet],
+    ["Disponibilité", c.disponibilite],
+    ["Années d'expérience", c.experience],
+    ["Prétentions salariales", c.pretentions],
+    ["Téléphone", c.telephone],
+    ["CV joint", c.cv],
+  ];
+  const corps = lignes.map(([l, v]) => `${l} : ${v?.trim() || "non renseigné"}`).join("\n");
+  const mot = c.message?.trim();
+  const provenance = [c.metier ? `Métier de la page : ${c.metier}` : null, c.origine ? `Page : ${c.origine}` : null]
+    .filter(Boolean)
+    .join("\n");
+  return [
+    "Candidature spontanée déposée depuis le site migen.fr",
+    "",
+    corps,
+    "",
+    `Message du candidat :\n${mot || "aucun"}`,
+    provenance ? `\n${provenance}` : "",
+  ]
+    .join("\n")
+    .trim();
 }
 
 export type ResultatDepot =
-  | { depose: true; candidatId: number }
+  | { depose: true; candidatId: number; commentaireDepose: boolean }
   | { depose: false; raison: "non-configure" | "refus-api" | "reseau"; detail: string };
 
 function config(): { cle: string; offre: string } | null {
@@ -108,9 +167,7 @@ export async function deposeCandidature(c: Candidature): Promise<ResultatDepot> 
     };
   }
 
-  const contexte = [c.metier ? `Métier visé : ${c.metier}` : null, c.origine ? `Page : ${c.origine}` : null, c.message?.trim() || null]
-    .filter(Boolean)
-    .join("\n");
+  const commentaire = commentaireDeLaCandidature(c);
 
   try {
     const profil = await appelle("/candidates", conf.cle, {
@@ -121,8 +178,8 @@ export async function deposeCandidature(c: Candidature): Promise<ResultatDepot> 
           "last-name": c.nom,
           email: c.courriel,
           phone: c.telephone ?? null,
-          "sourced": true,
-          ...(contexte ? { pitch: contexte.slice(0, 140), "internal-comment": contexte } : {}),
+          sourced: true,
+          pitch: `Candidature site${c.poste ? ` · ${c.poste}` : ""}`.slice(0, 140),
         },
       },
     });
@@ -152,7 +209,26 @@ export async function deposeCandidature(c: Candidature): Promise<ResultatDepot> 
         detail: `profil ${candidatId} créé, rattachement à l'offre refusé : ${rattachement.statut}`,
       };
     }
-    return { depose: true, candidatId };
+
+    /* LE COMMENTAIRE, ET C'EST CE QUE MEHDI A DEMANDÉ : toutes les réponses du
+       formulaire sur la fiche, pas seulement les quatre champs d'identité.
+       Il est posé APRÈS le rattachement, et son échec ne fait PAS échouer le
+       dépôt : la candidature est arrivée, c'est l'essentiel, et perdre le
+       détail est moins grave que de dire au candidat que rien n'est passé.
+       Le refus est journalisé pour que le trou se voie. */
+    const note = await appelle("/notes", conf.cle, {
+      data: {
+        type: "notes",
+        attributes: { note: commentaire },
+        relationships: { candidate: { data: { id: String(candidatId), type: "candidates" } } },
+      },
+    });
+    if (!note.ok) {
+      console.error(
+        `[teamtailor] profil ${candidatId} créé et rattaché, commentaire refusé : ${note.statut}`,
+      );
+    }
+    return { depose: true, candidatId, commentaireDepose: note.ok };
   } catch (erreur) {
     const detail = erreur instanceof Error ? erreur.message : "appel interrompu";
     return { depose: false, raison: "reseau", detail };

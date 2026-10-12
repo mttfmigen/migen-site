@@ -345,9 +345,23 @@ export default function PostulerMetier() {
           nom: lis("lastname"),
           courriel: lis("email"),
           telephone: lis("phone"),
+          poste: lis("job"),
+          /* La mobilité est une case à cocher par région : toutes les valeurs
+             portent le même nom, il faut donc les lire ensemble. */
+          mobilite: donnees.getAll("mobility").map(String).join(", "),
+          trajet: lis("commute"),
+          disponibilite: lis("start"),
+          experience: lis("years"),
+          pretentions: lis("salary"),
           message: lis("message"),
           origine: window.location.pathname,
           metier: document.querySelector("h1")?.textContent?.trim() ?? "",
+          /* Le fichier ne part pas, mais son NOM part : le recruteur sait
+             qu'un CV existe et peut le réclamer, au lieu de ne rien savoir. */
+          cv: (() => {
+            const f = donnees.get("cv");
+            return f instanceof File && f.name ? `${f.name} (non transmis, à réclamer au candidat)` : "";
+          })(),
           [CHAMP_PIEGE]: lis(CHAMP_PIEGE),
         }),
       });

@@ -102,15 +102,26 @@ export async function POST(requete: NextRequest): Promise<Response> {
     return reponse(503, NON_BRANCHE);
   }
 
+  /* LES DOUZE CHAMPS DU FORMULAIRE, et ils partent tous. Mehdi : « toutes les
+     infos du formulaire en commentaire ». Une première version n'en
+     transmettait que quatre et jetait le poste visé, la mobilité, le trajet,
+     la disponibilité, l'expérience et les prétentions, c'est-à-dire
+     précisément ce qui sert à qualifier un candidat. */
   const resultat = await deposeCandidature({
     prenom: prenom!,
     nom: nom!,
     courriel: courriel!,
     telephone: texte(source.telephone, 40),
-    ville: texte(source.ville, 80),
+    poste: texte(source.poste, 120),
+    mobilite: texte(source.mobilite, 400),
+    trajet: texte(source.trajet, 60),
+    disponibilite: texte(source.disponibilite, 60),
+    experience: texte(source.experience, 40),
+    pretentions: texte(source.pretentions, 60),
     message: texte(source.message, 2000),
     origine: texte(source.origine, 200),
     metier: texte(source.metier, 120),
+    cv: texte(source.cv, 200),
   });
 
   if (!resultat.depose) {
