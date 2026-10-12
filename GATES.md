@@ -90,13 +90,19 @@ Dernière relecture : 12/10.
 - [x] FAIT, même mécanisme que G10.
 
 ### G12 — NOS HUBS : la photo de Metz ne correspond pas
-- [ ] EN ATTENTE DE SON CRITÈRE
+- [x] RÉPONDU PAR MEHDI, suivi en G53. Il voulait une photo de la VILLE, pas une
+      scène d'usine : « pour le hub de Metz je veux une photo de la ville ». La
+      mesure a montré que 8 hubs sur 10 en ont déjà une, Metz et Dijon étant les
+      deux seuls sans. Ce n'est donc plus une question de critère, c'est deux
+      fichiers à fournir.
       MESURE : le thème de la photo servie est la métallurgie, ce qui est
       cohérent avec le bassin de Metz. Je ne sais pas ce qu'il attend à la
       place. À lui demander.
 
 ### G13 — NOS HUBS : la photo de Bordeaux est mal cadrée
-- [ ] EN ATTENTE DE SON CRITÈRE
+- [x] RÉPONDU PAR MEHDI, suivi en G54. « Pour Bordeaux évite le cadrage et mets
+      cette photo. » Le réglage de cadrage par photo, qui n'existait pas et que
+      je lui avais annoncé comme une limite, est posé. Reste son fichier.
       MESURE : le cadrage est centré par défaut, il n'existe aujourd'hui aucun
       réglage par photo. Ajouter un point de cadrage par photo est faisable,
       mais il faut savoir lequel il veut.
@@ -305,7 +311,13 @@ Dernière relecture : 12/10.
       Même famille que G35.
 
 ### G46 — /expertises/electromecanique/ : le bloc d'astreinte ne va pas
-- [~] UNE MOITIÉ DÉJÀ CORRIGÉE, EN ATTENTE DE DÉPLOIEMENT
+- [x] FAIT. Les deux moitiés. La redirection dépannage est partie avec G24. La
+      phrase d'astreinte se répétait elle-même sur 55 fichiers, en 18
+      formulations, aucune dans les 248 captures : le sujet nommait les périodes
+      et le prédicat les renommait. Cause racine, un renommage global de
+      « l'astreinte 24/24 et 7/7 » vers la forme longue sans relire les
+      prédicats. Règle inscrite dans `lib/decisions-copie.ts`, donc vérifiée des
+      deux côtés par toutes les portes. Témoin 10/10, dont 3 contrôles négatifs.
       La phrase « Un moteur en panne maintenant se traite par le dépannage
       industriel » est retirée en local depuis G24 : il la voyait encore parce
       que la poussée n'avait pas eu lieu. Poussée le 12/10 avec 2baf1a4.
