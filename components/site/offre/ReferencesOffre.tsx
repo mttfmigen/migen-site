@@ -12,6 +12,7 @@ import styles from "./PageOffre.module.css";
 import TitreEtSuite, { continueLeTitre } from "../blocs/TitreEtSuite";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 import { altPhoto } from "@/lib/descriptions-photos";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 /**
  * Section « 08 Références » de la capture (`maquette/rendu/offres--residence.html`) :
@@ -271,13 +272,28 @@ export default function ReferencesOffre({ section, dateBrute = false }: Propriet
   return (
     <section style={SECTION}>
       <div style={LARGEUR}>
+        {/* SE REPLIE AU TÉLÉPHONE, motif « Blocs communs (pliables) » de la
+            maquette mobile. Ce bloc est servi par les gabarits offre, ville,
+            spécialité, domaine et secteur : le replier ici les sert tous.
+            Le sur-titre et le `<h2>` DÉJÀ LÀ servent d'en-tête, le lien
+            « Toutes nos études de cas » reste dans le corps. Au-dessus de
+            880 px rien ne change. */}
+        <SectionPliableMobile
+          enTete={
+            <span>
+              <span style={{ ...SURTITRE, marginBottom: 16, display: "block" }}>
+                Nos réalisations
+              </span>
+              <h2 style={TITRE}>Nos références</h2>
+            </span>
+          }
+          resume={section.preuves
+            .map((preuve) => preuve.titre)
+            .filter(Boolean)
+            .join(" · ")}
+        >
         <div style={ENTETE}>
-          <div>
-            <div style={{ ...SURTITRE, marginBottom: 16 }}>
-              Nos réalisations
-            </div>
-            <h2 style={TITRE}>Nos références</h2>
-          </div>
+          <div />
           <Link href="/preuves/" prefetch={false} style={LIEN_TOUTES}>
             Toutes nos études de cas →
           </Link>
@@ -401,6 +417,7 @@ export default function ReferencesOffre({ section, dateBrute = false }: Propriet
             </Link>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );
