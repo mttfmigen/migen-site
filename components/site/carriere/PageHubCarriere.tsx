@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 
 import { VERRE } from "@/components/site/blocs/habillage";
@@ -19,6 +20,7 @@ import {
   Refus,
 } from "./SectionsHub";
 import { altPhoto } from "@/lib/descriptions-photos";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 /**
  * Le hub `/carriere/`, gabarit 10 « Hub de rubrique » servi par
@@ -37,18 +39,45 @@ import { altPhoto } from "@/lib/descriptions-photos";
  * L'ordre des sections EST celui de la capture `maquette/rendu/carriere.html`.
  */
 
-function Section({ section }: { section: SectionHub }) {
+/**
+ * LE DRAPEAU `sansEnTete` SERT LE REPLI MOBILE, pose le 12/10.
+ *
+ * Mesure du meme jour : ce hub etait la page la plus longue du site, 32,2
+ * ecrans au telephone, sans aucun bloc repliable. La page enveloppe chaque
+ * section sauf la premiere et porte son surtitre et son titre dans l'en-tete ;
+ * le rendu interne doit alors les taire, sinon ils paraissent deux fois.
+ */
+/** Le surtitre de la bascule d'un bloc replie. Il ne vit que dans l'en-tete :
+ *  le rendu interne le tait. */
+const SURTITRE_PLI: CSSProperties = {
+  font: "600 11px var(--fb)",
+  letterSpacing: ".14em",
+  textTransform: "uppercase",
+  color: "var(--acc)",
+  marginBottom: 6,
+};
+
+/** Le titre de la bascule, a l'echelle des H2 du gabarit en largeur mobile. */
+const TITRE_PLI: CSSProperties = {
+  display: "block",
+  font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
+  letterSpacing: "-.035em",
+  color: "var(--ink)",
+  margin: 0,
+};
+
+function Section({ section, sansEnTete }: { section: SectionHub; sansEnTete?: boolean }) {
   switch (section.type) {
     case "etapes":
-      return <EtapesHub section={section} />;
+      return <EtapesHub section={section} sansEnTete={sansEnTete} />;
     case "metiers":
       return <MetiersRecrutes {...section} />;
     case "refus":
-      return <Refus {...section} />;
+      return <Refus {...section} sansEnTete={sansEnTete} />;
     case "hubs":
-      return <Hubs {...section} />;
+      return <Hubs {...section} sansEnTete={sansEnTete} />;
     case "avis":
-      return <Avis {...section} />;
+      return <Avis {...section} sansEnTete={sansEnTete} />;
     case "faq":
       // `.mg-faqph` : le panneau-photo sombre de l'application, que la FAQ
       // plate du gabarit 07 ne dessine pas.
@@ -58,7 +87,7 @@ function Section({ section }: { section: SectionHub }) {
     case "postuler":
       return <PostulerMetier />;
     default:
-      return <SectionFicheMetier section={section} />;
+      return <SectionFicheMetier section={section} sansEnTete={sansEnTete} />;
   }
 }
 
@@ -206,10 +235,42 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
           </div>
         </section>
 
-        {contenu.sections.map((section, i) => (
+        {/* CHAQUE SECTION SE REPLIE AU TELEPHONE SAUF LA PREMIERE, regle de la
+            maquette mobile. Ce hub etait la page la plus longue du site, 32,2
+            ecrans. Une section sans titre non vide n'est pas repliee : il n'y
+            aurait rien a mettre sur la bascule. */}
+        {contenu.sections.map((section, i) => {
           // L'index suffit comme clé : l'ordre du tableau EST celui de la capture.
-          <Section key={`${section.type}-${i}`} section={section} />
-        ))}
+          const cle = `${section.type}-${i}`;
+          /* SEULS LES TYPES DONT LE RENDU SAIT SE TAIRE. `MetiersRecrutes` et
+             `QuestionsHub` posent leur propre h2 sans comprendre `sansEnTete` :
+             les envelopper donnait un titre EN DOUBLE, 18 h2 au lieu de 15, et
+             la porte du hub l'a refuse en comparant l'ordre des titres a la
+             capture. Les ajouter demande de leur poser le drapeau d'abord. */
+          const replie = new Set(["etapes", "refus", "hubs", "avis"]);
+          const titrable =
+            replie.has(section.type) &&
+            "titre" in section &&
+            "surtitre" in section &&
+            typeof section.titre === "string" &&
+            section.titre.trim() !== "" &&
+            typeof section.surtitre === "string" &&
+            section.surtitre.trim() !== "";
+          if (i === 0 || !titrable) return <Section key={cle} section={section} />;
+          return (
+            <SectionPliableMobile
+              key={cle}
+              enTete={
+                <span>
+                  <span style={{ ...SURTITRE_PLI, display: "block" }}>{section.surtitre}</span>
+                  <h2 style={TITRE_PLI}>{section.titre}</h2>
+                </span>
+              }
+            >
+              <Section section={section} sansEnTete />
+            </SectionPliableMobile>
+          );
+        })}
       </main>
     </div>
   );
