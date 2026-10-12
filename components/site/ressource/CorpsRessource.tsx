@@ -6,6 +6,7 @@ import type { BlocRessource, PartieRessource } from "@/types/ressource";
 
 import styles from "./Ressource.module.css";
 import * as H from "./habillage";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 /**
  * La section « Article · corps » de `MigenRessource.dc.html` : le sommaire
@@ -194,6 +195,48 @@ function BandeAppel() {
 
 const numero = (i: number) => String(i + 1).padStart(2, "0");
 
+/**
+ * LE RÉSUMÉ D'UNE PARTIE REPLIÉE, suivant la règle de la maquette mobile :
+ * `summary = punch | items joints par " · " | premier paragraphe`.
+ *
+ * On prend le premier contenu qui dise quelque chose, dans cet ordre : les
+ * intertitres, les puces, les étapes, puis le premier paragraphe. Rien n'est
+ * fabriqué : le résumé est toujours du texte déjà présent dans la partie.
+ *
+ * LE MARKDOWN EST RETIRÉ, et c'est un défaut que la porte du gabarit a
+ * attrapé sur la première version de ce résumé : le corpus écrit
+ * « **Mesurer la durée d'indisponibilité** » et « [la GMAO](/x/) », que le
+ * résumé affichait tels quels. L'audit du 09/10 est clair, aucune page ne doit
+ * montrer de Markdown. Le résumé est du texte nu : le gras et les liens n'y
+ * ont pas leur place de toute façon, il tient sur deux lignes coupées.
+ */
+function texteNu(brut: string): string {
+  return brut
+    .replace(/\*\*\[([^\]]+)\]\([^)]*\)\*\*/g, "$1")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function resumeDeLaPartie(partie: PartieRessource): string {
+  const intertitres = partie.blocs
+    .filter((b): b is { type: "intertitre"; texte: string } => b.type === "intertitre")
+    .map((b) => texteNu(b.texte))
+    .filter(Boolean);
+  if (intertitres.length) return intertitres.join(" · ");
+
+  const listes = partie.blocs.flatMap((b) =>
+    b.type === "puces" || b.type === "etapes" ? b.items.map(texteNu) : [],
+  );
+  if (listes.length) return listes.filter(Boolean).join(" · ");
+
+  const prose = partie.blocs.find(
+    (b): b is { type: "paragraphe"; texte: string } => b.type === "paragraphe",
+  );
+  return prose ? texteNu(prose.texte) : "";
+}
+
 export default function CorpsRessource({
   avant = [],
   parties = [],
@@ -227,18 +270,49 @@ export default function CorpsRessource({
           {avant.map((bloc, i) => (
             <Bloc key={`a${i}`} bloc={bloc} />
           ))}
-          {parties.map((partie, k) => (
-            <Fragment key={k}>
+          {/* CHAQUE PARTIE SE REPLIE AU TÉLÉPHONE, SAUF LA PREMIÈRE.
+              C'est la règle de la maquette mobile, `MigenMobile.dc.html` :
+              `isOpen = si < 1 || secOpen[...]`, la première section reste
+              ouverte et les suivantes sont repliées sous un résumé.
+              Mehdi, le 12/10 : « tu n'as pas déployé toute la maquette mobile,
+              il n'y a que quelques pages ». Mesure du même jour : 1 567
+              sections auraient dû se replier, 141 le faisaient, et les 41
+              pages ressource n'en avaient aucune.
+              Le titre `<h2>` EXISTANT sert d'en-tête : on n'en fabrique pas un
+              second, et l'ancre `#mr-s<n>` du sommaire reste sur lui pour que
+              les liens du sommaire continuent de tomber au bon endroit.
+              Sur ordinateur rien ne change, le repli n'a lieu qu'en dessous de
+              880 px. */}
+          {parties.map((partie, k) => {
+            const titre = (
               <h2 id={`mr-s${k + 1}`} style={H.TITRE2}>
                 <span style={H.TITRE2_NUMERO}>{numero(k)}</span>
                 {partie.titre}
               </h2>
-              {partie.blocs.map((bloc, i) => (
-                <Bloc key={i} bloc={bloc} />
-              ))}
-              {k === 1 ? <BandeAppel /> : null}
-            </Fragment>
-          ))}
+            );
+            const corps = (
+              <>
+                {partie.blocs.map((bloc, i) => (
+                  <Bloc key={i} bloc={bloc} />
+                ))}
+              </>
+            );
+            return (
+              <Fragment key={k}>
+                {k === 0 ? (
+                  <>
+                    {titre}
+                    {corps}
+                  </>
+                ) : (
+                  <SectionPliableMobile enTete={titre} resume={resumeDeLaPartie(partie)}>
+                    {corps}
+                  </SectionPliableMobile>
+                )}
+                {k === 1 ? <BandeAppel /> : null}
+              </Fragment>
+            );
+          })}
         </div>
       </div>
     </section>

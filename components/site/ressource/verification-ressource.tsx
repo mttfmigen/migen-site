@@ -105,7 +105,24 @@ function nettoie(texte: string): string {
   return texte.replace(/ /g, " ").replace(/[’‘]/g, "'").replace(/\s+/g, " ");
 }
 
-const sansBalises = (html: string) => decode(html.replace(/<[^>]+>/g, " "));
+/**
+ * LES ORNEMENTS DU REPLI MOBILE SONT RETIRÉS AVANT COMPARAISON, depuis le
+ * 12/10. Les parties d'un article se replient au téléphone, motif « Blocs
+ * communs (pliables) » de la maquette mobile : chaque en-tête porte un
+ * chevron `›` et chaque partie repliée un résumé, tous deux marqués
+ * `data-mobile-seulement` et donc absents de ce qu'un visiteur de bureau voit.
+ * La CAPTURE est de bureau et n'a aucune raison de les porter ; les garder
+ * ferait signaler « texte différent » sur un ornement.
+ *
+ * La porte garde toute sa capacité à refuser : seuls les éléments portant
+ * `data-mobile-seulement` disparaissent, le reste du texte est comparé
+ * caractère pour caractère comme avant.
+ */
+const sansOrnementsMobiles = (html: string) =>
+  html.replace(/<(\w+)[^>]*\sdata-mobile-seulement[^>]*>[\s\S]*?<\/\1>/g, " ");
+
+const sansBalises = (html: string) =>
+  decode(sansOrnementsMobiles(html).replace(/<[^>]+>/g, " "));
 const texteDe = (html: string) => normaliseTexte(sansBalises(html));
 
 /**
