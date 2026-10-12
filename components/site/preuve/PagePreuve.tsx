@@ -16,6 +16,7 @@ import styles from "./PagePreuve.module.css";
 import TitreEtSuite from "../blocs/TitreEtSuite";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 import { altPhoto } from "@/lib/descriptions-photos";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 /**
  * Gabarit « 02 Étude de cas », porté de la RÉFÉRENCE : le rendu de la maquette
@@ -1009,8 +1010,17 @@ export default function PagePreuve({
         {reponse.length > 0 ? (
           <section style={SECTION}>
             <div style={LARGEUR}>
-              <div style={KICKER}>02 · Notre réponse</div>
-              <h2 style={TITRE2}>Ce que nous avons mis en place</h2>
+              {/* SE REPLIE AU TELEPHONE, comme les sections 02 a 05 de la maquette
+                  mobile : `isOpen = si < 1 || secOpen[...]`, la 01 reste ouverte.
+                  Le surtitre et le h2 DEJA LA servent d'en-tete. */}
+              <SectionPliableMobile
+                enTete={
+                  <span>
+                    <span style={{ ...KICKER, display: "block" }}>02 · Notre réponse</span>
+                    <h2 style={TITRE2}>Ce que nous avons mis en place</h2>
+                  </span>
+                }
+              >
               <div className={styles.bento} style={REPONSE_GRILLE}>
                 {reponse.map((carte, rang) => (
                   <CarteReponse
@@ -1021,7 +1031,8 @@ export default function PagePreuve({
                   />
                 ))}
               </div>
-            </div>
+                          </SectionPliableMobile>
+</div>
           </section>
         ) : null}
 
@@ -1096,8 +1107,17 @@ export default function PagePreuve({
                 ) : null}
               </div>
               <div>
-                <div style={KICKER}>04 · Fiche mission</div>
-                <h2 style={{ ...TITRE2, margin: "0 0 26px" }}>Le dispositif</h2>
+                {/* SE REPLIE AU TELEPHONE, comme les sections 02 a 05 de la maquette
+                  mobile : `isOpen = si < 1 || secOpen[...]`, la 01 reste ouverte.
+                  Le surtitre et le h2 DEJA LA servent d'en-tete. */}
+                <SectionPliableMobile
+                  enTete={
+                    <span>
+                      <span style={{ ...KICKER, display: "block" }}>04 · Fiche mission</span>
+                      <h2 style={{ ...TITRE2, margin: "0 0 26px" }}>Le dispositif</h2>
+                    </span>
+                  }
+                >
                 <div style={DISPOSITIF_TABLE}>
                   {dispositif.map((ligne, rang) => (
                     <div
@@ -1113,7 +1133,8 @@ export default function PagePreuve({
                     </div>
                   ))}
                 </div>
-              </div>
+                              </SectionPliableMobile>
+</div>
             </div>
           </section>
         ) : null}
@@ -1125,8 +1146,17 @@ export default function PagePreuve({
             <div className={styles.panneauResultat} style={RESULTAT_PANNEAU}>
               <div aria-hidden="true" style={RESULTAT_LUEUR} />
               <div style={{ position: "relative" }}>
-                <div style={KICKER}>05 · Résultat</div>
-                <h2 style={RESULTAT_TITRE}>Le résultat</h2>
+                {/* SE REPLIE AU TELEPHONE, comme les sections 02 a 05 de la maquette
+                  mobile : `isOpen = si < 1 || secOpen[...]`, la 01 reste ouverte.
+                  Le surtitre et le h2 DEJA LA servent d'en-tete. */}
+                <SectionPliableMobile
+                  enTete={
+                    <span>
+                      <span style={{ ...KICKER, display: "block" }}>05 · Résultat</span>
+                      <h2 style={RESULTAT_TITRE}>Le résultat</h2>
+                    </span>
+                  }
+                >
                 <div
                   className={styles.resultats}
                   style={{
@@ -1148,7 +1178,8 @@ export default function PagePreuve({
                     </div>
                   ))}
                 </div>
-              </div>
+                              </SectionPliableMobile>
+</div>
             </div>
           </section>
         ) : null}
