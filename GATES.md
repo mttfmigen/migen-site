@@ -31,8 +31,12 @@ Dernière relecture : 12/10.
 - [x] FAIT
       PREUVE : `lib/secteur-du-cas.ts` déduit le secteur du texte de la fiche,
       38 photos hors secteur corrigées, 0 restante.
-      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/verifie-photos-du-secteur.mjs
+      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && bun scripts/verifie-photos-du-secteur.mjs https://migen-site.vercel.app
       EXPECT: 0 photo hors secteur
+      CETTE COMMANDE ÉTAIT FAUSSE, et elle n'a jamais rien prouvé : elle lançait
+      `node` sur un script qui importe `lib/secteur-du-cas.ts`, donc elle plantait
+      sur `ERR_UNKNOWN_FILE_EXTENSION` avant la moindre assertion. Et sans
+      `SITE_URL` la porte vise le serveur de dév, qui ne tourne pas.
       TÉMOIN : `--controle` 9/9 fautes détectées.
 
 ### G3 — Le libellé technique « pages liées » s'affichait sur le site
@@ -147,8 +151,12 @@ Dernière relecture : 12/10.
 - [x] FAIT
       PREUVE : 141 blocs repliables sur 140 pages au départ, 932 blocs sur
       233 pages à l'arrivée. Pire page passée de 36,2 à 25,6 écrans.
-      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/verifie-blocs-pliables.mjs
-      EXPECT: 932 blocs sur 233 pages
+      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && SITE_URL=https://migen-site.vercel.app node scripts/verifie-blocs-pliables.mjs
+      EXPECT: 1092 blocs sur 233 pages
+      LE COMPTE A MONTÉ depuis que ce point a été écrit, de 932 à 1092 : les
+      gabarits repliés après coup s'y sont ajoutés. Un EXPECT périmé est un
+      mensonge tranquille, il est corrigé. Et sans `SITE_URL` la porte vise le
+      serveur de dév, qui ne tourne pas : elle rendait « MESURE NON CONCLUANTE ».
 
 ### G21 — L'API SIREN n'était pas branchée sur les formulaires
 - [x] FAIT
@@ -474,7 +482,10 @@ Dernière relecture : 12/10.
       2 131 lignes nettes en moins. Restaurées à leur état commité, donc avec
       leurs photos réattribuées.
       CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/verifie-interdits.mjs
-      EXPECT: 15 formulations, le niveau de base
+      EXPECT: copie conforme aux interdits du contrat
+      L'ATTENTE PRÉCÉDENTE ÉTAIT ILLISIBLE : elle réclamait « 15 formulations »,
+      un chiffre que cette commande n'affiche jamais. Elle n'écrit un compte que
+      lorsqu'elle en trouve ; conforme, elle dit « copie conforme ».
 
 ### G56 — Deux pages inventées, retirées
 - [x] FAIT

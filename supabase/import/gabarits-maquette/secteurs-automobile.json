@@ -83,13 +83,13 @@
         "titre": "Robotique",
         "texte": "Cellules de soudure et de manutention : trajectoires, recalages, remplacement d’outils.",
         "href": "/expertises/robotique/",
-        "photo": "/assets/photos/il-engineer-check-and-control-automation-robot-ar.jpg"
+        "photo": "/assets/photos/robot-soudure-points-caisse.jpg"
       },
       {
         "titre": "Automatisme",
         "texte": "Automates de ligne et réseaux industriels : diagnostic sans arrêter l’îlot voisin.",
         "href": "/expertises/automatisme/",
-        "photo": "/assets/photos/env-technician-inspecting-electrical-panel-in-a-fa.jpg"
+        "photo": "/assets/photos/env-industrie-automobile.jpg"
       },
       {
         "titre": "Hydraulique",

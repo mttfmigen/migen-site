@@ -74,7 +74,25 @@ export const PHOTOS_HORS_INDUSTRIE: ReadonlySet<string> = new Set([
   "pharma-technicienne-machine-comprimes.jpg",
 ]);
 
-/** Vrai si `url` a le droit de montrer un marché identifiable : sa page. */
+/**
+ * Vrai si `url` a le droit de montrer un marché identifiable.
+ *
+ * DEUX CAS, et le second a été payé cher. Une page `/secteurs/<marché>/` montre
+ * son marché, c'est son sujet. Et une page de CAS CLIENT montre le secteur de
+ * son client, pour la même raison : JELD-WEN est un menuisier, sa page doit
+ * montrer un atelier de menuiserie.
+ *
+ * CE QUE LA PREMIÈRE VERSION A PRODUIT, mesuré le 13/10 : en n'exemptant que
+ * les pages de marché, elle a vidé 26 pages de cas de leur propre sujet. La
+ * page JELD-WEN servait de la chimie et de l'agroalimentaire. Deux règles
+ * posées le même jour se contredisaient, et c'est la plus récente qui avait
+ * gagné en silence.
+ *
+ * CE QUI RESTE INTERDIT, et c'est le vrai sujet du reproche de Mehdi : un
+ * secteur ÉTRANGER à la page. Un avion sur une page d'offre, de la menuiserie
+ * sur un cas automobile. La porte `verifie-photos-du-secteur.mjs` tient ce
+ * second volet, en déduisant le secteur attendu du texte de la fiche.
+ */
 export function pageDeMarche(url: string): boolean {
-  return url.startsWith("/secteurs/");
+  return url.startsWith("/secteurs/") || /^\/preuves\/[^/]+\/$/.test(url);
 }
