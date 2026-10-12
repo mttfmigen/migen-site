@@ -7,6 +7,7 @@ import type { SectionOffre } from "@/types/contenu";
 import { fusionneLigne, numerote } from "./texte-offre";
 
 import styles from "./PageOffre.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 /**
  * Section « 04 Offre » de la capture (`maquette/rendu/offres--residence.html`) :
@@ -95,14 +96,23 @@ export default function PointsOffre({ section }: ProprietesPointsOffre) {
   return (
     <section style={SECTION}>
       <div style={LARGEUR}>
-        <div className="mg-r2" style={ENTETE}>
-          <div>
-            <div style={{ ...SURTITRE, marginBottom: 18 }}>L’offre</div>
-            <h2 style={TITRE2}>
-              Ce que nous faisons, et ce que ça change pour vous
-            </h2>
-          </div>
-        </div>
+        {/* SE REPLIE AU TÉLÉPHONE, motif « Blocs communs (pliables) » de la
+            maquette mobile. Ce bloc est servi par les gabarits offre, ville,
+            spécialité, domaine et secteur : le replier ici les sert tous.
+            Le sur-titre et le `<h2>` DÉJÀ LÀ servent d'en-tête ; le compteur
+            « N points » de la maquette reste dans le corps, il appartient au
+            contenu et non à la bascule. Au-dessus de 880 px rien ne change. */}
+        <SectionPliableMobile
+          enTete={
+            <span>
+              <span style={{ ...SURTITRE, marginBottom: 18, display: "block" }}>L’offre</span>
+              <h2 style={TITRE2}>
+                Ce que nous faisons, et ce que ça change pour vous
+              </h2>
+            </span>
+          }
+          resume={points.map((point) => point.titre).filter(Boolean).join(" · ")}
+        >
         <div style={COMPTEUR}>
           {/* Comme la maquette : le nombre interpolé dans sa propre balise. */}
           <span>
@@ -169,6 +179,7 @@ export default function PointsOffre({ section }: ProprietesPointsOffre) {
             </div>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );
