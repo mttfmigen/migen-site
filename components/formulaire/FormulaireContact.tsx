@@ -25,6 +25,8 @@ import {
   type Erreurs,
 } from "./validation";
 
+import ChampEntreprise from "./ChampEntreprise";
+
 type Etat = "repos" | "envoi" | "succes" | "erreur";
 
 /**
@@ -237,6 +239,10 @@ export function FormulaireContact({
 }: Proprietes) {
   const [contact, setContact] = useState<Contact>(CONTACT_VIDE);
   const [erreurs, setErreurs] = useState<Erreurs>({});
+  /* L'ÉTABLISSEMENT DÉSIGNÉ dans la recherche d'entreprise, ou {} si le
+     visiteur a tapé un nom libre. Il remplit les cinq champs cachés que la
+     maquette pose et que le portail HubSpot attend. */
+  const [entreprise, setEntreprise] = useState<Record<string, string>>({});
   const [etat, setEtat] = useState<Etat>("repos");
   const [annonce, setAnnonce] = useState("");
   const prefixe = useId();
@@ -295,6 +301,7 @@ export function FormulaireContact({
           ...contact,
           formulaire,
           [CHAMP_PIEGE]: typeof piege === "string" ? piege : "",
+          entreprise,
           attribution: attributionCourante(window.location.pathname),
           // HubSpot range la soumission sous la page vue : l'URL complète et le
           // titre ne sont connus que du navigateur.
@@ -407,7 +414,17 @@ export function FormulaireContact({
               )}
             </label>
 
-            {champ.type === "zone" ? (
+            {champ.nom === "entreprise" ? (
+              /* LE SEUL CHAMP ADOSSÉ AU REGISTRE. Même dessin, même libellé,
+                 même place : la recherche propose, elle n'impose pas, et un
+                 nom libre reste acceptable. */
+              <ChampEntreprise
+                commun={{ ...commun, style: SAISIE }}
+                valeur={contact.entreprise}
+                surSaisie={(v) => saisit("entreprise", v)}
+                surElection={setEntreprise}
+              />
+            ) : champ.type === "zone" ? (
               <textarea {...commun} rows={3} style={ZONE} />
             ) : champ.type === "tel" ? (
               <span style={ENVELOPPE_TEL} className={styles.enveloppeTel}>

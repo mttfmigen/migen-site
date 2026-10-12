@@ -118,11 +118,19 @@ export async function POST(requete: NextRequest): Promise<Response> {
     ? (requete.cookies.get("hubspotutk")?.value ?? undefined)
     : undefined;
 
+  /* L'ÉTABLISSEMENT DÉSIGNÉ PAR LE VISITEUR, s'il en a désigné un. Sept
+     champs au plus, chacun borné, et AUCUN n'est accepté sans les autres
+     garde-fous : un SIREN doit faire neuf chiffres et un SIRET quatorze,
+     sinon la valeur est jetée. Rien n'entre ici qu'un navigateur pourrait
+     inventer à la place du registre. */
+  const entreprise = etablissementNettoye(source.entreprise);
+
   const depot = await deposeChezHubspot({
     contact,
     formulaire,
     attribution,
     page,
+    entreprise,
     hutk,
     publicite: choix?.publicite === true,
   });
@@ -159,6 +167,15 @@ interface Depot {
   hutk: string | undefined;
   /** Finalité publicitaire accordée : conditionne tout ce qui mesure la campagne. */
   publicite: boolean;
+  /**
+   * L'établissement que le visiteur a DÉSIGNÉ dans la recherche d'entreprise,
+   * renseigné depuis l'annuaire public (`lib/annuaire-entreprises.ts`). Vide
+   * quand il a tapé un nom libre : on n'invente pas un SIREN.
+   *
+   * Ce sont les cinq champs cachés que la maquette pose sur ce formulaire et
+   * qui restaient vides : `country`, `siren`, `siret`, `address`, `zip`.
+   */
+  entreprise: Record<string, string>;
 }
 
 type Resultat = { ok: true } | { ok: false; detail: string };
@@ -184,6 +201,13 @@ async function deposeChezHubspot(depot: Depot): Promise<Resultat> {
     phone: numeroComplet(depot.contact),
     message: depot.contact.message,
     formulaire_migen: depot.formulaire,
+
+    /* L'ENTREPRISE IDENTIFIÉE AU REGISTRE, quand le visiteur l'a désignée.
+       Ces propriétés existent dans le portail : `siren`, `siret` et `code_naf`
+       sur l'objet entreprise, `address`, `zip`, `city` et `country` sur le
+       contact. Si le FORMULAIRE HubSpot ne les porte pas, la soumission
+       entière serait refusée : d'où le second essai sans elles, plus bas. */
+    ...depot.entreprise,
 
     // Les UTM et la page d'entrée ne décrivent pas la demande, ils décrivent la
     // campagne qui a amené la personne : c'est de la mesure publicitaire. Sans
@@ -239,6 +263,36 @@ async function deposeChezHubspot(depot: Depot): Promise<Resultat> {
       // Le corps d'erreur HubSpot nomme la propriété fautive : c'est la seule
       // façon de diagnostiquer une propriété absente du portail.
       const detail = await reponseHubspot.text().catch(() => "");
+
+      /* SECOND ESSAI SANS L'ENRICHISSEMENT, et c'est une sécurité et non une
+         rustine. HubSpot refuse la soumission ENTIÈRE dès qu'un champ n'est
+         pas sur le formulaire ciblé. Les sept champs d'entreprise viennent
+         d'être ajoutés ; si le formulaire ne les porte pas encore, un lead
+         serait perdu pour un enrichissement facultatif. On renvoie donc la
+         demande sans eux : le contact arrive, l'enrichissement manque, et le
+         journal dit exactement ce qui a été refusé pour que Mehdi ajoute les
+         champs au formulaire. */
+      const enrichi = Object.keys(depot.entreprise).length > 0;
+      if (enrichi && reponseHubspot.status === 400) {
+        console.error(`[lead] HubSpot refuse l'enrichissement entreprise : ${detail.slice(0, 300)}`);
+        const sansEnrichissement = {
+          ...corps,
+          fields: corps.fields.filter((c) => !(c.name in depot.entreprise)),
+        };
+        const second = await fetch(
+          `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAIL_HUBSPOT}/${formulaireHubspot}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(sansEnrichissement),
+            signal: AbortSignal.timeout(DELAI_HUBSPOT_MS),
+          },
+        );
+        if (second.ok) return { ok: true };
+        const detail2 = await second.text().catch(() => "");
+        return { ok: false, detail: `HTTP ${second.status} ${detail2.slice(0, 500)}` };
+      }
+
       return {
         ok: false,
         detail: `HTTP ${reponseHubspot.status} ${detail.slice(0, 500)}`,
@@ -249,6 +303,45 @@ async function deposeChezHubspot(depot: Depot): Promise<Resultat> {
   } catch (erreur) {
     return { ok: false, detail: String(erreur) };
   }
+}
+
+/**
+ * Les champs d'entreprise que l'on accepte du navigateur, et eux seuls.
+ *
+ * CE SONT LES CINQ DU FORMULAIRE HUBSPOT, releves sur la capture envoyee par
+ * Mehdi le 12/10 : « Code pays/region », « SIREN », « Adresse postale »,
+ * « SIRET », « Code postal ». La liste est FERMEE pour deux raisons : une page
+ * ne doit pas pouvoir pousser n'importe quelle propriete dans le portail, et
+ * HubSpot refuse la soumission ENTIERE des qu'un champ n'est pas sur le
+ * formulaire.
+ *
+ * Le SIREN et le SIRET sont verifies dans leur forme, neuf et quatorze
+ * chiffres : une valeur bancale vaut mieux absente que fausse dans un CRM.
+ */
+const CHAMPS_ENTREPRISE: Record<string, { max: number; forme?: RegExp }> = {
+  siren: { max: 9, forme: /^\d{9}$/ },
+  siret: { max: 14, forme: /^\d{14}$/ },
+  address: { max: 200 },
+  zip: { max: 10 },
+  country: { max: 60 },
+};
+
+function etablissementNettoye(brut: unknown): Record<string, string> {
+  if (typeof brut !== "object" || brut === null) return {};
+  const source = brut as Record<string, unknown>;
+  const propre: Record<string, string> = {};
+  for (const [nom, regle] of Object.entries(CHAMPS_ENTREPRISE)) {
+    const v = source[nom];
+    if (typeof v !== "string") continue;
+    const t = v.trim().slice(0, regle.max);
+    if (!t) continue;
+    if (regle.forme && !regle.forme.test(t)) continue;
+    propre[nom] = t;
+  }
+  /* Tout ou rien sur l'identité : un SIRET sans SIREN, ou l'inverse, est une
+     donnée à moitié vraie. Mieux vaut n'enrichir pas du tout. */
+  if (!propre.siren || !propre.siret) return {};
+  return propre;
 }
 
 function pageNettoyee(brut: unknown): Page {
