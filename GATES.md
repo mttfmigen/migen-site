@@ -115,7 +115,18 @@ Dernière relecture : 12/10.
 - [ ] NON FAIT
 
 ### G16 — bureau-etudes : « Les prestations regroupées ici » pas assez complet
-- [ ] EN ATTENTE DE SON CRITÈRE
+- [x] FAIT. Le bloc passe de 7 à 25 prestations sur les 4 pages qui le portent.
+      MESURE : il n'existe que sur 4 adresses, et notre rendu était EXACTEMENT
+      celui de la capture, 2 / 1 / 2 / 2. Ce n'était donc pas un défaut de
+      portage mais un arbitrage contre la maquette : elle ne range dans ce bloc
+      que les offres que son propre routeur redirige, et jamais les pages filles
+      de l'offre. 18 prestations étaient orphelines de leur page.
+      LES 18 CARTES REPRENNENT LE H1 DE LEUR PAGE CIBLE, verbatim, et leur
+      accroche telle que la page cible l'écrit. 4 restent sans accroche parce
+      que leur page n'en écrit aucune : vide plutôt que faux.
+      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/verifie-prestations-regroupees.mjs
+      EXPECT: 4 blocs, 25 prestations, aucune oubliée. La porte refuse aussi
+      tout bloc de moins de 2 cartes : il n'aurait pas lieu d'être.
       MESURE : le contenu servi est exactement celui de la capture figée. Il
       faut savoir ce qu'il veut voir en plus.
 
@@ -252,7 +263,18 @@ Dernière relecture : 12/10.
       EXPECT: à redéfinir une fois les 385 photos classées par sujet dominant
 
 ### G36 — /offres/zero-arret/ : le bloc « Également dans cette offre » ne sert à rien
-- [ ] NON FAIT
+- [x] FAIT. Le bloc passe de 7 à 25 prestations sur les 4 pages qui le portent.
+      MESURE : il n'existe que sur 4 adresses, et notre rendu était EXACTEMENT
+      celui de la capture, 2 / 1 / 2 / 2. Ce n'était donc pas un défaut de
+      portage mais un arbitrage contre la maquette : elle ne range dans ce bloc
+      que les offres que son propre routeur redirige, et jamais les pages filles
+      de l'offre. 18 prestations étaient orphelines de leur page.
+      LES 18 CARTES REPRENNENT LE H1 DE LEUR PAGE CIBLE, verbatim, et leur
+      accroche telle que la page cible l'écrit. 4 restent sans accroche parce
+      que leur page n'en écrit aucune : vide plutôt que faux.
+      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/verifie-prestations-regroupees.mjs
+      EXPECT: 4 blocs, 25 prestations, aucune oubliée. La porte refuse aussi
+      tout bloc de moins de 2 cartes : il n'aurait pas lieu d'être.
       Il n'y liste qu'UNE prestation, avec un renvoi vers un guide.
 
 ### G37 — /offres/bureau-etudes/ : la photo du bloc problématique est mal choisie
@@ -270,7 +292,18 @@ Dernière relecture : 12/10.
       maître des choix. » Seule dans son bloc.
 
 ### G40 — Le bloc « Également dans cette offre » n'a pas toutes les prestations
-- [ ] NON FAIT
+- [x] FAIT. Le bloc passe de 7 à 25 prestations sur les 4 pages qui le portent.
+      MESURE : il n'existe que sur 4 adresses, et notre rendu était EXACTEMENT
+      celui de la capture, 2 / 1 / 2 / 2. Ce n'était donc pas un défaut de
+      portage mais un arbitrage contre la maquette : elle ne range dans ce bloc
+      que les offres que son propre routeur redirige, et jamais les pages filles
+      de l'offre. 18 prestations étaient orphelines de leur page.
+      LES 18 CARTES REPRENNENT LE H1 DE LEUR PAGE CIBLE, verbatim, et leur
+      accroche telle que la page cible l'écrit. 4 restent sans accroche parce
+      que leur page n'en écrit aucune : vide plutôt que faux.
+      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/verifie-prestations-regroupees.mjs
+      EXPECT: 4 blocs, 25 prestations, aucune oubliée. La porte refuse aussi
+      tout bloc de moins de 2 cartes : il n'aurait pas lieu d'être.
       Sur /offres/bureau-etudes/ il n'en liste que deux. C'EST LE MÊME BLOC que
       G16 (« pas assez complet ») et G36 (« ne sert à rien »), vu sur trois
       pages. Sa décision se lit maintenant clairement : ce bloc doit porter
@@ -298,7 +331,18 @@ Dernière relecture : 12/10.
       l'inscrire pour qu'elle tienne.
 
 ### G43 — /travaux-industriels/ : le bloc « Également dans cette offre » manque des prestations
-- [ ] NON FAIT
+- [x] FAIT. Le bloc passe de 7 à 25 prestations sur les 4 pages qui le portent.
+      MESURE : il n'existe que sur 4 adresses, et notre rendu était EXACTEMENT
+      celui de la capture, 2 / 1 / 2 / 2. Ce n'était donc pas un défaut de
+      portage mais un arbitrage contre la maquette : elle ne range dans ce bloc
+      que les offres que son propre routeur redirige, et jamais les pages filles
+      de l'offre. 18 prestations étaient orphelines de leur page.
+      LES 18 CARTES REPRENNENT LE H1 DE LEUR PAGE CIBLE, verbatim, et leur
+      accroche telle que la page cible l'écrit. 4 restent sans accroche parce
+      que leur page n'en écrit aucune : vide plutôt que faux.
+      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/verifie-prestations-regroupees.mjs
+      EXPECT: 4 blocs, 25 prestations, aucune oubliée. La porte refuse aussi
+      tout bloc de moins de 2 cartes : il n'aurait pas lieu d'être.
       Il n'en liste que deux, Transfert industriel et Montage industriel.
       QUATRIÈME SIGNALEMENT DU MÊME BLOC, avec G16, G36 et G40. C'est le défaut
       le plus rapporté du site.
@@ -419,6 +463,27 @@ Dernière relecture : 12/10.
       désormais son point de cadrage.
       ATTENDU : sa photo de Bordeaux, à déposer en
       `components/site/accueil/hubs/bordeaux.jpg`.
+
+### G55 — Une réécriture destructive de 40 fiches d'implantation, annulée avant la poussée
+- [x] FAIT
+      TROUVÉ PAR LA MESURE, pas par chance : `verifie-interdits` annonçait 241
+      formulations interdites contre 15 sur l'état commité. Les anciennes formes
+      « Astreinte 24/24 et 7/7 » et « plus de 80 réguliers » étaient revenues.
+      LA CAUSE : 40 fiches avaient été régénérées depuis une source plus
+      ancienne, perdant leur bloc `seo`, leur `titre_h1` et leur `pastille`,
+      2 131 lignes nettes en moins. Restaurées à leur état commité, donc avec
+      leurs photos réattribuées.
+      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/verifie-interdits.mjs
+      EXPECT: 15 formulations, le niveau de base
+
+### G56 — Deux pages inventées, retirées
+- [x] FAIT
+      Deux fiches servaient des adresses ABSENTES de l'index des 248 pages,
+      `/implantations/maintenance-industrielle-marseille/` et
+      `/implantations/toulouse/bordeaux/`, sans `titre_h1`. Elles ajoutaient au
+      site deux pages que personne n'a demandées.
+      CHECK: une seule fiche reste hors index, `/offres/maintenance-externalisee/`,
+      qui est la source d'une redirection 301 et non une page.
 
 ---
 
