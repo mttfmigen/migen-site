@@ -148,9 +148,25 @@ export default function PointsOffre({ section }: ProprietesPointsOffre) {
           }
           resume={points.map((point) => point.titre).filter(Boolean).join(" · ")}
         >
-        {/* La rangée d'en-tête de la capture, `1.1fr 0.9fr` dont seule la
-            colonne de gauche est remplie (tpl 518) : `mg-r2` la fait tomber en
-            une seule colonne sous 900 px, comme dans la maquette. */}
+        {/* LA RANGÉE D'EN-TÊTE DE LA CAPTURE, `1.1fr 0.9fr`, ET SES DEUX
+            ENFANTS. Le titre à gauche, le compteur à droite.
+
+            CE QUI N'ALLAIT PAS, et Mehdi l'a signalé deux fois, « le bloc est
+            clairement mal disposé » sur bureau d'études puis sur travaux
+            industriels : le compteur était rendu À L'EXTÉRIEUR de la grille.
+            Elle déclarait donc deux pistes pour UN seul enfant, et la moitié
+            droite restait vide, sur tous les gabarits qui partagent ce bloc,
+            soit plus de cent pages.
+
+            Le commentaire de portage affirmait « dont seule la colonne de
+            gauche est remplie ». C'était faux, et personne ne l'avait relu
+            contre la capture : `maquette/rendu/offres--bureau-etudes.html`
+            écrit bien « L'offre », le titre, PUIS « 6 points » dans la même
+            grille. Une hypothèse écrite en commentaire a survécu plus
+            longtemps qu'elle n'aurait dû.
+
+            `mg-r2` fait tomber la grille en une seule colonne sous 900 px,
+            comme dans la maquette. */}
         <div className="mg-r2" style={ENTETE}>
           <div>
             <div style={{ ...SURTITRE, marginBottom: 18 }}>L’offre</div>
@@ -158,12 +174,12 @@ export default function PointsOffre({ section }: ProprietesPointsOffre) {
               Ce que nous faisons, et ce que ça change pour vous
             </h2>
           </div>
-        </div>
-        <div style={COMPTEUR}>
-          {/* Comme la maquette : le nombre interpolé dans sa propre balise. */}
-          <span>
-            <span>{points.length}</span> points
-          </span>
+          <div style={COMPTEUR}>
+            {/* Comme la maquette : le nombre interpolé dans sa propre balise. */}
+            <span>
+              <span>{points.length}</span> points
+            </span>
+          </div>
         </div>
         {/* La classe `g3-offrail` branche le rail sur le moteur d'auto-
             défilement de `Moteurs.tsx` (0,45 px par image), comme dans la

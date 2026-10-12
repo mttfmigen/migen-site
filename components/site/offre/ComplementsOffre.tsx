@@ -33,6 +33,18 @@ export interface ProprietesComplementsOffre {
 
 const SECTION_COMPLEMENT: CSSProperties = { padding: "48px 0 0" };
 
+/** La bande d'une ligne de clôture : elle ferme, elle n'ouvre pas. */
+const SECTION_CLOTURE: CSSProperties = { padding: "18px 0 0" };
+
+/** Le texte d'une ligne de clôture, à l'échelle d'une note, pas d'un corps. */
+const TEXTE_CLOTURE: CSSProperties = {
+  font: "400 14.5px/1.65 var(--fb)",
+  color: "var(--ink2)",
+  margin: 0,
+  maxWidth: "78ch",
+  textWrap: "pretty",
+};
+
 /** Bloc 542 : la carte en verre, en colonnes qui se replient à 420 px. */
 const CARTE: CSSProperties = {
   ...VERRE,
@@ -100,6 +112,45 @@ export default function ComplementsOffre({
     (bloc) => !!bloc.titre || !!bloc.texte || !!bloc.puces?.length,
   );
   if (retenus.length === 0) return null;
+
+  /**
+   * UNE PHRASE SEULE N'EST PAS UN BLOC, c'est une ligne de clôture.
+   *
+   * POURQUOI. Mehdi, le 12/10, sur `/offres/bureau-etudes/` : « Ni celui ci ou
+   * il y a juste une phrase : Chaque étape a un livrable défini et un point de
+   * validation. Vous restez maître des choix. » Et avant cela, deux fois, « le
+   * bloc est clairement mal disposé ».
+   *
+   * CE QUE ÇA COÛTAIT : 48 px de section, une carte de verre à 30 px de
+   * rembourrage, la phrase, puis 32 px. Environ 130 px de hauteur et un cadre
+   * qui fait passer une ligne pour un bloc de contenu, juste après une section
+   * qui, elle, en est un.
+   *
+   * CE QUI EST CONFORME À LA CAPTURE, et il faut le dire : la maquette écrit
+   * bien cette phrase à cet endroit, dans ce cadre. Ce n'est donc PAS un défaut
+   * de portage, c'est un arbitrage de Mehdi contre sa propre maquette, comme
+   * celui qu'il a pris le même jour sur `/contact/` et sur `/implantations/`.
+   *
+   * CE QUI CHANGE, et seulement cela : la forme. Le texte n'est ni réécrit ni
+   * déplacé, il ferme la section qui le précède au lieu d'en ouvrir une
+   * nouvelle. Dès qu'il y a un titre, une puce, ou un second bloc, la carte
+   * revient telle quelle.
+   */
+  const ligneDeCloture =
+    retenus.length === 1 &&
+    !!retenus[0].texte &&
+    !retenus[0].titre &&
+    !retenus[0].puces?.length;
+
+  if (ligneDeCloture) {
+    return (
+      <section style={SECTION_CLOTURE}>
+        <div style={LARGEUR}>
+          <p style={TEXTE_CLOTURE}>{retenus[0].texte}</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section style={SECTION_COMPLEMENT}>
