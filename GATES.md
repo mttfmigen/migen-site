@@ -357,6 +357,52 @@ Dernière relecture : 12/10.
       empêche la fusion des marges du `h2`). Traité pour ce gabarit, à mesurer
       sur les autres.
 
+### G51 — La vignette de partage répondait 404 sur 247 pages
+- [x] FAIT, et c'était un défaut que j'avais poussé moi-même
+      MESURE : les 259 balises `og:image` pointaient sur
+      `https://migen.fr/assets/…` et migen.fr répond 404 sur chacune, l'ancien
+      site Astro y étant encore en ligne. Tout partage de lien sortait en
+      bandeau de texte gris.
+      LA MESURE QUI AVAIT CONCLU « 191 répondent 200 » AVAIT SUBSTITUÉ L'HÔTE.
+      CAUSE : une seule notion servait deux usages opposés. Le canonique doit
+      désigner le domaine final ; la vignette doit se télécharger aujourd'hui.
+      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/verifie-vignette-partage.mjs
+      EXPECT: VIGNETTE_PARTAGE_OK. Témoin 5/5, dont le défaut exact et un
+      contrôle négatif.
+
+### G52 — Le résumé des blocs repliés n'a jamais été affiché
+- [x] FAIT, 1092 blocs sur 233 pages
+      MESURE : le résumé était frère du `<summary>`, donc dans
+      `::details-content`, que les navigateurs récents masquent par
+      `content-visibility: hidden` quand le bloc est FERMÉ. Or fermé est le seul
+      état où il doit paraître.
+      DEUX SOURCES INDÉPENDANTES : un relecteur l'a déduit du code, un agent l'a
+      MESURÉ en production à 390 px (le paragraphe occupe sa place mais
+      `elementFromPoint` ne le renvoie jamais).
+      CHECK: curl -s https://migen-site.vercel.app/ressources/fiches-pratiques/5s/ | grep -c '</summary>'
+      VÉRIFIÉ EN LIGNE : 7 résumés, 7 dans le `<summary>`, 0 après.
+
+### G53 — Metz et Dijon n'ont pas de photo de leur ville
+- [ ] BLOQUÉ SUR MEHDI, il faut les fichiers
+      MESURE : 8 hubs sur 10 ont déjà une vraie photo de ville dans
+      `components/site/accueil/hubs/`. Metz et Dijon sont les deux seuls sans,
+      et retombent sur une scène d'usine, d'où son « la photo de Metz ne
+      correspond pas ».
+      À DÉPOSER : `components/site/accueil/hubs/metz.jpg` et `dijon.jpg`,
+      format paysage, dans l'ordre de grandeur des huit autres (370 à 710 Ko).
+      LA PHOTO DE DIJON QU'IL A ENVOYÉE PORTE UN FILIGRANE de banque d'images :
+      il faut le fichier sous licence.
+
+### G54 — Le cadrage des photos de hub
+- [~] MÉCANISME POSÉ, FICHIER ATTENDU
+      MESURE : le cadre fait 400 px de haut pour 320 de large, donc PORTRAIT,
+      alors que les photos de villes sont en PAYSAGE. Un `cover` centré n'en
+      gardait qu'une bande verticale. Il n'existait aucun réglage par photo, je
+      le lui avais dit comme une limite : elle est levée, chaque hub porte
+      désormais son point de cadrage.
+      ATTENDU : sa photo de Bordeaux, à déposer en
+      `components/site/accueil/hubs/bordeaux.jpg`.
+
 ---
 
 ## Bloqué sur Mehdi, rien à faire de notre côté
