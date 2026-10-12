@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import PlanDuSite, { type EntreePlan } from "@/components/site/plan/PlanDuSite";
 import { urlAbsolue } from "@/lib/seo/url";
+import { vignetteDeLaPage } from "@/lib/seo/vignette";
 import { lectureContenu } from "@/lib/supabase";
 
 /**
@@ -40,6 +41,20 @@ export const metadata: Metadata = {
   description:
     "Toutes les pages publiées du site Migen, groupées par rubrique : offres, expertises, secteurs, implantations.",
   alternates: { canonical: urlAbsolue("/plan-du-site/") },
+  // `type`, `locale` et `siteName` sont REPÉTÉS ici bien que la mise en page
+  // racine les porte : déclarer un `openGraph` sur une page REMPLACE celui de
+  // la racine en entier, Next ne fusionne pas les champs imbriqués. Mesuré :
+  // sans ces trois lignes, cette page perdait og:site_name, og:locale et
+  // og:type que toutes les autres portent. `title` et `description`, eux, sont
+  // laissés à Next, qui reprend ceux déclarés ci-dessus : les réécrire les
+  // ferait diverger au premier changement.
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    siteName: "Migen",
+    url: urlAbsolue("/plan-du-site/"),
+    images: vignetteDeLaPage("/plan-du-site/"),
+  },
   robots: { index: true, follow: true },
 };
 

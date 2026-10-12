@@ -6,6 +6,7 @@ import GrilleValeurs from "@/components/site/valeurs/GrilleValeurs";
 import HeroValeurs from "@/components/site/valeurs/HeroValeurs";
 import { FORMULAIRE } from "@/components/site/valeurs/valeurs-donnees";
 import { urlAbsolue } from "@/lib/seo/url";
+import { vignetteDeLaPage } from "@/lib/seo/vignette";
 
 /**
  * Page « Nos valeurs », route statique.
@@ -36,6 +37,7 @@ export const metadata: Metadata = {
     description:
       "Les cinq règles que Migen applique en maintenance industrielle, chacune avec la preuve que vous pouvez nous demander avant de signer.",
     url: urlAbsolue(CHEMIN),
+    images: vignetteDeLaPage(CHEMIN),
   },
 };
 

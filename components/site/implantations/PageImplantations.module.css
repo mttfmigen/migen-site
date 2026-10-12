@@ -29,3 +29,151 @@
 .ville:focus-visible {
   color: #ff7c3c;
 }
+
+/* ------------------------------------------------- composition du 12/10
+   Arbitrage de Mehdi contre sa maquette : « le bloc est pas jolie mal agencé
+   trop gros ». Les colonnes vivent ICI et non en style en ligne, parce qu'un
+   style en ligne ne porte pas de point de rupture. Mesures d'avant, en
+   production à 1440 px : hubs 964 px, « Au-delà des hubs » 828 px.
+   Porte : scripts/verifie-nos-villes.mjs */
+
+/* LA MÊME SURFACE POUR LES DEUX BLOCS, et c'est une correction du 12/10 après
+   relecture : le premier essai posait le verre sur les hubs et laissait
+   l'annuaire nu sur le fond de la page. Deux traitements pour deux blocs que
+   le client demandait justement de traiter « pareil » : le haut se lisait
+   comme un module, le bas comme une liste tombée dans la page. */
+.surfaceVerre {
+  border-radius: var(--rad);
+  background: rgba(255, 255, 255, var(--gl-a));
+  backdrop-filter: blur(var(--gl-b)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--gl-b)) saturate(150%);
+  border: 1px solid var(--gbd);
+}
+
+/* LES HUBS : dix rangs, donc DEUX colonnes et cinq rangées pleines. Trois
+   colonnes laissaient une dernière rangée à un seul élément : c'était là, le
+   « mal agencé ».
+
+   UNE SEULE SURFACE pour les dix, et c'est une correction du premier essai :
+   dix cartes séparées laissaient un cadre à moitié vide dès qu'un hub avait
+   peu de bassins (Lille n'en a aucun), et l'oeil lisait dix boîtes inachevées.
+   Un panneau unique avec des filets donne un tableau : le blanc d'un rang
+   devient de la respiration et non un trou. */
+.panneauHubs {
+  padding: 4px 14px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.rangHub {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--line);
+}
+.panneauHubs > .rangHub:nth-child(-n + 2) {
+  border-top: 0;
+}
+.panneauHubs > .rangHub:nth-child(odd) {
+  border-right: 1px solid var(--line);
+}
+
+/* LE PASSAGE À UNE COLONNE TOMBE SUR LE POINT DE REPLI, 880 px, et pas sur
+   1000 px comme au premier essai. Mesuré : entre 881 et 1000 px, le bloc
+   n'était pas encore replié ET le panneau était déjà sur une colonne, donc la
+   section pesait 1 900 px, presque les 1 965 px d'avant la refonte. En deux
+   colonnes sur cette bande elle tombe à 1 645 px à 1000 px et 1 826 px à
+   900 px, sans qu'aucune pastille ne déborde de sa cellule (compté : zéro). */
+@media (max-width: 880px) {
+  .panneauHubs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .panneauHubs > .rangHub:nth-child(odd) {
+    border-right: 0;
+  }
+  .panneauHubs > .rangHub:nth-child(2) {
+    border-top: 1px solid var(--line);
+  }
+}
+@media (max-width: 520px) {
+  .panneauHubs {
+    padding: 4px 6px;
+  }
+  .rangHub {
+    padding: 10px 8px;
+  }
+}
+
+/* L'ANNUAIRE DES VILLES ITINÉRANTES : un flux en colonnes au lieu de onze
+   cartes bordées. Le flux s'équilibre de lui-même, donc plus de rangée calée
+   sur la région la plus fournie (neuf villes) à côté de la plus courte (deux).
+   Le seul filet gardé est celui qui souligne le nom de chaque région ; voir
+   plus bas pourquoi celui qui séparait les colonnes a été retiré. */
+.annuaire {
+  columns: 5;
+  column-gap: 26px;
+  padding: 18px 18px 4px;
+}
+@media (max-width: 1180px) {
+  .annuaire {
+    columns: 4;
+  }
+}
+@media (max-width: 920px) {
+  .annuaire {
+    columns: 3;
+  }
+}
+@media (max-width: 700px) {
+  .annuaire {
+    columns: 2;
+    column-gap: 22px;
+    padding: 18px 16px 6px;
+  }
+}
+@media (max-width: 430px) {
+  .annuaire {
+    columns: 1;
+  }
+}
+
+/* UNE RÉGION NE SE COUPE PAS ENTRE DEUX COLONNES, et cet essai a été fait puis
+   défait. Laisser la liste couler d'une colonne à l'autre équilibrait
+   parfaitement le bloc (403 px au lieu de 494, et 23 px d'écart entre colonnes
+   au lieu de 215), mais la capture du rendu l'a tranché : la cinquième colonne
+   s'ouvrait sur « Niort, Agen, Brive-la-Gaillarde » sans aucun nom de région
+   au-dessus, juste avant le titre « Occitanie ». Trois villes de
+   Nouvelle-Aquitaine annoncées sous une autre région : un gain de hauteur ne
+   paie pas une information fausse à l'oeil.
+
+   Le bas de colonnes inégal qui en découle est traité autrement : le filet
+   vertical entre colonnes a été retiré. C'est lui qui donnait au blanc du bas
+   l'allure d'un tableau inachevé ; sans lui, un index qui se termine à des
+   hauteurs différentes se lit comme un index.
+
+   L'espacement est un `padding` et non une `margin` : une marge posée en tête
+   de colonne n'est pas rendue de la même façon d'un moteur à l'autre, les
+   hauts de colonnes seraient décalés. */
+.groupeRegion {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  padding-bottom: 14px;
+}
+
+/* L'ANNEAU DE FOCUS NE PEUT PAS RESTER ORANGE SUR FOND CLAIR. Le jeton global
+   (`app/globals.css`, `outline: 2px solid var(--acc)`) donne 6,72:1 sur
+   l'anthracite du panneau de hub, mais 2,29:1 sur le crème de la page et
+   2,56:1 sur le blanc d'une pastille : sous le plancher de 3:1 du critère
+   1.4.11 de la WCAG. Le jeton n'est PAS touché, il sert ailleurs sur fond
+   sombre ; l'anneau est seulement reteinté ici, en `--ink`, qui donne 15,4:1
+   sur le crème et 17,2:1 sur le blanc. Les deux `summary` des blocs
+   repliables appartiennent à un autre composant : ils sont atteints par
+   `:global`, depuis le conteneur de la section. */
+.nosVilles :global(summary:focus-visible),
+.hub:focus-visible,
+.zone:focus-visible,
+.ville:focus-visible {
+  outline-color: var(--ink);
+}

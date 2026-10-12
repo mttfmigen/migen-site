@@ -116,15 +116,7 @@ function colonnes(n: number): number {
   return Math.min(Math.max(n, 1), 4);
 }
 
-export function EtapesHub({
-  section,
-  sansEnTete,
-}: {
-  section: SectionEtapesHub;
-  /** Tait le surtitre et le titre : l'appelant les porte dans l'en-tête du
-   *  bloc repliable, les poser ici les ferait paraître deux fois. */
-  sansEnTete?: boolean;
-}) {
+export function EtapesHub({ section }: { section: SectionEtapesHub }) {
   const { surtitre, titre, intros, etapes, entonnoir, bande } = section;
   if (!etapes.length) return null;
   const n = etapes.length;
@@ -132,12 +124,8 @@ export function EtapesHub({
     <Enveloppe>
       <div style={LARGEUR}>
         <div style={{ maxWidth: 720, marginBottom: 34 }}>
-          {sansEnTete ? null : (
-            <>
-              <div style={SURTITRE}>{surtitre}</div>
-              <h2 style={{ ...TITRE2, margin: "0 0 18px", maxWidth: "22ch" }}>{titre}</h2>
-            </>
-          )}
+          <div style={SURTITRE}>{surtitre}</div>
+          <h2 style={{ ...TITRE2, margin: "0 0 18px", maxWidth: "22ch" }}>{titre}</h2>
           {intros?.map((t) => (
             <Paragraphe
               key={t}
@@ -259,15 +247,11 @@ export function Refus({
   titre,
   intros,
   refus,
-  sansEnTete,
 }: {
   surtitre: string;
   titre: string;
   intros?: string[];
   refus: CarteFiche[];
-  /** Tait le surtitre et le titre : l'appelant les porte dans
-   *  l'en-tete du bloc repliable. */
-  sansEnTete?: boolean;
 }) {
   if (!refus.length) return null;
   return (
@@ -297,13 +281,10 @@ export function Refus({
             }}
           />
           <div style={{ position: "relative" }}>
-            {sansEnTete ? null : (
-              <>
-                <div style={SURTITRE}>{surtitre}</div>
-                <h2 style={{ ...TITRE2, color: "#fff", margin: "0 0 18px", maxWidth: "22ch" }}>              {titre}
+            <div style={SURTITRE}>{surtitre}</div>
+            <h2 style={{ ...TITRE2, color: "#fff", margin: "0 0 18px", maxWidth: "22ch" }}>
+              {titre}
             </h2>
-              </>
-            )}
             {intros?.map((t) => (
               <Paragraphe
                 key={t}
@@ -389,7 +370,6 @@ function EnteteDeuxColonnes({
   ecart,
   largeurTitre,
   droite,
-  sansEnTete,
 }: {
   surtitre: string;
   titre: string;
@@ -397,8 +377,6 @@ function EnteteDeuxColonnes({
   ecart: number;
   largeurTitre: string;
   droite: ReactNode;
-  /** Tait le surtitre et le titre, voir EtapesHub. */
-  sansEnTete?: boolean;
 }) {
   return (
     <div
@@ -412,12 +390,8 @@ function EnteteDeuxColonnes({
       }}
     >
       <div>
-        {sansEnTete ? null : (
-          <>
-            <div style={SURTITRE}>{surtitre}</div>
-            <h2 style={{ ...TITRE2, margin: 0, maxWidth: largeurTitre }}>{titre}</h2>
-          </>
-        )}
+        <div style={SURTITRE}>{surtitre}</div>
+        <h2 style={{ ...TITRE2, margin: 0, maxWidth: largeurTitre }}>{titre}</h2>
       </div>
       <div>{droite}</div>
     </div>
@@ -429,21 +403,17 @@ export function Hubs({
   titre,
   intro,
   hubs,
-  sansEnTete,
 }: {
   surtitre: string;
   titre: string;
   intro: string;
   hubs: HubCarriere[];
-  /** Tait le surtitre et le titre, voir EtapesHub. */
-  sansEnTete?: boolean;
 }) {
   if (!hubs.length) return null;
   return (
     <Enveloppe>
       <div style={LARGEUR}>
         <EnteteDeuxColonnes
-          sansEnTete={sansEnTete}
           surtitre={surtitre}
           titre={titre}
           colonnes="minmax(0,1fr) minmax(0,1fr)"
@@ -568,22 +538,18 @@ export function Avis({
   intro,
   avis,
   fin,
-  sansEnTete,
 }: {
   surtitre: string;
   titre: string;
   intro: string;
   avis: { texte: string; libelle: string }[];
   fin?: string;
-  /** Tait le surtitre et le titre, voir EtapesHub. */
-  sansEnTete?: boolean;
 }) {
   if (!avis.length) return null;
   return (
     <Enveloppe>
       <div style={LARGEUR}>
         <EnteteDeuxColonnes
-          sansEnTete={sansEnTete}
           surtitre={surtitre}
           titre={titre}
           colonnes="1.05fr .95fr"

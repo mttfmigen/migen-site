@@ -12,7 +12,7 @@
       "pastille": "Métier",
       "chapeau": "Vous cherchez une alternance en maintenance industrielle qui fait progresser vraiment, pas une alternance où l'on photocopie ? Migen prend des alternants techniciens et les met sur le terrain dès le premier mois.",
       "paragraphes": [
-        "Cette page fait partie de l'espace [migen recrutement](/carriere/), qui rassemble nos offres et nos parcours. L'alternance en maintenance industrielle y tient une place à part : c'est notre meilleure voie pour former les techniciens de demain.",
+        "Cette page fait partie de l'espace [nous rejoindre](/carriere/), qui rassemble nos offres et nos parcours. L'alternance en maintenance industrielle y tient une place à part : c'est notre meilleure voie pour former les techniciens de demain.",
         "L'alternance, c'est un cadre signé, une école et une entreprise. Chez Migen, l'apprenti apprend le métier auprès d'un technicien confirmé, sur des équipements réels, chez de vrais clients."
       ],
       "chiffre": {
@@ -382,7 +382,7 @@
         "type": "liens",
         "items": [
           {
-            "libelle": "Migen recrutement",
+            "libelle": "Nous rejoindre",
             "href": "/carriere/",
             "photo": "/assets/photos/equipe-consignes-atelier-casques.jpg"
           }

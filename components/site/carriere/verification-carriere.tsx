@@ -98,7 +98,52 @@ const CAPTURE_STYLE = normaliseStyle(CAPTURE);
 
 /* ------------------------------------------------------------ assertions */
 
+/**
+ * LES ÉCARTS TRANCHÉS PAR MEHDI, contre sa propre capture.
+ *
+ * Chaque entrée est une décision datée, avec ce que la capture écrit et ce que
+ * le site écrit à la place. La porte vérifie LES DEUX SENS : le texte du site
+ * doit être là, et celui de la capture doit avoir DISPARU. Une tolérance qui ne
+ * vérifierait que le premier sens laisserait l'ancien texte revenir sans rien
+ * dire, ce qui est précisément la faute qu'une porte existe pour empêcher.
+ *
+ * 12/10, le titre de la page. Mehdi : « genre "migen recrutement" fais trop
+ * cabinet. La page devrait se dire "nous rejoindre" ». La capture titre bien
+ * « Migen recrutement » : c'est donc un écart assumé, pas un défaut de portage.
+ */
+const ECARTS_TRANCHES: readonly { capture: string; site: string; quand: string }[] = [
+  /* Le H1 de la page. */
+  { capture: "Migen recrutement", site: "Nous rejoindre", quand: "12/10" },
+  /* Le titre de la section, qui portait le même nom en préfixe. Le reste de la
+     phrase est celui de la capture, mot pour mot : seul le nom écarté tombe. */
+  {
+    capture: "Migen recrutement : pourquoi nous rejoindre",
+    site: "Pourquoi nous rejoindre",
+    quand: "12/10",
+  },
+];
+
+for (const ecart of ECARTS_TRANCHES) {
+  assert.ok(
+    CAPTURE_TEXTE.includes(ecart.capture),
+    `l'écart du ${ecart.quand} n'a plus d'objet : « ${ecart.capture} » a quitté ` +
+      "la capture. Retirer cette entrée, sinon la porte garde une tolérance qui " +
+      "ne protège plus rien.",
+  );
+}
+
 function dansCapture(texte: string, quoi: string): void {
+  /* Un texte issu d'un écart tranché n'est, par construction, pas dans la
+     capture : c'est le but. On vérifie alors qu'il remplace bien le texte que
+     la capture portait, et non qu'il sort de nulle part. */
+  const ecart = ECARTS_TRANCHES.find((e) => sansMarkdown(texte).includes(e.site));
+  if (ecart) {
+    assert.ok(
+      CAPTURE_TEXTE.includes(ecart.capture),
+      `${quoi} : l'écart du ${ecart.quand} ne retrouve plus « ${ecart.capture} » dans la capture`,
+    );
+    return;
+  }
   assert.ok(
     CAPTURE_TEXTE.includes(sansMarkdown(texte)),
     `${quoi} : « ${texte.slice(0, 80)} » ne se retrouve pas dans la capture`,
@@ -251,6 +296,18 @@ console.log("0 · le contrôle sait échouer : copie absente, dessin absent, tir
 process.env.__NEXT_TRAILING_SLASH = "true";
 const RENDU = renderToStaticMarkup(<PageHubCarriere contenu={HUB_CARRIERE} />);
 
+/* LE SECOND SENS DES ÉCARTS TRANCHÉS, et il ne peut vivre qu'ici : le rendu
+   n'existe pas plus haut dans le fichier. Sans lui, la porte vérifierait que
+   le nouveau texte est là sans jamais vérifier que l'ancien a disparu, et
+   « Migen recrutement » pourrait revenir en silence. */
+for (const ecart of ECARTS_TRANCHES) {
+  assert.ok(
+    !texteLisible(RENDU).includes(ecart.capture),
+    `« ${ecart.capture} » est revenu dans le rendu du hub : Mehdi l'a écarté ` +
+      `le ${ecart.quand} au profit de « ${ecart.site} »`,
+  );
+}
+
 /* ------------------------------------------------------- 1. mot pour mot */
 
 const toutes = chaines(HUB_CARRIERE);
@@ -270,7 +327,20 @@ console.log(`1 · mot pour mot : ${toutes.length} chaînes de la donnée retrouv
 
 const titresDe = (html: string) =>
   [...html.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/g)].map((m) => texteLisible(m[1]).trim());
-assert.deepEqual(titresDe(RENDU), titresDe(CAPTURE), "les titres de section ne suivent pas la capture");
+/* LES ÉCARTS TRANCHÉS S'APPLIQUENT AU CÔTÉ ATTENDU, pas au côté mesuré.
+   La comparaison reste une égalité de LISTES ORDONNÉES : elle continue donc
+   d'attraper un titre manquant, un titre en trop, et un titre déplacé. Seul le
+   libellé que Mehdi a écarté est substitué, et l'assertion des deux sens plus
+   haut garantit que l'ancien libellé a bien disparu du rendu. */
+const titresAttendus = titresDe(CAPTURE).map((titre) => {
+  const ecart = ECARTS_TRANCHES.find((e) => e.capture === titre);
+  return ecart ? ecart.site : titre;
+});
+assert.deepEqual(
+  titresDe(RENDU),
+  titresAttendus,
+  "les titres de section ne suivent pas la capture, écarts tranchés appliqués",
+);
 
 const liensDe = (html: string) =>
   new Set([...html.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)].map((m) => m[1]));

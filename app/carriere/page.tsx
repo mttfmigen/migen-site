@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { HUB_CARRIERE } from "@/components/site/carriere/donnees-hub";
 import PageHubCarriere from "@/components/site/carriere/PageHubCarriere";
+import { vignetteDeLaPage } from "@/lib/seo/vignette";
 
 /**
  * Le hub `/carriere/`, gabarit 10 « Hub de rubrique » de l'index de la
@@ -18,9 +19,9 @@ import PageHubCarriere from "@/components/site/carriere/PageHubCarriere";
  * « | Migen » est celui de la fiche.
  */
 
-const TITRE = "Migen recrutement | Migen";
+const TITRE = "Nous rejoindre | Migen";
 const DESCRIPTION =
-  "Migen recrutement : rejoindre une entreprise de maintenance industrielle qui évalue vraiment ses techniciens. Postes, alternance, candidature.";
+  "Rejoindre une entreprise de maintenance industrielle qui évalue vraiment ses techniciens. Postes, alternance, candidature.";
 
 export const metadata: Metadata = {
   title: TITRE,
@@ -33,6 +34,7 @@ export const metadata: Metadata = {
     title: TITRE,
     description: DESCRIPTION,
     url: "/carriere/",
+    images: vignetteDeLaPage("/carriere/"),
   },
 };
 

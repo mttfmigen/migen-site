@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { LARGEUR, SECTION, SURTITRE } from "@/components/site/blocs/habillage";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 import styles from "./PageVille.module.css";
 import { altPhoto } from "@/lib/descriptions-photos";
@@ -67,10 +68,21 @@ const CARTES = [
   },
 ] as const;
 
+/**
+ * Le H2 de la capture, à 12 px près.
+ *
+ * LA CAPTURE POSE `margin: 0 0 26px` (tpl 1130), et c'est l'écart entre le
+ * titre et le bento. Le bloc repliable ajoute `.corps { margin-top: 12px }`
+ * sous le `<summary>` : laissé à 26, l'écart de bureau passait à 38 px et
+ * tout ce qui suit le maillage descendait de 12 px. Mesuré à 1440 px sur
+ * `/implantations/lyon/` : bento à 7595 px avant, 7607 px avec 26. Les 26 px
+ * de la capture sont donc rendus par 14 + 12, et le bureau ne bouge pas d'un
+ * pixel. La porte ne relève pas cette marge ; c'est la mesure qui la tient.
+ */
 const TITRE: CSSProperties = {
   font: "600 calc(clamp(26px,2.8vw,38px) * var(--ts))/1.1 var(--ft)",
   letterSpacing: "-.04em",
-  margin: "0 0 26px",
+  margin: "0 0 14px",
   maxWidth: "24ch",
   textWrap: "balance",
 };
@@ -132,8 +144,25 @@ export default function MaillageVille() {
   return (
     <section style={SECTION}>
       <div style={LARGEUR}>
-        <div style={{ ...SURTITRE, marginBottom: 14 }}>Nos offres</div>
-        <h2 style={TITRE}>Les six offres, dans chaque bassin.</h2>
+        {/* SE REPLIE AU TÉLÉPHONE, motif « Blocs communs (pliables) » de
+            `MigenMobile.dc.html`. Six cartes à photo de 210 px minimum, en
+            une colonne sous 560 px : 1560 px sur les 75 pages, le deuxième
+            écran le plus lourd du gabarit après le hub local, et il ne porte
+            que six liens vers les offres.
+
+            LE SUR-TITRE ET LE H2 DÉJÀ LÀ servent d'en-tête : on n'en
+            fabrique pas un second. Le résumé suit la maquette mobile, les
+            intitulés des cartes joints par « · ». Au-dessus de 880 px rien
+            ne change, chevron et résumé y sont masqués. */}
+        <SectionPliableMobile
+          enTete={
+            <span>
+              <span style={{ ...SURTITRE, marginBottom: 14, display: "block" }}>Nos offres</span>
+              <h2 style={TITRE}>Les six offres, dans chaque bassin.</h2>
+            </span>
+          }
+          resume={CARTES.map((carte) => carte.titre).join(" · ")}
+        >
         <div className="g3-bento5" style={GRILLE}>
           {CARTES.map((carte) => (
             <Link
@@ -162,6 +191,7 @@ export default function MaillageVille() {
             </Link>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

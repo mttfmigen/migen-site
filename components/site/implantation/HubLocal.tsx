@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import type { HubLocal as DonneesHubLocal } from "@/types/implantation";
 
 import styles from "./PageVille.module.css";
@@ -24,10 +25,19 @@ import { altPhoto } from "@/lib/descriptions-photos";
 const TELEPHONE = "04 78 33 72 05";
 const TELEPHONE_HREF = "tel:+33478337205";
 
+/**
+ * Le H2 de la capture, à 12 px près.
+ *
+ * LA CAPTURE POSE `margin: 0 0 28px` (tpl 406). Le bloc repliable ajoute
+ * `.corps { margin-top: 12px }` sous le `<summary>` : les 28 px de la capture
+ * sont donc rendus par 16 + 12, et la grille du hub reste exactement là où
+ * elle était sur grand écran. Même arbitrage que `MaillageVille`, et c'est la
+ * mesure à 1440 px qui le tient, pas une intention.
+ */
 const TITRE: CSSProperties = {
   font: "600 calc(clamp(28px,3vw,44px) * var(--ts))/1.08 var(--ft)",
   letterSpacing: "-.045em",
-  margin: "0 0 28px",
+  margin: "0 0 16px",
   maxWidth: "26ch",
   textWrap: "balance",
   color: "var(--ink)",
@@ -207,8 +217,27 @@ export default function HubLocal({ hub }: { hub: DonneesHubLocal }) {
   return (
     <section style={SECTION}>
       <div style={LARGEUR}>
-        <div style={{ ...SURTITRE, marginBottom: 14 }}>{hub.surtitre}</div>
-        <h2 style={TITRE}>{hub.titre}</h2>
+        {/* SE REPLIE AU TÉLÉPHONE, motif « Blocs communs (pliables) » de
+            `MigenMobile.dc.html`. C'EST L'ÉCRAN LE PLUS LOURD DU GABARIT :
+            1791 px en moyenne sur les 75 pages (jusqu'à 2258), le panneau à
+            photo de 420 px, les cartes du bassin en une colonne et la bande
+            des zones s'empilant sous 900 px.
+
+            LE SUR-TITRE ET LE H2 DÉJÀ LÀ servent d'en-tête, et ils vivent
+            HORS de la grille (relevé tpl 405-407 de
+            `maquette/rendu/implantations--lyon.html`) : les envelopper ne
+            déplace donc pas le dessin de bureau. Le résumé suit la maquette
+            mobile : le nom du hub puis les intitulés des cartes, joints par
+            « · ». */}
+        <SectionPliableMobile
+          enTete={
+            <span>
+              <span style={{ ...SURTITRE, marginBottom: 14, display: "block" }}>{hub.surtitre}</span>
+              <h2 style={TITRE}>{hub.titre}</h2>
+            </span>
+          }
+          resume={[hub.nom, ...hub.cartes.map((carte) => carte.titre)].filter(Boolean).join(" · ")}
+        >
         <div className="mg-r2" style={GRILLE}>
           <div style={PANNEAU}>
             <Image
@@ -284,6 +313,7 @@ export default function HubLocal({ hub }: { hub: DonneesHubLocal }) {
             </div>
           </div>
         ) : null}
+        </SectionPliableMobile>
       </div>
     </section>
   );

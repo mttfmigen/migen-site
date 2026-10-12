@@ -99,13 +99,13 @@ export interface ContenuHubCarriere {
 }
 
 export const HUB_CARRIERE: ContenuHubCarriere = {
-  "titre": "Migen recrutement",
+  "titre": "Nous rejoindre",
   "heros": {
     "pastille": "Carrière",
     "chapeau": "Technicien de terrain, l'usine tourne grâce à vous, mais votre employeur vous traite comme une ligne sur un planning. Le recrutement chez [Migen](/) part de l'inverse : le savoir-faire d'abord, la personne ensuite.",
     "paragraphes": [
       "Cette page présente les façons de travailler chez nous, nos postes et notre processus de recrutement. Migen est une entreprise de maintenance industrielle créée en 2021 par Nathan Jorez.",
-      "Migen recrutement, ce n'est pas un formulaire anonyme. C'est un échange avec des gens qui connaissent votre travail, partout en France."
+      "Nous rejoindre, ce n'est pas un formulaire anonyme. C'est un échange avec des gens qui connaissent votre travail, partout en France."
     ],
     "chiffre": {
       "valeur": "10 %",
@@ -140,7 +140,7 @@ export const HUB_CARRIERE: ContenuHubCarriere = {
     },
     {
       "surtitre": "01 · Pourquoi nous",
-      "titre": "Migen recrutement : pourquoi nous rejoindre",
+      "titre": "Pourquoi nous rejoindre",
       "type": "bento",
       "intros": [
         "Le quotidien d'un technicien de maintenance mal accompagné, on le connaît : la même panne qui revient, l'astreinte qui sonne seul, l'évolution qui n'arrive jamais. Nous avons bâti l'inverse.",

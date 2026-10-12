@@ -73,6 +73,22 @@ const pagesIndex = Array.isArray(index) ? index : (index.pages ?? index);
 const urls = [...new Set(pagesIndex.map((p) => p?.url).filter(Boolean))];
 
 const fautes = [];
+/**
+ * LES PAGES QUI N'ONT PAS RÉPONDU.
+ *
+ * LE TROU QU'ELLES BOUCHENT, signalé le 12/10 : la boucle avalait chaque page
+ * injoignable par un `catch { return }`, au motif que « une page injoignable est
+ * signalée par les autres portes ». Conséquence : si 240 des 248 pages tombaient
+ * et que les 8 restantes portaient des blocs sains, la porte annonçait
+ * tranquillement « 8 pages, tant de blocs, vert ». Une porte qui conclut sur
+ * des données partielles ne protège plus rien, et c'est la faute la plus grave
+ * qu'une porte puisse commettre sur ce projet.
+ *
+ * Désormais : une seule page muette suffit à rendre la mesure NON CONCLUANTE.
+ * La porte ne dit pas « c'est faux », elle dit « je n'ai pas pu mesurer », ce
+ * qui est la vérité et se répare autrement.
+ */
+const injoignables = [];
 let blocs = 0;
 let pages = 0;
 const LOT = 10;
@@ -83,10 +99,14 @@ for (let i = 0; i < urls.length; i += LOT) {
       let html;
       try {
         const r = await fetch(SITE + url, { signal: AbortSignal.timeout(30000) });
-        if (!r.ok) return;
+        if (!r.ok) {
+          injoignables.push(`${url} : HTTP ${r.status}`);
+          return;
+        }
         html = await r.text();
-      } catch {
-        return; // une page injoignable est signalée par les autres portes
+      } catch (erreur) {
+        injoignables.push(`${url} : ${erreur?.cause?.code ?? erreur?.name ?? "injoignable"}`);
+        return;
       }
       const trouves = blocsPliables(html);
       if (trouves.length === 0) return;
@@ -104,6 +124,16 @@ for (let i = 0; i < urls.length; i += LOT) {
       }
     }),
   );
+}
+
+/* LE VERDICT DE COUVERTURE PASSE AVANT TOUT AUTRE. Compter des blocs sur un
+   echantillon muet n'a pas de sens, et un vert obtenu ainsi est un mensonge. */
+if (injoignables.length > 0) {
+  console.log(`MESURE NON CONCLUANTE : ${injoignables.length} page(s) sur ${urls.length} n'ont pas repondu.`);
+  for (const i of injoignables.slice(0, 10)) console.log(`  ${i}`);
+  if (injoignables.length > 10) console.log(`  … et ${injoignables.length - 10} autres`);
+  console.log(`\nLe serveur doit repondre sur les ${urls.length} adresses pour que le compte vaille quelque chose.`);
+  process.exit(1);
 }
 
 if (blocs === 0) {

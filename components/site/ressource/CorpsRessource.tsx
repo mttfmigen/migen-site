@@ -266,7 +266,10 @@ export default function CorpsRessource({
             {H.COPIE.expert}
           </a>
         </nav>
-        <div style={H.COLONNE}>
+        {/* `styles.colonne` ne porte AUCUN dessin : il sert d'ancre à la règle
+            qui annule, au-dessus de 880 px, les pixels que le repli mobile
+            ajoutait (voir `Ressource.module.css`). */}
+        <div className={styles.colonne} style={H.COLONNE}>
           {avant.map((bloc, i) => (
             <Bloc key={`a${i}`} bloc={bloc} />
           ))}

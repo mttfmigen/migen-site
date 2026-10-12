@@ -251,6 +251,47 @@ const PIED_CARTE: CSSProperties = {
   gap: 12,
 };
 
+/**
+ * L'ÉTIQUETTE DE LA BASCULE : des `<span>`, et c'est voulu.
+ *
+ * MOTIF DE RÉFÉRENCE, déjà appliqué et vérifié sur le gabarit métier
+ * (`components/site/metier/PageFicheMetier.tsx`, mêmes deux constantes).
+ * Recopié ici À L'IDENTIQUE, pour ce bloc partagé par les gabarits offre,
+ * ville, spécialité, domaine et secteur.
+ *
+ * LE PIÈGE A DEUX FACES, et les deux ont été payées le 12/10. Un `<span>` À
+ * LA PLACE du `<h2>` retire le titre de la structure du document : la porte
+ * des blocs pliables l'a refusé 120 fois. Un `<h2>` DANS LA BASCULE le remet
+ * dans la structure, mais il quitte la cellule de grille où la capture le
+ * place : mesuré sur les 131 pages de ces cinq gabarits qui ont une capture,
+ * 246 en-têtes sur 246, dont les 123 rangées « 08 Références » servies vides
+ * de leur titre, une demi-colonne pour rien à côté du lien.
+ *
+ * La bonne réponse ne choisit pas : le `<h2>` de la section RESTE dans sa
+ * rangée, à la taille de sa capture, et la bascule porte une étiquette qui
+ * n'existe QUE sous 880 px, marquée `data-mobile-seulement` comme le chevron
+ * et le résumé du même bloc. Au-dessus, elle n'est pas affichée, et la
+ * bascule non plus (voir `.blocPliablePartage` dans le module CSS) : un
+ * visiteur de bureau voit exactement sa capture, et la structure du document
+ * garde un seul titre par section.
+ */
+const ETIQUETTE_SURTITRE: CSSProperties = {
+  display: "block",
+  font: "600 11px var(--fb)",
+  letterSpacing: ".14em",
+  textTransform: "uppercase",
+  color: "var(--acc)",
+  marginBottom: 6,
+};
+
+/** Le libellé de la bascule, à l'échelle des H2 du gabarit en largeur mobile. */
+const ETIQUETTE_TITRE: CSSProperties = {
+  display: "block",
+  font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
+  letterSpacing: "-.035em",
+  color: "var(--ink)",
+};
+
 const FLECHE: CSSProperties = {
   width: 34,
   height: 34,
@@ -271,20 +312,20 @@ export default function ReferencesOffre({ section, dateBrute = false }: Propriet
 
   return (
     <section style={SECTION}>
-      <div style={LARGEUR}>
+      <div className={styles.blocPliablePartage} style={LARGEUR}>
         {/* SE REPLIE AU TÉLÉPHONE, motif « Blocs communs (pliables) » de la
             maquette mobile. Ce bloc est servi par les gabarits offre, ville,
             spécialité, domaine et secteur : le replier ici les sert tous.
-            Le sur-titre et le `<h2>` DÉJÀ LÀ servent d'en-tête, le lien
-            « Toutes nos études de cas » reste dans le corps. Au-dessus de
-            880 px rien ne change. */}
+            LA BASCULE PORTE UNE ÉTIQUETTE, PAS LE TITRE : le surtitre et le
+            `<h2>` de la capture restent dans leur rangée ci-dessous, à leur
+            place et à leur taille (relevé tpl 948 à 952). Au-dessus de 880 px
+            la bascule entière est retirée, elle ne laisse donc aucun arrêt de
+            tabulation muet. */}
         <SectionPliableMobile
           enTete={
-            <span>
-              <span style={{ ...SURTITRE, marginBottom: 16, display: "block" }}>
-                Nos réalisations
-              </span>
-              <h2 style={TITRE}>Nos références</h2>
+            <span data-mobile-seulement="" className={styles.etiquettePli}>
+              <span style={ETIQUETTE_SURTITRE}>Nos réalisations</span>
+              <span style={ETIQUETTE_TITRE}>Nos références</span>
             </span>
           }
           resume={section.preuves
@@ -292,8 +333,15 @@ export default function ReferencesOffre({ section, dateBrute = false }: Propriet
             .filter(Boolean)
             .join(" · ")}
         >
+        {/* La rangée d'en-tête de la capture : le titre à gauche, le lien
+            « Toutes nos études de cas » à droite, alignés sur leur bas
+            (tpl 948). Le `<div/>` vide qui remplaçait la cellule de gauche
+            laissait une demi-colonne pour rien. */}
         <div style={ENTETE}>
-          <div />
+          <div>
+            <div style={{ ...SURTITRE, marginBottom: 16 }}>Nos réalisations</div>
+            <h2 style={TITRE}>Nos références</h2>
+          </div>
           <Link href="/preuves/" prefetch={false} style={LIEN_TOUTES}>
             Toutes nos études de cas →
           </Link>

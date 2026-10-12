@@ -53,9 +53,28 @@ export interface ProprietesPageFicheMetier {
   filAriane?: ReactNode;
 }
 
-/** Le surtitre de la bascule d'un bloc replié, à l'échelle des sur-titres du
- *  site. Il ne vit que dans l'en-tête : le rendu interne le tait. */
-const SURTITRE_PLI: CSSProperties = {
+/**
+ * L'ÉTIQUETTE DE LA BASCULE : un `<span>`, et c'est voulu cette fois.
+ *
+ * Le piège a été payé deux fois dans la même journée, le 12/10, et dans les
+ * deux sens. La première version mettait un `<span>` À LA PLACE du `<h2>` de
+ * la section : les treize pages perdaient leurs titres de section. La seconde
+ * mettait un vrai `<h2>` dans la bascule et taisait celui de la section : les
+ * titres revenaient dans la structure, mais à 30 px au lieu des 38,4 px de la
+ * capture, et les grilles dont le titre occupe la colonne gauche la laissaient
+ * vide (voir le bloc en tête de l'aiguillage de `SectionsFicheMetier.tsx`).
+ *
+ * La bonne réponse ne choisit pas entre les deux : le `<h2>` de la section
+ * RESTE à sa place et à sa taille, et la bascule porte une étiquette qui
+ * n'existe QUE sous 880 px, marquée `data-mobile-seulement` comme le chevron
+ * et le résumé du même bloc. Au-dessus, elle n'est pas affichée : un visiteur
+ * de bureau voit exactement sa capture. La structure du document garde donc un
+ * seul titre par section, celui de la capture, et les portes qui comparent le
+ * rendu à une capture de bureau écartent l'étiquette comme tout autre ornement
+ * mobile.
+ */
+const ETIQUETTE_SURTITRE: CSSProperties = {
+  display: "block",
   font: "600 11px var(--fb)",
   letterSpacing: ".14em",
   textTransform: "uppercase",
@@ -63,8 +82,8 @@ const SURTITRE_PLI: CSSProperties = {
   marginBottom: 6,
 };
 
-/** Le titre de la bascule, à l'échelle des H2 du gabarit en largeur mobile. */
-const TITRE_PLI: CSSProperties = {
+/** Le libellé de la bascule, à l'échelle des H2 du gabarit en largeur mobile. */
+const ETIQUETTE_TITRE: CSSProperties = {
   display: "block",
   font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
   letterSpacing: "-.035em",
@@ -79,7 +98,7 @@ export default function PageFicheMetier({
   const heros = contenu.heros;
   return (
     <div className="mg-site" style={RACINE_CARRIERE}>
-      <main style={{ paddingTop: 62 }}>
+      <main className={styles.corpsMetier} style={{ paddingTop: 62 }}>
         {filAriane}
 
         {/* ---------------------------------------------------------- héros */}
@@ -254,10 +273,15 @@ export default function PageFicheMetier({
             aucune ne portait de bloc repliable. Onze des dix-huit pires pages
             du site étaient des pages carrière.
 
-            Le surtitre et le titre DÉJÀ LÀ servent d'en-tête, et le rendu
-            interne les tait (`sansEnTete`) pour qu'ils ne paraissent pas deux
-            fois. Une section sans titre, comme les chiffres ou la FAQ, n'est
-            pas repliée : il n'y aurait rien à mettre sur la bascule. */}
+            LA BASCULE NE PORTE QU'UNE ÉTIQUETTE MOBILE, et le rendu de la
+            section garde son surtitre et son `<h2>` entiers, à la taille de sa
+            capture. Au-dessus de 880 px l'étiquette n'est pas affichée : la
+            page est alors, au pixel de dessin près, celle de la capture. Voir
+            le bloc ETIQUETTE_SURTITRE plus haut pour les deux fautes que ce
+            choix répare.
+
+            Une section sans titre, comme les chiffres, n'est pas repliée : il
+            n'y aurait rien à mettre sur la bascule. */}
         {contenu.sections.map((section, i) => {
           if (section.type === "postuler") return <PostulerMetier key={`postuler-${i}`} />;
           // L'index suffit comme clé : l'ordre du tableau EST le gabarit.
@@ -280,20 +304,13 @@ export default function PageFicheMetier({
             <SectionPliableMobile
               key={cle}
               enTete={
-                <span>
-                  <span style={{ ...SURTITRE_PLI, display: "block" }}>{section.surtitre}</span>
-                  {/* UN VRAI <h2>, et non un <span> habillé. Première version :
-                      des spans, ce qui retirait les titres de section de la
-                      structure du document sur les treize pages carrière. La
-                      porte des blocs repliables l'a refusé, 120 fois : elle
-                      exige un titre lisible, c'est-à-dire un élément de titre.
-                      Le rendu interne tait le sien, il n'y a donc pas de
-                      doublon. */}
-                  <h2 style={TITRE_PLI}>{section.titre}</h2>
+                <span data-mobile-seulement="" className={styles.etiquettePli}>
+                  <span style={ETIQUETTE_SURTITRE}>{section.surtitre}</span>
+                  <span style={ETIQUETTE_TITRE}>{section.titre}</span>
                 </span>
               }
             >
-              <SectionFicheMetier section={section} sansEnTete />
+              <SectionFicheMetier section={section} />
             </SectionPliableMobile>
           );
         })}

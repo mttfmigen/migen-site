@@ -30,15 +30,31 @@ export const revalidate = 3600;
 
 const CHEMIN = "/partenaires/";
 
+/**
+ * La description de repli de cet écran.
+ *
+ * MESURE DU 12/10 : la page était servie SANS meta description. Comme l'accueil
+ * et « nous connaître », elle n'a pas de ligne `pages` : `metadonneesSeo`
+ * renvoie `description: undefined`, et une clé présente à `undefined` annule
+ * celle de la mise en page racine.
+ *
+ * LE TEXTE EST CELUI DE LA PAGE, mot pour mot : le chapô de
+ * `components/site/partenaires/OuverturePartenaires.tsx`, repris en entier
+ * parce qu'il tient dans la longueur utile. Rien n'a été reformulé.
+ */
+const DESCRIPTION_PAR_DEFAUT =
+  "Nous ne savons pas tout faire. Pour la GMAO, l’intralogistique ou les prestations connexes, nous travaillons avec des acteurs français que nous connaissons sur le terrain.";
+
 export async function generateMetadata(): Promise<Metadata> {
   const complete = await pageParChemin(CHEMIN);
-  return metadonneesSeo({
+  const base = metadonneesSeo({
     seo: complete?.seo ?? null,
     chemin: CHEMIN,
     // Repli volontairement différent du H1 : le titre se lit dans la page de
     // résultats, le H1 sur la page.
     titreRepli: TITRE_SEO_PARTENAIRES,
   });
+  return { ...base, description: base.description ?? DESCRIPTION_PAR_DEFAUT };
 }
 
 export default function Partenaires() {

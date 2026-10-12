@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Caveat, Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 
 import Bandeau from "@/components/consentement/Bandeau";
 import BarreActionMobile from "@/components/site/BarreActionMobile";
@@ -12,15 +12,16 @@ import Tags from "@/components/consentement/Tags";
 import { CaptureUtm } from "@/components/formulaire/CaptureUtm";
 import { jsonLdTexte, organisation } from "@/lib/seo/jsonld";
 import { siteUrl } from "@/lib/seo/url";
+import { vignetteParDefaut } from "@/lib/seo/vignette";
 
 import "./globals.css";
 
 /*
- * Les deux familles de la charte Migen.
+ * La police du site : Poppins, et elle seule.
  *
- * Poppins porte tout le texte, Caveat les accents manuscrits. Caveat est le
- * SUBSTITUT de Bryndan, police commerciale non fournie : à remplacer par les
- * vrais .woff2 dès réception (noté dans le système de design de la maquette).
+ * Poppins porte tout le texte. La charte déclare une seconde famille pour les
+ * accents manuscrits ; elle n'est plus chargée ici, et le bloc sous Poppins
+ * dit pourquoi, chiffres à l'appui.
  *
  * `next/font` auto-héberge les fichiers et pose un `font-display: swap` :
  * aucune requête vers fonts.googleapis.com au chargement, donc rien à
@@ -49,12 +50,44 @@ const poppins = Poppins({
   fallback: ["Poppins Repli"],
 });
 
-const caveat = Caveat({
-  variable: "--font-caveat",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  display: "swap",
-});
+/*
+ * CAVEAT N'EST PLUS CHARGÉE, et c'est mesuré le 12/10.
+ *
+ * Aucune règle du site ne l'applique : elle n'était exposée que par le jeton
+ * `--fs` de globals.css, et `var(--fs)` est écrit ZÉRO fois dans `app/`,
+ * `components/` et `lib/` (`var(--font-caveat)` n'apparaissait qu'une seule
+ * fois, dans la déclaration de `--fs` elle-même). Le rendu de la maquette ne
+ * s'en sert pas davantage : `t-script`, la classe que la charte lui réserve,
+ * est absente des 248 captures de `maquette/rendu/`.
+ *
+ * Ce qu'elle coûtait : `next/font` posait un `<link rel="preload">` sur son
+ * fichier latin, qui partait donc sur CHAQUE chargement. Relevé au navigateur,
+ * 74 572 octets de glyphes jamais dessinés, sur 48 pages sur 48, soit 61 % du
+ * poids des polices de la page, alors que `document.fonts` ne listait jamais
+ * Caveat parmi les familles chargées.
+ *
+ * Les six préchargements de Poppins sont intacts, et c'est vérifié et non
+ * supposé : la page en annonce 6 après, contre 7 avant, et le fichier retiré
+ * est bien celui de Caveat. Attention au piège de mesure sur ce point : en
+ * développement, Turbopack ne pose PAS les préchargements de police en
+ * `<link rel="preload" as="font">` dans le `<head>`, il les passe en indices
+ * `:HL[…,"font"]` dans le flux React. Compter les `as="font"` donne 0 avant
+ * comme après et fait croire à une régression qui n'existe pas ; c'est le
+ * nombre d'indices qu'il faut compter. En production, ce sont bien des `<link>`
+ * statiques (7 relevés sur migen-site.vercel.app avant ce retrait).
+ *
+ * POURQUOI LA RETIRER PLUTÔT QUE `preload: false` : les deux suffisent à
+ * supprimer le téléchargement, mesuré. Le retrait fait un peu mieux, parce
+ * qu'il emporte aussi les 13 `@font-face` de Caveat et de son repli, soit
+ * 3 395 octets de la feuille de style GLOBALE, servie elle aussi sur chaque
+ * page. Et il ne laisse pas derrière lui une famille déclarée que personne
+ * n'appelle.
+ *
+ * Caveat était un SUBSTITUT de Bryndan, police commerciale non livrée (voir
+ * `docs/SYSTEME-DE-DESIGN.md` § 5.7). Le jour où Bryndan arrive, ou si la
+ * charte décide de rendre l'accent manuscrit, c'est ici que la famille se
+ * redéclare, et `--fs` dans globals.css qui la reçoit.
+ */
 
 /**
  * Métadonnées de repli de la mise en page racine.
@@ -73,12 +106,31 @@ const caveat = Caveat({
  * un robot comme pour un aperçu de partage. L'origine vient de `siteUrl()`,
  * source unique du projet, qui échoue franchement si la variable manque plutôt
  * que de deviner un domaine.
+ *
+ * L'`openGraph` ci-dessous NE COUVRE PAS les pages qui en déclarent un, et
+ * c'est une propriété de Next, pas un oubli : un `openGraph` de page REMPLACE
+ * celui-ci en entier au lieu de s'y ajouter. Mesuré le 12/10, c'est la raison
+ * pour laquelle l'image ne pouvait pas être posée ici seulement : les 248
+ * adresses du cocon seraient restées sans vignette. Elles passent par
+ * `lib/seo/vignette.ts`, source unique de la vignette, et les pages statiques
+ * qui écrivent leur `openGraph` en clair l'appellent aussi.
+ *
+ * Ce bloc est donc le FILET : il sert la 404, et toute page future qui
+ * n'écrirait pas son `openGraph`. Volontairement sans `title` ni
+ * `description` : Next reprend alors ceux de la page servie, alors que les
+ * écrire ici collerait le titre de repli de la racine sur ces pages.
  */
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
   title: "Migen, maintenance industrielle et techniciens sur site",
   description:
     "Migen déploie des techniciens électromécaniciens, automaticiens et roboticiens sur les sites industriels de ses clients. Siège à Écully et Lyon.",
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    siteName: "Migen",
+    images: vignetteParDefaut(),
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -94,7 +146,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       // `animation-timeline: view()` des sections qui apparaissent au
       // défilement. La mise en page vient maintenant de la maquette, dont le
       // conteneur `.mg-site` porte son propre `min-height: 100vh`.
-      className={`${poppins.variable} ${caveat.variable}`}
+      className={poppins.variable}
       // Le script de thème ci-dessous pose `data-theme` avant l'hydratation :
       // sans cet attribut, React signalerait l'écart entre le HTML serveur et
       // la racine. Ne couvre que les attributs de <html>, pas ses enfants.

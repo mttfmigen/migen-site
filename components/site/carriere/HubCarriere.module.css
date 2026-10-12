@@ -126,3 +126,53 @@
     padding: 28px 22px !important;
   }
 }
+
+/* L'ÉTIQUETTE DE LA BASCULE DES BLOCS REPLIABLES, posée le 12/10.
+
+   Elle n'existe QUE sur téléphone. Elle n'est pas le titre de la section : le
+   `<h2>` de la section reste à sa place, dans sa colonne de grille et à la
+   taille de sa capture. Le faire porter par la bascule servait les sept titres
+   repliés de cette page à 30 px au lieu des 38,4 px de la capture à 1280 px,
+   perdait leurs sept `max-width` en ch, et vidait les deux colonnes gauches des
+   grilles qui placent le titre là : c'est le défaut que Mehdi a signalé le
+   12/10.
+
+   Le seuil, 880 px, est celui de `SectionPliableMobile.module.css` : c'est lui
+   qui décide du repli, les deux doivent rester d'accord.
+
+   DÉPLIÉE, l'étiquette s'efface : la section montre alors son vrai titre, et le
+   dire deux fois de suite n'aiderait personne. Le chevron reste la poignée.
+   Le sélecteur est porté par la classe, il ne touche donc que ces étiquettes. */
+.etiquettePli {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .etiquettePli {
+    display: block;
+  }
+  details[open] > summary > .etiquettePli {
+    display: none;
+  }
+}
+
+/* SUR BUREAU, LA BASCULE N'EXISTE PAS DU TOUT, et pas seulement son contenu.
+   Vidée de son étiquette et de son chevron, elle resterait un `<summary>`
+   focalisable : sept arrêts de tabulation muets sur cette page, un par section
+   repliée. `display: none` la retire de l'ordre de tabulation et de l'arbre
+   d'accessibilité.
+
+   Le `margin-top: 12px` du corps est remis à zéro pour la même raison : il
+   aérait l'espace sous une bascule qui, ici, n'est plus là. Il ajoutait sinon
+   12 px avant chaque section, écart que la capture ne porte pas.
+
+   Les deux règles sont ancrées sur `.corpsHub`, le `<main>` de ce gabarit :
+   aucun autre gabarit n'est touché. */
+@media (min-width: 881px) {
+  .corpsHub details[data-pliable-mobile] > summary {
+    display: none;
+  }
+  .corpsHub details[data-pliable-mobile] > summary + div {
+    margin-top: 0;
+  }
+}

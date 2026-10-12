@@ -8,17 +8,85 @@
  */
 
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import Entete from "@/components/site/Entete";
 import MegaMenu from "@/components/site/MegaMenu";
 import type { PanneauId } from "@/components/site/entete-donnees";
 
-const inventaire: { url: string }[] = JSON.parse(
-  readFileSync("docs/urls-site-actuel.json", "utf8"),
+/**
+ * L'INVENTAIRE DU NOUVEAU SITE, et non celui de l'ancien.
+ *
+ * CE QUI A CHANGÉ, le 12/10, et pourquoi. Cette porte comparait les cibles du
+ * menu à `docs/urls-site-actuel.json`, les 223 URL de l'ANCIEN site Astro. Elle
+ * répondait donc à la question « cette adresse existe-t-elle sur le site qu'on
+ * remplace ? », utile pendant la migration, fausse depuis que le nouveau site
+ * porte des pages que l'ancien n'avait pas.
+ *
+ * Elle est devenue ROUGE sur une correction JUSTE. Full service pointait sur
+ * `/offres/maintenance-externalisee/`, qui répond 301 : le menu faisait donc
+ * rebondir le visiteur depuis les 248 pages du site. Corrigé en
+ * `/offres/full-service/`, qui répond 200 en production, et qui n'est pas dans
+ * l'inventaire de l'ancien site. La porte refusait la bonne adresse.
+ *
+ * LA RÉFÉRENCE JUSTE, en deux morceaux, parce que le site a deux sortes de
+ * pages : les 248 entrées de `maquette/contenu/site/index.json`, servies par la
+ * route attrape-tout, et les routes STATIQUES de `app/`, que l'index ne
+ * contient pas (`/contact/`, `/valeurs/`, `/carriere/`, `/plan-du-site/`…).
+ * Oublier le second morceau rendrait la porte rouge sur `/contact/`, la cible
+ * de l'appel à l'action de l'en-tête.
+ *
+ * Les routes statiques sont LUES SUR LE DISQUE, jamais écrites à la main : une
+ * liste recopiée se périme en silence le jour où une route est ajoutée.
+ */
+const index: { url?: string }[] = JSON.parse(
+  readFileSync("maquette/contenu/site/index.json", "utf8"),
 );
-const connues = new Set(inventaire.map((entree) => entree.url));
+
+/** Les routes statiques de `app/`, déduites de l'arborescence. */
+function routesStatiques(dossier = "app", prefixe = "/"): string[] {
+  const trouvees: string[] = [];
+  for (const entree of readdirSync(dossier, { withFileTypes: true })) {
+    if (!entree.isDirectory()) continue;
+    if (entree.name === "api") continue;
+    // Un segment dynamique n'est pas une adresse : la route attrape-tout est
+    // servie par l'index des 248 pages, pas par l'arborescence.
+    if (entree.name.startsWith("[")) continue;
+    /* UN GROUPE DE ROUTE, `(nom)`, NE PARAÎT PAS DANS L'ADRESSE mais contient
+       bien des pages. Première version : je sautais le dossier entier, donc
+       `/lp` restait introuvable et la porte refusait la barre de la landing
+       page. Il faut descendre dedans en gardant le préfixe du parent. */
+    if (entree.name.startsWith("(")) {
+      trouvees.push(...routesStatiques(`${dossier}/${entree.name}`, prefixe));
+      continue;
+    }
+    const chemin = `${dossier}/${entree.name}`;
+    const url = `${prefixe}${entree.name}/`;
+    if (existsSync(`${chemin}/page.tsx`)) trouvees.push(url);
+    trouvees.push(...routesStatiques(chemin, url));
+  }
+  return trouvees;
+}
+
+const statiques = routesStatiques();
+const connues = new Set<string>([
+  "/",
+  ...index.map((entree) => entree.url).filter((url): url is string => typeof url === "string"),
+  ...statiques,
+]);
+
+assert.ok(
+  statiques.length >= 12,
+  `trop peu de routes statiques relevées dans app/ : ${statiques.length}. ` +
+    "La lecture du disque est cassée, et la porte s'apprête à refuser des " +
+    "adresses valides.",
+);
+assert.ok(
+  connues.size >= 248,
+  `inventaire trop court : ${connues.size} adresses. L'index des 248 pages ` +
+    "n'a pas été lu, et la porte refuserait presque tout le menu.",
+);
 
 const PANNEAUX: PanneauId[] = [
   "offres",
@@ -64,7 +132,8 @@ assert.ok(liens.size > 60, `trop peu de liens relevés : ${liens.size}`);
 for (const lien of liens) {
   assert.ok(
     canoniques.has(sansSlash(lien)),
-    `URL hors inventaire dans la navigation : ${lien}`,
+    `URL hors inventaire dans la navigation : ${lien}. L'inventaire tient ` +
+      `les 248 pages de l'index et les ${statiques.length} routes statiques de app/.`,
   );
 }
 
@@ -145,6 +214,6 @@ assert.throws(
 );
 
 console.log(
-  `navigation vérifiée : ${liens.size} liens, tous dans l'inventaire des 223 URL ; ` +
+  `navigation vérifiée : ${liens.size} liens, tous dans l'inventaire du site (${connues.size} adresses : l'index des pages et les ${statiques.length} routes statiques) ; ` +
     `${SUR_TITRES.length} sur-titres de panneau au style de la maquette.`,
 );

@@ -102,3 +102,55 @@
     padding: 36px 22px !important;
   }
 }
+
+/* L'ÉTIQUETTE DES BASCULES MOBILES des sections 02, 04 et 05.
+
+   Elle n'existe QUE sous 880 px. Le vrai `<h2>` de chaque section reste dans
+   la section, à sa place et à la taille de sa capture : le porter dans le
+   `<summary>` le rangeait sous un rôle `button`, où les descendants sont
+   présentationnels, et transformait 113 titres de niveau 2 en noms accessibles
+   de bouton. Même motif, même seuil et mêmes valeurs que
+   `components/site/metier/FicheMetier.module.css`.
+
+   Le seuil, 880 px, est celui de `SectionPliableMobile.module.css` : c'est lui
+   qui décide du repli, les deux doivent rester d'accord.
+
+   DÉPLIÉE, l'étiquette s'efface : la section montre alors son vrai titre, et
+   le dire deux fois de suite n'aiderait personne. Le chevron reste la poignée.
+   Le sélecteur est porté par la classe, il ne touche donc que ces étiquettes. */
+.etiquettePli {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .etiquettePli {
+    display: block;
+  }
+  details[open] > summary > .etiquettePli {
+    display: none;
+  }
+}
+
+/* SUR BUREAU, LA BASCULE N'EXISTE PAS DU TOUT, et pas seulement son contenu.
+   Vidée de son étiquette et de son chevron, elle resterait un `<summary>`
+   focalisable : 113 arrêts de tabulation muets sur les 41 pages, mesurés en
+   production le 12/10, deux ou trois par page selon les sections présentes.
+   `display: none` la retire de l'ordre de tabulation et de l'arbre
+   d'accessibilité. Le bloc est rendu `open` et ne se referme que sous 880 px :
+   son contenu reste donc affiché, et la règle `.section:not([open])` de
+   `SectionPliableMobile.module.css` le rattrape même s'il était fermé.
+
+   Le `margin-top: 12px` du corps est remis à zéro pour la même raison : il
+   aérait l'espace sous une bascule qui, ici, n'est plus là. Il ajoutait sinon
+   12 px avant chaque section, écart que la capture ne porte pas.
+
+   Les deux règles sont ancrées sur `.racine`, la racine de ce gabarit :
+   aucun autre gabarit n'est touché. */
+@media (min-width: 881px) {
+  .racine details[data-pliable-mobile] > summary {
+    display: none;
+  }
+  .racine details[data-pliable-mobile] > summary + div {
+    margin-top: 0;
+  }
+}

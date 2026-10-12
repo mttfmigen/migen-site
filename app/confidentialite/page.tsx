@@ -5,6 +5,7 @@ import PolitiqueConfidentialite, {
   TITRE_SEO,
 } from "@/components/site/confidentialite/PolitiqueConfidentialite";
 import { urlAbsolue } from "@/lib/seo/url";
+import { vignetteDeLaPage } from "@/lib/seo/vignette";
 
 /**
  * /confidentialite/ , route STATIQUE.
@@ -37,6 +38,7 @@ export const metadata: Metadata = {
     title: TITRE_SEO,
     description: DESCRIPTION_SEO,
     url: urlAbsolue(CHEMIN),
+    images: vignetteDeLaPage(CHEMIN),
   },
   // Indexable : une politique de confidentialité introuvable est un signal de
   // défiance, et elle est citée par chaque formulaire du site.

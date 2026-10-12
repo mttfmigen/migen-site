@@ -6,6 +6,29 @@ import Link from "next/link";
  *
  * Maquette, ligne 5281. Seul lien interne vivant de cet écran avec
  * `/implantations/` : `/secteurs/` répond 200, il est donc posé.
+ *
+ * LA PHOTO, CHANGÉE LE 12/10 À LA DEMANDE DE MEHDI : « sur la page nous
+ * connaitre y'a tout le temps la même photo. Bloc "notre force", bloc le
+ * premier client ».
+ *
+ * Mesuré avant de toucher quoi que ce soit : la page servait `team-duo.jpg`
+ * DEUX FOIS, ici et dans `OrigineDuNom`. Et le défaut vient de la maquette
+ * elle-même, pas du portage : à la ligne 5281 de `maquette/accueil-rendu.html`
+ * les deux emplacements pointent le MÊME actif Claude Design,
+ * « 5b5403d8-66e3-40e2-8aca-295646288731 ». Leurs deux `alt` sont pourtant
+ * différents, ce qui dit que deux photos distinctes étaient voulues.
+ *
+ * CRITÈRE DE CHOIX : ce bloc parle de secteurs, « chaque secteur a ses
+ * équipements, ses contraintes et ses règles », et il ouvre sur `/secteurs/`.
+ * Il lui faut donc des techniciens DANS une installation industrielle
+ * identifiable, pas un duo d'atelier. Deux intervenants en gilet haute
+ * visibilité sur une passerelle de caillebotis, le long de conduites
+ * calorifugées : le site porte le propos, et l'image reste fidèle à l'intention
+ * de l'`alt` de la maquette, « deux techniciens ».
+ *
+ * Le texte alternatif est la description du registre, mot pour mot : c'est ce
+ * qu'exige `scripts/verifie-alt-photos.mjs`, et cette photo-ci, contrairement à
+ * celle de `/assets/web/`, entre dans son périmètre.
  */
 
 const FORT = { fontWeight: 600, color: "var(--ink)" } as const;
@@ -98,8 +121,8 @@ export default function TerrainsExcellence() {
             }}
           >
             <Image
-              src="/assets/web/team-duo.jpg"
-              alt="Deux techniciens Migen devant un poste de travail"
+              src="/assets/photos/env-ingenieurs-inspectant-site-industriel.jpg"
+              alt="Deux intervenants en gilet haute visibilité parcourant une passerelle en caillebotis le long de conduites calorifugées"
               fill
               sizes="(max-width: 900px) 100vw, 540px"
               loading="lazy"

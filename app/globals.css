@@ -46,7 +46,17 @@
   --ft: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
     "Helvetica Neue", sans-serif;
   --fb: var(--font-poppins), var(--ft);
-  --fs: var(--font-caveat), var(--fb);
+
+  /* --fs : l'accent manuscrit de la charte. Il ne nomme PLUS de police
+     chargée, et c'est voulu depuis le 12/10 : la famille qui l'occupait
+     (Caveat, substitut de Bryndan non livrée) était préchargée et téléchargée
+     sur 48 pages sur 48 pour 74 572 octets, alors que `var(--fs)` est écrit
+     zéro fois dans le site et que `t-script`, la classe que la charte lui
+     réserve, est absente des 248 captures de `maquette/rendu/`. Le jeton reste
+     déclaré pour que la charte garde son entrée : il retombe simplement sur le
+     texte courant tant qu'aucune police manuscrite n'est fournie. Le jour où
+     Bryndan arrive, elle se déclare dans `app/layout.tsx` et se branche ici. */
+  --fs: var(--fb);
 
   /* Opacité et flou du verre dépoli. Valeur RENDUE par la maquette : relevée
      le 06/10 au getComputedStyle sur TOUTES les surfaces verre de

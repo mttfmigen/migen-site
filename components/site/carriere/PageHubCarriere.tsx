@@ -40,16 +40,32 @@ import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
  */
 
 /**
- * LE DRAPEAU `sansEnTete` SERT LE REPLI MOBILE, pose le 12/10.
+ * LA BASCULE PORTE UNE ETIQUETTE, PAS LE TITRE DE LA SECTION. Corrige le 12/10,
+ * motif deja applique et verifie sur le gabarit metier
+ * (`components/site/metier/PageFicheMetier.tsx`).
  *
- * Mesure du meme jour : ce hub etait la page la plus longue du site, 32,2
- * ecrans au telephone, sans aucun bloc repliable. La page enveloppe chaque
- * section sauf la premiere et porte son surtitre et son titre dans l'en-tete ;
- * le rendu interne doit alors les taire, sinon ils paraissent deux fois.
+ * Mesure du 12/10 : ce hub etait la page la plus longue du site, 32,2 ecrans au
+ * telephone, sans aucun bloc repliable. La premiere version du repli faisait
+ * porter a l'en-tete de la bascule le SURTITRE et le H2 de la section, que le
+ * rendu interne taisait alors via un drapeau `sansEnTete`. Les deux en
+ * souffraient, et c'est mesure sur /carriere/ : les 7 titres replies etaient
+ * servis a 30 px a 1280 px au lieu des 38,4 px de la capture, leurs 7
+ * `max-width` en ch disparaissaient, et les deux grilles qui placent le titre
+ * dans leur colonne gauche la laissaient vide, piste presente et contenu parti.
+ *
+ * Les deux pieges sont opposes, et les deux ont ete payes : un `<span>` A LA
+ * PLACE du `<h2>` retire le titre de la structure du document ; un `<h2>` DANS
+ * la bascule le remet, mais a la mauvaise taille et hors de sa colonne.
+ *
+ * La bonne reponse ne choisit pas : le `<h2>` de la section RESTE a sa place et
+ * a la taille de sa capture, et la bascule porte une etiquette qui n'existe QUE
+ * sous 880 px, marquee `data-mobile-seulement` comme le chevron et le resume du
+ * meme bloc. Au-dessus, la bascule entiere est retiree par le module CSS : un
+ * visiteur de bureau voit exactement sa capture, et aucun `<summary>` vide ne
+ * reste dans son ordre de tabulation.
  */
-/** Le surtitre de la bascule d'un bloc replie. Il ne vit que dans l'en-tete :
- *  le rendu interne le tait. */
-const SURTITRE_PLI: CSSProperties = {
+const ETIQUETTE_SURTITRE: CSSProperties = {
+  display: "block",
   font: "600 11px var(--fb)",
   letterSpacing: ".14em",
   textTransform: "uppercase",
@@ -57,27 +73,26 @@ const SURTITRE_PLI: CSSProperties = {
   marginBottom: 6,
 };
 
-/** Le titre de la bascule, a l'echelle des H2 du gabarit en largeur mobile. */
-const TITRE_PLI: CSSProperties = {
+/** Le libelle de la bascule, a l'echelle des H2 du gabarit en largeur mobile. */
+const ETIQUETTE_TITRE: CSSProperties = {
   display: "block",
   font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
   letterSpacing: "-.035em",
   color: "var(--ink)",
-  margin: 0,
 };
 
-function Section({ section, sansEnTete }: { section: SectionHub; sansEnTete?: boolean }) {
+function Section({ section }: { section: SectionHub }) {
   switch (section.type) {
     case "etapes":
-      return <EtapesHub section={section} sansEnTete={sansEnTete} />;
+      return <EtapesHub section={section} />;
     case "metiers":
       return <MetiersRecrutes {...section} />;
     case "refus":
-      return <Refus {...section} sansEnTete={sansEnTete} />;
+      return <Refus {...section} />;
     case "hubs":
-      return <Hubs {...section} sansEnTete={sansEnTete} />;
+      return <Hubs {...section} />;
     case "avis":
-      return <Avis {...section} sansEnTete={sansEnTete} />;
+      return <Avis {...section} />;
     case "faq":
       // `.mg-faqph` : le panneau-photo sombre de l'application, que la FAQ
       // plate du gabarit 07 ne dessine pas.
@@ -87,7 +102,11 @@ function Section({ section, sansEnTete }: { section: SectionHub; sansEnTete?: bo
     case "postuler":
       return <PostulerMetier />;
     default:
-      return <SectionFicheMetier section={section} sansEnTete={sansEnTete} />;
+      /* AUCUN DRAPEAU NE PASSE PLUS NULLE PART. `SectionFicheMetier` n'accepte
+         plus `sansEnTete` depuis le 12/10, et aucun rendu de ce dossier ne
+         l'accepte non plus : chaque section garde son surtitre et son `<h2>`
+         entiers, et la bascule porte son etiquette propre. */
+      return <SectionFicheMetier section={section} />;
   }
 }
 
@@ -95,7 +114,7 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
   const { heros } = contenu;
   return (
     <div className="mg-site" style={RACINE_CARRIERE}>
-      <main style={{ paddingTop: 62 }}>
+      <main className={styles.corpsHub} style={{ paddingTop: 62 }}>
         <section style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 40px 0" }}>
           <div
             className={styles.deuxColonnes}
@@ -242,11 +261,12 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
         {contenu.sections.map((section, i) => {
           // L'index suffit comme clé : l'ordre du tableau EST celui de la capture.
           const cle = `${section.type}-${i}`;
-          /* SEULS LES TYPES DONT LE RENDU SAIT SE TAIRE. `MetiersRecrutes` et
-             `QuestionsHub` posent leur propre h2 sans comprendre `sansEnTete` :
-             les envelopper donnait un titre EN DOUBLE, 18 h2 au lieu de 15, et
-             la porte du hub l'a refuse en comparant l'ordre des titres a la
-             capture. Les ajouter demande de leur poser le drapeau d'abord. */
+          /* LES QUATRE TYPES REPLIES, et le compte ne change pas : sept blocs
+             sur cette page. `MetiersRecrutes` et `QuestionsHub` restent dehors.
+             Depuis le passage a l'etiquette, les envelopper ne ferait plus de
+             titre en double (chaque section garde son seul `<h2>`), mais ce
+             serait changer le repli mobile, pas reparer les titres : la liste
+             reste telle quelle, et le compte de blocs pliables avec elle. */
           const replie = new Set(["etapes", "refus", "hubs", "avis"]);
           const titrable =
             replie.has(section.type) &&
@@ -261,13 +281,13 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
             <SectionPliableMobile
               key={cle}
               enTete={
-                <span>
-                  <span style={{ ...SURTITRE_PLI, display: "block" }}>{section.surtitre}</span>
-                  <h2 style={TITRE_PLI}>{section.titre}</h2>
+                <span data-mobile-seulement="" className={styles.etiquettePli}>
+                  <span style={ETIQUETTE_SURTITRE}>{section.surtitre}</span>
+                  <span style={ETIQUETTE_TITRE}>{section.titre}</span>
                 </span>
               }
             >
-              <Section section={section} sansEnTete />
+              <Section section={section} />
             </SectionPliableMobile>
           );
         })}

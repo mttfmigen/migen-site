@@ -71,8 +71,33 @@
   display: none;
 }
 
+/*
+ * LES 12 PX N'EXISTENT QUE SOUS 880 PX, et c'est la correction d'un défaut que
+ * j'ai posé moi-même le 12/10 au matin.
+ *
+ * CE QU'ILS FONT : ils aèrent l'espace entre la bascule et le contenu quand le
+ * bloc vient de s'ouvrir au doigt. Au téléphone, c'est juste.
+ *
+ * CE QU'ILS CASSAIENT SUR BUREAU : la bascule y est invisible, mais les 12 px
+ * restaient, et ils s'ajoutaient AVANT CHAQUE SECTION REPLIÉE. Mesuré le même
+ * jour, sur un build de production : 120 px de trop sur le hub carrière
+ * (10 blocs), 108 px sur les guides (9 blocs), 39 px sur zéro arrêt (3 blocs),
+ * 24 px sur une page de preuve (2 blocs). Aucune capture ne porte cet espace.
+ *
+ * ET LE COÛT ÉTAIT PLUS LOURD SUR LE GABARIT RESSOURCE, de 29 à 33 px par
+ * partie, parce qu'une deuxième cause s'y ajoutait : la bascule est une boîte
+ * `flex`, ce qui empêche la marge haute du `h2` de la section de se fusionner
+ * avec celle du bloc précédent. La fusion des marges est rétablie gabarit par
+ * gabarit, là où elle est mesurable ; cette règle-ci traite la cause commune.
+ */
 .corps {
-  margin-top: 12px;
+  margin-top: 0;
+}
+
+@media (max-width: 880px) {
+  .corps {
+    margin-top: 12px;
+  }
 }
 
 @media (max-width: 880px) {

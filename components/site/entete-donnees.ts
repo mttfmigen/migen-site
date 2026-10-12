@@ -32,7 +32,12 @@ export interface Offre extends LienDecrit {
 }
 
 export interface FormatRessource extends LienDecrit {
-  /** Compteur de la maquette, affiché en chiffres monospace. */
+  /**
+   * Nombre de ressources publiées dans la famille, sur deux chiffres, affiché
+   * en monospace comme dans la maquette. COMPTÉ, jamais écrit à la main : la
+   * porte `scripts/verifie-menu-ressources.mjs` le recompte dans
+   * `maquette/contenu/site/index.json` et refuse un écart.
+   */
   numero: string;
 }
 
@@ -77,8 +82,22 @@ export const NAV_PANNEAUX: { id: PanneauId; libelle: string; href: string }[] = 
   { id: "apropos", libelle: "À propos", href: "/nous-connaitre/" },
 ];
 
-/** Sixième entrée, sans panneau : elle ferme celui qui serait ouvert. */
-export const NAV_CARRIERE: Lien = { libelle: "Carrière", href: "/carriere/" };
+/**
+ * Sixième entrée, sans panneau : elle ferme celui qui serait ouvert.
+ *
+ * LIBELLÉ DEMANDÉ PAR MEHDI LE 12/10 : « déjà la page devrait s'appeler
+ * rejoindre migen ». C'est un ÉCART ASSUMÉ avec la maquette, qui écrit
+ * « Carrière » sur sa pilule de barre comme dans son tiroir, et dont la
+ * capture `maquette/rendu/carriere.html` titre la page « Migen recrutement ».
+ * La maquette n'écrit « Rejoindre Migen » qu'en h2 de la bande d'appel de
+ * cette page, et « Rejoindre migen© » en sur-titre de deux panneaux de
+ * candidature. Le titre de la page n'est donc PAS touché ici : seul le libellé
+ * du menu change, et le reste attend l'arbitrage de Mehdi.
+ */
+export const NAV_CARRIERE: Lien = {
+  libelle: "Rejoindre migen",
+  href: "/carriere/",
+};
 
 /** Variante landing page : des ancres dans la page, pas des pages du site. */
 export const NAV_LP: Lien[] = [
@@ -234,27 +253,109 @@ export const CHIFFRES: Chiffre[] = [
 
 /* --------------------------------------------------- panneau Ressources */
 
+/**
+ * Les CINQ familles de ressources, et rien d'autre : ce panneau annonce des
+ * ressources, il mène à des ressources.
+ *
+ * RECOMPOSÉ LE 12/10, signalé par Mehdi : « dans le menu le bloc ressources ne
+ * va pas. Fiche métiers, cela renvoie vers migen recrutement, mais pour la
+ * partie ressources c'est pas ce à quoi on s'attend. »
+ *
+ * CE QUI ÉTAIT FAUX, et ce n'était pas la maquette. Son panneau porte trois
+ * rangées, « 04 Articles », « 07 Fiches métier » et « 07 Fiches pratiques &
+ * techniques », et ses trois gestes sont `goResArticle`, `goResMetier` et
+ * `goResPratique`. Les trois appellent `openRes(kind)`, qui ouvre SA
+ * bibliothèque filtrée sur le format : jamais son écran de recrutement, qui a
+ * son propre geste, `goCarriere`. Rattacher « Fiches métier » à `/carriere/`
+ * est donc une faute de portage, pas une fidélité.
+ *
+ * POURQUOI LA RANGÉE DISPARAÎT QUAND MÊME. Le site n'a aucune famille de
+ * fiches métier sous `/ressources/` : les 13 pages métier sont les enfants de
+ * `/carriere/` (gabarit « 07 Métier et carrière » dans
+ * `maquette/contenu/site/index.json`). Pointer la rangée vers une famille qui
+ * n'existe pas serait inventer une page ; la laisser sur `/carriere/` est le
+ * défaut signalé. Elle sort donc du panneau, et le chemin vers les métiers
+ * reste ouvert deux fois : « Je n'arrive pas à recruter » juste à côté, et
+ * l'entrée de barre `NAV_CARRIERE`.
+ *
+ * ET DEUX FAMILLES RÉELLES Y ENTRENT. Le panneau n'exposait que 3 des 5
+ * sous-rubriques servies : Process et Livres blancs n'avaient aucune porte
+ * dans la navigation. La rangée fusionnée « Fiches pratiques & techniques »
+ * est séparée en deux pour la même raison, les fiches techniques n'étaient
+ * atteignables que par « Ma ligne s'arrête souvent ».
+ *
+ * LES LIBELLÉS ET LES DESCRIPTIONS NE SONT PAS RÉDIGÉS ICI : ils sont relus
+ * dans la maquette, table `SHELF` de `site-final-autonome.html`, qui donne une
+ * ligne par famille. « Ce qu'on observe en atelier » est gardé tel quel, c'est
+ * la description du panneau pour Articles.
+ *
+ * ÉCARTS DE COPIE À ARBITRER PAR MEHDI, déclarés et non tranchés :
+ *  - « Gestes, seuils, valeurs de référence » (description de la rangée
+ *    fusionnée) n'a plus de rangée : chaque moitié reprend sa propre ligne de
+ *    `SHELF`.
+ *  - Livres blancs : `SHELF` écrit « Deux dossiers de fond, en échange d'un
+ *    e-mail ». La seconde moitié est retirée, `/ressources/livres-blancs/` ne
+ *    porte aujourd'hui aucun formulaire ni champ e-mail (mesuré en production
+ *    le 12/10). Soit la page gagne son échange, soit la ligne reste courte.
+ */
 export const RES_FORMATS: FormatRessource[] = [
   {
-    numero: "04",
+    numero: "15",
     libelle: "Articles",
     description: "Ce qu’on observe en atelier",
     href: "/ressources/articles/",
   },
   {
-    numero: "07",
-    libelle: "Fiches métier",
-    description: "Journée type, salaire, évolution",
-    href: "/carriere/",
+    numero: "05",
+    libelle: "Fiches pratiques",
+    description: "À imprimer et à emporter en atelier",
+    href: "/ressources/fiches-pratiques/",
   },
   {
-    numero: "07",
-    libelle: "Fiches pratiques & techniques",
-    description: "Gestes, seuils, valeurs de référence",
-    href: "/ressources/fiches-pratiques/",
+    numero: "09",
+    libelle: "Fiches techniques",
+    description: "Les caractéristiques, sans commentaire",
+    href: "/ressources/fiches-techniques/",
+  },
+  {
+    numero: "04",
+    libelle: "Process",
+    description: "Nos procédures, publiées telles quelles",
+    href: "/ressources/process/",
+  },
+  {
+    numero: "02",
+    libelle: "Livres blancs",
+    description: "Deux dossiers de fond",
+    href: "/ressources/livres-blancs/",
   },
 ];
 
+/**
+ * Le compte annoncé par le pied du panneau Ressources, SOMME des familles
+ * ci-dessus et non une constante de son côté.
+ *
+ * LA MAQUETTE ÉCRIT « Les 23 ressources → », et 23 est juste CHEZ ELLE : sa
+ * table `CATS` déclare 4 articles, 7 fiches métier, 3 fiches pratiques,
+ * 3 process, 2 livres blancs et 4 fiches techniques, soit 23. Le site publié
+ * n'a pas cette bibliothèque : 35 ressources réparties en 5 familles, et
+ * aucune fiche métier sous `/ressources/`. Laisser 23 était annoncer un
+ * inventaire qui n'existe pas.
+ *
+ * Le calcul remplace le chiffre écrit pour que l'écart ne puisse plus
+ * réapparaître : ajouter ou retirer une famille corrige le pied tout seul.
+ */
+export const TOTAL_RESSOURCES = RES_FORMATS.reduce(
+  (somme, format) => somme + Number(format.numero),
+  0,
+);
+
+/**
+ * Colonne de droite du panneau, les trois situations de la maquette, mot pour
+ * mot. « Je n'arrive pas à recruter » vers `/carriere/` est légitime ici : la
+ * colonne range par BESOIN, pas par format, et c'est bien la bonne réponse au
+ * besoin. Les trois cibles répondent 200 en production, mesuré le 12/10.
+ */
 export const RES_SITUATIONS: Lien[] = [
   {
     libelle: "Ma ligne s’arrête souvent",

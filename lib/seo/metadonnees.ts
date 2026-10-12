@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import type { LigneSeo } from "@/types/lignes";
 
 import { copieConforme } from "@/lib/decisions-copie";
-import { urlAbsolue, urlImage } from "@/lib/seo/url";
+import { urlAbsolue } from "@/lib/seo/url";
+import { vignetteDeLaPage } from "@/lib/seo/vignette";
 
 /**
  * Transformation d'une ligne `seo` en objet `Metadata` de Next.
@@ -40,7 +41,11 @@ export function metadonneesSeo({
   // La table `seo` date d'avant les décisions de copie (« candidats », 24/24…).
   const title = copieConforme(seo?.meta_title ?? titreRepli);
   const description = seo?.meta_description ? copieConforme(seo.meta_description) : undefined;
-  const image = seo?.og_image ? urlImage(seo.og_image) : undefined;
+  // La vignette de partage n'est JAMAIS vide : à défaut de `og_image` et de
+  // photo de couverture, c'est la vignette par défaut. Voir `lib/seo/vignette.ts`
+  // pour l'ordre de priorité et pourquoi il ne peut pas vivre dans la mise en
+  // page racine.
+  const images = vignetteDeLaPage(chemin, seo?.og_image);
 
   return {
     title,
@@ -53,7 +58,7 @@ export function metadonneesSeo({
       title,
       description,
       url: canonical,
-      images: image ? [{ url: image }] : undefined,
+      images,
     },
     // `follow` reste vrai même sur une page exclue de l'index : le robot suit
     // le maillage et découvre les pages indexables en aval.

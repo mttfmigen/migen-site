@@ -107,6 +107,15 @@ function Questions({ questions }: { questions: Question[] }) {
               <details
                 key={q.question}
                 name="faq-ressource"
+                /* LA PREMIÈRE QUESTION EST OUVERTE, et c'est la capture qui le
+                   dit : ses 35 pages portent `open` sur le premier `<details>`
+                   et sur lui seul. La page servie n'en ouvrait aucune, et sa
+                   section « Vos questions, nos réponses » rendait de 9 à 22 %
+                   de moins que la capture (693 px contre 841 sur
+                   /ressources/fiches-pratiques/5s/, mesuré le 12/10). Le
+                   groupe `name` garde l'exclusivité : ouvrir une autre
+                   question referme celle-ci. */
+                open={i === 0}
                 className={styles.question}
                 style={{ borderTop: i === 0 ? "none" : H.FAQ_FILET }}
               >

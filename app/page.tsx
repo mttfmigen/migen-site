@@ -53,13 +53,36 @@ export const revalidate = 3600;
 const TITRE_PAR_DEFAUT =
   "Migen, maintenance industrielle et techniciens sur site";
 
+/**
+ * La description de repli de l'ACCUEIL.
+ *
+ * MESURE DU 12/10 : la page d'accueil était servie SANS meta description, en
+ * local comme en ligne. Pas « avec une description faible » : sans aucune.
+ * Google écrivait donc lui-même l'extrait de la page la plus visitée du site.
+ * Cause : l'accueil n'a pas de ligne `pages`, `metadonneesSeo` renvoie alors
+ * `description: undefined`, et une clé présente à `undefined` ANNULE celle de
+ * la mise en page racine au lieu de la laisser passer.
+ *
+ * LE TEXTE N'EST PAS RÉDIGÉ POUR L'OCCASION : c'est la seconde phrase du chapô
+ * du héros, mot pour mot (`components/site/accueil/Hero.tsx`). Le chapô entier
+ * fait 224 caractères, au-delà de ce qu'un résultat de recherche affiche ; la
+ * phrase retenue est complète, se tient seule, et dit ce que fait Migen. Rien
+ * n'a été reformulé : la copie appartient à Mehdi.
+ */
+const DESCRIPTION_PAR_DEFAUT =
+  "Nous mobilisons des techniciens dont 10 % seulement réussissent notre process, sur vos sites, en continu ou en intervention ciblée.";
+
 export async function generateMetadata(): Promise<Metadata> {
   const complete = await pageParChemin("/");
-  return metadonneesSeo({
+  const base = metadonneesSeo({
     seo: complete?.seo ?? null,
     chemin: "/",
     titreRepli: complete?.page.titre_h1 ?? TITRE_PAR_DEFAUT,
   });
+  // `og:description` suit toute seule : Next reprend la description de la page
+  // quand `openGraph.description` est absente. Mesuré sur le HTML servi, pas
+  // supposé, et `scripts/verifie-seo.mjs` refuse une page qui la perdrait.
+  return { ...base, description: base.description ?? DESCRIPTION_PAR_DEFAUT };
 }
 
 export default function Accueil() {

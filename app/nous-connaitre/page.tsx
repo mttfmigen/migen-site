@@ -55,13 +55,31 @@ const TITRE_FORMULAIRE =
 const INTRO_FORMULAIRE =
   "Du lundi au vendredi, de 8 h 00 à 18 h 30. Nous qualifions le besoin et vous annonçons un délai de démarrage réaliste.";
 
+/**
+ * La description de repli de cet écran.
+ *
+ * MESURE DU 12/10 : la page était servie SANS meta description. Comme l'accueil
+ * et `/partenaires/`, elle n'a pas de ligne `pages` : `metadonneesSeo` renvoie
+ * `description: undefined`, et une clé présente à `undefined` annule celle de
+ * la mise en page racine.
+ *
+ * LE TEXTE EST CELUI DE LA PAGE, mot pour mot : la troisième phrase du chapô de
+ * `components/site/nous-connaitre/Ouverture.tsx`. Le chapô entier fait 340
+ * caractères, trop long pour un résultat de recherche ; cette phrase est
+ * complète, se tient seule, et dit exactement ce que l'entreprise fait et ce
+ * qu'elle ne fait pas. Rien n'a été reformulé.
+ */
+const DESCRIPTION_PAR_DEFAUT =
+  "Nous ne faisons qu’une chose, affecter sur vos sites des techniciens qui entretiennent les machines, et rien d’autre.";
+
 export async function generateMetadata(): Promise<Metadata> {
   const complete = await pageParChemin(CHEMIN);
-  return metadonneesSeo({
+  const base = metadonneesSeo({
     seo: complete?.seo ?? null,
     chemin: CHEMIN,
     titreRepli: TITRE_PAR_DEFAUT,
   });
+  return { ...base, description: base.description ?? DESCRIPTION_PAR_DEFAUT };
 }
 
 export default function NousConnaitre() {

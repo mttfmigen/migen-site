@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import SuiteTest from "@/components/site/test-technicien/SuiteTest";
 import TestTechnicien from "@/components/site/test-technicien/TestTechnicien";
+import { vignetteDeLaPage } from "@/lib/seo/vignette";
 
 /**
  * Le test technique public, écran « Test technicien » de la maquette autonome
@@ -31,6 +32,7 @@ export const metadata: Metadata = {
     title: TITRE,
     description: DESCRIPTION,
     url: CHEMIN,
+    images: vignetteDeLaPage(CHEMIN),
   },
 };
 

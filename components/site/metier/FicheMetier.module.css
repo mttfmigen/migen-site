@@ -170,3 +170,54 @@
 .champs ::placeholder {
   color: revert;
 }
+
+/* ------------------------------- l'étiquette de la bascule du bloc repliable
+
+   ELLE N'EXISTE QUE SOUS 880 px, et c'est tout l'intérêt : au-dessus, le
+   visiteur voit la section telle que sa capture la dessine, avec SON surtitre
+   et SON `<h2>` à l'échelle relevée (38,4 px à 1280 px pour un bento, 33,3 px
+   pour un tableau). Une bascule qui portait le titre à toutes les largeurs le
+   servait à 30 px partout, et vidait la colonne gauche des grilles qui le
+   placent là : c'est le défaut que Mehdi a signalé le 12/10.
+
+   Le seuil, 880 px, est celui de `SectionPliableMobile.module.css` : c'est lui
+   qui décide du repli, les deux doivent rester d'accord.
+
+   DÉPLIÉE, l'étiquette s'efface : la section montre alors son vrai titre, et
+   le dire deux fois de suite n'aiderait personne. Le chevron reste la poignée.
+   Le sélecteur est porté par la classe, il ne touche donc que ces étiquettes. */
+.etiquettePli {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .etiquettePli {
+    display: block;
+  }
+  details[open] > summary > .etiquettePli {
+    display: none;
+  }
+}
+
+/* SUR BUREAU, LA BASCULE N'EXISTE PAS DU TOUT, et pas seulement son contenu.
+   Vidée de son étiquette et de son chevron, elle resterait un `<summary>`
+   focalisable : 117 arrêts de tabulation muets sur les treize pages, un par
+   section repliée. `display: none` la retire de l'ordre de tabulation et de
+   l'arbre d'accessibilité. Le bloc est rendu `open` et ne se referme que sous
+   880 px : son contenu reste donc affiché, et la règle `.section:not([open])`
+   de `SectionPliableMobile.module.css` le rattrape même s'il était fermé.
+
+   Le `margin-top: 12px` du corps est remis à zéro pour la même raison : il
+   aérait l'espace sous une bascule qui, ici, n'est plus là. Il ajoutait sinon
+   12 px avant chaque section, écart que la capture ne porte pas.
+
+   Les deux règles sont ancrées sur `.corpsMetier`, le `<main>` de ce gabarit :
+   aucun autre gabarit n'est touché. */
+@media (min-width: 881px) {
+  .corpsMetier details[data-pliable-mobile] > summary {
+    display: none;
+  }
+  .corpsMetier details[data-pliable-mobile] > summary + div {
+    margin-top: 0;
+  }
+}

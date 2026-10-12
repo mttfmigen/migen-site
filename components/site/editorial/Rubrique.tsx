@@ -208,6 +208,14 @@ export default function Rubrique({ titre, vue }: { titre: string; vue: VueRubriq
                   <details
                     key={f.question}
                     name="faq-rubrique"
+                    /* LA PREMIÈRE QUESTION EST OUVERTE, comme la capture des
+                       six rayons l'écrit : `open` sur le premier `<details>`
+                       et sur lui seul. Sans lui, la section rendait 624 px là
+                       où la capture en déclare 695 sur
+                       /ressources/fiches-pratiques/ (mesuré le 12/10), et sa
+                       première réponse restait invisible. Le groupe `name`
+                       garde l'exclusivité. */
+                    open={i === 0}
                     style={{ borderTop: i ? "1px solid var(--line)" : "none" }}
                   >
                     <summary

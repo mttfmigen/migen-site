@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { CSSProperties } from "react";
 
 import { VERRE } from "@/components/site/blocs/habillage";
@@ -14,10 +15,38 @@ import { VERRE } from "@/components/site/blocs/habillage";
  * par l'indicateur du pilier 03, sans montant.
  *
  * L'IMAGE arrive en prop : la maquette pointait un identifiant d'actif Claude
- * Design (« 738c047c-… »), pas un fichier. La valeur par défaut est la photo
- * d'armoire électrique du dépôt, la plus proche du sujet (migration d'automate,
- * reprise des schémas). À remplacer par la vraie photo du chantier quand elle
- * sera fournie.
+ * Design (« 738c047c-… »), pas un fichier.
+ *
+ * LA VALEUR PAR DÉFAUT A CHANGÉ LE 12/10, À LA DEMANDE DE MEHDI : « change la
+ * photo sur le cas concret sur la partie RSE ».
+ *
+ * Ce qu'elle était : `/assets/web/sv-armoire.jpg`. Deux raisons mesurées de la
+ * retirer d'ici, et aucune des deux n'est une affaire de goût.
+ *
+ *  1. Elle sert DÉJÀ six autres emplacements du site, dont la page de l'offre
+ *     retrofit elle-même (`gabarits-maquette/offres-retrofit-remise-en-etat.json`),
+ *     l'accueil (`accueil/DernieresRealisations.tsx`) et le hub carrière. C'est
+ *     exactement le défaut que `lib/photos-autorisees.ts` documente : « 130
+ *     pages affichent DEUX FOIS la même photo, Mehdi le voit ».
+ *  2. Elle ne montre pas ce que le cas raconte. On y voit une armoire NEUVE en
+ *     cours de montage, variateurs SEW propres et étiquette « EC Declaration of
+ *     partly completed machinery » : une installation. Le cas, lui, parle d'une
+ *     ligne de 1998 REMISE EN SERVICE.
+ *
+ * CRITÈRE DE CHOIX de la nouvelle : le cas nomme trois actes, migration
+ * d'automate, reprise des schémas, mise en conformité. La photo retenue montre
+ * une armoire de commande ANCIENNE, ouverte sur ses cartes et son câblage, un
+ * technicien qui y mesure au multimètre, et autour des robots À L'ARRÊT. C'est
+ * la ligne arrêtée qu'on remet en route, pas une machine qu'on installe. Elle
+ * est en paysage et également éclairée, ce que réclame le dégradé sombre posé
+ * par-dessus.
+ *
+ * `sv-armoire.jpg` n'est pas perdue : elle reste sur la page de l'offre
+ * retrofit, qui est sa place.
+ *
+ * ELLE PASSE EN `next/image` : ses dimensions intrinsèques sont connues
+ * (2000 par 1333), ce qui n'était pas le cas du fichier de remplacement
+ * d'origine. Le `<img>` brut servait 672 ko tels quels.
  */
 
 export interface ProprietesCasRetrofit {
@@ -58,8 +87,10 @@ const CHIFFRES: readonly { valeur: string; libelle: string }[] = [
 ];
 
 export default function CasRetrofit({
-  image = "/assets/web/sv-armoire.jpg",
-  imageAlt = "Installation industrielle rétrofitée",
+  image = "/assets/photos/env-maintenance-automaticien-3.jpg",
+  /* Description du registre, mot pour mot, apostrophe droite comprise : voir la
+     note de `OrigineDuNom.tsx` sur ce que compte `verifie-alt-photos.mjs`. */
+  imageAlt = "Technicien mesurant au multimètre dans une armoire électrique ouverte, au milieu de robots à l'arrêt",
 }: ProprietesCasRetrofit) {
   return (
     <section style={{ padding: "var(--sec) 0 0" }}>
@@ -83,17 +114,12 @@ export default function CasRetrofit({
               background: "var(--ph)",
             }}
           >
-            {/* `img` et non `next/image` : les dimensions intrinsèques du
-                fichier de remplacement ne sont pas connues. */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={image}
               alt={imageAlt}
+              fill
+              sizes="(max-width: 900px) 100vw, 740px"
               style={{
-                position: "absolute",
-                inset: 0,
-                width: "100%",
-                height: "100%",
                 objectFit: "cover",
                 filter: "saturate(var(--sat)) contrast(1.05)",
                 opacity: "var(--ph-op)",

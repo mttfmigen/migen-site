@@ -25,6 +25,48 @@
   }
 }
 
+/*
+ * LE REPLI MOBILE NE DOIT RIEN COÛTER SUR BUREAU, ET IL COÛTAIT 29 À 33 PX PAR
+ * PARTIE. Corrigé le 12/10, après mesure EN PRODUCTION à 1280 px.
+ *
+ * CE QUI A ÉTÉ MESURÉ. La section « Article · corps » rendait 7 584 px sur
+ * /ressources/fiches-pratiques/5s/ quand sa capture en déclare 7 356, soit
+ * +3 % ; 7 964 contre 7 760 sur /ressources/fiches-techniques/amdec/. Le même
+ * écart se lisait sur les 35 pages du gabarit, toujours proportionnel au nombre
+ * de parties repliées. Défaire le repli dans le DOM de la page servie ramenait
+ * la hauteur exactement sur celle de la capture : la cause était le repli, pas
+ * le contenu.
+ *
+ * D'OÙ VENAIENT CES PIXELS, deux causes qui s'additionnent :
+ *
+ * 1. `SectionPliableMobile` pose `margin-top: 12px` sur le conteneur du corps,
+ *    à toutes les largeurs, alors que rien ne se replie au-dessus de 880 px.
+ * 2. Son `<summary>` est une boîte flex, et les marges d'un enfant de flex NE
+ *    SE FUSIONNENT PLUS avec leurs voisines. Le `<h2>` d'une partie porte
+ *    `margin: 44px 0 16px` (`habillage.TITRE2`) : avant le repli, ces 44 px se
+ *    fusionnaient avec les 22 px du bloc précédent et le titre tombait à 44 px.
+ *    Enfermé dans le `summary`, il tombait à 22 + 44.
+ *
+ * CE QUE CES DEUX RÈGLES FONT. Au-dessus de 880 px, et là seulement, le
+ * conteneur du corps et le `summary` cessent d'être des boîtes porteuses : les
+ * marges du titre et des blocs se fusionnent de nouveau comme avant le repli.
+ * Rien n'est retiré du document, le repli du téléphone n'est pas touché, et le
+ * chevron reste masqué sur bureau comme il l'était déjà.
+ *
+ * Mesuré après correctif : 7 356 et 7 760, exactement la capture.
+ */
+@media (min-width: 881px) {
+  .colonne details[data-pliable-mobile][open] > div {
+    display: contents;
+  }
+
+  .colonne details[data-pliable-mobile] > summary {
+    display: block;
+    padding-block: 0;
+    margin-block: 0;
+  }
+}
+
 @media (max-width: 760px) {
   .faq {
     padding: 26px 20px !important;

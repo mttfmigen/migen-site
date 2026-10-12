@@ -298,6 +298,42 @@ const TITRE2: CSSProperties = {
   textWrap: "balance",
 };
 
+/*
+ * L'ÉTIQUETTE DE LA BASCULE MOBILE, et pourquoi ce n'est pas un titre.
+ *
+ * Les sections 02, 04 et 05 se replient sous 880 px. La première version du
+ * repli, câblée le 12/10, déplaçait le surtitre et le `<h2>` DANS le
+ * `<summary>` : le titre restait à la taille de sa capture (l'inline survit),
+ * mais il passait sous un élément de rôle `button`, où les descendants sont
+ * présentationnels. Les 113 titres de section des 41 pages devenaient donc le
+ * nom accessible d'un bouton au lieu d'un titre de niveau 2, et la bascule,
+ * visible à toutes les largeurs, laissait 113 arrêts de tabulation muets sur
+ * grand écran.
+ *
+ * Le motif retenu est celui du gabarit métier : le `<h2>` RESTE dans la
+ * section, à sa place et à sa taille, et la bascule porte une ÉTIQUETTE qui
+ * n'existe que sous 880 px, marquée `data-mobile-seulement` comme le chevron
+ * du même bloc. Au-dessus, la bascule n'est pas affichée du tout : un visiteur
+ * de bureau voit exactement sa capture, et la structure du document garde un
+ * seul titre par section.
+ */
+const ETIQUETTE_SURTITRE: CSSProperties = {
+  display: "block",
+  font: "600 11px var(--fb)",
+  letterSpacing: ".14em",
+  textTransform: "uppercase",
+  color: "var(--acc)",
+  marginBottom: 6,
+};
+
+/** Le libellé de la bascule, à l'échelle des H2 du gabarit en largeur mobile. */
+const ETIQUETTE_TITRE: CSSProperties = {
+  display: "block",
+  font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
+  letterSpacing: "-.035em",
+  color: "var(--ink)",
+};
+
 /* 2 · La situation */
 const SITUATION_GRILLE: CSSProperties = {
   ...LARGEUR,
@@ -1010,29 +1046,32 @@ export default function PagePreuve({
         {reponse.length > 0 ? (
           <section style={SECTION}>
             <div style={LARGEUR}>
-              {/* SE REPLIE AU TELEPHONE, comme les sections 02 a 05 de la maquette
+              {/* SE REPLIE AU TÉLÉPHONE, comme les sections 02 à 05 de la maquette
                   mobile : `isOpen = si < 1 || secOpen[...]`, la 01 reste ouverte.
-                  Le surtitre et le h2 DEJA LA servent d'en-tete. */}
+                  La bascule porte une ÉTIQUETTE mobile ; le surtitre et le `<h2>`
+                  de la capture restent dans la section (voir ETIQUETTE_SURTITRE). */}
               <SectionPliableMobile
                 enTete={
-                  <span>
-                    <span style={{ ...KICKER, display: "block" }}>02 · Notre réponse</span>
-                    <h2 style={TITRE2}>Ce que nous avons mis en place</h2>
+                  <span data-mobile-seulement="" className={styles.etiquettePli}>
+                    <span style={ETIQUETTE_SURTITRE}>02 · Notre réponse</span>
+                    <span style={ETIQUETTE_TITRE}>Ce que nous avons mis en place</span>
                   </span>
                 }
               >
-              <div className={styles.bento} style={REPONSE_GRILLE}>
-                {reponse.map((carte, rang) => (
-                  <CarteReponse
-                    key={carte.titre}
-                    carte={carte}
-                    rang={rang}
-                    total={reponse.length}
-                  />
-                ))}
-              </div>
-                          </SectionPliableMobile>
-</div>
+                <div style={KICKER}>02 · Notre réponse</div>
+                <h2 style={TITRE2}>Ce que nous avons mis en place</h2>
+                <div className={styles.bento} style={REPONSE_GRILLE}>
+                  {reponse.map((carte, rang) => (
+                    <CarteReponse
+                      key={carte.titre}
+                      carte={carte}
+                      rang={rang}
+                      total={reponse.length}
+                    />
+                  ))}
+                </div>
+              </SectionPliableMobile>
+            </div>
           </section>
         ) : null}
 
@@ -1107,34 +1146,37 @@ export default function PagePreuve({
                 ) : null}
               </div>
               <div>
-                {/* SE REPLIE AU TELEPHONE, comme les sections 02 a 05 de la maquette
+                {/* SE REPLIE AU TÉLÉPHONE, comme les sections 02 à 05 de la maquette
                   mobile : `isOpen = si < 1 || secOpen[...]`, la 01 reste ouverte.
-                  Le surtitre et le h2 DEJA LA servent d'en-tete. */}
+                  La bascule porte une ÉTIQUETTE mobile ; le surtitre et le `<h2>`
+                  de la capture restent dans la cellule de droite de la grille. */}
                 <SectionPliableMobile
                   enTete={
-                    <span>
-                      <span style={{ ...KICKER, display: "block" }}>04 · Fiche mission</span>
-                      <h2 style={{ ...TITRE2, margin: "0 0 26px" }}>Le dispositif</h2>
+                    <span data-mobile-seulement="" className={styles.etiquettePli}>
+                      <span style={ETIQUETTE_SURTITRE}>04 · Fiche mission</span>
+                      <span style={ETIQUETTE_TITRE}>Le dispositif</span>
                     </span>
                   }
                 >
-                <div style={DISPOSITIF_TABLE}>
-                  {dispositif.map((ligne, rang) => (
-                    <div
-                      key={ligne.libelle}
-                      style={
-                        rang === 0
-                          ? { ...DISPOSITIF_LIGNE, borderTop: "none" }
-                          : DISPOSITIF_LIGNE
-                      }
-                    >
-                      <span style={DISPOSITIF_LIBELLE}>{ligne.libelle}</span>
-                      <span style={DISPOSITIF_VALEUR}>{ligne.valeur}</span>
-                    </div>
-                  ))}
-                </div>
-                              </SectionPliableMobile>
-</div>
+                  <div style={KICKER}>04 · Fiche mission</div>
+                  <h2 style={{ ...TITRE2, margin: "0 0 26px" }}>Le dispositif</h2>
+                  <div style={DISPOSITIF_TABLE}>
+                    {dispositif.map((ligne, rang) => (
+                      <div
+                        key={ligne.libelle}
+                        style={
+                          rang === 0
+                            ? { ...DISPOSITIF_LIGNE, borderTop: "none" }
+                            : DISPOSITIF_LIGNE
+                        }
+                      >
+                        <span style={DISPOSITIF_LIBELLE}>{ligne.libelle}</span>
+                        <span style={DISPOSITIF_VALEUR}>{ligne.valeur}</span>
+                      </div>
+                    ))}
+                  </div>
+                </SectionPliableMobile>
+              </div>
             </div>
           </section>
         ) : null}
@@ -1146,40 +1188,43 @@ export default function PagePreuve({
             <div className={styles.panneauResultat} style={RESULTAT_PANNEAU}>
               <div aria-hidden="true" style={RESULTAT_LUEUR} />
               <div style={{ position: "relative" }}>
-                {/* SE REPLIE AU TELEPHONE, comme les sections 02 a 05 de la maquette
+                {/* SE REPLIE AU TÉLÉPHONE, comme les sections 02 à 05 de la maquette
                   mobile : `isOpen = si < 1 || secOpen[...]`, la 01 reste ouverte.
-                  Le surtitre et le h2 DEJA LA servent d'en-tete. */}
+                  La bascule porte une ÉTIQUETTE mobile ; le surtitre et le `<h2>`
+                  de la capture restent dans le panneau. */}
                 <SectionPliableMobile
                   enTete={
-                    <span>
-                      <span style={{ ...KICKER, display: "block" }}>05 · Résultat</span>
-                      <h2 style={RESULTAT_TITRE}>Le résultat</h2>
+                    <span data-mobile-seulement="" className={styles.etiquettePli}>
+                      <span style={ETIQUETTE_SURTITRE}>05 · Résultat</span>
+                      <span style={{ ...ETIQUETTE_TITRE, color: "#fff" }}>Le résultat</span>
                     </span>
                   }
                 >
-                <div
-                  className={styles.resultats}
-                  style={{
-                    ...RESULTAT_GRILLE,
-                    gridTemplateColumns: `repeat(${Math.min(resultats.length, RESULTAT_COLONNES_MAX)},minmax(0,1fr))`,
-                  }}
-                >
-                  {resultats.map((resultat) => (
-                    <div key={resultat.titre} style={RESULTAT_ITEM}>
-                      <span aria-hidden="true" style={RESULTAT_COCHE}>
-                        ✓
-                      </span>
-                      <TitreEtSuite
-                        titre={resultat.titre}
-                        texte={resultat.texte}
-                        styleTitre={RESULTAT_ITEM_TITRE}
-                        styleTexte={RESULTAT_ITEM_TEXTE}
-                      />
-                    </div>
-                  ))}
-                </div>
-                              </SectionPliableMobile>
-</div>
+                  <div style={KICKER}>05 · Résultat</div>
+                  <h2 style={RESULTAT_TITRE}>Le résultat</h2>
+                  <div
+                    className={styles.resultats}
+                    style={{
+                      ...RESULTAT_GRILLE,
+                      gridTemplateColumns: `repeat(${Math.min(resultats.length, RESULTAT_COLONNES_MAX)},minmax(0,1fr))`,
+                    }}
+                  >
+                    {resultats.map((resultat) => (
+                      <div key={resultat.titre} style={RESULTAT_ITEM}>
+                        <span aria-hidden="true" style={RESULTAT_COCHE}>
+                          ✓
+                        </span>
+                        <TitreEtSuite
+                          titre={resultat.titre}
+                          texte={resultat.texte}
+                          styleTitre={RESULTAT_ITEM_TITRE}
+                          styleTexte={RESULTAT_ITEM_TEXTE}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </SectionPliableMobile>
+              </div>
             </div>
           </section>
         ) : null}

@@ -9,6 +9,22 @@ import SigleMigen from "./SigleMigen";
  * Maquette, lignes 5282 à 5350. Quatre blocs dans une seule section : la photo
  * légendée, le panneau sombre qui épelle M-I-G-EN, les deux cartes de verre, le
  * panneau du logo.
+ *
+ * LA PHOTO, CHANGÉE LE 12/10 À LA DEMANDE DE MEHDI (voir le même bloc de note
+ * en tête de `TerrainsExcellence.tsx` pour la mesure) : cette carte et celle
+ * des terrains d'excellence servaient toutes deux `team-duo.jpg`.
+ *
+ * CRITÈRE DE CHOIX, et il est donné par la légende que la carte porte
+ * elle-même : « 23 ans, un cursus d'automatisme, deux ans à travailler seul ».
+ * Une photo de DUO contredit « seul », et c'est la copie visible qui gagne sur
+ * l'`alt` de la maquette, lequel disait « les premiers techniciens » au
+ * pluriel. La photo retenue montre UN technicien jeune, casqué, tablette en
+ * main, devant une armoire d'automatisme : l'âge, le métier et la solitude de
+ * la légende, les trois à la fois.
+ *
+ * Elle est en portrait, 1333 par 2000, et le cadre fait 540 par 480 au moins :
+ * le recadrage garde la bande centrale, donc le visage. Une photo en paysage y
+ * perdait plus.
  */
 
 const VERRE: CSSProperties = {
@@ -52,8 +68,13 @@ export default function OrigineDuNom() {
             }}
           >
             <Image
-              src="/assets/web/team-duo.jpg"
-              alt="Les premiers techniciens migen sur un site client"
+              src="/assets/photos/automatisme-armoire-jeune-tablette.jpg"
+              /* Apostrophe DROITE, et c'est voulu : le texte alternatif reprend
+                 la description du registre mot pour mot, octet pour octet, ce
+                 que `scripts/verifie-alt-photos.mjs` compte comme « du
+                 registre ». Un `alt` n'est pas de la copie visible, la règle
+                 typographique du projet ne s'y applique pas. */
+              alt="Jeune technicien casqué, tablette en main devant une armoire d'automatisme"
               fill
               sizes="(max-width: 900px) 100vw, 540px"
               style={{

@@ -308,6 +308,55 @@ Dernière relecture : 12/10.
       le week-end et les jours fériés prend le relais la nuit et le week-end. »
       dit deux fois « la nuit et le week-end ».
 
+### G47 — /preuves/ : le filtre doit s'ouvrir sur « Tous », pas sur une catégorie
+- [x] FAIT
+      MESURE : la maquette ouvre bien sur la première catégorie, sa capture le
+      montre. C'est donc un écart assumé contre elle, pas un défaut de portage.
+      PIÈGE TRAITÉ : « Tous » porte déjà les 41 fiches ; le rendre en même temps
+      que les catégories masquées aurait écrit chaque lien DEUX fois dans le
+      HTML. Le rendu tranche maintenant selon l'onglet actif.
+      CHECK: curl -s https://migen-site.vercel.app/preuves/ | grep -c 'aria-pressed="true"'
+      EXPECT: 1, et ce doit être l'onglet « Tous »
+
+### G48 — Accueil : retirer « 4 agences · +120 techniciens » à côté de « Partout en France »
+- [x] FAIT
+      LA PORTE ÉTAIT AVEUGLE : `verification-ouverture.tsx` passait au vert sans
+      rien remarquer, faute d'assertion sur cette chaîne. Assertion d'absence
+      ajoutée, plus son inverse pour que la pastille ne puisse pas disparaître
+      en silence. Témoin 2/2.
+      CHECK: curl -s https://migen-site.vercel.app/ | grep -c "120 techniciens"
+      EXPECT: 0
+
+### G49 — « Migen recrutement » fait trop cabinet, la page devrait se dire « Nous rejoindre »
+- [x] FAIT
+      MESURE : la capture `maquette/rendu/carriere.json` écrit bien « Migen
+      recrutement » en h1Attendu ET en h1Rendu. C'est donc un écart assumé
+      contre la maquette, pas un défaut de portage.
+      FAIT : h1, chapô, titre de section, titre et description SEO, et un
+      libellé de lien dans la fiche alternance.
+      LA PORTE VÉRIFIE LES DEUX SENS. Un tableau `ECARTS_TRANCHES` nommé dans
+      `verification-carriere.tsx` porte chaque décision datée. Elle exige que
+      le nouveau texte soit là ET que l'ancien ait disparu : une tolérance à sens
+      unique laisserait « Migen recrutement » revenir en silence. La comparaison
+      des titres de section reste une égalité de listes ORDONNÉES, les écarts
+      étant appliqués au côté attendu : elle attrape encore un titre manquant,
+      en trop ou déplacé. Témoin 2/2.
+
+### G50 — Les 12 px de trop avant chaque section repliée, sur bureau
+- [x] FAIT, et c'était un défaut de MOI, trouvé par un agent
+      MESURE sur un build de production : `SectionPliableMobile.module.css`
+      posait `margin-top: 12px` sur le corps à TOUTES les largeurs. Sur bureau
+      la bascule est invisible mais l'espace restait, avant chaque section
+      repliée : 120 px de trop sur le hub carrière (10 blocs), 108 px sur les
+      guides (9), 39 px sur zéro arrêt (3), 24 px sur une page de preuve (2).
+      Aucune capture ne porte cet espace.
+      FAIT : les 12 px n'existent plus que sous 880 px, dans le fichier
+      PARTAGÉ, donc une seule correction pour tous les gabarits repliés.
+      RESTE : sur le gabarit ressource le coût montait à 29-33 px par partie,
+      une seconde cause s'y ajoutant (la bascule est une boîte `flex`, ce qui
+      empêche la fusion des marges du `h2`). Traité pour ce gabarit, à mesurer
+      sur les autres.
+
 ---
 
 ## Bloqué sur Mehdi, rien à faire de notre côté

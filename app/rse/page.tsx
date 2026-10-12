@@ -5,6 +5,7 @@ import CasRetrofit from "@/components/site/rse/CasRetrofit";
 import OuvertureRse from "@/components/site/rse/OuvertureRse";
 import PiecesFournisseur from "@/components/site/rse/PiecesFournisseur";
 import PiliersRse from "@/components/site/rse/PiliersRse";
+import { vignetteDeLaPage } from "@/lib/seo/vignette";
 
 /**
  * Page des engagements RSE, portée de `maquette/accueil-rendu.html`, lignes
@@ -48,6 +49,7 @@ export const metadata: Metadata = {
     description:
       "Sécurité des équipes, formation et emploi local, prolongation des machines par le retrofit, achats de proximité.",
     url: "/rse/",
+    images: vignetteDeLaPage("/rse/"),
   },
   robots: { index: true, follow: true },
 };

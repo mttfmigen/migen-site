@@ -134,22 +134,20 @@ export default function PanneauApropos() {
           >
             Nos implantations
           </div>
-          <Link
-            href="/lp/"
-            className={s.lienDiscret}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 6,
-              font: "600 10.5px var(--fb)",
-              letterSpacing: ".06em",
-              textTransform: "uppercase",
-              whiteSpace: "nowrap",
-            }}
-          >
-            <span style={PASTILLE} />
-            Modèle de LP
-          </Link>
+          {/* « Modèle de LP » RETIRÉ le 12/10. C'était une commande de
+              navigation du PROTOTYPE, pas un lien du site : elle pointait sur
+              `/lp/`, qui répond 404 en production (et `/lp` répond 308 vers
+              lui), depuis le menu À propos, donc depuis les 248 pages.
+
+              La maquette la porte une fois dans sa source, mais AUCUNE de ses
+              248 captures ne la dessine : la référence du projet est le rendu
+              figé, et il ne la connaît pas.
+
+              Trouvée par `verification-entete.tsx` le jour où sa référence est
+              passée de l'inventaire de l'ANCIEN site à celui du nouveau. Elle
+              ne pouvait pas la voir avant : `/lp` ne figurait pas davantage
+              dans les 223 URL de l'ancien site, mais l'assertion tombait déjà
+              sur `/offres/full-service` et s'arrêtait là. */}
         </div>
         <div
           style={{

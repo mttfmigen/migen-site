@@ -6,6 +6,7 @@ import Link from "next/link";
 import { LARGEUR } from "@/components/site/blocs/habillage";
 import { TELEPHONE_SITE } from "@/components/site/entete-donnees";
 import { urlAbsolue } from "@/lib/seo/url";
+import { vignetteDeLaPage } from "@/lib/seo/vignette";
 
 /**
  * Mentions légales, lignes 7754 à 7797 de `maquette/accueil-rendu.html`.
@@ -84,6 +85,20 @@ export const metadata: Metadata = {
   description:
     "Informations légales, éditeur, hébergeur et propriété intellectuelle du site migen.",
   alternates: { canonical: urlAbsolue(CHEMIN) },
+  // `type`, `locale` et `siteName` sont RÉPÉTÉS ici bien que la mise en page
+  // racine les porte : déclarer un `openGraph` sur une page REMPLACE celui de
+  // la racine en entier, Next ne fusionne pas les champs imbriqués. Mesuré :
+  // sans ces trois lignes, cette page perdait og:site_name, og:locale et
+  // og:type que toutes les autres portent. `title` et `description`, eux, sont
+  // laissés à Next, qui reprend ceux déclarés ci-dessus : les réécrire les
+  // ferait diverger au premier changement.
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    siteName: "Migen",
+    url: urlAbsolue(CHEMIN),
+    images: vignetteDeLaPage(CHEMIN),
+  },
 };
 
 /**
