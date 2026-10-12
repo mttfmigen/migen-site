@@ -130,11 +130,7 @@
       }
     ],
     "problemePhoto": null,
-    "complementOffre": [
-      {
-        "texte": "Ligne bloquée maintenant ? Voir le dépannage industriel."
-      }
-    ],
+    "complementOffre": [],
     "sections": [
       {
         "type": "probleme",

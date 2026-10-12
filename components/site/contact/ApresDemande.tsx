@@ -1,11 +1,19 @@
-import Link from "next/link";
 import type { CSSProperties } from "react";
 
-import styles from "./Contact.module.css";
 
 /**
- * « Après votre demande » : trois étapes, puis la carte candidature.
- * Porté de `maquette/accueil-rendu.html`, lignes 3002 à 3010.
+ * « Après votre demande » : les trois étapes du parcours CLIENT, et rien
+ * d'autre. Porté de `maquette/accueil-rendu.html`, lignes 3002 à 3010.
+ *
+ * LA CARTE CANDIDATURE A QUITTÉ CETTE SECTION le 12/10, sur arbitrage de
+ * Mehdi : « tu parles d'un besoin et tu enchaînes sur un bouton qui renvoie
+ * vers l'espace candidat ». La maquette la pose bien ici, il l'a confirmé,
+ * mais la suite de lecture est fausse : on décrit à un industriel ce qui se
+ * passe après SA demande, puis on l'envoie postuler. Elle vit maintenant dans
+ * `PourLesTechniciens.tsx`, après les agences, avec sa propre adresse.
+ *
+ * Elle laissait de surcroît une demi-colonne vide : sa grille était en
+ * `1fr 1fr` pour une seule carte, dans la maquette comme chez nous.
  *
  * LES REPÈRES DES CARTES NE SONT PLUS DES DÉLAIS. La maquette les titrait
  * « 1 h », « 48 h », « 3 sem. » : le contrat de projet n'autorise qu'un seul
@@ -141,71 +149,6 @@ export default function ApresDemande() {
                 </p>
               </div>
             ))}
-          </div>
-
-          <div
-            className="mg-r2"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 12,
-              marginTop: 12,
-            }}
-          >
-            <Link
-              href="/carriere/"
-              className={styles.carteLien}
-              style={{
-                ...CARTE,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: 18,
-                padding: "26px 30px",
-              }}
-            >
-              <div>
-                <div
-                  style={{
-                    font: "600 10.5px var(--fb)",
-                    letterSpacing: ".14em",
-                    textTransform: "uppercase",
-                    color: "var(--acc)",
-                    marginBottom: 8,
-                  }}
-                >
-                  Vous êtes technicien&nbsp;?
-                </div>
-                <div
-                  style={{
-                    font: "600 calc(22px * var(--ts)) var(--ft)",
-                    letterSpacing: "-.035em",
-                    color: "var(--ink)",
-                  }}
-                >
-                  Postulez directement en ligne
-                </div>
-                <div
-                  style={{
-                    font: "400 13.5px/1.5 var(--fb)",
-                    color: "var(--ink2)",
-                    marginTop: 4,
-                  }}
-                >
-                  Quatre écrans.
-                </div>
-              </div>
-              <span
-                aria-hidden="true"
-                style={{
-                  font: "600 20px var(--fb)",
-                  color: "var(--acc)",
-                  flex: "none",
-                }}
-              >
-                →
-              </span>
-            </Link>
           </div>
         </div>
       </div>

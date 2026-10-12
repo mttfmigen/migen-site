@@ -35,11 +35,7 @@
       }
     ],
     "problemePhoto": "/assets/photos/env-technicien-maintenance-photo.jpg",
-    "complementOffre": [
-      {
-        "texte": "Une ligne bouchée maintenant se traite par le dépannage industriel."
-      }
-    ],
+    "complementOffre": [],
     "marquesFamille": "fluide",
     "sections": [
       {

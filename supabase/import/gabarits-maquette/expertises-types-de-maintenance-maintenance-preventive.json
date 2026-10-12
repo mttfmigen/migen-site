@@ -140,11 +140,7 @@
       }
     ],
     "problemePhoto": null,
-    "complementOffre": [
-      {
-        "texte": "Pour une panne en cours, voir le dépannage industriel."
-      }
-    ],
+    "complementOffre": [],
     "sections": [
       {
         "type": "probleme",

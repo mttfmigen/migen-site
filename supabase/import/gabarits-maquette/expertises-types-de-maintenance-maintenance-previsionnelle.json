@@ -169,11 +169,7 @@
       }
     ],
     "problemePhoto": "/assets/photos/il-technicien-maintenance-2.jpg",
-    "complementOffre": [
-      {
-        "texte": "Pour une panne en cours, voir le dépannage industriel."
-      }
-    ],
+    "complementOffre": [],
     "sections": [
       {
         "type": "probleme",

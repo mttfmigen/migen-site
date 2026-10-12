@@ -22,6 +22,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import Agences from "@/components/site/contact/Agences";
 import ApresDemande from "@/components/site/contact/ApresDemande";
 import Ouverture from "@/components/site/contact/Ouverture";
+import PourLesTechniciens from "@/components/site/contact/PourLesTechniciens";
 import { TITRE_SEO } from "@/components/site/contact/metadonnees";
 import { appliqueDecisions } from "@/lib/decisions-copie";
 
@@ -43,11 +44,37 @@ assert.ok(
   "ces lignes ne sont plus l'écran contact de la maquette",
 );
 
+/* LES QUATRE SECTIONS DE LA PAGE, dans l'ordre de `app/contact/page.tsx`.
+   Elles étaient trois jusqu'au 12/10 : la carte candidature vivait dans
+   « Après votre demande ». Elle a sa section depuis, voir
+   `PourLesTechniciens.tsx`. Oublier la quatrième ici rendrait la porte
+   aveugle à toute la bande technicien. */
+const sectionClient = renderToStaticMarkup(<ApresDemande />);
 const html = [
   renderToStaticMarkup(<Ouverture />),
-  renderToStaticMarkup(<ApresDemande />),
+  sectionClient,
   renderToStaticMarkup(<Agences />),
+  renderToStaticMarkup(<PourLesTechniciens />),
 ].join("");
+
+/* CE QUE LA PORTE NE SAVAIT PAS VÉRIFIER, et qui a laissé passer le défaut
+   que Mehdi a trouvé le 12/10 : « tu parles d'un besoin et tu enchaînes sur un
+   bouton qui renvoie vers l'espace candidat ».
+
+   La porte exigeait « Vous êtes technicien ? » dans le rendu TOTAL. Elle était
+   donc satisfaite que la carte soit là, sans jamais regarder OÙ. La voici
+   contrainte : la section qui décrit le parcours d'un industriel ne parle plus
+   au candidat, et la bande technicien existe bien, ailleurs. */
+assert.ok(
+  !normalise(sectionClient).includes("Vous êtes technicien"),
+  "la carte candidature est revenue DANS « Après votre demande » : la section " +
+    "qui décrit le parcours client ne doit pas s'adresser au candidat",
+);
+assert.ok(
+  normalise(renderToStaticMarkup(<PourLesTechniciens />)).includes("Postulez directement en ligne"),
+  "la bande technicien ne rend plus son titre : le candidat qui atterrit sur " +
+    "/contact/ n'a plus de chemin",
+);
 
 /**
  * Met maquette et rendu sur le même texte.
@@ -143,6 +170,12 @@ const CORRIGE: readonly [string, string][] = [
   ["3 sem.", "3 sem."],
   ["Siège — Limonest", "Siège — Limonest"],
   ["réponse sous 48 h ouvrées", "sous 48 h"],
+  /* LE MOIGNON. La maquette écrit « Quatre écrans, réponse sous 48 h
+     ouvrées. » La purge du seul « 48 h » laissait « Quatre écrans. » en
+     ligne, une phrase qui n'annonce rien, et fausse de surcroît : notre
+     formulaire de candidature tient sur UN écran. Couper une phrase en
+     deux ne suffit pas, il faut que ce qui reste tienne debout. */
+  ["Quatre écrans", "Quatre écrans"],
   ["de l'agence la plus proche", "de l'agence la plus proche"],
 ];
 

@@ -38,11 +38,7 @@
       }
     ],
     "problemePhoto": "/assets/photos/il-soudure-poste-masque-releve.jpg",
-    "complementOffre": [
-      {
-        "texte": "Besoin d'un soudeur sur plusieurs semaines ? Une casse métallique en cours se traite par le dépannage industriel."
-      }
-    ],
+    "complementOffre": [],
     "sections": [
       {
         "type": "probleme",

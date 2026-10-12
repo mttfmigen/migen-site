@@ -175,7 +175,15 @@ const CONTENU_HUB_EXPERTISES_DECLARE: ContenuHubExpertises = {
       texte: "Notre guide des types de maintenance détaille chaque approche.",
     },
   ],
-  complementOffre: [{ texte: "Ligne bloquée maintenant ? Voir le dépannage industriel." }],
+  /* Le bloc portait « Ligne bloquée maintenant ? Voir le dépannage
+     industriel. » Retiré le 12/10, sur jugement de Mehdi : « c'est
+     inutile ». La phrase n'est dans aucune des 248 captures, elle répète
+     ce que la page dit déjà, et elle détournait le lecteur du formulaire
+     juste avant qu'il l'atteigne. Le même motif a été retiré de 26 fiches
+     par `scripts/retire-redirection-depannage.mjs`. Le tableau reste vide
+     plutôt qu'absent : le gabarit sait ne rien rendre, et une clé absente
+     ferait plonger la comparaison de type. */
+  complementOffre: [],
   marquesFamille: "auto",
   marquesFamilles: ["auto", "robot", "mo", "plast", "agro", "logi", "fluide"],
   pagesLieesTitre: "Par où continuer\u00a0?",

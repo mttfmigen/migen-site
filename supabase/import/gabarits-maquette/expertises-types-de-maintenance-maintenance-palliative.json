@@ -35,11 +35,7 @@
       }
     ],
     "problemePhoto": null,
-    "complementOffre": [
-      {
-        "texte": "Machine arrêtée en ce moment : passez par le dépannage industriel."
-      }
-    ],
+    "complementOffre": [],
     "sections": [
       {
         "type": "probleme",

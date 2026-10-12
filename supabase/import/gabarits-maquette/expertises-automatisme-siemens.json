@@ -35,11 +35,7 @@
       }
     ],
     "problemePhoto": "/assets/photos/env-maintenance-automaticien.jpg",
-    "complementOffre": [
-      {
-        "texte": "Un parc entier à remettre sous suivi ? Une ligne arrêtée maintenant se traite par le dépannage industriel."
-      }
-    ],
+    "complementOffre": [],
     "marquesFamille": "auto",
     "sections": [
       {

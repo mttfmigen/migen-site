@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Agences from "@/components/site/contact/Agences";
 import ApresDemande from "@/components/site/contact/ApresDemande";
 import Ouverture from "@/components/site/contact/Ouverture";
+import PourLesTechniciens from "@/components/site/contact/PourLesTechniciens";
 import {
   DESCRIPTION_SEO,
   TITRE_SEO,
@@ -71,6 +72,9 @@ export default function Contact() {
         <Ouverture />
         <ApresDemande />
         <Agences />
+        {/* La bande technicien FERME la page, elle ne coupe plus le parcours
+            client. Arbitrage de Mehdi du 12/10, voir PourLesTechniciens.tsx. */}
+        <PourLesTechniciens />
       </main>
     </div>
   );

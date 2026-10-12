@@ -34,11 +34,7 @@
       }
     ],
     "problemePhoto": "/assets/photos/env-technician-inspecting-electrical-panel-in-a-fa.jpg",
-    "complementOffre": [
-      {
-        "texte": "Un moteur en panne maintenant se traite par le dépannage industriel."
-      }
-    ],
+    "complementOffre": [],
     "marquesFamille": "auto",
     "marquesFamilles": [
       "auto",

@@ -112,11 +112,7 @@
         ]
       }
     ],
-    "complementOffre": [
-      {
-        "texte": "Besoin d'une réparation tout de suite ? Voir le dépannage industriel."
-      }
-    ],
+    "complementOffre": [],
     "sections": [
       {
         "type": "probleme",

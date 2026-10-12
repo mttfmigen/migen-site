@@ -145,11 +145,7 @@
       }
     ],
     "problemePhoto": null,
-    "complementOffre": [
-      {
-        "texte": "Machine à l'arrêt maintenant ? Voir le dépannage industriel."
-      }
-    ],
+    "complementOffre": [],
     "sections": [
       {
         "type": "probleme",

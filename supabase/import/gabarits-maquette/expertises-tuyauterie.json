@@ -38,11 +38,7 @@
       }
     ],
     "problemePhoto": "/assets/photos/env-raffinerie-de-petrole-bangkok.jpg",
-    "complementOffre": [
-      {
-        "texte": "Une rupture en cours se traite par le dépannage industriel."
-      }
-    ],
+    "complementOffre": [],
     "marquesFamille": "fluide",
     "sections": [
       {

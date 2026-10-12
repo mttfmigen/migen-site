@@ -33,11 +33,7 @@
         "libelle": "Clients industriels accompagnés"
       }
     ],
-    "complementOffre": [
-      {
-        "texte": "Un équipement immobilisé maintenant se traite par le dépannage industriel."
-      }
-    ],
+    "complementOffre": [],
     "sections": [
       {
         "type": "probleme",
