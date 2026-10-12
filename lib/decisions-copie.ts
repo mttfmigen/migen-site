@@ -250,7 +250,73 @@ const META_REDACTION: Regle[] = [
    `cl[ée]\s+en\s+main`). Ne pas la « nettoyer » : la porte retomberait. */
 const NOTAMMENT: Regle[] = [[/\s+not[a]mment(?=\s)/g, () => ""]];
 
-const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION, ...NOTAMMENT];
+
+/* 12/10, L'ASTREINTE CESSE DE SE RÉPÉTER.
+   Mehdi, sur `/expertises/electromecanique/` : « Ce bloc ça va pas », puis
+   « y'a le même problème en faite sur toutes les pages expertises sur ce
+   bloc ».
+
+   LE DÉFAUT : le sujet nommait les périodes et le prédicat les renommait.
+   « L'astreinte LA NUIT, LE WEEK-END ET LES JOURS FÉRIÉS couvre LA NUIT ET LE
+   WEEK-END sur les sites concernés. » 50 phrases, 18 formulations, 55 fichiers.
+
+   LA CAUSE RACINE : un renommage global a remplacé la forme courte
+   « l'astreinte 24/24 et 7/7 » par la forme longue, sans relire les prédicats.
+   Les SQL d'import en gardent la trace.
+
+   LA RÈGLE : quand un PRÉDICAT suit et nomme déjà les périodes, le sujet
+   revient à sa forme courte. Le prédicat porte les périodes, c'est son rôle.
+
+   CE QUI N'EST JAMAIS TOUCHÉ : la forme longue employée comme NOM de l'option,
+   sans prédicat (un intitulé de liste), et un prédicat qui ne renomme aucune
+   période. Les règles ne se déclenchent que devant une période renommée. */
+const PERIODE_RENOMMEE =
+  "(?:la nuit|le week-end|les jours f[eé]ri[eé]s|les nuits|les week-ends)";
+
+const ASTREINTE: Regle[] = [
+  /* A. Un prédicat nomme déjà une période : le sujet redevient court. */
+  [
+    new RegExp(
+      `(l'|L')?(astreinte|Astreinte)\\s+la nuit,\\s*le week-end et les jours f[eé]ri[eé]s` +
+        `((?:(?!${PERIODE_RENOMMEE})[^.\"]){0,90}?\\b${PERIODE_RENOMMEE})`,
+      "g",
+    ),
+    (_t, article, mot, suite) => {
+      const s = suite.replace(/^\s+/, "");
+      const debut = `${article ?? ""}${mot}`;
+      return /^[,.;:!?)]/.test(s) ? `${debut}${s}` : `${debut} ${s}`;
+    },
+  ],
+  /* B. Ce qu'une première passe avait produit : un sujet long suivi d'un
+     prédicat sans période. La liste retourne au prédicat, à sa place. */
+  [
+    /(l'|L')?(astreinte|Astreinte)\s+la nuit,\s*le week-end et les jours f[eé]ri[eé]s(,\s*en option,)?\s+prend le relais(?=\s*[.,])/g,
+    (_t, article, mot, option) =>
+      `${article ?? ""}${mot} ${option ? "en option " : ""}prend le relais la nuit, le week-end et les jours fériés`,
+  ],
+];
+
+/* 12/10, « MIGEN RECRUTEMENT » FAIT TROP CABINET.
+   Mehdi : « genre "migen recrutement" fais trop cabinet. La page devrait se
+   dire "nous rejoindre" ». La capture de `/carriere/` titre bien « Migen
+   recrutement » : c'est donc un écart assumé contre la maquette.
+
+   Le titre de section portait le même nom en préfixe ; seul le nom écarté
+   tombe, le reste de la phrase est celui de la capture, mot pour mot. */
+const NOUS_REJOINDRE: Regle[] = [
+  [/Migen recrutement : pourquoi nous rejoindre/g, () => "Pourquoi nous rejoindre"],
+  [/\[migen recrutement\]/g, () => "[nous rejoindre]"],
+  /* LA CASSE COMPTE, et me l'a coûté une porte rouge. Le corpus écrit le nom
+     en minuscules au milieu d'une phrase (« fait partie de l'espace migen
+     recrutement ») et en capitale en tête de titre. Une règle qui n'attrapait
+     que la capitale laissait la forme en minuscules dans la comparaison, après
+     que le retrait du Markdown eut effacé les crochets de la règle ci-dessus.
+     Les deux formes sont traitées, chacune rendant la casse qui lui va. */
+  [/Migen recrutement/g, () => "Nous rejoindre"],
+  [/migen recrutement/g, () => "nous rejoindre"],
+];
+
+const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION, ...NOTAMMENT, ...ASTREINTE, ...NOUS_REJOINDRE];
 
 /** Le texte tel que le site doit le rendre, à partir de celui de la maquette. */
 export function appliqueDecisions(texte: string): string {

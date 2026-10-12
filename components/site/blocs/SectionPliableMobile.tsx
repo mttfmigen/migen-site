@@ -99,12 +99,29 @@ export default function SectionPliableMobile({
         <span aria-hidden="true" data-mobile-seulement="" className={s.chevron}>
           &rsaquo;
         </span>
+        {/* LE RÉSUMÉ VIT DANS LE `<summary>`, ET C'EST INDISPENSABLE.
+            Il était posé juste APRÈS, en frère du `<summary>` et donc à
+            l'intérieur du `<details>`. Or les navigateurs récents enveloppent
+            tout le contenu d'un `<details>` sauf son `<summary>` dans le
+            pseudo-élément `::details-content`, auquel ils appliquent
+            `content-visibility: hidden` quand le bloc est FERMÉ.
+
+            Et fermé est le SEUL état où ce résumé doit paraître : la règle
+            `.section:not([open]) .resume { display: block }` ne s'appliquait
+            donc jamais à l'écran. Les deux lignes de résumé des 1 092 blocs
+            repliables n'ont jamais été peintes, sur 233 pages, et personne ne
+            l'avait vu parce qu'elles sont bien dans le HTML servi : seul un
+            rendu réel pouvait le révéler.
+
+            Le contenu d'un `<summary>` n'est jamais enveloppé par
+            `::details-content`. Le sélecteur ne change pas : il porte sur
+            l'état de l'ancêtre, pas sur la position du résumé. */}
+        {resume ? (
+          <p data-mobile-seulement="" className={s.resume}>
+            {resume}
+          </p>
+        ) : null}
       </summary>
-      {resume ? (
-        <p data-mobile-seulement="" className={s.resume}>
-          {resume}
-        </p>
-      ) : null}
       <div className={s.corps}>{children}</div>
     </details>
   );

@@ -91,8 +91,48 @@ function normaliseTexte(texte: string): string {
     .replace(/ ([.,])/g, "$1");
 }
 
+/**
+ * RETIRE LES ORNEMENTS DU TÉLÉPHONE avant toute comparaison à la capture.
+ *
+ * POURQUOI. Les blocs repliables posés le 12/10 ajoutent, dans le HTML servi,
+ * des éléments marqués `data-mobile-seulement` : le chevron de la bascule, le
+ * résumé de deux lignes, et l'étiquette qui porte surtitre et titre. Ils sont
+ * masqués au-dessus de 880 px, donc ABSENTS de ce qu'un visiteur de bureau
+ * voit, et la capture de bureau n'avait aucune raison de les porter.
+ *
+ * Sans ce retrait, cette porte signalait « texte rendu absent de la capture :
+ * « › » ». Six portes de gabarit étaient rouges pour cette seule raison.
+ *
+ * L'IMBRICATION COMPTE : l'étiquette est un `span` qui en contient deux. Un
+ * motif paresseux s'arrêterait à la première fermante et n'en retirerait que
+ * la moitié, laissant le titre dans la comparaison. On compte la profondeur.
+ */
+function retireOrnementsMobiles(html: string): string {
+  const marque = /<(\w+)\b[^>]*\bdata-mobile-seulement\b[^>]*>/;
+  let sortie = html;
+  for (;;) {
+    const debut = sortie.match(marque);
+    if (!debut || debut.index === undefined) return sortie;
+    const nom = debut[1];
+    const balises = new RegExp(`<${nom}\\b[^>]*>|</${nom}\\s*>`, "g");
+    balises.lastIndex = debut.index + debut[0].length;
+    let profondeur = 1;
+    let fin = -1;
+    for (let m = balises.exec(sortie); m; m = balises.exec(sortie)) {
+      profondeur += m[0].startsWith("</") ? -1 : 1;
+      if (profondeur === 0) {
+        fin = m.index + m[0].length;
+        break;
+      }
+    }
+    if (fin < 0) fin = debut.index + debut[0].length;
+    sortie = `${sortie.slice(0, debut.index)} ${sortie.slice(fin)}`;
+  }
+}
+
 /** Le texte lisible d'un HTML, balises retirées puis normalisé. */
 function texteLisible(html: string): string {
+  html = retireOrnementsMobiles(html);
   return normaliseTexte(html.replace(/<[^>]+>/g, " "));
 }
 

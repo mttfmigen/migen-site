@@ -116,8 +116,22 @@
  * ordinaire, conformément à la maquette de bureau.
  */
 @media (min-width: 881px) {
+  /* LA RÈGLE HISTORIQUE, gardée pour les navigateurs qui masquaient chaque
+     ENFANT d'un `<details>` fermé. */
   .section:not([open]) > *:not(summary) {
     display: revert;
+  }
+
+  /* LA RÈGLE QUI MARCHE VRAIMENT AUJOURD'HUI, et sans elle la promesse
+     « sur bureau, rien ne se replie » est une promesse morte. Les navigateurs
+     récents n'agissent plus enfant par enfant : ils enveloppent tout le
+     contenu, sauf le `<summary>`, dans le pseudo-élément `::details-content`
+     et lui posent `content-visibility: hidden` quand le bloc est fermé. La
+     règle ci-dessus vise donc la mauvaise cible depuis ce changement, et un
+     bloc refermé à cette largeur, par un script ou par le visiteur, verrait
+     son contenu disparaître. */
+  .section::details-content {
+    content-visibility: visible;
   }
 
   .bascule {

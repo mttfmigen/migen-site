@@ -52,11 +52,24 @@ import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
  *     à 390 px de large, soit 2,3 écrans. C'est lui qui faisait encore le
  *     « gros pâté » que Mehdi signalait le matin.
  *
- * DEUX CORRECTIONS D'ACCESSIBILITÉ AU PASSAGE, mesurées : le compte « 7
- * villes » était en `--ink4` (#a8a49d), soit 2,3:1 sur blanc, sous le plancher
- * de 4,5:1 de la WCAG pour un texte de 11 px ; il passe en `--ink2` (#6a6764),
- * 5,4:1. Les cibles tactiles restent au-dessus de 24 px (pastille 36 px, lien
- * de ville 26 px), critère 2.5.8.
+ * TROIS CORRECTIONS D'ACCESSIBILITÉ AU PASSAGE, toutes calculées sur le VRAI
+ * fond, `--bg` #f1f2f4, et non sur du blanc pur :
+ *   - le compte « 7 villes » était en `--ink4` (#a8a49d), soit 2,22:1, sous le
+ *     plancher de 4,5:1 de la WCAG pour un texte de 11 px ; il passe en
+ *     `--ink2` (#6a6764), 5,02:1 ;
+ *   - l'anneau de focus clavier restait orange (`--acc` sur le jeton global),
+ *     soit 2,29:1 sur le crème et 2,56:1 sur une pastille blanche, sous le
+ *     plancher de 3:1 du critère 1.4.11 ; il est reteinté en `--ink` dans le
+ *     module CSS, 15,36:1, sans toucher au jeton partagé ;
+ *   - les cibles tactiles restent au-dessus de 24 px (pastille 36 px, lien de
+ *     ville 26 px, panneau de hub 168 x 65 px), critère 2.5.8.
+ *
+ * CE QUI RESTE SOUS LE PLANCHER ET N'EST PAS À MOI : le surtitre orange sur
+ * fond crème, 2,29:1, vient de `SURTITRE` dans `components/site/blocs/habillage.ts`,
+ * sert sur toutes les pages, et `docs/PASSATION.md` le déclare comme un
+ * arbitrage ouvert du client (« contrastes sous AA dans la maquette, fidélité
+ * maintenue, correction à passer par la maquette d'abord »). Signalé, pas
+ * corrigé. Le remède mesuré serait `--acc-ink` (#7d3309), 8,0:1.
  *
  * CE QUE JE N'AI PAS FAIT, ET POURQUOI : aucune photo n'est posée ici. La
  * capture n'en montre aucune sur cet écran, les deux écrans voisins en portent
