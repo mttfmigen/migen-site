@@ -3,10 +3,11 @@ import { Fragment, type CSSProperties } from "react";
 
 import { FormulaireContact } from "@/components/formulaire/FormulaireContact";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
-import type { VueGuide } from "@/types/editorial";
+import type { VueGuide, BlocGuide } from "@/types/editorial";
 
 import BlocsGuide from "./BlocsGuide";
 import styles from "./PageEditoriale.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 /**
  * La vue « GUIDE » : le gabarit générique édito de la maquette
@@ -56,6 +57,44 @@ const TITRE2: CSSProperties = {
 const numero = (i: number) => String(i + 1).padStart(2, "0");
 /** Le sommaire coupe les titres longs, règle de la maquette (`cxVals`). */
 const court = (t: string) => (t.length > 54 ? `${t.slice(0, 52)}…` : t);
+
+/**
+ * LE RESUME D'UNE SECTION REPLIEE, suivant la regle de la maquette mobile :
+ * `summary = punch | items joints par " · " | premier paragraphe`.
+ *
+ * Le Markdown est retire : le corpus ecrit « **le preventif** » et
+ * « [la GMAO](/x/) », que le resume afficherait tels quels. L'audit du 09/10
+ * est clair, aucune page ne doit en montrer, et ce defaut a deja ete attrape
+ * une fois ce jour-la sur les resumes du gabarit ressource.
+ */
+function texteNu(brut: string): string {
+  return brut
+    .replace(/\*\*\[([^\]]+)\]\([^)]*\)\*\*/g, "$1")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function resumeDeLaSection(blocs: BlocGuide[]): string {
+  const sousTitres = blocs
+    .filter((b): b is { type: "h3"; texte: string } => b.type === "h3")
+    .map((b) => texteNu(b.texte))
+    .filter(Boolean);
+  if (sousTitres.length) return sousTitres.join(" · ");
+
+  const listes = blocs.flatMap((b) => {
+    if (b.type === "ul" || b.type === "ul2") return b.items.map(texteNu);
+    if (b.type === "cartes" || b.type === "lignes") return b.items.map((x) => texteNu(x.titre));
+    if (b.type === "numeros" || b.type === "etapes") return b.items.map((x) => texteNu(x.titre ?? x.texte));
+    if (b.type === "bento") return b.items.map((x) => texteNu(x.titre));
+    return [];
+  });
+  if (listes.filter(Boolean).length) return listes.filter(Boolean).join(" · ");
+
+  const prose = blocs.find((b): b is { type: "p"; texte: string } => b.type === "p");
+  return prose ? texteNu(prose.texte) : "";
+}
 
 export default function Guide({ titre, vue }: { titre: string; vue: VueGuide }) {
   return (
@@ -204,8 +243,15 @@ export default function Guide({ titre, vue }: { titre: string; vue: VueGuide }) 
                   <BlocsGuide blocs={vue.intro} groupe="intro" />
                 </div>
               ) : null}
-              {vue.sections.map((s, i) => (
-                <section key={s.titre} id={`c${i + 1}`} style={{ scrollMarginTop: 100, paddingBottom: 56 }}>
+              {/* CHAQUE SECTION SE REPLIE AU TELEPHONE SAUF LA PREMIERE, regle
+                  de la maquette mobile : `isOpen = si < 1 || secOpen[...]`.
+                  Mesure du 12/10 : les deux guides etaient les pages les plus
+                  longues du site, 36,2 et 25,8 ecrans, sans aucun repli.
+                  L'ANCRE `#c<n>` RESTE SUR LA SECTION pour que le sommaire
+                  continue de tomber au bon endroit, et le numero et le `<h2>`
+                  DEJA LA servent d'en-tete. */}
+              {vue.sections.map((s, i) => {
+                const entete = (
                   <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 20 }}>
                     <span
                       style={{
@@ -230,9 +276,23 @@ export default function Guide({ titre, vue }: { titre: string; vue: VueGuide }) 
                       {s.titre}
                     </h2>
                   </div>
-                  <BlocsGuide blocs={s.blocs} groupe={`faq-c${i + 1}`} />
-                </section>
-              ))}
+                );
+                const corps = <BlocsGuide blocs={s.blocs} groupe={`faq-c${i + 1}`} />;
+                return (
+                  <section key={s.titre} id={`c${i + 1}`} style={{ scrollMarginTop: 100, paddingBottom: 56 }}>
+                    {i === 0 ? (
+                      <>
+                        {entete}
+                        {corps}
+                      </>
+                    ) : (
+                      <SectionPliableMobile enTete={entete} resume={resumeDeLaSection(s.blocs)}>
+                        {corps}
+                      </SectionPliableMobile>
+                    )}
+                  </section>
+                );
+              })}
             </article>
           </div>
         </section>

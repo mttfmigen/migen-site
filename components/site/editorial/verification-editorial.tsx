@@ -287,7 +287,22 @@ function rend(relais: Relais): string {
   return renderToStaticMarkup(<PageEditoriale titre={relais.titre_h1} contenu={relais.contenu} />);
 }
 
-function controle(relais: Relais, capture: string, htmlBrut: string): string[] {
+/**
+ * LES ORNEMENTS DU REPLI MOBILE, retires avant toute comparaison depuis le
+ * 12/10. Les sections d'un guide se replient au telephone, motif « Blocs
+ * communs (pliables) » de la maquette mobile : chaque bascule porte un chevron
+ * et chaque section repliee un resume, tous deux marques
+ * `data-mobile-seulement` et masques au-dessus de 880 px. La CAPTURE est de
+ * bureau et n'a aucune raison de les porter.
+ *
+ * La porte garde sa capacite a refuser : seuls les elements portant cet
+ * attribut disparaissent, le reste est compare comme avant.
+ */
+const sansOrnementsMobiles = (html: string) =>
+  html.replace(/<(\w+)[^>]*\sdata-mobile-seulement[^>]*>[\s\S]*?<\/\1>/g, " ");
+
+function controle(relais: Relais, capture: string, brut: string): string[] {
+  const htmlBrut = sansOrnementsMobiles(brut);
   const ecarts: string[] = [];
   const html = sansEcartsFormulaire(htmlBrut);
   const ref = sectionsDe(capture).map((n) => sansRetraits(n, relais.phrases_retirees));
