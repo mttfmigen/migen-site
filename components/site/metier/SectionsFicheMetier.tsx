@@ -218,11 +218,15 @@ function Bento({
   titre,
   intros,
   cartes,
+  sansEnTete,
 }: {
   surtitre: string;
   titre: string;
   intros?: string[];
   cartes: CarteFiche[];
+  /** Tait le surtitre et le titre : l'appelant les porte dans l'en-tête du
+   *  bloc repliable, les poser ici les ferait paraître deux fois. */
+  sansEnTete?: boolean;
 }) {
   if (!cartes.length) return null;
   return (
@@ -238,8 +242,12 @@ function Bento({
         }}
       >
         <div>
-          <div style={SURTITRE}>{surtitre}</div>
-          <Titre2 texte={titre} echelle="clamp(28px,3vw,42px)/1.08" largeur="18ch" />
+          {sansEnTete ? null : (
+            <>
+              <div style={SURTITRE}>{surtitre}</div>
+              <Titre2 texte={titre} echelle="clamp(28px,3vw,42px)/1.08" largeur="18ch" />
+            </>
+          )}
         </div>
         <div>
           {intros?.map((t) => (
@@ -337,23 +345,31 @@ function Liste({
   titre,
   intros,
   cartes,
+  sansEnTete,
 }: {
   surtitre: string;
   titre: string;
   intros?: string[];
   cartes: CarteFiche[];
+  /** Tait le surtitre et le titre : l'appelant les porte lui-meme,
+   *  dans l'en-tete du bloc repliable. */
+  sansEnTete?: boolean;
 }) {
   if (!cartes.length) return null;
   return (
     <div style={LARGEUR}>
       <div style={{ maxWidth: 720, marginBottom: 30 }}>
-        <div style={SURTITRE}>{surtitre}</div>
-        <Titre2
+        {sansEnTete ? null : (
+          <>
+            <div style={SURTITRE}>{surtitre}</div>
+            <Titre2
           texte={titre}
           echelle="clamp(28px,3vw,42px)/1.08"
           marge="0 0 18px"
           largeur="22ch"
         />
+          </>
+        )}
         {intros?.map((t) => (
           <Intro key={t} texte={t} police="16px/1.7" largeur="62ch" />
         ))}
@@ -425,23 +441,31 @@ function Etapes({
   titre,
   intros,
   etapes,
+  sansEnTete,
 }: {
   surtitre: string;
   titre: string;
   intros?: string[];
   etapes: CarteFiche[];
+  /** Tait le surtitre et le titre : l'appelant les porte lui-meme,
+   *  dans l'en-tete du bloc repliable. */
+  sansEnTete?: boolean;
 }) {
   if (!etapes.length) return null;
   return (
     <div style={LARGEUR}>
       <div style={{ maxWidth: 720, marginBottom: 34 }}>
-        <div style={SURTITRE}>{surtitre}</div>
-        <Titre2
+        {sansEnTete ? null : (
+          <>
+            <div style={SURTITRE}>{surtitre}</div>
+            <Titre2
           texte={titre}
           echelle="clamp(28px,3vw,42px)/1.08"
           marge="0 0 18px"
           largeur="22ch"
         />
+          </>
+        )}
         {intros?.map((t) => (
           <Intro key={t} texte={t} police="16px/1.7" largeur="62ch" />
         ))}
@@ -527,11 +551,15 @@ function Duo({
   titre,
   intros,
   cartes,
+  sansEnTete,
 }: {
   surtitre: string;
   titre: string;
   intros?: string[];
   cartes: CarteFiche[];
+  /** Tait le surtitre et le titre : l'appelant les porte lui-meme,
+   *  dans l'en-tete du bloc repliable. */
+  sansEnTete?: boolean;
 }) {
   if (!cartes.length) return null;
   return (
@@ -546,13 +574,17 @@ function Duo({
         }}
       >
         <div className={styles.colleEnHaut} style={{ position: "sticky", top: 110 }}>
-          <div style={SURTITRE}>{surtitre}</div>
-          <Titre2
+          {sansEnTete ? null : (
+            <>
+              <div style={SURTITRE}>{surtitre}</div>
+              <Titre2
             texte={titre}
             echelle="clamp(28px,3vw,42px)/1.08"
             marge="0 0 18px"
             largeur="16ch"
           />
+            </>
+          )}
           {intros?.map((t) => (
             <Intro key={t} texte={t} police="16px/1.7" largeur="62ch" />
           ))}
@@ -620,12 +652,16 @@ function Tableau({
   intros,
   entetes,
   lignes,
+  sansEnTete,
 }: {
   surtitre: string;
   titre: string;
   intros?: string[];
   entetes?: { gauche: string; droite: string };
   lignes: { gauche: string; droite: string }[];
+  /** Tait le surtitre et le titre : l'appelant les porte lui-meme,
+   *  dans l'en-tete du bloc repliable. */
+  sansEnTete?: boolean;
 }) {
   if (!lignes.length) return null;
   const RANG: CSSProperties = {
@@ -651,13 +687,17 @@ function Tableau({
       }}
     >
       <div>
-        <div style={SURTITRE}>{surtitre}</div>
-        <Titre2
+        {sansEnTete ? null : (
+          <>
+            <div style={SURTITRE}>{surtitre}</div>
+            <Titre2
           texte={titre}
           echelle="clamp(26px,2.6vw,36px)/1.12"
           interlettre="-.035em"
           largeur="26ch"
         />
+          </>
+        )}
       </div>
       <div>
         {intros?.map((t) => (
@@ -716,24 +756,32 @@ function Grille({
   intros,
   colonnes,
   lignes,
+  sansEnTete,
 }: {
   surtitre: string;
   titre: string;
   intros?: string[];
   colonnes: string[];
   lignes: string[][];
+  /** Tait le surtitre et le titre : l'appelant les porte lui-meme,
+   *  dans l'en-tete du bloc repliable. */
+  sansEnTete?: boolean;
 }) {
   if (!lignes.length) return null;
   const CASE: CSSProperties = { textAlign: "left", padding: "16px 20px" };
   return (
     <div style={LARGEUR}>
-      <div style={SURTITRE}>{surtitre}</div>
-      <Titre2
+      {sansEnTete ? null : (
+        <>
+          <div style={SURTITRE}>{surtitre}</div>
+          <Titre2
         texte={titre}
         echelle="clamp(28px,3vw,42px)/1.08"
         marge="0 0 18px"
         largeur="22ch"
       />
+        </>
+      )}
       {intros?.map((t) => (
         <Intro key={t} texte={t} police="16px/1.7" largeur="64ch" />
       ))}
@@ -838,49 +886,67 @@ function Encart({
 
 /** Une section du gabarit, rendue selon son `type`. `postuler` est rendu par
  *  la page (il porte le formulaire et son ancre), pas ici. */
-export default function SectionFicheMetier({ section }: { section: SectionFiche }) {
+/**
+ * LE DRAPEAU `sansEnTete` SERT LE REPLI MOBILE, pose le 12/10.
+ *
+ * Mesure du meme jour, hauteur reelle au telephone apres hydratation :
+ * les pages carriere sont les plus longues du site, de 25 a 34 ecrans, et
+ * aucune ne portait de bloc repliable. Elles sont onze des dix-huit pires.
+ *
+ * La page enveloppe chaque section sauf la premiere dans
+ * `SectionPliableMobile`, en lui passant le surtitre et le titre comme
+ * en-tete. Le rendu interne doit alors les TAIRE, sinon ils paraissent deux
+ * fois. C'est tout ce que fait ce drapeau.
+ */
+export default function SectionFicheMetier({
+  section,
+  sansEnTete,
+}: {
+  section: SectionFiche;
+  sansEnTete?: boolean;
+}) {
   switch (section.type) {
     case "chiffres":
       return <Chiffres items={section.items} />;
     case "bento":
       return (
         <Enveloppe>
-          <Bento {...section} />
+          <Bento {...section} sansEnTete={sansEnTete} />
           <Bande bande={section.bande} />
         </Enveloppe>
       );
     case "liste":
       return (
         <Enveloppe>
-          <Liste {...section} />
+          <Liste {...section} sansEnTete={sansEnTete} />
           <Bande bande={section.bande} />
         </Enveloppe>
       );
     case "etapes":
       return (
         <Enveloppe>
-          <Etapes {...section} />
+          <Etapes {...section} sansEnTete={sansEnTete} />
           <Bande bande={section.bande} />
         </Enveloppe>
       );
     case "duo":
       return (
         <Enveloppe>
-          <Duo {...section} />
+          <Duo {...section} sansEnTete={sansEnTete} />
           <Bande bande={section.bande} />
         </Enveloppe>
       );
     case "tableau":
       return (
         <Enveloppe>
-          <Tableau {...section} />
+          <Tableau {...section} sansEnTete={sansEnTete} />
           <Bande bande={section.bande} />
         </Enveloppe>
       );
     case "grille":
       return (
         <Enveloppe>
-          <Grille {...section} />
+          <Grille {...section} sansEnTete={sansEnTete} />
           <Bande bande={section.bande} />
         </Enveloppe>
       );

@@ -9,6 +9,7 @@ import styles from "./FicheMetier.module.css";
 import PostulerMetier from "./PostulerMetier";
 import SectionFicheMetier, { BoutonPostuler } from "./SectionsFicheMetier";
 import { altPhoto } from "@/lib/descriptions-photos";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 /**
  * Gabarit 07 « Métier et carrière », 13 pages `/carriere/<metier>/`.
@@ -51,6 +52,24 @@ export interface ProprietesPageFicheMetier {
   /** Fil d'Ariane, fourni par la page : composant serveur qui lit la base. */
   filAriane?: ReactNode;
 }
+
+/** Le surtitre de la bascule d'un bloc replié, à l'échelle des sur-titres du
+ *  site. Il ne vit que dans l'en-tête : le rendu interne le tait. */
+const SURTITRE_PLI: CSSProperties = {
+  font: "600 11px var(--fb)",
+  letterSpacing: ".14em",
+  textTransform: "uppercase",
+  color: "var(--acc)",
+  marginBottom: 6,
+};
+
+/** Le titre de la bascule, à l'échelle des H2 du gabarit en largeur mobile. */
+const TITRE_PLI: CSSProperties = {
+  display: "block",
+  font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
+  letterSpacing: "-.035em",
+  color: "var(--ink)",
+};
 
 export default function PageFicheMetier({
   titre,
@@ -225,15 +244,59 @@ export default function PageFicheMetier({
           </div>
         </section>
 
-        {/* ---------------------- les sections, dans l'ordre de la capture */}
-        {contenu.sections.map((section, i) =>
-          section.type === "postuler" ? (
-            <PostulerMetier key={`postuler-${i}`} />
-          ) : (
-            // L'index suffit comme clé : l'ordre du tableau EST le gabarit.
-            <SectionFicheMetier key={`${section.type}-${i}`} section={section} />
-          ),
-        )}
+        {/* ---------------------- les sections, dans l'ordre de la capture
+
+            CHAQUE SECTION SE REPLIE AU TÉLÉPHONE SAUF LA PREMIÈRE, règle de la
+            maquette mobile : `isOpen = si < 1 || secOpen[...]`.
+
+            Mesure du 12/10, hauteur réelle après hydratation : les pages
+            carrière sont les plus longues du site, de 25 à 34 écrans, et
+            aucune ne portait de bloc repliable. Onze des dix-huit pires pages
+            du site étaient des pages carrière.
+
+            Le surtitre et le titre DÉJÀ LÀ servent d'en-tête, et le rendu
+            interne les tait (`sansEnTete`) pour qu'ils ne paraissent pas deux
+            fois. Une section sans titre, comme les chiffres ou la FAQ, n'est
+            pas repliée : il n'y aurait rien à mettre sur la bascule. */}
+        {contenu.sections.map((section, i) => {
+          if (section.type === "postuler") return <PostulerMetier key={`postuler-${i}`} />;
+          // L'index suffit comme clé : l'ordre du tableau EST le gabarit.
+          const cle = `${section.type}-${i}`;
+          /* UN TITRE NON VIDE, et pas seulement la présence de la clé.
+             Première version : `"titre" in section` suffisait, et des sections
+             au titre vide donnaient une bascule muette. La porte des blocs
+             repliables l'a refusé, 120 fois, avant déploiement. */
+          const titrable =
+            "titre" in section &&
+            "surtitre" in section &&
+            typeof section.titre === "string" &&
+            section.titre.trim() !== "" &&
+            typeof section.surtitre === "string" &&
+            section.surtitre.trim() !== "";
+          if (i === 0 || !titrable) {
+            return <SectionFicheMetier key={cle} section={section} />;
+          }
+          return (
+            <SectionPliableMobile
+              key={cle}
+              enTete={
+                <span>
+                  <span style={{ ...SURTITRE_PLI, display: "block" }}>{section.surtitre}</span>
+                  {/* UN VRAI <h2>, et non un <span> habillé. Première version :
+                      des spans, ce qui retirait les titres de section de la
+                      structure du document sur les treize pages carrière. La
+                      porte des blocs repliables l'a refusé, 120 fois : elle
+                      exige un titre lisible, c'est-à-dire un élément de titre.
+                      Le rendu interne tait le sien, il n'y a donc pas de
+                      doublon. */}
+                  <h2 style={TITRE_PLI}>{section.titre}</h2>
+                </span>
+              }
+            >
+              <SectionFicheMetier section={section} sansEnTete />
+            </SectionPliableMobile>
+          );
+        })}
       </main>
     </div>
   );
