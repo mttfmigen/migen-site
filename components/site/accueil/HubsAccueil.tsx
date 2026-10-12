@@ -21,6 +21,24 @@ export interface HubAccueil {
   chemin: string;
   image: string | StaticImageData;
   alt: string;
+  /**
+   * LE POINT DE CADRAGE de la photo dans son cadre, au format de
+   * `object-position` (« center », « center 38% », « 60% top »…).
+   *
+   * POURQUOI CE RÉGLAGE EXISTE. Mehdi, le 12/10 : « la photo de Bordeaux est
+   * mal cadrée », puis « pour bordeaux évite le cadrage ». Le cadre fait
+   * 400 px de haut pour environ 320 de large, donc un format PORTRAIT, alors
+   * que les photos de villes sont toutes en PAYSAGE : `object-fit: cover`
+   * centré n'en garde qu'une mince bande verticale, et le monument disparaît.
+   *
+   * Jusqu'ici il n'existait AUCUN réglage par photo, et je le lui avais dit
+   * comme une limite. C'en était une : la voici levée. Chaque hub peut dire
+   * quelle part de son image doit rester dans le cadre.
+   *
+   * Sans valeur, le centre, qui reste le bon choix pour une composition
+   * symétrique.
+   */
+  cadrage?: string;
 }
 
 interface Proprietes {
@@ -101,6 +119,10 @@ const HUBS: readonly HubAccueil[] = [
     chemin: "/implantations/bordeaux/",
     image: bordeaux,
     alt: "Bordeaux, les quais de la Garonne",
+    /* La façade occupe la moitié haute et le miroir d'eau la moitié basse :
+       un cadrage centré couperait le bâtiment en deux. On remonte le point de
+       cadrage pour garder le monument entier et une lame de reflet. */
+    cadrage: "center 38%",
   },
   {
     ville: "Metz",
@@ -223,6 +245,7 @@ export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
                 sizes="(max-width: 760px) 86vw, 320px"
                 style={{
                   objectFit: "cover",
+                  objectPosition: hub.cadrage ?? "center",
                   display: "block",
                   filter: "saturate(var(--sat)) contrast(1.04)",
                 }}

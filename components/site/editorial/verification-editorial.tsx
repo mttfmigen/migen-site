@@ -290,16 +290,62 @@ function rend(relais: Relais): string {
 /**
  * LES ORNEMENTS DU REPLI MOBILE, retires avant toute comparaison depuis le
  * 12/10. Les sections d'un guide se replient au telephone, motif « Blocs
- * communs (pliables) » de la maquette mobile : chaque bascule porte un chevron
- * et chaque section repliee un resume, tous deux marques
- * `data-mobile-seulement` et masques au-dessus de 880 px. La CAPTURE est de
- * bureau et n'a aucune raison de les porter.
+ * communs (pliables) » de la maquette mobile : chaque bascule porte un chevron,
+ * chaque section repliee un resume, et depuis le 12/10 une ETIQUETTE, tous
+ * marques `data-mobile-seulement` et masques au-dessus de 880 px. La CAPTURE
+ * est de bureau et n'a aucune raison de les porter.
  *
- * La porte garde sa capacite a refuser : seuls les elements portant cet
- * attribut disparaissent, le reste est compare comme avant.
+ * LA REGLE A ETE ELARGIE LE 12/10, et voici le defaut qu'elle corrige. La
+ * premiere version coupait sur la PREMIERE balise fermante du meme nom :
+ *
+ *     /<(\w+)[^>]*\sdata-mobile-seulement[^>]*>[\s\S]*?<\/\1>/g
+ *
+ * Elle suffisait tant que l'ornement etait une feuille (le chevron, un `<p>`).
+ * L'etiquette de la bascule, elle, est faite de DEUX `<span>` IMBRIQUES : la
+ * coupe tombait sur la fermeture du premier enfant, et laissait le second
+ * dehors. La porte voyait alors le titre de section une fois de trop et
+ * refusait les trois guides, pour un texte que personne ne voit sur bureau.
+ *
+ * La version ci-dessous compte les ouvertures et les fermetures de la meme
+ * balise, et retire le SOUS-ARBRE ENTIER. Elle garde sa capacite a refuser :
+ * seuls les elements portant cet attribut disparaissent, et un ornement dont
+ * la balise n'est jamais refermee n'est PAS retire, parce qu'on ne devine pas.
+ * Les controles en bas de fichier le prouvent dans les deux sens.
  */
-const sansOrnementsMobiles = (html: string) =>
-  html.replace(/<(\w+)[^>]*\sdata-mobile-seulement[^>]*>[\s\S]*?<\/\1>/g, " ");
+export function sansOrnementsMobiles(html: string): string {
+  const marque = /<(\w+)\b[^>]*\sdata-mobile-seulement\b[^>]*?(\/?)>/;
+  let sortie = html;
+  for (;;) {
+    const depart = marque.exec(sortie);
+    if (!depart) return sortie;
+    const [ouvrant, balise, autoFerme] = depart;
+    const debut = depart.index;
+    if (autoFerme === "/") {
+      sortie = `${sortie.slice(0, debut)} ${sortie.slice(debut + ouvrant.length)}`;
+      continue;
+    }
+    const jetons = new RegExp(`<${balise}\\b[^>]*?(\\/?)>|</${balise}>`, "g");
+    jetons.lastIndex = debut;
+    let profondeur = 0;
+    let fin = -1;
+    let jeton: RegExpExecArray | null;
+    while ((jeton = jetons.exec(sortie)) !== null) {
+      if (jeton[0].startsWith("</")) {
+        profondeur -= 1;
+        if (profondeur === 0) {
+          fin = jeton.index + jeton[0].length;
+          break;
+        }
+      } else if (jeton[1] !== "/") {
+        profondeur += 1;
+      }
+    }
+    // Balise jamais refermee : on ne retire rien et on s'arrête, plutôt que de
+    // couper au hasard et de rendre la comparaison muette.
+    if (fin < 0) return sortie;
+    sortie = `${sortie.slice(0, debut)} ${sortie.slice(fin)}`;
+  }
+}
 
 function controle(relais: Relais, capture: string, brut: string): string[] {
   const htmlBrut = sansOrnementsMobiles(brut);
@@ -372,16 +418,82 @@ const lisRelais = (url: string): Relais =>
 const lisCapture = (url: string) =>
   appliqueDecisions(readFileSync(join(RACINE, "maquette", "rendu", `${cleDe(url)}.html`), "utf8"));
 
+/**
+ * L'ETIQUETTE DE CHAQUE SECTION REPLIABLE, controlee pour elle-meme.
+ *
+ * POURQUOI CE CONTROLE EXISTE. `sansOrnementsMobiles` retire l'etiquette avant
+ * toute comparaison a la capture, et c'est juste : la capture est de bureau,
+ * l'etiquette n'y paraît pas. Mais ce retrait ouvre un trou, et il faut le
+ * refermer ici : une etiquette qui annoncerait un autre titre que celui de sa
+ * section ne serait vue par PERSONNE, ni par la comparaison a la capture, ni
+ * par un visiteur de bureau. Au telephone, en revanche, c'est la SEULE chose
+ * que le visiteur lit d'une section repliee.
+ *
+ * Ce qui est exige de chaque bloc repliable du gabarit guide :
+ *  · exactement UNE etiquette, dans la bascule, marquee `data-mobile-seulement`
+ *    pour que les portes de bureau sachent l'ecarter ;
+ *  · son texte est le numero de la section suivi du titre de la section, mot
+ *    pour mot ;
+ *  · le vrai `<h2>` est HORS de la bascule : c'est la regression du 12/10,
+ *    celle qui servait le titre a la taille mobile et vidait sa place.
+ */
+function controleEtiquettes(html: string): string[] {
+  const ecarts: string[] = [];
+  const blocs = descendants(arbre(html), (n) => n.balise === "details" && "data-pliable-mobile" in n.attrs);
+  for (const bloc of blocs) {
+    const bascules = bloc.enfants.filter((e): e is Noeud => typeof e !== "string" && e.balise === "summary");
+    const bascule = bascules[0];
+    if (!bascule) {
+      ecarts.push("un bloc repliable sans bascule");
+      continue;
+    }
+    /* L'étiquette se reconnaît à son marquage et à l'ABSENCE d'`aria-hidden` :
+       le chevron de la même bascule porte les deux. On ne peut pas la nommer
+       par sa classe, les modules CSS ne sont pas hachés hors du build. */
+    const etiquettes = bascule.enfants.filter(
+      (e): e is Noeud => typeof e !== "string" && "data-mobile-seulement" in e.attrs && !("aria-hidden" in e.attrs),
+    );
+    if (etiquettes.length !== 1) {
+      ecarts.push(`${etiquettes.length} étiquette(s) dans une bascule, il en faut exactement une`);
+      continue;
+    }
+    const titres = descendants(bloc, (n) => n.balise === "h2");
+    if (titres.length !== 1) {
+      ecarts.push(`${titres.length} titre(s) H2 dans un bloc repliable, il en faut exactement un`);
+      continue;
+    }
+    const titre = titres[0];
+    if (descendants(bascule, (n) => n.balise === "h2").length > 0) {
+      ecarts.push(`« ${texte(titre).trim()} » : le vrai H2 est DANS la bascule, il doit rester dans le corps`);
+    }
+    /* `endsWith` et non `===` : l'étiquette porte le numéro de section devant
+       le titre, exactement comme l'en-tête de la capture. */
+    const attendu = compact(texte(titre));
+    const servi = compact(texte(etiquettes[0]));
+    if (!servi.endsWith(attendu)) {
+      ecarts.push(`étiquette « ${texte(etiquettes[0]).trim()} » ne reprend pas le titre « ${texte(titre).trim()} »`);
+    }
+  }
+  return ecarts;
+}
+
 let echecs = 0;
+let blocsVus = 0;
 for (const url of PAGES) {
   const relais = lisRelais(url);
   assert.equal(relais.url, url);
-  const ecarts = controle(relais, lisCapture(url), rend(relais));
+  const servi = rend(relais);
+  const ecarts = [...controle(relais, lisCapture(url), servi), ...controleEtiquettes(servi)];
+  blocsVus += descendants(arbre(servi), (n) => n.balise === "details" && "data-pliable-mobile" in n.attrs).length;
   if (ecarts.length) {
     echecs += 1;
     console.log(`✗ ${url}\n  ${ecarts.join("\n  ")}`);
   } else console.log(`✓ ${url}`);
 }
+/* Un gabarit qui perdrait son repli mobile passerait ce contrôle sans un mot :
+   zéro bloc, zéro écart. Le compte est donc exigé. */
+assert.ok(blocsVus >= 30, `blocs repliables servis : ${blocsVus}, attendu au moins 30 sur les huit pages`);
+console.log(`✓ ${blocsVus} blocs repliables servis, chacun avec son étiquette et son H2 hors de la bascule`);
 
 /* Le relais forcé : la base sert ces deux pages avec un ancien contenu
    éditorial sans vue ; c'est quand même le dessin de la capture qui sort.
@@ -465,6 +577,75 @@ const FAUTES: [string, string[], RegExp][] = [
     /lien mort/,
   ],
 ];
+
+/* LE RETRAIT DES ORNEMENTS MOBILES SAIT-IL ENCORE ECHOUER ?
+   Une regle qui retire trop rend la porte muette : elle laisserait passer un
+   texte absent de la capture. Une regle qui retire trop peu refuse du conforme,
+   et c'est le defaut du 12/10. Les deux sens sont prouves ici. */
+{
+  const etiquette =
+    '<span data-mobile-seulement="" class="e"><span style="a">02</span><span style="b">Le titre</span></span>';
+  assert.equal(
+    sansOrnementsMobiles(`<div>avant${etiquette}apres</div>`).replace(/\s+/g, ""),
+    "<div>avantapres</div>",
+    "ornement IMBRIQUE : le sous-arbre entier doit partir, les deux `<span>` compris",
+  );
+  assert.equal(
+    sansOrnementsMobiles('<p>a<span data-mobile-seulement="">›</span>b</p>').replace(/\s+/g, ""),
+    "<p>ab</p>",
+    "ornement FEUILLE : le chevron part comme avant",
+  );
+  assert.ok(
+    sansOrnementsMobiles('<div><span class="e"><b>Le titre</b></span></div>').includes("Le titre"),
+    "un element SANS l'attribut ne doit jamais partir : sinon la porte devient muette",
+  );
+  assert.ok(
+    sansOrnementsMobiles('<section><h2>Titre</h2><span data-mobile-seulement="">x</span><p>Corps</p></section>')
+      .includes("Titre") &&
+      sansOrnementsMobiles('<section><h2>Titre</h2><span data-mobile-seulement="">x</span><p>Corps</p></section>')
+        .includes("Corps"),
+    "le voisinage d'un ornement reste intact",
+  );
+  assert.ok(
+    sansOrnementsMobiles('<div><span data-mobile-seulement="">jamais refermé</div>').includes("jamais refermé"),
+    "balise non refermée : on ne devine pas, on ne retire rien",
+  );
+  console.log("✓ retrait des ornements mobiles : imbriqué, feuille, voisinage et balise ouverte");
+}
+
+/* ET LE CONTROLE DES ETIQUETTES SAIT-IL ECHOUER ? Les trois regressions
+   possibles sont rejouees sur la page pilote, chacune doit être vue. */
+{
+  const servi = rend(pilote);
+  assert.deepEqual(controleEtiquettes(servi), [], "la page pilote doit passer le contrôle des étiquettes");
+  /* On vise le SECOND `<span>` de la première étiquette, pas le titre partout
+     dans la page : le même mot paraît aussi dans le sommaire et dans le H2,
+     et les remplacer tous les trois ne prouverait rien. */
+  const titreDivergent = servi.replace(
+    /(<span data-mobile-seulement=""[^>]*><span[^>]*>[^<]*<\/span><span[^>]*>)([^<]*)(<\/span>)/,
+    (_tout, avant: string, _titre: string, apres: string) =>
+      `${avant}Un titre qui n'est pas celui de la section${apres}`,
+  );
+  assert.notEqual(titreDivergent, servi, "la faute « titre divergent » n'a rien changé au rendu");
+  assert.ok(
+    controleEtiquettes(titreDivergent).some((e) => /ne reprend pas le titre/.test(e)),
+    "étiquette : un titre qui diverge de sa section doit être vu",
+  );
+  assert.ok(
+    controleEtiquettes(servi.replace(/ data-mobile-seulement=""/, "")).some((e) => /étiquette\(s\)/.test(e)),
+    "étiquette : la perte du marquage `data-mobile-seulement` doit être vue",
+  );
+  /* Le H2 remis DANS la bascule, c'est-à-dire le défaut du 12/10 au matin. */
+  const dansLaBascule = servi.replace(
+    /(<summary[^>]*>)([\s\S]*?)(<\/summary>)/,
+    (_tout, ouvre: string, dedans: string, ferme: string) => `${ouvre}${dedans}<h2>Un titre dans la bascule</h2>${ferme}`,
+  );
+  assert.ok(
+    controleEtiquettes(dansLaBascule).some((e) => /DANS la bascule|il en faut exactement un/.test(e)),
+    "étiquette : un H2 remis dans la bascule doit être vu",
+  );
+  console.log("✓ contrôle des étiquettes : titre divergent, marquage perdu et H2 dans la bascule, tous vus");
+}
 
 for (const [nom, ecarts, attendu] of FAUTES) {
   assert.ok(

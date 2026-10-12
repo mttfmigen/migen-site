@@ -54,6 +54,46 @@ const TITRE2: CSSProperties = {
   textWrap: "balance",
 };
 
+/**
+ * L'ETIQUETTE DE LA BASCULE DES SECTIONS REPLIABLES, posee le 12/10.
+ *
+ * CE QU'ELLE REPARE. Le cablage du matin passait l'EN-TETE DE SECTION, son
+ * numero et son vrai `<h2>`, dans le `<summary>` de la bascule. La bascule et
+ * la section n'ont pourtant pas les memes besoins : la bascule veut une
+ * etiquette courte, a l'echelle mobile ; la section veut son `<h2>` a sa place
+ * et a la taille de sa capture. Faire porter le `<h2>` par la bascule casse les
+ * deux. Mesure du 12/10 en production sur les trois pages du gabarit : les
+ * 30 `<summary>` restaient AFFICHES a 1280 px, soit 30 arrets de tabulation,
+ * et le `margin-top: 12px` du corps ajoutait 12 px sous chaque titre de
+ * section, 32 px servis contre les 20 px de la capture.
+ *
+ * LES DEUX PIEGES OPPOSES, tous les deux deja payes ailleurs : un `<span>` A LA
+ * PLACE du `<h2>` retire le titre de la structure du document ; un `<h2>` DANS
+ * la bascule le remet dans la structure mais a la mauvaise taille. La bonne
+ * reponse ne choisit pas : le `<h2>` de la section RESTE a sa place, et la
+ * bascule porte une etiquette qui n'existe QUE sous 880 px, marquee
+ * `data-mobile-seulement` comme le chevron et le resume du meme bloc.
+ *
+ * Motif repris a l'identique du gabarit metier
+ * (`components/site/metier/PageFicheMetier.tsx`), ou il est deja verifie.
+ */
+const ETIQUETTE_SURTITRE: CSSProperties = {
+  display: "block",
+  font: "600 11px var(--fb)",
+  letterSpacing: ".14em",
+  textTransform: "uppercase",
+  color: "var(--acc)",
+  marginBottom: 6,
+};
+
+/** Le libelle de la bascule, a l'echelle des H2 du gabarit en largeur mobile. */
+const ETIQUETTE_TITRE: CSSProperties = {
+  display: "block",
+  font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
+  letterSpacing: "-.035em",
+  color: "var(--ink)",
+};
+
 const numero = (i: number) => String(i + 1).padStart(2, "0");
 /** Le sommaire coupe les titres longs, règle de la maquette (`cxVals`). */
 const court = (t: string) => (t.length > 54 ? `${t.slice(0, 52)}…` : t);
@@ -99,7 +139,10 @@ function resumeDeLaSection(blocs: BlocGuide[]): string {
 export default function Guide({ titre, vue }: { titre: string; vue: VueGuide }) {
   return (
     <div className="mg-site">
-      <main style={{ paddingTop: 96 }}>
+      {/* `corpsGuide` est la PORTEE des deux regles de bureau des blocs
+          repliables : elles ne doivent toucher que ce gabarit, jamais un
+          selecteur global. Deux autres gabarits partagent ce module CSS. */}
+      <main className={styles.corpsGuide} style={{ paddingTop: 96 }}>
         <section style={{ maxWidth: 1200, margin: "0 auto", padding: "56px 40px 0" }}>
           <nav
             aria-label="Fil d'Ariane"
@@ -248,8 +291,14 @@ export default function Guide({ titre, vue }: { titre: string; vue: VueGuide }) 
                   Mesure du 12/10 : les deux guides etaient les pages les plus
                   longues du site, 36,2 et 25,8 ecrans, sans aucun repli.
                   L'ANCRE `#c<n>` RESTE SUR LA SECTION pour que le sommaire
-                  continue de tomber au bon endroit, et le numero et le `<h2>`
-                  DEJA LA servent d'en-tete. */}
+                  continue de tomber au bon endroit.
+                  L'EN-TETE DE SECTION, son numero et son `<h2>`, RESTE DANS LE
+                  CORPS DU BLOC, a sa place et a la taille de sa capture. La
+                  bascule, elle, ne porte qu'une etiquette mobile (voir
+                  `ETIQUETTE_SURTITRE` plus haut). Le passer en `<summary>`,
+                  comme le faisait la version du matin, laissait 30 bascules
+                  focalisables sur grand ecran et 12 px de trop sous chaque
+                  titre. */}
               {vue.sections.map((s, i) => {
                 const entete = (
                   <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 20 }}>
@@ -286,7 +335,16 @@ export default function Guide({ titre, vue }: { titre: string; vue: VueGuide }) 
                         {corps}
                       </>
                     ) : (
-                      <SectionPliableMobile enTete={entete} resume={resumeDeLaSection(s.blocs)}>
+                      <SectionPliableMobile
+                        enTete={
+                          <span data-mobile-seulement="" className={styles.etiquettePli}>
+                            <span style={ETIQUETTE_SURTITRE}>{numero(i)}</span>
+                            <span style={ETIQUETTE_TITRE}>{s.titre}</span>
+                          </span>
+                        }
+                        resume={resumeDeLaSection(s.blocs)}
+                      >
+                        {entete}
                         {corps}
                       </SectionPliableMobile>
                     )}

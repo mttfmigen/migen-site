@@ -145,3 +145,68 @@
     text-align: center;
   }
 }
+
+/* --------------------- l'étiquette de la bascule des deux blocs repliables
+
+   ELLE N'EXISTE QUE SOUS 880 px, et c'est tout l'intérêt : au-dessus, le
+   visiteur voit la section telle que sa capture la dessine, avec SON surtitre
+   et SON `<h2>` dans sa rangée (tpl 518 pour « 04 Offre », tpl 948 pour
+   « 08 Références »), à 42,2 px à 1280 px. Une bascule qui portait le titre à
+   toutes les largeurs vidait la rangée où la capture le place : 246 en-têtes
+   sur 246, mesurés le 12/10 sur les 131 pages de ces cinq gabarits qui ont une
+   capture. C'est le défaut que Mehdi a signalé le même jour.
+
+   Le seuil, 880 px, est celui de `SectionPliableMobile.module.css` : c'est lui
+   qui décide du repli, les deux doivent rester d'accord.
+
+   DÉPLIÉE, l'étiquette s'efface : la section montre alors son vrai titre, et
+   le dire deux fois de suite n'aiderait personne. Le chevron reste la poignée.
+   Le sélecteur est porté par la classe, il ne touche donc que ces étiquettes.
+
+   Motif de référence : `components/site/metier/FicheMetier.module.css`. */
+.etiquettePli {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .etiquettePli {
+    display: block;
+  }
+  details[open] > summary > .etiquettePli {
+    display: none;
+  }
+}
+
+/* SUR BUREAU, LA BASCULE N'EXISTE PAS DU TOUT, et pas seulement son contenu.
+   Vidée de son étiquette et de son chevron, elle resterait un `<summary>`
+   focalisable : 246 arrêts de tabulation muets sur ces pages, deux par page,
+   un par bloc partagé. `display: none` la retire de l'ordre de tabulation et
+   de l'arbre d'accessibilité. Le bloc est rendu `open` et ne se referme que
+   sous 880 px : son contenu reste donc affiché, et la règle
+   `.section:not([open])` de `SectionPliableMobile.module.css` le rattrape même
+   s'il était fermé.
+
+   Le `margin-top: 12px` du corps est remis à zéro pour la même raison : il
+   aérait l'espace sous une bascule qui, ici, n'est plus là. Il ajoutait sinon
+   12 px avant chaque section, écart que la capture ne porte pas.
+
+   LA PORTÉE EST LE BLOC, PAS LE GABARIT, et c'est la seule adaptation du
+   motif de référence : `ReferencesOffre` et `PointsOffre` sont partagés par
+   cinq gabarits (offre, ville, spécialité, domaine, secteur), aucun `<main>`
+   ne les couvre tous les cinq, et une règle non ancrée toucherait les blocs
+   repliables des autres composants de la même page. La classe est posée sur
+   le conteneur de largeur de ces deux blocs, et sur eux seuls.
+
+   `> summary ~ div` ET PAS `> summary + div` : ces deux blocs passent un
+   `resume` à `SectionPliableMobile`, donc un `<p>` s'intercale entre la
+   bascule et le corps. Le gabarit métier n'en passe pas, son `+ div`
+   suffisait ; ici il ne désignerait rien. Le `<p>` lui-même est déjà masqué
+   au-dessus de 880 px par `.resume`. */
+@media (min-width: 881px) {
+  .blocPliablePartage details[data-pliable-mobile] > summary {
+    display: none;
+  }
+  .blocPliablePartage details[data-pliable-mobile] > summary ~ div {
+    margin-top: 0;
+  }
+}

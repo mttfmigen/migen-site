@@ -22,9 +22,9 @@
  *  1. LA SECTION EXISTE, avec son titre et son sous-titre.
  *  2. LES COMPTES SONT INTACTS : 10 hubs, 30 bassins, 11 régions, 48 villes,
  *     88 liens. Compacter en perdant des liens serait une tricherie.
- *  3. LA HAUTEUR tient sous ses plafonds, à 1440 px et à 390 px.
- *  4. LA DENSITÉ : au moins 55 liens pour 1 000 px de hauteur de section
- *     (44,8 avant la refonte, 63,6 après).
+ *  3. LA HAUTEUR tient sous ses plafonds, à 1440, 1024 et 390 px.
+ *  4. LA DENSITÉ : au moins 55 liens pour 1 000 px de hauteur de section à
+ *     1440 px, 45 à 1024 px (44,8 et 40,7 avant la refonte).
  *  5. L'ARRANGEMENT : aucune rangée de hubs incomplète, aucune colonne vide
  *     dans l'annuaire des villes. C'était ça, le « mal agencé ».
  *  6. LE REPLI MOBILE tient : les deux blocs sont SERVIS OUVERTS par le
@@ -55,11 +55,14 @@ const URL = `${BASE.replace(/\/$/, "")}/implantations/`;
  * tomber, assez bas pour qu'un retour au dessin d'avant soit refusé.
  */
 const SEUILS = {
-  bureau: { largeur: 1440, hauteur: 900, section: 1600, hubs: 760, audela: 680, avant: { section: 1965, hubs: 964, audela: 828 } },
-  telephone: { largeur: 390, hauteur: 844, section: 844, hubs: 260, audela: 300, avant: { section: 2258, hubs: 108, audela: 1977 } },
+  bureau: { largeur: 1440, hauteur: 900, section: 1600, hubs: 760, audela: 720, densite: 55, avant: { section: 1965, hubs: 964, audela: 828 } },
+  /* La bande 881-1024 px est le pire cas : le bloc n'y est pas encore replié et
+     les colonnes y sont déjà serrées. Mesuré le 12/10 : 2 161 px avant,
+     1 646 px après. La hauteur des deux blocs n'était pas séparable dans
+     l'ancien dessin (il n'avait qu'un seul bloc repliable), d'où le « n.c. ». */
+  portable: { largeur: 1024, hauteur: 800, section: 1800, hubs: 900, audela: 820, densite: 45, avant: { section: 2161 } },
+  telephone: { largeur: 390, hauteur: 844, section: 844, hubs: 260, audela: 300, densite: null, avant: { section: 2258, hubs: 108, audela: 1977 } },
 };
-/** Liens pour 1 000 px de hauteur de section, à 1440 px. Avant : 44,8. Après : 63,6. */
-const DENSITE_PLANCHER = 55;
 const COMPTES = { hubs: 10, bassins: 30, regions: 11, villes: 48, liens: 88 };
 
 /* -------------------------------------------------------------- la mesure */
@@ -175,9 +178,10 @@ function controle(vue, faits, seuils) {
 
   const [hubs, audela] = faits.plis;
   if (faits.plis.length !== 2) e.push(`${vue} : ${faits.plis.length} bloc(s) repliable(s) au lieu de 2`);
-  if (faits.section.hauteur > seuils.section) e.push(`${vue} : la section fait ${faits.section.hauteur} px, plafond ${seuils.section} (avant la refonte : ${seuils.avant.section})`);
-  if (hubs && hubs.hauteur > seuils.hubs) e.push(`${vue} : le bloc des hubs fait ${hubs.hauteur} px, plafond ${seuils.hubs} (avant : ${seuils.avant.hubs})`);
-  if (audela && audela.hauteur > seuils.audela) e.push(`${vue} : « Au-delà des hubs » fait ${audela.hauteur} px, plafond ${seuils.audela} (avant : ${seuils.avant.audela})`);
+  const avant = (cle) => seuils.avant[cle] ?? "n.c.";
+  if (faits.section.hauteur > seuils.section) e.push(`${vue} : la section fait ${faits.section.hauteur} px, plafond ${seuils.section} (avant la refonte : ${avant("section")})`);
+  if (hubs && hubs.hauteur > seuils.hubs) e.push(`${vue} : le bloc des hubs fait ${hubs.hauteur} px, plafond ${seuils.hubs} (avant : ${avant("hubs")})`);
+  if (audela && audela.hauteur > seuils.audela) e.push(`${vue} : « Au-delà des hubs » fait ${audela.hauteur} px, plafond ${seuils.audela} (avant : ${avant("audela")})`);
 
   for (const [i, pli] of faits.plis.entries()) {
     if (!pli.serviOuvert) e.push(`${vue} : le bloc repliable n° ${i + 1} n'est pas SERVI ouvert par le serveur`);
@@ -186,9 +190,9 @@ function controle(vue, faits, seuils) {
 
   if (faits.deborde) e.push(`${vue} : la section déborde de la fenêtre, ${faits.deborde}`);
 
-  if (seuils.largeur >= 1000) {
+  if (seuils.densite !== null) {
     const densite = (faits.comptes.liens * 1000) / faits.section.hauteur;
-    if (densite < DENSITE_PLANCHER) e.push(`${vue} : densité de ${densite.toFixed(1)} liens pour 1 000 px, plancher ${DENSITE_PLANCHER} (avant : 44,8)`);
+    if (densite < seuils.densite) e.push(`${vue} : densité de ${densite.toFixed(1)} liens pour 1 000 px, plancher ${seuils.densite}`);
     const incompletes = faits.hubs.parRangee.filter((n) => n !== faits.hubs.colonnes).length;
     if (incompletes > 0) e.push(`${vue} : ${incompletes} rangée(s) de hubs incomplète(s) sur ${faits.hubs.parRangee.length} (colonnes : ${faits.hubs.colonnes}, par rangée : ${faits.hubs.parRangee.join("+")})`);
     if (faits.annuaire.colonnesRemplies < faits.annuaire.colonnesDeclarees)
@@ -273,9 +277,9 @@ for (const [vue, seuils] of Object.entries(SEUILS)) {
   if (!faits.absente) {
     const densite = ((faits.comptes.liens * 1000) / faits.section.hauteur).toFixed(1);
     console.log(
-      `  ${vue.padEnd(9)} ${seuils.largeur}px  section ${faits.section.hauteur} px (avant ${seuils.avant.section})` +
-        `  hubs ${faits.plis[0]?.hauteur ?? "?"} (avant ${seuils.avant.hubs})` +
-        `  au-delà ${faits.plis[1]?.hauteur ?? "?"} (avant ${seuils.avant.audela})` +
+      `  ${vue.padEnd(9)} ${seuils.largeur}px  section ${faits.section.hauteur} px (avant ${seuils.avant.section ?? "n.c."})` +
+        `  hubs ${faits.plis[0]?.hauteur ?? "?"} (avant ${seuils.avant.hubs ?? "n.c."})` +
+        `  au-delà ${faits.plis[1]?.hauteur ?? "?"} (avant ${seuils.avant.audela ?? "n.c."})` +
         `  ${faits.comptes.liens} liens, densité ${densite}/1000px`,
     );
   }

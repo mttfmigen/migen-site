@@ -81,6 +81,52 @@ function decode(texte) {
 }
 
 /** Espaces insécables ramenés à l'espace, apostrophes unifiées, blancs réduits. */
+
+/**
+ * RETIRE UN ÉLÉMENT `data-mobile-seulement` ET TOUT SON CONTENU, imbrication
+ * comprise.
+ *
+ * CE QUE LA VERSION PRÉCÉDENTE FAISAIT, et c'était faux : elle cherchait
+ * `<balise …data-mobile-seulement…>` puis tout jusqu'à la PREMIÈRE fermante de
+ * même nom, en répétition paresseuse. Or l'étiquette de bascule posée le 12/10
+ * est un `span` qui en contient DEUX, un pour le surtitre et un pour le titre.
+ * Le motif n'en retirait donc que la moitié, et laissait dans la comparaison le
+ * texte du titre plus une balise orpheline.
+ *
+ * CE QUE ÇA A COÛTÉ : la porte signalait « littéral différent de la capture »
+ * sur deux textes qui n'étaient pas en défaut, et un relecteur en a conclu à
+ * une régression venue d'un autre fichier. Une porte qui ment sur l'origine
+ * d'un défaut coûte plus cher qu'une porte absente.
+ *
+ * Ici on compte la profondeur : on avance balise par balise depuis l'ouvrante
+ * marquée, en montant à chaque ouvrante de même nom et en descendant à chaque
+ * fermante, et on coupe quand on retombe à zéro.
+ */
+function retireOrnements(html) {
+  const marque = /<(\w+)\b[^>]*\bdata-mobile-seulement\b[^>]*>/;
+  let sortie = html;
+  for (;;) {
+    const debut = sortie.match(marque);
+    if (!debut || debut.index === undefined) return sortie;
+    const nom = debut[1];
+    const balises = new RegExp(`<${nom}\\b[^>]*>|</${nom}\\s*>`, "g");
+    balises.lastIndex = debut.index + debut[0].length;
+    let profondeur = 1;
+    let fin = -1;
+    for (let m = balises.exec(sortie); m; m = balises.exec(sortie)) {
+      profondeur += m[0].startsWith("</") ? -1 : 1;
+      if (profondeur === 0) {
+        fin = m.index + m[0].length;
+        break;
+      }
+    }
+    /* Une ouvrante sans fermante : on retire la seule balise plutôt que de
+       boucler sans fin ou d'avaler la fin du document. */
+    if (fin < 0) fin = debut.index + debut[0].length;
+    sortie = `${sortie.slice(0, debut.index)} ${sortie.slice(fin)}`;
+  }
+}
+
 function normalise(texte) {
   return decode(texte)
     .replace(/[    ]/g, " ")
@@ -96,7 +142,7 @@ function normalise(texte) {
  * plus, sur treize pages, et la porte accuserait un ornement.
  */
 export function sansOrnementsMobiles(html) {
-  return html.replace(/<(\w+)\b[^>]*\bdata-mobile-seulement\b[^>]*>[\s\S]*?<\/\1>/g, " ");
+  return htmlretireOrnements(html);
 }
 
 /** LE SÉPARATEUR DE BLOC : deux nœuds voisins ne doivent pas se coller. */

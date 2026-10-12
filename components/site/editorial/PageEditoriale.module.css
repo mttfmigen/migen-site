@@ -285,3 +285,59 @@
     font-size: 16px;
   }
 }
+
+/* L'ÉTIQUETTE DE LA BASCULE DES SECTIONS REPLIABLES DU GUIDE, posée le 12/10.
+
+   Elle n'existe QUE sur téléphone. Elle n'est pas le titre de la section : le
+   `<h2>` de la section reste à sa place, dans le corps du bloc, à la taille de
+   sa capture et avec sa `max-width: 28ch`. Le faire porter par la bascule, ce
+   que faisait le câblage du matin, laissait les 30 `<summary>` des trois pages
+   du gabarit AFFICHÉS à 1280 px, soit 30 arrêts de tabulation muets.
+
+   Le seuil, 880 px, est celui de `SectionPliableMobile.module.css` : c'est lui
+   qui décide du repli, les deux doivent rester d'accord.
+
+   DÉPLIÉE, l'étiquette s'efface : la section montre alors son vrai titre, et le
+   dire deux fois de suite n'aiderait personne. Le chevron reste la poignée.
+   Le sélecteur est porté par la classe, il ne touche donc que ces étiquettes. */
+.etiquettePli {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .etiquettePli {
+    display: block;
+  }
+  details[open] > summary > .etiquettePli {
+    display: none;
+  }
+}
+
+/* SUR BUREAU, LA BASCULE N'EXISTE PAS DU TOUT, et pas seulement son contenu.
+   Vidée de son étiquette et de son chevron, elle resterait un `<summary>`
+   focalisable : 30 arrêts de tabulation muets sur les trois pages, un par
+   section repliée, mesurés en production le 12/10. `display: none` la retire
+   de l'ordre de tabulation et de l'arbre d'accessibilité.
+
+   Le `margin-top: 12px` du corps est remis à zéro pour la même raison : il
+   aérait l'espace sous une bascule qui, ici, n'est plus là. Il servait 32 px
+   sous chaque titre de section contre les 20 px de la capture, sur les 30
+   sections repliées.
+
+   ÉCART DÉCLARÉ AU MOTIF DE RÉFÉRENCE : il écrit `summary + div`. Ce gabarit
+   est le SEUL à passer un `resume` à `SectionPliableMobile`, donc le voisin
+   immédiat du `<summary>` est le `<p>` du résumé, pas le corps, et `+` ne
+   trouverait rien. `~` atteint le corps dans les deux cas, résumé présent ou
+   non ; le seul `div` frère du `<summary>` dans ce bloc est ce corps.
+
+   Les deux règles sont ancrées sur `.corpsGuide`, le `<main>` de ce gabarit :
+   ni le gabarit rubrique ni le gabarit article, qui partagent ce module, ne
+   sont touchés. */
+@media (min-width: 881px) {
+  .corpsGuide details[data-pliable-mobile] > summary {
+    display: none;
+  }
+  .corpsGuide details[data-pliable-mobile] > summary ~ div {
+    margin-top: 0;
+  }
+}

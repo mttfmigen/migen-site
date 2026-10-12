@@ -86,8 +86,34 @@ const normalise = (t: string) =>
    résumé d'un bloc replié, posés le 09/10 au soir. Sans ce retrait, la porte
    signalait « texte rendu absent de la capture : « › » » sur un ornement que
    la capture n'avait aucune raison de porter. */
-const sansMobileSeulement = (html: string) =>
-  html.replace(/<(\w+)\b[^>]*\bdata-mobile-seulement\b[^>]*>[\s\S]*?<\/\1>/g, " ");
+const sansMobileSeulement = (html: string): string => {
+  /* L'IMBRICATION COMPTE. La version précédente s'arrêtait à la PREMIÈRE
+     fermante de même nom, en répétition paresseuse. L'étiquette de bascule
+     posée le 12/10 est un `span` qui en contient DEUX, surtitre et titre : le
+     motif n'en retirait que la moitié et laissait le titre dans la
+     comparaison, d'où deux « littéral différent de la capture » sur des textes
+     qui n'étaient pas en défaut. On compte la profondeur. */
+  const marque = /<(\w+)\b[^>]*\bdata-mobile-seulement\b[^>]*>/;
+  let sortie = html;
+  for (;;) {
+    const debut = sortie.match(marque);
+    if (!debut || debut.index === undefined) return sortie;
+    const nom = debut[1];
+    const balises = new RegExp(`<${nom}\\b[^>]*>|</${nom}\\s*>`, "g");
+    balises.lastIndex = debut.index + debut[0].length;
+    let profondeur = 1;
+    let fin = -1;
+    for (let m = balises.exec(sortie); m; m = balises.exec(sortie)) {
+      profondeur += m[0].startsWith("</") ? -1 : 1;
+      if (profondeur === 0) {
+        fin = m.index + m[0].length;
+        break;
+      }
+    }
+    if (fin < 0) fin = debut.index + debut[0].length;
+    sortie = `${sortie.slice(0, debut.index)} ${sortie.slice(fin)}`;
+  }
+};
 const morceaux = (html: string) =>
   sansMobileSeulement(html).replace(/<(script|style)\b[\s\S]*?<\/\1>/g, " ").split(/<[^>]+>/);
 const noeuds = (html: string) => morceaux(html).map((t) => normalise(entites(t, " "))).filter(Boolean);

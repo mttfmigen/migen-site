@@ -122,14 +122,51 @@ function normalise(texte: string): string {
     .trim();
 }
 
+/**
+ * RETIRE UN ÉLÉMENT `data-mobile-seulement` ET TOUT SON CONTENU, imbrication
+ * comprise.
+ *
+ * CE QUE LA VERSION PRÉCÉDENTE FAISAIT, et c'était faux : elle cherchait
+ * l'ouvrante marquée puis tout jusqu'à la PREMIÈRE fermante de même nom, en
+ * répétition paresseuse. Or l'étiquette de bascule posée le 12/10 est un `span`
+ * qui en contient DEUX, un pour le surtitre et un pour le titre : le motif n'en
+ * retirait que la moitié et laissait le texte du titre dans la comparaison.
+ *
+ * CE QUE ÇA A COÛTÉ : la porte signalait « littéral différent de la capture »
+ * sur deux textes qui n'étaient pas en défaut, et un relecteur en a conclu à
+ * une régression venue d'un autre fichier. Une porte qui ment sur l'origine
+ * d'un défaut coûte plus cher qu'une porte absente.
+ *
+ * On compte donc la profondeur, et on coupe quand elle retombe à zéro.
+ */
+function retireOrnements(html: string): string {
+  const marque = /<(\w+)\b[^>]*\bdata-mobile-seulement\b[^>]*>/;
+  let sortie = html;
+  for (;;) {
+    const debut = sortie.match(marque);
+    if (!debut || debut.index === undefined) return sortie;
+    const nom = debut[1];
+    const balises = new RegExp(`<${nom}\\b[^>]*>|</${nom}\\s*>`, "g");
+    balises.lastIndex = debut.index + debut[0].length;
+    let profondeur = 1;
+    let fin = -1;
+    for (let m = balises.exec(sortie); m; m = balises.exec(sortie)) {
+      profondeur += m[0].startsWith("</") ? -1 : 1;
+      if (profondeur === 0) {
+        fin = m.index + m[0].length;
+        break;
+      }
+    }
+    /* Une ouvrante sans fermante : on retire la seule balise plutôt que de
+       boucler sans fin ou d'avaler la fin du document. */
+    if (fin < 0) fin = debut.index + debut[0].length;
+    sortie = `${sortie.slice(0, debut.index)} ${sortie.slice(fin)}`;
+  }
+}
+
 /** Le texte tel qu'écrit : seules les entités sont décodées, `&nbsp;` en U+00A0. */
 function litteral(html: string): string[] {
-  return html
-    /* Même retrait que dans `noeuds` : ce qu'un visiteur de bureau ne voit pas
-       n'entre pas dans une comparaison à la capture de bureau. Ne l'avoir posé
-       que sur `noeuds` laissait la comparaison LITTÉRALE buter sur le point
-       final du résumé d'un bloc replié, sur trois pages. */
-    .replace(/<(\w+)\b[^>]*\bdata-mobile-seulement\b[^>]*>[\s\S]*?<\/\1>/g, " ")
+  return retireOrnements(html)
     .replace(/<(script|style)\b[\s\S]*?<\/\1>/g, " ")
     .split(/<[^>]+>/)
     .map((t) =>
@@ -163,8 +200,7 @@ function motifLitteral(trou: string): RegExp {
  *  CAPTURE DE BUREAU faisait signaler « texte rendu absent de la capture :
  *  « › » » sur un ornement que la capture n'avait aucune raison de porter. */
 function noeuds(html: string): string[] {
-  return html
-    .replace(/<(\w+)\b[^>]*\bdata-mobile-seulement\b[^>]*>[\s\S]*?<\/\1>/g, " ")
+  return retireOrnements(html)
     .replace(/<(script|style)\b[\s\S]*?<\/\1>/g, " ")
     .split(/<[^>]+>/)
     .map((t) => normalise(decode(t)))

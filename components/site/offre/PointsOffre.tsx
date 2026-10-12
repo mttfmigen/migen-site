@@ -83,6 +83,39 @@ const INTITULE: CSSProperties = {
   color: "var(--ink)",
 };
 
+/**
+ * L'ÉTIQUETTE DE LA BASCULE : des `<span>`, et c'est voulu.
+ *
+ * MOTIF DE RÉFÉRENCE, déjà appliqué et vérifié sur le gabarit métier
+ * (`components/site/metier/PageFicheMetier.tsx`, mêmes deux constantes).
+ * Recopié ici À L'IDENTIQUE, comme dans `ReferencesOffre.tsx` : les deux
+ * blocs sont partagés par les gabarits offre, ville, spécialité, domaine et
+ * secteur, et chacun porte son étiquette à côté de son propre en-tête.
+ *
+ * CE QU'ELLE RÉPARE, mesuré le 12/10 sur les 131 pages de ces cinq gabarits
+ * qui ont une capture : le `<h2>` posé dans la bascule emportait avec lui
+ * TOUTE la rangée de grille de la capture (tpl 518, `1.1fr 0.9fr`), 123 fois.
+ * Un `<span>` à la place du `<h2>` aurait été l'autre faute, symétrique :
+ * le titre quitte alors la structure du document. Ici le `<h2>` reste dans sa
+ * cellule, et l'étiquette n'existe que sous 880 px.
+ */
+const ETIQUETTE_SURTITRE: CSSProperties = {
+  display: "block",
+  font: "600 11px var(--fb)",
+  letterSpacing: ".14em",
+  textTransform: "uppercase",
+  color: "var(--acc)",
+  marginBottom: 6,
+};
+
+/** Le libellé de la bascule, à l'échelle des H2 du gabarit en largeur mobile. */
+const ETIQUETTE_TITRE: CSSProperties = {
+  display: "block",
+  font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
+  letterSpacing: "-.035em",
+  color: "var(--ink)",
+};
+
 const PARAGRAPHE: CSSProperties = {
   gridColumn: 2,
   font: "400 13.5px/1.5 var(--fb)",
@@ -95,24 +128,37 @@ export default function PointsOffre({ section }: ProprietesPointsOffre) {
 
   return (
     <section style={SECTION}>
-      <div style={LARGEUR}>
+      <div className={styles.blocPliablePartage} style={LARGEUR}>
         {/* SE REPLIE AU TÉLÉPHONE, motif « Blocs communs (pliables) » de la
             maquette mobile. Ce bloc est servi par les gabarits offre, ville,
             spécialité, domaine et secteur : le replier ici les sert tous.
-            Le sur-titre et le `<h2>` DÉJÀ LÀ servent d'en-tête ; le compteur
-            « N points » de la maquette reste dans le corps, il appartient au
-            contenu et non à la bascule. Au-dessus de 880 px rien ne change. */}
+            LA BASCULE PORTE UNE ÉTIQUETTE, PAS LE TITRE : le surtitre et le
+            `<h2>` de la capture restent dans leur cellule de grille ci-dessous
+            (tpl 518 à 521) ; le compteur « N points » reste dans le corps, il
+            appartient au contenu. Au-dessus de 880 px la bascule entière est
+            retirée, elle ne laisse donc aucun arrêt de tabulation muet. */}
         <SectionPliableMobile
           enTete={
-            <span>
-              <span style={{ ...SURTITRE, marginBottom: 18, display: "block" }}>L’offre</span>
-              <h2 style={TITRE2}>
+            <span data-mobile-seulement="" className={styles.etiquettePli}>
+              <span style={ETIQUETTE_SURTITRE}>L’offre</span>
+              <span style={ETIQUETTE_TITRE}>
                 Ce que nous faisons, et ce que ça change pour vous
-              </h2>
+              </span>
             </span>
           }
           resume={points.map((point) => point.titre).filter(Boolean).join(" · ")}
         >
+        {/* La rangée d'en-tête de la capture, `1.1fr 0.9fr` dont seule la
+            colonne de gauche est remplie (tpl 518) : `mg-r2` la fait tomber en
+            une seule colonne sous 900 px, comme dans la maquette. */}
+        <div className="mg-r2" style={ENTETE}>
+          <div>
+            <div style={{ ...SURTITRE, marginBottom: 18 }}>L’offre</div>
+            <h2 style={TITRE2}>
+              Ce que nous faisons, et ce que ça change pour vous
+            </h2>
+          </div>
+        </div>
         <div style={COMPTEUR}>
           {/* Comme la maquette : le nombre interpolé dans sa propre balise. */}
           <span>
