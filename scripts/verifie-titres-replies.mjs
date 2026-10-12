@@ -386,7 +386,12 @@ async function lis(chemin) {
       if (r.ok) return { texte: await r.text() };
       dernier = `HTTP ${r.status}`;
     } catch (e) {
-      dernier = e?.cause?.code ?? e?.name ?? "injoignable";
+      /* `fetch` emballe tout en `TypeError: fetch failed` : la cause utile est
+         dessous, et pour un refus de connexion elle est encore un cran plus bas,
+         dans l'AggregateError. Sans ces deux crans, le rapport dit « TypeError »
+         là où il devrait dire « ECONNREFUSED », et on cherche au mauvais endroit. */
+      dernier =
+        e?.cause?.code ?? e?.cause?.errors?.[0]?.code ?? e?.cause?.message ?? e?.name ?? "injoignable";
     }
   }
   return { erreur: dernier };
@@ -475,12 +480,29 @@ if (blocs === 0) {
 }
 
 const enFaute = resultats.filter((r) => r.fautes.length > 0);
-for (const r of enFaute.slice(0, 20)) {
-  console.log(`\n${r.url}`);
-  for (const f of r.fautes.slice(0, 6)) console.log(`   ${f}`);
-  if (r.fautes.length > 6) console.log(`   … et ${r.fautes.length - 6} autres sur cette page`);
+
+/**
+ * LES DÉFAUTS SONT REGROUPÉS PAR FORME, pas listés page par page.
+ *
+ * Un défaut de repli vient toujours d'un composant partagé : la première
+ * version listait les vingt premières adresses, ce qui donnait quarante lignes
+ * identiques sur un même bloc et cachait les autres formes sous la troncature.
+ * Regrouper par message, avec le nombre de pages et trois exemples, dit en une
+ * ligne « ce bloc-là, sur 175 pages » et laisse voir les formes rares.
+ */
+const formes = new Map();
+for (const r of enFaute)
+  for (const faute of r.fautes) {
+    const vu = formes.get(faute) ?? { n: 0, pages: [] };
+    vu.n++;
+    if (!vu.pages.includes(r.url)) vu.pages.push(r.url);
+    formes.set(faute, vu);
+  }
+for (const [faute, vu] of [...formes].sort((a, b) => b[1].n - a[1].n).slice(0, 12)) {
+  console.log(`\n${vu.n}× sur ${vu.pages.length} page(s) : ${faute}`);
+  console.log(`   ex. ${vu.pages.slice(0, 3).join(", ")}${vu.pages.length > 3 ? ", …" : ""}`);
 }
-if (enFaute.length > 20) console.log(`\n… et ${enFaute.length - 20} autres pages en faute`);
+if (formes.size > 12) console.log(`\n… et ${formes.size - 12} autres formes de défaut`);
 
 const parRegle = Object.fromEntries(
   Object.entries(REGLES).map(([nom, prefixe]) => [

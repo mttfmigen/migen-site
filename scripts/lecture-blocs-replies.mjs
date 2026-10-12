@@ -180,10 +180,16 @@ export function blocsPliables(html) {
         summary,
         corps,
         classesSummary: classesDe(attributsSummary),
-        /* L'intitulé sert à NOMMER le bloc dans un message d'erreur. Le premier
-           titre du corps le désigne mieux que son rang. */
+        /* L'intitulé sert à NOMMER le bloc dans un message d'erreur, et son
+           ordre de préférence n'est pas arbitraire : le titre du corps d'abord
+           (le bloc conforme n'en a pas d'autre), celui de la bascule ensuite
+           (le bloc en défaut n'a que celui-là), le texte brut en dernier
+           recours. Lire « Ce que nous garantissons » plutôt que les soixante
+           premiers caractères du bloc, chevron compris, change tout quand il
+           faut retrouver le composant fautif. */
         intitule:
           titres(corps)[0]?.texte ||
+          titres(summary)[0]?.texte ||
           texteDe(bloc.dedans).slice(0, 60) ||
           "bloc sans texte",
       };

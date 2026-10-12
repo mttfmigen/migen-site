@@ -1,0 +1,285 @@
+{
+  "url": "/implantations/toulouse/bordeaux/",
+  "contenu": {
+    "gabarit": "ville",
+    "chapeau": "Une métropole qui fait tourner dans la même journée des chais en pleine vendange, des ateliers aéronautiques de Mérignac et des plateformes logistiques de rocade. Notre hub de techniciens de Bordeaux y intervient avec des habilitations et des horaires adaptés à chaque environnement.",
+    "actions": [
+      {
+        "libelle": "Faire chiffrer ma maintenance à Bordeaux",
+        "href": "#formulaire"
+      }
+    ],
+    "reperes": [
+      {
+        "valeur": "+ 120",
+        "libelle": "clients accompagnés, dont plus de 80 réguliers"
+      },
+      {
+        "valeur": "+ 100",
+        "libelle": "collaborateurs : mécaniciens, électriciens, automaticiens, roboticiens, encadrés par des référents techniques"
+      },
+      {
+        "valeur": "10 %",
+        "libelle": "des candidats retenus, résultats d'évaluation présentés avant l'arrivée du technicien"
+      },
+      {
+        "valeur": "10",
+        "libelle": "hubs de techniciens en France, dont un à Bordeaux, plus notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid"
+      }
+    ],
+    "contact": "Un chargé d'affaires vous rappelle dans l'heure, du lundi au vendredi de 8h00 à 18h30 : 04 78 33 72 05. L'astreinte 24/24 et 7/7 couvre le reste.",
+    "constatTexte": "En pleine vendange, une étiqueteuse en défaut ne se répare pas la semaine suivante. La récolte, elle, n'attend pas votre planning de maintenance.",
+    "constatPuces": [
+      {
+        "texte": "Ce qui n'a pas été révisé hors saison casse au pire moment.",
+        "accroche": "Vos saisons décident, pas votre calendrier."
+      },
+      {
+        "texte": "Sans intervention documentée, votre contrôle qualité s'arrête sur une ligne manquante.",
+        "accroche": "L'aéronautique exige une trace de tout."
+      },
+      {
+        "texte": "Convoyeurs, trieurs, quais niveleurs : la panne se voit chez le client final, pas dans l'entrepôt.",
+        "accroche": "La logistique de rocade ne tolère pas la pause."
+      },
+      {
+        "texte": "Chimie, matériaux, zones réglementées : consignation et plan de prévention systématiques, sans exception.",
+        "accroche": "Les process continus imposent leurs règles."
+      },
+      {
+        "texte": "Les offres de technicien de maintenance dépassent largement les candidatures sur la métropole.",
+        "accroche": "Le recrutement local n'avance pas."
+      }
+    ],
+    "reponseTexte": "Plusieurs spécialités se combinent souvent sur un même dépannage : [mécanique](/expertises/mecanique/), [électrique](/expertises/electrique/), [automatisme](/expertises/automatisme/), [hydraulique](/expertises/hydraulique/), [pneumatique](/expertises/pneumatique/) et [soudure](/expertises/soudure/), avec un seul interlocuteur en face de vous.",
+    "reponsePuces": [
+      {
+        "texte": "le même chargé d'affaires suit le dossier, du premier appel à la clôture. Vous ne réexpliquez pas votre site à chaque demande.",
+        "accroche": "Un contact unique du début à la fin"
+      },
+      {
+        "texte": "nos preuves sont des missions documentées, avec des interlocuteurs joignables. Demandez à voir les résultats, pas les marques.",
+        "accroche": "Aucun logo de complaisance"
+      },
+      {
+        "texte": "chaque intervention est saisie dans votre outil, historique par machine, temps passé, pièces, préconisations. Pas de double saisie, pas de système parallèle.",
+        "accroche": "Vos données restent les vôtres"
+      }
+    ],
+    "faq": [
+      {
+        "reponse": "Oui. Nous avons un hub de techniciens à Bordeaux, l'un de nos 10 hubs en France, auxquels s'ajoutent notre siège lyonnais et nos agences de Montréal, Dubaï et Madrid. Ce qui compte sur votre site, c'est le niveau du technicien qui arrive, son outillage et ses habilitations.",
+        "question": "Intervenez-vous vraiment sur place, à Bordeaux ?"
+      },
+      {
+        "reponse": "Oui : Bordeaux, Mérignac, Pessac, Gradignan, la zone portuaire et les sites viticoles du secteur. Au-delà du bassin, le réseau national prend le relais, de Toulouse à Paris, Lyon ou Nantes. Même niveau de service, même format de compte rendu.",
+        "question": "Couvrez-vous la métropole et au-delà ?"
+      },
+      {
+        "reponse": "Oui. Votre demande obtient un rappel dans l'heure aux horaires ouvrés. L'astreinte 24/24 et 7/7 prend le relais la nuit, le week-end et les jours fériés. Aucun délai d'intervention de façade : le circuit et les priorités s'écrivent au devis.",
+        "question": "Intervenez-vous en urgence ?"
+      },
+      {
+        "reponse": "Oui : chais, châteaux, négociants et conserveries font partie du terrain courant. Filtres, pompes, étiqueteuses, compresseurs, réseaux pneumatiques, circuits d'eau glacée. L'entretien se planifie hors saison, le dépannage se tient en saison.",
+        "question": "Entretenez-vous les lignes d'embouteillage et le froid process ?"
+      },
+      {
+        "reponse": "Oui, l'offre [Zéro arrêt](/offres/zero-arret/) : préventif planifié, priorité en cas de panne, astreinte en option, trois niveaux de couverture. À partir de sur devis, engagement type 6 mois renouvelable. Le périmètre s'écrit machine par machine après un état des lieux.",
+        "question": "Proposez-vous des contrats de maintenance ?"
+      },
+      {
+        "reponse": "Oui, en [résidence](/offres/residence/) : un technicien intégré à votre équipe, encadré par un référent Migen, prise de poste en 2 à 3 semaines. En cas d'absence ou de départ, un profil équivalent reprend la mission, briefé sur vos machines.",
+        "question": "Pouvez-vous détacher un technicien à demeure ?"
+      },
+      {
+        "reponse": "Oui, sans exception. Historique par machine, temps passé, pièces, préconisations, mis à jour à chaque passage. La gestion des accès et des pièces détachées s'y règle directement, et l'activité de maintenance reste lisible par votre direction.",
+        "question": "Travaillez-vous dans nos outils de GMAO ?"
+      }
+    ],
+    "autres": [
+      {
+        "libelle": "Lille",
+        "href": "/implantations/lille/"
+      },
+      {
+        "libelle": "Lyon",
+        "href": "/implantations/lyon/"
+      },
+      {
+        "libelle": "Grenoble",
+        "href": "/implantations/lyon/grenoble/"
+      },
+      {
+        "libelle": "saint etienne",
+        "href": "/implantations/lyon/saint-etienne/"
+      },
+      {
+        "libelle": "Valence",
+        "href": "/implantations/lyon/valence/"
+      },
+      {
+        "libelle": "Nantes",
+        "href": "/implantations/nantes/"
+      },
+      {
+        "libelle": "Brest",
+        "href": "/implantations/nantes/brest/"
+      },
+      {
+        "libelle": "Rennes",
+        "href": "/implantations/nantes/rennes/"
+      },
+      {
+        "libelle": "paris",
+        "href": "/implantations/paris/"
+      },
+      {
+        "libelle": "Rouen",
+        "href": "/implantations/paris/rouen/"
+      },
+      {
+        "libelle": "Strasbourg",
+        "href": "/implantations/strasbourg/"
+      },
+      {
+        "libelle": "Mulhouse",
+        "href": "/implantations/strasbourg/mulhouse/"
+      },
+      {
+        "libelle": "Toulouse",
+        "href": "/implantations/toulouse/"
+      }
+    ],
+    "reste": [
+      {
+        "type": "offre",
+        "lignes": [
+          {
+            "benefice": "La campagne démarre sur du matériel préparé, à pleine capacité.",
+            "prestation": {
+              "texte": "pompes, filtres, étiqueteuses, froid process, convoyage.",
+              "accroche": "Révision des lignes d'embouteillage hors saison"
+            }
+          },
+          {
+            "benefice": "Vos dossiers passent la revue client sans reprise.",
+            "prestation": {
+              "texte": "contrôle qualité, habilitations à jour, traçabilité complète.",
+              "accroche": "Interventions documentées en aéronautique"
+            }
+          },
+          {
+            "benefice": "Le flux repart avant la rotation suivante, pas le lendemain.",
+            "prestation": {
+              "texte": "trieurs, quais niveleurs, convoyeurs. Voir notre [maintenance des équipements logistiques](/secteurs/logistique/).",
+              "accroche": "Équipements logistiques"
+            }
+          },
+          {
+            "benefice": "Les installations tiennent sans arrêt subi, et les consommations d'énergie se pilotent.",
+            "prestation": {
+              "texte": "en service continu, fiabilisés et suivis.",
+              "accroche": "Traitement de l'eau, valorisation des déchets et utilités"
+            }
+          },
+          {
+            "benefice": "Un équipement fatigué repart pour des années, à une fraction du prix du neuf.",
+            "prestation": {
+              "texte": "contrôle, équilibrage, remise en état de matériel industriel.",
+              "accroche": "Usinage, chaudronnerie et machines tournantes"
+            }
+          },
+          {
+            "benefice": "La ligne neuve produit vraiment, au lieu d'attendre que quelqu'un sache la régler.",
+            "prestation": {
+              "texte": "réglages, essais, programmation, montée en cadence.",
+              "accroche": "Mise en service d'installations neuves"
+            }
+          },
+          {
+            "benefice": "La nuit, le week-end et les jours fériés ont un interlocuteur nommé.",
+            "prestation": {
+              "texte": ", circuit et priorités écrits au devis.",
+              "accroche": "Astreinte 24/24 et 7/7 en option"
+            }
+          }
+        ]
+      },
+      {
+        "type": "deroule",
+        "etapes": [
+          {
+            "texte": "vous décrivez la panne ou le besoin. Rappel dans l'heure aux horaires ouvrés pour qualifier machines, accès et habilitations.",
+            "titre": "Le premier contact"
+          },
+          {
+            "texte": "périmètre, matériel, conditions d'intervention. Les travaux en cours de production se chiffrent aussi, mise en sécurité comprise.",
+            "titre": "Le devis"
+          },
+          {
+            "texte": "accueil sécurité, plan de prévention, consignation. Rien ne commence avant que ce cadre soit posé.",
+            "titre": "La préparation"
+          },
+          {
+            "texte": "diagnostic, réparation, puis recherche de la cause racine pour éviter la récidive.",
+            "titre": "L'intervention"
+          },
+          {
+            "texte": "validation machine en marche, avec votre exploitation. Une solution se prouve en fonctionnement.",
+            "titre": "Les essais"
+          },
+          {
+            "texte": "opérations documentées, résultats, préconisations, versés dans votre GMAO. L'analyse des pannes récurrentes remonte à la source.",
+            "titre": "Le compte rendu"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "bouton": "Faire chiffrer ma maintenance à Bordeaux",
+        "rappel": "Ou appelez le 04 78 33 72 05, du lundi au vendredi de 8h00 à 18h30. Rappel dans l'heure.",
+        "question": "Besoin de préparer vos lignes avant la prochaine campagne ?"
+      },
+      {
+        "type": "preuves",
+        "preuves": [
+          {
+            "texte": "sur un site de traitement des eaux industrielles à remettre en état",
+            "titre": "Un électromécanicien habilité risque chimique niveau 1, mobilisé 6 mois",
+            "lienHref": "/preuves/suez-remise-en-etat/",
+            "lienLibelle": "Étude de cas SUEZ : remise en état d'un site"
+          },
+          {
+            "texte": ", pour le maintien opérationnel de ses équipements de tri et de convoyage",
+            "titre": "Deux techniciens expérimentés en poste chez un transporteur",
+            "lienHref": "/preuves/gls-maintenance-curative/",
+            "lienLibelle": "Étude de cas GLS : maintenance curative"
+          },
+          {
+            "texte": ", depuis septembre 2024",
+            "titre": "3 à 5 techniciens mobilisés sur des usines françaises passées à des niveaux de production plus élevés",
+            "lienHref": "/preuves/valeo-usines/",
+            "lienLibelle": "Étude de cas VALEO : plusieurs usines"
+          },
+          {
+            "texte": ", dans le papier et l'emballage",
+            "titre": "Un technicien polyvalent sur un parc machines hétérogène, en environnement à forte cadence",
+            "lienHref": "/preuves/vpk/",
+            "lienLibelle": "Étude de cas VPK : maintenance de site"
+          },
+          {
+            "titre": "1 à 3 techniciens en corrective et préventive sur un site agroalimentaire produisant en flux permanent",
+            "lienHref": "/preuves/mccain-belgique/",
+            "lienLibelle": "Étude de cas McCAIN : Belgique"
+          }
+        ]
+      },
+      {
+        "type": "ctaFinal",
+        "bouton": "Faire chiffrer ma maintenance à Bordeaux",
+        "rappel": "ou appelez le 04 78 33 72 05, rappel dans l'heure aux horaires ouvrés.",
+        "question": "Besoin de savoir ce que vos arrêts non planifiés coûtent réellement sur une année ?"
+      }
+    ]
+  }
+}
