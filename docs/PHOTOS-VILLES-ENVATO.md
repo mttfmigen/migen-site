@@ -23,8 +23,33 @@ Ce sont les photos les plus récentes de la maquette.
 | Toulouse | Toulouse Cityscape · High-Fliers | https://elements.envato.com/toulouse-cityscape-W6FHS7C | hub-toulouse.jpg |
 | Marseille | Marseille Vieux-Port · sam741002 | https://elements.envato.com/aerial-view-of-marseille-pier-vieux-port-saint-jea-AGSWR5Q | hub-marseille.jpg |
 | Bordeaux | Bordeaux city in France · RossHelen | https://elements.envato.com/bordeaux-city-in-france-4W5AN9G | hub-bordeaux.jpg |
+| **Metz** | Cathédrale de Metz, France · RossHelen | https://elements.envato.com/fr/cathedral-in-metz-france-DAJBNVY | **hub-metz.jpg** |
+| **Dijon** | Vue panoramique de Meursault en hiver · wirestock | https://elements.envato.com/fr/scenic-shot-of-meursault-during-winter-wooden-stic-S99SNG5 | **hub-dijon.jpg** |
 
-Metz et Dijon utilisent des photos d'atelier déjà au site, rien à télécharger.
+### Metz et Dijon, choisies le 13/10
+
+Mehdi, 13/10 : « pour dijon mets des vignes en bourgogne » et « pour metz
+trouves un truc ». Les deux lignes ci-dessus remplacent l'ancienne mention
+« Metz et Dijon utilisent des photos d'atelier déjà au site », qui était la
+cause de son retour du 12/10 : « pour le hub de Metz je veux une photo de la
+ville ».
+
+**Metz** : la cathédrale, par RossHelen. Ce n'est pas un choix de hasard, c'est
+le MÊME photographe et la MÊME série que Nantes et Bordeaux déjà retenues.
+L'unité visuelle des dix cartes de hub en dépend.
+
+**Dijon** : Meursault, en Côte-d'Or, à 25 km de Dijon. C'est la seule photo de
+vignes AUTHENTIQUEMENT bourguignonne trouvée dans le catalogue. Les autres
+résultats étaient du Monferrato et de l'Oltrepò Pavese en Italie, du Burgenland
+en Autriche, du Pomerol en Gironde et de Hunawihr en Alsace : les servir sous
+le nom de Dijon aurait été une donnée fausse.
+
+Variante si tu préfères une ville à des vignes : « Beaune, Bourgogne » par
+SteveAllenPhoto999, https://elements.envato.com/fr/beaune-burgundy-france-KVYZQHS
+
+CE QUE JE NE PEUX PAS FAIRE : télécharger la version sous licence. Le catalogue
+ne me rend que l'aperçu de 600 px avec son filigrane. Il faut les deux fichiers
+depuis le compte Envato de Migen, en JPG, plus grande taille.
 
 ## Bloc « Votre hub local » des pages ville
 
