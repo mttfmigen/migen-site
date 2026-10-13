@@ -197,44 +197,6 @@
             "lienHref": "/preuves/soprema/",
             "photo": "/assets/photos/chaudro-meulage-visiere.jpg",
             "logo": "/assets/clients/mq-127f9e03c53b.svg"
-          },
-          {
-            "titre": "Montage d'un centre logistique, Clermont-Ferrand, 2023.",
-            "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés, site livré à la date prévue.",
-            "lienLibelle": "AKTID",
-            "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/soudure-tig-virole-inox.jpg",
-            "logo": "/assets/clients/aktid.png"
-          },
-          {
-            "titre": "Construction d'un site de R&D bas carbone, région parisienne.",
-            "texte": "Pilotage de chantier de bout en bout par Migen Travaux, coordination multi-métiers.",
-            "lienLibelle": "Migen Travaux x ECOCEM",
-            "lienHref": "/preuves/orthus-ecocem/",
-            "photo": "/assets/photos/chaudro-technicienne-plan-etabli.jpg",
-            "logo": "/assets/clients/orthus-x-ecocem.png"
-          },
-          {
-            "titre": "Contrôle de chantier, projets stratégiques, 2025 à 2026.",
-            "texte": "Suivi des prestataires, vérification des installations, respect des procédures.",
-            "lienLibelle": "ALSTEF Group",
-            "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/soudure-soudeuse-masque-releve.jpg",
-            "logo": "/assets/clients/alstef.webp"
-          },
-          {
-            "titre": "Un dispositif rodé, transposé sur un nouveau site",
-            "lienLibelle": "Amazon",
-            "lienHref": "/preuves/amazon-nouveau-site/",
-            "photo": "/assets/photos/soudure-fond-bombe-gabarit.jpg",
-            "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
-          },
-          {
-            "titre": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
-            "lienLibelle": "Atena",
-            "lienHref": "/preuves/atena-port-la-rochelle/",
-            "photo": "/assets/photos/il-interieur-de-chantier-naval-24-mars-2026-1600.jpg",
-            "logo": "/assets/clients/atena.png"
           }
         ]
       },

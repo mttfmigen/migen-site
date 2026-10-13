@@ -178,13 +178,6 @@
             "texte": "12 monteurs mécaniciens et 8 engins de levage, 6 semaines de chantier en période estivale, livraison tenue."
           },
           {
-            "titre": "Diagnostic et réparation d'un parc machines défaillant, Lyon",
-            "lienLibelle": "Étude de cas JOINT LYONNAIS",
-            "lienHref": "/preuves/joint-lyonnais/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-mars-24-2026-1-16.jpg",
-            "texte": "Les machines ont été remises en état sans rachat de matériel neuf, depuis février 2024."
-          },
-          {
             "titre": "Maintenance préventive et curative d'une fonderie et de son usinage, automobile",
             "lienLibelle": "Étude de cas STELLANTIS",
             "lienHref": "/preuves/stellantis-fonderie-sept-fons/",
@@ -210,13 +203,6 @@
             "lienLibelle": "Étude de cas Eaton",
             "lienHref": "/preuves/eaton-mise-en-production/",
             "photo": "/assets/photos/env-technician-maintenance-13.jpg",
-            "texte": ""
-          },
-          {
-            "titre": "Des convoyeurs et des trieurs sous surveillance continue",
-            "lienLibelle": "Étude de cas GLS",
-            "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/il-technicien-maintenance-avec-cle-1600.jpg",
             "texte": ""
           }
         ]

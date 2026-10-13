@@ -149,9 +149,18 @@ async function releve(page, retouche) {
       ? (() => {
           const anciens = [...annuaire.querySelectorAll(":scope > [class*='groupeRegion']")];
           if (anciens.length > 0) return anciens;
-          return [...annuaire.querySelectorAll("[class*='bassinsPanneau']")].filter((p) =>
-            p.querySelector("[class*='bassinsNomRegion']"),
-          );
+          /* `closest` ET NON `querySelectorAll('[class*=bassinsPanneau]')` : le
+             conteneur s'appelle `bassinsPanneaux`, AU PLURIEL, il porte donc la
+             même sous-chaîne et contient tous les noms de région. Compté
+             naïvement, il faisait un douzième panneau et la porte annonçait
+             « 12 regions au lieu de 11 ». Même piège que `tuileZones`. */
+          return [
+            ...new Set(
+              [...annuaire.querySelectorAll("[class*='bassinsNomRegion']")].map(
+                (n) => n.closest("[class*='bassinsPanneau']") ?? n,
+              ),
+            ),
+          ];
         })()
       : [];
 
@@ -370,22 +379,30 @@ function controle(vue, faits, seuils, servisOuverts) {
 async function ouvre(navigateur, { largeur, hauteur }) {
   const ctx = await navigateur.newContext({ viewport: { width: largeur, height: hauteur } });
   const page = await ctx.newPage();
-  const html = await (await fetch(URL)).text();
-  await page.goto(URL, { waitUntil: "domcontentloaded", timeout: 60000 });
+  /* LE HTML DU SERVEUR VIENT DE LA RÉPONSE DU NAVIGATEUR, et plus d'un `fetch`.
+
+     C'EST LE DÉFAUT LE PLUS COÛTEUX DE CETTE PORTE, trouvé le 13/10. Elle
+     lisait `await (await fetch(URL)).text()` pour savoir quels blocs le serveur
+     envoie ouverts. Or `migen-site.vercel.app` RÉPOND 403 à un `fetch` de Node,
+     là où il répond 200 au navigateur comme à `curl`. La porte prenait donc le
+     corps du 403 pour la page, n'y trouvait aucun `<details open>`, et
+     concluait « le bloc repliable n'est pas SERVI ouvert par le serveur » sur
+     les deux blocs à chacune des trois largeurs. Six faux défauts par
+     exécution, sur un contrôle qui touche au principe 1 de CLAUDE.md : un refus
+     réseau était lu comme une perte de contenu.
+
+     La réponse du `goto` porte le MÊME HTML, avant exécution de tout script, et
+     elle vient d'une requête qui, elle, aboutit. Une lecture impossible rend
+     `null`, et la règle se déclare NON MESURÉE au lieu de se tromper. */
+  const reponse = await page.goto(URL, { waitUntil: "domcontentloaded", timeout: 60000 });
+  const html = reponse && reponse.ok() ? await reponse.text().catch(() => null) : null;
   await page.waitForLoadState("load").catch(() => {});
   const refuser = page.getByRole("button", { name: "Tout refuser" }).first();
   if (await refuser.count().catch(() => 0)) await refuser.click({ timeout: 2500 }).catch(() => {});
   await page.evaluate(() => document.querySelectorAll("nextjs-portal").forEach((x) => x.remove()));
-  /* « SERVI OUVERT » SE LIT DANS LE HTML DU SERVEUR, PAS DANS LE DOM : au
-     moment où l'on mesure, l'effet client a déjà refermé les blocs sous
-     880 px. Les lire dans le DOM ferait croire à un bloc servi fermé. */
-  const servis = [...html.matchAll(/<details\b([^>]*\bdata-pliable-mobile\b[^>]*)>/g)].map((m) => /\bopen(?:=""|=\s*"open"|\s|>|$)/.test(m[1]));
-  await page.evaluate((servis) => {
-    document.querySelectorAll("details[data-pliable-mobile]").forEach((d, i) => d.setAttribute("data-servi-ouvert", servis[i] ? "1" : "0"));
-  }, servis);
   /* Le repli est un effet client : il faut lui laisser le temps de passer. */
   await page.waitForTimeout(2000);
-  return { ctx, page };
+  return { ctx, page, servisOuverts: html === null ? null : compteServisOuverts(html) };
 }
 
 /* ----------------------------------------------------------------- course */
@@ -403,14 +420,18 @@ if (CONTROLE) {
     ["bureau", "liens perdus", /\d+ liens au lieu de 88/],
     ["bureau", "trou dans la mosaique", /trou de \d+ px au milieu de la rangée de hubs|rangée de hubs n° \d+ s'arrête \d+ px avant le bord droit/],
     ["bureau", "deborde", /la section déborde de la fenêtre/],
-    ["bureau", "servi ferme", /n'est pas SERVI ouvert par le serveur/],
+    ["bureau", "servi ferme", /ne sont PAS servis ouverts par le serveur/],
     ["telephone", "repli defait", /reste déplié au téléphone/],
   ];
   let aveugle = false;
   for (const [vue, retouche, attendu] of TEMOINS) {
     const seuils = SEUILS[vue];
-    const { ctx, page } = await ouvre(navigateur, seuils);
-    const ecarts = controle(vue, await releve(page, retouche), seuils);
+    const { ctx, page, servisOuverts } = await ouvre(navigateur, seuils);
+    /* Le témoin « servi ferme » fausse le COMPTE LU DANS LE HTML SERVI, et non
+       le DOM : c'est là que la question se pose, puisque le repli est un effet
+       client. Les autres témoins reçoivent le vrai compte. */
+    const servis = retouche === "servi ferme" ? 0 : servisOuverts;
+    const ecarts = controle(vue, await releve(page, retouche), seuils, servis);
     await ctx.close();
     const vue2 = ecarts.some((x) => attendu.test(x));
     console.log(`  ${vue2 ? "OK  " : "RATE"}  ${vue} : « ${retouche} » est vue`);
@@ -429,10 +450,12 @@ if (CONTROLE) {
 
 const tous = [];
 for (const [vue, seuils] of Object.entries(SEUILS)) {
-  const { ctx, page } = await ouvre(navigateur, seuils);
+  const { ctx, page, servisOuverts } = await ouvre(navigateur, seuils);
   const faits = await releve(page);
   await ctx.close();
-  tous.push(...controle(vue, faits, seuils));
+  if (servisOuverts === null)
+    console.log(`  ! ${vue} : HTML servi illisible, le contrôle « servi ouvert » est NON MESURÉ`);
+  tous.push(...controle(vue, faits, seuils, servisOuverts));
   if (!faits.absente) {
     const densite = ((faits.comptes.liens * 1000) / faits.section.hauteur).toFixed(1);
     console.log(

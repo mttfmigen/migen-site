@@ -185,33 +185,6 @@
             "lienHref": "/preuves/eiffage/",
             "photo": "/assets/photos/il-technicien-maintenance-photo-jan-8-2026-1-1600.jpg",
             "logo": "/assets/clients/mq-21daf7c60970.svg"
-          },
-          {
-            "titre": "Une usine de carton en 3x8, un technicien qui tient la cadence",
-            "lienLibelle": "Étude de cas VPK",
-            "lienHref": "/preuves/vpk/",
-            "photo": "/assets/photos/elec-mains-bornier-relais.jpg"
-          },
-          {
-            "titre": "Un centre logistique monté en six semaines",
-            "lienLibelle": "Étude de cas Aktid",
-            "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/il-concept-usine-intelligente-2026-1600.jpg",
-            "logo": "/assets/clients/aktid.png"
-          },
-          {
-            "titre": "Maintenir des machines conçues en interne",
-            "lienLibelle": "Étude de cas Tournaire",
-            "lienHref": "/preuves/tournaire/",
-            "photo": "/assets/photos/il-femme-inspectant-bras-robotique-2026-1600.jpg",
-            "logo": "/assets/clients/mq-7c01e175985e.png"
-          },
-          {
-            "titre": "Un responsable maintenance pour traverser la transition",
-            "lienLibelle": "Étude de cas ERIKS",
-            "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/il-technicien-maintenance-inspectant-bras-robotiq.jpg",
-            "logo": "/assets/clients/mq-441fc873c0d9.svg"
           }
         ]
       },

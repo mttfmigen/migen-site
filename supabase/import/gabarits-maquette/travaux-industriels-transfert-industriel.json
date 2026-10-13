@@ -324,14 +324,6 @@
             "logo": "/assets/clients/mq-127f9e03c53b.svg"
           },
           {
-            "titre": "Montage d'un centre logistique, Clermont-Ferrand, 2023.",
-            "texte": "12 monteurs mécaniciens et 8 engins de levage mobilisés en pleine période estivale, site livré à la date prévue.",
-            "lienLibelle": "Étude de cas AKTID",
-            "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/levage-montage-poteau-charpente.jpg",
-            "logo": "/assets/clients/aktid.png"
-          },
-          {
             "titre": "Construction d'un site de R&D bas carbone, région parisienne.",
             "texte": "Chantier piloté de bout en bout par Migen Travaux, coordination multi-métiers et jalons critiques suivis.",
             "lienLibelle": "Étude de cas Migen Travaux x ECOCEM",
@@ -361,13 +353,6 @@
             "lienHref": "/preuves/amazon-nouveau-site/",
             "photo": "/assets/photos/meca-reducteur-pont-roulant.jpg",
             "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
-          },
-          {
-            "titre": "En finir avec les pannes qui reviennent sur un terminal d’engrais",
-            "lienLibelle": "Étude de cas Atena",
-            "lienHref": "/preuves/atena-port-la-rochelle/",
-            "photo": "/assets/photos/il-interieur-de-chantier-naval-24-mars-2026-1600.jpg",
-            "logo": "/assets/clients/atena.png"
           }
         ]
       },

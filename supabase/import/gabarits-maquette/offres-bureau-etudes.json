@@ -246,13 +246,6 @@
         "type": "preuves",
         "preuves": [
           {
-            "titre": "Deux automates migrés en deux week-ends, sans arrêter la production",
-            "lienLibelle": "Savoye",
-            "lienHref": "/preuves/savoye-migration-automates-norvege/",
-            "photo": "/assets/photos/il-automation-female-engineer-with-tablet-for-pro.jpg",
-            "logo": "/assets/clients/savoye.png"
-          },
-          {
             "titre": "",
             "texte": "Pilotage complet de la construction d'un site industriel de recherche et développement près de Paris, coordination multi-métiers et jalons tenus.",
             "lienLibelle": "Étude de cas Migen Travaux x ECOCEM : nouveau site",
@@ -290,20 +283,6 @@
             "lienHref": "/preuves/aktid-centre-logistique/",
             "photo": "/assets/photos/il-technicien-maintenance-photo-21-1600.jpg",
             "logo": "/assets/clients/aktid.png"
-          },
-          {
-            "titre": "Des chantiers automatisés contrôlés point par point",
-            "lienLibelle": "Alstef Group",
-            "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/robot-palettisation-tablette.jpg",
-            "logo": "/assets/clients/alstef.webp"
-          },
-          {
-            "titre": "Maintenir un centre logistique qui ne ferme jamais",
-            "lienLibelle": "Amazon",
-            "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-9-2026-1-1600.jpg",
-            "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           }
         ]
       },

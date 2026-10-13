@@ -350,9 +350,6 @@
   color: #fff;
 }
 
-/* Sous 1000 px, deux colonnes. Sous 880 px, une seule : le colis fait 4 292 px
-   de haut au téléphone contre 537 aujourd'hui, et c'est exactement le « trop
-   gros » que Mehdi reprochait au bloc d'avant. */
 /* Sous 1000 px, la grille de douze devient une grille de six : les empans de 6
    prennent la largeur, ceux de 3 et de 4 se mettent par deux. */
 @media (max-width: 1000px) {
@@ -365,24 +362,105 @@
   .tuileHub[data-haut] { grid-row: auto; }
 }
 
-/* Sous 880 px, une seule colonne. Le colis fait 4 292 px de haut au téléphone
-   contre 537 ici, et c'est exactement le « trop gros » que Mehdi reprochait au
-   bloc d'avant. */
+/* ===================================================================
+   SOUS 880 PX, UNE SEULE COLONNE, ET DES TUILES PLUS BASSES.
+
+   LA COMPARAISON QUI ÉTAIT ÉCRITE ICI ÉTAIT FAUSSE, et c'est une correction du
+   13/10 au soir. Elle disait « le colis fait 4 292 px de haut au téléphone
+   contre 537 ici » : 4 292 px est la hauteur du colis DÉPLIÉ, et 537 px celle
+   de notre section REPLIÉE. Deux états différents comparés comme s'ils étaient
+   le même, donc un gain de 87 % annoncé sur rien. Mesuré à 390 px dans l'état
+   que voit le visiteur qui ouvre le bloc : la section pesait 4 009 px, soit
+   93 % du colis. Le « trop gros » n'avait pas été corrigé, il avait été replié.
+
+   LES TROIS POSTES DE CETTE HAUTEUR, relevés à 390 px avant correction :
+   mosaïque 1 948 px, panneau des bassins 1 369 px (dont 472 px pour les seuls
+   onglets de région), en-têtes et chapôs 692 px.
+
+   LA MOSAÏQUE : dix tuiles à 184 px de minimum plus neuf écarts de 12 px font
+   1 948 px à un pixel près, et c'est de l'arithmétique, pas du dessin. Elles
+   descendent à 144 px, et Lyon seul garde 200 px : c'est le siège et le hub le
+   plus fourni, et c'est ce qui rend à la liste la hiérarchie que le colis
+   obtenait par son empan de 6 sur deux rangées.
+
+   MESURÉE, PAS CALCULÉE : 1 604 px à 880 et 768 px, où chaque tuile tient son
+   minimum, et 1 691 px à 390 px, où trois tuiles (Toulouse, Bordeaux, Dijon)
+   portent deux rangées de pastilles et grandissent à 173 px. Le gain va donc
+   de 344 px à 217 px selon la largeur, et non 344 px partout : c'est la
+   deuxième fois dans ce fichier qu'un chiffre d'en-tête vaut pour un seul cas
+   et se lit comme une règle.
+
+   `minmax(..., auto)` ET `min-height`, PAS `height` : une tuile dont les
+   pastilles de bassin passent sur deux lignes doit pouvoir grandir. Baisser un
+   minimum ne coupe rien ; fixer une hauteur, oui. */
 @media (max-width: 880px) {
   .mosaique {
     grid-template-columns: minmax(0, 1fr);
-    grid-auto-rows: minmax(184px, auto);
+    grid-auto-rows: minmax(144px, auto);
   }
   .tuileHub,
   .tuileHub[data-empan="3"],
   .tuileHub[data-empan="4"],
   .tuileHub[data-empan="6"] {
     grid-column: auto;
-    min-height: 184px;
+    min-height: 144px;
   }
-  .tuileLien,
+  .tuileHub[data-haut] {
+    min-height: 200px;
+  }
+  /* LA PLACE DE LA PASTILLE ET DE LA FLÈCHE EST RÉSERVÉE, ET C'EST LA
+     CORRECTION LA PLUS IMPORTANTE DU LOT.
+
+     LE DÉFAUT EXISTAIT AVANT MOI, mesuré avec les valeurs d'avant remises en
+     place : à 320 px, la pastille « HUB » et la flèche recouvraient déjà le
+     nom de Lyon, de Bordeaux et de Dijon, six recouvrements. Les deux
+     ornements sont en `z-index: 3`, le texte en 2 : le nom du hub passait donc
+     DESSOUS, illisible. En baissant la hauteur des tuiles, j'ai étendu ce même
+     défaut à 390 px, sur Toulouse, Bordeaux et Dijon.
+
+     LE MÉCANISME. Le contenu est aligné en bas (`align-items: flex-end`) et
+     les ornements sont posés en haut, en absolu. Dès qu'une tuile porte deux
+     rangées de pastilles de bassin, le contenu remonte jusqu'à eux. Ce n'est
+     pas une question de hauteur minimale : c'est qu'aucune place ne leur était
+     réservée dans le flux.
+
+     46 PX, ET LE CHIFFRE SE DÉDUIT. La pastille descend à 30 px (10 de haut +
+     4 + 4 de remplissage + 12 de ligne), la flèche à 40 px (10 + 30). Six
+     pixels de respiration au-dessus de la plus basse des deux.
+
+     AUCUN TEXTE N'EST PERDU : les rangées sont en `minmax(…, auto)`, donc une
+     tuile dont le contenu demande plus que son minimum grandit. Les trois
+     tuiles à deux rangées passent de 144 à 173 px, et rien n'est coupé.
+
+     CE N'EST NI UN RECUL DE LA HAUTEUR MINIMALE, NI UN DÉPLACEMENT DES
+     ORNEMENTS : le premier aurait rendu les pixels gagnés, le second aurait
+     défait le dessin du colis. */
+  .tuileCorps {
+    padding: 46px 14px 14px;
+  }
+  .tuileLien {
+    font-size: 22px;
+  }
+  /* Lyon garde son nom plus grand : la tuile est plus haute, elle le porte. */
   .tuileHub[data-haut] .tuileLien {
-    font-size: 23px;
+    font-size: 27px;
+  }
+  /* La pastille « Hub » et la flèche se rapprochent du coin, la tuile étant
+     plus basse : sans ça elles mordaient sur le nom. */
+  .tuilePastille,
+  .tuileFleche {
+    top: 10px;
+  }
+  .tuilePastille {
+    left: 10px;
+  }
+  .tuileFleche {
+    right: 10px;
+    /* 30 px, toujours au-dessus des 24 px du critère 2.5.8, mais la flèche est
+       décorative : la cible réelle est le `::after` du nom, qui couvre la
+       tuile entière. */
+    width: 30px;
+    height: 30px;
   }
 }
 
@@ -642,4 +720,81 @@
   .bassinsTitre { font-size: 23px; }
   .bassinsAppel { width: 100%; justify-content: center; }
   .bassinsPanneaux { padding: 16px 14px 18px; }
+
+  /* =================================================================
+     LES ONZE ONGLETS DE RÉGION DEVIENNENT UN RAIL QUI DÉFILE.
+
+     LE DÉFAUT, MESURÉ ET PAS SUPPOSÉ. En `flex-wrap: wrap`, onze pastilles
+     portant « Bourgogne-Franche-Comté » ou « Provence-Alpes-Côte d'Azur »
+     s'empilent sur DIX rangées à 390 px (472 px de haut) et ONZE à 320 px
+     (560 px). C'est un écran entier de pastilles avant qu'une seule ville
+     n'apparaisse : le choix de région coûtait plus de place que les villes
+     qu'il sert à atteindre.
+
+     UN RAIL, PAS UN REPLI. Les deux étaient recevables ; le rail garde les
+     onze régions VISIBLES et atteignables d'un geste, là qu'un repli
+     ajouterait une commande de plus pour arriver au même endroit, dans un
+     bloc qui est déjà lui-même replié.
+
+     `flex: 0 0 auto` EST LA MOITIÉ QUI COMPTE. `flex-wrap: nowrap` seul ne
+     fait rien défiler du tout : les étiquettes sont des `inline-flex`, donc
+     des éléments flexibles, et leur `flex-shrink` valant 1 par défaut, elles
+     se seraient COMPRIMÉES au lieu de dépasser. Les noms de région se
+     seraient cassés sur deux lignes dans des pastilles rétrécies, et la
+     hauteur n'aurait pas bougé. Il faut leur interdire de rétrécir pour que
+     le conteneur ait quelque chose à faire défiler.
+
+     PAS DE DÉBORDEMENT PAR MARGE NÉGATIVE. Un rail qui saigne jusqu'au bord
+     du panneau se lit mieux, mais la marge négative rend l'élément plus large
+     que son hôte : un vrai débordement géométrique, que la porte du
+     responsive relève à juste titre et qu'il faudrait ensuite plaider. La
+     pastille coupée net par le bord du rail dit déjà qu'il y en a d'autres.
+
+     LA GOUTTIÈRE VERTICALE N'EST PAS DÉCORATIVE. L'anneau de focus est à
+     `outline-offset: 2px` sur une bordure de 2 px : sans ces 4 px, le
+     conteneur défilant le rognerait, et un anneau rogné est un anneau perdu
+     pour qui navigue au clavier (critère 2.4.7).
+
+     `overflow-y: hidden` PARCE QUE LES DEUX AXES SE TIENNENT : dès qu'un axe
+     cesse d'être `visible`, l'autre devient `auto`, et une barre verticale
+     parasite apparaîtrait sur un rail de 56 px de haut. */
+  .bassinsOnglets {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-block: 4px;
+    margin-bottom: 14px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+  .bassinsOnglets::-webkit-scrollbar {
+    display: none;
+  }
+  .bassinsEtiquette {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    scroll-snap-align: start;
+  }
+
+  /* =================================================================
+     CE QUE JE N'AI PAS FAIT ICI, ET POURQUOI, parce que la tentation revient.
+
+     J'avais abaissé le minimum de la grille des villes de 170 à 150 px pour
+     obtenir deux colonnes au téléphone. MESURÉ AVANT ET APRÈS, aux huit
+     largeurs : le nombre de colonnes est IDENTIQUE partout, 4 à 880 px, 3 à
+     768, 1 en dessous. La règle ne changeait rien du tout, et six pixels de
+     remplissage en moins étaient tout le gain.
+
+     LA RAISON EST AILLEURS ET N'EST PAS À MOI. À 390 px, le conteneur
+     `LARGEUR` de `components/site/blocs/habillage.ts` pose 40 px de
+     remplissage de chaque côté : 80 px sur 390, soit 20,5 % de l'écran. Le
+     panneau des bassins ne fait donc que 284 px, et la boîte intérieure de la
+     liste 218 px, là où deux colonnes en demandent 308. Aucune valeur écrite
+     dans CE fichier ne peut faire tenir deux colonnes dans 218 px.
+
+     Une règle qui ne déplace aucun pixel est une règle qui mentira au prochain
+     lecteur : elle est retirée, et la gouttière est déclarée comme arbitrage,
+     dans le fichier de celui qui la possède. */
 }

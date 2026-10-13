@@ -174,49 +174,12 @@
             "logo": "/assets/clients/mq-127f9e03c53b.svg"
           },
           {
-            "titre": "Montage d'un centre logistique, Clermont-Ferrand, 2023.",
-            "texte": "12 monteurs mécaniciens, 8 engins de levage, site livré à la date prévue",
-            "lienLibelle": "Étude de cas AKTID",
-            "lienHref": "/preuves/aktid-centre-logistique/",
-            "photo": "/assets/photos/env-industrie-mettalique.jpg",
-            "logo": "/assets/clients/aktid.png"
-          },
-          {
-            "titre": "Installation et mise en production d'un parc machine, site automobile.",
-            "texte": "6 techniciens mobilisés, continuité opérationnelle assurée ensuite",
-            "lienLibelle": "Étude de cas EATON",
-            "lienHref": "/preuves/eaton-mise-en-production/",
-            "photo": "/assets/photos/elec-armoire-pont-roulant-gilet.jpg",
-            "logo": "/assets/clients/mq-70bce765c1a2.svg"
-          },
-          {
             "titre": "Montage de portiques de lavage sur sites répartis en France.",
             "texte": "Réception, assemblage, levage, raccordements, validation à l'issue du montage",
             "lienLibelle": "Étude de cas Migen Travaux x WASHTEC",
             "lienHref": "/preuves/orthus-washtec/",
             "photo": "/assets/photos/il-photo-usine-ciment-16-mars-2026-1600.jpg",
             "logo": "/assets/clients/orthus-x-washtec.svg"
-          },
-          {
-            "titre": "La maintenance tient pendant que l’équipe recrute",
-            "lienLibelle": "Étude de cas Bamesa",
-            "lienHref": "/preuves/bamesa/",
-            "photo": "/assets/photos/il-photo-usine-ciment-mars-17-2026-1600.jpg",
-            "logo": "/assets/clients/bamesa.png"
-          },
-          {
-            "titre": "Un responsable maintenance pour traverser la transition",
-            "lienLibelle": "Étude de cas ERIKS",
-            "lienHref": "/preuves/eriks/",
-            "photo": "/assets/photos/levage-montage-poteau-charpente.jpg",
-            "logo": "/assets/clients/mq-441fc873c0d9.svg"
-          },
-          {
-            "titre": "Du broyage à la cuisson, un seul technicien sur la chaîne",
-            "lienLibelle": "Étude de cas Salaison du Mâconnais",
-            "lienHref": "/preuves/salaison-du-maconnais/",
-            "photo": "/assets/photos/il-interieur-de-chantier-naval-24-mars-2026-1600.jpg",
-            "logo": "/assets/clients/salaison-du-maconnais.png"
           }
         ]
       },

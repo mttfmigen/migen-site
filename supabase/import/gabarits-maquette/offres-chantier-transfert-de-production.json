@@ -200,20 +200,6 @@
             "lienHref": "/preuves/aktid-centre-logistique/",
             "photo": "/assets/photos/elec-armoire-pont-roulant-gilet.jpg",
             "logo": "/assets/clients/aktid.png"
-          },
-          {
-            "titre": "Un renfort pour que le pain sorte chaque matin",
-            "lienLibelle": "La Panetière",
-            "lienHref": "/preuves/la-panetiere/",
-            "photo": "/assets/photos/levage-pont-roulant-hall-acier.jpg",
-            "logo": "/assets/clients/mq-8506472cb2ee.svg"
-          },
-          {
-            "titre": "Maintenir un centre logistique qui ne ferme jamais",
-            "lienLibelle": "Amazon",
-            "lienHref": "/preuves/amazon-centre-logistique/",
-            "photo": "/assets/photos/il-photo-usine-ciment-mars-17-2026-1600.jpg",
-            "logo": "/assets/clients/mq-3103d0f3f9ba.svg"
           }
         ]
       },

@@ -169,49 +169,7 @@
       },
       {
         "type": "preuves",
-        "preuves": [
-          {
-            "titre": "Maintenance des équipements critiques d'un équipementier automobile",
-            "texte": "Techniciens intégrés au quotidien sur systèmes automatisés, lignes et convoyeurs, roboticiens ABB et Fanuc parmi les spécialités mobilisables, depuis 2025.",
-            "lienLibelle": "Étude de cas JTEKT",
-            "lienHref": "/preuves/jtekt/",
-            "photo": "/assets/photos/robot-soudure-points-caisse.jpg"
-          },
-          {
-            "titre": "Contrôle de chantier sur des projets d'automatisation logistique",
-            "texte": "Plusieurs intervenants intégrés aux équipes, roboticiens ABB et Fanuc parmi les spécialités mobilisables, 2025 à 2026.",
-            "lienLibelle": "Étude de cas ALSTEF Group",
-            "lienHref": "/preuves/alstef-group/",
-            "photo": "/assets/photos/il-concept-usine-intelligente-2026-1600.jpg"
-          },
-          {
-            "titre": "Contrat de maintenance préventive annuelle, logistique",
-            "texte": "Six techniciens polyvalents en permanence, robotique comprise dans les domaines couverts, depuis septembre 2023.",
-            "lienLibelle": "Étude de cas VEEPEE",
-            "lienHref": "/preuves/veepee-sites-lyon/",
-            "photo": "/assets/photos/robot-pupitre-apprentissage-soudure.jpg"
-          },
-          {
-            "titre": "Maintien opérationnel de convoyeurs, trieurs et lignes de packaging automatisées, logistique et transport",
-            "texte": "Deux techniciens en poste, robotique parmi les domaines couverts en propre.",
-            "lienLibelle": "Étude de cas GLS",
-            "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/robot-palettiseur-sacs-poudre.jpg"
-          },
-          {
-            "titre": "Maintenance sous contrat d'un parc déployé partout en France, réalité virtuelle",
-            "texte": "Périmètre technique complet, robotique comprise, depuis février 2024.",
-            "lienLibelle": "Étude de cas TIMESCOPE",
-            "lienHref": "/preuves/timescope/",
-            "photo": "/assets/photos/il-female-engineer-inspecting-machinery-in-indust.jpg"
-          },
-          {
-            "titre": "La GMAO planifie, nos techniciens interviennent",
-            "lienLibelle": "Étude de cas DimoMaint",
-            "lienHref": "/preuves/dimomaint/",
-            "photo": "/assets/photos/il-technicien-maintenance-photo-jan-8-2026-1-1600.jpg"
-          }
-        ]
+        "preuves": []
       },
       {
         "type": "objections",

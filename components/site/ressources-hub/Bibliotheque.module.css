@@ -6,9 +6,47 @@
  * Le reste du dessin reste en ligne, comme dans les autres gabarits portés,
  * pour qu'une valeur se relise à côté de l'élément qu'elle habille.
  *
- * LES POINTS D'ARRÊT SONT CEUX DE LA MAQUETTE : 1000 px pour replier le menu
- * latéral en rail horizontal, 760 px pour le rendre pliable. Ses règles sont
- * dans le `<style>` du gabarit (`.rs-lay`, `.rs-side`, `.rs-app`, `.rs-side2`).
+ * LES POINTS D'ARRÊT SONT CEUX DE `.rs-app`, ET C'EST UNE CORRECTION.
+ *
+ * La maquette porte DEUX menus latéraux, et ils n'ont pas les mêmes règles :
+ *
+ *   · `.rs-lay` / `.rs-side` / `.rs-side-card`, qui bascule à 1000 px en RAIL
+ *     HORIZONTAL (`display:flex;overflow-x:auto;border-radius:999px`) et pose
+ *     `margin-top:28px` sur son aside ;
+ *   · `.rs-app` / `.rs-side2` / `.rs-sc2`, celui de la bibliothèque, le seul
+ *     qui porte le bouton pliant `.rs-ftoggle` et le corps `.rs-side-body`.
+ *
+ * Cette feuille-ci avait pris le point d'arrêt du PREMIER (1000 px) et son
+ * `margin-top`, pour habiller le SECOND. Mesuré le 13/10 sur le hub servi : de
+ * 761 à 1000 px, le site rendait UNE colonne, le menu empilé au-dessus de la
+ * bibliothèque, ses 37 boutons dépliés et sans bouton pour les replier, là où
+ * la maquette garde DEUX colonnes. Une tablette en portrait (768 px) traversait
+ * donc tout le panneau de filtres avant d'atteindre la première carte.
+ *
+ * Les règles de `.rs-app`, relues dans le colis et appliquées ici :
+ *
+ *   base            grid-template-columns:292px minmax(0,1fr); gap:28px
+ *   max-width 1100  grid-template-columns:240px minmax(0,1fr); gap:20px
+ *   max-width 760   grid-template-columns:minmax(0,1fr); gap:18px
+ *                   .rs-side2{position:relative;top:auto}
+ *                   .rs-sc2{max-height:none}
+ *                   .rs-ftoggle{display:flex}
+ *                   .rs-side-body.rs-closed{display:none}
+ *   max-width 640   padding-left:14px; padding-right:14px
+ *
+ * DEUX DE CES RÈGLES SONT RETENUES, et le compte rendu les déclare :
+ *
+ *  · LE RAIL À 240 PX (1100 px) N'EST PAS POSÉ. Il clive un bouton qui n'est
+ *    pas à nous : les segments de durée portent chez nous leur compte, que la
+ *    maquette n'affiche pas, et « ≤ 6 min 00 » demande 60 px là où un rail de
+ *    240 px n'en laisse que 48. Mesuré, pas supposé. Soit le compte quitte les
+ *    segments et le rail descend à 240 px comme la maquette, soit le compte
+ *    reste et le rail garde 292 px jusqu'à 760 px. À Mehdi de trancher.
+ *  · LA GOUTTIÈRE À 14 PX (640 px) N'EST PAS POSÉE. Chez la maquette, `.rs-app`
+ *    EST la page ; ici la bibliothèque est une section posée dans une page
+ *    éditoriale, et sa gouttière doit s'aligner sur celle du héros, du guide et
+ *    de la FAQ, que `app/globals.css` tient à 40 px jusqu'à 390 px puis à
+ *    20 px. Lui en donner 14 décalerait son bord gauche de tout le reste.
  */
 
 .carte {
@@ -101,24 +139,26 @@
   gap: 12px;
 }
 
-@media (max-width: 1000px) {
+/* `.rs-app` à 760 px : une colonne, 18 px entre le menu et la bibliothèque, le
+   menu rendu au fil du texte, et son corps pliable derrière `.rs-ftoggle`.
+   Les quatre règles sont dans le MÊME bloc parce que la maquette les y met :
+   séparer le passage à une colonne du bouton pliant est ce qui laissait les
+   filtres dépliés et sans commande entre 761 et 1000 px. */
+@media (max-width: 760px) {
   .cadre {
     grid-template-columns: minmax(0, 1fr);
-    gap: 0;
+    gap: 18px;
   }
 
   .menu {
     position: relative;
     top: auto;
-    margin-top: 28px;
   }
 
   .menuCarte {
     max-height: none;
   }
-}
 
-@media (max-width: 760px) {
   .plieFiltres {
     display: flex;
   }

@@ -182,13 +182,6 @@
             "photo": "/assets/photos/soudure-corps-vanne-forge.jpg"
           },
           {
-            "titre": "Curatif et préventif dans le même périmètre, agroalimentaire",
-            "texte": "Actions préventives ciblées sur les équipements critiques, premier contrat hors de France, depuis octobre 2024.",
-            "lienLibelle": "Étude de cas McCAIN",
-            "lienHref": "/preuves/mccain-belgique/",
-            "photo": "/assets/photos/il-technicien-maintenance-7.jpg"
-          },
-          {
             "titre": "Maintenance préventive et curative des lignes liquides et poudre, agroalimentaire",
             "texte": "Deux techniciens intégrés en 3x8, présence quand la ligne tourne.",
             "lienLibelle": "Étude de cas DANONE",
@@ -213,12 +206,6 @@
             "lienLibelle": "Étude de cas Eaton",
             "lienHref": "/preuves/eaton-mise-en-production/",
             "photo": "/assets/photos/il-portrait-of-engineer-train-inspect-the-train-s-2.jpg"
-          },
-          {
-            "titre": "Des convoyeurs et des trieurs sous surveillance continue",
-            "lienLibelle": "Étude de cas GLS",
-            "lienHref": "/preuves/gls-maintenance-curative/",
-            "photo": "/assets/photos/il-technicien-maintenance-femme-1600.jpg"
           }
         ]
       },

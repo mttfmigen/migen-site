@@ -204,12 +204,6 @@
             "lienLibelle": "Étude de cas Danone (Blédina)",
             "lienHref": "/preuves/danone-lignes-de-production/",
             "photo": "/assets/photos/env-maintenance-worker-repairing-robot.jpg"
-          },
-          {
-            "titre": "La GMAO planifie, nos techniciens interviennent",
-            "lienLibelle": "Étude de cas DimoMaint",
-            "lienHref": "/preuves/dimomaint/",
-            "photo": "/assets/photos/env-automatician-maintenance.jpg"
           }
         ]
       },

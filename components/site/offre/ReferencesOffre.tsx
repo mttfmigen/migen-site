@@ -346,6 +346,19 @@ export default function ReferencesOffre({ section, dateBrute = false }: Propriet
             Toutes nos études de cas →
           </Link>
         </div>
+        {/* RIEN À MONTRER N'EST PAS LA MÊME CHOSE QU'UN RAIL VIDE.
+            Six pages de spécialité n'ont plus aucun cas depuis que les 120
+            cartes hors sujet ont été retirées le 13/10 : aucune des 41 études
+            publiées ne parle de soudure, de tuyauterie ni de nettoyage. Rendre
+            quand même le compteur et le rail laissait un titre « Nos
+            références » suivi d'un trou, ce qui se lit comme une page cassée
+            et non comme une page honnête.
+            L'en-tête et le lien « Toutes nos études de cas » restent, eux :
+            ils transforment la section en panneau indicateur, et ils gardent
+            le lien vers `/preuves/` que `verification-specialite` exige sur
+            ces pages. */}
+        {preuves.length === 0 ? null : (
+          <>
         <div style={COMPTEUR} />
         {/* La classe `g3-refrail` branche le rail sur le moteur d'auto-
             défilement de `Moteurs.tsx` (0,45 px par image), comme dans la
@@ -465,6 +478,8 @@ export default function ReferencesOffre({ section, dateBrute = false }: Propriet
             </Link>
           ))}
         </div>
+          </>
+        )}
         </SectionPliableMobile>
       </div>
     </section>
