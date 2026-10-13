@@ -292,7 +292,7 @@ function CorpsPrestation({ prestation }: { prestation: PrestationRegroupee }) {
           ) : null}
 
           {bloc.prose?.length ? (
-            <div style={{ display: "grid", gap: 10, marginBottom: 10 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10, marginBottom: 10 }}>
               {bloc.prose.map((paragraphe) => (
                 <p key={paragraphe} style={PROSE}>
                   {paragraphe}
@@ -302,7 +302,7 @@ function CorpsPrestation({ prestation }: { prestation: PrestationRegroupee }) {
           ) : null}
 
           {bloc.puces?.length ? (
-            <div style={{ display: "grid", gap: 10 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10 }}>
               {bloc.puces.map((puce) => (
                 <div key={puce.accroche ?? puce.texte} style={PUCE}>
                   <span aria-hidden="true" style={COCHE}>

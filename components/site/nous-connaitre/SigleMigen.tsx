@@ -106,7 +106,7 @@ export default function SigleMigen() {
           immédiate.
         </p>
       </div>
-      <div style={{ display: "grid", gap: 6 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 6 }}>
         {SIGLE.map(([lettre, suite]) => (
           <div key={lettre} style={RANGEE}>
             <span style={LETTRE}>{lettre}</span>

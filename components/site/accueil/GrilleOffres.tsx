@@ -303,7 +303,7 @@ export default function GrilleOffres() {
                 Constituer mon équipe →
               </a>
             </div>
-            <div style={{ display: "grid", gap: "8px", alignContent: "center" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "8px", alignContent: "center" }}>
               {GARANTIES_RESIDENCE.map((garantie) => (
                 <div
                   key={garantie}

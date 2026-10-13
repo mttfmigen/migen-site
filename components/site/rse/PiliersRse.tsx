@@ -77,7 +77,7 @@ function CartePilier({ pilier }: { pilier: Pilier }) {
         <span style={TITRE_CARTE}>{pilier.titre}</span>
       </div>
       <p style={CHAPEAU_CARTE}>{pilier.chapeau}</p>
-      <div style={{ display: "grid", gap: 14, marginBottom: 20 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 14, marginBottom: 20 }}>
         {pilier.indicateurs.map((indicateur) => (
           <div
             key={indicateur.libelle}

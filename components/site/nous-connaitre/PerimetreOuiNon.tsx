@@ -63,7 +63,7 @@ export default function PerimetreOuiNon() {
             </div>
             <ul
               style={{
-                display: "grid",
+                display: "grid", gridTemplateColumns: "minmax(0,1fr)",
                 gap: 9,
                 margin: 0,
                 padding: 0,
@@ -123,7 +123,7 @@ export default function PerimetreOuiNon() {
               </div>
               <ul
                 style={{
-                  display: "grid",
+                  display: "grid", gridTemplateColumns: "minmax(0,1fr)",
                   gap: 9,
                   margin: 0,
                   padding: 0,

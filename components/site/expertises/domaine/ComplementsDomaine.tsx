@@ -62,7 +62,7 @@ const TEXTE: CSSProperties = {
   textWrap: "pretty",
 };
 
-const LISTE: CSSProperties = { display: "grid", gap: 10 };
+const LISTE: CSSProperties = { display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10 };
 
 const PUCE: CSSProperties = {
   display: "flex",

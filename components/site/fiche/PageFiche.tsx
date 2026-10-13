@@ -169,7 +169,7 @@ export default function PageFiche({
             {fiche.length > 0 ? (
               <div style={{ ...VERRE_FICHE, padding: "32px 34px 34px" }}>
                 <div style={SURTITRE_HERO}>Fiche</div>
-                <div style={{ display: "grid", gap: 16 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 16 }}>
                   {fiche.map((ligne, i) => (
                     <Fragment key={`${ligne.libelle}-${i}`}>
                       {i > 0 ? (
@@ -220,7 +220,7 @@ export default function PageFiche({
                 />
               </div>
               {images.length > 1 ? (
-                <div style={{ display: "grid", gap: 16 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 16 }}>
                   {images.slice(1).map((image, i) => (
                     <div
                       key={`${image.src}-${i}`}
@@ -279,7 +279,7 @@ export default function PageFiche({
                       />
                       <div style={{ position: "relative" }}>
                         <div style={SURTITRE_CARTE}>Le résultat</div>
-                        <div style={{ display: "grid", gap: 16 }}>
+                        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 16 }}>
                           {resultats.map((chiffre, i) => (
                             <div key={`${chiffre.valeur}-${i}`}>
                               <div

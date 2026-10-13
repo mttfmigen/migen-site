@@ -88,7 +88,7 @@ const TEXTE: CSSProperties = {
 /* Blocs 628 à 639 : la variante À COCHES du même bloc, relevée le 07/10 sur
    `maquette/rendu/offres--residence--cahier-des-charges.html` (« Complément 5 »,
    « Les 4 erreurs qui coûtent cher »). Même carte, même titre, corps en liste. */
-const LISTE: CSSProperties = { display: "grid", gap: 10 };
+const LISTE: CSSProperties = { display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10 };
 
 const PUCE: CSSProperties = {
   display: "flex",

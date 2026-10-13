@@ -40,7 +40,7 @@ function Bloc({ bloc }: { bloc: BlocRayon }) {
     case "ul":
     case "ol":
       return (
-        <div className={styles.liste} style={{ display: "grid", gap: 8, margin: "4px 0 12px" }}>
+        <div className={styles.liste} style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 8, margin: "4px 0 12px" }}>
           {bloc.items.map((item, i) => (
             <div key={`${i}-${item.slice(0, 16)}`} style={LIGNE_LISTE}>
               <span

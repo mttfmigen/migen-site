@@ -120,7 +120,7 @@ export default function HeroValeurs() {
           <div style={HALO} />
           <div style={{ position: "relative" }}>
             <div style={SURTITRE}>{HERO.panneau}</div>
-            <div style={{ display: "grid", gap: 16 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 16 }}>
               {SLOGAN.map(({ mot, glose }) => (
                 <div key={mot}>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 12 }}>

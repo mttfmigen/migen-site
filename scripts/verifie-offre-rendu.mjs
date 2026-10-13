@@ -177,6 +177,14 @@ const AGENCES_FRANCE =
   "Montréal, Madrid, Dubaï) et, en France, des hubs, pas des agences (README " +
   "de passation, verifie-interdits « 5 agences ») ; le repère est retiré, " +
   "jamais reformulé";
+const FAQ_FERMEE =
+  "réponse de la FAQ : aucune question n'est ouverte au chargement, arbitrage " +
+  "de Mehdi du 11/10 posé dans components/site/offre/QuestionsOffre.tsx, alors " +
+  "que la capture ouvre la première (1 <details open> sur 4 dans cette " +
+  "section) ; la réponse reste SERVIE dans le HTML, donc lue par Google, elle " +
+  "n'est qu'invisible tant que le visiteur n'a pas cliqué. Déclaré avec " +
+  "`dansLeHtml`, donc vérifié : le jour où la phrase quitte le HTML, la porte " +
+  "le dit";
 const PLI_REDUIRE =
   "libellé « Réduire » du pli « Lire la suite » : masqué tant que le pli est " +
   "fermé, sur le site comme dans la maquette (feuille `.cx-more`) ; la capture, " +
@@ -557,6 +565,15 @@ const TROUS_DECLARES = [
     { section: 0, ligne: "agences en France", pourquoi: AGENCES_FRANCE },
   ]],
   ["/offres/audit-conseil-maintenance/", []],
+  ["/offres/residence/", [
+    {
+      section: 13,
+      ligne:
+        "La mission est chiffrée sur devis, sous forme de taux horaire homogène dans toute la France. Trois éléments font le montant : le profil requis et ses spécialités, le rythme de présence (temps plein ou partagé) et les contraintes de vos installations. Tout est présenté ligne par ligne, pour une comparaison honnête avec un poste interne.",
+      pourquoi: FAQ_FERMEE,
+      dansLeHtml: true,
+    },
+  ]],
 ];
 
 const TROUS_PAR_PAGE = {};
@@ -655,13 +672,18 @@ const EXTRAIT = (imbriquees) => {
   const sections = imbriquees
     ? principal.querySelectorAll("section")
     : principal.querySelectorAll(":scope > section");
-  return [...sections].map((section) => {
+  const sections2 = [...sections].map((section) => {
     const titre = section.querySelector("h1, h2, h3");
     return {
       titre: titre ? titre.innerText : null,
       lignes: (section.innerText || "").split("\n"),
     };
   });
+  /* LE HTML DU <main>, EN PLUS DU TEXTE VISIBLE. Il sert à vérifier les trous
+     déclarés `dansLeHtml` : une phrase invisible parce qu'un pli est fermé
+     DOIT rester servie, sans quoi le site la perd aussi pour Google. Sans
+     cette lecture, déclarer un trou reviendrait à aveugler la porte. */
+  return { sections: sections2, html: principal.innerHTML };
 };
 
 /** Les sections d'une page, titres et lignes normalisés, lignes vides ôtées. */
@@ -673,11 +695,18 @@ async function lisSections(navigateur, ouvre, imbriquees) {
   const brut = await page.evaluate(EXTRAIT, imbriquees);
   await page.close();
   if (!brut) throw new Error("aucun <main> dans la page, rien à mesurer");
-  return brut.map((s) => ({
+  const lues = brut.sections.map((s) => ({
     titre: s.titre === null ? null : normalise(s.titre),
     lignes: s.lignes.map(normalise).filter(Boolean),
     texte: normalise(s.lignes.join(" ")),
   }));
+  /* Le texte du HTML servi, balisage ôté : ce que Google reçoit, visible ou
+     non. `String.fromCharCode(1)` sépare les blocs pour qu'un retrait de
+     balises ne recolle pas deux mots voisins en un seul. */
+  lues.texteServi = normalise(
+    brut.html.replace(/<[^>]*>/g, String.fromCharCode(1)).split(String.fromCharCode(1)).join(" "),
+  );
+  return lues;
 };
 
 /* ------------------------------------------------------------------ */
@@ -810,6 +839,38 @@ function estUnTrouAssume(rang, ligne) {
   );
 }
 
+/**
+ * 4 bis. UN TROU DÉCLARÉ `dansLeHtml` DOIT RESTER SERVI.
+ *
+ * C'est ce qui empêche une déclaration de trou de devenir un aveuglement.
+ * Déclarer « cette phrase n'est pas visible » est légitime quand un pli fermé
+ * la cache : le visiteur l'ouvre, et Google la lit de toute façon, puisqu'elle
+ * est dans le HTML envoyé. Déclarer la même chose quand la phrase a QUITTÉ le
+ * HTML serait couvrir une perte de contenu.
+ *
+ * La porte exige donc, pour ces trous-là, la phrase dans le texte servi,
+ * visible ou non. Si elle n'y est plus, le trou n'est plus assumé : c'est une
+ * anomalie, et elle le dit avec son motif.
+ */
+function controleTrousServis(site, fautes) {
+  const aVerifier = TROUS_ASSUMES.filter((trou) => trou.dansLeHtml);
+  if (aVerifier.length === 0) return 0;
+  if (typeof site.texteServi !== "string" || site.texteServi.length === 0) {
+    fautes.push("le texte servi n'a pas pu être lu : les trous « dansLeHtml » ne sont pas vérifiables");
+    return 0;
+  }
+  for (const trou of aVerifier) {
+    if (!site.texteServi.includes(normalise(trou.ligne))) {
+      fautes.push(
+        `trou déclaré « dansLeHtml » mais ABSENT DU HTML SERVI, section ${trou.section} :\n` +
+          `    « ${trou.ligne.slice(0, 120)} »\n` +
+          `    motif déclaré : ${trou.pourquoi}`,
+      );
+    }
+  }
+  return aVerifier.length;
+}
+
 /** 4. Chaque ligne de la référence est rendue, mot pour mot, dans sa section. */
 function controleTexte(reference, site, fautes) {
   const commun = Math.min(reference.length, site.length);
@@ -913,13 +974,15 @@ try {
   controleTitresVides(reference, fautes);
   controleTexte(reference, siteAligne, fautes);
   controleTirets(reference, site, fautes);
+  const trousServis = controleTrousServis(site, fautes);
 
   const lignes = reference.reduce((somme, s) => somme + s.lignes.length, 0);
   console.log(
     `${CHEMIN_PAGE} contre ${REFERENCE_HTML.replace(RACINE, "")} : ` +
       `${reference.length} sections de référence, ${site.length} servies ` +
       `(${SECTIONS_AJOUTEES.length} ajout(s) déclaré(s)), ${lignes} lignes de texte comparées, ` +
-      `${TIRETS_REMPLACES.length} cadratin(s) arbitré(s), ${TROUS_ASSUMES.length} trou(s) assumé(s).`,
+      `${TIRETS_REMPLACES.length} cadratin(s) arbitré(s), ${TROUS_ASSUMES.length} trou(s) assumé(s) ` +
+      `dont ${trousServis} vérifié(s) présent(s) dans le HTML servi.`,
   );
 
   if (fautes.length > 0) {

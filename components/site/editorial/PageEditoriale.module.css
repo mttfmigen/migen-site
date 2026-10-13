@@ -445,3 +445,25 @@
 .titreBento {
   padding-block: 3px;
 }
+
+/* Le trio de chiffres posé en bas de la photo du héros de rubrique.
+
+   SOUS 390 PX, DEUX COLONNES, ET LE TROISIÈME PAVÉ PREND LA LARGEUR. Mesuré au
+   navigateur le 13/10 à 320 px : la photo offre 284 px, trois pistes de 89 px,
+   14 px de rembourrage de chaque côté, soit 61 px de texte utile par pavé.
+   « clients industriels » en demande 95, « ressources » 92. La photo porte
+   `overflow: hidden`, les libellés étaient donc coupés et non seulement
+   serrés : six textes coupés sur /ressources/articles/ et huit sur
+   /ressources/fiches-pratiques/ à 320 px, de 6 à 31 px.
+
+   Deux colonnes, parce que c'est ce que fait la maquette MOBILE : elle écrit
+   `1fr 1fr` cinq fois et `1fr 1fr 1fr` une seule. À deux colonnes, chaque pavé
+   dispose de 110 px de texte utile, de quoi tenir le plus long des libellés. */
+@media (max-width: 430px) {
+  .chiffresPhoto {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .chiffresPhoto > div:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+}

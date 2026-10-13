@@ -94,9 +94,23 @@ assert.equal(maillageMaquette.length, 4, "colonnes de maillage mal relevées dan
 // ------------------------------------------------------------- le rendu
 const rendu = renderToStaticMarkup(<PiedDePage />);
 
-/** Les colonnes rendues : chaque `nav` (ou bloc) titré, ses liens dans l'ordre. */
+/** Les colonnes rendues : chaque `nav` (ou bloc) titré, ses liens dans l'ordre.
+ *
+ * LE STYLE DE LA PISTE N'EST PLUS ÉCRIT EN DUR, et c'est une réparation, pas un
+ * assouplissement. Cette lecture exigeait la chaîne EXACTE
+ * `style="display:grid;gap:9px"`. Le 13/10, la déclaration de colonne
+ * `grid-template-columns: minmax(0,1fr)` a été posée sur les 72 grilles à piste
+ * unique du site (défaut mesuré : une piste `auto` ne descend pas sous le
+ * `min-content` de son enfant, donc elle débordait sur téléphone). Le style
+ * rendu est devenu `display:grid;grid-template-columns:minmax(0,1fr);gap:9px`,
+ * la lecture n'a plus rien trouvé, et la porte a annoncé ZÉRO colonne de pied
+ * de page alors que les six étaient rendues normalement.
+ *
+ * Elle exige donc toujours une GRILLE, ce qui est le fond du contrôle, sans
+ * exiger l'ordre ni la liste de ses propriétés, qui n'en est pas. Ce que la
+ * porte vérifie vraiment, les libellés et leur ordre, est inchangé. */
 function navRendue(html: string): { titre: string; libelles: string[] }[] {
-  return [...html.matchAll(/<nav aria-label="([^"]+)"><div[^>]*>[^<]*<\/div><div style="display:grid;gap:9px">([\s\S]*?)<\/div><\/nav>/g)].map(
+  return [...html.matchAll(/<nav aria-label="([^"]+)"><div[^>]*>[^<]*<\/div><div style="[^"]*display:grid[^"]*">([\s\S]*?)<\/div><\/nav>/g)].map(
     ([, titre, corps]) => ({
       titre: lisible(titre),
       libelles: [...corps.matchAll(/<a\b[^>]*>([^<]+)<\/a>/g)].map((m) => lisible(m[1])),

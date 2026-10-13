@@ -248,7 +248,7 @@ export default function PagesLiees({ pages, titre }: ProprietesPagesLiees) {
             </div>
           </Link>
 
-          <div style={{ display: "grid", gap: 8, alignContent: "start" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 8, alignContent: "start" }}>
             {suite.map((page) => (
               <Link
                 key={page.href}

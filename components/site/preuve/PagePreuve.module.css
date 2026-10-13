@@ -242,3 +242,59 @@
     overflow: hidden;
   }
 }
+
+/* La fiche d'identité du cas, en rangées « libellé | valeur ».
+
+   SOUS 390 PX, LES DEUX SE SUPERPOSENT. La colonne de libellé fait 104 px en
+   dur : mesuré à 320 px sur /preuves/alstef-group/, la rangée dispose de
+   190 px, il reste donc 74 px pour la valeur, et « Automatisation logistique »
+   en demande 110. La fiche porte `overflow: hidden`, la valeur était coupée,
+   pas seulement serrée. Six valeurs coupées sur deux pages de cas, de 6 à
+   37 px. Les captures de référence sont prises à 1280 px : elles ne disent
+   rien de cette largeur.
+
+   LE SEUIL EST À 900 PX, ET PAS À 430. Mesuré à 768 px : la fiche tient dans
+   une colonne latérale, sa piste de libellé rend ses 104 px, et
+   « ENVIRONNEMENTS », en capitales de 11 px avec un interlettrage de .1em, en
+   demande 110. Six pixels coupés, à une largeur où tous les autres défauts du
+   site sont éteints. À 1280 px la colonne est assez large et la porte ne
+   relève rien : la capture n'est donc pas touchée. */
+@media (max-width: 900px) {
+  .ficheLigne {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 2px !important;
+  }
+}
+
+/* Les tuiles du bloc « le besoin », deux colonnes dans la maquette.
+
+   SOUS 430 PX, UNE SEULE COLONNE, ET 14 PX DE REMBOURRAGE. Mesuré au
+   navigateur le 13/10 à 320 px : deux pistes de 135 px, 18 px de rembourrage
+   de chaque côté, soit 99 px de texte utile. « Remplacement assuré » en
+   demande 104, « Automaticiens SIEMENS et Schneider, roboticiens » bien
+   davantage. Trois textes coupés, de 7 à 17 px. La carte porte
+   `overflow: hidden` par son habillage de verre : le texte était coupé, pas
+   seulement serré. */
+@media (max-width: 430px) {
+  .besoinTuiles {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .besoinTuiles > div {
+    padding: 14px 16px !important;
+  }
+}
+
+/* Les rangées « libellé | valeur » du bloc « le dispositif ».
+
+   SOUS 900 PX, LES DEUX SE SUPERPOSENT. La colonne de libellé est bornée par
+   `minmax(120px, .42fr)` : mesuré à 768 px, elle rend 181 px, et le libellé
+   « ENVIRONNEMENTS », en capitales de 11 px avec un interlettrage de .1em, en
+   demande 187. Six pixels coupés, et le défaut survit à 768 px alors que tous
+   les autres s'arrêtent à 390 : c'est la seule rangée du site dont la colonne
+   de gauche est proportionnelle au lieu d'être fixée, d'où ce seuil propre. */
+@media (max-width: 900px) {
+  .dispositifLigne {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 4px !important;
+  }
+}

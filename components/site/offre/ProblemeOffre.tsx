@@ -327,7 +327,7 @@ export default function ProblemeOffre({
             ) : null}
           </div>
 
-          <div style={{ display: "grid", gap: 12 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 12 }}>
             {section.puces.map((puce, rang) => (
               <div key={puce.accroche ?? puce.texte} style={CARTE}>
                 <span style={NUMERO}>{numerote(rang)}</span>

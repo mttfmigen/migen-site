@@ -559,11 +559,20 @@ function Duo({
             <Intro key={t} texte={t} police="16px/1.7" largeur="62ch" />
           ))}
         </div>
-        {/* Deux colonnes jusqu'au téléphone, comme la maquette (aucune règle
-            d'écran étroit sur cette grille). À 390 px, un mot plus long que la
-            carte (« électrotechnique, ») y déborde de quelques pixels, dans la
-            maquette comme ici : écart de la maquette, déclaré, pas corrigé. */}
+        {/* Deux colonnes jusqu'au téléphone, comme la maquette de bureau, qui
+            ne porte aucune règle d'écran étroit sur cette grille.
+
+            SOUS 390 PX, UNE SEULE COLONNE (`.duoCartes`). La version
+            précédente de ce commentaire déclarait l'écart et ne le corrigeait
+            pas, au motif qu'il valait « quelques pixels à 390 px ». Mesuré au
+            navigateur le 13/10 à 320 px : la carte fait 114 px de large pour
+            24 px de rembourrage de chaque côté, soit 66 px de texte utile, et
+            « Une montée en compétence » en demande 100. Il manquait 42 px, pas
+            quelques pixels, et le texte était coupé. La maquette de bureau est
+            muette à cette largeur ; la maquette MOBILE y répond par une ou
+            deux colonnes et un rembourrage de 14 à 18 px. */}
         <div
+          className={styles.duoCartes}
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(2,minmax(0,1fr))",

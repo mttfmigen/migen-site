@@ -96,7 +96,7 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
                   borderRadius: "var(--rad-s)",
                   ...VERRE,
                 }
-              : { display: "grid", gap: 10, margin: "4px 0 22px", maxWidth: "72ch" }
+              : { display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10, margin: "4px 0 22px", maxWidth: "72ch" }
           }
         >
           {bloc.items.map((item, i) => (

@@ -205,7 +205,7 @@ const PARTIES: readonly Partie[] = [
     titre: "Finalités & bases légales",
     corps: (
       <>
-        <div style={{ display: "grid", gap: "10px", margin: "0 0 22px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "10px", margin: "0 0 22px" }}>
           <div style={LIGNE}>
             <Coche />
             Répondre à une demande commerciale&nbsp;: intérêt légitime
@@ -355,7 +355,7 @@ export default function PolitiqueConfidentialite() {
               </p>
               <ol
                 style={{
-                  display: "grid",
+                  display: "grid", gridTemplateColumns: "minmax(0,1fr)",
                   gap: "9px",
                   margin: 0,
                   padding: 0,

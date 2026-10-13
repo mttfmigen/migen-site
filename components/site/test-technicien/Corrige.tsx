@@ -50,7 +50,7 @@ export default function Corrige({ reponses }: Proprietes) {
       >
         Les huit réponses, expliquées
       </h2>
-      <div style={{ display: "grid", gap: 10 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10 }}>
         {QUESTIONS.map((q, i) => {
           const juste = reponses[i] === q.bonne;
           const donnee = reponses[i];
@@ -102,7 +102,7 @@ export default function Corrige({ reponses }: Proprietes) {
                   </div>
                 </div>
               </div>
-              <div style={{ display: "grid", gap: 7, marginBottom: 14, paddingLeft: 42 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 7, marginBottom: 14, paddingLeft: 42 }}>
                 {!juste && (
                   <div style={{ ...LIGNE, color: "var(--ink3)" }}>
                     <span style={ETIQUETTE}>Votre choix</span>

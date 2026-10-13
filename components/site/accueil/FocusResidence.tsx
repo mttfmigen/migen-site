@@ -155,7 +155,7 @@ export default function FocusResidence({
             >
               Vous constituez votre équipe. Nous la sélectionnons.
             </h2>
-            <div style={{ display: "grid", gap: "18px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px" }}>
               {POINTS.map((point) => (
                 <div key={point.rang} style={{ display: "flex", gap: "16px" }}>
                   <span

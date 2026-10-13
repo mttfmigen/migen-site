@@ -568,15 +568,24 @@ export default function PageOffre({
             captures figées posent bien cet identifiant sur l'écran « 10 Appel
             final », et les gabarits Expertises, Domaine, Spécialité et Secteur
             le font. Celui-ci et PageOffres non : le bouton ne menait nulle
-            part sur 21 pages de la branche commerciale. Trouvé le 11/10. */}
-        <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
-          <AppelFinal
-            question={ctaFinal?.question}
-            formulaire={formulaire}
-            bouton={heroFormulaire ? contenu.formulaireHeroTitre : contenu.appelBouton}
-            chemin={chemin}
-          />
-        </div>
+            part sur 21 pages de la branche commerciale. Trouvé le 11/10.
+
+            ELLE ÉTAIT POSÉE SUR UNE ENVELOPPE, ET CELA COÛTAIT LA PORTE G17.
+            `<div id="mgx-form">` autour de `AppelFinal` sortait la section
+            « 10 Appel final » de la liste des ENFANTS DIRECTS du `<main>`,
+            seule liste que lit `scripts/verifie-offre-rendu.mjs`
+            (`:scope > section`). La porte comptait 15 sections servies pour 16
+            dans la référence, sans qu'un seul mot ait changé. L'identifiant
+            descend donc DANS le composant, sur sa section, comme la capture le
+            pose elle-même (`maquette/rendu/offres--residence.html`, bloc 1241,
+            `id="mgx-form"` et `scroll-margin-top: 90px` sur le `<section>`). */}
+        <AppelFinal
+          ancre="mgx-form"
+          question={ctaFinal?.question}
+          formulaire={formulaire}
+          bouton={heroFormulaire ? contenu.formulaireHeroTitre : contenu.appelBouton}
+          chemin={chemin}
+        />
 
         {maillage ? (
           <div

@@ -455,7 +455,7 @@ export default function PostulerMetier() {
               Décrivez votre profil. Un recruteur vous rappelle, puis un test
               technique et un entretien comportemental suivent.
             </p>
-            <div style={{ display: "grid", gap: 12 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 12 }}>
               <Coche texte="CDI, alternance ou stage" />
               <Coche texte="Salaire annoncé en brut, sans coefficient caché" />
               <Coche texte="Un référent dès le premier jour" />

@@ -38,7 +38,7 @@ export default function Objections({ section }: { section: SectionObjections }) 
             </h2>
           </div>
 
-          <div style={{ display: "grid", gap: 10 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10 }}>
             {section.questions.map((question) => (
               <details
                 key={question.question}

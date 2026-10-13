@@ -232,7 +232,7 @@ export default function Guide({ titre, vue }: { titre: string; vue: VueGuide }) 
               </div>
               <nav
                 aria-label="Sur cette page"
-                style={{ display: "grid", gap: 2, borderLeft: "1px solid var(--line)" }}
+                style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 2, borderLeft: "1px solid var(--line)" }}
               >
                 {vue.sections.map((s, i) => (
                   <a

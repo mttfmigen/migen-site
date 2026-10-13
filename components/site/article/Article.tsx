@@ -65,7 +65,7 @@ function Bloc({ bloc }: { bloc: BlocArticle }) {
   return (
     <ul
       style={{
-        display: "grid",
+        display: "grid", gridTemplateColumns: "minmax(0,1fr)",
         gap: 10,
         margin: "0 0 18px",
         padding: 0,
@@ -221,7 +221,7 @@ export default function Article({
                 </p>
                 <ol
                   style={{
-                    display: "grid",
+                    display: "grid", gridTemplateColumns: "minmax(0,1fr)",
                     gap: 9,
                     margin: 0,
                     padding: 0,

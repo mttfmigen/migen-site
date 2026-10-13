@@ -68,15 +68,19 @@
   }
 }
 
-/* Même périmètre : dans ces panneaux, le libellé tient sur une ligne dès
-   360 px, débordant dans le rembourrage sans sortir de l'écran, comme la
-   maquette à 390 px. En dessous, il se replie (règle précédente). */
-@media (min-width: 360px) and (max-width: 900px) {
-  .grilleMaquette .boutonEnvoi {
-    white-space: nowrap !important;
-    max-width: none;
-  }
-}
+/* CETTE RÈGLE EST RETIRÉE, et son commentaire disait faux.
+   Elle réimposait `white-space: nowrap` entre 360 et 900 px, au motif que « le
+   libellé tient sur une ligne dès 360 px, débordant dans le rembourrage sans
+   sortir de l'écran ». Mesuré le 13/10 dans un navigateur, aux deux largeurs
+   concernées : le libellé le plus long, « Demander mon diagnostic gratuit »,
+   était COUPÉ de 47 px. Il ne débordait pas dans le rembourrage, il sortait de
+   sa propre boîte et le visiteur n'en lisait qu'une partie. 19 occurrences, 10
+   à 360 px et 9 à 390 px.
+
+   Le libellé se replie donc à toutes les largeurs sous 900 px, comme la règle
+   précédente le prévoyait déjà. Un bouton sur deux lignes se lit ; un bouton
+   dont le texte est coupé, non. C'est un écart assumé à la maquette, qui le
+   garde sur une ligne à 390 px avec ses libellés à elle, plus courts. */
 
 /* La zone d'annonce (role="status") doit rester DANS le document en permanence :
    un lecteur d'écran n'annonce pas un élément qui vient d'apparaître. Mais vide,

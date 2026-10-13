@@ -143,7 +143,7 @@ export default function TiroirMobile({
             >
               Sur cette page
             </div>
-            <div style={{ display: "grid", gap: 2 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 2 }}>
               {TIROIR_LP.map((lien, index) => (
                 <a
                   key={lien.href}
@@ -168,7 +168,7 @@ export default function TiroirMobile({
             </div>
           </>
         ) : (
-          <div style={{ display: "grid", gap: 6 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 6 }}>
             {TIROIR.map((section, index) => {
               const depliee = ouverte === index;
               return (
@@ -244,7 +244,7 @@ export default function TiroirMobile({
                     <div
                       id={`mg-tiroir-${index}`}
                       style={{
-                        display: "grid",
+                        display: "grid", gridTemplateColumns: "minmax(0,1fr)",
                         gap: 2,
                         padding: "0 8px 10px",
                       }}

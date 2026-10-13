@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 
 import PlanDuSite, { type EntreePlan } from "@/components/site/plan/PlanDuSite";
+import {
+  cheminNormalise,
+  SOURCES_REFONTE,
+  sourcesRedirigees,
+} from "@/lib/redirections";
 import { urlAbsolue } from "@/lib/seo/url";
 import { vignetteDeLaPage } from "@/lib/seo/vignette";
 import { lectureContenu } from "@/lib/supabase";
@@ -58,18 +63,46 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+/**
+ * Les chemins qui ne sont PAS des pages : les sources de redirection.
+ *
+ * MÊME DÉFAUT QUE LE PLAN XML, MESURÉ LE 13/10 : cet écran posait quatre liens
+ * qui répondent 301, les deux fiches inventées retirées par G56 et deux
+ * sources de redirection de la refonte. Elles gardent une ligne `published`
+ * dans `pages`, l'écran les lisait comme des pages.
+ *
+ * LE REPLI EST EXPLICITE, pas silencieux : si la table des redirections est
+ * illisible, on garde au moins les sources versionnées de la refonte, qui
+ * couvrent les quatre adresses mesurées, et on le journalise. Cet écran est
+ * cité par le pied de page, donc par toutes les pages du site : il ne peut pas
+ * se permettre d'échouer, mais il ne doit pas non plus reposer des liens morts.
+ */
+async function cheminsRedirigees(): Promise<ReadonlySet<string>> {
+  try {
+    return await sourcesRedirigees();
+  } catch (erreur) {
+    console.error(
+      "Plan du site, sources de redirection illisibles, repli sur celles de la refonte :",
+      erreur instanceof Error ? erreur.message : erreur,
+    );
+    return SOURCES_REFONTE;
+  }
+}
+
 export default async function PagePlanDuSite() {
   // La RLS ne remonte que les contenus publiés : le plan ne peut pas annoncer
   // un brouillon, et il n'a donc pas à filtrer sur le statut.
-  const { data, error } = await lectureContenu()
-    .from("pages")
-    .select("path, titre_h1")
-    .order("path");
+  const [{ data, error }, redirigees] = await Promise.all([
+    lectureContenu().from("pages").select("path, titre_h1").order("path"),
+    cheminsRedirigees(),
+  ]);
 
   if (error) {
     console.error("Plan du site indisponible :", error.message);
   }
 
-  const pages: EntreePlan[] = data ?? [];
+  const pages: EntreePlan[] = (data ?? []).filter(
+    (page) => !redirigees.has(cheminNormalise(page.path)),
+  );
   return <PlanDuSite pages={pages} />;
 }

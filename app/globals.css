@@ -755,3 +755,75 @@ details[open] .g3-plus {
     padding: 40px 24px !important;
   }
 }
+
+/* ------------------------------------------------------------------ TÉLÉPHONE
+
+   SOUS 390 PX, ET STRICTEMENT SOUS. Ce n'est pas un chiffre rond choisi au
+   hasard : 390 px est la largeur à laquelle la maquette qui tourne a été
+   MESURÉE, le 08/10, sur onze gabarits, et elle y garde ses gouttières de
+   40 px. On ne la contredit donc pas à 390 px. En dessous, la maquette n'a
+   jamais été mesurée par personne, et les captures de référence sont prises à
+   1280 px (`scripts/capture-maquette.mjs`, `LARGEUR = 1280`) : aucune règle
+   posée ici ne peut s'écarter de la référence, puisque la référence est muette
+   à ces largeurs.
+
+   Ce que les deux maquettes disent de ces largeurs, et elles se rejoignent :
+   la feuille de la maquette de bureau déclare 20 px de gouttière sous 760 px
+   (règle `[style*="max-width:1200px"]`, jamais appliquée par son moteur, voir
+   le commentaire plus haut) ; la maquette MOBILE
+   (`design_handoff_migen_site/maquette/MigenMobile.dc.html`) rembourre ses
+   panneaux à 14, 16 ou 18 px, jamais à 40, et pose ses boutons d'appel en
+   pleine largeur avec une hauteur fixe de 48 à 54 px.
+
+   Ce que coûtait l'absence de ces règles, mesuré à 320 px : 80 px de gouttière
+   sur 320, soit UN QUART de l'écran perdu, et 240 px de contenu utile. */
+@media (max-width: 389px) {
+  /* La gouttière de page. Les deux sélecteurs ne visent QUE les conteneurs de
+     1200 px dont le rembourrage horizontal vaut 40 px : `0 40px` pour la
+     gouttière nue, `px 40px` pour les variantes qui portent aussi un
+     rembourrage vertical (« 44px 40px 0 »). Un conteneur à 1200 px SANS
+     gouttière n'est pas touché, et c'est voulu : lui en poser une doublerait
+     celle de son parent. React écrit l'attribut sans espace après les
+     deux-points, d'où la forme du sélecteur. */
+  [style*="max-width:1200px"][style*="0 40px"],
+  [style*="max-width:1200px"][style*="px 40px"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+}
+
+/* SOUS 430 PX, pour ce qui ne touche PAS la gouttière. La gouttière reste à
+   40 px jusqu'à 390 px inclus, parce que c'est la largeur à laquelle la
+   maquette a été mesurée. Les règles ci-dessous ne la concernent pas : elles
+   libèrent des éléments qui débordent, et le débordement est mesuré jusqu'à
+   390 px inclus. Au-delà de 430 px, plus aucun défaut n'est relevé avant
+   768 px. */
+@media (max-width: 430px) {
+  /* Les seuils de retour à la ligne de la maquette. Un `min-width` sur un
+     enfant flex dit « passe à la ligne plutôt que de descendre sous cette
+     largeur » : c'est juste sur un écran large, c'est un débordement garanti
+     sur un téléphone, parce qu'il n'y a plus de ligne suivante où aller.
+     Mesuré à 320 px sur /expertises/automatisme/siemens/ : la rangée d'appel
+     épinglée à 260 px dans une boîte de 186 px, 74 px dehors ; encore 4 px
+     dehors à 390 px.
+     Seules les trois valeurs qui produisent un défaut mesuré sont relâchées.
+     Les seuils de 480 px et plus ne sont pas touchés : aucune mesure ne les
+     accuse, et les relâcher serait spéculatif. */
+  [style*="min-width:240px"],
+  [style*="min-width:260px"],
+  [style*="min-width:280px"] {
+    min-width: 0 !important;
+  }
+
+  /* LE REMBOURRAGE DES PANNEAUX DE VERRE, 30 px dans la maquette de bureau.
+     Mesuré à 320 px : la pastille « Rappel dans l'heure », en capitales de
+     10,5 px avec un interlettrage de .1em et sans césure possible, fait 169 px
+     dans une boîte de 162 px. Sept pixels dehors, sur douze pages, et le
+     bouton d'envoi du formulaire manquait de la même place.
+     18 px est la valeur haute de la maquette MOBILE, qui rembourre ses
+     panneaux à 14, 16 ou 18 px. */
+  [style*="padding:30px 30px 32px"] {
+    padding: 18px 18px 20px !important;
+  }
+}

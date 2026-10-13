@@ -36,7 +36,7 @@ const GRILLE: CSSProperties = {
 
 /** Les rangées de la colonne : le bouton descend dans la dernière, en `1fr`. */
 const RANGEES: CSSProperties = {
-  display: "grid",
+  display: "grid", gridTemplateColumns: "minmax(0,1fr)",
   gridTemplateRows: "auto auto auto auto 1fr",
   alignContent: "start",
 };

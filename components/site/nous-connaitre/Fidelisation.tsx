@@ -103,7 +103,7 @@ export default function Fidelisation() {
               >
                 Turnover annuel
               </div>
-              <div style={{ display: "grid", gap: 22 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 22 }}>
                 <div>
                   <div
                     style={{

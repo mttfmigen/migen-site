@@ -40,6 +40,23 @@ export interface ProprietesAppelFinal {
    * quelle, et c'est le cas de tous les gabarits sauf OFFRE.
    */
   chemin?: string;
+  /**
+   * L'identifiant d'ancre à poser SUR LA SECTION, avec son `scroll-margin-top`.
+   *
+   * POURQUOI IL EST FACULTATIF, et pourquoi il ne s'écrit pas en dur ici : la
+   * capture pose bien `id="mgx-form"` sur CETTE section
+   * (`maquette/rendu/offres--residence.html`, bloc 1241, avec
+   * `scroll-margin-top: 90px`), et c'est la raison de cette prop. Mais sept
+   * autres gabarits enveloppent encore ce composant dans leur propre
+   * `<div id="mgx-form">` (`offres/PageOffres`, `implantations/PageImplantations`,
+   * `secteur/PageSecteur`, `expertises/PageExpertises`,
+   * `expertises/specialite/PageSpecialite`, `expertises/domaine/PageDomaine`,
+   * `implantation/PageVille`). Un identifiant écrit en dur ici donnerait DEUX
+   * `id="mgx-form"` sur chacune de leurs pages, ce qu'aucun document HTML
+   * n'autorise et que `verifie-ancres.mjs` ne mesure pas. Le gabarit qui a
+   * retiré son enveloppe passe donc l'ancre, les autres non.
+   */
+  ancre?: string;
 }
 
 /**
@@ -95,9 +112,23 @@ export default function AppelFinal({
   formulaire,
   bouton = "Parler à un chargé d'affaires",
   chemin,
+  ancre,
 }: ProprietesAppelFinal) {
   return (
-    <section style={{ padding: "var(--sec) 24px var(--sec)" }}>
+    /* L'ANCRE EST SUR LA SECTION, PAS SUR UNE ENVELOPPE, et ce n'est pas une
+       question de goût : la porte G17 (`scripts/verifie-offre-rendu.mjs`) lit
+       les sections DIRECTES du `<main>` (`:scope > section`). Un
+       `<div id="mgx-form">` entre les deux sortait l'appel final de cette
+       liste, et la porte comptait 15 sections servies pour 16 dans la
+       référence sans qu'aucun mot n'ait changé. La capture, elle, porte
+       l'identifiant et le `scroll-margin-top` sur la section elle-même. */
+    <section
+      id={ancre}
+      style={{
+        padding: "var(--sec) 24px var(--sec)",
+        ...(ancre ? { scrollMarginTop: 90 } : null),
+      }}
+    >
       <div className="mg-pad" style={PANNEAU}>
         <div aria-hidden="true" style={LUEUR} />
         <div

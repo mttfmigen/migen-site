@@ -83,7 +83,7 @@ export default function AvisCasClients({ avis }: ProprietesAvisCasClients) {
             </div>
           </div>
 
-          <div style={{ display: "grid", gap: 12 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 12 }}>
             {verbatims.map((verbatim) => (
               <figure key={verbatim.texte} style={CARTE_AVIS}>
                 {/* Ici les étoiles PORTENT l'information : rien d'autre ne dit

@@ -26,6 +26,23 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
+  /* LE RESUME PASSE A LA LIGNE, ET C'EST INDISPENSABLE.
+     Il est le TROISIEME enfant de cette rangée, après l'en-tête et le chevron.
+     Sans retour à la ligne, il se retrouve à DROITE du chevron, écrasé dans une
+     colonne de 95 à 106 px : il s'étale sur huit à dix lignes et déborde du
+     panneau qui le rogne, de 3 à 80 px perdus, mesuré sur 9 pages sur 11 aux
+     largeurs 320 et 390. Sur une page il devenait entièrement invisible en
+     laissant 200 px de boîte vide sous le titre.
+
+     C'est un défaut que J'AI INTRODUIT le 12/10 en rentrant le résumé dans le
+     `<summary>` pour qu'il soit enfin peint : il ne l'était jamais, le navigateur
+     masquant tout le reste du `<details>` fermé. La correction était juste, sa
+     mise en page ne l'était pas.
+
+     La maquette mobile le pose en frère du bouton, PLEINE LARGEUR, sous le
+     titre : c'est ce que `flex-wrap` et le `flex: 0 0 100%` du résumé
+     rétablissent, sans le sortir du `<summary>`. */
+  flex-wrap: wrap;
   cursor: pointer;
   /* Le triangle du navigateur, retiré des deux moteurs : la maquette pose son
      propre chevron à droite. */
@@ -71,6 +88,20 @@
   display: none;
 }
 
+/* PLEINE LARGEUR SOUS LE TITRE, et coupé à deux lignes, comme la maquette
+   mobile : `margin-top: 6px`, `font: 400 13px/1.45`, `line-clamp: 2`. Le
+   `flex: 0 0 100%` le fait passer à la ligne entière plutôt que de se glisser
+   à côté du chevron. */
+.resume {
+  flex: 0 0 100%;
+  margin-top: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /*
  * LES 12 PX N'EXISTENT QUE SOUS 880 PX, et c'est la correction d'un défaut que
  * j'ai posé moi-même le 12/10 au matin.
@@ -102,7 +133,9 @@
 
 @media (max-width: 880px) {
   .section:not([open]) .resume {
-    display: block;
+    /* `-webkit-box` et non `block` : c'est lui qui porte la coupe à deux
+       lignes. Un `display: block` ici la desactiverait en silence. */
+    display: -webkit-box;
     font: 400 13.5px/1.6 var(--fb);
     color: var(--ink2);
     margin-top: 8px;
@@ -134,6 +167,32 @@
     content-visibility: visible;
   }
 
+  /* LA BASCULE RESTE VISIBLE SUR GRAND ÉCRAN, ET IL NE FAUT PAS LA MASQUER
+     ICI. Une version de ce fichier a posé `display: none` sur `.bascule` dans
+     ce media query, au motif de retirer un `<summary>` focalisable mais muet
+     de l'ordre de tabulation. Le motif reposait sur une phrase fausse, écrite
+     dans son propre commentaire : « vidée de son étiquette et de son
+     chevron ». Elle ne l'est pas. `SectionPliableMobile.tsx` rend
+     `{enTete ?? <span>{kicker}{titre}</span>}` DANS le `<summary>` : la
+     bascule PORTE le titre de section, dans les deux branches.
+
+     Mesuré au navigateur à 1280 px, le 13/10, sur huit pages : 31 bascules,
+     31 titres masqués, ZÉRO bascule réellement vide. Exemples de ce qui
+     disparaissait : « L'offre / Ce que nous faisons, et ce que ça change pour
+     vous », « Notre parti pris / Ce que nous garantissons », « 02 · Notre
+     réponse / Ce que nous avons mis en place ».
+
+     POURQUOI LA RÈGLE EXISTE QUAND MÊME, GABARIT PAR GABARIT. Cinq gabarits
+     rendent leur titre une SECONDE fois hors de la bascule ; chez eux, et chez
+     eux seulement, masquer la bascule retire un doublon et non le titre. Ils
+     portent donc la règle chez eux, ancrée sur leur propre racine
+     (`.racine details[data-pliable-mobile] > summary`). Mesuré : /carriere/
+     2 copies dans le DOM pour 1 vue, /preuves/autoliv/ 4 pour 3,
+     /implantations/lyon/ 2 pour 1. La généraliser ici l'applique aussi aux
+     gabarits qui n'ont qu'une copie, et leur titre est alors perdu :
+     /offres/residence/ est passé de 1 titre vu à 0.
+
+     Le chevron, lui, se masque bien ici : il n'est qu'un ornement. */
   .bascule {
     cursor: default;
   }

@@ -30,7 +30,7 @@ const CELLULE_ENTETE: CSSProperties = {
 };
 
 const LIGNE: CSSProperties = {
-  display: "grid",
+  display: "grid", gridTemplateColumns: "minmax(0,1fr)",
   gap: 16,
   padding: "16px 28px",
   borderBottom: "1px solid var(--line)",

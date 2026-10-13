@@ -176,7 +176,7 @@ export default function MethodeQuatreEtapes({
                     <span>{active.corps}</span>
                   </p>
                 </div>
-                <div style={{ display: "grid", gap: 14 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 14 }}>
                   <div
                     style={{
                       padding: "20px 22px",

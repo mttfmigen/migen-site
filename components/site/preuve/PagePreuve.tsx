@@ -542,7 +542,7 @@ const RESULTAT_TITRE: CSSProperties = {
 /* Les colonnes suivent le nombre de résultats, quatre au plus : `resGrid:
    cols(Math.min(p.results.length, 4), 32)` dans MigenCas (AKTID en a 2,
    Joint Lyonnais 4). */
-const RESULTAT_GRILLE: CSSProperties = { display: "grid", gap: 32 };
+const RESULTAT_GRILLE: CSSProperties = { display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 32 };
 const RESULTAT_COLONNES_MAX = 4;
 const RESULTAT_ITEM: CSSProperties = {
   borderTop: "2px solid var(--acc)",
@@ -608,7 +608,7 @@ const COMPLEMENT_TEXTE: CSSProperties = {
   maxWidth: "66ch",
   textWrap: "pretty",
 };
-const COMPLEMENT_PUCES: CSSProperties = { display: "grid", gap: 10 };
+const COMPLEMENT_PUCES: CSSProperties = { display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10 };
 const COMPLEMENT_PUCE: CSSProperties = {
   display: "flex",
   gap: 11,
@@ -760,6 +760,7 @@ const LOIN_FLECHE: CSSProperties = {
 function FicheLigne({ ligne, premiere }: { ligne: LignePreuve; premiere: boolean }) {
   return (
     <div
+      className={styles.ficheLigne}
       style={
         premiere ? { ...HERO_FICHE_LIGNE, borderTop: "none" } : HERO_FICHE_LIGNE
       }
@@ -1163,6 +1164,7 @@ export default function PagePreuve({
                   <div style={DISPOSITIF_TABLE}>
                     {dispositif.map((ligne, rang) => (
                       <div
+                        className={styles.dispositifLigne}
                         key={ligne.libelle}
                         style={
                           rang === 0
@@ -1249,7 +1251,7 @@ export default function PagePreuve({
                   </p>
                 ))}
                 {contenu.besoinTuiles?.length ? (
-                  <div style={BESOIN_TUILES}>
+                  <div className={styles.besoinTuiles} style={BESOIN_TUILES}>
                     {contenu.besoinTuiles.map((tuile) => (
                       <div key={tuile.titre} style={BESOIN_TUILE}>
                         <div style={TUILE_TITRE}>{tuile.titre}</div>

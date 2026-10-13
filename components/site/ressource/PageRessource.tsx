@@ -67,7 +67,7 @@ function CarteLivre() {
     <div id="mr-dl" style={H.CARTE_LIVRE}>
       <div style={H.SURTITRE_LIVRE}>{H.COPIE.livreSurtitre}</div>
       <div style={H.TITRE_LIVRE}>{H.COPIE.livreTitre}</div>
-      <form action={H.CONTACT} style={{ display: "grid", gap: 12 }}>
+      <form action={H.CONTACT} style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 12 }}>
         <input
           type="email"
           placeholder={H.COPIE.livreEmail}
@@ -120,7 +120,14 @@ function Questions({ questions }: { questions: Question[] }) {
                 style={{ borderTop: i === 0 ? "none" : H.FAQ_FILET }}
               >
                 <summary style={H.FAQ_QUESTION}>
-                  {q.question}
+                  {/* LA QUESTION EST ENVELOPPÉE, et ce n'est pas cosmétique.
+                      Nue, elle forme un élément flex anonyme qui ne descend
+                      jamais sous la largeur de son plus long mot : le « + »,
+                      en `flex: none`, était donc poussé hors de la bascule, de
+                      6 px à 768 px sur les fiches pratiques. `minWidth: 0`
+                      l'autorise à céder, ce que le réglage par défaut
+                      `min-width: auto` d'un élément flex interdit. */}
+                  <span style={{ minWidth: 0, flex: "1 1 auto" }}>{q.question}</span>
                   <span aria-hidden="true" className={styles.plus} style={H.FAQ_PLUS}>
                     +
                   </span>

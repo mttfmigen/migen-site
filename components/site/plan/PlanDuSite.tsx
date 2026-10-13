@@ -244,7 +244,7 @@ const COMPTE_RUBRIQUE: CSSProperties = {
 
 /** Maquette 2944. */
 const LISTE: CSSProperties = {
-  display: "grid",
+  display: "grid", gridTemplateColumns: "minmax(0,1fr)",
   gap: 1,
   listStyle: "none",
   margin: 0,

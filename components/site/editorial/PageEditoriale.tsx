@@ -83,7 +83,7 @@ export function Bloc({ bloc }: { bloc: BlocEditorial }) {
       return (
         <Balise
           style={{
-            display: "grid",
+            display: "grid", gridTemplateColumns: "minmax(0,1fr)",
             gap: 10,
             margin: "0 0 22px",
             paddingLeft: bloc.ordonnee ? 22 : 0,
@@ -284,7 +284,7 @@ export default function PageEditoriale({
                   </p>
                   <ol
                     style={{
-                      display: "grid",
+                      display: "grid", gridTemplateColumns: "minmax(0,1fr)",
                       gap: 9,
                       margin: 0,
                       padding: 0,

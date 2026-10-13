@@ -1,5 +1,11 @@
 import { NextResponse, type NextRequest } from "next/server";
 
+import {
+  cheminNormalise,
+  REDIRECTIONS_REFONTE,
+  type TableRedirections as Table,
+} from "@/lib/redirections";
+
 /**
  * Redirections éditoriales et slash final.
  *
@@ -17,18 +23,18 @@ import { NextResponse, type NextRequest } from "next/server";
  *
  * Aucun secret ici : la clé anonyme suffit, la policy RLS « redirections
  * actives, lecture publique » ne laisse remonter que les lignes `actif`.
+ *
+ * LA LISTE DES SOURCES, LE TYPE ET LA FORME CANONIQUE VIVENT DANS
+ * `lib/redirections.ts` depuis le 13/10, et non plus ici. Le plan du site en a
+ * besoin lui aussi : il déclarait quatre adresses qui répondent 301, parce que
+ * rien ne lui disait qu'un chemin peut être la source d'une redirection et pas
+ * une page. Deux copies de cette liste auraient divergé au premier ajout.
+ * Ce fichier garde ce qui lui est propre : le cache, la lecture de la table et
+ * la décision.
  */
 
 /** Durée de vie du cache des redirections. */
 const DUREE_CACHE_MS = 60_000;
-
-interface Redirection {
-  source: string;
-  destination: string;
-  code: number;
-}
-
-type Table = Map<string, Redirection>;
 
 /**
  * Cache en mémoire, soixante secondes.
@@ -93,45 +99,6 @@ async function chargeRedirections(): Promise<Table> {
   );
 }
 
-/**
- * Les trois 301 de la refonte, versionnées ici et non en base.
- *
- * Source : dossier de passation, « Adresses modifiées par la refonte »
- * (`design_handoff_migen_site/README.md`).
- *
- * POURQUOI STATIQUES : leur place est la table `redirects`, mais la base n'est
- * pas inscriptible depuis ce dépôt (clé de service absente de `.env.local`).
- * Cette liste ne dépend d'aucun réseau : elle tient même quand Supabase est
- * injoignable.
- *
- * ORDRE : la table passe d'abord. Une ligne en base pour la même source
- * l'emporte, et une ligne en base qui VISE une de ces anciennes adresses est
- * renvoyée directement à la nouvelle, en un seul saut (voir `proxy`).
- *
- * POUR LA RETIRER, le jour où la base les porte : insérer ces lignes dans
- * `redirects` (code 301, `actif`), faire pointer vers `/offres/full-service/`
- * les deux lignes qui visent encore `/offres/maintenance-externalisee/`,
- * vérifier par `curl -I` que les anciennes adresses répondent 301 sur la
- * bonne `Location`, puis supprimer cette constante et ses deux usages.
- *
- * Clés sous forme canonique (`cheminNormalise`) : la recherche se fait sur la
- * forme canonique de la requête.
- */
-const REDIRECTIONS_REFONTE: Table = new Map(
-  (
-    [
-      ["/implantations/toulouse/bordeaux/", "/implantations/bordeaux/"],
-      ["/implantations/maintenance-industrielle-marseille/", "/implantations/marseille/"],
-      ["/offres/maintenance-externalisee/", "/offres/full-service/"],
-      ["/equipe/", "/a-propos/equipe/"],
-      ["/realisations/", "/preuves/"],
-    ] as const
-  ).map(([source, destination]) => [
-    source,
-    { source, destination, code: 301 },
-  ]),
-);
-
 function redirections(): Promise<Table> {
   const maintenant = Date.now();
   if (cache && cache.expireLe > maintenant) return cache.table;
@@ -146,27 +113,6 @@ function redirections(): Promise<Table> {
   });
 
   return table;
-}
-
-/**
- * La forme canonique d'un chemin : minuscules et slash final.
- *
- * POURQUOI les minuscules : Postgres compare `path` au caractère près, donc
- * « /Depannage/ » et « /depannage/ » servent le même contenu sous deux URL, ce
- * que Google compte comme du contenu dupliqué. La même règle est appliquée côté
- * rendu par `cheminCanonique()` dans `lib/contenu.ts`.
- *
- * POURQUOI on épargne un dernier segment contenant un point : une destination
- * de redirection peut viser un fichier (« /plaquette.pdf »), et lui coller un
- * slash final le rendrait introuvable. Le `config.matcher` écarte déjà ces
- * chemins côté requête, cette fonction fait la même chose côté destination.
- */
-function cheminNormalise(chemin: string): string {
-  const minuscule = chemin.toLowerCase();
-  if (minuscule.endsWith("/")) return minuscule;
-
-  const dernier = minuscule.slice(minuscule.lastIndexOf("/") + 1);
-  return dernier.includes(".") ? minuscule : `${minuscule}/`;
 }
 
 /**

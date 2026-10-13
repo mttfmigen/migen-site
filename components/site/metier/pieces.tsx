@@ -92,7 +92,7 @@ export function Puces({
     <ul
       aria-labelledby={id}
       style={{
-        display: "grid",
+        display: "grid", gridTemplateColumns: "minmax(0,1fr)",
         gap,
         margin: 0,
         padding: 0,

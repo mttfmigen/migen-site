@@ -129,7 +129,7 @@ export default function Question({ rang, choisie, onChoisit, onRecule, refQuesti
         >
           {question.question}
         </div>
-        <div role="group" aria-labelledby={idQuestion} style={{ display: "grid", gap: 9, marginBottom: 24 }}>
+        <div role="group" aria-labelledby={idQuestion} style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 9, marginBottom: 24 }}>
           {question.options.map((option, i) => (
             <button
               key={option}

@@ -318,7 +318,7 @@ export default function BentoBesoins({
                         </p>
                         <ul
                           style={{
-                            display: "grid",
+                            display: "grid", gridTemplateColumns: "minmax(0,1fr)",
                             gap: 8,
                             margin: "0 0 20px",
                             padding: 0,
@@ -395,7 +395,7 @@ export default function BentoBesoins({
                         />
                         <div
                           style={{
-                            display: "grid",
+                            display: "grid", gridTemplateColumns: "minmax(0,1fr)",
                             gap: 1,
                             background: "var(--line)",
                             border: "1px solid var(--line)",

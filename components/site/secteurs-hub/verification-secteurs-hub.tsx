@@ -40,6 +40,13 @@ import { fileURLToPath } from "node:url";
 
 import { renderToStaticMarkup } from "react-dom/server";
 
+/* LE RETRAIT DES ORNEMENTS DU TÉLÉPHONE, PAR COMPTAGE DE PROFONDEUR, et pris
+   au module partagé plutôt que recopié ici. Voir `ornements-mobiles.ts` pour
+   le pourquoi et le défaut qu'il répare : une lecture paresseuse s'arrête au
+   premier `</span>` et ne retire que la moitié de l'étiquette de bascule, qui
+   en contient deux. Cette porte est la quatrième à s'y brancher, après
+   `verification-editorial.tsx` et `verification-ressource.tsx`. */
+import { sansOrnementsMobiles } from "@/components/site/editorial/ornements-mobiles";
 import PageOffre from "@/components/site/offre/PageOffre";
 import { appliqueDecisions } from "@/lib/decisions-copie";
 import { deLaRepartition } from "@/lib/photos-autorisees";
@@ -59,11 +66,25 @@ interface PageRelais {
 /* ----------------------------------------------------- les écarts déclarés */
 
 /**
- * Dans la capture, absent du rendu. Vide depuis le 08/10 : le bouton d'envoi
- * de `PanneauFormulaire` répète le titre du panneau, comme la capture
- * (« Parler à un chargé d'affaires », au héros et à l'appel final).
+ * Dans la capture, absent du rendu. Chacun vérifié VRAI à chaque passage :
+ * présent dans la capture, et moins d'occurrences rendues que capturées.
+ *
+ * L'entrée du 08/10 est partie : le bouton d'envoi de `PanneauFormulaire`
+ * répète désormais le titre du panneau, comme la capture (« Parler à un chargé
+ * d'affaires », au héros et à l'appel final).
  */
-const TROUS: readonly { section: string; texte: string; pourquoi: string }[] = [];
+const TROUS: readonly { section: string; texte: string; pourquoi: string }[] = [
+  {
+    section: "Maillage",
+    texte: "6 pages liées",
+    pourquoi:
+      "Compteur retiré de `PagesLiees` sur arbitrage de Mehdi du 11/10. " +
+      "Il était pourtant conforme : mesure du même jour, les mêmes dix pages " +
+      "le portent dans les captures figées et sur le site. Écart à la maquette " +
+      "assumé, demandé explicitement. Le jour où le compteur revient, ce trou " +
+      "devient inutile et la porte le dit.",
+  },
+];
 
 /** Rendu, absent de la capture : le même formulaire partagé (champ « Site web », mention RGPD). */
 const AJOUTS: readonly string[] = [
@@ -136,8 +157,28 @@ function normalise(texte: string): string {
   return texte.replace(/[  ]/g, " ").replace(/[’‘]/g, "'").replace(/\s+/g, " ").trim();
 }
 
-/** Les nœuds de texte, littéraux (entités décodées, blancs réduits). */
+/**
+ * Les nœuds de texte, littéraux (entités décodées, blancs réduits).
+ *
+ * LES ORNEMENTS DU TÉLÉPHONE SONT RETIRÉS DES DEUX CÔTÉS, par
+ * `sansOrnementsMobiles`. La capture est une capture de BUREAU et n'en porte
+ * aucun (mesuré : zéro `data-mobile-seulement` dans `secteurs.html`) ; le rendu
+ * en porte dix, le chevron de bascule, le résumé de deux lignes et l'étiquette
+ * de pli. Sans ce retrait la porte signalait « texte rendu absent de la
+ * capture » sur « › » et sur trois résumés, soit six écarts sur sept, pour un
+ * ornement que personne ne voit à cette largeur.
+ *
+ * LE RETRAIT SE FAIT ICI, dans la lecture du TEXTE, et pas sur tout le
+ * document : les liens et les photos continuent d'être comptés sur le balisage
+ * entier, pour qu'un ornement qui se mettrait à porter une photo ou un lien
+ * reste jugé au lieu de sortir du contrôle.
+ */
 function noeuds(html: string): string[] {
+  return noeudsBruts(sansOrnementsMobiles(html));
+}
+
+/** Les mêmes nœuds, ORNEMENTS COMPRIS. Ne sert qu'au témoin du retrait. */
+function noeudsBruts(html: string): string[] {
   return html
     .replace(/<(script|style)\b[\s\S]*?<\/\1>/g, " ")
     .split(/<[^>]+>/)
@@ -198,13 +239,19 @@ const PHOTOS_MAILLAGE_CAPTURE = [
 
 /* ------------------------------------------------------------- le jugement */
 
+/** La page rendue telle que la route la sert. Le témoin du retrait des
+ *  ornements lit le même balisage que le jugement, pas un autre. */
+function rend(page: PageRelais): string {
+  return renderToStaticMarkup(
+    <PageOffre titre={page.titre_h1} contenu={page.contenu} formulaire="cocon-secteurs-" />,
+  );
+}
+
 function juge(page: PageRelais): string[] {
   const fautes: string[] = [];
   const faute = (message: string) => fautes.push(message);
 
-  const rendu = renderToStaticMarkup(
-    <PageOffre titre={page.titre_h1} contenu={page.contenu} formulaire="cocon-secteurs-" />,
-  );
+  const rendu = rend(page);
   const rendues = sections(rendu);
 
   // 1. Le H1, seul, et le nombre de sections.
@@ -334,12 +381,120 @@ const ALTERATIONS: [string, (p: PageRelais) => void][] = [
   ["une photo du dossier sous licence absente du registre", (p) => { section(p, "preuves").preuves[0].photo = "/assets/photos/cette-photo-n-est-pas-au-registre.jpg"; }],
   ["une apostrophe redressée", (p) => { p.contenu.formulaireHeroMention = "Rappel dans l'heure"; }],
   ["une photo de maillage retirée", (p) => { delete p.contenu.pagesLiees![1].photo; }],
+  /* 13/10, LE TÉMOIN DU RETRAIT DES ORNEMENTS, côté débordement. Ce bénéfice
+     est rendu DANS le corps du bloc pliable, donc APRÈS l'étiquette de bascule
+     et son `</span>` de fermeture. Un retrait qui compte mal la profondeur et
+     avale au-delà de l'ornement emporterait ce texte avec lui : l'altération
+     passerait sans être vue, et ce témoin tomberait. */
+  ["une phrase inventée dans le corps, sous une étiquette de pli", (p) => { section(p, "offre").lignes[0].benefice += " Nous intervenons sur tout, partout."; }],
 ];
 
+/* ---------------------------------- le témoin du retrait des ornements
+
+   DEUX CONTRÔLES NÉGATIFS, et ils visent les deux pannes possibles du retrait,
+   celle de la lecture PARESSEUSE et celle de la lecture GLOUTONNE. Les deux
+   valeurs sont RELUES dans le rendu à chaque passage, aucune n'est écrite ici :
+   la porte ne peut donc pas devenir verte parce qu'un chiffre a vieilli. */
+
+/** Les deux premiers textes qui suivent une marque d'ornement, lus SANS compter
+ *  la profondeur. C'est exactement ce que voyait la lecture paresseuse : le
+ *  premier, qu'elle retirait, et le second, qu'elle laissait derrière elle. */
+function textesApresLaMarque(html: string): string[] {
+  const marqueImbriquee = /<(\w+)\b[^>]*\sdata-mobile-seulement\b[^>]*>\s*<\1\b/;
+  const ou = html.search(marqueImbriquee);
+  if (ou < 0) return [];
+  return noeudsBruts(html.slice(ou)).slice(0, 2);
+}
+
+/** Les écarts du témoin. Liste vide : le retrait fait ce qu'il annonce. */
+function temoinOrnements(): string[] {
+  const brut = rend(PAGE);
+  const propre = sansOrnementsMobiles(brut);
+  const manques: string[] = [];
+
+  // Zéro. Le rendu porte bien des ornements : sinon le témoin ne prouve rien.
+  const marques = brut.match(/data-mobile-seulement/g)?.length ?? 0;
+  if (marques === 0) manques.push("le rendu ne porte plus aucun ornement mobile : ce témoin ne mesure plus rien");
+  if (/data-mobile-seulement/.test(propre)) manques.push("une marque d'ornement survit au retrait");
+
+  const [, profond] = textesApresLaMarque(brut);
+  if (!profond) {
+    manques.push("aucune étiquette imbriquée trouvée dans le rendu : le cas que la profondeur sert à traiter a disparu");
+    return manques;
+  }
+
+  // Un. PARESSEUSE : le texte PROFOND de l'étiquette doit partir. La lecture
+  //     paresseuse s'arrêtait au premier `</span>` et le laissait : le compte
+  //     ne bougeait pas.
+  if (occurrences(propre, profond) >= occurrences(brut, profond)) {
+    manques.push(`lecture paresseuse : « ${profond.slice(0, 50)} » reste aussi présent après retrait qu'avant`);
+  }
+
+  // Deux. GLOUTONNE : le même texte, rendu plus bas par le `<h2>` de la
+  //       capture, doit SURVIVRE. Un retrait qui court jusqu'à la fin du
+  //       document l'emporterait, et la comparaison deviendrait muette.
+  if (occurrences(propre, profond) < 1) {
+    manques.push(`lecture gloutonne : « ${profond.slice(0, 50)} » a disparu du corps, pas seulement de l'ornement`);
+  }
+  const dernier = noeudsBruts(brut).at(-1);
+  if (dernier && !noeuds(brut).includes(dernier)) {
+    manques.push(`lecture gloutonne : le dernier texte de la page « ${dernier.slice(0, 50)} » est parti avec un ornement`);
+  }
+
+  return manques;
+}
+
+/* ------------------------------------------------- il sait échouer, d'abord */
+
+const CONTROLE = process.argv.includes("--controle");
+
+const aveugles: string[] = [];
+const vues: string[] = [];
 for (const [nom, altere] of ALTERATIONS) {
   const p = copie();
   altere(p);
-  if (juge(p).length === 0) throw new Error(`contrôle aveugle : « ${nom} » passe sans être vu`);
+  if (juge(p).length === 0) {
+    aveugles.push(nom);
+    if (!CONTROLE) throw new Error(`contrôle aveugle : « ${nom} » passe sans être vu`);
+  } else vues.push(nom);
+}
+
+const manquesOrnements = temoinOrnements();
+if (manquesOrnements.length > 0 && !CONTROLE) {
+  throw new Error(`retrait des ornements mobiles : ${manquesOrnements.join(" ; ")}`);
+}
+
+/* LE MODE TÉMOIN S'ARRÊTE ICI, sans juger la vraie page : il doit pouvoir se
+   lancer même quand la page, elle, est en écart, pour répondre à la seule
+   question « cette porte sait-elle encore échouer ? ». */
+if (CONTROLE) {
+  console.log("Mode --controle : les témoins seuls. La vraie page n'est pas jugée.\n");
+  for (const nom of vues) console.log(`  vue        : ${nom}`);
+  for (const nom of aveugles) console.error(`  MANQUÉE    : ${nom}`);
+  console.log(
+    `\n  retrait des ornements mobiles (${sansOrnementsMobiles.name}, comptage de profondeur) :`,
+  );
+  if (manquesOrnements.length === 0) {
+    const brut = rend(PAGE);
+    const [, profond] = textesApresLaMarque(brut);
+    console.log(
+      `  OK    paresseuse refusée : « ${(profond ?? "").slice(0, 44)} » passe de ` +
+        `${occurrences(brut, profond ?? "")} à ${occurrences(sansOrnementsMobiles(brut), profond ?? "")} occurrence(s)`,
+    );
+    console.log(
+      `  OK    gloutonne refusée  : le même texte survit dans le corps, et le dernier texte de la page aussi`,
+    );
+    console.log(
+      `  OK    ${(brut.match(/data-mobile-seulement/g)?.length ?? 0)} ornement(s) marqué(s), 0 après retrait`,
+    );
+  } else for (const m of manquesOrnements) console.error(`  RATÉ  ${m}`);
+
+  const total = aveugles.length + manquesOrnements.length;
+  console.log(
+    `\n  ${vues.length}/${ALTERATIONS.length} altérations vues, ` +
+      `${manquesOrnements.length === 0 ? "témoin du retrait vert" : "témoin du retrait ROUGE"}.`,
+  );
+  process.exit(total === 0 ? 0 : 1);
 }
 
 /* -------------------------------------------------------- puis la vraie page */
@@ -352,5 +507,5 @@ if (fautes.length > 0) {
 console.log(
   `/secteurs/ : ${SECTIONS_CAPTURE.length} sections conformes à maquette/rendu/secteurs.html, ` +
     `${TROUS.length} trous et ${AJOUTS.length} ajouts déclarés (formulaire partagé), ` +
-    `${ALTERATIONS.length} altérations toutes vues.`,
+    `${ALTERATIONS.length} altérations toutes vues, ornements mobiles retirés par comptage de profondeur.`,
 );

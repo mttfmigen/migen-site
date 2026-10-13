@@ -191,7 +191,7 @@ export default function QuestionsPhoto({
                 </a>
               )}
             </div>
-            <div style={{ display: "grid", gap: 10, alignContent: "start" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10, alignContent: "start" }}>
               {donnees.questions.map((q, i) => (
                 <details
                   key={q.question}

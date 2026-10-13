@@ -24,7 +24,7 @@ export default function Probleme({ section }: { section: SectionProbleme }) {
             </h2>
 
             {section.puces.length > 0 ? (
-              <div style={{ display: "grid", gap: 10, marginTop: 30 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10, marginTop: 30 }}>
                 {section.puces.map((puce) => (
                   <div
                     key={puce.texte}

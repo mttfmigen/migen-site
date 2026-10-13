@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 
 import s from "./SectionPliableMobile.module.css";
+import { enTexteNu } from "@/components/site/blocs/TexteRiche";
 
 export interface SectionPliableMobileProps {
   /** Le sur-titre de la maquette, en capitales et en accent. */
@@ -76,6 +77,47 @@ export default function SectionPliableMobile({
     if (window.matchMedia("(max-width: 880px)").matches) element.open = false;
   }, [toujoursOuvert]);
 
+  /*
+   * LA BASCULE SORT DU PARCOURS CLAVIER SUR BUREAU, SANS DISPARAÎTRE.
+   *
+   * LE DÉFAUT. Au-dessus de 880 px, le bloc est ouvert et ne se referme plus :
+   * son `<summary>` n'ouvre donc plus rien, mais il reste l'élément interactif
+   * d'un `<details>`, donc focalisable. Mesuré par la porte du responsive à
+   * 1280 px : 21 arrêts de tabulation muets, sur les gabarits domaine,
+   * spécialité, ville, département, hub d'offres et secteur.
+   *
+   * CE QU'IL NE FAUT PAS FAIRE, et qui a été essayé le 13/10 : lui poser
+   * `display: none` dans la feuille partagée. La bascule PORTE le titre de
+   * section (`{enTete ?? <span>{kicker}{titre}</span>}`, juste en dessous) :
+   * la masquer retire aussi le titre de l'arbre d'accessibilité, et sur les
+   * gabarits qui ne le rendent pas une seconde fois ailleurs, elle le retire
+   * de l'écran. Mesuré : 31 bascules sur 31 portaient un titre, zéro était
+   * vide. Les six gabarits qui portent déjà cette règle chez eux la peuvent
+   * parce qu'ils doublent leur titre hors de la bascule ; les autres non.
+   *
+   * CE QU'ON FAIT À LA PLACE. `tabIndex = -1` retire l'arrêt de tabulation et
+   * laisse le titre visible et annoncé. La bascule reste atteignable à la
+   * souris et au toucher, et reste focalisable par programme.
+   *
+   * ET ON ÉCOUTE LA LARGEUR, parce qu'un `tabIndex` posé une fois au
+   * chargement mentirait après une rotation d'écran ou un redimensionnement :
+   * en passant sous 880 px, la bascule redevient le seul moyen d'ouvrir le
+   * bloc, elle doit donc retrouver sa place au clavier.
+   */
+  useEffect(() => {
+    const element = bloc.current;
+    if (!element) return;
+    const sommaire = element.querySelector("summary");
+    if (!sommaire) return;
+    const surBureau = window.matchMedia("(min-width: 881px)");
+    const applique = () => {
+      sommaire.tabIndex = surBureau.matches ? -1 : 0;
+    };
+    applique();
+    surBureau.addEventListener("change", applique);
+    return () => surBureau.removeEventListener("change", applique);
+  }, []);
+
   return (
     <details
       ref={bloc}
@@ -116,9 +158,27 @@ export default function SectionPliableMobile({
             Le contenu d'un `<summary>` n'est jamais enveloppé par
             `::details-content`. Le sélecteur ne change pas : il porte sur
             l'état de l'ancêtre, pas sur la position du résumé. */}
+        {/* `enTexteNu` SUR LE RÉSUMÉ, ET À CET ENDROIT PRÉCIS.
+            Les dix appelants construisent ce résumé en concaténant du texte du
+            CORPUS (`preuve.titre`, `point.titre`, `hub.nom`…), lequel porte de
+            la syntaxe Markdown : les cartes la réduisent déjà par `enTexteNu`,
+            le résumé ne le faisait pas.
+
+            Le défaut était INVISIBLE jusqu'au 13/10 : le résumé n'était jamais
+            peint, parce qu'il vivait hors du `<summary>` et donc sous
+            `content-visibility: hidden`. En le remettant dans le `<summary>`,
+            on a mis à l'écran un texte qui portait « [Étude de cas EATON :
+            mise en production](/preuves/eaton-mise-en-production/) », crochets
+            et parenthèses compris, sur les pages d'offre en téléphone. La
+            porte `verifie:markdown` l'a vu la première.
+
+            La réduction est posée ICI, dans le seul composant qui peint ce
+            résumé, et non chez les dix appelants : un onzième appelant est
+            couvert d'office. `enTexteNu` est sans effet sur un texte déjà
+            propre. */}
         {resume ? (
           <p data-mobile-seulement="" className={s.resume}>
-            {resume}
+            {enTexteNu(resume)}
           </p>
         ) : null}
       </summary>

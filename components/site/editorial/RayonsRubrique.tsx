@@ -246,6 +246,7 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
               style={{ objectFit: "cover", filter: "saturate(var(--sat,.55)) contrast(1.05)" }}
             />
             <div
+              className={styles.chiffresPhoto}
               style={{
                 position: "absolute",
                 left: 18,
@@ -357,7 +358,7 @@ export default function RayonsRubrique({ titre, vue }: { titre: string; vue: Vue
                 </div>
               </div>
             </Link>
-            <div style={{ display: "grid", gap: 14 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 14 }}>
               {cote.map((c) => (
                 <Link
                   key={c.href}

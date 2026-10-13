@@ -54,7 +54,7 @@ export default function RappelExpress() {
   }
 
   return (
-    <form onSubmit={porte} style={{ display: "grid", gap: 12 }}>
+    <form onSubmit={porte} style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 12 }}>
       <input name="entreprise" type="text" placeholder="Société *" aria-label="Société" autoComplete="organization" style={CHAMP} />
       <input name="telephone" type="tel" placeholder="Téléphone *" aria-label="Téléphone" autoComplete="tel" style={CHAMP} />
       <input name="email" type="email" placeholder="Courriel professionnel *" aria-label="Courriel professionnel" autoComplete="email" style={CHAMP} />

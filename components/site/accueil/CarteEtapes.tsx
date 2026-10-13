@@ -128,7 +128,7 @@ export default function CarteEtapes() {
         </span>
       </div>
 
-      <div style={{ display: "grid", gap: "4px", marginBottom: "16px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "4px", marginBottom: "16px" }}>
         {ETAPES_SELECTION.map((x, i) => {
           const actif = i === etape;
           const vif = actif || i === dernier;
@@ -175,7 +175,7 @@ export default function CarteEtapes() {
       </div>
 
       <div style={{ marginTop: "auto", padding: "18px 14px 0", borderTop: "1px solid var(--line)" }}>
-        <div style={{ display: "grid" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)" }}>
           {ETAPES_SELECTION.map((x, i) => {
             const actif = i === etape;
             return (

@@ -121,7 +121,7 @@ export default function QuestionsHub({
               }}
             />
           ))}
-          <div style={{ display: "grid", gap: 10, marginTop: 8 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10, marginTop: 8 }}>
             {questions.map((q, i) => (
               <details
                 key={q.question}

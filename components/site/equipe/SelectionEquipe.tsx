@@ -106,7 +106,7 @@ export default function SelectionEquipe() {
             </div>
             <ol
               style={{
-                display: "grid",
+                display: "grid", gridTemplateColumns: "minmax(0,1fr)",
                 gap: 12,
                 margin: 0,
                 padding: 0,

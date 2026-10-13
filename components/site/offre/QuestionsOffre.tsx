@@ -199,7 +199,7 @@ export default function QuestionsOffre({ section }: ProprietesQuestionsOffre) {
             alignItems: "start",
           }}
         >
-          <div style={{ display: "grid", gap: 12, alignContent: "start" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 12, alignContent: "start" }}>
             {gauche.map((question, i) => (
               <Pli
                 key={question.question}
@@ -209,7 +209,7 @@ export default function QuestionsOffre({ section }: ProprietesQuestionsOffre) {
               />
             ))}
           </div>
-          <div style={{ display: "grid", gap: 12, alignContent: "start" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 12, alignContent: "start" }}>
             {droite.map((question, i) => (
               <Pli
                 key={question.question}

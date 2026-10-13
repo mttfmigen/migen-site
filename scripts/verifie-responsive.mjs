@@ -185,8 +185,11 @@
  * Et il porte DEUX CONTRÔLES NÉGATIFS, parce qu'un relevé plus large passerait
  * sinon pour un relevé plus fin :
  *
- *   · six motifs LÉGITIMES qui ressemblent à des fautes, tirés du site réel,
- *     injectés dans la copie : aucun ne doit être signalé ;
+ *   · huit motifs LÉGITIMES qui ressemblent à des fautes, tous tirés du site
+ *     réel et non inventés, injectés dans la copie : aucun ne doit être
+ *     signalé. Deux d'entre eux sont les faux relevés que cette porte a
+ *     elle-même produits le 13/10 avant correction, le `line-clamp` de la
+ *     maquette et les pastilles du pied de page ;
  *   · UNE PAGE CONFORME, construite à la main, mesurée par le même
  *     instrument : elle doit être ACCEPTÉE sur les six règles.
  */
@@ -488,6 +491,32 @@ const MESURE = ({ cibleMinimale, mesureChevauchements }) => {
      * Un halo de 520 px dans une carte de 240 ne porte ni mot ni commande, et
      * c'est pour ces trois halos que la part peinte avait été introduite.
      */
+    /*
+     * UNE ROTATION N'EST PAS UN DÉBORDEMENT, et la porte s'y est trompée.
+     *
+     * `getBoundingClientRect()` rend la boîte ENGLOBANTE, transformation
+     * comprise. Un carré de 28 px tourné à 45 degrés y mesure 28 fois racine de
+     * deux, soit 39,6 px : la porte voyait donc un dépassement de 5,8 px sur le
+     * « + » d'une question de foire aux questions OUVERTE, qui pivote en croix.
+     *
+     * Mesuré : largeur déclarée 28 px, largeur rendue 39,6 px, rapport 1,414.
+     * L'élément occupe bien 28 px dans la mise en page et reste dans les 24 px
+     * de rembourrage de son hôte. Il n'y avait rien à corriger dans le dessin,
+     * et une porte qui réclame une correction là où il n'y a pas de défaut
+     * coûte autant qu'une porte aveugle : elle use la confiance.
+     *
+     * On compare donc la boîte de MISE EN PAGE quand une transformation est
+     * posée. Le débordement d'un élément non transformé, lui, ne change pas.
+     */
+    if (style.transform && style.transform !== "none") {
+      const large = element.offsetWidth || 0;
+      if (large > 0 && boite.width > large + 0.5) {
+        const centre = (boite.left + boite.right) / 2;
+        boite.x = centre - large / 2;
+        boite.width = large;
+      }
+    }
+
     const peinte = partPeinte(element, boite);
     if (peinte.droite - peinte.gauche <= 0) continue;
 

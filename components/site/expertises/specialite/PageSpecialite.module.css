@@ -63,3 +63,25 @@
     grid-row: auto !important;
   }
 }
+
+/* Les boutons de la bande d'appel sombre.
+
+   SOUS 390 PX, PLEINE LARGEUR ET LIBELLÉ SUR PLUSIEURS LIGNES. Ils portent
+   `white-space: nowrap` en ligne, repris de la maquette. Mesuré au navigateur
+   le 13/10 à 320 px : « Demander une intervention » fait 258 px (14 px de
+   rembourrage, 24 px de côté, police 600 15px) dans une boîte de 186 px, soit
+   72 px dehors, et la bande n'avait aucun moyen de le rattraper puisque le
+   libellé ne pouvait pas se couper. Même défaut à 360 px (32 px dehors) et
+   encore à 390 px (2 px).
+
+   Pleine largeur, parce que c'est le motif d'appel de la maquette MOBILE :
+   `width:100%` ou `flex:1`, hauteur fixe de 48 à 54 px, contenu centré. */
+@media (max-width: 430px) {
+  .boutonBande {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center;
+    white-space: normal !important;
+    min-height: 48px;
+  }
+}

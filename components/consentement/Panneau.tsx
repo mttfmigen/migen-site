@@ -61,7 +61,7 @@ import { enregistre, useConsentement } from "./etat";
 
 /** Le cadre : un trait de `--line` entre chaque rangée (maquette l.1711). */
 const CADRE: CSSProperties = {
-  display: "grid",
+  display: "grid", gridTemplateColumns: "minmax(0,1fr)",
   gap: 1,
   background: "var(--line)",
   border: "1px solid var(--line)",
@@ -72,7 +72,7 @@ const CADRE: CSSProperties = {
 
 /** La liste des finalités, même motif de grille que le cadre. */
 const LISTE: CSSProperties = {
-  display: "grid",
+  display: "grid", gridTemplateColumns: "minmax(0,1fr)",
   gap: 1,
   background: "var(--line)",
   listStyle: "none",

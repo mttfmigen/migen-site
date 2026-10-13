@@ -341,3 +341,25 @@
     padding-top: 0 !important;
   }
 }
+
+/* Les cartes du bloc « duo » (engagements, propositions).
+
+   SOUS 390 PX, UNE SEULE COLONNE, ET 18 PX DE REMBOURRAGE. Mesuré au
+   navigateur le 13/10 à 320 px : deux colonnes de 114 px, 24 px de
+   rembourrage de chaque côté, soit 66 px de texte utile. « Une montée en
+   compétence » en demande 100, « Formation, spécialisation, évolution vers un
+   poste à responsabilité » davantage encore. Douze textes coupés sur
+   /carriere/ à 320 px, de 15 à 42 px, neuf à 360 px, trois encore à 390 px.
+
+   Le rembourrage descend à 18 px, la valeur haute de la maquette MOBILE, qui
+   rembourre ses panneaux à 14, 16 ou 18 px et jamais à 24. La maquette de
+   bureau, référence à 1280 px, est muette sous 390 px. */
+@media (max-width: 430px) {
+  .duoCartes {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .duoCartes > div {
+    padding: 18px 18px 16px !important;
+    min-height: 0 !important;
+  }
+}

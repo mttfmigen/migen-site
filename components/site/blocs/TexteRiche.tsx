@@ -77,7 +77,22 @@ export function enRichesse(texte: string | null | undefined): ReactNode[] {
         // `prefetch={false}` : une page de vente porte jusqu'à huit liens
         // internes, les précharger toutes ferait huit requêtes pour une
         // navigation que le visiteur ne fera peut-être pas.
-        <Link key={`l${n++}`} href={href} prefetch={false}>
+        <Link
+          key={`l${n++}`}
+          href={href}
+          prefetch={false}
+          /* 24 PX DE CIBLE TACTILE, critère 2.5.8 de la WCAG 2.2.
+             Un lien de corps de texte fait la hauteur de son interligne, 20 px
+             ici. La norme l'exempte quand il est DANS une phrase, parce que sa
+             taille y est contrainte par le texte qui l'entoure. Mais le corpus
+             pose aussi des liens SEULS dans leur paragraphe, comme
+             « Demander un diagnostic maintenance » sur /ressources/articles/ :
+             celui-là n'est contraint par rien et doit atteindre le plancher.
+             Le remplissage vertical agrandit la zone de contact sans déplacer
+             d'un pixel le texte qui l'entoure, `inline-block` étant nécessaire
+             pour qu'un remplissage vertical compte sur un élément en ligne. */
+          style={{ display: "inline-block", paddingBlock: 2 }}
+        >
           {libelle}
         </Link>,
       );

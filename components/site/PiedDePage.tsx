@@ -394,7 +394,7 @@ export default function PiedDePage({
           {COLONNES.map((colonne) => (
             <nav key={colonne.titre} aria-label={colonne.titre}>
               <div style={styleTitreColonne}>{colonne.titre}</div>
-              <div style={{ display: "grid", gap: 9 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 9 }}>
                 {colonne.liens.map((lien) => (
                   <LienSite
                     key={lien.href + lien.libelle}

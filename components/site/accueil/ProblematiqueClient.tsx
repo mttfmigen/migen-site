@@ -93,7 +93,7 @@ export default function ProblematiqueClient() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gap: "12px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "12px" }}>
             {PREUVES.map((preuve) => (
               <div
                 key={preuve.titre}

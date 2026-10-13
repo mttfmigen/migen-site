@@ -107,7 +107,7 @@ export default function QuiVousRepond() {
             </p>
             <ol
               style={{
-                display: "grid",
+                display: "grid", gridTemplateColumns: "minmax(0,1fr)",
                 gap: 10,
                 marginTop: 0,
                 marginBottom: 24,

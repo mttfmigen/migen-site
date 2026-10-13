@@ -85,7 +85,7 @@ export default function OuverturePartenaires({
       <section
         style={{ maxWidth: 1200, margin: "0 auto", padding: "44px 40px 0" }}
       >
-        <div data-reveal="" style={{ display: "grid", gap: 16 }}>
+        <div data-reveal="" style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 16 }}>
           <div
             className="mg-r2"
             style={{

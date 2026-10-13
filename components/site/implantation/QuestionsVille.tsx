@@ -121,7 +121,7 @@ export default function QuestionsVille({ section }: { section: SectionObjections
               Poser ma question
             </a>
           </div>
-          <div style={{ display: "grid", gap: 10 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10 }}>
             {section.questions.map((q, rang) => (
        <details key={q.question} className={styles.pli} style={PLI} name={groupe} >
                 <summary style={RESUME}>

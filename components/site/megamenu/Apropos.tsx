@@ -67,7 +67,7 @@ export default function PanneauApropos() {
     >
       <div>
         <SurTitre marge={14}>L’entreprise</SurTitre>
-        <div style={{ display: "grid", gap: 1 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 1 }}>
           {APROPOS_ENTREPRISE.map((lien) => (
             <RangeeDecrite key={lien.href} {...lien} />
           ))}
@@ -75,7 +75,7 @@ export default function PanneauApropos() {
       </div>
       <div>
         <SurTitre marge={14}>Nos engagements</SurTitre>
-        <div style={{ display: "grid", gap: 1 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 1 }}>
           {APROPOS_ENGAGEMENTS.map((lien) => (
             <RangeeDecrite key={lien.href} {...lien} />
           ))}

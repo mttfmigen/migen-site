@@ -69,7 +69,7 @@ export default function PourquoiExternaliser({
             </h2>
             <ul
               style={{
-                display: "grid",
+                display: "grid", gridTemplateColumns: "minmax(0,1fr)",
                 gap: 12,
                 margin: 0,
                 padding: 0,

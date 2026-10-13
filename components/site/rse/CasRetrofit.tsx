@@ -182,7 +182,7 @@ export default function CasRetrofit({
           </div>
           <div
             style={{
-              display: "grid",
+              display: "grid", gridTemplateColumns: "minmax(0,1fr)",
               gridTemplateRows: "repeat(2,minmax(0,1fr))",
               gap: 14,
             }}

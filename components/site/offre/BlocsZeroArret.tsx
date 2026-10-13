@@ -360,7 +360,7 @@ export function Comparatif({ contenu }: { contenu: ContenuOffre }) {
                   >
                     {colonne.titre}
                   </div>
-                  <div style={{ display: "grid", gap: 10 }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10 }}>
                     {colonne.points.map((point) => (
                       <div
                         key={point}
