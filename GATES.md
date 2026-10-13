@@ -32,7 +32,13 @@ Dernière relecture : 12/10.
       PREUVE : `lib/secteur-du-cas.ts` déduit le secteur du texte de la fiche,
       38 photos hors secteur corrigées, 0 restante.
       CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && bun scripts/verifie-photos-du-secteur.mjs https://migen-site.vercel.app
-      EXPECT: 0 photo hors secteur
+      EXPECT: PHOTOS_DANS_LEUR_SUJET
+      L'ATTENTE ÉTAIT MAL FORMULÉE, corrigée le 13/10 : elle réclamait un zéro
+      que la commande n'affiche pas. La porte rend un JETON DE SUCCÈS,
+      `PHOTOS_DANS_LEUR_SUJET`, qu'elle n'imprime que si elle passe ; c'est lui
+      qu'il faut attendre. Une attente qui ne se décide pas est un défaut du
+      registre et non de la porte, et elle faisait croire à une promesse rompue
+      alors que la mesure était bonne.
       CETTE COMMANDE ÉTAIT FAUSSE, et elle n'a jamais rien prouvé : elle lançait
       `node` sur un script qui importe `lib/secteur-du-cas.ts`, donc elle plantait
       sur `ERR_UNKNOWN_FILE_EXTENSION` avant la moindre assertion. Et sans
