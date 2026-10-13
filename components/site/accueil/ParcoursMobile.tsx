@@ -57,10 +57,27 @@ export default function ParcoursMobile() {
             name="parcours-mobile"
             className={s.probleme}
           >
+            {/* LE NOM DE L'OFFRE EST SUR LA CARTE, posé le 13/10.
+                La maquette mobile écrit sa carte ainsi : « 01 Je n'arrive pas à
+                recruter mon technicien de maintenance · Résidence › ». Le nom
+                de l'offre y est VISIBLE AVANT le toucher, et c'est tout le
+                propos du parcours : le visiteur sait ce qui le bloque, pas
+                quelle offre porte ce nom. Lui montrer la réponse sur la carte,
+                c'est lui dire où il va.
+
+                POURQUOI LA CARTE N'EST PAS DEVENUE UN SIMPLE LIEN, comme dans
+                la maquette, et c'est une mesure qui l'a décidé. Les six
+                réponses repliées font environ 900 mots qui N'EXISTENT NULLE
+                PART AILLEURS : comparées aux six pages d'offre le 13/10, 0 à 2
+                extraits sur 6 s'y retrouvent. Remplacer la carte par un lien
+                aurait donc retiré ce texte de l'accueil sans qu'il réapparaisse
+                ailleurs, contre le principe 1 du contrat (Google reçoit du HTML
+                complet). Le pli reste, le nom de l'offre arrive. */}
             <summary className={s.question}>
-              <span>
+              <span className={s.etiquette}>
                 <span className={s.numero}>{probleme.numero}</span>
                 <span className={s.libelle}>{probleme.question}</span>
+                <span className={s.nomOffre}>{probleme.offre}</span>
               </span>
               <span aria-hidden="true" className={s.chevron}>
                 &rsaquo;

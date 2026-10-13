@@ -187,3 +187,34 @@
     transition: none;
   }
 }
+
+/* L'étiquette de la carte : numéro, problème, puis le NOM DE L'OFFRE.
+
+   La maquette mobile du client écrit sa carte « 01 Je n'arrive pas à recruter
+   mon technicien de maintenance · Résidence › ». Le nom de l'offre y est lisible
+   avant le toucher : c'est ce qui dit au visiteur où il va. Il manquait. */
+.etiquette {
+  display: block;
+  min-width: 0;
+}
+
+.nomOffre {
+  display: inline-block;
+  margin-top: 7px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--acc-w);
+  /* `--acc-ink` ET PAS `--acc`, et c'est une mesure qui l'a décidé. L'orange de
+     marque sur son propre fond à 11 % rend 2,3 pour 1, quand le critère 1.4.3
+     de la WCAG 2.2 en demande 4,5 pour un texte de cette taille : le gras ne
+     vaut exemption qu'à partir de 18,66 px, et celui-ci fait 11,5. Le jeton
+     `--acc-ink` existe pour ce cas précis, il vaut #7d3309 en thème clair et
+     #ffa878 en sombre, et il rend 8,1 pour 1 sur le même fond. */
+  color: var(--acc-ink);
+  font: 600 11.5px var(--fb);
+  letter-spacing: 0.02em;
+  /* Le nom d'une offre ne se coupe pas en deux lignes : « migen© Arrêt
+     technique » doit se lire d'un bloc. Mesuré à 320 px, la plus étroite des
+     six tient dans la carte. */
+  white-space: nowrap;
+}
