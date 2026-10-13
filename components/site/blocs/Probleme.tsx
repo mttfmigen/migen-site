@@ -1,6 +1,8 @@
 import type { SectionProbleme } from "@/types/contenu";
 import styles from "./Blocs.module.css";
 import { LARGEUR, LUEUR, PANNEAU, SECTION, SURTITRE, TITRE2_CLAIR } from "./habillage";
+import SectionPliableMobile from "./SectionPliableMobile";
+import { resumeDe } from "./resume-de-section";
 import TexteRiche from "./TexteRiche";
 
 /**
@@ -13,16 +15,24 @@ import TexteRiche from "./TexteRiche";
  */
 export default function Probleme({ section }: { section: SectionProbleme }) {
   return (
-    <section className={styles.corpusClair} style={SECTION}>
+    <section className={styles.corpusClair} style={SECTION} data-bloc="probleme">
       <div style={LARGEUR}>
         <div style={{ ...PANNEAU, padding: "44px 48px 46px" }}>
           <div style={LUEUR} />
           <div style={{ position: "relative" }}>
-            <div style={SURTITRE}>Le problème</div>
-            <h2 style={{ ...TITRE2_CLAIR, maxWidth: "28ch" }}>
-              <TexteRiche texte={section.punchline} />
-            </h2>
-
+            <SectionPliableMobile
+              enTete={
+                <span>
+                  <span style={{ ...SURTITRE, display: "block" }}>Le problème</span>
+                  <h2 style={{ ...TITRE2_CLAIR, maxWidth: "28ch" }}>
+                    <TexteRiche texte={section.punchline} />
+                  </h2>
+                </span>
+              }
+              resume={resumeDe(
+                section.puces.map((puce) => puce.accroche ?? puce.texte),
+              )}
+            >
             {section.puces.length > 0 ? (
               <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10, marginTop: 30 }}>
                 {section.puces.map((puce) => (
@@ -48,6 +58,7 @@ export default function Probleme({ section }: { section: SectionProbleme }) {
                 ))}
               </div>
             ) : null}
+            </SectionPliableMobile>
           </div>
         </div>
       </div>

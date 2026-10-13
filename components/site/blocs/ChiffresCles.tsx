@@ -1,6 +1,10 @@
 import type { SectionChiffres } from "@/types/contenu";
 import styles from "./Blocs.module.css";
 import Paragraphes from "./Paragraphes";
+import SectionPliableMobile, {
+  ENTETE_DANS_BASCULE,
+} from "./SectionPliableMobile";
+import { resumeDe } from "./resume-de-section";
 import TexteRiche from "./TexteRiche";
 import {
   CHAPEAU,
@@ -27,16 +31,22 @@ export default function ChiffresCles({ section }: { section: SectionChiffres }) 
   if (section.chiffres.length === 0 && !section.reponse?.length) return null;
 
   return (
-    <section className={styles.corpus} style={SECTION}>
+    <section className={styles.corpus} style={SECTION} data-bloc="chiffres">
       <div style={LARGEUR}>
-        <div className="mg-r2" style={ENTETE}>
-          <div>
-            <div style={SURTITRE}>En bref</div>
-            <h2 style={TITRE2}>{section.titre ?? TITRE_PAR_DEFAUT}</h2>
-          </div>
-          {section.bref ? <p style={CHAPEAU}>{section.bref}</p> : null}
-        </div>
-
+        <SectionPliableMobile
+          enTete={
+            <div className="mg-r2" style={{ ...ENTETE, ...ENTETE_DANS_BASCULE }}>
+              <div>
+                <div style={SURTITRE}>En bref</div>
+                <h2 style={TITRE2}>{section.titre ?? TITRE_PAR_DEFAUT}</h2>
+              </div>
+              {section.bref ? <p style={CHAPEAU}>{section.bref}</p> : null}
+            </div>
+          }
+          resume={resumeDe(
+            section.chiffres.map((chiffre) => `${chiffre.valeur} ${chiffre.libelle}`),
+          )}
+        >
         {section.chiffres.length > 0 ? (
           <div
             className="mg-rmulti"
@@ -83,6 +93,7 @@ export default function ChiffresCles({ section }: { section: SectionChiffres }) 
         ) : null}
 
         <Paragraphes paragraphes={section.reponse} />
+        </SectionPliableMobile>
       </div>
     </section>
   );

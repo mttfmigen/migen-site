@@ -2,6 +2,10 @@ import type { CSSProperties } from "react";
 import type { SectionOffre, Tableau } from "@/types/contenu";
 import styles from "./Blocs.module.css";
 import Paragraphes from "./Paragraphes";
+import SectionPliableMobile, {
+  ENTETE_DANS_BASCULE,
+} from "./SectionPliableMobile";
+import { resumeDe } from "./resume-de-section";
 import TexteRiche from "./TexteRiche";
 import {
   CHAPEAU,
@@ -123,23 +127,40 @@ export default function Offre({ section }: { section: SectionOffre }) {
     return null;
   }
 
-  return (
-    <section className={styles.corpus} style={SECTION}>
-      <div style={LARGEUR}>
-        {section.titre || section.intro ? (
-          <div className="mg-r2" style={ENTETE}>
-            <div>
-              <div style={SURTITRE}>Ce qui est inclus</div>
-              {section.titre ? <h2 style={TITRE2}>{section.titre}</h2> : null}
-            </div>
-            {section.intro ? (
-              <p style={CHAPEAU}>
-                <TexteRiche texte={section.intro} />
-              </p>
-            ) : null}
-          </div>
+  /*
+   * L'EN-TÊTE DE CE BLOC EST FACULTATIF, et c'est le seul du dossier à l'être.
+   * Sans en-tête, passer `enTete` vide donnerait une bascule sans étiquette :
+   * un bouton muet, qui n'annonce rien au lecteur d'écran et n'indique rien à
+   * l'œil. On retombe alors sur le sur-titre que le bloc écrit déjà en dur,
+   * « Ce qui est inclus », servi par la branche `kicker` du composant.
+   */
+  const enTeteOffre =
+    section.titre || section.intro ? (
+      <div className="mg-r2" style={{ ...ENTETE, ...ENTETE_DANS_BASCULE }}>
+        <div>
+          <div style={SURTITRE}>Ce qui est inclus</div>
+          {section.titre ? <h2 style={TITRE2}>{section.titre}</h2> : null}
+        </div>
+        {section.intro ? (
+          <p style={CHAPEAU}>
+            <TexteRiche texte={section.intro} />
+          </p>
         ) : null}
+      </div>
+    ) : undefined;
 
+  return (
+    <section className={styles.corpus} style={SECTION} data-bloc="offre">
+      <div style={LARGEUR}>
+        <SectionPliableMobile
+          enTete={enTeteOffre}
+          kicker={enTeteOffre ? undefined : "Ce qui est inclus"}
+          resume={resumeDe(
+            section.lignes.map(
+              (ligne) => ligne.prestation.accroche ?? ligne.prestation.texte,
+            ),
+          )}
+        >
         {section.lignes.length > 0 ? (
           <div style={{ ...VERRE, overflow: "hidden" }}>
             <div
@@ -202,6 +223,7 @@ export default function Offre({ section }: { section: SectionOffre }) {
         {section.tableau ? <TableauComparatif tableau={section.tableau} /> : null}
 
         <Paragraphes paragraphes={section.prose} />
+        </SectionPliableMobile>
       </div>
     </section>
   );

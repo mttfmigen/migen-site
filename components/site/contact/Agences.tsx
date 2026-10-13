@@ -19,6 +19,28 @@ import type { CSSProperties } from "react";
  *    bibliothèque de cartographie que le contrat interdit d'installer. La liste
  *    prend donc toute la largeur, et le lien vers les implantations tient le
  *    rôle de navigation que la carte assurait.
+ *
+ *    ÉCART DE DISPOSITION MESURÉ LE 12/10, ET IL N'EST PAS RÉPARABLE SANS
+ *    ARBITRAGE. La maquette vivante dispose cette section sur DEUX colonnes,
+ *    `grid-template-columns:1.15fr .85fr;gap:14px;align-items:stretch` : la
+ *    carte de France à gauche (hauteur 440px), la liste à droite. Le site rend
+ *    UNE colonne de 1120px. Le composant de la maquette
+ *    (`maquette/MigenAgences.jsx`) tient sur `d3`, `topojson` et un atlas
+ *    mondial téléchargé depuis un CDN à l'exécution : trois choses que le
+ *    contrat refuse (§3.1, aucun chargement de contenu côté navigateur).
+ *    Remplir cette colonne gauche par autre chose serait inventer un bloc que
+ *    la maquette ne décrit pas. L'écart est donc DÉCLARÉ, mesuré, et rendu
+ *    visible par la porte, qui échoue si quelqu'un le supprime du commentaire
+ *    sans l'avoir réparé. À Mehdi de trancher : carte reconstruite sans CDN,
+ *    ou une colonne assumée.
+ *
+ * 3. CE QUI FERME LA PAGE A CHANGÉ LE 12/10. Cette section portait
+ *    `padding:var(--sec) 0 var(--sec)`, la fermeture de page de la maquette,
+ *    parce qu'elle en était la dernière. Depuis que la bande technicien passe
+ *    après elle (arbitrage de Mehdi), elle est une section INTERMÉDIAIRE : son
+ *    bas revient à 0, et c'est `PourLesTechniciens` qui ferme. Mesuré en
+ *    production avant correction : 120 / 120 / 240 / 0 px entre contenus, la
+ *    carte candidature collée au pied de page.
  */
 
 interface Agence {
@@ -42,7 +64,7 @@ const RANGEE: CSSProperties = {
 
 export default function Agences() {
   return (
-    <section style={{ padding: "var(--sec) 0 var(--sec)" }}>
+    <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div data-reveal="">
           <div

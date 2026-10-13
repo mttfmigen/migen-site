@@ -170,7 +170,50 @@ const BESOINS_DECLARES: Besoin[] = [
  * elle-même. L'image déclarée reste le repli : une page sans photo du
  * registre garde celle de la maquette plutôt qu'un trou.
  */
+
+/**
+ * LES EXCEPTIONS À CETTE RÈGLE, et la raison de chacune.
+ *
+ * Mehdi, le 12/10 : « Bloc PARTEZ DE VOTRE BESOIN : il faut changer les photos
+ * des cases ça va pas du tout ». Les sept cases sont bien SEPT photos
+ * distinctes depuis le 12/10, la répétition n'est donc pas le défaut. Mesure du
+ * 14/10, faite contre le registre lui-même (`public/assets/photos/registre.json`,
+ * champs `description` et `themes`), case par case :
+ *
+ *   Full service  technicien, tuyauterie, site-industriel   ronde relevée    OK
+ *   Zéro arrêt    technicien, mecanique, DEPANNAGE          curatif          OK
+ *   Arrêt tech.   soudure, chaudronnerie, ARRET-TECHNIQUE   l'arrêt même     OK
+ *   Bureau d'ét.  robotique, automatisme, BUREAU-ETUDES     l'étude même     OK
+ *   Chantier      hors registre, photo de la maquette                        OK
+ *   Construction  hors registre, photo de la maquette                        OK
+ *   Résidence     metallurgie, technicien                   ???
+ *
+ * UNE SEULE CASE TOMBE, et elle tombe sur une règle écrite, pas sur un goût :
+ * `metal-fonderie-coulee.jpg` est décrite au registre « Fondeur en tenue
+ * aluminisée face à une coulée de métal », et ses thèmes sont `metallurgie` et
+ * `technicien`. `metallurgie` est un thème de SECTEUR, pas un geste de
+ * maintenance, et un fondeur à la coulée est un opérateur de PRODUCTION. La
+ * case promet « une équipe à vous, sans le recrutement ni la gestion » : elle
+ * montrait une usine qui fond de l'acier.
+ *
+ * Elle venait de la règle elle-même, qui prend la PREMIÈRE photo que la page
+ * cible sert : c'est celle de `/offres/residence/`. Le registre n'étant pas à
+ * nous (`lib/photo-par-page.ts` est généré), la case est corrigée ici.
+ *
+ * LA REMPLAÇANTE EST PRISE DANS LE REGISTRE, par ses thèmes et non à l'oeil :
+ * `env-technician-maintenance-13.jpg`, « Deux techniciens en bleu de travail
+ * intervenant à la clé sur la tête articulée d'une grosse machine en atelier »,
+ * thèmes `technicien`, `equipe`, `mecanique`, `site-industriel`. Les trois mots
+ * de l'offre, deux techniciens de maintenance au travail, aucun secteur affiché.
+ *
+ * `verification-photos.tsx` tient cette règle pour les sept cases : une photo
+ * du registre qui ne porte QUE des thèmes de secteur y est refusée.
+ */
+const PHOTO_CHOISIE: Readonly<Record<string, string>> = {
+  residence: "/assets/photos/env-technician-maintenance-13.jpg",
+};
+
 export const BESOINS: Besoin[] = BESOINS_DECLARES.map((b) => ({
   ...b,
-  img: photoDeLaPage(b.href) ?? b.img,
+  img: PHOTO_CHOISIE[b.id] ?? photoDeLaPage(b.href) ?? b.img,
 }));

@@ -11,6 +11,10 @@ import {
   TITRE2,
   VERRE,
 } from "./habillage";
+import SectionPliableMobile, {
+  ENTETE_DANS_BASCULE,
+} from "./SectionPliableMobile";
+import { resumeDe } from "./resume-de-section";
 import TexteRiche from "./TexteRiche";
 
 /**
@@ -23,20 +27,24 @@ export default function Deroule({ section }: { section: SectionDeroule }) {
   if (section.etapes.length === 0) return null;
 
   return (
-    <section className={styles.corpus} style={SECTION}>
+    <section className={styles.corpus} style={SECTION} data-bloc="deroule">
       <div style={LARGEUR}>
-        <div className="mg-r2" style={ENTETE}>
-          <div>
-            <div style={SURTITRE}>Le déroulé</div>
-            {section.titre ? <h2 style={TITRE2}>{section.titre}</h2> : null}
-          </div>
-          {section.intro ? (
-            <p style={CHAPEAU}>
-              <TexteRiche texte={section.intro} />
-            </p>
-          ) : null}
-        </div>
-
+        <SectionPliableMobile
+          enTete={
+            <div className="mg-r2" style={{ ...ENTETE, ...ENTETE_DANS_BASCULE }}>
+              <div>
+                <div style={SURTITRE}>Le déroulé</div>
+                {section.titre ? <h2 style={TITRE2}>{section.titre}</h2> : null}
+              </div>
+              {section.intro ? (
+                <p style={CHAPEAU}>
+                  <TexteRiche texte={section.intro} />
+                </p>
+              ) : null}
+            </div>
+          }
+          resume={resumeDe(section.etapes.map((etape) => etape.titre))}
+        >
         <div
           className="mg-rmulti"
           style={colonnes(Math.min(section.etapes.length, 3))}
@@ -74,6 +82,7 @@ export default function Deroule({ section }: { section: SectionDeroule }) {
             </div>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

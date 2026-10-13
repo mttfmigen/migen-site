@@ -20,11 +20,21 @@ import toulouse from "@/components/site/accueil/hubs/toulouse.jpg";
  * vérités : le jour où Mehdi change la photo de Lyon, il faut qu'elle change
  * aux deux endroits.
  *
+ * ET LES DEUX VÉRITÉS AVAIENT DÉJÀ DIVERGÉ. Mesure du 14/10 en production :
+ * `/implantations/` rendait bien Metz et Dijon en panneau sombre, l'accueil
+ * leur servait deux scènes d'usine, `mq-dcd9cac6ffbf.jpg` (une cimenterie)
+ * et `x-cablerie.jpg` (un métier à tisser), sous les textes alternatifs
+ * « Site industriel en Lorraine » et « Atelier industriel en Bourgogne » que
+ * rien ne documentait. Depuis le 14/10 l'accueil lit CE fichier : il ne garde
+ * plus sa propre liste d'imports, et la divergence ne peut plus revenir.
+ *
  * HUIT HUBS SUR DIX ONT LEUR PHOTO. Metz et Dijon n'en ont pas : les deux
  * fichiers sous licence manquent encore, Mehdi doit les télécharger depuis le
  * compte Envato de Migen. Les pages sont choisies et inscrites dans
  * `docs/PHOTOS-VILLES-ENVATO.md` (la cathédrale de Metz par RossHelen, même
- * série que Nantes et Bordeaux ; Meursault en Côte-d'Or pour Dijon).
+ * série que Nantes et Bordeaux ; Meursault en Côte-d'Or pour Dijon). Déposer
+ * les deux fichiers dans `components/site/accueil/hubs/` et ajouter leur ligne
+ * ci-dessous suffit : les deux pages les afficheront.
  *
  * CE QU'ON NE FAIT PAS, et c'est une règle du projet : leur poser une scène
  * d'usine en attendant. C'est précisément ce que faisait l'accueil, et c'est
@@ -32,10 +42,12 @@ import toulouse from "@/components/site/accueil/hubs/toulouse.jpg";
  * photo de la ville ». Une tuile sans photo se rend en panneau sombre, et le
  * manque se voit, ce qui est le but.
  *
- * LE CADRAGE. Le cadre d'une tuile est plus large que haut, les photos de
- * ville aussi : le centre convient. L'accueil, lui, a besoin d'un réglage par
- * photo parce que son cadre est en portrait. Les deux usages ne partagent donc
- * que l'image, pas son cadrage.
+ * LE CADRAGE RESTE PROPRE À CHAQUE USAGE, et c'est délibéré. La tuile de
+ * `/implantations/` est plus large que haute, comme les photos de ville : le
+ * centre convient. La carte de l'accueil fait 300x400, donc un cadre PORTRAIT
+ * dans lequel une photo paysage déborde horizontalement : elle a besoin d'un
+ * réglage par photo, déclaré dans `HubsAccueil.tsx`. Les deux usages partagent
+ * l'image, jamais son cadrage.
  */
 export const PHOTO_DU_HUB: Readonly<Record<string, StaticImageData>> = {
   Lyon: lyon,

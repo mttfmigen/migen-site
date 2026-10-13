@@ -29,6 +29,24 @@ import type { BlocComplement } from "@/types/offre";
 
 export interface ProprietesComplementsOffre {
   blocs: readonly BlocComplement[];
+  /**
+   * CE QUE CE COMPLÉMENT SUIT DANS LA PAGE, et pourquoi la carte en dépend.
+   *
+   * La forme « ligne de clôture » décrite plus bas ne vaut que derrière une
+   * SECTION DE CONTENU : elle ferme ce qui précède. Derrière la BANDE D'APPEL,
+   * elle n'a rien à fermer, et le résultat est un texte gris collé 18 px sous
+   * un appel à l'action qui ne le concerne pas.
+   *
+   * MESURÉ EN PRODUCTION LE 14/10, `/travaux-industriels/` à 1280 px : la
+   * section « Complément 4 » fait 90 px et ne porte AUCUNE carte, là où la
+   * maquette vivante en rend une de 1120 × 143 dans une section de 191 px.
+   * À 390 px : 162 px servis contre 349 px attendus. C'est exactement le bloc
+   * que Mehdi nomme « mal disposé » le 12/10, et la cause est ici.
+   *
+   * Défaut à « section » : les quatre appels existants gardent leur forme, et
+   * seul celui qui suit la bande d'appel la déclare.
+   */
+  suit?: "section" | "bandeAppel";
 }
 
 const SECTION_COMPLEMENT: CSSProperties = { padding: "48px 0 0" };
@@ -107,6 +125,7 @@ const ACCROCHE: CSSProperties = { fontWeight: 600, color: "var(--ink)" };
 
 export default function ComplementsOffre({
   blocs,
+  suit = "section",
 }: ProprietesComplementsOffre) {
   const retenus = blocs.filter(
     (bloc) => !!bloc.titre || !!bloc.texte || !!bloc.puces?.length,
@@ -135,8 +154,22 @@ export default function ComplementsOffre({
    * déplacé, il ferme la section qui le précède au lieu d'en ouvrir une
    * nouvelle. Dès qu'il y a un titre, une puce, ou un second bloc, la carte
    * revient telle quelle.
+   *
+   * CE QU'ELLE NE COUVRE PAS, corrigé le 14/10 : « il ferme la section qui le
+   * précède » suppose qu'une section le précède. À l'emplacement
+   * « Complément 4 », ce qui précède est la BANDE D'APPEL, et une ligne de
+   * clôture y clôt un bouton. Le texte y perdait sa carte, passait en gris
+   * 14,5 px et venait se coller 18 px sous la bande : le lecteur n'y voit plus
+   * un bloc de la page mais la légende de l'appel à l'action.
+   *
+   * CE QUE ÇA TOUCHAIT, compté sur les fiches du dépôt le 14/10 : 34 blocs
+   * perdaient leur carte, dont 27 à cet emplacement, longs de 72 à 250
+   * caractères. L'arbitrage de Mehdi portait sur UNE phrase de 90. Les 7 autres
+   * suivent bien une section de contenu et gardent la forme qu'il a demandée,
+   * « Chaque étape a un livrable défini… » comprise.
    */
   const ligneDeCloture =
+    suit === "section" &&
     retenus.length === 1 &&
     !!retenus[0].texte &&
     !retenus[0].titre &&

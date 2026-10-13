@@ -3,6 +3,8 @@ import { useId } from "react";
 import type { SectionObjections } from "@/types/contenu";
 import styles from "./Blocs.module.css";
 import { LARGEUR, SECTION, SURTITRE, TITRE2, VERRE } from "./habillage";
+import SectionPliableMobile from "./SectionPliableMobile";
+import { resumeDe } from "./resume-de-section";
 import TexteRiche from "./TexteRiche";
 
 /**
@@ -20,7 +22,7 @@ export default function Objections({ section }: { section: SectionObjections }) 
   if (section.questions.length === 0) return null;
 
   return (
-    <section className={styles.corpus} style={SECTION}>
+    <section className={styles.corpus} style={SECTION} data-bloc="objections">
       <div style={LARGEUR}>
         <div
           className="mg-r2"
@@ -38,6 +40,26 @@ export default function Objections({ section }: { section: SectionObjections }) 
             </h2>
           </div>
 
+          {/* LA FAQ SE REPLIE AUSSI, ET LE REPLI S'IMBRIQUE SANS CASSER
+              L'ACCORDÉON. C'est la seule section du dossier qui portait déjà
+              des `<details>` : un par question, liés par `name={groupe}` pour
+              que le navigateur n'en garde qu'un seul ouvert (« une seule
+              question ouverte à la fois », README).
+
+              L'ACCORDÉON EXCLUSIF RESTE EXCLUSIF. Le groupement par `name` ne
+              regarde ni la profondeur ni le parent : il lie les `<details>` qui
+              partagent le nom. Le pli de section ne porte pas de `name`, il
+              n'entre donc pas dans le groupe et n'en chasse aucune question.
+
+              LE TITRE RESTE DEHORS, dans sa colonne collante, et c'est voulu :
+              il est l'un des cinq gabarits décrits dans le module CSS qui
+              rendent leur titre une seconde fois hors de la bascule. La
+              bascule porte donc une étiquette à elle, `kicker`, et non une
+              copie du `<h2>`. */}
+          <SectionPliableMobile
+            kicker="Questions fréquentes"
+            resume={resumeDe(section.questions.map((question) => question.question))}
+          >
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10 }}>
             {section.questions.map((question) => (
               <details
@@ -73,6 +95,7 @@ export default function Objections({ section }: { section: SectionObjections }) 
               </details>
             ))}
           </div>
+          </SectionPliableMobile>
         </div>
       </div>
     </section>

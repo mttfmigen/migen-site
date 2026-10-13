@@ -5,6 +5,7 @@ import type { CSSProperties } from "react";
 import styles from "./SecteursAccueil.module.css";
 import replis from "./replis-accueil.module.css";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { altPhoto } from "@/lib/descriptions-photos";
 
 export interface SecteurAccueil {
   libelle: string;
@@ -28,9 +29,40 @@ const SECTEURS: readonly SecteurAccueil[] = [
   { libelle: "Industrie métallique", chemin: "/secteurs/industrie-metallique/" },
 ];
 
-const IMAGE_MAQUETTE = {
-  src: "/assets/web/sv-convoyeur.jpg",
-  alt: "Technicien Migen sur une ligne intralogistique",
+/**
+ * LE VISUEL DU BLOC, ET POURQUOI CE N'EST PLUS CELUI DE LA MAQUETTE.
+ *
+ * Mehdi, le 12/10 : « les Bento offres et secteur ne changent pas d'image ».
+ * Mesure du 14/10 en production, par `node scripts/verifie-photos-du-bloc.mjs
+ * --url=/` : UN défaut sur l'accueil, et c'était celui-là. La page servait
+ * `/assets/web/sv-convoyeur.jpg` DEUX FOIS, en section 9 (le focus Résidence,
+ * `FocusResidence.tsx`) et en section 19 (ici). Même fichier, deux blocs : le
+ * visuel des secteurs ne changeait pas, il reprenait celui du bloc d'avant.
+ *
+ * ET LE DÉFAUT VIENT DE LA MAQUETTE, pas du portage. Dans
+ * `maquette/site-final-autonome.html`, les deux emplacements pointent le même
+ * actif, « 0a8d08d8-8c30-451e-bea4-ffcaca359445 », c'est-à-dire la ressource
+ * r5, c'est-à-dire `assets/web/sv-convoyeur.jpg` ; elle le sert même une
+ * troisième fois sur `/expertises/`. Leurs deux `alt` étant différents, deux
+ * photos distinctes étaient bien voulues. C'est donc un écart ASSUMÉ à la
+ * maquette, demandé par Mehdi, et déclaré ici.
+ *
+ * LA PHOTO RETENUE N'EST PAS CHOISIE AU GOÛT. C'est celle que le registre
+ * attribue à `/secteurs/`, la page dont ce bloc est la fenêtre sur l'accueil
+ * (`lib/photo-par-page.ts`, ligne « /secteurs/ »). La règle est celle que
+ * Mehdi a validée le 12/10 pour les cartes : on montre la photo de la page que
+ * le bloc ouvre. `sv-convoyeur.jpg` reste au focus Résidence, qui l'avait en
+ * premier dans l'ordre de la page.
+ *
+ * Le texte alternatif est LU dans le registre, jamais retapé : c'est ce
+ * qu'exige `scripts/verifie-alt-photos.mjs`, et une description recopiée à la
+ * main finit par dériver de sa photo.
+ */
+const PHOTO_SECTEURS = "/assets/photos/il-female-engineer-inspecting-machinery-in-indust.jpg";
+
+const IMAGE_SECTEURS = {
+  src: PHOTO_SECTEURS,
+  alt: altPhoto(PHOTO_SECTEURS),
 };
 
 /*
@@ -60,7 +92,7 @@ const LIGNE: CSSProperties = {
 
 export default function SecteursAccueil({
   secteurs = SECTEURS,
-  image = IMAGE_MAQUETTE,
+  image = IMAGE_SECTEURS,
 }: Proprietes) {
   return (
     <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>

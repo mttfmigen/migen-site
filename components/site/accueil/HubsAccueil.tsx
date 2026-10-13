@@ -1,41 +1,47 @@
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import styles from "./HubsAccueil.module.css";
 import replis from "./replis-accueil.module.css";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
-import bordeaux from "./hubs/bordeaux.jpg";
-import lille from "./hubs/lille.jpg";
-import lyon from "./hubs/lyon.jpg";
-import marseille from "./hubs/marseille.jpg";
-import nantes from "./hubs/nantes.jpg";
-import paris from "./hubs/paris.jpg";
-import strasbourg from "./hubs/strasbourg.jpg";
-import toulouse from "./hubs/toulouse.jpg";
+import { PHOTO_DU_HUB } from "@/components/site/implantations/photos-hubs";
 
 export interface HubAccueil {
-  /** Ville, affichée dans la pastille blanche. */
+  /** Ville, affichée dans la pastille blanche. Sert aussi de clé photo. */
   ville: string;
   titre: string;
   /** Territoires couverts, une seule ligne. */
   couverture: string;
   chemin: string;
-  image: string | StaticImageData;
-  alt: string;
+  /**
+   * Description de la photo de la ville, pour un lecteur d'écran.
+   *
+   * ABSENTE QUAND LE HUB N'A PAS DE PHOTO, et ce n'est pas un oubli : décrire
+   * une image qui n'est pas là reviendrait à l'inventer. Les deux `alt` qui
+   * vivaient ici jusqu'au 14/10, « Site industriel en Lorraine » et « Atelier
+   * industriel en Bourgogne », annonçaient une localisation que RIEN ne
+   * documente : la première photo est une cimenterie, la seconde un métier à
+   * tisser. Deux données inventées, retirées avec leurs photos.
+   */
+  alt?: string;
   /**
    * LE POINT DE CADRAGE de la photo dans son cadre, au format de
-   * `object-position` (« center », « center 38% », « 60% top »…).
+   * `object-position` (« center », « 70% center », « center top »…).
    *
    * POURQUOI CE RÉGLAGE EXISTE. Mehdi, le 12/10 : « la photo de Bordeaux est
-   * mal cadrée », puis « pour bordeaux évite le cadrage ». Le cadre fait
-   * 400 px de haut pour environ 320 de large, donc un format PORTRAIT, alors
-   * que les photos de villes sont toutes en PAYSAGE : `object-fit: cover`
-   * centré n'en garde qu'une mince bande verticale, et le monument disparaît.
+   * mal cadrée ». Le cadre fait 300 px de large pour 400 de haut, donc un
+   * format PORTRAIT, alors que les photos de villes sont pour moitié en
+   * PAYSAGE : `object-fit: cover` centré n'en garde qu'une bande verticale, et
+   * le monument sort du cadre.
    *
-   * Jusqu'ici il n'existait AUCUN réglage par photo, et je le lui avais dit
-   * comme une limite. C'en était une : la voici levée. Chaque hub peut dire
-   * quelle part de son image doit rester dans le cadre.
+   * L'AXE UTILE DÉPEND DU RAPPORT DE LA PHOTO, et c'est le piège qui a coûté
+   * une correction pour rien. `cover` ne déborde que d'UN côté : une photo plus
+   * large que son cadre déborde horizontalement, et sa composante VERTICALE
+   * n'a alors aucun effet. La valeur posée ici jusqu'au 14/10, « center 38% »,
+   * réglait l'axe vertical d'une photo dont le débordement vertical vaut
+   * 0 pixel : elle ne changeait rien. `verification-photos.tsx` refuse
+   * désormais tout cadrage posé sur un axe sans débordement.
    *
    * Sans valeur, le centre, qui reste le bon choix pour une composition
    * symétrique.
@@ -48,14 +54,21 @@ interface Proprietes {
 }
 
 /**
- * Les dix hubs de la maquette autonome, dans son ordre, textes et photos
- * compris (relevé du 08/10 ; l'ancien relevé, sur `accueil-rendu.html` du
- * 02/10, n'en comptait que six et rattachait Bordeaux à Toulouse).
+ * Les dix hubs de la maquette autonome, dans son ordre, textes compris (relevé
+ * du 08/10 ; l'ancien relevé, sur `accueil-rendu.html` du 02/10, n'en comptait
+ * que six et rattachait Bordeaux à Toulouse).
  *
- * Huit photos de ville n'existent que dans la maquette : extraites telles
- * quelles dans `./hubs/`, importées statiquement (next/image les sert à la
- * taille de la carte). Metz et Dijon emploient des fichiers déjà présents
- * dans `public/`, identiques octet pour octet à ceux de la maquette.
+ * LA PHOTO N'EST PLUS ÉCRITE ICI, depuis le 14/10. Elle est lue dans
+ * `components/site/implantations/photos-hubs.ts`, à la clé `ville`, qui est la
+ * source unique partagée avec la mosaïque de `/implantations/`. Les deux pages
+ * portaient jusqu'ici deux listes d'imports des MÊMES huit fichiers, et elles
+ * avaient déjà divergé : `/implantations/` rendait Metz et Dijon en panneau
+ * sombre, l'accueil leur posait une scène d'usine. Une seule vérité, donc, et
+ * le jour où Mehdi dépose `hub-metz.jpg`, les deux pages l'affichent.
+ *
+ * Les huit photos sous licence vivent dans `./hubs/` et sont importées
+ * statiquement (next/image les sert à la taille de la carte). Metz et Dijon
+ * n'en ont pas : voir `photos-hubs.ts`.
  */
 const HUBS: readonly HubAccueil[] = [
   {
@@ -63,7 +76,6 @@ const HUBS: readonly HubAccueil[] = [
     titre: "Hub Lyon",
     couverture: "Siège · Grenoble, Saint-Étienne, Valence, Haute-Savoie",
     chemin: "/implantations/lyon/",
-    image: lyon,
     alt: "Lyon, la basilique de Fourvière au coucher du soleil",
   },
   {
@@ -71,7 +83,6 @@ const HUBS: readonly HubAccueil[] = [
     titre: "Hub Paris",
     couverture: "Essonne, Rouen",
     chemin: "/implantations/paris/",
-    image: paris,
     alt: "Paris et la tour Eiffel",
   },
   {
@@ -79,7 +90,6 @@ const HUBS: readonly HubAccueil[] = [
     titre: "Hub Lille",
     couverture: "Hauts-de-France",
     chemin: "/implantations/lille/",
-    image: lille,
     alt: "Façades du centre de Lille",
   },
   {
@@ -87,7 +97,6 @@ const HUBS: readonly HubAccueil[] = [
     titre: "Hub Strasbourg",
     couverture: "Alsace, Mulhouse",
     chemin: "/implantations/strasbourg/",
-    image: strasbourg,
     alt: "Strasbourg, les Ponts couverts",
   },
   {
@@ -95,7 +104,6 @@ const HUBS: readonly HubAccueil[] = [
     titre: "Hub Nantes",
     couverture: "Loire-Atlantique, Rennes, Brest",
     chemin: "/implantations/nantes/",
-    image: nantes,
     alt: "Vue aérienne de Nantes",
   },
   {
@@ -103,7 +111,6 @@ const HUBS: readonly HubAccueil[] = [
     titre: "Hub Toulouse",
     couverture: "Haute-Garonne, Albi, Tarbes, Agen",
     chemin: "/implantations/toulouse/",
-    image: toulouse,
     alt: "Toulouse, la Garonne et la ville rose",
   },
   {
@@ -111,7 +118,6 @@ const HUBS: readonly HubAccueil[] = [
     titre: "Hub Marseille",
     couverture: "Fos, Toulon, Nîmes, Perpignan",
     chemin: "/implantations/marseille/",
-    image: marseille,
     alt: "Marseille, le Vieux-Port",
   },
   {
@@ -119,30 +125,52 @@ const HUBS: readonly HubAccueil[] = [
     titre: "Hub Bordeaux",
     couverture: "Gironde, Mérignac, Charente",
     chemin: "/implantations/bordeaux/",
-    image: bordeaux,
     alt: "Bordeaux, les quais de la Garonne",
-    /* La façade occupe la moitié haute et le miroir d'eau la moitié basse :
-       un cadrage centré couperait le bâtiment en deux. On remonte le point de
-       cadrage pour garder le monument entier et une lame de reflet. */
-    cadrage: "center 38%",
+    /* LE CADRAGE DE BORDEAUX, mesuré le 14/10 et non estimé.
+       La photo fait 2000x1335, le cadre 300x400. En `cover`, elle est agrandie
+       au facteur 0,2996 : 599 px de large pour 400 de haut. Le débordement est
+       donc de 299 px HORIZONTALEMENT et de 0 px verticalement, ce qui rendait
+       « center 38% » inopérant.
+       Centrée, la fenêtre montre les colonnes 499 à 1501 de la photo, alors que
+       le bloc Saint-Michel, église et flèche, occupe les colonnes 929 à 1527 :
+       la flèche, seul monument de l'image, était coupée par le bord droit.
+       À 70 %, la fenêtre va de 699 à 1700 et le bloc y tient entier. */
+    cadrage: "70% center",
   },
   {
     ville: "Metz",
     titre: "Hub Metz",
     couverture: "Moselle, Nancy, sillon lorrain",
     chemin: "/implantations/maintenance-industrielle-metz/",
-    image: "/assets/web/mq-dcd9cac6ffbf.jpg",
-    alt: "Site industriel en Lorraine",
   },
   {
     ville: "Dijon",
     titre: "Hub Dijon",
     couverture: "Côte-d’Or, Besançon, Chalon",
     chemin: "/implantations/maintenance-industrielle-dijon/",
-    image: "/assets/web/x-cablerie.jpg",
-    alt: "Atelier industriel en Bourgogne",
   },
 ];
+
+/**
+ * LE FOND D'UNE TUILE SANS PHOTO, délibérément sombre.
+ *
+ * Mehdi, le 12/10 : « la photo de Metz ne correspond pas ». Elle ne
+ * correspondait pas parce que ce n'était pas Metz : la carte servait
+ * `mq-dcd9cac6ffbf.jpg`, une cimenterie, et Dijon `x-cablerie.jpg`, un métier à
+ * tisser. Aucune photo de Metz ni de Dijon n'est sous licence au dépôt : les
+ * deux pages Envato sont choisies et inscrites dans
+ * `docs/PHOTOS-VILLES-ENVATO.md`, il manque les fichiers.
+ *
+ * On ne remet donc PAS une scène d'usine en attendant, c'est exactement ce qui
+ * a déclenché son retour. La tuile se rend en panneau sombre, le manque se
+ * voit, et c'est le but. Même traitement que la mosaïque de `/implantations/`.
+ */
+const PANNEAU_SANS_PHOTO: CSSProperties = {
+  position: "absolute",
+  inset: 0,
+  background:
+    "linear-gradient(160deg,#2a2825 0%,#1c1b19 52%,#141311 100%)",
+};
 
 const PANCARTE: CSSProperties = {
   position: "absolute",
@@ -240,7 +268,11 @@ export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
         }}
       >
         {[0, 1].flatMap((passe) =>
-          hubs.map((hub) => (
+          hubs.map((hub) => {
+            /* La photo est lue à la clé `ville`, jamais écrite dans la carte :
+               huit hubs en ont une, Metz et Dijon non. Voir `photos-hubs.ts`. */
+            const photo = PHOTO_DU_HUB[hub.ville];
+            return (
             <Link
               key={`${hub.chemin}-${passe}`}
               href={hub.chemin}
@@ -258,18 +290,22 @@ export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
                 transition: "transform var(--tr)",
               }}
             >
-              <Image
-                src={hub.image}
-                alt={passe === 0 ? hub.alt : ""}
-                fill
-                sizes="(max-width: 760px) 86vw, 320px"
-                style={{
-                  objectFit: "cover",
-                  objectPosition: hub.cadrage ?? "center",
-                  display: "block",
-                  filter: "saturate(var(--sat)) contrast(1.04)",
-                }}
-              />
+              {photo ? (
+                <Image
+                  src={photo}
+                  alt={passe === 0 ? (hub.alt ?? "") : ""}
+                  fill
+                  sizes="(max-width: 760px) 86vw, 320px"
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: hub.cadrage ?? "center",
+                    display: "block",
+                    filter: "saturate(var(--sat)) contrast(1.04)",
+                  }}
+                />
+              ) : (
+                <span aria-hidden="true" style={PANNEAU_SANS_PHOTO} />
+              )}
               <div style={PANCARTE}>
                 <span
                   style={{
@@ -313,7 +349,8 @@ export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
                 </div>
               </div>
             </Link>
-          )),
+            );
+          }),
         )}
       </div>
       </SectionPliableMobile>

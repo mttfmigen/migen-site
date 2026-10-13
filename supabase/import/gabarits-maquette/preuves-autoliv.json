@@ -27,7 +27,7 @@
       }
     ],
     "logo": "/assets/clients/mq-a4d5eb645ce5.svg",
-    "photoHero": "/assets/photos/il-technicien-maintenance-jan-9-2026-1-1600.jpg",
+    "photoHero": "/assets/photos/robot-cellule-soudure-inspection.jpg",
     "chiffres": [
       {
         "libelle": "Effectif Migen",
@@ -193,7 +193,7 @@
         "surtitre": "Offre",
         "titre": "Sous-traitance maintenance",
         "href": "/offres/residence/",
-        "photo": "/assets/photos/il-technicien-maintenance-photo-4-1600.jpg"
+        "photo": "/assets/photos/env-assemblage-chassis-automobile.jpg"
       },
       {
         "surtitre": "Secteur",

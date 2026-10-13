@@ -5,6 +5,42 @@ import { useEffect, useRef } from "react";
 import s from "./SectionPliableMobile.module.css";
 import { enTexteNu } from "@/components/site/blocs/TexteRiche";
 
+/**
+ * LE RÉSUMÉ D'UN BLOC REPLIÉ, CONSTRUIT COMME LA MAQUETTE LE CONSTRUIT.
+ *
+ * `MigenMobile.dc.html` ne rédige pas le résumé d'une section : il le FABRIQUE
+ * depuis le contenu de la section, en joignant ses intitulés par « · »
+ * (`summary = punch | stats | items.h joints par " · "`). D'où cette fonction
+ * plutôt qu'une phrase écrite : une phrase écrite serait une donnée inventée,
+ * et l'une l'a été. `offre/GarantiesOffre.tsx` porte la mesure qui l'a fait
+ * retirer, le 11/10 : « N engagements, écrits avant la signature. » était
+ * absente des 244 captures et présente 140 fois sur le site.
+ *
+ * ELLE NE LAISSE PAS TOMBER UN ÉLÉMENT SANS INTITULÉ. Le motif d'origine
+ * écrivait `.map((p) => p.accroche).filter(Boolean)` : une puce sans accroche
+ * disparaissait du résumé en silence, et le résumé annonçait alors moins
+ * d'éléments que le bloc n'en contient. Les appelants passent donc un repli
+ * (`puce.accroche ?? puce.texte`), et c'est ici que les vides sont écartés.
+ */
+/* `resumeDe` VIT DANS `./resume-de-section`, ET N'EST PAS REEXPORTEE ICI.
+   Un reexport depuis un module « use client » reste marque client : le serveur
+   qui l'appellerait tomberait exactement comme avant, sans qu'aucun type ne
+   proteste. Laisser le chemin ouvert, c'etait garder le piege arme. Chaque
+   appelant importe donc la source neutre. */
+
+/**
+ * L'EN-TÊTE EXISTANT D'UN BLOC, PASSÉ DANS LA BASCULE SANS ÊTRE REDESSINÉ.
+ *
+ * Les en-têtes de `blocs/` sont des grilles à deux colonnes (`habillage.ENTETE`
+ * : titre à gauche, chapeau à droite). La bascule, elle, est une boîte `flex`.
+ * Sans ces deux propriétés, la grille devient un élément flexible dimensionné
+ * par son contenu et la mise en page de bureau change, alors que la règle est
+ * qu'au-dessus de 880 px RIEN ne change. `flex: 1 1 auto` lui rend toute la
+ * largeur disponible, `minWidth: 0` l'autorise à se rétrécir au lieu de
+ * déborder, et le chevron garde sa place à droite.
+ */
+export const ENTETE_DANS_BASCULE = { flex: "1 1 auto", minWidth: 0 } as const;
+
 export interface SectionPliableMobileProps {
   /** Le sur-titre de la maquette, en capitales et en accent. */
   kicker?: string;

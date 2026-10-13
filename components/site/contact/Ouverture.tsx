@@ -162,8 +162,16 @@ export default function Ouverture() {
               flexWrap: "wrap",
             }}
           >
+            {/* « Les SIX offres », mot de la maquette vivante
+                (`site-final-autonome.html`, 07/10). Le site écrivait « Les
+                cinq offres » : le mot de `accueil-rendu.html`, l'export du
+                02/10, que la porte relisait sans savoir qu'il avait vieilli.
+                Mesuré le 12/10 sur la cible de ce lien, en production :
+                `/offres/` publie SIX offres et écrit « six offres » deux fois.
+                L'étiquette annonçait donc un compte faux, démenti par la page
+                qu'elle ouvre, dans le même déploiement. */}
             <Link href="/offres/" className={styles.capsuleVerre} style={CAPSULE}>
-              Les cinq offres
+              Les six offres
             </Link>
             {/* La maquette laissait ici une seconde capsule vide. Le paragraphe
                 au-dessus dit « appelez directement l'astreinte » : sans numéro

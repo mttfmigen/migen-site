@@ -2,6 +2,7 @@
  * Contrôle de l'écran « Nous connaître », sans navigateur.
  *
  *   bun components/site/nous-connaitre/verification-nous-connaitre.tsx
+ *   bun components/site/nous-connaitre/verification-nous-connaitre.tsx --controle   (témoins)
  *
  * Sans cadre de test, comme les autres `verification.*` du projet.
  *
@@ -151,19 +152,53 @@ function doitContenir(attendus: readonly string[], quoi: string) {
 }
 
 // ------------------------------------------------------------------ le H1
-// Un seul, et c'est celui de la maquette.
-assert.equal(
-  html.split("<h1").length - 1,
-  1,
-  "la page doit porter exactement un h1",
-);
+/**
+ * UN SEUL H1, ET C'EST CELUI DE LA MAQUETTE, mot pour mot.
+ *
+ * CE QUE CETTE ASSERTION DÉCIDE, et il faut le dire en clair. Nathan Jorez, le
+ * 13/10 : « cette page est ultra spé résidence comme si c'était la seule
+ * offre. » Le chapô et la description lue par Google ont été corrigés le même
+ * jour et nomment les trois métiers. Le h1, lui, en nomme UN :
+ * « Un seul métier : technicien de maintenance. » Titre et chapô ne disent donc
+ * plus la même chose, et c'est la conséquence assumée de n'avoir corrigé que le
+ * chapô (`docs/NOUS-CONNAITRE-ARBITRAGES.md`, B8).
+ *
+ * MESURE DU 14/10, pour que personne ne la refasse : ce h1 est la COPIE DU
+ * CLIENT. `maquette/accueil-rendu.html` ligne 5208, dans l'écran
+ * `data-screen-label="Nous connaître"`, écrit exactement
+ * « Un seul métier&nbsp;: technicien de maintenance. ». La page
+ * `/nous-connaitre/` n'a aucune capture dans `maquette/rendu/` : cette tranche
+ * de la maquette EST sa référence.
+ *
+ * Nous ne le réécrivons donc pas, et cette assertion est ce qui garantit qu'un
+ * agent pressé ne le fera pas « pour réparer la contradiction ». Le jour où
+ * Mehdi tranche, elle échoue, et c'est exactement ce qu'on veut d'elle.
+ */
+function controleH1(rendu: string): void {
+  assert.equal(
+    rendu.split("<h1").length - 1,
+    1,
+    "la page doit porter exactement un h1",
+  );
 
-const [h1Maquette] = extrait(/<h1[^>]*>([\s\S]*?)<\/h1>/g);
-assert.ok(h1Maquette, "la maquette ne contient pas de h1 dans cette tranche");
+  const [attendu] = extrait(/<h1[^>]*>([\s\S]*?)<\/h1>/g);
+  assert.ok(attendu, "la maquette ne contient pas de h1 dans cette tranche");
+  const [servi] = [...rendu.matchAll(/<h1[^>]*>([\s\S]*?)<\/h1>/g)].map((m) =>
+    normalise(m[1]),
+  );
+  assert.equal(
+    servi,
+    attendu,
+    "le h1 rendu s'écarte de celui de la maquette : c'est la copie du client, " +
+      "elle ne se réécrit pas sans son accord (docs/NOUS-CONNAITRE-ARBITRAGES.md, B8)",
+  );
+}
+
+controleH1(html);
+
 const [h1Rendu] = [...html.matchAll(/<h1[^>]*>([\s\S]*?)<\/h1>/g)].map((m) =>
   normalise(m[1]),
 );
-assert.equal(h1Rendu, h1Maquette, "le h1 rendu s'écarte de celui de la maquette");
 
 // --------------------------------------------------- le titre n'est pas le H1
 // Règle du projet : le meta title se lit dans une page de résultats, le h1 sur
@@ -490,16 +525,22 @@ for (const { maquette, rendu } of CORRECTIONS) {
  * en dur : la maquette décrit l'offre Résidence et elle seule à cet endroit.
  * C'est une correction assumée, au même titre que les cinq du dessus.
  */
-for (const metier of [
+const METIERS_DU_CHAPO = [
   "la maintenance de vos machines",
   "le bureau d'études qui les conçoit et les met en conformité",
   "les travaux industriels qui les déplacent, les montent et les démarrent",
-]) {
-  assert.ok(
-    texteRendu.includes(metier),
-    `métier absent du chapô, la page redevient « ultra spé résidence » : « ${metier} »`,
-  );
+] as const;
+
+function controleTroisMetiers(texte: string): void {
+  for (const metier of METIERS_DU_CHAPO) {
+    assert.ok(
+      texte.includes(metier),
+      `métier absent du chapô, la page redevient « ultra spé résidence » : « ${metier} »`,
+    );
+  }
 }
+
+controleTroisMetiers(texteRendu);
 
 // Le compte de clients de la frise, rendu mot pour mot : présent dans la
 // maquette ET dans le rendu.
@@ -522,9 +563,71 @@ assert.deepEqual(
   "l'ordre des sections de la page s'écarte de celui de la maquette",
 );
 
+/* --------------------------------------------- la porte sait-elle échouer ? */
+/**
+ * CETTE PORTE N'AVAIT AUCUN TÉMOIN jusqu'au 14/10, et ce n'est pas un détail :
+ * elle a déjà passé au vert pendant des jours sur une attente PÉRIMÉE (voir la
+ * note du 13/10 dans `CORRECTIONS`), et personne ne pouvait dire si elle savait
+ * encore tomber. Une absence qu'on n'a pas vue échouer ne prouve rien.
+ *
+ * Les témoins sont joués À CHAQUE PASSAGE, pas seulement avec `--controle` :
+ * une preuve qu'il faut demander n'est jamais demandée. Le drapeau ne fait
+ * qu'imprimer, témoin par témoin, l'assertion qui est tombée.
+ *
+ * Chaque témoin dit SUR QUELLE assertion il doit tomber. Sans ce fragment,
+ * `assert.throws` accepterait n'importe quelle `AssertionError` : un sabotage
+ * du h1 qui tomberait sur « conteneur manquant » laisserait l'assertion du h1
+ * non éprouvée, et la porte paraîtrait armée sans l'être.
+ */
+const MODE_CONTROLE = process.argv.includes("--controle");
+
+const TEMOINS: [string, () => void, string][] = [
+  [
+    "le h1 réécrit (la contradiction « réparée » dans notre dos)",
+    () => controleH1(html.replace(/(<h1[^>]*>)[\s\S]*?(<\/h1>)/, "$1Un seul métier : l'industrie qui tourne.$2")),
+    "s'écarte de celui de la maquette",
+  ],
+  [
+    "un second h1 posé",
+    () => controleH1(`${html}<h1>Deuxième titre</h1>`),
+    "exactement un h1",
+  ],
+  [
+    "le bureau d'études retiré du chapô",
+    () => controleTroisMetiers(texteRendu.replace(METIERS_DU_CHAPO[1], "")),
+    "métier absent du chapô",
+  ],
+  [
+    "les travaux industriels retirés du chapô",
+    () => controleTroisMetiers(texteRendu.replace(METIERS_DU_CHAPO[2], "")),
+    "métier absent du chapô",
+  ],
+];
+
+for (const [nom, sabotage, attendu] of TEMOINS) {
+  assert.throws(
+    sabotage,
+    (erreur: unknown) => {
+      assert.ok(erreur instanceof assert.AssertionError, `${nom} : l'échec n'est pas une assertion`);
+      assert.ok(
+        String(erreur.message).includes(attendu),
+        `la porte a bien échoué sur « ${nom} », mais sur une AUTRE assertion ` +
+          `(attendu « ${attendu} », obtenu « ${erreur.message} ») : l'assertion visée reste non éprouvée`,
+      );
+      if (MODE_CONTROLE) console.log(`  témoin vu : ${nom}\n             → « ${attendu} »`);
+      return true;
+    },
+    `la porte n'a pas vu : ${nom}`,
+  );
+}
+
 console.log(
   `Nous connaître : ${ORDRE.length} sections, h1 unique, titre distinct, ` +
     `${conteneurs + CONTENEURS_AJOUTES} conteneurs, ` +
     `${OFFRES_ATTENDUES.length} offres joignables, ` +
-    `aucun lien inerte, aucune copie interdite.`,
+    `aucun lien inerte, aucune copie interdite ; ${TEMOINS.length} témoins détectés.`,
+);
+console.log(
+  `ARBITRAGE OUVERT, B8 : le h1 « ${h1Rendu} » nomme un métier sur ` +
+    `${METIERS_DU_CHAPO.length}. Copie du client (maquette/accueil-rendu.html, ligne 5208), non réécrite.`,
 );

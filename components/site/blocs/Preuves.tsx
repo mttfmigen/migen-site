@@ -2,6 +2,8 @@ import type { CSSProperties, ReactNode } from "react";
 import type { Preuve, SectionPreuves } from "@/types/contenu";
 import styles from "./Blocs.module.css";
 import { colonnes, LARGEUR, SECTION, SURTITRE, TITRE2 } from "./habillage";
+import SectionPliableMobile from "./SectionPliableMobile";
+import { resumeDe } from "./resume-de-section";
 import TexteRiche from "./TexteRiche";
 
 const CARTE: CSSProperties = {
@@ -73,15 +75,21 @@ export default function Preuves({ section }: { section: SectionPreuves }) {
   if (section.preuves.length === 0) return null;
 
   return (
-    <section style={SECTION}>
+    <section style={SECTION} data-bloc="preuves">
       <div style={LARGEUR}>
-        <div style={{ marginBottom: 38 }}>
-          <div style={SURTITRE}>Nos dernières réalisations</div>
-          <h2 style={{ ...TITRE2, maxWidth: "24ch" }}>
-            {section.titre ?? "Ce que nous avons fait, chez qui, et comment"}
-          </h2>
-        </div>
-
+        <SectionPliableMobile
+          enTete={
+            <span style={{ display: "block", marginBottom: 38 }}>
+              <span style={{ ...SURTITRE, display: "block" }}>
+                Nos dernières réalisations
+              </span>
+              <h2 style={{ ...TITRE2, maxWidth: "24ch" }}>
+                {section.titre ?? "Ce que nous avons fait, chez qui, et comment"}
+              </h2>
+            </span>
+          }
+          resume={resumeDe(section.preuves.map((preuve) => preuve.titre))}
+        >
         <div
           className="mg-rmulti"
           style={{ ...colonnes(Math.min(section.preuves.length, 3)), gap: 16 }}
@@ -103,6 +111,7 @@ export default function Preuves({ section }: { section: SectionPreuves }) {
             ),
           )}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

@@ -12,8 +12,20 @@ import { pageParChemin } from "@/lib/contenu";
 import { metadonneesSeo } from "@/lib/seo/metadonnees";
 
 /**
- * Page contact, écran « Contact / devis » de la maquette
- * (`maquette/accueil-rendu.html`, lignes 2950 à 3024).
+ * Page contact, écran « Contact / devis » de la maquette.
+ *
+ * SA RÉFÉRENCE EST LA MAQUETTE VIVANTE, `maquette/site-final-autonome.html`,
+ * repérée par son `data-screen-label="Contact / devis"`. `/contact/` n'a pas
+ * de capture dans `maquette/rendu/` (les 248 captures couvrent le corpus, et
+ * cet écran a un haut de page sur mesure) : c'est l'application elle-même qui
+ * fait foi, comme le dit `docs/PASSATION.md` §1.
+ *
+ * ON A LONGTEMPS LU LE MAUVAIS FICHIER. Jusqu'au 12/10, la porte relisait
+ * `maquette/accueil-rendu.html` (lignes 2950 à 3024), un export du 02/10. Les
+ * deux fichiers ne disent pas la même chose : l'export écrit « Les cinq
+ * offres », la maquette vivante du 07/10 écrit « Les six offres ». La porte
+ * validait donc une étiquette périmée, pendant que `/offres/` publiait six
+ * offres. Elle lit maintenant la maquette vivante.
  *
  * POURQUOI UNE ROUTE STATIQUE ET NON LA BASE, comme les ~200 pages à gabarit :
  * cet écran est unique. Il a sa mise en page, ses sections et son formulaire, et
@@ -40,6 +52,22 @@ import { metadonneesSeo } from "@/lib/seo/metadonnees";
  * une virgule. Les trois cibles internes posées (`/offres/`, `/carriere/`,
  * `/implantations/`) ont été vérifiées à 200 : poser un lien mort sur une page
  * citée par les 225 autres est exactement le défaut qu'on répare ici.
+ *
+ * L'ORDRE ET LE RYTHME DES SECTIONS, mesurés le 12/10 contre la production.
+ *
+ * La maquette tient TROIS sections : ouverture (`#form-page`), « Après votre
+ * demande » (les trois cartes, et la carte candidature au milieu), « Nos
+ * agences ». Le site en tient QUATRE, parce que la carte candidature a sa
+ * section depuis l'arbitrage de Mehdi du 12/10.
+ *
+ * Son rythme vertical se lit sur ses paddings : `70px 40px 0` pour l'ouverture,
+ * `var(--sec) 0 0` pour les sections intermédiaires, `var(--sec) 0 var(--sec)`
+ * pour celle qui FERME la page. La quatrième section avait été ajoutée sans
+ * déplacer cette fermeture : `Agences` la portait encore, `PourLesTechniciens`
+ * non. Mesuré en production, écarts entre contenus : 120 / 120 / **240** / **0**
+ * px à 1280 px, 64 / 64 / **128** / **0** px à 390 px. Un trou double avant la
+ * bande technicien, et cette bande collée au pied de page. La fermeture est
+ * passée à la section qui ferme vraiment.
  */
 
 export const revalidate = 3600;

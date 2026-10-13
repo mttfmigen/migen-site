@@ -1,6 +1,8 @@
 import type { SectionGaranties } from "@/types/contenu";
 import styles from "./Blocs.module.css";
 import { LARGEUR, PROSE_FORT, SECTION, SURTITRE, TITRE2, VERRE } from "./habillage";
+import SectionPliableMobile from "./SectionPliableMobile";
+import { resumeDe } from "./resume-de-section";
 import TexteRiche from "./TexteRiche";
 
 /**
@@ -14,13 +16,17 @@ export default function Garanties({ section }: { section: SectionGaranties }) {
   if (section.puces.length === 0) return null;
 
   return (
-    <section className={styles.corpus} style={SECTION}>
+    <section className={styles.corpus} style={SECTION} data-bloc="garanties">
       <div style={LARGEUR}>
-        <div style={{ marginBottom: 26 }}>
-          <div style={SURTITRE}>Nos engagements</div>
-          <h2 style={TITRE2}>{section.titre ?? "Ce que nous garantissons."}</h2>
-        </div>
-
+        <SectionPliableMobile
+          enTete={
+            <span style={{ display: "block", marginBottom: 26 }}>
+              <span style={{ ...SURTITRE, display: "block" }}>Nos engagements</span>
+              <h2 style={TITRE2}>{section.titre ?? "Ce que nous garantissons."}</h2>
+            </span>
+          }
+          resume={resumeDe(section.puces.map((puce) => puce.accroche ?? puce.texte))}
+        >
         <div style={{ ...VERRE, padding: "30px 32px 18px" }}>
           {section.puces.map((puce) => (
             <div
@@ -63,6 +69,7 @@ export default function Garanties({ section }: { section: SectionGaranties }) {
             </div>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

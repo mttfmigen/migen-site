@@ -135,6 +135,59 @@ function vivierDuSujet(attendus) {
  *      pneumatique tombe toujours.
  * Le nombre de replis tolérés est exactement le manque, jamais un de plus.
  */
+/**
+ * LE TROU QUE L'ÉTIQUETTE NE VOIT PAS, fermé le 14/10.
+ *
+ * `env-inspection-auto-avec-equipe.jpg` porte le thème « auto », et c'est
+ * juste : on y voit une voiture. Elle passait donc le contrôle d'étiquette
+ * ci-dessus sur `/preuves/stellantis-grand-est/`, une usine automobile. Sauf
+ * que la photo montre un GARAGE DE QUARTIER, capot ouvert et pièces pendues au
+ * mur. Bon secteur, mauvais décor, et aucune porte ne le disait : celle-ci
+ * jugeait l'étiquette, et `verifie-photo-sujet.mjs` a retiré `/preuves/` de ses
+ * adresses commerciales le même jour, à raison, pour rendre à JELD-WEN ses
+ * photos de bois.
+ *
+ * La liste des photos concernées n'est PAS recopiée ici : elle est lue dans
+ * `verifie-photo-sujet.mjs`, qui l'établit en ouvrant les images une par une.
+ * Une seule liste, un seul propriétaire. Si elle devient illisible, cette porte
+ * refuse de conclure plutôt que de passer au vert sans l'avoir appliquée.
+ *
+ * CE QUE LA RÈGLE ACCORDE, et c'est l'arbitrage de Mehdi du 13/10 : une page a
+ * droit à la lecture de SON secteur. Le bois est chez lui sur un cas de
+ * menuiserie, l'aviation sur /secteurs/aeronautique/, le laboratoire sur un cas
+ * pharmaceutique. « autre » et « bureau » ne sont la lecture d'aucun secteur :
+ * un garage, une baie de brassage et un portrait de bureau ne sont chez eux
+ * nulle part.
+ */
+const LECTURE_LEGITIME = { aeronautique: "aviation", menuiserie: "bois", pharma: "laboratoire" };
+
+const sourceSujet = (() => {
+  try {
+    return readFileSync("scripts/verifie-photo-sujet.mjs", "utf8");
+  } catch {
+    return "";
+  }
+})();
+const blocSujet = sourceSujet.slice(sourceSujet.indexOf("const HORS_INDUSTRIE = ["), sourceSujet.indexOf("const INTERDITES"));
+/** fichier -> ce que le visiteur y lit en une seconde. */
+const LECTURE_DE = new Map(
+  [...blocSujet.matchAll(/fichier:\s*"([^"]+)"[\s\S]*?litComme:\s*"([^"]+)"/g)].map((m) => [m[1], m[2]]),
+);
+if (LECTURE_DE.size < 10 || [...LECTURE_DE.keys()].some((f) => !themesDe.has(f))) {
+  console.error(
+    "porte non concluante : la liste HORS_INDUSTRIE de scripts/verifie-photo-sujet.mjs " +
+      `est illisible ou désaccordée du registre (${LECTURE_DE.size} entrée(s) lues)`,
+  );
+  process.exit(2);
+}
+
+/** Les photos dont le DÉCOR raconte autre chose que le secteur de la page. */
+function horsDecor(servies, attendus) {
+  if (!attendus.length) return [];
+  const siennes = new Set(attendus.map((t) => LECTURE_LEGITIME[t]).filter(Boolean));
+  return servies.filter((f) => LECTURE_DE.has(f) && !siennes.has(LECTURE_DE.get(f)));
+}
+
 function horsSujet(servies, attendus) {
   if (!attendus.length) return [];
   const etrangeres = servies.filter((f) => ![...attendus].some((a) => themesDe.get(f).has(a)));
@@ -177,9 +230,30 @@ if (CONTROLE) {
   let bons = 0;
   for (const [nom, servies, attendus, doitTomber] of CAS) {
     const tombe = horsSujet(servies, attendus).length > 0;
-    console.log(`  ${tombe === doitTomber ? "OK  " : "RATÉ"}  ${nom.padEnd(28)} ${tombe ? "refusé" : "accepté"}`);
+    console.log(`  ${tombe === doitTomber ? "OK  " : "RATÉ"}  ${nom.padEnd(40)} ${tombe ? "refusé" : "accepté"}`);
     if (tombe === doitTomber) bons++;
   }
+
+  /* Le DÉCOR. Chaque cas oppose deux pages à la MÊME photo : seule l'adresse
+     change, donc c'est bien le droit de la page que la règle juge, et pas la
+     photo. Sans le cas accepté, elle interdirait le bois à JELD-WEN. */
+  const parLecture = (l) => [...LECTURE_DE].find(([, x]) => x === l)?.[0];
+  const DECOR = [
+    ["garage sur un cas automobile", parLecture("autre"), ["auto"], true],
+    ["bois sur un cas de menuiserie", parLecture("bois"), ["menuiserie"], false],
+    ["bois sur un cas de logistique", parLecture("bois"), ["logistique"], true],
+    ["aviation sur /secteurs/aeronautique/", parLecture("aviation"), ["aeronautique"], false],
+    ["aviation sur une page de mécanique", parLecture("aviation"), ["mecanique"], true],
+    ["laboratoire sur un cas pharmaceutique", parLecture("laboratoire"), ["pharma"], false],
+    ["laboratoire sur un cas de chimie", parLecture("laboratoire"), ["chimie"], true],
+    ["une photo hors liste n'est jamais reprochée", photos.find((p) => !LECTURE_DE.has(p.fichier)).fichier, ["auto"], false],
+  ];
+  for (const [nom, photo, attendus, doitTomber] of DECOR) {
+    const tombe = horsDecor([photo], attendus).length > 0;
+    console.log(`  ${tombe === doitTomber ? "OK  " : "RATÉ"}  ${nom.padEnd(40)} ${tombe ? "refusé" : "accepté"}`);
+    if (tombe === doitTomber) bons++;
+  }
+  CAS.push(...DECOR);
   // La déduction du secteur sait-elle lire une fiche ?
   const sondes = [
     ["AMAZON, « centre logistique ORY4 »", "Maintenir un centre logistique qui ne ferme jamais", "logistique"],
@@ -243,6 +317,12 @@ for (let i = 0; i < aControler.length; i += 12) {
         defauts.push(
           `${p.url}\n      ${f} [${[...themesDe.get(f)].join(", ")}]` +
             `\n      attendu ${p.attendus.join(" ou ")}, d'après ${p.source}`,
+        );
+      }
+      for (const f of horsDecor(servies, p.attendus)) {
+        defauts.push(
+          `${p.url}\n      ${f} se lit comme : ${LECTURE_DE.get(f)}` +
+            `\n      la page parle de ${p.attendus.join(" ou ")}, d'après ${p.source}`,
         );
       }
     }),

@@ -417,8 +417,13 @@ export default function PageOffre({
             nommées : sans donnée, rien n'est rendu. Voir
             `ComplementsOffre.tsx` (ajouté le 07/10 pour
             `/offres/residence/prestataire-ou-salarie/`). */}
+        {/* `suit="bandeAppel"` : CET emplacement vient juste après la bande
+            d'appel sombre, pas après une section de contenu. Une ligne de
+            clôture n'y clôt rien, et le texte sortait de sa carte pour venir
+            se coller sous le bouton. Corrigé le 14/10, mesuré sur
+            `/travaux-industriels/` (section de 90 px au lieu de 191). */}
         {contenu.complementOffre?.length ? (
-          <ComplementsOffre blocs={contenu.complementOffre} />
+          <ComplementsOffre blocs={contenu.complementOffre} suit="bandeAppel" />
         ) : null}
 
         {/* -------------------------------------------- 8. « 05 Déroulé » */}

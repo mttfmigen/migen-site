@@ -35,6 +35,15 @@ import styles from "./Contact.module.css";
  *     section du document, elle doit figurer dans sa structure. Dans la
  *     maquette c'étaient deux `div`, parce que la carte vivait sous le `h2` de
  *     « Après votre demande ».
+ *   · ELLE FERME LA PAGE, DONC ELLE PORTE LA FERMETURE. La maquette ferme sa
+ *     dernière section par `padding:var(--sec) 0 var(--sec)` et laisse les
+ *     intermédiaires à `var(--sec) 0 0`. Déplacée en fin de page le 12/10,
+ *     cette bande avait gardé le gabarit d'une section intermédiaire : mesuré
+ *     en production le 12/10, écarts de 120 / 120 / **240** / **0** px entre
+ *     contenus à 1280 px (64 / 64 / 128 / 0 à 390 px). Deux défauts dans le
+ *     même oubli : un trou double avant elle, et la carte candidature COLLÉE
+ *     au pied de page, sans un pixel d'air. La règle de la maquette est
+ *     maintenant appliquée à la bonne section.
  */
 
 /** L'habillage de verre de la maquette, recopié valeur par valeur. */
@@ -49,7 +58,7 @@ const VERRE_CARTE: CSSProperties = {
 
 export default function PourLesTechniciens() {
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    <section style={{ padding: "var(--sec) 0 var(--sec)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div data-reveal="">
           <Link

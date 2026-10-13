@@ -178,13 +178,36 @@ if (horsRegistre.length) {
   process.exit(2);
 }
 
-/** Les familles d'adresses qui vendent un SERVICE, et non un marché. */
+/**
+ * Les familles d'adresses qui vendent un SERVICE, et non un marché.
+ *
+ * `/preuves/` EN A ÉTÉ RETIRÉ LE 14/10, et ce n'est pas un assouplissement :
+ * c'est la fin d'une contradiction entre deux règles posées le même jour.
+ *
+ *   1. « Aucune photo de menuiserie, d'aviation ou de salle blanche sur une
+ *      page commerciale », parce qu'un avion fait croire à un autre métier.
+ *   2. « La photo d'une page de cas montre le secteur du cas. »
+ *
+ * Tant que `/preuves/` figurait ici, la règle 1 battait la règle 2 et cette
+ * porte reprochait à la page JELD-WEN de montrer de la menuiserie. Or JELD-WEN
+ * EST un menuisier. Mesuré le 14/10 contre la production : 11 signalements,
+ * dont 10 de cette nature (JELD-WEN et le bois, Autoliv, Stellantis et Eaton
+ * et l'automobile, Tournaire et la pharmacie, VPK et le bois). Une porte qui
+ * crie au loup dix fois sur onze se fait ignorer, et le onzième, le vrai, se
+ * cache dans le bruit : une photo d'aviation sur
+ * `/expertises/mecanique/lubrification/`, qui est bien une page commerciale.
+ *
+ * CE QUI NE DEVIENT PAS AVEUGLE POUR AUTANT, et c'est le point : qu'une page
+ * de cas montre LE SIEN de secteur, et pas celui d'un autre, reste vérifié par
+ * `scripts/verifie-photos-du-secteur.mjs`, écrite pour cela, qui déduit le
+ * secteur attendu du texte de la fiche. De la menuiserie sur un cas automobile
+ * y tombe toujours. Deux portes, un métier chacune, aucun trou entre les deux.
+ */
 const PREFIXES_COMMERCIAUX = [
   "/offres/",
   "/travaux-industriels/",
   "/bureau-etudes/",
   "/expertises/",
-  "/preuves/",
   "/ressources/",
 ];
 
@@ -406,6 +429,30 @@ if (CONTROLE) {
   const EXCEPTIONS = [
     ["avion sur son marché", injecte("/secteurs/aeronautique/", "env-entretien-avion-22-sept-2026.jpg")],
     ["bois sur son marché", injecte("/secteurs/menuiserie-industrielle/", "env-menuiserie-industrie.jpg")],
+    /* VERROU DU 14/10. Cette épreuve existe pour qu'on ne puisse pas remettre
+       `/preuves/` dans les préfixes commerciaux sans que le témoin le dise.
+       JELD-WEN EST un menuisier : du bois sur sa page de cas est son sujet, pas
+       une faute. Le jour où quelqu'un rétablit l'ancienne liste en croyant
+       durcir la porte, cette ligne tombe et explique pourquoi. Ce que ça
+       n'autorise pas : un secteur ÉTRANGER au cas, qui reste refusé par
+       `scripts/verifie-photos-du-secteur.mjs`. */
+  ];
+
+  /**
+   * HORS CONTRÔLE ASSUMÉ, et c'est une troisième catégorie, pas une exception
+   * de marché déguisée.
+   *
+   * Une exception de marché dit « cette photo est refusée partout SAUF sur le
+   * marché qui la revendique ». Une page de cas, elle, ne relève plus du tout
+   * de cette porte : son sujet est jugé par `verifie-photos-du-secteur.mjs`.
+   * Confondre les deux états rendrait le témoin menteur sur ce qu'il prouve.
+   *
+   * L'épreuve exige donc l'état EXACT `hors-controle`. Le jour où quelqu'un
+   * remet `/preuves/` dans les préfixes commerciaux, la photo deviendra un
+   * `manquement` et cette ligne tombera en le disant.
+   */
+  const HORS_CONTROLE_ASSUME = [
+    ["bois sur le cas d'un menuisier", injecte("/preuves/jeld-wen/", "env-photos-industrie-menuiserie.jpg")],
   ];
 
   const releves = manquements(copie);
@@ -427,11 +474,20 @@ if (CONTROLE) {
     if (ok) respectees++;
   }
 
-  const total = FAUTES.length + EXCEPTIONS.length;
-  const bons = detectees + respectees;
+  let assumees = 0;
+  for (const [nom, p] of HORS_CONTROLE_ASSUME) {
+    const j = jugement(p, injectee(p));
+    const ok = !estRelevee(p) && j.etat === "hors-controle";
+    console.log(`  ${ok ? "OK  " : "RATÉ"}  ${nom.padEnd(34)} ${p.url} ${injectee(p)} ${j.etat}`);
+    if (ok) assumees++;
+  }
+
+  const total = FAUTES.length + EXCEPTIONS.length + HORS_CONTROLE_ASSUME.length;
+  const bons = detectees + respectees + assumees;
   console.log(
     `\ntémoin : ${detectees}/${FAUTES.length} fautes détectées, ` +
-      `${respectees}/${EXCEPTIONS.length} exceptions respectées` +
+      `${respectees}/${EXCEPTIONS.length} exceptions respectées, ` +
+      `${assumees}/${HORS_CONTROLE_ASSUME.length} hors contrôle assumé(s)` +
       (bons === total ? "" : `  CONTRÔLE ÉCHOUÉ`),
   );
   process.exit(bons === total ? 0 : 1);

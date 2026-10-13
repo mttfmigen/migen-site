@@ -67,3 +67,6 @@ design_handoff_migen_site/maquette/migen-store.js
 design_handoff_migen_site/maquette/support.js
 design_handoff_migen_site/maquette/_ds/
 design_handoff_migen_site/Migen - Site final (autonome).html
+
+# Le graphe de code, regenerable par /graphify : un artefact, pas une source.
+graphify-out/

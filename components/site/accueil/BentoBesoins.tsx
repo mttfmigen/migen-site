@@ -4,6 +4,7 @@ import { useState, type CSSProperties } from "react";
 import styles from "./BentoBesoins.module.css";
 import replis from "./replis-accueil.module.css";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { cadragePhoto } from "@/lib/cadrage-photos";
 
 export interface Besoin {
   /** Identifiant stable, sert de clé de liste et d'ancre du panneau déplié. */
@@ -72,6 +73,27 @@ const NUMERO: CSSProperties = {
   font: "600 11px ui-monospace,Menlo,monospace",
   color: "var(--ink4)",
 };
+
+/**
+ * LE RAPPORT DU CADRE DE LA VIGNETTE, mesuré et non estimé.
+ *
+ * La section fait 1200 px de large moins 40 de gouttière de chaque côté, soit
+ * 1120. Le panneau déplié retire 28 px de part et d'autre, soit 1064, et sa
+ * grille `1.2fr .8fr` avec 26 px d'écart donne 415 px à la colonne de droite.
+ * La vignette y est haute de 132 px : 415 / 132 = 3,15. Sur téléphone la
+ * grille passe à une colonne et le rapport ne fait qu'augmenter.
+ *
+ * POURQUOI CETTE VALEUR SERT À QUELQUE CHOSE. `cadragePhoto` ne cadre que dans
+ * un cadre de rapport 1,2 ou plus, parce qu'en dessous un portrait ne perd
+ * presque rien. 3,15 est très au-dessus : une photo PORTRAIT posée ici en
+ * `cover` centré perd la moitié de sa hauteur et tombe sur le torse, pas sur le
+ * visage. Mesure du 14/10 : `il-technicien-maintenance-jan-7-2026-1600.jpg`,
+ * la photo de la case « Full service », est l'un des 31 portraits du registre,
+ * et elle était posée ici sans aucun `object-position`. Le même défaut, et le
+ * même remède, que `scripts/verifie-cadrage-portraits.mjs` tient sur les 92
+ * autres pages depuis le 09/10.
+ */
+const RAPPORT_VIGNETTE = 415 / 132;
 
 /*
  * Les styles qui dépendent de l'ouverture, recopiés du getter `needs` de la
@@ -405,7 +427,9 @@ export default function BentoBesoins({
                             height: 132,
                             borderRadius: "var(--rad-s)",
                             marginBottom: 12,
-                            background: `var(--ph) url('${n.img}') center/cover no-repeat`,
+                            background: `var(--ph) url('${n.img}') ${
+                              cadragePhoto(n.img, RAPPORT_VIGNETTE) ?? "center"
+                            }/cover no-repeat`,
                             filter: "saturate(var(--sat)) contrast(1.05)",
                             opacity: "var(--ph-op)",
                           }}

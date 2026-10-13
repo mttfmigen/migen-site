@@ -256,6 +256,42 @@ dans ses propres mots, s'il veut la rouvrir :
 1. « Un seul métier : l'industrie qui tourne. » (reprend le chapô servi)
 2. « Un seul métier, trois façons de le faire. »
 
+> **VÉRIFIÉ LE 14/10, et c'est la mesure qui ferme la question, pas cette
+> note.** L'entrée disait « sa maquette, verbatim » sans dire où : une doc qui
+> affirme sans localiser s'est déjà trompée une journée entière sur ce projet
+> (`docs/PASSATION.md` §8.10). La ligne exacte, relue :
+>
+> ```
+> maquette/accueil-rendu.html:5208
+> <h1 style="font:600 calc(clamp(36px,4.2vw,62px) * var(--ts))/1.03 …">Un seul métier&nbsp;: technicien de maintenance.</h1>
+> ```
+>
+> Elle se trouve dans `<main data-screen-label="Nous connaître">`, ouvert ligne
+> 5202, et `/nous-connaitre/` n'a **aucune capture** dans `maquette/rendu/`
+> (498 fichiers, zéro qui contienne « connaitre ») : cette tranche de la
+> maquette EST sa référence. Mesure en production le même jour, le h1 servi est
+> `Un seul métier : technicien de maintenance.`, identique.
+>
+> **C'est donc bien la copie du client, et elle n'est pas touchée.** Ce qui
+> change, c'est que la porte sait maintenant le dire et le prouver : l'assertion
+> du h1 de `verification-nous-connaitre.tsx` porte le motif de l'arbitrage, la
+> porte imprime à chaque passage « ARBITRAGE OUVERT, B8 », et elle a désormais
+> **quatre témoins** qui prouvent qu'elle sait échouer, dont un qui réécrit le
+> h1 avec la formulation n° 1 ci-dessus. Elle n'en avait aucun avant le 14/10,
+> et elle avait déjà passé au vert sur une attente périmée (note du 13/10 dans
+> `CORRECTIONS`).
+>
+> ```bash
+> bun components/site/nous-connaitre/verification-nous-connaitre.tsx --controle
+> ```
+>
+> **Ce qui attend toujours Mehdi, et rien d'autre** : un mot. Si « Un seul
+> métier : technicien de maintenance. » est sa formule, elle reste et la
+> contradiction avec le chapô est assumée. S'il veut qu'il nomme les trois
+> métiers, la formulation n° 1 ou n° 2 est posée en une ligne dans
+> `Ouverture.tsx`, et les deux portes à retourner sont nommées : l'assertion du
+> h1 ci-dessus et son témoin.
+
 ### B9. « Nos terrains d'excellence » ne vend que le placement
 
 `TerrainsExcellence.tsx`, maquette ligne 5281, copie du client au caractère près
