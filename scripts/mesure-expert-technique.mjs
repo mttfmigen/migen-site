@@ -77,14 +77,23 @@ const MOT = /\bt[eé]chnicien(?:ne)?s?\b/gi;
 const navigateur = await chromium.launch({ channel: "chrome" });
 let total = 0;
 const lignes = [];
+/* LES PAGES QUI N'ONT PAS RÉPONDU, et pourquoi elles sont retenues ici.
+   Jusqu'au 13/10 au soir, une page injoignable posait `process.exitCode = 2`
+   puis passait à la suivante, et la mesure rendait quand même un TOTAL, dans
+   les mêmes mots qu'une mesure complète. Les dix pages hors d'atteinte, elle
+   annonçait « 0 TOTAL dans le <main> » : un compte qui ressemble à un triomphe
+   alors que rien n'a été lu. Un total partiel présenté comme un total est un
+   faux vert, et c'est la chose que ce dépôt se refuse. */
+const injoignables = [];
 
 for (const url of PAGES) {
   const page = await navigateur.newPage({ viewport: { width: 1280, height: 860 } });
   const reponse = await page.goto(`${SITE}${url}`, { waitUntil: "networkidle" });
   if (!reponse || reponse.status() !== 200) {
-    console.error(`${url} : HTTP ${reponse ? reponse.status() : "aucune réponse"}`);
+    const motif = `${url} : HTTP ${reponse ? reponse.status() : "aucune réponse"}`;
+    console.error(motif);
+    injoignables.push(motif);
     await page.close();
-    process.exitCode = 2;
     continue;
   }
   await page.waitForTimeout(300);
@@ -107,6 +116,17 @@ console.log(`« technicien » dans le <main> servi, ${PAGES.length} pages de la 
 for (const l of lignes) {
   console.log(`  ${String(l.n).padStart(2)}   ${l.url}   (page entière : ${l.page})`);
 }
+/* AUCUN TOTAL SI LA MESURE EST INCOMPLÈTE. Le détail par page reste affiché,
+   il renseigne ; le total, lui, mentirait. */
+if (injoignables.length) {
+  console.log(
+    `\nMESURE NON CONCLUANTE : ${injoignables.length} page(s) sur ${PAGES.length} ` +
+      `injoignable(s), aucun total n'est rendu.`,
+  );
+  for (const m of injoignables) console.log(`  ${m}`);
+  process.exit(2);
+}
+
 console.log(`\n  ${total}   TOTAL dans le <main>`);
 
 if (CONTEXTE && total) {

@@ -84,7 +84,7 @@ export default function CarteBibliotheque({
             />
           ) : null}
         </span>
-        <span style={{ display: "grid", gap: 4, minWidth: 0 }}>
+        <span style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 4, minWidth: 0 }}>
           <span style={META}>
             {carte.format} · {meta}
           </span>

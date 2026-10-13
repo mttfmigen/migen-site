@@ -165,7 +165,7 @@ export default function MenuLateral(p: ProprietesMenu) {
           className={`${styles.corpsFiltres} ${p.deplie ? "" : styles.corpsFiltresPlie}`}
         >
           {/* 01 · Catégories */}
-          <fieldset style={{ display: "grid", gap: 2, border: "none", margin: 0, padding: 0 }}>
+          <fieldset style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 2, border: "none", margin: 0, padding: 0 }}>
             <legend style={{ padding: 0, width: "100%" }}>
               <span style={ENTETE_SECTION}>
                 <span style={TITRE_SECTION}>{NUMEROS.cat} · Catégories</span>
@@ -228,7 +228,7 @@ export default function MenuLateral(p: ProprietesMenu) {
 
           {/* 02 · Thèmes, espace Entreprises seulement. */}
           {p.themes ? (
-            <fieldset style={{ display: "grid", gap: 2, border: "none", margin: 0, padding: 0 }}>
+            <fieldset style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 2, border: "none", margin: 0, padding: 0 }}>
               <legend style={{ padding: 0, width: "100%" }}>
                 <span style={ENTETE_SECTION}>
                   <span style={TITRE_SECTION}>{NUMEROS.themes} · Thèmes</span>
@@ -319,7 +319,7 @@ export default function MenuLateral(p: ProprietesMenu) {
           ) : null}
 
           {/* 03 · Durée de lecture */}
-          <fieldset style={{ display: "grid", gap: 8, border: "none", margin: 0, padding: 0 }}>
+          <fieldset style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 8, border: "none", margin: 0, padding: 0 }}>
             <legend style={{ padding: 0, width: "100%" }}>
               <span style={ENTETE_SECTION}>
                 <span style={TITRE_SECTION}>{NUMEROS.duree} · Durée de lecture</span>
@@ -386,7 +386,7 @@ export default function MenuLateral(p: ProprietesMenu) {
 
           {/* 04 · Taxonomie */}
           {p.etiquettes.length > 0 ? (
-            <fieldset style={{ display: "grid", gap: 8, border: "none", margin: 0, padding: 0 }}>
+            <fieldset style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 8, border: "none", margin: 0, padding: 0 }}>
               <legend style={{ padding: 0, width: "100%" }}>
                 <span style={ENTETE_SECTION}>
                   <span style={TITRE_SECTION}>{NUMEROS.taxonomie} · Taxonomie</span>

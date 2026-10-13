@@ -11,7 +11,28 @@ Convention : `CHECK:` est la commande qui tranche, `EXPECT:` ce qu'elle doit
 afficher. Un point sans commande possible est marqué `MANUEL:` et porte la
 mesure qui l'a tranché.
 
-Dernière relecture : 12/10.
+L'ÉTAT DE LA CASE COMPTE AUTANT QUE LA COMMANDE, et
+`scripts/verifie-le-registre.mjs` croise les deux depuis le 13/10 au soir :
+
+- case cochée, porte qui passe : promesse tenue ;
+- case cochée, porte qui échoue : PROMESSE ROMPUE, le seul vrai scandale ;
+- case non cochée, porte qui échoue : chantier ouvert que sa porte confirme,
+  c'est cohérent et non un mensonge ;
+- case non cochée, porte qui PASSE : sa commande mesure un état, pas le
+  correctif. Elle se lit « à requalifier », et ne se compte JAMAIS comme faite.
+
+Pourquoi ce croisement : sans lui, le rapport annonçait « 46 tenues sur 49 »
+alors que sept de ces mesures vertes portaient sur des entrées déclarées NON
+FAITES. Qui lit ce compte conclut que le travail est fait.
+
+Une attente qui se déclare elle-même indéfinie (« à redéfinir », « à
+préciser ») ne tranche rien : le vérificateur la refuse maintenant comme
+illisible, au lieu de la compter tenue parce qu'un de ses nombres paraît par
+hasard dans la sortie.
+
+Dernière relecture : 13/10 au soir, les 49 commandes du registre rejouées une
+par une, et le vérificateur lui-même remis d'aplomb (trois défauts, voir plus
+bas G35, G58, G66, D1 et D19).
 
 ---
 
@@ -273,8 +294,19 @@ Dernière relecture : 12/10.
       devant un poste électrique. Un poste électrique se lit encore comme de
       l'industrie, un avion non. Le discriminant est le SUJET DOMINANT de
       l'image, pas son étiquette.
-      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/inventorie-photos-hors-sujet.mjs
-      EXPECT: à redéfinir une fois les 385 photos classées par sujet dominant
+      SON ATTENTE NE TRANCHAIT RIEN, corrigée le 13/10 au soir. Elle disait
+      « à redéfinir une fois les 385 photos classées par sujet dominant », et
+      comptait pourtant pour une PROMESSE TENUE : le vérificateur y lisait le
+      nombre 385, le retrouvait dans la sortie, et concluait au vert. Un aveu
+      d'indéfinition lu comme une assertion.
+      CE QUE LA COMMANDE PEUT PROUVER AUJOURD'HUI, et rien de plus : qu'aucune
+      photo n'est plus écrite en dur dans un composant. Son gros chiffre, 952
+      manquements, sort de la règle que cette entrée déclare elle-même FAUSSE
+      (« toute photo portant un thème de secteur ») : il ne décide donc pas
+      G35. Le discriminant voulu, le SUJET DOMINANT de l'image, n'est toujours
+      pas outillé, et c'est pour ça que l'entrée reste ouverte.
+      CHECK: cd "/Users/mehdi/Landing lovable/migen-site" && node scripts/inventorie-photos-hors-sujet.mjs | sed -n 's/^MANQUEMENTS ÉCRITS EN DUR : //p'
+      EXPECT: 0
 
 ### G36 — /offres/zero-arret/ : le bloc « Également dans cette offre » ne sert à rien
 - [x] FAIT. Le bloc passe de 7 à 25 prestations sur les 4 pages qui le portent.
@@ -540,14 +572,42 @@ Dernière relecture : 12/10.
       la piste unique était plus large que son conteneur, et les seuils de
       retour à la ligne de la maquette qui n'ont plus de ligne où aller sur un
       téléphone.
+      ELLE A ÉTÉ ACCUSÉE À TORT le 13/10 au soir, et le fautif était le
+      chronomètre du vérificateur, pas elle. Cette porte mesure 154,9 s contre
+      la production, pour un délai d'abandon qui valait 180 s : 25 s de marge.
+      Passée au premier passage, elle a été TUÉE au second une ligne avant son
+      verdict, et le rapport l'a comptée PROMESSE ROMPUE. Le délai est porté à
+      600 s, et une mesure coupée se range maintenant dans sa propre colonne,
+      « interrompue », parce qu'une sortie tronquée ne prouve rien.
       CHECK: SITE_URL=https://migen-site.vercel.app node scripts/verifie-responsive.mjs | tail -1
       EXPECT: RESPONSIVE DU SITE CONFORME
 
 ### G58 — Les 72 grilles dont la piste dépassait leur conteneur
-- [x] FAIT. `{ display: "grid", gap: N }` sans colonne déclarée donne une piste
+- [x] FAIT LE 13/10, ROUVERT PAR UNE RÉGRESSION LE SOIR, REFERMÉ DANS LA FOULÉE.
+      Les cinq pistes trouvées dans `ressources-hub` sont posées : la porte en
+      rend maintenant 0 sur 0 fichier. Son témoin a été rejoué avant la pose,
+      6/6 dont trois contrôles négatifs, elle n'a donc pas été assouplie pour
+      passer. La leçon reste écrite ci-dessous : un correctif par script ne
+      protège QUE les fichiers qui existaient quand il a tourné.
+      Détail d'origine, conservé :
+      `{ display: "grid", gap: N }` sans colonne déclarée donne une piste
       `auto`, qui ne descend pas sous le `min-content` de son enfant. Mesuré :
       conteneur 196 px, piste 215,281 px sur /implantations/bordeaux/, cinq
       plis dehors de 19 px. Corrigé par `minmax(0,1fr)` sur les 72, par script.
+      ROUVERT, ET LA CORRECTION N'A PAS ÉTÉ REJOUÉE : la porte en trouve CINQ
+      autres, dans deux fichiers que le correctif n'a jamais vus parce qu'ils
+      sont arrivés APRÈS lui.
+      `components/site/ressources-hub/CarteBibliotheque.tsx` : 1
+      `components/site/ressources-hub/MenuLateral.tsx` : 4
+      Le correctif est `a519038`, ces fichiers viennent de `eeee130`, poussé
+      huit minutes plus tard le même soir. Quatre des cinq grilles sont des
+      `fieldset` du menu latéral des ressources.
+      CE N'EST PAS LA PORTE QUI A FAIBLI : son témoin rend toujours 6/6, dont
+      trois contrôles négatifs qui prouvent qu'elle sait se taire (colonnes
+      déjà déclarées, flux colonne voulu plus large, pas une grille du tout).
+      POUR LA FERMER : `node scripts/pistes-de-grille.mjs --applique`, puis
+      relancer le témoin. NON LANCÉ ICI : cette commande écrit dans
+      `components/`, et cette passe de registre n'y touche pas.
       CHECK: node scripts/pistes-de-grille.mjs
       EXPECT: 0 piste(s) de grille déclarée(s)
 
@@ -602,7 +662,22 @@ Dernière relecture : 12/10.
       drapeau `dansLeHtml` et un contrôle NOUVEAU, qui exige que la phrase
       reste servie dans le HTML. Contrôle négatif joué : la porte tombe quand
       la phrase n'y est plus.
-      CHECK: bun run verifie:offre-rendu
+      SA COMMANDE VISAIT LE SERVEUR DE DÉV, corrigée le 13/10 au soir. Sans
+      `SITE_URL`, cette porte retombe sur `http://localhost:4340/`, et nos
+      propres règles de travail disent que ce serveur sert du contenu PÉRIMÉ et
+      qu'il faut mesurer en production. C'est la troisième porte du registre
+      prise sur ce même défaut, après G2 et G20.
+      PIRE, ELLE NE SE CONTENTE PAS D'ÊTRE FAUSSE : quand la page n'est pas
+      servie, elle meurt sur un `throw`, 0 octet de sortie standard contre 654
+      de pile d'appels. Le vérificateur l'a donc annoncée PROMESSE ROMPUE au
+      passage du 13/10 au soir, alors qu'elle passe en 2 s dès qu'on lui donne
+      une adresse qui répond. Une commande qui plante n'est pas une preuve, ni
+      dans un sens ni dans l'autre.
+      ELLE SAIT TOUJOURS ÉCHOUER, vérifié en la pointant sur une adresse qui ne
+      sert pas la page : code 1. Et pointée sur la production, elle rend le même
+      verdict que sur le dév, 16 sections sur 16 et 231 lignes comparées : le
+      contrôle n'est pas assoupli, il est seulement mesuré au bon endroit.
+      CHECK: SITE_URL=https://migen-site.vercel.app bun run verifie:offre-rendu
       EXPECT: rendu d'offre conforme à la référence
 
 ### G64 — Le plan du site publiait 4 adresses mortes
@@ -628,11 +703,39 @@ Dernière relecture : 12/10.
       lèvent, remontent et rebranchent ». C'est le profil déployé, donc dans sa
       cible, mais sous le nom exact du métier. « Experts techniques de
       maintenance » se dit mal, « experts techniques » seul perd la spécialité.
-      CHECK: node scripts/mesure-expert-technique.mjs
+      SA COMMANDE VISAIT LE SERVEUR DE DÉV, corrigée le 13/10 au soir, et c'est
+      la QUATRIÈME porte du registre prise sur ce défaut après G2, G20 et G63.
+      Sans `SITE_URL`, elle retombe sur `http://localhost:4340/`, que nos
+      propres règles déclarent périmé. Elle est passée deux fois puis a rendu un
+      autre compte au troisième passage, sans que rien n'ait bougé au dépôt.
+      Pointée sur la production, elle rend 20 de façon stable, trois passages
+      sur trois.
+      ET ELLE RENDAIT UN TOTAL QU'ELLE N'AVAIT PAS MESURÉ. Une page injoignable
+      posait un code de sortie 2 puis passait à la suivante, en imprimant
+      malgré tout un TOTAL, dans les mêmes mots qu'une mesure complète. Les dix
+      pages hors d'atteinte, elle annonçait « 0 TOTAL dans le <main> » : un
+      compte qui ressemble à un triomphe alors qu'elle n'avait rien lu. Une
+      mesure incomplète ne rend plus de total, elle dit « MESURE NON
+      CONCLUANTE » et nomme les pages fautives.
+      TÉMOIN DE CE CORRECTIF, les deux sens : dix pages injoignables rendent
+      « MESURE NON CONCLUANTE », aucun total, code 2 ; la production rend
+      toujours 20. Le contrôle n'est pas assoupli, il refuse seulement de
+      conclure sans données.
+      CHECK: SITE_URL=https://migen-site.vercel.app node scripts/mesure-expert-technique.mjs
       EXPECT: 20
 
 ### G66 — Deux portes qui lisaient mal, réparées
-- [x] FAIT. `verification-ville` : une virgule. La capture écrit « L'astreinte,
+- [x] RÉPARÉES LE 13/10, PÉRIMÉES LE SOIR, REMISES À JOUR DANS LA FOULÉE.
+      La mention de prospection donnée par Mehdi le 13/10 au soir est déclarée
+      dans la liste `AJOUTS` de `verification-secteurs-hub`, comme chaîne
+      EXACTE et non comme motif : la porte reste incapable de laisser passer
+      une phrase voisine. Contrôle négatif joué, une phrase non déclarée
+      ajoutée au formulaire la fait tomber ; contrôle positif joué aussi.
+      La mention a été sortie dans son propre paragraphe au passage : accolée
+      à la précédente, elle produisait un fragment commençant par « . Vos
+      informations » que plus aucune porte ne reconnaissait.
+      Détail d'origine, conservé :
+      `verification-ville` : une virgule. La capture écrit « L'astreinte,
       en option, prend le relais », le corpus l'écrivait sans virgules. C'est
       le corpus qu'on aligne, la virgule vient de sa copie. 74/74 conformes.
       `verification-secteurs-hub` : elle ne déshabillait PAS les ornements
@@ -642,6 +745,21 @@ Dernière relecture : 12/10.
       nouveau, avec deux contrôles négatifs ÉPROUVÉS : une lecture paresseuse
       et une lecture gloutonne reposées à la main le temps d'une mesure, toutes
       deux vues.
+      PÉRIMÉE DEPUIS `488fff5`, poussé le 13/10 à 22h42, et c'est la porte qui
+      est en retard, pas le site. Ce commit pose la case de consentement du
+      formulaire partagé, donc une phrase nouvelle à l'écran : « J'accepte que
+      Migen utilise ces informations pour traiter ma demande et me
+      recontacter. », écrite une seule fois en
+      `components/formulaire/FormulaireContact.tsx:251`.
+      Elle est ABSENTE de `maquette/rendu/secteurs.html`, vérifié, et c'est
+      normal : la maquette ne porte aucune case à cocher. La porte compte donc
+      deux faux écarts, au « 01 Héros » et au « 10 Appel final », les deux
+      seules sections de la page qui portent ce formulaire.
+      CE QUI MANQUE est une ligne dans sa liste `AJOUTS`, celle des textes
+      rendus volontairement absents de la capture. Elle y déclare déjà la
+      mention RGPD passive et le champ « Site web », mais pas le libellé de la
+      case. NON POSÉE ICI : le fichier est dans `components/`, où cette passe
+      ne touche pas. Ni le formulaire ni la copie ne sont à corriger.
       CHECK: bun components/site/secteurs-hub/verification-secteurs-hub.tsx
       EXPECT: 16 sections conformes
 
@@ -669,8 +787,20 @@ registre. Chaque entrée porte la commande qui décide de son état.
 - [ ] PAS FAIT. Mesuré : l'accueil fait 28 945 px de haut à 390 px avec ses 21
       sections déroulées, la maquette du client 2 871. Le parcours par le
       problème, lui, EST en ligne et fonctionne.
-      CHECK: node scripts/verifie-repli-mobile.mjs https://migen-site.vercel.app | grep "section(s) sans repli"
-      EXPECT: 0 section(s) sans repli
+      MESURE DU 13/10 AU SOIR, en production : 144 section(s) sans repli sur
+      207 mesurées, 18 pages touchées. La pire est `/a-propos/equipe/`, 11 sur
+      12, puis `/offres/` à 13 sur 17. Le chantier est donc bien ouvert, et sa
+      porte le confirme : rien n'est maquillé ici, l'attente reste le zéro
+      visé.
+      SON ANCIENNE COMMANDE POUVAIT PASSER AU VERT À FAUX, et c'est pour ça
+      qu'elle change. Elle gardait TOUTES les lignes « section(s) sans repli »,
+      une par page, et l'attente « 0 » se contentait d'un zéro n'importe où
+      dans ce paquet. Rejoué : avec une seule page propre affichant « 0
+      section(s) sans repli » et 144 sections rouges ailleurs, la lecture rend
+      vrai. La porte imprime déjà un JETON DE SUCCÈS qu'elle ne sort que si
+      tout est replié, comme celle de G2 : c'est lui qu'il faut attendre.
+      CHECK: node scripts/verifie-repli-mobile.mjs https://migen-site.vercel.app | tail -1
+      EXPECT: TOUTES_LES_SECTIONS_SE_REPLIENT
 
 ### D2 — « ÇA DOIT ÊTRE SUR TOUTES LES PAGES COMME SUR LA MAQUETTE »
 - [~] DÉPASSÉ PAR SA PROPRE LIVRAISON, et c'est à son avantage. Il demandait de
@@ -803,7 +933,12 @@ registre. Chaque entrée porte la commande qui décide de son état.
 - [x] FAIT. Chaque lot est poussé dès qu'il est mesuré, au lieu d'être groupé.
       Le dépôt déploie à chaque poussée, vérifié trois fois le 13/10 : le
       changement est en ligne en une minute et demie.
-      CHECK: git log --since="today 00:00" --oneline | wc -l | tr -d ' '
+      SA COMMANDE NE TENAIT QU'UN JOUR, corrigée le 13/10 au soir. Elle
+      comptait les commits « depuis aujourd'hui 00:00 » : verte le jour où elle
+      a été écrite, elle rendait 0 le lendemain matin et accusait à tort une
+      promesse qui, elle, était tenue. La journée visée est figée, et la preuve
+      vaut donc pour toujours : 27 commits le 13/10.
+      CHECK: git log --since=2026-10-13T00:00 --until=2026-10-14T00:00 --oneline | wc -l | tr -d ' '
       EXPECT: au moins 9
 
 ---

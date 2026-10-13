@@ -91,6 +91,16 @@ const AJOUTS: readonly string[] = [
   "Site web",
   "Données traitées par Migen pour répondre à votre demande, enregistrées dans HubSpot. Droits et durées de conservation :",
   "politique de confidentialité",
+  /* LA MENTION DE PROSPECTION, donnée par Mehdi le 13/10 au soir. Elle est
+     absente de la capture, et c'est normal : la maquette ne la porte nulle
+     part. Sans cette ligne, la porte voyait du texte à l'écran qui n'est pas
+     dans son modèle et déclarait la page en dérive, à tort.
+
+     AJOUTER UNE LIGNE ICI N'EST PAS AFFAIBLIR LA PORTE, à une condition :
+     que ce soit une chaîne EXACTE et non un motif. Elle reste incapable de
+     laisser passer une phrase voisine, et toute autre copie hors capture la
+     fait toujours tomber. */
+  "Vos informations seront conservées et utilisées pour vous proposer nos produits et services. Vous restez libre de vous désinscrire à tout moment.",
 ];
 
 /**

@@ -538,9 +538,16 @@ export function FormulaireContact({
         <Link href="/confidentialite/" className="underline">
           politique de confidentialité
         </Link>
-        {". "}
-        {MENTION_PROSPECTION}
       </p>
+
+      {/* Dans SON PROPRE paragraphe, et pas à la suite du précédent. Deux
+          raisons, et la première suffirait. Ce sont deux informations
+          distinctes : ce qu'on fait de la demande, puis ce qu'on fera de
+          l'adresse ensuite. Les coller en un bloc demandait au lecteur de les
+          démêler. Seconde raison, mesurée : accolées, les portes qui comparent
+          le rendu à la capture lisaient un fragment commençant par « . Vos
+          informations » et ne le reconnaissaient plus. */}
+      <p style={panneau ? MENTION_PANNEAU : MENTION}>{MENTION_PROSPECTION}</p>
 
       {/* Une seule zone d'annonce, toujours présente dans le document : un
           lecteur d'écran n'annonce pas le contenu d'un élément qui vient
