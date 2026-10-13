@@ -7,6 +7,21 @@
  * « Mettre à disposition des techniciens », formulation proscrite par le
  * contrat. Reformulée en « Affecter des techniciens de maintenance sur votre
  * site », même sens, même longueur.
+ *
+ * SECONDE RETOUCHE, DÉCLARÉE LE 13/10 : elle ne l'était nulle part. La deuxième
+ * ligne de la colonne de droite écrit, dans la maquette, « nous le refusons dès
+ * qu'il sort de la maintenance ». La page rend « nous refusons ce qui sort de la
+ * maintenance ». Aucun interdit du contrat ne l'imposait, contrairement à la
+ * retouche ci-dessus : ce sont nos mots. Les deux portent maintenant leur ligne
+ * dans `CORRECTIONS` de `verification-nous-connaitre.tsx`.
+ *
+ * CE QUE CETTE LIGNE DIT, ET QUI ATTEND NATHAN. La colonne de gauche énumère
+ * les cinq activités, travaux industriels et bureau d'études compris ; celle de
+ * droite refuse « ce qui sort de la maintenance ». Lues ensemble, les deux
+ * colonnes se contredisent dès que « la maintenance » désigne le seul entretien
+ * des machines. C'est son positionnement, pas notre portage : la phrase reste
+ * telle quelle et le constat est porté en B7 de
+ * `docs/NOUS-CONNAITRE-ARBITRAGES.md`. Ne pas la réécrire sans son arbitrage.
  */
 
 const FAIT: readonly string[] = [

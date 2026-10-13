@@ -63,14 +63,31 @@ const INTRO_FORMULAIRE =
  * `description: undefined`, et une clé présente à `undefined` annule celle de
  * la mise en page racine.
  *
- * LE TEXTE EST CELUI DE LA PAGE, mot pour mot : la troisième phrase du chapô de
- * `components/site/nous-connaitre/Ouverture.tsx`. Le chapô entier fait 340
- * caractères, trop long pour un résultat de recherche ; cette phrase est
- * complète, se tient seule, et dit exactement ce que l'entreprise fait et ce
- * qu'elle ne fait pas. Rien n'a été reformulé.
+ * LE TEXTE EST CELUI DE LA PAGE, mot pour mot : la seconde moitié du chapô de
+ * `components/site/nous-connaitre/Ouverture.tsx`, à partir des deux-points.
+ * Seule la majuscule initiale est de nous.
+ *
+ * CORRIGÉE LE 13/10 AU SOIR, ET C'EST LE RETOUR DE NATHAN QUI ÉTAIT RESTÉ
+ * SERVI. Le matin, le chapô de la page avait été réécrit pour nommer les trois
+ * métiers, puisque Nathan Jorez signalait « cette page est ultra spé résidence
+ * comme si c'était la seule offre ». Cette constante-ci, elle, portait encore
+ * la phrase d'AVANT, celle qui ne parlait que d'affecter des techniciens sur
+ * des sites. Autrement dit : la page avait été corrigée, et le texte que
+ * GOOGLE lit disait toujours le contraire, à trois endroits (`description`,
+ * `og:description`, `twitter:description`). Corriger un écran sans corriger ce
+ * qu'il déclare de lui-même ne corrige rien pour le référencement.
+ *
+ * POURQUOI CE FRAGMENT-LÀ et pas la phrase entière. Le chapô complet fait 240
+ * caractères ; un résultat de recherche en montre environ 160. La phrase
+ * entière commence par « Nous ne faisons qu'un métier, l'industrie qui tourne,
+ * et rien d'autre », soit 69 caractères avant le premier métier : les travaux
+ * industriels, dernier nommé, n'auraient jamais été visibles. Ce fragment fait
+ * 167 caractères et nomme les trois dès le premier mot.
  */
 const DESCRIPTION_PAR_DEFAUT =
-  "Nous ne faisons qu’une chose, affecter sur vos sites des techniciens qui entretiennent les machines, et rien d’autre.";
+  "La maintenance de vos machines, le bureau d’études qui les conçoit et les " +
+  "met en conformité, et les travaux industriels qui les déplacent, les " +
+  "montent et les démarrent.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const complete = await pageParChemin(CHEMIN);

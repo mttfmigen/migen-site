@@ -358,7 +358,7 @@ select p.id, v.t, v.d from (values
   ('/modeles/ressource/','Modèle ressource, migen','Gabarit de fiche ressource (métier, technique ou pratique) du centre de ressources migen.'),
   ('/modeles/secteur/','Modèle secteur, migen','Gabarit de page secteur : présentation d''un secteur industriel accompagné par migen.'),
   ('/modeles/service-ville/','Modèle service + ville, migen','Gabarit de page programmatique croisant un service de maintenance et une ville d''intervention.'),
-  ('/nous-connaitre/','Nous connaître, migen','Un seul métier : technicien de maintenance. Découvrez qui nous sommes, notre histoire et notre façon de travailler.'),
+  ('/nous-connaitre/','Nous connaître, migen','La maintenance de vos machines, le bureau d''études qui les conçoit et les met en conformité, et les travaux industriels qui les déplacent, les montent et les démarrent.'),
   ('/offres/','Entreprise maintenance industrielle | Migen','Entreprise maintenance industrielle : cinq façons de nous confier votre maintenance, avec des techniciens évalués, 10 % des candidats retenus.'),
   ('/offres/arret-technique/','Arrêt technique maintenance | Migen','Arrêt technique maintenance : préparation, coordination et travaux réalisés par des équipes complètes, partout en France. Rappel dans l''heure.'),
   ('/offres/audit-conseil-maintenance/','Audit et conseil en maintenance | Migen','Conseil en maintenance industrielle : audit de site, plan d''actions chiffré et priorisé. Diagnostic gratuit, rappel dans l''heure au 04 78 33 72 05.'),

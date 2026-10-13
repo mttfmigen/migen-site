@@ -66,11 +66,18 @@ const DOSSIERS = [
 /* Le titre et l'introduction du formulaire arrivent en props depuis la page :
    le contrôle les relit là, pour que la copie testée soit celle qui part. */
 function constante(nom: string): string {
-  const trouve = SOURCE_PAGE.match(
-    new RegExp(`const ${nom} =\\s*\\n?\\s*"([^"]*)"`),
+  /* Une constante peut tenir sur une ligne OU être écrite en plusieurs
+     morceaux concaténés pour ne pas dépasser la largeur de la ligne. Lire
+     seulement le premier morceau rendrait un texte tronqué, et la porte
+     validerait alors une phrase que la page ne sert pas. */
+  const bloc = SOURCE_PAGE.match(
+    new RegExp(`const ${nom} =\\s*((?:\\s*"[^"]*"\\s*\\+?)+);`),
   );
-  assert.ok(trouve, `constante ${nom} introuvable dans la page`);
-  return JSON.parse(`"${trouve[1]}"`) as string;
+  assert.ok(bloc, `constante ${nom} introuvable dans la page`);
+  const morceaux = [...bloc[1].matchAll(/"([^"]*)"/g)].map(
+    (m) => JSON.parse(`"${m[1]}"`) as string,
+  );
+  return morceaux.join("");
 }
 
 /* Mes onze sections d'un côté, le formulaire réemployé de l'autre : certaines
@@ -168,6 +175,43 @@ assert.notEqual(
   "le titre de référencement est identique au h1",
 );
 assert.ok(titre.length > 10, "le titre de repli est trop court pour être un titre");
+
+// ------------------------------- ce que GOOGLE lit nomme bien les trois métiers
+/* POURQUOI CETTE RÈGLE EXISTE, et elle a été payée le 13/10.
+   Le matin, le chapô de la page était réécrit pour répondre à Nathan Jorez
+   (« cette page est ultra spé résidence comme si c'était la seule offre »).
+   La correction était bonne, et elle n'a rien corrigé pour le référencement :
+   `DESCRIPTION_PAR_DEFAUT` portait encore la phrase d'AVANT, servie dans
+   `description`, `og:description` et `twitter:description`. La page disait
+   trois métiers, sa fiche de résultat en disait un. Personne ne l'a vu parce
+   qu'AUCUNE porte ne regardait la description.
+
+   La règle ne cherche pas une phrase précise, qui vieillirait au premier
+   changement de copie : elle exige que les trois métiers de l'entreprise
+   soient nommés, et que le mot qui désignait le seul ancien le soit encore
+   en compagnie des deux autres. */
+const description = constante("DESCRIPTION_PAR_DEFAUT");
+const TROIS_METIERS: readonly [string, RegExp][] = [
+  ["la maintenance", /\bmaintenance\b/i],
+  ["le bureau d'études", /bureau d[’']études/i],
+  ["les travaux industriels", /travaux industriels/i],
+];
+for (const [quoi, motif] of TROIS_METIERS) {
+  assert.ok(
+    motif.test(description),
+    `la description servie à Google ne nomme pas ${quoi} : la page corrigée, ` +
+      `sa fiche de résultat non. C'est le défaut du 13/10.`,
+  );
+}
+/* Une description que le moteur tronque n'informe plus : environ 160 signes
+   sont affichés, et le dernier métier nommé doit tenir dedans. */
+const finDuDernierMetier =
+  description.search(/travaux industriels/i) + "travaux industriels".length;
+assert.ok(
+  finDuDernierMetier <= 160,
+  `le troisième métier finit au signe ${finDuDernierMetier} de la description, ` +
+    `au-delà des 160 affichés : il ne serait jamais lu dans un résultat`,
+);
 
 // ------------------------------------------------- la copie de la maquette
 doitContenir(
@@ -384,9 +428,25 @@ for (const interdit of [
 // échoue si la maquette change au lieu de passer en silence.
 const CORRECTIONS: readonly { maquette: string; rendu: string }[] = [
   { maquette: "Le modèle en régie se structure", rendu: "technicien en résidence se structure" },
-  { maquette: "mettre à disposition du personnel", rendu: "affecter sur vos sites des techniciens" },
+  /* MISE À JOUR LE 13/10, ET CETTE LIGNE ÉTAIT TOMBÉE. Elle attendait encore
+     « affecter sur vos sites des techniciens », la reformulation d'avant, que le
+     chapô des trois métiers a remplacée le même jour. La porte échouait donc
+     depuis ce changement, et personne ne l'a vu parce qu'elle ne fait PAS partie
+     de `bun run verifie` : elle se lance à la main. Les deux moitiés sont
+     relues, la porte échoue donc aussi bien si la maquette cesse d'écrire la
+     formulation proscrite que si le rendu perd la nouvelle. */
+  { maquette: "mettre à disposition du personnel", rendu: "Nous ne faisons qu'un métier, l'industrie qui tourne" },
   { maquette: "Mettre à disposition des techniciens", rendu: "Affecter des techniciens de maintenance sur votre site" },
   { maquette: "de l'agence la plus proche", rendu: "du hub le plus proche" },
+  /* DÉCLARÉE LE 13/10, elle ne l'était nulle part. La maquette écrit « nous le
+     refusons dès qu'il sort de la maintenance » ; la page rend « nous refusons
+     ce qui sort de la maintenance ». Aucun interdit du contrat ne forçait cette
+     retouche, contrairement aux quatre du dessus : ce sont nos mots, posés sans
+     note, sur la phrase même qui restreint le périmètre à la maintenance. Tant
+     qu'elle n'était pas déclarée, personne ne pouvait savoir que la formulation
+     servie n'était pas celle du client. Le fond, lui, reste son arbitrage
+     (voir `docs/NOUS-CONNAITRE-ARBITRAGES.md`, B7). */
+  { maquette: "nous le refusons dès qu'il sort de la maintenance", rendu: "nous refusons ce qui sort de la maintenance" },
   /* Posée le 13/10. La page rendait « Migen lance les travaux industriels »
      là où l'arbitrage du 09/10 impose « Migen Travaux » : le mot « Travaux »
      avait été perdu à la saisie. Cette ligne vérifie les deux moitiés, donc
@@ -408,6 +468,36 @@ for (const { maquette, rendu } of CORRECTIONS) {
   assert.ok(
     texteRendu.includes(rendu),
     `la correction attendue est absente du rendu : « ${rendu} »`,
+  );
+}
+
+// ------------------------------------------- les trois métiers sont nommés
+/*
+ * MEHDI, LE 13/10 : « tu parles que de la maintenance, tu parles pas du bureau
+ * d'étude, de migen chantier. » Et Nathan Jorez le même jour : « cette page est
+ * ultra spé résidence comme si c'était la seule offre. »
+ *
+ * POURQUOI UNE PORTE PROPRE, et pas seulement la ligne de `CORRECTIONS`
+ * ci-dessus : cette dernière ne garde qu'un fragment de la phrase. Les deux
+ * métiers qui manquaient, le bureau d'études et les travaux industriels, se
+ * trouvent APRÈS ce fragment. Les retirer laisserait la correction passer.
+ *
+ * LA PREUVE QU'ELLE SAIT ÉCHOUER a été jouée avant de la croire : en retirant
+ * du chapô le groupe « le bureau d'études qui les conçoit et les met en
+ * conformité », elle tombe sur « métier absent du chapô ».
+ *
+ * CE N'EST PAS UNE VALEUR DE LA MAQUETTE, et c'est pour cela qu'elle est écrite
+ * en dur : la maquette décrit l'offre Résidence et elle seule à cet endroit.
+ * C'est une correction assumée, au même titre que les cinq du dessus.
+ */
+for (const metier of [
+  "la maintenance de vos machines",
+  "le bureau d'études qui les conçoit et les met en conformité",
+  "les travaux industriels qui les déplacent, les montent et les démarrent",
+]) {
+  assert.ok(
+    texteRendu.includes(metier),
+    `métier absent du chapô, la page redevient « ultra spé résidence » : « ${metier} »`,
   );
 }
 
