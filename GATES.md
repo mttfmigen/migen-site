@@ -656,6 +656,156 @@ Dernière relecture : 12/10.
       CHECK: bunx eslint components/formulaire/ChampEntreprise.tsx
       EXPECT: 1 error
 
+
+---
+
+## Série 5, TOUTES les demandes de Mehdi du 13/10
+
+Inscrite le 13/10 à 16h45, après son « il manque tout ce que je t'ai demandé
+aujourd'hui en fait ». Il avait raison : rien de cette journée n'était au
+registre. Chaque entrée porte la commande qui décide de son état.
+
+### D1 — « la version mobile est toujours pas dispo côté front, j'ai toujours tous les blocs »
+- [ ] PAS FAIT. Mesuré : l'accueil fait 28 945 px de haut à 390 px avec ses 21
+      sections déroulées, la maquette du client 2 871. Le parcours par le
+      problème, lui, EST en ligne et fonctionne.
+      CHECK: node scripts/verifie-repli-mobile.mjs https://migen-site.vercel.app | grep "section(s) sans repli"
+      EXPECT: 0 section(s) sans repli
+
+### D2 — « ÇA DOIT ÊTRE SUR TOUTES LES PAGES COMME SUR LA MAQUETTE »
+- [~] DÉPASSÉ PAR SA PROPRE LIVRAISON, et c'est à son avantage. Il demandait de
+      replier les sections partout. Dix minutes plus tard il a livré la maquette
+      mobile, qui n'est pas la page de bureau repliée mais une autre mise en
+      page. Replier les 186 sections aurait raccourci la mauvaise page au lieu
+      de servir la bonne. L'arbitrage est donc absorbé par D1.
+
+### D3 — /carriere/ : « tu affiches le numéro de téléphone, c'est dégueulasse »
+- [x] FAIT, vérifié en production. La carte « Contact direct » du bloc « Nos
+      informations pratiques » garde ses horaires et ne montre plus le numéro.
+      CHECK: curl -s https://migen-site.vercel.app/carriere/ | sed 's/<[^>]*>/ /g' | grep -o "Contact direct  *Du lundi au vendredi"
+      EXPECT: Contact direct Du lundi au vendredi
+
+### D4 — /carriere/ : « le bloc est mal agencé »
+- [x] FAIT. Les cartes s'étiraient à la hauteur de la plus longue, laissant près
+      de 200 px de vide sous les cartes 04 et 06. Sa propre capture déclare
+      `align-items: start` sur cette grille, nous ne l'avions pas porté.
+      CHECK: grep -c "alignItems: \"start\"" components/site/metier/SectionsFicheMetier.tsx
+      EXPECT: au moins 1
+
+### D5 — /implantations/ : « il manque du texte sur la card 3 » des deux blocs
+- [x] FAIT, vérifié en production. Problématiques 03 passe de 35 à 132
+      caractères, l'offre 03 de 67 à 118 avec son intitulé revenu. Les phrases
+      étaient rangées en trous déclarés sous l'ancienne règle des prix, caduque
+      depuis son arbitrage du 09/10.
+      CHECK: curl -s https://migen-site.vercel.app/implantations/ | grep -c "Loin d.un bassin dense"
+      EXPECT: au moins 1
+
+### D6 — Le colis du 13/10 : Ressources v2 et Implantations
+- [ ] ANALYSÉ, PAS PORTÉ. 40 écarts relevés, 8 confirmés par relecture adverse,
+      20 réfutés. Ressources v2 est une refonte de gabarit dont le blocage est
+      la DONNÉE : les 4 thèmes, les 14 étiquettes et les durées de lecture
+      n'existent pas au dépôt. Implantations n'est pas un gain partout : sa
+      mosaïque fait 4 292 px au téléphone contre 537 aujourd'hui, et six de ses
+      dix photos sont des aperçus filigranés.
+      CHECK: ls maquette/colis-13-10/ | wc -l | tr -d ' '
+      EXPECT: 5
+
+### D7 — Retour de Nathan : « /nous-connaitre/ ultra spé résidence »
+- [~] UNE FAUTE CORRIGÉE, SIX ARBITRAGES OUVERTS. La frise disait « Migen » là
+      où son arbitrage du 09/10 impose « Migen Travaux » : c'était la seule
+      phrase de la page nommant la marque qui porte les deux offres hors
+      placement. Les six autres points sont sa copie, écrits avec leurs options
+      dans docs/NOUS-CONNAITRE-ARBITRAGES.md.
+      CHECK: curl -s https://migen-site.vercel.app/nous-connaitre/ | grep -c "Migen Travaux lance les travaux industriels"
+      EXPECT: au moins 1
+
+### D8 — « Refais moi le doc rapport d'avancement, à jour toutes les 10 minutes »
+- [x] FAIT. docs/AVANCEMENT.md, dont le bloc de chiffres est réécrit par un
+      script qui MESURE au lieu de recopier. Mise à jour programmée toutes les
+      dix minutes.
+      CHECK: node scripts/rapport-avancement.mjs --montre | grep -c remesureLe
+      EXPECT: au moins 1
+
+### D9 — « Une liste de tout ce dont tu as besoin pour terminer »
+- [x] FAIT, et vérifiée point par point pour ne pas servir du périmé. La
+      vérification a d'ailleurs invalidé un bloquant annoncé : les deux pages
+      légales répondent 200, pas 404 comme le disait le document du 02/10.
+      CHECK: curl -s -o /dev/null -w "%{http_code}" https://migen-site.vercel.app/mentions-legales/
+      EXPECT: 200
+
+### D10 — « Normalement tu as l'id du formulaire »
+- [ ] IL MANQUE, ET C'EST LE POINT LE PLUS GRAVE DU SITE. Le portail 148000737
+      est en dur dans le code, mais `HUBSPOT_FORM_ID` est absent des variables
+      Vercel, et le code renvoie 502 au visiteur quand il manque. Aucun
+      formulaire ne dépose de lead en production.
+      CHECK: grep -c "HUBSPOT_FORM_ID absent de l'environnement" app/api/lead/route.ts
+      EXPECT: au moins 1
+
+### D11 — « Donne-moi le lien pour Supabase »
+- [x] FAIT : https://supabase.com/dashboard/project/rmthzplyrbifoeaxfiwn
+      CHECK: grep -o "rmthzplyrbifoeaxfiwn" .env.local | head -1
+      EXPECT: rmthzplyrbifoeaxfiwn
+
+### D12 — « Pour Bordeaux va chercher sur Vercel »
+- [x] RIEN À FAIRE, la photo était déjà là. hub-bordeaux.jpg est sous licence au
+      dépôt depuis le 09/10, 2000 x 1335. Fichier envoyé pour confirmation.
+      CHECK: ls components/site/accueil/hubs/bordeaux.jpg
+      EXPECT: bordeaux.jpg
+
+### D13 — « Pour Dijon mets des vignes en Bourgogne » et « pour Metz trouve un truc »
+- [ ] CHOISIES, PAS LIVRÉES. Metz : la cathédrale par RossHelen, même
+      photographe et même série que Nantes et Bordeaux. Dijon : Meursault, en
+      Côte-d'Or, seule photo de vignes authentiquement bourguignonne du
+      catalogue. Il manque les versions sous licence : le catalogue ne rend que
+      l'aperçu de 600 px filigrané.
+      CHECK: grep -c "hub-metz.jpg\|hub-dijon.jpg" docs/PHOTOS-VILLES-ENVATO.md
+      EXPECT: au moins 2
+
+### D14 — « TeamTailor, je ne peux pas la publier, trouve une solution »
+- [x] RÉSOLU, ET IL N'A RIEN À PUBLIER. L'offre 8200692 de son propre compte est
+      en statut `unlisted` et porte 79 candidatures actives : une offre non
+      listée ne part pas sur les jobboards et reçoit quand même. Son offre
+      8528454, créée pour le site, est en `draft` ; un seul réglage,
+      `draft` vers `unlisted`, et elle reçoit. Il ne manque que la clé d'API.
+      CHECK: grep -c "TEAMTAILOR_API_KEY ou TEAMTAILOR_JOB_ID manquant" lib/teamtailor.ts
+      EXPECT: au moins 1
+
+### D15 — « Les traceurs, tu parles de quoi exactement »
+- [x] RÉPONDU. Six variables, toutes facultatives, aucune ne bloque la mise en
+      ligne : GA4, Google Ads, LinkedIn, pixel OpenAI, Search Console et le
+      secret des tâches planifiées. Toutes conditionnées au consentement.
+      CHECK: grep -c "NEXT_PUBLIC_GA\|NEXT_PUBLIC_GOOGLE_ADS_ID\|NEXT_PUBLIC_LINKEDIN_PARTNER_ID\|NEXT_PUBLIC_OPENAI_PIXEL_ID\|GSC_SERVICE_ACCOUNT_JSON\|CRON_SECRET" .env.example
+      EXPECT: au moins 6
+
+### D16 — « Tu fais au mieux pour la version mobile »
+- [~] PREMIER PAS FAIT. Le nom de l'offre est posé sur les six cartes du
+      parcours, comme sa maquette. La carte n'est pas devenue un simple lien
+      parce que les six réponses repliées font environ 900 mots qui n'existent
+      nulle part ailleurs : mesuré, 0 à 2 extraits sur 6 se retrouvent sur les
+      pages d'offre. Un défaut de contraste évité au passage, 2,3 pour 1 corrigé
+      en 8,07.
+      CHECK: curl -s https://migen-site.vercel.app/ | grep -c "nomOffre"
+      EXPECT: au moins 1
+
+### D17 — « C'est quoi le mieux, je demande à Design »
+- [x] RÉPONDU, trois consignes mesurées : une vraie page par adresse, replier
+      sans retirer, et dessiner les onze gabarits au lieu de cinq écrans. Fondé
+      sur le fait que sa maquette mobile porte 266 boutons pour 3 liens et sert
+      465 à 586 mots là où nos pages en servent 1 981 à 2 250.
+
+### D18 — « Mets le turbo sur tout le reste »
+- [~] EN COURS. Quatre lots en parallèle sur des fichiers disjoints : les
+      phrases perdues par la purge des prix, les six cartes d'offre de
+      /nous-connaitre/, le raccourcissement de l'accueil mobile, et la remise au
+      vert des portes rouges. Une relecture adverse derrière.
+
+### D19 — « Déploie dès qu'un changement est fait »
+- [x] FAIT. Chaque lot est poussé dès qu'il est mesuré, au lieu d'être groupé.
+      Le dépôt déploie à chaque poussée, vérifié trois fois le 13/10 : le
+      changement est en ligne en une minute et demie.
+      CHECK: git log --since="today 00:00" --oneline | wc -l | tr -d ' '
+      EXPECT: au moins 9
+
 ---
 
 ## Bloqué sur Mehdi, rien à faire de notre côté

@@ -222,10 +222,16 @@ assert.equal(
 // maquette en compte de sections, sinon une section perd ses marges sur
 // téléphone sans rien casser d'autre.
 const conteneurs = (MAQUETTE.match(/max-width:1200px/g) ?? []).length;
+/* +1 DÉCLARÉ : le bloc des six offres posé le 13/10 n'a pas d'équivalent dans
+   la maquette, qui ne pose aucun lien d'offre sur cet écran. Il porte le même
+   conteneur que les autres, sinon il perdrait ses marges sous 760px. L'égalité
+   reste stricte : une section qui perd son conteneur fait toujours tomber la
+   porte, et ce bloc aussi. */
+const CONTENEURS_AJOUTES = 1;
 assert.equal(
   (html.match(/max-width:1200px/g) ?? []).length,
-  conteneurs,
-  `${conteneurs} conteneurs attendus, un par section de la maquette`,
+  conteneurs + CONTENEURS_AJOUTES,
+  `${conteneurs + CONTENEURS_AJOUTES} conteneurs attendus, un par section de la maquette plus le bloc des six offres`,
 );
 
 // ------------------------------------------------------- rien d'invisible
@@ -259,6 +265,58 @@ for (const cible of cibles) {
   assert.ok(
     cible.endsWith("/"),
     `cible interne sans slash final, elle sera redirigée : ${cible}`,
+  );
+}
+
+// --------------------------------------------- les six offres sont joignables
+/*
+ * Retour de Nathan Jorez, fondateur, le 13/10 : « cette page est ultra spé
+ * résidence comme si c'était la seule offre. » Mesure du jour : le `<main>` de
+ * cet écran ne portait AUCUN lien vers une page d'offre, contre 14 sur
+ * l'accueil. Ses neuf sorties menaient à l'équipe, aux valeurs, aux secteurs,
+ * aux implantations, au contact, à la RSE et à la confidentialité.
+ *
+ * LES SIX ADRESSES SONT RELUES DANS LE PIED DE PAGE DU SITE, jamais écrites de
+ * mémoire ici : c'est lui qui fait référence pour la liste des offres, et une
+ * offre qui change d'adresse là-bas doit faire tomber cette porte ici. Les
+ * libellés sont relus au même endroit, ce qui interdit de les reformuler.
+ */
+const SOURCE_PIED = readFileSync(
+  `${RACINE}components/site/PiedDePage.tsx`,
+  "utf8",
+);
+
+const LIBELLES_PIED = new Map(
+  [...SOURCE_PIED.matchAll(/\{ libelle: "([^"]+)", href: "([^"]+)" \}/g)].map(
+    (m) => [m[2], m[1]] as const,
+  ),
+);
+
+const OFFRES_ATTENDUES = [
+  "/offres/residence/",
+  "/offres/full-service/",
+  "/offres/zero-arret/",
+  "/offres/arret-technique/",
+  "/offres/bureau-etudes/",
+  "/travaux-industriels/",
+] as const;
+
+for (const url of OFFRES_ATTENDUES) {
+  const libelle = LIBELLES_PIED.get(url);
+  assert.ok(
+    libelle,
+    `le pied de page ne porte plus l'offre ${url} : la liste des six offres est à revoir`,
+  );
+  /* La forme canonique, slash final compris, et pas une forme qui coûterait une
+     redirection 308 par clic. C'est pour cela que ces cartes sont des `<a>` :
+     `next/link` rendu hors de `next.config.ts` retirerait ce slash. */
+  assert.ok(
+    html.includes(`href="${url}"`),
+    `l'offre ${url} n'est joignable depuis « Nous connaître » : aucun lien vers elle`,
+  );
+  assert.ok(
+    texteRendu.includes(normalise(libelle)),
+    `le libellé du pied de page n'est pas repris pour ${url} : « ${libelle} »`,
   );
 }
 
@@ -358,5 +416,7 @@ assert.deepEqual(
 
 console.log(
   `Nous connaître : ${ORDRE.length} sections, h1 unique, titre distinct, ` +
-    `${conteneurs} conteneurs, aucun lien inerte, aucune copie interdite.`,
+    `${conteneurs + CONTENEURS_AJOUTES} conteneurs, ` +
+    `${OFFRES_ATTENDUES.length} offres joignables, ` +
+    `aucun lien inerte, aucune copie interdite.`,
 );

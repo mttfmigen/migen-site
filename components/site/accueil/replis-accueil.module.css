@@ -1,0 +1,101 @@
+/*
+ * LE REPLI DES SECTIONS DE L'ACCUEIL SUR TÉLÉPHONE, et rien d'autre.
+ *
+ * LE CONSTAT DU 13/10, mesuré au navigateur à 390 px : l'accueil faisait
+ * 29 117 px de haut avec ses 21 sections toutes déroulées, quand la maquette
+ * mobile du client (`maquette/colis-13-10/Migen Mobile Redesign.html`) en fait
+ * 1 410 pour son écran d'accueil. Mehdi, le même jour : « j'ai toujours tous
+ * les blocs ».
+ *
+ * CE QUE LA MAQUETTE MOBILE FAIT, relevé sur son rendu et non supposé : elle
+ * garde déroulés le héros, les six cartes « Qu'est-ce qui vous bloque ? » et la
+ * bande de logos clients ; elle REPLIE derrière un chevron dix sections
+ * (pourquoi externaliser, méthode, sécurité & RSE, témoignages, réalisations,
+ * secteurs, implantations, technologies, croissance, histoire) ; et elle sort
+ * de l'écran d'accueil les sections d'offres, de problématique et de formulaire.
+ *
+ * CE QUE NOUS FAISONS DE L'ÉCART, et c'est une règle du contrat, pas un goût :
+ * une section que la maquette RETIRE, nous la REPLIONS. « Aucune page perdue »
+ * et « Google reçoit du HTML complet » : un texte absent du HTML servi n'est
+ * pas conservé pour le référencement, et Google indexe le mobile en premier.
+ * Rien n'est supprimé, tout est replié.
+ *
+ * POURQUOI DEUX RÈGLES ET NON UNE. `SectionPliableMobile` rend son titre DANS
+ * sa bascule. Les sections de l'accueil portent déjà le leur, souvent au fond
+ * d'une colonne de grille à deux colonnes : le déplacer dans la bascule
+ * remonterait le titre au-dessus de la grille et changerait le dessin de
+ * BUREAU, alors que la référence du projet est la capture de bureau à 1280 px.
+ *
+ * Nous rendons donc le titre aux DEUX endroits, et nous en masquons toujours
+ * exactement un :
+ *   · au-dessus de 880 px, la bascule disparaît, le dessin de bureau est celui
+ *     d'avant, au pixel ;
+ *   · en dessous, c'est l'en-tête d'origine qui s'efface, et la bascule seule
+ *     porte le titre : le visiteur n'en voit jamais deux.
+ *
+ * C'EST LE MOTIF DÉJÀ EN PLACE SUR CINQ GABARITS (/carriere/, /preuves/…,
+ * /implantations/…), et `SectionPliableMobile.module.css` le documente comme la
+ * seule condition qui autorise `display: none` sur la bascule : « Cinq gabarits
+ * rendent leur titre une SECONDE fois hors de la bascule ; chez eux, et chez
+ * eux seulement, masquer la bascule retire un doublon et non le titre. »
+ * L'accueil remplit cette condition, section par section.
+ *
+ * UN SEUL `<h2>` PAR SECTION, et c'est pour cela que les appelants passent
+ * `titre={…}` plutôt qu'un `enTete` contenant un second `h2` : la bascule rend
+ * le texte dans un `<span>`. Le texte est écrit UNE FOIS dans le composant, en
+ * constante, et sert aux deux endroits : aucune copie n'est retapée, donc
+ * aucune ne peut dériver de l'autre.
+ *
+ * Porte : `scripts/verifie-repli-mobile.mjs`.
+ */
+
+/* Posée sur le `<section>` lui-même : aucun élément n'est ajouté au DOM. */
+.repli {
+}
+
+/*
+ * SUR BUREAU, LA BASCULE N'EXISTE PAS. Le titre reste à sa place d'origine,
+ * dans sa colonne de grille, et la page est celle de la capture de référence.
+ */
+@media (min-width: 881px) {
+  .repli :global(details[data-pliable-mobile] > summary) {
+    display: none;
+  }
+
+  /*
+   * ET LE FILET DU REPLI DISPARAÎT AVEC ELLE, sinon le bureau grandit.
+   *
+   * MESURÉ, ET C'EST AINSI QUE LE DÉFAUT A ÉTÉ PRIS : /secteurs d'activité
+   * passait de 737 px à 760 px à 1 280 px après enveloppement, soit 23 px de
+   * trop. Ce ne sont pas 23 px au hasard, ce sont exactement ceux que
+   * `SectionPliableMobile.module.css` pose sur `.section` : un filet de 1 px,
+   * 18 px de retrait au-dessus, 4 px de marge. Sur dix-sept sections, le même
+   * écart aurait allongé l'accueil de bureau de près de 400 px, et aucune
+   * capture de référence ne le porte.
+   *
+   * Le composant partagé annule déjà ce dessin quand l'appelant fournit son
+   * en-tête (`.section[data-en-tete-fourni]`). Nous passons `kicker`/`titre` et
+   * non `enTete`, pour ne garder qu'un seul `<h2>` : le filet revient, et c'est
+   * ici qu'il se retire. Sur téléphone il RESTE, il y sépare les sections
+   * repliées exactement comme la maquette mobile.
+   */
+  .repli :global(details[data-pliable-mobile]) {
+    border-top: 0;
+    padding-top: 0;
+    margin-top: 0;
+  }
+}
+
+/*
+ * SUR TÉLÉPHONE, L'EN-TÊTE D'ORIGINE S'EFFACE et la bascule prend le relais.
+ * `display: none` retire le doublon de l'écran ET de l'arbre d'accessibilité,
+ * ce qui est voulu : la bascule annonce le même texte, une fois.
+ *
+ * LE TEXTE RESTE DANS LE HTML SERVI, c'est tout l'objet de la manœuvre : une
+ * règle de feuille de style ne retire rien de ce que Google reçoit.
+ */
+@media (max-width: 880px) {
+  .enTeteBureau {
+    display: none;
+  }
+}

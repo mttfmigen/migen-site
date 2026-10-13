@@ -52,7 +52,10 @@ function lisLeRegistre(texte) {
   let entree = '?'
   let commande = null
   for (const ligne of lignes) {
-    const titre = ligne.match(/^### (G\d+) — (.+)$/)
+    /* `G` pour les séries 1 à 4, `D` pour les demandes du 13/10. Sans le `D`,
+       les dix-neuf entrées de la série 5 étaient toutes attribuées au dernier
+       `G` rencontré, et le rapport nommait la mauvaise entrée comme rompue. */
+    const titre = ligne.match(/^### ([GD]\d+) — (.+)$/)
     if (titre) {
       entree = titre[1]
       continue

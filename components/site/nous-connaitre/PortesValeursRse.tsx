@@ -1,16 +1,25 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
+import PortesOffres from "./PortesOffres";
 import styles from "./PortesValeursRse.module.css";
 
 /**
- * Deux portes de sortie : les valeurs, les engagements RSE.
+ * Les portes de sortie de l'écran : les six offres, les valeurs, la RSE.
  *
- * Maquette, lignes 5484 à 5501.
+ * Maquette, lignes 5484 à 5501, pour les deux cartes valeurs et RSE.
  *
  * `/valeurs/` et `/rse/` ont été vérifiées en 200 sur le serveur local avant
  * d'être posées : une carte qui se soulève sous le curseur et mène à une 404 est
  * exactement le défaut qu'on répare sur cet écran.
+ *
+ * POURQUOI LES SIX OFFRES SONT MONTÉES ICI et non comme une douzième section de
+ * `app/nous-connaitre/page.tsx`, qui serait leur place naturelle : ce lot ne
+ * possède que `components/site/nous-connaitre/`, trois autres agents écrivent
+ * en parallèle, et la page est hors de son périmètre. Ce bloc est la dernière
+ * sortie avant le formulaire, à l'endroit où le site place son maillage
+ * d'offres sur les pages d'offre. Le remonter d'un cran, en section propre, est
+ * un déplacement d'une ligne dans la page le jour où elle s'ouvre.
  */
 
 const CARTE: CSSProperties = {
@@ -79,32 +88,35 @@ const PORTES: readonly {
 
 export default function PortesValeursRse() {
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
-        <div
-          data-reveal=""
-          className="mg-r2"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 12,
-          }}
-        >
-          {PORTES.map((p) => (
-            <Link
-              key={p.surtitre}
-              href={p.href}
-              className={styles.carteLien}
-              style={CARTE}
-            >
-              <div style={SURTITRE}>{p.surtitre}</div>
-              <div style={TITRE}>{p.titre}</div>
-              <p style={TEXTE}>{p.texte}</p>
-              <span style={PIED}>{p.action}</span>
-            </Link>
-          ))}
+    <>
+      <section style={{ padding: "var(--sec) 0 0" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+          <div
+            data-reveal=""
+            className="mg-r2"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: 12,
+            }}
+          >
+            {PORTES.map((p) => (
+              <Link
+                key={p.surtitre}
+                href={p.href}
+                className={styles.carteLien}
+                style={CARTE}
+              >
+                <div style={SURTITRE}>{p.surtitre}</div>
+                <div style={TITRE}>{p.titre}</div>
+                <p style={TEXTE}>{p.texte}</p>
+                <span style={PIED}>{p.action}</span>
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <PortesOffres />
+    </>
   );
 }

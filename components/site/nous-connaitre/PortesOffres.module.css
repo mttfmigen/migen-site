@@ -1,0 +1,12 @@
+/* Survol des six cartes d'offre. Il vit ici et non dans `app/globals.css` : un
+   fichier partagé entre agents produirait des conflits.
+
+   La valeur est celle de `.carteLevee` de la grille d'offres de l'accueil
+   (`components/site/accueil/GrilleOffres.module.css`, `style-hover` scp9 de la
+   maquette) : un soulèvement de 3px. `:focus-visible` l'accompagne, la carte
+   entière étant un lien : au clavier, le retour doit être le même qu'à la
+   souris. */
+.carte:hover,
+.carte:focus-visible {
+  transform: translateY(-3px);
+}

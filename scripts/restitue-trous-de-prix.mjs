@@ -86,6 +86,87 @@ const RESTITUTIONS = [
   },
 ]
 
+/**
+ * DEUXIÈME SOURCE : LES PHRASES QUE LA PURGE A PRISES SANS LAISSER DE TROU.
+ *
+ * `node scripts/verifie-purge-des-prix.mjs` compare les 244 captures au corpus
+ * et nomme les phrases qui parlent d'argent SANS montant et que le corpus ne
+ * sert plus. La grande majorité de ces signalements sont des FAUX POSITIFS de
+ * mesure, et il fallait les écarter un par un avant de toucher à quoi que ce
+ * soit :
+ *   · la phrase vit dans un composant, pas dans une fiche (« Ce qui change,
+ *     c'est le site… » est écrite dans SecteursDomaine.tsx, servie sur les 30
+ *     pages de spécialité) ;
+ *   · la fiche la porte COUPÉE en `accroche` + `texte`, que le gabarit recolle
+ *     au rendu (« Revue des données et des outils » + « qualité des
+ *     historiques… ») : rien n'est perdu, la chaîne entière n'existe
+ *     simplement pas d'un seul morceau dans le JSON ;
+ *   · la capture la porte TRONQUÉE, et c'est la capture qui tronque (le
+ *     sommaire du guide écrit « c'est la personne … » là où la fiche porte le
+ *     titre entier « c'est la personne qui se présente »).
+ *
+ * Ne restent ci-dessous que les phrases dont l'absence est MESURÉE des deux
+ * côtés : présentes dans la capture, absentes de tout le code et de toutes les
+ * fiches. Chacune porte la capture qui la prouve, et le passage REFUSE de poser
+ * une phrase que sa capture ne contient pas.
+ */
+const RESTITUTIONS_CAPTURE = [
+  {
+    fiche: 'supabase/import/gabarits-maquette/offres-chantier-demenagement-machines.json',
+    preuve: 'maquette/rendu/offres--chantier--demenagement-machines.html',
+    phrase: "Il est chiffré sur devis après l'étude préalable, qui est gratuite.",
+    ou: 'contenu.sections[5].questions[0].reponse',
+    pose: (valeur, phrase) => {
+      const [premiere, ...reste] = valeur.split(/(?<=\.)\s+/)
+      return [premiere, phrase, ...reste].join(' ')
+    },
+    motif:
+      "réponse à « Combien coûte un déménagement de machines industrielles ? » : la phrase du milieu, celle qui renvoie au devis, avait été retirée entre « Le montant dépend… » et « En manutention lourde… ».",
+  },
+  {
+    fiche: 'supabase/import/gabarits-maquette/offres-zero-arret.json',
+    preuve: 'maquette/rendu/offres--zero-arret.html',
+    phrase:
+      "Vous réservez une capacité de maintenance, exclusivement hors production, pour un prix mensuel fixe et sans embauche.",
+    ou: 'contenu.chapeau',
+    pose: (valeur, phrase) => `${valeur} ${phrase}`,
+    motif:
+      "seconde phrase du chapeau du héros, sous le h1 « Zéro arrêt » : la première était restée seule.",
+  },
+  {
+    fiche: 'supabase/import/gabarits-maquette/offres-zero-arret.json',
+    preuve: 'maquette/rendu/offres--zero-arret.html',
+    phrase: 'La mise en service est offerte en Zéro arrêt et en Zéro arrêt Max.',
+    ou: 'contenu.sections[5].questions[1].reponse',
+    pose: (valeur, phrase) => `${phrase} ${valeur}`,
+    motif:
+      "réponse à « Combien coûte l'abonnement ? », réduite à une seule phrase orpheline par la purge. La phrase qui la précédait dans la capture, « Un prix mensuel fixe, sur 12 mois, selon la formule retenue. », reste FERMÉE : elle porte un chiffre de durée, et l'interdiction des délais chiffrés tient.",
+  },
+]
+
+/** Normalise pour comparer une phrase à une capture : entités, apostrophes, espaces. */
+export function normalise(texte) {
+  return (texte ?? '')
+    .replace(/&nbsp;|&#160;/g, ' ')
+    .replace(/&#x27;|&#39;|&apos;/g, "'")
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/[’‘]/g, "'")
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+/**
+ * LA GARDE DE LA DEUXIÈME SOURCE : la capture porte-t-elle vraiment la phrase ?
+ *
+ * Sans elle, ce script poserait dans une fiche n'importe quelle phrase écrite à
+ * la main dans la table ci-dessus. Avec elle, la référence du client reste
+ * l'autorité : une phrase que sa capture ne contient pas est REFUSÉE.
+ */
+export function laCaptureLaPorte(htmlCapture, phrase) {
+  return normalise(htmlCapture).includes(normalise(phrase))
+}
+
 /** Lit ou écrit une valeur par son chemin pointé, index de tableau compris. */
 function parChemin(objet, chemin) {
   const pas = chemin.replace(/\[(\d+)\]/g, '.$1').split('.')
@@ -118,20 +199,61 @@ if (CONTROLE) {
     console.log(`  ${juste ? 'OK   ' : 'ÉCHEC'}  ${e.nom}`)
     if (!juste) console.log(`           attendu ${e.veut}, obtenu ${obtenu}`)
   }
+  /* LA GARDE DE CAPTURE, avec son contrôle négatif : une phrase que la capture
+     ne porte pas doit être refusée, sinon la table deviendrait une autorité. */
+  const FAUSSE_CAPTURE =
+    '<p>Le montant d&#39;une prestation d’ici. Il est chiffré sur devis après l’étude préalable,\n qui est gratuite.</p>'
+  const EPREUVES_CAPTURE = [
+    {
+      nom: 'la garde de capture reconnaît la phrase malgré entités et apostrophes typographiques',
+      html: FAUSSE_CAPTURE,
+      phrase: "Il est chiffré sur devis après l'étude préalable, qui est gratuite.",
+      veut: true,
+    },
+    {
+      nom: 'NÉGATIF, une phrase que la capture ne porte pas est refusée',
+      html: FAUSSE_CAPTURE,
+      phrase: 'Le contrat démarre au tarif public affiché sur cette page.',
+      veut: false,
+    },
+    {
+      nom: 'NÉGATIF, une capture vide ne valide rien',
+      html: '',
+      phrase: "Il est chiffré sur devis après l'étude préalable, qui est gratuite.",
+      veut: false,
+    },
+  ]
+  for (const e of EPREUVES_CAPTURE) {
+    const obtenu = laCaptureLaPorte(e.html, e.phrase)
+    const juste = obtenu === e.veut
+    if (juste) vues += 1
+    console.log(`  ${juste ? 'OK   ' : 'ÉCHEC'}  ${e.nom}`)
+    if (!juste) console.log(`           attendu ${e.veut}, obtenu ${obtenu}`)
+  }
+  /* Chaque phrase de la deuxième source passe-t-elle le filtre des interdits ?
+     Et la phrase laissée fermée, « sur 12 mois », échoue-t-elle bien ? */
+  const toutesRendables = RESTITUTIONS_CAPTURE.every((r) => estRendable(r.phrase))
+  const douzeMoisFermee = !estRendable('Un prix mensuel fixe, sur 12 mois, selon la formule retenue.')
+  if (toutesRendables) vues += 1
+  console.log(`  ${toutesRendables ? 'OK   ' : 'ÉCHEC'}  les ${RESTITUTIONS_CAPTURE.length} phrases de la deuxième source passent le filtre`)
+  if (douzeMoisFermee) vues += 1
+  console.log(`  ${douzeMoisFermee ? 'OK   ' : 'ÉCHEC'}  NÉGATIF, « sur 12 mois » reste refusée par le filtre des délais`)
+
   /* Le chemin pointé sait-il viser un index de tableau ? */
   const faux = { a: { b: [{ c: 'x' }, { c: 'y' }] } }
   const { noeud, clef } = parChemin(faux, 'a.b[1].c')
   const bon = noeud && noeud[clef] === 'y'
   if (bon) vues += 1
   console.log(`  ${bon ? 'OK   ' : 'ÉCHEC'}  le chemin pointé vise bien un index de tableau`)
-  console.log(`\ntémoin : ${vues}/${EPREUVES.length + 1} épreuves réussies`)
-  process.exit(vues === EPREUVES.length + 1 ? 0 : 1)
+  const ATTENDUES = EPREUVES.length + EPREUVES_CAPTURE.length + 3
+  console.log(`\ntémoin : ${vues}/${ATTENDUES} épreuves réussies`)
+  process.exit(vues === ATTENDUES ? 0 : 1)
 }
 
 /* ----------------------------------------------------------------- passage */
 
 const parFiche = new Map()
-for (const r of RESTITUTIONS) {
+for (const r of [...RESTITUTIONS, ...RESTITUTIONS_CAPTURE]) {
   if (!parFiche.has(r.fiche)) parFiche.set(r.fiche, JSON.parse(readFileSync(r.fiche, 'utf8')))
 }
 
@@ -163,6 +285,44 @@ for (const r of RESTITUTIONS) {
   console.log(`  ${r.ou}`)
   console.log(`      avant : « ${String(avant).slice(0, 110) || '(vide)'} »`)
   console.log(`      après : « ${apres.slice(0, 150)} »`)
+  console.log(`      ${r.motif}\n`)
+}
+
+/* ----------------------------- DEUXIÈME SOURCE : les phrases sans trou ----- */
+
+const captures = new Map()
+for (const r of RESTITUTIONS_CAPTURE) {
+  if (!captures.has(r.preuve)) captures.set(r.preuve, readFileSync(r.preuve, 'utf8'))
+}
+
+for (const r of RESTITUTIONS_CAPTURE) {
+  const fiche = parFiche.get(r.fiche)
+  if (!estRendable(r.phrase)) {
+    refusees.push({ ...r, trou: r.phrase, motifRefus: 'la phrase porte un montant ou un délai chiffré' })
+    continue
+  }
+  if (!laCaptureLaPorte(captures.get(r.preuve), r.phrase)) {
+    refusees.push({ ...r, trou: r.phrase, motifRefus: `absente de la capture ${r.preuve}` })
+    continue
+  }
+  const { noeud, clef } = parChemin(fiche, r.ou)
+  if (!noeud || !(clef in noeud)) {
+    refusees.push({ ...r, trou: r.phrase, motifRefus: `emplacement introuvable : ${r.ou}` })
+    continue
+  }
+  const avant = String(noeud[clef] ?? '')
+  /* Déjà posée : on ne la pose pas deux fois. Ce script doit pouvoir se
+     relancer sans dupliquer une phrase dans la copie du client. */
+  if (normalise(avant).includes(normalise(r.phrase))) {
+    refusees.push({ ...r, trou: r.phrase, motifRefus: 'déjà présente à cet emplacement, rien à faire' })
+    continue
+  }
+  const apres = r.pose(avant, r.phrase).replace(/\s+/g, ' ').trim()
+  noeud[clef] = apres
+  rendues += 1
+  console.log(`  ${r.ou}`)
+  console.log(`      avant : « ${avant.slice(0, 130) || '(vide)'} »`)
+  console.log(`      après : « ${apres.slice(0, 200)} »`)
   console.log(`      ${r.motif}\n`)
 }
 

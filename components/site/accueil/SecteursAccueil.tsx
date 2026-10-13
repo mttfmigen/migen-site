@@ -3,6 +3,8 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import styles from "./SecteursAccueil.module.css";
+import replis from "./replis-accueil.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 export interface SecteurAccueil {
   libelle: string;
@@ -31,6 +33,18 @@ const IMAGE_MAQUETTE = {
   alt: "Technicien Migen sur une ligne intralogistique",
 };
 
+/*
+ * LE SUR-TITRE ET LE TITRE, ÉCRITS UNE SEULE FOIS.
+ *
+ * Ils servent à DEUX endroits : l'en-tête d'origine de la section, qui tient le
+ * dessin de bureau, et la bascule de repli, qui porte le titre sur téléphone.
+ * En constante plutôt que retapés : la copie appartient à Mehdi, et une copie
+ * recopiée est une copie qui finit par dériver. Voir
+ * `replis-accueil.module.css` pour la règle qui n'en montre jamais qu'un.
+ */
+const SURTITRE_TEXTE = "Secteurs d’activité";
+const TITRE_TEXTE = "Nos expertises sectorielles";
+
 const LIGNE: CSSProperties = {
   display: "flex",
   alignItems: "center",
@@ -49,9 +63,11 @@ export default function SecteursAccueil({
   image = IMAGE_MAQUETTE,
 }: Proprietes) {
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+        <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
         <div
+          className={replis.enTeteBureau}
           style={{
             font: "600 11.5px var(--fb)",
             letterSpacing: ".14em",
@@ -60,9 +76,9 @@ export default function SecteursAccueil({
             marginBottom: 14,
           }}
         >
-          Secteurs d’activité
+          {SURTITRE_TEXTE}
         </div>
-        <div style={{ marginBottom: 26 }}>
+        <div className={replis.enTeteBureau} style={{ marginBottom: 26 }}>
           <h2
             style={{
               font: "600 calc(clamp(28px,3vw,44px) * var(--ts))/1.08 var(--ft)",
@@ -72,7 +88,7 @@ export default function SecteursAccueil({
               textWrap: "balance",
             }}
           >
-            Nos expertises sectorielles
+            {TITRE_TEXTE}
           </h2>
         </div>
         <div
@@ -135,6 +151,7 @@ export default function SecteursAccueil({
             ))}
           </div>
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );
