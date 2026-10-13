@@ -38,21 +38,41 @@ La commande qui décide est nommée. Un état sans commande est marqué
 
 ## Ce qui n'est pas fait, et pourquoi
 
-| # | Demande | État mesuré | Ce qui bloque |
+| # | Demande | État mesuré le 14/10 au soir | Ce qui bloque |
 |---|---|---|---|
-| 14 | « le bloc est clairement mal disposé » sur `/offres/bureau-etudes/` (12/10) | **Signalé deux fois, jamais traité** | Rien. En cours de mesure au navigateur |
-| 15 | Le même sur `/travaux-industriels/` (12/10) | **Jamais traité** | Rien. En cours |
-| 16 | « Les prestations regroupées ici : pas assez complet » (12/10) | **Jamais traité** | À mesurer : la page affiche-t-elle tout ce que le corpus contient, ou manque-t-il de la matière ? |
-| 17 | « la page `/contact/` ne respecte pas la maquette » (12/10) | **Traité en partie** : la carte candidature qui coupait le parcours a été retirée. Jamais comparé bloc par bloc | Rien. En cours |
-| 18 | Une photo d'avion sur `/expertises/mecanique/lubrification/` | **DÉFAUT EN PRODUCTION**, trouvé le 14/10 | Rien. En cours |
-| 19 | « la photo de Bordeaux est mal cadrée » (12/10) | Aucune photo nommée Bordeaux n'est servie sur l'accueil aujourd'hui | À remesurer au navigateur |
-| 20 | « la photo de Metz ne correspond pas » (12/10) | Metz est servi **sans photo**, délibérément | **Toi** : Metz et Dijon n'ont aucune photo sous licence. Choix assumé plutôt qu'une photo fausse |
-| 21 | Porter la maquette mobile v2 (13/10) | **Non fait** | Rien, sinon le volume : onze gabarits et trois hauts de page sur mesure |
-| 22 | Le h1 de `/nous-connaitre/` nomme un métier sur trois | **À arbitrer** | Si ce titre vient de la maquette, c'est ta copie et je ne la réécris pas |
+| 14 | « le bloc est clairement mal disposé » sur `/offres/bureau-etudes/` (12/10) | **Fait.** Signalé le 12, jamais traité jusqu'au 14. Mesuré au navigateur, réparé, porte posée | — |
+| 15 | Le même sur `/travaux-industriels/` (12/10) | **Fait**, même passe | — |
+| 16 | « Les prestations regroupées ici : pas assez complet » (12/10) | **Fait**, matière du corpus remise sur la page | — |
+| 17 | « la page `/contact/` ne respecte pas la maquette » (12/10) | **Fait.** Comparée bloc par bloc à la maquette vivante, aucun champ du formulaire touché | — |
+| 18 | Une photo d'avion sur `/expertises/mecanique/lubrification/` | **Fait.** 0 occurrence en production | — |
+| 18b | La carte JTEKT de l'accueil montrait un garage de quartier | **Fait.** `lib/photo-par-page.ts` était périmé sur 35 de ses 231 entrées. Régénéré | — |
+| 19 | « la photo de Bordeaux est mal cadrée » (12/10) | **Fait**, cadrage mesuré et corrigé | — |
+| 20 | « la photo de Metz ne correspond pas » (12/10) | Metz servait une **cimenterie**, Dijon un **métier à tisser**, sous des légendes inventées. Les deux tuiles passent en panneau sombre, comme sur `/implantations/` | **Toi** : deux photos sous licence |
+| 21 | Porter la maquette mobile v2 (13/10) | **Non fait** | Le volume : onze gabarits et trois hauts de page sur mesure |
+| 22 | Le h1 de `/nous-connaitre/` nomme un métier sur trois | **C'est ta copie**, mesuré : `maquette/accueil-rendu.html` ligne 5208. Je ne le réécris pas | **Toi** : il reste, ou tu me dis de le changer |
 | 23 | « un fichier avec le texte de toutes les LP sur go.migengroup.com » (12/10) | **Non fait** | Autre projet que ce site |
 | 24 | Six pages d'expertise n'ont plus aucune étude de cas | **À arbitrer** | Commander les études manquantes, ou accepter la bande sans carte |
+| 25 | Cinq emplacements de logistique servent la même photo de convoyeur | **Manque de stock, pas de pose.** Les 12 photos du thème servent déjà 9 à 11 pages chacune | **Toi** : environ trois photos de logistique à acheter |
 
 ---
+
+---
+
+## Le défaut qui bloquait tout, et que seul le build voyait
+
+En reconstruisant le site après la repasse, **le build est tombé**. Une
+fonction du navigateur, `resumeDe()`, était appelée par sept composants rendus
+sur le serveur. Next refuse, et il a raison.
+
+Ce qui rend ce défaut instructif : **`bunx tsc --noEmit` passait**. La
+frontière entre le serveur et le navigateur n'est pas une question de types.
+Un agent qui s'arrête au typage croit donc avoir fini, et le site ne se
+déploie plus.
+
+La fonction est sortie dans un module neutre. J'ai **retiré le ré-export de
+confort** qui aurait gardé le piège armé, et il a immédiatement révélé un
+septième appelant, cette fois en erreur de compilation franche au lieu d'un
+plantage muet.
 
 ---
 
