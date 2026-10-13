@@ -150,20 +150,90 @@ if (CONTROLE) {
     `  ${bon ? 'OK   ' : 'ÉCHEC'}  NÉGATIF, deux blocs voisins ne sont jamais recollés en une phrase`,
   )
   if (!bon) console.log(`           blocs lus : ${JSON.stringify(deuxBlocs)}`)
-  console.log(`\ntémoin : ${vues}/${EPREUVES.length + 1} épreuves réussies`)
-  process.exit(vues === EPREUVES.length + 1 ? 0 : 1)
+
+  /* CONTRÔLE NÉGATIF DE L'ANGLE MORT DU 13/10 : une phrase que le site sert
+     depuis un COMPOSANT, et non depuis une fiche, n'est pas perdue. Ces deux
+     phrases sont servies, la première par SecteursDomaine.tsx, la seconde par
+     expertises-donnees.ts, et la porte les comptait toutes deux perdues. */
+  const copie = copieServie()
+  const SERVIES_PAR_UN_COMPOSANT = [
+    "Ce qui change, c'est le site : ses règles d'accès, sa cadence, ce qu'un arrêt coûte.",
+    'Le prestataire opaque coûte deux fois.',
+  ]
+  const encorePerdues = SERVIES_PAR_UN_COMPOSANT.filter((p) => estPerdue(normalise(p), copie))
+  const lit = encorePerdues.length === 0
+  if (lit) vues += 1
+  console.log(
+    `  ${lit ? 'OK   ' : 'ÉCHEC'}  NÉGATIF, une phrase servie par un composant n'est pas perdue`,
+  )
+  for (const p of encorePerdues) console.log(`           comptée perdue à tort : « ${p.slice(0, 80)}… »`)
+
+  console.log(`\ntémoin : ${vues}/${EPREUVES.length + 2} épreuves réussies`)
+  process.exit(vues === EPREUVES.length + 2 ? 0 : 1)
 }
 
 /* ----------------------------------------------------------------- passage */
 
-/** Le texte de toutes nos fiches, d'un bloc : ce que le site peut servir. */
-const servi = readdirSync(FICHES)
-  .filter((f) => f.endsWith('.json'))
-  .map((f) => readFileSync(`${FICHES}/${f}`, 'utf8'))
-  .join(' ')
-  .replace(/\\n/g, ' ')
-  .replace(/[’‘]/g, "'")
-  .replace(/\s+/g, ' ')
+/**
+ * TOUT CE QUE LE SITE SERT, et pas seulement ses fiches.
+ *
+ * L'ANGLE MORT RÉPARÉ LE 13/10 AU SOIR. Cette porte ne lisait que
+ * `supabase/import/gabarits-maquette`. Or une grande part de la copie n'est pas
+ * dans une fiche : elle est écrite en dur dans les composants et surtout dans
+ * leurs fichiers de données, `components/**\/*-donnees.ts`. Conséquence mesurée :
+ * la porte annonçait 22 phrases perdues sur 40 pages, dont DIX étaient servies
+ * mot pour mot, pour 39 des 40 pages comptées. La pire,
+ * « Ce qui change, c'est le site : ses règles d'accès, sa cadence, ce qu'un
+ * arrêt coûte. », pesait à elle seule 30 pages et se lit ligne 154 de
+ * `components/site/expertises/domaine/SecteursDomaine.tsx`.
+ *
+ * Elle ne s'aveugle pas pour autant : un contrôle négatif NOUVEAU exige qu'une
+ * phrase servie par un composant ne soit plus comptée perdue, et le témoin
+ * garde tous ses contrôles positifs, qui portent sur de vraies pertes.
+ *
+ * LES PORTES DE VÉRIFICATION SONT EXCLUES de cette lecture, et c'est
+ * indispensable : `verification-specialite.tsx` cite les phrases de la maquette
+ * pour les vérifier. Les compter comme servies rendrait la porte incapable de
+ * voir une perte dès qu'une autre porte en parle.
+ */
+function copieServie() {
+  const morceaux = []
+
+  for (const f of readdirSync(FICHES)) {
+    if (f.endsWith('.json')) morceaux.push(readFileSync(`${FICHES}/${f}`, 'utf8'))
+  }
+
+  const codeSource = (dossier) => {
+    for (const e of readdirSync(dossier, { withFileTypes: true })) {
+      const chemin = `${dossier}/${e.name}`
+      if (e.isDirectory()) {
+        codeSource(chemin)
+        continue
+      }
+      if (!/\.tsx?$/.test(e.name)) continue
+      // Une porte n'est pas de la copie : elle cite pour mesurer.
+      if (/^verif(ication|ie)-/.test(e.name)) continue
+      morceaux.push(readFileSync(chemin, 'utf8'))
+    }
+  }
+  for (const racine of ['components', 'lib', 'app']) codeSource(racine)
+
+  return (
+    morceaux
+      .join(' ')
+      .replace(/\\n/g, ' ')
+      // Le JSX écrit l'insécable et l'espace littérale sous forme d'entités.
+      .replace(/&nbsp;|&#160;/g, ' ')
+      .replace(/\{" "\}/g, ' ')
+      .replace(/[  ]/g, ' ')
+      // Une apostrophe droite dans une chaîne TypeScript simple est échappée.
+      .replace(/\\'/g, "'")
+      .replace(/[’‘]/g, "'")
+      .replace(/\s+/g, ' ')
+  )
+}
+
+const servi = copieServie()
 
 const captures = readdirSync(CAPTURES).filter((f) => f.endsWith('.html'))
 const pertes = []
