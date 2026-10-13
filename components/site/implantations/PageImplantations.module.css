@@ -177,3 +177,190 @@
 .ville:focus-visible {
   outline-color: var(--ink);
 }
+
+/* ===================================================================
+   LA MOSAÏQUE DES DIX HUBS, portée du colis du 13/10.
+
+   Le colis dessine chaque hub en tuile photo : la ville en fond, son nom en
+   grand, le compte de ses bassins et leurs pastilles. Lyon tient deux
+   colonnes. Mesuré dans le colis à 1440 px : 1 732 px de haut pour la section
+   entière, dix images, onze boutons de région, 48 liens de ville.
+
+   CE QU'ON EN GARDE ET CE QU'ON EN CORRIGE est écrit dans `NosVilles.tsx`,
+   au-dessus du rendu.
+   =================================================================== */
+
+.mosaique {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.tuileHub {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--rad);
+  min-height: 236px;
+  display: flex;
+  align-items: flex-end;
+  background: var(--panel);
+  isolation: isolate;
+}
+
+/* Lyon, et lui seul : deux colonnes et une tuile plus haute. C'est le siège,
+   et c'est le hub qui porte le plus de bassins. */
+.tuileHub[data-large] {
+  grid-column: span 2;
+  min-height: 300px;
+}
+
+.tuilePhoto {
+  object-fit: cover;
+  filter: saturate(var(--sat)) contrast(1.04);
+  z-index: 0;
+}
+
+/* Le voile : sans lui, un nom blanc sur un ciel clair devient illisible. Il
+   est plus dense en bas, là où vivent le nom et les pastilles. */
+.tuileVoile {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(14, 13, 18, 0.18) 0%,
+    rgba(14, 13, 18, 0.52) 48%,
+    rgba(14, 13, 18, 0.86) 100%
+  );
+}
+
+/* La tuile sans photo : un panneau sombre, et le manque se voit. Metz et Dijon
+   attendent leur version sous licence. */
+.tuileSansPhoto .tuileVoile {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+.tuilePastille,
+.tuileFleche {
+  position: absolute;
+  z-index: 3;
+  top: 14px;
+}
+
+.tuilePastille {
+  left: 14px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  font: 600 10px var(--fb);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.tuileFleche {
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: var(--acc);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.tuileCorps {
+  position: relative;
+  z-index: 2;
+  padding: 18px;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Le nom du hub. Son `::after` couvre la tuile entière : toucher n'importe où
+   mène au hub, et les pastilles de bassin repassent au-dessus. Une ancre dans
+   une ancre serait du HTML invalide, d'où ce montage plutôt qu'une carte
+   enveloppée dans un lien. */
+.tuileLien {
+  display: block;
+  color: #fff;
+  font: 600 26px/1.05 var(--ft);
+  letter-spacing: -0.035em;
+}
+
+.tuileLien::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.tuileLien:hover,
+.tuileLien:focus-visible {
+  color: #fff;
+}
+
+.tuileHub[data-large] .tuileLien {
+  font-size: 34px;
+}
+
+.tuileCompte {
+  display: block;
+  margin-top: 3px;
+  color: rgba(255, 255, 255, 0.76);
+  font: 400 12.5px var(--fb);
+}
+
+.tuileZones {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 11px;
+}
+
+.tuileZone {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  font: 500 12px var(--fb);
+  white-space: nowrap;
+}
+
+.tuileZone:hover,
+.tuileZone:focus-visible {
+  background: var(--acc);
+  color: #fff;
+}
+
+/* Sous 1000 px, deux colonnes. Sous 880 px, une seule : le colis fait 4 292 px
+   de haut au téléphone contre 537 aujourd'hui, et c'est exactement le « trop
+   gros » que Mehdi reprochait au bloc d'avant. */
+@media (max-width: 1000px) {
+  .mosaique {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 880px) {
+  .mosaique {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tuileHub,
+  .tuileHub[data-large] {
+    grid-column: auto;
+    min-height: 184px;
+  }
+  .tuileLien,
+  .tuileHub[data-large] .tuileLien {
+    font-size: 23px;
+  }
+}

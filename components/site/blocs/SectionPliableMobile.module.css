@@ -200,6 +200,24 @@
   .chevron {
     display: none;
   }
+
+  /* LE RÉSUMÉ NE PARAÎT QUE SUR TÉLÉPHONE, et sans cette règle il fuit.
+     Il porte `data-mobile-seulement`, mais AUCUNE règle ne masquait cet
+     attribut : seul le chevron avait la sienne, juste au-dessus. Tant que le
+     résumé vivait hors du `<summary>`, il ne se voyait pas, le pseudo-élément
+     `::details-content` le cachait. En le remettant DANS le `<summary>` le
+     13/10 au matin, pour qu'il soit enfin peint sur téléphone, on l'a du même
+     coup rendu visible sur grand écran, partout où le gabarit ne masque pas
+     sa bascule.
+
+     Mesuré le 13/10 à 1440 px, en production comme en local : quatre résumés
+     visibles sur six, dont « Lyon · Paris · Lille · Marseille … » sous le
+     titre de /implantations/ et « Hauts-de-France · Normandie … » sous celui
+     de l'annuaire. Un résumé est une liste de ce qui est SOUS LE PLI : sur un
+     écran où rien n'est plié, il ne dit rien et il double le titre. */
+  .resume {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

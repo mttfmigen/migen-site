@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
@@ -7,6 +8,7 @@ import type { NosVilles as DonneesNosVilles } from "@/types/implantations";
 import styles from "./PageImplantations.module.css";
 
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { PHOTO_DU_HUB } from "./photos-hubs";
 
 /**
  * L'écran « Nos villes » du hub `/implantations/` : les dix cartes de hub et
@@ -248,38 +250,90 @@ export default function NosVilles({ villes }: { villes: DonneesNosVilles }) {
           resume={villes.hubs.map((hub) => hub.hub).join(" · ")}
         >
           <p style={CHAPEAU}>{villes.chapeau}</p>
-          <div className={`${styles.surfaceVerre} ${styles.panneauHubs}`}>
-            {villes.hubs.map((hub) => (
-              <div key={hub.href} className={styles.rangHub}>
-                {/* TOUS LES PANNEAUX ONT LA MÊME LARGEUR, Y COMPRIS CELUI DU
-                    HUB SANS BASSIN, et c'est une correction de la correction.
-                    Les deux relecteurs avaient relevé le vide à droite de
-                    Lille, seul des dix sans aucune zone, et proposé de l'y
-                    étirer. Essayé, rendu, regardé : un panneau anthracite
-                    large de 700 px au milieu de neuf panneaux de 180 px fait
-                    de Lille le hub le plus important de la page, ce qu'il
-                    n'est pas. Une cellule vide dans un tableau se lit comme
-                    une cellule vide ; un pavé noir, non. */}
-                <Link href={hub.href} prefetch={false} className={styles.hub} style={LIEN_HUB}>
-                  <span>
-                    <span style={HUB_SURTITRE}>Hub</span>
-                    <span style={HUB_NOM}>{hub.hub}</span>
+
+          {/* LA MOSAÏQUE DE TUILES PHOTO, portée du colis du 13/10.
+              Mehdi, le 12/10 : « le bloc est pas jolie mal agencé trop gros.
+              Ca pourrait etre un peu plus visuels. » Le colis est la réponse
+              dessinée : chaque hub devient une tuile avec la photo de sa
+              ville, son nom en grand, le compte de ses bassins et leurs
+              pastilles.
+
+              TROIS CHOSES QUE LE COLIS FAIT ET QUE L'ON NE FAIT PAS.
+
+              1. Il charge six de ses dix photos depuis Internet, filigranées.
+                 Nous servons les HUIT qui sont sous licence au dépôt, et les
+                 deux qui manquent se rendent en panneau sombre. Le manque se
+                 voit, et c'est le but : une scène d'usine à la place de Metz
+                 est exactement ce qui a déclenché son retour du 12/10.
+
+              2. Il perd le texte d'ancre des cartes, qui ne portent plus qu'un
+                 `aria-label`. Ici le nom du hub est dans le lien, lisible et
+                 indexable.
+
+              3. Il fait 4 292 px de haut au téléphone contre 537 aujourd'hui.
+                 La mosaïque passe donc à une colonne sous 880 px, et le bloc
+                 reste replié par `SectionPliableMobile`. */}
+          <div className={styles.mosaique}>
+            {villes.hubs.map((hub) => {
+              const photo = PHOTO_DU_HUB[hub.hub];
+              const bassins = hub.zones?.length ?? 0;
+              return (
+                <article
+                  key={hub.href}
+                  className={`${styles.tuileHub} ${photo ? "" : styles.tuileSansPhoto}`}
+                  /* Lyon tient deux colonnes, comme dans le colis : c'est le
+                     siège, et c'est le hub qui porte le plus de bassins. */
+                  data-large={hub.hub === "Lyon" ? "" : undefined}
+                >
+                  {photo ? (
+                    <Image
+                      src={photo}
+                      alt=""
+                      aria-hidden="true"
+                      fill
+                      sizes="(max-width: 880px) 100vw, 480px"
+                      className={styles.tuilePhoto}
+                    />
+                  ) : null}
+                  <span aria-hidden="true" className={styles.tuileVoile} />
+
+                  <span aria-hidden="true" className={styles.tuilePastille}>
+                    Hub
                   </span>
-                  <span aria-hidden="true" style={FLECHE}>
+                  <span aria-hidden="true" className={styles.tuileFleche}>
                     →
                   </span>
-                </Link>
-                {hub.zones?.length ? (
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6, flex: "1 1 200px" }}>
-                    {hub.zones.map((zone) => (
-                      <Link key={zone.href} href={zone.href} prefetch={false} className={styles.zone} style={ZONE}>
-                        {zone.libelle}
-                      </Link>
-                    ))}
+
+                  <div className={styles.tuileCorps}>
+                    {/* Le lien du hub couvre toute la tuile par son `::after`,
+                        et les pastilles de bassin repassent au-dessus : une
+                        ancre dans une ancre serait du HTML invalide. */}
+                    <Link href={hub.href} prefetch={false} className={styles.tuileLien}>
+                      {hub.hub}
+                    </Link>
+                    <span className={styles.tuileCompte}>
+                      {bassins > 0
+                        ? `${bassins} bassin${bassins > 1 ? "s" : ""} rattaché${bassins > 1 ? "s" : ""}`
+                        : "Interventions sur tout le bassin"}
+                    </span>
+                    {bassins > 0 ? (
+                      <span className={styles.tuileZones}>
+                        {(hub.zones ?? []).map((zone) => (
+                          <Link
+                            key={zone.href}
+                            href={zone.href}
+                            prefetch={false}
+                            className={styles.tuileZone}
+                          >
+                            {zone.libelle}
+                          </Link>
+                        ))}
+                      </span>
+                    ) : null}
                   </div>
-                ) : null}
-              </div>
-            ))}
+                </article>
+              );
+            })}
           </div>
         </SectionPliableMobile>
 
