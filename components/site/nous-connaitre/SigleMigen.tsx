@@ -27,10 +27,19 @@ const RANGEE: CSSProperties = {
   gap: 14,
 };
 
+/**
+ * LE SIGLE SE DÉCOUPE EN M, I ET GEN, pas en M, I, G puis EN.
+ *
+ * Correction de Mehdi, le 13/10 : « Il fallait remplacer G énéral par GEN de
+ * général. » Le nom se lit « migen », et ce sont bien les trois PREMIÈRES
+ * lettres de « général » qui le ferment, pas son initiale seule suivie d'un
+ * « EN » venu d'ailleurs. L'ancien découpage faisait de « EN » une quatrième
+ * ligne sans origine, alors qu'il est dans le mot.
+ */
 const SIGLE: readonly [string, string][] = [
   ["M", "aintenance"],
   ["I", "ndustrielle"],
-  ["G", "énérale"],
+  ["GEN", "éral"],
 ];
 
 export default function SigleMigen() {
@@ -102,7 +111,7 @@ export default function SigleMigen() {
           <em style={{ fontStyle: "normal", color: "#fff" }}>
             Maintenance industrielle générale
           </em>
-          . Trois initiales, deux lettres pour que ça se prononce, réponse
+          . Trois mots, et de chacun ce qu’il faut pour que ça se prononce, réponse
           immédiate.
         </p>
       </div>
@@ -113,32 +122,9 @@ export default function SigleMigen() {
             <span style={SUITE}>{suite}</span>
           </div>
         ))}
-        <div
-          style={{
-            ...RANGEE,
-            marginTop: 10,
-            paddingTop: 14,
-            borderTop: "1px solid rgba(255,255,255,.14)",
-          }}
-        >
-          <span
-            style={{
-              font: "700 calc(clamp(40px,5vw,64px) * var(--ts))/.9 var(--ft)",
-              letterSpacing: "-.05em",
-              color: "#fff",
-            }}
-          >
-            EN
-          </span>
-          <span
-            style={{
-              font: "400 14px var(--fb)",
-              color: "rgba(255,255,255,.5)",
-            }}
-          >
-            pour que ça se dise
-          </span>
-        </div>
+        {/* LA QUATRIÈME RANGÉE EST RETIRÉE. Elle épelait « EN, pour que ça se
+            dise », comme si ces deux lettres venaient d'ailleurs. Elles sont
+            dans « général », et le sigle le montre maintenant : GEN-éral. */}
       </div>
     </div>
   </div>

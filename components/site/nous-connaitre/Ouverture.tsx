@@ -76,12 +76,33 @@ export default function Ouverture() {
               maxWidth: "50ch",
             }}
           >
+            {/* L&rsquo;INTRO NOMMAIT UN SEUL MÉTIER. Mehdi, le 13/10 :
+                « tu parles que de la maintenance, tu parles pas du bureau
+                d&rsquo;étude, de migen chantier ». Avant, elle disait « Nous ne
+                faisons qu&rsquo;une chose, affecter sur vos sites des
+                techniciens qui entretiennent les machines, et rien d&rsquo;autre »,
+                ce qui décrivait l&rsquo;offre Résidence et elle seule. C&rsquo;est
+                exactement ce que Nathan Jorez avait vu le même jour : « cette
+                page est ultra spé résidence comme si c&rsquo;était la seule
+                offre ».
+
+                CE QUI RESTE DE SA COPIE : l&rsquo;opposition de départ, la
+                formule « et rien d&rsquo;autre », la niche et les process rodés
+                face aux généralistes. CE QUI CHANGE : le périmètre nommé, et il
+                reprend les intitulés que le site écrit déjà, maintenance,
+                bureau d&rsquo;études et travaux industriels.
+
+                La phrase d&rsquo;avant était DÉJÀ de notre main : la sienne
+                écrivait « mettre à disposition du personnel », proscrit deux
+                fois par le contrat de rédaction, et la reformulation avait
+                resserré le périmètre sans qu&rsquo;on le veuille. */}
             Des entreprises entretiennent les machines. D&rsquo;autres placent
-            du personnel. Nous ne faisons qu&rsquo;une chose, affecter sur vos
-            sites des techniciens qui entretiennent les machines, et rien
-            d&rsquo;autre. C&rsquo;est une niche, et c&rsquo;est ce qui nous
-            permet d&rsquo;avoir des process rodés là où les généralistes
-            improvisent.
+            du personnel. Nous ne faisons qu&rsquo;un métier, l&rsquo;industrie
+            qui tourne, et rien d&rsquo;autre : la maintenance de vos machines,
+            le bureau d&rsquo;études qui les conçoit et les met en conformité, et
+            les travaux industriels qui les déplacent, les montent et les
+            démarrent. C&rsquo;est une niche, et c&rsquo;est ce qui nous permet
+            d&rsquo;avoir des process rodés là où les généralistes improvisent.
           </p>
           <div
             style={{

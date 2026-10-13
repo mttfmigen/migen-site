@@ -301,6 +301,24 @@ const OFFRES_ATTENDUES = [
   "/travaux-industriels/",
 ] as const;
 
+/* LA RÉCIPROQUE, et elle compte autant : le pied de page ne doit pas porter une
+   offre que cet écran ignore. Sans elle, une septième offre ajoutée au pied de
+   page laisserait « Nous connaître » en retard sans qu'aucune porte ne bouge,
+   c'est-à-dire exactement la panne qu'on répare ici, en plus petit.
+
+   La signature retenue est le libellé de marque « migen© », que portent les six
+   offres et elles seules : la colonne « Offres » du pied de page cite aussi le
+   Diagnostic Zéro arrêt et les Partenaires, qui ne sont pas des offres, et le
+   titre de colonne « migen© » n'est pas un lien, donc pas dans cette carte. */
+assert.deepEqual(
+  [...LIBELLES_PIED]
+    .filter(([, libelle]) => libelle.startsWith("migen©"))
+    .map(([href]) => href)
+    .sort(),
+  [...OFFRES_ATTENDUES].sort(),
+  "le pied de page ne porte plus les mêmes six offres que cet écran",
+);
+
 for (const url of OFFRES_ATTENDUES) {
   const libelle = LIBELLES_PIED.get(url);
   assert.ok(

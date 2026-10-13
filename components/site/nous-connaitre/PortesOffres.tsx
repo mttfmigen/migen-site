@@ -76,7 +76,10 @@ const TITRE_CARTE: CSSProperties = {
   color: "var(--ink)",
 };
 
-/** `TEXTE_CARTE` des cartes sobres de l'accueil. */
+/* La phrase des cartes sobres de l'accueil, valeurs recopiées. Elle est écrite
+   en clair dans leur JSX et NON dans la constante `TEXTE_CARTE` du même
+   fichier, qui vaut 14.5px et sert aux cartes 01 à 03 : aligner ce bloc sur
+   `TEXTE_CARTE` changerait le dessin en croyant le ranger. */
 const PHRASE: CSSProperties = {
   font: "400 13.5px/1.55 var(--fb)",
   color: "var(--ink2)",
@@ -161,9 +164,13 @@ const INTITULE = "Nos six offres";
 export default function PortesOffres() {
   return (
     <section style={{ padding: "var(--sec) 0 0" }}>
-      {/* `max-width:1200px` : `app/globals.css` rattrape les marges sous 760px
-          par un sélecteur d'attribut sur cette valeur. Sans ce conteneur, la
-          section perdrait ses marges sur téléphone. */}
+      {/* `max-width:1200px` ET `0 40px` dans le MÊME attribut de style : c'est
+          le couple que cherche `app/globals.css` pour ramener la gouttière de
+          40 à 20 px sous 390 px (`@media (max-width: 389px)`). Les commentaires
+          qui parlent de 760 px ailleurs dans le dépôt citent la règle de la
+          maquette, que son moteur n'appliquait jamais ; la règle vivante est
+          celle-ci. Mesuré le 13/10 sur le rendu en ligne : 20 px de gouttière à
+          380 px, 40 px à 390 px, aucun débordement. */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         {/* Échelle de titre de `TerrainsExcellence`, sur le même écran. */}
         <h2

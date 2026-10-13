@@ -235,12 +235,37 @@ async function deposeChezHubspot(depot: Depot): Promise<Resultat> {
       ? depot.page.url.split("?")[0].split("#")[0]
       : depot.page.url;
 
+  /*
+   * LE NOM D'ENTREPRISE EST UNE PROPRIÉTÉ DE L'OBJET SOCIÉTÉ, PAS DU CONTACT.
+   *
+   * MESURÉ LE 13/10 CONTRE LE VRAI FORMULAIRE, 18757747-87a1-4098-b89e-78ba4440d489,
+   * sonde envoyée avec un courriel volontairement invalide pour ne rien créer, et
+   * deux recherches dans le portail ont confirmé qu'aucun contact ne l'avait été :
+   *
+   *   avec `company`   → REFUSÉ, « Required field '0-2/name' is missing »
+   *   avec `0-2/name`  → accepté
+   *
+   * `0-2` est l'identifiant du type Société chez HubSpot. Le formulaire porte donc
+   * le nom d'entreprise sur la SOCIÉTÉ, et notre `company`, qui vise le contact,
+   * n'y correspond à aucun champ. Or HubSpot refuse la soumission ENTIÈRE dès
+   * qu'un champ n'est pas sur le formulaire : chaque demande aurait été perdue,
+   * même une fois l'identifiant du formulaire posé.
+   *
+   * Les cinq champs obligatoires relevés par la sonde : `firstname`, `lastname`,
+   * `phone`, `message` et `0-2/name`.
+   */
+  const CHAMPS_DE_SOCIETE: Readonly<Record<string, string>> = { company: "name" };
+
   const corps = {
     // HubSpot refuse un champ vide sur une propriété obligatoire : on ne
     // transmet que ce qui est renseigné.
     fields: Object.entries(champs)
       .filter(([, valeur]) => Boolean(valeur))
-      .map(([name, value]) => ({ name, value })),
+      .map(([name, value]) =>
+        CHAMPS_DE_SOCIETE[name]
+          ? { objectTypeId: "0-2", name: CHAMPS_DE_SOCIETE[name], value }
+          : { name, value },
+      ),
     context: {
       ...(depot.hutk ? { hutk: depot.hutk } : {}),
       ...(urlPage ? { pageUri: urlPage } : {}),
