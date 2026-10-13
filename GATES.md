@@ -611,7 +611,7 @@ Dernière relecture : 12/10.
       nouveau, avec deux contrôles négatifs ÉPROUVÉS : une lecture paresseuse
       et une lecture gloutonne reposées à la main le temps d'une mesure, toutes
       deux vues.
-      CHECK: bun run verifie:hubs
+      CHECK: bun components/site/secteurs-hub/verification-secteurs-hub.tsx
       EXPECT: 16 sections conformes
 
 ### G67 — Une erreur eslint préexistante, à arbitrer
