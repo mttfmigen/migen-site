@@ -46,7 +46,21 @@ const JALONS: readonly Jalon[] = [
   {
     annee: "2025",
     texte:
-      "Dubaï et Montréal ouvrent. Migen lance les travaux industriels et le bureau d’études.",
+      /* « Migen Travaux », PAS « Migen », et c'est une faute réparée le 13/10.
+         La maquette écrit « Orthus lance les travaux industriels et le bureau
+         d'études » (`maquette/accueil-rendu.html:5390`). L'arbitrage de Mehdi du
+         09/10, posé dans `lib/decisions-copie.ts`, remplace « Orthus » par
+         « Migen Travaux ». Aucun composant de ce dossier n'importe ce fichier :
+         la copie est en dur, la règle n'a donc jamais pu s'appliquer, et
+         quelqu'un a écrit « Migen » à la main en perdant « Travaux ».
+
+         CE QUE CETTE PERTE FAISAIT, et c'est exactement le retour de Nathan
+         Jorez du 13/10, « cette page est ultra spé résidence comme si c'était
+         la seule offre » : la seule phrase de la page qui nommait la marque
+         portant les deux offres hors placement nommait l'entreprise entière,
+         ce qui aplatissait ces deux offres en épisode de l'histoire du
+         placement. */
+      "Dubaï et Montréal ouvrent. Migen Travaux lance les travaux industriels et le bureau d’études.",
   },
   {
     annee: "2026",

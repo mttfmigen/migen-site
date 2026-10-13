@@ -11,13 +11,13 @@ Une donnée absente s'y écrit « non calculable » avec son motif. Jamais zéro
 
 ```json avancement
 {
-  "remesureLe": "13/10/2026 à 15:33",
+  "remesureLe": "13/10/2026 à 15:34",
   "depot": {
     "branche": "phase-2-gabarits",
-    "tete": "3c4c29b",
-    "poussé": "3c4c29b",
-    "commitsDepuisMinuit": 10,
-    "fichiersNonCommites": 3
+    "tete": "fcbb36d",
+    "poussé": "fcbb36d",
+    "commitsDepuisMinuit": 11,
+    "fichiersNonCommites": "0"
   },
   "contenu": {
     "fichesDeContenu": 246

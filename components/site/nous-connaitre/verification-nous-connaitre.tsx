@@ -311,6 +311,12 @@ const CORRECTIONS: readonly { maquette: string; rendu: string }[] = [
   { maquette: "mettre à disposition du personnel", rendu: "affecter sur vos sites des techniciens" },
   { maquette: "Mettre à disposition des techniciens", rendu: "Affecter des techniciens de maintenance sur votre site" },
   { maquette: "de l'agence la plus proche", rendu: "du hub le plus proche" },
+  /* Posée le 13/10. La page rendait « Migen lance les travaux industriels »
+     là où l'arbitrage du 09/10 impose « Migen Travaux » : le mot « Travaux »
+     avait été perdu à la saisie. Cette ligne vérifie les deux moitiés, donc
+     elle échoue aussi bien si la maquette cesse d'écrire « Orthus » que si le
+     rendu reperd la marque. */
+  { maquette: "Orthus lance les travaux industriels", rendu: "Migen Travaux lance les travaux industriels" },
 ];
 
 const texteMaquette = normalise(MAQUETTE);
