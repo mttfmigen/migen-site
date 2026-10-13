@@ -498,6 +498,135 @@ Dernière relecture : 12/10.
 
 ---
 
+## Série 4, le responsive et ses effets de bord, nuit du 13/10
+
+### G57 — Le responsive du site, 136 défauts, maintenant zéro
+- [x] FAIT, et c'est la demande « finalise le responsive » du 12/10 au soir.
+      Mesuré à 320, 360, 390, 768 et 1280 px sur 22 pages des onze gabarits,
+      110 relevés. Départ : 71 débordements et 65 textes coupés. Huit causes
+      racines, toutes mesurées au navigateur avant d'être touchées, dont la
+      gouttière de page à 40 px (un quart de l'écran à 320 px), 72 grilles dont
+      la piste unique était plus large que son conteneur, et les seuils de
+      retour à la ligne de la maquette qui n'ont plus de ligne où aller sur un
+      téléphone.
+      CHECK: SITE_URL=https://migen-site.vercel.app node scripts/verifie-responsive.mjs | tail -1
+      EXPECT: RESPONSIVE DU SITE CONFORME
+
+### G58 — Les 72 grilles dont la piste dépassait leur conteneur
+- [x] FAIT. `{ display: "grid", gap: N }` sans colonne déclarée donne une piste
+      `auto`, qui ne descend pas sous le `min-content` de son enfant. Mesuré :
+      conteneur 196 px, piste 215,281 px sur /implantations/bordeaux/, cinq
+      plis dehors de 19 px. Corrigé par `minmax(0,1fr)` sur les 72, par script.
+      CHECK: node scripts/pistes-de-grille.mjs
+      EXPECT: 0 piste(s) de grille déclarée(s)
+
+### G59 — Aucun titre de section perdu sur grand écran
+- [x] FAIT, porte nouvelle, et elle a d'abord servi à me contredire. Une
+      tentative de retirer la bascule du parcours clavier par `display: none`
+      dans la feuille partagée masquait aussi le titre de section, que la
+      bascule porte : 31 bascules sur 31, zéro vide. La porte mesure la seule
+      chose qui compte pour le visiteur : le titre d'une bascule masquée se
+      retrouve-t-il ailleurs, dans un élément réellement vu. Verdict en
+      production : aucun titre perdu, ni avant ni après.
+      CHECK: node scripts/verifie-titres-de-section.mjs https://migen-site.vercel.app | tail -1
+      EXPECT: AUCUN_TITRE_DE_SECTION_PERDU
+
+### G60 — 21 arrêts de tabulation muets à 1280 px
+- [x] FAIT. Au-dessus de 880 px le bloc ne se referme plus : son `<summary>`
+      n'ouvre plus rien mais reste focalisable. Retiré du parcours clavier par
+      `tabIndex = -1` posé dans le composant, avec écoute de la largeur pour
+      qu'une rotation d'écran le lui rende.
+      CHECK: SITE_URL=https://migen-site.vercel.app node scripts/verifie-responsive.mjs | grep "bascule(s) focalisable"
+      EXPECT: 0 bascule(s) focalisable(s)
+
+### G61 — Du Markdown brut à l'écran, révélé par le résumé enfin peint
+- [x] FAIT. Les dix appelants de `SectionPliableMobile` construisaient le
+      résumé des blocs repliés avec du texte de corpus NON réduit. Invisible
+      jusqu'au 13/10 parce que ce résumé n'était jamais peint ; en le remettant
+      dans le `<summary>`, « [Étude de cas EATON : mise en
+      production](/preuves/eaton-mise-en-production/) » s'est affiché crochets
+      et parenthèses compris sur les pages d'offre en téléphone. `enTexteNu`
+      est posé dans le seul composant qui peint ce résumé, donc un onzième
+      appelant est couvert d'office.
+      CHECK: bun run verifie:markdown
+      EXPECT: 6 composants rendent le corpus sans sa syntaxe
+
+### G62 — La porte du pied de page annonçait zéro colonne
+- [x] FAIT. Elle lisait la chaîne EXACTE `style="display:grid;gap:9px"`. La
+      déclaration de colonne de G58 a changé ce texte, la lecture n'a plus
+      rien trouvé, et la porte a dit « zéro colonne de pied de page » alors que
+      les six étaient rendues normalement. Elle exige toujours une GRILLE, ce
+      qui est le fond du contrôle, sans exiger la liste ni l'ordre de ses
+      propriétés, qui n'en est pas. Réparée, pas assouplie.
+      CHECK: bun run verifie:pied
+      EXPECT: 26 libellés de navigation et 4 colonnes de maillage
+
+### G63 — verifie-offre-rendu, de 4 anomalies à zéro
+- [x] FAIT. Trois venaient de `<AppelFinal>` enveloppé dans un `<div
+      id="mgx-form">`, ce qui sortait la section finale des enfants directs du
+      `<main>` : mesuré sur 4 pages, 16 sections vues au lieu de 16, et le
+      défaut valait pour les 21 pages du gabarit. L'ancre est passée en prop.
+      La quatrième est la réponse de FAQ invisible, arbitrage de Mehdi du 11/10
+      (aucune question ouverte au chargement) : déclarée en trou AVEC un
+      drapeau `dansLeHtml` et un contrôle NOUVEAU, qui exige que la phrase
+      reste servie dans le HTML. Contrôle négatif joué : la porte tombe quand
+      la phrase n'y est plus.
+      CHECK: bun run verifie:offre-rendu
+      EXPECT: rendu d'offre conforme à la référence
+
+### G64 — Le plan du site publiait 4 adresses mortes
+- [x] FAIT. Les deux fiches inventées de G56, plus deux autres sources de
+      redirection de la refonte. Cause : le plan lisait la table `pages` sans
+      savoir qu'un chemin peut être la SOURCE d'une redirection. Corrigé par
+      croisement avec l'index des redirections, celui que le proxy applique :
+      une redirection ajoutée demain sort sa source du plan sans qu'on y
+      touche. `/plan-du-site/` posait les mêmes 4 liens morts, c'est réglé
+      aussi. Le remède de fond, retirer les lignes de `pages`, attend B2.
+      CHECK: node scripts/verifie-liens.mjs https://migen-site.vercel.app | tail -1
+      EXPECT: tous les liens internes mènent quelque part
+
+### G65 — « expert technique » sur les composants partagés
+- [x] FAIT, et mesuré des deux côtés. 39 occurrences de « technicien » sur les
+      dix pages de bureau d'études et travaux, 20 après. Les 20 restantes ont
+      chacune leur motif et AUCUNE n'est écrasée : 11 sont le nom de l'offre
+      /offres/residence/ et son résumé, 3 le réseau de hubs que CLAUDE.md §9
+      nomme lui-même « dix hubs de techniciens », 2 une citation d'étude de
+      cas, 2 les techniciens DU CLIENT.
+      À ARBITRER PAR MEHDI, et c'est le seul vrai doute : le chapô de
+      /travaux-industriels/ dit « Des techniciens de maintenance qui démontent,
+      lèvent, remontent et rebranchent ». C'est le profil déployé, donc dans sa
+      cible, mais sous le nom exact du métier. « Experts techniques de
+      maintenance » se dit mal, « experts techniques » seul perd la spécialité.
+      CHECK: node scripts/mesure-expert-technique.mjs
+      EXPECT: 20
+
+### G66 — Deux portes qui lisaient mal, réparées
+- [x] FAIT. `verification-ville` : une virgule. La capture écrit « L'astreinte,
+      en option, prend le relais », le corpus l'écrivait sans virgules. C'est
+      le corpus qu'on aligne, la virgule vient de sa copie. 74/74 conformes.
+      `verification-secteurs-hub` : elle ne déshabillait PAS les ornements
+      mobiles, d'où 6 faux écarts sur du texte que la capture de bureau n'a
+      aucune raison de porter. Branchée sur le module partagé à comptage de
+      profondeur, quatrième porte à l'utiliser. Son témoin `--controle` est
+      nouveau, avec deux contrôles négatifs ÉPROUVÉS : une lecture paresseuse
+      et une lecture gloutonne reposées à la main le temps d'une mesure, toutes
+      deux vues.
+      CHECK: bun run verifie:hubs
+      EXPECT: 16 sections conformes
+
+### G67 — Une erreur eslint préexistante, à arbitrer
+- [ ] PAS FAIT, DÉLIBÉRÉMENT. `components/formulaire/ChampEntreprise.tsx:101`
+      appelle `setPropositions([])` en synchrone dans un effet. C'est la seule
+      erreur eslint du dépôt, elle est antérieure à cette nuit, et le fichier
+      n'a été touché par personne. Le remède naturel, déplacer l'effacement
+      dans le minuteur, décale de 250 ms la disparition de la liste
+      d'autocomplétion : c'est un comportement de FORMULAIRE, et la règle est
+      de ne pas y toucher. À trancher par Mehdi.
+      CHECK: bunx eslint components/formulaire/ChampEntreprise.tsx
+      EXPECT: 1 error
+
+---
+
 ## Bloqué sur Mehdi, rien à faire de notre côté
 
 ### B1 — Publier l'offre TeamTailor 8528454
