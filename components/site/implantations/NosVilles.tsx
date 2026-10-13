@@ -163,6 +163,20 @@ const REGION_TIRET: CSSProperties = {
   flex: "none",
 };
 
+/**
+ * L'EMPAN DE CHAQUE TUILE DE HUB, EN COLONNES D'UNE GRILLE DE DOUZE.
+ *
+ * Mesuré dans `maquette/colis-13-10/Migen - Implantations.html` le 13/10, à
+ * 1440 px, enfant par enfant : la grille déclare douze colonnes de 82,3 px, des
+ * rangées de 236 px et un écart de 12 px. Les dix tuiles y occupent
+ * successivement 6, 3, 3, 3, 3, 4, 4, 4, 6 et 6 colonnes, la première tenant en
+ * plus deux rangées.
+ *
+ * L'ordre suit celui de la donnée, `contenu.villes.hubs` : Lyon, Paris, Lille,
+ * Marseille, Strasbourg, Nantes, Toulouse, Bordeaux, Metz, Dijon.
+ */
+const EMPAN: readonly number[] = [6, 3, 3, 3, 3, 4, 4, 4, 6, 6];
+
 const TITRE_ANNUAIRE: CSSProperties = {
   font: "600 calc(clamp(22px,2.3vw,30px) * var(--ts))/1.15 var(--ft)",
   letterSpacing: "-.035em",
@@ -274,16 +288,22 @@ export default function NosVilles({ villes }: { villes: DonneesNosVilles }) {
                  La mosaïque passe donc à une colonne sous 880 px, et le bloc
                  reste replié par `SectionPliableMobile`. */}
           <div className={styles.mosaique}>
-            {villes.hubs.map((hub) => {
+            {villes.hubs.map((hub, rang) => {
               const photo = PHOTO_DU_HUB[hub.hub];
               const bassins = hub.zones?.length ?? 0;
               return (
                 <article
                   key={hub.href}
                   className={`${styles.tuileHub} ${photo ? "" : styles.tuileSansPhoto}`}
-                  /* Lyon tient deux colonnes, comme dans le colis : c'est le
-                     siège, et c'est le hub qui porte le plus de bassins. */
-                  data-large={hub.hub === "Lyon" ? "" : undefined}
+                  /* L'EMPAN DE CHAQUE TUILE, MESURÉ DANS LE COLIS et non deviné.
+                     Sa grille fait DOUZE colonnes de 82,3 px, des rangées de
+                     236 px et un écart de 12 px. Relevé enfant par enfant :
+                     Lyon « span 6 » sur « span 2 » rangées, les quatre suivants
+                     « span 3 », les trois d'après « span 4 », les deux derniers
+                     « span 6 ». C'est ce qui donne sa respiration au bloc, et
+                     c'est ce que Mehdi appelait « la répartition ». */
+                  data-empan={EMPAN[rang] ?? 4}
+                  data-haut={rang === 0 ? "" : undefined}
                 >
                   {photo ? (
                     <Image
@@ -337,11 +357,26 @@ export default function NosVilles({ villes }: { villes: DonneesNosVilles }) {
           </div>
         </SectionPliableMobile>
 
-        {/* LE SECOND BLOC SE REPLIE AUSSI, et son en-tête entier lui sert de
-            bascule : le surtitre, le titre ET la phrase qui l'accompagne, pour
-            que la composition à deux colonnes de l'ordinateur reste la même.
-            Son corps pesait 1 977 px à 390 px de large, le premier bloc replié
-            n'en faisait plus que 108 : c'était lui, le pâté qui restait. */}
+        {/* LE PANNEAU « AU-DELÀ DES HUBS », porté du colis du 13/10.
+
+            Mehdi, le 13/10 : « Les bassins, tu n'y as pas touché, ça devrait
+            ressembler à ça », capture à l'appui. Le colis en fait un panneau
+            sombre : à gauche le nombre en très grand, le titre, la phrase et un
+            appel ; à droite les onze régions en onglets, et les villes de celle
+            qui est choisie, en pastilles.
+
+            LES 48 LIENS RESTENT TOUS DANS LA PAGE, et c'est le point qui
+            décide du montage. Le colis ne rend que la région ouverte : 48 liens
+            chez lui contre 88 ici, donc 41 adresses de ville qui quittent le
+            HTML. Le contrat dit « aucune page perdue » et Google indexe le
+            mobile en premier. Les onze panneaux sont donc TOUS rendus, et dix
+            sont masqués par la feuille de style : le visiteur voit la même
+            chose, le robot voit tout.
+
+            AUCUN JAVASCRIPT. Onze boutons radio partagent un nom, chaque
+            étiquette en est la commande, et une règle par région révèle son
+            panneau. Le clavier, le lecteur d'écran et le bouton « précédent »
+            fonctionnent sans une ligne d'état. */}
         <div style={{ marginTop: 40 }}>
           <SectionPliableMobile
             enTete={
@@ -352,27 +387,75 @@ export default function NosVilles({ villes }: { villes: DonneesNosVilles }) {
             }
             resume={villes.regions.map((region) => region.region).join(" · ")}
           >
-            <p style={CHAPEAU_ANNUAIRE}>{villes.itinerantsTexte}</p>
-            <div className={`${styles.surfaceVerre} ${styles.annuaire}`}>
-              {villes.regions.map((region) => (
-                <div key={region.region} className={styles.groupeRegion}>
-                  <div style={ENTETE_REGION}>
-                    <span style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
-                      <span aria-hidden="true" style={REGION_TIRET} />
-                      <span style={REGION_NOM}>{region.region}</span>
+            <div className={styles.panneauBassins}>
+              <div className={styles.bassinsGauche}>
+                <span aria-hidden="true" className={styles.bassinsNombre}>
+                  {villes.regions.reduce((n, r) => n + r.villes.length, 0)}
+                </span>
+                <h4 className={styles.bassinsTitre}>
+                  {/* Le nombre est déjà écrit en grand juste au-dessus : le
+                      titre de la donnée le porte en tête, on ne le dit pas deux
+                      fois. Le reste de sa phrase, mot pour mot. */}
+                  {villes.itinerantsTitre.replace(/^\d+\s+/, "")}
+                </h4>
+                <p className={styles.bassinsTexte}>{villes.itinerantsTexte}</p>
+                <Link href="#mgx-form" className={styles.bassinsAppel}>
+                  Demander une intervention
+                  <span aria-hidden="true"> →</span>
+                </Link>
+              </div>
+
+              <div className={styles.bassinsDroite}>
+                <div className={styles.bassinsOnglets} role="radiogroup" aria-label="Choisir une région">
+                  {villes.regions.map((region, rang) => (
+                    <span key={region.region} className={styles.bassinsOnglet}>
+                      <input
+                        type="radio"
+                        name="region-itinerante"
+                        id={`region-${rang}`}
+                        data-region={rang}
+                        defaultChecked={rang === 0}
+                        className={styles.bassinsRadio}
+                      />
+                      <label htmlFor={`region-${rang}`} className={styles.bassinsEtiquette}>
+                        {region.region}
+                        <span aria-hidden="true" className={styles.bassinsCompte}>
+                          {region.villes.length}
+                        </span>
+                      </label>
                     </span>
-                    <span style={REGION_COMPTE}>{`${region.villes.length} villes`}</span>
-                  </div>
-                  <div>
-                    {region.villes.map((ville) => (
-                      <Link key={ville.href} href={ville.href} prefetch={false} className={styles.ville} style={VILLE}>
-                        <span aria-hidden="true" style={PUCE_VILLE} />
-                        {ville.libelle}
-                      </Link>
-                    ))}
-                  </div>
+                  ))}
                 </div>
-              ))}
+
+                <div className={styles.bassinsPanneaux}>
+                  {villes.regions.map((region, rang) => (
+                    <div key={region.region} className={styles.bassinsPanneau} data-region={rang}>
+                      <div className={styles.bassinsEnteteRegion}>
+                        <span className={styles.bassinsNomRegion}>{region.region}</span>
+                        <span className={styles.bassinsVillesCompte}>
+                          {`${region.villes.length} ville${region.villes.length > 1 ? "s" : ""}`}
+                        </span>
+                      </div>
+                      <div className={styles.bassinsVilles}>
+                        {region.villes.map((ville) => (
+                          <Link
+                            key={ville.href}
+                            href={ville.href}
+                            prefetch={false}
+                            className={styles.bassinsVille}
+                          >
+                            <span aria-hidden="true" className={styles.bassinsPuce} />
+                            {ville.libelle}
+                            <span aria-hidden="true" className={styles.bassinsFleche}>
+                              →
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </SectionPliableMobile>
         </div>

@@ -192,8 +192,13 @@
 
 .mosaique {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  /* DOUZE COLONNES, comme le colis. Mesuré chez lui à 1440 px :
+     douze pistes de 82,3 px, rangées de 236 px, écart de 12 px. Douze est le
+     plus petit nombre qui permette à la fois des demis, des tiers et des
+     quarts, et c'est ce qui donne au bloc sa respiration. */
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: minmax(236px, auto);
+  gap: 12px;
 }
 
 .tuileHub {
@@ -207,11 +212,15 @@
   isolation: isolate;
 }
 
-/* Lyon, et lui seul : deux colonnes et une tuile plus haute. C'est le siège,
-   et c'est le hub qui porte le plus de bassins. */
-.tuileHub[data-large] {
-  grid-column: span 2;
-  min-height: 300px;
+/* L'empan vient de la mesure du colis, pose par `data-empan` sur chaque tuile. */
+.tuileHub[data-empan="3"] { grid-column: span 3; }
+.tuileHub[data-empan="4"] { grid-column: span 4; }
+.tuileHub[data-empan="6"] { grid-column: span 6; }
+
+/* Lyon, et lui seul, tient aussi deux rangées : c'est le siège et le hub qui
+   porte le plus de bassins. */
+.tuileHub[data-haut] {
+  grid-row: span 2;
 }
 
 .tuilePhoto {
@@ -304,8 +313,8 @@
   color: #fff;
 }
 
-.tuileHub[data-large] .tuileLien {
-  font-size: 34px;
+.tuileHub[data-haut] .tuileLien {
+  font-size: 40px;
 }
 
 .tuileCompte {
@@ -344,23 +353,293 @@
 /* Sous 1000 px, deux colonnes. Sous 880 px, une seule : le colis fait 4 292 px
    de haut au téléphone contre 537 aujourd'hui, et c'est exactement le « trop
    gros » que Mehdi reprochait au bloc d'avant. */
+/* Sous 1000 px, la grille de douze devient une grille de six : les empans de 6
+   prennent la largeur, ceux de 3 et de 4 se mettent par deux. */
 @media (max-width: 1000px) {
   .mosaique {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
+  .tuileHub[data-empan="3"],
+  .tuileHub[data-empan="4"] { grid-column: span 3; }
+  .tuileHub[data-empan="6"] { grid-column: span 6; }
+  .tuileHub[data-haut] { grid-row: auto; }
 }
 
+/* Sous 880 px, une seule colonne. Le colis fait 4 292 px de haut au téléphone
+   contre 537 ici, et c'est exactement le « trop gros » que Mehdi reprochait au
+   bloc d'avant. */
 @media (max-width: 880px) {
   .mosaique {
     grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: minmax(184px, auto);
   }
   .tuileHub,
-  .tuileHub[data-large] {
+  .tuileHub[data-empan="3"],
+  .tuileHub[data-empan="4"],
+  .tuileHub[data-empan="6"] {
     grid-column: auto;
     min-height: 184px;
   }
   .tuileLien,
-  .tuileHub[data-large] .tuileLien {
+  .tuileHub[data-haut] .tuileLien {
     font-size: 23px;
   }
+}
+
+/* ===================================================================
+   LE PANNEAU « AU-DELÀ DES HUBS », porté du colis du 13/10.
+
+   Mehdi, capture à l'appui : « Les bassins, tu n'y as pas touché, ça devrait
+   ressembler à ça. » Panneau sombre, le nombre en très grand à gauche avec le
+   titre, la phrase et l'appel ; à droite les onze régions en onglets et les
+   villes de celle qui est choisie.
+
+   LES ONZE PANNEAUX SONT TOUS RENDUS, dix sont masqués ici. Le colis, lui, ne
+   rend que la région ouverte : 48 liens chez lui contre 88 ici. Masquer plutôt
+   que démonter garde les 41 adresses dans le HTML servi, ce qu'exige le
+   principe 2 du contrat, « aucune page perdue ».
+
+   AUCUN JAVASCRIPT : onze boutons radio de même nom, une règle par région.
+   =================================================================== */
+
+.panneauBassins {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 34px;
+  padding: 36px 38px 38px;
+  border-radius: var(--rad);
+  background: var(--panel);
+  position: relative;
+  overflow: hidden;
+}
+
+/* La lueur orange que le colis pose derrière l'appel, en bas à gauche. */
+.panneauBassins::before {
+  content: "";
+  position: absolute;
+  left: -90px;
+  bottom: -130px;
+  width: 420px;
+  height: 420px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 124, 60, 0.3) 0%, rgba(255, 124, 60, 0) 68%);
+  pointer-events: none;
+}
+
+.bassinsGauche,
+.bassinsDroite {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.bassinsNombre {
+  display: block;
+  font: 650 92px/0.86 var(--ft);
+  letter-spacing: -0.055em;
+  color: var(--acc);
+  font-variant-numeric: tabular-nums;
+}
+
+.bassinsTitre {
+  margin: 14px 0 0;
+  font: 600 27px/1.12 var(--ft);
+  letter-spacing: -0.035em;
+  color: #fff;
+  max-width: 15ch;
+  text-wrap: balance;
+}
+
+.bassinsTexte {
+  margin: 14px 0 0;
+  font: 400 14.5px/1.65 var(--fb);
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 44ch;
+}
+
+.bassinsAppel {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 24px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  background: var(--acc);
+  color: #fff;
+  font: 600 15px var(--fb);
+  box-shadow: rgba(255, 124, 60, 0.85) 0 14px 32px -14px;
+  transition: filter var(--tr);
+}
+
+.bassinsAppel:hover,
+.bassinsAppel:focus-visible {
+  filter: brightness(0.93);
+  color: #fff;
+}
+
+/* ------------------------------------------------- les onglets de région */
+
+.bassinsOnglets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.bassinsOnglet { display: contents; }
+
+/* Le bouton radio est la commande, pas le dessin : on le sort de la vue sans
+   le sortir du parcours clavier. `display: none` le rendrait inatteignable. */
+.bassinsRadio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bassinsEtiquette {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 15px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.82);
+  font: 500 13.5px var(--fb);
+  cursor: pointer;
+  /* Le critère 2.5.8 de la WCAG 2.2 demande 24 px : la hauteur vaut 38. */
+  min-height: 38px;
+  transition: background var(--tr), color var(--tr);
+}
+
+.bassinsEtiquette:hover {
+  background: rgba(255, 255, 255, 0.13);
+  color: #fff;
+}
+
+.bassinsRadio:checked + .bassinsEtiquette {
+  background: #fff;
+  border-color: #fff;
+  color: var(--ink);
+}
+
+.bassinsRadio:focus-visible + .bassinsEtiquette {
+  outline: 2px solid var(--acc);
+  outline-offset: 2px;
+}
+
+.bassinsCompte {
+  font: 600 11.5px var(--fm, var(--fb));
+  font-variant-numeric: tabular-nums;
+  opacity: 0.6;
+}
+
+/* ------------------------------------------------- les villes de la région */
+
+.bassinsPanneaux {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 20px 22px 22px;
+}
+
+/* Les onze panneaux sont rendus, un seul se voit.
+
+   LA LIAISON PASSE PAR UN ATTRIBUT, PAS PAR UN IDENTIFIANT, et c'est un défaut
+   corrigé le 13/10 : les modules CSS renomment aussi les sélecteurs `#id`, si
+   bien que `#region-0` dans cette feuille ne désignait plus le `id="region-0"`
+   posé par le composant. Mesuré : zéro panneau visible sur onze. Un attribut de
+   données n'est jamais renommé. */
+.bassinsPanneau { display: none; }
+.bassinsOnglets:has(.bassinsRadio[data-region="0"]:checked) ~ .bassinsPanneaux .bassinsPanneau[data-region="0"],
+.bassinsOnglets:has(.bassinsRadio[data-region="1"]:checked) ~ .bassinsPanneaux .bassinsPanneau[data-region="1"],
+.bassinsOnglets:has(.bassinsRadio[data-region="2"]:checked) ~ .bassinsPanneaux .bassinsPanneau[data-region="2"],
+.bassinsOnglets:has(.bassinsRadio[data-region="3"]:checked) ~ .bassinsPanneaux .bassinsPanneau[data-region="3"],
+.bassinsOnglets:has(.bassinsRadio[data-region="4"]:checked) ~ .bassinsPanneaux .bassinsPanneau[data-region="4"],
+.bassinsOnglets:has(.bassinsRadio[data-region="5"]:checked) ~ .bassinsPanneaux .bassinsPanneau[data-region="5"],
+.bassinsOnglets:has(.bassinsRadio[data-region="6"]:checked) ~ .bassinsPanneaux .bassinsPanneau[data-region="6"],
+.bassinsOnglets:has(.bassinsRadio[data-region="7"]:checked) ~ .bassinsPanneaux .bassinsPanneau[data-region="7"],
+.bassinsOnglets:has(.bassinsRadio[data-region="8"]:checked) ~ .bassinsPanneaux .bassinsPanneau[data-region="8"],
+.bassinsOnglets:has(.bassinsRadio[data-region="9"]:checked) ~ .bassinsPanneaux .bassinsPanneau[data-region="9"],
+.bassinsOnglets:has(.bassinsRadio[data-region="10"]:checked) ~ .bassinsPanneaux .bassinsPanneau[data-region="10"] {
+  display: block;
+}
+
+.bassinsEnteteRegion {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.bassinsNomRegion {
+  font: 600 19px/1.2 var(--ft);
+  letter-spacing: -0.025em;
+  color: #fff;
+}
+
+.bassinsVillesCompte {
+  font: 600 10.5px var(--fb);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.52);
+  white-space: nowrap;
+}
+
+.bassinsVilles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr));
+  gap: 9px;
+}
+
+.bassinsVille {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 14px;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.88);
+  font: 500 14px var(--fb);
+  transition: background var(--tr), color var(--tr);
+}
+
+.bassinsVille:hover,
+.bassinsVille:focus-visible {
+  background: rgba(255, 255, 255, 0.11);
+  color: #fff;
+}
+
+.bassinsPuce {
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--acc);
+}
+
+.bassinsFleche {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 14px;
+}
+
+@media (max-width: 1000px) {
+  .panneauBassins {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+    padding: 28px 24px 30px;
+  }
+  .bassinsNombre { font-size: 72px; }
+}
+
+@media (max-width: 880px) {
+  .panneauBassins { padding: 22px 18px 24px; }
+  .bassinsNombre { font-size: 60px; }
+  .bassinsTitre { font-size: 23px; }
+  .bassinsAppel { width: 100%; justify-content: center; }
+  .bassinsPanneaux { padding: 16px 14px 18px; }
 }
