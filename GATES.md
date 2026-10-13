@@ -292,7 +292,13 @@ Dernière relecture : 12/10.
       Il n'y liste qu'UNE prestation, avec un renvoi vers un guide.
 
 ### G37 — /offres/bureau-etudes/ : la photo du bloc problématique est mal choisie
-- [~] PLAN PRÊT, PAS ENCORE APPLIQUÉ. 385 photos jugées image ouverte, 64 disqualifiées, trois sceptiques en ont annulé 20 : 44 restent interdites sur une page commerciale. Vivier propre de 341. Les plans de réattribution sont rendus par famille de pages.
+- [x] FAIT, PLAN APPLIQUÉ. Cette entrée disait encore « plan prêt, pas
+      encore appliqué » : périmée. Mesuré en production le 13/10, la photo du
+      bloc « problématique » des pages expertises est DISTINCTE sur chacune
+      (5 pages, 5 photos), et la porte du secteur rend son jeton de succès sur
+      475 photos de 66 pages.
+      CHECK: bun scripts/verifie-photos-du-secteur.mjs https://migen-site.vercel.app | tail -1
+      EXPECT: PHOTOS_DANS_LEUR_SUJET
 
 ### G38 — /offres/bureau-etudes/ : le bloc d'appel toujours pas corrigé
 - [ ] NON FAIT, c'est G14 qu'il rouvre explicitement : « tu n'as toujours pas
@@ -301,9 +307,14 @@ Dernière relecture : 12/10.
       mécano-soudé, transmissions… ».
 
 ### G39 — /offres/bureau-etudes/ : un bloc qui ne contient qu'une phrase
-- [ ] NON FAIT
-      « Chaque étape a un livrable défini et un point de validation. Vous restez
-      maître des choix. » Seule dans son bloc.
+- [x] FAIT, et cette entrée était PÉRIMÉE : le travail était en ligne, pas au
+      registre. « Chaque étape a un livrable défini et un point de validation.
+      Vous restez maître des choix. » n'occupe plus une section entière : elle
+      est servie en ligne de clôture, `<section style="padding:18px 0 0">`,
+      texte de 14,5 px sur 78 ch, sous le bloc qu'elle commente. 33 blocs d'une
+      seule phrase traités de la même façon.
+      CHECK: curl -s https://migen-site.vercel.app/offres/bureau-etudes/ | grep -c 'padding:18px 0 0'
+      EXPECT: au moins 1
 
 ### G40 — Le bloc « Également dans cette offre » n'a pas toutes les prestations
 - [x] FAIT. Le bloc passe de 7 à 25 prestations sur les 4 pages qui le portent.
@@ -334,7 +345,15 @@ Dernière relecture : 12/10.
       18h30. » À retirer du héros de cette page.
 
 ### G42 — bureau d'études et travaux industriels : « expert technique », pas « technicien »
-- [ ] NON FAIT
+- [x] FAIT dans la nuit du 13/10, voir G65 pour la mesure complète. La décision
+      ÉTAIT inscrite dans `lib/decisions-copie.ts` mais n'arrivait pas aux
+      composants PARTAGÉS, faute de leur faire descendre le chemin de la page :
+      c'était donc bien un défaut de portage. Le bloc qu'il visait nommément
+      dit maintenant « Des experts techniques retenus », vérifié en production
+      sur les trois occurrences de la page.
+      CHECK: curl -s https://migen-site.vercel.app/offres/bureau-etudes/ | sed 's/<[^>]*>/ /g' | grep -c "Des experts techniques retenus"
+      EXPECT: au moins 1
+      TRACE DE L'ANCIENNE ENTRÉE
       Il rappelle une décision déjà prise : « on avait dit que sur bureaux
       d'étude et travaux on parlait pas de technicien mais d'expert
       technique ». Le bloc visé : « 10 % / Des techniciens retenus · entretien
@@ -365,7 +384,13 @@ Dernière relecture : 12/10.
 - [ ] NON FAIT
 
 ### G45 — L'image du bloc « problématique » est partout la même sur les pages expertises
-- [~] PLAN PRÊT, PAS ENCORE APPLIQUÉ. 385 photos jugées image ouverte, 64 disqualifiées, trois sceptiques en ont annulé 20 : 44 restent interdites sur une page commerciale. Vivier propre de 341. Les plans de réattribution sont rendus par famille de pages.
+- [x] FAIT, PLAN APPLIQUÉ. Cette entrée disait encore « plan prêt, pas
+      encore appliqué » : périmée. Mesuré en production le 13/10, la photo du
+      bloc « problématique » des pages expertises est DISTINCTE sur chacune
+      (5 pages, 5 photos), et la porte du secteur rend son jeton de succès sur
+      475 photos de 66 pages.
+      CHECK: bun scripts/verifie-photos-du-secteur.mjs https://migen-site.vercel.app | tail -1
+      EXPECT: PHOTOS_DANS_LEUR_SUJET
       Même famille que G35.
 
 ### G46 — /expertises/electromecanique/ : le bloc d'astreinte ne va pas
