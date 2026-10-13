@@ -479,7 +479,7 @@ export const HUB_CARRIERE: ContenuHubCarriere = {
       "cartes": [
         {
           "titre": "Contact direct",
-          "texte": "04 78 33 72 05, du lundi au vendredi, 8h00 à 18h30."
+          "texte": "Du lundi au vendredi, 8h00 à 18h30. Votre demande est rappelée dans l'heure."
         },
         {
           "titre": "Siège",

@@ -8,7 +8,7 @@
   "contenu": {
     "gabarit": "implantations",
     "pastille": "Nos implantations",
-    "chapeau": "Nos quatre agences, Lyon (siège), Montréal, Dubaï et Madrid, nos 10 hubs de techniciens en France et des équipes mobiles partout ailleurs portent un contrat unique, avec la même méthode d'un site à l'autre.",
+    "chapeau": "Trois usines, trois prestataires, trois formats de compte rendu et trois taux horaires : c'est l'organisation la plus répandue chez les groupes multi-sites, et la plus chère. Nos quatre agences, Lyon (siège), Montréal, Dubaï et Madrid, nos 10 hubs de techniciens en France et des équipes mobiles partout ailleurs portent un contrat unique, avec la même méthode d'un site à l'autre.",
     "actions": [
       {
         "libelle": "Faire chiffrer la maintenance de mes sites",
@@ -58,7 +58,7 @@
           },
           {
             "accroche": "Le site isolé paie le plus cher.",
-            "texte": ""
+            "texte": "Loin d'un bassin dense, le choix se réduit à un ou deux artisans, et le tarif suit cette rareté."
           },
           {
             "accroche": "Chaque nouveau site relance un appel d'offres.",
@@ -89,7 +89,7 @@
           },
           {
             "prestation": {
-              "accroche": "",
+              "accroche": "Un taux horaire homogène en France écrit au devis.",
               "texte": ""
             },
             "benefice": "La facture d'un site éloigné ne dépend plus de la rareté locale."
@@ -424,7 +424,7 @@
         }
       ],
       "itinerantsTitre": "48 villes couvertes par nos techniciens itinérants",
-      "itinerantsTexte": "Depuis le hub le plus proche, un technicien se déplace sur votre site.",
+      "itinerantsTexte": "Depuis le hub le plus proche, un technicien se déplace sur votre site. Même équipe, même taux horaire.",
       "regions": [
         {
           "region": "Hauts-de-France",
@@ -676,22 +676,5 @@
       ]
     }
   },
-  "trous": [
-    {
-      "ligne": "Trois usines, trois prestataires, trois formats de compte rendu et trois taux horaires : c'est l'organisation la plus répandue chez les groupes multi-sites, et la plus chère.",
-      "pourquoi": "« taux horaire » : aucun prix, tarif, montant ni taux horaire (contrat de rédaction, même règle que les gabarits 03 et 04). Première phrase du chapeau du héros, la suite reste."
-    },
-    {
-      "ligne": "Loin d'un bassin dense, le choix se réduit à un ou deux artisans, et le tarif suit cette rareté.",
-      "pourquoi": "« tarif » : aucun prix. Texte de la carte 03 « Le site isolé paie le plus cher. » de « 03 Problème » : l'accroche reste."
-    },
-    {
-      "ligne": "Un taux horaire homogène en France écrit au devis.",
-      "pourquoi": "« taux horaire » : aucun prix. Intitulé de la carte 03 de « 04 Offre » : la carte reste, numérotée, avec son bénéfice seul."
-    },
-    {
-      "ligne": "Même équipe, même taux horaire.",
-      "pourquoi": "« taux horaire » : aucun prix. Seconde phrase du texte « Au-delà des hubs » de « Nos villes », la première reste."
-    }
-  ]
+  "trous": []
 }
