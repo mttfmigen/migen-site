@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 import styles from "./AvantApresBascule.module.css";
+import replis from "./replis-accueil.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 /**
  * Une tuile de la mosaïque. La maquette pose trois `sc-if` exclusifs sur le
@@ -103,6 +105,10 @@ function phaseTuile(retire: boolean, rang: number): CSSProperties {
   };
 }
 
+/* Le sur-titre, écrit une seule fois : il sert à l'en-tête d'origine, qui
+   tient le dessin de bureau, et à la bascule de repli. */
+const SURTITRE_TEXTE = "Le jour et la nuit";
+
 export default function AvantApresBascule({
   avant = VUE_VIDE,
   avec = VUE_VIDE,
@@ -125,8 +131,14 @@ export default function AvantApresBascule({
   }
 
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+        {/* LE TITRE DE LA BASCULE SUIT L'ONGLET CHOISI, comme le `h2` qu'il
+            remplace sur téléphone : `vue.titre` vaut « Ce que nos clients
+            vivaient avant de nous appeler. » pour l'onglet Avant, et l'autre
+            phrase pour l'onglet Avec. Les deux textes viennent de
+            `avant-apres-donnees.ts`, aucun n'est retapé ici. */}
+        <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={vue.titre}>
         <div
           data-reveal=""
           className={styles.canevas}
@@ -144,8 +156,13 @@ export default function AvantApresBascule({
                 marginBottom: 30,
               }}
             >
-              <div>
-                <div style={SURTITRE}>Le jour et la nuit</div>
+              {/* L'en-tête d'origine, masqué sur téléphone : la bascule
+                  porte le titre, et jamais les deux à la fois. Le
+                  `display: none` tombe sur CE conteneur et non sur ses deux
+                  enfants, pour qu'il ne laisse derrière lui ni boîte vide ni
+                  gouttière de grille. */}
+              <div className={replis.enTeteBureau}>
+                <div style={SURTITRE}>{SURTITRE_TEXTE}</div>
                 <h2 style={{ margin: 0, ...vue.styleTitre }}><span>{vue.titre}</span></h2>
               </div>
               <p style={{ margin: 0, ...vue.styleChapo }}><span>{vue.chapo}</span></p>
@@ -318,6 +335,7 @@ export default function AvantApresBascule({
             </div>
           </div>
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

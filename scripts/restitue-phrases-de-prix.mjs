@@ -23,32 +23,82 @@
  * Usage :
  *   node scripts/restitue-phrases-de-prix.mjs            lecture seule
  *   node scripts/restitue-phrases-de-prix.mjs --applique  écrit
+ *   node scripts/restitue-phrases-de-prix.mjs --controle  témoin
  *
  * À suivre de `node scripts/relis-relais.mjs`, puis de la porte :
  *   node scripts/verifie-purge-des-prix.mjs
  *
- * CE QUI N'EST PAS RESTITUÉ, et pourquoi, pour que personne ne croie l'oubli :
+ * ---------------------------------------------------------------------------
+ * LES SIX DERNIÈRES, INSTRUITES UNE PAR UNE LE 13/10
+ * ---------------------------------------------------------------------------
  *
- *   · `/offres/zero-arret/`, réponse « Pourquoi pas un technicien salarié ? » :
- *     la capture finit par « , pour moins de la moitié du coût d'un salarié ».
- *     Aucun montant, mais c'est une comparaison de coût chiffrée en proportion.
- *     À ARBITRER PAR MEHDI, c'est le seul des douze qui relève vraiment de lui.
+ * La porte en annonçait six sur six pages. UNE SEULE était une perte. Les cinq
+ * autres sont des artefacts de mesure, et quatre d'entre elles étaient classées
+ * ici le matin même avec un motif FAUX. Les voici avec la preuve, parce qu'un
+ * motif faux coûte plus cher qu'un motif absent : il clôt l'enquête.
  *
- *   · `/offres/full-service/`, « Les pièces consultées au prix du marché,
- *     commandées et posées délai annoncé avant commande. » La capture ELLE-MÊME
- *     est abîmée : « posées délai annoncé » n'est pas du français, il manque un
- *     mot entre les deux. Restituer tel quel servirait une phrase cassée, et la
- *     réécrire serait réécrire sa copie. À faire corriger dans la maquette.
+ *   · RESTITUÉE. `/offres/zero-arret/`, réponse « Pourquoi pas un technicien
+ *     salarié ? » : la fiche s'arrêtait à « opérationnel dès le premier mois. »
+ *     et laissait tomber « , pour moins de la moitié du coût d'un salarié. »
+ *     que la capture écrit. Le bloc ne porte AUCUN CHIFFRE, pas un seul, donc
+ *     ni montant ni délai chiffré : c'est une comparaison écrite en mots.
+ *     `scripts/verifie-interdits.mjs` la relit et l'accepte. Elle est rendue.
+ *     Le matin, elle était réservée à l'arbitrage de Mehdi : elle lui est
+ *     SIGNALÉE et non cachée, mais le contrat §9 ne la refuse pas, et c'est sa
+ *     copie que notre purge avait coupée.
  *
- *   · `/guides/choisir-une-entreprise-de-maintenance/`, « Le vrai risque n'est
- *     pas le prix, c'est la personne … » : la capture s'arrête sur des points de
- *     suspension, c'est un titre tronqué à l'affichage. La phrase entière n'est
- *     nulle part dans le rendu.
+ *   · PAS UNE PERTE. `/offres/full-service/`, « Les pièces consultées au prix du
+ *     marché, commandées et posées délai annoncé avant commande. » Le motif du
+ *     matin disait la capture abîmée et demandait de la faire corriger. C'EST
+ *     FAUX, et c'est l'inverse : la fiche est JUSTE, et plus juste que la
+ *     capture. Elle sert `accroche` = « …commandées et posées » et `texte` =
+ *     « , délai annoncé avant commande. », exactement comme la ligne 57 du
+ *     corpus `maquette/contenu/site/Offres/offres--full-service.md`. C'est le
+ *     RENDU de la maquette qui perd la virgule en aplatissant les deux champs.
+ *     La porte, elle, lit les octets bruts du JSON, où `", "texte": "` sépare
+ *     les deux : la chaîne de la capture ne peut donc jamais s'y trouver.
  *
- *   · `/ressources/fiches-pratiques/securite-maintenance/`, « Chez Migen, seuls
- *     10 % des candidats sont retenus… » : le bloc de la capture commence par
- *     « : », c'est donc lui-même un fragment recollé derrière une amorce en
- *     gras. L'emplacement exact est à établir avant d'écrire.
+ *   · PAS UNE PERTE, même cause. `/offres/bureau-etudes/`, « Revue des données
+ *     et des outils : qualité des historiques… » : servie mot pour mot par
+ *     `offres-audit-conseil-maintenance.json`, section `offre`, 4ᵉ ligne, en
+ *     `accroche` + `texte`. La capture l'aplatit avec « : ».
+ *
+ *   · PAS UNE PERTE. `/guides/choisir-une-entreprise-de-maintenance/`, « Le vrai
+ *     risque n'est pas le prix, c'est la personne … ». Le motif du matin disait
+ *     « la phrase entière n'est nulle part dans le rendu ». C'EST FAUX : elle
+ *     est dans LA MÊME capture, au décalage 9364, en H2 entier, « …c'est la
+ *     personne qui se présente », et `guides-choisir-une-entreprise-de-
+ *     maintenance.json` la sert verbatim. Ce que la porte a lu, au décalage
+ *     3187, est l'entrée du sommaire « Sur cette page », que le générateur de
+ *     la maquette tronque et suffixe d'une ellipse. Restituer l'ellipse serait
+ *     servir un libellé de navigation comme du texte.
+ *
+ *   · PAS UNE PERTE. `/ressources/fiches-pratiques/securite-maintenance/`,
+ *     « Chez Migen, seuls 10 % des candidats sont retenus… ». Le motif du matin
+ *     demandait d'établir l'emplacement : il est établi, et il n'y a rien à
+ *     écrire. La puce est servie ENTIÈRE par la fiche, à un mot près, et ce mot
+ *     est un ARBITRAGE DÉCLARÉ : `lib/decisions-copie.ts` ligne 25 remplace
+ *     « % des candidats » par « % des techniciens », sur la décision de Mehdi
+ *     citée ligne 9, « Ne pas parler de candidats ». La porte compare la
+ *     capture sans appliquer ces règles.
+ *
+ *   · PERTE RÉELLE, MAIS SANS EMPLACEMENT SÛR, donc laissée. `/offres/bureau-
+ *     etudes/`, « Les pannes s'accumulent. Les pièces d'origine deviennent
+ *     introuvables. Et le devis d'une machine neuve est impossible à faire
+ *     passer en comité d'investissement. » C'est le paragraphe de corps du
+ *     « ## Le problème » de `offres--retrofit.md`, et la capture ne l'écrit que
+ *     dans le PLI de `/offres/bureau-etudes/`. Deux raisons de ne pas deviner :
+ *       1. le pli ne doit PAS le porter. `types/offre.ts` lignes 192 à 208
+ *          déclare l'écart : la maquette redirige `/offres/retrofit/` vers cette
+ *          page et y replie sa copie entière ; le site SERT cette URL, et l'y
+ *          recopier produirait deux fois la même page. Le pli porte le lien.
+ *       2. sa place native n'existe pas encore. `SectionProbleme`
+ *          (`types/contenu.ts` ligne 136) n'a que `punchline` et `puces`, et
+ *          `components/site/blocs/Probleme.tsx` ne rend que ces deux champs. Le
+ *          manque est STRUCTUREL et bien plus large qu'une phrase : mesuré ce
+ *          jour, 22 des 29 pages d'offre du corpus écrivent de la prose dans
+ *          « Le problème » que le gabarit ne peut pas tenir. Lui ouvrir un
+ *          champ relève du type et du composant, pas de ce script.
  */
 import { readFileSync, writeFileSync } from 'node:fs'
 
@@ -132,6 +182,30 @@ const RESTITUTIONS = [
         .some((q) => q.reponse.startsWith('Un prix mensuel fixe, sur 12 mois')),
   },
   {
+    fiche: 'offres-zero-arret.json',
+    capture: 'offres--zero-arret',
+    quoi: "la réponse « Pourquoi pas un technicien salarié ? » perdait sa comparaison de coût finale",
+    fragment: "Un technicien salarié n'est disponible ni la nuit ni le samedi",
+    pose: (contenu, bloc) => {
+      const q = contenu.sections
+        .flatMap((s) => s.questions ?? [])
+        .find((q) => q.question.includes('Pourquoi pas un technicien salarié'))
+      if (!q) throw new Error('question « Pourquoi pas un technicien salarié ? » introuvable')
+      q.reponse = bloc
+    },
+    /* Le critère ne retape pas la copie et il ÉVITE L'APOSTROPHE, qui est le
+       piège n° 3 de la passation : « salarié. » suffit à distinguer l'état
+       voulu de l'état coupé, qui finissait sur « premier mois. ». */
+    verifie: (contenu) =>
+      contenu.sections
+        .flatMap((s) => s.questions ?? [])
+        .some(
+          (q) =>
+            q.question.includes('Pourquoi pas un technicien salarié') &&
+            q.reponse.endsWith('salarié.'),
+        ),
+  },
+  {
     fiche: 'offres-chantier-demenagement-machines.json',
     capture: 'offres--chantier--demenagement-machines',
     quoi: 'une réponse de FAQ avait perdu sa phrase du MILIEU',
@@ -179,6 +253,78 @@ const RESTITUTIONS = [
       contenu.sections.flatMap((s) => s.etapes ?? []).some((e) => e.texte?.startsWith('Pour chaque actif, nous arbitrons')),
   },
 ]
+
+/* ------------------------------------------------------------------ témoin */
+
+/**
+ * CE SCRIPT REFUSE, ET IL DOIT PROUVER QU'IL SAIT REFUSER.
+ *
+ * Il porte trois garde-fous : le MONTANT, qui interdit d'écrire un chiffre
+ * d'argent ; `blocDeLaCapture`, qui ne rend rien quand le fragment n'est pas
+ * dans la capture, donc interdit d'écrire une phrase que le client n'écrit pas ;
+ * et `verifie`, qui décrit l'état voulu et sert à la fois de test de pose et
+ * d'idempotence. Un garde-fou qu'on ne voit jamais refuser n'est pas un
+ * garde-fou. Chaque épreuve POSITIVE est doublée d'un CONTRÔLE NÉGATIF.
+ */
+if (process.argv.includes('--controle')) {
+  const epreuves = []
+  const dit = (nom, obtenu, veut) => epreuves.push({ nom, juste: obtenu === veut, obtenu, veut })
+
+  /* 1. Le MONTANT. Positif : la valeur de la carte 04 de la capture de
+        zero-arret est « 500 à 2 000 € », et ce script doit la refuser. */
+  dit('un montant en euros est refusé', MONTANT.test('500 à 2 000 €'), true)
+  dit('un taux chiffré est refusé', MONTANT.test('une remise de 15 %'), true)
+  /* NÉGATIF : la phrase rendue aujourd'hui ne porte aucun chiffre. Si ce
+     contrôle passait au rouge, c'est que le motif s'est mis à tout refuser. */
+  dit(
+    "NÉGATIF, « moins de la moitié du coût d'un salarié » n'est pas un montant",
+    MONTANT.test("pour moins de la moitié du coût d'un salarié."),
+    false,
+  )
+  dit(
+    'NÉGATIF, une phrase qui renvoie au devis est autorisée',
+    MONTANT.test("Il est chiffré sur devis après l'étude préalable."),
+    false,
+  )
+
+  /* 2. `blocDeLaCapture`. Positif : il rend le bloc entier de la capture. */
+  const bloc = blocDeLaCapture('offres--zero-arret', "Un technicien salarié n'est disponible")
+  dit('le bloc de la capture est lu entier', bloc?.endsWith('salarié.') === true, true)
+  /* NÉGATIF : un fragment absent ne rend RIEN, jamais un bloc voisin. C'est ce
+     qui rend impossible d'écrire une phrase inventée par ce script. */
+  dit(
+    'NÉGATIF, un fragment absent de la capture ne rend rien',
+    blocDeLaCapture('offres--zero-arret', 'une phrase que la maquette n\'écrit nulle part'),
+    null,
+  )
+
+  /* 3. `verifie`. Il doit être FAUX sur l'état coupé et VRAI après la pose.
+        Mesuré sur une copie en mémoire, aucune fiche n'est touchée. */
+  const r = RESTITUTIONS.find((x) => x.quoi.includes('comparaison de coût'))
+  const copie = JSON.parse(readFileSync(`${FICHES}/${r.fiche}`, 'utf8'))
+  const coupe = (contenu) => {
+    const q = contenu.sections
+      .flatMap((s) => s.questions ?? [])
+      .find((q) => q.question.includes('Pourquoi pas un technicien salarié'))
+    q.reponse = q.reponse.replace(/, pour moins de la moitié.*$/, '.')
+    return contenu
+  }
+  const avant = coupe(copie.contenu)
+  dit("NÉGATIF, verifie est FAUX sur la réponse coupée", r.verifie(avant), false)
+  r.pose(avant, bloc)
+  dit('verifie est VRAI après la pose', r.verifie(avant), true)
+
+  let vues = 0
+  for (const e of epreuves) {
+    if (e.juste) vues += 1
+    console.log(`  ${e.juste ? 'OK   ' : 'ÉCHEC'}  ${e.nom}`)
+    if (!e.juste) console.log(`           attendu ${JSON.stringify(e.veut)}, obtenu ${JSON.stringify(e.obtenu)}`)
+  }
+  console.log(`\ntémoin : ${vues}/${epreuves.length} épreuves réussies`)
+  process.exit(vues === epreuves.length ? 0 : 1)
+}
+
+/* ----------------------------------------------------------------- passage */
 
 let rendues = 0
 let refusees = 0

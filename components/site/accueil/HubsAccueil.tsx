@@ -3,6 +3,8 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import styles from "./HubsAccueil.module.css";
+import replis from "./replis-accueil.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import bordeaux from "./hubs/bordeaux.jpg";
 import lille from "./hubs/lille.jpg";
 import lyon from "./hubs/lyon.jpg";
@@ -155,9 +157,23 @@ const PANCARTE: CSSProperties = {
   border: "1px solid rgba(255,255,255,.18)",
 };
 
+/* Le sur-titre et le titre, écrits une seule fois : l'en-tête d'origine tient
+   le dessin de bureau, la bascule de repli porte le titre sur téléphone, et
+   `replis-accueil.module.css` n'en montre jamais qu'un des deux. */
+const SURTITRE_TEXTE = "Nos hubs";
+const TITRE_TEXTE = "Des hubs partout en France";
+
 export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    /* `repliPleineLargeur` : le rail de cartes est en pleine largeur et frère
+       de l'en-tête, le dépliant doit donc envelopper les DEUX, au niveau de la
+       `<section>`, qui n'a aucune gouttière. La classe la rend à la bascule, et
+       à elle seule. Voir `replis-accueil.module.css`. */
+    <section
+      className={`${replis.repli} ${replis.repliPleineLargeur}`}
+      style={{ padding: "var(--sec) 0 0" }}
+    >
+      <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
       <div
         style={{
           maxWidth: 1200,
@@ -171,7 +187,11 @@ export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
           flexWrap: "wrap",
         }}
       >
-        <div>
+        {/* L'en-tête d'origine, masqué sur téléphone : la bascule porte le
+            titre, et jamais les deux à la fois. Le `display: none` tombe sur CE
+            conteneur et non sur ses deux enfants, pour qu'il ne laisse derrière
+            lui ni boîte vide ni gouttière de flex. */}
+        <div className={replis.enTeteBureau}>
           <div
             style={{
               font: "600 11.5px var(--fb)",
@@ -181,7 +201,7 @@ export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
               marginBottom: 14,
             }}
           >
-            Nos hubs
+            {SURTITRE_TEXTE}
           </div>
           <h2
             style={{
@@ -192,7 +212,7 @@ export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
               textWrap: "balance",
             }}
           >
-            Des hubs partout en France
+            {TITRE_TEXTE}
           </h2>
         </div>
         <Link
@@ -296,6 +316,7 @@ export default function HubsAccueil({ hubs = HUBS }: Proprietes) {
           )),
         )}
       </div>
+      </SectionPliableMobile>
     </section>
   );
 }

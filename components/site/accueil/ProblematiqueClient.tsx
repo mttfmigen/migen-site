@@ -1,7 +1,15 @@
 import styles from "./ProblematiqueClient.module.css";
+import replis from "./replis-accueil.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 /* « Votre problématique », portée de « Migen - Site final » (lignes 638 à 660).
    Composant serveur. */
+
+/* Le sur-titre et le titre, écrits une seule fois : ils servent à l'en-tête
+   d'origine, qui tient le dessin de bureau, et à la bascule de repli, qui porte
+   le titre sur téléphone. Voir `replis-accueil.module.css`. */
+const SURTITRE_TEXTE = "Votre problématique";
+const TITRE_TEXTE = "Un arrêt de ligne ne se planifie pas. Sa réponse, si.";
 
 const PREUVES: readonly {
   valeur: React.ReactNode;
@@ -33,8 +41,9 @@ const PREUVES: readonly {
 
 export default function ProblematiqueClient() {
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+        <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
         <div
           className="mg-r2" data-reveal=""
           style={{
@@ -46,6 +55,7 @@ export default function ProblematiqueClient() {
         >
           <div>
             <div
+              className={replis.enTeteBureau}
               style={{
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
@@ -54,9 +64,10 @@ export default function ProblematiqueClient() {
                 marginBottom: "18px",
               }}
             >
-              Votre problématique
+              {SURTITRE_TEXTE}
             </div>
             <h2
+              className={replis.enTeteBureau}
               style={{
                 font: "600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft)",
                 letterSpacing: "-.04em",
@@ -65,7 +76,7 @@ export default function ProblematiqueClient() {
                 textWrap: "balance",
               }}
             >
-              Un arrêt de ligne ne se planifie pas. Sa réponse, si.
+              {TITRE_TEXTE}
             </h2>
             <p
               style={{
@@ -144,6 +155,7 @@ export default function ProblematiqueClient() {
             ))}
           </div>
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

@@ -1,4 +1,7 @@
 import type { CSSProperties } from "react";
+
+import replis from "./replis-accueil.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import styles from "./PourquoiExternaliser.module.css";
 
 interface Proprietes {
@@ -28,13 +31,20 @@ const LIGNE_AVANTAGE: CSSProperties = {
   color: "var(--ink1)",
 };
 
+/* Le sur-titre et le titre, écrits une seule fois : l'en-tête d'origine tient
+   le dessin de bureau, la bascule de repli porte le titre sur téléphone, et
+   `replis-accueil.module.css` n'en montre jamais qu'un des deux. */
+const SURTITRE_TEXTE = "Pourquoi externaliser";
+const TITRE_TEXTE = "Externaliser sans perdre la main sur votre maintenance";
+
 export default function PourquoiExternaliser({
   avantages = AVANTAGES_MAQUETTE,
   hrefDecrire = "#besoin",
 }: Proprietes) {
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+        <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
         <div
           data-reveal="" className="mg-r2"
           style={{
@@ -45,7 +55,12 @@ export default function PourquoiExternaliser({
           }}
         >
           <div>
+            {/* L'en-tête d'origine, masqué sur téléphone : la bascule porte
+                le titre, et jamais les deux à la fois. Le sur-titre et le `h2`
+                portent la règle CHACUN, et non un conteneur commun : ils ont
+                pour frère la liste des avantages, qui doit rester visible. */}
             <div
+              className={replis.enTeteBureau}
               style={{
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
@@ -54,9 +69,10 @@ export default function PourquoiExternaliser({
                 marginBottom: 18,
               }}
             >
-              Pourquoi externaliser
+              {SURTITRE_TEXTE}
             </div>
             <h2
+              className={replis.enTeteBureau}
               style={{
                 font: "600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft)",
                 letterSpacing: "-.04em",
@@ -65,7 +81,7 @@ export default function PourquoiExternaliser({
                 textWrap: "balance",
               }}
             >
-              Externaliser sans perdre la main sur votre maintenance
+              {TITRE_TEXTE}
             </h2>
             <ul
               style={{
@@ -178,6 +194,7 @@ export default function PourquoiExternaliser({
             </div>
           </div>
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

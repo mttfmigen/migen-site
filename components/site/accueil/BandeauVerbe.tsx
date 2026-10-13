@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 
 import Image from "next/image";
 
+import replis from "./replis-accueil.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+
 /**
  * Bandeau « On … ? », où le verbe tourne.
  *
@@ -65,9 +68,26 @@ export default function BandeauVerbe({
 }: ProprietesBandeauVerbe) {
   const verbe = useVerbeCourant(verbes);
 
+  /*
+   * LE TITRE DE LA BASCULE EST LA PHRASE ELLE-MÊME, et elle tourne.
+   *
+   * CETTE SECTION N'A PAS DE `<h2>` : son titre, dans la maquette de bureau,
+   * c'est « On installe ? », dont le verbe change toutes les 2,2 secondes.
+   * C'est donc lui que porte la bascule, à l'identique, et RIEN N'EST ÉCRIT
+   * POUR L'OCCASION : inventer un titre de section serait écrire à la place de
+   * Mehdi.
+   *
+   * La phrase est construite ici UNE SEULE FOIS et sert aux deux endroits,
+   * l'en-tête d'origine et la bascule : aucune des deux ne peut dériver de
+   * l'autre. L'espace devant le point d'interrogation est celui du composant
+   * d'origine, une espace ordinaire, pas une insécable.
+   */
+  const phrase = `On ${verbe} ?`;
+
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px" }}>
+        <SectionPliableMobile titre={phrase}>
         <div
           data-reveal=""
           style={{
@@ -106,6 +126,7 @@ export default function BandeauVerbe({
               de la maquette à 390 px et au-dessus ne bouge pas d'un pixel. */}
           <div style={{ flex: 1, minWidth: "min(280px, 100%)" }}>
             <div
+              className={replis.enTeteBureau}
               style={{
                 font: "600 calc(clamp(30px,3.4vw,50px) * var(--ts))/1.08 var(--ft)",
                 letterSpacing: "-.04em",
@@ -128,6 +149,7 @@ export default function BandeauVerbe({
             </p>
           </div>
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

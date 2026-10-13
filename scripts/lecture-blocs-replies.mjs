@@ -570,22 +570,78 @@ function regleCellules(htmlServi, htmlCapture) {
 }
 
 /**
- * RÈGLE 5. Aucun `<summary>` focalisable au-dessus de 880 px.
+ * LA BASCULE EST-ELLE UN DOUBLON, OU EST-ELLE LE SEUL PORTEUR DU TITRE ?
  *
- * Ce n'est pas de la cosmétique. Vidée de son étiquette, la bascule reste un
- * `<summary>` : un arrêt de tabulation muet par section repliée, 117 sur les
- * treize pages métier avant correctif. Le motif la retire par `display: none`
- * dans un `@media (min-width: 881px)` ancré sur la classe de portée du gabarit.
+ * C'EST LA QUESTION QUE LES RÈGLES 5 ET 6 NE POSAIENT PAS, et c'est ce qui leur
+ * faisait réclamer une régression sur 602 blocs, trouvé le 13/10.
+ *
+ * Il y a DEUX formes légitimes de bloc replié, et elles sont opposées :
+ *
+ *  · LA BASCULE EST UNE ÉTIQUETTE, le motif de référence des pages métier. La
+ *    section rend son vrai `<h2>` dans son corps, et la bascule en répète le
+ *    texte en `<span>` marqués `data-mobile-seulement`. Le doublon n'existe que
+ *    sous 880 px, et la bascule DOIT être masquée sur bureau : sinon elle reste
+ *    un arrêt de tabulation et le texte paraît deux fois.
+ *
+ *  · LA BASCULE EST LE TITRE, ce que fait `SectionPliableMobile.tsx` en rendant
+ *    `{enTete ?? <span>{kicker}{titre}</span>}` DANS le `<summary>`. Le corps
+ *    ne le rend pas une seconde fois. La masquer sur bureau SUPPRIME le titre
+ *    de la page, et le marquer `data-mobile-seulement` le supprime de l'écran.
+ *
+ * `components/site/blocs/SectionPliableMobile.module.css` porte la mesure, au
+ * 13/10, à 1 280 px, sur huit pages : 31 bascules, 31 titres masqués, ZÉRO
+ * bascule réellement vide, et `/offres/residence/` passée de 1 titre vu à 0
+ * quand la règle `display:none` y avait été généralisée. Les règles 5 et 6
+ * demandaient donc, mot pour mot, le changement que cette mesure interdit, sur
+ * 140 des 233 pages. Appliquer leur verdict aurait fait perdre un titre de
+ * section par bloc, contre le principe 2 de CLAUDE.md.
+ *
+ * CE QUI TRANCHE, et c'est lisible dans le HTML que la porte lit déjà : le
+ * corps de la section rend-il, comme élément de titre, un texte que l'étiquette
+ * de la bascule répète ? Si oui, la bascule est un doublon. Si non, elle est le
+ * seul porteur.
+ */
+function basculeEstUnDoublon(bloc) {
+  const etiquette = texteDe(bloc.summary);
+  if (!etiquette) return false;
+  return titres(bloc.corps).some((t) => t.texte && etiquette.includes(t.texte));
+}
+
+/**
+ * RÈGLE 5. Le `<summary>` est masqué sur bureau QUAND IL EST UN DOUBLON, et il
+ * ne l'est jamais quand il porte le seul titre de la section.
+ *
+ * Ce n'est pas de la cosmétique, dans les deux sens. Vidée de son étiquette, la
+ * bascule reste un `<summary>` : un arrêt de tabulation muet par section
+ * repliée, 117 sur les treize pages métier avant correctif. Le motif la retire
+ * par `display: none` dans un `@media (min-width: 881px)` ancré sur la classe
+ * de portée du gabarit.
+ *
+ * LA RÈGLE A MAINTENANT SON REVERS, et il ferme un trou qu'elle laissait grand
+ * ouvert : masquer une bascule qui porte le SEUL titre de la section la faisait
+ * taire, et la règle s'en déclarait satisfaite. Elle le refuse désormais. Une
+ * porte qui accepte la perte d'un titre n'est pas une porte.
  */
 function regleBascules(blocs, selecteurs) {
   const fautes = [];
   for (const bloc of blocs) {
     if (!bloc.summary) continue;
-    if (selecteurs.some((s) => masqueLaBascule(s, bloc))) continue;
-    fautes.push(
-      `${REGLES.BASCULE} : la bascule de « ${bloc.intitule} » n'est masquée par aucune règle ` +
-        `de bureau (@media min-width > ${SEUIL_MOBILE}px, display:none), elle reste un arrêt de tabulation muet`,
-    );
+    const masquee = selecteurs.some((s) => masqueLaBascule(s, bloc));
+    const doublon = basculeEstUnDoublon(bloc);
+    if (doublon && !masquee) {
+      fautes.push(
+        `${REGLES.BASCULE} : la bascule de « ${bloc.intitule} » répète un titre que la section rend ` +
+          `déjà, et n'est masquée par aucune règle de bureau (@media min-width > ${SEUIL_MOBILE}px, ` +
+          `display:none) : le texte paraît deux fois et elle reste un arrêt de tabulation muet`,
+      );
+    }
+    if (!doublon && masquee) {
+      fautes.push(
+        `${REGLES.BASCULE} : la bascule de « ${bloc.intitule} » porte le SEUL titre de sa section et ` +
+          `une règle de bureau la masque (@media min-width > ${SEUIL_MOBILE}px, display:none) : ` +
+          `le titre est perdu sur grand écran`,
+      );
+    }
   }
   return fautes;
 }
@@ -611,10 +667,16 @@ function regleEtiquettes(blocs) {
   for (const bloc of blocs) {
     if (!bloc.summary) continue;
     const bureau = texteDe(retireOrnements(bloc.summary));
-    if (bureau)
+    /* LA BRANCHE (a) NE VAUT QUE POUR UNE VRAIE ÉTIQUETTE, voir
+       `basculeEstUnDoublon`. Quand la bascule porte le SEUL titre de la
+       section, du texte non marqué dans le `<summary>` n'est pas une fuite :
+       c'est le titre, et la capture de bureau le montre. Exiger la marque ici
+       revenait à exiger sa disparition, 140 pages concernées. La branche (b),
+       juste en dessous, reste vraie dans les deux formes. */
+    if (bureau && basculeEstUnDoublon(bloc))
       fautes.push(
         `${REGLES.ETIQUETTE} : la bascule de « ${bloc.intitule} » montre « ${bureau.slice(0, 70)} » ` +
-          `sur grand écran, sans marque data-mobile-seulement`,
+          `sur grand écran sans marque data-mobile-seulement, alors que la section rend déjà ce titre`,
       );
     const dansOrnement = titres(bloc.summary).length - titres(retireOrnements(bloc.summary)).length;
     if (dansOrnement > 0)

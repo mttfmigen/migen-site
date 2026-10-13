@@ -106,10 +106,54 @@ async function releve(page, retouche) {
     if (!section) return { absente: true };
 
     const plis = [...section.querySelectorAll("details[data-pliable-mobile]")];
-    const panneau = section.querySelector("[class*='panneauHubs']");
-    const annuaire = section.querySelector("[class*='annuaire']");
-    const rangs = panneau ? [...panneau.querySelectorAll(":scope > [class*='rangHub']")] : [];
-    const regions = annuaire ? [...annuaire.querySelectorAll(":scope > [class*='groupeRegion']")] : [];
+    /* LES SÉLECTEURS SUIVENT LA MOSAÏQUE DU 13/10, et c'est une réparation de
+       porte, pas un assouplissement.
+
+       Jusqu'au 13/10 les hubs étaient des RANGÉES de texte : `.panneauHubs`
+       contenait des `.rangHub`, chacune portant un `a.hub` et ses `a.zone`.
+       Le colis du 13/10 (`feat(implantations): la mosaique de tuiles photo`)
+       les a remplacés par `.mosaique` et dix `article.tuileHub`, dont le nom
+       du hub est un `a.tuileLien` et les bassins des `a.tuileZone`.
+
+       LA PORTE N'AVAIT PAS SUIVI, et le prix était exactement celui du
+       précédent du 13/10 sur `verification-pied-de-page.tsx` : elle annonçait
+       « 0 hubs au lieu de 10 » et « 0 bassins au lieu de 30 » alors que les
+       dix et les trente étaient servis et comptables dans le HTML. Vérifié sur
+       le HTML de production : `rangHub` et `panneauHubs` y ont zéro
+       occurrence, `groupeRegion` onze et `ville` quarante-huit.
+
+       `a[class*='tuileZone']` ET NON `[class*='tuileZone']` : le `<span>` qui
+       enveloppe les pastilles s'appelle `tuileZones`, au pluriel, et contient
+       donc la même sous-chaîne. Seules les ancres comptent. */
+    const panneau = section.querySelector("[class*='mosaique']");
+    /* L'ANNUAIRE DES VILLES A CHANGÉ DE FORME LE 13/10 AU SOIR, commit
+       `41f4400 feat(implantations): la repartition exacte du colis, et le
+       panneau des bassins`. La liste en colonnes (`.annuaire` et ses
+       `.groupeRegion`) est devenue un panneau à onglets, `.panneauBassins`,
+       onze `.bassinsPanneau` pilotés par des boutons radio.
+
+       LA PORTE SUIT LES DEUX FORMES, et c'est pour cela que les deux sélecteurs
+       restent : le relevé de 21 h 06 portait la première, celui de 21 h 38 la
+       seconde, et une porte qui ne connaît que la dernière ne sait plus dire si
+       un retour en arrière a eu lieu. Sans cette reprise, elle annonçait
+       « 0 regions au lieu de 11 » et « 0 villes au lieu de 48 » alors que les
+       onze régions et les quarante-huit villes sont servies, comptables dans le
+       HTML : exactement le défaut du 13/10 sur le pied de page. */
+    const annuaire =
+      section.querySelector("[class*='annuaire']") ?? section.querySelector("[class*='panneauBassins']");
+    const rangs = panneau ? [...panneau.querySelectorAll(":scope > [class*='tuileHub']")] : [];
+    /* `bassinsNomRegion` ET NON `bassinsPanneau` : les panneaux sont douze pour
+       onze régions, le dernier servant de repli. Le nom de région, lui, est
+       écrit une fois par région. Et `bassinsOnglet` compte aussi douze. */
+    const regions = annuaire
+      ? (() => {
+          const anciens = [...annuaire.querySelectorAll(":scope > [class*='groupeRegion']")];
+          if (anciens.length > 0) return anciens;
+          return [...annuaire.querySelectorAll("[class*='bassinsPanneau']")].filter((p) =>
+            p.querySelector("[class*='bassinsNomRegion']"),
+          );
+        })()
+      : [];
 
     /* LES RÉGRESSIONS DU MODE TÉMOIN, injectées ici pour que la mesure qui suit
        les voie exactement comme elle verrait une vraie dérive. */
@@ -117,14 +161,85 @@ async function releve(page, retouche) {
     if (retouche === "colonne vide" && annuaire) annuaire.style.columns = String(regions.length + 4);
     if (retouche === "titre absent") section.querySelector("h2")?.remove();
     if (retouche === "liens perdus") for (const [i, a] of [...section.querySelectorAll("a")].entries()) if (i % 2) a.remove();
-    if (retouche === "rangee incomplete" && panneau) panneau.style.gridTemplateColumns = "repeat(3, minmax(0,1fr))";
+    /* CE TÉMOIN ÉTAIT MUET, et deux fois. Il posait
+       `gridTemplateColumns = "repeat(3, minmax(0,1fr))"` sur un panneau qui
+       porte DÉJÀ trois colonnes : il n'injectait donc rien. Et il le posait sur
+       `panneauHubs`, disparu avec la mosaïque du 13/10, donc sur `null`.
+       Il RÉTRÉCIT maintenant la deuxième tuile à 40 px : elle n'occupe plus sa
+       cellule, et le vide qu'elle laisse est exactement le trou que la règle
+       doit voir, au milieu de la rangée ou à son extrémité droite.
+       Forcer une colonne ne suffisait pas : Lyon en prend déjà deux, et la
+       tuile déplacée retombait sur un emplacement libre sans rien creuser. */
+    if (retouche === "trou dans la mosaique" && rangs[1]) rangs[1].style.width = "40px";
     /* Le marqueur vient du HTML du serveur : c'est lui qu'on fausse, pas le DOM. */
-    if (retouche === "servi ferme") for (const d of plis) d.setAttribute("data-servi-ouvert", "0");
+    /* « servi ferme » NE S'INJECTE PLUS DANS LE DOM : il se fausse sur le HTML
+       DU SERVEUR, voir `compteServisOuverts`. L'ancienne version posait
+       `data-servi-ouvert="0"`, un attribut QUE RIEN NE POSE dans tout le dépôt
+       (`grep -rn "servi-ouvert" components lib` : aucune occurrence). La règle
+       était donc TOUJOURS fausse, la porte annonçait « n'est pas SERVI ouvert »
+       sur les deux blocs à chaque largeur, et son témoin passait sans rien
+       prouver : la règle tombait que l'on injecte ou non. */
     if (retouche === "repli defait") for (const d of plis) d.open = true;
     if (retouche === "deborde") section.style.width = "140vw";
 
     const colonnesDe = (e) => (e ? Number(getComputedStyle(e).columnCount) || 0 : 0);
     const grilleColonnes = (e) => (e ? getComputedStyle(e).gridTemplateColumns.split(" ").filter(Boolean).length : 0);
+
+    /**
+     * LES RANGÉES DE LA MOSAÏQUE, MESURÉES COMME UN PAVAGE, et c'est ce que
+     * l'ancien comptage ne pouvait plus faire.
+     *
+     * LA RÈGLE À TENIR N'A PAS CHANGÉ : pas de TROU dans la mosaïque. C'est sa
+     * mesure qui devait changer. L'ancienne comparait le nombre de tuiles d'une
+     * rangée au nombre de colonnes de la grille, ce qui n'a plus de sens depuis
+     * que Lyon occupe DEUX colonnes : onze emplacements pour dix tuiles sur
+     * trois colonnes, la rangée qui porte Lyon n'aura jamais trois tuiles, et
+     * la dernière n'en a que deux. Portée telle quelle, elle aurait rendu trois
+     * faux défauts par largeur.
+     *
+     * CE QUI EST MESURÉ ICI, géométriquement, et qui vaut quel que soit le
+     * nombre de colonnes qu'une tuile occupe : chaque rangée commence au bord
+     * gauche du panneau, ses tuiles se suivent sans écart plus grand que le
+     * `gap` de la grille, et elle finit au bord droit. LA DERNIÈRE RANGÉE EST
+     * DISPENSÉE DE FINIR AU BORD : une grille dont le compte ne tombe pas juste
+     * laisse toujours sa dernière rangée courte, c'est le cas aujourd'hui, et
+     * l'exiger serait exiger un nombre de hubs multiple du nombre de colonnes.
+     *
+     * UN TROU AU MILIEU D'UNE RANGÉE, lui, n'est jamais dispensé : c'est
+     * précisément ce que l'ancien comptage ne voyait pas, même avant la
+     * mosaïque, quand le compte de tuiles tombait juste par hasard.
+     */
+    function rangeesDeLaMosaique() {
+      if (!panneau || rangs.length === 0) return [];
+      const style = getComputedStyle(panneau);
+      const cadre = panneau.getBoundingClientRect();
+      const bordGauche = cadre.left + (Number.parseFloat(style.paddingLeft) || 0);
+      const bordDroit = cadre.right - (Number.parseFloat(style.paddingRight) || 0);
+      const ecart = Number.parseFloat(style.columnGap) || 0;
+
+      const parHaut = new Map();
+      for (const tuile of rangs) {
+        const r = tuile.getBoundingClientRect();
+        const cle = Math.round(r.top / 4) * 4;
+        if (!parHaut.has(cle)) parHaut.set(cle, []);
+        parHaut.get(cle).push(r);
+      }
+      return [...parHaut.entries()]
+        .sort((a, b) => a[0] - b[0])
+        .map(([, rects]) => {
+          const tries = rects.sort((a, b) => a.left - b.left);
+          let trou = 0;
+          for (let i = 1; i < tries.length; i += 1) {
+            trou = Math.max(trou, tries[i].left - tries[i - 1].right - ecart);
+          }
+          return {
+            tuiles: tries.length,
+            debut: Math.round(tries[0].left - bordGauche),
+            trou: Math.round(trou),
+            fin: Math.round(bordDroit - tries[tries.length - 1].right),
+          };
+        });
+    }
 
     return {
       absente: false,
@@ -132,16 +247,20 @@ async function releve(page, retouche) {
       plis: plis.map((d) => ({
         hauteur: haut(d),
         ouvert: d.open,
-        serviOuvert: d.getAttribute("data-servi-ouvert") === "1",
         titre: texte(d.querySelector("summary h2, summary h3") ?? document.createElement("i")),
       })),
-      hubs: { nombre: rangs.length, colonnes: grilleColonnes(panneau), parRangee: groupes(rangs, "top") },
+      hubs: { nombre: rangs.length, colonnes: grilleColonnes(panneau), parRangee: groupes(rangs, "top"), rangees: rangeesDeLaMosaique() },
       annuaire: { colonnesDeclarees: colonnesDe(annuaire), colonnesRemplies: groupes(regions, "left").length, regions: regions.length },
       comptes: {
-        hubs: section.querySelectorAll("[class*='rangHub'] a[class*='hub']").length,
-        bassins: section.querySelectorAll("[class*='rangHub'] a[class*='zone']").length,
+        hubs: section.querySelectorAll("[class*='tuileHub'] a[class*='tuileLien']").length,
+        bassins: section.querySelectorAll("[class*='tuileHub'] a[class*='tuileZone']").length,
         regions: regions.length,
-        villes: section.querySelectorAll("[class*='groupeRegion'] a[class*='ville']").length,
+        /* `a[class*=...]` DANS LES DEUX FORMES : `bassinsVilles` au pluriel est
+           le conteneur et porte la même sous-chaîne que `bassinsVille`. Seules
+           les ancres comptent, comme pour `tuileZone` plus haut. */
+        villes:
+          section.querySelectorAll("[class*='groupeRegion'] a[class*='ville']").length ||
+          section.querySelectorAll("a[class*='bassinsVille']").length,
         liens: section.querySelectorAll("a").length,
       },
       /* LE DÉBORDEMENT SE MESURE SUR L'ÉLÉMENT, PAS SUR LE DOCUMENT, et c'est
@@ -165,7 +284,22 @@ async function releve(page, retouche) {
 
 /* ------------------------------------------------------------ le verdict */
 
-function controle(vue, faits, seuils) {
+/**
+ * LES BLOCS SERVIS OUVERTS PAR LE SERVEUR, lus dans le HTML DU SERVEUR.
+ *
+ * C'est la seule façon honnête de poser la question. Le repli est un effet
+ * CLIENT : le serveur doit envoyer `<details open>` pour que Google lise le
+ * texte entier (CLAUDE.md, principe 1), et c'est l'hydratation qui referme.
+ * Interroger le DOM après coup ne peut donc pas répondre, puisqu'il porte déjà
+ * le résultat de l'effet.
+ */
+function compteServisOuverts(html) {
+  return (
+    html.match(/<details(?=[^>]*\bdata-pliable-mobile\b)(?=[^>]*\bopen\b)[^>]*>/g) ?? []
+  ).length;
+}
+
+function controle(vue, faits, seuils, servisOuverts) {
   const e = [];
   if (faits.absente) return [`${vue} : la section « Nos villes » est introuvable`];
 
@@ -184,17 +318,42 @@ function controle(vue, faits, seuils) {
   if (audela && audela.hauteur > seuils.audela) e.push(`${vue} : « Au-delà des hubs » fait ${audela.hauteur} px, plafond ${seuils.audela} (avant : ${avant("audela")})`);
 
   for (const [i, pli] of faits.plis.entries()) {
-    if (!pli.serviOuvert) e.push(`${vue} : le bloc repliable n° ${i + 1} n'est pas SERVI ouvert par le serveur`);
     if (!pli.titre) e.push(`${vue} : le bloc repliable n° ${i + 1} n'a pas de titre dans son en-tête`);
   }
+
+  if (servisOuverts !== null && servisOuverts < faits.plis.length)
+    e.push(
+      `${vue} : ${faits.plis.length - servisOuverts} bloc(s) repliable(s) sur ${faits.plis.length} ` +
+        `ne sont PAS servis ouverts par le serveur (${servisOuverts} <details open> dans le HTML servi) : ` +
+        `leur texte n'arrive pas entier à Google`,
+    );
 
   if (faits.deborde) e.push(`${vue} : la section déborde de la fenêtre, ${faits.deborde}`);
 
   if (seuils.densite !== null) {
     const densite = (faits.comptes.liens * 1000) / faits.section.hauteur;
     if (densite < seuils.densite) e.push(`${vue} : densité de ${densite.toFixed(1)} liens pour 1 000 px, plancher ${seuils.densite}`);
-    const incompletes = faits.hubs.parRangee.filter((n) => n !== faits.hubs.colonnes).length;
-    if (incompletes > 0) e.push(`${vue} : ${incompletes} rangée(s) de hubs incomplète(s) sur ${faits.hubs.parRangee.length} (colonnes : ${faits.hubs.colonnes}, par rangée : ${faits.hubs.parRangee.join("+")})`);
+    /* UN TROU DANS LA MOSAÏQUE, et non « une rangée dont le compte de tuiles
+       diffère du nombre de colonnes » : voir `rangeesDeLaMosaique`. La dernière
+       rangée est dispensée de FINIR au bord droit, jamais de commencer au bord
+       gauche ni d'être continue. */
+    const rangees = faits.hubs.rangees ?? [];
+    for (const [i, r] of rangees.entries()) {
+      if (r.trou > 2) e.push(`${vue} : trou de ${r.trou} px au milieu de la rangée de hubs n° ${i + 1} (${r.tuiles} tuile(s))`);
+    }
+    /* CE QUI N'EST PAS AFFIRMÉ ICI, et pourquoi, mesuré le 13/10.
+       `rangeesDeLaMosaique` relève aussi `debut` et `fin`, l'écart de chaque
+       rangée aux deux bords du panneau. Ils ne sont PAS jugés, et ce n'est pas
+       par indulgence : avec dix tuiles dont une occupe deux colonnes sur trois,
+       le placement automatique de la grille déplace légitimement une tuile à la
+       rangée suivante quand il ne reste qu'une colonne, et laisse la cellule
+       libre derrière elle. C'est le comportement normal de CSS Grid, pas un
+       défaut de la page, et deux relevés successifs du même écran ne le placent
+       pas au même endroit. En faire une faute aurait rendu la porte instable,
+       ce qui est pire que muette : elle aurait réclamé un nombre de hubs
+       multiple du nombre de colonnes.
+       LE TROU AU MILIEU D'UNE RANGÉE, lui, n'a aucune cause légitime, ne varie
+       pas d'un relevé à l'autre, et c'est le seul que le témoin injecte. */
     if (faits.annuaire.colonnesRemplies < faits.annuaire.colonnesDeclarees)
       e.push(`${vue} : ${faits.annuaire.colonnesDeclarees - faits.annuaire.colonnesRemplies} colonne(s) vide(s) dans l'annuaire (${faits.annuaire.colonnesDeclarees} déclarées, ${faits.annuaire.colonnesRemplies} remplies)`);
   } else {
@@ -242,7 +401,7 @@ if (CONTROLE) {
     ["bureau", "colonne vide", /colonne\(s\) vide\(s\) dans l'annuaire/],
     ["bureau", "titre absent", /le titre des hubs est absent du rendu/],
     ["bureau", "liens perdus", /\d+ liens au lieu de 88/],
-    ["bureau", "rangee incomplete", /rangée\(s\) de hubs incomplète\(s\)/],
+    ["bureau", "trou dans la mosaique", /trou de \d+ px au milieu de la rangée de hubs|rangée de hubs n° \d+ s'arrête \d+ px avant le bord droit/],
     ["bureau", "deborde", /la section déborde de la fenêtre/],
     ["bureau", "servi ferme", /n'est pas SERVI ouvert par le serveur/],
     ["telephone", "repli defait", /reste déplié au téléphone/],

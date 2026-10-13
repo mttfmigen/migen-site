@@ -1,4 +1,6 @@
 import styles from "./FocusResidence.module.css";
+import replis from "./replis-accueil.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 /**
  * Focus sur l'offre migen© Résidence : photo légendée à gauche, trois points
@@ -19,6 +21,12 @@ export interface ProprietesFocusResidence {
   /** Texte alternatif de la photo. */
   imageAlt?: string;
 }
+
+/* Le sur-titre et le titre, écrits une seule fois : l'en-tête d'origine tient
+   le dessin de bureau, la bascule de repli porte le titre sur téléphone, et
+   `replis-accueil.module.css` n'en montre jamais qu'un des deux. */
+const SURTITRE_TEXTE = "migen© Résidence";
+const TITRE_TEXTE = "Vous constituez votre équipe. Nous la sélectionnons.";
 
 const SPECIALITES: readonly string[] = [
   "Automaticien SIEMENS",
@@ -72,8 +80,9 @@ export default function FocusResidence({
   imageAlt = "Technicien migen sur une ligne intralogistique",
 }: ProprietesFocusResidence) {
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px" }}>
+        <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
         <div
           className="mg-r2" data-reveal=""
           style={{
@@ -134,6 +143,7 @@ export default function FocusResidence({
           </div>
           <div>
             <div
+              className={replis.enTeteBureau}
               style={{
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
@@ -142,9 +152,10 @@ export default function FocusResidence({
                 marginBottom: "18px",
               }}
             >
-              migen© Résidence
+              {SURTITRE_TEXTE}
             </div>
             <h2
+              className={replis.enTeteBureau}
               style={{
                 font: "600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft)",
                 letterSpacing: "-.04em",
@@ -153,7 +164,7 @@ export default function FocusResidence({
                 textWrap: "balance",
               }}
             >
-              Vous constituez votre équipe. Nous la sélectionnons.
+              {TITRE_TEXTE}
             </h2>
             <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px" }}>
               {POINTS.map((point) => (
@@ -216,6 +227,7 @@ export default function FocusResidence({
             </a>
           </div>
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

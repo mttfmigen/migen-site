@@ -1,0 +1,171 @@
+/*
+ * La bibliothèque « Ressources v2 ».
+ *
+ * CE QUI VIT ICI et pas en style en ligne : les survols, les points
+ * d'arrêt et les coupes de texte, qu'un attribut `style` ne sait pas écrire.
+ * Le reste du dessin reste en ligne, comme dans les autres gabarits portés,
+ * pour qu'une valeur se relise à côté de l'élément qu'elle habille.
+ *
+ * LES POINTS D'ARRÊT SONT CEUX DE LA MAQUETTE : 1000 px pour replier le menu
+ * latéral en rail horizontal, 760 px pour le rendre pliable. Ses règles sont
+ * dans le `<style>` du gabarit (`.rs-lay`, `.rs-side`, `.rs-app`, `.rs-side2`).
+ */
+
+.carte {
+  color: inherit;
+  text-decoration: none;
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.35s;
+}
+
+.carte:hover,
+.carte:focus-visible {
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 0 1.5px rgba(255, 124, 60, 0.55),
+    0 30px 60px -40px rgba(28, 27, 25, 0.45);
+}
+
+/* En liste la carte ne se soulève pas : elle glisserait sous sa voisine. */
+.carteListe:hover,
+.carteListe:focus-visible {
+  transform: none;
+  box-shadow: 0 0 0 1.5px rgba(255, 124, 60, 0.55);
+}
+
+/* Deux lignes au plus, pour que toutes les cartes d'une rangée s'alignent. */
+.extrait {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------- disposition */
+
+.cadre {
+  display: grid;
+  grid-template-columns: 292px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.menu {
+  position: sticky;
+  top: 92px;
+  align-self: start;
+  z-index: 6;
+}
+
+.menuCarte {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-height: calc(100vh - 108px);
+  overflow-y: auto;
+  padding: 14px;
+  border-radius: 28px;
+  background: var(--glass, var(--card));
+  backdrop-filter: blur(26px) saturate(170%);
+  -webkit-backdrop-filter: blur(26px) saturate(170%);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+/* Le bouton « Filtres » n'existe que sur mobile, comme `.rs-ftoggle`. */
+.plieFiltres {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--card);
+  cursor: pointer;
+  font: 600 13.5px var(--fb);
+  color: var(--ink);
+}
+
+.corpsFiltres {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.grille {
+  display: grid;
+  gap: 12px;
+}
+
+@media (max-width: 1000px) {
+  .cadre {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .menu {
+    position: relative;
+    top: auto;
+    margin-top: 28px;
+  }
+
+  .menuCarte {
+    max-height: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .plieFiltres {
+    display: flex;
+  }
+
+  .corpsFiltresPlie {
+    display: none;
+  }
+}
+
+/* ----------------------------------------------------------- interactions */
+
+.boutonCategorie,
+.boutonTheme,
+.boutonEtiquette,
+.segment,
+.puce,
+.reinitialise {
+  cursor: pointer;
+  font-family: var(--fb);
+}
+
+.boutonCategorie:hover:not(:disabled),
+.boutonTheme:hover,
+.boutonEtiquette:hover {
+  background-color: var(--chip);
+}
+
+.reinitialise:hover {
+  border-color: #ff7c3c;
+  color: #ff7c3c;
+}
+
+/* ------------------------------------------------------- sommaire complet */
+
+/*
+ * Le sommaire des 48 pages. Il n'est JAMAIS filtré et ne dépend d'aucun
+ * JavaScript : c'est lui qui garantit que les 48 URL sont dans le HTML que
+ * Google reçoit, filtres ou pas, espace affiché ou pas.
+ */
+.sommaire a {
+  color: var(--ink1);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.sommaire a:hover,
+.sommaire a:focus-visible {
+  color: var(--ink);
+  border-bottom-color: var(--acc);
+}

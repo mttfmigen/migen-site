@@ -318,10 +318,42 @@ function rend(relais: Relais): string {
  * Les controles en bas de fichier le prouvent dans les deux sens.
  */
 
+/**
+ * LA BIBLIOTHEQUE « Ressources v2 », mise de cote avant la comparaison aux
+ * sections de la capture, et SEULEMENT pour cette comparaison.
+ *
+ * POURQUOI ELLE DOIT SORTIR DU CADRE. Depuis le 13/10, `/ressources/` porte en
+ * plus de sa capture la bibliotheque filtrable de
+ * `maquette/colis-13-10/Migen - Ressources.html` : menu lateral, 48 cartes,
+ * sommaire complet. La capture `maquette/rendu/ressources.html` a ete prise
+ * AVANT ce colis et ne la connait pas. La laisser dans le cadre faisait dire a
+ * la porte « 12 sections rendues, 11 dans la capture », puis dix fois « texte
+ * different », parce que tous les index glissaient d'un cran : onze faux
+ * defauts pour une seule addition declaree.
+ *
+ * CE N'EST PAS UN AVEUGLEMENT, et trois choses le garantissent :
+ *   1. LA COUPE EST NOMMEE. Elle ne retire que `<section id="bibliotheque">`,
+ *      pas une section quelconque, pas une section par son rang.
+ *   2. LES CONTROLES GLOBAUX GARDENT LA BIBLIOTHEQUE SOUS LES YEUX. Le compte
+ *      de H1, les liens morts, les cibles hors domaine, les mots interdits et
+ *      les phrases retirees travaillent sur `htmlBrut`, qui la porte encore.
+ *      Un `href="#"` ou un interdit dans la bibliotheque tombe donc toujours.
+ *   3. SON CONTENU A SA PROPRE PORTE,
+ *      `components/site/ressources-hub/verification-hub.tsx`, qui le compare a
+ *      la donnee de la maquette et exige ses 48 URL.
+ *
+ * ET ELLE SAIT ECHOUER : les temoins du bas de fichier exigent qu'une section
+ * de la capture reellement perdue soit toujours vue, bibliotheque retiree ou
+ * non, et qu'un interdit glisse dans la bibliotheque soit toujours refuse.
+ */
+function sansBibliotheque(html: string): string {
+  return html.replace(/<section id="bibliotheque"[\s\S]*?<\/section>/, "");
+}
+
 function controle(relais: Relais, capture: string, brut: string): string[] {
   const htmlBrut = sansOrnementsMobiles(brut);
   const ecarts: string[] = [];
-  const html = sansEcartsFormulaire(htmlBrut);
+  const html = sansBibliotheque(sansEcartsFormulaire(htmlBrut));
   const ref = sectionsDe(capture).map((n) => sansRetraits(n, relais.phrases_retirees));
   const site = sectionsDe(html);
   if (ref.length !== site.length) ecarts.push(`${site.length} sections rendues, ${ref.length} dans la capture`);
@@ -711,6 +743,64 @@ for (const [nom, ecarts, attendu] of FAUTES) {
     `faute « ${nom} » NON vue : ${ecarts.join(" | ") || "aucun écart"}`,
   );
   console.log(`✓ faute vue : ${nom}`);
+}
+
+/* ------------------------------------------- `sansBibliotheque` sait échouer
+ *
+ * Trois témoins, dont deux négatifs au sens strict. Ils existent parce qu'une
+ * coupe posée dans une porte est le moyen le plus simple de l'aveugler sans
+ * le dire : il faut donc prouver qu'elle ne retire QUE ce qu'elle annonce.
+ */
+{
+  const hub = lisRelais("/ressources/");
+  const servi = rend(hub);
+  assert.match(
+    servi,
+    /<section id="bibliotheque"/,
+    "le hub des ressources ne porte plus sa bibliothèque : ces témoins ne prouveraient rien",
+  );
+
+  /* 1. NÉGATIF : une section de la capture réellement perdue doit être vue,
+     bibliothèque ou pas. La coupe ne doit pas servir d'excuse à un manque. */
+  const ampute = servi.replace(/<section id="cx-form"[\s\S]*?<\/section>/, "");
+  assert.notEqual(ampute, servi, "la faute « section du gabarit retirée » n'a rien changé au rendu");
+  const ecartsAmpute = controle(hub, lisCapture("/ressources/"), ampute);
+  assert.ok(
+    ecartsAmpute.some((e) => /sections rendues/.test(e)),
+    `coupe de la bibliothèque : une section du gabarit retirée doit rester vue, écarts obtenus : ${
+      ecartsAmpute.join(" | ") || "aucun"
+    }`,
+  );
+
+  /* 2. NÉGATIF : un interdit glissé DANS la bibliothèque doit être refusé. Les
+     contrôles globaux travaillent sur le rendu complet, et c'est ce que ce
+     témoin vérifie, pas ce qu'il suppose. */
+  const souille = servi.replace(
+    /<section id="bibliotheque"/,
+    '<section id="bibliotheque" data-faute="1"><p>Teamtailor</p><div',
+  );
+  const ecartsSouille = controle(hub, lisCapture("/ressources/"), souille);
+  assert.ok(
+    ecartsSouille.some((e) => /interdit rendu/.test(e)),
+    `coupe de la bibliothèque : un interdit posé dans la bibliothèque doit rester vu, écarts obtenus : ${
+      ecartsSouille.join(" | ") || "aucun"
+    }`,
+  );
+
+  /* 3. POSITIF : la bibliothèque telle qu'elle est rendue n'ajoute AUCUN écart
+     à ceux que la porte relevait déjà sans elle. Sans ce témoin, une coupe
+     trop large passerait pour une coupe juste. */
+  const avec = controle(hub, lisCapture("/ressources/"), servi);
+  const sans = controle(hub, lisCapture("/ressources/"), sansBibliotheque(servi));
+  assert.deepEqual(
+    avec,
+    sans,
+    `contrôle positif : la bibliothèque change le verdict de la porte. Avec : ${avec.join(" | ")} / sans : ${sans.join(" | ")}`,
+  );
+  console.log(
+    "✓ coupe de la bibliothèque : une section perdue et un interdit glissé dedans\n" +
+      "  restent vus, et la bibliothèque n'ajoute aucun écart de son côté",
+  );
 }
 
 if (echecs) {

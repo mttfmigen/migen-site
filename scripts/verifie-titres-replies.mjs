@@ -261,7 +261,13 @@ function temoin() {
     {
       quoi: "cellule d'en-tête aplatie (la piste reste, son titre a disparu)",
       regle: REGLES.CELLULE,
-      seule: true,
+      /* AUSSI LA RÈGLE 5, ET C'EST JUSTE, constaté le 13/10 en ajoutant à la
+         règle 5 son revers. Vider la cellule d'en-tête retire le h2 du corps :
+         la bascule devient le SEUL porteur du titre, et la feuille du témoin la
+         masque sur bureau. Le titre est donc réellement perdu, et la règle 5 a
+         raison de le dire. Une faute peut avoir deux conséquences ; ce qui
+         compte est que la règle visée tombe, et elle tombe. */
+      seule: false,
       servi: SERVI_TEMOIN.replace(
         `<div>
       <div style="font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc)">SAVOIR-FAIRE</div>
@@ -279,6 +285,20 @@ function temoin() {
          un AUTRE gabarit. Le défaut vient donc de la portée, pas du HTML, et
          c'est exactement comme ça qu'il se produit dans le dépôt. */
       css: selecteursMasquantsBureau(CSS_TEMOIN.replace(/corpsDemo/g, "corpsAutreGabarit")),
+    },
+    {
+      /* LE REVERS DE LA RÈGLE 5, ajouté le 13/10 avec lui. Le corps ne rend plus
+         le titre, la bascule le porte seule, et la feuille de bureau la masque :
+         c'est exactement ce que `/offres/residence/` a subi quand la règle
+         `display:none` y avait été généralisée, 1 titre vu devenu 0. Avant cet
+         ajout, la règle 5 S'EN DÉCLARAIT SATISFAITE : masquer suffisait. */
+      quoi: "REVERS : la bascule porte le seul titre de sa section et le bureau la masque",
+      regle: REGLES.BASCULE,
+      seule: false /* la cellule vidée fait aussi tomber la règle 4, et c'est juste */,
+      servi: SERVI_TEMOIN.replace(
+        '<h2 style="font:600 calc(clamp(26px,2.6vw,36px) * var(--ts))/1.12 var(--ft);margin:0;max-width:26ch">Questions fréquentes</h2>',
+        "",
+      ),
     },
     {
       quoi: "étiquette non marquée data-mobile-seulement (elle paraît sur grand écran)",

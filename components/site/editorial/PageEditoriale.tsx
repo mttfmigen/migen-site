@@ -1,11 +1,36 @@
 import type { ReactNode } from "react";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import BibliothequeRessources from "@/components/site/ressources-hub/BibliothequeRessources";
+import { bibliotheque } from "@/components/site/ressources-hub/catalogue";
 import type { BlocEditorial, ContenuEditorial } from "@/types/editorial";
 
 import Guide from "./Guide";
 import styles from "./PageEditoriale.module.css";
 import Rubrique from "./Rubrique";
+
+/**
+ * La pastille de format du hub des ressources, celle de sa capture. Elle sert
+ * ici de discriminant : voir le commentaire du rendu, plus bas.
+ */
+const FORMAT_HUB_RESSOURCES = "Ressources";
+
+/**
+ * La bibliothèque, lue sur le disque puis passée au composant client.
+ *
+ * Elle est isolée dans son propre composant SERVEUR pour que la lecture du
+ * disque n'ait lieu que sur la page qui l'affiche : un appel au sommet de
+ * `PageEditoriale` aurait lu 48 fiches à chaque rendu des 59 pages
+ * éditoriales, dont 56 n'en ont pas l'usage.
+ *
+ * SYNCHRONE, et c'est une contrainte, pas un choix : `renderToStaticMarkup`,
+ * par lequel `verification-editorial.tsx` monte ce gabarit, ne sait pas rendre
+ * un composant asynchrone. `catalogue.ts` explique en détail ce que cela coûte
+ * et par quoi son garde-fou est remplacé.
+ */
+function SectionBibliotheque() {
+  return <BibliothequeRessources bibliotheque={bibliotheque()} />;
+}
 
 /**
  * Rendu des pages éditoriales : métiers, hubs de ressources, entreprise.
@@ -210,7 +235,29 @@ export default function PageEditoriale({
   // Les huit pages portées contre leur capture apportent leur vue ; elle
   // porte son propre fil, ses pages liées et son appel, comme la capture : le
   // fil et le maillage calculés par la route n'y sont pas montés.
-  if (contenu.edito) return <Guide titre={titre} vue={contenu.edito} />;
+  //
+  // LE HUB DES RESSOURCES REÇOIT EN PLUS SA BIBLIOTHÈQUE, portée de
+  // « Ressources v2 » (`maquette/colis-13-10/Migen - Ressources.html`).
+  //
+  // POURQUOI LE FORMAT SERT DE DISCRIMINANT, et pas un champ ajouté : trois
+  // pages seulement portent la vue `edito`, et leur `format` les sépare sans
+  // ambiguïté, vérifié sur les fiches le 13/10. `/ressources/` écrit
+  // « Ressources », les deux guides de `/guides/` écrivent « Guide ». C'est la
+  // pastille que la capture affiche, donc une donnée du portage, pas un
+  // drapeau technique inventé pour la circonstance. Ajouter un champ aurait
+  // demandé de toucher les fiches et `types/editorial.ts`, qui appartiennent à
+  // d'autres lots.
+  if (contenu.edito) {
+    return (
+      <Guide
+        titre={titre}
+        vue={contenu.edito}
+        bibliotheque={
+          contenu.edito.format === FORMAT_HUB_RESSOURCES ? <SectionBibliotheque /> : undefined
+        }
+      />
+    );
+  }
   if (contenu.rubrique) return <Rubrique titre={titre} vue={contenu.rubrique} />;
 
   // Le sommaire se déduit des titres de niveau 2 : jamais saisi deux fois, donc

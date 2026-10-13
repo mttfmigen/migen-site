@@ -2,6 +2,8 @@
 
 import { useState, type CSSProperties } from "react";
 import styles from "./BentoBesoins.module.css";
+import replis from "./replis-accueil.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 export interface Besoin {
   /** Identifiant stable, sert de clé de liste et d'ancre du panneau déplié. */
@@ -118,6 +120,12 @@ function signe(ouverte: boolean): CSSProperties {
   };
 }
 
+/* Le sur-titre et le titre, écrits une seule fois : l'en-tête d'origine tient
+   le dessin de bureau, la bascule de repli porte le titre sur téléphone, et
+   `replis-accueil.module.css` n'en montre jamais qu'un des deux. */
+const SURTITRE_TEXTE = "Partez de votre besoin";
+const TITRE_TEXTE = "Dites la phrase qui ressemble le plus à votre situation.";
+
 export default function BentoBesoins({
   besoins = [],
   hrefChiffrer = "/contact/",
@@ -128,7 +136,12 @@ export default function BentoBesoins({
   const [ouvert, setOuvert] = useState<string | null>(besoins[0]?.id ?? null);
 
   return (
-    <section style={{ maxWidth: 1200, margin: "0 auto", padding: "56px 40px 0" }}>
+    <section
+      className={replis.repli}
+      style={{ maxWidth: 1200, margin: "0 auto", padding: "56px 40px 0" }}
+     
+    >
+      <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
       <div data-reveal="">
         <div
           style={{
@@ -140,7 +153,11 @@ export default function BentoBesoins({
             flexWrap: "wrap",
           }}
         >
-          <div>
+          {/* L'en-tête d'origine, masqué sur téléphone : la bascule porte le
+              titre, et jamais les deux à la fois. Le `display: none` tombe sur
+              CE conteneur et non sur ses deux enfants, pour qu'il ne laisse
+              derrière lui ni boîte vide ni gouttière. */}
+          <div className={replis.enTeteBureau}>
             <div
               style={{
                 font: "600 11.5px var(--fb)",
@@ -150,7 +167,7 @@ export default function BentoBesoins({
                 marginBottom: 14,
               }}
             >
-              Partez de votre besoin
+              {SURTITRE_TEXTE}
             </div>
             <h2
               style={{
@@ -161,7 +178,7 @@ export default function BentoBesoins({
                 textWrap: "balance",
               }}
             >
-              Dites la phrase qui ressemble le plus à votre situation.
+              {TITRE_TEXTE}
             </h2>
           </div>
         </div>
@@ -430,6 +447,7 @@ export default function BentoBesoins({
           })}
         </div>
       </div>
+      </SectionPliableMobile>
     </section>
   );
 }

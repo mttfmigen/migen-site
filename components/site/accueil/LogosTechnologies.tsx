@@ -1,4 +1,6 @@
 import styles from "./LogosTechnologies.module.css";
+import replis from "./replis-accueil.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 /**
  * Les marques maîtrisées par les techniciens, en grille de six tuiles.
@@ -24,6 +26,12 @@ export interface ProprietesLogosTechnologies {
   /** Destination du lien « Voir toutes les marques ». */
   hrefToutesMarques?: string;
 }
+
+/* Le sur-titre et le titre, écrits une seule fois : l'en-tête d'origine tient
+   le dessin de bureau, la bascule de repli porte le titre sur téléphone, et
+   `replis-accueil.module.css` n'en montre jamais qu'un des deux. */
+const SURTITRE_TEXTE = "Technologies & partenaires";
+const TITRE_TEXTE = "Les marques que nos techniciens maîtrisent au quotidien";
 
 const MARQUES: readonly Marque[] = [
   { nom: "Siemens", fichier: "/assets/fab/siemens.png" },
@@ -53,8 +61,9 @@ export default function LogosTechnologies({
   hrefToutesMarques = "/marques/",
 }: ProprietesLogosTechnologies) {
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px" }}>
+        <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
         <div
           data-reveal=""
           style={{
@@ -78,7 +87,11 @@ export default function LogosTechnologies({
               flexWrap: "wrap",
             }}
           >
-            <div>
+            {/* L'en-tête d'origine, masqué sur téléphone : la bascule porte
+                le titre, et jamais les deux à la fois. Le `display: none` tombe
+                sur CE conteneur et non sur ses deux enfants, pour qu'il ne
+                laisse derrière lui ni boîte vide ni gouttière de flex. */}
+            <div className={replis.enTeteBureau}>
               <div
                 style={{
                   font: "600 11.5px var(--fb)",
@@ -88,7 +101,7 @@ export default function LogosTechnologies({
                   marginBottom: "14px",
                 }}
               >
-                Technologies &amp; partenaires
+                {SURTITRE_TEXTE}
               </div>
               <h2
                 style={{
@@ -99,7 +112,7 @@ export default function LogosTechnologies({
                   textWrap: "balance",
                 }}
               >
-                Les marques que nos techniciens maîtrisent au quotidien
+                {TITRE_TEXTE}
               </h2>
             </div>
             <a
@@ -152,6 +165,7 @@ export default function LogosTechnologies({
             ))}
           </div>
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

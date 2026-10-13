@@ -1,3 +1,14 @@
+import replis from "./replis-accueil.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+
+/* Le sur-titre et le titre, écrits une seule fois : l'en-tête d'origine tient
+   le dessin de bureau, la bascule de repli porte le titre sur téléphone, et
+   `replis-accueil.module.css` n'en montre jamais qu'un des deux. */
+/* L'apostrophe est DROITE, exactement ce que rendait `&apos;` : changer de
+   caractère ici changerait la copie affichée, ce qui ne nous appartient pas. */
+const SURTITRE_TEXTE = "Ce qu'en disent nos clients";
+const TITRE_TEXTE = "Notre plus grande fierté";
+
 export interface Temoignage {
   /** Le verbatim, sans guillemets : la maquette dessine le guillemet à part. */
   verbatim: string;
@@ -40,8 +51,9 @@ export default function TemoignagesClients({
   noteGoogle = "4,6 / 5",
 }: Proprietes) {
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+        <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
         <div data-reveal=""
           style={{
             display: "flex",
@@ -52,7 +64,11 @@ export default function TemoignagesClients({
             flexWrap: "wrap",
           }}
         >
-          <div>
+          {/* L'en-tête d'origine, masqué sur téléphone : la bascule porte le
+              titre, et jamais les deux à la fois. Le `display: none` tombe sur
+              CE conteneur et non sur ses deux enfants, pour qu'il ne laisse
+              derrière lui ni boîte vide ni gouttière. */}
+          <div className={replis.enTeteBureau}>
             <div
               style={{
                 font: "600 11.5px var(--fb)",
@@ -62,7 +78,7 @@ export default function TemoignagesClients({
                 marginBottom: 16,
               }}
             >
-              Ce qu&apos;en disent nos clients
+              {SURTITRE_TEXTE}
             </div>
             <h2
               style={{
@@ -73,7 +89,7 @@ export default function TemoignagesClients({
                 textWrap: "balance",
               }}
             >
-              Notre plus grande fierté
+              {TITRE_TEXTE}
             </h2>
           </div>
           <div
@@ -195,6 +211,7 @@ export default function TemoignagesClients({
             part pas en production, un visiteur n'a pas à lire les réserves
             internes sur les chiffres qu'on lui montre. La réserve elle-même
             reste ouverte et suivie dans docs/RESERVES-CONTENU.md. */}
+        </SectionPliableMobile>
       </div>
     </section>
   );

@@ -1,4 +1,6 @@
 import styles from "./FriseHistoire.module.css";
+import replis from "./replis-accueil.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 export interface Jalon {
   /** « 2021 » */
@@ -38,15 +40,28 @@ const JALONS_MAQUETTE: Jalon[] = [
   },
 ];
 
+/* Le sur-titre et le titre, écrits une seule fois : l'en-tête d'origine tient
+   le dessin de bureau, la bascule de repli porte le titre sur téléphone, et
+   `replis-accueil.module.css` n'en montre jamais qu'un des deux. */
+/* L'apostrophe est TYPOGRAPHIQUE, exactement ce que rendait `&rsquo;`. */
+const SURTITRE_TEXTE = "Notre histoire";
+const TITRE_TEXTE = "D’un atelier lyonnais à quatre agences";
+
 export default function FriseHistoire({
   jalons = JALONS_MAQUETTE,
   hrefDecrire = "#besoin",
 }: Proprietes) {
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+        <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
         <div data-reveal="">
+          {/* L'en-tête d'origine, masqué sur téléphone : la bascule porte le
+              titre, et jamais les deux à la fois. Ici le sur-titre et le `h2`
+              portent la règle CHACUN, et non un conteneur commun : ils ont pour
+              frère la frise elle-même, qui doit rester visible. */}
           <div
+            className={replis.enTeteBureau}
             style={{
               font: "600 11.5px var(--fb)",
               letterSpacing: ".14em",
@@ -55,9 +70,10 @@ export default function FriseHistoire({
               marginBottom: 16,
             }}
           >
-            Notre histoire
+            {SURTITRE_TEXTE}
           </div>
           <h2
+            className={replis.enTeteBureau}
             style={{
               font: "600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft)",
               letterSpacing: "-.04em",
@@ -66,7 +82,7 @@ export default function FriseHistoire({
               textWrap: "balance",
             }}
           >
-            D&rsquo;un atelier lyonnais à quatre agences
+            {TITRE_TEXTE}
           </h2>
           <div style={{ position: "relative", paddingTop: 8 }}>
             {/* Le rail horizontal, masqué sous 1000px par .mg-rail. */}
@@ -195,6 +211,7 @@ export default function FriseHistoire({
             Décrire ma ligne
           </a>
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

@@ -1,4 +1,6 @@
 import Image from "next/image";
+import replis from "./replis-accueil.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import styles from "./DernieresRealisations.module.css";
 
 import { photoDeLaPage } from "@/lib/photo-par-page";
@@ -68,13 +70,20 @@ const REALISATIONS_MAQUETTE: Realisation[] = REALISATIONS_DECLAREES.map((r) => (
   image: photoDeLaPage(r.href) ?? r.image,
 }));
 
+/* Le sur-titre et le titre, écrits une seule fois : l'en-tête d'origine tient
+   le dessin de bureau, la bascule de repli porte le titre sur téléphone, et
+   `replis-accueil.module.css` n'en montre jamais qu'un des deux. */
+const SURTITRE_TEXTE = "Nos dernières réalisations";
+const TITRE_TEXTE = "Ce que nous avons fait, chez qui, et comment";
+
 export default function DernieresRealisations({
   realisations = REALISATIONS_MAQUETTE,
   hrefToutes = "/preuves/",
 }: Proprietes) {
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+        <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
         <div data-reveal=""
           style={{
             display: "flex",
@@ -85,7 +94,11 @@ export default function DernieresRealisations({
             flexWrap: "wrap",
           }}
         >
-          <div>
+            {/* L'en-tête d'origine, masqué sur téléphone : la bascule porte
+                le titre, et jamais les deux à la fois. Le `display: none` tombe
+                sur CE conteneur et non sur ses deux enfants, pour qu'il ne
+                laisse derrière lui ni boîte vide ni gouttière de flex. */}
+          <div className={replis.enTeteBureau}>
             <div
               style={{
                 font: "600 11.5px var(--fb)",
@@ -95,7 +108,7 @@ export default function DernieresRealisations({
                 marginBottom: 16,
               }}
             >
-              Nos dernières réalisations
+              {SURTITRE_TEXTE}
             </div>
             <h2
               style={{
@@ -106,7 +119,7 @@ export default function DernieresRealisations({
                 textWrap: "balance",
               }}
             >
-              Ce que nous avons fait, chez qui, et comment
+              {TITRE_TEXTE}
             </h2>
           </div>
           <a
@@ -201,6 +214,7 @@ export default function DernieresRealisations({
             </a>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

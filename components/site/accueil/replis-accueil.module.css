@@ -2,17 +2,41 @@
  * LE REPLI DES SECTIONS DE L'ACCUEIL SUR TÉLÉPHONE, et rien d'autre.
  *
  * LE CONSTAT DU 13/10, mesuré au navigateur à 390 px : l'accueil faisait
- * 29 117 px de haut avec ses 21 sections toutes déroulées, quand la maquette
- * mobile du client (`maquette/colis-13-10/Migen Mobile Redesign.html`) en fait
- * 1 410 pour son écran d'accueil. Mehdi, le même jour : « j'ai toujours tous
- * les blocs ».
+ * 28 081 px de haut avec ses 21 sections toutes déroulées, quand la maquette
+ * mobile du client (`maquette/colis-13-10/Migen Mobile Redesign.html`) tient
+ * son écran d'accueil entier dans un téléphone. Mehdi, le même jour : « j'ai
+ * toujours tous les blocs ».
  *
- * CE QUE LA MAQUETTE MOBILE FAIT, relevé sur son rendu et non supposé : elle
+ * CE QUE LA MAQUETTE MOBILE FAIT, relevé sur son RENDU et non supposé (elle a
+ * été ouverte au navigateur, son écran d'accueil lu de haut en bas) : elle
  * garde déroulés le héros, les six cartes « Qu'est-ce qui vous bloque ? » et la
- * bande de logos clients ; elle REPLIE derrière un chevron dix sections
+ * bande de logos clients ; elle REPLIE derrière un chevron dix rangées
  * (pourquoi externaliser, méthode, sécurité & RSE, témoignages, réalisations,
  * secteurs, implantations, technologies, croissance, histoire) ; et elle sort
  * de l'écran d'accueil les sections d'offres, de problématique et de formulaire.
+ * Elle finit sur une barre d'appel permanente, « Décrire mon besoin · Appeler ».
+ *
+ * CE QUI EST LIVRÉ, ET CE QUI RESTE DÉROULÉ, nommé un par un plutôt que deviné.
+ * Dix-sept sections sur vingt et une se replient. Les quatre autres restent
+ * ouvertes, et chacune pour la raison de la maquette :
+ *   · le héros, qui dit où l'on est ;
+ *   · « Qu'est-ce qui vous bloque ? » (`ParcoursMobile`), que la maquette met
+ *     au premier plan, déroulé, juste sous le héros ;
+ *   · la bande de logos clients, déroulée dans la maquette, et qui ne coûte
+ *     que 203 px ;
+ *   · le formulaire de bas de page, qui EST l'action. La maquette la rend
+ *     atteignable en permanence par sa barre d'appel ; la replier reviendrait
+ *     à ranger la conversion derrière un chevron. Et le lot interdit de toucher
+ *     au formulaire.
+ *
+ * CE QUE ÇA DONNE, mesuré au navigateur, bandeau de consentement refusé :
+ *   390 px   : 28 081 px → 7 325 px de haut, soit 74 % de moins ;
+ *   1 280 px : 14 048 px avant comme après, l'enveloppement coûte 0 px, et la
+ *              page de bureau est celle de la capture de référence ;
+ *   HTML servi : 2 651 → 2 815 mots dans le `<main>`. Il AUGMENTE de 164, les
+ *              titres des bascules. Pas un mot n'a été retiré de ce que Google
+ *              reçoit, et les 30 chaînes de titre ont été confrontées une par
+ *              une au fichier d'origine : aucune copie n'a été réécrite.
  *
  * CE QUE NOUS FAISONS DE L'ÉCART, et c'est une règle du contrat, pas un goût :
  * une section que la maquette RETIRE, nous la REPLIONS. « Aucune page perdue »
@@ -47,6 +71,46 @@
  * aucune ne peut dériver de l'autre.
  *
  * Porte : `scripts/verifie-repli-mobile.mjs`.
+ */
+
+/*
+ * CE QUI N'A PAS BOUGÉ, ET POURQUOI C'EST UNE DÉCISION : `data-reveal`.
+ *
+ * LA PEUR, LÉGITIME. Le moteur de `components/site/Moteurs.tsx` révèle au
+ * défilement : il met à `opacity: 0` tout `[data-reveal]` encore sous sa ligne
+ * de déclenchement, puis le fait monter quand il la franchit. Treize sections
+ * de l'accueil portent cet attribut sur un div INTÉRIEUR, qui se retrouve donc
+ * DANS le dépliant. Or dans un `<details>` fermé, les navigateurs récents
+ * posent `content-visibility: hidden` sur `::details-content` : les
+ * descendants gardent un rectangle, tous au même endroit. Et rien ne relance
+ * le moteur à l'ouverture, la bascule d'un `<details>` ne changeant aucun
+ * enfant, là où son observateur de mutations n'écoute que `childList`. Un
+ * visiteur pouvait donc taper le chevron et ne RIEN voir.
+ *
+ * CE QUE LA PREMIÈRE MESURE A DIT, ET POURQUOI ELLE ÉTAIT FAUSSE. Sonde au
+ * navigateur à 390 px, les 17 blocs ouverts un par un : 13 contenus à
+ * `opacity: 0`. Sauf que la sonde jugeait DEPUIS LE HAUT DE LA PAGE, sans
+ * jamais défiler. Sur une page qui révèle au défilement, cela revient à les
+ * déclarer tous invisibles et à n'apprendre rien.
+ *
+ * CE QUE LE TEST A/B A DIT, lui, et il a tranché. On a reconstruit les deux
+ * topologies dans la page servie, moteur remis à zéro et relancé, puis fait ce
+ * que fait un visiteur : défiler jusqu'à la bascule, taper. Attribut SUR la
+ * section : 17/17 s'ouvrent sur du contenu visible. Attribut DANS le dépliant,
+ * c'est-à-dire tel qu'il est aujourd'hui : 17/17 aussi. Le rectangle d'un
+ * descendant replié vaut la position de la section, donc défiler jusqu'à la
+ * bascule le fait franchir la ligne, et le moteur le révèle.
+ *
+ * DÉCISION : ON NE DÉPLACE RIEN. Le déplacement avait été écrit, sur treize
+ * fichiers, puis il a été DÉFAIT : une correction qu'aucune mesure ne demande
+ * n'est pas une correction, c'est du récit. Elle coûtait en plus la révélation
+ * en escalier de trois sections, qui en portaient deux.
+ *
+ * L'INVARIANT QUI TIENT, et il tient tout seul : on ne tape que ce qu'on voit,
+ * et pour voir une bascule il faut avoir défilé jusqu'à elle, ce qui a déjà
+ * révélé ce qu'elle cache. Le jour où quelque chose ouvrirait un bloc SANS
+ * défilement (une ancre, un script), il faudra relancer le moteur ; la sonde
+ * qui sait le voir est décrite dans la passation.
  */
 
 /* Posée sur le `<section>` lui-même : aucun élément n'est ajouté au DOM. */
@@ -97,5 +161,110 @@
 @media (max-width: 880px) {
   .enTeteBureau {
     display: none;
+  }
+}
+
+/*
+ * LA GOUTTIÈRE DE LA BASCULE, pour les sections qui n'en ont pas elles-mêmes.
+ *
+ * LE CAS, et il est unique sur l'accueil : `HubsAccueil` pose son en-tête dans
+ * un conteneur de 1 200 px rembourré de 40 px, puis son RAIL DE CARTES EN
+ * PLEINE LARGEUR, en frère de cet en-tête. Pour que tout le contenu de la
+ * section se replie, le dépliant doit donc envelopper les DEUX, c'est-à-dire se
+ * poser au niveau de la `<section>` elle-même, qui n'a aucun rembourrage
+ * horizontal : la bascule y collerait au bord de l'écran.
+ *
+ * Les valeurs ne sont pas choisies : ce sont exactement celles de la gouttière
+ * de page de `app/globals.css`, 40 px jusqu'à 390 px inclus (la largeur à
+ * laquelle la maquette a été mesurée), 20 px en dessous. Le titre replié
+ * s'aligne donc sur le titre déplié, au pixel.
+ *
+ * Et c'est bien `@media (max-width: 880px)` : au-dessus, la bascule est
+ * `display: none`, un rembourrage n'y veut rien dire.
+ */
+@media (max-width: 880px) {
+  .repliPleineLargeur :global(details[data-pliable-mobile] > summary) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 389px) {
+  .repliPleineLargeur :global(details[data-pliable-mobile] > summary) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/*
+ * LE CHEVRON RESTE SUR LA LIGNE DU TITRE, et sans cette règle il tombe dessous.
+ *
+ * MESURÉ À 390 PX, CAPTURE À L'APPUI : 10 bascules sur 17 rendaient leur
+ * chevron SEUL sur une seconde ligne, collé à la gouttière de gauche, 12 px
+ * sous le titre. Rien dans la maquette mobile ne ressemble à ça : elle pose un
+ * chevron à DROITE de chaque rangée, sur la ligne du titre.
+ *
+ * LA CAUSE, et elle n'est pas chez nous. `SectionPliableMobile.module.css` pose
+ * `flex-wrap: wrap` sur la bascule, pour que le résumé de deux lignes passe
+ * sous le titre au lieu de s'écraser à côté du chevron (défaut corrigé le
+ * 13/10). Or l'enveloppe du titre est un élément flexible en `flex-basis: auto`
+ * : sa taille hypothétique est sa taille MAX-CONTENT, et pour un titre de
+ * 40 caractères elle dépasse la ligne à elle seule. Le navigateur préfère alors
+ * RETOURNER À LA LIGNE plutôt que de rétrécir, parce que le passage à la ligne
+ * est décidé avant la répartition du manque. Le chevron, dernier élément,
+ * ouvre donc une seconde ligne.
+ *
+ * `flex: 1 1 0%` ramène cette taille hypothétique à zéro : l'enveloppe tient
+ * sur la ligne avec le chevron, puis elle GRANDIT pour prendre toute la place
+ * restante, et c'est son texte qui se replie. `min-width: 0` lève le minimum
+ * automatique des éléments flexibles, sans quoi un mot long la pousserait à
+ * nouveau dehors. Le résumé, lui, garde son `flex: 0 0 100%` et continue de
+ * passer à la ligne : la correction du 13/10 n'est pas défaite.
+ *
+ * POURQUOI C'EST POSÉ ICI ET PAS À LA RACINE. Le défaut est dans le composant
+ * partagé, donc sur les 1 092 blocs repliables des 233 pages, pas seulement sur
+ * l'accueil. La racine est `SectionPliableMobile.module.css`, qui n'appartient
+ * pas à ce lot et que cinq autres chantiers lisent en même temps. La règle est
+ * donc portée ici, cantonnée à `.repli`, et la correction de fond est déclarée
+ * à l'orchestrateur : deux lignes à ajouter à `.bascule > *:first-child`.
+ */
+@media (max-width: 880px) {
+  .repli :global(details[data-pliable-mobile] > summary > *:first-child) {
+    flex: 1 1 0%;
+    min-width: 0;
+  }
+}
+
+/*
+ * LE RYTHME DES RANGÉES REPLIÉES, et c'est le dernier tiers du raccourcissement.
+ *
+ * CE QUI RESTAIT APRÈS LE REPLI, mesuré à 390 px : une rangée repliée fait 30 à
+ * 61 px, et elle traîne derrière elle les 64 px de `--sec`, le rythme de
+ * section du site, plus les 23 px de filet et de retrait du dépliant. Autrement
+ * dit, plus de place perdue entre deux titres que de titre. Dix-sept fois,
+ * 1 088 px, le huitième de la page.
+ *
+ * CE QUE FAIT LA MAQUETTE MOBILE : ses dix rangées repliées s'enchaînent, un
+ * filet entre elles et rien d'autre. Le rythme de 64 px sépare des SECTIONS
+ * DÉPLIÉES, pas des lignes de sommaire.
+ *
+ * LA RÈGLE NE S'APPLIQUE QU'À UNE SECTION FERMÉE : `:has()` relit l'attribut
+ * `open` en direct, donc la section qu'on ouvre au doigt RETROUVE son air, et
+ * son contenu ne vient pas coller à la rangée précédente.
+ *
+ * `!important` PARCE QUE LE REMBOURRAGE EST EN LIGNE. Les sections de l'accueil
+ * portent `style={{ padding: "var(--sec) 0 0" }}`, et un style en ligne bat
+ * toute feuille. C'est le même motif que les `@media` du gabarit de sélection
+ * (`ProcessSelection.module.css`), repris de la maquette. On ne touche QUE le
+ * haut : les variantes qui portent aussi une gouttière (« 44px 40px 0 »,
+ * « 56px 40px 0 ») gardent leurs 40 px.
+ *
+ * ET RIEN NE BOUGE SUR BUREAU : au-dessus de 880 px tous les blocs sont
+ * ouverts, la règle ne trouve personne, et le media query l'exclut de toute
+ * façon. Mesuré : 14 048 px avant comme après, à 1 280 px.
+ */
+@media (max-width: 880px) {
+  .repli:has(:global(details[data-pliable-mobile]):not([open])) {
+    padding-top: 0 !important;
   }
 }

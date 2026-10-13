@@ -63,7 +63,7 @@
  * `--controle` prouve que cette porte sait échouer, et qu'elle échoue sur LA
  * BONNE RÈGLE : chaque témoin injecte une faute et le contrôle exige que la
  * règle visée tombe, reconnue à son étiquette. Un témoin qui ferait tomber la
- * règle voisine ne prouverait rien. Il porte AUSSI un contrôle négatif : cinq
+ * règle voisine ne prouverait rien. Il porte AUSSI un contrôle négatif : sept
  * motifs légitimes qui RESSEMBLENT à des fautes et que la porte doit laisser
  * passer. Sans lui, un relevé plus large passerait pour un relevé plus fin.
  */
@@ -121,48 +121,43 @@ const REPLI_ATTENDU = {
  */
 const ECARTS_DECLARES = [
   /*
-   * DEUX ENTRÉES ONT DÉJÀ ÉTÉ RETIRÉES D'ICI, le 13/10, et c'est la règle
-   * anti-pourrissement qui l'a exigé, pas une relecture.
+   * QUATRE ENTRÉES ONT ÉTÉ RETIRÉES D'ICI, ET LA LISTE EST DÉSORMAIS VIDE.
+   * Chaque fois, c'est la règle anti-pourrissement qui l'a exigé, pas une
+   * relecture : la porte a signalé que l'écart n'était PLUS observé et a refusé
+   * de conclure jusqu'au retrait de l'entrée.
    *
+   * LES DEUX PREMIÈRES, le 13/10 au matin.
    * `components/site/offre/AppelOffre.tsx` et
    * `components/site/offre/BandeAppel.tsx` portaient le même défaut que celui
    * corrigé dans `BandeauVerbe.tsx` : un `min-width` en pixels purs qui ne
    * cède jamais, 280 px et 260 px dans une bande qui n'en offre que 240 à
    * 320 px. Déclarés ici parce qu'ils sortent de la famille accueil, ils ont
    * été corrigés en parallèle par leur propriétaire, avec exactement le même
-   * `min(…, 100%)`. La porte a alors signalé que les écarts n'étaient PLUS
-   * observés et a refusé de conclure jusqu'à ce que les entrées sortent.
-   * C'est ce qu'on lui demande : une dette déclarée se referme, elle ne
-   * s'installe pas.
+   * `min(…, 100%)`.
+   *
+   * LES DEUX SUIVANTES, le 13/10 au soir, et leurs correctifs sont lisibles
+   * dans les fichiers qu'elles nommaient :
+   *
+   *   · `components/formulaire/FormulaireContact.module.css (.boutonEnvoi)`,
+   *     règle « tronque » sur `/implantations/`. Le bouton d'envoi débordait de
+   *     62 à 85 px sous 880 px. Le fichier porte maintenant, dans sa requête
+   *     média sous 880 px, `white-space: normal !important` et
+   *     `max-width: 100%` : le libellé passe à la ligne au lieu d'être coupé.
+   *     LA COPIE N'A PAS BOUGÉ, et c'était la condition : le libellé du bouton
+   *     d'envoi est un arbitrage ouvert de Mehdi (docs/PASSATION.md, section 5,
+   *     point 1), et dans un FORMULAIRE seule la mise en page se touche.
+   *
+   *   · `components/site/blocs/SectionPliableMobile.module.css:24`, règle
+   *     « debordement » sur le résumé du bloc repliable. Le résumé était le
+   *     TROISIÈME élément de la rangée du `<summary>`, serré entre le titre et
+   *     le chevron, 108 à 209 px de large pour 86 à 410 px de haut. `.bascule`
+   *     est passée en `flex-wrap: wrap` et `.resume` en `flex: 0 0 100%` : le
+   *     résumé prend la ligne entière sous le titre, comme la maquette mobile.
+   *
+   * CE QUE LEUR RETRAIT CHANGE : ces deux motifs ne sont plus dispensés. S'ils
+   * reviennent, la porte les compte comme des fautes pleines. Une liste vide
+   * est le seul état où elle ne dispense rien.
    */
-  {
-    cle: "/implantations/|tronque|boutonEnvoi",
-    motif: /boutonEnvoi/,
-    page: "/implantations/",
-    regle: "tronque",
-    fichier: "components/formulaire/FormulaireContact.module.css (.boutonEnvoi)",
-    correctif:
-      "sous 880 px, `white-space: normal; max-width: 100%; text-align: center`, " +
-      "exactement ce que `components/site/offre/PageOffre.module.css` fait deja " +
-      "pour `.boutonPrincipal`. Le libelle « Faire chiffrer la maintenance de mes " +
-      "sites » demande 320 px et le bouton en offre 150 a 196 px : il sort de sa " +
-      "boite de 62 a 85 px. LA COPIE N EST PAS EN CAUSE et ne doit pas bouger : " +
-      "le libelle du bouton d envoi est un arbitrage ouvert de Mehdi " +
-      "(docs/PASSATION.md, section 5, point 1). Et c est un FORMULAIRE : seule " +
-      "sa mise en page se touche, jamais ses champs ni sa soumission.",
-  },
-  {
-    cle: "/implantations/|320|debordement|resume",
-    motif: /SectionPliableMobile.*resume/,
-    page: "/implantations/",
-    regle: "debordement",
-    fichier: "components/site/blocs/SectionPliableMobile.module.css:24",
-    correctif:
-      "`.bascule` passe en `flex-wrap: wrap` et `.resume` en `flex: 1 0 100%` : " +
-      "le resume est aujourd hui un TROISIEME element de la rangee du summary, " +
-      "serre entre le titre et le chevron (mesure a 390 px : 108 a 209 px de " +
-      "large pour 86 a 410 px de haut, pour un resume annonce sur deux lignes)",
-  },
 ];
 
 /* ========================================================================
@@ -327,9 +322,36 @@ const RELEVE = ({ cible }) => {
     // a) l'élément rogne son propre contenu
     const rogneX = st.overflowX !== "visible";
     const rogneY = st.overflowY !== "visible";
+    /* UNE COUPE DÉCLARÉE N'EST PAS UNE COUPE SUBIE, et c'est la seule chose que
+       cette règle-ci ne savait pas distinguer.
+
+       `-webkit-line-clamp: 2` PRODUIT, par construction, un `overflow` qui
+       rogne et un `scrollHeight` plus grand que le `clientHeight` : c'est son
+       mécanisme même. Le relever comme un défaut, c'est relever le dessin.
+       `components/site/blocs/SectionPliableMobile.module.css` le pose sur
+       `.resume` parce que la maquette mobile coupe le résumé à deux lignes, le
+       texte entier restant dans le HTML et s'ouvrant au doigt : la porte
+       signalait les cinq résumés de `/implantations/` à chacune des quatre
+       largeurs, treize signalements pour zéro texte perdu.
+
+       LES QUATRE AUTRES PORTES RESPONSIVE DU DÉPÔT exemptaient déjà ce motif,
+       chacune avec sa formule, `scripts/verifie-responsive.mjs`,
+       `editorial/verification-responsive.mjs`, `carriere/verification-responsive.mjs`
+       et `offre/verification-responsive-offre.mjs`. Celle-ci était la seule à
+       ne pas le faire, et c'est elle qui avait tort.
+
+       CE QUI N'EST PAS EXEMPTÉ, et le témoin le prouve : une coupe SANS
+       annonce. Un `overflow: hidden` sec, un `nowrap` sans ellipse, un ancêtre
+       qui rogne en hauteur. L'exemption est AXÉE : un `line-clamp` ne couvre
+       que la hauteur, une ellipse que la largeur. Un résumé plafonné à deux
+       lignes qui déborderait AUSSI à l'horizontale tombe toujours. */
+    const plafondLignes = st.webkitLineClamp && st.webkitLineClamp !== "none";
+    const ellipseDeclaree = st.textOverflow === "ellipsis";
+    const coupeHauteurDeclaree = Boolean(plafondLignes);
+    const coupeLargeurDeclaree = Boolean(ellipseDeclaree);
     if (
-      (rogneX && el.scrollWidth > el.clientWidth + 2) ||
-      (rogneY && el.scrollHeight > el.clientHeight + 2)
+      (rogneX && !coupeLargeurDeclaree && el.scrollWidth > el.clientWidth + 2) ||
+      (rogneY && !coupeHauteurDeclaree && el.scrollHeight > el.clientHeight + 2)
     ) {
       problemes.push({
         regle: "tronque",
@@ -348,7 +370,14 @@ const RELEVE = ({ cible }) => {
       const gauche = boite.left + nombre(st.borderLeftWidth) + nombre(st.paddingLeft);
       const droite = boite.right - nombre(st.borderRightWidth) - nombre(st.paddingRight);
       const sort = Math.max(rt.right - droite, gauche - rt.left);
-      if (sort > 2) {
+      /* MÊME EXEMPTION QU'EN (a), ET POUR LA MÊME RAISON : une ellipse annoncée
+         coupe à l'horizontale PAR DESSIN, et le rectangle du texte garde la
+         largeur qu'il aurait eue sans la coupe. Sans ce test, la règle (b)
+         rattrapait ce que la règle (a) venait d'exempter. L'exemption exige les
+         DEUX conditions de l'ellipse réelle, `text-overflow: ellipsis` et un
+         `overflow` horizontal qui rogne : un `nowrap` nu, lui, tombe toujours,
+         et c'est le témoin « un libellé qui sort de son bouton » qui le prouve. */
+      if (sort > 2 && !(coupeLargeurDeclaree && rogneX)) {
         problemes.push({
           regle: "tronque",
           texte:
@@ -485,10 +514,10 @@ const TEMOINS = [
 ];
 
 /**
- * LE CONTRÔLE NÉGATIF : cinq motifs qui ressemblent à des fautes.
+ * LE CONTRÔLE NÉGATIF : sept motifs qui ressemblent à des fautes.
  *
  * Si l'un d'eux est signalé, la porte est trop large, et son silence sur le
- * reste ne vaut plus rien. Les cinq sont tirés du site réel, pas inventés :
+ * reste ne vaut plus rien. Les sept sont tirés du site réel, pas inventés :
  * c'est exactement ce que le premier relevé signalait à tort.
  */
 const CONTROLE_NEGATIF = () => {
@@ -542,6 +571,43 @@ const CONTROLE_NEGATIF = () => {
   dedans.textContent = "du texte que personne ne voit tant que le bloc est fermé";
   ferme.append(resume, dedans);
   document.body.append(ferme);
+
+  /* 6. UN RÉSUMÉ COUPÉ À DEUX LIGNES PAR `line-clamp`, et c'est le motif que
+        ce témoin-là manquait, découvert le 13/10.
+
+        `components/site/blocs/SectionPliableMobile.module.css` pose
+        `-webkit-line-clamp: 2` sur `.resume` : c'est la maquette mobile qui le
+        demande, le texte entier reste dans le HTML et s'ouvre au doigt. La
+        règle (a) voyait un `overflow` qui rogne et `scrollHeight` supérieur à
+        `clientHeight`, donc exactement ce qu'un `line-clamp` PRODUIT, et
+        signalait les cinq résumés de `/implantations/` comme « texte tronqué »
+        à chacune des quatre largeurs, soit treize signalements faux.
+
+        LES QUATRE AUTRES PORTES RESPONSIVE DU DÉPÔT l'exemptaient déjà, chacune
+        avec sa phrase : `scripts/verifie-responsive.mjs` (« relevé à part et ne
+        compte pas »), `components/site/editorial/verification-responsive.mjs`
+        (« sans ellipse ni clamp »), `.../carriere/verification-responsive.mjs`
+        (« plafonné à N lignes ») et `.../offre/verification-responsive-offre.mjs`
+        (« line-clamp assumés, non comptés »). Celle-ci était la seule à ne pas
+        le faire. Le motif est donc posé ici en contrôle négatif, pour que
+        l'exemption soit vérifiée et non supposée. */
+  const resumePlafonne = document.createElement("p");
+  resumePlafonne.style.cssText =
+    "width:280px;margin:0;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;" +
+    "-webkit-box-orient:vertical;overflow:hidden;font:400 13.5px/1.6 sans-serif";
+  resumePlafonne.textContent =
+    "un resume de bloc repliable, coupe a deux lignes par la maquette mobile, " +
+    "dont la suite entiere reste dans le HTML et s ouvre au doigt sur la bascule";
+  document.body.append(resumePlafonne);
+
+  /* 7. LE MÊME MOTIF À L'HORIZONTALE : une ellipse déclarée. Un `nowrap` avec
+        `text-overflow: ellipsis` prévient le lecteur que la suite est coupée ;
+        c'est un choix de dessin, pas un texte perdu en silence. */
+  const ellipse = document.createElement("div");
+  ellipse.style.cssText =
+    "width:120px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font:14px sans-serif";
+  ellipse.textContent = "un libelle coupe par une ellipse annoncee au lecteur";
+  document.body.append(ellipse);
 };
 
 /* ========================================================================
@@ -684,7 +750,7 @@ if (CONTROLE) {
       );
     } else {
       console.log(
-        `témoin  ${"cinq motifs légitimes (contrôle négatif)".padEnd(48)} aucun n'est signalé`,
+        `témoin  ${"sept motifs légitimes (contrôle négatif)".padEnd(48)} aucun n'est signalé`,
       );
     }
     await neg.page.close();
@@ -703,7 +769,7 @@ if (CONTROLE) {
     process.exit(1);
   }
   console.log(
-    "\nTémoin complet : chaque règle tombe sur SA faute, et les cinq motifs " +
+    "\nTémoin complet : chaque règle tombe sur SA faute, et les sept motifs " +
       "légitimes passent. La porte sait échouer.",
   );
   process.exit(0);

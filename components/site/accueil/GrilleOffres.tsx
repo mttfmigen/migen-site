@@ -1,5 +1,7 @@
 import Image from "next/image";
 import styles from "./GrilleOffres.module.css";
+import replis from "./replis-accueil.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 /* Grille des offres de la page d'accueil. Relevée le 08/10 sur le rendu de la
    maquette autonome (section 2 de l'accueil), élément par élément. Composant
@@ -128,6 +130,18 @@ const TEXTE_CARTE = {
   margin: "10px 0 18px",
 } as const;
 
+/*
+ * LE SUR-TITRE ET LE TITRE DE LA SECTION, ÉCRITS UNE SEULE FOIS.
+ *
+ * Ils sont déjà dans la maquette, posés en bas de la carte photographique
+ * d'ouverture : ce ne sont pas des mots écrits pour le repli, c'est le titre que
+ * cette section porte depuis le début. Ils servent maintenant à DEUX endroits,
+ * l'encart de la photo (le dessin de bureau) et la bascule de repli (le titre
+ * sur téléphone), et `replis-accueil.module.css` n'en montre jamais qu'un.
+ */
+const SURTITRE_TEXTE = "Six façons de travailler ensemble";
+const TITRE_TEXTE = "De la présence continue à l’étude et aux travaux.";
+
 const GARANTIES_RESIDENCE = [
   "Vous validez chaque technicien avant son arrivée",
   "Remplacement garanti en cas d’absence",
@@ -137,7 +151,11 @@ const GARANTIES_RESIDENCE = [
 
 export default function GrilleOffres() {
   return (
-    <section style={{ maxWidth: 1200, margin: "0 auto", padding: "44px 40px 0" }}>
+    <section
+      className={replis.repli}
+      style={{ maxWidth: 1200, margin: "0 auto", padding: "44px 40px 0" }}
+    >
+      <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
       <div
         className="mg-rmulti"
         style={{
@@ -207,7 +225,10 @@ export default function GrilleOffres() {
               Innovation, performance, impact.
             </span>
           </div>
-          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "32px" }}>
+          <div
+            className={replis.enTeteBureau}
+            style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "32px" }}
+          >
             <div
               style={{
                 font: "600 11.5px var(--fb)",
@@ -217,7 +238,7 @@ export default function GrilleOffres() {
                 marginBottom: "12px",
               }}
             >
-              Six façons de travailler ensemble
+              {SURTITRE_TEXTE}
             </div>
             <div
               style={{
@@ -227,7 +248,7 @@ export default function GrilleOffres() {
                 maxWidth: "20ch",
               }}
             >
-              De la présence continue à l’étude et aux travaux.
+              {TITRE_TEXTE}
             </div>
           </div>
         </div>
@@ -432,6 +453,7 @@ export default function GrilleOffres() {
           </div>
         ))}
       </div>
+      </SectionPliableMobile>
     </section>
   );
 }

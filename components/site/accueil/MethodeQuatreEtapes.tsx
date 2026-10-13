@@ -3,6 +3,8 @@
 import { useState, type CSSProperties } from "react";
 
 import styles from "./MethodeQuatreEtapes.module.css";
+import replis from "./replis-accueil.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 export interface EtapeMethode {
   cle: string;
@@ -53,6 +55,12 @@ const INTITULE_ENCART: CSSProperties = {
   marginBottom: 6,
 };
 
+/* Le sur-titre et le titre, écrits une seule fois : l'en-tête d'origine tient
+   le dessin de bureau, la bascule de repli porte le titre sur téléphone, et
+   `replis-accueil.module.css` n'en montre jamais qu'un des deux. */
+const SURTITRE_TEXTE = "Notre méthode";
+const TITRE_TEXTE = "Quatre étapes, et vous gardez la main partout.";
+
 export default function MethodeQuatreEtapes({
   etapes = [],
   lienQualification = "#formulaire",
@@ -61,8 +69,9 @@ export default function MethodeQuatreEtapes({
   const active = etapes[choisie];
 
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+        <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
         <div data-reveal="">
           <div
             className="mg-r2"
@@ -74,8 +83,13 @@ export default function MethodeQuatreEtapes({
               marginBottom: 34,
             }}
           >
-            <div>
-              <div style={SURTITRE}>Notre méthode</div>
+              {/* L'en-tête d'origine, masqué sur téléphone : la bascule
+                  porte le titre, et jamais les deux à la fois. Le
+                  `display: none` tombe sur CE conteneur et non sur ses deux
+                  enfants, pour qu'il ne laisse derrière lui ni boîte vide ni
+                  gouttière de grille. */}
+            <div className={replis.enTeteBureau}>
+              <div style={SURTITRE}>{SURTITRE_TEXTE}</div>
               <h2
                 style={{
                   font: "600 calc(clamp(28px,3.2vw,46px) * var(--ts))/1.06 var(--ft)",
@@ -85,7 +99,7 @@ export default function MethodeQuatreEtapes({
                   textWrap: "balance",
                 }}
               >
-                Quatre étapes, et vous gardez la main partout.
+                {TITRE_TEXTE}
               </h2>
             </div>
             <p
@@ -294,6 +308,7 @@ export default function MethodeQuatreEtapes({
             </a>
           </div>
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Fragment, type CSSProperties } from "react";
+import { Fragment, type CSSProperties, type ReactNode } from "react";
 
 import { FormulaireContact } from "@/components/formulaire/FormulaireContact";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
@@ -136,7 +136,30 @@ function resumeDeLaSection(blocs: BlocGuide[]): string {
   return prose ? texteNu(prose.texte) : "";
 }
 
-export default function Guide({ titre, vue }: { titre: string; vue: VueGuide }) {
+/**
+ * LE GABARIT GUIDE, et une seule greffe : `bibliotheque`.
+ *
+ * CE QU'ELLE EST. Le hub `/ressources/` est rendu par ce gabarit, et la
+ * maquette « Ressources v2 » (`maquette/colis-13-10/Migen - Ressources.html`)
+ * lui ajoute une bibliothèque filtrable juste sous son héros. Le nœud est donc
+ * inséré là, et NULLE PART AILLEURS dans le fichier : rien de ce que le
+ * gabarit rendait déjà n'est déplacé, réécrit ni retiré. Les deux pages
+ * `/guides/` passent `undefined` et ne changent pas d'un pixel.
+ *
+ * POURQUOI UN NŒUD EN PROPRIÉTÉ et non une lecture ici : la bibliothèque se
+ * lit sur le disque (`components/site/ressources-hub/catalogue.ts`), et ce
+ * fichier doit rester montable depuis un contrôle hors base, exactement la
+ * raison déjà écrite pour `filAriane` et `maillage` dans `PageEditoriale`.
+ */
+export default function Guide({
+  titre,
+  vue,
+  bibliotheque,
+}: {
+  titre: string;
+  vue: VueGuide;
+  bibliotheque?: ReactNode;
+}) {
   return (
     <div className="mg-site">
       {/* `corpsGuide` est la PORTEE des deux regles de bureau des blocs
@@ -212,6 +235,8 @@ export default function Guide({ titre, vue }: { titre: string; vue: VueGuide }) 
             </p>
           </div>
         </section>
+
+        {bibliotheque}
 
         <section style={{ maxWidth: 1200, margin: "0 auto", padding: "64px 40px 0" }}>
           <div

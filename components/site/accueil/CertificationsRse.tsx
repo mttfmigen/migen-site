@@ -1,6 +1,24 @@
+import replis from "./replis-accueil.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 /* Certifications et chiffres sécurité / RSE, portés de « Migen - Site final »
    (lignes 610 à 636). Composant serveur. */
+
+/*
+ * LE SUR-TITRE ET LE TITRE DE LA BASCULE DE REPLI.
+ *
+ * CETTE SECTION N'A PAS DE `<h2>`, et elle n'en avait pas avant ce repli : la
+ * maquette de bureau lui donne deux étiquettes de panneau, « Certifications »
+ * à gauche et « Sécurité & RSE » à droite. Ce sont ces deux mots-là qui servent
+ * de sur-titre et de titre à la bascule, pris tels quels. RIEN N'EST ÉCRIT POUR
+ * L'OCCASION : la copie appartient à Mehdi, et inventer un titre de section
+ * serait l'écrire à sa place.
+ *
+ * C'est aussi l'ordre de sa maquette mobile, qui range cette section derrière
+ * un chevron intitulé « SÉCURITÉ & RSE ».
+ */
+const SURTITRE_TEXTE = "Sécurité & RSE";
+const TITRE_TEXTE = "Certifications";
 
 const CHIFFRES: readonly { valeur: React.ReactNode; libelle: string }[] = [
   { valeur: "2", libelle: "accidents avec arrêt en 2025" },
@@ -37,8 +55,9 @@ const IMAGE_LOGO = {
 
 export default function CertificationsRse() {
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
+        <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
         <div
           className="mg-r2" data-reveal=""
           style={{
@@ -60,7 +79,12 @@ export default function CertificationsRse() {
                 "0 1px 1px rgba(0,0,0,.04),0 22px 50px -32px rgba(0,0,0,.3)",
             }}
           >
-            <div style={{ ...SURTITRE, marginBottom: "18px" }}>Certifications</div>
+            <div
+              className={replis.enTeteBureau}
+              style={{ ...SURTITRE, marginBottom: "18px" }}
+            >
+              {TITRE_TEXTE}
+            </div>
             <div
               style={{
                 display: "flex",
@@ -124,8 +148,11 @@ export default function CertificationsRse() {
               }}
             />
             <div style={{ position: "relative" }}>
-              <div style={{ ...SURTITRE, marginBottom: "22px" }}>
-                Sécurité &amp; RSE
+              <div
+                className={replis.enTeteBureau}
+                style={{ ...SURTITRE, marginBottom: "22px" }}
+              >
+                {SURTITRE_TEXTE}
               </div>
               <div
                 className="mg-rmulti"
@@ -166,6 +193,7 @@ export default function CertificationsRse() {
             </div>
           </div>
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

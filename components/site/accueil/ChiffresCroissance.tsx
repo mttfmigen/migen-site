@@ -19,6 +19,24 @@
  */
 
 import styles from "./ChiffresCroissance.module.css";
+import replis from "./replis-accueil.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+
+/*
+ * LE TITRE DE LA BASCULE DE REPLI, ET IL EST COURT PARCE QUE LA SECTION L'EST.
+ *
+ * CETTE SECTION N'A PAS DE `<h2>` : son seul intitulé, dans la maquette de
+ * bureau, est l'étiquette « Croissance » posée en haut du panneau sombre. C'est
+ * elle que porte la bascule, telle quelle.
+ *
+ * La maquette MOBILE intitule cette rangée « CROISSANCE · Une structure qui
+ * tient l'échelle nationale ». Cette seconde phrase existe bien dans notre
+ * copie, mais au milieu de `principal.libelle`, qui est une PROP : la découper
+ * pour en extraire un titre reviendrait à réécrire la copie de Mehdi et à
+ * casser l'appelant qui passerait ses propres chiffres. Le titre reste donc
+ * « Croissance », et l'écart est déclaré.
+ */
+const TITRE_TEXTE = "Croissance";
 
 export interface Chiffre {
   /** La valeur, mise en forme, par exemple « +120 ». */
@@ -86,8 +104,9 @@ export default function ChiffresCroissance({
   bas = BAS,
 }: ProprietesChiffresCroissance) {
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    <section className={replis.repli} style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px" }}>
+        <SectionPliableMobile titre={TITRE_TEXTE}>
         <div
           className="mg-r2" data-reveal=""
           style={{
@@ -124,6 +143,7 @@ export default function ChiffresCroissance({
               }}
             />
             <div
+              className={replis.enTeteBureau}
               style={{
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
@@ -132,7 +152,7 @@ export default function ChiffresCroissance({
                 position: "relative",
               }}
             >
-              Croissance
+              {TITRE_TEXTE}
             </div>
             <div style={{ position: "relative" }}>
               <div
@@ -198,6 +218,7 @@ export default function ChiffresCroissance({
             </div>
           </div>
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

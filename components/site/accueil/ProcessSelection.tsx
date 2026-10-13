@@ -3,6 +3,8 @@ import Link from "next/link";
 
 import CarteEtapes from "./CarteEtapes";
 import styles from "./ProcessSelection.module.css";
+import replis from "./replis-accueil.module.css";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 /**
  * « Notre sélection » : seuls 10 % des techniciens réussissent le process.
@@ -22,17 +24,33 @@ import styles from "./ProcessSelection.module.css";
 
 const CRITERES = ["Sécurité", "Diagnostic", "Autonomie", "Compte rendu", "Relation client", "Habilitations"] as const;
 
+/* Le sur-titre et le titre, écrits une seule fois : l'en-tête d'origine tient
+   le dessin de bureau, la bascule de repli porte le titre sur téléphone, et
+   `replis-accueil.module.css` n'en montre jamais qu'un. */
+const SURTITRE_TEXTE = "Notre sélection";
+/* L'ESPACE EST INSÉCABLE devant le pour-cent, comme dans la maquette :
+   `\u00a0`, pas une espace ordinaire. Écrit en échappement pour qu'il se
+   voie à la relecture, et pour qu'une comparaison de texte avec la capture
+   de référence tombe juste. */
+const TITRE_TEXTE =
+  "Seuls 10\u00a0% des techniciens réussissent notre process.";
+
 export default function ProcessSelection() {
   return (
-    <section style={{ padding: "var(--sec,120px) 0 0" }}>
+    <section className={replis.repli} style={{ padding: "var(--sec,120px) 0 0" }}>
       <div className={styles.wrap} style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 40px" }}>
+        <SectionPliableMobile kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
         <div
           className={styles.tete}
           style={{ display: "grid", gridTemplateColumns: "minmax(0,1.05fr) minmax(0,.95fr)", gap: "24px 64px", alignItems: "end", marginBottom: "34px" }}
         >
-          <div>
+          {/* L'EN-TÊTE D'ORIGINE, MASQUÉ SUR TÉLÉPHONE : la bascule porte le
+              titre, et jamais les deux à la fois. Le `display: none` tombe sur
+              CETTE cellule de grille et non sur ses deux enfants, pour qu'elle
+              ne laisse derrière elle ni boîte vide ni gouttière de grille. */}
+          <div className={replis.enTeteBureau}>
             <div style={{ font: "600 11.5px var(--fb)", letterSpacing: ".14em", textTransform: "uppercase", color: "#ff7c3c", marginBottom: "16px" }}>
-              Notre sélection
+              {SURTITRE_TEXTE}
             </div>
             <h2
               style={{
@@ -44,7 +62,7 @@ export default function ProcessSelection() {
                 textWrap: "balance",
               }}
             >
-              {"Seuls 10 % des techniciens réussissent notre process."}
+              {TITRE_TEXTE}
             </h2>
           </div>
           <div>
@@ -132,6 +150,7 @@ export default function ProcessSelection() {
 
           <CarteEtapes />
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );
