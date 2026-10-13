@@ -8,7 +8,7 @@
   "contenu": {
     "gabarit": "offre",
     "pastille": "Nos offres",
-    "chapeau": "L'entretien préventif le samedi, le dépannage la nuit.",
+    "chapeau": "L'entretien préventif le samedi, le dépannage la nuit. Vous réservez une capacité de maintenance, exclusivement hors production, pour un prix mensuel fixe et sans embauche.",
     "appelBouton": "Demander mon diagnostic gratuit",
     "actions": [
       {
@@ -26,6 +26,10 @@
       {
         "valeur": "La nuit",
         "libelle": "Le dépannage, pour toute panne signalée avant 16h"
+      },
+      {
+        "valeur": "12 mois",
+        "libelle": "D'engagement, pour un prix mensuel fixe"
       },
       {
         "valeur": "500 à 2 000 €",
@@ -237,7 +241,7 @@
           },
           {
             "question": "Combien coûte l'abonnement ?",
-            "reponse": "Le chiffrage vous est remis avec l'étude de couverture."
+            "reponse": "Un prix mensuel fixe, sur 12 mois, selon la formule retenue. La mise en service est offerte en Zéro arrêt et en Zéro arrêt Max. Le chiffrage vous est remis avec l'étude de couverture."
           },
           {
             "question": "Quelle différence entre les trois formules ?",
