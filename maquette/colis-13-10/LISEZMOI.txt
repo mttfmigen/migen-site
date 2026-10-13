@@ -1,0 +1,14 @@
+Migen — fichiers pour la préprod
+
+1. Migen - Ressources.html
+   Page Ressources v2 : menu latéral (catégories, thèmes, durée, taxonomie), espaces Entreprises / Techniciens,
+   lecture des articles en panneau, formulaire de contact et formulaire de candidature.
+   Chaque article ouvert a son adresse (#/ressources/articles/...) : en production, chaque article doit aussi
+   exister comme vraie page à l'URL /ressources/articles/... pour le référencement.
+
+2. Migen - Implantations.html
+   Site complet qui s'ouvre directement sur la page /implantations/ (hubs en photos, villes itinérantes par région).
+   La navigation vers les autres pages fonctionne.
+
+Les deux fichiers sont autonomes : images, polices et contenus sont inclus, aucune connexion au projet n'est nécessaire.
+Les photos de villes (Envato) se chargent depuis Internet.

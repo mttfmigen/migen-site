@@ -360,11 +360,25 @@ function Liste({
           <Intro key={t} texte={t} police="16px/1.7" largeur="62ch" />
         ))}
       </div>
+      {/* `alignItems: "start"` VIENT DE LA CAPTURE, il n'est pas une préférence.
+          `maquette/rendu/carriere.html` déclare sur cette grille
+          « display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%,
+          300px), 1fr)); gap: 12px; align-items: start ». Les trois premières
+          propriétés étaient portées, la quatrième manquait.
+
+          CE QUE SON ABSENCE FAISAIT. Une grille aligne ses enfants en
+          `stretch` par défaut : chaque carte prenait la hauteur de la plus
+          haute de SA RANGÉE. Mesuré le 13/10 sur /carriere/, bloc « 12 · Au
+          quotidien, Nos informations pratiques » : la carte 05
+          « Développement » fait quatre fois la longueur de ses voisines, et
+          les cartes 04 et 06 portaient donc chacune près de 200 px de vide
+          sous leur texte. Mehdi, le 13/10 : « il est mal agencé ». */}
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,300px),1fr))",
           gap: 12,
+          alignItems: "start",
         }}
       >
         {cartes.map((carte, i) => (
