@@ -231,6 +231,50 @@ const ERREUR: CSSProperties = {
 
 const ASTERISQUE: CSSProperties = { color: "var(--acc)" };
 
+/**
+ * LE TEXTE DU CONSENTEMENT, ÉCRIT UNE SEULE FOIS.
+ *
+ * La même chaîne est affichée à côté de la case ET transmise à HubSpot dans
+ * `legalConsentOptions.consent.text`. C'est tout l'intérêt d'une preuve de
+ * consentement : elle doit dire À QUOI la personne a dit oui, mot pour mot. Si
+ * le libellé affiché et le libellé archivé divergeaient, la preuve ne prouverait
+ * plus rien.
+ *
+ * Demandé par Mehdi le 13/10 : « il manque la partie consentement etc... à
+ * cocher du formulaire ». À savoir, et c'est dit sans discuter la demande : la
+ * loi n'EXIGE pas de case ici. Répondre à une demande que la personne vient
+ * elle-même de formuler relève des mesures précontractuelles (RGPD art. 6.1.b),
+ * et l'information au point de collecte suffit, c'est la mention qui suit. La
+ * case est donc un choix de Migen, pas une obligation, et elle est licite.
+ */
+export const TEXTE_CONSENTEMENT =
+  "J’accepte que Migen utilise ces informations pour traiter ma demande et me recontacter.";
+
+const CONSENTEMENT: CSSProperties = {
+  gridColumn: "span 2",
+  display: "flex",
+  alignItems: "flex-start",
+  gap: 10,
+  font: "400 12.5px/1.45 var(--fb)",
+  color: "var(--ink2)",
+  margin: 0,
+  cursor: "pointer",
+};
+
+const CASE: CSSProperties = {
+  // 18 px dessinés, mais la zone cliquable fait toute la hauteur du libellé
+  // grâce au `<label>` qui les enveloppe : la cible dépasse les 24 px exigés
+  // par le critère 2.5.8 du WCAG 2.2 sans grossir la case elle-même.
+  width: 18,
+  height: 18,
+  flex: "0 0 auto",
+  // 2 px de décalage : aligne la case sur la première ligne du libellé plutôt
+  // que sur le haut de sa boîte, qui porte l'interligne.
+  marginTop: 2,
+  accentColor: "var(--acc)",
+  cursor: "pointer",
+};
+
 export function FormulaireContact({
   formulaire,
   titre,
@@ -245,6 +289,10 @@ export function FormulaireContact({
   const [entreprise, setEntreprise] = useState<Record<string, string>>({});
   const [etat, setEtat] = useState<Etat>("repos");
   const [annonce, setAnnonce] = useState("");
+  /* LE CONSENTEMENT. Décoché au départ, et jamais préchargé : une case déjà
+     cochée à l'arrivée n'est pas un consentement, c'est un défaut de l'éditeur. */
+  const [consent, setConsent] = useState(false);
+  const [erreurConsent, setErreurConsent] = useState<string | undefined>(undefined);
   const prefixe = useId();
   const panneau = variante === "panneau";
 
@@ -282,14 +330,29 @@ export function FormulaireContact({
     const piege = new FormData(evenement.currentTarget).get(CHAMP_PIEGE);
 
     const trouvees = valideContact(contact);
-    if (aDesErreurs(trouvees)) {
+    /* LA CASE EST VÉRIFIÉE AVEC LES CHAMPS, pas après : sinon une personne qui
+       a aussi une faute de saisie corrigerait ses champs, renverrait, et
+       découvrirait seulement alors qu'il manquait la case. Un aller-retour de
+       plus pour rien, et un formulaire qui donne l'impression de se moquer. */
+    const sansConsentement = !consent;
+    if (aDesErreurs(trouvees) || sansConsentement) {
       setErreurs(trouvees);
+      setErreurConsent(
+        sansConsentement
+          ? "Cochez cette case pour que nous puissions traiter votre demande."
+          : undefined,
+      );
       setEtat("erreur");
-      setAnnonce("Quelques champs demandent une correction.");
+      setAnnonce(
+        aDesErreurs(trouvees)
+          ? "Quelques champs demandent une correction."
+          : "Il reste la case de consentement à cocher.",
+      );
       return;
     }
 
     setErreurs({});
+    setErreurConsent(undefined);
     setEtat("envoi");
     setAnnonce("");
 
@@ -302,6 +365,10 @@ export function FormulaireContact({
           formulaire,
           [CHAMP_PIEGE]: typeof piege === "string" ? piege : "",
           entreprise,
+          /* Le consentement part AVEC son texte : le serveur archive chez
+             HubSpot ce à quoi la personne a dit oui, et non un simple « vrai »
+             qui ne prouverait rien. */
+          consentement: { accorde: true, texte: TEXTE_CONSENTEMENT },
           attribution: attributionCourante(window.location.pathname),
           // HubSpot range la soumission sous la page vue : l'URL complète et le
           // titre ne sont connus que du navigateur.
@@ -321,6 +388,9 @@ export function FormulaireContact({
       setEtat("succes");
       setAnnonce(message ?? "Votre demande est bien arrivée. Nous vous rappelons.");
       setContact(CONTACT_VIDE);
+      /* La case repart décochée : une nouvelle demande appelle un nouvel
+         accord, on ne reconduit pas celui de la demande précédente. */
+      setConsent(false);
 
       // Après le succès seulement, et sans effet tant que la finalité
       // publicitaire n'est pas consentie : voir ./conversion.ts.
@@ -339,6 +409,17 @@ export function FormulaireContact({
   return (
     <form
       onSubmit={envoie}
+      /* `post`, ET C'EST UNE QUESTION DE VIE PRIVÉE, PAS DE STYLE.
+         Un formulaire sans méthode part en GET. Tant que React est attaché,
+         `envoie` intercepte et rien ne part en GET. Mais le jour où le
+         JavaScript n'arrive pas (réseau coupé en cours de chargement, erreur
+         dans un autre composant), le navigateur fait la soumission native, et
+         en GET il écrit le nom, le courriel et le téléphone du visiteur DANS
+         L'URL : barre d'adresse, historique, journaux du serveur, en-tête
+         `Referer` envoyé à tout tiers de la page suivante. Mesuré le 13/10 sur
+         un rendu non hydraté, l'adresse portait bien `email=...@migen.fr`.
+         En `post`, la même panne envoie un corps de requête, pas une adresse. */
+      method="post"
       noValidate
       /* L'écart de 36 px sous 900 px est celui des panneaux d'offre (voir le module). */
       className={variante ? `${styles.grille} ${styles.grilleMaquette}` : styles.grille}
@@ -462,6 +543,40 @@ export function FormulaireContact({
           </div>
         );
       })}
+
+      {/* LE CONSENTEMENT, juste avant le bouton : la personne lit ce à quoi
+          elle s'engage au moment où elle s'apprête à envoyer, et non trois
+          écrans plus haut. Le libellé entier est cliquable, ce qui donne à la
+          case une cible bien au-delà des 24 px du critère 2.5.8 du WCAG 2.2. */}
+      <div style={{ gridColumn: "span 2" }}>
+        <label htmlFor={`${prefixe}-consent`} style={CONSENTEMENT}>
+          <input
+            id={`${prefixe}-consent`}
+            type="checkbox"
+            name="consentement"
+            checked={consent}
+            disabled={enCours}
+            onChange={(evenement: ChangeEvent<HTMLInputElement>) => {
+              setConsent(evenement.target.checked);
+              // Cocher efface l'erreur sur-le-champ : laisser le reproche
+              // affiché alors que la personne vient de le corriger est le
+              // genre de détail qui fait douter du formulaire entier.
+              if (evenement.target.checked) setErreurConsent(undefined);
+            }}
+            aria-invalid={erreurConsent ? true : undefined}
+            aria-describedby={erreurConsent ? `${prefixe}-consent-err` : undefined}
+            style={CASE}
+          />
+          <span>
+            {TEXTE_CONSENTEMENT} <span style={ASTERISQUE}>*</span>
+          </span>
+        </label>
+        {erreurConsent ? (
+          <p id={`${prefixe}-consent-err`} style={ERREUR}>
+            {erreurConsent}
+          </p>
+        ) : null}
+      </div>
 
       {panneau ? (
         <button
