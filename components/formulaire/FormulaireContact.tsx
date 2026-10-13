@@ -232,48 +232,31 @@ const ERREUR: CSSProperties = {
 const ASTERISQUE: CSSProperties = { color: "var(--acc)" };
 
 /**
- * LE TEXTE DU CONSENTEMENT, ÉCRIT UNE SEULE FOIS.
+ * LA SUITE DE LA MENTION, DONNÉE PAR MEHDI LE 13/10, mot pour mot.
  *
- * La même chaîne est affichée à côté de la case ET transmise à HubSpot dans
- * `legalConsentOptions.consent.text`. C'est tout l'intérêt d'une preuve de
- * consentement : elle doit dire À QUOI la personne a dit oui, mot pour mot. Si
- * le libellé affiché et le libellé archivé divergeaient, la preuve ne prouverait
- * plus rien.
+ * Il avait d'abord demandé une case à cocher, puis tranché : « pas besoin du
+ * consentement du coup, la phrase est déjà écrite et il accepte ». La case
+ * posée dans l'après-midi est retirée, cette phrase la remplace.
  *
- * Demandé par Mehdi le 13/10 : « il manque la partie consentement etc... à
- * cocher du formulaire ». À savoir, et c'est dit sans discuter la demande : la
- * loi n'EXIGE pas de case ici. Répondre à une demande que la personne vient
- * elle-même de formuler relève des mesures précontractuelles (RGPD art. 6.1.b),
- * et l'information au point de collecte suffit, c'est la mention qui suit. La
- * case est donc un choix de Migen, pas une obligation, et elle est licite.
+ * ET C'EST LE MONTAGE JURIDIQUEMENT JUSTE, pas un repli. Deux finalités
+ * cohabitent ici, et elles n'appellent pas le même mécanisme :
+ *
+ *   1. RÉPONDRE À LA DEMANDE. La personne vient de la formuler : ce sont des
+ *      mesures précontractuelles (RGPD art. 6.1.b). Aucun consentement à
+ *      recueillir, une information au point de collecte suffit, et c'est la
+ *      première phrase de la mention.
+ *   2. LUI PROPOSER NOS PRODUITS ET SERVICES. Finalité distincte, couverte
+ *      entre professionnels par l'intérêt légitime, à la condition expresse
+ *      que le refus soit possible à tout moment. D'où la seconde phrase, qui
+ *      porte ce droit d'opposition.
+ *
+ * Une case cochée de force aurait transformé le point 1 en consentement, donc
+ * en quelque chose de révocable : Migen aurait dû effacer une demande que la
+ * personne lui avait elle-même adressée. La mention est le bon outil.
  */
-export const TEXTE_CONSENTEMENT =
-  "J’accepte que Migen utilise ces informations pour traiter ma demande et me recontacter.";
-
-const CONSENTEMENT: CSSProperties = {
-  gridColumn: "span 2",
-  display: "flex",
-  alignItems: "flex-start",
-  gap: 10,
-  font: "400 12.5px/1.45 var(--fb)",
-  color: "var(--ink2)",
-  margin: 0,
-  cursor: "pointer",
-};
-
-const CASE: CSSProperties = {
-  // 18 px dessinés, mais la zone cliquable fait toute la hauteur du libellé
-  // grâce au `<label>` qui les enveloppe : la cible dépasse les 24 px exigés
-  // par le critère 2.5.8 du WCAG 2.2 sans grossir la case elle-même.
-  width: 18,
-  height: 18,
-  flex: "0 0 auto",
-  // 2 px de décalage : aligne la case sur la première ligne du libellé plutôt
-  // que sur le haut de sa boîte, qui porte l'interligne.
-  marginTop: 2,
-  accentColor: "var(--acc)",
-  cursor: "pointer",
-};
+const MENTION_PROSPECTION =
+  "Vos informations seront conservées et utilisées pour vous proposer nos " +
+  "produits et services. Vous restez libre de vous désinscrire à tout moment.";
 
 export function FormulaireContact({
   formulaire,
@@ -289,10 +272,6 @@ export function FormulaireContact({
   const [entreprise, setEntreprise] = useState<Record<string, string>>({});
   const [etat, setEtat] = useState<Etat>("repos");
   const [annonce, setAnnonce] = useState("");
-  /* LE CONSENTEMENT. Décoché au départ, et jamais préchargé : une case déjà
-     cochée à l'arrivée n'est pas un consentement, c'est un défaut de l'éditeur. */
-  const [consent, setConsent] = useState(false);
-  const [erreurConsent, setErreurConsent] = useState<string | undefined>(undefined);
   const prefixe = useId();
   const panneau = variante === "panneau";
 
@@ -330,29 +309,14 @@ export function FormulaireContact({
     const piege = new FormData(evenement.currentTarget).get(CHAMP_PIEGE);
 
     const trouvees = valideContact(contact);
-    /* LA CASE EST VÉRIFIÉE AVEC LES CHAMPS, pas après : sinon une personne qui
-       a aussi une faute de saisie corrigerait ses champs, renverrait, et
-       découvrirait seulement alors qu'il manquait la case. Un aller-retour de
-       plus pour rien, et un formulaire qui donne l'impression de se moquer. */
-    const sansConsentement = !consent;
-    if (aDesErreurs(trouvees) || sansConsentement) {
+    if (aDesErreurs(trouvees)) {
       setErreurs(trouvees);
-      setErreurConsent(
-        sansConsentement
-          ? "Cochez cette case pour que nous puissions traiter votre demande."
-          : undefined,
-      );
       setEtat("erreur");
-      setAnnonce(
-        aDesErreurs(trouvees)
-          ? "Quelques champs demandent une correction."
-          : "Il reste la case de consentement à cocher.",
-      );
+      setAnnonce("Quelques champs demandent une correction.");
       return;
     }
 
     setErreurs({});
-    setErreurConsent(undefined);
     setEtat("envoi");
     setAnnonce("");
 
@@ -365,10 +329,6 @@ export function FormulaireContact({
           formulaire,
           [CHAMP_PIEGE]: typeof piege === "string" ? piege : "",
           entreprise,
-          /* Le consentement part AVEC son texte : le serveur archive chez
-             HubSpot ce à quoi la personne a dit oui, et non un simple « vrai »
-             qui ne prouverait rien. */
-          consentement: { accorde: true, texte: TEXTE_CONSENTEMENT },
           attribution: attributionCourante(window.location.pathname),
           // HubSpot range la soumission sous la page vue : l'URL complète et le
           // titre ne sont connus que du navigateur.
@@ -388,9 +348,6 @@ export function FormulaireContact({
       setEtat("succes");
       setAnnonce(message ?? "Votre demande est bien arrivée. Nous vous rappelons.");
       setContact(CONTACT_VIDE);
-      /* La case repart décochée : une nouvelle demande appelle un nouvel
-         accord, on ne reconduit pas celui de la demande précédente. */
-      setConsent(false);
 
       // Après le succès seulement, et sans effet tant que la finalité
       // publicitaire n'est pas consentie : voir ./conversion.ts.
@@ -544,40 +501,6 @@ export function FormulaireContact({
         );
       })}
 
-      {/* LE CONSENTEMENT, juste avant le bouton : la personne lit ce à quoi
-          elle s'engage au moment où elle s'apprête à envoyer, et non trois
-          écrans plus haut. Le libellé entier est cliquable, ce qui donne à la
-          case une cible bien au-delà des 24 px du critère 2.5.8 du WCAG 2.2. */}
-      <div style={{ gridColumn: "span 2" }}>
-        <label htmlFor={`${prefixe}-consent`} style={CONSENTEMENT}>
-          <input
-            id={`${prefixe}-consent`}
-            type="checkbox"
-            name="consentement"
-            checked={consent}
-            disabled={enCours}
-            onChange={(evenement: ChangeEvent<HTMLInputElement>) => {
-              setConsent(evenement.target.checked);
-              // Cocher efface l'erreur sur-le-champ : laisser le reproche
-              // affiché alors que la personne vient de le corriger est le
-              // genre de détail qui fait douter du formulaire entier.
-              if (evenement.target.checked) setErreurConsent(undefined);
-            }}
-            aria-invalid={erreurConsent ? true : undefined}
-            aria-describedby={erreurConsent ? `${prefixe}-consent-err` : undefined}
-            style={CASE}
-          />
-          <span>
-            {TEXTE_CONSENTEMENT} <span style={ASTERISQUE}>*</span>
-          </span>
-        </label>
-        {erreurConsent ? (
-          <p id={`${prefixe}-consent-err`} style={ERREUR}>
-            {erreurConsent}
-          </p>
-        ) : null}
-      </div>
-
       {panneau ? (
         <button
           type="submit"
@@ -615,6 +538,8 @@ export function FormulaireContact({
         <Link href="/confidentialite/" className="underline">
           politique de confidentialité
         </Link>
+        {". "}
+        {MENTION_PROSPECTION}
       </p>
 
       {/* Une seule zone d'annonce, toujours présente dans le document : un

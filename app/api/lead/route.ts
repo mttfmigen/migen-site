@@ -133,7 +133,6 @@ export async function POST(requete: NextRequest): Promise<Response> {
     entreprise,
     hutk,
     publicite: choix?.publicite === true,
-    consentement: consentementLu(source.consentement),
   });
 
   // La copie d'attribution est écrite dans les deux cas : un échec HubSpot ne
@@ -177,12 +176,6 @@ interface Depot {
    * qui restaient vides : `country`, `siren`, `siret`, `address`, `zip`.
    */
   entreprise: Record<string, string>;
-  /**
-   * LE TEXTE DU CONSENTEMENT QUE LA PERSONNE A COCHÉ, ou `null` si la case
-   * n'a pas été cochée. On archive la PHRASE, pas un booléen : « a consenti »
-   * sans dire à quoi ne vaut rien le jour où on doit le prouver.
-   */
-  consentement: string | null;
 }
 
 type Resultat = { ok: true } | { ok: false; detail: string };
@@ -278,28 +271,6 @@ async function deposeChezHubspot(depot: Depot): Promise<Resultat> {
       ...(urlPage ? { pageUri: urlPage } : {}),
       ...(depot.page.titre ? { pageName: depot.page.titre } : {}),
     },
-
-    /* LA PREUVE DU CONSENTEMENT, ARCHIVÉE CHEZ HUBSPOT AVEC SON TEXTE.
-       `legalConsentOptions` est la structure native de HubSpot : elle
-       n'exige aucune propriété personnalisée sur le formulaire, ce qui a été
-       VÉRIFIÉ contre le portail 148000737 le 13/10 avant d'écrire cette ligne,
-       et non supposé. Une soumission qui porte un champ absent du formulaire
-       est refusée ENTIÈREMENT par HubSpot : le vérifier d'abord est la seule
-       façon de ne pas perdre un lead pour un ajout de confort.
-
-       Le `text` archivé est celui que la personne a LU à l'écran, transmis par
-       le navigateur. Sans lui, la preuve dirait qu'elle a consenti sans dire
-       à quoi. Il est borné, comme toute chaîne venue du client. */
-    ...(depot.consentement
-      ? {
-          legalConsentOptions: {
-            consent: {
-              consentToProcess: true,
-              text: depot.consentement,
-            },
-          },
-        }
-      : {}),
   };
 
   try {
@@ -396,26 +367,6 @@ function etablissementNettoye(brut: unknown): Record<string, string> {
      donnée à moitié vraie. Mieux vaut n'enrichir pas du tout. */
   if (!propre.siren || !propre.siret) return {};
   return propre;
-}
-
-/** Longueur maximale du texte de consentement archivé. */
-const LONGUEUR_MAX_CONSENTEMENT = 400;
-
-/**
- * LE CONSENTEMENT TEL QUE LE NAVIGATEUR LE DÉCLARE, relu avec méfiance.
- *
- * Le serveur ne CROIT pas le navigateur sur parole : il exige les deux, le
- * drapeau ET la phrase. Un `accorde: true` sans texte ne prouve rien, et un
- * texte sans drapeau n'est pas un accord. Dans le doute, rien n'est archivé :
- * mieux vaut une preuve absente qu'une preuve fausse.
- */
-function consentementLu(brut: unknown): string | null {
-  if (typeof brut !== "object" || brut === null) return null;
-  const source = brut as Record<string, unknown>;
-  if (source.accorde !== true) return null;
-  if (typeof source.texte !== "string") return null;
-  const texte = source.texte.trim().slice(0, LONGUEUR_MAX_CONSENTEMENT);
-  return texte || null;
 }
 
 function pageNettoyee(brut: unknown): Page {
