@@ -222,11 +222,33 @@ const EXPERT_INTACT: [string, string][] = [
   ["Nos techniciens interviennent en coordination avec vos équipes de maintenance", "/offres/bureau-etudes/"],
   ["visite des installations, entretiens techniciens et encadrement", "/offres/bureau-etudes/"],
   ["avec un technicien intégré sur site", "/offres/bureau-etudes/"],
-  ["Le technicien qui les connaît fait déjà partie de nos équipes.", "/travaux-industriels/levage-manutention/"],
-  ["des techniciens réussissent notre double évaluation", "/bureau-etudes/bureau-etude-electrique/"],
-  ["vous présente les techniciens adaptés.", "/travaux-industriels/"],
-  ["Jours ouvrés · technicien depuis le hub le plus proche · partout en France", "/bureau-etudes/bureau-etude-electronique/"],
+  /* « Test technicien » EST LE NOM D'UNE PAGE, `/test-technicien/`, écrit par
+     l'entête commun à tout le site. La renommer sur dix pages donnerait deux
+     noms au même écran. C'est la seule des cinq phrases de composant partagé
+     qui reste signalée et non touchée. */
   ["Test technicien", "/travaux-industriels/"],
+];
+
+/* 2 bis. LES LIBELLÉS DES COMPOSANTS PARTAGÉS, levés le 13/10.
+
+   Ces quatre phrases étaient dans `EXPERT_INTACT` jusqu'au 13/10 : elles ne
+   vivent dans aucune fiche, elles sont écrites en dur dans des composants que
+   TOUTE la famille offre partage, et rien ne leur disait quelle page elles
+   rendaient. `PageOffre` reçoit désormais le chemin et le leur descend ; les
+   règles de portée peuvent donc les atteindre, et c'est ici qu'on l'exige.
+
+   LE RENDU EST VÉRIFIÉ AILLEURS, et il faut les deux : cette porte-ci tient la
+   RÈGLE, `components/site/offre/verification-offre.tsx` tient le CHEMIN. Une
+   règle juste dont le chemin n'est plus descendu laisse le rendu fautif sans
+   qu'aucune règle ne change ; c'est exactement la situation du 12/10. */
+const EXPERT_COMPOSANTS: [string, string, string][] = [
+  ["Rappel dans l\u2019heure aux horaires ouvrés. Un chargé d\u2019affaires qualifie votre besoin et vous présente les techniciens adaptés.", "Rappel dans l\u2019heure aux horaires ouvrés. Un chargé d\u2019affaires qualifie votre besoin et vous présente les experts techniques adaptés.", "/travaux-industriels/"],
+  ["Vos machines sont dans la liste\u00a0? Le technicien qui les connaît fait déjà partie de nos équipes.", "Vos machines sont dans la liste\u00a0? L\u2019expert technique qui les connaît fait déjà partie de nos équipes.", "/travaux-industriels/levage-manutention/"],
+  ["Jours ouvrés · technicien depuis le hub le plus proche · partout en France", "Jours ouvrés · expert technique depuis le hub le plus proche · partout en France", "/bureau-etudes/bureau-etude-electronique/"],
+  ["des techniciens réussissent notre double évaluation", "des experts techniques réussissent notre double évaluation", "/bureau-etudes/bureau-etude-electrique/"],
+  /* Le repère du héros de `PageVente`, que la règle de LA SÉLECTION prenait
+     déjà : elle n'était simplement jamais appelée sur ce libellé. */
+  ["des techniciens retenus", "des experts techniques retenus", "/bureau-etudes/bureau-etude-electrique/"],
 ];
 
 /* 4. LA PORTÉE EST CLOSE : la même phrase, sans clé de page ou sur une page
@@ -283,6 +305,31 @@ function verifieCapture(lots: { nom: string; html: string }[]): void {
   }
 }
 
+/**
+ * LES LIBELLÉS DES COMPOSANTS PARTAGÉS : réécrits dans la portée, intacts
+ * dehors. Les deux sens comptent autant l'un que l'autre, parce que ces
+ * phrases-là se rendent AUSSI sur les 236 autres pages du site.
+ */
+function verifieComposants(lots: readonly [string, string, string][]): void {
+  for (const [avant, apres, url] of lots) {
+    assert.equal(
+      appliqueDecisions(avant, url),
+      apres,
+      `libellé de composant partagé non réécrit sur ${url} : « ${avant.slice(0, 120)} »`,
+    );
+    assert.equal(
+      appliqueDecisions(avant),
+      avant,
+      `sans clé de page, le libellé partagé doit rester intact : « ${avant.slice(0, 120)} »`,
+    );
+    assert.equal(
+      appliqueDecisions(avant, "/offres/residence/"),
+      avant,
+      `hors portée, le libellé partagé doit rester intact : « ${avant.slice(0, 120)} »`,
+    );
+  }
+}
+
 /** LA DÉCISION NE FUIT PAS : aucune autre fiche ne dit « expert technique ». */
 function verifieHorsPortee(lots: Lot[]): void {
   for (const { nom, chaines } of lots)
@@ -310,6 +357,7 @@ for (const [avant, apres, url] of EXPERT_CHANGE)
   assert.equal(appliqueDecisions(avant, url), apres, `« expert technique » sur ${url} : « ${avant} »`);
 for (const [texte, url] of EXPERT_INTACT)
   assert.equal(appliqueDecisions(texte, url), texte, `laissé intact sur ${url} : « ${texte} »`);
+verifieComposants(EXPERT_COMPOSANTS);
 for (const texte of HORS_PORTEE) {
   assert.equal(appliqueDecisions(texte), texte, `sans clé de page, rien ne change : « ${texte} »`);
   assert.equal(appliqueDecisions(texte, "offres-zero-arret.json"), texte, `hors portée, rien ne change : « ${texte} »`);
@@ -322,6 +370,7 @@ verifieHorsPortee(lotsAutres);
 const chainesPortee = lotsPortee.reduce((n, l) => n + l.chaines.length, 0);
 console.log(
   `« expert technique » : ${PORTEE.length} pages dans la portée, ${EXPERT_CHANGE.length} réécritures, ` +
+    `${EXPERT_COMPOSANTS.length} libellés de composant partagé réécrits et tenus hors portée, ` +
     `${EXPERT_INTACT.length} exclusions tenues, ${HORS_PORTEE.length * 3} refus hors portée, ` +
     `${chainesPortee} chaînes de fiche et ${lotsCaptures.length} captures vérifiées des deux côtés, ` +
     `${lotsAutres.length} autres fiches indemnes.`,
@@ -338,6 +387,25 @@ if (process.argv.includes("--controle")) {
     } catch {
       vues += 1;
       console.log(`  vue        : ${quoi}`);
+      return;
+    }
+    manques += 1;
+    console.error(`  MANQUÉE    : ${quoi}`);
+  };
+  /* UN TÉMOIN QUI TOMBE SUR LA RÈGLE VOISINE NE PROUVE RIEN : celui-ci exige
+     que le message de l'échec soit bien celui de la règle visée. */
+  const doitEchouerSur = (quoi: string, fragment: string, fautif: () => void) => {
+    try {
+      fautif();
+    } catch (e) {
+      const message = (e as Error).message ?? "";
+      if (message.includes(fragment)) {
+        vues += 1;
+        console.log(`  vue        : ${quoi}`);
+        return;
+      }
+      manques += 1;
+      console.error(`  AUTRE RÈGLE : ${quoi} (attendu « ${fragment} », obtenu « ${message.slice(0, 120)} »)`);
       return;
     }
     manques += 1;
@@ -381,7 +449,30 @@ if (process.argv.includes("--controle")) {
     ),
   );
 
+  console.log("\ntémoin : les libellés de composant partagé, règle par règle");
+  for (const [avant, , url] of EXPERT_COMPOSANTS) {
+    /* LA RÈGLE RETIRÉE SE SIMULE PAR SON EFFET : on prétend que la phrase ne
+       change pas sur une page de la portée. Si la règle est bien là, le
+       contrôle refuse, et il refuse SUR CETTE PHRASE. */
+    doitEchouerSur(
+      `« ${avant.slice(0, 56)}… » laissée telle quelle sur ${url}`,
+      `libellé de composant partagé non réécrit sur ${url}`,
+      () => verifieComposants([[avant, avant, url]]),
+    );
+  }
+  doitEchouerSur(
+    "une règle de libellé devenue globale, qui toucherait les 236 autres pages",
+    "sans clé de page, le libellé partagé doit rester intact",
+    /* « 10 % des candidats retenus » est touché par les règles GLOBALES : glissé
+       dans cette liste, il y joue le rôle d'une règle de portée qui aurait
+       fui. */
+    () => verifieComposants([["10 % des candidats retenus", "10 % des experts techniques retenus", "/travaux-industriels/"]]),
+  );
+
   console.log("\ntémoin : les exclusions légitimes, qui ne doivent PAS être vues");
+  doitPasser("« Test technicien », le nom de la page, sur une page de la portée", () =>
+    verifieComposants([["Test technicien", "Test technicien", "/travaux-industriels/"]]),
+  );
   doitPasser("le réseau, « Hubs de techniciens, Paris »", () =>
     verifieDonnee([{ nom: "travaux-industriels.json", chaines: ["Hubs de techniciens, Paris, Lille, Marseille."] }]),
   );

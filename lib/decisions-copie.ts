@@ -367,17 +367,14 @@ const NOUS_REJOINDRE: Regle[] = [
        vit sur la page `/preuves/` visée, hors de cette portée, et les deux se
        contrediraient.
 
-   CE QUI EST SIGNALÉ À MEHDI ET NON TOUCHÉ, parce que ce n'est pas la copie de
-   ces pages mais celle de composants partagés par tout le site : le chiffre
-   « 10 % · des techniciens réussissent notre double évaluation »
-   (`offre/generique/maquette.js`), « Jours ouvrés · technicien depuis le hub le
-   plus proche » (`offre/generique/PageVente.tsx`), « vous présente les
-   techniciens adaptés » (`offre/AppelFinal.tsx`), « Le technicien qui les
-   connaît fait déjà partie de nos équipes » (`offre/MarquesOffre.tsx`) et
-   l'entrée de menu « Test technicien ». Le premier est une affirmation de
-   SÉLECTION, exactement celle que Mehdi vise : tant qu'il reste, les trois
-   pages filles de bureau d'études diront « experts techniques » dans leur bande
-   de chiffres et « techniciens » dans celle du gabarit. */
+   CE QUI EST SIGNALÉ À MEHDI ET NON TOUCHÉ : l'entrée de menu « Test
+   technicien ». C'est le NOM d'une page, `/test-technicien/`, rendue par
+   l'entête commun à tout le site, hors de la famille offre. La renommer sur dix
+   pages donnerait deux noms au même écran.
+
+   CE QUI L'ÉTAIT AUSSI JUSQU'AU 13/10, et ne l'est plus : les quatre libellés
+   des COMPOSANTS PARTAGÉS, levés par le relevé de production du 13/10. Voir le
+   bloc « LES LIBELLÉS DES COMPOSANTS PARTAGÉS » dans `EXPERT_TECHNIQUE`. */
 const PAGES_EXPERT_TECHNIQUE = new Set([
   "offres-bureau-etudes",
   "bureau-etudes",
@@ -491,6 +488,56 @@ const EXPERT_TECHNIQUE: Regle[] = [
      construction. La fiche porte la décision ; la règle garde la fiche. */
   [/\bTechniciens évalués\b/g, () => "Experts techniques évalués"],
   [/\btechniciens évalués\b/g, () => "experts techniques évalués"],
+
+  /* 13/10, LES LIBELLÉS DES COMPOSANTS PARTAGÉS, et c'est LE défaut que Mehdi
+     avait cité : la bande de chiffres disait « techniciens » pendant que la
+     prose de la même page disait « experts techniques ».
+
+     POURQUOI CES QUATRE PHRASES MANQUAIENT LE 12/10 : elles ne vivent dans
+     AUCUNE fiche. Elles sont écrites en dur dans des composants que TOUTE la
+     famille offre partage, et les changer littéralement les aurait changées
+     sur tout le site, où « technicien » reste juste :
+       · `offre/generique/PageVente.tsx`      le repère du héros et la bande
+                                              d'appel des sections ;
+       · `offre/generique/maquette.js`        le `STATS` recopié de la maquette,
+                                              qui ne se retouche pas ;
+       · `offre/AppelFinal.tsx`               la phrase du panneau de fin ;
+       · `offre/MarquesOffre.tsx`             la promesse du bloc des marques.
+     Elles étaient donc SIGNALÉES et laissées en place.
+
+     CE QUI A CHANGÉ : `PageOffre` reçoit le chemin de sa page et le descend à
+     ces composants, qui passent leurs libellés par `appliqueDecisions`. La
+     portée fait le tri, et les 236 autres pages ne bougent pas. Le contrôle
+     négatif est dans `verification-offre.tsx` : `/offres/residence/` garde ses
+     25 « technicien » intacts, et aucune page hors portée n'écrit « expert
+     technique ».
+
+     RELEVÉ EN PRODUCTION AVANT D'ÉCRIRE UNE LIGNE, puis retrouvé au même
+     compte dans les dix captures de `maquette/rendu/` :
+       · « vous présente les techniciens adaptés »                 10 / 10
+       · « des techniciens retenus », repère du héros                3 / 10
+       · « technicien depuis le hub le plus proche »                 3 / 10
+       · « des techniciens réussissent notre double évaluation »     3 / 10
+       · « Le technicien qui les connaît »                           3 / 10
+     Les trois pages de repère sont les filles génériques de bureau d'études,
+     seules servies par `PageVente`. « des techniciens retenus » n'a pas de
+     règle ici : celle de LA SÉLECTION, plus haut, le prend déjà.
+
+     PAS DE `\b` APRÈS « adaptés », et c'est le piège de la lettre accentuée,
+     déjà payé plus haut sur « un technicien confirmé » : après « é », `\b`
+     exige un caractère de mot à gauche, n'en trouve pas, et la règle ne part
+     jamais.
+
+     L'APOSTROPHE EST TYPOGRAPHIQUE dans « L'expert technique », parce que la
+     capture l'est : le même composant écrit « Rappel dans l'heure » avec
+     U+2019, et la copie se rend dans l'écriture de la maquette. */
+  [/\bvous présente les techniciens adaptés/g, () => "vous présente les experts techniques adaptés"],
+  [/\bLe technicien qui les connaît\b/g, () => "L\u2019expert technique qui les connaît"],
+  [/\btechnicien depuis le hub le plus proche\b/g, () => "expert technique depuis le hub le plus proche"],
+  [
+    /\bdes techniciens réussissent notre double évaluation\b/g,
+    () => "des experts techniques réussissent notre double évaluation",
+  ],
 ];
 
 const REGLES = [...SELECTION, ...SIEGE, ...PHOTOS_VILLE, ...TELEPHONE, ...ORTHUS, ...META_REDACTION, ...NOTAMMENT, ...ASTREINTE, ...NOUS_REJOINDRE];

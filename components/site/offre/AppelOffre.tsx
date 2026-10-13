@@ -81,7 +81,17 @@ export default function AppelOffre({
     <section style={SECTION}>
       <div style={LARGEUR}>
         <div style={BANDE}>
-          <div style={{ flex: "1 1 0%", minWidth: 280 }}>
+          {/* `min(280px, 100%)` ET NON `280px`, et c'est la correction du
+              13/10 mesurée au navigateur. Les 280 px viennent de la capture :
+              ils empêchent la question de se réduire à une colonne de deux
+              mots quand le bouton est large, et sur grand écran rien ne
+              change. Mais un `min-width` en pixels ne cède JAMAIS : à 320 px
+              la bande n'offre que 240 px, et ce bloc en réclamait 280. Il
+              sortait de la page de 43 px sur les onze pages mesurées, cinq
+              gabarits, et la fin de la question était coupée par le rognage de
+              `.mg-site`. Avec `min()`, le plancher reste 280 px tant que la
+              place existe et devient la largeur disponible quand elle manque. */}
+          <div style={{ flex: "1 1 0%", minWidth: "min(280px, 100%)" }}>
             <div style={QUESTION}>
               <TexteRiche texte={question} />
             </div>

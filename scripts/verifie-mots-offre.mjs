@@ -284,7 +284,15 @@ function sourceDeLaCapture(url) {
         "Relancez scripts/capture-maquette.mjs plutôt que de laisser cette porte deviner.",
     );
   }
-  return appliqueDecisions(readFileSync(chemin, "utf8"));
+  /* L'URL EST PASSÉE À `appliqueDecisions`, et sans elle cette porte accuse la
+     décision au lieu d'accuser un défaut. Les décisions à PORTÉE LIMITÉE
+     (`lib/decisions-copie.ts`, « expert technique » sur dix pages depuis le
+     12/10) sont INERTES quand l'appelant ne dit pas quelle page il traite :
+     sept phrases décidées étaient comptées comme des inventions, alors que la
+     donnée les porte exactement comme la décision le demande. Cette porte-ci
+     lit UNE capture, dont elle connaît l'URL : il n'y avait aucune raison de
+     la taire. */
+  return appliqueDecisions(readFileSync(chemin, "utf8"), url);
 }
 
 function captureFigee(url) {

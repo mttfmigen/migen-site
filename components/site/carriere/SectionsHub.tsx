@@ -94,7 +94,11 @@ function Bande({ bande }: { bande?: BandeFiche }) {
             font: "500 16px/1.6 var(--fb)",
             color: "var(--ink)",
             flex: "1 1 0%",
-            minWidth: 260,
+            // `min(260px, 100%)` et non 260 : la valeur de la maquette, bornee
+            // par la cellule. Identique des 260 px de large, donc inchangee sur
+            // bureau ; sous 320 px la bande fait 180 px et le texte sortait de
+            // 82 px, coupe par le bord de l'ecran.
+            minWidth: "min(260px, 100%)",
             maxWidth: "70ch",
           }}
         >
@@ -227,7 +231,9 @@ export function EtapesHub({ section }: { section: SectionEtapesHub }) {
                 font: "400 15px/1.55 var(--fb)",
                 color: "rgba(255,255,255,.72)",
                 flex: "1 1 0%",
-                minWidth: 220,
+                // Borne par la cellule : 220 px en dur sortaient de 36 px du
+                // panneau sombre des 10 %, a 320 px de large.
+                minWidth: "min(220px, 100%)",
               }}
             >
               des techniciens sont retenus. Les résultats des entretiens vous sont partagés.
@@ -683,7 +689,11 @@ export function LiensPhoto({ items }: { items: { libelle: string; href: string; 
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill,minmax(250px,1fr))",
+            // `min(100%,250px)` et non 250px : une piste de 250 px dans une
+            // grille de 240 px debordait de 10 px, sur les 14 pages de la
+            // famille. Vaut 250 px des que la grille fait 250 px, donc
+            // inchangee sur bureau.
+            gridTemplateColumns: "repeat(auto-fill,minmax(min(100%,250px),1fr))",
             gap: 14,
           }}
         >

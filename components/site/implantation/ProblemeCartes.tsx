@@ -273,7 +273,14 @@ export function ProblemePanneau({ section, sansTitre }: { section: SectionProble
         {section.puces.map((puce, rang) => (
           <div key={puce.accroche ?? puce.texte} style={CARTE_SOMBRE}>
             <span style={NUMERO_SOMBRE}>{numerote(rang)}</span>
-            <div>
+            {/* `minWidth: 0` ET `overflowWrap` : un élément de flexbox ne
+                descend pas sous la largeur de son mot le plus long tant qu'il
+                garde `min-width: auto`. Mesuré le 13/10 à 320 px sur
+                `/implantations/maintenance-industrielle-albi/` :
+                « pharmaceutiques » réclamait 131 px dans une colonne qui en
+                offrait 116, la carte sortait du panneau et le panneau rognait
+                la fin du constat. Invisible dès qu'il y a la place. */}
+            <div style={{ minWidth: 0, overflowWrap: "break-word" }}>
               {puce.accroche ? <div style={ACCROCHE_SOMBRE}>{puce.accroche}</div> : null}
               <div style={TEXTE_SOMBRE}>{puce.texte}</div>
             </div>

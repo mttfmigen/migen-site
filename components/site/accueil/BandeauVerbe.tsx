@@ -93,7 +93,18 @@ export default function BandeauVerbe({
             height={500}
             style={{ height: "64px", width: "64px", flex: "none" }}
           />
-          <div style={{ flex: 1, minWidth: "280px" }}>
+          {/* `min(280px, 100%)` et non `280px` : la largeur minimale d'un
+              enfant de flexbox l'empêche de rétrécir, et elle ne connaît pas
+              la place disponible. Mesuré le 12/10, bandeau de consentement
+              refusé, après hydratation : à 320 px le bloc sortait de 57 px de
+              `.mg-site`, à 360 px de 17 px, et `.mg-site` étant en
+              `overflow-x: clip`, le texte était COUPÉ sans qu'aucune barre de
+              défilement ne le signale. 320 px moins les 40 px de marge de page
+              et les 56 px de remplissage de la carte de chaque côté laissent
+              128 px : la borne les dépassait de 152 px à elle seule.
+              `min()` garde les 280 px partout où ils tiennent, donc le rendu
+              de la maquette à 390 px et au-dessus ne bouge pas d'un pixel. */}
+          <div style={{ flex: 1, minWidth: "min(280px, 100%)" }}>
             <div
               style={{
                 font: "600 calc(clamp(30px,3.4vw,50px) * var(--ts))/1.08 var(--ft)",

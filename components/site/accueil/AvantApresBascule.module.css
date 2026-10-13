@@ -86,3 +86,85 @@
     text-align: center;
   }
 }
+
+/*
+ * LES DEUX LIBELLÉS SORTAIENT ENCORE DE LEUR BOUTON, et aucune mesure
+ * d'ÉLÉMENT ne pouvait le voir.
+ *
+ * La correction du 09/10 au dessus a mis la pastille à la largeur de l'écran
+ * et partagé la place en deux. Les BOUTONS tiennent donc dans la page, et
+ * toute règle qui mesure des rectangles les déclare conformes. Ce qui dépasse,
+ * c'est le TEXTE : `.onglet` porte `white-space: nowrap`, « Avant migen© »
+ * demande 119 px, et il n'en reçoit que 76 à 320 px, 96 à 360 et 111 à 390.
+ * Il sortait de 43, 23 et 8 px, et le second libellé, lui, était tranché par
+ * le canevas qui est en `overflow: hidden`. Vu sur capture d'écran le 13/10
+ * (« Avant mige », « Avec migen »), puis mesuré en comparant le rectangle du
+ * TEXTE à la boîte de contenu de son bouton, règle ajoutée pour ça à
+ * `scripts/verifie-responsive-accueil.mjs`.
+ *
+ * Sous 420 px le libellé peut passer à la ligne, et il se centre : « Avant » /
+ * « migen© » sur deux lignes, les deux onglets de même hauteur. La copie n'est
+ * pas touchée et la cible tactile grandit. Le seuil englobe 390 px, la largeur
+ * de référence de la maquette, parce que le manque y est encore de 8 px et que
+ * ces 8 px coupent le « © » ; au dessus, le libellé tient et rien ne bouge.
+ */
+@media (max-width: 420px) {
+  .onglet {
+    white-space: normal;
+    font-size: calc(15px * var(--ts));
+    padding: 12px 8px;
+    line-height: 1.25;
+  }
+}
+
+/*
+ * TROIS REMPLISSAGES EMPILÉS NE LAISSAIENT PLUS QUE 88 px DE TEXTE.
+ *
+ * Mesuré le 12/10 à 320 px, après hydratation : la marge de page fait 40 px,
+ * le canevas de la bascule 44 px (`canevas()` de `avant-apres-donnees.ts`) et
+ * chaque tuile 32 px, soit 116 px de chaque côté. Les tuiles ne faisaient plus
+ * que 152 px de large, et leur colonne de texte 88 px. Dans la tuile
+ * « citation », l'avatar de 38 px et son écart de 12 px en prennent encore 50 :
+ * il restait 38 px pour le rôle. « Automobile · Haute-Garonne » sortait donc de
+ * la tuile, qui est en `overflow: hidden`, et le mot était coupé.
+ *
+ * Les deux remplissages intérieurs se resserrent sous 480 px et rendent 76 px
+ * à la ligne. Les valeurs de la maquette restent entières au-dessus : elle
+ * rend 40 px de marge de page à 390 px (mesure du 08/10, onze gabarits), et sa
+ * capture de référence est prise à 1280 px.
+ */
+@media (max-width: 480px) {
+  .canevas {
+    padding: 32px 18px 34px !important;
+  }
+
+  .tuileCorps {
+    padding: 22px 20px 24px !important;
+  }
+
+  /*
+   * LA TUILE PHOTO REPRENAIT SA HAUTEUR AU TEXTE, et le texte la perdait.
+   *
+   * Son contenu est posé en absolu sur toute la tuile (`inset: 0`) : il ne
+   * compte donc pas dans la hauteur de la tuile. Sur grand écran la grille
+   * donne 290 px à la rangée et tout tient. Sur une colonne, la rangée tombe à
+   * `minmax(240px, auto)` et l'`auto` ne joue jamais, puisque rien dans le flux
+   * ne demande davantage. La citation, elle, en demandait 270 à 324 : elle
+   * passait AU DESSUS du cadre, et la tuile est en `overflow: hidden`.
+   *
+   * Mesuré le 13/10 à 320 px : « On rappelait le même prestataire… » coupée de
+   * 30 px, « Les habilitations, c'était un fichier… » de 84 px. On lisait
+   * « le même prestataire, et il redécouvrait », le début manquait. Vu d'abord
+   * sur capture, la porte ne regardait alors que les débordements horizontaux.
+   *
+   * `position: relative` remet ce calque DANS le flux : la tuile grandit avec
+   * sa citation, la photo et son dégradé, eux, restent en absolu et remplissent
+   * la nouvelle hauteur. `inset: 0` ne déplace rien sur un élément relatif, et
+   * l'ordre du document garde le texte au dessus du dégradé. Le `min-height`
+   * conserve la photo visible quand la citation est courte.
+   */
+  .tuilePhoto {
+    position: relative !important;
+    min-height: 240px;
+  }
+}

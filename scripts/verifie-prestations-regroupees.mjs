@@ -174,6 +174,21 @@ export function juge({ url, attendues, cartesFiche, cartesRendu, urlsConnues }) 
   }
   const h1Connus = new Set([...urlsConnues.values()].map((h) => norme(h)));
   for (const c of cartesFiche) {
+    /* UNE CARTE DOIT OUVRIR QUELQUE CHOSE, et c'est le point que cette porte
+       ratait. Elle acceptait une carte dont le TITRE correspondait à un h1
+       connu, même sans aucun lien : « parTitre OU parLien » suffisait. Trois
+       cartes passaient ainsi, « Dépannage industriel », « Transfert
+       industriel » et « Montage industriel », pendant que la porte imprimait
+       « chacune rattachée à une page réelle ». Le visiteur pouvait les déplier
+       et lire, sans jamais pouvoir atteindre la page.
+
+       Un relecteur adverse l'a trouvé avec son propre témoin, pas la porte. */
+    if (!c.href) {
+      fautes.push(
+        `${url} : la carte « ${c.titre} » n'ouvre AUCUN lien. Le visiteur la ` +
+          `déplie et ne peut pas atteindre la page qu'elle nomme.`,
+      );
+    }
     if (!h1Connus.has(norme(c.titre)) && !(c.href && urlsConnues.has(c.href))) {
       fautes.push(`${url} : la carte « ${c.titre} » ne correspond à aucune page réelle du site`);
     }
@@ -377,7 +392,14 @@ if (fautes.length > 0) {
 }
 
 console.log(
-  `blocs « Les prestations regroupées ici » conformes : ${fiches.length} bloc(s), ` +
+  /* LE COMPTE SE DIT PAR PAGE, pas en somme. « 25 prestations » est un total
+     sur quatre adresses dont DEUX servent la même page : aucune page n'en
+     affiche 25, la plus fournie en montre 8. Mehdi se plaint page par page, le
+     verdict doit donc se lire page par page. Un relecteur adverse a relevé que
+     la somme laissait croire a une richesse qu'aucune page ne porte. */
+  `blocs « Les prestations regroupées ici » conformes : ${fiches.length} bloc(s) ` +
+    `(${new Set(fiches.map((f) => f.prestations.map((x) => x.titre).join("|"))).size} page(s) distincte(s)), de ` +
+    `${Math.min(...fiches.map((f) => f.prestations.length))} à ${Math.max(...fiches.map((f) => f.prestations.length))} prestations par page, ` +
     `${prestationsVues} prestation(s) listées, chacune rattachée à une page réelle, ` +
     `aucune prestation du groupe oubliée, rendu servi au même compte que la fiche`,
 );

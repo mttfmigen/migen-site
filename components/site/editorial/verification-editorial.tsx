@@ -22,6 +22,11 @@
  */
 
 import assert from "node:assert/strict";
+
+/* Le retrait des ornements du téléphone vit dans son propre module : la porte
+   du gabarit ressource lit le même HTML et doit le lire de la même façon.
+   Voir `ornements-mobiles.ts` pour le pourquoi, et le défaut qu'il répare. */
+import { sansOrnementsMobiles } from "./ornements-mobiles";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -312,40 +317,6 @@ function rend(relais: Relais): string {
  * la balise n'est jamais refermee n'est PAS retire, parce qu'on ne devine pas.
  * Les controles en bas de fichier le prouvent dans les deux sens.
  */
-export function sansOrnementsMobiles(html: string): string {
-  const marque = /<(\w+)\b[^>]*\sdata-mobile-seulement\b[^>]*?(\/?)>/;
-  let sortie = html;
-  for (;;) {
-    const depart = marque.exec(sortie);
-    if (!depart) return sortie;
-    const [ouvrant, balise, autoFerme] = depart;
-    const debut = depart.index;
-    if (autoFerme === "/") {
-      sortie = `${sortie.slice(0, debut)} ${sortie.slice(debut + ouvrant.length)}`;
-      continue;
-    }
-    const jetons = new RegExp(`<${balise}\\b[^>]*?(\\/?)>|</${balise}>`, "g");
-    jetons.lastIndex = debut;
-    let profondeur = 0;
-    let fin = -1;
-    let jeton: RegExpExecArray | null;
-    while ((jeton = jetons.exec(sortie)) !== null) {
-      if (jeton[0].startsWith("</")) {
-        profondeur -= 1;
-        if (profondeur === 0) {
-          fin = jeton.index + jeton[0].length;
-          break;
-        }
-      } else if (jeton[1] !== "/") {
-        profondeur += 1;
-      }
-    }
-    // Balise jamais refermee : on ne retire rien et on s'arrête, plutôt que de
-    // couper au hasard et de rendre la comparaison muette.
-    if (fin < 0) return sortie;
-    sortie = `${sortie.slice(0, debut)} ${sortie.slice(fin)}`;
-  }
-}
 
 function controle(relais: Relais, capture: string, brut: string): string[] {
   const htmlBrut = sansOrnementsMobiles(brut);
@@ -447,15 +418,64 @@ function controleEtiquettes(html: string): string[] {
       ecarts.push("un bloc repliable sans bascule");
       continue;
     }
-    /* L'étiquette se reconnaît à son marquage et à l'ABSENCE d'`aria-hidden` :
-       le chevron de la même bascule porte les deux. On ne peut pas la nommer
-       par sa classe, les modules CSS ne sont pas hachés hors du build. */
-    const etiquettes = bascule.enfants.filter(
+    /* L'ÉTIQUETTE SE RECONNAÎT À TROIS CHOSES, et il en faut bien trois.
+       Son marquage `data-mobile-seulement`, l'ABSENCE d'`aria-hidden` (le
+       chevron de la même bascule porte les deux) et sa balise, un `<span>`.
+       On ne peut pas la nommer par sa classe : les modules CSS ne sont pas
+       hachés hors du build.
+
+       LA BALISE A ÉTÉ AJOUTÉE LE 13/10, et elle répare une porte rouge.
+       Ce contrôle ne regardait que les deux premiers critères, et comptait
+       donc AUSSI le résumé de deux lignes, qui porte le même marquage et n'a
+       pas d'`aria-hidden` puisqu'il doit être lu. Il annonçait « 2 étiquettes
+       dans une bascule » sur les neuf blocs de la page pilote, et sa propre
+       assertion de contrôle tombait avec.
+
+       Les deux décisions du 12/10 se contredisaient : le résumé est entré
+       dans le `<summary>` (seul endroit où un navigateur récent le peint
+       encore) le jour même où ce contrôle y exigeait un unique élément
+       marqué. Ce sont bien deux ornements distincts, et la porte doit savoir
+       les distinguer, pas en refuser un. */
+    const marquesLisibles = bascule.enfants.filter(
       (e): e is Noeud => typeof e !== "string" && "data-mobile-seulement" in e.attrs && !("aria-hidden" in e.attrs),
     );
+    const etiquettes = marquesLisibles.filter((e) => e.balise === "span");
+    const resumes = marquesLisibles.filter((e) => e.balise === "p");
+    const autres = marquesLisibles.filter((e) => e.balise !== "span" && e.balise !== "p");
     if (etiquettes.length !== 1) {
       ecarts.push(`${etiquettes.length} étiquette(s) dans une bascule, il en faut exactement une`);
       continue;
+    }
+    if (resumes.length > 1) {
+      ecarts.push(`${resumes.length} résumé(s) dans une bascule, il en faut au plus un`);
+    }
+    if (autres.length > 0) {
+      ecarts.push(
+        `ornement mobile inattendu dans une bascule : <${autres.map((e) => e.balise).join(", ")}>, ` +
+          `seuls l'étiquette (span) et le résumé (p) y ont leur place`,
+      );
+    }
+    /* LE RÉSUMÉ DOIT ÊTRE DANS LA BASCULE, ET C'EST UN PIÈGE DÉJÀ PAYÉ.
+       Les navigateurs récents enveloppent tout le contenu d'un `<details>`
+       SAUF son `<summary>` dans le pseudo-élément `::details-content`, et lui
+       posent `content-visibility: hidden` quand le bloc est FERMÉ. Or fermé
+       est le seul état où le résumé doit paraître : posé en FRÈRE du
+       `<summary>`, il n'est jamais peint. Les deux lignes de résumé de
+       1 092 blocs sur 233 pages sont restées invisibles, et personne ne l'a
+       vu parce qu'elles sont bien dans le HTML servi. Seule une porte qui
+       regarde OÙ il est peut le dire sans ouvrir un navigateur. */
+    const resumesEgares = bloc.enfants.filter(
+      (e): e is Noeud =>
+        typeof e !== "string" &&
+        e.balise === "p" &&
+        "data-mobile-seulement" in e.attrs &&
+        !("aria-hidden" in e.attrs),
+    );
+    if (resumesEgares.length > 0) {
+      ecarts.push(
+        `le résumé est FRÈRE du <summary> et non dedans : ` +
+          `fermé, le navigateur ne le peint jamais (content-visibility sur ::details-content)`,
+      );
     }
     const titres = descendants(bloc, (n) => n.balise === "h2");
     if (titres.length !== 1) {
@@ -644,7 +664,45 @@ const FAUTES: [string, string[], RegExp][] = [
     controleEtiquettes(dansLaBascule).some((e) => /DANS la bascule|il en faut exactement un/.test(e)),
     "étiquette : un H2 remis dans la bascule doit être vu",
   );
-  console.log("✓ contrôle des étiquettes : titre divergent, marquage perdu et H2 dans la bascule, tous vus");
+  /* LE RÉSUMÉ SORTI DE LA BASCULE, c'est-à-dire le défaut qui a laissé
+     1 092 résumés invisibles sur 233 pages. On déplace le `<p>` marqué juste
+     APRÈS la fermeture du `<summary>`, là où il était posé avant le 12/10. */
+  const resumeEgare = servi.replace(
+    /(<p data-mobile-seulement=""[^>]*>[\s\S]*?<\/p>)([\s\S]*?<\/summary>)/,
+    (_tout, resume: string, reste: string) => `${reste}${resume}`,
+  );
+  assert.notEqual(resumeEgare, servi, "la faute « résumé égaré » n'a rien changé au rendu");
+  assert.ok(
+    controleEtiquettes(resumeEgare).some((e) => /FRÈRE du <summary>/.test(e)),
+    "étiquette : un résumé posé en frère du <summary> doit être vu",
+  );
+  /* UN SECOND RÉSUMÉ dans la même bascule. */
+  const deuxResumes = servi.replace(
+    /(<p data-mobile-seulement=""[^>]*>[\s\S]*?<\/p>)/,
+    (_tout, resume: string) => `${resume}${resume}`,
+  );
+  assert.notEqual(deuxResumes, servi, "la faute « deux résumés » n'a rien changé au rendu");
+  assert.ok(
+    controleEtiquettes(deuxResumes).some((e) => /résumé\(s\) dans une bascule/.test(e)),
+    "étiquette : deux résumés dans une bascule doivent être vus",
+  );
+  /* ET LE CONTRÔLE NÉGATIF : le résumé À SA PLACE, dans la bascule, ne doit
+     RIEN déclencher. Sans lui, une règle qui crierait sur tous les résumés
+     passerait pour une règle qui sait échouer. */
+  assert.ok(
+    /<summary[^>]*>[\s\S]*?<p data-mobile-seulement=""[\s\S]*?<\/summary>/.test(servi),
+    "la page pilote doit bien porter un résumé DANS sa bascule, sinon ce contrôle ne prouve rien",
+  );
+  assert.deepEqual(
+    controleEtiquettes(servi),
+    [],
+    "contrôle négatif : une bascule avec son étiquette ET son résumé à leur place doit rester muette",
+  );
+  console.log(
+    "✓ contrôle des étiquettes : titre divergent, marquage perdu, H2 dans la bascule,\n" +
+      "  résumé égaré hors de la bascule et résumé en double, tous vus ;\n" +
+      "  étiquette et résumé à leur place restent muets",
+  );
 }
 
 for (const [nom, ecarts, attendu] of FAUTES) {

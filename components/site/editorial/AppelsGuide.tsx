@@ -46,7 +46,10 @@ export function Appel({ texte }: { texte: string }) {
         }}
       >
         <p
-          className={styles.riche}
+          /* `appelTexte` ne porte AUCUN dessin : il sert d'ancre à la règle
+             qui, sous 620 px, donne toute la ligne au texte au lieu de le
+             serrer dans 182 px (voir `PageEditoriale.module.css`). */
+          className={`${styles.riche} ${styles.appelTexte}`}
           style={{
             font: "400 15px/1.65 var(--fb)",
             color: "var(--ink1)",
@@ -210,6 +213,8 @@ export function Panneau() {
           }}
         />
         <div
+          /* Même ancre que ci-dessus, pour la bande finale. */
+          className={styles.bandeTexte}
           style={{
             position: "relative",
             flex: 1,

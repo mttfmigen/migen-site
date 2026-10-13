@@ -32,6 +32,31 @@
   }
   .photo {
     min-height: 400px !important;
+    /*
+     * LA CARTE GRANDIT AVEC SON ENCART, au lieu de le couper.
+     *
+     * L'encart (le « 10 % », sa phrase, les six critères) est posé en absolu
+     * en bas de la carte : il ne compte donc pas dans sa hauteur, et la carte
+     * s'en tient à son `min-height`. Mesuré le 13/10 à 320 px : l'encart
+     * demandait 412 px pour 400 disponibles, et le haut du « 10 % » était
+     * coupé de 12 px par la carte, qui est en `overflow: hidden`.
+     *
+     * La carte devient une colonne qui pousse son unique enfant de flux vers
+     * le bas, et l'encart repasse dans le flux (voir `.encart`). La photo et
+     * son dégradé restent en absolu et remplissent la hauteur obtenue. Le
+     * `min-height` garde la photo visible quand l'encart est court, et la
+     * règle ne vaut que sous 640 px : au dessus, rien ne change.
+     */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .encart {
+    /* `relative` et non `static` : les calques du dessous sont positionnés,
+       donc ils se peindraient PAR DESSUS un élément non positionné, et la
+       photo recouvrirait le texte. `left`, `right` et `bottom` à 0 ne
+       déplacent rien sur un élément relatif. */
+    position: relative !important;
   }
   .carte {
     padding: 18px 8px 20px !important;

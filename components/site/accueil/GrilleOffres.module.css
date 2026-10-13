@@ -48,3 +48,25 @@
     gap: 18px !important;
   }
 }
+
+/*
+ * « CONSTITUER MON ÉQUIPE → » ÉTAIT TRANCHÉ DANS LA CARTE RÉSIDENCE.
+ *
+ * Le bouton porte `white-space: nowrap` (le style `BOUTON` partagé par les six
+ * cartes) : il garde donc sa largeur naturelle de 220 px quoi qu'il arrive. La
+ * carte anthracite, elle, est en `overflow: hidden` et n'offre que 208 px à
+ * 320 px (320 moins 80 px de marge de page et 64 px de son remplissage). Les
+ * 12 px de trop étaient rognés par la carte : mesuré le 12/10 à 320 px, après
+ * hydratation, bandeau de consentement refusé.
+ *
+ * On lève l'interdiction de passer à la ligne pour ce bouton seul, et
+ * seulement sous 420 px. Les cinq autres cartes gardent le leur : leurs
+ * libellés sont plus courts et tiennent. La cible tactile ne perd rien, elle
+ * gagne une ligne de hauteur.
+ */
+@media (max-width: 420px) {
+  .lienResidence {
+    white-space: normal !important;
+    text-align: center;
+  }
+}

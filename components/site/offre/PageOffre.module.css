@@ -94,6 +94,30 @@
   .gabarit :global(.g3-bento5) > * {
     grid-row: auto !important;
   }
+}
+
+/* LA RANGÉE DE CONSTATS DE « 03 PROBLÈME » : DEUX COLONNES, MAIS PAS JUSQU'EN
+   BAS, et c'est la correction du 13/10.
+
+   CE QUE FAISAIT LA RÈGLE : elle imposait deux colonnes à `.mg-rmulti` sur
+   TOUT ce qui est sous 900 px, avec `!important`. Elle battait donc la règle
+   générale d'`app/globals.css`, qui ramène `.mg-rmulti` à UNE colonne sous
+   620 px, et les constats restaient à deux colonnes jusqu'à 320 px.
+
+   CE QUE ÇA DONNAIT, mesuré au navigateur sur le balayage de 18 pages du
+   13/10 : dans le panneau sombre « Votre problématique », deux colonnes de
+   77 px à 320 px. Le texte des constats sortait de sa carte de 11 à 59 px,
+   le panneau le ROGNAIT, et les numéros 02 et 04 passaient sous le texte du
+   constat voisin. Quatre à sept chevauchements par page, sur les pages des
+   gabarits 04 et 06 dont les constats sont les plus longs
+   (`/implantations/maintenance-industrielle-albi/`, `.../la-rochelle/`,
+   `.../chalon-sur-saone/`). À 390 px le défaut tenait encore, de 13 à 24 px.
+
+   LA BORNE BASSE EST 621 px, et elle n'est pas choisie : c'est exactement le
+   point où la règle générale prend le relais avec une colonne. Entre 621 et
+   900 px, la rangée garde les deux colonnes de la maquette ; en dessous, elle
+   suit le site. Rien ne change au-dessus de 900 px. */
+@media (min-width: 621px) and (max-width: 900px) {
   .gabarit [data-screen-label="03 Problème"] :global(.mg-rmulti) {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }

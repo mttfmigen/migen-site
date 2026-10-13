@@ -10,4 +10,59 @@
   .basLarge {
     grid-column: auto !important;
   }
+
+  /*
+   * LE SUR-TITRE ET LE GRAND NOMBRE SE SUPERPOSAIENT, et seul un rendu réel
+   * pouvait le dire.
+   *
+   * Le panneau sombre est une colonne en `justify-content: space-between`.
+   * Sur l'écran large il tient DEUX RANGS de la grille (`grid-row: span 2`) :
+   * il est bien plus haut que son contenu, et `space-between` écarte
+   * « Croissance » du nombre. Sous 900 px la grille passe sur une colonne, le
+   * panneau retrouve la hauteur de son contenu, l'espace à répartir tombe à
+   * zéro, et les deux blocs se touchent. Le nombre porte alors un interligne
+   * de 0,9 (`clamp(56px,7vw,104px)/.9`), plus court que ses propres glyphes :
+   * le « +10 M€ » remonte DANS le sur-titre orange.
+   *
+   * Mesuré le 12/10, après hydratation, recouvrement de 160 × 8 px à 320 px et
+   * de 174 × 8 px à 360 et 390 px. Un `gap` donne le minimum que
+   * `space-between` n'a plus à distribuer ; au-dessus de 900 px il n'existe
+   * pas, et la capture de la maquette à 1280 px ne bouge pas.
+   */
+  .panneau {
+    gap: 20px;
+  }
+}
+
+/*
+ * LA CARTE DES DEUX DERNIERS CHIFFRES SE MET EN COLONNE SUR LES PETITS ÉCRANS.
+ *
+ * Elle aligne « +120 collaborateurs » et « +200 clients industriels » en
+ * rangée, séparés par un filet vertical, avec 46 px d'écart. Les deux blocs
+ * demandent environ 230 px à eux seuls : à 320 px, la carte n'en offre que
+ * 180 (320 moins 80 px de marge de page et 60 px de remplissage), et le
+ * second chiffre sortait de 56 px de `.mg-site`, qui est en `overflow-x:
+ * clip` : « +200 clients industriels » était donc COUPÉ, sans barre de
+ * défilement pour le signaler. À 360 px il sortait encore de 16 px.
+ *
+ * Motif retenu après recherche dans la bibliothèque 21st (« Alternating Rows
+ * With Stats », « Numbers Stats Grid ») : les rangées de chiffres y passent en
+ * une colonne au point de rupture, et leur séparateur VERTICAL devient un
+ * filet HORIZONTAL. Seule cette composition est reprise ; l'habillage reste
+ * celui du site, le filet garde `var(--line)` et l'écart suit le rythme de la
+ * maquette. Le seuil est 430 px : au-dessus, les deux chiffres tiennent en
+ * rangée et le rendu de référence à 390 px n'est pas touché.
+ */
+@media (max-width: 430px) {
+  .basLarge {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 20px !important;
+  }
+
+  /* Le filet : deuxième enfant de la carte, posé en 1 × 56 px en ligne. */
+  .basLarge > div:nth-child(2) {
+    width: 100% !important;
+    height: 1px !important;
+  }
 }

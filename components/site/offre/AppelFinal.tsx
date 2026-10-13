@@ -1,5 +1,7 @@
 import type { CSSProperties } from "react";
 
+import { appliqueDecisions } from "@/lib/decisions-copie";
+
 import PanneauFormulaire from "./PanneauFormulaire";
 
 /**
@@ -32,7 +34,25 @@ export interface ProprietesAppelFinal {
    * `/offres/zero-arret/` écrit « Demander mon diagnostic gratuit ».
    */
   bouton?: string;
+  /**
+   * Le chemin de la page, pour les décisions de copie à portée limitée
+   * (`lib/decisions-copie.ts`). Absent, la phrase ci-dessous passe telle
+   * quelle, et c'est le cas de tous les gabarits sauf OFFRE.
+   */
+  chemin?: string;
 }
+
+/**
+ * La phrase du panneau, mot pour mot celle de la capture (relevée sur les 10
+ * captures de la famille offre, dont `maquette/rendu/travaux-industriels.html`).
+ *
+ * ELLE EST SORTIE DU JSX POUR UNE SEULE RAISON : les décisions de copie à
+ * portée limitée s'appliquent à une CHAÎNE. Dans le JSX, le texte était coupé
+ * par le retour à la ligne, et aucune règle ne pouvait reconnaître « vous
+ * présente les techniciens adaptés » à cheval sur deux lignes. Le rendu est
+ * identique : JSX ramenait déjà ce retour à un espace simple.
+ */
+const PHRASE = "Rappel dans l\u2019heure aux horaires ouvrés. Un chargé d\u2019affaires qualifie votre besoin et vous présente les techniciens adaptés.";
 
 const PANNEAU: CSSProperties = {
   maxWidth: 1200,
@@ -74,6 +94,7 @@ export default function AppelFinal({
   question,
   formulaire,
   bouton = "Parler à un chargé d'affaires",
+  chemin,
 }: ProprietesAppelFinal) {
   return (
     <section style={{ padding: "var(--sec) 24px var(--sec)" }}>
@@ -92,10 +113,7 @@ export default function AppelFinal({
         >
           <div>
             {question ? <h2 style={TITRE}>{question}</h2> : null}
-            <p style={TEXTE}>
-              Rappel dans l’heure aux horaires ouvrés. Un chargé d’affaires
-              qualifie votre besoin et vous présente les techniciens adaptés.
-            </p>
+            <p style={TEXTE}>{appliqueDecisions(PHRASE, chemin)}</p>
           </div>
           <div
             style={{

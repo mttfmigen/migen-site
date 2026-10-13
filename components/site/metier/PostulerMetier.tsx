@@ -577,13 +577,19 @@ export default function PostulerMetier() {
                   alignItems: "center",
                   justifyContent: "space-between",
                   gap: 12,
+                  // LE RETOUR A LA LIGNE EST LA CORRECTION, et elle ne touche
+                  // ni le champ, ni son nom, ni l'envoi : rien que la rangee.
+                  // A 320 px la cellule du formulaire fait 140 px de contenu,
+                  // les deux libelles en demandent 215, et « Ajouter » sortait
+                  // de 9 px de son cadre pointille.
+                  flexWrap: "wrap",
                   padding: "14px 16px",
                   borderRadius: "var(--rad-s)",
                   border: "1.5px dashed rgba(28,27,25,.2)",
                   cursor: "pointer",
                 }}
               >
-                <span style={{ font: "400 14px var(--fb)", color: "var(--ink2)" }}>
+                <span style={{ font: "400 14px var(--fb)", color: "var(--ink2)", minWidth: 0 }}>
                   CV et habilitations (PDF)
                 </span>
                 <span style={{ font: "600 13px var(--fb)", color: "var(--acc)" }}>

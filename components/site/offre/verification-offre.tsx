@@ -2,6 +2,7 @@
  * Contrôle du gabarit OFFRE, sans navigateur.
  *
  *   bun components/site/offre/verification-offre.tsx
+ *   bun components/site/offre/verification-offre.tsx --controle   (mode témoin)
  *
  * LA RÉFÉRENCE, et elle est unique : le rendu de la maquette autonome, figé
  * dans `maquette/rendu/offres--residence.html` (validé le 06/10, 17 sections).
@@ -28,6 +29,13 @@
  * 7. TOUTES LES PAGES DU GABARIT 03 déclarées par l'index de la maquette
  *    passent les mêmes contrôles, la liste étant déduite de l'index et non
  *    écrite à la main.
+ * 8. LE CHEMIN DE LA PAGE DESCEND JUSQU'AUX LIBELLÉS PARTAGÉS (13/10) : les
+ *    cinq phrases que la famille offre écrit en dur suivent la décision de
+ *    portée limitée de leur page, et restent intactes partout ailleurs.
+ *
+ * MODE TÉMOIN, `--controle` : il couvre le point 8. Il remet les cinq façons
+ * de le casser et exige que chaque contrôle voie LA SIENNE, reconnue à son
+ * message, puis repasse les cas licites pour exiger qu'il NE les voie PAS.
  */
 
 import assert from "node:assert/strict";
@@ -35,12 +43,16 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import type { ReactElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { appliqueDecisions } from "@/lib/decisions-copie";
 import type { ContenuOffre } from "@/types/offre";
 
+import AppelFinal from "./AppelFinal";
+import MarquesOffre from "./MarquesOffre";
 import PageOffre from "./PageOffre";
+import Reassurance from "./Reassurance";
 import { BLOCS_LECTURE } from "./generique/BlocsLecture";
 import { BLOCS_VENTE, INTERNES_VENTE } from "./generique/BlocsVente";
 import type { Bloc } from "./generique/types";
@@ -435,6 +447,166 @@ assert.deepEqual(
   `pages du gabarit 03 sans fichier de données dans ${DOSSIER} : ${manquantes.join(", ")}`,
 );
 
+/* ------- 9. LE CHEMIN DE LA PAGE DESCEND JUSQU'AUX LIBELLÉS PARTAGÉS
+
+   CE QUE CE CONTRÔLE TIENT, et pourquoi il ne pouvait pas vivre dans
+   `lib/verification-decisions-copie.ts` : cette porte-là tient la RÈGLE,
+   celle-ci tient le CHEMIN. Cinq libellés de la famille offre sont écrits en
+   dur dans des composants que TOUT le site partage, et la décision du 12/10 ne
+   vaut que pour dix pages. Les composants ne peuvent donc l'appliquer que si le
+   gabarit leur passe le chemin de la page. Une règle juste dont le chemin n'est
+   plus descendu laisse le rendu fautif SANS QU'AUCUNE RÈGLE NE CHANGE : c'est
+   exactement l'état mesuré en production le 12/10, et c'est ce trou-ci qui le
+   referme.
+
+   LES DEUX SENS COMPTENT AUTANT : dans la portée, le libellé doit être réécrit ;
+   dehors, il doit rester mot pour mot celui de la maquette, sur les 236 autres
+   pages où « technicien » est juste.
+
+   AUCUN ARBITRAGE N'EST ÉCRIT ICI : la forme attendue est demandée à
+   `appliqueDecisions`, jamais recopiée. Une porte qui réécrirait la décision de
+   son côté finirait par la contredire. */
+
+const LIBELLES_PARTAGES = [
+  /* `AppelFinal` */
+  "Rappel dans l\u2019heure aux horaires ouvrés. Un chargé d\u2019affaires qualifie votre besoin et vous présente les techniciens adaptés.",
+  /* `MarquesOffre` */
+  "Vos machines sont dans la liste\u00a0? Le technicien qui les connaît fait déjà partie de nos équipes.",
+  /* `generique/PageVente`, bande d'appel des sections numérotées */
+  "Jours ouvrés · technicien depuis le hub le plus proche · partout en France",
+  /* `generique/maquette.js`, le `STATS` recopié de la maquette */
+  "des techniciens réussissent notre double évaluation",
+  /* `generique/PageVente`, repère du héros, et le défaut de `Reassurance` */
+  "des techniciens retenus",
+] as const;
+
+/** Une page DANS la portée de la décision, et une page hors d'elle. */
+const EN_PORTEE = "/travaux-industriels/";
+const HORS_PORTEE = "/offres/residence/";
+
+for (const libelle of LIBELLES_PARTAGES) {
+  assert.notEqual(
+    appliqueDecisions(libelle, EN_PORTEE),
+    libelle,
+    `${EN_PORTEE} doit être dans la portée de la décision pour « ${libelle.slice(0, 60)} »`,
+  );
+  assert.equal(
+    appliqueDecisions(libelle, HORS_PORTEE),
+    libelle,
+    `${HORS_PORTEE} doit rester hors de la portée pour « ${libelle.slice(0, 60)} »`,
+  );
+}
+
+const vus = new Map(LIBELLES_PARTAGES.map((l) => [l, { decide: 0, brut: 0 }]));
+
+/**
+ * Le rendu d'une page : dans la portée, plus un seul libellé brut ; dehors,
+ * plus un seul libellé décidé.
+ */
+function verifieLibellesPartages(nom: string, url: string, html: string): void {
+  const texte = normaliseTexte(texteLisible(html));
+  for (const libelle of LIBELLES_PARTAGES) {
+    const brut = normaliseTexte(libelle);
+    const decide = normaliseTexte(appliqueDecisions(libelle, EN_PORTEE));
+    const compte = vus.get(libelle)!;
+    if (appliqueDecisions(libelle, url) !== libelle) {
+      assert.ok(
+        !texte.includes(brut),
+        `${nom} : « ${libelle.slice(0, 70)} » rendu tel quel alors que la décision du 12/10 le renomme sur ${url} ; le chemin de la page n'est pas descendu jusqu'au composant`,
+      );
+      if (texte.includes(decide)) compte.decide += 1;
+    } else {
+      assert.ok(
+        !texte.includes(decide),
+        `${nom} : « ${decide.slice(0, 70)} » rendu sur ${url}, qui est HORS de la portée de la décision du 12/10 ; la règle a fui`,
+      );
+      if (texte.includes(brut)) compte.brut += 1;
+    }
+  }
+}
+
+/* LE CONTRÔLE DES COMPOSANTS EUX-MÊMES, et il est séparé exprès. Le contrôle
+   de page ci-dessus ne distingue pas un libellé rendu par le composant d'une
+   phrase voisine portée par la fiche. Ici, c'est LE MÊME composant, LES MÊMES
+   props, et seul le chemin change : le basculement ne peut venir que de lui. */
+function compte(texte: string, motif: string): number {
+  let n = 0;
+  for (let i = texte.indexOf(motif); i >= 0; i = texte.indexOf(motif, i + motif.length)) n += 1;
+  return n;
+}
+
+function verifieBascule(quoi: string, libelle: string, noeud: (chemin?: string) => ReactElement): void {
+  const rendu = (chemin?: string) => normaliseTexte(texteLisible(renderToStaticMarkup(noeud(chemin))));
+  const brut = normaliseTexte(libelle);
+  const decide = normaliseTexte(appliqueDecisions(libelle, EN_PORTEE));
+  const dans = rendu(EN_PORTEE);
+  const dehors = rendu(HORS_PORTEE);
+  const sans = rendu(undefined);
+
+  /* ON COMPTE, ON NE CHERCHE PAS LA PRÉSENCE, et c'est la porte rouge qui me
+     l'a appris : la fiche de `/bureau-etudes/bureau-etude-electrique/` écrit
+     elle-même « 10 % des experts techniques retenus ». Chercher la forme
+     décidée dans la page la trouvait donc déjà hors portée, et le contrôle
+     accusait une fuite qui n'existait pas. Ce qui se vérifie, c'est que les
+     occurrences du LIBELLÉ DU COMPOSANT basculent, et elles seules. */
+  assert.equal(
+    compte(dans, brut),
+    0,
+    `${quoi} : dans la portée, « ${brut.slice(0, 70)} » est encore rendu tel quel`,
+  );
+  /* LA FORME BRUTE DOIT SURVIVRE HORS PORTÉE : c'est à la fois le détecteur de
+     fuite (une règle devenue globale la ferait disparaître partout) et la
+     preuve que ce contrôle n'est pas vide. */
+  assert.ok(
+    compte(dehors, brut) > 0,
+    `${quoi} : hors portée, « ${brut.slice(0, 70)} » doit rester mot pour mot`,
+  );
+  assert.equal(
+    compte(dans, decide) - compte(dehors, decide),
+    compte(dehors, brut),
+    `${quoi} : toutes les occurrences du libellé doivent basculer, et elles seules`,
+  );
+  /* SANS CHEMIN, LE RENDU D'AVANT LE 13/10, mot pour mot : c'est ce qui garde
+     les gabarits qui ne passent rien (secteur, ville, expertises, hub). */
+  assert.equal(sans, dehors, `${quoi} : sans chemin, le rendu doit être celui d'une page hors portée`);
+}
+
+const ELECTRIQUE = litPage("bureau-etudes-bureau-etude-electrique.json");
+
+function basculesDesComposants(): void {
+  verifieBascule("Reassurance, repère par défaut", "des techniciens retenus", (chemin) => (
+    <Reassurance chemin={chemin} />
+  ));
+  verifieBascule(
+    "AppelFinal, phrase du panneau",
+    "Rappel dans l\u2019heure aux horaires ouvrés. Un chargé d\u2019affaires qualifie votre besoin et vous présente les techniciens adaptés.",
+    (chemin) => <AppelFinal formulaire="controle" chemin={chemin} />,
+  );
+  verifieBascule(
+    "MarquesOffre, promesse de l'entête",
+    "Vos machines sont dans la liste\u00a0? Le technicien qui les connaît fait déjà partie de nos équipes.",
+    (chemin) => <MarquesOffre famille="auto" chemin={chemin} />,
+  );
+  /* `PageVente` ne se monte pas seul : il se rend par `PageOffre`, depuis la
+     fiche GÉNÉRIQUE d'une vraie page. La même fiche sert les deux chemins, si
+     bien que seule la portée les sépare. */
+  for (const libelle of [
+    "Jours ouvrés · technicien depuis le hub le plus proche · partout en France",
+    "des techniciens réussissent notre double évaluation",
+    "des techniciens retenus",
+  ])
+    verifieBascule(`PageVente, « ${libelle.slice(0, 48)} »`, libelle, (chemin) => (
+      <PageOffre
+        titre={ELECTRIQUE.titre_h1 ?? ELECTRIQUE.url}
+        contenu={ELECTRIQUE.contenu}
+        formulaire="controle"
+        chemin={chemin}
+      />
+    ));
+}
+
+basculesDesComposants();
+
 for (const nom of fichiers) {
   const page = litPage(nom);
 
@@ -449,6 +621,9 @@ for (const nom of fichiers) {
       titre={page.titre_h1 ?? `Titre de ${page.url}`}
       contenu={page.contenu}
       formulaire={`cocon${page.url.replace(/\//g, "-")}`}
+      // Le chemin, comme la route le passe : sans lui, les décisions de copie
+      // à portée limitée seraient inertes ici et le contrôle 9 ne verrait rien.
+      chemin={page.url}
       // Pas de fil d'Ariane ni de maillage : ils interrogent la base.
     />,
   );
@@ -460,6 +635,7 @@ for (const nom of fichiers) {
   );
   assert.ok(!/href="#"/.test(html), `${nom} : un href="#" est rendu`);
   verifieInterdits(html, nom);
+  verifieLibellesPartages(nom, page.url, html);
 
   /* Pages génériques : chaque bloc que le code de la maquette produit doit
      avoir son rendu porté. Un type nouveau (une page ajoutée, un markdown
@@ -495,8 +671,125 @@ for (const nom of fichiers) {
   }
 }
 
+/* LA PORTE N'EST PAS VIDE : chaque libellé doit avoir été vu décidé au moins
+   une fois dans la portée, et brut au moins une fois dehors. Sans ces deux
+   lignes, un libellé que plus aucun composant ne rend ferait passer la porte
+   au vert en ne vérifiant rien. */
+for (const [libelle, tenu] of vus) {
+  assert.ok(
+    tenu.decide > 0,
+    `aucune page de la portée ne rend « ${normaliseTexte(appliqueDecisions(libelle, EN_PORTEE)).slice(0, 70)} » : libellé disparu du composant, ou chemin non descendu`,
+  );
+  assert.ok(
+    tenu.brut > 0,
+    `aucune page hors portée ne rend « ${libelle.slice(0, 70)} » : le libellé du composant a changé, cette liste est périmée`,
+  );
+}
+
 console.log(`gabarit offre : toutes les vérifications passent.`);
 console.log(
   `  capture relue (${CAPTURE.split("\n").length} lignes), ` +
     `${fichiers.length} pages réelles rendues, ${INTERDITS.length} interdits vérifiés absents.`,
 );
+console.log(
+  `  ${LIBELLES_PARTAGES.length} libellés de composant partagé : ` +
+    [...vus].map(([l, c]) => `« ${l.slice(0, 26)}… » ${c.decide} décidé / ${c.brut} brut`).join(", ") +
+    ".",
+);
+
+/* -------------------------------------------------------- le mode témoin
+
+   IL NE COUVRE QUE LE POINT 8, celui ajouté le 13/10. Les sept autres
+   contrôles de ce fichier comparent à une capture relue à chaque exécution :
+   leur capacité à échouer vient de la capture elle-même, pas d'un témoin. */
+
+if (process.argv.includes("--controle")) {
+  let vues = 0;
+  let manques = 0;
+
+  /* UN TÉMOIN QUI TOMBE SUR LA RÈGLE VOISINE NE PROUVE RIEN : on exige que le
+     message de l'échec soit celui de la règle visée. */
+  const doitEchouerSur = (quoi: string, fragment: string, fautif: () => void) => {
+    try {
+      fautif();
+    } catch (e) {
+      const message = (e as Error).message ?? "";
+      if (message.includes(fragment)) {
+        vues += 1;
+        console.log(`  vue        : ${quoi}`);
+        return;
+      }
+      manques += 1;
+      console.error(`  AUTRE RÈGLE : ${quoi} (attendu « ${fragment} », obtenu « ${message.slice(0, 140)} »)`);
+      return;
+    }
+    manques += 1;
+    console.error(`  MANQUÉE    : ${quoi}`);
+  };
+  const doitPasser = (quoi: string, licite: () => void) => {
+    try {
+      licite();
+      console.log(`  acceptée   : ${quoi}`);
+    } catch (e) {
+      manques += 1;
+      console.error(`  FAUX DÉFAUT : ${quoi} (${(e as Error).message.slice(0, 140)})`);
+    }
+  };
+
+  const PHRASE_TEMOIN = "des techniciens retenus";
+  const DECIDE_TEMOIN = appliqueDecisions(PHRASE_TEMOIN, EN_PORTEE);
+
+  /* Trois composants de laboratoire, chacun cassé d'une façon précise. */
+  /* SOURD : il reçoit le chemin et n'en fait rien, l'état du 12/10. */
+  const Sourd = () => <p>{PHRASE_TEMOIN}</p>;
+  const Global = () => <p>{DECIDE_TEMOIN}</p>;
+  const Inverse = ({ chemin }: { chemin?: string }) => (
+    <p>{chemin === HORS_PORTEE ? PHRASE_TEMOIN : DECIDE_TEMOIN}</p>
+  );
+  const Juste = ({ chemin }: { chemin?: string }) => <p>{appliqueDecisions(PHRASE_TEMOIN, chemin)}</p>;
+
+  console.log("\ntémoin : les cinq façons de casser le point 8");
+  doitEchouerSur(
+    "un composant SOURD au chemin : il rend « des techniciens retenus » partout",
+    "dans la portée, « des techniciens retenus » est encore rendu tel quel",
+    () => verifieBascule("témoin sourd", PHRASE_TEMOIN, () => <Sourd />),
+  );
+  doitEchouerSur(
+    "une règle devenue GLOBALE : le composant renomme même hors portée",
+    "hors portée, « des techniciens retenus » doit rester mot pour mot",
+    () => verifieBascule("témoin global", PHRASE_TEMOIN, () => <Global />),
+  );
+  doitEchouerSur(
+    "un composant qui renomme SANS CHEMIN, donc sur les gabarits qui n'en passent pas",
+    "sans chemin, le rendu doit être celui d'une page hors portée",
+    () => verifieBascule("témoin sans chemin", PHRASE_TEMOIN, (chemin) => <Inverse chemin={chemin} />),
+  );
+  doitEchouerSur(
+    "une page DE LA PORTÉE qui sert encore le libellé brut",
+    "le chemin de la page n'est pas descendu jusqu'au composant",
+    () => verifieLibellesPartages("témoin.json", EN_PORTEE, `<p>${PHRASE_TEMOIN}</p>`),
+  );
+  doitEchouerSur(
+    "une page HORS portée qui sert le libellé décidé",
+    "qui est HORS de la portée de la décision du 12/10 ; la règle a fui",
+    () => verifieLibellesPartages("témoin.json", HORS_PORTEE, `<p>${DECIDE_TEMOIN}</p>`),
+  );
+
+  console.log("\ntémoin : les cas licites, qui ne doivent PAS être vus");
+  doitPasser("un composant qui demande la décision à sa page", () =>
+    verifieBascule("témoin juste", PHRASE_TEMOIN, (chemin) => <Juste chemin={chemin} />),
+  );
+  doitPasser("les quatre composants réels de la famille offre", () => basculesDesComposants());
+  doitPasser("une page hors portée qui garde le libellé brut", () =>
+    verifieLibellesPartages("témoin.json", HORS_PORTEE, `<p>${PHRASE_TEMOIN}</p>`),
+  );
+  doitPasser("une page de la portée qui sert le libellé décidé", () =>
+    verifieLibellesPartages("témoin.json", EN_PORTEE, `<p>${DECIDE_TEMOIN}</p>`),
+  );
+
+  console.log(`\ntémoin : ${vues} fautes vues, ${manques} manquées.`);
+  if (manques > 0) {
+    console.error("la porte ne sait pas échouer sur tout ce qu'elle prétend tenir.");
+    process.exit(1);
+  }
+}

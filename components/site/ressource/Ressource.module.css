@@ -60,10 +60,42 @@
     display: contents;
   }
 
+  /*
+   * LA BASCULE N'EXISTE PAS DU TOUT SUR BUREAU, et pas seulement son contenu.
+   *
+   * ELLE ETAIT EN `display: block`, et il le fallait : elle portait alors le
+   * VRAI `<h2>` de la partie, qu'il aurait ete absurde de masquer. Depuis le
+   * 13/10 elle ne porte plus qu'une etiquette de telephone, le `<h2>` est
+   * revenu dans le corps du bloc : vidée, elle resterait un `<summary>`
+   * focalisable, soit 221 arrets de tabulation muets sur les 35 pages du
+   * gabarit. `display: none` la retire de l'ordre de tabulation et de l'arbre
+   * d'accessibilite.
+   *
+   * ET LA FUSION DES MARGES EST MIEUX SERVIE QU'AVANT : le `summary` ne
+   * s'interpose plus du tout entre le bloc precedent et la marge haute de
+   * 44 px du `<h2>`. C'est le correctif du 12/10 poursuivi, jamais defait :
+   * les 196 sections des 40 pages restent mesurees contre leur capture par
+   * `scripts/verifie-mise-en-page-ressource.mjs`.
+   */
   .colonne details[data-pliable-mobile] > summary {
+    display: none;
+  }
+}
+
+/* L'ETIQUETTE DE LA BASCULE n'existe QUE sous 880 px, seuil de
+   `SectionPliableMobile.module.css` : c'est lui qui decide du repli, les deux
+   doivent rester d'accord. Depliee, l'etiquette s'efface : la partie montre
+   alors son vrai titre, et le dire deux fois de suite n'aiderait personne. */
+.etiquettePli {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .etiquettePli {
     display: block;
-    padding-block: 0;
-    margin-block: 0;
+  }
+  details[open] > summary > .etiquettePli {
+    display: none;
   }
 }
 
@@ -80,5 +112,94 @@
 @media (max-width: 760px) {
   :global(.mg-site) .appelTitre {
     font-size: clamp(26px, 3vw, 40px) !important;
+  }
+}
+
+/* ===================================================================
+   RESPONSIVE DU GABARIT RESSOURCE, mesuré au navigateur le 13/10 à
+   320, 360, 390 et 768 px, consentement refusé, après hydratation.
+   Porte : `components/site/editorial/verification-responsive.mjs`.
+
+   RIEN ICI NE TOUCHE AU BUREAU, et surtout rien ne défait le correctif
+   du 12/10 qui a rendu au gabarit les 29 à 33 px par partie que le
+   repli lui coûtait (`display: contents` au-dessus de 880 px, plus
+   haut dans ce fichier) : les règles qui suivent vivent toutes SOUS
+   880 px, ou passent par `min(100%, Npx)`, qui vaut exactement Npx dès
+   que la place existe.
+   =================================================================== */
+
+/*
+ * « SUR LE MÊME SUJET » DÉBORDAIT DE 30 PX À 320 PX.
+ *
+ * `LECTURES_GRILLE` déclare `repeat(auto-fill, minmax(270px, 1fr))`,
+ * valeur de la capture, et `verification-ressource.tsx` la compare
+ * telle quelle : elle ne bouge pas. Mais un plancher de 270 px dans
+ * les 240 px qu'une section offre à 320 px d'écran fait sortir chaque
+ * carte de 30 px. `min(100%, 270px)` garde 270 px partout où il y a la
+ * place et rend la main au conteneur quand il n'y en a pas.
+ *
+ * Le `:has()` visE la grille depuis ses cartes, pour ne pas toucher au
+ * composant ni à sa déclaration en ligne.
+ */
+@media (max-width: 880px) {
+  div:has(> .lecture) {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)) !important;
+  }
+}
+
+/*
+ * LA BANDE D'APPEL DU CORPS : SON TEXTE RÉCLAMAIT 240 PX DANS 188.
+ *
+ * `BANDE` est une rangée `flex` à `flex-wrap: wrap`, rembourrée de
+ * 26 px de chaque côté, et `BANDE_TEXTE` porte `min-width: 240px` pour
+ * que le bouton ne vienne pas l'étrangler sur grand écran. À 320 px
+ * d'écran il ne reste que 188 px : le texte sortait de 52 px, à 320 ET
+ * 360 px, sur les 38 pages du gabarit.
+ *
+ * Sous 620 px il prend toute la ligne, et les deux boutons passent
+ * dessous : c'est ce que `flex-wrap` sait déjà faire, et c'est la
+ * disposition de la maquette mobile, qui empile ses appels à l'action.
+ * Les libellés cessent d'être insécables plutôt que de sortir du cadre.
+ * Aucun mot n'est changé.
+ */
+@media (max-width: 620px) {
+  .bandeTexte {
+    flex-basis: 100% !important;
+    min-width: 0 !important;
+  }
+  .bandeBouton {
+    white-space: normal !important;
+    max-width: 100% !important;
+  }
+}
+
+/*
+ * LE RÉSUMÉ D'UNE PARTIE REPLIÉE TIENT SUR DEUX LIGNES, comme la
+ * maquette mobile l'écrit.
+ *
+ * `MigenMobile.dc.html`, bloc « Blocs communs (pliables) » :
+ * `display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:
+ * vertical; overflow:hidden` sur le résumé d'une section fermée. Le
+ * site, lui, le rendait sans limite : or `resumeDeLaPartie` joint TOUS
+ * les intertitres d'une partie par « · », ce qui donnait sept à dix
+ * lignes sous chaque bascule au lieu de deux. Le repli, qui existe pour
+ * raccourcir la page, la rallongeait.
+ *
+ * La coupe est DÉCLARÉE : la porte du responsive la compte comme un
+ * choix de dessin et non comme du texte perdu, parce qu'un `line-clamp`
+ * prévient le lecteur que la suite existe, et elle est juste là, sous
+ * la bascule.
+ *
+ * Le sélecteur est ancré sur `.colonne`, la colonne de lecture de ce
+ * gabarit : aucun autre n'est touché. Il bat `.resume` du module
+ * partagé par sa spécificité, sans y toucher.
+ */
+@media (max-width: 880px) {
+  .colonne details[data-pliable-mobile] > summary > p {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }

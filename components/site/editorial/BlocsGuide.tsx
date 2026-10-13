@@ -135,6 +135,11 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
           {bloc.items.map((item, i) => (
             <div
               key={item.titre}
+              /* `carteCartes` ne porte AUCUN dessin : il sert d'ancre à la
+                 règle qui, sous 880 px, empêche le plancher de 250 px de la
+                 grille de sortir d'un écran de 320 px (voir
+                 `PageEditoriale.module.css`). */
+              className={styles.carteCartes}
               style={{ borderRadius: "var(--rad-s)", padding: "24px 24px 26px", ...VERRE }}
             >
               <div

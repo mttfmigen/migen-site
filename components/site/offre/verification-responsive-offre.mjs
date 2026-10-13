@@ -74,7 +74,14 @@
 import { chromium } from "playwright";
 
 const SITE = process.env.SITE_URL ?? "http://localhost:4340";
-const LARGEURS = [320, 360, 390, 768];
+/* Les quatre largeurs de la porte. `RESPONSIVE_LARGEURS` et `RESPONSIVE_PAGES`
+   n'existent que pour INSTRUIRE un défaut (mesurer une page à une largeur, en
+   journal) : le défaut par défaut est la mesure complète, et c'est elle qui
+   fait verdict. */
+const LARGEURS = (process.env.RESPONSIVE_LARGEURS ?? "320,360,390,768")
+  .split(",")
+  .map((n) => Number(n.trim()))
+  .filter(Boolean);
 const HAUTEUR_FENETRE = 844;
 const CIBLE_MINIMALE = 24;
 const CONTROLE = process.argv.includes("--controle");
@@ -87,7 +94,7 @@ const JOURNAL = process.argv.includes("--journal");
  * différents du périmètre, et une correction qui va bien à l'une casse
  * volontiers l'autre.
  */
-const PAGES = [
+const TOUTES_LES_PAGES = [
   ["/offres/", "10 Hub, offres/*"],
   ["/offres/zero-arret/", "03 Offre, offre/*"],
   ["/offres/bureau-etudes/", "03 Offre, offre/*"],
@@ -100,6 +107,62 @@ const PAGES = [
   ["/implantations/maintenance-industrielle-metz/", "04 Ville, implantation/*"],
   ["/implantations/lyon/rhone/", "06 Département, implantation/*"],
 ];
+
+/* `RESPONSIVE_PAGES` sert à deux choses, et à rien d'autre : instruire un
+   défaut sur une page précise, et BALAYER plus large que les onze pages du
+   verdict quand on cherche ce que l'échantillon ne voit pas. Une adresse
+   inconnue de la liste est acceptée telle quelle : c'est le balayage. */
+const FILTRE = process.env.RESPONSIVE_PAGES?.split(",").map((s) => s.trim()).filter(Boolean);
+const PAGES = FILTRE
+  ? FILTRE.map((c) => TOUTES_LES_PAGES.find(([p]) => p === c) ?? [c, "balayage"])
+  : TOUTES_LES_PAGES;
+
+/**
+ * LES MODULES CSS DE LA FAMILLE, et à quoi sert cette liste.
+ *
+ * Ces composants sont partagés par plus de cent pages, mais ils ne sont pas
+ * SEULS sur ces pages : l'en-tête, le pied, le formulaire et les blocs communs
+ * y vivent aussi, et appartiennent à d'autres chantiers. Quand le coupable
+ * d'un défaut porte la classe d'un module CSS qui n'est PAS de la famille, le
+ * défaut est vrai, il est mesuré, il est nommé, et il est ATTRIBUÉ : la porte
+ * le signale sans le corriger ici, parce qu'une correction posée dans cinq
+ * feuilles de la famille pour rattraper un composant commun se contredirait
+ * avec la correction que son propre chantier finira par poser.
+ *
+ * Ce n'est pas une mise en veilleuse : un défaut hors famille fait sortir la
+ * porte en code 3. Rien ne passe pour vert.
+ *
+ * Un élément SANS classe de module appartient à la famille : les composants
+ * de ce périmètre portent leurs styles en ligne, repris des captures, et leur
+ * seule feuille sert les survols et les points de rupture.
+ */
+const MODULES_DE_LA_FAMILLE = [
+  "PageOffre",
+  "PageOffres",
+  "QuestionsPhoto",
+  "PageSecteur",
+  "PageVille",
+  "PageImplantations",
+  // `offre/generique/Generique.module.css`. Oublié au premier jet le 13/10, et
+  // la porte a aussitôt excusé un défaut de ce périmètre en l'attribuant à un
+  // autre chantier : une liste d'attribution incomplète est une porte qui
+  // s'aveugle poliment.
+  "Generique",
+];
+
+/** Le module CSS du coupable, ou `null` s'il n'en porte pas. */
+function moduleCoupable(message) {
+  const m = message.match(/\b([A-Za-z][A-Za-z0-9]*)-module__/);
+  return m ? m[1] : null;
+}
+
+/* La variable ne s'appelle pas `module` : eslint l'interdit dans ce dépôt
+   (`@next/next/no-assign-module-variable`), parce qu'une réassignation de ce
+   nom casse le chargement de certains modules. */
+function horsDeLaFamille(message) {
+  const feuille = moduleCoupable(message);
+  return feuille && !MODULES_DE_LA_FAMILLE.includes(feuille) ? feuille : null;
+}
 
 /* ========================================================================
    LA MESURE, exécutée DANS la page.
@@ -137,6 +200,40 @@ const MESURE = ({ cible }) => {
     );
   };
 
+  /**
+   * LE SOUS-ARBRE QUI N'EST PAS MIS EN PAGE, et c'est le piège de mesure que
+   * cette porte a payé le 13/10 : 415 faux chevauchements sur /implantations/.
+   *
+   * Un `<details>` fermé n'est pas « caché » : les navigateurs récents
+   * enveloppent son contenu dans `::details-content` et lui posent
+   * `content-visibility: hidden`. Le sous-arbre n'est alors PAS MIS EN PAGE, et
+   * `getBoundingClientRect()` de ses descendants ne renvoie pas zéro : il
+   * renvoie une boîte repliée sur la position du bloc. Tous les textes des
+   * neuf sections repliées d'une page se retrouvent donc empilés au même
+   * endroit, et chacun « chevauche » tous les autres. Des mesures qui portent
+   * sur rien, et qui crient fort.
+   *
+   * La géométrie d'un sous-arbre non mis en page n'a aucun sens : il est
+   * écarté. Ce que le visiteur révèle en tapant sur la bascule est mesuré
+   * dans la SECONDE passe, blocs dépliés.
+   */
+  const nonRendu = (element) => {
+    for (let n = element; n && n !== document.body; n = n.parentElement) {
+      const style = getComputedStyle(n);
+      if (style.contentVisibility === "hidden") return true;
+      const parent = n.parentElement;
+      if (
+        parent &&
+        parent.tagName === "DETAILS" &&
+        !parent.open &&
+        n.tagName !== "SUMMARY"
+      ) {
+        return true;
+      }
+    }
+    return false;
+  };
+
   /** L'ancêtre qui ROGNE, et le rectangle dans lequel il rogne. */
   const hote = (element) => {
     for (let n = element.parentElement; n && n !== document.documentElement; n = n.parentElement) {
@@ -148,15 +245,47 @@ const MESURE = ({ cible }) => {
       const boite = n.getBoundingClientRect();
       // Le rognage a lieu à la boîte de REMPLISSAGE, bordures exclues.
       return {
+        noeud: n,
         quoi: nom(n),
         gauche: boite.left + Number.parseFloat(style.borderLeftWidth || "0"),
         droite: boite.right - Number.parseFloat(style.borderRightWidth || "0"),
       };
     }
-    return { quoi: "la fenêtre", gauche: 0, droite: window.innerWidth };
+    return { noeud: document.body, quoi: "la fenêtre", gauche: 0, droite: window.innerWidth };
   };
 
-  /* -------------------------------------------------- DÉBORDEMENT */
+  /* -------------------------------------------------- DÉBORDEMENT
+
+     CE QUI COMPTE COMME DÉFAUT, et la distinction a été payée le 13/10 : un
+     élément rogné par son hôte ne fait perdre quelque chose au visiteur QUE
+     s'il portait quelque chose à perdre. Trois exclusions, chacune mesurée sur
+     ce site, et aucune n'est une facilité :
+
+       · LE RAIL ANIMÉ. `div.mg-track` dépassait `div.mg-marquee` de 10 602 px
+         sur chaque page de la famille : c'est un bandeau qui défile, il écrit
+         sa liste deux fois et sort de sa fenêtre par CONSTRUCTION. Reconnu à
+         son `animation-name`, pas à sa classe.
+       · L'ORNEMENT. Les halos orangés des panneaux sombres (`.mg-pad`)
+         dépassent de 149 à 180 px, et c'est leur dessin : ils n'ont ni texte,
+         ni image, ni rôle. Rognés, rien n'est perdu.
+       · CE QUE L'AUTEUR A DÉCLARÉ DÉCORATIF (`aria-hidden="true"`).
+
+     Reste donc le défaut vrai : du texte, une image ou une commande qui sort
+     de son hôte, donc coupée à l'écran. */
+  const porteQuelqueChose = (element) =>
+    (element.textContent || "").trim().length > 0 ||
+    element.tagName === "IMG" ||
+    element.tagName === "SVG" ||
+    element.querySelector("img, svg, input, select, textarea") !== null;
+
+  const anime = (element, jusqu) => {
+    for (let n = element; n && n !== jusqu && n !== document.body; n = n.parentElement) {
+      const a = getComputedStyle(n).animationName;
+      if (a && a !== "none") return true;
+    }
+    return false;
+  };
+
   const coupables = [];
   for (const element of document.querySelectorAll("body *")) {
     const boite = element.getBoundingClientRect();
@@ -164,7 +293,8 @@ const MESURE = ({ cible }) => {
     /* Le motif « masqué visuellement » vit très loin à gauche (le champ piège
        anti-robot du formulaire est à -9999 px). */
     if (boite.left < -1000) continue;
-    if (invisible(element)) continue;
+    if (invisible(element) || nonRendu(element)) continue;
+    if (element.getAttribute("aria-hidden") === "true") continue;
     const style = getComputedStyle(element);
     /* Un panneau en position FIXE est mesuré contre la fenêtre et contre elle
        seule : il ne vit pas dans le flux de son parent. */
@@ -177,6 +307,8 @@ const MESURE = ({ cible }) => {
     const depasseAGauche = Math.round(h.gauche - boite.left);
     const depasse = Math.max(depasseADroite, depasseAGauche);
     if (depasse <= 1) continue;
+    if (!porteQuelqueChose(element)) continue;
+    if (anime(element, h.noeud)) continue;
     // Un parent déjà coupable explique ses enfants : on ne les recompte pas.
     if (coupables.some((c) => c.noeud.contains(element))) continue;
     coupables.push({ noeud: element, texte: `${nom(element)} dépasse ${h.quoi} de ${depasse} px` });
@@ -189,7 +321,7 @@ const MESURE = ({ cible }) => {
   )) {
     const boite = element.getBoundingClientRect();
     if (boite.width === 0 || boite.height === 0) continue;
-    if (invisible(element)) continue;
+    if (invisible(element) || nonRendu(element)) continue;
     const style = getComputedStyle(element);
     // La WCAG exempte explicitement le lien EN LIGNE dans du texte courant :
     // l'agrandir casserait l'interligne du paragraphe qui le porte.
@@ -198,7 +330,16 @@ const MESURE = ({ cible }) => {
        séparé de ses voisins de 24 px est atteignable même petit. Le séparateur
        peut être une marge OU l'écart de la grille parente, et les listes de ce
        site sont des grilles à `gap`, donc des marges nulles. */
-    const parent = element.parentElement;
+    /* LE PARENT DE MISE EN PAGE, ET NON LE PARENT DU DOCUMENT. Un ancêtre en
+       `display: contents` n'a pas de boîte : il disparaît de la mise en page et
+       c'est son propre parent qui aligne l'élément. Le fil d'Ariane du gabarit
+       générique enveloppe chaque lien dans un tel `span` ; le lire comme parent
+       donnait un écart de 0 px, et la porte signalait quatre liens de 47×20 px
+       que leurs 8 px de gouttière rendent parfaitement atteignables. */
+    let parent = element.parentElement;
+    while (parent && getComputedStyle(parent).display === "contents") {
+      parent = parent.parentElement;
+    }
     const styleParent = parent ? getComputedStyle(parent) : null;
     const ecart =
       styleParent && /grid|flex/.test(styleParent.display)
@@ -222,7 +363,7 @@ const MESURE = ({ cible }) => {
     if (!porteDuTexte(element)) continue;
     const boite = element.getBoundingClientRect();
     if (boite.width === 0 || boite.height === 0) continue;
-    if (invisible(element)) continue;
+    if (invisible(element) || nonRendu(element)) continue;
     const style = getComputedStyle(element);
     const rogneX = style.overflowX === "hidden" || style.overflowX === "clip";
     const rogneY = style.overflowY === "hidden" || style.overflowY === "clip";
@@ -240,13 +381,61 @@ const MESURE = ({ cible }) => {
     );
   }
 
-  /* -------------------------------------------------- CHEVAUCHEMENT */
+  /* -------------------------------------------------- CHEVAUCHEMENT
+
+     LA MESURE PORTE SUR LES FRAGMENTS DE LIGNE, et non sur la boîte
+     englobante. Deuxième piège payé le 13/10 : un élément EN LIGNE qui passe à
+     la ligne, ou un bloc fragmenté par une mise en colonnes (`columns`, ce que
+     fait l'annuaire des villes), renvoie une boîte englobante qui est l'UNION
+     de ses fragments. Deux puces voisines d'une même liste qui se suivent sur
+     deux lignes « se recouvrent » alors sur toute la largeur, alors qu'aucun
+     pixel de texte ne touche l'autre. 66 à 415 faux chevauchements par page,
+     tous de cette seule cause.
+
+     `getClientRects()` rend les fragments un par un : c'est la géométrie
+     qu'on voit à l'écran. */
+  /**
+   * CE QUI RESTE VISIBLE D'UN FRAGMENT une fois tous ses ancêtres rogneurs
+   * appliqués. Troisième piège du 13/10 : un contenu rogné continue d'avoir
+   * une géométrie, et elle sort de la boîte qui le rogne. Les éléments d'un
+   * accordéon dont la hauteur est pilotée au script débordaient ainsi de
+   * 1 500 px sous leur propre carte et « chevauchaient » les trois sections
+   * suivantes. À l'écran, rien : tout cela est coupé.
+   */
+  const rogne = (element, r) => {
+    let g = r.left;
+    let d = r.right;
+    let h = r.top;
+    let b = r.bottom;
+    for (let n = element.parentElement; n && n !== document.documentElement; n = n.parentElement) {
+      const s = getComputedStyle(n);
+      if (s.overflowX === "visible" && s.overflowY === "visible") continue;
+      const c = n.getBoundingClientRect();
+      if (s.overflowX !== "visible") {
+        g = Math.max(g, c.left);
+        d = Math.min(d, c.right);
+      }
+      if (s.overflowY !== "visible") {
+        h = Math.max(h, c.top);
+        b = Math.min(b, c.bottom);
+      }
+      if (d - g < 2 || b - h < 2) return null;
+    }
+    return { left: g, right: d, top: h, bottom: b, width: d - g, height: b - h };
+  };
+
+  const fragments = (element) =>
+    [...element.getClientRects()]
+      .filter((r) => r.width >= 2 && r.height >= 2)
+      .map((r) => rogne(element, r))
+      .filter(Boolean);
+
   const feuilles = [];
   for (const element of document.querySelectorAll("body *")) {
     if (!porteDuTexte(element)) continue;
-    const boite = element.getBoundingClientRect();
-    if (boite.width < 4 || boite.height < 4) continue;
-    if (invisible(element)) continue;
+    if (invisible(element) || nonRendu(element)) continue;
+    const parts = fragments(element);
+    if (parts.length === 0) continue;
     let flottant = false;
     for (let n = element; n && n !== document.body; n = n.parentElement) {
       const p = getComputedStyle(n).position;
@@ -258,26 +447,41 @@ const MESURE = ({ cible }) => {
     // Un panneau hors flux passe PAR DESSUS par construction : il est jugé
     // ailleurs, pas ici, sinon chaque halo devient un faux défaut.
     if (flottant) continue;
-    feuilles.push({ element, boite });
+    feuilles.push({ element, parts });
   }
   for (let i = 0; i < feuilles.length; i++) {
     for (let j = i + 1; j < feuilles.length; j++) {
       const a = feuilles[i];
       const b = feuilles[j];
       if (a.element.contains(b.element) || b.element.contains(a.element)) continue;
-      const largeur = Math.min(a.boite.right, b.boite.right) - Math.max(a.boite.left, b.boite.left);
-      const hauteur = Math.min(a.boite.bottom, b.boite.bottom) - Math.max(a.boite.top, b.boite.top);
-      if (largeur <= 2 || hauteur <= 2) continue;
-      const aire = largeur * hauteur;
-      const plusPetite = Math.min(
-        a.boite.width * a.boite.height,
-        b.boite.width * b.boite.height,
-      );
-      // Un quart de la plus petite des deux : en dessous, c'est le dépassement
-      // d'une lettre jambage, pas un texte illisible.
-      if (aire < plusPetite * 0.25) continue;
+      let pire = null;
+      for (const ra of a.parts) {
+        for (const rb of b.parts) {
+          const largeur = Math.min(ra.right, rb.right) - Math.max(ra.left, rb.left);
+          const hauteur = Math.min(ra.bottom, rb.bottom) - Math.max(ra.top, rb.top);
+          if (largeur <= 2 || hauteur <= 2) continue;
+          const aire = largeur * hauteur;
+          const plusPetite = Math.min(ra.width * ra.height, rb.width * rb.height);
+          /* Un quart du plus petit des deux fragments : en dessous, c'est le
+             jambage d'une lettre qui descend sur la ligne suivante, pas un
+             texte devenu illisible. */
+          if (aire < plusPetite * 0.25) continue;
+          if (!pire || aire > pire.aire) {
+            pire = {
+              aire,
+              largeur,
+              hauteur,
+              ou: `x ${Math.round(Math.max(ra.left, rb.left))}, y ${Math.round(Math.max(ra.top, rb.top) + window.scrollY)}`,
+            };
+          }
+        }
+      }
+      if (!pire) continue;
+      /* La position est DANS le message : un chevauchement sans coordonnée est
+         introuvable sur une page de dix-sept écrans, et deux textes différents
+         peuvent porter les mêmes trente-quatre premiers caractères. */
       resultat.chevauchements.push(
-        `${nom(a.element)} et ${nom(b.element)} se recouvrent sur ${Math.round(largeur)}×${Math.round(hauteur)} px`,
+        `${nom(a.element)} et ${nom(b.element)} se recouvrent sur ${Math.round(pire.largeur)}×${Math.round(pire.hauteur)} px (${pire.ou})`,
       );
     }
   }
@@ -301,7 +505,7 @@ const MESURE = ({ cible }) => {
     if (!porteDuTexte(element)) continue;
     const boite = element.getBoundingClientRect();
     if (boite.width === 0 || boite.height === 0) continue;
-    if (invisible(element)) continue;
+    if (invisible(element) || nonRendu(element)) continue;
     const style = getComputedStyle(element);
     const encre = lis(style.color);
     if (!encre) continue;
@@ -434,6 +638,27 @@ async function controle(navigateur) {
 
   await contexte.close();
 
+  /* L'ATTRIBUTION EST UNE RÈGLE COMME LES AUTRES, donc elle a ses témoins.
+     Sans eux, une expression régulière trop gourmande rangerait toute la
+     famille « hors périmètre » et la porte deviendrait verte sur un site
+     cassé : c'est la façon la plus discrète de s'aveugler. */
+  const attribution = [
+    [
+      "un coupable de la famille reste DANS la famille",
+      horsDeLaFamille("div.PageOffre-module__ab12__boutonPrincipal dépasse la fenêtre de 40 px") === null,
+    ],
+    [
+      "un coupable d'un composant commun est ATTRIBUÉ, pas effacé",
+      horsDeLaFamille("p.SectionPliableMobile-module__xy__resume dépasse div.mg-pad de 28 px") ===
+        "SectionPliableMobile",
+    ],
+    [
+      "un coupable SANS classe de module reste dans la famille",
+      horsDeLaFamille("div « Besoin d'un technicien » dépasse la fenêtre de 43 px") === null,
+    ],
+  ];
+  for (const [quoi, ok] of attribution) verdicts.push([quoi, ok, ""]);
+
   for (const [quoi, ok, detail] of verdicts) {
     console.log(`  ${ok ? "OK  " : "RATE"}  ${quoi}${detail ? `\n          ${detail}` : ""}`);
   }
@@ -516,6 +741,8 @@ if (CONTROLE) {
 }
 
 const fautes = [];
+/** Défauts vrais, mesurés, dont le coupable appartient à un autre chantier. */
+const horsPerimetre = [];
 const injoignables = [];
 const informatif = [];
 const totaux = {
@@ -546,6 +773,7 @@ try {
     for (const [chemin, gabarit] of PAGES) {
       const page = await contexte.newPage();
       let releve = null;
+      let depliee = null;
       try {
         const reponse = await page.goto(`${SITE}${chemin}`, { waitUntil: "load", timeout: 90_000 });
         if (!reponse?.ok()) {
@@ -555,56 +783,127 @@ try {
         }
         await attendHydratation(page, largeur);
         releve = await page.evaluate(MESURE, { cible: CIBLE_MINIMALE });
+        /* LA SECONDE PASSE, BLOCS DÉPLIÉS, et sans elle la porte ne voit
+           presque rien sous 880 px : le repli mobile ferme neuf sections sur
+           dix, et la géométrie d'un sous-arbre non mis en page est écartée
+           par `nonRendu`. Le visiteur, lui, tape sur la bascule et découvre ce
+           contenu : c'est dans cet état que la plus grande partie de la famille
+           se mesure. Les deux passes sont réunies, chaque faute porte l'état
+           où elle a été vue. */
+        /* ON N'OUVRE QUE LES REPLIS DE SECTION, et pas tous les `<details>` de
+           la page. Premier essai du 13/10 : tout ouvrir, FAQ comprise. Il
+           fabriquait un état qu'aucun visiteur n'atteint (les questions d'une
+           FAQ s'ouvrent une par une) et, avec lui, des chevauchements qui
+           n'existent que dans cet état. Une porte doit mesurer ce que le
+           visiteur voit, pas ce qu'on peut forcer.
+           Les replis de section, eux, sont exactement le contenu que la
+           largeur cache : tous ouverts, la page est celle du grand écran, et
+           c'est un état normal. */
+        await page.evaluate(() => {
+          for (const d of document.querySelectorAll("details[data-pliable-mobile]")) d.open = true;
+        });
+        /* LE DÉLAI N'EST PAS UNE SUPERSTITION. `::details-content` porte une
+           transition discrète sur `content-visibility` : pendant cette
+           transition le sous-arbre n'est TOUJOURS PAS mis en page, et deux
+           images de rendu n'y suffisent pas. Mesurer trop tôt redonne la
+           géométrie repliée, donc des centaines de faux chevauchements, le
+           piège même que `nonRendu` vient d'écarter. On attend, puis on
+           VÉRIFIE qu'il ne reste aucun sous-arbre non mis en page avant de
+           croire la mesure. */
+        await page.waitForTimeout(700);
+        const restes = await page.evaluate(
+          () =>
+            [...document.querySelectorAll("body *")].filter(
+              (n) => getComputedStyle(n).contentVisibility === "hidden",
+            ).length,
+        );
+        if (restes > 0) {
+          injoignables.push(
+            `${chemin} à ${largeur} px : ${restes} sous-arbre(s) encore non mis en page après dépliage, mesure dépliée refusée`,
+          );
+          await page.close();
+          continue;
+        }
+        depliee = await page.evaluate(MESURE, { cible: CIBLE_MINIMALE });
       } catch (erreur) {
         injoignables.push(`${chemin} à ${largeur} px : ${String(erreur.message).split("\n")[0]}`);
         await page.close();
         continue;
       }
 
-      const porte = (regle, etiquette, liste) => {
-        totaux[regle] += liste.length;
-        if (liste.length === 0) return;
-        fautes.push(
-          `${etiquette} · ${chemin} à ${largeur} px (${gabarit}) : ${liste.length}\n      ` +
-            liste.slice(0, 4).join("\n      "),
-        );
+      /* L'UNION DES DEUX PASSES, dédoublonnée : un défaut présent replié ET
+         déplié est le même défaut, le compter deux fois gonflerait le chiffre
+         sans rien apprendre. L'état est noté sur la ligne quand il n'apparaît
+         que déplié, parce qu'il ne se reproduit qu'après un appui. */
+      const union = (regle) => {
+        const vu = new Map();
+        for (const ligne of releve[regle]) vu.set(ligne, "");
+        for (const ligne of depliee[regle]) if (!vu.has(ligne)) vu.set(ligne, " [déplié]");
+        return [...vu].map(([ligne, etat]) => ligne + etat);
       };
-      porte("debordements", "DÉBORDEMENT", releve.debordements);
-      porte("ciblesTropPetites", "CIBLE", releve.ciblesTropPetites);
-      porte("texteTronque", "TRONQUÉ", releve.texteTronque);
-      porte("chevauchements", "CHEVAUCHEMENT", releve.chevauchements);
 
-      totaux.contrastes += releve.contrastes.length;
-      totaux.tronqueVolontaire += releve.tronqueVolontaire.length;
-      if (releve.contrastes.length > 0) {
+      const porte = (regle, etiquette) => {
+        const liste = union(regle);
+        totaux[regle] += liste.length;
+        if (liste.length === 0) return liste;
+        const dedans = liste.filter((l) => !horsDeLaFamille(l));
+        const dehors = liste.filter((l) => horsDeLaFamille(l));
+        if (dedans.length > 0) {
+          fautes.push(
+            `${etiquette} · ${chemin} à ${largeur} px (${gabarit}) : ${dedans.length}\n      ` +
+              dedans.slice(0, 4).join("\n      "),
+          );
+        }
+        for (const ligne of dehors) {
+          horsPerimetre.push(
+            `${etiquette} · ${chemin} à ${largeur} px, composant ${horsDeLaFamille(ligne)}\n      ${ligne}`,
+          );
+        }
+        return liste;
+      };
+      const vus = {
+        debordements: porte("debordements", "DÉBORDEMENT") ?? [],
+        ciblesTropPetites: porte("ciblesTropPetites", "CIBLE") ?? [],
+        texteTronque: porte("texteTronque", "TRONQUÉ") ?? [],
+        chevauchements: porte("chevauchements", "CHEVAUCHEMENT") ?? [],
+      };
+
+      const contrastes = union("contrastes");
+      totaux.contrastes += contrastes.length;
+      totaux.tronqueVolontaire += union("tronqueVolontaire").length;
+      if (contrastes.length > 0) {
         informatif.push(
-          `CONTRASTE · ${chemin} à ${largeur} px : ${releve.contrastes.length}` +
-            (JOURNAL ? `\n      ${releve.contrastes.slice(0, 6).join("\n      ")}` : ""),
+          `CONTRASTE · ${chemin} à ${largeur} px : ${contrastes.length}` +
+            (JOURNAL ? `\n      ${contrastes.slice(0, 8).join("\n      ")}` : ""),
         );
       }
 
+      if (largeur < 880) repliParPage[`${chemin}@${largeur}`] = releve.blocsPliables;
       if (largeur === 390) {
-        repliParPage[chemin] = releve.blocsPliables;
+        /* LA HAUTEUR SE MESURE DANS L'ÉTAT SERVI, replié : c'est celle que le
+           visiteur rencontre. La hauteur dépliée est celle de la page entière,
+           elle ne dit rien du repli. */
         const ecrans = releve.hauteur / HAUTEUR_FENETRE;
         if (ecrans > pirePage.hauteur) pirePage = { chemin, hauteur: ecrans };
       }
 
       console.log(
         `${chemin.padEnd(46)} ${String(largeur).padStart(4)} px  ` +
-          `${String(releve.debordements.length).padStart(2)} déb · ` +
-          `${String(releve.ciblesTropPetites.length).padStart(2)} cib · ` +
-          `${String(releve.texteTronque.length).padStart(2)} tro · ` +
-          `${String(releve.chevauchements.length).padStart(2)} che · ` +
-          `${String(releve.contrastes.length).padStart(3)} ctr · ` +
+          `${String(vus.debordements.length).padStart(2)} déb · ` +
+          `${String(vus.ciblesTropPetites.length).padStart(2)} cib · ` +
+          `${String(vus.texteTronque.length).padStart(2)} tro · ` +
+          `${String(vus.chevauchements.length).padStart(2)} che · ` +
+          `${String(contrastes.length).padStart(3)} ctr · ` +
           `${(releve.hauteur / HAUTEUR_FENETRE).toFixed(1)} écrans · ` +
           `${releve.blocsReplies}/${releve.blocsPliables} replié(s)`,
       );
       if (JOURNAL) {
         for (const [etiquette, liste] of [
-          ["déb", releve.debordements],
-          ["cib", releve.ciblesTropPetites],
-          ["tro", releve.texteTronque],
-          ["che", releve.chevauchements],
+          ["déb", vus.debordements],
+          ["cib", vus.ciblesTropPetites],
+          ["tro", vus.texteTronque],
+          ["che", vus.chevauchements],
+          ["ctr", contrastes],
         ]) {
           for (const ligne of liste) console.log(`        ${etiquette}  ${ligne}`);
         }
@@ -631,6 +930,7 @@ console.log(
     ` (dont ${totaux.tronqueVolontaire} line-clamp assumés, non comptés)\n` +
     `  chevauchements ....... ${totaux.chevauchements}\n` +
     `  contrastes sous AA ... ${totaux.contrastes}  (informatif, arbitrage ouvert n° 7)\n` +
+    `  dont hors famille .... ${horsPerimetre.length} défaut(s) attribués à un composant commun\n` +
     `  pire hauteur à 390 px  ${pirePage.hauteur.toFixed(1)} écrans de ${HAUTEUR_FENETRE} px (${pirePage.chemin})`,
 );
 
@@ -649,19 +949,51 @@ if (injoignables.length > 0) {
   process.exit(2);
 }
 
-const pagesSansRepli = Object.entries(repliParPage).filter(([, n]) => n === 0).map(([c]) => c);
-if (pagesSansRepli.length === Object.keys(repliParPage).length) {
+/* LE REPLI MOBILE NE DOIT PAS SE DÉFAIRE. Une correction de mise en page peut
+   très bien, sans le vouloir, retirer le `<details>` d'une section : la page
+   resterait « conforme » aux quatre règles tout en redevenant le mur de
+   dix-sept écrans que le repli existe pour éviter. On ne compare pas à un
+   nombre écrit en dur, qui vieillirait mal : on exige que la famille en porte
+   encore, et le journal donne le compte page par page.
+   Vide quand aucune largeur sous 880 px n'a été mesurée : il n'y a alors rien
+   à conclure, et conclure quand même serait le défaut qu'on évite partout
+   ailleurs ici. */
+const compte = Object.values(repliParPage);
+if (compte.length > 0 && compte.every((n) => n === 0)) {
   console.error(
-    "\nMESURE NON CONCLUANTE : AUCUNE page de la famille ne porte de bloc repliable.\n" +
+    "\nMESURE NON CONCLUANTE : AUCUNE page mesurée sous 880 px ne porte de bloc repliable.\n" +
       "  Le repli mobile a disparu du périmètre, ou la mesure est arrivée avant l'hydratation.",
   );
   process.exit(2);
 }
 
+/* LES DÉFAUTS HORS FAMILLE SE LISENT TOUJOURS, et avant le verdict : les
+   ranger après un `process.exit` les aurait rendus invisibles dès qu'un défaut
+   de la famille tombe, c'est à dire précisément quand on lit cette sortie. */
+if (horsPerimetre.length > 0) {
+  console.error(
+    `\n${horsPerimetre.length} défaut(s) MESURÉS sur ces pages mais dus à un composant HORS de la famille :`,
+  );
+  for (const h of horsPerimetre) console.error(`  ${h}`);
+  console.error(
+    "  Ces défauts appartiennent au chantier du composant nommé : les corriger depuis les\n" +
+      "  feuilles de la famille se contredirait avec sa propre correction.",
+  );
+}
+
 if (fautes.length > 0) {
-  console.error(`\n${fautes.length} défaut(s) de responsive dans la famille offre :`);
+  console.error(`\n${fautes.length} défaut(s) de responsive DANS la famille offre :`);
   for (const f of fautes) console.error(`  ${f}`);
   process.exit(1);
+}
+
+/* UN DÉFAUT HORS FAMILLE NE SE CORRIGE PAS ICI, MAIS IL NE PASSE PAS NON PLUS.
+   Code 3, distinct du 1 : la famille est propre, un composant commun ne l'est
+   pas, et c'est son chantier qui le répare. Une porte qui tairait cela
+   mentirait sur ce que le visiteur voit. */
+if (horsPerimetre.length > 0) {
+  console.error("\nLa famille offre est conforme ; le composant commun nommé ci-dessus ne l'est pas.");
+  process.exit(3);
 }
 
 console.log("\nresponsive de la famille offre conforme aux quatre largeurs");

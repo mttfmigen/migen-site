@@ -218,6 +218,46 @@ export const TITRE2: CSSProperties = {
   textWrap: "balance",
 };
 
+/*
+ * L'ETIQUETTE DE LA BASCULE DES PARTIES REPLIABLES, posee le 13/10.
+ *
+ * CE QU'ELLE REPARE. Ce gabarit passait son VRAI `<h2>` dans le `<summary>`
+ * de la bascule, et il etait le dernier de la famille a le faire : les
+ * gabarits guide, etude de cas et metier portent une etiquette depuis le
+ * 12/10. Un `<summary>` a le role `button`, et les descendants d'un bouton
+ * sont presentationnels : les 221 titres de niveau 2 des 35 pages du gabarit
+ * devenaient le NOM ACCESSIBLE d'un bouton et disparaissaient du plan du
+ * document, celui par lequel un lecteur d'ecran parcourt un article de
+ * 2 600 mots.
+ *
+ * LES DEUX PIEGES OPPOSES, tous les deux deja payes sur ce depot : un
+ * `<span>` A LA PLACE du `<h2>` sort le titre de la structure du document ;
+ * un `<h2>` DANS la bascule le garde dans la structure mais le range sous un
+ * bouton. La bonne reponse ne choisit pas : le `<h2>` de la partie reste a sa
+ * place, dans le corps du bloc, a la taille de sa capture, et la bascule porte
+ * une etiquette qui n'existe QUE sous 880 px.
+ *
+ * Valeurs reprises de la maquette mobile, bloc « Blocs communs (pliables) »
+ * de `MigenMobile.dc.html` : le libelle de la bascule y est un surtitre de
+ * 11 px, en capitales, chasse 0,14 em, en encre d'accent.
+ */
+export const ETIQUETTE_SURTITRE: CSSProperties = {
+  display: "block",
+  font: "600 11px var(--fb)",
+  letterSpacing: ".14em",
+  textTransform: "uppercase",
+  color: "var(--acc)",
+  marginBottom: 6,
+};
+
+/** Le libelle de la bascule, a l'echelle des H2 du gabarit en largeur mobile. */
+export const ETIQUETTE_TITRE: CSSProperties = {
+  display: "block",
+  font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
+  letterSpacing: "-.035em",
+  color: "var(--ink)",
+};
+
 export const TITRE2_NUMERO: CSSProperties = {
   display: "block",
   font: "600 11px ui-monospace,Menlo,monospace",

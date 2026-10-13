@@ -158,7 +158,10 @@ function Lectures({
         {lectures.map((lecture) => {
           const format = H.RAYONS[lecture.href.split("/")[2] as keyof typeof H.RAYONS]?.format;
           return (
-            <Link key={lecture.href} href={lecture.href} style={H.LECTURE}>
+            /* `lecture` ne porte AUCUN dessin : il sert d'ancre à la règle
+               qui, sous 880 px, empêche le plancher de 270 px de la grille de
+               sortir d'un écran de 320 px (voir `Ressource.module.css`). */
+            <Link key={lecture.href} href={lecture.href} className={styles.lecture} style={H.LECTURE}>
               <div style={H.LECTURE_PHOTO}>
                 <Image
                   src={lecture.image}

@@ -341,3 +341,107 @@
     margin-top: 0;
   }
 }
+
+/* ===================================================================
+   RESPONSIVE DU GABARIT, mesuré au navigateur le 13/10 à 320, 360, 390
+   et 768 px, bandeau de consentement refusé, après hydratation.
+   Porte : `components/site/editorial/verification-responsive.mjs`.
+
+   TOUT CE QUI SUIT EST UN RATTRAPAGE DE TÉLÉPHONE. Rien n'y touche au
+   rendu de bureau, et c'est vérifiable règle par règle : les planchers
+   de grille passent par `min(100%, Npx)`, qui vaut EXACTEMENT Npx dès
+   que le conteneur fait Npx, et les deux autres blocs sont enfermés
+   sous 620 px. Les déclarations en ligne, elles, ne bougent pas d'un
+   octet : `verification-editorial.tsx` et `verification-ressource.tsx`
+   comparent leurs fragments à la capture, et la capture est la
+   référence.
+   =================================================================== */
+
+/*
+ * LES GRILLES À PLANCHER FIXE DÉBORDAIENT DE 10 À 100 PX.
+ *
+ * `repeat(auto-fill, minmax(340px, 1fr))` ne tombe PAS à une colonne
+ * plus étroite que 340 px : le plancher d'un `minmax` est un plancher
+ * dur, et `auto-fill` ne replie que les pistes VIDES. Sur un écran de
+ * 320 px, les sections du site offrent 240 px de contenu (40 px de
+ * marge de chaque côté, mesuré, et c'est la valeur de la maquette) :
+ * les sept cartes du guide des rubriques sortaient donc de 100 px,
+ * à 320, 360 ET 390 px, soit sur tous les téléphones courants.
+ *
+ * Relevé du 13/10, avant correction :
+ *   .carteGuide    340 px dans 240  → 100 px dehors, 7 cartes, 3 largeurs
+ *   .carteGrille   270 px dans 240  →  30 px dehors, à 320 px
+ *   .carteLiee     250 px dans 240  →  10 px dehors, 6 cartes, à 320 px
+ *
+ * `min(100%, 340px)` résout le plancher contre la largeur du conteneur :
+ * 340 px dès qu'il y a la place, la largeur du conteneur sinon. C'est le
+ * motif que la maquette emploie déjà elle-même pour la carte de
+ * complément des études de cas (`minmax(min(100%, 420px), 1fr)`), et il
+ * est donc porté, pas inventé.
+ *
+ * Le `:has()` visE la GRILLE depuis ses cartes : la grille n'a pas de
+ * classe, ses cartes en ont une, et passer par elle évite de toucher au
+ * composant. Le dépôt s'en sert déjà dans `PagePreuve.module.css`.
+ */
+@media (max-width: 880px) {
+  div:has(> .carteGuide) {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)) !important;
+  }
+  div:has(> .carteGrille) {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)) !important;
+  }
+  div:has(> .carteLiee) {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)) !important;
+  }
+  div:has(> .carteCartes) {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)) !important;
+  }
+}
+
+/*
+ * LES DEUX BANDES D'APPEL : LE TEXTE RÉCLAMAIT 240 PX DANS 182.
+ *
+ * Elles sont en `flex` avec `flex-wrap: wrap`, et leur texte porte
+ * `min-width: 240px` pour que, sur grand écran, le bouton ne vienne pas
+ * l'étrangler. Dans la bande, le rembourrage intérieur (24 px et 28 px)
+ * laisse 182 px à 320 px d'écran : le paragraphe sortait de 58 px, à
+ * 320 ET 360 px. Le bouton de la bande finale, lui, fait 200 px en
+ * `nowrap` dans 180 px : 20 px dehors.
+ *
+ * Sous 620 px le texte prend TOUTE la ligne (`flex-basis: 100%`) et le
+ * bouton passe dessous, ce que `flex-wrap: wrap` sait déjà faire : la
+ * bande devient deux lignes au lieu de deux colonnes étranglées. Et le
+ * libellé du bouton cesse d'être insécable : il se coupe plutôt que de
+ * sortir de l'écran. Aucun mot n'est changé.
+ */
+@media (max-width: 620px) {
+  .appelTexte,
+  .bandeTexte {
+    flex-basis: 100% !important;
+    min-width: 0 !important;
+  }
+  .boutonLeve,
+  .boutonPlein {
+    white-space: normal !important;
+    max-width: 100% !important;
+  }
+}
+
+/*
+ * LE TITRE-LIEN D'UNE CELLULE DE BENTO FAISAIT 18 PX DE HAUT.
+ *
+ * Critère 2.5.8 de la WCAG 2.2, niveau AA : 24 px. Cinq titres de
+ * `/ressources/` étaient sous le seuil, aux quatre largeurs mesurées,
+ * et ce ne sont pas des liens noyés dans une phrase que la norme
+ * exempte : ce sont les cibles principales du bloc.
+ *
+ * Six pixels de rembourrage vertical portent la cible à 24 px. Le lien
+ * est EN LIGNE : un rembourrage vertical n'y pousse pas la ligne, il
+ * n'élargit que la boîte sensible au doigt. Rien ne se déplace, et le
+ * lien n'a pas de fond, donc rien ne se voit non plus. Même motif,
+ * même raison que `SectionPliableMobile.module.css`, où il est déjà
+ * justifié et vérifié.
+ */
+.titreBento {
+  padding-block: 3px;
+}

@@ -120,6 +120,22 @@ export interface ProprietesPageOffre {
    */
   filAriane?: ReactNode;
   maillage?: ReactNode;
+  /**
+   * Le CHEMIN de la page, `/travaux-industriels/montage-industriel/`, pour les
+   * seules décisions de copie à PORTÉE LIMITÉE de `lib/decisions-copie.ts`.
+   *
+   * POURQUOI CE GABARIT LE DESCEND : cinq libellés de la famille offre sont
+   * écrits en dur dans des composants que TOUT le site partage (`Reassurance`,
+   * `MarquesOffre`, `AppelFinal`, `generique/PageVente`). La décision du 12/10
+   * ne vaut que pour dix pages ; sans le chemin, ces composants ne peuvent pas
+   * savoir laquelle ils rendent, et la décision ne pouvait donc pas les
+   * atteindre sans renommer le site entier.
+   *
+   * IL EST FACULTATIF, et son absence rend les règles de portée INERTES : les
+   * appelants qui ne le passent pas rendent exactement ce qu'ils rendaient
+   * avant le 13/10, mot pour mot.
+   */
+  chemin?: string;
 }
 
 /**
@@ -144,6 +160,7 @@ export default function PageOffre({
   formulaire,
   filAriane,
   maillage,
+  chemin,
 }: ProprietesPageOffre) {
   /* Huit sous-pages du gabarit 03 ne sont PAS servies par ce gabarit dans la
      maquette : son index les marque `sec: false`, et son application les rend
@@ -157,7 +174,7 @@ export default function PageOffre({
       <>
         {filAriane}
         {vue.cVente ? (
-          <PageVente v={vue} formulaire={formulaire} />
+          <PageVente v={vue} formulaire={formulaire} chemin={chemin} />
         ) : (
           <PageEdito v={vue} formulaire={formulaire} />
         )}
@@ -325,7 +342,7 @@ export default function PageOffre({
 
         {/* --------------------------------------------- 3. Réassurance */}
 
-        <Reassurance reperes={contenu.reperesReassurance} />
+        <Reassurance reperes={contenu.reperesReassurance} chemin={chemin} />
 
         {/* ------------------------------ 3 bis. « 02 Réponse directe » */}
 
@@ -464,6 +481,7 @@ export default function PageOffre({
           <MarquesOffre
             famille={contenu.marquesFamille}
             familles={contenu.marquesFamilles}
+            chemin={chemin}
           />
         ) : null}
 
@@ -556,6 +574,7 @@ export default function PageOffre({
             question={ctaFinal?.question}
             formulaire={formulaire}
             bouton={heroFormulaire ? contenu.formulaireHeroTitre : contenu.appelBouton}
+            chemin={chemin}
           />
         </div>
 

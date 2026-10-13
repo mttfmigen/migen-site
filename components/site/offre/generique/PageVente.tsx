@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Fragment } from "react";
 
+import { appliqueDecisions } from "@/lib/decisions-copie";
+
 import { BlocLecture, GRAS, LIEN } from "./BlocsLecture";
 import { BlocVente } from "./BlocsVente";
 import { Besoin, Fil, Liees } from "./CommunGenerique";
@@ -47,7 +49,17 @@ const REPERE_VALEUR = css("font:600 21px var(--ft);letter-spacing:-.04em;color:v
 const REPERE_LIBELLE = css("font:400 11.5px var(--fb);color:var(--ink4);margin-top:2px");
 const SEPARATEUR = css("width:1px;height:32px;background:var(--line)");
 
-function Heros({ v }: { v: Vue }) {
+/**
+ * LE CHEMIN DE LA PAGE, descendu jusqu'aux trois libellés que ce gabarit écrit
+ * en dur, pour les décisions de copie à PORTÉE LIMITÉE
+ * (`lib/decisions-copie.ts`, bloc « LES LIBELLÉS DES COMPOSANTS PARTAGÉS »).
+ *
+ * Absent, les règles de portée sont inertes et le rendu est celui d'avant le
+ * 13/10, mot pour mot.
+ */
+type AvecChemin = { chemin?: string };
+
+function Heros({ v, chemin }: { v: Vue } & AvecChemin) {
   return (
     <section style={css("max-width:1200px;margin:0 auto;padding:56px 40px 0")}>
       <Fil v={v} />
@@ -79,7 +91,7 @@ function Heros({ v }: { v: Vue }) {
             <div style={SEPARATEUR}></div>
             <div>
               <div style={REPERE_VALEUR}>10&nbsp;%</div>
-              <div style={REPERE_LIBELLE}>des techniciens retenus</div>
+              <div style={REPERE_LIBELLE}>{appliqueDecisions("des techniciens retenus", chemin)}</div>
             </div>
             <div style={SEPARATEUR}></div>
             <div>
@@ -251,6 +263,13 @@ const TITRE_NUM = css("font:600 calc(clamp(24px,2.6vw,36px) * var(--ts))/1.1 var
 const LIEN_CHARGE = css("display:inline-flex;align-items:center;gap:8px;font:600 13.5px var(--fb);color:var(--acc-ink);margin-top:6px");
 const PHOTO = "position:relative;border-radius:var(--rad);overflow:hidden;aspect-ratio:4/5;background:var(--ph);box-shadow:0 30px 70px -40px rgba(0,0,0,.5)";
 
+/**
+ * La seconde ligne de la bande d'appel des sections numérotées, mot pour mot
+ * celle de la capture (`maquette/rendu/bureau-etudes--bureau-etude-electrique.html`).
+ * Sortie du JSX pour que la décision de copie s'applique à une chaîne entière.
+ */
+const BANDE_APPEL = "Jours ouvrés · technicien depuis le hub le plus proche · partout en France";
+
 function Titre({ sec }: { sec: Section }) {
   return (
     <>
@@ -263,7 +282,7 @@ function Titre({ sec }: { sec: Section }) {
   );
 }
 
-function SectionNumerotee({ sec }: { sec: Section }) {
+function SectionNumerotee({ sec, chemin }: { sec: Section } & AvecChemin) {
   return (
     <section id={sec.id} style={css(sec.bandCss ?? "")}>
       <div className={`mg-r2 ${sec.faqCls ?? ""}`} style={css(sec.gridCss ?? "")}>
@@ -286,7 +305,7 @@ function SectionNumerotee({ sec }: { sec: Section }) {
               </div>
               <div style={css("position:absolute;left:0;bottom:30px;max-width:230px;padding:18px 22px;border-radius:var(--rad-s);background:rgba(255,255,255,var(--gl-a));backdrop-filter:blur(var(--gl-b)) saturate(150%);-webkit-backdrop-filter:blur(var(--gl-b)) saturate(150%);border:1px solid var(--gbd);box-shadow:0 20px 44px -26px rgba(0,0,0,.4)")}>
                 <div style={css("font:600 calc(34px * var(--ts))/1 var(--ft);letter-spacing:-.05em;color:var(--acc)")}><span>{sec.statN}</span></div>
-                <div style={css("font:400 13px/1.45 var(--fb);color:var(--ink1);margin-top:6px")}><span>{sec.statT}</span></div>
+                <div style={css("font:400 13px/1.45 var(--fb);color:var(--ink1);margin-top:6px")}><span>{appliqueDecisions(sec.statT ?? "", chemin)}</span></div>
               </div>
             </div>
           ) : null}
@@ -303,11 +322,14 @@ function SectionNumerotee({ sec }: { sec: Section }) {
       {sec.hasCtaBand ? (
         <div style={css("max-width:1200px;margin:34px auto 0;padding:0 40px")}>
           <div style={css(`display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:22px 26px 22px 30px;border-radius:var(--rad);${VERRE}`)}>
-            <div style={css("display:flex;align-items:center;gap:16px;min-width:260px;flex:1")}>
+            {/* `min(260px,100%)` : voir `AppelOffre`. Un `min-width` en pixels
+                ne cède jamais, et sous 360 px il fait sortir le bloc de sa
+                bande, qui le rogne. */}
+            <div style={css("display:flex;align-items:center;gap:16px;min-width:min(260px,100%);flex:1")}>
               <span style={css("width:10px;height:10px;border-radius:999px;background:var(--acc);flex:none;box-shadow:0 0 0 6px var(--acc-w)")}></span>
               <div>
                 <div style={css("font:600 calc(17px * var(--ts))/1.3 var(--ft);letter-spacing:-.022em;color:var(--ink)")}>Un besoin sur ce sujet&nbsp;? Un chargé d’affaires vous rappelle sous 1&nbsp;h.</div>
-                <div style={css("font:400 13.5px var(--fb);color:var(--ink3);margin-top:3px")}>Jours ouvrés · technicien depuis le hub le plus proche · partout en France</div>
+                <div style={css("font:400 13.5px var(--fb);color:var(--ink3);margin-top:3px")}>{appliqueDecisions(BANDE_APPEL, chemin)}</div>
               </div>
             </div>
             <div style={css("display:flex;align-items:center;gap:10px;flex-wrap:wrap")}>
@@ -358,7 +380,8 @@ function Appel({ v }: { v: Vue }) {
       <div style={css("max-width:1200px;margin:0 auto;padding:0 40px")}>
         <div style={css("border-radius:40px;background:var(--panel);padding:52px 56px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap")}>
           <div style={css("position:absolute;width:460px;height:460px;left:-180px;bottom:-200px;background:radial-gradient(circle,rgba(255,124,60,.28),transparent 68%);pointer-events:none")}></div>
-          <div style={css("position:relative;flex:1;min-width:260px")}>
+          {/* `min(260px,100%)` : même correction, même raison. */}
+          <div style={css("position:relative;flex:1;min-width:min(260px,100%)")}>
             <div style={css("font:600 11.5px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:12px")}><span>{v.spH1}</span></div>
             <div style={css("font:600 calc(clamp(24px,2.8vw,38px) * var(--ts))/1.12 var(--ft);letter-spacing:-.04em;color:#fff;max-width:22ch;text-wrap:balance")}>Décrivez votre situation, nous revenons avec un plan et un délai.</div>
           </div>
@@ -371,18 +394,18 @@ function Appel({ v }: { v: Vue }) {
   );
 }
 
-export default function PageVente({ v, formulaire }: { v: Vue; formulaire: string }) {
+export default function PageVente({ v, formulaire, chemin }: { v: Vue; formulaire: string } & AvecChemin) {
   return (
     <div className="mg-site">
       <main style={css("padding-top:96px")}>
-        <Heros v={v} />
+        <Heros v={v} chemin={chemin} />
         <Bandeau v={v} />
         <Constat v={v} />
         <Methode v={v} />
         <References v={v} />
         {v.spRest.map((sec) => (
           <Fragment key={sec.id}>
-            <SectionNumerotee sec={sec} />
+            <SectionNumerotee sec={sec} chemin={chemin} />
           </Fragment>
         ))}
         <Questions v={v} />

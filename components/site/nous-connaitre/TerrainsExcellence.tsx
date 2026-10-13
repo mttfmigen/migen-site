@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import styles from "./TerrainsExcellence.module.css";
+
 /**
  * Nos terrains d'excellence : une carte de verre en deux colonnes.
  *
@@ -106,6 +108,7 @@ export default function TerrainsExcellence() {
             </p>
             <Link
               href="/secteurs/"
+              className={styles.lienSecteurs}
               style={{ font: "600 14.5px var(--fb)", color: "#ff7c3c" }}
             >
               Voir nos secteurs →

@@ -138,7 +138,11 @@ export function BlocLecture({ b, groupe = "" }: { b: Bloc; groupe?: string }) {
   if (b.isCta)
     return (
       <div style={css(`display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;margin:10px 0 24px;padding:24px 28px;border-radius:var(--rad);${VERRE}`)}>
-        <p style={css("font:400 15px/1.65 var(--fb);color:var(--ink1);margin:0;flex:1;min-width:240px;max-width:62ch")}>
+        {/* `min(240px,100%)` et non `240px` : la bande porte 28 px de
+            remplissage de chaque côté, donc à 320 px elle n'offre que 184 px
+            à ce texte. Un `min-width` en pixels ne cède jamais et sortait du
+            cadre ; au-dessus, le plancher de 240 px tient comme avant. */}
+        <p style={css("font:400 15px/1.65 var(--fb);color:var(--ink1);margin:0;flex:1;min-width:min(240px,100%);max-width:62ch")}>
           <Segs segs={b.segs} gras={GRAS} lien={LIEN} survol={h.acc} />
         </p>
         <div style={css("display:flex;gap:10px;flex:none;flex-wrap:wrap")}>

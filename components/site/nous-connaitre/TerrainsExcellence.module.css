@@ -1,0 +1,22 @@
+/*
+ * « VOIR NOS SECTEURS → » : CIBLE TACTILE PORTÉE À 24 px SUR TÉLÉPHONE.
+ *
+ * Mesuré le 12/10 aux quatre largeurs (320, 360, 390, 768 px), après
+ * hydratation et bandeau de consentement refusé : le lien faisait 143 × 20 px,
+ * l'interligne de son texte de 14,5 px. Sous le plancher de 24 × 24 px du
+ * critère 2.5.8 de la WCAG 2.2, niveau AA, et sans exemption possible : c'est
+ * un lien de bloc, en fin de colonne, et non un lien dans un paragraphe.
+ *
+ * Les 4 px manquants sont pris en remplissage vertical : la ligne de base ne
+ * se déplace pas, la zone de frappe grandit. Borné à 880 px, le seuil mobile
+ * du site, pour que la capture de référence de la maquette (1280 px) reste
+ * identique au pixel.
+ */
+@media (max-width: 880px) {
+  .lienSecteurs {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding-block: 2px;
+  }
+}

@@ -462,6 +462,11 @@ export default async function PageDuCocon({
         formulaire={`cocon${page.path.replace(/\//g, "-")}`}
         filAriane={<FilAriane path={page.path} />}
         maillage={<Maillage page={page} />}
+        // Le CHEMIN, pour les seules décisions de copie à portée limitée de
+        // `lib/decisions-copie.ts` : cinq libellés de la famille offre vivent
+        // dans des composants partagés par tout le site, et la décision du
+        // 12/10 ne vaut que pour dix pages. Voir `PageOffre.chemin`.
+        chemin={page.path}
       />
     );
   }

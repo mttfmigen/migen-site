@@ -116,7 +116,9 @@ function Bande({ bande }: { bande?: BandeFiche }) {
             font: "500 16px/1.6 var(--fb)",
             color: "var(--ink)",
             flex: "1 1 0%",
-            minWidth: 260,
+            // Voir `SectionsHub.tsx` : meme bande, meme borne. 260 px en dur
+            // debordaient de 82 px la cellule de 180 px du telephone.
+            minWidth: "min(260px, 100%)",
             maxWidth: "70ch",
           }}
         >

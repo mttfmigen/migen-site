@@ -177,15 +177,20 @@ function Bloc({ bloc }: { bloc: BlocRessource }) {
 function BandeAppel() {
   return (
     <div style={H.BANDE}>
-      <div style={H.BANDE_TEXTE}>
+      {/* `bandeTexte` et `bandeBouton` ne portent AUCUN dessin : ils servent
+          d'ancres aux règles qui, sous 620 px, donnent la ligne entière au
+          texte et laissent le libellé du bouton se couper, au lieu de les
+          faire sortir de l'écran de 52 et 20 px (voir `Ressource.module.css`).
+          Les styles en ligne restent ceux de la capture, au pixel. */}
+      <div className={styles.bandeTexte} style={H.BANDE_TEXTE}>
         <strong style={{ color: "#fff", fontWeight: 600 }}>{H.COPIE.bandeQuestion}</strong>
         {H.COPIE.bandeSuite}
       </div>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-        <Link href={H.CONTACT} style={H.BANDE_BOUTON}>
+        <Link href={H.CONTACT} className={styles.bandeBouton} style={H.BANDE_BOUTON}>
           {H.COPIE.decrire}
         </Link>
-        <a href={H.TELEPHONE.href} style={H.BANDE_TELEPHONE}>
+        <a href={H.TELEPHONE.href} className={styles.bandeBouton} style={H.BANDE_TELEPHONE}>
           {H.TELEPHONE.libelle}
         </a>
       </div>
@@ -308,7 +313,24 @@ export default function CorpsRessource({
                     {corps}
                   </>
                 ) : (
-                  <SectionPliableMobile enTete={titre} resume={resumeDeLaPartie(partie)}>
+                  /* LA BASCULE PORTE UNE ETIQUETTE, PAS LE `<h2>` DE LA PARTIE.
+                     Le titre et son numero restent dans le corps du bloc, a leur
+                     place et a la taille de leur capture ; l'etiquette n'existe
+                     que sous 880 px et s'efface des que la partie est ouverte.
+                     Voir `habillage.ETIQUETTE_SURTITRE` pour le pourquoi, et
+                     `Ressource.module.css` pour le seuil. L'ancre `#mr-s<n>` du
+                     sommaire reste sur le `<h2>` : les liens du sommaire tombent
+                     au meme endroit qu'avant. */
+                  <SectionPliableMobile
+                    enTete={
+                      <span data-mobile-seulement="" className={styles.etiquettePli}>
+                        <span style={H.ETIQUETTE_SURTITRE}>{numero(k)}</span>
+                        <span style={H.ETIQUETTE_TITRE}>{partie.titre}</span>
+                      </span>
+                    }
+                    resume={resumeDeLaPartie(partie)}
+                  >
+                    {titre}
                     {corps}
                   </SectionPliableMobile>
                 )}

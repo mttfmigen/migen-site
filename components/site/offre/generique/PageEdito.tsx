@@ -42,7 +42,14 @@ function SectionLecture({ sec }: { sec: Section }) {
       {sec.afterCtaEdito ? (
         <div style={css("margin:36px 0;border-radius:var(--rad);background:var(--panel);padding:28px 30px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap")}>
           <div style={css("position:absolute;width:420px;height:420px;right:-170px;top:-190px;background:radial-gradient(circle,rgba(255,124,60,.26),transparent 68%);pointer-events:none")}></div>
-          <div style={css("position:relative;flex:1;min-width:240px;font:600 calc(18px * var(--ts))/1.35 var(--ft);letter-spacing:-.028em;color:#fff;max-width:32ch")}>Vous préférez qu’on s’en occupe&nbsp;? Rappel dans l’heure.</div>
+          {/* `min-width:min(240px,100%)` et non `240px` : la bande porte
+              30 px de remplissage de chaque côté, donc à 320 px elle n'offre
+              que 180 px à cette phrase, qui en réclamait 240 et sortait du
+              cadre de 30 px, rognée par l'`overflow:hidden` de la bande.
+              Mesuré au navigateur le 13/10 sur
+              `/offres/residence/cahier-des-charges/`. Au-dessus, le plancher
+              de 240 px tient comme avant. */}
+          <div style={css("position:relative;flex:1;min-width:min(240px,100%);font:600 calc(18px * var(--ts))/1.35 var(--ft);letter-spacing:-.028em;color:#fff;max-width:32ch")}>Vous préférez qu’on s’en occupe&nbsp;? Rappel dans l’heure.</div>
           <a className={h.bouton} href="#cx-form" style={css("position:relative;display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:999px;background:var(--acc);color:#fff;font:600 15px var(--fb);white-space:nowrap;box-shadow:0 12px 30px -12px rgba(255,124,60,.9);transition:filter var(--tr),transform var(--tr);flex:none")}>Décrire mon besoin</a>
         </div>
       ) : null}

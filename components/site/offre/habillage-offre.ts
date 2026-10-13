@@ -42,12 +42,26 @@ export const HERO_RANGEE_PASTILLE: CSSProperties = {
   flexWrap: "wrap",
 };
 
-/** l. 4712 */
+/**
+ * l. 4712
+ *
+ * LE `nowrap` DE LA CAPTURE A CÉDÉ LE 13/10, et c'est le même arbitrage que
+ * `BOUTON_HERO` juste en dessous. Mesuré au navigateur sur
+ * `/secteurs/logistique/` à 320 px : la pastille « Maintenance des équipements
+ * logistiques » fait 313 px dans une page qui en offre 240, elle sortait du
+ * cadre et son dernier mot était coupé. Le libellé vient de la page, il est
+ * donc aussi long que le sujet de la page : la maquette, qui ne descend pas
+ * sous 880 px, ne pouvait pas le voir.
+ *
+ * Rien ne change au-dessus : une pastille ne se replie que s'il lui manque de
+ * la place, et sur grand écran elle n'en manque jamais.
+ */
 export const PASTILLE: CSSProperties = {
   display: "inline-flex",
   alignItems: "center",
   gap: 8,
-  whiteSpace: "nowrap",
+  whiteSpace: "normal",
+  maxWidth: "100%",
   padding: "6px 14px",
   borderRadius: 999,
   background: "rgba(255,255,255,var(--gl-a))",
@@ -324,7 +338,12 @@ export const BANDE_REGLE_TEXTE: CSSProperties = {
   font: "400 14.5px/1.6 var(--fb)",
   color: "var(--ink1)",
   flex: 1,
-  minWidth: 240,
+  /* `min(240px, 100%)` ET NON `240px` : la bande « La règle » porte 24 px de
+     remplissage de chaque côté, donc à 320 px elle n'offre que 192 px à ce
+     texte, qui en réclamait 240 et sortait du cadre. Même correction que
+     `AppelOffre` et `BandeAppel`, mesurée au navigateur le 13/10. Au-dessus,
+     le plancher de 240 px tient comme avant. */
+  minWidth: "min(240px, 100%)",
 };
 
 /* ----------------------------------- « Le comparatif », section sous condition */

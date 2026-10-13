@@ -129,6 +129,7 @@ export default function AvantApresBascule({
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div
           data-reveal=""
+          className={styles.canevas}
           style={{ ...CADRE_CANEVAS, ...vue.styleCadre }}
         >
           <div style={vue.styleHalo} />
@@ -195,6 +196,7 @@ export default function AvantApresBascule({
                 >
                   {tuile.forme === "chiffre" && (
                     <div
+                      className={styles.tuileCorps}
                       style={{
                         display: "flex",
                         flexDirection: "column",
@@ -220,6 +222,7 @@ export default function AvantApresBascule({
                         }}
                       />
                       <div
+                        className={`${styles.tuileCorps} ${styles.tuilePhoto}`}
                         style={{
                           ...CALQUE_PLEIN,
                           display: "flex",
@@ -281,6 +284,7 @@ export default function AvantApresBascule({
 
                   {tuile.forme === "citation" && (
                     <div
+                      className={styles.tuileCorps}
                       style={{
                         display: "flex",
                         flexDirection: "column",

@@ -38,6 +38,7 @@ import type { LectureRessource } from "@/types/ressource";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { enTexteNu } from "@/components/site/blocs/TexteRiche";
+import { sansOrnementsMobiles } from "@/components/site/editorial/ornements-mobiles";
 import { appliqueDecisions } from "@/lib/decisions-copie";
 
 import PageRessource from "./PageRessource";
@@ -117,9 +118,26 @@ function nettoie(texte: string): string {
  * La porte garde toute sa capacité à refuser : seuls les éléments portant
  * `data-mobile-seulement` disparaissent, le reste du texte est comparé
  * caractère pour caractère comme avant.
+ *
+ * LE RETRAIT COMPTE LA PROFONDEUR, ET CE N'EST PAS UN LUXE. Le motif
+ * paresseux qui vivait ici, `<(\w+)…>[\s\S]*?<\/\1>`, s'arrête au PREMIER
+ * `</span>` rencontré. Il convenait tant que les ornements de ce gabarit
+ * étaient des feuilles, un chevron et un résumé. Depuis le 13/10 la bascule
+ * porte une ÉTIQUETTE, et l'étiquette est un `<span>` QUI EN CONTIENT DEUX,
+ * le numéro et le titre : le motif paresseux n'en retirait que la moitié et
+ * laissait le titre dans le texte comparé. Résultat mesuré sur les 35 pages :
+ * « …administrative. La sélection, en six étapes 02 La… » là où la capture
+ * écrit « …administrative. 02 La sélection, en six étapes Un… ». La porte
+ * refusait 35 pages sur 35 pour une faute qui n'était pas dans la page mais
+ * dans sa propre lecture.
+ *
+ * L'implémentation est celle de `verification-editorial.tsx`, importée plutôt
+ * que recopiée : deux lectures du même HTML qui divergent au premier
+ * ajustement, c'est la panne suivante. Elle compte les balises ouvrantes et
+ * fermantes, gère l'auto-fermeture, et devant une balise jamais refermée elle
+ * NE RETIRE RIEN plutôt que de couper au hasard et de rendre la comparaison
+ * muette.
  */
-const sansOrnementsMobiles = (html: string) =>
-  html.replace(/<(\w+)[^>]*\sdata-mobile-seulement[^>]*>[\s\S]*?<\/\1>/g, " ");
 
 const sansBalises = (html: string) =>
   decode(sansOrnementsMobiles(html).replace(/<[^>]+>/g, " "));

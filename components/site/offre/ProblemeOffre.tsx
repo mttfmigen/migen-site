@@ -163,7 +163,12 @@ function Sombre({ section }: { section: SectionProbleme }) {
               {section.puces.map((puce, rang) => (
                 <div key={puce.accroche ?? puce.texte} style={CARTE_SOMBRE}>
                   <span style={NUMERO}>{numerote(rang)}</span>
-                  <div>
+                  {/* `minWidth: 0` ET `overflowWrap` : un élément de flexbox ne descend
+                      pas sous la largeur de son mot le plus long tant qu'il garde
+                      `min-width: auto`, et la carte sort alors de son panneau, qui la
+                      rogne. Même mesure que `implantation/ProblemeCartes.tsx`, 13/10,
+                      320 px. Invisible dès qu'il y a la place. */}
+                  <div style={{ minWidth: 0, overflowWrap: "break-word" }}>
                     {puce.accroche ? (
                       <div style={{ ...ACCROCHE, color: "#fff" }}>
                         {puce.accroche}
@@ -326,7 +331,12 @@ export default function ProblemeOffre({
             {section.puces.map((puce, rang) => (
               <div key={puce.accroche ?? puce.texte} style={CARTE}>
                 <span style={NUMERO}>{numerote(rang)}</span>
-                <div>
+                {/* `minWidth: 0` ET `overflowWrap` : un élément de flexbox ne descend
+                    pas sous la largeur de son mot le plus long tant qu'il garde
+                    `min-width: auto`, et la carte sort alors de son panneau, qui la
+                    rogne. Même mesure que `implantation/ProblemeCartes.tsx`, 13/10,
+                    320 px. Invisible dès qu'il y a la place. */}
+                <div style={{ minWidth: 0, overflowWrap: "break-word" }}>
                   {puce.accroche ? (
                     <div style={ACCROCHE}>{puce.accroche}</div>
                   ) : null}

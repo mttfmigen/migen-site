@@ -95,7 +95,7 @@ export default function ProcessSelection() {
               style={{ objectFit: "cover", objectPosition: "56% 28%", filter: "saturate(var(--sat,.55)) contrast(1.05)" }}
             />
             <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom,rgba(20,19,18,0) 26%,rgba(20,19,18,.5) 56%,rgba(20,19,18,.93) 100%)" }} />
-            <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "30px 30px 28px" }}>
+            <div className={styles.encart} style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "30px 30px 28px" }}>
               <div style={{ display: "flex", alignItems: "baseline", font: "600 calc(clamp(84px,8.4vw,124px) * var(--ts,1))/.86 var(--ft)", letterSpacing: "-.06em", color: "#fff" }}>
                 <span>10</span>
                 <span style={{ fontSize: ".46em", letterSpacing: "-.02em", marginLeft: ".12em" }}>%</span>

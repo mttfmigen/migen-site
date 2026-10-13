@@ -440,7 +440,10 @@ export function PremierMois({ contenu }: { contenu: ContenuOffre }) {
 
           {appel ? (
             <div style={PREMIER_MOIS_APPEL}>
-              <div style={{ flex: 1, minWidth: 280 }}>
+              {/* `min(280px, 100%)` : voir `AppelOffre`. Un `min-width` en
+                  pixels ne cède jamais, et sous 360 px il fait sortir le bloc
+                  de la page. */}
+              <div style={{ flex: 1, minWidth: "min(280px, 100%)" }}>
                 {contenu.premierMoisAppelSurtitre ? (
                   <div
                     style={{ ...SURTITRE, fontSize: 11, marginBottom: 10 }}

@@ -405,7 +405,9 @@
               "question": "Intervenez-vous partout en France, et la nuit ?",
               "reponse": "Oui aux deux. Nous partons du bassin le plus proche, depuis nos 4 agences et nos hubs de techniciens dans les grandes villes de France. L'astreinte fonctionne. Pour un besoin récurrent hors heures ouvrées, l'astreinte est la formule adaptée."
             }
-          ]
+          ],
+          "href": "/offres/depannage-industriel/",
+          "hrefLibelle": "Dépannage industriel"
         },
         {
           "titre": "Astreinte de maintenance : quelqu’un décroche, la nuit comme le week-end",

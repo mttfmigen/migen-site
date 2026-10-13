@@ -10,3 +10,39 @@
   border-color: var(--acc) !important;
   color: var(--acc) !important;
 }
+
+/*
+ * « VOIR TOUTES LES MARQUES → » SORTAIT DE LA PAGE À 320 px.
+ *
+ * Le lien porte `white-space: nowrap` et `flex: none` en style en ligne : il
+ * fait 234 px et refuse de rétrécir. La carte de verre qui le contient a
+ * 48 px de remplissage de chaque côté, la page 40 : à 320 px il ne reste que
+ * 144 px, et le lien dépassait le bord droit de `.mg-site` de 3 px. `.mg-site`
+ * étant en `overflow-x: clip`, la flèche était coupée sans rien signaler.
+ *
+ * Sous 560 px le libellé peut passer à la ligne : il tient alors dans la
+ * carte. Au-dessus, rien ne change, et la capture de la maquette à 1280 px est
+ * intacte.
+ */
+@media (max-width: 560px) {
+  .lienMarques {
+    white-space: normal !important;
+    text-align: center;
+    /*
+     * LES TROIS DÉCLARATIONS SONT NÉCESSAIRES, et la première seule ne
+     * suffisait pas : re-mesuré après l'avoir posée, le lien faisait toujours
+     * 234 px et dépassait encore de 3 px.
+     *
+     * `display: inline-flex` fait de son libellé un élément de flexbox
+     * anonyme, dimensionné sur son contenu maximal : autoriser le retour à la
+     * ligne ne change rien tant que la boîte garde sa largeur de confort. Et
+     * `flex: none` en style en ligne interdisait au lien de rétrécir dans la
+     * rangée qui le porte. `display: block` rend son libellé à la mise en page
+     * du texte, `max-width: 100%` le borne à la carte, et `flex` lui redonne
+     * le droit de se contracter.
+     */
+    display: block !important;
+    max-width: 100% !important;
+    flex: 0 1 auto !important;
+  }
+}

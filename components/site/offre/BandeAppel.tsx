@@ -102,7 +102,13 @@ export default function BandeAppel({
                 alignItems: "center",
                 gap: 14,
                 flex: "1 1 0%",
-                minWidth: 260,
+                /* `min(260px, 100%)` ET NON `260px` : même correction, même
+                   mesure que `AppelOffre`. Les 260 px de la capture tiennent
+                   la phrase à gauche du bouton ; en pixels purs ils ne cèdent
+                   jamais, et à 320 px, où la bande n'a que 240 px, la mention
+                   sortait de la page de 10 et 11 px, trois fois par page sur
+                   les onze pages mesurées. Le dessin de bureau ne bouge pas. */
+                minWidth: "min(260px, 100%)",
               }}
             >
               <span aria-hidden="true" style={PUCE} />

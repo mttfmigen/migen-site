@@ -179,7 +179,9 @@
               "question": "Qui est responsable en cas de casse pendant le transfert ?",
               "reponse": "Le sujet est traité avant le chantier. Le devis et le cahier des charges précisent les responsabilités de chaque partie, les garanties et l'assurance mobilisée. Vous savez qui répond de quoi avant le premier câble débranché."
             }
-          ]
+          ],
+          "href": "/travaux-industriels/transfert-industriel/",
+          "hrefLibelle": "Transfert industriel"
         },
         {
           "titre": "Montage industriel : votre machine produit à la date prévue",
@@ -339,7 +341,9 @@
               "question": "Intervenez-vous pendant un arrêt de production ?",
               "reponse": "Oui, c'est fréquent. Beaucoup de montages et d'intégrations se réalisent pendant un arrêt technique planifié, nuits et week-ends compris. L'accès aux zones et la coactivité sont alors gérés avec une rigueur renforcée."
             }
-          ]
+          ],
+          "href": "/travaux-industriels/montage-industriel/",
+          "hrefLibelle": "Montage industriel : votre machine produit à la date prévue"
         },
         {
           "titre": "Démantèlement industriel",

@@ -3,6 +3,8 @@
 import { useState } from "react";
 import type { CSSProperties } from "react";
 
+import { appliqueDecisions } from "@/lib/decisions-copie";
+
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import { FAMILLES } from "@/components/site/marques/marques-donnees";
 import type { Marque } from "@/components/site/marques/marques-donnees";
@@ -53,7 +55,30 @@ export interface ProprietesMarquesOffre {
    * n'est rendu et la section tient à `famille` seule, comme avant le 07/10.
    */
   familles?: readonly string[];
+  /**
+   * Le chemin de la page, pour les décisions de copie à portée limitée
+   * (`lib/decisions-copie.ts`). Absent, la promesse passe telle quelle.
+   *
+   * CE COMPOSANT EST CLIENT, et `lib/decisions-copie.ts` part donc dans son
+   * paquet. C'est assumé : le module est une liste de motifs et de fonctions
+   * pures, sans dépendance, et l'alternative aurait été de sortir la promesse
+   * du composant pour la faire décider par le gabarit, c'est-à-dire de mettre
+   * une phrase de copie ailleurs que là où elle se rend.
+   */
+  chemin?: string;
 }
+
+/**
+ * La promesse de l'entête, mot pour mot celle de la capture (relevée sur
+ * `maquette/rendu/travaux-industriels--levage-manutention.html`,
+ * `offres--bureau-etudes.html` et `bureau-etudes.html`).
+ *
+ * SORTIE DU JSX pour la même raison que dans `AppelFinal` : une décision de
+ * copie s'applique à une chaîne, et le retour à la ligne du JSX coupait
+ * « Le technicien qui les connaît » en deux. L'espace insécable de la capture
+ * est gardé, c'est celui que `&nbsp;` produisait.
+ */
+const PROMESSE = "Vos machines sont dans la liste\u00a0? Le technicien qui les connaît fait déjà partie de nos équipes.";
 
 const ENTETE: CSSProperties = {
   display: "grid",
@@ -170,6 +195,7 @@ function Tuile({ marque }: { marque: Marque }) {
 export default function MarquesOffre({
   famille,
   familles,
+  chemin,
 }: ProprietesMarquesOffre) {
   const [active, setActive] = useState(famille);
   /* Une clé inconnue du rail est ignorée plutôt que rendue vide, même règle que
@@ -193,10 +219,7 @@ export default function MarquesOffre({
             <div style={SURTITRE}>Marques et constructeurs</div>
             <h2 style={TITRE}>Les équipements que nous maintenons déjà</h2>
           </div>
-          <p style={PHRASE}>
-            Vos machines sont dans la liste&nbsp;? Le technicien qui les
-            connaît fait déjà partie de nos équipes.
-          </p>
+          <p style={PHRASE}>{appliqueDecisions(PROMESSE, chemin)}</p>
         </div>
         <div style={{ ...VERRE, padding: "22px 24px 24px" }}>
           {rail.length > 0 ? (

@@ -176,3 +176,124 @@
     margin-top: 0;
   }
 }
+
+/* ================================================= LA BASCULE AU TÉLÉPHONE
+   Trois défauts mesurés le 13/10 dans un vrai navigateur, aux quatre largeurs
+   320, 360, 390 et 768 px, bloc déplié.
+
+   1. LA BASCULE N'AVAIT PAS LA GOUTTIÈRE DE LA PAGE. `.bascule` ne pose qu'un
+      `padding-block` : le `<details>` occupe toute la largeur de la fenêtre, et
+      le surtitre de l'étiquette commençait donc à 0 px, collé au bord, alors
+      que le `<h2>` qui paraît juste en dessous une fois le bloc ouvert commence
+      à 40 px (`LARGEUR`, `padding: 0 40px`, mesuré). Les deux doivent
+      s'aligner : c'est le même titre.
+
+   2. LE CHEVRON SORTAIT DE L'ÉCRAN DÈS QU'ON OUVRAIT UN BLOC. Mesuré à
+      -8 px .. 14 px dans une fenêtre qui commence à 0. Deux causes qui
+      s'additionnent : déplié, l'étiquette passe en `display: none`, le chevron
+      reste seul dans une rangée en `space-between` et file à GAUCHE ; et son
+      `transform: rotate(90deg)` fait pivoter une boîte de 6 px sur 22 autour de
+      son centre, ce qui porte son rectangle de -8 à 14. La poignée qui sert à
+      refermer la section était donc à moitié hors de l'écran, sur les 14 pages
+      de la famille et pour chaque bloc ouvert.
+
+   3. LA POIGNÉE SAUTAIT DE DROITE À GAUCHE à l'ouverture.
+
+   LA RÉPONSE EST CELLE DE LA MAQUETTE MOBILE, pas une invention :
+   `design_handoff_migen_site/maquette/MigenMobile.dc.html` dessine la bascule de
+   ses « Blocs communs (pliables) » avec un chevron en PASTILLE RONDE,
+   « flex:none;width:26px;height:26px;border-radius:999px;display:grid;
+   place-items:center;font-size:15px », et sa couleur change à l'ouverture. Une
+   pastille carrée tourne sans changer de rectangle : le débordement disparaît
+   par construction, et non par un rattrapage. Ses deux couleurs sont celles que
+   cette famille emploie déjà pour la pastille « + » de sa FAQ
+   (`.pliPlus` et `.pli[open] > summary > .pliPlus`) : un seul langage par page.
+
+   `margin-left: auto` garde la poignée à droite dans les deux états.
+
+   RIEN DE TOUT CELA N'EXISTE AU-DESSUS DE 880 px : la bascule entière y est en
+   `display: none` (règle plus bas), et aucune des 248 captures de bureau ne
+   peut donc bouger d'un pixel.
+
+   Le motif de composition vient de « Left Chevron Accordion » de la
+   bibliothèque 21st (@felipemenezes098/accordion-07) : son déclencheur donne au
+   libellé `flex-1` et au chevron `shrink-0`, de sorte que la poignée ne se
+   déplace ni ne se comprime jamais, quelle que soit la longueur du libellé.
+   Seule cette composition est reprise. Son habillage, lui, ne l'est pas : ni
+   ses classes Tailwind, ni son icône `lucide`, ni sa dépendance `base-ui`. */
+@media (max-width: 880px) {
+  .corpsHub details[data-pliable-mobile] > summary {
+    padding-inline: 40px;
+    align-items: center;
+  }
+  .corpsHub details[data-pliable-mobile] > summary > .etiquettePli {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .corpsHub details[data-pliable-mobile] > summary > [aria-hidden="true"] {
+    flex: 0 0 auto;
+    margin-left: auto;
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    font-size: 15px;
+    line-height: 1;
+    background: var(--chip);
+    color: var(--ink2);
+  }
+  .corpsHub details[data-pliable-mobile][open] > summary > [aria-hidden="true"] {
+    background: var(--acc);
+    color: #fff;
+  }
+}
+
+/* LE LIBELLÉ D'UN APPEL À L'ACTION PEUT PASSER À LA LIGNE SOUS 620 px, et
+   seulement là. `white-space: nowrap` vient de la maquette (huit fois dans
+   `MigenCarriere.dc.html`) et il est juste sur un bouton qui a la place. Dans
+   une cellule de 172 px, « Voir les postes ouverts » demandait 220 px et
+   sortait de 50 px de son hôte, mesuré aux trois largeurs de téléphone.
+   `!important` parce que la valeur à battre est un style EN LIGNE. Un bouton
+   qui tenait déjà sur une ligne ne change pas d'un pixel.
+   620 px est le point de rupture de la maquette elle-même (`ck-*`), pas un
+   seuil inventé pour l'occasion. */
+@media (max-width: 620px) {
+  .boutonOrange,
+  .boutonQuestion {
+    white-space: normal !important;
+  }
+}
+
+/* ========================== LE VIDE SOUS UNE BASCULE QUI VIENT DE S'OUVRIR
+
+   MESURÉ le 13/10 à 320, 360, 390 et 768 px : 132 px d'espace vide entre une
+   bascule et la première encre du contenu qu'elle ouvre. 120 px viennent du
+   `padding-top: var(--sec)` de la section, 12 px du `margin-top` du corps.
+   Sur la fiche Formation, qui porte 18 blocs, cela faisait 2 376 px de rien,
+   presque trois écrans de téléphone.
+
+   POURQUOI CE N'EST PAS LA FAUTE DE `--sec`. Les 120 px sont la valeur de la
+   maquette, et à toutes les largeurs : `.mgk-root` de `MigenCarriere.dc.html`
+   déclare `--sec: 120px` et la règle `.mg-site { --sec: 64px }` de
+   `globals.css` ne descend pas jusqu'ici (voir `RACINE_CARRIERE` dans
+   `PageFicheMetier.tsx`). Entre DEUX SECTIONS, ce rythme est juste et il reste.
+
+   CE QUI A CHANGÉ, c'est que le repli met une BASCULE entre la section et ce
+   qui la précède. Le filet et les 18 px de la bascule séparent déjà les deux
+   sections : les 120 px ne séparent plus rien, ils éloignent un titre de son
+   propre contenu. Seul le padding HAUT de la première section d'un bloc replié
+   est donc remis à zéro, et les 12 px du corps font le travail, exactement
+   comme la maquette mobile le dessine (« Blocs communs (pliables) » :
+   `padding:18px 18px 0` sur la bascule, `margin-top:12px` sur le contenu).
+
+   Le padding BAS n'est pas touché : il ferme les sections `fin`.
+
+   `!important` parce que la valeur à battre est un style EN LIGNE. Au-dessus de
+   880 px la bascule n'existe pas, et la règle non plus. */
+@media (max-width: 880px) {
+  .corpsHub details[data-pliable-mobile] > summary + div > section,
+  .corpsHub details[data-pliable-mobile] > summary + div > div > section {
+    padding-top: 0 !important;
+  }
+}

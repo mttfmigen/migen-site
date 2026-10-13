@@ -85,7 +85,25 @@ export default function PageImplantations({ titre, contenu, formulaire, filArian
     c.mention || c.appelBouton ? <BandeAppel mention={c.mention} bouton={c.appelBouton} variante={variante} /> : null;
 
   return (
-    <div className="mg-site">
+    /*
+     * `stylesOffre.gabarit` : LES RÈGLES MOBILES DU GABARIT EMBARQUÉ, et sans
+     * elles ce hub n'en avait AUCUNE.
+     *
+     * Ce fichier reprend les écrans de `PageVille` un par un, et le dit en
+     * tête. Mais `PageVille` pose `stylesOffre.gabarit` sur sa racine, et pas
+     * lui : les écrans importés arrivaient donc ici sans les règles de largeur
+     * que la maquette leur donne. Mesuré le 13/10 à 320 px, après hydratation :
+     * la rangée de constats « 03 Problème » (`.g3-pbgrid`) gardait ses SIX
+     * colonnes de 38 px. Chaque carte faisait 50 px de large pour 24 px de
+     * remplissage de chaque côté, soit ZÉRO pixel de texte, et les six constats
+     * débordaient les uns sur les autres, illisibles. À 390 px il restait 2 px.
+     *
+     * Toutes les règles de `.gabarit` vivent dans des `@media` de 1000 px et en
+     * dessous : la capture de référence, prise à 1280 px, ne bouge pas d'un
+     * pixel. Le `.racine` du hub reste en place, il porte autre chose
+     * (`--sec`, l'écart de `.mg-r2`).
+     */
+    <div className={`mg-site ${stylesOffre.gabarit}`}>
       {/* `racine` : la racine `.mgx-root` du gabarit d'offre, comme le hub `/offres/`. */}
       <main className={stylesOffres.racine} style={{ paddingTop: 62 }}>
         {filAriane}

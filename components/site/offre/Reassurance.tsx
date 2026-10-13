@@ -1,6 +1,8 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 
+import { appliqueDecisions } from "@/lib/decisions-copie";
+
 import {
   LARGEUR,
   PANNEAU,
@@ -114,10 +116,22 @@ const HUBS = [
 export interface ProprietesReassurance {
   /** Les trois repères de « Qui intervient chez vous ». À défaut, ceux de la capture pilote. */
   reperes?: readonly RepereOffre[];
+  /**
+   * Le chemin de la page, pour les décisions de copie à portée limitée
+   * (`lib/decisions-copie.ts`). Absent, les libellés passent tels quels.
+   *
+   * CE QUE ÇA CHANGE AUJOURD'HUI : rien de servi. Les dix pages de la décision
+   * du 12/10 fournissent toutes leur `reperes`, et ces fiches portent déjà
+   * « experts techniques ». Le passage par `appliqueDecisions` garde le DÉFAUT
+   * ci-dessus, « 10 % · des techniciens retenus », qui redeviendrait servi le
+   * jour où une de ces dix fiches perdrait son champ.
+   */
+  chemin?: string;
 }
 
 export default function Reassurance({
   reperes = REPERES,
+  chemin,
 }: ProprietesReassurance) {
   return (
     <section style={SECTION}>
@@ -187,7 +201,7 @@ export default function Reassurance({
                 {reperes.map((repere) => (
                   <div key={repere.valeur}>
                     <div style={REPERE_VALEUR}>{repere.valeur}</div>
-                    <div style={REPERE_LIBELLE}>{repere.libelle}</div>
+                    <div style={REPERE_LIBELLE}>{appliqueDecisions(repere.libelle, chemin)}</div>
                   </div>
                 ))}
               </div>

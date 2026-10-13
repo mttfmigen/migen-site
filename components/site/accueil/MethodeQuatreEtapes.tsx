@@ -265,7 +265,13 @@ export default function MethodeQuatreEtapes({
                 font: "400 14.5px/1.6 var(--fb)",
                 color: "rgba(255,255,255,.72)",
                 flex: 1,
-                minWidth: 240,
+                /* Voir `BandeauVerbe.tsx` : une largeur minimale fixe empêche
+                   l'enfant de rétrécir. Mesuré le 12/10 à 320 px, la phrase
+                   « Un technicien qui ne convient pas est remplacé… » faisait
+                   240 px dans un panneau qui n'en offre que 216, et le panneau
+                   est en `overflow: hidden` : les 24 px de trop étaient
+                   rognés, donc perdus. À 360 px et au-dessus, rien ne change. */
+                minWidth: "min(240px, 100%)",
                 position: "relative",
               }}
             >

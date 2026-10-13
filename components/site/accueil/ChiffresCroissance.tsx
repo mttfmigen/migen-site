@@ -98,6 +98,7 @@ export default function ChiffresCroissance({
           }}
         >
           <div
+            className={styles.panneau}
             style={{
               gridRow: "span 2",
               background: "var(--panel)",

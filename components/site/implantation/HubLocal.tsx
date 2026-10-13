@@ -95,7 +95,12 @@ const BADGE: CSSProperties = {
   WebkitBackdropFilter: "blur(12px)",
   font: "600 12px var(--fb)",
   marginBottom: 16,
-  whiteSpace: "nowrap",
+  /* `nowrap` cédé le 13/10, même cause que le bouton : le badge écrit le hub
+     de rattachement (« Rattaché au hub Marseille »), donc sa longueur suit le
+     nom du hub. Mesuré sur `/implantations/marseille/perpignan/` à 320 px :
+     199 px de badge dans une colonne de 158, rogné par le panneau. */
+  whiteSpace: "normal",
+  maxWidth: "100%",
 };
 
 const PUCE: CSSProperties = {
@@ -118,6 +123,24 @@ const TEXTE: CSSProperties = {
   maxWidth: "42ch",
 };
 
+/**
+ * LE BOUTON DU PANNEAU, et son `nowrap` a cédé le 13/10.
+ *
+ * Son libellé porte LE NOM DE LA PAGE (« Demander une intervention à
+ * Saint-Étienne »), donc il est d'autant plus long que la ville l'est. Le
+ * panneau, lui, est en `overflow: hidden` et son contenu vit dans une boîte
+ * absolue à 28 px des bords : à 320 px il reste 184 px, et le bouton en
+ * réclamait 330. Mesuré au navigateur sur trois pages de ce gabarit, à 320,
+ * 360 et 390 px : le bouton sortait de 62 à 144 px et la fin du libellé était
+ * COUPÉE par le panneau, donc la ville à laquelle on demande l'intervention
+ * disparaissait du bouton qui la demande. 66 pages du gabarit 04 et 8 du
+ * gabarit 06 portent ce bloc.
+ *
+ * `nowrap` vient de la maquette, qui ne descend pas sous 880 px : sur grand
+ * écran la place ne manque jamais et le libellé reste sur une ligne, à la
+ * virgule près. Même arbitrage que `.boutonPrincipal` de
+ * `offre/PageOffre.module.css`, et que `BOUTON_HERO` de `habillage-offre.ts`.
+ */
 const BOUTON: CSSProperties = {
   display: "inline-flex",
   alignItems: "center",
@@ -127,7 +150,8 @@ const BOUTON: CSSProperties = {
   background: "#ff7c3c",
   color: "#fff",
   font: "600 14.5px var(--fb)",
-  whiteSpace: "nowrap",
+  whiteSpace: "normal",
+  maxWidth: "100%",
   boxShadow: "0 10px 24px -12px rgba(255,124,60,.7)",
 };
 
@@ -190,12 +214,21 @@ const BANDE_ZONES: CSSProperties = {
   border: "1px solid var(--gbd)",
 };
 
+/**
+ * LE SUR-TITRE DE LA BANDE DES ZONES, `nowrap` cédé le 13/10 pour la même
+ * raison que le bouton : il est écrit par la page (« Hub de rattachement et
+ * zones voisines » sur le gabarit Département), et en capitales espacées il
+ * atteint 288 px là où la bande n'en offre que 254 à 360 px. Il sortait de
+ * 17 px. Les zones elles-mêmes gardent leur `nowrap` : un nom de ville coupé
+ * en deux lignes au milieu d'une pastille se lit moins bien qu'une pastille
+ * qui passe à la ligne suivante, et aucune n'a été mesurée en débordement.
+ */
 const ZONES_TITRE: CSSProperties = {
   font: "600 11px var(--fb)",
   letterSpacing: ".13em",
   textTransform: "uppercase",
   color: "var(--ink3)",
-  whiteSpace: "nowrap",
+  whiteSpace: "normal",
 };
 
 const ZONE: CSSProperties = {
