@@ -1,0 +1,38 @@
+/* Bloc candidature de l'espace Techniciens (`#rs-cand` de la maquette) : ce
+   qu'un style en ligne ne sait pas faire. Les `!important` battent les styles
+   en ligne, comme ceux de la maquette. */
+
+/* `style-focus` de la maquette, sur le champ ou sur sa boîte (champ + unité). */
+.saisie:focus,
+.boite:focus-within {
+  border-color: #ff7c3c !important;
+  box-shadow: 0 0 0 4px rgba(255, 124, 60, 0.15);
+}
+
+/* Dépôt du CV : `style-hover` de la maquette, et le même signal au clavier
+   puisque le champ fichier, masqué, reste focalisable. */
+.depot:hover,
+.depot:focus-within {
+  border-color: #ff7c3c !important;
+}
+
+/* Masqué mais focalisable : `display: none` (maquette) le sortait du
+   parcours clavier. */
+.masque {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.envoyer:hover {
+  filter: brightness(0.93);
+}
+
+/* `.rs-form2` de la maquette : une colonne sous 640 px. */
+@media (max-width: 640px) {
+  .form2 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}

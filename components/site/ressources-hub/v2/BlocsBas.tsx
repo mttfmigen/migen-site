@@ -18,7 +18,7 @@ import s from "./hub.module.css";
  * présélectionnent le besoin, comme `askDiag`.
  */
 
-const PANNEAU_SOMBRE: CSSProperties = {
+export const PANNEAU_SOMBRE: CSSProperties = {
   position: "relative",
   overflow: "hidden",
   borderRadius: 32,
@@ -30,7 +30,7 @@ const PANNEAU_SOMBRE: CSSProperties = {
   gap: 28,
   border: "1px solid rgba(255,255,255,.06)",
 };
-const HALO_HAUT_GAUCHE: CSSProperties = {
+export const HALO_HAUT_GAUCHE: CSSProperties = {
   position: "absolute",
   left: -160,
   top: -200,
@@ -40,7 +40,7 @@ const HALO_HAUT_GAUCHE: CSSProperties = {
   background: "radial-gradient(circle,rgba(255,124,60,.4),rgba(255,124,60,0) 66%)",
   pointerEvents: "none",
 };
-const SURTITRE_ORANGE: CSSProperties = {
+export const SURTITRE_ORANGE: CSSProperties = {
   font: "600 11.5px var(--fb)",
   letterSpacing: ".14em",
   textTransform: "uppercase",
@@ -59,7 +59,7 @@ const BOUTON_ORANGE: CSSProperties = {
   boxShadow: "0 14px 30px -14px rgba(255,124,60,.9)",
 };
 
-function Coche({ texte }: { texte: string }) {
+export function Coche({ texte }: { texte: string }) {
   return (
     <div style={{ display: "flex", gap: 12, alignItems: "center", font: "500 14.5px var(--fb)", color: "rgba(255,255,255,.9)" }}>
       <span

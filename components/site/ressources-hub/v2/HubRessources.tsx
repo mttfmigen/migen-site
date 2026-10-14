@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-import PostulerMetier from "@/components/site/metier/PostulerMetier";
+import CandidatureTechniciens from "./CandidatureTechniciens";
 
 import { BandeauDiagnostic, BlocFormulaire, ProcessSelection } from "./BlocsBas";
 import { ALaUne, CarteGrille, CarteListe, MONO, PourBienDemarrer } from "./Cartes";
@@ -27,7 +27,7 @@ import s from "./hub.module.css";
  *   · le rendu serveur sert les 28 cartes des deux espaces : le filtre ne fait
  *     que masquer (Google lit tout, sans JavaScript) ;
  *   · le formulaire est celui du site (aucun champ nouveau), la candidature
- *     Techniciens est celle du hub carrière ;
+ *     Techniciens est celle de la maquette, branchée sur /api/candidature ;
  *   · le test technicien pointe vers /test-technicien/ (l'URL de la maquette
  *     répond 404) ; « Sans engagement » est retiré (mot interdit du site).
  */
@@ -522,7 +522,7 @@ export default function HubRessources() {
           ) : (
             <>
               <ProcessSelection etape={etape} onEtape={setEtape} />
-              <PostulerMetier />
+              <CandidatureTechniciens />
             </>
           )}
         </main>
