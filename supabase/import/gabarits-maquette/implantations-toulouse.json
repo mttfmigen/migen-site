@@ -143,7 +143,7 @@
               "accroche": "Le préventif calé sur vos heures de fonctionnement réelles resserré avant les pics.",
               "texte": ""
             },
-            "benefice": "Vous entretenez au rythme de la charge, pas au rythme d'un calendrier constructeur. Préventive, en complément de la maintenance corrective, la politique de maintenance se construit avec vos données : historique de pannes, criticité par équipement, chemin critique de vos arrêts, heures de fonctionnement."
+            "benefice": "Vous entretenez au rythme de la charge, pas au rythme d'un calendrier constructeur. En complément de la maintenance corrective, la politique de maintenance préventive se construit avec vos données : historique de pannes, criticité par équipement, chemin critique de vos arrêts, heures de fonctionnement."
           },
           {
             "prestation": {
@@ -341,7 +341,7 @@
       "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ Bordeaux et Un site hors de ces zones"
     },
     {
-      "ligne": "Préventive, en complément de la maintenance corrective, la politique de maintenance se construit avec vos données : historique de pannes, criticité par équipement, chemin critique de vos arrêts, heures de fonctionnement.",
+      "ligne": "En complément de la maintenance corrective, la politique de maintenance préventive se construit avec vos données : historique de pannes, criticité par équipement, chemin critique de vos arrêts, heures de fonctionnement.",
       "pourquoi": "Enrichissement Thot SEO, repris du brouillon de septembre, FAQ visites préventives"
     },
     {
