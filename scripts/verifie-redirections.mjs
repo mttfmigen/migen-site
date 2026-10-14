@@ -14,11 +14,19 @@
  *   · adresse de contenu : 200 au même chemin, ou UNE 301 vers une page qui
  *     répond 200. Une chaîne, une boucle, une 404, une 302, 307 ou 308, une
  *     cible hors du site ou en erreur sont des pertes ;
- *   · adresse technique (flux, auteur, pagination, thème, `?p=`) : 404 ou 410,
- *     jamais une redirection. Une forme `?p=` / `?page_id=` peut répondre 200 :
- *     c'est l'accueil, servi au chemin « / » ;
+ *   · adresse technique (flux, auteur, pagination, thème, `?p=`) : UNE 301 vers
+ *     une page en 200, l'accueil ou le parent évident. Une 404 ou un 200 sur
+ *     place (l'accueil servi sous `/?page_id=8`) sont des pertes. RÈGLE DE
+ *     MEHDI, 14/10 : « toute URL de l'ancien site doit renvoyer vers une
+ *     page » ;
+ *   · un exemple de chaque motif du filet (`lib/filet-ancien-site.ts`) : UNE
+ *     301 vers une page en 200 ;
+ *   · les témoins : une adresse qui n'a jamais existé et ne ressemble pas à
+ *     WordPress garde sa 404, les fichiers du site (plan, robots, icône, image,
+ *     script de Next) et l'API répondent sans redirection ;
  *   · puis chaque adresse du plan du site : 200, sans redirection. C'est ce qui
- *     voit une redirection qui masquerait une page republiée (`/cgv/`).
+ *     voit une redirection qui masquerait une page republiée (`/cgv/`), ou un
+ *     filet trop large.
  *
  * Dernière ligne : `REDIRECTIONS_SANS_PERTE` si tout passe, sinon le compte des
  * pertes et un code de sortie 1.
@@ -81,14 +89,56 @@ function perteContenu({ sauts, boucle }, origine) {
   return null;
 }
 
-/** null si l'adresse technique répond bien 404 (ou l'accueil pour `?p=`). */
-function perteTechnique({ sauts }, chemin) {
-  const { code, location } = sauts[0];
-  if (code === 404 || code === 410) return null;
-  if (code === 200 && chemin.includes("?")) return null;
-  const vers = location ? ` vers ${location}` : "";
-  return `${code}${vers} sur une adresse technique, 404 attendue`;
+/** null si l'adresse technique part en UNE 301 vers une page en 200. */
+function perteTechnique(p, origine) {
+  if (p.sauts[0].code === 200) return "200 sur place, une 301 vers une page attendue";
+  return perteContenu(p, origine);
 }
+
+/** Un exemple par motif du filet de l'ancien WordPress. */
+const FILET = [
+  "/wp-content/uploads/2023/02/logo2r-300x68.png",
+  "/wp-includes/js/jquery/jquery.min.js",
+  "/wp-admin/",
+  "/wp-login.php",
+  "/wp-json/wp/v2/pages",
+  "/xmlrpc.php",
+  "/feed/",
+  "/maintenance-industrielle-lyon/feed/",
+  "/comments/feed/",
+  "/author/inconnu/",
+  "/category/inconnue/",
+  "/tag/maintenance/",
+  "/page/2/",
+  "/category/articles/page/9/",
+  "/blocks/inconnu/",
+  "/element_category/inconnue/",
+  "/fusion_tb_category/inconnue/",
+  "/portfolio-items/inconnu/",
+  "/faq-items/inconnu/",
+  "/featured_item/inconnu/",
+  "/shop/",
+  "/product-category/inconnue/",
+  "/product/inconnu/",
+  "/cart/",
+  "/checkout/",
+  "/my-account/",
+  "/2023/02/un-billet/",
+  "/?p=12",
+  "/?page_id=999",
+  "/?cat=3",
+  "/?s=robot",
+  "/lost-password/?page_id=11",
+];
+
+/** Témoins : [chemin, code attendu sans redirection]. */
+const TEMOINS = [
+  ["/offres/nexistepas/", 404],
+  ["/sitemap.xml", 200],
+  ["/robots.txt", 200],
+  ["/favicon.ico", 200],
+  ["/assets/client-danone.png", 200],
+];
 
 async function enLots(elements, travail) {
   const resultats = [];
@@ -106,10 +156,10 @@ async function cheminsDuPlan(base) {
 }
 
 /** Le contrôle complet d'une base. Rend les pertes et les comptes. */
-async function porte(base, adresses) {
+async function porte(base, adresses, { filet = false } = {}) {
   const origine = new URL(base).origin;
   const pertes = [];
-  const comptes = { conservees: 0, redirigees: 0, techniques: 0, formes: 0, plan: 0 };
+  const comptes = { conservees: 0, redirigees: 0, techniques: 0, formes: 0, plan: 0, filet: 0, temoins: 0 };
 
   const formes = adresses.flatMap((a) =>
     [...new Set([a.chemin, ...(a.variantes ?? [])])].map((forme) => ({ ...a, forme })),
@@ -120,7 +170,7 @@ async function porte(base, adresses) {
     try {
       const p = await parcours(base + a.forme);
       const technique = a.classe === "technique";
-      const perte = technique ? perteTechnique(p, a.forme) : perteContenu(p, origine);
+      const perte = technique ? perteTechnique(p, origine) : perteContenu(p, origine);
       if (perte) return pertes.push({ chemin: a.forme, perte });
       if (technique) comptes.techniques++;
       else if (p.sauts[0].code === 200) comptes.conservees++;
@@ -129,6 +179,8 @@ async function porte(base, adresses) {
       pertes.push({ chemin: a.forme, perte: e.name === "TimeoutError" ? "délai dépassé" : e.message });
     }
   });
+
+  if (filet) await porteFilet(base, origine, pertes, comptes);
 
   try {
     const plan = await cheminsDuPlan(base);
@@ -150,6 +202,42 @@ async function porte(base, adresses) {
   return { pertes, comptes };
 }
 
+/** Le filet attrape chaque motif, et ne touche ni l'API ni les fichiers du site. */
+async function porteFilet(base, origine, pertes, comptes) {
+  await enLots(FILET, async (chemin) => {
+    try {
+      const perte = perteTechnique(await parcours(base + chemin), origine);
+      if (perte) return pertes.push({ chemin, perte: `filet : ${perte}` });
+      comptes.filet++;
+    } catch (e) {
+      pertes.push({ chemin, perte: `filet : ${e.message}` });
+    }
+  });
+
+  // Un script de Next, lu dans l'accueil, et une route d'API : jamais redirigés.
+  const accueil = await fetch(base + "/", { signal: AbortSignal.timeout(30_000) }).then((r) => r.text());
+  const script = accueil.match(/\/_next\/static\/[^"']+\.js/)?.[0];
+  if (!script) pertes.push({ chemin: "/_next/static/", perte: "aucun script de Next dans l'accueil" });
+  const temoins = [...TEMOINS, ...(script ? [[script, 200]] : [])];
+  await enLots(temoins, async ([chemin, attendu]) => {
+    try {
+      const { code, location } = await reponse(base + chemin);
+      if (code === attendu) return comptes.temoins++;
+      const vers = location ? ` vers ${location}` : "";
+      pertes.push({ chemin, perte: `témoin en ${code}${vers}, ${attendu} attendu` });
+    } catch (e) {
+      pertes.push({ chemin, perte: `témoin : ${e.message}` });
+    }
+  });
+  try {
+    const { code, location } = await reponse(base + "/api/lead");
+    if (estRedirection(code)) pertes.push({ chemin: "/api/lead", perte: `API redirigée vers ${location}` });
+    else comptes.temoins++;
+  } catch (e) {
+    pertes.push({ chemin: "/api/lead", perte: `témoin : ${e.message}` });
+  }
+}
+
 function imprime(base, adresses, { pertes, comptes }) {
   for (const { chemin, perte } of pertes.sort((a, b) => a.chemin.localeCompare(b.chemin))) {
     console.log(`  PERTE  ${chemin}  ${perte}`);
@@ -157,7 +245,8 @@ function imprime(base, adresses, { pertes, comptes }) {
   console.log(
     `${base} : ${adresses.length} adresses de l'ancien site (${comptes.formes} formes), ` +
       `${comptes.conservees} conservées, ${comptes.redirigees} redirigées en une 301, ` +
-      `${comptes.techniques} techniques en 404 ; ${comptes.plan} adresses du plan du site en 200.`,
+      `${comptes.techniques} techniques redirigées en une 301 ; filet : ${comptes.filet}/${FILET.length} motifs en une 301, ` +
+      `${comptes.temoins} témoins intacts ; ${comptes.plan} adresses du plan du site en 200.`,
   );
   if (pertes.length > 0) {
     console.log(`ECHEC : ${pertes.length} perte(s).`);
@@ -169,9 +258,11 @@ function imprime(base, adresses, { pertes, comptes }) {
 
 /**
  * La preuve que la porte sait échouer : un faux site local, où sont fabriquées
- * une chaîne, une boucle, une 404, une cible en 404, une adresse technique
- * redirigée et une adresse du plan masquée par une redirection. La porte doit
- * voir ces six pertes, et elles seules.
+ * une chaîne, une boucle, une 404, une cible en 404, une adresse technique en
+ * 404 (le témoin de la règle du 14/10), une adresse technique servie sur place
+ * et une adresse du plan masquée par une redirection. La porte doit voir ces
+ * sept pertes, et elles seules ; l'adresse technique redirigée en une 301
+ * passe.
  */
 async function controle() {
   const PLAN = "<urlset><url><loc>https://migen.fr/page/</loc></url><url><loc>https://migen.fr/redirigee/</loc></url></urlset>";
@@ -184,6 +275,7 @@ async function controle() {
     "/boucle-b/": [301, "/boucle/"],
     "/cible-morte/": [301, "/nulle-part/"],
     "/technique-redirigee/": [301, "/page/"],
+    "/technique-sur-place/": [200],
     "/sitemap.xml": [200],
   };
   const serveur = createServer((req, res) => {
@@ -203,6 +295,7 @@ async function controle() {
     { chemin: "/cible-morte/", classe: "a_rediriger" },
     { chemin: "/technique/", classe: "technique" },
     { chemin: "/technique-redirigee/", classe: "technique" },
+    { chemin: "/technique-sur-place/", classe: "technique" },
   ];
   const { pertes } = await porte(base, adresses);
   serveur.close();
@@ -212,7 +305,8 @@ async function controle() {
     "/boucle/": /^boucle/,
     "/perdue/": /^404 sur une adresse de contenu/,
     "/cible-morte/": /^cible \/nulle-part\/ en 404/,
-    "/technique-redirigee/": /^301 vers \/page\/ sur une adresse technique/,
+    "/technique/": /^404 sur une adresse de contenu/,
+    "/technique-sur-place/": /^200 sur place/,
     "/redirigee/": /^adresse du plan du site en 301/,
   };
   const vues = Object.fromEntries(pertes.map((p) => [p.chemin, p.perte]));
@@ -228,7 +322,7 @@ async function controle() {
   }
   console.log(
     "CONTROLE_OK : la porte voit la chaîne, la boucle, la 404, la cible en 404, " +
-      "l'adresse technique redirigée et la page du plan masquée, sans fausse alerte.",
+      "l'adresse technique en 404 ou servie sur place et la page du plan masquée, sans fausse alerte.",
   );
 }
 
@@ -237,5 +331,5 @@ if (process.argv.includes("--controle")) {
 } else {
   const base = (process.argv.slice(2).find((a) => !a.startsWith("--")) ?? BASE_PAR_DEFAUT).replace(/\/+$/, "");
   const adresses = JSON.parse(readFileSync(LISTE, "utf8"));
-  imprime(base, adresses, await porte(base, adresses));
+  imprime(base, adresses, await porte(base, adresses, { filet: true }));
 }
