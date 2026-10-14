@@ -94,7 +94,7 @@ interface RelaisGabarit {
    * `SUPABASE_SERVICE_ROLE_KEY`. Les prendre dans le corpus rend le site
    * autonome : il ne dépend plus d'un import qui n'a pas eu lieu.
    */
-  seo?: { meta_title: string; meta_description: string };
+  seo?: { meta_title: string; meta_description: string; og_image?: string };
   /**
    * Le H1 de la maquette quand la base n'a pas le bon. La capture de
    * `/offres/residence/` attend « Sous-traitance de maintenance industrielle »
@@ -158,12 +158,19 @@ const CONTENUS_SUR_DISQUE: ReadonlyMap<string, RelaisGabarit> = (() => {
         url?: string;
         titre_h1?: string;
         contenu?: LignePage["contenu"];
-        seo?: { meta_title?: string; meta_description?: string };
+        seo?: { meta_title?: string; meta_description?: string; og_image?: string };
       };
       if (lu.url && lu.contenu) {
+        /* `og_image` est facultatif : les 12 billets du blog repris le portent
+           (leur photo d'origine), sans quoi leur partage montrait la vignette
+           par défaut au lieu de la photo de l'article (relecture du 14/10). */
         const seo =
           lu.seo?.meta_title && lu.seo?.meta_description
-            ? { meta_title: lu.seo.meta_title, meta_description: lu.seo.meta_description }
+            ? {
+                meta_title: lu.seo.meta_title,
+                meta_description: lu.seo.meta_description,
+                ...(lu.seo.og_image ? { og_image: lu.seo.og_image } : {}),
+              }
             : undefined;
         par.set(lu.url, { contenu: lu.contenu, titreH1: lu.titre_h1, seo });
       }
@@ -298,7 +305,7 @@ async function pageDeRelais(
           meta_title: relais.seo.meta_title,
           meta_description: relais.seo.meta_description,
           canonical: null,
-          og_image: null,
+          og_image: relais.seo.og_image ?? null,
           noindex: false,
           schema_type: "WebPage",
           created_at: horodatage,
@@ -354,7 +361,7 @@ export const pageParChemin = cache(
               meta_title: surDisque.seo.meta_title,
               meta_description: surDisque.seo.meta_description,
               canonical: null,
-              og_image: null,
+              og_image: surDisque.seo.og_image ?? null,
               noindex: false,
               schema_type: "WebPage" as const,
               created_at: page.created_at,

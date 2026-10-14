@@ -2,7 +2,8 @@
   "url": "/ressources/articles/machines-goulots/",
   "seo": {
     "meta_title": "Machines goulots et temps de production | Migen",
-    "meta_description": "Le temps, c'est de l'argent. Identifiez et éliminez les goulots d’étranglement de votre production pour maximiser l’efficacité et réduire les pertes de temps."
+    "meta_description": "Le temps, c'est de l'argent. Identifiez et éliminez les goulots d’étranglement de votre production pour maximiser l’efficacité et réduire les pertes de temps.",
+    "og_image": "/assets/blog/machines-goulots/machines-goulots.webp"
   },
   "titre_h1": "Vous connaissez l’expression “Le temps, c’est de l’argent” ?",
   "contenu": {
