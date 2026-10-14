@@ -1,39 +1,39 @@
 source,destination,code,raison,confiance,trafic,domaines_referents
 /,/,200,page conservée au même chemin,haute,1111,144
 /5s-maintenance-industrielle/,/ressources/fiches-pratiques/5s/,301,déjà en base (0003_redirections.sql),haute,1,0
-/?page_id=8,,404,"lien court WordPress (?p= / ?page_id=), le nouveau site sert l'accueil (200) sur cette forme",,0,0
-/?page_id=89,,404,"lien court WordPress (?p= / ?page_id=), le nouveau site sert l'accueil (200) sur cette forme",,0,0
+/?page_id=8,/,301,"lien court WordPress : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
+/?page_id=89,/,301,"lien court WordPress : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
 /a-propos/,/nous-connaitre/,301,"à valider : /nous-connaitre/ ou /entreprise-maintenance-industrielle/. Ancienne page « À propos » (philosophie, valeurs, équipe), WordPress la renvoyait vers /maintenance-industrielle/ qui présente l'entreprise ; /nous-connaitre/ est la page « Qui est Migen » du nouveau site",haute,0,0
 /accueil-cloned/,/,301,"doublon WordPress « Accueil (Cloned) » de la page d'accueil, même contenu",haute,0,0
 /actualites/,/ressources/articles/,301,déjà en base (0003_redirections.sql),haute,0,0
-/actualites/page/2/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
+/actualites/page/2/,/ressources/articles/,301,"pagination : filet de l'ancien WordPress, vers la cible de son archive (règle de Mehdi du 14/10)",,0,0
 /aktid-choisit-migen-intervention-pour-le-montage-de-son-nouveau-centre-logistique-a-clermont-ferrand/,/preuves/aktid-centre-logistique/,301,"Même étude de cas Aktid (montage du centre logistique de Clermont-Ferrand, 6 semaines)",haute,0,0
 /amazon-choisit-migen-intervention-pour-assurer-le-maintien-de-son-centre-logistique/,/preuves/amazon-centre-logistique/,301,"Même étude de cas Amazon ORY4, nommé dans la cible",haute,0,0
 /amazon-choisit-migen-intervention-pour-assurer-le-maintien-dun-nouveau-site/,/preuves/amazon-nouveau-site/,301,"Même étude de cas Amazon ETZ 2 (nouveau site), nommé dans la cible",haute,0,0
 /analyse-performances-maintenance/,/ressources/fiches-techniques/indicateurs-maintenance/,301,"L'article analyse les KPI (MTBF, MTTR, TRS, coûts) ; la fiche indicateurs traite exactement ces indicateurs",haute,0,0
-/author/antoinedigirolamo/,,404,"archive d'auteur : 404 attendue, pas de 301 de contenu",,0,0
-/author/ewy5rjqcmyxccndj/,,404,"archive d'auteur : 404 attendue, pas de 301 de contenu",,0,0
-/author/ewy5rjqcmyxccndj/page/2/,,404,"archive d'auteur : 404 attendue, pas de 301 de contenu",,0,0
-/author/ewy5rjqcmyxccndj/page/3/,,404,"archive d'auteur : 404 attendue, pas de 301 de contenu",,0,0
-/author/ewy5rjqcmyxccndj/page/4/,,404,"archive d'auteur : 404 attendue, pas de 301 de contenu",,0,0
-/author/ewy5rjqcmyxccndj/page/5/,,404,"archive d'auteur : 404 attendue, pas de 301 de contenu",,0,0
-/author/ewy5rjqcmyxccndj/page/6/,,404,"archive d'auteur : 404 attendue, pas de 301 de contenu",,0,0
-/author/ewy5rjqcmyxccndj/page/7/,,404,"archive d'auteur : 404 attendue, pas de 301 de contenu",,0,0
+/author/antoinedigirolamo/,/,301,"archive d'auteur : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
+/author/ewy5rjqcmyxccndj/,/,301,"archive d'auteur : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
+/author/ewy5rjqcmyxccndj/page/2/,/,301,"archive d'auteur : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
+/author/ewy5rjqcmyxccndj/page/3/,/,301,"archive d'auteur : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
+/author/ewy5rjqcmyxccndj/page/4/,/,301,"archive d'auteur : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
+/author/ewy5rjqcmyxccndj/page/5/,/,301,"archive d'auteur : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
+/author/ewy5rjqcmyxccndj/page/6/,/,301,"archive d'auteur : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
+/author/ewy5rjqcmyxccndj/page/7/,/,301,"archive d'auteur : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
 /automaticien-schneider/,/expertises/automatisme/schneider/,301,"offre automaticien Schneider, page expertise Schneider dédiée",haute,0,1
 /automaticien-siemens/,/expertises/automatisme/siemens/,301,"offre automaticien Siemens, page expertise Siemens dédiée",haute,0,0
-/blocks/erreur-404/,,404,"bloc de thème : 404 attendue, pas de 301 de contenu",,0,0
-/blocks/footer-about-us/,,404,"bloc de thème : 404 attendue, pas de 301 de contenu",,0,0
+/blocks/erreur-404/,/,301,"bloc de thème : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
+/blocks/footer-about-us/,/,301,"bloc de thème : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
 /bureau-etudes-ingenierie/,/offres/bureau-etudes/,301,"bureau d'études ; /offres/bureau-etudes/ plutôt que /bureau-etudes/ (même h1, que la maquette redirige vers /offres/bureau-etudes/) pour éviter une chaîne",haute,0,0
 /category/articles/,/ressources/articles/,301,"Archive WordPress des articles de blog (maintenance préventive, 5S, externalisation...) : même rôle que le hub des articles du nouveau site",haute,0,0
-/category/articles/page/2/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
-/category/articles/page/3/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
-/category/articles/page/4/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
+/category/articles/page/2/,/ressources/articles/,301,"pagination : filet de l'ancien WordPress, vers la cible de son archive (règle de Mehdi du 14/10)",,0,0
+/category/articles/page/3/,/ressources/articles/,301,"pagination : filet de l'ancien WordPress, vers la cible de son archive (règle de Mehdi du 14/10)",,0,0
+/category/articles/page/4/,/ressources/articles/,301,"pagination : filet de l'ancien WordPress, vers la cible de son archive (règle de Mehdi du 14/10)",,0,0
 /category/realisations/,/preuves/,301,"Archive WordPress des études de cas clients (Danone, JTEKT, GLS, Suez, Autoliv...) : même rôle que le hub des réalisations du nouveau site",haute,0,0
-/category/realisations/page/2/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
-/category/realisations/page/3/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
-/category/uncategorized/,,404,"catégorie « Non classé » : 404 attendue, pas de 301 de contenu",,0,0
-/category/uncategorized/page/2/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
-/category/uncategorized/page/3/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
+/category/realisations/page/2/,/preuves/,301,"pagination : filet de l'ancien WordPress, vers la cible de son archive (règle de Mehdi du 14/10)",,0,0
+/category/realisations/page/3/,/preuves/,301,"pagination : filet de l'ancien WordPress, vers la cible de son archive (règle de Mehdi du 14/10)",,0,0
+/category/uncategorized/,/,301,"catégorie « Non classé » : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
+/category/uncategorized/page/2/,/,301,"pagination : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
+/category/uncategorized/page/3/,/,301,"pagination : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
 /certification-cefri/,/secteurs/nucleaire/,301,"certification CEFRI = radioprotection nucléaire ; pas de page CEFRI, hub secteur nucléaire (qui ne cite pas CEFRI)",moyenne,0,1
 /certifications-mase-ecovadis/,/ressources/articles/certifications-mase-ecovadis/,301,billet de l'ancien blog republié mot pour mot sous /ressources/articles/ (décision de Mehdi du 14/10),haute,0,1
 /cgv/,/cgv/,200,"Conservée : page /cgv/ publiée le 14/10 sur le nouveau site, CGV de Migen Service (version 24/02/2026) mot pour mot ; les devis y renvoient. Plus de redirection",haute,0,0
@@ -45,23 +45,23 @@ source,destination,code,raison,confiance,trafic,domaines_referents
 /comment-optimiser-maintenance-industrielle-entreprise/,/ressources/articles/optimiser-la-maintenance/,301,Même sujet : optimiser la maintenance industrielle,haute,0,0
 /comment-recruter-technicien-maintenance-industrielle/,/ressources/process/selection-des-techniciens/,301,"Même sujet (recruter et sélectionner un technicien de maintenance, sélection à 10 %) ; cible prévue /offres/residence/recruter-un-technicien/ inexistante (404)",haute,1,0
 /comment-securiser-maintenance-centres-logistiques/,/secteurs/logistique/peak-season/,301,Même sujet : peak season et arrêts techniques en logistique,haute,0,0
-/comments/feed/,,404,"flux RSS : 404 attendue, pas de 301 de contenu",,0,0
+/comments/feed/,/,301,"flux RSS : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
 /comparatif-economique-la-maintenance-predictive-est-elle-plus-avantageuse-que-la-corrective/,/ressources/articles/predictive-ou-corrective/,301,Même comparatif prédictive contre corrective,haute,0,0
 /contact/,/contact/,200,page conservée au même chemin,haute,0,0
 /demande-de-devis/,/contact/,301,formulaire de demande de devis = formulaire de contact du nouveau site,haute,0,0
-/element_category/columns/,,404,"taxonomie du thème Avada : 404 attendue, pas de 301 de contenu",,0,0
-/element_category/elements/,,404,"taxonomie du thème Avada : 404 attendue, pas de 301 de contenu",,0,0
-/element_category/sections/,,404,"taxonomie du thème Avada : 404 attendue, pas de 301 de contenu",,0,0
+/element_category/columns/,/,301,"taxonomie du thème Avada : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
+/element_category/elements/,/,301,"taxonomie du thème Avada : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
+/element_category/sections/,/,301,"taxonomie du thème Avada : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
 /entreprise-de-maintenance-industrielle/,/entreprise-maintenance-industrielle/,301,déjà en base (0003_redirections.sql),haute,14,0
 /entreprise-de-maintenance/,/entreprise-maintenance-industrielle/,301,"WordPress la renvoie vers /entreprise-de-maintenance-industrielle/, déjà redirigée vers cette page dans 0003_redirections.sql ; H1 identique, on supprime la chaîne",haute,0,0
 /expert-maintenance-industrielle-externalisee/,/offres/full-service/,301,"déjà en base (0003_redirections.sql), cible finale au lieu de /offres/maintenance-externalisee/",haute,0,0
-/expert-maintenance-industrielle-externalisee/page/2/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
-/faq-items/,,404,"archive vide du thème Avada : 404 attendue, pas de 301 de contenu",,0,0
+/expert-maintenance-industrielle-externalisee/page/2/,/offres/full-service/,301,"pagination : filet de l'ancien WordPress, vers la cible de son archive (règle de Mehdi du 14/10)",,0,0
+/faq-items/,/,301,"archive vide du thème Avada : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
 /fdj-et-migen-sur-site-pour-la-maintenance-dun-site-proche-de-paris/,/preuves/fdj/,301,Même étude de cas FDJ,haute,0,0
-/featured_item/,,404,"bloc de thème : 404 attendue, pas de 301 de contenu",,0,0
-/feed/,,404,"flux RSS : 404 attendue, pas de 301 de contenu",,0,0
+/featured_item/,/,301,"bloc de thème : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
+/feed/,/,301,"flux RSS : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
 /femmes-dans-lindustrie-migen-soutient-la-diversite-dans-le-secteur-de-la-maintenance-industrielle/,/ressources/articles/femmes-dans-l-industrie/,301,billet de l'ancien blog republié mot pour mot sous /ressources/articles/ (décision de Mehdi du 14/10),haute,0,0
-/fusion_tb_category/footer/,,404,"taxonomie du thème Avada : 404 attendue, pas de 301 de contenu",,0,0
+/fusion_tb_category/footer/,/,301,"taxonomie du thème Avada : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
 /gestion-dechets-operations-maintenance/,/ressources/articles/gestion-des-dechets/,301,déjà en base (0003_redirections.sql),haute,5,1
 /group-atlantic-choisit-migen-consultation-pour-renforcer-ses-equipes/,/preuves/groupe-atlantic/,301,Même étude de cas Groupe Atlantic (renfort d'équipe),haute,0,0
 /guide-maintenance-industrielle/,/ressources/articles/guide-maintenance-industrielle/,301,billet de l'ancien blog republié mot pour mot sous /ressources/articles/ (décision de Mehdi du 14/10),haute,0,0
@@ -73,7 +73,7 @@ source,destination,code,raison,confiance,trafic,domaines_referents
 /les-differents-types-de-maintenance-industrielle-la-maintenance-curative-la-maintenance-corrective-la-maintenance-predictive/,/expertises/types-de-maintenance/,301,Même sujet : panorama des types de maintenance,haute,0,0
 /les-meilleurs-outils-de-diagnostic-pour-une-maintenance-industrielle-efficace/,/ressources/fiches-techniques/outils-de-diagnostic/,301,Même sujet : outils de diagnostic,haute,0,0
 /les-qualites-essentielles-dun-mainteneur-industriel-migen/,/ressources/articles/qualites-du-mainteneur/,301,billet de l'ancien blog republié mot pour mot sous /ressources/articles/ (décision de Mehdi du 14/10),haute,0,0
-/lost-password/?page_id=11,,404,"lien court WordPress (?p= / ?page_id=), le nouveau site sert l'accueil (200) sur cette forme",,0,0
+/lost-password/?page_id=11,/,301,"lien court WordPress : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
 /maintenance-curative-gls-migen-sur-site/,/preuves/gls-maintenance-curative/,301,déjà en base (0003_redirections.sql),haute,0,0
 /maintenance-industrielle-automatisme/,/expertises/automatisme/,301,"maintenance en automatisme, page expertise automatisme",haute,0,0
 /maintenance-industrielle-bas-rhin/,/implantations/strasbourg/alsace/,301,"page département : Alsace, Bas-Rhin et Haut-Rhin (Strasbourg garde /maintenance-industrielle-strasbourg/)",haute,0,0
@@ -138,9 +138,9 @@ source,destination,code,raison,confiance,trafic,domaines_referents
 /orthus-et-washtec-partenaires-pour-linstallation-de-stations/,/preuves/orthus-washtec/,301,"Étude de cas WashTec, montage des portiques de lavage",haute,0,0
 /partenaires/,/partenaires/,200,page conservée au même chemin,haute,0,0
 /politique-de-confidentialite/,/confidentialite/,301,déjà en base (0003_redirections.sql),haute,0,0
-/portfolio-items/,,404,"archive vide du thème Avada : 404 attendue, pas de 301 de contenu",,0,0
-/pourquoi-faire-appel-a-une-entreprise-de-maintenance-externalisee/,/ressources/articles/pourquoi-externaliser/,301,billet de l'ancien blog republié mot pour mot sous /ressources/articles/ (décision de Mehdi du 14/10). Ligne en base alignée le 14/10,haute,0,0
-/product-category/uncategorized/,,404,"reliquat WooCommerce : 404 attendue, pas de 301 de contenu",,0,0
+/portfolio-items/,/,301,"archive vide du thème Avada : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
+/pourquoi-faire-appel-a-une-entreprise-de-maintenance-externalisee/,/ressources/articles/pourquoi-externaliser/,301,billet de l'ancien blog republié mot pour mot sous /ressources/articles/ (décision de Mehdi du 14/10). Une ligne en base l'emporte encore,haute,0,0
+/product-category/uncategorized/,/,301,"reliquat WooCommerce : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
 /quelles-sont-les-competences-cles-necessaires-pour-les-professionnels-de-la-maintenance-industrielle-aujourdhui-et-comment-se-former-efficacement-dans-ce-domaine/,/carriere/technicien-de-maintenance/formation/,301,Même sujet : se former à la maintenance industrielle,haute,0,0
 /quels-sont-les-avantages-davoir-un-mainteneur-industriel-en-regie/,/offres/residence/prestataire-ou-salarie/,301,Ancien slug de l'article régie contre salarié ; même sujet que le comparatif prestataire ou salarié de l'offre résidence,haute,0,0
 /quels-sont-les-competences-dun-electromecanicien/,/carriere/electromecanicien/competences/,301,Même sujet : compétences de l'électromécanicien,haute,0,0
@@ -157,7 +157,7 @@ source,destination,code,raison,confiance,trafic,domaines_referents
 /reussir-son-plan-de-maintenance-industrielle-astuces-et-solutions/,/ressources/articles/plan-de-maintenance/,301,"Article repris, même mot-clé « plan de maintenance »",haute,7,1
 /roboticien-abb/,/expertises/robotique/abb/,301,"Même service : roboticien ABB, programmation et maintenance",haute,0,0
 /roboticien-fanuc/,/expertises/robotique/fanuc/,301,"Même service : roboticien Fanuc, programmation et maintenance",haute,0,0
-/shop/,,404,"reliquat WooCommerce : 404 attendue, pas de 301 de contenu",,0,0
+/shop/,/,301,"reliquat WooCommerce : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0
 /stellantis-x-migen-consultation-comme-partenaire-pour-plusieurs-sites-du-grand-est/,/preuves/stellantis-grand-est/,301,"Étude de cas Stellantis, sites du Grand Est",haute,0,0
 /stellantis-x-migen-consultation-pour-maintenir-la-fonderie-de-sept-fons/,/preuves/stellantis-fonderie-sept-fons/,301,"Étude de cas Stellantis, fonderie de Sept-Fons",haute,0,0
 /technicien-de-maintenance-aeronautique/,/secteurs/aeronautique/,301,Même secteur : maintenance en aéronautique,haute,0,1
@@ -179,4 +179,4 @@ source,destination,code,raison,confiance,trafic,domaines_referents
 /vous-connaissez-lexpression-le-temps-cest-de-largent/,/ressources/articles/machines-goulots/,301,billet de l'ancien blog republié mot pour mot sous /ressources/articles/ (décision de Mehdi du 14/10),haute,0,0
 /vpk-et-migen-sur-site-pour-la-maintenance-de-son-site-cloned/,/preuves/orthus-washtec/,301,"Brouillon WordPress cloné qui portait l'article WashTec et Orthus (H1 archivé le 12/09/2025), pas VPK ; WordPress le renvoie déjà vers l'article Orthus et WashTec",haute,0,0
 /vpk-et-migen-sur-site-pour-la-maintenance-de-son-site/,/preuves/vpk/,301,"Étude de cas VPK, technicien en 3x8",haute,0,0
-/xmlrpc.php,,404,"xmlrpc : 404 attendue, pas de 301 de contenu",,0,0
+/xmlrpc.php,/,301,"xmlrpc : filet de l'ancien WordPress, vers l'accueil (règle de Mehdi du 14/10)",,0,0

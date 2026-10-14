@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
+import { cibleFilet } from "@/lib/filet-ancien-site";
 import {
   cheminNormalise,
   REDIRECTIONS_CODE,
@@ -180,11 +181,11 @@ export async function proxy(request: NextRequest): Promise<NextResponse> {
   // la forme canonique avant de conclure. Les lignes versionnées dans le code
   // (ancien site WordPress et refonte) ne viennent qu'après la table, et
   // s'appliquent même si la table est injoignable.
-  const regle =
-    table?.get(chemin) ??
-    table?.get(canonique) ??
-    REDIRECTIONS_CODE.get(canonique);
-  if (regle) {
+  const connue = (...chemins: string[]) => {
+    const regle =
+      chemins.map((c) => table?.get(c)).find(Boolean) ??
+      REDIRECTIONS_CODE.get(chemins[chemins.length - 1]);
+    if (!regle) return undefined;
     // Une ligne de la base qui vise une source versionnée dans le code (une
     // adresse retirée par la refonte, par exemple) saute directement à la page
     // finale : un seul saut, jamais une chaîne de deux. Les lignes du code
@@ -192,7 +193,24 @@ export async function proxy(request: NextRequest): Promise<NextResponse> {
     const destination =
       REDIRECTIONS_CODE.get(cheminNormalise(regle.destination))
         ?.destination ?? regle.destination;
-    const cible = cibleInterne(destination, request);
+    return { source: regle.source, destination, code: regle.code };
+  };
+
+  // Puis le filet de l'ancien WordPress (`lib/filet-ancien-site.ts`) : une
+  // adresse à son format, sans page ni redirection connue, part sur l'accueil
+  // ou sur le parent évident. Aucun de ses motifs ne vise une page du site.
+  const filet = cibleFilet(
+    canonique,
+    request.nextUrl.searchParams,
+    (c) => connue(c)?.destination,
+  );
+  const regle =
+    connue(chemin, canonique) ??
+    (filet === null
+      ? undefined
+      : { source: canonique, destination: filet, code: 301 });
+  if (regle) {
+    const cible = cibleInterne(regle.destination, request);
     if (cible) return NextResponse.redirect(cible, regle.code);
 
     // Une destination externe est une erreur de donnée, pas une redirection à
@@ -224,7 +242,11 @@ export async function proxy(request: NextRequest): Promise<NextResponse> {
  *
  * Écartés : les routes d'API, les fichiers internes de Next, et tout chemin dont
  * le dernier segment porte une extension, ce qui couvre `public/`.
+ *
+ * Repris pour le filet de l'ancien WordPress : `/wp-…` (images de
+ * `/wp-content/uploads/`, `/wp-login.php`) et tout `.php` (`/xmlrpc.php`).
+ * Le site n'a aucun fichier sous ces formes.
  */
 export const config = {
-  matcher: ["/((?!api/|_next/|.*\\.[a-zA-Z0-9]+$).*)"],
+  matcher: ["/((?!api/|_next/|.*\\.[a-zA-Z0-9]+$).*)", "/(wp-.*)", "/(.*\\.php)"],
 };

@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "types:base": "bunx supabase gen types typescript --project-id \"$SUPABASE_PROJECT_ID\" --schema public > types/base.ts",
-    "verifie": "bunx tsc --noEmit && bun run verifie:contenu && bun run verifie:texte && bun run verifie:markdown && bun run verifie:interdits && bun run verifie:echafaudage && bun run verifie:formulaire && bun run verifie:gabarits && bun run verifie:offre && bun run verifie:offre-rendu && bun run verifie:entete && bun run verifie:plan && bun run verifie:hubs && bun run verifie:pied && bun run verifie:nous-connaitre && bun run verifie:ressources-hub && bunx eslint . && next build",
+    "verifie": "bunx tsc --noEmit && bun run verifie:contenu && bun run verifie:texte && bun run verifie:markdown && bun run verifie:interdits && bun run verifie:echafaudage && bun run verifie:formulaire && bun run verifie:gabarits && bun run verifie:offre && bun run verifie:offre-rendu && bun run verifie:entete && bun run verifie:plan && bun run verifie:hubs && bun run verifie:pied && bun run verifie:nous-connaitre && bun run verifie:ressources-hub && bun run verifie:filet && bunx eslint . && next build",
     "verifie:contenu": "bun scripts/verifie-contenu.ts",
     "verifie:entete": "bun components/site/verification-entete.tsx",
     "verifie:hubs": "bun components/site/accueil/verification-hubs.tsx",
@@ -31,7 +31,8 @@
     "verifie:offre": "bun components/site/offre/verification-offre.tsx",
     "verifie:offre-rendu": "node scripts/verifie-offre-rendu.mjs",
     "verifie:nous-connaitre": "bun components/site/nous-connaitre/verification-nous-connaitre.tsx",
-    "verifie:ressources-hub": "bun components/site/ressources-hub/verification-hub.tsx"
+    "verifie:ressources-hub": "bun components/site/ressources-hub/verification-hub.tsx",
+    "verifie:filet": "bun lib/verification-filet.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
