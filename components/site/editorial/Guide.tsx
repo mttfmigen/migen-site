@@ -4,6 +4,7 @@ import { Fragment, type CSSProperties, type ReactNode } from "react";
 import { FormulaireContact } from "@/components/formulaire/FormulaireContact";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
+import { AncreRappel } from "@/components/site/offre/CadenceOffre";
 import type { VueGuide, BlocGuide } from "@/types/editorial";
 
 import BlocsGuide from "./BlocsGuide";
@@ -486,6 +487,9 @@ export default function Guide({
           </section>
         ) : null}
 
+        {/* Le bandeau « Être rappelé » de la cadence vise `#etre-rappele` :
+            sans cette ancre il ne menait nulle part (docs/PAGES-MORTES-14-10.md). */}
+        <AncreRappel chemin={chemin} />
         <section id="cx-form" style={{ padding: "var(--sec) 0 var(--sec)", scrollMarginTop: 90 }}>
           <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
             <div

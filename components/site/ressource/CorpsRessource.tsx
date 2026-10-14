@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Fragment, type CSSProperties, type ReactNode } from "react";
 
 import { estCheminInterne } from "@/components/site/blocs/TexteRiche";
+import { cibleDuLien } from "@/lib/redirections";
 import type { BlocRessource, PartieRessource } from "@/types/ressource";
 
 import styles from "./Ressource.module.css";
@@ -81,7 +82,7 @@ export function EnLigne({
       );
     } else if (estCheminInterne(href)) {
       morceaux.push(
-        <Link key={debut} href={href} prefetch={false} style={lien}>
+        <Link key={debut} href={cibleDuLien(href)} prefetch={false} style={lien}>
           {libelle}
         </Link>,
       );

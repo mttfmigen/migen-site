@@ -20,6 +20,7 @@ import { cadragePhoto } from "@/lib/cadrage-photos";
 import { altPhoto } from "@/lib/descriptions-photos";
 import { filAriane as filArianeJsonLd, jsonLdTexte, organisation } from "@/lib/seo/jsonld";
 import { urlAbsolue, urlImage } from "@/lib/seo/url";
+import { cibleDuLien } from "@/lib/redirections";
 
 /**
  * Le gabarit « 01 Article et fiche » : `MigenRessource.dc.html`, branche
@@ -184,7 +185,7 @@ function Lectures({
           <div style={H.SURTITRE}>{H.COPIE.lecturesSurtitre}</div>
           <h2 style={H.TITRE_SECTION}>{H.COPIE.lecturesTitre}</h2>
         </div>
-        <Link href={rayon ? `/ressources/${rayon}/` : "/ressources/"} style={H.LECTURES_LIEN}>
+        <Link href={cibleDuLien(rayon ? `/ressources/${rayon}/` : "/ressources/")} style={H.LECTURES_LIEN}>
           {`Tous les ${libelle.toLowerCase()} →`}
         </Link>
       </div>
@@ -290,7 +291,10 @@ function DonneesStructurees({
     },
     filArianeJsonLd([
       { titre: "Accueil", chemin: "/" },
-      ...etapes.map((e) => ({ titre: e.path ? e.titre : titre, chemin: e.path ?? chemin })),
+      // Un niveau sans page (rayon redirigé) n'entre pas dans le fil des moteurs.
+      ...etapes
+        .filter((e, i) => e.path || i === etapes.length - 1)
+        .map((e) => ({ titre: e.path ? e.titre : titre, chemin: e.path ?? chemin })),
     ]),
   ];
   return (
@@ -333,9 +337,13 @@ export default function PageRessource({ titre, contenu, chemin }: ProprietesPage
   const paragraphes = chapo.filter(Boolean);
   const colonneTexte = paragraphes.length < chapo.length ? H.COLONNE_ANCREE : undefined;
 
+  /* Le rayon reste écrit dans le fil, mais sa page de rubrique redirige vers
+     `/ressources/` depuis le 14/10 : il s'affiche alors en texte, sans lien
+     vers une 301 ni second lien vers le hub (docs/PAGES-MORTES-14-10.md). */
+  const cheminRayon = `/ressources/${rayon}/`;
   const etapes = [
     { titre: "Ressources", path: "/ressources/" },
-    ...(rayonVu ? [{ titre: rayonVu.libelle, path: `/ressources/${rayon}/` }] : []),
+    ...(rayonVu ? [{ titre: rayonVu.libelle, path: cibleDuLien(cheminRayon) === cheminRayon ? cheminRayon : null }] : []),
     { titre: titreCourt(titre), path: null },
   ];
 

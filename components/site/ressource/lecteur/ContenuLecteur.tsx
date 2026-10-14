@@ -4,6 +4,7 @@ import type { CSSProperties, ReactNode } from "react";
 
 import { CONTENUS_ENTREPRISES, CONTENUS_TECHNICIENS } from "@/components/site/ressources-hub/v2/donnees";
 import { altPhoto } from "@/lib/descriptions-photos";
+import { cibleDuLien } from "@/lib/redirections";
 import type { BlocRessource, LectureRessource, RayonRessource } from "@/types/ressource";
 
 import { EnLigne } from "../CorpsRessource";
@@ -447,7 +448,7 @@ function Lectures({ lectures, rayon }: { lectures: LectureRessource[]; rayon?: R
             {COPIE.lecturesTitre}
           </h2>
         </div>
-        <Link href={rayon ? `/ressources/${rayon}/` : "/ressources/"} style={{ font: "600 14px var(--fb)", color: ORANGE, textDecoration: "none" }}>
+        <Link href={cibleDuLien(rayon ? `/ressources/${rayon}/` : "/ressources/")} style={{ font: "600 14px var(--fb)", color: ORANGE, textDecoration: "none" }}>
           {`Tous les ${libelle.toLowerCase()} →`}
         </Link>
       </div>

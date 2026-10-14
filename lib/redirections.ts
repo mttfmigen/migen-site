@@ -125,6 +125,25 @@ export const SOURCES_REFONTE: ReadonlySet<string> = new Set(
 );
 
 /**
+ * La cible d'un lien POSÉ DANS UNE PAGE : la destination finale, jamais une
+ * source de 301 de la refonte. Ancre conservée.
+ *
+ * Mesuré le 14/10 (docs/PAGES-MORTES-14-10.md) : les 27 articles et les 20
+ * fiches en pause visaient encore leur ancienne page de rubrique
+ * (`/ressources/articles/` et ses quatre sœurs), redirigée vers `/ressources/`,
+ * par le lien « Tous les … », par le chapô venu de la base et par le fil
+ * d'Ariane. Chaque clic payait un aller-retour. Le jour où une rubrique
+ * redevient une page (sa ligne quitte `REDIRECTIONS_REFONTE`), ses liens
+ * reviennent seuls.
+ */
+export function cibleDuLien(href: string): string {
+  const diese = href.indexOf("#");
+  const chemin = diese < 0 ? href : href.slice(0, diese);
+  const redirection = REDIRECTIONS_REFONTE.get(cheminNormalise(chemin));
+  return redirection ? redirection.destination + (diese < 0 ? "" : href.slice(diese)) : href;
+}
+
+/**
  * Toutes les 301 versionnées dans le code : l'ancien site WordPress
  * (`lib/redirections-ancien-site.ts`) et la refonte. C'est la table que le
  * proxy applique APRÈS celle de la base : une ligne en base pour la même source
