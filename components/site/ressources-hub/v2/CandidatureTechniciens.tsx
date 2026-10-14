@@ -1,7 +1,7 @@
 "use client";
 
 import type { CSSProperties, FormEvent, ReactNode } from "react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -97,12 +97,13 @@ function Champ({ etiquette, children }: { etiquette: string; children: ReactNode
   );
 }
 
-function Liste({ nom, vide, options }: { nom: string; vide: string; options: readonly string[] }) {
+function Liste({ nom, vide, options, requis }: { nom: string; vide: string; options: readonly string[]; requis?: boolean }) {
   return (
     <span style={{ position: "relative", display: "block" }}>
       <select
         name={nom}
         defaultValue=""
+        aria-required={requis}
         className={c.saisie}
         style={{ ...CADRE, width: "100%", padding: "0 44px 0 16px", appearance: "none", WebkitAppearance: "none", cursor: "pointer" }}
       >
@@ -125,6 +126,7 @@ function AvecUnite({ nom, unite, pas, indice }: { nom: string; unite: string; pa
       <input
         type="number"
         name={nom}
+        aria-required="true"
         min={0}
         step={pas}
         placeholder={indice}
@@ -154,8 +156,9 @@ export function manquants(d: {
   if (!d.regions.length) m.push("mobilité");
   if (!d.trajet) m.push("temps de trajet");
   if (!d.delai) m.push("délai");
-  if (d.exp === "") m.push("expérience");
-  if (!d.sal) m.push("prétentions salariales");
+  // `min` ne bloque rien sous `noValidate` : un négatif partait tel quel.
+  if (d.exp === "" || Number(d.exp) < 0) m.push("expérience");
+  if (!d.sal || Number(d.sal) <= 0) m.push("prétentions salariales");
   return m;
 }
 
@@ -172,7 +175,7 @@ async function messageDe(r: Response): Promise<string | null> {
   return [message, ...details].join(" ");
 }
 
-function Formulaire({ onEnvoye }: { onEnvoye: () => void }) {
+function Formulaire({ onEnvoye, retour }: { onEnvoye: () => void; retour: boolean }) {
   const [regions, setRegions] = useState<string[]>([]);
   const [cv, setCv] = useState("");
   const [erreur, setErreur] = useState("");
@@ -215,7 +218,7 @@ function Formulaire({ onEnvoye }: { onEnvoye: () => void }) {
           mobilite: regions.join(", "),
           trajet: v.trajet,
           disponibilite: v.delai,
-          experience: `${v.exp} années`,
+          experience: `${v.exp} ${Number(v.exp) > 1 ? "années" : "année"}`,
           pretentions: `${v.sal} € brut / an`,
           origine: `${window.location.pathname} (espace Techniciens)`,
           /* Le fichier ne part pas (la route ne prend que du JSON), son NOM
@@ -241,13 +244,15 @@ function Formulaire({ onEnvoye }: { onEnvoye: () => void }) {
       <h3 style={{ font: "600 23px/1.2 var(--ft)", letterSpacing: "-.035em", margin: 0 }}>Votre candidature</h3>
       <div className={c.form2} style={DEUX}>
         <Champ etiquette="Prénom et nom *">
-          <input name="nom" autoComplete="name" className={c.saisie} style={SAISIE} />
+          {/* Retour après « Envoyer une autre candidature » : le focus revient
+              au premier champ au lieu de tomber sur le corps de la page. */}
+          <input name="nom" autoComplete="name" aria-required="true" autoFocus={retour} className={c.saisie} style={SAISIE} />
         </Champ>
         <Champ etiquette="Téléphone *">
-          <input type="tel" name="tel" autoComplete="tel" className={c.saisie} style={SAISIE} />
+          <input type="tel" name="tel" autoComplete="tel" aria-required="true" className={c.saisie} style={SAISIE} />
         </Champ>
         <Champ etiquette="E-mail *">
-          <input type="email" name="mail" autoComplete="email" className={c.saisie} style={SAISIE} />
+          <input type="email" name="mail" autoComplete="email" aria-required="true" className={c.saisie} style={SAISIE} />
         </Champ>
         <Champ etiquette="Métier visé">
           <Liste nom="metier" vide="Choisir…" options={METIERS} />
@@ -333,10 +338,10 @@ function Formulaire({ onEnvoye }: { onEnvoye: () => void }) {
       </div>
       <div className={`${c.form2} ${c.basDeux}`} style={DEUX}>
         <Champ etiquette="Temps de trajet maximal *">
-          <Liste nom="trajet" vide="Entre domicile et site" options={TRAJETS} />
+          <Liste nom="trajet" vide="Entre domicile et site" options={TRAJETS} requis />
         </Champ>
         <Champ etiquette="Délai pour démarrer *">
-          <Liste nom="delai" vide="Choisir…" options={DELAIS} />
+          <Liste nom="delai" vide="Choisir…" options={DELAIS} requis />
         </Champ>
         <Champ etiquette="Années d’expérience *">
           <AvecUnite nom="exp" unite="années" indice="Ex. 2" />
@@ -362,7 +367,10 @@ function Formulaire({ onEnvoye }: { onEnvoye: () => void }) {
         </div>
         <button
           type="submit"
-          disabled={envoi}
+          /* `aria-disabled` et non `disabled` : un bouton désactivé perd le
+             focus, qui tombait sur le corps de la page pendant l'envoi et y
+             restait après une erreur. Le double envoi est bloqué par `envoi`. */
+          aria-disabled={envoi}
           aria-busy={envoi}
           className={c.envoyer}
           style={{
@@ -392,6 +400,11 @@ function Formulaire({ onEnvoye }: { onEnvoye: () => void }) {
 }
 
 function Envoyee({ onAutre }: { onAutre: () => void }) {
+  /* Le formulaire disparaît avec le bouton qui avait le focus : on le pose sur
+     le titre, ce qui le fait aussi lire (une zone `status` qui vient d'être
+     montée n'est pas annoncée de façon sûre). */
+  const titre = useRef<HTMLDivElement>(null);
+  useEffect(() => titre.current?.focus(), []);
   return (
     <div
       role="status"
@@ -401,7 +414,9 @@ function Envoyee({ onAutre }: { onAutre: () => void }) {
       <span aria-hidden="true" style={{ width: 60, height: 60, borderRadius: 999, background: "#ff7c3c", display: "grid", placeItems: "center" }}>
         <span style={{ width: 10, height: 20, borderRight: "3px solid #fff", borderBottom: "3px solid #fff", transform: "translateY(-2px) rotate(45deg)" }} />
       </span>
-      <div style={{ font: "600 28px/1.1 var(--ft)", letterSpacing: "-.04em" }}>Candidature envoyée.</div>
+      <div ref={titre} tabIndex={-1} style={{ font: "600 28px/1.1 var(--ft)", letterSpacing: "-.04em", outline: "none" }}>
+        Candidature envoyée.
+      </div>
       <p style={{ font: "400 15.5px/1.6 var(--fb)", color: "var(--ink1)", margin: 0, maxWidth: "42ch" }}>
         Elle est arrivée chez notre équipe recrutement. La première étape du process, c’est un échange sur votre parcours.
       </p>
@@ -418,6 +433,7 @@ function Envoyee({ onAutre }: { onAutre: () => void }) {
 
 export default function CandidatureTechniciens() {
   const [envoyee, setEnvoyee] = useState(false);
+  const [retour, setRetour] = useState(false);
   return (
     <section id="postuler" style={{ position: "relative", padding: "120px 0 0", scrollMarginTop: 96 }}>
       <div
@@ -497,7 +513,16 @@ export default function CandidatureTechniciens() {
             minWidth: 0,
           }}
         >
-          {envoyee ? <Envoyee onAutre={() => setEnvoyee(false)} /> : <Formulaire onEnvoye={() => setEnvoyee(true)} />}
+          {envoyee ? (
+            <Envoyee
+              onAutre={() => {
+                setRetour(true);
+                setEnvoyee(false);
+              }}
+            />
+          ) : (
+            <Formulaire retour={retour} onEnvoye={() => setEnvoyee(true)} />
+          )}
         </div>
       </div>
     </section>
