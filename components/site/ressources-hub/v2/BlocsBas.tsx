@@ -1,7 +1,8 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
 
-import { FormulaireContact } from "@/components/formulaire/FormulaireContact";
+import { demandeDiagnostic } from "@/components/formulaire/besoin";
+import { FormulaireBesoin } from "@/components/formulaire/FormulaireBesoin";
 
 import { MONO } from "./Cartes";
 import { ETAPES_SELECTION } from "./donnees";
@@ -11,8 +12,10 @@ import s from "./hub.module.css";
 /**
  * Le bas de page du hub (`markup-indent.html`, lignes 518 à 742) : bandeau
  * Diagnostic et bloc formulaire côté Entreprises, process de sélection côté
- * Techniciens. Le panneau de droite du bloc formulaire est le formulaire de
- * contact du site, pas celui de la maquette : aucun champ nouveau.
+ * Techniciens. Le panneau de droite est le formulaire de la maquette
+ * (`FormulaireBesoin`, 14/10), branché sur le même envoi que les autres
+ * formulaires du site. Les deux boutons « Demander mon diagnostic »
+ * présélectionnent le besoin, comme `askDiag`.
  */
 
 const PANNEAU_SOMBRE: CSSProperties = {
@@ -146,7 +149,7 @@ export function BandeauDiagnostic() {
           </p>
         </div>
         <div style={{ position: "relative", display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
-          <a href="#rs-form" className={s.dim} style={BOUTON_ORANGE}>
+          <a href="#rs-form" onClick={demandeDiagnostic} className={s.dim} style={BOUTON_ORANGE}>
             Demander mon diagnostic →
           </a>
         </div>
@@ -228,10 +231,7 @@ export function BlocFormulaire() {
             minWidth: 0,
           }}
         >
-          <h2 style={{ font: "600 23px/1.2 var(--ft)", letterSpacing: "-.035em", margin: "0 0 18px" }}>
-            Décrivez votre besoin
-          </h2>
-          <FormulaireContact formulaire="ressources-hub" libelleEnvoi="Envoyer ma demande →" variante="panneau" />
+          <FormulaireBesoin formulaire="ressources-hub" />
         </div>
       </div>
     </section>

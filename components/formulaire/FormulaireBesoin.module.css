@@ -1,0 +1,102 @@
+/* Le formulaire « Décrivez votre besoin » du hub /ressources/ (maquette
+   Ressources v2, `markup-indent.html` l. 604 à 693, `css-page.css` l. 15). */
+
+/* `.rs-form2` : deux champs par rangée, une colonne sous 640 px. */
+.deux {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .deux {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* `style-focus` de la maquette : bord orange et halo. Le contour global de
+   `globals.css` reste là pour le clavier. */
+.champ:focus,
+.cadreTel:focus-within {
+  border-color: #ff7c3c !important;
+  box-shadow: 0 0 0 4px rgba(255, 124, 60, 0.15);
+}
+
+.champ:disabled {
+  opacity: 0.6;
+}
+
+/* Dans le cadre du téléphone, c'est le cadre qui porte le bord et le halo. */
+.cadreTel .champ:focus {
+  box-shadow: none;
+}
+
+.bouton:hover:not(:disabled) {
+  filter: brightness(0.93);
+}
+
+.bouton:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* La zone d'annonce reste dans le document (lecteur d'écran) ; vide, elle ne
+   prend ni place ni écart de grille. */
+.alerte:empty {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0 !important;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+/* Champs à 16 px au téléphone : sous 16 px, Safari iOS zoome la page au
+   premier appui. Même règle que `FormulaireContact.module.css`. */
+@media (max-width: 880px) {
+  .champ,
+  .cadreTel select {
+    font-size: 16px !important;
+  }
+}
+
+/* L'état « envoyé » de la maquette (l. 676 à 691). */
+.merci {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 14px;
+  min-height: 420px;
+}
+
+.merci h2:focus {
+  outline: none;
+}
+
+.pastille {
+  width: 60px;
+  height: 60px;
+  border-radius: 999px;
+  background: #ff7c3c;
+  display: grid;
+  place-items: center;
+}
+
+.pastille > span {
+  width: 10px;
+  height: 20px;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  transform: translateY(-2px) rotate(45deg);
+}
+
+.autre {
+  border: none;
+  background: none;
+  padding: 0;
+  font: 600 14px var(--fb);
+  color: #ff7c3c;
+  cursor: pointer;
+}

@@ -739,30 +739,7 @@ export function FormulaireContact({
         </div>
       ) : null}
 
-      {/* Information au point de collecte, exigée par le RGPD (articles 13 et
-          14) : qui traite, pour quoi, qui reçoit, où lire le reste. Elle est
-          fixe et non paramétrable, car une page qui pose ce formulaire ne doit
-          pas pouvoir l'oublier en omettant une propriété. */}
-      <p style={panneau ? MENTION_PANNEAU : MENTION}>
-        Données traitées par Migen pour répondre à votre demande, enregistrées
-        dans HubSpot. Droits et durées de conservation :{" "}
-        {/* `/confidentialite/`, l'URL de l'inventaire. L'ancienne,
-            `/politique-de-confidentialite/`, est une 301 depuis le site
-            WordPress : y lier depuis chaque formulaire du site aurait coûté
-            une redirection à chaque clic, et à chaque passage de robot. */}
-        <Link href="/confidentialite/" className="underline">
-          politique de confidentialité
-        </Link>
-      </p>
-
-      {/* Dans SON PROPRE paragraphe, et pas à la suite du précédent. Deux
-          raisons, et la première suffirait. Ce sont deux informations
-          distinctes : ce qu'on fait de la demande, puis ce qu'on fera de
-          l'adresse ensuite. Les coller en un bloc demandait au lecteur de les
-          démêler. Seconde raison, mesurée : accolées, les portes qui comparent
-          le rendu à la capture lisaient un fragment commençant par « . Vos
-          informations » et ne le reconnaissaient plus. */}
-      <p style={panneau ? MENTION_PANNEAU : MENTION}>{MENTION_PROSPECTION}</p>
+      <MentionsRgpd style={panneau ? MENTION_PANNEAU : MENTION} />
 
       {/* Une seule zone d'annonce, toujours présente dans le document : un
           lecteur d'écran n'annonce pas le contenu d'un élément qui vient
@@ -786,9 +763,42 @@ export function FormulaireContact({
   );
 }
 
-/** Le serveur renvoie `{ message }` : tout autre corps est ignoré. */
+/**
+ * Information au point de collecte, exigée par le RGPD (articles 13 et 14) :
+ * qui traite, pour quoi, qui reçoit, où lire le reste. Fixe et non
+ * paramétrable, car une page qui pose un formulaire ne doit pas pouvoir
+ * l'oublier en omettant une propriété. Partagée avec la variante du hub
+ * (`FormulaireBesoin`) : un texte légal écrit une seule fois ne diverge pas.
+ */
+export function MentionsRgpd({ style }: { style: CSSProperties }) {
+  return (
+    <>
+      <p style={style}>
+        Données traitées par Migen pour répondre à votre demande, enregistrées
+        dans HubSpot. Droits et durées de conservation :{" "}
+        {/* `/confidentialite/`, l'URL de l'inventaire. L'ancienne,
+            `/politique-de-confidentialite/`, est une 301 depuis le site
+            WordPress : y lier depuis chaque formulaire du site aurait coûté
+            une redirection à chaque clic, et à chaque passage de robot. */}
+        <Link href="/confidentialite/" className="underline">
+          politique de confidentialité
+        </Link>
+      </p>
+
+      {/* Dans SON PROPRE paragraphe, et pas à la suite du précédent. Deux
+          raisons, et la première suffirait. Ce sont deux informations
+          distinctes : ce qu'on fait de la demande, puis ce qu'on fera de
+          l'adresse ensuite. Les coller en un bloc demandait au lecteur de les
+          démêler. Seconde raison, mesurée : accolées, les portes qui comparent
+          le rendu à la capture lisaient un fragment commençant par « . Vos
+          informations » et ne le reconnaissaient plus. */}
+      <p style={style}>{MENTION_PROSPECTION}</p>
+    </>
+  );
+}
+
 /** Les erreurs par champ que la route renvoie en 422, limitées aux champs du contact. */
-function erreursDuServeur(corps: unknown): Erreurs | null {
+export function erreursDuServeur(corps: unknown): Erreurs | null {
   if (typeof corps !== "object" || corps === null) return null;
   const brutes = (corps as { erreurs?: unknown }).erreurs;
   if (typeof brutes !== "object" || brutes === null) return null;
@@ -800,7 +810,8 @@ function erreursDuServeur(corps: unknown): Erreurs | null {
   return Object.keys(retenues).length ? retenues : null;
 }
 
-function messageDuServeur(corps: unknown): string | null {
+/** Le serveur renvoie `{ message }` : tout autre corps est ignoré. */
+export function messageDuServeur(corps: unknown): string | null {
   if (typeof corps !== "object" || corps === null) return null;
   const message = (corps as { message?: unknown }).message;
   return typeof message === "string" && message ? message : null;

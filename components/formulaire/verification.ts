@@ -17,6 +17,16 @@ import {
   attributionNettoyee,
   utmDepuisRequete,
 } from "@/lib/utm";
+import {
+  BESOIN_DIAGNOSTIC,
+  BESOINS,
+  PRENOM_MANQUANT,
+  SAISIE_VIDE,
+  decoupeNomComplet,
+  messageAvecBesoin,
+  valideBesoin,
+  versContact,
+} from "./besoin";
 import { brancheConversion, debrancheConversion, signaleConversion } from "./conversion";
 import {
   DEPOTS_MAX_PAR_FENETRE,
@@ -338,5 +348,59 @@ assert.equal(
 );
 assert.equal(premiereEtapeIncomplete({ ...correct, message: "  " }), 2);
 assert.equal(premiereEtapeIncomplete(correct), DERNIERE_ETAPE, "rien ne manque : l'étape de l'envoi");
+
+// LA VARIANTE DU HUB /ressources/ (./besoin.ts) : même contrat d'envoi.
+// Le découpage « Prénom et nom » : premier mot = prénom, le reste = nom, un seul mot = nom.
+assert.deepEqual(decoupeNomComplet("Camille Rivière"), { prenom: "Camille", nom: "Rivière" });
+assert.deepEqual(decoupeNomComplet("  Jean   de La  Fontaine "), { prenom: "Jean", nom: "de La Fontaine" });
+assert.deepEqual(decoupeNomComplet("Rivière"), { prenom: "", nom: "Rivière" });
+assert.deepEqual(decoupeNomComplet("   "), { prenom: "", nom: "" });
+// Témoin : le découpage inverse (dernier mot = nom) doit être refusé.
+assert.notDeepEqual(decoupeNomComplet("Jean de La Fontaine"), { prenom: "Jean de La", nom: "Fontaine" });
+
+// Les sept besoins de la maquette, mot pour mot, et le besoin en tête du message.
+assert.deepEqual(BESOINS, [
+  "Diagnostic Zéro arrêt",
+  "Un technicien en résidence",
+  "Un contrat Full service",
+  "Un arrêt technique",
+  "Des travaux industriels",
+  "Une étude (bureau d’études)",
+  "Autre besoin",
+]);
+assert.equal(BESOIN_DIAGNOSTIC, "Diagnostic Zéro arrêt");
+assert.equal(messageAvecBesoin("Un arrêt technique", "  "), "Besoin : Un arrêt technique");
+assert.equal(messageAvecBesoin("Un arrêt technique", " Ligne 3 "), "Besoin : Un arrêt technique\n\nLigne 3");
+
+const saisieBesoin = {
+  ...SAISIE_VIDE,
+  nomComplet: "Camille Rivière",
+  entreprise: "Fonderie de démonstration",
+  email: "camille.riviere@exemple.fr",
+  telephone: "04 72 00 00 00",
+  besoin: "Un arrêt technique",
+};
+// Sans message : valide, et la charge passe la validation SERVEUR inchangée.
+assert.deepEqual(valideBesoin(saisieBesoin), {});
+const chargeBesoin = (s: typeof saisieBesoin) =>
+  chargeUtile({ contact: versContact(s), formulaire: "ressources-hub", piege: "", etablissement: {}, attribution: null, page: { url: "", titre: "" } });
+assert.deepEqual(valideCharge(chargeBesoin(saisieBesoin)).erreurs, {}, "variante sans message acceptée par le serveur");
+assert.deepEqual(valideCharge(chargeBesoin({ ...saisieBesoin, message: "Ligne 3" })).erreurs, {});
+// Mêmes clés, dans le même ordre, que la charge de `FormulaireContact`.
+assert.deepEqual(
+  Object.keys(chargeBesoin(saisieBesoin)),
+  Object.keys(chargeUtile({ contact: correct, formulaire: "contact", piege: "", etablissement: {}, attribution: null, page: { url: "", titre: "" } })),
+);
+// Le besoin est obligatoire ; sans lui, le message vide n'est PAS reproché.
+assert.deepEqual(Object.keys(valideBesoin({ ...saisieBesoin, besoin: "" })), ["besoin"]);
+assert.deepEqual(Object.keys(valideBesoin({ ...saisieBesoin, besoin: "Inventé" })), ["besoin"]);
+// Un seul mot : refusé AVANT l'envoi (HubSpot exige le prénom), sur le bon champ.
+assert.deepEqual(valideBesoin({ ...saisieBesoin, nomComplet: "Rivière" }), { nomComplet: PRENOM_MANQUANT });
+// Et le serveur, inchangé, refuse toujours un prénom vide : la validation n'est pas relâchée.
+assert.ok(valideCharge(chargeBesoin({ ...saisieBesoin, nomComplet: "Rivière" })).erreurs.prenom);
+// Vide : chaque champ obligatoire de la maquette est signalé, message exclu.
+assert.deepEqual(Object.keys(valideBesoin(SAISIE_VIDE)).sort(), ["besoin", "email", "entreprise", "nomComplet", "telephone"]);
+// Le FormulaireContact, lui, garde son message obligatoire.
+assert.ok(valideContact({ ...correct, message: "" }).message, "les autres formulaires ne changent pas");
 
 console.log("Formulaire, attribution et garde-fous : toutes les assertions passent.");

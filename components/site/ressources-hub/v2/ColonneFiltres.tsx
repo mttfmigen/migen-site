@@ -1,5 +1,7 @@
 import type { CSSProperties, ReactNode } from "react";
 
+import { demandeDiagnostic } from "@/components/formulaire/besoin";
+
 import { MONO } from "./Cartes";
 import type { ContenuRessource } from "./donnees";
 import { DUREES, deux, duFormat, FORMATS, SUJETS, TAXONOMIE } from "./filtrage";
@@ -429,6 +431,7 @@ function EncartLateral({ ent }: { ent: boolean }) {
       </div>
       <a
         href={ent ? "#rs-form" : "/test-technicien/"}
+        onClick={ent ? demandeDiagnostic : undefined}
         className={s.dim}
         style={{
           position: "relative",
