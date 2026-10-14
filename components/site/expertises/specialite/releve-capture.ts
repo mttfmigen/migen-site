@@ -38,6 +38,43 @@ export function normaliseTexte(texte: string): string {
     .trim();
 }
 
+/**
+ * RETIRE DU RENDU CE QUI N'EXISTE QU'AU TÉLÉPHONE, avant de le comparer à une
+ * capture de BUREAU (ajouté le 14/10, couche mobile v2).
+ *
+ * Les éléments `data-mobile-seulement` (fil d'Ariane, téléphone du héros,
+ * étiquettes et résumés des plis, photo + CTA, bandeau « Être rappelé »,
+ * prose de l'offre) sont masqués au-dessus de 880 px par `app/globals.css` :
+ * la capture de bureau n'avait aucune raison de les porter, et les comparer
+ * faisait signaler des titres et des styles « absents de la capture » qu'aucun
+ * visiteur de bureau ne voit. Même retrait, même algorithme que
+ * `expertises/verification-expertises.tsx` (`retireOrnementsMobiles`), qui l'a
+ * posé le 12/10 : la profondeur des balises est comptée, une étiquette
+ * imbriquée part en entier.
+ */
+export function retireOrnementsMobiles(html: string): string {
+  const marque = /<(\w+)\b[^>]*\bdata-mobile-seulement\b[^>]*>/;
+  let sortie = html;
+  for (;;) {
+    const debut = sortie.match(marque);
+    if (!debut || debut.index === undefined) return sortie;
+    const nom = debut[1];
+    const balises = new RegExp(`<${nom}\\b[^>]*>|</${nom}\\s*>`, "g");
+    balises.lastIndex = debut.index + debut[0].length;
+    let profondeur = 1;
+    let fin = -1;
+    for (let m = balises.exec(sortie); m; m = balises.exec(sortie)) {
+      profondeur += m[0].startsWith("</") ? -1 : 1;
+      if (profondeur === 0) {
+        fin = m.index + m[0].length;
+        break;
+      }
+    }
+    if (fin < 0) fin = debut.index + debut[0].length;
+    sortie = `${sortie.slice(0, debut.index)} ${sortie.slice(fin)}`;
+  }
+}
+
 /** Le texte d'un fragment, balises retirées. */
 export function texteDe(html: string): string {
   return normaliseTexte(html.replace(/<[^>]+>/g, " "));

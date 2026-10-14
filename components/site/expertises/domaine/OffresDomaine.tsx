@@ -3,6 +3,8 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { LARGEUR, SECTION } from "@/components/site/blocs/habillage";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { PliMobile } from "@/components/site/expertises/mobile";
 
 import styles from "./PageDomaine.module.css";
 import { altPhoto } from "@/lib/descriptions-photos";
@@ -173,10 +175,26 @@ const NUMERO: CSSProperties = {
   color: "rgb(255, 124, 60)",
 };
 
-export default function OffresDomaine() {
+/**
+ * `replie` : le bento se replie au téléphone. Faux par défaut, parce que ce
+ * bloc sert AUSSI le gabarit 08 Secteur (`secteur/PageSecteur.tsx`), qui
+ * décide de son propre repli : les gabarits 05 et 09 le demandent.
+ */
+export default function OffresDomaine({ replie = false }: { replie?: boolean } = {}) {
   return (
     <section style={SECTION}>
-      <div style={LARGEUR}>
+      {/* G3, SE REPLIE AU TÉLÉPHONE : un bento de 2 240 px à 390 px, section de
+          bureau que la maquette mobile ne dessine pas. L'étiquette reprend le
+          surtitre et le H2 du panneau photographique, le résumé les six offres
+          dans l'ordre du bento ; tout le texte reste dans le DOM, et rien ne
+          bouge à 1280 px. */}
+      <PliMobile
+        actif={replie}
+        style={LARGEUR}
+        surtitre="Nos offres"
+        titre="Six façons de travailler ensemble, selon votre besoin"
+        resume={resumeDe(["migen© Résidence", ...TUILES.map((offre) => offre.titre)])}
+      >
         <div
           className={styles.obento}
           style={{
@@ -342,7 +360,7 @@ export default function OffresDomaine() {
             </Link>
           ))}
         </div>
-      </div>
+      </PliMobile>
     </section>
   );
 }

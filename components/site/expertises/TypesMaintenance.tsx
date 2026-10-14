@@ -3,7 +3,9 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { LARGEUR, SECTION, SURTITRE } from "@/components/site/blocs/habillage";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
 import { estCheminInterne } from "@/components/site/blocs/TexteRiche";
+import { PliMobile } from "@/components/site/expertises/mobile";
 import { numerote } from "@/components/site/offre/texte-offre";
 import type { RangeeTypeHub } from "@/types/expertises";
 
@@ -162,7 +164,16 @@ export default function TypesMaintenance({
 
   return (
     <section style={SECTION}>
-      <div style={LARGEUR}>
+      {/* G3, SE REPLIE AU TÉLÉPHONE : panneau photographique et rangées font
+          1 600 px à 390 px. L'étiquette reprend le surtitre et le H2 du
+          panneau, le résumé les intitulés des rangées ; le texte reste dans le
+          DOM, et rien ne bouge à 1280 px. */}
+      <PliMobile
+        style={LARGEUR}
+        surtitre="Types de maintenance"
+        titre={titre}
+        resume={resumeDe(retenues.map((rangee) => rangee.titre))}
+      >
         <div className="mg-r2" style={GRILLE}>
           <div style={PANNEAU}>
             <Image
@@ -205,7 +216,7 @@ export default function TypesMaintenance({
             ))}
           </div>
         </div>
-      </div>
+      </PliMobile>
     </section>
   );
 }

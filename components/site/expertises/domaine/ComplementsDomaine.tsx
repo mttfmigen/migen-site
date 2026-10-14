@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 
 import { LARGEUR, VERRE } from "@/components/site/blocs/habillage";
+import { TABLEAU_EN_CARTES } from "@/components/site/expertises/mobile";
 import type { BlocComplementDomaine } from "@/types/domaine";
 
 /**
@@ -149,7 +150,11 @@ export default function ComplementsDomaine({
                 </div>
               ) : null}
               {bloc.tableau?.lignes.length ? (
+                /* Sous 881 px, une carte par ligne : voir
+                   `specialite/ComplementSpecialite.tsx`, même motif. */
                 <div
+                  className={TABLEAU_EN_CARTES}
+                  data-tableau-en-cartes=""
                   style={CADRE_TABLEAU}
                   tabIndex={0}
                   role="region"
@@ -175,7 +180,13 @@ export default function ComplementsDomaine({
                       {bloc.tableau.lignes.map((ligne) => (
                         <tr key={ligne.join("|")}>
                           {ligne.map((cellule, colonne) => (
-                            <td key={colonne} style={CELLULE}>
+                            <td
+                              key={colonne}
+                              style={CELLULE}
+                              data-colonne={
+                                colonne > 0 ? bloc.tableau?.entetes[colonne] : undefined
+                              }
+                            >
                               {cellule}
                             </td>
                           ))}

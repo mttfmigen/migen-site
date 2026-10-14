@@ -455,3 +455,47 @@ décision. À trancher par Mehdi.
 | Où | Le site sert (et la capture de bureau) | La maquette mobile v2 écrit |
 |---|---|---|
 | Mention des horaires, 45 pages villes, jusqu'à quatre fois par page (héros et trois bandes d'appel) | « Nous vous rappelons dans l'heure, du lundi au vendredi de 8h00 à 18h30. Astreinte la nuit, le week-end et les jours fériés en option, nuits, week-ends et jours fériés. » La seconde phrase dit deux fois la même chose. Relevé tel quel dans `maquette/rendu/implantations--lille.html` (4 fois) et dans les 45 fichiers `supabase/import/gabarits-maquette/implantations-*.json`. | « Astreinte en option, nuits, week-ends et jours fériés. » (45 occurrences dans `maquette/mobile-v2/maquette/mobile-v2-data.js`, zéro de la version doublée) |
+
+---
+
+## H. Lot expertises, maquette mobile v2 (14/10) : gabarits 05, 09 et hub `/expertises/`
+
+Trois écarts de copie relevés en reprenant le travail interrompu du 14/10
+(commit d39f904), **non corrigés** : chacun oppose les deux sources du client,
+la fiche du corpus et la capture de bureau, et la capture fait foi pour le
+bureau.
+
+### H1. Le numéro de la fiche, « par téléphone » dans la capture
+
+La fiche écrit « Quatre champs, ou un appel au 04 78 33 72 05 » (étape 1 du
+déroulé), la capture de bureau et le relais « … un appel par téléphone ».
+Onze endroits : le déroulé de huit domaines (automatisme, électrique,
+hydraulique, mécanique, pneumatique, tuyauterie, soudure, types de
+maintenance), celui de la programmation automate, la réponse « Combien
+coûte… » de l'automate Schneider, et l'étape 1 du hub `/expertises/`
+(`expertises-donnees.ts`). Le travail interrompu remettait le numéro : écarté,
+parce que la phrase s'affiche au bureau, où elle s'écarterait de la capture
+et retirerait « par téléphone » du texte servi. Au téléphone, le numéro est
+désormais dans la rangée d'action du héros (dc.html L111). **À trancher** :
+la fiche ou la capture.
+
+### H2. « Zéro arrêt » sans son lien dans deux réponses de FAQ
+
+`/expertises/specialisations-constructeur/` et
+`/expertises/types-de-maintenance/maintenance-ameliorative/` : la fiche lie
+« [Zéro arrêt](/offres/zero-arret/) », la capture l'écrit sans lien. Même
+raison, même décision : rien ne change au bureau. **À trancher**.
+
+### H3. La prose de l'offre, remise au téléphone sur 16 spécialités sur 19
+
+Le paragraphe de maillage sous le tableau de « L'offre » (trois à cinq liens
+internes par fiche) est remis verbatim dans le relais et rendu au téléphone
+seulement (`scripts/restaure-corpus-expertises.mjs`). Trois fiches en sont
+écartées : vérin hydraulique, lubrification et préventive systématique, dont
+la carte « Complément 4 » de la capture reprend déjà la première phrase. La
+remettre ferait lire cette phrase deux fois de suite au téléphone. Sur la
+préventive systématique, la carte de la capture est d'ailleurs une phrase
+recomposée (« Un parc entier à mettre sous suivi ? Avant de vous engager,
+l'audit et conseil en maintenance chiffre… »), deux phrases de la fiche
+cousues sans le lien vers Zéro arrêt. **À trancher** si ces trois pages
+doivent retrouver leurs liens.

@@ -65,6 +65,7 @@ import {
   noeudsDe,
   normaliseTexte,
   problemeDeCapture,
+  retireOrnementsMobiles,
   stylesDe,
   texteDe,
   type Declarations,
@@ -380,7 +381,20 @@ const ECART_COLONNE = (d: Declarations) => d.get("max-width") === "40ch";
 const CLES_HORS_COPIE = new Set([
   "_source", "url", "gabarit", "href", "lienHref", "lienLibelle", "photo",
   "problemePhoto", "marquesFamille", "marquesFamilles", "type", "variante",
+  /* La prose de « L'offre », remise le 14/10 (M2, couche mobile v2) : la
+     capture de BUREAU ne la rend pas, elle vient de la FICHE du corpus. Elle
+     est donc confrontée à la fiche, mot pour mot, dans la boucle 4 bis. */
+  "prose",
 ]);
+
+/** La fiche du corpus d'une page, par l'index du client. */
+const FICHES: ReadonlyMap<string, string> = new Map(
+  (
+    JSON.parse(
+      readFileSync(join(RACINE, "maquette", "contenu", "site", "index.json"), "utf8"),
+    ) as { url: string; fichier: string }[]
+  ).map((p) => [p.url, p.fichier]),
+);
 
 function chainesDuRelais(valeur: unknown, cle?: string): string[] {
   if (typeof valeur === "string") {
@@ -529,13 +543,17 @@ for (const { nom, page } of RELAIS) {
     `${nom} : le H1 du relais n'est pas celui de la capture`,
   );
 
-  const rendu = renderToStaticMarkup(
-    <PageSpecialite
-      titre={page.titre_h1!}
-      contenu={page.contenu}
-      formulaire={`cocon${page.url.replace(/\//g, "-")}`}
-      // Pas de fil d'Ariane ni de maillage : ils interrogent la base.
-    />,
+  /* Le rendu de BUREAU : la couche mobile v2 (14/10) est retirée, la capture
+     comparée ici est celle du bureau (voir `retireOrnementsMobiles`). */
+  const rendu = retireOrnementsMobiles(
+    renderToStaticMarkup(
+      <PageSpecialite
+        titre={page.titre_h1!}
+        contenu={page.contenu}
+        formulaire={`cocon${page.url.replace(/\//g, "-")}`}
+        // Pas de fil d'Ariane ni de maillage : ils interrogent la base.
+      />,
+    ),
   );
   const renduStyle = normaliseStyle(rendu);
   const renduTexte = texteDe(rendu);
@@ -616,6 +634,17 @@ for (const { nom, page } of RELAIS) {
       `${nom} : chaîne absente de la capture, donc réécrite ou inventée : « ${chaine.slice(0, 80)} »`,
     );
   }
+  /* 4 bis. la prose de l'offre est copiée de la FICHE, octet pour octet. */
+  const fiche = readFileSync(join(RACINE, "maquette", "contenu", "site", FICHES.get(page.url)!), "utf8");
+  for (const section of page.contenu.sections) {
+    if (section.type !== "offre") continue;
+    for (const paragraphe of section.prose ?? []) {
+      assert.ok(
+        fiche.includes(paragraphe.texte),
+        `${nom} : prose de l'offre absente de la fiche, donc réécrite ou inventée : « ${paragraphe.texte.slice(0, 80)} »`,
+      );
+    }
+  }
   for (const section of page.contenu.sections) {
     if (section.type !== "preuves") continue;
     for (const preuve of section.preuves) {
@@ -687,7 +716,9 @@ for (const url of URLS_GABARIT) {
     ...(releve ? { domainesTitre: releve.titre, domaines: releve.cartes } : {}),
     ...(blocs ? { complementTypes: blocs } : {}),
   };
-  const page = renderToStaticMarkup(<PageSpecialite titre="Titre" contenu={contenu} formulaire="releve" />);
+  const page = retireOrnementsMobiles(
+    renderToStaticMarkup(<PageSpecialite titre="Titre" contenu={contenu} formulaire="releve" />),
+  );
   const texte = texteDe(page);
   const repere: Readonly<Record<string, string>> = {
     "Réassurance": "Qui intervient chez vous",

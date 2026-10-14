@@ -2,6 +2,16 @@ import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+import {
+  FilArianeMobile,
+  HERO_COMPACT,
+  MarquesRepliees,
+  ProseOffreMobile,
+  PuceParent,
+  RACINE_MOBILE,
+} from "@/components/site/expertises/mobile";
+import TelephoneHeros from "@/components/site/offre/TelephoneHeros";
 import OffresDomaine from "@/components/site/expertises/domaine/OffresDomaine";
 import ProblemeDomaine from "@/components/site/expertises/domaine/ProblemeDomaine";
 import SecteursDomaine from "@/components/site/expertises/domaine/SecteursDomaine";
@@ -11,8 +21,8 @@ import DerouleOffre from "@/components/site/offre/DerouleOffre";
 import GarantiesOffre from "@/components/site/offre/GarantiesOffre";
 import { liensSurs } from "@/components/site/offre/LiensOffre";
 import LogosClients from "@/components/site/offre/LogosClients";
-import MarquesOffre from "@/components/site/offre/MarquesOffre";
-import PanneauFormulaire from "@/components/site/offre/PanneauFormulaire";
+import OuvreLaCible from "@/components/site/implantation/OuvreLaCible";
+import PanneauHerosRepliable from "@/components/site/implantation/PanneauHerosRepliable";
 import PointsOffre from "@/components/site/offre/PointsOffre";
 import Reassurance from "@/components/site/offre/Reassurance";
 import ReferencesOffre from "@/components/site/offre/ReferencesOffre";
@@ -35,6 +45,8 @@ import {
 } from "@/components/site/offre/habillage-offre";
 import stylesOffre from "@/components/site/offre/PageOffre.module.css";
 import QuestionsPhoto from "@/components/site/offres/QuestionsPhoto";
+import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
+import { CIBLE_CONTACT, ID_RAPPEL_FINAL } from "@/components/site/mobile/conversion-donnees";
 import type { Section, TypeSection } from "@/types/contenu";
 import type { ContenuSpecialite } from "@/types/specialite";
 
@@ -91,6 +103,12 @@ import styles from "./PageSpecialite.module.css";
  * JSON, rien ne s'invente. Composant SERVEUR. Fil d'Ariane et maillage du
  * cocon restent en props, exigés par CLAUDE.md §4 bien qu'absents de la
  * capture. Contrôle : `verification-specialite.tsx`, à côté de ce fichier.
+ *
+ * LA COUCHE MOBILE V2 (14/10), sous 881 px seulement, le bureau ne bouge pas :
+ * fil d'Ariane, héros compact (H1 à 27 px, puce « ↑ parent », téléphone, et
+ * le panneau de formulaire REPLIÉ), sections de bureau repliées, prose de
+ * l'offre remise, « Dans la même rubrique », et la cadence de conversion
+ * (`AvecConversionMobile`). Voir `../mobile.tsx` et la méthode ci-dessous.
  */
 
 export interface ProprietesPageSpecialite {
@@ -99,6 +117,8 @@ export interface ProprietesPageSpecialite {
   contenu: ContenuSpecialite;
   /** Identifiant d'analyse des soumissions, repris par HubSpot. */
   formulaire: string;
+  /** Le chemin de la page (`page.path`), pour la couche mobile. */
+  chemin?: string;
   filAriane?: ReactNode;
   maillage?: ReactNode;
 }
@@ -117,6 +137,7 @@ export default function PageSpecialite({
   titre,
   contenu,
   formulaire,
+  chemin,
   filAriane,
   maillage,
 }: ProprietesPageSpecialite) {
@@ -136,18 +157,34 @@ export default function PageSpecialite({
      vérité n'est pas testée, un en-tête vide reste un panneau. */
   const heroFormulaire = typeof contenu.formulaireHeroTitre === "string";
 
+  /* « La réponse directe » (02 Domaines, Complément 2) ouvre la page des types
+     de maintenance qui la portent : c'est alors elle, la première section
+     numérotée, que la maquette mobile laisse ouverte, et le problème se
+     replie (dc.html L451). */
+  const aReponseDirecte =
+    !!(contenu.domainesTitre && contenu.domaines?.length) ||
+    !!contenu.complementTypes?.length;
+
+  /* Le bouton du photo + CTA mobile : le CTA de la fiche (dc.html L412,
+     `P.cta`), le libellé du bouton du héros, vers `/contact/` comme dans la
+     fiche (« > [Demander un automaticien](/contact/) »). */
+  const boutonMobile = actions[0]
+    ? { libelle: actions[0].libelle, href: CIBLE_CONTACT }
+    : undefined;
+
   return (
-    /* La racine `.mgx-root` de `MigenExpertise` : `--sec` reste à 120 px sur
-       mobile (la règle « --sec: 64px » de `.mg-site` ne l'atteint pas), et les
-       règles mobiles du gabarit sont celles que `PageOffre.module.css` porte
-       sous `.gabarit`. Mesuré le 08/10 à 390 px : 120 px dans la maquette. */
-    <div className={`mg-site ${stylesOffre.gabarit}`} style={{ "--sec": "120px" } as CSSProperties}>
+    /* La racine `.mgx-root` de `MigenExpertise`. `--sec` vaut 120 px sur
+       bureau, comme la capture, et 64 px sous 881 px : voir `RACINE_MOBILE`.
+       Les règles mobiles du gabarit sont celles que `PageOffre.module.css`
+       porte sous `.gabarit`. */
+    <div className={`mg-site ${stylesOffre.gabarit} ${RACINE_MOBILE}`}>
       <main style={{ paddingTop: 62 }}>
+        {chemin ? <FilArianeMobile chemin={chemin} /> : null}
         {filAriane}
 
         {/* ------------------------------------------------ 0. « 01 Héros » */}
 
-        <section style={HERO}>
+        <section className={HERO_COMPACT} style={HERO}>
           <div
             className="mg-r2"
             style={{
@@ -177,6 +214,8 @@ export default function PageSpecialite({
                 </p>
               ) : null}
 
+              {chemin ? <PuceParent chemin={chemin} /> : null}
+
               {actions.length > 0 ? (
                 <div style={HERO_RANGEE_BOUTONS}>
                   {actions.map((action) =>
@@ -201,6 +240,7 @@ export default function PageSpecialite({
                       </Link>
                     ),
                   )}
+                  <TelephoneHeros />
                 </div>
               ) : null}
 
@@ -209,15 +249,24 @@ export default function PageSpecialite({
               ) : null}
             </div>
 
+            {/* G2, LE PANNEAU DE FORMULAIRE SE REPLIE AU TÉLÉPHONE. La maquette
+                mobile ne met aucun formulaire dans le héros ; le déplacer
+                aurait changé le bureau, qui le pose dans la grille du héros.
+                Il est donc replié, jamais retiré, par la bascule que le
+                gabarit ville a posée pour le même panneau
+                (`implantation/PanneauHerosRepliable`, même balisage que
+                l'enveloppe d'origine, `position: relative` compris) : un
+                panneau de formulaire n'a pas de titre de niveau, et les deux
+                portes du repli des sections (`verifie-blocs-pliables`,
+                `verifie-titres-replies`) refusent `SectionPliableMobile` sans
+                lui. L'ancre `#besoin` rouvre le pli, par `OuvreLaCible`
+                monté en fin de page, sur tous les moteurs. */}
             {heroFormulaire ? (
-              <div style={{ position: "relative" }}>
-                <PanneauFormulaire
-                  id="besoin"
-                  formulaire={`${formulaire}-hero`}
-                  titre={contenu.formulaireHeroTitre!}
-                  pastille={contenu.formulaireHeroMention}
-                />
-              </div>
+              <PanneauHerosRepliable
+                formulaire={formulaire}
+                titre={contenu.formulaireHeroTitre!}
+                pastille={contenu.formulaireHeroMention}
+              />
             ) : null}
           </div>
         </section>
@@ -261,23 +310,40 @@ export default function PageSpecialite({
 
         <Reassurance />
 
-        {/* ---------------------------------------- 3 bis. « 02 Domaines » */}
+        {/* LA CADENCE DE CONVERSION MOBILE, posée entre les sections de
+            contenu (rien au-dessus de 880 px). Chaque ENFANT compte pour une
+            section numérotée de la maquette (dc.html L452 à L456, `nD`) : le
+            photo + CTA tombe après la 2e, le bandeau « Être rappelé » après la
+            5e. Les sections de bureau que la maquette ne dessine pas
+            (secteurs, offres, marques) sont regroupées avec les références,
+            pour que le bandeau tombe après elles comme dans la maquette.
+            `rappelFinal={false}` : la page pose déjà son formulaire de bas de
+            page (« 10 Appel final ») là où la maquette pose le rappel ; il
+            reçoit l'ancre `#etre-rappele` que vise le bandeau, plus bas. */}
+        <AvecConversionMobile
+          chemin={chemin ?? ""}
+          gabarit="05"
+          bouton={boutonMobile}
+          rappelFinal={false}
+        >
+        {/* ------------------- 3 bis et 3 ter. « 02 Domaines », « Complément 2 » */}
 
-        {/* Absent des pilotes. Rendu par la conditionnelle, la préventive et
-            la prévisionnelle : voir `DomainesSpecialite.tsx`. */}
-        {contenu.domainesTitre && contenu.domaines?.length ? (
-          <DomainesSpecialite
-            titre={contenu.domainesTitre}
-            cartes={contenu.domaines}
-          />
-        ) : null}
-
-        {/* --------------------------------------- 3 ter. « Complément 2 » */}
-
-        {/* Absent des pilotes. La prose à tableaux de six types de
-            maintenance : voir `ComplementSpecialite.tsx`. */}
-        {contenu.complementTypes?.length ? (
-          <ComplementSpecialite blocs={contenu.complementTypes} />
+        {/* Absents des pilotes. Rendus par les types de maintenance : voir
+            `DomainesSpecialite.tsx` et `ComplementSpecialite.tsx`. C'est « La
+            réponse directe » du corpus : UNE section pour la cadence, ouverte
+            au téléphone comme la première section de la maquette. */}
+        {aReponseDirecte ? (
+          <>
+            {contenu.domainesTitre && contenu.domaines?.length ? (
+              <DomainesSpecialite
+                titre={contenu.domainesTitre}
+                cartes={contenu.domaines}
+              />
+            ) : null}
+            {contenu.complementTypes?.length ? (
+              <ComplementSpecialite blocs={contenu.complementTypes} />
+            ) : null}
+          </>
         ) : null}
 
         {/* ------------------------------------------ 4. « 03 Problème » */}
@@ -293,12 +359,21 @@ export default function PageSpecialite({
             section={probleme}
             altPhoto={titre}
             photo={contenu.problemePhoto}
+            replie={aReponseDirecte}
           />
         ) : null}
 
+        {/* L'offre, sa prose, la bande d'appel et « Complément 4 » : une
+            seule section du corpus, « ## L’offre », pour la cadence. */}
+        {offre || contenu.mention || contenu.appelBouton || contenu.complementOffre?.length ? (
+        <>
         {/* --------------------------------------------- 5. « 04 Offre » */}
 
         {offre ? <PointsOffre section={offre} /> : null}
+
+        {/* La prose de l'offre et ses liens internes, au téléphone seulement :
+            voir `ProseOffreMobile`. */}
+        {offre?.prose?.length ? <ProseOffreMobile prose={offre.prose} /> : null}
 
         {/* ------------------------------------------- 6. Appel · offre */}
 
@@ -387,22 +462,29 @@ export default function PageSpecialite({
         {contenu.complementOffre?.length ? (
           <ComplementsOffre blocs={contenu.complementOffre} />
         ) : null}
+        </>
+        ) : null}
 
         {/* ------------------------------------------- 7. « 05 Déroulé » */}
 
-        {deroule ? <DerouleOffre section={deroule} /> : null}
+        {/* Replié au téléphone, comme dans la maquette (« 03 Le déroulé »),
+            par le repli sur demande du bloc partagé. */}
+        {deroule ? <DerouleOffre section={deroule} pli="replie" /> : null}
 
         {/* ----------------------------------------- 8. « 06 Garanties » */}
 
         {garanties ? <GarantiesOffre section={garanties} /> : null}
 
+        {/* Secteurs, offres, marques et références : une section pour la
+            cadence, celle des références (voir plus haut). */}
+        <>
         {/* ---------------------------- 9. « Secteurs de l'expertise » */}
 
         <SecteursDomaine />
 
         {/* ---------------------------------- 10. « Offres du secteur » */}
 
-        <OffresDomaine />
+        <OffresDomaine replie />
 
         {/* -------------------------------- 11. « Marques maintenues » */}
 
@@ -411,7 +493,7 @@ export default function PageSpecialite({
             monte, et sans lui la section est celle de fanuc, une famille
             seule. Les comptes viennent de `marques-donnees.ts`, pas d'ici. */}
         {contenu.marquesFamille ? (
-          <MarquesOffre
+          <MarquesRepliees
             famille={contenu.marquesFamille}
             familles={contenu.marquesFamilles}
           />
@@ -419,7 +501,10 @@ export default function PageSpecialite({
 
         {/* --------------------------------------- 12. « 08 Références » */}
 
-        {preuves ? <ReferencesOffre section={preuves} /> : null}
+        {/* Ouvert au téléphone : la maquette garde son carrousel de
+            références déplié (dc.html L476, `isRef`). */}
+        {preuves ? <ReferencesOffre section={preuves} toujoursOuvert /> : null}
+        </>
 
         {/* --------------------------------------- 13. « 09 Questions » */}
 
@@ -444,8 +529,23 @@ export default function PageSpecialite({
             }}
           />
         ) : null}
+        </AvecConversionMobile>
+
+        {/* « Dans la même rubrique », la boîte basse de la maquette mobile
+            (dc.html L506) : les spécialités sœurs. Sous 881 px seulement. */}
+        {chemin ? <PastillesCocon chemin={chemin} variante="soeurs" /> : null}
 
         {/* ------------------------------------- 14. « 10 Appel final » */}
+
+        {/* L'ancre du bandeau « Être rappelé » de la cadence mobile
+            (`#etre-rappele`, dc.html L138) : elle aboutit sur le formulaire de
+            bas de page, qui tient ici le rôle du rappel de la maquette. Mobile
+            seulement, comme le bandeau qui la vise. */}
+        <span
+          id={ID_RAPPEL_FINAL}
+          data-mobile-seulement=""
+          style={{ display: "block", scrollMarginTop: 90 }}
+        />
 
         {/* L'ANCRE `#mgx-form` est posée ici parce que la capture la pose sur
             cette section (`id="mgx-form"`, `scroll-margin-top: 90px`) : le
@@ -465,6 +565,10 @@ export default function PageSpecialite({
             {maillage}
           </div>
         ) : null}
+
+        {/* En dernier : ses effets passent après ceux des plis, qui se
+            referment au chargement (voir `implantation/OuvreLaCible`). */}
+        <OuvreLaCible />
       </main>
     </div>
   );

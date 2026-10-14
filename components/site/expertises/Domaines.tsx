@@ -3,7 +3,9 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, TITRE2 } from "@/components/site/blocs/habillage";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
 import { estCheminInterne } from "@/components/site/blocs/TexteRiche";
+import { PliMobile } from "@/components/site/expertises/mobile";
 import { numerote } from "@/components/site/offre/texte-offre";
 import type { CarteDomaineHub } from "@/types/expertises";
 
@@ -115,7 +117,16 @@ export default function Domaines({ titre, cartes }: ProprietesDomaines) {
 
   return (
     <section style={SECTION}>
-      <div style={LARGEUR}>
+      {/* G3, SE REPLIE AU TÉLÉPHONE : le bento de huit photos fait 2 240 px à
+          390 px. Les huit domaines restent joignables d'un geste par « Toutes
+          les pages de la rubrique », sous le héros ; le pli garde leurs textes
+          dans le DOM, et rien ne bouge à 1280 px. */}
+      <PliMobile
+        style={LARGEUR}
+        surtitre="Nos domaines"
+        titre={titre}
+        resume={resumeDe(retenues.map((carte) => carte.titre))}
+      >
         <div style={{ marginBottom: 30 }}>
           <div style={SURTITRE}>Nos domaines</div>
           <h2 style={TITRE2}>{titre}</h2>
@@ -159,7 +170,7 @@ export default function Domaines({ titre, cartes }: ProprietesDomaines) {
             </Link>
           ))}
         </div>
-      </div>
+      </PliMobile>
     </section>
   );
 }

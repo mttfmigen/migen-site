@@ -112,6 +112,11 @@
             },
             "benefice": "La vraie cause est trouvée même quand elle est en dehors de l'armoire."
           }
+        ],
+        "prose": [
+          {
+            "texte": "Un parc entier à remettre sous suivi ? Le [contrat de maintenance Zéro arrêt](/offres/zero-arret/) couvre le plan de maintenance préventive et la priorité d'intervention. Une ligne arrêtée maintenant se traite par le [dépannage industriel](/offres/depannage-industriel/). Le même métier sur les autres marques du parc se lit sur [automate Schneider](/expertises/automatisme/schneider/) et sur [automatisme industriel](/expertises/automatisme/)."
+          }
         ]
       },
       {

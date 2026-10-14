@@ -277,6 +277,7 @@ export default async function PageDuCocon({
         titre={page.titre_h1}
         contenu={page.contenu}
         formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+        chemin={page.path}
         filAriane={<FilAriane path={page.path} />}
         maillage={<Maillage page={page} />}
       />
@@ -297,6 +298,7 @@ export default async function PageDuCocon({
         titre={page.titre_h1}
         contenu={page.contenu}
         formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+        chemin={page.path}
         filAriane={<FilAriane path={page.path} />}
         maillage={<Maillage page={page} />}
       />
@@ -391,6 +393,7 @@ export default async function PageDuCocon({
         titre={page.titre_h1}
         contenu={page.contenu}
         formulaire={`cocon${page.path.replace(/\//g, "-")}`}
+        chemin={page.path}
         filAriane={<FilAriane path={page.path} />}
         maillage={<Maillage page={page} />}
       />

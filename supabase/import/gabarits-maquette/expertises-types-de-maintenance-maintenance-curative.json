@@ -215,6 +215,11 @@
             },
             "benefice": "Une casse le samedi ne devient pas un lundi perdu."
           }
+        ],
+        "prose": [
+          {
+            "texte": "Machine à l'arrêt maintenant ? Voir le [dépannage industriel](/offres/depannage-industriel/). Pour ne plus payer ses pannes à l'unité, voir le [contrat de maintenance Zéro arrêt](/offres/zero-arret/). Migen est une [entreprise de maintenance industrielle](/offres/) présente partout en France."
+          }
         ]
       },
       {

@@ -113,6 +113,11 @@
             },
             "benefice": "Le nouveau matériel dialogue avec l'existant dès la mise en service."
           }
+        ],
+        "prose": [
+          {
+            "texte": "Un parc à tenir toute l'année se traite par le [contrat de maintenance Zéro arrêt](/offres/zero-arret/). Une ligne immobilisée en ce moment relève du [dépannage industriel](/offres/depannage-industriel/). Pour le contexte complet du métier, voir l'[automatisme industriel](/expertises/automatisme/) et nos automaticiens [Siemens](/expertises/automatisme/siemens/) et [Schneider](/expertises/automatisme/schneider/)."
+          }
         ]
       },
       {

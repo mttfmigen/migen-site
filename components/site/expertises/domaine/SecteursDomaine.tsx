@@ -3,6 +3,8 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { LARGEUR, SECTION } from "@/components/site/blocs/habillage";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { PliMobile } from "@/components/site/expertises/mobile";
 
 import styles from "./PageDomaine.module.css";
 import { altPhoto } from "@/lib/descriptions-photos";
@@ -144,7 +146,16 @@ const CORPS: CSSProperties = {
 export default function SecteursDomaine() {
   return (
     <section style={SECTION}>
-      <div style={LARGEUR}>
+      {/* G3, SE REPLIE AU TÉLÉPHONE : 1 686 px de cartes à 390 px, une section
+          de bureau que la maquette mobile ne dessine pas. L'étiquette reprend
+          le surtitre et le H2 ci-dessous, le résumé les six titres de cartes ;
+          tout le texte reste dans le DOM, et rien ne bouge à 1280 px. */}
+      <PliMobile
+        style={LARGEUR}
+        surtitre="Par secteur d’activité"
+        titre="Même expertise, contraintes différentes"
+        resume={resumeDe(SECTEURS.map((secteur) => secteur.titre))}
+      >
         <div className="mg-r2" style={ENTETE}>
           <div>
             <div style={SURTITRE_SECTEURS}>Par secteur d’activité</div>
@@ -204,7 +215,7 @@ export default function SecteursDomaine() {
             </Link>
           ))}
         </div>
-      </div>
+      </PliMobile>
     </section>
   );
 }

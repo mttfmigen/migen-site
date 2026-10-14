@@ -200,6 +200,11 @@
             },
             "benefice": "La recommandation de remplacement est indépendante de ce qu'elle nous rapporterait."
           }
+        ],
+        "prose": [
+          {
+            "texte": "Ligne bloquée maintenant ? Voir le [dépannage industriel](/offres/depannage-industriel/). Pour sortir du tout correctif, voir le [contrat de maintenance Zéro arrêt](/offres/zero-arret/). Migen est une [entreprise de maintenance industrielle](/offres/) présente partout en France."
+          }
         ]
       },
       {

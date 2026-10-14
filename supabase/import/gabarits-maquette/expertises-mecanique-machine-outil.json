@@ -120,6 +120,11 @@
             },
             "benefice": "Une visite au lieu de deux, un seul rapport à classer."
           }
+        ],
+        "prose": [
+          {
+            "texte": "Un parc vieillissant à reprendre en main se traite par le [contrat de maintenance Zéro arrêt](/offres/zero-arret/), qui couvre le programme de visites préventives et la priorité d'intervention. Une machine bloquée maintenant relève du [dépannage industriel en urgence](/offres/depannage-industriel/). Cette expertise prolonge notre [maintenance mécanique](/expertises/mecanique/) sur les équipements les plus exigeants de l'atelier."
+          }
         ]
       },
       {

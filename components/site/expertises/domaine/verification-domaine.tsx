@@ -56,6 +56,8 @@ import {
   type ContenuDomaine,
 } from "@/types/domaine";
 
+import { retireOrnementsMobiles } from "../specialite/releve-capture";
+
 import ComplementsDomaine from "./ComplementsDomaine";
 import PageDomaine from "./PageDomaine";
 import ProblemeDomaine from "./ProblemeDomaine";
@@ -449,12 +451,16 @@ function verifiePage(url: string): "conforme" | string {
   assert.ok(page.titre_h1, `${chemin} : titre_h1 manquant`);
   assert.equal(texte(page.titre_h1), texte(fiche.h1Rendu), `${chemin} : le H1 n'est pas celui de la capture`);
 
-  const rendu = renderToStaticMarkup(
-    <PageDomaine
-      titre={page.titre_h1}
-      contenu={page.contenu}
-      formulaire={`cocon${url.replace(/\//g, "-")}`}
-    />,
+  /* Le rendu de BUREAU : la couche mobile v2 (14/10) est retirée, la capture
+     comparée ici est celle du bureau (voir `retireOrnementsMobiles`). */
+  const rendu = retireOrnementsMobiles(
+    renderToStaticMarkup(
+      <PageDomaine
+        titre={page.titre_h1}
+        contenu={page.contenu}
+        formulaire={`cocon${url.replace(/\//g, "-")}`}
+      />,
+    ),
   );
 
   photosJugees += verifiePhotos(chemin, capture, page.contenu);

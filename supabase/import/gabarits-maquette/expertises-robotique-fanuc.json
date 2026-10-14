@@ -111,6 +111,11 @@
             },
             "benefice": "La décision se prend sur deux chiffres, pas sur le catalogue du constructeur."
           }
+        ],
+        "prose": [
+          {
+            "texte": "Le bras n'est jamais seul : l'armoire, l'automate et les sécurités relèvent de nos équipes [automatisme](/expertises/automatisme/), et la cellule complète de notre [maintenance robotique](/expertises/robotique/). Un parc entier à remettre sous suivi passe par le [contrat Zéro arrêt](/offres/zero-arret/) ; un robot immobilisé maintenant, par le [dépannage industriel](/offres/depannage-industriel/)."
+          }
         ]
       },
       {

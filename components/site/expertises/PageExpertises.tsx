@@ -2,6 +2,16 @@ import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+import {
+  FilArianeMobile,
+  HERO_COMPACT,
+  MarquesRepliees,
+  RACINE_MOBILE,
+} from "@/components/site/expertises/mobile";
+import TelephoneHeros from "@/components/site/offre/TelephoneHeros";
+import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
+import { CIBLE_CONTACT, ID_RAPPEL_FINAL } from "@/components/site/mobile/conversion-donnees";
 import AppelFinal from "@/components/site/offre/AppelFinal";
 import BandeAppel from "@/components/site/offre/BandeAppel";
 import ComplementsOffre from "@/components/site/offre/ComplementsOffre";
@@ -9,9 +19,9 @@ import DerouleOffre from "@/components/site/offre/DerouleOffre";
 import GarantiesOffre from "@/components/site/offre/GarantiesOffre";
 import { liensSurs } from "@/components/site/offre/LiensOffre";
 import LogosClients from "@/components/site/offre/LogosClients";
-import MarquesOffre from "@/components/site/offre/MarquesOffre";
 import PagesLiees from "@/components/site/offre/PagesLiees";
-import PanneauFormulaire from "@/components/site/offre/PanneauFormulaire";
+import OuvreLaCible from "@/components/site/implantation/OuvreLaCible";
+import PanneauHerosRepliable from "@/components/site/implantation/PanneauHerosRepliable";
 import PointsOffre from "@/components/site/offre/PointsOffre";
 import ProblemeOffre from "@/components/site/offre/ProblemeOffre";
 import Reassurance from "@/components/site/offre/Reassurance";
@@ -88,6 +98,16 @@ import TypesMaintenance from "./TypesMaintenance";
  * Les écrans partagés avec le gabarit 03 sont IMPORTÉS de
  * `components/site/offre/`, jamais recopiés. Composant SERVEUR. Fil d'Ariane
  * et maillage du cocon restent en props (CLAUDE.md §4).
+ *
+ * LA COUCHE MOBILE V2 (14/10), sous 881 px seulement, le bureau ne bouge pas :
+ * fil d'Ariane, héros compact (H1 à 27 px, téléphone, panneau de formulaire
+ * REPLIÉ), « Toutes les pages de la rubrique » sous le héros (dc.html L501),
+ * et la cadence de conversion. « De quoi on parle » (`ReponseDirecte`) reste
+ * OUVERT au téléphone : c'est l'entrée de la première section numérotée,
+ * celle que la maquette mobile laisse dépliée (capture m-10). Le bento des
+ * domaines et le panneau des types, deux dessins de bureau de cette même
+ * section, se replient : les domaines restent joignables d'un geste par les
+ * pastilles du haut de page.
  */
 
 export interface ProprietesPageExpertises {
@@ -96,6 +116,8 @@ export interface ProprietesPageExpertises {
   contenu: ContenuExpertises | ContenuHubExpertises;
   /** Identifiant d'analyse transmis à HubSpot par les formulaires. */
   formulaire: string;
+  /** Le chemin de la page (`page.path`), pour la couche mobile. */
+  chemin?: string;
   filAriane?: ReactNode;
   maillage?: ReactNode;
 }
@@ -114,6 +136,7 @@ export default function PageExpertises({
   titre,
   contenu,
   formulaire,
+  chemin,
   filAriane,
   maillage,
 }: ProprietesPageExpertises) {
@@ -136,18 +159,25 @@ export default function PageExpertises({
   /* Même règle que `PageOffre` : la PRÉSENCE du champ monte le panneau. */
   const heroFormulaire = typeof hub.formulaireHeroTitre === "string";
 
+  /* Le bouton du photo + CTA mobile : le CTA de la fiche (dc.html L412),
+     libellé du bouton du héros, vers `/contact/` comme dans la fiche. */
+  const boutonMobile = actions[0]
+    ? { libelle: actions[0].libelle, href: CIBLE_CONTACT }
+    : undefined;
+
   return (
-    /* La racine `.mgx-root` de `MigenExpertise` : `--sec` reste à 120 px sur
-       mobile (la règle « --sec: 64px » de `.mg-site` ne l'atteint pas), et les
-       règles mobiles du gabarit sont celles que `PageOffre.module.css` porte
-       sous `.gabarit`. Mesuré le 08/10 à 390 px : 120 px dans la maquette. */
-    <div className={`mg-site ${stylesOffre.gabarit}`} style={{ "--sec": "120px" } as CSSProperties}>
+    /* La racine `.mgx-root` de `MigenExpertise`. `--sec` vaut 120 px sur
+       bureau, comme la capture, et 64 px sous 881 px : voir `RACINE_MOBILE`.
+       Les règles mobiles du gabarit sont celles que `PageOffre.module.css`
+       porte sous `.gabarit`. */
+    <div className={`mg-site ${stylesOffre.gabarit} ${RACINE_MOBILE}`}>
       <main style={{ paddingTop: 62 }}>
+        {chemin ? <FilArianeMobile chemin={chemin} /> : null}
         {filAriane}
 
         {/* ------------------------------------------------ 0. « 01 Héros » */}
 
-        <section style={HERO}>
+        <section className={HERO_COMPACT} style={HERO}>
           <div
             className="mg-r2"
             style={{
@@ -201,24 +231,29 @@ export default function PageExpertises({
                       </Link>
                     ),
                   )}
+                  <TelephoneHeros />
                 </div>
               ) : null}
 
               {hub.mention ? <p style={HERO_MENTION}>{hub.mention}</p> : null}
             </div>
 
+            {/* G2, LE PANNEAU DE FORMULAIRE SE REPLIE AU TÉLÉPHONE : voir
+                `specialite/PageSpecialite.tsx`, même arbitrage. */}
             {heroFormulaire ? (
-              <div style={{ position: "relative" }}>
-                <PanneauFormulaire
-                  id="besoin"
-                  formulaire={`${formulaire}-hero`}
-                  titre={hub.formulaireHeroTitre!}
-                  pastille={hub.formulaireHeroMention}
-                />
-              </div>
+              <PanneauHerosRepliable
+                formulaire={formulaire}
+                titre={hub.formulaireHeroTitre!}
+                pastille={hub.formulaireHeroMention}
+              />
             ) : null}
           </div>
         </section>
+
+        {/* « Toutes les pages de la rubrique », les pastilles de la maquette
+            mobile sous le héros (dc.html L501, `kidsTop` du gabarit 10) : les
+            onze domaines. Sous 881 px seulement. */}
+        {chemin ? <PastillesCocon chemin={chemin} variante="enfants" /> : null}
 
         {/* -------------------------------------------- 1. « 01 Chiffres » */}
 
@@ -253,44 +288,73 @@ export default function PageExpertises({
         <LogosClients />
         <Reassurance />
 
+        {/* LA CADENCE DE CONVERSION MOBILE. Un enfant par section numérotée
+            de la maquette (dc.html L452 à L456) : 01 la réponse directe,
+            02 le problème (photo + CTA après), 03 l'offre, 04 le déroulé,
+            05 les garanties (bandeau après), 06 les références, puis la FAQ.
+            `rappelFinal={false}` : « 10 Appel final » tient le rôle du
+            rappel de bas de page, et reçoit l'ancre `#etre-rappele`. */}
+        <AvecConversionMobile
+          chemin={chemin ?? ""}
+          gabarit="10"
+          bouton={boutonMobile}
+          rappelFinal={false}
+        >
         {/* ------------------------------ 4 à 7. l'accueil de rubrique */}
 
-        {hub.reponse ? <ReponseDirecte {...hub.reponse} /> : null}
-        {hub.domaines ? <Domaines {...hub.domaines} /> : null}
-        {hub.types ? <TypesMaintenance {...hub.types} /> : null}
-        {hub.complementTypes?.length ? (
-          <ComplementsOffre blocs={hub.complementTypes} />
+        {hub.reponse || hub.domaines || hub.types || hub.complementTypes?.length ? (
+          <>
+            {hub.reponse ? <ReponseDirecte {...hub.reponse} /> : null}
+            {hub.domaines ? <Domaines {...hub.domaines} /> : null}
+            {hub.types ? <TypesMaintenance {...hub.types} /> : null}
+            {hub.complementTypes?.length ? (
+              <ComplementsOffre blocs={hub.complementTypes} />
+            ) : null}
+          </>
         ) : null}
 
         {/* ------------------------------------- 8 et 9. problème, offre */}
 
-        {probleme ? <ProblemeOffre section={probleme} altPhoto={h1} /> : null}
-        {offre ? <PointsOffre section={offre} /> : null}
+        {/* 02 de la maquette, après « La réponse directe » : replié au
+            téléphone (`pli`, repli sur demande du gabarit 03). */}
+        {probleme ? <ProblemeOffre section={probleme} altPhoto={h1} pli="replie" /> : null}
 
-        {/* ------------------------------ 10 et 11. appel, complément 4 */}
+        {offre || hub.mention || hub.appelBouton || hub.complementOffre?.length ? (
+          <>
+            {offre ? <PointsOffre section={offre} /> : null}
 
-        {hub.mention || hub.appelBouton ? (
-          <BandeAppel
-            mention={hub.mention}
-            bouton={hub.appelBouton}
-            variante="sombre"
-          />
-        ) : null}
-        {hub.complementOffre?.length ? (
-          <ComplementsOffre blocs={hub.complementOffre} />
+            {/* ------------------------------ 10 et 11. appel, complément 4 */}
+
+            {hub.mention || hub.appelBouton ? (
+              <BandeAppel
+                mention={hub.mention}
+                bouton={hub.appelBouton}
+                variante="sombre"
+              />
+            ) : null}
+            {hub.complementOffre?.length ? (
+              <ComplementsOffre blocs={hub.complementOffre} />
+            ) : null}
+          </>
         ) : null}
 
         {/* ------------------------------- 12 à 15. déroulé → références */}
 
-        {deroule ? <DerouleOffre section={deroule} /> : null}
+        {deroule ? <DerouleOffre section={deroule} pli="replie" /> : null}
         {garanties ? <GarantiesOffre section={garanties} /> : null}
-        {hub.marquesFamille ? (
-          <MarquesOffre
-            famille={hub.marquesFamille}
-            familles={hub.marquesFamilles}
-          />
+        {hub.marquesFamille || preuves ? (
+          <>
+            {hub.marquesFamille ? (
+              <MarquesRepliees
+                famille={hub.marquesFamille}
+                familles={hub.marquesFamilles}
+              />
+            ) : null}
+            {/* Ouvert au téléphone : la maquette garde son carrousel de
+                références déplié (dc.html L476, `isRef`). */}
+            {preuves ? <ReferencesOffre section={preuves} toujoursOuvert /> : null}
+          </>
         ) : null}
-        {preuves ? <ReferencesOffre section={preuves} /> : null}
 
         {/* --------------------------------------------- 16. « 09 Questions » */}
 
@@ -310,14 +374,25 @@ export default function PageExpertises({
             }}
           />
         ) : null}
+        </AvecConversionMobile>
 
         {/* --------------------------------------------------- 17. Maillage */}
 
+        {/* Hors de la cadence : section de maillage du bureau, que la
+            maquette mobile ne compte pas parmi ses sections numérotées. */}
         {hub.pagesLiees?.length && hub.pagesLieesTitre ? (
           <PagesLiees pages={hub.pagesLiees} titre={hub.pagesLieesTitre} />
         ) : null}
 
         {/* ---------------------------------------- 18. « 10 Appel final » */}
+
+        {/* L'ancre du bandeau « Être rappelé » (`#etre-rappele`) : voir
+            `specialite/PageSpecialite.tsx`. Mobile seulement. */}
+        <span
+          id={ID_RAPPEL_FINAL}
+          data-mobile-seulement=""
+          style={{ display: "block", scrollMarginTop: 90 }}
+        />
 
         {/* La capture pose `id="mgx-form"` sur cette section : la FAQ la vise. */}
         <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
@@ -335,6 +410,9 @@ export default function PageExpertises({
             {maillage}
           </div>
         ) : null}
+
+        {/* En dernier : voir `specialite/PageSpecialite.tsx`. */}
+        <OuvreLaCible />
       </main>
     </div>
   );

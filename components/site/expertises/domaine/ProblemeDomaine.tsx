@@ -1,6 +1,8 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { PliMobile } from "@/components/site/expertises/mobile";
 import ProblemeOffre from "@/components/site/offre/ProblemeOffre";
 import { coupePunchline, numerote } from "@/components/site/offre/texte-offre";
 import type { SectionProbleme } from "@/types/contenu";
@@ -33,6 +35,38 @@ export interface ProprietesProblemeDomaine {
   section: SectionProbleme;
   altPhoto: string;
   photo?: string | null;
+  /**
+   * Replié au téléphone. La maquette mobile ouvre la PREMIÈRE section
+   * numérotée et replie les suivantes (dc.html L451, `nOpen = 1`) : le
+   * problème est ouvert là où il ouvre la page, replié là où « La réponse
+   * directe » le précède (les types de maintenance). Le dessin « colonne »,
+   * délégué à `ProblemeOffre` (gabarit 03), se replie par SON repli sur
+   * demande (`pli`) : un second pli posé par-dessus ferait un pli dans un pli.
+   */
+  replie?: boolean;
+}
+
+/** La largeur de la section, et le pli mobile quand la page le demande. */
+function Cadre({
+  section,
+  replie,
+  children,
+}: {
+  section: SectionProbleme;
+  replie: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <PliMobile
+      actif={replie}
+      style={LARGEUR}
+      surtitre="Votre problématique"
+      titre={coupePunchline(section.punchline).titre}
+      resume={resumeDe(section.puces.map((puce) => puce.accroche ?? puce.texte))}
+    >
+      {children}
+    </PliMobile>
+  );
 }
 
 /* ------------------------------------------- rangee (`pbCards`, l. 278-286) */
@@ -92,11 +126,11 @@ function colonnes(n: number): number {
   return n % 3 === 0 ? 3 : 4;
 }
 
-function Rangee({ section }: { section: SectionProbleme }) {
+function Rangee({ section, replie }: { section: SectionProbleme; replie: boolean }) {
   const { titre, suite } = coupePunchline(section.punchline);
   return (
     <section style={SECTION}>
-      <div style={LARGEUR}>
+      <Cadre section={section} replie={replie}>
         <div className="mg-r2" style={ENTETE_RANGEE}>
           <div>
             <div style={{ ...SURTITRE, marginBottom: 18 }}>
@@ -124,7 +158,7 @@ function Rangee({ section }: { section: SectionProbleme }) {
             </div>
           ))}
         </div>
-      </div>
+      </Cadre>
     </section>
   );
 }
@@ -200,11 +234,11 @@ const TEXTE_SOMBRE: CSSProperties = {
    (overflow hidden) coupe le texte. Mesuré le 08/10 sur
    /expertises/types-de-maintenance/maintenance-palliative/. Sans
    `data-screen-label`, la grille passe à une colonne : tout le texte se lit. */
-function Sombre({ section }: { section: SectionProbleme }) {
+function Sombre({ section, replie }: { section: SectionProbleme; replie: boolean }) {
   const { titre, suite } = coupePunchline(section.punchline);
   return (
     <section style={SECTION}>
-      <div style={LARGEUR}>
+      <Cadre section={section} replie={replie}>
         <div className={styles.panneauProbleme} style={PANNEAU}>
           <div aria-hidden="true" style={LUEUR} />
           <div style={{ position: "relative" }}>
@@ -231,7 +265,7 @@ function Sombre({ section }: { section: SectionProbleme }) {
             </div>
           </div>
         </div>
-      </div>
+      </Cadre>
     </section>
   );
 }
@@ -240,8 +274,18 @@ export default function ProblemeDomaine({
   section,
   altPhoto,
   photo,
+  replie = false,
 }: ProprietesProblemeDomaine) {
-  if (section.variante === "rangee") return <Rangee section={section} />;
-  if (section.variante === "panneau-sombre") return <Sombre section={section} />;
-  return <ProblemeOffre section={section} altPhoto={altPhoto} photo={photo} />;
+  if (section.variante === "rangee") return <Rangee section={section} replie={replie} />;
+  if (section.variante === "panneau-sombre") return <Sombre section={section} replie={replie} />;
+  /* Le dessin « colonne » se replie par le repli SUR DEMANDE de
+     `ProblemeOffre` (gabarit 03), jamais par un pli posé par-dessus le sien. */
+  return (
+    <ProblemeOffre
+      section={section}
+      altPhoto={altPhoto}
+      photo={photo}
+      pli={replie ? "replie" : undefined}
+    />
+  );
 }

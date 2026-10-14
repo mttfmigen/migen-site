@@ -2,6 +2,16 @@ import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+import {
+  FilArianeMobile,
+  HERO_COMPACT,
+  MarquesRepliees,
+  RACINE_MOBILE,
+} from "@/components/site/expertises/mobile";
+import TelephoneHeros from "@/components/site/offre/TelephoneHeros";
+import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
+import { CIBLE_CONTACT, ID_RAPPEL_FINAL } from "@/components/site/mobile/conversion-donnees";
 import AppelFinal from "@/components/site/offre/AppelFinal";
 import BandeAppel from "@/components/site/offre/BandeAppel";
 import ComplementsOffre from "@/components/site/offre/ComplementsOffre";
@@ -9,8 +19,8 @@ import DerouleOffre from "@/components/site/offre/DerouleOffre";
 import GarantiesOffre from "@/components/site/offre/GarantiesOffre";
 import { liensSurs } from "@/components/site/offre/LiensOffre";
 import LogosClients from "@/components/site/offre/LogosClients";
-import MarquesOffre from "@/components/site/offre/MarquesOffre";
-import PanneauFormulaire from "@/components/site/offre/PanneauFormulaire";
+import OuvreLaCible from "@/components/site/implantation/OuvreLaCible";
+import PanneauHerosRepliable from "@/components/site/implantation/PanneauHerosRepliable";
 import PointsOffre from "@/components/site/offre/PointsOffre";
 import Reassurance from "@/components/site/offre/Reassurance";
 import ReferencesOffre from "@/components/site/offre/ReferencesOffre";
@@ -85,6 +95,12 @@ import SecteursDomaine from "./SecteursDomaine";
  *
  * Composant SERVEUR. Fil d'Ariane et maillage du cocon restent en props,
  * exigés par CLAUDE.md §4 bien qu'absents de la capture.
+ *
+ * LA COUCHE MOBILE V2 (14/10), sous 881 px seulement, le bureau ne bouge pas :
+ * fil d'Ariane, héros compact (H1 à 27 px, téléphone, panneau de formulaire
+ * REPLIÉ), « Les spécialités du domaine » sous le héros et « Dans la même
+ * rubrique » en bas (dc.html L501 et L506), sections de bureau repliées, et la
+ * cadence de conversion. Même méthode que `specialite/PageSpecialite.tsx`.
  */
 
 export interface ProprietesPageDomaine {
@@ -93,6 +109,8 @@ export interface ProprietesPageDomaine {
   contenu: ContenuDomaine;
   /** Identifiant d'analyse des soumissions, repris par HubSpot. */
   formulaire: string;
+  /** Le chemin de la page (`page.path`), pour la couche mobile. */
+  chemin?: string;
   filAriane?: ReactNode;
   maillage?: ReactNode;
 }
@@ -111,6 +129,7 @@ export default function PageDomaine({
   titre,
   contenu,
   formulaire,
+  chemin,
   filAriane,
   maillage,
 }: ProprietesPageDomaine) {
@@ -130,18 +149,30 @@ export default function PageDomaine({
      vérité n'est pas testée, un en-tête vide reste un panneau. */
   const heroFormulaire = typeof contenu.formulaireHeroTitre === "string";
 
+  /* « La réponse directe » (Complément 2) ouvre `/expertises/types-de-
+     maintenance/` : elle est alors la première section numérotée, ouverte au
+     téléphone, et le problème se replie (dc.html L451). */
+  const aReponseDirecte = !!contenu.complementTypes?.length;
+
+  /* Le bouton du photo + CTA mobile : le CTA de la fiche (dc.html L412),
+     libellé du bouton du héros, vers `/contact/` comme dans la fiche. */
+  const boutonMobile = actions[0]
+    ? { libelle: actions[0].libelle, href: CIBLE_CONTACT }
+    : undefined;
+
   return (
-    /* La racine `.mgx-root` de `MigenExpertise` : `--sec` reste à 120 px sur
-       mobile (la règle « --sec: 64px » de `.mg-site` ne l'atteint pas), et les
-       règles mobiles du gabarit sont celles que `PageOffre.module.css` porte
-       sous `.gabarit`. Mesuré le 08/10 à 390 px : 120 px dans la maquette. */
-    <div className={`mg-site ${stylesOffre.gabarit}`} style={{ "--sec": "120px" } as CSSProperties}>
+    /* La racine `.mgx-root` de `MigenExpertise`. `--sec` vaut 120 px sur
+       bureau, comme la capture, et 64 px sous 881 px : voir `RACINE_MOBILE`.
+       Les règles mobiles du gabarit sont celles que `PageOffre.module.css`
+       porte sous `.gabarit`. */
+    <div className={`mg-site ${stylesOffre.gabarit} ${RACINE_MOBILE}`}>
       <main style={{ paddingTop: 62 }}>
+        {chemin ? <FilArianeMobile chemin={chemin} /> : null}
         {filAriane}
 
         {/* ------------------------------------------------ 0. « 01 Héros » */}
 
-        <section style={HERO}>
+        <section className={HERO_COMPACT} style={HERO}>
           <div
             className="mg-r2"
             style={{
@@ -195,6 +226,7 @@ export default function PageDomaine({
                       </Link>
                     ),
                   )}
+                  <TelephoneHeros />
                 </div>
               ) : null}
 
@@ -203,18 +235,22 @@ export default function PageDomaine({
               ) : null}
             </div>
 
+            {/* G2, LE PANNEAU DE FORMULAIRE SE REPLIE AU TÉLÉPHONE : voir
+                `specialite/PageSpecialite.tsx`, même arbitrage. */}
             {heroFormulaire ? (
-              <div style={{ position: "relative" }}>
-                <PanneauFormulaire
-                  id="besoin"
-                  formulaire={`${formulaire}-hero`}
-                  titre={contenu.formulaireHeroTitre!}
-                  pastille={contenu.formulaireHeroMention}
-                />
-              </div>
+              <PanneauHerosRepliable
+                formulaire={formulaire}
+                titre={contenu.formulaireHeroTitre!}
+                pastille={contenu.formulaireHeroMention}
+              />
             ) : null}
           </div>
         </section>
+
+        {/* « Les spécialités du domaine », les pastilles de la maquette mobile
+            sous le héros (dc.html L501, `kidsTop`). Sous 881 px seulement ;
+            rien pour un domaine sans page fille. */}
+        {chemin ? <PastillesCocon chemin={chemin} variante="enfants" /> : null}
 
         {/* -------------------------------------------- 1. « 01 Chiffres » */}
 
@@ -255,6 +291,18 @@ export default function PageDomaine({
 
         <Reassurance />
 
+        {/* LA CADENCE DE CONVERSION MOBILE : même montage que
+            `specialite/PageSpecialite.tsx`. Un enfant par section numérotée
+            de la maquette (photo + CTA après la 2e, bandeau après la 5e), les
+            sections de bureau groupées avec les références, et
+            `rappelFinal={false}` parce que « 10 Appel final » tient le rôle
+            du rappel de bas de page. */}
+        <AvecConversionMobile
+          chemin={chemin ?? ""}
+          gabarit="09"
+          bouton={boutonMobile}
+          rappelFinal={false}
+        >
         {/* ----------------------------- 3 bis. « Complément 2 » (accueil) */}
 
         {/* Des onze captures du gabarit, seule celle de
@@ -271,9 +319,14 @@ export default function PageDomaine({
             section={probleme}
             altPhoto={titre}
             photo={contenu.problemePhoto}
+            replie={aReponseDirecte}
           />
         ) : null}
 
+        {/* L'offre, la bande d'appel et « Complément 4 » : une seule section
+            du corpus, « ## L’offre », pour la cadence. */}
+        {offre || contenu.mention || contenu.appelBouton || contenu.complementOffre?.length ? (
+        <>
         {/* --------------------------------------------- 5. « 04 Offre » */}
 
         {offre ? <PointsOffre section={offre} /> : null}
@@ -295,27 +348,34 @@ export default function PageDomaine({
         {contenu.complementOffre?.length ? (
           <ComplementsOffre blocs={contenu.complementOffre} />
         ) : null}
+        </>
+        ) : null}
 
         {/* ------------------------------------------- 8. « 05 Déroulé » */}
 
-        {deroule ? <DerouleOffre section={deroule} /> : null}
+        {/* Replié au téléphone, comme dans la maquette (« 03 Le déroulé »),
+            par le repli sur demande du bloc partagé. */}
+        {deroule ? <DerouleOffre section={deroule} pli="replie" /> : null}
 
         {/* ----------------------------------------- 9. « 06 Garanties » */}
 
         {garanties ? <GarantiesOffre section={garanties} /> : null}
 
+        {/* Secteurs, offres, marques et références : une section pour la
+            cadence, celle des références. */}
+        <>
         {/* --------------------------- 10. « Secteurs de l'expertise » */}
 
         <SecteursDomaine />
 
         {/* --------------------------------- 11. « Offres du secteur » */}
 
-        <OffresDomaine />
+        <OffresDomaine replie />
 
         {/* ------------------------------- 12. « Marques maintenues » */}
 
         {contenu.marquesFamille ? (
-          <MarquesOffre
+          <MarquesRepliees
             famille={contenu.marquesFamille}
             familles={contenu.marquesFamilles}
           />
@@ -323,7 +383,10 @@ export default function PageDomaine({
 
         {/* --------------------------------------- 13. « 08 Références » */}
 
-        {preuves ? <ReferencesOffre section={preuves} /> : null}
+        {/* Ouvert au téléphone : la maquette garde son carrousel de
+            références déplié (dc.html L476, `isRef`). */}
+        {preuves ? <ReferencesOffre section={preuves} toujoursOuvert /> : null}
+        </>
 
         {/* --------------------------------------- 14. « 09 Questions » */}
 
@@ -348,8 +411,21 @@ export default function PageDomaine({
             }}
           />
         ) : null}
+        </AvecConversionMobile>
+
+        {/* « Dans la même rubrique », la boîte basse de la maquette mobile
+            (dc.html L506) : les domaines frères. Sous 881 px seulement. */}
+        {chemin ? <PastillesCocon chemin={chemin} variante="soeurs" /> : null}
 
         {/* ------------------------------------- 15. « 10 Appel final » */}
+
+        {/* L'ancre du bandeau « Être rappelé » (`#etre-rappele`) : voir
+            `specialite/PageSpecialite.tsx`. Mobile seulement. */}
+        <span
+          id={ID_RAPPEL_FINAL}
+          data-mobile-seulement=""
+          style={{ display: "block", scrollMarginTop: 90 }}
+        />
 
         {/* L'ANCRE `#mgx-form` est posée ici parce que la capture la pose sur
             cette section (`id="mgx-form"`, `scroll-margin-top: 90px`) : le
@@ -370,6 +446,9 @@ export default function PageDomaine({
             {maillage}
           </div>
         ) : null}
+
+        {/* En dernier : voir `specialite/PageSpecialite.tsx`. */}
+        <OuvreLaCible />
       </main>
     </div>
   );

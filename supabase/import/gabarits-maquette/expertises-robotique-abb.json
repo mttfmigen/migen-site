@@ -119,6 +119,11 @@
             },
             "benefice": "Quelqu'un devient la mémoire technique de vos robots, au lieu de la reconstruire à chaque panne."
           }
+        ],
+        "prose": [
+          {
+            "texte": "Cette page prolonge notre [maintenance robotique](/expertises/robotique/) : même méthode, appliquée au parc ABB. Nos techniciens couvrent aussi les parcs [Fanuc](/expertises/robotique/fanuc/) sur le même site. Un parc entier à remettre sous suivi passe par le [contrat Zéro arrêt](/offres/zero-arret/), avec un plan de maintenance préventive adapté à votre site et une priorité d'intervention."
+          }
         ]
       },
       {

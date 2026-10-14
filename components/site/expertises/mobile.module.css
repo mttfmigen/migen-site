@@ -1,0 +1,217 @@
+/*
+ * LA COUCHE MOBILE DES GABARITS EXPERTISES (05 Spécialité, 09 Domaine, 10 hub
+ * `/expertises/`). Chaque règle de ce fichier ne porte que sous 880 px, OU ne
+ * fait que retirer au-dessus de 880 px une bascule qui n'y sert à rien : à
+ * 1280 px, la page est celle de sa capture de bureau, au pixel.
+ *
+ * Le seuil, 880 px, est celui de `blocs/SectionPliableMobile.module.css` et de
+ * `[data-mobile-seulement]` dans `app/globals.css` : les trois doivent rester
+ * d'accord, sinon une largeur montrerait une moitié de la couche sans l'autre.
+ */
+
+/* ---------------------------------------------------- le rythme vertical */
+
+/*
+ * `--sec`, L'ÉCART ENTRE DEUX SECTIONS. Les trois gabarits le posaient en
+ * style EN LIGNE à 120 px, largeur comprise : à 390 px, la maquette de BUREAU
+ * le gardait (mesure du 08/10), et la règle « --sec: 64px » que
+ * `app/globals.css` pose sur `.mg-site` sous 760 px ne l'atteignait pas.
+ * La référence du téléphone est désormais la maquette MOBILE v2, dont les
+ * blocs se suivent à 12 à 22 px : 120 px par section, sur dix-sept sections,
+ * faisaient près de deux mille pixels de vide à 390 px. La valeur reste
+ * 120 px au-dessus de 880 px, et prend sous ce seuil les 64 px que le reste du
+ * site applique déjà au téléphone.
+ */
+.racine {
+  --sec: 120px;
+}
+
+@media (max-width: 880px) {
+  .racine {
+    --sec: 64px;
+  }
+}
+
+/*
+ * LE TITRE DES PASTILLES DU COCON GARDE SES 11 PX. `cocon/PastillesCocon.tsx`
+ * écrit son `<h2>` en `600 11px` (dc.html L125), en style en ligne ; mais
+ * `app/globals.css` pose sous 760 px `.mg-site h2 { font-size: clamp(26px,
+ * 7.4vw, 34px) !important }`, et nos trois gabarits vivent sous `.mg-site` :
+ * « TOUTES LES PAGES DE LA RUBRIQUE · 11 » sortait en capitales de 29 px,
+ * sur deux lignes. Un sélecteur plus précis, ancré sur notre racine, rend au
+ * titre la taille de la maquette sans toucher au composant partagé.
+ */
+.racine [data-pastilles-cocon] h2 {
+  font-size: 11px !important;
+}
+
+/* ---------------------------------------------------------------- le repli */
+
+/*
+ * L'ÉTIQUETTE D'UNE BASCULE, motif « Blocs communs (pliables) » de
+ * `offre/PointsOffre.tsx` (classes `etiquettePli` et `blocPliablePartage` de
+ * `offre/PageOffre.module.css`), RECOPIÉ ici et non importé : ce fichier-là
+ * appartient au gabarit 03, et une classe de module qui disparaît ne fait
+ * tomber ni les types ni le build, elle rend juste `undefined` en silence.
+ *
+ * Repliée, l'étiquette dit ce qu'il y a sous le pli. Dépliée, elle s'efface :
+ * la section montre alors son vrai titre, le dire deux fois n'aiderait
+ * personne. Le chevron reste la poignée.
+ */
+.etiquette {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .etiquette {
+    display: block;
+  }
+  details[open] > summary > .etiquette {
+    display: none;
+  }
+}
+
+/*
+ * SUR BUREAU, LA BASCULE N'EXISTE PAS DU TOUT : vidée de son étiquette et de
+ * son chevron, elle resterait un `<summary>` focalisable et muet. Le bloc est
+ * rendu `open` et ne se referme que sous 880 px, son contenu reste donc à
+ * l'écran. Le `margin-top` du corps retombe à zéro pour la même raison : il
+ * aérait l'espace sous une bascule qui, ici, n'est pas là.
+ */
+@media (min-width: 881px) {
+  .pli details[data-pliable-mobile] > summary {
+    display: none;
+  }
+  .pli details[data-pliable-mobile] > summary ~ div {
+    margin-top: 0;
+  }
+}
+
+/* Les liens de la prose de « L'offre » : soulignés, graisse 600, encre du
+   texte (dc.html L130, liens des paragraphes `isP`). */
+.prose a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(28, 27, 25, 0.28);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+/*
+ * LE PLI QUI ENVELOPPE UNE `<section>` ENTIÈRE (un bloc partagé, rendu avec
+ * sa propre gouttière et son propre écart haut, dans le corps du pli). Sa
+ * bascule n'a ni l'une ni l'autre : elle prend sous 880 px la gouttière des
+ * autres sections (40 px, `habillage.LARGEUR`) et, fermée, leur écart haut
+ * (`--sec`). Ouverte, l'écart est celui de la section elle-même. Rien
+ * au-dessus de 880 px, où la bascule est retirée (`.pli`).
+ */
+@media (max-width: 880px) {
+  .pleinePage > details[data-pliable-mobile] > summary {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .pleinePage > details[data-pliable-mobile]:not([open]) > summary {
+    padding-top: var(--sec);
+  }
+}
+
+/* ------------------------------------------------------ le héros compact */
+
+/*
+ * G2, LE HÉROS COMPACT. La maquette mobile v2 (dc.html L107) écrit le H1 en
+ * `600 27px/1.1`, letter-spacing -.04em, sur toute la largeur. Le site gardait
+ * celui du bureau, `clamp(38px, 4.4vw, 66px)` sur 16 caractères de large : un
+ * titre de spécialité y prenait cinq à six lignes. Les `!important` battent le
+ * style EN LIGNE relevé de la capture de bureau (`habillage-offre.TITRE1`),
+ * qui reste intact au-dessus de 880 px. Le chapeau prend le `400 15px/1.6` de
+ * la maquette (L109).
+ *
+ * `section.heroCompact` ET PAS `.heroCompact` : `app/globals.css` pose déjà,
+ * sous 760 px, `.mg-site h1 { font-size: clamp(32px, 9vw, 42px) !important }`.
+ * À spécificité égale, l'ordre des feuilles déciderait, et il n'est pas
+ * garanti entre la feuille globale et celle d'un module : un élément de plus
+ * dans le sélecteur tranche sans dépendre de cet ordre.
+ */
+@media (max-width: 880px) {
+  section.heroCompact h1 {
+    font-size: calc(27px * var(--ts, 1)) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.04em !important;
+    max-width: none !important;
+  }
+  section.heroCompact h1 + p {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    margin-top: 12px !important;
+  }
+}
+
+/* --------------------------------------------- les tableaux, en cartes */
+
+/*
+ * SOUS 881 PX, UNE CARTE PAR LIGNE DE TABLEAU : le LISEZMOI de la maquette
+ * mobile v2, « Tableau → une carte par ligne », et son rendu (m-10, « Quel
+ * type de maintenance pour quel besoin ») : la première cellule en titre de
+ * carte, les suivantes sous leur intitulé de colonne en petites capitales.
+ *
+ * CE QUI RÉPARE : un VRAI `<table>` de `min-width: 480px` défilait hors de
+ * l'écran à 390 px, mesuré sur les sept pages qui en portent un.
+ *
+ * RIEN NE QUITTE LE DOM. L'intitulé de colonne d'une carte est un `::before`
+ * qui lit `data-colonne` (contenu généré : il n'entre pas dans le
+ * `textContent`, la page ne gagne aucun mot), et la ligne d'en-têtes reste
+ * dans le tableau, masquée à l'écran seulement, comme un texte réservé aux
+ * lecteurs d'écran. Les `!important` battent les styles en ligne de la
+ * capture de bureau, qui ne bougent pas au-dessus de 880 px.
+ */
+@media (max-width: 880px) {
+  .tableauEnCartes {
+    overflow-x: visible !important;
+    border: none !important;
+    background: none !important;
+    border-radius: 0 !important;
+  }
+  .tableauEnCartes table {
+    display: block !important;
+    min-width: 0 !important;
+  }
+  .tableauEnCartes thead {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+  }
+  .tableauEnCartes tbody {
+    display: grid !important;
+    gap: 8px !important;
+  }
+  .tableauEnCartes tbody tr {
+    display: grid !important;
+    gap: 6px !important;
+    padding: 14px 15px !important;
+    border: 1px solid var(--line) !important;
+    border-radius: var(--rad-s) !important;
+    background: var(--card) !important;
+  }
+  .tableauEnCartes td {
+    display: block !important;
+    padding: 0 !important;
+    border-top: none !important;
+  }
+  .tableauEnCartes td:first-child {
+    font-weight: 600 !important;
+    color: var(--ink) !important;
+  }
+  .tableauEnCartes td[data-colonne]::before {
+    content: attr(data-colonne);
+    display: block;
+    margin-bottom: 2px;
+    font: 600 10.5px var(--fb);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink3);
+  }
+}
