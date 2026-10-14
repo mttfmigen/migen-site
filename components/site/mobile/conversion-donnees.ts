@@ -28,11 +28,55 @@ export interface LibelleCible {
   href: string;
 }
 
+/**
+ * La variante d'une page, depuis son chemin et son gabarit (`index.json`),
+ * dc.html L350 et L432. Les pages natives `/a-propos/*` et `/partenaires/`
+ * ne prennent pas la variante article, même au gabarit 01.
+ */
+export function varianteDe(chemin: string, gabarit: string): VarianteConversion {
+  if (chemin.split("/").filter(Boolean)[0] === "carriere") return "carriere";
+  if (gabarit === "01" && !/^\/(a-propos|partenaires)\//.test(chemin)) return "article";
+  if (gabarit === "02") return "etudeDeCas";
+  return "standard";
+}
+
+/** dc.html L230 : `PEOPLE`, les six photos d'équipe dont le photo + CTA tire la sienne. */
+export const PHOTOS_EQUIPE = [
+  "/assets/web/team-duo.jpg",
+  "/assets/web/team-grind-sparks.jpg",
+  "/assets/web/sv-duo-impact.jpg",
+  "/assets/web/x-tech-portrait.jpg",
+  "/assets/web/team-grind-impact.jpg",
+  "/assets/web/sv-portrait.jpg",
+] as const;
+
+/** dc.html L416 : `hsh`, l'empreinte qui rend le tirage stable d'une visite à l'autre. */
+function empreinte(texte: string): number {
+  let h = 0;
+  for (let i = 0; i < texte.length; i++) h = (h * 31 + texte.charCodeAt(i)) >>> 0;
+  return h;
+}
+
+/**
+ * dc.html L423 : `people = PEOPLE.filter(p => p !== heroImg)`, puis
+ * `people[hsh(u) % people.length]`. `photoHeros` écarte la photo déjà en tête
+ * de page, pour qu'un même cliché ne serve pas deux blocs.
+ */
+export function photoCtaPour(chemin: string, photoHeros?: string): string {
+  const sansHeros = PHOTOS_EQUIPE.filter((p) => p !== photoHeros);
+  return sansHeros[empreinte(chemin) % sansHeros.length];
+}
+
 /* ------------------------------------------------------------- les cibles */
 
 /** dc.html L412 : `href: isCar ? "/carriere/#postuler-chez-migen" : "/contact/"`. */
 export const CIBLE_CONTACT = "/contact/";
-export const CIBLE_POSTULER = "/carriere/#postuler-chez-migen";
+/** L'ancre de la maquette, `#postuler-chez-migen`, n'existe pas sur le site :
+    la section de candidature du hub carrière porte `id="postuler"`
+    (`metier/PostulerMetier.tsx`, tenue par `verification-carriere.tsx`).
+    Écart déclaré le 14/10 : un bouton vers une ancre absente ne mène à rien. */
+export const CIBLE_POSTULER_MAQUETTE = "/carriere/#postuler-chez-migen";
+export const CIBLE_POSTULER = "/carriere/#postuler";
 
 /** dc.html L138 : `<section id="etre-rappele" …>` ; L437 : `href: "#etre-rappele"`. */
 export const ANCRE_RAPPEL = "#etre-rappele";

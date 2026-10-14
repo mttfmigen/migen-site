@@ -47,7 +47,14 @@ export default function RappelExpress() {
         detail: { entreprise: valeur("entreprise"), telephone: valeur("telephone"), email: valeur("email") },
       }),
     );
-    const cible = document.getElementById("cx-form");
+    // La cible : le formulaire « Décrire mon besoin » de la page. `#cx-form`
+    // n'existe que sur 8 pages sur 158 (mesuré le 14/10) ; ailleurs, le
+    // dernier formulaire de la page qui demande un message, c'est-à-dire le
+    // formulaire complet et non ce panneau-ci, qui n'en demande pas.
+    const formulaires = [...document.querySelectorAll<HTMLFormElement>("form")].filter((f) =>
+      f.querySelector('[name="message"]'),
+    );
+    const cible = document.getElementById("cx-form") ?? formulaires.at(-1) ?? null;
     cible?.scrollIntoView({ behavior: "smooth", block: "start" });
     // Le curseur va au premier champ que ce panneau ne demande pas : le nom.
     cible?.querySelector<HTMLInputElement>('[name="nom"]')?.focus({ preventScroll: true });

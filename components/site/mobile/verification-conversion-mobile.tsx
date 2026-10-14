@@ -52,6 +52,7 @@ import {
   BOUTON_POSTULER_FINAL,
   CIBLE_CONTACT,
   CIBLE_POSTULER,
+  CIBLE_POSTULER_MAQUETTE,
   ID_BANDEAU,
   ID_PHOTO_CTA,
   ID_RAPPEL_FINAL,
@@ -423,9 +424,11 @@ assert.deepEqual(
 );
 
 // 7. LES ANCRES ET CIBLES de la maquette, et le même numéro de téléphone.
-for (const attendu of [CIBLE_CONTACT, CIBLE_POSTULER, ANCRE_RAPPEL, ID_PHOTO_CTA, ID_BANDEAU, ID_RAPPEL_FINAL]) {
+for (const attendu of [CIBLE_CONTACT, CIBLE_POSTULER_MAQUETTE, ANCRE_RAPPEL, ID_PHOTO_CTA, ID_BANDEAU, ID_RAPPEL_FINAL]) {
   assert.ok(dc.includes(attendu), `maquette : « ${attendu} » introuvable`);
 }
+// L'écart déclaré : la cible carrière vise l'ancre qui existe sur le site.
+assert.equal(CIBLE_POSTULER, "/carriere/#postuler", "la cible carrière doit viser #postuler, l'ancre du site");
 assert.equal(
   TELEPHONE_SITE.href.replace(/\D/g, "").replace(/^33/, ""),
   (dc.match(/tel:(\d+)/)?.[1] ?? "").replace(/^0/, ""),

@@ -869,7 +869,10 @@ details[open] .g3-plus {
 }
 
 @media (max-width: 880px) {
+  /* La barre v2 remplace la v1 : la réserve de la v1, portée par le pied de
+     page, tombe à zéro, sinon le pied garderait 68 px de vide en plus. */
   body:has([data-barre-collante]) {
+    --barre-reserve: 0px;
     padding-bottom: calc(
       var(--conversion-barre-hauteur) + 2 * var(--conversion-barre-marge) +
         env(safe-area-inset-bottom)

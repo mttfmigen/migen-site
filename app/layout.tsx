@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
 import Bandeau from "@/components/consentement/Bandeau";
-import BarreActionMobile from "@/components/site/BarreActionMobile";
+import BarreCollanteParChemin from "@/components/site/mobile/BarreCollanteParChemin";
 import Entete from "@/components/site/Entete";
 import Moteurs from "@/components/site/Moteurs";
 import PiedDePage from "@/components/site/PiedDePage";
@@ -195,7 +195,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             CSS la masque au-delà de 880px, le même seuil où la navigation cède
             au bouton menu. Sans elle, on ne peut pas appeler Migen depuis un
             téléphone sans ouvrir le tiroir. */}
-        <BarreActionMobile />
+        <BarreCollanteParChemin />
 
         {children}
 
