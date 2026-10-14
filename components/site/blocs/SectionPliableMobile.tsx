@@ -61,6 +61,13 @@ export interface SectionPliableMobileProps {
   resume?: string;
   /** Reste déplié même sur téléphone, pour le premier bloc d'une page. */
   toujoursOuvert?: boolean;
+  /**
+   * `false` : la carte garde son dessin mais ne porte pas de numéro, et ne
+   * compte pas dans la suite (`data-sans-numero`). Pour un repli qui n'est
+   * pas une section de contenu (formulaire, grille de liens), ou dont
+   * l'étiquette écrit déjà son numéro (« 02 · Notre réponse »).
+   */
+  numero?: boolean;
   children: React.ReactNode;
 }
 
@@ -100,6 +107,7 @@ export default function SectionPliableMobile({
   enTete,
   resume,
   toujoursOuvert = false,
+  numero = true,
   children,
 }: SectionPliableMobileProps) {
   const bloc = useRef<HTMLDetailsElement>(null);
@@ -154,19 +162,43 @@ export default function SectionPliableMobile({
     return () => surBureau.removeEventListener("change", applique);
   }, []);
 
+  /*
+   * LA CARTE BLANCHE NUMÉROTÉE DE LA MAQUETTE MOBILE V2, sous 881 px.
+   *
+   * `data-carte-numerotee` est le motif partagé de `app/globals.css`
+   * (« styles partagés de la maquette mobile v2 ») : carte blanche, numéro
+   * orange en colonne à gauche, chevron en pastille à droite, résumé de deux
+   * lignes, 12 px entre deux cartes. Le composant le pose d'office ; les
+   * dessins de la carte ne vivent pas ici, mais dans cette feuille partagée,
+   * pour qu'un gabarit qui écrit son propre `<details>` n'ait qu'à poser le
+   * même attribut.
+   *
+   * LE NUMÉRO N'EST PAS DANS LE DOM. C'est un compteur CSS, en contenu
+   * généré : le `textContent` du bloc, donc ce que Google lit, ne change pas
+   * d'un caractère. Prouvé par la porte du texte
+   * (`scripts/instantane-texte-main.mjs compare`).
+   */
   return (
     <details
       ref={bloc}
       open
       className={s.section}
       data-pliable-mobile=""
+      data-carte-numerotee=""
+      {...(numero ? {} : { "data-sans-numero": "" })}
       {...(enTete ? { "data-en-tete-fourni": "" } : {})}
     >
       <summary className={s.bascule}>
         {enTete ?? (
           <span>
-            {kicker ? <span className={s.kicker}>{kicker}</span> : null}
-            <span className={s.titre}>{titre}</span>
+            {kicker ? (
+              <span className={s.kicker} data-carte-surtitre="">
+                {kicker}
+              </span>
+            ) : null}
+            <span className={s.titre} data-carte-titre="">
+              {titre}
+            </span>
           </span>
         )}
         {/* `data-mobile-seulement` : masqué au-dessus de 880 px, donc absent

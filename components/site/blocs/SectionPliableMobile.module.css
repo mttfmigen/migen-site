@@ -6,19 +6,27 @@
  * C'est un effet client qui le referme, sous 880 px seulement.
  */
 
-.section {
-  border-top: 1px solid var(--line);
-  padding-top: 18px;
-  margin-top: 4px;
-}
+/* LE FILET EST UN DESSIN DE BUREAU DEPUIS LE 14/10. Sous 881 px, le bloc est
+   la carte blanche numérotée de la maquette mobile v2, dessinée par le motif
+   partagé `details[data-carte-numerotee]` de `app/globals.css` (« styles
+   partagés de la maquette mobile v2 ») : c'est là, et non ici, que vivent
+   son fond, son numéro, son chevron et son résumé. Au-dessus de 880 px, rien
+   n'a changé. */
+@media (min-width: 881px) {
+  .section {
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+    margin-top: 4px;
+  }
 
-/* Quand l'appelant fournit son propre en-tête, le bloc ne pose NI filet NI
-   marge : il s'insère dans une section qui a déjà son dessin, et en ajouter
-   un second décalerait tout ce qui suit. */
-.section[data-en-tete-fourni] {
-  border-top: 0;
-  padding-top: 0;
-  margin-top: 0;
+  /* Quand l'appelant fournit son propre en-tête, le bloc ne pose NI filet NI
+     marge : il s'insère dans une section qui a déjà son dessin, et en ajouter
+     un second décalerait tout ce qui suit. */
+  .section[data-en-tete-fourni] {
+    border-top: 0;
+    padding-top: 0;
+    margin-top: 0;
+  }
 }
 
 .bascule {
@@ -128,22 +136,12 @@
   margin-top: 0;
 }
 
-@media (max-width: 880px) {
-  .corps {
-    margin-top: 12px;
-  }
-}
-
-@media (max-width: 880px) {
-  .section:not([open]) .resume {
-    /* `-webkit-box` et non `block` : c'est lui qui porte la coupe à deux
-       lignes. Un `display: block` ici la desactiverait en silence. */
-    display: -webkit-box;
-    font: 400 13.5px/1.6 var(--fb);
-    color: var(--ink2);
-    margin-top: 8px;
-  }
-}
+/* SOUS 881 PX, L'ÉCART SOUS LA BASCULE ET L'AFFICHAGE DU RÉSUMÉ appartiennent
+   à la carte numérotée partagée (`app/globals.css`) : la bascule y porte ses
+   15 px de rembourrage bas, le corps ses 16 px de côté, et le résumé ne
+   paraît, en `-webkit-box` coupé à deux lignes, que bloc fermé. Les deux
+   règles qui le faisaient ici (12 px de marge, résumé de 13,5 px) sont
+   retirées, sans quoi elles battraient la maquette par leur spécificité. */
 
 /*
  * SUR BUREAU, RIEN NE SE REPLIE, et c'est une règle et non un espoir : si un

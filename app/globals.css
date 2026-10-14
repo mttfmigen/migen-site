@@ -895,3 +895,436 @@ details[open] .g3-plus {
 .conversion-rappel-sombre input::placeholder {
   color: rgba(255, 255, 255, 0.8);
 }
+
+/* =========================================================================
+   STYLES PARTAGÉS DE LA MAQUETTE MOBILE V2, posés le 14/10.
+
+   Source : `maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html`, gabarit
+   L127 à L133 (blocs `isDetails`, `isQ`, `isTitle`, `isStats`) et logique
+   L415 (`base()`), L467 à L478 (sections, FAQ, chiffres). Chaque valeur
+   ci-dessous y figure telle quelle, et la porte
+   `bun components/site/mobile/verification-maquette-mobile.tsx` l'y relit.
+
+   TOUT EST SOUS 881 PX : au-dessus, aucune de ces règles n'existe.
+
+   UN GABARIT N'A QU'À POSER L'ATTRIBUT. Rien à importer : ce sont des
+   sélecteurs d'attribut globaux, comme `[data-mobile-seulement]` plus haut.
+   Page de démonstration : `components/site/mobile/demonstration-maquette.tsx`.
+
+   1. `details[data-carte-numerotee]` : la CARTE BLANCHE NUMÉROTÉE des
+      sections repliables (dc.html, `isDetails` et `isH`).
+      `SectionPliableMobile` la pose d'office. Structure attendue, celle du
+      composant :
+        <details data-carte-numerotee>
+          <summary>
+            <span>…titre…</span>             premier enfant
+            <span aria-hidden="true">›</span>  chevron, enfant direct
+            <p>…résumé…</p>                  enfant direct, facultatif
+          </summary>
+          <div>…corps…</div>
+        </details>
+      LE NUMÉRO 01, 02… EST UN COMPTEUR CSS (`counter(carte-numerotee)`),
+      remis à zéro par `<main>` : du contenu généré, absent du `textContent`
+      comme du HTML servi. Le texte que lit Google ne change pas d'un
+      caractère. `data-sans-numero` à côté : la même carte, sans numéro et
+      sans compter (prop `numero={false}` de `SectionPliableMobile`).
+      `data-carte-surtitre` et `data-carte-titre`, à poser sur l'élément
+      voulu, lui donnent la typographie de la maquette.
+
+   2. `[data-faq-liste]` sur le CONTENEUR des `<details>` de questions : la
+      simple liste de cartes « Questions fréquentes » (dc.html, `isQ`), 8 px
+      entre deux cartes, un « + » en pastille qui tourne de 45° et passe à
+      l'orange à l'ouverture. `data-faq-titre` sur le titre de la section
+      (21 px, dc.html `isTitle`), `data-faq-surtitre` sur son sur-titre.
+      Chaque question garde son `name` commun : une seule ouverte à la fois.
+
+   3. `[data-tuiles-chiffres]` sur la GRILLE des chiffres clés : tuiles en
+      2 x 2 (dc.html, `isStats`). Dans chaque tuile, le premier enfant est la
+      valeur (21 px, orange), les suivants le libellé (12,5 px).
+      `data-tuiles-titre` sur leur titre (11 px, orange, capitales).
+
+   `!important` : PARTOUT SAUF SUR LA CARTE ELLE-MÊME. Les FAQ, les chiffres
+   et les étiquettes du site sont dessinés en styles en ligne, qu'une feuille
+   ne bat pas autrement : sans lui, « n'avoir qu'à poser l'attribut » serait
+   faux. La carte numérotée, elle, n'en porte pas, et c'est voulu : les
+   gabarits qui ont déjà leur repli local gardent la main jusqu'à leur propre
+   alignement au lieu de voir leurs règles écrasées.
+
+   CE QUE LA MAQUETTE NE DESSINE PAS : aucune ombre sur ces cartes. Les six
+   `box-shadow` de dc.html sont sur l'îlot de navigation, la barre collante et
+   les boutons orange. Le relief d'une carte, c'est son filet.
+
+   UNE CARTE POSÉE DANS UN PANNEAU SOMBRE (`background:var(--panel)` ou
+   `background:#1c1b19` en ligne sur un ancêtre) passe en verre sombre : son
+   contenu y est écrit en blanc, et un fond blanc le rendrait illisible.
+   ========================================================================= */
+
+:root {
+  --mm-filet: rgba(28, 27, 25, 0.08); /* border:1px solid rgba(28,27,25,.08) */
+  --mm-encre-3: #77736d; /* sur-titre et résumé d'une carte */
+  --mm-rayon-carte: 20px; /* carte de section et carte de question */
+  --mm-rayon-tuile: 18px; /* tuile de chiffre */
+}
+
+:root[data-theme="sombre"] {
+  --mm-filet: var(--line);
+  --mm-encre-3: var(--ink3);
+}
+
+@media (max-width: 880px) {
+  main {
+    counter-reset: carte-numerotee;
+  }
+
+  /* ----------------------------------------------- 1. la carte numérotée
+
+     LA CARTE EST PEINTE PAR LE `<summary>` ET PAR LE CORPS, PAS PAR LE
+     `<details>`. Fermée, c'est le `<summary>` seul : la carte de la maquette,
+     trait pour trait. Ouverte, le corps prolonge le même fond et le même
+     filet sous lui. Peindre le `<details>` poserait une seconde carte autour
+     des replis locaux qui dessinent déjà la leur sur le `<summary>` (accueil,
+     carrière, métier) : ici leurs règles portent sur le même élément que les
+     nôtres et l'emportent, sans carte dans la carte. */
+  details[data-carte-numerotee] {
+    counter-increment: carte-numerotee;
+    margin-top: 12px;
+    padding: 0;
+    border: 0;
+  }
+
+  details[data-carte-numerotee] > summary {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr) 28px;
+    grid-template-areas:
+      "numero titre chevron"
+      "numero resume chevron";
+    column-gap: 12px;
+    row-gap: 0;
+    align-items: center;
+    margin: 0;
+    padding: 15px 16px;
+    border: 1px solid var(--mm-filet);
+    border-radius: var(--mm-rayon-carte);
+    background: var(--card);
+    color: var(--ink);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  details[data-carte-numerotee][open] > summary {
+    border-bottom: 0;
+    border-radius: var(--mm-rayon-carte) var(--mm-rayon-carte) 0 0;
+  }
+
+  /* Le contour de focus reste dans la carte, où rien ne le rogne. */
+  details[data-carte-numerotee] > summary:focus-visible {
+    outline-offset: -2px;
+  }
+
+  details[data-carte-numerotee] > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* LE NUMÉRO, dans sa colonne de 22 px, centré sur le titre et le résumé. */
+  details[data-carte-numerotee] > summary::before {
+    content: counter(carte-numerotee, decimal-leading-zero);
+    grid-area: numero;
+    font: 600 11px ui-monospace, Menlo, monospace;
+    color: var(--acc);
+  }
+
+  /* LA MÊME CARTE, SANS NUMÉRO : `data-sans-numero` à côté de l'attribut.
+     Pour un repli qui n'est pas une section de contenu (un formulaire, une
+     grille de liens : la maquette ne numérote ni `isOffers` ni `isHubs`), ou
+     dont l'étiquette porte déjà son numéro en toutes lettres
+     (« 02 · Notre réponse ») : sans lui, le numéro s'afficherait deux fois.
+     Le bloc ne compte pas, la suite garde donc sa numérotation. C'est la
+     grille de la carte de question (dc.html, `isQ`) : titre, pastille. */
+  details[data-carte-numerotee][data-sans-numero] {
+    counter-increment: none;
+  }
+
+  details[data-carte-numerotee][data-sans-numero] > summary {
+    grid-template-columns: minmax(0, 1fr) 28px;
+    grid-template-areas:
+      "titre chevron"
+      "resume chevron";
+  }
+
+  details[data-carte-numerotee][data-sans-numero] > summary::before {
+    content: none;
+  }
+
+  details[data-carte-numerotee] > summary > :first-child {
+    grid-area: titre;
+    min-width: 0;
+  }
+
+  /* LE CHEVRON, pastille ronde de 28 px, un quart de tour à l'ouverture. */
+  details[data-carte-numerotee] > summary > [aria-hidden="true"] {
+    grid-area: chevron;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    margin: 0;
+    border-radius: 999px;
+    background: var(--chip);
+    font: 500 17px/1 var(--fb);
+    color: var(--ink);
+    transition:
+      transform 0.25s ease,
+      background-color 0.25s ease;
+  }
+
+  details[data-carte-numerotee][open] > summary > [aria-hidden="true"] {
+    transform: rotate(90deg);
+  }
+
+  /* LE RÉSUMÉ, sous le titre et coupé à deux lignes, s'efface à l'ouverture
+     (dc.html : `details[open] > summary .mv-tease { display: none }`). */
+  details[data-carte-numerotee] > summary > p {
+    grid-area: resume;
+    display: none;
+    margin: 4px 0 0;
+    font: 400 12.5px/1.45 var(--fb);
+    color: var(--mm-encre-3);
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  details[data-carte-numerotee]:not([open]) > summary > p {
+    display: -webkit-box;
+  }
+
+  /* LE CORPS, dans la même carte : 16 px de côté, 6 px en bas. Ce qui
+     déborde sur les côtés (un rail qui saigne jusqu'au bord) s'arrête au
+     bord de la carte, comme dans la maquette.
+     `flow-root` GARDE LES MARGES DU CONTENU DANS LA CARTE. Sans lui, la
+     marge haute du premier titre traversait le corps (aucun bord ni
+     rembourrage en haut pour l'arrêter) et ouvrait une bande grise entre la
+     bascule et le fond blanc du corps, vue à 390 px sur
+     /ressources/fiches-pratiques/plan-de-prevention/. Un `display` en ligne
+     sur le corps l'emporte, et c'est voulu. */
+  details[data-carte-numerotee] > summary ~ * {
+    display: flow-root;
+    margin-top: 0;
+    padding: 0 16px 6px;
+    border: 1px solid var(--mm-filet);
+    border-top: 0;
+    background: var(--card);
+    color: var(--ink);
+    overflow-x: clip;
+  }
+
+  details[data-carte-numerotee] > summary ~ :last-child {
+    border-radius: 0 0 var(--mm-rayon-carte) var(--mm-rayon-carte);
+  }
+
+  /* `:root` devant l'attribut : il faut battre `.mg-site h2`, qui porte
+     lui-même `!important` sous 760 px. */
+  :root [data-carte-surtitre] {
+    display: block !important;
+    margin: 0 0 3px !important;
+    font: 600 10.5px var(--fb) !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    color: var(--mm-encre-3) !important;
+  }
+
+  :root [data-carte-titre] {
+    display: block !important;
+    margin: 0 !important;
+    font: 600 16.5px/1.3 var(--ft) !important;
+    letter-spacing: -0.025em !important;
+    max-width: none !important;
+    text-wrap: pretty;
+  }
+
+  /* DANS UN PANNEAU SOMBRE, la carte passe en verre sombre. */
+  :is([style*="background:var(--panel)"], [style*="background:#1c1b19"])
+    details[data-carte-numerotee]
+    > :is(summary, summary ~ *) {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+  }
+
+  :is([style*="background:var(--panel)"], [style*="background:#1c1b19"])
+    details[data-carte-numerotee]
+    > summary
+    > [aria-hidden="true"] {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
+
+  :is([style*="background:var(--panel)"], [style*="background:#1c1b19"])
+    details[data-carte-numerotee]
+    > summary
+    > p,
+  :root
+    :is([style*="background:var(--panel)"], [style*="background:#1c1b19"])
+    details[data-carte-numerotee]
+    [data-carte-surtitre] {
+    color: rgba(255, 255, 255, 0.64) !important;
+  }
+
+  /* ------------------------------------------------------ 2. la FAQ en liste */
+  :root [data-faq-surtitre] {
+    display: block !important;
+    margin: 0 0 6px !important;
+    font: 600 11px var(--fb) !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: var(--acc) !important;
+  }
+
+  :root [data-faq-titre] {
+    margin: 0 0 10px !important;
+    font: 600 21px/1.2 var(--ft) !important;
+    letter-spacing: -0.03em !important;
+    color: var(--ink) !important;
+    max-width: none !important;
+    text-wrap: balance;
+  }
+
+  [data-faq-liste] {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  [data-faq-liste] > details {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 1px solid var(--mm-filet) !important;
+    border-radius: var(--mm-rayon-carte) !important;
+    background: var(--card) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    color: var(--ink);
+    overflow: hidden;
+  }
+
+  [data-faq-liste] > details > summary {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 28px !important;
+    gap: 12px !important;
+    align-items: center !important;
+    padding: 15px 16px !important;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  [data-faq-liste] > details > summary:focus-visible {
+    outline-offset: -2px;
+  }
+
+  [data-faq-liste] > details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  [data-faq-liste] > details > summary > :first-child {
+    min-width: 0;
+    margin: 0 !important;
+    font: 600 14.5px/1.4 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    color: var(--ink) !important;
+    text-wrap: pretty;
+  }
+
+  /* Le « + » de la maquette (`.mv-plus`), même pastille que le chevron. */
+  [data-faq-liste] > details > summary > [aria-hidden="true"] {
+    display: grid !important;
+    place-items: center !important;
+    width: 28px !important;
+    height: 28px !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    background: var(--chip) !important;
+    font: 500 17px/1 var(--fb) !important;
+    color: var(--ink) !important;
+    transition:
+      transform 0.25s ease,
+      background-color 0.25s ease;
+  }
+
+  [data-faq-liste] > details[open] > summary > [aria-hidden="true"] {
+    transform: rotate(45deg) !important;
+    background: var(--acc) !important;
+    color: #fff !important;
+  }
+
+  /* LA RÉPONSE : le premier paragraphe en chapô, les suivants en texte
+     courant (dc.html, `blockV` : `lead` 500 16px/1.6, sinon
+     400 var(--pfs)/1.65 avec --pfs à 15px). */
+  [data-faq-liste] > details > summary ~ * {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 16px 6px !important;
+    font: 400 15px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  [data-faq-liste] > details > summary ~ * p {
+    margin: 0 0 12px !important;
+  }
+
+  [data-faq-liste] > details > summary + * > p:first-child {
+    font: 500 16px/1.6 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+
+  /* ---------------------------------------------- 3. les tuiles de chiffres */
+  :root [data-tuiles-titre] {
+    margin: 0 0 10px !important;
+    font: 600 11px var(--fb) !important;
+    letter-spacing: 0.14em !important;
+    line-height: normal !important;
+    text-transform: uppercase !important;
+    color: var(--acc) !important;
+    max-width: none !important;
+  }
+
+  [data-tuiles-chiffres] {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  [data-tuiles-chiffres] > * {
+    margin: 0 !important;
+    padding: 14px !important;
+    border: 1px solid var(--mm-filet) !important;
+    border-radius: var(--mm-rayon-tuile) !important;
+    background: var(--card) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
+  [data-tuiles-chiffres] > * > :first-child {
+    margin: 0 !important;
+    font: 600 21px/1.08 var(--ft) !important;
+    letter-spacing: -0.04em !important;
+    color: var(--acc) !important;
+  }
+
+  [data-tuiles-chiffres] > * > :not(:first-child) {
+    margin: 5px 0 0 !important;
+    font: 400 12.5px/1.45 var(--fb) !important;
+    letter-spacing: normal !important;
+    color: var(--ink1) !important;
+  }
+}
+
+@media (max-width: 880px) and (prefers-reduced-motion: reduce) {
+  details[data-carte-numerotee] > summary > [aria-hidden="true"],
+  [data-faq-liste] > details > summary > [aria-hidden="true"] {
+    transition: none !important;
+  }
+}
