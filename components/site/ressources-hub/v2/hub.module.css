@@ -1,0 +1,219 @@
+/* Hub /ressources/, maquette « Ressources v2 » : jetons et points de rupture
+   de sa feuille propre (`css-page.css`), repris tels quels. Les styles de
+   détail sont en ligne dans les composants, comme dans la maquette ; ce
+   fichier ne porte que ce qu'un style en ligne ne sait pas faire (survols,
+   points de rupture, animations). Les `!important` sont ceux de la maquette :
+   ils doivent battre les styles en ligne. */
+
+.rs {
+  --bg: #f1f2f4;
+  --bg2: #e7e8eb;
+  --card: #ffffff;
+  --glass: rgba(255, 255, 255, 0.68);
+  --gbd: rgba(255, 255, 255, 0.92);
+  --ink: #1c1b19;
+  --ink1: #3f3d3a;
+  --ink2: #67645f;
+  --ink3: #8c8882;
+  --line: rgba(28, 27, 25, 0.09);
+  --chip: rgba(28, 27, 25, 0.055);
+  --knob: #1c1b19;
+  --knobfg: #ffffff;
+  --accw: rgba(255, 124, 60, 0.12);
+  --acci: #9a400f;
+  --shadow: 0 30px 60px -42px rgba(28, 27, 25, 0.38);
+  position: relative;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--fb);
+  overflow-x: clip;
+  padding-bottom: 120px;
+}
+:root[data-theme="sombre"] .rs {
+  --bg: #121110;
+  --bg2: #1f1e1c;
+  --card: #1b1a18;
+  --glass: rgba(34, 33, 31, 0.66);
+  --gbd: rgba(255, 255, 255, 0.08);
+  --ink: #f4f3f1;
+  --ink1: #d8d5d0;
+  --ink2: #a9a59e;
+  --ink3: #86817a;
+  --line: rgba(255, 255, 255, 0.08);
+  --chip: rgba(255, 255, 255, 0.07);
+  --knob: #f4f3f1;
+  --knobfg: #1c1b19;
+  --accw: rgba(255, 124, 60, 0.16);
+  --acci: #ffb08a;
+  --shadow: 0 30px 60px -40px rgba(0, 0, 0, 0.85);
+}
+.rs a {
+  color: inherit;
+  text-decoration: none;
+}
+.rs a:hover {
+  color: #ff7c3c;
+}
+
+.dots {
+  background-image: radial-gradient(rgba(28, 27, 25, 0.075) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+:root[data-theme="sombre"] .dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+}
+
+/* Cartes : l'image grossit au survol, la carte de grille se soulève. */
+.card .img {
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.card:hover .img {
+  transform: scale(1.05);
+}
+.lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 1.5px rgba(255, 124, 60, 0.55), 0 30px 60px -40px rgba(28, 27, 25, 0.45) !important;
+}
+.ring:hover {
+  box-shadow: 0 0 0 1.5px rgba(255, 124, 60, 0.55) !important;
+}
+
+/* Survols des boutons de la maquette (`style-hover`). */
+.dim:hover {
+  filter: brightness(0.93);
+  color: #fff !important;
+}
+.chipHover:hover {
+  background: var(--chip) !important;
+}
+.dashed:hover {
+  border-color: #ff7c3c !important;
+  color: #ff7c3c !important;
+}
+.soft:hover {
+  opacity: 0.88;
+  color: var(--knobfg) !important;
+}
+
+.scroll {
+  scrollbar-width: none;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+.sc > * {
+  flex-shrink: 0;
+}
+.ftoggle {
+  display: none;
+}
+
+@keyframes rsIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes rsFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.in {
+  animation: rsIn 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.fade {
+  animation: rsFade 0.3s ease both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .in,
+  .fade {
+    animation: none;
+  }
+  .card .img,
+  .lift {
+    transition: none !important;
+  }
+}
+
+/* Grille avant le premier calcul du navigateur (rendu serveur) : la règle
+   de la maquette, approchée par la largeur de la fenêtre. Le composant pose
+   ensuite le nombre exact de colonnes. */
+.grilleRepli {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 1255px) {
+  .grilleRepli {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .grilleRepli {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 1100px) {
+  .app {
+    grid-template-columns: 240px minmax(0, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+@media (max-width: 1000px) {
+  .bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .bento > * {
+    grid-column: span 2 !important;
+    grid-row: auto !important;
+  }
+  .deuxCol {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .collant {
+    position: static !important;
+  }
+}
+@media (max-width: 760px) {
+  .app {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 18px !important;
+  }
+  .side {
+    position: relative !important;
+    top: auto !important;
+  }
+  .sc {
+    max-height: none !important;
+  }
+  .ftoggle {
+    display: flex !important;
+  }
+  .ferme {
+    display: none !important;
+  }
+  .kbd,
+  .sideCta {
+    display: none !important;
+  }
+}
+@media (max-width: 640px) {
+  .app {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+  .hcard {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .big {
+    min-height: 460px !important;
+  }
+}
