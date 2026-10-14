@@ -180,6 +180,7 @@ function Formulaire({ onEnvoye, retour }: { onEnvoye: () => void; retour: boolea
   const [cv, setCv] = useState("");
   const [erreur, setErreur] = useState("");
   const [envoi, setEnvoi] = useState(false);
+  const enCours = useRef(false);
 
   const choisit = (r: string) => {
     setErreur("");
@@ -193,7 +194,9 @@ function Formulaire({ onEnvoye, retour }: { onEnvoye: () => void; retour: boolea
 
   async function envoie(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (envoi) return;
+    /* Verrou synchrone : l'état `envoi` arrive un rendu trop tard, et le
+       bouton n'est plus `disabled` (focus gardé), deux envois partaient. */
+    if (enCours.current) return;
     const f = new FormData(e.currentTarget);
     const lis = (n: string) => String(f.get(n) ?? "").trim();
     const v = { nom: lis("nom"), tel: lis("tel"), mail: lis("mail"), regions, trajet: lis("trajet"), delai: lis("delai"), exp: lis("exp"), sal: lis("sal") };
@@ -203,6 +206,7 @@ function Formulaire({ onEnvoye, retour }: { onEnvoye: () => void; retour: boolea
       return;
     }
     const [prenom, ...reste] = v.nom.split(/\s+/);
+    enCours.current = true;
     setEnvoi(true);
     setErreur("");
     try {
@@ -235,6 +239,7 @@ function Formulaire({ onEnvoye, retour }: { onEnvoye: () => void; retour: boolea
     } catch {
       setErreur(SECOURS);
     } finally {
+      enCours.current = false;
       setEnvoi(false);
     }
   }
