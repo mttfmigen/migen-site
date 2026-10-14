@@ -14,6 +14,10 @@ import { RangeeDecrite, RangeeOffre, SurTitre } from "./blocs";
  * Ressources v2) : à gauche les formats de son espace « Entreprises », dans
  * son ordre ; au centre ses trois articles « À la une » ; à droite les
  * situations et le lien vers le hub.
+ *
+ * Le sur-titre de gauche reste « Par format » : c'est le mot de l'autonome,
+ * qui dessine ce panneau, et le hub titre la même colonne « Format ». Le
+ * renommer « Entreprises » retirait un texte servi (relecture du 14/10).
  */
 export default function PanneauRessources() {
   return (
@@ -26,7 +30,7 @@ export default function PanneauRessources() {
       }}
     >
       <div>
-        <SurTitre marge={14}>Entreprises</SurTitre>
+        <SurTitre marge={14}>Par format</SurTitre>
         <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 1 }}>
           {RES_FORMATS.map((format) => (
             <RangeeDecrite key={format.libelle} {...format} />
