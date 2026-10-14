@@ -1,5 +1,6 @@
 import PanneauFormulaire from "@/components/site/offre/PanneauFormulaire";
 
+import stylesVille from "./PageVille.module.css";
 import RepliFormulaireMobile from "./RepliFormulaireMobile";
 
 /**
@@ -25,7 +26,9 @@ export interface PanneauHerosRepliableProps {
 
 export default function PanneauHerosRepliable({ formulaire, titre, pastille }: PanneauHerosRepliableProps) {
   return (
-    <div style={{ position: "relative" }}>
+    /* `panneauHeros` : masqué au téléphone tant qu'on ne le vise pas
+       (`PageVille.module.css`) ; la maquette n'a pas de formulaire en tête. */
+    <div className={stylesVille.panneauHeros} style={{ position: "relative" }}>
       <RepliFormulaireMobile etiquette={titre}>
         <PanneauFormulaire id="besoin" formulaire={`${formulaire}-hero`} titre={titre} pastille={pastille} />
       </RepliFormulaireMobile>

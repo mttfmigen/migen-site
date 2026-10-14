@@ -3,6 +3,14 @@ import Link from "next/link";
 
 import type { CSSProperties } from "react";
 
+import {
+  ActionsMobile,
+  ALireAussi,
+  FilMobile,
+  SommaireMobile,
+  SurtitreMobile,
+  type EntreeSommaire,
+} from "./HautMobile";
 import mobile from "./mobile-apropos.module.css";
 import styles from "./Ouverture.module.css";
 
@@ -27,10 +35,27 @@ const BOUTON: CSSProperties = {
   font: "600 15px var(--fb)",
   whiteSpace: "nowrap",
 };
-export default function Ouverture() {
+/** Le nom de la page : notre sur-titre, le titre de la maquette mobile. */
+const NOM_PAGE = "Nous connaître";
+
+/* dc.html L485 : 1 582 mots dans `mobile-native-data.js`, / 230, arrondi. */
+const MINUTES_DE_LECTURE = 7;
+
+/**
+ * SUR TÉLÉPHONE, LE HAUT DE LA MAQUETTE MOBILE V2 (`HautMobile.tsx`) : fil,
+ * photo, sur-titre, nom de la page, « Décrire mon besoin » et le téléphone, le
+ * sommaire, puis notre H1 en première phrase du chapô. Les pièces ajoutées
+ * sont `data-mobile-seulement`, les autres ne changent que de dessin sous
+ * 881 px : au bureau, rien ne bouge.
+ */
+export default function Ouverture({
+  sommaire = [],
+}: {
+  sommaire?: readonly EntreeSommaire[];
+}) {
   return (
     <section
-      className={mobile.herosCompact}
+      className={`${mobile.herosCompact} ${mobile.herosMaquette} ${mobile.herosPhoto}`}
       style={{
         maxWidth: 1200,
         margin: "0 auto",
@@ -46,8 +71,11 @@ export default function Ouverture() {
           alignItems: "start",
         }}
       >
-        <div>
+        <div className={mobile.colonneTexte}>
+          <FilMobile page={NOM_PAGE} />
+          <SurtitreMobile minutes={MINUTES_DE_LECTURE} />
           <div
+            className={mobile.titreMobile}
             style={{
               font: "600 11.5px var(--fb)",
               letterSpacing: ".14em",
@@ -56,9 +84,12 @@ export default function Ouverture() {
               marginBottom: 18,
             }}
           >
-            Nous connaître
+            {NOM_PAGE}
           </div>
+          <ActionsMobile />
+          <SommaireMobile entrees={sommaire} />
           <h1
+            className={mobile.h1Lead}
             style={{
               font: "600 calc(clamp(36px,4.2vw,62px) * var(--ts))/1.03 var(--ft)",
               letterSpacing: "-.045em",
@@ -71,6 +102,7 @@ export default function Ouverture() {
             Un seul métier&nbsp;: technicien de maintenance.
           </h1>
           <p
+            className={mobile.chapoMobile}
             style={{
               font: "400 17.5px/1.65 var(--fb)",
               color: "var(--ink2)",
@@ -106,7 +138,14 @@ export default function Ouverture() {
             démarrent. C&rsquo;est une niche, et c&rsquo;est ce qui nous permet
             d&rsquo;avoir des process rodés là où les généralistes improvisent.
           </p>
+          {/* dc.html, page /a-propos/nous-connaitre/ : la devise est un
+              paragraphe sous le chapô, pas une légende sur la photo. Au
+              téléphone seulement ; au bureau, elle reste la légende. */}
+          <p data-mobile-seulement="" className={mobile.chapoMobile}>
+            Innovation, performance, impact.
+          </p>
           <div
+            className={mobile.liensMobile}
             style={{
               display: "flex",
               gap: 12,
@@ -114,6 +153,7 @@ export default function Ouverture() {
               flexWrap: "wrap",
             }}
           >
+            <ALireAussi />
             <Link
               href="/a-propos/equipe/"
               className={styles.boutonPrincipal}
@@ -143,7 +183,7 @@ export default function Ouverture() {
           </div>
         </div>
         <div
-          className={styles.photo}
+          className={`${styles.photo} ${mobile.photoMobile}`}
           style={{
             borderRadius: "var(--rad)",
             overflow: "hidden",
@@ -152,7 +192,22 @@ export default function Ouverture() {
             background: "var(--ph)",
           }}
         >
+          {/* LA PHOTO DE TÊTE DU TÉLÉPHONE est celle de la maquette mobile v2
+              (dc.html L225, `FIMG["a-propos"]`, team-grind-front), sans
+              légende. Celle du bureau, son dégradé et sa légende s'effacent
+              sous 881 px (`.masqueMobile`) ; au-dessus, la photo du
+              téléphone n'existe pas. */}
           <Image
+            data-mobile-seulement=""
+            src="/assets/web/team-grind-front.jpg"
+            alt="Technicien de maintenance migen en intervention"
+            fill
+            priority
+            sizes="(max-width: 880px) 100vw, 1px"
+            style={{ objectFit: "cover", filter: "saturate(var(--sat)) contrast(1.05)" }}
+          />
+          <Image
+            className={mobile.masqueMobile}
             src="/assets/web/team-grind-sparks.jpg"
             alt="Technicien de maintenance migen en intervention"
             fill
@@ -164,6 +219,7 @@ export default function Ouverture() {
             }}
           />
           <div
+            className={mobile.masqueMobile}
             style={{
               position: "absolute",
               inset: 0,
@@ -172,6 +228,7 @@ export default function Ouverture() {
             }}
           />
           <div
+            className={mobile.masqueMobile}
             style={{
               position: "absolute",
               bottom: 0,

@@ -24,6 +24,7 @@
  * `docs/NOUS-CONNAITRE-ARBITRAGES.md`. Ne pas la réécrire sans son arbitrage.
  */
 
+import type { EntreeSommaire } from "./HautMobile";
 import SectionRepliee from "./SectionRepliee";
 
 /* Les deux étiquettes, écrites une fois : chaque carte porte la sienne, et la
@@ -46,9 +47,21 @@ const PAS_FAIT: readonly string[] = [
   "De la sous-traitance en cascade sur nos périmètres contractuels",
 ];
 
+const TITRE_CARTE = `${FAIT_TITRE} · ${PAS_FAIT_TITRE}`;
+
+/** La carte 07 : la maquette la résume par la première ligne de la liste. */
+export const SOMMAIRE_PERIMETRE: EntreeSommaire = {
+  id: "ce-que-nous-faisons",
+  titre: TITRE_CARTE,
+};
+
 export default function PerimetreOuiNon() {
   return (
-    <SectionRepliee titre={`${FAIT_TITRE} · ${PAS_FAIT_TITRE}`}>
+    <SectionRepliee
+      id={SOMMAIRE_PERIMETRE.id}
+      titre={TITRE_CARTE}
+      resume={FAIT[0]}
+    >
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div

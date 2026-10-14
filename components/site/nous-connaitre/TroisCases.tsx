@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 
-import { resumeDe } from "@/components/site/blocs/resume-de-section";
 
+import type { EntreeSommaire } from "./HautMobile";
 import SectionRepliee from "./SectionRepliee";
 
 /**
@@ -51,12 +51,23 @@ const SURTITRE_TEXTE = "Notre modèle";
 const TITRE_TEXTE =
   "Le marché se divise en trois. Nous sommes seuls dans la troisième case.";
 
+/**
+ * LA CARTE 04 DE LA MAQUETTE MOBILE V2 : « Notre modèle » en titre, et la
+ * phrase « Le marché se divise en trois… » en résumé (`mobile-native-data.js`,
+ * `## Notre modèle` suivi de ce paragraphe). Notre titre de bureau n'est pas
+ * repris par l'étiquette ouverte : il reste visible dans la carte.
+ */
+export const SOMMAIRE_MODELE: EntreeSommaire = {
+  id: "notre-modele",
+  titre: SURTITRE_TEXTE,
+};
+
 export default function TroisCases() {
   return (
     <SectionRepliee
-      kicker={SURTITRE_TEXTE}
-      titre={TITRE_TEXTE}
-      resume={resumeDe(CASES.map((c) => c.titre))}
+      id={SOMMAIRE_MODELE.id}
+      titre={SURTITRE_TEXTE}
+      resume={TITRE_TEXTE}
     >
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
@@ -71,8 +82,9 @@ export default function TroisCases() {
               marginBottom: 34,
             }}
           >
-            <div data-titre-bureau="">
+            <div>
               <div
+                data-titre-bureau=""
                 style={{
                   font: "600 11.5px var(--fb)",
                   letterSpacing: ".14em",

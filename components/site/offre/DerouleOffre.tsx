@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
@@ -50,6 +50,15 @@ export interface ProprietesDerouleOffre {
    * sur les gabarits qui la montent sans le demander.
    */
   pli?: Pli;
+  /** En tête du corps de la carte, au téléphone : voir `PointsOffre.avant`. */
+  avant?: ReactNode;
+  /** En fin du corps de la carte, au téléphone : voir `PointsOffre.apres`. */
+  apres?: ReactNode;
+  /**
+   * Le résumé de la carte repliée, voir `PointsOffre.resume`. `null` : aucun
+   * résumé, comme la maquette quand la section ne porte que ses étapes.
+   */
+  resume?: string | null;
 }
 
 const CARTE_ENTETE: CSSProperties = {
@@ -124,6 +133,9 @@ export default function DerouleOffre({
   section,
   titre = "Un appel. Un plan. Une ligne qui repart.",
   pli,
+  avant,
+  apres,
+  resume,
 }: ProprietesDerouleOffre) {
   // La grille SE DÉDUIT DU NOMBRE D'ÉTAPES, relevé sur les 15 captures du
   // gabarit 03 (08/10) : 3 colonnes jusqu'à 6 étapes, 4 au-delà ; la carte
@@ -136,6 +148,7 @@ export default function DerouleOffre({
   const tuiles = n % colonnes !== 0;
   const grille = (
         <div
+          data-mm-frise=""
           className="mg-rmulti"
           style={{
             display: "grid",
@@ -144,6 +157,7 @@ export default function DerouleOffre({
           }}
         >
           <div
+            data-mm-entete-carte=""
             style={
               tuiles
                 ? { ...CARTE_ENTETE, gridColumn: "auto", minHeight: 0 }
@@ -151,10 +165,10 @@ export default function DerouleOffre({
             }
           >
             <div style={{ position: "relative" }}>
-              <div style={{ ...SURTITRE, marginBottom: 14 }}>
+              <div data-mm-surtitre="" style={{ ...SURTITRE, marginBottom: 14 }}>
                 Notre méthode
               </div>
-              <h2 style={TITRE}>{titre}</h2>
+              <h2 data-mm-lead="" style={TITRE}>{titre}</h2>
             </div>
             <div
               style={{
@@ -169,6 +183,7 @@ export default function DerouleOffre({
             >
               <span style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
                 <span
+                  data-mm-compte=""
                   style={{
                     font: "600 40px/1 var(--ft)",
                     letterSpacing: "-.05em",
@@ -188,10 +203,11 @@ export default function DerouleOffre({
           </div>
 
           {section.etapes.map((etape, rang) => (
-            <div key={etape.titre} style={CARTE_ETAPE}>
+            <div key={etape.titre} data-mm-etape="" style={CARTE_ETAPE}>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <span style={BADGE}>{numerote(rang)}</span>
+                <span data-mm-num="" style={BADGE}>{numerote(rang)}</span>
                 <span
+                  data-mm-filet=""
                   aria-hidden="true"
                   style={{ flex: "1 1 0%", height: 1, background: "var(--line)" }}
                 />
@@ -210,15 +226,15 @@ export default function DerouleOffre({
                   `continueLeTitre` qui la porte.
                   Porte : scripts/verifie-suites-de-titre.mjs */}
               {etape.texte && continueLeTitre(etape.texte) ? (
-                <p className={styles.texteAvecLiens} style={TEXTE_ETAPE}>
+                <p data-mm-etape-texte="" className={styles.texteAvecLiens} style={TEXTE_ETAPE}>
                   <span style={{ ...TITRE_ETAPE, display: "inline" }}>{etape.titre}</span>
                   <TexteRiche texte={etape.texte} />
                 </p>
               ) : (
                 <>
-                  <div style={TITRE_ETAPE}>{etape.titre}</div>
+                  <div data-mm-etape-titre="" style={TITRE_ETAPE}>{etape.titre}</div>
                   {etape.texte ? (
-                    <p className={styles.texteAvecLiens} style={TEXTE_ETAPE}>
+                    <p data-mm-etape-texte="" className={styles.texteAvecLiens} style={TEXTE_ETAPE}>
                       <TexteRiche texte={majusculeInitiale(etape.texte)} />
                     </p>
                   ) : null}
@@ -235,9 +251,11 @@ export default function DerouleOffre({
         {/* SE REPLIE AU TÉLÉPHONE quand le gabarit le demande, motif « Blocs
             communs (pliables) » de la maquette mobile. Mesure du 14/10 à
             390 px : 1 949 px déplié sur /offres/residence/.
-            LA BASCULE PORTE UNE ÉTIQUETTE, PAS LE TITRE : le surtitre et le
-            `<h2>` de la capture restent dans leur carte d'en-tête, première
-            cellule de la grille. Au-dessus de 880 px la bascule entière est
+            LA BASCULE PORTE LE TITRE DE CARTE DE LA MAQUETTE (« 03 Le
+            déroulé », identique sur toutes les pages qui portent ce bloc) :
+            le surtitre et le `<h2>` de la capture restent dans leur carte
+            d'en-tête, rendue en texte au téléphone, et les étapes y passent
+            en frise (`data-mm-frise`). Au-dessus de 880 px la bascule entière est
             retirée (`.blocPliablePartage`), elle ne laisse donc aucun arrêt de
             tabulation muet. Le résumé suit la règle de la maquette mobile :
             les intitulés des étapes joints par « · », jamais une phrase
@@ -245,10 +263,16 @@ export default function DerouleOffre({
         {pli ? (
           <SectionPliableMobile
             toujoursOuvert={pli === "ouvert"}
-            enTete={<EtiquettePli surtitre="Notre méthode" titre={titre} />}
-            resume={resumeDe(section.etapes.map((etape) => etape.titre))}
+            enTete={<EtiquettePli titre="Le déroulé" />}
+            resume={
+              resume === null
+                ? undefined
+                : (resume ?? resumeDe(section.etapes.map((etape) => etape.titre)))
+            }
           >
+            {avant}
             {grille}
+            {apres}
           </SectionPliableMobile>
         ) : (
           grille

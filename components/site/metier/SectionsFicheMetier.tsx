@@ -50,6 +50,7 @@ function Titre2({
   const [taille, interligne] = echelle.split("/");
   return (
     <h2
+      data-mc-titre-section=""
       style={{
         font: `600 calc(${taille} * var(--ts))/${interligne} var(--ft)`,
         letterSpacing: interlettre,
@@ -78,6 +79,7 @@ function Intro({
 }) {
   return (
     <p
+      data-mc-intro=""
       className={styles.texteLie}
       style={{
         font: `400 ${police} var(--fb)`,
@@ -96,7 +98,7 @@ function Intro({
 function Bande({ bande }: { bande?: BandeFiche }) {
   if (!bande?.texte) return null;
   return (
-    <div style={{ ...LARGEUR, margin: "28px auto 0" }}>
+    <div data-mc-bande="" style={{ ...LARGEUR, margin: "28px auto 0" }}>
       <div
         style={{
           display: "flex",
@@ -130,8 +132,12 @@ function Bande({ bande }: { bande?: BandeFiche }) {
   );
 }
 
-/** Le bouton orange fixe du gabarit, vers le formulaire de la page. */
-export function BoutonPostuler() {
+/**
+ * Le bouton orange fixe du gabarit, vers le formulaire de la page.
+ * `suiteMobile` : la fin de libellé que la maquette mobile v2 ajoute sous
+ * 881 px (« Postuler chez Migen », dc.html L412), masquée au-dessus.
+ */
+export function BoutonPostuler({ suiteMobile }: { suiteMobile?: string } = {}) {
   return (
     <a
       href="#postuler"
@@ -150,6 +156,7 @@ export function BoutonPostuler() {
       }}
     >
       Postuler
+      {suiteMobile ? <span data-mobile-seulement="">{suiteMobile}</span> : null}
     </a>
   );
 }
@@ -168,9 +175,14 @@ function Enveloppe({ children, fin = false }: { children: ReactNode; fin?: boole
 function Chiffres({ items }: { items: { valeur: string; texte: string }[] }) {
   if (!items.length) return null;
   return (
-    <section className={styles.sectionChiffres} style={{ ...LARGEUR, padding: "84px 40px 0" }}>
+    <section
+      data-mc-chiffres=""
+      className={styles.sectionChiffres}
+      style={{ ...LARGEUR, padding: "84px 40px 0" }}
+    >
       <div
         data-reveal=""
+        data-tuiles-chiffres=""
         className={styles.stats}
         style={{
           display: "grid",
@@ -230,6 +242,7 @@ function Bento({
   return (
     <div style={LARGEUR}>
       <div
+        data-mc-entete=""
         className={styles.deuxColonnes}
         style={{
           display: "grid",
@@ -240,7 +253,7 @@ function Bento({
         }}
       >
         <div>
-          <div style={SURTITRE}>{surtitre}</div>
+          <div data-mc-titre-section="" style={SURTITRE}>{surtitre}</div>
           <Titre2 texte={titre} echelle="clamp(28px,3vw,42px)/1.08" largeur="18ch" />
         </div>
         <div>
@@ -250,6 +263,7 @@ function Bento({
         </div>
       </div>
       <div
+        data-mc-cartes=""
         className={styles.bento}
         style={{
           display: "grid",
@@ -266,6 +280,7 @@ function Bento({
           return (
             <div
               key={carte.titre}
+              data-mc-carte=""
               className={w2 ? styles.w2 : undefined}
               style={{
                 gridColumn: `span ${travee}`,
@@ -281,6 +296,7 @@ function Bento({
             >
               {sombre ? (
                 <div
+                  data-mc-deco=""
                   style={{
                     position: "absolute",
                     width: 360,
@@ -293,8 +309,9 @@ function Bento({
                   }}
                 />
               ) : null}
-              <div style={{ position: "relative" }}>
+              <div data-mc-carte-corps="" style={{ position: "relative" }}>
                 <span
+                  data-mc-num=""
                   style={{
                     font: `600 11px ${MONO}`,
                     color: "var(--acc)",
@@ -305,6 +322,7 @@ function Bento({
                   {ordinal(i)}
                 </span>
                 <div
+                  data-mc-carte-titre=""
                   style={{
                     font: `600 ${sombre ? "21px" : "17px"}/1.3 var(--ft)`,
                     letterSpacing: "-.025em",
@@ -315,6 +333,7 @@ function Bento({
                   {carte.titre}
                 </div>
                 <div
+                  data-mc-carte-texte=""
                   className={styles.texteLie}
                   style={{
                     font: `400 ${sombre ? "15px" : "14.5px"}/1.6 var(--fb)`,
@@ -348,8 +367,8 @@ function Liste({
   if (!cartes.length) return null;
   return (
     <div style={LARGEUR}>
-      <div style={{ maxWidth: 720, marginBottom: 30 }}>
-        <div style={SURTITRE}>{surtitre}</div>
+      <div data-mc-entete="" style={{ maxWidth: 720, marginBottom: 30 }}>
+        <div data-mc-titre-section="" style={SURTITRE}>{surtitre}</div>
         <Titre2
           texte={titre}
           echelle="clamp(28px,3vw,42px)/1.08"
@@ -374,6 +393,7 @@ function Liste({
           les cartes 04 et 06 portaient donc chacune près de 200 px de vide
           sous leur texte. Mehdi, le 13/10 : « il est mal agencé ». */}
       <div
+        data-mc-cartes=""
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,300px),1fr))",
@@ -384,6 +404,7 @@ function Liste({
         {cartes.map((carte, i) => (
           <div
             key={carte.titre}
+            data-mc-carte=""
             style={{
               ...VERRE,
               padding: "22px 24px",
@@ -394,6 +415,7 @@ function Liste({
             }}
           >
             <span
+              data-mc-num=""
               style={{
                 width: 36,
                 height: 36,
@@ -406,8 +428,9 @@ function Liste({
             >
               {ordinal(i)}
             </span>
-            <div>
+            <div data-mc-carte-corps="">
               <div
+                data-mc-carte-titre=""
                 style={{
                   font: "600 16.5px/1.4 var(--ft)",
                   letterSpacing: "-.02em",
@@ -417,6 +440,7 @@ function Liste({
                 {carte.titre}
               </div>
               <div
+                data-mc-carte-texte=""
                 className={styles.texteLie}
                 style={{
                   font: "400 14.5px/1.6 var(--fb)",
@@ -450,8 +474,8 @@ function Etapes({
   if (!etapes.length) return null;
   return (
     <div style={LARGEUR}>
-      <div style={{ maxWidth: 720, marginBottom: 34 }}>
-        <div style={SURTITRE}>{surtitre}</div>
+      <div data-mc-entete="" style={{ maxWidth: 720, marginBottom: 34 }}>
+        <div data-mc-titre-section="" style={SURTITRE}>{surtitre}</div>
         <Titre2
           texte={titre}
           echelle="clamp(28px,3vw,42px)/1.08"
@@ -463,6 +487,7 @@ function Etapes({
         ))}
       </div>
       <div
+        data-mc-frise=""
         className={styles.etapes}
         style={{
           display: "grid",
@@ -473,6 +498,7 @@ function Etapes({
         {etapes.map((etape, i) => (
           <div
             key={etape.titre}
+            data-mc-etape=""
             style={{
               ...VERRE,
               borderRadius: 24,
@@ -483,6 +509,7 @@ function Etapes({
             }}
           >
             <div
+              data-mc-etape-tete=""
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -505,6 +532,7 @@ function Etapes({
                 {ordinal(i)}
               </span>
               <span
+                data-mc-deco=""
                 style={{
                   flex: "1 1 0%",
                   height: 2,
@@ -515,6 +543,7 @@ function Etapes({
               />
             </div>
             <div
+              data-mc-etape-titre=""
               style={{
                 font: "600 16.5px/1.35 var(--ft)",
                 letterSpacing: "-.02em",
@@ -524,6 +553,7 @@ function Etapes({
               {etape.titre}
             </div>
             <div
+              data-mc-etape-texte=""
               className={styles.texteLie}
               style={{ font: "400 14px/1.6 var(--fb)", color: "var(--ink2)" }}
             >
@@ -553,6 +583,7 @@ function Duo({
   return (
     <div style={LARGEUR}>
       <div
+        data-mc-pile=""
         className={styles.deuxColonnes}
         style={{
           display: "grid",
@@ -561,8 +592,8 @@ function Duo({
           alignItems: "start",
         }}
       >
-        <div className={styles.colleEnHaut} style={{ position: "sticky", top: 110 }}>
-          <div style={SURTITRE}>{surtitre}</div>
+        <div data-mc-entete="" className={styles.colleEnHaut} style={{ position: "sticky", top: 110 }}>
+          <div data-mc-titre-section="" style={SURTITRE}>{surtitre}</div>
           <Titre2
             texte={titre}
             echelle="clamp(28px,3vw,42px)/1.08"
@@ -586,6 +617,7 @@ function Duo({
             muette à cette largeur ; la maquette MOBILE y répond par une ou
             deux colonnes et un rembourrage de 14 à 18 px. */}
         <div
+          data-mc-cartes=""
           className={styles.duoCartes}
           style={{
             display: "grid",
@@ -596,6 +628,7 @@ function Duo({
           {cartes.map((carte, i) => (
             <div
               key={carte.titre}
+              data-mc-carte=""
               style={{
                 ...VERRE,
                 padding: "24px 24px 22px",
@@ -605,6 +638,7 @@ function Duo({
               }}
             >
               <span
+                data-mc-num=""
                 style={{
                   font: `600 11px ${MONO}`,
                   color: "var(--acc)",
@@ -614,6 +648,7 @@ function Duo({
                 {ordinal(i)}
               </span>
               <div
+                data-mc-carte-titre=""
                 style={{
                   font: "600 18px/1.3 var(--ft)",
                   letterSpacing: "-.025em",
@@ -624,6 +659,7 @@ function Duo({
                 {carte.titre}
               </div>
               <div
+                data-mc-carte-texte=""
                 className={styles.texteLie}
                 style={{ font: "400 14.5px/1.6 var(--fb)", color: "var(--ink2)" }}
               >
@@ -666,6 +702,7 @@ function Tableau({
   return (
     // `ck-2` dans la maquette : sous 900 px, l'écart passe à 30 px.
     <div
+      data-mc-pile=""
       className={styles.deuxColonnes}
       style={{
         ...LARGEUR,
@@ -676,7 +713,7 @@ function Tableau({
       }}
     >
       <div>
-        <div style={SURTITRE}>{surtitre}</div>
+        <div data-mc-titre-section="" style={SURTITRE}>{surtitre}</div>
         <Titre2
           texte={titre}
           echelle="clamp(26px,2.6vw,36px)/1.12"
@@ -684,14 +721,14 @@ function Tableau({
           largeur="26ch"
         />
       </div>
-      <div>
+      <div data-mc-tableau-corps="">
         {intros?.map((t) => (
           <Intro key={t} texte={t} police="16px/1.7" largeur="70ch" />
         ))}
         <div style={{ marginTop: 8 }}>
-          <div style={{ ...VERRE, padding: "6px 28px" }}>
+          <div data-mc-tableau="" style={{ ...VERRE, padding: "6px 28px" }}>
             {entetes ? (
-              <div style={{ ...RANG, padding: "16px 0 12px" }}
+              <div data-mc-tableau-tete="" style={{ ...RANG, padding: "16px 0 12px" }}
               >
                 <span style={{ ...ENTETE, color: "var(--acc)" }}>
                   {entetes.gauche}
@@ -704,6 +741,7 @@ function Tableau({
             {lignes.map((ligne) => (
               <div
                 key={ligne.gauche + ligne.droite}
+                data-mc-tableau-ligne=""
                 style={{
                   ...RANG,
                   padding: "15px 0",
@@ -716,6 +754,7 @@ function Tableau({
                   {ligne.gauche}
                 </span>
                 <span
+                  data-mc-libelle={entetes?.droite || undefined}
                   className={styles.texteLie}
                   style={{
                     font: "400 14.5px/1.55 var(--fb)",
@@ -752,7 +791,7 @@ function Grille({
   const CASE: CSSProperties = { textAlign: "left", padding: "16px 20px" };
   return (
     <div style={LARGEUR}>
-      <div style={SURTITRE}>{surtitre}</div>
+      <div data-mc-titre-section="" style={SURTITRE}>{surtitre}</div>
       <Titre2
         texte={titre}
         echelle="clamp(28px,3vw,42px)/1.08"
@@ -763,6 +802,7 @@ function Grille({
         <Intro key={t} texte={t} police="16px/1.7" largeur="64ch" />
       ))}
       <div
+        data-mc-grille=""
         style={{ ...VERRE, overflowX: "auto", marginTop: 14 }}
         tabIndex={0}
         role="region"
@@ -794,6 +834,7 @@ function Grille({
                 {ligne.map((case_, j) => (
                   <td
                     key={j}
+                    data-mc-libelle={j > 0 ? colonnes[j] || undefined : undefined}
                     className={styles.texteLie}
                     style={{
                       padding: "14px 20px",
@@ -830,6 +871,7 @@ function Encart({
   return (
     <div style={LARGEUR}>
       <div
+        data-mc-encart=""
         className={styles.deuxColonnes}
         style={{
           ...VERRE,
@@ -842,7 +884,7 @@ function Encart({
         }}
       >
         <div>
-          <div style={{ ...SURTITRE, marginBottom: 14 }}>{surtitre}</div>
+          <div data-mc-titre-section="" style={{ ...SURTITRE, marginBottom: 14 }}>{surtitre}</div>
           <Titre2
             texte={titre}
             echelle="clamp(24px,2.4vw,32px)/1.12"

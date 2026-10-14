@@ -5,6 +5,10 @@ import type { CSSProperties } from "react";
 import { LARGEUR, SECTION, SURTITRE } from "@/components/site/blocs/habillage";
 import type { LienPageLiee } from "@/types/offre";
 
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+
+import EtiquettePli from "./EtiquettePli";
 import { cibleSure } from "./LiensOffre";
 
 import styles from "./PageOffre.module.css";
@@ -194,10 +198,21 @@ export default function PagesLiees({ pages, titre }: ProprietesPagesLiees) {
   const [phare, ...suite] = retenues;
 
   return (
-    <section style={SECTION}>
+    /* `data-mobile-apres-sections` et sans numéro : absente de la maquette
+       mobile v2, la carte « Par où continuer ? » passe au téléphone après ses
+       sections au lieu de prendre le rang « 06 » ou « 07 ». */
+    <section data-mobile-apres-sections="" style={SECTION}>
       <div style={LARGEUR}>
+        {/* Replié au téléphone, comme son jumeau « Nos autres offres »
+            (`MaillageOffres`) : étiquette = sur-titre et H2 de bureau, dont le
+            doublon du corps s'efface sous 880 px. */}
+        <SectionPliableMobile
+          numero={false}
+          enTete={<EtiquettePli surtitre="Pour aller plus loin" titre={titre} />}
+          resume={resumeDe(retenues.map((page) => page.titre))}
+        >
         <div style={ENTETE}>
-          <div>
+          <div data-doublon-mobile="">
             <div style={{ ...SURTITRE, marginBottom: 14 }}>
               Pour aller plus loin
             </div>
@@ -286,6 +301,7 @@ export default function PagesLiees({ pages, titre }: ProprietesPagesLiees) {
             ))}
           </div>
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

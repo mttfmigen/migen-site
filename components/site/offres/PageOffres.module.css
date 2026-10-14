@@ -61,10 +61,41 @@
    `/implantations/`, que ces règles raccourcissaient de 1 916 px à 390 px
    (mesuré le 14/10). `.hubOffres` n'est posée que par `PageOffres`. */
 @media (max-width: 880px) {
+  /* ZÉRO, comme `PageOffre` (`.gabaritOffre`, 14/10 au soir) : ce sont les
+     cartes qui portent leurs 12 px. À 40 px, chaque carte repliée du hub
+     était séparée de la suivante par 52 px. */
   .hubOffres {
-    --sec: 40px;
+    --sec: 0px !important;
   }
-  .hubOffres [data-bande-appel] {
+  .hubOffres [data-bande-appel],
+  .hubOffres [data-appel-offre] {
+    display: none;
+  }
+  .hubOffres [data-appel-final] {
+    padding: 12px 18px 0 !important;
+  }
+}
+
+/* La photo du problème monte en tête de page au téléphone (`HerosMobile`) :
+   déplacée, pas doublée. */
+@media (max-width: 880px) {
+  .hubOffres[data-heros-photo-source="probleme"] [data-photo-probleme] {
+    display: none;
+  }
+}
+
+/* LE HAUT DE PAGE DE LA MAQUETTE MOBILE V2 SUR LE HUB (15/10) : la liste de
+   la rubrique sous les boutons, avant le chapô (dc.html L125, `kidsTop`), et
+   le formulaire complet replié derrière la carte « Être rappelé », comme sur
+   `PageOffre` (`offre/PageOffre.module.css`, où sa raison est écrite).
+   Sous 881 px seulement. */
+@media (max-width: 880px) {
+  .hubOffres [data-heros-colonne] > [data-pastilles-cocon] {
+    order: 2;
+    margin: 20px 0 0 !important;
+  }
+
+  .hubOffres section[id="etre-rappele"] ~ [id="mgx-form"]:not(:target):not(:has(details[open][data-monte])) {
     display: none;
   }
 }

@@ -1,4 +1,5 @@
 import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
 import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 import { ENGAGEMENTS } from "./equipe-donnees";
@@ -8,10 +9,15 @@ import { LARGEUR, SECTION, SURTITRE, TEXTE_CARTE, TITRE2, VERRE } from "./habill
 const SURTITRE_TEXTE = "Nos engagements";
 const TITRE_TEXTE = "Des engagements tenus, vérifiables mission après mission.";
 
+/** Carte 06 du téléphone : son numéro suit l'ordre de la maquette (`rang`). */
+export const SOMMAIRE_ENGAGEMENTS: EntreeSommaire = { id: "engagements", titre: SURTITRE_TEXTE };
+
 /** « Nos engagements », trois cartes numérotées. Maquette lignes 5954 à 5955. */
 export default function EngagementsEquipe() {
   return (
     <SectionRepliee
+      id={SOMMAIRE_ENGAGEMENTS.id}
+      rang={6}
       kicker={SURTITRE_TEXTE}
       titre={TITRE_TEXTE}
       resume={resumeDe(ENGAGEMENTS.map((e) => e.titre))}

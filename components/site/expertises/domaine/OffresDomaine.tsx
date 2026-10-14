@@ -42,6 +42,10 @@ interface CarteOffreDomaine {
   photo: string;
 }
 
+/** La photo du panneau « Nos offres », rendue sur toutes les pages qui
+    montent ce bento (dont toutes les pages domaine et spécialité). */
+const PHOTO_PANNEAU_OFFRES = "/assets/web/mq-17e2f3bce95f.jpg";
+
 /** Les cinq tuiles sous la carte Résidence, mot pour mot depuis la capture. */
 const TUILES: readonly CarteOffreDomaine[] = [
   {
@@ -182,7 +186,14 @@ const NUMERO: CSSProperties = {
  */
 export default function OffresDomaine({ replie = false }: { replie?: boolean } = {}) {
   return (
-    <section style={SECTION}>
+    /* Replié (gabarits 05 et 09), le bloc passe aussi après les sections de
+       la maquette au téléphone (`data-mobile-apres-sections`, socle de
+       `app/globals.css`). Le gabarit 08, qui ne le replie pas, garde sa
+       place. */
+    <section
+      {...(replie ? { "data-mobile-apres-sections": "" } : {})}
+      style={SECTION}
+    >
       {/* G3, SE REPLIE AU TÉLÉPHONE : un bento de 2 240 px à 390 px, section de
           bureau que la maquette mobile ne dessine pas. L'étiquette reprend le
           surtitre et le H2 du panneau photographique, le résumé les six offres
@@ -190,6 +201,7 @@ export default function OffresDomaine({ replie = false }: { replie?: boolean } =
           bouge à 1280 px. */}
       <PliMobile
         actif={replie}
+        numero={false}
         style={LARGEUR}
         surtitre="Nos offres"
         titre="Six façons de travailler ensemble, selon votre besoin"
@@ -206,7 +218,7 @@ export default function OffresDomaine({ replie = false }: { replie?: boolean } =
           {/* Le panneau photographique, deux rangs de haut. */}
           <div className={styles.obA} style={PANNEAU_PHOTO}>
             <Image
-              src="/assets/web/mq-17e2f3bce95f.jpg"
+              src={PHOTO_PANNEAU_OFFRES}
               alt="Technicien de maintenance migen en intervention"
               fill
               sizes="(max-width: 1000px) 100vw, 380px"
@@ -217,8 +229,8 @@ export default function OffresDomaine({ replie = false }: { replie?: boolean } =
             />
             <div aria-hidden="true" style={VOILE_PANNEAU} />
             <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: 30 }}>
-              <div style={SURTITRE_PANNEAU}>Nos offres</div>
-              <h2 style={TITRE_PANNEAU}>
+              <div data-titre-double="" style={SURTITRE_PANNEAU}>Nos offres</div>
+              <h2 data-titre-double="" style={TITRE_PANNEAU}>
                 Six façons de travailler ensemble, selon votre besoin
               </h2>
               <p

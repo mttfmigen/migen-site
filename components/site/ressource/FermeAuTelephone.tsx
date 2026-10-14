@@ -23,9 +23,12 @@ import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
  */
 export default function FermeAuTelephone({
   style,
+  faqListe = false,
   children,
 }: {
   style: CSSProperties;
+  /** Pose `data-faq-liste` : la liste de cartes partagée de la maquette mobile v2. */
+  faqListe?: boolean;
   children: ReactNode;
 }) {
   const liste = useRef<HTMLDivElement>(null);
@@ -38,7 +41,7 @@ export default function FermeAuTelephone({
   }, []);
 
   return (
-    <div ref={liste} style={style}>
+    <div ref={liste} style={style} {...(faqListe ? { "data-faq-liste": "" } : {})}>
       {children}
     </div>
   );

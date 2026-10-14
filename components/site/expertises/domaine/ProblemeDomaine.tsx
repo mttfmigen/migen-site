@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { CSSProperties, ReactNode } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
@@ -5,6 +6,7 @@ import { resumeDe } from "@/components/site/blocs/resume-de-section";
 import { PliMobile } from "@/components/site/expertises/mobile";
 import ProblemeOffre from "@/components/site/offre/ProblemeOffre";
 import { coupePunchline, numerote } from "@/components/site/offre/texte-offre";
+import { cadragePhoto } from "@/lib/cadrage-photos";
 import type { SectionProbleme } from "@/types/contenu";
 
 import styles from "./PageDomaine.module.css";
@@ -44,28 +46,199 @@ export interface ProprietesProblemeDomaine {
    * demande (`pli`) : un second pli posé par-dessus ferait un pli dans un pli.
    */
   replie?: boolean;
+  /**
+   * LA CARTE « LE PROBLÈME » DE LA MAQUETTE MOBILE V2, pour les trois dessins
+   * (gabarits 05, 09 et le hub) : `ouvert` quand le problème ouvre la page,
+   * `replie` quand une section le précède. Sans cette prop (gabarit 08
+   * Secteur), rien ne change : `replie` seul garde son sens d'origine, et le
+   * dessin « colonne » reste délégué à `ProblemeOffre`.
+   */
+  pli?: Pli;
 }
+
+export type Pli = "ouvert" | "replie";
+
+/** La photo que le dessin « colonne » rend sur bureau, ou rien. */
+function photoDuProbleme(
+  section: SectionProbleme,
+  photo: string | null | undefined,
+): string | null {
+  if (section.variante === "rangee" || section.variante === "panneau-sombre") return null;
+  return photo === undefined ? PHOTO_COLONNE : photo;
+}
+
+/**
+ * LE TITRE DE LA CARTE AU TÉLÉPHONE, celui de la maquette mobile v2 (« 01 Le
+ * problème », titre du corpus) et celui de `offre/ProblemeOffre` : le
+ * sur-titre et le titre de bureau restent dans le corps, en sur-titre et en
+ * phrase clé (`data-mm-surtitre`, `data-mm-lead`, socle de `app/globals.css`).
+ */
+const TITRE_CARTE = "Le problème";
 
 /** La largeur de la section, et le pli mobile quand la page le demande. */
 function Cadre({
   section,
-  replie,
+  pli,
   children,
 }: {
   section: SectionProbleme;
-  replie: boolean;
+  pli: Pli | undefined;
   children: ReactNode;
 }) {
   return (
     <PliMobile
-      actif={replie}
+      actif={pli !== undefined}
+      toujoursOuvert={pli === "ouvert"}
       style={LARGEUR}
-      surtitre="Votre problématique"
-      titre={coupePunchline(section.punchline).titre}
+      titre={TITRE_CARTE}
       resume={resumeDe(section.puces.map((puce) => puce.accroche ?? puce.texte))}
     >
       {children}
     </PliMobile>
+  );
+}
+
+/* --------------------------- colonne (`ProblemeOffre`, gabarit 03, recopié)
+
+   LE DESSIN « COLONNE » DE `offre/ProblemeOffre.tsx`, VALEUR POUR VALEUR,
+   pour les seules pages qui demandent la carte mobile (`pli`). Recopié et non
+   enveloppé : la carte de la maquette porte le titre dans sa bascule, le
+   chapô et des cartes « Libellé : texte » dans son corps, et ces marques
+   (`data-*`) doivent être posées sur le balisage lui-même. Au-dessus de
+   880 px, le rendu est celui de `ProblemeOffre` : mêmes balises, mêmes
+   styles, même photo par défaut. */
+
+const PHOTO_COLONNE = "/assets/web/team-electric.jpg";
+
+const TITRE_COLONNE: CSSProperties = {
+  font: "600 calc(clamp(28px,3.1vw,44px) * var(--ts))/1.07 var(--ft)",
+  letterSpacing: "-.04em",
+  margin: "0 0 18px",
+  maxWidth: "18ch",
+  textWrap: "balance",
+};
+
+const SOUS_PHRASE_COLONNE: CSSProperties = {
+  font: "400 16px/1.7 var(--fb)",
+  color: "var(--ink2)",
+  margin: "0 0 22px",
+  maxWidth: "40ch",
+};
+
+const CADRE_PHOTO_COLONNE: CSSProperties = {
+  borderRadius: "var(--rad)",
+  overflow: "hidden",
+  height: 280,
+  background: "var(--ph)",
+  position: "relative",
+};
+
+const CARTE_COLONNE: CSSProperties = {
+  ...VERRE,
+  padding: "24px 28px",
+  display: "flex",
+  gap: 16,
+  alignItems: "baseline",
+};
+
+const NUMERO_COLONNE: CSSProperties = {
+  font: "600 26px var(--ft)",
+  letterSpacing: "-.05em",
+  color: "var(--acc)",
+  flex: "0 0 auto",
+};
+
+const ACCROCHE_COLONNE: CSSProperties = {
+  font: "600 16.5px/1.35 var(--ft)",
+  letterSpacing: "-.02em",
+  marginBottom: 10,
+  color: "var(--ink)",
+};
+
+const TEXTE_COLONNE: CSSProperties = {
+  font: "400 14px/1.6 var(--fb)",
+  color: "var(--ink2)",
+};
+
+function Colonne({
+  section,
+  altPhoto,
+  photo,
+  pli,
+}: {
+  section: SectionProbleme;
+  altPhoto: string;
+  photo?: string | null;
+  pli: Pli;
+}) {
+  const { titre, suite } = coupePunchline(section.punchline);
+  const source = photoDuProbleme(section, photo);
+  return (
+    <section data-screen-label="03 Problème" style={SECTION}>
+      <Cadre section={section} pli={pli}>
+        <div
+          className="mg-r2"
+          data-entete-probleme=""
+          style={{
+            display: "grid",
+            gridTemplateColumns: ".9fr 1.1fr",
+            gap: 56,
+            alignItems: "start",
+          }}
+        >
+          <div className="g3-sticky" style={{ position: "sticky", top: 110 }}>
+            <div data-mm-surtitre="" style={{ ...SURTITRE, marginBottom: 18 }}>
+              Votre problématique
+            </div>
+            {titre ? (
+              <h2 data-mm-lead="" style={TITRE_COLONNE}>
+                {titre}
+              </h2>
+            ) : null}
+            {suite ? (
+              <p data-mm-texte="" style={SOUS_PHRASE_COLONNE}>
+                {suite}
+              </p>
+            ) : null}
+            {source ? (
+              <div data-photo-probleme="" style={CADRE_PHOTO_COLONNE}>
+                <Image
+                  src={source}
+                  alt={altPhoto}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 440px"
+                  style={{
+                    objectFit: "cover",
+                    objectPosition: cadragePhoto(source, 479 / 280),
+                    filter: "saturate(var(--sat)) contrast(1.05)",
+                  }}
+                />
+              </div>
+            ) : null}
+          </div>
+          <div
+            data-mm-kv=""
+            style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 12 }}
+          >
+            {section.puces.map((puce, rang) => (
+              <div key={puce.accroche ?? puce.texte} style={CARTE_COLONNE}>
+                <span data-mm-num="" style={NUMERO_COLONNE}>{numerote(rang)}</span>
+                <div style={{ minWidth: 0, overflowWrap: "break-word" }}>
+                  {puce.accroche ? (
+                    <div data-mm-kv-titre="" style={ACCROCHE_COLONNE}>
+                      {puce.accroche}
+                    </div>
+                  ) : null}
+                  <div data-mm-kv-texte="" style={TEXTE_COLONNE}>
+                    {puce.texte}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Cadre>
+    </section>
   );
 }
 
@@ -126,24 +299,25 @@ function colonnes(n: number): number {
   return n % 3 === 0 ? 3 : 4;
 }
 
-function Rangee({ section, replie }: { section: SectionProbleme; replie: boolean }) {
+function Rangee({ section, pli }: { section: SectionProbleme; pli: Pli | undefined }) {
   const { titre, suite } = coupePunchline(section.punchline);
   return (
     <section style={SECTION}>
-      <Cadre section={section} replie={replie}>
-        <div className="mg-r2" style={ENTETE_RANGEE}>
+      <Cadre section={section} pli={pli}>
+        <div className="mg-r2" data-entete-probleme="" style={ENTETE_RANGEE}>
           <div>
-            <div style={{ ...SURTITRE, marginBottom: 18 }}>
+            <div data-mm-surtitre="" style={{ ...SURTITRE, marginBottom: 18 }}>
               Votre problématique
             </div>
-            <h2 style={TITRE_RANGEE}>{titre}</h2>
+            <h2 data-mm-lead="" style={TITRE_RANGEE}>{titre}</h2>
           </div>
           {/* La source pose ce paragraphe même vide : il tient la seconde
               colonne de l'en-tête. */}
-          <p style={SUITE_RANGEE}>{suite}</p>
+          <p data-mm-texte="" style={SUITE_RANGEE}>{suite}</p>
         </div>
         <div
           className={styles.grilleProbleme}
+          data-mm-kv=""
           style={{
             display: "grid",
             gridTemplateColumns: `repeat(${colonnes(section.puces.length)},minmax(0,1fr))`,
@@ -152,9 +326,9 @@ function Rangee({ section, replie }: { section: SectionProbleme; replie: boolean
         >
           {section.puces.map((puce, rang) => (
             <div key={puce.accroche ?? puce.texte} style={CARTE_RANGEE}>
-              <span style={NUMERO_RANGEE}>{numerote(rang)}</span>
-              <div style={ACCROCHE_RANGEE}>{puce.accroche}</div>
-              <div style={TEXTE_RANGEE}>{puce.texte}</div>
+              <span data-mm-num="" style={NUMERO_RANGEE}>{numerote(rang)}</span>
+              <div data-mm-kv-titre="" style={ACCROCHE_RANGEE}>{puce.accroche}</div>
+              <div data-mm-kv-texte="" style={TEXTE_RANGEE}>{puce.texte}</div>
             </div>
           ))}
         </div>
@@ -234,19 +408,20 @@ const TEXTE_SOMBRE: CSSProperties = {
    (overflow hidden) coupe le texte. Mesuré le 08/10 sur
    /expertises/types-de-maintenance/maintenance-palliative/. Sans
    `data-screen-label`, la grille passe à une colonne : tout le texte se lit. */
-function Sombre({ section, replie }: { section: SectionProbleme; replie: boolean }) {
+function Sombre({ section, pli }: { section: SectionProbleme; pli: Pli | undefined }) {
   const { titre, suite } = coupePunchline(section.punchline);
   return (
     <section style={SECTION}>
-      <Cadre section={section} replie={replie}>
-        <div className={styles.panneauProbleme} style={PANNEAU}>
+      <Cadre section={section} pli={pli}>
+        <div className={styles.panneauProbleme} data-panneau-mobile-clair="" style={PANNEAU}>
           <div aria-hidden="true" style={LUEUR} />
           <div style={{ position: "relative" }}>
-            <div style={SURTITRE}>Votre problématique</div>
-            <h2 style={TITRE_SOMBRE}>{titre}</h2>
-            <p style={SUITE_SOMBRE}>{suite}</p>
+            <div data-mm-surtitre="" style={SURTITRE}>Votre problématique</div>
+            <h2 data-mm-lead="" style={TITRE_SOMBRE}>{titre}</h2>
+            <p data-mm-texte="" style={SUITE_SOMBRE}>{suite}</p>
             <div
               className="mg-rmulti"
+              data-mm-kv=""
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(2,minmax(0,1fr))",
@@ -255,10 +430,10 @@ function Sombre({ section, replie }: { section: SectionProbleme; replie: boolean
             >
               {section.puces.map((puce, rang) => (
                 <div key={puce.accroche ?? puce.texte} style={CARTE_SOMBRE}>
-                  <span style={NUMERO_SOMBRE}>{numerote(rang)}</span>
+                  <span data-mm-num="" style={NUMERO_SOMBRE}>{numerote(rang)}</span>
                   <div>
-                    <div style={ACCROCHE_SOMBRE}>{puce.accroche}</div>
-                    <div style={TEXTE_SOMBRE}>{puce.texte}</div>
+                    <div data-mm-kv-titre="" style={ACCROCHE_SOMBRE}>{puce.accroche}</div>
+                    <div data-mm-kv-texte="" style={TEXTE_SOMBRE}>{puce.texte}</div>
                   </div>
                 </div>
               ))}
@@ -275,11 +450,15 @@ export default function ProblemeDomaine({
   altPhoto,
   photo,
   replie = false,
+  pli,
 }: ProprietesProblemeDomaine) {
-  if (section.variante === "rangee") return <Rangee section={section} replie={replie} />;
-  if (section.variante === "panneau-sombre") return <Sombre section={section} replie={replie} />;
-  /* Le dessin « colonne » se replie par le repli SUR DEMANDE de
-     `ProblemeOffre` (gabarit 03), jamais par un pli posé par-dessus le sien. */
+  const plie: Pli | undefined = pli ?? (replie ? "replie" : undefined);
+  if (section.variante === "rangee") return <Rangee section={section} pli={plie} />;
+  if (section.variante === "panneau-sombre") return <Sombre section={section} pli={plie} />;
+  if (pli) return <Colonne section={section} altPhoto={altPhoto} photo={photo} pli={pli} />;
+  /* Sans `pli` (gabarit 08), le dessin « colonne » se replie par le repli SUR
+     DEMANDE de `ProblemeOffre` (gabarit 03), jamais par un pli posé
+     par-dessus le sien. */
   return (
     <ProblemeOffre
       section={section}

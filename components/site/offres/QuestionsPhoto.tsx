@@ -153,31 +153,160 @@ const REPONSE: CSSProperties = {
   maxWidth: "68ch",
 };
 
+/**
+ * LA DERNIÈRE QUESTION DE LA MAQUETTE MOBILE V2 : la question de clôture du
+ * corpus (« Besoin de tenir le poste dès ce trimestre… ? »), que la maquette
+ * range dans la FAQ et que le bureau rend en titre de l'appel final. Au
+ * téléphone seulement, sa réponse est celle du corpus : le bouton, le
+ * téléphone, la phrase de rappel.
+ */
+export interface QuestionFinale {
+  question: string;
+  bouton?: string;
+  rappel?: string;
+  /**
+   * Le sur-titre de la CARTE SOMBRE (« Passer à l’action ») : quand le corpus
+   * porte une section « ## CTA », la maquette rend la question de clôture en
+   * carte après la FAQ (dc.html L475, `C_DARK`), pas en dernière question.
+   */
+  surtitre?: string;
+}
+
+/** dc.html : « [Demander un profil pour mon site](/contact/) · 04 78 33 72 05 ». */
+const TELEPHONE = "04 78 33 72 05";
+
+/* La carte sombre de dc.html L131 (`isPlain`, `C_DARK`, `pad: 22px 20px`,
+   `rad: 24px`), ses boutons `isBtnQ` et son bouton `hasBtn`. */
+const CARTE_FINALE: CSSProperties = {
+  marginTop: 6,
+  padding: "22px 20px",
+  borderRadius: 24,
+  background: "#1c1b19",
+  border: "1px solid #1c1b19",
+  color: "#fff",
+};
+
+const SURTITRE_FINAL: CSSProperties = {
+  marginBottom: 8,
+  font: "600 11px var(--fb)",
+  letterSpacing: ".14em",
+  textTransform: "uppercase",
+  color: "#ff7c3c",
+};
+
+const QUESTION_FINALE: CSSProperties = {
+  margin: "6px 0 14px",
+  font: "600 17px/1.45 var(--ft)",
+  color: "#fff",
+  textWrap: "pretty",
+};
+
+const RANGEE_FINALE: CSSProperties = { display: "flex", gap: 8, margin: "6px 0 14px" };
+
+const BOUTON_FINAL: CSSProperties = {
+  flex: 1,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minHeight: 48,
+  padding: "0 14px",
+  borderRadius: 999,
+  background: "#ff7c3c",
+  color: "#fff",
+  font: "600 14px/1.25 var(--fb)",
+  textAlign: "center",
+  textDecoration: "none",
+};
+
+const TELEPHONE_FINAL: CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minHeight: 48,
+  padding: "0 14px",
+  borderRadius: 999,
+  background: "rgba(255,255,255,.06)",
+  border: "1px solid rgba(255,255,255,.12)",
+  color: "#fff",
+  font: "600 13px var(--fb)",
+  whiteSpace: "nowrap",
+  textDecoration: "none",
+};
+
+const RAPPEL_FINAL: CSSProperties = {
+  margin: "0 0 12px",
+  font: "400 15px/1.65 var(--fb)",
+  color: "rgba(255,255,255,.84)",
+};
+
+const GRAND_BOUTON_FINAL: CSSProperties = {
+  ...BOUTON_FINAL,
+  flex: "none",
+  minHeight: 50,
+  padding: "0 16px",
+  marginTop: 6,
+  font: "600 14.5px/1.25 var(--fb)",
+};
+
+/** La carte « Passer à l’action » : mobile seulement, après la dernière question. */
+function CarteFinale({ q }: { q: QuestionFinale }) {
+  return (
+    <section data-mobile-seulement="" style={CARTE_FINALE}>
+      <div style={SURTITRE_FINAL}>{q.surtitre}</div>
+      <p style={QUESTION_FINALE}>{q.question}</p>
+      {q.bouton ? (
+        <div style={RANGEE_FINALE}>
+          <a href="/contact/" style={BOUTON_FINAL}>{q.bouton}</a>
+          <a href={`tel:${TELEPHONE.replace(/\s/g, "")}`} style={TELEPHONE_FINAL}>{TELEPHONE}</a>
+        </div>
+      ) : null}
+      {q.rappel ? <p style={RAPPEL_FINAL}>{q.rappel}</p> : null}
+      {q.bouton ? (
+        <a href="/contact/" style={GRAND_BOUTON_FINAL}>{q.bouton}</a>
+      ) : null}
+    </section>
+  );
+}
+
 export default function QuestionsPhoto({
   donnees,
+  questionFinale,
 }: {
   donnees: QuestionsPhotoOffres;
+  /** Rendue au téléphone seulement, en dernière carte de la liste. */
+  questionFinale?: QuestionFinale;
 }) {
   // README : une seule question ouverte à la fois. Accordéon exclusif natif.
   const groupe = useId();
   if (donnees.questions.length === 0) return null;
 
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    /* AU TÉLÉPHONE, LA SIMPLE LISTE DE CARTES DE LA MAQUETTE MOBILE V2
+       (dc.html `isTitle` puis `isQ`) : le panneau à photo s'efface, le
+       sur-titre et le titre prennent le dessin de la maquette
+       (`data-faq-surtitre`, `data-faq-titre`) et les questions celui de ses
+       cartes (`data-faq-liste`, `app/globals.css`). Rien n'est retiré du
+       DOM ; au-dessus de 880 px, rien ne change. */
+    /* `data-faq-maquette` : au téléphone, l'en-tête de la maquette mobile v2,
+       le seul titre « Questions fréquentes » (dc.html `isTitle`) ; le H2 de
+       bureau et le lien « Poser ma question » sortent de l'écran, leur texte
+       reste dans le DOM (`app/globals.css` § 16). */
+    <section data-faq-maquette="" className={styles.section} style={{ padding: "var(--sec) 0 0" }}>
       <div style={LARGEUR}>
         <div className={styles.panneau} style={CARTE}>
           <Image
+            className={styles.photo}
             src={donnees.photo}
             alt={altPhoto(donnees.photo)}
             fill
             sizes="1200px"
             style={{ objectFit: "cover" }}
           />
-          <div style={VOILE} />
+          <div className={styles.voile} style={VOILE} />
           <div className={`mg-r2 ${styles.grille}`} style={GRILLE}>
             <div style={COLONNE_TITRE}>
-              <div style={SURTITRE}>{donnees.surtitre}</div>
-              <h2 style={TITRE_BLOC}>{donnees.titre}</h2>
+              <div data-faq-surtitre="" style={SURTITRE}>{donnees.surtitre}</div>
+              <h2 data-faq-titre="" style={TITRE_BLOC}>{donnees.titre}</h2>
               {donnees.chapeau ? (
                 <p style={CHAPEAU_BLOC}>{donnees.chapeau}</p>
               ) : null}
@@ -191,7 +320,7 @@ export default function QuestionsPhoto({
                 </a>
               )}
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10, alignContent: "start" }}>
+            <div data-faq-liste="" style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10, alignContent: "start" }}>
               {donnees.questions.map((q, i) => (
                 <details
                   key={q.question}
@@ -208,7 +337,7 @@ export default function QuestionsPhoto({
                     <span className={styles.texteAvecLiens} style={INTITULE}>
                       <TexteRiche texte={q.question} />
                     </span>
-                    <span className="cx-plus" style={PLUS}>
+                    <span aria-hidden="true" className="cx-plus" style={PLUS}>
                       +
                     </span>
                   </summary>
@@ -217,6 +346,33 @@ export default function QuestionsPhoto({
                   </div>
                 </details>
               ))}
+              {questionFinale?.question && questionFinale.surtitre ? (
+                <CarteFinale q={questionFinale} />
+              ) : questionFinale?.question ? (
+                <details
+                  data-mobile-seulement=""
+                  className="cx-faq"
+                  style={PLI}
+                  name={groupe}
+                >
+                  <summary style={QUESTION}>
+                    <span className={styles.texteAvecLiens} style={INTITULE}>
+                      <TexteRiche texte={questionFinale.question} />
+                    </span>
+                    <span aria-hidden="true" className="cx-plus" style={PLUS}>
+                      +
+                    </span>
+                  </summary>
+                  <div className={styles.texteAvecLiens} style={REPONSE}>
+                    {questionFinale.bouton ? (
+                      <p>
+                        <a href="/contact/">{questionFinale.bouton}</a> · {TELEPHONE}
+                      </p>
+                    ) : null}
+                    {questionFinale.rappel ? <p>{questionFinale.rappel}</p> : null}
+                  </div>
+                </details>
+              ) : null}
             </div>
           </div>
         </div>

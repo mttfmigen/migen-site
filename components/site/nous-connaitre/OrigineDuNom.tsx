@@ -1,12 +1,29 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 
+import type { EntreeSommaire } from "./HautMobile";
 import SectionRepliee from "./SectionRepliee";
 import SigleMigen from "./SigleMigen";
 
 /* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
 const SURTITRE_TEXTE = "Le premier client";
 const TITRE_TEXTE = "Le nom est arrivé avant l’entreprise.";
+/* La légende de la photo, et la phrase sous le titre de la carte repliée. */
+const LEGENDE = "23 ans, un cursus d’automatisme, deux ans à travailler seul.";
+
+/**
+ * LA CARTE 03 DE LA MAQUETTE MOBILE V2 porte le titre de la section du
+ * corpus, « Avril 2021, à Lyon » (`mobile-native-data.js`, `## Avril 2021, à
+ * Lyon`), et la légende de la photo en résumé. Notre sur-titre et notre titre
+ * ne sont PAS repris par l'étiquette : ils restent donc visibles dans la
+ * carte ouverte, en tête du récit, comme dans la maquette.
+ */
+const TITRE_CARTE = "Avril 2021, à Lyon";
+
+export const SOMMAIRE_ORIGINE: EntreeSommaire = {
+  id: "avril-2021-a-lyon",
+  titre: TITRE_CARTE,
+};
 
 /**
  * Le premier client, l'origine du nom, le logo.
@@ -50,7 +67,11 @@ const RANGEE: CSSProperties = {
 
 export default function OrigineDuNom() {
   return (
-    <SectionRepliee kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
+    <SectionRepliee
+      id={SOMMAIRE_ORIGINE.id}
+      titre={TITRE_CARTE}
+      resume={LEGENDE}
+    >
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div
@@ -144,14 +165,12 @@ export default function OrigineDuNom() {
                   maxWidth: "22ch",
                 }}
               >
-                23 ans, un cursus d&rsquo;automatisme, deux ans à travailler
-                seul.
+                {LEGENDE}
               </div>
             </div>
           </div>
           <div>
             <div
-              data-titre-bureau=""
               style={{
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
@@ -163,7 +182,6 @@ export default function OrigineDuNom() {
               {SURTITRE_TEXTE}
             </div>
             <h2
-              data-titre-bureau=""
               style={{
                 font: "600 calc(clamp(28px,3.2vw,44px) * var(--ts))/1.06 var(--ft)",
                 letterSpacing: "-.04em",

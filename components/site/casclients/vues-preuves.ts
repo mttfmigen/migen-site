@@ -53,6 +53,35 @@ export const PHOTOS_DU_HEROS = [
 
 const DU_HEROS: ReadonlySet<string> = new Set(PHOTOS_DU_HEROS);
 
+/* LA PHOTO DU HÉROS DE LA MAQUETTE MOBILE, sous 880 px seulement (le bureau
+   garde la sienne). dc.html L225 `FIMG.preuves` pour le hub ; L229 `POOL`,
+   L416-L418 `hsh`, `SECT` et `casePhoto` pour une étude de cas : la photo
+   est tirée du pool du secteur par l'empreinte du slug, mot pour mot. */
+export const PHOTO_HUB_MOBILE = "/assets/web/x-logistique-convoyeurs.jpg";
+
+const POOL_MOBILE: Readonly<Record<string, readonly string[]>> = {
+  logi: ["x-logistique-convoyeurs", "x-logistique-entrepot", "x-logistique-cariste", "x-logistique-tablette", "x-logistique-discussion"],
+  auto: ["x-auto-ligne", "x-auto-caisse", "x-auto-mecanicienne", "x-auto-portrait"],
+  agro: ["sv-convoyeur", "ph-technicien", "sv-armoire"],
+  ind: ["team-grind-sparks", "x-soudure", "team-grind-impact", "x-cimenterie", "ph-tuyaux", "x-elec-disjoncteur", "team-grind-front"],
+};
+
+export function photoHerosMobile(chemin: string): string | undefined {
+  const slug = chemin.split("/")[2];
+  if (!slug) return undefined;
+  const secteur = /amazon|aktid|gls|veepee|eriks|alstef|savoye|dimomaint|ciuch|atena/.test(slug)
+    ? "logi"
+    : /stellantis|valeo|autoliv|jtekt|motherson|voit|vignal|bamesa/.test(slug)
+      ? "auto"
+      : /danone|mccain|jacquet|panetiere|salaison|bledina/.test(slug)
+        ? "agro"
+        : "ind";
+  let h = 0;
+  for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0;
+  const pool = POOL_MOBILE[secteur];
+  return `/assets/web/${pool[h % pool.length]}.jpg`;
+}
+
 /** Photos de terrain migen, dernier recours de la maquette. */
 const PVPH = [
   "team-duo",

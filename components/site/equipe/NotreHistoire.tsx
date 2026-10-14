@@ -8,6 +8,15 @@ import {
   TITRE2,
   VERRE,
 } from "./habillage-equipe";
+import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
+import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
+
+/* Écrit une fois : le sur-titre de bureau et la bascule du téléphone. */
+const SURTITRE_TEXTE = "Notre histoire";
+
+/** Carte 02 du téléphone, ouverte comme dans la maquette mobile v2. */
+export const SOMMAIRE_HISTOIRE_EQUIPE: EntreeSommaire = { id: "notre-histoire", titre: SURTITRE_TEXTE };
 
 /**
  * « Notre histoire » : trois jalons posés sur un rail horizontal.
@@ -18,10 +27,13 @@ import {
  */
 export default function NotreHistoire() {
   return (
+    <SectionRepliee id={SOMMAIRE_HISTOIRE_EQUIPE.id} rang={2} titre={SURTITRE_TEXTE} ouvert>
     <section style={SECTION}>
       <div style={LARGEUR}>
         <div data-reveal="">
-          <div style={SURTITRE}>Notre histoire</div>
+          <div data-titre-bureau="" style={SURTITRE}>
+                {SURTITRE_TEXTE}
+              </div>
           <h2 style={{ ...TITRE2, maxWidth: "24ch" }}>
             Une trajectoire courte et dense.
           </h2>
@@ -39,6 +51,7 @@ export default function NotreHistoire() {
           <div style={{ position: "relative" }}>
             <div
               aria-hidden="true"
+              className={mobile.decor}
               style={{
                 position: "absolute",
                 left: 0,
@@ -48,8 +61,10 @@ export default function NotreHistoire() {
                 background: "var(--line)",
               }}
             />
+            {/* Au téléphone, la liste à pastilles noires numérotées de la
+                maquette mobile v2 (bloc `isOl`) : `.jalons`, rien au bureau. */}
             <ol
-              className="mg-rmulti"
+              className={`mg-rmulti ${mobile.jalons}`}
               style={{
                 position: "relative",
                 display: "grid",
@@ -61,9 +76,10 @@ export default function NotreHistoire() {
               }}
             >
               {JALONS.map((jalon) => (
-                <li key={jalon.repere}>
+                <li key={jalon.repere} className={mobile.jalon}>
                   <span
                     aria-hidden="true"
+                    className={mobile.decor}
                     style={{
                       display: "block",
                       width: 44,
@@ -75,7 +91,7 @@ export default function NotreHistoire() {
                       marginBottom: 18,
                     }}
                   />
-                  <div style={{ ...VERRE, padding: "22px 24px 24px" }}>
+                  <div className={mobile.jalonCarte} style={{ ...VERRE, padding: "22px 24px 24px" }}>
                     <div
                       style={{
                         font: "600 12px ui-monospace,Menlo,monospace",
@@ -95,5 +111,6 @@ export default function NotreHistoire() {
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

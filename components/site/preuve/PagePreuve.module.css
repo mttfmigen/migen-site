@@ -115,8 +115,9 @@
    Le seuil, 880 px, est celui de `SectionPliableMobile.module.css` : c'est lui
    qui décide du repli, les deux doivent rester d'accord.
 
-   DÉPLIÉE, l'étiquette s'efface : la section montre alors son vrai titre, et
-   le dire deux fois de suite n'aiderait personne. Le chevron reste la poignée.
+   DÉPLIÉE, l'étiquette RESTE (14/10 au soir) : la carte de la maquette garde
+   son numéro et son titre quand elle s'ouvre (dc.html L130). C'est le `<h2>`
+   du corps, son doublon, qui ne se peint plus sous 880 px (`.titreDoublon`).
    Le sélecteur est porté par la classe, il ne touche donc que ces étiquettes. */
 .etiquettePli {
   display: none;
@@ -125,9 +126,6 @@
 @media (max-width: 880px) {
   .etiquettePli {
     display: block;
-  }
-  details[open] > summary > .etiquettePli {
-    display: none;
   }
 }
 
@@ -224,24 +222,13 @@
 }
 
 /*
- * LE RÉSUMÉ D'UNE SECTION REPLIÉE TIENT SUR DEUX LIGNES, comme la
- * maquette mobile l'écrit (`-webkit-line-clamp: 2` sur le résumé d'une
- * section fermée, bloc « Blocs communs (pliables) » de
- * `MigenMobile.dc.html`). Ce gabarit ne passe aujourd'hui aucun résumé
- * à `SectionPliableMobile` : la règle est posée pour que le jour où il
- * en passe un, il arrive déjà à la bonne taille, et elle est inerte
- * tant qu'il n'y a pas de résumé. Ancrée sur `.racine`, elle ne touche
- * aucun autre gabarit.
+ * LE RÉSUMÉ D'UNE SECTION REPLIÉE : deux lignes, carte FERMÉE seulement.
+ * C'est la carte partagée (`details[data-carte-numerotee] > summary > p`,
+ * app/globals.css) qui le peint, et l'efface à l'ouverture comme la maquette
+ * (`details[open] > summary .mv-tease { display: none }`). La règle locale
+ * qui le forçait en `-webkit-box !important` est retirée le 14/10 au soir :
+ * elle le montrait aussi sous une carte OUVERTE (« La situation »).
  */
-@media (max-width: 880px) {
-  .racine details[data-pliable-mobile] > summary > p {
-    display: -webkit-box !important;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-}
 
 /* La fiche d'identité du cas, en rangées « libellé | valeur ».
 
@@ -300,55 +287,128 @@
 }
 
 /* ===================================================================
-   LA MAQUETTE MOBILE V2 SUR LE GABARIT 02, posée le 14/10.
+   LA MAQUETTE MOBILE V2 SUR LE GABARIT 02, refaite le 14/10 au soir.
    Référence : `maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html`
-   (dc.html), capture m-02 (/preuves/aktid-centre-logistique/, 402 px).
-   TOUT CE QUI SUIT VIT SOUS 880 PX, le seuil du repli et de la couche
-   de conversion : le rendu de bureau reste celui de la capture, et la
-   porte `instantane-texte-main.mjs` le mesure à 1280 px, hauteur égale.
-   Rien n'est retiré : les règles compactent, replient ou font défiler.
+   (dc.html), `renderVals()` L340-L506 et le gabarit L104-L138, page
+   /preuves/alstef-group/ rendue à 402 px côte à côte avec le site.
+   TOUT CE QUI SUIT VIT SOUS 880 PX : au-dessus, aucune de ces règles
+   n'existe, et `bureau.mjs compare` le prouve pixel à pixel.
+   Rien n'est retiré du DOM : les règles déplacent (`order`), replient,
+   compactent. Un texte masqué l'est parce que son doublon exact reste
+   à l'écran (surtitre de l'étiquette, titre de section repris par la
+   carte).
+
+   L'ORDRE DE LA MAQUETTE (dc.html L461) : héros, « Le client et le
+   site », « Le résultat » en panneau sombre, puis les sections de texte
+   01 à 04 en cartes numérotées, l'appel à l'action, les réalisations,
+   la même rubrique, le rappel.
    =================================================================== */
 @media (max-width: 880px) {
-  /* G1 · LE RYTHME. `--sec` vaut 120 px EN LIGNE sur la racine (valeur de
-     MigenCas, voir le composant), si bien que la règle mobile du site
-     (`.mg-site { --sec: 64px }`) ne l'atteignait pas : six sections à
-     120 px de marge haute au téléphone. La maquette mobile espace ses
-     blocs de 12 à 22 px ; 48 px gardent l'air des gouttières de 40. */
   .racine {
     --sec: 48px !important;
-  }
-  .sectionChiffres {
-    padding-top: 24px !important;
+    /* Les petites cartes « Libellé : texte » (dc.html L131, `isKv`). */
+    --mc-fond-kv: #f6f6f7;
+    --mc-filet-kv: rgba(28, 27, 25, 0.09);
   }
 
-  /* G2 · LE HÉROS COMPACT (dc.html L105-109). La spécificité de
-     `.racine .x` bat la règle de titre du site (`.mg-site h1`). Le fil
-     d'Ariane mobile est posé juste au-dessus du héros, qui n'a plus besoin
-     de ses 40 px de tête. */
+  /* G0 · L'ORDRE. `<main>` en colonne flexible : le résultat prend le rang
+     qui suit le héros sans quitter sa place dans le DOM. Les blocs centrés
+     par `margin: 0 auto` se rétréciraient à leur contenu dans une colonne
+     flexible : leurs marges latérales reviennent à zéro, ce qu'elles valent
+     déjà à cette largeur. */
+  .racine > main {
+    display: flex;
+    flex-direction: column;
+  }
+  .racine .filHaut,
+  .racine .sectionHeros,
+  .racine .sectionChiffres,
+  .racine .maillageBas {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .racine .filHaut,
+  .racine .sectionHeros,
+  .racine .sectionChiffres {
+    order: -2;
+  }
+  .racine .sectionResultat {
+    order: -1;
+  }
+
+  /* G1 · LE HAUT DE PAGE (dc.html L104-L111) : fil d'Ariane, photo en
+     16/10, sur-titre, H1, les deux boutons côte à côte, puis la carte
+     « Le client et le site ». Les deux colonnes de bureau s'effacent
+     (`display: contents`) et leurs enfants se rangent dans l'ordre de la
+     maquette. */
   .racine .sectionHeros {
     padding-top: 0 !important;
   }
+  /* `align-items: stretch` : la grille de bureau centre ses deux colonnes
+     (`alignItems: center`, valeur de la capture) ; en colonne flexible, ce
+     centrage rétrécissait chaque bloc à son contenu, et la photo, qui n'en
+     a pas, tombait à zéro de large. */
   .racine .grilleHeros {
-    gap: 16px !important;
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 0 !important;
+  }
+  .racine .colonneTexte,
+  .racine .colonnePhoto {
+    display: contents;
+  }
+  .racine .cadreHeros {
+    order: 1;
+    height: auto !important;
+    aspect-ratio: 16 / 10;
+    border-radius: 24px !important;
+    box-shadow: none !important;
+    margin-bottom: 16px;
   }
   .racine .pastillesHeros {
-    margin-bottom: 12px !important;
+    order: 2;
+    gap: 0 6px !important;
+    margin: 0 !important;
+  }
+  /* Le sur-titre de la maquette : « ÉTUDE DE CAS · 3 MIN DE LECTURE »
+     (L106, 600 11px, interlettrage .14em, orange). La pastille de bureau
+     perd son fond ; la puce et le logo, deux ornements sans texte, ne sont
+     pas peints (le nom du client reste écrit juste à côté). */
+  .racine .pastilleType {
+    gap: 4px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: none !important;
+    font: 600 11px var(--fb) !important;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--acc) !important;
+    white-space: normal !important;
+  }
+  .racine .puceType,
+  .racine .logoHeros {
+    display: none !important;
+  }
+  .racine .clientHeros {
+    font: 600 11px var(--fb) !important;
+    letter-spacing: 0.14em !important;
+  }
+  .racine .clientHeros::before {
+    content: "· ";
   }
   .racine .titreHeros {
+    order: 3;
+    margin: 10px 0 0 !important;
     font-size: 27px !important;
     line-height: 1.1 !important;
     letter-spacing: -0.04em !important;
-    margin-bottom: 10px !important;
     max-width: none !important;
   }
-  .racine .chapeauHeros {
-    font-size: 15px !important;
-    line-height: 1.6 !important;
-    margin-bottom: 8px !important;
-  }
-  /* Les deux boutons côte à côte, l'orange prend la place (dc.html L109 :
-     `flex:1;min-height:50px`, puis le téléphone). */
+  /* Les deux boutons côte à côte (L111 : `flex:1;min-height:50px`, puis le
+     téléphone sur fond blanc). */
   .racine .boutonsHeros {
+    order: 4;
     flex-wrap: nowrap !important;
     gap: 8px !important;
     margin-top: 16px !important;
@@ -359,34 +419,128 @@
     text-align: center;
     padding: 0 16px !important;
     font-size: 14px !important;
+    line-height: 1.25 !important;
   }
   .racine .boutonsHeros > a:first-child {
     flex: 1 1 0%;
   }
   .racine .boutonsHeros > a:last-child {
     white-space: nowrap !important;
-  }
-  /* La photo en 16/10 (dc.html L105 : `aspect-ratio:16/10`), au lieu des
-     480 px de la capture de bureau. */
-  .racine .cadreHeros {
-    height: auto !important;
-    aspect-ratio: 16 / 10;
-    border-radius: 24px !important;
+    background: var(--card) !important;
+    font-size: 13.5px !important;
   }
 
-  /* Les titres de section, au corps de la maquette mobile (20 à 21 px,
-     dc.html L131-133) plutôt qu'aux 26 à 34 px de la règle du site. */
-  .racine section h2 {
-    font-size: 22px !important;
-    line-height: 1.2 !important;
+  /* « LE CLIENT ET LE SITE » (dc.html L461 `facts`, L131 `isPlain` : carte
+     blanche, 18 px, rayon 22 px, titre de 20 px). Le chapô de la page EST
+     le premier paragraphe de cette section dans la maquette, et la fiche du
+     héros en est la liste « Activité : … » : les deux forment la carte. Son
+     titre est peint par la feuille, texte de la maquette mot pour mot
+     (`## LE CLIENT ET LE SITE`, L22 de `migen-mobile-parse.js`) : il n'entre
+     pas dans le DOM, le texte que lit Google ne change pas. */
+  .racine .chapeauHeros {
+    order: 5;
+    margin: 0 !important;
+    max-width: none !important;
+    padding: 0 18px 12px;
+    background: var(--card);
+    border-left: 1px solid var(--mm-filet);
+    border-right: 1px solid var(--mm-filet);
+    font: 400 15px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
   }
-  /* Le titre du carrousel garde le sien (dc.html L131, 20 px). */
-  .racine .titreCarrousel {
-    font-size: 20px !important;
+  .racine .chapeauHeros:first-of-type {
+    margin-top: 14px !important;
+    padding-top: 18px;
+    border-top: 1px solid var(--mm-filet);
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+    font: 500 16px/1.6 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+  .racine .chapeauHeros:first-of-type::before {
+    content: "Le client et le site";
+    display: block;
+    margin: 0 0 12px;
+    font: 600 20px/1.2 var(--ft);
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  .racine .grilleHeros:not(:has(.ficheFlottante)) .chapeauHeros:last-of-type {
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--mm-filet);
+    border-bottom-left-radius: 22px;
+    border-bottom-right-radius: 22px;
+  }
+  .racine .ficheFlottante {
+    order: 6;
+    display: grid;
+    gap: 8px;
+    counter-reset: fiche;
+    margin-top: 0 !important;
+    padding: 4px 18px 18px !important;
+    background: var(--card) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    border: 1px solid var(--mm-filet) !important;
+    border-top: 0 !important;
+    border-radius: 0 0 22px 22px !important;
+  }
+  .racine .grilleHeros:not(:has(.chapeauHeros)) .ficheFlottante {
+    margin-top: 14px !important;
+    padding-top: 18px !important;
+    border-top: 1px solid var(--mm-filet) !important;
+    border-radius: 22px !important;
+  }
+  /* Une rangée « libellé | valeur » en petite carte numérotée (L131,
+     `isKv` : 26 px de numéro, 13 px 14 px, rayon 16 px). */
+  .racine .ficheLigne {
+    counter-increment: fiche;
+    grid-template-columns: 26px minmax(0, 1fr) !important;
+    column-gap: 10px !important;
+    row-gap: 0 !important;
+    padding: 13px 14px !important;
+    border: 1px solid var(--mc-filet-kv) !important;
+    border-radius: 16px;
+    background: var(--mc-fond-kv);
   }
 
-  /* LES CHIFFRES EN DEUX COLONNES, comme les tuiles de la maquette
-     (dc.html L133 : `repeat(2,minmax(0,1fr));gap:8px`, carte 14 px). */
+  /* LA NUMÉROTATION DES PETITES CARTES, partagée par la fiche, les objectifs
+     (qui portent déjà leur numéro), le résultat et les tuiles du besoin :
+     compteur CSS, hors du DOM. */
+  .racine .ficheLigne::before,
+  .racine .resultats > div::before,
+  .racine .besoinTuiles > div::before {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    padding-top: 3px;
+    font: 600 11px ui-monospace, Menlo, monospace;
+    color: var(--acc);
+  }
+  .racine .ficheLigne::before {
+    content: counter(fiche, decimal-leading-zero);
+  }
+  .racine .ficheLigne > span {
+    grid-column: 2;
+  }
+  .racine .ficheLigne > span:first-of-type {
+    padding-top: 0 !important;
+    font: 600 14.5px/1.4 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    text-transform: none !important;
+    color: var(--ink) !important;
+  }
+  .racine .ficheLigne > span:last-of-type {
+    margin-top: 4px;
+    font: 400 14px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  /* LES CHIFFRES, en tuiles 2 x 2 blanches (L128, `isStats`), sous la
+     carte du client. */
+  .racine .sectionChiffres {
+    padding-top: 12px !important;
+  }
   .racine .chiffres {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 8px !important;
@@ -394,103 +548,465 @@
   .racine .chiffres > div {
     padding: 14px !important;
     border-radius: 18px !important;
+    background: var(--card) !important;
+    border: 1px solid var(--mm-filet) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
   .racine .chiffres > div > div:last-child {
     font-size: 16px !important;
   }
 
-  /* Les tuiles du besoin, une par rangée sous 430 px : `grid-auto-rows:
-     1fr` (valeur de la capture, deux colonnes) les étirait toutes à la
-     hauteur de la plus haute, d'où un vide sous les courtes. */
-  .racine .besoinTuiles {
-    grid-auto-rows: auto !important;
+  /* G2 · « LE RÉSULTAT », PANNEAU SOMBRE OUVERT (L475 : `isPlain`,
+     `C_DARK`, 22 px 20 px, rayon 24 px, titre de 20 px, puis les petites
+     cartes en verre sombre). Sa bascule, doublon de son surtitre et de son
+     titre, n'est pas peinte : la section ne se replie pas. */
+  .racine .sectionResultat {
+    padding: 14px 18px 0 !important;
+  }
+  .racine .panneauResultat {
+    padding: 22px 20px !important;
+    border-radius: 24px !important;
+  }
+  .racine .lueurResultat {
+    display: none;
+  }
+  .racine .panneauResultat details[data-pliable-mobile] > summary {
+    display: none !important;
+  }
+  .racine .panneauResultat details[data-carte-numerotee] {
+    margin-top: 0;
+  }
+  .racine .panneauResultat details[data-carte-numerotee] > summary ~ * {
+    padding: 0 !important;
+    border: 0 !important;
+    background: none !important;
+  }
+  /* La maquette ne surtitre pas le résultat (dc.html L475, `result` :
+     `kick` vide) : le surtitre de bureau est masqué, pas retiré. */
+  .racine .kickerResultat {
+    display: none !important;
+  }
+  .racine section .titreResultat {
+    margin: 0 0 12px !important;
+    font: 600 20px/1.2 var(--ft) !important;
+    letter-spacing: -0.03em !important;
+    color: #fff !important;
+  }
+  .racine .resultats {
+    gap: 8px !important;
+    counter-reset: resultat;
+  }
+  .racine .resultats > div {
+    counter-increment: resultat;
+    display: grid;
+    grid-template-columns: 26px minmax(0, 1fr);
+    column-gap: 10px;
+    padding: 13px 14px !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .racine .resultats > div::before {
+    content: counter(resultat, decimal-leading-zero);
+  }
+  /* La coche de bureau : un ornement sans texte, remplacé par le numéro. */
+  .racine .resultats > div > span[aria-hidden="true"] {
+    display: none !important;
+  }
+  .racine .resultats > div > div {
+    grid-column: 2;
+  }
+  .racine .resultats > div > div:first-of-type {
+    margin: 0 !important;
+    font: 600 14.5px/1.4 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    color: #fff !important;
+  }
+  .racine .resultats > div > div + div {
+    margin-top: 4px !important;
+    font: 400 14px/1.55 var(--fb) !important;
+    color: rgba(255, 255, 255, 0.84) !important;
   }
 
-  /* LES OBJECTIFS, ouverts comme la section 01 de la maquette, en cartes
-     serrées (dc.html L131, `isKv` : 26 px de numéro, 13 px 14 px). */
-  .racine .objectifs {
+  /* G3 · LES SECTIONS DE TEXTE EN CARTES NUMÉROTÉES (L130). La carte est le
+     motif partagé `details[data-carte-numerotee]` (app/globals.css) : 12 px
+     entre deux cartes, la section qui la porte ne rajoute rien. Le numéro est
+     son compteur, le titre son étiquette ; le surtitre de l'étiquette est le
+     doublon de celui du corps, et le `<h2>` du corps celui du titre de
+     l'étiquette : ils sont masqués, le second pour l'œil seulement (il reste
+     un titre pour les lecteurs d'écran). */
+  .racine .sectionPli {
+    padding-top: 0 !important;
+  }
+  .racine .sectionPli > details[data-carte-numerotee] {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+  .etiquetteSurtitre {
+    display: none !important;
+  }
+  .racine .titreDoublon {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+  .racine .sectionPli [data-carte-surtitre] {
+    margin-bottom: 10px !important;
+  }
+
+  /* 01 · LA SITUATION : la phrase en gras qui ouvre la section (L382,
+     `allB` : 600 17px/1.45), puis le texte courant (400 15px/1.65). Le
+     surtitre « 01 · La situation » est le doublon de la carte, qui écrit
+     son numéro et son nom. */
+  .racine section .grilleSituation {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    gap: 0 !important;
+  }
+  .racine .kickerDoublon {
+    display: none !important;
+  }
+  .racine section .titreSituation {
+    margin: 2px 0 12px !important;
+    font: 600 17px/1.45 var(--ft) !important;
+    letter-spacing: -0.02em !important;
+    max-width: none !important;
+    color: var(--ink) !important;
+  }
+  .racine .proseSituation > p {
+    margin: 0 0 12px !important;
+    max-width: none !important;
+    font: 400 15px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  /* LES PETITES CARTES « Libellé : texte » (L131, `isKv`) : objectifs,
+     réponse, et plus bas les tuiles du besoin. */
+  .racine .objectifs,
+  .racine .bento {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
     gap: 8px !important;
+    margin-bottom: 14px;
+  }
+  .racine .objectifs > div,
+  .racine .bento > div {
+    min-height: 0 !important;
+    padding: 13px 14px !important;
+    border-radius: 16px !important;
+    background: var(--mc-fond-kv) !important;
+    border: 1px solid var(--mc-filet-kv) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
   .racine .objectifs > div {
-    padding: 13px 14px !important;
     grid-template-columns: 26px minmax(0, 1fr) !important;
     gap: 10px !important;
-    border-radius: 16px !important;
   }
   .racine .objectifs > div > span:first-child {
-    width: 26px !important;
-    height: 26px !important;
-    font-size: 11px !important;
-    line-height: 26px !important;
+    width: auto !important;
+    height: auto !important;
+    padding-top: 3px;
+    border-radius: 0 !important;
+    background: none !important;
+    font: 600 11px ui-monospace, Menlo, monospace !important;
+    line-height: normal !important;
+    text-align: left !important;
+  }
+  .racine .bento > div > div[aria-hidden="true"] {
+    display: none;
+  }
+  .racine .bento > div > div:last-child {
+    display: grid !important;
+    grid-template-columns: 26px minmax(0, 1fr);
+    column-gap: 10px;
+  }
+  .racine .bento > div > div:last-child > span:first-child {
+    grid-row: 1 / span 2;
+    margin: 0 !important;
+    padding-top: 3px;
+  }
+  .racine .bento > div > div:last-child > div {
+    grid-column: 2;
+  }
+  .racine .objectifs > div > div > div:first-child,
+  .racine .bento > div > div:last-child > div:first-of-type {
+    margin: 0 !important;
+    max-width: none !important;
+    font: 600 14.5px/1.4 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    color: var(--ink) !important;
+  }
+  .racine .objectifs > div > div > div + div,
+  .racine .bento > div > div:last-child > div + div {
+    margin-top: 4px !important;
+    max-width: none !important;
+    font: 400 14px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
   }
 
-  /* G3 · LES SECTIONS REPLIÉES EN CARTES, comme dc.html L130 : fond
-     blanc, filet, rayon 20 px, 15 px 16 px. Dépliées, elles reprennent
-     leur dessin ; la section qui les porte se resserre à 12 px. */
-  .racine section:has(details[data-pliable-mobile]:not([open])) {
-    padding-top: 12px !important;
+  /* 03 · LE DÉROULÉ en frise (L131, `isOl` : pastille de 30 px foncée,
+     12 px d'écart, 14 px sous chaque étape). */
+  .racine .etapes {
+    margin: 6px 0 12px;
   }
-  .pliClair > details[data-pliable-mobile]:not([open]) {
-    background: #fff;
-    border: 1px solid rgba(28, 27, 25, 0.08);
-    border-radius: 20px;
-    padding: 15px 16px;
+  .racine .etapes > * {
+    grid-template-columns: 30px minmax(0, 1fr) !important;
+    column-gap: 12px !important;
+    padding: 0 0 14px !important;
   }
-  .etiquettePli {
-    flex: 1 1 0%;
-    min-width: 0;
+  .racine .etapes > * > .pastille {
+    width: 30px !important;
+    height: 30px !important;
+    margin: 0 !important;
+    font: 600 11.5px/30px var(--fb) !important;
+    background: var(--ink) !important;
+    color: var(--card) !important;
+    box-shadow: none !important;
   }
-  /* Le bouton rond de la maquette (28 px, fond à 5,5 %) autour du
-     chevron de la bascule partagée. */
-  .racine details[data-pliable-mobile] > summary > span[aria-hidden="true"] {
-    display: grid;
-    place-items: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 999px;
-    background: rgba(28, 27, 25, 0.055);
-    font-size: 17px;
+  .racine .etapes > * > div {
+    grid-column: 2;
   }
-  .panneauResultat details[data-pliable-mobile] > summary > span[aria-hidden="true"] {
-    background: rgba(255, 255, 255, 0.12);
-    color: #fff;
+  .racine .etapes > * > div:first-of-type {
+    padding-top: 4px;
+    margin: 0 !important;
+    font: 600 14.5px/1.6 var(--fb) !important;
+    letter-spacing: normal !important;
   }
-  /* Le panneau sombre du résultat, replié : sa carte, pas ses 60 px. */
-  .panneauResultat:has(details[data-pliable-mobile]:not([open])) {
-    padding: 15px 16px !important;
+  .racine .etapes > * > div + div {
+    font: 400 14.5px/1.6 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  /* 04 · LE DISPOSITIF, une carte par rangée (L131, `isTb` : 14 px 15 px,
+     rayon 16 px). La photo suit la carte ouverte, et se replie avec elle. */
+  .racine .grilleDispositif {
+    gap: 0 !important;
+  }
+  .racine .grilleDispositif > .pliClair {
+    order: 1;
+  }
+  .racine .cadreDispositif {
+    order: 2;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 10;
+    margin-top: 8px;
     border-radius: 20px !important;
   }
-
-  /* LA PHOTO DU DISPOSITIF SE REPLIE AVEC SA SECTION : elle vit hors du
-     `<details>`, dans la cellule voisine ; sans cette règle, 420 px de
-     cadre restaient à l'écran sous une section fermée. Un cadre SANS
-     photo (`aria-hidden`) n'a rien à montrer : il n'est pas peint. */
-  .grilleDispositif:has(details[data-pliable-mobile]:not([open])) > .cadreDispositif,
-  .cadreDispositif[aria-hidden="true"] {
+  .racine .cadreDispositif > img {
+    display: block !important;
+    object-fit: cover;
+  }
+  /* Carte fermée, la photo se replie avec elle ; un cadre sans photo
+     (`aria-hidden`) n'a rien à montrer. */
+  .racine .grilleDispositif:has(details[data-pliable-mobile]:not([open])) > .cadreDispositif,
+  .racine .cadreDispositif[aria-hidden="true"] {
     display: none;
   }
+  .racine .tableDispositif {
+    display: grid;
+    gap: 8px;
+    margin: 4px 0 14px;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .racine .dispositifLigne {
+    gap: 3px !important;
+    padding: 14px 15px !important;
+    border: 1px solid var(--mc-filet-kv) !important;
+    border-radius: 16px;
+    background: var(--mc-fond-kv);
+  }
+  .racine .dispositifLigne > span:first-child {
+    padding-top: 0 !important;
+    font: 600 14.5px/1.45 var(--fb) !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    color: var(--ink) !important;
+  }
+  .racine .dispositifLigne > span:last-child {
+    font: 400 14px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
 
-  /* « POUR ALLER PLUS LOIN » DÉFILE À L'HORIZONTALE, motif carrousel de
-     la maquette (dc.html L131 : cartes de 236 px, aimantées). */
-  .racine .grillePlusLoin {
-    display: flex !important;
+  /* LE COMPLÉMENT, carte blanche (L131, `isPlain`). */
+  .racine .sectionComplement {
+    padding-top: 14px !important;
+  }
+  .racine .sectionComplement > div > div {
+    display: block !important;
+    padding: 18px 18px 4px !important;
+    border-radius: 22px !important;
+    background: var(--card) !important;
+    border: 1px solid var(--mm-filet) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .racine .sectionComplement h3 {
+    font-size: 16px !important;
+  }
+  .racine .sectionComplement p {
+    font: 400 15px/1.65 var(--fb) !important;
+  }
+
+  /* G4 · « VOTRE BESOIN », PANNEAU SOMBRE (L475 : `cta`, `C_DARK`). La
+     phrase d'accroche en gras, le texte, les engagements en petites cartes
+     de verre sombre, puis la carte du formulaire. */
+  .racine .sectionBesoin {
+    padding-top: 14px !important;
+  }
+  .racine .sectionBesoin > div {
     gap: 10px !important;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    padding-bottom: 4px;
   }
-  .racine .grillePlusLoin::-webkit-scrollbar {
-    display: none;
+  .racine .panneauBesoin {
+    padding: 22px 20px;
+    border-radius: 24px;
+    background: var(--panel);
+    color: #fff;
+  }
+  .racine .panneauBesoin > div:first-child {
+    margin-bottom: 8px !important;
+    font-size: 11px !important;
+  }
+  .racine section .titreBesoin {
+    margin: 0 0 6px !important;
+    max-width: none !important;
+    font: 600 17px/1.45 var(--ft) !important;
+    letter-spacing: -0.02em !important;
+    color: #fff !important;
+  }
+  .racine .panneauBesoin > p {
+    margin: 0 0 12px !important;
+    max-width: none !important;
+    font: 400 15px/1.65 var(--fb) !important;
+    color: rgba(255, 255, 255, 0.84) !important;
+  }
+  .racine .panneauBesoin > p:first-of-type {
+    font: 500 16px/1.6 var(--fb) !important;
+    color: #fff !important;
+  }
+  .racine .panneauBesoin strong {
+    color: #fff !important;
+  }
+  .racine .besoinTuiles {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-rows: auto !important;
+    gap: 8px !important;
+    margin-top: 4px !important;
+    counter-reset: tuile;
+  }
+  .racine .besoinTuiles > div {
+    counter-increment: tuile;
+    display: grid;
+    grid-template-columns: 26px minmax(0, 1fr);
+    column-gap: 10px;
+    height: auto !important;
+    padding: 13px 14px !important;
+    border-radius: 16px !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .racine .besoinTuiles > div::before {
+    content: counter(tuile, decimal-leading-zero);
+  }
+  .racine .besoinTuiles > div > div {
+    grid-column: 2;
+  }
+  .racine .besoinTuiles > div > div:first-of-type {
+    margin: 0 !important;
+    font: 600 14.5px/1.4 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    color: #fff !important;
+  }
+  .racine .besoinTuiles > div > div + div {
+    margin-top: 4px;
+    font: 400 14px/1.55 var(--fb) !important;
+    color: rgba(255, 255, 255, 0.84) !important;
+  }
+  .racine .carteFormulaire {
+    padding: 18px !important;
+    border-radius: 24px !important;
+    box-shadow: none !important;
+  }
+
+  /* G5 · « POUR ALLER PLUS LOIN », liste de liens (L134 : rangées blanches,
+     rayon 16 px, titre de 14 px, flèche orange). Le cadre photo de la
+     carte de bureau, un ornement, n'est pas peint. */
+  .racine .sectionPlusLoin {
+    padding: 22px 0 0 !important;
+  }
+  .racine .kickerPlusLoin {
+    margin-bottom: 10px !important;
+    font-size: 11px !important;
+  }
+  .racine .grillePlusLoin {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
   }
   .racine .grillePlusLoin > .cartePlusLoin {
-    flex: none;
-    width: 236px;
-    scroll-snap-align: start;
+    border-radius: 16px !important;
+    background: var(--card) !important;
+    border: 1px solid var(--mm-filet) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
   .racine .grillePlusLoin > .cartePlusLoin > div:first-child {
-    height: 118px !important;
+    display: none !important;
   }
+  .racine .grillePlusLoin > .cartePlusLoin > div:last-child {
+    padding: 12px 14px !important;
+    gap: 2px !important;
+  }
+  .racine .grillePlusLoin > .cartePlusLoin > div:last-child > span {
+    color: var(--mm-encre-3) !important;
+  }
+  .racine .grillePlusLoin > .cartePlusLoin > div:last-child > div {
+    align-items: center !important;
+  }
+  .racine .grillePlusLoin > .cartePlusLoin > div:last-child > div > span:first-child {
+    font: 600 14px/1.35 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+  }
+  .racine .grillePlusLoin > .cartePlusLoin > div:last-child > div > span:last-child {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 13px;
+  }
+
+  /* Le titre du carrousel garde le sien (dc.html L131, 20 px), et les
+     autres titres de section le corps de la maquette mobile. */
+  .racine section h2 {
+    font-size: 22px !important;
+    line-height: 1.2 !important;
+  }
+  .racine .titreCarrousel {
+    font-size: 20px !important;
+  }
+}
+
+:global(:root[data-theme="sombre"]) .racine {
+  --mc-fond-kv: rgba(255, 255, 255, 0.06);
+  --mc-filet-kv: rgba(255, 255, 255, 0.12);
 }
 
 /* LE BADGE DE LECTURE DU HÉROS MOBILE (dc.html L492), peint par la feuille
@@ -517,4 +1033,233 @@
 .filMobile li {
   flex: none;
   white-space: nowrap;
+}
+
+/* COUCHE MOBILE v2, passe du 14/10 (dc.html L412, L461, L475, L492) : ce que
+   le bureau garde et que le téléphone remplace par le texte de la maquette.
+   Tout reste dans le DOM. */
+@media (max-width: 880px) {
+  .racine .libelleBureau {
+    display: none !important;
+  }
+  /* Le nom du client entre dans le H1 (« Étude de cas AUTOLIV : … ») : la
+     pastille garde « Étude de cas · N min de lecture », comme la maquette. */
+  .racine .grilleHeros:has([data-prefixe-h1]) .clientHeros {
+    display: none !important;
+  }
+  /* Le texte qui suit les puces de « Ce que nous avons mis en place » et le
+     chapô du résultat (corpus, `## CE QUE NOUS AVONS MIS EN PLACE` et
+     `## LE RÉSULTAT`), à leur place de la maquette. */
+  .racine .suiteDeplacee {
+    margin: 14px 0 0 !important;
+    font: 400 15px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+  .racine .carteFormulaire {
+    display: none !important;
+  }
+  .racine .boutonsBesoin {
+    display: flex !important;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .racine .boutonsBesoin > a {
+    min-height: 50px;
+    justify-content: center;
+    text-align: center;
+    padding: 0 16px !important;
+    font: 600 14px/1.25 var(--fb) !important;
+  }
+  .racine .boutonsBesoin > a:first-child {
+    flex: 1 1 0%;
+  }
+  .racine .telephoneBesoin {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    white-space: nowrap;
+  }
+  .racine .suiteResultat {
+    margin: 14px 0 0 !important;
+    font: 400 15px/1.65 var(--fb) !important;
+    color: #fff !important;
+  }
+  .racine .chapeauDeplace {
+    margin: 0 0 14px !important;
+    /* Le premier paragraphe d'un panneau sombre de la maquette : 500 16px/1.6. */
+    font: 500 16px/1.6 var(--fb) !important;
+    color: #fff !important;
+  }
+
+  /* PASSE DU 15/10, relecture adverse du gabarit 02. */
+
+  /* Les tuiles de chiffres (tableau du corpus) doublent la carte « Le client
+     et le site » : la maquette ne les montre pas. Masquées, pas retirées. */
+  .racine .sectionChiffres {
+    display: none !important;
+  }
+
+  /* L'encadré rosé qui ferme la carte « Le client et le site » (dc.html,
+     `isQ` : 14px 16px, rayon 16 px, `--qbg`, 500 14.5px/1.55). La carte se
+     prolonge jusqu'à lui : la fiche (ou le chapô) qu'il suit perd son bord
+     bas. */
+  .racine .encadreClient {
+    order: 7;
+    /* -1 px : recouvre le joint sous-pixel avec la fiche, qui laissait
+       passer le fond de page en un filet gris. */
+    margin: -1px 0 0;
+    padding: 0 18px 18px;
+    background: var(--card);
+    border: 1px solid var(--mm-filet);
+    border-top: 0;
+    border-radius: 0 0 22px 22px;
+  }
+  .racine .encadreClient > span {
+    display: block;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: rgba(255, 124, 60, 0.09);
+    font: 500 14.5px/1.55 var(--fb);
+    color: var(--ink);
+  }
+  .racine .grilleHeros:has(.encadreClient) .ficheFlottante {
+    padding-bottom: 14px !important;
+    border-bottom: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  .racine .grilleHeros:has(.encadreClient):not(:has(.ficheFlottante)) .chapeauHeros:last-of-type {
+    padding-bottom: 14px;
+    border-bottom: 0;
+    border-radius: 0;
+  }
+  .racine .encadreClient a,
+  .racine .encadreSombre a {
+    font-weight: 600;
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(28, 27, 25, 0.28);
+  }
+
+  /* LE CHAPÔ DE « LA SITUATION » ET DE « PASSER À L'ACTION » : un seul
+     paragraphe (mesuré sur la maquette : 500 16px/1.6 Poppins, la phrase en
+     gras à 600), le `<h2>` puis la suite en romain sur la même ligne (le
+     premier `<p>`). Les colonnes de bureau s'effacent pour que les deux
+     coulent ensemble. */
+  .racine section .grilleSituation {
+    display: block !important;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .racine .panneauBesoin {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .racine .grilleSituation > .collante,
+  .racine .proseSituation {
+    display: contents;
+  }
+  .racine section .titreSituation,
+  .racine section .titreBesoin {
+    display: inline;
+    font: 600 16px/1.6 var(--fb) !important;
+    letter-spacing: normal !important;
+  }
+  .racine section .titreSituation::after,
+  .racine section .titreBesoin::after {
+    content: " ";
+  }
+  .racine .proseSituation > p:first-of-type,
+  .racine .panneauBesoin > h2 + p:first-of-type {
+    display: inline;
+    font: 500 16px/1.6 var(--fb) !important;
+    letter-spacing: normal;
+  }
+  .racine .proseSituation > p:first-of-type {
+    color: var(--ink) !important;
+  }
+  .racine .panneauBesoin > h2 + p:first-of-type {
+    color: #fff !important;
+  }
+  .racine .proseSituation > p:nth-of-type(2),
+  .racine .panneauBesoin > h2 + p + p {
+    margin-top: 12px !important;
+  }
+
+  /* « Ce que la mission illustre : », au-dessus des cartes du résultat. */
+  .racine .introResultat {
+    margin: 0 0 12px !important;
+    font: 400 15px/1.65 var(--fb);
+    color: rgba(255, 255, 255, 0.84);
+  }
+
+  /* LE PIED DU PANNEAU « PASSER À L'ACTION » : l'encadré brun (`isQ`,
+     `--qbg` sombre), « À lire aussi » en pastilles (`isRel`), le bouton
+     plein (dc.html L203). « Pour aller plus loin » reste au bureau. */
+  .racine .panneauBesoin > .encadreSombre {
+    margin: 14px 0 0 !important;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: rgba(255, 124, 60, 0.18);
+    font: 500 14.5px/1.55 var(--fb) !important;
+    color: #fff !important;
+  }
+  .racine .encadreSombre a {
+    text-decoration-color: rgba(255, 255, 255, 0.45);
+  }
+  .racine .lireAussi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .racine .lireAussiLibelle {
+    flex-basis: 100%;
+    font: 600 10.5px var(--fb);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.58);
+  }
+  .racine .pastilleLire {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 36px;
+    padding: 0 13px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font: 500 13px/1.3 var(--fb);
+    color: #fff;
+    text-decoration: none;
+  }
+  .racine .pastilleLire > span {
+    color: var(--acc);
+  }
+  .racine .boutonPlein {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    margin-top: 14px;
+    border-radius: 999px;
+    background: var(--acc);
+    color: #fff;
+    font: 600 14.5px var(--fb);
+    text-decoration: none;
+  }
+  .racine .sectionPlusLoin {
+    display: none !important;
+  }
+
+  /* Le maillage de bureau n'a rien à peindre ici : sa marge basse de 80 px
+     creusait le vide entre « Être rappelé » et le pied de page. */
+  .racine .maillageBas {
+    padding-bottom: 0 !important;
+  }
 }

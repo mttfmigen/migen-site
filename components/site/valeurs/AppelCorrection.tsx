@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 
 import { ANCRE_FORMULAIRE } from "@/components/site/blocs/habillage";
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
 
 import styles from "./Valeurs.module.css";
 import { CORRECTION } from "./valeurs-donnees";
@@ -31,7 +32,11 @@ export default function AppelCorrection() {
     // l'écart entre les deux cartes doublerait.
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
-        <div data-reveal="" style={VERRE}>
+        {/* Au téléphone, la maquette mobile v2 écrit ce bloc en texte dans le
+            flux (question, phrase clé, paragraphe) puis une puce : la carte
+            perd son dessin (`.appelPlat`), le bouton s'efface (il reste dans
+            le HTML), la puce de la maquette s'ajoute, mot pour mot. */}
+        <div data-reveal="" className={mobile.appelPlat} style={VERRE}>
           <div>
             <div
               style={{
@@ -70,8 +75,11 @@ export default function AppelCorrection() {
               {CORRECTION.texte}
             </p>
           </div>
+          <p data-mobile-seulement="" className={mobile.puceRappel}>
+            Un chargé d’affaires vous rappelle dans l’heure.
+          </p>
           <a
-            className={styles.boutonAccent}
+            className={`${styles.boutonAccent} ${mobile.masqueMobile}`}
             href={ANCRE_FORMULAIRE}
             style={{
               display: "inline-flex",

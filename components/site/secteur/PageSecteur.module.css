@@ -147,23 +147,187 @@
     display: none;
   }
 
-  /* LA BASCULE D'UN ÉCRAN PARTAGÉ REPLIÉ PAR LA PAGE (`PliSecteur`,
-     `pleinePage`). Elle vit HORS de la section qu'elle enveloppe : elle en
-     reprend donc la respiration (`--sec`, `blocs/habillage` SECTION) et la
-     gouttière (40 px, `LARGEUR`), sans quoi le bloc replié collerait au
-     précédent et au bord de l'écran. */
-  .pliPleinePage > details > summary {
-    padding: var(--sec) 40px 0;
+  /* LA CARTE D'UN ÉCRAN PARTAGÉ REPLIÉ PAR LA PAGE (`PliSecteur`,
+     `pleinePage`). Elle vit HORS de la section qu'elle enveloppe : elle prend
+     donc ici la gouttière des cartes de la maquette (dc.html `m: "12px 18px
+     0"`, les 12 px du haut sont ceux de la carte partagée). */
+  .pliPleinePage {
+    margin: 0 18px;
   }
 
+  /* ------------------------------------------------------- le haut de page
+     dc.html `stdHero` puis l'introduction (`P.intro`, `pfs: 16px`) : photo,
+     sur-titre, H1, bouton d'action et téléphone côte à côte, chapeau en
+     chapô (500 16px), mention en texte courant (400 16px), gouttière 18 px. */
+  .heros {
+    padding: 12px 18px 0 !important;
+  }
+
+  .herosTexte {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Le sur-titre de la maquette (11 px, orange, capitales) : « Expertise
+     sectorielle ». La pastille de bureau s'efface, son texte reste servi. */
+  .herosSurtitre {
+    order: 1;
+    font: 600 11px var(--fb);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--acc);
+  }
+
+  .gabarit .herosPastille {
+    display: none !important;
+  }
+
+  .gabarit .herosTexte h1 {
+    order: 2;
+    margin: 10px 0 0 !important;
+    font: 600 27px/1.1 var(--ft) !important;
+    letter-spacing: -0.04em !important;
+    max-width: none !important;
+    text-wrap: balance;
+  }
+
+  /* Le H1 de la maquette (`# …` du corpus), puis l'accroche du bureau au
+     dessin de `hero.punch` (dc.html L108 : 600 16px/1.4, -0.02em). */
+  .h1Maquette {
+    display: block;
+  }
+
+  .gabarit .h1Accroche {
+    display: block;
+    margin: 10px 0 0;
+    font: 600 16px/1.4 var(--ft);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+
+  /* Le fil d'Ariane de la maquette tient sur UNE ligne qui défile, 12 px
+     (dc.html L104), comme le socle partagé le fait dans la colonne du héros
+     des autres gabarits (`app/globals.css`, `[data-fil-ariane-mobile]`). */
+  .gabarit [data-fil-ariane-mobile] ol {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    white-space: nowrap;
+    font-size: 12px !important;
+    scrollbar-width: none;
+  }
+
+  .gabarit [data-fil-ariane-mobile] li {
+    flex: none;
+  }
+
+  .herosBoutons {
+    order: 3;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    margin: 16px 0 0 !important;
+  }
+
+  .herosBoutons > a:first-child {
+    flex: 1;
+    justify-content: center;
+    min-width: 0;
+    min-height: 50px;
+    padding: 0 16px !important;
+    font: 600 14px/1.25 var(--fb) !important;
+    text-align: center;
+    box-shadow: 0 12px 26px -14px rgba(255, 124, 60, 0.9) !important;
+  }
+
+  .herosChapeau {
+    order: 4;
+    margin: 16px 0 0 !important;
+    max-width: none !important;
+    font: 500 16px/1.6 var(--fb) !important;
+    color: var(--ink) !important;
+    text-wrap: pretty;
+  }
+
+  .herosMention {
+    order: 5;
+    margin: 12px 0 0 !important;
+    max-width: none !important;
+    font: 400 16px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  /* ---------------------------------------------------- les chiffres clés
+     dc.html `isStats` : section à 16 px, titre et tuiles du motif partagé.
+     La carte en verre du bureau qui les tenait s'efface. */
+  .chiffres {
+    padding: 16px 18px 0 !important;
+  }
+
+  .chiffres .grilleChiffres {
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* --------------------------------------- les écrans hors maquette mobile
+     Logos et réassurance, expertises, offres du secteur, marques : la
+     maquette mobile ne les dessine pas, ils restent REPLIÉS en cartes SANS
+     NUMÉRO (la suite 01 à 05 est celle de la maquette), après les questions.
+     Leur respiration de bureau (`--sec`) tombe : la carte porte la sienne. */
+  .annexe details[data-carte-numerotee] {
+    counter-increment: none;
+  }
+
+  .annexe details[data-carte-numerotee] > summary {
+    grid-template-columns: minmax(0, 1fr) 28px;
+    grid-template-areas:
+      "titre chevron"
+      "resume chevron";
+  }
+
+  .annexe details[data-carte-numerotee] > summary::before {
+    content: none;
+  }
+
+  .annexe section {
+    padding-top: 0 !important;
+  }
+
+  /* -------------------------------------------------------- le rappel final
+     Au téléphone, c'est la carte « Être rappelé » de la maquette (dc.html
+     `showEndCta`, `MobileSecteur`) qui clôt la page. Le formulaire de bureau
+     quitte l'écran, SAUF quand il est la cible de l'adresse (`#mgx-form`),
+     comme le panneau du héros. Il reste dans le HTML servi. */
+  .appelFinal:not(:has(:target)) {
+    display: none;
+  }
+
+  .appelFinal > div > section {
+    padding: 22px 18px 0 !important;
+  }
+
+  .appelFinal :global(.mg-pad) {
+    padding: 22px 20px !important;
+    border-radius: 24px !important;
+  }
+
+  /* Le maillage de bureau ne montre rien au téléphone (« Dans la même
+     rubrique » le remplace) : sa marge basse de 80 px laissait un vide avant
+     le pied de page, que la maquette n'a pas. */
+  .maillage {
+    padding-bottom: 0 !important;
+  }
 }
 
-/* LE TITRE D'UNE ÉTIQUETTE DE BASCULE GARDE LA TAILLE DES AUTRES ÉTIQUETTES
-   (`habillage-secteur` ETIQUETTE_TITRE, 22 px à 390 px) quand il est un `<h2>`
-   (`PliSecteur titreDeSection`) : même règle `.mg-site h2 !important` que
-   ci-dessus, même parade. L'étiquette n'existe pas au-dessus de 880 px. */
+/* LE TITRE D'UNE ÉTIQUETTE DE BASCULE prend la typographie des cartes de la
+   maquette mobile (`data-carte-titre`, `app/globals.css`), `<h2>` compris
+   (`PliSecteur titreDeSection`). L'étiquette n'existe pas au-dessus de
+   880 px. */
 .gabarit .titrePli {
-  font-size: calc(clamp(22px, 2.4vw, 30px) * var(--ts)) !important;
   margin: 0;
 }
 
@@ -174,13 +338,13 @@
    affiché, et c'est la bascule du composant qui sert. Réservé aux navigateurs
    qui savent afficher le contenu d'un `<details>` fermé (`::details-content`) :
    ailleurs la règle ne s'applique pas, et le visiteur garde deux bascules
-   plutôt qu'un contenu inaccessible. */
+   plutôt qu'un contenu inaccessible. `enveloppeGardee` s'en exempte. */
 @supports selector(::details-content) {
   @media (max-width: 880px) {
-    .pliPleinePage:has(details[data-pliable-mobile] details[data-pliable-mobile]) > details > summary {
+    .pliPleinePage:not(.enveloppeGardee):has(details[data-pliable-mobile] details[data-pliable-mobile]) > details > summary {
       display: none;
     }
-    .pliPleinePage:has(details[data-pliable-mobile] details[data-pliable-mobile]) > details::details-content {
+    .pliPleinePage:not(.enveloppeGardee):has(details[data-pliable-mobile] details[data-pliable-mobile]) > details::details-content {
       content-visibility: visible;
     }
   }

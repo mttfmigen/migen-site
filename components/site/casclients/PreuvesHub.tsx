@@ -2,13 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
+import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
+import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+import CarrouselRealisations from "@/components/site/preuve/CarrouselRealisations";
 import FilArianeMobile from "@/components/site/preuve/FilArianeMobile";
+import { realisationsLiees } from "@/components/site/preuve/donnees-mobiles";
 import type { ContenuHubPreuves } from "@/types/casclients";
 
 import FiltrePreuves from "./FiltrePreuves";
 import styles from "./PreuvesHub.module.css";
-import { PHOTOS_DU_HEROS, vuesPreuves } from "./vues-preuves";
+import { sectionsMobilesPreuves } from "./SectionsMobilesPreuves";
+import { PHOTO_HUB_MOBILE, PHOTOS_DU_HEROS, vuesPreuves } from "./vues-preuves";
+import PhotoMobile from "@/components/site/preuve/PhotoMobile";
 
 /**
  * Le hub /preuves/, gabarit « 10 Hub de rubrique », porté de
@@ -62,6 +68,30 @@ export interface ProprietesPreuvesHub {
   chemin?: string;
 }
 
+/**
+ * L'intro du chapô MOBILE, coupée après sa première phrase : la tête continue
+ * le paragraphe de l'accroche, la suite ouvre le second (corpus `preuves.md`).
+ * Rendue en `data-mobile-seulement`, À CÔTÉ de l'intro de bureau, qui garde
+ * son nœud texte unique : couper ce nœud en deux éléments décalait d'un
+ * sous-pixel la ligne de 1280 px (mesuré le 15/10). Pas de point suivi d'une
+ * espace, pas de coupe : l'intro de bureau sert aux deux largeurs.
+ */
+function IntroMobile({ texte }: { texte: string }) {
+  const coupe = texte.indexOf(". ");
+  if (coupe < 0) return null;
+  return (
+    <>
+      <span data-mobile-seulement="" className={styles.introTete}>
+        {" "}
+        {texte.slice(0, coupe + 1)}
+      </span>
+      <span data-mobile-seulement="" className={styles.introSuite}>
+        {texte.slice(coupe + 2)}
+      </span>
+    </>
+  );
+}
+
 export default function PreuvesHub({ titre, contenu, chemin }: ProprietesPreuvesHub) {
   const vues = vuesPreuves(contenu);
   const total = vues[0].nombre;
@@ -91,8 +121,9 @@ export default function PreuvesHub({ titre, contenu, chemin }: ProprietesPreuves
               alignItems: "center",
             }}
           >
-            <div>
+            <div className={styles.colonneTexte}>
               <div
+                className={styles.kickerHub}
                 style={{
                   font: "600 11.5px var(--fb)",
                   letterSpacing: ".14em",
@@ -101,7 +132,9 @@ export default function PreuvesHub({ titre, contenu, chemin }: ProprietesPreuves
                   marginBottom: 16,
                 }}
               >
-                Nos réalisations
+                {/* dc.html L492 : le surtitre du gabarit 10 est « Rubrique ». */}
+                <span className={styles.bureauSeul}>Nos réalisations</span>{" "}
+                <span data-mobile-seulement="">Rubrique</span>
               </div>
               <h1
                 className={styles.titreHub}
@@ -115,41 +148,70 @@ export default function PreuvesHub({ titre, contenu, chemin }: ProprietesPreuves
               >
                 {titre}
               </h1>
-              <p
-                className={styles.accroche}
-                style={{
-                  font: "600 17px/1.55 var(--fb)",
-                  color: "var(--ink,#1c1b19)",
-                  margin: "0 0 10px",
-                  maxWidth: "56ch",
-                  textWrap: "pretty",
-                }}
-              >
-                {contenu.accroche}
-              </p>
-              <p
-                className={styles.intro}
-                style={{
-                  font: "400 15.5px/1.65 var(--fb)",
-                  color: "var(--ink2,#6a6764)",
-                  margin: "0 0 22px",
-                  maxWidth: "58ch",
-                  textWrap: "pretty",
-                }}
-              >
-                {contenu.intro}
-              </p>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+              {/* Le chapô de la maquette MOBILE (corpus `preuves.md`) : l'accroche
+                  en gras, puis la première phrase de l'intro dans le MÊME
+                  paragraphe, en romain ; la suite en second paragraphe, gris
+                  (`IntroMobile`). L'enveloppe n'a aucun style au bureau. */}
+              <div className={styles.chapeauHub}>
+                <p
+                  className={styles.accroche}
+                  style={{
+                    font: "600 17px/1.55 var(--fb)",
+                    color: "var(--ink,#1c1b19)",
+                    margin: "0 0 10px",
+                    maxWidth: "56ch",
+                    textWrap: "pretty",
+                  }}
+                >
+                  {contenu.accroche}
+                </p>
+                <IntroMobile texte={contenu.intro} />
+                <p
+                  className={styles.intro}
+                  style={{
+                    font: "400 15.5px/1.65 var(--fb)",
+                    color: "var(--ink2,#6a6764)",
+                    margin: "0 0 22px",
+                    maxWidth: "58ch",
+                    textWrap: "pretty",
+                  }}
+                >
+                  {contenu.intro}
+                </p>
+              </div>
+              <div className={styles.boutonsHub} style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                 <Link
                   href="/contact/"
                   prefetch={false}
                   className={styles.bouton}
                   style={{ ...BOUTON, boxShadow: "0 12px 30px -12px rgba(255,124,60,.9)" }}
                 >
-                  Demander un diagnostic maintenance
+                  {/* dc.html L412 : « Décrire mon besoin », puis le
+                      téléphone (L111), sous 880 px. */}
+                  <span className={styles.bureauSeul}>Demander un diagnostic maintenance</span>{" "}
+                  <span data-mobile-seulement="">Décrire mon besoin</span>
                 </Link>
+                <a data-mobile-seulement="" href="tel:+33478337205" className={styles.boutonTel}>
+                  04 78 33 72 05
+                </a>
               </div>
             </div>
+
+            {/* MAQUETTE MOBILE, entre les boutons et le chapô : « Toutes les
+                pages de la rubrique » (dc.html L498, `kidsTop`), puis, après
+                le chapô, l'encadré du corpus (`Preuves/preuves.md`, L15). */}
+            {chemin ? (
+              <div data-mobile-seulement="" className={styles.listeRubrique}>
+                {" "}
+                <PastillesCocon chemin={chemin} variante="enfants" />{" "}
+              </div>
+            ) : null}
+            {chemin ? (
+              <p data-mobile-seulement="" className={styles.encadreHub}>
+                Demandez un diagnostic maintenance ou appelez le 04 78 33 72 05 : nous vous
+                rappelons dans l&apos;heure.
+              </p>
+            ) : null}
 
             <div
               className={styles.mosaique}
@@ -162,7 +224,8 @@ export default function PreuvesHub({ titre, contenu, chemin }: ProprietesPreuves
               }}
             >
               <div style={{ ...CASE_MOSAIQUE, gridRow: "span 2" }}>
-                <Image
+                <PhotoMobile
+                  mobile={PHOTO_HUB_MOBILE}
                   src={PHOTOS_DU_HEROS[0]}
                   alt="Techniciens migen sur un site client"
                   fill
@@ -251,8 +314,25 @@ export default function PreuvesHub({ titre, contenu, chemin }: ProprietesPreuves
 
         <FiltrePreuves vues={vues} />
 
+        {/* LES SECTIONS DE LA MAQUETTE MOBILE, une carte numérotée par type
+            de besoin, avec la cadence de conversion (photo + CTA après la 2e,
+            bandeau « Être rappelé » après la 5e), puis « Nos réalisations »
+            (dc.html, `refsSec`). Le rappel final reste en bas. */}
+        {chemin ? (
+          <div data-mobile-seulement="" className={styles.sectionsMobiles}>
+            {" "}
+            <AvecConversionMobile chemin={chemin} gabarit="10" rappelFinal={false}>
+              {sectionsMobilesPreuves(vues, contenu.recents)}
+            </AvecConversionMobile>{" "}
+            <CarrouselRealisations
+              cartes={realisationsLiees(chemin)}
+              titre="Nos réalisations"
+            />{" "}
+          </div>
+        ) : null}
+
         <section
-          className={styles.bandeFinale}
+          className={`${styles.bandeFinale} ${styles.bureauSeul}`}
           style={{ maxWidth: 1200, margin: "0 auto", padding: "56px 40px 96px" }}
         >
           <div

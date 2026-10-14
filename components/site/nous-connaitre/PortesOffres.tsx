@@ -1,9 +1,6 @@
 import type { CSSProperties } from "react";
 
-import { resumeDe } from "@/components/site/blocs/resume-de-section";
-
 import styles from "./PortesOffres.module.css";
-import SectionRepliee from "./SectionRepliee";
 
 /**
  * Les six offres, en sortie de « Nous connaître ».
@@ -164,10 +161,15 @@ const OFFRES: readonly Offre[] = [
  */
 const INTITULE = "Nos six offres";
 
+/**
+ * AU TÉLÉPHONE, PAS DE CARTE À ELLES : la maquette mobile v2 n'en a pas. Le
+ * bloc est rangé dans la carte 09 (`PortesValeursRse`), sous les deux portes,
+ * et son titre y reste lisible (pas de `data-titre-bureau`). L'ancre
+ * `#nos-six-offres` reste posée sur la section.
+ */
 export default function PortesOffres() {
   return (
-    <SectionRepliee titre={INTITULE} resume={resumeDe(OFFRES.map((o) => o.titre))}>
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    <section id="nos-six-offres" style={{ padding: "var(--sec) 0 0" }}>
       {/* `max-width:1200px` ET `0 40px` dans le MÊME attribut de style : c'est
           le couple que cherche `app/globals.css` pour ramener la gouttière de
           40 à 20 px sous 390 px (`@media (max-width: 389px)`). Les commentaires
@@ -178,7 +180,6 @@ export default function PortesOffres() {
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         {/* Échelle de titre de `TerrainsExcellence`, sur le même écran. */}
         <h2
-          data-titre-bureau=""
           style={{
             font: "600 calc(clamp(26px,2.6vw,36px) * var(--ts))/1.12 var(--ft)",
             letterSpacing: "-.04em",
@@ -213,6 +214,5 @@ export default function PortesOffres() {
         </div>
       </div>
     </section>
-    </SectionRepliee>
   );
 }

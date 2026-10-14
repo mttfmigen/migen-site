@@ -35,6 +35,10 @@ export interface ProprietesPliSecteur {
   resume?: string;
   pleinePage?: boolean;
   titreDeSection?: boolean;
+  /** L'enveloppe garde SA bascule même si le contenu porte un repli à lui
+   *  (logos et réassurance : seul le second se replie, le garde-fou du double
+   *  repli déplierait les logos). */
+  enveloppeGardee?: boolean;
   children: ReactNode;
 }
 
@@ -44,17 +48,22 @@ export default function PliSecteur({
   resume,
   pleinePage = false,
   titreDeSection = false,
+  enveloppeGardee = false,
   children,
 }: ProprietesPliSecteur) {
   const Titre = titreDeSection ? "h2" : "span";
   return (
-    <div className={`${stylesOffre.blocPliablePartage}${pleinePage ? ` ${styles.pliPleinePage}` : ""}`}>
+    <div className={`${stylesOffre.blocPliablePartage}${pleinePage ? ` ${styles.pliPleinePage}` : ""}${enveloppeGardee ? ` ${styles.enveloppeGardee}` : ""}`}>
       <SectionPliableMobile
         enTete={
           <span data-mobile-seulement="" className={stylesOffre.etiquettePli}>
-            {surtitre ? <span style={ETIQUETTE_SURTITRE}>{surtitre}</span> : null}
+            {surtitre ? (
+              <span data-carte-surtitre="" style={ETIQUETTE_SURTITRE}>
+                {surtitre}
+              </span>
+            ) : null}
             {titre ? (
-              <Titre className={styles.titrePli} style={ETIQUETTE_TITRE}>
+              <Titre data-carte-titre="" className={styles.titrePli} style={ETIQUETTE_TITRE}>
                 {titre}
               </Titre>
             ) : null}

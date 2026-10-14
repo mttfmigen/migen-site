@@ -7,6 +7,8 @@ import { appliqueDecisions } from "@/lib/decisions-copie";
 
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import { FAMILLES } from "@/components/site/marques/marques-donnees";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import EtiquettePli from "./EtiquettePli";
 import type { Marque } from "@/components/site/marques/marques-donnees";
 
 /**
@@ -212,10 +214,24 @@ export default function MarquesOffre({
   if (!retenue) return null;
 
   return (
-    <section style={SECTION}>
+    /* Absent de la maquette mobile v2 : au téléphone, après ses sections
+       (`data-mobile-apres-sections`, socle de `app/globals.css`). */
+    <section data-mobile-apres-sections="" style={SECTION}>
       <div style={LARGEUR}>
+        {/* Replié au téléphone, même motif que « Les prestations regroupées
+            ici » : étiquette = sur-titre et H2 de bureau, doublon effacé. */}
+        <SectionPliableMobile
+          numero={false}
+          enTete={
+            <EtiquettePli
+              surtitre="Marques et constructeurs"
+              titre="Les équipements que nous maintenons déjà"
+            />
+          }
+          resume={appliqueDecisions(PROMESSE, chemin)}
+        >
         <div className="mg-r2" style={ENTETE}>
-          <div>
+          <div data-doublon-mobile="">
             <div style={SURTITRE}>Marques et constructeurs</div>
             <h2 style={TITRE}>Les équipements que nous maintenons déjà</h2>
           </div>
@@ -251,6 +267,7 @@ export default function MarquesOffre({
             ))}
           </div>
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

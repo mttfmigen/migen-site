@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
 import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 import { AGENCES, HUBS } from "./equipe-donnees";
@@ -17,9 +18,14 @@ import { CHAPEAU, LARGEUR, SECTION, SURTITRE, TITRE2, VERRE } from "./habillage-
 const SURTITRE_TEXTE = "Nos implantations";
 const TITRE_TEXTE = "Quatre agences, dix hubs de techniciens.";
 
+/** Carte 05 du téléphone : son numéro suit l'ordre de la maquette (`rang`). */
+export const SOMMAIRE_IMPLANTATIONS: EntreeSommaire = { id: "implantations", titre: SURTITRE_TEXTE };
+
 export default function ImplantationsEquipe() {
   return (
     <SectionRepliee
+      id={SOMMAIRE_IMPLANTATIONS.id}
+      rang={5}
       kicker={SURTITRE_TEXTE}
       titre={TITRE_TEXTE}
       resume={resumeDe(AGENCES.map((a) => a.ville))}

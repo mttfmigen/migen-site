@@ -105,23 +105,44 @@ const REPONSE: CSSProperties = {
   maxWidth: "68ch",
 };
 
-export default function QuestionsVille({ section }: { section: SectionObjections }) {
+/** La question finale du corpus (« 10 Appel final »), dernière question au téléphone. */
+export interface DerniereQuestion {
+  question: string;
+  bouton: string;
+  rappel?: string;
+  href?: string;
+}
+
+export default function QuestionsVille({
+  section,
+  derniere,
+}: {
+  section: SectionObjections;
+  /**
+   * Maquette mobile (`migen-mobile-parse.js`, `faqItems`) : le paragraphe gras
+   * « Besoin… ? » qui clôt la FAQ du corpus est sa DERNIÈRE question, sa
+   * réponse le lien et la phrase de rappel. Sur bureau il reste le titre de
+   * l'appel final ; ici, une question de plus, téléphone seulement.
+   */
+  derniere?: DerniereQuestion;
+}) {
   const groupe = useId();
   if (section.questions.length === 0) return null;
 
   return (
-    <section style={SECTION}>
+    <section className={styles.sectionFaq} style={SECTION}>
       <div style={LARGEUR}>
         <div className={`mg-r2 ${styles.faqPhoto}`} style={GRILLE}>
           <div>
-            <div style={SURTITRE}>Questions fréquentes</div>
-            <h2 style={TITRE}>Vos questions avant de nous appeler</h2>
+            {/* `data-faq-*` : la liste de la maquette mobile (app/globals.css). */}
+            <div data-faq-surtitre="" style={SURTITRE}>Questions fréquentes</div>
+            <h2 data-faq-titre="" style={TITRE}>Vos questions avant de nous appeler</h2>
             {/* `#mgx-form` : l'ancre de l'appel final, celle de la capture. */}
-            <a href="#mgx-form" className={stylesOffre.boutonPrincipal} style={BOUTON}>
+            <a href="#mgx-form" className={`${stylesOffre.boutonPrincipal} ${styles.boutonFaq}`} style={BOUTON}>
               Poser ma question
             </a>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10 }}>
+          <div data-faq-liste="" style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10 }}>
             {section.questions.map((q, rang) => (
        <details key={q.question} className={styles.pli} style={PLI} name={groupe} >
                 <summary style={RESUME}>
@@ -139,6 +160,24 @@ export default function QuestionsVille({ section }: { section: SectionObjections
                 ) : null}
               </details>
             ))}
+            {derniere ? (
+              <details data-mobile-seulement="" className={styles.pli} style={PLI} name={groupe}>
+                <summary style={RESUME}>
+                  <span style={QUESTION}>{derniere.question}</span>
+                  <span aria-hidden="true" className={styles.plus} style={PLUS}>
+                    +
+                  </span>
+                </summary>
+                <div className={styles.texteAvecLiens} style={REPONSE}>
+                  {derniere.bouton ? (
+                    <p>
+                      <a href={derniere.href ?? "#mgx-form"}>{derniere.bouton}</a>
+                    </p>
+                  ) : null}
+                  {derniere.rappel ? <p>{derniere.rappel}</p> : null}
+                </div>
+              </details>
+            ) : null}
           </div>
         </div>
       </div>

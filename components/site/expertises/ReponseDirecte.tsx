@@ -97,21 +97,24 @@ export default function ReponseDirecte({
   points,
 }: ProprietesReponseDirecte) {
   return (
-    <section style={SECTION}>
+    /* `data-mm-*` : sous 881 px, dans la carte « 01 La réponse directe »,
+       le dessin du corps de carte du socle (`app/globals.css`) ; la carte en
+       verre des points s'efface au profit des sous-cartes (`./mobile`). */
+    <section data-reponse-directe="" style={SECTION}>
       <div className="mg-r2" style={GRILLE}>
         <div>
-          <div style={SURTITRE}>{surtitre}</div>
-          <h2 style={TITRE}>{titre}</h2>
-          {texte ? <p style={TEXTE}>{texte}</p> : null}
+          <div data-mm-surtitre="" style={SURTITRE}>{surtitre}</div>
+          <h2 data-mm-lead="" style={TITRE}>{titre}</h2>
+          {texte ? <p data-mm-texte="" style={TEXTE}>{texte}</p> : null}
         </div>
         {points.length > 0 ? (
-          <div style={CARTE}>
+          <div data-mm-kv="" style={CARTE}>
             {points.map((point, rang) => (
               <div key={point.titre} style={RANGEE}>
-                <span style={NUMERO}>{numerote(rang)}</span>
+                <span data-mm-num="" style={NUMERO}>{numerote(rang)}</span>
                 <div>
-                  <div style={TITRE_POINT}>{point.titre}</div>
-                  <p style={TEXTE_POINT}>{point.texte}</p>
+                  <div data-mm-kv-titre="" style={TITRE_POINT}>{point.titre}</div>
+                  <p data-mm-kv-texte="" style={TEXTE_POINT}>{point.texte}</p>
                 </div>
               </div>
             ))}

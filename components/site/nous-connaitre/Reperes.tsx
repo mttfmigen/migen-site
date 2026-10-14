@@ -1,5 +1,7 @@
 import type { CSSProperties } from "react";
 
+import mobile from "./mobile-apropos.module.css";
+
 /**
  * Quatre repères chiffrés, en cartes de verre.
  *
@@ -7,6 +9,10 @@ import type { CSSProperties } from "react";
  * confirmés par Migen : ils sont remontés dans le rapport de portage. Ils sont
  * déclarés en données plutôt qu'en balises pour qu'une correction se fasse en
  * une ligne, sans toucher à la mise en page.
+ *
+ * SUR TÉLÉPHONE, les petites cartes numérotées de la maquette mobile v2
+ * (`isKv`, dc.html L131) : le chapô de « Nous connaître » y range ces quatre
+ * repères en liste « Libellé : texte ». Rien ne change au bureau.
  */
 
 interface Repere {
@@ -46,7 +52,7 @@ const CARTE: CSSProperties = {
 
 export default function Reperes() {
   return (
-    <section style={{ padding: "52px 0 0" }}>
+    <section className={mobile.reperes} style={{ padding: "52px 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div
           data-reveal=""
@@ -58,7 +64,7 @@ export default function Reperes() {
           }}
         >
           {REPERES.map((r) => (
-            <div key={r.valeur} style={CARTE}>
+            <div key={r.valeur} className={mobile.repereCarte} style={CARTE}>
               <div
                 style={{
                   font: "600 calc(38px * var(--ts))/1 var(--ft)",

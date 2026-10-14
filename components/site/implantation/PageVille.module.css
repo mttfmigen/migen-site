@@ -96,100 +96,111 @@
 }
 
 /* =========================================================================
-   LA COUCHE MOBILE V2 DU HÉROS (14/10). Tout vit sous `max-width: 880px`,
-   le seuil de `SectionPliableMobile.module.css` : au-dessus, ces classes
-   sont vides et le style en ligne de la capture reste seul maître.
+   LA MAQUETTE MOBILE V2, BLOC PAR BLOC (14/10 au soir), pour les 74 pages
+   des gabarits 04 Ville et 06 Département et le hub `/implantations/`.
+
+   LE DESSIN VIENT DU SOCLE PARTAGÉ (`app/globals.css`, « socle mobile v2 des
+   gabarits à sections ») : les composants de cette famille posent les mêmes
+   attributs que les autres gabarits à sections (`data-heros-*`,
+   `data-chiffres-mobile`, `data-tuiles-*`, `data-mm-*`,
+   `data-panneau-mobile-clair`, `data-faq-*`, `data-ordre-mobile`). Ici ne
+   vit que ce qui est propre à la famille. TOUT est sous 881 px, sauf la
+   bascule retirée du bureau, qui y rend le bloc tel que sa capture.
    ========================================================================= */
 
-/* Le fil d'Ariane du héros mobile : `margin-bottom: 12px` de la maquette
-   (dc.html L104). Visible sous 881 px seulement : l'attribut
-   `data-mobile-seulement` posé à côté de cette classe est masqué au-dessus
-   par `app/globals.css` (`display: none !important`). */
-.filMobile {
-  margin-bottom: 12px;
-}
-
-/* Le héros compact de la maquette mobile (dc.html L103-109) : gouttières de
-   18 px, h1 à 27px/1.1, sous-titre à 15px/1.6. `!important` parce que les
-   valeurs de bureau sont des styles EN LIGNE (habillage-offre.ts) : sans lui,
-   la règle ne s'appliquerait jamais. Mesure du 14/10 : héros à 1 850 px à
-   390 px sur le gabarit 04, 1 939 px sur le 06.
-
-   LE H1 PASSE PAR `.herosVille .titreHerosMobile`, DEUX CLASSES, et c'est
-   indispensable : `app/globals.css` pose sous 760 px
-   `.mg-site h1 { font-size: clamp(32px, 9vw, 42px) !important }`, une classe
-   et un élément. À importance égale la plus spécifique gagne : une classe
-   seule perdait, et le h1 restait à 35 px au lieu des 27 de la maquette.
-
-   L'ÉCART DE LA GRILLE DU HÉROS, 52 px en ligne (capture de bureau), tombe à
-   18 px : sur une colonne il séparait le texte du panneau replié par un
-   vide que la maquette mobile ne porte pas. */
 @media (max-width: 880px) {
+  /* Le héros : le fil d'Ariane (au-dessus de la grille) puis la colonne que
+     le socle met dans l'ordre de la maquette. */
   .herosVille {
-    padding: 28px 18px 0 !important;
+    padding: 12px 18px 0 !important;
   }
   .herosVille > div {
-    gap: 18px !important;
+    gap: 0 !important;
   }
-  .herosVille .titreHerosMobile {
-    font: 600 27px/1.1 var(--ft) !important;
-    letter-spacing: -0.04em !important;
+  .filMobile {
+    margin-bottom: 12px;
   }
-  .herosVille .chapeauHerosMobile {
-    font: 400 15px/1.6 var(--fb) !important;
-    margin-top: 12px !important;
+  /* « Départements couverts » des hubs (dc.html L125, kidsTop) : sous les
+     boutons, avant le chapô, à la gouttière de la colonne. */
+  .racineVille [data-heros-colonne] > [data-pastilles-cocon] {
+    order: 2;
+    margin: 20px 0 0 !important;
   }
-}
 
-/* LE RYTHME DES SECTIONS AU TÉLÉPHONE (G1). La racine du gabarit pose
-   `--sec: 120px` EN LIGNE, valeur de la maquette de BUREAU relevée à 390 px le
-   08/10. La maquette mobile v2, désormais la référence sous 880 px, enchaîne
-   ses blocs à 12-22 px d'écart : 120 px avant chacune des quinze sections
-   pesaient à eux seuls 1 800 px de vide. On revient à la règle mobile du site,
-   `--sec: 64px` (`app/globals.css`, `.mg-site` sous 760 px), qu'on étend
-   jusqu'à 880 px, le seuil de la couche mobile. `!important` : la valeur de
-   bureau est en ligne. Au-dessus de 880 px, rien ne change. */
-@media (max-width: 880px) {
-  /* `main` aussi : le hub `/implantations/` pose son propre `--sec: 120px`
-     sur son `<main>` (`offres/PageOffres.module.css`, `.racine`), qui
-     l'emporterait sur la valeur héritée de la racine. */
+  /* L'écart des sections : ZÉRO. La maquette enchaîne ses cartes à 12 px
+     (dc.html, `m: "12px 18px 0"`), et ce sont les cartes qui le portent
+     (`details[data-carte-numerotee] { margin-top: 12px }`). `main` aussi :
+     le hub pose son propre `--sec` sur son `<main>`. */
   .racineVille,
   .racineVille main {
-    --sec: 64px !important;
+    --sec: 0px !important;
+  }
+
+  /* Le dessin en rangée et le panneau sombre du problème : la section n'a
+     plus de rembourrage, sa carte prend la gouttière de 18 px. */
+  .sectionCarte > div {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
   }
 }
 
-/* LE CHEVRON D'UN BLOC REPLIÉ RESTE SUR LA LIGNE DU TITRE. La bascule est une
-   rangée flexible qui passe à la ligne (`SectionPliableMobile.module.css`) :
-   un en-tête de largeur `auto` y prend sa largeur de contenu, plus large que
-   l'écran pour tout titre de deux lignes, et repousse le chevron seul sur
-   une ligne à lui, entre le titre et le résumé (relevé le 14/10 à 390 px sur
-   l'offre, le déroulé, les garanties, le hub local, le maillage). Une base
-   nulle lui fait prendre la place qui RESTE à côté du chevron. Téléphone
-   seulement : au-dessus de 880 px le chevron n'existe pas. */
+/* Le panneau de formulaire du héros, sous 881 px : masqué tant que
+   l'adresse ne le vise pas. Son texte est rendu à l'identique plus bas, par
+   « 10 Appel final » (même `PanneauFormulaire`, même titre, même pastille,
+   mêmes champs) : c'est le doublon que la règle admet. Les boutons qui visent
+   `#besoin` le rouvrent (`:target`), et `OuvreLaCible` déplie son repli.
+   Même décision que les gabarits d'offre et d'expertise (`.panneauHeros`). */
 @media (max-width: 880px) {
-  .racineVille details[data-pliable-mobile] > summary > :first-child {
-    flex: 1 1 0;
-    min-width: 0;
+  .panneauHeros:not(:has(:target)) {
+    display: none;
+  }
+  /* Les bandes d'appel du bureau : au téléphone, la cadence de conversion
+     (photo + CTA, bandeau « Être rappelé ») les remplace, comme l'offre
+     (`.gabaritOffre [data-bande-appel]`). Leur texte reste dans le DOM. */
+  .racineVille [data-bande-appel] {
+    display: none;
+  }
+  /* Les replis posés hors d'une section (déroulé, marques) : la gouttière
+     de 18 px des autres cartes, pour une même largeur. */
+  .repliHorsSection {
+    padding: 0 18px;
   }
 }
 
-/* --------------- un bloc enveloppé de l'extérieur, replié au téléphone
+/* ------------------------------------------------- « Questions fréquentes »
 
-   `DerouleRepliable` met la SECTION entière de `DerouleOffre` dans le corps du
-   `<details>` : la bascule se trouve donc hors de la section, sans son
-   rembourrage haut ni ses gouttières. Sous 880 px on lui rend les deux
-   (`--sec` au-dessus, 20 px de côté, la gouttière `.mg-pad` du site), et on
-   retire le rembourrage haut de la section enveloppée, sans quoi le bloc
-   ouvert porterait deux fois l'espace de section. Au-dessus de 880 px, la
-   bascule n'existe pas (`blocPliablePartage`) et la section garde le sien. */
+   La maquette (dc.html `isTitle` puis `isQ`) : un titre de 21 px, puis une
+   simple liste de cartes blanches, « + » en pastille. La carte sombre à photo
+   du bureau (`.faqPhoto`) s'efface sous 881 px et ses jetons de texte
+   reviennent à ceux de la page ; les attributs `data-faq-*` (app/globals.css)
+   font le reste. « Poser ma question » reste, en bouton discret. */
 @media (max-width: 880px) {
-  .repliHorsSection > details > summary {
-    margin: 0;
-    padding: var(--sec) 20px 0;
+  .sectionFaq {
+    padding: 26px 0 0 !important;
   }
-  .repliHorsSection > details > div > section {
-    padding-top: 0 !important;
+  .faqPhoto {
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    gap: 6px !important;
+    --ink: inherit;
+    --ink1: inherit;
+    --ink2: inherit;
+    --ink3: inherit;
+    --ink4: inherit;
+    --line: inherit;
+    --chip: inherit;
+    --gl-a: inherit;
+    --gbd: inherit;
+    --card: inherit;
+    --acc-ink: inherit;
+  }
+  .boutonFaq {
+    min-height: 44px;
+    padding: 0 18px !important;
+    margin: 2px 0 6px;
+    font: 600 14px var(--fb) !important;
+    box-shadow: none !important;
   }
 }
 
@@ -273,5 +284,176 @@
 @media (prefers-reduced-motion: reduce) {
   .chevronFormulaire {
     transition: none;
+  }
+}
+
+/* =========================================================================
+   RELECTURE DU 15/10 CONTRE LA MAQUETTE MOBILE V2. Tout est sous 881 px.
+   ========================================================================= */
+@media (max-width: 880px) {
+  /* Les écrans de bureau absents de la colonne de la maquette (logos,
+     certifications, hub local, bande d'appel, marques, offres) : la maquette
+     enchaîne « 05 Nos références » puis le bandeau « Une question sur votre
+     site ? ». Effacés au téléphone, texte gardé dans le DOM. */
+  :root .racineVille main > [data-mobile-apres-sections] {
+    display: none !important;
+  }
+
+  /* « 01 Le problème » à photo (Lille…) : la maquette passe de l'accroche aux
+     cartes, sans photo (une seule photo, celle du héros). */
+  .racineVille [data-photo-probleme] {
+    display: none !important;
+  }
+
+  /* Le chapô déclaré en sous-titre du héros (Bordeaux) : sous le H1, avant
+     les boutons (même rang que le H1, l'ordre du DOM le place après). */
+  :root .chapeauHaut[data-heros-chapeau] {
+    order: 1;
+    margin-top: 4px !important;
+    font: 400 15px/1.6 var(--fb) !important;
+    letter-spacing: normal !important;
+    color: #4a4845 !important;
+  }
+
+  /* Le sur-titre de bureau (« Nos implantations ») cède la place à celui du
+     gabarit de la maquette (`KICK`, « Implantation » ou « Département »),
+     rendu à côté en `data-mobile-seulement`. Texte gardé dans le DOM. */
+  :root .pastilleBureau {
+    display: none !important;
+  }
+
+  /* « 01 Le problème », en rangée (`ProblemeCartes`) comme en colonne à
+     photo (`offre/ProblemeOffre`, Lille) : la maquette n'a pas de sur-titre
+     dans la carte, et la punchline y est UN paragraphe gras (H2 et suite à
+     la file). Le H2 reste un H2, en ligne ; le sur-titre reste dans le DOM. */
+  :root .racineVille :is([data-mm-entete-probleme], [data-screen-label="03 Problème"] div:has(> [data-mm-lead] ~ [data-mm-texte])) {
+    display: block !important;
+    margin: 4px 0 14px !important;
+    font: 600 17px/1.45 var(--ft);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  :root .racineVille :is([data-mm-entete-probleme], [data-screen-label="03 Problème"] div:has(> [data-mm-lead] ~ [data-mm-texte])) [data-mm-surtitre] {
+    display: none !important;
+  }
+  :root .racineVille [data-mm-entete-probleme] > div,
+  :root .racineVille :is([data-mm-entete-probleme], [data-screen-label="03 Problème"] div:has(> [data-mm-lead] ~ [data-mm-texte])) :is([data-mm-lead], [data-mm-texte]) {
+    display: inline !important;
+    margin: 0 !important;
+    font: inherit !important;
+    letter-spacing: inherit !important;
+    color: inherit !important;
+  }
+  .racineVille :is([data-mm-entete-probleme], [data-screen-label="03 Problème"] div:has(> [data-mm-lead] ~ [data-mm-texte])) [data-mm-lead]::after {
+    content: " ";
+  }
+
+  /* « + 120 Collaborateurs » : le mot passe en libellé sous la valeur. */
+  :root .uniteChiffre {
+    display: block;
+    margin-top: 5px;
+    font: 400 12.5px/1.45 var(--fb);
+    letter-spacing: normal;
+    color: var(--ink1);
+  }
+  /* … et le libellé suit sans blanc, comme un seul libellé de tuile. */
+  :root .racineVille [data-tuiles-chiffres] > * > :first-child:has(.uniteChiffre) + * {
+    margin-top: 0 !important;
+  }
+
+  /* Rail des références : une carte dont le corpus n'a pas de « : » après
+     son titre gras (GLS à Bordeaux, FDJ en Essonne) rend titre et texte dans
+     un seul bloc, sans `data-mm-rail-titre`. Même dessin que ses voisines. */
+  :root .racineVille [data-mm-rail-corps] > div:not([data-mm-rail-client]):not([data-mm-rail-titre]):not([data-mm-rail-texte]):not([data-mm-rail-pied]) {
+    margin: 4px 0 8px !important;
+    font: 400 12.5px/1.5 var(--fb) !important;
+    letter-spacing: normal !important;
+    color: var(--ink2) !important;
+  }
+  :root .racineVille [data-mm-rail-corps] > div:not([data-mm-rail-client]):not([data-mm-rail-titre]):not([data-mm-rail-texte]):not([data-mm-rail-pied]) > span:first-child {
+    display: block !important;
+    margin-bottom: 4px !important;
+    font: 600 14px/1.35 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    color: var(--ink) !important;
+  }
+
+  /* « Questions fréquentes » : un seul titre (dc.html `isTitle`, 21 px).
+     Le sur-titre porte ce texte ; le H2 du bureau reste lu par les lecteurs
+     d'écran, le bouton « Poser ma question » s'efface (texte dans le DOM). */
+  :root .sectionFaq [data-faq-surtitre] {
+    margin: 0 0 10px !important;
+    font: 600 21px/1.2 var(--ft) !important;
+    letter-spacing: -0.03em !important;
+    text-transform: none !important;
+    color: var(--ink) !important;
+  }
+  :root .sectionFaq [data-faq-titre] {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  :root .sectionFaq .boutonFaq {
+    display: none !important;
+  }
+  :root .sectionFaq .faqPhoto {
+    gap: 0 !important;
+  }
+
+  /* Le maillage de bas de page, vide au téléphone : ses 80 px de
+     rembourrage laissaient un trou avant le pied. */
+  .maillageBas {
+    padding-bottom: 0 !important;
+  }
+
+  /* Le bloc sombre « Passer à l'action » (dc.html L131, `C_DARK`, 22 px
+     20 px, rayon 24) : la bande d'appel du bureau, repeinte. */
+  .passerAction {
+    margin: 12px 18px 0;
+    padding: 22px 20px;
+    border-radius: 24px;
+    background: #1c1b19;
+    color: #fff;
+  }
+  .passerActionSurtitre {
+    margin-bottom: 8px;
+    font: 600 11px var(--fb);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #ff7c3c;
+  }
+  :root .passerAction > section,
+  :root .passerAction > section > div {
+    padding: 0 !important;
+  }
+  :root .passerAction [data-mm-appel] {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+  }
+  :root .passerAction [data-mm-appel-question] {
+    margin: 0 0 12px !important;
+    font: 600 20px/1.2 var(--ft) !important;
+    letter-spacing: -0.03em !important;
+    color: #fff !important;
+  }
+  :root .passerAction [data-mm-appel-ligne] {
+    color: rgba(255, 255, 255, 0.84) !important;
+  }
+
+  /* L'appel final replié : la gouttière des cartes, sous la carte « Être
+     rappelé ». */
+  .appelFinal {
+    margin-top: 12px;
+    padding: 0 18px;
+  }
+  .appelFinal [id="mgx-form"] > section {
+    padding: 0 !important;
   }
 }

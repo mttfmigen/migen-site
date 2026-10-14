@@ -55,3 +55,62 @@
   text-decoration: underline;
   text-underline-offset: 2px;
 }
+
+/* AU TÉLÉPHONE, LA FAQ DE LA MAQUETTE MOBILE V2 (14/10 au soir) : un titre et
+   une simple liste de cartes blanches, sans panneau ni photo (dc.html
+   `isTitle`, 26 px au-dessus, puis `isQ`). Le panneau perd son fond, sa photo
+   et son voile ; ses encres blanches redeviennent celles de la page
+   (`inherit` : la valeur du parent, pas une valeur réécrite ici). La photo
+   n'est pas perdue : le gabarit Offre la reprend en tête de page quand il n'en
+   a pas d'autre (`offre/HerosMobile.tsx`). */
+@media (max-width: 880px) {
+  .section {
+    padding-top: 26px !important;
+  }
+
+  .panneau {
+    --ink: inherit;
+    --ink1: inherit;
+    --ink2: inherit;
+    --ink3: inherit;
+    --ink4: inherit;
+    --line: inherit;
+    --chip: inherit;
+    --gl-a: inherit;
+    --gbd: inherit;
+    --card: inherit;
+    --acc-ink: inherit;
+    border-radius: 0 !important;
+    background: none !important;
+    overflow: visible !important;
+  }
+
+  .photo,
+  .voile {
+    display: none !important;
+  }
+
+  /* `.panneau .grille` : la règle `.mg-r2` de `app/globals.css` (36 px,
+     `!important`, même spécificité, chargée après) l'emportait, et laissait
+     32 px de vide entre « Poser ma question » et la liste (mesuré le 14/10),
+     comme celle du hub (`.racine .mg-r2`, `PageOffres.module.css`). */
+  .grille,
+  .section .panneau .grille {
+    gap: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* « Poser ma question » : un lien de la liste, plus un second bouton
+     orange à côté de la barre collante. Cible tactile de 44 px. */
+  .pastille {
+    display: inline-flex !important;
+    align-items: center;
+    min-height: 44px;
+    margin: 0 0 6px;
+    padding: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    color: var(--mm-lien) !important;
+    font: 600 14px var(--fb) !important;
+  }
+}

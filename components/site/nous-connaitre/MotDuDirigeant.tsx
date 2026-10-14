@@ -3,6 +3,10 @@ import type { CSSProperties, ReactNode } from "react";
 
 import nathanJorez from "@/components/site/equipe/portraits/nathan-jorez.jpg";
 
+import type { EntreeSommaire } from "./HautMobile";
+import mobile from "./mobile-apropos.module.css";
+import SectionRepliee from "./SectionRepliee";
+
 /**
  * Le mot du dirigeant : portrait, manifeste, cinq blocs numérotés, citation.
  *
@@ -16,6 +20,15 @@ import nathanJorez from "@/components/site/equipe/portraits/nathan-jorez.jpg";
  * a vu avant moi. Le même fichier est repris ici, avec le cadrage de la
  * maquette : carré, coins arrondis, recadré par le centre.
  */
+
+/* Écrit une fois : l'en-tête de bureau et la carte 01 du téléphone. */
+const SURTITRE_TEXTE = "Le mot du dirigeant";
+
+/** La carte 01 de la maquette mobile v2, ouverte au chargement. */
+export const SOMMAIRE_MOT_DU_DIRIGEANT: EntreeSommaire = {
+  id: "le-mot-du-dirigeant",
+  titre: SURTITRE_TEXTE,
+};
 
 const CADRE_TEXTE: CSSProperties = {
   font: "400 15px/1.7 var(--fb)",
@@ -126,8 +139,9 @@ function Bloc({
   filet?: string;
 }) {
   return (
-    <div style={{ paddingTop: 18, borderTop: `2px solid ${filet}` }}>
+    <div className={mobile.motBloc} style={{ paddingTop: 18, borderTop: `2px solid ${filet}` }}>
       <div
+        className={mobile.motBlocTete}
         style={{
           display: "flex",
           alignItems: "baseline",
@@ -160,8 +174,14 @@ function Bloc({
 
 export default function MotDuDirigeant() {
   return (
+    <SectionRepliee
+      ouvert
+      id={SOMMAIRE_MOT_DU_DIRIGEANT.id}
+      titre={SURTITRE_TEXTE}
+    >
     <section style={{ padding: "var(--sec,96px) 0 0" }}>
       <div
+        className={mobile.motCorps}
         style={{
           maxWidth: 1200,
           margin: "0 auto",
@@ -180,6 +200,7 @@ export default function MotDuDirigeant() {
           }}
         >
           <div
+            className={mobile.portraitMobile}
             style={{
               position: "relative",
               borderRadius: "var(--rad,28px)",
@@ -198,6 +219,7 @@ export default function MotDuDirigeant() {
           </div>
           <div>
             <div
+              data-titre-bureau=""
               style={{
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
@@ -206,7 +228,7 @@ export default function MotDuDirigeant() {
                 marginBottom: 16,
               }}
             >
-              Le mot du dirigeant
+              {SURTITRE_TEXTE}
             </div>
             <h2
               style={{
@@ -234,6 +256,7 @@ export default function MotDuDirigeant() {
               Alors on a tout repris de zéro.
             </p>
             <div
+              className={mobile.motLignes}
               style={{
                 display: "flex",
                 flexWrap: "wrap",
@@ -260,7 +283,7 @@ export default function MotDuDirigeant() {
                 </span>
               ))}
             </div>
-            <div style={{ font: "600 15px var(--ft)", color: "var(--ink)" }}>
+            <div className={mobile.motSignature} style={{ font: "600 15px var(--ft)", color: "var(--ink)" }}>
               Nathan Jorez{" "}
               <span
                 style={{
@@ -276,6 +299,7 @@ export default function MotDuDirigeant() {
         </div>
 
         <div
+          className={mobile.motGrille}
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))",
@@ -290,7 +314,7 @@ export default function MotDuDirigeant() {
         </div>
 
         <div
-          className="mg-r2"
+          className={`mg-r2 ${mobile.motCitation}`}
           style={{
             display: "grid",
             gridTemplateColumns: "minmax(0,1.2fr) minmax(0,.8fr)",
@@ -339,7 +363,7 @@ export default function MotDuDirigeant() {
         </div>
 
         <div
-          className="mg-r2"
+          className={`mg-r2 ${mobile.motGrille}`}
           style={{
             display: "grid",
             gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)",
@@ -351,6 +375,7 @@ export default function MotDuDirigeant() {
           </Bloc>
           <Bloc numero="05" titre="Notre ambition" filet="var(--acc)">
             <div
+              className={mobile.motAmbition}
               style={{
                 font: "600 calc(clamp(40px,4.4vw,60px) * var(--ts))/1 var(--ft)",
                 letterSpacing: "-.05em",
@@ -385,5 +410,6 @@ export default function MotDuDirigeant() {
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

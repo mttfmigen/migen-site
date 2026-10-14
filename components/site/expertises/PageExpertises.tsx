@@ -4,14 +4,30 @@ import type { ReactNode } from "react";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import {
+  APPEL_FINAL,
+  AVANT_CHIFFRES,
+  CACHE_MOBILE,
+  ChiffresCarteMobile,
   FilArianeMobile,
   HERO_COMPACT,
   MarquesRepliees,
+  PANNEAU_HEROS,
+  photoDeTete,
+  PhotoTeteMobile,
+  PliMobile,
+  QuestionFinaleMobile,
+  QUEUE_MAILLAGE,
   RACINE_MOBILE,
+  RANGEE_PASTILLE_HEROS,
+  SANS_NUMERO,
+  SurtitreHerosMobile,
+  TitreChiffresMobile,
+  TUILES_CHIFFRES,
 } from "@/components/site/expertises/mobile";
 import TelephoneHeros from "@/components/site/offre/TelephoneHeros";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
-import { CIBLE_CONTACT, ID_RAPPEL_FINAL } from "@/components/site/mobile/conversion-donnees";
+import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
+import { CIBLE_CONTACT } from "@/components/site/mobile/conversion-donnees";
 import AppelFinal from "@/components/site/offre/AppelFinal";
 import BandeAppel from "@/components/site/offre/BandeAppel";
 import ComplementsOffre from "@/components/site/offre/ComplementsOffre";
@@ -165,19 +181,26 @@ export default function PageExpertises({
     ? { libelle: actions[0].libelle, href: CIBLE_CONTACT }
     : undefined;
 
+  /* La photo du haut de page mobile, celle de la maquette : voir
+     `photoDeTete` (`./mobile`). */
+  const photoTete = chemin ? photoDeTete(chemin) : undefined;
+
   return (
     /* La racine `.mgx-root` de `MigenExpertise`. `--sec` vaut 120 px sur
        bureau, comme la capture, et 64 px sous 881 px : voir `RACINE_MOBILE`.
        Les règles mobiles du gabarit sont celles que `PageOffre.module.css`
        porte sous `.gabarit`. */
     <div className={`mg-site ${stylesOffre.gabarit} ${RACINE_MOBILE}`}>
-      <main style={{ paddingTop: 62 }}>
-        {chemin ? <FilArianeMobile chemin={chemin} /> : null}
+      {/* `data-ordre-mobile` : au téléphone, logos, réassurance et marques
+          (`data-mobile-apres-sections`) passent après les sections de la
+          maquette, avant le bandeau « Une question sur votre site ? »
+          (socle de `app/globals.css`). Le DOM ne bouge pas. */}
+      <main data-ordre-mobile="" style={{ paddingTop: 62 }}>
         {filAriane}
 
         {/* ------------------------------------------------ 0. « 01 Héros » */}
 
-        <section className={HERO_COMPACT} style={HERO}>
+        <section className={`${HERO_COMPACT} ${AVANT_CHIFFRES}`} style={HERO}>
           <div
             className="mg-r2"
             style={{
@@ -189,9 +212,15 @@ export default function PageExpertises({
               alignItems: "start",
             }}
           >
-            <div>
+            <div data-heros-colonne="">
+              {/* Fil d'Ariane, photo et surtitre « Rubrique » de la maquette
+                  (dc.html L104 à L106), téléphone seulement : voir
+                  `domaine/PageDomaine.tsx`, même montage. */}
+              {chemin ? <FilArianeMobile chemin={chemin} /> : null}
+              <PhotoTeteMobile src={photoTete} alt={h1} />
+              {chemin ? <SurtitreHerosMobile chemin={chemin} /> : null}
               {hub.pastille ? (
-                <div style={HERO_RANGEE_PASTILLE}>
+                <div className={RANGEE_PASTILLE_HEROS} style={HERO_RANGEE_PASTILLE}>
                   <span style={PASTILLE}>
                     <span aria-hidden="true" style={PASTILLE_PUCE} />
                     {hub.pastille}
@@ -202,13 +231,13 @@ export default function PageExpertises({
               <h1 style={TITRE1}>{h1}</h1>
 
               {hub.chapeau ? (
-                <p style={CHAPEAU_HERO}>
+                <p data-heros-chapeau="" style={CHAPEAU_HERO}>
                   <TexteRiche texte={hub.chapeau} />
                 </p>
               ) : null}
 
               {actions.length > 0 ? (
-                <div style={HERO_RANGEE_BOUTONS}>
+                <div data-heros-boutons="" style={HERO_RANGEE_BOUTONS}>
                   {actions.map((action) =>
                     action.href.startsWith("#") ? (
                       <a
@@ -235,32 +264,47 @@ export default function PageExpertises({
                 </div>
               ) : null}
 
-              {hub.mention ? <p style={HERO_MENTION}>{hub.mention}</p> : null}
+              {/* « Toutes les pages de la rubrique », les pastilles de la
+                  maquette mobile sous les boutons du héros (dc.html L501,
+                  `kidsTop` du gabarit 10) : les onze domaines, avant le
+                  chapô. Sous 881 px seulement. */}
+              {chemin ? <PastillesCocon chemin={chemin} variante="enfants" /> : null}
+
+              {hub.mention ? (
+                <p data-heros-mention="" style={HERO_MENTION}>{hub.mention}</p>
+              ) : null}
             </div>
 
-            {/* G2, LE PANNEAU DE FORMULAIRE SE REPLIE AU TÉLÉPHONE : voir
-                `specialite/PageSpecialite.tsx`, même arbitrage. */}
+            {/* G2, LE PANNEAU DE FORMULAIRE DU HÉROS N'EST PAS À L'ÉCRAN AU
+                TÉLÉPHONE (`PANNEAU_HEROS`) : voir `./mobile`. */}
             {heroFormulaire ? (
-              <PanneauHerosRepliable
-                formulaire={formulaire}
-                titre={hub.formulaireHeroTitre!}
-                pastille={hub.formulaireHeroMention}
-              />
+              <div className={PANNEAU_HEROS}>
+                <PanneauHerosRepliable
+                  formulaire={formulaire}
+                  titre={hub.formulaireHeroTitre!}
+                  pastille={hub.formulaireHeroMention}
+                />
+              </div>
             ) : null}
           </div>
         </section>
 
-        {/* « Toutes les pages de la rubrique », les pastilles de la maquette
-            mobile sous le héros (dc.html L501, `kidsTop` du gabarit 10) : les
-            onze domaines. Sous 881 px seulement. */}
-        {chemin ? <PastillesCocon chemin={chemin} variante="enfants" /> : null}
-
         {/* -------------------------------------------- 1. « 01 Chiffres » */}
 
+        {/* Au téléphone, la maquette les range en fin de « 01 La réponse
+            directe », sous « Les chiffres Migen », en sous-cartes
+            numérotées : `ChiffresCarteMobile`, dans cette carte. Cette
+            section-ci sort de l'écran sous 881 px (`CACHE_MOBILE`). */}
         {chiffres.length > 0 ? (
-          <section style={SECTION_CHIFFRES}>
+          <section
+            data-chiffres-mobile=""
+            className={CACHE_MOBILE}
+            style={SECTION_CHIFFRES}
+          >
+            <TitreChiffresMobile texte="Les chiffres Migen" />
             <div
-              className="g3-hs"
+              className={`g3-hs ${TUILES_CHIFFRES}`}
+              data-tuiles-chiffres=""
               style={{
                 ...GRILLE_CHIFFRES,
                 gridTemplateColumns: `repeat(${chiffres.length},minmax(0,1fr))`,
@@ -302,15 +346,32 @@ export default function PageExpertises({
         >
         {/* ------------------------------ 4 à 7. l'accueil de rubrique */}
 
+        {/* « 01 La réponse directe » de la maquette mobile (dc.html L451) :
+            UNE carte, ouverte, qui porte les quatre écrans de bureau de
+            l'accueil de rubrique. Le bento des domaines et le panneau des
+            types y restent repliés, sans numéro (`./Domaines`). */}
         {hub.reponse || hub.domaines || hub.types || hub.complementTypes?.length ? (
-          <>
+          <PliMobile
+            pleinePage
+            toujoursOuvert
+            className={AVANT_CHIFFRES}
+            titre="La réponse directe"
+          >
             {hub.reponse ? <ReponseDirecte {...hub.reponse} /> : null}
             {hub.domaines ? <Domaines {...hub.domaines} /> : null}
-            {hub.types ? <TypesMaintenance {...hub.types} /> : null}
+            {hub.types ? (
+              <TypesMaintenance
+                {...hub.types}
+                complement={hub.complementTypes?.[0]?.texte}
+              />
+            ) : null}
+            {/* Au téléphone, sa phrase passe dans celle des types (ci-dessus)
+                et la boîte sort de l'écran (`mobile.module.css`). */}
             {hub.complementTypes?.length ? (
               <ComplementsOffre blocs={hub.complementTypes} />
             ) : null}
-          </>
+            <ChiffresCarteMobile chiffres={chiffres} />
+          </PliMobile>
         ) : null}
 
         {/* ------------------------------------- 8 et 9. problème, offre */}
@@ -340,7 +401,9 @@ export default function PageExpertises({
 
         {/* ------------------------------- 12 à 15. déroulé → références */}
 
-        {deroule ? <DerouleOffre section={deroule} pli="replie" /> : null}
+        {/* Sans résumé, comme la maquette : la section ne porte que ses
+            étapes, et dc.html `teaseOf` n'en tire rien. */}
+        {deroule ? <DerouleOffre section={deroule} pli="replie" resume={null} /> : null}
         {garanties ? <GarantiesOffre section={garanties} /> : null}
         {hub.marquesFamille || preuves ? (
           <>
@@ -376,26 +439,32 @@ export default function PageExpertises({
         ) : null}
         </AvecConversionMobile>
 
+        {/* La question de l'appel final, dernière carte de la FAQ au
+            téléphone (`QuestionFinaleMobile`). */}
+        <QuestionFinaleMobile cta={ctaFinal} />
+
         {/* --------------------------------------------------- 17. Maillage */}
 
         {/* Hors de la cadence : section de maillage du bureau, que la
-            maquette mobile ne compte pas parmi ses sections numérotées. */}
+            maquette mobile ne compte pas parmi ses sections numérotées : au
+            téléphone, sans numéro, avec les autres blocs absents de la
+            maquette (`data-mobile-apres-sections`, `mobile.module.css`). */}
         {hub.pagesLiees?.length && hub.pagesLieesTitre ? (
-          <PagesLiees pages={hub.pagesLiees} titre={hub.pagesLieesTitre} />
+          <div data-mobile-apres-sections="" className={SANS_NUMERO}>
+            <PagesLiees pages={hub.pagesLiees} titre={hub.pagesLieesTitre} />
+          </div>
         ) : null}
 
         {/* ---------------------------------------- 18. « 10 Appel final » */}
 
         {/* L'ancre du bandeau « Être rappelé » (`#etre-rappele`) : voir
             `specialite/PageSpecialite.tsx`. Mobile seulement. */}
-        <span
-          id={ID_RAPPEL_FINAL}
-          data-mobile-seulement=""
-          style={{ display: "block", scrollMarginTop: 90 }}
-        />
+        {/* La carte « Être rappelé » de la maquette, qui clôt la page au
+            téléphone et porte l'ancre `#etre-rappele` du bandeau. */}
+        <RappelFinalMobile />
 
         {/* La capture pose `id="mgx-form"` sur cette section : la FAQ la vise. */}
-        <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
+        <div id="mgx-form" className={APPEL_FINAL} style={{ scrollMarginTop: 90 }}>
           <AppelFinal
             question={ctaFinal?.question}
             formulaire={formulaire}
@@ -405,6 +474,7 @@ export default function PageExpertises({
 
         {maillage ? (
           <div
+            className={QUEUE_MAILLAGE}
             style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}
           >
             {maillage}

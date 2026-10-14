@@ -41,6 +41,7 @@ import { enTexteNu } from "@/components/site/blocs/TexteRiche";
  */
 export const ENTETE_DANS_BASCULE = { flex: "1 1 auto", minWidth: 0 } as const;
 
+
 export interface SectionPliableMobileProps {
   /** Le sur-titre de la maquette, en capitales et en accent. */
   kicker?: string;

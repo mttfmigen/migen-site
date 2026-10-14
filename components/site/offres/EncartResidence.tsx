@@ -37,10 +37,18 @@ const TEXTE: CSSProperties = {
 
 export default function EncartResidence({ encart }: { encart: EncartOffres }) {
   return (
-    <section style={SECTION}>
+    /* Absent de la maquette mobile v2 : au téléphone, une carte sans numéro
+       posée après ses sections (`data-mobile-apres-sections`). Le titre est
+       celui de Mehdi (N35), mot pour mot. */
+    <section data-mobile-apres-sections="" style={SECTION}>
       <div style={LARGEUR}>
         <SectionPliableMobile
-          enTete={<h2 className={styles.titre}>Votre technicien intégré à votre site</h2>}
+          numero={false}
+          enTete={
+            <h2 className={styles.titre} data-carte-titre="">
+              Votre technicien intégré à votre site
+            </h2>
+          }
         >
           <div
             className="mg-r2"

@@ -1,12 +1,13 @@
 import Link from "next/link";
-import { Fragment, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import { entreeDe } from "@/components/site/cocon/maillage-mobile";
+import { appliqueDecisions } from "@/lib/decisions-copie";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
-import PastillesCocon from "@/components/site/cocon/PastillesCocon";
-import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
-import { CIBLE_CONTACT, ID_RAPPEL_FINAL } from "@/components/site/mobile/conversion-donnees";
+import { CIBLE_CONTACT } from "@/components/site/mobile/conversion-donnees";
 import OffresDomaine from "@/components/site/expertises/domaine/OffresDomaine";
+import { FilArianeMobile } from "@/components/site/expertises/mobile";
 import ProblemeDomaine from "@/components/site/expertises/domaine/ProblemeDomaine";
 import AppelFinal from "@/components/site/offre/AppelFinal";
 import AppelOffre from "@/components/site/offre/AppelOffre";
@@ -44,6 +45,7 @@ import { estSecteurOffre, type ContenuPageSecteur } from "@/types/secteur";
 
 import ExpertisesSecteur from "./ExpertisesSecteur";
 import LogosSecteur from "./LogosSecteur";
+import SectionsMobilesSecteur, { PhotoTeteMobile, TelephoneMobile, photoDeTete } from "./MobileSecteur";
 import PageSecteurHistorique from "./PageSecteurHistorique";
 import PliSecteur from "./PliSecteur";
 
@@ -148,6 +150,19 @@ export default function PageSecteur({
   const heroFormulaire = typeof contenu.formulaireHeroTitre === "string";
   const bandeVisible = !!(contenu.mention || contenu.appelBouton);
 
+  /* SOUS 881 PX, LES ÉCRANS DE CONTENU DU BUREAU CÈDENT LA PLACE À LEUR RENDU
+     MOBILE (`MobileSecteur.tsx`), qui porte chacun de leurs textes au dessin de
+     la maquette mobile v2. `masque` les retire de l'écran à cette largeur
+     seulement, et SEULEMENT quand ce rendu existe (la route passe toujours le
+     chemin) : sans lui, rien n'est masqué. Au-dessus de 880 px, une `<div>`
+     neutre de plus, rien ne bouge. */
+  const masque = (cle: string, noeud: ReactNode) =>
+    noeud ? (
+      <div key={cle} className={chemin ? styles.bureauSeulement : undefined}>
+        {noeud}
+      </div>
+    ) : null;
+
   /* Les bandes « Appel » ne répètent que la mention et le bouton du héros. La
      maquette mobile v2 n'en dessine aucune : sa cadence (photo + CTA, bandeau
      « Être rappelé ») les remplace. Elles quittent donc l'écran sous 881 px
@@ -163,117 +178,28 @@ export default function PageSecteur({
      La maquette le fait viser `/contact/`, comme le corpus l'écrit
      (« [Étudier…](/contact/) · 04 78 33 72 05 »). */
   const boutonMobile = actions[0] ? { libelle: actions[0].libelle, href: CIBLE_CONTACT } : undefined;
-
-  /*
-   * LES SECTIONS DE CONTENU, dans l'ordre, telles que la cadence mobile les
-   * compte (dc.html `nD` : 01 problème, 02 offre, 03 déroulé, 04 garanties,
-   * 05 références, puis les questions). Le photo + CTA tombe ainsi après
-   * l'offre et le bandeau après les références, comme sur la capture mobile
-   * de /secteurs/aeronautique/. Les écrans de bureau que la maquette mobile ne
-   * dessine pas (bandes d'appel, complément, expertises, offres du secteur,
-   * marques) suivent la section du corpus qu'ils suivent déjà : l'ordre de la
-   * page ne change pas d'un écran.
-   */
-  const sectionsContenu: ReactNode[] = [
-    /* ------------------------------------------- 5. « 03 Problème » */
-    probleme ? (
-      <ProblemeDomaine key="probleme" section={probleme} altPhoto={titre} photo={contenu.problemePhoto} />
-    ) : null,
-
-    <Fragment key="offre">
-      {/* --------------------------------------------- 6. « 04 Offre » */}
-      {offre ? <PointsOffre section={offre} /> : null}
-
-      {/* ------------------------------------------- 7. Appel · offre */}
-      {bandeAppel("sombre")}
-
-      {/* ---------------------------------------- 7 bis. Complément 4 */}
-      {contenu.complementOffre?.length ? <ComplementsOffre blocs={contenu.complementOffre} /> : null}
-    </Fragment>,
-
-    /* ------------------------------------------- 8. « 05 Déroulé » */
-    deroule ? (
-      <PliSecteur
-        key="deroule"
-        pleinePage
-        surtitre="Notre méthode"
-        /* Le titre par défaut est celui de `DerouleOffre`, que les 12 fiches
-           ne surchargent pas. */
-        titre={contenu.derouleTitre ?? "Un appel. Un plan. Une ligne qui repart."}
-        resume={resumeDe(deroule.etapes.map((etape) => etape.titre))}
-      >
-        <DerouleOffre section={deroule} titre={contenu.derouleTitre} />
-      </PliSecteur>
-    ) : null,
-
-    <Fragment key="garanties">
-      {/* ----------------------------------------- 9. « 06 Garanties » */}
-      {garanties ? <GarantiesOffre section={garanties} /> : null}
-
-      {/* -------------------------------------------- 10. « 07 Appel » */}
-      {contenu.brefBande ? (
-        <AppelOffre question={contenu.brefBande} bouton={contenu.brefBouton} mention={contenu.brefMention} />
-      ) : null}
-
-      {/* -------------------- 11 et 12. Expertises et offres du secteur */}
-      {contenu.expertises?.length ? (
-        <>
-          <ExpertisesSecteur
-            titre={contenu.expertisesTitre}
-            chapeau={contenu.expertisesChapeau}
-            cartes={contenu.expertises}
-          />
-          {/* L'enveloppe ne porte que les replis de la source, voir
-              `PageSecteur.module.css` (« Offres du secteur »). */}
-          <PliSecteur pleinePage surtitre="Nos offres" titre="Six façons de travailler ensemble, selon votre besoin">
-            <div className={styles.offres}>
-              <OffresDomaine />
-            </div>
-          </PliSecteur>
-        </>
-      ) : null}
-
-      {/* ---------------------------------- 13. « Marques maintenues » */}
-      {contenu.marquesFamille ? (
-        <PliSecteur pleinePage surtitre="Marques et constructeurs" titre="Les équipements que nous maintenons déjà">
-          <MarquesOffre famille={contenu.marquesFamille} familles={contenu.marquesFamilles} />
-        </PliSecteur>
-      ) : null}
-    </Fragment>,
-
-    <Fragment key="references">
-      {/* ---------------------------------------- 14. « 08 Références » */}
-      {preuves ? <ReferencesOffre section={preuves} /> : null}
-
-      {/* ----------------------------------- 15. Appel · références */}
-      {bandeAppel()}
-    </Fragment>,
-
-    /* ----------------------------------------- 16. « 09 Questions » */
-    objections ? (
-      <QuestionsPhoto
-        key="questions"
-        donnees={{
-          surtitre: "Questions fréquentes",
-          titre: objections.titre ?? "Vos questions avant de nous appeler",
-          lienTexte: "Poser ma question",
-          lienHref: "#mgx-form",
-          bouton: true,
-          photo: "/assets/web/faq-offre.jpg",
-          questions: objections.questions.map((q) => ({ question: q.question, reponse: q.reponse ?? "" })),
-        }}
-      />
-    ) : null,
-  ];
+  const photo = photoDeTete(contenu);
+  const entree = chemin ? entreeDe(chemin) : undefined;
+  const titreMobile = entree ? appliqueDecisions(entree.h1.replace(/\s+/g, " ").trim(), entree.url) : undefined;
 
   return (
     <div className={`mg-site ${styles.gabarit}`}>
       <main style={{ paddingTop: 62 }}>
+        {/* Le fil d'Ariane visible du téléphone (dc.html L103). En tête du
+            `<main>`, avant le JSON-LD, et clos par un blanc : voir
+            `expertises/mobile.tsx`. Au-dessus de 880 px, seul le JSON-LD. */}
+        {chemin ? <FilArianeMobile chemin={chemin} /> : null}
         {filAriane}
 
         {/* ------------------------------------------------ 0. « 01 Héros » */}
 
-        <section style={HERO}>
+        {/* AU TÉLÉPHONE, LE HAUT DE PAGE DE LA MAQUETTE (dc.html `stdHero`) :
+            photo 16/10, sur-titre, H1, appel à l'action et téléphone côte à
+            côte, puis le chapeau et la mention en introduction. La pastille
+            devient le sur-titre (même texte, dessin du sur-titre) ; la photo
+            est une de celles que la page porte déjà (`photoDeTete`). L'ordre
+            est celui de la maquette par `order`, sous 881 px seulement. */}
+        <section style={HERO} className={styles.heros}>
           <div
             className="mg-r2"
             style={{
@@ -283,9 +209,19 @@ export default function PageSecteur({
               alignItems: "start",
             }}
           >
-            <div>
+            <div className={styles.herosTexte}>
+              {chemin ? <PhotoTeteMobile photo={photo} /> : null}
+
+              {/* Le sur-titre de la maquette mobile au gabarit 08 (dc.html
+                  `KICK["08"]`) ; la pastille de bureau s'efface sous 881 px. */}
+              {chemin ? (
+                <span data-mobile-seulement="" className={styles.herosSurtitre}>
+                  Expertise sectorielle
+                </span>
+              ) : null}
+
               {contenu.pastille ? (
-                <div style={HERO_RANGEE_PASTILLE}>
+                <div style={HERO_RANGEE_PASTILLE} className={styles.herosPastille}>
                   <span style={PASTILLE}>
                     <span aria-hidden="true" style={PASTILLE_PUCE} />
                     {contenu.pastille}
@@ -293,16 +229,34 @@ export default function PageSecteur({
                 </div>
               ) : null}
 
-              <h1 style={TITRE1}>{titre}</h1>
+              {/* LE H1 DE LA MAQUETTE MOBILE V2 est le `# …` du corpus, soit le
+                  `h1` de l'index du client (parse.js L129, « Maintenance
+                  agroalimentaire »), pas l'accroche de la capture de bureau.
+                  Au téléphone il prend la tête du H1 ; l'accroche du bureau
+                  le suit, dans le dessin de la ligne d'accroche du héros
+                  (dc.html L108, `hero.punch`). Au-dessus de 880 px le premier
+                  morceau n'existe pas et le H1 est celui de la capture. */}
+              <h1 style={TITRE1}>
+                {titreMobile && titreMobile !== titre ? (
+                  <>
+                    <span data-mobile-seulement="" className={styles.h1Maquette}>
+                      {titreMobile}{" "}
+                    </span>
+                    <span className={styles.h1Accroche}>{titre}</span>
+                  </>
+                ) : (
+                  titre
+                )}
+              </h1>
 
               {contenu.chapeau ? (
-                <p style={CHAPEAU_HERO}>
+                <p style={CHAPEAU_HERO} className={styles.herosChapeau}>
                   <TexteRiche texte={contenu.chapeau} />
                 </p>
               ) : null}
 
               {actions.length > 0 ? (
-                <div style={HERO_RANGEE_BOUTONS}>
+                <div style={HERO_RANGEE_BOUTONS} className={styles.herosBoutons}>
                   {actions.map((action) =>
                     action.href.startsWith("#") ? (
                       <a key={action.href} href={action.href} className={stylesOffre.boutonPrincipal} style={BOUTON_HERO}>
@@ -320,10 +274,15 @@ export default function PageSecteur({
                       </Link>
                     ),
                   )}
+                  {chemin ? <TelephoneMobile /> : null}
                 </div>
               ) : null}
 
-              {contenu.mention ? <p style={HERO_MENTION}>{contenu.mention}</p> : null}
+              {contenu.mention ? (
+                <p style={HERO_MENTION} className={styles.herosMention}>
+                  {contenu.mention}
+                </p>
+              ) : null}
             </div>
 
             {heroFormulaire ? (
@@ -349,10 +308,19 @@ export default function PageSecteur({
 
         {/* -------------------------------------------- 1. « 01 Chiffres » */}
 
+        {/* Au téléphone, les tuiles 2 x 2 de la maquette (dc.html `isStats`),
+            sous leur titre « Chiffres clés » : le motif partagé
+            `[data-tuiles-chiffres]` de `app/globals.css`. */}
         {chiffres.length > 0 ? (
-          <section style={SECTION_CHIFFRES}>
+          <section style={SECTION_CHIFFRES} className={styles.chiffres}>
+            {chemin ? (
+              <h2 data-mobile-seulement="" data-tuiles-titre="">
+                Chiffres clés
+              </h2>
+            ) : null}
             <div
-              className="mg-rmulti"
+              className={`mg-rmulti ${styles.grilleChiffres}`}
+              data-tuiles-chiffres={chemin ? "" : undefined}
               style={{ ...GRILLE_CHIFFRES, gridTemplateColumns: `repeat(${chiffres.length},minmax(0,1fr))` }}
             >
               {chiffres.map((chiffre, rang) => (
@@ -368,66 +336,160 @@ export default function PageSecteur({
           </section>
         ) : null}
 
+        {/* ------------------------------ les cinq cartes de la maquette mobile
+            01 Le problème, 02 L'offre, photo + CTA, 03 Le déroulé, 04 Ce que
+            nous garantissons, 05 Nos références, bandeau, Questions
+            fréquentes : rendu du téléphone seulement, voir `MobileSecteur`. */}
+        {chemin ? (
+          <SectionsMobilesSecteur contenu={contenu} chemin={chemin} photoHeros={photo} bouton={boutonMobile} />
+        ) : null}
+
         {/* LOGOS ET RÉASSURANCE, REPLIÉS ENSEMBLE AU TÉLÉPHONE (G3) : deux
             écrans de bureau que la maquette mobile v2 ne dessine pas (1 240 px
             à 390 px), tous deux de la preuve de confiance. L'étiquette est le
             surtitre du premier, « Ils nous font confiance », et le résumé
             nomme les deux cartes du second : rien n'est rédigé. Aucun des
-            deux n'a de titre à lui : l'étiquette porte le `<h2>`. */}
-        <PliSecteur
-          pleinePage
-          titreDeSection
-          titre="Ils nous font confiance"
-          resume={resumeDe(["Certifications", "Qui intervient chez vous"])}
-        >
-          {/* --------------------------------------------- 2. « 02 Logos » */}
+            deux n'a de titre à lui : l'étiquette porte le `<h2>`. Au
+            téléphone, il tombe APRÈS les questions, avec les autres écrans de
+            bureau que la maquette ne dessine pas (`annexe`, sans numéro). */}
+        <div className={styles.annexe}>
+          <PliSecteur
+            pleinePage
+            titreDeSection
+            enveloppeGardee
+            titre="Ils nous font confiance"
+            resume={resumeDe(["Certifications", "Qui intervient chez vous"])}
+          >
+            {/* ------------------------------------------- 2. « 02 Logos » */}
 
-          <LogosSecteur titre={contenu.logosTitre} logos={contenu.logos} />
+            <LogosSecteur titre={contenu.logosTitre} logos={contenu.logos} />
 
-          {/* ------------------------------------------- 3. Réassurance */}
+            {/* ----------------------------------------- 3. Réassurance */}
 
-          <Reassurance reperes={contenu.reperesReassurance} />
-        </PliSecteur>
+            <Reassurance reperes={contenu.reperesReassurance} />
+          </PliSecteur>
+        </div>
 
         {/* ----------------------------------------- 4. Appel · domaines */}
 
         {bandeAppel()}
 
-        {chemin ? (
-          <AvecConversionMobile chemin={chemin} gabarit="08" bouton={boutonMobile} rappelFinal={false}>
-            {sectionsContenu}
-          </AvecConversionMobile>
-        ) : (
-          sectionsContenu
+        {/* ------------------------------------------ 5. « 03 Problème » */}
+        {masque(
+          "probleme",
+          probleme ? <ProblemeDomaine section={probleme} altPhoto={titre} photo={contenu.problemePhoto} /> : null,
         )}
 
-        {/* Les pastilles « Dans la même rubrique » de la maquette mobile v2,
-            juste AVANT le rappel de fin comme dans la maquette (dc.html L134,
-            `kidsBottom` précède `showEndCta`). Le composant ne rend rien au-dessus
-            de 880 px, ni pour une page hors index. */}
-        {chemin ? (
-          <div className={styles.pastilles}>
-            <PastillesCocon chemin={chemin} />
+        {/* --------------------------------------------- 6. « 04 Offre » */}
+        {masque("offre", offre ? <PointsOffre section={offre} /> : null)}
+
+        {/* ------------------------------------------- 7. Appel · offre */}
+        {bandeAppel("sombre")}
+
+        {/* ---------------------------------------- 7 bis. Complément 4 */}
+        {masque(
+          "complement",
+          contenu.complementOffre?.length ? <ComplementsOffre blocs={contenu.complementOffre} /> : null,
+        )}
+
+        {/* ------------------------------------------- 8. « 05 Déroulé » */}
+        {masque(
+          "deroule",
+          deroule ? (
+            <PliSecteur
+              pleinePage
+              surtitre="Notre méthode"
+              /* Le titre par défaut est celui de `DerouleOffre`, que les 12
+                 fiches ne surchargent pas. */
+              titre={contenu.derouleTitre ?? "Un appel. Un plan. Une ligne qui repart."}
+              resume={resumeDe(deroule.etapes.map((etape) => etape.titre))}
+            >
+              <DerouleOffre section={deroule} titre={contenu.derouleTitre} />
+            </PliSecteur>
+          ) : null,
+        )}
+
+        {/* ----------------------------------------- 9. « 06 Garanties » */}
+        {masque("garanties", garanties ? <GarantiesOffre section={garanties} /> : null)}
+
+        {/* -------------------------------------------- 10. « 07 Appel » */}
+        {masque(
+          "appel",
+          contenu.brefBande ? (
+            <AppelOffre question={contenu.brefBande} bouton={contenu.brefBouton} mention={contenu.brefMention} />
+          ) : null,
+        )}
+
+        {/* -------------------- 11 et 12. Expertises et offres du secteur */}
+        {contenu.expertises?.length ? (
+          <div className={styles.annexe}>
+            <ExpertisesSecteur
+              titre={contenu.expertisesTitre}
+              chapeau={contenu.expertisesChapeau}
+              cartes={contenu.expertises}
+            />
+            {/* L'enveloppe ne porte que les replis de la source, voir
+                `PageSecteur.module.css` (« Offres du secteur »). */}
+            <PliSecteur pleinePage surtitre="Nos offres" titre="Six façons de travailler ensemble, selon votre besoin">
+              <div className={styles.offres}>
+                <OffresDomaine />
+              </div>
+            </PliSecteur>
           </div>
         ) : null}
+
+        {/* ---------------------------------- 13. « Marques maintenues » */}
+        {contenu.marquesFamille ? (
+          /* Sans enveloppe : `MarquesOffre` se replie déjà lui-même, sous la
+             même étiquette. */
+          <div className={styles.annexe}>
+            <MarquesOffre famille={contenu.marquesFamille} familles={contenu.marquesFamilles} />
+          </div>
+        ) : null}
+
+        {/* ---------------------------------------- 14. « 08 Références » */}
+        {masque("references", preuves ? <ReferencesOffre section={preuves} /> : null)}
+
+        {/* ----------------------------------- 15. Appel · références */}
+        {bandeAppel()}
+
+        {/* ----------------------------------------- 16. « 09 Questions » */}
+        {masque(
+          "questions",
+          objections ? (
+            <QuestionsPhoto
+              donnees={{
+                surtitre: "Questions fréquentes",
+                titre: objections.titre ?? "Vos questions avant de nous appeler",
+                lienTexte: "Poser ma question",
+                lienHref: "#mgx-form",
+                bouton: true,
+                photo: "/assets/web/faq-offre.jpg",
+                questions: objections.questions.map((q) => ({ question: q.question, reponse: q.reponse ?? "" })),
+              }}
+            />
+          ) : null,
+        )}
 
         {/* ---------------------------------------- 17. « 10 Appel final » */}
 
         {/* L'ancre `#mgx-form` est celle de la capture, sur cette section : le
             bouton de la FAQ et celui des offres du secteur la visent.
             `#etre-rappele` est celle du bandeau « Être rappelé » de la cadence
-            mobile (dc.html L437). La page pose déjà son formulaire de bas de
-            page ici : le rappel final de la cadence n'est pas rendu
-            (`rappelFinal={false}`), sans quoi le téléphone empilerait deux
-            formulaires, et le bandeau vise celui-ci. */}
-        <div id={ID_RAPPEL_FINAL} style={{ scrollMarginTop: 90 }}>
+            mobile (dc.html L437) : au téléphone, c'est le rappel final de la
+            maquette qui la porte, après « Dans la même rubrique »
+            (`MobileSecteur`). Ce formulaire-ci quitte alors l'écran, sauf
+            quand `#mgx-form` est visé (`PageSecteur.module.css`). */}
+        <div className={styles.appelFinal} style={{ scrollMarginTop: 90 }}>
           <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
             <AppelFinal question={ctaFinal?.question} formulaire={formulaire} bouton={contenu.appelBouton} />
           </div>
         </div>
 
         {maillage ? (
-          <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}>{maillage}</div>
+          <div className={styles.maillage} style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}>
+            {maillage}
+          </div>
         ) : null}
       </main>
     </div>

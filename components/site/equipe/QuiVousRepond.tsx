@@ -22,7 +22,9 @@ const TITRE_TEXTE = "De votre appel au technicien, trois personnes. Pas plus.";
 
 export default function QuiVousRepond() {
   return (
+    // Hors des sept parties du sommaire de la maquette : carte sans numéro.
     <SectionRepliee
+      numero={false}
       kicker={SURTITRE_TEXTE}
       titre={TITRE_TEXTE}
       resume={resumeDe(RELAIS.map((r) => r.titre))}

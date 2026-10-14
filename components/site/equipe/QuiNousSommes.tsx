@@ -1,5 +1,14 @@
 import { CHIFFRES } from "./equipe-donnees";
 import { CHAPEAU, LARGEUR, SECTION, SURTITRE, TITRE2, VERRE } from "./habillage-equipe";
+import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
+import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
+
+/* Écrit une fois : le sur-titre de bureau et la bascule du téléphone. */
+const SURTITRE_TEXTE = "Qui nous sommes";
+
+/** Carte 01 du téléphone, ouverte comme dans la maquette mobile v2. */
+export const SOMMAIRE_QUI: EntreeSommaire = { id: "qui-nous-sommes", titre: SURTITRE_TEXTE };
 
 /**
  * « Qui nous sommes » : le texte à gauche, trois chiffres à droite.
@@ -7,6 +16,7 @@ import { CHAPEAU, LARGEUR, SECTION, SURTITRE, TITRE2, VERRE } from "./habillage-
  */
 export default function QuiNousSommes() {
   return (
+    <SectionRepliee id={SOMMAIRE_QUI.id} rang={1} titre={SURTITRE_TEXTE} ouvert>
     <section style={SECTION}>
       <div style={LARGEUR}>
         <div data-reveal="">
@@ -20,7 +30,9 @@ export default function QuiNousSommes() {
             }}
           >
             <div>
-              <div style={SURTITRE}>Qui nous sommes</div>
+              <div data-titre-bureau="" style={SURTITRE}>
+                {SURTITRE_TEXTE}
+              </div>
               <h2 style={TITRE2}>
                 Une entreprise créée pour garder vos machines en marche.
               </h2>
@@ -29,8 +41,10 @@ export default function QuiNousSommes() {
                 France.
               </p>
             </div>
+            {/* Au téléphone, trois petites cartes numérotées (maquette mobile
+                v2, bloc `isKv`) : `.chiffresCompacts`, rien au bureau. */}
             <ul
-              className="mg-rmulti"
+              className={`mg-rmulti ${mobile.chiffresCompacts}`}
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(3,minmax(0,1fr))",
@@ -43,6 +57,7 @@ export default function QuiNousSommes() {
               {CHIFFRES.map((chiffre) => (
                 <li
                   key={chiffre.libelle}
+                  className={mobile.chiffreCompact}
                   style={{
                     ...(chiffre.sombre
                       ? {
@@ -61,6 +76,7 @@ export default function QuiNousSommes() {
                   {chiffre.sombre ? (
                     <div
                       aria-hidden="true"
+                      className={mobile.decor}
                       style={{
                         position: "absolute",
                         width: 260,
@@ -74,6 +90,7 @@ export default function QuiNousSommes() {
                     />
                   ) : null}
                   <div
+                    className={mobile.chiffreValeur}
                     style={{
                       position: "relative",
                       font: "600 40px/1 var(--ft)",
@@ -84,6 +101,7 @@ export default function QuiNousSommes() {
                     {chiffre.valeur}
                   </div>
                   <div
+                    className={mobile.chiffreLibelle}
                     style={{
                       position: "relative",
                       font: "600 15px var(--ft)",
@@ -94,6 +112,7 @@ export default function QuiNousSommes() {
                     {chiffre.libelle}
                   </div>
                   <div
+                    className={mobile.chiffreTexte}
                     style={{
                       position: "relative",
                       font: "400 13.5px/1.55 var(--fb)",
@@ -111,5 +130,6 @@ export default function QuiNousSommes() {
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

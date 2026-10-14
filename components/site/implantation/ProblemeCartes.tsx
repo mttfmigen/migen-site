@@ -2,8 +2,20 @@ import type { CSSProperties } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import EtiquettePli from "@/components/site/offre/EtiquettePli";
+import stylesOffre from "@/components/site/offre/PageOffre.module.css";
 import { coupePunchline, numerote } from "@/components/site/offre/texte-offre";
 import type { SectionProbleme } from "@/types/contenu";
+
+import stylesVille from "./PageVille.module.css";
+
+/**
+ * LE TITRE DE LA CARTE DE LA MAQUETTE MOBILE V2 : « 01 Le problème »
+ * (dc.html, le titre de la section du corpus, « ## Le problème » sur les 75
+ * fichiers de la famille). C'est aussi celui de `offre/ProblemeOffre.tsx`,
+ * qui sert les 29 pages en colonne : les trois dessins portent la même carte.
+ */
+const TITRE_CARTE = "Le problème";
 
 /**
  * « 03 Problème » dans son dessin en RANGÉE de cartes (`pbCards` de
@@ -98,57 +110,74 @@ function colonnes(n: number): number {
 }
 
 /**
- * CE DESSIN-CI NE SE REPLIE PAS AU TÉLÉPHONE, et ce n'est pas un oubli.
+ * AU TÉLÉPHONE, « 01 LE PROBLÈME », LA PREMIÈRE CARTE DE LA MAQUETTE, OUVERTE.
  *
- * Il pèse 1546 px à 390 px sur `/implantations/lyon/`, sur 35 pages : c'est le
- * plus lourd des écrans encore dépliés du gabarit. Mais SON H2 VIT DANS UNE
- * GRILLE : l'en-tête est une grille `1.1fr .9fr` (relevé tpl 439 de
- * `implantations--lyon.html`), le sur-titre et le H2 dans la première cellule,
- * la suite de la punchline dans la seconde. Le bloc repliable porte son
- * en-tête dans un `<summary>`, qui est une boîte flex : en sortir le H2 pour
- * l'y mettre démonterait la grille, et les deux colonnes de bureau de 35
- * captures passeraient l'une sous l'autre.
+ * Le 13/10, ce dessin ne se repliait pas : son H2 vit dans une grille à deux
+ * colonnes, et le sortir dans un `<summary>` aurait démonté la grille de
+ * bureau. LA BASCULE PORTE DONC UNE ÉTIQUETTE (`EtiquettePli`, « Le
+ * problème », téléphone seulement), PAS LE H2 : toute la section, grille
+ * comprise, est le corps de la carte. Au-dessus de 880 px la bascule est
+ * retirée (`blocPliablePartage`) et le rendu reste celui de la capture.
  *
- * TROIS ISSUES ONT ÉTÉ PESÉES, aucune ne tient :
- *  · mettre la grille ENTIÈRE dans le `<summary>` garde le dessin, mais met
- *    toute la suite de la punchline dans la bascule d'un bloc replié, là où
- *    la maquette mobile n'y met qu'un sur-titre et un titre ;
- *  · ne replier que les cartes laisse un en-tête orphelin sans bascule ;
- *  · replier seulement sous 880 px demanderait un rendu différent du serveur
- *    et du client, donc une erreur d'hydratation.
- *
- * Le panneau sombre, lui, EMPILE son en-tête : c'est pourquoi il est replié,
- * plus bas dans ce fichier. Même donnée, deux dessins, deux verdicts.
- * `offre/DerouleOffre.tsx` est écarté pour exactement la même raison.
+ * Dans la carte, le dessin est celui du socle partagé (`app/globals.css`) :
+ * sur-titre (`data-mm-surtitre`), punchline en phrase clé (`data-mm-lead`),
+ * constats en petites cartes numérotées (`data-mm-kv`), comme le problème des
+ * offres. Sans H2 (`problemeSansTitre`, Vesoul), même carte : l'étiquette
+ * suffit à dire ce qu'il y a dessous.
  */
 export default function ProblemeCartes({ section, sansTitre }: { section: SectionProbleme; sansTitre?: boolean }) {
   const { titre, suite } = decoupe(section, sansTitre);
   return (
-    <section data-screen-label="03 Problème" style={SECTION}>
-      <div style={LARGEUR}>
-        <div className="mg-r2" style={ENTETE}>
-          <div>
-            <div style={{ ...SURTITRE, marginBottom: 18 }}>Votre problématique</div>
-            {titre ? <h2 style={TITRE}>{titre}</h2> : null}
-          </div>
-          {suite ? <p style={SUITE}>{suite}</p> : null}
-        </div>
-        <div
-          className="g3-pbgrid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: `repeat(${colonnes(section.puces.length)},minmax(0,1fr))`,
-            gap: 12,
-          }}
+    <section data-screen-label="03 Problème" className={stylesVille.sectionCarte} style={SECTION}>
+      <div className={stylesOffre.blocPliablePartage} style={LARGEUR}>
+        <SectionPliableMobile
+          toujoursOuvert
+          enTete={<EtiquettePli titre={TITRE_CARTE} />}
+          resume={resumePuces(section, titre)}
         >
-          {section.puces.map((puce, rang) => (
-            <div key={puce.accroche ?? puce.texte} style={CARTE}>
-              <span style={NUMERO}>{numerote(rang)}</span>
-              {puce.accroche ? <div style={ACCROCHE}>{puce.accroche}</div> : null}
-              <div style={TEXTE}>{puce.texte}</div>
+          <div className="mg-r2" data-mm-entete-probleme="" style={ENTETE}>
+            <div>
+              <div data-mm-surtitre="" style={{ ...SURTITRE, marginBottom: 18 }}>
+                Votre problématique
+              </div>
+              {titre ? (
+                <h2 data-mm-lead="" style={TITRE}>
+                  {titre}
+                </h2>
+              ) : null}
             </div>
-          ))}
-        </div>
+            {suite ? (
+              <p data-mm-texte="" style={SUITE}>
+                {suite}
+              </p>
+            ) : null}
+          </div>
+          <div
+            className="g3-pbgrid"
+            data-mm-kv=""
+            style={{
+              display: "grid",
+              gridTemplateColumns: `repeat(${colonnes(section.puces.length)},minmax(0,1fr))`,
+              gap: 12,
+            }}
+          >
+            {section.puces.map((puce, rang) => (
+              <div key={puce.accroche ?? puce.texte} style={CARTE}>
+                <span data-mm-num="" style={NUMERO}>
+                  {numerote(rang)}
+                </span>
+                {puce.accroche ? (
+                  <div data-mm-kv-titre="" style={ACCROCHE}>
+                    {puce.accroche}
+                  </div>
+                ) : null}
+                <div data-mm-kv-texte="" style={TEXTE}>
+                  {puce.texte}
+                </div>
+              </div>
+            ))}
+          </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

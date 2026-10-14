@@ -3,6 +3,9 @@ import Link from "next/link";
 
 import type { CSSProperties } from "react";
 
+import type { EntreeSommaire } from "./HautMobile";
+import mobile from "./mobile-apropos.module.css";
+import SectionRepliee from "./SectionRepliee";
 import styles from "./TerrainsExcellence.module.css";
 
 /**
@@ -37,6 +40,16 @@ import styles from "./TerrainsExcellence.module.css";
 
 const FORT = { fontWeight: 600, color: "var(--ink)" } as const;
 
+/* Écrits une fois : l'en-tête de bureau et la carte 02 du téléphone. */
+const SURTITRE_TEXTE = "Notre force";
+const TITRE_TEXTE = "Nos terrains d’excellence";
+
+/** La carte 02 de la maquette mobile v2, ouverte au chargement. */
+export const SOMMAIRE_TERRAINS: EntreeSommaire = {
+  id: "notre-force",
+  titre: TITRE_TEXTE,
+};
+
 /*
  * « VOIR NOS SECTEURS → » DEVIENT UN BOUTON, À LA DEMANDE DE MEHDI.
  * Le 13/10 à 21:32 : « Voir nos secteurs → tu as pas mis de cta pareil sur la
@@ -66,10 +79,16 @@ const BOUTON: CSSProperties = {
 
 export default function TerrainsExcellence() {
   return (
+    <SectionRepliee
+      ouvert
+      id={SOMMAIRE_TERRAINS.id}
+      kicker={SURTITRE_TEXTE}
+      titre={TITRE_TEXTE}
+    >
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div
-          className="mg-r2"
+          className={`mg-r2 ${mobile.aplat}`}
           style={{
             borderRadius: "var(--rad)",
             background: "rgba(255,255,255,var(--gl-a))",
@@ -87,6 +106,7 @@ export default function TerrainsExcellence() {
         >
           <div style={{ padding: "16px 12px 16px 16px" }}>
             <div
+              data-titre-bureau=""
               style={{
                 font: "600 11.5px var(--fb)",
                 letterSpacing: ".14em",
@@ -95,9 +115,10 @@ export default function TerrainsExcellence() {
                 marginBottom: 14,
               }}
             >
-              Notre force
+              {SURTITRE_TEXTE}
             </div>
             <h2
+              data-titre-bureau=""
               style={{
                 font: "600 calc(clamp(26px,2.6vw,36px) * var(--ts))/1.12 var(--ft)",
                 letterSpacing: "-.04em",
@@ -105,7 +126,7 @@ export default function TerrainsExcellence() {
                 margin: "0 0 18px",
               }}
             >
-              Nos terrains d&rsquo;excellence
+              {TITRE_TEXTE}
             </h2>
             <p
               style={{
@@ -143,7 +164,11 @@ export default function TerrainsExcellence() {
               Voir nos secteurs →
             </Link>
           </div>
+          {/* La carte 02 de la maquette mobile v2 n'a que ses deux
+              paragraphes : la photo s'efface sous 881 px (`.masqueMobile`),
+              le bureau la garde. */}
           <div
+            className={mobile.masqueMobile}
             style={{
               borderRadius: "calc(var(--rad) - 8px)",
               overflow: "hidden",
@@ -167,5 +192,6 @@ export default function TerrainsExcellence() {
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

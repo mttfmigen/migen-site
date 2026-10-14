@@ -87,7 +87,10 @@
   transition: transform 0.2s;
 }
 
-.section[open] .chevron {
+/* `> .bascule >` : seul le chevron DE CE BLOC tourne. Le sélecteur descendant
+   faisait tourner aussi ceux des cartes repliées imbriquées dans une carte
+   ouverte (relevé par le lot expertises, 15/10). */
+.section[open] > .bascule > .chevron {
   transform: rotate(90deg);
 }
 
@@ -96,8 +99,8 @@
   display: none;
 }
 
-/* PLEINE LARGEUR SOUS LE TITRE, et coupé à deux lignes, comme la maquette
-   mobile : `margin-top: 6px`, `font: 400 13px/1.45`, `line-clamp: 2`. Le
+/* PLEINE LARGEUR SOUS LE TITRE, et coupé à trois lignes, comme la maquette
+   mobile v2 (104 signes, dc.html `teaseOf`). Le
    `flex: 0 0 100%` le fait passer à la ligne entière plutôt que de se glisser
    à côté du chevron. */
 .resume {
@@ -107,8 +110,8 @@
      et le résumé restait peint au-dessus d'un bloc OUVERT au téléphone, dans
      tous les gabarits (relevé par quatre lots le 14/10). Seule la règle
      `.section:not([open]) .resume` plus bas l'affiche. */
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

@@ -74,7 +74,11 @@ export default function BandeauRappelMobile({
 }: BandeauRappelMobileProps) {
   const bouton = boutonBandeau(variante);
   return (
-    <div id={id} data-mobile-seulement style={BANDEAU}>
+    /* `data-queue-mobile` : sur une page qui ordonne ses blocs au téléphone
+       (`main[data-ordre-mobile]`), ce bandeau et tout ce qui le suit restent
+       APRÈS les blocs absents de la maquette, comme dans dc.html où il suit
+       « 05 Nos références ». Sans effet ailleurs. */
+    <div id={id} data-mobile-seulement data-queue-mobile="" style={BANDEAU}>
       <span style={TEXTE}>{texteBandeau(variante)}</span>
       <a href={bouton.href} style={BOUTON}>
         {bouton.libelle}

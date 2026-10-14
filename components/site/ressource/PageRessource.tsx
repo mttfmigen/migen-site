@@ -4,6 +4,8 @@ import type { ReactNode } from "react";
 
 import { FilArianeVue } from "@/components/cocon/FilAriane";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+import CarrouselRealisations from "@/components/site/preuve/CarrouselRealisations";
+import { realisationsLiees } from "@/components/site/preuve/donnees-mobiles";
 import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
 import { varianteDe } from "@/components/site/mobile/conversion-donnees";
 import type { ContenuRessource, LectureRessource } from "@/types/ressource";
@@ -103,18 +105,41 @@ function CarteLivre() {
 
 function Questions({ questions }: { questions: Question[] }) {
   return (
-    <section data-screen-label="Questions fréquentes" className={styles.sectionSuite} style={H.SECTION_SUITE}>
+    <section
+      id="mr-faq"
+      data-screen-label="Questions fréquentes"
+      className={styles.sectionSuite}
+      style={{ ...H.SECTION_SUITE, scrollMarginTop: 90 }}
+    >
       <div className={styles.faq} style={H.FAQ_CARTE}>
-        <Image src={H.FAQ_PHOTO} alt={altPhoto(H.FAQ_PHOTO)} fill sizes="1120px" style={{ objectFit: "cover" }} />
-        <div aria-hidden="true" style={H.FAQ_VOILE} />
+        {/* AU TÉLÉPHONE, LA FAQ EST UNE SIMPLE LISTE DE CARTES BLANCHES
+            (dc.html, `isTitle` puis `isQ`) : le panneau photo de bureau
+            s'efface (photo et voile, ornements, `Ressource.module.css`), le
+            sur-titre et le titre prennent la typographie de la maquette et
+            les questions le motif partagé `[data-faq-liste]`. */}
+        <Image
+          src={H.FAQ_PHOTO}
+          alt={altPhoto(H.FAQ_PHOTO)}
+          fill
+          sizes="1120px"
+          className={styles.faqFond}
+          style={{ objectFit: "cover" }}
+        />
+        <div aria-hidden="true" className={styles.faqFond} style={H.FAQ_VOILE} />
         <div style={{ position: "relative" }}>
-          <div style={H.SURTITRE}>{H.COPIE.faqSurtitre}</div>
-          <h2 style={{ ...H.TITRE_SECTION, margin: "0 0 24px", color: "#fff" }}>
-            {H.COPIE.faqTitre}
+          {/* AU TÉLÉPHONE, UN SEUL TITRE, « Questions fréquentes (FAQ) »
+              (dc.html, `isTitle` sans `kick`) : le sur-titre et le titre de
+              bureau restent dans le DOM, repliés (`doublonMobile`). */}
+          <div className={styles.doublonMobile} style={H.SURTITRE}>
+            {H.COPIE.faqSurtitre}
+          </div>
+          <h2 data-faq-titre="" style={{ ...H.TITRE_SECTION, margin: "0 0 24px", color: "#fff" }}>
+            <span className={styles.doublonMobile}>{H.COPIE.faqTitre}</span>
+            <span data-mobile-seulement="">{H.COPIE.faqTitreMobile}</span>
           </h2>
           {/* Au téléphone, toutes les questions repliées, comme la maquette
               mobile v2 : `FermeAuTelephone` EST la liste, même style. */}
-          <FermeAuTelephone style={H.FAQ_LISTE}>
+          <FermeAuTelephone style={H.FAQ_LISTE} faqListe>
             {questions.map((q, i) => (
               <details
                 key={q.question}
@@ -163,7 +188,11 @@ function Lectures({
 }) {
   const libelle = (rayon && H.RAYONS[rayon]?.libelle) || "ressources";
   return (
-    <section data-screen-label="À lire ensuite" className={styles.sectionSuite} style={H.SECTION_SUITE}>
+    <section
+      data-screen-label="À lire ensuite"
+      className={`${styles.sectionSuite} ${styles.lecturesSection}`}
+      style={H.SECTION_SUITE}
+    >
       {/* G3 : « SUR LE MÊME SUJET », SECTION DE BUREAU, SE REPLIE AU
           TÉLÉPHONE. La maquette mobile v2 n'a pas ces trois grandes cartes
           photo : elle sert le maillage en pastilles (« Dans la même
@@ -172,10 +201,11 @@ function Lectures({
           téléphone qui s'efface une fois ouvert ; sur bureau la bascule
           n'existe pas (`.lectures`, module CSS). */}
       <SectionPliableMobile
+        numero={false}
         enTete={
           <span data-mobile-seulement="" className={styles.etiquettePli}>
-            <span style={H.ETIQUETTE_SURTITRE}>{H.COPIE.lecturesSurtitre}</span>
-            <span style={H.ETIQUETTE_TITRE}>{H.COPIE.lecturesTitre}</span>
+            <span data-carte-surtitre="">{H.COPIE.lecturesSurtitre}</span>
+            <span data-carte-titre="">{H.COPIE.lecturesTitre}</span>
           </span>
         }
         resume={resumeDe(lectures.map((lecture) => lecture.titre))}
@@ -235,7 +265,7 @@ function Appel() {
       className={styles.sectionAppel}
       style={H.SECTION_APPEL}
     >
-      <div className={`${styles.deux} ${styles.appelCompact}`} style={H.APPEL}>
+      <div className={styles.deux} style={H.APPEL}>
         <div aria-hidden="true" style={H.APPEL_LUEUR} />
         <div style={{ position: "relative" }}>
           <div style={H.APPEL_SURTITRE}>{H.COPIE.appelSurtitre}</div>
@@ -322,10 +352,42 @@ export interface ProprietesPageRessource {
   maillage?: ReactNode;
 }
 
+/**
+ * LA PHOTO DE TÊTE DU TÉLÉPHONE, règle de la maquette mobile v2 (dc.html
+ * `heroImg`) : `ARTIMG[page]` (L234), sinon `FIMG.ressources` (L225). Au
+ * téléphone elle remplace la photo de bureau, qui ne change pas au-dessus de
+ * 880 px.
+ */
+const PHOTO_MOBILE_PAR_PAGE: Record<string, string> = {
+  "cout-arret-de-production": "x-auto-ligne.jpg",
+  "digitalisation-maintenance": "x-logistique-tablette.jpg",
+  "gestion-des-dechets": "x-cimenterie.jpg",
+  gmao: "x-elec-portrait.jpg",
+  "ia-maintenance": "ph-robots-solaire.jpg",
+  "maintenance-4-0": "x-robotique.jpg",
+  "optimiser-la-maintenance": "team-grind-front.jpg",
+  "organiser-service-maintenance": "team-duo.jpg",
+  "plan-de-maintenance": "sv-convoyeur.jpg",
+  "planification-maintenance": "ph-technicien.jpg",
+  "predictive-ou-corrective": "x-elec-cablage.jpg",
+  "preventive-ou-corrective": "x-mecanique-portrait.jpg",
+  "robot-spot": "x-robotique.jpg",
+  "suivi-de-la-maintenance": "x-logistique-convoyeurs.jpg",
+  tpm: "team-grind-close.jpg",
+};
+const PHOTO_MOBILE_RESSOURCES = "x-logistique-tablette.jpg";
+
+function photoMobile(chemin: string | undefined): string | undefined {
+  const [, famille, , page] = chemin?.split("/") ?? [];
+  if (famille !== "ressources" || !page) return undefined;
+  return `/assets/web/${PHOTO_MOBILE_PAR_PAGE[page] ?? PHOTO_MOBILE_RESSOURCES}`;
+}
+
 export default function PageRessource({ titre, contenu, chemin }: ProprietesPageRessource) {
   const { rayon, chapo = [], parties = [], questions = [], aLire = [] } = contenu;
   const rayonVu = rayon ? H.RAYONS[rayon] : undefined;
   const livre = rayon === "livres-blancs";
+  const mobile = photoMobile(chemin);
 
   /* Un paragraphe du chapo vidé par le contrat (phrase interdite retirée,
      déclarée dans `retraits`) reste dans la donnée en chaîne vide : c'est la
@@ -350,9 +412,15 @@ export default function PageRessource({ titre, contenu, chemin }: ProprietesPage
   return (
     <div className="mg-site">
       {chemin ? <DonneesStructurees titre={titre} chemin={chemin} etapes={etapes} image={contenu.image} /> : null}
-      <main style={{ paddingTop: H.HAUT_DE_PAGE }}>
-        <section data-screen-label="Ressources · héros" style={H.SECTION_HEROS}>
-          <div style={{ marginBottom: 26 }}>
+      {/* `page`, `herosSection`, `herosTexte`, `signature` ne portent RIEN
+          au-dessus de 880 px : au téléphone, ils remettent le sommaire à sa
+          place de maquette, entre les deux boutons et le chapô (dc.html,
+          `hasToc` juste sous le héros). Voir `Ressource.module.css`. */}
+      <main className={styles.page} style={{ paddingTop: H.HAUT_DE_PAGE }}>
+        <section data-screen-label="Ressources · héros" className={styles.herosSection} style={H.SECTION_HEROS}>
+          {/* `ariane` : au téléphone, une seule rangée qui défile, séparée
+              par des chevrons (dc.html, `hasCrumbs`). */}
+          <div className={styles.ariane} style={{ marginBottom: 26 }}>
             <FilArianeVue etapes={etapes} />
           </div>
           {/* G2, LE HÉROS COMPACT DU TÉLÉPHONE : photo en tête et plus basse,
@@ -360,38 +428,58 @@ export default function PageRessource({ titre, contenu, chemin }: ProprietesPage
               dans `Ressource.module.css` sous 880 px : au-dessus, ces classes
               ne portent rien et la capture de bureau ne bouge pas. */}
           <div className={`${styles.deux} ${styles.herosCompact}`} style={H.GRILLE_HEROS}>
-            <div style={colonneTexte}>
+            <div className={styles.herosTexte} style={colonneTexte}>
               {rayonVu ? (
                 <span className={styles.pastilleHeros} style={H.PASTILLE}>
-                  <span style={H.POINT} />
+                  <span className={styles.pointHeros} style={H.POINT} />
                   {rayonVu.format}
+                  {/* Le sur-titre de la maquette : « Article · 12 min de
+                      lecture » (dc.html, `kick`). Le temps de lecture est
+                      celui de la signature, plus bas. */}
+                  {contenu.minutes ? (
+                    <span data-mobile-seulement="">{` · ${contenu.minutes} min de lecture`}</span>
+                  ) : null}
                 </span>
               ) : null}
               <h1 className={styles.titreHeros} style={H.TITRE1}>
                 {titre}
               </h1>
+              {/* Les deux boutons côte à côte du haut de page mobile
+                  (dc.html, `hero.showCta`) : l'appel et le téléphone, les
+                  libellés de la page. */}
+              <div data-mobile-seulement="" className={styles.boutonsHeros}>
+                <Link href={H.CONTACT} className={styles.boutonPlein}>
+                  {H.COPIE.decrire}
+                </Link>
+                <a href={H.TELEPHONE.href} className={styles.boutonTel}>
+                  {H.TELEPHONE.libelle}
+                </a>
+              </div>
               {paragraphes.map((paragraphe, i) => (
                 <p key={i} className={styles.chapoHeros} style={H.CHAPO}>
                   <EnLigne texte={paragraphe} lien={H.LIEN_PROSE} />
                 </p>
               ))}
-              <div style={H.SIGNATURE}>
+              <div className={styles.signature} style={H.SIGNATURE}>
                 <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
                   <span aria-hidden="true" style={H.MONOGRAMME}>
                     M
                   </span>
                   {H.COPIE.signature}
                 </span>
+                {/* `doublonMobile` : au téléphone, le temps de lecture est
+                    écrit dans le sur-titre et le nombre de parties dans le
+                    sommaire, à la même largeur. */}
                 {contenu.minutes ? (
                   <>
-                    <span aria-hidden="true">·</span>
-                    <span>{`${contenu.minutes} min de lecture`}</span>
+                    <span aria-hidden="true" className={styles.doublonMobile}>·</span>
+                    <span className={styles.doublonMobile}>{`${contenu.minutes} min de lecture`}</span>
                   </>
                 ) : null}
                 {parties.length > 0 ? (
                   <>
-                    <span aria-hidden="true">·</span>
-                    <span>{`${parties.length} parties`}</span>
+                    <span aria-hidden="true" className={styles.doublonMobile}>·</span>
+                    <span className={styles.doublonMobile}>{`${parties.length} parties`}</span>
                   </>
                 ) : null}
               </div>
@@ -406,8 +494,19 @@ export default function PageRessource({ titre, contenu, chemin }: ProprietesPage
                   fill
                   preload
                   sizes="(max-width: 980px) 100vw, 520px"
+                  className={mobile ? styles.photoBureau : undefined}
                   style={{ objectFit: "cover", filter: H.FILTRE_PHOTO }}
                 />
+                {mobile ? (
+                  <Image
+                    data-mobile-seulement=""
+                    src={mobile}
+                    alt=""
+                    fill
+                    sizes="100vw"
+                    style={{ objectFit: "cover", objectPosition: cadragePhoto(mobile, 16 / 10), filter: H.FILTRE_PHOTO }}
+                  />
+                ) : null}
               </div>
             ) : null}
           </div>
@@ -418,7 +517,18 @@ export default function PageRessource({ titre, contenu, chemin }: ProprietesPage
           parties={parties}
           chemin={chemin}
           photoHeros={contenu.image}
+          faq={questions.length > 0 ? H.COPIE.faqTitreMobile : undefined}
         />
+
+        {/* « NOS RÉALISATIONS », le carrousel que la maquette mobile v2 pose
+            juste avant la FAQ (dc.html, `refsSec` sur `x.k === "faq"`, repli
+            sur les six premières études de l'index). Le composant est
+            mobile-seulement : rien ne change sur bureau. */}
+        {chemin ? (
+          <div className={styles.realisations}>
+            <CarrouselRealisations cartes={realisationsLiees(chemin)} titre="Nos réalisations" />
+          </div>
+        ) : null}
 
         {questions.length > 0 ? <Questions questions={questions} /> : null}
 

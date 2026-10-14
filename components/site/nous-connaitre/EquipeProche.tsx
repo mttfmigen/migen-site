@@ -3,6 +3,7 @@ import Link from "next/link";
 import { resumeDe } from "@/components/site/blocs/resume-de-section";
 
 import styles from "./EquipeProche.module.css";
+import type { EntreeSommaire } from "./HautMobile";
 import SectionRepliee from "./SectionRepliee";
 
 /* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
@@ -87,9 +88,16 @@ const ROLES: readonly Role[] = [
   },
 ];
 
+/** La carte 08 de la maquette mobile v2. */
+export const SOMMAIRE_EQUIPE_PROCHE: EntreeSommaire = {
+  id: "l-equipe-proche-de-vous-au-quotidien",
+  titre: TITRE_TEXTE,
+};
+
 export default function EquipeProche() {
   return (
     <SectionRepliee
+      id={SOMMAIRE_EQUIPE_PROCHE.id}
       kicker={SURTITRE_TEXTE}
       titre={TITRE_TEXTE}
       resume={resumeDe(ROLES.map((r) => r.titre))}

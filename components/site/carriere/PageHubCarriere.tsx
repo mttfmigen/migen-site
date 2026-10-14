@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import Image from "next/image";
 
 import { VERRE } from "@/components/site/blocs/habillage";
@@ -21,9 +20,12 @@ import {
 } from "./SectionsHub";
 import { altPhoto } from "@/lib/descriptions-photos";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
-import { porteSonNumero } from "@/components/site/blocs/resume-de-section";
+import mv from "@/components/site/metier/MobileV2.module.css";
+import { EncartAppel, EtiquettePli, amorceDe } from "@/components/site/metier/pli-mobile";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
+import CarrouselRealisations from "@/components/site/preuve/CarrouselRealisations";
+import { realisationsLiees } from "@/components/site/preuve/donnees-mobiles";
 import FilArianeMobile from "@/components/site/preuve/FilArianeMobile";
 
 /** Le chemin de cette route statique, pour la couche mobile de la maquette v2. */
@@ -47,50 +49,12 @@ const CHEMIN = "/carriere/";
  */
 
 /**
- * LA BASCULE PORTE UNE ETIQUETTE, PAS LE TITRE DE LA SECTION. Corrige le 12/10,
- * motif deja applique et verifie sur le gabarit metier
- * (`components/site/metier/PageFicheMetier.tsx`).
- *
- * Mesure du 12/10 : ce hub etait la page la plus longue du site, 32,2 ecrans au
- * telephone, sans aucun bloc repliable. La premiere version du repli faisait
- * porter a l'en-tete de la bascule le SURTITRE et le H2 de la section, que le
- * rendu interne taisait alors via un drapeau `sansEnTete`. Les deux en
- * souffraient, et c'est mesure sur /carriere/ : les 7 titres replies etaient
- * servis a 30 px a 1280 px au lieu des 38,4 px de la capture, leurs 7
- * `max-width` en ch disparaissaient, et les deux grilles qui placent le titre
- * dans leur colonne gauche la laissaient vide, piste presente et contenu parti.
- *
- * Les deux pieges sont opposes, et les deux ont ete payes : un `<span>` A LA
- * PLACE du `<h2>` retire le titre de la structure du document ; un `<h2>` DANS
- * la bascule le remet, mais a la mauvaise taille et hors de sa colonne.
- *
- * La bonne reponse ne choisit pas : le `<h2>` de la section RESTE a sa place et
- * a la taille de sa capture, et la bascule porte une etiquette qui n'existe QUE
- * sous 880 px, marquee `data-mobile-seulement` comme le chevron et le resume du
- * meme bloc. Au-dessus, la bascule entiere est retiree par le module CSS : un
- * visiteur de bureau voit exactement sa capture, et aucun `<summary>` vide ne
- * reste dans son ordre de tabulation.
+ * LA BASCULE PORTE UNE ÉTIQUETTE, PAS LE TITRE DE LA SECTION (12/10) : le
+ * `<h2>` de la section reste à sa place et à la taille de sa capture, et la
+ * bascule porte une étiquette qui n'existe QUE sous 880 px. Même motif, même
+ * composant que les fiches métier : `EtiquettePli` et `amorceDe`
+ * (`metier/pli-mobile.tsx`), carte numérotée de la maquette mobile v2.
  */
-const ETIQUETTE_SURTITRE: CSSProperties = {
-  display: "block",
-  font: "600 11px var(--fb)",
-  letterSpacing: ".14em",
-  textTransform: "uppercase",
-  color: "var(--acc)",
-  /* dc.html L131 : `margin-bottom:3px` sous le surtitre de la bascule. */
-  marginBottom: 3,
-};
-
-/** Le libelle de la bascule, a l'echelle des H2 du gabarit en largeur mobile. */
-const ETIQUETTE_TITRE: CSSProperties = {
-  display: "block",
-  /* dc.html L131, titre de bascule de la maquette mobile v2. Voir
-     `metier/PageFicheMetier.tsx`. */
-  font: "600 16.5px/1.3 var(--ft)",
-  letterSpacing: "-.025em",
-  color: "var(--ink)",
-};
-
 function Section({ section }: { section: SectionHub }) {
   switch (section.type) {
     case "etapes":
@@ -183,13 +147,8 @@ function rendSection(section: SectionHub, i: number, ouverte = false) {
     <SectionPliableMobile
       key={cle}
       toujoursOuvert={ouverte}
-      numero={!porteSonNumero(etiquette.surtitre)}
-      enTete={
-        <span data-mobile-seulement="" className={styles.etiquettePli}>
-          <span style={ETIQUETTE_SURTITRE}>{etiquette.surtitre}</span>
-          <span style={ETIQUETTE_TITRE}>{etiquette.titre}</span>
-        </span>
-      }
+      resume={amorceDe(section)}
+      enTete={<EtiquettePli surtitre={etiquette.surtitre} titre={etiquette.titre} />}
     >
       <Section section={section} />
     </SectionPliableMobile>
@@ -212,7 +171,7 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
 
   return (
     <div className="mg-site" style={RACINE_CARRIERE}>
-      <main className={styles.corpsHub} style={{ paddingTop: 62 }}>
+      <main className={`${styles.corpsHub} ${mv.mobileV2}`} style={{ paddingTop: 62 }}>
         {/* LE HÉROS COMPACT DU TÉLÉPHONE (G2), maquette mobile v2 dc.html
             L104 à L110 : voir les classes `heros*` de `HubCarriere.module.css`.
             L'ordre du DOM ne bouge pas, rien n'est retiré, et au-dessus de
@@ -253,7 +212,11 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
                 <span
                   style={{ width: 6, height: 6, borderRadius: 999, background: "var(--acc)" }}
                 />
-                {heros.pastille}
+                {/* « Rubrique » au téléphone, le sur-titre du gabarit 10 de la
+                    maquette mobile v2 (dc.html L490) ; « Carrière » sur bureau,
+                    masqué sous 881 px par `.herosPastille > span`. */}
+                <span>{heros.pastille}</span>
+                <span data-mobile-seulement="">Rubrique</span>
               </span>
               <h1
                 className={styles.herosTitre}
@@ -290,11 +253,12 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
                   }}
                 />
               ))}
+              <EncartAppel chemin={CHEMIN} ordre={5} />
               <div
                 className={styles.herosBoutons}
                 style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 22 }}
               >
-                <BoutonPostuler />
+                <BoutonPostuler suiteMobile=" chez Migen" />
                 <a
                   href="tel:+33478337205"
                   className={styles.boutonTelephone}
@@ -313,6 +277,14 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
                   04 78 33 72 05
                 </a>
               </div>
+              {/* « Toutes les pages de la rubrique », les huit fiches métier
+                  filles : la boîte haute de la maquette mobile v2 pour le
+                  gabarit 10 (dc.html L125 et L501), ENTRE les boutons du héros
+                  et le chapô, à sa place dans la maquette (le héros s'arrête
+                  aux boutons, L111 ; le chapô ouvre la première section,
+                  L459). Mobile seulement (`data-mobile-seulement`, portée par
+                  `PastillesCocon`) : sur bureau, rien n'est rendu ici. */}
+              <PastillesCocon chemin={CHEMIN} />
             </div>
             <div className={styles.herosVisuel} style={{ position: "relative" }}>
               <div
@@ -370,12 +342,6 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
           </div>
         </section>
 
-        {/* « Toutes les pages de la rubrique », les huit fiches métier filles,
-            sous le héros : la boîte haute de la maquette mobile v2 pour le
-            gabarit 10 (dc.html L125 et L501). Mobile seulement, portée par
-            `PastillesCocon` lui-même. */}
-        <PastillesCocon chemin={CHEMIN} />
-
         {/* CHAQUE SECTION NUMÉROTÉE SE REPLIE AU TÉLÉPHONE, SAUF LA PREMIÈRE,
             qui reste ouverte : règle de la maquette mobile v2. Les chiffres,
             sans titre, ne se replient pas. Voir `REPLIABLES`.
@@ -395,6 +361,11 @@ export default function PageHubCarriere({ contenu }: { contenu: ContenuHubCarrie
         >
           {contenus.map((s, j) => rendSection(s, premier + j, j === rangOuvert))}
         </AvecConversionMobile>
+        {/* « Nos réalisations » entre la dernière carte et la FAQ, comme la
+            maquette mobile v2 (dc.html `refsSec`, L427). Mobile seulement. */}
+        <div data-mc-realisations="">
+          <CarrouselRealisations cartes={realisationsLiees(CHEMIN)} titre="Nos réalisations" />
+        </div>
         {apres.map((s, j) => rendSection(s, dernier + 1 + j))}
       </main>
     </div>

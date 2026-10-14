@@ -72,14 +72,25 @@ export default function ReponseDirecte({
   texte,
 }: ProprietesReponseDirecte) {
   return (
-    <section style={SECTION}>
+    /* `data-couverture-section`, `data-mm-*`, `data-couverture-photo` : son
+       habit de corps de carte au téléphone, quand `PageOffre` le range dans la
+       carte « 01 » (`PageOffre.module.css`). Au-dessus de 880 px, rien. */
+    <section data-mobile-apres-sections="" data-couverture-section="" style={SECTION}>
       <div className="mg-r2" style={GRILLE}>
         <div>
-          <div style={{ ...SURTITRE, marginBottom: 16 }}>Pourquoi Migen ?</div>
-          <h2 style={TITRE}>{titre}</h2>
-          {texte ? <p style={TEXTE}>{texte}</p> : null}
+          {/* Au téléphone, dans la carte « 01 » : ni sur-titre, et le titre
+              et sa suite en un paragraphe gras, comme la maquette mobile v2
+              (`app/globals.css` § 13). Au bureau, rien ne change. */}
+          <div data-doublon-mobile="" style={{ ...SURTITRE, marginBottom: 16 }}>
+            Pourquoi Migen ?
+          </div>
+          <h2 data-mm-lead="" {...(texte ? { "data-mm-phrase": "" } : {})} style={TITRE}>
+            {titre}
+          </h2>
+          {texte ? <p data-mm-texte="" data-mm-suite="romain" style={TEXTE}>{texte}</p> : null}
         </div>
         <div
+          data-couverture-photo=""
           role="img"
           aria-label="Technicien migen en intervention sur une ligne de production"
           style={PHOTO}

@@ -248,7 +248,9 @@ const ZONE: CSSProperties = {
 export default function HubLocal({ hub }: { hub: DonneesHubLocal }) {
   const zones = hub.zones ?? [];
   return (
-    <section style={SECTION}>
+    /* `data-mobile-apres-sections` : absent de la maquette mobile, il passe
+       après les cinq sections au téléphone, en carte sans numéro. */
+    <section data-mobile-apres-sections="" style={SECTION}>
       <div style={LARGEUR}>
         {/* SE REPLIE AU TÉLÉPHONE, motif « Blocs communs (pliables) » de
             `MigenMobile.dc.html`. C'EST L'ÉCRAN LE PLUS LOURD DU GABARIT :
@@ -265,11 +267,12 @@ export default function HubLocal({ hub }: { hub: DonneesHubLocal }) {
         <SectionPliableMobile
           enTete={
             <span>
-              <span style={{ ...SURTITRE, marginBottom: 14, display: "block" }}>{hub.surtitre}</span>
-              <h2 style={TITRE}>{hub.titre}</h2>
+              <span data-carte-surtitre="" style={{ ...SURTITRE, marginBottom: 14, display: "block" }}>{hub.surtitre}</span>
+              <h2 data-carte-titre="" style={TITRE}>{hub.titre}</h2>
             </span>
           }
           resume={[hub.nom, ...hub.cartes.map((carte) => carte.titre)].filter(Boolean).join(" · ")}
+          numero={false}
         >
         <div className="mg-r2" style={GRILLE}>
           <div style={PANNEAU}>

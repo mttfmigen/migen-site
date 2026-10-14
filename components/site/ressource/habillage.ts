@@ -637,6 +637,9 @@ export const COPIE = {
   decrire: "Décrire mon besoin",
   faqSurtitre: "Questions fréquentes",
   faqTitre: "Vos questions, nos réponses",
+  /** Le titre de la FAQ au téléphone : l'intertitre du corpus, que la maquette
+      mobile v2 écrit seul, sans sur-titre (dc.html, `isTitle` sur `x.t`). */
+  faqTitreMobile: "Questions fréquentes (FAQ)",
   lecturesSurtitre: "À lire ensuite",
   lecturesTitre: "Sur le même sujet",
   appelSurtitre: "Passer de la lecture à l’action",

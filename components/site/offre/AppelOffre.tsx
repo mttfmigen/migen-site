@@ -78,9 +78,14 @@ export default function AppelOffre({
   mention,
 }: ProprietesAppelOffre) {
   return (
-    <section style={SECTION}>
+    /* Absent de la maquette mobile v2 : au téléphone, après ses sections
+       (`data-mobile-apres-sections`, socle de `app/globals.css`).
+       `data-appel-offre` : la poignée par laquelle les gabarits d'offre le
+       masquent au téléphone, où le bandeau « Une question sur votre site ? »
+       de la cadence tient sa place (`PageOffre.module.css`). */
+    <section data-mobile-apres-sections="" data-appel-offre="" style={SECTION}>
       <div style={LARGEUR}>
-        <div style={BANDE}>
+        <div data-mm-appel="" style={BANDE}>
           {/* `min(280px, 100%)` ET NON `280px`, et c'est la correction du
               13/10 mesurée au navigateur. Les 280 px viennent de la capture :
               ils empêchent la question de se réduire à une colonne de deux
@@ -92,10 +97,10 @@ export default function AppelOffre({
               `.mg-site`. Avec `min()`, le plancher reste 280 px tant que la
               place existe et devient la largeur disponible quand elle manque. */}
           <div style={{ flex: "1 1 0%", minWidth: "min(280px, 100%)" }}>
-            <div style={QUESTION}>
+            <div data-mm-appel-question="" style={QUESTION}>
               <TexteRiche texte={question} />
             </div>
-            <div style={SOUS_LIGNE}>{mention ?? "Rappel dans l’heure."}</div>
+            <div data-mm-appel-ligne="" style={SOUS_LIGNE}>{mention ?? "Rappel dans l’heure."}</div>
           </div>
           {bouton?.libelle && bouton.href && cibleSure(bouton.href) ? (
             <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>

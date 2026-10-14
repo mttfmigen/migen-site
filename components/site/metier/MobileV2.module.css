@@ -1,0 +1,793 @@
+/* =========================================================================
+   LA FAMILLE CARRIÈRE AU TÉLÉPHONE, SUR LA MAQUETTE MOBILE V2 (14/10).
+
+   Fiches métier (gabarit 07, `PageFicheMetier`) et hub `/carriere/`
+   (`PageHubCarriere`) : `.mobileV2` est posé sur leur `<main>`.
+
+   Source unique : `maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html`,
+   L130 (carte `isDetails`, ses blocs `isP`, `isKv`, `isOl`, `isTb`, `isQ`),
+   L129 (`isTitle`), L472 (FAQ). Chaque valeur ci-dessous y est écrite.
+
+   LE BALISAGE NE CHANGE PAS : les blocs de bureau portent des attributs
+   `data-mc-*` (« métier carrière », préfixe propre à la famille pour ne
+   croiser aucun motif partagé), et c'est ici qu'ils prennent le dessin de la
+   maquette. `!important` parce que le dessin de bureau est écrit en styles en
+   ligne, qu'une feuille ne bat pas autrement.
+
+   AU-DESSUS DE 880 PX, AUCUNE DE CES RÈGLES N'EXISTE.
+   ========================================================================= */
+
+.mobileV2 {
+  --mc-fond: #f6f6f7; /* --cardbg de C_LIGHT, dc.html L409 */
+  --mc-bord: rgba(28, 27, 25, 0.09); /* --bd de C_LIGHT */
+  --mc-encre3: #77736d; /* --tx2 de C_LIGHT */
+}
+
+:global(:root[data-theme="sombre"]) .mobileV2 {
+  --mc-fond: var(--chip);
+  --mc-bord: var(--line);
+  --mc-encre3: var(--ink3);
+}
+
+@media (max-width: 880px) {
+  /* LA MAQUETTE NE RÉVÈLE RIEN AU DÉFILEMENT : ses blocs sont là. Le moteur
+     de bureau (`Moteurs.tsx`) arme les blocs `data-reveal` à opacité nulle ;
+     au téléphone ils restent visibles d'emblée. */
+  .mobileV2 [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* --------------------------------------------- la carte numérotée
+     Le dessin vient du motif partagé `details[data-carte-numerotee]`
+     (app/globals.css). La famille n'y ajoute que la gouttière de la
+     maquette : `margin:12px 18px 0` (dc.html L478, `sx.m`). */
+  .mobileV2 details[data-carte-numerotee] {
+    margin: 12px 18px 0;
+  }
+
+  /* Le contenu de la carte : ni rythme de section, ni gouttière de page,
+     la carte rembourre déjà à 16 px. */
+  .mobileV2 details[data-carte-numerotee] section {
+    padding: 0 !important;
+  }
+
+  .mobileV2 details[data-carte-numerotee] [style*="max-width:1200px"] {
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* LE DOUBLON D'ÉTIQUETTE : le surtitre et le `<h2>` de bureau de la
+     section disent ce que la carte dit déjà dans sa bascule, visible ouverte
+     comme fermée. Ils restent dans le DOM et sur bureau. */
+  .mobileV2 details[data-carte-numerotee] [data-mc-titre-section] {
+    display: none !important;
+  }
+
+  .mobileV2 details[data-carte-numerotee] :is([data-mc-entete], [data-mc-pile]) {
+    display: block !important;
+    position: static !important;
+    max-width: none !important;
+    margin: 0 !important;
+    gap: 0 !important;
+  }
+
+  /* LE TEXTE : premier paragraphe en chapô (`lead`, 500 16px/1.6), les
+     suivants en texte courant (400 var(--pfs)/1.65, --pfs 15px). */
+  .mobileV2 details[data-carte-numerotee] [data-mc-intro] {
+    max-width: none !important;
+    margin: 0 0 12px !important;
+    font: 400 15px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  .mobileV2 details[data-carte-numerotee] [data-mc-intro]:first-of-type {
+    font: 500 16px/1.6 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+
+  /* ------------------------------ « Libellé : texte » en petites cartes
+     dc.html `isKv` : 26px | 1fr, 13px 14px, rayon 16, fond #f6f6f7. */
+  .mobileV2 [data-mc-cartes] {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+    margin: 4px 0 14px !important;
+  }
+
+  .mobileV2 [data-mc-carte] {
+    display: grid !important;
+    grid-template-columns: 26px minmax(0, 1fr) !important;
+    column-gap: 10px !important;
+    row-gap: 0 !important;
+    align-items: start !important;
+    align-content: start !important;
+    grid-column: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 13px 14px !important;
+    border: 1px solid var(--mc-bord) !important;
+    border-radius: 16px !important;
+    background: var(--mc-fond) !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    overflow: visible !important;
+    color: var(--ink) !important;
+  }
+
+  .mobileV2 [data-mc-carte] [data-mc-deco] {
+    display: none !important;
+  }
+
+  .mobileV2 [data-mc-carte-corps] {
+    display: contents !important;
+  }
+
+  .mobileV2 [data-mc-carte] [data-mc-num] {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding-top: 3px;
+    border-radius: 0 !important;
+    background: none !important;
+    font: 600 11px ui-monospace, Menlo, monospace !important;
+    text-align: left !important;
+    color: var(--acc) !important;
+  }
+
+  .mobileV2 [data-mc-carte] [data-mc-carte-titre] {
+    grid-column: 2;
+    min-width: 0;
+    margin: 0 !important;
+    font: 600 14.5px/1.4 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    color: var(--ink) !important;
+  }
+
+  .mobileV2 [data-mc-carte] [data-mc-carte-texte] {
+    grid-column: 2;
+    min-width: 0;
+    margin: 4px 0 0 !important;
+    font: 400 14px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  /* ------------------------------------------- les étapes en frise
+     dc.html `isOl` : 30px | 1fr, pastille ronde anthracite, 14 px dessous. */
+  .mobileV2 [data-mc-frise] {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0 !important;
+    margin: 6px 0 12px !important;
+  }
+
+  .mobileV2 [data-mc-etape] {
+    display: grid !important;
+    grid-template-columns: 30px minmax(0, 1fr) !important;
+    column-gap: 12px !important;
+    row-gap: 2px !important;
+    align-items: start !important;
+    grid-column: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 0 14px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    overflow: visible !important;
+  }
+
+  .mobileV2 [data-mc-etape-tete] {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    display: block !important;
+    margin: 0 !important;
+  }
+
+  .mobileV2 [data-mc-etape-tete] > :first-child {
+    display: block !important;
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 999px !important;
+    background: var(--panel) !important;
+    color: #fff !important;
+    font: 600 11.5px/30px var(--fb) !important;
+    text-align: center !important;
+  }
+
+  .mobileV2 [data-mc-etape-tete] > [data-mc-deco] {
+    display: none !important;
+  }
+
+  .mobileV2 [data-mc-etape-titre] {
+    grid-column: 2;
+    min-width: 0;
+    margin: 0 !important;
+    padding-top: 4px;
+    font: 600 14.5px/1.5 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    color: var(--ink) !important;
+  }
+
+  .mobileV2 [data-mc-etape-texte] {
+    grid-column: 2;
+    min-width: 0;
+    margin: 0 !important;
+    font: 400 14px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  /* -------------------------------- le tableau, une carte par rangée
+     dc.html `isTb` : en-têtes joints par « · » en capitales, puis une carte
+     14px 15px par rangée, l'en-tête de la colonne au-dessus de sa valeur.
+     Les deux libellés sont du contenu généré (`attr()`) : ils lisent le
+     texte de l'en-tête déjà présent dans la page, rien n'est écrit. */
+  .mobileV2 [data-mc-tableau] {
+    display: grid !important;
+    gap: 8px !important;
+    margin: 4px 0 14px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .mobileV2 [data-mc-tableau-tete] {
+    display: block !important;
+    padding: 0 !important;
+  }
+
+  .mobileV2 [data-mc-tableau-tete] > span {
+    font: 600 10.5px/1.4 var(--fb) !important;
+    letter-spacing: 0.1em !important;
+    color: var(--mc-encre3) !important;
+  }
+
+  .mobileV2 [data-mc-tableau-tete] > span + span::before {
+    content: " · ";
+  }
+
+  .mobileV2 [data-mc-tableau-ligne] {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+    padding: 14px 15px !important;
+    border: 1px solid var(--mc-bord) !important;
+    border-radius: 16px !important;
+    background: var(--mc-fond) !important;
+  }
+
+  .mobileV2 [data-mc-tableau-ligne] > :first-child {
+    font: 600 14.5px/1.45 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+
+  .mobileV2 [data-mc-tableau-ligne] > :last-child:not(:first-child) {
+    font: 400 14px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  /* L'ORDRE DU CORPUS (dc.html `blockV`, pages salaire) : le chapô, le
+     tableau, PUIS les paragraphes qui le commentent. La donnée les range tous
+     avant le tableau ; ici seul l'ordre visuel change, le DOM reste intact. */
+  .mobileV2 [data-mc-tableau-corps] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobileV2 [data-mc-tableau-corps] > [data-mc-intro] ~ [data-mc-intro] {
+    order: 2;
+  }
+
+  .mobileV2 [data-mc-libelle]::before {
+    content: attr(data-mc-libelle);
+    display: block;
+    margin-bottom: 3px;
+    font: 600 10.5px/1.4 var(--fb);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mc-encre3);
+  }
+
+  /* Le vrai tableau HTML (« grille ») suit le même dessin, sans défilement
+     horizontal : ses rangées deviennent des cartes. */
+  .mobileV2 [data-mc-grille] {
+    overflow: visible !important;
+    margin: 4px 0 14px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .mobileV2 [data-mc-grille] table,
+  .mobileV2 [data-mc-grille] thead,
+  .mobileV2 [data-mc-grille] thead tr {
+    display: block;
+    min-width: 0 !important;
+  }
+
+  .mobileV2 [data-mc-grille] th {
+    display: inline;
+    padding: 0 !important;
+    border: 0 !important;
+    font: 600 10.5px/1.4 var(--fb) !important;
+    letter-spacing: 0.1em !important;
+    color: var(--mc-encre3) !important;
+  }
+
+  .mobileV2 [data-mc-grille] th + th::before {
+    content: " · ";
+  }
+
+  .mobileV2 [data-mc-grille] tbody {
+    display: grid;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .mobileV2 [data-mc-grille] tbody tr {
+    display: grid;
+    gap: 8px;
+    padding: 14px 15px;
+    border: 1px solid var(--mc-bord);
+    border-radius: 16px;
+    background: var(--mc-fond);
+  }
+
+  .mobileV2 [data-mc-grille] td {
+    display: block;
+    padding: 0 !important;
+    border: 0 !important;
+    font: 400 14px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  .mobileV2 [data-mc-grille] td:first-child {
+    font: 600 14.5px/1.45 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+
+  /* L'encart : son texte, posé dans la carte, sans boîte. */
+  .mobileV2 [data-mc-encart] {
+    display: block !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  /* --------------------------- la bande « Postuler » en fin de section
+     dc.html `isQ` (14px 16px, rayon 16, fond orange à 9 %, 500 14.5px/1.55).
+     La maquette pose L389 `isQ: b.k === "q" && !btnQ` : l'encart de TEXTE n'a
+     pas de bouton (relu sur /carriere/automaticien/salaire/, 15/10). Le
+     « Postuler » fixe de la bande s'efface donc au téléphone ; la cadence
+     « Ce métier vous ressemble ? » porte le même lien quelques cartes plus
+     bas, et rien ne change sur bureau. */
+  .mobileV2 [data-mc-bande] {
+    margin: 6px 0 14px !important;
+    padding: 0 !important;
+  }
+
+  .mobileV2 [data-mc-bande] > div {
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 12px !important;
+    padding: 14px 16px !important;
+    border: 0 !important;
+    border-radius: 16px !important;
+    background: rgba(255, 124, 60, 0.09) !important;
+  }
+
+  .mobileV2 [data-mc-bande] > div > div {
+    flex: none !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    font: 500 14.5px/1.55 var(--fb) !important;
+  }
+
+  .mobileV2 [data-mc-bande] > div > a {
+    display: none !important;
+  }
+
+  /* ------------------------------------------ « Questions fréquentes »
+     dc.html L129 (`isTitle`, margin 26px 18px 10px) puis L472 : l'intro en
+     chapô, et les questions en simple liste de cartes (`data-faq-liste`,
+     motif partagé). Le panneau-photo sombre de bureau s'efface : sa photo et
+     son voile sont des décors, ils restent dans le DOM. */
+  .mobileV2 section:has(> [data-reveal] > [data-mc-faq]) {
+    padding-top: 26px !important;
+  }
+
+  .mobileV2 [data-mc-faq] {
+    --ink: inherit !important;
+    --ink1: inherit !important;
+    --ink2: inherit !important;
+    --ink3: inherit !important;
+    --ink4: inherit !important;
+    --line: inherit !important;
+    --chip: inherit !important;
+    --gl-a: inherit !important;
+    --gbd: inherit !important;
+    --card: inherit !important;
+    --acc-ink: inherit !important;
+    display: flex !important;
+    flex-direction: column;
+    gap: 0 !important;
+    padding: 0 18px !important;
+    border-radius: 0 !important;
+    background: none !important;
+    overflow: visible !important;
+    color: var(--ink) !important;
+  }
+
+  .mobileV2 [data-mc-faq] > [data-mc-deco] {
+    display: none !important;
+  }
+
+  .mobileV2 [data-mc-faq-tete] {
+    display: contents !important;
+  }
+
+  .mobileV2 [data-mc-faq-corps] {
+    order: 1;
+  }
+
+  .mobileV2 [data-mc-faq-corps] > p {
+    max-width: none !important;
+    margin: 0 0 12px !important;
+    font: 400 15px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  .mobileV2 [data-mc-faq-corps] > p:first-child {
+    font: 500 16px/1.6 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+
+  .mobileV2 [data-mc-faq-corps] > [data-faq-liste] {
+    margin-top: 0 !important;
+  }
+
+  /* « Poser ma question » et le sur-titre « NN · Questions » : la FAQ de la
+     maquette (dc.html `isQ`) n'a ni l'un ni l'autre, son titre seul puis la
+     liste (relecture adverse du 14/10). Masqués au téléphone, dans le DOM et
+     sur bureau. */
+  /* « Nos réalisations » : le titre de 20 px de la section claire (dc.html
+     L131), qu'une règle de titre de la page grossissait. */
+  .mobileV2 [data-mc-realisations] h2 {
+    font-size: 20px !important;
+  }
+
+  .mobileV2 [data-mc-faq-bouton],
+  .mobileV2 [data-mc-faq-tete] > [data-faq-surtitre] {
+    display: none !important;
+  }
+
+  /* --------------------------------------------------- les chiffres
+     Le gabarit carrière de la maquette mobile v2 n'en pose aucun : la carte 01
+     suit l'encart d'appel (relecture adverse du 14/10). Masqués au téléphone,
+     ils restent dans le DOM et sur bureau. */
+  .mobileV2 [data-mc-chiffres] {
+    display: none !important;
+  }
+}
+
+@media (max-width: 880px) {
+  /* ------------------------------------------- « Pour aller plus loin »
+     dc.html L134 (`kidsBottom`) : sur-titre orange en capitales de 11 px,
+     puis des rangées blanches de 13px 15px, rayon 16, libellé 600 14px et
+     flèche orange. La vignette de bureau est un décor : elle reste dans le
+     DOM, la rangée de la maquette n'en porte pas. */
+  .mobileV2 section:has(> [data-reveal] > [data-mc-liens]) {
+    padding: 22px 0 8px !important;
+  }
+
+  .mobileV2 [data-mc-liens-titre] {
+    margin: 0 0 10px !important;
+    font: 600 11px var(--fb) !important;
+    letter-spacing: 0.14em !important;
+  }
+
+  .mobileV2 [data-mc-liens-grille] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 6px !important;
+  }
+
+  .mobileV2 [data-mc-lien] {
+    flex-direction: row !important;
+    border: 1px solid var(--mm-filet, rgba(28, 27, 25, 0.08)) !important;
+    border-radius: 16px !important;
+    background: var(--card) !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .mobileV2 [data-mc-lien] > [data-mc-deco] {
+    display: none !important;
+  }
+
+  .mobileV2 [data-mc-lien-texte] {
+    flex: 1 1 auto;
+    align-items: center !important;
+    min-height: 46px;
+    padding: 13px 15px !important;
+  }
+
+  .mobileV2 [data-mc-lien-texte] > span:first-child {
+    font: 600 14px/1.35 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+  }
+
+  .mobileV2 [data-mc-lien-texte] > [aria-hidden="true"] {
+    width: auto !important;
+    height: auto !important;
+    background: none !important;
+    color: var(--acc) !important;
+    font: 400 18px/1 var(--fb) !important;
+  }
+
+  /* ------------------------------------- le formulaire de candidature
+     Son DESSIN seulement, celui du bas de page de la maquette (dc.html
+     L138 : `margin:22px 18px 0;padding:22px 20px;border-radius:24px`,
+     sur-titre de 11 px, titre de 19px/1.25). Champs, noms, validation et
+     envoi ne sont pas touchés. `[id]` et non `#` : un module CSS renomme
+     les identifiants. */
+  .mobileV2 [id="postuler"] {
+    padding: 22px 18px 0 !important;
+  }
+
+  .mobileV2 [id="postuler"] > div {
+    padding: 22px 20px !important;
+    border-radius: 24px !important;
+  }
+
+  .mobileV2 [id="postuler"] > div > div:first-child {
+    display: none !important;
+  }
+
+  .mobileV2 [id="postuler"] > div > div:nth-child(2) {
+    gap: 18px !important;
+  }
+
+  /* LE BANDEAU DE FIN (dc.html, `endK`, `endT`, `endBtnOnly`) : sur-titre
+     « Rejoindre migen » (le `<h2>` de la section, dessiné en sur-titre), titre
+     « Rejoignez les 120 collaborateurs de migen. », un bouton orange. Le
+     sur-titre de bureau « Postuler » s'efface (doublon du bouton, il reste
+     dans le DOM) ; le reste du panneau se replie derrière le bouton. */
+  .mobileV2 [id="postuler"] > div > div:nth-child(2) > div:first-child > div:first-child {
+    display: none !important;
+  }
+
+  .mobileV2 [id="postuler"] h2 {
+    margin: 0 0 8px !important;
+    font: 600 11px var(--fb) !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase;
+    color: var(--acc) !important;
+  }
+
+  .mobileV2 [id="postuler"] [data-mc-postuler-titre] {
+    margin: 0 0 14px;
+    font: 600 19px/1.25 var(--ft);
+    letter-spacing: -0.03em;
+    color: #fff;
+  }
+
+  .mobileV2 [id="postuler"] [data-mc-postuler-ouvrir] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 50px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--acc);
+    color: #fff;
+    font: 600 14.5px/1.25 var(--fb);
+    cursor: pointer;
+  }
+
+  .mobileV2 [id="postuler"] [data-mc-postuler-ouvrir]:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+
+  .mobileV2 [id="postuler"][data-ouvert] [data-mc-postuler-ouvrir],
+  html[data-js] .mobileV2 [id="postuler"]:not([data-ouvert]) [data-mc-replie] {
+    display: none !important;
+  }
+
+  .mobileV2 [id="postuler"][data-ouvert] [data-mc-postuler-titre] {
+    margin-bottom: 14px;
+  }
+
+  .mobileV2 [id="postuler"] p[data-mc-replie] {
+    margin: 0 0 14px !important;
+    font: 400 14.5px/1.6 var(--fb) !important;
+  }
+
+  /* « Pour aller plus loin » : le gabarit 07 de la maquette mobile n'a pour
+     boîte du bas que « Dans la même rubrique » (dc.html L134), posée avant le
+     bandeau de fin. Ses liens (hub, pages filles, sœurs) sont tous déjà dans
+     le fil d'Ariane, les puces du héros ou cette boîte : masqués au
+     téléphone, ils restent dans le DOM et sur bureau. */
+  .mobileV2 section:has(> [data-reveal] > [data-mc-liens]) {
+    display: none !important;
+  }
+
+  .mobileV2 [id="postuler"] a[href^="tel:"] {
+    margin-top: 16px !important;
+  }
+
+  .mobileV2 [id="postuler"] form {
+    gap: 10px !important;
+  }
+
+  .mobileV2 [id="postuler"] div:has(> form) {
+    padding: 16px !important;
+    border-radius: 18px !important;
+  }
+}
+
+/* ================================================ LES BLOCS PROPRES AU HUB
+   `/carriere/` seulement (`carriere/SectionsHub.tsx`, `MetiersRecrutes.tsx`).
+   La maquette mobile v2 n'a pas ces écrans : ils prennent, dans leur carte,
+   les dessins qu'elle donne aux mêmes natures de contenu. */
+@media (max-width: 880px) {
+  /* Le bandeau « 10 % » : une tuile sombre compacte (14px 16px, rayon 16). */
+  .mobileV2 [data-mc-entonnoir] {
+    gap: 12px !important;
+    margin: 0 0 14px !important;
+    padding: 14px 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .mobileV2 [data-mc-entonnoir] > span:first-child {
+    font-size: 28px !important;
+  }
+
+  .mobileV2 [data-mc-entonnoir] > span:last-child {
+    font-size: 14px !important;
+  }
+
+  /* « Ce que nous ne faisons pas » : le panneau sombre s'efface, ses refus
+     deviennent les petites cartes de la maquette, la croix en orange. */
+  .mobileV2 [data-mc-refus] {
+    padding: 0 !important;
+  }
+
+  .mobileV2 [data-mc-refus] > div {
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    overflow: visible !important;
+  }
+
+  .mobileV2 [data-mc-refus] [data-mc-deco] {
+    display: none !important;
+  }
+
+  .mobileV2 [data-mc-refus] [data-mc-carte] [data-mc-num] {
+    padding-top: 0;
+    font: 600 15px/1.3 var(--fb) !important;
+  }
+
+  /* Les hubs : cartes-photos de 168 px, une par ligne. */
+  .mobileV2 [data-mc-hubs] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+    margin: 4px 0 14px !important;
+  }
+
+  .mobileV2 [data-mc-hubs] > a {
+    height: 168px !important;
+    border-radius: 18px !important;
+  }
+
+  .mobileV2 [data-mc-hubs] > a > div:last-child > div:nth-child(2) {
+    font-size: 19px !important;
+  }
+
+  /* Les avis : des cartes de citation claires, 14px 16px, rayon 16. */
+  .mobileV2 [data-mc-avis] {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+    margin: 4px 0 14px !important;
+  }
+
+  .mobileV2 [data-mc-avis] > * {
+    grid-column: auto !important;
+    padding: 14px 16px !important;
+    border: 1px solid var(--mc-bord) !important;
+    border-radius: 16px !important;
+    background: var(--mc-fond) !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .mobileV2 [data-mc-avis] > * > span:first-child {
+    margin-bottom: 4px !important;
+    font-size: 32px !important;
+  }
+
+  .mobileV2 [data-mc-avis] > * > p {
+    margin: 0 0 8px !important;
+    font: 500 14.5px/1.55 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+
+  .mobileV2 [data-mc-avis] > * > div {
+    color: var(--mc-encre3) !important;
+  }
+
+  .mobileV2 [data-mc-avis-fin] {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 12px !important;
+    margin: 0 0 14px !important;
+    padding: 14px 16px !important;
+    border: 0 !important;
+    border-radius: 16px !important;
+    background: rgba(255, 124, 60, 0.09) !important;
+  }
+
+  .mobileV2 [data-mc-avis-fin] p {
+    font: 500 14.5px/1.55 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+
+  .mobileV2 [data-mc-avis-fin] > div:last-child {
+    justify-content: stretch !important;
+  }
+
+  .mobileV2 [data-mc-avis-fin] a {
+    flex: 1 1 auto;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 14px !important;
+    font: 600 14px/1.25 var(--fb) !important;
+  }
+
+  /* Le rail des métiers : il déborde jusqu'aux bords de la carte, comme le
+     rail de références de la maquette (`margin:4px -16px 14px`). */
+  .mobileV2 [data-mc-rail] {
+    gap: 10px !important;
+    margin: 12px -16px 14px !important;
+    padding: 0 16px 4px !important;
+    scroll-padding-left: 16px !important;
+  }
+
+  .mobileV2 [data-mc-rail-carte] {
+    width: 236px !important;
+    height: 300px !important;
+    border-radius: 18px !important;
+  }
+
+  .mobileV2 [data-mc-fleches] {
+    margin-top: 12px;
+  }
+}

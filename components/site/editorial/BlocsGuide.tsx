@@ -47,7 +47,20 @@ function etendues(n: number, colonnes: number): number[] {
   return span;
 }
 
-function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouverte: boolean }) {
+/** Une puce qui OUVRE sur un gras : la règle `kv` de la maquette mobile v2. */
+const PUCE_KV = /^\*\*[^*]+\*\*/;
+const estListeKv = (items: string[]) =>
+  items.length >= 2 && items.filter((item) => PUCE_KV.test(item)).length >= Math.ceil(items.length * 0.6);
+
+function Bloc({
+  bloc,
+  groupe,
+  ouverte,
+}: {
+  bloc: BlocGuide;
+  groupe: string;
+  ouverte: boolean;
+}) {
   switch (bloc.type) {
     case "p":
       return (
@@ -82,9 +95,13 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
     case "ul":
     case "ul2": {
       const deux = bloc.type === "ul2";
+      /* Au téléphone, une liste dont les puces ouvrent sur un gras devient
+         une suite de petites cartes numérotées (`isKv`), les autres une liste
+         à puces rondes (`isUl`) : `PageEditoriale.module.css`, sous 881 px. */
+      const motif = estListeKv(bloc.items) ? styles.listeKv : styles.listePuces;
       return (
         <div
-          className={deux ? "mg-r2" : undefined}
+          className={deux ? `mg-r2 ${motif}` : motif}
           style={
             deux
               ? {
@@ -110,7 +127,7 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
                 color: "var(--ink1)",
               }}
             >
-              <span aria-hidden="true" style={COCHE}>
+              <span aria-hidden="true" className={styles.cocheGuide} style={COCHE}>
                 ✓
               </span>
               <span>
@@ -125,6 +142,7 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
     case "cartes":
       return (
         <div
+          className={styles.listeCartes}
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
@@ -143,6 +161,7 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
               style={{ borderRadius: "var(--rad-s)", padding: "24px 24px 26px", ...VERRE }}
             >
               <div
+                className={styles.numeroCarte}
                 style={{
                   font: "600 10.5px ui-monospace,Menlo,monospace",
                   letterSpacing: ".06em",
@@ -153,6 +172,7 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
                 {numero(i)}
               </div>
               <div
+                className={styles.titreCarte}
                 style={{
                   font: "600 calc(16px * var(--ts))/1.35 var(--ft)",
                   letterSpacing: "-.024em",
@@ -164,7 +184,7 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
               </div>
               {item.texte ? (
                 <div
-                  className={styles.riche}
+                  className={`${styles.riche} ${styles.texteCarte}`}
                   style={{ font: "400 14px/1.65 var(--fb)", color: "var(--ink2)" }}
                 >
                   <TexteRiche texte={item.texte} />
@@ -220,7 +240,7 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
 
     case "etapes":
       return (
-        <div style={{ margin: "12px 0 26px", maxWidth: 820 }}>
+        <div className={styles.listeEtapes} style={{ margin: "12px 0 26px", maxWidth: 820 }}>
           {bloc.items.map((item, i) => (
             <div
               key={`${i}-${item.texte.slice(0, 16)}`}
@@ -280,7 +300,10 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
 
     case "numeros":
       return (
+        /* `listeNumeros` : au téléphone, la frise de la maquette (`isOl`),
+           pastilles sombres de 30 px, voir `PageEditoriale.module.css`. */
         <div
+          className={styles.listeNumeros}
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))",
@@ -294,6 +317,7 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
               style={{ borderRadius: "var(--rad-s)", padding: "24px 24px 26px", ...VERRE }}
             >
               <div
+                className={styles.numeroFrise}
                 style={{
                   font: "600 calc(34px * var(--ts))/1 var(--ft)",
                   letterSpacing: "-.05em",
@@ -393,6 +417,9 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
     case "photo":
       return (
         <div
+          /* `photoCorps` ne porte rien : il sert d'ancre à la règle du chapô
+             de carte, au téléphone (`PageEditoriale.module.css`). */
+          className={styles.photoCorps}
           style={{
             position: "relative",
             borderRadius: "var(--rad)",
@@ -424,6 +451,7 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
           tabIndex={0}
           role="region"
           aria-label="Tableau, défilement horizontal possible"
+          className={styles.tableauGuide}
           style={{ margin: "8px 0 26px", borderRadius: "var(--rad-s)", overflow: "auto", ...VERRE }}
         >
           <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 540 }}>
@@ -454,6 +482,9 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
                   {ligne.map((cellule, i) => (
                     <td
                       key={`c${i}`}
+                      /* L'en-tête de la colonne, écrit au-dessus de la valeur
+                         dans la carte du téléphone (dc.html, `isTb`). */
+                      data-libelle={i > 0 ? bloc.entetes[i]?.replace(/\*\*/g, "") : undefined}
                       className={styles.riche}
                       style={{
                         padding: "14px 18px",
@@ -595,13 +626,24 @@ function Bloc({ bloc, groupe, ouverte }: { bloc: BlocGuide; groupe: string; ouve
   }
 }
 
-export default function BlocsGuide({ blocs, groupe }: { blocs: BlocGuide[]; groupe: string }) {
+export default function BlocsGuide({
+  blocs,
+  groupe,
+}: {
+  blocs: BlocGuide[];
+  groupe: string;
+}) {
   // La première question de la liste est ouverte, comme dans la capture.
   const premiere = blocs.findIndex((b) => b.type === "question");
   return (
     <>
       {blocs.map((bloc, i) => (
-        <Bloc key={`${bloc.type}-${i}`} bloc={bloc} groupe={groupe} ouverte={i === premiere} />
+        <Bloc
+          key={`${bloc.type}-${i}`}
+          bloc={bloc}
+          groupe={groupe}
+          ouverte={i === premiere}
+        />
       ))}
     </>
   );

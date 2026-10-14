@@ -186,6 +186,7 @@ export function LienCarte({ titre, href }: { titre: string; href: string }) {
 export function Panneau() {
     return (
       <div
+        className={styles.horsMaquetteMobile}
         style={{
           margin: "36px 0",
           borderRadius: "var(--rad)",

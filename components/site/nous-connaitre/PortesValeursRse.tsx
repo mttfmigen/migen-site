@@ -1,10 +1,9 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
-import { resumeDe } from "@/components/site/blocs/resume-de-section";
-
 import PortesOffres from "./PortesOffres";
 import styles from "./PortesValeursRse.module.css";
+import type { EntreeSommaire } from "./HautMobile";
 import SectionRepliee from "./SectionRepliee";
 
 /**
@@ -16,13 +15,18 @@ import SectionRepliee from "./SectionRepliee";
  * d'être posées : une carte qui se soulève sous le curseur et mène à une 404 est
  * exactement le défaut qu'on répare sur cet écran.
  *
- * POURQUOI LES SIX OFFRES SONT MONTÉES ICI et non comme une douzième section de
- * `app/nous-connaitre/page.tsx`, qui serait leur place naturelle : ce lot ne
- * possède que `components/site/nous-connaitre/`, trois autres agents écrivent
- * en parallèle, et la page est hors de son périmètre. Ce bloc est la dernière
- * sortie avant le formulaire, à l'endroit où le site place son maillage
- * d'offres sur les pages d'offre. Le remonter d'un cran, en section propre, est
- * un déplacement d'une ligne dans la page le jour où elle s'ouvre.
+ * POURQUOI LES SIX OFFRES SONT MONTÉES ICI : c'est la dernière sortie avant le
+ * formulaire, à l'endroit où le site place son maillage d'offres sur les pages
+ * d'offre.
+ *
+ * AU TÉLÉPHONE, UNE SEULE CARTE, LA 09 DE LA MAQUETTE MOBILE V2 : sur-titre
+ * « Nos valeurs », titre « Cinq règles, vérifiables », résumé « Pas des mots
+ * sur un mur… » (`mobile-native-data.js`, page /a-propos/nous-connaitre/). Les
+ * six offres, ajout du client absent de la maquette, sont rangées DANS cette
+ * carte, sous les deux portes : elles ne font plus une dixième carte, le
+ * sommaire compte les neuf parties de la maquette, et rien n'est retiré. Au
+ * bureau, le `<details>` est transparent : les deux sections s'enchaînent au
+ * pixel près comme avant.
  */
 
 const CARTE: CSSProperties = {
@@ -89,14 +93,22 @@ const PORTES: readonly {
   },
 ];
 
+/* La carte 09 de la maquette : la porte « Nos valeurs », mot pour mot. */
+const VALEURS = PORTES[0];
+
+/** La carte 09 de la maquette mobile v2 (« Nos valeurs »). */
+export const SOMMAIRE_PORTES: EntreeSommaire = {
+  id: "nos-valeurs",
+  titre: VALEURS.titre,
+};
+
 export default function PortesValeursRse() {
   return (
-    <>
-      {/* La section n'a pas de titre : sur téléphone, la bascule joint les
-          sur-titres des deux portes, et le résumé leurs titres. */}
       <SectionRepliee
-        titre={PORTES.map((p) => p.surtitre).join(" · ")}
-        resume={resumeDe(PORTES.map((p) => p.titre))}
+        id={SOMMAIRE_PORTES.id}
+        kicker={VALEURS.surtitre}
+        titre={VALEURS.titre}
+        resume={VALEURS.texte}
       >
       <section style={{ padding: "var(--sec) 0 0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
@@ -125,8 +137,7 @@ export default function PortesValeursRse() {
           </div>
         </div>
       </section>
-      </SectionRepliee>
       <PortesOffres />
-    </>
+      </SectionRepliee>
   );
 }

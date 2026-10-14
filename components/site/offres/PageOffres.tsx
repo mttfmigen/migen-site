@@ -6,7 +6,7 @@ import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import AppelFinal from "@/components/site/offre/AppelFinal";
 import AppelOffre from "@/components/site/offre/AppelOffre";
 import BandeAppel from "@/components/site/offre/BandeAppel";
-import CadenceOffre, { AncreRappel } from "@/components/site/offre/CadenceOffre";
+import CadenceOffre, { RappelFinalOffre } from "@/components/site/offre/CadenceOffre";
 import TelephoneHeros from "@/components/site/offre/TelephoneHeros";
 import DerouleOffre from "@/components/site/offre/DerouleOffre";
 import GarantiesOffre from "@/components/site/offre/GarantiesOffre";
@@ -14,10 +14,12 @@ import { liensSurs } from "@/components/site/offre/LiensOffre";
 import LogosClients from "@/components/site/offre/LogosClients";
 import PanneauFormulaire from "@/components/site/offre/PanneauFormulaire";
 import PointsOffre from "@/components/site/offre/PointsOffre";
-import ProblemeOffre from "@/components/site/offre/ProblemeOffre";
+import ProblemeOffre, { photoDuProbleme } from "@/components/site/offre/ProblemeOffre";
+import HerosMobile from "@/components/site/offre/HerosMobile";
 import Reassurance from "@/components/site/offre/Reassurance";
 import ReferencesOffre from "@/components/site/offre/ReferencesOffre";
 import offre from "@/components/site/offre/PageOffre.module.css";
+import { OFFRES_MOBILE } from "@/components/site/offre/maquette-mobile-offre";
 import {
   BOUTON_HERO,
   CARTE_CHIFFRE,
@@ -122,16 +124,32 @@ export default function PageOffres({
 
   const heroFormulaire = typeof contenu.formulaireHeroTitre === "string";
   const bandeVisible = !!(contenu.mention || contenu.appelBouton);
+  /* La photo de tête du téléphone est celle du problème, que la page porte
+     déjà : déplacée sous 881 px, pas doublée (même règle que `PageOffre`). */
+  const photoProbleme = probleme ? photoDuProbleme(probleme, contenu.problemePhoto) : null;
+  /* Le texte et la photo de tête de la maquette mobile v2 pour ce hub
+     (`offre/maquette-mobile-offre.ts`), sous 881 px seulement. */
+  const mobile = chemin ? OFFRES_MOBILE[chemin] : undefined;
+  const photoHeros = mobile?.photoTete ?? photoProbleme;
 
   return (
     <div className="mg-site">
       {/* `racine` : la racine `.mgx-root` du gabarit d'offre (PageOffres.module.css). */}
-      <main className={`${styles.racine} ${styles.hubOffres}`} style={{ paddingTop: 62 }}>
+      {/* `data-ordre-mobile` et `data-heros-*` : le socle mobile v2 de
+          `app/globals.css`, posé comme sur `PageOffre` (héros en colonne,
+          tuiles de chiffres, blocs hors maquette après ses sections). Au-dessus
+          de 880 px, aucun de ces attributs n'a d'effet. */}
+      <main
+        className={`${styles.racine} ${styles.hubOffres}`}
+        data-ordre-mobile=""
+        data-heros-photo-source={photoProbleme ? "probleme" : undefined}
+        style={{ paddingTop: 62 }}
+      >
         {filAriane}
 
         {/* ------------------------------------------------- 0. « 01 Héros » */}
 
-        <section style={HERO}>
+        <section data-heros-mobile="" style={HERO}>
           <div
             className="mg-r2"
             style={{
@@ -143,27 +161,44 @@ export default function PageOffres({
               alignItems: "start",
             }}
           >
-            <div>
+            <div data-heros-colonne="">
+              <HerosMobile chemin={chemin} photo={photoHeros} />
               {contenu.pastille ? (
-                <div style={HERO_RANGEE_PASTILLE}>
-                  <span style={PASTILLE}>
+                <div data-heros-pastille="" style={HERO_RANGEE_PASTILLE}>
+                  <span
+                    className={mobile?.surtitre ? offre.pastilleBureau : undefined}
+                    style={PASTILLE}
+                  >
                     <span aria-hidden="true" style={PASTILLE_PUCE} />
                     {contenu.pastille}
                   </span>
+                  {/* dc.html `KICK["10"]` : le sur-titre d'un hub de rubrique. */}
+                  {mobile?.surtitre ? (
+                    <span data-mobile-seulement="">{mobile.surtitre}</span>
+                  ) : null}
                 </div>
               ) : null}
 
               <h1 style={TITRE1}>{titre}</h1>
 
               {contenu.chapeau ? (
-                <p style={CHAPEAU_HERO}>
-                  <TexteRiche texte={contenu.chapeau} />
+                <p data-heros-chapeau="" style={CHAPEAU_HERO}>
+                  {mobile?.chapeau ? (
+                    <>
+                      <span data-doublon-mobile="">
+                        <TexteRiche texte={contenu.chapeau} />
+                      </span>
+                      <span data-mobile-seulement="">{mobile.chapeau}</span>
+                    </>
+                  ) : (
+                    <TexteRiche texte={contenu.chapeau} />
+                  )}
                 </p>
               ) : null}
 
               {/* Le téléphone du héros mobile : voir `offre/TelephoneHeros`. */}
               {actions.length > 0 ? (
-                <div style={HERO_RANGEE_BOUTONS}>
+                <div data-heros-boutons="" style={HERO_RANGEE_BOUTONS}>
                   {/* Une ancre dans la page est un `<a>` natif : voir la même
                       rangée dans `offre/PageOffre.tsx` (`:target` et le
                       panneau replié). */}
@@ -192,13 +227,28 @@ export default function PageOffres({
                   <TelephoneHeros />
                 </div>
               ) : (
-                <div data-mobile-seulement="" style={HERO_RANGEE_BOUTONS}>
+                <div data-mobile-seulement="" data-heros-boutons="" style={HERO_RANGEE_BOUTONS}>
                   <TelephoneHeros />
                 </div>
               )}
 
+              {/* La liste de la rubrique (dc.html L125, `kidsTop`) : sous les
+                  boutons au téléphone, comme sur `/secteurs/`. Mobile seulement. */}
+              {chemin ? <PastillesCocon chemin={chemin} variante="enfants" /> : null}
+
               {contenu.mention ? (
-                <p style={HERO_MENTION}>{contenu.mention}</p>
+                <p data-heros-mention="" style={HERO_MENTION}>
+                  {mobile?.mention ? (
+                    <>
+                      <span data-doublon-mobile="">{contenu.mention}</span>
+                      <span data-mobile-seulement="">
+                        <TexteRiche texte={mobile.mention} />
+                      </span>
+                    </>
+                  ) : (
+                    contenu.mention
+                  )}
+                </p>
               ) : null}
             </div>
 
@@ -218,16 +268,17 @@ export default function PageOffres({
           </div>
         </section>
 
-        {/* LES PAGES DE LA RUBRIQUE, boîte HAUTE de la maquette mobile v2
-            (dc.html L125 et L504 : « Toutes les pages de la rubrique », sous
-            le héros, pour un hub de gabarit 10). Mobile seulement. */}
-        {chemin ? <PastillesCocon chemin={chemin} variante="enfants" /> : null}
-
         {/* -------------------------------------------- 1. « 01 Chiffres » */}
 
         {chiffres.length > 0 ? (
-          <section style={SECTION_CHIFFRES}>
+          <section data-chiffres-mobile="" style={SECTION_CHIFFRES}>
+            {/* « Chiffres clés » et tuiles 2 x 2 du téléphone, comme
+                `PageOffre` : le titre n'existe que sous 881 px. */}
+            <h2 data-mobile-seulement="" data-tuiles-titre="">
+              Chiffres clés
+            </h2>
             <div
+              data-tuiles-chiffres=""
               className="mg-rmulti"
               style={{
                 ...GRILLE_CHIFFRES,
@@ -266,7 +317,7 @@ export default function PageOffres({
             chaque enfant est une section de contenu de la maquette (dc.html
             `nD`), les bandes et l'appel « 07 » sont rattachés par un
             `Fragment` à la section qui les précède. */}
-        <CadenceOffre chemin={chemin} actions={actions}>
+        <CadenceOffre chemin={chemin} actions={actions} photoHeros={mobile?.photoTete}>
           {/* Déplié au chargement : première section de contenu (dc.html
               L451, `nOpen = 1`). */}
           {probleme ? (
@@ -281,7 +332,9 @@ export default function PageOffres({
 
           {pointsOffre || bandeVisible ? (
             <Fragment key="offre">
-              {pointsOffre ? <PointsOffre section={pointsOffre} /> : null}
+              {pointsOffre ? (
+                <PointsOffre section={pointsOffre} resume={mobile?.resumes?.offre} />
+              ) : null}
 
               {bandeVisible ? (
                 <BandeAppel
@@ -299,6 +352,7 @@ export default function PageOffres({
               section={deroule}
               titre={contenu.derouleTitre}
               pli="replie"
+              resume={mobile?.resumes?.deroule}
             />
           ) : null}
 
@@ -320,7 +374,9 @@ export default function PageOffres({
 
           {preuves || bandeVisible ? (
             <Fragment key="references">
-              {preuves ? <ReferencesOffre section={preuves} toujoursOuvert /> : null}
+              {preuves ? (
+                <ReferencesOffre section={preuves} toujoursOuvert photosMaquette={!!mobile} />
+              ) : null}
 
               {bandeVisible ? (
                 <BandeAppel mention={contenu.mention} bouton={contenu.appelBouton} />
@@ -328,6 +384,10 @@ export default function PageOffres({
             </Fragment>
           ) : null}
         </CadenceOffre>
+
+        {/* Le début de la fin de page au téléphone (FAQ, maillage, appel
+            final), comme sur `PageOffre`. Masqué, sans texte. */}
+        <div data-queue-mobile="" hidden />
 
         {/* --------------------------------- 13 et 14. Les deux écrans du hub */}
 
@@ -354,6 +414,7 @@ export default function PageOffres({
               photo: "/assets/web/faq-offre.jpg",
               questions: objections.questions,
             }}
+            questionFinale={ctaFinal}
           />
         ) : null}
 
@@ -372,8 +433,9 @@ export default function PageOffres({
         {/* LA CIBLE DE L'ANCRE #mgx-form, oubliée par ce gabarit comme par
             PageOffre. Voir la note de ce dernier : le bouton « Poser ma
             question » de la FAQ ne menait nulle part. */}
-        {/* La cible du bandeau « Être rappelé » : voir `offre/CadenceOffre`. */}
-        <AncreRappel chemin={chemin} />
+        {/* La carte « Être rappelé » de la maquette mobile v2, cible du
+            bandeau : voir `RappelFinalOffre` (`offre/CadenceOffre`). */}
+        <RappelFinalOffre chemin={chemin} />
 
         <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
           <AppelFinal
@@ -385,6 +447,7 @@ export default function PageOffres({
 
         {maillage ? (
           <div
+            className={offre.maillageBas}
             style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}
           >
             {maillage}

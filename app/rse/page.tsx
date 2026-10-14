@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import FormulaireBasDePage from "@/components/site/accueil/FormulaireBasDePage";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
+import FinDePageMobile from "@/components/site/nous-connaitre/FinDePageMobile";
 import CasRetrofit from "@/components/site/rse/CasRetrofit";
 import OuvertureRse from "@/components/site/rse/OuvertureRse";
 import PiecesFournisseur from "@/components/site/rse/PiecesFournisseur";
@@ -70,9 +71,9 @@ export default function Rse() {
             numérotées, photo + CTA après la 2e. Elle sert cette page à
             /a-propos/rse/ (mobile-native-data.js), page native, donc variante
             « standard ». Le héros n'a pas de photo : rien à écarter du tirage.
-            `rappelFinal={false}` : le formulaire complet suit, la maquette n'y
-            met que le mini-formulaire. Aucun bandeau sur trois sections, donc
-            aucune ancre `#etre-rappele` à porter. */}
+            `rappelFinal={false}` : le mini-formulaire « Être rappelé » est
+            posé plus bas par `FinDePageMobile`, après « Nos réalisations ».
+            Aucun bandeau sur trois sections. */}
         <AvecConversionMobile chemin="/a-propos/rse/" gabarit="01" rappelFinal={false}>
           <PiliersRse />
           <CasRetrofit />
@@ -82,11 +83,13 @@ export default function Rse() {
             près : on réemploie le bloc, qui porte déjà la validation, le champ
             piège, la mention RGPD et l'indicatif téléphonique. Son id
             `formulaire` est la cible des deux appels à l'action ci-dessus. */}
-        <FormulaireBasDePage
-          formulaire="rse"
-          titre="Un appel d’offres avec des critères RSE ? Nous transmettons nos attestations."
-          intro="MASE, EcoVadis, bilan carbone, politique sécurité : dites-nous ce qu’il vous faut."
-        />
+        <FinDePageMobile chemin="/rse/">
+          <FormulaireBasDePage
+            formulaire="rse"
+            titre="Un appel d’offres avec des critères RSE ? Nous transmettons nos attestations."
+            intro="MASE, EcoVadis, bilan carbone, politique sécurité : dites-nous ce qu’il vous faut."
+          />
+        </FinDePageMobile>
       </main>
     </div>
   );

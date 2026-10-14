@@ -217,7 +217,7 @@ async function mesure(navigateur: Browser, feuille: string, corps: string, large
       const resume = s.querySelector(":scope > p")!;
       const titre = d.querySelector("[data-carte-titre]");
       const surtitre = d.querySelector("[data-carte-surtitre]");
-      // Fermé, le résumé est coupé à deux lignes : Chrome rend alors
+      // Fermé, le résumé est coupé à trois lignes : Chrome rend alors
       // `-webkit-box` + `line-clamp` sous le nom calculé `flow-root`. On lit
       // donc « affiché et coupé à N lignes », ou « none ».
       const etat = () => (cs(resume).display === "none" ? "none" : `coupé à ${cs(resume).webkitLineClamp}`);
@@ -336,7 +336,9 @@ export function defautsMobile(m: Mesure): string[] {
     attendu(`${n} rembourrage`, c.rembourrage, "15px 16px");
     attendu(`${n} pastille`, c.pastille, "28px 28px");
     attendu(`${n} pastille ronde`, c.pastilleRayon, "999px");
-    attendu(`${n} résumé fermé`, c.resumeFerme, "coupé à 2");
+    /* Trois lignes depuis le 15/10 : les 104 signes du `teaseOf` de la
+       maquette en 12,5 px (demande du lot éditorial). */
+    attendu(`${n} résumé fermé`, c.resumeFerme, "coupé à 3");
     attendu(`${n} résumé ouvert`, c.resumeOuvert, "none");
     attendu(`${n} résumé taille`, c.resumeTaille, "12.5px");
     attendu(`${n} résumé couleur`, c.resumeCouleur, GRIS);

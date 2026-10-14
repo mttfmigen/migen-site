@@ -586,13 +586,11 @@
  * règles passent par `.guideCompact`, que le hub ne porte pas.
  */
 @media (max-width: 880px) {
-  .corpsRubrique .etiquettePli,
-  .guideCompact .etiquettePli {
+  .corpsRubrique .etiquettePli {
     flex: 1 1 0%;
     min-width: 0;
   }
-  .corpsRubrique details[data-pliable-mobile] > summary > span[aria-hidden="true"],
-  .guideCompact details[data-pliable-mobile] > summary > span[aria-hidden="true"] {
+  .corpsRubrique details[data-pliable-mobile] > summary > span[aria-hidden="true"] {
     display: grid;
     place-items: center;
     width: 28px;
@@ -604,8 +602,7 @@
   }
   /* Le catalogue et la FAQ, sections de bureau repliées : la carte n'habille
      que le bloc FERMÉ ; ouvert, le contenu retrouve son propre dessin. */
-  .corpsRubrique section > details[data-pliable-mobile]:not([open]),
-  .guideCompact article > section[id^="c"] > details[data-pliable-mobile]:not([open]) {
+  .corpsRubrique section > details[data-pliable-mobile]:not([open]) {
     padding: 15px 16px;
     border-radius: 20px;
     background: #fff;
@@ -625,9 +622,6 @@
   }
   .corpsRubrique div:has(> .carteGuide) {
     gap: 10px !important;
-  }
-  .guideCompact article > section[id^="c"] {
-    padding-bottom: 14px !important;
   }
 }
 
@@ -656,8 +650,7 @@
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
-  .corpsRubrique details[data-pliable-mobile] > summary,
-  .guideCompact details[data-pliable-mobile] > summary {
+  .corpsRubrique details[data-pliable-mobile] > summary {
     align-items: center;
   }
 }
@@ -666,8 +659,7 @@
    final alignés sur la marge de 40 px de la page, appel de bureau `#mr-cta`
    de la rubrique resserré comme celui du gabarit 01. */
 @media (max-width: 880px) {
-  .corpsRubrique details[data-pliable-mobile] > summary > span[aria-hidden="true"],
-  .guideCompact details[data-pliable-mobile] > summary > span[aria-hidden="true"] {
+  .corpsRubrique details[data-pliable-mobile] > summary > span[aria-hidden="true"] {
     margin-left: auto;
   }
   .pastilles,
@@ -689,14 +681,611 @@
   .guideCompact details[data-pliable-mobile][open] > summary > p {
     display: none !important;
   }
-  /* Guides : les insertions de la cadence prennent l'air des cartes, et le
-     titre d'une étiquette passe à l'échelle de la maquette (16,5 px). */
-  .guideCompact article > [data-mobile-seulement] {
-    margin-bottom: 14px !important;
+}
+
+/* =====================================================================
+   LES DEUX GUIDES AU TÉLÉPHONE, BLOC PAR BLOC, CONTRE LA MAQUETTE MOBILE V2
+   (14/10, veille de mise en ligne). Gabarit « 01 Article et fiche ».
+
+   Source : `maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html`, gabarit
+   L55 à L89 et `renderVals()` (`blockV`, `base()`). Ordre servi : fil
+   d'Ariane, photo, sur-titre, H1, deux boutons, chapô, sommaire replié,
+   sections en cartes blanches numérotées (titre dans la carte), cadence de
+   conversion, pages liées repliées, formulaire.
+
+   TOUT EST SOUS `.guideCompact` ET SOUS 881 PX : le hub `/ressources/`, qui
+   partage `Guide.tsx` et ce module, ne porte pas la classe ; au-dessus de
+   880 px aucune règle ne mord (`bureau.mjs compare`). La carte numérotée
+   est le motif partagé `details[data-carte-numerotee]` d'`app/globals.css`.
+   ===================================================================== */
+
+.guideCompact {
+  --gc-fond-petite-carte: color-mix(in srgb, var(--ink) 4%, var(--card));
+}
+
+@media (max-width: 880px) {
+  /* -------------------------------------------- haut de page (L55 à L62) */
+  .guideCompact > section:first-child {
+    padding-top: 16px !important;
   }
-  .guideCompact .etiquettePli > span:last-child {
-    font-size: 16.5px !important;
-    line-height: 1.3 !important;
-    letter-spacing: -0.025em !important;
+  .guideCompact .ariane {
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+    margin-bottom: 12px !important;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    font: 500 12px var(--fb) !important;
+    color: var(--mm-encre-3) !important;
+  }
+  .guideCompact .ariane::-webkit-scrollbar {
+    display: none;
+  }
+  .guideCompact .ariane > * {
+    flex: none;
+  }
+  /* Le « / » est un ornement masqué aux lecteurs d'écran ; la maquette
+     dessine un chevron. */
+  .guideCompact .ariane > span[aria-hidden="true"] {
+    font-size: 0;
+    color: #b9b5ae;
+  }
+  .guideCompact .ariane > span[aria-hidden="true"]::before {
+    content: "›";
+    font-size: 12px;
+  }
+  .guideCompact .ariane a {
+    color: var(--mm-encre-3) !important;
+  }
+  .guideCompact .ariane [aria-current="page"] {
+    font-weight: 600;
+    color: var(--ink) !important;
+  }
+  .photoTete {
+    position: relative;
+    margin-bottom: 16px;
+    aspect-ratio: 16 / 10;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--ph);
+  }
+  /* Les photos du corps : l'analyseur de la maquette mobile v2
+     (`migen-mobile-parse.js`) n'en dessine aucune. Masquées au téléphone,
+     jamais retirées du DOM. */
+  .guideCompact .photoCorps {
+    display: none !important;
+  }
+  /* Blocs de bureau que la maquette mobile v2 ne dessine pas (panneau sombre
+     « Vous préférez qu'on s'en occupe ? », « Pages liées », formulaire complet
+     `#cx-form`) : la cadence et le rappel final `#etre-rappele` les couvrent.
+     Masqués au téléphone, jamais retirés du DOM. */
+  .guideCompact .horsMaquetteMobile {
+    display: none !important;
+  }
+  /* Les deux pastilles deviennent le sur-titre « GUIDE · 11 MIN DE LECTURE ». */
+  .kickGuide {
+    gap: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  .kickGuide > span {
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    font: 600 11px var(--fb) !important;
+    letter-spacing: 0.14em !important;
+    color: var(--acc) !important;
+  }
+  .kickGuide > span + span::before {
+    content: "·";
+    margin: 0 0.45em;
+  }
+  :global(.mg-site) .guideCompact .titreCompact {
+    max-width: none !important;
+    margin: 10px 0 0 !important;
+  }
+  .boutonsTete {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .boutonTetePlein,
+  .boutonTeteTel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding: 0 16px;
+    border-radius: 999px;
+    text-align: center;
+  }
+  .boutonTetePlein {
+    flex: 1;
+    background: var(--acc);
+    color: #fff !important;
+    font: 600 14px/1.25 var(--fb);
+    box-shadow: 0 12px 26px -14px rgba(255, 124, 60, 0.9);
+  }
+  .boutonTeteTel {
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--ink);
+    font: 600 13.5px var(--fb);
+    white-space: nowrap;
+  }
+  /* Le chapô en `lead` de la maquette (500 16px/1.6, encre). */
+  .guideCompact .chapoCompact {
+    margin-top: 16px !important;
+    font: 500 16px/1.6 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+
+  /* ------------------------------------------ sommaire replié (L74) */
+  .guideCompact section:has(> :global(.cx-lay)) {
+    padding-top: 4px !important;
+  }
+  .guideCompact :global(.cx-lay) {
+    gap: 0 !important;
+  }
+  .guideCompact :global(.cx-toc) {
+    display: block !important;
+    position: static !important;
+  }
+  .guideCompact .sommaireLabel {
+    display: none !important;
+  }
+  .sommaireTitre {
+    font: 600 14.5px var(--ft);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .sommaireCompte {
+    margin-left: 6px;
+    font: 500 12px var(--fb);
+    letter-spacing: normal;
+    color: var(--mm-encre-3);
+    white-space: nowrap;
+  }
+  .guideCompact :global(.cx-toc) nav {
+    border-left: 0 !important;
+  }
+  .guideCompact .entreeSommaire {
+    display: grid !important;
+    grid-template-columns: 24px minmax(0, 1fr);
+    gap: 8px !important;
+    margin: 0 !important;
+    padding: 8px 0 !important;
+    border-left: 0 !important;
+    font: 500 13.5px/1.4 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+  .guideCompact :global(.cx-toc) .boutonPlein {
+    margin: 8px 0 10px !important;
+  }
+
+  /* ---------------------------------------------- les sections en cartes */
+  .guideCompact article > div:first-child:not([data-mobile-seulement]) {
+    margin: 16px 0 0 !important;
+  }
+  .guideCompact article > div:first-child:not([data-mobile-seulement]) p {
+    margin: 0 0 12px !important;
+    font: 400 16px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+  .guideCompact article > section[id^="c"] {
+    padding-bottom: 0 !important;
+  }
+  /* L'étiquette de la carte reste OUVERTE comme fermée (dc.html, le titre est
+     dans le `<summary>`) ; l'en-tête de bureau, son doublon, ne se peint
+     plus et reste dans le plan du document. */
+  .guideCompact details[open] > summary > .etiquettePli {
+    display: block;
+  }
+  .guideCompact .entetePartie {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+  }
+  .guideCompact .enteteLiees {
+    display: none !important;
+  }
+  .guideCompact details[data-carte-numerotee] p.riche {
+    margin: 0 0 12px !important;
+    max-width: none !important;
+    font: 400 15px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+  .guideCompact .entetePartie + p.riche {
+    font: 500 16px/1.6 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+  .guideCompact details[data-carte-numerotee] h3 {
+    margin: 18px 0 8px !important;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font: 600 16px/1.35 var(--ft) !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  /* Liste simple (`isUl`) : puces rondes de 6 px. */
+  .guideCompact .listePuces {
+    gap: 9px !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    margin: 2px 0 14px !important;
+    padding: 0 !important;
+    max-width: none !important;
+    border: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .guideCompact .listePuces > div {
+    gap: 10px !important;
+    font: 400 14.5px/1.6 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+  .guideCompact .listePuces .cocheGuide {
+    flex: none;
+    width: 6px;
+    height: 6px;
+    margin-top: 9px;
+    border-radius: 999px;
+    background: var(--acc);
+    font-size: 0 !important;
+    line-height: 0;
+  }
+
+  /* Liste « Libellé : texte » (`isKv`), cartes du corpus, lignes et bento :
+     la même petite carte numérotée (dc.html, `isKv`). */
+  .guideCompact .listeKv,
+  .guideCompact .listeCartes,
+  .guideCompact :global(.mg-bento2),
+  .guideCompact div:has(> :global(.cx-row)) {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+    margin: 4px 0 14px !important;
+    padding: 0 !important;
+    max-width: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .guideCompact .listeKv {
+    counter-reset: kv;
+  }
+  .guideCompact .listeKv > div,
+  .guideCompact .listeCartes > div,
+  .guideCompact .bento,
+  .guideCompact :global(.cx-row) {
+    display: grid !important;
+    grid-template-columns: 26px minmax(0, 1fr) !important;
+    align-content: start;
+    gap: 0 10px !important;
+    grid-column: auto !important;
+    min-height: 0 !important;
+    padding: 13px 14px !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 16px !important;
+    background: var(--gc-fond-petite-carte) !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    font: 400 14px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+  .guideCompact .listeKv > div {
+    counter-increment: kv;
+  }
+  .guideCompact .listeKv > div::before {
+    content: counter(kv, decimal-leading-zero);
+    padding-top: 3px;
+    font: 600 11px ui-monospace, Menlo, monospace;
+    color: var(--acc);
+  }
+  .guideCompact .listeKv .cocheGuide {
+    display: none;
+  }
+  .guideCompact .listeKv strong:first-child {
+    display: block;
+    margin-bottom: 4px;
+    font: 600 14.5px/1.4 var(--ft);
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+  /* Le numéro écrit des cartes, lignes et bento : la colonne de gauche. */
+  .guideCompact .numeroCarte,
+  .guideCompact .bento > span:first-child,
+  .guideCompact :global(.cx-row) > span:first-child {
+    grid-row: 1 / span 2;
+    margin: 0 !important;
+    padding-top: 3px !important;
+    font: 600 11px ui-monospace, Menlo, monospace !important;
+    letter-spacing: normal !important;
+    color: var(--acc) !important;
+  }
+  .guideCompact .titreCarte,
+  .guideCompact .bento > div > div:first-child,
+  .guideCompact :global(.cx-row) > div:nth-child(2) {
+    margin: 0 !important;
+    font: 600 14.5px/1.4 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    color: var(--ink) !important;
+  }
+  .guideCompact .texteCarte,
+  .guideCompact .bento > div > div + div,
+  .guideCompact :global(.cx-row) > div:nth-child(3) {
+    margin: 4px 0 0 !important;
+    font: 400 14px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+  .guideCompact .bento :global(a) {
+    color: var(--ink) !important;
+  }
+
+  /* Tableau (`isTb`) : une carte par ligne, libellé de colonne au-dessus. */
+  .guideCompact .tableauGuide {
+    margin: 4px 0 14px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    overflow: visible !important;
+  }
+  .guideCompact .tableauGuide table {
+    display: block !important;
+    min-width: 0 !important;
+  }
+  .guideCompact .tableauGuide thead {
+    display: block !important;
+  }
+  .guideCompact .tableauGuide thead tr {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    padding: 0 0 8px !important;
+  }
+  .guideCompact .tableauGuide th {
+    display: block !important;
+    padding: 0 !important;
+    border: 0 !important;
+    color: var(--mm-encre-3) !important;
+  }
+  .guideCompact .tableauGuide th + th::before {
+    content: "·";
+    margin: 0 0.45em;
+  }
+  .guideCompact .tableauGuide tbody {
+    display: grid !important;
+    gap: 8px !important;
+  }
+  .guideCompact .tableauGuide tbody tr {
+    display: grid !important;
+    gap: 8px !important;
+    padding: 14px 15px !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 16px !important;
+    background: var(--gc-fond-petite-carte) !important;
+  }
+  .guideCompact .tableauGuide td {
+    display: block !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+  .guideCompact .tableauGuide td[data-libelle]::before {
+    content: attr(data-libelle);
+    display: block;
+    margin-bottom: 3px;
+    font: 600 10.5px/1.4 var(--fb);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mm-encre-3);
+  }
+
+  /* ------------------------------------------------ cadence et fin de page */
+  .guideCompact article > [data-mobile-seulement] {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .guideCompact section:has(.carteLiee) {
+    padding-top: 22px !important;
+  }
+}
+
+/* Les listes numérotées du guide (`numeros` et `etapes`) : la frise de la
+   maquette mobile v2 (dc.html, `isOl`), pastille sombre de 30 px, texte en
+   14,5 px, sans carte. Sous 881 px et sous `.guideCompact` seulement. */
+@media (max-width: 880px) {
+  .guideCompact .listeNumeros {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0 !important;
+    margin: 6px 0 12px !important;
+  }
+  .guideCompact .listeNumeros > div {
+    display: grid !important;
+    grid-template-columns: 30px minmax(0, 1fr) !important;
+    gap: 0 12px !important;
+    padding: 0 0 14px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .guideCompact .numeroFrise {
+    grid-row: 1 / span 2;
+    width: 30px;
+    height: 30px;
+    margin: 0 !important;
+    border-radius: 999px;
+    background: var(--ink);
+    text-align: center;
+    font: 600 11.5px/30px var(--fb) !important;
+    letter-spacing: normal !important;
+    color: var(--card) !important;
+  }
+  .guideCompact .listeNumeros > div > div:not(.numeroFrise) {
+    margin: 0 !important;
+    padding-top: 4px;
+    font: 400 14.5px/1.6 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+  .guideCompact .listeNumeros > div > div:nth-child(2):not(:last-child) {
+    font-weight: 600 !important;
+    color: var(--ink) !important;
+  }
+  .guideCompact .listeNumeros > div > div:nth-child(3) {
+    padding-top: 2px;
+  }
+  .guideCompact .listeEtapes {
+    margin: 6px 0 12px !important;
+  }
+  .guideCompact .listeEtapes > div {
+    grid-template-columns: 30px minmax(0, 1fr) !important;
+    gap: 12px !important;
+  }
+  .guideCompact .listeEtapes > div > div:first-child > span:first-child {
+    width: 30px !important;
+    height: 30px !important;
+    background: var(--ink) !important;
+    box-shadow: none !important;
+    font: 600 11.5px var(--fb) !important;
+    color: var(--card) !important;
+  }
+  .guideCompact .listeEtapes > div > div:last-child {
+    padding: 4px 0 14px !important;
+  }
+  .guideCompact .listeEtapes > div > div:last-child > div {
+    margin-bottom: 0 !important;
+    font: 400 14.5px/1.6 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+  .guideCompact .listeEtapes > div > div:last-child > div:first-child:not(:last-child) {
+    font-weight: 600 !important;
+    color: var(--ink) !important;
+  }
+}
+
+/* =====================================================================
+   GUIDES AU TÉLÉPHONE, SUITE (14/10, soir) : l'ordre et la fin de page de
+   la maquette mobile v2. Tout est sous `.guideCompact` et sous 881 px.
+
+   1. LE SOMMAIRE ENTRE LES BOUTONS ET LE CHAPÔ (dc.html : héros, puis
+      `hasToc`, puis l'introduction). Le sommaire vit dans le corps, le chapô
+      dans le héros : les deux sections et leurs boîtes s'effacent
+      (`display: contents`), `main` devient une colonne et chaque morceau
+      prend son rang. Gouttière (18 px) et haut du héros (16 px) passent aux
+      enfants ; les autres espacements ne bougent pas.
+   2. LA FAQ EN TITRE SEUL (`isTitle`) : son numéro de bureau ne se peint pas.
+   3. LE CARROUSEL « NOS RÉALISATIONS » à la gouttière du corps, titre 20 px.
+   4. LE FORMULAIRE DE BUREAU REPLIÉ sous le rappel final, sans les grands
+      rembourrages de section du bureau.
+   ===================================================================== */
+@media (max-width: 880px) {
+  .guideCompact {
+    display: flex;
+    flex-direction: column;
+  }
+  .herosGuide,
+  .herosGuideTexte,
+  .corpsGuideSection,
+  .grilleGuide {
+    display: contents !important;
+  }
+  .guideCompact > * {
+    order: 10;
+  }
+  .herosGuide > *,
+  .herosGuideTexte > *,
+  .grilleGuide > * {
+    order: 7;
+    margin-left: 18px !important;
+    margin-right: 18px !important;
+  }
+  .guideCompact .herosGuide > .ariane {
+    order: 1;
+    margin: 16px 18px 12px !important;
+  }
+  .herosGuide > .photoTete {
+    order: 2;
+  }
+  .herosGuideTexte > .kickGuide {
+    order: 3;
+  }
+  :global(.mg-site) .guideCompact .herosGuideTexte > .titreCompact {
+    order: 4;
+    margin: 10px 18px 0 !important;
+  }
+  .herosGuideTexte > .boutonsTete {
+    order: 5;
+  }
+  .grilleGuide > :global(.cx-toc) {
+    order: 6;
+    margin-top: 16px !important;
+  }
+  .grilleGuide > article {
+    order: 8;
+  }
+
+  .guideCompact .enteteFaq {
+    margin: 22px 0 10px !important;
+  }
+  .enteteFaq > span:first-child {
+    display: none;
+  }
+  /* LE PREMIER PARAGRAPHE D'UNE CARTE, EN CHAPÔ (dc.html, `blockV` : `lead`
+     500 16px/1.6) : la règle `.entetePartie + p.riche`, plus haut, perdait
+     contre `details[data-carte-numerotee] p.riche` (plus spécifique) et ne
+     voyait pas le chapô précédé d'une photo du corps. Le premier
+     BLOC seulement, comme la maquette (`j === 0`). */
+  .guideCompact details[data-carte-numerotee] .entetePartie + p.riche,
+  .guideCompact details[data-carte-numerotee] .entetePartie + .photoCorps + p.riche {
+    font: 500 16px/1.6 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+  /* La question en gras de bureau : la bascule de la carte la porte déjà. */
+  .questionGuide > summary + * {
+    display: none !important;
+  }
+
+  .realisationsGuide > section {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  :global(.mg-site) .realisationsGuide h2 {
+    font-size: 20px !important;
+    line-height: 1.2 !important;
+  }
+
+  .guideCompact > [id="cx-form"] {
+    padding: 14px 0 0 !important;
+  }
+
+  /* « LIRE LA SUITE », le repli de BUREAU d'une longue section (`cx-more`) :
+     la maquette mobile n'en a pas, la section s'y lit d'un trait dans sa
+     carte. Au téléphone, la bascule ne se peint pas et la suite reste
+     affichée, ouverte ou non (même mécanique que `RepliFormulaireMobile`). */
+  .guideCompact :global(.cx-more) > summary {
+    display: none !important;
+  }
+  .guideCompact :global(.cx-more):not([open]) > *:not(summary) {
+    display: revert;
+  }
+  .guideCompact :global(.cx-more)::details-content {
+    content-visibility: visible;
+  }
+  .guideCompact :global(.cx-more) > div {
+    padding-top: 0 !important;
   }
 }

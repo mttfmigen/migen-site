@@ -84,8 +84,12 @@
 
 /* L'ETIQUETTE DE LA BASCULE n'existe QUE sous 880 px, seuil de
    `SectionPliableMobile.module.css` : c'est lui qui decide du repli, les deux
-   doivent rester d'accord. Depliee, l'etiquette s'efface : la partie montre
-   alors son vrai titre, et le dire deux fois de suite n'aiderait personne. */
+   doivent rester d'accord.
+   UNE PARTIE OUVERTE GARDE SON ETIQUETTE (dc.html, `isDetails` : le titre est
+   dans le `<summary>`, ouvert ou ferme) ; c'est le `<h2>` du corps qui ne se
+   peint plus au telephone (`.titrePartie`, plus bas). Seul « Sur le meme
+   sujet » efface encore la sienne une fois ouvert : son en-tete de bureau,
+   juste dessous, porte les memes mots. */
 .etiquettePli {
   display: none;
 }
@@ -94,7 +98,7 @@
   .etiquettePli {
     display: block;
   }
-  details[open] > summary > .etiquettePli {
+  .sectionSuite details[open] > summary > .etiquettePli {
     display: none;
   }
 }
@@ -174,8 +178,9 @@
 }
 
 /*
- * LE RÉSUMÉ D'UNE PARTIE REPLIÉE TIENT SUR DEUX LIGNES, comme la
- * maquette mobile l'écrit.
+ * LE RÉSUMÉ D'UNE PARTIE REPLIÉE TIENT SUR TROIS LIGNES, comme la
+ * maquette mobile v2 l'écrit (le module partagé `SectionPliableMobile`
+ * porte la même coupe). La v1 en tenait deux :
  *
  * `MigenMobile.dc.html`, bloc « Blocs communs (pliables) » :
  * `display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:
@@ -201,37 +206,343 @@
      module partagé ne le montre, lui, que bloc fermé. */
   .colonne details[data-pliable-mobile]:not([open]) > summary > p {
     display: -webkit-box !important;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
 }
 
-/*
- * LE TABLEAU EN CARTES SOUS 881 PX, motif « tableau » du LISEZMOI de la
- * maquette mobile v2 : « Tableau → une carte par ligne ». Le motif est COPIÉ
- * de `blocs/Blocs.module.css` (`tableauEnCartes`, vérifié par la porte du
- * bloc Offre), adapté ici à un VRAI `<table>` : la ligne d'en-têtes devient
- * une petite rangée au-dessus des cartes, chaque `<tr>` devient une carte à
- * bord et fond propres, chaque cellule s'empile. RIEN ne quitte le DOM,
- * aucun mot ne part : c'est le même texte, restylé.
- *
- * Mesure du 14/10 (onze gabarits à 390 px) : tableaux bruts sur le gabarit
- * 01, cellules écrasées ou rail de défilement sur un écran de téléphone, là
- * où la maquette mobile sert des cartes (bloc `isTb` du dc.html).
- *
- * TOUT VIT DANS CE MEDIA. Au-dessus de 880 px ces classes ne portent aucune
- * règle : la mise en page de bureau ne change pas d'un pixel (règle du
- * dépôt). `!important` : les cellules sont habillées par styles en ligne
- * (`habillage.ts`), qu'une feuille ne bat pas autrement.
- */
+/* =====================================================================
+   LE GABARIT 01 AU TÉLÉPHONE, BLOC PAR BLOC, CONTRE LA MAQUETTE MOBILE V2
+   (14/10, veille de mise en ligne).
+
+   Source unique : `maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html`,
+   gabarit L55 à L89 et `renderVals()` (`blockV`, `base()`, `pushCtas`).
+   Chaque valeur ci-dessous y figure. Ordre de la page servie, de haut en bas :
+   fil d'Ariane, photo, sur-titre, H1, deux boutons, chapô, sommaire replié,
+   parties en cartes blanches numérotées (titre dans la carte), cadence de
+   conversion, FAQ en liste de cartes, pastilles, rappel final.
+
+   TOUT EST SOUS 881 PX. Au-dessus, aucune de ces règles n'existe, et la
+   porte `bureau.mjs compare` le prouve page par page.
+
+   LA CARTE NUMÉROTÉE ELLE-MÊME n'est PAS dessinée ici : c'est le motif
+   partagé `details[data-carte-numerotee]` d'`app/globals.css`, que
+   `SectionPliableMobile` pose d'office. Les anciennes règles locales qui
+   peignaient le `<details>` en carte sont retirées : elles posaient une
+   seconde carte autour de la carte partagée (« carte dans la carte », vue
+   sur les planches du 14/10).
+   ===================================================================== */
+
+/* Le fond des petites cartes posées DANS une carte blanche (dc.html,
+   `--cardbg: #f6f6f7`) : 4 % d'encre sur le fond de carte, ce qui donne
+   #f6f6f6 en clair et reste lisible en sombre. */
+.colonne {
+  --mr-fond-petite-carte: color-mix(in srgb, var(--ink) 4%, var(--card));
+}
+
 @media (max-width: 880px) {
-  .tableauEnCartes {
+  /* ------------------------------------------------ fil d'Ariane (L55) */
+  .ariane {
+    margin-bottom: 12px !important;
+  }
+  .ariane ol {
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    font: 500 12px var(--fb) !important;
+  }
+  .ariane ol::-webkit-scrollbar {
+    display: none;
+  }
+  .ariane li {
+    flex: none;
+    gap: 6px !important;
+  }
+  /* Le séparateur « / » est un ornement masqué aux lecteurs d'écran : la
+     maquette dessine un chevron. Le glyphe passe à 0, le chevron est généré. */
+  .ariane li > span[aria-hidden="true"] {
+    font-size: 0;
+    color: #b9b5ae;
+  }
+  .ariane li > span[aria-hidden="true"]::before {
+    content: "›";
+    font-size: 12px;
+  }
+  .ariane a {
+    color: var(--mm-encre-3) !important;
+  }
+  .ariane [aria-current="page"] {
+    font-weight: 600;
+    color: var(--ink) !important;
+  }
+
+  /* ------------------------------------------------- haut de page (L56) */
+  .herosCompact {
+    gap: 16px !important;
+  }
+  .photoHeros {
+    order: -1;
+    height: auto !important;
+    aspect-ratio: 16 / 10;
+    border-radius: 24px !important;
+  }
+  .photoBureau {
+    display: none !important;
+  }
+  /* La pastille de bureau devient le sur-titre de la maquette :
+     « ARTICLE · 12 MIN DE LECTURE », 11 px, capitales, accent. */
+  .pastilleHeros {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
     background: none !important;
-    border: none !important;
-    box-shadow: none !important;
+    font: 600 11px var(--fb) !important;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--acc) !important;
+  }
+  .pointHeros {
+    display: none !important;
+  }
+  :global(.mg-site) .titreHeros {
+    max-width: none !important;
+    margin: 10px 0 0 !important;
+    font-size: 27px !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.04em !important;
+  }
+  /* Les deux boutons côte à côte (L62) : l'appel prend la place restante. */
+  .boutonsHeros {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .boutonPlein,
+  .boutonTel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    padding: 0 16px;
+    border-radius: 999px;
+    text-align: center;
+  }
+  .boutonPlein {
+    flex: 1;
+    background: var(--acc);
+    color: #fff;
+    font: 600 14px/1.25 var(--fb);
+    box-shadow: 0 12px 26px -14px rgba(255, 124, 60, 0.9);
+  }
+  .boutonTel {
+    background: var(--card);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font: 600 13.5px var(--fb);
+    white-space: nowrap;
+  }
+  /* Le chapô : le premier paragraphe en `lead` (500 16px/1.6, encre), les
+     suivants en texte courant (dc.html, `blockV`, `pf`). */
+  .chapoHeros {
+    margin: 12px 0 0 !important;
+    font: 400 16px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+  .boutonsHeros + .chapoHeros {
+    margin-top: 16px !important;
+    font: 500 16px/1.6 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+  .doublonMobile {
+    display: none !important;
+  }
+
+  /* ------------------------------------------- sommaire replié (L74) */
+  .sectionCorps {
+    padding-top: 4px !important;
+  }
+  .sectionCorps > .deux {
+    gap: 0 !important;
+  }
+  .sommaire {
+    display: block !important;
+    position: static !important;
+    padding: 0 !important;
+    border: 0 !important;
     border-radius: 0 !important;
+    background: none !important;
+  }
+  .sommaireTitre {
+    margin: 0 !important;
+    font: 600 14.5px var(--ft) !important;
+    letter-spacing: -0.02em !important;
+    text-transform: none !important;
+    color: var(--ink) !important;
+  }
+  .sommaireCompte {
+    margin-left: 6px;
+    font: 500 12px var(--fb);
+    letter-spacing: normal;
+    color: var(--mm-encre-3);
+    white-space: nowrap;
+  }
+  .entree {
+    display: grid !important;
+    grid-template-columns: 24px minmax(0, 1fr);
+    gap: 8px !important;
+    padding: 8px 0 !important;
+    border-top: 0 !important;
+    font: 500 13.5px/1.4 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  /* --------------------------------- le corps d'une carte (L81, `blockV`) */
+  /* Le `<h2>` de la partie ne se peint plus : son texte est celui de
+     l'étiquette de la carte, juste au-dessus (doublon). Il reste dans le plan
+     du document pour le lecteur d'écran, et porte toujours l'ancre. */
+  .titrePartie {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+  }
+  .colonne .prose {
+    margin: 0 0 12px !important;
+    font: 400 15px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+  .titrePartie + .prose {
+    font: 500 16px/1.6 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+  .intertitre {
+    margin: 18px 0 8px !important;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font: 600 16px/1.35 var(--ft) !important;
+    letter-spacing: -0.02em !important;
+    color: var(--ink);
+  }
+  .encadre {
+    margin: 6px 0 14px !important;
+    padding: 14px 16px !important;
+    border: 0 !important;
+    border-radius: 16px !important;
+    background: rgba(255, 124, 60, 0.09) !important;
+    font: 500 14.5px/1.55 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+
+  /* Liste simple (`isUl`) : puces rondes de 6 px, accent. */
+  .puces {
+    margin: 2px 0 14px !important;
+    padding: 0 !important;
+    gap: 9px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+  }
+  .puces > li {
+    gap: 10px !important;
+    font: 400 14.5px/1.6 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+  .coche {
+    flex: none;
+    width: 6px;
+    height: 6px;
+    margin-top: 9px;
+    border-radius: 999px;
+    background: var(--acc);
+    font-size: 0 !important;
+    line-height: 0;
+  }
+
+  /* Liste « Libellé : texte » (`isKv`) : petites cartes numérotées. */
+  .kv {
+    counter-reset: kv;
+    gap: 8px !important;
+    margin: 4px 0 14px !important;
+  }
+  .kv > li {
+    counter-increment: kv;
+    display: grid !important;
+    grid-template-columns: 26px minmax(0, 1fr);
+    gap: 10px !important;
+    padding: 13px 14px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--mr-fond-petite-carte);
+  }
+  .kv > li::before {
+    content: counter(kv, decimal-leading-zero);
+    padding-top: 3px;
+    font: 600 11px ui-monospace, Menlo, monospace;
+    color: var(--acc);
+  }
+  .kv .coche {
+    display: none;
+  }
+  .kvTitre {
+    display: block;
+    font: 600 14.5px/1.4 var(--ft);
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+  .kvTexte {
+    display: block;
+    margin-top: 4px;
+    font: 400 14px/1.55 var(--fb);
+    color: var(--ink1);
+  }
+  /* La suite commence par « : » (le libellé est désormais seul dans sa
+     ligne, comme la maquette) : les deux-points restent dans le texte, mais
+     reculent hors du cadre. 0,481 em = « : » en Poppins, mesuré. */
+  .kvDeuxPoints {
+    text-indent: -0.481em;
+    overflow: hidden;
+  }
+
+  /* Liste numérotée (`isOl`) : la frise, pastilles sombres de 30 px. */
+  .etapes {
+    margin: 6px 0 12px !important;
+    gap: 0 !important;
+  }
+  .etapes > li {
+    grid-template-columns: 30px minmax(0, 1fr) !important;
+    gap: 12px !important;
+    padding-bottom: 14px;
+  }
+  .etapeNumero {
+    width: 30px !important;
+    height: 30px !important;
+    background: var(--ink) !important;
+    color: var(--card) !important;
+    font: 600 11.5px/30px var(--fb) !important;
+  }
+  .etapeTexte {
+    padding-top: 4px !important;
+    font: 400 14.5px/1.6 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  /* Tableau (`isTb`) : la ligne de tête en « A · B · C », une carte par ligne,
+     le libellé de colonne au-dessus de chaque valeur (`data-libelle`). */
+  .tableauEnCartes {
+    margin: 4px 0 14px !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
     overflow: visible !important;
   }
   .tableauEnCartes table {
@@ -242,217 +553,108 @@
   .tableauEnCartes thead {
     display: block !important;
   }
-  /* La ligne d'en-têtes : une rangée au-dessus des cartes, dans le flux et à
-     l'écran, comme la ligne de tête du motif copié. */
   .tableauEnCartes thead tr {
     display: flex !important;
     flex-wrap: wrap !important;
-    gap: 4px 14px !important;
-    padding: 0 4px 8px !important;
+    gap: 0 !important;
+    padding: 0 0 8px !important;
   }
   .tableauEnCartes th {
     display: block !important;
     padding: 0 !important;
     border: none !important;
     white-space: normal !important;
+    font: 600 10.5px/1.4 var(--fb) !important;
+    letter-spacing: 0.1em !important;
+    color: var(--mm-encre-3) !important;
+  }
+  .tableauEnCartes th + th::before {
+    content: "·";
+    margin: 0 0.45em;
   }
   .tableauEnCartes tbody {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) !important;
     gap: 8px !important;
   }
-  /* Une carte par ligne : cellules empilées, fond et bord de carte. */
   .tableauEnCartes tbody tr {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) !important;
     gap: 8px !important;
     padding: 14px 15px !important;
     border: 1px solid var(--line) !important;
-    border-radius: var(--rad-s) !important;
-    background: var(--card) !important;
+    border-radius: 16px !important;
+    background: var(--mr-fond-petite-carte) !important;
   }
   .tableauEnCartes td {
     display: block !important;
     padding: 0 !important;
     border: none !important;
+    font: 400 14px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
   }
-  /* La première cellule tient lieu de titre de la carte, comme le bloc
-     `isTb` de la maquette (dc.html : `600 14.5px/1.45` pour la colonne 0). */
   .tableauEnCartes td:first-child {
-    font-weight: 600 !important;
+    font: 600 14.5px/1.45 var(--fb) !important;
     color: var(--ink) !important;
   }
-}
+  .tableauEnCartes td[data-libelle]::before {
+    content: attr(data-libelle);
+    display: block;
+    margin-bottom: 3px;
+    font: 600 10.5px/1.4 var(--fb);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mm-encre-3);
+  }
 
-/*
- * G2, LE HÉROS COMPACT DU TÉLÉPHONE, échelle de la maquette mobile v2
- * (dc.html, `stdHero`) : la photo EN TÊTE, au format 16/10 et non plus haute
- * de 380 px, puis le sur-titre, le titre en `600 27px/1.1` et le texte
- * d'ouverture en 16 px. `order` ne change que l'ordre d'affichage, pas celui
- * du document : le lecteur d'écran et Google lisent le titre d'abord, comme
- * avant. La carte du livre blanc n'est pas déplacée (elle n'a pas la classe).
- * Le préfixe `.mg-site` bat la règle globale des h1 de téléphone
- * (`app/globals.css`). Au-dessus de 880 px, rien de ceci ne mord.
- */
-@media (max-width: 880px) {
-  .herosCompact {
-    gap: 16px !important;
-  }
-  .photoHeros {
-    order: -1;
-    height: auto !important;
-    aspect-ratio: 16 / 10;
-    border-radius: 24px !important;
-  }
-  .pastilleHeros {
-    margin-bottom: 12px !important;
-  }
-  :global(.mg-site) .titreHeros {
-    font-size: 27px !important;
-    line-height: 1.1 !important;
-    letter-spacing: -0.04em !important;
-    margin-bottom: 12px !important;
-  }
-  .chapoHeros {
-    font-size: 16px !important;
-    line-height: 1.6 !important;
-  }
-}
-
-/*
- * G3, LE SOMMAIRE REPLIÉ DU TÉLÉPHONE, motif `hasToc` de la maquette mobile
- * v2 : une carte blanche, « Sommaire » et le nombre de parties sur une ligne,
- * la pastille du chevron à droite, la liste dessous une fois ouverte. Le
- * `display: none` de 980 px reste vrai entre 881 et 980 px : on ne rend le
- * sommaire qu'en dessous du seuil du repli, où il se replie.
- */
-@media (max-width: 880px) {
-  .sommaire {
-    display: block !important;
-    position: static !important;
-    padding: 0 !important;
-    border-radius: 20px !important;
-    background: #fff !important;
-  }
-  .sommaire > details > summary {
-    align-items: center;
-    padding: 14px 16px;
-    margin: 0;
-  }
-  .sommaireTitre {
-    flex: 1 1 0%;
-    min-width: 0;
-    margin: 0 !important;
-    font: 600 14.5px var(--ft) !important;
-    letter-spacing: -0.02em !important;
-    text-transform: none !important;
-    color: var(--ink) !important;
-  }
-  .sommaireCompte {
-    margin-left: 6px;
-    font: 500 12px var(--fb);
-    color: var(--ink3);
-    white-space: nowrap;
-  }
-  .sommaire > details > div {
-    padding: 0 16px 14px;
-  }
-}
-
-/*
- * LES PARTIES REPLIÉES EN CARTES, motif `isDetails` de la maquette mobile v2 :
- * carte blanche, bord fin, rayon 20 px, numéro et titre à gauche, pastille
- * ronde du chevron à droite, SUR LA MÊME LIGNE, résumé de deux lignes dessous.
- *
- * `flex: 1 1 0%` sur l'étiquette corrige un défaut vu à 390 px : en
- * `flex-basis: auto` elle réclamait sa largeur d'une ligne, plus large que
- * l'écran, et le `flex-wrap` du `<summary>` partagé envoyait le chevron seul
- * sur la ligne suivante. Le titre passe à l'échelle de la maquette
- * (`600 16.5px/1.3`) ; l'étiquette n'existe qu'ici, le `<h2>` de bureau ne
- * bouge pas. La carte n'habille que la partie FERMÉE : ouverte, elle rend
- * son corps comme les deux premières.
- */
-@media (max-width: 880px) {
-  .colonne details[data-pliable-mobile]:not([open]) {
-    margin-top: 10px;
-    padding: 15px 16px;
-    border-radius: 20px;
-    background: #fff;
-    border: 1px solid var(--line);
-  }
-  .etiquettePli {
-    flex: 1 1 0%;
-    min-width: 0;
-  }
-  .etiquettePli > span:last-child {
-    font-size: 16.5px !important;
-    line-height: 1.3 !important;
-    letter-spacing: -0.025em !important;
-  }
-  .colonne details[data-pliable-mobile] > summary > span[aria-hidden="true"],
-  .sommaire details[data-pliable-mobile] > summary > span[aria-hidden="true"] {
-    display: grid;
-    place-items: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 999px;
-    background: rgba(28, 27, 25, 0.055);
-    font-size: 16px;
-    color: var(--ink);
-  }
-}
-
-/*
- * LA PAGE SE RESSERRE AU TÉLÉPHONE : les écarts entre sections passent de
- * 64 et 96 px à ceux de la maquette mobile v2 (14 à 24 px entre deux blocs),
- * et l'appel de bureau `#mr-cta` perd ses 96 + 120 px de marge et ses 56 px de
- * rembourrage. Aucun mot ne bouge, seul l'air autour. Au-dessus de 880 px ces
- * classes ne portent rien.
- */
-@media (max-width: 880px) {
-  .sectionCorps {
-    padding-top: 20px !important;
-  }
-  .sectionSuite {
-    padding-top: 24px !important;
-  }
-  .sectionAppel {
-    padding-top: 24px !important;
-    padding-bottom: 32px !important;
-  }
-  .appelCompact {
-    padding: 24px 22px !important;
-    border-radius: 24px !important;
-  }
+  /* ------------------------------------------------ cadence de conversion */
   /* Les insertions de la cadence (photo + CTA, bandeau) prennent la largeur
-     de la colonne, comme les parties repliées, au lieu d'y ajouter leurs
-     18 px de marge latérale. */
+     de la colonne, comme les cartes, au lieu d'y ajouter leurs 18 px. */
   .colonne > [data-mobile-seulement] {
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
-  .colonne details[data-pliable-mobile] > summary {
-    align-items: center;
+  /* La bande d'appel de bureau n'existe pas dans la maquette mobile v2 : la
+     cadence y pose déjà la carte photo « Passer à l'action » juste au-dessus,
+     elle faisait doublon. Repliée, pas retirée : elle reste dans le DOM. */
+  .bande {
+    display: none !important;
   }
-  /* « Sur le même sujet », replié : même carte que les parties. */
-  .sectionSuite > details[data-pliable-mobile]:not([open]) {
-    padding: 15px 16px;
-    border-radius: 20px;
-    background: #fff;
-    border: 1px solid var(--line);
+
+  /* ---------------------------------- FAQ en liste de cartes (L80, `isQ`) */
+  .sectionSuite {
+    padding-top: 26px !important;
   }
-  .sectionSuite > details[data-pliable-mobile] > summary {
-    align-items: center;
+  .faq {
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    color: var(--ink) !important;
+    overflow: visible !important;
   }
-  .sectionSuite > details[data-pliable-mobile] > summary > span[aria-hidden="true"] {
-    display: grid;
-    place-items: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 999px;
-    background: rgba(28, 27, 25, 0.055);
-    font-size: 16px;
-    color: var(--ink);
+  .faqFond {
+    display: none !important;
+  }
+  .faq [data-faq-liste] {
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    overflow: visible !important;
+  }
+
+  /* -------------------------------------------------------- fin de page */
+  /* « Sur le même sujet » et l'appel de bureau `#mr-cta` ne sont pas dans la
+     maquette mobile v2 : elle finit sur la FAQ, les pastilles « Dans la même
+     rubrique », le rappel final et le pied. Les deux restent dans le DOM. */
+  .lecturesSection,
+  .sectionAppel {
+    display: none !important;
+  }
+  .pastilles,
+  .rappel {
+    padding: 0;
   }
 }
 
@@ -464,44 +666,78 @@
   }
 }
 
-/* La FAQ du téléphone, resserrée à l'échelle des questions repliées de la
-   maquette mobile v2 (dc.html, `isQ` : `padding:15px 16px`, question en
-   `600 14.5px/1.4`). Placée après la règle de 760 px, elle la remplace. */
+/* LE SOMMAIRE À SA PLACE DE MAQUETTE, au téléphone : sous les deux boutons,
+   avant le chapô (dc.html : héros, puis `hasToc`, puis l'introduction). Le
+   sommaire vit dans le corps et le chapô dans le héros : les deux sections et
+   leurs grilles s'effacent (`display: contents`), `main` devient une colonne
+   et chaque morceau prend son rang. La gouttière (18 px) et le haut du héros
+   (40 px) que portaient les sections passent à leurs enfants. Les espacements
+   d'avant sont gardés au pixel ; seul le sommaire monte. Au-dessus de 880 px,
+   rien de ceci n'existe. */
 @media (max-width: 880px) {
-  .faq {
-    padding: 22px 16px !important;
+  .page {
+    display: flex;
+    flex-direction: column;
   }
-  .question > summary {
-    padding: 14px 16px !important;
-    font-size: 15px !important;
+  .herosSection,
+  .herosCompact,
+  .herosTexte,
+  .sectionCorps,
+  .sectionCorps > .deux {
+    display: contents !important;
   }
-  .question > p {
-    padding: 0 16px 14px !important;
+  .page > * {
+    order: 10;
+  }
+  .herosCompact > *,
+  .herosTexte > *,
+  .sectionCorps > .deux > * {
+    order: 7;
+    margin-left: 18px !important;
+    margin-right: 18px !important;
+  }
+  /* La carte du livre blanc (à la place de la photo) reste sous le texte. */
+  .herosCompact > * {
+    order: 8;
+  }
+  .herosSection > .ariane {
+    order: 1;
+    margin: 40px 18px 12px !important;
+  }
+  .herosCompact > .photoHeros {
+    order: 2;
+    margin-bottom: 16px !important;
+  }
+  .herosTexte > .pastilleHeros {
+    order: 3;
+  }
+  /* `.mg-site` : la règle du titre (plus haut) pose sa marge avec ce préfixe. */
+  :global(.mg-site) .herosTexte > .titreHeros {
+    order: 4;
+    margin: 10px 18px 0 !important;
+  }
+  .herosTexte > .boutonsHeros {
+    order: 5;
+  }
+  .sectionCorps > .deux > .sommaire {
+    order: 6;
+    margin-top: 16px !important;
+  }
+  /* La signature n'est pas dans le héros de la maquette mobile v2. */
+  .herosTexte > .signature {
+    display: none !important;
+  }
+  .sectionCorps > .deux > .colonne {
+    order: 9;
+    margin-top: 16px !important;
   }
 }
 
-/* Une partie OUVERTE garde sa bascule pour se replier, mais son étiquette
-   s'efface (le `<h2>` est juste dessous) : le chevron, seul dans la rangée,
-   se range à droite, à sa place de bloc fermé. La boîte de pastilles et le
-   rappel final s'alignent sur la marge de 40 px de la page. */
+/* Le titre du carrousel « Nos réalisations » : 20 px de la maquette (dc.html
+   L131), contre la règle mobile des h2 (`.mg-site h2`, globals.css). */
 @media (max-width: 880px) {
-  .colonne details[data-pliable-mobile] > summary > span[aria-hidden="true"],
-  .sectionSuite > details[data-pliable-mobile] > summary > span[aria-hidden="true"] {
-    margin-left: auto;
-  }
-  .pastilles,
-  .rappel {
-    padding: 0 22px;
-  }
-  /* LE RÉSUMÉ D'UN BLOC OUVERT NE SE PEINT PAS. Le module partagé
-     (`blocs/SectionPliableMobile.module.css`) déclare `.resume` deux fois,
-     `display: none` puis `display: -webkit-box` : la seconde l'emporte, et le
-     résumé reste affiché au-dessus d'un bloc OUVERT, en double de son texte
-     (vu sur la deuxième partie, ouverte d'office). Corrigé ici pour ce
-     gabarit, signalé pour le module partagé. Le texte reste dans le DOM. */
-  .colonne details[data-pliable-mobile][open] > summary > p,
-  .sectionSuite > details[data-pliable-mobile][open] > summary > p,
-  .sommaire details[data-pliable-mobile][open] > summary > p {
-    display: none !important;
+  :global(.mg-site) .realisations h2 {
+    font-size: 20px !important;
+    line-height: 1.2 !important;
   }
 }

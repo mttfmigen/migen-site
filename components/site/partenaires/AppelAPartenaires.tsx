@@ -1,4 +1,6 @@
 import { ANCRE_FORMULAIRE_PARTENAIRES } from "./donnees";
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
+
 import styles from "./AppelAPartenaires.module.css";
 
 /**
@@ -32,7 +34,7 @@ export default function AppelAPartenaires({
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div
           data-reveal=""
-          className={styles.panneau}
+          className={`${styles.panneau} ${mobile.appelPlat}`}
           style={{
             borderRadius: 36,
             background: "rgba(255,255,255,var(--gl-a))",
@@ -92,6 +94,12 @@ export default function AppelAPartenaires({
           >
             Proposer un partenariat
           </a>
+          {/* Maquette mobile v2 : le bloc se lit dans le flux, puis la puce
+              « Un chargé d’affaires vous rappelle dans l’heure. », mot pour
+              mot. Téléphone seulement. */}
+          <p data-mobile-seulement="" className={mobile.puceRappel}>
+            Un chargé d’affaires vous rappelle dans l’heure.
+          </p>
         </div>
       </div>
     </section>

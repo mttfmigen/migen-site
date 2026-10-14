@@ -35,13 +35,18 @@ export function Paragraphe({
   texte,
   style,
   className,
+  intro = false,
 }: {
   texte: string;
   style: CSSProperties;
   className?: string;
+  /** Paragraphe d'introduction d'une section : chapô ou texte courant de la
+   *  carte au téléphone (`metier/MobileV2.module.css`, `data-mc-intro`). */
+  intro?: boolean;
 }) {
   return (
     <p
+      {...(intro ? { "data-mc-intro": "" } : {})}
       className={className ? `${styles.texteLie} ${className}` : styles.texteLie}
       style={{ textWrap: "pretty", ...style }}
     >
@@ -60,7 +65,14 @@ export function Enveloppe({ children, fin = false }: { children: ReactNode; fin?
 }
 
 /** Le bouton orange qui vise le formulaire de la page. */
-export function BoutonPostuler({ libelle = "Postuler" }: { libelle?: string }) {
+export function BoutonPostuler({
+  libelle = "Postuler",
+  suiteMobile,
+}: {
+  libelle?: string;
+  /** Fin de libellé sous 881 px seulement (« Postuler chez Migen », dc.html L412). */
+  suiteMobile?: string;
+}) {
   return (
     <a
       href="#postuler"
@@ -78,6 +90,7 @@ export function BoutonPostuler({ libelle = "Postuler" }: { libelle?: string }) {
       }}
     >
       {libelle}
+      {suiteMobile ? <span data-mobile-seulement="">{suiteMobile}</span> : null}
     </a>
   );
 }
@@ -86,7 +99,7 @@ export function BoutonPostuler({ libelle = "Postuler" }: { libelle?: string }) {
 function Bande({ bande }: { bande?: BandeFiche }) {
   if (!bande?.texte) return null;
   return (
-    <div style={{ ...LARGEUR, margin: "28px auto 0" }}>
+    <div data-mc-bande="" style={{ ...LARGEUR, margin: "28px auto 0" }}>
       <div
         style={{
           display: "flex",
@@ -139,12 +152,17 @@ export function EtapesHub({ section }: { section: SectionEtapesHub }) {
   return (
     <Enveloppe>
       <div style={LARGEUR}>
-        <div style={{ maxWidth: 720, marginBottom: 34 }}>
-          <div style={SURTITRE}>{surtitre}</div>
-          <h2 style={{ ...TITRE2, margin: "0 0 18px", maxWidth: "22ch" }}>{titre}</h2>
+        <div data-mc-entete="" style={{ maxWidth: 720, marginBottom: 34 }}>
+          <div data-mc-titre-section="" style={SURTITRE}>
+            {surtitre}
+          </div>
+          <h2 data-mc-titre-section="" style={{ ...TITRE2, margin: "0 0 18px", maxWidth: "22ch" }}>
+            {titre}
+          </h2>
           {intros?.map((t) => (
             <Paragraphe
               key={t}
+              intro
               texte={t}
               style={{
                 font: "400 16px/1.7 var(--fb)",
@@ -156,6 +174,7 @@ export function EtapesHub({ section }: { section: SectionEtapesHub }) {
           ))}
         </div>
         <div
+          data-mc-frise=""
           className={styles.etapes}
           style={{
             display: "grid",
@@ -166,6 +185,7 @@ export function EtapesHub({ section }: { section: SectionEtapesHub }) {
           {etapes.map((etape, i) => (
             <div
               key={etape.titre}
+              data-mc-etape=""
               className={n % 2 === 1 && i === n - 1 ? styles.dernierImpair : undefined}
               style={{
                 ...(n === 5 ? { gridColumn: `span ${i < 3 ? 2 : 3}` } : {}),
@@ -177,7 +197,10 @@ export function EtapesHub({ section }: { section: SectionEtapesHub }) {
                 overflow: "hidden",
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+              <div
+                data-mc-etape-tete=""
+                style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}
+              >
                 <span
                   style={{
                     width: 38,
@@ -193,6 +216,7 @@ export function EtapesHub({ section }: { section: SectionEtapesHub }) {
                   {MONO_ORDINAL(i)}
                 </span>
                 <span
+                  data-mc-deco=""
                   style={{
                     flex: "1 1 0%",
                     height: 2,
@@ -202,6 +226,7 @@ export function EtapesHub({ section }: { section: SectionEtapesHub }) {
                 />
               </div>
               <div
+                data-mc-etape-titre=""
                 style={{
                   font: "600 16.5px/1.35 var(--ft)",
                   letterSpacing: "-.02em",
@@ -210,7 +235,10 @@ export function EtapesHub({ section }: { section: SectionEtapesHub }) {
               >
                 {etape.titre}
               </div>
-              <div style={{ font: "400 14px/1.6 var(--fb)", color: "var(--ink2)" }}>
+              <div
+                data-mc-etape-texte=""
+                style={{ font: "400 14px/1.6 var(--fb)", color: "var(--ink2)" }}
+              >
                 <TexteRiche texte={etape.texte} />
               </div>
             </div>
@@ -218,6 +246,7 @@ export function EtapesHub({ section }: { section: SectionEtapesHub }) {
         </div>
         {entonnoir ? (
           <div
+            data-mc-entonnoir=""
             style={{
               display: "flex",
               alignItems: "center",
@@ -274,7 +303,7 @@ export function Refus({
   if (!refus.length) return null;
   return (
     <Enveloppe>
-      <div style={{ padding: "0 24px" }}>
+      <div data-mc-refus="" style={{ padding: "0 24px" }}>
         <div
           className={styles.pad}
           style={{
@@ -288,6 +317,7 @@ export function Refus({
           }}
         >
           <div
+            data-mc-deco=""
             style={{
               position: "absolute",
               width: 520,
@@ -299,13 +329,19 @@ export function Refus({
             }}
           />
           <div style={{ position: "relative" }}>
-            <div style={SURTITRE}>{surtitre}</div>
-            <h2 style={{ ...TITRE2, color: "#fff", margin: "0 0 18px", maxWidth: "22ch" }}>
+            <div data-mc-titre-section="" style={SURTITRE}>
+              {surtitre}
+            </div>
+            <h2
+              data-mc-titre-section=""
+              style={{ ...TITRE2, color: "#fff", margin: "0 0 18px", maxWidth: "22ch" }}
+            >
               {titre}
             </h2>
             {intros?.map((t) => (
               <Paragraphe
                 key={t}
+                intro
                 texte={t}
                 style={{
                   font: "400 16px/1.7 var(--fb)",
@@ -316,6 +352,7 @@ export function Refus({
               />
             ))}
             <div
+              data-mc-cartes=""
               className={styles.deuxColonnes}
               style={{
                 display: "grid",
@@ -327,6 +364,7 @@ export function Refus({
               {refus.map((r) => (
                 <div
                   key={r.titre}
+                  data-mc-carte=""
                   style={{
                     display: "grid",
                     gridTemplateColumns: "34px minmax(0,1fr)",
@@ -337,6 +375,7 @@ export function Refus({
                 >
                   <span
                     aria-hidden="true"
+                    data-mc-num=""
                     style={{
                       width: 34,
                       height: 34,
@@ -349,8 +388,9 @@ export function Refus({
                   >
                     ×
                   </span>
-                  <div>
+                  <div data-mc-carte-corps="">
                     <div
+                      data-mc-carte-titre=""
                       style={{
                         font: "600 17px/1.35 var(--ft)",
                         color: "#fff",
@@ -360,6 +400,7 @@ export function Refus({
                       {r.titre}
                     </div>
                     <div
+                      data-mc-carte-texte=""
                       style={{
                         font: "400 14px/1.6 var(--fb)",
                         color: "rgba(255,255,255,.62)",
@@ -398,6 +439,7 @@ function EnteteDeuxColonnes({
 }) {
   return (
     <div
+      data-mc-entete=""
       className={styles.deuxColonnes}
       style={{
         display: "grid",
@@ -408,8 +450,12 @@ function EnteteDeuxColonnes({
       }}
     >
       <div>
-        <div style={SURTITRE}>{surtitre}</div>
-        <h2 style={{ ...TITRE2, margin: 0, maxWidth: largeurTitre }}>{titre}</h2>
+        <div data-mc-titre-section="" style={SURTITRE}>
+          {surtitre}
+        </div>
+        <h2 data-mc-titre-section="" style={{ ...TITRE2, margin: 0, maxWidth: largeurTitre }}>
+          {titre}
+        </h2>
       </div>
       <div>{droite}</div>
     </div>
@@ -439,6 +485,7 @@ export function Hubs({
           largeurTitre="18ch"
           droite={
             <Paragraphe
+              intro
               texte={intro}
               style={{
                 font: "400 15.5px/1.65 var(--fb)",
@@ -449,6 +496,7 @@ export function Hubs({
           }
         />
         <div
+          data-mc-hubs=""
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,300px),1fr))",
@@ -575,6 +623,7 @@ export function Avis({
           largeurTitre="20ch"
           droite={
             <Paragraphe
+              intro
               texte={intro}
               style={{
                 font: "400 16px/1.7 var(--fb)",
@@ -586,6 +635,7 @@ export function Avis({
           }
         />
         <div
+          data-mc-avis=""
           className={styles.avis}
           style={{ display: "grid", gridTemplateColumns: "repeat(6,minmax(0,1fr))", gap: 14 }}
         >
@@ -639,6 +689,7 @@ export function Avis({
         </div>
         {fin ? (
           <div
+            data-mc-avis-fin=""
             className={styles.deuxColonnes}
             style={{
               marginTop: 14,
@@ -696,9 +747,12 @@ export function LiensPhoto({ items }: { items: { libelle: string; href: string; 
   if (!items.length) return null;
   return (
     <Enveloppe fin>
-      <div style={LARGEUR}>
-        <div style={SURTITRE}>Pour aller plus loin</div>
+      <div data-mc-liens="" style={LARGEUR}>
+        <div data-mc-liens-titre="" style={SURTITRE}>
+          Pour aller plus loin
+        </div>
         <div
+          data-mc-liens-grille=""
           style={{
             display: "grid",
             // `min(100%,250px)` et non 250px : une piste de 250 px dans une
@@ -714,7 +768,8 @@ export function LiensPhoto({ items }: { items: { libelle: string; href: string; 
               key={item.href}
               href={item.href}
               prefetch={false}
-              className={`${styles.carteLien} ${styles.liensCarte}`}
+              data-mc-lien=""
+              className={styles.carteLien}
               style={{
                 ...VERRE,
                 borderRadius: 24,
@@ -725,7 +780,7 @@ export function LiensPhoto({ items }: { items: { libelle: string; href: string; 
               }}
             >
               <div
-                className={styles.liensPhoto}
+                data-mc-deco=""
                 style={{
                   position: "relative",
                   height: 140,
@@ -749,7 +804,7 @@ export function LiensPhoto({ items }: { items: { libelle: string; href: string; 
                 ) : null}
               </div>
               <div
-                className={styles.liensTexte}
+                data-mc-lien-texte=""
                 style={{
                   padding: "18px 20px 20px",
                   display: "flex",

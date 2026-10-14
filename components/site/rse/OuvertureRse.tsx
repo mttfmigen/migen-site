@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
@@ -9,7 +10,23 @@ import {
   PANNEAU,
   SURTITRE,
 } from "@/components/site/blocs/habillage";
+import {
+  ActionsMobile,
+  ALireAussi,
+  FilMobile,
+  SommaireMobile,
+  SurtitreMobile,
+} from "@/components/site/nous-connaitre/HautMobile";
 import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
+
+import { SOMMAIRE_CAS } from "./CasRetrofit";
+import { SOMMAIRE_PIECES } from "./PiecesFournisseur";
+import { SOMMAIRE_PILIERS } from "./PiliersRse";
+
+/* Le nom de la page : notre sur-titre, le titre de la maquette mobile. */
+const NOM_PAGE = "Nos engagements RSE";
+/* dc.html L485 : 645 mots dans `mobile-native-data.js`, / 230, arrondi. */
+const MINUTES_DE_LECTURE = 3;
 
 /**
  * Ouverture de la page RSE : promesse à gauche, panneau du chiffre sécurité à
@@ -67,8 +84,14 @@ const IMAGE_LOGO: CSSProperties = {
 
 export default function OuvertureRse() {
   return (
+    // SUR TÉLÉPHONE, LE HAUT DE LA MAQUETTE MOBILE V2 (`HautMobile.tsx`), comme
+    // « Nous connaître » : fil, photo, sur-titre, nom de la page, les deux
+    // boutons côte à côte, le sommaire, puis notre H1 en première phrase du
+    // chapô. La photo de tête est celle de la maquette (dc.html L225,
+    // `FIMG["a-propos"]`, team-grind-front) ; dans la carte du cas, la
+    // maquette ne montre que le texte (`.casPhoto`). Au bureau, rien ne bouge.
     <section
-      className={mobile.herosCompact}
+      className={`${mobile.herosCompact} ${mobile.herosMaquette} ${mobile.herosPhoto}`}
       style={{ maxWidth: 1200, margin: "0 auto", padding: "70px 40px 0" }}
     >
       <div
@@ -80,9 +103,16 @@ export default function OuvertureRse() {
           alignItems: "start",
         }}
       >
-        <div>
-          <div style={{ ...SURTITRE, marginBottom: 18 }}>Nos engagements RSE</div>
+        <div className={mobile.colonneTexte}>
+          <FilMobile page={NOM_PAGE} />
+          <SurtitreMobile minutes={MINUTES_DE_LECTURE} />
+          <div className={mobile.titreMobile} style={{ ...SURTITRE, marginBottom: 18 }}>
+            {NOM_PAGE}
+          </div>
+          <ActionsMobile />
+          <SommaireMobile entrees={[SOMMAIRE_PILIERS, SOMMAIRE_CAS, SOMMAIRE_PIECES]} />
           <h1
+            className={mobile.h1Lead}
             style={{
               font: "600 calc(clamp(36px,4.2vw,62px) * var(--ts))/1.03 var(--ft)",
               letterSpacing: "-.045em",
@@ -95,6 +125,7 @@ export default function OuvertureRse() {
             En maintenance, la RSE se mesure en machines qu’on ne jette pas.
           </h1>
           <p
+            className={mobile.chapoMobile}
             style={{
               font: "400 17.5px/1.65 var(--fb)",
               color: "var(--ink2)",
@@ -108,7 +139,11 @@ export default function OuvertureRse() {
             la sécurité des équipes, l’emploi local, et des achats qui ne
             traversent pas l’Europe.
           </p>
+          {/* Au téléphone, cette rangée s'efface (elle reste dans le HTML) : la
+              maquette mobile v2 ne pose qu'une pastille « Nos valeurs », après
+              « Le chiffre qui compte » (plus bas). */}
           <div
+            className={mobile.masqueMobile}
             style={{
               display: "flex",
               gap: 12,
@@ -137,12 +172,31 @@ export default function OuvertureRse() {
           </div>
         </div>
 
-        <div style={{ ...PANNEAU, padding: "32px 34px 34px" }}>
-          <div style={LUEUR_HAUTE} />
+        <div
+          data-mobile-seulement=""
+          className={mobile.photoMobile}
+          style={{ position: "relative", overflow: "hidden", background: "var(--ph)" }}
+        >
+          <Image
+            src="/assets/web/team-grind-front.jpg"
+            alt=""
+            fill
+            priority
+            sizes="(max-width: 880px) 100vw, 1px"
+            style={{ objectFit: "cover", filter: "saturate(var(--sat)) contrast(1.05)" }}
+          />
+        </div>
+
+        {/* Au téléphone, le panneau sombre passe en texte clair dans le flux
+            (maquette mobile v2 : phrase clé, puce « 2 : … », ligne MASE et
+            EcoVadis) : `.panneauClair`, `.puceRse`, `.ligneMase`. */}
+        <div className={mobile.panneauClair} style={{ ...PANNEAU, padding: "32px 34px 34px" }}>
+          <div className={mobile.decor} style={LUEUR_HAUTE} />
           <div style={{ position: "relative" }}>
-            <div style={{ ...SURTITRE, marginBottom: 20 }}>
+            <div className={mobile.panneauTitre} style={{ ...SURTITRE, marginBottom: 20 }}>
               Le chiffre qui compte
             </div>
+            <div className={mobile.puceRse}>
             <div
               style={{
                 font: "600 calc(clamp(56px,6.4vw,88px) * var(--ts))/.9 var(--ft)",
@@ -164,7 +218,9 @@ export default function OuvertureRse() {
               90&nbsp;000 heures d’intervention. S’y ajoutent 3 accidents sans
               arrêt et 1 accident de trajet.
             </div>
+            </div>
             <div
+              className={mobile.decor}
               style={{
                 height: 1,
                 background: "rgba(255,255,255,.12)",
@@ -172,6 +228,7 @@ export default function OuvertureRse() {
               }}
             />
             <div
+              className={mobile.ligneMase}
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -179,11 +236,11 @@ export default function OuvertureRse() {
                 flexWrap: "wrap",
               }}
             >
-              <span style={CADRE_LOGO}>
+              <span className={mobile.decor} style={CADRE_LOGO}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/assets/logos/mase.png" alt="MASE" style={IMAGE_LOGO} />
               </span>
-              <span style={CADRE_LOGO}>
+              <span className={mobile.decor} style={CADRE_LOGO}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/assets/logos/ecovadis.webp"
@@ -199,11 +256,18 @@ export default function OuvertureRse() {
                   minWidth: 140,
                 }}
               >
+                <strong data-mobile-seulement="">MASE et EcoVadis :</strong>{" "}
                 Démarche MASE et évaluation EcoVadis. Attestations transmises
                 avec chaque plan de prévention.
               </span>
             </div>
           </div>
+        </div>
+        {/* dc.html L131 (`isRel`) : « À lire aussi » et la seule pastille de
+            la maquette, « Nos valeurs ». Téléphone seulement. */}
+        <div data-mobile-seulement="" className={mobile.liensMobile} style={{ display: "flex", flexWrap: "wrap" }}>
+          <ALireAussi />
+          <Link href="/valeurs/">Nos valeurs</Link>
         </div>
       </div>
     </section>

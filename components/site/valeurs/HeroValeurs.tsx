@@ -1,6 +1,14 @@
+import Image from "next/image";
+import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { ANCRE_FORMULAIRE } from "@/components/site/blocs/habillage";
+import {
+  ActionsMobile,
+  ALireAussi,
+  FilMobile,
+  SurtitreMobile,
+} from "@/components/site/nous-connaitre/HautMobile";
 import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
 
 import styles from "./Valeurs.module.css";
@@ -49,10 +57,22 @@ const HALO: CSSProperties = {
   pointerEvents: "none",
 };
 
+/* dc.html L485 : 404 mots dans `mobile-native-data.js`, / 230, au moins 2. */
+const MINUTES_DE_LECTURE = 2;
+
+/**
+ * SUR TÉLÉPHONE, LE HAUT DE LA MAQUETTE MOBILE V2 (`HautMobile.tsx`) : fil,
+ * sur-titre, nom de la page, « Décrire mon besoin » et le téléphone, puis notre
+ * H1 en première phrase du chapô, et le slogan en liste claire. La photo de
+ * tête est celle de la maquette (dc.html L225, `FIMG["a-propos"]`,
+ * team-grind-front), une photo que le site sert déjà : téléphone seulement.
+ * Ni sommaire ni cadence : la maquette n'y numérote aucune section. Au
+ * bureau, rien ne bouge.
+ */
 export default function HeroValeurs() {
   return (
     <section
-      className={mobile.herosCompact}
+      className={`${mobile.herosCompact} ${mobile.herosMaquette}`}
       style={{ maxWidth: 1200, margin: "0 auto", padding: "70px 40px 0" }}
     >
       <div
@@ -65,8 +85,24 @@ export default function HeroValeurs() {
         }}
       >
         <div>
-          <div style={SURTITRE}>{HERO.surtitre}</div>
+          <FilMobile page={HERO.surtitre} />
+          <div data-mobile-seulement="" className={mobile.photoTete}>
+            <Image
+              src="/assets/web/team-grind-front.jpg"
+              alt=""
+              fill
+              priority
+              sizes="(max-width: 880px) 100vw, 1px"
+              style={{ objectFit: "cover", filter: "saturate(var(--sat)) contrast(1.05)" }}
+            />
+          </div>
+          <SurtitreMobile minutes={MINUTES_DE_LECTURE} />
+          <div className={mobile.titreMobile} style={SURTITRE}>
+            {HERO.surtitre}
+          </div>
+          <ActionsMobile />
           <h1
+            className={mobile.h1Lead}
             style={{
               font: "600 calc(clamp(36px,4.2vw,62px) * var(--ts))/1.03 var(--ft)",
               letterSpacing: "-.045em",
@@ -79,6 +115,7 @@ export default function HeroValeurs() {
             {HERO.titre}
           </h1>
           <p
+            className={mobile.chapoMobile}
             style={{
               font: "400 17.5px/1.65 var(--fb)",
               color: "var(--ink2)",
@@ -88,7 +125,11 @@ export default function HeroValeurs() {
           >
             {HERO.intro}
           </p>
+          {/* Au téléphone, cette rangée s'efface (elle reste dans le HTML) :
+              la maquette mobile v2 ne pose qu'une pastille « Nos engagements
+              RSE », après le slogan (plus bas). */}
           <div
+            className={mobile.masqueMobile}
             style={{
               display: "flex",
               gap: 12,
@@ -104,11 +145,9 @@ export default function HeroValeurs() {
             >
               {HERO.action}
             </a>
-            {/* La maquette pose ici un second bouton vers la page des
-                engagements RSE. Cette page n'existe pas : un bouton sans
-                destination est le défaut qu'on répare, donc le libellé est
-                rendu en texte, sans fond ni bordure, pour qu'il ne se lise pas
-                comme un bouton. À repasser en lien quand la page est servie. */}
+            {/* Au bureau, le libellé reste en texte, tel que la capture le
+                montre ; au téléphone, il devient la pastille de la maquette,
+                plus bas, en lien vers /rse/. */}
             <span
               style={{
                 font: "600 15px var(--fb)",
@@ -120,15 +159,18 @@ export default function HeroValeurs() {
             </span>
           </div>
         </div>
-        <div style={PANNEAU}>
-          <div style={HALO} />
+        <div className={mobile.panneauClair} style={PANNEAU}>
+          <div className={mobile.decor} style={HALO} />
           <div style={{ position: "relative" }}>
-            <div style={SURTITRE}>{HERO.panneau}</div>
+            <div className={mobile.panneauTitre} style={SURTITRE}>
+              {HERO.panneau}
+            </div>
             <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 16 }}>
               {SLOGAN.map(({ mot, glose }) => (
                 <div key={mot}>
                   <div style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
                     <span
+                      className={mobile.panneauMot}
                       style={{
                         font: "600 calc(19px * var(--ts)) var(--ft)",
                         letterSpacing: "-.03em",
@@ -139,6 +181,7 @@ export default function HeroValeurs() {
                       {mot}
                     </span>
                     <span
+                      className={mobile.decor}
                       style={{
                         flex: 1,
                         height: 1,
@@ -147,6 +190,7 @@ export default function HeroValeurs() {
                     />
                   </div>
                   <div
+                    className={mobile.panneauGlose}
                     style={{
                       font: "400 14px/1.6 var(--fb)",
                       color: "rgba(255,255,255,.68)",
@@ -159,6 +203,14 @@ export default function HeroValeurs() {
               ))}
             </div>
           </div>
+        </div>
+        {/* dc.html L131 (`isRel`), après le slogan : « À lire aussi » et la
+            seule pastille de la maquette, « Nos engagements RSE », vers la
+            page servie (/rse/). Téléphone seulement ; au bureau, la grille ne
+            la place pas (`display: none`). */}
+        <div data-mobile-seulement="" className={mobile.liensMobile} style={{ display: "flex", flexWrap: "wrap" }}>
+          <ALireAussi />
+          <Link href="/rse/">{HERO.secondaire}</Link>
         </div>
       </div>
     </section>

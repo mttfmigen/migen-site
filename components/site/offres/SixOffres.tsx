@@ -77,13 +77,16 @@ export interface ProprietesSixOffres {
 export default function SixOffres({ surtitre, titre, cartes }: ProprietesSixOffres) {
   const retenues = cartes.filter((carte) => cibleSure(carte.href));
   return (
-    <section style={SECTION}>
+    /* Au téléphone, après les sections de la maquette et sans numéro
+       (`data-mobile-apres-sections`, `app/globals.css` § 12). */
+    <section data-mobile-apres-sections="" style={SECTION}>
       <div className={offre.blocPliablePartage} style={LARGEUR}>
         {/* REPLIÉ SUR TÉLÉPHONE, même raison que `offre/MaillageOffres` : la
             maquette mobile v2 n'a pas ce bento (1 560 px à 390 px), son
             maillage est la boîte de pastilles de la rubrique. Servi en
             entier ; au-dessus de 880 px rien ne change. */}
         <SectionPliableMobile
+          numero={false}
           enTete={<EtiquettePli surtitre={surtitre} titre={titre} />}
           resume={resumeDe(retenues.map((carte) => carte.titre))}
         >

@@ -85,11 +85,22 @@ const IMAGE: CSSProperties = {
 
 export default function LogosClients() {
   return (
-    <section className={styles.logos} style={{ padding: "64px 0 0" }}>
+    /* `data-mobile-apres-sections` : au téléphone, ce bloc que la maquette
+       mobile ne porte pas passe APRÈS ses sections, avant la FAQ, quand le
+       `<main>` de la page le permet (`data-ordre-mobile`, socle de
+       `app/globals.css`). Au-dessus de 880 px, l'ordre ne change pas.
+       `numero={false}` : une carte de la même famille, sans numéro, parce
+       qu'elle n'est pas une section de contenu de la maquette. */
+    <section
+      className={styles.logos}
+      data-mobile-apres-sections=""
+      style={{ padding: "64px 0 0" }}
+    >
       <SectionPliableMobile
+        numero={false}
         enTete={
           <div className={styles.enteteLogos}>
-            <h2 className={styles.mention} style={SURTITRE_LIGNE}>
+            <h2 className={styles.mention} data-carte-titre="" style={SURTITRE_LIGNE}>
               Ils nous font confiance
             </h2>
           </div>

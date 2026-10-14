@@ -142,7 +142,8 @@ const PHRASE: CSSProperties = {
 
 export default function MaillageVille() {
   return (
-    <section style={SECTION}>
+    /* Absent de la maquette mobile : après les sections, sans numéro. */
+    <section data-mobile-apres-sections="" style={SECTION}>
       <div style={LARGEUR}>
         {/* SE REPLIE AU TÉLÉPHONE, motif « Blocs communs (pliables) » de
             `MigenMobile.dc.html`. Six cartes à photo de 210 px minimum, en
@@ -157,11 +158,12 @@ export default function MaillageVille() {
         <SectionPliableMobile
           enTete={
             <span>
-              <span style={{ ...SURTITRE, marginBottom: 14, display: "block" }}>Nos offres</span>
-              <h2 style={TITRE}>Les six offres, dans chaque bassin.</h2>
+              <span data-carte-surtitre="" style={{ ...SURTITRE, marginBottom: 14, display: "block" }}>Nos offres</span>
+              <h2 data-carte-titre="" style={TITRE}>Les six offres, dans chaque bassin.</h2>
             </span>
           }
           resume={CARTES.map((carte) => carte.titre).join(" · ")}
+          numero={false}
         >
         <div className="g3-bento5" style={GRILLE}>
           {CARTES.map((carte) => (

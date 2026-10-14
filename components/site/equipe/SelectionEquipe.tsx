@@ -1,4 +1,5 @@
 import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
 import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 import { ETAPES_SELECTION } from "./equipe-donnees";
@@ -19,9 +20,14 @@ import {
 const SURTITRE_TEXTE = "Comment ces personnes sont choisies";
 const TITRE_TEXTE = "La qualité se décide au recrutement.";
 
+/** Carte 04 du téléphone : son numéro suit l'ordre de la maquette (`rang`). */
+export const SOMMAIRE_SELECTION: EntreeSommaire = { id: "selection", titre: SURTITRE_TEXTE };
+
 export default function SelectionEquipe() {
   return (
     <SectionRepliee
+      id={SOMMAIRE_SELECTION.id}
+      rang={4}
       kicker={SURTITRE_TEXTE}
       titre={TITRE_TEXTE}
       resume={resumeDe(ETAPES_SELECTION.map((e) => e.titre))}

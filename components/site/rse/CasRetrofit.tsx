@@ -2,6 +2,21 @@ import Image from "next/image";
 import type { CSSProperties } from "react";
 
 import { VERRE } from "@/components/site/blocs/habillage";
+import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
+import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
+
+/* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
+const SURTITRE_TEXTE = "Cas concret · Retrofit";
+const TITRE_TEXTE = "Une ligne de 1998 remise en service au lieu d’être remplacée";
+
+/** Carte 02 du téléphone, ouverte comme dans la maquette mobile v2. */
+export const SOMMAIRE_CAS: EntreeSommaire = { id: "cas-concret", titre: TITRE_TEXTE };
+
+/** La photo du cas : sur téléphone, elle monte en photo de tête de la page. */
+export const PHOTO_CAS = "/assets/photos/env-maintenance-automaticien-3.jpg";
+export const PHOTO_CAS_ALT =
+  "Technicien mesurant au multimètre dans une armoire électrique ouverte, au milieu de robots à l'arrêt";
 
 /**
  * Cas concret de retrofit : photo légendée à gauche, deux chiffres à droite.
@@ -87,12 +102,13 @@ const CHIFFRES: readonly { valeur: string; libelle: string }[] = [
 ];
 
 export default function CasRetrofit({
-  image = "/assets/photos/env-maintenance-automaticien-3.jpg",
+  image = PHOTO_CAS,
   /* Description du registre, mot pour mot, apostrophe droite comprise : voir la
      note de `OrigineDuNom.tsx` sur ce que compte `verifie-alt-photos.mjs`. */
-  imageAlt = "Technicien mesurant au multimètre dans une armoire électrique ouverte, au milieu de robots à l'arrêt",
+  imageAlt = PHOTO_CAS_ALT,
 }: ProprietesCasRetrofit) {
   return (
+    <SectionRepliee id={SOMMAIRE_CAS.id} kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE} ouvert>
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div
@@ -106,6 +122,7 @@ export default function CasRetrofit({
           }}
         >
           <div
+            className={mobile.casPhoto}
             style={{
               borderRadius: "var(--rad)",
               overflow: "hidden",
@@ -144,6 +161,7 @@ export default function CasRetrofit({
               }}
             >
               <div
+                data-titre-bureau=""
                 style={{
                   font: "600 11px var(--fb)",
                   letterSpacing: ".14em",
@@ -152,9 +170,10 @@ export default function CasRetrofit({
                   marginBottom: 12,
                 }}
               >
-                Cas concret · Retrofit
+                {SURTITRE_TEXTE}
               </div>
               <div
+                data-titre-bureau=""
                 style={{
                   font: "600 calc(clamp(20px,2.2vw,28px) * var(--ts))/1.16 var(--ft)",
                   letterSpacing: "-.035em",
@@ -163,7 +182,7 @@ export default function CasRetrofit({
                   maxWidth: "28ch",
                 }}
               >
-                Une ligne de 1998 remise en service au lieu d’être remplacée
+                {TITRE_TEXTE}
               </div>
               <p
                 style={{
@@ -181,6 +200,8 @@ export default function CasRetrofit({
             </div>
           </div>
           <div
+            data-tuiles-chiffres=""
+            className={mobile.casChiffres}
             style={{
               display: "grid", gridTemplateColumns: "minmax(0,1fr)",
               gridTemplateRows: "repeat(2,minmax(0,1fr))",
@@ -197,5 +218,6 @@ export default function CasRetrofit({
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

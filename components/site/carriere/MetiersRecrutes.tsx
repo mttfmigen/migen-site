@@ -85,6 +85,7 @@ export default function MetiersRecrutes({
         {/* `mg-r2` comme la maquette (et non `ck-2`) : sous 900 px, 36 px
             d'écart entre le texte et les flèches, pas 30. */}
         <div
+          data-mc-entete=""
           className="mg-r2"
           style={{
             display: "grid",
@@ -95,8 +96,11 @@ export default function MetiersRecrutes({
           }}
         >
           <div style={{ maxWidth: 640 }}>
-            <div style={{ ...SURTITRE, marginBottom: 14 }}>{surtitre}</div>
+            <div data-mc-titre-section="" style={{ ...SURTITRE, marginBottom: 14 }}>
+              {surtitre}
+            </div>
             <h2
+              data-mc-titre-section=""
               style={{
                 font: "600 calc(clamp(28px,3vw,44px) * var(--ts,1))/1.08 var(--ft)",
                 letterSpacing: "-.045em",
@@ -106,11 +110,12 @@ export default function MetiersRecrutes({
               {titre}
             </h2>
             <Paragraphe
+              intro
               texte={intro}
               style={{ font: "400 16px/1.65 var(--fb)", color: "var(--ink2)", margin: 0 }}
             />
           </div>
-          <div style={{ display: "flex", gap: 8 }}>
+          <div data-mc-fleches="" style={{ display: "flex", gap: 8 }}>
             <button
               type="button"
               onClick={precedent}
@@ -151,6 +156,7 @@ export default function MetiersRecrutes({
 
       <div
         ref={rail}
+        data-mc-rail=""
         className={styles.rail}
         style={{
           display: "flex",
@@ -166,6 +172,7 @@ export default function MetiersRecrutes({
             <Link
               href={m.href}
               prefetch={false}
+              data-mc-rail-carte=""
               style={{
                 position: "relative",
                 flex: "none",
@@ -244,6 +251,7 @@ export default function MetiersRecrutes({
         ))}
         <a
           href="#postuler"
+          data-mc-rail-carte=""
           style={{
             flex: "none",
             width: 280,

@@ -3,6 +3,7 @@ import { useId, type CSSProperties } from "react";
 
 import { ANCRE_FORMULAIRE } from "@/components/site/blocs/habillage";
 import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
 import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 import styles from "./Equipe.module.css";
@@ -123,10 +124,15 @@ const REPONSE: CSSProperties = {
 const SURTITRE_TEXTE = "Questions fréquentes";
 const TITRE_TEXTE = "Comment l’équipe s’organise autour du technicien.";
 
+/** Carte 07 du téléphone : son numéro suit l'ordre de la maquette (`rang`). */
+export const SOMMAIRE_QUESTIONS: EntreeSommaire = { id: "questions", titre: SURTITRE_TEXTE };
+
 export default function QuestionsEquipe() {
   const groupe = useId();
   return (
     <SectionRepliee
+      id={SOMMAIRE_QUESTIONS.id}
+      rang={7}
       kicker={SURTITRE_TEXTE}
       titre={TITRE_TEXTE}
       resume={resumeDe(QUESTIONS.map((q) => q.question))}

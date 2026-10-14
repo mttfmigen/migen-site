@@ -327,6 +327,23 @@ type EtatEnvoi = "repos" | "envoi" | "succes" | "erreur";
 export default function PostulerMetier() {
   const [etat, setEtat] = useState<EtatEnvoi>("repos");
   const [annonce, setAnnonce] = useState("");
+  /* LE BANDEAU DE FIN DE LA MAQUETTE MOBILE V2 (dc.html, `endBtnOnly: isCar`) :
+     au téléphone, « Rejoignez les 120 collaborateurs de migen. » et un seul
+     bouton « Postuler chez Migen ». Le formulaire est replié derrière ce
+     bouton (`MobileV2.module.css`, `data-mc-replie`), jamais retiré : tout le
+     panneau est dans le HTML, et sans JavaScript rien n'est masqué. Tout lien
+     vers `#postuler` (héros, barre collante, cadence) l'ouvre directement. */
+  const [ouvert, setOuvert] = useState(false);
+  const idFormulaire = useId();
+  useEffect(() => {
+    if (window.location.hash === "#postuler") setOuvert(true);
+    const surLien = (evenement: MouseEvent) => {
+      const cible = evenement.target;
+      if (cible instanceof Element && cible.closest('a[href$="#postuler"]')) setOuvert(true);
+    };
+    document.addEventListener("click", surLien);
+    return () => document.removeEventListener("click", surLien);
+  }, []);
 
   async function envoie(evenement: React.FormEvent<HTMLFormElement>) {
     evenement.preventDefault();
@@ -389,6 +406,7 @@ export default function PostulerMetier() {
   return (
     <section
       id="postuler"
+      data-ouvert={ouvert ? "" : undefined}
       style={{ padding: "var(--sec) 24px 0", scrollMarginTop: 90 }}
     >
       <div
@@ -447,7 +465,21 @@ export default function PostulerMetier() {
             >
               Rejoindre Migen
             </h2>
+            <p data-mobile-seulement="" data-mc-postuler-titre="">
+              Rejoignez les 120 collaborateurs de migen.
+            </p>
+            <button
+              type="button"
+              data-mobile-seulement=""
+              data-mc-postuler-ouvrir=""
+              aria-expanded={ouvert}
+              aria-controls={idFormulaire}
+              onClick={() => setOuvert(true)}
+            >
+              Postuler chez Migen
+            </button>
             <p
+              data-mc-replie=""
               style={{
                 font: "400 16px/1.65 var(--fb)",
                 color: "rgba(255,255,255,.66)",
@@ -458,13 +490,17 @@ export default function PostulerMetier() {
               Décrivez votre profil. Un recruteur vous rappelle, puis un test
               technique et un entretien comportemental suivent.
             </p>
-            <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 12 }}>
+            <div
+              data-mc-replie=""
+              style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 12 }}
+            >
               <Coche texte="CDI, alternance ou stage" />
               <Coche texte="Salaire annoncé en brut, sans coefficient caché" />
               <Coche texte="Un référent dès le premier jour" />
             </div>
             <a
               href="tel:+33478337205"
+              data-mc-replie=""
               className={styles.chipTelephone}
               style={{
                 display: "inline-flex",
@@ -482,6 +518,8 @@ export default function PostulerMetier() {
             </a>
           </div>
           <div
+            id={idFormulaire}
+            data-mc-replie=""
             style={{
               background: "#fff",
               borderRadius: "var(--rad)",

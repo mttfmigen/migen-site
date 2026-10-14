@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 
+import { EVENEMENT_PREREMPLIR } from "@/components/formulaire/FormulaireContact";
+
 import stylesVille from "./PageVille.module.css";
 
 /**
@@ -40,6 +42,14 @@ export default function RepliFormulaireMobile({
     if (bloc.current && window.matchMedia("(max-width: 880px)").matches) bloc.current.open = false;
     // Monté : le contenu, masqué au premier affichage (globals.css), peut paraître.
     bloc.current?.setAttribute("data-monte", "");
+    /* La carte « Être rappelé » (`RappelExpress`) passe sa saisie puis fait
+       défiler vers le formulaire complet : replié, il n'aurait pas de boîte
+       et le curseur se perdrait. L'événement part AVANT le défilement. */
+    const ouvre = () => {
+      if (bloc.current) bloc.current.open = true;
+    };
+    window.addEventListener(EVENEMENT_PREREMPLIR, ouvre);
+    return () => window.removeEventListener(EVENEMENT_PREREMPLIR, ouvre);
   }, []);
 
   return (

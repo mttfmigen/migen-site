@@ -1,19 +1,31 @@
 import type { Metadata } from "next";
 
-import EquipeProche from "@/components/site/nous-connaitre/EquipeProche";
-import Fidelisation from "@/components/site/nous-connaitre/Fidelisation";
-import FriseCinqAns from "@/components/site/nous-connaitre/FriseCinqAns";
-import MotDuDirigeant from "@/components/site/nous-connaitre/MotDuDirigeant";
-import OrigineDuNom from "@/components/site/nous-connaitre/OrigineDuNom";
+import EquipeProche, {
+  SOMMAIRE_EQUIPE_PROCHE,
+} from "@/components/site/nous-connaitre/EquipeProche";
+import Fidelisation, {
+  SOMMAIRE_FIDELISATION,
+} from "@/components/site/nous-connaitre/Fidelisation";
+import FriseCinqAns, { SOMMAIRE_HISTOIRE } from "@/components/site/nous-connaitre/FriseCinqAns";
+import MotDuDirigeant, {
+  SOMMAIRE_MOT_DU_DIRIGEANT,
+} from "@/components/site/nous-connaitre/MotDuDirigeant";
+import OrigineDuNom, { SOMMAIRE_ORIGINE } from "@/components/site/nous-connaitre/OrigineDuNom";
 import Ouverture from "@/components/site/nous-connaitre/Ouverture";
-import PerimetreOuiNon from "@/components/site/nous-connaitre/PerimetreOuiNon";
-import PortesValeursRse from "@/components/site/nous-connaitre/PortesValeursRse";
+import PerimetreOuiNon, {
+  SOMMAIRE_PERIMETRE,
+} from "@/components/site/nous-connaitre/PerimetreOuiNon";
+import PortesValeursRse, {
+  SOMMAIRE_PORTES,
+} from "@/components/site/nous-connaitre/PortesValeursRse";
 import Reperes from "@/components/site/nous-connaitre/Reperes";
-import TerrainsExcellence from "@/components/site/nous-connaitre/TerrainsExcellence";
-import TroisCases from "@/components/site/nous-connaitre/TroisCases";
+import TerrainsExcellence, {
+  SOMMAIRE_TERRAINS,
+} from "@/components/site/nous-connaitre/TerrainsExcellence";
+import TroisCases, { SOMMAIRE_MODELE } from "@/components/site/nous-connaitre/TroisCases";
+import FinDePageMobile from "@/components/site/nous-connaitre/FinDePageMobile";
 import FormulaireBasDePage from "@/components/site/accueil/FormulaireBasDePage";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
-import { ID_RAPPEL_FINAL } from "@/components/site/mobile/conversion-donnees";
 import { pageParChemin } from "@/lib/contenu";
 import { metadonneesSeo } from "@/lib/seo/metadonnees";
 
@@ -37,6 +49,20 @@ import { metadonneesSeo } from "@/lib/seo/metadonnees";
  */
 
 export const revalidate = 3600;
+
+/* Le sommaire du haut de page, sur téléphone (dc.html L116) : les cartes
+   numérotées, dans l'ordre où la page les montre. */
+const SOMMAIRE = [
+  SOMMAIRE_MOT_DU_DIRIGEANT,
+  SOMMAIRE_TERRAINS,
+  SOMMAIRE_ORIGINE,
+  SOMMAIRE_MODELE,
+  SOMMAIRE_HISTOIRE,
+  SOMMAIRE_FIDELISATION,
+  SOMMAIRE_PERIMETRE,
+  SOMMAIRE_EQUIPE_PROCHE,
+  SOMMAIRE_PORTES,
+] as const;
 
 /*
  * LE TITRE N'EST PAS LE H1, et c'est une règle du projet, pas un détail : le
@@ -108,7 +134,7 @@ export default function NousConnaitre() {
     // gabarit desktop.
     <div className="mg-site">
       <main style={{ paddingTop: "96px" }}>
-        <Ouverture />
+        <Ouverture sommaire={SOMMAIRE} />
         <Reperes />
         {/* LA CADENCE MOBILE (photo + CTA après la 2e section, bandeau
             « Être rappelé » après la 5e et la 8e), comme la maquette mobile v2
@@ -119,13 +145,15 @@ export default function NousConnaitre() {
             /a-propos/nous-connaitre/ (mobile-native-data.js), page native,
             donc variante « standard » (« Parlons de votre site »). Notre
             adresse, /nous-connaitre/, aurait pris la variante article.
-            `rappelFinal={false}` : la page pose son formulaire complet juste
-            en dessous, la maquette n'y met que le mini-formulaire ; deux
-            formulaires bout à bout ne disent rien de plus. */}
+            Pas de `photoHeros` : la tête de la maquette (`FIMG["a-propos"]`,
+            team-grind-front) n'est pas dans `PEOPLE`, rien n'est écarté du
+            tirage, qui donne x-tech-portrait comme la maquette ; notre photo
+            de tête n'est pas tirée, elle ne revient donc pas.
+            `rappelFinal={false}` : le mini-formulaire « Être rappelé » est
+            posé plus bas par `FinDePageMobile`, après « Nos réalisations ». */}
         <AvecConversionMobile
           chemin="/a-propos/nous-connaitre/"
           gabarit="01"
-          photoHeros="/assets/web/team-grind-sparks.jpg"
           rappelFinal={false}
         >
           <MotDuDirigeant />
@@ -140,16 +168,16 @@ export default function NousConnaitre() {
         </AvecConversionMobile>
         {/* La maquette rend ici son propre formulaire, identique champ pour
             champ à celui de l'accueil. Le composant déjà porté est réemployé,
-            avec le titre et l'introduction de cet écran.
-            L'ancre `#etre-rappele` est celle que visent les bandeaux de la
-            cadence : sans rappel final, c'est ce formulaire qui la porte. */}
-        <div id={ID_RAPPEL_FINAL} style={{ scrollMarginTop: 110 }}>
+            avec le titre et l'introduction de cet écran. Au téléphone, il se
+            replie sous le rappel sombre de la maquette, qui porte l'ancre
+            `#etre-rappele` des bandeaux (`FinDePageMobile`). */}
+        <FinDePageMobile chemin={CHEMIN}>
           <FormulaireBasDePage
             formulaire="nous-connaitre-bas-de-page"
             titre={TITRE_FORMULAIRE}
             intro={INTRO_FORMULAIRE}
           />
-        </div>
+        </FinDePageMobile>
       </main>
     </div>
   );

@@ -145,19 +145,23 @@ const CORPS: CSSProperties = {
 
 export default function SecteursDomaine() {
   return (
-    <section style={SECTION}>
+    /* `data-mobile-apres-sections` : au téléphone, après les sections de la
+       maquette, qui ne dessine pas ce bloc (socle de `app/globals.css`, sur
+       un `<main data-ordre-mobile>`). Rien ne bouge au-dessus de 880 px. */
+    <section data-mobile-apres-sections="" style={SECTION}>
       {/* G3, SE REPLIE AU TÉLÉPHONE : 1 686 px de cartes à 390 px, une section
           de bureau que la maquette mobile ne dessine pas. L'étiquette reprend
           le surtitre et le H2 ci-dessous, le résumé les six titres de cartes ;
           tout le texte reste dans le DOM, et rien ne bouge à 1280 px. */}
       <PliMobile
+        numero={false}
         style={LARGEUR}
         surtitre="Par secteur d’activité"
         titre="Même expertise, contraintes différentes"
         resume={resumeDe(SECTEURS.map((secteur) => secteur.titre))}
       >
         <div className="mg-r2" style={ENTETE}>
-          <div>
+          <div data-titre-double="">
             <div style={SURTITRE_SECTEURS}>Par secteur d’activité</div>
             <h2 style={TITRE}>Même expertise, contraintes différentes</h2>
           </div>

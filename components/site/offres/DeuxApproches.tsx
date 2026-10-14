@@ -195,30 +195,34 @@ export default function DeuxApproches({
   cartes,
 }: ProprietesDeuxApproches) {
   return (
-    <section style={SECTION}>
+    /* Absent de la maquette mobile v2 : au téléphone, une carte sans numéro
+       posée après ses sections (`data-mobile-apres-sections`). */
+    <section data-mobile-apres-sections="" style={SECTION}>
       <div className={offre.blocPliablePartage} style={LARGEUR}>
         {/* REPLIÉ SUR TÉLÉPHONE : écran propre au hub de bureau, absent de la
             maquette mobile v2 (1 491 px à 390 px, mesuré le 14/10). Servi en
             entier, replié derrière son titre ; au-dessus de 880 px rien ne
             change (`.blocPliablePartage`). */}
         <SectionPliableMobile
+          numero={false}
           enTete={<EtiquettePli surtitre={surtitre} titre={titre} />}
           resume={resumeDe(cartes.map((approche) => approche.titre))}
         >
-        <div style={{ ...SURTITRE, marginBottom: 14 }}>{surtitre}</div>
-        <h2 style={TITRE}>{titre}</h2>
+        {/* Le titre de la carte au téléphone les porte déjà (étiquette). */}
+        <div data-doublon-mobile="" style={{ ...SURTITRE, marginBottom: 14 }}>{surtitre}</div>
+        <h2 data-doublon-mobile="" style={TITRE}>{titre}</h2>
         <div className="mg-r2" style={GRILLE}>
           {cartes.map((approche, rang) =>
             // La capture pose la SECONDE colonne en panneau anthracite.
             rang === 1 ? (
-              <div key={approche.titre} style={SOMBRE}>
+              <div key={approche.titre} data-mm-sous-carte="" data-mm-sombre="" style={SOMBRE}>
                 <div aria-hidden="true" style={LUEUR} />
                 <div style={{ ...RANGEES, position: "relative", height: "100%" }}>
                   <Colonne approche={approche} sombre />
                 </div>
               </div>
             ) : (
-              <div key={approche.titre} style={CLAIRE}>
+              <div key={approche.titre} data-mm-sous-carte="" style={CLAIRE}>
                 <Colonne approche={approche} sombre={false} />
               </div>
             ),

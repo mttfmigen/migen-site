@@ -94,42 +94,108 @@ export function EnLigne({
   return <>{morceaux}</>;
 }
 
+/**
+ * Une puce qui OUVRE sur un gras : `**Libellé** : suite`. La coupure tombe
+ * JUSTE après le gras, là où le texte change déjà de graisse : au bureau, la
+ * suite (« : » compris) reste un seul morceau de texte, posé au pixel près
+ * comme avant. Une coupure après les deux-points décalait la ligne d'un
+ * soupçon de pixel (bureau différent sur cout-arret-de-production).
+ */
+const PUCE_KV = /^(\*\*[^*]+\*\*)(\s*[\s\S]*)$/;
+
+/** La suite d'un libellé qui commence par « : » : le téléphone masque ces deux-points. */
+const SUITE_DEUX_POINTS = /^ : \S/;
+
+/** La règle `kv` de la maquette mobile v2 : deux puces ou plus, 60 % en gras de tête. */
+export function estListeKv(items: string[]): boolean {
+  if (items.length < 2) return false;
+  return items.filter((item) => PUCE_KV.test(item)).length >= Math.ceil(items.length * 0.6);
+}
+
+/**
+ * Le libellé (le gras seul) et la suite (sa ponctuation comprise), SANS UN CARACTÈRE DE MOINS :
+ * `titre + suite === item`. Une puce sans gras de tête reste entière.
+ */
+export function decoupeKv(item: string): { titre: string; suite: string } {
+  const m = PUCE_KV.exec(item);
+  return m ? { titre: m[1], suite: m[2] } : { titre: item, suite: "" };
+}
+
 function Bloc({ bloc }: { bloc: BlocRessource }) {
   switch (bloc.type) {
     case "paragraphe":
       return (
-        <p style={H.PROSE}>
+        <p className={styles.prose} style={H.PROSE}>
           <EnLigne texte={bloc.texte} lien={H.LIEN_PROSE} />
         </p>
       );
     case "intertitre":
-      return <h3 style={H.TITRE3}>{bloc.texte}</h3>;
-    case "puces":
       return (
-        <ul role="list" style={H.PUCES}>
-          {bloc.items.map((item, i) => (
-            <li key={i} style={H.PUCE}>
-              <span aria-hidden="true" style={H.COCHE}>
-                ✓
-              </span>
-              <span>
-                <EnLigne texte={item} lien={H.LIEN_PUCE} />
-              </span>
-            </li>
-          ))}
+        <h3 className={styles.intertitre} style={H.TITRE3}>
+          {bloc.texte}
+        </h3>
+      );
+    case "puces": {
+      /* LES LISTES « LIBELLÉ : TEXTE » DEVIENNENT DES PETITES CARTES
+         NUMÉROTÉES au téléphone, règle `kv` de la maquette mobile v2
+         (dc.html, `blockV`) : au moins deux puces, dont 60 % commencent par
+         un gras. Le texte est le MÊME, coupé en deux étendues en ligne
+         (libellé, suite) : au-dessus de 880 px elles se lisent d'un trait,
+         comme avant ; dessous, `Ressource.module.css` les pose l'une sous
+         l'autre dans leur carte. Le numéro est un compteur CSS. */
+      const kv = estListeKv(bloc.items);
+      return (
+        <ul
+          role="list"
+          className={kv ? `${styles.puces} ${styles.kv}` : styles.puces}
+          style={H.PUCES}
+        >
+          {bloc.items.map((item, i) => {
+            const morceaux = kv ? decoupeKv(item) : null;
+            return (
+              <li key={i} style={H.PUCE}>
+                <span aria-hidden="true" className={styles.coche} style={H.COCHE}>
+                  ✓
+                </span>
+                <span>
+                  {morceaux ? (
+                    <>
+                      <span className={styles.kvTitre}>
+                        <EnLigne texte={morceaux.titre} lien={H.LIEN_PUCE} />
+                      </span>
+                      {morceaux.suite ? (
+                        <span
+                          className={
+                            SUITE_DEUX_POINTS.test(morceaux.suite)
+                              ? `${styles.kvTexte} ${styles.kvDeuxPoints}`
+                              : styles.kvTexte
+                          }
+                        >
+                          <EnLigne texte={morceaux.suite} lien={H.LIEN_PUCE} />
+                        </span>
+                      ) : null}
+                    </>
+                  ) : (
+                    <EnLigne texte={item} lien={H.LIEN_PUCE} />
+                  )}
+                </span>
+              </li>
+            );
+          })}
         </ul>
       );
+    }
     case "etapes":
       // `ol` : l'ordre est le propos d'une procédure, la liste l'annonce. La
       // pastille, qui le répète à l'écran, est masquée au lecteur d'écran.
       return (
-        <ol role="list" style={H.ETAPES}>
+        <ol role="list" className={styles.etapes} style={H.ETAPES}>
           {bloc.items.map((item, i) => (
             <li key={i} style={H.ETAPE}>
-              <span aria-hidden="true" style={H.ETAPE_NUMERO}>
+              <span aria-hidden="true" className={styles.etapeNumero} style={H.ETAPE_NUMERO}>
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <div style={H.ETAPE_TEXTE}>
+              <div className={styles.etapeTexte} style={H.ETAPE_TEXTE}>
                 <EnLigne texte={item} lien={H.LIEN_ETAPE} />
               </div>
             </li>
@@ -170,7 +236,15 @@ function Bloc({ bloc }: { bloc: BlocRessource }) {
               {bloc.lignes.map((ligne, i) => (
                 <tr key={i}>
                   {ligne.map((cellule, j) => (
-                    <td key={j} style={H.TABLEAU_CELLULE}>
+                    /* `data-libelle` : l'en-tête de la colonne, que la
+                       carte du téléphone écrit au-dessus de la valeur
+                       (dc.html, `isTb`, `c.h`) en contenu généré. Un
+                       attribut ne se peint pas : rien ne bouge sur bureau. */
+                    <td
+                      key={j}
+                      data-libelle={j > 0 ? bloc.entetes[j] : undefined}
+                      style={H.TABLEAU_CELLULE}
+                    >
                       {cellule}
                     </td>
                   ))}
@@ -182,7 +256,7 @@ function Bloc({ bloc }: { bloc: BlocRessource }) {
       );
     case "encadre":
       return (
-        <p style={H.ENCADRE}>
+        <p className={styles.encadre} style={H.ENCADRE}>
           <EnLigne texte={bloc.texte} lien={H.LIEN_PUCE} gras={H.GRAS_ENCADRE} />
         </p>
       );
@@ -215,7 +289,7 @@ const GALERIE: CSSProperties = {
 
 function BandeAppel() {
   return (
-    <div style={H.BANDE}>
+    <div className={styles.bande} style={H.BANDE}>
       {/* `bandeTexte` et `bandeBouton` ne portent AUCUN dessin : ils servent
           d'ancres aux règles qui, sous 620 px, donnent la ligne entière au
           texte et laissent le libellé du bouton se couper, au lieu de les
@@ -240,19 +314,16 @@ function BandeAppel() {
 const numero = (i: number) => String(i + 1).padStart(2, "0");
 
 /**
- * LE RÉSUMÉ D'UNE PARTIE REPLIÉE, suivant la règle de la maquette mobile :
- * `summary = punch | items joints par " · " | premier paragraphe`.
+ * LE RÉSUMÉ D'UNE PARTIE REPLIÉE, règle `teaseOf` de la maquette mobile v2
+ * (dc.html) : le PREMIER bloc qui soit un paragraphe ou une liste à puces ;
+ * un paragraphe donne son texte, une liste sa première puce. Corrigé le 14/10 :
+ * la version précédente préférait intertitres et puces au paragraphe, et
+ * « Estimer le coût d'un arrêt de production n'a rien de sorcier » cédait la
+ * place à « Mesurer la durée d'indisponibilité » (cout-arret-de-production,
+ * parties 03, 06, 07, 08). Rien n'est fabriqué : c'est du texte de la partie.
  *
- * On prend le premier contenu qui dise quelque chose, dans cet ordre : les
- * intertitres, les puces, les étapes, puis le premier paragraphe. Rien n'est
- * fabriqué : le résumé est toujours du texte déjà présent dans la partie.
- *
- * LE MARKDOWN EST RETIRÉ, et c'est un défaut que la porte du gabarit a
- * attrapé sur la première version de ce résumé : le corpus écrit
- * « **Mesurer la durée d'indisponibilité** » et « [la GMAO](/x/) », que le
- * résumé affichait tels quels. L'audit du 09/10 est clair, aucune page ne doit
- * montrer de Markdown. Le résumé est du texte nu : le gras et les liens n'y
- * ont pas leur place de toute façon, il tient sur deux lignes coupées.
+ * LE MARKDOWN EST RETIRÉ : l'audit du 09/10 est clair, aucune page ne doit
+ * montrer de Markdown. Le résumé est du texte nu, coupé sur deux lignes.
  */
 function texteNu(brut: string): string {
   return brut
@@ -264,21 +335,12 @@ function texteNu(brut: string): string {
 }
 
 function resumeDeLaPartie(partie: PartieRessource): string {
-  const intertitres = partie.blocs
-    .filter((b): b is { type: "intertitre"; texte: string } => b.type === "intertitre")
-    .map((b) => texteNu(b.texte))
-    .filter(Boolean);
-  if (intertitres.length) return intertitres.join(" · ");
-
-  const listes = partie.blocs.flatMap((b) =>
-    b.type === "puces" || b.type === "etapes" ? b.items.map(texteNu) : [],
+  const premier = partie.blocs.find(
+    (b): b is Extract<BlocRessource, { type: "paragraphe" | "puces" }> =>
+      b.type === "paragraphe" || b.type === "puces",
   );
-  if (listes.length) return listes.filter(Boolean).join(" · ");
-
-  const prose = partie.blocs.find(
-    (b): b is { type: "paragraphe"; texte: string } => b.type === "paragraphe",
-  );
-  return prose ? texteNu(prose.texte) : "";
+  if (!premier) return "";
+  return texteNu(premier.type === "paragraphe" ? premier.texte : premier.items[0] ?? "");
 }
 
 export default function CorpsRessource({
@@ -286,6 +348,7 @@ export default function CorpsRessource({
   parties = [],
   chemin,
   photoHeros,
+  faq,
 }: {
   avant?: BlocRessource[];
   parties?: PartieRessource[];
@@ -293,60 +356,54 @@ export default function CorpsRessource({
   chemin?: string;
   /** La photo du héros, écartée du tirage du photo + CTA de la cadence. */
   photoHeros?: string;
+  /** Le titre de la FAQ quand la page en a une : dernière entrée du sommaire
+      mobile (dc.html, `toc` prend aussi le titre de la FAQ). */
+  faq?: string;
 }) {
   if (avant.length === 0 && parties.length === 0) return null;
 
+  /* LA BANDE D'APPEL DE BUREAU, posée après la deuxième partie. Au téléphone,
+     la cadence pose la photo + CTA juste après cette même partie : la bande
+     passe donc en TÊTE DE LA TROISIÈME, pour que la photo suive la partie 02
+     comme dans la maquette (dc.html, `pushCtas`). Sur bureau la photo
+     n'existe pas : l'ordre affiché est le même qu'avant. */
+  const rangBande = parties.length > 2 ? 2 : 1;
+
   const blocsDesParties = parties.map((partie, k) => {
     const titre = (
-      <h2 id={`mr-s${k + 1}`} style={H.TITRE2}>
+      <h2 id={`mr-s${k + 1}`} className={styles.titrePartie} style={H.TITRE2}>
         <span style={H.TITRE2_NUMERO}>{numero(k)}</span>
         {partie.titre}
       </h2>
     );
-    const corps = (
-      <>
-        {partie.blocs.map((bloc, i) => (
-          <Bloc key={i} bloc={bloc} />
-        ))}
-      </>
-    );
     return (
       <Fragment key={k}>
-        {k === 0 ? (
-          <>
-            {titre}
-            {corps}
-          </>
-        ) : (
-          /* LA BASCULE PORTE UNE ETIQUETTE, PAS LE `<h2>` DE LA PARTIE.
-             Le titre et son numero restent dans le corps du bloc, a leur
-             place et a la taille de leur capture ; l'etiquette n'existe
-             que sous 880 px et s'efface des que la partie est ouverte.
-             Voir `habillage.ETIQUETTE_SURTITRE` pour le pourquoi, et
-             `Ressource.module.css` pour le seuil. L'ancre `#mr-s<n>` du
-             sommaire reste sur le `<h2>` : les liens du sommaire tombent
-             au meme endroit qu'avant. */
-          <SectionPliableMobile
-            enTete={
-              <span data-mobile-seulement="" className={styles.etiquettePli}>
-                <span style={H.ETIQUETTE_SURTITRE}>{numero(k)}</span>
-                <span style={H.ETIQUETTE_TITRE}>{partie.titre}</span>
-              </span>
-            }
-            numero={false}
-            resume={resumeDeLaPartie(partie)}
-            /* LA DEUXIÈME PARTIE RESTE OUVERTE AU TÉLÉPHONE (`nOpen = 2` du
-               gabarit 01), mais REPLIABLE, comme dans la maquette où les
-               sections ouvertes sont des `<details open>`. `toujoursOuvert`
-               plutôt qu'un rendu nu : la bascule et son résumé restent dans
-               le document, le texte servi ne change donc pas d'un mot. */
-            toujoursOuvert={k === 1}
-          >
-            {titre}
-            {corps}
-          </SectionPliableMobile>
-        )}
-        {k === 1 ? <BandeAppel /> : null}
+        {k === rangBande && rangBande === 2 ? <BandeAppel /> : null}
+        {/* CHAQUE PARTIE EST UNE CARTE BLANCHE NUMÉROTÉE au téléphone, la
+            première comprise (dc.html, `isDetails` + `isH`) : son TITRE est
+            dans la carte, à côté du numéro (compteur CSS de la carte
+            partagée), et il y reste ouverte comme fermée. Le `<h2>` de la
+            partie reste dans le corps, porteur de l'ancre `#mr-s<n>` et du
+            plan du document ; au téléphone il ne se peint plus, son texte
+            étant celui de l'étiquette (doublon, `Ressource.module.css`).
+            Les DEUX premières restent ouvertes (`nOpen = 2` du gabarit 01),
+            repliables. Sur bureau, rien ne change : bascule masquée, corps
+            en `display: contents`. */}
+        <SectionPliableMobile
+          enTete={
+            <span data-mobile-seulement="" className={styles.etiquettePli}>
+              <span data-carte-titre="">{partie.titre}</span>
+            </span>
+          }
+          resume={resumeDeLaPartie(partie)}
+          toujoursOuvert={k < 2}
+        >
+          {titre}
+          {partie.blocs.map((bloc, i) => (
+            <Bloc key={i} bloc={bloc} />
+          ))}
+        </SectionPliableMobile>
+        {k === rangBande && rangBande === 1 ? <BandeAppel /> : null}
       </Fragment>
     );
   });
@@ -364,12 +421,13 @@ export default function CorpsRessource({
               bascule se lit comme avant (chevron et résumé masqués, arrêt de
               tabulation retiré par le composant partagé). */}
           <SectionPliableMobile
+            numero={false}
             enTete={
               <div className={styles.sommaireTitre} style={H.SOMMAIRE_TITRE}>
                 {H.COPIE.sommaire}
                 {parties.length > 0 ? (
                   <span data-mobile-seulement="" className={styles.sommaireCompte}>
-                    {`${parties.length} parties`}
+                    {`${parties.length + (faq ? 1 : 0)} parties`}
                   </span>
                 ) : null}
               </div>
@@ -386,7 +444,15 @@ export default function CorpsRessource({
                 {partie.titre}
               </a>
             ))}
-            <a href="#mr-cta" style={H.SOMMAIRE_BOUTON}>
+            {faq ? (
+              <a data-mobile-seulement="" href="#mr-faq" className={styles.entree} style={H.SOMMAIRE_ENTREE}>
+                <span style={H.NUMERO_MONO}>{numero(parties.length)}</span>
+                {faq}
+              </a>
+            ) : null}
+            {/* Absent du sommaire de la maquette mobile v2, et sa cible
+                `#mr-cta` y est repliée : masqué au téléphone. */}
+            <a href="#mr-cta" className={styles.doublonMobile} style={H.SOMMAIRE_BOUTON}>
               {H.COPIE.expert}
             </a>
           </SectionPliableMobile>

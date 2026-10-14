@@ -92,6 +92,9 @@ export function enRichesse(texte: string | null | undefined): ReactNode[] {
              d'un pixel le texte qui l'entoure, `inline-block` étant nécessaire
              pour qu'un remplissage vertical compte sur un élément en ligne. */
           style={{ display: "inline-block", paddingBlock: 2 }}
+          /* Sous 881 px, repassé en ligne (`app/globals.css` § 15) : la
+             ponctuation qui suit le lien partait seule à la ligne. */
+          data-lien-riche=""
         >
           {libelle}
         </Link>,

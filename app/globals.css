@@ -1097,16 +1097,18 @@ details[open] .g3-plus {
     transform: rotate(90deg);
   }
 
-  /* LE RÉSUMÉ, sous le titre et coupé à deux lignes, s'efface à l'ouverture
-     (dc.html : `details[open] > summary .mv-tease { display: none }`). */
+  /* LE RÉSUMÉ, sous le titre, s'efface à l'ouverture (dc.html :
+     `details[open] > summary .mv-tease { display: none }`). La maquette coupe
+     son TEXTE à 104 signes (`teaseOf`), soit trois lignes en 12,5 px : la
+     coupe se fait ici à trois lignes, et le texte entier reste dans le DOM. */
   details[data-carte-numerotee] > summary > p {
     grid-area: resume;
     display: none;
     margin: 4px 0 0;
     font: 400 12.5px/1.45 var(--fb);
     color: var(--mm-encre-3);
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -1159,8 +1161,10 @@ details[open] .g3-plus {
     text-wrap: pretty;
   }
 
-  /* DANS UN PANNEAU SOMBRE, la carte passe en verre sombre. */
-  :is([style*="background:var(--panel)"], [style*="background:#1c1b19"])
+  /* DANS UN PANNEAU SOMBRE, la carte passe en verre sombre. SAUF quand le
+     panneau s'efface lui-même au téléphone (`data-panneau-mobile-clair`, voir
+     le socle plus bas) : la carte y redevient la carte blanche des autres. */
+  :is([style*="background:var(--panel)"], [style*="background:#1c1b19"]):not([data-panneau-mobile-clair])
     details[data-carte-numerotee]
     > :is(summary, summary ~ *) {
     border-color: rgba(255, 255, 255, 0.12);
@@ -1168,7 +1172,7 @@ details[open] .g3-plus {
     color: #fff;
   }
 
-  :is([style*="background:var(--panel)"], [style*="background:#1c1b19"])
+  :is([style*="background:var(--panel)"], [style*="background:#1c1b19"]):not([data-panneau-mobile-clair])
     details[data-carte-numerotee]
     > summary
     > [aria-hidden="true"] {
@@ -1176,12 +1180,12 @@ details[open] .g3-plus {
     color: #fff;
   }
 
-  :is([style*="background:var(--panel)"], [style*="background:#1c1b19"])
+  :is([style*="background:var(--panel)"], [style*="background:#1c1b19"]):not([data-panneau-mobile-clair])
     details[data-carte-numerotee]
     > summary
     > p,
   :root
-    :is([style*="background:var(--panel)"], [style*="background:#1c1b19"])
+    :is([style*="background:var(--panel)"], [style*="background:#1c1b19"]):not([data-panneau-mobile-clair])
     details[data-carte-numerotee]
     [data-carte-surtitre] {
     color: rgba(255, 255, 255, 0.64) !important;
@@ -1342,5 +1346,696 @@ details[open] .g3-plus {
   details[data-carte-numerotee] > summary > [aria-hidden="true"],
   [data-faq-liste] > details > summary > [aria-hidden="true"] {
     transition: none !important;
+  }
+}
+
+/* =========================================================================
+   SOCLE MOBILE V2 DES GABARITS À SECTIONS, posé le 14/10 au soir.
+
+   Les gabarits Offre, hub Offres, Ville, Secteur, Expertises, Domaine et
+   Spécialité partagent les mêmes blocs de bureau (`components/site/offre/`).
+   Sous 881 px, ces blocs deviennent les cartes de la maquette mobile v2
+   (dc.html L127 à L133) SANS changer de balisage : chaque bloc pose des
+   attributs `data-mm-*` sur ses éléments, et c'est ici qu'ils prennent le
+   dessin de la maquette. Au-dessus de 880 px, aucune de ces règles n'existe.
+
+   Valeurs relevées dans dc.html :
+   - corps d'une carte : sur-titre 600 11px/.14em orange (`sx.kick`), phrase
+     clé 600 17px/1.45 (`allB`), paragraphe 400 15px/1.65 (`--pfs`) ;
+   - liste « Libellé : texte » (`isKv`) : petites cartes 26px | 1fr, 13px 14px,
+     rayon 16, fond #f6f6f7, numéro 11px monospace orange, libellé 600 14.5px,
+     texte 400 14px/1.55 ;
+   - liste numérotée (`isOl`) : frise, pastille ronde de 30 px anthracite ;
+   - références (`refs`) : rail de cartes de 236 px, photo de 132 px, client
+     10.5px capitales, titre 600 14px/1.35, lien 600 12.5px #b4490f ;
+   - héros (L104 à L111) : photo 16/10 rayon 24, sur-titre 11px orange, H1
+     600 27px/1.1, deux boutons de 50 px côte à côte, chapô 500 16px/1.6 ;
+   - chiffres (`isStats`) : titre 11px orange, tuiles 2 x 2.
+   ========================================================================= */
+
+:root {
+  --mm-fond-doux: #f6f6f7; /* --cardbg de C_LIGHT */
+  --mm-bord-doux: rgba(28, 27, 25, 0.09); /* --bd de C_LIGHT */
+  --mm-lien: #b4490f; /* --lk de C_LIGHT */
+}
+
+:root[data-theme="sombre"] {
+  --mm-fond-doux: var(--chip);
+  --mm-bord-doux: var(--line);
+}
+
+@media (max-width: 880px) {
+  /* -------------------------------------------- 4. le doublon d'étiquette
+     Le titre de bureau d'un bloc, quand la bascule de sa carte porte déjà le
+     MÊME texte (« Nos références » sous « Nos références »). Le texte reste
+     dans le DOM et reste lu à cette largeur, dans la bascule. */
+  [data-doublon-mobile] {
+    display: none !important;
+  }
+
+  /* ----------------------------------------------- 5. le corps d'une carte */
+  :root [data-mm-surtitre] {
+    display: block !important;
+    margin: 0 0 8px !important;
+    font: 600 11px var(--fb) !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: var(--acc) !important;
+  }
+
+  :root [data-mm-lead] {
+    display: block !important;
+    margin: 4px 0 12px !important;
+    max-width: none !important;
+    font: 600 17px/1.45 var(--ft) !important;
+    letter-spacing: -0.02em !important;
+    color: var(--ink) !important;
+    text-wrap: pretty;
+  }
+
+  :root [data-mm-texte] {
+    max-width: none !important;
+    margin: 0 0 12px !important;
+    font: 400 15px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  /* ------------------------------ 6. liste « Libellé : texte » en cartes */
+  [data-mm-kv] {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-flow: row !important;
+    grid-auto-columns: auto !important;
+    gap: 8px !important;
+    margin: 4px 0 14px !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+    counter-reset: mm-kv;
+  }
+
+  [data-mm-kv] > * {
+    counter-increment: mm-kv;
+    display: grid !important;
+    grid-template-columns: 26px minmax(0, 1fr) !important;
+    column-gap: 10px !important;
+    row-gap: 0 !important;
+    align-items: start !important;
+    align-content: start !important;
+    min-width: 0;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 13px 14px !important;
+    border: 1px solid var(--mm-bord-doux) !important;
+    border-radius: 16px !important;
+    background: var(--mm-fond-doux) !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    color: var(--ink);
+  }
+
+  [data-mm-kv] > * > * {
+    grid-column: 2;
+    min-width: 0;
+  }
+
+  [data-mm-kv] > * > [data-mm-num] {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    margin: 0 !important;
+    padding-top: 3px;
+    font: 600 11px ui-monospace, Menlo, monospace !important;
+    letter-spacing: 0 !important;
+    color: var(--acc) !important;
+  }
+
+  /* Une liste sans numéro écrit : le numéro de la maquette en compteur CSS,
+     du contenu généré, absent du texte du document. */
+  [data-mm-kv][data-mm-compteur] > *::before {
+    content: counter(mm-kv, decimal-leading-zero);
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    padding-top: 3px;
+    font: 600 11px ui-monospace, Menlo, monospace;
+    color: var(--acc);
+  }
+
+  :root [data-mm-kv-titre] {
+    margin: 0 !important;
+    font: 600 14.5px/1.4 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    color: var(--ink) !important;
+  }
+
+  :root [data-mm-kv-texte] {
+    max-width: none !important;
+    margin: 4px 0 0 !important;
+    font: 400 14px/1.55 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  /* --------------------------------------- 7. liste numérotée en frise */
+  [data-mm-frise] {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0 !important;
+    margin: 0 0 6px !important;
+  }
+
+  [data-mm-frise] > [data-mm-etape] {
+    display: grid !important;
+    grid-template-columns: 30px minmax(0, 1fr) !important;
+    column-gap: 12px !important;
+    row-gap: 2px !important;
+    align-items: start !important;
+    min-width: 0;
+    margin: 0 !important;
+    padding: 0 0 14px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  [data-mm-etape] > * {
+    grid-column: 2;
+    min-width: 0;
+  }
+
+  [data-mm-etape] > :first-child {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+  }
+
+  :root [data-mm-etape] [data-mm-num] {
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 999px !important;
+    background: #1c1b19 !important;
+    color: #fff !important;
+    font: 600 11.5px var(--fb) !important;
+  }
+
+  [data-mm-etape] [data-mm-filet] {
+    display: none !important;
+  }
+
+  :root [data-mm-etape-titre] {
+    padding-top: 4px;
+    font: 600 14.5px/1.5 var(--fb) !important;
+    letter-spacing: normal !important;
+    color: var(--ink) !important;
+  }
+
+  :root [data-mm-etape-texte] {
+    margin: 0 !important;
+    font: 400 14.5px/1.6 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  /* L'en-tête de bureau d'une frise (« Notre méthode », son titre, son
+     compteur, son bouton) : du texte posé dans la carte, sans boîte. */
+  [data-mm-entete-carte] {
+    grid-column: auto !important;
+    min-height: 0 !important;
+    margin: 0 0 8px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+  }
+
+  [data-mm-entete-carte] > [aria-hidden="true"] {
+    display: none !important;
+  }
+
+  [data-mm-entete-carte] > * {
+    margin-top: 0 !important;
+  }
+
+  :root [data-mm-compte] {
+    font: 600 15px/1 var(--ft) !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  /* La grille de bureau d'un bloc (`mg-r2`, deux colonnes et 32 px d'écart)
+     tombe en une colonne au téléphone : dans une carte, l'écart est celui de
+     ses blocs, pas celui de deux colonnes. */
+  details[data-carte-numerotee] .mg-r2 {
+    gap: 4px !important;
+  }
+
+  /* La rangée d'en-tête de bureau d'une carte (sur-titre à gauche, lien à
+     droite) : une ligne serrée dans la carte. */
+  [data-mm-entete-rangee] {
+    gap: 2px 12px !important;
+    margin: 0 0 8px !important;
+  }
+
+  :root [data-mm-entete-rangee] > a {
+    padding: 0 !important;
+    font: 600 13px/1.4 var(--fb) !important;
+    color: var(--mm-lien) !important;
+  }
+
+  /* --------------------------------------------- 8. rail des références */
+  [data-mm-rail] {
+    display: flex !important;
+    gap: 10px !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    margin: 4px -16px 14px !important;
+    padding: 0 16px 4px !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+    scrollbar-width: none;
+  }
+
+  [data-mm-rail] > * {
+    flex: none !important;
+    width: 236px !important;
+    border-radius: 18px !important;
+    border: 1px solid var(--mm-filet) !important;
+    box-shadow: none !important;
+    scroll-snap-align: start;
+  }
+
+  [data-mm-rail] [data-mm-rail-photo] {
+    height: 132px !important;
+  }
+
+  [data-mm-rail] [data-mm-rail-logo] {
+    left: 10px !important;
+    bottom: 10px !important;
+    height: 30px !important;
+    min-width: 0 !important;
+    padding: 0 10px !important;
+    border-radius: 999px !important;
+    box-shadow: none !important;
+  }
+
+  [data-mm-rail] [data-mm-rail-logo] img {
+    max-height: 16px !important;
+    max-width: 64px !important;
+  }
+
+  [data-mm-rail] [data-mm-rail-corps] {
+    gap: 4px;
+    padding: 12px 13px 14px !important;
+  }
+
+  :root [data-mm-rail] [data-mm-rail-client] {
+    font: 600 10.5px var(--fb) !important;
+    letter-spacing: 0.1em !important;
+    color: var(--mm-encre-3) !important;
+  }
+
+  :root [data-mm-rail] [data-mm-rail-titre] {
+    margin: 4px 0 0 !important;
+    font: 600 14px/1.35 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+    color: var(--ink) !important;
+  }
+
+  :root [data-mm-rail] [data-mm-rail-texte] {
+    margin: 4px 0 8px !important;
+    font: 400 12.5px/1.5 var(--fb) !important;
+    color: var(--ink2) !important;
+  }
+
+  [data-mm-rail] [data-mm-rail-pied] {
+    padding-top: 0 !important;
+    border-top: 0 !important;
+  }
+
+  :root [data-mm-rail] [data-mm-rail-pied] > :first-child {
+    font: 600 12.5px var(--fb) !important;
+    color: var(--mm-lien) !important;
+  }
+
+  [data-mm-rail] [data-mm-rail-pied] > [aria-hidden="true"] {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 12px !important;
+  }
+
+  /* ------------------------------------- 8 bis. une bande d'appel compacte
+     L'appel entre deux sections de bureau (« Besoin d'un technicien
+     qualifié… ? ») prend le gabarit du bandeau de la maquette mobile
+     (dc.html `isMiniCta` : 14 à 16 px de rembourrage, rayon 20, fond orange
+     à 10 %, titre 600 14 à 15 px, bouton de 44 px). */
+  [data-mm-appel] {
+    gap: 12px !important;
+    margin-top: 12px;
+    padding: 16px !important;
+    border: 0 !important;
+    border-radius: 20px !important;
+    background: rgba(255, 124, 60, 0.1) !important;
+  }
+
+  :root [data-mm-appel-question] {
+    max-width: none !important;
+    margin: 0 0 4px !important;
+    font: 600 15px/1.35 var(--ft) !important;
+    letter-spacing: -0.015em !important;
+  }
+
+  :root [data-mm-appel-ligne] {
+    font: 400 13px/1.5 var(--fb) !important;
+  }
+
+  :root [data-mm-appel] a {
+    min-height: 44px;
+    padding: 0 18px !important;
+    font: 600 13.5px var(--fb) !important;
+    box-shadow: none !important;
+  }
+
+  /* ----------------------------------- 9. un panneau sombre qui s'efface
+     Le panneau anthracite de bureau (« Ce que nous garantissons », le
+     problème en panneau) n'existe pas dans la maquette mobile : sa carte est
+     blanche comme les autres. Le panneau perd fond, rembourrage et lueur, et
+     la carte qu'il contient se pose à la gouttière commune. */
+  [data-panneau-mobile-clair] {
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  [data-panneau-mobile-clair] > [aria-hidden="true"] {
+    display: none !important;
+  }
+
+  /* Le titre de carte d'un panneau effacé était écrit en blanc, pour
+     l'anthracite : il reprend l'encre de la carte blanche. */
+  :root [data-panneau-mobile-clair] [data-carte-titre] {
+    color: var(--ink) !important;
+  }
+
+  [data-gouttiere-mobile] {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  /* ------------------------------------------------------- 10. le héros
+     `data-heros-colonne` : la colonne du héros passe en flex, ce qui permet
+     de poser la photo en tête et les boutons AVANT le chapô, l'ordre de la
+     maquette, sans toucher à celui du document. */
+  [data-heros-colonne] {
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 0;
+  }
+
+  [data-heros-photo] {
+    order: -1;
+    position: relative;
+    aspect-ratio: 16 / 10;
+    margin: 0 0 16px;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #dcdde0;
+  }
+
+  [data-heros-pastille] {
+    order: 0;
+    margin: 0 !important;
+  }
+
+  :root [data-heros-pastille] > * {
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    font: 600 11px var(--fb) !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: var(--acc) !important;
+  }
+
+  [data-heros-pastille] [aria-hidden="true"] {
+    display: none !important;
+  }
+
+  :root [data-heros-colonne] > h1 {
+    order: 1;
+    margin: 10px 0 0 !important;
+    max-width: none !important;
+    font: 600 27px/1.1 var(--ft) !important;
+    letter-spacing: -0.04em !important;
+    text-wrap: balance;
+  }
+
+  [data-heros-boutons] {
+    order: 2;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    margin: 16px 0 0 !important;
+  }
+
+  :root [data-heros-boutons] > * {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 50px !important;
+    padding: 0 16px !important;
+    border-radius: 999px !important;
+    white-space: nowrap;
+  }
+
+  :root [data-heros-boutons] > :first-child:not(:only-child) {
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: normal !important;
+    text-align: center;
+    font: 600 14px/1.25 var(--fb) !important;
+  }
+
+  :root [data-heros-chapeau] {
+    order: 3;
+    max-width: none !important;
+    margin: 16px 0 0 !important;
+    font: 500 16px/1.6 var(--fb) !important;
+    color: var(--ink) !important;
+  }
+
+  :root [data-heros-mention] {
+    order: 4;
+    max-width: none !important;
+    margin: 12px 0 0 !important;
+    font: 400 15px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  [data-heros-mobile] {
+    padding-top: 12px !important;
+  }
+
+  /* Le fil d'Ariane de la maquette, en tête de la colonne du héros : une
+     ligne qui défile, 12 px (dc.html L104). */
+  [data-heros-colonne] > [data-fil-ariane-mobile] {
+    order: -2;
+    margin: 0 0 12px !important;
+    padding: 0 !important;
+  }
+
+  [data-heros-colonne] > [data-fil-ariane-mobile] ol {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    white-space: nowrap;
+    font-size: 12px !important;
+    scrollbar-width: none;
+  }
+
+  [data-heros-colonne] > [data-fil-ariane-mobile] li {
+    flex: none;
+  }
+
+  /* --------------------------------------------- 11. les chiffres clés */
+  [data-chiffres-mobile] {
+    padding: 16px 18px 0 !important;
+  }
+
+  [data-chiffres-mobile] [data-tuiles-chiffres] {
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  /* ------------------------------- 12. l'ordre des blocs au téléphone
+     `main[data-ordre-mobile]` : les blocs que la maquette ne porte pas
+     (`data-mobile-apres-sections` : « Ils nous font confiance »,
+     « Certifications et équipe »…) passent APRÈS les sections de la
+     maquette, fin de page comprise (`data-queue-mobile` et tout ce qui le
+     suit : bandeau, FAQ, maillage, rappel final). L'ordre du DOM, celui que
+     lisent Google et le bureau, ne change pas. */
+  main[data-ordre-mobile] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Un enfant centré par `margin: 0 auto` (les conteneurs de 1 200 px) se
+     réduirait à son contenu dans une boîte flexible : il reprend la largeur
+     pleine. Les autres s'étirent d'eux-mêmes, marges latérales comprises
+     (photo + CTA, bandeau : `margin: … 18px`). */
+  main[data-ordre-mobile] > * {
+    min-width: 0;
+  }
+
+  main[data-ordre-mobile] > [style*="margin:0 auto"] {
+    width: 100%;
+  }
+
+  main[data-ordre-mobile] > [data-queue-mobile],
+  main[data-ordre-mobile] > [data-queue-mobile] ~ * {
+    order: 2;
+  }
+
+  /* APRÈS la règle de la fin de page, et à spécificité égale.
+     DEPUIS LE 15/10, LES BLOCS ABSENTS DE LA MAQUETTE PASSENT APRÈS TOUTES SES
+     SECTIONS, rappel final compris, et non plus entre les références et le
+     bandeau « Une question sur votre site ? ». Relecture du tour 2, sur les
+     offres, les villes, les secteurs et les expertises : la maquette enchaîne
+     références, bandeau, FAQ, « Aller plus loin » et « Être rappelé » sans
+     rien entre eux. Les blocs restent dans le DOM, à leur place pour Google
+     et le bureau, et repliés au téléphone. */
+  main[data-ordre-mobile] > [data-mobile-apres-sections] {
+    order: 9;
+  }
+}
+
+/* =========================================================================
+   COMPLÉMENTS DU 15/10 AU SOCLE MOBILE V2 (relecture du tour 2). Tout est
+   sous 881 px : au-dessus, aucune de ces règles n'existe.
+   ========================================================================= */
+@media (max-width: 880px) {
+  /* --------------------------------------- 13. la phrase clé d'une carte
+     dc.html `allB` : dans « Le problème », la phrase clé et sa suite forment
+     UN paragraphe gras (« Le prestataire est arrivé lundi. Il a passé trois
+     semaines… »). Le bureau les rend en titre puis sous-phrase : au
+     téléphone, les deux passent en ligne, dans la même typographie. Le texte
+     ne change pas d'un caractère. `data-mm-cellules` : la grille de bureau
+     qui les range dans deux cellules s'efface, ses cellules aussi. */
+  :root [data-mm-lead][data-mm-phrase],
+  :root [data-mm-texte][data-mm-suite] {
+    display: inline !important;
+    margin: 0 !important;
+    max-width: none !important;
+    font: 600 17px/1.45 var(--ft) !important;
+    letter-spacing: -0.02em !important;
+    color: var(--ink) !important;
+  }
+
+  /* `data-mm-suite="romain"` : la tête seule est en gras, la suite en romain
+     (« **Migen devient votre service maintenance…** Nous reprenons… »). */
+  :root [data-mm-texte][data-mm-suite="romain"] {
+    font-weight: 400 !important;
+  }
+
+  [data-mm-phrase]::after {
+    content: " ";
+  }
+
+  [data-mm-suite]::after {
+    content: "";
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  [data-mm-cellules] {
+    display: block !important;
+    margin: 0 !important;
+  }
+
+  [data-mm-cellules] > div {
+    display: contents !important;
+  }
+
+  /* Un paragraphe de corps de carte, sa tête en gras (« Le constat. Le
+     projet est clair… »), dc.html `blockV` : 400 15px/1.65. */
+  :root [data-mm-paragraphe] {
+    max-width: none !important;
+    margin: 0 0 12px !important;
+    font: 400 15px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
+  }
+
+  :root [data-mm-paragraphe] strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* ------------------------------- 14. la carte de référence, suite
+     Une carte dont le texte CONTINUE le titre (« Deux techniciens… en poste
+     chez un transporteur », « , pour le maintien… ») : au téléphone, le titre
+     et le texte reprennent le dessin des autres cartes du rail, la virgule
+     de reprise s'efface (`data-doublon-mobile`). */
+  :root [data-mm-rail] [data-mm-rail-suite] {
+    margin: 4px 0 8px !important;
+    font: 400 12.5px/1.5 var(--fb) !important;
+    color: var(--ink2) !important;
+  }
+
+  :root [data-mm-rail] [data-mm-rail-suite] > [data-mm-rail-titre] {
+    display: block !important;
+    margin: 4px 0 4px !important;
+  }
+
+  /* Le lien de la carte, celui de la maquette : « Étude de cas CLIENT :
+     sujet → », flèche simple, sans pastille ronde. */
+  :root [data-mm-rail] [data-mm-rail-pied] > [aria-hidden="true"] {
+    width: auto !important;
+    height: auto !important;
+    background: none !important;
+    color: var(--mm-lien) !important;
+    font: 600 13px var(--fb) !important;
+  }
+
+  :root [data-mm-rail] [data-mm-rail-lien] {
+    font: 600 12.5px/1.4 var(--fb) !important;
+    color: var(--mm-lien) !important;
+  }
+
+  /* ------------------------------------- 15. le lien dans une phrase
+     `TexteRiche` pose ses liens en `inline-block` pour leur cible tactile de
+     24 px : au téléphone, la ponctuation qui suit partait seule à la ligne
+     (« , qui rassemble… », /carriere/alternance/). En ligne, le lien suit la
+     phrase ; son rembourrage vertical agrandit toujours la zone de contact. */
+  a[data-lien-riche] {
+    display: inline !important;
+  }
+
+  /* ------------------------------ 16. l'en-tête de la FAQ à photo
+     dc.html `isTitle` : la FAQ s'ouvre sur le seul titre « Questions
+     fréquentes », le sur-titre de bureau (mêmes mots) en titre de 21 px.
+     Le H2 de bureau et « Poser ma question » sortent de l'écran ; leur texte
+     reste dans le DOM. Même règle que celle du lot expertises
+     (`expertises/mobile.module.css`), portée ici pour tous les gabarits qui
+     montent `offres/QuestionsPhoto`. */
+  :root [data-faq-maquette] [data-faq-surtitre] {
+    margin: 0 0 10px !important;
+    font: 600 21px/1.2 var(--ft) !important;
+    letter-spacing: -0.03em !important;
+    text-transform: none !important;
+    color: var(--ink) !important;
+  }
+
+  :root [data-faq-maquette] [data-faq-titre],
+  :root [data-faq-maquette] [data-faq-titre] ~ a {
+    display: none !important;
   }
 }

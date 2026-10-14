@@ -1,5 +1,7 @@
 import { ANCRE_FORMULAIRE } from "@/components/site/blocs/habillage";
 
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
+
 import styles from "./Equipe.module.css";
 import { LARGEUR, VERRE } from "./habillage-equipe";
 
@@ -14,7 +16,10 @@ import { LARGEUR, VERRE } from "./habillage-equipe";
  */
 export default function AppelInterlocuteur() {
   return (
-    <section style={{ padding: "var(--sec) 0 var(--sec)" }}>
+    // Au téléphone, la maquette mobile v2 n'a pas cette carte : la barre
+    // collante et les bandeaux portent l'appel. Masquée sous 881 px, elle reste
+    // dans le HTML servi.
+    <section className={mobile.masqueMobile} style={{ padding: "var(--sec) 0 var(--sec)" }}>
       <div style={LARGEUR}>
         <div
           data-reveal=""

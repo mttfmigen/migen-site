@@ -93,7 +93,6 @@
 @media (max-width: 620px) {
   .bento,
   .etapes,
-  .stats,
   .champs {
     grid-template-columns: minmax(0, 1fr) !important;
   }
@@ -173,31 +172,9 @@
 
 /* ------------------------------- l'étiquette de la bascule du bloc repliable
 
-   ELLE N'EXISTE QUE SOUS 880 px, et c'est tout l'intérêt : au-dessus, le
-   visiteur voit la section telle que sa capture la dessine, avec SON surtitre
-   et SON `<h2>` à l'échelle relevée (38,4 px à 1280 px pour un bento, 33,3 px
-   pour un tableau). Une bascule qui portait le titre à toutes les largeurs le
-   servait à 30 px partout, et vidait la colonne gauche des grilles qui le
-   placent là : c'est le défaut que Mehdi a signalé le 12/10.
-
-   Le seuil, 880 px, est celui de `SectionPliableMobile.module.css` : c'est lui
-   qui décide du repli, les deux doivent rester d'accord.
-
-   DÉPLIÉE, l'étiquette s'efface : la section montre alors son vrai titre, et
-   le dire deux fois de suite n'aiderait personne. Le chevron reste la poignée.
-   Le sélecteur est porté par la classe, il ne touche donc que ces étiquettes. */
-.etiquettePli {
-  display: none;
-}
-
-@media (max-width: 880px) {
-  .etiquettePli {
-    display: block;
-  }
-  details[open] > summary > .etiquettePli {
-    display: none;
-  }
-}
+   Elle n'existe QUE sous 880 px (`data-mobile-seulement`, `pli-mobile.tsx`) et
+   porte le surtitre et le titre de la carte, ouverte comme fermée : son dessin
+   est celui de la carte numérotée partagée (app/globals.css). */
 
 /* SUR BUREAU, LA BASCULE N'EXISTE PAS DU TOUT, et pas seulement son contenu.
    Vidée de son étiquette et de son chevron, elle resterait un `<summary>`
@@ -222,77 +199,11 @@
   }
 }
 
-/* ================================================= LA BASCULE AU TÉLÉPHONE
-   Trois défauts mesurés le 13/10 dans un vrai navigateur, aux quatre largeurs
-   320, 360, 390 et 768 px, bloc déplié.
-
-   1. LA BASCULE N'AVAIT PAS LA GOUTTIÈRE DE LA PAGE. `.bascule` ne pose qu'un
-      `padding-block` : le `<details>` occupe toute la largeur de la fenêtre, et
-      le surtitre de l'étiquette commençait donc à 0 px, collé au bord, alors
-      que le `<h2>` qui paraît juste en dessous une fois le bloc ouvert commence
-      à 40 px (`LARGEUR`, `padding: 0 40px`, mesuré). Les deux doivent
-      s'aligner : c'est le même titre.
-
-   2. LE CHEVRON SORTAIT DE L'ÉCRAN DÈS QU'ON OUVRAIT UN BLOC. Mesuré à
-      -8 px .. 14 px dans une fenêtre qui commence à 0. Deux causes qui
-      s'additionnent : déplié, l'étiquette passe en `display: none`, le chevron
-      reste seul dans une rangée en `space-between` et file à GAUCHE ; et son
-      `transform: rotate(90deg)` fait pivoter une boîte de 6 px sur 22 autour de
-      son centre, ce qui porte son rectangle de -8 à 14. La poignée qui sert à
-      refermer la section était donc à moitié hors de l'écran, sur les 14 pages
-      de la famille et pour chaque bloc ouvert.
-
-   3. LA POIGNÉE SAUTAIT DE DROITE À GAUCHE à l'ouverture.
-
-   LA RÉPONSE EST CELLE DE LA MAQUETTE MOBILE, pas une invention :
-   `design_handoff_migen_site/maquette/MigenMobile.dc.html` dessine la bascule de
-   ses « Blocs communs (pliables) » avec un chevron en PASTILLE RONDE,
-   « flex:none;width:26px;height:26px;border-radius:999px;display:grid;
-   place-items:center;font-size:15px », et sa couleur change à l'ouverture. Une
-   pastille carrée tourne sans changer de rectangle : le débordement disparaît
-   par construction, et non par un rattrapage. Ses deux couleurs sont celles que
-   cette famille emploie déjà pour la pastille « + » de sa FAQ
-   (`.pliPlus` et `.pli[open] > summary > .pliPlus`) : un seul langage par page.
-
-   `margin-left: auto` garde la poignée à droite dans les deux états.
-
-   RIEN DE TOUT CELA N'EXISTE AU-DESSUS DE 880 px : la bascule entière y est en
-   `display: none` (règle plus bas), et aucune des 248 captures de bureau ne
-   peut donc bouger d'un pixel.
-
-   Le motif de composition vient de « Left Chevron Accordion » de la
-   bibliothèque 21st (@felipemenezes098/accordion-07) : son déclencheur donne au
-   libellé `flex-1` et au chevron `shrink-0`, de sorte que la poignée ne se
-   déplace ni ne se comprime jamais, quelle que soit la longueur du libellé.
-   Seule cette composition est reprise. Son habillage, lui, ne l'est pas : ni
-   ses classes Tailwind, ni son icône `lucide`, ni sa dépendance `base-ui`. */
-@media (max-width: 880px) {
-  .corpsMetier details[data-pliable-mobile] > summary {
-    padding-inline: 40px;
-    align-items: center;
-  }
-  .corpsMetier details[data-pliable-mobile] > summary > .etiquettePli {
-    flex: 1 1 0;
-    min-width: 0;
-  }
-  .corpsMetier details[data-pliable-mobile] > summary > [aria-hidden="true"] {
-    flex: 0 0 auto;
-    margin-left: auto;
-    display: grid;
-    place-items: center;
-    width: 26px;
-    height: 26px;
-    border-radius: 999px;
-    font-size: 15px;
-    line-height: 1;
-    background: var(--chip);
-    color: var(--ink2);
-  }
-  .corpsMetier details[data-pliable-mobile][open] > summary > [aria-hidden="true"] {
-    background: var(--acc);
-    color: #fff;
-  }
-}
+/* LA BASCULE AU TÉLÉPHONE est la carte numérotée de la maquette mobile v2,
+   dessinée par le motif partagé `details[data-carte-numerotee]`
+   (app/globals.css) et posée à la gouttière de 18 px par `MobileV2.module.css`.
+   Les règles locales d'avant (rembourrage de 40 px, chevron de 26 px, carte
+   fermée à 6 px d'écart) la battaient par leur spécificité : retirées le 14/10. */
 
 /* LE LIBELLÉ D'UN APPEL À L'ACTION PEUT PASSER À LA LIGNE SOUS 620 px, et
    seulement là. `white-space: nowrap` vient de la maquette (huit fois dans
@@ -414,11 +325,37 @@
     aspect-ratio: 16 / 10;
     border-radius: 24px !important;
     margin-bottom: 16px;
+    box-shadow: none !important;
   }
+  /* LE SURTITRE DE LA MAQUETTE (L106) : du texte orange en capitales de
+     11 px, pas une pastille. Le point orange est un décor sans texte. */
   .herosPastille {
     order: -1;
     align-self: flex-start;
     margin-bottom: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    font: 600 11px var(--fb) !important;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--acc) !important;
+    display: block !important;
+  }
+  /* Le point seul : « Fiche » (`data-mobile-seulement`) reste, et le bloc
+     garde l'espace entre « Fiche » et « Métier » qu'une boîte flexible
+     avalait. */
+  .herosPastille > span:not([data-mobile-seulement]) {
+    display: none !important;
+  }
+  /* Le fil d'Ariane de la maquette (dc.html L104) : 500 12px, 6 px d'écart. */
+  .heros [data-fil-ariane-mobile] ol,
+  .heros [data-fil-ariane-mobile] li {
+    gap: 6px !important;
+  }
+  .heros [data-fil-ariane-mobile] ol {
+    font: 500 12px var(--fb) !important;
   }
   .corpsMetier .herosTitre {
     margin: 10px 0 10px !important;
@@ -430,52 +367,55 @@
   .herosPuces {
     order: 1;
   }
+  /* LES DEUX BOUTONS CÔTE À CÔTE (L111) : l'appel à l'action prend la
+     place, 50 px de haut, le téléphone en pastille blanche à côté. Le bouton
+     est un bloc et non une boîte flexible : « Postuler » et « chez Migen »
+     (sa fin mobile, un `<span>`) restent dans la même ligne de texte. */
   .herosBoutons {
     order: 2;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
     margin-top: 16px !important;
   }
+  .herosBoutons > a:first-child {
+    display: block !important;
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 16px !important;
+    text-align: center;
+    white-space: normal !important;
+    font: 600 14px/1.25 var(--fb) !important;
+    box-shadow: 0 12px 26px -14px rgba(255, 124, 60, 0.9) !important;
+  }
+  .herosBoutons > .boutonTelephone {
+    flex: none;
+    justify-content: center;
+    min-height: 50px;
+    padding: 0 16px !important;
+    background: var(--card) !important;
+    border: 1px solid rgba(28, 27, 25, 0.1) !important;
+    font: 600 13.5px var(--fb) !important;
+  }
+  /* Le chapô (`lead`, 500 16px/1.6) puis le texte courant (400 15px/1.65,
+     #4a4845), 12 px entre deux paragraphes : dc.html `blockV`. */
   .herosChapo {
     order: 3;
-    margin: 20px 0 12px !important;
-    font-size: 16px !important;
+    margin: 16px 0 12px !important;
+    font: 500 16px/1.6 var(--fb) !important;
+    color: var(--ink) !important;
   }
   .herosPara {
     order: 4;
-    font-size: 15px !important;
+    margin: 0 0 12px !important;
+    font: 400 16px/1.65 var(--fb) !important;
+    color: var(--ink1) !important;
   }
-  /* La carte « 10 % » en tuile, aux mesures des chiffres de la maquette mobile
-     (L129 : `padding:14px`, valeur en 21 px ; 28 ici, celle des tuiles du
-     site) : elle n'est plus posée sur la photo, elle suit le texte. */
+  /* La carte « 10 % » : la maquette mobile v2 n'en pose aucune sous l'encart
+     d'appel (relecture adverse du 14/10 : elle doublait le « 10 % » de la
+     grille de chiffres). Masquée au téléphone, elle reste dans le DOM et sur
+     bureau. */
   .herosVisuel > .flottante {
-    order: 5;
-    padding: 14px 16px !important;
-    gap: 12px !important;
-  }
-  .herosVisuel > .flottante > span:first-child {
-    font-size: 28px !important;
-  }
-}
-
-/* LA BASCULE FERMÉE EST UNE CARTE, comme dans la maquette mobile v2, dc.html
-   L131 : le `<details>` y porte `margin:12px 18px 0;border-radius:20px;
-   background:#fff;border:1px solid rgba(28,27,25,.08)` et son `<summary>`
-   `padding:15px 16px`. Sans elle, onze bascules à titre de 16,5 px se
-   suivaient sans air, le surtitre de l'une collé au titre de la précédente.
-   Ouverte, la section reprend son propre dessin : la carte ne vaut que pour
-   l'état fermé, et rien de tout cela n'existe au-dessus de 880 px.
-
-   ÉCART DE RYTHME, VOULU : 6 px entre deux cartes (l'écart des pastilles de
-   la maquette, L125) et 12 px de rembourrage vertical, au lieu de 12 et 15.
-   Aux valeurs exactes, cinq fiches sur treize redevenaient plus hautes
-   qu'avant la couche mobile (jusqu'à +190 px sur la fiche Formation et ses
-   dix-huit cartes), et la hauteur doit baisser. */
-@media (max-width: 880px) {
-  .corpsMetier details[data-pliable-mobile]:not([open]) > summary {
-    margin: 6px 18px 0;
-    padding: 12px 16px;
-    border-radius: 20px;
-    background: #fff;
-    border: 1px solid rgba(28, 27, 25, 0.08);
+    display: none !important;
   }
 }
 
@@ -487,38 +427,9 @@
   .corpsMetier {
     --sec: 64px;
   }
-  /* Les chiffres posent 84 px fixes au-dessus d'eux, hors `--sec`. */
-  .sectionChiffres {
-    padding-top: 32px !important;
-  }
 }
 
-/* LES CHIFFRES EN TUILES DE DEUX, maquette mobile v2 L129 (`isStats`) :
-   `grid-template-columns:repeat(2,minmax(0,1fr)) ; gap:8px`, tuiles
-   rembourrées à 14 px. Seulement à partir de 375 px : en dessous, une tuile
-   de deux colonnes n'a plus la place d'un mot comme « collaborateurs » entre
-   les gouttières de 40 px de la famille, et la règle d'une colonne de 620 px
-   reste. */
-@media (min-width: 375px) and (max-width: 620px) {
-  .stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 8px !important;
-  }
-  .stats > div {
-    padding: 14px !important;
-  }
-}
-
-/* LES CARTES DU BENTO AU TÉLÉPHONE, comme celles du duo plus haut : la
-   maquette mobile v2 rembourre ses cartes à 14, 16 ou 18 px et ne leur pose
-   aucune hauteur minimale (dc.html, cartes numérotées des sections). Le bento
-   est la première section de dix fiches sur treize, celle que la maquette
-   laisse OUVERTE : 26 à 32 px de rembourrage et 180 à 210 px de hauteur
-   minimale y coûtaient 190 px sur /carriere/technicien-de-maintenance/. */
-@media (max-width: 620px) {
-  .bento > div {
-    padding: 18px !important;
-    min-height: 0 !important;
-  }
-}
-
+/* LES CHIFFRES EN TUILES 2 x 2 ET LES CARTES DES SECTIONS AU TÉLÉPHONE vivent
+   dans `MobileV2.module.css` (et le motif partagé `data-tuiles-chiffres`) :
+   les deux règles locales d'avant (tuiles d'une colonne sous 375 px, bento
+   rembourré à 18 px) contredisaient la maquette, retirées le 14/10. */

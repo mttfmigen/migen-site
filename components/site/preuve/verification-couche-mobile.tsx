@@ -33,7 +33,16 @@
  *      qui ne le lit pas (voir `donnees-mobiles.ts`), tombe ici.
  *   5. LE RAPPEL FINAL : un seul `#etre-rappele`, posé APRÈS le carrousel ;
  *      LA CADENCE (L452-456) : photo + CTA après « Ce que nous avons mis en
- *      place », bandeau à partir de cinq sections numérotées.
+ *      place », bandeau à partir de cinq sections DE TEXTE. Mise à jour du
+ *      14/10 au soir, vers la maquette : `nD` (L477) ne compte que les
+ *      sections de texte (situation, réponse, déroulé, dispositif) ; le
+ *      résultat est un panneau à part (L461, L475), il n'y entre plus, et
+ *      une étude de cas, qui compte au plus quatre sections de texte, ne
+ *      porte donc aucun bandeau, comme la capture m-02.
+ *   5 bis. LES CARTES DE LA MAQUETTE (L130) : la situation est une carte
+ *      repliable OUVERTE (`data-toujours-ouvert`), le résultat un panneau
+ *      jamais replié (`data-toujours-ouvert`) : le nombre de blocs repliables
+ *      compte donc la situation en plus des quatre listes.
  *   6. AUCUN MOT INTERDIT ni tiret long dans tout ce que la couche ajoute
  *      (c'est cette vérification qui écarte `PastillesCocon` : voir le
  *      gabarit, « sur mesure » de /preuves/tournaire/).
@@ -276,7 +285,7 @@ for (const page of PAGES) {
   /* 1. Hors blocs du téléphone, le texte de bureau, mot pour mot. */
   fautes.push(...ecartHorsMobile(sans, html).map((f) => `${ou} : ${f}`));
   const listes = [contenu.reponseCartes ?? [], contenu.etapes ?? [], contenu.dispositif ?? [], contenu.resultats ?? []];
-  const attendus = listes.filter((l) => l.length > 0).length;
+  const attendus = (contenu.situationTitre ? 1 : 0) + listes.filter((l) => l.length > 0).length;
   const mesures = blocsRepliables(html);
   if (mesures !== attendus) fautes.push(`${ou} : ${attendus} blocs repliables attendus, ${mesures} rendus`);
 
@@ -296,7 +305,12 @@ for (const page of PAGES) {
 
   /* 5. Le rappel final, puis la cadence. */
   fautes.push(...rappelFautif(html).map((f) => `${ou} : ${f}`));
-  const nbNumerotees = [contenu.situationTitre ? [1] : [], ...listes].filter((l) => l.length > 0).length;
+  /* Les sections DE TEXTE (dc.html L477, `nD`) : le résultat n'en est pas. */
+  const nbNumerotees = [contenu.situationTitre ? [1] : [], ...listes.slice(0, 3)].filter((l) => l.length > 0).length;
+  const ouvertes = [...html.matchAll(/<details[^>]*data-toujours-ouvert/g)].length;
+  const ouvertesAttendues = (contenu.situationTitre ? 1 : 0) + ((contenu.resultats ?? []).length > 0 ? 1 : 0);
+  if (ouvertes !== ouvertesAttendues)
+    fautes.push(`${ou} : ${ouvertes} bloc(s) toujours ouvert(s), ${ouvertesAttendues} attendu(s) (situation et résultat)`);
   fautes.push(
     ...cadenceFautive(html, nbNumerotees, (contenu.reponseCartes ?? []).length > 0).map((f) => `${ou} : ${f}`),
   );

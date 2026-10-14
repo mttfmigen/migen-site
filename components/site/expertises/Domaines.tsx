@@ -5,7 +5,14 @@ import type { CSSProperties } from "react";
 import { LARGEUR, SECTION, SURTITRE, TITRE2 } from "@/components/site/blocs/habillage";
 import { resumeDe } from "@/components/site/blocs/resume-de-section";
 import { estCheminInterne } from "@/components/site/blocs/TexteRiche";
-import { PliMobile } from "@/components/site/expertises/mobile";
+import {
+  CACHE_MOBILE,
+  INTRO_MOBILE,
+  LISTE_MOBILE,
+  MINUSCULE,
+  phraseAvecLien,
+  PliMobile,
+} from "@/components/site/expertises/mobile";
 import { numerote } from "@/components/site/offre/texte-offre";
 import type { CarteDomaineHub } from "@/types/expertises";
 
@@ -117,12 +124,31 @@ export default function Domaines({ titre, cartes }: ProprietesDomaines) {
 
   return (
     <section style={SECTION}>
-      {/* G3, SE REPLIE AU TÉLÉPHONE : le bento de huit photos fait 2 240 px à
-          390 px. Les huit domaines restent joignables d'un geste par « Toutes
-          les pages de la rubrique », sous le héros ; le pli garde leurs textes
-          dans le DOM, et rien ne bouge à 1280 px. */}
+      {/* AU TÉLÉPHONE, LA LISTE DE LA MAQUETTE MOBILE V2 (carte 01 du hub) :
+          « Les huit domaines techniques que couvrent nos équipes : », puis une
+          sous-carte numérotée par domaine, accroche en gras et phrase, le nom
+          du domaine en lien. Mêmes mots que le bento, tirés de la même donnée ;
+          `data-mobile-seulement`, absente au-dessus de 880 px. */}
+      <div data-mobile-seulement="" className={LISTE_MOBILE}>
+        <p className={INTRO_MOBILE}>{titre} :</p>
+        <div data-mm-kv="" data-mm-compteur="">
+          {retenues.map((carte) => (
+            <div key={carte.href}>
+              <div data-mm-kv-titre="">{carte.accroche}</div>
+              <p data-mm-kv-texte="" className={MINUSCULE}>
+                {phraseAvecLien(carte.texte, carte.titre, carte.href)}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Le bento, dessin de bureau (2 240 px à 390 px) : hors de l'écran au
+          téléphone (`CACHE_MOBILE`), où la liste ci-dessus dit les mêmes mots.
+          Son texte reste dans le DOM, et rien ne bouge à 1280 px. */}
       <PliMobile
+        className={CACHE_MOBILE}
         style={LARGEUR}
+        numero={false}
         surtitre="Nos domaines"
         titre={titre}
         resume={resumeDe(retenues.map((carte) => carte.titre))}

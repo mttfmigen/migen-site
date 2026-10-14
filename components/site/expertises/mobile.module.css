@@ -26,9 +26,12 @@
   --sec: 120px;
 }
 
+/* 14/10 au soir : 12 px, l'écart de la maquette mobile v2 entre deux cartes
+   de section (dc.html, `m: "12px 18px 0"`). Les 64 px d'avant séparaient les
+   cartes repliées par plus de vide qu'elles n'occupent. */
 @media (max-width: 880px) {
   .racine {
-    --sec: 64px;
+    --sec: 12px;
   }
 }
 
@@ -49,12 +52,15 @@
   display: none;
 }
 
+/* L'ÉTIQUETTE RESTE, OUVERTE COMME FERMÉE : c'est le titre de la carte de la
+   maquette (numéro, titre, chevron). L'en-tête du corps qui dit les mêmes
+   mots (`data-titre-double`) s'efface à sa place, sous 881 px seulement. */
 @media (max-width: 880px) {
   .etiquette {
     display: block;
   }
-  details[open] > summary > .etiquette {
-    display: none;
+  .pli [data-titre-double] {
+    display: none !important;
   }
 }
 
@@ -93,13 +99,29 @@
  * (`--sec`). Ouverte, l'écart est celui de la section elle-même. Rien
  * au-dessus de 880 px, où la bascule est retirée (`.pli`).
  */
+/* 14/10 au soir, carte de la maquette mobile v2 : le pli prend la gouttière
+   de 18 px des autres cartes et l'écart `--sec` au-dessus ; dans son corps,
+   la section enveloppée perd sa gouttière et son écart (la carte a les
+   siens), et son en-tête, doublon de l'étiquette, s'efface. */
 @media (max-width: 880px) {
-  .pleinePage > details[data-pliable-mobile] > summary {
-    padding-left: 40px;
-    padding-right: 40px;
+  .pleinePage {
+    padding: var(--sec) 18px 0;
   }
-  .pleinePage > details[data-pliable-mobile]:not([open]) > summary {
-    padding-top: var(--sec);
+  .pleinePage > details[data-pliable-mobile] > summary ~ div > section {
+    padding-top: 0 !important;
+  }
+  .pleinePage > details[data-pliable-mobile] > summary ~ div > section > div {
+    padding: 0 !important;
+  }
+  .pleinePage
+    > details[data-pliable-mobile]
+    > summary
+    ~ div
+    > section
+    > div
+    > :global(.mg-r2)
+    > div:first-child {
+    display: none !important;
   }
 }
 
@@ -111,8 +133,8 @@
  * celui du bureau, `clamp(38px, 4.4vw, 66px)` sur 16 caractères de large : un
  * titre de spécialité y prenait cinq à six lignes. Les `!important` battent le
  * style EN LIGNE relevé de la capture de bureau (`habillage-offre.TITRE1`),
- * qui reste intact au-dessus de 880 px. Le chapeau prend le `400 15px/1.6` de
- * la maquette (L109).
+ * qui reste intact au-dessus de 880 px. Le chapeau, lui, est dessiné par le
+ * socle partagé (`data-heros-chapeau`).
  *
  * `section.heroCompact` ET PAS `.heroCompact` : `app/globals.css` pose déjà,
  * sous 760 px, `.mg-site h1 { font-size: clamp(32px, 9vw, 42px) !important }`.
@@ -126,11 +148,6 @@
     line-height: 1.1 !important;
     letter-spacing: -0.04em !important;
     max-width: none !important;
-  }
-  section.heroCompact h1 + p {
-    font-size: 15px !important;
-    line-height: 1.6 !important;
-    margin-top: 12px !important;
   }
 }
 
@@ -200,5 +217,440 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--ink3);
+  }
+}
+
+/* ===================================================== le haut de page v2
+
+   LE HÉROS DE LA MAQUETTE MOBILE V2 (dc.html L104 à L111) : le dessin vient
+   du socle partagé (`app/globals.css`, `data-heros-*` : colonne flexible,
+   photo -1, H1 1, boutons 2, chapô 3, mention 4). Ici, ce qui est propre à
+   la rubrique : le surtitre de la maquette à la place de la pastille, la
+   puce « ↑ parent » sous le H1 (ordre 1, après lui dans le DOM), la liste
+   des pages filles sous les boutons (ordre 2, après eux dans le DOM), et le
+   panneau de formulaire du héros, hors de l'écran sauf s'il est visé. */
+@media (max-width: 880px) {
+  section.heroCompact {
+    padding-top: 12px !important;
+  }
+  .rangeePastille {
+    display: none !important;
+  }
+  .surtitreHeros {
+    font: 600 11px var(--fb);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--acc);
+  }
+  .racine [data-heros-colonne] > .puceParent {
+    order: 1;
+  }
+  .racine [data-heros-colonne] > [data-pastilles-cocon] {
+    order: 2;
+    margin: 20px 0 0 !important;
+  }
+  .panneauHeros:not(:has(:target)) {
+    display: none;
+  }
+}
+
+/* ===================================================== les chiffres clés
+
+   dc.html `isStats` : « Chiffres clés » en surtitre, puis des tuiles 2 x 2
+   (`data-tuiles-chiffres` et `data-chiffres-mobile`, `app/globals.css`).
+   `.racine .tuilesChiffres` bat la règle d'une colonne de `.gabarit .g3-hs`
+   sous 621 px, qui l'emporterait sur celle de la feuille partagée. */
+@media (max-width: 880px) {
+  .racine .tuilesChiffres[data-tuiles-chiffres] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  /* Hub : héros et carte « 01 La réponse directe » avant les chiffres
+     (`AVANT_CHIFFRES`, `main[data-ordre-mobile]` du socle). */
+  .racine main[data-ordre-mobile] > .avantChiffres {
+    order: -1;
+  }
+}
+
+/* ============================ la prose de « L'offre », dans sa carte
+
+   La maquette range la prose de l'offre d'une spécialité DANS la carte
+   « L'offre » (`ProseOffreMobile`, juste après `offre/PointsOffre`). Carte
+   fermée, la prose est repliée avec elle ; ouverte, elle en prolonge le
+   corps : même fond, même filet, coins du bas reportés sur elle. */
+/* Même repli pour « Complément 4 » (`offre/ComplementsOffre`), la phrase
+   que la maquette met en tête de cette même carte : la section sans repli
+   qui suit la bande d'appel (masquée au téléphone), hors ajouts mobiles.
+   Carte ouverte, elle reste sa propre carte dessous (pas de `:has()`
+   imbriqué pour la souder). */
+@media (max-width: 880px) {
+  .racine section:has(> div > details[data-carte-numerotee]:not([open])) + [data-prose-offre-mobile],
+  .racine
+    section:has(> div > details[data-carte-numerotee]:not([open]))
+    + [data-bande-appel]
+    + section:not([data-mobile-seulement]):not(:has(details)),
+  .racine
+    section:has(> div > details[data-carte-numerotee]:not([open]))
+    + [data-prose-offre-mobile]
+    + [data-bande-appel]
+    + section:not([data-mobile-seulement]):not(:has(details)) {
+    display: none !important;
+  }
+
+  /* Ouverte : la carte reporte ses coins du bas sur la prose qui la suit. */
+  .racine section:has(> div > details[data-carte-numerotee][open]):has(+ [data-prose-offre-mobile]) {
+    padding-bottom: 0 !important;
+  }
+  .racine
+    section:has(> div > details[data-carte-numerotee][open]):has(+ [data-prose-offre-mobile])
+    details[data-carte-numerotee]
+    > summary
+    ~ :last-child {
+    border-bottom: 0 !important;
+    border-radius: 0 !important;
+  }
+  .racine section:has(> div > details[data-carte-numerotee][open]) + [data-prose-offre-mobile] {
+    padding: 0 18px !important;
+  }
+  .racine section:has(> div > details[data-carte-numerotee][open]) + [data-prose-offre-mobile] > div {
+    /* garde la marge haute du premier paragraphe dans la carte */
+    display: flow-root;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 16px 14px !important;
+    border: 1px solid var(--mm-filet);
+    border-top: 0;
+    border-radius: 0 0 var(--mm-rayon-carte) var(--mm-rayon-carte);
+    background: var(--card);
+  }
+}
+
+/* ================================== « De quoi on parle », dans la carte 01
+
+   Le corps prend le dessin du socle (`data-mm-*`). La carte en verre des
+   points et la pastille de leur numéro, dessins de bureau, s'effacent : les
+   points deviennent les sous-cartes de la maquette. */
+@media (max-width: 880px) {
+  .racine [data-reponse-directe] [data-mm-kv] {
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  /* Une carte repliée DANS la carte 01 ouverte garde son chevron au repos :
+     `.section[open] .chevron` (`blocs/SectionPliableMobile.module.css`)
+     tourne aussi les chevrons des cartes imbriquées. */
+  .racine details[data-carte-numerotee]:not([open]) > summary > [aria-hidden="true"] {
+    transform: none;
+  }
+  .racine [data-reponse-directe] [data-mm-num] {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    border-radius: 0 !important;
+    background: none !important;
+  }
+}
+
+/* ====================================== les bandes d'appel du bureau
+
+   La maquette mobile v2 n'en porte aucune : son appel entre les sections est
+   le photo + CTA et le bandeau « Être rappelé » de la cadence. Leur texte
+   (la mention des horaires, le libellé du bouton) est celui du haut de page,
+   à l'écran juste au-dessus. Même règle que le gabarit 03
+   (`.gabaritOffre [data-bande-appel]`). */
+@media (max-width: 880px) {
+  .racine [data-bande-appel] {
+    display: none !important;
+  }
+}
+
+/* ================================================= la carte « Le problème »
+
+   Le corps de la carte prend le dessin du socle (`data-mm-surtitre`,
+   `data-mm-lead`, `data-mm-texte`, `data-mm-kv`…, `app/globals.css`), comme
+   `offre/ProblemeOffre`. Ici : l'en-tête de bureau en deux colonnes devient
+   un simple empilement (`data-entete-probleme`, sans les 56 px de son
+   écart), et la photo du problème s'efface, sous 881 px seulement : la
+   carte de la maquette n'en porte pas, et c'est elle, quand la page n'a pas
+   la photo de la maquette, qui monte en tête de page. */
+@media (max-width: 880px) {
+  .racine [data-photo-probleme] {
+    display: none !important;
+  }
+  .racine [data-entete-probleme] {
+    display: block !important;
+    margin: 0 !important;
+  }
+}
+
+/* LE CORPS DES CARTES GARDE SES 16 PX DE CÔTÉ. `.gabarit details > div`
+   (`offre/PageOffre.module.css`, sous 621 px, `!important`) le portait à
+   26 px à gauche : il visait les questions repliées de la maquette de
+   bureau, et décalait le contenu de chaque carte de la maquette mobile. */
+@media (max-width: 880px) {
+  .racine details[data-carte-numerotee] > summary ~ div {
+    padding-left: 16px !important;
+  }
+}
+
+/* ================================ la carte « 01 La réponse directe » du hub
+
+   Maquette mobile v2, carte 01 du hub : « De quoi on parle. » en gras DANS
+   la phrase qui ouvre la carte, puis les quatre points ; les huit domaines,
+   les types et les chiffres en listes de sous-cartes (`Domaines`,
+   `TypesMaintenance`, `ChiffresCarteMobile`). Leurs dessins de bureau
+   (bento, panneau photo, boîte du complément, section des chiffres) sortent
+   de l'écran sous 881 px (`cacheMobile`) : leur texte reste dans le DOM. */
+@media (max-width: 880px) {
+  .cacheMobile {
+    display: none !important;
+  }
+  .queueMaillage {
+    padding-bottom: 0 !important;
+  }
+  /* La boîte « Notre guide des types… » : sa phrase est dans celle des types. */
+  .racine [data-types-maintenance] + section {
+    display: none !important;
+  }
+
+  /* « De quoi on parle. Maintenir un équipement… C'est un ensemble… » : une
+     seule phrase, le sur-titre en gras suivi d'un point, le titre et le
+     texte à la suite, dans la typo du paragraphe de la maquette. */
+  .racine [data-reponse-directe] [data-mm-surtitre],
+  .racine [data-reponse-directe] [data-mm-lead],
+  .racine [data-reponse-directe] [data-mm-texte] {
+    display: inline !important;
+    margin: 0 !important;
+    font: 400 16px/1.6 var(--fb) !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    color: var(--ink) !important;
+  }
+  .racine [data-reponse-directe] [data-mm-surtitre] {
+    font-weight: 600 !important;
+  }
+  .racine [data-reponse-directe] [data-mm-surtitre]::after {
+    content: ". ";
+  }
+  .racine [data-reponse-directe] [data-mm-lead]::after {
+    content: " ";
+  }
+  .racine [data-reponse-directe] [data-mm-kv] {
+    margin-top: 16px !important;
+  }
+  .racine [data-reponse-directe] [data-mm-kv-texte]::first-letter {
+    text-transform: lowercase;
+  }
+
+  .listeMobile {
+    margin: 4px 0 0;
+  }
+  .introMobile {
+    margin: 0 0 12px;
+    font: 400 16px/1.6 var(--fb);
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+  .introMobile strong {
+    font-weight: 600;
+  }
+  .titreListe {
+    margin: 4px 0 12px;
+    font: 600 17px/1.35 var(--ft);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .introMobile a,
+  .listeMobile [data-mm-kv-texte] a {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgba(28, 27, 25, 0.28);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .minuscule::first-letter {
+    text-transform: lowercase;
+  }
+
+  /* Le tableau des types en cartes : intitulés de colonne en petites
+     capitales (`::before` de `data-colonne`, contenu généré). */
+  .legendeMobile {
+    margin: 0 0 8px;
+    font: 600 10.5px var(--fb);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink3);
+  }
+  .cartesTypes {
+    display: grid;
+    gap: 8px;
+    margin: 0 0 14px;
+  }
+  .carteType {
+    display: grid;
+    gap: 6px;
+    padding: 14px 15px;
+    border: 1px solid var(--mm-bord-doux);
+    border-radius: 16px;
+    background: var(--mm-fond-doux);
+    color: var(--ink1);
+    font: 400 14.5px/1.5 var(--fb);
+  }
+  .carteType [data-type-titre] {
+    font: 600 15px/1.35 var(--ft);
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+  .carteType [data-colonne]::before {
+    content: attr(data-colonne);
+    display: block;
+    margin-bottom: 2px;
+    font: 600 10.5px var(--fb);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink3);
+  }
+}
+
+/* ============================================== la fin de page (mobile)
+
+   « 10 Appel final » hors de l'écran sauf s'il est visé (`APPEL_FINAL`) ; la
+   question qu'il porte devient la dernière carte de la FAQ
+   (`QuestionFinaleMobile`), sous la liste de `offres/QuestionsPhoto`, à sa
+   gouttière (18 px) et à son écart (8 px). */
+@media (max-width: 880px) {
+  .appelFinal:not(:target):not(:has(:target)) {
+    display: none !important;
+  }
+  .questionFinale {
+    margin: 8px 18px 0;
+  }
+  .reponseFinale {
+    padding: 0 16px 15px;
+    font: 400 14px/1.6 var(--fb);
+    color: var(--ink1);
+  }
+  .reponseFinale p {
+    margin: 0 0 6px;
+  }
+  .reponseFinale a {
+    color: var(--mm-lien);
+    font-weight: 600;
+  }
+}
+
+/* ======================== chiffres clés et « Le problème » (05 et 09)
+
+   Maquette mobile v2 : DEUX tuiles de chiffres, libellé en minuscule
+   (« des candidats retenus… ») ; la troisième tuile du bureau (« en continu
+   et tous les jours ») sort de l'écran, son texte reste dans le DOM, et la
+   mention du héros dit déjà l'astreinte. La carte « Le problème » s'ouvre
+   sur UNE phrase en gras, titre et suite de la punchline à la suite, sans
+   le sur-titre « Votre problématique ». */
+@media (max-width: 880px) {
+  .racine [data-tuiles-chiffres] > :nth-child(n + 3) {
+    display: none !important;
+  }
+  .racine [data-tuiles-chiffres] > * > :nth-child(2)::first-letter {
+    text-transform: lowercase;
+  }
+  .racine section [data-entete-probleme] {
+    margin: 0 0 14px !important;
+  }
+  .racine [data-entete-probleme] > div:first-child {
+    display: inline !important;
+    position: static !important;
+  }
+  .racine [data-entete-probleme] [data-mm-surtitre],
+  .racine [data-panneau-mobile-clair] [data-mm-surtitre] {
+    display: none !important;
+  }
+  .racine [data-panneau-mobile-clair] [data-mm-kv] {
+    margin-top: 14px !important;
+  }
+  .racine [data-entete-probleme] [data-mm-lead],
+  .racine [data-entete-probleme] [data-mm-texte],
+  .racine [data-panneau-mobile-clair] [data-mm-lead],
+  .racine [data-panneau-mobile-clair] [data-mm-texte] {
+    display: inline !important;
+    margin: 0 !important;
+    font: 600 17px/1.45 var(--ft) !important;
+    letter-spacing: -0.02em !important;
+    color: var(--ink) !important;
+  }
+  .racine [data-entete-probleme] [data-mm-lead]::after,
+  .racine [data-panneau-mobile-clair] [data-mm-lead]::after {
+    content: " ";
+  }
+}
+
+/* ======================== la FAQ et les en-têtes de carte (05, 09, 10)
+
+   Maquette mobile v2 : la FAQ s'ouvre sur le seul titre « Questions
+   fréquentes » (le sur-titre de `offres/QuestionsPhoto`, mêmes mots, en
+   titre de 21 px) ; son H2 de bureau et « Poser ma question » sortent de
+   l'écran, leur texte reste dans le DOM. Les cartes numérotées de la
+   maquette ne portent pas de sur-titre (« Notre parti pris ») : celui de
+   l'étiquette (`data-carte-surtitre`) s'efface. */
+@media (max-width: 880px) {
+  .racine section [data-faq-surtitre] {
+    margin: 0 0 10px !important;
+    font: 600 21px/1.2 var(--ft) !important;
+    letter-spacing: -0.03em !important;
+    text-transform: none !important;
+    color: var(--ink) !important;
+  }
+  .racine section [data-faq-titre],
+  .racine section [data-faq-titre] ~ a {
+    display: none !important;
+  }
+  .racine [data-carte-surtitre] {
+    display: none !important;
+  }
+}
+
+/* ============================ les blocs absents de la maquette (05, 09, 10)
+
+   Relecture du 15/10 : la maquette enchaîne « Nos références », le bandeau
+   « Une question sur votre site ? », la FAQ et « Dans la même rubrique »,
+   sans rien entre eux. Les blocs de bureau qu'elle ne dessine pas
+   (`data-mobile-apres-sections` : logos, réassurance, secteurs, offres,
+   marques, « Par où continuer ? ») restent repliés, et descendent APRÈS
+   cette suite, juste avant la carte « Être rappelé » (`#etre-rappele`) qui
+   clôt la page. Le socle partagé (`app/globals.css`, ordre 1 et 2) les
+   plaçait avant le bandeau ; cette règle ne vaut que pour la rubrique.
+   L'ordre du DOM, celui du bureau et de Google, ne change pas. */
+@media (max-width: 880px) {
+  /* L'écart entre ces cartes repliées est celui des autres (12 px, la marge
+     haute de la carte) : leur propre écart de section le doublait. */
+  .racine main[data-ordre-mobile] > [data-mobile-apres-sections],
+  .racine main[data-ordre-mobile] > .sansNumero > section {
+    padding-top: 0 !important;
+  }
+  .racine main[data-ordre-mobile] > [data-mobile-apres-sections] {
+    order: 3;
+  }
+  .racine main[data-ordre-mobile] > [id="etre-rappele"],
+  .racine main[data-ordre-mobile] > [id="etre-rappele"] ~ * {
+    order: 4;
+  }
+
+  /* « Par où continuer ? » du hub (`offre/PagesLiees`, bloc partagé numéroté) :
+     sans numéro, comme les autres blocs absents de la maquette (même dessin
+     que `data-sans-numero`, `app/globals.css`), la suite garde 01 à 06. */
+  .sansNumero details[data-carte-numerotee] {
+    counter-increment: none;
+  }
+  .sansNumero details[data-carte-numerotee] > summary {
+    grid-template-columns: minmax(0, 1fr) 28px;
+    grid-template-areas:
+      "titre chevron"
+      "resume chevron";
+  }
+  .sansNumero details[data-carte-numerotee] > summary::before {
+    content: none;
   }
 }

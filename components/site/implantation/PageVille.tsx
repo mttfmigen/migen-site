@@ -1,36 +1,19 @@
-import Link from "next/link";
 import { Fragment, type CSSProperties, type ReactNode } from "react";
 
-import { FilArianeVue } from "@/components/cocon/FilAriane";
-import TexteRiche from "@/components/site/blocs/TexteRiche";
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import { entreeDe, gabaritDe } from "@/components/site/cocon/maillage-mobile";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import AppelFinal from "@/components/site/offre/AppelFinal";
 import AppelOffre from "@/components/site/offre/AppelOffre";
 import BandeAppel from "@/components/site/offre/BandeAppel";
-import ComplementsOffre from "@/components/site/offre/ComplementsOffre";
+import ComplementsOffre, { ComplementsDansCarte } from "@/components/site/offre/ComplementsOffre";
+import EtiquettePli from "@/components/site/offre/EtiquettePli";
 import GarantiesOffre from "@/components/site/offre/GarantiesOffre";
-import {
-  BOUTON_HERO,
-  CARTE_CHIFFRE,
-  CHAPEAU_HERO,
-  CHIFFRE_LIBELLE,
-  CHIFFRE_VALEUR,
-  GRILLE_CHIFFRES,
-  HERO,
-  HERO_GRILLE,
-  HERO_MENTION,
-  HERO_RANGEE_BOUTONS,
-  HERO_RANGEE_PASTILLE,
-  PASTILLE,
-  PASTILLE_PUCE,
-  SECTION_CHIFFRES,
-  TITRE1,
-} from "@/components/site/offre/habillage-offre";
 import { liensSurs } from "@/components/site/offre/LiensOffre";
 import LogosClients from "@/components/site/offre/LogosClients";
 import MarquesOffre from "@/components/site/offre/MarquesOffre";
+import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
 import stylesOffre from "@/components/site/offre/PageOffre.module.css";
 import PointsOffre from "@/components/site/offre/PointsOffre";
 import ProblemeOffre from "@/components/site/offre/ProblemeOffre";
@@ -39,7 +22,8 @@ import ReferencesOffre from "@/components/site/offre/ReferencesOffre";
 import type { Section, TypeSection } from "@/types/contenu";
 import type { ContenuVille } from "@/types/implantation";
 
-import { etapesDe } from "./fil-ariane-mobile";
+import ChiffresVille from "./ChiffresVille";
+import HerosVille from "./HerosVille";
 import HubLocal from "./HubLocal";
 import MaillageVille from "./MaillageVille";
 import OuvreLaCible from "./OuvreLaCible";
@@ -47,7 +31,56 @@ import PanneauHerosRepliable from "./PanneauHerosRepliable";
 import stylesVille from "./PageVille.module.css";
 import ProblemeCartes, { ProblemePanneau } from "./ProblemeCartes";
 import QuestionsVille from "./QuestionsVille";
-import { DerouleRepliable } from "./SectionsRepliables";
+import RepliFormulaireMobile from "./RepliFormulaireMobile";
+import { DerouleRepliable, resumeOffre } from "./SectionsRepliables";
+
+/**
+ * Les pages dont le fichier du corpus écrit ses appels EN SECTIONS
+ * (« ## SECTION 7 . CTA », « ## SECTION 10 . CTA FINAL ») : la maquette mobile
+ * (`migen-mobile-parse.js`, `kindOf` → "cta") en fait deux blocs sombres
+ * « Passer à l'action », l'un entre 04 et 05, l'autre après les questions.
+ * Mesuré le 15/10 sur les 77 fichiers de `maquette/contenu/site/Implantations/` :
+ * Bordeaux seul. Partout ailleurs, la question finale est un paragraphe gras de
+ * la FAQ, donc sa DERNIÈRE QUESTION, et la bande d'appel vit dans le 04 replié.
+ */
+const APPELS_EN_SECTIONS = new Set(["/implantations/bordeaux/"]);
+
+/** Le sur-titre du héros dans la maquette mobile, par gabarit (dc.html L490, `KICK`). */
+const SURTITRE_MOBILE: Readonly<Record<string, string>> = { "04": "Implantation", "06": "Département" };
+
+/**
+ * La photo de tête au téléphone (dc.html, `heroSrc`) : la photo de la ville
+ * pour les 12 pages que liste `maquette/contenu/site/photos-villes.json`, la
+ * photo de la rubrique (`FIMG.implantations`) partout ailleurs. Les deux
+ * sont déjà servies par le site (photo du hub local, tête du hub).
+ */
+const PHOTO_VILLE_MAQUETTE = new Set([
+  "/implantations/bordeaux/",
+  "/implantations/lyon/",
+  "/implantations/maintenance-industrielle-dunkerque/",
+  "/implantations/maintenance-industrielle-le-havre/",
+  "/implantations/maintenance-industrielle-lorient/",
+  "/implantations/maintenance-industrielle-orleans/",
+  "/implantations/maintenance-industrielle-quimper/",
+  "/implantations/marseille/",
+  "/implantations/nantes/",
+  "/implantations/paris/",
+  "/implantations/paris/rouen/",
+  "/implantations/strasbourg/",
+]);
+const PHOTO_RUBRIQUE = "/assets/web/ph-hero-raffinerie.jpg";
+
+/** Le bloc sombre « Passer à l'action » de la maquette (dc.html L131, `C_DARK`). */
+function PasserALAction({ children, mobileSeulement }: { children: ReactNode; mobileSeulement?: boolean }) {
+  return (
+    <div className={stylesVille.passerAction} data-mobile-seulement={mobileSeulement ? "" : undefined}>
+      <div data-mobile-seulement="" className={stylesVille.passerActionSurtitre}>
+        Passer à l’action
+      </div>
+      {children}
+    </div>
+  );
+}
 
 /**
  * Gabarit « 04 Ville », 66 pages de `/implantations/`, plus les 8 du gabarit
@@ -90,29 +123,29 @@ import { DerouleRepliable } from "./SectionsRepliables";
  * rangée, questions, maillage). Composant SERVEUR : fil
  * d'Ariane et maillage du cocon restent en props (CLAUDE.md §4).
  *
- * LA COUCHE MOBILE V2 (14/10), et RIEN ne change au-dessus de 880 px :
- * chaque ajout vit sous `data-mobile-seulement` (masqué à 881 px et plus par
- * `app/globals.css`, `!important`), dans un `<summary>` que le bureau ne
- * montre pas, ou dans une règle CSS sous 880 px. Tout est relevé dans
- * `maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html` :
+ * LA MAQUETTE MOBILE V2, BLOC PAR BLOC (14/10 au soir), et RIEN ne change
+ * au-dessus de 880 px. La suite des blocs au téléphone est celle de
+ * `maquette/mobile-v2/maquette/Migen - Mobile v2.dc.html` (`renderVals`,
+ * gabarits « 04 » et « 06 ») :
  *
- *   · le fil d'Ariane du héros (dc.html L104, `hasCrumbs`) : `FilArianeVue`
- *     sur les étapes dérivées de l'index (`./fil-ariane-mobile`) ;
- *   · le héros compact (G2) : h1 et chapô aux tailles de la maquette, et le
- *     panneau de formulaire REPLIÉ (`PanneauHerosRepliable`), jamais retiré ;
- *   · le repli des sections (G1, G3) : le problème, première section, reste
- *     ouvert (`nOpen = 1`) ; le déroulé se replie (`SectionsRepliables`),
- *     comme l'offre, les garanties, les
- *     références, le hub local et le maillage des offres, qui le faisaient
- *     déjà ; le rythme `--sec` passe à 64 px sous 880 px ;
- *   · la cadence de conversion (`AvecConversionMobile`) : photo + CTA après
- *     la 2e section de contenu, bandeau « Être rappelé » après la 5e, sans
- *     rappel final ajouté (« 10 Appel final » le porte déjà) ;
- *   · les pastilles du maillage (dc.html L125 kidsTop et L134 kidsBottom) :
- *     `PastillesCocon` variante « enfants » sous le héros (« Départements
- *     couverts » des hubs) et variante « soeurs » avant l'appel final
- *     (« Dans la même rubrique », G5 : Lille était à ZÉRO lien vers une
- *     autre page ville, elle en porte 55).
+ *   héros (fil · photo de la ville · sur-titre · H1 · action | téléphone)
+ *   · « Départements couverts » (hubs) · chapô et horaires · « Chiffres clés »
+ *   en tuiles 2 x 2 · 01 Le problème (ouvert) · 02 L'offre · photo + appel
+ *   · 03 Le déroulé · 04 Ce que nous garantissons · 05 Nos références
+ *   (ouvert) · « Une question sur votre site ? » · Questions fréquentes en
+ *   liste de cartes · « Dans la même rubrique » · appel final
+ *
+ * Le dessin vient du SOCLE PARTAGÉ des gabarits à sections (`app/globals.css`,
+ * `data-heros-*`, `data-mm-*`, `data-ordre-mobile`…), le même que l'offre :
+ * `HerosVille`, `ChiffresVille`, les blocs de `components/site/offre/` et
+ * ceux de ce dossier posent ses attributs. Les écrans de bureau que la
+ * maquette ne dessine pas (logos, certifications, hub local, bande d'appel,
+ * marques, offres : `data-mobile-apres-sections`) s'effacent au téléphone
+ * (relecture du 15/10 : la maquette enchaîne « 05 Nos références » et le
+ * bandeau « Une question sur votre site ? »), leur texte reste dans le DOM ;
+ * les bandes d'appel cèdent la place à la cadence de conversion
+ * (`AvecConversionMobile`). L'ordre du DOM, celui que lisent Google et le
+ * bureau, ne change pas.
  *
  * Porte : `bun components/site/implantation/verification-mobile-ville.tsx`.
  */
@@ -145,6 +178,7 @@ function sectionDeType<T extends TypeSection>(
     | undefined;
 }
 
+
 export default function PageVille({
   titre,
   contenu,
@@ -153,9 +187,7 @@ export default function PageVille({
   filAriane,
   maillage,
 }: ProprietesPageVille) {
-  const etapes = chemin ? etapesDe(chemin) : [];
   const actions = liensSurs(contenu.actions ?? []);
-  const chiffres = contenu.chiffres ?? [];
   const sections = contenu.sections ?? [];
 
   const probleme = sectionDeType(sections, "probleme");
@@ -177,20 +209,30 @@ export default function PageVille({
      cadence plutôt qu'un gabarit deviné. */
   const entree = chemin ? entreeDe(chemin) : undefined;
   const cadence = entree ? gabaritDe(entree) : undefined;
+  const appelsEnSections = !!chemin && APPELS_EN_SECTIONS.has(chemin);
+  /* L'appel final du corpus, porté au téléphone par la FAQ ou par un bloc
+     sombre. Sans libellé de bouton dans la section, celui du panneau du bas
+     (`appelBouton`), le même texte que la maquette met sous la question. */
+  const appelDeFin = ctaFinal?.question
+    ? { ...ctaFinal, bouton: ctaFinal.bouton || contenu.appelBouton || "" }
+    : undefined;
+  const appelBref = contenu.brefBande ? (
+    <AppelOffre question={contenu.brefBande} bouton={contenu.brefBouton} mention={contenu.brefMention} />
+  ) : null;
 
   /* 6 · 03 Problème : TROIS dessins, choisis par la donnée (`variante`) :
-     rangée de cartes (29 pages), panneau sombre (10), colonne à photo (27, le
+     rangée de cartes (35 pages), panneau sombre (10), colonne à photo (29, le
      défaut). La source les tire du hachage de l'URL et du nombre de puces ;
      `verification-ville.tsx` recalcule la règle. C'est la PREMIÈRE section de
-     contenu, et la maquette mobile la garde OUVERTE (dc.html L451,
-     `nOpen = 1` hors gabarit 01) : la rangée et la colonne ne se replient
-     pas, le panneau sombre, déjà repliable, reste ouvert au chargement. */
+     contenu, « 01 Le problème », et la maquette mobile la garde OUVERTE
+     (dc.html, `nOpen = 1` hors gabarit 01) : les trois dessins sont une
+     carte repliable dépliée au chargement. */
   const blocProbleme = !probleme ? null : probleme.variante === "rangee" ? (
     <ProblemeCartes section={probleme} sansTitre={contenu.problemeSansTitre} />
   ) : probleme.variante === "panneau-sombre" ? (
     <ProblemePanneau section={probleme} sansTitre={contenu.problemeSansTitre} toujoursOuvert />
   ) : (
-    <ProblemeOffre section={probleme} altPhoto={titre} photo={contenu.problemePhoto} />
+    <ProblemeOffre section={probleme} altPhoto={titre} photo={contenu.problemePhoto} pli="ouvert" />
   );
 
   // ponytail: un fragment par section du corpus, même si la section manque
@@ -198,28 +240,58 @@ export default function PageVille({
   // cadence d'un cran, jamais au point de perdre un mot.
   const contenus = [
     <Fragment key="probleme">{blocProbleme}</Fragment>,
-    /* 7 · 04 Offre, 8 · Appel · offre (sombre), Complément 4 */
+    /* 7 · 04 Offre, 8 · Appel · offre (sombre), Complément 4. Au téléphone, le
+       complément est rangé DANS « 02 L'offre » et en fait le résumé, comme la
+       maquette (son paragraphe d'après le tableau) et la page d'offre ; sa
+       carte autonome s'efface sous 881 px (`doublonMobile`). */
     <Fragment key="offre">
-      {offre ? <PointsOffre section={offre} /> : null}
+      {offre ? (
+        <PointsOffre
+          section={offre}
+          apres={<ComplementsDansCarte blocs={contenu.complementOffre} />}
+          resume={resumeOffre(offre, contenu.complementOffre)}
+        />
+      ) : null}
       {bande("sombre")}
-      {contenu.complementOffre?.length ? <ComplementsOffre blocs={contenu.complementOffre} /> : null}
+      {contenu.complementOffre?.length ? (
+        <ComplementsOffre blocs={contenu.complementOffre} doublonMobile={!!offre} />
+      ) : null}
     </Fragment>,
-    /* 9 · 05 Déroulé, replié au téléphone (G1) */
+    /* 9 · 05 Déroulé, « 03 Le déroulé » replié au téléphone */
     <Fragment key="deroule">{deroule ? <DerouleRepliable section={deroule} /> : null}</Fragment>,
-    /* 10 · 06 Garanties, 11 · 07 Appel, Marques maintenues */
+    /* 10 · 06 Garanties, 11 · 07 Appel, Marques maintenues (hors maquette
+       mobile : après les sections au téléphone) */
     <Fragment key="garanties">
       {garanties ? <GarantiesOffre section={garanties} /> : null}
-      {contenu.brefBande ? (
-        <AppelOffre question={contenu.brefBande} bouton={contenu.brefBouton} mention={contenu.brefMention} />
-      ) : null}
+      {/* Au téléphone : bloc sombre « Passer à l'action » entre 04 et 05 si le
+          corpus l'écrit en section (Bordeaux) ; sinon la maquette le range
+          DANS le 04 replié, et la bande, absente de sa colonne, s'efface
+          (`data-mobile-apres-sections`, texte gardé dans le DOM). */}
+      {appelBref && appelsEnSections ? <PasserALAction>{appelBref}</PasserALAction> : appelBref}
       {contenu.marquesFamille ? (
-        <MarquesOffre famille={contenu.marquesFamille} familles={contenu.marquesFamilles} />
+        /* Hors maquette mobile : après les sections, en carte repliée sans
+           numéro ; l'étiquette reprend le sur-titre et le H2 du bloc. Au-dessus
+           de 880 px, la bascule n'existe pas (`blocPliablePartage`). */
+        <div data-mobile-apres-sections="" className={`${stylesOffre.blocPliablePartage} ${stylesVille.repliHorsSection}`}>
+          <SectionPliableMobile
+            enTete={<EtiquettePli surtitre="Marques et constructeurs" titre="Les équipements que nous maintenons déjà" />}
+            numero={false}
+          >
+            <MarquesOffre famille={contenu.marquesFamille} familles={contenu.marquesFamilles} />
+          </SectionPliableMobile>
+        </div>
       ) : null}
     </Fragment>,
-    /* 12 · 08 Références, 13 · Appel · références */
+    /* 12 · 08 Références, « 05 Nos références », ouvert au téléphone comme
+       dans la maquette (dc.html : `isRef` ouvre la carte), 13 · Appel ·
+       références. LE REPÈRE `data-queue-mobile` ferme la suite des sections :
+       au téléphone, tout ce qui le suit (le bandeau « Une question sur votre
+       site ? », les questions, la fin de page) passe après les écrans hors
+       maquette (socle, `main[data-ordre-mobile]`). Sans boîte, sans texte. */
     <Fragment key="preuves">
-      {preuves ? <ReferencesOffre section={preuves} dateBrute /> : null}
+      {preuves ? <ReferencesOffre section={preuves} dateBrute toujoursOuvert /> : null}
       {bande()}
+      <span data-queue-mobile="" hidden />
     </Fragment>,
   ];
 
@@ -233,115 +305,45 @@ export default function PageVille({
       className={`mg-site ${stylesOffre.gabarit} ${stylesVille.racineVille}`}
       style={{ "--sec": "120px" } as CSSProperties}
     >
-      <main style={{ paddingTop: 62 }}>
+      {/* `data-ordre-mobile` : au téléphone, la colonne de la maquette (socle
+          partagé, `app/globals.css`). Au-dessus de 880 px, aucune règle. */}
+      <main data-ordre-mobile="" style={{ paddingTop: 62 }}>
         {filAriane}
 
         {/* 0 · 01 Héros */}
-        <section className={stylesVille.herosVille} style={HERO}>
-          <div
-            className="mg-r2"
-            style={{
-              display: "grid",
-              gridTemplateColumns: heroFormulaire ? HERO_GRILLE : "minmax(0,1fr)",
-              gap: 52,
-              alignItems: "start",
-            }}
-          >
-            <div>
-              {/* Le fil d'Ariane de la maquette mobile (dc.html L104), sous
-                  881 px seulement : les captures de bureau du gabarit n'en
-                  dessinent aucun, `data-mobile-seulement` le retire du bureau
-                  et les portes qui comparent à la capture l'écartent. */}
-              {etapes.length > 0 ? (
-                <div data-mobile-seulement="" className={stylesVille.filMobile}>
-                  <FilArianeVue etapes={etapes} />
-                </div>
-              ) : null}
-              {contenu.pastille ? (
-                <div style={HERO_RANGEE_PASTILLE}>
-                  <span style={PASTILLE}>
-                    <span aria-hidden="true" style={PASTILLE_PUCE} />
-                    {contenu.pastille}
-                  </span>
-                </div>
-              ) : null}
-              {/* Les classes ne portent que des règles mobiles (maquette
-                  mobile, h1 27px/1.1 et sous-titre 15px/1.6, dc.html
-                  L107-109) : au-dessus de 880 px elles sont vides, le style
-                  en ligne de la capture reste seul maître. */}
-              <h1 className={stylesVille.titreHerosMobile} style={TITRE1}>
-                {titre}
-              </h1>
-              {contenu.chapeau ? (
-                <p className={stylesVille.chapeauHerosMobile} style={CHAPEAU_HERO}>
-                  <TexteRiche texte={contenu.chapeau} />
-                </p>
-              ) : null}
-              {actions.length > 0 ? (
-                <div style={HERO_RANGEE_BOUTONS}>
-                  {actions.map((action) => (
-                    <Link
-                      key={action.href}
-                      href={action.href}
-                      prefetch={false}
-                      className={stylesOffre.boutonPrincipal}
-                      style={BOUTON_HERO}
-                    >
-                      {action.libelle}
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
-              {contenu.mention ? <p style={HERO_MENTION}>{contenu.mention}</p> : null}
-            </div>
-            {heroFormulaire ? (
-              /* G2 : le panneau se replie au téléphone, voir le composant. */
+        <HerosVille
+          titre={titre}
+          pastille={contenu.pastille}
+          chapeau={contenu.chapeau}
+          actions={actions}
+          mention={contenu.mention}
+          chemin={chemin}
+          chapeauHaut={appelsEnSections}
+          surtitreMobile={cadence ? SURTITRE_MOBILE[cadence] : undefined}
+          photo={chemin && !PHOTO_VILLE_MAQUETTE.has(chemin) ? PHOTO_RUBRIQUE : contenu.hubLocal?.photo}
+          panneau={
+            heroFormulaire ? (
+              /* Masqué au téléphone tant qu'on ne le vise pas : voir le composant. */
               <PanneauHerosRepliable
                 formulaire={formulaire}
                 titre={contenu.formulaireHeroTitre!}
                 pastille={contenu.formulaireHeroMention}
               />
-            ) : null}
-          </div>
-        </section>
+            ) : undefined
+          }
+        />
 
-        {/* Maquette mobile, boîte HAUTE du maillage (dc.html L125, kidsTop) :
-            « Départements couverts » pour les pages qui ont des enfants dans
-            l'index (les hubs : Lyon en a 5). Mobile seulement, le composant
-            porte lui-même `data-mobile-seulement`. */}
-        {chemin ? <PastillesCocon chemin={chemin} variante="enfants" /> : null}
+        {/* 1 · 01 Chiffres, « Chiffres clés » en tuiles au téléphone */}
+        <ChiffresVille chiffres={contenu.chiffres ?? []} />
 
-        {/* 1 · 01 Chiffres */}
-        {chiffres.length > 0 ? (
-          <section style={SECTION_CHIFFRES}>
-            <div
-              className="mg-rmulti"
-              style={{
-                ...GRILLE_CHIFFRES,
-                gridTemplateColumns: `repeat(${chiffres.length},minmax(0,1fr))`,
-              }}
-            >
-              {chiffres.map((chiffre, rang) => (
-                <div
-                  key={`${chiffre.valeur}-${chiffre.libelle}`}
-                  style={
-                    rang > 0 ? { ...CARTE_CHIFFRE, borderLeft: "1px solid var(--line)" } : CARTE_CHIFFRE
-                  }
-                >
-                  <div style={CHIFFRE_VALEUR}>{chiffre.valeur}</div>
-                  <div style={CHIFFRE_LIBELLE}>{chiffre.libelle}</div>
-                </div>
-              ))}
-            </div>
-          </section>
-        ) : null}
-
-        {/* 2 · 02 Logos, 3 · Réassurance, 4 · Appel · domaines */}
+        {/* 2 · 02 Logos, 3 · Réassurance, 4 · Appel · domaines. Au téléphone,
+            logos et réassurance passent après les sections (ils portent
+            `data-mobile-apres-sections`), la bande cède la place à la cadence. */}
         <LogosClients />
         <Reassurance />
         {bande()}
 
-        {/* 5 · Hub local */}
+        {/* 5 · Hub local, après les sections au téléphone (même attribut) */}
         {contenu.hubLocal ? <HubLocal hub={contenu.hubLocal} /> : null}
 
         {/* 6 à 13 : LES CINQ SECTIONS DE CONTENU, et la cadence de conversion
@@ -372,8 +374,22 @@ export default function PageVille({
           contenus
         )}
 
-        {/* 14 · 09 Questions */}
-        {objections ? <QuestionsVille section={objections} /> : null}
+        {/* 14 · 09 Questions, « Questions fréquentes » en liste au téléphone.
+            La question finale du corpus y est la DERNIÈRE question au
+            téléphone (maquette : paragraphe gras de la FAQ) ; pour Bordeaux,
+            un bloc sombre « Passer à l'action » juste après. */}
+        {objections ? (
+          <QuestionsVille section={objections} derniere={appelsEnSections ? undefined : appelDeFin} />
+        ) : null}
+        {appelsEnSections && appelDeFin ? (
+          <PasserALAction mobileSeulement>
+            <AppelOffre
+              question={appelDeFin!.question}
+              bouton={{ libelle: appelDeFin!.bouton, href: appelDeFin!.href ?? "#mgx-form" }}
+              mention={appelDeFin!.rappel}
+            />
+          </PasserALAction>
+        ) : null}
 
         {/* 15 · Maillage · offres */}
         <MaillageVille />
@@ -389,19 +405,27 @@ export default function PageVille({
             replié et jamais retiré : tous les liens restent dans le DOM. */}
         {chemin ? <PastillesCocon chemin={chemin} variante="soeurs" /> : null}
 
+        {/* Maquette mobile, carte « Être rappelé » de bas de page (dc.html
+            L138, `#etre-rappele`, la cible des bandeaux), téléphone seulement. */}
+        {chemin ? <RappelFinalMobile /> : null}
+
         {/* 16 · 10 Appel final : la capture pose l'ancre `#mgx-form` sur la
-            section. `#etre-rappele` l'enveloppe : c'est la cible du bandeau
-            de la couche mobile (dc.html L437), que la maquette pose sur son
-            mini-formulaire de bas de page, et qui est ici ce formulaire. Une
-            enveloppe sans dessin : le rendu de bureau ne bouge pas. */}
-        <div id="etre-rappele" style={{ scrollMarginTop: 90 }}>
-          <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
-            <AppelFinal question={ctaFinal?.question} formulaire={formulaire} bouton={contenu.appelBouton} />
-          </div>
+            section. Au téléphone, le grand bloc se REPLIE derrière le libellé
+            de son panneau (`RepliFormulaireMobile`) : la carte « Être rappelé »
+            ci-dessus le remplace, et l'ouvre en lui passant sa saisie. Sur
+            bureau, la bascule n'existe pas et le bloc est rendu tel quel. */}
+        <div id={chemin ? undefined : "etre-rappele"} className={stylesVille.appelFinal} style={{ scrollMarginTop: 90 }}>
+          <RepliFormulaireMobile etiquette={contenu.appelBouton ?? "Parler à un chargé d'affaires"}>
+            <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
+              <AppelFinal question={ctaFinal?.question} formulaire={formulaire} bouton={contenu.appelBouton} />
+            </div>
+          </RepliFormulaireMobile>
         </div>
 
         {maillage ? (
-          <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}>{maillage}</div>
+          <div className={stylesVille.maillageBas} style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}>
+            {maillage}
+          </div>
         ) : null}
 
         {/* En dernier : son effet passe après ceux qui replient les blocs. */}

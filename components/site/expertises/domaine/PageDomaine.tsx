@@ -4,14 +4,25 @@ import type { ReactNode } from "react";
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 import {
+  APPEL_FINAL,
   FilArianeMobile,
   HERO_COMPACT,
   MarquesRepliees,
+  PANNEAU_HEROS,
+  photoDeTete,
+  PhotoTeteMobile,
+  QuestionFinaleMobile,
+  QUEUE_MAILLAGE,
   RACINE_MOBILE,
+  RANGEE_PASTILLE_HEROS,
+  SurtitreHerosMobile,
+  TitreChiffresMobile,
+  TUILES_CHIFFRES,
 } from "@/components/site/expertises/mobile";
 import TelephoneHeros from "@/components/site/offre/TelephoneHeros";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
-import { CIBLE_CONTACT, ID_RAPPEL_FINAL } from "@/components/site/mobile/conversion-donnees";
+import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
+import { CIBLE_CONTACT } from "@/components/site/mobile/conversion-donnees";
 import AppelFinal from "@/components/site/offre/AppelFinal";
 import BandeAppel from "@/components/site/offre/BandeAppel";
 import ComplementsOffre from "@/components/site/offre/ComplementsOffre";
@@ -160,14 +171,23 @@ export default function PageDomaine({
     ? { libelle: actions[0].libelle, href: CIBLE_CONTACT }
     : undefined;
 
+  /* La photo du haut de page mobile, celle de la maquette : voir
+     `photoDeTete` (`../mobile`). */
+  const photoTete = chemin ? photoDeTete(chemin) : undefined;
+
   return (
     /* La racine `.mgx-root` de `MigenExpertise`. `--sec` vaut 120 px sur
        bureau, comme la capture, et 64 px sous 881 px : voir `RACINE_MOBILE`.
        Les règles mobiles du gabarit sont celles que `PageOffre.module.css`
        porte sous `.gabarit`. */
     <div className={`mg-site ${stylesOffre.gabarit} ${RACINE_MOBILE}`}>
-      <main style={{ paddingTop: 62 }}>
-        {chemin ? <FilArianeMobile chemin={chemin} /> : null}
+      {/* `data-ordre-mobile` : au téléphone, les blocs que la maquette
+          mobile ne porte pas (logos, réassurance, secteurs, offres, marques,
+          `data-mobile-apres-sections`) passent après ses sections, avant le
+          bandeau « Une question sur votre site ? » et la FAQ (socle de
+          `app/globals.css`). Le DOM, celui du bureau et de Google, ne bouge
+          pas. */}
+      <main data-ordre-mobile="" style={{ paddingTop: 62 }}>
         {filAriane}
 
         {/* ------------------------------------------------ 0. « 01 Héros » */}
@@ -184,9 +204,14 @@ export default function PageDomaine({
               alignItems: "start",
             }}
           >
-            <div>
+            <div data-heros-colonne="">
+              {/* Le fil d'Ariane de la maquette (dc.html L104), en tête de la
+                  colonne du héros (socle : une ligne, 12 px). */}
+              {chemin ? <FilArianeMobile chemin={chemin} /> : null}
+              <PhotoTeteMobile src={photoTete} alt={titre} />
+              {chemin ? <SurtitreHerosMobile chemin={chemin} /> : null}
               {contenu.pastille ? (
-                <div style={HERO_RANGEE_PASTILLE}>
+                <div className={RANGEE_PASTILLE_HEROS} style={HERO_RANGEE_PASTILLE}>
                   <span style={PASTILLE}>
                     <span aria-hidden="true" style={PASTILLE_PUCE} />
                     {contenu.pastille}
@@ -197,13 +222,13 @@ export default function PageDomaine({
               <h1 style={TITRE1}>{titre}</h1>
 
               {contenu.chapeau ? (
-                <p style={CHAPEAU_HERO}>
+                <p data-heros-chapeau="" style={CHAPEAU_HERO}>
                   <TexteRiche texte={contenu.chapeau} />
                 </p>
               ) : null}
 
               {actions.length > 0 ? (
-                <div style={HERO_RANGEE_BOUTONS}>
+                <div data-heros-boutons="" style={HERO_RANGEE_BOUTONS}>
                   {actions.map((action) =>
                     action.href.startsWith("#") ? (
                       <a
@@ -230,27 +255,31 @@ export default function PageDomaine({
                 </div>
               ) : null}
 
+              {/* « Les spécialités du domaine », les pastilles de la maquette
+                  mobile sous les boutons du héros (dc.html L501, `kidsTop`),
+                  avant le chapô. Sous 881 px seulement ; rien pour un
+                  domaine sans page fille. Dans la colonne du héros pour que
+                  le chapô passe après elles (`order`, voir `../mobile`). */}
+              {chemin ? <PastillesCocon chemin={chemin} variante="enfants" /> : null}
+
               {contenu.mention ? (
-                <p style={HERO_MENTION}>{contenu.mention}</p>
+                <p data-heros-mention="" style={HERO_MENTION}>{contenu.mention}</p>
               ) : null}
             </div>
 
-            {/* G2, LE PANNEAU DE FORMULAIRE SE REPLIE AU TÉLÉPHONE : voir
-                `specialite/PageSpecialite.tsx`, même arbitrage. */}
+            {/* G2, LE PANNEAU DE FORMULAIRE DU HÉROS N'EST PAS À L'ÉCRAN AU
+                TÉLÉPHONE (`PANNEAU_HEROS`) : voir `../mobile`. */}
             {heroFormulaire ? (
-              <PanneauHerosRepliable
-                formulaire={formulaire}
-                titre={contenu.formulaireHeroTitre!}
-                pastille={contenu.formulaireHeroMention}
-              />
+              <div className={PANNEAU_HEROS}>
+                <PanneauHerosRepliable
+                  formulaire={formulaire}
+                  titre={contenu.formulaireHeroTitre!}
+                  pastille={contenu.formulaireHeroMention}
+                />
+              </div>
             ) : null}
           </div>
         </section>
-
-        {/* « Les spécialités du domaine », les pastilles de la maquette mobile
-            sous le héros (dc.html L501, `kidsTop`). Sous 881 px seulement ;
-            rien pour un domaine sans page fille. */}
-        {chemin ? <PastillesCocon chemin={chemin} variante="enfants" /> : null}
 
         {/* -------------------------------------------- 1. « 01 Chiffres » */}
 
@@ -258,9 +287,11 @@ export default function PageDomaine({
             accompagnés » compris (README de passation : +200, jamais
             « réguliers »). `g3-hs`, comme la capture : une colonne sous 620 px. */}
         {chiffres.length > 0 ? (
-          <section style={SECTION_CHIFFRES}>
+          <section data-chiffres-mobile="" style={SECTION_CHIFFRES}>
+            <TitreChiffresMobile />
             <div
-              className="g3-hs"
+              className={`g3-hs ${TUILES_CHIFFRES}`}
+              data-tuiles-chiffres=""
               style={{
                 ...GRILLE_CHIFFRES,
                 gridTemplateColumns: `repeat(${chiffres.length},minmax(0,1fr))`,
@@ -285,6 +316,9 @@ export default function PageDomaine({
 
         {/* --------------------------------------------- 2. « 02 Logos » */}
 
+        {/* Logos et réassurance : des cartes sans numéro, que le téléphone
+            range après les sections de la maquette (leurs composants portent
+            `data-mobile-apres-sections`). */}
         <LogosClients />
 
         {/* -------------------------------------------- 3. Réassurance */}
@@ -319,7 +353,7 @@ export default function PageDomaine({
             section={probleme}
             altPhoto={titre}
             photo={contenu.problemePhoto}
-            replie={aReponseDirecte}
+            pli={aReponseDirecte ? "replie" : "ouvert"}
           />
         ) : null}
 
@@ -354,8 +388,9 @@ export default function PageDomaine({
         {/* ------------------------------------------- 8. « 05 Déroulé » */}
 
         {/* Replié au téléphone, comme dans la maquette (« 03 Le déroulé »),
-            par le repli sur demande du bloc partagé. */}
-        {deroule ? <DerouleOffre section={deroule} pli="replie" /> : null}
+            par le repli sur demande du bloc partagé. Sans résumé : la section
+            ne porte que ses étapes, et dc.html `teaseOf` n'en tire rien. */}
+        {deroule ? <DerouleOffre section={deroule} pli="replie" resume={null} /> : null}
 
         {/* ----------------------------------------- 9. « 06 Garanties » */}
 
@@ -388,6 +423,16 @@ export default function PageDomaine({
         {preuves ? <ReferencesOffre section={preuves} toujoursOuvert /> : null}
         </>
 
+        </AvecConversionMobile>
+
+        {/* LE DÉBUT DE LA FIN DE PAGE AU TÉLÉPHONE : la FAQ et tout ce qui
+            suit restent après les blocs déplacés par
+            `data-mobile-apres-sections`, même sur une page trop courte pour
+            que la cadence pose son bandeau (qui porte aussi ce repère).
+            Masqué partout, sans texte. La FAQ est sortie de la cadence sans
+            rien y changer : dernière enfant, rien ne s'insérait après elle. */}
+        <div data-queue-mobile="" hidden />
+
         {/* --------------------------------------- 14. « 09 Questions » */}
 
         {/* La carte sombre à photo `mg-faqph` de la maquette : la capture ne
@@ -411,27 +456,28 @@ export default function PageDomaine({
             }}
           />
         ) : null}
-        </AvecConversionMobile>
 
         {/* « Dans la même rubrique », la boîte basse de la maquette mobile
             (dc.html L506) : les domaines frères. Sous 881 px seulement. */}
+        {/* La question de l'appel final, dernière carte de la FAQ au
+            téléphone (`QuestionFinaleMobile`). */}
+        <QuestionFinaleMobile cta={ctaFinal} />
+
         {chemin ? <PastillesCocon chemin={chemin} variante="soeurs" /> : null}
 
         {/* ------------------------------------- 15. « 10 Appel final » */}
 
         {/* L'ancre du bandeau « Être rappelé » (`#etre-rappele`) : voir
             `specialite/PageSpecialite.tsx`. Mobile seulement. */}
-        <span
-          id={ID_RAPPEL_FINAL}
-          data-mobile-seulement=""
-          style={{ display: "block", scrollMarginTop: 90 }}
-        />
+        {/* La carte « Être rappelé » de la maquette, qui clôt la page au
+            téléphone et porte l'ancre `#etre-rappele` du bandeau. */}
+        <RappelFinalMobile />
 
         {/* L'ANCRE `#mgx-form` est posée ici parce que la capture la pose sur
             cette section (`id="mgx-form"`, `scroll-margin-top: 90px`) : le
             bouton de la FAQ et celui du bento la visent. `AppelFinal` ne porte
             pas d'ancre lui-même, l'enveloppe la lui donne sans le toucher. */}
-        <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
+        <div id="mgx-form" className={APPEL_FINAL} style={{ scrollMarginTop: 90 }}>
           <AppelFinal
             question={ctaFinal?.question}
             formulaire={formulaire}
@@ -441,6 +487,7 @@ export default function PageDomaine({
 
         {maillage ? (
           <div
+            className={QUEUE_MAILLAGE}
             style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}
           >
             {maillage}

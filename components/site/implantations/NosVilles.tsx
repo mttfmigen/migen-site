@@ -257,11 +257,15 @@ export default function NosVilles({ villes }: { villes: DonneesNosVilles }) {
                phrase, il ne peut pas porter un `h2`. `<summary>` accepte du
                contenu de flux, le `div` y est valide. */
             <div>
-              <span style={{ ...SURTITRE, display: "block" }}>Nos implantations</span>
-              <h2 style={TITRE}>{villes.titre}</h2>
+              <span data-carte-surtitre="" style={{ ...SURTITRE, display: "block" }}>Nos implantations</span>
+              <h2 data-carte-titre="" style={TITRE}>{villes.titre}</h2>
             </div>
           }
           resume={villes.hubs.map((hub) => hub.hub).join(" · ")}
+          /* La maquette mobile ne numérote pas « Nos hubs » (dc.html L463)
+             et le montre ouvert, en rail de tuiles. */
+          numero={false}
+          toujoursOuvert
         >
           <p style={CHAPEAU}>{villes.chapeau}</p>
 
@@ -386,11 +390,12 @@ export default function NosVilles({ villes }: { villes: DonneesNosVilles }) {
           <SectionPliableMobile
             enTete={
               <div>
-                <span style={{ ...SURTITRE, display: "block", marginBottom: 10 }}>Au-delà des hubs</span>
-                <h3 style={TITRE_ANNUAIRE}>{villes.itinerantsTitre}</h3>
+                <span data-carte-surtitre="" style={{ ...SURTITRE, display: "block", marginBottom: 10 }}>Au-delà des hubs</span>
+                <h3 data-carte-titre="" style={TITRE_ANNUAIRE}>{villes.itinerantsTitre}</h3>
               </div>
             }
             resume={villes.regions.map((region) => region.region).join(" · ")}
+            numero={false}
           >
             <div className={styles.panneauBassins}>
               <div className={styles.bassinsGauche}>

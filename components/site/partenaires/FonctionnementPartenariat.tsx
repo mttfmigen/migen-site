@@ -1,6 +1,8 @@
 import type { CSSProperties } from "react";
 
 import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
 import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 import { ANCRE_FORMULAIRE_PARTENAIRES } from "./donnees";
@@ -9,6 +11,12 @@ import styles from "./FonctionnementPartenariat.module.css";
 /* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
 const SURTITRE_TEXTE = "Comment ça fonctionne";
 const TITRE_TEXTE = "Plusieurs métiers, un seul responsable.";
+
+/** Carte 03 du téléphone, après les deux partenaires. */
+export const SOMMAIRE_FONCTIONNEMENT: EntreeSommaire = {
+  id: "comment-ca-fonctionne",
+  titre: SURTITRE_TEXTE,
+};
 
 /**
  * « Plusieurs métiers, un seul responsable » : les trois temps d'un partenariat.
@@ -83,6 +91,7 @@ export default function FonctionnementPartenariat({
 }: Proprietes) {
   return (
     <SectionRepliee
+      id={SOMMAIRE_FONCTIONNEMENT.id}
       kicker={SURTITRE_TEXTE}
       titre={TITRE_TEXTE}
       resume={resumeDe(ETAPES.map((e) => e.titre))}
@@ -136,9 +145,11 @@ export default function FonctionnementPartenariat({
               Un partenariat n’a de valeur que si vous n’en voyez pas la
               complexité.
             </p>
+            {/* Au téléphone, la maquette mobile v2 n'a pas ce bouton : la barre
+                collante porte l'appel. Masqué sous 881 px, il reste servi. */}
             <a
               href={lienProjet}
-              className={styles.lienAccent}
+              className={`${styles.lienAccent} ${mobile.masqueMobile}`}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -159,6 +170,7 @@ export default function FonctionnementPartenariat({
             {ETAPES.map((etape) => (
               <div
                 key={etape.numero}
+                className={mobile.etapeCompacte}
                 style={
                   etape.pleine
                     ? { ...CARTE, ...ANTHRACITE }

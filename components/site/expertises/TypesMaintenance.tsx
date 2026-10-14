@@ -5,10 +5,11 @@ import type { CSSProperties } from "react";
 import { LARGEUR, SECTION, SURTITRE } from "@/components/site/blocs/habillage";
 import { resumeDe } from "@/components/site/blocs/resume-de-section";
 import { estCheminInterne } from "@/components/site/blocs/TexteRiche";
-import { PliMobile } from "@/components/site/expertises/mobile";
+import { phraseAvecLien, PliMobile } from "@/components/site/expertises/mobile";
 import { numerote } from "@/components/site/offre/texte-offre";
 import type { RangeeTypeHub } from "@/types/expertises";
 
+import m from "./mobile.module.css";
 import styles from "./PageExpertises.module.css";
 
 /**
@@ -33,6 +34,8 @@ export interface ProprietesTypesMaintenance {
   photo: string;
   etiquette: string;
   rangees: readonly RangeeTypeHub[];
+  /** La phrase du guide (complément de la page), rendue au téléphone seulement. */
+  complement?: string;
 }
 
 /* Bloc 348. `mg-r2` replie en une colonne sous 900px. */
@@ -158,18 +161,46 @@ export default function TypesMaintenance({
   photo,
   etiquette,
   rangees,
+  complement,
 }: ProprietesTypesMaintenance) {
   const retenues = rangees.filter((rangee) => estCheminInterne(rangee.href));
   if (retenues.length === 0) return null;
 
+  /* Le guide, parent des quatre fiches (« …/types-de-maintenance/ »). */
+  const guide = retenues[0].href.replace(/[^/]+\/$/, "");
+
   return (
-    <section style={SECTION}>
-      {/* G3, SE REPLIE AU TÉLÉPHONE : panneau photographique et rangées font
-          1 600 px à 390 px. L'étiquette reprend le surtitre et le H2 du
-          panneau, le résumé les intitulés des rangées ; le texte reste dans le
-          DOM, et rien ne bouge à 1280 px. */}
+    <section data-types-maintenance="" style={SECTION}>
+      {/* AU TÉLÉPHONE, LE DESSIN DE LA MAQUETTE MOBILE V2 (carte 01 du hub) :
+          « Quel type de maintenance pour quel besoin. » en gras, suivi de la
+          phrase du guide (le complément de la page, lien sur « types de
+          maintenance »), puis le tableau en cartes, une par type, « But » et
+          « Quand l'utiliser » en intitulés. Mêmes mots que le panneau de
+          bureau ; `data-mobile-seulement`, absent au-dessus de 880 px. */}
+      <div data-mobile-seulement="" className={m.listeMobile}>
+        <p className={m.introMobile}>
+          <strong>{titre}.</strong>
+          {complement ? <> {phraseAvecLien(complement, "types de maintenance", guide)}</> : null}
+        </p>
+        <div className={m.legendeMobile}>Type de maintenance · But · {etiquette}</div>
+        <div className={m.cartesTypes}>
+          {retenues.map((rangee) => (
+            <Link key={rangee.href} href={rangee.href} prefetch={false} className={m.carteType}>
+              <span data-type-titre="">{rangee.titre}</span>
+              <span data-colonne="But">{rangee.phrase}</span>
+              <span data-colonne={etiquette}>{rangee.quand}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
+      {/* Le panneau photographique et ses rangées, dessin de bureau
+          (1 600 px à 390 px) : hors de l'écran au téléphone, où les cartes
+          ci-dessus disent les mêmes mots. Le texte reste dans le DOM, et rien
+          ne bouge à 1280 px. */}
       <PliMobile
+        className={m.cacheMobile}
         style={LARGEUR}
+        numero={false}
         surtitre="Types de maintenance"
         titre={titre}
         resume={resumeDe(retenues.map((rangee) => rangee.titre))}

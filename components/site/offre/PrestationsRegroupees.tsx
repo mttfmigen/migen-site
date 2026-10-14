@@ -4,6 +4,9 @@ import { useId, type CSSProperties } from "react";
 import { LARGEUR, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
 import type { PrestationRegroupee, PrestationsRegroupees as Donnees } from "@/types/offre";
 
+import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import EtiquettePli from "./EtiquettePli";
 import { cibleSure } from "./LiensOffre";
 import { numerote } from "./texte-offre";
 
@@ -421,10 +424,29 @@ export default function PrestationsRegroupees({
     donnees.lien && cibleSure(donnees.lien.href) ? donnees.lien : undefined;
 
   return (
-    <section style={{ padding: "64px 0 0" }}>
+    /* Absent de la maquette mobile v2 : au téléphone, après ses sections
+       (`data-mobile-apres-sections`, socle de `app/globals.css`). */
+    <section
+      data-mobile-apres-sections=""
+      className={styles.apresSectionsMobile}
+      style={{ padding: "64px 0 0" }}
+    >
       <div style={LARGEUR}>
+        {/* Replié au téléphone comme « Ils nous font confiance », son voisin
+            de fin de sections : l'étiquette reprend le sur-titre et le H2 de
+            bureau, dont le doublon du corps s'efface sous 880 px. */}
+        <SectionPliableMobile
+          numero={false}
+          enTete={
+            <EtiquettePli
+              surtitre="Également dans cette offre"
+              titre="Les prestations regroupées ici"
+            />
+          }
+          resume={resumeDe(prestations.map((prestation) => prestation.titre))}
+        >
         <div style={ENTETE}>
-          <div>
+          <div data-doublon-mobile="">
             <div style={{ ...SURTITRE, marginBottom: 10 }}>
               Également dans cette offre
             </div>
@@ -468,6 +490,7 @@ export default function PrestationsRegroupees({
             </details>
           ))}
         </div>
+        </SectionPliableMobile>
       </div>
     </section>
   );

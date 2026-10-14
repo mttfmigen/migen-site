@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { CSSProperties, ReactNode } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, VERRE } from "@/components/site/blocs/habillage";
+import TexteRiche from "@/components/site/blocs/TexteRiche";
 import type { SectionProbleme } from "@/types/contenu";
 
 import EtiquettePli from "./EtiquettePli";
@@ -45,9 +46,51 @@ export interface ProprietesProblemeOffre {
    * chargement sous 880 px. Au-dessus de 880 px, rien ne change.
    */
   pli?: Pli;
+  /** Le texte que seule la maquette mobile rend, sous 881 px (`ProblemeMobile`). */
+  mobile?: ProblemeMobile;
 }
 
 export type Pli = "ouvert" | "replie";
+
+/**
+ * LE TEXTE DU PROBLÈME QUE LA MAQUETTE MOBILE V2 REND ET QUE LE BUREAU NE
+ * REND PAS (`/offres/bureau-etudes/`, relecture du tour 2) : la phrase clé
+ * (« ### » du corpus) et les paragraphes à tête grasse qui entourent les
+ * puces. Mots du corpus de la maquette, rendus sous 881 px seulement.
+ */
+export interface ProblemeMobile {
+  titre?: string;
+  /** Paragraphes avant les puces, en Markdown en ligne (`**gras**`). */
+  avant?: readonly string[];
+  /** Paragraphes après les puces. */
+  apres?: readonly string[];
+}
+
+/** La phrase clé et sa suite ne font qu'un paragraphe au téléphone (globals § 13). */
+function phrase(suite?: string) {
+  return suite ? { "data-mm-phrase": "" } : {};
+}
+
+function ParagraphesMobile({ textes }: { textes?: readonly string[] }) {
+  if (!textes?.length) return null;
+  return (
+    <div data-mobile-seulement="">
+      {textes.map((texte) => (
+        <p key={texte} data-mm-paragraphe="">
+          <TexteRiche texte={texte} />
+        </p>
+      ))}
+    </div>
+  );
+}
+
+/**
+ * LE TITRE DE LA CARTE AU TÉLÉPHONE, celui de la maquette mobile v2 : « 01 Le
+ * problème » sur les 21 pages relevées le 14/10 (offres, villes, secteurs,
+ * expertises), toutes porteuses de ce bloc. Le sur-titre et la phrase de
+ * bureau restent dans le corps de la carte.
+ */
+const TITRE_CARTE = "Le problème";
 
 /** La photo de la colonne gauche, identifiée sur `offres--residence.png`. */
 const PHOTO = "/assets/web/team-electric.jpg";
@@ -160,19 +203,20 @@ function Sombre({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
   return (
     <section data-screen-label="03 Problème" style={SECTION}>
       <div className={styles.blocPliablePartage} style={LARGEUR}>
-        <div className="mg-pad" style={PANNEAU_SOMBRE}>
+        <div className="mg-pad" data-panneau-mobile-clair="" style={PANNEAU_SOMBRE}>
           <div aria-hidden="true" style={LUEUR} />
           <div style={{ position: "relative" }}>
-            {/* Le titre de l'étiquette est en blanc : le panneau est
-                anthracite, le `var(--ink)` du motif commun y serait
-                illisible. */}
-            <PliMobile pli={pli} section={section} titre={titre} couleur="#fff">
-            <div style={{ ...SURTITRE, marginBottom: 16 }}>
+            {/* Au téléphone, le panneau anthracite s'efface
+                (`data-panneau-mobile-clair`) : la carte est blanche comme
+                les autres, et ses textes reprennent l'encre de la maquette. */}
+            <PliMobile pli={pli} section={section} titre={titre}>
+            <div data-doublon-mobile="" style={{ ...SURTITRE, marginBottom: 16 }}>
               Votre problématique
             </div>
-            {titre ? <h2 style={TITRE_SOMBRE}>{titre}</h2> : null}
-            <p style={SOUS_PHRASE_SOMBRE}>{suite}</p>
+            {titre ? <h2 data-mm-lead="" {...phrase(suite)} style={TITRE_SOMBRE}>{titre}</h2> : null}
+            <p data-mm-texte="" data-mm-suite="" style={SOUS_PHRASE_SOMBRE}>{suite}</p>
             <div
+              data-mm-kv=""
               className="mg-rmulti"
               style={{
                 display: "grid",
@@ -182,7 +226,7 @@ function Sombre({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
             >
               {section.puces.map((puce, rang) => (
                 <div key={puce.accroche ?? puce.texte} style={CARTE_SOMBRE}>
-                  <span style={NUMERO}>{numerote(rang)}</span>
+                  <span data-mm-num="" style={NUMERO}>{numerote(rang)}</span>
                   {/* `minWidth: 0` ET `overflowWrap` : un élément de flexbox ne descend
                       pas sous la largeur de son mot le plus long tant qu'il garde
                       `min-width: auto`, et la carte sort alors de son panneau, qui la
@@ -190,11 +234,11 @@ function Sombre({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
                       320 px. Invisible dès qu'il y a la place. */}
                   <div style={{ minWidth: 0, overflowWrap: "break-word" }}>
                     {puce.accroche ? (
-                      <div style={{ ...ACCROCHE, color: "#fff" }}>
+                      <div data-mm-kv-titre="" style={{ ...ACCROCHE, color: "#fff" }}>
                         {puce.accroche}
                       </div>
                     ) : null}
-                    <div style={{ ...TEXTE, color: "rgba(255,255,255,.62)" }}>
+                    <div data-mm-kv-texte="" style={{ ...TEXTE, color: "rgba(255,255,255,.62)" }}>
                       {puce.texte}
                     </div>
                   </div>
@@ -249,16 +293,17 @@ function Rangee({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
     <section data-screen-label="03 Problème" style={SECTION}>
       <div className={styles.blocPliablePartage} style={LARGEUR}>
         <PliMobile pli={pli} section={section} titre={titre}>
-        <div className="mg-r2" style={RANGEE_ENTETE}>
+        <div className="mg-r2" data-mm-cellules="" style={RANGEE_ENTETE}>
           <div>
-            <div style={{ ...SURTITRE, marginBottom: 18 }}>
+            <div data-doublon-mobile="" style={{ ...SURTITRE, marginBottom: 18 }}>
               Votre problématique
             </div>
-            {titre ? <h2 style={RANGEE_TITRE}>{titre}</h2> : null}
+            {titre ? <h2 data-mm-lead="" {...phrase(suite)} style={RANGEE_TITRE}>{titre}</h2> : null}
           </div>
-          {suite ? <p style={RANGEE_SOUS_PHRASE}>{suite}</p> : null}
+          {suite ? <p data-mm-texte="" data-mm-suite="" style={RANGEE_SOUS_PHRASE}>{suite}</p> : null}
         </div>
         <div
+          data-mm-kv=""
           className="g3-pbgrid mg-rmulti"
           style={{
             display: "grid",
@@ -270,6 +315,7 @@ function Rangee({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
           {section.puces.map((puce, rang) => (
             <div key={puce.accroche ?? puce.texte} style={RANGEE_CARTE}>
               <span
+                data-mm-num=""
                 style={{
                   font: "600 24px/1 var(--ft)",
                   letterSpacing: "-.05em",
@@ -281,6 +327,7 @@ function Rangee({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
               </span>
               {puce.accroche ? (
                 <div
+                  data-mm-kv-titre=""
                   style={{
                     font: "600 15px/1.35 var(--ft)",
                     letterSpacing: "-.018em",
@@ -291,7 +338,7 @@ function Rangee({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
                   {puce.accroche}
                 </div>
               ) : null}
-              <div style={{ font: "400 13px/1.55 var(--fb)", color: "var(--ink2)" }}>
+              <div data-mm-kv-texte="" style={{ font: "400 13px/1.55 var(--fb)", color: "var(--ink2)" }}>
                 {puce.texte}
               </div>
             </div>
@@ -305,39 +352,61 @@ function Rangee({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
 
 /**
  * LE REPLI DES TROIS DESSINS, motif « Blocs communs (pliables) » de la
- * maquette mobile : l'étiquette (`EtiquettePli`) répète le sur-titre et le H2,
- * qui restent à leur place de capture. Le résumé suit la
+ * maquette mobile : l'étiquette (`EtiquettePli`) porte le titre de la carte
+ * de la maquette (`TITRE_CARTE`), le sur-titre et le H2 de la capture restent
+ * dans le corps, en phrase clé (`data-mm-lead`). Le résumé suit la
  * maquette : les intitulés des puces joints par « · », avec le repli
  * `accroche ?? texte` pour qu'une puce sans accroche ne disparaisse pas du
  * compte.
  *
- * SANS `pli`, RIEN N'EST ENVELOPPÉ. SANS TITRE, NON PLUS : même règle que
- * `implantation/ProblemeCartes.tsx`, un bloc replié sans titre lisible est
- * refusé par `scripts/verifie-blocs-pliables.mjs`.
+ * SANS `pli`, RIEN N'EST ENVELOPPÉ. Le titre lisible qu'exige
+ * `scripts/verifie-blocs-pliables.mjs` est l'étiquette « Le problème », qui
+ * existe avec ou sans H2.
  */
 function PliMobile({
   pli,
   section,
-  titre,
-  couleur,
   children,
 }: {
   pli?: Pli;
   section: SectionProbleme;
-  titre: string;
-  couleur?: string;
+  /** Le H2 de la capture, quand elle en porte un ; la carte ne s'en sert pas. */
+  titre?: string;
   children: ReactNode;
 }) {
-  if (!pli || !titre) return <>{children}</>;
+  /* SANS PUNCHLINE, LA CARTE GARDE SON ÉTIQUETTE « Le problème » : c'est elle,
+     et non le H2, qui titre la carte (`/offres/bureau-etudes/`, dont le
+     problème sortait du rang des cartes numérotées, 14/10). */
+  if (!pli) return <>{children}</>;
   return (
     <SectionPliableMobile
       toujoursOuvert={pli === "ouvert"}
-      enTete={<EtiquettePli surtitre="Votre problématique" titre={titre} couleur={couleur} />}
-      resume={resumeDe(section.puces.map((puce) => puce.accroche ?? puce.texte))}
+      enTete={<EtiquettePli titre={TITRE_CARTE} />}
+      /* LA PHRASE CLÉ D'ABORD, comme la maquette (dc.html `teaseOf` : le
+         premier paragraphe de la section, « Votre maintenance tient sur deux
+         personnes et un tableur… ») ; sans elle, les intitulés des puces. */
+      resume={
+        section.punchline.trim() ||
+        resumeDe(section.puces.map((puce) => puce.accroche ?? puce.texte))
+      }
     >
       {children}
     </SectionPliableMobile>
   );
+}
+
+/**
+ * LA PHOTO QUE CE BLOC REND SUR BUREAU, ou `null`. Seul le dessin en colonne
+ * en porte une ; le panneau sombre et la rangée n'en ont pas. Exportée pour
+ * le héros mobile du gabarit, qui la reprend en tête de page (maquette mobile
+ * v2, dc.html L105 : une photo de héros, aucune dans les cartes).
+ */
+export function photoDuProbleme(
+  section: SectionProbleme,
+  photo?: string | null,
+): string | null {
+  if (section.variante === "panneau-sombre" || section.variante === "rangee") return null;
+  return photo === undefined ? PHOTO : photo;
 }
 
 export default function ProblemeOffre({
@@ -345,12 +414,13 @@ export default function ProblemeOffre({
   altPhoto,
   photo,
   pli,
+  mobile,
 }: ProprietesProblemeOffre) {
   if (section.variante === "panneau-sombre") return <Sombre section={section} pli={pli} />;
   if (section.variante === "rangee") return <Rangee section={section} pli={pli} />;
 
   const { titre, suite } = coupePunchline(section.punchline);
-  const source = photo === undefined ? PHOTO : photo;
+  const source = photoDuProbleme(section, photo);
 
   const corps = (
         <div
@@ -363,13 +433,19 @@ export default function ProblemeOffre({
           }}
         >
           <div className="g3-sticky" style={{ position: "sticky", top: 110 }}>
-            <div style={{ ...SURTITRE, marginBottom: 18 }}>
+            <div data-doublon-mobile="" style={{ ...SURTITRE, marginBottom: 18 }}>
               Votre problématique
             </div>
-            {titre ? <h2 style={TITRE}>{titre}</h2> : null}
-            {suite ? <p style={SOUS_PHRASE}>{suite}</p> : null}
+            {titre ? <h2 data-mm-lead="" {...phrase(suite)} style={TITRE}>{titre}</h2> : null}
+            {suite ? <p data-mm-texte="" data-mm-suite="" style={SOUS_PHRASE}>{suite}</p> : null}
+            {!titre && mobile?.titre ? (
+              <p data-mobile-seulement="" data-mm-lead="">
+                {mobile.titre}
+              </p>
+            ) : null}
+            <ParagraphesMobile textes={mobile?.avant} />
             {source ? (
-              <div style={CADRE_PHOTO}>
+              <div data-photo-probleme="" style={CADRE_PHOTO}>
                 <Image
                   src={source}
                   alt={altPhoto}
@@ -386,10 +462,10 @@ export default function ProblemeOffre({
             ) : null}
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 12 }}>
+          <div data-mm-kv="" style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 12 }}>
             {section.puces.map((puce, rang) => (
               <div key={puce.accroche ?? puce.texte} style={CARTE}>
-                <span style={NUMERO}>{numerote(rang)}</span>
+                <span data-mm-num="" style={NUMERO}>{numerote(rang)}</span>
                 {/* `minWidth: 0` ET `overflowWrap` : un élément de flexbox ne descend
                     pas sous la largeur de son mot le plus long tant qu'il garde
                     `min-width: auto`, et la carte sort alors de son panneau, qui la
@@ -397,13 +473,14 @@ export default function ProblemeOffre({
                     320 px. Invisible dès qu'il y a la place. */}
                 <div style={{ minWidth: 0, overflowWrap: "break-word" }}>
                   {puce.accroche ? (
-                    <div style={ACCROCHE}>{puce.accroche}</div>
+                    <div data-mm-kv-titre="" style={ACCROCHE}>{puce.accroche}</div>
                   ) : null}
-                  <div style={TEXTE}>{puce.texte}</div>
+                  <div data-mm-kv-texte="" style={TEXTE}>{puce.texte}</div>
                 </div>
               </div>
             ))}
           </div>
+          <ParagraphesMobile textes={mobile?.apres} />
         </div>
   );
 

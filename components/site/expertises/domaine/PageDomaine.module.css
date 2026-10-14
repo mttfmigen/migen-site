@@ -64,7 +64,10 @@
 /* `.g3-pad` : 620 px dans la feuille de la maquette VIVANTE (CSSOM relu le
    08/10 sur /expertises/robotique/), pas 900. */
 @media (max-width: 620px) {
-  .panneauProbleme {
+  /* Pas sur le panneau effacé au téléphone (`data-panneau-mobile-clair`,
+     socle de `app/globals.css`) : ce rembourrage, plus tardif à
+     spécificité égale, l'emportait et rétrécissait la carte « Le problème ». */
+  .panneauProbleme:not([data-panneau-mobile-clair]) {
     padding: 40px 24px !important;
   }
 }

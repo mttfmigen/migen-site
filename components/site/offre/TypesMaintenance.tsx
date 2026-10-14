@@ -182,10 +182,14 @@ export default function TypesMaintenance({
   if (retenues.length === 0) return null;
 
   return (
-    <section style={SECTION}>
+    /* `data-couverture-section`, `data-types-*`, `data-mm-*` : son habit de
+       corps de carte au téléphone, quand `PageOffre` le range dans la carte
+       « 01 » (`PageOffre.module.css`) : les quatre rangées y deviennent les
+       points 01 à 04. Au-dessus de 880 px, rien. */
+    <section data-mobile-apres-sections="" data-couverture-section="" style={SECTION}>
       <div style={LARGEUR}>
         <div className="mg-r2" style={GRILLE}>
-          <div style={PANNEAU_PHOTO}>
+          <div data-types-panneau="" style={PANNEAU_PHOTO}>
             <Image
               src="/assets/web/mq-17e2f3bce95f.jpg"
               alt="Technicien migen en intervention"
@@ -193,15 +197,16 @@ export default function TypesMaintenance({
               sizes="(max-width: 900px) 100vw, 520px"
               style={{ objectFit: "cover", filter: "saturate(var(--sat))" }}
             />
-            <div style={VOILE} />
-            <div style={LEGENDE}>
-              <div style={{ ...SURTITRE, marginBottom: 14 }}>
+            <div data-types-voile="" style={VOILE} />
+            <div data-types-legende="" style={LEGENDE}>
+              {/* Sans sur-titre dans la carte « 01 » du téléphone. */}
+              <div data-doublon-mobile="" style={{ ...SURTITRE, marginBottom: 14 }}>
                 Types de maintenance
               </div>
-              <h2 style={TITRE}>{titre}</h2>
+              <h2 data-types-titre="" style={TITRE}>{titre}</h2>
             </div>
           </div>
-          <div style={LISTE}>
+          <div data-types-liste="" data-mm-kv="" style={LISTE}>
             {retenues.map((carte, rang) => (
               <Link
                 key={carte.href}
@@ -209,17 +214,17 @@ export default function TypesMaintenance({
                 prefetch={false}
                 style={RANGEE}
               >
-                <span style={NUMERO}>{numerote(rang)}</span>
+                <span data-mm-num="" style={NUMERO}>{numerote(rang)}</span>
                 <span style={COLONNE_TEXTE}>
-                  <h3 style={TITRE_RANGEE}>{carte.titre}</h3>
+                  <h3 data-mm-kv-titre="" style={TITRE_RANGEE}>{carte.titre}</h3>
                   {carte.phrase ? (
-                    <span style={PHRASE}>{carte.phrase}</span>
+                    <span data-mm-kv-texte="" style={PHRASE}>{carte.phrase}</span>
                   ) : null}
-                  <span style={BARRE}>
+                  <span data-types-barre="" style={BARRE}>
                     <span style={BARRE_ETIQUETTE} />
                   </span>
                 </span>
-                <span aria-hidden="true" style={FLECHE}>
+                <span data-types-fleche="" aria-hidden="true" style={FLECHE}>
                   →
                 </span>
               </Link>

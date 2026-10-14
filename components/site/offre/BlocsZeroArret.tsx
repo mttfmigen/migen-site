@@ -109,7 +109,7 @@ export function CommentCaMarche({ contenu }: { contenu: ContenuOffre }) {
   if (jalons.length === 0) return null;
 
   return (
-    <section style={SECTION}>
+    <section data-mobile-apres-sections="" style={SECTION}>
       <div style={LARGEUR}>
         <div data-reveal="">
           <div
@@ -166,7 +166,7 @@ export function Formules({ contenu }: { contenu: ContenuOffre }) {
   if (formules.length === 0 && !regle) return null;
 
   return (
-    <section style={SECTION}>
+    <section data-mobile-apres-sections="" style={SECTION}>
       <div style={LARGEUR}>
         <div data-reveal="">
           {contenu.formulesSurtitre || contenu.formulesTitre ? (
@@ -334,7 +334,7 @@ export function Comparatif({ contenu }: { contenu: ContenuOffre }) {
   if (!colonnesComparatif) return null;
 
   return (
-    <section style={SECTION}>
+    <section data-mobile-apres-sections="" style={SECTION}>
       <div style={LARGEUR}>
         <div
           data-reveal=""
@@ -407,7 +407,7 @@ export function PremierMois({ contenu }: { contenu: ContenuOffre }) {
   const cible = bouton?.href && cibleSure(bouton.href) ? bouton.href : null;
 
   return (
-    <section style={SECTION}>
+    <section data-mobile-apres-sections="" style={SECTION}>
       <div style={LARGEUR}>
         <div data-reveal="">
           {contenu.premierMoisSurtitre ? (

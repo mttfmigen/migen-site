@@ -6,6 +6,7 @@
  * lisibles en texte si le style ne charge pas.
  */
 
+import type { EntreeSommaire } from "./HautMobile";
 import SectionRepliee from "./SectionRepliee";
 
 /* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
@@ -13,9 +14,24 @@ const SURTITRE_TEXTE = "Le métier le plus tendu d’Europe";
 const TITRE_TEXTE =
   "Nos techniciens reçoivent deux propositions par jour. Ils restent.";
 
+/**
+ * LA CARTE 06 DE LA MAQUETTE MOBILE V2 : « Le métier le plus tendu
+ * d'Europe » en titre, notre titre de bureau en résumé
+ * (`mobile-native-data.js`). Ce titre de bureau reste donc visible dans la
+ * carte ouverte, seul le sur-titre s'y efface.
+ */
+export const SOMMAIRE_FIDELISATION: EntreeSommaire = {
+  id: "le-metier-le-plus-tendu-d-europe",
+  titre: SURTITRE_TEXTE,
+};
+
 export default function Fidelisation() {
   return (
-    <SectionRepliee kicker={SURTITRE_TEXTE} titre={TITRE_TEXTE}>
+    <SectionRepliee
+      id={SOMMAIRE_FIDELISATION.id}
+      titre={SURTITRE_TEXTE}
+      resume={TITRE_TEXTE}
+    >
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div
@@ -42,7 +58,6 @@ export default function Fidelisation() {
               {SURTITRE_TEXTE}
             </div>
             <h2
-              data-titre-bureau=""
               style={{
                 font: "600 calc(clamp(26px,3vw,42px) * var(--ts))/1.06 var(--ft)",
                 letterSpacing: "-.04em",

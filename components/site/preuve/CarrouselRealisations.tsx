@@ -153,7 +153,10 @@ const LIEN: CSSProperties = {
   color: "#b4490f",
 };
 
-function logoEnFond(
+/** Un logo en fond CSS : sous un ancêtre masqué, il n'est jamais chargé, et
+    ne réchauffe donc pas le cache d'une image que le bureau charge en
+    différé (piège mesuré le 14/10 sur /preuves/). */
+export function logoEnFond(
   logo: string,
   inverse: boolean,
   largeur: number,
@@ -170,8 +173,11 @@ function logoEnFond(
 
 export default function CarrouselRealisations({
   cartes,
+  titre = TITRE_REALISATIONS,
 }: {
   cartes: readonly CarteRealisation[];
+  /** dc.html `refsSec` : « Nos réalisations » hors du gabarit 02. */
+  titre?: string;
 }) {
   if (cartes.length === 0) return null;
   /* dc.html L429-430 : un logo par client, sans doublon ; la rangée ne se
@@ -184,11 +190,11 @@ export default function CarrouselRealisations({
     <section
       data-mobile-seulement=""
       data-realisations-mobiles=""
-      aria-label={TITRE_REALISATIONS}
+      aria-label={titre}
       style={SECTION}
     >
       <h2 className={styles.titreCarrousel} style={TITRE}>
-        {TITRE_REALISATIONS}
+        {titre}
       </h2>
       <div style={BLOC}>
         {logos.length > 1 ? (

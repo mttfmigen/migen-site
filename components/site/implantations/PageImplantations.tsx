@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
 
@@ -5,7 +6,8 @@ import { FilArianeVue } from "@/components/cocon/FilAriane";
 
 import TexteRiche from "@/components/site/blocs/TexteRiche";
 import { entreeDe, gabaritDe } from "@/components/site/cocon/maillage-mobile";
-import { DerouleRepliable } from "@/components/site/implantation/SectionsRepliables";
+import ChiffresVille from "@/components/site/implantation/ChiffresVille";
+import { DerouleRepliable, resumeOffre } from "@/components/site/implantation/SectionsRepliables";
 import { etapesDe } from "@/components/site/implantation/fil-ariane-mobile";
 import OuvreLaCible from "@/components/site/implantation/OuvreLaCible";
 import PanneauHerosRepliable from "@/components/site/implantation/PanneauHerosRepliable";
@@ -13,17 +15,15 @@ import stylesVille from "@/components/site/implantation/PageVille.module.css";
 import ProblemeCartes from "@/components/site/implantation/ProblemeCartes";
 import MaillageVille from "@/components/site/implantation/MaillageVille";
 import QuestionsVille from "@/components/site/implantation/QuestionsVille";
+import RepliFormulaireMobile from "@/components/site/implantation/RepliFormulaireMobile";
+import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
 import AppelFinal from "@/components/site/offre/AppelFinal";
 import AppelOffre from "@/components/site/offre/AppelOffre";
 import BandeAppel from "@/components/site/offre/BandeAppel";
 import GarantiesOffre from "@/components/site/offre/GarantiesOffre";
 import {
   BOUTON_HERO,
-  CARTE_CHIFFRE,
   CHAPEAU_HERO,
-  CHIFFRE_LIBELLE,
-  CHIFFRE_VALEUR,
-  GRILLE_CHIFFRES,
   HERO,
   HERO_GRILLE,
   HERO_MENTION,
@@ -31,11 +31,11 @@ import {
   HERO_RANGEE_PASTILLE,
   PASTILLE,
   PASTILLE_PUCE,
-  SECTION_CHIFFRES,
   TITRE1,
 } from "@/components/site/offre/habillage-offre";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import { liensSurs } from "@/components/site/offre/LiensOffre";
+import TelephoneHeros from "@/components/site/offre/TelephoneHeros";
 import LogosClients from "@/components/site/offre/LogosClients";
 import stylesOffre from "@/components/site/offre/PageOffre.module.css";
 import stylesOffres from "@/components/site/offres/PageOffres.module.css";
@@ -43,9 +43,14 @@ import PointsOffre from "@/components/site/offre/PointsOffre";
 import Reassurance from "@/components/site/offre/Reassurance";
 import ReferencesOffre from "@/components/site/offre/ReferencesOffre";
 import type { Section, TypeSection } from "@/types/contenu";
+import { altPhoto } from "@/lib/descriptions-photos";
 import type { ContenuImplantations } from "@/types/implantations";
 
+import NosHubsMobile from "./NosHubsMobile";
 import NosVilles from "./NosVilles";
+import styles from "./PageImplantations.module.css";
+
+const PHOTO_HEROS_MOBILE = "/assets/web/ph-hero-raffinerie.jpg";
 
 /**
  * Le hub `/implantations/`, gabarit « 10 Hub de rubrique », contre sa capture
@@ -100,6 +105,9 @@ export default function PageImplantations({
   const preuves = sectionDeType(sections, "preuves");
   const objections = sectionDeType(sections, "objections");
   const ctaFinal = sectionDeType(sections, "ctaFinal");
+  const appelDeFin = ctaFinal?.question
+    ? { ...ctaFinal, bouton: ctaFinal.bouton || c.appelBouton || "" }
+    : undefined;
 
   const bande = (variante?: "sombre") =>
     c.mention || c.appelBouton ? <BandeAppel mention={c.mention} bouton={c.appelBouton} variante={variante} /> : null;
@@ -120,7 +128,7 @@ export default function PageImplantations({
   const contenus = [
     <Fragment key="probleme">{probleme ? <ProblemeCartes section={probleme} /> : null}</Fragment>,
     <Fragment key="offre">
-      {offre ? <PointsOffre section={offre} /> : null}
+      {offre ? <PointsOffre section={offre} resume={resumeOffre(offre)} /> : null}
       {bande("sombre")}
     </Fragment>,
     <Fragment key="deroule">{deroule ? <DerouleRepliable section={deroule} /> : null}</Fragment>,
@@ -129,8 +137,10 @@ export default function PageImplantations({
       {c.brefBande ? <AppelOffre question={c.brefBande} bouton={c.brefBouton} mention={c.brefMention} /> : null}
     </Fragment>,
     <Fragment key="preuves">
-      {preuves ? <ReferencesOffre section={preuves} dateBrute /> : null}
+      {preuves ? <ReferencesOffre section={preuves} dateBrute toujoursOuvert /> : null}
       {bande()}
+      {/* Ferme la suite des sections au téléphone : voir `PageVille`. */}
+      <span data-queue-mobile="" hidden />
     </Fragment>,
   ];
 
@@ -155,40 +165,67 @@ export default function PageImplantations({
      */
     <div className={`mg-site ${stylesOffre.gabarit} ${stylesVille.racineVille}`}>
       {/* `racine` : la racine `.mgx-root` du gabarit d'offre, comme le hub `/offres/`. */}
-      <main className={stylesOffres.racine} style={{ paddingTop: 62 }}>
+      {/* `data-ordre-mobile` : au téléphone, l'ordre de la maquette (socle de
+          app/globals.css) ; « Nos villes » remonte sous les chiffres
+          (`.villesMobile`). Au-dessus de 880 px, aucune règle. */}
+      <main data-ordre-mobile="" className={stylesOffres.racine} style={{ paddingTop: 62 }}>
         {filAriane}
 
-        <section className={stylesVille.herosVille} style={HERO}>
+        <section className={`${stylesVille.herosVille} ${styles.teteMobile}`} style={HERO}>
+          {/* Le fil d'Ariane de la maquette mobile (dc.html L104), sous
+              881 px seulement, au-dessus de tout comme sur les pages villes. */}
+          {etapes.length > 0 ? (
+            <div data-mobile-seulement="" className={stylesVille.filMobile}>
+              <FilArianeVue etapes={etapes} />
+            </div>
+          ) : null}
           <div
             className="mg-r2"
             style={{ display: "grid", gridTemplateColumns: HERO_GRILLE, gap: 52, alignItems: "start" }}
           >
-            <div>
-              {/* Le fil d'Ariane de la maquette mobile (dc.html L104), sous
-                  881 px seulement, comme sur les pages villes. */}
-              {etapes.length > 0 ? (
-                <div data-mobile-seulement="" className={stylesVille.filMobile}>
-                  <FilArianeVue etapes={etapes} />
-                </div>
-              ) : null}
+            {/* `data-heros-*` : la colonne de la maquette mobile (socle de
+                app/globals.css), comme `HerosVille`. Au-dessus de 880 px,
+                aucune règle. */}
+            <div data-heros-colonne="">
+              {/* La photo de tête de la maquette (dc.html `FIMG.implantations`,
+                  la raffinerie), que la page porte déjà : carte « Arrêt
+                  technique » du maillage des offres (`MaillageVille`). `lazy`
+                  et non `eager` : masquée au bureau, elle n'y est pas chargée,
+                  et la carte du maillage, même fichier, garde son chargement
+                  de bureau. ponytail: perd la priorité LCP au téléphone. */}
+              <div data-heros-photo="" data-mobile-seulement="">
+                <Image
+                  src={PHOTO_HEROS_MOBILE}
+                  alt={altPhoto(PHOTO_HEROS_MOBILE)}
+                  fill
+                  loading="lazy"
+                  sizes="(max-width: 880px) 100vw, 1px"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              {/* Le sur-titre du gabarit « 10 Hub de rubrique » de la maquette
+                  (`KICK["10"]`) ; celui de bureau s'efface sous 881 px. */}
+              <div data-heros-pastille="" data-mobile-seulement="" style={HERO_RANGEE_PASTILLE}>
+                <span style={PASTILLE}>Rubrique</span>
+              </div>
               {c.pastille ? (
-                <div style={HERO_RANGEE_PASTILLE}>
+                <div data-heros-pastille="" className={styles.pastilleBureau} style={HERO_RANGEE_PASTILLE}>
                   <span style={PASTILLE}>
                     <span aria-hidden="true" style={PASTILLE_PUCE} />
                     {c.pastille}
                   </span>
                 </div>
               ) : null}
-              <h1 className={stylesVille.titreHerosMobile} style={TITRE1}>
+              <h1 style={TITRE1}>
                 {h1}
               </h1>
               {c.chapeau ? (
-                <p className={stylesVille.chapeauHerosMobile} style={CHAPEAU_HERO}>
+                <p data-heros-chapeau="" style={CHAPEAU_HERO}>
                   <TexteRiche texte={c.chapeau} />
                 </p>
               ) : null}
               {actions.length > 0 ? (
-                <div style={HERO_RANGEE_BOUTONS}>
+                <div data-heros-boutons="" style={HERO_RANGEE_BOUTONS}>
                   {actions.map((action) => (
                     <Link
                       key={action.href}
@@ -200,9 +237,14 @@ export default function PageImplantations({
                       {action.libelle}
                     </Link>
                   ))}
+                  <TelephoneHeros />
                 </div>
               ) : null}
-              {c.mention ? <p style={HERO_MENTION}>{c.mention}</p> : null}
+              {c.mention ? (
+                <p data-heros-mention="" style={HERO_MENTION}>
+                  {c.mention}
+                </p>
+              ) : null}
             </div>
             {/* G2 : le panneau se replie au téléphone, voir le composant. */}
             <PanneauHerosRepliable
@@ -213,24 +255,11 @@ export default function PageImplantations({
           </div>
         </section>
 
-        {chiffres.length > 0 ? (
-          <section style={SECTION_CHIFFRES}>
-            <div
-              className="mg-rmulti"
-              style={{ ...GRILLE_CHIFFRES, gridTemplateColumns: `repeat(${chiffres.length},minmax(0,1fr))` }}
-            >
-              {chiffres.map((chiffre, rang) => (
-                <div
-                  key={`${chiffre.valeur}-${chiffre.libelle}`}
-                  style={rang > 0 ? { ...CARTE_CHIFFRE, borderLeft: "1px solid var(--line)" } : CARTE_CHIFFRE}
-                >
-                  <div style={CHIFFRE_VALEUR}>{chiffre.valeur}</div>
-                  <div style={CHIFFRE_LIBELLE}>{chiffre.libelle}</div>
-                </div>
-              ))}
-            </div>
-          </section>
-        ) : null}
+        {/* « Chiffres clés » en tuiles 2 x 2 au téléphone : même balisage
+            que le bureau, plus les attributs du socle. */}
+        <div className={styles.teteMobile}>
+          <ChiffresVille chiffres={chiffres} />
+        </div>
 
         <LogosClients />
         <Reassurance />
@@ -246,21 +275,38 @@ export default function PageImplantations({
           contenus
         )}
 
-        {c.villes ? <NosVilles villes={c.villes} /> : null}
+        {c.villes ? (
+          <div className={styles.villesMobile}>
+            {/* Au téléphone, « Nos hubs » de la maquette ; le bloc de bureau s'efface. */}
+            <NosHubsMobile villes={c.villes} />
+            <div className={styles.villesBureau}>
+              <NosVilles villes={c.villes} />
+            </div>
+          </div>
+        ) : null}
 
-        {objections ? <QuestionsVille section={objections} /> : null}
+        {/* La question finale du corpus, dernière question au téléphone : voir `PageVille`. */}
+        {objections ? <QuestionsVille section={objections} derniere={appelDeFin} /> : null}
         <MaillageVille />
 
-        {/* La capture pose l'ancre `#mgx-form` sur l'appel final, cible de « Poser ma question ». */}
-        {/* `#etre-rappele`, cible du bandeau de la couche mobile, enveloppe
-            l'appel final sans dessin : voir `PageVille`. */}
-        <div id="etre-rappele" style={{ scrollMarginTop: 90 }}>
-          <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
-            <AppelFinal question={ctaFinal?.question} formulaire={formulaire} bouton={c.appelBouton} />
-          </div>
+        {/* La carte « Être rappelé » de la maquette (`#etre-rappele`), téléphone seulement. */}
+        {chemin ? <RappelFinalMobile /> : null}
+
+        {/* La capture pose l'ancre `#mgx-form` sur l'appel final, cible de
+            « Poser ma question ». Replié au téléphone : voir `PageVille`. */}
+        <div id={chemin ? undefined : "etre-rappele"} className={stylesVille.appelFinal} style={{ scrollMarginTop: 90 }}>
+          <RepliFormulaireMobile etiquette={c.appelBouton ?? "Parler à un chargé d'affaires"}>
+            <div id="mgx-form" style={{ scrollMarginTop: 90 }}>
+              <AppelFinal question={ctaFinal?.question} formulaire={formulaire} bouton={c.appelBouton} />
+            </div>
+          </RepliFormulaireMobile>
         </div>
 
-        {maillage ? <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}>{maillage}</div> : null}
+        {maillage ? (
+          <div className={stylesVille.maillageBas} style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}>
+            {maillage}
+          </div>
+        ) : null}
 
         {/* En dernier : son effet passe après ceux qui replient les blocs. */}
         <OuvreLaCible />

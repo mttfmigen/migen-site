@@ -2,9 +2,13 @@ import type { Metadata } from "next";
 
 import FormulaireBasDePage from "@/components/site/accueil/FormulaireBasDePage";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
+import FinDePageMobile from "@/components/site/nous-connaitre/FinDePageMobile";
 import AppelAPartenaires from "@/components/site/partenaires/AppelAPartenaires";
 import FonctionnementPartenariat from "@/components/site/partenaires/FonctionnementPartenariat";
-import OuverturePartenaires from "@/components/site/partenaires/OuverturePartenaires";
+import OuverturePartenaires, {
+  GrillePartenaires,
+  PHOTO_TETE_PARTENAIRES,
+} from "@/components/site/partenaires/OuverturePartenaires";
 import {
   FORMULAIRE_PARTENAIRES,
   INTRO_FORMULAIRE_PARTENAIRES,
@@ -67,23 +71,31 @@ export default function Partenaires() {
       <main style={{ paddingTop: 96 }}>
         {/* LA CADENCE MOBILE de la maquette mobile v2 (page native, gabarit
             01, variante « standard ») : photo + CTA après la 2e section.
-            `OuverturePartenaires` porte le héros ET les cartes des deux
-            partenaires, que la maquette rend en deux sections numérotées : le
-            site les tient en une seule grille, elle compte donc pour une, et
-            le photo + CTA tombe après « Comment ça fonctionne » plutôt
-            qu'avant. Le héros n'a pas de photo : rien à écarter du tirage.
-            `rappelFinal={false}` : le formulaire complet suit, la maquette n'y
-            met que le mini-formulaire. Aucun bandeau sur trois sections. */}
-        <AvecConversionMobile chemin="/partenaires/" gabarit="01" rappelFinal={false}>
+            Le héros compte pour la première, la grille des deux partenaires
+            (cartes 01 et 02 sur téléphone) pour la deuxième : le photo + CTA
+            tombe donc après Savoye et avant « Comment ça fonctionne », comme
+            dans la maquette. La photo de tête est écartée du tirage
+            (`photoHeros`). `rappelFinal={false}` : le mini-formulaire « Être
+            rappelé » est posé plus bas par `FinDePageMobile`, après « Nos
+            réalisations ». Aucun bandeau sur quatre sections. */}
+        <AvecConversionMobile
+          chemin="/partenaires/"
+          gabarit="01"
+          photoHeros={PHOTO_TETE_PARTENAIRES}
+          rappelFinal={false}
+        >
           <OuverturePartenaires />
+          <GrillePartenaires />
           <FonctionnementPartenariat />
           <AppelAPartenaires />
         </AvecConversionMobile>
-        <FormulaireBasDePage
-          formulaire={FORMULAIRE_PARTENAIRES}
-          titre={TITRE_FORMULAIRE_PARTENAIRES}
-          intro={INTRO_FORMULAIRE_PARTENAIRES}
-        />
+        <FinDePageMobile chemin={CHEMIN}>
+          <FormulaireBasDePage
+            formulaire={FORMULAIRE_PARTENAIRES}
+            titre={TITRE_FORMULAIRE_PARTENAIRES}
+            intro={INTRO_FORMULAIRE_PARTENAIRES}
+          />
+        </FinDePageMobile>
       </main>
     </div>
   );

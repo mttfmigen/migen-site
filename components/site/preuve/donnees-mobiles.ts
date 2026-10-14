@@ -25,12 +25,11 @@
  * `verification-couche-mobile.tsx`, elle, relit `cas-lies.json` à chaque
  * exécution et tombe le jour où une clé `/preuves/` y apparaît.
  *
- * LA PHOTO ET LE LOGO DES CARTES viennent du site, pas d'un tirage :
- * `photosPropres` et `logoClient` de `casclients/vues-preuves.ts`, ceux que le
- * hub /preuves/ sert déjà et que ses portes tiennent. La maquette tire une
- * photo de secteur par empreinte (L418, « à remplacer par les vraies photos de
- * chantier », dit son LISEZMOI). Une étude sans photo propre garde le fond
- * gris de la maquette (`#dcdde0`) : vide plutôt que faux.
+ * LE LOGO DES CARTES vient du site (`logoClient` de `casclients/vues-preuves.ts`).
+ * LA PHOTO est celle de la maquette (L418, `casePhoto` : photo de secteur par
+ * empreinte du slug, `photoHerosMobile`), la même que le héros mobile de
+ * l'étude : depuis le 15/10 ce héros la prend, et une carte tirée de
+ * `photosPropres` répétait sur ALSTEF la photo de son propre héros.
  *
  * MODULE NEUTRE, sans « use client » ni « server-only » : le gabarit serveur
  * l'importe, la porte en ligne de commande aussi.
@@ -44,7 +43,7 @@ import {
   REMAP,
   type EntreeIndex,
 } from "@/components/site/cocon/maillage-mobile";
-import { logoClient, photosPropres } from "@/components/site/casclients/vues-preuves";
+import { logoClient, photoHerosMobile } from "@/components/site/casclients/vues-preuves";
 
 const INDEX = indexBrut as readonly EntreeIndex[];
 
@@ -122,6 +121,41 @@ export function etapesFilAriane(chemin: string, titreCourant?: string): EtapeFil
   return etapes;
 }
 
+/**
+ * Le H1 de la maquette MOBILE (dc.html L492, `hero.h1 = P.h1`) est le h1 du
+ * corpus, « Étude de cas AUTOLIV : un technicien… ». Le titre de la page en
+ * est la fin. Renvoie ce que la maquette pose DEVANT (« Étude de cas
+ * AUTOLIV : »), mot pour mot, ou rien si le h1 de l'index ne finit pas par ce
+ * titre (à la casse de l'initiale près) : aucun préfixe n'est deviné.
+ */
+export function prefixeTitreMaquette(chemin: string, titre: string): string | undefined {
+  const h1 = entreeDe(chemin)?.h1.replace(/\s+/g, " ").trim();
+  const t = titre.replace(/\s+/g, " ").trim();
+  if (!h1 || t.length < 2 || h1.length <= t.length) return undefined;
+  const fin = h1.slice(h1.length - t.length);
+  if (fin.slice(1) !== t.slice(1) || fin[0].toLowerCase() !== t[0].toLowerCase()) return undefined;
+  return h1.slice(0, h1.length - t.length);
+}
+
+/**
+ * Les études dont le corpus pose le paragraphe du résultat APRÈS ses puces
+ * (`## LE RÉSULTAT`, relevé le 14/10 sur `maquette/contenu/site/Preuves/` :
+ * 20 avant, 7 après, 14 sans). Ailleurs il ouvre la section.
+ */
+const RESULTAT_TEXTE_APRES: ReadonlySet<string> = new Set([
+  "/preuves/aktid-centre-logistique/",
+  "/preuves/amazon-centre-logistique/",
+  "/preuves/amazon-nouveau-site/",
+  "/preuves/gls-maintenance-curative/",
+  "/preuves/groupe-atlantic/",
+  "/preuves/timescope/",
+  "/preuves/veepee-sites-lyon/",
+]);
+
+export function texteResultatApres(chemin: string): boolean {
+  return RESULTAT_TEXTE_APRES.has(chemin);
+}
+
 /** Une carte du carrousel « D’autres réalisations » (dc.html L428, `refs`). */
 export interface CarteRealisation {
   readonly url: string;
@@ -152,14 +186,13 @@ export function realisationsLiees(chemin: string): CarteRealisation[] {
       const client = courtLibelle(x);
       /* dc.html L427 cherche le logo dans « slug + client » : même clé ici. */
       const logo = logoClient(`${x.url.split("/")[2] ?? ""} ${client}`);
-      const photo = photosPropres(x.url)[0];
       return {
         url: x.url,
         client,
         titre: x.h1,
         logo,
         logoInverse: /groupe-atlantic|ogf/.test(logo),
-        photo: photo ? `/assets/web/${photo}.jpg` : "",
+        photo: photoHerosMobile(x.url) ?? "",
       };
     });
 }

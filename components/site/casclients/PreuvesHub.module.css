@@ -162,3 +162,190 @@
     padding-bottom: 0 !important;
   }
 }
+
+/* ===================================================================
+   COUCHE MOBILE v2 DU HUB, passe du 14/10 (dc.html L104-111, L130-131,
+   corpus `Preuves/preuves.md`). Ordre de la maquette : photo, surtitre,
+   H1, deux boutons, « Toutes les pages de la rubrique », chapô, encadré,
+   sections numérotées, « Nos réalisations », rappel final. Le filtre à
+   onglets et le bandeau sombre restent au bureau, dans le DOM.
+   =================================================================== */
+@media (max-width: 880px) {
+  .bureauSeul,
+  .filtre {
+    display: none !important;
+  }
+  .heros {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 0 !important;
+  }
+  .colonneTexte {
+    display: contents;
+  }
+  .mosaique {
+    order: 0;
+    display: block !important;
+    aspect-ratio: 16 / 10;
+    margin-bottom: 18px;
+  }
+  .mosaique > :first-child {
+    height: 100%;
+  }
+  .mosaique > :not(:first-child) {
+    display: none !important;
+  }
+  .kickerHub {
+    order: 1;
+    margin-bottom: 0 !important;
+    font-size: 11px !important;
+  }
+  .heros .titreHub {
+    order: 2;
+    margin: 10px 0 0 !important;
+  }
+  .boutonsHub {
+    order: 3;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    margin-top: 16px;
+  }
+  .boutonsHub > a {
+    min-height: 50px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 16px !important;
+    font-size: 14px !important;
+  }
+  .boutonsHub > a:first-child {
+    flex: 1 1 0%;
+  }
+  .boutonTel {
+    display: inline-flex;
+    border-radius: 999px;
+    background: var(--card, #fff);
+    color: var(--ink, #1c1b19);
+    font: 600 13.5px var(--fb);
+    white-space: nowrap;
+  }
+  .listeRubrique {
+    order: 4;
+    margin: 6px -20px 0;
+  }
+  /* Le chapô de la maquette : « Tout le monde promet… comment. » en gras et
+     « Voici nos interventions… terrain. » en romain, UN SEUL paragraphe de
+     17 px foncé ; « Migen compte… » ensuite, gris, en second paragraphe. */
+  .chapeauHub {
+    order: 5;
+    margin: 22px 0 0;
+    font: 400 17px/1.55 var(--fb);
+    color: var(--ink, #1c1b19);
+  }
+  .heros .accroche {
+    display: inline;
+    margin: 0 !important;
+    font-size: 17px !important;
+    line-height: 1.55 !important;
+  }
+  .heros .chapeauHub:has(.introSuite) .intro {
+    display: none !important;
+  }
+  .heros .chapeauHub:not(:has(.introSuite)) .intro {
+    margin-top: 12px !important;
+  }
+  .introSuite {
+    display: block;
+    margin-top: 12px;
+    font: 400 15.5px/1.65 var(--fb);
+    color: var(--ink2, #6a6764);
+  }
+  .encadreHub {
+    order: 7;
+    margin: 16px 0 0;
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: rgba(255, 124, 60, 0.08);
+    font: 400 15px/1.55 var(--fb);
+    color: var(--ink, #1c1b19);
+  }
+
+  .sectionsMobiles {
+    padding-bottom: 8px;
+  }
+  .sectionMobile {
+    margin: 12px 18px 0 !important;
+  }
+  .besoinMobile {
+    margin: 2px 0 14px;
+    font: 500 17px/1.5 var(--fb);
+    color: var(--ink, #1c1b19);
+  }
+  .rail {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 250px;
+    gap: 12px;
+    margin: 0 -16px 12px;
+    padding: 0 16px 4px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+  .carteRail {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(28, 27, 25, 0.08);
+    border-radius: 18px;
+    background: var(--card, #fff);
+    color: var(--ink, #1c1b19);
+    scroll-snap-align: start;
+  }
+  .photoRail {
+    position: relative;
+    display: block;
+    height: 118px;
+    background: #dedfe1;
+  }
+  .logoRail {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+  }
+  .resumeRail {
+    display: block;
+    padding: 14px 14px 8px;
+    font: 500 14.5px/1.45 var(--fb);
+  }
+  .lienRail {
+    display: block;
+    margin-top: auto;
+    padding: 0 14px 14px;
+    font: 600 13.5px/1.4 var(--fb);
+    color: var(--acc-fonce, #c2410c);
+  }
+  .listeRecents {
+    display: grid;
+    gap: 8px;
+    margin: 0 0 12px;
+    padding: 0;
+    list-style: none;
+  }
+  .listeRecents a {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: var(--bg, #f1f2f4);
+    font: 500 14px/1.45 var(--fb);
+    color: var(--ink, #1c1b19);
+  }
+}

@@ -8,11 +8,15 @@ import {
   VERRE,
 } from "@/components/site/blocs/habillage";
 import { resumeDe } from "@/components/site/blocs/resume-de-section";
+import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
 import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 /* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
 const SURTITRE_TEXTE = "Ce que nous vous transmettons";
 const TITRE_TEXTE = "Les pièces pour votre dossier fournisseur";
+
+/** Carte 03 du téléphone, repliée comme dans la maquette mobile v2. */
+export const SOMMAIRE_PIECES: EntreeSommaire = { id: "pieces-fournisseur", titre: TITRE_TEXTE };
 
 /**
  * Les pièces du dossier fournisseur, en liste numérotée à trois colonnes.
@@ -85,6 +89,7 @@ const PIECES: readonly { rang: string; titre: string; texte: string }[] = [
 export default function PiecesFournisseur() {
   return (
     <SectionRepliee
+      id={SOMMAIRE_PIECES.id}
       kicker={SURTITRE_TEXTE}
       titre={TITRE_TEXTE}
       resume={resumeDe(PIECES.map((p) => p.titre))}

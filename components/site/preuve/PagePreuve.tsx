@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties, ReactNode } from "react";
+import { Fragment, type CSSProperties, type ReactNode } from "react";
 
 import { FormulaireContact } from "@/components/formulaire/FormulaireContact";
 import { cibleSure } from "@/components/site/offre/LiensOffre";
@@ -13,18 +13,28 @@ import type {
 } from "@/types/preuve";
 
 import styles from "./PagePreuve.module.css";
-import TitreEtSuite from "../blocs/TitreEtSuite";
+import TitreEtSuite, { continueLeTitre } from "../blocs/TitreEtSuite";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 import { altPhoto } from "@/lib/descriptions-photos";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
+import BandeauRappelMobile from "@/components/site/mobile/BandeauRappelMobile";
 import { varianteDe } from "@/components/site/mobile/conversion-donnees";
 import PastillesCocon from "@/components/site/cocon/PastillesCocon";
 
 import CarrouselRealisations from "./CarrouselRealisations";
 import FilArianeMobile from "./FilArianeMobile";
-import { minutesDeLecture, realisationsLiees } from "./donnees-mobiles";
+import {
+  minutesDeLecture,
+  prefixeTitreMaquette,
+  realisationsLiees,
+  texteResultatApres,
+} from "./donnees-mobiles";
+import { CORPUS_MOBILE, type SegmentCorpus } from "./corpus-mobile";
+import PhotoMobile from "./PhotoMobile";
+import { copieConforme } from "@/lib/decisions-copie";
+import { photoHerosMobile } from "../casclients/vues-preuves";
 
 /**
  * Gabarit « 02 Étude de cas », porté de la RÉFÉRENCE : le rendu de la maquette
@@ -362,7 +372,16 @@ const FIL_HAUT: CSSProperties = {
   padding: "40px 40px 0",
 };
 
-/** L'étiquette mobile d'une bascule : surtitre numéroté et titre. */
+/**
+ * L'étiquette mobile d'une bascule : surtitre numéroté et titre.
+ *
+ * MAQUETTE MOBILE V2 (dc.html L130, `isDetails` + `isH`) : la carte ne montre
+ * que son NUMÉRO, en colonne, et son TITRE. Le numéro est le compteur CSS de
+ * la carte partagée (`data-carte-numerotee`, app/globals.css) ; le surtitre
+ * « 02 · Notre réponse » reste dans le DOM mais la feuille le masque sous
+ * 880 px (`.etiquetteSurtitre`) : c'est le DOUBLON du surtitre que le corps de
+ * la section affiche, mot pour mot, dès qu'elle est ouverte.
+ */
 function EtiquettePli({
   surtitre,
   titre,
@@ -374,10 +393,15 @@ function EtiquettePli({
 }) {
   return (
     <span data-mobile-seulement="" className={styles.etiquettePli}>
-      <span style={ETIQUETTE_SURTITRE}>{surtitre}</span>
-      <span style={sombre ? { ...ETIQUETTE_TITRE, color: "#fff" } : ETIQUETTE_TITRE}>
+      <span className={styles.etiquetteSurtitre} style={ETIQUETTE_SURTITRE}>
+        {surtitre}
+      </span>{" "}
+      <span
+        data-carte-titre=""
+        style={sombre ? { ...ETIQUETTE_TITRE, color: "#fff" } : ETIQUETTE_TITRE}
+      >
         {titre}
-      </span>
+      </span>{" "}
     </span>
   );
 }
@@ -726,6 +750,20 @@ const TUILE_TEXTE: CSSProperties = {
    exactement « 04 78 33 72 05 » d'un <strong font-weight:600 color:var(--ink)>. */
 const TELEPHONE_FORT: CSSProperties = { fontWeight: 600, color: "var(--ink)" };
 
+/* Une tuile du panneau sombre : le texte du bureau, et sous 880 px celui de
+   la maquette MOBILE (corpus `## CTA`, décisions de copie appliquées) quand
+   il diffère, « Astreinte » / « …, au 04 78 33 72 05. ». Les deux restent
+   dans le DOM ; chacun ne se peint qu'à sa largeur. */
+function TexteTuile({ bureau, mobile }: { bureau: string; mobile?: string }) {
+  if (!mobile || mobile === bureau) return <>{bureau}</>;
+  return (
+    <>
+      <span className={styles.libelleBureau}>{bureau}</span>{" "}
+      <span data-mobile-seulement="">{mobile}</span>
+    </>
+  );
+}
+
 function ProseBesoin({ texte }: { texte: string }) {
   if (!texte.includes(TELEPHONE)) return <>{texte}</>;
   const morceaux = texte.split(TELEPHONE);
@@ -891,13 +929,33 @@ function CarteReponse({ carte, rang, total }: { carte: CartePreuve; rang: number
   );
 }
 
+/* Un bloc du complément que la maquette MOBILE range DANS une section
+   numérotée (le corpus le pose sous `## CE QUE NOUS AVONS MIS EN PLACE` ou
+   `## LE RÉSULTAT`) : un titre identique et un texte seul, sans puces. */
+function texteDeplace(blocs: readonly BlocComplementPreuve[] | undefined, titre: string): string | undefined {
+  const bloc = (blocs ?? []).find(
+    (b) => b.titre?.trim().toLowerCase() === titre.toLowerCase() && b.texte && !b.puces?.length,
+  );
+  return bloc?.texte;
+}
+const TITRES_DEPLACES = ["Ce que nous avons mis en place", "Le résultat"];
+
 function Complement({ blocs }: { blocs: BlocComplementPreuve[] }) {
+  /* Sous 880 px, un bloc rendu dans sa section (voir `texteDeplace`) est
+     masqué ici, et la section entière quand il ne reste rien : le texte reste
+     dans le DOM, le bureau ne bouge pas. */
+  const deplace = (bloc: BlocComplementPreuve) =>
+    TITRES_DEPLACES.some((t) => texteDeplace([bloc], t) !== undefined);
+  const toutDeplace = blocs.every(deplace);
   return (
-    <section style={COMPLEMENT_SECTION}>
+    <section
+      className={`${styles.sectionComplement} ${toutDeplace ? styles.libelleBureau : ""}`}
+      style={COMPLEMENT_SECTION}
+    >
       <div style={LARGEUR}>
         <div style={COMPLEMENT_CARTE}>
           {blocs.map((bloc, rang) => (
-            <div key={rang} style={COMPLEMENT_BLOC}>
+            <div key={rang} className={deplace(bloc) ? styles.libelleBureau : undefined} style={COMPLEMENT_BLOC}>
               {bloc.titre ? (
                 <div style={COMPLEMENT_TITRE_RANGEE}>
                   <span aria-hidden="true" style={COMPLEMENT_TIRET} />
@@ -930,6 +988,51 @@ function Complement({ blocs }: { blocs: BlocComplementPreuve[] }) {
   );
 }
 
+/** Une phrase du corpus (`corpus-mobile.ts`), liens compris ; un lien dont la
+    cible n'est pas sûre est rendu en texte, rien n'est retiré. */
+function SegmentsCorpus({ segments }: { segments: readonly SegmentCorpus[] }) {
+  return (
+    <>
+      {segments.map((g, i) =>
+        g.href && cibleSure(g.href) ? (
+          <Link key={i} href={g.href} prefetch={false}>
+            {g.t}
+          </Link>
+        ) : (
+          <Fragment key={i}>{g.t}</Fragment>
+        ),
+      )}
+    </>
+  );
+}
+
+/** Espaces réduites : la donnée du site et le corpus n'ont pas toujours les
+    mêmes. Les apostrophes sont comparées à part (`apostrophesDroites`). */
+const resserre = (s: string) => s.replace(/\s+/g, " ").trim();
+const apostrophesDroites = (s: string) => s.replace(/’/g, "'");
+
+/**
+ * Le paragraphe du corpus qui annonce la liste de « La situation » (« … Le
+ * besoin posé par le site : »). Si un paragraphe du site en est le DÉBUT, seule
+ * la fin manquante est rendue, dans ce paragraphe ; sinon le paragraphe entier
+ * vient après la prose. Le texte rendu est celui du corpus, mot pour mot.
+ */
+function introDeLaListe(
+  intro: string | undefined,
+  prose: readonly string[],
+): { rang: number; suite: string } | undefined {
+  if (!intro) return undefined;
+  const corpus = resserre(intro);
+  for (let rang = 0; rang < prose.length; rang++) {
+    const site = resserre(prose[rang]);
+    if (!apostrophesDroites(corpus).startsWith(apostrophesDroites(site))) continue;
+    const suite = corpus.slice(site.length).trim();
+    return suite ? { rang, suite } : undefined;
+  }
+  // -1 : aucun paragraphe du site n'en est le début, le paragraphe entier suit.
+  return { rang: -1, suite: corpus };
+}
+
 export default function PagePreuve({
   titre,
   contenu,
@@ -949,42 +1052,79 @@ export default function PagePreuve({
   /* La couche MOBILE de la maquette v2, dérivée du chemin (voir
      `donnees-mobiles.ts`). */
   const minutes = chemin ? minutesDeLecture(chemin) : undefined;
+  const prefixeH1 = chemin ? prefixeTitreMaquette(chemin, titre) : undefined;
   const autresRealisations = chemin ? realisationsLiees(chemin) : [];
+  /* Les phrases du corpus que seule la maquette MOBILE rend (voir
+     `corpus-mobile.ts`), toutes en `data-mobile-seulement`. */
+  const corpus = chemin ? CORPUS_MOBILE[chemin] : undefined;
+  const introSituation = introDeLaListe(corpus?.introSituation, contenu.situationProse ?? []);
 
-  /* LES SECTIONS NUMÉROTÉES, 01 à 05, rassemblées dans l'ordre : ce sont
+  /* LES SECTIONS DE TEXTE, 01 à 04, rassemblées dans l'ordre : ce sont
      elles, et elles seules, que la cadence de conversion compte (dc.html
-     L477-480 : `nD` ne compte que les sections numérotées ; les faits, le
-     complément et l'appel à l'action n'y entrent pas). Une section sans
-     donnée vaut `null`, et `AvecConversionMobile` ne la compte pas.
+     L477-480 : `nD` ne compte que les sections de texte ; les faits, le
+     résultat, le complément et l'appel à l'action n'y entrent pas). Une
+     section sans donnée vaut `null`, et `AvecConversionMobile` ne la compte
+     pas. Le résultat (05) est rendu juste après, hors cadence.
      Le balisage de chacune est celui d'avant, au repli près : rien ne bouge à
      1280 px. */
 
   /* --------------------------------------------- 2 · « La situation » */
+  /* LA CARTE 01 DE LA MAQUETTE MOBILE (dc.html L130, `op = dI++ < nOpen` :
+     la première section est OUVERTE). `toujoursOuvert` : servie ouverte, elle
+     ne se referme pas au montage, et le visiteur peut la replier au doigt.
+     Le titre de la carte est « La situation », le surtitre de la section
+     (« 01 · La situation ») réduit à son nom ; le surtitre du corps, son
+     doublon mot pour mot, est masqué sous 880 px (`.kickerDoublon`). Le `<h2>`
+     reste à sa place : c'est la phrase en gras qui ouvre la section dans la
+     maquette (`allB`, 600 17px). Sur bureau, la bascule n'existe pas
+     (`.racine details > summary { display: none }`) : la grille est rendue
+     telle quelle, avec son style de capture. */
+  const resumeSituation = [contenu.situationTitre, contenu.situationProse?.[0]]
+    .filter(Boolean)
+    .join(" ");
   const sectionSituation = contenu.situationTitre ? (
-    <section key="situation" style={SECTION}>
-      <div className="mg-r2" style={SITUATION_GRILLE}>
-        <div className={styles.collante} style={COLONNE_COLLANTE}>
-          <div style={KICKER}>01 · La situation</div>
-          <h2 style={SITUATION_TITRE}>{contenu.situationTitre}</h2>
+    <section key="situation" className={styles.sectionPli} style={SECTION}>
+      <SectionPliableMobile
+        toujoursOuvert
+        enTete={<EtiquettePli surtitre="01 · La situation" titre="La situation" />}
+        resume={resumeSituation}
+      >
+        <div className={`mg-r2 ${styles.grilleSituation}`} style={SITUATION_GRILLE}>
+          <div className={styles.collante} style={COLONNE_COLLANTE}>
+            <div className={styles.kickerDoublon} style={KICKER}>
+              01 · La situation
+            </div>
+            <h2 className={styles.titreSituation} style={SITUATION_TITRE}>
+              {contenu.situationTitre}
+            </h2>
+          </div>
+          <div className={styles.proseSituation}>
+            {(contenu.situationProse ?? []).map((paragraphe, rang) => (
+              <p key={paragraphe} style={SITUATION_PROSE}>
+                {paragraphe}
+                {introSituation?.rang === rang ? (
+                  <span data-mobile-seulement=""> {introSituation.suite}</span>
+                ) : null}
+              </p>
+            ))}
+            {introSituation?.rang === -1 ? (
+              <p data-mobile-seulement="" style={SITUATION_PROSE}>
+                {introSituation.suite}
+              </p>
+            ) : null}
+            {objectifs.length > 0 ? (
+              <>
+                <div className={styles.libelleBureau} style={OBJECTIFS_LIBELLE}>Les objectifs posés</div>
+                <div className={`mg-r2 ${styles.objectifs}`} style={OBJECTIFS_GRILLE}>
+                  {objectifs.map((objectif, rang) => (
+                    <Objectif key={objectif.titre} objectif={objectif} rang={rang} />
+                  ))}
+                </div>
+              </>
+            ) : null}
+          </div>
         </div>
-        <div>
-          {(contenu.situationProse ?? []).map((paragraphe) => (
-            <p key={paragraphe} style={SITUATION_PROSE}>
-              {paragraphe}
-            </p>
-          ))}
-          {objectifs.length > 0 ? (
-            <>
-              <div style={OBJECTIFS_LIBELLE}>Les objectifs posés</div>
-              <div className={`mg-r2 ${styles.objectifs}`} style={OBJECTIFS_GRILLE}>
-                {objectifs.map((objectif, rang) => (
-                  <Objectif key={objectif.titre} objectif={objectif} rang={rang} />
-                ))}
-              </div>
-            </>
-          ) : null}
-        </div>
-      </div>
+      </SectionPliableMobile>
     </section>
   ) : null;
 
@@ -1000,23 +1140,43 @@ export default function PagePreuve({
      « dispositif›04 », « résultat›05 »), et la porte « aucun mot perdu »
      (`scripts/instantane-texte-main.mjs`) le compte comme perdu sur les 28
      pages. Le titre de la bascule suffit à dire ce qui est replié. */
+  /* LE RÉSUMÉ DE LA CARTE FERMÉE (dc.html L438, `teaseOf`) : le texte de la
+     première puce, « Libellé : texte », tel que la maquette le compose ; la
+     feuille partagée le coupe à deux lignes. Il vit dans le `<summary>`, en
+     `data-mobile-seulement` : rien ne change à 1280 px. */
+  const premiereCarte = reponse[0];
+  const resumeReponse = premiereCarte
+    ? continueLeTitre(premiereCarte.texte)
+      ? `${premiereCarte.titre}${premiereCarte.texte}`
+      : [premiereCarte.titre, premiereCarte.texte].filter(Boolean).join(" : ")
+    : undefined;
+  const texteMisEnPlace = texteDeplace(contenu.complement, "Ce que nous avons mis en place");
   const sectionReponse =
     reponse.length > 0 ? (
-      <section key="reponse" style={SECTION}>
+      <section key="reponse" className={styles.sectionPli} style={SECTION}>
         <div className={styles.pliClair} style={LARGEUR}>
           <SectionPliableMobile
-            numero={false}
             enTete={
               <EtiquettePli surtitre="02 · Notre réponse" titre="Ce que nous avons mis en place" />
             }
+            resume={resumeReponse}
           >
-            <div style={KICKER}>02 · Notre réponse</div>
-            <h2 style={TITRE2}>Ce que nous avons mis en place</h2>
+            <div data-carte-surtitre="" style={KICKER}>
+              02 · Notre réponse
+            </div>
+            <h2 className={styles.titreDoublon} style={TITRE2}>
+              Ce que nous avons mis en place
+            </h2>
             <div className={styles.bento} style={REPONSE_GRILLE}>
               {reponse.map((carte, rang) => (
                 <CarteReponse key={carte.titre} carte={carte} rang={rang} total={reponse.length} />
               ))}
             </div>
+            {texteMisEnPlace ? (
+              <p data-mobile-seulement="" className={styles.suiteDeplacee}>
+                {texteMisEnPlace}
+              </p>
+            ) : null}
           </SectionPliableMobile>
         </div>
       </section>
@@ -1028,14 +1188,17 @@ export default function PagePreuve({
      maquette sans bascule ici. */
   const sectionDeroule =
     etapes.length > 0 ? (
-      <section key="deroule" style={SECTION}>
+      <section key="deroule" className={styles.sectionPli} style={SECTION}>
         <div className={styles.pliClair} style={LARGEUR}>
           <SectionPliableMobile
-            numero={false}
             enTete={<EtiquettePli surtitre="03 · Étape par étape" titre="Le déroulé" />}
           >
-            <div style={KICKER}>03 · Étape par étape</div>
-            <h2 style={{ ...TITRE2, margin: "0 0 40px" }}>Le déroulé</h2>
+            <div data-carte-surtitre="" style={KICKER}>
+              03 · Étape par étape
+            </div>
+            <h2 className={styles.titreDoublon} style={{ ...TITRE2, margin: "0 0 40px" }}>
+              Le déroulé
+            </h2>
             <div style={{ position: "relative" }}>
               {/* Le rail orange derrière les pastilles. `mg-rail` le retire
                   quand la grille se replie, convention de la charte. */}
@@ -1076,7 +1239,7 @@ export default function PagePreuve({
      cadre vide, sans photo, n'y est pas peint du tout. */
   const sectionDispositif =
     dispositif.length > 0 ? (
-      <section key="dispositif" style={SECTION}>
+      <section key="dispositif" className={styles.sectionPli} style={SECTION}>
         <div className={`mg-r2 ${styles.grilleDispositif}`} style={DISPOSITIF_GRILLE}>
           <div
             className={styles.cadreDispositif}
@@ -1103,12 +1266,15 @@ export default function PagePreuve({
           </div>
           <div className={styles.pliClair}>
             <SectionPliableMobile
-              numero={false}
               enTete={<EtiquettePli surtitre="04 · Fiche mission" titre="Le dispositif" />}
             >
-              <div style={KICKER}>04 · Fiche mission</div>
-              <h2 style={{ ...TITRE2, margin: "0 0 26px" }}>Le dispositif</h2>
-              <div style={DISPOSITIF_TABLE}>
+              <div data-carte-surtitre="" style={KICKER}>
+                04 · Fiche mission
+              </div>
+              <h2 className={styles.titreDoublon} style={{ ...TITRE2, margin: "0 0 26px" }}>
+                Le dispositif
+              </h2>
+              <div className={styles.tableDispositif} style={DISPOSITIF_TABLE}>
                 {dispositif.map((ligne, rang) => (
                   <div
                     className={styles.dispositifLigne}
@@ -1127,21 +1293,49 @@ export default function PagePreuve({
     ) : null;
 
   /* ---------------------------------------- 6 · « Le résultat » */
-  /* Numérotée 05 ici, elle se replie comme les autres. La maquette mobile la
-     remonte en tête, ouverte, parce que son corpus la range à part (L461) :
-     écart déclaré, la remonter changerait l'ordre du rendu de bureau. */
+  /* LA MAQUETTE MOBILE LA REMONTE EN TÊTE, OUVERTE, en panneau sombre non
+     numéroté (dc.html L461 : `facts`, puis `result`, puis le reste ; L475 :
+     `isPlain`, `C_DARK`). Le DOM ne bouge pas, le bureau non plus : sous
+     880 px, `<main>` passe en colonne flexible et la feuille donne à cette
+     section le rang qui suit le héros et ses chiffres (`.sectionResultat`,
+     `order`). `toujoursOuvert` : jamais refermée, et sa bascule, doublon de
+     son surtitre et de son titre, n'est pas affichée sous 880 px non plus.
+     Elle ne compte pas dans la cadence (dc.html L477 : `nD` ne compte que les
+     sections de texte) : elle est posée hors d'`AvecConversionMobile`. */
+  const texteResultat = texteDeplace(contenu.complement, "Le résultat");
+  const resultatApres = chemin ? texteResultatApres(chemin) : false;
+  const paragrapheResultat = texteResultat ? (
+    <p
+      data-mobile-seulement=""
+      className={resultatApres ? styles.suiteResultat : styles.chapeauDeplace}
+    >
+      {texteResultat}
+    </p>
+  ) : null;
   const sectionResultat =
     resultats.length > 0 ? (
-      <section key="resultat" style={RESULTAT_SECTION}>
+      <section key="resultat" className={styles.sectionResultat} style={RESULTAT_SECTION}>
         <div className={styles.panneauResultat} style={RESULTAT_PANNEAU}>
-          <div aria-hidden="true" style={RESULTAT_LUEUR} />
+          <div aria-hidden="true" className={styles.lueurResultat} style={RESULTAT_LUEUR} />
           <div style={{ position: "relative" }}>
             <SectionPliableMobile
               numero={false}
+              toujoursOuvert
               enTete={<EtiquettePli surtitre="05 · Résultat" titre="Le résultat" sombre />}
             >
-              <div style={KICKER}>05 · Résultat</div>
-              <h2 style={RESULTAT_TITRE}>Le résultat</h2>
+              <div className={styles.kickerResultat} style={KICKER}>
+                05 · Résultat
+              </div>
+              <h2 className={styles.titreResultat} style={RESULTAT_TITRE}>
+                Le résultat
+              </h2>
+              {resultatApres ? null : paragrapheResultat}
+              {/* corpus, `## LE RÉSULTAT` : « Ce que la mission illustre : ». */}
+              {corpus?.introResultat ? (
+                <p data-mobile-seulement="" className={styles.introResultat}>
+                  {corpus.introResultat}
+                </p>
+              ) : null}
               <div
                 className={styles.resultats}
                 style={{
@@ -1163,19 +1357,14 @@ export default function PagePreuve({
                   </div>
                 ))}
               </div>
+              {resultatApres ? paragrapheResultat : null}
             </SectionPliableMobile>
           </div>
         </div>
       </section>
     ) : null;
 
-  const numerotees = [
-    sectionSituation,
-    sectionReponse,
-    sectionDeroule,
-    sectionDispositif,
-    sectionResultat,
-  ];
+  const numerotees = [sectionSituation, sectionReponse, sectionDeroule, sectionDispositif];
 
   return (
     // `data-gabarit` : le marqueur que `verification-preuve.tsx` cherche sur la
@@ -1199,8 +1388,8 @@ export default function PagePreuve({
             le comptait perdu sur les 28 pages (mesuré le 14/10). En tête de
             `<main>`, il n'a rien avant lui, et il se termine par une espace. */}
         {chemin ? (
-          <div data-mobile-seulement="" style={FIL_HAUT}>
-            <FilArianeMobile chemin={chemin} titre={titre} />
+          <div data-mobile-seulement="" className={styles.filHaut} style={FIL_HAUT}>
+            <FilArianeMobile chemin={chemin} />
           </div>
         ) : null}
         {filAriane}
@@ -1213,10 +1402,10 @@ export default function PagePreuve({
               H1 à 27 px, chapeau à 15 px, boutons côte à côte, photo en 16/10.
               Le dessin de bureau reste celui de la capture, au pixel. */}
           <div className={`mg-r2 ${styles.grilleHeros}`} style={HERO_GRILLE}>
-            <div>
+            <div className={styles.colonneTexte}>
               <div className={styles.pastillesHeros} style={HERO_PASTILLES}>
-                <span style={PASTILLE}>
-                  <span aria-hidden="true" style={PASTILLE_PUCE} />
+                <span className={styles.pastilleType} style={PASTILLE}>
+                  <span aria-hidden="true" className={styles.puceType} style={PASTILLE_PUCE} />
                   Étude de cas
                   {/* Le badge de lecture de la maquette MOBILE (dc.html L492 :
                       « Étude de cas · N min de lecture »), mobile seulement :
@@ -1238,7 +1427,7 @@ export default function PagePreuve({
                   ) : null}
                 </span>
                 {contenu.logo ? (
-                  <span style={LOGO_PASTILLE}>
+                  <span className={styles.logoHeros} style={LOGO_PASTILLE}>
                     <Image
                       src={contenu.logo}
                       alt={contenu.client}
@@ -1252,10 +1441,21 @@ export default function PagePreuve({
                     />
                   </span>
                 ) : null}
-                <span style={CLIENT}>{contenu.client}</span>
+                <span className={styles.clientHeros} style={CLIENT}>
+                  {contenu.client}
+                </span>
               </div>
 
+              {/* Le H1 de la maquette MOBILE est celui du corpus, « Étude de
+                  cas AUTOLIV : … » : son préfixe, mot pour mot, n'existe que
+                  sous 880 px, et le nom du client quitte alors la pastille.
+                  Le titre reste un seul nœud texte. */}
               <h1 className={styles.titreHeros} style={TITRE1}>
+                {prefixeH1 ? (
+                  <span data-mobile-seulement="" data-prefixe-h1="">
+                    {prefixeH1}
+                  </span>
+                ) : null}
                 {titre}
               </h1>
 
@@ -1271,7 +1471,11 @@ export default function PagePreuve({
                   className={styles.boutonPrincipal}
                   style={BOUTON_ORANGE}
                 >
-                  {contenu.bouton}
+                  {/* dc.html L412 : « Décrire mon besoin », le libellé du
+                      bouton de la maquette MOBILE ; celui de la page reste
+                      au bureau et sur la carte du formulaire. */}
+                  <span className={styles.libelleBureau}>{contenu.bouton}</span>{" "}
+                  <span data-mobile-seulement="">Décrire mon besoin</span>
                 </a>
                 <a
                   href={TELEPHONE_HREF}
@@ -1283,14 +1487,15 @@ export default function PagePreuve({
               </div>
             </div>
 
-            <div style={{ position: "relative" }}>
+            <div className={styles.colonnePhoto} style={{ position: "relative" }}>
               <div
                 className={styles.cadreHeros}
                 aria-hidden={contenu.photoHero ? undefined : true}
                 style={HERO_CADRE}
               >
                 {contenu.photoHero ? (
-                  <Image
+                  <PhotoMobile
+                    mobile={chemin ? photoHerosMobile(chemin) : undefined}
                     src={contenu.photoHero}
                     alt="Intervention migen sur site client"
                     fill
@@ -1310,6 +1515,15 @@ export default function PagePreuve({
                     />
                   ))}
                 </div>
+              ) : null}
+              {/* L'encadré qui ferme « Le client et le site » dans la maquette
+                  MOBILE (corpus, `> Ce cas figure dans nos …`). */}
+              {corpus?.casFigure ? (
+                <p data-mobile-seulement="" className={styles.encadreClient}>
+                  <span>
+                    <SegmentsCorpus segments={corpus.casFigure} />
+                  </span>
+                </p>
               ) : null}
             </div>
           </div>
@@ -1341,8 +1555,10 @@ export default function PagePreuve({
         {/* LA CADENCE DE CONVERSION DE LA MAQUETTE MOBILE (dc.html L452-456),
             posée entre les sections numérotées : photo + CTA après la 2e
             (« Ce que nous avons mis en place », comme la capture m-02),
-            bandeau « Être rappelé » après la 5e. Tout ce qu'elle ajoute est
-            masqué au-dessus de 880 px.
+            bandeau « Être rappelé » après la 5e section de texte, donc
+            jamais sur une étude de cas, qui en compte quatre (la maquette ne
+            le pose pas non plus sur m-02). Tout ce qu'elle ajoute est masqué
+            au-dessus de 880 px.
 
             Elle défait, dans le `textContent` du `<main>`, le « mot » que
             collaient la fin d'une section et le début de la suivante
@@ -1367,6 +1583,16 @@ export default function PagePreuve({
         ) : (
           numerotees
         )}
+        {sectionResultat}
+        {/* Le bandeau « Une question sur votre site ? » de la cadence : la
+            maquette ne le pose pas sur une étude de cas (quatre sections de
+            texte), mais le site le servait : il reste dans le DOM, masqué à
+            toutes les largeurs (`hidden`), au lieu d'en être retiré. */}
+        {chemin ? (
+          <div hidden>
+            <BandeauRappelMobile variante={varianteDe(chemin, "02")} />
+          </div>
+        ) : null}
         {/* ----------------------------------------- 7 · « Complément » */}
 
         {contenu.complement?.length ? (
@@ -1376,11 +1602,18 @@ export default function PagePreuve({
         {/* --------------------------------------- 8 · « Votre besoin » */}
 
         {contenu.besoinTitre ? (
-          <section id="cas-form" style={BESOIN_SECTION}>
+          <section id="cas-form" className={styles.sectionBesoin} style={BESOIN_SECTION}>
             <div className="mg-r2" style={BESOIN_GRILLE}>
-              <div className={styles.collante} style={COLONNE_COLLANTE}>
-                <div style={KICKER}>Votre besoin</div>
-                <h2 style={BESOIN_TITRE}>{contenu.besoinTitre}</h2>
+              <div className={`${styles.collante} ${styles.panneauBesoin}`} style={COLONNE_COLLANTE}>
+                {/* dc.html L475 : « Passer à l’action », surtitre du `cta`
+                    de la maquette MOBILE. */}
+                <div style={KICKER}>
+                  <span className={styles.libelleBureau}>Votre besoin</span>{" "}
+                  <span data-mobile-seulement="">Passer à l’action</span>
+                </div>
+                <h2 className={styles.titreBesoin} style={BESOIN_TITRE}>
+                  {contenu.besoinTitre}
+                </h2>
                 {(contenu.besoinProse ?? []).map((paragraphe) => (
                   <p key={paragraphe} style={BESOIN_PROSE}>
                     <ProseBesoin texte={paragraphe} />
@@ -1388,14 +1621,63 @@ export default function PagePreuve({
                 ))}
                 {contenu.besoinTuiles?.length ? (
                   <div className={styles.besoinTuiles} style={BESOIN_TUILES}>
-                    {contenu.besoinTuiles.map((tuile) => (
-                      <div key={tuile.titre} style={BESOIN_TUILE}>
-                        <div style={TUILE_TITRE}>{tuile.titre}</div>
-                        <div style={TUILE_TEXTE}>{tuile.texte}</div>
-                      </div>
-                    ))}
+                    {contenu.besoinTuiles.map((tuile, rang) => {
+                      // Rang pour rang, seulement si le corpus compte autant de tuiles.
+                      const m =
+                        corpus?.tuiles?.length === contenu.besoinTuiles?.length
+                          ? corpus?.tuiles?.[rang]
+                          : undefined;
+                      return (
+                        <div key={tuile.titre} style={BESOIN_TUILE}>
+                          <div style={TUILE_TITRE}>
+                            <TexteTuile bureau={tuile.titre} mobile={m && copieConforme(m.t, chemin)} />
+                          </div>
+                          <div style={TUILE_TEXTE}>
+                            <TexteTuile bureau={tuile.texte} mobile={m && copieConforme(m.x, chemin)} />
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 ) : null}
+                {/* La maquette MOBILE ferme ce panneau sur ses deux boutons
+                    (corpus, `## CTA` : « Demander un technicien sur site »
+                    vers /contact/ · le téléphone) ; le formulaire en trois
+                    étapes reste au bureau, le rappel final le relaie en bas
+                    de page. */}
+                <div data-mobile-seulement="" className={styles.boutonsBesoin}>
+                  <a href="/contact/" className={styles.boutonPrincipal} style={BOUTON_ORANGE}>
+                    {contenu.bouton}
+                  </a>{" "}
+                  <a href={TELEPHONE_HREF} className={styles.telephoneBesoin}>
+                    {TELEPHONE}
+                  </a>
+                </div>
+                {/* Le pied du panneau dans la maquette MOBILE (corpus, `## CTA`) :
+                    « Offre et secteur concernés : … », « À lire aussi », puis
+                    le bouton plein « Décrire mon besoin » (dc.html L203). Les
+                    cartes « Pour aller plus loin », qui portent les mêmes
+                    liens, restent au bureau. */}
+                {corpus?.concernes ? (
+                  <p data-mobile-seulement="" className={styles.encadreSombre}>
+                    <SegmentsCorpus segments={corpus.concernes} />
+                  </p>
+                ) : null}
+                {/* Une ligne « À lire aussi » du corpus = un bloc, son
+                    libellé et sa pastille (dc.html `isRel`). */}
+                {(corpus?.lireAussi ?? [])
+                  .filter((l) => cibleSure(l.href))
+                  .map((l) => (
+                    <div key={l.href} data-mobile-seulement="" className={styles.lireAussi}>
+                      <div className={styles.lireAussiLibelle}>À lire aussi</div>
+                      <Link href={l.href} prefetch={false} className={styles.pastilleLire}>
+                        {l.t} <span aria-hidden="true">›</span>
+                      </Link>
+                    </div>
+                  ))}
+                <a data-mobile-seulement="" href="/contact/" className={styles.boutonPlein}>
+                  Décrire mon besoin
+                </a>
               </div>
               <div className={styles.carteFormulaire} style={FORMULAIRE_CARTE}>
                 <div style={FORMULAIRE_TITRE}>{contenu.bouton}</div>
@@ -1409,9 +1691,11 @@ export default function PagePreuve({
         {/* --------------------------------- 9 · « Pour aller plus loin » */}
 
         {plusLoin.length > 0 ? (
-          <section style={LOIN_SECTION}>
+          <section className={styles.sectionPlusLoin} style={LOIN_SECTION}>
             <div style={LARGEUR}>
-              <div style={KICKER}>Pour aller plus loin</div>
+              <div className={styles.kickerPlusLoin} style={KICKER}>
+                Pour aller plus loin
+              </div>
               {/* Sous 880 px, une rangée qui défile à l'horizontale, motif
                   carrousel de la maquette mobile (dc.html L131) : les cartes
                   restent toutes dans le DOM, aucune n'est retirée. */}
@@ -1479,6 +1763,7 @@ export default function PagePreuve({
 
         {maillage ? (
           <div
+            className={styles.maillageBas}
             style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px 80px" }}
           >
             {maillage}

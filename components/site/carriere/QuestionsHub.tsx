@@ -47,7 +47,10 @@ export default function QuestionsHub({
   if (!questions.length) return null;
   return (
     <Enveloppe>
+      {/* `data-mc-*` : au téléphone, la liste « Questions fréquentes » de la
+          maquette mobile v2 (metier/MobileV2.module.css) ; sur bureau, rien. */}
       <div
+        data-mc-faq=""
         className={`${styles.deuxColonnes} ${styles.panneauPhoto}`}
         style={{
           ...JETONS_PANNEAU,
@@ -65,8 +68,16 @@ export default function QuestionsHub({
           color: "var(--ink)",
         }}
       >
-        <Image src={PHOTO_QUESTIONS} alt={altPhoto(PHOTO_QUESTIONS)} fill sizes="1200px" style={{ objectFit: "cover" }} />
+        <Image
+          data-mc-deco=""
+          src={PHOTO_QUESTIONS}
+          alt={altPhoto(PHOTO_QUESTIONS)}
+          fill
+          sizes="1200px"
+          style={{ objectFit: "cover" }}
+        />
         <div
+          data-mc-deco=""
           style={{
             position: "absolute",
             inset: 0,
@@ -74,9 +85,12 @@ export default function QuestionsHub({
               "linear-gradient(90deg,rgba(18,17,16,.92) 0%,rgba(18,17,16,.8) 50%,rgba(18,17,16,.62) 100%)",
           }}
         />
-        <div style={{ position: "relative" }}>
-          <div style={SURTITRE}>{surtitre}</div>
+        <div data-mc-faq-tete="" style={{ position: "relative" }}>
+          <div data-faq-surtitre="" style={SURTITRE}>
+            {surtitre}
+          </div>
           <h2
+            data-faq-titre=""
             style={{
               font: "600 calc(clamp(30px,3.3vw,48px) * var(--ts))/1.06 var(--ft)",
               letterSpacing: "-.04em",
@@ -90,6 +104,7 @@ export default function QuestionsHub({
           </h2>
           <a
             href="tel:+33478337205"
+            data-mc-faq-bouton=""
             className={styles.boutonQuestion}
             style={{
               display: "inline-flex",
@@ -108,7 +123,7 @@ export default function QuestionsHub({
             Poser ma question
           </a>
         </div>
-        <div style={{ position: "relative" }}>
+        <div data-mc-faq-corps="" style={{ position: "relative" }}>
           {intros?.map((t) => (
             <Paragraphe
               key={t}
@@ -121,7 +136,10 @@ export default function QuestionsHub({
               }}
             />
           ))}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10, marginTop: 8 }}>
+          <div
+            data-faq-liste=""
+            style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 10, marginTop: 8 }}
+          >
             {questions.map((q, i) => (
               <details
                 key={q.question}

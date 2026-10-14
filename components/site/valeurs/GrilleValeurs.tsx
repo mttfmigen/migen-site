@@ -1,5 +1,7 @@
 import type { CSSProperties } from "react";
 
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
+
 import { VALEURS, type Valeur } from "./valeurs-donnees";
 
 /* Les cinq valeurs, portées de `maquette/accueil-rendu.html` lignes 5567 à
@@ -48,7 +50,7 @@ const PASTILLE: CSSProperties = {
 function Carte({ valeur, principale }: { valeur: Valeur; principale: boolean }) {
   return (
     <div
-      className="mg-val"
+      className={`mg-val ${mobile.valeurItem}`}
       style={{
         gridColumn: principale ? "span 2" : "span 1",
         position: "relative",
@@ -61,9 +63,10 @@ function Carte({ valeur, principale }: { valeur: Valeur; principale: boolean }) 
         ...(principale ? { background: "var(--panel)" } : VERRE),
       }}
     >
-      {principale && <div style={HALO} />}
-      <div style={COLONNE}>
+      {principale && <div className={mobile.decor} style={HALO} />}
+      <div className={mobile.valeurColonne} style={COLONNE}>
         <span
+          className={mobile.valeurNumero}
           style={{
             font: `700 calc(${principale ? 64 : 44}px * var(--ts))/.9 var(--ft)`,
             letterSpacing: "-.06em",
@@ -74,6 +77,7 @@ function Carte({ valeur, principale }: { valeur: Valeur; principale: boolean }) 
           {valeur.numero}
         </span>
         <div
+          className={mobile.valeurTitre}
           style={{
             font: `600 calc(${principale ? 26 : 19}px * var(--ts))/1.25 var(--ft)`,
             letterSpacing: "-.03em",
@@ -85,6 +89,7 @@ function Carte({ valeur, principale }: { valeur: Valeur; principale: boolean }) 
           {valeur.titre}
         </div>
         <p
+          className={mobile.valeurTexte}
           style={{
             font: `400 ${principale ? "16px" : "14.5px"}/1.65 var(--fb)`,
             color: principale ? "rgba(255,255,255,.68)" : "var(--ink2)",
@@ -95,6 +100,7 @@ function Carte({ valeur, principale }: { valeur: Valeur; principale: boolean }) 
           {valeur.texte}
         </p>
         <div
+          className={mobile.valeurPreuve}
           style={{
             marginTop: "auto",
             display: "flex",
@@ -104,7 +110,7 @@ function Carte({ valeur, principale }: { valeur: Valeur; principale: boolean }) 
             borderTop: `1px solid ${principale ? "rgba(255,255,255,.14)" : "var(--line)"}`,
           }}
         >
-          <span style={PASTILLE} />
+          <span className={mobile.decor} style={PASTILLE} />
           <span
             style={{
               font: "500 13.5px/1.55 var(--fb)",
@@ -121,11 +127,11 @@ function Carte({ valeur, principale }: { valeur: Valeur; principale: boolean }) 
 
 export default function GrilleValeurs() {
   return (
-    <section style={{ padding: "var(--sec) 0 0" }}>
+    <section className={mobile.sectionSerree} style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div
           data-reveal=""
-          className="mg-valg"
+          className={`mg-valg ${mobile.valeursListe}`}
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3,minmax(0,1fr))",

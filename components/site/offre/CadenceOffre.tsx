@@ -2,8 +2,11 @@ import type { ReactNode } from "react";
 
 import { entreeDe, gabaritDe } from "@/components/site/cocon/maillage-mobile";
 import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
+import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
 import {
   ID_RAPPEL_FINAL,
+  rappelFinalVisible,
+  varianteDe,
   type LibelleCible,
 } from "@/components/site/mobile/conversion-donnees";
 
@@ -31,10 +34,13 @@ import {
 export default function CadenceOffre({
   chemin,
   actions,
+  photoHeros,
   children,
 }: {
   chemin?: string;
   actions: readonly LibelleCible[];
+  /** dc.html L423 : la photo de tête, écartée du tirage du photo + CTA. */
+  photoHeros?: string;
   children: ReactNode;
 }) {
   if (!chemin) return <>{children}</>;
@@ -50,6 +56,7 @@ export default function CadenceOffre({
           : undefined
       }
       rappelFinal={false}
+      photoHeros={photoHeros}
     >
       {children}
     </AvecConversionMobile>
@@ -72,4 +79,19 @@ export default function CadenceOffre({
 export function AncreRappel({ chemin }: { chemin?: string }) {
   if (!chemin) return null;
   return <div id={ID_RAPPEL_FINAL} data-mobile-seulement="" style={{ scrollMarginTop: 90 }} />;
+}
+
+/**
+ * LA CARTE « ÊTRE RAPPELÉ » DE LA MAQUETTE MOBILE V2 (dc.html L138) sur les
+ * deux gabarits d'offre, à la place de la seule ancre : la maquette ferme la
+ * page sur ce mini-formulaire, pas sur le formulaire complet en trois étapes,
+ * qui se replie au téléphone derrière « Décrire mon besoin en détail »
+ * (`AppelFinal`). Elle porte `#etre-rappele`, la cible des bandeaux. Mobile
+ * seulement ; hors index (`/ressources/`), l'ancre seule, comme avant.
+ */
+export function RappelFinalOffre({ chemin }: { chemin?: string }) {
+  if (!chemin) return null;
+  if (!rappelFinalVisible(chemin)) return <AncreRappel chemin={chemin} />;
+  const entree = entreeDe(chemin);
+  return <RappelFinalMobile variante={varianteDe(chemin, entree ? gabaritDe(entree) : "03")} />;
 }

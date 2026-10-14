@@ -798,3 +798,215 @@
      lecteur : elle est retirée, et la gouttière est déclarée comme arbitrage,
      dans le fichier de celui qui la possède. */
 }
+
+/* =========================================================================
+   LA MAQUETTE MOBILE V2 DU HUB (14/10), sous 881 px seulement : au-dessus,
+   aucune règle.
+
+   L'ORDRE : héros et « Chiffres clés » d'abord, puis « Nos villes » (dc.html :
+   `hubs` inséré juste après `stats`), puis les sections. `:root` devant :
+   il faut battre la règle de fin de page du socle (`[data-queue-mobile] ~ *`),
+   « Nos villes » étant posé après le repère dans le DOM.
+
+   LA MOSAÏQUE devient un rail horizontal de tuiles, le carrousel « Des hubs
+   partout en France » de la maquette : les dix liens restent tous visibles.
+   ========================================================================= */
+@media (max-width: 880px) {
+  :root main[data-ordre-mobile] > .teteMobile {
+    order: -2;
+  }
+  :root main[data-ordre-mobile] > .villesMobile {
+    order: -1;
+  }
+  .mosaique {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 0 -16px;
+    padding: 0 16px 4px;
+    scrollbar-width: none;
+  }
+  .mosaique::-webkit-scrollbar {
+    display: none;
+  }
+  .tuileHub,
+  .tuileHub[data-empan="3"],
+  .tuileHub[data-empan="4"],
+  .tuileHub[data-empan="6"],
+  .tuileHub[data-haut] {
+    flex: 0 0 72%;
+    min-height: 200px;
+    scroll-snap-align: start;
+  }
+}
+
+/* =========================================================================
+   « NOS HUBS » DE LA MAQUETTE MOBILE V2 (relecture du 15/10), dc.html L127
+   `isHubs`, rendu par `NosHubsMobile` (téléphone seulement). Le bloc de
+   bureau (`NosVilles`, carte « Nos implantations », tuiles pleine photo,
+   panneau « Au-delà des hubs ») s'efface sous 881 px, liens gardés au DOM.
+   ========================================================================= */
+@media (max-width: 880px) {
+  .villesBureau {
+    display: none;
+  }
+  .hubsMobile {
+    margin: 18px 0 0;
+  }
+  .hubsMobileTete {
+    padding: 0 18px;
+  }
+  .hubsMobileSurtitre {
+    font: 600 11px var(--fb);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #ff7c3c;
+  }
+  :root .hubsMobileTitre {
+    margin: 6px 0 12px !important;
+    font: 600 21px/1.2 var(--ft) !important;
+    letter-spacing: -0.03em !important;
+    color: #1c1b19 !important;
+  }
+  .hubsMobileRail {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 0 18px 4px;
+    scrollbar-width: none;
+  }
+  .hubsMobileRail::-webkit-scrollbar {
+    display: none;
+  }
+  .hubsMobileCarte {
+    flex: none;
+    width: 250px;
+    scroll-snap-align: start;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgba(28, 27, 25, 0.08);
+  }
+  .hubsMobilePhoto {
+    position: relative;
+    display: block;
+    height: 150px;
+    background: #2a2927;
+    text-decoration: none;
+  }
+  .hubsMobileVoile {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(18, 17, 16, 0.05), rgba(18, 17, 16, 0.78));
+  }
+  .hubsMobileBandeau {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 12px;
+    color: #fff;
+  }
+  .hubsMobileGenre {
+    display: block;
+    font: 600 10.5px var(--fb);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ffb08a;
+  }
+  .hubsMobileNom {
+    display: block;
+    font: 600 20px/1.15 var(--ft);
+    letter-spacing: -0.03em;
+  }
+  .hubsMobileZones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 12px;
+  }
+  .hubsMobileRegion .hubsMobileZones {
+    padding: 0 12px 12px;
+  }
+  .hubsMobilePastille {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 11px;
+    border-radius: 999px;
+    background: #f6f6f7;
+    border: 1px solid rgba(28, 27, 25, 0.08);
+    font: 500 12.5px var(--fb);
+    color: #1c1b19;
+    text-decoration: none;
+  }
+  .hubsMobileItinerants {
+    padding: 14px 18px 0;
+  }
+  :root .hubsMobileItinerantsTitre {
+    margin: 0 0 8px !important;
+    font: 600 15px var(--ft) !important;
+    letter-spacing: -0.02em !important;
+    color: #1c1b19 !important;
+  }
+  .hubsMobileRegions {
+    display: grid;
+    gap: 6px;
+  }
+  .hubsMobileRegion {
+    border-radius: 16px;
+    background: #fff;
+    border: 1px solid rgba(28, 27, 25, 0.08);
+    overflow: hidden;
+  }
+  .hubsMobileRegion > summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .hubsMobileRegion > summary::-webkit-details-marker {
+    display: none;
+  }
+  .hubsMobileRegionNom {
+    font: 600 14px var(--ft);
+    color: #1c1b19;
+  }
+  .hubsMobileRegionDroite {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hubsMobileRegionCompte {
+    font: 500 11.5px var(--fb);
+    color: #77736d;
+  }
+  .hubsMobileChevron {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background: rgba(28, 27, 25, 0.055);
+    display: grid;
+    place-items: center;
+    font: 500 15px/1 var(--fb);
+    color: #1c1b19;
+    transition: transform 0.25s ease;
+  }
+  .hubsMobileRegion[open] .hubsMobileChevron {
+    transform: rotate(90deg);
+  }
+}
+@media (max-width: 880px) and (prefers-reduced-motion: reduce) {
+  .hubsMobileChevron {
+    transition: none;
+  }
+}
+@media (max-width: 880px) {
+  .pastilleBureau {
+    display: none !important;
+  }
+}

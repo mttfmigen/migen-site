@@ -143,10 +143,17 @@ export default function Reassurance({
   chemin,
 }: ProprietesReassurance) {
   return (
-    <section style={SECTION}>
+    /* Même règle que `LogosClients` : après les sections de la maquette au
+       téléphone (`data-mobile-apres-sections`), carte sans numéro. */
+    <section data-mobile-apres-sections="" style={SECTION}>
       <div style={LARGEUR}>
         <SectionPliableMobile
-          enTete={<h2 className={styles.titre}>Certifications et équipe</h2>}
+          numero={false}
+          enTete={
+            <h2 className={styles.titre} data-carte-titre="">
+              Certifications et équipe
+            </h2>
+          }
         >
           <div
             className="mg-r2"
@@ -157,7 +164,7 @@ export default function Reassurance({
               alignItems: "stretch",
             }}
           >
-            <div style={CARTE_CERTIFICATIONS}>
+            <div className={styles.sousCarte} style={CARTE_CERTIFICATIONS}>
               <div style={SURTITRE_CARTE}>Certifications</div>
               <div
                 style={{
@@ -196,7 +203,7 @@ export default function Reassurance({
               </p>
             </div>
 
-            <div style={PANNEAU_EQUIPE}>
+            <div className={`${styles.sousCarte} ${styles.sousCarteSombre}`} style={PANNEAU_EQUIPE}>
               <div aria-hidden="true" style={LUEUR} />
               <div style={{ position: "relative" }}>
                 <div style={{ ...SURTITRE_CARTE, marginBottom: 22 }}>
@@ -212,7 +219,7 @@ export default function Reassurance({
                 >
                   {reperes.map((repere) => (
                     <div key={repere.valeur}>
-                      <div style={REPERE_VALEUR}>{repere.valeur}</div>
+                      <div className={styles.repereValeur} style={REPERE_VALEUR}>{repere.valeur}</div>
                       <div style={REPERE_LIBELLE}>{appliqueDecisions(repere.libelle, chemin)}</div>
                     </div>
                   ))}

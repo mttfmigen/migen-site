@@ -44,31 +44,51 @@
   flex-wrap: wrap;
 }
 
+/* AU TÉLÉPHONE, LES DEUX BLOCS SONT DES CARTES DE LA MÊME FAMILLE que les
+   sections de la maquette (14/10 au soir) : même gouttière de 18 px, même
+   en-tête (`data-carte-titre`, `app/globals.css`), sans numéro. Le bandeau de
+   logos posait sa carte de bord à bord (0 px de gouttière) avec sa mention
+   en capitales orange, quand les autres cartes sont à 18 px avec un titre de
+   16,5 px. Le titre reste « Ils nous font confiance », mot pour mot
+   (décision de Mehdi) : seule sa casse d'affichage change. */
 @media (max-width: 880px) {
+  .logos {
+    padding: 0 18px !important;
+  }
+
   .enteteLogos {
     margin: 0;
-    padding: 0 0 0 18px;
+    padding: 0;
   }
 
-  /* La bascule du bandeau est pleine largeur (le défilement est à fond
-     perdu) : le chevron prend la gouttière de 18 px, et la mention, en
-     capitales de 11,5 px, se centre sur lui. */
-  .logos > details > summary {
-    padding-right: 18px;
-    align-items: center;
+  :global(:root) .mention {
+    text-transform: none !important;
+    color: var(--ink) !important;
   }
-}
 
-/* `app/globals.css` porte TOUT `<h2>` à `clamp(26px, 7.4vw, 34px) !important`
-   sous 760 px (`.mg-site h2`). Sans cette parade, le titre du repli passerait
-   à 29 px à 390 px, et la mention « Ils nous font confiance », dessinée en
-   capitales de 11,5 px, à 29 px aussi. */
-@media (max-width: 760px) {
-  :global(.mg-site) .titre {
-    font-size: 16.5px !important;
+  /* Le corps de « Certifications et équipe » : ses deux panneaux de bureau
+     deviennent les petites cartes de la maquette (dc.html `isKv` : 14 px de
+     rembourrage, rayon 16). Le panneau « Qui intervient chez vous » garde son
+     fond anthracite, celui d'une carte `C_DARK` de la maquette. */
+  .sousCarte {
+    padding: 14px !important;
+    border-radius: 16px !important;
+    box-shadow: none !important;
   }
-  :global(.mg-site) .mention {
-    font-size: 11.5px !important;
+
+  .sousCarte:not(.sousCarteSombre) {
+    border: 1px solid var(--mm-bord-doux) !important;
+    background: var(--mm-fond-doux) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .sousCarteSombre > [aria-hidden="true"] {
+    display: none;
+  }
+
+  .repereValeur {
+    font-size: 21px !important;
   }
 }
 

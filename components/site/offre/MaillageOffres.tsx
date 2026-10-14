@@ -183,7 +183,11 @@ export default function MaillageOffres({ cartes }: ProprietesMaillageOffres) {
   if (retenues.length === 0) return null;
 
   return (
-    <section style={SECTION}>
+    /* `data-mobile-apres-sections` : absente de la maquette mobile v2, la
+       carte passe au téléphone après toutes ses sections, sans numéro
+       (relecture du tour 2 : « Après la FAQ, la liste Aller plus loin vient
+       directement »). Au bureau, rien ne change. */
+    <section data-mobile-apres-sections="" style={SECTION}>
       <div className={styles.blocPliablePartage} style={LARGEUR}>
         {/* REPLIÉ SUR TÉLÉPHONE : la maquette mobile v2 ne porte pas ce bento
             (1 560 px à 390 px, mesuré le 14/10 sur /offres/residence/), son
@@ -192,6 +196,7 @@ export default function MaillageOffres({ cartes }: ProprietesMaillageOffres) {
             joint les titres des cartes, comme la maquette fabrique les siens.
             Au-dessus de 880 px, rien ne change (`.blocPliablePartage`). */}
         <SectionPliableMobile
+          numero={false}
           enTete={
             <EtiquettePli
               surtitre="Nos autres offres"

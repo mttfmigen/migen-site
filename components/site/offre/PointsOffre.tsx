@@ -1,13 +1,14 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 import { LARGEUR, SECTION, SURTITRE, TITRE2 } from "@/components/site/blocs/habillage";
-import TexteRiche from "@/components/site/blocs/TexteRiche";
+import TexteRiche, { enTexteNu } from "@/components/site/blocs/TexteRiche";
 import type { SectionOffre } from "@/types/contenu";
 
 import { fusionneLigne, numerote } from "./texte-offre";
 
 import styles from "./PageOffre.module.css";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import EtiquettePli from "./EtiquettePli";
 
 /**
  * Section « 04 Offre » de la capture (`maquette/rendu/offres--residence.html`) :
@@ -23,6 +24,38 @@ import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
 export interface ProprietesPointsOffre {
   section: SectionOffre;
+  /**
+   * EN TÊTE DU CORPS DE LA CARTE, au téléphone : la prose ou le complément
+   * que la maquette mobile v2 range dans « 02 L'offre » (« Nos domaines… »,
+   * « Cinq façons de travailler ensemble… »). L'appelant le marque
+   * `data-mobile-seulement` ; le bureau ne change pas.
+   */
+  avant?: ReactNode;
+  /**
+   * EN FIN DU CORPS DE LA CARTE, au téléphone : le complément que le corpus
+   * écrit APRÈS le tableau (« Nos domaines… », « Ce que nous ne sommes
+   * pas… » sur `/offres/bureau-etudes/`). Même contrat que `avant`.
+   */
+  apres?: ReactNode;
+  /**
+   * LE RÉSUMÉ DE LA CARTE REPLIÉE : la phrase que la maquette y écrit (le
+   * premier paragraphe de la section, dc.html `teaseOf`) quand la page la
+   * porte. Absent, les intitulés des points joints par « · ».
+   */
+  resume?: string;
+  /**
+   * REND LA PROSE DU CORPUS DANS LA CARTE, au téléphone seulement, après les
+   * points : la maquette mobile v2 la montre (« Pour trancher sans
+   * précipitation… » sur `/offres/residence/`), la capture de bureau non
+   * (TROU SIGNALÉ ci-dessus, inchangé au-dessus de 880 px). Faux par défaut :
+   * les gabarits qui rendent déjà cette prose ailleurs ne la doublent pas.
+   */
+  proseMobile?: boolean;
+}
+
+/** Un paragraphe de prose en texte : son accroche, puis son texte. */
+function texteDe(paragraphe: { accroche?: string; texte: string }): string {
+  return [paragraphe.accroche, paragraphe.texte].filter(Boolean).join(" ").trim();
 }
 
 const ENTETE: CSSProperties = {
@@ -83,39 +116,6 @@ const INTITULE: CSSProperties = {
   color: "var(--ink)",
 };
 
-/**
- * L'ÉTIQUETTE DE LA BASCULE : des `<span>`, et c'est voulu.
- *
- * MOTIF DE RÉFÉRENCE, déjà appliqué et vérifié sur le gabarit métier
- * (`components/site/metier/PageFicheMetier.tsx`, mêmes deux constantes).
- * Recopié ici À L'IDENTIQUE, comme dans `ReferencesOffre.tsx` : les deux
- * blocs sont partagés par les gabarits offre, ville, spécialité, domaine et
- * secteur, et chacun porte son étiquette à côté de son propre en-tête.
- *
- * CE QU'ELLE RÉPARE, mesuré le 12/10 sur les 131 pages de ces cinq gabarits
- * qui ont une capture : le `<h2>` posé dans la bascule emportait avec lui
- * TOUTE la rangée de grille de la capture (tpl 518, `1.1fr 0.9fr`), 123 fois.
- * Un `<span>` à la place du `<h2>` aurait été l'autre faute, symétrique :
- * le titre quitte alors la structure du document. Ici le `<h2>` reste dans sa
- * cellule, et l'étiquette n'existe que sous 880 px.
- */
-const ETIQUETTE_SURTITRE: CSSProperties = {
-  display: "block",
-  font: "600 11px var(--fb)",
-  letterSpacing: ".14em",
-  textTransform: "uppercase",
-  color: "var(--acc)",
-  marginBottom: 6,
-};
-
-/** Le libellé de la bascule, à l'échelle des H2 du gabarit en largeur mobile. */
-const ETIQUETTE_TITRE: CSSProperties = {
-  display: "block",
-  font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
-  letterSpacing: "-.035em",
-  color: "var(--ink)",
-};
-
 const PARAGRAPHE: CSSProperties = {
   gridColumn: 2,
   font: "400 13.5px/1.5 var(--fb)",
@@ -123,8 +123,18 @@ const PARAGRAPHE: CSSProperties = {
   color: "var(--ink2)",
 };
 
-export default function PointsOffre({ section }: ProprietesPointsOffre) {
+export default function PointsOffre({
+  section,
+  avant,
+  apres,
+  resume,
+  proseMobile = false,
+}: ProprietesPointsOffre) {
   const points = section.lignes.map(fusionneLigne);
+  /* Le premier paragraphe de la section, résumé de la maquette (dc.html
+     `teaseOf`) : l'introduction, sinon la prose qui suit le tableau. */
+  const premierParagraphe =
+    section.intro?.trim() || (section.prose?.[0] ? texteDe(section.prose[0]) : "");
 
   return (
     <section style={SECTION}>
@@ -138,16 +148,15 @@ export default function PointsOffre({ section }: ProprietesPointsOffre) {
             appartient au contenu. Au-dessus de 880 px la bascule entière est
             retirée, elle ne laisse donc aucun arrêt de tabulation muet. */}
         <SectionPliableMobile
-          enTete={
-            <span data-mobile-seulement="" className={styles.etiquettePli}>
-              <span style={ETIQUETTE_SURTITRE}>L’offre</span>
-              <span style={ETIQUETTE_TITRE}>
-                Ce que nous faisons, et ce que ça change pour vous
-              </span>
-            </span>
+          enTete={<EtiquettePli titre="L’offre" />}
+          resume={
+            resume ??
+            (premierParagraphe
+              ? enTexteNu(premierParagraphe)
+              : points.map((point) => point.titre).filter(Boolean).join(" · "))
           }
-          resume={points.map((point) => point.titre).filter(Boolean).join(" · ")}
         >
+        {avant}
         {/* LA RANGÉE D'EN-TÊTE DE LA CAPTURE, `1.1fr 0.9fr`, ET SES DEUX
             ENFANTS. Le titre à gauche, le compteur à droite.
 
@@ -169,8 +178,10 @@ export default function PointsOffre({ section }: ProprietesPointsOffre) {
             comme dans la maquette. */}
         <div className="mg-r2" style={ENTETE}>
           <div>
-            <div style={{ ...SURTITRE, marginBottom: 18 }}>L’offre</div>
-            <h2 style={TITRE2}>
+            {/* « L'offre » EST le titre de la carte au téléphone (dc.html,
+                « 02 L'offre ») : ici, il en serait le doublon. */}
+            <div data-doublon-mobile="" style={{ ...SURTITRE, marginBottom: 18 }}>L’offre</div>
+            <h2 data-mm-lead="" style={TITRE2}>
               Ce que nous faisons, et ce que ça change pour vous
             </h2>
           </div>
@@ -185,10 +196,10 @@ export default function PointsOffre({ section }: ProprietesPointsOffre) {
             défilement de `Moteurs.tsx` (0,45 px par image), comme dans la
             maquette : sans elle, le rail du site restait immobile là où celui
             de la capture défile seul. */}
-        <div className="g3-offrail" style={RAIL}>
+        <div data-mm-kv="" className="g3-offrail" style={RAIL}>
           {points.map((point, rang) => (
             <div key={point.titre} style={CARTE}>
-              <span style={NUMERO}>{numerote(rang)}</span>
+              <span data-mm-num="" style={NUMERO}>{numerote(rang)}</span>
               {/* L'INTITULÉ AUSSI PASSE PAR `TexteRiche`, même raison et même
                   arbitrage que le bénéfice ci-dessous. RELEVÉ LE 07/10 en
                   portant `/offres/chantier/transfert-de-production/`, dont la
@@ -201,10 +212,10 @@ export default function PointsOffre({ section }: ProprietesPointsOffre) {
                   périmètre complet), donc la correction est ici et non dans une
                   donnée. Le texte visible est inchangé, seule la syntaxe
                   disparaît. */}
-              <div className={styles.texteAvecLiens} style={INTITULE}>
+              <div data-mm-kv-titre="" className={styles.texteAvecLiens} style={INTITULE}>
                 <TexteRiche texte={point.titre} />
               </div>
-              <p className={styles.texteAvecLiens} style={PARAGRAPHE}>
+              <p data-mm-kv-texte="" className={styles.texteAvecLiens} style={PARAGRAPHE}>
                 {/* LE COMPLÉMENT AUSSI, DEPUIS LE 09/10. Il était le seul des
                     trois champs de la carte à être rendu brut, alors que
                     l'intitulé et le bénéfice passaient déjà par `TexteRiche` :
@@ -241,6 +252,18 @@ export default function PointsOffre({ section }: ProprietesPointsOffre) {
             </div>
           ))}
         </div>
+        {proseMobile && section.prose?.length ? (
+          <div data-mobile-seulement="">
+            {section.prose.map((paragraphe) => (
+              <p key={paragraphe.texte} data-mm-paragraphe="">
+                {paragraphe.accroche ? <strong>{paragraphe.accroche}</strong> : null}
+                {paragraphe.accroche ? " " : null}
+                <TexteRiche texte={paragraphe.texte} />
+              </p>
+            ))}
+          </div>
+        ) : null}
+        {apres}
         </SectionPliableMobile>
       </div>
     </section>

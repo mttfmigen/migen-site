@@ -2,6 +2,8 @@ import type { CSSProperties } from "react";
 
 import { appliqueDecisions } from "@/lib/decisions-copie";
 
+import RepliFormulaireMobile from "@/components/site/implantation/RepliFormulaireMobile";
+
 import PanneauFormulaire from "./PanneauFormulaire";
 
 /**
@@ -124,11 +126,18 @@ export default function AppelFinal({
        l'identifiant et le `scroll-margin-top` sur la section elle-même. */
     <section
       id={ancre}
+      data-appel-final=""
       style={{
         padding: "var(--sec) 24px var(--sec)",
         ...(ancre ? { scrollMarginTop: 90 } : null),
       }}
     >
+      {/* AU TÉLÉPHONE, LE FORMULAIRE COMPLET SE REPLIE derrière « Décrire mon
+          besoin en détail » (libellé de la maquette mobile v2) : la page s'y
+          ferme sur la carte « Être rappelé » (`RappelFinalOffre`), posée juste
+          avant. Replié, pas retiré ; au-dessus de 880 px la bascule n'existe
+          pas et rien ne change. Même repli que `editorial/Guide`. */}
+      <RepliFormulaireMobile etiquette="Décrire mon besoin en détail">
       <div className="mg-pad" style={PANNEAU}>
         <div aria-hidden="true" style={LUEUR} />
         <div
@@ -161,6 +170,7 @@ export default function AppelFinal({
           </div>
         </div>
       </div>
+      </RepliFormulaireMobile>
     </section>
   );
 }

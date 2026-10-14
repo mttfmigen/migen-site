@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import FormulaireBasDePage from "@/components/site/accueil/FormulaireBasDePage";
+import FinDePageMobile from "@/components/site/nous-connaitre/FinDePageMobile";
 import AppelCorrection from "@/components/site/valeurs/AppelCorrection";
 import GrilleValeurs from "@/components/site/valeurs/GrilleValeurs";
 import HeroValeurs from "@/components/site/valeurs/HeroValeurs";
@@ -53,11 +54,13 @@ export default function Valeurs() {
             zéro ; le formulaire réutilisé porte déjà son `var(--sec)` haut, donc
             l'écart entre les deux est le même qu'en maquette. */}
         <AppelCorrection />
-        <FormulaireBasDePage
-          formulaire="valeurs"
-          titre={FORMULAIRE.titre}
-          intro={FORMULAIRE.intro}
-        />
+        <FinDePageMobile chemin={CHEMIN}>
+          <FormulaireBasDePage
+            formulaire="valeurs"
+            titre={FORMULAIRE.titre}
+            intro={FORMULAIRE.intro}
+          />
+        </FinDePageMobile>
       </main>
     </div>
   );

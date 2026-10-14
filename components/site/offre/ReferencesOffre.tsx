@@ -6,13 +6,15 @@ import { LARGEUR, SECTION, SURTITRE } from "@/components/site/blocs/habillage";
 import { enTexteNu, estCheminInterne } from "@/components/site/blocs/TexteRiche";
 import type { SectionPreuves } from "@/types/contenu";
 
+import { photoDuCasMaquette } from "./maquette-mobile-offre";
 import { etiquetteEtude, phraseDate } from "./texte-offre";
 
 import styles from "./PageOffre.module.css";
-import TitreEtSuite, { continueLeTitre } from "../blocs/TitreEtSuite";
+import { continueLeTitre } from "../blocs/TitreEtSuite";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 import { altPhoto } from "@/lib/descriptions-photos";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import EtiquettePli from "./EtiquettePli";
 
 /**
  * Section « 08 Références » de la capture (`maquette/rendu/offres--residence.html`) :
@@ -54,6 +56,15 @@ export interface ProprietesReferencesOffre {
    * tour.
    */
   toujoursOuvert?: boolean;
+  /**
+   * AU TÉLÉPHONE, LA PHOTO QUE LA MAQUETTE MOBILE V2 TIRE POUR CHAQUE CARTE
+   * (dc.html `casePhoto`, voir `photoDuCasMaquette`). Celle de bureau reste
+   * dans le DOM, hors écran sous 881 px. Faux par défaut : les autres
+   * gabarits gardent leur rail.
+   */
+  photosMaquette?: boolean;
+  /** L'encart « Toutes nos réalisations documentées » sous le rail (dc.html `isQ`). */
+  encartMobile?: { texte: string; lien: string; href: string };
 }
 
 type Preuve = SectionPreuves["preuves"][number];
@@ -305,47 +316,6 @@ const PIED_CARTE: CSSProperties = {
   gap: 12,
 };
 
-/**
- * L'ÉTIQUETTE DE LA BASCULE : des `<span>`, et c'est voulu.
- *
- * MOTIF DE RÉFÉRENCE, déjà appliqué et vérifié sur le gabarit métier
- * (`components/site/metier/PageFicheMetier.tsx`, mêmes deux constantes).
- * Recopié ici À L'IDENTIQUE, pour ce bloc partagé par les gabarits offre,
- * ville, spécialité, domaine et secteur.
- *
- * LE PIÈGE A DEUX FACES, et les deux ont été payées le 12/10. Un `<span>` À
- * LA PLACE du `<h2>` retire le titre de la structure du document : la porte
- * des blocs pliables l'a refusé 120 fois. Un `<h2>` DANS LA BASCULE le remet
- * dans la structure, mais il quitte la cellule de grille où la capture le
- * place : mesuré sur les 131 pages de ces cinq gabarits qui ont une capture,
- * 246 en-têtes sur 246, dont les 123 rangées « 08 Références » servies vides
- * de leur titre, une demi-colonne pour rien à côté du lien.
- *
- * La bonne réponse ne choisit pas : le `<h2>` de la section RESTE dans sa
- * rangée, à la taille de sa capture, et la bascule porte une étiquette qui
- * n'existe QUE sous 880 px, marquée `data-mobile-seulement` comme le chevron
- * et le résumé du même bloc. Au-dessus, elle n'est pas affichée, et la
- * bascule non plus (voir `.blocPliablePartage` dans le module CSS) : un
- * visiteur de bureau voit exactement sa capture, et la structure du document
- * garde un seul titre par section.
- */
-const ETIQUETTE_SURTITRE: CSSProperties = {
-  display: "block",
-  font: "600 11px var(--fb)",
-  letterSpacing: ".14em",
-  textTransform: "uppercase",
-  color: "var(--acc)",
-  marginBottom: 6,
-};
-
-/** Le libellé de la bascule, à l'échelle des H2 du gabarit en largeur mobile. */
-const ETIQUETTE_TITRE: CSSProperties = {
-  display: "block",
-  font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
-  letterSpacing: "-.035em",
-  color: "var(--ink)",
-};
-
 const FLECHE: CSSProperties = {
   width: 34,
   height: 34,
@@ -359,11 +329,41 @@ const FLECHE: CSSProperties = {
   font: "600 15px var(--fb)",
 };
 
+/**
+ * LE TITRE ET SA SUITE EN UNE PHRASE (« Deux techniciens… transporteur »,
+ * « , pour le maintien… »), le rendu de `TitreEtSuite` au caractère près sur
+ * bureau. Au téléphone, la carte reprend le dessin des autres cartes du rail
+ * (`data-mm-rail-suite`, `app/globals.css` § 14) : titre au-dessus, texte
+ * dessous, la virgule de reprise effacée (`data-doublon-mobile`).
+ */
+function SuiteDeTitre({ titre, texte }: { titre: string; texte: string }) {
+  const { marginTop: _mt, marginBottom: _mb, ...suite } = DATE_CARTE;
+  const { marginTop: _mt2, marginBottom: _mb2, ...tete } = TITRE_CARTE;
+  const coupe = /^(\s*[,;]\s*)([\s\S]*)$/.exec(texte);
+  return (
+    <div data-mm-rail-suite="" style={suite}>
+      <span data-mm-rail-titre="" style={{ ...tete, display: "inline" }}>
+        {titre}
+      </span>
+      {coupe ? (
+        <>
+          <span data-doublon-mobile="">{coupe[1]}</span>
+          {coupe[2]}
+        </>
+      ) : (
+        texte
+      )}
+    </div>
+  );
+}
+
 export default function ReferencesOffre({
   section,
   dateBrute = false,
   photosPrises = [],
   toujoursOuvert = false,
+  photosMaquette = false,
+  encartMobile,
 }: ProprietesReferencesOffre) {
   const preuves = section.preuves.filter(
     (preuve) => !!preuve.lienHref && estCheminInterne(preuve.lienHref),
@@ -383,12 +383,7 @@ export default function ReferencesOffre({
             tabulation muet. */}
         <SectionPliableMobile
           toujoursOuvert={toujoursOuvert}
-          enTete={
-            <span data-mobile-seulement="" className={styles.etiquettePli}>
-              <span style={ETIQUETTE_SURTITRE}>Nos réalisations</span>
-              <span style={ETIQUETTE_TITRE}>Nos références</span>
-            </span>
-          }
+          enTete={<EtiquettePli titre="Nos références" />}
           resume={section.preuves
             .map((preuve) => preuve.titre)
             .filter(Boolean)
@@ -398,10 +393,15 @@ export default function ReferencesOffre({
             « Toutes nos études de cas » à droite, alignés sur leur bas
             (tpl 948). Le `<div/>` vide qui remplaçait la cellule de gauche
             laissait une demi-colonne pour rien. */}
-        <div style={ENTETE}>
+        {/* `data-doublon-mobile` : la carte de la maquette mobile v2 ne
+            dessine ni ce sur-titre ni ce lien (« 05 Nos références », puis le
+            rail). La rangée reste dans le DOM et au bureau. */}
+        <div data-mm-entete-rangee="" data-doublon-mobile="" style={ENTETE}>
           <div>
-            <div style={{ ...SURTITRE, marginBottom: 16 }}>Nos réalisations</div>
-            <h2 style={TITRE}>Nos références</h2>
+            <div data-mm-surtitre="" style={{ ...SURTITRE, marginBottom: 16 }}>Nos réalisations</div>
+            {/* « Nos références » EST le titre de la carte au téléphone
+                (dc.html, « 05 Nos références ») : ici, son doublon. */}
+            <h2 data-doublon-mobile="" style={TITRE}>Nos références</h2>
           </div>
           <Link href="/preuves/" prefetch={false} style={LIEN_TOUTES}>
             Toutes nos études de cas →
@@ -425,7 +425,7 @@ export default function ReferencesOffre({
             défilement de `Moteurs.tsx` (0,45 px par image), comme dans la
             maquette : sans elle, le rail du site restait immobile là où celui
             de la capture défile seul. */}
-        <div className="g3-refrail" style={RAIL}>
+        <div data-mm-rail="" className="g3-refrail" style={RAIL}>
           {preuves.map((preuve, rang) => (
             <Link
               key={preuve.lienHref}
@@ -434,12 +434,28 @@ export default function ReferencesOffre({
               className={styles.carteReference}
               style={CARTE}
             >
-              <div style={CADRE_PHOTO}>
+              <div data-mm-rail-photo="" style={CADRE_PHOTO}>
+                {photosMaquette && preuve.lienLibelle ? (
+                  <Image
+                    data-mobile-seulement=""
+                    src={photoDuCasMaquette(preuve.lienHref!, preuve.lienLibelle)}
+                    alt={altPhoto(photoDuCasMaquette(preuve.lienHref!, preuve.lienLibelle))}
+                    fill
+                    sizes="(max-width: 880px) 260px, 1px"
+                    loading={rang < 2 ? "eager" : undefined}
+                    style={{ objectFit: "cover" }}
+                  />
+                ) : null}
                 <Image
+                  {...(photosMaquette && preuve.lienLibelle ? { "data-doublon-mobile": "" } : {})}
                   src={photos[rang]}
                   alt={altPhoto(photos[rang])}
                   fill
                   sizes="320px"
+                  /* Les deux premières cartes sont à l'écran dès l'ouverture
+                     du rail : chargées tout de suite, elles ne restent plus
+                     grises dans le défilement horizontal du téléphone. */
+                  loading={rang < 2 ? "eager" : undefined}
                   style={{
                     objectFit: "cover",
                     /* Cadre 320x150, ratio 2,13, et 951 placements : l'emplacement
@@ -459,7 +475,7 @@ export default function ReferencesOffre({
                   const logo = (preuve as { logo?: string }).logo ?? LOGOS[cle];
                   if (!client || !logo) return null;
                   return (
-                    <div style={PASTILLE_LOGO}>
+                    <div data-mm-rail-logo="" style={PASTILLE_LOGO}>
                       {/* Comme la capture : le logo garde ses proportions,
                           borné à 112x22, servi tel quel pour que sa taille
                           propre soit celle du fichier. */}
@@ -469,6 +485,7 @@ export default function ReferencesOffre({
                         width={112}
                         height={22}
                         unoptimized
+                        loading={rang < 2 ? "eager" : undefined}
                         style={{ ...LOGO, filter: LOGOS_INVERSES.has(cle) ? "invert(1) hue-rotate(180deg)" : "none" }}
                       />
                     </div>
@@ -476,6 +493,7 @@ export default function ReferencesOffre({
                 })()}
               </div>
               <div
+                data-mm-rail-corps=""
                 style={{
                   padding: "24px 26px 28px",
                   display: "flex",
@@ -483,7 +501,12 @@ export default function ReferencesOffre({
                   flex: "1 1 0%",
                 }}
               >
-                <div style={ETIQUETTE}>{etiquetteEtude(preuve)}</div>
+                {/* Le client est déjà dans le lien de la carte au téléphone
+                    (« Étude de cas CLIENT : sujet »), la maquette ne le
+                    répète pas en sur-titre. */}
+                <div data-mm-rail-client="" data-doublon-mobile="" style={ETIQUETTE}>
+                  {etiquetteEtude(preuve)}
+                </div>
                 {/* `enTexteNu` ET PAS `TexteRiche`, POSÉ LE 09/10. Toute la
                     carte est déjà un `<Link>` : y rendre un lien du corpus
                     donnerait un `<a>` dans un `<a>`, interdit par le HTML et
@@ -510,25 +533,36 @@ export default function ReferencesOffre({
                     une suite de phrase n'est jamais une date, et
                     `continueLeTitre` fait exactement ce tri.
                     Porte : scripts/verifie-suites-de-titre.mjs */}
-                {continueLeTitre(preuve.texte) ? (
-                  <TitreEtSuite
-                    titre={enTexteNu(preuve.titre)}
-                    texte={enTexteNu(preuve.texte)}
-                    styleTitre={TITRE_CARTE}
-                    styleTexte={DATE_CARTE}
-                  />
+                {preuve.titre && continueLeTitre(preuve.texte) ? (
+                  <SuiteDeTitre titre={enTexteNu(preuve.titre)} texte={enTexteNu(preuve.texte)} />
                 ) : (
                   <>
-                    <div style={TITRE_CARTE}>{enTexteNu(preuve.titre)}</div>
-                    <div style={DATE_CARTE}>
+                    <div data-mm-rail-titre="" style={TITRE_CARTE}>{enTexteNu(preuve.titre)}</div>
+                    {/* Sans titre, le texte EST l'intitulé de la carte au
+                        téléphone (maquette : « Pilotage complet… » en gras). */}
+                    <div
+                      {...(preuve.titre ? { "data-mm-rail-texte": "" } : { "data-mm-rail-titre": "" })}
+                      style={DATE_CARTE}
+                    >
                       {dateBrute
                         ? enTexteNu(preuve.texte)
                         : phraseDate(enTexteNu(preuve.texte))}
                     </div>
                   </>
                 )}
-                <div style={PIED_CARTE}>
-                  <span style={{ font: "600 14px var(--fb)", color: "var(--ink)" }}>
+                <div data-mm-rail-pied="" style={PIED_CARTE}>
+                  {/* LE LIEN DE LA MAQUETTE MOBILE V2 : « Étude de cas CLIENT :
+                      sujet → », le libellé du corpus. Au bureau, « Lire
+                      l'étude de cas » et sa pastille, comme la capture. */}
+                  {preuve.lienLibelle ? (
+                    <span data-mobile-seulement="" data-mm-rail-lien="">
+                      {enTexteNu(preuve.lienLibelle)}
+                    </span>
+                  ) : null}
+                  <span
+                    {...(preuve.lienLibelle ? { "data-doublon-mobile": "" } : {})}
+                    style={{ font: "600 14px var(--fb)", color: "var(--ink)" }}
+                  >
                     Lire l’étude de cas
                   </span>
                   <span aria-hidden="true" style={FLECHE}>
@@ -541,6 +575,14 @@ export default function ReferencesOffre({
         </div>
           </>
         )}
+        {encartMobile ? (
+          <p data-mobile-seulement="" className={styles.encartReferences}>
+            {encartMobile.texte}{" "}
+            <Link href={encartMobile.href} prefetch={false}>
+              {encartMobile.lien}
+            </Link>
+          </p>
+        ) : null}
         </SectionPliableMobile>
       </div>
     </section>

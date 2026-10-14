@@ -1,7 +1,17 @@
 import type { CSSProperties } from "react";
 
 import { SURTITRE, VERRE } from "@/components/site/blocs/habillage";
+import type { EntreeSommaire } from "@/components/site/nous-connaitre/HautMobile";
+import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
+import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 import { PILIERS, type Pilier } from "./piliers-donnees";
+
+/* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
+const SURTITRE_TEXTE = "Quatre piliers";
+const TITRE_TEXTE = "Là où nous avons une prise réelle";
+
+/** Carte 01 du téléphone, ouverte comme dans la maquette mobile v2. */
+export const SOMMAIRE_PILIERS: EntreeSommaire = { id: "quatre-piliers", titre: TITRE_TEXTE };
 
 /**
  * Les quatre piliers RSE, en grille de deux cartes de verre.
@@ -62,9 +72,18 @@ const NOTE: CSSProperties = {
   color: "var(--ink3)",
 };
 
+/*
+ * AU TÉLÉPHONE, UNE LISTE PLATE DE PETITES CARTES NUMÉROTÉES (maquette mobile
+ * v2, bloc `isKv` : 01 à 16), sans carte dans la carte. La carte du pilier
+ * s'efface (`display: contents`), son en-tête et son chapô forment une petite
+ * carte, chaque indicateur la sienne ; le numéro est un compteur CSS, absent
+ * du texte. L'enveloppe `.pilierTete` ne change rien au bureau : élément
+ * d'une colonne flexible, elle ne fait fusionner aucune marge.
+ */
 function CartePilier({ pilier }: { pilier: Pilier }) {
   return (
-    <div style={CARTE}>
+    <div className={mobile.pilierCarte} style={CARTE}>
+      <div className={mobile.pilierTete}>
       <div
         style={{
           display: "flex",
@@ -73,14 +92,16 @@ function CartePilier({ pilier }: { pilier: Pilier }) {
           marginBottom: 12,
         }}
       >
-        <span style={RANG}>{pilier.rang}</span>
+        <span className={mobile.masqueMobile} style={RANG}>{pilier.rang}</span>
         <span style={TITRE_CARTE}>{pilier.titre}</span>
       </div>
       <p style={CHAPEAU_CARTE}>{pilier.chapeau}</p>
-      <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 14, marginBottom: 20 }}>
+      </div>
+      <div className={mobile.pilierCarte} style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 14, marginBottom: 20 }}>
         {pilier.indicateurs.map((indicateur) => (
           <div
             key={indicateur.libelle}
+            className={mobile.pilierIndicateur}
             style={{ display: "flex", alignItems: "baseline", gap: 14 }}
           >
             <span style={VALEUR}>{indicateur.valeur}</span>
@@ -88,13 +109,19 @@ function CartePilier({ pilier }: { pilier: Pilier }) {
           </div>
         ))}
       </div>
-      <div style={NOTE}>{pilier.note}</div>
+      <div className={mobile.pilierNote} style={NOTE}>{pilier.note}</div>
     </div>
   );
 }
 
 export default function PiliersRse() {
   return (
+    <SectionRepliee
+      id={SOMMAIRE_PILIERS.id}
+      kicker={SURTITRE_TEXTE}
+      titre={TITRE_TEXTE}
+      ouvert
+    >
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
         <div data-reveal="">
@@ -109,8 +136,11 @@ export default function PiliersRse() {
             }}
           >
             <div>
-              <div style={{ ...SURTITRE, marginBottom: 18 }}>Quatre piliers</div>
+              <div data-titre-bureau="" style={{ ...SURTITRE, marginBottom: 18 }}>
+                {SURTITRE_TEXTE}
+              </div>
               <h2
+                data-titre-bureau=""
                 style={{
                   font: "600 calc(clamp(26px,3vw,42px) * var(--ts))/1.06 var(--ft)",
                   letterSpacing: "-.04em",
@@ -120,7 +150,7 @@ export default function PiliersRse() {
                   maxWidth: "22ch",
                 }}
               >
-                Là où nous avons une prise réelle
+                {TITRE_TEXTE}
               </h2>
             </div>
             <p
@@ -137,7 +167,7 @@ export default function PiliersRse() {
             </p>
           </div>
           <div
-            className="mg-rmulti"
+            className={`mg-rmulti ${mobile.piliersListe}`}
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(2,minmax(0,1fr))",
@@ -151,5 +181,6 @@ export default function PiliersRse() {
         </div>
       </div>
     </section>
+    </SectionRepliee>
   );
 }

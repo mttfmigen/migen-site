@@ -14,13 +14,23 @@
  * rendu mot pour mot, règle validée par le client.
  */
 
-import { resumeDe } from "@/components/site/blocs/resume-de-section";
 
+import type { EntreeSommaire } from "./HautMobile";
 import SectionRepliee from "./SectionRepliee";
 
 /* Écrits une fois : l'en-tête de bureau et la bascule du téléphone. */
 const SURTITRE_TEXTE = "Notre histoire";
 const TITRE_TEXTE = "Cinq ans, de zéro à cent";
+/* Le chapô de la section, et la phrase sous le titre de la carte repliée
+   (`mobile-native-data.js` : la maquette résume la carte par ce paragraphe). */
+const CHAPO =
+  "Aucune levée de fonds. La croissance a suivi les sites clients\u00a0: un technicien, puis deux, puis une équipe.";
+
+/** La carte 05 de la maquette mobile v2. */
+export const SOMMAIRE_HISTOIRE: EntreeSommaire = {
+  id: "notre-histoire",
+  titre: TITRE_TEXTE,
+};
 
 interface Jalon {
   annee: string;
@@ -81,9 +91,10 @@ const JALONS: readonly Jalon[] = [
 export default function FriseCinqAns() {
   return (
     <SectionRepliee
+      id={SOMMAIRE_HISTOIRE.id}
       kicker={SURTITRE_TEXTE}
       titre={TITRE_TEXTE}
-      resume={resumeDe(JALONS.map((j) => j.annee))}
+      resume={CHAPO}
     >
     <section style={{ padding: "var(--sec) 0 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 40px" }}>
@@ -131,8 +142,7 @@ export default function FriseCinqAns() {
                 maxWidth: "42ch",
               }}
             >
-              Aucune levée de fonds. La croissance a suivi les sites
-              clients&nbsp;: un technicien, puis deux, puis une équipe.
+              {CHAPO}
             </p>
           </div>
           <div style={{ position: "relative", paddingTop: 8 }}>

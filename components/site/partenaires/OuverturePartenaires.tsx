@@ -1,8 +1,30 @@
+import Image from "next/image";
 import type { CSSProperties } from "react";
 
+import {
+  ActionsMobile,
+  FilMobile,
+  SommaireMobile,
+  SurtitreMobile,
+  type EntreeSommaire,
+} from "@/components/site/nous-connaitre/HautMobile";
 import mobile from "@/components/site/nous-connaitre/mobile-apropos.module.css";
+import SectionRepliee from "@/components/site/nous-connaitre/SectionRepliee";
 
 import { PARTENAIRES, TITRE_H1_PARTENAIRES, type Partenaire } from "./donnees";
+import { SOMMAIRE_FONCTIONNEMENT } from "./FonctionnementPartenariat";
+
+/* Le nom de la page : notre sur-titre, le titre de la maquette mobile. */
+const NOM_PAGE = "Partenaires";
+/* dc.html L485 : 240 mots dans `mobile-native-data.js`, / 230, au moins 2. */
+const MINUTES_DE_LECTURE = 2;
+
+/** La photo de tête du téléphone, celle de la maquette : dc.html L421, hors
+    `FIMG`, le repli `assets/web/team-duo.jpg`. Écartée du tirage du photo + CTA. */
+export const PHOTO_TETE_PARTENAIRES = "/assets/web/team-duo.jpg";
+
+/** L'ancre de la carte d'un partenaire, visée par le sommaire. */
+const ancreDe = (nom: string) => `partenaire-${nom.toLowerCase()}`;
 
 /**
  * Ouverture de l'écran « Partenaires » : la promesse, puis les partenaires nommés.
@@ -50,17 +72,46 @@ const CARTOUCHE: CSSProperties = {
   padding: "12px 18px",
 };
 
+/**
+ * LE HÉROS. Sur téléphone, le haut de la maquette mobile v2 (`HautMobile.tsx`) :
+ * fil, sur-titre, nom de la page, les deux boutons côte à côte, le sommaire,
+ * puis notre H1 en première phrase du chapô. Sous le fil, la photo de tête
+ * (dc.html L105) : celle que le photo + CTA de la cadence portait déjà sur
+ * cette page, comme sur l'écran équipe. Écartée du tirage (`photoHeros`), le
+ * photo + CTA tire alors `team-grind-impact`, celui de la maquette. Au bureau,
+ * rien ne bouge.
+ */
 export default function OuverturePartenaires({
   partenaires = PARTENAIRES,
 }: Proprietes) {
+  const sommaire: EntreeSommaire[] = [
+    ...partenaires.map((p) => ({ id: ancreDe(p.nom), titre: p.nom })),
+    SOMMAIRE_FONCTIONNEMENT,
+  ];
   return (
-    <>
       <section
-        className={mobile.herosCompact}
+        className={`${mobile.herosCompact} ${mobile.herosMaquette}`}
         style={{ maxWidth: 1200, margin: "0 auto", padding: "70px 40px 0" }}
       >
-        <div style={SURTITRE}>Partenaires</div>
+        <FilMobile page={NOM_PAGE} />
+        <div data-mobile-seulement="" className={mobile.photoTete}>
+          <Image
+            src={PHOTO_TETE_PARTENAIRES}
+            alt=""
+            fill
+            priority
+            sizes="(max-width: 880px) 100vw, 1px"
+            style={{ objectFit: "cover", filter: "saturate(var(--sat)) contrast(1.05)" }}
+          />
+        </div>
+        <SurtitreMobile minutes={MINUTES_DE_LECTURE} />
+        <div className={mobile.titreMobile} style={SURTITRE}>
+          {NOM_PAGE}
+        </div>
+        <ActionsMobile />
+        <SommaireMobile entrees={sommaire} />
         <h1
+          className={mobile.h1Lead}
           style={{
             font: "600 calc(clamp(38px,4.6vw,70px) * var(--ts))/1.03 var(--ft)",
             letterSpacing: "-.045em",
@@ -72,6 +123,7 @@ export default function OuverturePartenaires({
           {TITRE_H1_PARTENAIRES}
         </h1>
         <p
+          className={mobile.chapoMobile}
           style={{
             font: "400 18.5px/1.6 var(--fb)",
             color: "var(--ink2)",
@@ -84,13 +136,26 @@ export default function OuverturePartenaires({
           que nous connaissons sur le terrain.
         </p>
       </section>
+  );
+}
 
+/**
+ * LES PARTENAIRES NOMMÉS, une section à part pour la cadence mobile : la
+ * maquette mobile v2 en fait deux cartes repliables numérotées (01, 02),
+ * ouvertes, suivies de la photo + CTA. Sur téléphone chaque cellule est donc
+ * une `SectionRepliee` ouverte : nom sur la bascule, domaine en phrase clé
+ * grasse, puis le texte ; le logo et la carte de verre s'effacent
+ * (`.decor`, `.aplat`). Le nom est un `h3` (titre de niveau qu'exige
+ * `scripts/verifie-blocs-pliables.mjs`), dessiné comme le `div` d'avant.
+ */
+export function GrillePartenaires({ partenaires = PARTENAIRES }: Proprietes) {
+  return (
       <section
         style={{ maxWidth: 1200, margin: "0 auto", padding: "44px 40px 0" }}
       >
         <div data-reveal="" style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: 16 }}>
           <div
-            className="mg-r2"
+            className={`mg-r2 ${mobile.sansGouttiere} ${mobile.grillePartenaires}`}
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
@@ -98,9 +163,15 @@ export default function OuverturePartenaires({
             }}
           >
             {partenaires.map((partenaire) => (
-              <div key={partenaire.nom} style={VERRE}>
+              <SectionRepliee
+                key={partenaire.nom}
+                id={ancreDe(partenaire.nom)}
+                titre={partenaire.nom}
+                ouvert
+              >
+              <div className={`${mobile.aplat} ${mobile.cartePartenaire}`} style={VERRE}>
                 {partenaire.logo ? (
-                  <span style={CARTOUCHE}>
+                  <span className={mobile.decor} style={CARTOUCHE}>
                     {/* `img` et non `next/image` : les dimensions intrinsèques
                         de ces logos ne sont pas connues du dépôt. */}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -117,7 +188,8 @@ export default function OuverturePartenaires({
                     />
                   </span>
                 ) : null}
-                <div
+                <h3
+                  data-titre-bureau=""
                   style={{
                     font: "600 21px var(--ft)",
                     letterSpacing: "-.03em",
@@ -125,8 +197,9 @@ export default function OuverturePartenaires({
                   }}
                 >
                   {partenaire.nom}
-                </div>
+                </h3>
                 <div
+                  className={mobile.phraseCle}
                   style={{
                     font: "600 11.5px var(--fb)",
                     letterSpacing: ".12em",
@@ -151,10 +224,10 @@ export default function OuverturePartenaires({
                   {partenaire.corps}
                 </p>
               </div>
+              </SectionRepliee>
             ))}
           </div>
         </div>
       </section>
-    </>
   );
 }
