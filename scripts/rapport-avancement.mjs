@@ -13,6 +13,18 @@
  * ne sont PAS relancées à chaque passage : elles portent leur propre horodatage
  * et le rapport dit quand elles ont été prises.
  *
+ * IL MESURE LA BRANCHE DÉPLOYÉE, PAS L'ARBRE OÙ IL TOURNE. Corrigé le 14/10 :
+ * il lisait la tête locale, si bien que lancé dans un arbre resté en arrière
+ * (l'arbre principal est resté à 93da90c le 14/10) il aurait publié les
+ * chiffres d'un état que personne ne voit, sans rien en dire. Il récupère donc
+ * `origin/phase-2-gabarits` et compte dans CE commit-là ; l'état de l'arbre
+ * local est rendu à part, pour ce qu'il est.
+ *
+ * UNE MESURE IMPOSSIBLE S'ÉCRIT « non calculable » AVEC SON MOTIF, jamais zéro.
+ * Les comptes se font ici, en JavaScript, et non par `grep -c` : `grep -c` sort
+ * en erreur quand il compte zéro, et `|| true` aurait changé une lecture ratée
+ * (référence absente, fichier illisible) en un zéro qui ressemble à une mesure.
+ *
  * Usage :
  *   node scripts/rapport-avancement.mjs             remesure et réécrit
  *   node scripts/rapport-avancement.mjs --montre     affiche sans écrire
@@ -22,29 +34,37 @@ import { readFileSync, writeFileSync } from 'node:fs'
 
 const MONTRE = process.argv.includes('--montre')
 const DOC = 'docs/AVANCEMENT.md'
+const BRANCHE_DEPLOYEE = 'phase-2-gabarits'
+const REF = `origin/${BRANCHE_DEPLOYEE}`
 const DEBUT = '<!-- CHIFFRES: début, réécrit par scripts/rapport-avancement.mjs -->'
 const FIN = '<!-- CHIFFRES: fin -->'
 
-/** Une commande qui échoue rend sa raison, jamais un zéro silencieux. */
-function mesure(commande) {
+/** Lance une commande : `{ texte }` si elle réussit, `{ motif }` sinon. */
+function lis(commande) {
   try {
-    return execSync(commande, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], timeout: 30000 }).trim()
+    return { texte: execSync(commande, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], timeout: 30000 }) }
   } catch (e) {
-    return `non calculable : ${(e.stderr || e.stdout || e.message || '').toString().split('\n')[0].slice(0, 90)}`
+    const brut = (e.stderr || e.stdout || e.message || '').toString().trim().split('\n')[0]
+    return { motif: `non calculable : ${brut.slice(0, 90) || `code ${e.status ?? '?'}`}` }
   }
 }
 
-const horodatage = mesure('TZ=Europe/Paris date "+%d/%m/%Y à %H:%M"')
-const tete = mesure('git rev-parse --short HEAD')
-const branche = mesure('git branch --show-current')
-const pousse = mesure('git rev-parse --short "@{u}" 2>/dev/null || echo "pas de suivi"')
-const commitsDuJour = mesure('git log --since="today 00:00" --oneline | wc -l | tr -d " "')
-const arbreSale = mesure('git status --porcelain | wc -l | tr -d " "')
-const fiches = mesure('ls supabase/import/gabarits-maquette/*.json | wc -l | tr -d " "')
-const portes = mesure('ls scripts/verifie*.mjs scripts/verifie*.ts 2>/dev/null | wc -l | tr -d " "')
-const entreesRegistre = mesure('grep -c "^### G" GATES.md')
-const promesses = mesure('grep -c "^ *CHECK:" GATES.md')
-const ouverts = mesure('grep -c "^- \\[ \\]" GATES.md')
+/** Le texte d'une commande, sur une ligne, ou son motif d'échec. */
+const valeur = (commande) => {
+  const r = lis(commande)
+  return r.motif ?? r.texte.trim()
+}
+
+/** Le nombre de lignes qui satisfont `motif`, ou le motif d'échec de la lecture. */
+const compte = (commande, motif) => {
+  const r = lis(commande)
+  return r.motif ?? r.texte.split('\n').filter((ligne) => motif.test(ligne)).length
+}
+
+const recuperation = lis(`git fetch -q origin ${BRANCHE_DEPLOYEE}`)
+const horodatage = valeur('TZ=Europe/Paris date "+%d/%m/%Y à %H:%M"')
+const deploye = valeur(`git rev-parse --short ${REF}`)
+const registre = `git show ${REF}:GATES.md`
 
 const bloc = [
   DEBUT,
@@ -53,13 +73,25 @@ const bloc = [
   JSON.stringify(
     {
       remesureLe: horodatage,
-      depot: { branche, tete, poussé: pousse, commitsDepuisMinuit: Number(commitsDuJour) || commitsDuJour, fichiersNonCommites: Number(arbreSale) || arbreSale },
-      contenu: { fichesDeContenu: Number(fiches) || fiches },
+      brancheDeployee: {
+        reference: REF,
+        recuperee: recuperation.motif ?? 'oui, à l’instant',
+        tete: deploye,
+        commitsDepuisMinuit: compte(`git log ${REF} --since="today 00:00" --format=%h`, /\S/),
+      },
+      arbreOuTourneLeScript: {
+        branche: valeur('git branch --show-current') || 'tête détachée',
+        tete: valeur('git rev-parse --short HEAD'),
+        fichiersNonCommites: compte('git status --porcelain', /\S/),
+      },
+      contenu: {
+        fichesDeContenu: compte(`git ls-tree --name-only ${REF} supabase/import/gabarits-maquette/`, /\.json$/),
+      },
       verification: {
-        portesDeVerification: Number(portes) || portes,
-        entreesAuRegistre: Number(entreesRegistre) || entreesRegistre,
-        promessesAvecCommande: Number(promesses) || promesses,
-        retoursEncoreOuverts: Number(ouverts) || ouverts,
+        portesDeVerification: compte(`git ls-tree --name-only ${REF} scripts/`, /^scripts\/verifie.*\.(mjs|ts)$/),
+        entreesAuRegistre: compte(registre, /^### [GDB]\d+ /),
+        promessesAvecCommande: compte(registre, /^\s*CHECK:/),
+        retoursEncoreOuverts: compte(registre, /^- \[ \]/),
       },
     },
     null,
@@ -83,4 +115,4 @@ if (i < 0 || j < 0) {
   process.exit(1)
 }
 writeFileSync(DOC, texte.slice(0, i) + bloc + texte.slice(j + FIN.length), 'utf8')
-console.log(`${DOC} remesuré le ${horodatage} (tête ${tete})`)
+console.log(`${DOC} remesuré le ${horodatage} (branche déployée à ${deploye})`)
