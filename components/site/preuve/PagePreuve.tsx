@@ -17,6 +17,7 @@ import TitreEtSuite from "../blocs/TitreEtSuite";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 import { altPhoto } from "@/lib/descriptions-photos";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import AvecConversionMobile from "@/components/site/mobile/AvecConversionMobile";
 import RappelFinalMobile from "@/components/site/mobile/RappelFinalMobile";
 import { varianteDe } from "@/components/site/mobile/conversion-donnees";
 import CarrouselRealisations from "./CarrouselRealisations";
@@ -951,8 +952,8 @@ export default function PagePreuve({
   /* LES SECTIONS NUMÉROTÉES, 01 à 05, rassemblées dans l'ordre : ce sont
      elles, et elles seules, que la cadence de conversion compte (dc.html
      L477-480 : `nD` ne compte que les sections numérotées ; les faits, le
-     complément et l'appel à l'action n'y entrent pas). Voir plus bas pourquoi
-     la cadence n'est pas encore posée. Une section sans donnée vaut `null`.
+     complément et l'appel à l'action n'y entrent pas). Une section sans
+     donnée vaut `null`, et `AvecConversionMobile` ne la compte pas.
      Le balisage de chacune est celui d'avant, au repli près : rien ne bouge à
      1280 px. */
 
@@ -1331,17 +1332,35 @@ export default function PagePreuve({
         ) : null}
 
         {/* ------------------------------- 2 à 6 · les sections numérotées */}
-        {/* LA CADENCE DE CONVERSION (photo + CTA après la 2e, bandeau après la
-            5e, `AvecConversionMobile`) N'EST PAS POSÉE ICI, et ce n'est pas un
-            oubli. Le `textContent` du `<main>` colle la dernière phrase d'une
-            section au premier mot de la suivante (« montage.03 »,
-            « rencontrés.Le ») : tout bloc inséré entre deux sections coupe ce
-            mot, et la porte « aucun mot perdu » le compte perdu, quel que soit
-            le bloc. Mesuré le 14/10 sur les 28 pages : une à deux pertes par
-            page, toutes de cette nature. La porte est la règle du lot : la
-            cadence attend qu'elle sache distinguer une coupure d'une perte.
-            Le rappel final, lui, est posé tout en bas, sans rien couper. */}
-        {numerotees}
+        {/* LA CADENCE DE CONVERSION DE LA MAQUETTE MOBILE (dc.html L452-456),
+            posée entre les sections numérotées : photo + CTA après la 2e
+            (« Ce que nous avons mis en place », comme la capture m-02),
+            bandeau « Être rappelé » après la 5e. Tout ce qu'elle ajoute est
+            masqué au-dessus de 880 px.
+
+            Elle défait, dans le `textContent` du `<main>`, le « mot » que
+            collaient la fin d'une section et le début de la suivante
+            (« montage.03 », « rencontrés.Le ») : la porte « aucun mot perdu »
+            le range en COLLAGE, ses deux moitiés restant de part et d'autre
+            de l'insertion (règle étroite de `scripts/instantane-texte-main.mjs`).
+
+            `rappelFinal={false}` : la page pose déjà son formulaire complet,
+            « Votre besoin », juste après le complément ; le rappel de la
+            cadence tomberait JUSTE AU-DESSUS, deux formulaires d'affilée. La
+            capture m-02 range le rappel tout en bas : il y est posé, plus bas
+            dans ce gabarit. */}
+        {chemin ? (
+          <AvecConversionMobile
+            chemin={chemin}
+            gabarit="02"
+            photoHeros={contenu.photoHero}
+            rappelFinal={false}
+          >
+            {numerotees}
+          </AvecConversionMobile>
+        ) : (
+          numerotees
+        )}
         {/* ----------------------------------------- 7 · « Complément » */}
 
         {contenu.complement?.length ? (

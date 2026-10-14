@@ -17,14 +17,13 @@
  * (`supabase/import/gabarits-maquette/preuves-*.json`), chemin passé comme la
  * route le passe :
  *
- *   1. AUCUN MOT PERDU, AU SENS DE LA PORTE DU SITE. Les mots du rendu SANS
- *      chemin (le rendu de bureau, celui que `verification-preuve.tsx` juge)
- *      sont tous dans le rendu AVEC chemin, multiplicité comprise, découpés
- *      comme `scripts/instantane-texte-main.mjs` découpe le `textContent` :
- *      des nœuds texte mis bout à bout, SANS espace entre deux balises. C'est
- *      ce découpage qui colle « montage. » et « 03 » en un seul mot, et c'est
- *      lui qu'un ajout mal placé coupe. Le nombre de blocs repliables est
- *      EXACTEMENT celui que la donnée commande.
+ *   1. LE TEXTE DE BUREAU INTACT. Blocs `data-mobile-seulement` retirés des
+ *      deux côtés, le rendu AVEC chemin dit mot pour mot, dans le même ordre,
+ *      ce que dit le rendu SANS chemin (celui que `verification-preuve.tsx`
+ *      juge), au découpage du `textContent` (nœuds texte bout à bout, sans
+ *      espace entre deux balises). Tout ajout hors bloc mobile tombe, tout
+ *      mot retiré aussi. Le nombre de blocs repliables est EXACTEMENT celui
+ *      que la donnée commande.
  *   2. LE FIL D'ARIANE MOBILE (dc.html L104), « Réalisations » (L226), la page
  *      courante en `aria-current="page"`, en tête de `<main>`.
  *   3. LE BADGE DE LECTURE (L489-492), compte recalculé ICI depuis l'index.
@@ -32,7 +31,9 @@
  *      ICI depuis `cas-lies.json` puis l'index (L425-428). La porte relit
  *      `cas-lies.json` : le jour où il porte une clé /preuves/, le module jugé,
  *      qui ne le lit pas (voir `donnees-mobiles.ts`), tombe ici.
- *   5. LE RAPPEL FINAL : un seul `#etre-rappele`, posé APRÈS le carrousel.
+ *   5. LE RAPPEL FINAL : un seul `#etre-rappele`, posé APRÈS le carrousel ;
+ *      LA CADENCE (L452-456) : photo + CTA après « Ce que nous avons mis en
+ *      place », bandeau à partir de cinq sections numérotées.
  *   6. AUCUN MOT INTERDIT ni tiret long dans tout ce que la couche ajoute
  *      (c'est cette vérification qui écarte `PastillesCocon` : voir le
  *      gabarit, « sur mesure » de /preuves/tournaire/).
@@ -40,8 +41,8 @@
  *      rendu SANS chemin ne porte aucun marqueur mobile.
  *
  * `--controle` : chaque verdict PROUVE qu'il sait refuser, sur un rendu réel
- * abîmé exprès (A texte disparu, B mot coupé par un ajout, C badge faux,
- * D carrousel retiré, E mot interdit).
+ * abîmé exprès (A texte disparu, B ajout hors bloc mobile, C badge faux,
+ * D carrousel retiré, E mot interdit, F photo + CTA retiré).
  *
  * Piège n° 3 du dépôt : jamais de `grep -c`, les comptes se font par
  * `matchAll` sur la chaîne entière.
@@ -84,17 +85,66 @@ export function texteDe(html: string): string {
   return normalise(html.replace(/<!--[\s\S]*?-->/g, "").replace(/<[^>]+>/g, ""));
 }
 
-/** Verdict n° 1 : les mots de `avant` absents de `apres`, multiplicité comprise. */
-export function motsPerdus(avant: string, apres: string): string[] {
-  const compte = new Map<string, number>();
-  for (const m of texteDe(apres).split(" ").filter(Boolean)) compte.set(m, (compte.get(m) ?? 0) + 1);
-  const perdus: string[] = [];
-  for (const m of texteDe(avant).split(" ").filter(Boolean)) {
-    const n = compte.get(m) ?? 0;
-    if (n === 0) perdus.push(m);
-    else compte.set(m, n - 1);
+/**
+ * Un rendu SANS ses blocs du téléphone : chaque élément marqué
+ * `data-mobile-seulement` est retiré avec tout son contenu (profondeur
+ * comptée, comme `retireOrnementsMobiles` de `verification-preuve.tsx`), et
+ * remplacé par RIEN, pour que le `textContent` recolle ses voisins exactement
+ * comme sans lui.
+ */
+export function sansMobile(html: string): string {
+  const marque = /<(\w+)\b[^>]*\bdata-mobile-seulement\b[^>]*>/;
+  let sortie = html;
+  for (;;) {
+    const debut = sortie.match(marque);
+    if (!debut || debut.index === undefined) return sortie;
+    const balises = new RegExp(`<${debut[1]}\\b[^>]*>|</${debut[1]}\\s*>`, "g");
+    balises.lastIndex = debut.index + debut[0].length;
+    let profondeur = debut[0].endsWith("/>") ? 0 : 1;
+    let fin = debut.index + debut[0].length;
+    for (let m = profondeur ? balises.exec(sortie) : null; m; m = balises.exec(sortie)) {
+      profondeur += m[0].startsWith("</") ? -1 : m[0].endsWith("/>") ? 0 : 1;
+      if (profondeur === 0) {
+        fin = m.index + m[0].length;
+        break;
+      }
+    }
+    sortie = sortie.slice(0, debut.index) + sortie.slice(fin);
   }
-  return perdus;
+}
+
+/**
+ * Verdict n° 1 : hors blocs du téléphone, le rendu AVEC chemin dit mot pour
+ * mot, dans le même ordre, ce que dit le rendu SANS chemin (le rendu de
+ * bureau). Rend le premier écart, ou rien. Plus strict qu'un multi-ensemble :
+ * un mot retiré, déplacé ou ajouté hors `data-mobile-seulement` tombe ici, et
+ * les collages de frontière ne posent pas de question, puisque les deux côtés
+ * sont recollés de la même façon.
+ */
+export function ecartHorsMobile(sans: string, avec: string): string[] {
+  const a = texteDe(sansMobile(sans)).split(" ");
+  const b = texteDe(sansMobile(avec)).split(" ");
+  const i = a.findIndex((mot, k) => mot !== b[k]);
+  if (i < 0 && a.length === b.length) return [];
+  const k = i < 0 ? a.length : i;
+  return [
+    `hors blocs mobiles, le texte diverge au mot ${k} : « ${a.slice(k, k + 6).join(" ")} » devient « ${b.slice(k, k + 6).join(" ")} »`,
+  ];
+}
+
+/** Verdict n° 5 bis : la cadence, par la position de ses identifiants. */
+export function cadenceFautive(html: string, nbNumerotees: number, aReponse: boolean): string[] {
+  const fautes: string[] = [];
+  const photo = html.indexOf('id="parlons-de-votre-site"');
+  if (nbNumerotees >= 2 && photo < 0) fautes.push("le photo + CTA manque après la 2e section numérotée");
+  if (nbNumerotees < 2 && photo >= 0) fautes.push("un photo + CTA sur une page de moins de deux sections");
+  const reponse = html.indexOf(">Ce que nous avons mis en place</h2>");
+  if (aReponse && photo >= 0 && photo < reponse)
+    fautes.push("le photo + CTA tombe AVANT « Ce que nous avons mis en place »");
+  const bandeaux = [...html.matchAll(/id="une-question(?:-\d+)?"/g)].length;
+  const attendus = nbNumerotees > 2 ? Math.floor((nbNumerotees - 2) / 3) : 0;
+  if (bandeaux !== attendus) fautes.push(`${bandeaux} bandeau(x) « Être rappelé », ${attendus} attendu(s)`);
+  return fautes;
 }
 
 /** Verdict n° 3 : le badge mobile, peint depuis `data-lecture`, compte imposé. */
@@ -196,6 +246,8 @@ const MARQUEURS_MOBILES = [
   "data-realisations-mobiles",
   "data-lecture=",
   'id="etre-rappele"',
+  'id="parlons-de-votre-site"',
+  'id="une-question"',
 ] as const;
 
 function rendu(page: PageFixture, avecChemin: boolean): string {
@@ -221,9 +273,8 @@ for (const page of PAGES) {
   const sans = rendu(page, false);
   const nu = normalise(html);
 
-  /* 1. Aucun mot perdu, au découpage de la porte du site. */
-  const perdus = motsPerdus(sans, html);
-  if (perdus.length) fautes.push(`${ou} : ${perdus.length} mot(s) perdu(s) : ${perdus.slice(0, 12).join(" ")}`);
+  /* 1. Hors blocs du téléphone, le texte de bureau, mot pour mot. */
+  fautes.push(...ecartHorsMobile(sans, html).map((f) => `${ou} : ${f}`));
   const listes = [contenu.reponseCartes ?? [], contenu.etapes ?? [], contenu.dispositif ?? [], contenu.resultats ?? []];
   const attendus = listes.filter((l) => l.length > 0).length;
   const mesures = blocsRepliables(html);
@@ -243,8 +294,12 @@ for (const page of PAGES) {
     ...carrouselManquant(html, "D’autres réalisations", urlsCartesAttendues(ou)).map((f) => `${ou} : ${f}`),
   );
 
-  /* 5. Le rappel final. */
+  /* 5. Le rappel final, puis la cadence. */
   fautes.push(...rappelFautif(html).map((f) => `${ou} : ${f}`));
+  const nbNumerotees = [contenu.situationTitre ? [1] : [], ...listes].filter((l) => l.length > 0).length;
+  fautes.push(
+    ...cadenceFautive(html, nbNumerotees, (contenu.reponseCartes ?? []).length > 0).map((f) => `${ou} : ${f}`),
+  );
 
   /* 6. Aucun interdit ajouté. */
   fautes.push(...interditsAjoutes(sans, html).map((f) => `${ou} : ${f}`));
@@ -254,7 +309,9 @@ for (const page of PAGES) {
     if (sans.includes(m)) fautes.push(`${ou} : le rendu SANS chemin porte « ${m} »`);
   }
 
-  constats.push(`${ou} : ${mesures} replis, aucun mot perdu, carrousel et rappel posés`);
+  constats.push(
+    `${ou} : ${mesures} replis, ${nbNumerotees} sections numérotées, texte de bureau intact, cadence, carrousel et rappel posés`,
+  );
 }
 
 /* ------------------------------------------------- les témoins (--controle) */
@@ -273,14 +330,14 @@ if (CONTROLE) {
   const etape = (suez.contenu.etapes ?? [])[0];
   const ampute = html.split(echappe(etape.texte ?? "")).join("");
   if (ampute === html) temoins.push("A : l'amputation n'a rien retiré, le témoin ne teste rien");
-  if (motsPerdus(sans, ampute).length === 0) temoins.push("A : le rendu amputé d'une étape est passé");
+  if (ecartHorsMobile(sans, ampute).length === 0) temoins.push("A : le rendu amputé d'une étape est passé");
 
-  /* B : un ajout glissé ENTRE deux sections, sans rien retirer : il coupe le
-     mot que le `textContent` formait à la jointure, la porte doit le voir. */
+  /* B : un ajout glissé entre deux sections SANS `data-mobile-seulement` :
+     il s'afficherait sur bureau, la porte doit le voir. */
   const jointure = html.indexOf("<section", html.indexOf("Ce que nous avons mis en place</h2>"));
   const coupe = `${html.slice(0, jointure)}<div>Ajout</div>${html.slice(jointure)}`;
-  if (jointure < 0 || motsPerdus(sans, coupe).length === 0)
-    temoins.push("B : un ajout qui coupe la jointure de deux sections est passé");
+  if (jointure < 0 || ecartHorsMobile(sans, coupe).length === 0)
+    temoins.push("B : un ajout hors bloc mobile est passé");
 
   /* C : un badge de lecture faux. */
   const attendu = minutesAttendues(suez.url);
@@ -298,12 +355,16 @@ if (CONTROLE) {
   if (interditsAjoutes(sans, html.replace("Lire le cas →", "Lire le cas sur mesure →")).length === 0)
     temoins.push("E : « sur mesure » ajouté au carrousel est passé");
 
+  /* F : le photo + CTA de la cadence retiré. */
+  if (cadenceFautive(html.replace('id="parlons-de-votre-site"', ""), 5, true).length === 0)
+    temoins.push("F : le rendu sans photo + CTA est passé");
+
   if (temoins.length > 0) {
     console.error("LES TÉMOINS NE TOMBENT PAS, la porte ne prouve rien :");
     for (const t of temoins) console.error("  ✗ " + t);
     process.exit(1);
   }
-  console.log("Témoins : les cinq rendus abîmés sont bien refusés (A, B, C, D, E).");
+  console.log("Témoins : les six rendus abîmés sont bien refusés (A, B, C, D, E, F).");
 }
 
 if (fautes.length > 0) {
