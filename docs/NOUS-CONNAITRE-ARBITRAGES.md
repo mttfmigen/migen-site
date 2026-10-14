@@ -582,3 +582,8 @@ départ du lot : 981 px de moins sur `/offres/residence/`,
   les `alt` : un bandeau fait de logos y passe pour vide. `verifie-titres-replies.mjs`
   voit la règle de bureau de `PliSecteur` masquer la bascule imbriquée de la
   réassurance, défaut qui tombe avec le correctif de `PageSecteur.tsx`.
+
+## Corrections de forme du 14/10, avant la mise en ligne (rien ajouté, rien inventé)
+
+- `/preuves/fdj/`, métadonnées SEO tirées du corpus (`maquette/contenu/site/Preuves/preuves--fdj.md`) : le title se terminait sur un mot orphelin (« Maintenance intralogistique en| Migen ») et la description portait l'espace réservé « [département à compléter] ». Retirés tels quels : « Cas Ciuch : Maintenance intralogistique | Migen » et « Ciuch, Saint-Mard : Dans un contrat tripartite… ». **À trancher par Mehdi** : le département de Saint-Mard (77 ou 02 selon la commune visée), si tu veux qu'il y figure.
+- `/implantations/…/bourges/` (relevé SEO du 14/10) : la FAQ place Châteauroux dans le Cher, or Châteauroux est dans l'Indre. Copie client, **non modifiée** : à corriger par Mehdi.
