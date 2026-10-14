@@ -32,6 +32,8 @@
  * nue suffit à lire trois colonnes.
  */
 
+import { REDIRECTIONS_ANCIEN_SITE } from "@/lib/redirections-ancien-site";
+
 export interface Redirection {
   source: string;
   destination: string;
@@ -113,6 +115,55 @@ export const REDIRECTIONS_REFONTE: TableRedirections = new Map(
 export const SOURCES_REFONTE: ReadonlySet<string> = new Set(
   REDIRECTIONS_REFONTE.keys(),
 );
+
+/**
+ * Toutes les 301 versionnées dans le code : l'ancien site WordPress
+ * (`lib/redirections-ancien-site.ts`) et la refonte. C'est la table que le
+ * proxy applique APRÈS celle de la base : une ligne en base pour la même source
+ * l'emporte toujours.
+ *
+ * GARDE-FOU DE BUILD : une source en double, une source non canonique ou une
+ * destination qui est elle-même une source (une chaîne de deux sauts) jette.
+ * Le plan du site importe ce module, donc `next build` échoue avant qu'une
+ * telle ligne n'atteigne la production.
+ *
+ * LES LIGNES DE L'ANCIEN SITE N'ENTRENT NI DANS `SOURCES_REFONTE` NI DANS
+ * `sourcesRedirigees()`, et c'est voulu : aucune de leurs sources n'a de ligne
+ * dans `pages`, les écarter du plan ne changerait rien. Si l'une redevient une page (`/cgv/`), le
+ * plan la publie, la redirection la masque, et la porte
+ * `scripts/verifie-redirections.mjs` le dit (elle exige 200 sur tout le plan).
+ */
+export const REDIRECTIONS_CODE: TableRedirections = tableVersionnee([
+  ...REDIRECTIONS_ANCIEN_SITE,
+  ...[...REDIRECTIONS_REFONTE.values()].map(
+    ({ source, destination }) => [source, destination] as const,
+  ),
+]);
+
+function tableVersionnee(
+  paires: ReadonlyArray<readonly [string, string]>,
+): TableRedirections {
+  const table: TableRedirections = new Map(
+    paires.map(([source, destination]) => [
+      source,
+      { source, destination, code: 301 },
+    ]),
+  );
+  if (table.size !== paires.length) {
+    throw new Error("Redirections versionnées : une source figure deux fois.");
+  }
+  for (const { source, destination } of table.values()) {
+    if (cheminNormalise(source) !== source) {
+      throw new Error(`Redirections versionnées : « ${source} » n'est pas canonique.`);
+    }
+    if (table.has(cheminNormalise(destination))) {
+      throw new Error(
+        `Redirections versionnées : « ${source} » vise « ${destination} », elle-même redirigée. Viser la page finale.`,
+      );
+    }
+  }
+  return table;
+}
 
 /**
  * Tous les chemins qui sont la SOURCE d'une redirection active : la table plus

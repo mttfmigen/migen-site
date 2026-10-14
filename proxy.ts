@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import {
   cheminNormalise,
-  REDIRECTIONS_REFONTE,
+  REDIRECTIONS_CODE,
   type TableRedirections as Table,
 } from "@/lib/redirections";
 
@@ -177,17 +177,20 @@ export async function proxy(request: NextRequest): Promise<NextResponse> {
 
   // Les anciennes URL sont stockées telles qu'elles existaient, avec ou sans
   // slash final, et parfois avec des majuscules. On tente la forme reçue puis
-  // la forme canonique avant de conclure. La liste statique de la refonte ne
-  // vient qu'après la table, et s'applique même si la table est injoignable.
+  // la forme canonique avant de conclure. Les lignes versionnées dans le code
+  // (ancien site WordPress et refonte) ne viennent qu'après la table, et
+  // s'appliquent même si la table est injoignable.
   const regle =
     table?.get(chemin) ??
     table?.get(canonique) ??
-    REDIRECTIONS_REFONTE.get(canonique);
+    REDIRECTIONS_CODE.get(canonique);
   if (regle) {
-    // Une ligne de la base qui vise une adresse retirée par la refonte saute
-    // directement à la nouvelle : un seul saut, jamais une chaîne de deux.
+    // Une ligne de la base qui vise une source versionnée dans le code (une
+    // adresse retirée par la refonte, par exemple) saute directement à la page
+    // finale : un seul saut, jamais une chaîne de deux. Les lignes du code
+    // visent déjà la page finale, `tableVersionnee` l'impose.
     const destination =
-      REDIRECTIONS_REFONTE.get(cheminNormalise(regle.destination))
+      REDIRECTIONS_CODE.get(cheminNormalise(regle.destination))
         ?.destination ?? regle.destination;
     const cible = cibleInterne(destination, request);
     if (cible) return NextResponse.redirect(cible, regle.code);

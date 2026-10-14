@@ -1,0 +1,182 @@
+source,destination,code,raison,confiance,trafic,domaines_referents
+/,/,200,page conservée au même chemin,haute,1111,144
+/5s-maintenance-industrielle/,/ressources/fiches-pratiques/5s/,301,déjà en base (0003_redirections.sql),haute,1,0
+/?page_id=8,,404,"lien court WordPress (?p= / ?page_id=), le nouveau site sert l'accueil (200) sur cette forme",,0,0
+/?page_id=89,,404,"lien court WordPress (?p= / ?page_id=), le nouveau site sert l'accueil (200) sur cette forme",,0,0
+/a-propos/,/nous-connaitre/,301,"à valider : /nous-connaitre/ ou /entreprise-maintenance-industrielle/. Ancienne page « À propos » (philosophie, valeurs, équipe), WordPress la renvoyait vers /maintenance-industrielle/ qui présente l'entreprise ; /nous-connaitre/ est la page « Qui est Migen » du nouveau site",haute,0,0
+/accueil-cloned/,/,301,"doublon WordPress « Accueil (Cloned) » de la page d'accueil, même contenu",haute,0,0
+/actualites/,/ressources/articles/,301,déjà en base (0003_redirections.sql),haute,0,0
+/actualites/page/2/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
+/aktid-choisit-migen-intervention-pour-le-montage-de-son-nouveau-centre-logistique-a-clermont-ferrand/,/preuves/aktid-centre-logistique/,301,"Même étude de cas Aktid (montage du centre logistique de Clermont-Ferrand, 6 semaines)",haute,0,0
+/amazon-choisit-migen-intervention-pour-assurer-le-maintien-de-son-centre-logistique/,/preuves/amazon-centre-logistique/,301,"Même étude de cas Amazon ORY4, nommé dans la cible",haute,0,0
+/amazon-choisit-migen-intervention-pour-assurer-le-maintien-dun-nouveau-site/,/preuves/amazon-nouveau-site/,301,"Même étude de cas Amazon ETZ 2 (nouveau site), nommé dans la cible",haute,0,0
+/analyse-performances-maintenance/,/ressources/fiches-techniques/indicateurs-maintenance/,301,"L'article analyse les KPI (MTBF, MTTR, TRS, coûts) ; la fiche indicateurs traite exactement ces indicateurs",haute,0,0
+/author/antoinedigirolamo/,,404,"archive d'auteur : 404 attendue, pas de 301 de contenu",,0,0
+/author/ewy5rjqcmyxccndj/,,404,"archive d'auteur : 404 attendue, pas de 301 de contenu",,0,0
+/author/ewy5rjqcmyxccndj/page/2/,,404,"archive d'auteur : 404 attendue, pas de 301 de contenu",,0,0
+/author/ewy5rjqcmyxccndj/page/3/,,404,"archive d'auteur : 404 attendue, pas de 301 de contenu",,0,0
+/author/ewy5rjqcmyxccndj/page/4/,,404,"archive d'auteur : 404 attendue, pas de 301 de contenu",,0,0
+/author/ewy5rjqcmyxccndj/page/5/,,404,"archive d'auteur : 404 attendue, pas de 301 de contenu",,0,0
+/author/ewy5rjqcmyxccndj/page/6/,,404,"archive d'auteur : 404 attendue, pas de 301 de contenu",,0,0
+/author/ewy5rjqcmyxccndj/page/7/,,404,"archive d'auteur : 404 attendue, pas de 301 de contenu",,0,0
+/automaticien-schneider/,/expertises/automatisme/schneider/,301,"offre automaticien Schneider, page expertise Schneider dédiée",haute,0,1
+/automaticien-siemens/,/expertises/automatisme/siemens/,301,"offre automaticien Siemens, page expertise Siemens dédiée",haute,0,0
+/blocks/erreur-404/,,404,"bloc de thème : 404 attendue, pas de 301 de contenu",,0,0
+/blocks/footer-about-us/,,404,"bloc de thème : 404 attendue, pas de 301 de contenu",,0,0
+/bureau-etudes-ingenierie/,/offres/bureau-etudes/,301,"bureau d'études ; /offres/bureau-etudes/ plutôt que /bureau-etudes/ (même h1, que la maquette redirige vers /offres/bureau-etudes/) pour éviter une chaîne",haute,0,0
+/category/articles/,/ressources/articles/,301,"Archive WordPress des articles de blog (maintenance préventive, 5S, externalisation...) : même rôle que le hub des articles du nouveau site",haute,0,0
+/category/articles/page/2/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
+/category/articles/page/3/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
+/category/articles/page/4/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
+/category/realisations/,/preuves/,301,"Archive WordPress des études de cas clients (Danone, JTEKT, GLS, Suez, Autoliv...) : même rôle que le hub des réalisations du nouveau site",haute,0,0
+/category/realisations/page/2/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
+/category/realisations/page/3/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
+/category/uncategorized/,,404,"catégorie « Non classé » : 404 attendue, pas de 301 de contenu",,0,0
+/category/uncategorized/page/2/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
+/category/uncategorized/page/3/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
+/certification-cefri/,/secteurs/nucleaire/,301,"certification CEFRI = radioprotection nucléaire ; pas de page CEFRI, hub secteur nucléaire (qui ne cite pas CEFRI)",moyenne,0,1
+/certifications-mase-ecovadis/,/rse/,301,"Pas de page certifications ; /rse/ cite la démarche MASE, l'évaluation EcoVadis et les attestations transmises. Cible prévue /a-propos/certifications-mase-ecovadis/ inexistante (404)",moyenne,0,1
+/cgv/,/mentions-legales/,301,"PROVISOIRE, bloquant : republier la page /cgv/ puis retirer cette ligne. vraies CGV (version 24/02/2026) sans page sur le nouveau site ; repli sur la page juridique la plus proche, à remplacer par une page /cgv/",basse,0,0
+/comment-devenir-technicien-de-maintenance-industrielle/,/carriere/technicien-de-maintenance/formation/,301,Même sujet (formation et parcours pour devenir technicien) ; remplace la cible prévue /metiers/... en 404,haute,17,0
+/comment-faire-plan-de-maintenance-preventive/,/ressources/articles/plan-de-maintenance/,301,Article qui reprend la construction d'un plan de maintenance étape par étape (cite le plan de maintenance préventive) ; alternative proche : /ressources/process/gestion-maintenance-preventive/,moyenne,0,1
+/comment-fonctionne-la-gestion-de-maintenance-assistee-par-ordinateur/,/ressources/articles/gmao/,301,"Même sujet : GMAO, h1 identique",haute,0,0
+/comment-limiter-le-risque-dun-incendie-et-son-impact-eventuel-lors-doperation-de-maintenance-par-points-chauds-soudage-decoupage-meulage-ebarbage/,/ressources/fiches-pratiques/permis-de-feu/,301,Risque incendie des travaux par points chauds = permis de feu,haute,0,0
+/comment-lintelligence-artificielle-va-impacter-le-secteur-de-la-maintenance-industrielle/,/ressources/articles/ia-maintenance/,301,"Même sujet : IA et maintenance. La variante sans slash final est couverte par la forme canonique du proxy, en un seul saut",haute,0,1
+/comment-optimiser-maintenance-industrielle-entreprise/,/ressources/articles/optimiser-la-maintenance/,301,Même sujet : optimiser la maintenance industrielle,haute,0,0
+/comment-recruter-technicien-maintenance-industrielle/,/ressources/process/selection-des-techniciens/,301,"Même sujet (recruter et sélectionner un technicien de maintenance, sélection à 10 %) ; cible prévue /offres/residence/recruter-un-technicien/ inexistante (404)",haute,1,0
+/comment-securiser-maintenance-centres-logistiques/,/secteurs/logistique/peak-season/,301,Même sujet : peak season et arrêts techniques en logistique,haute,0,0
+/comments/feed/,,404,"flux RSS : 404 attendue, pas de 301 de contenu",,0,0
+/comparatif-economique-la-maintenance-predictive-est-elle-plus-avantageuse-que-la-corrective/,/ressources/articles/predictive-ou-corrective/,301,Même comparatif prédictive contre corrective,haute,0,0
+/contact/,/contact/,200,page conservée au même chemin,haute,0,0
+/demande-de-devis/,/contact/,301,formulaire de demande de devis = formulaire de contact du nouveau site,haute,0,0
+/element_category/columns/,,404,"taxonomie du thème Avada : 404 attendue, pas de 301 de contenu",,0,0
+/element_category/elements/,,404,"taxonomie du thème Avada : 404 attendue, pas de 301 de contenu",,0,0
+/element_category/sections/,,404,"taxonomie du thème Avada : 404 attendue, pas de 301 de contenu",,0,0
+/entreprise-de-maintenance-industrielle/,/entreprise-maintenance-industrielle/,301,déjà en base (0003_redirections.sql),haute,14,0
+/entreprise-de-maintenance/,/entreprise-maintenance-industrielle/,301,"WordPress la renvoie vers /entreprise-de-maintenance-industrielle/, déjà redirigée vers cette page dans 0003_redirections.sql ; H1 identique, on supprime la chaîne",haute,0,0
+/expert-maintenance-industrielle-externalisee/,/offres/full-service/,301,"déjà en base (0003_redirections.sql), cible finale au lieu de /offres/maintenance-externalisee/",haute,0,0
+/expert-maintenance-industrielle-externalisee/page/2/,,404,"pagination : 404 attendue, pas de 301 de contenu",,0,0
+/faq-items/,,404,"archive vide du thème Avada : 404 attendue, pas de 301 de contenu",,0,0
+/fdj-et-migen-sur-site-pour-la-maintenance-dun-site-proche-de-paris/,/preuves/fdj/,301,Même étude de cas FDJ,haute,0,0
+/featured_item/,,404,"bloc de thème : 404 attendue, pas de 301 de contenu",,0,0
+/feed/,,404,"flux RSS : 404 attendue, pas de 301 de contenu",,0,0
+/femmes-dans-lindustrie-migen-soutient-la-diversite-dans-le-secteur-de-la-maintenance-industrielle/,/carriere/,301,"Aucune page diversité ou mixité ; l'article parle du recrutement de techniciennes (CTA offres d'emploi), le hub Carrière est le parent le plus proche. Cible prévue /a-propos/femmes-dans-l-industrie/ inexistante (404)",basse,0,0
+/fusion_tb_category/footer/,,404,"taxonomie du thème Avada : 404 attendue, pas de 301 de contenu",,0,0
+/gestion-dechets-operations-maintenance/,/ressources/articles/gestion-des-dechets/,301,déjà en base (0003_redirections.sql),haute,5,1
+/group-atlantic-choisit-migen-consultation-pour-renforcer-ses-equipes/,/preuves/groupe-atlantic/,301,Même étude de cas Groupe Atlantic (renfort d'équipe),haute,0,0
+/guide-maintenance-industrielle/,/ressources/,301,"Le hub Ressources porte le h1 « Guide maintenance industrielle » (même mot-clé), mais aucune page ne reprend le guide lui-même (types de maintenance, composantes d'un programme, avantages) : c'est le hub de la famille, pas un équivalent. Même niveau que /tout-savoir-sur-la-maintenance-industrielle/ (lot 05), que WordPress redirige vers ce guide (relecture)",moyenne,0,0
+/joint-lyonnais-sollicite-migen-intervention-pour-des-defaillances-sur-son-parc-machine-a-lyon/,/preuves/joint-lyonnais/,301,Même étude de cas Joint Lyonnais,haute,0,0
+/jtekt-et-migen-maintenance-industrielle-sur-site/,/preuves/jtekt/,301,déjà en base (0003_redirections.sql),haute,0,0
+/la-digitalisation-des-manuels-de-maintenance-industrielle/,/ressources/articles/digitalisation-maintenance/,301,Même sujet : digitalisation de la maintenance (papier contre numérique),haute,0,0
+/le-futur-de-la-maintenance-industrielle-une-perspective-a-10-ans/,/ressources/articles/maintenance-4-0/,301,"Vision d'avenir fondée sur digitalisation, IoT et prédictif = maintenance 4.0",moyenne,0,2
+/le-robot-spot-de-boston-dynamics-compagnon-ideal-pour-la-maintenance-dangereuse/,/ressources/articles/robot-spot/,301,Même sujet : robot Spot,haute,0,0
+/les-differents-types-de-maintenance-industrielle-la-maintenance-curative-la-maintenance-corrective-la-maintenance-predictive/,/expertises/types-de-maintenance/,301,Même sujet : panorama des types de maintenance,haute,0,0
+/les-meilleurs-outils-de-diagnostic-pour-une-maintenance-industrielle-efficace/,/ressources/fiches-techniques/outils-de-diagnostic/,301,Même sujet : outils de diagnostic,haute,0,0
+/les-qualites-essentielles-dun-mainteneur-industriel-migen/,/carriere/technicien-de-maintenance/,301,"Fiche métier technicien de maintenance chez Migen (missions, compétences) ; remplace la cible prévue /metiers/technicien-de-maintenance/ en 404",moyenne,0,0
+/lost-password/?page_id=11,,404,"lien court WordPress (?p= / ?page_id=), le nouveau site sert l'accueil (200) sur cette forme",,0,0
+/maintenance-curative-gls-migen-sur-site/,/preuves/gls-maintenance-curative/,301,déjà en base (0003_redirections.sql),haute,0,0
+/maintenance-industrielle-automatisme/,/expertises/automatisme/,301,"maintenance en automatisme, page expertise automatisme",haute,0,0
+/maintenance-industrielle-bas-rhin/,/implantations/strasbourg/alsace/,301,"page département : Alsace, Bas-Rhin et Haut-Rhin (Strasbourg garde /maintenance-industrielle-strasbourg/)",haute,0,0
+/maintenance-industrielle-bordeaux/,/implantations/bordeaux/,301,"page ville Bordeaux ; la piste dépôt /implantations/toulouse/bordeaux/ est elle-même une 301, cible finale retenue",haute,0,1
+/maintenance-industrielle-brest/,/implantations/nantes/brest/,301,page ville Brest et Finistère,haute,0,1
+/maintenance-industrielle-charente/,/implantations/toulouse/charente/,301,page département Charente (h1 identique),haute,0,0
+/maintenance-industrielle-drome/,/implantations/lyon/valence/,301,page Valence et la Drôme (Valence = préfecture),haute,0,0
+/maintenance-industrielle-electrique/,/expertises/electrique/,301,déjà en base (0003_redirections.sql),haute,0,0
+/maintenance-industrielle-electromecanique/,/expertises/electromecanique/,301,déjà en base (0003_redirections.sql),haute,0,0
+/maintenance-industrielle-essonne/,/implantations/paris/essonne/,301,page département Essonne (h1 identique),haute,25,0
+/maintenance-industrielle-gironde/,/implantations/toulouse/gironde/,301,page département Gironde,haute,2,0
+/maintenance-industrielle-grenoble/,/implantations/lyon/grenoble/,301,page ville Grenoble et Isère,haute,3,0
+/maintenance-industrielle-haute-garonne/,/implantations/toulouse/haute-garonne/,301,page département Haute-Garonne,haute,0,0
+/maintenance-industrielle-haute-savoie/,/implantations/lyon/haute-savoie/,301,page département Haute-Savoie,haute,0,0
+/maintenance-industrielle-hydraulique/,/expertises/hydraulique/,301,"maintenance hydraulique, page expertise hydraulique",haute,17,0
+/maintenance-industrielle-loire-atlantique/,/implantations/nantes/loire-atlantique/,301,page département Loire-Atlantique,haute,0,0
+/maintenance-industrielle-lyon/,/implantations/lyon/,301,page ville Lyon (siège),haute,46,0
+/maintenance-industrielle-mecanique/,/expertises/mecanique/,301,"maintenance mécanique, page expertise mécanique",haute,39,0
+/maintenance-industrielle-nantes/,/implantations/nantes/,301,page ville Nantes,haute,5,0
+/maintenance-industrielle-nord/,/implantations/lille/,301,"pas de page département Nord ; page Lille (préfecture), qui parle du Nord 19 fois",haute,0,0
+/maintenance-industrielle-paris/,/implantations/paris/,301,page ville Paris,haute,14,0
+/maintenance-industrielle-pneumatique/,/expertises/pneumatique/,301,déjà en base (0003_redirections.sql),haute,30,0
+/maintenance-industrielle-rennes/,/implantations/nantes/rennes/,301,page ville Rennes et Ille-et-Vilaine,haute,1,0
+/maintenance-industrielle-rhone/,/implantations/lyon/rhone/,301,page département Rhône,haute,0,0
+/maintenance-industrielle-robotique/,/expertises/robotique/,301,"maintenance robotique, page expertise robotique",haute,0,0
+/maintenance-industrielle-rouen/,/implantations/paris/rouen/,301,page ville Rouen et vallée de Seine,haute,6,0
+/maintenance-industrielle-soudure/,/expertises/soudure/,301,Même service : maintenance et réparation de soudure sur site,haute,0,0
+/maintenance-industrielle-strasbourg/,/implantations/strasbourg/,301,Même ville : page locale maintenance industrielle Strasbourg,haute,0,0
+/maintenance-industrielle-toulouse/,/implantations/toulouse/,301,Même ville : page locale maintenance industrielle Toulouse,haute,1,1
+/maintenance-industrielle-tuyauterie/,/expertises/tuyauterie/,301,Même service : entretien et réparation de tuyauterie industrielle,haute,2,0
+/maintenance-industrielle/,/entreprise-maintenance-industrielle/,301,déjà en base (0003_redirections.sql),haute,4,0
+/maintenance-predictive-preventive/,/expertises/types-de-maintenance/maintenance-predictive/,301,"Page double prédictif + préventif, dominante prédictive (vibratoire, thermographie, capteurs) ; le préventif a déjà sa source (/maintenance-preventive-definition-fonctionnement/)",moyenne,0,0
+/maintenance-preventive-corrective-differences/,/ressources/articles/preventive-ou-corrective/,301,Même comparatif préventive et corrective,haute,0,0
+/maintenance-preventive-definition-fonctionnement/,/expertises/types-de-maintenance/maintenance-preventive/,301,Même sujet : définition de la maintenance préventive,haute,1,0
+/maintenance-robotique/,/expertises/robotique/,301,Même service : maintenance de parc robotique,haute,0,2
+/mentions-legales/,/mentions-legales/,200,page conservée au même chemin,haute,1,0
+/mersen-choisitmigen-sur-site-pour-des-nouvelles-lignes-pres-de-lyon/,/preuves/mersen/,301,"Même étude de cas Mersen (automaticien Siemens, ligne neuve)",haute,0,0
+/migen-consultation-accompagne-eaton-pour-la-mise-en-production-de-son-site-automobile/,/preuves/eaton-mise-en-production/,301,"Étude de cas Eaton, même mission (démarrage du parc machines)",haute,0,0
+/migen-consultation-debute-en-belgique-pour-mccain/,/preuves/mccain-belgique/,301,"Étude de cas McCain, premier contrat en Belgique",haute,0,0
+/migen-et-danone-maintenance-continu-sur-site/,/preuves/danone-lignes-de-production/,301,déjà en base (0003_redirections.sql),haute,0,0
+/migen-et-dimomaint-en-alliance-strategique/,/partenaires/,301,à valider : /preuves/dimomaint/ existe. déjà en base (0003_redirections.sql),moyenne,0,0
+/migen-et-savoye-en-alliance-strategique/,/preuves/savoye/,301,Page dédiée à l'alliance Savoye (maintenance intralogistique),haute,0,0
+/migen-et-suez-remise-en-etat-site-industriel/,/preuves/suez-remise-en-etat/,301,déjà en base (0003_redirections.sql),haute,0,0
+/migen-intervention-en-partenariat-avec-eiffage/,/preuves/eiffage/,301,"Étude de cas Eiffage, préventif photovoltaïque",haute,0,0
+/migen-intervention-et-soprema-pour-des-travaux-ponctuels/,/preuves/soprema/,301,"Étude de cas Soprema, montage et déplacement de machines",haute,0,0
+/migen-intervention-travail-sur-des-casques-a-realite-virtuelle-pour-timescope/,/preuves/timescope/,301,"Étude de cas Timescope, casques de réalité virtuelle",haute,0,0
+/migen-la-ou-le-bien-etre-au-travail-nest-pas-juste-un-slogan/,/carriere/,301,"Pas de page bien-être ; article destiné aux salariés et candidats, repris par « Pourquoi nous rejoindre »",moyenne,0,0
+/migen-savoye-et-dimomaint-une-cooperation-strategique-au-service-de-la-performance-industrielle/,/partenaires/,301,à valider : /preuves/dimomaint/ existe. déjà en base (0003_redirections.sql),moyenne,0,0
+/migen-sur-site-et-alstef-group-en-collaboration/,/preuves/alstef-group/,301,"Étude de cas Alstef Group, contrôle de chantier",haute,0,0
+/migen-sur-site-et-autoliv-pour-le-maintien-dun-site-industriel/,/preuves/autoliv/,301,"Étude de cas Autoliv, technicien dédié au parc",haute,0,0
+/migen-sur-site-pour-eriks/,/preuves/eriks/,301,"Étude de cas Eriks, prestation sur site",haute,0,0
+/migen-sur-site-pour-voit-dans-le-grand-est/,/preuves/voit-grand-est/,301,"Étude de cas Voit, usinage et presses CN dans le Grand Est",haute,0,0
+/migen-une-vision-innovante-de-la-maintenance-industrielle-par-nathan-jorez-ceo/,/nous-connaitre/,301,Pas de page interview ; « Nous connaître » porte le mot du dirigeant Nathan Jorez et la vision,moyenne,0,0
+/nos-offres/,/offres/,301,déjà en base (0003_redirections.sql),haute,0,5
+/nos-realisations/,/preuves/,301,Liste des réalisations 2021-2022 : même rôle que le hub des réalisations,haute,0,0
+/nos-techniciens/,/carriere/,301,"à valider : ou /nous-connaitre/. Page employeur (bien-être, salaire, équipement des techniciens, bouton « Devenir technicien »), mot-clé « offre emploi migen »",moyenne,1,2
+/nous-rejoindre/,/carriere/,301,déjà en base (0003_redirections.sql),haute,10,1
+/nousrejoindre/,/carriere/,301,"WordPress la renvoie vers /nous-rejoindre/ (page carrière), déjà redirigée vers /carriere/ dans 0003_redirections.sql ; on supprime la chaîne",haute,0,0
+/offres-emploi-electricien-automaticien/,/carriere/automaticien/,301,Même métier recruté : électricien automaticien,haute,0,0
+/ogf-et-migen-sur-site-pour-larret-estival/,/preuves/ogf-arret-estival/,301,"Étude de cas OGF, maintenance tenue pendant l'été",haute,0,0
+/orthus-et-ecocem-entreprise-irlandaise-pour-la-construction-dun-nouveau-site-en-france/,/preuves/orthus-ecocem/,301,"Étude de cas Ecocem, site de R&D construit",haute,1,0
+/orthus-et-washtec-partenaires-pour-linstallation-de-stations/,/preuves/orthus-washtec/,301,"Étude de cas WashTec, montage des portiques de lavage",haute,0,0
+/partenaires/,/partenaires/,200,page conservée au même chemin,haute,0,0
+/politique-de-confidentialite/,/confidentialite/,301,déjà en base (0003_redirections.sql),haute,0,0
+/portfolio-items/,,404,"archive vide du thème Avada : 404 attendue, pas de 301 de contenu",,0,0
+/pourquoi-faire-appel-a-une-entreprise-de-maintenance-externalisee/,/offres/full-service/,301,"déjà en base (0003_redirections.sql), cible finale au lieu de /offres/maintenance-externalisee/",haute,0,0
+/product-category/uncategorized/,,404,"reliquat WooCommerce : 404 attendue, pas de 301 de contenu",,0,0
+/quelles-sont-les-competences-cles-necessaires-pour-les-professionnels-de-la-maintenance-industrielle-aujourdhui-et-comment-se-former-efficacement-dans-ce-domaine/,/carriere/technicien-de-maintenance/formation/,301,Même sujet : se former à la maintenance industrielle,haute,0,0
+/quels-sont-les-avantages-davoir-un-mainteneur-industriel-en-regie/,/offres/residence/prestataire-ou-salarie/,301,Ancien slug de l'article régie contre salarié ; même sujet que le comparatif prestataire ou salarié de l'offre résidence,haute,0,0
+/quels-sont-les-competences-dun-electromecanicien/,/carriere/electromecanicien/competences/,301,Même sujet : compétences de l'électromécanicien,haute,0,0
+/realisations/,/preuves/,301,"refonte (REDIRECTIONS_REFONTE, lib/redirections.ts)",haute,0,0
+/recrutement-agent-entretien-industriel/,/carriere/agent-de-maintenance/,301,"Pas de fiche agent d'entretien (nettoyage) ; métier le plus proche, qui couvre l'entretien de premier niveau",moyenne,0,0
+/recrutement-chef-service-maintenance-industrielle/,/carriere/responsable-maintenance/,301,Même métier recruté : chef de service maintenance = responsable maintenance,haute,0,0
+/recrutement-electromecanicien/,/carriere/electromecanicien/,301,Même métier recruté : électromécanicien,haute,0,0
+/recrutement-technicien-en-robotique/,/carriere/roboticien/,301,Même métier recruté : technicien en robotique,haute,2,0
+/recrutement-techniciens-de-maintenance-industrielle/,/carriere/,301,"Ancienne page « Carrière » générale (pourquoi Migen, postes ouverts), mot-clé « migen recrutement » : même rôle que le hub Nous rejoindre",haute,17,0
+/recrutements/,/carriere/,301,"WordPress la renvoie vers la page recrutement (pourquoi travailler chez Migen, postes ouverts) ; /carriere/ porte les postes ouverts et le processus de recrutement. La piste Astro /technicien-de-maintenance/emploi/ répond 404",haute,0,1
+/regie-vs-salarie-le-guide-complet-des-avantages-dun-mainteneur-industriel-pour-votre-entreprise/,/offres/residence/prestataire-ou-salarie/,301,Même sujet : comparatif prestataire en régie ou salarié,haute,0,0
+/remerciement/,/contact/,301,"Page de remerciement après formulaire ; pas de page merci sur le nouveau site, retour au formulaire de contact",moyenne,0,0
+/retrofit-machine-industriel/,/offres/retrofit/,301,Même offre : rétrofit de machine industrielle,haute,467,0
+/reussir-son-plan-de-maintenance-industrielle-astuces-et-solutions/,/ressources/articles/plan-de-maintenance/,301,"Article repris, même mot-clé « plan de maintenance »",haute,7,1
+/roboticien-abb/,/expertises/robotique/abb/,301,"Même service : roboticien ABB, programmation et maintenance",haute,0,0
+/roboticien-fanuc/,/expertises/robotique/fanuc/,301,"Même service : roboticien Fanuc, programmation et maintenance",haute,0,0
+/shop/,,404,"reliquat WooCommerce : 404 attendue, pas de 301 de contenu",,0,0
+/stellantis-x-migen-consultation-comme-partenaire-pour-plusieurs-sites-du-grand-est/,/preuves/stellantis-grand-est/,301,"Étude de cas Stellantis, sites du Grand Est",haute,0,0
+/stellantis-x-migen-consultation-pour-maintenir-la-fonderie-de-sept-fons/,/preuves/stellantis-fonderie-sept-fons/,301,"Étude de cas Stellantis, fonderie de Sept-Fons",haute,0,0
+/technicien-de-maintenance-aeronautique/,/secteurs/aeronautique/,301,Même secteur : maintenance en aéronautique,haute,0,1
+/technicien-de-maintenance-agroalimentaire/,/secteurs/agroalimentaire/,301,Même secteur : maintenance en agroalimentaire,haute,0,0
+/technicien-de-maintenance-automobile/,/secteurs/automobile/,301,Même secteur : maintenance en automobile,haute,0,0
+/technicien-de-maintenance-centre-logistique/,/secteurs/logistique/,301,Même secteur : maintenance en centre logistique,haute,17,1
+/technicien-de-maintenance-industrie-chimique/,/secteurs/chimie/,301,Même secteur : maintenance en industrie chimique,haute,0,0
+/technicien-de-maintenance-industrie-lourde/,/secteurs/industrie-lourde/,301,Même secteur : maintenance en industrie lourde,haute,0,0
+/technicien-de-maintenance-industrie-metallique/,/secteurs/industrie-metallique/,301,Même secteur : maintenance en industrie métallique,haute,0,0
+/technicien-de-maintenance-industrie-pharmaceutique/,/secteurs/pharmaceutique/,301,Même secteur : maintenance en industrie pharmaceutique,haute,0,0
+/technicien-de-maintenance-menuiserie-industrielle/,/secteurs/menuiserie-industrielle/,301,Même secteur : maintenance en menuiserie industrielle,haute,0,0
+/technicien-de-maintenance/,/carriere/technicien-de-maintenance/,301,déjà en base (0003_redirections.sql),haute,0,0
+/tout-savoir-sur-la-maintenance-industrielle/,/ressources/,301,"WordPress la renvoie vers le guide de la maintenance industrielle ; /ressources/ est la page « Guide maintenance industrielle » du nouveau site (même mot-clé), mais c'est une bibliothèque, pas l'article repris tel quel",moyenne,0,0
+/tout-savoir-sur-les-automates-programmables-industriels-siemens/,/ressources/fiches-techniques/automates-siemens/,301,"Guide repris en fiche technique (API, gammes SIMATIC, programmation, maintenance)",haute,22,0
+/transfert-demenagement-industriel/,/offres/chantier/,301,"à valider : ou /travaux-industriels/transfert-industriel/. Même offre ©Chantier : transfert industriel (audit, démontage, remontage)",haute,2,0
+/valeo-choisit-migen-consultation-pour-plusieurs-usines-en-france/,/preuves/valeo-usines/,301,"Étude de cas Valeo, plusieurs usines",haute,0,0
+/veepee-choisit-migen-consultation-pour-la-maintenance-de-ces-sites-de-lyon/,/preuves/veepee-sites-lyon/,301,"Étude de cas Veepee, sites de Lyon",haute,0,0
+/vers-une-france-reindustrialisee-avantages-defis-et-strategies/,/ressources/articles/,301,Aucun article sur la réindustrialisation : hub des articles,basse,0,0
+/vous-connaissez-lexpression-le-temps-cest-de-largent/,/ressources/fiches-techniques/trs/,301,"L'article traite des machines goulots (capacité, temps de cycle, rebuts) : c'est le sujet du TRS",moyenne,0,0
+/vpk-et-migen-sur-site-pour-la-maintenance-de-son-site-cloned/,/preuves/orthus-washtec/,301,"Brouillon WordPress cloné qui portait l'article WashTec et Orthus (H1 archivé le 12/09/2025), pas VPK ; WordPress le renvoie déjà vers l'article Orthus et WashTec",haute,0,0
+/vpk-et-migen-sur-site-pour-la-maintenance-de-son-site/,/preuves/vpk/,301,"Étude de cas VPK, technicien en 3x8",haute,0,0
+/xmlrpc.php,,404,"xmlrpc : 404 attendue, pas de 301 de contenu",,0,0
