@@ -1,22 +1,25 @@
+/* Fond et survol du bouton secondaire « Nos valeurs » (`Ouverture.tsx`,
+   `Ouverture.module.css`). Le fond est ici et non en ligne, sans quoi le style
+   en ligne l'emporterait sur `:hover`. */
+.lienSecteurs {
+  background: var(--gsol);
+}
+
+.lienSecteurs:hover {
+  background: var(--card);
+}
+
 /*
- * « VOIR NOS SECTEURS → » : CIBLE TACTILE PORTÉE À 24 px SUR TÉLÉPHONE.
+ * « VOIR NOS SECTEURS → » : CIBLE TACTILE DE 44 px SUR TÉLÉPHONE.
  *
- * Mesuré le 12/10 aux quatre largeurs (320, 360, 390, 768 px), après
- * hydratation et bandeau de consentement refusé : le lien faisait 143 × 20 px,
- * l'interligne de son texte de 14,5 px. Sous le plancher de 24 × 24 px du
- * critère 2.5.8 de la WCAG 2.2, niveau AA, et sans exemption possible : c'est
- * un lien de bloc, en fin de colonne, et non un lien dans un paragraphe.
- *
- * Les 4 px manquants sont pris en remplissage vertical : la ligne de base ne
- * se déplace pas, la zone de frappe grandit. Borné à 880 px, le seuil mobile
- * du site, pour que la capture de référence de la maquette (1280 px) reste
- * identique au pixel.
+ * Le 12/10, quand c'était encore un lien texte de 143 × 20 px, ce bloc le
+ * portait à 24 px (WCAG 2.2, critère 2.5.8). Devenu bouton le 14/10, il vise
+ * désormais 44 px, la cible tactile des boutons du site. Son remplissage en
+ * ligne lui en donne déjà davantage : ce plancher garde la promesse si la
+ * police ou le remplissage changent. Borné à 880 px, le seuil mobile du site.
  */
 @media (max-width: 880px) {
   .lienSecteurs {
-    display: inline-flex;
-    align-items: center;
-    min-height: 24px;
-    padding-block: 2px;
+    min-height: 44px;
   }
 }

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import type { CSSProperties } from "react";
+
 import styles from "./TerrainsExcellence.module.css";
 
 /**
@@ -34,6 +36,33 @@ import styles from "./TerrainsExcellence.module.css";
  */
 
 const FORT = { fontWeight: 600, color: "var(--ink)" } as const;
+
+/*
+ * « VOIR NOS SECTEURS → » DEVIENT UN BOUTON, À LA DEMANDE DE MEHDI.
+ * Le 13/10 à 21:32 : « Voir nos secteurs → tu as pas mis de cta pareil sur la
+ * page nous connaitre ». La maquette, ligne 5281, le rend en lien texte orange :
+ * sa demande prime ici sur elle.
+ *
+ * Dessin recopié du bouton secondaire « Nos valeurs » du haut de la même page
+ * (`Ouverture.tsx`, constante BOUTON et fond verre), plutôt qu'importé : un
+ * composant ne lit pas le module CSS d'un autre. Libellé et cible inchangés.
+ *
+ * Seul écart, voulu : le fond vit dans le module CSS, pas en ligne. Un style en
+ * ligne l'emporte sur `:hover`, et c'est pourquoi le survol de « Nos valeurs »
+ * ne change rien (mesuré le 14/10, fond identique avant et pendant).
+ */
+const BOUTON: CSSProperties = {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: 9,
+  padding: "15px 26px",
+  borderRadius: 999,
+  font: "600 15px var(--fb)",
+  whiteSpace: "nowrap",
+  border: "1px solid var(--gbd)",
+  color: "var(--ink)",
+  transition: "background var(--tr)",
+};
 
 export default function TerrainsExcellence() {
   return (
@@ -109,7 +138,7 @@ export default function TerrainsExcellence() {
             <Link
               href="/secteurs/"
               className={styles.lienSecteurs}
-              style={{ font: "600 14.5px var(--fb)", color: "#ff7c3c" }}
+              style={BOUTON}
             >
               Voir nos secteurs →
             </Link>
