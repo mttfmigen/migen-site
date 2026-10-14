@@ -13,6 +13,7 @@ import TitreEtSuite, { continueLeTitre } from "../blocs/TitreEtSuite";
 import { cadragePhoto } from "@/lib/cadrage-photos";
 import { altPhoto } from "@/lib/descriptions-photos";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import EtiquettePli from "./EtiquettePli";
 
 /**
  * Section « 08 Références » de la capture (`maquette/rendu/offres--residence.html`) :
@@ -305,47 +306,6 @@ const PIED_CARTE: CSSProperties = {
   gap: 12,
 };
 
-/**
- * L'ÉTIQUETTE DE LA BASCULE : des `<span>`, et c'est voulu.
- *
- * MOTIF DE RÉFÉRENCE, déjà appliqué et vérifié sur le gabarit métier
- * (`components/site/metier/PageFicheMetier.tsx`, mêmes deux constantes).
- * Recopié ici À L'IDENTIQUE, pour ce bloc partagé par les gabarits offre,
- * ville, spécialité, domaine et secteur.
- *
- * LE PIÈGE A DEUX FACES, et les deux ont été payées le 12/10. Un `<span>` À
- * LA PLACE du `<h2>` retire le titre de la structure du document : la porte
- * des blocs pliables l'a refusé 120 fois. Un `<h2>` DANS LA BASCULE le remet
- * dans la structure, mais il quitte la cellule de grille où la capture le
- * place : mesuré sur les 131 pages de ces cinq gabarits qui ont une capture,
- * 246 en-têtes sur 246, dont les 123 rangées « 08 Références » servies vides
- * de leur titre, une demi-colonne pour rien à côté du lien.
- *
- * La bonne réponse ne choisit pas : le `<h2>` de la section RESTE dans sa
- * rangée, à la taille de sa capture, et la bascule porte une étiquette qui
- * n'existe QUE sous 880 px, marquée `data-mobile-seulement` comme le chevron
- * et le résumé du même bloc. Au-dessus, elle n'est pas affichée, et la
- * bascule non plus (voir `.blocPliablePartage` dans le module CSS) : un
- * visiteur de bureau voit exactement sa capture, et la structure du document
- * garde un seul titre par section.
- */
-const ETIQUETTE_SURTITRE: CSSProperties = {
-  display: "block",
-  font: "600 11px var(--fb)",
-  letterSpacing: ".14em",
-  textTransform: "uppercase",
-  color: "var(--acc)",
-  marginBottom: 6,
-};
-
-/** Le libellé de la bascule, à l'échelle des H2 du gabarit en largeur mobile. */
-const ETIQUETTE_TITRE: CSSProperties = {
-  display: "block",
-  font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
-  letterSpacing: "-.035em",
-  color: "var(--ink)",
-};
-
 const FLECHE: CSSProperties = {
   width: 34,
   height: 34,
@@ -371,7 +331,7 @@ export default function ReferencesOffre({
   const photos = photosDuRail(preuves, photosPrises);
 
   return (
-    <section style={SECTION}>
+    <section style={SECTION} data-section-carte="">
       <div className={styles.blocPliablePartage} style={LARGEUR}>
         {/* SE REPLIE AU TÉLÉPHONE, motif « Blocs communs (pliables) » de la
             maquette mobile. Ce bloc est servi par les gabarits offre, ville,
@@ -384,10 +344,7 @@ export default function ReferencesOffre({
         <SectionPliableMobile
           toujoursOuvert={toujoursOuvert}
           enTete={
-            <span data-mobile-seulement="" className={styles.etiquettePli}>
-              <span style={ETIQUETTE_SURTITRE}>Nos réalisations</span>
-              <span style={ETIQUETTE_TITRE}>Nos références</span>
-            </span>
+            <EtiquettePli surtitre="Nos réalisations" titre="Nos références" />
           }
           resume={section.preuves
             .map((preuve) => preuve.titre)

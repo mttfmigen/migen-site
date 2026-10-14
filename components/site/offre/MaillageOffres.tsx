@@ -183,7 +183,7 @@ export default function MaillageOffres({ cartes }: ProprietesMaillageOffres) {
   if (retenues.length === 0) return null;
 
   return (
-    <section style={SECTION}>
+    <section style={SECTION} data-section-carte="">
       <div className={styles.blocPliablePartage} style={LARGEUR}>
         {/* REPLIÉ SUR TÉLÉPHONE : la maquette mobile v2 ne porte pas ce bento
             (1 560 px à 390 px, mesuré le 14/10 sur /offres/residence/), son

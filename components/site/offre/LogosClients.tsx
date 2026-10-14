@@ -85,7 +85,11 @@ const IMAGE: CSSProperties = {
 
 export default function LogosClients() {
   return (
-    <section className={styles.logos} style={{ padding: "64px 0 0" }}>
+    <section
+      className={styles.logos}
+      style={{ padding: "64px 0 0" }}
+      data-section-carte=""
+    >
       <SectionPliableMobile
         enTete={
           <div className={styles.enteteLogos}>

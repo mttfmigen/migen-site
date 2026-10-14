@@ -8,6 +8,7 @@ import { fusionneLigne, numerote } from "./texte-offre";
 
 import styles from "./PageOffre.module.css";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
+import EtiquettePli from "./EtiquettePli";
 
 /**
  * Section « 04 Offre » de la capture (`maquette/rendu/offres--residence.html`) :
@@ -83,39 +84,6 @@ const INTITULE: CSSProperties = {
   color: "var(--ink)",
 };
 
-/**
- * L'ÉTIQUETTE DE LA BASCULE : des `<span>`, et c'est voulu.
- *
- * MOTIF DE RÉFÉRENCE, déjà appliqué et vérifié sur le gabarit métier
- * (`components/site/metier/PageFicheMetier.tsx`, mêmes deux constantes).
- * Recopié ici À L'IDENTIQUE, comme dans `ReferencesOffre.tsx` : les deux
- * blocs sont partagés par les gabarits offre, ville, spécialité, domaine et
- * secteur, et chacun porte son étiquette à côté de son propre en-tête.
- *
- * CE QU'ELLE RÉPARE, mesuré le 12/10 sur les 131 pages de ces cinq gabarits
- * qui ont une capture : le `<h2>` posé dans la bascule emportait avec lui
- * TOUTE la rangée de grille de la capture (tpl 518, `1.1fr 0.9fr`), 123 fois.
- * Un `<span>` à la place du `<h2>` aurait été l'autre faute, symétrique :
- * le titre quitte alors la structure du document. Ici le `<h2>` reste dans sa
- * cellule, et l'étiquette n'existe que sous 880 px.
- */
-const ETIQUETTE_SURTITRE: CSSProperties = {
-  display: "block",
-  font: "600 11px var(--fb)",
-  letterSpacing: ".14em",
-  textTransform: "uppercase",
-  color: "var(--acc)",
-  marginBottom: 6,
-};
-
-/** Le libellé de la bascule, à l'échelle des H2 du gabarit en largeur mobile. */
-const ETIQUETTE_TITRE: CSSProperties = {
-  display: "block",
-  font: "600 calc(clamp(22px,2.4vw,30px) * var(--ts))/1.15 var(--ft)",
-  letterSpacing: "-.035em",
-  color: "var(--ink)",
-};
-
 const PARAGRAPHE: CSSProperties = {
   gridColumn: 2,
   font: "400 13.5px/1.5 var(--fb)",
@@ -127,7 +95,7 @@ export default function PointsOffre({ section }: ProprietesPointsOffre) {
   const points = section.lignes.map(fusionneLigne);
 
   return (
-    <section style={SECTION}>
+    <section style={SECTION} data-section-carte="">
       <div className={styles.blocPliablePartage} style={LARGEUR}>
         {/* SE REPLIE AU TÉLÉPHONE, motif « Blocs communs (pliables) » de la
             maquette mobile. Ce bloc est servi par les gabarits offre, ville,
@@ -139,12 +107,10 @@ export default function PointsOffre({ section }: ProprietesPointsOffre) {
             retirée, elle ne laisse donc aucun arrêt de tabulation muet. */}
         <SectionPliableMobile
           enTete={
-            <span data-mobile-seulement="" className={styles.etiquettePli}>
-              <span style={ETIQUETTE_SURTITRE}>L’offre</span>
-              <span style={ETIQUETTE_TITRE}>
-                Ce que nous faisons, et ce que ça change pour vous
-              </span>
-            </span>
+            <EtiquettePli
+              surtitre="L’offre"
+              titre="Ce que nous faisons, et ce que ça change pour vous"
+            />
           }
           resume={points.map((point) => point.titre).filter(Boolean).join(" · ")}
         >

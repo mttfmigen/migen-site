@@ -6,8 +6,6 @@ import { SURTITRE } from "@/components/site/blocs/habillage";
 import { majusculeInitiale } from "./texte-offre";
 import SectionPliableMobile from "@/components/site/blocs/SectionPliableMobile";
 
-import styles from "./PageOffre.module.css";
-
 /**
  * Section « 06 Garanties » de la capture (`maquette/rendu/offres--residence.html`) :
  * un grand panneau anthracite, surtitre « Notre parti pris », H2 « Ce que nous
@@ -68,8 +66,11 @@ const CARTE_TEXTE: CSSProperties = {
 
 export default function GarantiesOffre({ section }: ProprietesGarantiesOffre) {
   return (
-    <section style={{ padding: "var(--sec) 24px 0" }}>
-      <div className={`mg-pad ${styles.panneauSombre}`} style={PANNEAU}>
+    <section data-section-carte="" style={{ padding: "var(--sec) 24px 0" }}>
+      {/* `data-panneau-clair-mobile` : sous 881 px, le panneau anthracite
+          s'efface et la section redevient la carte blanche numérotée de la
+          maquette mobile v2 (« styles partagés » de `app/globals.css`). */}
+      <div className="mg-pad" style={PANNEAU} data-panneau-clair-mobile="">
         <div aria-hidden="true" style={LUEUR} />
         <div style={{ position: "relative" }}>
           {/* REPLIÉ SUR TÉLÉPHONE, motif « Blocs communs (pliables) » de la
@@ -81,10 +82,15 @@ export default function GarantiesOffre({ section }: ProprietesGarantiesOffre) {
           <SectionPliableMobile
             enTete={
               <span>
-                <span style={{ ...SURTITRE, marginBottom: 18, display: "block" }}>
+                <span
+                  style={{ ...SURTITRE, marginBottom: 18, display: "block" }}
+                  data-carte-surtitre=""
+                >
                   Notre parti pris
                 </span>
-                <h2 style={TITRE}>Ce que nous garantissons</h2>
+                <h2 style={TITRE} data-carte-titre="">
+                  Ce que nous garantissons
+                </h2>
               </span>
             }
             /* LE RESUME SUIT LA REGLE DE LA MAQUETTE MOBILE, et non plus une

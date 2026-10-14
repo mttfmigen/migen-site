@@ -959,6 +959,15 @@ details[open] .g3-plus {
       valeur (21 px, orange), les suivants le libellé (12,5 px).
       `data-tuiles-titre` sur leur titre (11 px, orange, capitales).
 
+   POSÉS SANS ATTRIBUT, le 14/10, sur les gabarits offre, ville, spécialité,
+   département, secteur et domaine : la FAQ à photo de leurs composants
+   (`offres/QuestionsPhoto`, `implantation/QuestionsVille`) est reconnue à sa
+   structure (`.mg-r2` > colonne > `<details name class>`), et la grille des
+   chiffres à la propriété `--tuiles-chiffres` que pose
+   `offre/habillage-offre.ts`. Ces gabarits ne l'ont pas chez eux, et les
+   reconnaître ici évite de toucher six fichiers d'autres lots. Pas de titre
+   « Chiffres clés » : le site n'en a pas sur ces gabarits, rien n'est ajouté.
+
    `!important` : PARTOUT SAUF SUR LA CARTE ELLE-MÊME. Les FAQ, les chiffres
    et les étiquettes du site sont dessinés en styles en ligne, qu'une feuille
    ne bat pas autrement : sans lui, « n'avoir qu'à poser l'attribut » serait
@@ -1160,7 +1169,7 @@ details[open] .g3-plus {
   }
 
   /* DANS UN PANNEAU SOMBRE, la carte passe en verre sombre. */
-  :is([style*="background:var(--panel)"], [style*="background:#1c1b19"])
+  :is([style*="background:var(--panel)"], [style*="background:#1c1b19"]):not([data-panneau-clair-mobile])
     details[data-carte-numerotee]
     > :is(summary, summary ~ *) {
     border-color: rgba(255, 255, 255, 0.12);
@@ -1168,7 +1177,7 @@ details[open] .g3-plus {
     color: #fff;
   }
 
-  :is([style*="background:var(--panel)"], [style*="background:#1c1b19"])
+  :is([style*="background:var(--panel)"], [style*="background:#1c1b19"]):not([data-panneau-clair-mobile])
     details[data-carte-numerotee]
     > summary
     > [aria-hidden="true"] {
@@ -1176,15 +1185,102 @@ details[open] .g3-plus {
     color: #fff;
   }
 
-  :is([style*="background:var(--panel)"], [style*="background:#1c1b19"])
+  :is([style*="background:var(--panel)"], [style*="background:#1c1b19"]):not([data-panneau-clair-mobile])
     details[data-carte-numerotee]
     > summary
     > p,
   :root
-    :is([style*="background:var(--panel)"], [style*="background:#1c1b19"])
+    :is([style*="background:var(--panel)"], [style*="background:#1c1b19"]):not([data-panneau-clair-mobile])
     details[data-carte-numerotee]
     [data-carte-surtitre] {
     color: rgba(255, 255, 255, 0.64) !important;
+  }
+
+  /* 12 PX ENTRE DEUX CARTES, PAS 12 + `--sec`. `data-section-carte` sur une
+     section dont tout le contenu est une carte numérotée : son rembourrage
+     haut (40 à 64 px selon le gabarit) s'ajoutait aux 12 px de la carte, et
+     deux cartes voisines se tenaient à 52 ou 76 px, là où la maquette les
+     pose à 12 (dc.html, `m: "12px 18px 0"`). Posé par les blocs partagés de
+     `components/site/offre/`. */
+  [data-section-carte] {
+    padding-top: 0 !important;
+  }
+
+  /* LE PANNEAU SOMBRE QUI S'EFFACE (`data-panneau-clair-mobile`, « Ce que
+     nous garantissons ») : la maquette mobile v2 en fait une carte blanche
+     comme les autres. Le panneau perd son fond, sa lueur et son rembourrage,
+     la carte n'est donc plus en verre sombre (règles ci-dessus), et ses
+     textes, écrits en blanc en ligne pour le bureau, reprennent l'encre. */
+  :root [data-panneau-clair-mobile] {
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    overflow: visible !important;
+  }
+
+  [data-panneau-clair-mobile] > [aria-hidden="true"] {
+    display: none !important;
+  }
+
+  /* Sa section porte 24 px de côté pour le bureau : la carte prend la
+     gouttière de 18 px des autres (règle des 1200 px plus haut). */
+  :root [data-section-carte]:has(> [data-panneau-clair-mobile]) {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  :root [data-panneau-clair-mobile] [style*="color:#fff"] {
+    color: var(--ink) !important;
+  }
+
+  :root [data-panneau-clair-mobile] [style*="color:rgba(255,255,255"] {
+    color: var(--ink2) !important;
+  }
+
+  /* LES FAQ À PHOTO DES GABARITS (`offres/QuestionsPhoto`,
+     `implantation/QuestionsVille`) DEVIENNENT LA LISTE DE LA MAQUETTE, sans
+     toucher à leur fichier : la grille qui tient leurs questions
+     (`.mg-r2` > colonne > `<details name>`), et la carte à photo qui
+     l'entoure, perdent leur fond sombre, leur photo, leur voile et leurs
+     encres blanches. Le titre, le sur-titre, le bouton et chaque question
+     restent à l'écran ; la liste elle-même prend le motif 2 ci-dessous. */
+  :root [style*="background:#1c1b19"]:has(> .mg-r2 > div > details.cx-faq),
+  :root .mg-r2:has(> div > details[name][class]) {
+    --ink: inherit !important;
+    --ink1: inherit !important;
+    --ink2: inherit !important;
+    --ink3: inherit !important;
+    --ink4: inherit !important;
+    --line: inherit !important;
+    --chip: inherit !important;
+    --gl-a: inherit !important;
+    --gbd: inherit !important;
+    --card: inherit !important;
+    --acc-ink: inherit !important;
+    color: var(--ink) !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    overflow: visible !important;
+  }
+
+  [style*="background:#1c1b19"]:has(> .mg-r2 > div > details.cx-faq)
+    > :not(.mg-r2) {
+    display: none !important;
+  }
+
+  :root .mg-r2:has(> div > details[name][class]) {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  :root .mg-r2:has(> div > details[name][class]) > div:first-child h2 {
+    margin: 0 0 10px !important;
+    font: 600 21px/1.2 var(--ft) !important;
+    letter-spacing: -0.03em !important;
+    color: var(--ink) !important;
+    max-width: none !important;
+    text-wrap: balance;
   }
 
   /* ------------------------------------------------------ 2. la FAQ en liste */
@@ -1206,13 +1302,13 @@ details[open] .g3-plus {
     text-wrap: balance;
   }
 
-  [data-faq-liste] {
+  :is([data-faq-liste], .mg-r2 > div:has(> details[name][class])) {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) !important;
     gap: 8px !important;
   }
 
-  [data-faq-liste] > details {
+  :is([data-faq-liste], .mg-r2 > div:has(> details[name][class])) > details {
     margin: 0 !important;
     padding: 0 !important;
     border: 1px solid var(--mm-filet) !important;
@@ -1225,7 +1321,7 @@ details[open] .g3-plus {
     overflow: hidden;
   }
 
-  [data-faq-liste] > details > summary {
+  :is([data-faq-liste], .mg-r2 > div:has(> details[name][class])) > details > summary {
     display: grid !important;
     grid-template-columns: minmax(0, 1fr) 28px !important;
     gap: 12px !important;
@@ -1235,15 +1331,15 @@ details[open] .g3-plus {
     list-style: none;
   }
 
-  [data-faq-liste] > details > summary:focus-visible {
+  :is([data-faq-liste], .mg-r2 > div:has(> details[name][class])) > details > summary:focus-visible {
     outline-offset: -2px;
   }
 
-  [data-faq-liste] > details > summary::-webkit-details-marker {
+  :is([data-faq-liste], .mg-r2 > div:has(> details[name][class])) > details > summary::-webkit-details-marker {
     display: none;
   }
 
-  [data-faq-liste] > details > summary > :first-child {
+  :is([data-faq-liste], .mg-r2 > div:has(> details[name][class])) > details > summary > :first-child {
     min-width: 0;
     margin: 0 !important;
     font: 600 14.5px/1.4 var(--ft) !important;
@@ -1253,7 +1349,7 @@ details[open] .g3-plus {
   }
 
   /* Le « + » de la maquette (`.mv-plus`), même pastille que le chevron. */
-  [data-faq-liste] > details > summary > [aria-hidden="true"] {
+  :is([data-faq-liste], .mg-r2 > div:has(> details[name][class])) > details > summary > :is([aria-hidden="true"], .cx-plus) {
     display: grid !important;
     place-items: center !important;
     width: 28px !important;
@@ -1269,7 +1365,7 @@ details[open] .g3-plus {
       background-color 0.25s ease;
   }
 
-  [data-faq-liste] > details[open] > summary > [aria-hidden="true"] {
+  :is([data-faq-liste], .mg-r2 > div:has(> details[name][class])) > details[open] > summary > :is([aria-hidden="true"], .cx-plus) {
     transform: rotate(45deg) !important;
     background: var(--acc) !important;
     color: #fff !important;
@@ -1278,7 +1374,7 @@ details[open] .g3-plus {
   /* LA RÉPONSE : le premier paragraphe en chapô, les suivants en texte
      courant (dc.html, `blockV` : `lead` 500 16px/1.6, sinon
      400 var(--pfs)/1.65 avec --pfs à 15px). */
-  [data-faq-liste] > details > summary ~ * {
+  :is([data-faq-liste], .mg-r2 > div:has(> details[name][class])) > details > summary ~ * {
     max-width: none !important;
     margin: 0 !important;
     padding: 0 16px 6px !important;
@@ -1286,11 +1382,11 @@ details[open] .g3-plus {
     color: var(--ink1) !important;
   }
 
-  [data-faq-liste] > details > summary ~ * p {
+  :is([data-faq-liste], .mg-r2 > div:has(> details[name][class])) > details > summary ~ * p {
     margin: 0 0 12px !important;
   }
 
-  [data-faq-liste] > details > summary + * > p:first-child {
+  :is([data-faq-liste], .mg-r2 > div:has(> details[name][class])) > details > summary + * > p:first-child {
     font: 500 16px/1.6 var(--fb) !important;
     color: var(--ink) !important;
   }
@@ -1306,13 +1402,25 @@ details[open] .g3-plus {
     max-width: none !important;
   }
 
-  [data-tuiles-chiffres] {
+  /* LA GRILLE N'EST PLUS UNE CARTE : ce sont ses tuiles qui en sont. Le
+     verre des gabarits (`GRILLE_CHIFFRES`, une seule carte à filets) est
+     retiré ici, sans quoi les quatre tuiles se poseraient dans une cinquième.
+     `--tuiles-chiffres` est le crochet que `offre/habillage-offre.ts` pose
+     dans le style de cette grille, pour les cinq gabarits qui la reprennent. */
+  :is([data-tuiles-chiffres], [style*="--tuiles-chiffres"]) {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 8px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
   }
 
-  [data-tuiles-chiffres] > * {
+  :is([data-tuiles-chiffres], [style*="--tuiles-chiffres"]) > * {
     margin: 0 !important;
     padding: 14px !important;
     border: 1px solid var(--mm-filet) !important;
@@ -1323,14 +1431,14 @@ details[open] .g3-plus {
     box-shadow: none !important;
   }
 
-  [data-tuiles-chiffres] > * > :first-child {
+  :is([data-tuiles-chiffres], [style*="--tuiles-chiffres"]) > * > :first-child {
     margin: 0 !important;
     font: 600 21px/1.08 var(--ft) !important;
     letter-spacing: -0.04em !important;
     color: var(--acc) !important;
   }
 
-  [data-tuiles-chiffres] > * > :not(:first-child) {
+  :is([data-tuiles-chiffres], [style*="--tuiles-chiffres"]) > * > :not(:first-child) {
     margin: 5px 0 0 !important;
     font: 400 12.5px/1.45 var(--fb) !important;
     letter-spacing: normal !important;
@@ -1340,7 +1448,7 @@ details[open] .g3-plus {
 
 @media (max-width: 880px) and (prefers-reduced-motion: reduce) {
   details[data-carte-numerotee] > summary > [aria-hidden="true"],
-  [data-faq-liste] > details > summary > [aria-hidden="true"] {
+  :is([data-faq-liste], .mg-r2 > div:has(> details[name][class])) > details > summary > :is([aria-hidden="true"], .cx-plus) {
     transition: none !important;
   }
 }

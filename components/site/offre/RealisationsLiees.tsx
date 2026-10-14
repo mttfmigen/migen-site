@@ -141,7 +141,7 @@ export default function RealisationsLiees({ cas }: ProprietesRealisationsLiees) 
   const grille = une ? retenus.slice(1) : retenus;
 
   return (
-    <section style={SECTION}>
+    <section style={SECTION} data-section-carte="">
       <div className={styles.blocPliablePartage} style={LARGEUR}>
         {/* REPLIÉ SUR TÉLÉPHONE, même raison que `MaillageOffres` : la
             maquette mobile v2 n'a pas cet écran, ses études de cas sont le

@@ -9,6 +9,13 @@ import styles from "./PageOffre.module.css";
  * bascule et n'existe que sous 880 px (`styles.etiquettePli`, masquée aussi
  * quand le bloc est déplié). Au-dessus, la bascule entière est retirée par
  * `.blocPliablePartage`, posée sur le conteneur du bloc.
+ *
+ * SOUS 881 PX, C'EST LE TITRE DE LA CARTE NUMÉROTÉE DE LA MAQUETTE MOBILE V2 :
+ * `data-carte-surtitre` (10,5 px, gris) et `data-carte-titre` (16,5 px) lui
+ * donnent la typographie de `app/globals.css` (« styles partagés de la
+ * maquette mobile v2 »), qui bat les styles en ligne ci-dessous. Ceux-ci
+ * (22 à 30 px, sur-titre orange) ne servent donc plus qu'entre 881 px et rien :
+ * au-dessus, l'étiquette est masquée.
  */
 const SURTITRE: CSSProperties = {
   display: "block",
@@ -39,8 +46,14 @@ export default function EtiquettePli({
 }) {
   return (
     <span data-mobile-seulement="" className={styles.etiquettePli}>
-      {surtitre ? <span style={SURTITRE}>{surtitre}</span> : null}
-      <span style={couleur ? { ...TITRE, color: couleur } : TITRE}>{titre}</span>
+      {surtitre ? (
+        <span style={SURTITRE} data-carte-surtitre="">
+          {surtitre}
+        </span>
+      ) : null}
+      <span style={couleur ? { ...TITRE, color: couleur } : TITRE} data-carte-titre="">
+        {titre}
+      </span>
     </span>
   );
 }

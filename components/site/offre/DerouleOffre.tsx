@@ -230,7 +230,7 @@ export default function DerouleOffre({
   );
 
   return (
-    <section style={SECTION}>
+    <section style={SECTION} data-section-carte={pli ? "" : undefined}>
       <div className={styles.blocPliablePartage} style={LARGEUR}>
         {/* SE REPLIE AU TÉLÉPHONE quand le gabarit le demande, motif « Blocs
             communs (pliables) » de la maquette mobile. Mesure du 14/10 à

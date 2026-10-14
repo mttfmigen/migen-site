@@ -148,12 +148,20 @@ export const SECTION_CHIFFRES: CSSProperties = {
  * colonne vide sur les pages à 3 chiffres et repliait les libellés sur
  * 3 lignes. C'est `PageOffre.tsx` qui pose la valeur, depuis
  * `chiffres.length`.
+ *
+ * `--tuiles-chiffres` : LE CROCHET DES TUILES 2 x 2 DE LA MAQUETTE MOBILE V2.
+ * Une propriété personnalisée sans effet propre, que le motif partagé
+ * `[data-tuiles-chiffres]` de `app/globals.css` lit dans l'attribut `style`
+ * (sous 881 px seulement). Elle passe par cette constante, et non par un
+ * attribut, parce que cinq gabarits (offre, ville, secteur, domaine,
+ * spécialité) la reprennent telle quelle : la poser ici les sert tous.
  */
-export const GRILLE_CHIFFRES: CSSProperties = {
+export const GRILLE_CHIFFRES = {
   ...VERRE,
   display: "grid",
   padding: "22px 8px",
-};
+  "--tuiles-chiffres": "1",
+} as CSSProperties;
 
 /** Capture : la cellule d'un chiffre. Le filet gauche s'ajoute dès le 2e. */
 export const CARTE_CHIFFRE: CSSProperties = {

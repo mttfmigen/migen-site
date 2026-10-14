@@ -246,7 +246,11 @@ const RANGEE_CARTE: CSSProperties = {
 function Rangee({ section, pli }: { section: SectionProbleme; pli?: Pli }) {
   const { titre, suite } = coupePunchline(section.punchline);
   return (
-    <section data-screen-label="03 Problème" style={SECTION}>
+    <section
+      data-screen-label="03 Problème"
+      style={SECTION}
+      data-section-carte={pli && titre ? "" : undefined}
+    >
       <div className={styles.blocPliablePartage} style={LARGEUR}>
         <PliMobile pli={pli} section={section} titre={titre}>
         <div className="mg-r2" style={RANGEE_ENTETE}>
@@ -408,7 +412,11 @@ export default function ProblemeOffre({
   );
 
   return (
-    <section data-screen-label="03 Problème" style={SECTION}>
+    <section
+      data-screen-label="03 Problème"
+      style={SECTION}
+      data-section-carte={pli && titre ? "" : undefined}
+    >
       <div className={styles.blocPliablePartage} style={LARGEUR}>
         <PliMobile pli={pli} section={section} titre={titre}>
           {corps}

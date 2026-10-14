@@ -143,7 +143,7 @@ export default function Reassurance({
   chemin,
 }: ProprietesReassurance) {
   return (
-    <section style={SECTION}>
+    <section style={SECTION} data-section-carte="">
       <div style={LARGEUR}>
         <SectionPliableMobile
           enTete={<h2 className={styles.titre}>Certifications et équipe</h2>}
