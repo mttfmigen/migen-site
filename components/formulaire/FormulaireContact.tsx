@@ -4,14 +4,25 @@ import Link from "next/link";
 import {
   useEffect,
   useId,
+  useRef,
   useState,
+  useSyncExternalStore,
   type ChangeEvent,
   type CSSProperties,
   type FormEvent,
 } from "react";
+import { flushSync } from "react-dom";
 
 import { attributionCourante } from "@/lib/utm";
 import { signaleConversion } from "./conversion";
+import {
+  DERNIERE_ETAPE,
+  ETAPES,
+  REQUETE_TELEPHONE,
+  erreursDeLEtape,
+  premiereEtapeEnErreur,
+  premiereEtapeIncomplete,
+} from "./etapes";
 import styles from "./FormulaireContact.module.css";
 import {
   CHAMP_PIEGE,
@@ -233,6 +244,71 @@ const ERREUR: CSSProperties = {
 
 const ASTERISQUE: CSSProperties = { color: "var(--acc)" };
 
+/* LES ÉTAPES, SUR TÉLÉPHONE (voir ./etapes.ts). Rien de ce qui suit n'est rendu
+   au-dessus de 880 px ni avant l'hydratation : sans JavaScript, tous les champs
+   restent visibles et le formulaire part comme avant. */
+
+/* Le dessin des libellés, l'encre en `--ink2` pour la même raison que `RANGEE_ENVOI`. */
+const ETAPE_TEXTE: CSSProperties = {
+  font: "600 10.5px var(--fb)",
+  letterSpacing: ".1em",
+  textTransform: "uppercase",
+  color: "var(--ink2)",
+  margin: "0 0 8px",
+};
+
+/* Barre sobre : la piste en `--line`, la jauge en orange de marque. */
+const PISTE: CSSProperties = {
+  height: 4,
+  borderRadius: 999,
+  background: "var(--line)",
+  overflow: "hidden",
+};
+
+const JAUGE: CSSProperties = {
+  height: "100%",
+  borderRadius: 999,
+  background: "var(--acc)",
+  transformOrigin: "left center",
+};
+
+const NAVIGATION: CSSProperties = { gridColumn: "span 2", display: "grid", gap: 4 };
+
+/* Le bouton orange pleine largeur de la maquette mobile v2 (dc.html L138). */
+const BOUTON_SUIVANT: CSSProperties = {
+  minHeight: 52,
+  padding: "0 24px",
+  borderRadius: 999,
+  border: "none",
+  background: "var(--acc)",
+  color: "#fff",
+  font: "600 14.5px var(--fb)",
+  cursor: "pointer",
+  boxShadow: "0 14px 30px -14px rgba(255,124,60,.9)",
+};
+
+/* Le lien sous le bouton de la maquette (dc.html L138), 44 px de cible au doigt. */
+const RETOUR: CSSProperties = {
+  minHeight: 44,
+  padding: "8px 0 2px",
+  border: "none",
+  background: "none",
+  font: "600 13px var(--fb)",
+  color: "var(--ink2)",
+  textAlign: "center",
+  cursor: "pointer",
+};
+
+/* Le téléphone, lu par `matchMedia`. Côté serveur, et à l'hydratation, `false` :
+   le HTML servi garde tous ses champs, et les étapes n'arrivent qu'ensuite. */
+function abonneTelephone(rappel: () => void): () => void {
+  const requete = window.matchMedia(REQUETE_TELEPHONE);
+  requete.addEventListener("change", rappel);
+  return () => requete.removeEventListener("change", rappel);
+}
+const estTelephone = () => window.matchMedia(REQUETE_TELEPHONE).matches;
+const jamaisAuServeur = () => false;
+
 /**
  * LA SUITE DE LA MENTION, DONNÉE PAR MEHDI LE 13/10, mot pour mot.
  *
@@ -274,8 +350,18 @@ export function FormulaireContact({
   const [entreprise, setEntreprise] = useState<Record<string, string>>({});
   const [etat, setEtat] = useState<Etat>("repos");
   const [annonce, setAnnonce] = useState("");
+  /* L'étape affichée sur téléphone (0, 1 ou 2, voir ./etapes.ts). Sans effet
+     au-dessus de 880 px, où tous les champs restent visibles. */
+  const [etape, setEtape] = useState(0);
+  const enEtapes = useSyncExternalStore(abonneTelephone, estTelephone, jamaisAuServeur);
+  const formulaireRef = useRef<HTMLFormElement>(null);
+  const contactCourant = useRef(contact);
   const prefixe = useId();
   const panneau = variante === "panneau";
+
+  useEffect(() => {
+    contactCourant.current = contact;
+  }, [contact]);
 
   // La saisie d'un panneau court, reprise ici (voir EVENEMENT_PREREMPLIR).
   useEffect(() => {
@@ -287,11 +373,60 @@ export function FormulaireContact({
         const valeur = (detail as Record<string, unknown>)[nom];
         if (typeof valeur === "string" && valeur.trim()) repris[nom] = valeur.trim();
       }
-      setContact((precedent) => ({ ...precedent, ...repris }));
+      // `flushSync` : le panneau pose le curseur dans « Nom » juste après cet
+      // événement. Sur téléphone, l'étape qui montre ce champ doit déjà être
+      // rendue, sinon le focus tombe sur un champ masqué et se perd.
+      flushSync(() => {
+        setContact((precedent) => ({ ...precedent, ...repris }));
+        setEtape(premiereEtapeIncomplete({ ...contactCourant.current, ...repris }));
+      });
     }
     window.addEventListener(EVENEMENT_PREREMPLIR, reprend);
     return () => window.removeEventListener(EVENEMENT_PREREMPLIR, reprend);
   }, []);
+
+  /** Le curseur au premier de ces champs, dans l'ordre du document. */
+  function focalise(noms: readonly string[]) {
+    const champs = [...(formulaireRef.current?.elements ?? [])] as HTMLInputElement[];
+    champs.find((champ) => noms.includes(champ.name))?.focus();
+  }
+
+  /**
+   * Applique `maj` (erreurs, état, annonce). Sur téléphone, l'applique tout de
+   * suite avec le retour à la première étape fautive, puis pose le curseur sur
+   * le premier champ en faute : le champ doit être rendu, et réactivé, avant.
+   */
+  function montreErreurs(maj: () => void, fautives: Erreurs) {
+    const cible = enEtapes ? premiereEtapeEnErreur(fautives) : null;
+    if (cible === null) {
+      maj();
+      return;
+    }
+    flushSync(() => {
+      maj();
+      setEtape(cible);
+    });
+    focalise(Object.keys(fautives));
+  }
+
+  /** « Suivant » : seuls les champs de l'étape sont jugés, par la validation partagée. */
+  function suivant() {
+    const fautives = erreursDeLEtape(contact, etape);
+    if (aDesErreurs(fautives)) {
+      flushSync(() => setErreurs((precedentes) => ({ ...precedentes, ...fautives })));
+      focalise(Object.keys(fautives));
+      return;
+    }
+    const prochaine = Math.min(etape + 1, DERNIERE_ETAPE);
+    flushSync(() => setEtape(prochaine));
+    focalise(ETAPES[prochaine]);
+  }
+
+  function precedent() {
+    const precedente = Math.max(etape - 1, 0);
+    flushSync(() => setEtape(precedente));
+    focalise(ETAPES[precedente]);
+  }
 
   // La saisie efface l'erreur du champ touché, pas celle des autres : corriger
   // un champ ne doit pas faire disparaître la liste de ce qui reste à corriger.
@@ -310,11 +445,20 @@ export function FormulaireContact({
     // formulaire pouvant être démonté entre-temps.
     const piege = new FormData(evenement.currentTarget).get(CHAMP_PIEGE);
 
+    // Sur téléphone, la touche Entrée d'une étape qui n'est pas la dernière
+    // vaut « Suivant », pas un envoi.
+    if (enEtapes && etape < DERNIERE_ETAPE) {
+      suivant();
+      return;
+    }
+
     const trouvees = valideContact(contact);
     if (aDesErreurs(trouvees)) {
-      setErreurs(trouvees);
-      setEtat("erreur");
-      setAnnonce("Quelques champs demandent une correction.");
+      montreErreurs(() => {
+        setErreurs(trouvees);
+        setEtat("erreur");
+        setAnnonce("Quelques champs demandent une correction.");
+      }, trouvees);
       return;
     }
 
@@ -347,16 +491,20 @@ export function FormulaireContact({
         // Le serveur nomme le champ qu'il refuse : on l'affiche sur ce champ.
         // Sans ça, le 14/10, le visiteur ne voyait que « Quelques champs
         // demandent une correction » sans savoir lequel.
+        // Sur téléphone, le formulaire revient à l'étape du champ refusé.
         const refuses = erreursDuServeur(corps);
-        if (refuses) setErreurs(refuses);
-        setEtat("erreur");
-        setAnnonce(message ?? ECHEC_RESEAU);
+        montreErreurs(() => {
+          if (refuses) setErreurs(refuses);
+          setEtat("erreur");
+          setAnnonce(message ?? ECHEC_RESEAU);
+        }, refuses ?? {});
         return;
       }
 
       setEtat("succes");
       setAnnonce(message ?? "Votre demande est bien arrivée. Nous vous rappelons.");
       setContact(CONTACT_VIDE);
+      setEtape(0);
 
       // Après le succès seulement, et sans effet tant que la finalité
       // publicitaire n'est pas consentie : voir ./conversion.ts.
@@ -371,9 +519,15 @@ export function FormulaireContact({
   }
 
   const enCours = etat === "envoi";
+  /* Posé sur ce qui n'appartient pas à l'étape affichée ; le module le masque
+     sous 880 px. Absent au-dessus, et avant l'hydratation. */
+  const horsEtape = (visible: boolean) => (enEtapes && !visible ? "" : undefined);
+  const envoiHorsEtape = horsEtape(etape === DERNIERE_ETAPE);
 
   return (
     <form
+      ref={formulaireRef}
+      data-etapes={enEtapes ? "" : undefined}
       onSubmit={envoie}
       /* `post`, ET C'EST UNE QUESTION DE VIE PRIVÉE, PAS DE STYLE.
          Un formulaire sans méthode part en GET. Tant que React est attaché,
@@ -417,6 +571,21 @@ export function FormulaireContact({
         />
       </div>
 
+      {enEtapes ? (
+        <div style={{ gridColumn: "span 2" }}>
+          {/* `aria-live` : le passage d'une étape à l'autre est annoncé. */}
+          <p aria-live="polite" aria-atomic="true" style={ETAPE_TEXTE}>
+            Étape {etape + 1} sur {ETAPES.length}
+          </p>
+          <div aria-hidden="true" style={PISTE}>
+            <div
+              className={styles.jauge}
+              style={{ ...JAUGE, transform: `scaleX(${(etape + 1) / ETAPES.length})` }}
+            />
+          </div>
+        </div>
+      ) : null}
+
       {CHAMPS.map((champ) => {
         const identifiant = `${prefixe}-${champ.nom}`;
         const identifiantErreur = `${identifiant}-erreur`;
@@ -445,6 +614,7 @@ export function FormulaireContact({
         return (
           <div
             key={champ.nom}
+            data-hors-etape={horsEtape(ETAPES[etape].includes(champ.nom))}
             style={{
               gridColumn: champ.pleineLargeur ? "span 2" : undefined,
               minWidth: 0,
@@ -514,13 +684,14 @@ export function FormulaireContact({
         <button
           type="submit"
           disabled={enCours}
+          data-hors-etape={envoiHorsEtape}
           className={styles.boutonEnvoi}
           style={BOUTON_PANNEAU}
         >
           {enCours ? "Envoi en cours…" : libelleEnvoi}
         </button>
       ) : (
-        <div style={RANGEE_ENVOI}>
+        <div style={RANGEE_ENVOI} data-hors-etape={envoiHorsEtape}>
           <button
             type="submit"
             disabled={enCours}
@@ -532,6 +703,25 @@ export function FormulaireContact({
         </div>
       )}
 
+      {enEtapes ? (
+        <div style={NAVIGATION}>
+          {etape < DERNIERE_ETAPE ? (
+            <button
+              type="button"
+              onClick={suivant}
+              className={styles.boutonEnvoi}
+              style={BOUTON_SUIVANT}
+            >
+              Suivant
+            </button>
+          ) : null}
+          {etape > 0 ? (
+            <button type="button" onClick={precedent} disabled={enCours} style={RETOUR}>
+              <span aria-hidden="true">← </span>Retour
+            </button>
+          ) : null}
+        </div>
+      ) : null}
 
       {/* Information au point de collecte, exigée par le RGPD (articles 13 et
           14) : qui traite, pour quoi, qui reçoit, où lire le reste. Elle est

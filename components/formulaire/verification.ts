@@ -25,14 +25,24 @@ import {
   tropDeDepots,
 } from "./debit";
 import {
+  DERNIERE_ETAPE,
+  ETAPES,
+  erreursDeLEtape,
+  premiereEtapeEnErreur,
+  premiereEtapeIncomplete,
+} from "./etapes";
+import {
   CHAMP_ETABLISSEMENT,
   CHAMP_PIEGE,
+  CHAMPS_CONTACT,
   chargeUtile,
   CONTACT_VIDE,
   INDICATIFS,
   numeroComplet,
+  OPTIONNELS,
   valideCharge,
   valideContact,
+  type ChampContact,
 } from "./validation";
 
 const correct = {
@@ -260,5 +270,63 @@ assert.equal(
   "l'attribution reste utilisable en mémoire vive",
 );
 assert.equal(attributionCourante("/contact/").page_entree, "/");
+
+// LE FORMULAIRE EN TROIS ÉTAPES, SUR TÉLÉPHONE (./etapes.ts, décision du 14/10).
+// La répartition doit porter chaque champ du contact une fois et une seule :
+// un champ obligatoire oublié par les étapes ne serait jamais validé avant
+// l'envoi, ni montré à corriger. Écrite en fonction pour la voir échouer.
+function defautsDeRepartition(etapes: readonly (readonly ChampContact[])[]): string[] {
+  const vus = etapes.flat();
+  return CHAMPS_CONTACT.flatMap((champ) => {
+    const fois = vus.filter((vu) => vu === champ).length;
+    return fois === 1 ? [] : [`${champ} : ${fois} étape(s)`];
+  });
+}
+assert.deepEqual(defautsDeRepartition(ETAPES), [], "répartition des champs par étape");
+// Les six champs obligatoires sont bien parmi eux.
+assert.equal(CHAMPS_CONTACT.filter((c) => c !== "indicatif" && !OPTIONNELS.has(c)).length, 6);
+// Témoins : une étape qui perd le message, une qui double le courriel.
+assert.deepEqual(defautsDeRepartition([ETAPES[0], ETAPES[1]]), ["message : 0 étape(s)"]);
+assert.deepEqual(defautsDeRepartition([...ETAPES, ["email"]]), ["email : 2 étape(s)"]);
+
+// L'ordre voulu : l'étape 1 est le « Être rappelé » de la maquette (entreprise
+// et téléphone), puis l'identité, puis le message et l'envoi.
+assert.deepEqual(ETAPES, [["entreprise", "indicatif", "telephone"], ["nom", "prenom", "email"], ["message"]]);
+assert.equal(DERNIERE_ETAPE, 2);
+
+// Chaque étape ne juge QUE ses champs : formulaire vide, chaque étape réclame
+// les siens et rien d'autre, et la réunion des trois est la validation entière.
+function verifieFiltre(filtre: typeof erreursDeLEtape) {
+  const parEtape = ETAPES.map((_, n) => Object.keys(filtre(CONTACT_VIDE, n)).sort());
+  assert.deepEqual(parEtape, [["entreprise", "telephone"], ["email", "nom", "prenom"], ["message"]]);
+  assert.deepEqual(parEtape.flat().sort(), Object.keys(valideContact(CONTACT_VIDE)).sort());
+}
+verifieFiltre(erreursDeLEtape);
+// Témoin : un filtre qui laisse tout passer réclamerait le message dès l'étape 1.
+assert.throws(() => verifieFiltre((contact) => valideContact(contact)));
+for (const n of ETAPES.keys()) assert.deepEqual(erreursDeLEtape(correct, n), {}, `étape ${n + 1} correcte`);
+// Un courriel faux n'arrête pas l'étape 1, il arrête l'étape 2.
+const courrielFaux = { ...correct, email: "camille.riviere" };
+assert.deepEqual(erreursDeLEtape(courrielFaux, 0), {});
+assert.deepEqual(Object.keys(erreursDeLEtape(courrielFaux, 1)), ["email"]);
+// Un indicatif hors liste ramène à l'étape du téléphone.
+assert.deepEqual(Object.keys(erreursDeLEtape({ ...correct, indicatif: "+99" }, 0)), ["indicatif"]);
+
+// Une erreur (du navigateur ou du serveur) ramène à la première étape fautive.
+assert.equal(premiereEtapeEnErreur({}), null);
+assert.equal(premiereEtapeEnErreur({ message: "x" }), 2);
+assert.equal(premiereEtapeEnErreur({ email: "x", message: "x" }), 1);
+assert.equal(premiereEtapeEnErreur({ telephone: "x", nom: "x" }), 0);
+assert.equal(premiereEtapeEnErreur({ formulaire: "x" }), null, "une erreur hors champ ne déplace pas");
+
+// Le préremplissage du panneau court amène à la première étape incomplète.
+assert.equal(premiereEtapeIncomplete(CONTACT_VIDE), 0);
+assert.equal(premiereEtapeIncomplete({ ...CONTACT_VIDE, telephone: "04 72 00 00 00" }), 0);
+assert.equal(
+  premiereEtapeIncomplete({ ...CONTACT_VIDE, entreprise: "Fonderie", telephone: "04 72 00 00 00", email: "a@b.fr" }),
+  1,
+);
+assert.equal(premiereEtapeIncomplete({ ...correct, message: "  " }), 2);
+assert.equal(premiereEtapeIncomplete(correct), DERNIERE_ETAPE, "rien ne manque : l'étape de l'envoi");
 
 console.log("Formulaire, attribution et garde-fous : toutes les assertions passent.");

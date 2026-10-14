@@ -133,4 +133,29 @@
   .enveloppeTel input {
     font-size: 16px !important;
   }
+
+  /* LE FORMULAIRE EN TROIS ÉTAPES (voir ./etapes.ts). Le composant ne pose
+     `data-hors-etape` et `data-etapes` qu'une fois hydraté et sous 880 px :
+     sans JavaScript, tous les champs restent visibles. Masqué, jamais retiré :
+     chaque champ reste dans le document, avec son nom et sa valeur. */
+  .grille [data-hors-etape] {
+    display: none !important;
+  }
+
+  /* Le bouton d'envoi de la dernière étape prend la place et la taille de
+     « Suivant » : pleine largeur, 52 px, comme les boutons de la maquette. */
+  .grille[data-etapes] .boutonEnvoi {
+    width: 100%;
+    min-height: 52px;
+  }
+}
+
+.jauge {
+  transition: transform 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jauge {
+    transition: none;
+  }
 }
