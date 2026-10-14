@@ -31,6 +31,37 @@ export type Contact = Record<ChampContact, string>;
 export type Erreurs = Partial<Record<ChampContact | "formulaire", string>>;
 
 /**
+ * La clé de la fiche du registre dans la charge envoyée. JAMAIS `entreprise` :
+ * c'est le nom tapé par le visiteur, un champ du contact. Du 12 au 14/10, la
+ * fiche voyageait sous `entreprise` et écrasait le nom : le serveur lisait un
+ * objet au lieu d'une chaîne, et toutes les demandes partaient en 422.
+ */
+export const CHAMP_ETABLISSEMENT = "etablissement";
+
+/**
+ * La charge que le formulaire envoie à `/api/lead`, fabriquée ici et nulle
+ * part ailleurs, pour que `verification.ts` rejoue exactement ce que le
+ * navigateur poste au lieu d'une charge écrite à la main.
+ */
+export function chargeUtile(entrees: {
+  contact: Contact;
+  formulaire: string;
+  piege: string;
+  etablissement: Record<string, string>;
+  attribution: unknown;
+  page: { url: string; titre: string };
+}): Record<string, unknown> {
+  return {
+    ...entrees.contact,
+    formulaire: entrees.formulaire,
+    [CHAMP_PIEGE]: entrees.piege,
+    [CHAMP_ETABLISSEMENT]: entrees.etablissement,
+    attribution: entrees.attribution,
+    page: entrees.page,
+  };
+}
+
+/**
  * Indicatifs proposés, dans l'ordre de la maquette.
  *
  * C'est une liste FERMÉE, et c'est ce qui la rend utile : le champ arrive du

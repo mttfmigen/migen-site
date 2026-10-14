@@ -25,7 +25,9 @@ import {
   tropDeDepots,
 } from "./debit";
 import {
+  CHAMP_ETABLISSEMENT,
   CHAMP_PIEGE,
+  chargeUtile,
   CONTACT_VIDE,
   INDICATIFS,
   numeroComplet,
@@ -113,6 +115,31 @@ for (const { url } of INDEX_PAGES) {
     );
   }
 }
+// LA CHARGE QUE LE NAVIGATEUR ENVOIE VRAIMENT, et c'est le défaut du 14/10.
+// Depuis le 12/10, le formulaire posait la fiche du registre sous la clé
+// `entreprise`, celle du nom tapé : la fiche écrasait le nom, le serveur
+// lisait `{}` à la place d'une chaîne, et CHAQUE demande partait en 422.
+// Les essais passaient par le portail HubSpot directement, jamais par cette
+// charge : c'est elle qu'on rejoue ici, telle que `envoie` la fabrique.
+const fiche = { siren: "552100554", siret: "55210055400013", code_naf: "29.10Z" };
+for (const etablissement of [{}, fiche]) {
+  const envoyee = JSON.parse(
+    JSON.stringify(
+      chargeUtile({
+        contact: correct,
+        formulaire: "cocon-expertises-automatisme--hero",
+        piege: "",
+        etablissement,
+        attribution: { page_entree: "/" },
+        page: { url: "https://migen.fr/", titre: "Migen" },
+      }),
+    ),
+  ) as Record<string, unknown>;
+  assert.deepEqual(valideCharge(envoyee).erreurs, {}, "la charge du navigateur est refusée par le serveur");
+  assert.equal(valideCharge(envoyee).contact.entreprise, correct.entreprise, "le nom d'entreprise tapé est perdu");
+  assert.deepEqual(envoyee[CHAMP_ETABLISSEMENT], etablissement, "la fiche du registre est perdue");
+}
+
 // Le plafond reste un plafond : un identifiant démesuré est toujours refusé.
 assert.ok(valideCharge({ ...correct, formulaire: "a".repeat(121) }).erreurs.formulaire);
 

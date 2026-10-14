@@ -2,6 +2,7 @@ import type { NextRequest } from "next/server";
 
 import { COOKIE_NOM, analyseCookie } from "@/lib/consentement";
 import {
+  CHAMP_ETABLISSEMENT,
   CHAMP_PIEGE,
   valideCharge,
   type Contact,
@@ -123,7 +124,7 @@ export async function POST(requete: NextRequest): Promise<Response> {
      garde-fous : un SIREN doit faire neuf chiffres et un SIRET quatorze,
      sinon la valeur est jetée. Rien n'entre ici qu'un navigateur pourrait
      inventer à la place du registre. */
-  const entreprise = etablissementNettoye(source.entreprise);
+  const entreprise = etablissementNettoye(source[CHAMP_ETABLISSEMENT]);
 
   const depot = await deposeChezHubspot({
     contact,

@@ -15,6 +15,8 @@ import { signaleConversion } from "./conversion";
 import styles from "./FormulaireContact.module.css";
 import {
   CHAMP_PIEGE,
+  CHAMPS_CONTACT,
+  chargeUtile,
   CONTACT_VIDE,
   INDICATIFS,
   OPTIONNELS,
@@ -324,22 +326,29 @@ export function FormulaireContact({
       const reponse = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...contact,
-          formulaire,
-          [CHAMP_PIEGE]: typeof piege === "string" ? piege : "",
-          entreprise,
-          attribution: attributionCourante(window.location.pathname),
-          // HubSpot range la soumission sous la page vue : l'URL complète et le
-          // titre ne sont connus que du navigateur.
-          page: { url: window.location.href, titre: document.title },
-        }),
+        body: JSON.stringify(
+          chargeUtile({
+            contact,
+            formulaire,
+            piege: typeof piege === "string" ? piege : "",
+            etablissement: entreprise,
+            attribution: attributionCourante(window.location.pathname),
+            // HubSpot range la soumission sous la page vue : l'URL complète et
+            // le titre ne sont connus que du navigateur.
+            page: { url: window.location.href, titre: document.title },
+          }),
+        ),
       });
 
       const corps: unknown = await reponse.json().catch(() => null);
       const message = messageDuServeur(corps);
 
       if (!reponse.ok) {
+        // Le serveur nomme le champ qu'il refuse : on l'affiche sur ce champ.
+        // Sans ça, le 14/10, le visiteur ne voyait que « Quelques champs
+        // demandent une correction » sans savoir lequel.
+        const refuses = erreursDuServeur(corps);
+        if (refuses) setErreurs(refuses);
         setEtat("erreur");
         setAnnonce(message ?? ECHEC_RESEAU);
         return;
@@ -572,6 +581,19 @@ export function FormulaireContact({
 }
 
 /** Le serveur renvoie `{ message }` : tout autre corps est ignoré. */
+/** Les erreurs par champ que la route renvoie en 422, limitées aux champs du contact. */
+function erreursDuServeur(corps: unknown): Erreurs | null {
+  if (typeof corps !== "object" || corps === null) return null;
+  const brutes = (corps as { erreurs?: unknown }).erreurs;
+  if (typeof brutes !== "object" || brutes === null) return null;
+  const retenues: Erreurs = {};
+  for (const champ of CHAMPS_CONTACT) {
+    const texte = (brutes as Record<string, unknown>)[champ];
+    if (typeof texte === "string" && texte) retenues[champ] = texte;
+  }
+  return Object.keys(retenues).length ? retenues : null;
+}
+
 function messageDuServeur(corps: unknown): string | null {
   if (typeof corps !== "object" || corps === null) return null;
   const message = (corps as { message?: unknown }).message;
