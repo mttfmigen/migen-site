@@ -198,3 +198,18 @@ curl -sI https://migen.fr/maintenance-industrielle-lyon/ | grep -i -E "^(HTTP|lo
 ### Retour arrière, si besoin
 
 14. Remettre les enregistrements DNS notés à l'étape 3. Avec le TTL baissé, l'ancien site revient en quelques minutes. Résilier l'ancien WordPress seulement après 4 à 6 semaines sans incident.
+
+## 7. Corrections du 14/10 après le suivi de positions Semrush
+
+Le suivi de positions de Mehdi (`Position Tracking Rankings Overview Oct 14.csv`) a montré quatre anciennes pages qui se classent sur des requêtes que leur cible prévue ne traitait pas. Corrigé dans `lib/redirections-ancien-site.ts` (commit d76960f), porte `REDIRECTIONS_SANS_PERTE` relancée :
+
+| ancienne adresse | prévue | désormais | ce qui est en jeu |
+|---|---|---|---|
+| `/maintenance-industrielle-gironde/` | `/implantations/toulouse/gironde/` | `/entreprise-maintenance-industrielle/` | « entreprise maintenance industrielle » (9e, 1 600 par mois) ; ses 14 mots clés sont génériques, aucun sur la Gironde |
+| `/maintenance-industrielle-essonne/` | `/implantations/paris/essonne/` | `/entreprise-maintenance-industrielle/` | « maintenance industrielle entreprises » (7e) ; tout son trafic vient d'une requête générique |
+| `/transfert-demenagement-industriel/` | `/offres/chantier/` | `/offres/chantier/demenagement-machines/` | « déménagement de machines industrielles » (20e), « déménagement industriel » (720 par mois) : le choix « à valider » de la section 5 est tranché ainsi |
+| `/comment-devenir-technicien-de-maintenance-industrielle/` | `/carriere/technicien-de-maintenance/formation/` | `/carriere/technicien-de-maintenance/` | « technicien de maintenance industrielle » (31e, 2 400 par mois) porte sur le métier |
+
+Motifs vérifiés le même jour sur la préproduction : archives paginées (`/actualites/page/N/`, `/category/articles/page/N/`, `/page/N/`), archive d'auteur, `/feed/` et fichiers de `/wp-content/uploads/` répondent 404, comme prévu pour les adresses techniques ; `/nos-offres/` et `/entreprise-de-maintenance/`, deux chaînes de l'ancien WordPress, arrivent en un seul saut.
+
+Reste ouvert : la page `/cgv/` (section 5), en cours de publication à l'identique.
