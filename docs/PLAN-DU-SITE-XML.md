@@ -23,7 +23,10 @@ Identique à Yoast : déclaration XML et instruction `xml-stylesheet` sur la pre
 - pages et articles de la base : `updated_at` ;
 - routes statiques : dernier commit de leur route et de leurs composants ;
 - pages du relais disque : dernier commit de leur fichier JSON (une page de la base que le relais remplace prend la plus récente des deux dates) ;
-- les 12 billets repris : leur date d'origine, la `<lastmod>` de leur ancienne adresse dans le plan de Yoast.
+- les 12 billets repris : leur date d'origine, la `<lastmod>` de leur ancienne adresse dans le plan de Yoast ;
+- une page de la base dont le texte vit dans le code (`/expertises/`, servie par `PageExpertises`) : la plus récente de `updated_at` et du dernier commit de ses sources (`SOURCES_DU_CODE` de `scripts/releve-sitemap.mjs`).
+
+Le relevé prend du retard à chaque commit qui touche une page : il est à relancer avant de pousser un tel commit (voir « Tenir à jour »). En retard, une date reste celle d'un vrai commit, plus ancienne que la vraie modification.
 
 Jamais l'heure du build pour tout le monde (c'était le cas avant le 14/10).
 

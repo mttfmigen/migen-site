@@ -19,6 +19,9 @@
  *    `<lastmod>` de leur ancienne adresse dans le plan de l'ancien site, figé
  *    dans `docs/sitemap-ancien/post-sitemap.xml`, l'ancienne adresse étant lue
  *    dans `lib/redirections-ancien-site.ts`.
+ *  - page de la base dont le texte vit dans le code (`/expertises/`, table
+ *    `SOURCES_DU_CODE`) : dernier commit de ces sources, la plus récente de
+ *    cette date et de `updated_at` étant gardée ;
  *  Les pages de la base et les articles prennent `updated_at`, lu au rendu.
  *
  * LES IMAGES (`lib/sitemap/images.json`) : celles que la page affiche réellement, lues dans le
@@ -57,6 +60,26 @@ const SOURCES_STATIQUES = {
   "/cgv/": ["app/cgv"],
   "/test-technicien/": ["app/test-technicien", "components/site/test-technicien"],
   "/ressources/": ["app/ressources", "components/site/ressources-hub"],
+};
+
+/**
+ * Les pages de la BASE dont le texte servi vit dans le code : leur `updated_at`
+ * ne bouge pas quand ce texte change. Mesuré le 14/10 : `/expertises/` datée du
+ * 02/10 par la base, alors que `expertises-donnees.ts` (son contenu, rendu par
+ * `PageExpertises`, voir `TITRES_DU_COMPOSANT` de `lib/pages-publiees.ts`)
+ * avait changé le jour même. `lib/pages-publiees.ts` garde la plus récente.
+ */
+const SOURCES_DU_CODE = {
+  "/expertises/": [
+    "components/site/expertises/PageExpertises.tsx",
+    "components/site/expertises/PageExpertises.module.css",
+    "components/site/expertises/Domaines.tsx",
+    "components/site/expertises/ReponseDirecte.tsx",
+    "components/site/expertises/TypesMaintenance.tsx",
+    "components/site/expertises/mobile.tsx",
+    "components/site/expertises/mobile.module.css",
+    "components/site/expertises/expertises-donnees.ts",
+  ],
 };
 
 const DOSSIERS_DU_RELAIS = ["gabarits-maquette", "blog-repris"];
@@ -185,7 +208,11 @@ if (!base) {
 const releve = {
   // Les routes statiques en dernier : une route du code que le relais porte
   // aussi (`/ressources/`) est servie par le code, c'est sa date qui compte.
-  dates: trie([...datesDuRelais(), ...datesStatiques()]),
+  dates: trie([
+    ...datesDuRelais(),
+    ...Object.entries(SOURCES_DU_CODE).map(([route, sources]) => [route, dateGit(sources)]),
+    ...datesStatiques(),
+  ]),
   images: trie(await imagesDuPlan(base)),
 };
 const textes = Object.fromEntries(Object.entries(releve).map(([cle, v]) => [cle, `${JSON.stringify(v, null, 2)}\n`]));
